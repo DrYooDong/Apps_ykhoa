@@ -218,6 +218,7 @@
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_nguyennhanAKI.html` | Đánh giá nguyên nhân AKI | — |
 | `Công cụ/Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html` | Chỉnh liều Insulin | `insulin-calculator.css` |
 | `Công cụ/Tim mạch & huyết khối/DG_LDLc.html` | Mục tiêu LDL-c | — |
+| `Công cụ/Tim mạch & huyết khối/phan-loai-roi-loan-nhip.html` | **[MỚI]** Phân loại Rối loạn nhịp tim & ECG Arrhythmia Studio (6-Axis, QTc, Brugada) | `arrhythmia-studio.css` |
 | `Công cụ/Tim mạch & huyết khối/DG_Suytim.html` | Đánh giá suy tim | — |
 | `Công cụ/Tim mạch & huyết khối/ptnctimmach.html` | Phân tầng nguy cơ tim mạch | — |
 | `Công cụ/Tim mạch & huyết khối/DG_VTE.html` | VTE Toolkit: Huyết khối DVT & Thuyên tắc phổi PE (Wells, sPESI) | — |
@@ -530,4 +531,11 @@
 *Cập nhật file này mỗi khi thêm trang mới vào hệ thống.*
 
 
+---
 
+## 🚀 src/docspace/ — Phân hệ Không gian Riêng & Kiến trúc SPA
+
+| File | Vai trò |
+|------|---------|
+| `src/docspace/features/dependency-map-view.ts` | **[MỚI]** Giao diện & Controller của tính năng Bản đồ phụ thuộc Core (Dependency Map, SVG Network, Risk Matrix & Regression Checklist) |
+| `src/docspace/data/graphify-dependency-data.ts` | **[MỚI]** Dữ liệu phân tích tĩnh được trích xuất từ Graphify Risk Assessment phục vụ vẽ mạng lưới phụ thuộc |

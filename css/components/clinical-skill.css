@@ -822,3 +822,57 @@
   color: var(--color-primary, #0284c7);
   font-weight: 700;
 }
+
+/* ==========================================================================
+   PHYSIO EXPLAIN IN-SITU POPOVER & BADGE
+   ========================================================================== */
+physio-explain {
+  display: inline-flex;
+  vertical-align: middle;
+  margin: 0 4px;
+}
+
+.physio-explain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(14, 165, 233, 0.1);
+  color: #0284c7;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.physio-explain-badge:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+  transform: translateY(-1px);
+}
+
+.physio-explain-badge i {
+  color: #eab308;
+  font-size: 0.85rem;
+}
+
+.physio-explain-badge:hover i {
+  color: #fde047;
+}
+
+@keyframes physioPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+

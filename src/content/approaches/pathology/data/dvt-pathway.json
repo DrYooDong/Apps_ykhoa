@@ -26,11 +26,11 @@
     "width": 750,
     "height": 480,
     "nodes": [
-      { "id": "fn1", "type": "start", "title": "NGHI NGỜ DVT CHI DƯỚI", "subtitle": "TÍNH WELLS DVT 2 MỨC", "icon": "fa-vial", "shape": "rectangle", "toolUrl": "../../Công cụ/Tim mạch & huyết khối/Danhgia_Nguyco_VTE.html", "toolTitle": "Tính Thang Điểm Wells DVT", "badge": "BƯỚC 1", "x": 260, "y": 30, "width": 260 },
+      { "id": "fn1", "type": "start", "title": "NGHI NGỜ DVT CHI DƯỚI", "subtitle": "TÍNH WELLS DVT 2 MỨC", "icon": "fa-vial", "shape": "rectangle", "toolUrl": "../../Công cụ/Tim mạch & huyết khối/Danhgia_Nguyco_VTE.html", "toolTitle": "Tính Thang Điểm Wells DVT", "badge": "BƯỚC 1", "x": 260, "y": 30, "width": 260, "pathoId": "vte_triad" },
       { "id": "fn2", "type": "question", "title": "WELLS ≤ 1 (Ít khả năng)", "subtitle": "Thực hiện xét nghiệm D-dimer", "icon": "fa-stethoscope", "shape": "diamond", "x": 80, "y": 160, "width": 220, "targetCardId": "dose-table-card-section" },
       { "id": "fn3", "type": "question", "title": "WELLS ≥ 2 (Có khả năng)", "subtitle": "Siêu âm ép tĩnh mạch trong 4h", "icon": "fa-vial", "shape": "diamond", "x": 440, "y": 160, "width": 220, "targetCardId": "dose-table-card-section" },
       { "id": "fn4", "type": "success", "title": "LOẠI TRỪ DVT", "subtitle": "D-dimer âm tính", "icon": "fa-shield-halved", "shape": "pill", "badge": "ỔN ĐỊNH", "x": 80, "y": 320, "width": 200 },
-      { "id": "fn5", "type": "danger", "title": "XÁC ĐỊNH DVT", "subtitle": "Siêu âm dương tính / D-dimer (+)", "icon": "fa-truck-medical", "shape": "octagon", "badge": "KHẨN", "x": 440, "y": 320, "width": 220, "targetCardId": "comparison-card-section" }
+      { "id": "fn5", "type": "danger", "title": "XÁC ĐỊNH DVT", "subtitle": "Siêu âm dương tính / D-dimer (+)", "icon": "fa-truck-medical", "shape": "octagon", "badge": "KHẨN", "x": 440, "y": 320, "width": 220, "targetCardId": "comparison-card-section", "pathoId": "dvt_stasis" }
     ],
     "edges": [
       { "id": "fe1", "source": "fn1", "target": "fn2", "label": "Wells ≤ 1", "type": "normal" },

@@ -1,0 +1,630 @@
+{
+  "schemaVersion": "2.0",
+  "id": "arrhythmia-classification-db",
+  "title": "Cơ sở dữ liệu Phân loại Rối loạn nhịp tim (Multi-Axis)",
+  "axes": {
+    "rate": [
+      "bradycardia",
+      "tachycardia",
+      "normal-rate",
+      "variable"
+    ],
+    "qrsWidth": [
+      "narrow",
+      "wide",
+      "variable"
+    ],
+    "regularity": [
+      "regular",
+      "irregular",
+      "variable"
+    ],
+    "mechanism": [
+      "automaticity-normal",
+      "automaticity-abnormal",
+      "triggered-ead",
+      "triggered-dad",
+      "reentry-anatomic",
+      "reentry-functional",
+      "conduction-block"
+    ],
+    "origin": [
+      "sa-node",
+      "atrial",
+      "av-junction",
+      "av-node",
+      "accessory-pathway",
+      "his-purkinje",
+      "rvot",
+      "lvot",
+      "fascicular",
+      "scar-related",
+      "diffuse-myocardial"
+    ],
+    "structuralHeart": [
+      "normal-heart",
+      "structural-disease",
+      "channelopathy"
+    ]
+  },
+  "entities": [
+    {
+      "id": "sinus-bradycardia",
+      "label": "Nhịp chậm xoang",
+      "tags": {
+        "rate": "bradycardia",
+        "qrsWidth": "narrow",
+        "regularity": "regular",
+        "mechanism": "automaticity-normal",
+        "origin": "sa-node",
+        "structuralHeart": "normal-heart"
+      },
+      "ecgCriteria": "P đi trước mỗi QRS, hình dạng P bình thường, HR < 60/phút",
+      "rarity": "common",
+      "aliases": [
+        "Sinus bradycardia"
+      ],
+      "ecgFeatures": [
+        "P xoang trước mỗi QRS",
+        "PR ổn định",
+        "Tần số <60/phút"
+      ],
+      "differentials": [
+        "avb3-complete"
+      ],
+      "redFlags": [],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "avb1",
+      "label": "Block nhĩ thất độ 1",
+      "tags": {
+        "rate": "normal-rate",
+        "qrsWidth": "narrow",
+        "regularity": "regular",
+        "mechanism": "conduction-block",
+        "origin": "av-node",
+        "structuralHeart": "normal-heart"
+      },
+      "ecgCriteria": "PR > 200ms cố định, mọi P đều dẫn",
+      "rarity": "common",
+      "aliases": [
+        "First-degree AV block"
+      ],
+      "ecgFeatures": [
+        "PR >200 ms",
+        "Mỗi sóng P dẫn truyền một QRS"
+      ],
+      "differentials": [
+        "avb2-mobitz1"
+      ],
+      "redFlags": [],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "avb2-mobitz1",
+      "label": "Block nhĩ thất độ 2 - Mobitz I",
+      "tags": {
+        "rate": "normal-rate",
+        "qrsWidth": "narrow",
+        "regularity": "irregular",
+        "mechanism": "conduction-block",
+        "origin": "av-node",
+        "structuralHeart": "normal-heart"
+      },
+      "ecgCriteria": "PR dài dần rồi mất 1 QRS (chu kỳ Wenckebach), thường lành tính",
+      "rarity": "common",
+      "aliases": [
+        "Wenckebach",
+        "Mobitz I"
+      ],
+      "ecgFeatures": [
+        "PR tăng dần",
+        "QRS rơi sau chu kỳ Wenckebach"
+      ],
+      "differentials": [
+        "avb2-mobitz2"
+      ],
+      "redFlags": [],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "avb2-mobitz2",
+      "label": "Block nhĩ thất độ 2 - Mobitz II",
+      "tags": {
+        "rate": "normal-rate",
+        "qrsWidth": "variable",
+        "regularity": "irregular",
+        "mechanism": "conduction-block",
+        "origin": "his-purkinje",
+        "structuralHeart": "structural-disease"
+      },
+      "ecgCriteria": "PR cố định, đột ngột mất QRS không báo trước, nguy cơ tiến triển độ 3",
+      "rarity": "uncommon",
+      "aliases": [
+        "Mobitz II"
+      ],
+      "ecgFeatures": [
+        "PR cố định",
+        "QRS rơi đột ngột"
+      ],
+      "differentials": [
+        "avb2-mobitz1",
+        "avb3-complete"
+      ],
+      "redFlags": [
+        "Xem xét block dưới His khi QRS rộng"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "avb3-complete",
+      "label": "Block nhĩ thất độ 3 (hoàn toàn)",
+      "tags": {
+        "rate": "bradycardia",
+        "qrsWidth": "variable",
+        "regularity": "regular",
+        "mechanism": "conduction-block",
+        "origin": "his-purkinje",
+        "structuralHeart": "structural-disease"
+      },
+      "ecgCriteria": "Phân ly hoàn toàn P và QRS, tần số nhĩ > tần số thất",
+      "rarity": "uncommon",
+      "aliases": [
+        "Complete heart block",
+        "Third-degree AV block"
+      ],
+      "ecgFeatures": [
+        "Phân ly nhĩ-thất",
+        "Tần số nhĩ lớn hơn tần số thất"
+      ],
+      "differentials": [
+        "avb2-mobitz2"
+      ],
+      "redFlags": [
+        "Xác định nhịp thoát và độ rộng QRS"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "avnrt",
+      "label": "Nhịp nhanh vòng vào lại nút nhĩ thất (AVNRT)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "narrow",
+        "regularity": "regular",
+        "mechanism": "reentry-anatomic",
+        "origin": "av-node",
+        "structuralHeart": "normal-heart"
+      },
+      "ecgCriteria": "QRS hẹp đều, thường không thấy P hoặc P giả trong QRS (pseudo R' ở V1)",
+      "rarity": "common",
+      "aliases": [
+        "AV nodal reentrant tachycardia"
+      ],
+      "ecgFeatures": [
+        "QRS hẹp đều",
+        "Pseudo r' ở V1 hoặc pseudo S ở DII-DIII-aVF"
+      ],
+      "differentials": [
+        "avrt-wpw",
+        "atrial-fibrillation"
+      ],
+      "redFlags": [],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "avrt-wpw",
+      "label": "Nhịp nhanh vào lại nhĩ thất (AVRT) qua đường phụ",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "narrow",
+        "regularity": "regular",
+        "mechanism": "reentry-anatomic",
+        "origin": "accessory-pathway",
+        "structuralHeart": "normal-heart"
+      },
+      "ecgCriteria": "QRS hẹp đều, RP ngắn, sóng Delta thấy khi nhịp xoang (WPW)",
+      "rarity": "uncommon",
+      "aliases": [
+        "Orthodromic AVRT",
+        "WPW-related AVRT"
+      ],
+      "ecgFeatures": [
+        "QRS hẹp đều khi AVRT xuôi",
+        "PR ngắn và sóng delta có thể thấy khi nhịp xoang"
+      ],
+      "differentials": [
+        "avnrt",
+        "vt-fascicular"
+      ],
+      "redFlags": [
+        "Không suy luận đường phụ chỉ từ một ECG khi không thấy tiền kích thích"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "atrial-fibrillation",
+      "label": "Rung nhĩ",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "narrow",
+        "regularity": "irregular",
+        "mechanism": "reentry-functional",
+        "origin": "atrial",
+        "structuralHeart": "structural-disease"
+      },
+      "ecgCriteria": "Không có sóng P, đường nền lăn tăn (f wave), R-R hoàn toàn không đều",
+      "rarity": "common",
+      "aliases": [
+        "AF",
+        "Atrial fibrillation"
+      ],
+      "ecgFeatures": [
+        "Không có sóng P rời rạc",
+        "R-R hoàn toàn không đều"
+      ],
+      "differentials": [
+        "mat"
+      ],
+      "redFlags": [
+        "Đánh giá hình thái QRS nếu nhịp nhanh không đều QRS rộng"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "mat",
+      "label": "Nhịp nhanh nhĩ đa ổ (MAT)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "narrow",
+        "regularity": "irregular",
+        "mechanism": "automaticity-abnormal",
+        "origin": "atrial",
+        "structuralHeart": "structural-disease"
+      },
+      "ecgCriteria": "≥3 hình thái sóng P khác nhau, thường kèm bệnh phổi mạn (COPD)",
+      "rarity": "uncommon",
+      "aliases": [
+        "Multifocal atrial tachycardia"
+      ],
+      "ecgFeatures": [
+        "Ít nhất 3 hình thái P",
+        "PR và PP thay đổi",
+        "Nhịp không đều"
+      ],
+      "differentials": [
+        "atrial-fibrillation"
+      ],
+      "redFlags": [],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "vt-rvot",
+      "label": "Nhịp nhanh thất đường ra thất phải (RVOT-VT)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "wide",
+        "regularity": "regular",
+        "mechanism": "triggered-dad",
+        "origin": "rvot",
+        "structuralHeart": "normal-heart"
+      },
+      "ecgCriteria": "Hình ảnh giống LBBB, trục hướng xuống dưới, VT vô căn phổ biến nhất",
+      "rarity": "uncommon",
+      "aliases": [
+        "RVOT VT"
+      ],
+      "ecgFeatures": [
+        "Dạng LBBB",
+        "Trục dưới"
+      ],
+      "differentials": [
+        "arvc",
+        "vt-lvot"
+      ],
+      "redFlags": [
+        "Không gán nhãn vô căn nếu chưa loại trừ bệnh tim cấu trúc"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "vt-lvot",
+      "label": "Nhịp nhanh thất đường ra thất trái (LVOT-VT)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "wide",
+        "regularity": "regular",
+        "mechanism": "triggered-dad",
+        "origin": "lvot",
+        "structuralHeart": "normal-heart"
+      },
+      "ecgCriteria": "Hình ảnh giống RBBB, cần phân biệt với ARVC vùng RVOT",
+      "rarity": "rare",
+      "aliases": [
+        "LVOT VT"
+      ],
+      "ecgFeatures": [
+        "VT đường ra",
+        "Cần định vị bằng nhiều chuyển đạo"
+      ],
+      "differentials": [
+        "vt-rvot"
+      ],
+      "redFlags": [],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "vt-fascicular",
+      "label": "Nhịp nhanh thất bó (Fascicular VT)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "narrow",
+        "regularity": "regular",
+        "mechanism": "reentry-anatomic",
+        "origin": "fascicular",
+        "structuralHeart": "normal-heart"
+      },
+      "ecgCriteria": "QRS 120-145ms (hẹp hơn VT thường), giống RBBB + trục lệch trái, tái nhập trong hệ Purkinje",
+      "rarity": "rare",
+      "aliases": [
+        "Fascicular VT",
+        "Verapamil-sensitive VT"
+      ],
+      "ecgFeatures": [
+        "RBBB morphology",
+        "Thường trục trái",
+        "QRS có thể chỉ hơi rộng"
+      ],
+      "differentials": [
+        "avrt-wpw",
+        "vt-scar-related"
+      ],
+      "redFlags": [
+        "QRS tương đối hẹp không loại trừ VT"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "vt-scar-related",
+      "label": "Nhịp nhanh thất quanh sẹo (Scar-related VT)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "wide",
+        "regularity": "regular",
+        "mechanism": "reentry-anatomic",
+        "origin": "scar-related",
+        "structuralHeart": "structural-disease"
+      },
+      "ecgCriteria": "QRS rộng đơn hình, thường sau nhồi máu cơ tim, thỏa tiêu chuẩn Brugada VT",
+      "rarity": "common",
+      "aliases": [
+        "Scar-related VT"
+      ],
+      "ecgFeatures": [
+        "VT đơn hình",
+        "QRS rộng",
+        "Có thể có AV dissociation"
+      ],
+      "differentials": [
+        "vt-rvot",
+        "arvc"
+      ],
+      "redFlags": [
+        "Không kết luận vị trí sẹo chỉ dựa trên ECG bề mặt"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "torsades",
+      "label": "Xoắn đỉnh (Torsades de Pointes)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "wide",
+        "regularity": "irregular",
+        "mechanism": "triggered-ead",
+        "origin": "diffuse-myocardial",
+        "structuralHeart": "channelopathy"
+      },
+      "ecgCriteria": "QRS đa hình xoay trục quanh đường nền, nền QTc kéo dài",
+      "rarity": "rare",
+      "aliases": [
+        "Torsades de Pointes",
+        "TdP"
+      ],
+      "ecgFeatures": [
+        "VT đa hình",
+        "QRS xoay quanh đường đẳng điện",
+        "Liên quan QT kéo dài"
+      ],
+      "differentials": [
+        "cpvt"
+      ],
+      "redFlags": [
+        "Đánh giá QT/QTc ở đoạn nhịp xoang trước cơn"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "cpvt",
+      "label": "Nhịp nhanh thất đa hình do Catecholamine (CPVT)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "wide",
+        "regularity": "irregular",
+        "mechanism": "triggered-dad",
+        "origin": "diffuse-myocardial",
+        "structuralHeart": "channelopathy"
+      },
+      "ecgCriteria": "ECG nghỉ bình thường, VT hai hướng khi gắng sức/căng thẳng, đột biến RYR2",
+      "rarity": "very-rare",
+      "aliases": [
+        "Catecholaminergic polymorphic ventricular tachycardia"
+      ],
+      "ecgFeatures": [
+        "ECG nghỉ có thể bình thường",
+        "PVC tăng theo gắng sức",
+        "VT hai hướng hoặc đa hình"
+      ],
+      "differentials": [
+        "torsades",
+        "andersen-tawil"
+      ],
+      "redFlags": [
+        "Tiền sử ngất khi gắng sức/cảm xúc và gia đình đột tử"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "brugada-syndrome",
+      "label": "Hội chứng Brugada",
+      "tags": {
+        "rate": "normal-rate",
+        "qrsWidth": "narrow",
+        "regularity": "regular",
+        "mechanism": "conduction-block",
+        "origin": "his-purkinje",
+        "structuralHeart": "channelopathy"
+      },
+      "ecgCriteria": "ST chênh vòm (Type 1) V1-V3, đột biến SCN5A, nguy cơ VF/đột tử",
+      "rarity": "rare",
+      "aliases": [
+        "Brugada syndrome"
+      ],
+      "ecgFeatures": [
+        "Type 1: ST chênh dạng vòm ở V1-V2 (có thể V3)",
+        "T inversion sau ST"
+      ],
+      "differentials": [],
+      "redFlags": [
+        "Phân biệt Brugada phenocopy và đặt đúng vị trí V1-V2 cao"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "sqts",
+      "label": "Hội chứng QT ngắn (SQTS)",
+      "tags": {
+        "rate": "normal-rate",
+        "qrsWidth": "narrow",
+        "regularity": "regular",
+        "mechanism": "automaticity-abnormal",
+        "origin": "diffuse-myocardial",
+        "structuralHeart": "channelopathy"
+      },
+      "ecgCriteria": "QTc < 340ms, nguy cơ rung nhĩ/rung thất ở người trẻ",
+      "rarity": "very-rare",
+      "aliases": [
+        "Short QT syndrome"
+      ],
+      "ecgFeatures": [
+        "QTc rất ngắn",
+        "Sóng T cao nhọn, đối xứng có thể gặp"
+      ],
+      "differentials": [],
+      "redFlags": [
+        "Đo QT lặp lại, loại trừ nhịp nhanh và sai số đo"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "andersen-tawil",
+      "label": "Hội chứng Andersen-Tawil",
+      "tags": {
+        "rate": "variable",
+        "qrsWidth": "wide",
+        "regularity": "irregular",
+        "mechanism": "triggered-ead",
+        "origin": "diffuse-myocardial",
+        "structuralHeart": "channelopathy"
+      },
+      "ecgCriteria": "QT dài + loạn nhịp thất + liệt cơ chu kỳ + bất thường ngoại hình, đột biến KCNJ2",
+      "rarity": "very-rare",
+      "aliases": [
+        "Andersen-Tawil syndrome",
+        "LQT7"
+      ],
+      "ecgFeatures": [
+        "U wave nổi bật",
+        "QU kéo dài",
+        "PVC/VT hai hướng có thể gặp"
+      ],
+      "differentials": [
+        "cpvt",
+        "torsades"
+      ],
+      "redFlags": [
+        "Không nhầm QU kéo dài với QT kéo dài"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    },
+    {
+      "id": "arvc",
+      "label": "Bệnh cơ tim thất phải gây loạn nhịp (ARVC)",
+      "tags": {
+        "rate": "tachycardia",
+        "qrsWidth": "wide",
+        "regularity": "regular",
+        "mechanism": "reentry-anatomic",
+        "origin": "rvot",
+        "structuralHeart": "structural-disease"
+      },
+      "ecgCriteria": "Sóng Epsilon V1-V3, đảo T qua V1-V3, VT hình LBBB",
+      "rarity": "rare",
+      "aliases": [
+        "Arrhythmogenic right ventricular cardiomyopathy",
+        "ARVC"
+      ],
+      "ecgFeatures": [
+        "Đảo T V1-V3",
+        "Sóng epsilon có thể xuất hiện",
+        "VT dạng LBBB"
+      ],
+      "differentials": [
+        "vt-rvot"
+      ],
+      "redFlags": [
+        "Sóng epsilon đơn độc không đủ để khẳng định chẩn đoán"
+      ],
+      "review": {
+        "status": "draft"
+      }
+    }
+  ]
+}

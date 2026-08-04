@@ -448,6 +448,9 @@
             <button class="btn-add-case" onclick="event.stopPropagation(); window._icd.addToCase('${escAttr(doc.code)}', '${escAttr(displayName)}', 'secondary')">
                 ＋ ${currentUiLang === 'en' ? 'Secondary' : 'Bệnh kèm'}
             </button>
+            <button class="btn-add-case" style="background:var(--color-primary, #0284c7); color:#ffffff; border:none;" onclick="event.stopPropagation(); window.location.href='../../../../index.html#/ebm?q=${encodeURIComponent(doc.code)}'">
+                <i class="fa-solid fa-compass"></i> ${currentUiLang === 'en' ? 'Clinical Pathway' : 'Lộ trình xử trí'}
+            </button>
         </div>
     `;
     }

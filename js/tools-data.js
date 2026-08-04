@@ -231,6 +231,15 @@ const clinicalToolsData = [
 
   // Phần 7: Tim mạch & Huyết khối
   {
+    id: "phan-loai-roi-loan-nhip",
+    title: "Phân loại Rối loạn nhịp tim & ECG Arrhythmia Studio",
+    description: "6 trục phân loại rối loạn nhịp, Thuật toán Brugada 4 bước, QTc đa công thức & Phân tầng nguy cơ Xoắn đỉnh",
+    icon: "🫀",
+    link: "cardiology/phan-loai-roi-loan-nhip.html",
+    part: "part7-section",
+    tags: ["tim mạch", "rối loạn nhịp", "ecg", "qtc", "brugada", "wpw", "xoắn đỉnh", "arvc", "arrhythmia"]
+  },
+  {
     id: "ptnc-tim-mach",
     title: "Phân tầng nguy cơ tim mạch toàn bộ",
     description: "SCORE2, SCORE2-OP, SCORE2-Diabetes, PREVENT",

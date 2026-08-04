@@ -32,19 +32,89 @@
       }
     })();
 
-    (function () {
-      // --- Theme toggle ---
+    (function initThemeAndFontSizeManager() {
       const html = document.documentElement;
-      const themeBtn = document.getElementById('theme-toggle-btn');
-      let theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
-      html.setAttribute('data-theme', theme);
 
-      themeBtn?.addEventListener('click', () => {
-        theme = theme === 'dark' ? 'light' : 'dark';
+      // 1. Theme Manager
+      function getSavedTheme() {
+        const saved = localStorage.getItem('cliniportal_theme');
+        if (saved) return saved;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function applyTheme(theme) {
         html.setAttribute('data-theme', theme);
-        themeBtn.textContent = theme === 'dark' ? '☀️' : '🌓';
+        if (document.body) document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('cliniportal_theme', theme);
+
+        const themeBtn = document.getElementById('theme-toggle-btn') || document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+          const isDark = theme === 'dark';
+          themeBtn.innerHTML = isDark 
+            ? '<i class="fa-solid fa-sun" style="color:#f59e0b;"></i> <span>Chế độ Sáng</span>' 
+            : '<i class="fa-solid fa-moon" style="color:#8b5cf6;"></i> <span>Chế độ Tối</span>';
+        }
+
+        // Broadcast event for Studios & Web Components
+        window.dispatchEvent(new CustomEvent('cliniportal-theme-change', { detail: { theme } }));
+      }
+
+      // 2. Font Size Manager
+      const FONT_MAP = {
+        'small': '14px',
+        'normal': '16px',
+        'large': '18px',
+        'x-large': '20px'
+      };
+
+      function getSavedFontSize() {
+        return localStorage.getItem('cliniportal_font_size') || 'normal';
+      }
+
+      function applyFontSize(sizeKey) {
+        const pxValue = FONT_MAP[sizeKey] || sizeKey;
+        html.style.fontSize = pxValue;
+        html.setAttribute('data-font-size', sizeKey);
+        localStorage.setItem('cliniportal_font_size', sizeKey);
+
+        window.dispatchEvent(new CustomEvent('cliniportal-fontsize-change', { detail: { sizeKey, pxValue } }));
+      }
+
+      // Initialize on load
+      let currentTheme = getSavedTheme();
+      let currentFontSize = getSavedFontSize();
+      applyTheme(currentTheme);
+      applyFontSize(currentFontSize);
+
+      // Global API Export
+      window.CliniPortalTheme = {
+        getTheme: () => currentTheme,
+        setTheme: (t) => { currentTheme = t; applyTheme(t); },
+        toggleTheme: () => { currentTheme = currentTheme === 'dark' ? 'light' : 'dark'; applyTheme(currentTheme); },
+        getFontSize: () => currentFontSize,
+        setFontSize: (s) => { currentFontSize = s; applyFontSize(s); }
+      };
+
+      // Global theme toggle button listener
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('#theme-toggle-btn, #themeToggleBtn, .theme-toggle-trigger');
+        if (btn) {
+          e.preventDefault();
+          window.CliniPortalTheme.toggleTheme();
+        }
       });
 
+      // Storage event listener for cross-tab / iframe sync
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'cliniportal_theme' && e.newValue) {
+          applyTheme(e.newValue);
+        }
+        if (e.key === 'cliniportal_font_size' && e.newValue) {
+          applyFontSize(e.newValue);
+        }
+      });
+    })();
+    (function() {
       // --- Horizontal Subnav Bar & Active item scroll ---
       const sidebar   = document.getElementById('appSidebar');
       const arrowBtn  = document.getElementById('sidebar-toggle-arrow');
@@ -467,6 +537,12 @@
       const notePopupBtn = document.createElement('button');
       notePopupBtn.className = 'personal-note-popup-btn';
       notePopupBtn.innerHTML = '<i class="fa-solid fa-highlighter"></i> Ghi chú';
+      notePopupBtn.className = 'personal-note-popup-btn';
+      notePopupBtn.innerHTML = `
+        <button id="btnKsNote" style="background:none; border:none; color:white; font-weight:700; font-size:0.78rem; cursor:pointer; padding:0 4px;"><i class="fa-solid fa-pen"></i> Ghi chú</button>
+        <span style="opacity:0.5;">|</span>
+        <button id="btnKsFlashcard" style="background:none; border:none; color:#fef08a; font-weight:700; font-size:0.78rem; cursor:pointer; padding:0 4px;"><i class="fa-solid fa-bolt"></i> Flashcard</button>
+      `;
       notePopupBtn.style.cssText = `
         position: absolute;
         display: none;
@@ -475,12 +551,13 @@
         color: white;
         border: none;
         border-radius: 100px;
-        padding: 6px 14px;
+        padding: 5px 12px;
         font-size: 0.8rem;
-        font-weight: 700;
         cursor: pointer;
         box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
         transition: transform 0.2s;
+        align-items: center;
+        gap: 6px;
       `;
       document.body.appendChild(notePopupBtn);
 
@@ -498,14 +575,15 @@
           const rect = range.getBoundingClientRect();
 
           notePopupBtn.style.top = `${rect.top + window.scrollY - 40}px`;
-          notePopupBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 40}px`;
-          notePopupBtn.style.display = 'block';
+          notePopupBtn.style.left = `${rect.left + window.scrollX + (rect.width / 2) - 60}px`;
+          notePopupBtn.style.display = 'inline-flex';
         } else {
           notePopupBtn.style.display = 'none';
         }
       });
 
-      notePopupBtn.addEventListener('click', () => {
+      document.getElementById('btnKsNote')?.addEventListener('click', (e) => {
+        e.stopPropagation();
         if (!currentSelectedText) return;
 
         const userNote = prompt(`Ghi chú cho đoạn văn bản:\n"${currentSelectedText.slice(0, 60)}..."\n\nNhập nội dung ghi chú cá nhân của bạn:`);
@@ -525,6 +603,44 @@
           } catch(err) {
             console.error('Lỗi khi lưu ghi chú:', err);
           }
+        }
+
+        notePopupBtn.style.display = 'none';
+        window.getSelection()?.removeAllRanges();
+      });
+
+      document.getElementById('btnKsFlashcard')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!currentSelectedText) return;
+
+        const cleanText = currentSelectedText.slice(0, 1000).trim();
+
+        try {
+          const cards = JSON.parse(localStorage.getItem('cliniportal_flashcards') || '[]');
+          
+          const isDuplicate = cards.some(c => c.back === cleanText);
+          if (isDuplicate) {
+            alert('⚠️ Thẻ Flashcard với nội dung này đã tồn tại!');
+            notePopupBtn.style.display = 'none';
+            window.getSelection()?.removeAllRanges();
+            return;
+          }
+
+          cards.unshift({
+            id: 'fc_' + Date.now(),
+            front: document.title ? document.title.replace(' – CliniPortal', '') : 'Thẻ Tri Thức',
+            back: cleanText,
+            url: window.location.href,
+            createdAt: new Date().toLocaleString('vi-VN')
+          });
+
+          if (cards.length > 200) cards.pop();
+
+          localStorage.setItem('cliniportal_flashcards', JSON.stringify(cards));
+          alert('⚡ Đã lưu thẻ Flashcard vào DocSpace!');
+        } catch(err) {
+          console.error('Lỗi khi lưu Flashcard:', err);
+          alert('❌ Không thể lưu Flashcard (Bộ nhớ trình duyệt đã đầy).');
         }
 
         notePopupBtn.style.display = 'none';

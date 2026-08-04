@@ -129,6 +129,7 @@ export interface CaseRecord {
   date: string;
   context: CaseContext;  // Bối cảnh gặp ca
   chiefComplaint: string;
+  objective?: string;    // Khám lâm sàng & Cận lâm sàng (Vitals / Labs)
   icd10Code?: string;
   icd10Label?: string;
   diagnosisText?: string; // Phase 6: Chuỗi chẩn đoán tự do

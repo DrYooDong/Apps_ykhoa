@@ -422,6 +422,10 @@ class MedicalDrawEngine {
                 </button>
             ` : '';
 
+            if (node.pathoId) {
+                nodeEl.setAttribute('data-patho-id', node.pathoId);
+            }
+
             nodeEl.innerHTML = `
                 ${badgeHtml}
                 <div class="med-node-header">
@@ -445,6 +449,10 @@ class MedicalDrawEngine {
 
             this.nodesLayer.appendChild(nodeEl);
         });
+
+        if (window.PathoBridge && typeof window.PathoBridge.initFlowchartNodes === 'function') {
+            window.PathoBridge.initFlowchartNodes();
+        }
     }
 
     /**

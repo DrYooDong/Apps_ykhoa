@@ -384,16 +384,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderCriteria(res) {
-    if (!elDiagnosticCriteriaBox) return;
-    const warningsHTML = res.warnings.length > 0 ? `<div style="margin-top:0.5rem; padding:0.6rem; background:rgba(239,68,68,0.1); border-left:3px solid #ef4444; border-radius:6px;"><ul style="margin:0; padding-left:1.1rem; font-size:0.8rem;">${res.warnings.map(w=>`<li style="margin-bottom:0.3rem;">${w}</li>`).join('')}</ul></div>` : '';
+    if (!elDiagnosticCriteriaBox || !res) return;
+    const warningsHTML = (res.warnings && res.warnings.length > 0) ? `<div style="margin-top:0.5rem; padding:0.6rem; background:rgba(239,68,68,0.1); border-left:3px solid #ef4444; border-radius:6px;"><ul style="margin:0; padding-left:1.1rem; font-size:0.8rem;">${res.warnings.map(w=>`<li style="margin-bottom:0.3rem;">${w}</li>`).join('')}</ul></div>` : '';
 
-    const urineClInfo = ABG_CRITERIA.getUrineClCriteria(elUrineClNum ? elUrineClNum.value : null);
+    const urineClInfo = (typeof ABG_CRITERIA !== 'undefined' && typeof ABG_CRITERIA.getUrineClCriteria === 'function')
+      ? ABG_CRITERIA.getUrineClCriteria(elUrineClNum ? elUrineClNum.value : null)
+      : { type: 'Chưa nhập Chloride niệu', advice: 'Cần thiết trong phân loại Kiềm chuyển hóa đáp ứng Chloride.' };
+
+    const pathoMap = {
+      'Toan chuyển hóa': '<strong>Sinh lý bệnh Toan chuyển hóa:</strong> Tích tụ acid cố định (Lactic acidosis, DKA, Uremia) làm tiêu tốn hệ đệm HCO₃⁻, hoặc mất HCO₃⁻ qua đường tiêu hóa/thận. <em>Cơ chế bù trừ:</em> Phổi tăng thông khí thải CO₂ (Kiểu thở Kussmaul).',
+      'Kiềm chuyển hóa': '<strong>Sinh lý bệnh Kiềm chuyển hóa:</strong> Mất H⁺ qua nôn/dẫn lưu dạ dày hoặc tái hấp thu HCO₃⁻ quá mức tại thận (giảm thể tích/hạ Kali). <em>Cơ chế bù trừ:</em> Giảm thông khí phế nang giữ CO₂.',
+      'Toan hô hấp': '<strong>Sinh lý bệnh Toan hô hấp:</strong> Giảm thông khí phế nang gây tích lũy PaCO₂ (> 45 mmHg) do ức chế trung khu hô hấp hoặc bệnh phổi tắc nghẽn. <em>Cơ chế bù trừ:</em> Thận tăng tái hấp thu HCO₃⁻ (cần 3-5 ngày đối với dạng mạn).',
+      'Kiềm hô hấp': '<strong>Sinh lý bệnh Kiềm hô hấp:</strong> Tăng thông khí phế nang thải CO₂ quá mức (PaCO₂ < 35 mmHg) do sốt, đau, lo âu hoặc thiếu oxy máu. <em>Cơ chế bù trừ:</em> Thận tăng đào thải HCO₃⁻ vào nước tiểu.'
+    };
+
+    let primary = res.primaryDisorder || '';
+    let conclusionsStr = (res.conclusions || []).join(' ');
+    let pathoText = '';
+
+    // Check for mixed disorders
+    if (conclusionsStr.includes('Toan') && conclusionsStr.includes('Kiềm')) {
+      pathoText = '<strong>🚨 Rối loạn Kiềm - Toan Hỗn hợpPhức tạp:</strong> Tồn tại song song cả yếu tố làm tăng và giảm pH (Ví dụ: Toan chuyển hóa + Kiềm hô hấp trong Ngộ độc Salicylate hoặc Sốc nhiễm khuẩn). Cần phối hợp Anion Gap và Delta Ratio để phát hiện rối loạn thứ 3.';
+    } else {
+      let pathoKey = Object.keys(pathoMap).find(k => primary.includes(k) || conclusionsStr.includes(k));
+      pathoText = pathoKey ? pathoMap[pathoKey] : 'Chưa ghi nhận rối loạn kiềm toan nguyên phát rõ rệt.';
+    }
+
+    // Bicarbonate Protocol Calculation
+    let bicarbCardHTML = '';
+    if (res.bicarbDeficit && res.bicarbDeficit > 0) {
+      const wt = elWeightNum ? (parseFloat(elWeightNum.value) || 60) : 60;
+      const bicarbVolumeMl = res.bicarbDeficit.toFixed(0);
+      const halfVolume = (bicarbVolumeMl / 2).toFixed(0);
+
+      bicarbCardHTML = `
+        <div style="margin-top:0.8rem; padding:0.6rem 0.8rem; background:rgba(234,179,8,0.1); border-left:3px solid #d97706; border-radius:6px;">
+          <div style="font-weight:700; color:#d97706; font-size:0.85rem; margin-bottom:4px;">
+            <i class="fa-solid fa-vial"></i> Phác Đồ Bù Bicarbonate 8.4% (Thiếu hụt: ${res.bicarbDeficit.toFixed(1)} mEq)
+          </div>
+          <div style="font-size:0.8rem; color:var(--color-text);">
+            • Thể tích <strong>NaHCO₃ 8.4% (1 mEq/mL)</strong> cần truyền: <strong style="color:#d97706;">${bicarbVolumeMl} mL</strong> (dựa trên Cân nặng ${wt} kg)<br>
+            • <strong>Cách dùng khuyến cáo:</strong> Truyền tĩnh mạch chậm <strong>${halfVolume} mL (50%)</strong> trong 1 - 2 giờ đầu. 50% còn lại (${halfVolume} mL) truyền trong 4 - 8 giờ tiếp theo sau khi đánh giá lại ABG.
+          </div>
+        </div>
+      `;
+    }
 
     elDiagnosticCriteriaBox.innerHTML = `
       <div style="font-size:0.85rem; line-height:1.5;">
         <h4 style="font-size:0.9rem; font-weight:800; color:var(--color-primary); margin-bottom:0.4rem;">💡 Tiêu Chuẩn & Cảnh Báo Lâm Sàng</h4>
         <p style="margin-bottom:0.5rem;"><strong>Kiểm định Chloride Niệu:</strong> ${urineClInfo.type}<br><small style="color:var(--color-text-muted);">${urineClInfo.advice}</small></p>
         ${warningsHTML}
+
+        <div style="margin-top:0.8rem; padding:0.6rem 0.8rem; background:rgba(2,132,199,0.08); border-left:3px solid var(--color-primary, #0284c7); border-radius:6px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <div style="font-weight:700; color:var(--color-primary, #0284c7); font-size:0.85rem;">
+              <i class="fa-solid fa-brain"></i> Giải Thích Cơ Chế Sinh Lý Bệnh (Pathophysiology Bridge)
+            </div>
+            <a href="../../Tiếp cận/" style="font-size:0.75rem; font-weight:700; color:var(--color-primary); text-decoration:none;" target="_blank"><i class="fa-solid fa-route"></i> Phác đồ Tiếp cận ➔</a>
+          </div>
+          <div style="font-size:0.8rem; color:var(--color-text);">${pathoText}</div>
+        </div>
+
+        ${bicarbCardHTML}
       </div>
     `;
   }
@@ -628,5 +681,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render initial scenario
   renderScenariosList();
   loadScenario('sc_dka_severe');
+
+  // Listen for global theme changes
+  window.addEventListener('cliniportal-theme-change', () => {
+    if (davenportNomogram && typeof davenportNomogram.draw === 'function') {
+      davenportNomogram.draw();
+    }
+  });
 });
 

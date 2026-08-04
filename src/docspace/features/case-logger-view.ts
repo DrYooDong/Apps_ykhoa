@@ -15,6 +15,7 @@ import { drugPicker } from './drug-picker';
 import { resourcePicker } from './resource-picker';
 import { icdPicker } from './icd-picker';
 import { calculatorPicker } from './calculator-picker';
+import { abgPicker } from './abg-picker';
 
 const CONTEXT_OPTIONS: { value: CaseContext; label: string; icon: string }[] = [
   { value: 'duty',    label: 'Ca trực',      icon: 'fa-solid fa-moon' },
@@ -51,10 +52,16 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
             
             <div class="dsp-list-item-title" style="margin-bottom: 0.5rem; font-size: 1.05rem;">${escapeHtml(c.chiefComplaint)}</div>
             
+            ${c.objective ? `
+              <div class="dsp-text-sm dsp-text-muted" style="margin-bottom: 0.5rem; background: var(--color-bg); padding: 0.5rem 0.75rem; border-radius: 6px;">
+                <i class="fa-solid fa-notes-medical" style="color:var(--color-primary); margin-right:4px;"></i> <strong>Khám & CLS:</strong> ${escapeHtml(c.objective)}
+              </div>
+            ` : ''}
+            
             ${(c.diagnosisText || c.icd10Label) ? `
-              <div style="margin-bottom: 0.5rem; background: #f8fafc; padding: 0.5rem 0.75rem; border-left: 3px solid var(--color-primary); border-radius: 4px; font-size: 0.9rem;">
-                <div style="font-weight: 600; color: var(--color-text); margin-bottom: 2px;">Chẩn đoán xác định:</div>
-                <div style="color: #334155;">${escapeHtml(c.diagnosisText || (c.icd10Label + (c.icd10Code ? ` (${c.icd10Code})` : '')))}</div>
+              <div style="margin-bottom: 0.5rem; background: var(--color-surface-offset); padding: 0.65rem 0.85rem; border-left: 3px solid var(--color-primary); border-radius: 6px; font-size: 0.9rem;">
+                <div style="font-weight: 700; color: var(--color-primary); margin-bottom: 2px;">Chẩn đoán xác định:</div>
+                <div style="color: var(--color-text);">${escapeHtml(c.diagnosisText || (c.icd10Label + (c.icd10Code ? ` (${c.icd10Code})` : '')))}</div>
               </div>
             ` : ''}
 
@@ -117,16 +124,32 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
                   </div>
 
                   <div class="dsp-form-group">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                      <label class="dsp-label" for="dspCaseObjective" style="margin:0;">Khám lâm sàng & Cận lâm sàng (Objective)</label>
+                      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnCalculateVitals" style="color:var(--color-primary); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;" title="Tự động trích xuất HA, Mạch, Nhịp thở, Creatinine để tính chỉ số">
+                          <i class="fa-solid fa-heart-pulse"></i> Tính từ Sinh hiệu
+                        </button>
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnAbgCase" style="color:var(--color-danger); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;" title="Mở Side-Panel phân tích Khí máu động mạch">
+                          <i class="fa-solid fa-lungs"></i> Phân tích Khí máu (ABG)
+                        </button>
+                      </div>
+                    </div>
+                    <textarea class="dsp-textarea" id="dspCaseObjective"
+                      placeholder="Ghi nhận sinh hiệu (HA: 120/80, Mạch: 90, SpO2: 98%), kết quả xét nghiệm (Creatinine: 1.2, pH: 7.25, pCO2: 30, HCO3: 14)..." rows="3"></textarea>
+                  </div>
+
+                  <div class="dsp-form-group">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
                       <label class="dsp-label" for="dspCaseDiagnosis" style="margin:0;">Chẩn đoán xác định</label>
-                      <div style="display:flex; gap:4px;">
-                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdCase" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdCase" style="color:var(--color-primary); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;">
                           <i class="fa-solid fa-list-ul"></i> + ICD-10
                         </button>
-                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreCase" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreCase" style="color:var(--color-primary); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;">
                           <i class="fa-solid fa-calculator"></i> + Thang điểm
                         </button>
-                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBMCase" style="padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBMCase" style="padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;">
                           <i class="fa-solid fa-book-medical"></i> Tra cứu EBM
                         </button>
                       </div>
@@ -136,9 +159,9 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
                   </div>
 
                   <div class="dsp-form-group">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
                       <label class="dsp-label" for="dspCaseMgmt" style="margin:0;">Xử trí đã làm <span class="dsp-required">*</span></label>
-                      <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeCase" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                      <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeCase" style="color:var(--color-primary); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;">
                         <i class="fa-solid fa-capsules"></i> + Kê đơn
                       </button>
                     </div>
@@ -162,9 +185,9 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
                   </div>
 
                   <div class="dsp-form-group">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
                       <label class="dsp-label" for="dspCaseLink" style="margin:0;">Link tham khảo (tùy chọn)</label>
-                      <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnLinkApproachCase" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                      <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnLinkApproachCase" style="color:var(--color-primary); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;">
                         <i class="fa-solid fa-diagram-project"></i> + Gắn Lưu đồ
                       </button>
                     </div>
@@ -237,6 +260,7 @@ export function mountCaseLoggerController(profileId: string): void {
     const date = (document.getElementById('dspCaseDate') as HTMLInputElement).value;
     const context = (document.getElementById('dspCaseContext') as HTMLSelectElement).value as CaseContext;
     const chiefComplaint = (document.getElementById('dspCaseComplaint') as HTMLInputElement).value.trim();
+    const objective = (document.getElementById('dspCaseObjective') as HTMLTextAreaElement)?.value.trim() || '';
     const diagnosisText = (document.getElementById('dspCaseDiagnosis') as HTMLTextAreaElement).value.trim();
     const management = (document.getElementById('dspCaseMgmt') as HTMLTextAreaElement).value.trim();
     const outcome = (document.getElementById('dspCaseOutcome') as HTMLInputElement).value.trim();
@@ -249,7 +273,7 @@ export function mountCaseLoggerController(profileId: string): void {
     }
 
     await saveCase(profileId, {
-      date, context, chiefComplaint, diagnosisText,
+      date, context, chiefComplaint, objective, diagnosisText,
       management, outcome, lesson, relatedUrl,
     });
 
@@ -401,6 +425,82 @@ export function mountCaseLoggerController(profileId: string): void {
       window.location.hash = '#/docspace/cases';
     }
   });
+
+  // Tính từ Sinh Hiệu (Auto-Sync Vitals -> Calculators)
+  document.getElementById('btnCalculateVitals')?.addEventListener('click', () => {
+    const objText = (document.getElementById('dspCaseObjective') as HTMLTextAreaElement)?.value || '';
+    if (!objText.trim()) {
+      alert('Vui lòng nhập thông tin sinh hiệu hoặc xét nghiệm vào ô Khám lâm sàng & Cận lâm sàng trước.');
+      return;
+    }
+
+    const calculatedResults = parseVitalsAndCalculate(objText);
+    if (calculatedResults.length === 0) {
+      alert('Không tìm thấy chỉ số sinh hiệu phù hợp. Định dạng hỗ trợ ví dụ: "HA: 120/80", "Mạch: 90", "Creatinine: 1.2", "Thở: 24"');
+      return;
+    }
+
+    const diagTextarea = document.getElementById('dspCaseDiagnosis') as HTMLTextAreaElement;
+    if (diagTextarea) {
+      const textToAppend = `\n[Tự động tính toán từ Sinh hiệu]:\n- ${calculatedResults.join('\n- ')}\n`;
+      const startPos = diagTextarea.selectionStart;
+      const endPos = diagTextarea.selectionEnd;
+
+      diagTextarea.value = diagTextarea.value.substring(0, startPos)
+        + textToAppend
+        + diagTextarea.value.substring(endPos);
+
+      diagTextarea.focus();
+    }
+  });
+
+  // Phân tích Khí Máu (ABG Studio Side-Panel)
+  document.getElementById('btnAbgCase')?.addEventListener('click', () => {
+    const objText = (document.getElementById('dspCaseObjective') as HTMLTextAreaElement)?.value || '';
+    abgPicker.open('dspCaseDiagnosis', objText);
+  });
+}
+
+function parseVitalsAndCalculate(text: string): string[] {
+  const results: string[] = [];
+
+  // 1. Huyết áp trung bình (MAP)
+  const bpMatch = text.match(/(?:BP|HA|Huyết áp)\s*[:=]?\s*(\d{2,3})\s*[\/\\]\s*(\d{2,3})/i);
+  if (bpMatch) {
+    const sbp = parseFloat(bpMatch[1]);
+    const dbp = parseFloat(bpMatch[2]);
+    const map = dbp + (sbp - dbp) / 3;
+    results.push(`MAP (Huyết áp trung bình): ${map.toFixed(1)} mmHg (từ HA ${sbp}/${dbp})`);
+  }
+
+  // 2. qSOFA
+  const rrMatch = text.match(/(?:RR|Nhịp thở|Thở)\s*[:=]?\s*(\d{1,2})/i);
+  let qsofaScore = 0;
+  const qsofaDetails: string[] = [];
+  if (bpMatch && parseFloat(bpMatch[1]) <= 100) {
+    qsofaScore++;
+    qsofaDetails.push('HA tâm thu ≤ 100 mmHg');
+  }
+  if (rrMatch && parseFloat(rrMatch[1]) >= 22) {
+    qsofaScore++;
+    qsofaDetails.push('Nhịp thở ≥ 22 lần/phút');
+  }
+  if (/tri giác|gcs\s*<\s*15|lơ mơ|mê|lú lẫn/i.test(text)) {
+    qsofaScore++;
+    qsofaDetails.push('Thay đổi tri giác');
+  }
+  if (qsofaDetails.length > 0) {
+    results.push(`qSOFA: ${qsofaScore}/3 điểm (${qsofaDetails.join(', ')}) → ${qsofaScore >= 2 ? '⚠️ NGUY CƠ SEPSIS CAO' : 'Nguy cơ Sepsis thấp'}`);
+  }
+
+  // 3. Creatinine & Gợi ý eGFR
+  const crMatch = text.match(/(?:Creatinine|Cr)\s*[:=]?\s*(\d+[\.,]?\d*)/i);
+  if (crMatch) {
+    const cr = parseFloat(crMatch[1].replace(',', '.'));
+    results.push(`Creatinine máu: ${cr} mg/dL (Cần thêm thông số tuổi/cân nặng để tính eGFR chính xác)`);
+  }
+
+  return results;
 }
 
 function escapeHtml(str: string): string {
@@ -410,3 +510,4 @@ function escapeHtml(str: string): string {
 function truncate(str: string, len: number): string {
   return str.length > len ? str.slice(0, len) + '…' : str;
 }
+

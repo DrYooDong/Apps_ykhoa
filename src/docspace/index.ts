@@ -26,6 +26,7 @@ import { renderProtocolView, mountProtocolController } from './features/protocol
 import { renderLivingProtocolView, mountLivingProtocolController } from './features/living-protocol-view';
 import { renderSimulationView, mountSimulationController } from './features/simulation-view';
 import { renderSyncModal, mountSyncController } from './features/p2p-sync-view';
+import { renderDependencyMapView, mountDependencyMapController } from './features/dependency-map-view';
 import { initGlobalQuickSaveHook } from './features/quick-save';
 import { renderAISettings } from './features/ai-settings-view';
 import { renderSyncSettings } from './features/sync-settings-view';
@@ -262,6 +263,15 @@ export function initDocSpaceRoutes(): void {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
       mountDocSpace(await renderProtocolView(pid, editId));
       mountProtocolController(pid);
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // Dependency Map
+  router.register('/docspace/dependency-map', 'DocSpace — Bản đồ Phụ thuộc (Core & Content)', () => {
+    requireProfile(async (pid) => {
+      mountDocSpace(await renderDependencyMapView(pid));
+      mountDependencyMapController(pid);
       mountSidebarFooterControls(pid);
     });
   });

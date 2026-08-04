@@ -33,16 +33,16 @@ export class DrugPicker {
     this.onSelectCallback = onSelectCallback;
     
     this.modalEl.innerHTML = `
-      <div style="background:var(--color-surface, #fff); width:100%; max-width:700px; max-height:85vh; border-radius:12px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
-        <div style="padding:16px 20px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg);">
-          <h3 style="margin:0; font-size:18px; color:var(--color-primary);"><i class="fa-solid fa-capsules"></i> Kê đơn (Dược lý)</h3>
-          <button id="btnCloseDrugPicker" style="background:none; border:none; font-size:24px; cursor:pointer; color:var(--color-text-muted);">&times;</button>
+      <div style="background:var(--color-surface); color:var(--color-text); width:100%; max-width:700px; max-height:85vh; border-radius:16px; display:flex; flex-direction:column; overflow:hidden; box-shadow:var(--shadow-lg, 0 20px 50px rgba(0,0,0,0.3)); border:1px solid var(--color-border);">
+        <div style="padding:16px 20px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:var(--color-surface-offset);">
+          <h3 style="margin:0; font-size:18px; color:var(--color-primary); font-weight:800;"><i class="fa-solid fa-capsules"></i> Kê đơn (Dược lý)</h3>
+          <button id="btnCloseDrugPicker" class="dsp-icon-btn" style="font-size:24px; color:var(--color-text-muted);">&times;</button>
         </div>
         
-        <div style="padding:16px 20px; border-bottom:1px solid var(--color-border);">
+        <div style="padding:16px 20px; border-bottom:1px solid var(--color-border); background:var(--color-surface);">
           <div style="position:relative;">
-            <i class="fa-solid fa-search" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--color-text-muted);"></i>
-            <input type="text" id="dpSearchInput" class="dsp-input" placeholder="Gõ tên gốc, biệt dược hoặc nhóm thuốc (VD: Amoxicillin, Augmentin)..." style="width:100%; padding-left:36px;" />
+            <i class="fa-solid fa-search" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--color-text-muted); font-size:1.1rem;"></i>
+            <input type="text" id="dpSearchInput" class="dsp-input" placeholder="Gõ tên gốc, biệt dược hoặc nhóm thuốc (VD: Amoxicillin, Augmentin)..." style="width:100%; padding-left:46px; min-height:48px;" />
           </div>
         </div>
 
@@ -167,19 +167,19 @@ export class DrugPicker {
     const dosage = d.dosage?.standardAdult || '';
     
     return `
-      <div id="dp-item-${idx}" style="padding:16px 20px; border-bottom:1px solid var(--color-border); cursor:pointer; background:var(--color-surface); transition:background 0.2s;" onmouseover="this.style.background='var(--color-bg)'" onmouseout="this.style.background='var(--color-surface)'">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px;">
-          <h4 style="margin:0; font-size:15px; color:var(--color-primary); font-weight:700;">
+      <div id="dp-item-${idx}" style="padding:18px 20px; border-bottom:1px solid var(--color-border); cursor:pointer; background:var(--color-surface); transition:background 0.2s;" onmouseover="this.style.background='var(--color-surface-offset)'" onmouseout="this.style.background='var(--color-surface)'">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; gap:8px;">
+          <h4 style="margin:0; font-size:16px; color:var(--color-primary); font-weight:700;">
             ${d.name} ${brands ? `<span style="font-weight:normal; color:var(--color-text-muted); font-size:13px;">(${brands})</span>` : ''}
           </h4>
-          <span style="font-size:11px; font-weight:600; padding:2px 8px; border-radius:4px; background:#e0e7ff; color:#4338ca; white-space:nowrap;">
+          <span style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:6px; background:var(--color-surface-offset); color:var(--color-primary); border:1px solid var(--color-border); white-space:nowrap;">
             ${d.drugClass || d.category || 'Thuốc'}
           </span>
         </div>
         
         ${dosage ? `
-        <div style="font-size:13px; color:var(--color-text); display:flex; gap:6px; margin-top:8px;">
-          <i class="fa-solid fa-syringe" style="color:var(--color-text-muted); margin-top:2px;"></i>
+        <div style="font-size:14px; color:var(--color-text); display:flex; gap:8px; margin-top:8px; line-height:1.5;">
+          <i class="fa-solid fa-syringe" style="color:var(--color-primary); margin-top:3px;"></i>
           <span><strong>Liều người lớn:</strong> ${dosage}</span>
         </div>` : ''}
       </div>

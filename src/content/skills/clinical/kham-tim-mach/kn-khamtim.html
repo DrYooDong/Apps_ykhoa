@@ -32,6 +32,8 @@
   </style>
   <link rel='stylesheet' href="../../../../../css/components/clinical-skill.css">
   <link rel='stylesheet' href="../../../../../css/components/flowchart.css">
+  <script src="../../../pathophysiology/js/components/physio-components.js" defer></script>
+  <script src="../../../../../js/components/skill-components.js" defer></script>
 </head>
 
 <body>
@@ -169,6 +171,8 @@
               Sự co bóp của tim được điều hòa bởi các tế bào chuyên biệt, trong đó nút xoang nhĩ đóng vai trò chủ nhịp, đảm bảo sự co bóp của tâm nhĩ hoàn tất trước khi quá trình co tâm thất (tâm thu) bắt đầu. Vào cuối kỳ tâm thu, tâm thất giãn ra, van nhĩ thất mở để máu từ tâm nhĩ đổ về (tâm trương).
             </li>
           </ul>
+          <physio-concept concept-id="action_potential"></physio-concept>
+          <physio-concept concept-id="jvp_mechanics"></physio-concept>
         </div>
       </section>
       <section class='tab' id='hx'>
@@ -309,7 +313,7 @@
               </li>
               <li>
                 <input type='checkbox'>
-                <span><strong>2. Đánh giá Áp lực tĩnh mạch cảnh (<span class="term-hl">JVP</span>):</strong> Đặt bệnh nhân nằm ngửa nghiêng 45 độ, đầu tựa gối và xoay nhẹ sang trái. Áp lực tĩnh mạch cảnh phản ánh áp lực nhĩ phải (bình thường &le;4 cm so với góc ức).</span>
+                <span><strong>2. Đánh giá Áp lực tĩnh mạch cảnh (<span class="term-hl">JVP</span>):</strong> <physio-explain sign="jvp" label="Cơ chế JVP"></physio-explain> Đặt bệnh nhân nằm ngửa nghiêng 45 độ, đầu tựa gối và xoay nhẹ sang trái. Áp lực tĩnh mạch cảnh phản ánh áp lực nhĩ phải (bình thường &le;4 cm so với góc ức). <physio-explain sign="hepatojugular-reflux" label="Phản hồi Gan-TMC"></physio-explain></span>
               </li>
               <li>
                 <input type='checkbox'>
@@ -334,9 +338,9 @@
               <h4>💡 Dấu hiệu lâm sàng đặc biệt khi khám tim</h4>
               <p><strong>Mạch nảy mạnh chìm sâu (<span class="term-hl">Collapsing pulse</span>):</strong> Gặp trong hở van ĐMC. Phát hiện bằng cách đặt gốc ngón tay lên mạch quay và nâng thẳng đứng cánh tay bệnh nhân lên cao.</p>
               <p style='margin-top: 4px;'><strong>Mạch chậm nảy yếu (<span class="term-hl">Slow-rising pulse</span>):</strong> Dấu hiệu đặc trưng gợi ý hẹp van ĐMC.</p>
-              <p style='margin-top: 4px;'><strong>Mạch nghịch thường (<span class="term-hl">Pulsus paradoxus</span>):</strong> Huyết áp tâm thu giảm &gt;10 mmHg trong thì hít vào, gặp trong ép tim cấp (<span class="term-hl">Cardiac tamponade</span>).</p>
+              <p style='margin-top: 4px;'><strong>Mạch nghịch thường (<span class="term-hl">Pulsus paradoxus</span>):</strong> <physio-explain sign="pulsus-paradoxus" label="Cơ chế Mạch nghịch"></physio-explain> Huyết áp tâm thu giảm &gt;10 mmHg trong thì hít vào, gặp trong ép tim cấp (<span class="term-hl">Cardiac tamponade</span>).</p>
               <p style='margin-top: 4px;'><strong>Sóng 'a' <span class="term-hl-secondary">JVP</span> biến mất:</strong> Gặp trong Rung nhĩ do mất hoạt động co bóp cơ học của tâm nhĩ.</p>
-              <p style='margin-top: 4px;'><strong>Tiếng T3, T4:</strong> Tiếng T3 sinh lý ở trẻ em nhưng là bệnh lý (<span class="term-hl">suy tim</span>) ở người &gt;40 tuổi; tiếng T4 luôn mang ý nghĩa bệnh lý (phì đại/giảm độ đàn hồi tâm thất).</p>
+              <p style='margin-top: 4px;'><strong>Tiếng T3, T4:</strong> <physio-explain sign="t3-gallop" label="Cơ chế T3"></physio-explain> Tiếng T3 sinh lý ở trẻ em nhưng là bệnh lý (<span class="term-hl">suy tim</span>) ở người &gt;40 tuổi; tiếng T4 luôn mang ý nghĩa bệnh lý (phì đại/giảm độ đàn hồi tâm thất).</p>
             </div>
           </div>
         </div>
@@ -351,7 +355,7 @@
           <div class='card'>
             <h2>Các dấu hiệu lâm sàng định hướng</h2>
             <ul>
-              <li><strong>Dấu gợi ý quá tải hoặc suy tim:</strong> <span class="term-hl-secondary">JVP</span> tăng, ran nổ đáy phổi, phù ngoại biên. Tiếng T3 ở người trên 40 tuổi thường mang ý nghĩa bệnh lý. Mỏm tim lệch trái và xuống dưới gợi ý giãn thất trái.</li>
+              <li><strong>Dấu gợi ý quá tải hoặc suy tim:</strong> <span class="term-hl-secondary">JVP</span> tăng <physio-explain sign="jvp" label="SLB JVP"></physio-explain>, ran nổ đáy phổi <physio-explain sign="crackles" label="SLB Rán nổ"></physio-explain>, phù ngoại biên <physio-explain sign="peripheral-edema" label="SLB Phù"></physio-explain>. Tiếng T3 ở người trên 40 tuổi thường mang ý nghĩa bệnh lý. Mỏm tim lệch trái và xuống dưới gợi ý giãn thất trái.</li>
               <li><strong>Dấu gợi ý bệnh van tim:</strong>
                 <ul>
                   <li><em>Hẹp van động mạch chủ:</em> Mạch nảy chậm và yếu (<span class="term-hl">slow-rising pulse</span>), T2 mờ, âm thổi tâm thu tống máu lan lên cổ.</li>

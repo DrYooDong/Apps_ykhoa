@@ -211,6 +211,10 @@ class ClinicalInfographicRenderer {
     }
 
     buildDoseCard(doseData) {
+        if (window.PharmaBridge && typeof window.PharmaBridge.renderDoseCard === 'function') {
+            return window.PharmaBridge.renderDoseCard(doseData);
+        }
+
         const card = document.createElement('div');
         card.className = 'dose-table-card';
         card.id = 'dose-table-card-section';

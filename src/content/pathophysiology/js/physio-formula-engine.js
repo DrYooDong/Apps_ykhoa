@@ -45,7 +45,7 @@ window.PhysioFormulaEngine = (function () {
                 <h3 style="color: var(--color-primary); margin-top: 0.5rem; margin-bottom: 0.25rem;">${f.name}</h3>
                 <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.75rem;">${f.subtitle}</p>
 
-                <div class="formula-expr" style="background: rgba(2,132,199,0.06); padding: 0.75rem; border-radius: 8px; text-align: center; margin-bottom: 1rem;">
+                <div class="formula-expr" style="background: var(--color-primary-hl); padding: 0.75rem; border-radius: 8px; text-align: center; margin-bottom: 1rem;">
                     $$\\displaystyle ${f.latex}$$
                 </div>
 

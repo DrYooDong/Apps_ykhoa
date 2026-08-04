@@ -34,7 +34,7 @@ window.PhysioPathwayViewer = (function () {
                         <div class="physio-step-card" style="border-left: 4px solid ${s.color || 'var(--color-primary)'};">
                             <span class="physio-step-title" style="color:${s.color || 'var(--color-primary)'}">Bước ${s.step}: ${s.title}</span>
                             <p style="margin:0.25rem 0 0.5rem 0; color:var(--color-text);">${s.desc}</p>
-                            ${s.ion_flux ? `<span style="font-size:0.8rem; background:rgba(2,132,199,0.1); padding:2px 8px; border-radius:4px; color:var(--color-primary);">⚡ Dòng ion/Chất: ${s.ion_flux}</span>` : ''}
+                            ${s.ion_flux ? `<span style="font-size:0.8rem; background:var(--color-primary-hl); padding:2px 8px; border-radius:4px; color:var(--color-primary);">⚡ Dòng ion/Chất: ${s.ion_flux}</span>` : ''}
                         </div>
                     </li>
                 `).join('')}

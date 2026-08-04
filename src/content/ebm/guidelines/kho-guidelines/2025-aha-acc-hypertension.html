@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn AHA/ACC 2025 về Tăng huyết áp ở người trưởng thành: Thang điểm PREVENT, chỉ định RDN, phác đồ SPC, và 5 công cụ CDSS tính toán lâm sàng.">
+  <title>AHA/ACC 2025 về Tăng Huyết Áp – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+      --border: #475569; --border-light: #334155;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.15); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.15); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.15); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.15); --blue-light: rgba(191, 219, 254, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(15, 23, 42, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .badge-red { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #1e3a8a 0%, #0f6fb4 50%, #0d9488 100%); color: #fff; padding: 3.5rem 1.5rem 5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #93c5fd; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #93c5fd, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.7em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 740px; margin-bottom: 2rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.82; }
+    .hero-meta-item { display: flex; align-items: center; gap: 5px; }
+
+    /* PILLARS NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0.75rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--red); }
+
+    /* STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .stat-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1rem 1.25rem; text-align: center; }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top: 0.25rem; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; }
+    .sec-hdr { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.2rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox strong { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; margin-bottom: 0.3rem; }
+
+    /* CDSS TOOL STYLING */
+    .cdss-box { background: var(--surface-2); border: 2px solid var(--accent); border-radius: 14px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 4px 16px rgba(15, 111, 180, 0.08); }
+    .cdss-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .cdss-desc { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .cdss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
+    .cdss-item { background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: background var(--tr); }
+    .cdss-item:hover { background: var(--blue-bg); }
+    .cdss-item label { font-size: 0.82rem; font-weight: 600; color: var(--text); cursor: pointer; flex: 1; }
+    .cdss-result { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-top: 1rem; }
+    .cdss-score { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
+    .cdss-recommendation { font-size: 0.85rem; line-height: 1.6; }
+
+    /* INPUT CONTROLS */
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .form-control { width: 100%; padding: 0.55rem 0.85rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+    .form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(15, 111, 180, 0.15); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0; }
+    .med-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .med-table th { background: var(--surface-2); padding: 0.75rem 0.9rem; text-align: left; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); border-bottom: 2px solid var(--border-light); }
+    .med-table td { padding: 0.85rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .med-table tbody tr:hover td { background: var(--surface-2); }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { background: #0c5990; color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .cdss-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">AHA/ACC 2025 Tăng Huyết Áp (Adult HTN)</div>
+    <div class="topnav-badges">
+      <span class="badge badge-green">AHA/ACC 2025</span>
+      <span class="badge badge-blue">PREVENT Score</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🔬 Tim Mạch & Tăng Huyết Áp • AHA / ACC / AMA 2025</div>
+      <h1 class="hero-title">
+        <span>2025 AHA/ACC Guideline for High Blood Pressure in Adults</span>
+        Hướng Dẫn 2025 của AHA/ACC/AMA về Quản Lý Tăng Huyết Áp Ở Người Trưởng Thành
+      </h1>
+      <p class="hero-subtitle">
+        Khuyến cáo mới chính thức <strong>bãi bỏ và thay thế hoàn toàn Hướng dẫn 2017</strong>. Đưa vào sử dụng phương trình nguy cơ <strong>PREVENT</strong> thay thế PCEs, ưu tiên viên phối hợp <strong>Single-Pill Combination (SPC)</strong>, đồng thuận chỉ định <strong>Triệt thần kinh giao cảm thận (RDN)</strong> và tái định nghĩa Cấp cứu Tăng Huyết Áp.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📅 Xuất bản: 2025 (Hypertension)</div>
+        <div class="hero-meta-item">🩺 Đối tượng: Tim mạch, Nội khoa, Y học gia đình, Cấp cứu</div>
+        <div class="hero-meta-item">🔗 Nguồn: AHA / ACC Joint Committee</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-class" class="pillar-tab p-1">📌 [1] Phân Loại & Đo HA</a>
+      <a href="#sec-prevent" class="pillar-tab p-2">🛡️ [2] Thang Điểm PREVENT & Khởi Trị</a>
+      <a href="#sec-drugs" class="pillar-tab p-3">💊 [3] Phác Đồ Thuốc & Đích HA</a>
+      <a href="#sec-rdn" class="pillar-tab p-4">⚡ [4] HA Kháng Trị & RDN</a>
+      <a href="#sec-emergencies" class="pillar-tab p-5">🤰 [5] Thai Kỳ & Cấp Cứu</a>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">PREVENT ≥ 7.5%</div>
+        <div class="stat-lbl">Ngưỡng Nguy Cơ Tim Mạch Cao Mới</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">SPC</div>
+        <div class="stat-lbl">Ưu Tiên Viên Phối Hợp Liều Cố Định</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">RDN</div>
+        <div class="stat-lbl">Chỉ Định HA Kháng Trị Độ 2</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">Severe HTN</div>
+        <div class="stat-lbl">Bãi Bỏ Thuật Ngữ HTN Urgency</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: CLASSIFICATION & BP MEASUREMENT -->
+    <div class="sec-card" id="sec-class">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📌</span>
+        <h2 class="sec-title">1. Định Nghĩa, Phân Loại Huyết Áp & Quy Trình Đo Chuẩn Xác</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Phân Loại Huyết Áp Ở Người Trưởng Thành (AHA/ACC 2025 Table 4)</div>
+        <p style="font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem;">
+          Phân loại dựa trên trung bình của ít nhất 2 lần đo chuẩn xác trong 2 hoặc nhiều lần thăm khám khác nhau:
+        </p>
+
+        <div class="table-wrapper">
+          <table class="med-table">
+            <thead>
+              <tr>
+                <th>Phân Loại Huyết Áp</th>
+                <th>Huyết Áp Tâm Thu (SBP)</th>
+                <th>Toán Tử</th>
+                <th>Huyết Áp Tâm Trương (DBP)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Huyết áp Bình thường (Normal)</strong></td>
+                <td>&lt; 120 mm Hg</td>
+                <td>và</td>
+                <td>&lt; 80 mm Hg</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--blue);">Huyết áp Tăng nhẹ (Elevated)</strong></td>
+                <td>120 – 129 mm Hg</td>
+                <td>và</td>
+                <td>&lt; 80 mm Hg</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--orange);">Tăng Huyết Áp Độ 1 (Stage 1)</strong></td>
+                <td>130 – 139 mm Hg</td>
+                <td>hoặc</td>
+                <td>80 – 89 mm Hg</td>
+              </tr>
+              <tr>
+                <td><strong style="color: var(--red);">Tăng Huyết Áp Độ 2 (Stage 2)</strong></td>
+                <td>≥ 140 mm Hg</td>
+                <td>hoặc</td>
+                <td>≥ 90 mm Hg</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; font-style: italic;">
+          * Quy tắc phân loại: Nếu SBP và DBP nằm ở 2 phân loại khác nhau, cá nhân đó được xếp vào phân loại huyết áp cao hơn.
+        </div>
+
+        <!-- CDSS TOOL 1: BP CLASSIFIER -->
+        <div class="cdss-box">
+          <div class="cdss-title">
+            <span>🧮 CDSS TOOL 1: CÔNG CỤ PHÂN LOẠI HUYẾT ÁP NGƯỜI TRƯỞNG THÀNH (AHA/ACC 2025)</span>
+          </div>
+          <div class="cdss-desc">Nhập trị số SBP và DBP phòng khám để phân loại mức độ huyết áp:</div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="input-sbp">Huyết áp Tâm thu (SBP - mm Hg):</label>
+              <input type="number" id="input-sbp" class="form-control" value="135" min="70" max="260">
+            </div>
+            <div class="form-group">
+              <label for="input-dbp">Huyết áp Tâm trương (DBP - mm Hg):</label>
+              <input type="number" id="input-dbp" class="form-control" value="85" min="40" max="160">
+            </div>
+          </div>
+
+          <div class="cdss-result" id="bp-class-result">
+            <!-- Render dynamically -->
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Checklist 8 Bước Đo Huyết Áp Chuẩn Xác Tại Phòng Khám</div>
+        <ol style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.5rem;">
+          <li><strong>Chuẩn bị:</strong> Không dùng caffeine, tập thể dục hoặc hút thuốc 30 phút trước khi đo. Đảm bảo bàng quang rỗng.</li>
+          <li><strong>Thiết bị:</strong> Dùng máy đo tự động oscillometric đã được kiểm chứng (tra cứu tại <em>validatebp.org</em>).</li>
+          <li><strong>Bao quấn:</strong> Chọn kích cỡ phù hợp, quấn trên cánh tay trần (không quấn đè lên áo).</li>
+          <li><strong>Tư thế:</strong> Cánh tay đặt ngang mức tim, được nâng đỡ vững chắc.</li>
+          <li><strong>Nghỉ ngơi:</strong> Thư giãn ngồi tựa lưng trên ghế, chân đặt bằng phẳng trên sàn trong <strong>> 5 phút</strong>.</li>
+          <li><strong>Giao tiếp:</strong> Tuyệt đối không nói chuyện hoặc dùng điện thoại trong suốt thời gian nghỉ và đo.</li>
+          <li><strong>Môi trường:</strong> Phòng đo yên tĩnh, nhiệt độ dễ chịu.</li>
+          <li><strong>Thực hiện:</strong> Đo ít nhất 2 lần cách nhau ≥ 1 phút, lấy trị số trung bình.</li>
+        </ol>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Cảnh Báo Về Thiết Bị Đo Không Băng Quấn (Cuffless Devices)</strong><br>
+            AHA/ACC 2025 <strong>KHÔNG khuyến cáo</strong> sử dụng đồng hồ thông minh hoặc thiết bị không băng quấn để chẩn đoán hoặc quản lý tăng huyết áp (<span class="badge badge-red">COR 3: No Benefit, LOE C-LD</span>) do sai số cảm biến quá lớn. Nên sử dụng ABPM (24h) hoặc HBPM (tại nhà) để chẩn đoán xác định và loại trừ hiệu ứng áo choàng trắng.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2: PREVENT RISK & INITIATION ALGORITHM -->
+    <div class="sec-card" id="sec-prevent">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🛡️</span>
+        <h2 class="sec-title">2. Thang Điểm PREVENT & Thuật Toán Khởi Trị Thuốc Hạ Áp</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox info">
+          <span class="infobox-icon">💡</span>
+          <div>
+            <strong>Bước Tiến Lịch Sử: Chuyển Sang Thang Điểm PREVENT (2025)</strong><br>
+            Khuyến cáo 2025 chính thức <strong>bãi bỏ thang điểm PCEs cũ (2013/2017)</strong> và đưa vào sử dụng phương trình <strong>PREVENT (Predicting Risk of CVD EVENTS)</strong>. PREVENT tích hợp chức năng thận (eGFR), tình trạng dùng statin và yếu tố nguy cơ xã hội. Ngưỡng nguy cơ tim mạch 10 năm cao được định nghĩa khi <strong>PREVENT ≥ 7.5%</strong>.
+          </div>
+        </div>
+
+        <!-- CDSS TOOL 2: INITIATION ALGORITHM -->
+        <div class="cdss-box">
+          <div class="cdss-title">
+            <span>🛡️ CDSS TOOL 2: THUẬT TOÁN KHỞI TRỊ THUỐC DỰA TRÊN NGUY CƠ TIM MẠCH (AHA/ACC 2025)</span>
+          </div>
+          <div class="cdss-desc">Nhập trị số huyết áp và các yếu tố nguy cơ lâm sàng để nhận quyết định khởi trị:</div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="init-sbp">Huyết áp Tâm thu trung bình (SBP):</label>
+              <input type="number" id="init-sbp" class="form-control" value="134">
+            </div>
+            <div class="form-group">
+              <label for="init-dbp">Huyết áp Tâm trương trung bình (DBP):</label>
+              <input type="number" id="init-dbp" class="form-control" value="84">
+            </div>
+            <div class="form-group">
+              <label for="init-cvd">Có Bệnh Tim Mạch lâm sàng (CVD)?</label>
+              <select id="init-cvd" class="form-control">
+                <option value="no">Không</option>
+                <option value="yes">Có (Tiền sử MI, Đột quỵ, Đau thắt ngực, Can thiệp vành/ngoại biên)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="init-comorbid">Có Đái Tháo Đường (DM) hoặc Bệnh Thận Mạn (CKD)?</label>
+              <select id="init-comorbid" class="form-control">
+                <option value="no">Không</option>
+                <option value="yes">Có</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="init-prevent">Nguy cơ tim mạch 10 năm theo PREVENT:</label>
+              <select id="init-prevent" class="form-control">
+                <option value="low">&lt; 7.5% (Nguy cơ thấp - trung bình)</option>
+                <option value="high">≥ 7.5% (Nguy cơ cao)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="cdss-result" id="init-result-display">
+            <!-- Render dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3: DRUG REGIMENS & BP GOALS -->
+    <div class="sec-card" id="sec-drugs">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">💊</span>
+        <h2 class="sec-title">3. Phác Đồ Thuốc Hạ Áp Đầu Tay & Đích Huyết Áp Điều Trị</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">4 Nhóm Thuốc Hạ Áp Đầu Tay (First-Line Classes)</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
+          <li><strong>Thuốc lợi tiểu Thiazide-type / Thiazide-like</strong> (Chlorthalidone, Indapamide, Hydrochlorothiazide).</li>
+          <li><strong>Thuốc chẹn kênh Canxi (CCB) dihydropyridine tác dụng kéo dài</strong> (Amlodipine, Felodipine).</li>
+          <li><strong>Thuốc ức chế men chuyển (ACEi)</strong> (Lisinopril, Perindopril, Enalapril).</li>
+          <li><strong>Thuốc chẹn thụ thể Angiotensin (ARB)</strong> (Valsartan, Losartan, Telmisartan).</li>
+          <li><em>Lưu ý:</em> <strong>Thuốc chẹn Beta (BB) KHÔNG nằm trong nhóm đầu tay</strong> cho tăng huyết áp đơn thuần trừ khi có chỉ định bắt buộc (Bệnh mạch vành, Suy tim HFrEF).</li>
+        </ul>
+
+        <div class="infobox success">
+          <span class="infobox-icon">🌟</span>
+          <div>
+            <strong>Ưu Tiên Sử Dụng Viên Phối Hợp Liều Cố Định (Single-Pill Combination - SPC)</strong><br>
+            Bệnh nhân <strong>Tăng Huyết Áp Độ 2 (≥ 140/90 mm Hg)</strong> được khuyến cáo khởi trị ngay bằng <strong>phối hợp 2 thuốc hạ áp đầu tay khác nhau</strong>, ưu tiên viên phối hợp SPC để tăng sự tuân thủ và nhanh đạt đích huyết áp.
+          </div>
+        </div>
+
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong>Chống Chỉ Định Phối Hợp Kép Hệ RAAS (Class III: Harm)</strong><br>
+            Tuyệt đối KHÔNG phối hợp đồng thời 2 thuốc thuộc hệ RAAS (ACEi + ARB, hoặc ACEi/ARB + Aliskiren) do nguy cơ cao gây tổn thương thận cấp và tăng kali máu nghiêm trọng mà không tăng hiệu quả tim mạch.
+          </div>
+        </div>
+
+        <!-- CDSS TOOL 3: BP GOAL & DRUG SELECTOR -->
+        <div class="cdss-box">
+          <div class="cdss-title">
+            <span>💊 CDSS TOOL 3: ĐÍCH HUYẾT ÁP & LỰA CHỌN THUỐC THEO BỆNH LÝ ĐI KÈM</span>
+          </div>
+          <div class="cdss-desc">Chọn bệnh cảnh lâm sàng để tra cứu đích huyết áp điều trị và nhóm thuốc ưu tiên:</div>
+          
+          <div class="form-group" style="max-width: 450px; margin-bottom: 1rem;">
+            <label for="comorbid-select">Bệnh cảnh lâm sàng đặc biệt:</label>
+            <select id="comorbid-select" class="form-control">
+              <option value="general">Người trưởng thành thông thường (General Adult)</option>
+              <option value="high_cvd">Nguy cơ tim mạch cao (PREVENT ≥ 7.5% / CVD)</option>
+              <option value="t2d">Đái tháo đường Týp 2 (T2D)</option>
+              <option value="ckd">Bệnh thận mạn (CKD) có Albumin niệu ≥ 30 mg/g</option>
+              <option value="stroke">Dự phòng thứ phát sau Đột quỵ / TIA</option>
+              <option value="cognitive">Ngăn ngừa sa sút trí tuệ / Suy giảm nhận thức</option>
+              <option value="pregnancy">Thai kỳ (Pregnancy / HDP)</option>
+            </select>
+          </div>
+
+          <div class="cdss-result" id="goal-result-display">
+            <!-- Render dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4: RESISTANT HTN & RENAL DENERVATION -->
+    <div class="sec-card" id="sec-rdn">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">⚡</span>
+        <h2 class="sec-title">4. Tăng Huyết Áp Kháng Trị & Triệt Thần Kinh Giao Cảm Thận (RDN)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Định Nghĩa & Phác Đồ 7 Bước Xử Trí HA Kháng Trị</div>
+        <p style="font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
+          Tăng huyết áp kháng trị được xác định khi HA không đạt mục tiêu dù đã dùng tối ưu <strong>3 thuốc hạ áp khác nhau (gồm 1 lợi tiểu)</strong>; hoặc HA đạt mục tiêu nhưng cần dùng từ <strong>≥ 4 thuốc trở lên</strong>.
+        </p>
+
+        <ol style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.5rem;">
+          <li><strong>Loại trừ kháng trị giả:</strong> Kiểm tra kỹ thuật đo, hiệu ứng áo choàng trắng (HBPM/ABPM), sự tuân thủ thuốc.</li>
+          <li><strong>Ngừng chất gây tăng HA:</strong> NSAIDs, thuốc thông mũi, corticosteroid, rượu.</li>
+          <li><strong>Tối ưu hóa lợi tiểu:</strong> Chuyển sang <strong>Chlorthalidone hoặc Indapamide</strong> (tác dụng kéo dài & mạnh hơn HCTZ).</li>
+          <li><strong>Thêm Thuốc thứ 4:</strong> <strong>Spironolactone (25–50 mg/ngày)</strong> là lựa chọn hàng đầu nếu eGFR ≥ 45 mL/min/1.73 m². (Nếu không dung nạp: Amiloride hoặc Aprocitentan).</li>
+          <li><strong>Tầm soát nguyên nhân thứ phát:</strong> OSA, Cường Aldosterone nguyên phát, Hẹp động mạch thận.</li>
+        </ol>
+
+        <!-- CDSS TOOL 4: RDN EVALUATOR -->
+        <div class="cdss-box">
+          <div class="cdss-title">
+            <span>⚡ CDSS TOOL 4: ĐÁNH GIÁ ỨNG VIÊN TRIỆT THẦN KINH GIAO CẢM THẬN (RDN - TABLE 25)</span>
+          </div>
+          <div class="cdss-desc">Kiểm tra các tiêu chuẩn chỉ định và chống chỉ định thủ thuật RDN:</div>
+          
+          <div class="cdss-grid">
+            <div class="cdss-item">
+              <label for="rdn-c1"><input type="checkbox" id="rdn-c1" class="rdn-check"> HA phòng khám ≥ 140/90 dù đã dùng ≥ 4 thuốc tối ưu (gồm MRA)</label>
+            </div>
+            <div class="cdss-item">
+              <label for="rdn-c2"><input type="checkbox" id="rdn-c2" class="rdn-check"> Hoặc không thể dung nạp/phối hợp thêm thuốc hạ áp</label>
+            </div>
+            <div class="cdss-item">
+              <label for="rdn-c3"><input type="checkbox" id="rdn-c3" class="rdn-check"> Chức năng thận eGFR ≥ 40 mL/min/1.73 m²</label>
+            </div>
+            <div class="cdss-item">
+              <label for="rdn-c4"><input type="checkbox" id="rdn-c4" class="rdn-check"> Đường kính động mạch thận phù hợp (3–8 mm)</label>
+            </div>
+          </div>
+
+          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border);">
+            <strong style="font-size: 0.82rem; color: var(--red); display: block; margin-bottom: 0.5rem;">CÁC CHỐNG CHỈ ĐỊNH RDN (Tích chọn nếu có):</strong>
+            <div class="cdss-grid">
+              <div class="cdss-item">
+                <label for="rdn-ex1"><input type="checkbox" id="rdn-ex1" class="rdn-ex-check"> Tăng HA tư thế đứng do thần kinh</label>
+              </div>
+              <div class="cdss-item">
+                <label for="rdn-ex2"><input type="checkbox" id="rdn-ex2" class="rdn-ex-check"> Phụ nữ đang mang thai</label>
+              </div>
+              <div class="cdss-item">
+                <label for="rdn-ex3"><input type="checkbox" id="rdn-ex3" class="rdn-ex-check"> Hẹp ĐM thận, Stent cũ, Loạn sản cơ sợi, Phình ĐM thận</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="cdss-result" id="rdn-result-display">
+            <!-- Render dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5: PREGNANCY & HYPERTENSIVE EMERGENCIES -->
+    <div class="sec-card" id="sec-emergencies">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🤰</span>
+        <h2 class="sec-title">5. Tăng Huyết Áp Thai Kỳ & Cấp Cứu Tăng Huyết Áp</h2>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Tăng Huyết Áp Trong Thai Kỳ (HDP)</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1rem;">
+          <li><strong>Cơn Tăng HA Nặng Thai Kỳ (≥ 160/110 mm Hg):</strong> Bắt buộc hạ áp khẩn cấp trong vòng <strong>30–60 phút</strong> bằng <strong>Labetalol IV, Hydralazine IV hoặc Nifedipine uống tác dụng nhanh</strong> để dự phòng đột quỵ mẹ.</li>
+          <li><strong>Điều trị duy trì đường uống an toàn:</strong> Ưu tiên <strong>Labetalol</strong> hoặc <strong>Nifedipine phóng thích kéo dài (ER)</strong>. Đích HA &lt; 140/90 mm Hg.</li>
+          <li><strong style="color: var(--red);">Thuốc tuyệt đối CHỐNG CHỈ ĐỊNH trong thai kỳ:</strong> Atenolol, ACEi, ARB, Aliskiren, MRA (gây độc thận thai nhi, thiểu ối, dị tật bẩm sinh).</li>
+          <li><strong>Dự phòng tiền sản giật:</strong> Khuyên dùng <strong>Aspirin liều thấp (81 mg/ngày)</strong> từ tuần thứ 12 cho phụ nữ có nguy cơ trung bình-cao.</li>
+        </ul>
+
+        <!-- CDSS TOOL 5: SEVERE HTN VS HYPERTENSIVE EMERGENCY -->
+        <div class="cdss-box">
+          <div class="cdss-title">
+            <span>🚨 CDSS TOOL 5: PHÂN LOẠI & PHÂN LUỒNG CẤP CỨU HUYẾT ÁP (AHA/ACC 2025)</span>
+          </div>
+          <div class="cdss-desc">Nhập trị số huyết áp và kiểm tra dấu hiệu tổn thương cơ quan đích cấp tính:</div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label for="em-sbp">Huyết áp Tâm thu (SBP):</label>
+              <input type="number" id="em-sbp" class="form-control" value="190">
+            </div>
+            <div class="form-group">
+              <label for="em-dbp">Huyết áp Tâm trương (DBP):</label>
+              <input type="number" id="em-dbp" class="form-control" value="125">
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label for="em-target">Tổn thương cơ quan đích cấp tính mới xuất hiện / tiến triển:</label>
+              <select id="em-target" class="form-control">
+                <option value="none">Không có (Không triệu chứng cấp tính hoặc chỉ đau đầu nhẹ)</option>
+                <option value="aortic">Phình tách động mạch chủ ngực cấp tính</option>
+                <option value="general_emergency">Suy tim cấp / Phù phổi / Đột quỵ cấp / Nhồi máu cơ tim / Phù hoàng điểm / AKI cấp</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="cdss-result" id="em-result-display">
+            <!-- Render dynamically -->
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Quản Lý Huyết Áp Chu Phẫu (Perioperative Management)</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.7;">
+          <li><strong>Duy trì chẹn beta (BB):</strong> Bắt buộc tiếp tục BB xuyên suốt giai đoạn phẫu thuật ở bệnh nhân đang dùng mạn tính (tránh phản ứng tăng catecholamine dội ngược).</li>
+          <li><strong style="color: var(--red);">Chống chỉ định khởi trị BB chu phẫu:</strong> KHÔNG khởi trị BB vào đúng ngày phẫu thuật cho bệnh nhân chưa từng dùng (gây tăng tử vong và đột quỵ).</li>
+          <li><strong>Thuốc RAASi (ACEi/ARB):</strong> Cân nhắc <strong>tạm ngừng trước phẫu thuật 24 giờ</strong> để tránh hạ huyết áp sâu khi khởi mê.</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- CITATIONS & CROSS LINKS -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📚</span>
+        <h2 class="sec-title">Tài Liệu Tham Khảo & Liên Kết Hệ Sinh Thái</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. Jones DW, Ferdinand KC, Taler SJ, et al. 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the prevention, detection, evaluation, and management of high blood pressure in adults. <em>Hypertension</em>. 2025;82:e212-e316. doi:10.1161/HYP.0000000000000249.
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <h4 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem;">🌐 Khám Phá Thêm Trong CliniPortal Ecosystem:</h4>
+          <div class="btn-row">
+            <a href="2024-esc-atrial-fibrillation.html" class="btn btn-primary">
+              ⚡ Hướng Dẫn ESC 2024 về Quản Lý Rung Nhĩ (AF-CARE)
+            </a>
+            <a href="../../../calculators/cardiology/phan-loai-roi-loan-nhip.html" class="btn">
+              🧮 Phân Loại Rối Loạn Nhịp & ECG Studio
+            </a>
+            <a href="../../../calculators/renal/renal-function.html" class="btn">
+              🩺 Tính Chức Năng Thận (eGFR / CrCl)
+            </a>
+            <a href="../../../pharmacology/duoc-ly.html" class="btn">
+              💊 Tra Cứu Dược Lý Thuốc Hạ Áp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // 1. CDSS TOOL 1: BP CLASSIFIER
+      const inputSbp = document.getElementById('input-sbp');
+      const inputDbp = document.getElementById('input-dbp');
+      const bpClassResult = document.getElementById('bp-class-result');
+
+      if (inputSbp && inputDbp) {
+        [inputSbp, inputDbp].forEach(el => el.addEventListener('input', classifyBP));
+        classifyBP();
+      }
+
+      function classifyBP() {
+        const sbp = parseInt(inputSbp.value || '0', 10);
+        const dbp = parseInt(inputDbp.value || '0', 10);
+
+        let cat = '';
+        let color = '';
+        let desc = '';
+
+        if (sbp >= 140 || dbp >= 90) {
+          cat = 'TĂNG HUYẾT ÁP ĐỘ 2 (STAGE 2 HYPERTENSION)';
+          color = 'var(--red)';
+          desc = 'Chỉ định khởi trị ngay bằng phối hợp 2 thuốc hạ áp đầu tay (ưu tiên viên phối hợp SPC) kết hợp thay đổi lối sống.';
+        } else if ((sbp >= 130 && sbp <= 139) || (dbp >= 80 && dbp <= 89)) {
+          cat = 'TĂNG HUYẾT ÁP ĐỘ 1 (STAGE 1 HYPERTENSION)';
+          color = 'var(--orange)';
+          desc = 'Cần đánh giá bệnh lý đi kèm (CVD, DM, CKD) và nguy cơ PREVENT. Nếu nguy cơ cao: Khởi trị thuốc ngay. Nếu nguy cơ thấp: Thử nghiệm lối sống 3–6 tháng.';
+        } else if ((sbp >= 120 && sbp <= 129) && dbp < 80) {
+          cat = 'HUYẾT ÁP TĂNG NHẸ (ELEVATED BP)';
+          color = 'var(--blue)';
+          desc = 'Khuyến cáo thay đổi lối sống không dùng thuốc (giảm muối, tập luyện, giảm cân). Tái kiểm tra sau 3–6 tháng.';
+        } else if (sbp < 120 && dbp < 80) {
+          cat = 'HUYẾT ÁP BÌNH THƯỜNG (NORMAL BP)';
+          color = 'var(--green)';
+          desc = 'Duy trì lối sống lành mạnh. Kiểm tra định kỳ hàng năm.';
+        } else {
+          cat = 'TRỊ SỐ KHÔNG HỢP LỆ';
+          color = 'var(--text-muted)';
+          desc = 'Vui lòng kiểm tra lại trị số nhập.';
+        }
+
+        bpClassResult.innerHTML = `
+          <div class="cdss-score" style="color: ${color};">${cat}</div>
+          <div class="cdss-recommendation">Trị số trung bình: <strong>${sbp}/${dbp} mm Hg</strong>. ${desc}</div>
+        `;
+      }
+
+      // 2. CDSS TOOL 2: INITIATION ALGORITHM
+      const initSbp = document.getElementById('init-sbp');
+      const initDbp = document.getElementById('init-dbp');
+      const initCvd = document.getElementById('init-cvd');
+      const initComorbid = document.getElementById('init-comorbid');
+      const initPrevent = document.getElementById('init-prevent');
+      const initResult = document.getElementById('init-result-display');
+
+      if (initSbp) {
+        [initSbp, initDbp, initCvd, initComorbid, initPrevent].forEach(el => el.addEventListener('change', evalInitiation));
+        evalInitiation();
+      }
+
+      function evalInitiation() {
+        const sbp = parseInt(initSbp.value || '0', 10);
+        const dbp = parseInt(initDbp.value || '0', 10);
+        const cvd = initCvd.value === 'yes';
+        const comorbid = initComorbid.value === 'yes';
+        const preventHigh = initPrevent.value === 'high';
+
+        if (sbp >= 140 || dbp >= 90) {
+          initResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--red);">CHỈ ĐỊNH KHỞI TRỊ THUỐC NGAY LẬP TỨC (STAGE 2)</div>
+            <div class="cdss-recommendation">
+              <strong>Khuyến cáo COR 1, LOE A:</strong> Huyết áp ≥ 140/90 mm Hg. Bắt buộc khởi trị ngay bằng <strong>phối hợp 2 thuốc hạ áp đầu tay</strong> (ưu tiên viên phối hợp SPC: ACEi/ARB + CCB hoặc Thiazide-like) kết hợp thay đổi lối sống.
+            </div>
+          `;
+        } else if ((sbp >= 130 || dbp >= 80) && (cvd || comorbid || preventHigh)) {
+          initResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--orange);">CHỈ ĐỊNH KHỞI TRỊ THUỐC HẠ ÁP (STAGE 1 NGUY CƠ CAO)</div>
+            <div class="cdss-recommendation">
+              <strong>Khuyến cáo COR 1:</strong> Bệnh nhân Tăng HA Độ 1 kèm theo Bệnh tim mạch (CVD), Đái tháo đường, Bệnh thận mạn hoặc điểm PREVENT ≥ 7.5%. Chỉ định đơn trị liệu bằng thuốc đầu tay (ACEi, ARB, CCB hoặc Thiazide-like) ngay từ đầu kết hợp thay đổi lối sống.
+            </div>
+          `;
+        } else if (sbp >= 130 || dbp >= 80) {
+          initResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--blue);">THỬ NGHIỆM THAY ĐỔI LỐI SỐNG 3–6 THÁNG (STAGE 1 NGUY CƠ THẤP)</div>
+            <div class="cdss-recommendation">
+              <strong>Khuyến cáo COR 1, LOE B-R:</strong> Bệnh nhân Tăng HA Độ 1 nguy cơ tim mạch thấp (PREVENT &lt; 7.5%). Tiến hành điều chỉnh lối sống nghiêm ngặt trong 3–6 tháng. Nếu sau 3–6 tháng HA vẫn ≥ 130/80 mm Hg mới bắt đầu phối hợp thuốc hạ áp.
+            </div>
+          `;
+        } else {
+          initResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--green);">KHÔNG CÓ CHỈ ĐỊNH DÙNG THUỐC HẠ ÁP</div>
+            <div class="cdss-recommendation">
+              Huyết áp dưới ngưỡng Tăng HA Độ 1 (&lt; 130/80 mm Hg). Khuyên bệnh nhân duy trì lối sống lành mạnh.
+            </div>
+          `;
+        }
+      }
+
+      // 3. CDSS TOOL 3: COMORBIDITY BP GOAL SELECTOR
+      const comorbidSelect = document.getElementById('comorbid-select');
+      const goalResult = document.getElementById('goal-result-display');
+
+      if (comorbidSelect) {
+        comorbidSelect.addEventListener('change', updateGoal);
+        updateGoal();
+      }
+
+      function updateGoal() {
+        const val = comorbidSelect.value;
+        if (val === 'general') {
+          goalResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--blue);">ĐÍCH HUYẾT ÁP: &lt; 130/80 mm Hg</div>
+            <div class="cdss-recommendation">
+              <strong>Thuốc ưu tiên:</strong> 1 trong 4 nhóm đầu tay (ACEi, ARB, CCB dihydropyridine, Lợi tiểu Thiazide-like).<br>
+              <strong>Lưu ý:</strong> Khởi trị bằng 2 thuốc (ưu tiên SPC) nếu HA ≥ 140/90 mm Hg.
+            </div>
+          `;
+        } else if (val === 'high_cvd') {
+          goalResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--green);">ĐÍCH TỐI ƯU: SBP &lt; 120 mm Hg (NẾU DUNG NẠP TỐT)</div>
+            <div class="cdss-recommendation">
+              <strong>Đích chuẩn:</strong> &lt; 130/80 mm Hg. Khuyến khích đưa SBP về &lt; 120 mm Hg ở nhóm PREVENT ≥ 7.5% hoặc có CVD để giảm tối đa tử vong.<br>
+              <strong>Thuốc ưu tiên:</strong> ACEi/ARB + CCB hoặc Thiazide-like.
+            </div>
+          `;
+        } else if (val === 't2d') {
+          goalResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--green);">ĐÍCH HUYẾT ÁP: &lt; 130/80 mm Hg (KHUYẾN KHÍCH SBP &lt; 120)</div>
+            <div class="cdss-recommendation">
+              <strong>Thuốc ưu tiên:</strong> Bắt buộc dùng <strong>ACEi hoặc ARB</strong> nếu có Albumin niệu (ACR ≥ 30 mg/g). Phối hợp thêm CCB hoặc Thiazide-like.<br>
+              <strong>Thuốc hỗ trợ:</strong> SGLT2i và GLP-1 RA giúp bảo vệ tim-thận bổ trợ.
+            </div>
+          `;
+        } else if (val === 'ckd') {
+          goalResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--green);">ĐÍCH HUYẾT ÁP: SBP &lt; 130 mm Hg</div>
+            <div class="cdss-recommendation">
+              <strong>Thuốc bắt buộc:</strong> <strong>ACEi hoặc ARB</strong> khi có Albumin niệu ≥ 30 mg/g để làm chậm suy thận. Sụt giảm eGFR ngắn hạn &lt; 30% khi khởi trị RAASi là sinh lý bình thường, KHÔNG ngừng thuốc.
+            </div>
+          `;
+        } else if (val === 'stroke') {
+          goalResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--blue);">ĐÍCH DỰ PHÒNG THỨ PHÁT: &lt; 130/80 mm Hg</div>
+            <div class="cdss-recommendation">
+              <strong>Thuốc ưu tiên:</strong> Lợi tiểu Thiazide-like, ACEi hoặc ARB được chứng minh hiệu quả giảm tái phát đột quỵ thiếu máu não.
+            </div>
+          `;
+        } else if (val === 'cognitive') {
+          goalResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--purple);">ĐÍCH BẢO VỆ NHẬN THỨC: SBP &lt; 130 mm Hg</div>
+            <div class="cdss-recommendation">
+              Kiểm soát SBP &lt; 130 mm Hg được chứng minh ngăn ngừa hiệu quả sa sút trí tuệ và suy giảm nhận thức nhẹ (MCI).
+            </div>
+          `;
+        } else if (val === 'pregnancy') {
+          goalResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--red);">ĐÍCH HA THAI KỲ: &lt; 140/90 mm Hg (CẤP CỨU ≥ 160/110)</div>
+            <div class="cdss-recommendation">
+              <strong>Thuốc uống ưu tiên:</strong> Labetalol, Nifedipine phóng thích kéo dài (ER).<br>
+              <strong>Cấp cứu ≥ 160/110:</strong> Labetalol IV, Hydralazine IV, Nifedipine uống IR trong 30–60 phút.<br>
+              <strong>Cấm tuyệt đối:</strong> Atenolol, ACEi, ARB, MRA (độc cho thai nhi).
+            </div>
+          `;
+        }
+      }
+
+      // 4. CDSS TOOL 4: RDN EVALUATOR
+      const rdnChecks = document.querySelectorAll('.rdn-check');
+      const rdnExChecks = document.querySelectorAll('.rdn-ex-check');
+      const rdnResult = document.getElementById('rdn-result-display');
+
+      if (rdnChecks.length > 0) {
+        [...rdnChecks, ...rdnExChecks].forEach(chk => chk.addEventListener('change', evalRDN));
+        evalRDN();
+      }
+
+      function evalRDN() {
+        let hasExclusion = false;
+        rdnExChecks.forEach(chk => { if (chk.checked) hasExclusion = true; });
+
+        let matchCount = 0;
+        rdnChecks.forEach(chk => { if (chk.checked) matchCount++; });
+
+        if (hasExclusion) {
+          rdnResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--red);">CHỐNG CHỈ ĐỊNH THỦ THUẬT RDN</div>
+            <div class="cdss-recommendation">Bệnh nhân có yếu tố chống chỉ định (Thai kỳ, Tăng HA tư thế đứng thần kinh, hoặc bất thường giải phẫu ĐM thận). KHÔNG thực hiện RDN.</div>
+          `;
+        } else if (matchCount === 4) {
+          rdnResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--green);">ĐỦ TIÊU CHUẨN CÂN NHẮC THỦ THUẬT RDN (TABLE 25)</div>
+            <div class="cdss-recommendation">
+              Bệnh nhân Tăng HA Độ 2 không kiểm soát dù đã dùng ≥ 4 thuốc tối ưu (gồm MRA), hoặc không dung nạp thuốc, eGFR ≥ 40 và giải phẫu ĐM thận phù hợp. Cần hội chẩn nhóm đa chuyên khoa và chia sẻ quyết định y khoa (shared decision-making).
+            </div>
+          `;
+        } else {
+          rdnResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--text-muted);">CHƯA ĐỦ TIÊU CHUẨN RDN (${matchCount}/4 tiêu chuẩn)</div>
+            <div class="cdss-recommendation">Tiếp tục tối ưu hóa phác đồ dược lý (chuyển Indapamide/Chlorthalidone, thêm Spironolactone 25-50mg) trước khi cân nhắc RDN.</div>
+          `;
+        }
+      }
+
+      // 5. CDSS TOOL 5: EMERGENCY VS SEVERE HTN
+      const emSbp = document.getElementById('em-sbp');
+      const emDbp = document.getElementById('em-dbp');
+      const emTarget = document.getElementById('em-target');
+      const emResult = document.getElementById('em-result-display');
+
+      if (emSbp) {
+        [emSbp, emDbp, emTarget].forEach(el => el.addEventListener('change', evalEmergency));
+        evalEmergency();
+      }
+
+      function evalEmergency() {
+        const sbp = parseInt(emSbp.value || '0', 10);
+        const dbp = parseInt(emDbp.value || '0', 10);
+        const target = emTarget.value;
+
+        if (target === 'aortic') {
+          emResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--red);">CẤP CỨU TĂNG HA: PHÌNH TÁCH ĐỘNG MẠCH CHỦ CẤP TÍNH</div>
+            <div class="cdss-recommendation">
+              <strong>BẮT BUỘC NHẬP ICU NGAY LẬP TỨC:</strong> Hạ nhanh SBP xuống <strong>&lt; 120 mm Hg trong vòng 1 giờ đầu tiên</strong>. Phải dùng thuốc Chẹn Beta tĩnh mạch (Esmolol IV) TRƯỚC KHI dùng thuốc giãn mạch để tránh nhịp nhanh phản xạ.
+            </div>
+          `;
+        } else if (target === 'general_emergency') {
+          emResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--red);">CẤP CỨU TĂNG HUYẾT ÁP (HYPERTENSIVE EMERGENCY)</div>
+            <div class="cdss-recommendation">
+              <strong>BẮT BUỘC NHẬP ICU:</strong> Có tổn thương cơ quan đích cấp tính. Hạ SBP <strong>không quá 25% trong giờ đầu tiên</strong>; sau đó đưa về &lt; 160/100-110 mm Hg trong 2–6 giờ tiếp theo; và về bình thường trong 24–48 giờ bằng thuốc truyền tĩnh mạch liên tục.
+            </div>
+          `;
+        } else if (sbp > 180 || dbp > 120) {
+          emResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--orange);">TĂNG HUYẾT ÁP NẶNG KHÔNG TRIỆU CHỨNG (SEVERE HYPERTENSION)</div>
+            <div class="cdss-recommendation">
+              <em>(Bãi bỏ thuật ngữ Hypertensive Urgency cũ).</em> Bệnh nhân KHÔNG có tổn thương cơ quan đích cấp tính. <strong>Xử trí ngoại trú:</strong> Điều chỉnh hoặc tối ưu hóa thuốc hạ áp đường uống ngoại trú. Hẹn tái khám trong vòng 4 tuần.<br>
+              <strong style="color: var(--red);">Cấm tuyệt đối:</strong> KHÔNG dùng thuốc hạ áp tĩnh mạch hoặc thuốc ngậm dưới lưỡi tác dụng nhanh (như Clonidine/Nifedipine IR) vì nguy cơ sụt áp gây thiếu máu não/tim cấp.
+            </div>
+          `;
+        } else {
+          emResult.innerHTML = `
+            <div class="cdss-score" style="color: var(--green);">KHÔNG THUỘC BỆNH CẢNH CẤP CỨU HUYẾT ÁP</div>
+            <div class="cdss-recommendation">Huyết áp &lt; 180/120 mm Hg. Quản lý và điều chỉnh phác đồ theo hướng dẫn thông thường.</div>
+          `;
+        }
+      }
+
+    });
+  </script>
+</body>
+</html>

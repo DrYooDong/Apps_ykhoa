@@ -15,6 +15,7 @@ import { ebmBridge } from './ebm-bridge-view';
 import { drugPicker } from './drug-picker';
 import { calculatorPicker } from './calculator-picker';
 import { resourcePicker } from './resource-picker';
+import { parseVitals, evaluateRiskScores, RiskScoreResult } from './risk-score-calculator';
 
 const ALERT_KEYWORDS = [
   'hạ kali', 'tụt kali', 'tăng kali',
@@ -1584,8 +1585,11 @@ export function mountSoapController(profileId: string): void {
     });
   });
 
-  // Contextual CDSS Linking & Side-Panel Engine
+  // Contextual CDSS Linking & Dynamic Risk Score Engine
+  const esSNotesEl = document.getElementById('esSNotes') as HTMLTextAreaElement;
+  const esONotesEl = document.getElementById('esONotes') as HTMLTextAreaElement;
   const esAAssessmentEl = document.getElementById('esAAssessment') as HTMLTextAreaElement;
+  const esAgeEl = document.getElementById('esAge') as HTMLInputElement;
   const cdssSuggestionsEl = document.getElementById('cdssSuggestions');
   const cdssPillsListEl = document.getElementById('cdssPillsList');
   const cdssSidePanelEl = document.getElementById('cdssSidePanel');
@@ -1597,18 +1601,30 @@ export function mountSoapController(profileId: string): void {
   let cdssDebounceTimeout: any = null;
 
   const updateCdssSuggestions = () => {
-    if (!esAAssessmentEl || !cdssSuggestionsEl || !cdssPillsListEl) return;
-    const text = esAAssessmentEl.value.toLowerCase();
-    
-    if (!text.trim()) {
+    if (!cdssSuggestionsEl || !cdssPillsListEl) return;
+
+    const sText = esSNotesEl?.value || '';
+    const oText = esONotesEl?.value || '';
+    const aText = esAAssessmentEl?.value || '';
+    const combinedText = `${sText} ${oText} ${aText}`.trim();
+
+    if (!combinedText) {
       cdssSuggestionsEl.style.display = 'none';
       cdssPillsListEl.innerHTML = '';
       return;
     }
 
+    const patientAge = esAgeEl ? parseInt(esAgeEl.value, 10) || 50 : 50;
+
+    // 1. Dynamic Risk Score Calculation from Free Text Vitals
+    const vitals = parseVitals(`${sText} ${oText}`);
+    const riskScores = evaluateRiskScores(vitals, patientAge);
+
+    // 2. Keyword-based CDSS Tool Matching
     const matchedTools: CdssToolOption[] = [];
+    const lowerAText = aText.toLowerCase();
     CDSS_KEYWORD_MAP.forEach(item => {
-      if (item.keywords.some(kw => text.includes(kw))) {
+      if (item.keywords.some(kw => lowerAText.includes(kw) || combinedText.toLowerCase().includes(kw))) {
         item.tools.forEach(t => {
           if (!matchedTools.some(mt => mt.path === t.path)) {
             matchedTools.push(t);
@@ -1617,15 +1633,61 @@ export function mountSoapController(profileId: string): void {
       }
     });
 
+    let pillsHtml = '';
+
+    // Render Risk Score Pills first (High Priority)
+    if (riskScores.length > 0) {
+      pillsHtml += riskScores.map(rs => {
+        const isHigh = rs.riskLevel === 'high';
+        const isMod = rs.riskLevel === 'moderate';
+        const bg = isHigh ? 'rgba(239,68,68,0.15)' : isMod ? 'rgba(245,158,11,0.15)' : 'var(--color-surface)';
+        const border = isHigh ? '#ef4444' : isMod ? '#f59e0b' : 'var(--color-primary)';
+        const color = isHigh ? '#ef4444' : isMod ? '#f59e0b' : 'var(--color-primary)';
+        const icon = isHigh ? 'fa-triangle-exclamation' : 'fa-calculator';
+
+        return `
+          <button type="button" class="js-risk-pill-btn dsp-btn dsp-btn-sm" data-id="${rs.id}" data-summary="${escapeHtml(rs.summary)}" data-query="${escapeHtml(rs.protocolQuery)}"
+            style="background:${bg}; border:1px solid ${border}; color:${color}; font-size:11px; font-weight:700; padding:3px 10px; border-radius:12px; height:auto; display:inline-flex; align-items:center; gap:4px;">
+            <i class="fa-solid ${icon}"></i> ${rs.summary}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Render Keyword Tool Pills
     if (matchedTools.length > 0) {
-      cdssSuggestionsEl.style.display = 'flex';
-      cdssPillsListEl.innerHTML = matchedTools.map(tool => `
+      pillsHtml += matchedTools.map(tool => `
         <button type="button" class="js-cdss-pill-btn dsp-btn dsp-btn-sm dsp-btn-ghost" data-path="${tool.path}" data-name="${tool.name}"
-          style="background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px; height:auto;">
+          style="background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:11px; font-weight:700; padding:3px 10px; border-radius:12px; height:auto; display:inline-flex; align-items:center; gap:4px;">
           <i class="fa-solid ${tool.icon || 'fa-calculator'}"></i> ${tool.name}
         </button>
       `).join('');
+    }
 
+    if (pillsHtml) {
+      cdssSuggestionsEl.style.display = 'flex';
+      cdssPillsListEl.innerHTML = pillsHtml;
+
+      // Event listener for Risk Score Pills (Click to Insert Result + Trigger Living Protocol AI)
+      cdssPillsListEl.querySelectorAll<HTMLButtonElement>('.js-risk-pill-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const summary = btn.getAttribute('data-summary') || '';
+          const query = btn.getAttribute('data-query') || '';
+
+          if (esAAssessmentEl) {
+            const currentVal = esAAssessmentEl.value.trim();
+            const prefix = currentVal ? '\n' : '';
+            esAAssessmentEl.value = currentVal + prefix + `[Đánh giá Nguy cơ]: ${summary}`;
+            esAAssessmentEl.focus();
+          }
+
+          if (confirm(`Đã chèn kết quả điểm nguy cơ vào Đánh giá (A).\n\nBạn có muốn mở Living Protocols AI / Tra cứu EBM cho "${query}" không?`)) {
+            ebmBridge.openSearch(query);
+          }
+        });
+      });
+
+      // Event listener for Keyword Tool Pills
       cdssPillsListEl.querySelectorAll<HTMLButtonElement>('.js-cdss-pill-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const path = btn.getAttribute('data-path') || '';
@@ -1685,13 +1747,15 @@ export function mountSoapController(profileId: string): void {
     }
   });
 
-  if (esAAssessmentEl) {
-    // Initial check on modal load
-    updateCdssSuggestions();
-
-    esAAssessmentEl.addEventListener('input', () => {
+  // Attach input listeners to S, O, A textareas to update CDSS dynamically
+  const formInputs = [esSNotesEl, esONotesEl, esAAssessmentEl].filter(Boolean);
+  formInputs.forEach(input => {
+    input?.addEventListener('input', () => {
       clearTimeout(cdssDebounceTimeout);
       cdssDebounceTimeout = setTimeout(updateCdssSuggestions, 300);
     });
-  }
+  });
+
+  // Initial check on modal load
+  updateCdssSuggestions();
 }

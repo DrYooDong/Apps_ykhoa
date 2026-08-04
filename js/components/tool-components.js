@@ -22,16 +22,16 @@ class CliniBreadcrumb extends HTMLElement {
     if (!items.length) return;
 
     let html = `
-      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider, #e2e8f0);">
+      <nav aria-label="Breadcrumb" class="breadcrumb-container" style="padding: 1rem 2rem; border-bottom: 1px solid var(--color-divider);">
         <ol class="breadcrumb-list" style="display:flex; gap:0.5rem; list-style:none; font-size:0.9rem; margin:0; padding:0; align-items:center; flex-wrap:wrap;">
     `;
 
     items.forEach((item, index) => {
       const isLast = index === items.length - 1;
       if (isLast) {
-        html += `<li style="color:var(--color-primary, #0284c7); font-weight:600;">${item.label}</li>`;
+        html += `<li style="color:var(--color-primary); font-weight:600;">${item.label}</li>`;
       } else {
-        html += `<li><a href="${item.url}" style="text-decoration:none; color:var(--color-text-muted, #64748b);">${item.label}</a> &gt;</li>`;
+        html += `<li><a href="${item.url}" style="text-decoration:none; color:var(--color-text-muted);">${item.label}</a> <span style="color:var(--color-text-faint); margin-left:0.25rem;">&gt;</span></li>`;
       }
     });
 
