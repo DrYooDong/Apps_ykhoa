@@ -476,16 +476,16 @@
       const leftNavSpecList = document.getElementById('spec-filter-list');
       if (leftNavSpecList) {
         leftNavSpecList.innerHTML = `
-          <button class="spec-filter-item ${filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)">
+          <button class="spec-filter-item ${filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)" title="Tất cả chuyên khoa">
             <span class="spec-filter-dot" style="background: var(--text-faint);"></span>
-            Tất cả
+            <span class="left-nav-text">Tất cả</span>
           </button>
         `;
         Object.entries(SPECIALTIES).forEach(([key, spec]) => {
           leftNavSpecList.innerHTML += `
-            <button class="spec-filter-item ${filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')">
+            <button class="spec-filter-item ${filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')" title="${spec.name}">
               <span class="spec-filter-dot" style="background: ${spec.color};"></span>
-              ${spec.name}
+              <span class="left-nav-text">${spec.name}</span>
             </button>
           `;
         });
@@ -2527,6 +2527,43 @@
     }
 
     // ════════════════════════════
+    // ════════════════════════════
+    // SIDEBAR TOGGLE & STATE LOGIC
+    // ════════════════════════════
+    function toggleSidebar() {
+      const leftNav = document.getElementById('left-nav');
+      const appShell = document.querySelector('.app-shell');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (!leftNav) return;
+
+      const isMobile = window.innerWidth <= 1024;
+      if (isMobile) {
+        // Mobile drawer mode: slide overlay in/out
+        const isOpen = leftNav.classList.toggle('mobile-open');
+        if (backdrop) backdrop.classList.toggle('active', isOpen);
+      } else {
+        // Desktop collapse mode: icon-rail (68px) vs expanded (280px)
+        const isCollapsed = leftNav.classList.toggle('collapsed');
+        if (appShell) appShell.classList.toggle('sidebar-collapsed', isCollapsed);
+        localStorage.setItem('guidelines_sidebar_collapsed', isCollapsed ? 'true' : 'false');
+      }
+    }
+
+    function initSidebarState() {
+      const isMobile = window.innerWidth <= 1024;
+      const leftNav = document.getElementById('left-nav');
+      const appShell = document.querySelector('.app-shell');
+      
+      if (!isMobile && leftNav) {
+        const isCollapsed = localStorage.getItem('guidelines_sidebar_collapsed') === 'true';
+        if (isCollapsed) {
+          leftNav.classList.add('collapsed');
+          if (appShell) appShell.classList.add('sidebar-collapsed');
+        }
+      }
+    }
+
+    // ════════════════════════════
     // INITIALIZATION
     // ════════════════════════════
 
@@ -2540,6 +2577,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
+      initSidebarState();
       initSupabase();
       loadStudies();
       
@@ -2579,7 +2617,10 @@
       setupDragDrop();
       
       // Search listener
-      document.getElementById('search-input').addEventListener('input', handleSearch);
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', handleSearch);
+      }
       
       // Close popups on click outside
       document.addEventListener('click', (e) => {
@@ -2599,13 +2640,17 @@
         });
       });
       
-      // Escape key to close modals
+      // Keyboard shortcuts listener: Escape & Alt+S
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           closeAddModal();
           closeImportModal();
           closeSupabaseModal();
           closeSubgroupModal();
+        }
+        if (e.altKey && (e.key === 's' || e.key === 'S')) {
+          e.preventDefault();
+          toggleSidebar();
         }
       });
     });

@@ -17,5 +17,5 @@ Trạng_thái:
 [[5.2. Quản lý SXHD CÓ DHCB]]
 
 # Cập nhật:
-[[Việt Nam]]
-[[WHO]]
+[[Lịch sử phác đồ tại Việt Nam]]
+[[Lịch sử phác độ của WHO]]
