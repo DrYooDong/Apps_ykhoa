@@ -14,30 +14,52 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
 
 ## 📁 Cấu trúc Thư mục Guidelines
 
-Các trang tóm tắt cụ thể được đặt trong thư mục `Kho Guidelines`:
+Các trang tóm tắt cụ thể được đặt trong thư mục `kho-guidelines`:
 ```
-pages/Y học chứng cứ/
-├── yhcc.html                             # Hub tổng Y học chứng cứ (Cấp 2)
-└── Guidelines/
-    ├── Guidelines.html                   # Trang tra cứu Guidelines (Cấp 3)
-    ├── Guidelines.css                    # CSS cho trang tra cứu
-    ├── Guidelines.js                     # JS xử lý filter/search
-    ├── GuidelinesData.js                 # Database danh sách guidelines
-    └── Kho Guidelines/                   # Thư mục chứa các trang chi tiết (Cấp 4)
-        ├── empa-reg.html                 # Mẫu RCT Landmark
-        └── ks-cho-bn-nang.html           # Mấu tóm tắt Guidelines mới 2026
+src/content/ebm/guidelines/
+├── guidelines.html                       # Trang tra cứu Guidelines (Cấp 3)
+├── guidelines.css                        # CSS cho trang tra cứu
+├── guidelines.js                         # JS xử lý filter/search
+├── guidelinesdata.js                     # Database danh sách guidelines (SAMPLE_STUDIES)
+├── HUONG_DAN_TAO_TOM_TAT_TU_MD.md        # Hướng dẫn chi tiết chuyển đổi từ file .md
+└── kho-guidelines/                       # Thư mục chứa các trang chi tiết (.html / .md nguồn)
+    ├── 2024-kdigo-ckd.html               # Mẫu Guideline KDIGO 2024
+    ├── 2025-aha-acc-hypertension.html    # Mẫu Guideline AHA/ACC 2025
+    ├── empa-reg.html                     # Mẫu RCT Landmark
+    └── phac-do-soc-nhiem-khuan-sepsis3.md # Mẫu file nguồn Markdown (.md)
 ```
 
 ---
 
 ## 📐 Cú pháp Đường dẫn tương đối (Cấp 4)
 
-Tất cả các file trong thư mục `Kho Guidelines/` nằm ở **cấp 4** so với thư mục gốc `Apps_ykhoa/`. Do đó, khi liên kết các tài nguyên hệ thống hoặc các trang khác, bắt buộc sử dụng tiền tố đường dẫn tương đối chính xác:
+Tất cả các file trong thư mục `kho-guidelines/` nằm ở **cấp 4** so với thư mục gốc `Apps_ykhoa/`. Do đó, khi liên kết các tài nguyên hệ thống hoặc các trang khác, bắt buộc sử dụng tiền tố đường dẫn tương đối chính xác:
 
 - Trở về thư mục gốc: `../../../../`
   - *Ví dụ:* `<link rel="stylesheet" href="../../../../css/reset.css">`
-- Trở về trang tra cứu Guidelines: `../Guidelines.html`
-- Trở về trang Hub Y học chứng cứ: `../../yhcc.html`
+- Trở về trang tra cứu Guidelines: `../guidelines.html`
+- Trở về trang Hub Y học chứng cứ: `../../ebm.html`
+
+---
+
+## ⚡ Quy Trình Tạo Tóm Tắt Guideline từ File Markdown (.md)
+
+Khi nhận được tài liệu Y khoa / Guideline / RCT dạng file Markdown (`.md`), thực hiện theo **5 bước chuẩn**:
+
+1. **Phân tích File `.md`**:
+   - Trích xuất Frontmatter metadata (tiêu đề Việt-Anh, năm, tổ chức, chuyên khoa `specialty`, loại nguồn `sourceType`, thiết kế `design`, mức độ tác động `impact`).
+   - Phân tích các Trụ cột chính (Pillars), Khuyến cáo chính (LOE, Class), Phác đồ liều dùng, Cảnh báo an toàn (Danger/Warning/Success Infoboxes), Dữ liệu bằng chứng định lượng (HR, OR, RR, %, p-value).
+2. **Tạo trang HTML UI**:
+   - Tạo file `src/content/ebm/guidelines/kho-guidelines/<slug>.html`.
+   - Sử dụng Boilerplate chuẩn với Topnav sticky, Hero gradient, Pillars strip, Section cards, Infoboxes & Regimen tables.
+3. **Đăng ký vào `guidelinesdata.js`**:
+   - Thêm bản ghi mới vào mảng `SAMPLE_STUDIES` với `file: "kho-guidelines/<slug>.html"`.
+   - Cấu hình chuỗi số liệu `keyResults` hoặc `subgroups` với cú pháp chuẩn (`HR ...`, `COL: ...`, `HBAR: ...`) để tự động render biểu đồ Mini SVG.
+4. **Kiểm tra Tags & Links**:
+   - Kiểm tra đóng mở thẻ HTML (`node scratch/check_tags.js <file>.html`).
+   - Xác nhận đường dẫn `../guidelines.html`.
+5. **Tham khảo chi tiết**:
+   - Đọc thêm tại `src/content/ebm/guidelines/HUONG_DAN_TAO_TOM_TAT_TU_MD.md`.
 
 ---
 
@@ -120,6 +142,18 @@ Mỗi khi tạo trang tóm tắt Guideline mới, hãy sử dụng khung cấu t
     .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.75; }
     .hero-meta-item { display: flex; align-items: center; gap: 5px; }
 
+    /* PILLARS STICKY NAV STRIP (MỤC LỤC ĐỒNG BỘ CHUẨN) */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--orange); }
+
     /* PILLARS STRIP */
     .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
     .pillars-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
@@ -137,7 +171,7 @@ Mỗi khi tạo trang tóm tắt Guideline mới, hãy sử dụng khung cấu t
     .page-content { max-width: 960px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
 
     /* SECTION CARDS */
-    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; }
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
     .sec-hdr { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.6rem; }
     .sec-hdr-icon { font-size: 1.1rem; }
     .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; font-weight: 800; color: var(--text); }
@@ -221,6 +255,16 @@ Mỗi khi tạo trang tóm tắt Guideline mới, hãy sử dụng khung cấu t
     </div>
   </div>
 
+  <!-- PILLARS STICKY NAV BAR (MỤC LỤC ĐỒNG BỘ CÁC TRANG GUIDELINES) -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. [Phần 1]</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. [Phần 2]</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. [Phần 3]</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. [Phần 4]</a>
+    </div>
+  </div>
+
   <!-- PILLARS -->
   <div class="pillars">
     <div class="pillars-inner">
@@ -239,6 +283,20 @@ Mỗi khi tạo trang tóm tắt Guideline mới, hãy sử dụng khung cấu t
   <div class="page-content">
     <!-- Thêm sec-card tại đây -->
   </div>
+
+  <!-- 📊 HƯỚNG DẪN DÙNG VẼ BIỂU ĐỒ MINI TRONG EBM GUIDELINES -->
+  <!-- 
+    Hệ thống tự động nhận diện và vẽ SVG mini cho 3 dạng biểu đồ:
+    1. Forest Plot:
+       keyResults / subgroup value chứa HR, OR, RR, 95% CI
+       Ví dụ: "HR 0.86 (95% CI 0.74-0.99, p=0.04)"
+    2. Biểu đồ Cột đứng (Column Chart):
+       Ví dụ: "COL: Can thiệp: 74.5% | Giả dược: 48.2%"
+       Hoặc JSON: { "type": "column", "data": [{ "label": "A", "value": 10 }] }
+    3. Biểu đồ Cột ngang (Horizontal Bar Chart):
+       Ví dụ: "HBAR: Tuổi <65: 78.5% | Tuổi >=65: 54.0%"
+       Hoặc JSON: { "type": "horizontal-bar", "data": [{ "label": "A", "value": 10 }] }
+  -->
 
   <!-- 💡 GRAPHIFY & INTEGRITY CHECKLIST -->
   <!-- 

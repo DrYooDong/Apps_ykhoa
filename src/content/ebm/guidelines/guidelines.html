@@ -537,7 +537,7 @@
   "Suy tim": "HR 0.65 (95% CI 0.50-0.85)",
   "Bệnh thận mạn": "HR 0.70 (95% CI 0.51-0.96)"
 }'></textarea>
-              <div style="font-size:0.72rem;color:var(--text-faint);margin-top:4px;">Nhập dạng JSON key-value: {"Tên subgroup": "Kết quả HR/OR/RR"}. Hệ thống sẽ tự vẽ forest plot mini.</div>
+              <div style="font-size:0.72rem;color:var(--text-faint);margin-top:4px;">Nhập JSON key-value. Tự động vẽ Forest plot (HR/OR), Biểu đồ Cột (COL: ...) hoặc Biểu đồ Ngang (HBAR: ...).</div>
             </div>
           </div>
 
@@ -651,7 +651,7 @@ create table clinical_guidelines (
             <button type="button" class="btn btn-small" onclick="fillSampleJSON()" style="font-size: 0.72rem; padding: 2px 8px; color: var(--accent); border-color: var(--accent-mid);">📋 Dán Mẫu JSON Chuẩn</button>
           </div>
           <div style="font-size: 0.72rem; color: var(--text-muted); background: var(--surface-2); padding: 6px 10px; border-radius: 6px; margin-bottom: 8px; border: 1px solid var(--border-light);">
-            💡 <strong>Hệ thống tự động vẽ Forest plot mini</strong> khi nhận chuỗi có chỉ số <code>OR</code>, <code>RR</code>, <code>HR</code>, <code>aOR</code>, <code>aHR</code>, <code>p-value</code> (ví dụ: <code>OR 0.75 (95% CI 0.65-0.86, p=0.002)</code>) hoặc JSON object subgroup.
+            💡 <strong>Tự động vẽ Biểu đồ Mini:</strong> Hỗ trợ <strong>Forest Plot</strong> (khi có <code>OR</code>, <code>RR</code>, <code>HR</code>, <code>95% CI</code>), <strong>Biểu đồ Cột</strong> (cú pháp <code>COL: Can thiệp: 3.7% | Giả dược: 5.9%</code>) và <strong>Biểu đồ Ngang</strong> (cú pháp <code>HBAR: Đột quỵ: 1.2% | Suy tim: 2.7%</code>).
           </div>
           <textarea id="json-text" rows="8" placeholder='Ví dụ dán mảng các đối tượng nghiên cứu JSON:
 [

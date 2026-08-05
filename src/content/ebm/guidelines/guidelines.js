@@ -138,16 +138,24 @@
     }
 
     function clearSupabaseConfig() {
-      if (confirm('☁️ Bạn có chắc chắn muốn xóa cấu hình Supabase? Hệ thống sẽ quay lại sử dụng LocalStorage.')) {
+      if (confirm('☁️ Bạn có chắc chắn muốn xóa cấu hình Supabase? Tất cả dữ liệu nghiên cứu hiện tại sẽ bị xóa khỏi hệ thống.')) {
         localStorage.removeItem('supabaseUrl');
         localStorage.removeItem('supabaseKey');
+        localStorage.removeItem('clinicalGuidelines');
+        localStorage.removeItem('internalMedicineStudies');
         document.getElementById('sb-url').value = '';
         document.getElementById('sb-key').value = '';
+        
+        studies = [];
+        selectedIds.clear();
+        expandedIds.clear();
+        saveStudies();
+        
         closeSupabaseModal();
         initSupabase();
-        loadStudies(); // reload local data
         renderTable();
         renderUpdates();
+        alert('🗑️ Đã xóa cấu hình Supabase và tự động xóa tất cả các nghiên cứu!');
       }
     }
 
@@ -208,7 +216,7 @@
           saveStudies(); // cache local
           renderTable();
           renderUpdates();
-          updateSupabaseStatus('connected', 'Supabase: Synced');
+          updateSupabaseStatus('connected', `Supabase: Đã nạp ${remoteStudies.length} bài`);
 
           // Sync any local-only studies to Supabase
           if (localOnlyStudies.length > 0) {
@@ -2003,26 +2011,95 @@
     }
 
     // ════════════════════════════
-    // FOREST PLOT MINI
+    // EBM CHART PARSER & SVG RENDERERS (Forest, Column, Horizontal Bar)
     // ════════════════════════════
 
-    /**
-     * Parse HR/OR/RR + 95% CI từ chuỗi keyResults.
-     * Hỗ trợ format: HR 0.86 (95% CI 0.74-0.99) hoặc OR 0.75 [0.65, 0.86]
-     * @returns { estimate, lower, upper, label } hoặc null nếu không parse được
-     */
-    /**
-     * Parse HR/OR/RR/aHR/aOR/RD/ARR/MD/SMD/p-value + 95% CI
-     * Hỗ trợ cả dạng chuỗi (ví dụ: "OR 0.75 (95% CI 0.65-0.86, p=0.002)")
-     * lẫn dạng JSON Object trực tiếp (ví dụ: {"label":"OR", "estimate":0.75, "lower":0.65, "upper":0.86, "p":"0.002"})
-     * @returns { label, estimate, lower, upper, pValue, isSig } hoặc null
-     */
+    function parseChartData(keyResults) {
+      if (!keyResults) return null;
+
+      let jsonObj = null;
+      if (typeof keyResults === 'object') {
+        jsonObj = keyResults;
+      } else if (typeof keyResults === 'string' && keyResults.trim().startsWith('{')) {
+        try { jsonObj = JSON.parse(keyResults.trim()); } catch(e) {}
+      }
+
+      if (jsonObj) {
+        const chartType = String(jsonObj.type || jsonObj.chartType || '').toLowerCase();
+        if (['column', 'vertical-bar', 'bar-v', 'cot', 'cột'].includes(chartType)) {
+          return {
+            type: 'column',
+            title: jsonObj.title || '',
+            unit: jsonObj.unit || '%',
+            data: Array.isArray(jsonObj.data) ? jsonObj.data : []
+          };
+        }
+        if (['horizontal-bar', 'bar-h', 'hbar', 'ngang'].includes(chartType)) {
+          return {
+            type: 'horizontal-bar',
+            title: jsonObj.title || '',
+            unit: jsonObj.unit || '%',
+            data: Array.isArray(jsonObj.data) ? jsonObj.data : []
+          };
+        }
+      }
+
+      if (typeof keyResults === 'string') {
+        const colMatch = keyResults.match(/^(?:COL|CỘT|BAR_V|COLUMN)\s*:\s*(.+)$/i);
+        if (colMatch) {
+          const itemsRaw = colMatch[1].split('|');
+          const data = [];
+          const colors = ['#16a34a', '#dc2626', '#2563eb', '#d97706', '#7c3aed', '#0d9488'];
+          itemsRaw.forEach((itemStr, idx) => {
+            const parts = itemStr.split(/[:=]/);
+            if (parts.length >= 2) {
+              const label = parts[0].trim();
+              const valNum = parseFloat(parts[1].replace(/[^\d.-]/g, ''));
+              if (!isNaN(valNum)) {
+                data.push({ label, value: valNum, color: colors[idx % colors.length] });
+              }
+            }
+          });
+          if (data.length > 0) return { type: 'column', title: '', unit: '%', data };
+        }
+
+        const hbarMatch = keyResults.match(/^(?:HBAR|NGANG|BAR_H|HORIZONTAL)\s*:\s*(.+)$/i);
+        if (hbarMatch) {
+          const itemsRaw = hbarMatch[1].split('|');
+          const data = [];
+          const colors = ['#2563eb', '#16a34a', '#d97706', '#dc2626', '#7c3aed', '#0d9488'];
+          itemsRaw.forEach((itemStr, idx) => {
+            const parts = itemStr.split(/[:=]/);
+            if (parts.length >= 2) {
+              const label = parts[0].trim();
+              const valNum = parseFloat(parts[1].replace(/[^\d.-]/g, ''));
+              if (!isNaN(valNum)) {
+                data.push({ label, value: valNum, color: colors[idx % colors.length] });
+              }
+            }
+          });
+          if (data.length > 0) return { type: 'horizontal-bar', title: '', unit: '%', data };
+        }
+      }
+
+      const forestRes = parseForestDataRaw(keyResults);
+      if (forestRes) {
+        forestRes.type = 'forest';
+        return forestRes;
+      }
+
+      return null;
+    }
+
     function parseForestData(keyResults) {
+      return parseChartData(keyResults);
+    }
+
+    function parseForestDataRaw(keyResults) {
       if (!keyResults) return null;
 
       let label = '', estimate = NaN, lower = NaN, upper = NaN, pValue = null;
 
-      // 1. Nếu keyResults là JSON object hoặc chuỗi JSON
       let jsonObj = null;
       if (typeof keyResults === 'object') {
         jsonObj = keyResults;
@@ -2040,35 +2117,24 @@
           pValue = typeof rawP === 'number' ? (rawP < 0.001 ? '<0.001' : rawP.toString()) : String(rawP);
         }
       } else if (typeof keyResults === 'string') {
-        // Tách p-value trước nếu có trong chuỗi (ví dụ: p=0.04, p < 0.001, p=0.002, p < 0.05)
         const pMatch = keyResults.match(/\bp\s*([<>=]=?)\s*([\d.]+)/i);
         if (pMatch) {
           const op = pMatch[1].replace('=', '');
           pValue = op ? `${op}${pMatch[2]}` : pMatch[2];
         }
 
-        // Regex patterns hỗ trợ OR, RR, HR, aOR, aHR, RD, ARR, MD, SMD, WMD...
-        // Hỗ trợ đơn vị tính (kg, mmol/L, %, ...) và từ nối "đến" / "dến" / "dên" / "to" / "-"
         const sep = '(?:đến|dến|dên|to|[-\u2013\u2014,])';
         const unit = '(?:\\s+[a-zA-Z%°µμ/-]+)?';
         const metric = '(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)';
 
         const patterns = [
-          // 1a. "MD -1.30 kg (95% CI -2.02 đến -0.57, p<0.01)" hoặc "HR 0.86 (95% CI 0.74-0.99)"
           new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i'),
-          // 1b. "MD -1.30 kg (95% CI: -2.02 to -0.57)"
           new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s+to\\s+(-?[\\d.]+)[^)]*\\)`, 'i'),
-          // 2. "MD -1.30 kg (-2.02 đến -0.57)" — ngoặc tròn thuần túy
           new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\(\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i'),
-          // 3. "MD -1.30 kg [95% CI: -2.02 đến -0.57]" — ngoặc vuông
           new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\[[^\\]]*?CI[^\\d\\]]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^\\]]*\\]`, 'i'),
-          // 4. "MD -1.30 kg, 95% CI -2.02 đến -0.57"
           new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*[,;]\\s*(?:95%\\s*)?CI\\s*[=:]?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)`, 'i'),
-          // 5. "MD -1.30 kg 95% CI -2.02 đến -0.57" — phân cách khoảng trắng
           new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s+(?:95%\\s*)?CI\\s*[=:]?\\s*\\[?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)\\]?`, 'i'),
-          // 6. "MD = -1.30 kg; 95% CI [-2.02 đến -0.57]"
           new RegExp(`\\b${metric}\\s*=\\s*(-?[\\d.]+${unit})[\\s;,]+(?:95%\\s*)?CI\\s*\\[?\\s*(-?[\\d.]+)\\s*(?:${sep}|to)\\s*(-?[\\d.]+)\\]?`, 'i'),
-          // 7. "pooled MD = -1.30 kg (-2.02 đến -0.57)"
           new RegExp(`(?:pooled|combined)?\\s*${metric}\\s*=?\\s*(-?[\\d.]+${unit})\\s*\\(\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i')
         ];
 
@@ -2100,15 +2166,101 @@
         }
       }
 
-      return { label, estimate, lower, upper, pValue, isSig };
+      return { type: 'forest', label, estimate, lower, upper, pValue, isSig };
     }
 
-    /**
-     * Render SVG Forest Plot mini (width=270px, height=46px)
-     */
+    function renderVerticalBarChartSVG(chartData) {
+      if (!chartData || !Array.isArray(chartData.data) || chartData.data.length === 0) return '';
+      const items = chartData.data;
+      const unit = chartData.unit || '%';
+      const W = 270, H = 82;
+      const PAD_L = 28, PAD_R = 12, PAD_T = 16, PAD_B = 22;
+      const plotW = W - PAD_L - PAD_R;
+      const plotH = H - PAD_T - PAD_B;
+
+      const maxVal = Math.max(...items.map(d => d.value), 0.1) * 1.18;
+      const palette = ['#16a34a', '#dc2626', '#2563eb', '#d97706', '#7c3aed', '#0d9488', '#e11d48'];
+
+      const barGap = 10;
+      const barW = Math.min(42, Math.max(14, (plotW - (items.length - 1) * barGap) / items.length));
+      const totalBarsWidth = items.length * barW + (items.length - 1) * barGap;
+      const startX = PAD_L + (plotW - totalBarsWidth) / 2;
+
+      const baseY = PAD_T + plotH;
+      let svg = `<svg class="chart-svg chart-col-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu đồ cột">`;
+
+      svg += `<line x1="${PAD_L}" y1="${baseY}" x2="${W - PAD_R}" y2="${baseY}" stroke="#cbd5e1" stroke-width="1"/>`;
+      svg += `<line x1="${PAD_L}" y1="${PAD_T}" x2="${W - PAD_R}" y2="${PAD_T}" stroke="#e2e8f0" stroke-dasharray="2,2" stroke-width="1"/>`;
+
+      svg += `<text x="${PAD_L - 4}" y="${baseY + 3}" font-family="monospace" font-size="7.5" fill="#94a3b8" text-anchor="end">0</text>`;
+      svg += `<text x="${PAD_L - 4}" y="${PAD_T + 3}" font-family="monospace" font-size="7.5" fill="#94a3b8" text-anchor="end">${maxVal.toFixed(maxVal < 10 ? 1 : 0)}${unit}</text>`;
+
+      items.forEach((item, idx) => {
+        const x = startX + idx * (barW + barGap);
+        const barH = (item.value / maxVal) * plotH;
+        const y = baseY - barH;
+        const color = item.color || palette[idx % palette.length];
+
+        svg += `<rect x="${x}" y="${y}" width="${barW}" height="${Math.max(2, barH)}" rx="3" fill="${color}" opacity="0.9"/>`;
+        svg += `<text x="${x + barW / 2}" y="${Math.max(PAD_T - 2, y - 3)}" text-anchor="middle" font-family="monospace" font-size="8" fill="${color}" font-weight="700">${item.value}${unit}</text>`;
+        const labelText = item.label.length > 11 ? item.label.substring(0, 10) + '…' : item.label;
+        svg += `<text x="${x + barW / 2}" y="${baseY + 12}" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#475569" font-weight="600">${escapeHtml(labelText)}</text>`;
+      });
+
+      svg += `</svg>`;
+      return svg;
+    }
+
+    function renderHorizontalBarChartSVG(chartData) {
+      if (!chartData || !Array.isArray(chartData.data) || chartData.data.length === 0) return '';
+      const items = chartData.data;
+      const unit = chartData.unit || '%';
+      const rowHeight = 18;
+      const PAD_L = 90, PAD_R = 40, PAD_T = 6, PAD_B = 6;
+      const W = 270;
+      const H = PAD_T + PAD_B + items.length * rowHeight;
+      const plotW = W - PAD_L - PAD_R;
+
+      const maxVal = Math.max(...items.map(d => d.value), 0.1) * 1.15;
+      const palette = ['#2563eb', '#16a34a', '#d97706', '#dc2626', '#7c3aed', '#0d9488'];
+
+      let svg = `<svg class="chart-svg chart-hbar-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu đồ ngang">`;
+
+      svg += `<line x1="${PAD_L}" y1="${PAD_T}" x2="${PAD_L}" y2="${H - PAD_B}" stroke="#cbd5e1" stroke-width="1"/>`;
+
+      items.forEach((item, idx) => {
+        const cy = PAD_T + idx * rowHeight + rowHeight / 2;
+        const barW = Math.max(3, (item.value / maxVal) * plotW);
+        const y = cy - 5;
+        const color = item.color || palette[idx % palette.length];
+
+        const labelText = item.label.length > 15 ? item.label.substring(0, 14) + '…' : item.label;
+        svg += `<text x="${PAD_L - 5}" y="${cy + 3}" text-anchor="end" font-family="sans-serif" font-size="7.5" fill="#475569" font-weight="600">${escapeHtml(labelText)}</text>`;
+
+        svg += `<rect x="${PAD_L}" y="${y}" width="${barW}" height="10" rx="2.5" fill="${color}" opacity="0.88"/>`;
+
+        svg += `<text x="${PAD_L + barW + 4}" y="${cy + 3}" font-family="monospace" font-size="8" fill="${color}" font-weight="700">${item.value}${unit}</text>`;
+      });
+
+      svg += `</svg>`;
+      return svg;
+    }
+
+    function renderChartSVG(chartData) {
+      if (!chartData) return '';
+      if (chartData.type === 'column') {
+        return renderVerticalBarChartSVG(chartData);
+      }
+      if (chartData.type === 'horizontal-bar') {
+        return renderHorizontalBarChartSVG(chartData);
+      }
+      return renderForestPlotSVG(chartData);
+    }
+
     function renderForestPlotSVG(forestData) {
       if (!forestData) return '';
-      const { label, estimate, lower, upper, pValue, isSig } = forestData;
+      
+      const { label, estimate, lower, upper, pValue } = forestData;
 
       const W = 270, H = 46;
       const PAD_L = 10, PAD_R = 10;
@@ -2140,11 +2292,9 @@
       const labelText = `${label} ${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]${pStr}`;
 
       return `
-        <svg class="forest-plot-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"
+        <svg class="forest-plot-svg chart-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"
              xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forest plot: ${labelText}">
-          <!-- Axis line -->
           <line x1="${PAD_L}" y1="${cy}" x2="${W - PAD_R}" y2="${cy}" stroke="#cbd5e1" stroke-width="1"/>
-          <!-- Null line -->
           <line x1="${x0}" y1="${cy - 12}" x2="${x0}" y2="${cy + 12}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
           <!-- CI whiskers -->
           <line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="4" stroke-linecap="round"/>
@@ -2703,6 +2853,9 @@
 
     function renderSubgroupForestRow(fd, overall) {
       if (!fd) return '';
+      if (fd.type === 'column' || fd.type === 'horizontal-bar') {
+        return renderChartSVG(fd);
+      }
       const W = 280, H = 34, PL = 12, PR = 12;
       const cy = (H / 2) - 2;
       const plotW = W - PL - PR;

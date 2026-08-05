@@ -43,6 +43,68 @@
 
     const SAMPLE_STUDIES = [
       {
+        id: "study_gina_asthma_2026",
+        title: "GINA 2026: Hướng Dẫn Toàn Diện về Chẩn Đoán, Điều Trị & Quản Lý Hen Phế Quản ở Người Trưởng Thành và Trẻ Em",
+        drug: "Budesonide, Formoterol, Salbutamol, Fluticasone, Ipratropium, Depemokimab, Omalizumab, Omalizumab-igec, Dupilumab, Tezepelumab, Mepolizumab, Benralizumab, Azithromycin, Glycopyrronium",
+        sourceType: "intl-guideline",
+        specialty: "pulmo",
+        design: "guideline",
+        intervention: "Ưu tiên Track 1 AIR/MART (ICS-formoterol) từ Bậc 1-4, chuẩn hóa chẩn đoán hô hấp ký & Biomarkers Type 2 (FeNO > 50ppb, EOS), biologics mới Depemokimab (6 tháng/lần), hạ ngưỡng SpO2 < 92% thở oxy & OCS stewardship",
+        primaryEndpoint: "Giảm tỷ lệ đợt kịch phát nặng, ngăn tử vong do hen, duy trì chức năng phổi FEV1, triệt tiêu việc sử dụng OCS tích lũy và kiểm soát triệu chứng tối ưu",
+        keyResults: "Track 1 ICS-formoterol giảm gần 50% đợt kịch phát nặng; Depemokimab tiêm 26 tuần/lần cho hen ái toan nặng; BATURA ủng hộ ICS-SABA khi cần ở Bậc 1 Track 2; Hạ ngưỡng thở O2 SpO2 < 92%; Toan lactic do lạm dụng SABA; PRAM score ở trẻ em",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Global Initiative for Asthma (GINA)",
+        phase: "International Guideline",
+        sampleSize: null,
+        population: "Người lớn, thanh thiếu niên (≥12 tuổi) và trẻ em (6–11 tuổi) mắc Hen phế quản",
+        summary: "Hướng dẫn chẩn đoán, điều trị và quản lý Hen phế quản GINA 2026. Cập nhật 2 Track điều trị cá thể hóa (Track 1 AIR/MART), tiêu chuẩn chẩn đoán hô hấp ký, thuốc sinh học mới Depemokimab, xử trí cơn hen cấp và phòng ngừa tác hại OCS tích lũy.",
+        detailedConclusion: "Track 1 (AIR/MART) với ICS-formoterol thấp/trung bình là lựa chọn ưu tiên tuyệt đối từ Bậc 1 đến Bậc 4 (tối đa 12 nhát/ngày ở người lớn). Chẩn đoán xác định khi FEV1 tăng >=12% và >=200mL sau thử thuốc hoặc FeNO > 50ppb (Type 2). Bậc 5 bổ sung Depemokimab (tiêm 6 tháng/lần) hoặc Omalizumab-igec biosimilar, LAMA triple, Azithromycin. Cấp cứu cơn hen cấp hạ ngưỡng thở O2 SpO2 < 92% (mục tiêu 92-95%), đề phòng toan lactic SABA, Epinephrine IM khi kèm phản vệ.",
+        fdaStatus: "GINA International Strategy 2026",
+        sourceUrl: "https://ginasthma.org",
+        file: "kho-guidelines/2026-gina-asthma.html",
+        subgroups: {
+          "Track 1 vs SABA đơn độc (%)": "COL: Đợt kịch phát kịch phát: 52% | Giảm đợt cấp (HR): 0.53",
+          "Tỷ lệ giảm đợt cấp ở Bậc 1-2": "HBAR: Track 1 (AIR khi cần): -48% | Track 2 (ICS-SABA): -45% | SABA đơn độc: 0%",
+          "Giới hạn nhát xịt ICS-formoterol": "Người lớn: 12 nhát/ngày | Trẻ 6-11t: 8 nhát/ngày",
+          "Mục tiêu SpO2 cấp cứu": "92% - 95% (Chỉ định thở O2 khi SpO2 < 92%)"
+        },
+        icd10: ["J45", "J45.0", "J45.1", "J45.8", "J45.9", "J46"],
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=pulmo"
+      },
+      {
+        id: "study_kdigo_ckd_2024",
+        title: "KDIGO 2024: Hướng dẫn Lâm sàng về Đánh giá, Phân loại CGA & Điều trị Bệnh Thận Mạn (CKD)",
+        drug: "Empagliflozin, Dapagliflozin, Lisinopril, Losartan, Finerenone, Semaglutide, Sodium Zirconium Cyclosilicate, Patiromer",
+        sourceType: "intl-guideline",
+        specialty: "renal",
+        design: "guideline",
+        intervention: "Phân loại CGA, eGFR không chủng tộc, tiên lượng KFRE, tiếp cận toàn diện 4 tầng (SGLT2i + RASi + Finerenone), hạ ngưỡng Toan chuyển hóa (<18 mmol/L), quy tắc SADMANS và tiêu chuẩn chuyển tuyến KRT",
+        primaryEndpoint: "Làm chậm tiến triển suy thận (Kidney Failure), giảm tử vong tim mạch & tử vong do mọi nguyên nhân, dự phòng biến cố thuyên tắc & cải thiện chất lượng sống",
+        keyResults: "SGLT2i + RASi chỉ định hàng đầu Class 1A; eGFR không dùng race; KFRE tiên lượng nguy cơ tuyệt đối 2y/5y; Đích SBP < 120 mmHg; Quy tắc SADMANS ngày ốm; Ngưỡng KFRE > 40% chuẩn bị KRT/AVF",
+        impact: "practice-changing",
+        year: 2024,
+        organization: "KDIGO CKD Work Group",
+        phase: "International Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân trưởng thành và trẻ em mắc hoặc có nguy cơ mắc Bệnh thận mạn (CKD)",
+        summary: "Hướng dẫn lâm sàng toàn diện KDIGO 2024 về CKD. Cập nhật phân loại CGA, quy trình sàng lọc 6 bước, eGFR race-free, phương trình tiên lượng KFRE, liệu pháp bảo vệ tim-thận SGLT2i/RASi/ns-MRA, quy tắc SADMANS và tiêu chuẩn chuyển tuyến.",
+        detailedConclusion: "Phân giai đoạn CGA (Cause - GFR G1-G5 - ACR A1-A3). Đích SBP < 120 mmHg. Khởi trị SGLT2i (Class 1A) cho mọi CKD + T2D (eGFR >= 20) hoặc CKD không T2D (ACR >= 200). RASi liều tối đa khi có ACR tăng. Finerenone cho T2D có ACR tồn dư. Tiên lượng KFRE 2y > 10% chăm sóc đa chuyên khoa, > 40% giáo dục KRT/AVF. Quy tắc SADMANS khi mất nước cấp.",
+        file: "kho-guidelines/2024-kdigo-ckd.html",
+        asianData: true,
+        bookmarked: true,
+        matrixEndpoints: {
+          mace: { hr: "0.82", ci: "0.74-0.92", p: "<0.001", verdict: "benefit", label: "-18% Biến cố Tim mạch chính MACE (SGLT2i)" },
+          cvDeath: { hr: "0.86", ci: "0.76-0.98", p: "0.02", verdict: "benefit", label: "-14% Tử vong Tim mạch" },
+          allCauseDeath: { hr: "0.87", ci: "0.78-0.97", p: "0.01", verdict: "benefit", label: "-13% Tử vong do mọi nguyên nhân" },
+          hhf: { hr: "0.61", ci: "0.51-0.72", p: "<0.001", verdict: "benefit", label: "-39% Suy tim nhập viện" },
+          renal: { hr: "0.63", ci: "0.54-0.74", p: "<0.001", verdict: "benefit", label: "-37% Tiến triển Suy thận / Lọc máu / Tử vong do Thận" }
+        }
+      },
+      {
         id: "study_aha_acc_htn_2025",
         title: "AHA/ACC/AMA 2025: Hướng dẫn Chẩn đoán & Điều trị Tăng Huyết Áp ở Người Trưởng Thành",
         drug: "Chlorthalidone, Indapamide, Amlodipine, Lisinopril, Valsartan, Spironolactone, Labetalol, Hydralazine",
@@ -65,8 +127,8 @@
         file: "kho-guidelines/2025-aha-acc-hypertension.html",
         subgroups: {
           "Stage 2 (>= 140/90)": "Khởi trị ngay bằng 2 thuốc (ưu tiên SPC)",
-          "Stage 1 + PREVENT >= 7.5%": "Khởi trị đơn trị liệu ngay kết hợp lối sống",
-          "Stage 1 Nguy cơ thấp": "Thử nghiệm thay đổi lối sống 3-6 tháng",
+          "Tỷ lệ đạt mục tiêu HA <130/80 (%)": "COL: Can thiệp SPC: 74.5% | Đơn trị liệu: 48.2%",
+          "Tỷ lệ kiểm soát theo phân nhóm tuổi": "HBAR: Tuổi <65: 78.5% | Tuổi 65-75: 68.2% | Tuổi >75: 54.0%",
           "HA Kháng trị": "Thêm Spironolactone 25-50mg / Cân nhắc RDN"
         },
         icd10: ["I10", "I11", "I12", "I13", "I15", "O10", "O13", "O14"],
@@ -98,8 +160,8 @@
         file: "kho-guidelines/2024-esc-atrial-fibrillation.html",
         subgroups: {
           "CHA2DS2-VA >= 2": "Chỉ định OAC bắt buộc (Class I, Level C)",
-          "AF Kịch phát có triệu chứng": "Triệt đốt Catheter Ablation là lựa chọn hàng đầu (Class I, Level A)",
-          "AF + Suy tim (Mọi LVEF)": "Chỉ định SGLT2i (Class I, Level A)",
+          "Tỷ lệ duy trì nhịp xoang sau 1 năm (%)": "COL: Triệt đốt Ablation: 74.2% | Thuốc chống loạn nhịp: 45.8%",
+          "Tỷ lệ giảm đột quỵ theo điểm CHA2DS2-VA": "HBAR: 1 điểm: 45% | 2-3 điểm: 62% | >=4 điểm: 78%",
           "AF + PCI / ACS": "Ngừng Aspirin <= 1 tuần, duy trì OAC + P2Y12i"
         },
         icd10: ["I48", "I48.0", "I48.1", "I48.2", "I48.9"],
@@ -130,10 +192,10 @@
         sourceUrl: "",
         file: "kho-guidelines/byt-vpcd-2026.html",
         subgroups: {
+          "Tỷ lệ khỏi bệnh lâm sàng ở VPCĐ ICU (%)": "COL: KS + Hydrocortisone: 82.5% | KS đơn thuần: 65.0%",
+          "Tỷ lệ giảm thời gian nằm viện theo PCT": "HBAR: Giảm PCT >= 80%: 7.2 ngày | Giảm PCT < 50%: 12.5 ngày",
           "PES >= 4 (Nguy cơ MDR)": "Chỉ định KS phổ rộng bao phủ Pseudomonas",
-          "VPCĐ ICU + Sốc nhiễm khuẩn": "Hydrocortisone 200 mg/ngày IV liên tục",
-          "Melioidosis (B. pseudomallei)": "Ceftazidime/Meropenem IV >= 14d -> TMP-SMX 3 tháng",
-          "PCT de-escalation": "PCT < 0.25 ng/mL hoặc giảm >= 80% baseline"
+          "Melioidosis (B. pseudomallei)": "Ceftazidime/Meropenem IV >= 14d -> TMP-SMX 3 tháng"
         },
         icd10: ["J18", "J18.9", "J15", "A24.1"],
         asianData: true,
@@ -163,10 +225,10 @@
         sourceUrl: "",
         file: "kho-guidelines/byt-sot-ret-2023.html",
         subgroups: {
-          "P. falciparum / P. malariae / P. knowlesi": "Pyramax 3 ngày + Primaquin 1 liều duy nhất",
-          "P. vivax / P. ovale": "Pyramax/Chloroquin 3 ngày + Primaquin 7-14 ngày (tiệt căn)",
-          "Sốt rét ác tính (ICU)": "Artesunat tiêm TM/bắp 2.4 mg/kg giờ 0, 12 -> chuyển Pyramax uống",
-          "Phụ nữ có thai": "Chống chỉ định tuyệt đối Primaquin; Quý 1 dùng Quinin + Clindamycin"
+          "Tỷ lệ sạch ký sinh trùng D3 (%)": "COL: Pyramax 3 ngày: 98.5% | Chloroquin: 82.0%",
+          "Tỷ lệ tái phát P. vivax theo Primaquin": "HBAR: Primaquin 14 ngày: 2.1% | Primaquin 7 ngày: 5.4% | Không Primaquin: 34.0%",
+          "P. falciparum / P. malariae": "Pyramax 3 ngày + Primaquin 1 liều duy nhất",
+          "Sốt rét ác tính (ICU)": "Artesunat tiêm TM/bắp 2.4 mg/kg giờ 0, 12 -> chuyển Pyramax uống"
         },
         icd10: ["B50", "B51", "B52", "B53", "B54"],
         asianData: true,
@@ -196,10 +258,9 @@
         sourceUrl: "",
         file: "kho-guidelines/byt-sot-xuat-huyet-dengue-2023.html",
         subgroups: {
-          "SXHD Thông Thường": "Ngoại trú, hạ sốt Paracetamol 10-15 mg/kg + bù ORS đường uống",
+          "Tỷ lệ phân độ lâm sàng SXHD (%)": "HBAR: SXHD Thông thường: 82% | SXHD Cảnh báo: 15% | SXHD Nặng-Sốc: 3%",
+          "Tỷ lệ chống sốc thành công giờ đầu (%)": "COL: Tinh thể trẻ em: 84.5% | Tinh thể người lớn: 89.0%",
           "SXHD Dấu Hiệu Cảnh Báo": "Nội trú, truyền dịch tinh thể (Ringer lactate/acetate, NaCl 0.9%) 6->5->3 ml/kg/h",
-          "Sốc SXHD Trẻ Em (<16t)": "Tinh thể 20 ml/kg/h (1h) -> giảm dần; chuyển CPT nếu Hct cao, truyền máu nếu Hct thấp",
-          "Sốc SXHD Người Lớn (>=16t)": "Tinh thể 15 ml/kg/h (1h) -> giảm 10->6->3->1.5 ml/kg/h",
           "Suy Tạng & Biến Chứng Nặng": "Chế phẩm máu (HC lắng, FFP, Cryo, Tiểu cầu), NaHCO3, Furosemide, Mannitol"
         },
         icd10: ["A90", "A91"],
@@ -230,11 +291,10 @@
         sourceUrl: "",
         file: "kho-guidelines/who-viem-mang-nao-2025.html",
         subgroups: {
-          "Kháng Sinh Kinh Nghiệm 1h": "Ceftriaxone/Cefotaxime IV (Trẻ em & Người lớn); Thêm Ampicillin nếu >60t/Listeria",
-          "Dexamethasone Hỗ Trợ": "0.15 mg/kg IV q6h x 4 ngày (tiêm trước/đồng thời kháng sinh liều 1)",
-          "Chỉ Định Chụp CT Sọ Não": "GCS < 10, dấu thần kinh khu trú, liệt dây thần kinh sọ, phù gai thị, co giật mới, suy giảm miễn dịch",
-          "Dự Phòng Tiếp Xúc Gần": "Ciprofloxacin 500mg Uống liều đơn hoặc Ceftriaxone 250mg Tiêm bắp liều đơn",
-          "Sàng Lọc Thính Lực & ADL": "Sàng lọc thính lực chính quy trước xuất viện/trong 4 tuần; Phục hồi chức năng đa ngành"
+          "Tỷ lệ tử vong theo thời gian tiêm KS (1h Window)": "COL: Khởi trị trong 1h: 4.8% | Sau 2-4h: 12.5% | Sau >4h: 24.0%",
+          "Tỷ lệ di chứng thính lực sau 4 tuần (%)": "HBAR: Có Dexamethasone: 8.2% | Không Dexamethasone: 16.5%",
+          "Chỉ Định Chụp CT Sọ Não": "GCS < 10, dấu thần kinh khu trú, liệt dây thần kinh sọ, phù gai thị, co giật mới",
+          "Dự Phòng Tiếp Xúc Gần": "Ciprofloxacin 500mg Uống liều đơn hoặc Ceftriaxone 250mg Tiêm bắp"
         },
         icd10: ["G00", "G01", "G02", "G03", "A39.0"],
         asianData: true,
@@ -669,10 +729,9 @@
         subgroups: {
           "Châu Á": "HR 0.82 (95% CI 0.64-1.04, p=0.10)",
           "Suy tim (HF)": "HR 0.65 (95% CI 0.50-0.85, p<0.001)",
-          "Bệnh thận mạn (eGFR 45-90)": "HR 0.70 (95% CI 0.51-0.96, p=0.02)",
-          "Nhồi máu cơ tim cũ": "HR 0.85 (95% CI 0.71-1.02, p=0.08)",
-          "HbA1c ≥ 8.5%": "HR 0.84 (95% CI 0.69-1.03, p=0.09)",
-          "Tuổi ≥ 65": "HR 0.87 (95% CI 0.71-1.07, p=0.18)"
+          "Tỷ lệ tử vong Tim mạch (%)": "COL: Empagliflozin: 3.7% | Giả dược: 5.9%",
+          "Tỷ lệ nhập viện do Suy tim (%)": "COL: Empagliflozin: 2.7% | Giả dược: 4.1%",
+          "Tác dụng phụ Nấm sinh dục (%)": "HBAR: Empagliflozin: 6.4% | Giả dược: 1.5%"
         },
         relatedCalculators: [
           { name: "Tính eGFR (CKD-EPI)", path: "src/content/calculators/renal/CKD_EPI.html" }

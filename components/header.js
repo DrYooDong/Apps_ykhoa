@@ -59,16 +59,26 @@ function initHeader() {
   const footer         = document.querySelector('.global-footer');
 
   // --- Theme toggle ---
-      const html = document.documentElement;
-      const themeBtn = document.getElementById('theme-toggle-btn');
-      let theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
+  if (!window.CliniPortalTheme) {
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+      let theme = localStorage.getItem('cliniportal_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       html.setAttribute('data-theme', theme);
+      themeBtn.innerHTML = theme === 'dark'
+        ? '<i class="fa-solid fa-sun" style="color:#f59e0b;"></i> <span>Chế độ Sáng</span>'
+        : '<i class="fa-solid fa-moon" style="color:#8b5cf6;"></i> <span>Chế độ Tối</span>';
 
       themeBtn.addEventListener('click', () => {
         theme = theme === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', theme);
-        themeBtn.textContent = theme === 'dark' ? '☀️' : '🌓';
+        localStorage.setItem('cliniportal_theme', theme);
+        themeBtn.innerHTML = theme === 'dark'
+          ? '<i class="fa-solid fa-sun" style="color:#f59e0b;"></i> <span>Chế độ Sáng</span>'
+          : '<i class="fa-solid fa-moon" style="color:#8b5cf6;"></i> <span>Chế độ Tối</span>';
       });
+    }
+  }
 
   // ── Sidebar helpers ──────────────────────────────────────
   const isMobile = () => window.innerWidth < 768;

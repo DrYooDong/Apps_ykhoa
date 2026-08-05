@@ -1264,9 +1264,10 @@
     }
 
     /* ══════════════════════════
-       FOREST PLOT MINI
+       FOREST & EBM CHARTS MINI
     ══════════════════════════ */
-    .forest-plot-inline {
+    .forest-plot-inline,
+    .chart-inline {
       margin-top: 0.6rem;
       background: var(--surface-2);
       border: 1px solid var(--border-light);
@@ -1276,18 +1277,36 @@
       max-width: 100%;
       overflow-x: auto;
     }
-    .forest-plot-svg {
+    .forest-plot-svg,
+    .chart-svg {
       display: block;
       overflow: visible;
+      max-width: 100%;
     }
-    /* Forest plot inside mobile card */
-    .mc-forest-wrap {
+    .chart-col-svg text,
+    .chart-hbar-svg text {
+      transition: fill 200ms ease;
+    }
+    /* Chart wrapper inside mobile card */
+    .mc-forest-wrap,
+    .mc-chart-wrap {
       margin-top: 0.5rem;
       background: var(--surface-2);
       border: 1px solid var(--border-light);
       border-radius: 10px;
       padding: 0.5rem 0.25rem 0.25rem;
       overflow-x: auto;
+    }
+
+    /* Dark mode adjustments for SVG charts */
+    [data-theme="dark"] .chart-svg text[fill="#475569"] {
+      fill: #cbd5e1 !important;
+    }
+    [data-theme="dark"] .chart-svg line[stroke="#cbd5e1"] {
+      stroke: #475569 !important;
+    }
+    [data-theme="dark"] .chart-svg line[stroke="#e2e8f0"] {
+      stroke: #334155 !important;
     }
 
     /* ══════════════════════════
