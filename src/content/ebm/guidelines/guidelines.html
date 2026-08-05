@@ -212,6 +212,16 @@
             </div>
           </div>
 
+          <!-- Row 1.5: Quick Practice Badges -->
+          <div class="filter-group-row" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-light);">
+            <span class="filter-row-label">Lọc nhanh</span>
+            <div class="filter-pills">
+              <button class="filter-pill" onclick="setFilter('impact', 'practice-changing')" style="border-color: #ef4444; color: #ef4444; background: #fef2f2;">🔥 Practice-Changing</button>
+              <button class="filter-pill" onclick="setFilter('sourceType', 'vn-moh')" style="border-color: #ef4444; color: #b91c1c; background: #fff0f2;">🇻🇳 Khuyến cáo BYT</button>
+              <button class="filter-pill" id="quick-asian-data-btn" onclick="filterByAsianData()" style="border-color: #f59e0b; color: #d97706; background: #fffbeb;">🌏 Dữ liệu Châu Á</button>
+            </div>
+          </div>
+
           <!-- Row 2: Source Type Filters -->
           <div class="filter-group-row" id="filter-row-source-type">
             <span class="filter-row-label">Phân loại nguồn</span>
@@ -737,8 +747,43 @@ create table clinical_guidelines (
           <div style="text-align: center; padding: 2rem; color: var(--text-muted);">Nhập từ khóa để tìm mã ICD-10</div>
         </div>
       </div>
+  <!-- NNT / NNH CALCULATOR MODAL -->
+  <div class="modal-overlay" id="nnt-calculator-modal">
+    <div class="modal" style="max-width: 650px; width: 90%;">
+      <div class="modal-header">
+        <h3>🧮 Máy Tính Chỉ Số NNT / NNH Lâm Sàng (Number Needed to Treat)</h3>
+        <button class="modal-close" onclick="closeNntModal()">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1.25rem;">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Tính toán số lượng bệnh nhân cần điều trị (NNT) để ngăn ngừa 1 biến cố có hại, hoặc NNH (Number Needed to Harm) để phát sinh 1 tác dụng phụ.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text); display: block; margin-bottom: 4px;">Tỷ lệ biến cố nhóm chứng (CER %)</label>
+            <input type="number" id="nnt-cer-input" step="0.01" min="0" max="100" placeholder="VD: 12.5" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-light); border-radius: 6px; background: var(--surface);">
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text); display: block; margin-bottom: 4px;">Tỷ lệ nhóm can thiệp (EER %)</label>
+            <input type="number" id="nnt-eer-input" step="0.01" min="0" max="100" placeholder="VD: 8.2" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-light); border-radius: 6px; background: var(--surface);">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 1.25rem;">
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Hoặc nhập Tỷ số nguy cơ (HR):</span>
+          <input type="number" id="nnt-hr-input" step="0.01" placeholder="VD: 0.75" style="width: 120px; padding: 0.4rem; border: 1px solid var(--border-light); border-radius: 6px; background: var(--surface); font-size: 0.85rem;">
+          <button class="btn btn-small" onclick="calculateNNTFromHR()">Ước tính từ HR</button>
+        </div>
+
+        <div id="nnt-results-card" style="background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 8px; padding: 1rem; display: none;">
+          <!-- Results injected via JS -->
+        </div>
+      </div>
     </div>
   </div>
+
+
 
   <script src="../../../../js/cliniportal-sync.js"></script>
   <script src="../js/ebm-format-loader.js"></script>

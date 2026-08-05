@@ -168,35 +168,38 @@
           const remoteIds = new Set(data.map(s => s.id));
           const localOnlyStudies = studies.filter(s => !remoteIds.has(s.id));
 
-          const remoteStudies = data.map(s => ({
-            id: s.id,
-            title: s.title || '',
-            author: s.author || '',
-            drug: s.drug || 'N/A',
-            sourceType: s.sourceType || 'intl-study',
-            specialty: s.specialty || 'cardio',
-            design: s.design || 'rct',
-            intervention: s.intervention || '',
-            primaryEndpoint: s.primaryEndpoint || '',
-            keyResults: s.keyResults || '',
-            impact: s.impact || 'informative',
-            year: s.year || new Date().getFullYear(),
-            organization: s.organization || 'N/A',
-            phase: s.phase || 'N/A',
-            sampleSize: s.sampleSize || null,
-            population: s.population || 'N/A',
-            summary: s.summary || 'Không có kết luận',
-            detailedConclusion: s.detailedConclusion || '',
-            fdaStatus: s.fdaStatus || 'N/A',
-            sourceUrl: s.sourceUrl || '',
-            file: s.file || '',
-            asianData: s.asianData !== undefined ? s.asianData : false,
-            bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
-            icd10: Array.isArray(s.icd10) ? s.icd10 : (typeof s.icd10 === 'string' && s.icd10 ? (() => { try { return JSON.parse(s.icd10); } catch(e) { return []; } })() : []),
-            subgroups: (typeof s.subgroups === 'object' && s.subgroups !== null) ? s.subgroups
-                       : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
-            createdAt: s.createdAt || new Date().toISOString()
-          }));
+          const remoteStudies = data.map(s => {
+            return {
+              ...s, // Preserve rich EBM fields like matrixEndpoints, relatedCalculators, citation, pocketCard, decisionTree, etc.
+              id: s.id,
+              title: s.title || '',
+              author: s.author || '',
+              drug: s.drug || 'N/A',
+              sourceType: s.sourceType || 'intl-study',
+              specialty: s.specialty || 'cardio',
+              design: s.design || 'rct',
+              intervention: s.intervention || '',
+              primaryEndpoint: s.primaryEndpoint || '',
+              keyResults: s.keyResults || '',
+              impact: s.impact || 'informative',
+              year: s.year || new Date().getFullYear(),
+              organization: s.organization || 'N/A',
+              phase: s.phase || 'N/A',
+              sampleSize: s.sampleSize || null,
+              population: s.population || 'N/A',
+              summary: s.summary || 'Không có kết luận',
+              detailedConclusion: s.detailedConclusion || '',
+              fdaStatus: s.fdaStatus || 'N/A',
+              sourceUrl: s.sourceUrl || '',
+              file: s.file || '',
+              asianData: s.asianData !== undefined ? s.asianData : false,
+              bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
+              icd10: Array.isArray(s.icd10) ? s.icd10 : (typeof s.icd10 === 'string' && s.icd10 ? (() => { try { return JSON.parse(s.icd10); } catch(e) { return []; } })() : []),
+              subgroups: (typeof s.subgroups === 'object' && s.subgroups !== null) ? s.subgroups
+                         : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
+              createdAt: s.createdAt || new Date().toISOString()
+            };
+          });
           
           // Merge and sort
           studies = [...localOnlyStudies, ...remoteStudies];
@@ -319,7 +322,11 @@
     // ════════════════════════════
     
     function loadStudies() {
-      const saved = localStorage.getItem('internalMedicineStudies');
+      let saved = localStorage.getItem('clinicalGuidelines');
+      if (!saved) {
+        // Fallback for older version
+        saved = localStorage.getItem('internalMedicineStudies');
+      }
       if (saved) {
         try {
           studies = JSON.parse(saved);
@@ -346,6 +353,7 @@
             }
 
             return {
+              ...s, // Preserve rich EBM fields like matrixEndpoints, relatedCalculators, etc.
               id: s.id || generateId(),
               title: s.title || '',
               author: s.author || '',
@@ -404,7 +412,7 @@
     }
 
     function saveStudies() {
-      localStorage.setItem('internalMedicineStudies', JSON.stringify(studies));
+      localStorage.setItem('clinicalGuidelines', JSON.stringify(studies));
     }
 
     function generateId() {
@@ -472,23 +480,23 @@
         periodContainer.innerHTML = periodHtml;
       }
 
-      // Left Nav specialty filter
       const leftNavSpecList = document.getElementById('spec-filter-list');
       if (leftNavSpecList) {
-        leftNavSpecList.innerHTML = `
+        let specHtml = `
           <button class="spec-filter-item ${filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)" title="Tất cả chuyên khoa">
             <span class="spec-filter-dot" style="background: var(--text-faint);"></span>
             <span class="left-nav-text">Tất cả</span>
           </button>
         `;
         Object.entries(SPECIALTIES).forEach(([key, spec]) => {
-          leftNavSpecList.innerHTML += `
+          specHtml += `
             <button class="spec-filter-item ${filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')" title="${spec.name}">
               <span class="spec-filter-dot" style="background: ${spec.color};"></span>
               <span class="left-nav-text">${spec.name}</span>
             </button>
           `;
         });
+        leftNavSpecList.innerHTML = specHtml;
       }
     }
 
@@ -511,73 +519,34 @@
     // ════════════════════════════
 
     function getFilteredStudies() {
-      let result = [...studies];
+      const searchLower = filters.search ? filters.search.toLowerCase().trim() : '';
 
-      // Tab constraint
-      if (currentTab === 'saved') {
-        result = result.filter(s => s.bookmarked);
-      }
-
-      // Source Type filter
-      if (filters.sourceType) {
-        result = result.filter(s => s.sourceType === filters.sourceType);
-      }
-
-      // Specialty filter
-      if (filters.specialty) {
-        result = result.filter(s => s.specialty === filters.specialty);
-      }
-
-      // Design filter
-      if (filters.design) {
-        result = result.filter(s => s.design === filters.design);
-      }
-
-      // Impact filter
-      if (filters.impact) {
-        result = result.filter(s => s.impact === filters.impact);
-      }
-
-      // Period filter
-      if (filters.period) {
-        result = result.filter(s => isWithinPeriod(s, filters.period));
-      }
-
-      // Asian data filter
-      if (filters.asianData) {
-        result = result.filter(s => s.asianData);
-      }
-
-      // Subgroup data filter (from sidebar quick filter)
-      if (filters.hasSubgroup) {
-        result = result.filter(s => s.subgroups && typeof s.subgroups === 'object' && Object.keys(s.subgroups).length > 0);
-      }
-
-      // Has summary filter
-      if (filters.hasSummary) {
-        result = result.filter(s => s.file && s.file.trim() !== '');
-      }
-
-      // ICD-10 filter
-      if (filters.icd10) {
-        result = result.filter(s => s.icd10 && Array.isArray(s.icd10) && s.icd10.some(code => code.startsWith(filters.icd10) || filters.icd10.startsWith(code)));
-      }
-
-      // Search filter
-      if (filters.search) {
-        const query = filters.search.toLowerCase().trim();
-        result = result.filter(s => 
-          s.title.toLowerCase().includes(query) ||
-          s.drug.toLowerCase().includes(query) ||
-          s.organization.toLowerCase().includes(query) ||
-          (s.summary && s.summary.toLowerCase().includes(query)) ||
-          (s.detailedConclusion && s.detailedConclusion.toLowerCase().includes(query)) ||
-          (s.population && s.population.toLowerCase().includes(query)) ||
-          (s.intervention && s.intervention.toLowerCase().includes(query)) ||
-          (s.primaryEndpoint && s.primaryEndpoint.toLowerCase().includes(query)) ||
-          (s.keyResults && s.keyResults.toLowerCase().includes(query))
-        );
-      }
+      let result = studies.filter(s => {
+        if (currentTab === 'saved' && !s.bookmarked) return false;
+        if (filters.sourceType && s.sourceType !== filters.sourceType) return false;
+        if (filters.specialty && s.specialty !== filters.specialty) return false;
+        if (filters.design && s.design !== filters.design) return false;
+        if (filters.impact && s.impact !== filters.impact) return false;
+        if (filters.period && !isWithinPeriod(s, filters.period)) return false;
+        if (filters.asianData && !s.asianData) return false;
+        if (filters.hasSubgroup && (!s.subgroups || typeof s.subgroups !== 'object' || Object.keys(s.subgroups).length === 0)) return false;
+        if (filters.hasSummary && (!s.file || s.file.trim() === '')) return false;
+        if (filters.icd10 && (!Array.isArray(s.icd10) || !s.icd10.some(code => code.startsWith(filters.icd10) || filters.icd10.startsWith(code)))) return false;
+        
+        if (searchLower) {
+          const tTitle = s.title && s.title.toLowerCase().includes(searchLower);
+          const tDrug = s.drug && s.drug.toLowerCase().includes(searchLower);
+          const tOrg = s.organization && s.organization.toLowerCase().includes(searchLower);
+          const tSum = s.summary && s.summary.toLowerCase().includes(searchLower);
+          const tDetail = s.detailedConclusion && s.detailedConclusion.toLowerCase().includes(searchLower);
+          const tPop = s.population && s.population.toLowerCase().includes(searchLower);
+          const tInterv = s.intervention && s.intervention.toLowerCase().includes(searchLower);
+          const tEnd = s.primaryEndpoint && s.primaryEndpoint.toLowerCase().includes(searchLower);
+          const tRes = s.keyResults && s.keyResults.toLowerCase().includes(searchLower);
+          if (!tTitle && !tDrug && !tOrg && !tSum && !tDetail && !tPop && !tInterv && !tEnd && !tRes) return false;
+        }
+        return true;
+      });
 
       // Sort logic
       if (sortField) {
@@ -613,9 +582,14 @@
       renderTable();
     }
 
+    let searchDebounceTimer = null;
     function handleSearch() {
-      filters.search = document.getElementById('search-input').value;
-      renderTable();
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => {
+        filters.search = document.getElementById('search-input').value;
+        updateUrlState();
+        renderTable();
+      }, 150);
     }
 
     // ════════════════════════════
@@ -776,8 +750,16 @@
 
       document.getElementById('sidebar-btn-studies').classList.remove('active');
       document.getElementById('sidebar-btn-saved').classList.remove('active');
-      if (tabName === 'list') document.getElementById('sidebar-btn-studies').classList.add('active');
-      if (tabName === 'saved') document.getElementById('sidebar-btn-saved').classList.add('active');
+      if (tabName === 'list') {
+        document.getElementById('sidebar-btn-studies').classList.add('active');
+        filters.hasSubgroup = false;
+        filters.asianData = false;
+        const asianCheckbox = document.getElementById('asian-data-filter');
+        if (asianCheckbox) asianCheckbox.checked = false;
+      }
+      if (tabName === 'saved') {
+        document.getElementById('sidebar-btn-saved').classList.add('active');
+      }
 
       const panelStudies   = document.getElementById('panel-studies');
       const panelCompare   = document.getElementById('panel-compare');
@@ -792,7 +774,11 @@
       if (tabName === 'compare') {
         panelCompare.classList.add('active');
         pageTitle.textContent = 'So Sánh Tài Liệu';
-        renderCompareView();
+        if (typeof compareMode !== 'undefined' && compareMode === 'matrix') {
+          renderCompareMatrix();
+        } else {
+          renderCompareView();
+        }
       } else if (tabName === 'analytics') {
         panelAnalytics.classList.add('active');
         pageTitle.textContent = 'Thống Kê & Phân Tích';
@@ -1087,12 +1073,30 @@
                     </div>
                     
                     <div class="detail-actions">
-                      ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Bài báo gốc</a>` : ''}
+                      ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Báo cáo gốc</a>` : ''}
                       ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small btn-primary">📝 Tóm tắt</a>` : ''}
-                      ${sgCount > 0 ? `<button class="btn btn-small" style="color:#0891b2;border-color:rgba(8,145,178,0.4);" onclick="event.stopPropagation();openSubgroupModal('${study.id}',event)">🧬 Subgroup (${sgCount})</button>` : ''}
-                      <button class="btn btn-small" style="color:#7c3aed;border-color:rgba(124,58,237,0.4);" onclick="event.stopPropagation();window.CliniPortalDrugLinker.openModal('${study.id}')">💊 Tương tác thuốc</button>
-                      <button class="btn btn-small" onclick="openEditModal('${study.id}', event)">✏️ Sửa</button>
-                      <button class="btn btn-small" style="color: var(--color-practice-changing); border-color: rgba(220,38,38,0.3);" onclick="deleteStudy('${study.id}', event)">🗑️ Xóa</button>
+                      
+                      <!-- Nút Nâng cao Dropdown -->
+                      <div class="actions-dropdown" id="dropdown-advanced-${study.id}">
+                        <button class="btn btn-small" style="color:#0284c7;border-color:rgba(2,132,199,0.4);" onclick="event.stopPropagation();toggleActionsDropdown('dropdown-advanced-${study.id}', event)">⚡ Nâng cao ▾</button>
+                        <div class="actions-dropdown-menu">
+                          <button class="actions-dropdown-item" onclick="event.stopPropagation();closeAllActionsDropdowns();openNntModal('${study.id}')">🧮 Tính NNT</button>
+                          ${sgCount > 0 ? `<button class="actions-dropdown-item" onclick="event.stopPropagation();closeAllActionsDropdowns();openSubgroupModal('${study.id}',event)">🧬 Subgroup (${sgCount})</button>` : ''}
+                          <button class="actions-dropdown-item" onclick="event.stopPropagation();closeAllActionsDropdowns();window.CliniPortalDrugLinker.openModal('${study.id}')">💊 Tương tác thuốc</button>
+                          ${study.relatedCalculators && study.relatedCalculators.length > 0 ? `<a href="../../../../${study.relatedCalculators[0].path}" target="_blank" class="actions-dropdown-item">🧮 ${escapeHtml(study.relatedCalculators[0].name)}</a>` : ''}
+                          ${study.relatedFlowcharts && study.relatedFlowcharts.length > 0 ? `<a href="../../../../${study.relatedFlowcharts[0].path}" target="_blank" class="actions-dropdown-item">🧩 ${escapeHtml(study.relatedFlowcharts[0].name)}</a>` : ''}
+                          ${study.radarUrl ? `<a href="${study.radarUrl}" target="_blank" class="actions-dropdown-item">📡 Radar diff</a>` : ''}
+                        </div>
+                      </div>
+
+                      <!-- Nút Điều chỉnh Dropdown -->
+                      <div class="actions-dropdown" id="dropdown-manage-${study.id}">
+                        <button class="btn btn-small" style="color:var(--text-muted);border-color:var(--border-light);" onclick="event.stopPropagation();toggleActionsDropdown('dropdown-manage-${study.id}', event)">⚙️ Điều chỉnh ▾</button>
+                        <div class="actions-dropdown-menu">
+                          <button class="actions-dropdown-item" onclick="event.stopPropagation();closeAllActionsDropdowns();openEditModal('${study.id}', event)">✏️ Sửa thông tin</button>
+                          <button class="actions-dropdown-item danger" onclick="event.stopPropagation();closeAllActionsDropdowns();deleteStudy('${study.id}', event)">🗑️ Xóa nghiên cứu</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1374,14 +1378,331 @@
     function removeCompare(id) {
       selectedIds.delete(id);
       updateCompareBadge();
-      renderCompareView();
+      if (typeof compareMode !== 'undefined' && compareMode === 'matrix') renderCompareMatrix();
+      else renderCompareView();
     }
 
     function clearComparison() {
       selectedIds.clear();
       updateCompareBadge();
-      renderCompareView();
+      if (typeof compareMode !== 'undefined' && compareMode === 'matrix') renderCompareMatrix();
+      else renderCompareView();
     }
+
+    let compareMode = 'grid';
+
+    function setCompareMode(mode) {
+      compareMode = mode;
+      const gridBtn = document.getElementById('compare-mode-grid-btn');
+      const matrixBtn = document.getElementById('compare-mode-matrix-btn');
+      const gridContainer = document.getElementById('compare-grid-container');
+      const matrixContainer = document.getElementById('compare-matrix-container');
+
+      if (gridBtn) gridBtn.classList.toggle('active', mode === 'grid');
+      if (matrixBtn) matrixBtn.classList.toggle('active', mode === 'matrix');
+
+      if (gridContainer) gridContainer.style.display = mode === 'grid' ? 'grid' : 'none';
+      if (matrixContainer) matrixContainer.style.display = mode === 'matrix' ? 'block' : 'none';
+
+      if (mode === 'matrix') {
+        renderCompareMatrix();
+      } else {
+        renderCompareView();
+      }
+    }
+
+    function renderCompareMatrix() {
+      const matrixContainer = document.getElementById('compare-matrix-container');
+      const emptyState = document.getElementById('compare-empty-state');
+      if (!matrixContainer) return;
+
+      if (selectedIds.size === 0) {
+        matrixContainer.innerHTML = '';
+        if (emptyState) emptyState.style.display = 'block';
+        return;
+      }
+      if (emptyState) emptyState.style.display = 'none';
+
+      const comparedStudies = studies.filter(s => selectedIds.has(s.id));
+      
+      const endpointLabels = [
+        { key: 'mace', label: '🫀 Biến cố tim mạch (MACE)' },
+        { key: 'cvDeath', label: '💔 Tử vong đặc hiệu (CV Death/HCC)' },
+        { key: 'allCauseDeath', label: '⚰️ Tử vong mọi nguyên nhân' },
+        { key: 'hhf', label: '🫁 Suy tim / Biến chứng tim' },
+        { key: 'renal', label: '🧪 Chức năng thận / Thận trọng' },
+        { key: 'adverse', label: '⚠️ Tác dụng phụ & Độc tính' }
+      ];
+
+      const headersHtml = comparedStudies.map(study => `
+        <th>
+          <div class="matrix-study-header">${escapeHtml(study.title)}</div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal; margin-top: 2px;">
+            ${escapeHtml(study.drug || 'N/A')} <span style="display:inline-block; margin-left: 4px; padding: 1px 4px; border-radius: 4px; background: #e2e8f0;">${study.year}</span>
+          </div>
+          <button class="btn btn-small" onclick="removeCompare('${study.id}')" style="margin-top: 8px; font-size: 0.7rem; padding: 2px 6px;">&times; Xóa</button>
+        </th>
+      `).join('');
+
+      const rowsHtml = endpointLabels.map(ep => {
+        const cellsHtml = comparedStudies.map(study => {
+          const m = study.matrixEndpoints && study.matrixEndpoints[ep.key];
+          if (!m) {
+            return `<td><span style="color: var(--text-faint); font-style: italic;">Chưa có dữ liệu</span></td>`;
+          }
+          let badgeClass = 'matrix-cell-neutral';
+          if (m.verdict === 'benefit') badgeClass = 'matrix-cell-benefit';
+          else if (m.verdict === 'adverse') badgeClass = 'matrix-cell-adverse';
+
+          return `
+            <td>
+              <div class="${badgeClass}">
+                <div style="font-size: 0.82rem; font-weight: 700; margin-bottom: 3px;">${escapeHtml(m.label || '')}</div>
+                ${m.hr ? `<div style="font-size: 0.75rem;">HR/OR: <b>${escapeHtml(m.hr)}</b> (95% CI ${escapeHtml(m.ci || '-')})</div>` : ''}
+                ${m.p ? `<span class="matrix-p-val">p = ${escapeHtml(m.p)}</span>` : ''}
+              </div>
+            </td>
+          `;
+        }).join('');
+        return `<tr><td style="font-weight: 700; background: var(--surface-2); font-size: 0.85rem; vertical-align: middle;">${ep.label}</td>${cellsHtml}</tr>`;
+      }).join('');
+
+      matrixContainer.innerHTML = `
+        <div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-light);">
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 4px;">📊 Ma Trận Đối Chiếu Tín Hiệu Lâm Sàng (EBM Heatmap)</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Màu xanh: Lợi ích rõ rệt · Màu vàng: Trung tính · Màu đỏ: Tăng nguy cơ / Cảnh báo</p>
+          </div>
+          <button class="btn btn-small" onclick="window.print()"><i class="fa-solid fa-print"></i> Tải báo cáo</button>
+        </div>
+        <div style="overflow-x: auto; padding-bottom: 1rem;">
+          <table class="matrix-table" style="min-width: 800px; width: 100%; border-collapse: separate; border-spacing: 0;">
+            <thead>
+              <tr>
+                <th style="width: 220px; background: var(--surface-3);">Tiêu chí / Nghiên cứu</th>
+                ${headersHtml}
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    // Export Compare functions to global window for HTML onclicks
+    window.setCompareMode = setCompareMode;
+    window.renderCompareMatrix = renderCompareMatrix;
+    window.removeCompare = removeCompare;
+    window.clearComparison = clearComparison;
+
+    // ════════════════════════════
+    // NNT / NNH CALCULATOR LOGIC
+    // ════════════════════════════
+
+    function copyCitationText(text) {
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('📋 Đã sao chép trích dẫn vào bộ nhớ tạm!');
+      }).catch(err => {
+        alert('❌ Không thể sao chép: ' + err);
+      });
+    }
+
+    function printStudySummary(studyId) {
+      if (!studyId || typeof studies === 'undefined') return;
+      const study = studies.find(s => s.id === studyId);
+      if (!study) return;
+
+      if (study.file) {
+        window.open(resolveStudyFile(study.file), '_blank');
+      } else {
+        const printWin = window.open('', '_blank');
+        if (!printWin) return;
+        printWin.document.write(`
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>${escapeHtml(study.title)} - CliniPortal EBM</title>
+            <style>
+              body { font-family: sans-serif; padding: 2rem; color: #1e293b; line-height: 1.6; }
+              h1 { font-size: 1.4rem; color: #0f172a; margin-bottom: 0.5rem; }
+              .meta { font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
+              .section { margin-bottom: 1rem; }
+              .label { font-weight: bold; color: #334155; font-size: 0.85rem; text-transform: uppercase; }
+              .box { background: #f8fafc; border-left: 4px solid #6366f1; padding: 0.8rem 1rem; border-radius: 4px; margin-top: 0.4rem; }
+            </style>
+          </head>
+          <body>
+            <h1>${escapeHtml(study.title)}</h1>
+            <div class="meta">Hoạt chất: ${escapeHtml(study.drug)} | Tổ chức: ${escapeHtml(study.organization || 'N/A')} (${study.year})</div>
+            <div class="section"><div class="label">Can thiệp / Phác đồ</div><div>${escapeHtml(study.intervention || 'N/A')}</div></div>
+            <div class="section"><div class="label">Tiêu chí đánh giá chính</div><div>${escapeHtml(study.primaryEndpoint || 'N/A')}</div></div>
+            <div class="section"><div class="label">Kết quả cốt lõi</div><div class="box"><b>${escapeHtml(study.keyResults || 'N/A')}</b></div></div>
+            <div class="section"><div class="label">Kết luận</div><div>${escapeHtml(study.summary || 'N/A')}</div></div>
+            <script>window.onload = function() { window.print(); };</script>
+          </body>
+          </html>
+        `);
+        printWin.document.close();
+      }
+    }
+
+    function openNntModal(studyId) {
+      const modal = document.getElementById('nnt-calculator-modal');
+      if (!modal) return;
+      
+      const cerInput = document.getElementById('nnt-cer-input');
+      const eerInput = document.getElementById('nnt-eer-input');
+      const hrInput = document.getElementById('nnt-hr-input');
+      const resultsCard = document.getElementById('nnt-results-card');
+
+      if (cerInput) cerInput.value = '';
+      if (eerInput) eerInput.value = '';
+      if (hrInput) hrInput.value = '';
+      if (resultsCard) resultsCard.style.display = 'none';
+
+      if (studyId && typeof studies !== 'undefined') {
+        const study = studies.find(s => s.id === studyId);
+        if (study && study.matrixEndpoints && study.matrixEndpoints.mace && study.matrixEndpoints.mace.hr) {
+          const hrVal = parseFloat(study.matrixEndpoints.mace.hr);
+          if (!isNaN(hrVal) && hrInput) hrInput.value = hrVal;
+        }
+      }
+
+      modal.classList.add('active');
+    }
+
+    function closeNntModal() {
+      const modal = document.getElementById('nnt-calculator-modal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function calculateNNT() {
+      const cerInput = document.getElementById('nnt-cer-input');
+      const eerInput = document.getElementById('nnt-eer-input');
+      const resultsCard = document.getElementById('nnt-results-card');
+      if (!cerInput || !eerInput || !resultsCard) return;
+
+      const cer = parseFloat(cerInput.value);
+      const eer = parseFloat(eerInput.value);
+
+      if (isNaN(cer) || isNaN(eer)) {
+        resultsCard.style.display = 'none';
+        return;
+      }
+
+      const arr = Math.abs(cer - eer);
+      const arrDecimal = arr / 100;
+      if (arrDecimal === 0) {
+        resultsCard.innerHTML = `<p style="color: var(--text-muted); font-size: 0.85rem;">Không có sự khác biệt về tỷ lệ biến cố giữa 2 nhóm (ARR = 0%).</p>`;
+        resultsCard.style.display = 'block';
+        return;
+      }
+
+      const nnt = Math.ceil(1 / arrDecimal);
+      const isBenefit = eer < cer;
+
+      resultsCard.innerHTML = `
+        <div style="font-weight: 800; font-size: 1rem; color: ${isBenefit ? '#047857' : '#b91c1c'}; margin-bottom: 6px;">
+          ${isBenefit ? '✅ Tác động Lợi ích (Benefit)' : '⚠️ Tác động Bất lợi (Harm)'}
+        </div>
+        <div style="font-size: 0.9rem; margin-bottom: 6px; color: var(--text);">
+          Giảm nguy cơ tuyệt đối (ARR): <b>${arr.toFixed(2)}%</b>
+        </div>
+        <div style="font-weight: 800; font-size: 1.1rem; color: var(--text); margin-bottom: 8px;">
+          ${isBenefit ? 'NNT (Number Needed to Treat)' : 'NNH (Number Needed to Harm)'}: <span style="font-size: 1.4rem; color: var(--accent);">${nnt}</span> người
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
+          ${isBenefit 
+            ? `Cần điều trị <b>${nnt}</b> bệnh nhân bằng phác đồ can thiệp trong thời gian nghiên cứu để ngăn ngừa thêm <b>1</b> biến cố xấu.`
+            : `Cứ <b>${nnt}</b> bệnh nhân nhận phác đồ can thiệp sẽ xuất hiện thêm <b>1</b> biến cố có hại.`}
+        </p>
+      `;
+      resultsCard.style.display = 'block';
+    }
+
+    function calculateNNTFromHR() {
+      const cerInput = document.getElementById('nnt-cer-input');
+      const hrInput = document.getElementById('nnt-hr-input');
+      if (!cerInput || !hrInput) return;
+
+      let cer = parseFloat(cerInput.value);
+      const hr = parseFloat(hrInput.value);
+
+      if (isNaN(cer)) cer = 10;
+      cerInput.value = cer;
+
+      if (!isNaN(hr)) {
+        const eer = cer * hr;
+        document.getElementById('nnt-eer-input').value = eer.toFixed(2);
+        calculateNNT();
+      }
+    }
+
+    // ════════════════════════════
+    // URL DEEP-LINKING LOGIC
+    // ════════════════════════════
+
+    function parseUrlState() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('spec')) filters.specialty = params.get('spec');
+        if (params.has('source')) filters.sourceType = params.get('source');
+        if (params.has('impact')) filters.impact = params.get('impact');
+        if (params.has('search')) filters.search = params.get('search');
+        if (params.has('asian')) filters.asianData = params.get('asian') === 'true';
+        if (params.has('tab')) currentTab = params.get('tab');
+        if (params.has('compare')) {
+          const comp = params.get('compare').split(',');
+          comp.forEach(id => { if (id.trim()) selectedIds.add(id.trim()); });
+          updateCompareBadge();
+        }
+      } catch (e) {
+        console.warn('Could not parse URL state:', e);
+      }
+    }
+
+    function updateUrlState() {
+      try {
+        const params = new URLSearchParams();
+        if (filters.specialty) params.set('spec', filters.specialty);
+        if (filters.sourceType) params.set('source', filters.sourceType);
+        if (filters.impact) params.set('impact', filters.impact);
+        if (filters.search) params.set('search', filters.search);
+        if (filters.asianData) params.set('asian', 'true');
+        if (currentTab !== 'list') params.set('tab', currentTab);
+        if (selectedIds.size > 0) params.set('compare', Array.from(selectedIds).join(','));
+
+        const newSearch = params.toString();
+        const newUrl = window.location.pathname + (newSearch ? '?' + newSearch : '');
+        window.history.replaceState({}, '', newUrl);
+      } catch (e) {
+        // Fallback
+      }
+    }
+
+    // Export all handlers to global window
+    window.switchTab = switchTab;
+    window.setFilter = setFilter;
+    window.setViewMode = setViewMode;
+    window.resetFilters = resetFilters;
+    window.openAddModal = openAddModal;
+    window.closeAddModal = closeAddModal;
+    window.openImportModal = openImportModal;
+    window.closeImportModal = closeImportModal;
+    window.openSupabaseModal = openSupabaseModal;
+    window.closeSupabaseModal = closeSupabaseModal;
+    window.saveSupabaseConfig = saveSupabaseConfig;
+    window.clearSupabaseConfig = clearSupabaseConfig;
+    window.openIcdFilterModal = openIcdFilterModal;
+    window.closeIcdFilterModal = closeIcdFilterModal;
+    window.printStudySummary = printStudySummary;
+    window.copyCitationText = copyCitationText;
+    window.openNntModal = openNntModal;
+    window.closeNntModal = closeNntModal;
+    window.calculateNNTFromHR = calculateNNTFromHR;
 
     // ════════════════════════════
     // ADD & EDIT FORM CONTROLLERS
@@ -1605,6 +1926,7 @@
             file: item.file || '',
             asianData: item.asianData || false,
             bookmarked: item.bookmarked || false,
+            icd10: Array.isArray(item.icd10) ? item.icd10 : (typeof item.icd10 === 'string' && item.icd10 ? (() => { try { return JSON.parse(item.icd10); } catch(e) { return []; } })() : []),
             subgroups: (item.subgroups && typeof item.subgroups === 'object' && !Array.isArray(item.subgroups)) ? item.subgroups
                        : (typeof item.subgroups === 'string' && item.subgroups ? (() => { try { return JSON.parse(item.subgroups); } catch(e) { return null; } })() : null),
             matrixEndpoints: (item.matrixEndpoints && typeof item.matrixEndpoints === 'object') ? item.matrixEndpoints
@@ -1984,6 +2306,9 @@
               ${study.detailedConclusion ? `<div class="mc-detail-row"><span class="mc-detail-label">Chi tiết:</span> <span style="font-size:0.78rem; color:var(--text-muted);">${escapeHtml(study.detailedConclusion)}</span></div>` : ''}
               <div class="mc-actions">
                 ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small" style="background:var(--blue); color:white; border:none;">📝 Tóm tắt</a>` : ''}
+                ${study.relatedCalculators && study.relatedCalculators.length > 0 ? `<a href="../../../../${study.relatedCalculators[0].path}" target="_blank" class="btn btn-small" style="color:#059669;border-color:rgba(5,150,105,0.4);">🧮 ${escapeHtml(study.relatedCalculators[0].name)}</a>` : ''}
+                ${study.relatedFlowcharts && study.relatedFlowcharts.length > 0 ? `<a href="../../../../${study.relatedFlowcharts[0].path}" target="_blank" class="btn btn-small" style="color:#2563eb;border-color:rgba(37,99,235,0.4);">🧩 ${escapeHtml(study.relatedFlowcharts[0].name)}</a>` : ''}
+                ${study.radarUrl ? `<a href="${study.radarUrl}" class="btn btn-small" style="color:#d97706;border-color:rgba(217,119,6,0.4);">📡 Radar diff</a>` : ''}
                 ${sgCount > 0 ? `<button type="button" class="btn btn-small" onclick="openSubgroupModal('${study.id}', event)" style="color:var(--purple); border-color:var(--purple-light); background:var(--purple-bg);">🧬 Subgroup</button>` : ''}
                 ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Nguồn</a>` : ''}
                 <button class="btn btn-small" onclick="openEditModal('${study.id}', event)">✏️ Sửa</button>
@@ -2580,10 +2905,17 @@
       initSidebarState();
       initSupabase();
       loadStudies();
+      parseUrlState();
       
       if (supabaseClient) {
         syncStudiesWithSupabase();
       }
+
+      // Add NNT inputs listeners
+      const nntCer = document.getElementById('nnt-cer-input');
+      const nntEer = document.getElementById('nnt-eer-input');
+      if (nntCer) nntCer.addEventListener('input', calculateNNT);
+      if (nntEer) nntEer.addEventListener('input', calculateNNT);
       
       // Parse URL parameters for specialty and search
       const urlParams = new URLSearchParams(window.location.search);
@@ -2629,6 +2961,9 @@
         if (colMenu && colMenu.classList.contains('active') && !colMenu.contains(e.target) && e.target !== colBtn) {
           colMenu.classList.remove('active');
         }
+        if (!e.target.closest('.actions-dropdown')) {
+          closeAllActionsDropdowns();
+        }
       });
       
       // Close modals on overlay click
@@ -2647,6 +2982,11 @@
           closeImportModal();
           closeSupabaseModal();
           closeSubgroupModal();
+          closeNntModal();
+          const icdModal = document.getElementById('icd10-modal');
+          if (icdModal) icdModal.classList.remove('active');
+          const drugModal = document.getElementById('drug-interaction-modal');
+          if (drugModal) drugModal.classList.remove('active');
         }
         if (e.altKey && (e.key === 's' || e.key === 'S')) {
           e.preventDefault();
@@ -2654,3 +2994,20 @@
         }
       });
     });
+
+    function closeAllActionsDropdowns() {
+      document.querySelectorAll('.actions-dropdown').forEach(el => el.classList.remove('active'));
+    }
+
+    function toggleActionsDropdown(dropdownId, event) {
+      if (event) event.stopPropagation();
+      const targetEl = document.getElementById(dropdownId);
+      const isAlreadyActive = targetEl && targetEl.classList.contains('active');
+      closeAllActionsDropdowns();
+      if (targetEl && !isAlreadyActive) {
+        targetEl.classList.add('active');
+      }
+    }
+
+    window.toggleActionsDropdown = toggleActionsDropdown;
+    window.closeAllActionsDropdowns = closeAllActionsDropdowns;

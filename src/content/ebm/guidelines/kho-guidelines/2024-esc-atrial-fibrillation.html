@@ -41,14 +41,22 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
 
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .mcq-card, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .main-container { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
     /* TOP NAV */
     .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
     [data-theme="dark"] .topnav { background: rgba(15, 23, 42, 0.92); }
     .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
     .topnav-back:hover { background: var(--blue-bg); }
     .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
-    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .topnav-theme-toggle { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
     .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
     .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
     .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
@@ -168,6 +176,12 @@
     <div class="topnav-badges">
       <span class="badge badge-green">Class I ESC 2024</span>
       <span class="badge badge-blue">AF-CARE Roadmap</span>
+      <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết">
+        <i class="fa-solid fa-file-pdf"></i>
+      </button>
+      <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+        <i class="fa-solid fa-moon"></i>
+      </button>
     </div>
   </nav>
 
@@ -885,6 +899,45 @@
       updateDOACDose();
       updateCVRecommendation();
 
+      // Theme Toggle with LocalStorage
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const htmlEl = document.documentElement;
+      const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        htmlEl.setAttribute('data-theme', savedTheme);
+        if (themeToggleBtn) {
+          themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        }
+      }
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlEl.setAttribute('data-theme', newTheme);
+          themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+          localStorage.setItem('cliniportal_ebm_theme', newTheme);
+        });
+      }
+
+      // Quicknav Active Highlight with IntersectionObserver
+      const sections = document.querySelectorAll('.sec-card[id]');
+      const navLinks = document.querySelectorAll('.quicknav-link');
+      if (sections.length > 0 && navLinks.length > 0) {
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const currentId = entry.target.getAttribute('id');
+              navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentId) {
+                  link.classList.add('active');
+                }
+              });
+            }
+          });
+        }, { rootMargin: '-10% 0px -70% 0px' });
+        sections.forEach(section => navObserver.observe(section));
+      }
     });
   </script>
 </body>

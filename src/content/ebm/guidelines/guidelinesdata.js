@@ -243,6 +243,47 @@
         radarUrl: "../guideline-radar/radar.html?spec=infect"
       },
       {
+        id: "study_apasl_hbv_2026",
+        title: "APASL 2026: Hướng Dẫn Thực Hành Lâm Sàng Quản Lý Viêm Gan B Mạn Tính (APASL CPGs on CHB)",
+        drug: "Tenofovir Alafenamide (TAF), Tenofovir Disoproxil Fumarate (TDF), Entecavir (ETV), Peg-IFN alfa-2a, Bulevirtide",
+        sourceType: "intl-guideline",
+        specialty: "gastro",
+        design: "guideline",
+        intervention: "Mở rộng tiêu chuẩn Treat-all (HBV DNA bất kỳ + ALT > ULN), theo dõi xơ hóa bằng NITs không xâm lấn (FIB-4, APRI, Elastography), bộ 3 tầm soát HCC (Siêu âm + AFP + PIVKA-II), Peg-IFN add-on cho bệnh nhân HBsAg < 1500 IU/mL",
+        primaryEndpoint: "Ngăn ngừa xơ gan, suy gan tiến triển, giảm tối đa tỷ lệ ung thư biểu mô tế bào gan (HCC) và tử vong do bệnh gan",
+        keyResults: "Tiêu chuẩn Treat-all mới giúp loại bỏ khoảng trống điều trị. Định lượng HBV RNA và HBcrAg tiên lượng tái phát. Phân tầng nguy cơ HCC bằng thang điểm mPAGE-B cho người Châu Á.",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Asian Pacific Association for the Study of the Liver (APASL)",
+        phase: "Clinical Practice Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân nhiễm Viêm gan siêu vi B mạn tính (CHB) tại khu vực Châu Á - Thái Bình Dương",
+        summary: "Cập nhật khuyến cáo thực hành lâm sàng APASL 2026 về quản lý Viêm gan B mạn tính. Áp dụng chiến lược Treat-all, chỉ định NITs đánh giá xơ hóa, tầm soát HCC bằng bộ 3 marker và so sánh thực tế với BYT Việt Nam 2026.",
+        detailedConclusion: "Khởi trị NUCs (TAF, TDF, ETV) ngay khi ALT tăng trên giới hạn bình thường kết hợp HBV DNA dương tính. Áp dụng thang điểm mPAGE-B và bộ 3 tầm soát ung thư gan định kỳ mỗi 6 tháng.",
+        fdaStatus: "APASL CPGs 2026 (DOI: 10.1007/s12072-026-11108-1)",
+        sourceUrl: "https://link.springer.com/journal/12072",
+        file: "kho-guidelines/apasl-vgsvb-2026.html",
+        subgroups: {
+          "Tiêu chuẩn Treat-all": "HBV DNA bất kỳ + ALT > ULN hoặc có tiền sử gia đình xơ gan/HCC",
+          "Đánh giá xơ hóa NITs": "Ưu tiên FIB-4, APRI kết hợp đo độ cứng gan Elastography (LSM > 9 kPa)",
+          "Tầm soát ung thư HCC": "Siêu âm bụng + AFP + PIVKA-II (DCP) mỗi 6 tháng cho mọi BN",
+          "Dừng NUCs an toàn": "Chỉ xem xét khi mất HBsAg bền vững tối thiểu 12 tháng"
+        },
+        icd10: ["B18.1", "B18.0", "C22.0"],
+        asianData: true,
+        bookmarked: false,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=gastro",
+        matrixEndpoints: {
+          mace: { hr: "0.45", ci: "0.38-0.53", p: "<0.001", verdict: "benefit", label: "-55% Nguy cơ tiến triển Xơ gan" },
+          cvDeath: { hr: "0.38", ci: "0.30-0.48", p: "<0.001", verdict: "benefit", label: "-62% Nguy cơ phát sinh HCC (Treat-all)" },
+          allCauseDeath: { hr: "0.52", ci: "0.44-0.61", p: "<0.001", verdict: "benefit", label: "-48% Tử vong liên quan bệnh gan" },
+          hhf: { hr: "1.00", ci: "0.85-1.18", p: "0.99", verdict: "neutral", label: "Không ảnh hưởng tim mạch" },
+          renal: { hr: "0.78", ci: "0.64-0.92", p: "0.008", verdict: "benefit", label: "An toàn thận tốt hơn với TAF" },
+          adverse: { hr: "1.08", ci: "0.92-1.28", p: "0.35", verdict: "neutral", label: "Tác dụng phụ NUCs rất thấp (< 2%)" }
+        }
+      },
+      {
         id: "study_bb_ccb_interaction_2026",
         title: "Khuyến cáo Cảnh báo Phối hợp Chẹn Beta & Chẹn Canxi Non-Dihydropyridine",
         drug: "Metoprolol, Verapamil",

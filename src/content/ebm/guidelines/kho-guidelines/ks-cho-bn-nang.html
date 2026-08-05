@@ -223,6 +223,13 @@
       .updates-grid { grid-template-columns: 1fr; }
       .dose-grid { grid-template-columns: 1fr; }
     }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quickmenu, .topnav-theme-toggle, .mcq-card, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .main-container, .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -240,9 +247,15 @@
   </a>
   <div class="topnav-divider"></div>
   <div class="topnav-title">Kháng sinh cho Bệnh nhân Nặng</div>
-  <div class="topnav-badges">
+  <div class="topnav-badges" style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;">
     <a href="#quickmenu" class="badge badge-blue" style="text-decoration:none;" title="Xem mục lục nhanh">📋 Mục lục</a>
     <span class="badge badge-green">🏆 Critical Care Clinics 2026</span>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
   </div>
 </nav>
 
@@ -932,27 +945,46 @@
 </footer>
 
 <script>
-  const sections = document.querySelectorAll('.sec-card');
-  const navItems = document.querySelectorAll('.quickmenu-item');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    const offset = 180;
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      if (window.pageYOffset >= (sectionTop - offset)) {
-        current = section.getAttribute('id');
+  document.addEventListener('DOMContentLoaded', () => {
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
       }
-    });
+    }
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
 
-    navItems.forEach(item => {
-      item.classList.remove('active');
-      if (item.getAttribute('href') && item.getAttribute('href').slice(1) === current) {
-        item.classList.add('active');
-        item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    });
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navItems = document.querySelectorAll('.quickmenu-item, .quicknav-link');
+    if (sections.length > 0 && navItems.length > 0) {
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const currentId = entry.target.getAttribute('id');
+            navItems.forEach(item => {
+              item.classList.remove('active');
+              if (item.getAttribute('href') === '#' + currentId) {
+                item.classList.add('active');
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-10% 0px -70% 0px' });
+      sections.forEach(section => navObserver.observe(section));
+    }
   });
 </script>
 </body>

@@ -577,6 +577,78 @@
     }
     .btn-primary:hover { background: var(--accent-dark); color: #fff; }
 
+    /* Actions Dropdown Menu */
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border-light);
+    }
+
+    .actions-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .actions-dropdown-menu {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+      padding: 6px;
+      min-width: 210px;
+      z-index: 250;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .actions-dropdown.active .actions-dropdown-menu {
+      display: flex;
+      animation: dropdownFadeIn 150ms ease-out forwards;
+    }
+
+    @keyframes dropdownFadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .actions-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      text-decoration: none;
+      transition: background var(--tr), color var(--tr);
+      white-space: nowrap;
+    }
+
+    .actions-dropdown-item:hover {
+      background: var(--surface-2);
+      color: var(--accent);
+    }
+
+    .actions-dropdown-item.danger:hover {
+      background: #fef2f2;
+      color: #dc2626;
+    }
+
     .stats-badge {
       font-size: 0.78rem; color: var(--text-faint);
       padding: 0.25rem 0.75rem; border-radius: 8px;
@@ -1048,6 +1120,44 @@
     .compare-row:last-child {
       border-bottom: none;
       padding-bottom: 0;
+    }
+
+    /* Ma Trận Heatmap */
+    .matrix-table {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      font-size: 0.85rem; text-align: left; background: var(--surface);
+      border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden;
+    }
+    .matrix-table th, .matrix-table td {
+      padding: 10px 12px; border-bottom: 1px solid var(--border-light); border-right: 1px solid var(--border-light);
+    }
+    .matrix-table th:last-child, .matrix-table td:last-child {
+      border-right: none;
+    }
+    .matrix-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .matrix-study-header {
+      font-weight: 800; font-size: 0.85rem; color: var(--text);
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .matrix-cell-benefit {
+      background: rgba(16, 185, 129, 0.1); border-left: 3px solid #10b981;
+      padding: 6px 10px; border-radius: 4px; color: #047857;
+    }
+    [data-theme="dark"] .matrix-cell-benefit { color: #34d399; }
+    .matrix-cell-neutral {
+      background: rgba(245, 158, 11, 0.1); border-left: 3px solid #f59e0b;
+      padding: 6px 10px; border-radius: 4px; color: #b45309;
+    }
+    [data-theme="dark"] .matrix-cell-neutral { color: #fbbf24; }
+    .matrix-cell-adverse {
+      background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444;
+      padding: 6px 10px; border-radius: 4px; color: #b91c1c;
+    }
+    [data-theme="dark"] .matrix-cell-adverse { color: #f87171; }
+    .matrix-p-val {
+      font-size: 0.7rem; color: var(--text-muted); font-style: italic; display: inline-block; margin-top: 2px;
     }
 
     /* Empty state */
@@ -2368,6 +2478,49 @@
   border-radius: 10px;
   font-size: 0.62rem;
 }
+
+/* ── PRINT & PDF OPTIMIZATIONS ── */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .topnav, .left-nav, .controls-card, .tabs-header-row, .modal-overlay, .btn, .segmented-control {
+    display: none !important;
+  }
+  .content-area, .main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .content-panel {
+    display: block !important;
+  }
+  .matrix-table {
+    border: 1px solid #000000 !important;
+    width: 100% !important;
+    font-size: 10pt !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .matrix-table th, .matrix-table td {
+    border: 1px solid #cccccc !important;
+    padding: 6px 8px !important;
+  }
+  .matrix-cell-benefit {
+    background-color: #d1fae5 !important;
+    color: #065f46 !important;
+  }
+  .matrix-cell-neutral {
+    background-color: #fef3c7 !important;
+    color: #92400e !important;
+  }
+  .matrix-cell-adverse {
+    background-color: #fee2e2 !important;
+    color: #991b1b !important;
+  }
+}
+
 
 .drug-pill {
   display: inline-flex;
