@@ -2,9 +2,9 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  // Quan trọng nhất: process.env.VITE_BASE_PATH || './' giúp tương thích với cả
-  // giao thức file:/// offline, đóng gói Electron/Capacitor và GitHub Pages subdirectory.
-  base: process.env.VITE_BASE_PATH || './',
+  // Quan trọng nhất: base: './' giúp tương thích với cả
+  // giao thức file:/// offline, đóng gói Electron/Capacitor và GitHub Pages.
+  base: './',
 
   build: {
     outDir: 'dist',
