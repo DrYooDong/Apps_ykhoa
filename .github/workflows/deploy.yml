@@ -35,6 +35,8 @@ jobs:
 
       - name: Build project with Vite
         run: npm run build
+        env:
+          VITE_BASE_PATH: /Apps_ykhoa/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
