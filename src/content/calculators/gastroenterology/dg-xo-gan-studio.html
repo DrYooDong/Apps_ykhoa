@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Cirrhosis & Chronic Liver Disease Studio — Tích hợp tính điểm Child-Pugh, MELD-Na, MELD 3.0, FIB-4, APRI, ALBI Grade, đánh giá suy gan cấp trên nền mạn (ACLF) và phát hiện biến chứng mất bù theo AASLD/EASL – CliniPortal." />
+  <title>Cirrhosis Studio – Đánh Giá Xơ Gan & MELD-Na – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core & Component Modules -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/cirrhosis-studio.css">
+
+  <!-- JS Core & Studio Modules -->
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../../../js/cirrhosis-studio/cirrhosis-engine.js" defer></script>
+  <script src="../../../../js/cirrhosis-studio/cirrhosis-scenarios.js" defer></script>
+  <script src="../../../../js/cirrhosis-studio/cirrhosis-ui.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../general/calculators-hub.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="app-main">
+      <div class="cirrhosis-studio-container">
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../general/calculators-hub.html"}, {"label": "Cirrhosis Studio"}]'></clini-breadcrumb>
+
+        <!-- HERO HEADER CARD -->
+        <div class="cirrhosis-hero-card">
+          <div class="cirrhosis-hero-header">
+            <div class="cirrhosis-hero-title-group">
+              <span class="badge badge-info"><i class="fa-solid fa-liver"></i> Tiêu Hóa & Gan Mật</span>
+              <h1 class="cirrhosis-hero-title">Cirrhosis & Liver Failure Diagnostic Studio</h1>
+              <p class="cirrhosis-hero-subtitle">
+                Hệ thống hỗ trợ quyết định chẩn đoán xơ gan toàn diện. Nhập thông tin một lần — tự động tính <strong>Child-Pugh</strong>, <strong>MELD / MELD-Na / MELD 3.0</strong>, <strong>FIB-4 & APRI</strong> (xơ hóa gan không xâm lấn), <strong>ALBI Grade</strong>, phân tầng <strong>mất bù</strong> và phát hiện <strong>Red Flags</strong> cấp cứu theo khuyến cáo AASLD / EASL 2023.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+              <button type="button" class="btn-proc btn-proc-secondary" id="btnReset">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại
+              </button>
+              <button type="button" class="btn-proc btn-proc-primary" id="btnCopyEMR">
+                <i class="fa-solid fa-copy"></i> Sao Chép EMR
+              </button>
+            </div>
+          </div>
+
+          <!-- Scenario Quick Presets -->
+          <div class="cirrhosis-preset-section">
+            <div class="cirrhosis-preset-title"><i class="fa-solid fa-bolt"></i> Giả Lập Ca Lâm Sàng Mẫu</div>
+            <div class="scenario-grid" id="presetContainer">
+              <!-- Rendered via cirrhosis-ui.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN WORKSPACE GRID -->
+        <div class="cirrhosis-workspace-grid">
+
+          <!-- LEFT COLUMN: FORM INPUTS -->
+          <div class="input-column">
+
+            <!-- Panel 1: Sinh Hóa Gan & Thận -->
+            <div class="cirrhosis-panel-card">
+              <h2 class="cirrhosis-panel-title">
+                <i class="fa-solid fa-vial text-primary"></i> 1. Sinh Hóa Gan, Thận & Điện Giải
+              </h2>
+
+              <div class="input-section-card">
+                <div class="form-grid-2">
+
+                  <!-- Bilirubin -->
+                  <div class="input-group">
+                    <label for="bili">Bilirubin toàn phần</label>
+                    <div class="input-with-select">
+                      <input type="number" id="bili" placeholder="Vd: 2.5" min="0" step="0.1">
+                      <select id="biliUnit">
+                        <option value="mg/dL" selected>mg/dL</option>
+                        <option value="umol/L">µmol/L</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Albumin -->
+                  <div class="input-group">
+                    <label for="alb">Albumin huyết thanh</label>
+                    <div class="input-with-select">
+                      <input type="number" id="alb" placeholder="Vd: 3.2" min="0" step="0.1">
+                      <select id="albUnit">
+                        <option value="g/dL" selected>g/dL</option>
+                        <option value="g/L">g/L</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- INR -->
+                  <div class="input-group">
+                    <label for="inr">INR (Tỷ lệ đông máu)</label>
+                    <input type="number" id="inr" placeholder="Vd: 1.5" min="0.5" step="0.01">
+                  </div>
+
+                  <!-- Creatinine -->
+                  <div class="input-group">
+                    <label for="cr">Creatinine huyết thanh</label>
+                    <div class="input-with-select">
+                      <input type="number" id="cr" placeholder="Vd: 1.2" min="0" step="0.01">
+                      <select id="crUnit">
+                        <option value="mg/dL" selected>mg/dL</option>
+                        <option value="umol/L">µmol/L</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Sodium -->
+                  <div class="input-group">
+                    <label for="sodium">Natri huyết thanh (mEq/L)</label>
+                    <input type="number" id="sodium" placeholder="Vd: 135" min="100" max="160" step="1">
+                  </div>
+
+                  <!-- Lọc máu -->
+                  <div class="input-group">
+                    <label for="dialysis">Lọc máu / Thẩm phân phúc mạc</label>
+                    <select id="dialysis">
+                      <option value="0">Không (Chưa từng lọc máu trong 7 ngày qua)</option>
+                      <option value="1">Có (Lọc máu ≥ 2 lần hoặc CVVH trong 7 ngày qua)</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Thông Số Khác & Thang Điểm FIB-4 / APRI -->
+            <div class="cirrhosis-panel-card">
+              <h2 class="cirrhosis-panel-title">
+                <i class="fa-solid fa-user-doctor text-primary"></i> 2. Nhân Khẩu Học & Men Gan (FIB-4 / APRI)
+              </h2>
+
+              <div class="input-section-card">
+                <div class="form-grid-3">
+
+                  <div class="input-group">
+                    <label for="age">Tuổi (năm)</label>
+                    <input type="number" id="age" placeholder="Vd: 54" min="1" max="110">
+                  </div>
+
+                  <div class="input-group">
+                    <label for="gender">Giới tính (MELD 3.0)</label>
+                    <select id="gender">
+                      <option value="male" selected>Nam</option>
+                      <option value="female">Nữ</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group">
+                    <label for="plt">Tiểu cầu (10³/µL hoặc 10⁹/L)</label>
+                    <input type="number" id="plt" placeholder="Vd: 110" min="1" step="1">
+                  </div>
+
+                  <div class="input-group">
+                    <label for="ast">AST / SGOT (U/L)</label>
+                    <input type="number" id="ast" placeholder="Vd: 75" min="1" step="1">
+                  </div>
+
+                  <div class="input-group">
+                    <label for="alt">ALT / SGPT (U/L)</label>
+                    <input type="number" id="alt" placeholder="Vd: 55" min="1" step="1">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Lâm Sàng Child-Pugh & Biến Chứng -->
+            <div class="cirrhosis-panel-card">
+              <h2 class="cirrhosis-panel-title">
+                <i class="fa-solid fa-stethoscope text-primary"></i> 3. Triệu Chứng Lâm Sàng & Dấu Mất Bù
+              </h2>
+
+              <div class="input-section-card">
+                <div class="input-section-title"><i class="fa-solid fa-circle-dot text-primary"></i> Đánh giá Child-Pugh</div>
+                <div class="form-grid-2" style="margin-top: 0.6rem;">
+                  <div class="input-group">
+                    <label for="ascites">Cổ trướng (Báng bụng)</label>
+                    <select id="ascites">
+                      <option value="">-- Chọn trạng thái cổ trướng --</option>
+                      <option value="1">Không có (Âm tính)</option>
+                      <option value="2">Nhẹ / Vừa (Đáp ứng thuốc lợi tiểu)</option>
+                      <option value="3">Nhiều / Kháng lợi tiểu (Báng bụng ngoan cố)</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group">
+                    <label for="encephalopathy">Bệnh não gan (HE)</label>
+                    <select id="encephalopathy">
+                      <option value="">-- Chọn mức độ bệnh não gan --</option>
+                      <option value="1">Không có (Grade 0)</option>
+                      <option value="2">Nhẹ - Vừa (Grade I - II: Rối loạn giấc ngủ, lơ mơ)</option>
+                      <option value="3">Nặng (Grade III - IV: Lú lẫn nặng, hôn mê gan)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Biến chứng & Red Flags -->
+              <div class="input-section-card" style="margin-bottom: 0;">
+                <div class="input-section-title"><i class="fa-solid fa-triangle-exclamation text-primary"></i> Biến chứng & Dấu hiệu cấp cứu</div>
+                <div class="checkbox-grid" style="margin-top: 0.6rem;">
+                  <label class="checkbox-item">
+                    <input type="checkbox" id="chk_varbleed">
+                    <span>Xuất huyết tiêu hóa do vỡ giãn tĩnh mạch thực quản / dạ dày</span>
+                  </label>
+                  <label class="checkbox-item">
+                    <input type="checkbox" id="chk_sbp">
+                    <span>Nhiễm trùng dịch báng (SBP - Viêm phúc mạc vi trùng tự phát) nghi ngờ hoặc xác nhận</span>
+                  </label>
+                  <label class="checkbox-item">
+                    <input type="checkbox" id="chk_hrs">
+                    <span>Tổn thương thận cấp (AKI) / Hội chứng Gan Thận (HRS) nghi ngờ</span>
+                  </label>
+                  <label class="checkbox-item">
+                    <input type="checkbox" id="chk_jaundice">
+                    <span>Vàng da tiến triển rõ (Bilirubin tăng nhanh trong thời gian ngắn)</span>
+                  </label>
+                  <label class="checkbox-item">
+                    <input type="checkbox" id="chk_fever">
+                    <span>Sốt + Đau bụng (Nguy cơ SBP / Nhiễm trùng đường mật)</span>
+                  </label>
+                  <label class="checkbox-item">
+                    <input type="checkbox" id="chk_confusion">
+                    <span>Lú lẫn cấp / Đảo lộn giấc ngủ mới xuất hiện (Nghi ngờ Bệnh não gan cấp)</span>
+                  </label>
+                  <label class="checkbox-item">
+                    <input type="checkbox" id="chk_hypotension">
+                    <span>Tụt huyết áp / Sốc (Huyết áp tâm thu &lt; 90 mmHg hoặc MAP &lt; 65 mmHg)</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: RESULTS STICKY SIDEBAR -->
+          <div class="results-sidebar sticky-sidebar">
+            <div class="cirrhosis-panel-card">
+              <h2 class="cirrhosis-panel-title">
+                <i class="fa-solid fa-chart-pie text-primary"></i> Kết Quả Đánh Giá Gan
+              </h2>
+
+              <div class="score-cards-list">
+
+                <!-- Thang điểm Child-Pugh -->
+                <div class="score-card pending" id="cardChildPugh">
+                  <div class="score-header">
+                    <span class="score-title-text">Child-Pugh Score</span>
+                    <span class="score-badge-val" id="cpScore">—</span>
+                  </div>
+                  <div class="score-label-text" id="cpClass">Chờ dữ liệu đầy đủ</div>
+                  <p class="score-desc" id="cpDesc">Cần: Bilirubin, Albumin, INR, Cổ trướng, Bệnh não gan</p>
+                  <p class="score-desc text-red" id="cpMissing" style="font-style: italic;"></p>
+                  <div class="score-extra" id="cpSurvival"></div>
+                </div>
+
+                <!-- Thang điểm MELD-Na & MELD 3.0 -->
+                <div class="score-card pending" id="cardMELD">
+                  <div class="score-header">
+                    <span class="score-title-text">MELD-Na Score (UNOS)</span>
+                    <span class="score-badge-val" id="meldNaScore">—</span>
+                  </div>
+                  <div class="score-desc" id="meldSubScores" style="margin-bottom: 0.2rem;"></div>
+                  <div class="score-label-text" id="meldClass">Chờ dữ liệu đầy đủ</div>
+                  <p class="score-desc" id="meldDesc">Cần: Bilirubin, INR, Creatinine, Natri</p>
+                  <p class="score-desc text-red" id="meldMissing" style="font-style: italic;"></p>
+
+                  <!-- Meter bar -->
+                  <div class="meter-bar-track">
+                    <div class="meter-bar-fill" id="meldMeterFill"></div>
+                  </div>
+                </div>
+
+                <!-- Thang điểm FIB-4 & APRI -->
+                <div class="score-card pending" id="cardFibrosis">
+                  <div class="score-header">
+                    <span class="score-title-text">FIB-4 Index</span>
+                    <span class="score-badge-val" id="fib4Val">—</span>
+                  </div>
+                  <p class="score-desc" id="fib4Text">Nhập: Tuổi, AST, ALT, Tiêu cầu</p>
+                  <div style="margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px dashed var(--color-divider);">
+                    <div class="score-header">
+                      <span class="score-title-text">APRI Index</span>
+                      <span class="score-badge-val" id="apriVal">—</span>
+                    </div>
+                    <p class="score-desc" id="apriText">Nhập: AST, Tiêu cầu</p>
+                  </div>
+                </div>
+
+                <!-- Thang điểm ALBI Grade -->
+                <div class="score-card pending" id="cardALBI">
+                  <div class="score-header">
+                    <span class="score-title-text">ALBI Grade (Gan Sinh Hóa)</span>
+                    <span class="score-badge-val" id="albiVal" style="font-size: 1.1rem;">—</span>
+                  </div>
+                  <p class="score-desc" id="albiText">Nhập: Bilirubin và Albumin</p>
+                </div>
+
+                <!-- Trạng thái Mất bù -->
+                <div class="decomp-card comp" id="cardDecomp">
+                  <div class="decomp-title" id="decompTitle">🟢 Xơ Gan Còn Bù</div>
+                  <ul class="decomp-list" id="decompList"></ul>
+                </div>
+
+              </div>
+
+              <!-- Cảnh báo Red Flags -->
+              <div class="alert-red-box" id="alertRed">
+                <div class="alert-red-title">
+                  <i class="fa-solid fa-triangle-exclamation"></i> CẢNH BÁO NGUY CƠ CẤP CỨU
+                </div>
+                <div id="alertContent"></div>
+              </div>
+
+              <!-- Hướng xử trí lâm sàng Khuyến cáo -->
+              <div class="recommendation-box" id="recBox">
+                <div class="rec-title"><i class="fa-solid fa-lightbulb"></i> Khuyên Xử Trí Lâm Sàng (CDSS)</div>
+                <ul class="rec-list" id="recList"></ul>
+              </div>
+
+              <!-- Toggle EMR Preview Button -->
+              <div style="margin-top: 1rem;">
+                <button type="button" class="btn-proc btn-proc-secondary" id="btnToggleEMR" style="width: 100%; justify-content: center;">
+                  <i class="fa-solid fa-file-lines"></i> Hiện Khung Báo Cáo EMR
+                </button>
+              </div>
+
+              <!-- EMR Preview Textarea Container -->
+              <div class="emr-box-container" id="emrBoxContainer" style="display: none;">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.4rem;">
+                  📋 Báo cáo Tóm tắt EMR (Dán Bệnh án)
+                </div>
+                <textarea id="emrPreview" class="emr-textarea" readonly></textarea>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TÀI LIỆU THAM KHẢO Y KHOA -->
+        <div class="cirrhosis-panel-card" style="margin-top: 1.5rem;">
+          <div style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.7;">
+            <strong style="color: var(--color-text);">📚 Nguồn Tham Khảo Khuyến Cáo Y Khoa:</strong><br>
+            • <strong>Child-Pugh Score:</strong> Pugh RN, Murray-Lyon IM, Dawson JL, Pietroni MC, Williams R. <em>Br J Surg.</em> 1973;60(8):646–649.<br>
+            • <strong>MELD & MELD-Na:</strong> Kim WR, Biggins SW, Kremers WK, et al. <em>Hepatology.</em> 2008;48(4):1208–1214.<br>
+            • <strong>MELD 3.0:</strong> Kim WR, Mannalithara A, Heimbach JK, et al. <em>Gastroenterology.</em> 2021;161(5):1608-1618. OPTN Policy 2022.<br>
+            • <strong>FIB-4 & APRI:</strong> Sterling RK, Lissen E, Clumeck N, et al. <em>Hepatology.</em> 2006;43(6):1317-1325. Wai CT, et al. <em>Hepatology.</em> 2003.<br>
+            • <strong>ALBI Grade:</strong> Johnson PJ, Berhane S, Kagebayashi C, et al. <em>J Clin Oncol.</em> 2015;33(6):550-558.<br>
+            • <strong>AASLD & EASL Practice Guidance:</strong> Tapper EB, Parikh ND. <em>Hepatology.</em> 2023; EASL CPG Decompensated Cirrhosis. <em>J Hepatol.</em> 2018;69(2):406–460.<br>
+            • <em>Lưu ý: Công cụ hỗ trợ ra quyết định lâm sàng — Không thay thế phán xét trực tiếp của bác sĩ điều trị.</em>
+          </div>
+        </div>
+
+        <!-- LIÊN KẾT HỆ SINH THÁI CLINIPORTAL -->
+        <section class="related-links-section" style="margin-top: 2rem;">
+          <h4 class="related-links-title">
+            <i class="fas fa-link"></i> Xem thêm các công cụ liên quan trong CliniPortal
+          </h4>
+          <div class="related-links-grid">
+            <a href="./ascites-studio.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge cong-cu">Studio</span>
+                <h5>Ascites & Paracentesis Studio</h5>
+                <p>Thuật toán phân tích dịch báng, SAAG, chẩn đoán SBP & Phác đồ bù Albumin IV.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+
+            <a href="./dg-ptnc-hcc.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge cong-cu">Công cụ</span>
+                <h5>Phân Tầng Nguy Cơ Ung Thư Gan (HCC)</h5>
+                <p>Đánh giá nguy cơ tiến triển HCC ở bệnh nhân xơ gan và viêm gan vi rút mạn.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+
+            <a href="../renal/renal-function.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge cong-cu">Công cụ</span>
+                <h5>Đánh Giá Chức Năng Thận & eGFR</h5>
+                <p>Tính mức lọc cầu thận CKD-EPI, Cockcroft-Gault và phân giai đoạn tổn thương thận AKI.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+
+            <a href="./dg-xhth.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge cong-cu">Công cụ</span>
+                <h5>Đánh Giá Xuất Huyết Tiêu Hóa (Glasgow-Blatchford)</h5>
+                <p>Phân tầng nguy cơ XHTH trên & XHTH do vỡ giãn tĩnh mạch thực quản.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

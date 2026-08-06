@@ -294,7 +294,7 @@
         {
           badge: 'TOOL',
           title: 'Khí máu động mạch ABG Pro Studio — Chẩn đoán Huyết động',
-          url: '../renal/dg-abg.html'
+          url: '../renal/dg-abg-studio.html'
         }
       ];
 

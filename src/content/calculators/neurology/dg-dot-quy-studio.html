@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Neurology & Stroke Pro Studio — Workstation hỗ trợ quyết định cấp cứu đột quỵ não cấp. Tích hợp Thanh Cửa Sổ Thời Gian Time-Window Bar (rtPA <= 4.5h / EVT <= 24h), Đánh giá 11 mục NIHSS Visual Evaluator, Máy tính liều rtPA & Bảng kiểm an toàn – CliniPortal." />
+  <title>Stroke Pro Studio – Cấp Cứu Đột Quỵ Não Cấp – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core & Component Modules -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/stroke-studio.css">
+
+  <!-- JS Core & Studio Modules -->
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../../../js/stroke-studio/stroke-engine.js" defer></script>
+  <script src="../../../../js/stroke-studio/stroke-scenarios.js" defer></script>
+  <script src="../../../../js/stroke-studio/stroke-ui.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="app-sidebar" id="appSidebar">
+      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <nav class="sidebar-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list" role="list">
+          <li>
+            <a href="../../ebm/guidelines/kho-guidelines/index.html" class="nav-item" title="Trang chủ">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <a href="../general/calculators-hub.html" class="nav-item active" aria-current="page" title="Công cụ">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-text">Công cụ</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="app-main">
+      <div class="stroke-studio-container">
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../cong-cu.html"}, {"label": "Stroke Pro Studio"}]'></clini-breadcrumb>
+
+        <!-- HERO HEADER CARD -->
+        <div class="stroke-hero-card">
+          <div class="stroke-hero-header">
+            <div class="stroke-hero-title-group">
+              <span class="badge badge-danger"><i class="fa-solid fa-brain"></i> Thần Kinh & Cấp Cứu Đột Quỵ</span>
+              <h1 class="stroke-hero-title">Neurology & Stroke Pro Studio — Workstation Đột Quỵ Nào Cấp</h1>
+              <p class="stroke-hero-subtitle">
+                Môi trường xử trí cấp cứu Đột quỵ não cấp tối ưu thời gian <strong>"Time is Brain"</strong>. Tích hợp Thanh Cửa Sổ Thời Gian (Time-Window Bar), Đánh giá 11 mục NIHSS Visual Evaluator, Máy tính liều rtPA (Bolus 10% / Truyền 90%), Bảng kiểm an toàn chống chỉ định & Điểm tiên lượng ICH Score.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Stroke Time-Window Bar -->
+          <div class="stroke-timeline-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.9rem; font-weight: 700; color: var(--color-text);"><i class="fa-solid fa-clock-rotate-left text-danger"></i> Thanh Cửa Sổ Thời Gian Cấp Cứu (Time-Window Bar)</span>
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-danger);">Thời gian khởi phát (Onset): <input type="number" id="onsetTimeHours" class="stroke-calc-input" style="width: 70px; display: inline-block; padding: 0.2rem 0.4rem;" value="2.5" step="0.1" min="0" max="48"> Giờ</span>
+            </div>
+            <input type="range" id="onsetTimeSlider" class="stroke-timeline-slider" min="0" max="24" step="0.5" value="2.5">
+            <div class="stroke-time-markers">
+              <span style="color: #10b981;">0h (Khởi phát)</span>
+              <span style="color: #10b981;">★ 3.0h</span>
+              <span style="color: #10b981;">★ 4.5h (rtPA Window)</span>
+              <span style="color: #f59e0b;">★ 6.0h (EVT Standard)</span>
+              <span style="color: #f59e0b;">★ 24.0h (DAWN/DEFUSE-3)</span>
+            </div>
+          </div>
+
+          <!-- Scenario Quick Presets -->
+          <div class="stroke-preset-section">
+            <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.75rem;"><i class="fa-solid fa-bolt"></i> Ca Lâm Sàng Mẫu Giả Lập</div>
+            <div class="scenario-grid" id="scenarioPresetContainer">
+              <!-- Rendered via stroke-ui.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN 2-COLUMN WORKSPACE GRID -->
+        <div class="stroke-grid-layout">
+
+          <!-- LEFT COLUMN: INPUT PANEL -->
+          <div class="stroke-panel-card">
+            <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-user-ninja text-danger"></i> Đánh Giá Lâm Sàng & NIHSS Visual
+            </h2>
+
+            <!-- Card 1: Stroke Type & Vital Parameters -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title"><i class="fa-solid fa-sliders text-primary"></i> 1. Phân Loại & Sinh Hiệu Ban Đầu</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="stroke-input-group">
+                  <label class="stroke-calc-label" for="strokeType">Thể Đột Quỵ (Hình Ảnh Học)</label>
+                  <select id="strokeType" class="stroke-calc-select">
+                    <option value="ischemic" selected>Nhồi Máu Não Cấp (Ischemic Stroke)</option>
+                    <option value="hemorrhagic">Xuất Huyết Nào (Hemorrhagic Stroke - ICH)</option>
+                  </select>
+                </div>
+
+                <div class="stroke-input-group">
+                  <label class="stroke-calc-label" for="bodyWeight">Cân Nặng (kg)</label>
+                  <input type="number" id="bodyWeight" class="stroke-calc-input" value="60" min="30" max="150" placeholder="Tính liều rtPA (0.9 mg/kg)">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="stroke-input-group">
+                  <label class="stroke-calc-label" for="sbp">Huyết Áp Tâm Thu (SBP mmHg)</label>
+                  <input type="number" id="sbp" class="stroke-calc-input" value="130" placeholder="Cần &le; 185 mmHg">
+                </div>
+
+                <div class="stroke-input-group">
+                  <label class="stroke-calc-label" for="dbp">Huyết Áp Tâm Trương (DBP mmHg)</label>
+                  <input type="number" id="dbp" class="stroke-calc-input" value="80" placeholder="Cần &le; 110 mmHg">
+                </div>
+              </div>
+
+              <div class="form-grid-3">
+                <div>
+                  <label class="stroke-calc-label" for="platelets">Tiểu Cầu (/μL)</label>
+                  <input type="number" id="platelets" class="stroke-calc-input" value="200000" placeholder="&ge; 100,000">
+                </div>
+                <div>
+                  <label class="stroke-calc-label" for="inr">INR Máu</label>
+                  <input type="number" id="inr" class="stroke-calc-input" value="1.0" step="0.1" placeholder="&le; 1.7">
+                </div>
+                <div>
+                  <label class="stroke-calc-label" for="glucose">Glucose (mg/dL)</label>
+                  <input type="number" id="glucose" class="stroke-calc-input" value="110" placeholder="&ge; 50">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Interactive Visual NIHSS Evaluator (11 Items) -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-danger);"><i class="fa-solid fa-child-reaching"></i> 2. Đánh Giá Thang Điểm NIHSS Trực Quan (11 Mục)</span>
+              </div>
+
+              <!-- NIHSS Hidden Inputs Storage -->
+              <input type="hidden" id="nihss_i1a" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i1b" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i1c" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i2" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i3" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i4" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i5a" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i5b" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i6a" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i6b" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i7" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i8" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i9" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i10" class="nihss-hidden-input" value="0">
+              <input type="hidden" id="nihss_i11" class="nihss-hidden-input" value="0">
+
+              <!-- Item 1a: Ý thức -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">1a. Mức độ Ý thức (LOC):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i1a" data-val="0">0: Tỉnh táo</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i1a" data-val="1">1: Tỉnh nhưng ngủ gà</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i1a" data-val="2">2: Lơ mơ, cần kích thích đau</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i1a" data-val="3">3: Hôn mê, đáp ứng phản xạ</button>
+                </div>
+              </div>
+
+              <!-- Item 1b: Hỏi ý thức -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">1b. Hỏi Ý thức (Tuổi & Tháng):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i1b" data-val="0">0: Trả lời đúng cả 2</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i1b" data-val="1">1: Đúng 1 câu</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i1b" data-val="2">2: Sai cả 2 / Thất ngôn</button>
+                </div>
+              </div>
+
+              <!-- Item 1c: Ra lệnh ý thức -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">1c. Ra lệnh Ý thức (Mở/Nhắm mắt, Nắm/Mở tay):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i1c" data-val="0">0: Làm đúng cả 2</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i1c" data-val="1">1: Làm đúng 1 lệnh</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i1c" data-val="2">2: Không làm đúng lệnh nào</button>
+                </div>
+              </div>
+
+              <!-- Item 2: Vận nhãn -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">2. Vận nhãn (Best Gaze):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i2" data-val="0">0: Bình thường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i2" data-val="1">1: Liệt vận nhãn 1 phần</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i2" data-val="2">2: Đột ngột lệch mắt cưỡng chế</button>
+                </div>
+              </div>
+
+              <!-- Item 3: Thị trường -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">3. Thị trường (Visual Fields):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i3" data-val="0">0: Bình thường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i3" data-val="1">1: Bán manh 1 phần</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i3" data-val="2">2: Bán manh hoàn toàn</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i3" data-val="3">3: Mù cả 2 bên / Bán manh hai bên</button>
+                </div>
+              </div>
+
+              <!-- Item 4: Liệt mặt -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">4. Liệt mặt (Facial Palsy):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i4" data-val="0">0: Bình thường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i4" data-val="1">1: Liệt nhẹ (Lệch nếp má mũi)</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i4" data-val="2">2: Liệt trung bình (Liệt nửa dưới mặt)</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i4" data-val="3">3: Liệt hoàn toàn nửa mặt</button>
+                </div>
+              </div>
+
+              <!-- Item 5: Vận động Tay -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">5a/5b. Vận động Tay Trái / Phải (Drift 10s):</div>
+                <div class="nihss-opts-grid" style="margin-bottom: 0.3rem;">
+                  <strong style="font-size: 0.78rem; width: 100%;">Tay Trái:</strong>
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i5a" data-val="0">0: Giữ 10s</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i5a" data-val="1">1: Rơi chậm</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i5a" data-val="2">2: Rơi xuống giường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i5a" data-val="3">3: Không giơ lên được</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i5a" data-val="4">4: Liệt hoàn toàn</button>
+                </div>
+                <div class="nihss-opts-grid">
+                  <strong style="font-size: 0.78rem; width: 100%;">Tay Phải:</strong>
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i5b" data-val="0">0: Giữ 10s</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i5b" data-val="1">1: Rơi chậm</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i5b" data-val="2">2: Rơi xuống giường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i5b" data-val="3">3: Không giơ lên được</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i5b" data-val="4">4: Liệt hoàn toàn</button>
+                </div>
+              </div>
+
+              <!-- Item 6: Vận động Chân -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">6a/6b. Vận động Chân Trái / Phải (Drift 5s):</div>
+                <div class="nihss-opts-grid" style="margin-bottom: 0.3rem;">
+                  <strong style="font-size: 0.78rem; width: 100%;">Chân Trái:</strong>
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i6a" data-val="0">0: Giữ 5s</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i6a" data-val="1">1: Rơi chậm</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i6a" data-val="2">2: Rơi xuống giường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i6a" data-val="3">3: Không giơ lên được</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i6a" data-val="4">4: Liệt hoàn toàn</button>
+                </div>
+                <div class="nihss-opts-grid">
+                  <strong style="font-size: 0.78rem; width: 100%;">Chân Phải:</strong>
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i6b" data-val="0">0: Giữ 5s</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i6b" data-val="1">1: Rơi chậm</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i6b" data-val="2">2: Rơi xuống giường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i6b" data-val="3">3: Không giơ lên được</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i6b" data-val="4">4: Liệt hoàn toàn</button>
+                </div>
+              </div>
+
+              <!-- Item 7-11: Thất điêu, Cảm giác, Ngôn ngữ, Phát âm, Thất chú ý -->
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">7. Thất điêu (Limb Ataxia):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i7" data-val="0">0: Không có</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i7" data-val="1">1: Ở 1 chi</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i7" data-val="2">2: Ở 2 chi</button>
+                </div>
+              </div>
+
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">8. Cảm giác (Sensory):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i8" data-val="0">0: Bình thường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i8" data-val="1">1: Giảm cảm giác nhẹ</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i8" data-val="2">2: Mất cảm giác hoàn toàn</button>
+                </div>
+              </div>
+
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">9. Ngôn ngữ (Best Language):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i9" data-val="0">0: Bình thường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i9" data-val="1">1: Thất ngôn nhẹ - trung bình</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i9" data-val="2">2: Thất ngôn nặng (Wernicke/Broca)</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i9" data-val="3">3: Thất ngôn toàn bộ / Hôn mê</button>
+                </div>
+              </div>
+
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">10. Phát âm (Dysarthria):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i10" data-val="0">0: Bình thường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i10" data-val="1">1: Nói ngọng nhẹ - trung bình</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i10" data-val="2">2: Nói ngọng nặng / Câm</button>
+                </div>
+              </div>
+
+              <div class="nihss-item-box">
+                <div class="nihss-item-title">11. Thất chú ý / Dập tắt (Extinction & Inattention):</div>
+                <div class="nihss-opts-grid">
+                  <button type="button" class="nihss-opt-btn active" data-nihss-group="i11" data-val="0">0: Bình thường</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i11" data-val="1">1: Mất chú ý 1 nửa cơ thể</button>
+                  <button type="button" class="nihss-opt-btn" data-nihss-group="i11" data-val="2">2: Mất chú ý toàn bộ nặng</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Safety Checklist for rtPA -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-warning);"><i class="fa-solid fa-shield-halved"></i> 3. Bảng Kiểm Chống Chỉ Định rtPA (Cờ Đỏ)</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="chk_hasIchHistory" class="stroke-checkbox"> Tiền sử Xuất huyết não hoặc Dị dạng mạch máu não
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="chk_hasRecentHeadTrauma" class="stroke-checkbox"> Chấn thương đầu nặng hoặc Phẫu thuật sọ não &lt; 3 tháng
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="chk_hasRecentMajorSurgery" class="stroke-checkbox"> Phẫu thuật lớn hoặc Chấn thương nặng &lt; 14 ngày
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="chk_hasGiBleed" class="stroke-checkbox"> Xuất huyết tiêu hóa hoặc Tiết niệu &lt; 21 ngày
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="chk_hasLargeInfarct" class="stroke-checkbox"> CT/MRI nhồi máu diện rộng (&gt; 1/3 lãnh thổ ĐM não giữa)
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="chk_isTakingNoac" class="stroke-checkbox"> Đang dùng chống đông thế hệ mới (NOAC) &lt; 48 giờ
+                </label>
+              </div>
+            </div>
+
+            <!-- Card 4: ICH Score Sub-Inputs (Hidden unless Hemorrhagic selected) -->
+            <div class="input-section-card" id="ichInputsWrapper" style="display: none; border-color: rgba(220, 38, 38, 0.3);">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-danger);"><i class="fa-solid fa-brain"></i> 4. Điểm Tiên Lượng Xuất Huyết Nào (ICH Score)</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="stroke-input-group">
+                  <label class="stroke-calc-label" for="gcsScore">Điểm Glasgow (GCS 3-15)</label>
+                  <input type="number" id="gcsScore" class="stroke-calc-input" value="15" min="3" max="15">
+                </div>
+
+                <div class="stroke-input-group">
+                  <label class="stroke-calc-label" for="ichVolume">Thể Tích Máu Tụ (mL)</label>
+                  <input type="number" id="ichVolume" class="stroke-calc-input" value="15" min="0" placeholder="Ngưỡng 30 mL">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="stroke-input-group">
+                  <label class="stroke-calc-label" for="age">Tuổi Bệnh Nhân</label>
+                  <input type="number" id="age" class="stroke-calc-input" value="65" min="1" max="120">
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; justify-content: center;">
+                  <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                    <input type="checkbox" id="hasIvh" class="stroke-checkbox"> Có Xuất huyết Não thất (IVH)
+                  </label>
+                  <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                    <input type="checkbox" id="isInfratentorial" class="stroke-checkbox"> Vị trí Dưới lều (Thân não / Tiểu não)
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: RESULTS & ANALYTICS DASHBOARD -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+            <!-- Main Diagnostic Banner -->
+            <div class="stroke-panel-card">
+              <div class="stroke-hero-banner" id="resHeroBanner">
+                <span class="badge badge-danger" id="resHeroBadge">NHỒI MÁU NÃO CẤP</span>
+                <div class="stroke-hero-banner-title" id="resHeroTitle">Cửa Sổ Vàng Tiêu Sợi Huyết (rtPA Window)</div>
+                <div class="stroke-hero-banner-summary" id="resHeroSummary">
+                  Khởi phát 2.5 giờ (≤ 4.5h). Đủ điều kiện xét Chỉ định Thuốc tiêu sợi huyết tĩnh mạch (rtPA / Alteplase).
+                </div>
+              </div>
+
+              <!-- NIHSS & Severity Grid -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-chart-line text-primary"></i> Tổng Điểm NIHSS & Mức Độ Nặng
+              </h3>
+              <div style="background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-size: 0.8rem; font-weight: 600; color: var(--color-text-muted);">Tổng điểm NIHSS:</div>
+                  <div style="font-size: 1.8rem; font-weight: 800; color: var(--color-text);" id="valNihssTotal">0 / 42</div>
+                </div>
+                <div>
+                  <span class="badge badge-success" id="badgeNihssSev" style="font-size: 0.95rem; padding: 0.4rem 0.8rem;">Nhẹ (Minor Stroke)</span>
+                </div>
+              </div>
+
+              <!-- rtPA Dosage Card -->
+              <div class="stroke-rtpa-card">
+                <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--color-danger); margin-bottom: 0.75rem;">
+                  <i class="fa-solid fa-syringe"></i> Liều Thuốc Tiêu Sợi Huyết rtPA (Alteplase 0.9 mg/kg)
+                </h4>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;">
+                  <div style="background: rgba(220,38,38,0.06); padding: 0.75rem; border-radius: 10px;">
+                    <div style="font-size: 0.78rem; font-weight: 700; color: var(--color-danger);">TỔNG LIỀU (Max 90mg):</div>
+                    <div style="font-size: 1.3rem; font-weight: 800; color: var(--color-text);" id="valRtpaTotal">54.0 mg</div>
+                    <div style="font-size: 0.8rem; color: var(--color-text-muted);" id="valRtpaVials">2 lọ (50mg)</div>
+                  </div>
+
+                  <div style="background: rgba(16,185,129,0.06); padding: 0.75rem; border-radius: 10px;">
+                    <div style="font-size: 0.78rem; font-weight: 700; color: #10b981;">BOLUS IV (10% trong 1 min):</div>
+                    <div style="font-size: 1.3rem; font-weight: 800; color: var(--color-text);" id="valRtpaBolus">5.4 mg (5.4 mL)</div>
+                    <div style="font-size: 0.8rem; color: var(--color-text-muted);">Tiêm tĩnh mạch chậm</div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 0.75rem; background: rgba(2,132,199,0.06); padding: 0.75rem; border-radius: 10px;">
+                  <div style="font-size: 0.78rem; font-weight: 700; color: var(--color-primary);">TRUYỀN TĨNH MẠCH (90% trong 60 min):</div>
+                  <div style="font-size: 1.3rem; font-weight: 800; color: var(--color-text);" id="valRtpaInfusion">48.6 mg (48.6 mL)</div>
+                  <div style="font-size: 0.8rem; color: var(--color-text-muted);">Bơm tiêm điện hoặc máy truyền dịch qua đường IV riêng</div>
+                </div>
+              </div>
+
+              <!-- Safety Warnings -->
+              <div id="containerSafetyWarnings"></div>
+
+              <!-- ICH Score Card (Hemorrhagic) -->
+              <div id="containerIchPanel"></div>
+
+              <!-- Clinical Recommendations -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-top: 1.25rem; margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-user-doctor text-primary"></i> Khuyên Dùng Xử Trí & Can Thiệp Đột Quỵ
+              </h3>
+              <div id="containerRecommendations"></div>
+
+            </div>
+
+            <!-- Interactive Flowchart Visualizer -->
+            <div class="stroke-flowchart-wrapper">
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-diagram-project text-primary"></i> Sơ Đồ Thuật Toán Cấp Cứu Đột Quỵ
+              </h3>
+
+              <div class="stroke-fc-nodes-container">
+                <div class="stroke-fc-node active-node" data-node-id="node-start">
+                  <div class="stroke-fc-title">1. Bệnh nhân Đột quỵ cấp (Báo động Đội Đột quỵ)</div>
+                  <div class="stroke-fc-desc">Xác định thời điểm khởi phát (Onset Time), Sinh hiệu, NIHSS & Đường huyết</div>
+                </div>
+
+                <div class="stroke-fc-node" data-node-id="node-ct-scan">
+                  <div class="stroke-fc-title">2. Chụp CT/MRI Sọ Não Cấp Cứu Không Tiêm Thuốc</div>
+                  <div class="stroke-fc-desc">Loại trừ Xuất huyết não & Đánh giá tổn thương nhu mô sớm (ASPECTS score)</div>
+                </div>
+
+                <div class="stroke-fc-node" data-node-id="node-ischemic">
+                  <div class="stroke-fc-title">🔴 NHỒI MÁU NÃO CẤP (Ischemic Stroke)</div>
+                  <div class="stroke-fc-desc">Đánh giá Cửa sổ thời gian & Khả năng Can thiệp Tái thông</div>
+                </div>
+
+                <div class="stroke-fc-node" data-node-id="node-rtpa-window">
+                  <div class="stroke-fc-title">⏱️ Onset &le; 4.5 Giờ → Cửa Sổ Tiêu Sợi Huyết Tĩnh Mạch</div>
+                  <div class="stroke-fc-desc">Kiểm tra Bảng kiểm chống chỉ định & Huyết áp &le; 185/110 mmHg</div>
+                </div>
+
+                <div class="stroke-fc-node" data-node-id="node-rtpa-execute">
+                  <div class="stroke-fc-title">🚨 CHỈ ĐỊNH TIÊM rtPA (Alteplase 0.9 mg/kg)</div>
+                  <div class="stroke-fc-desc">Bolus 10% trong 1 min + Truyền tĩnh mạch 90% trong 60 min</div>
+                </div>
+
+                <div class="stroke-fc-node" data-node-id="node-bp-control">
+                  <div class="stroke-fc-title">⚠️ Huyết Áp &gt; 185/110 mmHg → Hạ HA Khẩn Cấp</div>
+                  <div class="stroke-fc-desc">Labetalol 10-20mg IV hoặc Nicardipine 5mg/h IV để đưa HA &lt; 185/110 mmHg trước khi rtPA</div>
+                </div>
+
+                <div class="stroke-fc-node" data-node-id="node-evt-window">
+                  <div class="stroke-fc-title">⏱️ Onset 4.5h - 24h → Cửa Sổ Can Thiệp EVT Mở Rộng</div>
+                  <div class="stroke-fc-desc">Chụp CTA / CT Perfusion / MRI tìm Tắc mạch lớn LVO (DAWN / DEFUSE-3)</div>
+                </div>
+
+                <div class="stroke-fc-node" data-node-id="node-evt-execute">
+                  <div class="stroke-fc-title">🎯 CAN THIỆP LẤY HUYẾT KHỐI NỘI MẠCH (EVT)</div>
+                  <div class="stroke-fc-desc">Lấy huyết khối bằng Stent Retriever hoặc Ống hút huyết khối tại phòng DSA</div>
+                </div>
+
+                <div class="stroke-fc-node" data-node-id="node-hemorrhagic">
+                  <div class="stroke-fc-title">🩸 XUẤT HUYẾT NÃO CẤP (Hemorrhagic Stroke - ICH)</div>
+                  <div class="stroke-fc-desc">Kiểm soát HA khẩn (SBP 130-140), Đảo ngược chống đông & Tính ICH Score</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

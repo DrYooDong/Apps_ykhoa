@@ -184,9 +184,9 @@ const CXR_CDSS_ENGINE = {
       treatments.push("Hạ sốt bằng Acetaminophen khi T > 38.5°C, bổ sung nước & điện giải");
       labs.push("Cấy đờm & Cấy máu trước khi dùng kháng sinh", "Khí máu động mạch (ABG)", "CRP / Procalcitonin");
       ebmLinks.push({
-        title: "Đánh Giá Viêm Phổi (CURB-65 / PSI)",
-        url: "dg-viem-phoi.html",
-        badge: "Công cụ"
+        title: "Pneumonia Studio (CURB-65 / PSI)",
+        url: "pneumonia-studio.html",
+        badge: "Studio"
       });
       ebmLinks.push({
         title: "Chỉnh liều Kháng sinh ở Bệnh nhân Suy thận",
@@ -218,7 +218,7 @@ const CXR_CDSS_ENGINE = {
     if (Number(vitals.spo2) <= 95 || Boolean(vitals.dyspnea)) {
       ebmLinks.push({
         title: "Blood Gas Pro Studio & Phân tích ABG",
-        url: "../renal/dg-abg.html",
+        url: "../renal/dg-abg-studio.html",
         badge: "Studio"
       });
     }

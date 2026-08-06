@@ -50,13 +50,13 @@ const clinicalToolsData = [
 
   // Phần 2: Truyền Nhiễm
   {
-    id: "sang-loc-nhiem-khuan",
-    title: "Sàng lọc Nhiễm khuẩn",
-    description: "NEWS2, SOFA, qSOFA, SIRS, MEDS",
+    id: "sepsis-studio",
+    title: "Sepsis Pro Studio — Sàng Lọc & Phân Tầng Nhiễm Khuẩn",
+    description: "Workstation sàng lọc nhiễm khuẩn toàn diện 6 thang điểm (NEWS2, SOFA, SIRS, qSOFA, MEDS, Shock Index) & Sepsis-3 1-Hour Bundle",
     icon: "🦠",
-    link: "infectious/sl-nhiem-khuan.html",
+    link: "infectious/sepsis-studio.html",
     part: "part2-section",
-    tags: ["truyền nhiễm", "nhiễm khuẩn", "sepsis", "sofa", "qsofa", "news2"]
+    tags: ["truyền nhiễm", "nhiễm khuẩn", "sepsis", "sofa", "qsofa", "news2", "meds", "shock index", "studio"]
   },
   {
     id: "chinh-lieu-khang-sinh",
@@ -89,12 +89,12 @@ const clinicalToolsData = [
   // Phần 3: Cấp cứu & Hồi sức
   {
     id: "bu-dich",
-    title: "Bù dịch",
-    description: "Mini-fluid challenge, Bolus, Mục tiêu CO, Cân bằng nước.",
+    title: "Fluid Resuscitation Pro Studio",
+    description: "Workstation quản lý lượng dịch, tốc độ truyền và y lệnh theo 7 bệnh cảnh lâm sàng cấp cứu",
     icon: "💧",
-    link: "emergency/ql-bu-dich.html",
+    link: "emergency/ql-bu-dich-studio.html",
     part: "part3-section",
-    tags: ["cấp cứu", "hồi sức", "bù dịch", "bolus", "sốc", "fluid"]
+    tags: ["cấp cứu", "hồi sức", "bù dịch", "bolus", "sốc", "fluid", "studio"]
   },
   {
     id: "van-mach-tro-tim",
@@ -135,11 +135,11 @@ const clinicalToolsData = [
 
   // Phần 4: Hô hấp & Lao
   {
-    id: "dg-viem-phoi",
-    title: "Đánh giá Viêm phổi",
+    id: "pneumonia-studio",
+    title: "Pneumonia Studio",
     description: "CURB-65, PSI, IDSA/ATS, MDR Risk, SARI",
     icon: "🫁",
-    link: "respiratory/dg-viem-phoi.html",
+    link: "respiratory/pneumonia-studio.html",
     part: "part4-section",
     tags: ["hô hấp", "viêm phổi", "curb-65", "psi", "idsa", "sari"]
   },
@@ -152,8 +152,26 @@ const clinicalToolsData = [
     part: "part4-section",
     tags: ["hô hấp", "lao", "cxr", "x-quang", "phổi", "studio", "ctr"]
   },
+  {
+    id: "pleural-effusion-studio",
+    title: "Pleural Effusion Pro Studio",
+    description: "Thuật toán chẩn đoán dịch màng phổi 5 tầng, Tiêu chuẩn Light, SEAG & phân tầng mủ màng phổi",
+    icon: "🫁",
+    link: "respiratory/pleural-effusion-studio.html",
+    part: "part4-section",
+    tags: ["hô hấp", "dịch màng phổi", "light", "seag", "mủ màng phổi", "ada", "studio", "exudate", "transudate"]
+  },
 
   // Phần 5: Tiêu hóa & Dinh dưỡng
+  {
+    id: "ascites-studio",
+    title: "Ascites Pro Studio",
+    description: "Phân tích dịch màng bụng 5 tầng, SAAG Tăng áp cửa, SBP & phác đồ truyền Albumin IV",
+    icon: "🫄",
+    link: "gastroenterology/ascites-studio.html",
+    part: "part5-section",
+    tags: ["tiêu hóa", "dịch màng bụng", "báng bụng", "saag", "sbp", "viêm phúc mạc", "albumin", "studio", "xơ gan"]
+  },
   {
     id: "dg-dinh-duong",
     title: "Đánh giá Dinh dưỡng nội viện",
@@ -164,13 +182,13 @@ const clinicalToolsData = [
     tags: ["tiêu hóa", "dinh dưỡng", "nội viện", "calo", "protein", "năng lượng"]
   },
   {
-    id: "dg-xo-gan",
-    title: "Đánh giá & Phân độ Xơ gan",
-    description: "Child-Pugh, MELD-Na",
+    id: "dg-xo-gan-studio",
+    title: "Cirrhosis Studio – Đánh Giá Xơ Gan & MELD-Na",
+    description: "Child-Pugh, MELD 3.0, FIB-4, APRI, ALBI Grade & Red Flags Mất bù",
     icon: "🫗",
-    link: "gastroenterology/dg-xo-gan.html",
+    link: "gastroenterology/dg-xo-gan-studio.html",
     part: "part5-section",
-    tags: ["tiêu hóa", "xơ gan", "child-pugh", "meld-na", "gan"]
+    tags: ["tiêu hóa", "xơ gan", "child-pugh", "meld-na", "meld 3.0", "fib-4", "albi", "gan", "studio"]
   },
   {
     id: "ptnc-hcc",
@@ -206,7 +224,7 @@ const clinicalToolsData = [
     title: "Phân tích khí máu động mạch",
     description: "Henderson-Hasselbalch, Winters, Anion Gap, Delta Ratio",
     icon: "🔬",
-    link: "renal/dg-abg.html",
+    link: "renal/dg-abg-studio.html",
     part: "part6-section",
     tags: ["thận", "điện giải", "khí máu", "abg", "toan kiềm", "anion gap"]
   },
@@ -235,7 +253,7 @@ const clinicalToolsData = [
     title: "Phân loại Rối loạn nhịp tim & ECG Arrhythmia Studio",
     description: "6 trục phân loại rối loạn nhịp, Thuật toán Brugada 4 bước, QTc đa công thức & Phân tầng nguy cơ Xoắn đỉnh",
     icon: "🫀",
-    link: "cardiology/phan-loai-roi-loan-nhip.html",
+    link: "cardiology/phan-loai-roi-loan-nhip-studio.html",
     part: "part7-section",
     tags: ["tim mạch", "rối loạn nhịp", "ecg", "qtc", "brugada", "wpw", "xoắn đỉnh", "arvc", "arrhythmia"]
   },
@@ -290,12 +308,12 @@ const clinicalToolsData = [
   // Phần 9: Thần kinh
   {
     id: "dg-dot-quy",
-    title: "Sàng lọc & Phân tầng Đột quỵ cấp",
-    description: "NIHSS, ASPECTS, ABCD2, ICH, VAN",
-    icon: "🫀",
-    link: "neurology/dg-dot-quy.html",
+    title: "Stroke Pro Studio — Cấp Cứu Đột Quỵ Nào Cấp",
+    description: "Thanh cửa sổ thời gian Time-Window Bar (rtPA ≤ 4.5h / EVT ≤ 24h), NIHSS 11 mục Visual, Liều rtPA & ICH Score",
+    icon: "🧠",
+    link: "neurology/dg-dot-quy-studio.html",
     part: "part9-section",
-    tags: ["thần kinh", "đột quỵ", "nihss", "aspects", "abcd2"]
+    tags: ["thần kinh", "đột quỵ", "nihss", "rtpa", "alteplase", "evt", "dawn", "ich", "studio"]
   },
 
   // Phần 10: Huyết học

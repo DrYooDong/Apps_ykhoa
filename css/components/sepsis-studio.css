@@ -1,0 +1,458 @@
+/* ==========================================================================
+   Sepsis & Infection Intelligence Studio CSS
+   CliniPortal Design System — Emergency Critical Care Theme
+   ========================================================================== */
+
+/* ── Studio Container ──────────────────────────────────────────────────── */
+.sepsis-studio-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── Hero Header Card ───────────────────────────────────────────────────── */
+.sepsis-hero-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.sepsis-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sepsis-hero-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0.35rem 0;
+  line-height: 1.25;
+}
+
+.sepsis-hero-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+/* Scenario Presets */
+.sepsis-presets {
+  margin-top: 1.1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.sepsis-preset-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.sepsis-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6rem;
+}
+
+.sepsis-sc-btn {
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.sepsis-sc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.sepsis-sc-btn .sc-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+}
+
+.sepsis-sc-btn .sc-desc {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+}
+
+.sc-sepsis-danger  { border-left: 4px solid var(--color-danger, #ef4444); }
+.sc-sepsis-amber   { border-left: 4px solid var(--color-warning, #f59e0b); }
+.sc-sepsis-teal    { border-left: 4px solid #14b8a6; }
+.sc-sepsis-purple  { border-left: 4px solid #8b5cf6; }
+
+/* ── Workspace Grid ─────────────────────────────────────────────────────── */
+.sepsis-workspace {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .sepsis-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Panel Card ─────────────────────────────────────────────────────────── */
+.sepsis-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+
+.sepsis-panel-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+/* Input Section Cards */
+.sepsis-input-card {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.sepsis-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.55rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sepsis-card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Form grid utilities */
+.sg2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 0.75rem; }
+.sg3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem; margin-bottom: 0.75rem; }
+
+@media (max-width: 600px) {
+  .sg2, .sg3 { grid-template-columns: 1fr; }
+}
+
+/* Input Groups */
+.sepsis-ig {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sepsis-ig label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.sepsis-ig .sub {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: -0.15rem;
+}
+
+.sepsis-input, .sepsis-select {
+  width: 100%;
+  padding: 0.48rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.88rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sepsis-input:focus, .sepsis-select:focus {
+  outline: none;
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+/* Checkbox items */
+.sepsis-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sepsis-check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.sepsis-check-item input[type="checkbox"] {
+  margin-top: 0.18rem;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  accent-color: var(--color-danger, #ef4444);
+  cursor: pointer;
+}
+
+/* ── Results Dashboard ──────────────────────────────────────────────────── */
+.sepsis-results-panel {
+  position: sticky;
+  top: calc(var(--header-height, 60px) + 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Diagnosis Banner */
+.sepsis-diagnosis-banner {
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.07), rgba(220, 38, 38, 0.07));
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.sepsis-diagnosis-banner.state-ok {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(5, 150, 105, 0.06));
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.sepsis-diagnosis-banner.state-warn {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.07), rgba(217, 119, 6, 0.07));
+  border-color: rgba(245, 158, 11, 0.25);
+}
+
+.sepsis-diagnosis-banner.state-critical {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.08));
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.sdb-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.sdb-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0.25rem 0 0.3rem;
+}
+
+.sdb-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Score Grid Tiles */
+.score-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+.score-tile {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 0.75rem;
+  text-align: center;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-tile::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--color-border);
+  transition: background 0.25s;
+}
+
+.score-tile.tile-ok::before    { background: var(--color-success, #10b981); }
+.score-tile.tile-warn::before  { background: var(--color-warning, #f59e0b); }
+.score-tile.tile-alert::before { background: #f97316; }
+.score-tile.tile-crit::before  { background: var(--color-danger, #ef4444); }
+
+.tile-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.tile-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.tile-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+/* Shock Index Tile (wide) */
+.score-tile.tile-wide {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  padding: 0.8rem 1rem;
+}
+
+/* Mortality estimate */
+.mortality-card {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mort-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.mort-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary, #0284c7);
+  transition: color 0.3s;
+}
+
+/* Alert list */
+.sepsis-alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.sepsis-alert-item {
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  border-left: 4px solid;
+  line-height: 1.5;
+}
+
+.alert-ok     { background: rgba(16,185,129,0.06); border-color: #10b981; }
+.alert-low    { background: rgba(234,179,8,0.06);  border-color: #eab308; }
+.alert-mid    { background: rgba(249,115,22,0.06); border-color: #f97316; }
+.alert-high   { background: rgba(239,68,68,0.08);  border-color: #ef4444; }
+.alert-crit   { background: rgba(220,38,38,0.12);  border-color: #dc2626; }
+
+/* Sepsis Bundle Checklist */
+.bundle-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.bundle-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.bundle-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--color-danger, #ef4444);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Reset button */
+.sepsis-reset-btn {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sepsis-reset-btn:hover {
+  border-color: var(--color-danger, #ef4444);
+  background: rgba(239,68,68,0.04);
+}
+
+/* Dark Mode */
+[data-theme="dark"] .sepsis-panel,
+[data-theme="dark"] .sepsis-hero-card,
+[data-theme="dark"] .sepsis-sc-btn,
+[data-theme="dark"] .score-tile,
+[data-theme="dark"] .sepsis-input-card {
+  background: var(--color-surface, #1e293b);
+}
+
+[data-theme="dark"] .sepsis-input,
+[data-theme="dark"] .sepsis-select {
+  background: var(--color-bg, #0f172a);
+  color: var(--color-text, #f1f5f9);
+  border-color: var(--color-border, #334155);
+}

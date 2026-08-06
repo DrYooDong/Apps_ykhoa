@@ -43,6 +43,80 @@
 
     const SAMPLE_STUDIES = [
       {
+        id: "study_byt_lao_2024_p1",
+        title: "Bộ Y Tế 2024: Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Bệnh Lao (Phần 1: Đại Cương, Phân Loại & Chẩn Đoán)",
+        drug: "Rifampicin, Isoniazid, Pyrazinamide, Ethambutol, Bedaquiline, Linezolid, Levofloxacin, Moxifloxacin, Pretomanid, Clofazimine, Rifapentine, Streptomycin",
+        sourceType: "vn-moh",
+        specialty: "pulmo",
+        design: "guideline",
+        intervention: "Quyết định 162/QĐ-BYT (2024) thay thế QĐ 1314/2020: Ưu tiên SHPT chẩn đoán nhanh (Xpert Ultra/Truenat), chuẩn hóa phân loại ICD-10/kháng thuốc (MDR, pre-XDR, XDR), bảng điểm chẩn đoán lao trẻ em TCYTTG 2022 (>10 điểm) & xét nghiệm lao tiềm ẩn (TST/TBST/IGRA)",
+        primaryEndpoint: "Phát hiện sớm ca bệnh lao & lao kháng thuốc, tối ưu hóa độ chính xác chẩn đoán vi sinh, phân loại chính xác mức độ kháng thuốc & chuẩn hóa quy trình tầm soát lao tiềm ẩn trong cộng đồng",
+        keyResults: "Ưu tiên Xpert Ultra / Truenat thay AFB trực tiếp; Quy chuẩn lấy đờm 3 bước (nhầy mủ >=1ml); Xử trí kết quả Vết (Trace) ở trẻ em/HIV/ngoài phổi; Bảng điểm trẻ em >10 điểm; Quy trình chẩn đoán Lao tiềm ẩn Sơ đồ 7 & 8",
+        impact: "practice-changing",
+        year: 2024,
+        organization: "Bộ Y tế Việt Nam (Quyết định số 162/QĐ-BYT)",
+        phase: "National Guideline",
+        sampleSize: null,
+        population: "Người lớn và trẻ em nghi mắc bệnh lao, mắc lao hoặc phơi nhiễm với nguồn lây lao trên toàn quốc",
+        summary: "Hướng dẫn chẩn đoán bệnh Lao 2024 của Bộ Y tế Việt Nam (Phần 1). Cập nhật hệ thống khái niệm, mã ICD-10, phân loại kháng thuốc, các kỹ thuật vi sinh/SHPT/CĐHA, tiêu chuẩn chẩn đoán lao phổi vi sinh âm tính, bảng điểm trẻ em và quy trình tầm soát lao tiềm ẩn.",
+        detailedConclusion: "Thay thế QĐ 1314/QĐ-BYT (2020). Ưu tiên xét nghiệm SHPT nhanh Xpert MTB/RIF Ultra & Truenat. Quy chuẩn lấy đờm 02 mẫu. Kết quả Vết (Trace) chấp nhận chẩn đoán ngay ở trẻ em/HIV/ngoài phổi. Bảng điểm chẩn đoán lao trẻ em TCYTTG 2022 > 10 điểm. Tầm soát lao tiềm ẩn bằng TST, TBST (Diaskintest) hoặc IGRA (QuantiFeron).",
+        fdaStatus: "Quyết định 162/QĐ-BYT năm 2024",
+        sourceUrl: "https://moh.gov.vn",
+        file: "kho-guidelines/byt-lao-2024-p1.html",
+        parts: [
+          { label: "Phần 1: Đại Cương & Chẩn Đoán", file: "kho-guidelines/byt-lao-2024-p1.html" },
+          { label: "Phần 2: Điều Trị & Dự Phòng", file: "kho-guidelines/byt-lao-2024-p2.html" }
+        ],
+        subgroups: {
+          "Lao phổi phổ biến (%)": "80% - 85% các thể bệnh lao",
+          "Kích thước hạt khí dung lây truyền": "1 - 5 µm (Bay lơ lửng đến 24 giờ)",
+          "Bảng điểm Lao Trẻ em (TCYTTG)": "Tổng điểm > 10 điểm (Chẩn đoán & ĐT)",
+          "Thể tích đờm đạt chuẩn": "Nhầy mủ đặc >= 1 ml (Lấy 2 mẫu cách 2h)"
+        },
+        icd10: ["A15", "A16", "A17", "A18", "A19", "B90", "U84.3", "Z22.7"],
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=pulmo"
+      },
+      {
+        id: "study_byt_lao_2024_p2",
+        title: "Bộ Y Tế 2024: Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Bệnh Lao (Phần 2: Điều Trị & Dự Phòng Lây Nhiễm)",
+        drug: "Rifampicin, Isoniazid, Pyrazinamide, Ethambutol, Bedaquiline, Pretomanid, Linezolid, Moxifloxacin, Levofloxacin, Clofazimine, Rifapentine, Streptomycin, Ethionamide",
+        sourceType: "vn-moh",
+        specialty: "pulmo",
+        design: "guideline",
+        intervention: "Cập nhật Phác đồ Lao nhạy cảm (A1, A2, A2a 4 tháng trẻ em, B1, B2a), Phác đồ đột phá Lao kháng thuốc (BPaLM 6 tháng, Phác đồ C 9-11 tháng Bedaquiline), Bảng liều cân nặng Phụ lục 6, quản lý đối tượng đặc biệt (Men gan, Suy thận, HIV/ARV 2w) & Phác đồ Lao tiềm ẩn 3HP/1HP",
+        primaryEndpoint: "Tối đa hóa tỷ lệ chữa khỏi bệnh lao & lao kháng thuốc, giảm độc tính do thuốc chống lao, phòng ngừa bỏ trị và ngăn chặn sự lan truyền vi khuẩn lao trong cộng đồng/hộ gia đình",
+        keyResults: "Phác đồ BPaLM 6 tháng (Bdq+Pa+Lzd+Mfx) cho MDR-TB >=14t; Phác đồ C 9-11t Bedaquiline; Phác đồ A2a 4 tháng cho trẻ em; Ngừng thuốc khi men gan >5x hoặc >3x kèm triệu chứng; ARV sau 2 tuần điều trị lao; Phác đồ LTA 3HP 12 liều hàng tuần & 1HP 1 tháng",
+        impact: "practice-changing",
+        year: 2024,
+        organization: "Bộ Y tế Việt Nam (Quyết định số 162/QĐ-BYT)",
+        phase: "National Guideline",
+        sampleSize: null,
+        population: "Người lớn và trẻ em mắc bệnh lao nhạy cảm thuốc, lao kháng thuốc, lao tiềm ẩn hoặc thuộc diện dự phòng lây nhiễm toàn quốc",
+        summary: "Hướng dẫn điều trị và dự phòng bệnh Lao 2024 của Bộ Y tế Việt Nam (Phần 2). Chi tiết 4 nguyên tắc điều trị, phác đồ Lao nhạy cảm, phác đồ Lao kháng thuốc đột phá (BPaLM, Phác đồ C), bảng phân liều theo cân nặng, xử trí đối tượng đặc biệt, các phác đồ Lao tiềm ẩn (3HP, 1HP) và dự phòng vắc-xin BCG.",
+        detailedConclusion: "Phác đồ A1 2HRZE/4RHE cho người lớn 6 tháng, A2a 4 tháng cho trẻ em nhẹ. Phác đồ BPaLM (Bdq+Pa+Lzd+Mfx) 6 tháng cho MDR-TB >=14t. Phác đồ C 9-11t. Ngừng thuốc lao khi AST/ALT > 5x (hoặc > 3x kèm triệu chứng). ARV khởi trị sau 2 tuần điều trị lao. LTA dùng 3HP 12 tuần hoặc 1HP 1 tháng. Vắc-xin BCG vỡ hạch nách chích rửa rắc bột INH/Rifampicin tại chỗ (không dùng thuốc toàn thân); BCG lan tỏa dùng Hàng 1 loại trừ Pyrazinamide.",
+        fdaStatus: "Quyết định 162/QĐ-BYT năm 2024",
+        sourceUrl: "https://moh.gov.vn",
+        file: "kho-guidelines/byt-lao-2024-p2.html",
+        parts: [
+          { label: "Phần 1: Đại Cương & Chẩn Đoán", file: "kho-guidelines/byt-lao-2024-p1.html" },
+          { label: "Phần 2: Điều Trị & Dự Phòng", file: "kho-guidelines/byt-lao-2024-p2.html" }
+        ],
+        subgroups: {
+          "Thời gian phác đồ BPaLM": "6 tháng (Bdq + Pa + Lzd + Mfx)",
+          "Thời gian phác đồ A2a Trẻ em": "4 tháng (2HRZE / 2RH)",
+          "Ngưỡng ngừng thuốc do men gan": "AST/ALT > 5x ULN (hoặc > 3x + TC)",
+          "Thời điểm khởi trị ARV ở bệnh nhân HIV": "Sau 02 tuần điều trị lao (trừ màng nổi)"
+        },
+        icd10: ["A15", "A16", "A17", "A18", "A19", "B90", "U84.3", "Z22.7"],
+        asianData: true,
+        bookmarked: true,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=pulmo"
+      },
+      {
         id: "study_gina_asthma_2026",
         title: "GINA 2026: Hướng Dẫn Toàn Diện về Chẩn Đoán, Điều Trị & Quản Lý Hen Phế Quản ở Người Trưởng Thành và Trẻ Em",
         drug: "Budesonide, Formoterol, Salbutamol, Fluticasone, Ipratropium, Depemokimab, Omalizumab, Omalizumab-igec, Dupilumab, Tezepelumab, Mepolizumab, Benralizumab, Azithromycin, Glycopyrronium",

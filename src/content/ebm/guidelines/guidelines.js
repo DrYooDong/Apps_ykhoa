@@ -200,6 +200,7 @@
               fdaStatus: s.fdaStatus || 'N/A',
               sourceUrl: s.sourceUrl || '',
               file: s.file || '',
+              parts: Array.isArray(s.parts) ? s.parts : (typeof s.parts === 'string' && s.parts ? (() => { try { return JSON.parse(s.parts); } catch(e) { return null; } })() : null),
               asianData: s.asianData !== undefined ? s.asianData : false,
               bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
               icd10: Array.isArray(s.icd10) ? s.icd10 : (typeof s.icd10 === 'string' && s.icd10 ? (() => { try { return JSON.parse(s.icd10); } catch(e) { return []; } })() : []),
@@ -293,6 +294,7 @@
             fdaStatus: study.fdaStatus,
             sourceUrl: study.sourceUrl,
             file: study.file,
+            parts: study.parts ? JSON.stringify(study.parts) : null,
             asianData: study.asianData,
             bookmarked: study.bookmarked,
             icd10: study.icd10 ? JSON.stringify(study.icd10) : null,
@@ -383,6 +385,15 @@
               fdaStatus: s.fdaStatus || 'N/A',
               sourceUrl: s.sourceUrl || '',
               file: s.file || '',
+              parts: (() => {
+                if (Array.isArray(s.parts) && s.parts.length > 0) return s.parts;
+                if (typeof s.parts === 'string' && s.parts) { try { return JSON.parse(s.parts); } catch(e) {} }
+                if (typeof SAMPLE_STUDIES !== 'undefined') {
+                  const match = SAMPLE_STUDIES.find(sm => sm.id === s.id || sm.title === s.title);
+                  if (match && match.parts) return match.parts;
+                }
+                return null;
+              })(),
               asianData: s.asianData !== undefined ? s.asianData : false,
               bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
               icd10: (() => {
@@ -836,6 +847,80 @@
     }
 
     // ════════════════════════════
+    // MULTI-PART SUMMARY HELPER
+    // ════════════════════════════
+
+    function renderSummaryButton(study, variant = 'badge') {
+      const parts = (study.parts && Array.isArray(study.parts) && study.parts.length > 0)
+        ? study.parts
+        : (study.file ? [{ label: 'Tóm tắt', file: study.file }] : []);
+
+      if (!parts || parts.length === 0) return '';
+
+      const isMulti = parts.length > 1;
+
+      if (!isMulti) {
+        const fileUrl = resolveStudyFile(parts[0].file);
+        if (variant === 'btn-primary' || variant === 'btn-primary-compare') {
+          return `<a href="${fileUrl}" class="btn btn-small btn-primary" onclick="event.stopPropagation()">📝 Tóm tắt</a>`;
+        } else if (variant === 'btn') {
+          return `<a href="${fileUrl}" class="btn btn-small" onclick="event.stopPropagation()">📝 Tóm tắt</a>`;
+        } else if (variant === 'badge-mobile') {
+          return `<a href="${fileUrl}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết" style="margin-left: auto; font-size:0.7rem; padding: 2px 6px;">📝 Tóm tắt</a>`;
+        } else {
+          return `<a href="${fileUrl}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết">📝 Tóm tắt</a>`;
+        }
+      }
+
+      // Multi-part dropdown button
+      const menuId = 'summary-parts-menu-' + study.id + '-' + variant + '-' + Math.floor(Math.random() * 10000);
+      const itemsHtml = parts.map((p, idx) => `
+        <a href="${resolveStudyFile(p.file)}" class="summary-parts-item" onclick="event.stopPropagation()">
+          <i class="fa-solid fa-file-lines" style="color: var(--accent); margin-right: 6px;"></i>
+          <span>${escapeHtml(p.label || ('Phần ' + (idx + 1)))}</span>
+        </a>
+      `).join('');
+
+      let btnClass = 'badge-summary-inline';
+      let btnStyle = '';
+      if (variant === 'btn-primary' || variant === 'btn-primary-compare') {
+        btnClass = 'btn btn-small btn-primary';
+      } else if (variant === 'btn') {
+        btnClass = 'btn btn-small';
+      } else if (variant === 'badge-mobile') {
+        btnStyle = 'margin-left: auto; font-size:0.7rem; padding: 2px 6px;';
+      }
+
+      return `
+        <div class="summary-parts-dropdown" style="position:relative; display:inline-block;">
+          <button type="button" class="${btnClass}" style="${btnStyle}" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Chọn phần tóm tắt">
+            📝 Tóm tắt (${parts.length} Phần) <span style="font-size:9px; margin-left:3px;">▼</span>
+          </button>
+          <div id="${menuId}" class="summary-parts-menu" onclick="event.stopPropagation()">
+            ${itemsHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    function toggleSummaryPartsMenu(menuId, event) {
+      if (event) event.stopPropagation();
+      const menu = document.getElementById(menuId);
+      if (!menu) return;
+      const isAlreadyActive = menu.classList.contains('active');
+      document.querySelectorAll('.summary-parts-menu.active').forEach(m => m.classList.remove('active'));
+      if (!isAlreadyActive) {
+        menu.classList.add('active');
+      }
+    }
+
+    window.toggleSummaryPartsMenu = toggleSummaryPartsMenu;
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.summary-parts-menu.active').forEach(m => m.classList.remove('active'));
+    });
+
+    // ════════════════════════════
     // TABLE GENERATOR
     // ════════════════════════════
 
@@ -984,7 +1069,7 @@
                 <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                   <a class="study-title" href="#" onclick="event.preventDefault(); toggleExpandRow('${study.id}', event)">${escapeHtml(study.title)}</a>
                   ${staleInline}
-                  ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết">📝 Tóm tắt</a>` : ''}
+                  ${renderSummaryButton(study, 'badge')}
                   ${sgInlineBtn}
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;">
@@ -1082,7 +1167,7 @@
                     
                     <div class="detail-actions">
                       ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small">📄 Báo cáo gốc</a>` : ''}
-                      ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small btn-primary">📝 Tóm tắt</a>` : ''}
+                      ${renderSummaryButton(study, 'btn-primary')}
                       
                       <!-- Nút Nâng cao Dropdown -->
                       <div class="actions-dropdown" id="dropdown-advanced-${study.id}">
@@ -1376,7 +1461,7 @@
 
             <div class="compare-row" style="display: flex; gap: 8px; border-bottom: none; margin-top: auto; padding-top: 0.5rem;">
               ${study.sourceUrl ? `<a href="${study.sourceUrl}" target="_blank" class="btn btn-small" style="flex: 1; text-align: center; justify-content: center;">📄 Nguồn</a>` : ''}
-              ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small btn-primary" style="flex: 1; text-align: center; justify-content: center;">📝 Tóm tắt</a>` : ''}
+              ${renderSummaryButton(study, 'btn-primary-compare')}
             </div>
           </div>
         `;
@@ -1713,6 +1798,43 @@
     window.calculateNNTFromHR = calculateNNTFromHR;
 
     // ════════════════════════════
+    // DYNAMIC SUMMARY PARTS CONTROLLER
+    // ════════════════════════════
+
+    function addSummaryPartRow(label = '', file = '') {
+      const container = document.getElementById('summary-parts-container');
+      if (!container) return;
+      const count = container.children.length + 1;
+      const defaultLabel = label || (`Phần ${count}`);
+      
+      const rowDiv = document.createElement('div');
+      rowDiv.className = 'summary-part-row';
+      rowDiv.style.cssText = 'display:flex; gap:8px; align-items:center; background:var(--surface-2); padding:6px 10px; border-radius:8px; border:1px solid var(--border-light);';
+      rowDiv.innerHTML = `
+        <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted); min-width:22px;">#${count}</span>
+        <input type="text" class="part-label-input" value="${escapeHtml(defaultLabel)}" placeholder="Tên phần (VD: Phần 1: Chẩn đoán)" style="flex:1; font-size:0.8rem; padding:5px 8px; border:1px solid var(--border); border-radius:6px; background:var(--surface); color:var(--text);">
+        <input type="text" class="part-file-input" value="${escapeHtml(file)}" placeholder="File HTML (VD: kho-guidelines/byt-lao-2024-p1.html)" style="flex:1.4; font-size:0.8rem; padding:5px 8px; border:1px solid var(--border); border-radius:6px; background:var(--surface); color:var(--text);">
+        <button type="button" onclick="removeSummaryPartRow(this)" style="background:none; border:none; color:var(--red); cursor:pointer; font-size:18px; font-weight:bold; padding:2px 6px;" title="Xóa phần này">&times;</button>
+      `;
+      container.appendChild(rowDiv);
+    }
+
+    function removeSummaryPartRow(btn) {
+      const row = btn.closest('.summary-part-row');
+      if (row) row.remove();
+      const container = document.getElementById('summary-parts-container');
+      if (container) {
+        Array.from(container.children).forEach((r, idx) => {
+          const numSpan = r.querySelector('span');
+          if (numSpan) numSpan.textContent = `#${idx + 1}`;
+        });
+      }
+    }
+
+    window.addSummaryPartRow = addSummaryPartRow;
+    window.removeSummaryPartRow = removeSummaryPartRow;
+
+    // ════════════════════════════
     // ADD & EDIT FORM CONTROLLERS
     // ════════════════════════════
 
@@ -1751,6 +1873,21 @@
         }
       }
 
+      // Collect summary parts from dynamic GUI rows
+      const partsArray = [];
+      const container = document.getElementById('summary-parts-container');
+      if (container) {
+        const rows = container.querySelectorAll('.summary-part-row');
+        rows.forEach(row => {
+          const lbl = row.querySelector('.part-label-input') ? row.querySelector('.part-label-input').value.trim() : '';
+          const fl = row.querySelector('.part-file-input') ? row.querySelector('.part-file-input').value.trim() : '';
+          if (fl) {
+            partsArray.push({ label: lbl || 'Tóm tắt', file: fl });
+          }
+        });
+      }
+      const parts = partsArray.length > 0 ? partsArray : null;
+
       const icd10Raw = document.getElementById('study-icd10') ? document.getElementById('study-icd10').value.trim() : '';
       const icd10 = icd10Raw ? icd10Raw.split(',').map(s => s.trim().toUpperCase()).filter(s => s) : [];
 
@@ -1764,7 +1901,7 @@
             ...studies[index],
             title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, oldRegimen, newRegimen, keyResults,
             impact, organization, year, phase, sampleSize,
-            population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups, icd10
+            population, summary, detailedConclusion, fdaStatus, sourceUrl, file, parts, asianData, subgroups, icd10
           };
           savedStudy = studies[index];
           alert('✅ Đã cập nhật tài liệu thành công!');
@@ -1775,7 +1912,7 @@
           id: generateId(),
           title, author, drug, sourceType, specialty, design, intervention, primaryEndpoint, oldRegimen, newRegimen, keyResults,
           impact, organization, year, phase, sampleSize,
-          population, summary, detailedConclusion, fdaStatus, sourceUrl, file, asianData, subgroups, icd10,
+          population, summary, detailedConclusion, fdaStatus, sourceUrl, file, parts, asianData, subgroups, icd10,
           bookmarked: false,
           createdAt: new Date().toISOString()
         };
@@ -1799,6 +1936,8 @@
       document.getElementById('add-form').reset();
       document.getElementById('study-id').value = '';
       if (document.getElementById('study-icd10')) document.getElementById('study-icd10').value = '';
+      const container = document.getElementById('summary-parts-container');
+      if (container) container.innerHTML = '';
       document.getElementById('modal-form-title').textContent = '➕ Thêm Tài Liệu / Nghiên Cứu Mới';
       document.getElementById('btn-save-study').textContent = 'Lưu tài liệu';
       document.getElementById('add-modal').classList.add('active');
@@ -1831,6 +1970,15 @@
       document.getElementById('study-source-url').value = study.sourceUrl || '';
       document.getElementById('study-file').value = study.file || '';
       document.getElementById('study-asian-data').checked = study.asianData || false;
+      
+      const container = document.getElementById('summary-parts-container');
+      if (container) {
+        container.innerHTML = '';
+        if (study.parts && Array.isArray(study.parts) && study.parts.length > 0) {
+          study.parts.forEach(p => addSummaryPartRow(p.label, p.file));
+        }
+      }
+      
       const sgEl = document.getElementById('study-subgroups');
       if (sgEl) sgEl.value = (study.subgroups && typeof study.subgroups === 'object') ? JSON.stringify(study.subgroups, null, 2) : '';
       if (document.getElementById('study-icd10')) document.getElementById('study-icd10').value = (study.icd10 && Array.isArray(study.icd10)) ? study.icd10.join(', ') : '';
@@ -1932,6 +2080,7 @@
             fdaStatus: item.fdaStatus || 'N/A',
             sourceUrl: item.sourceUrl || '',
             file: item.file || '',
+            parts: Array.isArray(item.parts) ? item.parts : (typeof item.parts === 'string' && item.parts ? (() => { try { return JSON.parse(item.parts); } catch(e) { return null; } })() : null),
             asianData: item.asianData || false,
             bookmarked: item.bookmarked || false,
             icd10: Array.isArray(item.icd10) ? item.icd10 : (typeof item.icd10 === 'string' && item.icd10 ? (() => { try { return JSON.parse(item.icd10); } catch(e) { return []; } })() : []),
@@ -2397,7 +2546,7 @@
 
         const sgCount = (study.subgroups && typeof study.subgroups === 'object') ? Object.keys(study.subgroups).length : 0;
         const sgInlineBadge = sgCount > 0 ? `<button type="button" class="badge-subgroup-inline" onclick="event.stopPropagation(); openSubgroupModal('${study.id}', event)" title="Xem phân tích ${sgCount} phân nhóm" style="margin-left:4px; font-size:0.7rem; padding: 2px 6px;">🧬 Subgroup</button>` : '';
-        const summaryBadge = study.file ? `<a href="${resolveStudyFile(study.file)}" class="badge-summary-inline" onclick="event.stopPropagation()" title="Mở bài viết tóm tắt chi tiết" style="margin-left: auto; font-size:0.7rem; padding: 2px 6px;">📝 Tóm tắt</a>` : '';
+        const summaryBadge = renderSummaryButton(study, 'badge-mobile');
 
         return `
           <div class="mobile-card ${isExpanded ? 'expanded' : ''}" id="mc-${study.id}">
@@ -2455,7 +2604,7 @@
               ${study.fdaStatus ? `<div class="mc-detail-row"><span class="mc-detail-label">FDA/Khuyến cáo:</span> <span>${escapeHtml(study.fdaStatus)}</span></div>` : ''}
               ${study.detailedConclusion ? `<div class="mc-detail-row"><span class="mc-detail-label">Chi tiết:</span> <span style="font-size:0.78rem; color:var(--text-muted);">${escapeHtml(study.detailedConclusion)}</span></div>` : ''}
               <div class="mc-actions">
-                ${study.file ? `<a href="${resolveStudyFile(study.file)}" class="btn btn-small" style="background:var(--blue); color:white; border:none;">📝 Tóm tắt</a>` : ''}
+                ${renderSummaryButton(study, 'btn-primary')}
                 ${study.relatedCalculators && study.relatedCalculators.length > 0 ? `<a href="../../../../${study.relatedCalculators[0].path}" target="_blank" class="btn btn-small" style="color:#059669;border-color:rgba(5,150,105,0.4);">🧮 ${escapeHtml(study.relatedCalculators[0].name)}</a>` : ''}
                 ${study.relatedFlowcharts && study.relatedFlowcharts.length > 0 ? `<a href="../../../../${study.relatedFlowcharts[0].path}" target="_blank" class="btn btn-small" style="color:#2563eb;border-color:rgba(37,99,235,0.4);">🧩 ${escapeHtml(study.relatedFlowcharts[0].name)}</a>` : ''}
                 ${study.radarUrl ? `<a href="${study.radarUrl}" class="btn btn-small" style="color:#d97706;border-color:rgba(217,119,6,0.4);">📡 Radar diff</a>` : ''}

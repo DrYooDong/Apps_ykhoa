@@ -1,0 +1,420 @@
+/* ==========================================================================
+   Ascites Diagnostic & Paracentesis Studio CSS
+   CliniPortal Design System Tokens & Modern High-Tech Theme
+   ========================================================================== */
+
+.ascites-studio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Studio Hero Header */
+.ascites-hero-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.ascites-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.ascites-hero-title-group {
+  max-width: 800px;
+}
+
+.ascites-hero-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.ascites-hero-subtitle {
+  color: var(--color-text-muted, #64748b);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Quick Presets Section */
+.ascites-preset-section {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-border, #e2e8f0);
+}
+
+.ascites-preset-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted, #64748b);
+  margin-bottom: 0.75rem;
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.sc-btn {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.sc-btn-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 0.25rem;
+}
+
+.sc-btn-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.3;
+}
+
+.sc-danger { border-left: 4px solid var(--color-danger, #ef4444); }
+.sc-amber { border-left: 4px solid var(--color-warning, #f59e0b); }
+.sc-teal { border-left: 4px solid #14b8a6; }
+.sc-purple { border-left: 4px solid #8b5cf6; }
+
+/* Grid Layout */
+.ascites-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .ascites-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panel Card */
+.ascites-panel-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.ascites-panel-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ascites-input-group {
+  margin-bottom: 0.85rem;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .form-grid-2, .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input-section-card {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.15rem;
+  transition: border-color 0.2s ease;
+}
+
+.input-section-card:hover {
+  border-color: var(--color-primary-hl, #cbd5e1);
+}
+
+.input-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.input-section-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ascites-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.ascites-calc-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-text, #334155);
+}
+
+.ascites-input-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.ascites-calc-input, .ascites-calc-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.ascites-calc-input:focus, .ascites-calc-select:focus {
+  outline: none;
+  border-color: var(--color-primary, #0284c7);
+  background: var(--color-surface, #ffffff);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+.ascites-select-unit {
+  width: 95px;
+  flex-shrink: 0;
+}
+
+/* Dashboard & Metrics */
+.ascites-hero-banner {
+  border-radius: 16px;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(13, 148, 136, 0.08));
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+.ascites-hero-banner-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ascites-hero-banner-summary {
+  font-size: 0.95rem;
+  color: var(--color-text-muted, #475569);
+  line-height: 1.5;
+}
+
+.ascites-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .ascites-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ascites-metric-card {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+}
+
+.ascites-metric-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  margin-bottom: 0.25rem;
+}
+
+.ascites-metric-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Albumin Card */
+.ascites-albumin-card {
+  background: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Etiology Bar */
+.ascites-etiology-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.et-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.et-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text, #1e293b);
+}
+
+.et-progress-bar {
+  flex: 1;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--color-border, #e2e8f0);
+  overflow: hidden;
+}
+
+.et-progress-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.4s ease;
+}
+
+.et-score-badge {
+  font-size: 0.78rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* Flowchart Visualizer Nodes */
+.ascites-flowchart-wrapper {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.ascites-fc-nodes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.ascites-fc-node {
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  border: 2px solid var(--color-border, #cbd5e1);
+  background: var(--color-bg, #f8fafc);
+  opacity: 0.55;
+  transition: all 0.3s ease;
+}
+
+.ascites-fc-node.active-node {
+  opacity: 1;
+  border-color: var(--color-primary, #0284c7);
+  background: var(--color-surface, #ffffff);
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.2);
+  transform: scale(1.02);
+}
+
+.ascites-fc-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 0.25rem;
+}
+
+.ascites-fc-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.ascites-empty-state {
+  padding: 1rem;
+  text-align: center;
+  color: var(--color-text-muted, #94a3b8);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] .ascites-hero-card,
+[data-theme="dark"] .ascites-panel-card,
+[data-theme="dark"] .ascites-flowchart-wrapper {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .ascites-calc-input,
+[data-theme="dark"] .ascites-calc-select {
+  background: var(--color-bg, #0f172a);
+  border-color: var(--color-border, #334155);
+  color: var(--color-text, #f8fafc);
+}
+
+[data-theme="dark"] .ascites-metric-card,
+[data-theme="dark"] .sc-btn {
+  background: var(--color-bg, #0f172a);
+  border-color: var(--color-border, #334155);
+}
