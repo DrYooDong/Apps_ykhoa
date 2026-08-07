@@ -9,13 +9,13 @@
     :root {
       --bg-color: #f8fafc;
       --card-bg: rgba(255, 255, 255, 0.85);
-      --text-color: #1e293b;
-      --border-color: #e2e8f0;
+      --text-color: var(--color-text);
+      --border-color: var(--color-border);
       --primary: #0ea5e9;
     }
 
     body.dark {
-      --bg-color: #0f172a;
+      --bg-color: var(--color-text);
       --card-bg: rgba(30, 41, 59, 0.85);
       --text-color: #f1f5f9;
       --border-color: #334155;
@@ -54,12 +54,12 @@
 
     .subtitle {
       font-size: 0.95rem;
-      color: #64748b;
+      color: var(--color-text-muted);
       margin-bottom: 2rem;
     }
 
     .dark .subtitle {
-      color: #94a3b8;
+      color: var(--color-text-muted);
     }
 
     .btn-grid {

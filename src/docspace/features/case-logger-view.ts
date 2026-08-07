@@ -5,7 +5,7 @@
 
 import { getAllCases, saveCase, deleteCase } from '../storage';
 import { CaseRecord, CaseContext } from '../types';
-import { renderSidebar, formatDate } from '../docspace-view';
+import { renderSidebar, renderDocSpaceHeader, formatDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
 import { analyzeCase } from '../ai/llm-client';
 import { searchContext } from '../ai/rag-engine';
@@ -81,6 +81,7 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
     <div class="dsp-layout" id="dspLayout">
       ${renderSidebar(profile, 'cases')}
       <main class="dsp-main">
+        ${renderDocSpaceHeader(profile, 'cases')}
         <div class="dsp-page-content">
 
           <div class="dsp-page-header">

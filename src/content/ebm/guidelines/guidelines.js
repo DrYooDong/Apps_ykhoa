@@ -916,6 +916,23 @@
 
     window.toggleSummaryPartsMenu = toggleSummaryPartsMenu;
 
+    window.openForestPlot = function(studyId) {
+      const study = studies.find(s => s.id === studyId);
+      if (study && study.statistics) {
+        sessionStorage.setItem('forestPlotData', JSON.stringify({
+          studyId: study.id,
+          title: study.title,
+          intervention: study.pico ? study.pico.intervention : study.intervention,
+          comparator: study.pico ? study.pico.comparator : 'Control',
+          outcome: study.pico ? study.pico.outcome : study.primaryEndpoint,
+          statistics: study.statistics
+        }));
+        window.open('../ebm-lab/forest-plot.html', '_blank');
+      } else {
+        alert("Nghiên cứu này không có đủ dữ liệu thống kê để vẽ Forest Plot.");
+      }
+    };
+
     document.addEventListener('click', () => {
       document.querySelectorAll('.summary-parts-menu.active').forEach(m => m.classList.remove('active'));
     });
@@ -1018,9 +1035,14 @@
         const specialtyCell = columnVisibility.specialty ? `<td><span class="badge badge-${study.specialty}">${spec.name}</span></td>` : '';
         const designCell = columnVisibility.design ? `<td><span class="badge-source">${designConfig.name}</span></td>` : '';
         const organizationCell = columnVisibility.organization ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.organization || 'N/A')} (${study.year})</div></td>` : '';
-        const interventionCell = columnVisibility.intervention ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.intervention || 'N/A')}</div></td>` : '';
-        const primaryEndpointCell = columnVisibility.primaryEndpoint ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.primaryEndpoint || 'N/A')}</div></td>` : '';
-        const keyResultsCell = columnVisibility.keyResults ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.keyResults || 'N/A')}</div></td>` : '';
+        // Generate new schema HTML safely fallback to old schema
+        const interventionText = study.pico ? `<strong>P:</strong> ${escapeHtml(study.pico.population || 'N/A')}<br/><strong>I:</strong> ${escapeHtml(study.pico.intervention || 'N/A')}<br/><strong>C:</strong> ${escapeHtml(study.pico.comparator || 'N/A')}` : escapeHtml(study.intervention || 'N/A');
+        const outcomeText = study.pico ? escapeHtml(study.pico.outcome || 'N/A') : escapeHtml(study.primaryEndpoint || 'N/A');
+        const statsText = study.statistics ? `<strong>${study.statistics.type}</strong> ${study.statistics.value} (95% CI ${study.statistics.ciLower}-${study.statistics.ciUpper}); p=${study.statistics.pValue}` : escapeHtml(study.oldKeyResults || study.keyResults || 'N/A');
+
+        const interventionCell = columnVisibility.intervention ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${interventionText}</div></td>` : '';
+        const primaryEndpointCell = columnVisibility.primaryEndpoint ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${outcomeText}</div></td>` : '';
+        const keyResultsCell = columnVisibility.keyResults ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${statsText}</div></td>` : '';
         
         // Cột bệnh ICD-10
         const icd10Cell = columnVisibility.icd10 ? `
@@ -1053,6 +1075,15 @@
         const sampleSizeCell = columnVisibility.sampleSize ? `<td>${study.sampleSize ? 'n=' + formatNumber(study.sampleSize) : 'N/A'}</td>` : '';
         const populationCell = columnVisibility.population ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.population || 'N/A')}</div></td>` : '';
 
+        // Build GRADE badge and Forest Plot button
+        let gradeBadge = '';
+        if (study.grade) {
+          let strengthIcon = study.grade.strength.includes('against') ? '🔴' : '🟢';
+          let certaintyIcon = study.grade.certainty === 'high' ? '🟢' : (study.grade.certainty === 'moderate' ? '🟡' : '🟠');
+          gradeBadge = `<span class="badge" style="background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; padding:2px 6px; font-size:0.7rem; font-weight:600; border-radius:4px; margin-right:4px;" title="Strength: ${study.grade.strength}, Certainty: ${study.grade.certainty}">GRADE ${strengthIcon} ${certaintyIcon}</span>`;
+        }
+        const forestBtn = study.statistics ? `<button type="button" class="badge" style="background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; padding:2px 6px; font-size:0.7rem; font-weight:600; border-radius:4px; margin-right:4px; cursor:pointer;" onclick="event.stopPropagation(); window.openForestPlot('${study.id}')" title="Trực quan hóa Forest Plot">📊 Forest Plot</button>` : '';
+
         rowsHtml += `
           <tr id="tr-${study.id}" class="main-row ${isExpanded ? 'expanded' : ''}" onclick="toggleExpandRow('${study.id}', event)">
             <td class="cell-center" onclick="event.stopPropagation()">
@@ -1069,6 +1100,8 @@
                 <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
                   <a class="study-title" href="#" onclick="event.preventDefault(); toggleExpandRow('${study.id}', event)">${escapeHtml(study.title)}</a>
                   ${staleInline}
+                  ${gradeBadge}
+                  ${forestBtn}
                   ${renderSummaryButton(study, 'badge')}
                   ${sgInlineBtn}
                 </div>
@@ -1411,21 +1444,29 @@
                 <span class="impact-dot"></span>
                 ${impactConfig.name}
               </span>
+              ${study.grade ? `<span class="badge" style="background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; font-size:0.7rem;">GRADE: ${study.grade.strength} / ${study.grade.certainty}</span>` : ''}
             </div>
 
             <div class="compare-row">
-              <span class="detail-label">Can thiệp / Đối chứng</span>
-              <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">${escapeHtml(study.intervention || 'N/A')}</p>
+              <span class="detail-label">PICO: Đối tượng / Can thiệp / Đối chứng</span>
+              <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">
+                ${study.pico ? `<strong>P:</strong> ${escapeHtml(study.pico.population)}<br><strong>I:</strong> ${escapeHtml(study.pico.intervention)}<br><strong>C:</strong> ${escapeHtml(study.pico.comparator)}` : escapeHtml(study.intervention || 'N/A')}
+              </p>
             </div>
 
             <div class="compare-row">
-              <span class="detail-label">Tiêu chí đánh giá chính</span>
-              <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">${escapeHtml(study.primaryEndpoint || 'N/A')}</p>
+              <span class="detail-label">Tiêu chí đánh giá (Outcome)</span>
+              <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">${study.pico ? escapeHtml(study.pico.outcome) : escapeHtml(study.primaryEndpoint || 'N/A')}</p>
             </div>
 
             <div class="compare-row">
-              <span class="detail-label">Kết quả / Chỉ số</span>
-              <p style="font-size: 0.78rem; font-weight: 700; font-family: monospace; color: var(--accent);">${escapeHtml(study.keyResults || 'N/A')}</p>
+              <span class="detail-label" style="display:flex; justify-content:space-between;">
+                Kết quả / Chỉ số
+                ${study.statistics ? `<button type="button" class="badge" style="background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; font-size:0.65rem; cursor:pointer;" onclick="event.stopPropagation(); window.openForestPlot('${study.id}')">📊 Forest Plot</button>` : ''}
+              </span>
+              <p style="font-size: 0.78rem; font-weight: 700; font-family: monospace; color: var(--accent);">
+                ${study.statistics ? `${study.statistics.type} ${study.statistics.value} (95% CI ${study.statistics.ciLower}-${study.statistics.ciUpper}); p=${study.statistics.pValue}` : escapeHtml(study.oldKeyResults || study.keyResults || 'N/A')}
+              </p>
             </div>
 
             <div class="compare-row">

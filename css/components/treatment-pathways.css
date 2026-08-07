@@ -1,0 +1,315 @@
+/* ==========================================================================
+   TREATMENT PATHWAYS COMPONENT STYLES — CliniPortal
+   Pure CSS - Dark Mode Ready & Responsive Medical Design Tokens
+   ========================================================================== */
+
+.treatment-pathways-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .treatment-pathways-card {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+}
+
+.tp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.tp-title-group h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 4px 0;
+}
+
+.tp-title-group h2 i {
+  color: var(--color-primary, #0284c7);
+}
+
+.tp-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #64748b);
+  margin: 0;
+}
+
+/* Control View Switcher Tabs */
+.tp-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg, #f8fafc);
+  padding: 4px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #e2e8f0);
+}
+
+[data-theme="dark"] .tp-controls {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.tp-tab-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.tp-tab-btn:hover {
+  color: var(--color-primary, #0284c7);
+}
+
+.tp-tab-btn.active {
+  background: var(--color-surface, #ffffff);
+  color: var(--color-primary, #0284c7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .tp-tab-btn.active {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+}
+
+/* Legend Component */
+.tp-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+  padding: 10px 14px;
+  background: rgba(2, 132, 199, 0.04);
+  border-radius: 8px;
+  border: 1px stroke var(--color-border, #e2e8f0);
+}
+
+.tp-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text, #0f172a);
+  font-weight: 500;
+}
+
+.tp-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* SVG Chart Container */
+.tp-chart-container {
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.tp-svg {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  max-height: 520px;
+  overflow: visible;
+}
+
+/* Sunburst Segment Styles & Animations */
+.tp-segment {
+  cursor: pointer;
+  stroke: var(--color-surface, #ffffff);
+  stroke-width: 2px;
+  transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+  transform-origin: center center;
+}
+
+[data-theme="dark"] .tp-segment {
+  stroke: var(--color-surface, #1e293b);
+}
+
+.tp-segment:hover {
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+}
+
+.tp-segment.dimmed {
+  opacity: 0.2;
+}
+
+.tp-segment.highlighted {
+  opacity: 1;
+  stroke: var(--color-primary, #0284c7);
+  stroke-width: 3px;
+}
+
+/* Center Text Label */
+.tp-center-label {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-weight: 700;
+  fill: var(--color-text, #0f172a);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.tp-center-subtext {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-size: 11px;
+  fill: var(--color-text-muted, #64748b);
+  pointer-events: none;
+}
+
+/* Interactive Floating Tooltip */
+.tp-tooltip {
+  position: fixed;
+  background: rgba(15, 23, 42, 0.92);
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 1000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  max-width: 280px;
+}
+
+.tp-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tp-tooltip-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #38bdf8;
+  font-size: 0.875rem;
+}
+
+.tp-tooltip-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* Detail Popover Drawer / Modal */
+.tp-detail-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 100%;
+  background: var(--color-surface, #ffffff);
+  border-left: 1px solid var(--color-border, #e2e8f0);
+  padding: 20px;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-theme="dark"] .tp-detail-panel {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.4);
+}
+
+.tp-detail-panel.open {
+  transform: translateX(0);
+}
+
+.tp-detail-close {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--color-text-muted, #64748b);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.tp-detail-close:hover {
+  background: rgba(0,0,0,0.05);
+  color: var(--color-text, #0f172a);
+}
+
+.tp-detail-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary, #0284c7);
+  margin: 12px 0 6px 0;
+}
+
+.tp-detail-body {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text, #0f172a);
+}
+
+.tp-detail-section {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px stroke var(--color-border, #e2e8f0);
+}
+
+.tp-detail-section h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted, #64748b);
+  margin-bottom: 8px;
+}
+
+/* Responsive Rules */
+@media (max-width: 768px) {
+  .treatment-pathways-card {
+    padding: 16px;
+  }
+  .tp-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tp-detail-panel {
+    width: 100%;
+  }
+}

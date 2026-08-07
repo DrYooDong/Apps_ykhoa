@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/components/square-ui-tokens.css">
   <link rel="stylesheet" href="./css/components/header.css">
   <link rel="stylesheet" href="./css/components/sidebar.css">
   <link rel="stylesheet" href="./css/components/footer.css">
@@ -35,6 +36,7 @@
   <link rel="stylesheet" href="./css/components/pulse.css">
   <link rel="stylesheet" href="./css/components/evidence-bridge.css">
   <link rel="stylesheet" href="./css/components/homepage-bento.css">
+  <link rel="stylesheet" href="./css/components/clinical-heatmap.css">
 
   <script src="./js/core/category-mapper.js" defer></script>
   <script src="./js/main.js" defer></script>
@@ -43,6 +45,7 @@
   <script src="./js/evidence-bridge.js" defer></script>
   <script src="./js/smart-recommender.js" defer></script>
   <script src="./data/search-index-bundle.js" defer></script>
+  <script src="./js/components/clinical-heatmap.js" defer></script>
 </head>
 
 <body>
@@ -76,26 +79,43 @@
       <div class="search-results-dropdown" id="searchResultsDropdown"></div>
     </div>
 
-    <div class="header-actions">
-      <!-- DocSpace trigger -->
-      <a href="#/docspace" class="header-cmd-hint" id="docspaceHeaderBtn" title="Không gian Riêng của Bác sĩ (DocSpace)"
-        aria-label="DocSpace Workspace" style="text-decoration: none; color: inherit;">
-        <i class="fa-solid fa-id-badge" style="color: var(--color-primary, #0284c7);"></i>
+    <div class="header-nav-modules">
+      <a href="src/content/skills/ky-nang.html" class="header-module-btn" data-route="#/skills" title="Kỹ năng Lâm sàng">
+        <i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i>
+        <span>Kỹ năng</span>
+      </a>
+      <a href="src/content/approaches/tiep-can.html" class="header-module-btn" data-route="#/approaches" title="Tiếp cận Lâm sàng">
+        <i class="fa-solid fa-sitemap" style="color: #10b981;"></i>
+        <span>Tiếp cận</span>
+      </a>
+      <a href="src/content/calculators/cong-cu.html" class="header-module-btn" data-route="#/calculators" title="Công cụ Lâm sàng">
+        <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
+        <span>Công cụ</span>
+      </a>
+      <a href="src/content/pharmacology/duoc-ly.html" class="header-module-btn" data-route="#/pharmacology" title="Dược lý Lâm sàng">
+        <i class="fa-solid fa-pills" style="color: #ec4899;"></i>
+        <span>Dược lý</span>
+      </a>
+      <a href="src/content/pathophysiology/sinhly-sinhlybenh.html" class="header-module-btn" data-route="#/pathophysiology" title="Sinh lý & Sinh lý bệnh">
+        <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
+        <span>Sinh lý</span>
+      </a>
+      <a href="src/content/ebm/yhcc.html" class="header-module-btn" data-route="#/ebm" title="Y học chứng cứ">
+        <i class="fa-solid fa-flask" style="color: #06b6d4;"></i>
+        <span>Chứng cứ</span>
+      </a>
+      <a href="src/content/tcm/y-hoc-co-truyen.html" class="header-module-btn" data-route="#/tcm" title="Y học cổ truyền">
+        <i class="fa-solid fa-yin-yang" style="color: #14b8a6;"></i>
+        <span>Đông y</span>
+      </a>
+      <a href="#/docspace" class="header-module-btn bento-badge-docspace" id="docspaceHeaderBtn" title="DocSpace — Không gian Riêng">
+        <i class="fa-solid fa-id-badge" style="color: var(--color-primary);"></i>
         <span>DocSpace</span>
       </a>
+    </div>
 
-      <!-- Hotkey Help trigger -->
-      <button class="header-cmd-hint" id="hotkeyHelpBtn" title="Bảng phím tắt (?)" aria-label="Keyboard Shortcuts">
-        <i class="fa-solid fa-keyboard"></i>
-        <span>Phím tắt</span>
-        <kbd>?</kbd>
-      </button>
-
-      <button class="header-cmd-hint" id="theme-toggle-btn" title="Chuyển đổi Sáng/Tối" aria-label="Toggle Theme">
-        <i class="fa-solid fa-moon" style="color:#8b5cf6;"></i>
-        <span>Chế độ Tối</span>
-      </button>
-      <button id="sync-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
+    <div class="header-actions">
+      <button id="sync-settings-btn" class="header-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
     </div>
   </header>
 
@@ -183,181 +203,7 @@
           </div>
         </section>
 
-        <!-- ════════════════════════════════════════
-             ROW 2: CORE MODULE GRID (6 Module Bento Cards)
-        ════════════════════════════════════════ -->
 
-        <!-- ════════════════════════════════════════
-             ROWS 2-4: 8 MODULE CARDS (COLS 1-3) + CHECKLIST CA TRỰC (COL 4)
-        ════════════════════════════════════════ -->
-
-        <!-- BENTO CELL 1: Kỹ năng Lâm sàng -->
-        <a href="src/content/skills/ky-nang.html" class="bento-cell bento-module bento-mod-skills" data-category="clinical">
-          <button class="pin-btn" data-url="#/skills" data-title="Kỹ năng Lâm sàng" data-category="Lâm sàng" data-icon="🩺" title="Ghim ứng dụng">☆</button>
-          <div class="bento-mod-top-box">
-            <div class="bento-mod-badge"><span class="bento-status-dot"></span> Hoạt động</div>
-            <div class="bento-mod-icon-wrap"><i class="fa-solid fa-stethoscope"></i></div>
-          </div>
-          <div class="bento-mod-body-box">
-            <div class="bento-mod-bg-icon" aria-hidden="true">🩺</div>
-            <h3>Kỹ năng Lâm sàng</h3>
-            <p>Quy trình thăm khám 11 hệ cơ quan chuẩn y khoa, bảng kiểm bedside dựa trên Macleod.</p>
-            <ul class="bento-mod-tags">
-              <li>OSCE Prep</li><li>Bedside</li><li>11 Hệ cơ quan</li>
-            </ul>
-            <div class="bento-mod-footer">
-              <span class="bento-mod-cat">Clinical Skills</span>
-              <span class="bento-mod-cta">Truy cập <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- BENTO CELL 2: Tiếp cận Lâm sàng -->
-        <a href="src/content/approaches/tiep-can.html" class="bento-cell bento-module bento-mod-approach" data-category="clinical">
-          <button class="pin-btn" data-url="#/approaches" data-title="Tiếp cận Lâm sàng" data-category="Lâm sàng" data-icon="📋" title="Ghim ứng dụng">☆</button>
-          <div class="bento-mod-top-box">
-            <div class="bento-mod-badge"><span class="bento-status-dot"></span> Hoạt động</div>
-            <div class="bento-mod-icon-wrap"><i class="fa-solid fa-sitemap"></i></div>
-          </div>
-          <div class="bento-mod-body-box">
-            <div class="bento-mod-bg-icon" aria-hidden="true">📋</div>
-            <h3>Tiếp cận Lâm sàng</h3>
-            <p>Phác đồ từng bước xử trí các hội chứng, triệu chứng cấp cứu và thường gặp.</p>
-            <ul class="bento-mod-tags">
-              <li>Triệu chứng</li><li>Hội chứng</li><li>Algorithm</li>
-            </ul>
-            <div class="bento-mod-footer">
-              <span class="bento-mod-cat">Algorithms</span>
-              <span class="bento-mod-cta">Truy cập <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- BENTO CELL 3: Công cụ Lâm sàng -->
-        <a href="src/content/calculators/cong-cu.html" class="bento-cell bento-module bento-mod-tools" data-category="tools">
-          <button class="pin-btn" data-url="#/calculators" data-title="Công cụ Lâm sàng" data-category="Công cụ" data-icon="🧮" title="Ghim ứng dụng">☆</button>
-          <div class="bento-mod-top-box">
-            <div class="bento-mod-badge"><span class="bento-status-dot"></span> Hoạt động</div>
-            <div class="bento-mod-icon-wrap"><i class="fa-solid fa-calculator"></i></div>
-          </div>
-          <div class="bento-mod-body-box">
-            <div class="bento-mod-bg-icon" aria-hidden="true">🧮</div>
-            <h3>Công cụ Lâm sàng</h3>
-            <p>Tính toán các thang điểm nặng, tiên lượng và hỗ trợ chẩn đoán chính xác tại giường.</p>
-            <ul class="bento-mod-tags">
-              <li>120+ Thang điểm</li><li>CDSS</li><li>eGFR / ABG</li>
-            </ul>
-            <div class="bento-mod-footer">
-              <span class="bento-mod-cat">Calculators</span>
-              <span class="bento-mod-cta">Truy cập <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- BENTO CELL 4: Dược lý Lâm sàng -->
-        <a href="src/content/pharmacology/duoc-ly.html" class="bento-cell bento-module bento-mod-pharma" data-category="pharma">
-          <button class="pin-btn" data-url="#/pharmacology" data-title="Dược lý lâm sàng" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
-          <div class="bento-mod-top-box">
-            <div class="bento-mod-badge"><span class="bento-status-dot"></span> Hoạt động</div>
-            <div class="bento-mod-icon-wrap"><i class="fa-solid fa-pills"></i></div>
-          </div>
-          <div class="bento-mod-body-box">
-            <div class="bento-mod-bg-icon" aria-hidden="true">💊</div>
-            <h3>Dược lý lâm sàng</h3>
-            <p>Tra cứu liều thuốc, chỉnh liều theo thận, tối ưu PK/PD kháng sinh.</p>
-            <ul class="bento-mod-tags">
-              <li>Kháng sinh</li><li>Chỉnh liều Thận</li><li>PK/PD</li>
-            </ul>
-            <div class="bento-mod-footer">
-              <span class="bento-mod-cat">Pharmacology</span>
-              <span class="bento-mod-cta">Truy cập <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- BENTO CELL 5: Sinh lý & Sinh lý bệnh -->
-        <a href="src/content/pathophysiology/sinhly-sinhlybenh.html" class="bento-cell bento-module bento-mod-physio" data-category="physio">
-          <button class="pin-btn" data-url="#/pathophysiology" data-title="Sinh lý & Sinh lý bệnh" data-category="Sinh lý" data-icon="🧬" title="Ghim ứng dụng">☆</button>
-          <div class="bento-mod-top-box">
-            <div class="bento-mod-badge"><span class="bento-status-dot"></span> Hoạt động</div>
-            <div class="bento-mod-icon-wrap"><i class="fa-solid fa-dna"></i></div>
-          </div>
-          <div class="bento-mod-body-box">
-            <div class="bento-mod-bg-icon" aria-hidden="true">🧬</div>
-            <h3>Sinh lý & Sinh lý bệnh</h3>
-            <p>Cơ chế bệnh sinh, sinh lý học cơ bản và bệnh lý theo hệ cơ quan.</p>
-            <ul class="bento-mod-tags">
-              <li>Cơ chế bệnh sinh</li><li>Bệnh lý học</li>
-            </ul>
-            <div class="bento-mod-footer">
-              <span class="bento-mod-cat">Physiology</span>
-              <span class="bento-mod-cta">Truy cập <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- BENTO CELL 6: Y học chứng cứ -->
-        <a href="src/content/ebm/yhcc.html" class="bento-cell bento-module bento-mod-ebm" data-category="ebm">
-          <button class="pin-btn" data-url="#/ebm" data-title="Y học chứng cứ" data-category="Chứng cứ" data-icon="📄" title="Ghim ứng dụng">☆</button>
-          <div class="bento-mod-top-box">
-            <div class="bento-mod-badge"><span class="bento-status-dot"></span> Hoạt động</div>
-            <div class="bento-mod-icon-wrap"><i class="fa-solid fa-flask"></i></div>
-          </div>
-          <div class="bento-mod-body-box">
-            <div class="bento-mod-bg-icon" aria-hidden="true">📄</div>
-            <h3>Y học chứng cứ</h3>
-            <p>Tra cứu bằng chứng y học, PICO, NNT Lab và Kho Guidelines quốc tế.</p>
-            <ul class="bento-mod-tags">
-              <li>EBM / PICO</li><li>Guidelines</li><li>NNT</li>
-            </ul>
-            <div class="bento-mod-footer">
-              <span class="bento-mod-cat">Evidence</span>
-              <span class="bento-mod-cta">Truy cập <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- BENTO CELL 7: Y học cổ truyền -->
-        <a href="src/content/tcm/y-hoc-co-truyen.html" class="bento-cell bento-module bento-mod-tcm" data-category="tcm">
-          <button class="pin-btn" data-url="#/tcm" data-title="Y học cổ truyền" data-category="Đông y" data-icon="☯️" title="Ghim ứng dụng">☆</button>
-          <div class="bento-mod-top-box">
-            <div class="bento-mod-badge"><span class="bento-status-dot"></span> Hoạt động</div>
-            <div class="bento-mod-icon-wrap"><i class="fa-solid fa-yin-yang"></i></div>
-          </div>
-          <div class="bento-mod-body-box">
-            <div class="bento-mod-bg-icon" aria-hidden="true">☯️</div>
-            <h3>Y học cổ truyền</h3>
-            <p>Xoa bóp, bấm huyệt, châm cứu và kho tri thức dược liệu cổ truyền.</p>
-            <ul class="bento-mod-tags">
-              <li>Châm cứu</li><li>Dược liệu</li><li>Huyệt đạo</li>
-            </ul>
-            <div class="bento-mod-footer">
-              <span class="bento-mod-cat">Traditional Med</span>
-              <span class="bento-mod-cta">Truy cập <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- BENTO CELL 8: DocSpace (wide) -->
-        <a href="#/docspace" class="bento-cell bento-module bento-mod-docspace" data-category="tools clinical">
-          <button class="pin-btn" data-url="#/docspace" data-title="DocSpace — Không gian Riêng" data-category="Cá nhân" data-icon="🆔" title="Ghim ứng dụng">☆</button>
-          <div class="bento-mod-top-box">
-            <div class="bento-mod-badge bento-badge-new">✦ Mới v2.0</div>
-            <div class="bento-mod-icon-wrap"><i class="fa-solid fa-id-badge"></i></div>
-          </div>
-          <div class="bento-mod-body-box">
-            <div class="bento-mod-bg-icon" aria-hidden="true">🆔</div>
-            <h3>DocSpace — Không Gian Riêng</h3>
-            <p>Trình bệnh SBAR, ca trực, log ca bệnh, nhật ký phác đồ &amp; liên kết cá nhân hóa.</p>
-            <ul class="bento-mod-tags">
-              <li>SBAR Note</li><li>Ca trực</li><li>Cá nhân hóa</li>
-            </ul>
-            <div class="bento-mod-footer">
-              <span class="bento-mod-cat">DocSpace</span>
-              <span class="bento-mod-cta">Truy cập <i class="fa-solid fa-arrow-right"></i></span>
-            </div>
-          </div>
-        </a>
 
         <!-- BENTO CELL: Checklist Ca Trực (COLUMN 4 TALL WIDGET - Top Right) -->
         <section class="bento-cell bento-shift-checklist shift-widget" aria-label="Ca trực & Handover">
@@ -500,7 +346,7 @@
           </div>
           <div class="pulse-actions-grid">
             <a href="#/ebm" class="pulse-action-card">
-              <div class="pulse-action-icon" style="color: #0284c7;">🧪</div>
+              <div class="pulse-action-icon" style="color: var(--color-primary);">🧪</div>
               <div class="pulse-action-title">PICO & NNT Lab</div>
               <div class="pulse-action-sub">Thực hành EBM tương tác</div>
             </a>
@@ -647,11 +493,16 @@
           </div>
         </section>
 
+        <!-- BENTO CELL: Clinical Progress Heatmap (Square UI Habit Tracker style) -->
+        <section class="bento-cell bento-scratchpad" style="grid-column: 1 / 13; padding: 0; border: none; background: transparent;" aria-label="Tiến độ học tập lâm sàng">
+          <div id="clinical-progress-heatmap"></div>
+        </section>
+
       </div>
       <!-- /.bento-homepage -->
 
       <!-- Placeholder nạp footer.html -->
-      <div id="footer-placeholder" data-footer-path="components/footer.html"></div>
+      <div id="footer-placeholder" data-footer-path="./components/footer.html"></div>
     </div>
   </main>
 

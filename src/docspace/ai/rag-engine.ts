@@ -109,3 +109,20 @@ export function searchContext(query: string, icd10Codes: string[] = [], topK: nu
   scoredChunks.sort((a, b) => b.score - a.score);
   return scoredChunks.filter(s => s.score > 0).slice(0, topK).map(s => s.chunk);
 }
+
+export async function searchContextWithAI(
+  query: string,
+  settings?: any,
+  icd10Codes: string[] = [],
+  topK: number = 5
+): Promise<{ chunks: RAGChunk[]; expandedKeywords: string[] }> {
+  let expandedKeywords = [query];
+  if (settings && settings.enabled && settings.endpoint) {
+    const { expandQueryWithAI } = await import('./llm-client');
+    expandedKeywords = await expandQueryWithAI(query, settings);
+  }
+
+  const combinedQuery = expandedKeywords.join(' ');
+  const chunks = searchContext(combinedQuery, icd10Codes, topK);
+  return { chunks, expandedKeywords };
+}

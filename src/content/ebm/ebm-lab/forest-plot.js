@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    INTERACTIVE FOREST PLOT BUILDER (SVG ENGINE)
    Location: src/content/ebm/EBM Lab/forest-plot.js
 ============================================================ */
@@ -56,10 +56,50 @@ const PRESETS = {
 
 function initForestPlotBuilder() {
   let currentMetric = "HR";
-  let studiesData = [...PRESETS.empareg.studies];
-  let pooledData = { ...PRESETS.empareg.pooled };
+  let studiesData = [];
+  let pooledData = {};
   let minAxis = 0.4;
   let maxAxis = 1.6;
+
+  // Check if data is passed from Guidelines Hub via sessionStorage
+  const passedDataStr = sessionStorage.getItem('forestPlotData');
+  if (passedDataStr) {
+    try {
+      const passedData = JSON.parse(passedDataStr);
+      currentMetric = passedData.statistics.type || "HR";
+      
+      // Auto adjust axis based on value
+      const val = passedData.statistics.value;
+      if (val < 0.5) { minAxis = 0.1; maxAxis = 1.0; }
+      else if (val > 1.5) { minAxis = 1.0; maxAxis = 5.0; }
+      
+      document.querySelector('h1').textContent = `Forest Plot: ${passedData.title}`;
+      document.querySelector('.ebm-subtitle').textContent = `Can thiệp: ${passedData.intervention} vs ${passedData.comparator}`;
+      
+      studiesData = [{
+        name: "Toàn bộ bệnh nhân (Overall)",
+        val: val,
+        low: passedData.statistics.ciLower,
+        high: passedData.statistics.ciUpper,
+        weight: 100
+      }];
+      pooledData = {
+        val: val,
+        low: passedData.statistics.ciLower,
+        high: passedData.statistics.ciUpper
+      };
+      
+      // Clear after reading so it doesn't stick
+      sessionStorage.removeItem('forestPlotData');
+    } catch (e) {
+      console.error("Error parsing forestPlotData:", e);
+      studiesData = [...PRESETS.empareg.studies];
+      pooledData = { ...PRESETS.empareg.pooled };
+    }
+  } else {
+    studiesData = [...PRESETS.empareg.studies];
+    pooledData = { ...PRESETS.empareg.pooled };
+  }
 
   const tableBody = document.getElementById("fp-table-body");
   const svgCanvas = document.getElementById("fp-svg-canvas");

@@ -5,7 +5,7 @@
 
 import { getAllDrugEntries, saveDrugEntry, updateDrugEntry, deleteDrugEntry, getDrugEntryById } from '../storage';
 import { DrugJournalEntry } from '../types';
-import { renderSidebar, formatDate } from '../docspace-view';
+import { renderSidebar, renderDocSpaceHeader, formatDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
 import { analyzeDrugRegimen } from '../ai/llm-client';
 import { searchContext } from '../ai/rag-engine';
@@ -77,6 +77,7 @@ export function renderDrugJournalView(profileId: string, editId?: string): strin
     <div class="dsp-layout" id="dspLayout">
       ${renderSidebar(profile, 'drugs')}
       <main class="dsp-main">
+        ${renderDocSpaceHeader(profile, 'drugs')}
         <div class="dsp-page-content">
 
           <div class="dsp-page-header">

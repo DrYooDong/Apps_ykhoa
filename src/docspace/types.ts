@@ -41,12 +41,22 @@ export interface SyncStatusInfo {
   errorMessage?: string;
 }
 
+export type AIProvider = 'groq' | 'gemini' | 'openrouter' | 'sambanova' | 'custom';
+
 export interface AISettings {
   enabled: boolean;
+  provider?: AIProvider;
   endpoint: string;
   model: string;
   apiKey?: string;
   labModeEnabled?: boolean;
+
+  // Multi-Provider Fallback Engine
+  fallbackEnabled?: boolean;
+  secondaryProvider?: AIProvider;
+  secondaryEndpoint?: string;
+  secondaryModel?: string;
+  secondaryApiKey?: string;
 }
 
 export interface QuickLink {

@@ -3,10 +3,10 @@
  * Quản lý ghi chú cá nhân, hỗ trợ rich text/markdown, gắn tag và liên kết nguồn
  */
 
-import { getAllNotes, saveNote, updateNote, deleteNote, getNoteById } from '../storage';
+import { getAllNotes, saveNote, updateNote, deleteNote, getNoteById, getActiveProfile } from '../storage';
 import { PersonalNote } from '../types';
-import { renderSidebar, formatDate, formatRelativeDate } from '../docspace-view';
-import { getActiveProfile } from '../storage';
+import { renderSidebar, renderDocSpaceHeader, formatDate, formatRelativeDate } from '../docspace-view';
+import { summarizeAndTagNoteWithAI } from '../ai/llm-client';
 
 export function renderNotepadView(profileId: string, editId?: string): string {
   const profile = getActiveProfile();
@@ -62,6 +62,7 @@ export function renderNotepadView(profileId: string, editId?: string): string {
     <div class="dsp-layout" id="dspLayout">
       ${renderSidebar(profile, 'notes')}
       <main class="dsp-main">
+        ${renderDocSpaceHeader(profile, 'notes')}
         <div class="dsp-page-content">
 
           <div class="dsp-page-header">
@@ -109,6 +110,9 @@ export function renderNotepadView(profileId: string, editId?: string): string {
                   </div>
 
                   <div class="dsp-form-actions">
+                    <button type="button" class="dsp-btn dsp-btn-outline" id="btnAiSummarizeNote" style="color:var(--color-primary); border-color:var(--color-primary);">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ AI Tóm tắt & Tag
+                    </button>
                     <button type="reset" class="dsp-btn dsp-btn-ghost">
                       <i class="fa-solid fa-rotate-left"></i> Xóa trắng
                     </button>
@@ -186,6 +190,46 @@ export function mountNotepadController(profileId: string): void {
   // Clear edit
   document.getElementById('dspClearNoteEdit')?.addEventListener('click', () => {
     window.location.hash = '#/docspace/notes';
+  });
+
+  // AI Summarize & Tag Handler
+  document.getElementById('btnAiSummarizeNote')?.addEventListener('click', async () => {
+    const title = (document.getElementById('dspNoteTitle') as HTMLInputElement)?.value.trim();
+    const content = (document.getElementById('dspNoteContent') as HTMLTextAreaElement)?.value.trim();
+
+    if (!title || !content) {
+      alert('Vui lòng nhập cả Tiêu đề và Nội dung ghi chú trước khi gọi AI.');
+      return;
+    }
+
+    const profile = getActiveProfile();
+    if (!profile || !profile.aiSettings || !profile.aiSettings.enabled) {
+      alert('Vui lòng bật và cấu hình AI trong Cài đặt AI trước.');
+      return;
+    }
+
+    const btn = document.getElementById('btnAiSummarizeNote') as HTMLButtonElement;
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> AI đang phân tích...';
+    }
+
+    try {
+      const res = await summarizeAndTagNoteWithAI(title, content, profile.aiSettings);
+      const tagsInput = document.getElementById('dspNoteTags') as HTMLInputElement;
+      if (tagsInput && res.tags && res.tags.length > 0) {
+        const existing = tagsInput.value.trim();
+        tagsInput.value = existing ? `${existing}, ${res.tags.join(', ')}` : res.tags.join(', ');
+      }
+      alert(`✅ AI Tóm tắt: "${res.summary}"\n🏷️ Đã tự động gắn ${res.tags.length} tags vào form!`);
+    } catch (err: any) {
+      alert('❌ Lỗi AI: ' + err.message);
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> ✨ AI Tóm tắt & Tag';
+      }
+    }
   });
 
   // Notes List Actions (edit / delete)

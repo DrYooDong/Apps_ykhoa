@@ -83,6 +83,19 @@ Các Skills sau đây đã được tạo và sẵn sàng sử dụng:
 | `symptom-approach-module` | Tạo/sửa trang chẩn đoán tiếp cận triệu chứng lâm sàng |
 | `pathology-approach-module` | Tạo/sửa phác đồ tiếp cận bệnh lý lâm sàng & Infographic Poster Board |
 | `cliniportal-debugging` | Sửa lỗi giao diện, lỗi HTML/CSS/JS, hoặc cập nhật nhật ký sửa lỗi |
+| `vanilla-web-mastery` | Tối ưu Vanilla HTML/CSS/JS, quản lý DOM thuần, không framework, đường dẫn tương đối |
+| `medical-ui-ux-design` | Thiết kế UI/UX y khoa hiện đại, hệ thống Design Tokens, Dark Mode, glassmorphism |
+| `accessibility-wcag-medical` | Khả năng truy cập khuyết tật WCAG 2.1 AA, tương phản màu sắc y tế, điều hướng bàn phím |
+| `medical-seo-structure` | Chuẩn hóa SEO Y khoa, thẻ Meta Semantic, tiêu đề chuẩn mực, dữ liệu Schema.org MedicalWebPage |
+| `systematic-clinical-debugging` | Quy trình debug lỗi hệ thống, vỡ layout mobile, CSS Variables, kiểm tra tác động qua Graphify |
+| `clinical-data-visualization` | Vẽ biểu đồ, thang điểm SOFA/Child-Pugh, đồ thị trực quan y khoa bằng SVG & Canvas thuần |
+| `content-structure-medical` | Quy chuẩn phân cấp file/thư mục, breadcrumbs và đồng bộ sidebar cho 7 phân hệ CliniPortal |
+| `performance-optimizer-medical` | Tối ưu tốc độ tải trang (TTFB, LCP), debounce/throttle tra cứu, lazy loading cho thiết bị y tế |
+| `pubmed-research-linker` | Tích hợp tra cứu y văn, trích dẫn tài liệu tham khảo PubMed REST API (E-utilities), DOI, PMID |
+| `medical-infographic-prompt` | Tạo kịch bản Infographic, sơ đồ tư duy & prompt sinh ảnh AI y khoa từ bài viết |
+| `medical-content-formatter` | Chuẩn hóa định dạng bài viết Y khoa Mobile-first, HTML Semantic & UI Components |
+| `medical-humanizer` | Tự động phát hiện & loại bỏ dấu vết văn bản AI, chuẩn hóa văn phong lâm sàng súc tích, chuẩn y học |
+| `medical-content-matrix` | Quy hoạch ma trận phân loại nội dung y khoa, sơ đồ thực thể tri thức (Entity Graph) & kiến trúc LLM-Wiki hạt nhân cho 7 phân hệ CliniPortal |
 
 ---
 

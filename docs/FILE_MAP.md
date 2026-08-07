@@ -326,6 +326,7 @@
 | `Tiếp cận/6. Công cụ tương tác/body-map.html` | Bản Đồ Giải Phẫu Tương Tác (SVG anatomy selector theo 5 vùng cơ thể) |
 | `Tiếp cận/6. Công cụ tương tác/case-simulator.html` | Mô Phỏng Ca Bệnh Lâm Sàng Tương Tác (Virtual Patient 4-step Reasoning Simulator) |
 | `Tiếp cận/6. Công cụ tương tác/knowledge-graph.html` | Đồ Thị Tri Thức Liên Phân Hệ (SVG Cross-Module Network Graph: Triệu chứng ↔ Bệnh ↔ CLS ↔ Thuốc) |
+| `src/content/approaches/interactive-tools/treatment-pathways-demo.html` | Trực Quan Hóa Hành Trình Lâm Sàng (SVG Sunburst Chart & Sequence Flow: ADA 2024 ĐTĐ & GINA 2024 Hen Suyễn) |
 | `Tiếp cận/1. HS-CC/emergency-quick-protocol.html` | Phác đồ Cấp cứu 60s (6 tình huống khẩn, CPR timer 2 phút, liều thuốc) |
 | `Tiếp cận/1. .../[Phân nhóm]/TC_*.html` | Lưu đồ tiếp cận cấp cứu |
 | `Tiếp cận/2. Triệu chứng/Than phiền Toàn thân/Sốt/TC_Sot.html` | Hub tiếp cận Sốt |
@@ -520,7 +521,7 @@
 | `src/content/skills/` | **[MỚI]** Phân hệ Kỹ năng Lâm sàng & Master Catalog `index.json` (bao gồm `kn-kham-danh-gia-phat-trien-the-chat-tre-em.html` - Khám Đánh Giá Phát Triển Thể Chất ở Trẻ Em, `kn-kham-khop-o-tre-em.html` - Khám Cơ Xương Khớp Ở Trẻ Em) |
 | `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (67 items, bao gồm `slb-ccbs-hemophilia.html` - Bệnh Hemophilia ở trẻ em, `slb-ccbs-henpq.html` - Hen phế quản ở trẻ em, `slb-ccbs-vtpq.html` - Viêm tiểu phế quản cấp ở trẻ, `WORKFLOW_TAO_TRANG_SINH_LY_BENH.md`) |
 | `src/content/approaches/` | **[MỚI]** Phân hệ Tiếp cận Triệu chứng & Bệnh lý & Master Catalog `index.json` (58 items) |
-| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (bao gồm `guidelinesdata.js`, `kho-guidelines/ca-the-hoa-beta-lactam-2026.html` - Hướng dẫn đồng thuận cá thể hóa liều Beta-lactam ở bệnh nhân nặng 2026, `kho-guidelines/idsa-amr-2026.html` - Hướng dẫn IDSA 2026 điều trị nhiễm khuẩn Gram-âm kháng thuốc AMR) |
+| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (bao gồm `guidelinesdata.js`, `js/ebm-recommendation-engine.js` - CDSS Recommendation Engine, `kho-guidelines/ca-the-hoa-beta-lactam-2026.html` - Hướng dẫn đồng thuận cá thể hóa liều Beta-lactam ở bệnh nhân nặng 2026, `kho-guidelines/idsa-amr-2026.html` - Hướng dẫn IDSA 2026 điều trị nhiễm khuẩn Gram-âm kháng thuốc AMR) |
 | `src/content/tcm/` | **[MỚI]** Phân hệ Y học Cổ truyền & Master Catalog `index.json` (17 items) |
 | `src/components/article-reader.html` | **[MỚI]** Standalone Article Reader Component Engine |
 | `src/components/clinical-flow-studio.html` | **[MỚI]** Standalone Clinical Flow Studio Studio Component Engine |

@@ -5,7 +5,7 @@
 
 import { getAllSBARs, saveSBAR, updateSBAR, deleteSBAR, getSBARById } from '../storage';
 import { SBARRecord } from '../types';
-import { renderSidebar, formatRelativeDate } from '../docspace-view';
+import { renderSidebar, renderDocSpaceHeader, formatRelativeDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
 import { generateSBAR } from '../ai/llm-client';
 
@@ -98,9 +98,12 @@ export async function renderSBARView(profileId: string, editId?: string): Promis
         </div>
         <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">Dán đoạn ghi chú lộn xộn hoặc ghi âm vào đây, AI sẽ tự động phân loại thành các trường S-B-A-R bên dưới.</p>
         <textarea class="dsp-textarea" id="dspSBAR_RawNotes" rows="3" placeholder="Ví dụ: Bn nam 65t, vô vì đau ngực. Tiền sử THA. Khám thấy tim đều, huyết áp 160/90. Cho làm ECG gấp..."></textarea>
-        <div style="text-align: right; margin-top: 0.5rem;">
+        <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 0.5rem;">
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-outline" id="btnVoiceToSBAR" style="color: #8b5cf6; border-color: #8b5cf6;">
+            <i class="fa-solid fa-microphone"></i> 🎙️ Ghi âm giọng nói
+          </button>
           <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnAIGenerateSBAR" style="background-color: #8b5cf6; border-color: #8b5cf6;">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Phân tích
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Phân tích AI SBAR
           </button>
         </div>
       </div>
@@ -139,6 +142,7 @@ export async function renderSBARView(profileId: string, editId?: string): Promis
     <div class="dsp-layout" id="dspLayout">
       ${renderSidebar(profile, 'sbar')}
       <main class="dsp-main">
+        ${renderDocSpaceHeader(profile, 'sbar')}
         <div class="dsp-page-content">
 
           <div class="dsp-page-header">
@@ -259,6 +263,74 @@ export function renderSBARPreviewHtml(record: SBARRecord): string {
 export function mountSBARController(profileId: string): void {
   const form = document.getElementById('dspSBARForm') as HTMLFormElement;
   if (!form) return;
+
+  // Voice-to-Text Web Speech API Handler
+  let isRecording = false;
+  let recognition: any = null;
+
+  document.getElementById('btnVoiceToSBAR')?.addEventListener('click', () => {
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert('Trình duyệt của bạn không hỗ trợ Web Speech API nhận diện giọng nói. Vui lòng dùng Chrome, Edge hoặc Safari.');
+      return;
+    }
+
+    const btn = document.getElementById('btnVoiceToSBAR') as HTMLButtonElement;
+    const textarea = document.getElementById('dspSBAR_RawNotes') as HTMLTextAreaElement;
+    if (!btn || !textarea) return;
+
+    if (isRecording && recognition) {
+      recognition.stop();
+      isRecording = false;
+      btn.style.background = '';
+      btn.style.color = '#8b5cf6';
+      btn.innerHTML = '<i class="fa-solid fa-microphone"></i> 🎙️ Ghi âm giọng nói';
+      return;
+    }
+
+    try {
+      recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'vi-VN';
+
+      let initialText = textarea.value.trim();
+
+      recognition.onstart = () => {
+        isRecording = true;
+        btn.style.background = '#8b5cf6';
+        btn.style.color = '#fff';
+        btn.innerHTML = '<i class="fa-solid fa-microphone fa-bounce"></i> 🔴 Đang lắng nghe... (Bấm dừng)';
+      };
+
+      recognition.onresult = (event: any) => {
+        let transcript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        textarea.value = initialText ? `${initialText} ${transcript}` : transcript;
+      };
+
+      recognition.onerror = (event: any) => {
+        console.warn('Speech Recognition Error:', event.error);
+        isRecording = false;
+        btn.style.background = '';
+        btn.style.color = '#8b5cf6';
+        btn.innerHTML = '<i class="fa-solid fa-microphone"></i> 🎙️ Ghi âm giọng nói';
+      };
+
+      recognition.onend = () => {
+        isRecording = false;
+        btn.style.background = '';
+        btn.style.color = '#8b5cf6';
+        btn.innerHTML = '<i class="fa-solid fa-microphone"></i> 🎙️ Ghi âm giọng nói';
+      };
+
+      recognition.start();
+    } catch (err: any) {
+      alert('Lỗi khởi chạy Micro: ' + err.message);
+    }
+  });
 
   // AI SBAR Generation
   document.getElementById('btnAIGenerateSBAR')?.addEventListener('click', async () => {

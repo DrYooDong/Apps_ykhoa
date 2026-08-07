@@ -187,7 +187,7 @@
     }
 
     .bleed-card.artery { border-top-color: #dc2626; }
-    .bleed-card.vein { border-top-color: #0284c7; }
+    .bleed-card.vein { border-top-color: var(--color-primary); }
     .bleed-card.capillary { border-top-color: #16a34a; }
 
     .bleed-card h3 {
@@ -312,25 +312,6 @@
   <div class="app-container">
 
     <!-- Sidebar Navigation -->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li><a href="../../../../index.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
-          <li><a href="../ky-nang.html" class="nav-item active"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
-          <li><a href="../../approaches/tiep-can.html" class="nav-item"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
-          <li><a href="../../calculators/general/calculators-hub.html" class="nav-item"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
-          <li><a href="../../pharmacology/duoc-ly.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
-        </ul>
-      </nav>
-    </aside>
-
     <!-- Main Content -->
     <main class="app-main">
 
@@ -385,7 +366,7 @@
             </div>
 
             <div class="bleed-card vein">
-              <h3 style="color: #0284c7;"><i class="fas fa-water"></i> Chảy Máu Tĩnh Mạch</h3>
+              <h3 style="color: var(--color-primary);"><i class="fas fa-water"></i> Chảy Máu Tĩnh Mạch</h3>
               <ul style="margin: 0; padding-left: 1.2rem; font-size: var(--text-xs); color: var(--color-text-muted); line-height: 1.6;">
                 <li><strong>Đặc điểm:</strong> Máu chảy chậm hơn động mạch, <strong>trào tràn đều</strong> bề mặt vết thương.</li>
                 <li><strong>Màu sắc:</strong> Màu <strong>đỏ thẫm (sẫm)</strong>.</li>

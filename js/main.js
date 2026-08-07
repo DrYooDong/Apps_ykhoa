@@ -267,14 +267,30 @@
               <div class="cp-modal-body">
                 <div class="cp-modal-section">
                   <h4 class="cp-section-title">🖥️ Giao diện & Hiển thị</h4>
-                  <p class="cp-section-desc">Tùy chỉnh ngôn ngữ hiển thị của hệ thống.</p>
+                  <p class="cp-section-desc">Chuyển đổi giao diện Sáng / Tối và tùy chỉnh ngôn ngữ hệ thống.</p>
+                  <div class="cp-form-row" style="margin-bottom: 0.75rem;">
+                    <span class="cp-form-label">Chế độ giao diện</span>
+                    <button class="cp-setting-btn" id="modalThemeToggleBtn">
+                      <i class="fa-solid fa-moon" id="modalThemeIcon" style="color:#8b5cf6;"></i>
+                      <span id="modalThemeText">Chế độ Tối</span>
+                    </button>
+                  </div>
                   <div class="cp-form-row">
                     <span class="cp-form-label">Ngôn ngữ chính</span>
                     <select class="cp-select" id="cpLangSelect">
-                      <option value="vi" selected>Tiếng Việt (Default)</option>
+                      <option value="vi" selected>Tiếng Việt (Mặc định)</option>
                       <option value="en">English</option>
                     </select>
                   </div>
+                </div>
+
+                <div class="cp-modal-section">
+                  <h4 class="cp-section-title">⌨️ Phím tắt Hệ thống</h4>
+                  <p class="cp-section-desc">Tra cứu các phím tắt nhanh để điều hướng ứng dụng.</p>
+                  <button class="cp-setting-btn" id="modalHotkeyBtn">
+                    <i class="fa-solid fa-keyboard" style="color: var(--color-primary, #0284c7);"></i>
+                    <span>Bảng phím tắt (?)</span>
+                  </button>
                 </div>
                 
                 <div class="cp-modal-section">
@@ -313,7 +329,9 @@
             </div>
           </div>
         `;
-        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        if (!document.getElementById('cpSettingsModal')) {
+          document.body.insertAdjacentHTML('beforeend', modalHtml);
+        }
 
         const modal = document.getElementById('cpSettingsModal');
         const closeBtn = document.getElementById('cpModalCloseBtn');
@@ -322,6 +340,50 @@
         const syncTime = document.getElementById('cpSyncTime');
         const installPwaBtn = document.getElementById('cpInstallPwaBtn');
         const pwaStatus = document.getElementById('cpPwaInstalledStatus');
+
+        const modalThemeBtn = document.getElementById('modalThemeToggleBtn');
+        const modalThemeIcon = document.getElementById('modalThemeIcon');
+        const modalThemeText = document.getElementById('modalThemeText');
+        const modalHotkeyBtn = document.getElementById('modalHotkeyBtn');
+
+        function syncModalThemeUI() {
+          const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+          if (modalThemeText && modalThemeIcon) {
+            if (currentTheme === 'dark') {
+              modalThemeText.textContent = 'Chế độ Sáng';
+              modalThemeIcon.className = 'fa-solid fa-sun';
+              modalThemeIcon.style.color = '#f59e0b';
+            } else {
+              modalThemeText.textContent = 'Chế độ Tối';
+              modalThemeIcon.className = 'fa-solid fa-moon';
+              modalThemeIcon.style.color = '#8b5cf6';
+            }
+          }
+        }
+
+        if (modalThemeBtn) {
+          syncModalThemeUI();
+          modalThemeBtn.addEventListener('click', () => {
+            if (window.CliniPortalTheme && typeof window.CliniPortalTheme.toggleTheme === 'function') {
+              window.CliniPortalTheme.toggleTheme();
+            } else {
+              let theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+              document.documentElement.setAttribute('data-theme', theme);
+              localStorage.setItem('cliniportal_theme', theme);
+            }
+            syncModalThemeUI();
+          });
+        }
+
+        if (modalHotkeyBtn) {
+          modalHotkeyBtn.addEventListener('click', () => {
+            closeModal();
+            const hotkeyOverlay = document.getElementById('hotkeyModalOverlay');
+            if (hotkeyOverlay) {
+              hotkeyOverlay.classList.add('show');
+            }
+          });
+        }
 
         // Check if running in standalone PWA mode
         if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) {
@@ -356,7 +418,10 @@
           if (pwaStatus) pwaStatus.style.display = 'block';
         });
 
-        const openModal = () => modal.classList.add('show');
+        const openModal = () => {
+          syncModalThemeUI();
+          modal.classList.add('show');
+        };
         const closeModal = () => modal.classList.remove('show');
 
         syncSettingsBtn.addEventListener('click', (e) => {
@@ -647,6 +712,28 @@
         window.getSelection()?.removeAllRanges();
       });
     })();
+
+// Global Performance Utilities
+window.CliniPortalUtils = window.CliniPortalUtils || {};
+window.CliniPortalUtils.debounce = function debounce(func, delay = 250) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => func.apply(this, args), delay);
+  };
+};
+window.CliniPortalUtils.throttle = function throttle(func, limit = 250) {
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+};
+window.debounce = window.CliniPortalUtils.debounce;
+window.throttle = window.CliniPortalUtils.throttle;
 
 
 

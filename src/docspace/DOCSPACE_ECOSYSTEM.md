@@ -106,8 +106,8 @@ Tất cả các tính năng đều nằm trong thư mục `src/docspace/features
 8. **Quick Links**: Danh sách các liên kết, danh bạ nội bộ hay dùng.
 
 ### 2.3. Experimental & AI Layer (Phân hệ AI)
-Thư mục `src/docspace/ai/` xử lý kết nối với Local LLM / API:
-- **AI Settings**: Giao diện cấu hình WebLLM, API Key hoặc Local endpoint (Ollama/LM Studio).
+Thư mục `src/docspace/ai/` xử lý kết nối với Local LLM / Cloud API Miễn phí:
+- **AI Settings & Multi-Provider Engine**: Giao diện cấu hình 1-Click Presets hỗ trợ các nhà cung cấp LLM API miễn phí vĩnh viễn (Groq, Google Gemini 1M Context, OpenRouter, SambaNova) và Local LLM (Ollama/LM Studio/9ROUTER). Tích hợp **Multi-Provider Fallback Engine** tự động chuyển tiếp Provider phụ khi rớt mạng hoặc hết quota (HTTP 429).
 - **RAG Engine**: Hệ thống nhúng (Embeddings) và lưu trữ vector nội bộ để hỗ trợ tìm kiếm ngữ nghĩa trong Case Logger và SBAR.
 - **Living Protocols**: Tạo phác đồ xử trí có khả năng điều chỉnh linh hoạt dựa trên dữ kiện bệnh nhân đầu vào qua AI.
 - **Sandbox Mô phỏng**: Môi trường giả lập tình huống lâm sàng (như thi OSCE) để bác sĩ luyện tập.

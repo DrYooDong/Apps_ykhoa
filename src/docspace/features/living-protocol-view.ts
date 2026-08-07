@@ -1,8 +1,10 @@
 import { LivingProtocol, LivingProtocolNode } from '../types';
 import { evaluateBranch, evaluateStaticFormula, lookupValue } from './rule-engine';
 import { VANCOMYCIN_PROTOCOL } from '../data/living-protocol-templates/vancomycin-dosing';
+import { getActiveProfile } from '../storage';
+import { generateProtocolFromDescription } from '../ai/llm-client';
 
-const PROTOCOLS = [VANCOMYCIN_PROTOCOL];
+const PROTOCOLS: LivingProtocol[] = [VANCOMYCIN_PROTOCOL];
 
 export function renderLivingProtocolView(profileId: string, protocolId?: string): string {
   if (protocolId) {
@@ -18,11 +20,14 @@ export function renderLivingProtocolView(profileId: string, protocolId?: string)
           <h2 class="dsp-text-2xl dsp-font-bold dsp-text-primary">
             <i class="fa-solid fa-network-wired dsp-mr-2"></i> Phác đồ Động (Living Protocols)
           </h2>
-          <p class="dsp-text-muted">Tính toán và nội suy dựa trên dữ liệu lâm sàng (Phase 1)</p>
+          <p class="dsp-text-muted">Tính toán & Nội suy quy trình lâm sàng động (Phase 5.1 AI Builder)</p>
         </div>
+        <button type="button" class="dsp-btn dsp-btn-primary" id="btnCreateAiProtocol">
+          <i class="fa-solid fa-wand-magic-sparkles dsp-mr-2"></i> ✨ Tạo Phác đồ Mới bằng AI
+        </button>
       </header>
       <div class="dsp-content dsp-mt-6">
-        <div class="dsp-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
+        <div class="dsp-grid" id="lpProtocolGrid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
           ${PROTOCOLS.map(p => `
             <div class="dsp-card dsp-p-6 dsp-cursor-pointer hover:dsp-shadow-lg" style="transition: all 0.2s" data-action="open-protocol" data-id="${p.id}">
               <h3 class="dsp-font-bold dsp-text-lg dsp-mb-2"><i class="fa-solid fa-file-medical dsp-text-primary"></i> ${p.title}</h3>
@@ -86,6 +91,40 @@ function renderProtocolWizard(protocol: LivingProtocol): string {
 }
 
 export function mountLivingProtocolController(profileId: string): void {
+  // AI Protocol Builder Handler
+  document.getElementById('btnCreateAiProtocol')?.addEventListener('click', async () => {
+    const profile = getActiveProfile();
+    if (!profile || !profile.aiSettings || !profile.aiSettings.enabled) {
+      alert('Vui lòng bật và cấu hình AI trong Cài đặt AI trước.');
+      return;
+    }
+
+    const desc = prompt('Mô tả phác đồ lâm sàng cần tạo (Ví dụ: "Phác đồ tính liều Vancomycin dựa trên cân nặng và mức lọc cầu thận CrCl"):');
+    if (!desc || !desc.trim()) return;
+
+    const btn = document.getElementById('btnCreateAiProtocol') as HTMLButtonElement;
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> AI đang xây dựng JSON Protocol...';
+    }
+
+    try {
+      const newProtocol = await generateProtocolFromDescription(desc.trim(), profile.aiSettings);
+      newProtocol.id = 'ai-protocol-' + Date.now();
+      PROTOCOLS.push(newProtocol);
+
+      alert(`✅ Đã sinh thành công phác đồ: "${newProtocol.title}" với các biến đầu vào: ${newProtocol.inputs.join(', ')}`);
+      window.location.hash = `#/docspace/living-protocols?id=${newProtocol.id}`;
+    } catch (err: any) {
+      alert('❌ Lỗi tạo phác đồ AI: ' + err.message);
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles dsp-mr-2"></i> ✨ Tạo Phác đồ Mới bằng AI';
+      }
+    }
+  });
+
   // Bắt sự kiện click ngoài list
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
@@ -160,7 +199,6 @@ function executeProtocol(protocol: LivingProtocol, context: Record<string, numbe
       } else {
         html += `<div class="dsp-text-xl dsp-text-primary dsp-font-bold">${res.value} ${currentNode.unit || ''}</div>`;
         if (currentNode.note) html += `<div class="dsp-text-sm dsp-text-muted dsp-mt-1">${currentNode.note}</div>`;
-        // Chuyển sang node tiếp theo theo thứ tự mảng
         const idx = protocol.steps.findIndex(s => s.id === currentNode!.id);
         nextNodeId = protocol.steps[idx + 1]?.id;
       }
@@ -184,28 +222,30 @@ function executeProtocol(protocol: LivingProtocol, context: Record<string, numbe
         currentNode = undefined;
       }
     }
-    else if (currentNode.type === 'result' && currentNode.lookup_table) {
-      // Find the primary input variable to lookup (assuming first input if not specified)
-      // Normally result nodes in our schema lookup based on weight
-      const lookupVar = 'weight'; // Hardcoded for this demo based on vancomycin template
-      const val = context[lookupVar];
+    else if (currentNode.type === 'result') {
+      const lookupVar = protocol.inputs[0] || 'weight';
+      const val = context[lookupVar] || 0;
       
-      const resultStr = lookupValue(currentNode.lookup_table, val);
+      const resultStr = currentNode.lookup_table ? lookupValue(currentNode.lookup_table, val) : currentNode.label;
       if (resultStr) {
         html += `<div class="dsp-text-xl dsp-text-primary dsp-font-bold"><i class="fa-solid fa-pills dsp-mr-2"></i>${resultStr}</div>`;
       } else {
         html += `<div class="dsp-text-danger dsp-mt-2"><i class="fa-solid fa-triangle-exclamation"></i> Lỗi: Không tra cứu được giá trị trong bảng (Biến ${lookupVar} = ${val}).</div>`;
       }
-      // Result là node cuối
       currentNode = undefined;
+    } else {
+      const idx = protocol.steps.findIndex(s => s.id === currentNode!.id);
+      nextNodeId = protocol.steps[idx + 1]?.id;
     }
 
     html += `</div>`;
     timeline.innerHTML += html;
-    
+
     if (nextNodeId) {
       currentNode = protocol.steps.find(s => s.id === nextNodeId);
+      stepIndex++;
+    } else {
+      currentNode = undefined;
     }
-    stepIndex++;
   }
 }

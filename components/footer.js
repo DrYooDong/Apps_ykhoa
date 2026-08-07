@@ -49,9 +49,14 @@ function fixFooterLinks(holder, footerPath) {
   const links = holder.querySelectorAll('a');
   links.forEach(link => {
     const href = link.getAttribute('href');
-    if (href && href.startsWith('/') && !href.startsWith('//')) {
-      const relativeHref = projectRoot + href.substring(1);
-      link.setAttribute('href', relativeHref);
+    if (href && !href.startsWith('http') && !href.startsWith('#')) {
+      if (href.startsWith('/')) {
+        link.setAttribute('href', projectRoot + href.substring(1));
+      } else if (href.startsWith('./')) {
+        link.setAttribute('href', projectRoot + href.substring(2));
+      } else if (!href.startsWith('../')) {
+        link.setAttribute('href', projectRoot + href);
+      }
     }
   });
 }

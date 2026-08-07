@@ -6,10 +6,11 @@
 import { 
   getAllSoapPatients, getSoapPatientById, saveSoapPatient, updateSoapPatient, deleteSoapPatient,
   getSoapSupabaseConfig, saveSoapSupabaseConfig, fetchAllSoapFromSupabase,
-  addSoapDailyLog, switchSoapPatientDate, getProfile, saveSBAR, saveCase, getAllPatients
+  addSoapDailyLog, switchSoapPatientDate, getProfile, getActiveProfile, saveSBAR, saveCase, getAllPatients
 } from '../storage';
 import { SoapPatientRecord, SoapPrescriptionItem } from '../types';
-import { renderSidebar, escapeHtml } from '../docspace-view';
+import { renderSidebar, renderDocSpaceHeader, escapeHtml } from '../docspace-view';
+import { generateSOAPSuggestion, generateDischargeSummary } from '../ai/llm-client';
 import { icdPicker } from './icd-picker';
 import { ebmBridge } from './ebm-bridge-view';
 import { drugPicker } from './drug-picker';
@@ -308,6 +309,9 @@ export async function renderSoapView(profileId: string, activePatientId?: string
               <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-print-rx" data-id="${p.id}" title="In Đơn Thuốc eRx" style="padding:2px 8px; color:var(--color-primary);">
                 <i class="fa-solid fa-file-prescription"></i> In Đơn
               </button>
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-discharge-summary" data-id="${p.id}" title="Tạo Tóm tắt Bệnh án Ra viện bằng AI" style="padding:2px 8px; color:var(--color-primary);">
+                <i class="fa-solid fa-file-medical"></i> Tóm tắt Ra viện
+              </button>
               <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-emr" data-id="${p.id}" title="Đổi trạng thái EMR" style="padding:2px 8px;">
                 <i class="fa-solid fa-rotate"></i>
               </button>
@@ -414,6 +418,7 @@ export async function renderSoapView(profileId: string, activePatientId?: string
       ${renderSidebar(profile, 'soap')}
 
       <main class="dsp-main" id="dspMain">
+        ${renderDocSpaceHeader(profile, 'soap')}
         <div class="dsp-page-content" style="max-width:100%;">
           
           <!-- Header Bar -->
@@ -641,206 +646,264 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
   }).join('');
 
   return `
-    <div style="background:var(--color-surface); border-radius:12px; max-width:850px; width:100%; max-height:90vh; display:flex; flex-direction:column; box-shadow:0 10px 25px rgba(0,0,0,0.2); overflow:hidden; position:relative;">
-      <div style="padding:16px 20px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg);">
-        <div>
-          <h3 style="margin:0; font-size:18px; color:var(--color-primary);">${p.patientCode} - ${p.fullName}</h3>
-          <div style="font-size:12px; color:var(--color-text-muted); margin-top:2px;">
-            ${p.age}t · ${p.gender === 'nam' ? 'Nam' : 'Nữ'} · Giường ${p.bedNumber} · HS: ${p.medicalRecordNo}
+    <div style="background:var(--color-surface); border-radius:14px; max-width:900px; width:100%; max-height:92vh; display:flex; flex-direction:column; box-shadow:0 20px 60px rgba(0,0,0,0.22); overflow:hidden; position:relative;">
+      
+      <!-- Modal Header -->
+      <div style="padding:14px 20px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:linear-gradient(135deg,rgba(2,132,199,0.06),rgba(14,165,233,0.02)); flex-shrink:0;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:38px; height:38px; border-radius:10px; background:linear-gradient(135deg,var(--color-primary),#0ea5e9); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 3px 8px rgba(2,132,199,0.3);">
+            <i class="fa-solid fa-notes-medical" style="color:#fff; font-size:16px;"></i>
+          </div>
+          <div>
+            <h3 style="margin:0; font-size:16px; font-weight:800; color:var(--color-primary); line-height:1.2;">${p.patientCode} – ${p.fullName}</h3>
+            <div style="font-size:11px; color:var(--color-text-muted); margin-top:2px; display:flex; align-items:center; gap:8px;">
+              <span>${p.age}t · ${p.gender === 'nam' ? 'Nam' : 'Nữ'}</span>
+              <span style="width:3px; height:3px; border-radius:50%; background:var(--color-border); display:inline-block;"></span>
+              <span>Giường <strong style="color:var(--color-text);">${p.bedNumber}</strong></span>
+              <span style="width:3px; height:3px; border-radius:50%; background:var(--color-border); display:inline-block;"></span>
+              <span>HS: ${p.medicalRecordNo}</span>
+            </div>
           </div>
         </div>
-        <button id="btnCloseEditSoapModal" style="background:none; border:none; font-size:24px; cursor:pointer; color:var(--color-text-muted);">&times;</button>
+        <button id="btnCloseEditSoapModal" style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; width:32px; height:32px; font-size:18px; cursor:pointer; color:var(--color-text-muted); display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0;">&times;</button>
       </div>
 
-      <!-- Select Date Bar -->
-      <div style="padding:10px 20px; background:var(--color-surface); border-bottom:1px solid var(--color-border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+      <!-- Date Selector Bar -->
+      <div style="padding:8px 20px; background:var(--color-bg); border-bottom:1px solid var(--color-border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; flex-shrink:0;">
         <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
-          <span style="font-size:12px; font-weight:700; color:var(--color-text-muted);"><i class="fa-solid fa-calendar-day"></i> Ngày Diễn Tiến:</span>
+          <span style="font-size:11px; font-weight:700; color:var(--color-text-muted); display:flex; align-items:center; gap:4px; text-transform:uppercase; letter-spacing:0.04em;">
+            <i class="fa-solid fa-calendar-day" style="color:var(--color-primary);"></i> Ngày Diễn Tiến:
+          </span>
           ${dateBadgesHtml}
         </div>
-
-        <button type="button" id="btnModalAddDate" data-id="${p.id}" class="dsp-btn dsp-btn-sm dsp-btn-ghost" style="color:var(--color-primary); border:1px dashed var(--color-primary);">
+        <button type="button" id="btnModalAddDate" data-id="${p.id}" class="dsp-btn dsp-btn-sm dsp-btn-ghost" style="color:var(--color-primary); border:1.5px dashed var(--color-primary); border-radius:8px; font-size:11px; padding:4px 10px;">
           <i class="fa-solid fa-plus-circle"></i> + Thêm Ngày Diễn Tiến Mới
         </button>
       </div>
 
-      <div style="padding:20px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:16px;">
+      <!-- Scrollable Body -->
+      <div style="padding:16px 20px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:12px;">
         <form id="formEditSoap">
           <input type="hidden" id="esPatientId" value="${p.id}" />
 
-          <!-- Thông tin hành chính bệnh nhân -->
-          <details style="margin-bottom:16px; background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:10px;">
-            <summary style="font-size:13px; font-weight:700; color:var(--color-primary); cursor:pointer; user-select:none; display:flex; align-items:center; justify-content:space-between;">
-              <span><i class="fa-solid fa-id-card"></i> Sửa thông tin hành chính (Mã BN, Tên, Tuổi, Giường, Chẩn đoán...)</span>
-              <span style="font-size:11px; color:var(--color-text-muted); font-weight:normal;">(Bấm để mở rộng/thu gọn)</span>
+          <!-- Thông tin hành chính (collapsible) -->
+          <details style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; overflow:hidden; margin-bottom:4px;">
+            <summary style="font-size:12px; font-weight:700; color:var(--color-primary); cursor:pointer; user-select:none; display:flex; align-items:center; justify-content:space-between; padding:10px 14px; list-style:none;">
+              <span style="display:flex; align-items:center; gap:6px;"><i class="fa-solid fa-id-card"></i> Sửa thông tin hành chính (Mã BN, Tên, Tuổi, Giường, Chẩn đoán...)</span>
+              <span style="font-size:10px; color:var(--color-text-muted); font-weight:normal; background:var(--color-surface); padding:2px 8px; border-radius:8px; border:1px solid var(--color-border);">Bấm để mở rộng/thu gọn</span>
             </summary>
-            
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:12px;">
-              <div>
-                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Mã BN / Ký hiệu *</label>
-                <input type="text" id="esPatientCode" value="${p.patientCode || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+            <div style="padding:12px 14px; border-top:1px solid var(--color-border);">
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                <div>
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Mã BN / Ký hiệu *</label>
+                  <input type="text" id="esPatientCode" value="${p.patientCode || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                </div>
+                <div>
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Số Giường *</label>
+                  <input type="text" id="esBedNumber" value="${p.bedNumber || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                </div>
+                <div>
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Họ và Tên *</label>
+                  <input type="text" id="esFullName" value="${p.fullName || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+                <div>
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Tuổi *</label>
+                  <input type="number" id="esAge" value="${p.age || 0}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                </div>
+                <div>
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Giới tính</label>
+                  <select id="esGender" class="dsp-input" style="width:100%; font-size:12px;">
+                    <option value="nam" ${p.gender === 'nam' ? 'selected' : ''}>Nam</option>
+                    <option value="nu" ${p.gender === 'nu' ? 'selected' : ''}>Nữ</option>
+                    <option value="khac" ${p.gender === 'khac' ? 'selected' : ''}>Khác</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Số Bệnh Án</label>
+                  <input type="text" id="esMedicalRecordNo" value="${p.medicalRecordNo || ''}" class="dsp-input" style="width:100%; font-size:12px;" />
+                </div>
               </div>
               <div>
-                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Số Giường *</label>
-                <input type="text" id="esBedNumber" value="${p.bedNumber || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Chẩn đoán vào khoa *</label>
+                <input type="text" id="esAdmissionDiagnosis" value="${p.admissionDiagnosis || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
               </div>
-              <div>
-                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Họ và Tên *</label>
-                <input type="text" id="esFullName" value="${p.fullName || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
-              </div>
-            </div>
-
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:10px;">
-              <div>
-                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Tuổi *</label>
-                <input type="number" id="esAge" value="${p.age || 0}" required class="dsp-input" style="width:100%; font-size:12px;" />
-              </div>
-              <div>
-                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Giới tính</label>
-                <select id="esGender" class="dsp-input" style="width:100%; font-size:12px;">
-                  <option value="nam" ${p.gender === 'nam' ? 'selected' : ''}>Nam</option>
-                  <option value="nu" ${p.gender === 'nu' ? 'selected' : ''}>Nữ</option>
-                  <option value="khac" ${p.gender === 'khac' ? 'selected' : ''}>Khác</option>
-                </select>
-              </div>
-              <div>
-                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Số Bệnh Án</label>
-                <input type="text" id="esMedicalRecordNo" value="${p.medicalRecordNo || ''}" class="dsp-input" style="width:100%; font-size:12px;" />
-              </div>
-            </div>
-
-            <div style="margin-top:10px;">
-              <label style="font-size:11px; font-weight:600; display:block; margin-bottom:4px;">Chẩn đoán vào khoa *</label>
-              <input type="text" id="esAdmissionDiagnosis" value="${p.admissionDiagnosis || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
             </div>
           </details>
 
-          <!-- Thư viện Thẻ Cận lâm sàng (Drag and Drop) -->
-          <div style="background:var(--color-bg); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border); margin-bottom:14px;">
-            <div style="font-size:11px; font-weight:700; color:var(--color-primary); text-transform:uppercase; margin-bottom:6px; display:flex; align-items:center; justify-content:space-between;">
-              <span><i class="fa-solid fa-hand-pointer"></i> Thư viện Cận lâm sàng (Kéo thả thẻ vào ô S, O hoặc Kết quả CLS)</span>
-              <span style="font-weight:normal; text-transform:none; font-size:11px; color:var(--color-text-muted);">Kéo thẻ và thả vào ô text</span>
+          <!-- S & O — 2 cột -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; overflow:hidden;">
+            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(2,132,199,0.08),rgba(14,165,233,0.03)); border-bottom:1px solid rgba(2,132,199,0.15); display:flex; align-items:center; gap:6px;">
+              <i class="fa-solid fa-comment-medical" style="color:var(--color-primary); font-size:12px;"></i>
+              <span style="font-size:11px; font-weight:800; color:var(--color-primary); text-transform:uppercase; letter-spacing:0.06em;">Diễn tiến (S &amp; O)</span>
             </div>
-            <div style="display:flex; flex-wrap:wrap; gap:8px;">
-              <div class="js-lab-card" draggable="true" data-lab-type="abg" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <i class="fa-solid fa-vial"></i> Khí máu động mạch (ABG)
+            <div style="display:grid; grid-template-columns:1fr 1fr;">
+              <div style="padding:12px 14px; border-right:1px solid var(--color-border);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                  <label style="font-size:12px; font-weight:700; color:var(--color-text); display:flex; align-items:center; gap:5px; margin:0;">
+                    <span style="background:var(--color-primary); color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">S</span>
+                    <span>Triệu chứng cơ năng</span>
+                  </label>
+                  <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="subjective" style="color:var(--color-primary); padding:1px 6px; font-size:10px; height:auto; min-height:0;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI
+                  </button>
+                </div>
+                <textarea id="esSNotes" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; resize:vertical; border:none; background:transparent; padding:0;" placeholder="Triệu chứng chủ quan...">${p.sNotes || ''}</textarea>
               </div>
-              <div class="js-lab-card" draggable="true" data-lab-type="cbc" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <i class="fa-solid fa-droplet"></i> Công thức máu (CBC)
-              </div>
-              <div class="js-lab-card" draggable="true" data-lab-type="biochem" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <i class="fa-solid fa-flask"></i> Sinh hóa máu (Gan/Thận)
-              </div>
-              <div class="js-lab-card" draggable="true" data-lab-type="ion" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <i class="fa-solid fa-bolt"></i> Điện giải đồ (Na, K, Cl)
-              </div>
-              <div class="js-lab-card" draggable="true" data-lab-type="cxr" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <i class="fa-solid fa-x-ray"></i> X-quang ngực (CXR)
-              </div>
-              <div class="js-lab-card" draggable="true" data-lab-type="ecg" style="cursor:grab; background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:12px; font-weight:600; padding:4px 10px; border-radius:16px; display:flex; align-items:center; gap:6px; user-select:none; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <i class="fa-solid fa-heart-pulse"></i> Điện tâm đồ (ECG)
+              <div style="padding:12px 14px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                  <label style="font-size:12px; font-weight:700; color:var(--color-text); display:flex; align-items:center; gap:5px; margin:0;">
+                    <span style="background:#0ea5e9; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">O</span>
+                    <span>Thăm khám / CLS</span>
+                  </label>
+                  <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="objective" style="color:var(--color-primary); padding:1px 6px; font-size:10px; height:auto; min-height:0;">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI
+                  </button>
+                </div>
+                <textarea id="esONotes" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; resize:vertical; border:none; background:transparent; padding:0;" placeholder="Khám thực thể hoặc thả thẻ CLS...">${p.oNotes || ''}</textarea>
               </div>
             </div>
           </div>
 
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
-            <div>
-              <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">S</label>
-              <textarea id="esSNotes" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Triệu chứng chủ quan...">${p.sNotes || ''}</textarea>
-            </div>
-            <div>
-              <label style="font-size:12px; font-weight:700; display:block; margin-bottom:4px;">O (Kéo thả thẻ CLS vào đây)</label>
-              <textarea id="esONotes" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Khám thực thể hoặc thả thẻ CLS...">${p.oNotes || ''}</textarea>
-            </div>
-          </div>
-          
-          <div style="margin-bottom:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-              <label style="font-size:12px; font-weight:700; display:block; margin:0;">(A) Đánh giá & Chẩn đoán</label>
-              <div style="display:flex; gap:4px;">
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+          <!-- A — Assessment -->
+          <div style="background:var(--color-bg); border:1px solid rgba(245,158,11,0.3); border-radius:10px; overflow:hidden;">
+            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(251,191,36,0.02)); border-bottom:1px solid rgba(245,158,11,0.2); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span style="background:#f59e0b; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">A</span>
+                <span style="font-size:11px; font-weight:800; color:#92400e; text-transform:uppercase; letter-spacing:0.06em;">Đánh giá &amp; Chẩn đoán</span>
+              </div>
+              <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="assessment" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
+                </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-list-ul"></i> + ICD-10
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-calculator"></i> + Thang điểm
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBM" style="padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBM" style="padding:2px 8px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-book-medical"></i> Tra cứu EBM
                 </button>
               </div>
             </div>
 
-            <!-- Gợi ý CDSS động (Contextual CDSS Pills) -->
-            <div id="cdssSuggestions" style="display:none; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:6px; padding:6px 10px; background:rgba(2,132,199,0.06); border:1px solid rgba(2,132,199,0.2); border-radius:6px;">
-              <span style="font-size:11px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:4px;">
+            <!-- CDSS suggestions -->
+            <div id="cdssSuggestions" style="display:none; align-items:center; flex-wrap:wrap; gap:6px; padding:7px 14px; background:rgba(2,132,199,0.04); border-bottom:1px solid rgba(2,132,199,0.12);">
+              <span style="font-size:11px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:4px; flex-shrink:0;">
                 <i class="fa-solid fa-lightbulb" style="color:#eab308;"></i> Gợi ý CDSS:
               </span>
-              <div id="cdssPillsList" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+              <div id="cdssPillsList" style="display:flex; flex-wrap:wrap; gap:5px;"></div>
             </div>
 
-            <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;" placeholder="Ghi nhận đánh giá lâm sàng hoặc chẩn đoán (Ví dụ: Suy tim (I50.0), Rung nhĩ (I48), Viêm phổi)...">${p.aAssessment || ''}</textarea>
+            <div style="padding:12px 14px;">
+              <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Ghi nhận đánh giá lâm sàng hoặc chẩn đoán (Ví dụ: Suy tim (I50.0), Rung nhĩ (I48), Viêm phổi)...">${p.aAssessment || ''}</textarea>
+            </div>
           </div>
 
-          <div style="margin-bottom:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-              <label style="font-size:12px; font-weight:700; display:block; margin:0;">Y lệnh khác (Chăm sóc, Dinh dưỡng...)</label>
-              <div style="display:flex; gap:4px;">
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+          <!-- AI Co-Pilot Box -->
+          <div id="soapAiSuggestionBox" style="display:none; padding:12px 14px; border-radius:10px; border:1.5px dashed var(--color-primary); background:rgba(2,132,199,0.03);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:12px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:6px;">
+                <i class="fa-solid fa-robot"></i> Trợ lý AI Lâm sàng (Co-Pilot)
+              </span>
+              <div style="display:flex; gap:6px;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnApplyAiSuggestion" style="font-size:11px; padding:2px 8px;">
+                  <i class="fa-solid fa-check"></i> Áp dụng vào form
+                </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnCloseAiSuggestion" style="font-size:11px; padding:2px 6px;">&times;</button>
+              </div>
+            </div>
+            <div id="soapAiSuggestionText" style="font-size:12px; line-height:1.5; color:var(--color-text); white-space:pre-wrap; max-height:200px; overflow-y:auto;">
+              Đang kết nối AI...
+            </div>
+          </div>
+
+          <!-- P — Y lệnh khác -->
+          <div style="background:var(--color-bg); border:1px solid rgba(16,185,129,0.3); border-radius:10px; overflow:hidden;">
+            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(16,185,129,0.07),rgba(52,211,153,0.02)); border-bottom:1px solid rgba(16,185,129,0.2); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span style="background:#10b981; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">P</span>
+                <span style="font-size:11px; font-weight:800; color:#065f46; text-transform:uppercase; letter-spacing:0.06em;">Y lệnh khác (Chăm sóc, Dinh dưỡng...)</span>
+              </div>
+              <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="plan" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
+                </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-capsules"></i> + Chèn text thuốc
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnSkillSoap" style="color:var(--color-primary); padding:2px 8px; font-size:11px; height:auto; min-height:0;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnSkillSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-hand-holding-medical"></i> + Kỹ năng
                 </button>
               </div>
             </div>
-            <textarea id="esPPlan" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.4;">${p.pPlan || ''}</textarea>
+            <div style="padding:12px 14px;">
+              <textarea id="esPPlan" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;">${p.pPlan || ''}</textarea>
+            </div>
           </div>
 
-          <!-- Kê đơn thuốc điện tử (eRx) -->
-          <div style="background:var(--color-bg); padding:12px; border-radius:8px; border:1px solid var(--color-border); margin-bottom:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <span style="font-size:12px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:6px;">
-                <i class="fa-solid fa-prescription-bottle-medical"></i> Đơn thuốc điện tử (e-Prescribing / eRx)
-              </span>
-              <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnOpenRxPicker" style="font-size:11px; padding:3px 10px;">
+          <!-- eRx — Đơn thuốc điện tử -->
+          <div style="background:var(--color-bg); border:1px solid rgba(139,92,246,0.3); border-radius:10px; overflow:hidden;">
+            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(139,92,246,0.07),rgba(167,139,250,0.02)); border-bottom:1px solid rgba(139,92,246,0.18); display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:6px;">
+                <i class="fa-solid fa-prescription-bottle-medical" style="color:#7c3aed; font-size:13px;"></i>
+                <span style="font-size:11px; font-weight:800; color:#5b21b6; text-transform:uppercase; letter-spacing:0.06em;">Đơn thuốc điện tử (e-Prescribing / eRx)</span>
+              </div>
+              <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnOpenRxPicker" style="font-size:11px; padding:3px 10px; background:#7c3aed; border-color:#7c3aed;">
                 <i class="fa-solid fa-plus"></i> + Kê thuốc từ Từ điển
               </button>
             </div>
-            <div id="rxListContainer" style="display:flex; flex-direction:column; gap:6px;">
+            <div id="rxListContainer" style="padding:10px 14px; display:flex; flex-direction:column; gap:5px; min-height:40px;">
               ${renderRxItemsList(p.prescriptions || [])}
             </div>
           </div>
 
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
-            <div style="background:var(--color-bg); padding:12px; border-radius:8px; border:1px solid var(--color-border);">
-              <div style="font-size:12px; font-weight:700; margin-bottom:8px;">CHỈ ĐỊNH CLS (Mỗi dòng 1 chỉ định):</div>
-              <textarea id="esClsOrders" rows="3" placeholder="VD: CTM, Sinh hóa máu, XQ Ngực..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.4;">${(p.clsOrders || []).map(o => o.name).join('\n')}</textarea>
+          <!-- CLS Chỉ định & Kết quả nhanh -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div style="background:var(--color-bg); border:1px solid rgba(14,165,233,0.25); border-radius:10px; overflow:hidden;">
+              <div style="padding:7px 14px; background:linear-gradient(135deg,rgba(14,165,233,0.07),transparent); border-bottom:1px solid rgba(14,165,233,0.15); display:flex; align-items:center; gap:5px;">
+                <i class="fa-solid fa-flask-vial" style="color:#0369a1; font-size:11px;"></i>
+                <span style="font-size:11px; font-weight:800; color:#0369a1; text-transform:uppercase; letter-spacing:0.04em;">Chỉ định CLS</span>
+                <span style="font-size:10px; color:var(--color-text-muted); font-weight:400; text-transform:none;">(Mỗi dòng 1 chỉ định)</span>
+              </div>
+              <div style="padding:10px 14px;">
+                <textarea id="esClsOrders" rows="3" placeholder="VD: CTM, Sinh hóa máu, XQ Ngực..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;">${(p.clsOrders || []).map(o => o.name).join('\n')}</textarea>
+              </div>
             </div>
-            
-            <div style="background:var(--color-bg); padding:12px; border-radius:8px; border:1px solid var(--color-border);">
-              <div style="font-size:12px; font-weight:700; margin-bottom:8px;">KẾT QUẢ CLS DÁN NHANH:</div>
-              <textarea id="esClsQuickPaste" rows="3" placeholder="Dán kết quả CLS mới vào đây..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.4;"></textarea>
+            <div style="background:var(--color-bg); border:1px solid rgba(16,185,129,0.25); border-radius:10px; overflow:hidden;">
+              <div style="padding:7px 14px; background:linear-gradient(135deg,rgba(16,185,129,0.07),transparent); border-bottom:1px solid rgba(16,185,129,0.15); display:flex; align-items:center; gap:5px;">
+                <i class="fa-solid fa-chart-line" style="color:#047857; font-size:11px;"></i>
+                <span style="font-size:11px; font-weight:800; color:#047857; text-transform:uppercase; letter-spacing:0.04em;">Kết quả CLS dán nhanh</span>
+              </div>
+              <div style="padding:10px 14px;">
+                <textarea id="esClsQuickPaste" rows="3" placeholder="Dán kết quả CLS mới vào đây..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;"></textarea>
+              </div>
             </div>
           </div>
 
-          <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--color-border); padding-top:16px;">
-            <div style="display:flex; gap:8px;">
-              <button type="button" id="btnCopyEmrFormat" class="dsp-btn dsp-btn-ghost" style="color:var(--color-primary);">
+          <!-- ═══ Footer Actions ═══ -->
+          <div style="display:flex; align-items:center; justify-content:space-between; border-top:2px solid var(--color-border); padding-top:14px; margin-top:4px; gap:8px; flex-wrap:wrap;">
+            <!-- Nhóm nút phụ (trái) -->
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button type="button" id="btnCopyEmrFormat" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid rgba(2,132,199,0.35); background:rgba(2,132,199,0.05); color:var(--color-primary); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
                 <i class="fa-solid fa-copy"></i> 1-Click Copy EMR
               </button>
-              <button type="button" class="dsp-btn dsp-btn-ghost" id="btnCreateSbarFromSoap" data-id="${p.id}" style="color:var(--color-text);">
+              <button type="button" id="btnCreateSbarFromSoap" data-id="${p.id}" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid var(--color-border); background:var(--color-bg); color:var(--color-text); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
                 <i class="fa-solid fa-file-waveform"></i> Tạo SBAR
               </button>
-              <button type="button" class="dsp-btn dsp-btn-ghost" id="btnCreateCaseFromSoap" data-id="${p.id}" style="color:var(--color-text);">
+              <button type="button" id="btnCreateCaseFromSoap" data-id="${p.id}" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid var(--color-border); background:var(--color-bg); color:var(--color-text); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
                 <i class="fa-solid fa-stethoscope"></i> Lưu Ca Bệnh
               </button>
             </div>
 
-            <div style="display:flex; gap:8px;">
-              <button type="button" id="btnDeletePatient" class="dsp-btn dsp-btn-ghost" style="color:var(--color-danger);">
+            <!-- Nhóm nút chính (phải) -->
+            <div style="display:flex; align-items:center; gap:8px;">
+              <button type="button" id="btnDeletePatient" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid rgba(239,68,68,0.3); background:rgba(239,68,68,0.05); color:var(--color-danger); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
                 <i class="fa-solid fa-trash"></i> Xóa
               </button>
-              <button type="submit" class="dsp-btn dsp-btn-primary">
+              <button type="submit" style="display:inline-flex; align-items:center; gap:7px; padding:8px 18px; border-radius:9px; border:none; background:linear-gradient(135deg,var(--color-primary),#0ea5e9); color:#fff; font-size:13px; font-weight:700; cursor:pointer; box-shadow:0 3px 10px rgba(2,132,199,0.3); transition:all 0.2s; letter-spacing:0.01em;">
                 <i class="fa-solid fa-save"></i> Lưu Ngày (${activeDate || 'Hôm nay'})
               </button>
             </div>
@@ -1429,6 +1492,168 @@ export function mountSoapController(profileId: string): void {
       icd10Label: p.currentDiagnosis || p.admissionDiagnosis
     });
     window.location.hash = '#/docspace/cases';
+  });
+
+  // AI Co-Pilot Suggestion Handlers in Edit SOAP Modal
+  let activeAiTargetField: 'esSNotes' | 'esONotes' | 'esAAssessment' | 'esPPlan' = 'esAAssessment';
+
+  document.querySelectorAll('.js-ai-suggest').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const field = (e.currentTarget as HTMLElement).getAttribute('data-field') as 'subjective' | 'objective' | 'assessment' | 'plan';
+      if (!field) return;
+
+      const profile = getActiveProfile();
+      if (!profile || !profile.aiSettings || !profile.aiSettings.enabled) {
+        alert('Vui lòng bật và cấu hình AI trong Cài đặt AI trước.');
+        return;
+      }
+
+      const patientName = (document.getElementById('esFullName') as HTMLInputElement)?.value || 'Chưa rõ';
+      const age = (document.getElementById('esAge') as HTMLInputElement)?.value || 'Chưa rõ';
+      const gender = (document.getElementById('esGender') as HTMLSelectElement)?.value || 'nam';
+      const admissionDiagnosis = (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value || 'Chưa rõ';
+
+      const sNotes = (document.getElementById('esSNotes') as HTMLTextAreaElement)?.value || '';
+      const oNotes = (document.getElementById('esONotes') as HTMLTextAreaElement)?.value || '';
+      const aAssessment = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value || '';
+      const pPlan = (document.getElementById('esPPlan') as HTMLTextAreaElement)?.value || '';
+
+      const targetFieldMap = {
+        subjective: 'esSNotes',
+        objective: 'esONotes',
+        assessment: 'esAAssessment',
+        plan: 'esPPlan'
+      } as const;
+
+      activeAiTargetField = targetFieldMap[field];
+
+      const box = document.getElementById('soapAiSuggestionBox');
+      const textEl = document.getElementById('soapAiSuggestionText');
+      if (box) box.style.display = 'block';
+      if (textEl) textEl.textContent = '⚡ Đang gọi AI kết nối và truyền dữ liệu...';
+
+      const btnEl = e.currentTarget as HTMLButtonElement;
+      const originalHtml = btnEl.innerHTML;
+      btnEl.disabled = true;
+      btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang gọi...';
+
+      try {
+        let streamedContent = '';
+        await generateSOAPSuggestion(
+          field,
+          {
+            patientName,
+            age,
+            gender,
+            admissionDiagnosis,
+            pSubjective: sNotes,
+            pObjective: oNotes,
+            pAssessment: aAssessment,
+            pPlan: pPlan
+          },
+          profile.aiSettings,
+          (chunk) => {
+            streamedContent += chunk;
+            if (textEl) textEl.textContent = streamedContent;
+          }
+        );
+      } catch (err: any) {
+        if (textEl) textEl.textContent = '❌ Lỗi AI: ' + err.message;
+      } finally {
+        btnEl.disabled = false;
+        btnEl.innerHTML = originalHtml;
+      }
+    });
+  });
+
+  document.getElementById('btnApplyAiSuggestion')?.addEventListener('click', () => {
+    const textEl = document.getElementById('soapAiSuggestionText');
+    const targetEl = document.getElementById(activeAiTargetField) as HTMLTextAreaElement;
+    if (textEl && targetEl) {
+      const currentVal = targetEl.value.trim();
+      const aiText = textEl.textContent?.trim() || '';
+      if (aiText && !aiText.startsWith('❌') && !aiText.startsWith('⚡')) {
+        targetEl.value = currentVal ? `${currentVal}\n\n${aiText}` : aiText;
+        const box = document.getElementById('soapAiSuggestionBox');
+        if (box) box.style.display = 'none';
+      }
+    }
+  });
+
+  document.getElementById('btnCloseAiSuggestion')?.addEventListener('click', () => {
+    const box = document.getElementById('soapAiSuggestionBox');
+    if (box) box.style.display = 'none';
+  });
+
+  // Discharge Summary Modal Event Handler
+  document.querySelectorAll('.js-discharge-summary').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const id = (e.currentTarget as HTMLElement).getAttribute('data-id');
+      if (!id) return;
+
+      const p = getSoapPatientById(profileId, id);
+      if (!p) return;
+
+      const profile = getActiveProfile();
+      if (!profile || !profile.aiSettings || !profile.aiSettings.enabled) {
+        alert('Vui lòng bật và cấu hình AI trong Cài đặt AI trước.');
+        return;
+      }
+
+      const modal = document.createElement('div');
+      modal.className = 'dsp-modal-overlay';
+      modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:9999; display:flex; align-items:center; justify-content:center; padding:1rem;';
+      modal.innerHTML = `
+        <div class="dsp-card" style="width:100%; max-width:800px; max-height:85vh; display:flex; flex-direction:column; background:var(--color-surface); border-radius:12px; overflow:hidden;">
+          <div style="padding:1rem 1.5rem; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg);">
+            <h3 style="margin:0; color:var(--color-primary); display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-file-medical"></i> Tóm tắt Bệnh án Ra viện (AI Clinical Summary)
+            </h3>
+            <button type="button" class="dsp-icon-btn" id="btnCloseDischargeModal">&times;</button>
+          </div>
+          <div style="padding:1.5rem; overflow-y:auto; flex:1; font-size:13px; line-height:1.6; white-space:pre-wrap;" id="dischargeSummaryText">
+            ⚡ Đang đọc diễn tiến SOAP logs và khởi tạo Tóm tắt Ra viện bằng AI...
+          </div>
+          <div style="padding:1rem 1.5rem; border-top:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg);">
+            <button type="button" class="dsp-btn dsp-btn-outline" id="btnCopyDischargeSummary">
+              <i class="fa-solid fa-copy"></i> Sao chép văn bản
+            </button>
+            <button type="button" class="dsp-btn dsp-btn-primary" id="btnDoneDischargeModal">
+              <i class="fa-solid fa-check"></i> Hoàn tất
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+
+      const closeBtn = modal.querySelector('#btnCloseDischargeModal');
+      const doneBtn = modal.querySelector('#btnDoneDischargeModal');
+      const copyBtn = modal.querySelector('#btnCopyDischargeSummary');
+      const textContainer = modal.querySelector('#dischargeSummaryText');
+
+      const closeModal = () => modal.remove();
+      closeBtn?.addEventListener('click', closeModal);
+      doneBtn?.addEventListener('click', closeModal);
+
+      copyBtn?.addEventListener('click', () => {
+        const text = textContainer?.textContent || '';
+        navigator.clipboard.writeText(text);
+        alert('Đã sao chép Tóm tắt Ra viện vào Clipboard!');
+      });
+
+      try {
+        let streamed = '';
+        await generateDischargeSummary(p, p.dailyLogs || [], profile.aiSettings, (chunk) => {
+          streamed += chunk;
+          if (textContainer) textContainer.textContent = streamed;
+        });
+      } catch (err: any) {
+        if (textContainer) textContainer.textContent = '❌ Lỗi AI: ' + err.message;
+      }
+    });
   });
 
 

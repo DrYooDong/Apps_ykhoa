@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mẫu thử Trực quan hóa Hành trình Lâm sàng (Treatment Pathways) bằng biểu đồ Sunburst & Flowchart tương tác SVG thuần – CliniPortal">
+  <title>Trực Quan Hóa Hành Trình Lâm Sàng – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/treatment-pathways.css">
+</head>
+
+<body>
+  <!-- Dynamic Header Component -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <main class="main-wrapper" id="mainContent">
+      <div class="container" style="padding: 24px 16px; max-width: 1100px; margin: 0 auto;">
+
+        <!-- Page Hero Banner -->
+        <div style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.1), rgba(16, 185, 129, 0.1)); border: 1px stroke var(--color-border); border-radius: 16px; padding: 28px; margin-bottom: 28px; border-left: 6px solid var(--color-primary);">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <span style="background: var(--color-primary); color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">Mẫu Thử Tương Tác</span>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted);"><i class="fa-solid fa-clock"></i> ADA 2024 & GINA 2024 Standard</span>
+          </div>
+          <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--color-text); margin: 0 0 10px 0;">
+            🗺️ TRỰC QUAN HÓA HÀNH TRÌNH ĐỀU TRỊ LÂM SÀNG
+          </h1>
+          <p style="font-size: 0.95rem; color: var(--color-text-muted); margin: 0; line-height: 1.6;">
+            Ứng dụng biểu đồ phân nhánh <strong>Sunburst SVG thuần</strong> để mô tả dòng chảy phác đồ tiếp cận bệnh lý. Nhấp chuột vào từng phân nhánh để xem tiêu chuẩn nhận vào, hướng dẫn liều dùng và lưu ý lâm sàng.
+          </p>
+        </div>
+
+        <!-- Treatment Pathway Interactive Studio Widget 1: Đái tháo đường Týp 2 -->
+        <div id="pathwayDiabetesContainer"></div>
+
+        <!-- Educational Callout Banner -->
+        <div style="margin: 32px 0; background: var(--color-surface); border: 1px dashed var(--color-primary); border-radius: 12px; padding: 20px; display: flex; align-items: flex-start; gap: 16px;">
+          <i class="fa-solid fa-lightbulb" style="font-size: 1.8rem; color: var(--color-warning); margin-top: 4px;"></i>
+          <div>
+            <h4 style="margin: 0 0 6px 0; font-size: 1rem; color: var(--color-text);">Lợi ích thực hành của Biểu đồ Sunburst Thuần</h4>
+            <p style="margin: 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.5;">
+              Khác với sơ đồ tĩnh PDF hoặc hình ảnh thông thường, mô đun SVG thuần này chạy mượt trên cả thiết bị di động, tự động đổi tông màu khi bật Dark Mode và cho phép tích hợp dữ liệu linh hoạt thông qua JSON Schema.
+            </p>
+          </div>
+        </div>
+
+        <!-- Treatment Pathway Widget 2: Hen Suyễn Người lớn -->
+        <div id="pathwayAsthmaContainer"></div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Dynamic Footer Component -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- Scripts -->
+  <script src="../../../../js/components/header.js" defer></script>
+  <script src="../../../../js/components/sidebar.js" defer></script>
+  <script src="../../../../js/components/footer.js" defer></script>
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../js/treatment-pathway-engine.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Dữ liệu Phác đồ 1: Đái tháo đường Týp 2 (ADA 2024)
+      const diabetesPathwayData = {
+        title: "Hành trình Điều trị Đái tháo đường Týp 2 (ADA 2024)",
+        subtitle: "Phân nhánh theo yếu tố nguy cơ tim mạch & mục tiêu kiểm soát glucose",
+        root: {
+          name: "ĐTĐ Týp 2",
+          color: "var(--color-primary, #0284c7)",
+          children: [
+            {
+              name: "Bệnh tim mạch do xơ vữa (ASCVD)",
+              category: "Nguy cơ Rất cao",
+              value: 40,
+              color: "var(--color-danger, #ef4444)",
+              children: [
+                {
+                  name: "GLP-1 RA (Liraglutide / Dulaglutide)",
+                  category: "Thuốc Hàng 1 (1st Line)",
+                  dose: "Liraglutide khởi đầu 0.6mg/ngày tiêm dưới da, tăng dần lên 1.2 - 1.8mg/ngày",
+                  details: "Ưu tiên hàng đầu cho bệnh nhân có tiền sử NMCT, Đột quỵ hoặc bệnh mạch máu ngoại biên. Giảm tỷ lệ tử vong do tim mạch.",
+                  value: 24,
+                  color: "#f87171"
+                },
+                {
+                  name: "SGLT2i (Empagliflozin / Dapagliflozin)",
+                  category: "Thuốc Hàng 1 (1st Line)",
+                  dose: "Empagliflozin 10mg/ngày uống sáng",
+                  details: "Giảm nguy cơ nhập viện do suy tim và làm chậm tiến triển bệnh thận mạn.",
+                  value: 16,
+                  color: "#fb923c"
+                }
+              ]
+            },
+            {
+              name: "Suy tim (HF) / Suy thận mạn (CKD)",
+              category: "Tổn thương Cơ quan đích",
+              value: 30,
+              color: "var(--color-warning, #f59e0b)",
+              children: [
+                {
+                  name: "SGLT2i (Dapagliflozin / Empagliflozin)",
+                  category: "Thuốc Hàng 1 (1st Line)",
+                  dose: "Dapagliflozin 10mg/ngày",
+                  details: "Khuyến cáo mức IA cho bệnh nhân ĐTĐ kèm Phân suất tống máu EF giảm hoặc eGFR 20-60 mL/min.",
+                  value: 30,
+                  color: "#facc15"
+                }
+              ]
+            },
+            {
+              name: "Không kèm Nguy cơ Tim mạch cao",
+              category: "Đơn trị liệu / Phối hợp ban đầu",
+              value: 30,
+              color: "var(--color-success, #10b981)",
+              children: [
+                {
+                  name: "Metformin + Thay đổi Lối sống",
+                  category: "Nền tảng",
+                  dose: "500mg uống sau ăn, tăng dần lên tối đa 2000mg/ngày",
+                  details: "Chi phí thấp, an toàn, không gây hạ đường huyết đơn trị liệu.",
+                  value: 20,
+                  color: "#34d399"
+                },
+                {
+                  name: "Phối hợp sớm DPP-4i / Thiazolidinedione",
+                  category: "Thuốc Hàng 2 (2nd Line)",
+                  dose: "Sitagliptin 100mg/ngày",
+                  details: "Thêm vào khi HbA1c > 1.5% so với mục tiêu sau 3 tháng Metformin.",
+                  value: 10,
+                  color: "#a7f3d0"
+                }
+              ]
+            }
+          ]
+        }
+      };
+
+      // Dữ liệu Phác đồ 2: Hen Suyễn Người lớn (GINA 2024 Track 1)
+      const asthmaPathwayData = {
+        title: "Phác đồ Kiểm soát Hen Suyễn Người lớn (GINA 2024 Track 1)",
+        subtitle: "Tiếp cận kiểm soát bậc 1 đến bậc 5 với ICS-Formoterol cắt cơn",
+        root: {
+          name: "Hen Suyễn",
+          color: "var(--color-info, #06b6d4)",
+          children: [
+            {
+              name: "Bậc 1 - 2: Triệu chứng thỉnh thoảng",
+              category: "Nhẹ",
+              value: 35,
+              color: "var(--color-success, #10b981)",
+              children: [
+                {
+                  name: "ICS-Formoterol liều thấp khi cần",
+                  category: "Cắt cơn & Ngừa cơn phối hợp",
+                  dose: "Budesonide/Formoterol 160/4.5mcg x 1 nhát khi có triệu chứng",
+                  details: "Track 1 ưu tiên: Giảm 60% nguy cơ đợt cấp nặng so với dùng SABA đơn thuần.",
+                  value: 35,
+                  color: "#6ee7b7"
+                }
+              ]
+            },
+            {
+              name: "Bậc 3: Triệu chứng hầu hết các ngày",
+              category: "Trung bình",
+              value: 35,
+              color: "var(--color-warning, #f59e0b)",
+              children: [
+                {
+                  name: "ICS-Formoterol liều thấp duy trì & cắt cơn",
+                  category: "Liệu pháp SMART",
+                  dose: "Budesonide/Formoterol 160/4.5mcg x 1 nhát x 2 lần/ngày + 1 nhát khi cần",
+                  details: "Liệu pháp MART giúp kiểm soát duy trì và xử trí cắt cơn tức thì.",
+                  value: 35,
+                  color: "#fde047"
+                }
+              ]
+            },
+            {
+              name: "Bậc 4 - 5: Hen dai dẳng / Khó kiểm soát",
+              category: "Nặng",
+              value: 30,
+              color: "var(--color-danger, #ef4444)",
+              children: [
+                {
+                  name: "ICS-Formoterol liều trung bình + LAMA",
+                  category: "Nâng bậc Tam trị liệu",
+                  dose: "Thêm Tiotropium Respimat 5mcg/ngày",
+                  details: "Đánh giá фенотип (T2 high/low), xem xét chỉ định Thuốc sinh học (Anti-IgE, Anti-IL5).",
+                  value: 30,
+                  color: "#f87171"
+                }
+              ]
+            }
+          ]
+        }
+      };
+
+      // Khởi tạo 2 widget
+      new TreatmentPathwayEngine("pathwayDiabetesContainer", { data: diabetesPathwayData });
+      new TreatmentPathwayEngine("pathwayAsthmaContainer", { data: asthmaPathwayData });
+    });
+  </script>
+</body>
+</html>

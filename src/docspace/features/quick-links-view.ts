@@ -5,7 +5,7 @@
 
 import { getActiveProfile, updateQuickLinks } from '../storage';
 import { QuickLink, DEFAULT_QUICK_LINKS } from '../types';
-import { renderSidebar } from '../docspace-view';
+import { renderSidebar, renderDocSpaceHeader } from '../docspace-view';
 
 const SUGGESTED_LINKS: QuickLink[] = [
   // Calculators
@@ -92,6 +92,7 @@ export function renderQuickLinksView(profileId: string): string {
     <div class="dsp-layout" id="dspLayout">
       ${renderSidebar(profile, 'links')}
       <main class="dsp-main">
+        ${renderDocSpaceHeader(profile, 'links')}
         <div class="dsp-page-content">
 
           <div class="dsp-page-header">

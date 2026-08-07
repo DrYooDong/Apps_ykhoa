@@ -69,7 +69,7 @@
     .esi-1 { background-color: #881337; }
     .esi-2 { background-color: #b91c1c; }
     .esi-3 { background-color: #d97706; }
-    .esi-4 { background-color: #eab308; color: #1e293b; }
+    .esi-4 { background-color: #eab308; color: var(--color-text); }
     .esi-5 { background-color: #16a34a; }
 
     .triage-card {
@@ -152,7 +152,7 @@
     }
 
     .triage-pill-red { background: #dc2626; }
-    .triage-pill-yellow { background: #eab308; color: #1e293b; }
+    .triage-pill-yellow { background: #eab308; color: var(--color-text); }
     .triage-pill-green { background: #16a34a; }
     .triage-pill-black { background: #1e293b; }
   </style>
@@ -165,44 +165,6 @@
 
   <div class="app-container">
     <!-- SIDEBAR -->
-    <aside class="app-sidebar" id="appSidebar">
-      <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
-        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
-
-      <nav class="sidebar-nav" aria-label="Điều hướng chính">
-        <ul class="nav-list" role="list">
-          <li>
-            <a href="../../../../index.html" class="nav-item" title="Trang chủ">
-              <span class="nav-icon">🏠</span>
-              <span class="nav-text">Trang chủ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../ky-nang.html" class="nav-item active" aria-current="page" title="Kỹ năng">
-              <span class="nav-icon">🩺</span>
-              <span class="nav-text">Kỹ năng</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận">
-              <span class="nav-icon">🤒</span>
-              <span class="nav-text">Tiếp cận</span>
-            </a>
-          </li>
-          <li>
-            <a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý">
-              <span class="nav-icon">💊</span>
-              <span class="nav-text">Dược lý</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-
     <!-- MAIN WRAPPER -->
     <main class="main-wrapper" id="mainContent">
       <!-- BREADCRUMB -->
@@ -426,7 +388,7 @@
               <p style="margin:0.2rem 0 0; font-size:var(--text-xs);">Tự đi lại được, tổn thương nhẹ. Tập trung khu vực riêng để sơ cứu &amp; động viên tinh thần.</p>
             </div>
             <div class="triage-card triage-black" style="margin:0;">
-              <strong style="color:#1e293b;">⚫ THẺ ĐEN (Tử vong / Hấp hồi):</strong>
+              <strong style="color: var(--color-text);">⚫ THẺ ĐEN (Tử vong / Hấp hồi):</strong>
               <p style="margin:0.2rem 0 0; font-size:var(--text-xs);">Đã tử vong (không thở sau khai thông đường thở), hoặc tổn thương não quá nặng không khả năng cứu.</p>
             </div>
           </div>

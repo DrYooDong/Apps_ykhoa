@@ -137,18 +137,27 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
 
       <!-- Main Content -->
       <main class="dsp-main" id="dspMain">
+        ${renderDocSpaceHeader(profile, 'dashboard')}
+
         <div class="dsp-page-content">
 
           ${backupBanner}
-          <!-- Greeting -->
+          
+          <!-- Hero Greeting Card -->
           <div class="dsp-greeting">
-            <div class="dsp-greeting-text">
-              <h1 class="dsp-page-title">
-                <i class="fa-solid fa-hand-wave"></i>
-                Chào, <span class="dsp-doctor-name">${profile.displayName}</span>
-              </h1>
-              <p class="dsp-page-subtitle">${profile.specialty || 'Bác sĩ'} &nbsp;·&nbsp; <code class="dsp-id-badge">${profile.id}</code></p>
+            <div class="dsp-greeting-left">
+              <div class="dsp-avatar dsp-avatar--hero">${getInitials(profile.displayName)}</div>
+              <div class="dsp-greeting-text">
+                <h1 class="dsp-page-title">
+                  Chào mừng, <span class="dsp-doctor-name">${profile.displayName}</span>
+                </h1>
+                <p class="dsp-page-subtitle">
+                  <span class="dsp-spec-pill"><i class="fa-solid fa-user-doctor"></i> ${profile.specialty || 'Bác sĩ Lâm sàng'}</span>
+                  <code class="dsp-id-badge"><i class="fa-solid fa-fingerprint"></i> ${profile.id}</code>
+                </p>
+              </div>
             </div>
+            
             <div class="dsp-greeting-actions">
               <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspExportBtn" title="Xuất dữ liệu">
                 <i class="fa-solid fa-file-export"></i> Xuất dữ liệu
@@ -162,7 +171,7 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
             </div>
           </div>
 
-          <!-- Stats Cards -->
+          <!-- Stats Grid -->
           <div class="dsp-stats-grid">
             <a href="#/docspace/sbar" class="dsp-stat-card dsp-stat-sbar">
               <div class="dsp-stat-icon"><i class="fa-solid fa-file-waveform"></i></div>
@@ -172,10 +181,10 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
               </div>
             </a>
             <a href="#/docspace/oncall" class="dsp-stat-card dsp-stat-oncall">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-moon"></i></div>
+              <div class="dsp-stat-icon"><i class="fa-solid fa-list-check"></i></div>
               <div class="dsp-stat-body">
                 <div class="dsp-stat-value">${stats.shiftCount}</div>
-                <div class="dsp-stat-label">Ca trực đã ghi</div>
+                <div class="dsp-stat-label">Checklist trực</div>
               </div>
             </a>
             <a href="#/docspace/cases" class="dsp-stat-card dsp-stat-case">
@@ -196,7 +205,7 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
               <div class="dsp-stat-icon"><i class="fa-solid fa-pills"></i></div>
               <div class="dsp-stat-body">
                 <div class="dsp-stat-value">${stats.drugCount}</div>
-                <div class="dsp-stat-label">Nhật ký phác đồ thuốc</div>
+                <div class="dsp-stat-label">Nhật ký thuốc</div>
               </div>
             </a>
             <a href="#/docspace/protocol" class="dsp-stat-card dsp-stat-protocol">
@@ -208,56 +217,136 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
             </a>
           </div>
 
-          <!-- Quick Actions -->
-          <div class="dsp-section">
-            <h2 class="dsp-section-title"><i class="fa-solid fa-bolt"></i> Thao tác nhanh</h2>
-            <div class="dsp-quick-actions">
-              <a href="#/docspace/sbar" class="dsp-action-card" id="qa-new-sbar">
-                <i class="fa-solid fa-file-waveform"></i>
-                <span>Tạo SBAR</span>
-              </a>
-              <a href="#/docspace/oncall" class="dsp-action-card" id="qa-new-shift">
-                <i class="fa-solid fa-list-check"></i>
-                <span>Checklist công việc</span>
-              </a>
-              <a href="#/docspace/cases" class="dsp-action-card" id="qa-new-case">
-                <i class="fa-solid fa-stethoscope"></i>
-                <span>Ghi Ca bệnh</span>
-              </a>
-              <a href="#/docspace/notes" class="dsp-action-card" id="qa-new-note">
-                <i class="fa-solid fa-note-sticky"></i>
-                <span>Tạo Ghi chú</span>
-              </a>
-              <a href="#/docspace/drugs" class="dsp-action-card" id="qa-new-drug">
-                <i class="fa-solid fa-pills"></i>
-                <span>Nhật ký Thuốc</span>
-              </a>
-              <a href="#/docspace/protocol" class="dsp-action-card" id="qa-new-protocol">
-                <i class="fa-solid fa-clipboard-list"></i>
-                <span>Soạn Phác đồ</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Quick Links Preview -->
-          <div class="dsp-section">
-            <div class="dsp-section-header">
-              <h2 class="dsp-section-title"><i class="fa-solid fa-link"></i> Liên kết nhanh</h2>
-              <a href="#/docspace/links" class="dsp-section-link">Quản lý <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-            <div class="dsp-quick-links-grid">
-              ${profile.quickLinks.filter(l => l.isPinned).slice(0, 6).map(link => `
-                <a href="${link.href}" class="dsp-quick-link-chip" id="ql-${link.id}">
-                  <i class="${link.icon}"></i>
-                  <span>${link.label}</span>
+          <!-- Main Dashboard Panel Layout -->
+          <div class="dsp-dashboard-grid">
+            
+            <!-- Quick Actions Card -->
+            <div class="dsp-section-card">
+              <div class="dsp-section-header">
+                <h2 class="dsp-section-title"><i class="fa-solid fa-bolt" style="color:var(--color-primary);"></i> Thao tác nhanh</h2>
+                <span class="dsp-section-badge">Tạo mới &amp; Khởi chạy</span>
+              </div>
+              <div class="dsp-quick-actions">
+                <a href="#/docspace/sbar" class="dsp-action-card" id="qa-new-sbar">
+                  <div class="dsp-action-icon"><i class="fa-solid fa-file-waveform"></i></div>
+                  <div class="dsp-action-info">
+                    <span class="dsp-action-title">Tạo SBAR</span>
+                    <span class="dsp-action-desc">Báo cáo ca bệnh</span>
+                  </div>
                 </a>
-              `).join('')}
+                <a href="#/docspace/oncall" class="dsp-action-card" id="qa-new-shift">
+                  <div class="dsp-action-icon"><i class="fa-solid fa-list-check"></i></div>
+                  <div class="dsp-action-info">
+                    <span class="dsp-action-title">Checklist công việc</span>
+                    <span class="dsp-action-desc">Ca trực &amp; Nhiệm vụ</span>
+                  </div>
+                </a>
+                <a href="#/docspace/cases" class="dsp-action-card" id="qa-new-case">
+                  <div class="dsp-action-icon"><i class="fa-solid fa-stethoscope"></i></div>
+                  <div class="dsp-action-info">
+                    <span class="dsp-action-title">Ghi Ca bệnh</span>
+                    <span class="dsp-action-desc">Lưu thông tin lâm sàng</span>
+                  </div>
+                </a>
+                <a href="#/docspace/notes" class="dsp-action-card" id="qa-new-note">
+                  <div class="dsp-action-icon"><i class="fa-solid fa-note-sticky"></i></div>
+                  <div class="dsp-action-info">
+                    <span class="dsp-action-title">Tạo Ghi chú</span>
+                    <span class="dsp-action-desc">Ghi chép nhanh</span>
+                  </div>
+                </a>
+                <a href="#/docspace/drugs" class="dsp-action-card" id="qa-new-drug">
+                  <div class="dsp-action-icon"><i class="fa-solid fa-pills"></i></div>
+                  <div class="dsp-action-info">
+                    <span class="dsp-action-title">Nhật ký Thuốc</span>
+                    <span class="dsp-action-desc">Phác đồ điều trị</span>
+                  </div>
+                </a>
+                <a href="#/docspace/protocol" class="dsp-action-card" id="qa-new-protocol">
+                  <div class="dsp-action-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                  <div class="dsp-action-info">
+                    <span class="dsp-action-title">Soạn Phác đồ</span>
+                    <span class="dsp-action-desc">Xây dựng quy trình</span>
+                  </div>
+                </a>
+              </div>
             </div>
+
+            <!-- Quick Links Card -->
+            <div class="dsp-section-card">
+              <div class="dsp-section-header">
+                <h2 class="dsp-section-title"><i class="fa-solid fa-link" style="color:var(--color-primary);"></i> Liên kết nhanh</h2>
+                <a href="#/docspace/links" class="dsp-section-link">Quản lý <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+              <div class="dsp-quick-links-grid">
+                ${profile.quickLinks && profile.quickLinks.length > 0 
+                  ? profile.quickLinks.filter(l => l.isPinned).slice(0, 8).map(link => `
+                    <a href="${link.href}" class="dsp-quick-link-chip" id="ql-${link.id}">
+                      <i class="${link.icon}"></i>
+                      <span>${link.label}</span>
+                    </a>
+                  `).join('')
+                  : `
+                    <a href="#/docspace/abg-studio" class="dsp-quick-link-chip"><i class="fa-solid fa-vial"></i><span>ABG Studio</span></a>
+                    <a href="#/docspace/egfr" class="dsp-quick-link-chip"><i class="fa-solid fa-calculator"></i><span>eGFR Calculator</span></a>
+                    <a href="#/docspace/shock" class="dsp-quick-link-chip"><i class="fa-solid fa-heart-pulse"></i><span>Sốc Nhiễm Khuẩn</span></a>
+                  `
+                }
+              </div>
+            </div>
+
           </div>
 
         </div>
       </main>
     </div>
+  `;
+}
+// ─── Top Header Bar ──────────────────────────────────────────────
+
+export function renderDocSpaceHeader(profile: DoctorProfile, activeId: string): string {
+  const currentNav = DSP_NAV_ITEMS.find(item => item.id === activeId) || { label: 'Tổng quan', icon: 'fa-solid fa-house-medical' };
+
+  return `
+    <header class="dsp-header-bar" id="dspHeaderBar">
+      <div class="dsp-header-left">
+        <button class="dsp-header-mobile-toggle" id="dspMobileSidebarBtn" title="Danh mục DocSpace">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="dsp-header-title-box">
+          <i class="${currentNav.icon} dsp-header-page-icon"></i>
+          <h1 class="dsp-header-page-title">${currentNav.label}</h1>
+        </div>
+      </div>
+
+      <div class="dsp-header-center">
+        <div class="dsp-header-search">
+          <i class="fa-solid fa-magnifying-glass dsp-search-icon"></i>
+          <input type="text" id="dspHeaderSearchInput" class="dsp-header-search-input" placeholder="Tìm nhanh bệnh nhân, ca bệnh, SBAR, ghi chú..." />
+          <kbd class="dsp-search-shortcut">Ctrl K</kbd>
+        </div>
+      </div>
+
+      <div class="dsp-header-right">
+        <div class="dsp-cloud-status" title="Đã kết nối dữ liệu máy tính & Cloud">
+          <span class="dsp-status-dot"></span>
+          <span class="dsp-status-text">Cloud Sync</span>
+        </div>
+
+        <a href="#/docspace/ai-settings" class="dsp-header-icon-btn" title="Cấu hình AI Co-Pilot">
+          <i class="fa-solid fa-microchip"></i>
+        </a>
+
+        <div class="dsp-header-profile-chip" title="Hồ sơ hiện tại: ${profile.displayName}">
+          <div class="dsp-avatar dsp-avatar--xs">${getInitials(profile.displayName)}</div>
+          <span class="dsp-header-profile-name">${profile.displayName}</span>
+        </div>
+
+        <a href="../index.html" class="dsp-header-btn-home" title="Trở về Trang chủ CliniPortal">
+          <i class="fa-solid fa-house-user"></i> <span>Trang chủ Portal</span>
+        </a>
+      </div>
+    </header>
   `;
 }
 

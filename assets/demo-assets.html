@@ -8,14 +8,14 @@
     :root {
       --bg-color: #f8fafc;
       --card-bg: #ffffff;
-      --text-color: #1e293b;
-      --border-color: #e2e8f0;
+      --text-color: var(--color-text);
+      --border-color: var(--color-border);
       --primary: #0ea5e9;
       --sidebar-w: 240px;
     }
 
     body.dark {
-      --bg-color: #0f172a;
+      --bg-color: var(--color-text);
       --card-bg: #1e293b;
       --text-color: #f1f5f9;
       --border-color: #334155;
@@ -142,14 +142,14 @@
 
     .card-desc {
       font-size: 0.9rem;
-      color: #64748b;
+      color: var(--color-text-muted);
       line-height: 1.5;
       margin-bottom: 1.5rem;
       flex: 1;
     }
 
     .dark .card-desc {
-      color: #94a3b8;
+      color: var(--color-text-muted);
     }
 
     .btn-link {
@@ -194,7 +194,7 @@
     <header>
       <div>
         <h1>🎨 CliniPortal Brand Assets Hub</h1>
-        <p style="margin: 0.25rem 0 0 0; color: #64748b;">Khám phá các thư viện tài nguyên giao diện, icons, animation và biểu đồ</p>
+        <p style="margin: 0.25rem 0 0 0; color: var(--color-text-muted);">Khám phá các thư viện tài nguyên giao diện, icons, animation và biểu đồ</p>
       </div>
       <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Dark Mode</button>
     </header>

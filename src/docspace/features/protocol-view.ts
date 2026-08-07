@@ -5,7 +5,7 @@
 
 import { getAllProtocols, saveProtocol, updateProtocol, deleteProtocol, getProtocolById } from '../storage';
 import { PersonalProtocol, ProtocolStep } from '../types';
-import { renderSidebar, formatDate } from '../docspace-view';
+import { renderSidebar, renderDocSpaceHeader, formatDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
 
 export function renderProtocolView(profileId: string, editId?: string): string {
@@ -68,6 +68,7 @@ export function renderProtocolView(profileId: string, editId?: string): string {
     <div class="dsp-layout" id="dspLayout">
       ${renderSidebar(profile, 'protocol')}
       <main class="dsp-main">
+        ${renderDocSpaceHeader(profile, 'protocol')}
         <div class="dsp-page-content">
 
           <div class="dsp-page-header">

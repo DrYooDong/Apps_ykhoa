@@ -5,7 +5,7 @@
 
 import { getAllPatients, savePatient, deletePatient, updatePatient, getVitalsForPatient, saveVital } from '../storage';
 import { PatientDemographic, AllergyEntry } from '../types';
-import { renderSidebar, formatDate, escapeHtml } from '../docspace-view';
+import { renderSidebar, renderDocSpaceHeader, formatDate, escapeHtml } from '../docspace-view';
 import { getActiveProfile } from '../storage';
 
 export async function renderPatientDemographicsView(profileId: string): Promise<string> {
@@ -52,6 +52,7 @@ export async function renderPatientDemographicsView(profileId: string): Promise<
     <div class="dsp-layout" id="dspLayout">
       ${renderSidebar(profile, 'patients')}
       <main class="dsp-main">
+        ${renderDocSpaceHeader(profile, 'patients')}
         <div class="dsp-page-content">
 
           <div class="dsp-page-header">

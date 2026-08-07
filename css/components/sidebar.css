@@ -9,36 +9,9 @@
      - Indicator line mỏng luôn nhìn thấy để báo hiệu tồn tại
 ============================================================ */
 
-/* --- Wrapper cố định chiều cao, không bao giờ thay đổi --- */
+/* --- Secondary Horizontal Subnav Bar — Disabled (Module links moved to Top Header) --- */
 .app-sidebar {
-  width: 100%;
-  position: sticky;
-  top: var(--header-height, 56px);
-  z-index: 180;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: var(--glass-bg, rgba(255, 255, 255, 0.96));
-  backdrop-filter: var(--glass-blur, blur(12px));
-  -webkit-backdrop-filter: var(--glass-blur, blur(12px));
-
-  /* Luôn giữ đúng chiều cao thực — tránh mọi clip rò rỉ */
-  height: 48px;
-  min-height: 48px;
-  overflow: visible;
-
-  /* Indicator underline mỏng — báo hiệu khi đang ẩn nội dung */
-  border-bottom: 2px solid transparent;
-  border-image: linear-gradient(
-    to right,
-    transparent 30%,
-    var(--color-primary, #0284c7) 50%,
-    transparent 70%
-  ) 1;
-
-  padding: 0 1rem;
-  transition: box-shadow 0.25s ease, background 0.25s ease;
+  display: none !important;
 }
 
 .app-sidebar.collapsed { width: 100%; }
