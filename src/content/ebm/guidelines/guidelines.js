@@ -270,38 +270,52 @@
     async function dbSaveStudy(study) {
       if (!supabaseClient) return;
       try {
-        const { error } = await supabaseClient
+        const payload = {
+          id: study.id,
+          title: study.title,
+          author: study.author,
+          drug: study.drug,
+          sourceType: study.sourceType,
+          specialty: study.specialty,
+          design: study.design,
+          intervention: study.intervention || '',
+          primaryEndpoint: study.primaryEndpoint || '',
+          keyResults: study.keyResults || '',
+          impact: study.impact,
+          year: study.year,
+          organization: study.organization,
+          phase: study.phase,
+          sampleSize: study.sampleSize,
+          population: study.population,
+          summary: study.summary,
+          detailedConclusion: study.detailedConclusion,
+          fdaStatus: study.fdaStatus,
+          sourceUrl: study.sourceUrl,
+          file: study.file,
+          asianData: study.asianData,
+          bookmarked: study.bookmarked,
+          icd10: study.icd10 ? JSON.stringify(study.icd10) : null,
+          subgroups: study.subgroups ? JSON.stringify(study.subgroups) : null,
+          createdAt: study.createdAt
+        };
+
+        if (study.parts) {
+          payload.parts = JSON.stringify(study.parts);
+        }
+
+        let { error } = await supabaseClient
           .from('clinical_guidelines')
-          .upsert({
-            id: study.id,
-            title: study.title,
-            author: study.author,
-            drug: study.drug,
-            sourceType: study.sourceType,
-            specialty: study.specialty,
-            design: study.design,
-            intervention: study.intervention || '',
-            primaryEndpoint: study.primaryEndpoint || '',
-            keyResults: study.keyResults || '',
-            impact: study.impact,
-            year: study.year,
-            organization: study.organization,
-            phase: study.phase,
-            sampleSize: study.sampleSize,
-            population: study.population,
-            summary: study.summary,
-            detailedConclusion: study.detailedConclusion,
-            fdaStatus: study.fdaStatus,
-            sourceUrl: study.sourceUrl,
-            file: study.file,
-            parts: study.parts ? JSON.stringify(study.parts) : null,
-            asianData: study.asianData,
-            bookmarked: study.bookmarked,
-            icd10: study.icd10 ? JSON.stringify(study.icd10) : null,
-            subgroups: study.subgroups ? JSON.stringify(study.subgroups) : null,
-            createdAt: study.createdAt
-          }, { onConflict: 'id' });
+          .upsert(payload, { onConflict: 'id' });
           
+        if (error && error.message && error.message.includes("'parts'")) {
+          // Fallback: If 'parts' column doesn't exist in Supabase table schema, retry without 'parts'
+          delete payload.parts;
+          const retry = await supabaseClient
+            .from('clinical_guidelines')
+            .upsert(payload, { onConflict: 'id' });
+          error = retry.error;
+        }
+
         if (error) throw error;
         console.log('Saved to Supabase successfully');
       } catch (err) {
