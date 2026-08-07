@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trang trình diễn bộ linh kiện giao diện CliniPortal lấy cảm hứng từ Material UI (MUI v6) bằng Vanilla CSS/JS thuần.">
+  <title>Material UI Component Showcase – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Core & Component CSS -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components/header.css">
+  <link rel="stylesheet" href="../css/components/sidebar.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  <link rel="stylesheet" href="../css/components/mui-port.css">
+
+  <style>
+    .demo-section {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      border: 1px solid var(--color-divider);
+    }
+    .demo-section__title {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .demo-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder" data-header-path="../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <aside class="app-sidebar" id="appSidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-group">
+          <div class="sidebar-group-title">MUI Showcase Nav</div>
+          <a href="#alerts" class="sidebar-item active"><i class="fa-solid fa-bell"></i> Alerts & Toasts</a>
+          <a href="#chips" class="sidebar-item"><i class="fa-solid fa-tags"></i> Chips & Badges</a>
+          <a href="#accordions" class="sidebar-item"><i class="fa-solid fa-bars-staggered"></i> Accordion & Tabs</a>
+          <a href="#stepper" class="sidebar-item"><i class="fa-solid fa-list-check"></i> Stepper & Progress</a>
+          <a href="#dialogs" class="sidebar-item"><i class="fa-solid fa-window-restore"></i> Dialog & Tooltips</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-wrapper">
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: var(--text-2xl); font-weight: 800; color: var(--color-text);">
+          <i class="fa-brands fa-react" style="color: var(--color-primary);"></i> Material UI Component Library (Vanilla Port)
+        </h1>
+        <p style="color: var(--color-text-muted);">
+          Bộ linh kiện UI hiện đại được xây dựng thuần CSS & JS, tích hợp hoàn hảo với hệ thống Design Tokens của CliniPortal.
+        </p>
+      </div>
+
+      <!-- 1. ALERTS & TOASTS -->
+      <section id="alerts" class="demo-section">
+        <h2 class="demo-section__title"><i class="fa-solid fa-triangle-exclamation"></i> 1. Alert & Toast Notifications</h2>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+          <div class="cp-alert cp-alert--info">
+            <i class="fa-solid fa-circle-info cp-alert__icon"></i>
+            <div class="cp-alert__content">
+              <div class="cp-alert__title">Cập nhật khuyến cáo y khoa</div>
+              Hướng dẫn điều trị suy tim theo ESC 2026 đã được tích hợp vào cơ sở dữ liệu.
+            </div>
+            <button class="cp-alert__close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="cp-alert cp-alert--success">
+            <i class="fa-solid fa-circle-check cp-alert__icon"></i>
+            <div class="cp-alert__content">
+              <div class="cp-alert__title">Tính toán hoàn tất</div>
+              Chỉ số eGFR (CKD-EPI 2021): <strong>78 mL/min/1.73m²</strong> (G2 - Suy giảm nhẹ).
+            </div>
+            <button class="cp-alert__close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="cp-alert cp-alert--warning">
+            <i class="fa-solid fa-triangle-exclamation cp-alert__icon"></i>
+            <div class="cp-alert__content">
+              <div class="cp-alert__title">Cảnh báo tương tác thuốc</div>
+              Chống chỉ định phối hợp Spironolactone với Potassium Chloride.
+            </div>
+            <button class="cp-alert__close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <div class="cp-alert cp-alert--danger cp-alert--outlined">
+            <i class="fa-solid fa-circle-xmark cp-alert__icon"></i>
+            <div class="cp-alert__content">
+              <div class="cp-alert__title">Dấu hiệu sinh tồn bất thường</div>
+              Huyết áp: 85/50 mmHg — Cần đánh giá sốc nhiễm khuẩn khẩn cấp!
+            </div>
+            <button class="cp-alert__close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+
+        <div class="demo-row">
+          <button class="cp-btn cp-btn-primary cp-ripple" onclick="cpToast.show({title: 'Thành công', message: 'Đã lưu phác đồ điều trị!', severity: 'success'})">
+            Trigger Success Toast
+          </button>
+          <button class="cp-btn cp-btn-secondary cp-ripple" onclick="cpToast.show({title: 'Cảnh báo', message: 'Kiểm tra lại liều thuốc theo cân nặng!', severity: 'warning'})">
+            Trigger Warning Toast
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. CHIPS & BADGES -->
+      <section id="chips" class="demo-section">
+        <h2 class="demo-section__title"><i class="fa-solid fa-tags"></i> 2. Chips & Badges</h2>
+        <div class="demo-row" style="margin-bottom: 20px;">
+          <span class="cp-chip cp-chip--primary"><i class="fa-solid fa-notes-medical cp-chip__icon"></i> Tim mạch</span>
+          <span class="cp-chip cp-chip--success"><i class="fa-solid fa-pills cp-chip__icon"></i> HMG-CoA Reductase Inhibitor</span>
+          <span class="cp-chip cp-chip--warning cp-chip--clickable">ICD-10: I50.9 <i class="fa-solid fa-xmark cp-chip__delete"></i></span>
+          <span class="cp-chip cp-chip--danger">Cấp cứu khẩn</span>
+        </div>
+
+        <div class="demo-row">
+          <div class="cp-badge-container">
+            <button class="cp-btn cp-btn-secondary"><i class="fa-solid fa-envelope"></i> Tin nhắn</button>
+            <span class="cp-badge">5</span>
+          </div>
+          <div class="cp-badge-container">
+            <button class="cp-btn cp-btn-secondary"><i class="fa-solid fa-bell"></i> Thông báo</button>
+            <span class="cp-badge cp-badge--primary">12</span>
+          </div>
+          <div class="cp-badge-container">
+            <button class="cp-btn cp-btn-secondary"><i class="fa-solid fa-user-doctor"></i> Trực ca</button>
+            <span class="cp-badge cp-badge--dot cp-badge--success"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. ACCORDION & TABS -->
+      <section id="accordions" class="demo-section">
+        <h2 class="demo-section__title"><i class="fa-solid fa-bars-staggered"></i> 3. Accordion & Animated Tabs</h2>
+        
+        <!-- Accordion Demo -->
+        <div style="margin-bottom: 24px;">
+          <div class="cp-accordion is-expanded">
+            <div class="cp-accordion__header">
+              <span><i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i> Triệu chứng lâm sàng chính</span>
+              <i class="fa-solid fa-chevron-down cp-accordion__icon"></i>
+            </div>
+            <div class="cp-accordion__content" style="max-height: 200px;">
+              <div class="cp-accordion__body">
+                Bệnh nhân khởi phát khó thở cấp tính, ho khạc đờm bọt hồng, tĩnh mạch cổ nổi tư thế 45 độ, rale ẩm rải rác 2 phế trường.
+              </div>
+            </div>
+          </div>
+
+          <div class="cp-accordion">
+            <div class="cp-accordion__header">
+              <span><i class="fa-solid fa-vial" style="color: var(--color-success);"></i> Xét nghiệm cận lâm sàng cần làm</span>
+              <i class="fa-solid fa-chevron-down cp-accordion__icon"></i>
+            </div>
+            <div class="cp-accordion__content">
+              <div class="cp-accordion__body">
+                - NT-proBNP / BNP máu<br>
+                - Khí máu động mạch (ABG)<br>
+                - Điện tâm đồ 12 chuyển đạo<br>
+                - X-quang ngực thẳng tại giường
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs Demo -->
+        <div class="cp-tabs">
+          <button class="cp-tab is-active" data-target="#tab-dx">Chẩn đoán</button>
+          <button class="cp-tab" data-target="#tab-rx">Phác đồ điều trị</button>
+          <button class="cp-tab" data-target="#tab-mon">Theo dõi sinh hiệu</button>
+        </div>
+
+        <div id="tab-dx" class="cp-tab-panel is-active">
+          <strong>Nội dung chẩn đoán:</strong> Theo dõi Suy tim cấp Fibrinogen (+) trên nền Suy tim mạn ESC Class III.
+        </div>
+        <div id="tab-rx" class="cp-tab-panel">
+          <strong>Nội dung điều trị:</strong> Furosemide 40mg IV tiêm chậm + Thở Oxygen qua canula 3L/phút.
+        </div>
+        <div id="tab-mon" class="cp-tab-panel">
+          <strong>Theo dõi:</strong> SpO2 mỗi 15 phút, Huyết áp & Nhịp tim mỗi 30 phút.
+        </div>
+      </section>
+
+      <!-- 4. STEPPER & PROGRESS -->
+      <section id="stepper" class="demo-section">
+        <h2 class="demo-section__title"><i class="fa-solid fa-list-check"></i> 4. Stepper & Linear Progress</h2>
+        
+        <div class="cp-stepper">
+          <div class="cp-step is-completed">
+            <div class="cp-step__circle"><i class="fa-solid fa-check"></i></div>
+            <div class="cp-step__label">Tiếp nhận</div>
+          </div>
+          <div class="cp-step is-active">
+            <div class="cp-step__circle">2</div>
+            <div class="cp-step__label">Phân loại Triage</div>
+          </div>
+          <div class="cp-step">
+            <div class="cp-step__circle">3</div>
+            <div class="cp-step__label">Xử trí ban đầu</div>
+          </div>
+          <div class="cp-step">
+            <div class="cp-step__circle">4</div>
+            <div class="cp-step__label">Nhập viện / Cho về</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <div style="display: flex; justify-content: space-between; font-size: var(--text-xs); margin-bottom: 6px;">
+            <span>Tiến trình tải dữ liệu bệnh án:</span>
+            <span>75%</span>
+          </div>
+          <div class="cp-progress-linear">
+            <div class="cp-progress-linear__bar" style="width: 75%;"></div>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <div style="font-size: var(--text-xs); margin-bottom: 6px;">Đang phân tích đồ thị y khoa (Indeterminate):</div>
+            <div class="cp-progress-linear cp-progress-linear--indeterminate">
+              <div class="cp-progress-linear__bar"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. DIALOG, SWITCH & TOOLTIPS -->
+      <section id="dialogs" class="demo-section">
+        <h2 class="demo-section__title"><i class="fa-solid fa-window-restore"></i> 5. Dialog, Switch & Tooltip</h2>
+
+        <div class="demo-row" style="margin-bottom: 20px;">
+          <button class="cp-btn cp-btn-primary cp-ripple" data-cp-dialog-target="#demoDialog">
+            <i class="fa-solid fa-folder-open"></i> Mở Hộp thoại Modal
+          </button>
+
+          <label class="cp-switch">
+            <input type="checkbox" checked>
+            <span class="cp-switch__track"><span class="cp-switch__thumb"></span></span>
+            <span style="font-size: var(--text-sm);">Bật Chế độ Cảnh báo Động</span>
+          </label>
+
+          <button class="cp-btn cp-btn-secondary" data-cp-tooltip="Liều dùng khuyến cáo: 0.5 - 1.0 mg/kg/ngày">
+            Hover để xem Tooltip
+          </button>
+        </div>
+
+        <!-- Skeleton Demo -->
+        <div>
+          <div style="font-size: var(--text-sm); font-weight: 600; margin-bottom: 8px;">Skeleton Loading State:</div>
+          <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 8px;">
+            <div class="cp-skeleton cp-skeleton--circular"></div>
+            <div style="flex: 1;">
+              <div class="cp-skeleton cp-skeleton--text" style="width: 40%;"></div>
+              <div class="cp-skeleton cp-skeleton--text" style="width: 80%;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- DEMO DIALOG MODAL -->
+  <div class="cp-dialog-backdrop" id="demoDialog">
+    <div class="cp-dialog">
+      <div class="cp-dialog__header">
+        <h3 class="cp-dialog__title"><i class="fa-solid fa-calculator" style="color: var(--color-primary);"></i> Máy tính Thang điểm SOFA</h3>
+        <button class="cp-alert__close" data-cp-dialog-close><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cp-dialog__body">
+        Thang điểm SOFA (Sequential Organ Failure Assessment) dùng để đánh giá mức độ suy cơ quan ở bệnh nhân hồi sức tích cực (ICU) hoặc nghi ngờ nhiễm khuẩn huyết.
+      </div>
+      <div class="cp-dialog__footer">
+        <button class="cp-btn cp-btn-secondary" data-cp-dialog-close>Hủy bỏ</button>
+        <button class="cp-btn cp-btn-primary" onclick="cpToast.show({title: 'SOFA Score', message: 'Đã xác nhận tính toán!', severity: 'info'}); document.getElementById('demoDialog').classList.remove('is-open');">Tính toán ngay</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../components/footer.html"></div>
+
+  <!-- JS Core & MUI Port -->
+  <script src="../js/main.js" defer></script>
+  <script src="../components/header.js" defer></script>
+  <script src="../components/footer.js" defer></script>
+  <script src="../js/mui-port.js" defer></script>
+</body>
+</html>

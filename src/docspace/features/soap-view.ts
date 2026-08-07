@@ -87,7 +87,7 @@ function highlightAlerts(text: string): string {
 }
 
 function getMasterDate(): string {
-  const today = new Date().toISOString().split('T')[0];
+  const today: string = new Date().toISOString().split('T')[0]!;
   return localStorage.getItem('dsp_soap_master_date') || today;
 }
 
@@ -128,7 +128,7 @@ function printSinglePrescription(p: SoapPatientRecord): void {
   const printArea = document.getElementById('soapPrintArea');
   if (!printArea) return;
 
-  const todayStr = p.activeDate || new Date().toISOString().split('T')[0];
+  const todayStr: string = p.activeDate || (new Date().toISOString().split('T')[0]!);
   const parts = todayStr.split('-');
   const dateStr = parts.length === 3 ? `Ngày ${parts[2]} tháng ${parts[1]} năm ${parts[0]}` : todayStr;
 
@@ -1249,14 +1249,14 @@ export function mountSoapController(profileId: string): void {
     let icdLabel = diagnosisVal;
     if (diagnosisVal.includes(' - ')) {
       const parts = diagnosisVal.split(' - ');
-      icdCode = parts[0].trim();
+      icdCode = (parts[0] || '').trim();
       icdLabel = parts.slice(1).join(' - ').trim();
     }
     const dayOfIllness = parseInt((document.getElementById('npDayOfIllness') as HTMLInputElement).value, 10) || 1;
     const demographicId = (document.getElementById('npDemographicId') as HTMLSelectElement)?.value || undefined;
 
     saveSoapPatient(profileId, {
-      demographicId,
+      ...(demographicId ? { demographicId } : {}),
       patientCode: code,
       bedNumber: bed,
       fullName: name,
@@ -1484,7 +1484,7 @@ export function mountSoapController(profileId: string): void {
     if (!p) return;
 
     await saveCase(profileId, {
-      date: new Date().toISOString().split('T')[0],
+      date: new Date().toISOString().split('T')[0]!,
       context: 'duty',
       chiefComplaint: p.sNotes || 'Theo dõi bệnh phòng',
       management: p.pPlan,

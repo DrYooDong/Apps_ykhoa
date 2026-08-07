@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light" data-header-path="../../components/header.html" data-footer-path="../../components/footer.html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Giao diện Bento Grid Dashboard Y khoa hiện đại tích hợp bộ linh kiện chỉ số sinh hiệu, bảo mật dữ liệu và đối sánh lâm sàng trong CliniPortal.">
+  <title>Dashboard Bento Y Khoa – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core CSS (Order: reset -> main -> components) -->
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components/header.css">
+  <link rel="stylesheet" href="../../css/components/footer.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../css/components/homepage-bento.css">
+  <link rel="stylesheet" href="../../css/components/bento-components.css">
+
+  <!-- Core Scripts -->
+  <script src="../../js/main.js" defer></script>
+  <script src="../../js/components/header.js" defer></script>
+  <script src="../../js/components/footer.js" defer></script>
+  <script src="../../js/components/bento-components.js" defer></script>
+</head>
+<body>
+  <!-- Dynamic Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <main class="main-content" id="main-content">
+    <div class="container" style="max-width: 1600px; margin: 0 auto; padding: 1.5rem 1rem;">
+      
+      <!-- Breadcrumb Nav -->
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb" style="margin-bottom: 1rem;">
+        <ol class="breadcrumb" style="display: flex; gap: 0.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">
+          <li><a href="../../index.html" style="color: var(--color-primary); text-decoration: none;"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+          <li><span style="margin: 0 0.3rem;">/</span></li>
+          <li><a href="hub.html" style="color: var(--color-primary); text-decoration: none;">Công cụ</a></li>
+          <li><span style="margin: 0 0.3rem;">/</span></li>
+          <li aria-current="page" style="font-weight: 600; color: var(--color-text);">Bento Dashboard Y Khoa</li>
+        </ol>
+      </nav>
+
+      <!-- Page Header Banner -->
+      <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h1 style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 800; color: var(--color-text); margin: 0 0 0.4rem 0; display: flex; align-items: center; gap: 0.6rem;">
+            <i class="fa-solid fa-hospital-user" style="color: var(--color-primary);"></i>
+            Bento Dashboard Y Khoa & IoT Preserving AI
+          </h1>
+          <p style="margin: 0; color: var(--color-text-muted); font-size: 0.95rem;">
+            Hệ thống giám sát sinh hiệu, đánh giá an toàn lâm sàng & đối sánh thuật toán y tế theo thời gian thực.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <span class="bento-trend-badge success"><i class="fa-solid fa-shield-halved"></i> HIPAA Verified</span>
+          <span class="bento-trend-badge info"><i class="fa-solid fa-wifi"></i> IoT Nodes Active</span>
+        </div>
+      </div>
+
+      <!-- MAIN UNIFIED BENTO GRID -->
+      <div class="bento-homepage">
+        
+        <!-- CELL 1: CLINICAL KPI SUMMARY GRID (Span 12 cols) -->
+        <div class="bento-cell" style="grid-column: 1 / -1; padding: 1rem;">
+          <div class="bento-cell-header" style="padding: 0 0 0.75rem 0; border-bottom: 1px solid var(--color-border); background: transparent;">
+            <h2 class="bento-cell-title">
+              <i class="fa-solid fa-heart-pulse"></i>
+              Chỉ Số Sinh Hiệu & Thang Điểm Cảnh Báo Lâm Sàng (Vitals & Risk Score)
+            </h2>
+            <span style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: 600;">Cập nhật: Vừa xong</span>
+          </div>
+
+          <div class="bento-kpi-grid" style="margin-top: 0.85rem;">
+            
+            <!-- KPI 1: Nhịp tim -->
+            <div class="bento-kpi-card">
+              <div class="bento-kpi-header">
+                <span class="bento-kpi-label">Nhịp Tim (HR)</span>
+                <div class="bento-kpi-icon" style="background: rgba(239,68,68,0.1); color: var(--color-danger);">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+              </div>
+              <div class="bento-kpi-body">
+                <div>
+                  <span class="bento-kpi-value">74</span>
+                  <span class="bento-kpi-unit">bpm</span>
+                </div>
+                <span class="bento-trend-badge success"><i class="fa-solid fa-arrow-down"></i> Ổn định</span>
+              </div>
+            </div>
+
+            <!-- KPI 2: Huyết áp -->
+            <div class="bento-kpi-card">
+              <div class="bento-kpi-header">
+                <span class="bento-kpi-label">Huyết Áp (BP)</span>
+                <div class="bento-kpi-icon">
+                  <i class="fa-solid fa-gauge-high"></i>
+                </div>
+              </div>
+              <div class="bento-kpi-body">
+                <div>
+                  <span class="bento-kpi-value">120/80</span>
+                  <span class="bento-kpi-unit">mmHg</span>
+                </div>
+                <span class="bento-trend-badge success"><i class="fa-solid fa-check"></i> Bình thường</span>
+              </div>
+            </div>
+
+            <!-- KPI 3: SpO2 -->
+            <div class="bento-kpi-card">
+              <div class="bento-kpi-header">
+                <span class="bento-kpi-label">Độ Bão Hòa O2</span>
+                <div class="bento-kpi-icon" style="background: rgba(6,182,212,0.1); color: var(--color-info);">
+                  <i class="fa-solid fa-lungs"></i>
+                </div>
+              </div>
+              <div class="bento-kpi-body">
+                <div>
+                  <span class="bento-kpi-value">98</span>
+                  <span class="bento-kpi-unit">%</span>
+                </div>
+                <span class="bento-trend-badge success"><i class="fa-solid fa-arrow-up"></i> Tốt</span>
+              </div>
+            </div>
+
+            <!-- KPI 4: Thang điểm NEWS2 -->
+            <div class="bento-kpi-card">
+              <div class="bento-kpi-header">
+                <span class="bento-kpi-label">Điểm NEWS2</span>
+                <div class="bento-kpi-icon" style="background: rgba(245,158,11,0.1); color: var(--color-warning);">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+              </div>
+              <div class="bento-kpi-body">
+                <div>
+                  <span class="bento-kpi-value">1</span>
+                  <span class="bento-kpi-unit">điểm</span>
+                </div>
+                <span class="bento-trend-badge warning">Nguy cơ thấp</span>
+              </div>
+            </div>
+
+            <!-- KPI 5: Tiết kiệm băng thông IoT -->
+            <div class="bento-kpi-card">
+              <div class="bento-kpi-header">
+                <span class="bento-kpi-label">Nén Băng Thông</span>
+                <div class="bento-kpi-icon" style="background: rgba(16,185,129,0.1); color: var(--color-success);">
+                  <i class="fa-solid fa-compress"></i>
+                </div>
+              </div>
+              <div class="bento-kpi-body">
+                <div>
+                  <span class="bento-kpi-value">75</span>
+                  <span class="bento-kpi-unit">%</span>
+                </div>
+                <span class="bento-trend-badge info">Quantized 8-bit</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- CELL 2: CLINICAL SAFETY & PRIVACY GAUGE (Span 5 cols) -->
+        <div class="bento-cell" style="grid-column: span 5;">
+          <div class="bento-cell-header">
+            <h2 class="bento-cell-title">
+              <i class="fa-solid fa-shield-virus"></i>
+              Mức Độ An Toàn Lâm Sàng & Privacy Budget (ε)
+            </h2>
+          </div>
+          <div class="bento-gauge-container">
+            <svg class="bento-gauge-svg" id="safety-gauge" viewBox="0 0 200 120" data-value="88">
+              <!-- Background Arc -->
+              <path class="gauge-bg-arc" d="M 30,100 A 70,70 0 0,1 170,100" />
+              <!-- Value Arc -->
+              <path class="gauge-value-arc" d="M 30,100 A 70,70 0 0,1 170,100" />
+              <!-- Center Text -->
+              <g class="gauge-center-text" transform="translate(100, 85)">
+                <text class="gauge-val-num">88%</text>
+                <text class="gauge-val-label" y="20">Chỉ số An toàn AI (DP ε=2.4)</text>
+              </g>
+            </svg>
+
+            <div class="bento-gauge-controls">
+              <div class="bento-slider-wrapper">
+                <label for="privacy-range">Ngưỡng ε:</label>
+                <input type="range" id="privacy-range" class="bento-range-input" min="10" max="100" value="88" data-target-gauge="safety-gauge">
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-primary); min-width: 35px; text-align: right;">Dynamic</span>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0.2rem 0 0 0; text-align: center;">
+                <i class="fa-solid fa-circle-info"></i> Tự động điều chỉnh nhiễu Gaussian để cân bằng giữa tính riêng tư dữ liệu và độ chính xác chẩn đoán.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CELL 3: HOSPITAL & IoT NODE NETWORK STATUS (Span 7 cols) -->
+        <div class="bento-cell" style="grid-column: span 7;">
+          <div class="bento-cell-header">
+            <h2 class="bento-cell-title">
+              <i class="fa-solid fa-network-wired"></i>
+              Trạng Thái Mạng Lưới Khoa Phòng & Thiết Bị IoT Edge
+            </h2>
+            <span class="bento-trend-badge success"><i class="fa-solid fa-signal"></i> 6/6 Online</span>
+          </div>
+          <div style="padding: 1rem;">
+            <p style="font-size: 0.82rem; color: var(--color-text-muted); margin: 0 0 0.75rem 0;">
+              Mô hình Federated Learning thu thập gradient tại chỗ từ từng phân khu y tế mà không truyền dữ liệu thô bệnh nhân ra ngoài:
+            </p>
+            <div class="bento-node-grid">
+              
+              <!-- Node 1 -->
+              <div class="bento-node-card">
+                <div class="pulse-dot active"></div>
+                <div class="bento-node-info">
+                  <span class="bento-node-name">Khoa Cấp Cứu</span>
+                  <span class="bento-node-sub" data-type="vitals">HR: 82 bpm</span>
+                </div>
+              </div>
+
+              <!-- Node 2 -->
+              <div class="bento-node-card">
+                <div class="pulse-dot active"></div>
+                <div class="bento-node-info">
+                  <span class="bento-node-name">Phòng ICU 01</span>
+                  <span class="bento-node-sub" data-type="vitals">HR: 76 bpm</span>
+                </div>
+              </div>
+
+              <!-- Node 3 -->
+              <div class="bento-node-card">
+                <div class="pulse-dot warning"></div>
+                <div class="bento-node-info">
+                  <span class="bento-node-name">Khoa Tim Mạch</span>
+                  <span class="bento-node-sub" data-type="vitals">HR: 94 bpm</span>
+                </div>
+              </div>
+
+              <!-- Node 4 -->
+              <div class="bento-node-card">
+                <div class="pulse-dot active"></div>
+                <div class="bento-node-info">
+                  <span class="bento-node-name">Thiết bị Đeo #104</span>
+                  <span class="bento-node-sub" data-type="vitals">HR: 70 bpm</span>
+                </div>
+              </div>
+
+              <!-- Node 5 -->
+              <div class="bento-node-card">
+                <div class="pulse-dot active"></div>
+                <div class="bento-node-info">
+                  <span class="bento-node-name">Phòng Xét Nghiệm</span>
+                  <span class="bento-node-sub">Mẫu đã xử lý</span>
+                </div>
+              </div>
+
+              <!-- Node 6 -->
+              <div class="bento-node-card">
+                <div class="pulse-dot active"></div>
+                <div class="bento-node-info">
+                  <span class="bento-node-name">Thiết bị Đeo #208</span>
+                  <span class="bento-node-sub" data-type="vitals">HR: 68 bpm</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- CELL 4: COMPARISON MATRIX (Span 12 cols) -->
+        <div class="bento-cell" style="grid-column: 1 / -1;">
+          <div class="bento-cell-header">
+            <h2 class="bento-cell-title">
+              <i class="fa-solid fa-table-cells"></i>
+              Bảng Đánh Giá Đối Sánh Các Thuật Toán Y Khoa & Bảo Mật (Comparison Matrix)
+            </h2>
+            <div style="display: flex; gap: 0.4rem;">
+              <button class="bento-matrix-btn active" data-filter="all" style="padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 0.75rem; font-weight: 600; cursor: pointer;">Tất cả</button>
+              <button class="bento-matrix-btn" data-filter="personalized" style="padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 0.75rem; font-weight: 600; cursor: pointer;">Cá nhân hóa</button>
+              <button class="bento-matrix-btn" data-filter="privacy" style="padding: 0.25rem 0.6rem; border-radius: 4px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); font-size: 0.75rem; font-weight: 600; cursor: pointer;">Bảo mật DP</button>
+            </div>
+          </div>
+          <div style="padding: 1rem;" class="bento-matrix-wrapper">
+            <table class="bento-comparison-table">
+              <thead>
+                <tr>
+                  <th>Phương Pháp / Thuật Toán</th>
+                  <th>Cá Nhân Hóa (MAML)</th>
+                  <th>Bảo Mật DP (ε, δ)</th>
+                  <th>Mã Hóa Đồng Hình</th>
+                  <th>Nén Quantization</th>
+                  <th>Lựa Chọn Thích Ứng</th>
+                  <th>Độ Chính Xác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-personalized="false" data-dp="false">
+                  <td><strong>FedAvg</strong> Baseline</td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Khung chung</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Không</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Không</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Float32</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Ngẫu nhiên</span></td>
+                  <td><strong>89.1%</strong></td>
+                </tr>
+                <tr data-personalized="false" data-dp="false">
+                  <td><strong>FedProx</strong></td>
+                  <td><span class="bento-chip sim"><i class="fa-solid fa-minus"></i> Hạn chế</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Không</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Không</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Float32</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Ngẫu nhiên</span></td>
+                  <td>85.4%</td>
+                </tr>
+                <tr data-personalized="true" data-dp="false">
+                  <td><strong>Per-FedAvg</strong></td>
+                  <td><span class="bento-chip yes"><i class="fa-solid fa-check"></i> Có (MAML)</span></td>
+                  <td><span class="bento-chip sim"><i class="fa-solid fa-minus"></i> Tối thiểu</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Không</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Float32</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Ngẫu nhiên</span></td>
+                  <td>87.8%</td>
+                </tr>
+                <tr data-personalized="true" data-dp="true">
+                  <td><strong>pFedMe</strong></td>
+                  <td><span class="bento-chip yes"><i class="fa-solid fa-check"></i> Có</span></td>
+                  <td><span class="bento-chip yes"><i class="fa-solid fa-check"></i> Có (DP)</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Không</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Float32</span></td>
+                  <td><span class="bento-chip no"><i class="fa-solid fa-xmark"></i> Ngẫu nhiên</span></td>
+                  <td>86.2%</td>
+                </tr>
+                <tr class="highlight-row" data-personalized="true" data-dp="true">
+                  <td><strong><i class="fa-solid fa-star" style="color: var(--color-warning);"></i> PFL-HCare (Đề xuất)</strong></td>
+                  <td><span class="bento-chip yes"><i class="fa-solid fa-check"></i> Có (MAML)</span></td>
+                  <td><span class="bento-chip yes"><i class="fa-solid fa-check"></i> Có (DP-RDP)</span></td>
+                  <td><span class="bento-chip sim"><i class="fa-solid fa-lock"></i> Mã hóa Homomorphic</span></td>
+                  <td><span class="bento-chip yes"><i class="fa-solid fa-check"></i> k-Bit (Nén 75%)</span></td>
+                  <td><span class="bento-chip yes"><i class="fa-solid fa-check"></i> Grad-Norm</span></td>
+                  <td><strong>88.5% (Tối ưu)</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div> <!-- /bento-homepage -->
+
+    </div>
+  </main>
+
+  <!-- Dynamic Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+</body>
+</html>

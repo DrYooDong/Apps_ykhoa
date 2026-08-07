@@ -43,6 +43,262 @@
       return { emoji: '🌙', text: 'Chào khuya, Bác sĩ!' };
     }
 
+    function updateDayScoreBadge(now) {
+      if (!window.GoodDayCalculator) return;
+      const scoreBtn = document.getElementById('heroDayScoreBtn');
+      const valEl = document.getElementById('heroDayScoreVal');
+      const textEl = document.getElementById('heroDayScoreText');
+      const iconEl = document.getElementById('heroDayScoreIcon');
+      if (!scoreBtn || !valEl || !textEl) return;
+
+      const evalData = window.GoodDayCalculator.evaluateDayScore(now);
+      valEl.textContent = `${evalData.total}/100`;
+      textEl.textContent = evalData.rating;
+      if (iconEl) iconEl.textContent = evalData.icon;
+
+      scoreBtn.className = `hero-day-score-badge ${evalData.badgeClass}`;
+      scoreBtn.setAttribute('data-score', evalData.total);
+    }
+
+    function openDayScoreModal() {
+      if (!window.GoodDayCalculator) return;
+      const evalData = window.GoodDayCalculator.evaluateDayScore(new Date());
+      const doc = evalData.docProfile;
+
+      // Remove existing modal if any
+      const existing = document.getElementById('dayScoreModalOverlay');
+      if (existing) existing.remove();
+
+      const modalHtml = `
+        <div class="day-score-modal-overlay" id="dayScoreModalOverlay">
+          <div class="day-score-modal-card animate-pop-in">
+            <div class="modal-card-header">
+              <div class="header-title-group">
+                <span class="modal-badge-tag">☯ CHI TIẾT CHỈ SỐ NGÀY TỐT</span>
+                <h3>Phân Tích Nhật Hạn & Cát Hung Lâm Sàng</h3>
+              </div>
+              <button class="modal-close-btn" id="closeDayScoreModal">&times;</button>
+            </div>
+
+            <div class="modal-card-body">
+              <!-- Top Score Summary Banner -->
+              <div class="score-summary-banner ${evalData.badgeClass}">
+                <div class="score-gauge-wrap">
+                  <svg class="score-gauge-svg" viewBox="0 0 100 100">
+                    <circle class="gauge-bg" cx="50" cy="50" r="42" />
+                    <circle class="gauge-bar" cx="50" cy="50" r="42" style="stroke-dasharray: 264; stroke-dashoffset: ${264 - (264 * evalData.total) / 100};" />
+                  </svg>
+                  <div class="score-gauge-val">
+                    <span class="gauge-num">${evalData.total}</span>
+                    <span class="gauge-sub">/100</span>
+                  </div>
+                </div>
+                <div class="score-summary-info">
+                  <div class="rating-badge-pill">${evalData.icon} ${evalData.rating}</div>
+                  <h4>Ngày ${evalData.canChiDay} (Âm lịch: ${evalData.lunarDay}/${evalData.lunarMonth})</h4>
+                  <p>Phù hợp thực hiện các ca phẫu thuật, hội chẩn quan trọng hoặc ký kết hợp đồng y tế.</p>
+                  <div class="doc-profile-chip">
+                    <span>👨‍⚕️ <strong>${doc.name || 'Bác sĩ'}</strong> (${doc.gender || 'Nam'}) — Tuổi ${doc.canNam} ${doc.chiNam} (${doc.birthDay}/${doc.birthMonth}/${doc.birthYear} lúc ${doc.birthHour}h${doc.birthMinute}p) — Mệnh ${doc.hanhMenh}</span>
+                    <button type="button" class="btn-config-doc-age" id="btnEditDocAge">⚙️ Cập nhật Hồ sơ Sinh</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Đổi Hồ Sơ Sinh Đầy Đủ Bác Sĩ (hidden by default) -->
+              <div class="doc-age-edit-box" id="docAgeEditBox" style="display:none;">
+                <label style="font-weight:700; font-size:0.82rem; margin-bottom:0.4rem; display:block; color:var(--color-primary);">⚙️ Cấu Hình Hồ Sơ Sinh Cá Nhân Hóa (Bát Tự & Tử Vi):</label>
+                <div class="edit-profile-grid">
+                  <div>
+                    <span style="font-size:0.72rem; color:var(--color-text-muted);">Họ & Tên Bác sĩ:</span>
+                    <input type="text" id="inputDocName" value="${doc.name || 'Bác sĩ'}" class="input-age-num" style="width:100%;">
+                  </div>
+                  <div>
+                    <span style="font-size:0.72rem; color:var(--color-text-muted);">Giới tính:</span>
+                    <select id="selectDocGender" class="select-age-hanh" style="width:100%;">
+                      <option value="Nam" ${doc.gender === 'Nam' ? 'selected' : ''}>♂️ Nam</option>
+                      <option value="Nữ" ${doc.gender === 'Nữ' ? 'selected' : ''}>♀️ Nữ</option>
+                    </select>
+                  </div>
+                  <div>
+                    <span style="font-size:0.72rem; color:var(--color-text-muted);">Ngày sinh:</span>
+                    <input type="number" id="inputDocDay" min="1" max="31" value="${doc.birthDay || 15}" class="input-age-num" style="width:100%;">
+                  </div>
+                  <div>
+                    <span style="font-size:0.72rem; color:var(--color-text-muted);">Tháng sinh:</span>
+                    <input type="number" id="inputDocMonth" min="1" max="12" value="${doc.birthMonth || 8}" class="input-age-num" style="width:100%;">
+                  </div>
+                  <div>
+                    <span style="font-size:0.72rem; color:var(--color-text-muted);">Năm sinh:</span>
+                    <input type="number" id="inputDocYear" min="1930" max="2020" value="${doc.birthYear || 1990}" class="input-age-num" style="width:100%;">
+                  </div>
+                  <div>
+                    <span style="font-size:0.72rem; color:var(--color-text-muted);">Giờ sinh (0-23h):</span>
+                    <input type="number" id="inputDocHour" min="0" max="23" value="${doc.birthHour || 8}" class="input-age-num" style="width:100%;">
+                  </div>
+                  <div>
+                    <span style="font-size:0.72rem; color:var(--color-text-muted);">Phút sinh:</span>
+                    <input type="number" id="inputDocMin" min="0" max="59" value="${doc.birthMinute || 0}" class="input-age-num" style="width:100%;">
+                  </div>
+                  <div>
+                    <span style="font-size:0.72rem; color:var(--color-text-muted);">Ngũ Hành Bản Mệnh:</span>
+                    <select id="selectDocHanhMenh" class="select-age-hanh" style="width:100%;">
+                      <option value="Kim" ${doc.hanhMenh === 'Kim' ? 'selected' : ''}>Mệnh Kim ⚙️</option>
+                      <option value="Mộc" ${doc.hanhMenh === 'Mộc' ? 'selected' : ''}>Mệnh Mộc 🌿</option>
+                      <option value="Thủy" ${doc.hanhMenh === 'Thủy' ? 'selected' : ''}>Mệnh Thủy 🌊</option>
+                      <option value="Hỏa" ${doc.hanhMenh === 'Hỏa' ? 'selected' : ''}>Mệnh Hỏa 🔥</option>
+                      <option value="Thổ" ${doc.hanhMenh === 'Thổ' ? 'selected' : ''}>Mệnh Thổ 🏔️</option>
+                    </select>
+                  </div>
+                </div>
+                <div style="margin-top:0.6rem; text-align:right;">
+                  <button type="button" class="btn-save-doc-age" id="btnSaveDocAge">💾 Lưu Hồ Sơ Sinh & Tính Lại</button>
+                </div>
+              </div>
+
+              <!-- Medical Biorhythms Summary -->
+              ${evalData.bio ? `
+                <div class="biorhythm-summary-box">
+                  <div class="bio-box-header">
+                    <strong><i class="fa-solid fa-heart-pulse" style="color:#ef4444;"></i> Nhịp Sinh Học Y Khoa (Biorhythms Hôm Nay):</strong>
+                    <span class="bio-days-tag">${evalData.bio.daysLived} ngày tuổi</span>
+                  </div>
+                  <div class="bio-bars-grid">
+                    <div class="bio-bar-item">
+                      <span>💪 Thể lực: <strong>${evalData.bio.physical}%</strong></span>
+                      <div class="bio-progress-bg"><div class="bio-progress-fill" style="width:${Math.max(10, (evalData.bio.physical + 100)/2)}%; background:#10b981;"></div></div>
+                    </div>
+                    <div class="bio-bar-item">
+                      <span>❤️ Cảm xúc: <strong>${evalData.bio.emotional}%</strong></span>
+                      <div class="bio-progress-bg"><div class="bio-progress-fill" style="width:${Math.max(10, (evalData.bio.emotional + 100)/2)}%; background:#0284c7;"></div></div>
+                    </div>
+                    <div class="bio-bar-item">
+                      <span>🧠 Trí tuệ: <strong>${evalData.bio.intellectual}%</strong></span>
+                      <div class="bio-progress-bg"><div class="bio-progress-fill" style="width:${Math.max(10, (evalData.bio.intellectual + 100)/2)}%; background:#8b5cf6;"></div></div>
+                    </div>
+                  </div>
+                </div>
+              ` : ''}
+
+              <!-- Breakdown Grid -->
+              <div class="score-breakdown-grid">
+                <div class="breakdown-card">
+                  <div class="bd-icon">👑</div>
+                  <div class="bd-content">
+                    <h5>Can Ngày vs Can Tuổi</h5>
+                    <p>${evalData.b1.text}</p>
+                    <span class="score-tag ${evalData.b1.score >= 30 ? 'pos' : 'neg'}">${evalData.b1.score >= 0 ? '+' : ''}${evalData.b1.score}đ</span>
+                  </div>
+                </div>
+
+                <div class="breakdown-card">
+                  <div class="bd-icon">☯</div>
+                  <div class="bd-content">
+                    <h5>Giao thoa Can Chi Ngày</h5>
+                    <p>${evalData.canChiNgayScore.text}</p>
+                    <span class="score-tag ${evalData.canChiNgayScore.score >= 0 ? 'pos' : 'neg'}">${evalData.canChiNgayScore.score >= 0 ? '+' : ''}${evalData.canChiNgayScore.score}đ</span>
+                  </div>
+                </div>
+
+                <div class="breakdown-card">
+                  <div class="bd-icon">🔮</div>
+                  <div class="bd-content">
+                    <h5>Tương sinh Ngũ Hành</h5>
+                    <p>${evalData.b3.detail.join(', ') || 'Đồng hành bình hòa'}</p>
+                    <span class="score-tag pos">+${evalData.b3.point}đ</span>
+                  </div>
+                </div>
+
+                <div class="breakdown-card">
+                  <div class="bd-icon">⚡</div>
+                  <div class="bd-content">
+                    <h5>Lục Xung Tuổi Bác sĩ</h5>
+                    <p>${evalData.lucXung.text}</p>
+                    <span class="score-tag ${evalData.lucXung.score < 0 ? 'neg' : 'neutral'}">${evalData.lucXung.score}đ</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cảnh báo Ngày Xấu nếu có -->
+              ${evalData.b4.errors.length > 0 ? `
+                <div class="bad-day-alert">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <div>
+                    <strong>Cần lưu ý ngày này:</strong>
+                    <ul>${evalData.b4.errors.map(err => `<li>${err}</li>`).join('')}</ul>
+                  </div>
+                </div>
+              ` : ''}
+
+              <!-- Giờ Hoàng Đạo Section -->
+              <div class="hoang-dao-section">
+                <h4><i class="fa-solid fa-sun" style="color:#f59e0b;"></i> Các Giờ Hoàng Đạo Trong Ngày (Cát Giờ):</h4>
+                <div class="hoang-dao-pills">
+                  ${evalData.hoangDaoHours.map(h => `<span class="hd-pill"><i class="fa-regular fa-clock"></i> ${h}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-card-footer">
+              <span class="footer-hint"><i class="fa-solid fa-shield-halved"></i> Chỉ số được tính theo Tử vi Bát tự & Âm dương ngũ hành y khoa</span>
+              <button class="btn btn-primary btn-sm" id="btnCloseDayScoreModalBottom">Đóng</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+      const overlay = document.getElementById('dayScoreModalOverlay');
+      const closeBtn = document.getElementById('closeDayScoreModal');
+      const closeBottom = document.getElementById('btnCloseDayScoreModalBottom');
+      const btnEditAge = document.getElementById('btnEditDocAge');
+      const editBox = document.getElementById('docAgeEditBox');
+      const btnSaveAge = document.getElementById('btnSaveDocAge');
+
+      const closeModal = () => overlay && overlay.remove();
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (closeBottom) closeBottom.addEventListener('click', closeModal);
+      if (overlay) {
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeModal();
+        });
+      }
+
+      if (btnEditAge && editBox) {
+        btnEditAge.addEventListener('click', () => {
+          editBox.style.display = editBox.style.display === 'none' ? 'block' : 'none';
+        });
+      }
+
+      if (btnSaveAge) {
+        btnSaveAge.addEventListener('click', () => {
+          const name = document.getElementById('inputDocName').value.trim() || 'Bác sĩ';
+          const gender = document.getElementById('selectDocGender').value || 'Nam';
+          const d = parseInt(document.getElementById('inputDocDay').value, 10) || 15;
+          const m = parseInt(document.getElementById('inputDocMonth').value, 10) || 8;
+          const y = parseInt(document.getElementById('inputDocYear').value, 10) || 1990;
+          const hr = parseInt(document.getElementById('inputDocHour').value, 10) || 8;
+          const min = parseInt(document.getElementById('inputDocMin').value, 10) || 0;
+          const h = document.getElementById('selectDocHanhMenh').value || 'Thổ';
+
+          window.GoodDayCalculator.saveDoctorProfile({
+            name,
+            gender,
+            birthDay: d,
+            birthMonth: m,
+            birthYear: y,
+            birthHour: hr,
+            birthMinute: min,
+            hanhMenh: h
+          });
+
+          closeModal();
+          updateDayScoreBadge(new Date());
+          openDayScoreModal(); // reopen with new full profile score
+        });
+      }
+    }
+
     function tick() {
       const now = new Date();
       const h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
@@ -55,6 +311,14 @@
         const g = getGreeting(h);
         greetEl.innerHTML = `<span>${g.emoji}</span> ${escapeHtml(g.text)}`;
       }
+
+      updateDayScoreBadge(now);
+    }
+
+    // Attach click listener for Day Score Badge
+    const scoreBtn = document.getElementById('heroDayScoreBtn');
+    if (scoreBtn) {
+      scoreBtn.addEventListener('click', openDayScoreModal);
     }
 
     tick();

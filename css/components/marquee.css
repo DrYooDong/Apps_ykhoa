@@ -1,0 +1,51 @@
+/* ============================================================
+   MARQUEE COMPONENT — Mantine v9 Inspired
+   Thông báo tin tức / Guideline cập nhật cuộn mượt
+============================================================ */
+
+.marquee-banner {
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--color-primary-hl);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.35rem 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+  animation: marquee-scroll 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-banner:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.marquee-item i {
+  font-size: 0.85em;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

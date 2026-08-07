@@ -38,42 +38,42 @@ export function parseVitals(text: string): ExtractedVitals {
 
   // 1. Huyết áp (HA / BP): VD "HA: 120/80", "ha 90/60", "bp 130/80"
   const bpMatch = normalized.match(/(?:ha|huyết áp|bp)\s*[:=]?\s*(\d{2,3})\s*[\/\\]\s*(\d{2,3})/i);
-  if (bpMatch) {
+  if (bpMatch && bpMatch[1] && bpMatch[2]) {
     vitals.sbp = parseInt(bpMatch[1], 10);
     vitals.dbp = parseInt(bpMatch[2], 10);
   }
 
   // 2. Mạch (M / HR / Pulse): VD "M: 90", "Mạch 100", "hr 85"
   const hrMatch = normalized.match(/(?:mạch|m|hr|pulse)\s*[:=]?\s*(\d{2,3})\s*(?:l\/p|lần\/phút|bpm)?/i);
-  if (hrMatch) {
+  if (hrMatch && hrMatch[1]) {
     const val = parseInt(hrMatch[1], 10);
     if (val >= 30 && val <= 250) vitals.hr = val;
   }
 
   // 3. Nhịp thở (NT / RR): VD "NT: 24", "nhịp thở 22", "rr 20"
   const rrMatch = normalized.match(/(?:nhịp thở|nt|rr)\s*[:=]?\s*(\d{1,2})\s*(?:l\/p|lần\/phút)?/i);
-  if (rrMatch) {
+  if (rrMatch && rrMatch[1]) {
     const val = parseInt(rrMatch[1], 10);
     if (val >= 5 && val <= 60) vitals.rr = val;
   }
 
   // 4. Nhiệt độ (NĐ / Temp / T): VD "T: 38.5", "nhiệt độ 39", "temp 37.5"
   const tempMatch = normalized.match(/(?:nhiệt độ|nđ|temp|t)\s*[:=]?\s*(\d{2}(?:\.\d)?)\s*°?c?/i);
-  if (tempMatch) {
+  if (tempMatch && tempMatch[1]) {
     const val = parseFloat(tempMatch[1]);
     if (val >= 30 && val <= 45) vitals.temp = val;
   }
 
   // 5. SpO2: VD "spo2 94%", "spo2: 98"
   const spo2Match = normalized.match(/spo2?\s*[:=]?\s*(\d{2,3})\s*%?/i);
-  if (spo2Match) {
+  if (spo2Match && spo2Match[1]) {
     const val = parseInt(spo2Match[1], 10);
     if (val >= 50 && val <= 100) vitals.spo2 = val;
   }
 
   // 6. GCS (Glasgow): VD "gcs: 14", "glasgow 13"
   const gcsMatch = normalized.match(/(?:gcs|glasgow)\s*[:=]?\s*(\d{1,2})/i);
-  if (gcsMatch) {
+  if (gcsMatch && gcsMatch[1]) {
     const val = parseInt(gcsMatch[1], 10);
     if (val >= 3 && val <= 15) {
       vitals.gcs = val;
@@ -91,13 +91,13 @@ export function parseVitals(text: string): ExtractedVitals {
 
   // 8. Bạch cầu (WBC): VD "wbc 14.5", "bạch cầu 15"
   const wbcMatch = normalized.match(/(?:wbc|bạch cầu)\s*[:=]?\s*(\d{1,2}(?:\.\d)?)/i);
-  if (wbcMatch) {
+  if (wbcMatch && wbcMatch[1]) {
     vitals.wbc = parseFloat(wbcMatch[1]);
   }
 
   // 9. Ure máu: VD "ure 8.5", "urea 9"
   const ureaMatch = normalized.match(/(?:urea|ure)\s*[:=]?\s*(\d{1,2}(?:\.\d)?)/i);
-  if (ureaMatch) {
+  if (ureaMatch && ureaMatch[1]) {
     vitals.urea = parseFloat(ureaMatch[1]);
   }
 

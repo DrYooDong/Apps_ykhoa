@@ -17,6 +17,8 @@
 
     <link rel="stylesheet" href="../../../../css/reset.css">
     <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/data-list.css">
+    <link rel="stylesheet" href="../../../../css/components/scroller.css">
     <link rel="stylesheet" href="../../../../css/components/header.css">
     <link rel="stylesheet" href="../../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../../css/components/footer.css">
@@ -537,29 +539,33 @@
                 <div class="panel sticky-panel">
                     <div class="panel-title"><span>📊 Kết quả Tính toán & Phân tầng</span></div>
 
-                    <div class="result-box">
-                        <h4>
-                            <span>Độ thanh thải Creatinine (Cockcroft-Gault)</span>
-                            <span id="out-cg-val" class="big-number">-</span>
-                        </h4>
-                        <div class="sub-text">
-                            <strong>Trọng lượng áp dụng:</strong> <span id="out-weight-type">-</span> (<span
-                                id="out-weight-val">-</span> kg)<br>
-                            <span id="out-weight-reason" style="color: #059669;">-</span>
+                    <!-- DATALIST COMPONENT SUMMARY -->
+                    <dl class="data-list data-list--grid" style="margin-bottom: 1.5rem;">
+                        <div class="data-list__item data-list__item--info">
+                            <dt class="data-list__label">Cockcroft-Gault (CrCl)</dt>
+                            <dd class="data-list__value"><span id="out-cg-val">-</span> <span class="data-list__unit">mL/min</span></dd>
                         </div>
-                    </div>
+                        <div class="data-list__item data-list__item--info">
+                            <dt class="data-list__label">CKD-EPI (eGFR)</dt>
+                            <dd class="data-list__value"><span id="out-epi-val">-</span> <span class="data-list__unit">mL/min/1.73m²</span></dd>
+                        </div>
+                        <div class="data-list__item">
+                            <dt class="data-list__label">eGFR Tuyệt đối</dt>
+                            <dd class="data-list__value"><span id="out-epi-abs">-</span> <span class="data-list__unit">mL/min</span></dd>
+                        </div>
+                        <div class="data-list__item">
+                            <dt class="data-list__label">Diện tích cơ thể (BSA)</dt>
+                            <dd class="data-list__value"><span id="out-bsa">-</span> <span class="data-list__unit">m²</span></dd>
+                        </div>
+                    </dl>
 
-                    <div class="result-box" style="border-left-color: #8b5cf6;">
+                    <div class="result-box" style="border-left-color: var(--color-primary);">
                         <h4>
-                            <span>Mức lọc cầu thận (CKD-EPI 2021)</span>
-                            <span id="out-epi-val" class="big-number" style="color: #8b5cf6;">-</span>
+                            <span>Chi tiết Cân nặng & Phác đồ Chỉnh liều:</span>
                         </h4>
                         <div class="sub-text">
-                            Đơn vị chuẩn: mL/min/1.73m² (Dùng để phân độ CKD).<br>
-                            <strong>eGFR tuyệt đối (Khử BSA):</strong> <span id="out-epi-abs"
-                                style="font-weight: 700; color: var(--text-main);">-</span> mL/min. <br>
-                            <em>*Khuyến cáo dùng eGFR tuyệt đối hoặc CrCl để chỉnh liều thuốc ở bệnh nhân có thể trạng
-                                bất thường (BSA = <span id="out-bsa">-</span> m²).</em>
+                            Cân nặng sử dụng: <strong id="out-weight-type">-</strong> (<span id="out-weight-val">-</span> kg).<br>
+                            Lý do: <span id="out-weight-reason" style="color: var(--color-success);">-</span>
                         </div>
                     </div>
 
@@ -822,6 +828,40 @@
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
   <script src="../../../../js/main.js" defer></script>
+  <script type="module">
+    import { initAutoInputMasks } from '../../../../js/utils/input-mask.js';
+    import { FloatingWindow } from '../../../../js/components/floating-window.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initAutoInputMasks();
+
+      // Nút mở Cửa sổ Nổi máy tính Y khoa thử nghiệm
+      const heroIntro = document.querySelector('.hero-intro');
+      if (heroIntro) {
+        const floatBtn = document.createElement('button');
+        floatBtn.className = 'calendar-btn';
+        floatBtn.style.marginTop = '0.5rem';
+        floatBtn.innerHTML = '<i class="fa-solid fa-window-restore"></i> Mở Cửa Sổ Nổi Tra Cứu';
+        floatBtn.onclick = () => {
+          new FloatingWindow({
+            title: 'Hỗ Trợ Chỉnh Liều Thuốc Thận',
+            content: `
+              <div style="font-size: 0.85rem; line-height: 1.5;">
+                <p><strong>Khuyến cáo KDIGO 2026:</strong></p>
+                <ul>
+                  <li>eGFR < 30 mL/min: Giảm 50% liều Metformin.</li>
+                  <li>eGFR < 15 mL/min: Chống chỉ định hoàn toàn Metformin.</li>
+                </ul>
+              </div>
+            `,
+            width: 320,
+            height: 220
+          });
+        };
+        heroIntro.appendChild(floatBtn);
+      }
+    });
+  </script>
   <script>
     // CLINICAL BRIDGE AUTO-FILL
     (function initDocspaceAutoFill() {

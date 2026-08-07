@@ -60,6 +60,13 @@
 | `components/header.css` | Styling header nav | Mọi trang |
 | `components/sidebar.css` | Styling sidebar accordion | Mọi trang có sidebar |
 | `components/footer.css` | Styling footer | Mọi trang |
+| `components/data-list.css` | Component DataList chuẩn HTML Semantic (<dl>, <dt>, <dd>) cho thông số y khoa | `index.html` & các trang Công cụ |
+| `components/scroller.css` | Thanh cuộn Custom Scroller mượt mà cho Sidebar, Code block & Table | Mọi trang |
+| `components/marquee.css` | Thanh Marquee Announcement Banner cuộn tin tức & Guideline y khoa | `index.html` |
+| `components/floating-window.css` | Styling cửa sổ nổi tương tác kéo thả & thu nhỏ (FloatingWindow) | Các trang Công cụ / Tra cứu |
+| `components/overflow-list.css` | Styling bộ thu gọn menu điều hướng bị tràn (OverflowList) | Navigation bars |
+| `components/clinical-calendar.css` | Styling Lịch lâm sàng, ca bệnh & nhắc nhở dùng thuốc offline (Schedule) | Case Logger & Patient Hub |
+| `components/mui-port.css` | Styling các component Vanilla CSS lấy cảm hứng từ Material UI (Alert, Badge, Chip, Accordion, Tabs, Stepper, Dialog, Toast, Skeleton, Progress, Switch, FAB) | `pages/demo-mui-port.html` & các trang tùy chọn |
 | `components/flowchart.css` | Styling lưu đồ tương tác | `pages/Tiếp cận/**` |
 | `components/approach-symptom.css` | Styling tiếp cận triệu chứng chuẩn 7 bước | `pages/Tiếp cận/2. Triệu chứng/**` |
 | `components/approach-hub.css` | Hub tiếp cận tổng hợp | `tiep-can.html` |
@@ -96,6 +103,8 @@
 | `components/evidence-bridge.css` | Styling nhãn bằng chứng chứng cứ & Modal Tooltip | Xuyên phân hệ |
 | `components/chinh-lieu-khang-sinh.css` | Styling giao diện Chỉnh liều kháng sinh & Tra cứu KSĐ | `pages/Công cụ/Truyền Nhiễm/chinh-lieu-khang-sinh.html` |
 | `components/studio-system.css` | Studio Design System CSS chuẩn cho tất cả công cụ Studio | `pages/Công cụ/**` |
+| `components/bento-components.css` | Styling Bento Component System y khoa (KPI Card, Safety Gauge, Node Status, Comparison Matrix) | `pages/Công cụ/**`, `index.html` |
+
 
 ---
 
@@ -104,6 +113,7 @@
 | File | Vai trò | Dùng cho |
 |------|---------|---------|
 | `main.js` | Theme switching, sidebar toggle, keyboard shortcuts | Mọi trang |
+| `mui-port.js` | Xử lý tương tác Material UI components (Ripple, Accordion, Animated Tabs, Tooltips, Dialogs, Toasts/Snackbars) | `pages/demo-mui-port.html` & các trang tùy chọn |
 | `data/icd10-data.js` | Cơ sở dữ liệu 15.844+ mã ICD-10 theo Thông tư 06/2026/TT-BYT | `Tracuu_maICD10.html` |
 | `data/bhyt-mapping.js` | Cơ sở dữ liệu Ánh xạ Dịch vụ kỹ thuật (CLS, Thuốc, PTTT) BHYT với ICD-10 | `Tracuu_maICD10.html` |
 | `cliniportal-sync.js` | Engine đồng bộ thời gian thực 4 module y khoa & kho Guidelines EBM | Xuyên phân hệ |
@@ -209,7 +219,9 @@
 | File | Vai trò | CSS riêng |
 |------|---------|-----------|
 | `Công cụ/cong-cu.html` | Hub tổng Công cụ | `css/components/cong-cu.css` |
+| `Công cụ/bento-dashboard-demo.html` | **[MỚI]** Dashboard Bento Y Khoa & IoT Preserving AI (4 linh kiện KPI Card, Safety Gauge, Node Status, Comparison Matrix) | `bento-components.css`, `homepage-bento.css` | `bento-components.js` |
 | `css/components/cong-cu.css` | Styling tùy chỉnh cho Hub Công cụ | — |
+
 | `js/tools-data.js` | Dữ liệu danh sách 27+ công cụ lâm sàng và partMetadata | — |
 | `js/cong-cu-logic.js` | Logic render động thẻ công cụ, lọc tìm kiếm & ghim yêu thích | — |
 | `js/lab-values.js` | Dữ liệu & Logic Widget Trị số xét nghiệm tham chiếu ở Sidebar | — |

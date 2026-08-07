@@ -214,7 +214,7 @@ export class PouchSyncAdapter {
       return this.status;
     }
 
-    this.updateStatus({ state: 'syncing', errorMessage: undefined });
+    this.updateStatus({ state: 'syncing' });
 
     try {
       const db = await openDB();

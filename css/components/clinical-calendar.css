@@ -1,0 +1,112 @@
+/* ============================================================
+   CLINICAL CALENDAR STYLING — Mantine v9 Inspired
+   ============================================================ */
+
+.clinical-calendar {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 12px);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.calendar-header {
+  margin-bottom: 1rem;
+}
+
+.calendar-title-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendar-month-title {
+  margin: 0;
+  font-size: var(--text-md, 1.1rem);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.calendar-nav-btns {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.calendar-btn {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm, 6px);
+  color: var(--color-text);
+  padding: 0.3rem 0.6rem;
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--tr);
+}
+
+.calendar-btn:hover {
+  background: var(--color-surface-offset);
+  color: var(--color-primary);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding: 0.4rem 0;
+}
+
+.calendar-day-cell {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm, 6px);
+  min-height: 70px;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--tr);
+}
+
+.calendar-day-cell:hover {
+  border-color: var(--color-primary);
+}
+
+.calendar-day-cell.is-today {
+  border-color: var(--color-primary);
+  background: var(--color-primary-hl);
+}
+
+.calendar-day-cell.is-empty {
+  background: transparent;
+  border-color: transparent;
+}
+
+.calendar-day-num {
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.calendar-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 0.25rem;
+}
+
+.calendar-event-chip {
+  font-size: 0.68rem;
+  color: #ffffff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

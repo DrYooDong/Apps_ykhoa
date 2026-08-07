@@ -30,6 +30,19 @@
     <script src="../../../../components/header.js" defer></script>
     <script src="../../../../components/footer.js" defer></script>
     <script src="../../../../js/tracuu-icd10.js" defer></script>
+    <script type="module">
+        import { VirtualList } from '../../../../js/utils/virtual-list.js';
+        
+        // Gắn VirtualList engine vào ô kết quả ICD-10 khi người dùng tìm kiếm danh sách lớn
+        window.initVirtualICDList = function(containerEl, items, renderFn) {
+            return new VirtualList({
+                containerEl: containerEl,
+                items: items,
+                itemHeight: 64,
+                renderItemFn: renderFn
+            });
+        };
+    </script>
 </head>
 
 <body>

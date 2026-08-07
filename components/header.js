@@ -13,6 +13,34 @@ function goBack() {
   }
 }
 
+function getProjectRootPrefix(headerPath) {
+  if (!headerPath) return '';
+  const idx = headerPath.lastIndexOf('components/');
+  if (idx !== -1) {
+    return headerPath.substring(0, idx);
+  }
+  const depth = (headerPath.match(/\.\.\//g) || []).length;
+  return '../'.repeat(depth);
+}
+
+function fixHeaderLinks(holder, projectRoot) {
+  if (!holder) return;
+  const links = holder.querySelectorAll('a');
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('javascript:')) return;
+
+    if (href.startsWith('#')) {
+      if (projectRoot) {
+        link.setAttribute('href', projectRoot + 'index.html' + href);
+      }
+    } else {
+      const cleanHref = href.replace(/^(\.\.\/|\.\/|\/)+/, '');
+      link.setAttribute('href', projectRoot + cleanHref);
+    }
+  });
+}
+
 async function loadHeader() {
   // Ngăn nạp header nếu đang được nhúng trong iframe của CliniPortal SPA (tránh Lồng giao diện / Duplicate App Shell)
   try {
@@ -41,6 +69,23 @@ async function loadHeader() {
     if (!res.ok) throw new Error(`Không tải được header: ${res.status}`);
     const html = await res.text();
     holder.innerHTML = html;
+    const projectRoot = getProjectRootPrefix(headerPath);
+    fixHeaderLinks(holder, projectRoot);
+
+    // Tự động nạp bộ linh kiện Material UI (mui-port) cho toàn bộ hệ sinh thái CliniPortal
+    if (!document.querySelector('link[href*="mui-port.css"]')) {
+      const cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.href = projectRoot + 'css/components/mui-port.css';
+      document.head.appendChild(cssLink);
+    }
+    if (!document.querySelector('script[src*="mui-port.js"]') && typeof window.cpToast === 'undefined') {
+      const jsScript = document.createElement('script');
+      jsScript.src = projectRoot + 'js/mui-port.js';
+      jsScript.defer = true;
+      document.head.appendChild(jsScript);
+    }
+
     initHeader();
   } catch (err) {
     console.error('[header.js]', err);
@@ -48,6 +93,9 @@ async function loadHeader() {
 }
 
 function initHeader() {
+  if (typeof window.initCoSoDropdown === 'function') {
+    window.initCoSoDropdown();
+  }
   if (typeof window.initSinhLyDropdown === 'function') {
     window.initSinhLyDropdown();
   }
@@ -156,13 +204,12 @@ function initHeader() {
   // ── Adjust relative paths for header logo & module buttons ─────────────
   const holder = document.getElementById('header-placeholder');
   const headerPath = holder ? holder.dataset.headerPath : '';
-  let basePath = '';
-  if (headerPath) {
-    const lastSlashIdx = headerPath.lastIndexOf('/');
-    if (lastSlashIdx !== -1) {
-      basePath = headerPath.substring(0, lastSlashIdx + 1);
-    }
-  }
+  const projectRoot = getProjectRootPrefix(headerPath);
+  let basePath = projectRoot;
+
+  window.getPathDepthPrefix = function() {
+    return projectRoot || './';
+  };
 
   // ── SMART MEDICAL SEARCH ENGINE INIT (Inspired by Upstash Context7) ────
   (function initSmartSearchModal() {

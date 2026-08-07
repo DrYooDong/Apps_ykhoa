@@ -109,12 +109,18 @@ function openEvidenceModal(key) {
 }
 
 function getPathDepthPrefix() {
-  const path = window.location.pathname;
-  if (path.includes("/src/content/ebm/guidelines/kho-guidelines/")) return "../../../../";
-  if (path.includes("/src/content/ebm/ebm-lab/") || path.includes("/src/content/ebm/guideline-radar/")) return "../../../";
-  if (path.includes("/src/content/")) return "../../";
-  if (path.includes("/pages/Y học chứng cứ/Guidelines/Kho Guidelines/")) return "../../../../";
-  if (path.includes("/pages/Y học chứng cứ/EBM Lab/") || path.includes("/pages/Y học chứng cứ/Guideline Radar/")) return "../../../";
-  if (path.includes("/pages/")) return "../../";
+  if (typeof window.getPathDepthPrefix === "function") {
+    return window.getPathDepthPrefix();
+  }
+  const holder = document.getElementById('header-placeholder') || document.getElementById('footer-placeholder');
+  const path = holder?.dataset?.headerPath || holder?.dataset?.footerPath;
+  if (path) {
+    const idx = path.lastIndexOf('components/');
+    if (idx !== -1) return path.substring(0, idx);
+  }
+  const p = window.location.pathname;
+  if (p.includes("/src/content/ebm/guidelines/kho-guidelines/")) return "../../../../";
+  if (p.includes("/src/content/ebm/ebm-lab/") || p.includes("/src/content/ebm/guideline-radar/")) return "../../../";
+  if (p.includes("/src/content/")) return "../../";
   return "./";
 }

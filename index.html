@@ -36,7 +36,14 @@
   <link rel="stylesheet" href="./css/components/pulse.css">
   <link rel="stylesheet" href="./css/components/evidence-bridge.css">
   <link rel="stylesheet" href="./css/components/homepage-bento.css">
+  <link rel="stylesheet" href="./css/components/data-list.css">
+  <link rel="stylesheet" href="./css/components/scroller.css">
+  <link rel="stylesheet" href="./css/components/marquee.css">
+  <link rel="stylesheet" href="./css/components/floating-window.css">
+  <link rel="stylesheet" href="./css/components/overflow-list.css">
+  <link rel="stylesheet" href="./css/components/clinical-calendar.css">
   <link rel="stylesheet" href="./css/components/clinical-heatmap.css">
+  <link rel="stylesheet" href="./css/components/mui-port.css">
 
   <script src="./js/core/category-mapper.js" defer></script>
   <script src="./js/main.js" defer></script>
@@ -46,6 +53,7 @@
   <script src="./js/smart-recommender.js" defer></script>
   <script src="./data/search-index-bundle.js" defer></script>
   <script src="./js/components/clinical-heatmap.js" defer></script>
+  <script src="./js/good-day-calculator.js" defer></script>
 </head>
 
 <body>
@@ -80,31 +88,50 @@
     </div>
 
     <div class="header-nav-modules">
-      <a href="src/content/skills/ky-nang.html" class="header-module-btn" data-route="#/skills" title="Kỹ năng Lâm sàng">
+      <a href="src/content/skills/ky-nang.html" class="header-module-btn" data-route="src/content/skills/ky-nang.html" title="Kỹ năng Lâm sàng">
         <i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i>
         <span>Kỹ năng</span>
       </a>
-      <a href="src/content/approaches/tiep-can.html" class="header-module-btn" data-route="#/approaches" title="Tiếp cận Lâm sàng">
+      <a href="src/content/approaches/tiep-can.html" class="header-module-btn" data-route="src/content/approaches/tiep-can.html" title="Tiếp cận Lâm sàng">
         <i class="fa-solid fa-sitemap" style="color: #10b981;"></i>
         <span>Tiếp cận</span>
       </a>
-      <a href="src/content/calculators/cong-cu.html" class="header-module-btn" data-route="#/calculators" title="Công cụ Lâm sàng">
+      <a href="src/content/calculators/cong-cu.html" class="header-module-btn" data-route="src/content/calculators/cong-cu.html" title="Công cụ Lâm sàng">
         <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
         <span>Công cụ</span>
       </a>
-      <a href="src/content/pharmacology/duoc-ly.html" class="header-module-btn" data-route="#/pharmacology" title="Dược lý Lâm sàng">
+      <a href="src/content/pharmacology/duoc-ly.html" class="header-module-btn" data-route="src/content/pharmacology/duoc-ly.html" title="Dược lý Lâm sàng">
         <i class="fa-solid fa-pills" style="color: #ec4899;"></i>
         <span>Dược lý</span>
       </a>
-      <a href="src/content/pathophysiology/sinhly-sinhlybenh.html" class="header-module-btn" data-route="#/pathophysiology" title="Sinh lý & Sinh lý bệnh">
-        <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
-        <span>Sinh lý</span>
-      </a>
-      <a href="src/content/ebm/yhcc.html" class="header-module-btn" data-route="#/ebm" title="Y học chứng cứ">
+      <div class="header-module-dropdown-wrapper">
+        <button type="button" class="header-module-btn header-dropdown-trigger" title="Cơ sở Y khoa (Giải phẫu, Sinh lý & Sinh lý bệnh)">
+          <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
+          <span>Cơ sở</span>
+          <i class="fa-solid fa-chevron-down dropdown-arrow" style="font-size: 0.65rem; margin-left: 2px; opacity: 0.7;"></i>
+        </button>
+        <div class="header-dropdown-menu">
+          <a href="src/content/pathophysiology/giai-phau-sinh-ly.html" class="header-dropdown-item">
+            <span class="dropdown-item-icon">🧬</span>
+            <div class="dropdown-item-text">
+              <strong>GP - SL</strong>
+              <span>Giải phẫu & Sinh lý</span>
+            </div>
+          </a>
+          <a href="src/content/pathophysiology/co-che-benh-sinh.html" class="header-dropdown-item">
+            <span class="dropdown-item-icon">🔬</span>
+            <div class="dropdown-item-text">
+              <strong>CCBS - SBL</strong>
+              <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <a href="src/content/ebm/yhcc.html" class="header-module-btn" data-route="src/content/ebm/yhcc.html" title="Y học chứng cứ">
         <i class="fa-solid fa-flask" style="color: #06b6d4;"></i>
         <span>Chứng cứ</span>
       </a>
-      <a href="src/content/tcm/y-hoc-co-truyen.html" class="header-module-btn" data-route="#/tcm" title="Y học cổ truyền">
+      <a href="src/content/tcm/y-hoc-co-truyen.html" class="header-module-btn" data-route="src/content/tcm/y-hoc-co-truyen.html" title="Y học cổ truyền">
         <i class="fa-solid fa-yin-yang" style="color: #14b8a6;"></i>
         <span>Đông y</span>
       </a>
@@ -130,371 +157,524 @@
       <!-- ===================== BENTO HOMEPAGE ===================== -->
       <div class="bento-homepage" id="mainContent">
 
-        <!-- ════════════════════════════════════════
-             ROW 1: HERO + EMERGENCY CHIPS (top strip)
-        ════════════════════════════════════════ -->
-
-        <!-- BENTO CELL: Hero Banner (spans 3 columns) -->
-        <section class="bento-cell bento-hero" id="hero-section" aria-labelledby="hero-title">
-          <div class="hero-intro">
-            <div class="hero-meta-row">
-              <p class="hero-greeting" id="heroGreeting">
-                <span>🌅</span> Chào buổi sáng, Bác sĩ!
-              </p>
-              <div class="hero-clock">
-                <i class="fa-regular fa-clock" style="color:rgba(255,255,255,0.7);font-size:0.8rem;"></i>
-                <span class="hero-clock-time" id="heroClockTime">--:--:--</span>
-                <span class="hero-clock-date" id="heroClockDate">Thứ hai, 1 tháng 1</span>
-              </div>
-            </div>
-            <h1 id="hero-title">HỆ SINH THÁI CÁC ỨNG DỤNG LÂM SÀNG</h1>
-            <p>Hỗ trợ quyết định lâm sàng nhanh chóng, chính xác ngay tại giường bệnh.</p>
-            <div class="hero-stats">
-              <div class="hero-stat">
-                <span class="hero-stat-number" data-count="120" data-suffix="+">120+</span>
-                <span class="hero-stat-label">Công cụ & Thang điểm</span>
-              </div>
-              <div class="hero-stat">
-                <span class="hero-stat-number" data-count="50" data-suffix="+">50+</span>
-                <span class="hero-stat-label">Phác đồ xử trí</span>
-              </div>
-              <div class="hero-stat">
-                <span class="hero-stat-number" data-count="30" data-suffix="+">30+</span>
-                <span class="hero-stat-label">Kỹ năng lâm sàng</span>
-              </div>
-            </div>
-          </div>
-          <!-- Floating orbs -->
-          <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
-          <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
-          <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
-          <div class="hero-pattern" aria-hidden="true"></div>
-        </section>
-
-        <!-- BENTO CELL: Emergency Fast-Action (spans 1 column, tall) -->
-        <section class="bento-cell bento-emergency" id="emergency-section" aria-labelledby="emergency-title">
-          <div class="bento-cell-header">
-            <h2 class="bento-cell-title" id="emergency-title">
-              <i class="fa-solid fa-truck-medical"></i> Cấp cứu khẩn
-            </h2>
-            <span class="emergency-badge-pulse">Fast Action</span>
-          </div>
-          <div class="bento-emergency-list">
-            <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="bento-emergency-item">
-              <div class="bento-emg-icon"><i class="fa-solid fa-mosquito"></i></div>
-              <span>SXHD nặng</span>
-              <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-            </a>
-            <a href="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" class="bento-emergency-item">
-              <div class="bento-emg-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-              <span>Đau ngực & ACS</span>
-              <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-            </a>
-            <a href="src/content/calculators/renal/dg-abg-studio.html" class="bento-emergency-item">
-              <div class="bento-emg-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
-              <span>Toan kiềm & SHH</span>
-              <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-            </a>
-            <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="bento-emergency-item">
-              <div class="bento-emg-icon"><i class="fa-solid fa-capsules"></i></div>
-              <span>Sốc nhiễm khuẩn</span>
-              <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-            </a>
-          </div>
-        </section>
-
-
-
-        <!-- BENTO CELL: Checklist Ca Trực (COLUMN 4 TALL WIDGET - Top Right) -->
-        <section class="bento-cell bento-shift-checklist shift-widget" aria-label="Ca trực & Handover">
-          <div class="bento-cell-header">
-            <h3 class="bento-cell-title">
-              <i class="fa-solid fa-clipboard-check"></i> Checklist ca trực
-            </h3>
-            <a href="#/docspace" style="font-size: 11px; font-weight: 600; color: var(--color-primary); text-decoration: none;">DocSpace <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-          </div>
-          <div class="shift-container">
-            <div class="shift-add-row">
-              <input type="text" id="shiftTodoInput" placeholder="Thêm việc ca trực (VD: BGA 22h)..." aria-label="Việc cần làm ca trực">
-              <button id="shiftAddBtn" title="Thêm việc"><i class="fa-solid fa-plus"></i></button>
-            </div>
-            <ul class="shift-todo-list" id="shiftTodoList"></ul>
-            <div class="shift-footer">
-              <span class="shift-counter" id="shiftCounter">0 việc</span>
-              <button class="shift-clear-btn" id="shiftClearBtn" title="Xóa mục đã hoàn thành"><i class="fa-regular fa-trash-can"></i> Xóa mục xong</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- ════════════════════════════════════════
-             ROW 3: QUICK ACCESS + PULSE PEARL + STREAK
-        ════════════════════════════════════════ -->
-
-        <!-- BENTO CELL: Quick Access — Ứng dụng thường dùng -->
-        <section class="bento-cell bento-quick-access" id="quick-access-section" aria-labelledby="quick-access-title">
-          <div class="bento-cell-header">
-            <h2 class="bento-cell-title" id="quick-access-title">
-              <i class="fa-solid fa-bolt-lightning"></i> Dùng thường ngày
-            </h2>
-          </div>
-          <div class="bento-quick-grid">
-            <a href="src/content/calculators/general/tracuu-ma-icd10.html" class="bento-quick-item" style="--qi-color: var(--color-primary-rgb)">
-              <button class="pin-btn" data-url="src/content/calculators/general/tracuu-ma-icd10.html" data-title="Tra cứu mã ICD-10" data-category="Công cụ" data-icon="🔍" title="Ghim ứng dụng">☆</button>
-              <div class="bqi-icon">🔍</div>
-              <div class="bqi-info"><strong>Tra cứu ICD-10</strong><span>Mã bệnh quốc tế</span></div>
-            </a>
-            <a href="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" class="bento-quick-item" style="--qi-color: var(--color-rose-rgb)">
-              <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" data-title="Đọc Điện tâm đồ ECG" data-category="Kỹ năng" data-icon="📈" title="Ghim ứng dụng">☆</button>
-              <div class="bqi-icon">📈</div>
-              <div class="bqi-info"><strong>Đọc ECG cơ bản</strong><span>Điện tâm đồ</span></div>
-            </a>
-            <a href="src/content/skills/can-lam-sang/doc-tpttb-mau.html" class="bento-quick-item" style="--qi-color: var(--color-rose-rgb)">
-              <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-tpttb-mau.html" data-title="Phân tích tế bào máu" data-category="Kỹ năng" data-icon="🩸" title="Ghim ứng dụng">☆</button>
-              <div class="bqi-icon">🩸</div>
-              <div class="bqi-info"><strong>Phân tích CBC</strong><span>Tế bào máu</span></div>
-            </a>
-            <a href="src/content/skills/can-lam-sang/doc-sh-than.html" class="bento-quick-item" style="--qi-color: var(--color-teal-rgb)">
-              <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-sh-than.html" data-title="Sinh hóa chức năng Thận" data-category="Kỹ năng" data-icon="🧪" title="Ghim ứng dụng">☆</button>
-              <div class="bqi-icon">🧪</div>
-              <div class="bqi-info"><strong>SH Chức năng Thận</strong><span>eGFR / Ure / Creatinin</span></div>
-            </a>
-            <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="bento-quick-item" style="--qi-color: var(--color-warning-rgb)">
-              <button class="pin-btn" data-url="src/content/calculators/emergency/ql-bu-dich-studio.html" data-title="Xử trí SXH Dengue" data-category="Tiếp cận" data-icon="🦟" title="Ghim ứng dụng">☆</button>
-              <div class="bqi-icon">🦟</div>
-              <div class="bqi-info"><strong>Xử trí SXHD</strong><span>Bù dịch Dengue</span></div>
-            </a>
-            <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="bento-quick-item" style="--qi-color: var(--color-purple-rgb)">
-              <button class="pin-btn" data-url="src/content/skills/treatment-management/luachon-khangsinh.html" data-title="Kháng sinh kinh nghiệm" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
-              <div class="bqi-icon">💊</div>
-              <div class="bqi-info"><strong>Kháng sinh KN</strong><span>Empiric therapy</span></div>
-            </a>
-          </div>
-        </section>
-
-        <!-- BENTO CELL: EBM Pearl of the Day -->
-        <section class="bento-cell bento-pearl" id="pulse-dashboard-section">
-          <div class="bento-pearl-header">
-            <span class="bento-pearl-badge"><i class="fa-solid fa-gem"></i> Ngọc Y Học Hôm Nay</span>
-            <span class="bento-pearl-date" id="pearl-date">--/--/----</span>
-          </div>
-          <div class="bento-pearl-spec" id="pearl-spec">Hồi Sức / Truyền Nhiễm</div>
-          <div class="bento-pearl-title" id="pearl-title">Sốc Nhiễm Khuẩn: Dược Động Học Kháng Sinh ICU</div>
-          <div class="bento-pearl-body" id="pearl-body">
-            Sốc nhiễm khuẩn gây biến đổi thể tích phân bố Vd và tăng thanh thải thận ARC. Luôn dùng LIỀU NẠP đầy đủ và ưu tiên TRUYỀN KÉO DÀI Beta-lactam để đạt fT &gt; MIC tối đa.
-          </div>
-          <div class="bento-pearl-actions">
-            <span class="bento-pearl-source"><i class="fa-solid fa-bookmark"></i> <span id="pearl-source">Critical Care Clinics 2026</span></span>
-            <button class="btn-pearl-done" id="btn-pearl-done"><i class="fa-regular fa-circle-check"></i> Đã ghi nhớ</button>
-          </div>
-          <!-- streak overlay -->
-          <div class="bento-streak-chip">
-            <span class="streak-flame-sm">🔥</span>
-            <div class="streak-num" id="streak-count-num">7</div>
-            <span class="streak-lbl-sm">ngày</span>
-          </div>
-        </section>
-
-        <!-- BENTO CELL: Flashcard Quiz -->
-        <section class="bento-cell bento-flashcard" aria-label="Hạt ngọc lâm sàng Quiz">
-          <div class="bento-cell-header">
-            <h3 class="bento-cell-title">
-              <i class="fa-solid fa-graduation-cap"></i> Flashcard Lâm sàng
-            </h3>
-            <span class="bento-badge-pill">Interactive Quiz</span>
-          </div>
-          <div class="flashcard-container" id="flashcardContainer">
-            <div class="flashcard-card" id="flashcardCard">
-              <!-- Front: Question -->
-              <div class="flashcard-face flashcard-front">
-                <div>
-                  <div class="flashcard-badge"><i class="fa-solid fa-circle-question"></i> Thách thức lâm sàng</div>
-                  <div class="flashcard-spec" id="flashcardSpec">Chuyên khoa</div>
+        <!-- ── ROW 1: HERO + EMERGENCY KHẨN ────────────────── -->
+        <div class="bento-toprow">
+          <!-- Hero Banner -->
+          <section class="bento-cell bento-hero" id="hero-section" aria-labelledby="hero-title">
+            <div class="hero-intro">
+              <div class="hero-meta-row">
+                <p class="hero-greeting" id="heroGreeting">
+                  <span>🌅</span> Chào buổi sáng, Bác sĩ!
+                </p>
+                <div class="hero-clock" id="heroClockContainer">
+                  <i class="fa-regular fa-clock" style="color:rgba(255,255,255,0.7);font-size:0.8rem;"></i>
+                  <span class="hero-clock-time" id="heroClockTime">--:--:--</span>
+                  <span class="hero-clock-sep">•</span>
+                  <span class="hero-clock-date" id="heroClockDate">Thứ hai, 1 tháng 1</span>
+                  <button class="hero-day-score-badge" id="heroDayScoreBtn" type="button" title="Xem phân tích Chỉ số Ngày Tốt & Giờ Hoàng Đạo">
+                    <span class="day-score-icon" id="heroDayScoreIcon">🎯</span>
+                    <span class="day-score-val" id="heroDayScoreVal">--/100</span>
+                    <span class="day-score-text" id="heroDayScoreText">Chỉ số Ngày</span>
+                  </button>
                 </div>
-                <p class="flashcard-text" id="flashcardQuestion">Đang tải câu hỏi lâm sàng...</p>
-                <div class="flashcard-hint"><i class="fa-solid fa-rotate"></i> Bấm "Lật thẻ" bên dưới để xem đáp án</div>
               </div>
-              <!-- Back: Answer -->
-              <div class="flashcard-face flashcard-back">
-                <div>
-                  <div class="flashcard-badge success"><i class="fa-solid fa-circle-check"></i> Đáp án & Hạt ngọc</div>
+              <h1 id="hero-title">HỆ SINH THÁI CÁC ỨNG DỤNG LÂM SÀNG</h1>
+              <p>Hỗ trợ quyết định lâm sàng nhanh chóng, chính xác ngay tại giường bệnh.</p>
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <span class="hero-stat-number" data-count="120" data-suffix="+">120+</span>
+                  <span class="hero-stat-label">Công cụ & Thang điểm</span>
                 </div>
-                <p class="flashcard-text" id="flashcardAnswer">Đang tải đáp án...</p>
-                <div class="flashcard-source" id="flashcardSource">Nguồn y học chứng cứ</div>
+                <div class="hero-stat">
+                  <span class="hero-stat-number" data-count="50" data-suffix="+">50+</span>
+                  <span class="hero-stat-label">Phác đồ xử trí</span>
+                </div>
+                <div class="hero-stat">
+                  <span class="hero-stat-number" data-count="30" data-suffix="+">30+</span>
+                  <span class="hero-stat-label">Kỹ năng lâm sàng</span>
+                </div>
               </div>
             </div>
-            <div class="flashcard-actions">
-              <button class="btn-flashcard-flip" id="flashcardFlipBtn">
-                <i class="fa-solid fa-rotate"></i> <span>Lật thẻ xem đáp án</span>
-              </button>
-              <button class="btn-flashcard-next" id="flashcardNextBtn" title="Đổi câu hỏi khác">
-                <i class="fa-solid fa-forward"></i>
-              </button>
-            </div>
-          </div>
-        </section>
+            <!-- Floating orbs -->
+            <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+            <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+            <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+            <div class="hero-pattern" aria-hidden="true"></div>
+          </section>
 
-        <!-- ════════════════════════════════════════
-             ROW 4: QUICK TOOLS + PINNED + RECENTLY VISITED
-        ════════════════════════════════════════ -->
+          <!-- Emergency Fast-Action -->
+          <section class="bento-cell bento-emergency" id="emergency-section" aria-labelledby="emergency-title">
+            <div class="bento-cell-header">
+              <h2 class="bento-cell-title" id="emergency-title">
+                <i class="fa-solid fa-truck-medical"></i> Cấp cứu khẩn
+              </h2>
+              <span class="emergency-badge-pulse">Fast Action</span>
+            </div>
+            <div class="bento-emergency-list">
+              <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="bento-emergency-item">
+                <div class="bento-emg-icon"><i class="fa-solid fa-mosquito"></i></div>
+                <span>SXHD nặng</span>
+                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
+              </a>
+              <a href="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" class="bento-emergency-item">
+                <div class="bento-emg-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                <span>Đau ngực & ACS</span>
+                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
+              </a>
+              <a href="src/content/calculators/renal/dg-abg-studio.html" class="bento-emergency-item">
+                <div class="bento-emg-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
+                <span>Toan kiềm & SHH</span>
+                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
+              </a>
+              <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="bento-emergency-item">
+                <div class="bento-emg-icon"><i class="fa-solid fa-capsules"></i></div>
+                <span>Sốc nhiễm khuẩn</span>
+                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
+              </a>
+            </div>
+          </section>
+        </div>
 
-        <!-- BENTO CELL: Pulse Action Quick Links -->
-        <section class="bento-cell bento-pulse-actions" aria-label="Thao tác nhanh">
-          <div class="bento-cell-header">
-            <h3 class="bento-cell-title">
-              <i class="fa-solid fa-fire-flame-curved" style="color: var(--pulse-rose);"></i> Thao Tác Nhanh
-            </h3>
-          </div>
-          <div class="pulse-actions-grid">
-            <a href="#/ebm" class="pulse-action-card">
-              <div class="pulse-action-icon" style="color: var(--color-primary);">🧪</div>
-              <div class="pulse-action-title">PICO & NNT Lab</div>
-              <div class="pulse-action-sub">Thực hành EBM tương tác</div>
-            </a>
-            <a href="#/ebm" class="pulse-action-card">
-              <div class="pulse-action-icon" style="color: #7c3aed;">📊</div>
-              <div class="pulse-action-title">Forest Plot Builder</div>
-              <div class="pulse-action-sub">Vẽ SVG Meta-analysis</div>
-            </a>
-            <a href="#/ebm" class="pulse-action-card">
-              <div class="pulse-action-icon" style="color: #10b981;">📡</div>
-              <div class="pulse-action-title">Guideline Diff Viewer</div>
-              <div class="pulse-action-sub">So sánh Trước & Sau</div>
-            </a>
-            <a href="#/ebm" class="pulse-action-card">
-              <div class="pulse-action-icon" style="color: #f59e0b;">🧠</div>
-              <div class="pulse-action-title">Quiz Engine (SM-2)</div>
-              <div class="pulse-action-sub">Ôn tập Spaced Repetition</div>
-            </a>
-            <a href="#/ebm" class="pulse-action-card">
-              <div class="pulse-action-icon" style="color: #ec4899;">🔍</div>
-              <div class="pulse-action-title">Kho Guidelines</div>
-              <div class="pulse-action-sub">Tra cứu Bộ Y tế & Quốc tế</div>
-            </a>
-            <a href="#/calculators" class="pulse-action-card">
-              <div class="pulse-action-icon" style="color: #06b6d4;">⚙️</div>
-              <div class="pulse-action-title">Máy Tính Lâm Sàng</div>
-              <div class="pulse-action-sub">120+ công cụ hỗ trợ</div>
-            </a>
-          </div>
-          <!-- Smart Recommendations -->
-          <div id="smart-recommendations-container"></div>
-        </section>
-
-        <!-- BENTO CELL: Pinned Favorites -->
-        <section class="bento-cell bento-pinned" id="favoritesSection" aria-labelledby="favorites-title">
-          <div class="bento-cell-header">
-            <h2 class="bento-cell-title" id="favorites-title">
-              <i class="fa-solid fa-star" style="color: var(--color-warning);"></i> Ứng dụng đã ghim
-            </h2>
-          </div>
-          <div class="favorites-grid" id="favoritesGrid"></div>
-        </section>
-
-        <!-- BENTO CELL: Recently Visited -->
-        <section class="bento-cell bento-sidebar-stack" aria-label="Đã xem gần đây">
-          <div class="bento-cell-header">
-            <h3 class="bento-cell-title">
-              <i class="fa-regular fa-clock" style="background:var(--color-teal-hl);color:var(--color-teal)"></i>
-              Đã xem gần đây
-            </h3>
-          </div>
-          <div id="recentlyVisitedList" class="recent-list"></div>
-        </section>
-
-        <!-- BENTO CELL: Medical Converter -->
-        <section class="bento-cell bento-converter converter-widget" aria-label="Chuyển đổi chỉ số y khoa">
-          <div class="bento-cell-header">
-            <h3 class="bento-cell-title">
-              <i class="fa-solid fa-calculator"></i> Quy đổi chỉ số nhanh
-            </h3>
-          </div>
-          <div class="converter-tabs">
-            <button class="converter-tab active" data-target="panelGlucose">Glucose</button>
-            <button class="converter-tab" data-target="panelCreatinine">Creatinine</button>
-            <button class="converter-tab" data-target="panelTemp">Nhiệt độ</button>
-          </div>
-
-          <!-- Panel Glucose -->
-          <div class="converter-panel active" id="panelGlucose">
-            <div class="converter-row">
-              <input type="number" id="glcMg" placeholder="mg/dL" step="any">
-              <span class="converter-unit">mg/dL</span>
+        <!-- ── ROW 2: 8 PHÂN HỆ Y KHOA NAV STRIP ────────────── -->
+        <div class="bento-modules-row" aria-label="8 Phân hệ kiến thức y khoa">
+          <a href="src/content/skills/ky-nang.html" class="bento-cell bento-module bento-mod-skills">
+            <div class="bento-mod-top-box">
+              <span class="bento-mod-badge"><span class="bento-status-dot"></span>Active</span>
+              <div class="bento-mod-icon-wrap"><i class="fa-solid fa-stethoscope"></i></div>
             </div>
-            <div class="converter-arrow-icon">
-              <i class="fa-solid fa-arrows-up-down"></i>
+            <div class="bento-mod-body-box">
+              <h3>Kỹ năng</h3>
+              <p>OSCE & Bedside Skills</p>
             </div>
-            <div class="converter-row">
-              <input type="number" id="glcMmol" placeholder="mmol/L" step="any">
-              <span class="converter-unit">mmol/L</span>
+            <div class="bento-mod-footer">
+              <span class="bento-mod-cat">Lâm sàng</span>
+              <span class="bento-mod-cta">Khám phá <i class="fa-solid fa-chevron-right"></i></span>
             </div>
-          </div>
+          </a>
 
-          <!-- Panel Creatinine -->
-          <div class="converter-panel" id="panelCreatinine">
-            <div class="converter-row">
-              <input type="number" id="crUmol" placeholder="µmol/L" step="any">
-              <span class="converter-unit">µmol/L</span>
+          <a href="src/content/approaches/tiep-can.html" class="bento-cell bento-module bento-mod-approach">
+            <div class="bento-mod-top-box">
+              <span class="bento-mod-badge"><span class="bento-status-dot"></span>Active</span>
+              <div class="bento-mod-icon-wrap"><i class="fa-solid fa-sitemap"></i></div>
             </div>
-            <div class="converter-arrow-icon">
-              <i class="fa-solid fa-arrows-up-down"></i>
+            <div class="bento-mod-body-box">
+              <h3>Tiếp cận</h3>
+              <p>Phác đồ & Lưu đồ CDSS</p>
             </div>
-            <div class="converter-row">
-              <input type="number" id="crMg" placeholder="mg/dL" step="any">
-              <span class="converter-unit">mg/dL</span>
+            <div class="bento-mod-footer">
+              <span class="bento-mod-cat">Chẩn đoán</span>
+              <span class="bento-mod-cta">Khám phá <i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+          </a>
+
+          <a href="src/content/calculators/cong-cu.html" class="bento-cell bento-module bento-mod-tools">
+            <div class="bento-mod-top-box">
+              <span class="bento-mod-badge bento-badge-new">120+ Thang điểm</span>
+              <div class="bento-mod-icon-wrap"><i class="fa-solid fa-calculator"></i></div>
+            </div>
+            <div class="bento-mod-body-box">
+              <h3>Công cụ</h3>
+              <p>Máy tính chỉ số & Thang điểm</p>
+            </div>
+            <div class="bento-mod-footer">
+              <span class="bento-mod-cat">Tính toán</span>
+              <span class="bento-mod-cta">Khám phá <i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+          </a>
+
+          <a href="src/content/pharmacology/duoc-ly.html" class="bento-cell bento-module bento-mod-pharma">
+            <div class="bento-mod-top-box">
+              <span class="bento-mod-badge"><span class="bento-status-dot"></span>Tra cứu</span>
+              <div class="bento-mod-icon-wrap"><i class="fa-solid fa-pills"></i></div>
+            </div>
+            <div class="bento-mod-body-box">
+              <h3>Dược lý</h3>
+              <p>Dược thư & Tương tác thuốc</p>
+            </div>
+            <div class="bento-mod-footer">
+              <span class="bento-mod-cat">Điều trị</span>
+              <span class="bento-mod-cta">Khám phá <i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+          </a>
+
+          <div class="bento-cell bento-module bento-mod-physio bento-dropdown-card">
+            <div class="bento-mod-top-box">
+              <span class="bento-mod-badge"><span class="bento-status-dot"></span>Cơ chế</span>
+              <div class="bento-mod-icon-wrap"><i class="fa-solid fa-dna"></i></div>
+            </div>
+            <div class="bento-mod-body-box">
+              <h3>Cơ sở</h3>
+              <p>Giải phẫu, Sinh lý & SLB</p>
+            </div>
+            <div class="bento-mod-footer">
+              <span class="bento-mod-cat">Cơ sở</span>
+              <span class="bento-mod-cta">Lựa chọn <i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <!-- Menu xổ xuống 02 lựa chọn -->
+            <div class="bento-card-dropdown-menu">
+              <a href="src/content/pathophysiology/giai-phau-sinh-ly.html" class="bento-card-dropdown-item">
+                <span class="dropdown-icon">🧬</span>
+                <div class="dropdown-label">
+                  <strong>GP - SL</strong>
+                  <small>Giải phẫu & Sinh lý học</small>
+                </div>
+              </a>
+              <a href="src/content/pathophysiology/co-che-benh-sinh.html" class="bento-card-dropdown-item">
+                <span class="dropdown-icon">🔬</span>
+                <div class="dropdown-label">
+                  <strong>CCBS - SBL</strong>
+                  <small>Cơ chế bệnh sinh - Sinh lý bệnh</small>
+                </div>
+              </a>
             </div>
           </div>
 
-          <!-- Panel Nhiệt độ -->
-          <div class="converter-panel" id="panelTemp">
-            <div class="converter-row">
-              <input type="number" id="tempC" placeholder="°C" step="any">
-              <span class="converter-unit">°C</span>
+          <a href="src/content/ebm/yhcc.html" class="bento-cell bento-module bento-mod-ebm">
+            <div class="bento-mod-top-box">
+              <span class="bento-mod-badge bento-badge-new">Guidelines 2026</span>
+              <div class="bento-mod-icon-wrap"><i class="fa-solid fa-flask"></i></div>
             </div>
-            <div class="converter-arrow-icon">
-              <i class="fa-solid fa-arrows-up-down"></i>
+            <div class="bento-mod-body-box">
+              <h3>Chứng cứ</h3>
+              <p>Y học chứng cứ EBM</p>
             </div>
-            <div class="converter-row">
-              <input type="number" id="tempF" placeholder="°F" step="any">
-              <span class="converter-unit">°F</span>
+            <div class="bento-mod-footer">
+              <span class="bento-mod-cat">Khuyến cáo</span>
+              <span class="bento-mod-cta">Khám phá <i class="fa-solid fa-chevron-right"></i></span>
             </div>
-          </div>
-        </section>
+          </a>
 
-        <!-- BENTO CELL: Clinical Scratchpad -->
-        <section class="bento-cell bento-scratchpad scratchpad-widget" aria-label="Ghi chú lâm sàng">
-          <div class="bento-cell-header">
-            <h3 class="bento-cell-title">
-              <i class="fa-solid fa-note-sticky"></i> Ghi chú lâm sàng
-            </h3>
-          </div>
-          <div class="scratchpad-container">
-            <textarea id="scratchpadText" class="scratchpad-textarea"
-              placeholder="Ghi nhanh chẩn đoán, kết quả xét nghiệm, công thức..."></textarea>
-            <div class="scratchpad-actions">
-              <div class="scratchpad-left-actions">
-                <button class="btn-widget" id="scratchpadCopyBtn" title="Sao chép toàn bộ">
-                  <i class="fa-regular fa-copy"></i> Chép
-                </button>
-                <button class="btn-widget" id="scratchpadExportBtn" title="Tải về file .txt">
-                  <i class="fa-solid fa-download"></i> Xuất
-                </button>
-                <button class="btn-widget btn-danger" id="scratchpadClearBtn" title="Xóa ghi chú">
-                  <i class="fa-regular fa-trash-can"></i> Xóa
-                </button>
+          <a href="src/content/tcm/y-hoc-co-truyen.html" class="bento-cell bento-module bento-mod-tcm">
+            <div class="bento-mod-top-box">
+              <span class="bento-mod-badge"><span class="bento-status-dot"></span>YHCT</span>
+              <div class="bento-mod-icon-wrap"><i class="fa-solid fa-yin-yang"></i></div>
+            </div>
+            <div class="bento-mod-body-box">
+              <h3>Đông y</h3>
+              <p>Y học cổ truyền & Châm cứu</p>
+            </div>
+            <div class="bento-mod-footer">
+              <span class="bento-mod-cat">Cổ truyền</span>
+              <span class="bento-mod-cta">Khám phá <i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+          </a>
+
+          <a href="#/docspace" class="bento-cell bento-module bento-mod-docspace">
+            <div class="bento-mod-top-box">
+              <span class="bento-mod-badge bento-badge-new">DocSpace</span>
+              <div class="bento-mod-icon-wrap"><i class="fa-solid fa-id-badge"></i></div>
+            </div>
+            <div class="bento-mod-body-box">
+              <h3>DocSpace</h3>
+              <p>Ghi chú cá nhân & SBAR</p>
+            </div>
+            <div class="bento-mod-footer">
+              <span class="bento-mod-cat">Không gian riêng</span>
+              <span class="bento-mod-cta">Khám phá <i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <!-- ── MAIN BODY GRID (CONTENT LEFT + SIDEBAR RIGHT) ── -->
+        <div class="bento-body">
+
+          <!-- ── LEFT MAIN COLUMN ────────────────────────── -->
+          <div class="bento-main-col">
+
+            <!-- Dùng thường ngày -->
+            <section class="bento-cell bento-quick-access" id="quick-access-section" aria-labelledby="quick-access-title">
+              <div class="bento-cell-header">
+                <h2 class="bento-cell-title" id="quick-access-title">
+                  <i class="fa-solid fa-bolt-lightning"></i> Dùng thường ngày
+                </h2>
               </div>
-              <select class="scratchpad-template-select" id="scratchpadTemplateSelect"
-                aria-label="Mẫu ghi chú nhanh">
-                <option value="" disabled selected>Mẫu nhanh</option>
-                <option value="summary">Tóm tắt Bệnh án</option>
-                <option value="lab">Kết quả Lab/CLS</option>
-                <option value="rx">Y lệnh tham khảo</option>
-              </select>
-            </div>
-          </div>
-        </section>
+              <div class="bento-quick-grid">
+                <a href="src/content/calculators/general/tracuu-ma-icd10.html" class="bento-quick-item" style="--qi-color: var(--color-primary-rgb)">
+                  <button class="pin-btn" data-url="src/content/calculators/general/tracuu-ma-icd10.html" data-title="Tra cứu mã ICD-10" data-category="Công cụ" data-icon="🔍" title="Ghim ứng dụng">☆</button>
+                  <div class="bqi-icon">🔍</div>
+                  <div class="bqi-info"><strong>Tra cứu ICD-10</strong><span>Mã bệnh quốc tế</span></div>
+                </a>
+                <a href="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" class="bento-quick-item" style="--qi-color: var(--color-rose-rgb)">
+                  <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" data-title="Đọc Điện tâm đồ ECG" data-category="Kỹ năng" data-icon="📈" title="Ghim ứng dụng">☆</button>
+                  <div class="bqi-icon">📈</div>
+                  <div class="bqi-info"><strong>Đọc ECG cơ bản</strong><span>Điện tâm đồ</span></div>
+                </a>
+                <a href="src/content/skills/can-lam-sang/doc-tpttb-mau.html" class="bento-quick-item" style="--qi-color: var(--color-rose-rgb)">
+                  <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-tpttb-mau.html" data-title="Phân tích tế bào máu" data-category="Kỹ năng" data-icon="🩸" title="Ghim ứng dụng">☆</button>
+                  <div class="bqi-icon">🩸</div>
+                  <div class="bqi-info"><strong>Phân tích CBC</strong><span>Tế bào máu</span></div>
+                </a>
+                <a href="src/content/skills/can-lam-sang/doc-sh-than.html" class="bento-quick-item" style="--qi-color: var(--color-teal-rgb)">
+                  <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-sh-than.html" data-title="Sinh hóa chức năng Thận" data-category="Kỹ năng" data-icon="🧪" title="Ghim ứng dụng">☆</button>
+                  <div class="bqi-icon">🧪</div>
+                  <div class="bqi-info"><strong>SH Chức năng Thận</strong><span>eGFR / Ure / Creatinin</span></div>
+                </a>
+                <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="bento-quick-item" style="--qi-color: var(--color-warning-rgb)">
+                  <button class="pin-btn" data-url="src/content/calculators/emergency/ql-bu-dich-studio.html" data-title="Xử trí SXH Dengue" data-category="Tiếp cận" data-icon="🦟" title="Ghim ứng dụng">☆</button>
+                  <div class="bqi-icon">🦟</div>
+                  <div class="bqi-info"><strong>Xử trí SXHD</strong><span>Bù dịch Dengue</span></div>
+                </a>
+                <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="bento-quick-item" style="--qi-color: var(--color-purple-rgb)">
+                  <button class="pin-btn" data-url="src/content/skills/treatment-management/luachon-khangsinh.html" data-title="Kháng sinh kinh nghiệm" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
+                  <div class="bqi-icon">💊</div>
+                  <div class="bqi-info"><strong>Kháng sinh KN</strong><span>Empiric therapy</span></div>
+                </a>
+              </div>
+            </section>
 
-        <!-- BENTO CELL: Clinical Progress Heatmap (Square UI Habit Tracker style) -->
-        <section class="bento-cell bento-scratchpad" style="grid-column: 1 / 13; padding: 0; border: none; background: transparent;" aria-label="Tiến độ học tập lâm sàng">
+            <!-- 2-Column Split: Pearl + Flashcard -->
+            <div class="bento-two-col">
+              <!-- EBM Pearl of the Day -->
+              <section class="bento-cell bento-pearl" id="pulse-dashboard-section">
+                <div class="bento-pearl-header">
+                  <span class="bento-pearl-badge"><i class="fa-solid fa-gem"></i> Ngọc Y Học Hôm Nay</span>
+                  <span class="bento-pearl-date" id="pearl-date">--/--/----</span>
+                </div>
+                <div class="bento-pearl-spec" id="pearl-spec">Hồi Sức / Truyền Nhiễm</div>
+                <div class="bento-pearl-title" id="pearl-title">Sốc Nhiễm Khuẩn: Dược Động Học Kháng Sinh ICU</div>
+                <div class="bento-pearl-body" id="pearl-body">
+                  Sốc nhiễm khuẩn gây biến đổi thể tích phân bố Vd và tăng thanh thải thận ARC. Luôn dùng LIỀU NẠP đầy đủ và ưu tiên TRUYỀN KÉO DÀI Beta-lactam để đạt fT &gt; MIC tối đa.
+                </div>
+                <div class="bento-pearl-actions">
+                  <span class="bento-pearl-source"><i class="fa-solid fa-bookmark"></i> <span id="pearl-source">Critical Care Clinics 2026</span></span>
+                  <button class="btn-pearl-done" id="btn-pearl-done"><i class="fa-regular fa-circle-check"></i> Đã ghi nhớ</button>
+                </div>
+                <!-- streak overlay -->
+                <div class="bento-streak-chip">
+                  <span class="streak-flame-sm">🔥</span>
+                  <div class="streak-num" id="streak-count-num">7</div>
+                  <span class="streak-lbl-sm">ngày</span>
+                </div>
+              </section>
+
+              <!-- Flashcard Quiz -->
+              <section class="bento-cell bento-flashcard" aria-label="Hạt ngọc lâm sàng Quiz">
+                <div class="bento-cell-header">
+                  <h3 class="bento-cell-title">
+                    <i class="fa-solid fa-graduation-cap"></i> Flashcard Lâm sàng
+                  </h3>
+                  <span class="bento-badge-pill">Interactive Quiz</span>
+                </div>
+                <div class="flashcard-container" id="flashcardContainer">
+                  <div class="flashcard-card" id="flashcardCard">
+                    <!-- Front: Question -->
+                    <div class="flashcard-face flashcard-front">
+                      <div>
+                        <div class="flashcard-badge"><i class="fa-solid fa-circle-question"></i> Thách thức lâm sàng</div>
+                        <div class="flashcard-spec" id="flashcardSpec">Chuyên khoa</div>
+                      </div>
+                      <p class="flashcard-text" id="flashcardQuestion">Đang tải câu hỏi lâm sàng...</p>
+                      <div class="flashcard-hint"><i class="fa-solid fa-rotate"></i> Bấm "Lật thẻ" bên dưới để xem đáp án</div>
+                    </div>
+                    <!-- Back: Answer -->
+                    <div class="flashcard-face flashcard-back">
+                      <div>
+                        <div class="flashcard-badge success"><i class="fa-solid fa-circle-check"></i> Đáp án & Hạt ngọc</div>
+                      </div>
+                      <p class="flashcard-text" id="flashcardAnswer">Đang tải đáp án...</p>
+                      <div class="flashcard-source" id="flashcardSource">Nguồn y học chứng cứ</div>
+                    </div>
+                  </div>
+                  <div class="flashcard-actions">
+                    <button class="btn-flashcard-flip" id="flashcardFlipBtn">
+                      <i class="fa-solid fa-rotate"></i> <span>Lật thẻ xem đáp án</span>
+                    </button>
+                    <button class="btn-flashcard-next" id="flashcardNextBtn" title="Đổi câu hỏi khác">
+                      <i class="fa-solid fa-forward"></i>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <!-- Pulse Action Quick Links -->
+            <section class="bento-cell bento-pulse-actions" aria-label="Thao tác nhanh">
+              <div class="bento-cell-header">
+                <h3 class="bento-cell-title">
+                  <i class="fa-solid fa-fire-flame-curved" style="color: var(--pulse-rose);"></i> Thao Tác Nhanh
+                </h3>
+              </div>
+              <div class="pulse-actions-grid">
+                <a href="src/content/ebm/ebm-lab/pico-nnt-lab.html" class="pulse-action-card">
+                  <div class="pulse-action-icon" style="color: var(--color-primary);">🧪</div>
+                  <div class="pulse-action-title">PICO & NNT Lab</div>
+                  <div class="pulse-action-sub">Thực hành EBM tương tác</div>
+                </a>
+                <a href="src/content/ebm/medical-statistics/forest-plot-builder.html" class="pulse-action-card">
+                  <div class="pulse-action-icon" style="color: #7c3aed;">📊</div>
+                  <div class="pulse-action-title">Forest Plot Builder</div>
+                  <div class="pulse-action-sub">Vẽ SVG Meta-analysis</div>
+                </a>
+                <a href="src/content/ebm/guideline-radar/guideline-diff-viewer.html" class="pulse-action-card">
+                  <div class="pulse-action-icon" style="color: #10b981;">📡</div>
+                  <div class="pulse-action-title">Guideline Diff Viewer</div>
+                  <div class="pulse-action-sub">So sánh Trước & Sau</div>
+                </a>
+                <a href="src/content/ebm/yhcc.html" class="pulse-action-card">
+                  <div class="pulse-action-icon" style="color: #f59e0b;">🧠</div>
+                  <div class="pulse-action-title">Quiz Engine (SM-2)</div>
+                  <div class="pulse-action-sub">Ôn tập Spaced Repetition</div>
+                </a>
+                <a href="src/content/ebm/guidelines/kho-guidelines.html" class="pulse-action-card">
+                  <div class="pulse-action-icon" style="color: #ec4899;">🔍</div>
+                  <div class="pulse-action-title">Kho Guidelines</div>
+                  <div class="pulse-action-sub">Tra cứu Bộ Y tế & Quốc tế</div>
+                </a>
+                <a href="#/calculators" class="pulse-action-card">
+                  <div class="pulse-action-icon" style="color: #06b6d4;">⚙️</div>
+                  <div class="pulse-action-title">Máy Tính Lâm Sàng</div>
+                  <div class="pulse-action-sub">120+ công cụ hỗ trợ</div>
+                </a>
+              </div>
+              <!-- Smart Recommendations -->
+              <div id="smart-recommendations-container"></div>
+            </section>
+
+            <!-- Pinned Favorites -->
+            <section class="bento-cell bento-pinned" id="favoritesSection" aria-labelledby="favorites-title">
+              <div class="bento-cell-header">
+                <h2 class="bento-cell-title" id="favorites-title">
+                  <i class="fa-solid fa-star" style="color: var(--color-warning);"></i> Ứng dụng đã ghim
+                </h2>
+              </div>
+              <div class="favorites-grid" id="favoritesGrid"></div>
+            </section>
+
+          </div><!-- /.bento-main-col -->
+
+          <!-- ── RIGHT STICKY SIDEBAR ────────────────────── -->
+          <div class="bento-side-col">
+
+            <!-- Checklist Ca Trực -->
+            <section class="bento-cell bento-shift-checklist shift-widget" aria-label="Ca trực & Handover">
+              <div class="bento-cell-header">
+                <h3 class="bento-cell-title">
+                  <i class="fa-solid fa-clipboard-check"></i> Checklist ca trực
+                </h3>
+                <a href="#/docspace" style="font-size: 11px; font-weight: 600; color: var(--color-primary); text-decoration: none;">DocSpace <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+              </div>
+              <div class="shift-container">
+                <div class="shift-add-row">
+                  <input type="text" id="shiftTodoInput" placeholder="Thêm việc ca trực (VD: BGA 22h)..." aria-label="Việc cần làm ca trực">
+                  <button id="shiftAddBtn" title="Thêm việc"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <ul class="shift-todo-list" id="shiftTodoList"></ul>
+                <div class="shift-footer">
+                  <span class="shift-counter" id="shiftCounter">0 việc</span>
+                  <button class="shift-clear-btn" id="shiftClearBtn" title="Xóa mục đã hoàn thành"><i class="fa-regular fa-trash-can"></i> Xóa mục xong</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Recently Visited -->
+            <section class="bento-cell" aria-label="Đã xem gần đây">
+              <div class="bento-cell-header">
+                <h3 class="bento-cell-title">
+                  <i class="fa-regular fa-clock" style="color:var(--color-teal)"></i>
+                  Đã xem gần đây
+                </h3>
+              </div>
+              <div id="recentlyVisitedList" class="recent-list"></div>
+            </section>
+
+            <!-- Medical Converter -->
+            <section class="bento-cell bento-converter converter-widget" aria-label="Chuyển đổi chỉ số y khoa">
+              <div class="bento-cell-header">
+                <h3 class="bento-cell-title">
+                  <i class="fa-solid fa-calculator"></i> Quy đổi chỉ số nhanh
+                </h3>
+              </div>
+              <div class="converter-tabs">
+                <button class="converter-tab active" data-target="panelGlucose">Glucose</button>
+                <button class="converter-tab" data-target="panelCreatinine">Creatinine</button>
+                <button class="converter-tab" data-target="panelTemp">Nhiệt độ</button>
+              </div>
+
+              <!-- Panel Glucose -->
+              <div class="converter-panel active" id="panelGlucose">
+                <div class="converter-row">
+                  <input type="number" id="glcMg" placeholder="mg/dL" step="any">
+                  <span class="converter-unit">mg/dL</span>
+                </div>
+                <div class="converter-arrow-icon">
+                  <i class="fa-solid fa-arrows-up-down"></i>
+                </div>
+                <div class="converter-row">
+                  <input type="number" id="glcMmol" placeholder="mmol/L" step="any">
+                  <span class="converter-unit">mmol/L</span>
+                </div>
+              </div>
+
+              <!-- Panel Creatinine -->
+              <div class="converter-panel" id="panelCreatinine">
+                <div class="converter-row">
+                  <input type="number" id="crUmol" placeholder="µmol/L" step="any">
+                  <span class="converter-unit">µmol/L</span>
+                </div>
+                <div class="converter-arrow-icon">
+                  <i class="fa-solid fa-arrows-up-down"></i>
+                </div>
+                <div class="converter-row">
+                  <input type="number" id="crMg" placeholder="mg/dL" step="any">
+                  <span class="converter-unit">mg/dL</span>
+                </div>
+              </div>
+
+              <!-- Panel Nhiệt độ -->
+              <div class="converter-panel" id="panelTemp">
+                <div class="converter-row">
+                  <input type="number" id="tempC" placeholder="°C" step="any">
+                  <span class="converter-unit">°C</span>
+                </div>
+                <div class="converter-arrow-icon">
+                  <i class="fa-solid fa-arrows-up-down"></i>
+                </div>
+                <div class="converter-row">
+                  <input type="number" id="tempF" placeholder="°F" step="any">
+                  <span class="converter-unit">°F</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Clinical Scratchpad -->
+            <section class="bento-cell bento-scratchpad scratchpad-widget" aria-label="Ghi chú lâm sàng">
+              <div class="bento-cell-header">
+                <h3 class="bento-cell-title">
+                  <i class="fa-solid fa-note-sticky"></i> Ghi chú lâm sàng
+                </h3>
+              </div>
+              <div class="scratchpad-container">
+                <textarea id="scratchpadText" class="scratchpad-textarea"
+                  placeholder="Ghi nhanh chẩn đoán, kết quả xét nghiệm, công thức..."></textarea>
+                <div class="scratchpad-actions">
+                  <div class="scratchpad-left-actions">
+                    <button class="btn-widget" id="scratchpadCopyBtn" title="Sao chép toàn bộ">
+                      <i class="fa-regular fa-copy"></i> Chép
+                    </button>
+                    <button class="btn-widget" id="scratchpadExportBtn" title="Tải về file .txt">
+                      <i class="fa-solid fa-download"></i> Xuất
+                    </button>
+                    <button class="btn-widget btn-danger" id="scratchpadClearBtn" title="Xóa ghi chú">
+                      <i class="fa-regular fa-trash-can"></i> Xóa
+                    </button>
+                  </div>
+                  <select class="scratchpad-template-select" id="scratchpadTemplateSelect"
+                    aria-label="Mẫu ghi chú nhanh">
+                    <option value="" disabled selected>Mẫu nhanh</option>
+                    <option value="summary">Tóm tắt Bệnh án</option>
+                    <option value="lab">Kết quả Lab/CLS</option>
+                    <option value="rx">Y lệnh tham khảo</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+          </div><!-- /.bento-side-col -->
+
+        </div><!-- /.bento-body -->
+
+        <!-- ── FULL WIDTH HEATMAP FOOTER STRIP ────────────── -->
+        <section class="bento-cell" style="padding: 0; border: none; background: transparent;" aria-label="Tiến độ học tập lâm sàng">
           <div id="clinical-progress-heatmap"></div>
         </section>
 
@@ -593,6 +773,7 @@
   <script src="./js/homepage-widgets.js" defer></script>
   <script src="./js/homepage-effects.js" defer></script>
   <script src="./js/toc.js" defer></script>
+  <script src="./js/mui-port.js" defer></script>
   <script type="module" src="./src/index.ts"></script>
 </body>
 

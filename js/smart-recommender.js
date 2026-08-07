@@ -43,7 +43,7 @@ function initSmartRecommender() {
   const container = document.getElementById("smart-recommendations-container");
   if (!container) return;
 
-  const depth = typeof getPathDepthPrefix === "function" ? getPathDepthPrefix() : "./";
+  const depth = typeof window.getPathDepthPrefix === "function" ? window.getPathDepthPrefix() : (typeof getPathDepthPrefix === "function" ? getPathDepthPrefix() : "./");
 
   let html = `
     <div style="margin-top: 2rem;">

@@ -20,6 +20,26 @@
   }
 })();
 
+// Global Path Depth Helper
+window.getPathDepthPrefix = function() {
+  const holder = document.getElementById('header-placeholder') || document.getElementById('footer-placeholder');
+  const path = holder?.dataset?.headerPath || holder?.dataset?.footerPath;
+  if (path) {
+    const idx = path.lastIndexOf('components/');
+    if (idx !== -1) return path.substring(0, idx);
+    const depth = (path.match(/\.\.\//g) || []).length;
+    return '../'.repeat(depth);
+  }
+  const pathname = window.location.pathname.replace(/\\/g, '/');
+  const srcIdx = pathname.indexOf('/src/content/');
+  if (srcIdx !== -1) {
+    const sub = pathname.substring(srcIdx + '/src/content/'.length);
+    const parts = sub.split('/').filter(Boolean);
+    return '../'.repeat(parts.length + 1);
+  }
+  return './';
+};
+
 // Auto-load Clinical Tools & Universal Web Components
 (function loadGlobalComponents() {
       if (!document.querySelector('script[src*="tool-components.js"]')) {
@@ -130,9 +150,98 @@
         }, 150);
       }
 
-      // --- Dynamic Dropdown for S.lý - S.lý bệnh ---
-      // Hàm này được gọi ngay và cũng có thể được gọi lại từ header.js sau khi inject sidebar
+      // --- Dynamic Teleport Dropdown for Cơ sở (GP - SL & CCBS - SBL) ---
+      function initCoSoDropdown() {
+        const wrappers = document.querySelectorAll('.header-module-dropdown-wrapper, .bento-dropdown-card');
+        wrappers.forEach(wrapper => {
+          if (wrapper.dataset.cosoInited === 'true') return;
+
+          const menu = wrapper.querySelector('.header-dropdown-menu, .bento-card-dropdown-menu');
+          if (!menu) return;
+
+          wrapper.dataset.cosoInited = 'true';
+
+          // Teleport menu to document.body to bypass overflow constraints
+          document.body.appendChild(menu);
+
+          const triggerBtn = wrapper.querySelector('.header-dropdown-trigger, .bento-mod-cta') || wrapper;
+
+          const updatePos = () => {
+            const rect = triggerBtn.getBoundingClientRect();
+            menu.style.position = 'fixed';
+            menu.style.top = (rect.bottom + 6) + 'px';
+            menu.style.left = Math.max(10, Math.min(window.innerWidth - 240, rect.left)) + 'px';
+          };
+
+          const openMenu = () => {
+            document.querySelectorAll('.header-dropdown-menu.open, .bento-card-dropdown-menu.open').forEach(m => {
+              if (m !== menu) m.classList.remove('open');
+            });
+            document.querySelectorAll('.header-module-dropdown-wrapper.open, .bento-dropdown-card.open').forEach(w => {
+              if (w !== wrapper) w.classList.remove('open');
+            });
+
+            updatePos();
+            menu.classList.add('open');
+            wrapper.classList.add('open');
+          };
+
+          const closeMenu = () => {
+            menu.classList.remove('open');
+            wrapper.classList.remove('open');
+          };
+
+          // Toggle on click
+          triggerBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (menu.classList.contains('open')) {
+              closeMenu();
+            } else {
+              openMenu();
+            }
+          });
+
+          // Hover handlers with grace period
+          let hoverTimer;
+          wrapper.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimer);
+            openMenu();
+          });
+          wrapper.addEventListener('mouseleave', () => {
+            hoverTimer = setTimeout(() => {
+              if (!menu.matches(':hover')) {
+                closeMenu();
+              }
+            }, 150);
+          });
+
+          menu.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimer);
+          });
+          menu.addEventListener('mouseleave', () => {
+            closeMenu();
+          });
+
+          window.addEventListener('resize', () => {
+            if (menu.classList.contains('open')) updatePos();
+          });
+          window.addEventListener('scroll', () => {
+            if (menu.classList.contains('open')) updatePos();
+          }, { capture: true, passive: true });
+
+          // Close on outside click
+          document.addEventListener('click', (e) => {
+            if (!wrapper.contains(e.target) && !menu.contains(e.target)) {
+              closeMenu();
+            }
+          });
+        });
+      }
+
+      // Dynamic Dropdown cho S.lý cũ
       function initSinhLyDropdown() {
+        initCoSoDropdown();
         document.querySelectorAll('.nav-item').forEach(item => {
           if (item.closest('.nav-dropdown-wrapper')) return; // đã xử lý rồi, bỏ qua
           const text = item.textContent || '';
@@ -174,11 +283,11 @@
           menu.innerHTML = `
             <a href="${physioUrl}" class="nav-dropdown-item">
               <span class="dropdown-item-icon">🧬</span>
-              <span>Giải phẫu & Sinh lý</span>
+              <span>GP - SL</span>
             </a>
             <a href="${pathoUrl}" class="nav-dropdown-item">
               <span class="dropdown-item-icon">🔬</span>
-              <span>Cơ chế bệnh sinh - SLB</span>
+              <span>CCBS - SBL</span>
             </a>
           `;
           wrapper.appendChild(menu);
@@ -222,11 +331,16 @@
 
       // Export để header.js có thể gọi lại
       window.initSinhLyDropdown = initSinhLyDropdown;
+      window.initCoSoDropdown = initCoSoDropdown;
 
       // Gọi ngay khi DOM đã sẵn sàng
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSinhLyDropdown);
+        document.addEventListener('DOMContentLoaded', () => {
+          initCoSoDropdown();
+          initSinhLyDropdown();
+        });
       } else {
+        initCoSoDropdown();
         initSinhLyDropdown();
       }
 

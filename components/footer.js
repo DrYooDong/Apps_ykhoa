@@ -39,24 +39,23 @@ async function loadFooter() {
 }
 
 function fixFooterLinks(holder, footerPath) {
-  let basePath = '';
-  const lastSlashIdx = footerPath.lastIndexOf('/');
-  if (lastSlashIdx !== -1) {
-    basePath = footerPath.substring(0, lastSlashIdx + 1);
+  let projectRoot = '';
+  if (footerPath) {
+    const idx = footerPath.lastIndexOf('components/');
+    if (idx !== -1) {
+      projectRoot = footerPath.substring(0, idx);
+    } else {
+      const depth = (footerPath.match(/\.\.\//g) || []).length;
+      projectRoot = '../'.repeat(depth);
+    }
   }
-  const projectRoot = basePath.replace(/components\/$/, '');
 
   const links = holder.querySelectorAll('a');
   links.forEach(link => {
     const href = link.getAttribute('href');
-    if (href && !href.startsWith('http') && !href.startsWith('#')) {
-      if (href.startsWith('/')) {
-        link.setAttribute('href', projectRoot + href.substring(1));
-      } else if (href.startsWith('./')) {
-        link.setAttribute('href', projectRoot + href.substring(2));
-      } else if (!href.startsWith('../')) {
-        link.setAttribute('href', projectRoot + href);
-      }
+    if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+      const cleanHref = href.replace(/^(\.\.\/|\.\/|\/)+/, '');
+      link.setAttribute('href', projectRoot + cleanHref);
     }
   });
 }

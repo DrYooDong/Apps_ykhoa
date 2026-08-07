@@ -1,0 +1,115 @@
+/* ============================================================
+   FLOATING WINDOW COMPONENT STYLING — Mantine v9 Inspired
+   ============================================================ */
+
+.floating-window {
+  position: fixed;
+  z-index: 1000;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 12px);
+  box-shadow: var(--shadow-lg, 0 12px 32px rgba(0,0,0,0.2));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 280px;
+  min-height: 180px;
+  max-width: 90vw;
+  max-height: 90vh;
+  transition: box-shadow var(--tr, 220ms ease);
+}
+
+.floating-window.is-dragging {
+  opacity: 0.92;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  user-select: none;
+}
+
+.floating-window__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  background: var(--color-surface-2);
+  border-bottom: 1px solid var(--color-border);
+  cursor: grab;
+  user-select: none;
+}
+
+.floating-window__header:active {
+  cursor: grabbing;
+}
+
+.floating-window__title {
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.floating-window__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.floating-window__btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm, 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background var(--tr), color var(--tr);
+}
+
+.floating-window__btn:hover {
+  background: var(--color-surface-offset);
+  color: var(--color-text);
+}
+
+.floating-window__btn--close:hover {
+  background: var(--color-danger-hl);
+  color: var(--color-danger);
+}
+
+.floating-window__body {
+  flex: 1;
+  padding: 0.85rem;
+  overflow: auto;
+  font-size: var(--text-sm, 0.875rem);
+}
+
+.floating-window.is-minimized {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.floating-window.is-minimized .floating-window__body {
+  display: none;
+}
+
+/* Resize handle ở góc dưới bên phải */
+.floating-window__resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 14px;
+  height: 14px;
+  cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, var(--color-text-muted) 50%);
+  opacity: 0.4;
+  transition: opacity var(--tr);
+}
+
+.floating-window__resize-handle:hover {
+  opacity: 1;
+}

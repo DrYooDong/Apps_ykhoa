@@ -20,14 +20,18 @@
   <link rel="stylesheet" href="../../../css/components/header.css">
   <link rel="stylesheet" href="../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/mui-port.css">
 
   <script src="../../../js/main.js" defer></script>
   <script src="../../../components/header.js" defer></script>
   <script src="../../../components/footer.js" defer></script>
+  <script src="../../../js/mui-port.js" defer></script>
 
   <link rel="manifest" href="app.webmanifest">
   <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
   <link rel="stylesheet" href="../../../css/components/cong-cu.css">
+  <link rel="stylesheet" href="../../../css/components/overflow-list.css">
+  <link rel="stylesheet" href="../../../css/components/clinical-calendar.css">
 </head>
 
 
@@ -275,6 +279,27 @@
   <script src="../../../js/tools-data.js" defer></script>
   <script src="../../../js/cong-cu-logic.js" defer></script>
   <script src="../../../js/lab-values.js" defer></script>
+  <script type="module">
+    import { ClinicalCalendar } from '../../../js/components/clinical-calendar.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Nhúng Widget Lịch Lâm Sàng thực tế vào Sidebar của Hub Công Cụ
+      const widgetSidebar = document.querySelector('.layout-widget-sidebar');
+      if (widgetSidebar) {
+        const calSection = document.createElement('section');
+        calSection.className = 'widget-card';
+        calSection.style.marginTop = '1rem';
+        calSection.innerHTML = `
+          <div class="widget-card-title">
+            <h3><i class="fa-solid fa-calendar-days"></i> Lịch Ca Bệnh & Dùng Thuốc</h3>
+          </div>
+          <div id="clinical-calendar-widget"></div>
+        `;
+        widgetSidebar.appendChild(calSection);
+        new ClinicalCalendar(calSection.querySelector('#clinical-calendar-widget'));
+      }
+    });
+  </script>
 </body>
 
 </html>

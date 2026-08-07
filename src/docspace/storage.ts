@@ -89,7 +89,7 @@ export function createProfile(id: string, displayName: string, specialty?: strin
   const profile: DoctorProfile = {
     id: id.trim(),
     displayName: displayName.trim(),
-    specialty,
+    ...(specialty ? { specialty } : {}),
     createdAt: now(),
     lastActiveAt: now(),
     quickLinks: [...DEFAULT_QUICK_LINKS],
@@ -116,9 +116,10 @@ export function getProfile(id: string): DoctorProfile | null {
   if (profile && profile.quickLinks) {
     let modified = false;
     profile.quickLinks = profile.quickLinks.map(link => {
-      if (URL_MIGRATION_MAP[link.href]) {
+      const newHref = URL_MIGRATION_MAP[link.href];
+      if (newHref) {
         modified = true;
-        return { ...link, href: URL_MIGRATION_MAP[link.href] };
+        return { ...link, href: newHref };
       }
       return link;
     });
@@ -253,9 +254,9 @@ export async function saveSBAR(profileId: string, data: Omit<SBARRecord, 'id' | 
 export async function updateSBAR(profileId: string, id: string, data: Partial<SBARRecord>, isLockAction = false): Promise<void> {
   const records = load<SBARRecord>(profileId, 'sbars');
   const idx = records.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    if (records[idx].isLocked) return; // Prevent modifying locked records
-    let updatedRecord = { ...records[idx], ...data, updatedAt: now() };
+  if (idx >= 0 && records[idx]) {
+    if (records[idx]!.isLocked) return; // Prevent modifying locked records
+    let updatedRecord: SBARRecord = { ...records[idx]!, ...data, updatedAt: now() };
     updatedRecord = await signRecord(updatedRecord, isLockAction ? 'lock' : 'update');
     records[idx] = updatedRecord;
     save(profileId, 'sbars', records);
@@ -266,8 +267,8 @@ export function deleteSBAR(profileId: string, id: string): void {
   // Soft delete
   const records = load<SBARRecord>(profileId, 'sbars');
   const idx = records.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    records[idx].deletedAt = now();
+  if (idx >= 0 && records[idx]) {
+    records[idx]!.deletedAt = now();
     save(profileId, 'sbars', records);
   }
 }
@@ -323,7 +324,7 @@ export function addPatientToShift(
     bed: data.bed,
     diagnosis: data.diagnosis,
     note: data.note,
-    flag: data.flag,
+    ...(data.flag ? { flag: data.flag } : {}),
     addedAt: now(),
     updatedAt: now(),
   };
@@ -342,8 +343,8 @@ export function updateOnCallPatient(
   const shift = shifts.find(s => s.id === shiftId);
   if (!shift) return;
   const idx = shift.patients.findIndex(p => p.id === patientId);
-  if (idx >= 0) {
-    shift.patients[idx] = { ...shift.patients[idx], ...data, updatedAt: now() };
+  if (idx >= 0 && shift.patients[idx]) {
+    shift.patients[idx] = { ...shift.patients[idx]!, ...data, updatedAt: now() };
     save(profileId, 'shifts', shifts);
   }
 }
@@ -404,8 +405,8 @@ export function deleteCase(profileId: string, id: string): void {
   // Soft delete
   const records = load<CaseRecord>(profileId, 'cases');
   const idx = records.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    records[idx].deletedAt = now();
+  if (idx >= 0 && records[idx]) {
+    records[idx]!.deletedAt = now();
     save(profileId, 'cases', records);
   }
 }
@@ -441,8 +442,8 @@ export function saveNote(profileId: string, data: Omit<PersonalNote, 'id' | 'doc
 export function updateNote(profileId: string, id: string, data: Partial<PersonalNote>): void {
   const records = load<PersonalNote>(profileId, 'notes');
   const idx = records.findIndex(n => n.id === id);
-  if (idx >= 0) {
-    records[idx] = { ...records[idx], ...data, updatedAt: now() };
+  if (idx >= 0 && records[idx]) {
+    records[idx] = { ...records[idx], ...data, updatedAt: now() } as PersonalNote;
     save(profileId, 'notes', records);
   }
 }
@@ -450,8 +451,8 @@ export function updateNote(profileId: string, id: string, data: Partial<Personal
 export function deleteNote(profileId: string, id: string): void {
   const records = load<PersonalNote>(profileId, 'notes');
   const idx = records.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    records[idx].deletedAt = now();
+  if (idx >= 0 && records[idx]) {
+    records[idx]!.deletedAt = now();
     save(profileId, 'notes', records);
   }
 }
@@ -481,8 +482,8 @@ export function saveDrugEntry(profileId: string, data: Omit<DrugJournalEntry, 'i
 export function updateDrugEntry(profileId: string, id: string, data: Partial<DrugJournalEntry>): void {
   const records = load<DrugJournalEntry>(profileId, 'drugs');
   const idx = records.findIndex(d => d.id === id);
-  if (idx >= 0) {
-    records[idx] = { ...records[idx], ...data };
+  if (idx >= 0 && records[idx]) {
+    records[idx] = { ...records[idx], ...data } as DrugJournalEntry;
     save(profileId, 'drugs', records);
   }
 }
@@ -490,8 +491,8 @@ export function updateDrugEntry(profileId: string, id: string, data: Partial<Dru
 export function deleteDrugEntry(profileId: string, id: string): void {
   const records = load<DrugJournalEntry>(profileId, 'drugs');
   const idx = records.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    records[idx].deletedAt = now();
+  if (idx >= 0 && records[idx]) {
+    records[idx]!.deletedAt = now();
     save(profileId, 'drugs', records);
   }
 }
@@ -527,8 +528,8 @@ export function saveProtocol(profileId: string, data: Omit<PersonalProtocol, 'id
 export function updateProtocol(profileId: string, id: string, data: Partial<PersonalProtocol>): void {
   const records = load<PersonalProtocol>(profileId, 'protocols');
   const idx = records.findIndex(p => p.id === id);
-  if (idx >= 0) {
-    records[idx] = { ...records[idx], ...data, updatedAt: now() };
+  if (idx >= 0 && records[idx]) {
+    records[idx] = { ...records[idx], ...data, updatedAt: now() } as PersonalProtocol;
     save(profileId, 'protocols', records);
   }
 }
@@ -536,8 +537,8 @@ export function updateProtocol(profileId: string, id: string, data: Partial<Pers
 export function deleteProtocol(profileId: string, id: string): void {
   const records = load<PersonalProtocol>(profileId, 'protocols');
   const idx = records.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    records[idx].deletedAt = now();
+  if (idx >= 0 && records[idx]) {
+    records[idx]!.deletedAt = now();
     save(profileId, 'protocols', records);
   }
 }
@@ -552,7 +553,7 @@ export function getAllSoapPatients(profileId: string, includeDeleted = false): S
     .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
 
   if (patients.length === 0 && !includeDeleted) {
-    const today = new Date().toISOString().split('T')[0];
+    const today: string = new Date().toISOString().split('T')[0]!;
     // Seed initial mock patient if empty
     const mock: SoapPatientRecord = {
       id: 'mock-1',
@@ -613,7 +614,7 @@ export function getAllSoapPatients(profileId: string, includeDeleted = false): S
   // Auto ensure dailyLogs array exists
   patients.forEach(p => {
     if (!p.dailyLogs || p.dailyLogs.length === 0) {
-      const pDate = p.createdAt ? p.createdAt.split('T')[0] : new Date().toISOString().split('T')[0];
+      const pDate: string = (p.createdAt ? p.createdAt.split('T')[0] : new Date().toISOString().split('T')[0]) || new Date().toISOString().split('T')[0]!;
       p.dailyLogs = [{
         id: `log-${p.id}`,
         date: pDate,
@@ -667,7 +668,7 @@ export function saveSoapPatient(profileId: string, data: Omit<SoapPatientRecord,
     dailyLogs: [initialLog],
     createdAt: now(),
     updatedAt: now(),
-  };
+  } as SoapPatientRecord;
   records.unshift(record);
   save(profileId, 'soaps', records);
   
@@ -679,22 +680,22 @@ export function saveSoapPatient(profileId: string, data: Omit<SoapPatientRecord,
 export function updateSoapPatient(profileId: string, id: string, data: Partial<SoapPatientRecord>): void {
   const records = load<SoapPatientRecord>(profileId, 'soaps');
   const idx = records.findIndex(p => p.id === id);
-  if (idx >= 0) {
-    const existing = records[idx];
-    const updated = { ...existing, ...data, updatedAt: now() };
+  if (idx >= 0 && records[idx]) {
+    const existing = records[idx]!;
+    const updated: SoapPatientRecord = { ...existing, ...data, updatedAt: now() };
     
     // Sync current active date log
     if (updated.dailyLogs && updated.activeDate) {
       const logIdx = updated.dailyLogs.findIndex(l => l.date === updated.activeDate);
-      if (logIdx >= 0) {
+      if (logIdx >= 0 && updated.dailyLogs[logIdx]) {
         updated.dailyLogs[logIdx] = {
-          ...updated.dailyLogs[logIdx],
+          ...updated.dailyLogs[logIdx]!,
           dayOfIllness: updated.dayOfIllness,
           sNotes: updated.sNotes,
           oNotes: updated.oNotes,
           aAssessment: updated.aAssessment,
           pPlan: updated.pPlan,
-          prescriptions: updated.prescriptions,
+          prescriptions: updated.prescriptions || [],
           clsOrders: updated.clsOrders,
           clsResults: updated.clsResults,
           isEmrEntered: updated.isEmrEntered,
@@ -718,6 +719,7 @@ export function addSoapDailyLog(profileId: string, id: string, newDate: string):
   if (idx < 0) return null;
 
   const patient = records[idx];
+  if (!patient) return null;
   patient.dailyLogs = patient.dailyLogs || [];
 
   // Check if date already exists
@@ -782,6 +784,7 @@ export function switchSoapPatientDate(profileId: string, id: string, targetDate:
   if (idx < 0) return null;
 
   const patient = records[idx];
+  if (!patient) return null;
   const targetLog = (patient.dailyLogs || []).find(l => l.date === targetDate);
 
   if (targetLog) {
@@ -806,8 +809,8 @@ export function switchSoapPatientDate(profileId: string, id: string, targetDate:
 export function deleteSoapPatient(profileId: string, id: string): void {
   const records = load<SoapPatientRecord>(profileId, 'soaps');
   const idx = records.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    records[idx].deletedAt = now();
+  if (idx >= 0 && records[idx]) {
+    records[idx]!.deletedAt = now();
     save(profileId, 'soaps', records);
   }
 }
@@ -1129,8 +1132,8 @@ export function savePatient(profileId: string, data: Omit<PatientDemographic, 'i
 export function updatePatient(profileId: string, id: string, data: Partial<PatientDemographic>): void {
   const records = load<PatientDemographic>(profileId, 'patients');
   const idx = records.findIndex(p => p.id === id);
-  if (idx >= 0) {
-    records[idx] = { ...records[idx], ...data, updatedAt: now() };
+  if (idx >= 0 && records[idx]) {
+    records[idx] = { ...records[idx], ...data, updatedAt: now() } as PatientDemographic;
     save(profileId, 'patients', records);
   }
 }
@@ -1138,8 +1141,8 @@ export function updatePatient(profileId: string, id: string, data: Partial<Patie
 export function deletePatient(profileId: string, id: string): void {
   const records = load<PatientDemographic>(profileId, 'patients');
   const idx = records.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    records[idx].deletedAt = now();
+  if (idx >= 0 && records[idx]) {
+    records[idx]!.deletedAt = now();
     save(profileId, 'patients', records);
   }
 }

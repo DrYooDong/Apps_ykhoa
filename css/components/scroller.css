@@ -1,0 +1,46 @@
+/* ============================================================
+   CUSTOM SCROLLER COMPONENT — Mantine v9 Inspired
+   Thanh cuộn custom mượt mà cho Sidebar, Code Blocks & Tables
+============================================================ */
+
+.custom-scroller,
+.scroller {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-scroller::-webkit-scrollbar,
+.scroller::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scroller::-webkit-scrollbar-track,
+.scroller::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: var(--radius-full, 9999px);
+}
+
+.custom-scroller::-webkit-scrollbar-thumb,
+.scroller::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full, 9999px);
+  transition: background var(--tr, 220ms ease);
+}
+
+.custom-scroller:hover::-webkit-scrollbar-thumb,
+.scroller:hover::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+}
+
+/* Biến thể ẩn scrollbar nhưng vẫn cho phép scroll */
+.scroller--hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scroller--hidden::-webkit-scrollbar {
+  display: none;
+}

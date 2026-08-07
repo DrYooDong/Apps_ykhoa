@@ -16,7 +16,7 @@ export function evaluateBranch(condition: string, value: number): boolean {
   
   const parts = condition.split('_');
   const op = parts[0];
-  const threshold = parseFloat(parts[1]);
+  const threshold = parseFloat(parts[1] || 'NaN');
 
   if (isNaN(threshold)) return false;
 
@@ -40,18 +40,18 @@ export function lookupValue(table: Record<string, string>, value: number): strin
     // Tách "weight_40_59" -> ["weight", "40", "59"]
     const parts = key.split('_');
     if (parts.length >= 3) {
-      const min = parseFloat(parts[parts.length - 2]);
-      const max = parseFloat(parts[parts.length - 1]);
+      const min = parseFloat(parts[parts.length - 2] || 'NaN');
+      const max = parseFloat(parts[parts.length - 1] || 'NaN');
       if (!isNaN(min) && !isNaN(max)) {
         if (value >= min && value <= max) {
           return resultStr;
         }
       }
     } else if (parts.length === 2 && parts[0] === 'gte') {
-      const min = parseFloat(parts[1]);
+      const min = parseFloat(parts[1] || 'NaN');
       if (value >= min) return resultStr;
     } else if (parts.length === 2 && parts[0] === 'lt') {
-      const max = parseFloat(parts[1]);
+      const max = parseFloat(parts[1] || 'NaN');
       if (value < max) return resultStr;
     }
   }
@@ -69,6 +69,7 @@ export function evaluateStaticFormula(formula: string, context: Record<string, n
   if (parts.length !== 3) return { value: null, error: 'Định dạng công thức tĩnh không hợp lệ' };
 
   const [varName, op, valStr] = parts;
+  if (!varName || !valStr) return { value: null, error: 'Biến công thức không hợp lệ' };
   const ctxVal = context[varName];
   const operand = parseFloat(valStr);
 

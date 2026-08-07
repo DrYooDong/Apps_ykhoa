@@ -96,6 +96,9 @@ Các Skills sau đây đã được tạo và sẵn sàng sử dụng:
 | `medical-content-formatter` | Chuẩn hóa định dạng bài viết Y khoa Mobile-first, HTML Semantic & UI Components |
 | `medical-humanizer` | Tự động phát hiện & loại bỏ dấu vết văn bản AI, chuẩn hóa văn phong lâm sàng súc tích, chuẩn y học |
 | `medical-content-matrix` | Quy hoạch ma trận phân loại nội dung y khoa, sơ đồ thực thể tri thức (Entity Graph) & kiến trúc LLM-Wiki hạt nhân cho 7 phân hệ CliniPortal |
+| `medical-privacy-fl` | AI Y tế Bảo vệ Quyền riêng tư (Privacy-Preserving AI), Federated Learning, MAML cá nhân hóa, Differential Privacy (DP-RDP), Lượng thể nén dữ liệu |
+| `medical-dashboard-bento` | Thiết kế Bento Grid Dashboard Y khoa thuần Vanilla Web, KPI Sinh hiệu, đồng hồ an toàn Gauge SVG, mạng lưới IoT Node & Bảng đối sánh y khoa |
+
 
 ---
 
