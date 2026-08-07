@@ -299,22 +299,9 @@
           createdAt: study.createdAt
         };
 
-        if (study.parts) {
-          payload.parts = JSON.stringify(study.parts);
-        }
-
-        let { error } = await supabaseClient
+        const { error } = await supabaseClient
           .from('clinical_guidelines')
           .upsert(payload, { onConflict: 'id' });
-          
-        if (error && error.message && error.message.includes("'parts'")) {
-          // Fallback: If 'parts' column doesn't exist in Supabase table schema, retry without 'parts'
-          delete payload.parts;
-          const retry = await supabaseClient
-            .from('clinical_guidelines')
-            .upsert(payload, { onConflict: 'id' });
-          error = retry.error;
-        }
 
         if (error) throw error;
         console.log('Saved to Supabase successfully');
