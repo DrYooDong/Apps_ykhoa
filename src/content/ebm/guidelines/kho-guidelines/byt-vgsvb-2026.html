@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn chẩn đoán và điều trị viêm gan vi rút B theo Quyết định 1740/QĐ-BYT năm 2026 của Bộ Y tế Việt Nam. Tiêu chuẩn khởi trị NAs mới, quy ước ALT nam/nữ, dự phòng MTCT và quản lý suy thận.">
+  <title>Bộ Y Tế 2026: Hướng Dẫn Chẩn Đoán & Điều Trị Viêm Gan Vi Rút B – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-red { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.7rem, 3.8vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.75em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.92rem; opacity: 0.85; max-width: 720px; margin-bottom: 1.5rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 5px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .pillars-nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--red); }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .sec-hdr { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.2rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox-title, .infobox > div > strong:first-child { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; }
+    .regimen-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 720px; }
+    .regimen-table thead th { padding: 0.75rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; text-align: left; background: var(--surface-2); border-bottom: 2px solid var(--border-light); color: var(--text); }
+    .regimen-table td { padding: 0.85rem 0.9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .regimen-table tbody tr:hover td { background: #f8fafc; }
+    .rx-tag { display: inline-block; background: var(--border-light); color: var(--text-muted); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 5px; margin: 0.15rem 0.1rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 600; }
+    .rx-tag.danger { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); font-weight: 600; }
+
+    /* CRITERIA LIST */
+    .crit-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .crit-item { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1rem 1.25rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .crit-num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; flex-shrink: 0; }
+    .crit-content h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.3rem; }
+    .crit-content p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .hero { padding: 2.5rem 1rem 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Bộ Y Tế 2026: Hướng Dẫn Chẩn Đoán & Điều Trị Viêm Gan Vi Rút B</div>
+    <div class="topnav-badges">
+      <span class="badge badge-red">BYT Việt Nam 2026</span>
+      <span class="badge badge-green">QĐ 1740/QĐ-BYT</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🇻🇳 Bộ Y Tế Việt Nam • Quyết Định 1740/QĐ-BYT</div>
+      <h1 class="hero-title">
+        <span>Vietnam MOH Guidelines on Diagnosis & Treatment of Hepatitis B Virus Infection</span>
+        Hướng Dẫn Chẩn Đoán và Điều Trị Viêm Gan Vi Rút B (2026)
+      </h1>
+      <p class="hero-subtitle">
+        Văn bản pháp lý chuyên môn cập nhật toàn diện thay thế Quyết định 3310/QĐ-BYT (2019). Mở rộng chỉ định điều trị kháng vi rút NAs, chuẩn hóa ngưỡng men gan ALT nam/nữ, tối ưu hóa quy trình dự phòng lây truyền từ mẹ sang con và quản lý suy thận.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📅 Ban hành: 16/06/2026</div>
+        <div class="hero-meta-item">✍️ Người ký: Thứ trưởng Trần Văn Thuấn</div>
+        <div class="hero-meta-item">🔬 Cơ quan: Cục Quản lý Khám, chữa bệnh & Các Hội Gan Mật / Truyền Nhiễm</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Dịch Tễ & Quy Ước</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Sàng Lọc & Huyết Thanh</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Viêm Gan B Cấp</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Viêm Gan B Mạn & NAs</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Quần Thể Đặc Biệt</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Kháng Thuốc & Phụ Lục</a>
+    </div>
+  </div>
+
+  <!-- CONTENT CONTAINER -->
+  <div class="page-content">
+
+    <!-- SECTION 1: CĂN CỨ PHÁP LÝ & QUY ƯỚC -->
+    <section id="sec-1" class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📜</span>
+        <h2 class="sec-title">1. Căn Cứ Pháp Lý, Dịch Tễ Học & Thuật Ngữ Lâm SÀng</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox info">
+          <span class="infobox-icon">ℹ️</span>
+          <div>
+            <strong>Văn Bản Pháp Lý Hiệu Lực:</strong>
+            Quyết định số 1740/QĐ-BYT ban hành ngày 16/06/2026 chính thức có hiệu lực từ ngày ký và thay thế cho Hướng dẫn ban hành kèm Quyết định 3310/QĐ-BYT (29/07/2019).
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Đặc Điểm Dịch Tễ Việt Nam:</strong>
+            Tỷ lệ lưu hành HBsAg người lớn ở Việt Nam ở mức rất cao (<strong>≥ 9,4%</strong>). Con đường lây truyền chủ yếu tại Việt Nam là <strong>lây từ mẹ sang con</strong>. HBV là nguyên nhân hàng đầu gây xơ gan và ung thư biểu mô tế bào gan (HCC).
+          </div>
+        </div>
+
+        <div class="infobox success">
+          <span class="infobox-icon">📌</span>
+          <div>
+            <strong>Quy Ước Men Gan ALT Bình Thường (ULN):</strong>
+            Trong hướng dẫn 2026, giới hạn trên bình thường (ULN) của ALT được quy định thống nhất trên lâm sàng là:
+            <br>• <strong>Nam giới: 30 U/L</strong>
+            <br>• <strong>Nữ giới: 19 U/L</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SÀNG LỌC VÀ HUYẾT THÀNH HỌC -->
+    <section id="sec-2" class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🧪</span>
+        <h2 class="sec-title">2. Sàng Lọc Vấn Đề Nhiễm HBV & Phiên Giải Huyết Thanh Học</h2>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">BẢNG 1: PHIÊN GIẢI KẾT QUẢ XÉT NGHIỆM HUYẾT THÀNH HỌC (QĐ 1740/QĐ-BYT)</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>HBsAg</th>
+                <th>anti-HBc</th>
+                <th>anti-HBs</th>
+                <th>Phiên Giải Kết Quả</th>
+                <th>Hướng Dẫn Quản Lý Lâm Sàng</th>
+                <th>Tiêm Vắc Xin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rx-tag danger">DƯƠNG TÍNH</span></td>
+                <td>Dương tính</td>
+                <td>Bất kỳ</td>
+                <td><strong>Viêm gan B mạn</strong></td>
+                <td>Kết nối ngay với cơ sở chuyên khoa để quản lý và xét nghiệm đánh giá chỉ định điều trị.</td>
+                <td><strong style="color: var(--red);">Không</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Âm tính</strong></td>
+                <td>Dương tính</td>
+                <td>≥ 10 IU/L</td>
+                <td><strong>Hồi phục sau nhiễm quá khứ</strong></td>
+                <td>Không cần theo dõi chuyên khoa, ngoại trừ khi bị suy giảm miễn dịch hoặc dùng thuốc ức chế miễn dịch/hóa trị.</td>
+                <td><strong>Không</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Âm tính</strong></td>
+                <td>Dương tính</td>
+                <td>&lt; 10 IU/L</td>
+                <td><strong>Hồi phục quá khứ</strong> hoặc <strong>Dương tính giả</strong></td>
+                <td>Chỉ định xét nghiệm HBV DNA nếu người bệnh bị suy giảm miễn dịch hoặc nghi ngờ Viêm gan B thể ẩn (OBI).</td>
+                <td><strong>Không</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Âm tính</strong></td>
+                <td>Âm tính</td>
+                <td>≥ 10 IU/L</td>
+                <td><strong>Đã có miễn dịch bảo vệ (Vắc xin)</strong></td>
+                <td>Không cần xét nghiệm thêm. Tiếp tục tiêm cho đủ mũi nếu chưa hoàn thành lịch tiêm.</td>
+                <td><strong>Không</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Âm tính</strong></td>
+                <td>Âm tính</td>
+                <td>&lt; 10 IU/L</td>
+                <td><strong>Chưa nhiễm, chưa có miễn dịch</strong></td>
+                <td>Kiểm tra lại anti-HBs sau 1 - 2 tháng kể từ khi hoàn thành đầy đủ lịch tiêm vắc xin phòng bệnh.</td>
+                <td><span class="rx-tag preferred">CÓ (Tiêm đủ)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: VIÊM GAN B CẤP -->
+    <section id="sec-3" class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🚑</span>
+        <h2 class="sec-title">3. Chẩn Đoán Và Điều Trị Viêm Gan B Cấp</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox info">
+          <span class="infobox-icon">🔍</span>
+          <div>
+            <strong>Tiêu Chuẩn Chẩn Đoán Viêm Gan B Cấp:</strong>
+            <br>• <strong>Tiền sử phơi nhiễm:</strong> Tiếp xúc nguồn nguy cơ từ 4 - 24 tuần trước khi phát bệnh.
+            <br>• <strong>Cận lâm sàng:</strong> AST, ALT tăng rất cao (thường <strong>&gt; 5 ULN</strong>); <strong>Anti-HBc IgM (+)</strong> và <strong>HBsAg (+)</strong>.
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">💊</span>
+          <div>
+            <strong>Nguyên Tắc Điều Trị Kháng Vi Rút (NAs) Trong Viêm Gan B Cấp:</strong>
+            <br>Hầu hết viêm gan B cấp <em>không cần điều trị kháng vi rút</em> mà chỉ cần nghỉ ngơi, nâng đỡ. <strong>Chỉ khởi động NAs (TDF, ETV, TAF)</strong> khi đáp ứng 1 trong các tiêu chí:
+            <br>1. <strong>Thể cấp diễn tiến nặng:</strong> Có ≥ 2/3 tiêu chuẩn (Bệnh não gan; Bilirubin toàn phần &gt; 3 mg/dL hoặc trực tiếp &gt; 1.5 mg/dL; INR &gt; 1.5).
+            <br>2. Bệnh kéo dài &gt; 4 tuần và nồng độ Bilirubin tiếp tục tăng.
+            <br>3. Bệnh nhân có tình trạng suy giảm miễn dịch hoặc bệnh đồng mắc nghiêm trọng.
+            <br><em>*Thời gian dùng NAs:*</em> Duy trì cho đến khi <strong>mất HBsAg và củng cố thêm 3 tháng</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: VIÊM GAN B MẠN & NAs -->
+    <section id="sec-4" class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🎯</span>
+        <h2 class="sec-title">4. Viêm Gan B Mạn — Tiêu Chuẩn Điều Trị & Phác Đồ NAs</h2>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">TIÊU CHUẨN KHỞI ĐỘNG THUỐC KHÁNG VI RÚT (NGƯỜI LỚN & TRẺ ≥ 12 TUỔI)</div>
+        
+        <div class="crit-list" style="margin-bottom: 1.5rem;">
+          <div class="crit-item">
+            <div class="crit-num">1</div>
+            <div class="crit-content">
+              <h4>Xơ hóa gan đáng kể (≥ F2) hoặc Xơ gan (F4)</h4>
+              <p>Chỉ định NAs ngay khi có <strong>APRI &gt; 0,5</strong> hoặc <strong>FibroScan &gt; 7 kPa</strong> (hoặc xơ gan F4: APRI &gt; 1, FibroScan &gt; 12,5 kPa) — <strong>KHÔNG PHỤ THUỘC TẢI LƯỢNG HBV DNA HAY MỨC MEN GAN ALT</strong>.</p>
+            </div>
+          </div>
+          <div class="crit-item">
+            <div class="crit-num">2</div>
+            <div class="crit-content">
+              <h4>HBV DNA &gt; 2.000 IU/mL VÀ ALT &gt; ULN</h4>
+              <p>Khởi động điều trị NAs khi có sự kết hợp của tải lượng vi rút cao và tổn thương men gan (đối với vị thành niên, ALT &gt; ULN ít nhất 2 lần xét nghiệm trong 6-12 tháng).</p>
+            </div>
+          </div>
+          <div class="crit-item">
+            <div class="crit-num">3</div>
+            <div class="crit-content">
+              <h4>Có Yếu tố Nguy cơ (+) KÈM HBV DNA trên ngưỡng phát hiện</h4>
+              <p>Chỉ định NAs (không phụ thuộc mức ALT/xơ hóa) khi có 1 trong các yếu tố: Đồng nhiễm (HIV, HCV, HDV); Bệnh đồng mắc (Đái tháo đường, MAFLD); Suy giảm miễn dịch; Biểu hiện ngoài gan; Tiền sử gia đình xơ gan/HCC; hoặc Tái phát sau ngưng NAs.</p>
+            </div>
+          </div>
+          <div class="crit-item">
+            <div class="crit-num">4</div>
+            <div class="crit-content">
+              <h4>Nơi không làm được HBV DNA</h4>
+              <p>Chỉ định NAs khi người bệnh có <strong>ALT &gt; ULN kéo dài liên tục từ 6 - 12 tháng</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">BẢNG 3: BẢNG SO SÁNH DƯỢC LÝ CÁC THUỐC NAs HÀNG ĐẦU (QĐ 1740/QĐ-BYT)</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Tên Thuốc</th>
+                <th>Liều Dùng Chuẩn</th>
+                <th>Lưu Ý Lâm Sàng & Chống Chỉ Định</th>
+                <th>Tác Dụng Phụ Cần Theo Dõi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tenofovir disoproxil fumarate (TDF)</strong></td>
+                <td><span class="rx-tag preferred">300 mg/ngày</span></td>
+                <td><strong>Tránh dùng</strong> khi CrCl &lt; 50 mL/phút, người loãng xương, tuổi cao, hoặc cân nặng &lt; 50 kg. Chỉnh liều khi suy thận.</td>
+                <td>Tổn thương ống thận, suy thận, hội chứng Fanconi, giảm mật độ xương, nhiễm toan lactic.</td>
+              </tr>
+              <tr>
+                <td><strong>Entecavir (ETV)</strong></td>
+                <td><span class="rx-tag preferred">0,5 mg/ngày</span><br>*(1 mg/ngày nếu từng dùng LAM hoặc xơ gan mất bù)*</td>
+                <td><strong>KHÔNG DÙNG CHO PHỤ NỮ MANG THAI</strong>. Giảm liều theo CrCl khi CrCl &lt; 50 mL/phút.</td>
+                <td>Nhiễm toan lactic.</td>
+              </tr>
+              <tr>
+                <td><strong>Tenofovir alafenamide (TAF)</strong></td>
+                <td><span class="rx-tag preferred">25 mg/ngày</span></td>
+                <td><strong>Không cần giảm liều</strong> ở người suy thận nhẹ, vừa, nặng hoặc đang chạy thận nhân tạo. Dùng được cho xơ gan mất bù. Avoid nếu CrCl &lt; 15 không chạy thận.</td>
+                <td>Tăng cân, tăng cholesterol máu, nhiễm toan lactic.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox danger">
+          <span class="infobox-icon">🛑</span>
+          <div>
+            <strong>Bắt Bắt Điều Trị Suốt Đời:</strong>
+            Đối với người bệnh đã có <strong>Xơ gan (F4)</strong> hoặc <strong>Ung thư biểu mô tế bào gan (HCC)</strong>, việc điều trị NAs là bắt buộc kéo dài suốt đời, tuyệt đối không được ngừng thuốc.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: QUẦN THỂ ĐẶC BIỆT -->
+    <section id="sec-5" class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🤰</span>
+        <h2 class="sec-title">5. Hướng Dẫn Quản Lý Cho Các Quần Thể Đặc Biệt</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox success">
+          <span class="infobox-icon">👶</span>
+          <div>
+            <strong>Phụ Nữ Mang Thai & Dự Phòng Lây Truyền Từ Mẹ Sang Con (MTCT):</strong>
+            <br>• <strong>Mẹ đủ tiêu chuẩn điều trị mạn:</strong> Chỉ định dùng <strong>TDF hoặc TAF</strong>.
+            <br>• <strong>Mẹ chưa đủ tiêu chuẩn mạn:</strong> Dùng <strong>TDF hoặc TAF dự phòng từ tuần thai thứ 14 đến sau sinh 3 tháng</strong> nếu <strong>HBV DNA ≥ 200.000 IU/mL</strong> (hoặc HBeAg +).
+            <br>• <strong>Nếu đang dùng ETV mà có thai:</strong> Nhanh chóng chuyển sang <strong>TDF hoặc TAF</strong>.
+            <br>• <strong>Trẻ sơ sinh:</strong> Tiêm <strong>vắc xin HBV sơ sinh trong 24 giờ đầu</strong> + <strong>HBIG trong 24 giờ đầu</strong> (tốt nhất &lt; 12 giờ đầu). Tiêm đủ các mũi tiếp theo lúc 2, 3, 4 tháng.
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">🧸</span>
+          <div>
+            <strong>Trẻ Em Từ 2 - 11 Tuổi:</strong>
+            <br>• <strong>TUYỆT ĐỐI KHÔNG DÙNG NAs CHO TRẺ &lt; 2 TUỔI.</strong>
+            <br>• <strong>Trẻ 2 - 11 tuổi:</strong> Chỉ dùng NAs khi bùng phát dai dẳng (ALT tăng 2 lần/6 tháng + HBV DNA &gt; 2.000 IU/mL), xơ hóa ≥ F2, đồng nhiễm/đồng mắc, hoặc chuẩn bị hóa trị/ức chế miễn dịch.
+            <br>• <em>Liều lượng:</em> ETV 0,015 mg/kg/ngày; TDF gói 8 mg/kg/ngày; TAF 25 mg/ngày (nếu ≥ 6 tuổi và nặng ≥ 25 kg).
+          </div>
+        </div>
+
+        <div class="infobox danger">
+          <span class="infobox-icon">🛡️</span>
+          <div>
+            <strong>Dự Phòng Tái Hoạt (Hóa Trị / Ức Chế Miễn Dịch / Ghép Tạng):</strong>
+            <br>Tầm soát HBsAg, anti-HBc, HBV DNA cho mọi bệnh nhân. Bắt đầu dùng NAs dự phòng (TDF/TAF/ETV) <strong>trước 2 tuần</strong> hoặc cùng lúc với liệu pháp, kéo dài <strong>6 - 12 tháng</strong> sau khi ngừng hẳn liệu pháp (với Rituximab/anti-CD20, duy trì <strong>tối thiểu 12 tháng</strong>).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: KHÁNG THUỐC & PHỤ LỤC -->
+    <section id="sec-6" class="sec-card">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📊</span>
+        <h2 class="sec-title">6. Chẩn Đoán Kháng Thuốc & Hệ Thống Phụ Lục Chuyên Môn</h2>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">PHỤ LỤC 2: QUY ĐỔI XƠ HÓA GAN NITs & CÔNG THỨC APRI</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Mức Độ Xơ Hóa (Metavir)</th>
+                <th>Trị Số FibroScan (kPa)</th>
+                <th>Trị Số Chỉ Số APRI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>F0 – F1</strong> (Không/nhẹ)</td>
+                <td>≤ 7,0 kPa</td>
+                <td>&lt; 0,5</td>
+              </tr>
+              <tr>
+                <td><strong>F ≥ 2</strong> (Đáng kể)</td>
+                <td>&gt; 7,0 và ≤ 9,5 kPa</td>
+                <td>&gt; 0,5 và ≤ 1,0</td>
+              </tr>
+              <tr>
+                <td><strong>F ≥ 3</strong> (Tiến triển)</td>
+                <td>&gt; 9,5 và ≤ 12,5 kPa</td>
+                <td>1,14 – 1,3 C.O.I</td>
+              </tr>
+              <tr>
+                <td><strong>F4</strong> (Xơ gan)</td>
+                <td><strong>&gt; 12,5 kPa</strong></td>
+                <td><strong>&gt; 1,0</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox info">
+          <span class="infobox-icon">🧮</span>
+          <div>
+            <strong>Công Thức Tính Chỉ Số APRI:</strong>
+            $$\text{APRI} = \frac{\left(\frac{\text{AST (U/L)}}{\text{AST}_{\text{ULN}}}\right) \times 100}{\text{Tiểu cầu } (10^9/\text{L})}$$
+            <em>(Trong đó, quy ước $\text{AST}_{\text{ULN}} = 40\text{ U/L}$).</em>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">PHỤ LỤC 4: BẢNG ĐIỀU CHỈNH LIỀU THUỐC NAs THEO MỨC LỌC CẦU THẬN (CrCl)</div>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Thuốc</th>
+                <th>Mức Lọc Cầu Thận (CrCl)</th>
+                <th>Hướng Dẫn Điều Chỉnh Liều Chi Tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>TDF</strong></td>
+                <td>CrCl ≥ 50 mL/phút<br>CrCl 30 – 49 mL/phút<br>CrCl 10 – 29 mL/phút<br>Lọc máu chu kỳ</td>
+                <td><strong>300 mg/ngày</strong><br>Chuyển ETV/TAF hoặc 300 mg <strong>mỗi 48 giờ</strong><br>300 mg <strong>mỗi 72 - 96 giờ</strong><br>300 mg <strong>mỗi 7 ngày</strong> (hoặc sau lọc 12 giờ)</td>
+              </tr>
+              <tr>
+                <td><strong>ETV</strong></td>
+                <td>CrCl ≥ 50 mL/phút<br>CrCl 30 – 49 mL/phút<br>CrCl 10 – 29 mL/phút<br>CrCl &lt; 10 mL/phút / Lọc máu</td>
+                <td><strong>0,5 mg/ngày</strong><br>Chuyển TAF hoặc 0,25 mg/ngày (0,5 mg mỗi 48h)<br>0,15 mg/ngày (0,5 mg mỗi 72h)<br>0,5 mg <strong>mỗi 7 ngày</strong></td>
+              </tr>
+              <tr>
+                <td><strong>TAF</strong></td>
+                <td>Mọi mức CrCl ≥ 15 mL/phút & Lọc máu</td>
+                <td><span class="rx-tag preferred">Giữ nguyên 25 mg/ngày (Không cần giảm liều)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="citation-box" style="margin-top: 1.5rem;">
+          Trích nguồn: Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán, điều trị viêm gan vi rút B</em> (Ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16 tháng 06 năm 2026 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2026.
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

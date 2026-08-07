@@ -186,7 +186,8 @@ Mỗi khi tạo trang tóm tắt Guideline mới, hãy sử dụng khung cấu t
     .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
     .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
     .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
-    .infobox strong { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; margin-bottom: 0.3rem; }
+    .infobox-title, .infobox > div > strong:first-child { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
 
     /* TABLE DESIGN */
     .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }

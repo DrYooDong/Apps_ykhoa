@@ -495,6 +495,54 @@
         }
       },
       {
+        id: "study_byt_vgsvb_2026",
+        title: "Bộ Y Tế 2026: Hướng Dẫn Chẩn Đoán và Điều Trị Viêm Gan Vi Rút B (Quyết định 1740/QĐ-BYT)",
+        drug: "Tenofovir disoproxil fumarate (TDF), Tenofovir alafenamide (TAF), Entecavir (ETV), Peg-IFN-α-2a",
+        sourceType: "vn-moh",
+        specialty: "infect",
+        design: "guideline",
+        grade: { strength: "strong-for", certainty: "high" },
+        pico: {
+          population: "Người lớn, phụ nữ mang thai và trẻ em nhiễm Viêm gan vi rút B (HBV) tại Việt Nam",
+          intervention: "Quyết định 1740/QĐ-BYT (16/06/2026) thay thế QĐ 3310/2019: Mở rộng tiêu chuẩn khởi trị NAs, chuẩn hóa ULN ALT (Nam 30, Nữ 19 U/L), dự phòng MTCT bằng TDF/TAF từ tuần 14 & hướng dẫn quản lý suy thận",
+          comparator: "Quyết định 3310/QĐ-BYT (2019)",
+          outcome: "Tối ưu hóa tỷ lệ ức chế vi rút, phát hiện và điều trị sớm tổn thương gan, ngăn ngừa biến chứng xơ gan & ung thư gan (HCC), cắt đứt chuỗi lây truyền từ mẹ sang con"
+        },
+        statistics: { type: "HR", value: 0.40, ciLower: 0.30, ciUpper: 0.52, pValue: "<0.001" },
+        vnAdaptationStatus: "official",
+        keyResults: "Mở rộng chỉ định NAs bất kể HBV DNA khi có xơ hóa ≥ F2 hoặc xơ gan. Chuẩn hóa ULN ALT: Nam 30 U/L, Nữ 19 U/L. Dự phòng MTCT với TDF/TAF từ tuần thai 14 nếu HBV DNA ≥ 200.000 IU/mL.",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Bộ Y tế Việt Nam (Quyết định 1740/QĐ-BYT)",
+        phase: "National Clinical Practice Guideline",
+        sampleSize: null,
+        population: "Toàn bộ người bệnh nhiễm HBV cấp và mạn tính tại Việt Nam",
+        summary: "Hướng dẫn chẩn đoán và điều trị Viêm gan vi rút B 2026 của Bộ Y tế Việt Nam. Cập nhật chỉ định NAs ở 4 nhóm tiêu chuẩn, quy chuẩn ULN ALT nam/nữ, dự phòng MTCT, quản lý suy thận với TAF/TDF/ETV và phụ lục phân loại 6 giai đoạn bệnh.",
+        detailedConclusion: "Chỉ định NAs (TDF, TAF, ETV) hàng đầu cho viêm gan B mạn khi xơ hóa ≥ F2, ALT > ULN kèm HBV DNA > 2.000 IU/mL hoặc có yếu tố nguy cơ. Tiêm vắc xin + HBIG trong 24h đầu cho trẻ sơ sinh.",
+        fdaStatus: "Quyết định 1740/QĐ-BYT (16/06/2026)",
+        sourceUrl: "../../../knowledge-vault/1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.3. Nhiễm trùng Tiêu hóa & Gan mật/Viêm gan/1. Viêm gan siêu vi/VGSV-B/TÓM TẮT HƯỚNG DẪN BYT VGSVB 2026.md",
+        file: "kho-guidelines/byt-vgsvb-2026.html",
+        subgroups: {
+          "Tiêu chuẩn chỉ định NAs": "Xơ hóa ≥ F2 hoặc HBV DNA > 2000 IU/mL + ALT > ULN (Nam 30, Nữ 19 U/L)",
+          "Dự phòng mẹ sang con": "TDF/TAF từ tuần 14 + Vắc xin & HBIG cho trẻ sơ sinh trong 24h",
+          "An toàn suy thận": "TAF 25mg giữ nguyên liều cho mọi CrCl ≥ 15 mL/phút & lọc máu",
+          "Tầm soát ung thư HCC": "Siêu âm + AFP/PIVKA-II/AFP-L3 định kỳ mỗi 12-24 tuần"
+        },
+        icd10: ["B18.1", "B18.0", "B16.9", "C22.0"],
+        asianData: true,
+        bookmarked: false,
+        createdAt: new Date().toISOString(),
+        radarUrl: "../guideline-radar/radar.html?spec=infect",
+        matrixEndpoints: {
+          mace: { hr: "0.40", ci: "0.32-0.50", p: "<0.001", verdict: "benefit", label: "-60% Nguy cơ tiến triển Xơ gan" },
+          cvDeath: { hr: "0.35", ci: "0.27-0.45", p: "<0.001", verdict: "benefit", label: "-65% Nguy cơ phát sinh Ung thư gan (HCC)" },
+          allCauseDeath: { hr: "0.48", ci: "0.39-0.58", p: "<0.001", verdict: "benefit", label: "-52% Tử vong liên quan bệnh gan mạn" },
+          hhf: { hr: "1.00", ci: "0.85-1.18", p: "0.99", verdict: "neutral", label: "Không ảnh hưởng tim mạch" },
+          renal: { hr: "0.80", ci: "0.68-0.95", p: "0.01", verdict: "benefit", label: "TAF an toàn thận tối ưu cho BN suy thận" },
+          adverse: { hr: "1.05", ci: "0.90-1.22", p: "0.45", verdict: "neutral", label: "Tỷ lệ dung nạp NAs rất cao (> 98%)" }
+        }
+      },
+      {
         id: "study_bb_ccb_interaction_2026",
         title: "Khuyến cáo Cảnh báo Phối hợp Chẹn Beta & Chẹn Canxi Non-Dihydropyridine",
         drug: "Metoprolol, Verapamil",
