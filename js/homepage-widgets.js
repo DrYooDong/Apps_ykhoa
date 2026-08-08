@@ -16,6 +16,7 @@
     { title: "Cấp cứu Khí máu động mạch (ABG) & Toan kiềm", category: "Công cụ", url: "src/content/calculators/renal/dg-abg-studio.html", keywords: "khi mau dong mach, toan kiem, ph, pco2, hco3, abg, suy ho hap, kho tho, anion gap" },
     { title: "Cấp cứu & Xử trí Sốt xuất huyết Dengue nặng", category: "Cấp cứu", url: "src/content/calculators/emergency/ql-bu-dich-studio.html", keywords: "sot xuat huyet, dengue, muoi, truyen nhiem, soc sxh, bu dich, xuat huyet, phan do" },
     { title: "Toan Ceton đái tháo đường (DKA) — Bù dịch & Insulin", category: "Cấp cứu", url: "src/content/calculators/emergency/ql-bu-dich-studio.html", keywords: "dka, dai thao duong, tieu duong, toan ceton, insulin, kali, glucose, sot cao, tho kussmaul" },
+    { title: "Toxicology Pro Studio — Hồi sức chống độc & Giải độc đặc hiệu", category: "Cấp cứu", url: "src/content/calculators/emergency/toxicology-studio.html", keywords: "chong doc, ngo doc, toxidrome, nac, atropine, pam, naloxone, digifab, paracetamol, phac do, pss, cap cuu, hoi suc" },
     
     // --- 2. CÔNG CỤ TÍNH TOÁN LÂM SÀNG (CDSS) ---
     { title: "Máy tính Lâm sàng & 120+ Thang điểm", category: "Công cụ", url: "src/content/calculators/cong-cu.html", keywords: "thang diem, may tinh, cdss, tinh toan, egfr, gcs, nihss, grace, timi, curb65" },

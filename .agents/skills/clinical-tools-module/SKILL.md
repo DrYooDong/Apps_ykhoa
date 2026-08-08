@@ -9,6 +9,18 @@ description: >
 
 # Clinical Tools Module Skill
 
+## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module Công Cụ Lâm Sàng)
+
+1. **Chuẩn Đường Dẫn Cấp 3**: Hầu hết file công cụ nằm trong `pages/Công cụ/[Chuyên khoa]/file.html` (**cấp 3**). Bắt buộc prefix `../../../` cho reset.css, main.css, main.js.
+2. **Tuân Thủ 2 Style Chuẩn**:
+   - Style 1: Phác đồ / Bù dịch phức tạp (`hero-bd`, `scenario-grid`, `fluid-cards-grid`).
+   - Style 2: Máy tính chẩn đoán / Thang điểm (`calc-panel`, `result-panel`, `calc-btn`).
+3. **Validation & An Toàn Số Liệu**: Mọi input số phải có `min`, `max`, `step` chuẩn y tế và kiểm tra `isNaN()` trước khi hiển thị kết quả. Không để xảy ra chia cho 0 (`NaN` / `Infinity`).
+4. **Bảo Vệ Hub `js/clinical-engine.js`**: Chạy `node scratch/query_graph.js js/clinical-engine.js` trước khi sửa engine tính toán chung.
+5. **Đăng Ký Danh Mục `cong-cu.html`**: Mọi công cụ mới phải thêm thẻ link tương ứng trên menu điều hướng của `pages/Công cụ/cong-cu.html`.
+
+---
+
 ## 📁 Cấu trúc Phân hệ
 
 ```

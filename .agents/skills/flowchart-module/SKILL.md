@@ -8,7 +8,17 @@ description: >
 
 # Clinical Flowchart & Medical Draw Engine Skill
 
-Skill này quy định chuẩn kiến trúc, quy tắc bố cục (Layout & Edge Routing Rules), dữ liệu JSON Schema và quy trình tạo/chỉnh sửa lưu đồ y khoa trong `Apps_ykhoa`.
+---
+
+## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module Lưu Đồ Tiếp Cận)
+
+1. **Tuân Thủ 6 Quy Tắc Edge Routing**: Giới hạn khung Viewport 1000x750px, điểm neo xuất/nhập (exitX, exitY, entryX, entryY) rõ ràng, dùng waypoints tránh đè node.
+2. **Khai Báo Đúng 2 Engine Core**: Phải nhúng `medical-draw-engine.js` (xử lý SVG vector) và `flowchart.js` (xử lý DOM Accordion).
+3. **Mã Màu Node Y Khoa Chuẩn**: `start` (dương), `question` (cam), `action` (lá), `danger` (đỏ cấp cứu), `success` (ngọc), `dose` (tím).
+4. **Interactive Path Highlighting**: Các đường nối `edges` phải khai báo nhãn `label` rõ ràng để người dùng click kích hoạt luồng xử trí.
+5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` sau khi tạo/sửa HTML.
+
+---Skill này quy định chuẩn kiến trúc, quy tắc bố cục (Layout & Edge Routing Rules), dữ liệu JSON Schema và quy trình tạo/chỉnh sửa lưu đồ y khoa trong `Apps_ykhoa`.
 
 ---
 

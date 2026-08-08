@@ -231,6 +231,7 @@
 | `Công cụ/Chung/NCKH/NCKH_Tinhcomau.html` | Tính cỡ mẫu nghiên cứu | — |
 
 | `src/content/calculators/emergency/ql-bu-dich-studio.html` | Fluid Resuscitation Pro Studio | `fluid-studio.css` |
+| `src/content/calculators/emergency/toxicology-studio.html` | Toxicology Pro Studio (Hồi Sức Chống Độc & Giải Độc Lâm Sàng) | Inline Studio Styles |
 | `Công cụ/Cấp cứu & hồi sức/QL_Vanmach.html` | Quản lý liều thuốc vận mạch & trợ tim | — |
 | `Công cụ/Cấp cứu & hồi sức/QL_Maytho.html` | Quản lý máy thở chuyên sâu | — |
 | `Công cụ/Cấp cứu & hồi sức/DG_AnthanICU.html` | An thần, giảm đau & mê sảng ICU (RASS, CPOT, CAM-ICU, Bơm tiêm điện) | — |

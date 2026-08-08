@@ -9,6 +9,18 @@ description: >
 
 # Physiology Module Skill
 
+---
+
+## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module Sinh Lý - Sinh Lý Bệnh)
+
+1. **Chuẩn Đường Dẫn Cấp 4 Đặc Thù**: Các bài học trong `Sinhly/PhanX/` nằm ở **cấp 4**. Đường dẫn root dùng `../../../../`, đường dẫn tài nguyên module dùng `../../css/physio-shared.css` và `../../js/physio-shared.js`.
+2. **Khai Báo `<main class="visual-container">`**: Bắt buộc dùng class này để `toc.js` tự động quét `<h2>`, `<h3>` và inject Sidebar TOC. Không code TOC thủ công.
+3. **Quy Tắc Đặt Tên File Sinh Lý**: File trong `PhanX/` dùng định dạng `SL_[MÃ_PHẦN]_[TenRutGon].html` (ASCII, ví dụ: `SL_TB_Mangtebao.html`).
+4. **Chuẩn Render Công Thức & Minh Họa**: Dùng định dạng toán $...$ hoặc `$ ... $` cho các biến số sinh lý (áp suất, nồng độ ion), dùng `<figure class="physio-figure">` cho ảnh có Lightbox tự động.
+5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` sau khi tạo/sửa.
+
+---
+
 ## 📁 Cấu trúc Phân hệ
 
 ```

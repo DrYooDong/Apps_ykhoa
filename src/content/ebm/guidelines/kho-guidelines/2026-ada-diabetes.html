@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt toàn diện 17 chương Khuyến cáo Tiêu chuẩn Chăm sóc Y khoa trong Đái tháo đường ADA 2026: Chẩn đoán, Dự phòng, Kiểm soát glucose, Công nghệ ĐTĐ, Quản lý cân nặng, Tim mạch, Thận mạn, Võng mạc, Thần kinh, Bàn chân, Người cao tuổi, Trẻ em, Thai kỳ & Nội viện.">
+  <title>Tiêu Chuẩn Chăm Sóc Y Khoa Trong Đái Tháo Đường (ADA 2026) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: rgba(6, 78, 59, 0.4); --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: rgba(120, 53, 15, 0.4); --orange-light: #b45309;
+      --red: #ef4444; --red-bg: rgba(127, 29, 29, 0.4); --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: rgba(30, 58, 138, 0.4); --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: rgba(17, 94, 89, 0.4); --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: rgba(76, 29, 149, 0.4); --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 45%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 820px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--orange); }
+    .pillar.p3::before { background: var(--red); }
+    .pillar.p4::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.2rem; color: var(--accent); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.4rem; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.5rem; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 0.5rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* ══════════════════════════════════════════════════════
+       FLOWCHART — PREMIUM CLINICAL ALGORITHM UI
+       "Deep Diagnostic Map" Design System v2.0
+    ══════════════════════════════════════════════════════ */
+    @keyframes fc-pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(15,111,180,0); } 50% { box-shadow: 0 0 0 4px rgba(15,111,180,0.12); } }
+    @keyframes fc-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .flowchart-card { background: var(--surface); border-radius: 18px; overflow: hidden; margin-bottom: 1.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), 0 0 0 1px rgba(15,111,180,0.1); transition: box-shadow 280ms cubic-bezier(0.16,1,0.3,1), transform 280ms cubic-bezier(0.16,1,0.3,1); animation: fc-fade-in 0.4s ease both; }
+    .flowchart-card:hover { box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 16px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(15,111,180,0.2); transform: translateY(-2px); }
+    .flowchart-card-hdr { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 55%, #1d4ed8 100%); padding: 0.9rem 1.35rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; position: relative; overflow: hidden; }
+    .flowchart-card-hdr::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 50%, rgba(56,189,248,0.18) 0%, transparent 60%); pointer-events: none; }
+    .flowchart-card-hdr-title { display: flex; align-items: center; gap: 0.6rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.82rem; font-weight: 800; color: #ffffff; letter-spacing: -0.01em; position: relative; z-index: 1; }
+    .flowchart-card-hdr-title i { font-size: 1rem; color: #7dd3fc; }
+    .flowchart-card-hdr .badge { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.65rem; border-radius: 20px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #e0f2fe; white-space: nowrap; position: relative; z-index: 1; }
+    .flowchart-card-body { padding: 2rem 1.75rem; overflow-x: auto; -webkit-overflow-scrolling: touch; background: #f0f6ff; background-image: radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.08) 0%, transparent 55%), radial-gradient(ellipse at 85% 75%, rgba(16,185,129,0.06) 0%, transparent 55%), radial-gradient(circle, rgba(15,111,180,0.25) 1px, transparent 1px); background-size: auto, auto, 22px 22px; color: var(--text); position: relative; }
+    [data-theme="dark"] .flowchart-card-body { background: #060e1c; background-image: radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.12) 0%, transparent 55%), radial-gradient(ellipse at 85% 75%, rgba(16,185,129,0.08) 0%, transparent 55%), radial-gradient(circle, rgba(56,189,248,0.2) 1px, transparent 1px); background-size: auto, auto, 22px 22px; }
+    pre.flowchart-box { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; font-size: 0.84rem; line-height: 1.8; margin: 0; white-space: pre; color: #334155; }
+    [data-theme="dark"] pre.flowchart-box { color: #cbd5e1; }
+    .fc-node { display: inline-block; padding: 0.28rem 0.85rem; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); color: #1e40af; border: 1.5px solid #93c5fd; border-radius: 10px; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; vertical-align: middle; box-shadow: 0 2px 8px rgba(37,99,235,0.15), inset 0 1px 0 rgba(255,255,255,0.8); transition: transform 160ms, box-shadow 160ms; line-height: 1.4; letter-spacing: -0.01em; }
+    .fc-node:hover { transform: scale(1.03); box-shadow: 0 4px 14px rgba(37,99,235,0.22), inset 0 1px 0 rgba(255,255,255,0.8); }
+    [data-theme="dark"] .fc-node { background: linear-gradient(135deg, #1e3a5f 0%, #1e3a8a 100%); color: #93c5fd; border-color: #2563eb; box-shadow: 0 2px 10px rgba(37,99,235,0.3), 0 0 0 1px rgba(147,197,253,0.1), inset 0 1px 0 rgba(255,255,255,0.05); }
+    .fc-node-yes { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important; color: #15803d !important; border-color: #86efac !important; box-shadow: 0 2px 8px rgba(21,128,61,0.15), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    .fc-node-yes:hover { box-shadow: 0 4px 14px rgba(21,128,61,0.22), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-yes { background: linear-gradient(135deg, #064e3b 0%, #065f46 100%) !important; color: #34d399 !important; border-color: #059669 !important; box-shadow: 0 2px 10px rgba(5,150,105,0.35), 0 0 0 1px rgba(52,211,153,0.1) !important; }
+    .fc-node-no { background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%) !important; color: #b91c1c !important; border-color: #fca5a5 !important; box-shadow: 0 2px 8px rgba(185,28,28,0.13), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    .fc-node-no:hover { box-shadow: 0 4px 14px rgba(185,28,28,0.2), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-no { background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%) !important; color: #fca5a5 !important; border-color: #dc2626 !important; box-shadow: 0 2px 10px rgba(220,38,38,0.35), 0 0 0 1px rgba(252,165,165,0.1) !important; }
+    .fc-node-warn { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important; color: #b45309 !important; border-color: #fcd34d !important; box-shadow: 0 2px 8px rgba(180,83,9,0.13), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    .fc-node-warn:hover { box-shadow: 0 4px 14px rgba(180,83,9,0.2), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-warn { background: linear-gradient(135deg, #78350f 0%, #92400e 100%) !important; color: #fcd34d !important; border-color: #d97706 !important; box-shadow: 0 2px 10px rgba(217,119,6,0.35), 0 0 0 1px rgba(252,211,77,0.1) !important; }
+    .fc-line { color: #0f6fb4; font-weight: 700; opacity: 1; text-shadow: 0 0 12px rgba(15,111,180,0.35); }
+    [data-theme="dark"] .fc-line { color: #38bdf8; text-shadow: 0 0 12px rgba(56,189,248,0.4); }
+    .flowchart-card-body::after { content: '↔ Cuộn ngang để xem đầy đủ'; display: none; font-family: 'Inter', sans-serif; font-size: 0.7rem; color: var(--text-faint); padding: 0.5rem 0 0; text-align: center; }
+    @media (max-width: 640px) { .flowchart-card-body::after { display: block; } }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+
+    code { font-family: 'JetBrains Mono', monospace; background: var(--surface-2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.82em; border: 1px solid var(--border-light); }
+
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-chevron-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Tiêu Chuẩn Chăm Sóc Y Khoa Trong Đái Tháo Đường (ADA 2026)</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    <a href="#sec-1" class="quicknav-link active">1. Phân Loại & Chẩn Đoán</a>
+    <a href="#sec-2" class="quicknav-link">2. Đánh Giá & Dinh Dưỡng</a>
+    <a href="#sec-3" class="quicknav-link">3. Đích Glucose & Công Nghệ</a>
+    <a href="#sec-4" class="quicknav-link">4. Cân Nặng & Thuốc ĐTĐ</a>
+    <a href="#sec-5" class="quicknav-link">5. Nguy Cơ Tim Mạch & Suy Tim</a>
+    <a href="#sec-6" class="quicknav-link">6. Thận Mạn (CKD) & Mạch Máu Nhỏ</a>
+    <a href="#sec-7" class="quicknav-link">7. Cao Tuổi, Trẻ Em, Thai Kỳ & Nội Viện</a>
+    <a href="#sec-ref" class="quicknav-link">8. Tài Liệu Tham Khảo</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-book-journal-whills"></i> Hiệp hội Đái tháo đường Hoa Kỳ (ADA) · 2026</div>
+      <h1 class="hero-title">
+        <span>Standards of Care in Diabetes—2026</span>
+        Tiêu Chuẩn Chăm Sóc Y Khoa Trong Đái Tháo Đường (ADA 2026)
+      </h1>
+      <p class="hero-subtitle">Tóm tắt toàn diện 17 chương Khuyến cáo Tiêu chuẩn Chăm sóc Y khoa trong Đái tháo đường ADA 2026: Tích hợp các minh chứng EBM mới nhất được phê duyệt bởi ASBMR, TOS, ACC, AGS, NKF và ISPAD.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Cập nhật: 2026</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-building-flag"></i> Hiệp hội Đái tháo đường Hoa Kỳ (ADA)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-stethoscope"></i> Chuyên khoa: NỘI TIẾT / CHUYỂN HÓA</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">⚡</div>
+        <div>
+          <div class="pillar-title">Chẩn Đoán & Phân Loại</div>
+          <div class="pillar-desc">Tiêu chuẩn HbA1c, FPG, OGTT và lưu đồ phân biệt ĐTĐ tuýp 1 ở người lớn.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <div class="pillar-title">Tiếp Cận Dược Lý</div>
+          <div class="pillar-desc">Lựa chọn ưu tiên GLP-1 RA / GIP-GLP-1 RA, SGLT2i bảo vệ tim-thận và kiểm soát glucose/cân nặng.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🛡️</div>
+        <div>
+          <div class="pillar-title">Bảo Vệ Tim-Thận</div>
+          <div class="pillar-desc">Quản lý đa yếu tố HA &lt; 130/80, Statin cường độ cao, SGLT2i, nsMRA (Finerenone) cho CKD & Suy tim.</div>
+        </div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">⏱️</div>
+        <div>
+          <div class="pillar-title">Cá Thể Hóa & Thai Kỳ/Lão Khoa</div>
+          <div class="pillar-desc">Đích đường huyết linh hoạt, công nghệ CGM/AID và kiểm soát nghiêm ngặt trong thai kỳ.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+    
+    <!-- SECTION 1 -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-stethoscope sec-hdr-icon"></i>
+        <h2 class="sec-title">1. Phân Loại, Chẩn Đoán & Dự Phòng Đái Tháo Đường (Chương 1-3)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Giới thiệu và Hệ thống Phân loại Bằng chứng ADA</h3>
+        <div class="infobox info">
+          <span class="infobox-icon">ℹ️</span>
+          <div>
+            <strong>Hệ thống Phân loại Mức độ Bằng chứng ADA (Table 1):</strong><br>
+            • <strong>Mức độ A:</strong> Minh chứng rõ ràng từ các thử nghiệm lâm sàng ngẫu nhiên có đối chứng (RCT) thiết kế tốt, cỡ mẫu đủ lớn.<br>
+            • <strong>Mức độ B:</strong> Minh chứng hỗ trợ từ các nghiên cứu thuần tập tiến cứu hoặc sổ đăng ký dữ liệu lớn / bệnh chứng.<br>
+            • <strong>Mức độ C:</strong> Minh chứng hỗ trợ từ các nghiên cứu kiểm soát kém hoặc không có đối chứng.<br>
+            • <strong>Mức độ E:</strong> Đồng thuận của các chuyên gia hoặc kinh nghiệm lâm sàng.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Tiêu chuẩn Chẩn đoán Đái tháo đường (Table 2.1)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Chỉ số xét nghiệm</th>
+                <th>Ngưỡng giá trị chẩn đoán</th>
+                <th>Yêu cầu kỹ thuật</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>HbA1c</strong></td>
+                <td><span class="rx-tag highlight">≥ 6.5%</span> (≥ 48 mmol/mol)</td>
+                <td>Thực hiện tại phòng xét nghiệm chuẩn hóa NGSP / DCCT.</td>
+              </tr>
+              <tr>
+                <td><strong>Glucose huyết tương lúc đói (FPG)</strong></td>
+                <td><span class="rx-tag highlight">≥ 126 mg/dL</span> (≥ 7.0 mmol/L)</td>
+                <td>Nhịn ăn không nạp calo trong ít nhất 8 giờ.</td>
+              </tr>
+              <tr>
+                <td><strong>Glucose sau 2 giờ (2-h PG)</strong></td>
+                <td><span class="rx-tag highlight">≥ 200 mg/dL</span> (≥ 11.1 mmol/L)</td>
+                <td>Nghiệm pháp dung nạp glucose đường uống (OGTT 75g WHO).</td>
+              </tr>
+              <tr>
+                <td><strong>Glucose ngẫu nhiên</strong></td>
+                <td><span class="rx-tag highlight">≥ 200 mg/dL</span> (≥ 11.1 mmol/L)</td>
+                <td>Ở bệnh nhân có triệu chứng kinh điển của tăng glucose huyết / cơn bão tăng đường.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Lưu ý lâm sàng:</strong> Nếu không có triệu chứng rõ rệt của tăng glucose huyết, bắt buộc phải có xét nghiệm xác nhận lại (thực hiện lại cùng xét nghiệm hoặc xét nghiệm khác đạt ngưỡng chẩn đoán).
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Lưu đồ Hướng dẫn Điều tra ĐTĐ Tuýp 1 Nghi ngờ ở Người lớn (Figure 2.1)</h3>
+        <div class="flowchart-card">
+          <div class="flowchart-card-hdr">
+            <div class="flowchart-card-hdr-title"><i class="fa-solid fa-diagram-project"></i> Sơ đồ 2.1: Quy trình Điều tra ĐTĐ Tuýp 1 ở Người lớn</div>
+            <span class="badge badge-blue">Clinical Algorithm</span>
+          </div>
+          <div class="flowchart-card-body">
+            <pre class="flowchart-box">
+                     <span class="fc-node">Người lớn nghi ngờ Đái tháo đường tuýp 1</span>
+                                         <span class="fc-line">│</span>
+                    <span class="fc-line">┌────────────────────┴────────────────────┐</span>
+               <span class="fc-node">&lt; 35 tuổi</span>                            <span class="fc-node">&gt;= 35 tuổi</span>
+                    <span class="fc-line">│</span>                                         <span class="fc-line">│</span>
+        Sàng lọc kháng thể tự miễn*               Sàng lọc kháng thể tự miễn*
+                    <span class="fc-line">│</span>                                         <span class="fc-line">│</span>
+       <span class="fc-line">┌────────────┴────────────┐</span>               <span class="fc-line">┌────────────┴────────────┐</span>
+   <span class="fc-node fc-node-yes"><i class="fa-solid fa-check"></i> Dương tính</span>            <span class="fc-node fc-node-no"><i class="fa-solid fa-xmark"></i> Âm tính</span>     <span class="fc-node fc-node-yes"><i class="fa-solid fa-check"></i> Dương tính</span>            <span class="fc-node fc-node-no"><i class="fa-solid fa-xmark"></i> Âm tính</span>
+       <span class="fc-line">│</span>                         <span class="fc-line">│</span>               <span class="fc-line">│</span>                         <span class="fc-line">│</span>
+ <span class="fc-node">Đái tháo đường tuýp 1</span>     <span class="fc-node">Đánh giá lâm sàng: Có đặc điểm tuýp 2?</span> <span class="fc-node">Đái tháo đường tuýp 1</span> <span class="fc-node fc-node-warn"><i class="fa-solid fa-triangle-exclamation"></i> Nghi ngờ ĐTĐ tuýp 2</span>
+                                 <span class="fc-line">│</span>                                         <span class="fc-line">│</span>
+                        <span class="fc-line">┌────────┴────────┐</span>                         Xét nghiệm C-peptide
+                   <span class="fc-node fc-node-yes"><i class="fa-solid fa-check"></i> Có</span>              <span class="fc-node fc-node-no"><i class="fa-solid fa-xmark"></i> Không</span>                         nếu không rõ**
+                        <span class="fc-line">│</span>                 <span class="fc-line">│</span>
+                  <span class="fc-node fc-node-warn"><i class="fa-solid fa-triangle-exclamation"></i> Nghi ngờ ĐTĐ tuýp 2</span>   <span class="fc-node">ĐTĐ chưa phân loại rõ ràng</span></pre>
+          </div>
+        </div>
+        <ul style="margin-left: 1.25rem; font-size: 0.85rem; line-height: 1.6;">
+          <li>Kháng thể <strong>GAD (Glutamic Acid Decarboxylase)</strong> là kháng thể đầu tiên cần làm. Nếu âm tính, tiếp tục đo <strong>IA-2</strong> và/hoặc <strong>ZnT8</strong>.</li>
+          <li><strong>C-peptide ngẫu nhiên:</strong> <code>&gt; 600 pmol/L</code> loại trừ thiếu insulin nặng; <code>&lt; 200 pmol/L</code> chỉ ra thiếu insulin tuyệt đối (phù hợp T1D); 200–600 pmol/L là khoảng nghi ngờ.</li>
+        </ul>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Sàng lọc & Dự phòng ĐTĐ Tuýp 2 (Chương 3)</h3>
+        <p>• <strong>Tuổi bắt đầu sàng lọc quy ước:</strong> Bắt đầu từ <strong>35 tuổi</strong> cho người không triệu chứng (Mức độ B), lặp lại mỗi 3 năm.<br>
+        • <strong>Sàng lọc thừa cân/béo phì:</strong> Thực hiện khi <strong>BMI ≥ 25 kg/m²</strong> (hoặc <strong>≥ 23 kg/m²</strong> ở người gốc Á) kèm theo yếu tố nguy cơ (tiền sử gia đình ĐTĐ, tăng HA ≥ 130/80, HDL &lt; 35, Triglyceride &gt; 250, PCOS, CVD, MASLD).<br>
+        • <strong>Can thiệp Tiền Đái Tháo Đường:</strong> Giảm <strong>5–7% cân nặng</strong>, thể dục aerobic ≥ 150 phút/tuần (Mức độ A). Khuyến cáo chế độ ăn Địa Trung Hải hoặc low-carb (Mức độ B). Cân nhắc dùng <strong>Metformin</strong> ở người 25–59 tuổi, BMI ≥ 35 kg/m², FPG ≥ 110 mg/dL, HbA1c ≥ 6.0% hoặc tiền sử ĐTĐ thai kỳ (Mức độ A).</p>
+
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-vial sec-hdr-icon"></i>
+        <h2 class="sec-title">2. Đánh Giá Y Khoa Toàn Diện & Hành Vi Sức Khỏe (Chương 4-5)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Bệnh Gan Nhiễm Mỡ Liên Quan Rối Loạn Chuyển Hóa (MASLD/MASH)</h3>
+        <p>• <strong>Sàng lọc ban đầu:</strong> Tính chỉ số xơ hóa gan <strong>FIB-4</strong> định kỳ cho tất cả người mắc ĐTĐ tuýp 2 hoặc tiền đái tháo đường (Mức độ B).<br>
+        • <strong>Phân tầng nguy cơ:</strong> Nếu <code>FIB-4 ≥ 1.3</code>, cần đo độ cứng gan (FibroScan) hoặc thử nghiệm máu ELF (Mức độ B).<br>
+        • <strong>Điều trị lựa chọn:</strong> Ưu tiên dùng <strong>GLP-1 RA</strong> hoặc <strong>GIP/GLP-1 RA</strong> giúp kiểm soát glucose, cân nặng và cải thiện tổn thương mô học gan (Mức độ A/B).</p>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Sức Khỏe Xương & Ngăn Ngừa Gãy Xương</h3>
+        <p>• Đo mật độ xương <strong>DEXA</strong> ở người bệnh ≥ 65 tuổi hoặc người trẻ có nguy cơ gãy xương mỗi 2–3 năm (Mức độ A).<br>
+        • Tránh sử dụng <strong>TZDs</strong> và <strong>Sulfonylureas</strong> ở những bệnh nhân nguy cơ cao gãy xương (Mức độ B).</p>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Khuyến Cáo Dinh Dưỡng & Vận Động (Chương 5)</h3>
+        <div class="infobox success">
+          <span class="infobox-icon">✅</span>
+          <div>
+            <strong>Dinh dưỡng & Lối sống Chuẩn ADA 2026:</strong><br>
+            • <strong>Chất xơ:</strong> Khuyên nạp ít nhất <strong>14 g chất xơ / 1,000 kcal</strong> tiêu thụ hàng ngày (Mức độ B).<br>
+            • <strong>Natri:</strong> Giới hạn natri <strong>&lt; 2,300 mg/ngày</strong> (Mức độ B).<br>
+            • <strong>Hoạt động thể chất:</strong> Ngắt thời gian ngồi liên tục sau mỗi 30 phút. Tập Aerobic <strong>≥ 150 phút/tuần</strong> trải đều ít nhất 3 ngày/tuần; kháng lực 2–3 buổi/tuần (Mức độ B/C).
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-pills sec-hdr-icon"></i>
+        <h2 class="sec-title">3. Mục Tiêu Glucose, Hạ Đường Huyết & Công Nghệ (Chương 6-7)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Tóm Tắt Mục Tiêu Glucose Người Trưởng Thành (Table 6.3)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Chỉ số Glucose</th>
+                <th>Mục tiêu khuyến cáo</th>
+                <th>Ghi chú cá thể hóa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>HbA1c</strong></td>
+                <td><span class="rx-tag highlight">&lt; 7.0%</span> (&lt; 53 mmol/mol)</td>
+                <td>Siết chặt (&lt; 6.5%) ở người trẻ/mới mắc hoặc nới lỏng (&lt; 8.0%) ở người cao tuổi/nhiều bệnh đồng mắc.</td>
+              </tr>
+              <tr>
+                <td><strong>Glucose trước ăn (FPG)</strong></td>
+                <td><strong>80–130 mg/dL</strong> (4.4–7.2 mmol/L)</td>
+                <td>Theo dõi bằng máy đo cá nhân (BGM) hoặc CGM.</td>
+              </tr>
+              <tr>
+                <td><strong>Glucose đỉnh sau ăn (1-2h)</strong></td>
+                <td><strong>&lt; 180 mg/dL</strong> (&lt; 10.0 mmol/L)</td>
+                <td>Đo sau khi bắt đầu bữa ăn 1 đến 2 giờ.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Mục Tiêu HbA1c & CGM Cá Thể Hóa (Figure 6.1)</h3>
+        <div class="flowchart-card">
+          <div class="flowchart-card-hdr">
+            <div class="flowchart-card-hdr-title"><i class="fa-solid fa-diagram-project"></i> Sơ đồ 6.1: Đích HbA1c & CGM Cá Thể Hóa theo Tình Trạng Sức Khỏe</div>
+            <span class="badge badge-blue">Clinical Algorithm</span>
+          </div>
+          <div class="flowchart-card-body">
+            <pre class="flowchart-box">
+                     <span class="fc-node">ĐÁNH GIÁ SỨC KHỎE &amp; CHỨC NĂNG CỦA BỆNH NHÂN</span>
+                                            <span class="fc-line">│</span>
+        <span class="fc-line">┌───────────────────────────────────┼───────────────────────────────────┐</span>
+        <span class="fc-line">▼</span>                                   <span class="fc-line">▼</span>                                   <span class="fc-line">▼</span>
+ <span class="fc-node fc-node-yes">Khỏe mạnh / Kỳ vọng sống dài</span>       <span class="fc-node fc-node-warn">Sức khỏe trung gian / Nhiều bệnh</span>     <span class="fc-node fc-node-no">Rất phức tạp / Sức khỏe kém</span>
+        <span class="fc-line">│</span>                                   <span class="fc-line">│</span>                                   <span class="fc-line">│</span>
+  Mục tiêu HbA1c:                     Mục tiêu HbA1c:                   Tránh phụ thuộc HbA1c;
+  <span class="rx-tag highlight">&lt; 6.5% đến &lt; 7.0%</span>                 <span class="rx-tag highlight">&lt; 8.0%</span> (&lt; 64 mmol/mol)        tránh hạ đường huyết
+  (&lt; 48-53 mmol/mol)                  TIR (70-180 mg/dL): &gt; 50%         và tăng đường huyết
+  TIR (70-180 mg/dL): &gt; 70%           TBR (&lt; 70 mg/dL): &lt; 1%            có triệu chứng lâm sàng.
+  TBR (&lt; 70 mg/dL): &lt; 4%                                                TIR (70-180 mg/dL): &gt; 50%</pre>
+          </div>
+        </div>
+
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong>Cảnh báo Hạ Đường Huyết & Kê Đơn Glucagon:</strong><br>
+            • Sơ cứu hạ đường huyết (glucose &lt; 70 mg/dL): Dùng 15–20g glucose đường uống; tránh thực phẩm nhiều béo/protein ban đầu.<br>
+            • Kê đơn <strong>Glucagon</strong> (dạng xịt mũi hoặc bút tiêm pha sẵn) cho tất cả bệnh nhân dùng insulin hoặc nguy cơ cao hạ đường huyết.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Công Nghệ Đái Tháo Đường (Chương 7)</h3>
+        <p>• <strong>Hệ thống phân phối insulin tự động (AID):</strong> Là phương pháp ưu tiên hơn MDI cho tất cả bệnh nhân ĐTĐ tuýp 1 (Mức độ A) và ĐTĐ tuýp 2 cần insulin (Mức độ A).<br>
+        • Không yêu cầu rào cản xét nghiệm C-peptide hay thời gian dùng insulin trước khi chỉ định AID/CGM.</p>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-heart-pulse sec-hdr-icon"></i>
+        <h2 class="sec-title">4. Quản Lý Cân Nặng & Thuốc Hạ Glucose (Chương 8-9)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Quản Lý Cân Nặng & Thừa Cân / Béo Phì (Chương 8)</h3>
+        <p>• <strong>Giảm cân 5–7%:</strong> Cải thiện đáng kể kiểm soát glucose và nguy cơ tim mạch (Mức độ A).<br>
+        • <strong>Giảm cân &gt; 10%:</strong> Cải thiện MASH và mở ra cơ hội <strong>lui bệnh ĐTĐ tuýp 2</strong> (Mức độ A).<br>
+        • <strong>Ưu tiên Dược lý béo phì:</strong> **Semaglutide** hoặc **Tirzepatide** (GLP-1 RA / GIP-GLP-1 RA) với hiệu quả giảm cân mạnh nhất.</p>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Thuốc Hạ Glucose ở Người Lớn ĐTĐ Tuýp 2 (Figure 9.4)</h3>
+        <div class="flowchart-card">
+          <div class="flowchart-card-hdr">
+            <div class="flowchart-card-hdr-title"><i class="fa-solid fa-diagram-project"></i> Sơ đồ 9.4: Thuật toán Thuốc Hạ Glucose ở Người Lớn ĐTĐ Tuýp 2</div>
+            <span class="badge badge-blue">Clinical Algorithm</span>
+          </div>
+          <div class="flowchart-card-body">
+            <pre class="flowchart-box">
+                <span class="fc-node">CHẨN ĐOÁN ĐÁI THÁO ĐƯỜNG TUÝP 2 Ở NGƯỜI LỚN</span>
+         (Cung cấp DSMES, duy trì lối sống lành mạnh, đánh giá yếu tố xã hội)
+                                        <span class="fc-line">│</span>
+         <span class="fc-line">┌──────────────────────────────┴──────────────────────────────┐</span>
+         <span class="fc-line">▼</span>                                                             <span class="fc-line">▼</span>
+<span class="fc-node fc-node-warn">Bệnh nhân có biến cố đích/Nguy cơ cao</span>              <span class="fc-node">Bệnh nhân ưu tiên kiểm soát</span>
+(Bất kể mức HbA1c nền hoặc có dùng Metformin)            (Glucose và cân nặng tối ưu)
+         <span class="fc-line">│</span>                                                             <span class="fc-line">│</span>
+ <span class="fc-line">┌───────┼──────────────────────┐</span>                              <span class="fc-line">┌───────┼──────────────────────┐</span>
+ <span class="fc-line">▼</span>       <span class="fc-line">▼</span>                      <span class="fc-line">▼</span>                              <span class="fc-line">▼</span>       <span class="fc-line">▼</span>                      <span class="fc-line">▼</span>
+<span class="fc-node">ASCVD</span> <span class="fc-node">Suy tim (HF)</span>        <span class="fc-node">CKD</span>                         <span class="fc-node">Đích HbA1c</span> <span class="fc-node">Giảm cân</span>       <span class="fc-node">Chi phí</span>
+ <span class="fc-line">│</span>       <span class="fc-line">│</span>                      <span class="fc-line">│</span>                              <span class="fc-line">│</span>       <span class="fc-line">│</span>                      <span class="fc-line">│</span>
+GLP-1   SGLT2 inhibitor      SGLT2i là                      Chọn    Semaglutide    Metformin, SQ,
+RA/     (Proven benefit      lựa chọn                       thuốc   Tirzepatide    TZD, hoặc
+SGLT2i  HFrEF/HFpEF)         ưu tiên;                       hiệu    (Very High     Insulin người
+(Proven  <span class="fc-line">│</span>                   hoặc GLP-1 RA                  lực     Efficacy)      (Lưu ý nguy cơ
+benefit) [Symptomatic HFpEF  nếu SGLT2i                     cao     (Mức độ A)     hạ glucose &amp;
+         + Obesity]: GIP/    chống chỉ                      (Very                  tăng cân)
+         GLP-1 RA hoặc       định hoặc                      High)  
+         GLP-1 RA  eGFR &lt; 30  </pre>
+          </div>
+        </div>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Lưu ý dược lý quan trọng:</strong><br>
+            • Không phối hợp đồng thời thuốc DPP-4i với GLP-1 RA hoặc GIP/GLP-1 RA.<br>
+            • Khởi trị <strong>Insulin</strong> ngay nếu HbA1c &gt; 10% hoặc glucose ngẫu nhiên ≥ 300 mg/dL kèm triệu chứng mất bù.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-shield-halved sec-hdr-icon"></i>
+        <h2 class="sec-title">5. Bệnh Tim Mạch & Quản Lý Nguy Cơ Tim Mạch (Chương 10)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Tiếp Cận Đa Yếu Tố Giảm Nguy Cơ Tim Mạch (Figure 10.1)</h3>
+        <p>• <strong>Huyết áp target:</strong> <span class="rx-tag highlight">&lt; 130/80 mmHg</span> cho hầu hết bệnh nhân. Cân nhắc tâm thu &lt; 120 mmHg nếu nguy cơ tim mạch/thận cao. Ưu tiên ACEi/ARB khi có albumin niệu.<br>
+        • <strong>Lipid mỡ máu:</strong> Dự phòng thứ phát (đã có ASCVD) dùng <strong>statin cường độ cao</strong> nhằm giảm ≥ 50% LDL-C và đạt <strong>LDL-C &lt; 55 mg/dL</strong> (&lt; 1.4 mmol/L). Phối hợp Ezetimibe / PCSK9i nếu chưa đạt. Dùng <strong>Bempedoic acid</strong> nếu không dung nạp statin.<br>
+        • <strong>Suy tim (HF):</strong> <strong>SGLT2i</strong> là lựa chọn hàng đầu cho HFrEF và HFpEF. Phối hợp thêm <strong>nonsteroidal MRA (Finerenone)</strong> nếu suy tim giai đoạn C kèm phân suất tống máu &gt; 40%.</p>
+
+      </div>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-triangle-exclamation sec-hdr-icon"></i>
+        <h2 class="sec-title">6. Bệnh Thận Mạn (CKD) & Biến Chứng Mạch Máu Nhỏ (Chương 11-12)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Tiếp Cận Toàn Diện Bệnh Thận Mạn (CKD - Figure 11.2)</h3>
+        <div class="infobox success">
+          <span class="infobox-icon">✅</span>
+          <div>
+            <strong>Bộ Tứ Bảo Vệ Thận (Quartet Therapy in CKD):</strong><br>
+            1. <strong>ACEi / ARB:</strong> Liều tối đa dung nạp cho UACR ≥ 300 mg/g hoặc eGFR &lt; 60 mL/min/1.73 m².<br>
+            2. <strong>SGLT2i:</strong> Khuyến cáo mạnh cho eGFR ≥ 20 mL/min/1.73 m².<br>
+            3. <strong>GLP-1 RA:</strong> Làm chậm tiến triển CKD và giảm biến cố tim mạch (an toàn khi eGFR &lt; 30 mL/min/1.73 m²).<br>
+            4. <strong>nsMRA (Finerenone):</strong> Khuyến cáo cho CKD có albumin niệu (eGFR ≥ 25 mL/min/1.73 m²).
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Phân Tầng Nguy Cơ Bàn Chân Đái Tháo Đường (Table 12.1)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Phân nhóm nguy cơ</th>
+                <th>Đặc điểm lâm sàng bàn chân</th>
+                <th>Tần suất tầm soát</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhóm 0 (Rất thấp)</strong></td>
+                <td>Không có mất cảm giác bảo vệ (LOPS) và không có PAD.</td>
+                <td>Hàng năm</td>
+              </tr>
+              <tr>
+                <td><strong>Nhóm 1 (Thấp)</strong></td>
+                <td>Có LOPS hoặc PAD.</td>
+                <td>Mỗi 6–12 tháng</td>
+              </tr>
+              <tr>
+                <td><strong>Nhóm 2 (Trung bình)</strong></td>
+                <td>LOPS + PAD, hoặc dị dạng bàn chân.</td>
+                <td>Mỗi 3–6 tháng</td>
+              </tr>
+              <tr>
+                <td><strong>Nhóm 3 (Cao)</strong></td>
+                <td>Tiền sử loét bàn chân, đoạn chi, hoặc suy thận.</td>
+                <td>Mỗi 1–3 tháng</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-circle-nodes sec-hdr-icon"></i>
+        <h2 class="sec-title">7. Các Đối Tượng Đặc Biệt: Người Cao Tuổi, Trẻ Em, Thai Kỳ & Nội Viện (Chương 13-17)</h2>
+      </div>
+      <div class="sec-body">
+        
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Người Cao Tuổi (Chương 13)</h3>
+        <p>• Khung đánh giá <strong>4Ms</strong> (Nhận thức, Thuốc, Vận động, Nguyện vọng).<br>
+        • Mục tiêu HbA1c cá thể hóa: Khỏe mạnh <code>&lt; 7.0–7.5%</code> (TIR &gt; 70%); Sức khỏe trung gian <code>&lt; 8.0%</code> (TIR &gt; 50%); Sức khỏe kém/phức tạp tránh dựa HbA1c, tập trung tránh hạ đường huyết.</p>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Quản Lý Đái Tháo Đường Trong Thai Kỳ (Chương 15)</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Chỉ số đo</th>
+                <th>ĐTĐ tuýp 1 hoặc tuýp 2</th>
+                <th>GDM dùng insulin</th>
+                <th>GDM tiết chế</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Glucose lúc đói</strong></td>
+                <td><strong>70–95 mg/dL</strong> (3.9–5.3 mmol/L)</td>
+                <td><strong>70–95 mg/dL</strong></td>
+                <td><strong>&lt; 95 mg/dL</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Glucose 1h sau ăn</strong></td>
+                <td><strong>110–140 mg/dL</strong> (6.1–7.8 mmol/L)</td>
+                <td><strong>110–140 mg/dL</strong></td>
+                <td><strong>&lt; 140 mg/dL</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Glucose 2h sau ăn</strong></td>
+                <td><strong>100–120 mg/dL</strong> (5.6–6.7 mmol/L)</td>
+                <td><strong>100–120 mg/dL</strong></td>
+                <td><strong>&lt; 120 mg/dL</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong>Thai kỳ & Thuốc:</strong><br>
+            • <strong>Insulin</strong> là lựa chọn hàng đầu.<br>
+            • Chống chỉ định ACEi, ARB, nsMRA, SGLT2i, Statins, GLP-1 RA (ngưng trước mang thai 1-2 tháng).<br>
+            • Chỉ định <strong>Aspirin 100–150 mg/ngày</strong> từ tuần 12–16 thai kỳ giúp phòng ngừa tiền sản giật cho thai phụ mắc ĐTĐ.
+          </div>
+        </div>
+
+        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Chăm Sóc Đái Tháo Đường Tại Bệnh Viện (Chương 16)</h3>
+        <p>• Khởi trị Insulin nội viện khi glucose persistent <strong>≥ 180 mg/dL</strong>.<br>
+        • Mục tiêu ICU & Non-ICU: <strong>140–180 mg/dL</strong>. Ưu tiên phác đồ <strong>Basal-Bolus-Correction</strong>. Chống chỉ định dùng sliding-scale đơn độc.</p>
+
+      </div>
+    </div>
+
+    <!-- CITATION & SOURCE -->
+    <div class="sec-card" id="sec-ref">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bookmark sec-hdr-icon"></i>
+        <h2 class="sec-title">8. Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. American Diabetes Association Professional Practice Committee. Standards of Care in Diabetes—2026. <em>Diabetes Care</em>. 2026;49(Suppl. 1):S1–S357. doi:10.2337/dc26-SINT.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+  </script>
+</body>
+</html>

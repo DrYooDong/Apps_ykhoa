@@ -9,6 +9,18 @@ description: >
 
 # Pharmacology Module Skill
 
+## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module Dược Lý)
+
+1. **Chuẩn Bảng Liều Dùng**: Mọi card/bảng thuốc phải ghi rõ: Tên gốc Generic, Nhóm Dược lý, Liều dùng & Tần suất, Đường dùng (PO/IV/IM/SC), Chống chỉ định & Thận trọng.
+2. **Cảnh Báo An Toàn Theo Mã Màu WHO**:
+   - `caution-high` / Màu Đỏ: Chống chỉ định tuyệt đối / Tác dụng phụ nguy hiểm tính mạng.
+   - `caution-moderate` / Màu Cam: Thận trọng (thai kỳ, suy gan/thận).
+   - `caution-low` / Màu Xanh dương: Theo dõi cận lâm sàng định kỳ.
+3. **Quy Tắc Đặt Tên File Dược Lý**: File mới trong `symptoms/` phải bắt đầu bằng `dl-<triuchung>.html` (ví dụ: `dl-daudau.html`), file trong `tools/` dùng kebab-case.
+4. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi sửa/tạo trang dược lý.
+
+---
+
 ## 📁 Cấu trúc Phân hệ
 
 ```

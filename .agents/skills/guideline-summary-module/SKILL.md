@@ -12,6 +12,18 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
 
 ---
 
+## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module EBM Guidelines)
+
+1. **Chuẩn Đường Dẫn Cấp 4**: Mọi trang tóm tắt mới trong `kho-guidelines/` nằm ở **cấp 4**. Bắt buộc prefix `../../../../` cho tài nguyên gốc root (`css/reset.css`, `css/main.css`, `js/main.js`).
+2. **Quy Tắc Đặt Tên File**: File HTML mới phải đặt theo dạng `<year>-<org>-<topic>.html` (ví dụ: `2026-kdigo-ckd.html`). Dùng 100% ASCII kebab-case chữ thường.
+3. **Ưu Tiên Script Tự Động**: Khi có file nguồn `.md`, BẮT BUỘC dùng script `node .agents/skills/guideline-summary-module/scripts/convert_md_to_guideline.js "<path_to_md>"` trước.
+4. **Bắt Buộc Đăng Ký Registry `guidelinesdata.js`**: Mọi guideline mới tạo phải bổ sung 1 bản ghi vào array `SAMPLE_STUDIES` trong `src/content/ebm/guidelines/guidelinesdata.js`.
+5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js <file>.html` sau khi tạo/sửa.
+6. **Bảo Vệ Hub `guidelines.js`**: Chạy `node scratch/query_graph.js guidelines.js` nếu tác động vào engine xử lý chung của Kho Guidelines (chỉ số fan-in 570).
+7. **Tự Động Dọn Dẹp File Tạm**: Tự động xóa tất cả các file `.md` trung gian / hợp nhất được tạo ra trong `scratch/` ngay sau khi hoàn tất việc sinh file `.html` và đăng ký registry.
+
+---
+
 ## 📁 Cấu trúc Thư mục Guidelines
 
 Các trang tóm tắt cụ thể được đặt trong thư mục `kho-guidelines`:

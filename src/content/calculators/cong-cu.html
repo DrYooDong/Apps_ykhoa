@@ -31,7 +31,6 @@
   <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
   <link rel="stylesheet" href="../../../css/components/cong-cu.css">
   <link rel="stylesheet" href="../../../css/components/overflow-list.css">
-  <link rel="stylesheet" href="../../../css/components/clinical-calendar.css">
 </head>
 
 
@@ -142,7 +141,7 @@
                 <a href="#part3-section" class="part-nav-item p3" data-target="part3-section">
                   <span class="part-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
                   <span class="part-text">Phần 3: Cấp cứu & Hồi sức</span>
-                  <span class="part-count-badge">5</span>
+                  <span class="part-count-badge">6</span>
                 </a>
               </li>
               <li>
@@ -276,30 +275,9 @@
   <script src="../../../js/core/clinical-calculator-base.js" defer></script>
   <script src="../../../js/components/calculation-history-modal.js" defer></script>
   <script src="../../../js/module-dashboard.js" defer></script>
-  <script src="../../../js/tools-data.js" defer></script>
-  <script src="../../../js/cong-cu-logic.js" defer></script>
+  <script src="../../../js/tools-data.js?v=2" defer></script>
+  <script src="../../../js/cong-cu-logic.js?v=2" defer></script>
   <script src="../../../js/lab-values.js" defer></script>
-  <script type="module">
-    import { ClinicalCalendar } from '../../../js/components/clinical-calendar.js';
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // Nhúng Widget Lịch Lâm Sàng thực tế vào Sidebar của Hub Công Cụ
-      const widgetSidebar = document.querySelector('.layout-widget-sidebar');
-      if (widgetSidebar) {
-        const calSection = document.createElement('section');
-        calSection.className = 'widget-card';
-        calSection.style.marginTop = '1rem';
-        calSection.innerHTML = `
-          <div class="widget-card-title">
-            <h3><i class="fa-solid fa-calendar-days"></i> Lịch Ca Bệnh & Dùng Thuốc</h3>
-          </div>
-          <div id="clinical-calendar-widget"></div>
-        `;
-        widgetSidebar.appendChild(calSection);
-        new ClinicalCalendar(calSection.querySelector('#clinical-calendar-widget'));
-      }
-    });
-  </script>
 </body>
 
 </html>

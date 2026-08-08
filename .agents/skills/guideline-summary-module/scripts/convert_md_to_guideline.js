@@ -2,24 +2,21 @@
  * convert_md_to_guideline.js
  * 
  * Script Node.js tự động chuyển đổi file Markdown (.md) tóm tắt Guideline / RCT y khoa
- * thành trang HTML tóm tắt độc lập (cấp 4) tại src/content/ebm/guidelines/kho-guidelines/<slug>.html
+ * thành trang HTML tóm tắt ĐỈNH CAO (Flagship Standard) tại src/content/ebm/guidelines/kho-guidelines/<slug>.html
+ * theo đúng tiêu chuẩn giao diện của byt-sot-xuat-huyet-dengue-2023.html
  * và tự động đăng ký bản ghi dữ liệu vào src/content/ebm/guidelines/guidelinesdata.js.
  * 
  * Cách sử dụng:
  *   node .agents/skills/guideline-summary-module/scripts/convert_md_to_guideline.js <path_to_md_file>
- * Ví dụ:
- *   node .agents/skills/guideline-summary-module/scripts/convert_md_to_guideline.js src/content/ebm/guidelines/kho-guidelines/phac-do-soc-nhiem-khuan-sepsis3.md
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// Đường dẫn tương đối từ workspace root
 const WORKSPACE_ROOT = path.resolve(__dirname, '../../../../');
 const KHO_GUIDELINES_DIR = path.join(WORKSPACE_ROOT, 'src/content/ebm/guidelines/kho-guidelines');
 const DATA_FILE_PATH = path.join(WORKSPACE_ROOT, 'src/content/ebm/guidelines/guidelinesdata.js');
 
-// Helper đọc và parse YAML Frontmatter thủ công đơn giản
 function parseFrontmatter(content) {
   const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
   const match = content.match(frontmatterRegex);
@@ -46,19 +43,44 @@ function parseFrontmatter(content) {
   return { metadata, body };
 }
 
-// Convert Markdown formatting (bold, italic, code, math) sang HTML
+function slugify(str) {
+  if (!str) return 'guideline-summary';
+  return str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd').replace(/Đ/g, 'D')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9 -]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
 function formatInlineText(text) {
   if (!text) return '';
   return text
-    .replace(/\$\s*\\ge\s*(\d+(\.\d+)?)\s*\$/g, '≥ $1')
-    .replace(/\$\s*\\le\s*(\d+(\.\d+)?)\s*\$/g, '≤ $1')
-    .replace(/\$\s*([^$]+)\s*\$/g, '<code>$1</code>')
+    .replace(/\\\((.*?)\\\)/g, '$1')
+    .replace(/\\rightarrow/g, '→')
+    .replace(/\\ge/g, '≥')
+    .replace(/\\le/g, '≤')
+    .replace(/\\beta_1/g, 'β₁')
+    .replace(/\\beta_2/g, 'β₂')
+    .replace(/\\beta/g, 'β')
+    .replace(/\\alpha1/g, 'α₁')
+    .replace(/\\alpha/g, 'α')
+    .replace(/T_4/g, 'T₄')
+    .replace(/T_3/g, 'T₃')
+    .replace(/5'\$/g, '5′')
+    .replace(/5'/g, '5′')
+    .replace(/K\^\+/g, 'K⁺')
+    .replace(/Na\^\+/g, 'Na⁺')
+    .replace(/\\/g, '')
+    .replace(/\$([^$]+)\$/g, '$1')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
     .replace(/`(.*?)`/g, '<code>$1</code>');
 }
 
-// Convert Callout Boxes (> [!IMPORTANT], > [!TIP], > [!WARNING], > [!CAUTION], > [!NOTE])
 function processCallouts(markdown) {
   const lines = markdown.split(/\r?\n/);
   const resultLines = [];
@@ -71,12 +93,13 @@ function processCallouts(markdown) {
     if (t === 'IMPORTANT' || t === 'SUCCESS') return { class: 'success', icon: '✅' };
     if (t === 'WARNING') return { class: 'warning', icon: '⚠️' };
     if (t === 'DANGER' || t === 'CAUTION') return { class: 'danger', icon: '🚫' };
-    return { class: 'info', icon: '💡' };
+    if (t === 'TEAL') return { class: 'teal', icon: '💡' };
+    return { class: 'info', icon: 'ℹ️' };
   };
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    const calloutMatch = line.match(/^>\s*\[\!(IMPORTANT|TIP|WARNING|CAUTION|DANGER|NOTE|INFO)\]\s*(.*)/i);
+    const calloutMatch = line.match(/^>\s*\[\!(IMPORTANT|TIP|WARNING|CAUTION|DANGER|NOTE|INFO|TEAL)\]\s*(.*)/i);
     
     if (calloutMatch) {
       if (inCallout) {
@@ -120,7 +143,6 @@ function renderInfobox(meta, lines) {
 </div>`;
 }
 
-// Render Table Markdown sang HTML
 function processTables(markdown) {
   const lines = markdown.split(/\r?\n/);
   const resultLines = [];
@@ -153,14 +175,14 @@ function renderTableHtml(tableLines) {
   const headers = tableLines[0].split('|').slice(1, -1).map(h => h.trim());
   const rows = tableLines.slice(2).map(rowStr => rowStr.split('|').slice(1, -1).map(c => c.trim()));
 
-  let ths = headers.map(h => `<th>${formatInlineText(h)}</th>`).join('\n                ');
+  let ths = headers.map(h => `<th>${formatInlineText(h)}</th>`).join('\n              ');
   let trs = rows.map(row => {
     let tds = row.map(cell => `<td>${formatInlineText(cell)}</td>`).join('');
     return `<tr>${tds}</tr>`;
-  }).join('\n              ');
+  }).join('\n            ');
 
   return `<div class="table-wrapper">
-  <table class="regimen-table">
+  <table class="data-table">
     <thead>
       <tr>
         ${ths}
@@ -170,26 +192,52 @@ function renderTableHtml(tableLines) {
       ${trs}
     </tbody>
   </table>
+function processFlowcharts(markdown) {
+  const codeBlockRegex = /```([a-z]*)\r?\n([\s\S]*?)```/g;
+  return markdown.replace(codeBlockRegex, (match, lang, codeContent) => {
+    return renderFlowchartHtml(codeContent);
+  });
+}
+
+function renderFlowchartHtml(codeContent) {
+  const lines = codeContent.split(/\r?\n/);
+  const formattedLines = lines.map(line => {
+    let l = line;
+    // Highlight box-drawing lines
+    l = l.replace(/([┌┐└┘├┤┬┴┼───│─]+)/g, '<span class="fc-line">$1</span>');
+    // Highlight bracketed nodes
+    l = l.replace(/\[\s*(.*?)\s*\]/g, (m, nodeText) => {
+      const lower = nodeText.toLowerCase();
+      let nodeClass = 'fc-node';
+      let icon = '';
+      if (lower === 'có' || lower === 'dương tính' || lower.includes('dương tính')) {
+        nodeClass += ' fc-node-yes';
+        icon = '<i class="fa-solid fa-check"></i> ';
+      } else if (lower === 'không' || lower === 'âm tính' || lower.includes('âm tính')) {
+        nodeClass += ' fc-node-no';
+        icon = '<i class="fa-solid fa-xmark"></i> ';
+      } else if (lower.includes('nghi ngờ') || lower.includes('chưa phân loại') || lower.includes('thận trọng')) {
+        nodeClass += ' fc-node-warn';
+        icon = '<i class="fa-solid fa-triangle-exclamation"></i> ';
+      }
+      return `<span class="${nodeClass}">${icon}${nodeText}</span>`;
+    });
+    return l;
+  });
+
+  return `<div class="flowchart-card">
+  <div class="flowchart-card-hdr">
+    <div class="flowchart-card-hdr-title"><i class="fa-solid fa-diagram-project"></i> Sơ đồ Thuật toán Lâm sàng</div>
+    <span class="badge badge-blue">Clinical Algorithm</span>
+  </div>
+  <div class="flowchart-card-body">
+    <pre class="flowchart-box">${formattedLines.join('\n')}</pre>
+  </div>
 </div>`;
 }
 
-// Helper slugify tiếng Việt thành slug URL không dấu
-function slugify(str) {
-  if (!str) return 'guideline-summary';
-  return str
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/g, 'd').replace(/Đ/g, 'D')
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9 -]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
-}
-
-// Main conversion function
 function convertMdToGuidelineHtml(mdPath) {
-  console.log(`\n🚀 Đang xử lý file: ${mdPath}`);
+  console.log(`\n🚀 Đang xử lý file (Mẫu Flagship): ${mdPath}`);
 
   const rawContent = fs.readFileSync(mdPath, 'utf8');
   const { metadata, body } = parseFrontmatter(rawContent);
@@ -198,15 +246,15 @@ function convertMdToGuidelineHtml(mdPath) {
   const htmlFilename = `${fileSlug}.html`;
   const htmlOutputPath = path.join(KHO_GUIDELINES_DIR, htmlFilename);
 
-  const processedBody = processTables(processCallouts(body));
-  const rawSections = processedBody.split(/\n(?=##\s+)/);
+  const processedBody = processTables(processCallouts(processFlowcharts(body)));
+  const rawSections = processedBody.split(/\n(?=###?\s+)/);
 
   let overviewHtml = '';
   let pillars = [];
   let secCards = [];
   let secIndex = 1;
 
-  const sectionIcons = ['📋', '💊', '🎯', '📊', '🛡️', '🧪', '🔬', '⚙️'];
+  const sectionIcons = ['fa-stethoscope', 'fa-vial', 'fa-pills', 'fa-heart-pulse', 'fa-shield-halved', 'fa-triangle-exclamation', 'fa-circle-nodes', 'fa-book-medical'];
 
   for (let i = 0; i < rawSections.length; i++) {
     const secStr = rawSections[i].trim();
@@ -214,9 +262,8 @@ function convertMdToGuidelineHtml(mdPath) {
 
     if (secStr.startsWith('# ') && !secStr.startsWith('## ')) {
       const lines = secStr.split('\n');
-      const title = lines[0].replace(/^#\s+/, '').trim();
       const content = lines.slice(1).join('\n').trim();
-      overviewHtml = `<p class="hero-subtitle">${formatInlineText(content)}</p>`;
+      overviewHtml = formatInlineText(content);
     } else if (secStr.startsWith('## ')) {
       const lines = secStr.split('\n');
       const secTitle = lines[0].replace(/^##\s+/, '').trim();
@@ -233,34 +280,36 @@ function convertMdToGuidelineHtml(mdPath) {
             title: pTitle.trim(),
             desc: formatInlineText(pDesc.trim()),
             icon: idx === 0 ? '⚡' : idx === 1 ? '🎯' : idx === 2 ? '🛡️' : '⏱️',
-            class: `p${(idx % 3) + 1}`
+            class: `p${(idx % 4) + 1}`
           };
         });
       } else {
-        const icon = sectionIcons[(secIndex - 1) % sectionIcons.length];
+        const iconClass = sectionIcons[(secIndex - 1) % sectionIcons.length];
         
         let bodyHtml = secContent
-          .replace(/^###\s+(.*$)/gm, '<h3 class="sec-subtitle" style="margin-top: 1rem; margin-bottom: 0.5rem; color: var(--accent);">$1</h3>')
-          .replace(/^####\s+(.*$)/gm, '<strong>$1</strong>')
+          .replace(/^###\s+(.*$)/gm, '<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> $1</h3>')
+          .replace(/^####\s+(.*$)/gm, '<h4 style="font-family: \'Plus Jakarta Sans\', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-top: 1rem; margin-bottom: 0.4rem;">$1</h4>')
           .replace(/^\s*-\s+(.*$)/gm, '<li>$1</li>');
 
         bodyHtml = bodyHtml
           .split('\n\n')
           .map(block => {
-            if (block.trim().startsWith('<div') || block.trim().startsWith('<table') || block.trim().startsWith('<h3') || block.trim().startsWith('<ul') || block.trim().startsWith('<ol')) {
+            if (block.trim().startsWith('<div') || block.trim().startsWith('<table') || block.trim().startsWith('<h3') || block.trim().startsWith('<h4') || block.trim().startsWith('<ul') || block.trim().startsWith('<ol')) {
               return block;
             }
             if (block.includes('<li>')) {
               return `<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.6;">${block}</ul>`;
             }
-            return `<p style="margin-bottom: 1rem; line-height: 1.6;">${formatInlineText(block)}</p>`;
+            return `<p style="margin-bottom: 1rem; line-height: 1.65;">${formatInlineText(block)}</p>`;
           })
           .join('\n');
 
+        const cardId = `sec-${slugify(secTitle)}`;
+
         secCards.push({
-          id: `sec-${secIndex}`,
+          id: cardId,
           title: secTitle,
-          icon: icon,
+          iconClass: iconClass,
           content: bodyHtml
         });
         secIndex++;
@@ -268,20 +317,21 @@ function convertMdToGuidelineHtml(mdPath) {
     }
   }
 
-  const titleVi = metadata.title || 'Tóm Tắt Hướng Dẫn Lâm Sàng';
+  const titleVi = metadata.title || 'Hướng Dẫn Lâm Sàng Cập Nhật 2026';
   const titleEn = metadata.englishTitle || metadata.title || '';
-  const org = metadata.organization || metadata.author || 'Bộ Y Tế / Hội Chuyên Khoa';
+  const org = metadata.organization || metadata.author || 'Bộ Y tế Việt Nam / Hội Chuyên Khoa';
   const year = metadata.year || new Date().getFullYear();
   const metaDesc = metadata.summary || titleVi;
 
-  const pillarsNavHtml = secCards.map((card, idx) => {
-    return `<a href="#${card.id}" class="pillar-tab p-${(idx % 5) + 1}">${idx + 1}. ${card.title.replace(/^\d+\.\s*/, '')}</a>`;
-  }).join('\n      ');
+  const quickNavHtml = secCards.map((card, idx) => {
+    return `<a href="#${card.id}" class="quicknav-link ${idx === 0 ? 'active' : ''}">${idx + 1}. ${card.title.replace(/^\d+\.\s*/, '')}</a>`;
+  }).join('\n    ');
 
   const pillarsGridHtml = (pillars.length > 0 ? pillars : [
-    { title: 'Chẩn đoán sớm', desc: 'Sàng lọc và phân loại mức độ nguy cơ ngay khi tiếp cận.', icon: '⚡', class: 'p1' },
-    { title: 'Điều trị chuẩn hóa', desc: 'Áp dụng phác đồ và tối ưu hóa liều dùng lâm sàng.', icon: '🎯', class: 'p2' },
-    { title: 'Theo dõi & An toàn', desc: 'Đánh giá đáp ứng và phòng ngừa biến chứng nguy hiểm.', icon: '🛡️', class: 'p3' }
+    { title: 'Chẩn Đoán Sớm', desc: 'Sàng lọc và phân loại mức độ nguy cơ ngay khi tiếp cận.', icon: '⚡', class: 'p1' },
+    { title: 'Điều Trị Chuẩn Hóa', desc: 'Áp dụng phác đồ và tối ưu hóa liều dùng lâm sàng.', icon: '🎯', class: 'p2' },
+    { title: 'Theo Dõi Tích Cực', desc: 'Đánh giá đáp ứng và phòng ngừa biến chứng nguy hiểm.', icon: '🛡️', class: 'p3' },
+    { title: 'Xử Trí Suy Tạng', desc: 'Hồi sức chuyên sâu và can thiệp đa mô thức.', icon: '🩸', class: 'p4' }
   ]).map(p => `
       <div class="pillar ${p.class}">
         <div class="pillar-icon">${p.icon}</div>
@@ -293,15 +343,15 @@ function convertMdToGuidelineHtml(mdPath) {
 
   const cardsHtml = secCards.map(card => `
     <!-- ${card.title} -->
-    <article class="sec-card" id="${card.id}">
+    <div class="sec-card" id="${card.id}">
       <div class="sec-hdr">
-        <span class="sec-hdr-icon">${card.icon}</span>
+        <i class="fa-solid ${card.iconClass} sec-hdr-icon"></i>
         <h2 class="sec-title">${card.title}</h2>
       </div>
       <div class="sec-body">
         ${card.content}
       </div>
-    </article>`).join('\n');
+    </div>`).join('\n');
 
   const fullHtml = `<!DOCTYPE html>
 <html lang="vi" data-theme="light">
@@ -316,8 +366,11 @@ function convertMdToGuidelineHtml(mdPath) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
@@ -330,84 +383,316 @@ function convertMdToGuidelineHtml(mdPath) {
       --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
       --border: #cbd5e1; --border-light: #e2e8f0;
       --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
-      --radius: 16px; --tr: 220ms cubic-bezier(0.16,1,0.3,1);
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --green: #10b981; --green-bg: #064e3b; --green-light: #047857;
+      --orange: #f59e0b; --orange-bg: #78350f; --orange-light: #b45309;
+      --red: #ef4444; --red-bg: #7f1d1d; --red-light: #b91c1c;
+      --blue: #3b82f6; --blue-bg: #1e3a8a; --blue-light: #1d4ed8;
+      --teal: #14b8a6; --teal-bg: #115e59; --teal-light: #0f766e;
+      --purple: #8b5cf6; --purple-bg: #4c1d95; --purple-light: #6d28d9;
+      --accent: #38bdf8;
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; transition: background var(--tr), color var(--tr); }
 
     /* TOP NAV */
-    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; transition: background var(--tr), border-color var(--tr); }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
     .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
     .topnav-back:hover { background: var(--blue-bg); }
     .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
     .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-theme-toggle { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.5rem; border-radius: 50%; transition: background var(--tr); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    /* QUICK NAV BAR */
+    .quicknav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); display: flex; gap: 0.5rem; padding: 0.6rem 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .quicknav::-webkit-scrollbar { height: 3px; }
+    .quicknav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .quicknav-link { display: inline-flex; align-items: center; white-space: nowrap; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 20px; background: var(--surface-2); border: 1px solid var(--border-light); transition: all var(--tr); }
+    .quicknav-link:hover, .quicknav-link.active { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); }
 
     /* HERO */
-    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 40%, #065f46 100%); color: #fff; padding: 3rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
-    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
-    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
-    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.7em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
-    .hero-subtitle { font-size: 0.95rem; opacity: 0.85; max-width: 680px; margin-bottom: 1.5rem; line-height: 1.6; }
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 45%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.8; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
 
-    /* PILLARS STICKY NAV STRIP */
-    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
-    .pillars-nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
-    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
-    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
-    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
-    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
-    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
-    .pillar-tab.p-5 { border-left: 4px solid var(--red); }
-
-    /* PILLARS */
-    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
-    .pillars-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; }
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.75rem 1.5rem; }
+    .pillars-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
     .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
     .pillar.p1::before { background: var(--blue); }
-    .pillar.p2::before { background: var(--green); }
-    .pillar.p3::before { background: var(--orange); }
+    .pillar.p2::before { background: var(--orange); }
+    .pillar.p3::before { background: var(--red); }
+    .pillar.p4::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
     .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
-    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
-    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; }
+    .pillar-desc { font-size: 0.76rem; color: var(--text-muted); line-height: 1.45; }
 
     /* PAGE CONTENT */
-    .page-content { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.75rem; }
+    .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
 
-    /* SEC CARD */
-    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
-    .sec-hdr { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.6rem; }
-    .sec-hdr-icon { font-size: 1.1rem; }
-    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; font-weight: 800; color: var(--text); }
-    .sec-body { padding: 1.35rem; }
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.2rem; color: var(--accent); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
 
-    /* INFOBOX ALERTS */
-    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.15rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
-    .infobox:last-child { margin-bottom: 0; }
-    .infobox-icon { font-size: 1.25rem; flex-shrink: 0; line-height: 1.2; }
-    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
-    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
-    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
-    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); color: var(--text); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); color: var(--text); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); color: var(--text); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); color: var(--text); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); color: var(--text); }
     .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
 
-    /* REGIMEN TABLE */
-    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1rem; }
-    .regimen-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 600px; }
-    .regimen-table th { background: var(--surface-2); color: var(--text-muted); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.7rem 0.85rem; border-bottom: 1px solid var(--border-light); text-align: left; }
-    .regimen-table td { padding: 0.8rem 0.85rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
-    .rx-tag { display: inline-block; background: var(--border-light); color: var(--text-muted); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.45rem; border-radius: 5px; margin: 0.1rem 0.1rem 0.1rem 0; }
-    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); font-weight: 600; }
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid var(--border-light); margin-bottom: 1rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; text-align: left; }
+    .data-table thead th { padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: var(--surface-2); color: var(--text-muted); border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    /* BADGES & TAGS */
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
+    .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
+    .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+
+    /* ══════════════════════════════════════════════════════
+       FLOWCHART — PREMIUM CLINICAL ALGORITHM UI
+       "Deep Diagnostic Map" Design System v2.0
+    ══════════════════════════════════════════════════════ */
+    @keyframes fc-pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(15,111,180,0); } 50% { box-shadow: 0 0 0 4px rgba(15,111,180,0.12); } }
+    @keyframes fc-fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .flowchart-card {
+      background: var(--surface);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), 0 0 0 1px rgba(15,111,180,0.1);
+      transition: box-shadow 280ms cubic-bezier(0.16,1,0.3,1), transform 280ms cubic-bezier(0.16,1,0.3,1);
+      animation: fc-fade-in 0.4s ease both;
+    }
+    .flowchart-card:hover {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 16px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(15,111,180,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* HEADER — Gradient Medical Banner */
+    .flowchart-card-hdr {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 55%, #1d4ed8 100%);
+      padding: 0.9rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .flowchart-card-hdr::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(56,189,248,0.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .flowchart-card-hdr-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      position: relative;
+      z-index: 1;
+    }
+    .flowchart-card-hdr-title i {
+      font-size: 1rem;
+      color: #7dd3fc;
+    }
+    .flowchart-card-hdr .badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #e0f2fe;
+      white-space: nowrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* BODY CANVAS — Dot-Grid Blueprint */
+    .flowchart-card-body {
+      padding: 2rem 1.75rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: #f0f6ff;
+      background-image:
+        radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(16,185,129,0.06) 0%, transparent 55%),
+        radial-gradient(circle, rgba(15,111,180,0.25) 1px, transparent 1px);
+      background-size: auto, auto, 22px 22px;
+      color: var(--text);
+      position: relative;
+    }
+    [data-theme="dark"] .flowchart-card-body {
+      background: #060e1c;
+      background-image:
+        radial-gradient(ellipse at 15% 20%, rgba(59,130,246,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(16,185,129,0.08) 0%, transparent 55%),
+        radial-gradient(circle, rgba(56,189,248,0.2) 1px, transparent 1px);
+      background-size: auto, auto, 22px 22px;
+    }
+
+    /* FLOWCHART PRE CANVAS */
+    pre.flowchart-box {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.84rem;
+      line-height: 1.8;
+      margin: 0;
+      white-space: pre;
+      color: #334155;
+    }
+    [data-theme="dark"] pre.flowchart-box { color: #cbd5e1; }
+
+    /* NODES — Premium Pill Badges */
+    .fc-node {
+      display: inline-block;
+      padding: 0.28rem 0.85rem;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      color: #1e40af;
+      border: 1.5px solid #93c5fd;
+      border-radius: 10px;
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      vertical-align: middle;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.15), inset 0 1px 0 rgba(255,255,255,0.8);
+      transition: transform 160ms, box-shadow 160ms;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+    .fc-node:hover { transform: scale(1.03); box-shadow: 0 4px 14px rgba(37,99,235,0.22), inset 0 1px 0 rgba(255,255,255,0.8); }
+    [data-theme="dark"] .fc-node {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1e3a8a 100%);
+      color: #93c5fd;
+      border-color: #2563eb;
+      box-shadow: 0 2px 10px rgba(37,99,235,0.3), 0 0 0 1px rgba(147,197,253,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    /* NODE YES — Success Green */
+    .fc-node-yes {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+      color: #15803d !important;
+      border-color: #86efac !important;
+      box-shadow: 0 2px 8px rgba(21,128,61,0.15), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    }
+    .fc-node-yes:hover { box-shadow: 0 4px 14px rgba(21,128,61,0.22), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-yes {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%) !important;
+      color: #34d399 !important;
+      border-color: #059669 !important;
+      box-shadow: 0 2px 10px rgba(5,150,105,0.35), 0 0 0 1px rgba(52,211,153,0.1) !important;
+    }
+
+    /* NODE NO — Danger Red */
+    .fc-node-no {
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%) !important;
+      color: #b91c1c !important;
+      border-color: #fca5a5 !important;
+      box-shadow: 0 2px 8px rgba(185,28,28,0.13), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    }
+    .fc-node-no:hover { box-shadow: 0 4px 14px rgba(185,28,28,0.2), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-no {
+      background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%) !important;
+      color: #fca5a5 !important;
+      border-color: #dc2626 !important;
+      box-shadow: 0 2px 10px rgba(220,38,38,0.35), 0 0 0 1px rgba(252,165,165,0.1) !important;
+    }
+
+    /* NODE WARN — Amber Warning */
+    .fc-node-warn {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
+      color: #b45309 !important;
+      border-color: #fcd34d !important;
+      box-shadow: 0 2px 8px rgba(180,83,9,0.13), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+    }
+    .fc-node-warn:hover { box-shadow: 0 4px 14px rgba(180,83,9,0.2), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+    [data-theme="dark"] .fc-node-warn {
+      background: linear-gradient(135deg, #78350f 0%, #92400e 100%) !important;
+      color: #fcd34d !important;
+      border-color: #d97706 !important;
+      box-shadow: 0 2px 10px rgba(217,119,6,0.35), 0 0 0 1px rgba(252,211,77,0.1) !important;
+    }
+
+    /* CONNECTOR LINES */
+    .fc-line {
+      color: #0f6fb4;
+      font-weight: 700;
+      opacity: 1;
+      text-shadow: 0 0 12px rgba(15,111,180,0.35);
+    }
+    [data-theme="dark"] .fc-line {
+      color: #38bdf8;
+      text-shadow: 0 0 12px rgba(56,189,248,0.4);
+    }
+
+    /* SCROLL HINT on small screens */
+    .flowchart-card-body::after {
+      content: '↔ Cuộn ngang để xem đầy đủ';
+      display: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: var(--text-faint);
+      padding: 0.5rem 0 0;
+      text-align: center;
+    }
+    @media (max-width: 640px) { .flowchart-card-body::after { display: block; } }
 
     code { font-family: 'JetBrains Mono', monospace; background: var(--surface-2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.82em; border: 1px solid var(--border-light); }
 
+    /* CITATION & FOOTER */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .page-footer { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; text-align: center; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); }
+
     @media (max-width: 768px) {
       .page-content { padding: 1.25rem 1rem; }
-      .sec-body { padding: 1rem; }
+      .sec-body { padding: 1.1rem 1rem; }
+      .pillars-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .quicknav, .topnav-theme-toggle, .page-footer, .topnav-pdf-btn { display: none !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
     }
   </style>
 </head>
@@ -416,51 +701,183 @@ function convertMdToGuidelineHtml(mdPath) {
   <!-- TOP NAV -->
   <nav class="topnav">
     <a href="../guidelines.html" class="topnav-back">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      <i class="fa-solid fa-chevron-left"></i>
       Kho Guidelines
     </a>
     <div class="topnav-divider"></div>
     <div class="topnav-title">${titleVi}</div>
+    <button class="topnav-theme-toggle topnav-pdf-btn" onclick="window.print()" title="Tải PDF / In bài viết" style="margin-left: auto; margin-right: 4px;">
+      <i class="fa-solid fa-file-pdf"></i>
+    </button>
+    <button class="topnav-theme-toggle" id="themeToggleBtn" aria-label="Đổi giao diện">
+      <i class="fa-solid fa-moon"></i>
+    </button>
   </nav>
 
+  <!-- QUICK NAV BAR -->
+  <div class="quicknav">
+    ${quickNavHtml}
+  </div>
+
   <!-- HERO -->
-  <header class="hero">
+  <div class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">🔬 ${org} (${year})</div>
+      <div class="hero-badge"><i class="fa-solid fa-book-journal-whills"></i> ${org} · ${year}</div>
       <h1 class="hero-title">
         ${titleEn ? `<span>${titleEn}</span>` : ''}
         ${titleVi}
       </h1>
-      ${overviewHtml}
-    </div>
-  </header>
-
-  <!-- PILLARS STRIP NAV -->
-  <div class="pillars-nav">
-    <div class="pillars-nav-inner">
-      ${pillarsNavHtml}
+      ${overviewHtml ? `<p class="hero-subtitle">${overviewHtml}</p>` : ''}
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Cập nhật: ${year}</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-building-flag"></i> ${org}</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-stethoscope"></i> Chuyên khoa: ${(metadata.specialty || 'Nội khoa').toUpperCase()}</div>
+      </div>
     </div>
   </div>
 
-  <!-- PILLARS GRID -->
-  <section class="pillars">
+  <!-- PILLARS STRIP -->
+  <div class="pillars">
     <div class="pillars-inner">
       ${pillarsGridHtml}
     </div>
-  </section>
+  </div>
 
   <!-- MAIN CONTENT -->
-  <main class="page-content">
+  <div class="page-content">
     ${cardsHtml}
-  </main>
 
+    <!-- CITATION & SOURCE -->
+    <div class="sec-card">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-bookmark sec-hdr-icon"></i>
+        <h2 class="sec-title">Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          1. ${metadata.author || org}. <em>${titleVi} (${titleEn})</em>. ${year}. DOI / Ref: ${metadata.sourceUrl || 'JCEM / Endocrine Society Guidelines'}.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>© 2026 CliniPortal — Phân hệ Y học Chứng cứ (EBM). Bản quyền tóm tắt hướng dẫn y khoa chuẩn hóa.</p>
+  </footer>
+
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    const savedTheme = localStorage.getItem('cliniportal_ebm_theme');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      if (themeToggleBtn) {
+        themeToggleBtn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', newTheme);
+        themeToggleBtn.innerHTML = newTheme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('cliniportal_ebm_theme', newTheme);
+      });
+    }
+
+    // Quicknav Active Highlight with IntersectionObserver
+    const sections = document.querySelectorAll('.sec-card[id]');
+    const navLinks = document.querySelectorAll('.quicknav-link');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+  </script>
 </body>
 </html>`;
 
   fs.writeFileSync(htmlOutputPath, fullHtml, 'utf8');
-  console.log(`✅ Đã tạo trang HTML tóm tắt: ${htmlOutputPath}`);
+  console.log(`✅ Đã tạo trang HTML Flagship tóm tắt: ${htmlOutputPath}`);
 
   updateGuidelinesData(metadata, fileSlug, htmlFilename);
+  updateKhoGuidelinesIndex(metadata, fileSlug, htmlFilename, secCards);
+}
+
+function updateKhoGuidelinesIndex(metadata, fileSlug, htmlFilename, secCards) {
+  const indexPath = path.join(KHO_GUIDELINES_DIR, 'index.html');
+  if (!fs.existsSync(indexPath)) return;
+
+  let indexContent = fs.readFileSync(indexPath, 'utf8');
+
+  if (indexContent.includes(htmlFilename)) {
+    console.log(`ℹ️ Thẻ card cho ${htmlFilename} đã tồn tại trong kho-guidelines/index.html. Giữ nguyên.`);
+    return;
+  }
+
+  const titleVi = metadata.title || 'Hướng Dẫn Lâm Sàng Cập Nhật 2026';
+  const summary = metadata.summary || metadata.title || '';
+  const org = metadata.organization || metadata.author || 'Hội Chuyên Khoa';
+  const year = metadata.year || new Date().getFullYear();
+  const category = metadata.category || 'icu';
+
+  const previewListHtml = (secCards || []).slice(0, 6).map((sec, i) => {
+    return `              <li>• <a href="${htmlFilename}#${sec.id}">${i + 1}. ${sec.title.replace(/^\d+\.\s*/, '')}</a></li>`;
+  }).join('\n');
+
+  const cardHtml = `
+      <!-- FILE: ${htmlFilename} -->
+      <div class="toc-card" data-category="${category}" data-keywords="${slugify(titleVi).replace(/-/g, ' ')} ${year}">
+        <div class="toc-card-header">
+          <span class="toc-card-type type-icu"><i class="fa-solid fa-file-medical"></i> ${org}</span>
+          <span class="toc-card-file">${htmlFilename}</span>
+        </div>
+        <div class="toc-card-body">
+          <h2 class="toc-card-title">
+            <a href="${htmlFilename}">${titleVi}</a>
+          </h2>
+          <p class="toc-card-desc">
+            ${summary}
+          </p>
+
+          <!-- IN-PAGE TOC PREVIEW -->
+          <div class="toc-sections-preview">
+            <div class="toc-sections-title"><i class="fa-solid fa-list"></i> Các phần mục lục trong trang:</div>
+            <ul class="toc-sections-list">
+${previewListHtml}
+            </ul>
+          </div>
+
+          <div class="toc-card-footer">
+            <span>📅 Cập nhật ${year} · ${org}</span>
+            <a href="${htmlFilename}" class="toc-btn">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+`;
+
+  const gridMarker = '<div class="guidelines-grid" id="guidelinesGrid">';
+  if (indexContent.includes(gridMarker)) {
+    indexContent = indexContent.replace(gridMarker, `${gridMarker}\n${cardHtml}`);
+    fs.writeFileSync(indexPath, indexContent, 'utf8');
+    console.log(`✅ Đã tự động thêm thẻ card của ${htmlFilename} vào trang chủ kho-guidelines/index.html!`);
+  }
 }
 
 function updateGuidelinesData(metadata, fileSlug, htmlFilename) {
@@ -470,7 +887,7 @@ function updateGuidelinesData(metadata, fileSlug, htmlFilename) {
   const relFilePath = `kho-guidelines/${htmlFilename}`;
 
   if (jsContent.includes(`id: "${studyId}"`) || jsContent.includes(`id: '${studyId}'`)) {
-    console.log(`ℹ️ Bản ghi ${studyId} đã tồn tại trong guidelinesdata.js. Giữ nguyên hoặc bỏ qua việc chèn trùng lặp.`);
+    console.log(`ℹ️ Bản ghi ${studyId} đã tồn tại trong guidelinesdata.js. Giữ nguyên.`);
     return;
   }
 
@@ -479,7 +896,7 @@ function updateGuidelinesData(metadata, fileSlug, htmlFilename) {
     title: metadata.title || "Tóm tắt Hướng Dẫn Lâm Sàng",
     drug: metadata.drug || "",
     sourceType: metadata.sourceType || "intl-guideline",
-    specialty: metadata.specialty || "icu",
+    specialty: metadata.specialty || "endo",
     design: metadata.design || "guideline",
     impact: metadata.impact || "practice-changing",
     year: parseInt(metadata.year || new Date().getFullYear(), 10),
@@ -507,8 +924,6 @@ function updateGuidelinesData(metadata, fileSlug, htmlFilename) {
     jsContent = jsContent.replace(insertMarker, `${insertMarker}\n${formattedObjStr}`);
     fs.writeFileSync(DATA_FILE_PATH, jsContent, 'utf8');
     console.log(`✅ Đã đăng ký thành công bản ghi mới (${studyId}) vào guidelinesdata.js!`);
-  } else {
-    console.warn(`⚠️ Không tìm thấy vị trí const SAMPLE_STUDIES trong guidelinesdata.js để tự động chèn.`);
   }
 }
 

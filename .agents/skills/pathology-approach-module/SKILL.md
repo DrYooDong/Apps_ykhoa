@@ -13,6 +13,16 @@ Skill này quy định chuẩn kiến trúc, cấu trúc dữ liệu JSON Schema
 
 ---
 
+## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module Phác Đồ Bệnh Lý)
+
+1. **Bảo Vệ Hub `benh-ly.js`**: `benh-ly.js` là **CRITICAL HUB** với >200 liên kết phụ thuộc. BẮT BUỘC chạy `node scratch/query_graph.js benh-ly.js` trước khi thực hiện bất kỳ refactor nào trên engine.
+2. **Khai Báo Đúng 4 CSS & 3 JS Engine**: Khi nhúng Poster vào HTML, phải nạp đầy đủ `clinical-flow-studio.css`, `clinical-infographic-poster.css`, `benh-ly.css`, `medical-draw-engine.js`, `clinical-infographic-renderer.js` và `benh-ly.js`.
+3. **Chuẩn Dữ Liệu JSON Schema**: Mọi bài phác đồ Poster JSON phải đáp ứng đầy đủ các trường chính: `id`, `name`, `icd`, `urgentAlert`, `flowchart`, `comparisonSection`, `dosingSection`, `processRibbon`, `takeaway`.
+4. **Chuẩn Hóa Tọa Độ Node Studio**: Tọa độ $(x, y)$ và chiều rộng node flowchart phải khớp vừa khung viewBox SVG Canvas 750x480px.
+5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi tạo/sửa HTML trong phân hệ Bệnh lý.
+
+---
+
 ## 📁 Cấu trúc Phân hệ Tiếp cận Bệnh lý
 
 ```text

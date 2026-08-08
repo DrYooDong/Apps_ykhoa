@@ -9,6 +9,18 @@ description: >
 
 # Clinical Skills Module Skill
 
+---
+
+## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module Kỹ Năng Lâm Sàng & OSCE)
+
+1. **Chuẩn 4 Tab OSCE**: Mọi trang kỹ năng thủ thuật/khám phải chia đủ 4 tab chuẩn (`chuan-bi`, `tien-hanh`, `theo-doi`, `tai-bien`).
+2. **Khai Báo Đúng CSS & JS Tab**: Phải nạp `clinical-skill.css` và `clinical-skill-tabs.js` để tính năng chuyển tab hoạt động mượt mà.
+3. **Phân Loại Bảng Xét Nghiệm (CLS)**: Trang đọc kết quả CLS phải ghi rõ: Chỉ số, Khoảng chiếu bình thường, Bất thường cao/thấp, Ý nghĩa lâm sàng.
+4. **Quy Tắc Đặt Tên File Kỹ Năng**: Trang OSCE dùng `KN_[Ten].html`, trang đọc CLS dùng `doc-[ten].html` (ASCII, kebab-case).
+5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi tạo/sửa.
+
+---
+
 ## 📁 Cấu trúc Phân hệ
 
 ```

@@ -8,6 +8,18 @@ description: >
 
 # Symptom Approach Module Skill
 
+---
+
+## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module Tiếp Cận Triệu Chứng)
+
+1. **Chuẩn 7 Bước Tiếp Cận Lâm Sàng**: Thiết kế phải tuân thủ thứ tự: 1-Ổn định/Nguy cơ, 2-Dữ kiện, 3-Chẩn đoán phân biệt, 4-Biện luận, 5-Cận lâm sàng, 6-Xử trí, 7-Theo dõi.
+2. **Khai Báo Đúng Engine TOC & ScrollSpy**: Phải nhúng `approach-symptom.css` và `approach-symptom.js` để tự động render Sidebar TOC từ các thẻ `.symptom-step-card`.
+3. **Phân Cấp Đường Dẫn Tương Đối Chính Xác**: Đếm cấp thư mục cẩn thận (cấp 3 dùng `../../../../`, cấp 4 dùng `../../../../../`).
+4. **Chuẩn Phân Loại Màu Cột Step Card**: Dùng `.border-danger` (Bước 1), `.border-primary` (Bước 2,6), `.border-warning` (Bước 3), `.border-success` (Bước 4), `.border-info` (Bước 5).
+5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi tạo/sửa.
+
+---
+
 Tài liệu này định nghĩa quy chuẩn thiết kế, cấu trúc HTML và các quy tắc kỹ thuật khi xây dựng hoặc chỉnh sửa các trang tiếp cận triệu chứng lâm sàng nằm trong thư mục `pages/Tiếp cận/2. Triệu chứng/`.
 
 ---

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Toxicology Pro Studio – Workstation Hồi Sức Chống Độc Lâm Sàng: Nhận diện Toxidrome, máy tính liều giải độc đặc hiệu, phân tầng PSS/GCS." />
+  <title>Toxicology Pro Studio – Hồi Sức Chống Độc & Giải Độc Lâm Sàng – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/fluid-studio.css">
+
+  <script src="../../../../components/header.js"></script>
+
+  <style>
+    /* Custom Toxicology overrides */
+    .tox-hero {
+      background: linear-gradient(135deg, #3b0764 0%, #6b21a8 50%, #7e22ce 100%) !important;
+      box-shadow: 0 8px 32px rgba(107, 33, 168, 0.35) !important;
+      border: none !important;
+    }
+    .tox-check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .tox-check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text);
+      cursor: pointer;
+    }
+    .tox-form-label {
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+      display: block;
+      font-size: 0.9rem;
+    }
+    .sc-purple i { color: #8b5cf6 !important; }
+    .sc-purple { border-left-color: #8b5cf6 !important; }
+    
+    .tox-alert {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .tox-alert-info { background: var(--tx-info-light, #e0f2fe); border-left: 4px solid var(--tx-info, #0284c7); }
+    .tox-alert-warning { background: var(--tx-warning-light, #fef3c7); border-left: 4px solid var(--tx-warning, #d97706); }
+    .tox-alert-success { background: var(--tx-success-light, #dcfce7); border-left: 4px solid var(--tx-success, #16a34a); }
+    .tox-alert-danger { background: var(--tx-danger-light, #fee2e2); border-left: 4px solid var(--tx-danger, #dc2626); }
+    
+    [data-theme="dark"] .tox-alert-info { background: rgba(2, 132, 199, 0.2); }
+    [data-theme="dark"] .tox-alert-warning { background: rgba(217, 119, 6, 0.2); }
+    [data-theme="dark"] .tox-alert-success { background: rgba(22, 163, 74, 0.2); }
+    [data-theme="dark"] .tox-alert-danger { background: rgba(220, 38, 38, 0.2); }
+    
+    .case-option-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px;
+      margin-bottom: 8px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      color: var(--color-text);
+    }
+    .case-option-btn:hover { background: var(--tx-purple-light, #f3e8ff); border-color: #a855f7; }
+    .case-option-btn.correct { background: var(--tx-success-light, #dcfce7); border-color: var(--tx-success, #16a34a); color: var(--tx-success, #16a34a); font-weight: 600; }
+    .case-option-btn.wrong { background: var(--tx-danger-light, #fee2e2); border-color: var(--tx-danger, #dc2626); color: var(--tx-danger, #dc2626); text-decoration: line-through; }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  
+  <div class="app-container">
+    <main class="app-main" id="mainContent">
+      <div class="fluid-studio-wrap">
+        
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Công cụ", "url": "../cong-cu.html"}, {"label": "Cấp cứu & Hồi sức", "url": "#"}, {"label": "Toxicology Pro Studio"}]'></clini-breadcrumb>
+
+        <!-- ── HERO HEADER ── -->
+        <div class="fluid-hero tox-hero">
+          <div class="fluid-hero-top">
+            <div>
+              <div class="fluid-hero-badge"><i class="fa-solid fa-flask-vial"></i> Hồi Sức Chống Độc Lâm Sàng</div>
+              <h1>Toxicology Pro Studio</h1>
+              <p class="fluid-hero-sub">
+                Workstation hỗ trợ chẩn đoán và hồi sức ngộ độc cấp tại giường bệnh. Nhận diện hội chứng nhiễm độc (Toxidrome),
+                tính liều giải độc đặc hiệu, phân tầng mức độ nặng (PSS/GCS) và lập phác đồ khử độc.
+              </p>
+              <div class="fluid-hero-tags">
+                <span class="fluid-gl-tag"><i class="fa-solid fa-book-medical"></i> WHO/IPCS PSS</span>
+                <span class="fluid-gl-tag"><i class="fa-solid fa-book-medical"></i> Rumack-Matthew</span>
+                <span class="fluid-gl-tag"><i class="fa-solid fa-book-medical"></i> AHA Tox 2024</span>
+              </div>
+            </div>
+            <button class="fluid-reset-btn" onclick="resetForm()"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+          </div>
+        </div>
+
+        <!-- ── WORKSPACE ── -->
+        <div class="fluid-workspace">
+          
+          <!-- LEFT COLUMN (INPUT) -->
+          <div class="fluid-left">
+            
+            <!-- SCENARIO PICKER -->
+            <div class="fluid-sc-panel">
+              <div class="fluid-sc-label"><i class="fa-solid fa-list-check"></i> 1. Chọn Phân Hệ Hồi Sức Chống Độc</div>
+              <div class="fluid-sc-grid">
+                <button class="fluid-sc-btn sc-purple" id="sc-toxidrome" onclick="setScenario('TOXIDROME')">
+                  <i class="fa-solid fa-magnifying-glass sc-icon" style="color:#8b5cf6"></i>
+                  <div><div class="sc-name">Nhận Diện Toxidrome</div><span class="sc-sub-name">Định hướng nguyên nhân</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-blue" id="sc-antidote" onclick="setScenario('ANTIDOTE')">
+                  <i class="fa-solid fa-syringe sc-icon" style="color:var(--bd-blue)"></i>
+                  <div><div class="sc-name">Tính Liều Giải Độc</div><span class="sc-sub-name">NAC, Atropine, PAM...</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-amber" id="sc-severity" onclick="setScenario('SEVERITY')">
+                  <i class="fa-solid fa-stethoscope sc-icon" style="color:var(--bd-amber)"></i>
+                  <div><div class="sc-name">Phân Tầng PSS</div><span class="sc-sub-name">Đánh giá mức độ nặng</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-teal" id="sc-decon" onclick="setScenario('DECON')">
+                  <i class="fa-solid fa-filter sc-icon" style="color:var(--bd-teal)"></i>
+                  <div><div class="sc-name">Khử Độc & Tăng Thải</div><span class="sc-sub-name">Than hoạt, Rửa dạ dày</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-orange" id="sc-simulator" style="grid-column: span 2" onclick="setScenario('SIMULATOR')">
+                  <i class="fa-solid fa-user-doctor sc-icon" style="color:var(--bd-orange)"></i>
+                  <div><div class="sc-name">Case Simulator</div><span class="sc-sub-name">Giả lập lâm sàng ngộ độc</span></div>
+                </button>
+              </div>
+            </div>
+
+            <!-- INPUT PANEL -->
+            <div class="fluid-input-panel">
+              <div class="fluid-input-title"><i class="fa-solid fa-sliders text-primary"></i> 2. Nhập Thông Số & Triệu Chứng</div>
+              
+              <div id="specific-params">
+                <!-- Empty State Message -->
+                <div id="group-empty-input" style="color:var(--color-text-muted); font-size:0.9rem; font-style:italic;">
+                  Vui lòng chọn phân hệ ở trên để hiển thị các tùy chọn cấu hình.
+                </div>
+                
+                <!-- Toxidrome Inputs -->
+                <div id="group-toxidrome" style="display:none;">
+                  <span class="tox-form-label">🫀 Tim Mạch & Huyết Động</span>
+                  <div class="tox-check-group">
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="tachycardia" onchange="calculate()"> Mạch nhanh (Tachycardia)</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="bradycardia" onchange="calculate()"> Mạch chậm (Bradycardia)</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="hypertension" onchange="calculate()"> Huyết áp tăng (Hypertension)</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="hypotension" onchange="calculate()"> Huyết áp tụt (Hypotension)</label>
+                  </div>
+                  <span class="tox-form-label">👁️ Đồng Tử & Mắt</span>
+                  <div class="tox-check-group">
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="mydriasis" onchange="calculate()"> Đồng tử giãn (Mydriasis &gt; 5mm)</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="miosis" onchange="calculate()"> Đồng tử co nhỏ (Miosis &lt; 2mm)</label>
+                  </div>
+                  <span class="tox-form-label">💧 Da, Tuyến Bài Tiết & Nhiệt Độ</span>
+                  <div class="tox-check-group">
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="drySkin" onchange="calculate()"> Da khô, nóng, đỏ</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="diaphoresis" onchange="calculate()"> Vã mồ hôi nhiều</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="salivation" onchange="calculate()"> Tăng tiết (SLUDGE)</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="hyperthermia" onchange="calculate()"> Sốt cao (&gt; 38.5°C)</label>
+                  </div>
+                  <span class="tox-form-label">🧠 Thần Kinh & Hô Hấp</span>
+                  <div class="tox-check-group">
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="agitation" onchange="calculate()"> Kích động, ảo giác</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="sedation" onchange="calculate()"> Hôn mê, ức chế TK</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="seizures" onchange="calculate()"> Co giật (Seizures)</label>
+                    <label class="tox-check-item"><input type="checkbox" class="tox-chk" data-symptom="respDepression" onchange="calculate()"> Suy hô hấp / Thở chậm</label>
+                  </div>
+                </div>
+                
+                <!-- Antidote Inputs -->
+                <div id="group-antidote" style="display:none;">
+                  <div class="fluid-ig" style="margin-bottom: 1rem;">
+                    <label for="antidote-select">Chọn thuốc giải độc đặc hiệu:</label>
+                    <select id="antidote-select" onchange="calculate()">
+                      <option value="nac">N-Acetylcysteine (NAC) — Ngộ độc Paracetamol</option>
+                      <option value="atropine_pam">Atropine + Pralidoxime (PAM) — Ngộ độc OP</option>
+                      <option value="naloxone">Naloxone — Ngộ độc Opioid</option>
+                      <option value="flumazenil">Flumazenil — Ngộ độc Benzodiazepine</option>
+                      <option value="digifab">Digoxin-Fab (DigiFab) — Ngộ độc Digoxin</option>
+                      <option value="methylene_blue">Methylene Blue 1% — Ngộ độc Methemoglobin</option>
+                      <option value="lipid_ile">Lipid Emulsion 20% (ILE) — Ngộ độc Thuốc tê (LAST)</option>
+                      <option value="nahco3">Sodium Bicarbonate 8.4% — Ngộ độc TCA</option>
+                    </select>
+                  </div>
+                  <div class="fluid-ig">
+                    <label for="pt-weight">Cân nặng bệnh nhân (kg):</label>
+                    <input type="number" id="pt-weight" value="60" min="5" max="200" step="1" oninput="calculate()">
+                  </div>
+                </div>
+
+                <!-- Severity Inputs -->
+                <div id="group-severity" style="display:none;">
+                  <div class="fluid-ig" style="margin-bottom: 0.75rem;">
+                    <label for="pss-gcs">Thần kinh (GCS):</label>
+                    <select id="pss-gcs" class="pss-field" onchange="calculate()">
+                      <option value="0">GCS 15 (Bình thường)</option>
+                      <option value="1">GCS 13-14 (Lơ mơ nhẹ)</option>
+                      <option value="2">GCS 9-12 (Ức chế vừa)</option>
+                      <option value="3">GCS &le; 8 (Hôn mê sâu)</option>
+                    </select>
+                  </div>
+                  <div class="fluid-ig" style="margin-bottom: 0.75rem;">
+                    <label for="pss-cvs">Tim mạch & Huyết động:</label>
+                    <select id="pss-cvs" class="pss-field" onchange="calculate()">
+                      <option value="0">HA & Nhịp tim bình thường</option>
+                      <option value="1">Mạch 100-140 hoặc HA tâm thu 140-160</option>
+                      <option value="2">Mạch &gt; 140 hoặc HA tâm thu &lt; 90</option>
+                      <option value="3">Sốc trơ, rối loạn nhịp thất, HA &lt; 80</option>
+                    </select>
+                  </div>
+                  <div class="fluid-ig">
+                    <label for="pss-resp">Hô hấp & Khí máu:</label>
+                    <select id="pss-resp" class="pss-field" onchange="calculate()">
+                      <option value="0">Thở bình thường, SpO2 &gt; 95%</option>
+                      <option value="1">Thở nhanh nhẹ, SpO2 90-95%</option>
+                      <option value="2">Suy hô hấp vừa, SpO2 &lt; 90%</option>
+                      <option value="3">Suy hô hấp nặng / ARDS, ngừng thở</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <!-- Decon Inputs (Static Info) -->
+                <div id="group-decon" style="display:none;">
+                  <div class="tox-alert tox-alert-info">
+                    Phân hệ này cung cấp hướng dẫn về các phương pháp khử độc dạ dày ruột và tăng thải độc chất.
+                    <br><br>👉 Kết quả sẽ hiển thị ở bảng bên phải.
+                  </div>
+                </div>
+
+                <!-- Simulator Inputs (Static Info) -->
+                <div id="group-simulator" style="display:none;">
+                  <div class="tox-alert tox-alert-warning">
+                    Phân hệ Simulator giúp bác sĩ ôn luyện nhận diện ca bệnh lâm sàng ngộ độc.
+                    <br><br>👉 Đọc ca lâm sàng và trả lời câu hỏi bên phải.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT COLUMN (RESULTS) -->
+          <div class="fluid-right">
+            <div class="fluid-result-panel" id="result-panel">
+              <div class="fluid-result-empty" id="result-empty">
+                <i class="fa-solid fa-flask empty-icon" style="color:var(--color-border); font-size:4rem; margin-bottom:1rem;"></i>
+                <div class="empty-title">Chưa chọn phân hệ</div>
+                <div class="empty-sub">Hãy chọn một phân hệ chống độc ở panel bên trái để bắt đầu.</div>
+              </div>
+              
+              <div id="result-content" style="display:none;">
+                <!-- Dynamically populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- SCRIPT LOGIC -->
+  <script src="../../../../js/module-dashboard.js" defer></script>
+  <script>
+    let currentScenario = null;
+
+    const toxidromes = {
+      anticholinergic: {
+        name: "Anticholinergic Toxidrome",
+        color: "#8b5cf6",
+        traits: ["tachycardia", "mydriasis", "drySkin", "agitation", "hyperthermia"],
+        drugs: "Atropine, Antihistamines, TCA, Phenothiazines.",
+        mnemonics: "Blind as a bat, Mad as a hatter, Red as a beet, Hot as a hare, Dry as a bone."
+      },
+      cholinergic: {
+        name: "Cholinergic Toxidrome (SLUDGE)",
+        color: "#dc2626",
+        traits: ["bradycardia", "miosis", "diaphoresis", "salivation", "respDepression", "fasciculations"],
+        drugs: "Thuốc trừ sâu Phospho hữu cơ, Carbamate.",
+        mnemonics: "SLUDGE: Salivation, Lacrimation, Urination, Defecation, GI distress, Emesis."
+      },
+      opioid: {
+        name: "Opioid Toxidrome",
+        color: "#0284c7",
+        traits: ["bradycardia", "hypotension", "miosis", "sedation", "respDepression"],
+        drugs: "Morphine, Heroin, Fentanyl, Methadone.",
+        mnemonics: "Tam chứng ngộ độc: Co đồng tử + Suy hô hấp + Ức chế thần kinh trung ương."
+      },
+      sympathomimetic: {
+        name: "Sympathomimetic Toxidrome",
+        color: "#d97706",
+        traits: ["tachycardia", "hypertension", "mydriasis", "diaphoresis", "agitation", "hyperthermia"],
+        drugs: "Amphetamine, Cocaine, Ecstasy.",
+        mnemonics: "Mạch nhanh + HA cao + Vã mồ hôi + Giãn đồng tử."
+      }
+    };
+
+    function setScenario(sc) {
+      currentScenario = sc;
+      
+      document.querySelectorAll('.fluid-sc-btn').forEach(btn => btn.classList.remove('active'));
+      const scMap = {
+        'TOXIDROME': 'sc-toxidrome',
+        'ANTIDOTE': 'sc-antidote',
+        'SEVERITY': 'sc-severity',
+        'DECON': 'sc-decon',
+        'SIMULATOR': 'sc-simulator'
+      };
+      if (scMap[sc]) {
+        document.getElementById(scMap[sc]).classList.add('active');
+      }
+
+      document.getElementById('group-empty-input').style.display = 'none';
+      document.getElementById('group-toxidrome').style.display = sc === 'TOXIDROME' ? 'block' : 'none';
+      document.getElementById('group-antidote').style.display = sc === 'ANTIDOTE' ? 'block' : 'none';
+      document.getElementById('group-severity').style.display = sc === 'SEVERITY' ? 'block' : 'none';
+      document.getElementById('group-decon').style.display = sc === 'DECON' ? 'block' : 'none';
+      document.getElementById('group-simulator').style.display = sc === 'SIMULATOR' ? 'block' : 'none';
+
+      document.getElementById('result-empty').style.display = 'none';
+      document.getElementById('result-content').style.display = 'block';
+
+      calculate();
+    }
+
+    function calculate() {
+      if (!currentScenario) return;
+      
+      const resContainer = document.getElementById('result-content');
+      let html = '';
+
+      if (currentScenario === 'TOXIDROME') {
+        const checkBoxes = document.querySelectorAll('.tox-chk');
+        const selected = Array.from(checkBoxes).filter(c => c.checked).map(c => c.getAttribute('data-symptom'));
+        
+        if (selected.length === 0) {
+          html = `<div class="tox-alert tox-alert-info">👈 Chọn các triệu chứng lâm sàng ở cột bên trái để hệ thống tự động phân tích Toxidrome.</div>`;
+        } else {
+          const scores = [];
+          Object.keys(toxidromes).forEach(key => {
+            const tox = toxidromes[key];
+            let matched = 0;
+            tox.traits.forEach(t => { if (selected.includes(t)) matched++; });
+            const pct = Math.round((matched / tox.traits.length) * 100);
+            if (pct > 0) scores.push({ ...tox, pct });
+          });
+          scores.sort((a, b) => b.pct - a.pct);
+
+          if (scores.length === 0) {
+            html = `<div class="tox-alert tox-alert-warning">Chưa tìm thấy Toxidrome điển hình.</div>`;
+          } else {
+            html += `<h3 style="margin-bottom:1rem; font-size:1.1rem; color:var(--color-text); font-weight:700;"><i class="fa-solid fa-bullseye text-primary"></i> Kết Quả Phân Tích</h3>`;
+            scores.forEach(item => {
+              html += `
+                <div style="margin-bottom: 1rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-bg);">
+                  <div style="display:flex; justify-content:space-between; margin-bottom: 8px;">
+                    <strong style="color:${item.color}">${item.name}</strong>
+                    <span style="font-weight:700; color:${item.color}">${item.pct}% Khớp</span>
+                  </div>
+                  <div style="width:100%; height:8px; background:var(--color-surface); border-radius:4px; margin-bottom:8px;">
+                    <div style="width:${item.pct}%; height:100%; background:${item.color}; border-radius:4px;"></div>
+                  </div>
+                  <div style="font-size:0.85rem; color:var(--color-text-muted);">
+                    <strong>💊 Độc chất:</strong> ${item.drugs}<br>
+                    <strong>💡 Lưu ý:</strong> ${item.mnemonics}
+                  </div>
+                </div>`;
+            });
+          }
+        }
+      } 
+      else if (currentScenario === 'ANTIDOTE') {
+        const type = document.getElementById('antidote-select').value;
+        const w = parseFloat(document.getElementById('pt-weight').value) || 60;
+        
+        html += `<h3 style="margin-bottom:1rem; font-size:1.1rem; color:var(--color-text); font-weight:700;"><i class="fa-solid fa-file-medical text-primary"></i> Y Lệnh & Hướng Dẫn Pha Thuốc</h3>`;
+        
+        let rxContent = '';
+        if (type === 'nac') {
+          rxContent = `
+            <strong>🧪 PHÁC ĐỒ N-ACETYLCYSTEINE (NAC) 21 GIỜ:</strong><br><br>
+            🔴 <strong>TÚI 1 (150 mg/kg):</strong> ${Math.round(150 * w)} mg pha 200mL D5W ➔ Truyền 1 GIỜ.<br>
+            🟡 <strong>TÚI 2 (50 mg/kg):</strong> ${Math.round(50 * w)} mg pha 500mL D5W ➔ Truyền 4 GIỜ.<br>
+            🟢 <strong>TÚI 3 (100 mg/kg):</strong> ${Math.round(100 * w)} mg pha 1000mL D5W ➔ Truyền 16 GIỜ.`;
+        } else if (type === 'atropine_pam') {
+          rxContent = `
+            <strong>🧪 ATROPINE & PAM (PHOSPHO HỮU CƠ):</strong><br><br>
+            • <strong>Atropine:</strong> 2-5 mg IV mỗi 5-10 phút đến khi Atropin hóa.<br>
+            • <strong>PAM:</strong> Liều nạp ${Math.min(2000, Math.round(30 * w))} mg IV trong 30 phút. Duy trì ${Math.round(8 * w)} mg/h.`;
+        } else if (type === 'naloxone') {
+          rxContent = `<strong>🧪 NALOXONE (OPIOID):</strong><br>• Liều: 0.4 - 2.0 mg IV/IM. Lặp lại mỗi 2-3 phút đến khi nhịp thở > 12 lần/phút.`;
+        } else if (type === 'flumazenil') {
+          rxContent = `<strong>🧪 FLUMAZENIL (BENZODIAZEPINE):</strong><br>• Liều khởi đầu: 0.2 mg IV. Lặp lại 0.3 - 0.5 mg nếu cần.<br>⚠️ Chống chỉ định nếu kèm ngộ độc TCA (nguy cơ co giật).`;
+        } else if (type === 'digifab') {
+          rxContent = `<strong>🧪 DIGIFAB (DIGOXIN):</strong><br>• Không rõ nồng độ (ngộ độc cấp): 10 - 20 lọ IV.<br>• Ngộ độc mạn: 3 - 6 lọ IV.`;
+        } else if (type === 'methylene_blue') {
+          rxContent = `<strong>🧪 METHYLENE BLUE 1% (METHEMOGLOBIN):</strong><br>• Liều 1-2 mg/kg ➔ <strong>${(1.5 * w).toFixed(1)} mL</strong> tiêm chậm tĩnh mạch.`;
+        } else if (type === 'lipid_ile') {
+          rxContent = `<strong>🧪 LIPID 20% (LAST):</strong><br>• Bolus: 1.5 mL/kg ➔ <strong>${(1.5 * w).toFixed(0)} mL</strong> IV.<br>• Duy trì: 0.25 mL/kg/min ➔ ${(0.25 * w).toFixed(1)} mL/phút.`;
+        } else if (type === 'nahco3') {
+          rxContent = `<strong>🧪 NaHCO3 8.4% (TCA/KIỀM HÓA):</strong><br>• Liều Bolus: 1-2 mEq/kg ➔ <strong>${Math.round(1.5 * w)} mL</strong> tĩnh mạch chậm.`;
+        }
+        
+        html += `<div class="tox-alert tox-alert-success" style="font-size:0.95rem;">${rxContent}</div>`;
+      }
+      else if (currentScenario === 'SEVERITY') {
+        const fields = document.querySelectorAll('.pss-field');
+        let maxGrade = 0;
+        fields.forEach(f => {
+          const v = parseInt(f.value);
+          if (v > maxGrade) maxGrade = v;
+        });
+
+        const mapping = [
+          { t: 'Grade 0 (Bình thường)', c: 'var(--tx-success, #16a34a)', b: 'tox-alert-success', txt: 'Theo dõi sinh hiệu 6-12 giờ tại Cấp cứu.' },
+          { t: 'Grade 1 (Ngộ độc nhẹ)', c: 'var(--tx-info, #0284c7)', b: 'tox-alert-info', txt: 'Theo dõi sát sinh hiệu. Điều trị triệu chứng.' },
+          { t: 'Grade 2 (Ngộ độc vừa)', c: 'var(--tx-warning, #d97706)', b: 'tox-alert-warning', txt: 'Cần theo dõi sát. Dùng thuốc giải độc đặc hiệu nếu có chỉ định.' },
+          { t: 'Grade 3 (Đe dọa tử vong)', c: 'var(--tx-danger, #dc2626)', b: 'tox-alert-danger', txt: '🔴 CHỈ ĐỊNH NHẬP ICU KHẨN CẤP. Hồi sức tuần hoàn, hô hấp tích cực.' }
+        ];
+
+        const res = mapping[maxGrade];
+        html = `
+          <h3 style="margin-bottom:1rem; font-size:1.1rem; color:var(--color-text); font-weight:700;"><i class="fa-solid fa-stethoscope text-primary"></i> Kết quả phân tầng (WHO/IPCS)</h3>
+          <div style="font-size:1.25rem; font-weight:800; color:${res.c}; margin-bottom:1rem;">${res.t}</div>
+          <div class="tox-alert ${res.b}">${res.txt}</div>
+        `;
+      }
+      else if (currentScenario === 'DECON') {
+        html = `
+          <h3 style="margin-bottom:1rem; font-size:1.1rem; color:var(--color-text); font-weight:700;"><i class="fa-solid fa-filter text-primary"></i> Khử độc & Tăng thải</h3>
+          <div class="tox-alert tox-alert-warning">
+            <strong>1. Than Hoạt Tính (Activated Charcoal):</strong><br>
+            • Liều: 1 g/kg (tối đa 50g) pha 200mL nước uống hoặc qua Sonde dạ dày.<br>
+            • Chỉ định tốt nhất: &lt; 1-2 giờ sau uống độc chất.<br>
+            • Chống chỉ định: Hóa chất ăn mòn, kim loại nặng, rượu, hôn mê không bảo vệ đường thở.
+          </div>
+          <div class="tox-alert tox-alert-info">
+            <strong>2. Rửa Dạ Dày (Gastric Lavage):</strong><br>
+            • Chỉ nên thực hiện trong vòng 1 GIỜ đầu với lượng độc chất đe dọa tính mạng.<br>
+            • Đặt nghiêng trái đầu thấp, dùng NS ấm.
+          </div>
+          <div class="tox-alert tox-alert-danger">
+            <strong>3. Lọc Máu (HD):</strong><br>
+            • STUMBLE: Salicylates, Theophylline, Uremia, Methanol, Barbiturates, Lithium, Ethylene glycol.<br>
+            • KHÔNG lọc máu: TCA, Digoxin, Benzodiazepine (do Vd lớn / gắn protein cao).
+          </div>
+        `;
+      }
+      else if (currentScenario === 'SIMULATOR') {
+        html = `
+          <h3 style="margin-bottom:1rem; font-size:1.1rem; color:var(--color-text); font-weight:700;"><i class="fa-solid fa-user-doctor text-primary"></i> Ca Lâm Sàng 1</h3>
+          <p style="font-size:0.9rem; line-height:1.5; margin-bottom:1rem;">
+            <strong>Bệnh sử:</strong> Nam 22 tuổi hôn mê, bên cạnh có vỏ thuốc. GCS 8 điểm. Mạch 52 lần/phút, HA 90/60, Thở 8 lần/phút. Đồng tử co nhỏ (1.5mm).
+          </p>
+          <div style="font-weight:600; margin-bottom:0.75rem;">❓ Toxidrome nghi ngờ & Thuốc giải độc?</div>
+          <div id="sim-options">
+            <button class="case-option-btn" onclick="checkSim(false, this)">A. Anticholinergic — Physostigmine</button>
+            <button class="case-option-btn" onclick="checkSim(true, this)">B. Opioid Toxidrome — Naloxone 0.4 - 2 mg IV</button>
+            <button class="case-option-btn" onclick="checkSim(false, this)">C. Cholinergic — Atropine</button>
+          </div>
+          <div id="sim-feedback" style="display:none; margin-top:1rem;"></div>
+        `;
+      }
+
+      resContainer.innerHTML = html;
+    }
+
+    window.checkSim = function(isCorrect, btn) {
+      const container = document.getElementById('sim-options');
+      container.querySelectorAll('.case-option-btn').forEach(b => {
+        b.classList.remove('correct', 'wrong');
+      });
+      
+      const feedback = document.getElementById('sim-feedback');
+      feedback.style.display = 'block';
+
+      if (isCorrect) {
+        btn.classList.add('correct');
+        feedback.className = 'tox-alert tox-alert-success';
+        feedback.innerHTML = '🎉 <strong>CHÍNH XÁC!</strong> Bệnh nhân có tam chứng ngộ độc Opioid: Co đồng tử + Suy hô hấp + Hôn mê. Giải độc bằng Naloxone.';
+      } else {
+        btn.classList.add('wrong');
+        feedback.className = 'tox-alert tox-alert-danger';
+        feedback.innerHTML = '❌ <strong>CHƯA ĐÚNG!</strong> Vui lòng xem kỹ dấu hiệu đồng tử co nhỏ và nhịp thở chậm.';
+      }
+    };
+
+    function resetForm() {
+      document.querySelectorAll('input[type="number"]').forEach(el => { el.value = el.defaultValue || 60; });
+      document.querySelectorAll('select').forEach(el => { el.selectedIndex = 0; });
+      document.querySelectorAll('input[type="checkbox"]').forEach(el => { el.checked = false; });
+      
+      currentScenario = null;
+      document.querySelectorAll('.fluid-sc-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('group-empty-input').style.display = 'block';
+      document.getElementById('group-toxidrome').style.display = 'none';
+      document.getElementById('group-antidote').style.display = 'none';
+      document.getElementById('group-severity').style.display = 'none';
+      document.getElementById('group-decon').style.display = 'none';
+      document.getElementById('group-simulator').style.display = 'none';
+      
+      document.getElementById('result-empty').style.display = 'flex';
+      document.getElementById('result-content').style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>

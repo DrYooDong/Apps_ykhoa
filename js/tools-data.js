@@ -1,4 +1,4 @@
-// File dữ liệu chuẩn hóa danh sách các công cụ lâm sàng
+// File dữ liệu chuẩn hóa danh sách các công cụ lâm sàng (Updated 2026)
 const clinicalToolsData = [
   // Phần 1: Chung
   {
@@ -113,6 +113,15 @@ const clinicalToolsData = [
     link: "emergency/ql-may-tho.html",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "máy thở", "thở máy", "cai thở máy", "icu", "ventilator", "studio", "sóng thở", "ards", "copd"]
+  },
+  {
+    id: "toxicology-studio",
+    title: "Toxicology Pro Studio (Hồi Sức Chống Độc & Giải Độc)",
+    description: "Workstation nhận diện Toxidrome, máy tính liều giải độc đặc hiệu (NAC, Atropine, Naloxone, DigiFab...), PSS & kế hoạch khử độc",
+    icon: "🧪",
+    link: "emergency/toxicology-studio.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "chống độc", "toxidrome", "giải độc", "nac", "atropine", "naloxone", "studio", "gcs", "pss"]
   },
   {
     id: "an-than-icu",

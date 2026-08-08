@@ -415,6 +415,11 @@
           <strong style="font-size:0.825rem;">Lưu ý lâm sàng:</strong>
           <p class="meridian-detail-desc" style="color: var(--color-text-muted); font-size:0.8rem; margin:0.2rem 0;">💡 ${data.pearl}</p>
         </div>
+        <div style="margin-top: 0.75rem; text-align: center;">
+          <a href="../calculators/emergency/toxicology-studio.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; font-size: 0.775rem; font-weight: 600; color: #7e22ce; text-decoration: none; background: rgba(126, 34, 206, 0.08); padding: 7px 10px; border-radius: 6px; border: 1px solid rgba(126, 34, 206, 0.2); transition: all 0.2s ease;">
+            <i class="fa-solid fa-calculator"></i> Lập phác đồ &amp; Tính liều tại Studio <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          </a>
+        </div>
       `;
     }
 

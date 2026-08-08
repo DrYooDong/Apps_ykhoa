@@ -43,6 +43,74 @@
 
     const SAMPLE_STUDIES = [
       {
+        id: "study_byt_benh_than_kinh_dai_thao_duong_2025",
+        title: "Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Thần Kinh Đái Tháo Đường (Bộ Y Tế 2025)",
+        drug: "",
+        sourceType: "national-guideline",
+        specialty: "endo",
+        design: "guideline",
+        impact: "practice-changing",
+        year: 2025,
+        organization: "Bộ Y tế Việt Nam",
+        phase: "Clinical Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân lâm sàng",
+        summary: "Tóm tắt toàn diện Hướng dẫn chẩn đoán và điều trị bệnh thần kinh đái tháo đường (Bộ Y tế 2025 - QĐ 3510/QĐ-BYT): Cơ chế bệnh sinh ngộ độc glucose, Phân loại đa dây thần kinh DPN & tự chủ CAN, Phác đồ dược lý theo cơ chế (ALA, Benfotiamine), Phác đồ giảm đau 2 bước và Kỹ thuật khám lâm sàng (Monofilament, Ipswich, 128-Hz).",
+        detailedConclusion: "Tóm tắt toàn diện Hướng dẫn chẩn đoán và điều trị bệnh thần kinh đái tháo đường (Bộ Y tế 2025 - QĐ 3510/QĐ-BYT): Cơ chế bệnh sinh ngộ độc glucose, Phân loại đa dây thần kinh DPN & tự chủ CAN, Phác đồ dược lý theo cơ chế (ALA, Benfotiamine), Phác đồ giảm đau 2 bước và Kỹ thuật khám lâm sàng (Monofilament, Ipswich, 128-Hz).",
+        sourceUrl: "Quyết định số 3510/QĐ-BYT ngày 11/11/2025",
+        file: "kho-guidelines/byt-benh-than-kinh-dai-thao-duong-2025.html",
+        asianData: true,
+        bookmarked: false
+      },
+
+      {
+        id: "study_2026_ada_diabetes",
+        title: "Tiêu Chuẩn Chăm Sóc Y Khoa Trong Đái Tháo Đường (ADA 2026)",
+        drug: "",
+        sourceType: "intl-guideline",
+        specialty: "endo",
+        design: "guideline",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Hiệp hội Đái tháo đường Hoa Kỳ (ADA)",
+        phase: "Clinical Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân lâm sàng",
+        summary: "Tóm tắt toàn diện 17 chương Khuyến cáo Tiêu chuẩn Chăm sóc Y khoa trong Đái tháo đường ADA 2026: Chẩn đoán, Dự phòng, Kiểm soát glucose, Công nghệ đái tháo đường, Quản lý cân nặng, Tim mạch, Thận mạn, Võng mạc, Thần kinh, Chăm sóc bàn chân, Người cao tuổi, Trẻ em, Thai kỳ & Nội viện.",
+        detailedConclusion: "Tóm tắt toàn diện 17 chương Khuyến cáo Tiêu chuẩn Chăm sóc Y khoa trong Đái tháo đường ADA 2026: Chẩn đoán, Dự phòng, Kiểm soát glucose, Công nghệ đái tháo đường, Quản lý cân nặng, Tim mạch, Thận mạn, Võng mạc, Thần kinh, Chăm sóc bàn chân, Người cao tuổi, Trẻ em, Thai kỳ & Nội viện.",
+        sourceUrl: "https://doi.org/10.2337/dc26-SINT",
+        file: "kho-guidelines/2026-ada-diabetes.html",
+        asianData: true,
+        bookmarked: false
+      },
+
+      {
+        id: "study_cap_nhat_ve_bao_giap_2026",
+        title: "JCEM 2026: Cập Nhật Hướng Dẫn Lâm Sàng Chẩn Đoán & Điều Trị Cơn Bão Giáp (Thyroid Storm)",
+        drug: "Propranolol, Esmolol, PTU, Methimazole, Lugol, SSKI, Hydrocortisone, Cholestyramine",
+        sourceType: "intl-guideline",
+        specialty: "endo",
+        design: "guideline",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "JCEM / Endocrine Society (Kopp PA et al.)",
+        phase: "Clinical Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân nhiễm độc giáp nặng tiến triển thành cơn bão giáp (Thyrotoxic Crisis / Thyroid Storm)",
+        summary: "Toàn văn tóm tắt hướng dẫn chẩn đoán và điều trị cơn bão giáp: Sinh lý bệnh, yếu tố khởi phát, đối chiếu thang điểm Burch-Wartofsky (BWPS >45 điểm) & Tiêu chuẩn Nhật Bản (JTA/JES), phác đồ điều trị đa mô thức (Chẹn beta, Thionamides, Iod vô cơ - Quy tắc 1 giờ, Hydrocortisone, Cholestyramine và Hồi sức ICU).",
+        detailedConclusion: "Chẩn đoán bão giáp dựa trên lâm sàng và suy đa tạng. BWPS >45 điểm xác chẩn. Chống chỉ định tuyệt đối Aspirin. Dùng thuốc kháng giáp PTU/MMI trước Iod ít nhất 1 giờ. Khi men gan cao >3 lần ULN, ưu tiên MMI hơn PTU. Theo dõi hồi sức ICU tích cực.",
+        sourceUrl: "https://doi.org/10.1210/clinem/dgag054",
+        file: "kho-guidelines/cap-nhat-ve-bao-giap-2026.html",
+        subgroups: {
+          "Tỷ lệ tử vong chung (%)": "5% - 12% (người trẻ) | 30% (người cao tuổi)",
+          "BWPS Score Bão Giáp": "COL: BWPS >45: Xác chẩn | 25-44: Nghi ngờ | <25: Ít khả năng",
+          "Thời gian cho Iod vô cơ": "BẮT BUỘC sau kháng giáp ít nhất 1 giờ"
+        },
+        asianData: true,
+        bookmarked: true
+      },
+
+      {
         id: "study_tom_tat_huong_dan_byt_vgsvb_2026",
         title: "Tóm tắt Hướng Dẫn Lâm Sàng",
         drug: "",
