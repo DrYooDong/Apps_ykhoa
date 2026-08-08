@@ -69,6 +69,10 @@
       const existing = document.getElementById('dayScoreModalOverlay');
       if (existing) existing.remove();
 
+      const truc = evalData.trucNgay;
+      const tiet = evalData.tietKhiInfo;
+      const than = evalData.thanSat;
+
       const modalHtml = `
         <div class="day-score-modal-overlay" id="dayScoreModalOverlay">
           <div class="day-score-modal-card animate-pop-in">
@@ -96,10 +100,10 @@
                 <div class="score-summary-info">
                   <div class="rating-badge-pill">${evalData.icon} ${evalData.rating}</div>
                   <h4>Ngày ${evalData.canChiDay} (Âm lịch: ${evalData.lunarDay}/${evalData.lunarMonth})</h4>
-                  <p>Phù hợp thực hiện các ca phẫu thuật, hội chẩn quan trọng hoặc ký kết hợp đồng y tế.</p>
+                  <p>${evalData.summaryText}</p>
                   <div class="doc-profile-chip">
                     <span>👨‍⚕️ <strong>${doc.name || 'Bác sĩ'}</strong> (${doc.gender || 'Nam'}) — Tuổi ${doc.canNam} ${doc.chiNam} (${doc.birthDay}/${doc.birthMonth}/${doc.birthYear} lúc ${doc.birthHour}h${doc.birthMinute}p) — Mệnh ${doc.hanhMenh}</span>
-                    <button type="button" class="btn-config-doc-age" id="btnEditDocAge">⚙️ Cập nhật Hồ sơ Sinh</button>
+                    <button type="button" class="btn-config-doc-age" id="btnEditDocAge">⚙️ Hồ sơ Sinh</button>
                   </div>
                 </div>
               </div>
@@ -155,7 +159,35 @@
                 </div>
               </div>
 
-              <!-- Medical Biorhythms Summary -->
+              <!-- Trực Ngày & Tiết Khí Strip -->
+              <div class="truc-tietkhi-banner">
+                <div class="truc-box ${truc.type}">
+                  <span class="truc-tag">TRỰC NGÀY</span>
+                  <strong>Trực ${truc.name} (${truc.rating})</strong>
+                  <p>${truc.desc}</p>
+                </div>
+                <div class="tietkhi-box">
+                  <span class="tietkhi-tag">TIẾT KHÍ</span>
+                  <strong>${tiet.tietKhi.icon} Tiết ${tiet.tietKhi.name}</strong>
+                  <p>Cát khí mùa: +${tiet.tietKhi.score}đ ${tiet.tuLyTuTuyet ? ` | <span style="color:#ef4444; font-weight:700;">⚠️ ${tiet.tuLyTuTuyet.name} (${tiet.tuLyTuTuyet.score}đ)</span>` : ''}</p>
+                </div>
+              </div>
+
+              <!-- Thần Sát & Ngày Cát/Hung Âm Lịch -->
+              ${(than.list.length > 0 || evalData.b4.errors.length > 0 || evalData.b4.bonuses.length > 0) ? `
+                <div class="than-sat-container">
+                  <div style="font-size:0.78rem; font-weight:700; color:var(--color-text); margin-bottom:0.4rem;">
+                    <i class="fa-solid fa-star-of-david" style="color:var(--color-primary);"></i> Thần Sát & Ngày Cát / Hung Âm Lịch:
+                  </div>
+                  <div class="than-sat-chips">
+                    ${than.list.map(ts => `<span class="ts-chip ${ts.type}" title="${ts.desc}">${ts.name} (${ts.score >= 0 ? '+' : ''}${ts.score}đ)</span>`).join('')}
+                    ${evalData.b4.bonuses.map(b => `<span class="ts-chip pos">${b}</span>`).join('')}
+                    ${evalData.b4.errors.map(err => `<span class="ts-chip neg">${err}</span>`).join('')}
+                  </div>
+                </div>
+              ` : ''}
+
+              <!-- Medical Biorhythms Summary & Clinical Tips -->
               ${evalData.bio ? `
                 <div class="biorhythm-summary-box">
                   <div class="bio-box-header">
@@ -168,14 +200,23 @@
                       <div class="bio-progress-bg"><div class="bio-progress-fill" style="width:${Math.max(10, (evalData.bio.physical + 100)/2)}%; background:#10b981;"></div></div>
                     </div>
                     <div class="bio-bar-item">
-                      <span>❤️ Cảm xúc: <strong>${evalData.bio.emotional}%</strong></span>
-                      <div class="bio-progress-bg"><div class="bio-progress-fill" style="width:${Math.max(10, (evalData.bio.emotional + 100)/2)}%; background:#0284c7;"></div></div>
-                    </div>
-                    <div class="bio-bar-item">
                       <span>🧠 Trí tuệ: <strong>${evalData.bio.intellectual}%</strong></span>
                       <div class="bio-progress-bg"><div class="bio-progress-fill" style="width:${Math.max(10, (evalData.bio.intellectual + 100)/2)}%; background:#8b5cf6;"></div></div>
                     </div>
+                    <div class="bio-bar-item">
+                      <span>❤️ Cảm xúc: <strong>${evalData.bio.emotional}%</strong></span>
+                      <div class="bio-progress-bg"><div class="bio-progress-fill" style="width:${Math.max(10, (evalData.bio.emotional + 100)/2)}%; background:#0284c7;"></div></div>
+                    </div>
                   </div>
+
+                  ${evalData.bio.clinicalTips && evalData.bio.clinicalTips.length > 0 ? `
+                    <div class="clinical-tips-box">
+                      <div class="ct-title">💡 Gợi Ý Hành Động Lâm Sàng:</div>
+                      <ul>
+                        ${evalData.bio.clinicalTips.map(tip => `<li>${tip}</li>`).join('')}
+                      </ul>
+                    </div>
+                  ` : ''}
                 </div>
               ` : ''}
 
@@ -218,17 +259,6 @@
                 </div>
               </div>
 
-              <!-- Cảnh báo Ngày Xấu nếu có -->
-              ${evalData.b4.errors.length > 0 ? `
-                <div class="bad-day-alert">
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                  <div>
-                    <strong>Cần lưu ý ngày này:</strong>
-                    <ul>${evalData.b4.errors.map(err => `<li>${err}</li>`).join('')}</ul>
-                  </div>
-                </div>
-              ` : ''}
-
               <!-- Giờ Hoàng Đạo Section -->
               <div class="hoang-dao-section">
                 <h4><i class="fa-solid fa-sun" style="color:#f59e0b;"></i> Các Giờ Hoàng Đạo Trong Ngày (Cát Giờ):</h4>
@@ -239,7 +269,7 @@
             </div>
 
             <div class="modal-card-footer">
-              <span class="footer-hint"><i class="fa-solid fa-shield-halved"></i> Chỉ số được tính theo Tử vi Bát tự & Âm dương ngũ hành y khoa</span>
+              <span class="footer-hint"><i class="fa-solid fa-shield-halved"></i> Chỉ số được tính theo Tử vi Bát tự, 12 Trực, 24 Tiết Khí & Biorhythm y khoa</span>
               <button class="btn btn-primary btn-sm" id="btnCloseDayScoreModalBottom">Đóng</button>
             </div>
           </div>

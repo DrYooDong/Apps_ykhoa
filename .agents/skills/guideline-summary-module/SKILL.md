@@ -44,7 +44,21 @@ Tất cả các file trong thư mục `kho-guidelines/` nằm ở **cấp 4** so
 
 ## ⚡ Quy Trình Tạo Tóm Tắt Guideline từ File Markdown (.md)
 
-Khi nhận được tài liệu Y khoa / Guideline / RCT dạng file Markdown (`.md`), thực hiện theo **5 bước chuẩn**:
+Khi nhận được tài liệu Y khoa / Guideline / RCT dạng file Markdown (`.md`) từ người dùng (nằm ở bất kỳ vị trí nào trong workspace hoặc `knowledge-vault`), thực hiện chuyển đổi nhanh chóng theo **2 phương thức**:
+
+### 🛠️ Phương thức 1: Sử dụng Script Tự Động Hóa (Khuyên Dùng)
+
+Chạy lệnh Node.js với đường dẫn tới file `.md` đã chọn:
+```bash
+node .agents/skills/guideline-summary-module/scripts/convert_md_to_guideline.js "<path_to_md_file>"
+```
+*Script sẽ tự động:*
+1. Parse YAML Frontmatter & cấu trúc Markdown.
+2. Tạo file HTML độc lập tại `src/content/ebm/guidelines/kho-guidelines/<slug>.html` (chuẩn đường dẫn cấp 4).
+3. Thêm/Cập nhật bản ghi `SAMPLE_STUDIES` trong `src/content/ebm/guidelines/guidelinesdata.js`.
+4. Chuẩn hóa slug tiếng Việt không dấu (URL-safe).
+
+### ✍️ Phương thức 2: Quy Trình 5 Bước Thủ Công / Tùy Chỉnh Chuyên Sâu
 
 1. **Phân tích File `.md`**:
    - Trích xuất Frontmatter metadata (tiêu đề Việt-Anh, năm, tổ chức, chuyên khoa `specialty`, loại nguồn `sourceType`, thiết kế `design`, mức độ tác động `impact`).
@@ -57,7 +71,7 @@ Khi nhận được tài liệu Y khoa / Guideline / RCT dạng file Markdown (`
    - Cấu hình chuỗi số liệu `keyResults` hoặc `subgroups` với cú pháp chuẩn (`HR ...`, `COL: ...`, `HBAR: ...`) để tự động render biểu đồ Mini SVG.
 4. **Kiểm tra Tags & Links**:
    - Kiểm tra đóng mở thẻ HTML (`node scratch/check_tags.js <file>.html`).
-   - Xác nhận đường dẫn `../guidelines.html`.
+   - Kiểm tra cú pháp JS: `node -c src/content/ebm/guidelines/guidelinesdata.js`.
 5. **Tham khảo chi tiết**:
    - Đọc thêm tại `src/content/ebm/guidelines/HUONG_DAN_TAO_TOM_TAT_TU_MD.md`.
 

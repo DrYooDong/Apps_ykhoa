@@ -1,6 +1,5 @@
 /**
- * CliniPortal — Good Day & Clinical Astrological Intelligence Calculator (FULL PROFILE VERSION)
- * Ported & adapted from DrYooDong/App_Canhan (astrology_logic.js & test_astro.js)
+ * CliniPortal — Good Day & Clinical Astrological Intelligence Calculator (ADVANCED CLINICAL VERSION)
  * Pure Vanilla ES6 JS - Zero external dependencies
  */
 (function (global) {
@@ -52,6 +51,63 @@
     "Hợi": ["Sửu", "Thìn", "Ngọ", "Mùi", "Tuất", "Hợi"]
   };
 
+  // 12 TRỰC NGÀY
+  const TRUC_LIST = [
+    { name: "Kiến", type: "cat", rating: "Đại Cát", score: 12, desc: "Khởi tạo, đại cát cho mổ xẻ, ký kết hợp đồng, mở phòng khám." },
+    { name: "Trừ", type: "cat", rating: "Cát", score: 10, desc: "Xóa bỏ cái cũ, giải độc, điều trị dứt điểm, tẩy uế phòng mổ." },
+    { name: "Mãn", type: "cat", rating: "Đại Cát", score: 12, desc: "Tròn đầy, sung túc, thích hợp thu hoạch, hội chẩn hoàn tất." },
+    { name: "Bình", type: "cat", rating: "Bình Hòa", score: 8, desc: "Bình ổn, cân bằng, thích hợp khám định kỳ, điều hòa y lệnh." },
+    { name: "Định", type: "cat", rating: "Đại Cát", score: 15, desc: "An định, định vị chẩn đoán, phẫu thuật chương trình rất tốt." },
+    { name: "Chấp", type: "neutral", rating: "Bình Hòa", score: 5, desc: "Nắm giữ, kiên trì phác đồ, thích hợp tái khám." },
+    { name: "Phá", type: "hung", rating: "Đại Hung", score: -15, desc: "Nguyệt Phá xung đột, kiêng phẫu thuật lớn & thủ thuật nguy cơ." },
+    { name: "Nguy", type: "hung", rating: "Hung", score: -8, desc: "Nguy hiểm, ẩn số cao, cẩn trọng khi ra y lệnh liều cao." },
+    { name: "Thành", type: "cat", rating: "Đại Cát", score: 15, desc: "Thành công, vẹn toàn, thích hợp xuất viện, nghiệm thu dự án." },
+    { name: "Thâu", type: "cat", rating: "Cát", score: 10, desc: "Thu hoạch kết quả, tổng kết bệnh án, nghiệm thu EBM." },
+    { name: "Khai", type: "cat", rating: "Đại Cát", score: 15, desc: "Thông suốt, khai trương, áp dụng phác đồ/kỹ thuật mới." },
+    { name: "Bế", type: "hung", rating: "Hung", score: -10, desc: "Bế tắc, kiêng khởi công, kiêng can thiệp xâm lấn mới." }
+  ];
+
+  // 24 TIẾT KHÍ (Bảng mốc ngày Dương lịch xấp xỉ)
+  const TIET_KHI_LIST = [
+    { m: 1, d: 6, name: "Tiểu Hàn", score: 2, icon: "❄️" },
+    { m: 1, d: 20, name: "Đại Hàn", score: 2, icon: "🧊" },
+    { m: 2, d: 4, name: "Lập Xuân", score: 6, icon: "🌱", special: "Tuet" },
+    { m: 2, d: 19, name: "Vũ Thủy", score: 4, icon: "🌧️" },
+    { m: 3, d: 6, name: "Kinh Trập", score: 4, icon: "⚡" },
+    { m: 3, d: 21, name: "Xuân Phân", score: 8, icon: "☯️", special: "Ly" },
+    { m: 4, d: 5, name: "Thanh Minh", score: 5, icon: "🍃" },
+    { m: 4, d: 20, name: "Cốc Vũ", score: 4, icon: "🌾" },
+    { m: 5, d: 5, name: "Lập Hạ", score: 6, icon: "☀️", special: "Tuet" },
+    { m: 5, d: 21, name: "Tiểu Mãn", score: 4, icon: "🌼" },
+    { m: 6, d: 6, name: "Mang Chủng", score: 4, icon: "🌻" },
+    { m: 6, d: 21, name: "Hạ Chí", score: 8, icon: "🔥", special: "Ly" },
+    { m: 7, d: 7, name: "Thử Thử", score: 2, icon: "🌡️" },
+    { m: 7, d: 23, name: "Đại Thử", score: 2, icon: "💥" },
+    { m: 8, d: 7, name: "Lập Thu", score: 6, icon: "🍂", special: "Tuet" },
+    { m: 8, d: 23, name: "Xử Thử", score: 4, icon: "🌤️" },
+    { m: 9, d: 7, name: "Bạch Lộ", score: 4, icon: "🌫️" },
+    { m: 9, d: 23, name: "Thu Phân", score: 8, icon: "☯️", special: "Ly" },
+    { m: 10, d: 8, name: "Hàn Lộ", score: 4, icon: "💧" },
+    { m: 10, d: 23, name: "Sương Giáng", score: 3, icon: "❄️" },
+    { m: 11, d: 7, name: "Lập Đông", score: 6, icon: "☃️", special: "Tuet" },
+    { m: 11, d: 22, name: "Tiểu Tuyết", score: 3, icon: "🌨️" },
+    { m: 12, d: 7, name: "Đại Tuyết", score: 2, icon: "🏔️" },
+    { m: 12, d: 21, name: "Đông Chí", score: 8, icon: "🌙", special: "Ly" }
+  ];
+
+  // BẢNG MÃ THIÊN ĐỨC & NGUYỆT ĐỨC THEO THÁNG ÂM LỊCH
+  const THIEN_DUC_MAP = {
+    1: "Đinh", 2: "Thân", 3: "Nhâm", 4: "Tân", 5: "Hợi", 6: "Giáp",
+    7: "Quý", 8: "Dần", 9: "Bính", 10: "Ất", 11: "Tỵ", 12: "Canh"
+  };
+
+  const NGUYET_DUC_MAP = {
+    1: "Bính", 5: "Bính", 9: "Bính",
+    2: "Giáp", 6: "Giáp", 10: "Giáp",
+    3: "Nhâm", 7: "Nhâm", 11: "Nhâm",
+    4: "Canh", 8: "Canh", 12: "Canh"
+  };
+
   const PROFILE_KEY = 'cliniportal_doctor_full_profile';
 
   // --- TÍNH JULIAN DAY & CAN CHI ---
@@ -82,7 +138,8 @@
       can,
       chi,
       full: `${can} ${chi}`,
-      hanh: NGU_HANH_CAN[can]
+      hanh: NGU_HANH_CAN[can],
+      jdn
     };
   }
 
@@ -104,7 +161,97 @@
     return { day: dayInMonth, month: lunarMonth };
   }
 
-  // --- TÍNH BIORHYTHMS (NHỊP SINH HỌC Y KHOA từ Ngày/Tháng/Năm Sinh) ---
+  // --- TÍNH TRỰC NGÀY (12 TRỰC) ---
+  function getTrucNgay(lunarMonth, chiNgay) {
+    // Tháng âm n: Chi Kiến là Chi của Tháng.
+    // Month 1 = Dần (idx 2), Month 2 = Mão (idx 3)...
+    const monthChiIdx = (lunarMonth + 1) % 12; // Month 1 -> idx 2 (Dần)
+    const dayChiIdx = CHI.indexOf(chiNgay);
+    const trucIdx = (dayChiIdx - monthChiIdx + 12) % 12;
+    return TRUC_LIST[trucIdx] || TRUC_LIST[0];
+  }
+
+  // --- TÍNH TIẾT KHÍ & TỨ LY TỨ TUYỆT ---
+  function getTietKhiInfo(dateObj) {
+    const m = dateObj.getMonth() + 1;
+    const d = dateObj.getDate();
+
+    let closest = TIET_KHI_LIST[0];
+    let minDiff = 999;
+
+    for (let tk of TIET_KHI_LIST) {
+      let monthDiff = Math.abs(tk.m - m);
+      let dayDiff = Math.abs(tk.d - d);
+      let diff = monthDiff * 30 + dayDiff;
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = tk;
+      }
+    }
+
+    // Kiểm tra Tứ Ly / Tứ Tuyệt (Ngày sát trước các mốc phân/chí hoặc lập)
+    let tuLyTuTuyet = null;
+    const tomorrow = new Date(dateObj.getTime() + 86400000);
+    const tm = tomorrow.getMonth() + 1;
+    const td = tomorrow.getDate();
+
+    for (let tk of TIET_KHI_LIST) {
+      if (tk.m === tm && tk.d === td) {
+        if (tk.special === 'Ly') {
+          tuLyTuTuyet = { type: 'Tứ Ly', name: `Tứ Ly (Truớc ${tk.name})`, score: -12, desc: "Cực điểm chuyển giao Âm Dương, kiên đại phẫu hoặc sự kiện lớn." };
+        } else if (tk.special === 'Tuet') {
+          tuLyTuTuyet = { type: 'Tứ Tuyệt', name: `Tứ Tuyệt (Trước ${tk.name})`, score: -8, desc: "Khí tiết cạn kiệt trước mốc Lập, thận trọng y lệnh phức tạp." };
+        }
+      }
+    }
+
+    return {
+      tietKhi: closest,
+      tuLyTuTuyet
+    };
+  }
+
+  // --- TÍNH THẦN SÁT (THIÊN ĐỨC, NGUYỆT ĐỨC, NGUYỆT PHÁ, KHÔNG VONG) ---
+  function kiemTraThanSat(lunarMonth, canNgay, chiNgay) {
+    let list = [];
+    let score = 0;
+
+    // 1. Thiên Đức
+    const thienDuc = THIEN_DUC_MAP[lunarMonth];
+    if (thienDuc === canNgay || thienDuc === chiNgay) {
+      list.push({ name: "Thiên Đức Giai Thần", type: "pos", score: 10, desc: "Thần cát hộ trì, giải trừ hung rủi, y khoa may mắn." });
+      score += 10;
+    }
+
+    // 2. Nguyệt Đức
+    const nguyetDuc = NGUYET_DUC_MAP[lunarMonth];
+    if (nguyetDuc === canNgay) {
+      list.push({ name: "Nguyệt Đức Tinh", type: "pos", score: 8, desc: "Đón nhận cát khí, minh mẫn chẩn đoán." });
+      score += 8;
+    }
+
+    // 3. Nguyệt Phá (Chi ngày xung Chi tháng)
+    const monthChiIdx = (lunarMonth + 1) % 12;
+    const dayChiIdx = CHI.indexOf(chiNgay);
+    if ((dayChiIdx - monthChiIdx + 12) % 12 === 6) {
+      list.push({ name: "Nguyệt Phá Thần Sát", type: "neg", score: -15, desc: "Xung khắc bản tháng, kiêng ca phẫu thuật nguy cơ cao." });
+      score -= 15;
+    }
+
+    // 4. Không Vong (Lục Giáp Không Vong)
+    const canIdx = CAN.indexOf(canNgay);
+    const chiIdx = CHI.indexOf(chiNgay);
+    const khongVong1 = CHI[(chiIdx - canIdx + 10 + 12) % 12];
+    const khongVong2 = CHI[(chiIdx - canIdx + 11 + 12) % 12];
+    if (chiNgay === khongVong1 || chiNgay === khongVong2) {
+      list.push({ name: "Không Vong Nhật", type: "neg", score: -10, desc: "Lực cản bất ngờ, cần rà soát lại kết quả xét nghiệm." });
+      score -= 10;
+    }
+
+    return { list, score };
+  }
+
+  // --- TÍNH BIORHYTHMS (NHỊP SINH HỌC Y KHOA CHI TIẾT) ---
   function calculateBiorhythms(birthDate, targetDate) {
     const diffMs = targetDate.getTime() - birthDate.getTime();
     const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -115,29 +262,64 @@
 
     const avg = Math.round((physical + emotional + intellectual) / 3);
 
+    // Điểm thưởng / phạt từng kênh chuyên môn y khoa
+    let physBonus = 0, intBonus = 0, emoBonus = 0;
+    let clinicalTips = [];
+
+    if (physical >= 50) {
+      physBonus = 4;
+      clinicalTips.push("💪 Thể lực vượt trội (+" + physical + "%): Rất phù hợp ca phẫu thuật kéo dài, ca trực đêm hay cấp cứu liên tục.");
+    } else if (physical <= -50) {
+      physBonus = -3;
+      clinicalTips.push("⚠️ Thể lực suy giảm (" + physical + "%): Tránh thức đêm quá sức, chú ý nghỉ ngơi giữa ca.");
+    }
+
+    if (intellectual >= 50) {
+      intBonus = 4;
+      clinicalTips.push("🧠 Trí tuệ sáng suốt (+" + intellectual + "%): Thích hợp nghiên cứu EBM, chẩn đoán ca bệnh khó, đọc ECG/CT phức tạp.");
+    } else if (intellectual <= -50) {
+      intBonus = -3;
+      clinicalTips.push("⚠️ Trí tuệ ở vùng trũng (" + intellectual + "%): Hãy kiểm tra lại y lệnh & liều thuốc 2 lần trước khi duyệt.");
+    }
+
+    if (emotional >= 50) {
+      emoBonus = 3;
+      clinicalTips.push("❤️ Cảm xúc ổn định (+" + emotional + "%): Rất tốt để giải thích bệnh trình cho người nhà, tư vấn ca nặng.");
+    } else if (emotional <= -50) {
+      emoBonus = -2;
+      clinicalTips.push("⚠️ Cảm xúc nhạy cảm (" + emotional + "%): Giữ bình tĩnh, tránh xung đột truyền thông y tế.");
+    }
+
+    const totalBioScore = physBonus + intBonus + emoBonus;
+
     return {
       daysLived: days,
       physical,
       emotional,
       intellectual,
-      avgScore: avg
+      avgScore: avg,
+      physBonus,
+      intBonus,
+      emoBonus,
+      totalBioScore,
+      clinicalTips
     };
   }
 
-  // --- TÍNH TỬ VI NHẬT HẠN (từ Giờ sinh, Tháng sinh, Giới tính & Ngày xem) ---
+  // --- TÍNH TỬ VI NHẬT HẠN ---
   function calculateTieuHan(chiNamSinh, yearTarget, gender) {
-    let khoiCung = 0; // Tý=0, Sửu=1...
-    if (["Dần", "Ngọ", "Tuất"].includes(chiNamSinh)) khoiCung = 4; // Thìn
-    else if (["Thân", "Tý", "Thìn"].includes(chiNamSinh)) khoiCung = 10; // Tuất
-    else if (["Tỵ", "Dậu", "Sửu"].includes(chiNamSinh)) khoiCung = 7; // Mùi
-    else if (["Hợi", "Mão", "Mùi"].includes(chiNamSinh)) khoiCung = 1; // Sửu
+    let khoiCung = 0;
+    if (["Dần", "Ngọ", "Tuất"].includes(chiNamSinh)) khoiCung = 4;
+    else if (["Thân", "Tý", "Thìn"].includes(chiNamSinh)) khoiCung = 10;
+    else if (["Tỵ", "Dậu", "Sửu"].includes(chiNamSinh)) khoiCung = 7;
+    else if (["Hợi", "Mão", "Mùi"].includes(chiNamSinh)) khoiCung = 1;
 
-    const age = yearTarget - 2000 + 1; // Mốc đếm tuổi mụ
+    const age = yearTarget - 2000 + 1;
     const buocDem = (age - 1) % 12;
     return gender === 'Nam' ? (khoiCung + buocDem) % 12 : (khoiCung - buocDem + 12) % 12;
   }
 
-  // --- THUẬT TOÁN ĐÁNH GIÁ CHỈ SỐ NGÀY TỐT (CÁ NHÂN HÓA TOÀN DIỆN) ---
+  // --- THUẬT TOÁN ĐÁNH GIÁ CHỈ SỐ NGÀY TỐT ---
   function kiemTraLucXung(chiNamSinh, chiNgay) {
     if (!chiNamSinh) return { isXung: false, text: "Bình thường", score: 0 };
     const cacCapXung = [
@@ -203,13 +385,18 @@
     return { point, detail };
   }
 
-  function kiemTraNgayXau(ngayAmLich, canNgay, chiNgay) {
+  function kiemTraNgayXauTotAmLich(ngayAmLich, canNgay, chiNgay) {
     const tamNuong = [3, 7, 13, 18, 22, 27];
     const tamCuong = [8, 18, 28];
     const nguyetKy = [5, 14, 23];
-    let errors = [];
-    let penalty = 0;
+    const lucNhamCat = [6, 16, 26];
 
+    let errors = [];
+    let bonuses = [];
+    let penalty = 0;
+    let bonusPoint = 0;
+
+    // Hung
     if (tamNuong.includes(ngayAmLich)) {
       errors.push("Phạm ngày Tam Nương (-20đ)");
       penalty += 20;
@@ -223,15 +410,25 @@
       penalty += 15;
     }
     if (ngayAmLich === 1) {
-      errors.push("Mùng 1 đầu tháng (Sóc) (-10đ)");
-      penalty += 10;
+      errors.push("Mùng 1 đầu tháng (Sóc) (-5đ)");
+      penalty += 5;
     }
     if (canNgay === "Quý" && chiNgay === "Hợi") {
       errors.push("Ngày Quý Hợi (Cùng Cực) (-20đ)");
       penalty += 20;
     }
 
-    return { errors, penalty };
+    // Cát
+    if (ngayAmLich === 15) {
+      bonuses.push("Ngày Vọng (Trăng tròn đại cát) (+5đ)");
+      bonusPoint += 5;
+    }
+    if (lucNhamCat.includes(ngayAmLich)) {
+      bonuses.push("Ngày Lục Nhâm Cát (Tốc Hỷ / Đại An) (+5đ)");
+      bonusPoint += 5;
+    }
+
+    return { errors, bonuses, penalty, bonusPoint };
   }
 
   // --- LƯU TRỮ PROFILE ĐẦY ĐỦ CỦA BÁC SĨ ---
@@ -274,57 +471,73 @@
     return updated;
   }
 
-  // --- EVALUATE DAY SCORE (FULL PERSONALIZATION) ---
+  // --- EVALUATE DAY SCORE (ADVANCED FULL PERSONALIZATION) ---
   function evaluateDayScore(dateObj = new Date()) {
     const doc = getDoctorProfile();
     const canChiDay = getCanChiDay(dateObj);
     const lunar = getApproxLunarDate(dateObj);
 
-    // 1. Can Tuổi vs Can Ngày
+    // 1. Core Can-Chi
     const b1 = soSanhCan(canChiDay.can, doc.canNam);
-    const b2_base = 25; // Base score
+    const b2_base = 20; // Base score
     const canChiNgayScore = soSanhCanChiNgay(canChiDay.can, canChiDay.chi);
     const lucXung = kiemTraLucXung(doc.chiNam, canChiDay.chi);
     const b3 = congTruNguHanh(canChiDay.hanh, doc.hanhMenh);
-    const b4 = kiemTraNgayXau(lunar.day, canChiDay.can, canChiDay.chi);
+    const b4 = kiemTraNgayXauTotAmLich(lunar.day, canChiDay.can, canChiDay.chi);
 
-    // 2. Tính Nhịp Sinh Học Y Khoa (Biorhythms) từ Ngày/Tháng/Năm Sinh
+    // 2. Trực Ngày
+    const trucNgay = getTrucNgay(lunar.month, canChiDay.chi);
+
+    // 3. Tiết Khí & Tứ Ly Tứ Tuyệt
+    const tietKhiInfo = getTietKhiInfo(dateObj);
+
+    // 4. Thần Sát
+    const thanSat = kiemTraThanSat(lunar.month, canChiDay.can, canChiDay.chi);
+
+    // 5. Biorhythms
     const birthDate = new Date(doc.birthYear, doc.birthMonth - 1, doc.birthDay);
     const bio = calculateBiorhythms(birthDate, dateObj);
 
-    // Thưởng/Trừ dựa trên Nhịp sinh học cảm xúc & thể lực (+-5đ)
-    let bioBonus = 0;
-    if (bio.avgScore > 40) bioBonus = 5;
-    else if (bio.avgScore < -40) bioBonus = -5;
+    // Tính tổng raw score
+    let rawTotal = b1.score + b2_base + b3.point + canChiNgayScore.score + lucXung.score 
+                 - b4.penalty + b4.bonusPoint 
+                 + trucNgay.score + tietKhiInfo.tietKhi.score 
+                 + (tietKhiInfo.tuLyTuTuyet ? tietKhiInfo.tuLyTuTuyet.score : 0)
+                 + thanSat.score + bio.totalBioScore;
 
-    let total = b1.score + b2_base + b3.point + canChiNgayScore.score + lucXung.score - b4.penalty + bioBonus;
-    if (total > 100) total = 100;
-    if (total < 0) total = 0;
+    // Chuẩn hóa 0-100 (Max lý thuyết ~130, Min ~-50)
+    let total = Math.round(Math.min(100, Math.max(0, rawTotal)));
 
     let rating = "Bình Hòa";
     let badgeClass = "day-rating-neutral";
     let icon = "⚖️";
+    let summaryText = "Ngày cân bằng, mọi công việc diễn ra thuận lợi theo đúng quy trình.";
 
-    if (total >= 80) {
-      rating = "Rất Tốt";
+    if (total >= 82) {
+      rating = "Đại Cát";
       badgeClass = "day-rating-great";
       icon = "🌟";
-    } else if (total >= 60) {
-      rating = "Tốt";
+      summaryText = "Thời điểm vàng cho các ca phẫu thuật quan trọng, chuyển giao kỹ thuật & hội chẩn EBM.";
+    } else if (total >= 65) {
+      rating = "Cát Lành";
       badgeClass = "day-rating-good";
       icon = "✨";
-    } else if (total >= 40) {
+      summaryText = "Khí tiết thuận lợi, năng lượng làm việc và chẩn đoán đạt hiệu suất cao.";
+    } else if (total >= 45) {
       rating = "Bình Hòa";
       badgeClass = "day-rating-neutral";
       icon = "⚖️";
-    } else if (total >= 20) {
+      summaryText = "Trạng thái ổn định, thích hợp tái khám, hoàn thiện ghi chú y lệnh & học tập.";
+    } else if (total >= 25) {
       rating = "Thận Trọng";
       badgeClass = "day-rating-warn";
       icon = "⚠️";
+      summaryText = "Có yếu tố xung nhẹ hoặc thiên tiết cản trở, hãy rà soát kỹ liều thuốc & y lệnh.";
     } else {
       rating = "Đại Hung";
       badgeClass = "day-rating-bad";
       icon = "⛔";
+      summaryText = "Phạm nhiều Thần Sát / Lục Xung lớn, kiêng khởi sự mới, chú ý kiềm chế căng thẳng.";
     }
 
     const hoangDaoList = HOANG_DAO_MAP[canChiDay.chi] || [];
@@ -332,9 +545,11 @@
 
     return {
       total,
+      rawTotal,
       rating,
       icon,
       badgeClass,
+      summaryText,
       dateObj,
       lunarDay: lunar.day,
       lunarMonth: lunar.month,
@@ -348,6 +563,9 @@
       lucXung,
       b3,
       b4,
+      trucNgay,
+      tietKhiInfo,
+      thanSat,
       bio,
       hoangDaoHours
     };
@@ -358,7 +576,11 @@
     getDoctorProfile,
     saveDoctorProfile,
     getCanChiYear,
-    calculateBiorhythms
+    calculateBiorhythms,
+    getTrucNgay,
+    getTietKhiInfo,
+    kiemTraThanSat
   };
 
-})(window);
+})(typeof window !== 'undefined' ? window : global);
+

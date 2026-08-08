@@ -1294,3 +1294,121 @@ body {
   border-radius: 6px;
   transition: width 0.5s ease;
 }
+
+/* ── TRỰC NGÀY & TIẾT KHÍ BANNER ────────────────── */
+.truc-tietkhi-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+@media (max-width: 540px) {
+  .truc-tietkhi-banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.truc-box, .tietkhi-box {
+  background: var(--color-surface-offset, #f8fafc);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  position: relative;
+}
+
+.truc-box.cat {
+  border-color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.truc-box.hung {
+  border-color: #fca5a5;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.truc-tag, .tietkhi-tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+.truc-box strong, .tietkhi-box strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+}
+
+.truc-box p, .tietkhi-box p {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ── THẦN SÁT & CHIPS ───────────────────────────── */
+.than-sat-container {
+  background: var(--color-surface-offset, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 10px;
+  padding: 0.6rem 0.85rem;
+}
+
+.than-sat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.ts-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.ts-chip.pos {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.ts-chip.neg {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
+/* ── CLINICAL ACTION TIPS ───────────────────────── */
+.clinical-tips-box {
+  margin-top: 0.65rem;
+  padding-top: 0.55rem;
+  border-top: 1px dashed var(--color-border, #cbd5e1);
+}
+
+.clinical-tips-box .ct-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.3rem;
+}
+
+.clinical-tips-box ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.clinical-tips-box li {
+  font-size: 0.72rem;
+  color: var(--color-text);
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+}
+
