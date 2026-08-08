@@ -1,4 +1,4 @@
-﻿# 🛠️ OPERATIONS.md — Hướng Dẫn Vận Hành Phân Hệ Guidelines
+# 🛠️ OPERATIONS.md — Hướng Dẫn Vận Hành Phân Hệ Guidelines
 
 > Tài liệu kỹ thuật nội bộ dành cho việc phát triển, bảo trì và mở rộng phân hệ **Hướng Dẫn & Nghiên Cứu Lâm Sàng** (`Guidelines.html`).
 > **Cập nhật lần cuối**: 2026-07-24
@@ -63,7 +63,7 @@ Mỗi object trong mảng `studies[]` có cấu trúc:
   title: "EMPA-REG OUTCOME",     // Tên nghiên cứu (BẮT BUỘC)
   drug: "Empagliflozin 10mg QD", // Hoạt chất / can thiệp
   sourceType: "intl-study",      // "intl-study" | "intl-guideline" | "vn-moh" | "vn-doh" | "vn-association"
-  specialty: "cardio",           // "cardio" | "pulmo" | "gi" | "endo" | "neuro" | "infect" | "renal" | "rheum" | "hema" | "onco" | "icu"
+  specialty: "cardio",           // "cardio" | "pulmo" | "gi" | "endo" | "neuro" | "infect" | "renal" | "rheum" | "hema" | "onco" | "pedia" | "obgyn" | "icu"
   design: "rct",                 // "rct" | "meta" | "cohort" | "guideline" | "review" | "other"
   intervention: "...",           // Can thiệp vs đối chứng
   primaryEndpoint: "...",        // Tiêu chí đánh giá chính

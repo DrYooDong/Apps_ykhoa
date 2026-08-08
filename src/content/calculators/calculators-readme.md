@@ -15,9 +15,11 @@ Phân hệ này tập trung **thuần vào các công cụ hỗ trợ bác sĩ**
 2.  **Phân tầng Nguy cơ & Trạng thái Trực quan (Visual Risk & Status Stratification)**:
     *   Kết quả trả về đi kèm phân tầng mức độ rõ ràng (Nguy cơ Thấp - Xanh lục, Nguy cơ Trung bình - Vàng/Hổ phách, Nguy cơ Cao - Đỏ).
     *   Sử dụng màu sắc trực quan dựa trên hệ thống Design Tokens của CliniPortal.
-3.  **Khuyến cáo Xử trí Lâm sàng & BHYT (Actionable Clinical Guidance)**:
-    *   Dựa trên kết quả tính toán và phân tầng nguy cơ, hệ thống hiển thị khuyến cáo xử trí tương ứng (liều lượng thuốc, thời điểm cần nhập viện ICU, chỉ định cận lâm sàng tiếp theo...) dựa theo Guidelines y học chứng cứ uy tín (AHA, ESC, KDIGO, GINA, TT06/2026/TT-BYT...).
-4.  **Bối cảnh Y khoa & Dữ liệu Chuẩn hóa Offline (Offline Standards)**:
+3.  **Khuyến cáo Xử trí Lâm sàng, Can thiệp & BHYT (Actionable Clinical & Interventional Guidance)**:
+    *   Dựa trên kết quả tính toán và phân tầng nguy cơ, hệ thống hiển thị khuyến cáo xử trí tương ứng (liều lượng thuốc, thời điểm cần nhập viện ICU, chỉ định thủ thuật xâm lấn CVC/A-Line, test PLR, chỉ định VA-ECMO/IABP...) dựa theo Guidelines y học chứng cứ uy tín (AHA, ESC, KDIGO, GINA, SSC 2021, TT06/2026/TT-BYT...).
+4.  **Kiến trúc Workstation Tương tác Dạng Studio (Clinical Studio Tools)**:
+    *   Định hướng phát triển các công cụ dạng Studio (tham chiếu chi tiết tại `y-tuong-studio-tools.md` & `huong-dan-thiet-ke.md` Style 4) với bàn làm việc 4 cột, quản lý đa bơm tiêm điện song song, tính điểm tải VIS, radar vector ma trận thể sốc, và trung tâm xử trí thủ thuật can thiệp lâm sàng.
+5.  **Bối cảnh Y khoa & Dữ liệu Chuẩn hóa Offline (Offline Standards)**:
     *   Mỗi trang công cụ tích hợp cơ sở dữ liệu tĩnh offline (dạng `.js` và `.csv` độc lập), đảm bảo phần mềm hoạt động 100% không phụ thuộc API bên ngoài.
 
 ---

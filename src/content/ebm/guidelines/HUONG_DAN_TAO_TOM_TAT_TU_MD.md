@@ -30,7 +30,7 @@ title: "Phác Đồ Xử Trí Cấp Cứu Sốc Nhiễm Khuẩn (Sepsis-3) & SSC
 englishTitle: "Surviving Sepsis Campaign International Guidelines 2021"
 organization: "Surviving Sepsis Campaign (SSC) / ESICM / SCCM"
 year: 2021
-specialty: "icu"         # cardio | pulmo | gi | endo | neuro | infect | renal | rheum | hema | onco | icu
+specialty: "icu"         # cardio | pulmo | gi | endo | neuro | infect | renal | rheum | hema | onco | pedia | obgyn | icu
 sourceType: "intl-guideline" # intl-study | intl-guideline | vn-moh | vn-doh | vn-association
 design: "guideline"     # rct | meta | cohort | guideline | review | other
 impact: "practice-changing" # practice-changing | informative | early-signal | negative | regulatory
@@ -324,7 +324,7 @@ Mở file `src/content/ebm/guidelines/guidelinesdata.js` và thêm object mới 
   title: "AHA/ACC 2025: Tiêu đề tiếng Việt...", // Tiêu đề hiển thị trên danh sách
   drug: "Norepinephrine, Vasopressin...",    // Tên thuốc / can thiệp chính
   sourceType: "intl-guideline",              // intl-study | intl-guideline | vn-moh | vn-doh | vn-association
-  specialty: "icu",                          // cardio | pulmo | gi | endo | neuro | infect | renal | rheum | hema | onco | icu
+  specialty: "icu",                          // cardio | pulmo | gi | endo | neuro | infect | renal | rheum | hema | onco | pedia | obgyn | icu
   design: "guideline",                       // rct | meta | cohort | guideline | review | other
   intervention: "Nội dung can thiệp chính...",
   primaryEndpoint: "Tiêu chí đánh giá chính...",
@@ -387,7 +387,7 @@ Bạn là một chuyên gia Y học chứng cứ (EBM). Hãy đọc tài liệu/
     "title": "[Tên Tiếng Việt đầy đủ của Hướng dẫn / Nghiên cứu]",
     "drug": "[Danh sách các hoạt chất/thuốc can thiệp chính, phân cách bằng dấu phẩy]",
     "sourceType": "[Chỉ chọn 1 giá trị: intl-study | intl-guideline | vn-moh | vn-doh | vn-association]",
-    "specialty": "[Chỉ chọn 1 giá trị: cardio | pulmo | gi | endo | neuro | infect | renal | rheum | hema | onco | icu]",
+    "specialty": "[Chỉ chọn 1 giá trị: cardio | pulmo | gi | endo | neuro | infect | renal | rheum | hema | onco | pedia | obgyn | icu]",
     "design": "[Chỉ chọn 1 giá trị: rct | meta | cohort | guideline | review | other]",
     "intervention": "[Mô tả tóm tắt can thiệp / phác đồ mới / quy trình chẩn đoán trong 1-2 câu]",
     "primaryEndpoint": "[Tiêu chí đánh giá chính hoặc mục tiêu lâm sàng hàng đầu]",

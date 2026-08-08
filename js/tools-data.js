@@ -98,12 +98,12 @@ const clinicalToolsData = [
   },
   {
     id: "van-mach-tro-tim",
-    title: "Quản lý Vận mạch & Trợ tim",
-    description: "Tính liều bơm tiêm điện, hướng dẫn chỉnh liều và chuyển đổi vận mạch an toàn",
+    title: "Vasoactive & Hemodynamic Pro Studio",
+    description: "Workstation vận mạch & động lực học huyết động: Quản lý 4 bơm tiêm điện song song, điểm VIS, radar thể sốc & phác đồ can thiệp thủ thuật CVC/A-Line/PLR/ECMO",
     icon: "⚡",
-    link: "emergency/ql-van-mach.html",
+    link: "emergency/ql-van-mach-studio.html",
     part: "part3-section",
-    tags: ["cấp cứu", "hồi sức", "vận mạch", "trợ tim", "noradrenaline", "adrenaline"]
+    tags: ["cấp cứu", "hồi sức", "vận mạch", "trợ tim", "noradrenaline", "adrenaline", "studio", "can thiệp", "vis"]
   },
   {
     id: "quan-ly-may-tho",
@@ -124,6 +124,15 @@ const clinicalToolsData = [
     tags: ["cấp cứu", "hồi sức", "chống độc", "toxidrome", "giải độc", "nac", "atropine", "naloxone", "studio", "gcs", "pss"]
   },
   {
+    id: "polytrauma-mtp-studio",
+    title: "Polytrauma & MTP Pro Studio (Đa Chấn Thương & Truyền Máu Khối Lượng Lớn)",
+    description: "Workstation cấp cứu đa chấn thương: Dự đoán điểm TASH, ABC Score, Shock Index, điều phối chế phẩm máu tỷ lệ 1:1:1 và sơ đồ chấn thương SVG",
+    icon: "🚑",
+    link: "emergency/polytrauma-mtp-studio.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "đa chấn thương", "truyền máu", "mtp", "tash", "abc score", "shock index", "txa", "studio"]
+  },
+  {
     id: "an-than-icu",
     title: "An thần & Giảm đau ICU",
     description: "RASS, CPOT, CAM-ICU & Máy tính bơm tiêm điện an thần ICU",
@@ -140,6 +149,42 @@ const clinicalToolsData = [
     link: "emergency/ecg-studio.html",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "ecg", "điện tâm đồ", "tim mạch", "stemi", "caliper", "studio"]
+  },
+  {
+    id: "dg-dot-quy",
+    title: "Stroke Pro Studio — Workstation Cấp Cứu Đột Quỵ Nào Cấp",
+    description: "Workstation đột quỵ khẩn cấp: Thanh cửa sổ thời gian (rtPA ≤ 4.5h / EVT ≤ 24h), NIHSS 11 mục Visual, CT ASPECTS Score 10 vùng, RACE Score LVO, Liều rtPA & HA Nicardipine",
+    icon: "🧠",
+    link: "emergency/stroke-pro-studio.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "thần kinh", "đột quỵ", "nihss", "aspects", "race", "rtpa", "alteplase", "nicardipine", "evt", "dawn", "ich", "studio"]
+  },
+  {
+    id: "metabolic-crisis-studio",
+    title: "Resuscitative Metabolic & AEIOU Dialysis Studio",
+    description: "Workstation cấp cứu rối loạn điện giải đe dọa tính mạng (Hyperkalemia EKG Rescue, Bolus NaCl 3% Hạ Natri co giật), ABG Stewart & Chỉ định Lọc máu cấp cứu AEIOU",
+    icon: "🩸",
+    link: "emergency/metabolic-crisis-studio.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "điện giải", "lọc máu", "crrt", "aeiou", "hyperkalemia", "hyponatremia", "abg", "bicar-icu", "studio"]
+  },
+  {
+    id: "pocus-efast-studio",
+    title: "eFAST POCUS & Emergency Procedures Studio",
+    description: "Workstation Siêu âm Cấp cứu eFAST 7 cửa sổ, RUSH Protocol Phân loại Sốc (Pump-Tank-Pipes) & Hướng dẫn Bảng kiểm Thủ thuật Cấp cứu tại giường",
+    icon: "🩺",
+    link: "emergency/pocus-efast-studio.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "siêu âm", "pocus", "efast", "rush", "thủ thuật", "chest tube", "pericardiocentesis", "cvc", "studio"]
+  },
+  {
+    id: "cardiogenic-shock-studio",
+    title: "Cardiogenic Shock & ACS Interventional Pro Studio",
+    description: "Workstation Cấp cứu Sốc tim & Can thiệp Mạch vành: SCAI Shock Stage (Stage A-E), TIMI STEMI, Liều Bơm tiêm điện Vận mạch & Chỉ định Hỗ trợ tuần hoàn MCS (IABP/Impella/VA-ECMO)",
+    icon: "🫀",
+    link: "emergency/cardiogenic-shock-studio.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "sốc tim", "cardiogenic", "scai", "timi", "stemi", "vận mạch", "dobutamine", "norepinephrine", "iabp", "ecmo", "pci", "studio"]
   },
 
   // Phần 4: Hô hấp & Lao
@@ -305,25 +350,16 @@ const clinicalToolsData = [
 
   // Phần 8: Nội tiết & Chuyển hóa
   {
-    id: "chinh-lieu-insulin",
-    title: "Chỉnh liều Insulin nội trú",
-    description: "Basal-Bolus, CII (ICU)",
+    id: "insulin-studio",
+    title: "Diabetes & Insulin Pro Studio",
+    description: "Phác đồ Thuốc uống (OADs/GLP-1 RA), Basal-Bolus & Bơm tiêm điện ICU",
     icon: "💉",
-    link: "endocrinology/dg-insulin-dtd.html",
+    link: "endocrinology/insulin-studio.html",
     part: "part8-section",
-    tags: ["nội tiết", "chuyển hóa", "tiểu đường", "đái tháo đường", "insulin"]
+    tags: ["nội tiết", "chuyển hóa", "tiểu đường", "đái tháo đường", "insulin", "oad", "studio"]
   },
 
   // Phần 9: Thần kinh
-  {
-    id: "dg-dot-quy",
-    title: "Stroke Pro Studio — Cấp Cứu Đột Quỵ Nào Cấp",
-    description: "Thanh cửa sổ thời gian Time-Window Bar (rtPA ≤ 4.5h / EVT ≤ 24h), NIHSS 11 mục Visual, Liều rtPA & ICH Score",
-    icon: "🧠",
-    link: "neurology/dg-dot-quy-studio.html",
-    part: "part9-section",
-    tags: ["thần kinh", "đột quỵ", "nihss", "rtpa", "alteplase", "evt", "dawn", "ich", "studio"]
-  },
 
   // Phần 10: Huyết học
   {

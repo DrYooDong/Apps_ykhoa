@@ -9,7 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const emptyState = document.getElementById("empty-search-state");
 
   const FAVORITES_KEY = "cliniportal_favorite_tools";
-  let favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]");
+  const LEGACY_ID_MAP = {
+    "chinh-lieu-insulin": "insulin-studio"
+  };
+  let favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]").map(id => LEGACY_ID_MAP[id] || id);
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
 
   // Xóa các section tĩnh cũ đi, ngoại trừ favorites-section và empty state
   const oldSections = lessonsContainer.querySelectorAll("section:not(#favorites-section)");

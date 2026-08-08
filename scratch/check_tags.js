@@ -16,11 +16,11 @@ function checkHTMLTags(filePath) {
   console.log(`Checking HTML tag integrity for: ${absPath}...\n`);
   const rawContent = fs.readFileSync(absPath, 'utf8');
 
-  // Strip script, style, and comments
+  // Strip script, style, and comments while preserving newlines for accurate line numbers
   let cleanContent = rawContent
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .replace(/<style[\s\S]*?<\/style>/gi, '');
+    .replace(/<!--[\s\S]*?-->/g, m => m.replace(/[^\n]/g, ' '))
+    .replace(/<script[\s\S]*?<\/script>/gi, m => m.replace(/[^\n]/g, ' '))
+    .replace(/<style[\s\S]*?<\/style>/gi, m => m.replace(/[^\n]/g, ' '));
 
   const voidElements = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
   const tagRegex = /<\/?([a-zA-Z0-9-]+)(?:\s+[^>]*?)?(\/?)>/g;

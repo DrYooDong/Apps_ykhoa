@@ -161,9 +161,18 @@
 | `ascites-studio/ascites-engine.js` | Động cơ phân tích 5 tầng (SAAG, ANC, SBP, Runyon criteria & liều truyền Albumin IV) | `ascites-studio.html` |
 | `ascites-studio/ascites-scenarios.js` | Ngân hàng ca bệnh lâm sàng mẫu giả lập dịch màng bụng | `ascites-studio.html` |
 | `ascites-studio/ascites-ui.js` | UI Controller tổng hợp Ascites Studio & Flowchart visualizer | `ascites-studio.html` |
-| `stroke-studio/stroke-engine.js` | Động cơ phân tích 5 tầng (Time-Window bar, NIHSS visual, rtPA dose & safety, ICH Score) | `dg-dot-quy-studio.html` |
-| `stroke-studio/stroke-scenarios.js` | Ngân hàng ca bệnh mẫu giả lập cấp cứu đột quỵ não | `dg-dot-quy-studio.html` |
-| `stroke-studio/stroke-ui.js` | UI Controller tổng hợp Stroke Pro Studio & Timeline slider | `dg-dot-quy-studio.html` |
+| `stroke-studio/stroke-engine.js` | Động cơ phân tích 8 tầng (Time-Window, NIHSS, ASPECTS, RACE LVO, rtPA, BP Nicardipine, ICH) | `stroke-pro-studio.html` |
+| `stroke-studio/stroke-scenarios.js` | Ngân hàng ca bệnh mẫu giả lập cấp cứu đột quỵ não | `stroke-pro-studio.html` |
+| `stroke-studio/stroke-ui.js` | UI Controller tổng hợp Stroke Pro Studio, ASPECTS grid & EMR 1-Click Copy | `stroke-pro-studio.html` |
+| `metabolic-studio/metabolic-engine.js` | Động cơ cấp cứu rối loạn điện giải đe dọa tính mạng, Hyperkalemia rescue, Bolus NaCl 3%, BICAR-ICU & AEIOU | `metabolic-crisis-studio.html` |
+| `metabolic-studio/metabolic-scenarios.js` | Ngân hàng ca cấp cứu giả lập (DKA, Hạ Na co giật, Sốc toan Lactic, Ngộ độc Methanol, Tiêu cơ vân) | `metabolic-crisis-studio.html` |
+| `metabolic-studio/metabolic-ui.js` | UI Controller tổng hợp Metabolic Crisis Studio, AEIOU matrix & EMR 1-Click Copy | `metabolic-crisis-studio.html` |
+| `pocus-studio/pocus-engine.js` | Động cơ siêu âm cấp cứu eFAST 7 cửa sổ, RUSH protocol phân loại sốc & Hướng dẫn thủ thuật | `pocus-efast-studio.html` |
+| `pocus-studio/pocus-scenarios.js` | Ngân hàng ca cấp cứu giả lập POCUS (Chấn thương, Tamponade, Ruptured AAA, Massive PE, Sốc nhiễm khuẩn) | `pocus-efast-studio.html` |
+| `pocus-studio/pocus-ui.js` | UI Controller tổng hợp eFAST POCUS Studio, RUSH protocol & EMR 1-Click Copy | `pocus-efast-studio.html` |
+| `cardiogenic-studio/cardiogenic-engine.js` | Động cơ cấp cứu sốc tim SCAI Shock Stage A-E, TIMI STEMI, Liều bơm tiêm điện vận mạch & Hỗ trợ tuần hoàn MCS | `cardiogenic-shock-studio.html` |
+| `cardiogenic-studio/cardiogenic-scenarios.js` | Ngân hàng ca cấp cứu giả lập Sốc Tim (Classic Stage C, Refractory Stage D ECMO, VSR IABP, Stage E Post-arrest) | `cardiogenic-shock-studio.html` |
+| `cardiogenic-studio/cardiogenic-ui.js` | UI Controller tổng hợp Cardiogenic Shock Studio, SCAI matrix & EMR 1-Click Copy | `cardiogenic-shock-studio.html` |
 | `pharmacology-symptoms.js` | Filter dược lý theo triệu chứng | `pages/Dược lý/Triệu chứng/**` |
 | `pharmacology-tools.js` | Logic tương tác đa thuốc, hiệu chỉnh liều gan thận, quy đổi liều tương đương & Antidote | `pages/Dược lý/**` |
 | `drug-passport.js` | Quản lý state bệnh nhân cá thể hóa toàn cục (localStorage) | `pages/Dược lý/**` |
@@ -232,7 +241,8 @@
 
 | `src/content/calculators/emergency/ql-bu-dich-studio.html` | Fluid Resuscitation Pro Studio | `fluid-studio.css` |
 | `src/content/calculators/emergency/toxicology-studio.html` | Toxicology Pro Studio (Hồi Sức Chống Độc & Giải Độc Lâm Sàng) | Inline Studio Styles |
-| `Công cụ/Cấp cứu & hồi sức/QL_Vanmach.html` | Quản lý liều thuốc vận mạch & trợ tim | — |
+| `src/content/calculators/emergency/ql-van-mach-studio.html` | Vasoactive & Hemodynamic Pro Studio (Quản lý vận mạch, điểm VIS & can thiệp cấp cứu) | — |
+| `src/content/calculators/emergency/polytrauma-mtp-studio.html` | Polytrauma & MTP Pro Studio (Đa chấn thương & Truyền máu khối lượng lớn MTP 1:1:1) | `polytrauma-calculator.js` |
 | `Công cụ/Cấp cứu & hồi sức/QL_Maytho.html` | Quản lý máy thở chuyên sâu | — |
 | `Công cụ/Cấp cứu & hồi sức/DG_AnthanICU.html` | An thần, giảm đau & mê sảng ICU (RASS, CPOT, CAM-ICU, Bơm tiêm điện) | — |
 | `Công cụ/Hô hấp & Lao/DG_Viem-phoi.html` | Đánh giá viêm phổi (PSI, CURB) | — |
@@ -240,7 +250,7 @@
 | `Công cụ/Thận & Điện giải - toan kiềm/Electrolyte_Studio.html` | Electrolyte Pro Studio: Rối loạn điện giải (Na, K, Ca, Mg) & Động học dịch truyền | `electrolyte-studio.css` |
 | `Công cụ/Thận & Điện giải - toan kiềm/renal-function.html` | Chức năng thận | — |
 | `Công cụ/Thận & Điện giải - toan kiềm/DG_nguyennhanAKI.html` | Đánh giá nguyên nhân AKI | — |
-| `Công cụ/Nội tiết & Chuyển hóa/DG_Insulin-ĐTĐ.html` | Chỉnh liều Insulin | `insulin-calculator.css` |
+| `src/content/calculators/endocrinology/insulin-studio.html` | Diabetes & Insulin Pro Studio (Phác đồ Thuốc uống & Insulin Đái tháo đường) | `studio-system.css`, `insulin-calculator.js` |
 | `Công cụ/Tim mạch & huyết khối/DG_LDLc.html` | Mục tiêu LDL-c | — |
 | `Công cụ/Tim mạch & huyết khối/phan-loai-roi-loan-nhip-studio.html` | **[MỚI]** Phân loại Rối loạn nhịp tim & ECG Arrhythmia Studio (6-Axis, QTc, Brugada) | `arrhythmia-studio.css` |
 | `Công cụ/Tim mạch & huyết khối/DG_Suytim.html` | Đánh giá suy tim | — |

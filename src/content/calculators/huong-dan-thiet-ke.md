@@ -59,6 +59,21 @@ Dành cho các công cụ tra cứu mã bệnh y tế, kiểm tra quy tắc than
 
 ---
 
+## 🎨 STYLE 4: Clinical Studio Tools & Interactive Workbenches (Bàn Làm Việc Lâm Sàng Tương Tác)
+
+### Đặc điểm
+Style cao cấp nhất dành cho các ứng dụng hồi sức chuyên sâu, đòi hỏi điều khiển đa thông số song song, giả lập phản ứng thời gian thực, ma trận chẩn đoán trực quan (SVG Vector Matrix), và tích hợp trung tâm xử trí thủ thuật can thiệp lâm sàng (được tham chiếu từ mẫu `ql-van-mach-studio.html` - Vasoactive Pro Studio, `electrolyte-studio.html`, `toxicology-studio.html`, `y-tuong-studio-tools.md`).
+
+### Các thành phần UI cốt lõi
+1. **Băng Ca Lâm Sàng Mẫu (`.preset-bar` + `.preset-btn`)**: Nạp nhanh các kịch bản sốc/cấp cứu mẫu 1-click (Septic Shock, Cardiogenic Shock, Anaphylaxis...).
+2. **Bảng Quản lý Đa Bơm Tiêm Điện / Đa Thông Số (`.pump-card` + Sliders + Active Toggle)**: Điều phối 2–4 bơm tiêm điện/nguồn điều trị song song với công tắc Bật/Tắt và thanh trượt phản ứng tức thì.
+3. **Thanh Tải Trọng & Phân Tầng Rủi Ro Tổng Hợp (`.vis-box` + `.vis-num` + `.vis-badge`)**: Tính toán các chỉ số tổng hợp cao cấp (Vasoactive-Inotropic Score VIS, SIRS, SOFA, PSS) kèm nhãn nguy cơ chuyển màu theo Design Tokens.
+4. **Bộ Mô Phỏng Canvas Trực Quan / Vector Matrix (`.radar-container` + SVG Vector Radar)**: Sơ đồ 4 ô Quadrant hoặc đồ thị vector biểu diễn vị trí ca bệnh, hướng di chuyển sinh hiệu và trạng thái tưới máu mô.
+5. **Trung Tâm Xử Trí Can Thiệp Multi-Tab (`.interv-tabs` + `.interv-content`)**: Khối tab xử trí can thiệp xâm lấn (Đặt CVC/A-Line, RSI Hemodynamic Safety, Test Nâng chân PLR, Trigger VA-ECMO/IABP, Liệu pháp Lipid/Giải độc khẩn cấp).
+6. **Bộ Xuất Y Lệnh Bệnh Án & Copy HIS (`#his-order-text` + `.btn-action`)**: Tự động sinh văn bản Y lệnh chuẩn viện và đồng bộ dữ liệu liên công cụ qua `ClinicalBridge`.
+
+---
+
 ## 💻 4. Tách biệt Mã nguồn & Tệp Tự túc (Modular Architecture)
 
 Để đảm bảo hiệu năng và khả năng bảo trì cao nhất, mọi công cụ mới thuộc phân hệ Công cụ phải tuân thủ việc tách nhỏ mã nguồn:

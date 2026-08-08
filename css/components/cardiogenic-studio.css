@@ -1,0 +1,237 @@
+/* ==========================================================================
+   Cardiogenic Shock & ACS Interventional Pro Studio CSS
+   CliniPortal Design System & Modern High-Tech Emergency Theme
+   ========================================================================== */
+
+.cardiogenic-studio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Studio Hero Card */
+.cardiogenic-hero-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.cardiogenic-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cardiogenic-hero-title-group {
+  max-width: 850px;
+}
+
+.cardiogenic-hero-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.cardiogenic-hero-subtitle {
+  color: var(--color-text-muted, #64748b);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Quick Presets Section */
+.cardiogenic-preset-section {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-border, #e2e8f0);
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.75rem;
+}
+
+.sc-btn {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.sc-btn-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 0.25rem;
+}
+
+.sc-btn-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #64748b);
+  line-height: 1.3;
+}
+
+.sc-danger { border-left: 4px solid var(--color-danger, #ef4444); }
+.sc-amber { border-left: 4px solid var(--color-warning, #f59e0b); }
+.sc-purple { border-left: 4px solid #8b5cf6; }
+.sc-teal { border-left: 4px solid #14b8a6; }
+
+/* Grid Layout */
+.cardiogenic-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .cardiogenic-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panel & Card Styles */
+.cardiogenic-panel-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.input-section-card {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.15rem;
+  transition: border-color 0.2s ease;
+}
+
+.input-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.input-section-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .form-grid-2, .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cardiogenic-calc-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-text, #334155);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.cardiogenic-calc-input, .cardiogenic-calc-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.cardiogenic-calc-input:focus, .cardiogenic-calc-select:focus {
+  outline: none;
+  border-color: var(--color-primary, #0284c7);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+/* KPI Stat Boxes */
+.cardiogenic-stat-box {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.cardiogenic-stat-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted, #64748b);
+  display: block;
+}
+
+.cardiogenic-stat-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.2;
+  display: block;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] .cardiogenic-hero-card,
+[data-theme="dark"] .cardiogenic-panel-card,
+[data-theme="dark"] .input-section-card,
+[data-theme="dark"] .cardiogenic-stat-box {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .cardiogenic-calc-input,
+[data-theme="dark"] .cardiogenic-calc-select {
+  background: var(--color-bg, #0f172a);
+  border-color: var(--color-border, #334155);
+  color: var(--color-text, #f8fafc);
+}

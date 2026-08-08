@@ -33,9 +33,21 @@
     <div class="topnav-divider"></div>
     <div class="topnav-title">📊 Hướng Dẫn & Nghiên Cứu Lâm Sàng</div>
     <div class="topnav-right">
+      <button class="btn" onclick="openCaseModal()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid #7c3aed; background: #faf5ff; color: #6d28d9; font-size: 0.72rem; font-weight: 700; cursor: pointer;" title="Chẩn đoán & Gợi ý TOP 3 Guidelines theo Bệnh án">
+        🎯 Trình Bệnh
+      </button>
+      <button class="btn" onclick="openCommandPalette()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid var(--accent-mid); background: var(--surface); color: var(--accent); font-size: 0.72rem; font-weight: 700; cursor: pointer;" title="Tìm kiếm siêu tốc (Ctrl+K)">
+        ⚡ <kbd style="font-family: monospace; font-size: 0.68rem; background: var(--surface-2); padding: 1px 4px; border-radius: 4px; border: 1px solid var(--border-light);">Ctrl+K</kbd>
+      </button>
       <a href="../guideline-radar/radar.html" class="btn" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid #10b981; background: #ecfdf5; color: #047857; text-decoration: none; font-size: 0.72rem; font-weight: 700;" title="Trạm theo dõi và đối chiếu thay đổi khuyến cáo lâm sàng">
         📡 Guideline Radar (Diff)
       </a>
+      
+      <!-- PWA Offline Sync Button -->
+      <button class="btn" id="btn-offline-sync" onclick="syncCurrentSpecialtyOffline()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid #3b82f6; background: #eff6ff; color: #2563eb; font-size: 0.72rem; font-weight: 700; cursor: pointer;" title="Tải toàn bộ tài liệu chuyên khoa đang lọc về máy (Offline Mode)">
+        <i class="fa-solid fa-cloud-arrow-down" id="offline-sync-icon"></i> <span id="offline-sync-text">Tải Offline</span>
+      </button>
+
       <!-- Supabase Connection Indicator & Sync -->
       <button class="btn" id="supabase-status-btn" onclick="openSupabaseModal()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid var(--border-light); cursor: pointer;">
         <span id="supabase-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #94a3b8; display: inline-block;"></span>
@@ -74,6 +86,10 @@
           <span class="left-nav-icon">📡</span>
           <span class="left-nav-text">Guideline Radar</span>
         </a>
+        <button class="left-nav-link" onclick="openCaseModal()" title="Mode Trình Bệnh">
+          <span class="left-nav-icon">🎯</span>
+          <span class="left-nav-text">Mode Trình Bệnh</span>
+        </button>
         <button class="left-nav-link" onclick="openAddModal()" title="Thêm tài liệu">
           <span class="left-nav-icon">➕</span>
           <span class="left-nav-text">Thêm tài liệu</span>
@@ -405,6 +421,7 @@
                 <option value="cohort">Nghiên cứu quan sát / Thuần tập</option>
                 <option value="guideline">Hướng dẫn / Khuyến cáo lâm sàng</option>
                 <option value="review">Bài tổng quan y khoa (Review)</option>
+                <option value="case-report">Case Report / Series</option>
                 <option value="other">Khác</option>
               </select>
             </div>
@@ -425,7 +442,11 @@
                 <option value="rheum">Cơ xương khớp (Rheumatology)</option>
                 <option value="hema">Huyết học (Hematology)</option>
                 <option value="onco">Ung thư (Oncology)</option>
-                <option value="icu">Hồi sức cấp cứu (HSCC / ICU)</option>
+                <option value="pedia">Nhi khoa (Pediatrics)</option>
+                <option value="obgyn">Sản phụ khoa (Obstetrics & Gynecology)</option>
+                <option value="icu">Hồi sức tích cực (Intensive Care / ICU)</option>
+                <option value="derma">Da liễu (Dermatology)</option>
+                <option value="ent">Tai Mũi Họng (ENT / Otorhinolaryngology)</option>
               </select>
             </div>
             <div class="form-group">
@@ -798,7 +819,66 @@ create table clinical_guidelines (
     </div>
   </div>
 
+  <!-- COMMAND PALETTE MODAL (CTRL+K) -->
+  <div class="modal-overlay" id="command-palette-modal" style="align-items: flex-start; padding-top: 5vh;">
+    <div class="cmd-palette-card">
+      <div class="cmd-input-header">
+        <span class="cmd-search-icon">🔍</span>
+        <input type="text" id="cmd-palette-input" class="cmd-input" placeholder="Gõ tên nghiên cứu, hoạt chất, ICD-10 hoặc lệnh !case, !compare..." onkeyup="window.GuidelineTools && window.GuidelineTools.handleCmdInput(event)" autocomplete="off">
+        <span class="cmd-kbd-shortcut">ESC để đóng</span>
+      </div>
+      <div class="cmd-results-container" id="cmd-palette-results">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
 
+  <!-- 🎯 CLINICAL CASE MODE MODAL (TRÌNH BỆNH) -->
+  <div class="modal-overlay" id="clinical-case-modal">
+    <div class="modal" style="max-width: 780px; width: 92%;">
+      <div class="modal-header">
+        <h3>🎯 Mode Trình Bệnh — Phân Tích & Gợi Ý Guidelines</h3>
+        <button class="modal-close" onclick="window.GuidelineTools && window.GuidelineTools.closeCaseModal()">&times;</button>
+      </div>
+      <div class="modal-body case-modal-body">
+        <form class="case-form-card" onsubmit="window.GuidelineTools && window.GuidelineTools.handleCaseAnalysis(event)">
+          <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: var(--text); display: block; margin-bottom: 4px;">Mã ICD-10 Bệnh chính</label>
+              <div style="display: flex; gap: 6px;">
+                <input type="text" id="case-icd-input" placeholder="VD: I50, E11, J44..." style="width: 100%; padding: 0.55rem; border: 1px solid var(--border-light); border-radius: 6px; background: var(--surface); font-weight: 700; font-family: monospace;">
+                <button type="button" class="btn btn-small" onclick="window.openIcdFilterModal && window.openIcdFilterModal()" title="Tra cứu mã ICD-10">🔍</button>
+              </div>
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: var(--text); display: block; margin-bottom: 4px;">Vấn đề lâm sàng & Bệnh đồng mắc</label>
+              <input type="text" id="case-problem-input" placeholder="VD: Suy tim EF giảm, đái tháo đường typ 2, eGFR < 45" style="width: 100%; padding: 0.55rem; border: 1px solid var(--border-light); border-radius: 6px; background: var(--surface);">
+            </div>
+          </div>
+
+          <div class="case-pref-options">
+            <label class="checkbox-label" style="font-size: 0.78rem;">
+              <input type="checkbox" id="case-pref-asia" checked> 🌏 Ưu tiên có dữ liệu Bệnh nhân Châu Á
+            </label>
+            <label class="checkbox-label" style="font-size: 0.78rem;">
+              <input type="checkbox" id="case-pref-moh" checked> 🇻🇳 Ưu tiên Hướng dẫn Bộ Y tế VN
+            </label>
+            <label class="checkbox-label" style="font-size: 0.78rem;">
+              <input type="checkbox" id="case-pref-pc" checked> 🔥 Ưu tiên Practice-Changing
+            </label>
+          </div>
+
+          <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; font-weight: 800;">🔍 Phân Tích Bệnh Án & Gợi Ý Guidelines</button>
+          </div>
+        </form>
+
+        <div id="case-results-container">
+          <!-- Dynamic Top 3 Suggestions Rendered via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="../../../../js/cliniportal-sync.js"></script>
   <script src="../js/ebm-format-loader.js"></script>
@@ -806,6 +886,10 @@ create table clinical_guidelines (
   <script src="../../../../js/data/icd10-data.js"></script>
   <script src="guidelinesdata.js"></script>
   <script src="js/drug-linker.js"></script>
+  <script src="js/guideline-visualizations.js"></script>
+  <script src="js/guideline-evidence-analytics.js"></script>
+  <script src="js/guideline-tools.js"></script>
   <script src="guidelines.js"></script>
 </body>
 </html>
+

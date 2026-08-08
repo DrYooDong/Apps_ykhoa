@@ -1,13 +1,16 @@
 /**
- * Neurology & Stroke Diagnostic Engine (Stroke Engine)
- * CliniPortal - Neurology & Emergency Decision Support System
+ * Neurology & Stroke Diagnostic Engine (Stroke Engine) Pro Edition
+ * CliniPortal - Emergency & ICU Stroke Workstation Engine
  * 
- * Logic 5 Tầng:
- * 1. Time-Window Analysis (Thanh Cửa sổ Thời gian: ≤ 4.5h rtPA, 4.5h-24h EVT DAWN/DEFUSE-3)
- * 2. NIHSS Evaluator (Thang điểm NIHSS 11 mục & Phân loại độ nặng)
- * 3. rtPA Dose Calculator (0.9 mg/kg, max 90mg: Bolus 10% 1 min + Truyền 90% 60 min, Tính lọ Alteplase 50mg)
- * 4. rtPA Safety & Contraindication Checklist (HA > 185/110, PLT < 100k, INR > 1.7, NOAC, Tiền sử XHN/CT)
- * 5. ICH Score Sub-Engine (Xuất huyết não: GCS, Thể tích khối máu tụ, IVH, Vị trí dưới lều & Tử vong 30 ngày)
+ * Logic 8 Tầng:
+ * 1. Time-Window Analysis (rtPA ≤ 4.5h, EVT 4.5h-24h DAWN/DEFUSE-3)
+ * 2. NIHSS Evaluator (Thang điểm NIHSS 11 mục)
+ * 3. ASPECTS Score Evaluator (CT Brain 10 vùng lãnh thổ ĐM Não Giữa)
+ * 4. RACE Score Evaluator (Tầm soát Tắc mạch máu lớn LVO)
+ * 5. rtPA Dose Calculator (0.9 mg/kg, max 90mg: 10% Bolus, 90% Infusion)
+ * 6. rtPA Safety Checklist (Chống chỉ định tuyệt đối & tương đối)
+ * 7. Acute Stroke BP Control & Antihypertensive Titrator (Nicardipine / Labetalol)
+ * 8. ICH Score Sub-Engine (Xuất huyết nội sọ & Tiên lượng tử vong 30 ngày)
  */
 
 window.StrokeEngine = (function () {
@@ -17,6 +20,7 @@ window.StrokeEngine = (function () {
     var strokeType = input.strokeType || 'ischemic'; // 'ischemic' hoặc 'hemorrhagic'
     var onsetHours = input.onsetTimeHours !== '' && input.onsetTimeHours !== null ? Number(input.onsetTimeHours) : 2.0;
     var weight = input.bodyWeight ? Number(input.bodyWeight) : 60;
+    var age = input.age ? Number(input.age) : 65;
 
     // -------------------------------------------------------------
     // TẦNG 1: Thanh Cửa Sổ Thời Gian (Time-Window Analysis)
@@ -81,7 +85,35 @@ window.StrokeEngine = (function () {
     }
 
     // -------------------------------------------------------------
-    // TẦNG 3: Máy Tính Liều rtPA (rtPA Dosage Calculator)
+    // TẦNG 3: ASPECTS Score (CT Brain 10 Vùng Lãnh Thổ MCA)
+    // -------------------------------------------------------------
+    var aspectsAffected = input.aspectsAffected || []; // mảng các mã vùng bị giảm đậm độ: ['C', 'L', 'IC', 'I', 'M1'...]
+    var aspectsScore = Math.max(0, 10 - aspectsAffected.length);
+    var aspectsStatus = 'Thuận lợi cho tái thông (ASPECTS ≥ 6)';
+    var aspectsBadge = 'badge-success';
+
+    if (aspectsScore < 6) {
+      aspectsStatus = 'Nhồi máu diện rộng / Thất bại tái thông cao (ASPECTS < 6)';
+      aspectsBadge = 'badge-danger';
+    }
+
+    // -------------------------------------------------------------
+    // TẦNG 4: RACE Score (Rapid Arterial Occlusion Evaluation - Tầm soát LVO)
+    // -------------------------------------------------------------
+    var race = input.raceScores || {};
+    var raceFacial = Number(race.facial || 0); // 0-2
+    var raceArm = Number(race.arm || 0); // 0-2
+    var raceLeg = Number(race.leg || 0); // 0-2
+    var raceGaze = Number(race.gaze || 0); // 0-1
+    var raceCortical = Number(race.cortical || 0); // 0-2 (Aphasia/Agnosia)
+
+    var totalRace = raceFacial + raceArm + raceLeg + raceGaze + raceCortical;
+    var isHighLvoRisk = totalRace >= 5;
+    var raceStatus = isHighLvoRisk ? 'Nguy cơ Tắc Mạch Máu Lớn (LVO) CAO (RACE ≥ 5)' : 'Nguy cơ LVO Thấp - Trung bình (RACE < 5)';
+    var raceBadge = isHighLvoRisk ? 'badge-danger' : 'badge-info';
+
+    // -------------------------------------------------------------
+    // TẦNG 5: Máy Tính Liều rtPA (rtPA Dosage Calculator)
     // -------------------------------------------------------------
     var rawDose = 0.9 * weight;
     var totalRtpaDose = Math.min(rawDose, 90.0); // Max 90mg
@@ -98,7 +130,7 @@ window.StrokeEngine = (function () {
     };
 
     // -------------------------------------------------------------
-    // TẦNG 4: Bảng Kiểm Chống Chỉ Định rtPA (Safety Checklist)
+    // TẦNG 6: Bảng Kiểm Chống Chỉ Định rtPA (Safety Checklist)
     // -------------------------------------------------------------
     var sbp = input.sbp ? Number(input.sbp) : 130;
     var dbp = input.dbp ? Number(input.dbp) : 80;
@@ -121,28 +153,47 @@ window.StrokeEngine = (function () {
     }
 
     // 2. Xét nghiệm máu
-    if (plt < 100000) {
-      contraindications.push('Tiểu cầu < 100,000 / μL (' + plt + ' / μL)');
-    }
-    if (inr > 1.7) {
-      contraindications.push('INR > 1.7 (' + inr.toFixed(2) + ')');
-    }
-    if (glu < 50) {
-      contraindications.push('Hạ đường huyết (Glucose < 50 mg/dL - Cần loại trừ Stroke Mimic)');
-    }
+    if (plt < 100000) contraindications.push('Tiểu cầu < 100,000 / μL (' + plt + ' / μL)');
+    if (inr > 1.7) contraindications.push('INR > 1.7 (' + inr.toFixed(2) + ')');
+    if (glu < 50) contraindications.push('Hạ đường huyết (Glucose < 50 mg/dL - Cần loại trừ Stroke Mimic)');
 
     // 3. Tiền sử cờ đỏ
-    if (sc.hasIchHistory) contraindications.push('Tiền sử Xuất huyết não hoặc Dị dạng mạch máu não');
-    if (sc.hasRecentHeadTrauma) contraindications.push('Chấn thương đầu nặng hoặc Phẫu thuật sọ não < 3 tháng');
+    if (sc.hasIchHistory) contraindications.push('Tiền sử Xuất huyết não hoặc Dị dạng mạch máu toàn bộ');
+    if (sc.hasRecentHeadTrauma) contraindications.push('Chấn thương đầu nặng hoặc Phẫu thuật sọ脑 < 3 tháng');
     if (sc.hasRecentMajorSurgery) contraindications.push('Phẫu thuật lớn hoặc Chấn thương nặng < 14 ngày');
     if (sc.hasGiBleed) contraindications.push('Xuất huyết tiêu hóa hoặc Tiết niệu < 21 ngày');
-    if (sc.hasLargeInfarct) contraindications.push('CT/MRI cho thấy Nhồi máu diện rộng (> 1/3 lãnh thổ ĐM não giữa)');
+    if (sc.hasLargeInfarct || aspectsScore < 6) contraindications.push('CT/MRI nhồi máu diện rộng (ASPECTS < 6 hoặc > 1/3 lãnh thổ ĐM não giữa)');
     if (sc.isTakingNoac) contraindications.push('Đang dùng thuốc chống đông đường uống thế hệ mới (NOAC) < 48 giờ');
 
     var isRtpaEligible = strokeType === 'ischemic' && isRtpaWindow && !isBpTooHigh && contraindications.length === 0;
 
     // -------------------------------------------------------------
-    // TẦNG 5: ICH Score Sub-Engine (Xuất huyết não)
+    // TẦNG 7: Phác Đồ Hạ Huyết Áp & Tính Liều Thuốc Vận Mạch Hạ Áp
+    // -------------------------------------------------------------
+    var bpTargetText = '';
+    var bpProtocolGuide = '';
+    var nicardipineInfusionRate = 0; // mL/h (pha 50mg/500mL = 0.1 mg/mL hoặc bơm tiêm điện 10mg/50mL = 0.2 mg/mL)
+
+    if (strokeType === 'ischemic') {
+      if (isRtpaEligible || isRtpaWindow) {
+        bpTargetText = 'Mục tiêu Huyết áp Tiền tiêm rtPA: SBP < 185 mmHg & DBP < 110 mmHg. Hậu rtPA (24h đầu): SBP < 180 mmHg & DBP < 105 mmHg.';
+        bpProtocolGuide = 'Nicardipine IV: Bắt đầu 5 mg/h (25 mL/h nồng độ 0.2 mg/mL). Tăng liều 2.5 mg/h mỗi 5-15 phút (Tối đa 15 mg/h) cho đến khi đạt HA mục tiêu.<br>Labetalol IV: 10-20 mg IV chầm chậm 1-2 phút, có thể lặp lại hoặc truyền 2-8 mg/min.';
+      } else {
+        bpTargetText = 'Nhồi máu não không dùng rtPA: Duy trì Huyết áp đáp ứng (Permissive Hypertension) up to 220/120 mmHg. Chỉ hạ HA khi SBP > 220 mmHg hoặc DBP > 120 mmHg (hoặc tổn thương đích tim/thận).';
+        bpProtocolGuide = 'Nếu SBP > 220 mmHg: Hạ HA nhẹ nhàng 15% trong 24h đầu bằng Nicardipine/Labetalol IV.';
+      }
+    } else {
+      bpTargetText = 'Xuất huyết não cấp (ICH): Hạ SBP khẩn cấp xuống 130 - 140 mmHg trong vòng 1 giờ (Thử nghiệm INTERACT-2 & ATTACH-2) để giảm sự lan rộng của khối máu tụ.';
+      bpProtocolGuide = 'Khởi đầu Nicardipine 5 mg/h IV truyền liên tục. Tăng liều mỗi 5-10 phút đến khi SBP 130-140 mmHg. Tránh giảm SBP < 120 mmHg.';
+    }
+
+    if (sbp > 140) {
+      var desiredNicardipineDoseMgHr = Math.min(15, Math.max(5, (sbp - 140) * 0.15 + 5));
+      nicardipineInfusionRate = desiredNicardipineDoseMgHr * 5; // mL/h với nồng độ 0.2 mg/mL (10mg/50mL)
+    }
+
+    // -------------------------------------------------------------
+    // TẦNG 8: ICH Score Sub-Engine (Xuất huyết nội sọ)
     // -------------------------------------------------------------
     var ichResult = null;
     if (strokeType === 'hemorrhagic') {
@@ -150,7 +201,6 @@ window.StrokeEngine = (function () {
       var vol = input.ichVolume ? Number(input.ichVolume) : 15; // mL
       var isIvh = Boolean(input.hasIvh);
       var isInfratentorial = Boolean(input.isInfratentorial);
-      var age = input.age ? Number(input.age) : 65;
 
       var gcsPts = 0;
       if (gcs <= 4) gcsPts = 2;
@@ -197,15 +247,15 @@ window.StrokeEngine = (function () {
         recommendations.push({
           title: '⛔ CHỐNG CHỈ ĐỊNH TIÊM rtPA TĨNH MẠCH',
           type: 'danger',
-          content: 'Bệnh nhân có cờ đỏ chống chỉ định: <strong>' + contraindications.join('; ') + '</strong>. Nếu onset ≤ 24h và nghi tắc mạch lớn (LVO) $\rightarrow$ Chụp CTA khẩn xét Can thiệp Lấy huyết khối cơ học (EVT).'
+          content: 'Bệnh nhân có cờ đỏ chống chỉ định: <strong>' + contraindications.join('; ') + '</strong>. Nếu onset ≤ 24h và nghi tắc mạch lớn (LVO) $\\rightarrow$ Chụp CTA khẩn xét Can thiệp Lấy huyết khối cơ học (EVT).'
         });
       }
 
-      if (isEvtWindow || (isRtpaWindow && totalNihss >= 6)) {
+      if (isHighLvoRisk || isEvtWindow || (isRtpaWindow && totalNihss >= 6)) {
         recommendations.push({
           title: '🎯 CHỈ ĐỊNH TẦM SOÁT TẮC MẠCH MÁU LỚN (LVO) & CAN THIỆP EVT',
           type: 'warning',
-          content: 'NIHSS ≥ 6 hoặc trong cửa sổ 4.5h-24h. Chỉ định Chụp CTA Động mạch não/Cổ khẩn cấp. Nếu phát hiện tắc ĐM Não giữa (M1/M2), ĐM Cảnh trong (ICA) hoặc ĐM Thân nền $\rightarrow$ Chuyển DSA can thiệp lấy huyết khối bằng Stent Retriever ngay lập tức.'
+          content: 'Điểm RACE = ' + totalRace + ' (≥ 5) hoặc NIHSS = ' + totalNihss + ' (≥ 6). Nguy cơ cao tắc ĐM Não giữa (M1/M2), ĐM Cảnh trong (ICA) hoặc ĐM Thân nền. Chỉ định chụp CTA ĐM Não/Cổ khẩn cấp và chuyển DSA Can thiệp lấy huyết khối bằng Stent Retriever ngay lập tức!'
         });
       }
     } else {
@@ -214,29 +264,27 @@ window.StrokeEngine = (function () {
         type: 'danger',
         content: '1) Kiểm soát huyết áp khẩn cấp: Hạ SBP xuống 130-140 mmHg bằng Nicardipine/Labetalol IV;<br>' +
                  '2) Đảo ngược chống đông khẩn cấp (PCC / Vitamin K / Idarucizumab / Andexanet alfa);<br>' +
-                 '3) Hội chẩn Ngoại Thần kinh xét mổ giải áp hoặc dẫn lưu não thất (EVD) nếu có IVH hoặc nguy cơ tụt kẹt não.'
+                 '3) Hội chẩn Ngoại Thần kinh xét mổ giải áp hoặc dẫn lưu não thất (EVD) nếu có IVH hoặc nguy cơ tụt kẹt brainstem.'
       });
     }
 
-    // Active Flowchart Nodes
-    var activeNodes = ['node-start', 'node-ct-scan'];
+    // Summary Text for EMR Copy
+    var summaryReportText = '[BÁO CÁO CẤP CỨU ĐỘT QUỴ NÃO CẤP]\n' +
+      '• Thể bệnh: ' + (strokeType === 'ischemic' ? 'Nhồi máu brain cấp' : 'Xuất huyết não (ICH)') + '\n' +
+      '• Thời gian khởi phát (Onset): ' + onsetHours.toFixed(1) + ' giờ (' + timeWindowLabel + ')\n' +
+      '• Sinh hiệu: HA ' + sbp + '/' + dbp + ' mmHg | Cân nặng: ' + weight + ' kg | Age: ' + age + '\n' +
+      '• Thang điểm NIHSS: ' + totalNihss + ' điểm (' + nihssSeverity + ')\n' +
+      '• ASPECTS Score: ' + aspectsScore + '/10 (' + aspectsStatus + ')\n' +
+      '• RACE Score (LVO): ' + totalRace + '/9 (' + raceStatus + ')\n';
+
     if (strokeType === 'ischemic') {
-      activeNodes.push('node-ischemic');
-      if (isRtpaWindow) {
-        activeNodes.push('node-rtpa-window');
-        if (isRtpaEligible) activeNodes.push('node-rtpa-execute');
-        else if (isBpTooHigh) activeNodes.push('node-bp-control');
-        else activeNodes.push('node-rtpa-contra');
-      } else if (isEvtWindow) {
-        activeNodes.push('node-evt-window');
-        activeNodes.push('node-evt-execute');
-      } else {
-        activeNodes.push('node-late-window');
-      }
-    } else {
-      activeNodes.push('node-hemorrhagic');
-      activeNodes.push('node-ich-score');
+      summaryReportText += '• Khuyến cáo rtPA: ' + (isRtpaEligible ? 'ĐỦ ĐIỀU KIỆN rtPA' : 'Không dùng / Chống chỉ định (' + (contraindications.join(', ') || 'Quá cửa sổ/HA cao') + ')') + '\n' +
+        '• Liều rtPA (0.9mg/kg): Tổng ' + totalRtpaDose.toFixed(1) + ' mg (Bolus 10%: ' + bolusDose.toFixed(1) + ' mg, Truyền 90%: ' + infusionDose.toFixed(1) + ' mg - ' + alteplaseVials + ' lọ 50mg)\n';
+    } else if (ichResult) {
+      summaryReportText += '• ICH Score: ' + ichResult.score + ' điểm | Tiên lượng tử vong 30 ngày: ' + ichResult.mortality30d + '\n';
     }
+    summaryReportText += '• Mục tiêu HA: ' + bpTargetText + '\n' +
+      '• Y lệnh hạ HA: Nicardipine 10mg/50mL truyền Bơm tiêm điện tốc độ ' + nicardipineInfusionRate.toFixed(1) + ' mL/h (chỉnh theo SBP).';
 
     return {
       strokeType: strokeType,
@@ -246,6 +294,18 @@ window.StrokeEngine = (function () {
         severity: nihssSeverity,
         badgeClass: nihssBadgeClass,
         items: nihssItems
+      },
+      aspects: {
+        score: aspectsScore,
+        status: aspectsStatus,
+        badgeClass: aspectsBadge,
+        affected: aspectsAffected
+      },
+      race: {
+        score: totalRace,
+        isHighLvoRisk: isHighLvoRisk,
+        status: raceStatus,
+        badgeClass: raceBadge
       },
       timeWindow: {
         label: timeWindowLabel,
@@ -262,9 +322,14 @@ window.StrokeEngine = (function () {
         contraindications: contraindications,
         warnings: warnings
       },
+      bpControl: {
+        targetText: bpTargetText,
+        protocolGuide: bpProtocolGuide,
+        nicardipineRate: nicardipineInfusionRate
+      },
       ichResult: ichResult,
       recommendations: recommendations,
-      activeNodes: activeNodes
+      summaryReportText: summaryReportText
     };
   }
 

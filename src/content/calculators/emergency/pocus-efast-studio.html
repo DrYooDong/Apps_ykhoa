@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="eFAST POCUS & Emergency Procedures Studio — Workstation Siêu âm Cấp cứu eFAST 7 Cửa sổ, Phác đồ RUSH Protocol Phân loại Sốc & Bảng kiểm Hướng dẫn Thủ thuật Cấp cứu Khẩn tại Giường (Chest Tube, Pericardiocentesis, US CVC) – CliniPortal." />
+  <title>eFAST POCUS & Emergency Procedures Studio – Siêu Âm & Thủ Thuật Cấp Cứu – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core & Component Modules -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/pocus-studio.css">
+
+  <!-- JS Core & Studio Modules -->
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../../../js/pocus-studio/pocus-engine.js" defer></script>
+  <script src="../../../../js/pocus-studio/pocus-scenarios.js" defer></script>
+  <script src="../../../../js/pocus-studio/pocus-ui.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="app-main">
+      <div class="pocus-studio-container">
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../cong-cu.html"}, {"label": "POCUS & Procedures Studio"}]'></clini-breadcrumb>
+
+        <!-- HERO HEADER CARD -->
+        <div class="pocus-hero-card">
+          <div class="pocus-hero-header">
+            <div class="pocus-hero-title-group">
+              <span class="badge badge-danger"><i class="fa-solid fa-wave-square"></i> Siêu Âm Cấp Cứu Point-of-Care (Emergency POCUS Workstation)</span>
+              <h1 class="pocus-hero-title">eFAST POCUS & Emergency Procedures Studio</h1>
+              <p class="pocus-hero-subtitle">
+                Workstation Siêu âm Cấp cứu eFAST 7 Cửa sổ trực quan, Phác đồ RUSH Protocol Phân loại Sốc khẩn cấp (Pump - Tank - Pipes) & Bảng kiểm Hướng dẫn Thủ thuật Cấp cứu Khẩn tại Giường (Đặt dẫn lưu màng phổi, Chọc dò màng tim, CVC dưới siêu âm).
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+              <button type="button" class="btn-proc btn-proc-primary" id="btnCopyEmrReport">
+                <i class="fa-solid fa-copy"></i> Sao Chép Báo Cáo EMR
+              </button>
+              <button type="button" class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại
+              </button>
+            </div>
+          </div>
+
+          <!-- Scenario Quick Presets -->
+          <div class="pocus-preset-section">
+            <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.75rem;"><i class="fa-solid fa-bolt"></i> Ca Cấp Cứu POCUS Mẫu Giả Lập</div>
+            <div class="scenario-grid" id="scenarioPresetContainer">
+              <!-- Rendered via pocus-ui.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN 2-COLUMN WORKSPACE GRID -->
+        <div class="pocus-grid-layout">
+
+          <!-- LEFT COLUMN: INPUT PANEL -->
+          <div class="pocus-panel-card">
+            <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-crosshairs text-danger"></i> Khảo Sát eFAST & RUSH Protocol
+            </h2>
+
+            <!-- Card 1: Interactive 7-Window eFAST Canvas -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title"><i class="fa-solid fa-stethoscope text-primary"></i> 1. Đánh Giá 7 Cửa Sổ Siêu Âm eFAST</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">
+                Bấm chọn các vị trí cửa sổ siêu âm ghi nhận tổn thương / dịch tự do (Nút bật màu đỏ = Dương tính):
+              </p>
+              <div class="efast-grid">
+                <button type="button" class="efast-window-btn" id="btn_ruq">
+                  <i class="fa-solid fa-circle-dot"></i> RUQ <span>Khoang Morrison</span>
+                </button>
+                <button type="button" class="efast-window-btn" id="btn_luq">
+                  <i class="fa-solid fa-circle-dot"></i> LUQ <span>Lách - Thận</span>
+                </button>
+                <button type="button" class="efast-window-btn" id="btn_pelvis">
+                  <i class="fa-solid fa-circle-dot"></i> Pelvis <span>Hạ vị / Túi cùng</span>
+                </button>
+                <button type="button" class="efast-window-btn" id="btn_pericardial">
+                  <i class="fa-solid fa-heart-pulse"></i> Pericardial <span>Màng tim</span>
+                </button>
+                <button type="button" class="efast-window-btn" id="btn_r_pleura">
+                  <i class="fa-solid fa-lungs"></i> R-Pleura <span>Màng phổi R</span>
+                </button>
+                <button type="button" class="efast-window-btn" id="btn_l_pleura">
+                  <i class="fa-solid fa-lungs"></i> L-Pleura <span>Màng phổi L</span>
+                </button>
+                <button type="button" class="efast-window-btn" id="btn_ivc">
+                  <i class="fa-solid fa-wave-square"></i> IVC <span>Xẹp &gt; 50%</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2: RUSH Protocol (Rapid Ultrasound in Shock) -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-primary);"><i class="fa-solid fa-heart-crack"></i> 2. RUSH Protocol Phân Loại Sốc (Pump - Tank - Pipes)</span>
+              </div>
+              <div class="form-grid-3">
+                <div>
+                  <label class="pocus-calc-label" for="rushPump">1. Bơm (Pump)</label>
+                  <select id="rushPump" class="pocus-calc-select">
+                    <option value="normal" selected>Bình thường (Co bóp tốt)</option>
+                    <option value="impaired_ef">🔴 Co bóp giảm nặng (EF &lt; 30%)</option>
+                    <option value="pericardial_tamponade">🚨 Chèn ép tim cấp (Tamponade)</option>
+                    <option value="rv_dilation">🔴 Giãn thất phải D-sign (Thuyên tắc phổi)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="pocus-calc-label" for="rushTank">2. Bình Chứa (Tank)</label>
+                  <select id="rushTank" class="pocus-calc-select">
+                    <option value="normal" selected>Bình thường</option>
+                    <option value="hypovolemic_empty">🔴 IVC xẹp &gt; 50% (Thiếu dịch)</option>
+                    <option value="hypervolemic_full">🔴 IVC giãn &gt; 2.1cm (CVP cao)</option>
+                    <option value="tension_pneumo">🚨 Khí màng phổi áp lực</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="pocus-calc-label" for="rushPipes">3. Đường Ống (Pipes)</label>
+                  <select id="rushPipes" class="pocus-calc-select">
+                    <option value="normal" selected>Bình thường</option>
+                    <option value="aaa">🚨 Phình ĐM chủ bụng (&gt; 3cm)</option>
+                    <option value="dvt">🔴 Huyết khối Tĩnh mạch sâu DVT</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Bedside Emergency Procedures Selection -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: #8b5cf6;"><i class="fa-solid fa-syringe"></i> 3. Tra Cứu Hướng Dẫn Thủ Thuật Cấp Cứu</span>
+              </div>
+              <div class="pocus-input-group">
+                <label class="pocus-calc-label" for="procedureSelect">Chọn Thủ Thuật Cấp Cứu Cần Thực Hiện</label>
+                <select id="procedureSelect" class="pocus-calc-select">
+                  <option value="chest_tube" selected>📌 Đặt Dẫn Lưu Màng Phổi (Chest Tube Insertion)</option>
+                  <option value="pericardiocentesis">📌 Chọc Dò Màng Tim Cấp Cứu (Pericardiocentesis)</option>
+                  <option value="cvc_ultrasound">📌 Đặt Catheter Tĩnh Mạch Trung Tâm Dưới Siêu Âm (US-guided CVC)</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: DIAGNOSTIC & WORKSTATION OUTPUT PANEL -->
+          <div class="pocus-panel-card" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            
+            <!-- Hero Diagnostic Result Banner -->
+            <div class="pocus-hero-card" style="padding: 1.25rem; margin: 0; background: var(--color-surface-offset);">
+              <span id="resHeroBadge" class="badge badge-danger">ĐANG PHÂN TÍCH...</span>
+              <h3 id="resHeroTitle" style="font-size: 1.2rem; font-weight: 800; color: var(--color-text); margin-top: 0.4rem; margin-bottom: 0.3rem;">
+                Kết Quả Khảo Sát
+              </h3>
+              <p id="resHeroSummary" style="font-size: 0.88rem; color: var(--color-text-muted); margin: 0;">
+                Tóm tắt siêu âm POCUS & RUSH Protocol.
+              </p>
+            </div>
+
+            <!-- 3-KPI Clinical Scores Grid -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem;">
+              <div class="pocus-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="pocus-stat-label">Kết Quả eFAST</span>
+                <span id="valEfastResult" class="pocus-stat-val" style="color: var(--color-danger); font-size: 1.1rem;">ÂM TÍNH</span>
+              </div>
+              <div class="pocus-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="pocus-stat-label">Phân Loại Sốc RUSH</span>
+                <span id="valRushShockType" class="pocus-stat-val" style="color: var(--color-primary); font-size: 1.05rem;">Bình thường</span>
+              </div>
+              <div class="pocus-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="pocus-stat-label">Trạng Thái IVC</span>
+                <span id="valIvcStatus" class="pocus-stat-val" style="color: var(--color-purple, #8b5cf6); font-size: 1.1rem;">Xẹp &gt; 50%</span>
+              </div>
+            </div>
+
+            <!-- eFAST Details Container -->
+            <div id="containerEfastDetails"></div>
+
+            <!-- RUSH Protocol Details Container -->
+            <div id="containerRushDetails"></div>
+
+            <!-- Procedure Guidance Container -->
+            <div id="containerProcedureGuide"></div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

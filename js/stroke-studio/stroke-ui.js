@@ -1,6 +1,6 @@
 /**
- * Neurology & Stroke Studio UI Controller
- * CliniPortal - Neurology & Emergency Decision Support System
+ * Neurology & Stroke Studio UI Controller Pro Edition
+ * CliniPortal - Emergency & ICU Decision Support System
  */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var inputOnsetTime = document.getElementById('onsetTimeHours');
   var sliderOnsetTime = document.getElementById('onsetTimeSlider');
   var inputWeight = document.getElementById('bodyWeight');
+  var inputAge = document.getElementById('age');
 
   var inputSbp = document.getElementById('sbp');
   var inputDbp = document.getElementById('dbp');
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var inputGlu = document.getElementById('glucose');
 
   var btnReset = document.getElementById('btnResetStudio');
+  var btnCopyEmr = document.getElementById('btnCopyEmrReport');
   var presetContainer = document.getElementById('scenarioPresetContainer');
 
   // Outputs
@@ -29,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var valNihssTotal = document.getElementById('valNihssTotal');
   var badgeNihssSev = document.getElementById('badgeNihssSev');
 
+  var valAspectsScore = document.getElementById('valAspectsScore');
+  var badgeAspectsSev = document.getElementById('badgeAspectsSev');
+
+  var valRaceScore = document.getElementById('valRaceScore');
+  var badgeRaceSev = document.getElementById('badgeRaceSev');
+
   var valRtpaTotal = document.getElementById('valRtpaTotal');
   var valRtpaBolus = document.getElementById('valRtpaBolus');
   var valRtpaInfusion = document.getElementById('valRtpaInfusion');
@@ -37,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var containerRecommendations = document.getElementById('containerRecommendations');
   var containerSafetyWarnings = document.getElementById('containerSafetyWarnings');
   var containerIchPanel = document.getElementById('containerIchPanel');
+  var containerBpProtocol = document.getElementById('containerBpProtocol');
 
   // Timeline Slider Sync
   if (inputOnsetTime && sliderOnsetTime) {
@@ -62,9 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Khởi tạo Scenarios & NIHSS Items
+  // Khởi tạo Scenarios, NIHSS & ASPECTS Listeners
   initScenarios();
   initNihssListeners();
+  initAspectsListeners();
+  initRaceListeners();
 
   // Listeners cho tất cả inputs
   var allInputs = document.querySelectorAll('.stroke-calc-input, .stroke-calc-select, .stroke-checkbox');
@@ -75,6 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (btnReset) {
     btnReset.addEventListener('click', resetForm);
+  }
+
+  if (btnCopyEmr) {
+    btnCopyEmr.addEventListener('click', copyEmrReport);
   }
 
   // Run initial
@@ -90,13 +105,46 @@ document.addEventListener('DOMContentLoaded', function () {
         var group = btn.getAttribute('data-nihss-group');
         var val = btn.getAttribute('data-val');
 
-        // Toggle active trong nhóm
         var siblings = document.querySelectorAll('.nihss-opt-btn[data-nihss-group="' + group + '"]');
         siblings.forEach(function (s) { s.classList.remove('active'); });
         btn.classList.add('active');
 
-        // Cập nhật hidden input
         var hiddenInp = document.getElementById('nihss_' + group);
+        if (hiddenInp) hiddenInp.value = val;
+
+        runAnalysis();
+      });
+    });
+  }
+
+  /**
+   * Đăng ký Event Listeners cho 10 vùng ASPECTS Score
+   */
+  function initAspectsListeners() {
+    var aspectsBtns = document.querySelectorAll('.aspects-region-btn');
+    aspectsBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btn.classList.toggle('affected');
+        runAnalysis();
+      });
+    });
+  }
+
+  /**
+   * Đăng ký Event Listeners cho RACE Score (LVO Screening)
+   */
+  function initRaceListeners() {
+    var raceBtns = document.querySelectorAll('.race-opt-btn');
+    raceBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var group = btn.getAttribute('data-race-group');
+        var val = btn.getAttribute('data-val');
+
+        var siblings = document.querySelectorAll('.race-opt-btn[data-race-group="' + group + '"]');
+        siblings.forEach(function (s) { s.classList.remove('active'); });
+        btn.classList.add('active');
+
+        var hiddenInp = document.getElementById('race_' + group);
         if (hiddenInp) hiddenInp.value = val;
 
         runAnalysis();
@@ -124,61 +172,51 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function loadScenario(scenarioId) {
+    if (!window.StrokeScenarios) return;
     var sc = window.StrokeScenarios.getScenarioById(scenarioId);
     if (!sc) return;
 
-    var d = sc.data;
-    if (selectStrokeType) selectStrokeType.value = d.strokeType || 'ischemic';
-    if (inputOnsetTime) inputOnsetTime.value = d.onsetTimeHours !== undefined ? d.onsetTimeHours : 2.0;
-    if (sliderOnsetTime) sliderOnsetTime.value = d.onsetTimeHours !== undefined ? d.onsetTimeHours : 2.0;
-    if (inputWeight) inputWeight.value = d.bodyWeight || 60;
-
-    if (inputSbp) inputSbp.value = d.sbp || 130;
-    if (inputDbp) inputDbp.value = d.dbp || 80;
-    if (inputPlt) inputPlt.value = d.platelets || 200000;
-    if (inputInr) inputInr.value = d.inr || 1.0;
-    if (inputGlu) inputGlu.value = d.glucose || 110;
-
-    // Safety Checklist
-    var chk = d.safetyChecklist || {};
-    for (var k in chk) {
-      var elem = document.getElementById('chk_' + k);
-      if (elem) elem.checked = Boolean(chk[k]);
+    if (selectStrokeType) selectStrokeType.value = sc.inputs.strokeType || 'ischemic';
+    if (inputOnsetTime && sliderOnsetTime) {
+      inputOnsetTime.value = sc.inputs.onsetTimeHours;
+      sliderOnsetTime.value = sc.inputs.onsetTimeHours;
     }
+    if (inputWeight) inputWeight.value = sc.inputs.bodyWeight;
+    if (inputSbp) inputSbp.value = sc.inputs.sbp;
+    if (inputDbp) inputDbp.value = sc.inputs.dbp;
+    if (inputPlt) inputPlt.value = sc.inputs.platelets;
+    if (inputInr) inputInr.value = sc.inputs.inr;
+    if (inputGlu) inputGlu.value = sc.inputs.glucose;
 
-    // NIHSS Items
-    var n = d.nihssScores || {};
-    for (var itemKey in n) {
-      var val = n[itemKey];
-      var hiddenInp = document.getElementById('nihss_' + itemKey);
-      if (hiddenInp) hiddenInp.value = val;
+    // Reset Safety Checkboxes
+    var chks = document.querySelectorAll('.stroke-checkbox');
+    chks.forEach(function (c) { c.checked = false; });
 
-      var btnToActive = document.querySelector('.nihss-opt-btn[data-nihss-group="' + itemKey + '"][data-val="' + val + '"]');
-      if (btnToActive) {
-        var siblings = document.querySelectorAll('.nihss-opt-btn[data-nihss-group="' + itemKey + '"]');
-        siblings.forEach(function (s) { s.classList.remove('active'); });
-        btnToActive.classList.add('active');
+    if (sc.inputs.safetyChecklist) {
+      for (var k in sc.inputs.safetyChecklist) {
+        var el = document.getElementById('chk_' + k);
+        if (el) el.checked = Boolean(sc.inputs.safetyChecklist[k]);
       }
     }
 
-    // ICH Params
-    if (d.strokeType === 'hemorrhagic') {
-      var inputGcs = document.getElementById('gcsScore');
-      var inputVol = document.getElementById('ichVolume');
-      var checkIvh = document.getElementById('hasIvh');
-      var checkInfra = document.getElementById('isInfratentorial');
-      var inputAge = document.getElementById('age');
+    // Set NIHSS
+    if (sc.inputs.nihssScores) {
+      for (var group in sc.inputs.nihssScores) {
+        var val = sc.inputs.nihssScores[group];
+        var hiddenInp = document.getElementById('nihss_' + group);
+        if (hiddenInp) hiddenInp.value = val;
 
-      if (inputGcs) inputGcs.value = d.gcsScore || 15;
-      if (inputVol) inputVol.value = d.ichVolume || 15;
-      if (checkIvh) checkIvh.checked = Boolean(d.hasIvh);
-      if (checkInfra) checkInfra.checked = Boolean(d.isInfratentorial);
-      if (inputAge) inputAge.value = d.age || 65;
+        var siblings = document.querySelectorAll('.nihss-opt-btn[data-nihss-group="' + group + '"]');
+        siblings.forEach(function (btn) {
+          if (btn.getAttribute('data-val') === String(val)) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+      }
     }
 
     var ichWrapper = document.getElementById('ichInputsWrapper');
     if (ichWrapper) {
-      ichWrapper.style.display = d.strokeType === 'hemorrhagic' ? 'block' : 'none';
+      ichWrapper.style.display = sc.inputs.strokeType === 'hemorrhagic' ? 'block' : 'none';
     }
 
     runAnalysis();
@@ -186,20 +224,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function resetForm() {
     if (selectStrokeType) selectStrokeType.value = 'ischemic';
-    if (inputOnsetTime) inputOnsetTime.value = 2.0;
-    if (sliderOnsetTime) sliderOnsetTime.value = 2.0;
+    if (inputOnsetTime && sliderOnsetTime) {
+      inputOnsetTime.value = 2.5;
+      sliderOnsetTime.value = 2.5;
+    }
     if (inputWeight) inputWeight.value = 60;
     if (inputSbp) inputSbp.value = 130;
     if (inputDbp) inputDbp.value = 80;
-    if (inputPlt) inputPlt.value = 200000;
-    if (inputInr) inputInr.value = 1.0;
-    if (inputGlu) inputGlu.value = 110;
 
-    // Reset Checklist
     var chks = document.querySelectorAll('.stroke-checkbox');
     chks.forEach(function (c) { c.checked = false; });
 
-    // Reset NIHSS to 0
     var nihssButtons = document.querySelectorAll('.nihss-opt-btn');
     nihssButtons.forEach(function (b) {
       if (b.getAttribute('data-val') === '0') b.classList.add('active');
@@ -208,16 +243,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var hiddenNihss = document.querySelectorAll('.nihss-hidden-input');
     hiddenNihss.forEach(function (h) { h.value = 0; });
 
+    var aspectsBtns = document.querySelectorAll('.aspects-region-btn');
+    aspectsBtns.forEach(function (b) { b.classList.remove('affected'); });
+
     var ichWrapper = document.getElementById('ichInputsWrapper');
     if (ichWrapper) ichWrapper.style.display = 'none';
 
     runAnalysis();
   }
 
+  var currentAnalysisResult = null;
+
   function runAnalysis() {
     if (!window.StrokeEngine) return;
 
-    // Thu thập NIHSS
     var nihssScores = {};
     var hiddenNihss = document.querySelectorAll('.nihss-hidden-input');
     hiddenNihss.forEach(function (h) {
@@ -225,7 +264,19 @@ document.addEventListener('DOMContentLoaded', function () {
       nihssScores[key] = Number(h.value || 0);
     });
 
-    // Safety Checklist
+    var raceScores = {};
+    var hiddenRace = document.querySelectorAll('.race-hidden-input');
+    hiddenRace.forEach(function (r) {
+      var key = r.id.replace('race_', '');
+      raceScores[key] = Number(r.value || 0);
+    });
+
+    var aspectsAffected = [];
+    var affectedBtns = document.querySelectorAll('.aspects-region-btn.affected');
+    affectedBtns.forEach(function (b) {
+      aspectsAffected.push(b.getAttribute('data-region'));
+    });
+
     var safetyChecklist = {
       hasIchHistory: Boolean(document.getElementById('chk_hasIchHistory') && document.getElementById('chk_hasIchHistory').checked),
       hasRecentHeadTrauma: Boolean(document.getElementById('chk_hasRecentHeadTrauma') && document.getElementById('chk_hasRecentHeadTrauma').checked),
@@ -239,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function () {
       strokeType: selectStrokeType ? selectStrokeType.value : 'ischemic',
       onsetTimeHours: inputOnsetTime ? inputOnsetTime.value : 2.0,
       bodyWeight: inputWeight ? inputWeight.value : 60,
+      age: inputAge ? inputAge.value : 65,
 
       sbp: inputSbp ? inputSbp.value : 130,
       dbp: inputDbp ? inputDbp.value : 80,
@@ -247,17 +299,18 @@ document.addEventListener('DOMContentLoaded', function () {
       glucose: inputGlu ? inputGlu.value : 110,
 
       nihssScores: nihssScores,
+      aspectsAffected: aspectsAffected,
+      raceScores: raceScores,
       safetyChecklist: safetyChecklist,
 
       gcsScore: document.getElementById('gcsScore') ? document.getElementById('gcsScore').value : 15,
       ichVolume: document.getElementById('ichVolume') ? document.getElementById('ichVolume').value : 15,
       hasIvh: document.getElementById('hasIvh') ? document.getElementById('hasIvh').checked : false,
-      isInfratentorial: document.getElementById('isInfratentorial') ? document.getElementById('isInfratentorial').checked : false,
-      age: document.getElementById('age') ? document.getElementById('age').value : 65
+      isInfratentorial: document.getElementById('isInfratentorial') ? document.getElementById('isInfratentorial').checked : false
     };
 
-    var res = window.StrokeEngine.analyze(inputData);
-    renderResults(res);
+    currentAnalysisResult = window.StrokeEngine.analyze(inputData);
+    renderResults(currentAnalysisResult);
   }
 
   function renderResults(res) {
@@ -276,14 +329,40 @@ document.addEventListener('DOMContentLoaded', function () {
       badgeNihssSev.textContent = res.nihss.severity;
     }
 
-    // 3. rtPA Dosing Card
+    // 3. ASPECTS Score
+    if (valAspectsScore) {
+      valAspectsScore.textContent = res.aspects.score + ' / 10';
+      badgeAspectsSev.className = 'badge ' + res.aspects.badgeClass;
+      badgeAspectsSev.textContent = res.aspects.status;
+    }
+
+    // 4. RACE Score (LVO Screening)
+    if (valRaceScore) {
+      valRaceScore.textContent = res.race.score + ' / 9';
+      badgeRaceSev.className = 'badge ' + res.race.badgeClass;
+      badgeRaceSev.textContent = res.race.status;
+    }
+
+    // 5. rtPA Dosing Card
     var r = res.rtpaDosing;
     if (valRtpaTotal) valRtpaTotal.textContent = r.totalDose.toFixed(1) + ' mg';
     if (valRtpaBolus) valRtpaBolus.textContent = r.bolusDose.toFixed(1) + ' mg (' + r.bolusDose.toFixed(1) + ' mL)';
     if (valRtpaInfusion) valRtpaInfusion.textContent = r.infusionDose.toFixed(1) + ' mg (' + r.infusionDose.toFixed(1) + ' mL)';
     if (valRtpaVials) valRtpaVials.textContent = r.vials50mg + ' lọ (50mg)';
 
-    // 4. Safety Warnings & Contraindications
+    // 6. BP Control Protocol Panel
+    if (containerBpProtocol) {
+      var bp = res.bpControl;
+      containerBpProtocol.innerHTML = '<div style="font-size: 0.9rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.3rem;">🎯 Mục Tiêu Huyết Áp:</div>' +
+                                      '<p style="font-size: 0.85rem; color: var(--color-text); margin-bottom: 0.5rem;">' + bp.targetText + '</p>' +
+                                      '<div style="font-size: 0.88rem; font-weight: 700; color: var(--color-danger); margin-bottom: 0.3rem;">💉 Y Lệnh Hạ HA Nicardipine IV:</div>' +
+                                      '<div class="ab ab-warn" style="font-size: 0.85rem;">' +
+                                      '  Tốc độ khởi đầu Bơm tiêm điện: <strong>' + bp.nicardipineRate.toFixed(1) + ' mL/h</strong> (Bơm tiêm điện Nicardipine 10mg/50mL)<br>' +
+                                      '  <span style="font-size:0.78rem; color:var(--color-text-muted);">' + bp.protocolGuide + '</span>' +
+                                      '</div>';
+    }
+
+    // 7. Safety Warnings & Contraindications
     if (containerSafetyWarnings) {
       containerSafetyWarnings.innerHTML = '';
       var s = res.safety;
@@ -315,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // 5. ICH Score Panel (Xuất huyết não)
+    // 8. ICH Score Panel (Xuất huyết não)
     if (containerIchPanel) {
       containerIchPanel.innerHTML = '';
       if (res.ichResult) {
@@ -335,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // 6. Clinical Recommendations
+    // 9. Clinical Recommendations
     if (containerRecommendations) {
       containerRecommendations.innerHTML = '';
       res.recommendations.forEach(function (rec) {
@@ -347,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // 7. Highlight Flowchart Nodes
+    // 10. Highlight Flowchart Nodes
     updateFlowchartNodes(res.activeNodes);
   }
 
@@ -355,11 +434,30 @@ document.addEventListener('DOMContentLoaded', function () {
     var allNodes = document.querySelectorAll('.stroke-fc-node');
     allNodes.forEach(function (node) {
       var nodeId = node.getAttribute('data-node-id');
-      if (activeNodeIds.indexOf(nodeId) !== -1) {
+      if (activeNodeIds && activeNodeIds.indexOf(nodeId) !== -1) {
         node.classList.add('active-node');
       } else {
         node.classList.remove('active-node');
       }
+    });
+  }
+
+  function copyEmrReport() {
+    if (!currentAnalysisResult || !currentAnalysisResult.summaryReportText) return;
+    navigator.clipboard.writeText(currentAnalysisResult.summaryReportText).then(function () {
+      if (btnCopyEmr) {
+        var oldHtml = btnCopyEmr.innerHTML;
+        btnCopyEmr.innerHTML = '<i class="fa-solid fa-check"></i> Đã Sao Chép!';
+        btnCopyEmr.style.background = 'var(--color-success)';
+        btnCopyEmr.style.color = '#fff';
+        setTimeout(function () {
+          btnCopyEmr.innerHTML = oldHtml;
+          btnCopyEmr.style.background = '';
+          btnCopyEmr.style.color = '';
+        }, 2000);
+      }
+    }).catch(function (err) {
+      alert('Không thể tự động sao chép. Vui lòng thử lại.');
     });
   }
 });

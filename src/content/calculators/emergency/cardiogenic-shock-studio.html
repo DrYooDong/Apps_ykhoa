@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Cardiogenic Shock & ACS Interventional Pro Studio — Workstation Cấp Cứu Sốc Tim & Can Thiệp Mạch Vành Cấp. Tích hợp Thang điểm SCAI Shock Stage (Stage A-E), TIMI STEMI, Ma trận Bơm tiêm điện Thuốc Tăng co bóp & Vận mạch, Chỉ định Hỗ trợ tuần hoàn cơ học MCS (IABP, Impella, VA-ECMO) & Y lệnh DAPT – CliniPortal." />
+  <title>Cardiogenic Shock & ACS Interventional Pro Studio – Cấp Cứu Sốc Tim – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core & Component Modules -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/cardiogenic-studio.css">
+
+  <!-- JS Core & Studio Modules -->
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../../../js/cardiogenic-studio/cardiogenic-engine.js" defer></script>
+  <script src="../../../../js/cardiogenic-studio/cardiogenic-scenarios.js" defer></script>
+  <script src="../../../../js/cardiogenic-studio/cardiogenic-ui.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="app-main">
+      <div class="cardiogenic-studio-container">
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../cong-cu.html"}, {"label": "Cardiogenic Shock Studio"}]'></clini-breadcrumb>
+
+        <!-- HERO HEADER CARD -->
+        <div class="cardiogenic-hero-card">
+          <div class="cardiogenic-hero-header">
+            <div class="cardiogenic-hero-title-group">
+              <span class="badge badge-danger"><i class="fa-solid fa-heart-pulse"></i> Cấp Cứu Tim Mạch & ICU (Cardiac Intensive Care)</span>
+              <h1 class="cardiogenic-hero-title">Cardiogenic Shock & ACS Interventional Pro Studio</h1>
+              <p class="cardiogenic-hero-subtitle">
+                Workstation Xử trí Cấp cứu Sốc Tim & Can Thiệp Mạch Vành Cấp. Tích hợp Thang điểm Phân tầng Sốc tim SCAI Shock Stage (Stage A - E), Dự đoán Tử vong TIMI STEMI, Ma trận Tính Tốc độ Bơm tiêm điện Thuốc Tăng co bóp & Vận mạch (Dobutamine, Norepinephrine, Milrinone, Epinephrine), Chỉ định Hỗ trợ tuần hoàn cơ học MCS (IABP, Impella, VA-ECMO) & Y lệnh Thuốc chống đông/kháng tiểu cầu kép.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+              <button type="button" class="btn-proc btn-proc-primary" id="btnCopyEmrReport">
+                <i class="fa-solid fa-copy"></i> Sao Chép Báo Cáo EMR
+              </button>
+              <button type="button" class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại
+              </button>
+            </div>
+          </div>
+
+          <!-- Scenario Quick Presets -->
+          <div class="cardiogenic-preset-section">
+            <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.75rem;"><i class="fa-solid fa-bolt"></i> Ca Sốc Tim Mẫu Giả Lập</div>
+            <div class="scenario-grid" id="scenarioPresetContainer">
+              <!-- Rendered via cardiogenic-ui.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN 2-COLUMN WORKSPACE GRID -->
+        <div class="cardiogenic-grid-layout">
+
+          <!-- LEFT COLUMN: INPUT PANEL -->
+          <div class="cardiogenic-panel-card">
+            <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-sliders text-danger"></i> Sinh Hiệu Huyết Động & Tải Vận Mạch
+            </h2>
+
+            <!-- Card 1: Vitals & Lab Parameters -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title"><i class="fa-solid fa-heart-crack text-primary"></i> 1. Sinh Hiệu & Chỉ Số Huyết Động</span>
+              </div>
+              <div class="form-grid-3">
+                <div>
+                  <label class="cardiogenic-calc-label" for="age">Tuổi Bệnh Nhân</label>
+                  <input type="number" id="age" class="cardiogenic-calc-input" value="65">
+                </div>
+                <div>
+                  <label class="cardiogenic-calc-label" for="weight">Cân Nặng (kg)</label>
+                  <input type="number" id="weight" class="cardiogenic-calc-input" value="68">
+                </div>
+                <div>
+                  <label class="cardiogenic-calc-label" for="sbp">SBP Huyết Áp Tâm Thu (mmHg)</label>
+                  <input type="number" id="sbp" class="cardiogenic-calc-input" value="82">
+                </div>
+              </div>
+
+              <div class="form-grid-3">
+                <div>
+                  <label class="cardiogenic-calc-label" for="hr">Tần Số Tim HR (bpm)</label>
+                  <input type="number" id="hr" class="cardiogenic-calc-input" value="115">
+                </div>
+                <div>
+                  <label class="cardiogenic-calc-label" for="lactate">Lactate Máu (mmol/L)</label>
+                  <input type="number" id="lactate" class="cardiogenic-calc-input" value="3.2" step="0.1">
+                </div>
+                <div>
+                  <label class="cardiogenic-calc-label" for="numVasopressors">Số Thuốc Vận Mạch Đang Dùng</label>
+                  <select id="numVasopressors" class="cardiogenic-calc-select">
+                    <option value="0">0 (Chưa dùng vận mạch)</option>
+                    <option value="1" selected>1 Thuốc (VD: Norepinephrine đơn thuần)</option>
+                    <option value="2">2 Thuốc (VD: NE + Dobutamine)</option>
+                    <option value="3">3 Thuốc trở lên (Sốc trơ liều cao)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div>
+                  <label class="cardiogenic-calc-label" for="killip">Phân Loại Suy Tim Killip (STEMI)</label>
+                  <select id="killip" class="cardiogenic-calc-select">
+                    <option value="1">Killip I (Không có ran phổi / T3)</option>
+                    <option value="2">Killip II (Ran nổ đáy phổi / T3)</option>
+                    <option value="3" selected>Killip III (Phù phổi cấp khẩn)</option>
+                    <option value="4">Killip IV (Sốc tim tụt HA)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="cardiogenic-calc-label" for="timeToPci">Thời Gian Khởi Phát Đến PCI (Giờ)</label>
+                  <input type="number" id="timeToPci" class="cardiogenic-calc-input" value="2.0" step="0.5">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Clinical Hypoperfusion & Severity Markers -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-danger);"><i class="fa-solid fa-stretcher"></i> 2. Triệu Chứng Giảm Tưới Máu & Cờ Đỏ Cấp Cứu</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="isAnteriorStemi" class="cardiogenic-checkbox" checked> STEMI Nhồi máu cơ tim Thành Trước Rộng / LBBB mới
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasColdExtremities" class="cardiogenic-checkbox" checked> Chi lạnh, ẩm, thời gian đổ đầy mao mạch CRT &gt; 3 giây
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasOliguria" class="cardiogenic-checkbox" checked> Thiểu niệu / Vô niệu (Nước tiểu &lt; 0.5 mL/kg/h trong 2 giờ)
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="isCardiacArrest" class="cardiogenic-checkbox"> Bệnh nhân Ngừng tuần hoàn / Đã được CPR
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasMechanicalSupport" class="cardiogenic-checkbox"> Đang vận hành Hỗ trợ tuần hoàn cơ học (MCS: IABP / Impella)
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasVsrOrMr" class="cardiogenic-checkbox"> Có Biến chứng cơ học (Rách vách liên thất VSR / Hở 2 lá cấp)
+                </label>
+              </div>
+            </div>
+
+            <!-- Card 3: Emergency PCI Antiplatelet & Anticoagulation Order -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: #8b5cf6;"><i class="fa-solid fa-pills"></i> 3. Y Lệnh Thuốc Tiền Can Thiệp Mạch Vành (PCI Order)</span>
+              </div>
+              <div style="font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                <div>🔴 <strong>Aspirin:</strong> 300 mg uống nhai ngay tại phòng Cấp cứu.</div>
+                <div>🔴 <strong>Ticagrelor (Brilinta):</strong> 180 mg (2 viên 90mg) uống ngay (hoặc Clopidogrel 600mg nếu có chống chỉ định).</div>
+                <div>🔵 <strong>Heparin không phân đoạn (UFH):</strong> Tiêm tĩnh mạch 70 U/kg IV bolus (Tối đa 5,000 U) trước khi đưa vào phòng DSA.</div>
+                <div>🎯 <strong>Mục tiêu Thời gian Door-to-Balloon:</strong> &lt; 90 phút từ khi tiếp nhận!</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: DIAGNOSTIC & WORKSTATION OUTPUT PANEL -->
+          <div class="cardiogenic-panel-card" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            
+            <!-- Hero Diagnostic Result Banner -->
+            <div class="cardiogenic-hero-card" style="padding: 1.25rem; margin: 0; background: var(--color-surface-offset);">
+              <span id="resHeroBadge" class="badge badge-danger">ĐANG PHÂN TÍCH...</span>
+              <h3 id="resHeroTitle" style="font-size: 1.2rem; font-weight: 800; color: var(--color-text); margin-top: 0.4rem; margin-bottom: 0.3rem;">
+                Phân Tầng Sốc Tim SCAI
+              </h3>
+              <p id="resHeroSummary" style="font-size: 0.88rem; color: var(--color-text-muted); margin: 0;">
+                Tóm tắt tình trạng huyết động & nguy cơ tử vong.
+              </p>
+            </div>
+
+            <!-- 3-KPI Clinical Scores Grid -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem;">
+              <div class="cardiogenic-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="cardiogenic-stat-label">SCAI Stage</span>
+                <span id="valScaiStage" class="cardiogenic-stat-val" style="color: var(--color-danger); font-size: 1.3rem;">C</span>
+              </div>
+              <div class="cardiogenic-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="cardiogenic-stat-label">TIMI STEMI</span>
+                <span id="valTimiScore" class="cardiogenic-stat-val" style="color: var(--color-purple, #8b5cf6); font-size: 1.1rem;">6 đ (16.1%)</span>
+              </div>
+              <div class="cardiogenic-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="cardiogenic-stat-label">Vận Mạch Hàng Đầu</span>
+                <span id="valInotropeSpeed" class="cardiogenic-stat-val" style="color: var(--color-primary); font-size: 1.05rem;">NE: 5.1 mL/h</span>
+              </div>
+            </div>
+
+            <!-- SCAI Shock Stage Details Container -->
+            <div id="containerScaiDetails"></div>
+
+            <!-- Inotrope & Vasopressor Titration Details Container -->
+            <div id="containerInotropeDetails"></div>
+
+            <!-- MCS Mechanical Support Details Container -->
+            <div id="containerMcsDetails"></div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

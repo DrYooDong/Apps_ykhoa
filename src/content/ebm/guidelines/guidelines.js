@@ -1240,13 +1240,14 @@
 
     function renderUpdates() {
       const container = document.getElementById('updates-list');
-      
+      if (!container) return;
+
       const latest = [...studies].sort((a, b) => {
         const dateA = a.createdAt ? new Date(a.createdAt) : new Date(a.year, 0, 1);
         const dateB = b.createdAt ? new Date(b.createdAt) : new Date(b.year, 0, 1);
         return dateB - dateA;
       }).slice(0, 3);
-      
+
       if (latest.length === 0) {
         container.innerHTML = `
           <div class="update-item" style="cursor: default;">
@@ -1261,7 +1262,6 @@
 
       container.innerHTML = latest.map(study => {
         const spec = SPECIALTIES[study.specialty] || { name: study.specialty, color: '#666', bg: '#f0f0f0' };
-        
         return `
           <div class="update-item" onclick="toggleExpandRow('${study.id}', event)">
             <span class="update-dot" style="background: ${spec.color};"></span>
@@ -2673,25 +2673,28 @@
     function renderAnalytics() {
       const panel = document.getElementById('panel-analytics');
       if (!panel) return;
-      const total = studies.length;
+      
+      // Tối ưu: Dùng tập hợp tài liệu đang được lọc (nếu có lọc), hoặc toàn bộ studies nếu không lọc
+      const targetStudies = (typeof getFilteredStudies === 'function') ? getFilteredStudies() : studies;
+      const total = targetStudies.length;
       if (total === 0) {
-        panel.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📊</div><p>Chưa có dữ liệu để thống kê. Hãy thêm tài liệu trước.</p></div>`;
+        panel.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📊</div><p>Không có dữ liệu phù hợp với bộ lọc hiện tại để thống kê. Hãy điều chỉnh bộ lọc.</p></div>`;
         return;
       }
-      const vnCount    = studies.filter(s => s.sourceType && s.sourceType.startsWith('vn-')).length;
-      const rctCount   = studies.filter(s => s.design === 'rct').length;
-      const bookmarked = studies.filter(s => s.bookmarked).length;
-      const pcCount    = studies.filter(s => s.impact === 'practice-changing').length;
-      const asianCount = studies.filter(s => s.asianData).length;
+      const vnCount    = targetStudies.filter(s => s.sourceType && s.sourceType.startsWith('vn-')).length;
+      const rctCount   = targetStudies.filter(s => s.design === 'rct').length;
+      const bookmarked = targetStudies.filter(s => s.bookmarked).length;
+      const pcCount    = targetStudies.filter(s => s.impact === 'practice-changing').length;
+      const asianCount = targetStudies.filter(s => s.asianData).length;
 
       const specCounts = {}; Object.keys(SPECIALTIES).forEach(k => { specCounts[k] = 0; });
-      studies.forEach(s => { if (SPECIALTIES[s.specialty]) specCounts[s.specialty]++; });
+      targetStudies.forEach(s => { if (SPECIALTIES[s.specialty]) specCounts[s.specialty]++; });
       const impactCounts = {}; Object.keys(IMPACTS).forEach(k => { impactCounts[k] = 0; });
-      studies.forEach(s => { if (IMPACTS[s.impact]) impactCounts[s.impact]++; });
+      targetStudies.forEach(s => { if (IMPACTS[s.impact]) impactCounts[s.impact]++; });
       const srcCounts = {}; Object.keys(SOURCE_TYPES).forEach(k => { srcCounts[k] = 0; });
-      studies.forEach(s => { if (SOURCE_TYPES[s.sourceType]) srcCounts[s.sourceType]++; });
+      targetStudies.forEach(s => { if (SOURCE_TYPES[s.sourceType]) srcCounts[s.sourceType]++; });
       const yearCounts = {};
-      studies.forEach(s => { if (s.year) yearCounts[s.year] = (yearCounts[s.year] || 0) + 1; });
+      targetStudies.forEach(s => { if (s.year) yearCounts[s.year] = (yearCounts[s.year] || 0) + 1; });
       const years = Object.keys(yearCounts).sort();
       const maxYearCount = years.length > 0 ? Math.max(...Object.values(yearCounts)) : 1;
 
@@ -2790,8 +2793,28 @@
               }).join('')}
             </div>
           </div>
+
+          <!-- DYNAMIC CLINICAL VISUALIZATIONS -->
+          <div id="analytics-bubble-chart-container" style="margin-top: 1.25rem;"></div>
+          <div id="analytics-heatmap-container" style="margin-top: 1.25rem;"></div>
+          
+          ${window.renderEvidenceGapMap ? window.renderEvidenceGapMap(targetStudies) : ''}
         </div>
       `;
+
+      // Render SVG Evidence Map & Heatmap Matrix if module loaded
+      if (window.GuidelineVisualizations) {
+        if (typeof window.GuidelineVisualizations.renderEvidenceBubbleChart === 'function') {
+          window.GuidelineVisualizations.renderEvidenceBubbleChart(targetStudies, 'analytics-bubble-chart-container', function(studyId) {
+            if (window.filterByStudyId) window.filterByStudyId(studyId);
+          });
+        }
+        if (typeof window.GuidelineVisualizations.renderHeatmapMatrix === 'function') {
+          window.GuidelineVisualizations.renderHeatmapMatrix(targetStudies, 'analytics-heatmap-container', function(specialty, year) {
+            if (window.filterBySpecialtyAndYear) window.filterBySpecialtyAndYear(specialty, year);
+          });
+        }
+      }
     }
 
     function renderDonutSVG(data, total, cx, cy, r, innerR) {
@@ -3355,3 +3378,128 @@
 
     window.toggleActionsDropdown = toggleActionsDropdown;
     window.closeAllActionsDropdowns = closeAllActionsDropdowns;
+
+    // Helper Filter Window Callbacks for Visualizations
+    window.filterBySourceType = function(sourceTypeKey) {
+      filters.sourceType = sourceTypeKey;
+      renderFilterPills();
+      renderTable();
+      switchTab('list');
+    };
+
+    window.filterByAsianData = function() {
+      filters.asianData = true;
+      const cb = document.getElementById('asian-data-filter');
+      if (cb) cb.checked = true;
+      renderTable();
+      switchTab('list');
+    };
+
+    window.filterByStudyId = function(studyId) {
+      const study = studies.find(s => s.id === studyId);
+      if (study) {
+        filters.search = study.title;
+        const searchInp = document.getElementById('search-input');
+        if (searchInp) searchInp.value = study.title;
+        renderFilterPills();
+        renderTable();
+        switchTab('list');
+        if (typeof toggleExpandRow === 'function') {
+          toggleExpandRow(studyId);
+        }
+      }
+    };
+
+    window.filterBySpecialtyAndYear = function(specialty, year) {
+      filters.specialty = specialty;
+      filters.period = null;
+      filters.search = String(year);
+      const searchInp = document.getElementById('search-input');
+      if (searchInp) searchInp.value = String(year);
+      renderFilterPills();
+      renderTable();
+      switchTab('list');
+    };
+
+    // ════════════════════════════════════════════════════
+    // PWA OFFLINE SYNC LOGIC
+    // ════════════════════════════════════════════════════
+    window.syncCurrentSpecialtyOffline = function() {
+      const btn = document.getElementById('btn-offline-sync');
+      const icon = document.getElementById('offline-sync-icon');
+      const text = document.getElementById('offline-sync-text');
+      
+      if (!('serviceWorker' in navigator)) {
+        alert('Trình duyệt của bạn không hỗ trợ Service Worker. Vui lòng dùng Chrome hoặc Safari bản mới nhất.');
+        return;
+      }
+      
+      if (!navigator.serviceWorker.controller) {
+        alert('Service Worker chưa được kích hoạt. Hãy reload lại trang một lần rồi thử lại.');
+        return;
+      }
+
+      // Xác định danh sách cần tải (Lấy từ bộ lọc hiện tại)
+      const targetStudies = (typeof getFilteredStudies === 'function') ? getFilteredStudies() : studies;
+      
+      if (!targetStudies || targetStudies.length === 0) {
+        alert('Không có tài liệu nào trong danh sách bộ lọc hiện tại để tải.');
+        return;
+      }
+      
+      const specialtyName = filters.specialty ? (SPECIALTIES[filters.specialty]?.name || filters.specialty) : 'Tất cả chuyên khoa';
+      const confirmMsg = `Bạn chuẩn bị tải offline ${targetStudies.length} tài liệu của "${specialtyName}" (Bao gồm cả tóm tắt HTML và bản gốc PDF).\n\nQuá trình này có thể tốn vài chục MB và cần chút thời gian. Bạn có chắc chắn muốn tải?`;
+      
+      if (!confirm(confirmMsg)) return;
+
+      // Đổi UI sang trạng thái Đang tải
+      if (btn) {
+        btn.style.background = '#fef3c7';
+        btn.style.color = '#d97706';
+        btn.style.borderColor = '#fcd34d';
+        btn.style.pointerEvents = 'none';
+      }
+      if (icon) icon.className = 'fa-solid fa-spinner fa-spin';
+      if (text) text.innerText = 'Đang tải...';
+
+      // Trích xuất URLs (HTML và PDF)
+      const urlsToCache = [];
+      targetStudies.forEach(study => {
+        if (study.file) {
+          urlsToCache.push(resolveStudyFile(study.file));
+        }
+        if (study.pdfUrl) {
+          // Chỉ thêm pdfUrl nếu hợp lệ và là internal path
+          const pdfUrl = resolveStudyFile(study.pdfUrl);
+          if (pdfUrl && !pdfUrl.startsWith('http')) {
+             urlsToCache.push(pdfUrl);
+          }
+        }
+      });
+
+      // Lọc trùng lặp
+      const uniqueUrls = [...new Set(urlsToCache)];
+
+      // Gửi Message Channel tới Service Worker
+      const messageChannel = new MessageChannel();
+      messageChannel.port1.onmessage = function(event) {
+        if (event.data.status === 'success') {
+          // Hoàn tất
+          if (btn) {
+            btn.style.background = '#f0fdf4';
+            btn.style.color = '#16a34a';
+            btn.style.borderColor = '#bbf7d0';
+            btn.style.pointerEvents = 'auto';
+            btn.onclick = () => alert('Các tài liệu này đã nằm trong máy của bạn! Bạn có thể tắt mạng và xem thử.');
+          }
+          if (icon) icon.className = 'fa-solid fa-check-circle';
+          if (text) text.innerText = 'Đã lưu Offline';
+        }
+      };
+
+      navigator.serviceWorker.controller.postMessage({
+        action: 'CACHE_URLS',
+        urls: uniqueUrls
+      }, [messageChannel.port2]);
+    };
+

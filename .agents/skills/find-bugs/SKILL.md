@@ -21,3 +21,9 @@ Skill này hướng dẫn phương pháp rà soát và tìm kiếm lỗi kỹ th
    - Kiểm tra file mới đã được thêm vào `docs/FILE_MAP.md` chưa.
    - Đối với Guideline mới: Đã khai báo trong `SAMPLE_STUDIES` (`guidelinesdata.js`) chưa?
    - Đối với Phác đồ mới: Đã cập nhật vào `benh-ly.js` chưa?
+
+4. **Lỗi Parse HTML Entity Escaping (Unescaped `<` & `>`)**:
+   - Rà soát các ký tự toán học/so sánh (`<`, `>`) trong văn bản HTML. Đảm bảo thay thế bằng `&lt;` và `&gt;` để tránh lỗi parse5 `invalid-first-character-of-tag-name`.
+
+5. **Lỗi Cache Bẫy Script & LocalStorage Favorites**:
+   - Đổi tên/ID công cụ cũ trong `tools-data.js` cần tăng phiên bản `?v=N` trên thẻ script trong `cong-cu.html` và thêm `LEGACY_ID_MAP` vào `cong-cu-logic.js` để tự động migrate ID cũ của người dùng.

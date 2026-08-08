@@ -69,6 +69,20 @@ Khi xảy ra bất kỳ lỗi giao diện, lỗi JS không chạy, hoặc báo c
 }
 ```
 
+### C. Lỗi Parse5 Parser: `invalid-first-character-of-tag-name` (Unescaped `<` & `>`)
+- **Hiện tượng**: Lỗi build/parse HTML: `Unable to parse HTML; parse5 error code invalid-first-character-of-tag-name at line X:Y`.
+- **Nguyên nhân**: Dùng ký tự `<` hoặc `>` trực tiếp trong văn bản HTML (ví dụ: `ĐH < 70 mg/dL` hoặc `ĐH > 180 mg/dL`). Trình parser nhầm ký tự `<` là mở đầu thẻ HTML mới có tên không hợp lệ.
+- **Cách khắc phục**: Thay thế tất cả ký tự `<` trong văn bản bằng `&lt;` và `>` bằng `&gt;`.
+
+### D. Lỗi Trình Duyệt Lưu Cache & Lệch ID Yêu Thích trong LocalStorage (`cong-cu.html`)
+- **Hiện tượng**: Đã đổi tên/cập nhật thông tin thẻ trong `tools-data.js` nhưng giao diện trình duyệt vẫn hiển thị thẻ cũ.
+- **Nguyên nhân**:
+  1. Trình duyệt dùng bản cache HTTP của script (ví dụ `tools-data.js?v=3`).
+  2. Mã ID cũ của công cụ bị kẹt trong `localStorage` (`cliniportal_favorite_tools`).
+- **Cách khắc phục**:
+  1. Tăng query parameter bẫy cache trong thẻ `<script>` (ví dụ `?v=3` ➔ `?v=4`).
+  2. Bổ sung bộ ánh xạ `LEGACY_ID_MAP` trong `cong-cu-logic.js` để tự động migrate các ID cũ lưu trong `localStorage` sang ID mới.
+
 ---
 
 ## 📝 3. Nhật ký Sửa lỗi & Troubleshooting Log
@@ -85,6 +99,8 @@ Mỗi khi khắc phục sự cố, cập nhật ngay thông tin vào bảng sau:
 | 26/07/2026 | `js/clinical-reasoning.js` | `SyntaxError: Unexpected identifier 'Text'`. | Khoảng trắng trong tên hàm `generateSNAPPS Text()`. | Đổi tên hàm thành `generateSNAPPSText()`. |
 | 27/07/2026 | Nâng cấp Hệ thống Skills | Khởi tạo công cụ truy vết Graphify & Quét HTML. | Cần tăng tốc chẩn đoán lỗi và phòng ngừa rủi ro side-effects. | Tích hợp `query_graph.js` và `check_tags.js` vào quy trình chẩn đoán. |
 | 01/08/2026 | `css/components/homepage-bento.css` | Trang chủ bị co xẹp thành dải hẹp bên trái trên di động (width ≤ 768px), khoảng trắng lớn bên phải. | Widget `.bento-shift-checklist` bị thiếu trong danh sách override media query `@media (max-width: 768px)`, khiến CSS Grid giữ vị trí `grid-column: 10 / 13` và tự động sinh ra 12 cột ngầm. | Thay danh sách selector thủ công bằng selector tổng quát `.bento-homepage > * { grid-column: 1 / -1 !important; grid-row: auto !important; }` để đảm bảo 100% bento cards xếp 1 cột chuẩn. |
+| 08/08/2026 | `insulin-studio.html` | `parse5 error code invalid-first-character-of-tag-name` | Gõ ký tự `<` thô trong thẻ HTML (`ĐH < 70 mg/dL`) khiến parser nhầm thành thẻ mới. | Chuyển toàn bộ `<` thành `&lt;` và `>` thành `&gt;`. |
+| 08/08/2026 | `cong-cu.html`, `js/tools-data.js` | Thẻ công cụ cũ hiển thị lại từ cache & LocalStorage | Trình duyệt cache script `tools-data.js?v=3` và ID cũ còn trong `localStorage`. | Bumps version `?v=4` và thêm `LEGACY_ID_MAP` migrate ID cũ tự động trong `cong-cu-logic.js`. |
 
 ---
 

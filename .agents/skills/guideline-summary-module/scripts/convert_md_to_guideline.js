@@ -61,6 +61,7 @@ function formatInlineText(text) {
   return text
     .replace(/\\\((.*?)\\\)/g, '$1')
     .replace(/\\rightarrow/g, '→')
+    .replace(/<-/g, '←')
     .replace(/\\ge/g, '≥')
     .replace(/\\le/g, '≤')
     .replace(/\\beta_1/g, 'β₁')
@@ -76,8 +77,9 @@ function formatInlineText(text) {
     .replace(/Na\^\+/g, 'Na⁺')
     .replace(/\\/g, '')
     .replace(/\$([^$]+)\$/g, '$1')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/<(?![a-zA-Z/!?-])/g, '&lt;')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
     .replace(/`(.*?)`/g, '<code>$1</code>');
 }
 
@@ -99,7 +101,7 @@ function processCallouts(markdown) {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    const calloutMatch = line.match(/^>\s*\[\!(IMPORTANT|TIP|WARNING|CAUTION|DANGER|NOTE|INFO|TEAL)\]\s*(.*)/i);
+    const calloutMatch = line.match(/^[\s\-*]*>\s*\[\!(IMPORTANT|TIP|WARNING|CAUTION|DANGER|NOTE|INFO|TEAL)\]\s*(.*)/i);
     
     if (calloutMatch) {
       if (inCallout) {
@@ -112,8 +114,8 @@ function processCallouts(markdown) {
       if (calloutMatch[2].trim()) {
         calloutLines.push(calloutMatch[2].trim());
       }
-    } else if (inCallout && line.startsWith('>')) {
-      calloutLines.push(line.replace(/^>\s?/, ''));
+    } else if (inCallout && (line.trim().startsWith('>') || line.trim().startsWith('- >'))) {
+      calloutLines.push(line.replace(/^[\s\-*]*>\s?/, ''));
     } else {
       if (inCallout) {
         const meta = getCalloutMeta(calloutType);
@@ -135,12 +137,12 @@ function processCallouts(markdown) {
 
 function renderInfobox(meta, lines) {
   let contentHtml = lines.map(l => formatInlineText(l)).join('<br>');
-  return `<div class="infobox ${meta.class}">
+  return `\n\n<div class="infobox ${meta.class}">
   <span class="infobox-icon">${meta.icon}</span>
   <div>
     ${contentHtml}
   </div>
-</div>`;
+</div>\n\n`;
 }
 
 function processTables(markdown) {
@@ -192,6 +194,9 @@ function renderTableHtml(tableLines) {
       ${trs}
     </tbody>
   </table>
+</div>`;
+}
+
 function processFlowcharts(markdown) {
   const codeBlockRegex = /```([a-z]*)\r?\n([\s\S]*?)```/g;
   return markdown.replace(codeBlockRegex, (match, lang, codeContent) => {
@@ -202,7 +207,8 @@ function processFlowcharts(markdown) {
 function renderFlowchartHtml(codeContent) {
   const lines = codeContent.split(/\r?\n/);
   const formattedLines = lines.map(line => {
-    let l = line;
+    if (!line.trim()) return ' ';
+    let l = line.replace(/<-/g, '←').replace(/<(?![a-zA-Z1-6/!])/g, '&lt;');
     // Highlight box-drawing lines
     l = l.replace(/([┌┐└┘├┤┬┴┼───│─]+)/g, '<span class="fc-line">$1</span>');
     // Highlight bracketed nodes
@@ -246,8 +252,9 @@ function convertMdToGuidelineHtml(mdPath) {
   const htmlFilename = `${fileSlug}.html`;
   const htmlOutputPath = path.join(KHO_GUIDELINES_DIR, htmlFilename);
 
-  const processedBody = processTables(processCallouts(processFlowcharts(body)));
-  const rawSections = processedBody.split(/\n(?=###?\s+)/);
+  const safeBody = body.replace(/<(?![a-zA-Z/!?-])/g, '&lt;');
+  const processedBody = processTables(processCallouts(processFlowcharts(safeBody)));
+  const rawSections = processedBody.split(/\n(?=##?\s+)/);
 
   let overviewHtml = '';
   let pillars = [];
@@ -270,39 +277,81 @@ function convertMdToGuidelineHtml(mdPath) {
       const secContent = lines.slice(1).join('\n').trim();
 
       if (secTitle.toLowerCase().includes('trụ cột') || secTitle.toLowerCase().includes('pillars')) {
-        const pillarMatches = secContent.split('\n').filter(l => l.trim().startsWith('-') || l.trim().startsWith('1.') || l.trim().startsWith('2.') || l.trim().startsWith('3.'));
+        const pillarMatches = secContent.split('\n').filter(l => l.trim().startsWith('-') || l.trim().startsWith('1.') || l.trim().startsWith('2.') || l.trim().startsWith('3.') || l.trim().startsWith('4.'));
         pillars = pillarMatches.map((pLine, idx) => {
-          const cleaned = pLine.replace(/^[-*\d.]+\s*/, '').trim();
+          let cleaned = pLine.replace(/^[-*\d.]+\s*/, '').trim();
+          
+          // Extract emoji from title if present
+          let customIcon = null;
+          const emojiRegex = /^([\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|⚡|🎯|🛡️|⏱️|🩸|🌡️|📊|💉)\s*/u;
+          const emojiMatch = cleaned.match(emojiRegex);
+          if (emojiMatch) {
+            customIcon = emojiMatch[1];
+            cleaned = cleaned.slice(emojiMatch[0].length).trim();
+          }
+          // Remove numbering again if present (e.g., "1. ")
+          cleaned = cleaned.replace(/^\d+\.\s*/, '').trim();
+
           const parts = cleaned.split(':');
-          const pTitle = parts.length > 1 ? parts[0].replace(/\*\*/g, '') : `Trụ cột ${idx + 1}`;
-          const pDesc = parts.length > 1 ? parts.slice(1).join(':') : cleaned;
+          let pTitle = parts.length > 1 ? parts[0].replace(/\*\*/g, '') : `Trụ cột ${idx + 1}`;
+          let pDesc = parts.length > 1 ? parts.slice(1).join(':') : cleaned;
+
+          // Strip any residual leading emoji/numbering from title
+          pTitle = pTitle.replace(/^[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}⚡🎯🛡️⏱️🩸]\s*/u, '').replace(/^\d+\.\s*/, '').trim();
+
+          const defaultIcons = ['⚡', '🎯', '🛡️', '⏱️'];
           return {
             title: pTitle.trim(),
             desc: formatInlineText(pDesc.trim()),
-            icon: idx === 0 ? '⚡' : idx === 1 ? '🎯' : idx === 2 ? '🛡️' : '⏱️',
+            icon: customIcon || defaultIcons[idx % defaultIcons.length],
             class: `p${(idx % 4) + 1}`
           };
         });
       } else {
         const iconClass = sectionIcons[(secIndex - 1) % sectionIcons.length];
         
-        let bodyHtml = secContent
-          .replace(/^###\s+(.*$)/gm, '<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> $1</h3>')
-          .replace(/^####\s+(.*$)/gm, '<h4 style="font-family: \'Plus Jakarta Sans\', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-top: 1rem; margin-bottom: 0.4rem;">$1</h4>')
-          .replace(/^\s*-\s+(.*$)/gm, '<li>$1</li>');
+        const flowcharts = [];
+        let bodyHtml = secContent.replace(/<div class="flowchart-card">[\s\S]*?<\/div>\s*<\/div>/g, m => {
+          flowcharts.push(m);
+          return `___FLOWCHART_PLACEHOLDER_${flowcharts.length - 1}___`;
+        });
 
         bodyHtml = bodyHtml
-          .split('\n\n')
+          .replace(/^###\s+(.*$)/gm, '\n\n<h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> $1</h3>\n\n')
+          .replace(/^####\s+(.*$)/gm, '\n\n<h4 class="sec-h4">$1</h4>\n\n')
+          .replace(/^\s*[-*]\s+(.*$)/gm, '<li class="ul-item">$1</li>')
+          .replace(/^\s*(\d+)\.\s+(.*$)/gm, '<li class="ol-item" data-num="$1">$2</li>');
+
+        // Group consecutive <ul> list items
+        bodyHtml = bodyHtml.replace(/(?:<li class="ul-item">[\s\S]*?<\/li>\s*)+/g, match => {
+          const cleanedLi = match.replace(/ class="ul-item"/g, '');
+          return `\n\n<ul style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;">${cleanedLi.trim()}</ul>\n\n`;
+        });
+
+        // Group consecutive <ol> list items
+        bodyHtml = bodyHtml.replace(/(?:<li class="ol-item" data-num="\d+">[\s\S]*?<\/li>\s*)+/g, match => {
+          const cleanedLi = match.replace(/ class="ol-item" data-num="\d+"/g, '');
+          return `\n\n<ol style="margin-left: 1.25rem; margin-bottom: 0.75rem; line-height: 1.6;">${cleanedLi.trim()}</ol>\n\n`;
+        });
+
+        // Apply inline formatting across the section content
+        bodyHtml = formatInlineText(bodyHtml);
+
+        bodyHtml = bodyHtml
+          .split(/\n\s*\n/)
           .map(block => {
-            if (block.trim().startsWith('<div') || block.trim().startsWith('<table') || block.trim().startsWith('<h3') || block.trim().startsWith('<h4') || block.trim().startsWith('<ul') || block.trim().startsWith('<ol')) {
-              return block;
+            const trimmed = block.trim();
+            if (!trimmed) return '';
+            if (trimmed.startsWith('<') || trimmed.startsWith('___FLOWCHART_PLACEHOLDER_')) {
+              return trimmed;
             }
-            if (block.includes('<li>')) {
-              return `<ul style="margin-left: 1.25rem; margin-bottom: 1rem; line-height: 1.6;">${block}</ul>`;
-            }
-            return `<p style="margin-bottom: 1rem; line-height: 1.65;">${formatInlineText(block)}</p>`;
+            return `<p style="line-height: 1.65;">${trimmed}</p>`;
           })
           .join('\n');
+
+        flowcharts.forEach((fc, idx) => {
+          bodyHtml = bodyHtml.replace(`___FLOWCHART_PLACEHOLDER_${idx}___`, fc);
+        });
 
         const cardId = `sec-${slugify(secTitle)}`;
 
@@ -448,13 +497,19 @@ function convertMdToGuidelineHtml(mdPath) {
     .page-content { max-width: 1000px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
 
     /* SECTION CARDS */
+    /* SECTION CARDS & HEADINGS */
     .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); scroll-margin-top: 110px; }
-    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
-    .sec-hdr-icon { font-size: 1.2rem; color: var(--accent); }
-    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-hdr { padding: 1.15rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.15rem; color: var(--accent); background: var(--blue-bg); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
     .sec-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
-    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-    .sec-subtitle::after { content: ''; flex: 1; height: 1px; background: var(--border-light); }
+
+    /* SUBHEADINGS (H3, H4) */
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--text); margin-top: 0.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .sec-subtitle i { color: var(--accent); font-size: 0.75rem; background: var(--blue-bg); width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--blue-light); flex-shrink: 0; }
+    .sec-subtitle::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--border-light), transparent); border-radius: 1px; margin-left: 0.5rem; }
+
+    .sec-h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); margin-top: 1rem; margin-bottom: 0.4rem; border-left: 3px solid var(--accent); padding-left: 0.65rem; display: flex; align-items: center; }
 
     /* INFO BOXES */
     .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.6; }
@@ -477,6 +532,54 @@ function convertMdToGuidelineHtml(mdPath) {
     .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text-muted); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.1rem; }
     .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
     .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
+
+    /* FIGO BOARD & UI DIAGRAMS */
+    .figo-board { background: var(--surface); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; margin: 1.25rem 0; box-shadow: 0 4px 14px rgba(0,0,0,0.04); }
+    .figo-board-hdr { background: linear-gradient(135deg, #0c4a6e 0%, #0f6fb4 100%); color: #fff; padding: 0.85rem 1.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; gap: 0.6rem; }
+    .figo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; padding: 1.25rem; background: var(--surface-2); }
+    .figo-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.75rem; transition: transform var(--tr), box-shadow var(--tr); }
+    .figo-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .figo-card.figo-submucosal { border-top: 4px solid var(--orange); }
+    .figo-card.figo-intramural { border-top: 4px solid var(--blue); }
+    .figo-card.figo-subserosal { border-top: 4px solid var(--green); }
+    .figo-card.figo-special { border-top: 4px solid var(--purple); }
+    .figo-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.84rem; color: var(--text); display: flex; align-items: center; gap: 0.4rem; }
+    .figo-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .figo-pill { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px; }
+    .figo-pill.orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .figo-pill.blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .figo-pill.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .figo-pill.purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-light); }
+    .figo-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* FLOWCHART V2 UI */
+    .flowchart-v2 { background: var(--surface); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; margin: 1.5rem 0; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+    .flowchart-v2-hdr { background: linear-gradient(135deg, #065f46 0%, #0d9488 100%); color: #fff; padding: 0.85rem 1.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; gap: 0.6rem; }
+    .flowchart-v2-body { padding: 1.5rem; background: var(--surface-2); display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .flow-step { background: var(--surface); border: 1.5px solid var(--accent); border-radius: 12px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 0.85rem; width: 100%; max-width: 720px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .flow-step .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .flow-step .step-content { flex: 1; font-size: 0.83rem; line-height: 1.5; color: var(--text); }
+    .flow-step .step-content strong { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 800; margin-bottom: 0.2rem; color: var(--accent); }
+    .flow-arrow { color: var(--accent); font-size: 1.2rem; }
+    .flow-branches { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; width: 100%; }
+    .branch-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .branch-card.branch-red { border-top: 4px solid var(--red); }
+    .branch-card.branch-green { border-top: 4px solid var(--green); }
+    .branch-card.branch-orange { border-top: 4px solid var(--orange); }
+    .branch-hdr { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.83rem; color: var(--text); display: flex; align-items: center; gap: 0.4rem; }
+    .branch-card ul { margin-left: 1rem; font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* DOPPLER CARD UI */
+    .doppler-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; margin: 1.25rem 0; box-shadow: 0 4px 14px rgba(0,0,0,0.04); }
+    .doppler-hdr { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: #fff; padding: 0.85rem 1.25rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; gap: 0.6rem; }
+    .doppler-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; padding: 1.25rem; background: var(--surface-2); }
+    .doppler-box { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .doppler-box.leiomyoma { border-left: 4px solid var(--blue); }
+    .doppler-box.adenomyosis { border-left: 4px solid var(--orange); }
+    .doppler-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.85rem; color: var(--text); display: flex; align-items: center; gap: 0.4rem; }
+    .doppler-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+    .doppler-list li { display: flex; align-items: flex-start; gap: 0.5rem; }
+    .doppler-list li i { flex-shrink: 0; margin-top: 0.2rem; }
 
     /* ══════════════════════════════════════════════════════
        FLOWCHART — PREMIUM CLINICAL ALGORITHM UI

@@ -126,3 +126,25 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
+// Message Event - Handle Offline Sync commands from client
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.action === 'CACHE_URLS') {
+    const urlsToCache = event.data.urls || [];
+    event.waitUntil(
+      caches.open(CACHE_NAME).then((cache) => {
+        // Fetch and cache each URL
+        return Promise.allSettled(
+          urlsToCache.map(url => cache.add(url).catch(err => {
+            console.warn(`[SW] Failed to cache on-demand: ${url}`, err);
+          }))
+        ).then(() => {
+          // Reply back to client if port is available
+          if (event.ports && event.ports[0]) {
+            event.ports[0].postMessage({ status: 'success', count: urlsToCache.length });
+          }
+        });
+      })
+    );
+  }
+});

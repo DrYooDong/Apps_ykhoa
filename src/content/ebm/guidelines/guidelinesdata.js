@@ -13,14 +13,17 @@
       rheum: { name: 'Cơ xương khớp', color: '#ea580c', bg: '#fff7ed' },
       hema: { name: 'Huyết học', color: '#db2777', bg: '#fdf2f8' },
       onco: { name: 'Ung thư', color: '#be185d', bg: '#fce7f3' },
-      icu: { name: 'Hồi sức cấp cứu (HSCC)', color: '#059669', bg: '#ecfdf5' }
+      pedia: { name: 'Nhi khoa', color: '#0284c7', bg: '#f0f9ff' },
+      obgyn: { name: 'Sản phụ khoa', color: '#e11d48', bg: '#fff1f2' },
+      icu: { name: 'Hồi sức tích cực', color: '#059669', bg: '#ecfdf5' },
+      derma: { name: 'Da liễu', color: '#ec4899', bg: '#fdf2f8' },
+      ent: { name: 'Tai Mũi Họng', color: '#06b6d4', bg: '#ecfeff' }
     };
 
     const SOURCE_TYPES = {
       'intl-study': { name: 'Nghiên cứu Quốc tế', color: '#6366f1', bg: '#e0e7ff' },
       'intl-guideline': { name: 'Guideline Quốc tế', color: '#0d9488', bg: '#ccfbf1' },
       'vn-moh': { name: 'Bộ Y tế Việt Nam', color: '#dc2626', bg: '#fee2e2' },
-      'vn-doh': { name: 'Sở Y tế Việt Nam', color: '#ea580c', bg: '#ffedd5' },
       'vn-association': { name: 'Hội chuyên khoa VN', color: '#16a34a', bg: '#dcfce7' }
     };
 
@@ -30,6 +33,7 @@
       'cohort': { name: 'Nghiên cứu quan sát / Thuần tập' },
       'guideline': { name: 'Hướng dẫn / Khuyến cáo' },
       'review': { name: 'Bài tổng quan y khoa (Review)' },
+      'case-report': { name: 'Case Report / Series' },
       'other': { name: 'Khác' }
     };
 
@@ -42,6 +46,69 @@
     };
 
     const SAMPLE_STUDIES = [
+      {
+        id: "study_2023_byt_benh_phoi_mo_ke",
+        title: "Hướng dẫn Chẩn đoán và Điều trị Bệnh Phổi Mô Kẽ (BYT 2023)",
+        drug: "",
+        sourceType: "national-guideline",
+        specialty: "resp",
+        design: "guideline",
+        impact: "practice-changing",
+        year: 2023,
+        organization: "Bộ Y tế Việt Nam",
+        phase: "Clinical Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân lâm sàng",
+        summary: "Tóm tắt toàn diện Hướng dẫn chẩn đoán và điều trị Bệnh phổi mô kẽ (ILD) theo Quyết định 1005/QĐ-BYT 2023: Khái niệm, phân loại ATS/ERS, quy trình chẩn đoán 3 bước, HRCT, PFTs, BAL, Cryobiopsy/VATS, phác đồ Corticoid, UCMD, Rituximab, Tocilizumab, thuốc kháng xơ Nintedanib và phân tích 6 khoảng trống lâm sàng.",
+        detailedConclusion: "Khuyến cáo BYT 2023 chuẩn hóa tiếp cận chẩn đoán 3 bước và điều trị ILD đa mô thức, nhấn mạnh vai trò hội chẩn đa chuyên khoa MDD, HRCT lát cắt mỏng, phác đồ UCMD/nintedanib và phân tích các khoảng xám thực hành lâm sàng.",
+        sourceUrl: "",
+        file: "kho-guidelines/2023-byt-benh-phoi-mo-ke.html",
+        asianData: true,
+        bookmarked: false
+      },
+
+      {
+        id: "study_2026_byt_u_xo_tu_cung",
+        title: "Hướng Dẫn Chẩn Đoán và Xử Trí U Xơ Cơ Tử Cung (Bộ Y tế 2026)",
+        drug: "",
+        sourceType: "vn-moh",
+        specialty: "obgyn",
+        design: "guideline",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Bộ Y tế Việt Nam",
+        phase: "Clinical Guideline",
+        sampleSize: null,
+        population: "Phụ nữ mắc u xơ cơ tử cung, nghi ngờ u xơ cơ tử cung, vô sinh hoặc mang thai kèm u xơ",
+        summary: "Tóm tắt toàn diện Hướng dẫn Lâm sàng Chẩn đoán và Xử trí U xơ cơ tử cung theo Quyết định 456/QĐ-BYT ban hành ngày 12/02/2026 của Bộ Y tế Việt Nam: Sinh lý bệnh, dịch tễ học, phân loại FIGO 2011 (L0-L8), tiêu chuẩn siêu âm Doppler viền mạch phân biệt với Adenomyosis, điều trị nội khoa, điều trị ngoại khoa (bóc u, cắt tử cung, phương pháp giảm mất máu), kỹ thuật ít/không xâm lấn (US-HIFU, UAE/NĐMTC, MRgFUS, RFA), xử trí u xơ ở bệnh nhân vô sinh và trong thai kỳ.",
+        detailedConclusion: "Hướng dẫn của Bộ Y tế 2026 chuẩn hóa quy trình chẩn đoán và xử trí U xơ cơ tử cung: áp dụng phân loại FIGO 2011 để cá thể hóa điều trị, phân biệt chính xác với Adenomyosis trên siêu âm Doppler viền mạch, ưu tiên bảo tồn tử cung bằng các kỹ thuật hiện đại (US-HIFU, UAE, RFA) cho phụ nữ mong muốn sinh con, và hướng dẫn xử trí an toàn u xơ trong thai kỳ.",
+        sourceUrl: "",
+        file: "kho-guidelines/2026-byt-u-xo-tu-cung.html",
+        asianData: true,
+        bookmarked: false
+      },
+
+      {
+        id: "study_2026_cap_nhat_soc_tim",
+        title: "Cập Nhật Sốc Tim 2026: Bằng Chứng Hiện Tại, Góc Nhìn Từ Guidelines Và Outcomes",
+        drug: "",
+        sourceType: "intl-study",
+        specialty: "cardio",
+        design: "review",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Journal of Cardiothoracic and Vascular Anesthesia",
+        phase: "Clinical Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân lâm sàng",
+        summary: "Tóm tắt toàn diện Cập nhật Sốc tim 2026 (J Cardiothorac Vasc Anesth): Sinh lý bệnh vòng xoắn sốc, Phân độ SCAI cải tiến A-E, Dấu ấn sinh học mới (sST2, DPP3, bio-ADM), Thang điểm tiên lượng, Giám sát PAC, Thiết bị hỗ trợ tuần hoàn cơ học (MCS: IABP, Impella, VA-ECMO), Chiến lược giải áp thất trái (LV Unloading) và Mô hình Shock Team đa chuyên khoa.",
+        detailedConclusion: "Tóm tắt toàn diện Cập nhật Sốc tim 2026 (J Cardiothorac Vasc Anesth): Sinh lý bệnh vòng xoắn sốc, Phân độ SCAI cải tiến A-E, Dấu ấn sinh học mới (sST2, DPP3, bio-ADM), Thang điểm tiên lượng, Giám sát PAC, Thiết bị hỗ trợ tuần hoàn cơ học (MCS: IABP, Impella, VA-ECMO), Chiến lược giải áp thất trái (LV Unloading) và Mô hình Shock Team đa chuyên khoa.",
+        sourceUrl: "doi:10.1053/j.jvca.2026.01.021",
+        file: "kho-guidelines/2026-cap-nhat-soc-tim.html",
+        asianData: true,
+        bookmarked: false
+      },
+
       {
         id: "study_byt_benh_than_kinh_dai_thao_duong_2025",
         title: "Hướng Dẫn Chẩn Đoán & Điều Trị Bệnh Thần Kinh Đái Tháo Đường (Bộ Y Tế 2025)",
@@ -115,7 +182,7 @@
         title: "Tóm tắt Hướng Dẫn Lâm Sàng",
         drug: "",
         sourceType: "intl-guideline",
-        specialty: "icu",
+        specialty: "infect",
         design: "guideline",
         impact: "practice-changing",
         year: 2026,
@@ -136,7 +203,7 @@
         title: "Tóm tắt Hướng Dẫn Lâm Sàng",
         drug: "",
         sourceType: "intl-guideline",
-        specialty: "icu",
+        specialty: "infect",
         design: "guideline",
         impact: "practice-changing",
         year: 2026,
@@ -1596,6 +1663,29 @@
             }
           }
         }
+      },
+      {
+        id: "study_2026_cap_nhat_soc_tim",
+        title: "Cập Nhật Sốc Tim 2026: Bằng Chứng Hiện Tại, Góc Nhìn Từ Guidelines Và Outcomes",
+        englishTitle: "Cardiogenic Shock: Current Evidence, Guideline Perspectives, and Outcomes",
+        drug: "Norepinephrine, Epinephrine, Dopamine, Dobutamine, Milrinone, Levosimendan",
+        sourceType: "intl-study",
+        specialty: "cardio",
+        design: "review",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "Journal of Cardiothoracic and Vascular Anesthesia (J Cardiothorac Vasc Anesth)",
+        author: "Shekhar S, Agrawal A, Almadhoun H, et al.",
+        phase: "Expert Review & Clinical Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân Sốc tim (AMI-CS, Suy tim mất bù cấp, Sốc tim trơ cần hỗ trợ tuần hoàn cơ học MCS)",
+        summary: "Tóm tắt toàn diện Cập nhật Sốc tim 2026 (J Cardiothorac Vasc Anesth): Sinh lý bệnh vòng xoắn sốc, Phân độ SCAI cải tiến A-E, Dấu ấn sinh học mới (sST2, DPP3, bio-ADM), Thang điểm tiên lượng (CardShock, IABP-SHOCK II, SAVE, ENCOURAGE), Giám sát PAC, Thiết bị hỗ trợ tuần hoàn cơ học (MCS: IABP, Impella, VA-ECMO), Chiến lược giải áp thất trái (LV Unloading) và Mô hình Shock Team đa chuyên khoa.",
+        detailedConclusion: "Tóm tắt toàn diện Cập nhật Sốc tim 2026: Sinh lý bệnh vòng xoắn sốc, Phân độ SCAI cải tiến A-E, Dấu ấn sinh học mới (sST2, DPP3, bio-ADM), Thang điểm tiên lượng, Giám sát PAC, Các thiết bị MCS (IABP, Impella 2.5/CP/5.0/5.5, VA-ECMO), Chiến lược giải áp thất trái (LV Unloading) và Mô hình Shock Team đa chuyên khoa.",
+        sourceUrl: "https://doi.org/10.1053/j.jvca.2026.01.021",
+        file: "kho-guidelines/2026-cap-nhat-soc-tim.html",
+        asianData: false,
+        bookmarked: false,
+        icd10: ["R57.0", "I21", "I50.9"]
       }
     ];
 

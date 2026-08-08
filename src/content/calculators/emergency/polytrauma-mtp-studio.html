@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Polytrauma & MTP Pro Studio – Workstation tương tác cấp cứu đa chấn thương, tính điểm TASH, ABC Score, Shock Index và điều phối chế phẩm máu tỷ lệ 1:1:1." />
+  <title>Polytrauma &amp; MTP Pro Studio – Cấp Cứu Đa Chấn Thương &amp; Truyền Máu Khối Lượng Lớn – CliniPortal</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/studio-system.css">
+
+  <script src="../../../../js/main.js" defer></script>
+  <script src="../../../../components/header.js" defer></script>
+  <script src="../../../../components/footer.js" defer></script>
+  <script src="../../../../js/calculators/polytrauma-calculator.js" defer></script>
+
+  <style>
+    .er-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .er-grid-2col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-banner-box {
+      border-radius: var(--studio-radius, 12px);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid transparent;
+    }
+
+    .mtp-readout-flex {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .mtp-readout-card {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: 10px;
+      padding: 0.85rem 0.5rem;
+      text-align: center;
+    }
+
+    .mtp-readout-card.active-red {
+      border-color: var(--color-rose, #dc2626);
+      background: rgba(220, 38, 38, 0.08);
+    }
+
+    .mtp-val-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--color-rose, #dc2626);
+    }
+
+    .er-toggle-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .er-toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 0.85rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: 8px;
+      background: var(--color-surface);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-text);
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+
+    .er-toggle-item.active {
+      border-color: var(--color-rose, #dc2626);
+      background: rgba(220, 38, 38, 0.08);
+      color: var(--color-rose, #dc2626);
+    }
+
+    .preset-chips-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="studio-container">
+
+        <!-- STUDIO HEADER CARD -->
+        <div class="studio-card">
+          <div class="studio-header-bar">
+            <div>
+              <span class="studio-risk-badge" data-risk="high" style="margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-truck-medical"></i> Emergency Resuscitation Studio Workbench
+              </span>
+              <h1 class="studio-title">Polytrauma &amp; MTP Pro Studio — Cấp Cứu Đa Chấn Thương</h1>
+              <p class="studio-subtitle">
+                Công cụ hỗ trợ ra quyết định lâm sàng: Đánh giá phân tầng mất máu cấp cứu (TASH Score, ABC Score, Shock Index SI) và Kích hoạt Phác đồ Truyền máu Khối lượng lớn (MTP 1:1:1).
+              </p>
+
+              <!-- Presets -->
+              <div class="preset-chips-bar">
+                <button class="btn-proc btn-proc-secondary" onclick="loadPreset('pelvic')">
+                  <i class="fa-solid fa-bolt" style="color: var(--color-rose);"></i> Sốc vỡ chậu
+                </button>
+                <button class="btn-proc btn-proc-secondary" onclick="loadPreset('penetrating')">
+                  <i class="fa-solid fa-person-burst" style="color: var(--color-amber);"></i> Thấu bụng
+                </button>
+                <button class="btn-proc btn-proc-secondary" onclick="loadPreset('mild')">
+                  <i class="fa-solid fa-check" style="color: var(--color-success);"></i> Chấn thương nhẹ
+                </button>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn-proc btn-proc-secondary" id="btnResetStudio" onclick="loadPreset('mild')">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../cong-cu.html"}, {"label": "Polytrauma & MTP Pro Studio"}]'></clini-breadcrumb>
+
+        <!-- DYNAMIC STAT ALERT BANNER -->
+        <div id="stat-banner" class="stat-banner-box" style="background: rgba(220, 38, 38, 0.1); border-color: rgba(220, 38, 38, 0.3);">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i id="stat-icon" class="fa-solid fa-triangle-exclamation" style="font-size: 1.8rem; color: var(--color-rose, #dc2626);"></i>
+            <div>
+              <div id="stat-title" style="font-size: 1.05rem; font-weight: 800; color: var(--color-rose, #dc2626);">
+                KÍCH HOẠT GÓI TRUYỀN MÁU KHỐI LƯỢNG LỚN (MTP 1:1:1)
+              </div>
+              <div id="stat-sub" style="font-size: 0.82rem; color: var(--color-text); margin-top: 0.15rem;">
+                TASH Score: <strong id="res-tash">16 điểm</strong> (Xác suất MTP: <span id="res-tash-prob">67.7%</span>) • ABC Score: <strong id="res-abc">3/4 điểm</strong>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: right;">
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase;">Shock Index (HR/SBP)</div>
+            <div id="res-si" style="font-size: 1.4rem; font-weight: 800; color: var(--color-rose, #dc2626);">1.47 (Sốc Nặng)</div>
+          </div>
+        </div>
+
+        <!-- MAIN 2-COLUMN STUDIO GRID -->
+        <div class="er-grid-2col">
+
+          <!-- CỘT TRÁI: DẤU SINH HIỆU & PHÂN TẦNG -->
+          <div class="studio-card">
+            <h3 class="studio-card-title">
+              <i class="fa-solid fa-clipboard-user" style="color: var(--color-primary);"></i> 1. Sinh Hiệu &amp; Tiêu Chí Giải Phẫu
+            </h3>
+
+            <!-- SBP & HR -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem;">
+              <div class="studio-form-group" style="margin-bottom:0;">
+                <label class="studio-label" for="inp-sbp">Huyết áp tâm thu (mmHg)</label>
+                <input type="number" id="inp-sbp" class="studio-input" value="85" min="30" max="220" oninput="calculateAll()">
+              </div>
+              <div class="studio-form-group" style="margin-bottom:0;">
+                <label class="studio-label" for="inp-hr">Nhịp tim / Mạch (bpm)</label>
+                <input type="number" id="inp-hr" class="studio-input" value="125" min="30" max="220" oninput="calculateAll()">
+              </div>
+            </div>
+
+            <!-- Hb & BE -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem;">
+              <div class="studio-form-group" style="margin-bottom:0;">
+                <label class="studio-label" for="inp-hb">Hemoglobin Hb (g/dL)</label>
+                <input type="number" id="inp-hb" class="studio-input" value="8.5" step="0.5" min="3" max="18" oninput="calculateAll()">
+              </div>
+              <div class="studio-form-group" style="margin-bottom:0;">
+                <label class="studio-label" for="inp-be">Kiềm dư BE (mmol/L)</label>
+                <input type="number" id="inp-be" class="studio-input" value="-8" step="1" min="-25" max="10" oninput="calculateAll()">
+              </div>
+            </div>
+
+            <!-- Weight & Sex -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem;">
+              <div class="studio-form-group" style="margin-bottom:0;">
+                <label class="studio-label" for="inp-weight">Cân nặng (kg)</label>
+                <input type="number" id="inp-weight" class="studio-input" value="70" min="30" max="150" oninput="calculateAll()">
+              </div>
+              <div class="studio-form-group" style="margin-bottom:0;">
+                <label class="studio-label" for="inp-sex">Giới tính</label>
+                <select id="inp-sex" class="studio-select" onchange="calculateAll()">
+                  <option value="male" selected>Nam (+1 điểm TASH)</option>
+                  <option value="female">Nữ</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Clinical Toggles -->
+            <label class="studio-label" style="margin-top: 0.5rem;">
+              Yếu Tố Giải Phẫu &amp; Siêu Âm Cấp Cứu:
+            </label>
+            <div class="er-toggle-grid">
+              <div id="tg-fast" class="er-toggle-item active" onclick="toggleBtn('tg-fast')">
+                <span><i class="fa-solid fa-wave-square"></i> FAST Siêu âm (+)</span>
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div id="tg-pelvic" class="er-toggle-item active" onclick="toggleBtn('tg-pelvic')">
+                <span><i class="fa-solid fa-bone"></i> Vỡ xương chậu</span>
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div id="tg-femur" class="er-toggle-item" onclick="toggleBtn('tg-femur')">
+                <span><i class="fa-solid fa-person-falling"></i> Gãy xương đùi hở</span>
+                <i class="fa-solid fa-check" style="display:none;"></i>
+              </div>
+              <div id="tg-penetrating" class="er-toggle-item" onclick="toggleBtn('tg-penetrating')">
+                <span><i class="fa-solid fa-syringe"></i> Vết thương thấu</span>
+                <i class="fa-solid fa-check" style="display:none;"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- CỘT PHẢI: CHẾ PHẨM MÁU MTP & Y LỆNH -->
+          <div class="studio-card">
+            <h3 class="studio-card-title">
+              <i class="fa-solid fa-droplet" style="color: var(--color-rose);"></i> 2. Số Lượng Chế Phẩm Máu MTP (Tỷ Lệ 1:1:1)
+            </h3>
+
+            <!-- Estimated Blood Loss Selector -->
+            <div class="studio-form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label class="studio-label" for="inp-ebl">Ước Tính Máu Mất (EBL):</label>
+                <strong id="lbl-ebl" style="font-size: 0.9rem; color: var(--color-rose);">2,500 mL (~50% thể tích)</strong>
+              </div>
+              <input type="range" id="inp-ebl" min="500" max="4500" step="250" value="2500" class="studio-range" oninput="calculateAll()">
+            </div>
+
+            <!-- MTP Packs Big Readout -->
+            <div class="mtp-readout-flex">
+              <div class="mtp-readout-card active-red">
+                <div id="val-prbc" class="mtp-val-num">6</div>
+                <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-text); margin-top: 0.3rem;">Hồng Cầu Lắng</div>
+                <div style="font-size: 0.7rem; color: var(--color-text-muted);">PRBC (Đơn vị)</div>
+              </div>
+
+              <div class="mtp-readout-card active-red">
+                <div id="val-ffp" class="mtp-val-num" style="color: var(--color-amber);">6</div>
+                <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-text); margin-top: 0.3rem;">Huyết Tương Tươi</div>
+                <div style="font-size: 0.7rem; color: var(--color-text-muted);">FFP (Đơn vị)</div>
+              </div>
+
+              <div class="mtp-readout-card active-red">
+                <div id="val-platelets" class="mtp-val-num" style="color: var(--color-purple);">1</div>
+                <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-text); margin-top: 0.3rem;">Pool Tiểu Cầu</div>
+                <div style="font-size: 0.7rem; color: var(--color-text-muted);">(6 ĐV / Pool)</div>
+              </div>
+            </div>
+
+            <!-- Directives & Actions -->
+            <div class="directive-box directive-priority-1" style="margin-top: 0.85rem;">
+              <div style="font-weight: 800; color: var(--color-rose); font-size: 0.88rem; margin-bottom: 0.3rem;">
+                💉 Phác Đồ Tranexamic Acid (TXA - CRASH-2 Trial):
+              </div>
+              <div style="font-size: 0.8rem; line-height: 1.5; color: var(--color-text);">
+                • <strong>1g TXA IV</strong> pha 100mL NaCl 0.9% truyền IV trong 10 phút (Trong 3h đầu).<br>
+                • Tiếp tục <strong>1g TXA IV</strong> truyền liên tục trong 8 giờ tiếp theo.
+              </div>
+            </div>
+
+            <div class="directive-box directive-priority-2">
+              <div style="font-weight: 800; color: var(--color-warning-dark); font-size: 0.88rem; margin-bottom: 0.3rem;">
+                🧪 Bù Canxi &amp; Phòng Tam Chứng Tử Vong:
+              </div>
+              <div style="font-size: 0.8rem; line-height: 1.5; color: var(--color-text);">
+                • Tiêm <strong>1g Calcium Gluconate</strong> IV sau mỗi 4 đơn vị chế phẩm máu truyền.<br>
+                • Giữ ấm bệnh nhân (37°C) phòng Hạ thân nhiệt.
+              </div>
+            </div>
+
+            <!-- HIS Copy -->
+            <div style="margin-top: 0.85rem;">
+              <textarea id="his-order-text" class="studio-input" rows="3" readonly style="font-family: monospace; font-size: 0.75rem; resize: none;"></textarea>
+              <button type="button" onclick="copyHISOrder()" class="btn-proc btn-proc-primary" style="width: 100%; margin-top: 0.4rem; justify-content: center; font-weight: 700;">
+                <i class="fa-solid fa-copy"></i> Sao Chép Y Lệnh HIS (1-Click)
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <script>
+    function toggleBtn(id) {
+      const btn = document.getElementById(id);
+      btn.classList.toggle('active');
+      const icon = btn.querySelector('.fa-check');
+      if (icon) {
+        icon.style.display = btn.classList.contains('active') ? 'inline-block' : 'none';
+      }
+      calculateAll();
+    }
+
+    function loadPreset(type) {
+      if (type === 'pelvic') {
+        document.getElementById('inp-sex').value = 'male';
+        document.getElementById('inp-sbp').value = '85';
+        document.getElementById('inp-hr').value = '130';
+        document.getElementById('inp-hb').value = '8.0';
+        document.getElementById('inp-be').value = '-8';
+        document.getElementById('inp-ebl').value = '2500';
+        setToggle('tg-fast', true);
+        setToggle('tg-pelvic', true);
+        setToggle('tg-femur', false);
+        setToggle('tg-penetrating', false);
+      } else if (type === 'penetrating') {
+        document.getElementById('inp-sex').value = 'male';
+        document.getElementById('inp-sbp').value = '75';
+        document.getElementById('inp-hr').value = '140';
+        document.getElementById('inp-hb').value = '7.0';
+        document.getElementById('inp-be').value = '-12';
+        document.getElementById('inp-ebl').value = '3000';
+        setToggle('tg-fast', true);
+        setToggle('tg-pelvic', false);
+        setToggle('tg-femur', false);
+        setToggle('tg-penetrating', true);
+      } else if (type === 'mild') {
+        document.getElementById('inp-sex').value = 'female';
+        document.getElementById('inp-sbp').value = '115';
+        document.getElementById('inp-hr').value = '90';
+        document.getElementById('inp-hb').value = '12.5';
+        document.getElementById('inp-be').value = '-1';
+        document.getElementById('inp-ebl').value = '500';
+        setToggle('tg-fast', false);
+        setToggle('tg-pelvic', false);
+        setToggle('tg-femur', false);
+        setToggle('tg-penetrating', false);
+      }
+      calculateAll();
+    }
+
+    function setToggle(id, state) {
+      const btn = document.getElementById(id);
+      if (state) btn.classList.add('active');
+      else btn.classList.remove('active');
+      const icon = btn.querySelector('.fa-check');
+      if (icon) icon.style.display = state ? 'inline-block' : 'none';
+    }
+
+    function calculateAll() {
+      const sex = document.getElementById('inp-sex').value;
+      const weight = parseFloat(document.getElementById('inp-weight').value) || 70;
+      const sbp = parseFloat(document.getElementById('inp-sbp').value) || 120;
+      const hr = parseFloat(document.getElementById('inp-hr').value) || 80;
+      const hb = parseFloat(document.getElementById('inp-hb').value) || 12;
+      const be = parseFloat(document.getElementById('inp-be').value) || 0;
+      const ebl = parseFloat(document.getElementById('inp-ebl').value) || 1000;
+
+      const fastPos = document.getElementById('tg-fast').classList.contains('active');
+      const pelvicFx = document.getElementById('tg-pelvic').classList.contains('active');
+      const femurFx = document.getElementById('tg-femur').classList.contains('active');
+      const isPenetrating = document.getElementById('tg-penetrating').classList.contains('active');
+
+      // Update Slider Label
+      document.getElementById('lbl-ebl').textContent = `${ebl.toLocaleString()} mL (~${Math.round((ebl / (weight * 70)) * 100)}% thể tích)`;
+
+      // 1. Shock Index
+      const siRes = PolytraumaEngine.calculateShockIndex(hr, sbp);
+      document.getElementById('res-si').textContent = `${siRes.si} (${siRes.severity})`;
+      document.getElementById('res-si').style.color = siRes.color;
+
+      // 2. TASH Score
+      const tashRes = PolytraumaEngine.calculateTASH({ sbp, hr, hb, be, sex, pelvicFx, femurFx, fastPos });
+      document.getElementById('res-tash').textContent = `${tashRes.score} điểm`;
+      document.getElementById('res-tash-prob').textContent = `${tashRes.probability.toFixed(1)}%`;
+
+      // 3. ABC Score
+      const abcRes = PolytraumaEngine.calculateABC({ isPenetrating, sbp, hr, fastPos });
+      document.getElementById('res-abc').textContent = `${abcRes.score}/4 điểm`;
+
+      // 4. Update STAT Banner
+      const banner = document.getElementById('stat-banner');
+      const statTitle = document.getElementById('stat-title');
+      const statIcon = document.getElementById('stat-icon');
+
+      if (abcRes.isMTPIndicated || tashRes.probability > 30 || siRes.si >= 1.0) {
+        banner.style.background = 'rgba(220, 38, 38, 0.1)';
+        banner.style.borderColor = 'rgba(220, 38, 38, 0.3)';
+        statTitle.textContent = 'KÍCH HOẠT GÓI TRUYỀN MÁU KHỐI LƯỢNG LỚN (MTP 1:1:1)';
+        statTitle.style.color = 'var(--color-rose, #dc2626)';
+        statIcon.className = 'fa-solid fa-triangle-exclamation';
+        statIcon.style.color = 'var(--color-rose, #dc2626)';
+      } else {
+        banner.style.background = 'rgba(22, 163, 74, 0.1)';
+        banner.style.borderColor = 'rgba(22, 163, 74, 0.3)';
+        statTitle.textContent = 'CHƯA CÓ CHỈ ĐỊNH MTP (THEO DÕI SÁT HÌNH ẢNH & SINH HIỆU)';
+        statTitle.style.color = 'var(--color-success)';
+        statIcon.className = 'fa-solid fa-circle-check';
+        statIcon.style.color = 'var(--color-success)';
+      }
+
+      // 5. MTP Packs Calculation (1:1:1)
+      const mtpPacks = PolytraumaEngine.calculateMTPPack(ebl);
+      document.getElementById('val-prbc').textContent = mtpPacks.prbcUnits;
+      document.getElementById('val-ffp').textContent = mtpPacks.ffpUnits;
+      document.getElementById('val-platelets').textContent = mtpPacks.plateletPools;
+
+      // HIS Text
+      generateHISOrder({ sbp, hr, hb, be, ebl, siRes, tashRes, abcRes, mtpPacks });
+    }
+
+    function generateHISOrder({ sbp, hr, hb, be, ebl, siRes, tashRes, abcRes, mtpPacks }) {
+      const lines = [];
+      lines.push(`Y LỆNH MTP: SBP ${sbp}mmHg | HR ${hr}bpm | SI: ${siRes.si} | TASH: ${tashRes.score}pt (${tashRes.probability.toFixed(1)}%) | ABC: ${abcRes.score}/4.`);
+      lines.push(`MTP Packs 1:1:1: ${mtpPacks.prbcUnits} KHC + ${mtpPacks.ffpUnits} FFP + ${mtpPacks.plateletPools} Pool Tiểu cầu.`);
+      lines.push(`Thuốc: TXA 1g IV bolus 10 min + 1g IV duy trì 8h | Calcium Gluconate 1g IV.`);
+      document.getElementById('his-order-text').value = lines.join('\n');
+    }
+
+    function copyHISOrder() {
+      const text = document.getElementById('his-order-text').value;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Đã sao chép Y lệnh MTP cấp cứu!');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      calculateAll();
+    });
+  </script>
+</body>
+
+</html>

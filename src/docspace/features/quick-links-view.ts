@@ -14,7 +14,7 @@ const SUGGESTED_LINKS: QuickLink[] = [
   { id: 'anthan-icu', label: 'An thần ICU (RASS/CAM-ICU)',  href: '#/calculators/emergency-dg-an-than-icu',          icon: 'fa-solid fa-brain',                category: 'calculators',    isPinned: false },
   { id: 'ecg-studio', label: 'ECG Pro Studio (12 chuyển đạo)',href: '#/calculators/emergency-ecg-studio',             icon: 'fa-solid fa-heart-pulse',          category: 'calculators',    isPinned: false },
   { id: 'ql-bu-dich', label: 'Bù dịch Hồi sức Động',        href: '#/calculators/emergency-ql-bu-dich',               icon: 'fa-solid fa-droplet',              category: 'calculators',    isPinned: false },
-  { id: 'ql-van-mach', label: 'Chỉnh liều Vận mạch',         href: '#/calculators/emergency-ql-van-mach',             icon: 'fa-solid fa-syringe',              category: 'calculators',    isPinned: false },
+  { id: 'ql-van-mach', label: 'Vasoactive & Hemodynamic Pro Studio', href: '#/calculators/emergency-ql-van-mach', icon: 'fa-solid fa-syringe', category: 'calculators', isPinned: false },
   { id: 'electrolyte',label: 'Electrolyte Pro (Điện giải)', href: '#/calculators/renal-electrolyte-studio',           icon: 'fa-solid fa-flask',                category: 'calculators',    isPinned: false },
   { id: 'vte',        label: 'Tắc mạch VTE (Wells/Padua)',  href: '#/calculators/cardiology-dg-vte',                  icon: 'fa-solid fa-shield-virus',         category: 'calculators',    isPinned: false },
   // Approaches
