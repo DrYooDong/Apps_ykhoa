@@ -31,9 +31,8 @@ function fixHeaderLinks(holder, projectRoot) {
     if (!href || href.startsWith('http') || href.startsWith('javascript:')) return;
 
     if (href.startsWith('#')) {
-      if (projectRoot) {
-        link.setAttribute('href', projectRoot + 'index.html' + href);
-      }
+      const root = projectRoot || './';
+      link.setAttribute('href', root + 'index.html' + href);
     } else {
       const cleanHref = href.replace(/^(\.\.\/|\.\/|\/)+/, '');
       link.setAttribute('href', projectRoot + cleanHref);

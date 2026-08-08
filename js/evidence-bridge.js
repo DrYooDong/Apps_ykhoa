@@ -102,14 +102,14 @@ function openEvidenceModal(key) {
   badgeTag.textContent = data.badgeText;
 
   // Resolve relative link based on current page location depth
-  const depth = getPathDepthPrefix();
+  const depth = getEBPathDepthPrefix();
   linkBtn.href = depth + data.linkUrl;
 
   overlay.classList.add("active");
 }
 
-function getPathDepthPrefix() {
-  if (typeof window.getPathDepthPrefix === "function") {
+function getEBPathDepthPrefix() {
+  if (typeof window.getPathDepthPrefix === "function" && window.getPathDepthPrefix !== getEBPathDepthPrefix) {
     return window.getPathDepthPrefix();
   }
   const holder = document.getElementById('header-placeholder') || document.getElementById('footer-placeholder');

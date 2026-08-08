@@ -287,9 +287,9 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
                     </a>
                   `).join('')
                   : `
-                    <a href="#/docspace/abg-studio" class="dsp-quick-link-chip"><i class="fa-solid fa-vial"></i><span>ABG Studio</span></a>
-                    <a href="#/docspace/egfr" class="dsp-quick-link-chip"><i class="fa-solid fa-calculator"></i><span>eGFR Calculator</span></a>
-                    <a href="#/docspace/shock" class="dsp-quick-link-chip"><i class="fa-solid fa-heart-pulse"></i><span>Sốc Nhiễm Khuẩn</span></a>
+                    <a href="#/calculators/abg" class="dsp-quick-link-chip"><i class="fa-solid fa-vial"></i><span>ABG Studio</span></a>
+                    <a href="#/calculators/egfr" class="dsp-quick-link-chip"><i class="fa-solid fa-calculator"></i><span>eGFR Calculator</span></a>
+                    <a href="#/calculators/sofa" class="dsp-quick-link-chip"><i class="fa-solid fa-heart-pulse"></i><span>Thang điểm SOFA</span></a>
                   `
                 }
               </div>
@@ -342,7 +342,7 @@ export function renderDocSpaceHeader(profile: DoctorProfile, activeId: string): 
           <span class="dsp-header-profile-name">${profile.displayName}</span>
         </div>
 
-        <a href="../index.html" class="dsp-header-btn-home" title="Trở về Trang chủ CliniPortal">
+        <a href="#/" class="dsp-header-btn-home" title="Trở về Trang chủ CliniPortal">
           <i class="fa-solid fa-house-user"></i> <span>Trang chủ Portal</span>
         </a>
       </div>
