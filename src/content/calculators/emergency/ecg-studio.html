@@ -230,6 +230,26 @@
 
             </div>
 
+            <!-- Dynamic Pathology Simulator Card -->
+            <div class="studio-card" style="margin-bottom: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-danger); margin: 0;">
+                  <i class="fa-solid fa-flask-vial"></i> Mô Phỏng Động Học: Kali Máu
+                </h3>
+                <span class="element-badge" style="background: var(--color-danger); font-size: 0.7rem;">Real-time</span>
+              </div>
+              <div class="vital-input-box" style="margin-top: 0.5rem; margin-bottom: 0.25rem;">
+                <label for="ecgPotassium" style="display:flex; justify-content:space-between; align-items:flex-end;">
+                  <span>Nồng độ K+ máu:</span>
+                  <span style="font-weight:900; color:var(--color-danger); font-size: 1.1rem; line-height:1;"><span id="valEcgPotassium">4.0</span> <span style="font-size:0.75rem;">mmol/L</span></span>
+                </label>
+                <input type="range" id="ecgPotassium" min="3.5" max="9.0" step="0.1" value="4.0" style="accent-color: var(--color-danger); margin-top: 0.5rem; width:100%;">
+              </div>
+              <div id="potassiumDesc" style="font-size: 0.8rem; font-weight: 600; color: var(--color-text); margin-top: 0.5rem; padding: 0.5rem; background: var(--color-bg); border-left: 3px solid var(--color-success); border-radius: var(--radius-sm);">
+                Bình thường (3.5 - 5.0 mmol/L): Nhịp xoang đều, sóng T bình thường.
+              </div>
+            </div>
+
             <!-- Left Card 2: Tiêu Chuẩn Chẩn Đoán ECG -->
             <div class="studio-card" style="margin-bottom: 0;">
               <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem;">
@@ -338,6 +358,15 @@
               </span>
             </div>
 
+            <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem; font-size: 0.85rem; background: var(--color-surface); padding: 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+              <strong style="color: var(--color-primary);">Chế độ đo:</strong>
+              <label style="cursor: pointer;"><input type="radio" name="caliperMode" value="RR" checked style="accent-color: var(--color-primary);"> Đo khoảng RR</label>
+              <label style="cursor: pointer;"><input type="radio" name="caliperMode" value="QT" style="accent-color: var(--color-primary);"> Đo khoảng QT</label>
+              <button id="btnLockRR" style="margin-left: auto; background: var(--color-bg); border: 1px solid var(--color-border); padding: 0.2rem 0.5rem; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.75rem;">
+                <i class="fa-solid fa-lock"></i> Khóa RR để đo QT
+              </button>
+            </div>
+
             <div class="rhythm-paper-grid" id="rhythmGridContainer">
               <canvas id="canvas_rhythm"></canvas>
               <svg class="rhythm-calipers-svg" viewBox="0 0 600 180" preserveAspectRatio="none">
@@ -352,22 +381,24 @@
             </div>
 
             <!-- Caliper Live Stats -->
-            <div class="caliper-live-stats">
+            <div class="caliper-live-stats" style="flex-wrap: wrap;">
               <div class="stat-mini-box">
-                <div class="stat-mini-label">KHOẢNG THỜI GIAN</div>
-                <div class="stat-mini-val" id="caliperIntervalDisp">240 ms (0.24s)</div>
+                <div class="stat-mini-label">RR ĐO ĐƯỢC</div>
+                <div class="stat-mini-val" id="caliperRRDisp">800 ms</div>
               </div>
               <div class="stat-mini-box">
-                <div class="stat-mini-label">KHOẢNG CÁCH GIẤY</div>
-                <div class="stat-mini-val" id="caliperMMDisp">6.0 mm</div>
+                <div class="stat-mini-label">QT ĐO ĐƯỢC</div>
+                <div class="stat-mini-val" id="caliperQTDisp">400 ms</div>
               </div>
               <div class="stat-mini-box">
-                <div class="stat-mini-label">TẦN SỐ TIM (60000/RR)</div>
+                <div class="stat-mini-label">TẦN SỐ TIM</div>
                 <div class="stat-mini-val" id="caliperHRDisp">75 bpm</div>
               </div>
-              <div class="stat-mini-box">
-                <div class="stat-mini-label">QTc (BAZETT)</div>
-                <div class="stat-mini-val" id="caliperQTcDisp">425 ms</div>
+              <div class="stat-mini-box" style="flex: 1 1 100%; margin-top: 0.5rem;">
+                <div class="stat-mini-label">QTc ĐA CÔNG THỨC</div>
+                <div class="stat-mini-val" id="caliperQTcMultiDisp" style="font-size: 0.85rem; line-height: 1.5;">
+                  Bazett: 447 ms | Fridericia: 430 ms | Framingham: 431 ms
+                </div>
               </div>
             </div>
 
@@ -410,15 +441,32 @@
 
         <!-- Wide Horizontal 10-Step Systematic ECG Analysis Checklist -->
         <div class="studio-card" style="margin-top: 1.5rem; margin-bottom: 0;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
             <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--color-text); margin: 0;">
               🔬 Quy Trình Đọc ECG 10 Bước Hệ Thống
             </h3>
-            <span class="element-badge" style="background: var(--color-primary); font-size: 0.72rem;">Giáo Trình BS Nguyễn Tôn Kinh Thi</span>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span class="element-badge" style="background: var(--color-primary); font-size: 0.72rem;">Chuẩn Lâm Sàng EBM</span>
+              <button id="btnResetChecklist" style="background: var(--color-bg); border: 1px solid var(--color-border); font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); cursor: pointer;">
+                <i class="fa-solid fa-rotate-left"></i> Đánh dấu lại
+              </button>
+            </div>
           </div>
-          <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 1.25rem; line-height: 1.4;">
-            Phân tích điện tâm đồ hệ thống tự động cập nhật thời gian thực theo mọi thay đổi sóng ECG và thao tác thước đo Caliper.
+          <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 0.75rem; line-height: 1.4;">
+            Tự động tính toán tham số real-time kết hợp đánh dấu tiến độ phân tích giúp bạn không bỏ sót bất kỳ tổn thương nào trên ECG.
           </p>
+          
+          <!-- Progress Bar -->
+          <div style="margin-bottom: 1rem; background: var(--color-bg); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; margin-bottom: 0.35rem;">
+              <span>TIẾN ĐỘ PHÂN TÍCH HỆ THỐNG:</span>
+              <span id="chkProgressText" style="color: var(--color-primary);">0 / 10 Bước</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: var(--color-border); border-radius: 4px; overflow: hidden;">
+              <div id="chkProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--color-primary), var(--color-info)); transition: width 0.3s ease;"></div>
+            </div>
+          </div>
+
           <div class="checklist-container horizontal-grid" id="systematicChecklist"></div>
         </div>
 

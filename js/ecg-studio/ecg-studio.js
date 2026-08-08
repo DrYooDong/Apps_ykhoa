@@ -27,6 +27,10 @@
       this.caliper1Pos = 120; // px
       this.caliper2Pos = 360; // px
       this.isDraggingCaliper = null;
+      this.caliperMode = 'RR';
+      this.measuredRR = 800; // ms
+      this.measuredQT = 400; // ms
+      this.checkedSteps = new Set();
 
       // AI-CDSS State
       this.ecgVitalsState = {
@@ -291,6 +295,15 @@
 
       const combined = window.ECGModifiers.combineModifiers(Array.from(this.selectedModifiers));
 
+      // Inject Hyperkalemia Dynamics
+      const kSlider = document.getElementById('ecgPotassium');
+      if (kSlider) {
+        const k = parseFloat(kSlider.value);
+        if (k > 5.0) {
+           this.applyHyperkalemiaDynamics(combined, k);
+        }
+      }
+
       // Render 12-lead grid
       Object.keys(this.activeLeadEngines).forEach(lead => {
         const engine = this.activeLeadEngines[lead];
@@ -320,6 +333,35 @@
       this.updateSystematicChecklist(combined);
       this.updateDiagnosticCriteria();
       this.updateCdss();
+    }
+
+    applyHyperkalemiaDynamics(combined, k) {
+      if (!combined.amplifiers) combined.amplifiers = {};
+
+      if (k >= 5.5) {
+         // Peaked T waves: normal T amp is ~1.0, increase up to 3.5
+         const tFactor = Math.min(3.5, 1.0 + (k - 5.0) * 1.5); 
+         combined.tallT = ['V2', 'V3', 'V4', 'V5', 'DII'];
+         combined.amplifiers.T_peak = tFactor; 
+      }
+      
+      if (k >= 6.5) {
+         // PR prolongs, P flattens, QRS widens
+         combined.pr = Math.min(240, 160 + (k - 6.5) * 60); 
+         combined.amplifiers.P_flat = Math.max(0.0, 1.0 - (k - 6.5) * 1.2); 
+         combined.qrsWidth = Math.min(120, 80 + (k - 6.5) * 35);
+      }
+      
+      if (k >= 7.5) {
+         // Loss of P wave, severe QRS widening -> sine wave
+         combined.noP = true;
+         combined.qrsWidth = 120 + (k - 7.5) * 50; 
+         combined.hr = Math.max(30, 75 - (k - 7.5) * 25); 
+         if (k >= 8.5) {
+            combined.sineWave = true;
+            combined.qrsWidth = 200; // max out width visually
+         }
+      }
     }
 
     bindEvents() {
@@ -457,6 +499,54 @@
         this.isDraggingCaliper = null;
       });
 
+      document.querySelectorAll('input[name="caliperMode"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          this.caliperMode = e.target.value;
+        });
+      });
+
+      const btnLockRR = document.getElementById('btnLockRR');
+      if (btnLockRR) {
+        btnLockRR.addEventListener('click', () => {
+          this.caliperMode = 'QT';
+          const qtRadio = document.querySelector('input[name="caliperMode"][value="QT"]');
+          if (qtRadio) qtRadio.checked = true;
+        });
+      }
+
+      const kSlider = document.getElementById('ecgPotassium');
+      if (kSlider) {
+        kSlider.addEventListener('input', (e) => {
+          const k = parseFloat(e.target.value);
+          const valEl = document.getElementById('valEcgPotassium');
+          if (valEl) valEl.textContent = k.toFixed(1);
+          
+          const descEl = document.getElementById('potassiumDesc');
+          if (descEl) {
+            if (k < 5.5) {
+              descEl.innerHTML = 'Bình thường (3.5 - 5.0 mmol/L): Nhịp xoang đều, sóng T bình thường.';
+              descEl.style.borderLeftColor = 'var(--color-success)';
+            } else if (k < 6.5) {
+              descEl.innerHTML = 'Tăng Kali nhẹ (5.5 - 6.5 mmol/L): Sóng T cao nhọn đối xứng, hẹp đáy.';
+              descEl.style.borderLeftColor = 'var(--color-warning)';
+            } else if (k < 7.5) {
+              descEl.innerHTML = 'Tăng Kali vừa (6.5 - 7.5 mmol/L): PR kéo dài, sóng P dẹt dần, QRS bắt đầu giãn.';
+              descEl.style.borderLeftColor = 'var(--color-danger)';
+            } else {
+              descEl.innerHTML = 'Tăng Kali nặng (> 7.5 mmol/L): Mất sóng P, QRS giãn rộng hòa vào sóng T tạo thành sóng hình sin. CẤP CỨU!';
+              descEl.style.borderLeftColor = '#991b1b';
+            }
+          }
+          
+          // Clear selected modifiers to show only the pure potassium effect
+          this.selectedModifiers.clear();
+          this.selectedModifiers.add('sinus_normal');
+          this.currentScenario = null;
+          this.updateStudio();
+          this.renderAbnormalityMixer();
+        });
+      }
+
       // Window resize re-render
       window.addEventListener('resize', () => {
         this.updateStudio();
@@ -482,8 +572,46 @@
         this.searchQuery = '';
         if (searchInput) searchInput.value = '';
         document.querySelectorAll('.cat-pill-btn').forEach(p => p.classList.toggle('active', p.getAttribute('data-cat') === 'ALL'));
+        
+        if (kSlider) {
+          kSlider.value = '4.0';
+          const valEl = document.getElementById('valEcgPotassium');
+          if (valEl) valEl.textContent = '4.0';
+          const descEl = document.getElementById('potassiumDesc');
+          if (descEl) {
+            descEl.innerHTML = 'Bình thường (3.5 - 5.0 mmol/L): Nhịp xoang đều, sóng T bình thường.';
+            descEl.style.borderLeftColor = 'var(--color-success)';
+          }
+        }
+
         this.renderAbnormalityMixer();
         this.updateStudio();
+      });
+
+      // Systematic Checklist Toggle & Reset
+      const chkContainer = document.getElementById('systematicChecklist');
+      if (chkContainer) {
+        chkContainer.addEventListener('click', (e) => {
+          const itemEl = e.target.closest('.chk-item');
+          if (itemEl) {
+            const num = parseInt(itemEl.getAttribute('data-step'), 10);
+            if (num) {
+              if (this.checkedSteps.has(num)) {
+                this.checkedSteps.delete(num);
+              } else {
+                this.checkedSteps.add(num);
+              }
+              const combined = window.ECGModifiers.combineModifiers(Array.from(this.selectedModifiers));
+              this.updateSystematicChecklist(combined);
+            }
+          }
+        });
+      }
+
+      document.getElementById('btnResetChecklist')?.addEventListener('click', () => {
+        this.checkedSteps.clear();
+        const combined = window.ECGModifiers.combineModifiers(Array.from(this.selectedModifiers));
+        this.updateSystematicChecklist(combined);
       });
 
       // Start Quiz button
@@ -566,29 +694,45 @@
 
     updateCaliperStats(combined) {
       const pxDiff = Math.abs(this.caliper2Pos - this.caliper1Pos);
-      const mmDiff = (pxDiff * 0.2).toFixed(1);
-      // ms depends on speed scaling! at 25mm/s 1px = 4ms. at 50mm/s 1px = 2ms.
       const msPerPx = 4 * (25 / this.paperSpeed);
       const msDiff = Math.round(pxDiff * msPerPx);
-      const secDiff = (msDiff / 1000).toFixed(2);
 
-      let calcHR = '--';
-      let calcQTc = '--';
-
-      if (msDiff > 80) {
-        const hrVal = Math.round(60000 / msDiff);
-        calcHR = `${hrVal} bpm`;
-
-        const qtcVal = Math.round(combined.qt / Math.sqrt(parseFloat(secDiff) || 0.8));
-        if (!isNaN(qtcVal) && isFinite(qtcVal)) {
-          calcQTc = `${qtcVal} ms`;
-        }
+      if (this.caliperMode === 'RR') {
+        this.measuredRR = msDiff;
+      } else {
+        this.measuredQT = msDiff;
       }
 
-      document.getElementById('caliperIntervalDisp').textContent = `${msDiff} ms (${secDiff}s)`;
-      document.getElementById('caliperMMDisp').textContent = `${mmDiff} mm`;
-      document.getElementById('caliperHRDisp').textContent = calcHR;
-      document.getElementById('caliperQTcDisp').textContent = calcQTc;
+      let calcHR = '--';
+      let calcQTcMulti = '--';
+
+      if (this.measuredRR > 80) {
+        const hrVal = Math.round(60000 / this.measuredRR);
+        calcHR = `${hrVal} bpm`;
+      }
+
+      if (this.measuredRR > 80 && this.measuredQT > 40) {
+        const rrSec = this.measuredRR / 1000;
+        const qtMs = this.measuredQT;
+        
+        const qtcBazett = Math.round(qtMs / Math.sqrt(rrSec));
+        const qtcFridericia = Math.round(qtMs / Math.cbrt(rrSec));
+        const qtcFramingham = Math.round(qtMs + 154 * (1 - rrSec));
+        
+        calcQTcMulti = `Bazett: <strong style="color:var(--color-primary);">${qtcBazett} ms</strong> | Fridericia: <strong style="color:var(--color-info);">${qtcFridericia} ms</strong> | Framingham: <strong style="color:var(--color-success);">${qtcFramingham} ms</strong>`;
+      }
+
+      const dispRR = document.getElementById('caliperRRDisp');
+      if (dispRR) dispRR.textContent = `${this.measuredRR} ms`;
+      
+      const dispQT = document.getElementById('caliperQTDisp');
+      if (dispQT) dispQT.textContent = `${this.measuredQT} ms`;
+      
+      const dispHR = document.getElementById('caliperHRDisp');
+      if (dispHR) dispHR.textContent = calcHR;
+      
+      const dispQTc = document.getElementById('caliperQTcMultiDisp');
+      if (dispQTc) dispQTc.innerHTML = calcQTcMulti;
     }
 
     updateSystematicChecklist(combined) {
@@ -668,15 +812,29 @@
         }
       ];
 
-      checklistContainer.innerHTML = items.map(item => `
-        <div class="chk-item status-${item.status}">
-          <div class="chk-header">
-            <span class="chk-num">${item.num}. ${item.title}</span>
-            <span class="chk-val">${item.val}</span>
+      checklistContainer.innerHTML = items.map(item => {
+        const isChecked = this.checkedSteps.has(item.num);
+        return `
+          <div class="chk-item status-${item.status} ${isChecked ? 'step-checked' : ''}" data-step="${item.num}" style="cursor: pointer; position: relative; border-left: 4px solid ${isChecked ? 'var(--color-success)' : 'transparent'};">
+            <div class="chk-header" style="display: flex; align-items: center; justify-content: space-between;">
+              <span class="chk-num" style="display: flex; align-items: center; gap: 0.4rem;">
+                <input type="checkbox" ${isChecked ? 'checked' : ''} style="accent-color: var(--color-success); cursor: pointer;">
+                <strong ${isChecked ? 'style="text-decoration: line-through; opacity: 0.8;"' : ''}>${item.num}. ${item.title}</strong>
+              </span>
+              <span class="chk-val">${item.val}</span>
+            </div>
+            <p class="chk-note" style="margin-top: 0.35rem; ${isChecked ? 'opacity: 0.7;' : ''}">${item.note}</p>
           </div>
-          <p class="chk-note">${item.note}</p>
-        </div>
-      `).join('');
+        `;
+      }).join('');
+
+      // Update progress bar UI
+      const count = this.checkedSteps.size;
+      const pct = (count / 10) * 100;
+      const bar = document.getElementById('chkProgressBar');
+      const txt = document.getElementById('chkProgressText');
+      if (bar) bar.style.width = `${pct}%`;
+      if (txt) txt.textContent = `${count} / 10 Bước (${Math.round(pct)}%)`;
     }
 
     updateDiagnosticCriteria() {

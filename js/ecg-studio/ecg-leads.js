@@ -99,13 +99,15 @@
         tAmp = 1.2;
       }
 
-      // Amplifiers (LVH / RVH)
+      // Amplifiers (LVH / RVH / Dynamics)
       if (combinedParams.amplifiers) {
         if (lead === 'V1' && combinedParams.amplifiers.V1_S) qrsS *= combinedParams.amplifiers.V1_S;
         if (lead === 'V1' && combinedParams.amplifiers.V1_R) qrsR *= combinedParams.amplifiers.V1_R;
         if (lead === 'V5' && combinedParams.amplifiers.V5_R) qrsR *= combinedParams.amplifiers.V5_R;
         if (lead === 'V6' && combinedParams.amplifiers.V6_R) qrsR *= combinedParams.amplifiers.V6_R;
         if (lead === 'DII' && combinedParams.amplifiers.P_DII) pAmp *= combinedParams.amplifiers.P_DII;
+        if (combinedParams.amplifiers.T_peak) tAmp *= combinedParams.amplifiers.T_peak;
+        if (combinedParams.amplifiers.P_flat !== undefined) pAmp *= combinedParams.amplifiers.P_flat;
       }
 
       // S1-Q3-T3 (PE)
