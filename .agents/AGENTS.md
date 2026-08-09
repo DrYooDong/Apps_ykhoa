@@ -32,7 +32,8 @@ d:\Apps_ykhoa\.agents/
 │   ├── dark-mode-rules.md            # 5. Quy tắc Dark Mode bắt buộc
 │   ├── responsive-rules.md           # 6. Quy tắc Responsive Mobile-First
 │   ├── html-integrity-rules.md       # 7. Quy tắc kiểm tra toàn vẹn HTML
-│   └── context-optimization.md       # 8. Quy tắc tối ưu hóa Context AI
+│   ├── context-optimization.md       # 8. Quy tắc tối ưu hóa Context AI
+│   └── guideline-creation-rules.md   # 9. Quy tắc kiểm soát tạo Guideline & chống trùng lặp
 └── skills/                           # Thư mục 39+ Skills chuyên môn & workflow
     ├── Workflow & Quality Skills     # brainstorming, code-reviewer, find-bugs, ui-review, simplify-code...
     ├── Performance & Standards       # performance-optimizer, wcag-audit-patterns, accessibility-wcag-medical...
@@ -64,6 +65,7 @@ d:\Apps_ykhoa\.agents/
 3. **Không thêm thư viện JS bên ngoài**: Project dùng Vanilla JS thuần (trừ Google Fonts & FontAwesome).
 4. **Không tạo file tại Root**: File mới phải đặt đúng thư mục phân hệ tương ứng và đăng ký vào `docs/FILE_MAP.md`.
 5. **Luôn kiểm tra đường dẫn tương đối**: Đếm chính xác cấp thư mục (cấp 3 → `../../../`, cấp 4 → `../../../../`).
+6. **Cấm tự ý tạo Guideline trùng lặp hoặc không có yêu cầu**: Bắt buộc kiểm tra `guidelinesdata.js` trước khi tạo file mới. Tuyệt đối không tự ý sinh file guideline trùng lặp nếu chưa được Người dùng chỉ định. Xem chi tiết tại `rules/guideline-creation-rules.md`.
 
 ---
 

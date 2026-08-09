@@ -1255,6 +1255,11 @@
         if (practiceEl) practiceEl.textContent = stats.practiceChangingCount + ' Đổi mới';
       }
 
+      window.addEventListener('cliniportal:guidelines-updated', function() {
+        renderEbmHubWidgets();
+        renderRecentUpdatesWidget();
+      });
+
       // 2. Render Recent Updates Widget (Có Gì Mới)
       function renderRecentUpdatesWidget() {
         const contentEl = document.getElementById('yhcc-updates-content');

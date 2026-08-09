@@ -61,17 +61,24 @@ Tất cả các file trong thư mục `kho-guidelines/` nằm ở **cấp 4** so
 
 Khi nhận được tài liệu Y khoa / Guideline / RCT dạng file Markdown (`.md`) từ người dùng (nằm ở bất kỳ vị trí nào trong workspace hoặc `knowledge-vault`), thực hiện chuyển đổi nhanh chóng theo **2 phương thức**:
 
-### 🛠️ Phương thức 1: Sử dụng Script Tự Động Hóa (Khuyên Dùng)
+### 🛠️ Phương thức 1: Sử dụng Script Tự Động Hóa + Nâng Cấp UI Bắt Buộc (Khuyên Dùng)
 
 Chạy lệnh Node.js với đường dẫn tới file `.md` đã chọn:
 ```bash
 node .agents/skills/guideline-summary-module/scripts/convert_md_to_guideline.js "<path_to_md_file>"
 ```
-*Script sẽ tự động:*
+*Script chỉ đóng vai trò dựng khung Boilerplate ban đầu:*
 1. Parse YAML Frontmatter & cấu trúc Markdown.
-2. Tạo file HTML độc lập tại `src/content/ebm/guidelines/kho-guidelines/<slug>.html` (chuẩn đường dẫn cấp 4).
-3. Thêm/Cập nhật bản ghi `SAMPLE_STUDIES` trong `src/content/ebm/guidelines/guidelinesdata.js`.
-4. Chuẩn hóa slug tiếng Việt không dấu (URL-safe).
+2. Tạo file HTML cơ bản tại `src/content/ebm/guidelines/kho-guidelines/<slug>.html`.
+3. Thêm bản ghi `SAMPLE_STUDIES` vào `guidelinesdata.js`.
+
+⚠️ **BẮT BUỘC SAU KHI CHẠY SCRIPT (CRITICAL POST-PROCESSING STEP):**
+Script `convert_md_to_guideline.js` chỉ tạo ra khung văn bản đơn thuần (`<p>`, `<ul>`). **AI TUYỆT ĐỐI KHÔNG ĐƯỢC DỪNG LẠI Ở ĐÂY**. AI phải dùng tool chỉnh sửa file để refactor lại toàn bộ file HTML vừa sinh ra, chuyển các đoạn văn bản dài thành các linh kiện UI trực quan sinh động:
+- Chuyển phân loại/giai đoạn/triệu chứng thành **Bento Grid Cards (`.matrix-grid`, `.matrix-card`)** hoặc **Clinical Cards (`.clinical-grid`, `.clin-card`)**.
+- Chuyển các bước di chuyển/diễn tiến sinh lý thành **Step Algorithm Cards (`.algorithm-container`, `.algo-step`)**.
+- Chuyển cảnh báo, tác dụng phụ, lưu ý thành các **Infoboxes màu sắc (`.infobox.danger`, `.infobox.warning`, `.infobox.success`, `.infobox.info`)**.
+- Chuyển phác đồ liều dùng & bằng chứng thành **Data Tables (`.data-table`)** với các nhãn liều dùng **`.rx-tag`**.
+- Giữ 100% nội dung y khoa từ `.md` gốc nhưng trình bày theo đúng phong cách **Flagship Clinical Dashboard**.
 
 ### ✍️ Phương thức 2: Quy Trình 5 Bước Thủ Công / Tùy Chỉnh Chuyên Sâu
 

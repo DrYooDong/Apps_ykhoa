@@ -68,7 +68,7 @@
     }
 
     // ════════════════════════════
-    // SUPABASE CONFIG & SYNC
+    // SUPABASE CONFIG & SYNC (Account Isolation & Data Privacy)
     // ════════════════════════════
 
     function initSupabase() {
@@ -88,7 +88,7 @@
         }
       } else {
         supabaseClient = null;
-        updateSupabaseStatus('disconnected', 'Supabase: Local Mode');
+        updateSupabaseStatus('disconnected', 'Supabase: Ngoại tuyến (Chưa đăng nhập)');
         return false;
       }
     }
@@ -112,8 +112,10 @@
     function openSupabaseModal() {
       const url = localStorage.getItem('supabaseUrl') || '';
       const key = localStorage.getItem('supabaseKey') || '';
-      document.getElementById('sb-url').value = url;
-      document.getElementById('sb-key').value = key;
+      const urlInput = document.getElementById('sb-url');
+      const keyInput = document.getElementById('sb-key');
+      if (urlInput) urlInput.value = url;
+      if (keyInput) keyInput.value = key;
       document.getElementById('supabase-modal').classList.add('active');
     }
 
@@ -126,10 +128,15 @@
       const url = document.getElementById('sb-url').value.trim();
       const key = document.getElementById('sb-key').value.trim();
       
+      if (!url || !key) {
+        alert('⚠️ Vui lòng nhập đầy đủ Supabase URL và Anon Key!');
+        return;
+      }
+
       localStorage.setItem('supabaseUrl', url);
       localStorage.setItem('supabaseKey', key);
       
-      alert('💾 Đã lưu thông tin cấu hình Supabase!');
+      alert('🔑 Đã lưu cấu hình và kết nối tài khoản Supabase thành công!');
       closeSupabaseModal();
       
       if (initSupabase()) {
@@ -138,24 +145,26 @@
     }
 
     function clearSupabaseConfig() {
-      if (confirm('☁️ Bạn có chắc chắn muốn xóa cấu hình Supabase? Tất cả dữ liệu nghiên cứu hiện tại sẽ bị xóa khỏi hệ thống.')) {
+      if (confirm('🔒 Bạn có chắc chắn muốn đăng xuất tài khoản Supabase? Tất cả dữ liệu nghiên cứu thuộc tài khoản này sẽ tự động xóa khỏi thiết bị hiện tại.')) {
         localStorage.removeItem('supabaseUrl');
         localStorage.removeItem('supabaseKey');
         localStorage.removeItem('clinicalGuidelines');
         localStorage.removeItem('internalMedicineStudies');
-        document.getElementById('sb-url').value = '';
-        document.getElementById('sb-key').value = '';
+        
+        const urlInput = document.getElementById('sb-url');
+        const keyInput = document.getElementById('sb-key');
+        if (urlInput) urlInput.value = '';
+        if (keyInput) keyInput.value = '';
         
         studies = [];
         selectedIds.clear();
         expandedIds.clear();
-        saveStudies();
         
         closeSupabaseModal();
         initSupabase();
         renderTable();
         renderUpdates();
-        alert('🗑️ Đã xóa cấu hình Supabase và tự động xóa tất cả các nghiên cứu!');
+        alert('🔒 Đã đăng xuất thành công! Dữ liệu nghiên cứu cá nhân đã được xóa sạch khỏi thiết bị hiện tại.');
       }
     }
 
@@ -427,6 +436,26 @@
               createdAt: s.createdAt || new Date().toISOString()
             };
           });
+          if (typeof SAMPLE_STUDIES !== 'undefined' && Array.isArray(SAMPLE_STUDIES)) {
+            const validSampleIds = new Set(SAMPLE_STUDIES.map(s => s.id));
+            const validSampleTitles = new Set(SAMPLE_STUDIES.map(s => s.title));
+
+            // Purge mock/fake items that don't match any official sample or user custom study
+            studies = studies.filter(s => {
+              if (s.isCustom) return true; // keep user-added custom studies
+              if (s.id && s.id.startsWith('study_custom_')) return true; // keep custom user studies
+              return validSampleIds.has(s.id) || validSampleTitles.has(s.title);
+            });
+
+            // Merge any missing official studies from SAMPLE_STUDIES
+            const existingIds = new Set(studies.map(s => s.id));
+            const existingTitles = new Set(studies.map(s => s.title));
+            SAMPLE_STUDIES.forEach(sm => {
+              if (!existingIds.has(sm.id) && !existingTitles.has(sm.title)) {
+                studies.push(sm);
+              }
+            });
+          }
           saveStudies();
         } catch (e) {
           console.error('Lỗi khi phân tích cú pháp nghiên cứu đã lưu, sử dụng dữ liệu mẫu:', e);
@@ -440,6 +469,10 @@
 
     function saveStudies() {
       localStorage.setItem('clinicalGuidelines', JSON.stringify(studies));
+      localStorage.setItem('internalMedicineStudies', JSON.stringify(studies));
+      if (typeof window.CliniPortalSync !== 'undefined' && typeof window.CliniPortalSync.notifyUpdate === 'function') {
+        window.CliniPortalSync.notifyUpdate();
+      }
     }
 
     function generateId() {
@@ -2231,6 +2264,12 @@
     // ════════════════════════════
 
     const MEDICAL_ABBREV_MAP = [
+      { regex: /\bđái tháo đường (?:típ|tuýp)\s*2\b/gi, replacement: 'ĐTĐ Típ 2' },
+      { regex: /\bbệnh tim thiếu máu cục bộ\b/gi, replacement: 'Tim thiếu máu' },
+      { regex: /\bthực phẩm siêu chế biến thực vật|thực phẩm siêu chế biến\b/gi, replacement: 'uPDI' },
+      { regex: /\bchế độ ăn thực vật lành mạnh\b/gi, replacement: 'hPDI' },
+      { regex: /\btử vong do mọi nguyên nhân\b/gi, replacement: 'Tử vong' },
+      { regex: /\bung thư toàn bộ\b/gi, replacement: 'Ung thư toàn bộ' },
       { regex: /\bchẩn đoán\b/gi, replacement: 'CĐ' },
       { regex: /\bđiều trị\b/gi, replacement: 'ĐTr' },
       { regex: /\btỷ lệ\b/gi, replacement: 'TL' },
@@ -2267,16 +2306,66 @@
       let str = rawLabel.trim();
 
       // Strip leading/trailing connector & filler words
-      str = str.replace(/^(?:đoán|án|tỷ lệ|kết quả|cho thấy|đạt|bằng|trong|nghiên cứu|thử nghiệm|phân tích|về|ở|đối với|khi|so với|là)\s+/gi, '');
-      str = str.replace(/\s+(?:đạt|là|cho thấy|được|ở|với|bằng|so với)\s*$/gi, '');
-      str = str.replace(/\b(?:bằng|đạt|cho thấy|được|là|với)\b/gi, ' ');
+      str = str.replace(/^(?:đoán|án|tỷ lệ|kết quả|cho thấy|đạt|bằng|trong|nghiên cứu|thử nghiệm|phân tích|về|ở|đối với|khi|so với|vs|là|bị|nhóm|làm)\s+/gi, '');
+      str = str.replace(/\s+(?:đạt|là|cho thấy|được|ở|với|bằng|so với|vs|làm|nhóm|do mọi nguyên nhân|mọi nguyên nhân)\s*$/gi, '');
+      str = str.replace(/\b(?:bằng|đạt|cho thấy|được|là|với|vs|so với)\b/gi, ' ');
 
       // Apply medical abbreviation map
       str = abbreviateMedicalText(str);
 
       // Clean up punctuation and excess spaces
       str = str.replace(/\s+/g, ' ').replace(/^[:\-\s,.;]+|[:\-\s,.;]+$/g, '').trim();
+      if (str.length > 0) {
+        str = str.charAt(0).toUpperCase() + str.slice(1);
+      }
       return str;
+    }
+
+    function extractSmartMedicalLabel(clause, beforeText, afterText, prevContext) {
+      const text = (clause + ' ' + beforeText + ' ' + afterText).toLowerCase();
+      const abbrevText = abbreviateMedicalText(clause);
+
+      let group = '';
+      if (/thuần chay/.test(text)) group = 'Thuần chay';
+      else if (/ăn chay|chay/.test(text)) group = 'Ăn chay';
+      else if (/siêu chế biến|updi/.test(text)) group = 'uPDI';
+
+      let outcome = '';
+      if (/tim thiếu máu/.test(text) || /tim thiếu máu/.test(abbrevText)) outcome = 'Tim thiếu máu';
+      else if (/đái tháo đường|đtđ/.test(text) || /đtđ/.test(abbrevText)) outcome = 'ĐTĐ Típ 2';
+      else if (/ung thư/.test(text)) outcome = 'Ung thư toàn bộ';
+      else if (/tử vong/.test(text)) outcome = 'Tử vong';
+
+      if (!outcome && prevContext && prevContext.lastOutcome) {
+        outcome = prevContext.lastOutcome;
+      }
+
+      let action = '';
+      if (/giảm/.test(text)) action = 'Giảm NC';
+      else if (/tăng/.test(text)) action = 'Tăng NC';
+
+      if (outcome && prevContext) prevContext.lastOutcome = outcome;
+
+      if (group && outcome) {
+        if (group === 'Thuần chay') return `Thuần chay: ${outcome}`;
+        if (group === 'Ăn chay') return `Ăn chay: ${outcome}`;
+        if (group === 'uPDI') return `uPDI (Siêu chế biến): ${outcome}`;
+        return `${group}: ${outcome}`;
+      }
+      if (outcome) {
+        return `${action ? action + ' ' : ''}${outcome}`;
+      }
+
+      const cleanedAfter = cleanMedicalLabel(afterText);
+      const cleanedBefore = cleanMedicalLabel(beforeText);
+
+      if (cleanedAfter.length >= 3 && !/^(chỉ số|tỷ lệ|nhóm)$/i.test(cleanedAfter)) {
+        return cleanedAfter;
+      }
+      if (cleanedBefore.length >= 3) {
+        return cleanedBefore;
+      }
+      return cleanedAfter || cleanedBefore || cleanMedicalLabel(clause);
     }
 
     function parseChartData(keyResults) {
@@ -2363,44 +2452,110 @@
         const forestRes = parseForestDataAll(cleanText);
         if (forestRes) return forestRes;
 
-        // 4. Multi/Comparative Percentages or Single Percentage Extraction
+        // 4. Multi/Comparative Percentages or Single Percentage Extraction (Supported Range X%-Y%)
         const pctMatches = [];
-        const pctRegex = /(?:([a-zA-ZÀ-ỹ0-9\s_–-]{2,45})[\s:]+)?(\d+(?:\.\d+)?)\s*%\s*(?:\(\s*(\d+)\s*\/\s*(\d+)\s*\))?/gi;
-        let m;
-        let lastIdx = 0;
+        const clauses = cleanText.split(/(?:[;,]|\r?\n|\bso với\b|\bvs\b)/i);
+        const prevContext = { lastOutcome: '' };
 
-        while ((m = pctRegex.exec(cleanText)) !== null) {
-          let rawSnippet = m[1] || '';
-          if (!rawSnippet) {
-            const prevText = cleanText.substring(lastIdx, m.index);
-            const parts = prevText.split(/(?:[.,;]|\bso với\b|\bvs\b)/i);
-            rawSnippet = parts.pop() || '';
+        for (let clauseStr of clauses) {
+          const clause = clauseStr.trim();
+          if (!clause) continue;
+
+          // Check range percentage pattern: e.g., 25%-30%, 20% - 25%, 8% đến 16%
+          const rangeMatch = clause.match(/(\d+(?:\.\d+)?)\s*%?\s*[-–—\u2013tođến]\s*(\d+(?:\.\d+)?)\s*%/i);
+          const singleMatch = !rangeMatch ? clause.match(/(\d+(?:\.\d+)?)\s*%/i) : null;
+
+          if (!rangeMatch && !singleMatch) continue;
+
+          let minVal, maxVal, isRange = false;
+          let matchIndex = 0, matchLength = 0;
+
+          if (rangeMatch) {
+            minVal = parseFloat(rangeMatch[1]);
+            maxVal = parseFloat(rangeMatch[2]);
+            if (minVal > maxVal) { const tmp = minVal; minVal = maxVal; maxVal = tmp; }
+            isRange = true;
+            matchIndex = rangeMatch.index;
+            matchLength = rangeMatch[0].length;
+          } else {
+            minVal = maxVal = parseFloat(singleMatch[1]);
+            isRange = false;
+            matchIndex = singleMatch.index;
+            matchLength = singleMatch[0].length;
           }
-          lastIdx = m.index + m[0].length;
 
-          const pctVal = parseFloat(m[2]);
-          const count = m[3] ? parseInt(m[3], 10) : null;
-          const total = m[4] ? parseInt(m[4], 10) : null;
+          // Directionality check (Tăng vs Giảm)
+          const isHarm = /\b(tăng|tử vong|hại|tác dụng phụ|biến cố|tăng nguy cơ)\b/i.test(clause);
+          const color = isHarm ? '#ef4444' : '#10b981';
 
-          let label = cleanMedicalLabel(rawSnippet);
+          // Label extraction around the match
+          const beforeText = clause.substring(0, matchIndex).trim();
+          const afterText = clause.substring(matchIndex + matchLength).trim();
+
+          let rawLabel = extractSmartMedicalLabel(clause, beforeText, afterText, prevContext);
+
+          if (!rawLabel) rawLabel = `Chỉ số #${pctMatches.length + 1}`;
+
+          const displayVal = isRange 
+            ? `${isHarm ? '+' : '-'}${minVal}%–${maxVal}%` 
+            : `${isHarm ? '+' : '-'}${minVal}%`;
 
           pctMatches.push({
-            label,
-            value: pctVal,
-            count,
-            total
+            label: rawLabel,
+            value: isRange ? Math.round((minVal + maxVal) / 2 * 10) / 10 : minVal,
+            min: minVal,
+            max: maxVal,
+            isRange,
+            isHarm,
+            color,
+            displayVal,
+            count: null,
+            total: null
           });
+        }
+
+        // Fallback for simple texts if clause splitting produced nothing
+        if (pctMatches.length === 0) {
+          const pctRegex = /(?:([a-zA-ZÀ-ỹ0-9\s_–-]{2,45})[\s:]+)?(\d+(?:\.\d+)?)\s*%\s*(?:\(\s*(\d+)\s*\/\s*(\d+)\s*\))?/gi;
+          let m, lastIdx = 0;
+          while ((m = pctRegex.exec(cleanText)) !== null) {
+            let rawSnippet = m[1] || '';
+            if (!rawSnippet) {
+              const prevText = cleanText.substring(lastIdx, m.index);
+              const parts = prevText.split(/(?:[.,;]|\bso với\b|\bvs\b)/i);
+              rawSnippet = parts.pop() || '';
+            }
+            lastIdx = m.index + m[0].length;
+
+            const pctVal = parseFloat(m[2]);
+            const count = m[3] ? parseInt(m[3], 10) : null;
+            const total = m[4] ? parseInt(m[4], 10) : null;
+            let label = cleanMedicalLabel(rawSnippet);
+
+            pctMatches.push({
+              label,
+              value: pctVal,
+              count,
+              total,
+              color: pctMatches.length === 0 ? '#10b981' : pctMatches.length === 1 ? '#ef4444' : '#2563eb'
+            });
+          }
         }
 
         if (pctMatches.length >= 2) {
           return {
             type: 'comparison',
-            items: pctMatches.slice(0, 4).map((it, idx) => ({
+            items: pctMatches.slice(0, 6).map((it, idx) => ({
               label: it.label || `Chỉ số #${idx + 1}`,
               value: it.value,
+              min: it.min,
+              max: it.max,
+              isRange: it.isRange || false,
+              isHarm: it.isHarm || false,
+              displayVal: it.displayVal,
               count: it.count,
               total: it.total,
-              color: idx === 0 ? '#10b981' : idx === 1 ? '#ef4444' : '#2563eb'
+              color: it.color || (idx === 0 ? '#10b981' : idx === 1 ? '#ef4444' : '#2563eb')
             }))
           };
         } else if (pctMatches.length === 1) {
@@ -2442,39 +2597,72 @@
       'KHÔNG', 'CHO', 'THẤY', 'CÓ', 'CÁC', 'BỆNH', 'NHÂN'
     ]);
 
+    function normalizeMetric(m) {
+      const clean = (m || '').trim();
+      if (/^Hedges/i.test(clean) || /^g$/i.test(clean)) return "Hedges' g";
+      if (/^Cohen/i.test(clean) || /^d$/i.test(clean)) return "Cohen's d";
+      return clean.toUpperCase();
+    }
+
     function extractLabelFromContext(preText, metricName, itemIndex, state) {
       let cleanPre = (preText || '').replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
+      const snippet = cleanPre.slice(-85);
 
+      let parentTopic = '';
+      if (/PM2\.5|ô nhiễm/i.test(snippet) || /PM2\.5|ô nhiễm/i.test(cleanPre.split(/;/).pop())) parentTopic = 'Ô nhiễm PM2.5';
+      else if (/Can thiệp đa miền/i.test(snippet) || /Can thiệp đa miền/i.test(cleanPre.split(/;/).pop())) parentTopic = 'Can thiệp đa miền';
+      else if (/estrogen|progestogen|MHT|liệu pháp hormone/i.test(snippet)) parentTopic = 'MHT';
+      else if (/Hoạt động xã hội/i.test(cleanPre.split(/;/).pop())) parentTopic = 'Hoạt động xã hội';
+      else if (/Huấn luyện nhận thức/i.test(cleanPre.split(/;/).pop())) parentTopic = 'HL nhận thức';
+
+      // Check trial acronym in original text (FLOW, SMART-C, FIDELITY, etc.)
       const words = cleanPre.split(/[\s,;:.()"'\[\]]+/);
       for (let i = 0; i < words.length; i++) {
         const orig = words[i];
-        if (/^[A-Z0-9-]{3,15}$/.test(orig) && !EXCLUDED_ACRONYMS.has(orig) && !/^\d+$/.test(orig)) {
+        if (/^[A-Z][A-Z0-9-]{2,14}$/.test(orig) && !EXCLUDED_ACRONYMS.has(orig) && !/^\d+$/.test(orig)) {
           state.currentStudy = orig;
         }
       }
 
-      let outcome = '';
-      if (/suy tim mới mắc/i.test(cleanPre)) outcome = 'Suy tim mới mắc';
-      else if (/suy tim/i.test(cleanPre)) outcome = 'Biến cố Suy tim';
-      else if (/mace/i.test(cleanPre)) outcome = 'MACE';
-      else if (/tử vong do tim mạch|tử vong tm|cv death/i.test(cleanPre)) outcome = 'Tử vong TM';
-      else if (/tử vong mọi nguyên nhân|all-cause/i.test(cleanPre)) outcome = 'Tử vong chung';
-      else if (/nhập viện/i.test(cleanPre)) outcome = 'Nhập viện suy tim';
-      else if (/bệnh thận|tiến triển ckd|thận/i.test(cleanPre)) outcome = 'Biến cố Thận';
-      else if (/đột quỵ|stroke/i.test(cleanPre)) outcome = 'Đột quỵ';
-      else if (/nhồi máu cơ tim|mi\b/i.test(cleanPre)) outcome = 'Nhồi máu cơ tim';
-      else {
-        let snippet = cleanPre.split(/(?:[.;]|\bphân tích|\bthử nghiệm|\btrong)\s+/i).pop() || cleanPre;
-        snippet = snippet.replace(/^(?:thử nghiệm|phân tích gộp|trong phân tích|cho thấy|giúp giảm|giảm|và|kèm|trên|ở nhóm|ở bệnh nhân|nghiên cứu|đối với|kết quả|cho|thấy|ở)\s+/gi, '').trim();
-        outcome = snippet.replace(/^[:\-\s,]+|[:\-\s,]+$/g, '');
-        if (outcome.length > 25) outcome = outcome.substring(0, 24) + '…';
+      let subDetail = '';
+      if (/estrogen\s*\+\s*progestogen/i.test(snippet)) subDetail = 'Estrogen + Progestogen';
+      else if (/estrogen\s*đơn\s*trị/i.test(snippet)) subDetail = 'Estrogen đơn trị';
+      else if (/người\s*MCI|MCI/i.test(snippet)) subDetail = 'Người MCI';
+      else if (/người\s*bình\s*thường/i.test(snippet)) subDetail = 'Người bình thường';
+      else if (/cải thiện nhận thức/i.test(snippet)) subDetail = 'Cải thiện nhận thức';
+      else if (/sa sút trí tuệ\s*sau\s*5\s*năm/i.test(snippet)) subDetail = 'Sa sút trí tuệ (5y)';
+      else if (/sa sút trí tuệ/i.test(snippet)) subDetail = 'Sa sút trí tuệ';
+
+      let finalLabel = '';
+      const studyAcronym = state.currentStudy || '';
+
+      if (parentTopic && subDetail && !subDetail.toLowerCase().includes(parentTopic.toLowerCase())) {
+        finalLabel = `${parentTopic} (${subDetail})`;
+      } else if (studyAcronym && subDetail) {
+        finalLabel = `${studyAcronym}: ${subDetail}`;
+      } else if (subDetail) {
+        finalLabel = subDetail;
+      } else if (parentTopic) {
+        finalLabel = parentTopic;
+      } else if (studyAcronym) {
+        finalLabel = `${studyAcronym} (${metricName})`;
+      } else {
+        const clauses = cleanPre.split(/(?:[;•\n\r]|\d+\.\s+)/);
+        let clause = (clauses.pop() || '').trim();
+        let topic = clause.includes(':') ? clause.split(':')[0].trim() : clause;
+        finalLabel = cleanMedicalLabel(topic) || `${metricName} #${itemIndex}`;
       }
 
-      const study = state.currentStudy || '';
-      if (study && outcome) return `${study}: ${outcome}`;
-      if (study) return `${study} (${metricName})`;
-      if (outcome) return outcome;
-      return `${metricName} #${itemIndex}`;
+      finalLabel = finalLabel
+        .replace(/Huấn luyện nhận thức/gi, 'HL nhận thức')
+        .replace(/estrogen đơn trị/gi, 'Estrogen đơn trị')
+        .replace(/estrogen \+ progestogen/gi, 'Estrogen + Progestogen')
+        .replace(/bình thường/gi, 'Người bình thường')
+        .replace(/MCI/gi, 'Bệnh nhân MCI');
+
+      if (finalLabel.length > 32) finalLabel = finalLabel.substring(0, 31) + '…';
+
+      return finalLabel;
     }
 
     function parseForestDataAll(keyResults) {
@@ -2505,12 +2693,13 @@
 
       if (typeof keyResults !== 'string') return null;
 
+      const metricRegexStr = "(aHR|aOR|aRR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR|Hedges'\\s*g|Hedges\\s*g|Cohen's\\s*d|Cohen\\s*d|\\bg\\b|\\bd\\b)";
       const sep = '(?:đến|dến|dên|to|[-\u2013\u2014,])';
       const unit = '(?:\\s+[a-zA-Z%°µμ/-]+)?';
-      const metric = '(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)';
 
-      const globalPattern = new RegExp(
-        `\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*` +
+      // Pattern 1: Full CI
+      const patternFullCI = new RegExp(
+        `\\b${metricRegexStr}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*` +
         `(?:` +
           `\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)|` +
           `\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s+to\\s+(-?[\\d.]+)[^)]*\\)|` +
@@ -2522,22 +2711,37 @@
         'gi'
       );
 
-      const matches = [];
+      // Pattern 2: Range (SMD 0.01-0.08)
+      const patternRange = new RegExp(
+        `\\b${metricRegexStr}\\s*[=:]?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)`,
+        'gi'
+      );
+
+      // Pattern 3: Point estimate without CI (HR 1.00, Hedges' g 0.25)
+      const patternPoint = new RegExp(
+        `\\b${metricRegexStr}\\s*[=:]?\\s*(-?[\\d.]+)`,
+        'gi'
+      );
+
+      const rawMatches = [];
+      const occupiedRanges = [];
+
+      function isOverlapping(start, end) {
+        return occupiedRanges.some(r => !(end <= r.start || start >= r.end));
+      }
+
+      // Pass 1: Full CI
       let match;
-      let lastIndex = 0;
-      const state = { currentStudy: '' };
+      while ((match = patternFullCI.exec(keyResults)) !== null) {
+        const start = match.index;
+        const end = start + match[0].length;
+        if (isOverlapping(start, end)) continue;
 
-      while ((match = globalPattern.exec(keyResults)) !== null) {
-        const startIndex = match.index;
-        const fullMatchStr = match[0];
-
-        const metricName = (match[1] || '').toUpperCase();
-        const rawEst = (match[2] || '').trim().split(/\s+/)[0];
-        const estimate = parseFloat(rawEst);
-
+        const rawMetric = match[1];
+        const metricName = normalizeMetric(rawMetric);
+        const estimate = parseFloat(match[2]);
         const ciLowerStr = match[3] || match[5] || match[7] || match[9] || match[11] || match[13];
         const ciUpperStr = match[4] || match[6] || match[8] || match[10] || match[12] || match[14];
-
         const lower = parseFloat(ciLowerStr);
         const upper = parseFloat(ciUpperStr);
 
@@ -2545,35 +2749,102 @@
         if (lower > estimate || estimate > upper) continue;
         if (Math.abs(upper - lower) > 500) continue;
 
-        const preText = keyResults.substring(lastIndex, startIndex);
-        lastIndex = startIndex + fullMatchStr.length;
+        occupiedRanges.push({ start, end });
+        rawMatches.push({
+          start,
+          metric: metricName,
+          estimate,
+          lower,
+          upper,
+          hasCI: true
+        });
+      }
 
-        const label = extractLabelFromContext(preText, metricName, matches.length + 1, state);
+      // Pass 2: Range
+      while ((match = patternRange.exec(keyResults)) !== null) {
+        const start = match.index;
+        const end = start + match[0].length;
+        if (isOverlapping(start, end)) continue;
 
+        const rawMetric = match[1];
+        const metricName = normalizeMetric(rawMetric);
+        const val1 = parseFloat(match[2]);
+        const val2 = parseFloat(match[3]);
+
+        if (isNaN(val1) || isNaN(val2)) continue;
+
+        const lower = Math.min(val1, val2);
+        const upper = Math.max(val1, val2);
+        const estimate = (lower + upper) / 2;
+
+        occupiedRanges.push({ start, end });
+        rawMatches.push({
+          start,
+          metric: metricName,
+          estimate,
+          lower,
+          upper,
+          hasCI: true,
+          isRange: true
+        });
+      }
+
+      // Pass 3: Point estimate without CI
+      while ((match = patternPoint.exec(keyResults)) !== null) {
+        const start = match.index;
+        const end = start + match[0].length;
+        if (isOverlapping(start, end)) continue;
+
+        const rawMetric = match[1];
+        const metricName = normalizeMetric(rawMetric);
+        const estimate = parseFloat(match[2]);
+
+        if (isNaN(estimate)) continue;
+
+        occupiedRanges.push({ start, end });
+        rawMatches.push({
+          start,
+          metric: metricName,
+          estimate,
+          lower: estimate,
+          upper: estimate,
+          hasCI: false
+        });
+      }
+
+      rawMatches.sort((a, b) => a.start - b.start);
+
+      const state = { currentStudy: '' };
+      const matches = rawMatches.map((m, idx) => {
+        const preText = keyResults.substring(0, m.start);
+        const label = extractLabelFromContext(preText, m.metric, idx + 1, state);
+        
         let pValue = null;
-        const postSnippet = keyResults.substring(lastIndex, lastIndex + 30);
-        const pMatch = (preText + ' ' + postSnippet).match(/\bp\s*([<>=]=?)\s*([\d.]+)/i);
+        const postSnippet = keyResults.substring(m.start, m.start + 45);
+        const pMatch = (preText.slice(-30) + ' ' + postSnippet).match(/\bp\s*([<>=]=?)\s*([\d.]+)/i);
         if (pMatch) {
           const op = pMatch[1].replace('=', '');
           pValue = op ? `${op}${pMatch[2]}` : pMatch[2];
         }
 
-        const allowNeg = ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(metricName);
-        const isGreen = allowNeg ? estimate < 0.0 : estimate < 1.0;
-        const isHarm  = allowNeg ? estimate > 0.0 : estimate > 1.0;
+        const isDiff = ['MD', 'SMD', 'WMD', 'RD', 'ARR', "HEDGES' G", "COHEN'S D"].includes(m.metric.toUpperCase());
+        const isGreen = isDiff ? m.estimate > 0.0 : m.estimate < 1.0;
+        const isHarm  = isDiff ? m.estimate < 0.0 : m.estimate > 1.0;
 
-        matches.push({
+        return {
           type: 'forest',
           label,
-          metric: metricName,
-          estimate,
-          lower,
-          upper,
+          metric: m.metric,
+          estimate: m.estimate,
+          lower: m.lower,
+          upper: m.upper,
+          hasCI: m.hasCI,
+          isRange: m.isRange || false,
           pValue,
           isGreen,
           isHarm
-        });
-      }
+        };
+      });
 
       if (matches.length > 0) {
         return {
@@ -2707,32 +2978,54 @@
       if (!data || !Array.isArray(data.items) || data.items.length < 2) return '';
       const items = data.items;
 
-      const rowH = 24;
-      const PAD_T = 10, PAD_B = 10;
-      const W = 270;
+      const rowH = 28;
+      const PAD_T = 32, PAD_B = 14;
+      const W = 450;
       const H = PAD_T + PAD_B + items.length * rowH;
 
-      const maxVal = Math.max(...items.map(d => d.value), 0.1) * 1.25;
-      const plotW = 115;
-      const barX = 95;
+      const allMaxVals = items.map(d => d.max !== undefined ? d.max : d.value);
+      const maxVal = Math.max(...allMaxVals, 0.1) * 1.2;
+      const barX = 215;
+      const plotW = 140;
 
-      let svg = `<svg class="chart-svg chart-comp-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu đồ đối sánh">`;
+      let svg = `<svg class="chart-svg chart-comp-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu đồ đối sánh chỉ số">`;
       
+      // Legend / Header
+      svg += `<text x="10" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="var(--text-muted)">CHỈ SỐ DO LƯỜNG LÂM SÀNG</text>`;
+      svg += `<text x="${W - 10}" y="16" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#10b981">🟢 Giảm nguy cơ | <tspan fill="#ef4444">🔴 Tăng nguy cơ</tspan></text>`;
+      svg += `<line x1="10" y1="22" x2="${W - 10}" y2="22" stroke="var(--border)" stroke-width="0.75" opacity="0.6"/>`;
+
       items.forEach((item, idx) => {
         const y = PAD_T + idx * rowH;
-        const cy = y + 11;
-        const barW = Math.max(2, (item.value / maxVal) * plotW);
+        const cy = y + 12;
 
-        const cleanLbl = cleanMedicalLabel(item.label);
-        const lbl = cleanLbl.length > 16 ? cleanLbl.substring(0, 15) + '…' : cleanLbl;
-        svg += `<text x="88" y="${cy}" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="var(--text)">${escapeHtml(lbl)}</text>`;
-        svg += `<rect x="${barX}" y="${y + 2}" width="${barW}" height="12" rx="3" fill="${item.color || '#10b981'}"/>`;
+        let startX = barX;
+        let barW = 0;
+
+        if (item.isRange && item.min !== undefined && item.max !== undefined) {
+          startX = barX + (item.min / maxVal) * plotW;
+          barW = Math.max(8, ((item.max - item.min) / maxVal) * plotW);
+        } else {
+          barW = Math.max(3, (item.value / maxVal) * plotW);
+        }
+
+        const rawLbl = item.label || '';
+        const cleanLbl = cleanMedicalLabel(rawLbl);
+        const lbl = cleanLbl.length > 33 ? cleanLbl.substring(0, 32) + '…' : cleanLbl;
+        svg += `<text x="${barX - 8}" y="${cy}" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="var(--text)">${escapeHtml(lbl)}</text>`;
+        svg += `<rect x="${startX}" y="${y + 2}" width="${barW}" height="13" rx="3.5" fill="${item.color || '#10b981'}" opacity="0.9"/>`;
+
+        if (item.isRange) {
+          svg += `<circle cx="${startX}" cy="${y + 8.5}" r="2" fill="${item.color || '#10b981'}"/>`;
+          svg += `<circle cx="${startX + barW}" cy="${y + 8.5}" r="2" fill="${item.color || '#10b981'}"/>`;
+        }
 
         const countStr = (item.count !== null && item.count !== undefined && item.total !== null && item.total !== undefined) 
           ? `${item.value}% (${item.count}/${item.total})` 
-          : `${item.value}%`;
+          : (item.displayVal || `${item.value}%`);
 
-        svg += `<text x="${barX + barW + 5}" y="${cy}" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="${item.color || '#10b981'}">${escapeHtml(countStr)}</text>`;
+        const valTextX = item.isRange ? (startX + barW + 6) : (barX + barW + 6);
+        svg += `<text x="${valTextX}" y="${cy}" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="${item.color || '#10b981'}">${escapeHtml(countStr)}</text>`;
       });
 
       svg += `</svg>`;
@@ -2805,7 +3098,7 @@
       const W = 480;
       const H = PAD_T + items.length * rowH + PAD_B;
 
-      const isDiff = items.some(d => ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(d.metric));
+      const isDiff = items.some(d => ['MD', 'SMD', 'WMD', 'RD', 'ARR', "HEDGES' G", "COHEN'S D"].includes((d.metric || '').toUpperCase()));
       const nullVal = isDiff ? 0.0 : 1.0;
 
       const minLower = Math.min(...items.map(d => d.lower));
@@ -2815,7 +3108,7 @@
       const axisMin = isDiff ? (nullVal - maxDist) : Math.max(0.1, nullVal - maxDist);
       const axisMax = nullVal + maxDist;
 
-      const plotX1 = 165;
+      const plotX1 = 175;
       const plotX2 = 345;
       const plotW = plotX2 - plotX1;
 
@@ -2848,25 +3141,41 @@
           svg += `<rect x="8" y="${cy - rowH / 2}" width="${W - 16}" height="${rowH}" fill="var(--surface-2)" opacity="0.7" rx="4"/>`;
         }
 
-        const isGreen = isDiff ? item.estimate < 0.0 : item.estimate < 1.0;
-        const isHarm  = isDiff ? item.estimate > 0.0 : item.estimate > 1.0;
-        const dotColor = isGreen ? '#16a34a' : isHarm ? '#dc2626' : '#6b7280';
-        const ciColor  = isGreen ? '#86efac' : isHarm ? '#fca5a5' : '#cbd5e1';
+        const itemMetric = (item.metric || 'HR').toUpperCase();
+        const itemIsDiff = ['MD', 'SMD', 'WMD', 'RD', 'ARR', "HEDGES' G", "COHEN'S D"].includes(itemMetric);
+        const itemNull = itemIsDiff ? 0.0 : 1.0;
+
+        const isGreen = itemIsDiff ? item.estimate > 0.0 : item.estimate < 1.0;
+        const isHarm  = itemIsDiff ? item.estimate < 0.0 : item.estimate > 1.0;
+        const isNeutral = item.estimate === itemNull;
+
+        const dotColor = isNeutral ? '#6b7280' : isGreen ? '#16a34a' : '#dc2626';
+        const ciColor  = isNeutral ? '#cbd5e1' : isGreen ? '#86efac' : '#fca5a5';
 
         const xL = toX(item.lower);
         const xU = toX(item.upper);
         const xE = toX(item.estimate);
 
-        const labelStr = item.label.length > 24 ? item.label.substring(0, 23) + '…' : item.label;
+        const labelStr = item.label.length > 25 ? item.label.substring(0, 24) + '…' : item.label;
         svg += `<text x="12" y="${cy + 3.5}" font-size="9.5" font-weight="700" fill="var(--text)">${escapeHtml(labelStr)}</text>`;
 
-        svg += `<line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="3" stroke-linecap="round"/>`;
-        svg += `<line x1="${xL}" y1="${cy - 3.5}" x2="${xL}" y2="${cy + 3.5}" stroke="${dotColor}" stroke-width="1.8"/>`;
-        svg += `<line x1="${xU}" y1="${cy - 3.5}" x2="${xU}" y2="${cy + 3.5}" stroke="${dotColor}" stroke-width="1.8"/>`;
+        if (item.hasCI && item.lower !== item.upper) {
+          svg += `<line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="3" stroke-linecap="round"/>`;
+          svg += `<line x1="${xL}" y1="${cy - 3.5}" x2="${xL}" y2="${cy + 3.5}" stroke="${dotColor}" stroke-width="1.8"/>`;
+          svg += `<line x1="${xU}" y1="${cy - 3.5}" x2="${xU}" y2="${cy + 3.5}" stroke="${dotColor}" stroke-width="1.8"/>`;
+        }
 
         svg += `<polygon points="${xE},${cy - 4.5} ${xE + 4.5},${cy} ${xE},${cy + 4.5} ${xE - 4.5},${cy}" fill="${dotColor}" opacity="0.95"/>`;
 
-        const valText = `${item.metric || 'HR'} ${item.estimate.toFixed(2)} [${item.lower.toFixed(2)}–${item.upper.toFixed(2)}]`;
+        let valText = '';
+        if (item.isRange) {
+          valText = `${item.metric} ${item.lower.toFixed(2)}–${item.upper.toFixed(2)}`;
+        } else if (item.hasCI && item.lower !== item.upper) {
+          valText = `${item.metric} ${item.estimate.toFixed(2)} [${item.lower.toFixed(2)}–${item.upper.toFixed(2)}]`;
+        } else {
+          valText = `${item.metric} ${item.estimate.toFixed(2)}`;
+        }
+
         svg += `<text x="${W - 12}" y="${cy + 3.5}" text-anchor="end" class="val-text" font-size="9" font-weight="700" fill="${dotColor}">${valText}</text>`;
       });
 
@@ -2883,14 +3192,14 @@
     function renderSingleForestPlotSVG(forestData) {
       if (!forestData) return '';
 
-      const { label, metric, estimate, lower, upper, pValue } = forestData;
+      const { label, metric, estimate, lower, upper, pValue, hasCI, isRange } = forestData;
       const mLabel = metric || label || 'HR';
       const W = 270, H = 46;
       const PAD_L = 10, PAD_R = 10;
       const plotW = W - PAD_L - PAD_R;
       const cy = (H / 2) - 2;
 
-      const isDiff = ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(mLabel);
+      const isDiff = ['MD', 'SMD', 'WMD', 'RD', 'ARR', "HEDGES' G", "COHEN'S D"].includes(mLabel.toUpperCase());
       const nullVal = isDiff ? 0.0 : 1.0;
 
       const maxDist = Math.max(Math.abs(upper - nullVal), Math.abs(nullVal - lower)) * 1.3 + 0.15;
@@ -2906,27 +3215,33 @@
       const xL = toX(lower);
       const xU = toX(upper);
 
-      const isGreen = isDiff ? estimate < 0.0 : estimate < 1.0;
-      const isHarm  = isDiff ? estimate > 0.0 : estimate > 1.0;
-      const dotColor = isGreen ? '#16a34a' : isHarm ? '#dc2626' : '#6b7280';
-      const ciColor  = isGreen ? '#86efac' : isHarm ? '#fca5a5' : '#cbd5e1';
+      const isGreen = isDiff ? estimate > 0.0 : estimate < 1.0;
+      const isHarm  = isDiff ? estimate < 0.0 : estimate > 1.0;
+      const isNeutral = estimate === nullVal;
+      const dotColor = isNeutral ? '#6b7280' : isGreen ? '#16a34a' : '#dc2626';
+      const ciColor  = isNeutral ? '#cbd5e1' : isGreen ? '#86efac' : '#fca5a5';
 
       const pStr = pValue ? ` (p${pValue.startsWith('<') || pValue.startsWith('>') ? '' : '='}${pValue})` : '';
       const displayTag = (label && label !== mLabel) ? `${label}: ${mLabel}` : mLabel;
-      const labelText = `${displayTag} ${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]${pStr}`;
+      
+      let valPart = `${estimate.toFixed(2)}`;
+      if (isRange) valPart = `${lower.toFixed(2)}–${upper.toFixed(2)}`;
+      else if (hasCI && lower !== upper) valPart = `${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]`;
+
+      const labelText = `${displayTag} ${valPart}${pStr}`;
 
       return `
         <svg class="forest-plot-svg chart-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"
-             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forest plot: ${labelText}">
+             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forest plot: ${escapeHtml(labelText)}">
           <line x1="${PAD_L}" y1="${cy}" x2="${W - PAD_R}" y2="${cy}" stroke="#cbd5e1" stroke-width="1"/>
           <line x1="${x0}" y1="${cy - 12}" x2="${x0}" y2="${cy + 12}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
-          <line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="4" stroke-linecap="round"/>
+          ${(hasCI && lower !== upper) ? `<line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="4" stroke-linecap="round"/>
           <line x1="${xL}" y1="${cy - 4}" x2="${xL}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>
-          <line x1="${xU}" y1="${cy - 4}" x2="${xU}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>
+          <line x1="${xU}" y1="${cy - 4}" x2="${xU}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>` : ''}
           <polygon points="${xE},${cy - 6} ${xE + 6},${cy} ${xE},${cy + 6} ${xE - 6},${cy}"
                    fill="${dotColor}" opacity="0.95"/>
           <text x="${W / 2}" y="${H - 2}" text-anchor="middle"
-                font-family="monospace" font-size="9" fill="${dotColor}" font-weight="700">${labelText}</text>
+                font-family="monospace" font-size="9" fill="${dotColor}" font-weight="700">${escapeHtml(labelText)}</text>
           <text x="${PAD_L}" y="${cy - 6}" font-family="monospace" font-size="7.5" fill="#94a3b8">${axisMin.toFixed(2)}</text>
           <text x="${x0}" y="${cy - 6}" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#94a3b8">${nullVal.toFixed(1)}</text>
           <text x="${W - PAD_R}" y="${cy - 6}" text-anchor="end" font-family="monospace" font-size="7.5" fill="#94a3b8">${axisMax.toFixed(2)}</text>

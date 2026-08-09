@@ -9,8 +9,9 @@
 (function () {
   'use strict';
 
-  // Key lưu trữ localStorage duy nhất của phân hệ Guidelines
-  const STORAGE_KEY = 'internalMedicineStudies';
+  // Key lưu trữ localStorage của phân hệ Guidelines
+  const PRIMARY_STORAGE_KEY = 'clinicalGuidelines';
+  const LEGACY_STORAGE_KEY = 'internalMedicineStudies';
   const EVENT_NAME = 'cliniportal:guidelines-updated';
 
   // Khởi tạo namespace toàn cục CliniPortalSync
@@ -21,7 +22,7 @@
      */
     getStudies: function () {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved = localStorage.getItem(PRIMARY_STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
@@ -47,7 +48,8 @@
     saveStudies: function (studiesList) {
       if (!Array.isArray(studiesList)) return;
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(studiesList));
+        localStorage.setItem(PRIMARY_STORAGE_KEY, JSON.stringify(studiesList));
+        localStorage.setItem(LEGACY_STORAGE_KEY, JSON.stringify(studiesList));
         this.notifyUpdate();
       } catch (e) {
         console.error('[CliniPortalSync] Lỗi lưu localStorage:', e);
