@@ -105,6 +105,60 @@ function initHeader() {
   const arrowBtn       = document.getElementById('sidebar-toggle-arrow');
   const footer         = document.querySelector('.global-footer');
 
+  // --- Voice Search (Web Speech API) ---
+  (function initVoiceSearch() {
+    const voiceBtn = document.getElementById('voiceSearchBtn');
+    if (!voiceBtn) return;
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      voiceBtn.title = "Trình duyệt không hỗ trợ nhận diện giọng nói (Dùng Chrome/Edge)";
+      voiceBtn.style.opacity = '0.5';
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'vi-VN';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    voiceBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (voiceBtn.classList.contains('listening')) {
+        recognition.stop();
+      } else {
+        try {
+          recognition.start();
+        } catch (err) {
+          console.warn('[header.js] Voice search start failed:', err);
+        }
+      }
+    });
+
+    recognition.onstart = () => {
+      voiceBtn.classList.add('listening');
+    };
+
+    recognition.onend = () => {
+      voiceBtn.classList.remove('listening');
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      if (!transcript) return;
+
+      const overlay = document.getElementById('smartSearchOverlay');
+      const searchInput = document.getElementById('smartSearchInput');
+      if (overlay && searchInput) {
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        searchInput.value = transcript;
+        searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+        searchInput.focus();
+      }
+    };
+  })();
+
   // --- Theme toggle ---
   if (!window.CliniPortalTheme) {
     const html = document.documentElement;

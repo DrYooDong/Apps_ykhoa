@@ -20,77 +20,14 @@
   <link rel="stylesheet" href="../../../../css/components/mui-port.css">
   <script src="../../../../js/main.js" defer></script>
   <script src="../../../../js/mui-port.js" defer></script>
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <script src="../../../../components/header.js" defer></script>
 </head>
 
 <body class="pathology-workspace-body">
 
   <!-- TOPBAR -->
-  <header class="pm-topbar">
-    <div class="pm-topbar-left">
-      <a href="../tiep-can.html" class="pm-back-btn" title="Quay lai Phan he Tiep can">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span>Tiep can</span>
-      </a>
-      <div class="pm-brand">
-        <span class="pm-brand-icon">&#x1F6CF;&#xFE0F;</span>
-        <span class="pm-brand-name">Pathology Matrix</span>
-        <span class="pm-brand-version">v2.5</span>
-      </div>
-    </div>
-
-    <div class="pm-topbar-center">
-      <div class="pm-search-wrap">
-        <i class="fa-solid fa-magnifying-glass pm-search-icon"></i>
-        <input type="text" id="search-input" class="pm-search-input"
-          placeholder="Tim benh ly, ma ICD-10... (Go '/' de tim nhanh)"
-          oninput="handleSearch()">
-        <span class="pm-search-count" id="display-count">0</span>
-      </div>
-    </div>
-
-    <div class="pm-topbar-right">
-      <button class="pm-btn-primary" id="btn-add-new" onclick="openDiseaseModal(null)" title="Them phac do benh ly moi">
-        <i class="fa-solid fa-plus"></i>
-        <span>Them Moi</span>
-      </button>
-      <div class="pm-more-menu-wrap" id="moreMenuWrap">
-        <button class="pm-btn-icon" id="btn-more-menu" onclick="toggleMoreMenu()" title="Them tuy chon">
-          <i class="fa-solid fa-ellipsis-vertical"></i>
-        </button>
-        <div class="pm-more-menu" id="moreMenuDropdown">
-          <div class="pm-more-menu-section-label">Thu vien</div>
-          <button class="pm-more-item" onclick="openPresetLibraryModal(); closeMoreMenu()">
-            <i class="fa-solid fa-book-bookmark pm-more-item-icon blue"></i>
-            <span>Phac Do Mau</span>
-          </button>
-          <a href="infographic-poster-board.html" class="pm-more-item">
-            <i class="fa-solid fa-map-location-dot pm-more-item-icon purple"></i>
-            <span>Infographic Poster Board</span>
-          </a>
-          <a href="diagnostic-criteria/index.html" class="pm-more-item" onclick="closeMoreMenu()">
-            <i class="fa-solid fa-list-check pm-more-item-icon teal"></i>
-            <span>Tieu Chuan Chan Doan</span>
-          </a>
-          <div class="pm-more-divider"></div>
-          <div class="pm-more-menu-section-label">Du lieu</div>
-          <button class="pm-more-item" onclick="openImportModal(); closeMoreMenu()">
-            <i class="fa-solid fa-file-import pm-more-item-icon amber"></i>
-            <span>Nhap JSON</span>
-          </button>
-          <button class="pm-more-item" id="supabase-menu-btn" onclick="openSupabaseModal(); closeMoreMenu()">
-            <span id="supabase-status-dot" class="status-dot" style="width:8px;height:8px;border-radius:50%;background:#94a3b8;display:inline-block;flex-shrink:0;"></span>
-            <span id="supabase-status-text">Supabase Cloud</span>
-          </button>
-          <div class="pm-more-divider"></div>
-          <div class="pm-more-menu-section-label">Giao dien</div>
-          <button class="pm-more-item" id="themeToggleBtn" onclick="toggleTheme(); closeMoreMenu()">
-            <i class="fa-solid fa-moon pm-more-item-icon purple"></i>
-            <span>Doi Sang / Toi</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
 
   <!-- MAIN CONTENT -->
   <div class="pm-app-body">

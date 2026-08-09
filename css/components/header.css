@@ -4,7 +4,7 @@
 .global-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: var(--header-height);
+  height: var(--header-height, 60px);
   z-index: 200;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -14,9 +14,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
-  gap: 0.75rem;
+  gap: 1rem;
   max-width: 100vw;
-  overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 24px rgba(0,0,0,0.03);
   transition: background var(--tr), box-shadow var(--tr);
 }
@@ -31,6 +30,7 @@
   opacity: 0.8;
 }
 
+/* ── Zone 1: Header Left (Logo, Mobile Menu, Quay lại) ── */
 .header-left {
   display: flex;
   align-items: center;
@@ -41,15 +41,18 @@
 .mobile-menu-btn {
   width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-md, 8px);
   font-size: 1.1rem;
   color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
   transition: background var(--tr), color var(--tr), transform var(--tr);
   flex-shrink: 0;
 }
 .mobile-menu-btn:hover {
   background: var(--color-surface-offset);
-  color: var(--color-text);
+  color: var(--color-primary);
   transform: scale(1.05);
 }
 
@@ -59,12 +62,13 @@
   gap: 0.5rem;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: var(--text-md);
+  font-size: var(--text-md, 1.1rem);
   letter-spacing: -0.02em;
   white-space: nowrap;
+  text-decoration: none;
   transition: opacity var(--tr);
 }
-.logo-brand:hover { opacity: 0.85; }
+.logo-brand:hover { opacity: 0.88; }
 .logo-icon { font-size: 1.2rem; }
 
 /* Gradient text effect for logo */
@@ -75,7 +79,7 @@
   background-clip: text;
 }
 
-/* Button Back — Modern Rectangular Tech Design (Non-oval) */
+/* Button Back — Modern Tech Design */
 .btn-back {
   display: inline-flex;
   align-items: center;
@@ -121,70 +125,18 @@
   box-shadow: 0 1px 4px rgba(var(--color-primary-rgb, 2, 132, 199), 0.1);
 }
 
-/* Search — Glassmorphism */
-.search-bar-container { flex: 0 1 300px; max-width: 300px; min-width: 140px; }
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  height: 38px;
-  padding: 0 0.85rem;
-  background: var(--color-surface-offset);
-  border: 1px solid var(--color-divider);
-  border-radius: var(--radius-full);
-  transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
-}
-.search-container:focus-within {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.12), 0 2px 8px rgba(var(--color-primary-rgb), 0.08);
-  background: var(--color-surface);
-}
-.search-container .input {
-  flex: 1;
-  background: none;
-  border: none;
-  outline: none;
-  font: inherit;
-  color: var(--color-text);
-  font-size: var(--text-sm);
-}
-.search-container .input::placeholder { color: var(--color-text-faint); }
-.search__icon { width: 15px; height: 15px; fill: var(--color-text-faint); flex-shrink: 0; transition: fill var(--tr); }
-.search-container:focus-within .search__icon { fill: var(--color-primary); }
-
-.search-kbd-hint {
-  font-family: var(--font-mono, monospace);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 6px;
-  background: rgba(0,0,0,0.06);
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-divider);
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-  user-select: none;
-  transition: opacity 150ms;
-}
-[data-theme="dark"] .search-kbd-hint {
-  background: rgba(255,255,255,0.1);
-  color: var(--color-text-muted);
-}
-.search-container:focus-within .search-kbd-hint {
-  opacity: 0.4;
-}
-
-/* Header Modules Navigation Bar (Pill Buttons) */
+/* ── Zone 2: Header Center (Nav Module Links) ── */
 .header-nav-modules {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
+  gap: 0.4rem;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: 0.2rem 0;
   min-width: 0;
-  flex: 1 1 0%;
+  flex: 1 1 auto;
 }
 .header-nav-modules::-webkit-scrollbar {
   display: none;
@@ -325,15 +277,104 @@
   color: var(--color-text-muted);
 }
 
+/* ── Zone 3: Header Right (Search & Settings Actions) ── */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex: 0 0 auto;
+}
+
+/* Search Bar — Glassmorphism Container */
+.search-bar-container {
+  position: relative;
+  flex: 0 1 260px;
+  width: 260px;
+  max-width: 280px;
+  min-width: 140px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 38px;
+  padding: 0 0.75rem;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-full);
+  transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
+}
+
+.search-container:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.12), 0 2px 8px rgba(var(--color-primary-rgb), 0.08);
+  background: var(--color-surface);
+}
+
+.search-container .input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: var(--color-text);
+  font-size: var(--text-xs, 0.8rem);
+  width: 100%;
+}
+.search-container .input::placeholder { color: var(--color-text-faint); }
+.search__icon { width: 15px; height: 15px; fill: var(--color-text-faint); flex-shrink: 0; transition: fill var(--tr); }
+.search-container:focus-within .search__icon { fill: var(--color-primary); }
+
+.voice-search-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.voice-search-btn:hover {
+  color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+.search-kbd-hint {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  background: rgba(0,0,0,0.06);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-divider);
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  transition: opacity 150ms;
+}
+[data-theme="dark"] .search-kbd-hint {
+  background: rgba(255,255,255,0.1);
+  color: var(--color-text-muted);
+}
+.search-container:focus-within .search-kbd-hint {
+  opacity: 0.4;
+}
+
 /* Header Settings Button */
 .header-settings-btn {
   width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
   border-radius: var(--radius-md, 8px);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   background: var(--color-surface-offset);
   border: 1px solid var(--color-border);
-  color: var(--color-text);
+  color: var(--color-text-muted);
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
@@ -341,7 +382,8 @@
 .header-settings-btn:hover {
   background: var(--color-primary-hl);
   border-color: var(--color-primary);
-  transform: scale(1.08) rotate(30deg);
+  color: var(--color-primary);
+  transform: scale(1.06) rotate(30deg);
 }
 
 /* Settings Modal Setting Buttons */
@@ -366,13 +408,12 @@
   transform: translateY(-1px);
 }
 
-/* Header actions */
+/* Header actions container */
 .header-actions {
   display: flex;
   align-items: center;
   gap: 0.35rem;
   flex-shrink: 0;
-  margin-left: 0.5rem;
   z-index: 10;
 }
 
@@ -380,32 +421,23 @@
    HEADER — RESPONSIVE
 ============================================================ */
 
-/* Tablet (768px – 1023px) */
-@media (max-width: 1023px) {
+/* Laptop & Large Tablet (1024px – 1280px) */
+@media (max-width: 1280px) {
   .search-bar-container {
-    max-width: 220px;
+    width: 200px;
+    max-width: 200px;
   }
 }
 
-/* Mobile (≤ 767px) */
-@media (max-width: 767px) {
-  .header-module-btn span {
-    display: none;
-  }
-  .header-module-btn {
-    padding: 0 0.5rem;
-    height: 32px;
-  }
-}
-
-/* ============================================================
-   HEADER — RESPONSIVE
-============================================================ */
-
 /* Tablet (768px – 1023px) */
 @media (max-width: 1023px) {
+  .global-header {
+    padding: 0 1rem;
+    gap: 0.75rem;
+  }
   .search-bar-container {
-    max-width: 240px;
+    width: 180px;
+    max-width: 180px;
   }
 }
 
@@ -420,7 +452,7 @@
   .header-left {
     flex: 1;
     min-width: 0;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .logo-brand {
@@ -433,6 +465,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .header-nav-modules {
+    display: none; /* Ẩn bớt thanh pill module trên màn hình điện thoại nhỏ để thanh header thoáng */
+  }
+
+  .header-right {
+    gap: 0.35rem;
   }
 
   .btn-back {
@@ -454,7 +494,9 @@
 
   .search-bar-container {
     flex: 0 0 auto;
-    max-width: unset;
+    width: 36px;
+    max-width: 36px;
+    min-width: 36px;
   }
 
   .search-container {
@@ -464,7 +506,9 @@
     overflow: hidden;
   }
 
-  .search-container .input {
+  .search-container .input,
+  .search-kbd-hint,
+  .voice-search-btn {
     display: none;
   }
 
@@ -479,19 +523,17 @@
   }
 
   .mobile-menu-btn,
-  .header-actions button,
+  .header-settings-btn,
   .search-container {
     width: 36px;
     height: 36px;
     flex-shrink: 0;
   }
+
   /* Ẩn text label logo nếu màn hình quá nhỏ (< 360px) */
   @media (max-width: 359px) {
     .logo-text {
       display: none;
-    }
-    .search-bar-container {
-      max-width: 100px;
     }
   }
 }

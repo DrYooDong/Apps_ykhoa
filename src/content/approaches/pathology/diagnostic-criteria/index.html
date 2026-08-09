@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="css/criteria.css">
 
   <script src="../../../../../js/main.js" defer></script>
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <script src="../../../../../components/header.js" defer></script>
 </head>
 
 <body class="dc-workspace-body">
@@ -27,38 +29,7 @@
   <!-- ╔══════════════════════════════════════════════════╗ -->
   <!-- ║  TOPBAR                                          ║ -->
   <!-- ╚══════════════════════════════════════════════════╝ -->
-  <header class="dc-topbar">
-    <div class="dc-topbar-left">
-      <a href="../../tiep-can.html" class="dc-back-btn" id="dc-back-btn" title="Trở về Trang Tiếp cận Lâm sàng">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span>Tiếp cận</span>
-      </a>
-      <div class="dc-brand">
-        <span class="dc-brand-icon">📋</span>
-        <span class="dc-brand-name">Tiêu chuẩn Chẩn đoán</span>
-        <span class="dc-brand-badge">v3.0</span>
-      </div>
-    </div>
-
-    <div class="dc-topbar-center">
-      <div class="dc-search-wrap">
-        <i class="fa-solid fa-magnifying-glass dc-search-icon"></i>
-        <input type="text" id="criteria-search" class="dc-search-input"
-          placeholder="Tìm tiêu chuẩn, bệnh, mã ICD-10... (Gõ '/' để tìm nhanh)"
-          oninput="handleCriteriaSearch()" autocomplete="off">
-        <span class="dc-search-count" id="criteria-display-count">0</span>
-        <button class="dc-search-clear" id="search-clear-btn" onclick="clearSearch()" title="Xóa tìm kiếm" style="display:none;">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="dc-topbar-right">
-      <button class="dc-theme-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Đổi chế độ Sáng / Tối">
-        <i class="fa-solid fa-moon" id="theme-icon"></i>
-      </button>
-    </div>
-  </header>
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
 
   <!-- ╔══════════════════════════════════════════════════╗ -->
   <!-- ║  HERO SECTION                                    ║ -->

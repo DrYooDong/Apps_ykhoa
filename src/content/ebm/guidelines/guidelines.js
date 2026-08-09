@@ -171,9 +171,14 @@
     }
 
     async function syncStudiesWithSupabase() {
-      if (!supabaseClient) return;
+      if (!supabaseClient) {
+        studies = [];
+        renderTable();
+        renderUpdates();
+        return;
+      }
       
-      updateSupabaseStatus('connected', 'Supabase: Syncing...');
+      updateSupabaseStatus('connected', 'Supabase: Đang tải...');
       try {
         const { data, error } = await supabaseClient
           .from('clinical_guidelines')
@@ -182,75 +187,18 @@
           
         if (error) throw error;
         
-        if (data && data.length > 0) {
-          const remoteStudies = data.map(s => processStudyFields(s));
-          const localCustom = studies.filter(s => s && s.id && (s.id.startsWith('study_') || s.createdAt));
-          studies = processAndDeduplicateStudies([...localCustom, ...remoteStudies, ...studies]);
+        if (data) {
+          studies = data.map(s => processStudyFields(s));
           studies.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
           
-          saveStudies(); // cache local
+          saveStudies(); // cache local cho phiên làm việc hiện tại
           renderTable();
           renderUpdates();
           updateSupabaseStatus('connected', `Supabase: Đã nạp ${studies.length} bài`);
-        } else {
-          // Upload local data to seed Supabase
-          if (studies.length > 0) {
-            const seedPayload = studies.map(s => ({
-              id: s.id,
-              title: s.title,
-              author: s.author,
-              drug: s.drug,
-              sourceType: s.sourceType,
-              specialty: s.specialty,
-              design: s.design,
-              intervention: s.intervention || '',
-              primaryEndpoint: s.primaryEndpoint || '',
-              keyResults: s.keyResults || '',
-              impact: s.impact,
-              year: s.year,
-              organization: s.organization,
-              phase: s.phase,
-              sampleSize: s.sampleSize,
-              population: s.population,
-              summary: s.summary,
-              detailedConclusion: s.detailedConclusion,
-              fdaStatus: s.fdaStatus,
-              sourceUrl: s.sourceUrl,
-              file: s.file,
-              asianData: s.asianData,
-              bookmarked: s.bookmarked,
-              parts: s.parts ? (typeof s.parts === 'string' ? s.parts : JSON.stringify(s.parts)) : null,
-              icd10: s.icd10 ? (typeof s.icd10 === 'string' ? s.icd10 : JSON.stringify(s.icd10)) : null,
-              subgroups: s.subgroups ? (typeof s.subgroups === 'string' ? s.subgroups : JSON.stringify(s.subgroups)) : null,
-              createdAt: s.createdAt
-            }));
-
-            let { error: insertError } = await supabaseClient
-              .from('clinical_guidelines')
-              .insert(seedPayload);
-
-            if (insertError && (insertError.code === 'PGRST204' || (insertError.message && insertError.message.toLowerCase().includes('column')))) {
-              console.warn('Supabase schema missing optional columns on seed, retrying with core columns');
-              const coreSeedPayload = seedPayload.map(sp => {
-                const cp = { ...sp };
-                delete cp.parts;
-                delete cp.icd10;
-                delete cp.subgroups;
-                return cp;
-              });
-              const retryRes = await supabaseClient
-                .from('clinical_guidelines')
-                .insert(coreSeedPayload);
-              insertError = retryRes.error;
-            }
-              
-            if (insertError) throw insertError;
-            updateSupabaseStatus('connected', 'Supabase: Seeded');
-          }
         }
       } catch (err) {
         console.error('Supabase Sync failed:', err);
-        updateSupabaseStatus('error', 'Supabase: Sync Failed');
+        updateSupabaseStatus('error', 'Supabase: Conn Error');
       }
     }
 
@@ -486,96 +434,31 @@
         localStorage.removeItem('cliniportal_deleted_study_ids');
       } catch (e) {}
 
-      const deletedList = getDeletedStudyIds();
       studies = [];
 
-      // Load user custom studies or Supabase cached studies
-      try {
-        const storedCustom = localStorage.getItem('cliniportal_custom_studies');
-        if (storedCustom) {
-          const customStudies = JSON.parse(storedCustom);
-          if (Array.isArray(customStudies)) {
-            customStudies.forEach(cs => {
-              if (!isStudyDeleted(cs, deletedList)) {
-                const processed = processStudyFields(cs);
-                const idx = studies.findIndex(s => s.id === processed.id);
-                if (idx !== -1) {
-                  studies[idx] = processed;
-                } else {
-                  studies.push(processed);
+      // Chỉ nạp dữ liệu khi đã kết nối Supabase hợp lệ
+      if (supabaseClient) {
+        const deletedList = getDeletedStudyIds();
+        try {
+          const storedCustom = localStorage.getItem('cliniportal_custom_studies');
+          if (storedCustom) {
+            const customStudies = JSON.parse(storedCustom);
+            if (Array.isArray(customStudies)) {
+              customStudies.forEach(cs => {
+                if (!isStudyDeleted(cs, deletedList)) {
+                  const processed = processStudyFields(cs);
+                  const idx = studies.findIndex(s => s.id === processed.id);
+                  if (idx !== -1) {
+                    studies[idx] = processed;
+                  } else {
+                    studies.push(processed);
+                  }
                 }
-              }
-            });
+              });
+            }
           }
-        }
-      } catch (e) {}
-
-      // Auto-restore recovered full studies for Bão Giáp and Sốt Xuất Huyết Dengue
-      const RECOVERED_STUDIES = [
-        {
-          "id": "study_bao_giap_2026",
-          "title": "Hướng Dẫn Chẩn Đoán & Điều Trị Cơn Bão Giáp JCEM 2026",
-          "author": "JCEM / Endocrine Society",
-          "drug": "PTU, Methimazole, Propranolol, Hydrocortisone, Lugol",
-          "sourceType": "intl-guideline",
-          "specialty": "endo",
-          "design": "guideline",
-          "intervention": "Thuốc kháng giáp (PTU/MMI) + Chẹn Beta (Propranolol) + Corticoid (Hydrocortisone) + Dung dịch Iod (Lugol)",
-          "primaryEndpoint": "Tỷ lệ cắt cơn bão giáp và giảm tử vong tại ICU",
-          "keyResults": "Giảm tử vong ICU từ 30% xuống < 10% khi áp dụng phác đồ đa mô thức sớm trong 6-12h đầu",
-          "impact": "practice-changing",
-          "year": 2026,
-          "organization": "JCEM / Endocrine Society",
-          "phase": "Guidelines",
-          "sampleSize": null,
-          "population": "Bệnh nhân cường giáp nặng biến chứng cơn bão giáp (Thyroid Storm)",
-          "summary": "Tóm tắt Hướng dẫn Chẩn đoán và Điều trị Cơn Bão Giáp 2026 (JCEM / Endocrine Society) – Sinh lý bệnh, thang điểm BWPS & JTA, phác đồ điều trị đa mô thức, liều dùng thuốc kháng giáp, chẹn beta, liệu pháp iod và xử trí ICU.",
-          "detailedConclusion": "Phác đồ đa mô thức gồm 4 trụ cột: (1) Khống chế tổng hợp hormone giáp (PTU 200mg q4h hoặc MMI 20mg q4h); (2) Ngăn giải phóng hormone giáp (Dung dịch Lugol/SSKI sau 1h dùng antithyroid); (3) Tắt ảnh hưởng giao cảm (Propranolol 60-80mg q4h); (4) Ngăn chuyển T4 thành T3 ngoại vi (Hydrocortisone 100mg q8h).",
-          "fdaStatus": "Endocrine Society & JCEM Guideline 2026",
-          "sourceUrl": "",
-          "file": "kho-guidelines/cap-nhat-ve-bao-giap-2026.html",
-          "asianData": true,
-          "bookmarked": true,
-          "icd10": ["E05", "E05.5"],
-          "subgroups": null,
-          "createdAt": "2026-08-09T16:40:00.000Z"
-        },
-        {
-          "id": "study_sot_xuat_huyet_dengue_2023",
-          "title": "Hướng Dẫn Chẩn Đoán & Điều Trị Sốt Xuất Huyết Dengue BYT 2023",
-          "author": "Bộ Y tế Việt Nam",
-          "drug": "Ringer Lactate, NaCl 0.9%, Cao phân tử (Dextran 40/70, HES 200k), Paracetamol",
-          "sourceType": "vn-moh",
-          "specialty": "infect",
-          "design": "guideline",
-          "intervention": "Phác đồ bù dịch điện giải (Ringer Lactate/NaCl 0.9%) -> Dung dịch Cao phân tử khi có sốc SXH Dengue",
-          "primaryEndpoint": "Phòng ngừa và xử trí sốc SXH Dengue, suy đa tạng và xuất huyết nặng",
-          "keyResults": "Hạ tỷ lệ tử vong do sốc SXH Dengue xuống < 0.1% nhờ quy trình bù dịch phân tầng 3 giờ và theo dõi Hct liên tục",
-          "impact": "practice-changing",
-          "year": 2023,
-          "organization": "Bộ Y tế Việt Nam (QĐ 2760/QĐ-BYT)",
-          "phase": "Guidelines BYT",
-          "sampleSize": null,
-          "population": "Bệnh nhân nghi ngờ hoặc xác định nhiễm vi-rút Dengue (trẻ em và người lớn)",
-          "summary": "Tóm tắt Hướng dẫn Chẩn đoán và Điều trị Sốt xuất huyết Dengue 2023 của Bộ Y tế Việt Nam (QĐ 2760/QĐ-BYT). Phác đồ bù dịch, quy trình chống sốc trẻ em và người lớn, cao phân tử, truyền máu và xử trí suy tạng.",
-          "detailedConclusion": "Quy trình phân tầng 3 mức độ: (1) SXH Dengue -> Bù dịch Oresol/nước hoa quả uống; (2) SXH Dengue có dấu hiệu cảnh báo -> Truyền dịch Ringer Lactate/NaCl 0.9% 6-7ml/kg/h; (3) Sốc SXH Dengue -> Chống sốc bù dịch nhanh 15-20ml/kg/h, chuyển cao phân tử nếu tái sốc hoặc không đáp ứng.",
-          "fdaStatus": "Hướng dẫn điều trị chuẩn Bộ Y tế Việt Nam 2023",
-          "sourceUrl": "",
-          "file": "kho-guidelines/byt-sot-xuat-huyet-dengue-2023.html",
-          "asianData": true,
-          "bookmarked": true,
-          "icd10": ["A90", "A91"],
-          "subgroups": null,
-          "createdAt": "2026-08-09T16:40:00.000Z"
-        }
-      ];
-
-      RECOVERED_STUDIES.forEach(rec => {
-        if (!studies.some(s => s.id === rec.id || (rec.file && s.file === rec.file))) {
-          studies.unshift(rec);
-        }
-      });
-      saveStudies();
+        } catch (e) {}
+      }
     }
 
     function saveStudies() {
@@ -2017,9 +1900,18 @@
     window.openImportModal = openImportModal;
     window.closeImportModal = closeImportModal;
     window.openSupabaseModal = openSupabaseModal;
+    function cleanAndDeduplicateAllStudies() {
+      studies = processAndDeduplicateStudies(studies);
+      saveStudies();
+      renderTable();
+      renderUpdates();
+      alert('🧹 Đã quét và loại bỏ thành công toàn bộ các bài nghiên cứu trùng lặp!');
+    }
+
     window.closeSupabaseModal = closeSupabaseModal;
     window.saveSupabaseConfig = saveSupabaseConfig;
     window.clearSupabaseConfig = clearSupabaseConfig;
+    window.cleanAndDeduplicateAllStudies = cleanAndDeduplicateAllStudies;
     window.openIcdFilterModal = openIcdFilterModal;
     window.closeIcdFilterModal = closeIcdFilterModal;
     window.printStudySummary = printStudySummary;
@@ -4280,13 +4172,18 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       initSidebarState();
+
+      // Đăng xuất và ngắt kết nối Supabase hoàn toàn khỏi thiết bị để tránh đồng bộ ngược ngoài ý muốn
+      try {
+        localStorage.removeItem('supabaseUrl');
+        localStorage.removeItem('supabaseKey');
+      } catch (e) {}
+
       initSupabase();
       loadStudies();
       parseUrlState();
-      
-      if (supabaseClient) {
-        syncStudiesWithSupabase();
-      }
+
+      // Tắt tự động đẩy đồng bộ ngược dữ liệu khi vừa mở trang. Chỉ đồng bộ khi người dùng chủ động yêu cầu trong Modal.
 
       // Add NNT inputs listeners
       const nntCer = document.getElementById('nnt-cer-input');

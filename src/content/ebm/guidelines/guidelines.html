@@ -16,9 +16,13 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="guidelines.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <script src="../../../../components/header.js" defer></script>
 </head>
 
 <body>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+
   <!-- TOP NAV -->
   <nav class="topnav">
     <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" onclick="toggleSidebar()" title="Thu gọn / Mở rộng Sidebar (Alt+S)" aria-label="Thu gọn hoặc mở rộng Sidebar">
@@ -692,7 +696,7 @@ create table clinical_guidelines (
           </details>
           
           <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
-            <button type="button" class="btn" style="color: var(--color-practice-changing); border-color: rgba(220,38,38,0.2);" onclick="clearSupabaseConfig()">Xóa cấu hình</button>
+            <button type="button" class="btn" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" onclick="clearSupabaseConfig()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất / Thoát tài khoản</button>
             <button type="button" class="btn" onclick="closeSupabaseModal()">Hủy</button>
             <button type="submit" class="btn btn-primary">Lưu & Kết nối</button>
           </div>
