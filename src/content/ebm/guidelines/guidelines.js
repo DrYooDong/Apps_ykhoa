@@ -435,29 +435,35 @@
       } catch (e) {}
 
       studies = [];
+      const deletedList = getDeletedStudyIds();
+      let rawList = [];
 
-      // Chỉ nạp dữ liệu khi đã kết nối Supabase hợp lệ
-      if (supabaseClient) {
-        const deletedList = getDeletedStudyIds();
-        try {
-          const storedCustom = localStorage.getItem('cliniportal_custom_studies');
-          if (storedCustom) {
-            const customStudies = JSON.parse(storedCustom);
-            if (Array.isArray(customStudies)) {
-              customStudies.forEach(cs => {
-                if (!isStudyDeleted(cs, deletedList)) {
-                  const processed = processStudyFields(cs);
-                  const idx = studies.findIndex(s => s.id === processed.id);
-                  if (idx !== -1) {
-                    studies[idx] = processed;
-                  } else {
-                    studies.push(processed);
-                  }
-                }
-              });
+      try {
+        const storedCustom = localStorage.getItem('cliniportal_custom_studies');
+        if (storedCustom) {
+          const parsed = JSON.parse(storedCustom);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            rawList = parsed;
+          }
+        }
+      } catch (e) {}
+
+      if (rawList.length === 0 && typeof window.SAMPLE_STUDIES !== 'undefined' && Array.isArray(window.SAMPLE_STUDIES)) {
+        rawList = window.SAMPLE_STUDIES;
+      }
+
+      if (Array.isArray(rawList)) {
+        rawList.forEach(cs => {
+          if (!isStudyDeleted(cs, deletedList)) {
+            const processed = processStudyFields(cs);
+            const idx = studies.findIndex(s => s.id === processed.id);
+            if (idx !== -1) {
+              studies[idx] = processed;
+            } else {
+              studies.push(processed);
             }
           }
-        } catch (e) {}
+        });
       }
     }
 
@@ -4172,12 +4178,6 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       initSidebarState();
-
-      // Đăng xuất và ngắt kết nối Supabase hoàn toàn khỏi thiết bị để tránh đồng bộ ngược ngoài ý muốn
-      try {
-        localStorage.removeItem('supabaseUrl');
-        localStorage.removeItem('supabaseKey');
-      } catch (e) {}
 
       initSupabase();
       loadStudies();

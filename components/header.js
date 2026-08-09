@@ -71,7 +71,14 @@ async function loadHeader() {
     const projectRoot = getProjectRootPrefix(headerPath);
     fixHeaderLinks(holder, projectRoot);
 
-    // Tự động nạp bộ linh kiện Material UI (mui-port) cho toàn bộ hệ sinh thái CliniPortal
+    // Tự động nạp CSS header & bộ linh kiện Material UI (mui-port) cho toàn bộ hệ sinh thái CliniPortal
+    if (!document.querySelector('link[href*="header.css"]')) {
+      const cssHeaderLink = document.createElement('link');
+      cssHeaderLink.rel = 'stylesheet';
+      cssHeaderLink.href = projectRoot + 'css/components/header.css';
+      document.head.appendChild(cssHeaderLink);
+    }
+
     if (!document.querySelector('link[href*="mui-port.css"]')) {
       const cssLink = document.createElement('link');
       cssLink.rel = 'stylesheet';
