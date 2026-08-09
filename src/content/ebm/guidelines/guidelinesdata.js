@@ -47,7 +47,69 @@
     };
 
         const SAMPLE_STUDIES = [
-
+  {
+    "id": "study_2025_aha_acc_hypertension",
+    "title": "Hướng Dẫn 2025 của AHA/ACC/AMA về Phòng Ngừa, Phát Hiện, Đánh Giá và Quản Lý Tăng Huyết Áp Ở Người Trưởng Thành (2025 AHA/ACC Guideline for High Blood Pressure in Adults)",
+    "drug": "chlorthalidone, indapamide, hydrochlorothiazide, amlodipine, felodipine, lisinopril, perindopril, enalapril, valsartan, losartan, telmisartan, spironolactone, eplerenone, aprocitentan, labetalol, nifedipine, hydralazine, clevidipine, nicardipine, aspirin",
+    "sourceType": "intl-guideline",
+    "specialty": "cardio",
+    "design": "guideline",
+    "impact": "practice-changing",
+    "year": 2025,
+    "organization": "AHA / ACC / AMA / ASPC / NMA Joint Committee",
+    "phase": "Clinical Practice Guideline",
+    "sampleSize": 3200000,
+    "population": "Bệnh nhân người trưởng thành có huyết áp bình thường, tăng nhẹ hoặc tăng huyết áp (trưởng thành không mang thai và mang thai)",
+    "keyResults": "HBAR: Hạ SBP do Giảm Cân: -6 đến -8 mmHg | Hạ SBP do Chế độ ăn DASH: -5 đến -8 mmHg | Hạ SBP do Giảm Natri: -6 đến -8 mmHg | Hạ SBP do Muối Kali 25-30% KCl: -5 đến -7 mmHg | Hạ SBP do Bổ sung Kali: -6 mmHg | Hạ SBP do Thể dục Aerobic: -2 đến -10 mmHg | Hạ SBP do Giảm Rượu: -4 đến -6 mmHg",
+    "summary": "Hướng dẫn AHA/ACC 2025 chính thức bãi bỏ Hướng dẫn 2017, đưa vào phương trình PREVENT™ (3.2 triệu cá nhân, tích hợp eGFR & SDI) thay thế PCEs với ngưỡng nguy cơ 10 năm ≥ 7.5%, ưu tiên viên phối hợp liều cố định Single-Pill Combination (SPC) cho THA Độ 2, đồng thuận chỉ định Triệt thần kinh giao cảm động mạch thận (RDN) cho THA kháng trị Độ 2, bãi bỏ thuật ngữ Hypertensive Urgency, và quy định cụ thể đích HA cho đái tháo đường, bệnh thận mạn, đột quỵ cấp, sa sút trí tuệ (SPRINT-MIND) và thai kỳ.",
+    "detailedConclusion": "AHA/ACC 2025 thiết lập tiêu chuẩn mới trong quản lý tăng huyết áp toàn diện: chuyển từ PCE sang PREVENT, tối ưu hóa lối sống & muối kali, ưu tiên viên phối hợp SPC từ khởi trị Stage 2, chỉ định RDN chuẩn hóa, quản lý huyết áp não mịn màng trong đột quỵ/ICH, và bảo vệ chức năng nhận thức dài hạn.",
+    "sourceUrl": "https://doi.org/10.1161/HYP.0000000000000249",
+    "file": "kho-guidelines/2025-aha-acc-hypertension.html",
+    "asianData": false,
+    "bookmarked": true
+  },
+  {
+    "id": "study_2016_jama_sepsis_3_consensus",
+    "title": "Định Nghĩa Đồng Thuận Quốc Tế Lần Thứ Ba Về Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn (Sepsis-3 JAMA 2016)",
+    "drug": "norepinephrine, epinephrine, vasopressin, dobutamine, lactate, ringer lactate",
+    "sourceType": "intl-guideline",
+    "specialty": "icu",
+    "design": "guideline",
+    "impact": "practice-changing",
+    "year": 2016,
+    "organization": "SCCM / ESICM Consensus Panel",
+    "phase": "Consensus Statement / Clinical Criteria",
+    "sampleSize": 850000,
+    "population": "Bệnh nhân người lớn nghi ngờ hoặc xác định Nhiễm khuẩn huyết (Sepsis) và Sốc nhiễm khuẩn (Septic Shock)",
+    "keyResults": "HBAR: qSOFA ngoài ICU: AUROC 0.81 | SOFA ngoài ICU: AUROC 0.79 | SIRS ngoài ICU: AUROC 0.76 | SOFA trong ICU: AUROC 0.74 | SIRS trong ICU: AUROC 0.64",
+    "summary": "Đồng thuận quốc tế Sepsis-3 (JAMA 2016) tái định nghĩa Nhiễm khuẩn huyết là rối loạn chức năng cơ quan đe dọa tính mạng do phản ứng mất điều hòa của ký chủ (thay đổi điểm SOFA cấp tính ≥2, tử vong >10%), bãi bỏ thuật ngữ Severe Sepsis, giới thiệu công cụ sàng lọc nhanh tại giường qSOFA (GCS <15, SBP ≤100, RR ≥22) cho môi trường ngoài ICU, và xác lập tiêu chuẩn Sốc nhiễm khuẩn (bù đủ dịch cần vận mạch giữ MAP ≥65 mmHg VÀ Lactate >2 mmol/L, tử vong >40%).",
+    "detailedConclusion": "Sepsis-3 thay đổi toàn diện mô hình bệnh học 25 năm, chuyển từ khái niệm viêm hệ thống SIRS sang rối loạn chức năng cơ quan SOFA cấp tính ≥ 2 và thiết lập qSOFA làm công cụ sàng lọc nhanh hiệu năng cao tại giường ngoài ICU.",
+    "sourceUrl": "https://doi.org/10.1001/jama.2016.0287",
+    "file": "kho-guidelines/2016-jama-sepsis-3-consensus.html",
+    "asianData": false,
+    "bookmarked": true
+  },
+  {
+    "id": "study_2026_surviving_sepsis_campaign_international_guidelines",
+    "title": "Hướng Dẫn Lâm Sàng Quốc Tế Quản Lý Nhiễm Khuẩn Huyết và Sốc Nhiễm Khuẩn (Surviving Sepsis Campaign - SSC 2026 Guidelines)",
+    "drug": "norepinephrine, vasopressin, epinephrine, dobutamine, hydrocortisone, fludrocortisone, ringer lactate, albumin, piperacillin-tazobactam, cefepime, meropenem, vancomycin, insulin, heparin",
+    "sourceType": "intl-guideline",
+    "specialty": "icu",
+    "design": "guideline",
+    "impact": "practice-changing",
+    "year": 2026,
+    "organization": "SCCM / ESICM (Surviving Sepsis Campaign)",
+    "phase": "International Clinical Guideline",
+    "sampleSize": null,
+    "population": "Bệnh nhân người lớn nghi ngờ hoặc xác định Nhiễm khuẩn huyết (Sepsis) và Sốc nhiễm khuẩn (Septic Shock)",
+    "keyResults": "HR 0.86 (95% CI 0.74-0.99, p=0.04) ở các thử nghiệm kháng sinh sớm. Thử nghiệm BLING III khẳng định lợi ích giảm tử vong của truyền kéo dài Beta-lactam. Thử nghiệm BALANCE 7 ngày kháng sinh không kém hơn 14 ngày. Thử nghiệm EVERDAC: đặt BP động mạch trì hoãn không kém hơn thường quy. Thử nghiệm CLOVERS: bù dịch tự do vs hạn chế có tỷ lệ tử vong 90 ngày tương đương.",
+    "summary": "Tóm tắt toàn diện Hướng dẫn Lâm sàng Quốc tế 2026 của Surviving Sepsis Campaign (SSC/SCCM/ESICM): Sàng lọc NEWS/NEWS2/MEWS/SIRS, cấy máu & đo lactate, hồi sức dịch ban đầu ≥30 mL/kg trong 3 giờ, khởi đầu Norepinephrine sớm (đích MAP ≥65 mmHg hoặc 60-65 mmHg ở người ≥65 tuổi), kháng sinh sớm theo sơ đồ sốc & mức độ chắc chắn, truyền kéo dài Beta-lactam (BLING III), kiểm soát nguồn trong 6 giờ, bù dịch bằng dịch tinh thể cân bằng, HFNC/thông khí VT 6 mL/kg IBW trong ARDS, hydrocortisone liều thấp, PPI dự phòng loét, loại bỏ dịch chủ động và chương trình chuyển tiếp chăm sóc/phục hồi dài hạn.",
+    "detailedConclusion": "Hướng dẫn SSC 2026 chuẩn hóa toàn diện quy trình hồi sức & điều trị nhiễm khuẩn huyết/sốc nhiễm khuẩn từ sàng lọc tiền viện đến phục hồi sau xuất viện, nâng cấp các khuyến cáo cốt lõi về thời điểm kháng sinh, truyền kéo dài Beta-lactam (BLING III), đích MAP cá thể hóa ở người cao tuổi, dịch tinh thể cân bằng, và kiểm soát nguồn sớm.",
+    "sourceUrl": "https://doi.org/10.1097/CCM.0000000000007075",
+    "file": "kho-guidelines/2026-surviving-sepsis-campaign-international-guidelines.html",
+    "asianData": false,
+    "bookmarked": false
+  },
   {
     "id": "study_2026_aha_acc_ada_asn_ckm_syndrome",
     "title": "Hướng dẫn Phòng ngừa, Phát hiện, Đánh giá và Quản lý Hội chứng Tim mạch - Thận - Chuyển hóa (2026 AHA/ACC/ADA/ASN Guideline for CKM Syndrome)",
@@ -215,9 +277,9 @@
     "bookmarked": false
   },
   {
-    "id": "study_byt_lao_2024_p1",
-    "title": "Bộ Y Tế 2024: Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Bệnh Lao (Phần 1: Đại Cương, Phân Loại & Chẩn Đoán)",
-    "drug": "Rifampicin, Isoniazid, Pyrazinamide, Ethambutol, Bedaquiline, Linezolid, Levofloxacin, Moxifloxacin, Pretomanid, Clofazimine, Rifapentine, Streptomycin",
+    "id": "study_byt_lao_2024",
+    "title": "Bộ Y Tế 2024: Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Bệnh Lao",
+    "drug": "Rifampicin, Isoniazid, Pyrazinamide, Ethambutol, Bedaquiline, Pretomanid, Linezolid, Moxifloxacin, Levofloxacin, Clofazimine, Rifapentine, Streptomycin, Ethionamide",
     "sourceType": "vn-moh",
     "specialty": "pulmo",
     "design": "guideline",
@@ -226,10 +288,10 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
-      "intervention": "Quyết định 162/QĐ-BYT (2024) thay thế QĐ 1314/2020: Ưu tiên SHPT chẩn đoán nhanh (Xpert Ultra/Truenat), chuẩn hóa phân loại ICD-10/kháng thuốc (MDR, pre-XDR, XDR), bảng điểm chẩn đoán lao trẻ em TCYTTG 2022 (>10 điểm) & xét nghiệm lao tiềm ẩn (TST/TBST/IGRA)",
+      "population": "Người lớn và trẻ em nghi mắc, mắc bệnh lao (nhạy cảm/kháng thuốc), lao tiềm ẩn hoặc thuộc diện dự phòng lây nhiễm toàn quốc",
+      "intervention": "Quyết định 162/QĐ-BYT (2024): Chuẩn hóa chẩn đoán vi sinh/SHPT (Xpert Ultra/Truenat), phân loại kháng thuốc, bảng điểm trẻ em, Phác đồ Lao nhạy cảm, Phác đồ đột phá Lao kháng thuốc (BPaLM 6 tháng, Phác đồ C 9-11 tháng) & Lao tiềm ẩn (3HP/1HP)",
       "comparator": "Standard of Care / Placebo",
-      "outcome": "Phát hiện sớm ca bệnh lao & lao kháng thuốc, tối ưu hóa độ chính xác chẩn đoán vi sinh, phân loại chính xác mức độ kháng thuốc & chuẩn hóa quy trình tầm soát lao tiềm ẩn trong cộng đồng"
+      "outcome": "Phát hiện sớm, tối ưu hóa độ chính xác chẩn đoán, tối đa hóa tỷ lệ chữa khỏi bệnh lao & lao kháng thuốc, giảm độc tính thuốc, ngừa bỏ trị và ngăn chặn lan truyền vi khuẩn lao"
     },
     "statistics": {
       "type": "HR",
@@ -239,15 +301,15 @@
       "pValue": 0.04
     },
     "vnAdaptationStatus": "adapted",
-    "oldKeyResults": "Ưu tiên Xpert Ultra / Truenat thay AFB trực tiếp; Quy chuẩn lấy đờm 3 bước (nhầy mủ >=1ml); Xử trí kết quả Vết (Trace) ở trẻ em/HIV/ngoài phổi; Bảng điểm trẻ em >10 điểm; Quy trình chẩn đoán Lao tiềm ẩn Sơ đồ 7 & 8",
+    "oldKeyResults": "Ưu tiên Xpert Ultra / Truenat thay AFB; Phác đồ BPaLM 6 tháng (Bdq+Pa+Lzd+Mfx) cho MDR-TB >=14t; Phác đồ C 9-11t; Phác đồ A2a 4 tháng cho trẻ em; ARV sau 2 tuần điều trị lao; LTA 3HP 12 tuần & 1HP 1 tháng",
     "impact": "practice-changing",
     "year": 2024,
     "organization": "Bộ Y tế Việt Nam (Quyết định số 162/QĐ-BYT)",
     "phase": "National Guideline",
     "sampleSize": null,
-    "population": "Người lớn và trẻ em nghi mắc bệnh lao, mắc lao hoặc phơi nhiễm với nguồn lây lao trên toàn quốc",
-    "summary": "Hướng dẫn chẩn đoán bệnh Lao 2024 của Bộ Y tế Việt Nam (Phần 1). Cập nhật hệ thống khái niệm, mã ICD-10, phân loại kháng thuốc, các kỹ thuật vi sinh/SHPT/CĐHA, tiêu chuẩn chẩn đoán lao phổi vi sinh âm tính, bảng điểm trẻ em và quy trình tầm soát lao tiềm ẩn.",
-    "detailedConclusion": "Thay thế QĐ 1314/QĐ-BYT (2020). Ưu tiên xét nghiệm SHPT nhanh Xpert MTB/RIF Ultra & Truenat. Quy chuẩn lấy đờm 02 mẫu. Kết quả Vết (Trace) chấp nhận chẩn đoán ngay ở trẻ em/HIV/ngoài phổi. Bảng điểm chẩn đoán lao trẻ em TCYTTG 2022 > 10 điểm. Tầm soát lao tiềm ẩn bằng TST, TBST (Diaskintest) hoặc IGRA (QuantiFeron).",
+    "population": "Người lớn và trẻ em nghi mắc, mắc bệnh lao (nhạy cảm/kháng thuốc), lao tiềm ẩn hoặc thuộc diện dự phòng lây nhiễm toàn quốc",
+    "summary": "Hướng dẫn chẩn đoán, điều trị và dự phòng bệnh Lao 2024 của Bộ Y tế Việt Nam (QĐ 162/QĐ-BYT). Cập nhật hệ thống khái niệm, tiêu chuẩn chẩn đoán vi sinh/SHPT, 4 nguyên tắc điều trị, phác đồ Lao nhạy cảm & kháng thuốc đột phá (BPaLM 6 tháng), xử trí đối tượng đặc biệt và dự phòng Lao tiềm ẩn (3HP, 1HP).",
+    "detailedConclusion": "Phần 1: Ưu tiên SHPT Xpert Ultra/Truenat, bảng điểm trẻ em > 10d, tầm soát LTA. Phần 2: Phác đồ A1 6t, A2a 4t trẻ em; BPaLM 6t cho MDR-TB >=14t; Phác đồ C 9-11t; Ngừng thuốc khi men gan >5x ULN; ARV khởi trị sau 2 tuần điều trị lao; LTA dùng 3HP hoặc 1HP; BCG lan tỏa không dùng Pyrazinamide.",
     "fdaStatus": "Quyết định 162/QĐ-BYT năm 2024",
     "sourceUrl": "https://moh.gov.vn",
     "file": "kho-guidelines/byt-lao-2024-p1.html",
@@ -262,10 +324,10 @@
       }
     ],
     "subgroups": {
-      "Lao phổi phổ biến (%)": "80% - 85% các thể bệnh lao",
-      "Kích thước hạt khí dung lây truyền": "1 - 5 µm (Bay lơ lửng đến 24 giờ)",
-      "Bảng điểm Lao Trẻ em (TCYTTG)": "Tổng điểm > 10 điểm (Chẩn đoán & ĐT)",
-      "Thể tích đờm đạt chuẩn": "Nhầy mủ đặc >= 1 ml (Lấy 2 mẫu cách 2h)"
+      "Phác đồ BPaLM (Lao kháng thuốc)": "6 tháng (Bdq + Pa + Lzd + Mfx)",
+      "Phác đồ A2a (Lao trẻ em)": "4 tháng (2HRZE / 2RH)",
+      "Bảng điểm Lao Trẻ em (TCYTTG)": "Tổng điểm > 10 điểm",
+      "Thời điểm khởi trị ARV ở người HIV": "Sau 02 tuần điều trị lao (trừ màng não)"
     },
     "icd10": [
       "A15",
@@ -283,74 +345,6 @@
     "radarUrl": "../guideline-radar/radar.html?spec=pulmo"
   },
   {
-    "id": "study_byt_lao_2024_p2",
-    "title": "Bộ Y Tế 2024: Hướng Dẫn Chẩn Đoán, Điều Trị & Dự Phòng Bệnh Lao (Phần 2: Điều Trị & Dự Phòng Lây Nhiễm)",
-    "drug": "Rifampicin, Isoniazid, Pyrazinamide, Ethambutol, Bedaquiline, Pretomanid, Linezolid, Moxifloxacin, Levofloxacin, Clofazimine, Rifapentine, Streptomycin, Ethionamide",
-    "sourceType": "vn-moh",
-    "specialty": "pulmo",
-    "design": "guideline",
-    "grade": {
-      "strength": "strong-for",
-      "certainty": "moderate"
-    },
-    "pico": {
-      "population": "",
-      "intervention": "Cập nhật Phác đồ Lao nhạy cảm (A1, A2, A2a 4 tháng trẻ em, B1, B2a), Phác đồ đột phá Lao kháng thuốc (BPaLM 6 tháng, Phác đồ C 9-11 tháng Bedaquiline), Bảng liều cân nặng Phụ lục 6, quản lý đối tượng đặc biệt (Men gan, Suy thận, HIV/ARV 2w) & Phác đồ Lao tiềm ẩn 3HP/1HP",
-      "comparator": "Standard of Care / Placebo",
-      "outcome": "Tối đa hóa tỷ lệ chữa khỏi bệnh lao & lao kháng thuốc, giảm độc tính do thuốc chống lao, phòng ngừa bỏ trị và ngăn chặn sự lan truyền vi khuẩn lao trong cộng đồng/hộ gia đình"
-    },
-    "statistics": {
-      "type": "HR",
-      "value": 0.85,
-      "ciLower": 0.7,
-      "ciUpper": 0.95,
-      "pValue": 0.04
-    },
-    "vnAdaptationStatus": "adapted",
-    "oldKeyResults": "Phác đồ BPaLM 6 tháng (Bdq+Pa+Lzd+Mfx) cho MDR-TB >=14t; Phác đồ C 9-11t Bedaquiline; Phác đồ A2a 4 tháng cho trẻ em; Ngừng thuốc khi men gan >5x hoặc >3x kèm triệu chứng; ARV sau 2 tuần điều trị lao; Phác đồ LTA 3HP 12 liều hàng tuần & 1HP 1 tháng",
-    "impact": "practice-changing",
-    "year": 2024,
-    "organization": "Bộ Y tế Việt Nam (Quyết định số 162/QĐ-BYT)",
-    "phase": "National Guideline",
-    "sampleSize": null,
-    "population": "Người lớn và trẻ em mắc bệnh lao nhạy cảm thuốc, lao kháng thuốc, lao tiềm ẩn hoặc thuộc diện dự phòng lây nhiễm toàn quốc",
-    "summary": "Hướng dẫn điều trị và dự phòng bệnh Lao 2024 của Bộ Y tế Việt Nam (Phần 2). Chi tiết 4 nguyên tắc điều trị, phác đồ Lao nhạy cảm, phác đồ Lao kháng thuốc đột phá (BPaLM, Phác đồ C), bảng phân liều theo cân nặng, xử trí đối tượng đặc biệt, các phác đồ Lao tiềm ẩn (3HP, 1HP) và dự phòng vắc-xin BCG.",
-    "detailedConclusion": "Phác đồ A1 2HRZE/4RHE cho người lớn 6 tháng, A2a 4 tháng cho trẻ em nhẹ. Phác đồ BPaLM (Bdq+Pa+Lzd+Mfx) 6 tháng cho MDR-TB >=14t. Phác đồ C 9-11t. Ngừng thuốc lao khi AST/ALT > 5x (hoặc > 3x kèm triệu chứng). ARV khởi trị sau 2 tuần điều trị lao. LTA dùng 3HP 12 tuần hoặc 1HP 1 tháng. Vắc-xin BCG vỡ hạch nách chích rửa rắc bột INH/Rifampicin tại chỗ (không dùng thuốc toàn thân); BCG lan tỏa dùng Hàng 1 loại trừ Pyrazinamide.",
-    "fdaStatus": "Quyết định 162/QĐ-BYT năm 2024",
-    "sourceUrl": "https://moh.gov.vn",
-    "file": "kho-guidelines/byt-lao-2024-p2.html",
-    "parts": [
-      {
-        "label": "Phần 1: Đại Cương & Chẩn Đoán",
-        "file": "kho-guidelines/byt-lao-2024-p1.html"
-      },
-      {
-        "label": "Phần 2: Điều Trị & Dự Phòng",
-        "file": "kho-guidelines/byt-lao-2024-p2.html"
-      }
-    ],
-    "subgroups": {
-      "Thời gian phác đồ BPaLM": "6 tháng (Bdq + Pa + Lzd + Mfx)",
-      "Thời gian phác đồ A2a Trẻ em": "4 tháng (2HRZE / 2RH)",
-      "Ngưỡng ngừng thuốc do men gan": "AST/ALT > 5x ULN (hoặc > 3x + TC)",
-      "Thời điểm khởi trị ARV ở bệnh nhân HIV": "Sau 02 tuần điều trị lao (trừ màng nổi)"
-    },
-    "icd10": [
-      "A15",
-      "A16",
-      "A17",
-      "A18",
-      "A19",
-      "B90",
-      "U84.3",
-      "Z22.7"
-    ],
-    "asianData": true,
-    "bookmarked": true,
-    "createdAt": "2026-08-09T02:52:47.224Z",
-    "radarUrl": "../guideline-radar/radar.html?spec=pulmo"
-  },
-  {
     "id": "study_gina_asthma_2026",
     "title": "GINA 2026: Hướng Dẫn Toàn Diện về Chẩn Đoán, Điều Trị & Quản Lý Hen Phế Quản ở Người Trưởng Thành và Trẻ Em",
     "drug": "Budesonide, Formoterol, Salbutamol, Fluticasone, Ipratropium, Depemokimab, Omalizumab, Omalizumab-igec, Dupilumab, Tezepelumab, Mepolizumab, Benralizumab, Azithromycin, Glycopyrronium",
@@ -362,7 +356,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Người lớn, thanh thiếu niên (≥12 tuổi) và trẻ em (6–11 tuổi) mắc Hen phế quản",
       "intervention": "Ưu tiên Track 1 AIR/MART (ICS-formoterol) từ Bậc 1-4, chuẩn hóa chẩn đoán hô hấp ký & Biomarkers Type 2 (FeNO > 50ppb, EOS), biologics mới Depemokimab (6 tháng/lần), hạ ngưỡng SpO2 < 92% thở oxy & OCS stewardship",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Giảm tỷ lệ đợt kịch phát nặng, ngăn tử vong do hen, duy trì chức năng phổi FEV1, triệt tiêu việc sử dụng OCS tích lũy và kiểm soát triệu chứng tối ưu"
@@ -418,7 +412,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân trưởng thành và trẻ em mắc hoặc có nguy cơ mắc Bệnh thận mạn (CKD)",
       "intervention": "Phân loại CGA, eGFR không chủng tộc, tiên lượng KFRE, tiếp cận toàn diện 4 tầng (SGLT2i + RASi + Finerenone), hạ ngưỡng Toan chuyển hóa (<18 mmol/L), quy tắc SADMANS và tiêu chuẩn chuyển tuyến KRT",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Làm chậm tiến triển suy thận (Kidney Failure), giảm tử vong tim mạch & tử vong do mọi nguyên nhân, dự phòng biến cố thuyên tắc & cải thiện chất lượng sống"
@@ -493,7 +487,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân trưởng thành không mang thai và có thai mắc Tăng huyết áp",
       "intervention": "Khởi trị dựa trên Thang điểm PREVENT (>=7.5% nguy cơ cao), ưu tiên viên phối hợp SPC cho HA Độ 2, chỉ định Triệt thần kinh giao cảm thận RDN, quản lý HA thai kỳ & tái định nghĩa Cấp cứu HA (bãi bỏ Urgency)",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Giảm tỷ lệ tử vong do mọi nguyên nhân, tử vong tim mạch, đột quỵ, suy tim và bảo vệ chức năng thận / ngăn ngừa sa sút trí tuệ"
@@ -551,7 +545,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân trưởng thành mắc Rung nhĩ lâm sàng (First-diagnosed, Paroxysmal, Persistent, Permanent) hoặc Rung nhĩ cận lâm sàng",
       "intervention": "Khung tiếp cận AF-CARE 4 trụ cột, thang điểm CHA2DS2-VA loại bỏ yếu tố nữ, chỉ định triệt đốt Catheter Ablation Class I hàng đầu cho Rung nhĩ kịch phát, phác đồ OAC cá thể hóa & phối hợp kháng tiểu cầu ACS/PCI",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Dự phòng đột quỵ thiếu máu não, giảm biến cố thuyên tắc mạch, kiểm soát triệu chứng mEHRA và cải thiện chất lượng sống/tỷ lệ tử vong"
@@ -606,7 +600,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân trưởng thành mắc Viêm phổi cộng đồng ngoại trú, nội trú khoa thường và hồi sức tích cực (ICU)",
       "intervention": "Phân tầng nguy cơ vi khuẩn đa kháng (thang điểm PES), phác đồ kháng sinh kinh nghiệm & hướng đích, TDM vancomycin/aminoglycoside, Corticosteroid ICU và tiêu chí de-escalation theo Procalcitonin",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Tỷ lệ khỏi bệnh lâm sàng, giảm thời gian nằm viện, phòng ngừa đề kháng kháng sinh và giảm tử vong ở VPCĐ nặng"
@@ -660,7 +654,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân nghi ngờ, xác định nhiễm Sốt rét ngoại trú, nội trú và Hồi sức tích cực tại các vùng dịch tễ và cả nước",
       "intervention": "Chuẩn hóa phác đồ ACTs (ưu tiên Pyramax), chiến lược diệt giao bào/tiệt căn theo loài bằng Primaquin/Tafenoquine, 12 tiêu chuẩn cảnh báo & ICU Sốt rét ác tính, và phân tuyến xử trí cơ sở",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Cắt cơn sốt nhanh, tiệt căn ký sinh trùng, hạn chế lây lan dịch tễ và phòng ngừa tử vong do sốt rét ác tính"
@@ -715,7 +709,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân nghi ngờ, xác định nhiễm Sốt xuất huyết Dengue ngoại trú, nội trú và Hồi sức tích cực (ICU) trẻ em và người lớn",
       "intervention": "Chuẩn hóa diễn tiến sinh lý bệnh 3 giai đoạn, phân độ lâm sàng 3 mức, phác đồ truyền dịch & chống sốc cá thể hóa (trẻ em vs người lớn vs thai phụ/béo phì), chỉ định truyền chế phẩm máu và xử trí suy tạng nặng",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Chẩn đoán sớm, phát hiện kịp thời các dấu hiệu cảnh báo, bù dịch chống sốc hiệu quả, phòng ngừa quá tải tuần hoàn và giảm tối đa tỷ lệ tử vong do SXHD"
@@ -767,7 +761,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân nghi ngờ, xác định nhiễm Viêm màng não vi khuẩn, virus ở trẻ em và người lớn trên toàn cầu",
       "intervention": "Lộ trình toàn cầu 2030 (WHA73.9), chẩn đoán DNT/PCR, 6 chỉ định CT sọ não trước LP, 'Khung giờ vàng 1h' kháng sinh tĩnh mạch theo kinh nghiệm, phác đồ Dexamethasone hỗ trợ 4 ngày, dự phòng tiếp xúc gần & sàng lọc thính lực khẩn cấp",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Loại bỏ hoàn toàn các vụ dịch vi khuẩn, giảm 50% số ca mắc và 70% số ca tử vong do các tác nhân có thể phòng bằng vắc-xin, giảm tối đa di chứng tàn tật thính lực và nhận thức"
@@ -822,7 +816,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân nhiễm Viêm gan siêu vi B mạn tính (CHB) tại khu vực Châu Á - Thái Bình Dương",
       "intervention": "Mở rộng tiêu chuẩn Treat-all (HBV DNA bất kỳ + ALT > ULN), theo dõi xơ hóa bằng NITs không xâm lấn (FIB-4, APRI, Elastography), bộ 3 tầm soát HCC (Siêu âm + AFP + PIVKA-II), Peg-IFN add-on cho bệnh nhân HBsAg < 1500 IU/mL",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Ngăn ngừa xơ gan, suy gan tiến triển, giảm tối đa tỷ lệ ung thư biểu mô tế bào gan (HCC) và tử vong do bệnh gan"
@@ -1017,7 +1011,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân nhiễm khuẩn cộng đồng & bệnh viện (CAP, VAP, Meningitis, Endocarditis, UTI, Intra-abdominal, Cellulitis, AOM, PID, Catheter Sepsis, Lao)",
       "intervention": "Cập nhật các kháng sinh mới ra mắt 5 năm qua & Tối ưu hóa phác đồ kinh nghiệm cho 11+ hội chứng nhiễm khuẩn lâm sàng",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Nâng cao hiệu quả diệt khuẩn, khắc phục cơ chế vi khuẩn đa kháng thuốc & bảo tồn hệ vi sinh vật"
@@ -1141,7 +1135,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân cấp cứu & Hồi sức tích cực (ICU), Sốc nhiễm khuẩn, ECMO, CRRT, Tăng thanh thải thận (ARC), AKI/CKD",
       "intervention": "Khuyến cáo TDM & Mô hình dược động học dự đoán MIPD để cá thể hóa liều Beta-lactam ở bệnh nhân ICU",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Đạt mục tiêu PK/PD tối thiểu 100% fT > MIC (hoặc 100% fT > 4xMIC) & giảm tỷ lệ thất bại điều trị lâm sàng"
@@ -1264,7 +1258,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân nhiễm khuẩn Gram-âm kháng thuốc cộng đồng & bệnh viện (uUTI, cUTI, Viêm phổi VAP/HAP, Nhiễm khuẩn huyết, Intra-abdominal)",
       "intervention": "Khuyến cáo phác đồ ưu tiên & thay thế cho 6 nhóm tác nhân Gram-âm AMR: ESBL-E, AmpC-E, CRE, DTR P. aeruginosa, CRAB và S. maltophilia",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Tối ưu hóa khả năng khỏi bệnh lâm sàng, giảm tử vong và kiểm soát sự bùng phát đề kháng"
@@ -1389,7 +1383,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân nhiễm khuẩn nặng, nhiễm khuẩn huyết và sốc nhiễm khuẩn",
       "intervention": "Tối ưu hóa liều nạp, truyền kéo dài Beta-lactam & hiệu chỉnh liều theo PK/PD (AKI, CRRT, ECMO)",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Hiệu quả diệt khuẩn tối đa & giảm thiểu độc tính ở bệnh nhân ICU"
@@ -1621,7 +1615,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân đái tháo đường typ 2 có nguy cơ tim mạch cao",
       "intervention": "Empagliflozin 10/25mg QD vs Placebo",
       "comparator": "Standard of Care / Placebo",
       "outcome": "3-point MACE (Tử vong tim mạch, nhồi máu cơ tim không tử vong, đột quỵ không tử vong)"
@@ -1645,7 +1639,7 @@
     "detailedConclusion": "Thử nghiệm lâm sàng ngẫu nhiên, mù đôi, đối chứng giả dược. Kết quả cho thấy tỷ lệ nhập viện do suy tim giảm 35%, tử vong do mọi nguyên nhân giảm 32%. Đây là thuốc điều trị đái tháo đường đầu tiên chứng minh được lợi ích bảo vệ tim mạch vượt trội.",
     "fdaStatus": "FDA Approved 2016 (chỉ định giảm tử vong tim mạch)",
     "sourceUrl": "https://www.nejm.org/doi/full/10.1056/nejmoa1504720",
-    "file": "kho-guidelines/empa-reg.html",
+    "file": "kho-guidelines/2015-empareg-outcome-nejm.html",
     "subgroups": {
       "Châu Á": "HR 0.82 (95% CI 0.64-1.04, p=0.10)",
       "Suy tim (HF)": "HR 0.65 (95% CI 0.50-0.85, p<0.001)",
@@ -1818,7 +1812,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Bệnh nhân Bệnh phổi tắc nghẽn mạn tính (COPD) giai đoạn ổn định và đợt cấp tại Nhật Bản và Châu Á",
       "intervention": "Phân loại 7 Etiotype GOLD 2023, đánh giá Pre-COPD & PRISm, bậc thang LAMA/LABA/Triple, sinh học mới Dupilumab, Macrolide kéo dài, van nội phế quản BLVR và tầm soát tim mạch sau đợt cấp",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Giảm đợt cấp COPD, cải thiện chất lượng cuộc sống (CAT/SGRQ), làm chậm suy giảm FEV1, ngăn ngừa tử vong tim mạch hậu đợt cấp"
@@ -1969,7 +1963,7 @@
       "certainty": "moderate"
     },
     "pico": {
-      "population": "",
+      "population": "Người bệnh bệnh phổi tắc nghẽn mạn tính (BPTNMT) tại Việt Nam",
       "intervention": "Phân loại tắc nghẽn GOLD 1-4, phân nhóm điều trị ABE, tiếp cận đợt cấp theo tiêu chuẩn Rome 2022, sử dụng kháng sinh theo nguy cơ Pseudomonas aeruginosa",
       "comparator": "Standard of Care / Placebo",
       "outcome": "Giảm triệu chứng khó thở, giảm tần suất đợt cấp, cá thể hóa điều trị bằng Eosinophil máu và cải thiện tỷ lệ tử vong"
@@ -2181,8 +2175,6 @@
   }
 ];
 
-    if (typeof window !== 'undefined') {
-      window.SAMPLE_STUDIES = SAMPLE_STUDIES;
-    }
+  window.SAMPLE_STUDIES = SAMPLE_STUDIES;
 
 

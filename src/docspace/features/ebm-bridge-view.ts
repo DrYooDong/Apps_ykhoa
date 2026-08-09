@@ -93,7 +93,7 @@ export class EbmBridge {
     const contentEl = document.getElementById('ebmBridgeContent');
     if (!contentEl) return;
 
-    const studies = (window as any).SAMPLE_STUDIES || [];
+    const studies = (window as any).CliniPortalSync ? (window as any).CliniPortalSync.getStudies() : ((window as any).SAMPLE_STUDIES || []);
     
     // 1. Trích xuất tất cả các mã ICD-10 từ đoạn văn bản (VD: I50.0, E11.9, I10)
     const icdRegex = /[A-Z][0-9]{2}(?:\.[0-9]+)?/g;

@@ -150,15 +150,17 @@
         localStorage.removeItem('supabaseKey');
         localStorage.removeItem('clinicalGuidelines');
         localStorage.removeItem('internalMedicineStudies');
+        localStorage.removeItem('cliniportal_custom_studies');
+        localStorage.removeItem('cliniportal_deleted_study_ids');
         
         const urlInput = document.getElementById('sb-url');
         const keyInput = document.getElementById('sb-key');
         if (urlInput) urlInput.value = '';
         if (keyInput) keyInput.value = '';
         
-        studies = [];
         selectedIds.clear();
         expandedIds.clear();
+        loadStudies();
         
         closeSupabaseModal();
         initSupabase();
@@ -181,90 +183,66 @@
         if (error) throw error;
         
         if (data && data.length > 0) {
-          // Identify local-only studies (added offline or failed to sync before page reload)
-          const remoteIds = new Set(data.map(s => s.id));
-          const localOnlyStudies = studies.filter(s => !remoteIds.has(s.id));
-
-          const remoteStudies = data.map(s => {
-            return {
-              ...s, // Preserve rich EBM fields like matrixEndpoints, relatedCalculators, citation, pocketCard, decisionTree, etc.
-              id: s.id,
-              title: s.title || '',
-              author: s.author || '',
-              drug: s.drug || 'N/A',
-              sourceType: s.sourceType || 'intl-study',
-              specialty: s.specialty || 'cardio',
-              design: s.design || 'rct',
-              intervention: s.intervention || '',
-              primaryEndpoint: s.primaryEndpoint || '',
-              keyResults: s.keyResults || '',
-              impact: s.impact || 'informative',
-              year: s.year || new Date().getFullYear(),
-              organization: s.organization || 'N/A',
-              phase: s.phase || 'N/A',
-              sampleSize: s.sampleSize || null,
-              population: s.population || 'N/A',
-              summary: s.summary || 'Không có kết luận',
-              detailedConclusion: s.detailedConclusion || '',
-              fdaStatus: s.fdaStatus || 'N/A',
-              sourceUrl: s.sourceUrl || '',
-              file: s.file || '',
-              parts: Array.isArray(s.parts) ? s.parts : (typeof s.parts === 'string' && s.parts ? (() => { try { return JSON.parse(s.parts); } catch(e) { return null; } })() : null),
-              asianData: s.asianData !== undefined ? s.asianData : false,
-              bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
-              icd10: Array.isArray(s.icd10) ? s.icd10 : (typeof s.icd10 === 'string' && s.icd10 ? (() => { try { return JSON.parse(s.icd10); } catch(e) { return []; } })() : []),
-              subgroups: (typeof s.subgroups === 'object' && s.subgroups !== null) ? s.subgroups
-                         : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
-              createdAt: s.createdAt || new Date().toISOString()
-            };
-          });
-          
-          // Merge and sort
-          studies = [...localOnlyStudies, ...remoteStudies];
+          const remoteStudies = data.map(s => processStudyFields(s));
+          const localCustom = studies.filter(s => s && s.id && (s.id.startsWith('study_') || s.createdAt));
+          studies = processAndDeduplicateStudies([...localCustom, ...remoteStudies, ...studies]);
           studies.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
           
           saveStudies(); // cache local
           renderTable();
           renderUpdates();
-          updateSupabaseStatus('connected', `Supabase: Đã nạp ${remoteStudies.length} bài`);
-
-          // Sync any local-only studies to Supabase
-          if (localOnlyStudies.length > 0) {
-            localOnlyStudies.forEach(study => dbSaveStudy(study));
-          }
+          updateSupabaseStatus('connected', `Supabase: Đã nạp ${studies.length} bài`);
         } else {
           // Upload local data to seed Supabase
           if (studies.length > 0) {
-            const { error: insertError } = await supabaseClient
+            const seedPayload = studies.map(s => ({
+              id: s.id,
+              title: s.title,
+              author: s.author,
+              drug: s.drug,
+              sourceType: s.sourceType,
+              specialty: s.specialty,
+              design: s.design,
+              intervention: s.intervention || '',
+              primaryEndpoint: s.primaryEndpoint || '',
+              keyResults: s.keyResults || '',
+              impact: s.impact,
+              year: s.year,
+              organization: s.organization,
+              phase: s.phase,
+              sampleSize: s.sampleSize,
+              population: s.population,
+              summary: s.summary,
+              detailedConclusion: s.detailedConclusion,
+              fdaStatus: s.fdaStatus,
+              sourceUrl: s.sourceUrl,
+              file: s.file,
+              asianData: s.asianData,
+              bookmarked: s.bookmarked,
+              parts: s.parts ? (typeof s.parts === 'string' ? s.parts : JSON.stringify(s.parts)) : null,
+              icd10: s.icd10 ? (typeof s.icd10 === 'string' ? s.icd10 : JSON.stringify(s.icd10)) : null,
+              subgroups: s.subgroups ? (typeof s.subgroups === 'string' ? s.subgroups : JSON.stringify(s.subgroups)) : null,
+              createdAt: s.createdAt
+            }));
+
+            let { error: insertError } = await supabaseClient
               .from('clinical_guidelines')
-              .insert(studies.map(s => ({
-                id: s.id,
-                title: s.title,
-                author: s.author,
-                drug: s.drug,
-                sourceType: s.sourceType,
-                specialty: s.specialty,
-                design: s.design,
-                intervention: s.intervention || '',
-                primaryEndpoint: s.primaryEndpoint || '',
-                keyResults: s.keyResults || '',
-                impact: s.impact,
-                year: s.year,
-                organization: s.organization,
-                phase: s.phase,
-                sampleSize: s.sampleSize,
-                population: s.population,
-                summary: s.summary,
-                detailedConclusion: s.detailedConclusion,
-                fdaStatus: s.fdaStatus,
-                sourceUrl: s.sourceUrl,
-                file: s.file,
-                asianData: s.asianData,
-                bookmarked: s.bookmarked,
-                icd10: s.icd10 ? JSON.stringify(s.icd10) : null,
-                subgroups: s.subgroups ? JSON.stringify(s.subgroups) : null,
-                createdAt: s.createdAt
-              })));
+              .insert(seedPayload);
+
+            if (insertError && (insertError.code === 'PGRST204' || (insertError.message && insertError.message.toLowerCase().includes('column')))) {
+              console.warn('Supabase schema missing optional columns on seed, retrying with core columns');
+              const coreSeedPayload = seedPayload.map(sp => {
+                const cp = { ...sp };
+                delete cp.parts;
+                delete cp.icd10;
+                delete cp.subgroups;
+                return cp;
+              });
+              const retryRes = await supabaseClient
+                .from('clinical_guidelines')
+                .insert(coreSeedPayload);
+              insertError = retryRes.error;
+            }
               
             if (insertError) throw insertError;
             updateSupabaseStatus('connected', 'Supabase: Seeded');
@@ -303,33 +281,45 @@
           file: study.file,
           asianData: study.asianData,
           bookmarked: study.bookmarked,
-          icd10: study.icd10 ? JSON.stringify(study.icd10) : null,
-          subgroups: study.subgroups ? JSON.stringify(study.subgroups) : null,
-          createdAt: study.createdAt
+          parts: study.parts ? (typeof study.parts === 'string' ? study.parts : JSON.stringify(study.parts)) : null,
+          icd10: study.icd10 ? (typeof study.icd10 === 'string' ? study.icd10 : JSON.stringify(study.icd10)) : null,
+          subgroups: study.subgroups ? (typeof study.subgroups === 'string' ? study.subgroups : JSON.stringify(study.subgroups)) : null,
+          createdAt: study.createdAt || new Date().toISOString()
         };
 
-        const { error } = await supabaseClient
+        let { error } = await supabaseClient
           .from('clinical_guidelines')
           .upsert(payload, { onConflict: 'id' });
 
+        if (error && (error.code === 'PGRST204' || (error.message && error.message.toLowerCase().includes('column')))) {
+          console.warn('Supabase schema missing optional columns (parts/icd10/subgroups), retrying with core payload:', error);
+          const corePayload = { ...payload };
+          delete corePayload.parts;
+          delete corePayload.icd10;
+          delete corePayload.subgroups;
+          const retryRes = await supabaseClient
+            .from('clinical_guidelines')
+            .upsert(corePayload, { onConflict: 'id' });
+          error = retryRes.error;
+        }
+
         if (error) throw error;
         console.log('Saved to Supabase successfully');
+        updateSupabaseStatus('connected', `Supabase: Đã lưu bài thành công`);
       } catch (err) {
         console.error('Failed to save to Supabase:', err);
-        // Hiển thị chi tiết lỗi lên UI để dễ chẩn đoán
-        updateSupabaseStatus('error', 'Lỗi: ' + (err.message || err.details || 'Save Failed'));
+        updateSupabaseStatus('error', 'Lỗi Supabase: ' + (err.message || err.details || 'Save Failed'));
+        alert('⚠️ Không thể lưu lên Supabase: ' + (err.message || 'Kiểm tra lại quyền truy cập hoặc kết nối!'));
       }
     }
 
     async function dbDeleteStudy(id) {
-      if (!supabaseClient) return;
+      if (!supabaseClient || !id) return;
       try {
-        const { error } = await supabaseClient
+        await supabaseClient
           .from('clinical_guidelines')
           .delete()
           .eq('id', id);
-          
-        if (error) throw error;
         console.log('Deleted from Supabase successfully');
       } catch (err) {
         console.error('Failed to delete from Supabase:', err);
@@ -341,135 +331,259 @@
     // DATA MIGRATION & LOCAL STORAGE
     // ════════════════════════════
     
-    function loadStudies() {
-      let saved = localStorage.getItem('clinicalGuidelines');
-      if (!saved) {
-        // Fallback for older version
-        saved = localStorage.getItem('internalMedicineStudies');
+    function normalizeMedicalTitle(str) {
+      if (!str) return '';
+      const yearMatch = str.match(/\b(19\d{2}|20\d{2})\b/);
+      const yearStr = yearMatch ? yearMatch[1] : '';
+
+      let base = str.replace(/\([^)]*\)/g, ' ').toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd').replace(/Đ/g, 'd')
+        .replace(/\b(ve|va|o|cho|truoc|sau|tren|duoi)\b/g, ' ')
+        .replace(/[^a-z0-9]/g, '');
+
+      return base + (yearStr ? '_' + yearStr : '');
+    }
+
+    function getDeletedStudyIds() {
+      try {
+        const raw = localStorage.getItem('cliniportal_deleted_study_ids');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            return parsed.filter(item => typeof item === 'string');
+          }
+        }
+      } catch (e) {}
+      return [];
+    }
+
+    function saveDeletedStudyId(id) {
+      if (!id) return;
+      const list = getDeletedStudyIds();
+      if (!list.includes(id)) list.push(id);
+      localStorage.setItem('cliniportal_deleted_study_ids', JSON.stringify(list));
+    }
+
+    function isStudyDeleted(study, deletedList) {
+      if (!study || !study.id) return false;
+      const list = deletedList || getDeletedStudyIds();
+      if (!list || list.length === 0) return false;
+      return list.includes(study.id);
+    }
+
+    function extractCoreKey(title) {
+      if (!title) return '';
+      const parenMatch = title.match(/\(([^)]+)\)/);
+      if (parenMatch) {
+        const inside = parenMatch[1].trim();
+        if (inside.length >= 4) return normalizeMedicalTitle(inside);
       }
-      if (saved) {
-        try {
-          studies = JSON.parse(saved);
-          
-          // Data structure migration
-          studies = studies.map(s => {
-            let defaultSourceType = s.sourceType || 'intl-study';
-            let defaultDesign = s.design || 'rct';
-            
-            if (!s.sourceType) {
-              if (s.organization && (s.organization.toLowerCase().includes('byt') || s.organization.toLowerCase().includes('bộ y tế'))) {
-                defaultSourceType = 'vn-moh';
-                defaultDesign = 'guideline';
-              } else if (s.organization && (s.organization.toLowerCase().includes('sở y tế') || s.organization.toLowerCase().includes('syt'))) {
-                defaultSourceType = 'vn-doh';
-                defaultDesign = 'guideline';
-              } else if (s.organization && (s.organization.toLowerCase().includes('vnha') || s.organization.toLowerCase().includes('hội'))) {
-                defaultSourceType = 'vn-association';
-                defaultDesign = 'guideline';
-              } else if (s.phase && s.phase.toLowerCase().includes('guideline')) {
-                defaultSourceType = 'intl-guideline';
-                defaultDesign = 'guideline';
-              }
-            }
+      return normalizeMedicalTitle(title);
+    }
 
-            return {
-              ...s, // Preserve rich EBM fields like matrixEndpoints, relatedCalculators, etc.
-              id: s.id || generateId(),
-              title: s.title || '',
-              author: s.author || '',
-              drug: s.drug || 'N/A',
-              sourceType: defaultSourceType,
-              specialty: s.specialty || 'cardio',
-              design: defaultDesign,
-              intervention: s.intervention || '',
-              primaryEndpoint: s.primaryEndpoint || '',
-              keyResults: (() => {
-                if (typeof SAMPLE_STUDIES !== 'undefined') {
-                  const match = SAMPLE_STUDIES.find(sm => sm.id === s.id || sm.title === s.title);
-                  if (match && match.keyResults) return match.keyResults;
-                }
-                return s.keyResults || s.key_results || '';
-              })(),
-              impact: s.impact || 'informative',
-              year: s.year || new Date().getFullYear(),
-              organization: s.organization || s.source || 'N/A',
-              phase: s.phase || 'N/A',
-              sampleSize: s.sampleSize || null,
-              population: s.population || 'N/A',
-              summary: s.summary || s.conclusion || 'Không có kết luận',
-              detailedConclusion: s.detailedConclusion || '',
-              fdaStatus: s.fdaStatus || 'N/A',
-              sourceUrl: s.sourceUrl || '',
-              file: s.file || '',
-              parts: (() => {
-                if (Array.isArray(s.parts) && s.parts.length > 0) return s.parts;
-                if (typeof s.parts === 'string' && s.parts) { try { return JSON.parse(s.parts); } catch(e) {} }
-                if (typeof SAMPLE_STUDIES !== 'undefined') {
-                  const match = SAMPLE_STUDIES.find(sm => sm.id === s.id || sm.title === s.title);
-                  if (match && match.parts) return match.parts;
-                }
-                return null;
-              })(),
-              asianData: s.asianData !== undefined ? s.asianData : false,
-              bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
-              icd10: (() => {
-                let parsed = Array.isArray(s.icd10) && s.icd10.length > 0 
-                  ? s.icd10 
-                  : (typeof s.icd10 === 'string' && s.icd10 ? (() => { try { return JSON.parse(s.icd10); } catch(e) { return []; } })() : []);
-                if ((!parsed || parsed.length === 0) && typeof SAMPLE_STUDIES !== 'undefined') {
-                  const match = SAMPLE_STUDIES.find(sm => sm.id === s.id || sm.title === s.title);
-                  if (match && match.icd10) parsed = match.icd10;
-                }
-                if (!parsed || parsed.length === 0) {
-                  const spec = s.specialty || 'cardio';
-                  if (spec === 'cardio') parsed = ['I50', 'I10'];
-                  else if (spec === 'pulmo') parsed = ['J44'];
-                  else if (spec === 'endo') parsed = ['E11'];
-                  else if (spec === 'renal') parsed = ['N18'];
-                  else if (spec === 'infect' || spec === 'icu') parsed = ['A41'];
-                  else if (spec === 'nutri') parsed = ['E66', 'E46'];
-                }
-                return parsed;
-              })(),
-              subgroups: (s.subgroups && typeof s.subgroups === 'object' && !Array.isArray(s.subgroups)) ? s.subgroups
-                         : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
-              createdAt: s.createdAt || new Date().toISOString()
-            };
-          });
-          if (typeof SAMPLE_STUDIES !== 'undefined' && Array.isArray(SAMPLE_STUDIES)) {
-            const validSampleIds = new Set(SAMPLE_STUDIES.map(s => s.id));
-            const validSampleTitles = new Set(SAMPLE_STUDIES.map(s => s.title));
+    function processStudyFields(s) {
+      if (!s) return s;
+      let defaultSourceType = s.sourceType || 'intl-study';
+      let defaultDesign = s.design || 'rct';
+      
+      if (!s.sourceType) {
+        if (s.organization && (s.organization.toLowerCase().includes('byt') || s.organization.toLowerCase().includes('bộ y tế'))) {
+          defaultSourceType = 'vn-moh';
+          defaultDesign = 'guideline';
+        } else if (s.organization && (s.organization.toLowerCase().includes('sở y tế') || s.organization.toLowerCase().includes('syt'))) {
+          defaultSourceType = 'vn-doh';
+          defaultDesign = 'guideline';
+        } else if (s.organization && (s.organization.toLowerCase().includes('vnha') || s.organization.toLowerCase().includes('hội'))) {
+          defaultSourceType = 'vn-association';
+          defaultDesign = 'guideline';
+        } else if (s.phase && s.phase.toLowerCase().includes('guideline')) {
+          defaultSourceType = 'intl-guideline';
+          defaultDesign = 'guideline';
+        }
+      }
 
-            // Purge mock/fake items that don't match any official sample or user custom study
-            studies = studies.filter(s => {
-              if (s.isCustom) return true; // keep user-added custom studies
-              if (s.id && s.id.startsWith('study_custom_')) return true; // keep custom user studies
-              return validSampleIds.has(s.id) || validSampleTitles.has(s.title);
-            });
+      return {
+        ...s,
+        id: s.id || generateId(),
+        title: s.title || '',
+        author: s.author || '',
+        drug: s.drug || 'N/A',
+        sourceType: defaultSourceType,
+        specialty: s.specialty || 'cardio',
+        design: defaultDesign,
+        intervention: s.intervention || '',
+        primaryEndpoint: s.primaryEndpoint || '',
+        keyResults: s.keyResults || s.key_results || '',
+        impact: s.impact || 'informative',
+        year: s.year || new Date().getFullYear(),
+        organization: s.organization || s.source || 'N/A',
+        phase: s.phase || 'N/A',
+        sampleSize: s.sampleSize || null,
+        population: s.population || 'N/A',
+        summary: s.summary || s.conclusion || 'Không có kết luận',
+        detailedConclusion: s.detailedConclusion || '',
+        fdaStatus: s.fdaStatus || 'N/A',
+        sourceUrl: s.sourceUrl || '',
+        file: s.file || '',
+        parts: (() => {
+          if (Array.isArray(s.parts) && s.parts.length > 0) return s.parts;
+          if (typeof s.parts === 'string' && s.parts) { try { return JSON.parse(s.parts); } catch(e) {} }
+          return null;
+        })(),
+        asianData: s.asianData !== undefined ? s.asianData : false,
+        bookmarked: s.bookmarked !== undefined ? s.bookmarked : false,
+        icd10: (() => {
+          let parsed = Array.isArray(s.icd10) && s.icd10.length > 0 
+            ? s.icd10 
+            : (typeof s.icd10 === 'string' && s.icd10 ? (() => { try { return JSON.parse(s.icd10); } catch(e) { return []; } })() : []);
+          if (!parsed || parsed.length === 0) {
+            const spec = s.specialty || 'cardio';
+            if (spec === 'cardio') parsed = ['I50', 'I10'];
+            else if (spec === 'pulmo') parsed = ['J44'];
+            else if (spec === 'endo') parsed = ['E11'];
+            else if (spec === 'renal') parsed = ['N18'];
+            else if (spec === 'infect' || spec === 'icu') parsed = ['A41'];
+            else if (spec === 'nutri') parsed = ['E66', 'E46'];
+          }
+          return parsed;
+        })(),
+        subgroups: (s.subgroups && typeof s.subgroups === 'object' && !Array.isArray(s.subgroups)) ? s.subgroups
+                   : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
+        createdAt: s.createdAt || new Date().toISOString()
+      };
+    }
 
-            // Merge any missing official studies from SAMPLE_STUDIES
-            const existingIds = new Set(studies.map(s => s.id));
-            const existingTitles = new Set(studies.map(s => s.title));
-            SAMPLE_STUDIES.forEach(sm => {
-              if (!existingIds.has(sm.id) && !existingTitles.has(sm.title)) {
-                studies.push(sm);
+    function processAndDeduplicateStudies(rawArray) {
+      if (!Array.isArray(rawArray)) rawArray = [];
+      const deletedList = getDeletedStudyIds();
+
+      const uniqueStudies = [];
+      const seenIds = new Set();
+      const seenNormTitles = new Set();
+
+      rawArray.forEach(s => {
+        if (!s || !s.title || isStudyDeleted(s, deletedList)) return;
+        const sId = s.id;
+        const sNormTitle = normalizeMedicalTitle(s.title);
+
+        if (sId && seenIds.has(sId)) return;
+        if (sNormTitle && seenNormTitles.has(sNormTitle)) return;
+
+        if (sId) seenIds.add(sId);
+        if (sNormTitle) seenNormTitles.add(sNormTitle);
+        uniqueStudies.push(s);
+      });
+
+      return uniqueStudies;
+    }
+
+    function loadStudies() {
+      // Clear legacy localStorage cache keys and old delete blocklist
+      try {
+        localStorage.removeItem('clinicalGuidelines');
+        localStorage.removeItem('internalMedicineStudies');
+        localStorage.removeItem('cliniportal_deleted_study_ids');
+      } catch (e) {}
+
+      const deletedList = getDeletedStudyIds();
+      studies = [];
+
+      // Load user custom studies or Supabase cached studies
+      try {
+        const storedCustom = localStorage.getItem('cliniportal_custom_studies');
+        if (storedCustom) {
+          const customStudies = JSON.parse(storedCustom);
+          if (Array.isArray(customStudies)) {
+            customStudies.forEach(cs => {
+              if (!isStudyDeleted(cs, deletedList)) {
+                const processed = processStudyFields(cs);
+                const idx = studies.findIndex(s => s.id === processed.id);
+                if (idx !== -1) {
+                  studies[idx] = processed;
+                } else {
+                  studies.push(processed);
+                }
               }
             });
           }
-          saveStudies();
-        } catch (e) {
-          console.error('Lỗi khi phân tích cú pháp nghiên cứu đã lưu, sử dụng dữ liệu mẫu:', e);
-          studies = [...SAMPLE_STUDIES];
         }
-      } else {
-        studies = [...SAMPLE_STUDIES];
-        saveStudies();
-      }
+      } catch (e) {}
+
+      // Auto-restore recovered full studies for Bão Giáp and Sốt Xuất Huyết Dengue
+      const RECOVERED_STUDIES = [
+        {
+          "id": "study_bao_giap_2026",
+          "title": "Hướng Dẫn Chẩn Đoán & Điều Trị Cơn Bão Giáp JCEM 2026",
+          "author": "JCEM / Endocrine Society",
+          "drug": "PTU, Methimazole, Propranolol, Hydrocortisone, Lugol",
+          "sourceType": "intl-guideline",
+          "specialty": "endo",
+          "design": "guideline",
+          "intervention": "Thuốc kháng giáp (PTU/MMI) + Chẹn Beta (Propranolol) + Corticoid (Hydrocortisone) + Dung dịch Iod (Lugol)",
+          "primaryEndpoint": "Tỷ lệ cắt cơn bão giáp và giảm tử vong tại ICU",
+          "keyResults": "Giảm tử vong ICU từ 30% xuống < 10% khi áp dụng phác đồ đa mô thức sớm trong 6-12h đầu",
+          "impact": "practice-changing",
+          "year": 2026,
+          "organization": "JCEM / Endocrine Society",
+          "phase": "Guidelines",
+          "sampleSize": null,
+          "population": "Bệnh nhân cường giáp nặng biến chứng cơn bão giáp (Thyroid Storm)",
+          "summary": "Tóm tắt Hướng dẫn Chẩn đoán và Điều trị Cơn Bão Giáp 2026 (JCEM / Endocrine Society) – Sinh lý bệnh, thang điểm BWPS & JTA, phác đồ điều trị đa mô thức, liều dùng thuốc kháng giáp, chẹn beta, liệu pháp iod và xử trí ICU.",
+          "detailedConclusion": "Phác đồ đa mô thức gồm 4 trụ cột: (1) Khống chế tổng hợp hormone giáp (PTU 200mg q4h hoặc MMI 20mg q4h); (2) Ngăn giải phóng hormone giáp (Dung dịch Lugol/SSKI sau 1h dùng antithyroid); (3) Tắt ảnh hưởng giao cảm (Propranolol 60-80mg q4h); (4) Ngăn chuyển T4 thành T3 ngoại vi (Hydrocortisone 100mg q8h).",
+          "fdaStatus": "Endocrine Society & JCEM Guideline 2026",
+          "sourceUrl": "",
+          "file": "kho-guidelines/cap-nhat-ve-bao-giap-2026.html",
+          "asianData": true,
+          "bookmarked": true,
+          "icd10": ["E05", "E05.5"],
+          "subgroups": null,
+          "createdAt": "2026-08-09T16:40:00.000Z"
+        },
+        {
+          "id": "study_sot_xuat_huyet_dengue_2023",
+          "title": "Hướng Dẫn Chẩn Đoán & Điều Trị Sốt Xuất Huyết Dengue BYT 2023",
+          "author": "Bộ Y tế Việt Nam",
+          "drug": "Ringer Lactate, NaCl 0.9%, Cao phân tử (Dextran 40/70, HES 200k), Paracetamol",
+          "sourceType": "vn-moh",
+          "specialty": "infect",
+          "design": "guideline",
+          "intervention": "Phác đồ bù dịch điện giải (Ringer Lactate/NaCl 0.9%) -> Dung dịch Cao phân tử khi có sốc SXH Dengue",
+          "primaryEndpoint": "Phòng ngừa và xử trí sốc SXH Dengue, suy đa tạng và xuất huyết nặng",
+          "keyResults": "Hạ tỷ lệ tử vong do sốc SXH Dengue xuống < 0.1% nhờ quy trình bù dịch phân tầng 3 giờ và theo dõi Hct liên tục",
+          "impact": "practice-changing",
+          "year": 2023,
+          "organization": "Bộ Y tế Việt Nam (QĐ 2760/QĐ-BYT)",
+          "phase": "Guidelines BYT",
+          "sampleSize": null,
+          "population": "Bệnh nhân nghi ngờ hoặc xác định nhiễm vi-rút Dengue (trẻ em và người lớn)",
+          "summary": "Tóm tắt Hướng dẫn Chẩn đoán và Điều trị Sốt xuất huyết Dengue 2023 của Bộ Y tế Việt Nam (QĐ 2760/QĐ-BYT). Phác đồ bù dịch, quy trình chống sốc trẻ em và người lớn, cao phân tử, truyền máu và xử trí suy tạng.",
+          "detailedConclusion": "Quy trình phân tầng 3 mức độ: (1) SXH Dengue -> Bù dịch Oresol/nước hoa quả uống; (2) SXH Dengue có dấu hiệu cảnh báo -> Truyền dịch Ringer Lactate/NaCl 0.9% 6-7ml/kg/h; (3) Sốc SXH Dengue -> Chống sốc bù dịch nhanh 15-20ml/kg/h, chuyển cao phân tử nếu tái sốc hoặc không đáp ứng.",
+          "fdaStatus": "Hướng dẫn điều trị chuẩn Bộ Y tế Việt Nam 2023",
+          "sourceUrl": "",
+          "file": "kho-guidelines/byt-sot-xuat-huyet-dengue-2023.html",
+          "asianData": true,
+          "bookmarked": true,
+          "icd10": ["A90", "A91"],
+          "subgroups": null,
+          "createdAt": "2026-08-09T16:40:00.000Z"
+        }
+      ];
+
+      RECOVERED_STUDIES.forEach(rec => {
+        if (!studies.some(s => s.id === rec.id || (rec.file && s.file === rec.file))) {
+          studies.unshift(rec);
+        }
+      });
+      saveStudies();
     }
 
     function saveStudies() {
-      localStorage.setItem('clinicalGuidelines', JSON.stringify(studies));
-      localStorage.setItem('internalMedicineStudies', JSON.stringify(studies));
+      try {
+        const validStudies = studies.filter(s => s && s.id);
+        localStorage.setItem('cliniportal_custom_studies', JSON.stringify(validStudies));
+      } catch (e) {}
+
       if (typeof window.CliniPortalSync !== 'undefined' && typeof window.CliniPortalSync.notifyUpdate === 'function') {
         window.CliniPortalSync.notifyUpdate();
       }
@@ -1013,10 +1127,17 @@
         updateBadges();
         if (filtered.length === 0) {
           emptyState.style.display = 'block';
-          if (currentTab === 'saved') {
-            document.getElementById('empty-state-message').textContent = 'Chưa có tài liệu nào được lưu trữ.';
+          const actionsEl = document.getElementById('empty-state-actions');
+          if (studies.length === 0) {
+            document.getElementById('empty-state-message').textContent = 'Kệ sách hiện chưa có dữ liệu nào. Hãy kết nối Supabase hoặc nạp JSON để bắt đầu!';
+            if (actionsEl) actionsEl.style.display = 'flex';
           } else {
-            document.getElementById('empty-state-message').textContent = 'Không tìm thấy tài liệu nào khớp với bộ lọc.';
+            if (actionsEl) actionsEl.style.display = 'none';
+            if (currentTab === 'saved') {
+              document.getElementById('empty-state-message').textContent = 'Chưa có tài liệu nào được lưu trữ.';
+            } else {
+              document.getElementById('empty-state-message').textContent = 'Không tìm thấy tài liệu nào khớp với bộ lọc.';
+            }
           }
           return;
         }
@@ -1041,10 +1162,17 @@
       if (filtered.length === 0) {
         tbody.innerHTML = '';
         emptyState.style.display = 'block';
-        if (currentTab === 'saved') {
-          document.getElementById('empty-state-message').textContent = 'Chưa có tài liệu nào được lưu trữ. Hãy nhấn ngôi sao ở bảng danh sách để lưu.';
+        const actionsEl = document.getElementById('empty-state-actions');
+        if (studies.length === 0) {
+          document.getElementById('empty-state-message').textContent = 'Kệ sách hiện chưa có dữ liệu nào. Hãy kết nối Supabase hoặc nạp JSON để bắt đầu!';
+          if (actionsEl) actionsEl.style.display = 'flex';
         } else {
-          document.getElementById('empty-state-message').textContent = 'Không tìm thấy tài liệu nào khớp với bộ lọc.';
+          if (actionsEl) actionsEl.style.display = 'none';
+          if (currentTab === 'saved') {
+            document.getElementById('empty-state-message').textContent = 'Chưa có tài liệu nào được lưu trữ. Hãy nhấn ngôi sao ở bảng danh sách để lưu.';
+          } else {
+            document.getElementById('empty-state-message').textContent = 'Không tìm thấy tài liệu nào khớp với bộ lọc.';
+          }
         }
         return;
       }
@@ -1092,8 +1220,13 @@
         const designCell = columnVisibility.design ? `<td><span class="badge-source">${designConfig.name}</span></td>` : '';
         const organizationCell = columnVisibility.organization ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${escapeHtml(study.organization || 'N/A')} (${study.year})</div></td>` : '';
         // Generate new schema HTML safely fallback to old schema
-        const interventionText = study.pico ? `<strong>P:</strong> ${escapeHtml(study.pico.population || 'N/A')}<br/><strong>I:</strong> ${escapeHtml(study.pico.intervention || 'N/A')}<br/><strong>C:</strong> ${escapeHtml(study.pico.comparator || 'N/A')}` : escapeHtml(study.intervention || 'N/A');
-        const outcomeText = study.pico ? escapeHtml(study.pico.outcome || 'N/A') : escapeHtml(study.primaryEndpoint || 'N/A');
+        const popVal = (study.pico && study.pico.population && study.pico.population.trim()) || study.population || 'N/A';
+        const invVal = (study.pico && study.pico.intervention && study.pico.intervention.trim()) || study.intervention || 'N/A';
+        const compVal = (study.pico && study.pico.comparator && study.pico.comparator.trim()) || study.comparator || 'N/A';
+        const outVal = (study.pico && study.pico.outcome && study.pico.outcome.trim()) || study.primaryEndpoint || 'N/A';
+
+        const interventionText = `<strong>P:</strong> ${escapeHtml(popVal)}<br/><strong>I:</strong> ${escapeHtml(invVal)}<br/><strong>C:</strong> ${escapeHtml(compVal)}`;
+        const outcomeText = escapeHtml(outVal);
         const statsText = study.statistics ? `<strong>${study.statistics.type}</strong> ${study.statistics.value} (95% CI ${study.statistics.ciLower}-${study.statistics.ciUpper}); p=${study.statistics.pValue}` : escapeHtml(study.oldKeyResults || study.keyResults || 'N/A');
 
         const interventionCell = columnVisibility.intervention ? `<td><div class="study-summary ${viewMode === 'compact' ? 'clamped' : ''}">${interventionText}</div></td>` : '';
@@ -1162,7 +1295,7 @@
                   ${sgInlineBtn}
                 </div>
                 <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px;">
-                  <span class="study-drug">${escapeHtml(study.drug || 'N/A')} • ${escapeHtml(study.organization || 'N/A')} (${study.year})</span>
+                  <span class="study-drug">${study.drug && study.drug !== 'N/A' ? `${escapeHtml(study.drug)} • ` : ''}${escapeHtml(study.organization || 'N/A')} (${study.year})</span>
                   ${drugInterBadge}
                 </div>
               </div>
@@ -1321,7 +1454,7 @@
           <div class="update-item" onclick="toggleExpandRow('${study.id}', event)">
             <span class="update-dot" style="background: ${spec.color};"></span>
             <div class="update-content">
-              <div class="update-title">${escapeHtml(study.title)} (${escapeHtml(study.drug)})</div>
+              <div class="update-title">${escapeHtml(study.title)}${study.drug && study.drug !== 'N/A' ? ` (${escapeHtml(study.drug)})` : ''}</div>
               <div class="update-meta">
                 <span class="update-tag" style="background: ${spec.bg}; color: ${spec.color};">${spec.name}</span>
                 <span>${escapeHtml(study.organization || 'N/A')}</span>
@@ -1490,7 +1623,7 @@
             <div class="compare-row">
               <span class="detail-label">Tài liệu & Nghiên cứu / Hoạt chất</span>
               <h4 style="font-size: 1rem; font-weight: 800; color: var(--text);">${escapeHtml(study.title)}</h4>
-              <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted);">${escapeHtml(study.drug)}</p>
+              ${study.drug && study.drug !== 'N/A' ? `<p style="font-size: 0.82rem; font-weight: 600; color: var(--text-muted);">${escapeHtml(study.drug)}</p>` : ''}
             </div>
 
             <div class="compare-row" style="display: flex; flex-wrap: wrap; gap: 6px;">
@@ -1506,13 +1639,15 @@
             <div class="compare-row">
               <span class="detail-label">PICO: Đối tượng / Can thiệp / Đối chứng</span>
               <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">
-                ${study.pico ? `<strong>P:</strong> ${escapeHtml(study.pico.population)}<br><strong>I:</strong> ${escapeHtml(study.pico.intervention)}<br><strong>C:</strong> ${escapeHtml(study.pico.comparator)}` : escapeHtml(study.intervention || 'N/A')}
+                <strong>P:</strong> ${escapeHtml((study.pico && study.pico.population && study.pico.population.trim()) || study.population || 'N/A')}<br>
+                <strong>I:</strong> ${escapeHtml((study.pico && study.pico.intervention && study.pico.intervention.trim()) || study.intervention || 'N/A')}<br>
+                <strong>C:</strong> ${escapeHtml((study.pico && study.pico.comparator && study.pico.comparator.trim()) || study.comparator || 'N/A')}
               </p>
             </div>
 
             <div class="compare-row">
               <span class="detail-label">Tiêu chí đánh giá (Outcome)</span>
-              <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">${study.pico ? escapeHtml(study.pico.outcome) : escapeHtml(study.primaryEndpoint || 'N/A')}</p>
+              <p style="font-size: 0.78rem; font-weight: 600; color: var(--text);">${escapeHtml((study.pico && study.pico.outcome && study.pico.outcome.trim()) || study.primaryEndpoint || 'N/A')}</p>
             </div>
 
             <div class="compare-row">
@@ -1628,7 +1763,7 @@
         <th>
           <div class="matrix-study-header">${escapeHtml(study.title)}</div>
           <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal; margin-top: 2px;">
-            ${escapeHtml(study.drug || 'N/A')} <span style="display:inline-block; margin-left: 4px; padding: 1px 4px; border-radius: 4px; background: #e2e8f0;">${study.year}</span>
+            ${study.drug && study.drug !== 'N/A' ? `${escapeHtml(study.drug)} ` : ''}<span style="display:inline-block; margin-left: 4px; padding: 1px 4px; border-radius: 4px; background: #e2e8f0;">${study.year}</span>
           </div>
           <button class="btn btn-small" onclick="removeCompare('${study.id}')" style="margin-top: 8px; font-size: 0.7rem; padding: 2px 6px;">&times; Xóa</button>
         </th>
@@ -1726,7 +1861,7 @@
           </head>
           <body>
             <h1>${escapeHtml(study.title)}</h1>
-            <div class="meta">Hoạt chất: ${escapeHtml(study.drug)} | Tổ chức: ${escapeHtml(study.organization || 'N/A')} (${study.year})</div>
+            <div class="meta">${study.drug && study.drug !== 'N/A' ? `Hoạt chất: ${escapeHtml(study.drug)} | ` : ''}Tổ chức: ${escapeHtml(study.organization || 'N/A')} (${study.year})</div>
             <div class="section"><div class="label">Can thiệp / Phác đồ</div><div>${escapeHtml(study.intervention || 'N/A')}</div></div>
             <div class="section"><div class="label">Tiêu chí đánh giá chính</div><div>${escapeHtml(study.primaryEndpoint || 'N/A')}</div></div>
             <div class="section"><div class="label">Kết quả cốt lõi</div><div class="box"><b>${escapeHtml(study.keyResults || 'N/A')}</b></div></div>
@@ -1872,7 +2007,6 @@
         // Fallback
       }
     }
-
     // Export all handlers to global window
     window.switchTab = switchTab;
     window.setFilter = setFilter;
@@ -2092,15 +2226,32 @@
     function deleteStudy(id, event) {
       if (event) event.stopPropagation();
       if (confirm('🗑️ Bạn có chắc chắn muốn xóa tài liệu / nghiên cứu này không?')) {
+        saveDeletedStudyId(id);
+
+        // Filter out target study strictly by ID
         studies = studies.filter(s => s.id !== id);
+
+        // Also clean up from custom studies in localStorage
+        try {
+          const storedCustom = localStorage.getItem('cliniportal_custom_studies');
+          if (storedCustom) {
+            let customStudies = JSON.parse(storedCustom);
+            if (Array.isArray(customStudies)) {
+              customStudies = customStudies.filter(s => s.id !== id);
+              localStorage.setItem('cliniportal_custom_studies', JSON.stringify(customStudies));
+            }
+          }
+        } catch (e) {}
+
         selectedIds.delete(id);
         expandedIds.delete(id);
+
         saveStudies();
         renderTable();
         renderUpdates();
         updateCompareBadge();
         
-        if (supabaseClient) {
+        if (typeof supabaseClient !== 'undefined' && supabaseClient) {
           dbDeleteStudy(id);
         }
       }
@@ -2118,6 +2269,60 @@
       document.getElementById('import-modal').classList.remove('active');
     }
 
+    function parseFlexibleJSON(input) {
+      if (typeof input === 'object' && input !== null) return input;
+      if (typeof input !== 'string') return null;
+
+      let str = input.trim();
+
+      // 1. Strip markdown code block fences (```json ... ``` or ```javascript ...)
+      str = str.replace(/^```[a-z]*\s*/i, '').replace(/\s*```$/i, '').trim();
+
+      // 2. Try standard JSON.parse first
+      try {
+        return JSON.parse(str);
+      } catch (e) {}
+
+      // 3. Try finding JSON array [...] or object {...} inside extra text
+      const firstBracket = str.search(/[\[\{]/);
+      const lastBracket = Math.max(str.lastIndexOf(']'), str.lastIndexOf('}'));
+      if (firstBracket !== -1 && lastBracket > firstBracket) {
+        const extracted = str.substring(firstBracket, lastBracket + 1);
+        try {
+          return JSON.parse(extracted);
+        } catch (e) {
+          str = extracted;
+        }
+      }
+
+      // 4. Clean common JSON syntax errors:
+      // - Remove trailing commas before ] or }
+      let cleaned = str.replace(/,\s*([\}\]])/g, '$1');
+      // - Fix single quotes for values/keys
+      cleaned = cleaned.replace(/('([^'\\]|\\.)*')/g, (match) => {
+        return '"' + match.slice(1, -1).replace(/"/g, '\\"').replace(/\\'/g, "'") + '"';
+      });
+      // - Add double quotes around unquoted object keys
+      cleaned = cleaned.replace(/([{,]\s*)([a-zA-Z0-9_$]+)\s*:/g, '$1"$2":');
+
+      try {
+        return JSON.parse(cleaned);
+      } catch (e) {}
+
+      // 5. Safe JS Object evaluation fallback for raw JS literal syntax
+      try {
+        if (/^\s*[\[\{]/.test(str)) {
+          const fn = new Function('return (' + str + ')');
+          const res = fn();
+          if (res && (typeof res === 'object' || Array.isArray(res))) {
+            return res;
+          }
+        }
+      } catch (e) {}
+
+      return null;
+    }
+
     function handleFileSelect(event) {
       const file = event.target.files[0];
       if (!file) return;
@@ -2125,8 +2330,9 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         try {
-          const data = JSON.parse(e.target.result);
-          importData(data);
+          const parsed = parseFlexibleJSON(e.target.result);
+          if (!parsed) throw new Error('Không thể phân tích dữ liệu JSON.');
+          importData(parsed);
         } catch (err) {
           alert('❌ Lỗi: File JSON không hợp lệ! ' + err.message);
         }
@@ -2142,10 +2348,11 @@
       }
       
       try {
-        const data = JSON.parse(text);
-        importData(data);
+        const parsed = parseFlexibleJSON(text);
+        if (!parsed) throw new Error('Không thể phân tích mã JSON. Vui lòng kiểm tra lại định dạng!');
+        importData(parsed);
       } catch (err) {
-        alert('❌ Lỗi: JSON không hợp lệ! ' + err.message);
+        alert('❌ Lỗi nạp JSON: ' + err.message);
       }
     }
 
@@ -2154,40 +2361,51 @@
       let imported = 0;
 
       dataArr.forEach(item => {
-        if (item.title) {
+        if (!item || typeof item !== 'object') return;
+
+        // Flexible field matching (supports Vietnamese, English, snake_case, etc.)
+        const title = item.title || item.tieuDe || item.ten_bai || item.name || item.heading || item.study_title || item.guideline_title || item.ten_nghien_cuu || item.ten || '';
+
+        if (title) {
           const study = {
             id: item.id || generateId(),
-            title: item.title,
-            author: item.author || '',
-            drug: item.drug || 'N/A',
-            sourceType: item.sourceType || 'intl-study',
-            specialty: item.specialty || 'cardio',
-            design: item.design || 'rct',
-            intervention: item.intervention || '',
-            primaryEndpoint: item.primaryEndpoint || '',
-            keyResults: item.keyResults || '',
-            impact: item.impact || 'informative',
-            year: item.year || new Date().getFullYear(),
-            organization: item.organization || item.source || 'N/A',
-            phase: item.phase || 'N/A',
-            sampleSize: item.sampleSize || null,
-            population: item.population || 'N/A',
-            summary: item.summary || item.conclusion || 'Không có kết luận',
-            detailedConclusion: item.detailedConclusion || '',
-            fdaStatus: item.fdaStatus || 'N/A',
-            sourceUrl: item.sourceUrl || '',
-            file: item.file || '',
+            title: title.trim(),
+            author: item.author || item.tac_gia || item.authors || '',
+            drug: item.drug || item.thuoc || item.medication || item.intervention || 'N/A',
+            sourceType: item.sourceType || item.source_type || item.loai_nguon || 'intl-study',
+            specialty: item.specialty || item.chuyen_khoa || item.category || 'cardio',
+            design: item.design || item.thiet_ke || item.study_design || 'rct',
+            intervention: item.intervention || item.can_thiep || '',
+            primaryEndpoint: item.primaryEndpoint || item.primary_endpoint || item.tieu_chi_chinh || '',
+            keyResults: item.keyResults || item.key_results || item.ket_qua || item.results || '',
+            impact: item.impact || item.muc_do_anh_huong || 'informative',
+            year: parseInt(item.year || item.nam || item.nam_xuat_ban) || new Date().getFullYear(),
+            organization: item.organization || item.to_chuc || item.source || item.author || 'N/A',
+            phase: item.phase || item.giai_doan || 'N/A',
+            sampleSize: item.sampleSize || item.sample_size || item.co_mau ? parseInt(item.sampleSize || item.sample_size || item.co_mau) : null,
+            population: item.population || item.doi_tuong || item.danso || 'N/A',
+            summary: item.summary || item.tom_tat || item.abstract || item.conclusion || item.description || item.ket_luan || 'Không có kết luận',
+            detailedConclusion: item.detailedConclusion || item.detailed_conclusion || item.ket_luan_chi_tiet || '',
+            fdaStatus: item.fdaStatus || item.fda_status || item.fda || 'N/A',
+            sourceUrl: item.sourceUrl || item.source_url || item.link || item.url || '',
+            file: item.file || item.path || item.file_path || '',
             parts: Array.isArray(item.parts) ? item.parts : (typeof item.parts === 'string' && item.parts ? (() => { try { return JSON.parse(item.parts); } catch(e) { return null; } })() : null),
-            asianData: item.asianData || false,
-            bookmarked: item.bookmarked || false,
+            asianData: item.asianData !== undefined ? item.asianData : (item.asian_data !== undefined ? item.asian_data : false),
+            bookmarked: item.bookmarked !== undefined ? item.bookmarked : false,
             icd10: Array.isArray(item.icd10) ? item.icd10 : (typeof item.icd10 === 'string' && item.icd10 ? (() => { try { return JSON.parse(item.icd10); } catch(e) { return []; } })() : []),
             subgroups: (item.subgroups && typeof item.subgroups === 'object' && !Array.isArray(item.subgroups)) ? item.subgroups
                        : (typeof item.subgroups === 'string' && item.subgroups ? (() => { try { return JSON.parse(item.subgroups); } catch(e) { return null; } })() : null),
             matrixEndpoints: (item.matrixEndpoints && typeof item.matrixEndpoints === 'object') ? item.matrixEndpoints
                        : (typeof item.matrixEndpoints === 'string' && item.matrixEndpoints ? (() => { try { return JSON.parse(item.matrixEndpoints); } catch(e) { return null; } })() : null),
-            createdAt: item.createdAt || new Date().toISOString()
+            createdAt: item.createdAt || item.created_at || new Date().toISOString()
           };
-          studies.push(study);
+
+          const existingIdx = studies.findIndex(s => s.id === study.id || (study.file && s.file && s.file === study.file));
+          if (existingIdx !== -1) {
+            studies[existingIdx] = { ...studies[existingIdx], ...study };
+          } else {
+            studies.unshift(study);
+          }
           imported++;
 
           if (supabaseClient) {
@@ -2203,9 +2421,9 @@
         renderUpdates();
         closeImportModal();
         document.getElementById('json-text').value = '';
-        alert(`✅ Đã nhập ${imported} tài liệu thành công!`);
+        alert(`✅ Đã nhập thành công ${imported} tài liệu vào hệ thống & Supabase!`);
       } else {
-        alert('⚠️ Không tìm thấy tài liệu hợp lệ nào.');
+        alert('⚠️ Không tìm thấy tài liệu hợp lệ nào (Cần ít nhất trường tiêu đề "title" hoặc "tieuDe").');
       }
     }
 
@@ -2305,6 +2523,9 @@
       if (!rawLabel) return '';
       let str = rawLabel.trim();
 
+      // Strip parenthetical qualifiers like (dự đoán tử vong) if they qualify a main predictor
+      str = str.replace(/\s*\((?:dự đoán|đánh giá|tiên lượng)[^)]*\)/gi, '');
+
       // Strip leading/trailing connector & filler words
       str = str.replace(/^(?:đoán|án|tỷ lệ|kết quả|cho thấy|đạt|bằng|trong|nghiên cứu|thử nghiệm|phân tích|về|ở|đối với|khi|so với|vs|là|bị|nhóm|làm)\s+/gi, '');
       str = str.replace(/\s+(?:đạt|là|cho thấy|được|ở|với|bằng|so với|vs|làm|nhóm|do mọi nguyên nhân|mọi nguyên nhân)\s*$/gi, '');
@@ -2314,7 +2535,7 @@
       str = abbreviateMedicalText(str);
 
       // Clean up punctuation and excess spaces
-      str = str.replace(/\s+/g, ' ').replace(/^[:\-\s,.;]+|[:\-\s,.;]+$/g, '').trim();
+      str = str.replace(/\s+/g, ' ').replace(/^[:\-\s,.;()]+|[:\-\s,.;()]+$/g, '').trim();
       if (str.length > 0) {
         str = str.charAt(0).toUpperCase() + str.slice(1);
       }
@@ -2452,9 +2673,58 @@
         const forestRes = parseForestDataAll(cleanText);
         if (forestRes) return forestRes;
 
-        // 4. Multi/Comparative Percentages or Single Percentage Extraction (Supported Range X%-Y%)
+        // 4. AUROC / ROC / AUC Diagnostic Accuracy Parser
+        const aurocMatches = [];
+        const aurocRegex = /(?:([a-zA-ZÀ-ỹ0-9\s_()–-]{2,45})[\s:]+)?(?:AUROC|AUC|C-index|C-statistic|ROC)\s*[:=]?\s*(\d+(?:\.\d+)?)\s*(?:\(\s*95%\s*CI\s*(\d+(?:\.\d+)?)\s*[-–—\to]\s*(\d+(?:\.\d+)?)\s*\))?/gi;
+        let aMatch;
+        const colors = ['#0284c7', '#7c3aed', '#059669', '#d97706', '#dc2626'];
+
+        while ((aMatch = aurocRegex.exec(cleanText)) !== null) {
+          let rawLbl = aMatch[1] || '';
+          const scoreVal = parseFloat(aMatch[2]);
+          const ciMinStr = aMatch[3];
+          const ciMaxStr = aMatch[4];
+          const ciMin = ciMinStr ? parseFloat(ciMinStr) : null;
+          const ciMax = ciMaxStr ? parseFloat(ciMaxStr) : null;
+
+          if (!isNaN(scoreVal)) {
+            let label = cleanMedicalLabel(rawLbl);
+            if (!label) label = `Chỉ số #${aurocMatches.length + 1}`;
+
+            const scorePct = scoreVal <= 1.0 ? Math.round(scoreVal * 100) : scoreVal;
+            const minPct = ciMin !== null ? (ciMin <= 1.0 ? Math.round(ciMin * 100) : ciMin) : null;
+            const maxPct = ciMax !== null ? (ciMax <= 1.0 ? Math.round(ciMax * 100) : ciMax) : null;
+
+            let displayVal = `AUROC ${scoreVal}`;
+            if (ciMinStr && ciMaxStr) {
+              displayVal += ` (95% CI ${ciMinStr}-${ciMaxStr})`;
+            }
+
+            aurocMatches.push({
+              label,
+              value: scorePct,
+              min: minPct !== null ? minPct : scorePct,
+              max: maxPct !== null ? maxPct : scorePct,
+              isRange: ciMin !== null && ciMax !== null,
+              displayVal,
+              color: colors[aurocMatches.length % colors.length]
+            });
+          }
+        }
+
+        if (aurocMatches.length >= 1) {
+          return {
+            type: 'comparison',
+            items: aurocMatches
+          };
+        }
+
+        // 5. Mask out 95% CI / 95% KTC before matching percentage outcome rates!
+        const textNoCI = cleanText.replace(/\(?(?:95|90|99)%\s*(?:CI|KTC|khoảng tin cậy)[^)]*\)?/gi, '');
+
+        // 6. Multi/Comparative Percentages or Single Percentage Extraction
         const pctMatches = [];
-        const clauses = cleanText.split(/(?:[;,]|\r?\n|\bso với\b|\bvs\b)/i);
+        const clauses = textNoCI.split(/(?:[;,]|\r?\n|\bso với\b|\bvs\b)/i);
         const prevContext = { lastOutcome: '' };
 
         for (let clauseStr of clauses) {
@@ -3854,9 +4124,6 @@
     function openSubgroupModal(id, event) {
       if (event && event.stopPropagation) event.stopPropagation();
       let study = studies.find(s => s.id === id);
-      if (!study && typeof SAMPLE_STUDIES !== 'undefined') {
-        study = SAMPLE_STUDIES.find(s => s.id === id);
-      }
       if (!study) {
         console.warn('[SubgroupModal] Study not found:', id);
         return;

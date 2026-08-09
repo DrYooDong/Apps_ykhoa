@@ -261,7 +261,7 @@
             </button>
             
             <button class="btn" onclick="resetFilters()">
-              🔄 Reset
+              🔄 Reset Lọc
             </button>
             
             <div class="stats-badge">
@@ -358,8 +358,13 @@
 
         <!-- Empty State -->
         <div class="empty-state" id="empty-state" style="display:none;">
-          <div class="empty-state-icon">📋</div>
-          <p id="empty-state-message">Chưa có tài liệu nào khớp với bộ lọc. Hãy điều chỉnh bộ lọc hoặc thêm tài liệu mới.</p>
+          <div class="empty-state-icon">📚</div>
+          <p id="empty-state-message">Kệ sách hiện chưa có dữ liệu nào. Hãy kết nối Supabase hoặc nạp JSON để bắt đầu!</p>
+          <div id="empty-state-actions" style="margin-top: 1rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="openSupabaseModal()">☁️ Kết nối Supabase</button>
+            <button class="btn" onclick="openImportModal()">📥 Nhập dữ liệu JSON</button>
+            <button class="btn" onclick="openAddModal()">➕ Thêm tài liệu mới</button>
+          </div>
         </div>
 
       </section>
@@ -674,6 +679,9 @@ create table clinical_guidelines (
   file text,
   "asianData" boolean,
   bookmarked boolean,
+  icd10 text,
+  subgroups text,
+  parts text,
   "matrixEndpoints" jsonb,
   "decisionTree" jsonb,
   "pocketCard" jsonb,
@@ -702,7 +710,7 @@ create table clinical_guidelines (
       </div>
       <div class="modal-body">
         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.5;">
-          Nhập dữ liệu bằng cách kéo thả/tải lên file JSON hoặc dán chuỗi mã JSON trực tiếp dưới đây. Cấu trúc JSON cần khớp với định dạng cơ sở dữ liệu.
+          🚀 <strong>Bộ nạp Smart JSON siêu linh hoạt:</strong> Hỗ trợ dán trực tiếp mã JSON từ ChatGPT, NotebookLM, Claude hay file thô. Tự động loại bỏ khung markdown (<code>```json</code>), tự sửa lỗi dấu ngoặc/nháy đơn/dấu phẩy thừa và tự động ánh xạ tiêu đề tiếng Việt (<code>tieuDe</code>, <code>thuoc</code>, <code>nam</code>, <code>ket_qua</code>...).
         </p>
         
         <!-- Way 1: File Upload (Drag & Drop) -->

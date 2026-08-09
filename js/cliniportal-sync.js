@@ -10,14 +10,14 @@
   'use strict';
 
   // Key lưu trữ localStorage của phân hệ Guidelines
-  const PRIMARY_STORAGE_KEY = 'clinicalGuidelines';
-  const LEGACY_STORAGE_KEY = 'internalMedicineStudies';
+  const PRIMARY_STORAGE_KEY = 'cliniportal_custom_studies';
+  const LEGACY_STORAGE_KEY = 'clinicalGuidelines';
   const EVENT_NAME = 'cliniportal:guidelines-updated';
 
   // Khởi tạo namespace toàn cục CliniPortalSync
   const CliniPortalSync = {
     /**
-     * Lấy toàn bộ danh sách Guidelines hiện có (LocalStorage -> Dynamic fallback)
+     * Lấy toàn bộ danh sách Guidelines hiện có (LocalStorage)
      * @returns {Array} Danh sách các nghiên cứu / khuyến cáo
      */
     getStudies: function () {
@@ -25,17 +25,12 @@
         const saved = localStorage.getItem(PRIMARY_STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) {
+          if (Array.isArray(parsed)) {
             return parsed;
           }
         }
       } catch (e) {
         console.error('[CliniPortalSync] Lỗi đọc localStorage:', e);
-      }
-
-      // Fallback nếu window.SAMPLE_STUDIES đã được nạp
-      if (typeof window !== 'undefined' && Array.isArray(window.SAMPLE_STUDIES)) {
-        return window.SAMPLE_STUDIES;
       }
 
       return [];

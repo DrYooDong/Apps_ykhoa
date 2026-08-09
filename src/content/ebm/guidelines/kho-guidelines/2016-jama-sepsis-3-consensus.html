@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Đồng thuận Quốc tế Sepsis-3 (JAMA 2016): Định nghĩa mới Nhiễm khuẩn huyết (Sepsis) theo SOFA ≥2, công cụ sàng lọc qSOFA tại giường, tiêu chuẩn Sốc nhiễm khuẩn và bãi bỏ khái niệm Severe Sepsis.">
+  <title>Đồng Thuận Quốc Tế Sepsis-3 (JAMA 2016) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+      --border: #475569; --border-light: #334155;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.15); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.15); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.15); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.15); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.15); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.15); --purple-light: rgba(221, 214, 254, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .mcq-card, .btn-row { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(15, 23, 42, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .topnav-theme-toggle { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .badge-orange { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .badge-red { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 40%, #065f46 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.15) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.68em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.2rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.88; max-width: 780px; margin-bottom: 2rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.82; }
+    .hero-meta-item { display: flex; align-items: center; gap: 5px; }
+
+    /* STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1rem 1.25rem; text-align: center; }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top: 0.25rem; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-7 { border-left: 4px solid var(--accent); }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.2rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1.25rem; font-size: 0.85rem; line-height: 1.65; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.purple { background: var(--purple-bg); border: 1px solid var(--purple-light); border-left: 4px solid var(--purple); }
+    .infobox-title { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+
+    /* MATRIX GRID CARDS */
+    .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .matrix-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; transition: transform var(--tr), box-shadow var(--tr); }
+    .matrix-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .matrix-card-hdr { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
+    .matrix-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); }
+    .matrix-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* CLINICAL GRID CARDS (qSOFA Box) */
+    .clin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1rem; margin-bottom: 1.25rem; }
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; border-top: 4px solid var(--accent); }
+    .clin-card.c-brain { border-top-color: var(--purple); }
+    .clin-card.c-bp { border-top-color: var(--red); }
+    .clin-card.c-resp { border-top-color: var(--blue); }
+    .clin-card-num { font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 1.1rem; color: var(--text-faint); margin-bottom: 0.25rem; }
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.4rem; }
+    .clin-card-val { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; color: var(--red); margin-bottom: 0.4rem; }
+    .clin-card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* STEP ALGORITHM CARDS */
+    .algo-container { display: flex; flex-direction: column; gap: 1rem; position: relative; margin-bottom: 1.25rem; }
+    .algo-step { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; display: flex; gap: 1rem; align-items: flex-start; }
+    .algo-badge { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .algo-content { flex: 1; }
+    .algo-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.92rem; color: var(--text); margin-bottom: 0.35rem; }
+    .algo-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+    .algo-branch { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem; }
+    .algo-choice { padding: 0.75rem; border-radius: 10px; font-size: 0.8rem; line-height: 1.5; border: 1px solid var(--border-light); }
+    .algo-choice.yes { background: var(--red-bg); border-color: var(--red-light); color: var(--text); }
+    .algo-choice.no { background: var(--green-bg); border-color: var(--green-light); color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; border-radius: 12px; border: 1px solid var(--border-light); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; text-align: left; min-width: 650px; }
+    .data-table th { background: var(--surface-2); padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; color: var(--text); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(0,0,0,0.015); }
+    .score-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.75rem; }
+    .score-0 { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .score-1 { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+    .score-2 { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .score-3 { background: #fff3ed; color: #c2410c; border: 1px solid #ffedd5; }
+    .score-4 { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-light); }
+
+    /* MINI CHART CONTAINER */
+    .chart-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; margin-bottom: 1.25rem; }
+    .chart-hdr { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    .chart-bar-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.65rem; font-size: 0.8rem; }
+    .chart-lbl { width: 140px; flex-shrink: 0; font-weight: 600; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .chart-track { flex: 1; height: 22px; background: var(--border-light); border-radius: 6px; overflow: hidden; position: relative; }
+    .chart-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; transition: width 800ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .fill-green { background: linear-gradient(90deg, #10b981, #059669); }
+    .fill-blue { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+    .fill-orange { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    .fill-red { background: linear-gradient(90deg, #ef4444, #dc2626); }
+
+    /* CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.83rem; color: var(--text-muted); line-height: 1.7; font-style: italic; }
+
+    /* MCQ INTERACTIVE CARD */
+    .mcq-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.35rem; margin-top: 1.25rem; }
+    .mcq-q { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.92rem; color: var(--text); margin-bottom: 0.85rem; }
+    .mcq-opts { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+    .mcq-opt { padding: 0.65rem 0.9rem; border-radius: 8px; border: 1px solid var(--border-light); background: var(--surface); color: var(--text); font-size: 0.82rem; cursor: pointer; text-align: left; transition: all var(--tr); }
+    .mcq-opt:hover { border-color: var(--accent); background: var(--blue-bg); }
+    .mcq-opt.correct { background: var(--green-bg) !important; border-color: var(--green) !important; color: #065f46 !important; font-weight: 700; }
+    .mcq-opt.wrong { background: var(--red-bg) !important; border-color: var(--red) !important; color: #991b1b !important; }
+    .mcq-fb { font-size: 0.82rem; padding: 0.75rem; border-radius: 8px; display: none; margin-top: 0.5rem; }
+
+    /* BUTTONS */
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .algo-branch { grid-template-columns: 1fr; }
+      .chart-lbl { width: 100px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Đồng Thuận Quốc Tế Sepsis-3 (JAMA 2016)</div>
+    <div class="topnav-badges">
+      <button class="topnav-theme-toggle" id="themeToggleBtn" title="Chuyển đổi Dark/Light mode">🌙</button>
+      <span class="badge badge-green">SCCM/ESICM</span>
+      <span class="badge badge-blue">JAMA 2016</span>
+      <span class="badge badge-red">Landmark</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">🔬 Đồng Thuận Chẩn Đoán & Định Nghĩa Lâm Sàng</div>
+      <h1 class="hero-title">
+        <span>The Third International Consensus Definitions for Sepsis and Septic Shock</span>
+        Định Nghĩa Đồng Thuận Quốc Tế Lần Thứ Ba Về Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn (Sepsis-3)
+      </h1>
+      <p class="hero-subtitle">
+        Công bố bởi Hiệp hội Y học Hồi sức Cấp cứu Hoa Kỳ (SCCM) và Châu Âu (ESICM) năm 2016. Thay đổi toàn diện bối cảnh chẩn đoán 25 năm, bãi bỏ khái niệm "Nhiễm khuẩn huyết nặng" (Severe Sepsis), thiết lập tiêu chuẩn rối loạn chức năng cơ quan SOFA ≥ 2, công cụ sàng lọc nhanh tại giường qSOFA và tiêu chuẩn Sốc nhiễm khuẩn (Vận mạch + Lactate > 2 mmol/L).
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📅 Công bố: <strong>23/02/2016</strong></div>
+        <div class="hero-meta-item">📰 Tạp chí: <strong>JAMA. 2016;315(8):801-810</strong></div>
+        <div class="hero-meta-item">🏛️ Tổ chức: <strong>SCCM & ESICM Consensus Panel</strong></div>
+        <div class="hero-meta-item">📊 Quy mô dữ liệu: <strong>> 850.000 Bệnh nhân (UPMC, KPNC, SSC)</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">ΔSOFA ≥ 2</div>
+        <div class="stat-lbl">Tiêu chuẩn Sepsis-3 (Tử vong > 10%)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">> 40%</div>
+        <div class="stat-lbl">Tỷ lệ tử vong Septic Shock</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">AUROC 0.81</div>
+        <div class="stat-lbl">Hiệu năng qSOFA tiên lượng ngoài ICU</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">148.907</div>
+        <div class="stat-lbl">Bệnh nhân mẫu UPMC nghi nhiễm trùng</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV BAR -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Bối cảnh & SIRS</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Định nghĩa & SOFA</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Sàng lọc qSOFA</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Sơ đồ Vận hành</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Phân tích Dữ liệu</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Sốc Nhiễm Khuẩn</a>
+      <a href="#sec-7" class="pillar-tab p-7">7. Tranh luận & Hạn chế</a>
+    </div>
+  </div>
+
+  <!-- MAIN PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: BỐI CẢNH LỊCH SỬ & BÃI BỎ SEVERE SEPSIS -->
+    <section class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📜</span>
+        <h2 class="sec-title">1. Bối Cảnh Lịch Sử & Sự Cần Thiết Của Việc Thay Đổi Định Nghĩa</h2>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 1rem; font-size: 0.88rem; line-height: 1.65;">
+          Đồng thuận quốc tế lần thứ ba về định nghĩa Nhiễm khuẩn huyết và Sốc nhiễm khuẩn (<strong>Sepsis-3</strong>) được công bố vào năm 2016 bởi Hiệp hội Y học Hồi sức Cấp cứu Hoa Kỳ (SCCM) và Hiệp hội Hồi sức Cấp cứu Châu Âu (ESICM) nhằm cập nhật các khái niệm đã tồn tại hơn hai thập kỷ từ năm 1991 (Sepsis-1) và năm 2001 (Sepsis-2).
+        </p>
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong class="infobox-title">Tại sao tiêu chuẩn SIRS không còn phù hợp làm định nghĩa Sepsis?</strong>
+            Các định nghĩa cũ (Sepsis-1 và Sepsis-2) tập trung quá mức vào phản ứng viêm hệ thống thông qua tiêu chuẩn SIRS (Systemic Inflammatory Response Syndrome). Tuy nhiên, SIRS phản ánh <strong>phản ứng thích nghi sinh lý bình thường</strong> của cơ thể đối với mối nguy hiểm hơn là một phản ứng mất điều hòa mang tính đe dọa tính mạng. SIRS có độ nhạy và độ đặc hiệu kém: nhiều bệnh nhân nội viện có tiêu chuẩn SIRS nhưng không bao giờ tiến triển thành nhiễm trùng hoặc có kết cục xấu; ngược lại, <strong>cứ 8 bệnh nhân nhập ICU vì nhiễm trùng kèm suy tạng thì có 1 bệnh nhân (12.5%) không đáp ứng đủ tiêu chuẩn SIRS</strong>.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Đối Sánh Mô Hình Bệnh Học: Sepsis-1/2 vs Sepsis-3</div>
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-hdr">
+              <span style="font-size: 1.2rem;">❌</span>
+              <div class="matrix-card-title" style="color: var(--red);">Quan điểm Cũ (Sepsis-1 / Sepsis-2)</div>
+            </div>
+            <div class="matrix-card-body">
+              Coi Sepsis là một diễn tiến liên tục (continuum) tuyến tính: <em>Infection → Sepsis → Severe Sepsis → Septic Shock</em>. Đặt trọng tâm vào hội chứng đáp ứng viêm hệ thống (SIRS).
+            </div>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-card-hdr">
+              <span style="font-size: 1.2rem;">✅</span>
+              <div class="matrix-card-title" style="color: var(--green);">Quan điểm Mới (Sepsis-3, JAMA 2016)</div>
+            </div>
+            <div class="matrix-card-body">
+              Sepsis là một hội chứng phức tạp liên quan đến <strong>phản ứng tiền viêm và kháng viêm sớm</strong>, kèm rối loạn đa hệ thống (tim mạch, thần kinh, nội tiết, chuyển hóa, đông máu). Nhấn mạnh vào <strong>đáp ứng mất điều hòa (dysregulated response)</strong> và <strong>rối loạn chức năng cơ quan</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox danger">
+          <span class="infobox-icon">🚫</span>
+          <div>
+            <strong class="infobox-title">Bãi bỏ hoàn toàn thuật ngữ "Nhiễm khuẩn huyết nặng" (Severe Sepsis)</strong>
+            Ban đồng thuận Sepsis-3 quyết định <strong>LOẠI BỎ HOÀN TOÀN</strong> thuật ngữ <em>"Severe Sepsis"</em> vì tính chất dư thừa của nó: Bản thân khái niệm Sepsis mới đã bắt buộc phải bao hàm sự hiện diện của rối loạn chức năng cơ quan đe dọa tính mạng (SOFA ≥ 2).
+          </div>
+        </div>
+
+        <!-- BOX 1: SIRS -->
+        <div style="background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; margin-top: 1.25rem;">
+          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--accent); margin-bottom: 0.6rem;">
+            📌 Box 1. Tiêu chuẩn SIRS (Systemic Inflammatory Response Syndrome) – Trích Bone và cộng sự (1992)
+          </div>
+          <p style="font-size: 0.83rem; color: var(--text-muted); margin-bottom: 0.6rem;">Bệnh nhân được xác định có SIRS khi thỏa mãn <strong>từ 2 hoặc nhiều hơn</strong> các tiêu chuẩn sau:</p>
+          <ul style="padding-left: 1.25rem; font-size: 0.83rem; color: var(--text-muted); line-height: 1.7;">
+            <li><strong>Thân nhiệt:</strong> > 38°C hoặc < 36°C</li>
+            <li><strong>Nhịp tim:</strong> > 90 lần/phút</li>
+            <li><strong>Nhịp thở / Thông khí:</strong> > 20 lần/phút hoặc PaCO₂ < 32 mmHg (4.3 kPa)</li>
+            <li><strong>Số lượng bạch cầu:</strong> > 12.000/mm³ hoặc < 4.000/mm³ hoặc có > 10% bạch cầu đũa (immature bands)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: ĐỊNH NGHĨA MỚI SEPSIS-3 & THANG ĐIỂM SOFA -->
+    <section class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🔬</span>
+        <h2 class="sec-title">2. Định Nghĩa Mới & Tiêu Chuẩn Lâm Sàng Nhận Diện Sepsis (SOFA)</h2>
+      </div>
+      <div class="sec-body">
+
+        <!-- BOX 3: NEW DEFINITIONS -->
+        <div class="infobox info">
+          <span class="infobox-icon">💡</span>
+          <div>
+            <strong class="infobox-title">Định Nghĩa Sepsis (Sepsis-3 Official Definition)</strong>
+            <strong>Nhiễm khuẩn huyết (Sepsis)</strong> được định nghĩa là tình trạng <strong>rối loạn chức năng cơ quan đe dọa tính mạng gây ra bởi phản ứng mất điều hòa của ký chủ (dysregulated host response) đối với nhiễm trùng</strong>.
+            <br><br>
+            <em>Định nghĩa cho cộng đồng (Lay terms):</em> Sepsis là một tình trạng đe dọa tính mạng phát sinh khi phản ứng của cơ thể đối với nhiễm trùng gây tổn thương cho chính các mô và cơ quan của nó.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Tiêu Chuẩn Lâm Sàng Xác Định Rối Loạn Chức Năng Cơ Quan</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1rem;">
+          Để vận hành định nghĩa trên lâm sàng, tình trạng rối loạn chức năng cơ quan được xác định bằng <strong>sự gia tăng cấp tính của điểm SOFA (Sequential Organ Failure Assessment) từ 2 điểm trở lên (ΔSOFA ≥ 2)</strong> do nhiễm trùng gây ra.
+        </p>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-hdr">
+              <span style="font-size: 1.2rem;">🎯</span>
+              <div class="matrix-card-title">Điểm SOFA Nền (Baseline SOFA)</div>
+            </div>
+            <div class="matrix-card-body">
+              Điểm SOFA nền của bệnh nhân được <strong>giả định bằng 0</strong> ngoại trừ trường hợp bệnh nhân đã có rối loạn chức năng cơ quan cấp hoặc mạn tính từ trước khi xảy ra nhiễm trùng.
+            </div>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-card-hdr">
+              <span style="font-size: 1.2rem;">📈</span>
+              <div class="matrix-card-title">Tỷ Lệ Tử Vong Tiên Lượng</div>
+            </div>
+            <div class="matrix-card-body">
+              Sự gia tăng điểm SOFA ≥ 2 điểm tương ứng với <strong>tỷ lệ tử vong trong bệnh viện > 10%</strong> ở quần thể nghi ngờ nhiễm trùng. Mức nguy cơ này cao hơn tỷ lệ tử vong chung của nhồi máu cơ tim cấp có ST chênh lên (STEMI ~8.1%).
+            </div>
+          </div>
+        </div>
+
+        <!-- BOX 2: KEY CONCEPTS -->
+        <div style="background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--purple); margin-bottom: 0.6rem;">
+            📌 Box 2. Các Khái Niệm Cốt Lõi Về Sepsis (Key Concepts of Sepsis)
+          </div>
+          <ul style="padding-left: 1.25rem; font-size: 0.83rem; color: var(--text-muted); line-height: 1.7;">
+            <li>Sepsis là nguyên nhân tử vong hàng đầu do nhiễm trùng, đặc biệt nếu không nhận diện và xử trí kịp thời. Việc nhận diện đòi hỏi sự chú ý khẩn cấp.</li>
+            <li>Sepsis được định hình bởi yếu tố mầm bệnh và ký chủ (giới tính, chủng tộc, di truyền, tuổi, bệnh đồng mắc, môi trường). Điểm khác biệt cốt lõi giữa sepsis và nhiễm trùng thông thường là <strong>phản ứng mất điều hòa của ký chủ</strong> và <strong>sự hiện diện của rối loạn chức năng cơ quan</strong>.</li>
+            <li>Rối loạn chức năng cơ quan do sepsis có thể <strong>âm thầm (occult)</strong>; do đó phải xem xét ở bất kỳ bệnh nhân nào có biểu hiện nhiễm trùng. Ngược lại, một nhiễm trùng chưa chẩn đoán có thể là nguyên nhân gây suy tạng mới khởi phát. Bất kỳ suy tạng chưa rõ nguyên nhân nào đều phải nghi ngờ nhiễm trùng tiềm ẩn.</li>
+            <li>Kiểu hình lâm sàng và sinh học có thể bị biến đổi bởi bệnh cấp tính có sẵn, bệnh mạn tính, thuốc điều trị và can thiệp y khoa.</li>
+            <li>Một số nhiễm trùng cụ thể có thể gây rối loạn chức năng cơ quan tại chỗ mà không tạo ra phản ứng mất điều hòa hệ thống.</li>
+          </ul>
+        </div>
+
+        <div class="sec-subtitle">Bảng Điểm SOFA (Sequential Organ Failure Assessment) Chi Tiết</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hệ cơ quan</th>
+                <th>0 điểm</th>
+                <th>1 điểm</th>
+                <th>2 điểm</th>
+                <th>3 điểm</th>
+                <th>4 điểm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hô hấp</strong><br><span style="font-size:0.75rem; color:var(--text-faint);">PaO₂/FiO₂ (mmHg)</span></td>
+                <td><span class="score-badge score-0">≥ 400</span></td>
+                <td><span class="score-badge score-1">< 400</span></td>
+                <td><span class="score-badge score-2">< 300</span></td>
+                <td><span class="score-badge score-3">< 200 (kèm thở máy)</span></td>
+                <td><span class="score-badge score-4">< 100 (kèm thở máy)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Đông máu</strong><br><span style="font-size:0.75rem; color:var(--text-faint);">Tiểu cầu (x10³/µL)</span></td>
+                <td><span class="score-badge score-0">≥ 150</span></td>
+                <td><span class="score-badge score-1">< 150</span></td>
+                <td><span class="score-badge score-2">< 100</span></td>
+                <td><span class="score-badge score-3">< 50</span></td>
+                <td><span class="score-badge score-4">< 20</span></td>
+              </tr>
+              <tr>
+                <td><strong>Gan</strong><br><span style="font-size:0.75rem; color:var(--text-faint);">Bilirubin (mg/dL)</span></td>
+                <td><span class="score-badge score-0">< 1.2</span></td>
+                <td><span class="score-badge score-1">1.2 – 1.9</span></td>
+                <td><span class="score-badge score-2">2.0 – 5.9</span></td>
+                <td><span class="score-badge score-3">6.0 – 11.9</span></td>
+                <td><span class="score-badge score-4">≥ 12.0</span></td>
+              </tr>
+              <tr>
+                <td><strong>Tim mạch</strong><br><span style="font-size:0.75rem; color:var(--text-faint);">Huyết áp / Vận mạch</span></td>
+                <td><span class="score-badge score-0">MAP ≥ 70 mmHg</span></td>
+                <td><span class="score-badge score-1">MAP < 70 mmHg</span></td>
+                <td><span class="score-badge score-2">Dopamine < 5 hoặc Dobutamine (bất kỳ liều)</span></td>
+                <td><span class="score-badge score-3">Dopamine 5.1–15 hoặc Epi ≤ 0.1 hoặc Norepi ≤ 0.1</span></td>
+                <td><span class="score-badge score-4">Dopamine > 15 hoặc Epi > 0.1 hoặc Norepi > 0.1</span></td>
+              </tr>
+              <tr>
+                <td><strong>Thần kinh TƯ</strong><br><span style="font-size:0.75rem; color:var(--text-faint);">Thang điểm GCS</span></td>
+                <td><span class="score-badge score-0">15</span></td>
+                <td><span class="score-badge score-1">13 – 14</span></td>
+                <td><span class="score-badge score-2">10 – 12</span></td>
+                <td><span class="score-badge score-3">6 – 9</span></td>
+                <td><span class="score-badge score-4">< 6</span></td>
+              </tr>
+              <tr>
+                <td><strong>Thận</strong><br><span style="font-size:0.75rem; color:var(--text-faint);">Creatinine (mg/dL) hoặc Thể tích nước tiểu</span></td>
+                <td><span class="score-badge score-0">< 1.2</span></td>
+                <td><span class="score-badge score-1">1.2 – 1.9</span></td>
+                <td><span class="score-badge score-2">2.0 – 3.4</span></td>
+                <td><span class="score-badge score-3">3.5 – 4.9<br>hoặc < 500 mL/ngày</span></td>
+                <td><span class="score-badge score-4">≥ 5.0<br>hoặc < 200 mL/ngày</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-faint); margin-top: -0.5rem; margin-bottom: 1rem;">Liều vận mạch tính theo µg/kg/phút.</p>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: SÀNG LỌC QSOFA -->
+    <section class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">⚡</span>
+        <h2 class="sec-title">3. Công Cụ Sàng Lọc Nhanh Tại Giường qSOFA (Quick SOFA)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.25rem;">
+          Để hỗ trợ bác sĩ ngoài khoa Hồi sức tích cực (khoa Cấp cứu, phòng bệnh thông thường hoặc tuyến trước viện) nhận diện nhanh những bệnh nhân nghi ngờ nhiễm trùng có nguy cơ diễn tiến xấu, Ban đồng thuận đã phát triển thang điểm lâm sàng đơn giản tại giường <strong>qSOFA (quick SOFA)</strong>. Thang điểm này <strong>không yêu cầu xét nghiệm máu</strong>, đánh giá nhanh chóng và có thể lặp lại nhiều lần.
+        </p>
+
+        <!-- BOX 4: qSOFA CRITERIA -->
+        <div class="sec-subtitle">Tiêu Chí qSOFA (Quick SOFA) - Có từ ≥ 2/3 tiêu chuẩn</div>
+        <div class="clin-grid">
+          <div class="clin-card c-brain">
+            <div class="clin-card-num">01 / BRAIN</div>
+            <div class="clin-card-title">Thay Đổi Ý Thức</div>
+            <div class="clin-card-val">GCS < 15</div>
+            <div class="clin-card-desc">Được định nghĩa đơn giản là bất kỳ điểm GCS nào < 15 điểm để giảm bớt gánh nặng đo lường chi tiết tại giường.</div>
+          </div>
+          <div class="clin-card c-bp">
+            <div class="clin-card-num">02 / BP</div>
+            <div class="clin-card-title">Huyết Áp Tâm Thu</div>
+            <div class="clin-card-val">SBP ≤ 100 mmHg</div>
+            <div class="clin-card-desc">Huyết áp tâm thu giảm sút phản ánh tình trạng giảm tưới máu hoặc giãn mạch do đáp ứng viêm hệ thống.</div>
+          </div>
+          <div class="clin-card c-resp">
+            <div class="clin-card-num">03 / RESP</div>
+            <div class="clin-card-title">Tần Số Thở</div>
+            <div class="clin-card-val">RR ≥ 22 lần/phút</div>
+            <div class="clin-card-desc">Thở nhanh là dấu hiệu sớm phản ánh toan chuyển hóa hoặc tổn thương nhu mô phổi do đáp ứng viêm.</div>
+          </div>
+        </div>
+
+        <div class="infobox success">
+          <span class="infobox-icon">📊</span>
+          <div>
+            <strong class="infobox-title">Hiệu năng Tiên lượng của qSOFA</strong>
+            Bệnh nhân nghi ngờ nhiễm trùng ngoài ICU có <strong>qSOFA ≥ 2 tiêu chuẩn</strong> có nguy cơ tử vong tại viện hoặc nằm ICU kéo dài ≥ 3 ngày tăng gấp nhiều lần, đạt giá trị tiên lượng tương đương với SOFA đầy đủ (<strong>AUROC = 0.81</strong> ngoài ICU).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: SƠ ĐỒ VẬN HÀNH CHẨN ĐOÁN LÂM SÀNG -->
+    <section class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🔄</span>
+        <h2 class="sec-title">4. Lưu Đồ Vận Hành Tiêu Chí Lâm Sàng Nhận Diện Sepsis & Septic Shock</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.25rem;">
+          Quy trình vận hành chuẩn hóa các tiêu chí lâm sàng từ nhận diện ban đầu tại buồng bệnh đến phân nhóm Sốc nhiễm khuẩn (Septic Shock):
+        </p>
+
+        <div class="algo-container">
+          <!-- STEP 1 -->
+          <div class="algo-step">
+            <div class="algo-badge">1</div>
+            <div class="algo-content">
+              <div class="algo-title">Bệnh Nhân Nghi Ngờ Nhiễm Trùng (Suspected Infection)</div>
+              <div class="algo-desc">Bệnh nhân có biểu hiện nhiễm trùng cấp tính hoặc mẫu nuôi cấy vi sinh được chỉ định + khởi đầu kháng sinh.</div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="algo-step">
+            <div class="algo-badge">2</div>
+            <div class="algo-content">
+              <div class="algo-title">Đánh Giá Thang Điểm Sàng Lọc qSOFA Tại Giường</div>
+              <div class="algo-desc">Kiểm tra: (1) Nhịp thở ≥ 22 lần/phút; (2) Thay đổi ý thức GCS < 15; (3) Huyết áp tâm thu ≤ 100 mmHg.</div>
+              <div class="algo-branch">
+                <div class="algo-choice no">
+                  <strong>< 2 tiêu chí qSOFA:</strong><br>
+                  Tiếp tục theo dõi lâm sàng. Nếu vẫn nghi ngờ nhiễm trùng diễn tiến xấu, đánh giá lại qSOFA hoặc xét nghiệm SOFA.
+                </div>
+                <div class="algo-choice yes">
+                  <strong>≥ 2 tiêu chí qSOFA:</strong><br>
+                  Cảnh báo nguy cơ cao kết cục xấu! Tiến hành xét nghiệm cận lâm sàng để <strong>Đánh giá điểm SOFA đầy đủ</strong>.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="algo-step">
+            <div class="algo-badge">3</div>
+            <div class="algo-content">
+              <div class="algo-title">Đánh Giá Rối Loạn Chức Năng Cơ Quan Cấp Tính (SOFA)</div>
+              <div class="algo-desc">Tính toán tổng điểm SOFA 6 hệ cơ quan. Đánh giá sự gia tăng điểm SOFA so với điểm nền.</div>
+              <div class="algo-branch">
+                <div class="algo-choice no">
+                  <strong>ΔSOFA < 2 điểm:</strong><br>
+                  Chưa đủ tiêu chuẩn Sepsis. Tiếp tục theo dõi lâm sàng và điều trị nguyên nhân nhiễm trùng.
+                </div>
+                <div class="algo-choice yes">
+                  <strong>ΔSOFA ≥ 2 điểm:</strong><br>
+                  <strong style="color:var(--red); font-size:1rem;">XÁC ĐỊNH SEPSIS!</strong><br>
+                  Tỷ lệ tử vong nội viện > 10%. Kích hoạt ngay gói hồi sức nhiễm khuẩn huyết.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="algo-step">
+            <div class="algo-badge" style="background:var(--red);">4</div>
+            <div class="algo-content">
+              <div class="algo-title">Đánh Giá Tiêu Chuẩn Sốc Nhiễm Khuẩn (Septic Shock)</div>
+              <div class="algo-desc">Bệnh nhân Sepsis đã được hồi sức bù đủ dịch truyền theo phác đồ:</div>
+              <ul style="font-size:0.8rem; color:var(--text-muted); padding-left:1.2rem; margin:0.4rem 0;">
+                <li>Cần thuốc vận mạch để duy trì <strong>MAP ≥ 65 mmHg</strong>?</li>
+                <li>Nồng độ <strong>Lactate huyết thanh > 2 mmol/L</strong> (18 mg/dL)?</li>
+              </ul>
+              <div class="algo-branch">
+                <div class="algo-choice no">
+                  <strong>Không đủ cả 2 tiêu chí:</strong><br>
+                  Duy trì chẩn đoán <strong>Sepsis</strong> (Theo dõi sát huyết động và chuyển hóa).
+                </div>
+                <div class="algo-choice yes" style="background:#fef2f2; border-color:#fca5a5;">
+                  <strong style="color:var(--red); font-size:1rem;">THỎA CẢ 2 TIÊU CHÍ:</strong><br>
+                  <strong style="color:var(--red);">SEPTIC SHOCK (SỐC NHIỄM KHUẨN)</strong><br>
+                  Rối loạn sâu sắc tuần hoàn & chuyển hóa tế bào. <strong>Tỷ lệ tử vong > 40%!</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: PHÂN TÍCH DỮ LIỆU HỆ THỐNG & XÁC THỰC -->
+    <section class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📈</span>
+        <h2 class="sec-title">5. Quá Trình Phân Tích Dữ Liệu Hệ Thống Quy Mô Lớn (UPMC & Cohorts)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1rem;">
+          Để đảm bảo tính chính xác và giá trị dự đoán lâm sàng cao nhất, Ban đồng thuận đã phân tích dữ liệu điện tử quy mô khổng lồ:
+        </p>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-hdr">
+              <span style="font-size: 1.2rem;">🏥</span>
+              <div class="matrix-card-title">Cơ sở dữ liệu Huấn luyện (UPMC)</div>
+            </div>
+            <div class="matrix-card-body">
+              Phân tích dữ liệu từ <strong>1,3 triệu lượt khám</strong> tại 12 bệnh viện thuộc hệ thống Y tế Đại học Pittsburgh (UPMC). Xác định được <strong>148.907 bệnh nhân nghi ngờ nhiễm trùng</strong> (được cấy máu và dùng kháng sinh).
+            </div>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-card-hdr">
+              <span style="font-size: 1.2rem;">🌐</span>
+              <div class="matrix-card-title">Cơ sở dữ liệu Xác thực Bên ngoài</div>
+            </div>
+            <div class="matrix-card-body">
+              Kiểm chứng độc lập trên 4 cơ sở dữ liệu quốc tế với tổng cộng <strong>hơn 700.000 bệnh nhân</strong> nhiễm trùng cộng đồng và bệnh viện. Đo lường diện tích dưới đường cong AUROC tử vong nội viện hoặc nằm ICU ≥ 3 ngày.
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-box">
+          <div class="chart-hdr">
+            <span>Khả Năng Dự Đoán Tử Vong Trong ICU (AUROC)</span>
+            <span style="font-size:0.75rem; color:var(--text-faint);">Dữ liệu UPMC & External Cohorts</span>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-lbl">LODS Score</div>
+            <div class="chart-track">
+              <div class="chart-fill fill-blue" style="width: 75%;">0.75</div>
+            </div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-lbl">SOFA Score</div>
+            <div class="chart-track">
+              <div class="chart-fill fill-green" style="width: 74%;">0.74</div>
+            </div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-lbl">ΔSOFA ≥ 2</div>
+            <div class="chart-track">
+              <div class="chart-fill fill-green" style="width: 72%;">0.72</div>
+            </div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-lbl">qSOFA (trong ICU)</div>
+            <div class="chart-track">
+              <div class="chart-fill fill-orange" style="width: 66%;">0.66</div>
+            </div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-lbl">SIRS Criteria</div>
+            <div class="chart-track">
+              <div class="chart-fill fill-red" style="width: 64%;">0.64</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-box">
+          <div class="chart-hdr">
+            <span>Khả Năng Dự Đoán Tử Vong Ngoài ICU (Non-ICU AUROC)</span>
+            <span style="font-size:0.75rem; color:var(--text-faint);">Cấp cứu, Trạm y tế, Khoa nội</span>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-lbl">qSOFA Score</div>
+            <div class="chart-track">
+              <div class="chart-fill fill-green" style="width: 81%;">0.81</div>
+            </div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-lbl">SOFA Score</div>
+            <div class="chart-track">
+              <div class="chart-fill fill-blue" style="width: 79%;">0.79</div>
+            </div>
+          </div>
+          <div class="chart-bar-row">
+            <div class="chart-lbl">SIRS Criteria</div>
+            <div class="chart-track">
+              <div class="chart-fill fill-orange" style="width: 76%;">0.76</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox info">
+          <span class="infobox-icon">📌</span>
+          <div>
+            <strong class="infobox-title">Kết Luận Rút Ra Từ Dữ Liệu Phân Tích</strong>
+            Tại khoa ICU, SOFA (AUROC 0.74) và LODS (AUROC 0.75) vượt trội rõ rệt so với SIRS (AUROC 0.64). Do SOFA đơn giản và phổ biến hơn LODS nên được chọn làm tiêu chuẩn chính. Bên ngoài ICU, <strong>qSOFA (AUROC 0.81) đạt hiệu năng vượt trội SIRS và tương đương SOFA đầy đủ</strong> mà không cần xét nghiệm máu.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: ĐỊNH HÌNH TIÊU CHUẨN SỐC NHIỄM KHUẨN -->
+    <section class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🚨</span>
+        <h2 class="sec-title">6. Nghiên Cứu Định Hình Tiêu Chuẩn Sốc Nhiễm Khuẩn (Septic Shock)</h2>
+      </div>
+      <div class="sec-body">
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.25rem;">
+          Sốc nhiễm khuẩn được định nghĩa là một phân nhóm của nhiễm khuẩn huyết trong đó các <strong>rối loạn sâu sắc về tuần hoàn, tế bào và chuyển hóa</strong> làm tăng đáng kể tỷ lệ tử vong so với sepsis đơn thuần.
+        </p>
+
+        <div class="sec-subtitle">Quy Trình Delphi & Kiểm Chứng Dữ Liệu Huyết Động</div>
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-hdr">
+              <span style="font-size: 1.2rem;">🩸</span>
+              <div class="matrix-card-title">Hạ Huyết Áp (MAP < 65 mmHg)</div>
+            </div>
+            <div class="matrix-card-body">
+              Xác định ngưỡng MAP < 65 mmHg cần dùng thuốc vận mạch làm mốc tiêu chuẩn do đây là trị số phổ biến nhất trong các nghiên cứu hồi sức.
+            </div>
+          </div>
+          <div class="matrix-card">
+            <div class="matrix-card-hdr">
+              <span style="font-size: 1.2rem;">🧪</span>
+              <div class="matrix-card-title">Tăng Lactate Máu (> 2 mmol/L)</div>
+            </div>
+            <div class="matrix-card-body">
+              Phản ánh rối loạn chuyển hóa tế bào và giảm tưới máu mô sâu sắc, mặc dù còn chịu ảnh hưởng bởi thanh thải gan hoặc đường phân hiếu khí.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Phân Tích Dữ Liệu SSC (18.840 Bệnh Nhân Coi Sử Dụng Vận Mạch/Hạ HA/Lactate)</div>
+        <ul style="padding-left: 1.25rem; font-size: 0.83rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem;">
+          <li><strong>Tụt HA cần vận mạch + Lactate > 2 mmol/L:</strong> Tỷ lệ tử vong tại viện hiệu chỉnh đạt <strong>42.3%</strong>.</li>
+          <li><strong>Tụt HA cần vận mạch + Lactate > 4 mmol/L:</strong> Tỷ lệ tử vong đạt <strong>49.7%</strong>.</li>
+          <li><strong>Chỉ tăng Lactate > 2 mmol/L đơn thuần:</strong> Tỷ lệ tử vong là 25.7%.</li>
+          <li><strong>Chỉ tụt HA cần vận mạch (Lactate ≤ 2 mmol/L):</strong> Tỷ lệ tử vong là 30.1%.</li>
+        </ul>
+
+        <div class="sec-subtitle">Bảng So Sánh Tỷ Lệ Tử Vong Thực Tế Tại UPMC và KPNC</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Thể Lâm Sàng Phân Nhóm</th>
+                <th>Tỷ lệ tử vong UPMC (N=5.984)</th>
+                <th>Tỷ lệ tử vong KPNC (N=54.135)</th>
+                <th>Đánh giá Nguy cơ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: var(--red-bg);">
+                <td><strong>Tụt HA + Vận mạch + Lactate > 2 mmol/L</strong><br><span style="font-size:0.75rem; color:var(--red); font-weight:700;">(Tiêu chuẩn Septic Shock Sepsis-3)</span></td>
+                <td><strong style="color:var(--red); font-size:1rem;">54.0%</strong></td>
+                <td><strong style="color:var(--red); font-size:1rem;">35.0%</strong></td>
+                <td><span class="score-badge score-4">Nguy cơ Rất Cao (>40%)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Chỉ Tụt Huyết Áp Đơn Thuần</strong> (Cần vận mạch, Lactate ≤ 2)</td>
+                <td>25.2%</td>
+                <td>18.8%</td>
+                <td><span class="score-badge score-2">Nguy cơ Trung bình</span></td>
+              </tr>
+              <tr>
+                <td><strong>Chỉ Tăng Lactate > 2 mmol/L Đơn Thuần</strong> (Không tụt HA)</td>
+                <td>17.9%</td>
+                <td>6.8%</td>
+                <td><span class="score-badge score-1">Nguy cơ Nhẹ</span></td>
+              </tr>
+              <tr>
+                <td><strong>Nhiễm Khuẩn Huyết (Sepsis) Chung</strong></td>
+                <td>20.0%</td>
+                <td>8.0%</td>
+                <td><span class="score-badge score-1">Trung bình chung (>10%)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: TRANH LUẬN & HẠN CHẾ -->
+    <section class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">💬</span>
+        <h2 class="sec-title">7. Các Tranh Luận, Hạn Chế & Định Hướng Ứng Dụng Lâm Sàng</h2>
+      </div>
+      <div class="sec-body">
+
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong class="infobox-title">1. Vai Trò Định Danh Của SOFA và qSOFA</strong>
+            <ul>
+              <li><strong>Không phải định nghĩa thay thế:</strong> Ban đồng thuận nhấn mạnh cả SOFA và qSOFA đều <em>không phải là định nghĩa standalone</em> cho sepsis. Chúng chỉ là các công cụ lâm sàng giúp đặc trưng hóa hoặc sàng lọc bệnh nhân.</li>
+              <li><strong>KHÔNG TRÌ HOÃN ĐIỀU TRỊ:</strong> Sự thiếu hụt các tiêu chuẩn qSOFA hay SOFA (điểm < 2) <strong>tuyệt đối không được sử dụng để trì hoãn việc khảo sát, chẩn đoán hoặc bắt đầu điều trị nhiễm trùng</strong> nếu bác sĩ lâm sàng nghi ngờ bệnh nhân có diễn tiến xấu.</li>
+              <li><strong>Vị trí của SIRS:</strong> Tiêu chuẩn SIRS không bị loại bỏ hoàn toàn; nó vẫn giữ nguyên giá trị hỗ trợ trong việc nhận diện và chẩn đoán chung tình trạng nhiễm trùng.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="infobox info">
+          <span class="infobox-icon">🧪</span>
+          <div>
+            <strong class="infobox-title">2. Vấn Đề Đo Lường Lactate Trong Sàng Lọc Ban Đầu</strong>
+            <ul>
+              <li><strong>Lactate và qSOFA:</strong> Việc bổ sung lactate không làm thay đổi có ý nghĩa giá trị tiên lượng của qSOFA ngoài ICU, trong khi lại làm tăng chi phí và độ phức tạp của một công cụ vốn được thiết kế để đánh giá nhanh tại giường. Do đó lactate không đưa vào qSOFA.</li>
+              <li><strong>Chẩn đoán ở vùng thiếu nguồn lực:</strong> Ở các nước đang phát triển nơi xét nghiệm lactate không sẵn có, bác sĩ lâm sàng có thể sử dụng <strong>chẩn đoán làm việc (working diagnosis)</strong> của sốc nhiễm khuẩn dựa trên hạ huyết áp kèm bằng chứng giảm tưới máu mô (ví dụ: thời gian đổ đầy mao mạch CRT kéo dài).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="infobox danger">
+          <span class="infobox-icon">👶</span>
+          <div>
+            <strong class="infobox-title">3. Giới Hạn Đối Tượng Áp Dụng (Chỉ Dành Cho Người Lớn)</strong>
+            Đồng thuận Sepsis-3 chỉ tập trung xây dựng và xác thực trên <strong>đối tượng bệnh nhân người lớn (adult patients)</strong>. Khuyến cáo cần có các nghiên cứu riêng tiếp theo để cập nhật định nghĩa và tiêu chí lâm sàng cho đối tượng nhi khoa (pediatric populations).
+          </div>
+        </div>
+
+        <!-- MCQ QUIZ CARD -->
+        <div class="mcq-card">
+          <div class="mcq-q">❓ Câu hỏi tự kiểm tra: Tiêu chuẩn xác định Sốc Nhiễm Khuẩn (Septic Shock) theo Sepsis-3 (JAMA 2016) bao gồm yếu tố nào sau đây sau khi đã bù đủ dịch?</div>
+          <div class="mcq-opts">
+            <button class="mcq-opt" onclick="checkMCQ(this, false)">A. Tụt huyết áp cần dùng vận mạch để giữ MAP ≥ 65 mmHg đơn thuần</button>
+            <button class="mcq-opt" onclick="checkMCQ(this, false)">B. Nồng độ Lactate máu > 4 mmol/L đơn thuần</button>
+            <button class="mcq-opt" onclick="checkMCQ(this, true)">C. Tụt huyết áp cần vận mạch giữ MAP ≥ 65 mmHg VÀ Lactate máu > 2 mmol/L</button>
+            <button class="mcq-opt" onclick="checkMCQ(this, false)">D. Thỏa mãn từ 3 tiêu chuẩn SIRS trở lên kèm cấy máu dương tính</button>
+          </div>
+          <div class="mcq-fb" id="mcqFeedback"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 8: TRÍCH DẪN AMA -->
+    <section class="sec-card" id="sec-8">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📚</span>
+        <h2 class="sec-title">8. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA</h2>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          Singer M, Deutschman CS, Seymour CW, Shankar-Hari M, Annane D, Bauer M, Bellomo R, Bernard GR, Chiche JD, Coopersmith CM, Hotchkiss RS, Levy MM, Marshall JC, Martin GS, Opal SM, Rubenfeld GD, van der Poll T, Vincent JL, Angus DC. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). <em>JAMA</em>. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.
+        </div>
+        <div class="btn-row">
+          <a href="https://doi.org/10.1001/jama.2016.0287" target="_blank" rel="noopener" class="btn btn-primary">
+            🌐 Xem Bài Báo Gốc Trên JAMA
+          </a>
+          <a href="../guidelines.html" class="btn">
+            ⬅️ Trở Về Kho Guidelines
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // DARK MODE TOGGLE
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const htmlEl = document.documentElement;
+
+    // Check system or localStorage preference
+    const savedTheme = localStorage.getItem('cliniportal_theme');
+    if (savedTheme) {
+      htmlEl.setAttribute('data-theme', savedTheme);
+      themeToggleBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('cliniportal_theme', newTheme);
+      themeToggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // MCQ CHECKER
+    function checkMCQ(btn, isCorrect) {
+      const parent = btn.closest('.mcq-card');
+      const opts = parent.querySelectorAll('.mcq-opt');
+      const fb = parent.querySelector('.mcq-fb');
+
+      opts.forEach(o => {
+        o.classList.remove('correct', 'wrong');
+        o.disabled = true;
+      });
+
+      if (isCorrect) {
+        btn.classList.add('correct');
+        fb.style.display = 'block';
+        fb.style.background = 'var(--green-bg)';
+        fb.style.color = '#065f46';
+        fb.style.border = '1px solid var(--green-light)';
+        fb.innerHTML = '<strong>Chính xác!</strong> Tiêu chuẩn Sốc nhiễm khuẩn theo Sepsis-3 đòi hỏi sự kết hợp đồng thời giữa <strong>hạ huyết áp trơ cần vận mạch để duy trì MAP ≥ 65 mmHg VÀ tăng Lactate máu > 2 mmol/L</strong> sau khi đã hồi sức bù đủ dịch.';
+      } else {
+        btn.classList.add('wrong');
+        opts.forEach(o => {
+          if (o.getAttribute('onclick').includes('true')) {
+            o.classList.add('correct');
+          }
+        });
+        fb.style.display = 'block';
+        fb.style.background = 'var(--red-bg)';
+        fb.style.color = '#991b1b';
+        fb.style.border = '1px solid var(--red-light)';
+        fb.innerHTML = '<strong>Chưa đúng!</strong> Đáp án đúng là <strong>C</strong>. Theo Sepsis-3, Sốc nhiễm khuẩn bắt buộc phải thỏa mãn CẢ HAI điều kiện: Cần vận mạch giữ MAP ≥ 65 mmHg VÀ Lactate > 2 mmol/L sau khi hồi sức đủ dịch (tỷ lệ tử vong thực tế > 40%).';
+      }
+    }
+  </script>
+</body>
+</html>

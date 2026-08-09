@@ -51,7 +51,7 @@ class EBMRecommendationEngine {
 
     // Hardcoded PoC rule for TB Guideline
     if (patientData.hasTBExposure === true || patientData.tbScore > 10) {
-      const tbGuideline = this.guidelineDatabase.find(g => g.id === 'study_byt_lao_2024_p1');
+      const tbGuideline = this.guidelineDatabase.find(g => g.id === 'study_byt_lao_2024' || g.id === 'study_byt_lao_2024_p1');
       if (tbGuideline) {
         recommendations.push({
           sourceId: tbGuideline.id,

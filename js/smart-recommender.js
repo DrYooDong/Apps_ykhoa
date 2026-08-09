@@ -35,7 +35,7 @@ const RECOMMENDATION_CATALOG = [
     specialty: "cardio",
     specName: "Tim Mạch / Nội Tiết",
     desc: "Empagliflozin giảm 38% tử vong do tim mạch ở BN đái tháo đường.",
-    url: "src/content/ebm/guidelines/kho-guidelines/empa-reg.html"
+    url: "src/content/ebm/guidelines/kho-guidelines/2015-empareg-outcome-nejm.html"
   }
 ];
 
