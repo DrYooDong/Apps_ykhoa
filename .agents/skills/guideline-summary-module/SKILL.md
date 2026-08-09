@@ -16,11 +16,14 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
 
 1. **Chuẩn Đường Dẫn Cấp 4**: Mọi trang tóm tắt mới trong `kho-guidelines/` nằm ở **cấp 4**. Bắt buộc prefix `../../../../` cho tài nguyên gốc root (`css/reset.css`, `css/main.css`, `js/main.js`).
 2. **Quy Tắc Đặt Tên File**: File HTML mới phải đặt theo dạng `<year>-<org>-<topic>.html` (ví dụ: `2026-kdigo-ckd.html`). Dùng 100% ASCII kebab-case chữ thường.
-3. **Ưu Tiên Script Tự Động**: Khi có file nguồn `.md`, BẮT BUỘC dùng script `node .agents/skills/guideline-summary-module/scripts/convert_md_to_guideline.js "<path_to_md>"` trước.
-4. **Bắt Buộc Đăng Ký Registry `guidelinesdata.js`**: Mọi guideline mới tạo phải bổ sung 1 bản ghi vào array `SAMPLE_STUDIES` trong `src/content/ebm/guidelines/guidelinesdata.js`.
-5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js <file>.html` sau khi tạo/sửa.
-6. **Bảo Vệ Hub `guidelines.js`**: Chạy `node scratch/query_graph.js guidelines.js` nếu tác động vào engine xử lý chung của Kho Guidelines (chỉ số fan-in 570).
-7. **Tự Động Dọn Dẹp File Tạm**: Tự động xóa tất cả các file `.md` trung gian / hợp nhất được tạo ra trong `scratch/` ngay sau khi hoàn tất việc sinh file `.html` và đăng ký registry.
+3. **Ưu Tiên Script Tự Động & Nâng Cấp Visual UI**: Khi có file nguồn `.md`, dùng script `node .agents/skills/guideline-summary-module/scripts/convert_md_to_guideline.js "<path_to_md>"` để dựng khung, sau đó BẮT BUỘC biên tập nâng cấp thành giao diện trực quan sinh động.
+4. **CẤM TRÌNH BÀY DẠNG TEXT ĐƠN ĐIỆU (No Plain Text Paragraphs)**: Trang tóm tắt Guideline **KHÔNG ĐƯỢC** chỉ chứa các đoạn chữ (paragraph) hay list đơn thuần. Phải chuyển đổi dữ liệu thành giao diện lâm sàng sinh động: Bento Grid Cards, Matrix Boards, Phân cấp khuyến cáo (COR/LOE Badges), Phác đồ liều dùng (`.rx-tag`, `.data-table`), Lưu đồ xử trí (Flowchart V2 / Step Cards) và Infoboxes cảnh báo màu sắc.
+5. **BẢO TỒN 100% TOÀN VẸN NỘI DUNG Y KHOA TỪ FILE .MD (100% Medical Content Integrity)**: File `.md` nguồn chứa các tri thức y khoa đã được tóm tắt kỹ lưỡng từ các nghiên cứu/guidelines (mốc chỉ số, tiêu chuẩn chẩn đoán, các trích xuất sơ đồ/bảng FIGURE & TABLE, tên thử nghiệm RCT như SELECT, SUMMIT, FIGHT, LIVE, chỉ số HR/OR/%, phân tích nhóm, tài liệu tham khảo AMA). **TUYỆT ĐỐI KHÔNG LƯỢC BỎ, CẮT NGẮN HAY LÀM MẤT BẤT KỲ THÔNG TIN NÀO**. Tất cả nội dung trong `.md` phải xuất hiện đầy đủ 100% trên trang HTML, trình bày qua các linh kiện UI sinh động.
+6. **Bắt Buộc Đăng Ký Registry `guidelinesdata.js`**: Mọi guideline mới tạo phải bổ sung 1 bản ghi vào array `SAMPLE_STUDIES` trong `src/content/ebm/guidelines/guidelinesdata.js`.
+7. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js <file>.html` sau khi tạo/sửa.
+8. **BẮT BUỘC KIỂM TRA & LÀM SẠCH LỖI $ (Math LaTeX Formatting Cleanup)**: Trước khi hoàn tất bất kỳ trang Guideline HTML nào, **BẮT BUỘC** kiểm tra và làm sạch 100% ký tự `$` math LaTeX (`$BMI \ge 25$` $\rightarrow$ `BMI ≥ 25`, `$\ge 150\text{ mg/dL}$` $\rightarrow$ `≥ 150 mg/dL`, `$\ge 20\%$` $\rightarrow$ `≥ 20%`). Tuyệt đối không để sót ký tự `$` thô hiển thị trên giao diện web.
+9. **Bảo Vệ Hub `guidelines.js`**: Chạy `node scratch/query_graph.js guidelines.js` nếu tác động vào engine xử lý chung của Kho Guidelines (chỉ số fan-in 570).
+10. **Tự Động Dọn Dẹp File Tạm**: Tự động xóa tất cả các file `.md` trung gian / hợp nhất được tạo ra trong `scratch/` ngay sau khi hoàn tất việc sinh file `.html` và đăng ký registry.
 
 ---
 

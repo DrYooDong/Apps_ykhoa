@@ -180,16 +180,34 @@
 
         if (matchesCat && matchesQuery) {
           matchedCount++;
+          let criteriaPreview = '';
+          if (sc.modifiers && window.ECGCriteria) {
+            sc.modifiers.forEach(mId => {
+              if (window.ECGCriteria[mId] && window.ECGCriteria[mId][0]) {
+                criteriaPreview += `<div style="font-size:0.75rem; color:var(--color-primary); margin-top:0.35rem; font-weight:600; line-height:1.3;"><i class="fa-solid fa-check" style="color:var(--color-success);"></i> ${window.ECGCriteria[mId][0]}</div>`;
+              }
+            });
+          }
+
+          let urgencyBadge = '';
+          if (sc.urgency === 'critical') {
+            urgencyBadge = `<span style="font-size:0.68rem; font-weight:800; padding:0.15rem 0.45rem; border-radius:10px; background:rgba(239,68,68,0.15); color:var(--color-danger); border:1px solid rgba(239,68,68,0.3); margin-left:0.3rem;"><i class="fa-solid fa-bolt"></i> TỐI KHẨN</span>`;
+          }
+
           const card = document.createElement('div');
           card.className = `scenario-card ${this.currentScenario && this.currentScenario.id === sc.id ? 'active' : ''}`;
           card.setAttribute('data-id', sc.id);
           card.innerHTML = `
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
-              <span class="element-badge" style="background:var(--color-primary); font-size:0.75rem;">${sc.category}</span>
+              <div>
+                <span class="element-badge" style="background:var(--color-primary); font-size:0.75rem;">${sc.category}</span>
+                ${urgencyBadge}
+              </div>
               <span class="scenario-diff-badge">${sc.difficulty}</span>
             </div>
-            <h4 style="font-size:0.95rem; font-weight:700; color:var(--color-text); margin-bottom:0.25rem;">${sc.title}</h4>
-            <p style="font-size:0.8rem; color:var(--color-text-muted); line-height:1.4;">${sc.patient.sex}, ${sc.patient.age} tuổi | ${sc.symptoms[0]}</p>
+            <h4 style="font-size:0.95rem; font-weight:700; color:var(--color-text); margin-bottom:0.25rem; line-height:1.3;">${sc.title}</h4>
+            <p style="font-size:0.8rem; color:var(--color-text-muted); line-height:1.4; margin-bottom:0.2rem;"><i class="fa-solid fa-user"></i> ${sc.patient.sex}, ${sc.patient.age} tuổi | ${sc.symptoms[0]}</p>
+            ${criteriaPreview}
           `;
           card.addEventListener('click', () => this.loadScenario(sc.id));
           container.appendChild(card);
@@ -224,9 +242,14 @@
 
       // Update Patient Context UI
       const patPanel = document.getElementById('patientContextPanel');
+      const emptyState = document.getElementById('emptyCaseState');
       if (patPanel) {
         patPanel.style.display = 'block';
-        document.getElementById('patDemographics').textContent = `${sc.patient.sex}, ${sc.patient.age} tuổi, nặng ${sc.patient.weight}kg (${sc.patient.occupation})`;
+        if (emptyState) emptyState.style.display = 'none';
+
+        document.getElementById('patContextTitle').textContent = sc.title;
+        document.getElementById('patDifficultyBadge').textContent = sc.difficulty;
+        document.getElementById('patDemographics').innerHTML = `<i class="fa-solid fa-user-tag"></i> ${sc.patient.sex}, ${sc.patient.age} tuổi, nặng ${sc.patient.weight}kg (${sc.patient.occupation})`;
         document.getElementById('patHR').textContent = `${sc.vitals.hr} bpm`;
         document.getElementById('patBP').textContent = `${sc.vitals.sbp}/${sc.vitals.dbp} mmHg`;
         document.getElementById('patSpO2').textContent = `${sc.vitals.spo2}%`;
@@ -238,6 +261,10 @@
           sympList.innerHTML = sc.symptoms.map(s => `<li><i class="fa-solid fa-angle-right" style="color:var(--color-primary);"></i> ${s}</li>`).join('');
         }
       }
+
+      // Close modal if open
+      const modal = document.getElementById('caseLibraryModal');
+      if (modal) modal.classList.remove('show');
 
       // Hide Quiz Box initially when loading new scenario
       const quizBox = document.getElementById('quizStudioBox');
@@ -365,19 +392,48 @@
     }
 
     bindEvents() {
-      // Tab Switching for Left Sidebar Panel
-      const tabBtns = document.querySelectorAll('.sidebar-tab-btn');
-      tabBtns.forEach(btn => {
+      // Tab Switching for Left Sidebar Segment Control
+      const tabBtns = document.querySelectorAll('.segment-btn');
+      const slider = document.getElementById('segmentSlider');
+      tabBtns.forEach((btn, index) => {
         btn.addEventListener('click', () => {
           const targetTab = btn.getAttribute('data-tab');
           tabBtns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
+          
+          if (slider) {
+            slider.style.transform = `translateX(${index * 100}%)`;
+          }
 
           document.querySelectorAll('.sidebar-tab-content').forEach(content => {
             content.style.display = content.id === targetTab ? 'block' : 'none';
           });
         });
       });
+
+      // Case Library Modal Open/Close
+      const btnOpenLibrary = document.getElementById('btnOpenCaseLibrary');
+      const modalLibrary = document.getElementById('caseLibraryModal');
+      const btnCloseLibrary = document.getElementById('btnCloseLibraryModal');
+
+      if (btnOpenLibrary && modalLibrary) {
+        btnOpenLibrary.addEventListener('click', () => {
+          modalLibrary.classList.add('show');
+          this.renderScenarioButtons(); // Re-render to ensure active states are correct
+        });
+      }
+      if (btnCloseLibrary && modalLibrary) {
+        btnCloseLibrary.addEventListener('click', () => {
+          modalLibrary.classList.remove('show');
+        });
+      }
+      if (modalLibrary) {
+        modalLibrary.addEventListener('click', (e) => {
+          if (e.target === modalLibrary) {
+            modalLibrary.classList.remove('show');
+          }
+        });
+      }
 
       // Scenario Search Input Filter
       const scenSearchInput = document.getElementById('scenarioSearchInput');
@@ -565,8 +621,11 @@
         const gridEl = document.getElementById('leads12Grid');
         if (gridEl) gridEl.className = 'leads-12-grid layout-4x3';
 
-        document.querySelectorAll('#scenarioListGrid .scenario-card').forEach(c => c.classList.remove('active'));
-        document.getElementById('patientContextPanel').style.display = 'none';
+        document.querySelectorAll('#scenarioListGrid .scenario-card, .bento-case-card').forEach(c => c.classList.remove('active'));
+        const patPanel = document.getElementById('patientContextPanel');
+        if (patPanel) patPanel.style.display = 'none';
+        const emptyState = document.getElementById('emptyCaseState');
+        if (emptyState) emptyState.style.display = 'flex';
         document.getElementById('quizStudioBox').style.display = 'none';
         this.activeCategoryFilter = 'ALL';
         this.searchQuery = '';
@@ -739,6 +798,13 @@
       const checklistContainer = document.getElementById('systematicChecklist');
       if (!checklistContainer) return;
 
+      const hasSttAbnormal = Object.keys(combined.leadStElevations).length > 0 || 
+                             Object.keys(combined.leadStDepressions).length > 0 || 
+                             (combined.tInversions && combined.tInversions.length > 0) || 
+                             combined.deepGiganticT;
+
+      const hasWaveAbnormal = combined.uWaves || combined.osbornNotch || combined.deltaWave || combined.epsilonWave || combined.raVRWave;
+
       const items = [
         {
           num: 1,
@@ -764,9 +830,9 @@
         {
           num: 4,
           title: 'Sóng P (P Wave)',
-          val: combined.noP ? 'Không thấy' : (combined.pNotched ? 'P hai lá' : 'Bình thường'),
-          status: combined.noP || combined.pNotched ? 'abnormal' : 'normal',
-          note: combined.pNotched ? 'Lớn nhĩ trái' : (combined.amplifiers.P_DII ? 'P phế (Lớn nhĩ phải)' : 'Đồng dạng, dương ở DII')
+          val: combined.noP ? 'Không thấy' : (combined.pNotched ? 'P hai lá' : (combined.amplifiers?.P_DII ? 'P phế' : 'Bình thường')),
+          status: combined.noP || combined.pNotched || combined.amplifiers?.P_DII ? 'abnormal' : 'normal',
+          note: combined.pNotched ? 'Lớn nhĩ trái' : (combined.amplifiers?.P_DII ? 'P phế (Lớn nhĩ phải)' : 'Đồng dạng, dương ở DII')
         },
         {
           num: 5,
@@ -785,9 +851,9 @@
         {
           num: 7,
           title: 'Đoạn ST & Sóng T',
-          val: Object.keys(combined.leadStElevations).length > 0 ? 'ST chênh lên' : (Object.keys(combined.leadStDepressions).length > 0 ? 'ST chênh xuống' : 'Đẳng điện'),
-          status: Object.keys(combined.leadStElevations).length > 0 || Object.keys(combined.leadStDepressions).length > 0 ? 'critical' : 'normal',
-          note: Object.keys(combined.leadStElevations).length > 0 ? `Chênh lên ở: ${Object.keys(combined.leadStElevations).join(', ')}` : 'Đoạn ST nằm trên đường đẳng điện'
+          val: Object.keys(combined.leadStElevations).length > 0 ? 'ST chênh lên' : (Object.keys(combined.leadStDepressions).length > 0 ? 'ST chênh xuống' : (combined.tInversions?.length > 0 ? 'Sóng T âm' : 'Đẳng điện')),
+          status: hasSttAbnormal ? 'critical' : 'normal',
+          note: Object.keys(combined.leadStElevations).length > 0 ? `Chênh lên ở: ${Object.keys(combined.leadStElevations).join(', ')}` : (Object.keys(combined.leadStDepressions).length > 0 ? `Chênh xuống ở: ${Object.keys(combined.leadStDepressions).join(', ')}` : (combined.tInversions?.length > 0 ? `T âm ở: ${combined.tInversions.join(', ')}` : 'Đoạn ST nằm trên đường đẳng điện'))
         },
         {
           num: 8,
@@ -798,32 +864,77 @@
         },
         {
           num: 9,
-          title: 'Sóng U & Sóng Dị Dạng',
-          val: combined.uWaves ? 'Sóng U dương cao' : (combined.osbornNotch ? 'Sóng Osborn' : 'Không có'),
-          status: combined.uWaves || combined.osbornNotch ? 'warning' : 'normal',
-          note: combined.uWaves ? 'Hạ Kali máu nghi ngờ' : (combined.osbornNotch ? 'Hạ thân nhiệt' : 'Bình thường')
+          title: 'Sóng Dị Dạng & Đặc Biệt',
+          val: combined.deltaWave ? 'Sóng Delta (WPW)' : (combined.epsilonWave ? 'Sóng Epsilon (ARVC)' : (combined.osbornNotch ? 'Sóng Osborn' : (combined.raVRWave ? 'R cao ở aVR' : (combined.uWaves ? 'Sóng U cao' : 'Không có')))),
+          status: hasWaveAbnormal ? 'warning' : 'normal',
+          note: combined.deltaWave ? 'Hội chứng kích thích sớm WPW' : (combined.epsilonWave ? 'Bệnh cơ tim ARVC' : (combined.osbornNotch ? 'Hạ thân nhiệt nặng' : (combined.raVRWave ? 'Ngộ độc thuốc chặn kênh Na' : (combined.uWaves ? 'Hạ Kali máu nghi ngờ' : 'Bình thường'))))
         },
         {
           num: 10,
           title: 'Tổng Hợp Chẩn Đoán',
-          val: Array.from(this.selectedModifiers).map(id => window.ECGModifiers.MODIFIERS[id]?.name).join(' + '),
-          status: 'info',
+          val: Array.from(this.selectedModifiers).map(id => window.ECGModifiers.MODIFIERS[id]?.name).join(' + ') || 'Bình thường',
+          status: this.selectedModifiers.size > 0 ? 'info' : 'normal',
           note: 'Phối hợp các tổn thương trên ECG 12 chuyển đạo'
         }
       ];
 
       checklistContainer.innerHTML = items.map(item => {
         const isChecked = this.checkedSteps.has(item.num);
+        let itemBg = 'var(--color-surface)';
+        let itemBorder = 'var(--color-border)';
+        let valColor = 'var(--color-primary)';
+        let noteColor = 'var(--color-text-muted)';
+
+        if (item.status === 'normal') {
+          valColor = 'var(--color-success)';
+        } else if (item.status === 'critical') {
+          itemBg = 'rgba(239, 68, 68, 0.08)';
+          itemBorder = 'rgba(239, 68, 68, 0.4)';
+          valColor = 'var(--color-danger)';
+          noteColor = 'var(--color-danger)';
+        } else if (item.status === 'info') {
+          valColor = 'var(--color-primary)';
+        } else {
+          // abnormal, tachy, brady, warning
+          itemBg = 'rgba(245, 158, 11, 0.07)';
+          itemBorder = 'rgba(245, 158, 11, 0.35)';
+          valColor = '#d97706';
+          noteColor = '#b45309';
+        }
+
+        const borderLeftStyle = isChecked 
+          ? '4px solid var(--color-success)' 
+          : (item.status === 'critical' ? '4px solid var(--color-danger)' : (item.status !== 'normal' && item.status !== 'info' ? '4px solid #d97706' : '1px solid ' + itemBorder));
+
+        if (item.num === 10) {
+          return `
+            <div class="chk-item status-${item.status} ${isChecked ? 'step-checked' : ''}" data-step="${item.num}" 
+                 style="cursor: pointer; position: relative; background: ${itemBg}; border: 1px solid ${itemBorder}; border-left: ${borderLeftStyle}; border-radius: var(--radius-sm); padding: 0.6rem; margin-bottom: 0.5rem; transition: all 0.2s ease;">
+              <div class="chk-header" style="display: flex; align-items: center; justify-content: space-between;">
+                <span class="chk-num" style="display: flex; align-items: center; gap: 0.4rem; white-space: nowrap;">
+                  <input type="checkbox" ${isChecked ? 'checked' : ''} style="accent-color: var(--color-success); cursor: pointer;">
+                  <strong ${isChecked ? 'style="text-decoration: line-through; opacity: 0.8;"' : ''}>${item.num}. ${item.title}</strong>
+                </span>
+              </div>
+              <div class="chk-val" style="color: ${valColor}; font-weight: 800; font-size: 0.85rem; line-height: 1.45; word-break: break-word; background: var(--color-bg); padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border); margin-top: 0.4rem;">
+                <i class="fa-solid fa-stethoscope" style="color: var(--color-primary); margin-right: 0.35rem;"></i>${item.val}
+              </div>
+              <p class="chk-note" style="margin-top: 0.35rem; font-size: 0.78rem; color: ${noteColor}; ${isChecked ? 'opacity: 0.7;' : ''}">${item.note}</p>
+            </div>
+          `;
+        }
+
         return `
-          <div class="chk-item status-${item.status} ${isChecked ? 'step-checked' : ''}" data-step="${item.num}" style="cursor: pointer; position: relative; border-left: 4px solid ${isChecked ? 'var(--color-success)' : 'transparent'};">
-            <div class="chk-header" style="display: flex; align-items: center; justify-content: space-between;">
-              <span class="chk-num" style="display: flex; align-items: center; gap: 0.4rem;">
+          <div class="chk-item status-${item.status} ${isChecked ? 'step-checked' : ''}" data-step="${item.num}" 
+               style="cursor: pointer; position: relative; background: ${itemBg}; border: 1px solid ${itemBorder}; border-left: ${borderLeftStyle}; border-radius: var(--radius-sm); padding: 0.6rem; margin-bottom: 0.5rem; transition: all 0.2s ease;">
+            <div class="chk-header" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="chk-num" style="display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; flex-shrink: 0;">
                 <input type="checkbox" ${isChecked ? 'checked' : ''} style="accent-color: var(--color-success); cursor: pointer;">
                 <strong ${isChecked ? 'style="text-decoration: line-through; opacity: 0.8;"' : ''}>${item.num}. ${item.title}</strong>
               </span>
-              <span class="chk-val">${item.val}</span>
+              <span class="chk-val" style="color: ${valColor}; font-weight: 800; font-size: 0.82rem; text-align: right; word-break: break-word; flex: 1; min-width: 120px;">${item.val}</span>
             </div>
-            <p class="chk-note" style="margin-top: 0.35rem; ${isChecked ? 'opacity: 0.7;' : ''}">${item.note}</p>
+            <p class="chk-note" style="margin-top: 0.35rem; font-size: 0.78rem; color: ${noteColor}; ${isChecked ? 'opacity: 0.7;' : ''}">${item.note}</p>
           </div>
         `;
       }).join('');

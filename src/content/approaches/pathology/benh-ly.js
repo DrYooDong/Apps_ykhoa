@@ -12,7 +12,8 @@ const SPECIALTIES = {
     'da-lieu': { name: 'Da liễu - Cơ xương khớp', color: '#db2777', bg: 'rgba(219, 39, 119, 0.1)' },
     'san-phu': { name: 'Sản phụ khoa', color: '#ec4899', bg: 'rgba(236, 72, 153, 0.1)' },
     'nhi-khoa': { name: 'Nhi khoa', color: '#0ea5e9', bg: 'rgba(14, 165, 233, 0.1)' },
-    'cap-cuu': { name: 'Cấp cứu - Hồi sức', color: '#e11d48', bg: 'rgba(225, 29, 72, 0.1)' }
+    'cap-cuu': { name: 'Cấp cứu - Hồi sức', color: '#e11d48', bg: 'rgba(225, 29, 72, 0.1)' },
+    'dinh-duong': { name: 'Dinh dưỡng', color: '#65a30d', bg: 'rgba(101, 163, 13, 0.1)' }
 };
 
 let diseases = [];

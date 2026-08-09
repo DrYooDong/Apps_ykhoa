@@ -17,7 +17,8 @@
       obgyn: { name: 'Sản phụ khoa', color: '#e11d48', bg: '#fff1f2' },
       icu: { name: 'Hồi sức tích cực', color: '#059669', bg: '#ecfdf5' },
       derma: { name: 'Da liễu', color: '#ec4899', bg: '#fdf2f8' },
-      ent: { name: 'Tai Mũi Họng', color: '#06b6d4', bg: '#ecfeff' }
+      ent: { name: 'Tai Mũi Họng', color: '#06b6d4', bg: '#ecfeff' },
+      nutri: { name: 'Dinh dưỡng', color: '#65a30d', bg: '#f7fee7' }
     };
 
     const SOURCE_TYPES = {
@@ -46,6 +47,28 @@
     };
 
     const SAMPLE_STUDIES = [
+      {
+        id: "study_2026_aha_acc_ada_asn_ckm_syndrome",
+        title: "Hướng dẫn Phòng ngừa, Phát hiện, Đánh giá và Quản lý Hội chứng Tim mạch - Thận - Chuyển hóa (2026 AHA/ACC/ADA/ASN Guideline for CKM Syndrome)",
+        drug: "semaglutide, tirzepatide, liraglutide, empagliflozin, dapagliflozin, canagliflozin, finerenone, metformin, sacubitril/valsartan, losartan, irbesartan, atorvastatin, rosuvastatin, apixaban, rivaroxaban, patiromer, sodium zirconium cyclosilicate, icosapent ethyl",
+        sourceType: "intl-guideline",
+        specialty: "cardio",
+        design: "guideline",
+        impact: "practice-changing",
+        year: 2026,
+        organization: "AHA / ACC / ADA / ASN",
+        phase: "Clinical Guideline",
+        sampleSize: null,
+        population: "Bệnh nhân lâm sàng",
+        keyResults: "Thử nghiệm FLOW cho thấy semaglutide giảm đáng kể biến cố suy tim ở nhóm chung: HR 0.74 (95% CI 0.58-0.94) và giảm suy tim mới mắc ở nhóm không có suy tim nền: HR 0.68 (95% CI 0.50-0.91). Phân tích gộp SMART-C cho thấy SGLT2i giúp giảm MACE: HR 0.90 (95% CI 0.84-0.96) và tử vong do tim mạch: HR 0.80 (95% CI 0.72-0.88) ở bệnh nhân có albumin niệu. Trong phân tích FIDELITY, finerenone giảm 21% biến cố suy tim: HR 0.79 (95% CI 0.66-0.92).",
+        summary: "Cập nhật toàn diện hướng dẫn lâm sàng 2026 của AHA/ACC/ADA/ASN về phân giai đoạn (Stage 0-4), đánh giá nguy cơ PREVENT-CVD, phối hợp nhóm chăm sóc đa chuyên khoa và phác đồ điều trị bảo vệ tim - thận (SGLT2i, GLP-1 RA, nsMRA, RASi) ở bệnh nhân béo phì, đái tháo đường, bệnh thận mạn và suy tim.",
+        detailedConclusion: "Cập nhật toàn diện hướng dẫn lâm sàng 2026 của AHA/ACC/ADA/ASN về phân giai đoạn (Stage 0-4), đánh giá nguy cơ PREVENT-CVD, phối hợp nhóm chăm sóc đa chuyên khoa và phác đồ điều trị bảo vệ tim - thận (SGLT2i, GLP-1 RA, nsMRA, RASi) ở bệnh nhân béo phì, đái tháo đường, bệnh thận mạn và suy tim.",
+        sourceUrl: "",
+        file: "kho-guidelines/2026-aha-acc-ada-asn-ckm-syndrome.html",
+        asianData: true,
+        bookmarked: false
+      },
+
       {
         id: "study_2023_byt_benh_phoi_mo_ke",
         title: "Hướng dẫn Chẩn đoán và Điều trị Bệnh Phổi Mô Kẽ (BYT 2023)",

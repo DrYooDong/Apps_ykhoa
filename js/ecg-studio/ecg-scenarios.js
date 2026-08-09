@@ -1100,6 +1100,399 @@
         'Xử trí STEMI: Ưu tiên PCI cấp cứu ngay lập tức cho STEMI thành dưới. Block Wenckebach thường TỰ PHỤC HỒI sau tái tưới máu — không cần pacemaker ngay.',
         'Monitoring bắt buộc! Có thể tiến triển tạm thời thành Block AV hoàn toàn trong 24-48h đầu — cần sẵn sàng pacemaker tạm thời nếu huyết động xấu.'
       ]
+    },
+    {
+      id: 'hypocalcemia_case',
+      title: 'Cấp Cứu Nội Thần Kinh — Co Thắt Bàn Tay & Tê Quanh Miệng',
+      category: 'Rối loạn điện giải',
+      difficulty: 'Trung bình',
+      patient: { age: 42, sex: 'Nữ', weight: 58, occupation: 'Giáo viên' },
+      vitals: { hr: 82, sbp: 115, dbp: 75, spo2: 98, temp: 36.8, rr: 18 },
+      symptoms: [
+        'Tê rần đầu ngón tay và vùng quanh miệng',
+        'Co thắt ngón tay dạng "bàn tay người đỡ đẻ" (Trousseau sign)',
+        'Tiền sử vừa phẫu thuật cắt toàn bộ tuyến giáp 3 ngày trước'
+      ],
+      context: 'Bệnh nhân sau mổ tuyến giáp ngày 3 xuất hiện co cứng cơ mặt và tay. Dấu hiệu Chvostek (+) và Trousseau (+). Xét nghiệm Calci toàn phần 1.4 mmol/L (giảm nặng). ECG 12 chuyển đạo ghi nhận khoảng QT kéo dài 510ms.',
+      modifiers: ['hypocalcemia'],
+      goldAnswer: 'Hạ Calci Máu Cấp Nghi Do Suy Tuyến Cận Giáp Sau Phẫu Thuật — QT Kéo Dài',
+      teachingPoints: [
+        'Dấu hiệu ECG đặc trưng của Hạ Calci máu: Khoảng QT kéo dài chủ yếu do kéo dài đoạn ST, trong khi sóng T có hình dạng bình thường.',
+        'Cơ chế: Calci máu giảm làm chậm quá trình tái cực của tế bào cơ tim (pha 2 điện thế hoạt động bị kéo dài).',
+        'Lâm sàng: Nguy cơ xuất hiện Cơn Tetany, co thắt thanh quản dọa thở máy và rối loạn nhịp thất.',
+        'Xử trí: Tiêm chậm tĩnh mạch Calcium Gluconate 10% (10-20ml trong 10 phút) dưới sự theo dõi liên tục trên monitor ECG.'
+      ]
+    },
+    {
+      id: 'digoxin_toxicity_case',
+      title: 'Khám Nội Tim Mạch — Buồn Nôn & Nhìn Mờ Màu Vàng',
+      category: 'Rối loạn điện giải',
+      difficulty: 'Khó',
+      patient: { age: 76, sex: 'Nữ', weight: 45, occupation: 'Hưu trí' },
+      vitals: { hr: 54, sbp: 110, dbp: 65, spo2: 96, temp: 36.5, rr: 16 },
+      symptoms: [
+        'Chán ăn, buồn nôn, nôn mửa liên tục 2 ngày',
+        'Cảm giác nhìn mọi vật có quầng sáng màu vàng/xanh',
+        'Mệt mỏi, tim đập chậm'
+      ],
+      context: 'Bệnh nhân suy tim rung nhĩ mạn tính đang điều trị Digoxin 0.25mg/ngày + Furosemide. Gần đây ăn uống kém, chức năng thận suy giảm. Nồng độ Digoxin máu = 3.2 ng/mL (ngưỡng độc > 2.0 ng/mL). ECG ghi nhận ST chênh xuống lõm dạng "đáy chén".',
+      modifiers: ['digitalis_effect', 'sinus_brady'],
+      goldAnswer: 'Ngộ Độc Digoxin Cấp Trên Nền Suy Thận / Hạ Kali Máu Bù Trừ',
+      teachingPoints: [
+        'Hình ảnh ECG đặc trưng: ST chênh xuống lõm dạng "đáy chén" / "muỗng bán nguyệt" (Salvador Dali mustache), khoảng QT ngắn, PR kéo dài.',
+        'Digoxin làm tăng trương lực phế vị gây nhịp chậm xoang hoặc Block AV, đồng thời tăng tính tự động thất gây NTT thất, nhịp nhanh bộ nối.',
+        'Hạ Kali máu (do Furosemide) làm tăng độc tính Digoxin dù nồng độ Digoxin trong máu không quá cao.',
+        'Xử trí: Ngừng Digoxin, bù Kali tĩnh mạch duy trì K+ 4.5-5.0 mEq/L, dùng kháng thể kháng Digoxin (DigiFab) nếu có rối loạn nhịp dọa tử vong.'
+      ]
+    },
+    {
+      id: 'pe_s1q3t3_case',
+      title: 'Cấp Cứu — Khó Thở Đột Ngột Sau Chuyến Bay Dài',
+      category: 'Rối loạn nhịp',
+      difficulty: 'Khó',
+      patient: { age: 55, sex: 'Nam', weight: 92, occupation: 'Doanh nhân' },
+      vitals: { hr: 124, sbp: 95, dbp: 60, spo2: 89, temp: 37.2, rr: 28 },
+      symptoms: [
+        'Khó thở dữ dội khởi phát đột ngột khi vừa bước xuống máy bay (bay 14 tiếng)',
+        'Đau ngực kiểu màng phổi (tăng khi hít sâu)',
+        'Ho ra máu vết nhẹ, sưng đau bắp chân trái'
+      ],
+      context: 'Bệnh nhân béo phì vương quốc vừa bay đường dài. Thăm khám: Phổi trong, Bắp chân trái sưng to lệch 3cm so với chân phải. SpO2 89% khí trời. ECG: Nhịp nhanh xoang 124 bpm, S sóng sâu ở DI, Q sâu và T âm ở DIII (Dấu SI-QIII-TIII).',
+      modifiers: ['sinus_tachy', 'pe_acute'],
+      goldAnswer: 'Thuyên Tắc Phổi Cấp Nguy Cơ Trung Bình - Cao (Acute Pulmonary Embolism) — Dấu Hiệu S1Q3T3',
+      teachingPoints: [
+        'Dấu hiệu S1Q3T3 (McGinn-White sign): Sóng S sâu ở DI, sóng Q sâu ở DIII, sóng T âm ở DIII — phản ánh gánh nặng thất phải cấp tính (Right Ventricular Strain).',
+        'Dấu hiệu ECG phổ biến nhất trong thuyên tắc phổi thực chất là NHỊP NHANH XOANG (> 44% trường hợp).',
+        'Các dấu hiệu khác: T âm ở V1-V4 (tái cực thất phải), Block nhánh phải cấp tính (RBBB), trục lệch phải.',
+        'Xử trí: Chụp CT dựng hình mạch máu phổi (CTPA) khẩn cấp, khởi đầu ngay Anticoagulant (LMWH/Heparin) hoặc Thuốc tiêu sợi huyết nếu tụt HA (Huyết động thất bại).'
+      ]
+    },
+    {
+      id: 'hypothermia_osborn_case',
+      title: 'Cấp Cứu — Lơ Mơ & Hạ Thân Nhiệt Ngoài Trời Tuyết',
+      category: 'Rối loạn điện giải',
+      difficulty: 'Khó',
+      patient: { age: 62, sex: 'Nam', weight: 65, occupation: 'Vô gia cư' },
+      vitals: { hr: 38, sbp: 85, dbp: 50, spo2: 92, temp: 29.5, rr: 10 },
+      symptoms: [
+        'Bệnh nhân lơ mơ, trả lời không đúng trọng tâm',
+        'Da tái lạnh toàn thân, cơ cứng không run',
+        'Thân nhiệt trung tâm đo qua hậu môn: 29.5°C'
+      ],
+      context: 'Được xe cấp cứu đưa vào sau khi phát hiện nằm gục ngoài trời lạnh đêm đông. Thăm khám nhịp tim rất chậm 38 l/phút. ECG ghi nhận sóng Osborn (sóng J) dạng vai u nổi rõ tại nối QRS-ST ở các chuyển đạo V3-V6.',
+      modifiers: ['sinus_brady', 'osborn_wave'],
+      goldAnswer: 'Hạ Thân Nhiệt Nặng (Severe Hypothermia 29.5°C) — Sóng Osborn (J-Wave)',
+      teachingPoints: [
+        'Sóng Osborn (J wave): Là sóng nhô lên dạng gờ hình vòm tại điểm nối QRS và đoạn ST, rõ nhất ở V3-V6 khi thân nhiệt < 32°C.',
+        'Biên độ sóng Osborn tỷ lệ thuận với mức độ hạ thân nhiệt.',
+        'Biến đổi ECG khác: Nhịp chậm xoang, khoảng PR/QRS/QT kéo dài, nhiễu do cơ run (Muscle tremor artifact), nguy cơ Rung Thất / Vô tâm thu cao.',
+        'Xử trí: Cấp cứu ủ ấm chủ động (Ủ ấm từ bên trong: dịch truyền ấm 40°C, thở oxy ấm; Ủ ấm từ bên ngoài). Tránh di chuyển bệnh nhân đột ngột vì có thể kích hoạt Rung thất!'
+      ]
+    },
+    {
+      id: 'brugada_type1_case',
+      title: 'Cấp Cứu — Ngất Đột Ngột Khi Đang Ngủ Ở Người Trẻ',
+      category: 'Rối loạn dẫn truyền',
+      difficulty: 'Khó',
+      patient: { age: 29, sex: 'Nam', weight: 68, occupation: 'Kỹ sư phần mềm' },
+      vitals: { hr: 75, sbp: 120, dbp: 75, spo2: 99, temp: 37.0, rr: 16 },
+      symptoms: [
+        'Người nhà phát hiện ngất, ngáy ngáy khó thở khi đang ngủ lúc 2 giờ sáng',
+        'Tỉnh lại sau 3 phút, ngơ ngác không nhớ sự việc',
+        'Anh trai ruột đột tử năm 24 tuổi khi đang ngủ'
+      ],
+      context: 'Bệnh nhân nam trẻ tuổi vào cấp cứu sau cơn ngất đêm. Tiền sử gia đình có người đột tử sớm. Khám lâm sàng và siêu âm tim hoàn toàn bình thường. ECG 12 chuyển đạo: ST chênh lên dạng vòm (coved-type) > 2mm tiếp nối sóng T âm ở V1, V2.',
+      modifiers: ['brugada_type1'],
+      goldAnswer: 'Hội Chứng Brugada Type 1 — Nguy Cơ Đột Tử Cao Đêm Ngủ (SUNDS)',
+      teachingPoints: [
+        'Tiêu chuẩn Brugada Type 1: ST chênh lên dạng vòm (coved ST elevation) ≥ 2mm tiếp nối sóng T âm ở V1-V2 (chuyển đạo ngực phải).',
+        'Bệnh lý kênh Natri tim di truyền (máy đột biến gen SCN5A) gây rối loạn nhịp thất ác tính (VT/VF) chủ yếu trong lúc ngủ hoặc khi sốt cao.',
+        'Phân biệt Type 2/3: Dạng yên ngựa (Saddle-back type) — cần làm nghiệm pháp kích thích bằng thuốc chặn kênh Natri (Ajmaline/Flecainide) để khẳng định.',
+        'Xử trí: Đặt Máy Đánh Thức Cấy Vào Cơ Thể (ICD) là phương pháp DUY NHẤT phòng ngừa đột tử cho bệnh nhân Brugada có triệu chứng ngất.'
+      ]
+    },
+    {
+      id: 'copd_p_pulmonale_case',
+      title: 'Khám Nội Hô Hấp — Khó Thở Mạn Tính & Lồng Ngực Hình Thùng',
+      category: 'Dày buồng tim',
+      difficulty: 'Dễ',
+      patient: { age: 68, sex: 'Nam', weight: 52, occupation: 'Nông dân hưu trí' },
+      vitals: { hr: 98, sbp: 135, dbp: 85, spo2: 91, temp: 36.7, rr: 22 },
+      symptoms: [
+        'Ho đờm mạn tính 10 năm, khó thở tăng dần khi gắng sức nhẹ',
+        'Tiền sử thuốc lá 40 bao-năm',
+        'Lồng ngực đường kính trước sau tăng (hình thùng)'
+      ],
+      context: 'Khám định kỳ phòng khám hô hấp. Khám thấy rì rầm phế nang giảm toàn bộ 2 phế trường, tiếng tim mờ xa xăm. ECG: Điện thế thấp ở các chuyển đạo ngoại biên, Trục lệch phải +110°, Sóng P cao nhọn > 2.5mm ở DII, DIII, aVF (P phế).',
+      modifiers: ['copd_ecg'],
+      goldAnswer: 'Bệnh Phổi Tắc Nghẽn Mạn Tính (COPD) / Tâm Phế Mạn — Dấu Hiệu P Phế (P Pulmonale)',
+      teachingPoints: [
+        'Sóng P phế (P Pulmonale): Sóng P cao nhọn ≥ 2.5mm ở DII, DIII, aVF do dày/dãn nhĩ phải (tăng áp lực động mạch phổi).',
+        'Điện thế thấp (Low voltage): Do lồng ngực ứ khí mạn tính làm tăng điện trở cách điện giữa tim và điện cực da.',
+        'Trục QRS lệch phải và tim xoay thuận chiều kim đồng hồ (S sâu kéo dài tới V6) do thất phải phì đại/dãn.',
+        'Ý nghĩa: Đánh giá biến chứng Tâm phế mạn ở bệnh nhân bệnh phổi mạn tính.'
+      ]
+    },
+    {
+      id: 'subarachnoid_t_wave_case',
+      title: 'Cấp Cứu Thần Kinh — Đau Đầu Dữ Dội Như "Sét Đánh" & Hôn Mê',
+      category: 'Rối loạn điện giải',
+      difficulty: 'Khó',
+      patient: { age: 50, sex: 'Nữ', weight: 62, occupation: 'Kế toán' },
+      vitals: { hr: 52, sbp: 175, dbp: 105, spo2: 95, temp: 37.4, rr: 16 },
+      symptoms: [
+        'Đau đầu dữ dội đột ngột chưa từng có trong đời ("Thunderclap headache")',
+        'Nôn mửa vòi bộc, gáy cứng (+)',
+        'Rối loạn ý thức tiến triển lơ mơ dần'
+      ],
+      context: 'Bệnh nhân vỡ túi phình động mạch não gây Xuất huyết dưới nhện (SAH). CT Scan sọ não xác định máu ngập khoang dưới nhện. ECG 12 chuyển đạo bất ngờ ghi nhận sóng T âm rất sâu, rộng đối xứng khổng lồ ở V1-V6 và DI, aVL kèm QTc kéo dài 540ms.',
+      modifiers: ['sinus_brady', 'cerebral_t_waves'],
+      goldAnswer: 'Xuất Huyết Dưới Nhện (Subarachnoid Hemorrhage - SAH) — Dấu Hiệu Sóng T Não (Cerebral T Waves)',
+      teachingPoints: [
+        'Sóng T não (Cerebral T waves): Sóng T âm rất sâu (giao động > 5mm đến 15mm), rộng đối xứng khổng lồ ở nhiều chuyển đạo trước ngực kèm QTc kéo dài mạnh.',
+        'Cơ chế: Bão Catecholamine do kích thích thần kinh giao cảm quá mức từ hệ thần kinh trung ương gây choáng cơ tim độc tố (Neurogenic stunned myocardium).',
+        'Chẩn đoán phân biệt quan trọng: Rất dễ nhầm với Nhồi máu cơ tim cấp thành trước! Cần kết hợp lâm sàng thần kinh và CT sọ nội.',
+        'Xử trí: Cấp cứu Thần kinh - Phẫu thuật kẹp/can thiệp nội mạch túi phình mạch vỏ não. Không dùng thuốc tiêu sợi huyết hay kháng đông vì nhầm với STEMI!'
+      ]
+    },
+    {
+      id: 'sgarbossa_stemi_lbbb_case',
+      title: '🚨 Cấp Cứu Tối Khẩn — Đau Ngực Cấp Trên Bệnh Nhân Có Block Nhánh Trái Cũ',
+      category: 'Bệnh mạch vành',
+      difficulty: 'Khó',
+      urgency: 'critical',
+      patient: { age: 67, sex: 'Nam', weight: 72, occupation: 'Hưu trí' },
+      vitals: { hr: 98, sbp: 105, dbp: 65, spo2: 94, temp: 36.9, rr: 22 },
+      symptoms: [
+        'Đau thắt ngực dữ dội sau xương ức khởi phát 1 giờ trước khi đang nghỉ ngơi',
+        'Vã mồ hôi lạnh, khó thở, lo âu',
+        'Tiền sử Block nhánh trái (LBBB) được ghi nhận 2 năm trước'
+      ],
+      context: 'Bệnh nhân có tiền sử LBBB mạn tính vào cấp cứu vì đau ngực điển hình. ECG 12 chuyển đạo: Dạng LBBB cơ bản nhưng xuất hiện ST chênh lên 2.5mm cùng chiều (concordant) với QRS dương ở DII, V5, V6 (Sgarbossa = 5 điểm).',
+      modifiers: ['stemi_lbbb_sgarbossa'],
+      goldAnswer: 'Nhồi Máu Cơ Tim Cấp Có ST Chênh Lên (STEMI) Trên Nền Block Nhánh Trái (LBBB) — Tiêu Chuẩn Sgarbossa (+) [🚨 Cấp Cứu Tối Khẩn]',
+      teachingPoints: [
+        'LBBB mạn tính thường làm ST-T biến đổi trái hướng (discordant) che lấp hình ảnh STEMI.',
+        'Tiêu chuẩn Sgarbossa cải tiến chẩn đoán STEMI khi có LBBB:',
+        '  1. ST chênh lên đồng hướng (Concordant STE) ≥ 1mm ở chuyển đạo QRS dương (5 điểm - Rất đặc hiệu!).',
+        '  2. ST chênh xuống đồng hướng (Concordant STD) ≥ 1mm ở V1-V3 (3 điểm).',
+        '  3. ST chênh lên trái hướng quá mức (Excessive discordant STE) ≥ 5mm (2 điểm).',
+        'Quyết định: Điểm Sgarbossa ≥ 3 -> Kích hoạt PCI cấp cứu khẩn cấp như STEMI bình thường!'
+      ]
+    },
+    {
+      id: 'takotsubo_cardiomyopathy_case',
+      title: '⚠️ Cấp Cứu Tim Mạch — Đau Ngực Dọa STEMI Sau Biến Cố Tâm Lý Sốc',
+      category: 'Bệnh mạch vành',
+      difficulty: 'Khó',
+      urgency: 'emergent',
+      patient: { age: 68, sex: 'Nữ', weight: 54, occupation: 'Nội trợ' },
+      vitals: { hr: 105, sbp: 110, dbp: 70, spo2: 96, temp: 36.8, rr: 20 },
+      symptoms: [
+        'Đau ngực kiểu thắt nghẹt đột ngột 2 giờ sau khi nhận tin đột ngột mất người thân',
+        'Khó thở nhẹ, hồi hộp đánh trống ngực',
+        'Không có tiền sử bệnh mạch vành trước đây'
+      ],
+      context: 'Bệnh nhân nữ cao tuổi vào cấp cứu vì đau ngực cấp sau sốc tâm lý mạnh. ECG: ST chênh lên lồi ở V2-V5 dọa STEMI thành trước. Troponin T tăng nhẹ. Tuy nhiên, Chụp động mạch vành qua da (DSA) cấp cứu ghi nhận: ĐỘNG MẠCH VÀNH HOÀN TOÀN THÔNG THOÁNG! Siêu âm tim: Phình mỏm thất trái (Apical ballooning).',
+      modifiers: ['takotsubo'],
+      goldAnswer: 'Hội Chứng Bóp Nghẹt Tim Takotsubo (Takotsubo Cardiomyopathy / Stress-Induced Cardiomyopathy) — Phình Mỏm Thất Trái',
+      teachingPoints: [
+        'Hội chứng Takotsubo (Broken Heart Syndrome): Đau ngực & biến đổi ST-T tương tự STEMI thành trước nhưng ĐỘNG MẠCH VÀNH BÌNH THƯỜNG trên chụp DSA.',
+        'Cơ chế: Bão Catecholamine giao cảm đột ngột do căng thẳng tâm lý/thể xác cực độ gây ngộ độc cơ tim và phình vùng mỏm thất trái.',
+        'Đặc điểm ECG giai đoạn sau: ST chênh giảm dần, xuất hiện sóng T âm rất sâu đối xứng lan tỏa (V2-V6) và QTc kéo dài.',
+        'Tiên lượng: Thường phục hồi hoàn toàn chức năng co bóp thất trái sau 4-8 tuần điều trị nội khoa hỗ trợ (Beta-blocker, ACEi).'
+      ]
+    },
+    {
+      id: 'tca_overdose_case',
+      title: '🚨 Cấp Cứu Độc Chất — Lơ Mơ, Tụt Huyết Áp Sau Khi Uống Thuốc Quá Liều',
+      category: 'Rối loạn điện giải',
+      difficulty: 'Khó',
+      urgency: 'critical',
+      patient: { age: 24, sex: 'Nữ', weight: 50, occupation: 'Sinh viên' },
+      vitals: { hr: 125, sbp: 80, dbp: 50, spo2: 95, temp: 37.5, rr: 22 },
+      symptoms: [
+        'Được bạn phát hiện lơ mơ bên cạnh 2 vỏ chai Amitriptyline rỗng (khoảng 50 viên)',
+        'Đồng tử 2 bên dãn 5mm phản xạ ánh sáng chậm, khô miệng, da nóng đỏ',
+        'Tụt huyết áp 80/50 mmHg, tim đập nhanh'
+      ],
+      context: 'Bệnh nhân ngộ độc thuốc chống trầm cảm 3 vòng (TCA Amitriptyline). ECG 12 chuyển đạo ghi nhận: Nhịp nhanh xoang 125 bpm, QRS giãn rộng 145ms, Lệch trục phải +110°, Sóng R muộn ở chuyển đạo aVR cao 4mm (R/S aVR > 0.7).',
+      modifiers: ['sinus_tachy', 'tca_toxicity'],
+      goldAnswer: 'Ngộ Độc Thuốc Chống Trầm Cảm 3 Vòng TCA (Amitriptyline Overdose) — Dấu Hiệu Chặn Kênh Natri [🚨 Cấp Cứu Tối Khẩn]',
+      teachingPoints: [
+        'TCA gây 3 tác dụng độc chính: Chặn kênh Natri tim, Chặn receptor Alpha-1 (tụt HA) và Chặn Muscarinic (Hội chứng kháng Cholinergic).',
+        'Dấu hiệu ECG đặc hiệu ngộ độc TCA:',
+        '  1. Sóng R muộn ở aVR cao ≥ 3mm (hoặc R/S aVR > 0.7) — độ đặc hiệu > 95% cho ngộ độc TCA!',
+        '  2. QRS giãn rộng > 100ms (nguy cơ co giật) và QRS > 160ms (nguy cơ cao kích hoạt Cơn nhịp nhanh thất / Co giật).',
+        'Xử trí cấp cứu tối khẩn: Tiêm tĩnh mạch Sodium Bicarbonate (NaHCO3 8.4%) 1-2 mEq/kg bolus để kiềm hóa máu (pH 7.45-7.55) và giải độc kênh Natri!'
+      ]
+    },
+    {
+      id: 'arvc_epsilon_case',
+      title: '🚨 Cấp Cứu — Ngất Đột Ngột Khi Đang Chạy Điền Kinh (Dấu Hiệu Sóng Epsilon)',
+      category: 'Cấp cứu loạn nhịp',
+      difficulty: 'Khó',
+      urgency: 'critical',
+      patient: { age: 25, sex: 'Nam', weight: 66, occupation: 'Vận động viên điền kinh' },
+      vitals: { hr: 88, sbp: 115, dbp: 75, spo2: 98, temp: 37.0, rr: 18 },
+      symptoms: [
+        'Đột ngột ngất xỉu khi đang chạy được 3000m trong buổi tập',
+        'Tỉnh lại sau 2 phút, cảm giác tim đập dồn dập trước khi ngất',
+        'Bác ruột đột tử năm 30 tuổi khi đang chơi thể thao'
+      ],
+      context: 'VĐV trẻ tuổi ngất khi gắng sức. Thăm khám lâm sàng bình thường. ECG 12 chuyển đạo: Sóng T âm ở V1-V3, QRS giãn nhẹ ở V1 (115ms), đặc biệt xuất hiện Sóng Epsilon (sóng khuyết nhỏ dạng vai u ở phần cuối QRS trước khi sang ST) rõ nhất ở V1, V2.',
+      modifiers: ['arvc_epsilon'],
+      goldAnswer: 'Bệnh Cơ Tim Thất Phải Sinh Loạn Nhịp (ARVC / ARVD) — Dấu Hiệu Sóng Epsilon (Epsilon Wave) [🚨 Cấp Cứu Tối Khẩn]',
+      teachingPoints: [
+        'Bệnh cơ tim thất phải sinh loạn nhịp (ARVC): Bệnh di truyền thay thế mô cơ tim thất phải bằng mô mỡ-xơ, nguyên nhân hàng đầu gây đột tử ở VĐV trẻ.',
+        'Tiêu chuẩn ECG chẩn đoán chính (Major Criteria): Sóng Epsilon (sóng khuyết nhỏ nhấp nhô ở đầu đoạn ST) ở V1-V3.',
+        'Tiêu chuẩn khác: Sóng T âm ở V1-V3 (ở người > 14 tuổi), khoảng thời gian kích thích muộn (TAD) > 55ms ở V1-V3.',
+        'Nguy cơ: Dễ kích hoạt Cơn nhịp nhanh thất gốc thất phải (LBBB pattern với trục lệch trái) dẫn tới Rung thất.',
+        'Chỉ định: Cấm thi đấu thể thao gắng sức + Đặt Máy Đánh Thức Cấy Vào Cơ Thể (ICD).'
+      ]
+    },
+    {
+      id: 'isolated_rv_infarction_case',
+      title: '🚨 Cấp Cứu Tối Khẩn — Tụt Huyết Áp Thảm Hại Sau Khi Dùng Nitroglycerin',
+      category: 'Bệnh mạch vành',
+      difficulty: 'Khó',
+      urgency: 'critical',
+      patient: { age: 60, sex: 'Nam', weight: 75, occupation: 'Tài xế' },
+      vitals: { hr: 112, sbp: 70, dbp: 40, spo2: 93, temp: 36.6, rr: 24 },
+      symptoms: [
+        'Đau thắt ngực vùng thượng vị kéo dài 1 giờ',
+        'Sau khi được cho ngậm 1 viên Nitroglycerin dưới lưỡi thì đột ngột vã mồ hôi, da tái lạnh, HA tụt thảm hại từ 120/80 xuống 70/40 mmHg',
+        'Tĩnh mạch cổ nổi rõ, nghe phổi hoàn toàn trong không có rên'
+      ],
+      context: 'Bệnh nhân tụt huyết áp nặng sau Nitroglycerin. ECG 12 chuyển đạo tiêu chuẩn chỉ thấy ST chênh lên nhẹ 1mm ở V1 và DIII > DII. Bác sĩ cấp cứu chỉ định đo thêm **Chuyển đạo Thất Phải bên phải ($V_3R - V_6R$)** -> Phát hiện ST chênh lên vòm 2.0mm điển hình ở $V_4R$!',
+      modifiers: ['sinus_tachy', 'stemi_rv_isolated'],
+      goldAnswer: 'Nhồi Máu Cơ Tim Thất Phải Cấp Đơn Độc (Isolated Right Ventricular Infarction) — ST Chênh Lên Ở $V_4R$ [🚨 Cấp Cứu Tối Khẩn]',
+      teachingPoints: [
+        'NMCT Thất phải (RV Infarction): Thường đi kèm STEMI thành dưới (tắc RCA), nhưng có thể gặp đơn độc.',
+        'Tam chứng lâm sàng kinh điển: Tụt huyết áp + Tĩnh mạch cổ nổi + Phổi trong.',
+        'Tiêu chuẩn ECG vàng: ST chênh lên ≥ 1mm ở chuyển đạo $V_4R$ (độ đặc hiệu > 90%). Dấu hiệu gợi ý ở 12 chuyển đạo chuẩn: ST V1 > V2, ST DIII > DII.',
+        'CẢNH BÁO TỐI KHẨN: CHỐNG CHỈ ĐỊNH tuyệt đối Nitroglycerin, Morphine, Thuốc lợi tiểu và các thuốc giảm tiền tải vì thất phải phụ thuộc hoàn toàn vào áp lực đổ đầy tâm trương!',
+        'Xử trí: Truyền dịch tĩnh mạch Nước muối sinh lý 0.9% tốc độ nhanh (1-2 lít) để nâng tiền tải + PCI cấp cứu khẩn cấp.'
+      ]
+    },
+    {
+      id: 'af_wpw_case',
+      title: '🚨 Cấp Cứu Tối Khẩn — Tim Đập Loạn Nhịp Rất Nhanh QRS Giãn Rộng Ở Người Trẻ',
+      category: 'Cấp cứu loạn nhịp',
+      difficulty: 'Khó',
+      urgency: 'critical',
+      patient: { age: 26, sex: 'Nam', weight: 64, occupation: 'Lập trình viên' },
+      vitals: { hr: 220, sbp: 85, dbp: 50, spo2: 92, temp: 36.8, rr: 24 },
+      symptoms: [
+        'Hồi hộp đánh trống ngực dữ dội dồn dập khởi phát đột ngột 30 phút trước',
+        'Vã mồ hôi, thắt ngực nhẹ, hoa mắt chóng mặt',
+        'Tiền sử có các cơn nhịp nhanh kịch phát'
+      ],
+      context: 'Bệnh nhân nam trẻ tuổi vào phòng cấp cứu với cơn nhịp nhanh dữ dội. ECG 12 chuyển đạo: Phức bộ QRS giãn rộng (150ms) biến đổi hình thái từ nhát này sang nhát khác, khoảng RR hoàn toàn không đều (Irregularly irregular wide QRS complex) với tần số cực nhanh 220-250 l/phút.',
+      modifiers: ['af_wpw'],
+      goldAnswer: 'Rung Nhĩ Có Đường Phụ WPW (Pre-excited Atrial Fibrillation - AF with WPW) [🚨 Cấp Cứu Tối Khẩn]',
+      teachingPoints: [
+        'Rung nhĩ dẫn truyền qua đường phụ Kent (Pre-excited AF): Xung điện nhĩ xả xuống thất trực tiếp qua cầu Kent mà KHÔNG bị nút AV kìm hãm -> Tần số thất có thể lên tới 250-300 l/phút -> Rất dễ biến thành RUNG THẤT ĐỘT TỬ!',
+        'Đặc điểm ECG phân biệt với VT: Khoảng RR hoàn toàn không đều + QRS giãn rộng biến dạng thay đổi.',
+        'CẢNH BÁO TỐI KHẨN: CHỐNG CHỈ ĐỊNH tuyệt đối Adenosine, Verapamil, Diltiazem, Digoxin và Beta-blocker! Các thuốc này ức chế nút AV sẽ ép toàn bộ xung điện đi qua đường phụ Kent -> Kích hoạt Rung Thất ngay lập tức!',
+        'Xử trí: SỐC ĐIỆN CHUYỂN NHỊP ĐỒNG BỘ khẩn cấp (Synchronized Cardioversion 100-200J) hoặc tiêm tĩnh mạch Procainamide / Ibutilide.'
+      ]
+    },
+    {
+      id: 'ccb_toxicity_case',
+      title: '🚨 Cấp Cứu Độc Chất — Nhịp Tim Rất Chậm 35 bpm & Tụt Huyết Áp Nặng',
+      category: 'Rối loạn điện giải',
+      difficulty: 'Khó',
+      urgency: 'critical',
+      patient: { age: 52, sex: 'Nữ', weight: 58, occupation: 'Kế toán' },
+      vitals: { hr: 35, sbp: 70, dbp: 40, spo2: 94, temp: 36.3, rr: 14 },
+      symptoms: [
+        'Được người nhà phát hiện lơ mơ, da tái lạnh',
+        'Cạnh giường có 1 lọ Verapamil 80mg rỗng (khoảng 30 viên)',
+        'Mạch quay bắt chậm nhẹ mờ, huyết áp 70/40 mmHg'
+      ],
+      context: 'Bệnh nhân ngộ độc thuốc chẹn kênh Calci nhóm Verapamil. Xét nghiệm đường huyết tại giường: 16.5 mmol/L (tăng đường huyết phản ứng do ức chế tiết Insulin từ tế bào đảo tụy). ECG: Nhịp chậm bộ nối 35 bpm, PR kéo dài 240ms, QRS giãn nhẹ 120ms.',
+      modifiers: ['ccb_toxicity'],
+      goldAnswer: 'Ngộ Độc Thuốc Chẹn Kênh Calci Verapamil Nặng (CCB Toxicity) — Nhịp Chậm Bộ Nối & Tụt HA [🚨 Cấp Cứu Tối Khẩn]',
+      teachingPoints: [
+        'Ngộ độc CCB (Verapamil/Diltiazem) chế ức chế kênh Calci cơ tim gây nhịp chậm xoang/bộ nối, suy giảm sức co bóp cơ tim và giãn mạch ngoại biên.',
+        'Dấu hiệu phân biệt với Ngộ độc Beta-blocker: Ngộ độc CCB thường kèm TĂNG ĐƯỜNG HUYẾT NẶNG (Hyperglycemia) do Calci bị chặn ngăn giải phóng Insulin.',
+        'Xử trí cấp cứu:',
+        '  1. Tiêm tĩnh mạch Calcium Chloride 10% (1-2g bolus) hoặc Calcium Gluconate.',
+        '  2. Liệu pháp Insulin Liều Cao Euglycemia (HIET): Tiêm Insulin Regular 1 unit/kg bolus + truyền duy trì 1-10 units/kg/h kèm Glucose 20% duy trì đường huyết.',
+        '  3. Glucagon IV và Vận mạch Norepinephrine / Epinephrine.'
+      ]
+    },
+    {
+      id: 'trifascicular_block_case',
+      title: '⚠️ Cấp Cứu Tim Mạch — Cơn Ngất Đột Ngột Ở Người Cao Tuổi (Block 3 Nhánh)',
+      category: 'Rối loạn dẫn truyền',
+      difficulty: 'Khó',
+      urgency: 'emergent',
+      patient: { age: 78, sex: 'Nam', weight: 65, occupation: 'Cán bộ hưu trí' },
+      vitals: { hr: 48, sbp: 110, dbp: 65, spo2: 96, temp: 36.7, rr: 16 },
+      symptoms: [
+        'Ngất xỉu đột ngột khi đang đi dạo trong công viên',
+        'Tỉnh lại sau 1 phút, không nôn mửa, không yếu liệt tay chân',
+        'Tiền sử thỉnh thoảng choáng váng 3 tháng qua'
+      ],
+      context: 'Bệnh nhân cao tuổi ngất chưa rõ nguyên nhân. Khám tim thấy nhịp chậm 48 l/phút. ECG 12 chuyển đạo: PR kéo dài 250ms (Block AV độ I) + QRS giãn rộng 145ms dạng tai thỏ rsR\' ở V1 (Block Nhánh Phải RBBB) + Trục lệch trái -50° (Block Phân Nhánh Trái Trước LAFB).',
+      modifiers: ['av_block_1', 'rbbb', 'lafb', 'trifascicular_block'],
+      goldAnswer: 'Block 3 Nhánh Dẫn Truyền (Trifascicular Block) Kèm Cơn Ngất Stokes-Adams — Dọa Block AV Hoàn Toàn',
+      teachingPoints: [
+        'Block 3 nhánh (Trifascicular Block): Sự kết hợp của (1) Block AV độ I, (2) Block Nhánh Phải (RBBB), và (3) Block Phân Nhánh Trái Trước (LAFB) hoặc Trái Sau (LPFB).',
+        'Ý nghĩa lâm sàng: Hệ thống dẫn truyền cơ tim bị tổn thương lan tỏa nghiêm trọng 3 nhánh. Nguy cơ tiến triển thành Block AV Hoàn Toàn (Block độ III) bất kỳ lúc nào gây ngất hoặc vô tâm thu.',
+        'Quyết định lâm sàng: Bệnh nhân Block 3 nhánh CÓ TRIỆU CHỨNG NGẤT có chỉ định CẤY MÁY TẠO NHỊP TIM (Pacemaker) vĩnh viễn cấp cứu!'
+      ]
+    },
+    {
+      id: 'electrical_alternans_tamponade_case',
+      title: '🚨 Cấp Cứu Tối Khẩn — Khó Thở Dữ Dội & Điện Thế QRS Biến Thiên (Ép Tim Cấp)',
+      category: 'Điện giải & Khác',
+      difficulty: 'Khó',
+      urgency: 'critical',
+      patient: { age: 45, sex: 'Nam', weight: 62, occupation: 'Kỹ sư' },
+      vitals: { hr: 122, sbp: 85, dbp: 55, spo2: 90, temp: 37.6, rr: 28 },
+      symptoms: [
+        'Khó thở dữ dội tiến triển nhanh trong 24 giờ, không thể nằm ngửa',
+        'Đau ngực âm ỉ, mệt lả',
+        'Tĩnh mạch cổ nổi căng to, huyết áp tụt 85/55 mmHg, tiếng tim nghe mờ xa xăm'
+      ],
+      context: 'Bệnh nhân ung thư phổi tiến triển tràn dịch màng ngoài tim. Khám lâm sàng: Tam chứng Beck (+) (Tụt HA + Tĩnh mạch cổ nổi + Tiếng tim mờ). ECG 12 chuyển đạo: Nhịp nhanh xoang 122 bpm, Điện thế QRS thấp lan tỏa, đặc biệt biên độ phức bộ QRS cao thấp biến thiên luân phiên (Electrical Alternans) qua từng chu kỳ nhịp tim.',
+      modifiers: ['sinus_tachy', 'electrical_alternans'],
+      goldAnswer: 'Ép Tim Cấp Do Tràn Dịch Màng Ngoài Tim Lượng Nhiều (Cardiac Tamponade) — Dấu Hiệu Điện Thế Biến Thiên (Electrical Alternans) [🚨 Cấp Cứu Tối Khẩn]',
+      teachingPoints: [
+        'Ép Tim Cấp (Cardiac Tamponade): Dịch màng ngoài tim chèn ép các buồng tim làm suy giảm nghiêm trọng lượng máu đổ về thất trái trong thì tâm trương.',
+        'Tam chứng Beck kinh điển: Tụt huyết áp + Tĩnh mạch cổ nổi căng + Tiếng tim mờ xa xăm.',
+        'Dấu hiệu ECG đặc hiệu: Điện thế biến thiên (Electrical Alternans) — biên độ QRS thay đổi cao/thấp xen kẽ luân phiên do tim đung đưa tự do trong khoang dịch màng tim.',
+        'Xử trí cấp cứu tối khẩn: CHỌC HÚT DỊCH MÀNG NGOÀI TIM GIẢI ÁP (Pericardiocentesis) cấp cứu ngay lập tức dưới sự hướng dẫn của Siêu âm!'
+      ]
+    },
+    {
+      id: 'drug_induced_torsades_case',
+      title: '🚨 Cấp Cứu — Cơn Ngất Xỉu Do Xoắn Đỉnh Khi Đang Dùng Thuốc Phối Hợp',
+      category: 'Cấp cứu loạn nhịp',
+      difficulty: 'Khó',
+      urgency: 'critical',
+      patient: { age: 58, sex: 'Nữ', weight: 60, occupation: 'Giáo viên' },
+      vitals: { hr: 75, sbp: 110, dbp: 70, spo2: 97, temp: 37.1, rr: 18 },
+      symptoms: [
+        'Ngất xỉu ngắn 2 lần trong ngày, tỉnh lại sau 30 giây',
+        'Đang điều trị nhiễm trùng phổi bằng Erythromycin + Haloperidol điều trị mất ngủ',
+        'Thỉnh thoảng cảm giác tim nhảy chồm lên ngực'
+      ],
+      context: 'Bệnh nhân dùng phối hợp các thuốc kéo dài khoảng QT. ECG lúc nghỉ: Nhịp xoang 75 bpm, khoảng QTc kéo dài mạnh 560ms. Trên dải nhịp theo dõi: Xuất hiện một ngoại tâm thu thất đến sớm (dấu hiệu R-on-T) ngay lập tức kích hoạt cơn Nhịp nhanh thất đa hình xoay quanh đường đẳng điện (Torsades de Pointes) kéo dài 8 giây rồi tự dứt.',
+      modifiers: ['vt_torsade'],
+      goldAnswer: 'Nhịp Nhanh Thất Đa Hình Xoắn Đỉnh Do Thuốc (Drug-Induced Torsades de Pointes) — QTc Kéo Dài Nặng [🚨 Cấp Cứu Tối Khẩn]',
+      teachingPoints: [
+        'Xoắn Đỉnh (Torsades de Pointes): Dạng nhịp nhanh thất đa hình ác tính đặc trưng bởi phức bộ QRS xoay quanh đường đẳng điện, hay xuất hiện trên nền QTc kéo dài (> 500ms).',
+        'Cơ chế: Phối hợp Erythromycin (Kháng sinh) + Haloperidol (Kháng Dopamine) gây cộng hưởng chặn kênh Kali IKr làm kéo dài pha tái cực.',
+        'Xử trí cấp cứu tối khẩn:',
+        '  1. Ngừng ngay lập tức tất cả các thuốc kéo dài QT!',
+        '  2. Tiêm tĩnh mạch Magnesium Sulfate 2g bolus trong 1-2 phút (cho dù nồng độ Magnesi máu bình thường!).',
+        '  3. Duy trì Kali máu > 4.5 mEq/L và Magnesi máu > 2.0 mmol/L.',
+        '  4. Tạo nhịp tim tạm thời tần số cao (Overdrive pacing > 100 bpm) hoặc truyền Isoproterenol để rút ngắn khoảng QT nếu cơn tái phát nhiều lần.'
+      ]
     }
   ];
 

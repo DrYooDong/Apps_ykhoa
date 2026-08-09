@@ -59,11 +59,14 @@ function slugify(str) {
 function formatInlineText(text) {
   if (!text) return '';
   return text
+    .replace(/\\ge/g, '≥')
+    .replace(/\\le/g, '≤')
+    .replace(/\\text\{([^}]+)\}/g, ' $1')
+    .replace(/\^2/g, '²')
+    .replace(/\\%/g, '%')
     .replace(/\\\((.*?)\\\)/g, '$1')
     .replace(/\\rightarrow/g, '→')
     .replace(/<-/g, '←')
-    .replace(/\\ge/g, '≥')
-    .replace(/\\le/g, '≤')
     .replace(/\\beta_1/g, 'β₁')
     .replace(/\\beta_2/g, 'β₂')
     .replace(/\\beta/g, 'β')
@@ -75,9 +78,15 @@ function formatInlineText(text) {
     .replace(/5'/g, '5′')
     .replace(/K\^\+/g, 'K⁺')
     .replace(/Na\^\+/g, 'Na⁺')
-    .replace(/\\/g, '')
     .replace(/\$([^$]+)\$/g, '$1')
+    .replace(/\$/g, '')
+    .replace(/\\/g, '')
     .replace(/<(?![a-zA-Z/!?-])/g, '&lt;')
+    .replace(/\bCOR\s*1\b/gi, '<span class="cor-badge cor-1">COR 1</span>')
+    .replace(/\bCOR\s*2a\b/gi, '<span class="cor-badge cor-2a">COR 2a</span>')
+    .replace(/\bCOR\s*2b\b/gi, '<span class="cor-badge cor-2b">COR 2b</span>')
+    .replace(/\bCOR\s*3-?Harm\b/gi, '<span class="cor-badge cor-3-harm">COR 3-HARM</span>')
+    .replace(/\bLOE\s*([A-C](?:-[R|NR])?)\b/gi, '<span class="loe-badge">LOE $1</span>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
     .replace(/`(.*?)`/g, '<code>$1</code>');

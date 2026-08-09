@@ -13,6 +13,8 @@
   <!-- Supabase JS Client SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="guidelines.css">
 </head>
 
@@ -33,20 +35,59 @@
     <div class="topnav-divider"></div>
     <div class="topnav-title">📊 Hướng Dẫn & Nghiên Cứu Lâm Sàng</div>
     <div class="topnav-right">
-      <button class="btn" onclick="openCaseModal()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid #7c3aed; background: #faf5ff; color: #6d28d9; font-size: 0.72rem; font-weight: 700; cursor: pointer;" title="Chẩn đoán & Gợi ý TOP 3 Guidelines theo Bệnh án">
-        🎯 Trình Bệnh
-      </button>
-      <button class="btn" onclick="openCommandPalette()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid var(--accent-mid); background: var(--surface); color: var(--accent); font-size: 0.72rem; font-weight: 700; cursor: pointer;" title="Tìm kiếm siêu tốc (Ctrl+K)">
-        ⚡ <kbd style="font-family: monospace; font-size: 0.68rem; background: var(--surface-2); padding: 1px 4px; border-radius: 4px; border: 1px solid var(--border-light);">Ctrl+K</kbd>
-      </button>
-      <a href="../guideline-radar/radar.html" class="btn" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid #10b981; background: #ecfdf5; color: #047857; text-decoration: none; font-size: 0.72rem; font-weight: 700;" title="Trạm theo dõi và đối chiếu thay đổi khuyến cáo lâm sàng">
-        📡 Guideline Radar (Diff)
-      </a>
-      
-      <!-- PWA Offline Sync Button -->
-      <button class="btn" id="btn-offline-sync" onclick="syncCurrentSpecialtyOffline()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid #3b82f6; background: #eff6ff; color: #2563eb; font-size: 0.72rem; font-weight: 700; cursor: pointer;" title="Tải toàn bộ tài liệu chuyên khoa đang lọc về máy (Offline Mode)">
-        <i class="fa-solid fa-cloud-arrow-down" id="offline-sync-icon"></i> <span id="offline-sync-text">Tải Offline</span>
-      </button>
+      <!-- Cài đặt & Tiện ích Dropdown Menu -->
+      <div class="settings-dropdown-wrapper" id="settings-dropdown-wrapper">
+        <button class="btn settings-btn" id="settings-toggle-btn" onclick="toggleSettingsMenu(event)" aria-expanded="false" aria-haspopup="true" title="Cài đặt & Tiện ích">
+          <svg class="gear-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>Cài đặt</span>
+          <svg class="chevron-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+
+        <div class="settings-menu" id="settings-menu" role="menu" aria-orientation="vertical">
+          <div class="settings-menu-header">
+            <span>⚙️ Cài đặt & Tiện ích</span>
+          </div>
+          <div class="settings-menu-group">
+            <button class="settings-menu-item" onclick="openCaseModal(); closeSettingsMenu();" role="menuitem">
+              <div class="settings-item-icon icon-purple">🎯</div>
+              <div class="settings-item-content">
+                <div class="settings-item-title">Mode Trình Bệnh</div>
+                <div class="settings-item-desc">Phân tích & gợi ý TOP 3 Guidelines theo bệnh án</div>
+              </div>
+            </button>
+
+            <button class="settings-menu-item" onclick="openCommandPalette(); closeSettingsMenu();" role="menuitem">
+              <div class="settings-item-icon icon-indigo">⚡</div>
+              <div class="settings-item-content">
+                <div class="settings-item-title">Tìm kiếm & Phím tắt</div>
+                <div class="settings-item-desc">Tra cứu nhanh dữ liệu y khoa</div>
+              </div>
+              <kbd class="settings-item-kbd">Ctrl+K</kbd>
+            </button>
+
+            <a href="../guideline-radar/radar.html" class="settings-menu-item" onclick="closeSettingsMenu();" role="menuitem">
+              <div class="settings-item-icon icon-emerald">📡</div>
+              <div class="settings-item-content">
+                <div class="settings-item-title">Guideline Radar (Diff)</div>
+                <div class="settings-item-desc">Trạm theo dõi & so sánh thay đổi khuyến cáo</div>
+              </div>
+            </a>
+
+            <button class="settings-menu-item" id="btn-offline-sync" onclick="syncCurrentSpecialtyOffline(); closeSettingsMenu();" role="menuitem">
+              <div class="settings-item-icon icon-blue">
+                <i class="fa-solid fa-cloud-arrow-down" id="offline-sync-icon"></i>
+              </div>
+              <div class="settings-item-content">
+                <div class="settings-item-title" id="offline-sync-text">Tải Offline</div>
+                <div class="settings-item-desc">Tải dữ liệu chuyên khoa về máy dùng ngoại tuyến</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
 
       <!-- Supabase Connection Indicator & Sync -->
       <button class="btn" id="supabase-status-btn" onclick="openSupabaseModal()" style="padding: 0.35rem 0.65rem; display: flex; align-items: center; gap: 6px; border-radius: 8px; border: 1.5px solid var(--border-light); cursor: pointer;">
@@ -447,6 +488,7 @@
                 <option value="icu">Hồi sức tích cực (Intensive Care / ICU)</option>
                 <option value="derma">Da liễu (Dermatology)</option>
                 <option value="ent">Tai Mũi Họng (ENT / Otorhinolaryngology)</option>
+                <option value="nutri">Dinh dưỡng (Clinical Nutrition)</option>
               </select>
             </div>
             <div class="form-group">

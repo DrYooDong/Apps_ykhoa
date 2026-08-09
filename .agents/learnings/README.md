@@ -9,3 +9,7 @@ Thư mục này lưu trữ bộ nhớ dự án, bài học kinh nghiệm (Lesson
   - Khi áp dụng thành công một pattern/kiến trúc mới.
   - Khi sử dụng lệnh `/learn` từ người dùng.
 - **AI Agent Requirement**: Trước khi xử lý các tác vụ refactor hoặc sửa lỗi hệ thống phức tạp, AI hãy tham khảo thư mục này để tránh lặp lại các sai lầm cũ.
+
+## 📚 Danh Sách Bài Học Đã Lưu Trữ
+- [2026-08-guideline-summary-standards.md](file:///d:/Apps_ykhoa/.agents/learnings/2026-08-guideline-summary-standards.md): Tiêu chuẩn thiết kế & Quy tắc bảo tồn 100% nội dung Y khoa cho Kho Guidelines (EBM).
+

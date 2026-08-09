@@ -384,6 +384,78 @@
       leadStElevations: { V2: 3.0, V3: 3.5, V4: 3.0 },
       transientSTE: true,
       description: 'ST chênh lên vòm cấp tính ở V2-V4 trong lúc lên cơn đau ngực, biến mất hoàn toàn khi hết đau!'
+    },
+    stemi_lbbb_sgarbossa: {
+      id: 'stemi_lbbb_sgarbossa',
+      name: 'STEMI Cấp Trên Nền LBBB (Tiêu Chuẩn Sgarbossa)',
+      category: 'Mạch vành',
+      params: { qrsWidth: 150, axis: -30, lbbbPattern: true },
+      leadStElevations: { DII: 2.0, V5: 2.5, V6: 2.0 },
+      leadStDepressions: { V1: -2.0, V2: -2.5 },
+      description: 'ST chênh lên đồng hướng ≥ 1mm ở các chuyển đạo QRS dương hoặc ST chênh xuống ≥ 1mm ở V1-V3 (Sgarbossa +).'
+    },
+    takotsubo: {
+      id: 'takotsubo',
+      name: 'Hội Chứng Takotsubo (Phình Mỏm Thất Trái)',
+      category: 'Mạch vành',
+      leadStElevations: { V2: 2.5, V3: 3.0, V4: 2.5 },
+      tInversions: ['V2', 'V3', 'V4', 'V5'],
+      description: 'ST chênh lên lồi nhẹ kèm sóng T âm sâu lan tỏa ở V2-V5 sau biến cố tâm lý. Chụp mạch vành bình thường!'
+    },
+    tca_toxicity: {
+      id: 'tca_toxicity',
+      name: 'Ngộ Độc Thuốc TCA / Chặn Kênh Natri',
+      category: 'Điện giải & Khác',
+      params: { hr: 120, pr: 220, qrsWidth: 145, axis: 110 },
+      raVRWave: true,
+      description: 'Nhịp nhanh xoang, QRS giãn rộng > 120ms, sóng R muộn cao ≥ 3mm ở aVR (Dấu hiệu ngộ độc TCA).'
+    },
+    arvc_epsilon: {
+      id: 'arvc_epsilon',
+      name: 'Bệnh Cơ Tim Thất Phải Sinh Loạn Nhịp (ARVC - Sóng Epsilon)',
+      category: 'Cấp cứu loạn nhịp',
+      params: { qrsWidth: 115 },
+      epsilonWave: true,
+      tInversions: ['V1', 'V2', 'V3'],
+      description: 'Sóng Epsilon (sóng khuyết nhỏ ở chân cuối QRS) ở V1-V3 kèm sóng T âm. Nguy cơ đột tử do Rung thất.'
+    },
+    stemi_rv_isolated: {
+      id: 'stemi_rv_isolated',
+      name: 'Nhồi Máu Cơ Tim Thất Phải Đơn Độc (V4R STEMI)',
+      category: 'Mạch vành',
+      leadStElevations: { V1: 1.5, V2: 1.0 },
+      rvStElevation: true,
+      description: 'ST chênh lên ở chuyển đạo thất phải V3R-V6R (đặc biệt V4R ≥ 1mm). Tụt huyết áp khi ngậm Nitroglycerin!'
+    },
+    af_wpw: {
+      id: 'af_wpw',
+      name: 'Rung Nhĩ Có Đường Phụ WPW (Pre-excited AF)',
+      category: 'Cấp cứu loạn nhịp',
+      params: { hr: 220, pr: 0, qrsWidth: 150, qt: 300, axis: 30, noP: true, fWaves: true, irregularRR: 0.5, deltaWave: true },
+      description: 'CẤP CỨU TỐI KHẨN! QRS giãn rộng không đều tần số rất nhanh (200-280 bpm). CHỐNG CHỈ ĐỊNH thuốc hạ nhịp nút AV!'
+    },
+    ccb_toxicity: {
+      id: 'ccb_toxicity',
+      name: 'Ngộ Độc Thuốc Chẹn Kênh Calci (Verapamil / Diltiazem)',
+      category: 'Điện giải & Khác',
+      params: { hr: 38, pr: 240, qrsWidth: 120, axis: 60, invertedP: true },
+      description: 'Nhịp chậm bộ nối/tự thất, PR kéo dài, QRS giãn nhẹ, tụt huyết áp kèm tăng đường huyết.'
+    },
+    trifascicular_block: {
+      id: 'trifascicular_block',
+      name: 'Block 3 Nhánh (Trifascicular Block)',
+      category: 'Rối loạn dẫn truyền',
+      params: { pr: 250, qrsWidth: 145, axis: -50, rbbbPattern: true },
+      description: 'Block AV độ I (PR > 200ms) + Block Nhánh Phải (RBBB) + Block Phân Nhánh Trái Trước (LAFB). Nguy cơ cao tiến triển Block AV III!'
+    },
+    electrical_alternans: {
+      id: 'electrical_alternans',
+      name: 'Điện Thế Biến Thiên / Tràn Dịch Ép Tim (Electrical Alternans)',
+      category: 'Điện giải & Khác',
+      params: { hr: 120, pr: 140, qrsWidth: 85, qt: 340 },
+      electricalAlternans: true,
+      lowVoltage: true,
+      description: 'Biên độ phức bộ QRS cao thấp biến thiên luân phiên qua từng chu kỳ nhịp do tim đung đưa trong màng ngoài tim tràn dịch.'
     }
   };
 

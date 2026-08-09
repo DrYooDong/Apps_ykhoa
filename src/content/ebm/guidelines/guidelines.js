@@ -374,7 +374,13 @@
               design: defaultDesign,
               intervention: s.intervention || '',
               primaryEndpoint: s.primaryEndpoint || '',
-              keyResults: s.keyResults || '',
+              keyResults: (() => {
+                if (typeof SAMPLE_STUDIES !== 'undefined') {
+                  const match = SAMPLE_STUDIES.find(sm => sm.id === s.id || sm.title === s.title);
+                  if (match && match.keyResults) return match.keyResults;
+                }
+                return s.keyResults || s.key_results || '';
+              })(),
               impact: s.impact || 'informative',
               year: s.year || new Date().getFullYear(),
               organization: s.organization || s.source || 'N/A',
@@ -412,6 +418,7 @@
                   else if (spec === 'endo') parsed = ['E11'];
                   else if (spec === 'renal') parsed = ['N18'];
                   else if (spec === 'infect' || spec === 'icu') parsed = ['A41'];
+                  else if (spec === 'nutri') parsed = ['E66', 'E46'];
                 }
                 return parsed;
               })(),
@@ -919,14 +926,29 @@
 
     window.openForestPlot = function(studyId) {
       const study = studies.find(s => s.id === studyId);
-      if (study && study.statistics) {
+      if (!study) return;
+      let stats = study.statistics;
+      if (!stats) {
+        const parsedMulti = parseForestDataAll(study.keyResults);
+        if (parsedMulti && parsedMulti.items && parsedMulti.items.length > 0) {
+          stats = parsedMulti.items.map(it => ({
+            subgroup: it.label,
+            metric: it.metric || 'HR',
+            estimate: it.estimate,
+            ci: [it.lower, it.upper],
+            pValue: it.pValue
+          }));
+        }
+      }
+
+      if (stats && stats.length > 0) {
         sessionStorage.setItem('forestPlotData', JSON.stringify({
           studyId: study.id,
           title: study.title,
           intervention: study.pico ? study.pico.intervention : study.intervention,
           comparator: study.pico ? study.pico.comparator : 'Control',
           outcome: study.pico ? study.pico.outcome : study.primaryEndpoint,
-          statistics: study.statistics
+          statistics: stats
         }));
         window.open('../ebm-lab/forest-plot.html', '_blank');
       } else {
@@ -2196,14 +2218,66 @@
 
     function escapeHtml(text) {
       if (!text) return '';
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
+      if (typeof document !== 'undefined' && typeof document.createElement === 'function') {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+      return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
     // ════════════════════════════
     // EBM CHART PARSER & SVG RENDERERS (Forest, Column, Horizontal Bar)
     // ════════════════════════════
+
+    const MEDICAL_ABBREV_MAP = [
+      { regex: /\bchẩn đoán\b/gi, replacement: 'CĐ' },
+      { regex: /\bđiều trị\b/gi, replacement: 'ĐTr' },
+      { regex: /\btỷ lệ\b/gi, replacement: 'TL' },
+      { regex: /\bphương pháp\b/gi, replacement: 'PP' },
+      { regex: /\bbệnh nhân\b/gi, replacement: 'BN' },
+      { regex: /\bxét nghiệm\b/gi, replacement: 'XN' },
+      { regex: /\bphát hiện\b/gi, replacement: 'PH' },
+      { regex: /\bnguy cơ\b/gi, replacement: 'NC' },
+      { regex: /\btử vong\b/gi, replacement: 'TV' },
+      { regex: /\bsuy tim\b/gi, replacement: 'ST' },
+      { regex: /\bnhập viện\b/gi, replacement: 'NV' },
+      { regex: /\bbiến cố\b/gi, replacement: 'BC' },
+      { regex: /\bthử nghiệm\b/gi, replacement: 'TN' },
+      { regex: /\bphân tích\b/gi, replacement: 'PT' },
+      { regex: /\bcan thiệp\b/gi, replacement: 'CT' },
+      { regex: /\bđối chứng\b/gi, replacement: 'ĐC' },
+      { regex: /\bnhuộm soi\b/gi, replacement: 'Soi' },
+      { regex: /\blao phổi\b/gi, replacement: 'Lao phổi' },
+      { regex: /\bphòng ngừa\b/gi, replacement: 'PN' },
+      { regex: /\bsàng lọc\b/gi, replacement: 'SL' }
+    ];
+
+    function abbreviateMedicalText(text) {
+      if (!text) return '';
+      let str = text;
+      MEDICAL_ABBREV_MAP.forEach(item => {
+        str = str.replace(item.regex, item.replacement);
+      });
+      return str;
+    }
+
+    function cleanMedicalLabel(rawLabel) {
+      if (!rawLabel) return '';
+      let str = rawLabel.trim();
+
+      // Strip leading/trailing connector & filler words
+      str = str.replace(/^(?:đoán|án|tỷ lệ|kết quả|cho thấy|đạt|bằng|trong|nghiên cứu|thử nghiệm|phân tích|về|ở|đối với|khi|so với|là)\s+/gi, '');
+      str = str.replace(/\s+(?:đạt|là|cho thấy|được|ở|với|bằng|so với)\s*$/gi, '');
+      str = str.replace(/\b(?:bằng|đạt|cho thấy|được|là|với)\b/gi, ' ');
+
+      // Apply medical abbreviation map
+      str = abbreviateMedicalText(str);
+
+      // Clean up punctuation and excess spaces
+      str = str.replace(/\s+/g, ' ').replace(/^[:\-\s,.;]+|[:\-\s,.;]+$/g, '').trim();
+      return str;
+    }
 
     function parseChartData(keyResults) {
       if (!keyResults) return null;
@@ -2233,10 +2307,22 @@
             data: Array.isArray(jsonObj.data) ? jsonObj.data : []
           };
         }
+        if (['donut', 'progress', 'percentage', 'ty-le'].includes(chartType)) {
+          return {
+            type: 'donut-progress',
+            label: cleanMedicalLabel(jsonObj.label || 'Tỷ lệ'),
+            pct: parseFloat(jsonObj.pct || jsonObj.value || 0),
+            count: jsonObj.count !== undefined ? jsonObj.count : null,
+            total: jsonObj.total !== undefined ? jsonObj.total : null
+          };
+        }
       }
 
       if (typeof keyResults === 'string') {
-        const colMatch = keyResults.match(/^(?:COL|CỘT|BAR_V|COLUMN)\s*:\s*(.+)$/i);
+        const cleanText = keyResults.trim();
+
+        // 1. Column chart syntax "COL: A: 10 | B: 20"
+        const colMatch = cleanText.match(/^(?:COL|CỘT|BAR_V|COLUMN)\s*:\s*(.+)$/i);
         if (colMatch) {
           const itemsRaw = colMatch[1].split('|');
           const data = [];
@@ -2244,7 +2330,7 @@
           itemsRaw.forEach((itemStr, idx) => {
             const parts = itemStr.split(/[:=]/);
             if (parts.length >= 2) {
-              const label = parts[0].trim();
+              const label = cleanMedicalLabel(parts[0]);
               const valNum = parseFloat(parts[1].replace(/[^\d.-]/g, ''));
               if (!isNaN(valNum)) {
                 data.push({ label, value: valNum, color: colors[idx % colors.length] });
@@ -2254,7 +2340,8 @@
           if (data.length > 0) return { type: 'column', title: '', unit: '%', data };
         }
 
-        const hbarMatch = keyResults.match(/^(?:HBAR|NGANG|BAR_H|HORIZONTAL)\s*:\s*(.+)$/i);
+        // 2. Horizontal bar chart syntax "HBAR: A: 10 | B: 20"
+        const hbarMatch = cleanText.match(/^(?:HBAR|NGANG|BAR_H|HORIZONTAL)\s*:\s*(.+)$/i);
         if (hbarMatch) {
           const itemsRaw = hbarMatch[1].split('|');
           const data = [];
@@ -2262,7 +2349,7 @@
           itemsRaw.forEach((itemStr, idx) => {
             const parts = itemStr.split(/[:=]/);
             if (parts.length >= 2) {
-              const label = parts[0].trim();
+              const label = cleanMedicalLabel(parts[0]);
               const valNum = parseFloat(parts[1].replace(/[^\d.-]/g, ''));
               if (!isNaN(valNum)) {
                 data.push({ label, value: valNum, color: colors[idx % colors.length] });
@@ -2271,14 +2358,67 @@
           });
           if (data.length > 0) return { type: 'horizontal-bar', title: '', unit: '%', data };
         }
-      }
 
-      const forestRes = parseForestDataRaw(keyResults);
-      if (forestRes) {
-        forestRes.type = 'forest';
-        return forestRes;
-      }
+        // 3. Forest plot
+        const forestRes = parseForestDataAll(cleanText);
+        if (forestRes) return forestRes;
 
+        // 4. Multi/Comparative Percentages or Single Percentage Extraction
+        const pctMatches = [];
+        const pctRegex = /(?:([a-zA-ZÀ-ỹ0-9\s_–-]{2,45})[\s:]+)?(\d+(?:\.\d+)?)\s*%\s*(?:\(\s*(\d+)\s*\/\s*(\d+)\s*\))?/gi;
+        let m;
+        let lastIdx = 0;
+
+        while ((m = pctRegex.exec(cleanText)) !== null) {
+          let rawSnippet = m[1] || '';
+          if (!rawSnippet) {
+            const prevText = cleanText.substring(lastIdx, m.index);
+            const parts = prevText.split(/(?:[.,;]|\bso với\b|\bvs\b)/i);
+            rawSnippet = parts.pop() || '';
+          }
+          lastIdx = m.index + m[0].length;
+
+          const pctVal = parseFloat(m[2]);
+          const count = m[3] ? parseInt(m[3], 10) : null;
+          const total = m[4] ? parseInt(m[4], 10) : null;
+
+          let label = cleanMedicalLabel(rawSnippet);
+
+          pctMatches.push({
+            label,
+            value: pctVal,
+            count,
+            total
+          });
+        }
+
+        if (pctMatches.length >= 2) {
+          return {
+            type: 'comparison',
+            items: pctMatches.slice(0, 4).map((it, idx) => ({
+              label: it.label || `Chỉ số #${idx + 1}`,
+              value: it.value,
+              count: it.count,
+              total: it.total,
+              color: idx === 0 ? '#10b981' : idx === 1 ? '#ef4444' : '#2563eb'
+            }))
+          };
+        } else if (pctMatches.length === 1) {
+          return {
+            type: 'donut-progress',
+            label: pctMatches[0].label || 'Tỷ lệ đạt được',
+            pct: pctMatches[0].value,
+            count: pctMatches[0].count,
+            total: pctMatches[0].total
+          };
+        }
+
+        // 5. NNT / NNH
+        const nntMatch = cleanText.match(/\b(NNT|NNH)\s*=\s*(\d+)/i);
+        if (nntMatch) {
+          return { type: 'nnt', metric: nntMatch[1].toUpperCase(), val: parseInt(nntMatch[2], 10) };
+        }
+      }
       return null;
     }
 
@@ -2287,9 +2427,58 @@
     }
 
     function parseForestDataRaw(keyResults) {
-      if (!keyResults) return null;
+      const parsed = parseForestDataAll(keyResults);
+      if (!parsed) return null;
+      if (parsed.type === 'forest-multi' && parsed.items && parsed.items.length > 0) {
+        return parsed.items[0];
+      }
+      return parsed;
+    }
 
-      let label = '', estimate = NaN, lower = NaN, upper = NaN, pValue = null;
+    const EXCLUDED_ACRONYMS = new Set([
+      'MACE', 'ASCVD', 'HFrEF', 'HFmrEF', 'HFpEF', 'CKD', 'T2D', 'CI', 'HR', 'OR', 'RR', 'ARR', 'RRR',
+      'SGLT2I', 'GLP-1', 'RAAS', 'ACEI', 'ARB', 'ARNI', 'FDA', 'PICO', 'ITT', 'PP', 'MASLD', 'BMI',
+      'HBA1C', 'EGFR', 'UACR', 'NT-PROBNP', 'HS-CTNT', 'NHÓM', 'CHUNG', 'TRONG', 'VÀ', 'KHI', 'TỪ',
+      'KHÔNG', 'CHO', 'THẤY', 'CÓ', 'CÁC', 'BỆNH', 'NHÂN'
+    ]);
+
+    function extractLabelFromContext(preText, metricName, itemIndex, state) {
+      let cleanPre = (preText || '').replace(/[\n\r\t]+/g, ' ').replace(/\s+/g, ' ').trim();
+
+      const words = cleanPre.split(/[\s,;:.()"'\[\]]+/);
+      for (let i = 0; i < words.length; i++) {
+        const orig = words[i];
+        if (/^[A-Z0-9-]{3,15}$/.test(orig) && !EXCLUDED_ACRONYMS.has(orig) && !/^\d+$/.test(orig)) {
+          state.currentStudy = orig;
+        }
+      }
+
+      let outcome = '';
+      if (/suy tim mới mắc/i.test(cleanPre)) outcome = 'Suy tim mới mắc';
+      else if (/suy tim/i.test(cleanPre)) outcome = 'Biến cố Suy tim';
+      else if (/mace/i.test(cleanPre)) outcome = 'MACE';
+      else if (/tử vong do tim mạch|tử vong tm|cv death/i.test(cleanPre)) outcome = 'Tử vong TM';
+      else if (/tử vong mọi nguyên nhân|all-cause/i.test(cleanPre)) outcome = 'Tử vong chung';
+      else if (/nhập viện/i.test(cleanPre)) outcome = 'Nhập viện suy tim';
+      else if (/bệnh thận|tiến triển ckd|thận/i.test(cleanPre)) outcome = 'Biến cố Thận';
+      else if (/đột quỵ|stroke/i.test(cleanPre)) outcome = 'Đột quỵ';
+      else if (/nhồi máu cơ tim|mi\b/i.test(cleanPre)) outcome = 'Nhồi máu cơ tim';
+      else {
+        let snippet = cleanPre.split(/(?:[.;]|\bphân tích|\bthử nghiệm|\btrong)\s+/i).pop() || cleanPre;
+        snippet = snippet.replace(/^(?:thử nghiệm|phân tích gộp|trong phân tích|cho thấy|giúp giảm|giảm|và|kèm|trên|ở nhóm|ở bệnh nhân|nghiên cứu|đối với|kết quả|cho|thấy|ở)\s+/gi, '').trim();
+        outcome = snippet.replace(/^[:\-\s,]+|[:\-\s,]+$/g, '');
+        if (outcome.length > 25) outcome = outcome.substring(0, 24) + '…';
+      }
+
+      const study = state.currentStudy || '';
+      if (study && outcome) return `${study}: ${outcome}`;
+      if (study) return `${study} (${metricName})`;
+      if (outcome) return outcome;
+      return `${metricName} #${itemIndex}`;
+    }
+
+    function parseForestDataAll(keyResults) {
+      if (!keyResults) return null;
 
       let jsonObj = null;
       if (typeof keyResults === 'object') {
@@ -2299,65 +2488,100 @@
       }
 
       if (jsonObj) {
-        label = (jsonObj.label || jsonObj.type || jsonObj.metric || 'OR').toUpperCase();
-        estimate = parseFloat(jsonObj.estimate ?? jsonObj.val ?? jsonObj.value ?? jsonObj.or ?? jsonObj.rr ?? jsonObj.hr);
-        lower = parseFloat(jsonObj.lower ?? (Array.isArray(jsonObj.ci) ? jsonObj.ci[0] : jsonObj.ciLower));
-        upper = parseFloat(jsonObj.upper ?? (Array.isArray(jsonObj.ci) ? jsonObj.ci[1] : jsonObj.ciUpper));
-        if (jsonObj.p !== undefined || jsonObj.pValue !== undefined) {
-          const rawP = jsonObj.p ?? jsonObj.pValue;
-          pValue = typeof rawP === 'number' ? (rawP < 0.001 ? '<0.001' : rawP.toString()) : String(rawP);
+        if (Array.isArray(jsonObj.items) && jsonObj.items.length > 0) {
+          const items = jsonObj.items.map((it, idx) => {
+            const raw = parseForestDataRaw(it);
+            if (!raw) return null;
+            if (!raw.label || raw.label === raw.metric) {
+              raw.label = it.label || `${raw.metric} #${idx + 1}`;
+            }
+            return raw;
+          }).filter(Boolean);
+          if (items.length > 0) return { type: 'forest-multi', title: jsonObj.title || '', items };
         }
-      } else if (typeof keyResults === 'string') {
-        const pMatch = keyResults.match(/\bp\s*([<>=]=?)\s*([\d.]+)/i);
+        const single = parseForestDataRaw(jsonObj);
+        if (single) return { type: 'forest-multi', items: [single] };
+      }
+
+      if (typeof keyResults !== 'string') return null;
+
+      const sep = '(?:đến|dến|dên|to|[-\u2013\u2014,])';
+      const unit = '(?:\\s+[a-zA-Z%°µμ/-]+)?';
+      const metric = '(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)';
+
+      const globalPattern = new RegExp(
+        `\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*` +
+        `(?:` +
+          `\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)|` +
+          `\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s+to\\s+(-?[\\d.]+)[^)]*\\)|` +
+          `\\(\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)|` +
+          `\\[[^\\]]*?CI[^\\d-]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^\\]]*\\]|` +
+          `[,;]\\s*(?:95%\\s*)?CI\\s*[=:]?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)|` +
+          `\\s+(?:95%\\s*)?CI\\s*[=:]?\\s*\\[?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)\\]?` +
+        `)`,
+        'gi'
+      );
+
+      const matches = [];
+      let match;
+      let lastIndex = 0;
+      const state = { currentStudy: '' };
+
+      while ((match = globalPattern.exec(keyResults)) !== null) {
+        const startIndex = match.index;
+        const fullMatchStr = match[0];
+
+        const metricName = (match[1] || '').toUpperCase();
+        const rawEst = (match[2] || '').trim().split(/\s+/)[0];
+        const estimate = parseFloat(rawEst);
+
+        const ciLowerStr = match[3] || match[5] || match[7] || match[9] || match[11] || match[13];
+        const ciUpperStr = match[4] || match[6] || match[8] || match[10] || match[12] || match[14];
+
+        const lower = parseFloat(ciLowerStr);
+        const upper = parseFloat(ciUpperStr);
+
+        if (isNaN(estimate) || isNaN(lower) || isNaN(upper)) continue;
+        if (lower > estimate || estimate > upper) continue;
+        if (Math.abs(upper - lower) > 500) continue;
+
+        const preText = keyResults.substring(lastIndex, startIndex);
+        lastIndex = startIndex + fullMatchStr.length;
+
+        const label = extractLabelFromContext(preText, metricName, matches.length + 1, state);
+
+        let pValue = null;
+        const postSnippet = keyResults.substring(lastIndex, lastIndex + 30);
+        const pMatch = (preText + ' ' + postSnippet).match(/\bp\s*([<>=]=?)\s*([\d.]+)/i);
         if (pMatch) {
           const op = pMatch[1].replace('=', '');
           pValue = op ? `${op}${pMatch[2]}` : pMatch[2];
         }
 
-        const sep = '(?:đến|dến|dên|to|[-\u2013\u2014,])';
-        const unit = '(?:\\s+[a-zA-Z%°µμ/-]+)?';
-        const metric = '(aHR|aOR|HR|OR|RR|RD|ARR|NNT|NNH|RRR|SMD|MD|WMD|IRR|PR|ORR|CR)';
+        const allowNeg = ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(metricName);
+        const isGreen = allowNeg ? estimate < 0.0 : estimate < 1.0;
+        const isHarm  = allowNeg ? estimate > 0.0 : estimate > 1.0;
 
-        const patterns = [
-          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i'),
-          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\([^)]*?CI[^\\d-]*(-?[\\d.]+)\\s+to\\s+(-?[\\d.]+)[^)]*\\)`, 'i'),
-          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\(\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i'),
-          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*\\[[^\\]]*?CI[^\\d\\]]*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^\\]]*\\]`, 'i'),
-          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s*[,;]\\s*(?:95%\\s*)?CI\\s*[=:]?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)`, 'i'),
-          new RegExp(`\\b${metric}\\s*[=:]?\\s*(-?[\\d.]+${unit})\\s+(?:95%\\s*)?CI\\s*[=:]?\\s*\\[?\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)\\]?`, 'i'),
-          new RegExp(`\\b${metric}\\s*=\\s*(-?[\\d.]+${unit})[\\s;,]+(?:95%\\s*)?CI\\s*\\[?\\s*(-?[\\d.]+)\\s*(?:${sep}|to)\\s*(-?[\\d.]+)\\]?`, 'i'),
-          new RegExp(`(?:pooled|combined)?\\s*${metric}\\s*=?\\s*(-?[\\d.]+${unit})\\s*\\(\\s*(-?[\\d.]+)\\s*${sep}\\s*(-?[\\d.]+)[^)]*\\)`, 'i')
-        ];
-
-        for (const pattern of patterns) {
-          const match = keyResults.match(pattern);
-          if (!match) continue;
-          label    = (match[1] || '').toUpperCase();
-          const rawEst = match[2].trim().split(/\s+/)[0];
-          estimate = parseFloat(rawEst);
-          lower    = parseFloat(match[3]);
-          upper    = parseFloat(match[4]);
-          if (!isNaN(estimate) && !isNaN(lower) && !isNaN(upper)) break;
-        }
+        matches.push({
+          type: 'forest',
+          label,
+          metric: metricName,
+          estimate,
+          lower,
+          upper,
+          pValue,
+          isGreen,
+          isHarm
+        });
       }
 
-      if (isNaN(estimate) || isNaN(lower) || isNaN(upper)) return null;
-      if (lower > estimate || estimate > upper) return null;
-      if (Math.abs(upper - lower) > 500) return null;
-
-      const allowNeg = ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(label);
-      if (!allowNeg && lower < 0) return null;
-      if (!allowNeg && estimate === 0) return null;
-
-      let isSig = false;
-      if (pValue) {
-        const numP = parseFloat(pValue.replace(/[^\d.]/g, ''));
-        if (!isNaN(numP)) {
-          isSig = numP < 0.05 || pValue.includes('<');
-        }
+      if (matches.length > 0) {
+        return {
+          type: 'forest-multi',
+          items: matches
+        };
       }
-
-      return { type: 'forest', label, estimate, lower, upper, pValue, isSig };
+      return null;
     }
 
     function renderVerticalBarChartSVG(chartData) {
@@ -2437,6 +2661,106 @@
       return svg;
     }
 
+    function renderDonutProgressSVG(data) {
+      if (!data) return '';
+      const pct = Math.min(100, Math.max(0, data.pct || 0));
+      const count = data.count;
+      const total = data.total;
+      const rawLabel = data.label || 'Tỷ lệ đạt được';
+      const label = cleanMedicalLabel(rawLabel) || rawLabel;
+
+      const W = 270, H = 58;
+      const cx = 32, cy = 29, r = 20;
+      const strokeW = 4.5;
+      const circ = 2 * Math.PI * r;
+      const dashoffset = circ - (pct / 100) * circ;
+
+      const color = pct >= 80 ? '#10b981' : pct >= 50 ? '#0284c7' : '#d97706';
+      const bgStroke = 'var(--border-light)';
+
+      const fracText = (count !== null && total !== null) ? `${count} / ${total} ca (${pct.toFixed(pct % 1 === 0 ? 0 : 1)}%)` : `${pct.toFixed(pct % 1 === 0 ? 0 : 1)}%`;
+
+      let svg = `<svg class="chart-svg chart-donut-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu đồ tỷ lệ ${pct}%">`;
+      svg += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${bgStroke}" stroke-width="${strokeW}"/>`;
+      svg += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="${strokeW}"
+               stroke-dasharray="${circ}" stroke-dashoffset="${dashoffset}" stroke-linecap="round"
+               transform="rotate(-90 ${cx} ${cy})"/>`;
+      svg += `<text x="${cx}" y="${cy + 3.5}" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="${color}">${pct.toFixed(pct % 1 === 0 ? 0 : 1)}%</text>`;
+
+      const labelX = 64;
+      const labelStr = label.length > 25 ? label.substring(0, 24) + '…' : label;
+      svg += `<text x="${labelX}" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="var(--text)">${escapeHtml(labelStr)}</text>`;
+      svg += `<text x="${labelX}" y="36" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="600" fill="var(--text-muted)">${escapeHtml(fracText)}</text>`;
+
+      const barX = labelX;
+      const barY = 43;
+      const maxBarW = W - labelX - 12;
+      const barW = Math.max(4, (pct / 100) * maxBarW);
+      svg += `<rect x="${barX}" y="${barY}" width="${maxBarW}" height="4" rx="2" fill="${bgStroke}"/>`;
+      svg += `<rect x="${barX}" y="${barY}" width="${barW}" height="4" rx="2" fill="${color}"/>`;
+
+      svg += `</svg>`;
+      return svg;
+    }
+
+    function renderComparisonBarSVG(data) {
+      if (!data || !Array.isArray(data.items) || data.items.length < 2) return '';
+      const items = data.items;
+
+      const rowH = 24;
+      const PAD_T = 10, PAD_B = 10;
+      const W = 270;
+      const H = PAD_T + PAD_B + items.length * rowH;
+
+      const maxVal = Math.max(...items.map(d => d.value), 0.1) * 1.25;
+      const plotW = 115;
+      const barX = 95;
+
+      let svg = `<svg class="chart-svg chart-comp-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Biểu đồ đối sánh">`;
+      
+      items.forEach((item, idx) => {
+        const y = PAD_T + idx * rowH;
+        const cy = y + 11;
+        const barW = Math.max(2, (item.value / maxVal) * plotW);
+
+        const cleanLbl = cleanMedicalLabel(item.label);
+        const lbl = cleanLbl.length > 16 ? cleanLbl.substring(0, 15) + '…' : cleanLbl;
+        svg += `<text x="88" y="${cy}" text-anchor="end" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="var(--text)">${escapeHtml(lbl)}</text>`;
+        svg += `<rect x="${barX}" y="${y + 2}" width="${barW}" height="12" rx="3" fill="${item.color || '#10b981'}"/>`;
+
+        const countStr = (item.count !== null && item.count !== undefined && item.total !== null && item.total !== undefined) 
+          ? `${item.value}% (${item.count}/${item.total})` 
+          : `${item.value}%`;
+
+        svg += `<text x="${barX + barW + 5}" y="${cy}" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="${item.color || '#10b981'}">${escapeHtml(countStr)}</text>`;
+      });
+
+      svg += `</svg>`;
+      return svg;
+    }
+
+    function renderNNTSVG(data) {
+      if (!data || !data.val) return '';
+      const metric = data.metric || 'NNT';
+      const val = data.val;
+      const isHarm = metric === 'NNH';
+      const color = isHarm ? '#dc2626' : '#0284c7';
+
+      const W = 270, H = 52;
+
+      let svg = `<svg class="chart-svg chart-nnt-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${metric} ${val}">`;
+      svg += `<rect x="8" y="10" width="75" height="32" rx="8" fill="${isHarm ? 'rgba(220,38,38,0.1)' : 'rgba(2,132,199,0.1)'}" stroke="${color}" stroke-width="1"/>`;
+      svg += `<text x="45.5" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="${color}">${metric}</text>`;
+      svg += `<text x="45.5" y="36" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="${color}">${val}</text>`;
+
+      const desc = isHarm ? `Cứ ${val} ca điều trị gặp 1 biến cố bất lợi (NNH = ${val})` : `Cần điều trị ${val} bệnh nhân để ngừa 1 biến cố (NNT = ${val})`;
+      svg += `<text x="94" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="var(--text)">${isHarm ? '⚠️ Nguy cơ Tác dụng phụ' : '🛡️ Hiệu quả Can thiệp'}</text>`;
+      svg += `<text x="94" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="var(--text-muted)">${escapeHtml(desc)}</text>`;
+
+      svg += `</svg>`;
+      return svg;
+    }
+
     function renderChartSVG(chartData) {
       if (!chartData) return '';
       if (chartData.type === 'column') {
@@ -2445,20 +2769,128 @@
       if (chartData.type === 'horizontal-bar') {
         return renderHorizontalBarChartSVG(chartData);
       }
+      if (chartData.type === 'donut-progress') {
+        return renderDonutProgressSVG(chartData);
+      }
+      if (chartData.type === 'comparison') {
+        return renderComparisonBarSVG(chartData);
+      }
+      if (chartData.type === 'nnt') {
+        return renderNNTSVG(chartData);
+      }
       return renderForestPlotSVG(chartData);
     }
 
     function renderForestPlotSVG(forestData) {
       if (!forestData) return '';
-      
-      const { label, estimate, lower, upper, pValue } = forestData;
+      if (['column', 'horizontal-bar', 'donut-progress', 'comparison', 'nnt'].includes(forestData.type)) {
+        return renderChartSVG(forestData);
+      }
+      if (forestData.type === 'forest-multi' && Array.isArray(forestData.items)) {
+        if (forestData.items.length === 1) return renderSingleForestPlotSVG(forestData.items[0]);
+        return renderMultiForestPlotSVG(forestData);
+      }
+      return renderSingleForestPlotSVG(forestData);
+    }
 
+    function renderMultiForestPlotSVG(multiData) {
+      if (!multiData || !Array.isArray(multiData.items) || multiData.items.length === 0) return '';
+      const items = multiData.items;
+
+      if (items.length === 1) return renderSingleForestPlotSVG(items[0]);
+
+      const rowH = 26;
+      const PAD_T = 28;
+      const PAD_B = 22;
+      const W = 480;
+      const H = PAD_T + items.length * rowH + PAD_B;
+
+      const isDiff = items.some(d => ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(d.metric));
+      const nullVal = isDiff ? 0.0 : 1.0;
+
+      const minLower = Math.min(...items.map(d => d.lower));
+      const maxUpper = Math.max(...items.map(d => d.upper));
+
+      const maxDist = Math.max(Math.abs(maxUpper - nullVal), Math.abs(nullVal - minLower)) * 1.25 + 0.05;
+      const axisMin = isDiff ? (nullVal - maxDist) : Math.max(0.1, nullVal - maxDist);
+      const axisMax = nullVal + maxDist;
+
+      const plotX1 = 165;
+      const plotX2 = 345;
+      const plotW = plotX2 - plotX1;
+
+      function toX(val) {
+        return plotX1 + ((val - axisMin) / (axisMax - axisMin)) * plotW;
+      }
+
+      const xNull = toX(nullVal);
+
+      let svg = `<svg class="forest-plot-svg-multi chart-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ Forest plot tổng hợp">`;
+
+      svg += `<style>
+        .forest-plot-svg-multi text { font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; }
+        .forest-plot-svg-multi .val-text { font-family: 'JetBrains Mono', monospace; }
+      </style>`;
+
+      svg += `<text x="12" y="16" font-size="8.5" font-weight="800" fill="var(--text-muted)" text-transform="uppercase" letter-spacing="0.03em">Nghiên cứu / Tiêu chí</text>`;
+      svg += `<text x="${(plotX1 + plotX2) / 2}" y="16" text-anchor="middle" font-size="8.5" font-weight="800" fill="var(--text-muted)" text-transform="uppercase" letter-spacing="0.03em">Biểu đồ Forest Plot</text>`;
+      svg += `<text x="${W - 12}" y="16" text-anchor="end" font-size="8.5" font-weight="800" fill="var(--text-muted)" text-transform="uppercase" letter-spacing="0.03em">Chỉ số (95% CI)</text>`;
+      svg += `<line x1="10" y1="22" x2="${W - 10}" y2="22" stroke="var(--border-light)" stroke-width="1"/>`;
+
+      const nullLineY2 = H - PAD_B + 2;
+      svg += `<line x1="${xNull}" y1="23" x2="${xNull}" y2="${nullLineY2}" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="3,2"/>`;
+
+      items.forEach((item, idx) => {
+        const cy = PAD_T + idx * rowH + rowH / 2;
+        const isOdd = idx % 2 === 1;
+
+        if (isOdd) {
+          svg += `<rect x="8" y="${cy - rowH / 2}" width="${W - 16}" height="${rowH}" fill="var(--surface-2)" opacity="0.7" rx="4"/>`;
+        }
+
+        const isGreen = isDiff ? item.estimate < 0.0 : item.estimate < 1.0;
+        const isHarm  = isDiff ? item.estimate > 0.0 : item.estimate > 1.0;
+        const dotColor = isGreen ? '#16a34a' : isHarm ? '#dc2626' : '#6b7280';
+        const ciColor  = isGreen ? '#86efac' : isHarm ? '#fca5a5' : '#cbd5e1';
+
+        const xL = toX(item.lower);
+        const xU = toX(item.upper);
+        const xE = toX(item.estimate);
+
+        const labelStr = item.label.length > 24 ? item.label.substring(0, 23) + '…' : item.label;
+        svg += `<text x="12" y="${cy + 3.5}" font-size="9.5" font-weight="700" fill="var(--text)">${escapeHtml(labelStr)}</text>`;
+
+        svg += `<line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="3" stroke-linecap="round"/>`;
+        svg += `<line x1="${xL}" y1="${cy - 3.5}" x2="${xL}" y2="${cy + 3.5}" stroke="${dotColor}" stroke-width="1.8"/>`;
+        svg += `<line x1="${xU}" y1="${cy - 3.5}" x2="${xU}" y2="${cy + 3.5}" stroke="${dotColor}" stroke-width="1.8"/>`;
+
+        svg += `<polygon points="${xE},${cy - 4.5} ${xE + 4.5},${cy} ${xE},${cy + 4.5} ${xE - 4.5},${cy}" fill="${dotColor}" opacity="0.95"/>`;
+
+        const valText = `${item.metric || 'HR'} ${item.estimate.toFixed(2)} [${item.lower.toFixed(2)}–${item.upper.toFixed(2)}]`;
+        svg += `<text x="${W - 12}" y="${cy + 3.5}" text-anchor="end" class="val-text" font-size="9" font-weight="700" fill="${dotColor}">${valText}</text>`;
+      });
+
+      const footerY = H - 6;
+      svg += `<line x1="${plotX1}" y1="${nullLineY2}" x2="${plotX2}" y2="${nullLineY2}" stroke="var(--border-light)" stroke-width="1"/>`;
+      svg += `<text x="${plotX1}" y="${footerY}" font-size="7.5" fill="var(--text-faint)" class="val-text">${axisMin.toFixed(2)}</text>`;
+      svg += `<text x="${xNull}" y="${footerY}" text-anchor="middle" font-size="7.5" font-weight="700" fill="var(--text-muted)" class="val-text">${nullVal.toFixed(1)}</text>`;
+      svg += `<text x="${plotX2}" y="${footerY}" text-anchor="end" font-size="7.5" fill="var(--text-faint)" class="val-text">${axisMax.toFixed(2)}</text>`;
+
+      svg += `</svg>`;
+      return svg;
+    }
+
+    function renderSingleForestPlotSVG(forestData) {
+      if (!forestData) return '';
+
+      const { label, metric, estimate, lower, upper, pValue } = forestData;
+      const mLabel = metric || label || 'HR';
       const W = 270, H = 46;
       const PAD_L = 10, PAD_R = 10;
       const plotW = W - PAD_L - PAD_R;
       const cy = (H / 2) - 2;
 
-      const isDiff = ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(label);
+      const isDiff = ['MD', 'SMD', 'WMD', 'RD', 'ARR'].includes(mLabel);
       const nullVal = isDiff ? 0.0 : 1.0;
 
       const maxDist = Math.max(Math.abs(upper - nullVal), Math.abs(nullVal - lower)) * 1.3 + 0.15;
@@ -2480,25 +2912,21 @@
       const ciColor  = isGreen ? '#86efac' : isHarm ? '#fca5a5' : '#cbd5e1';
 
       const pStr = pValue ? ` (p${pValue.startsWith('<') || pValue.startsWith('>') ? '' : '='}${pValue})` : '';
-      const labelText = `${label} ${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]${pStr}`;
+      const displayTag = (label && label !== mLabel) ? `${label}: ${mLabel}` : mLabel;
+      const labelText = `${displayTag} ${estimate.toFixed(2)} [${lower.toFixed(2)}–${upper.toFixed(2)}]${pStr}`;
 
       return `
         <svg class="forest-plot-svg chart-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"
              xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Forest plot: ${labelText}">
           <line x1="${PAD_L}" y1="${cy}" x2="${W - PAD_R}" y2="${cy}" stroke="#cbd5e1" stroke-width="1"/>
           <line x1="${x0}" y1="${cy - 12}" x2="${x0}" y2="${cy + 12}" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,2"/>
-          <!-- CI whiskers -->
           <line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${ciColor}" stroke-width="4" stroke-linecap="round"/>
-          <!-- Tails -->
           <line x1="${xL}" y1="${cy - 4}" x2="${xL}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>
           <line x1="${xU}" y1="${cy - 4}" x2="${xU}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>
-          <!-- Estimate diamond -->
           <polygon points="${xE},${cy - 6} ${xE + 6},${cy} ${xE},${cy + 6} ${xE - 6},${cy}"
                    fill="${dotColor}" opacity="0.95"/>
-          <!-- Label text -->
           <text x="${W / 2}" y="${H - 2}" text-anchor="middle"
                 font-family="monospace" font-size="9" fill="${dotColor}" font-weight="700">${labelText}</text>
-          <!-- Axis ticks labels -->
           <text x="${PAD_L}" y="${cy - 6}" font-family="monospace" font-size="7.5" fill="#94a3b8">${axisMin.toFixed(2)}</text>
           <text x="${x0}" y="${cy - 6}" text-anchor="middle" font-family="monospace" font-size="7.5" fill="#94a3b8">${nullVal.toFixed(1)}</text>
           <text x="${W - PAD_R}" y="${cy - 6}" text-anchor="end" font-family="monospace" font-size="7.5" fill="#94a3b8">${axisMax.toFixed(2)}</text>
@@ -3502,4 +3930,47 @@
         urls: uniqueUrls
       }, [messageChannel.port2]);
     };
+
+    // ════════════════════════════════════════════════════
+    // SETTINGS DROPDOWN MENU HANDLERS
+    // ════════════════════════════════════════════════════
+    window.toggleSettingsMenu = function(event) {
+      if (event) {
+        event.stopPropagation();
+        if (event.preventDefault) event.preventDefault();
+      }
+      const wrapper = document.getElementById('settings-dropdown-wrapper');
+      const btn = document.getElementById('settings-toggle-btn');
+      if (!wrapper) return;
+      const isOpen = wrapper.classList.contains('active');
+      if (isOpen) {
+        window.closeSettingsMenu();
+      } else {
+        wrapper.classList.add('active');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    window.closeSettingsMenu = function() {
+      const wrapper = document.getElementById('settings-dropdown-wrapper');
+      const btn = document.getElementById('settings-toggle-btn');
+      if (wrapper) wrapper.classList.remove('active');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    };
+
+    document.addEventListener('click', function(e) {
+      const wrapper = document.getElementById('settings-dropdown-wrapper');
+      if (wrapper && wrapper.classList.contains('active')) {
+        if (!wrapper.contains(e.target)) {
+          window.closeSettingsMenu();
+        }
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        window.closeSettingsMenu();
+      }
+    });
+
 

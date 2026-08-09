@@ -300,6 +300,64 @@
       'Sóng T rộng, biến dạng hoặc chẻ đôi khuyết đỉnh (notched T).',
       'Tiền sử ngất kịch phát khi nghe tiếng động mạnh, bơi lội hoặc tiền sử gia đình đột tử.',
       'Nguy cơ cao kích hoạt cơn Xoắn Đỉnh (Torsades de Pointes).'
+    ],
+    stemi_lbbb_sgarbossa: [
+      'Tiêu chuẩn Sgarbossa cải tiến chẩn đoán STEMI trên nền Block Nhánh Trái (LBBB):',
+      '1. ST chênh lên đồng hướng (Concordant STE) ≥ 1mm ở bất kỳ chuyển đạo nào có QRS dương (5 điểm).',
+      '2. ST chênh xuống đồng hướng (Concordant STD) ≥ 1mm ở các chuyển đạo V1, V2 hoặc V3 (3 điểm).',
+      '3. ST chênh lên không đồng hướng (Excessively discordant STE) ≥ 5mm (hoặc ST/S ≤ -0.25) ở chuyển đạo QRS âm (2 điểm).',
+      'Tổng điểm Sgarbossa ≥ 3 điểm có độ đặc hiệu > 98% cho NMCT cấp.'
+    ],
+    takotsubo: [
+      'ST chênh lên lồi nhẹ ở V2-V5 (tương tự STEMI thành trước).',
+      'Tái cực muộn: Sóng T âm sâu đối xứng lan tỏa ở nhiều chuyển đạo (V2-V6, DI, aVL) và QTc kéo dài.',
+      'Chụp động mạch vành (DSA): Động mạch vành hoàn toàn bình thường (không có hẹp/tắc nghẽn thủ phạm).',
+      'Siêu âm tim/MRI: Phình mỏm thất trái (Apical ballooning) và giảm động vùng mỏm tim.'
+    ],
+    tca_toxicity: [
+      'Nhịp nhanh xoang (tần số > 100 lần/phút).',
+      'QRS giãn rộng ≥ 120ms (do ngộ độc thuốc chặn kênh Natri phase 0). QRS > 160ms nguy cơ cao kích hoạt cơn nhịp nhanh thất.',
+      'Dấu hiệu sóng R muộn ở chuyển đạo aVR: Biên độ R ở aVR ≥ 3mm hoặc tỷ lệ R/S ở aVR > 0.7.',
+      'Lệch trục phải ở phần cuối phức bộ QRS (Trục QRS > +110°).'
+    ],
+    arvc_epsilon: [
+      'Sóng Epsilon: Khuyết nhỏ hoặc rãnh gờ nhấp nhô xuất hiện ở đoạn cuối phức bộ QRS (đầu đoạn ST) ở chuyển đạo V1-V3.',
+      'Sóng T âm ở các chuyển đạo trước tim bên phải (V1, V2, V3) ở người > 14 tuổi.',
+      'QRS thời gian kéo dài ở V1-V3 (> 110ms) so với V5-V6.',
+      'Nguy cơ cao bão nhịp nhanh thất / Rung thất đột tử ở vận động viên.'
+    ],
+    stemi_rv_isolated: [
+      'ST chênh lên ≥ 1mm ở các chuyển đạo thất phải bên phải (V3R, V4R, V5R, V6R), đặc biệt đặc hiệu ở V4R.',
+      'ST chênh lên ở V1 kèm ST chênh xuống ở V2 (ST V1 > V2).',
+      'ST chênh lên ở DIII lớn hơn DII (ST DIII > DII).',
+      'Lâm sàng: Tam chứng tụt huyết áp + Tĩnh mạch cổ nổi + Phổi trong (Tụt HA thảm hại khi ngậm Nitroglycerin!).'
+    ],
+    af_wpw: [
+      'Rung nhĩ trên bệnh nhân có hội chứng Wolff-Parkinson-White (Pre-excited Atrial Fibrillation):',
+      '1. Tần số tim cực kỳ nhanh (thường 200 - 300 lần/phút).',
+      '2. Khoảng RR hoàn toàn không đều (Irregularly irregular).',
+      '3. Phức bộ QRS biến đổi hình thái từ hẹp đến rộng dị dạng (do xung điện truyền qua cả nút AV và đường phụ Kent).',
+      'CẢNH BÁO TỐI KHẨN: CHỐNG CHỈ ĐỊNH tuyệt đối các thuốc chẹn nút AV (Adenosine, Diltiazem, Verapamil, Beta-blocker, Digoxin) vì có thể làm khởi phát Rung Thất đột tử!'
+    ],
+    ccb_toxicity: [
+      'Ngộ độc thuốc chẹn kênh Calci nhóm Phenylalkylamine/Benzothiazepine (Verapamil, Diltiazem):',
+      'Nhịp chậm xoang nặng hoặc Nhịp chậm bộ nối/nhịp tự thất (< 40 lần/phút).',
+      'Block AV các độ (Block AV độ I, II, III).',
+      'QRS có thể giãn rộng nhẹ do tác dụng chế kênh Natri phụ.',
+      'Lâm sàng: Tụt huyết áp nặng kèm tăng đường huyết phản ứng (Hyperglycemia).'
+    ],
+    trifascicular_block: [
+      'Block 3 nhánh dẫn truyền (Trifascicular Block):',
+      '1. Block AV độ I (Khoảng PR kéo dài > 0.20s).',
+      '2. Block Nhánh Phải Hoàn Toàn (RBBB: QRS ≥ 0.12s, rsR\' ở V1).',
+      '3. Block Phân Nhánh Trái Trước (LAFB: Trục lệch trái < -30°) hoặc Block Phân Nhánh Trái Sau (LPFB: Trục lệch phải > +90°).',
+      'Nguy cơ cao tiến triển thành Block AV Hoàn Toàn đột ngột gây ngất (Stokes-Adams) -> Chỉ định Pacemaker.'
+    ],
+    electrical_alternans: [
+      'Điện thế biến thiên (Electrical Alternans):',
+      'Biên độ phức bộ QRS (và đôi khi sóng P/T) thay đổi cao thấp luân phiên từ nhịp này sang nhịp khác.',
+      'Điện thế lan tỏa thấp (Low voltage QRS < 5mm ở chuyển đạo chi, < 10mm ở chuyển đạo trước tim).',
+      'Nguyên nhân: Tim đung đưa tự do trong khoang dịch màng ngoài tim tràn dịch mức độ nhiều gây Ép tim cấp (Cardiac Tamponade).'
     ]
   };
 
