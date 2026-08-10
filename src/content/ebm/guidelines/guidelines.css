@@ -1412,26 +1412,37 @@
     .meta-forest-actions {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
     .meta-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.38rem 0.8rem;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
       border-radius: 8px;
-      border: 1px solid var(--border-light);
-      background: var(--surface-2);
-      color: var(--text);
-      font-size: 0.78rem;
-      font-weight: 600;
+      border: 1.5px solid var(--accent);
+      background: var(--surface);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
       cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
       transition: all var(--tr);
     }
     .meta-btn:hover {
-      background: var(--blue-bg);
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(15,111,180,0.25);
+      transform: translateY(-1px);
+    }
+    .meta-btn-primary {
+      background: var(--accent);
+      color: #ffffff;
       border-color: var(--accent);
-      color: var(--accent);
+    }
+    .meta-btn-primary:hover {
+      background: #08558b;
+      color: #ffffff;
     }
     .meta-forest-endpoints-bar {
       display: flex;

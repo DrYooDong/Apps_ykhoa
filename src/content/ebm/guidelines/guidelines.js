@@ -39,6 +39,7 @@
       search: '',
       sourceType: null,
       specialty: null,
+      condition: null,
       design: null,
       impact: null,
       period: null,
@@ -403,6 +404,24 @@
         })(),
         subgroups: (s.subgroups && typeof s.subgroups === 'object' && !Array.isArray(s.subgroups)) ? s.subgroups
                    : (typeof s.subgroups === 'string' && s.subgroups ? (() => { try { return JSON.parse(s.subgroups); } catch(e) { return null; } })() : null),
+        conditionKey: (() => {
+          if (s.conditionKey) return s.conditionKey;
+          const fullTxt = `${s.title || ''} ${s.summary || ''} ${s.tags ? s.tags.join(' ') : ''}`.toLowerCase();
+          const icdList = Array.isArray(s.icd10) ? s.icd10 : [];
+          if (icdList.some(c => c.startsWith('I50')) || /suy tim|heart failure/i.test(fullTxt)) return 'heart-failure';
+          if (icdList.some(c => c.startsWith('E11')) || /đái tháo đường|diabetes|t2d/i.test(fullTxt)) return 'diabetes-t2d';
+          if (icdList.some(c => c.startsWith('I10') || c.startsWith('I11')) || /tăng huyết áp|hypertension/i.test(fullTxt)) return 'hypertension';
+          if (icdList.some(c => c.startsWith('N18')) || /bệnh thận mạn|ckd/i.test(fullTxt)) return 'ckd';
+          if (icdList.some(c => c.startsWith('I48')) || /rung nhĩ|atrial fibrillation/i.test(fullTxt)) return 'af';
+          if (icdList.some(c => c.startsWith('B18.0') || c.startsWith('B18.1')) || /viêm gan b|hbv/i.test(fullTxt)) return 'hepatitis-b';
+          if (icdList.some(c => c.startsWith('B18.2')) || /viêm gan c|hcv/i.test(fullTxt)) return 'hepatitis-c';
+          if (icdList.some(c => c.startsWith('B05')) || /sởi|measles/i.test(fullTxt)) return 'measles';
+          if (icdList.some(c => c.startsWith('J09') || c.startsWith('J10') || c.startsWith('J11')) || /cúm|influenza/i.test(fullTxt)) return 'flu';
+          if (icdList.some(c => c.startsWith('U07')) || /covid/i.test(fullTxt)) return 'covid19';
+          if (icdList.some(c => c.startsWith('A98')) || /marburg|ebola|nipah/i.test(fullTxt)) return 'hemorrhagic-fever';
+          if (icdList.some(c => c.startsWith('A41')) || /hồi sức|icu|nhiễm trùng huyết/i.test(fullTxt)) return 'icu';
+          return 'other';
+        })(),
         createdAt: s.createdAt || new Date().toISOString()
       };
     }
@@ -500,6 +519,16 @@
     // ════════════════════════════
 
     function renderFilterPills() {
+      // 0. Condition pills (Vấn đề / Bệnh gắn mã ICD-10)
+      const condContainer = document.getElementById('condition-pills');
+      if (condContainer && window.CLINICAL_CONDITIONS) {
+        let condHtml = `<button class="filter-pill ${filters.condition === null ? 'active' : ''}" onclick="setFilter('condition', null)">Tất cả Bệnh</button>`;
+        Object.entries(window.CLINICAL_CONDITIONS).forEach(([key, cond]) => {
+          condHtml += `<button class="filter-pill ${filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Gắn mã ICD-10: ${cond.icd10.join(', ')}">${cond.icon} ${cond.name}</button>`;
+        });
+        condContainer.innerHTML = condHtml;
+      }
+
       // 1. Source Type pills
       const sourceContainer = document.getElementById('source-type-pills');
       if (sourceContainer) {
@@ -608,6 +637,12 @@
         if (filters.hasSubgroup && (!s.subgroups || typeof s.subgroups !== 'object' || Object.keys(s.subgroups).length === 0)) return false;
         if (filters.hasSummary && (!s.file || s.file.trim() === '')) return false;
         if (filters.icd10 && (!Array.isArray(s.icd10) || !s.icd10.some(code => code.startsWith(filters.icd10) || filters.icd10.startsWith(code)))) return false;
+        if (filters.condition) {
+          const condConfig = (window.CLINICAL_CONDITIONS && window.CLINICAL_CONDITIONS[filters.condition]) ? window.CLINICAL_CONDITIONS[filters.condition] : null;
+          const matchKey = s.conditionKey === filters.condition;
+          const matchIcd = condConfig && Array.isArray(s.icd10) && s.icd10.some(c => condConfig.icd10.some(ic => c.startsWith(ic) || ic.startsWith(c)));
+          if (!matchKey && !matchIcd) return false;
+        }
         
         if (searchLower) {
           const tTitle = s.title && s.title.toLowerCase().includes(searchLower);
@@ -1631,7 +1666,7 @@
       const endpointsHtml = Object.keys(META_ENDPOINTS).map(key => {
         const ep = META_ENDPOINTS[key];
         const isActive = key === currentMetaEndpointKey;
-        return `<button class="endpoint-pill-btn ${isActive ? 'active' : ''}" onclick="setMetaEndpoint('${key}')" title="${ep.desc}">${ep.name}</button>`;
+        return `<button type="button" class="endpoint-pill-btn ${isActive ? 'active' : ''}" onclick="window.setMetaEndpoint('${key}')" title="${ep.desc}">${ep.name}</button>`;
       }).join('');
 
       // Generate Meta-Forest SVG
@@ -1644,8 +1679,8 @@
             <span class="meta-badge">${comparedStudies.length} Thử Nghiệm RCT</span>
           </div>
           <div class="meta-forest-actions">
-            <button class="meta-btn" onclick="downloadMetaForestPNG()">📸 Tải ảnh (PNG)</button>
-            <button class="meta-btn" onclick="downloadMetaForestSVG()">📄 Tải SVG</button>
+            <button type="button" class="meta-btn meta-btn-primary" onclick="window.downloadMetaForestPNG()">📸 Tải ảnh (PNG)</button>
+            <button type="button" class="meta-btn" onclick="window.downloadMetaForestSVG()">📄 Tải SVG</button>
           </div>
         </div>
 
@@ -1757,8 +1792,8 @@
       // SVG Layout Constants
       const rowH = 36;
       const PAD_T = 38;
-      const PAD_B = 52;
-      const W = 720;
+      const PAD_B = 56;
+      const W = 740;
       const totalRows = items.length + (validItems.length > 1 ? 1 : 0);
       const H = PAD_T + totalRows * rowH + PAD_B;
 
@@ -1787,7 +1822,7 @@
 
       const xNull = toX(1.0);
 
-      let svg = `<svg class="meta-forest-svg chart-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meta-Forest Plot Comparison">`;
+      let svg = `<svg class="meta-forest-svg chart-svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meta-Forest Plot Comparison">`;
       svg += `<style>
         .meta-forest-svg text { font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; }
         .meta-forest-svg .mono { font-family: 'JetBrains Mono', monospace; }
@@ -1809,7 +1844,7 @@
         const cy = PAD_T + idx * rowH + rowH / 2;
         const isOdd = idx % 2 === 1;
         if (isOdd) {
-          svg += `<rect x="8" y="${cy - rowH / 2}" width="${W - 16}" height="${rowH}" fill="var(--surface-2)" opacity="0.6" rx="4"/>`;
+          svg += `<rect x="8" y="${cy - rowH / 2}" width="${W - 16}" height="${rowH}" fill="var(--surface-2)" opacity="0.5" rx="4"/>`;
         }
 
         svg += `<text x="12" y="${cy - 2}" font-size="10.5" font-weight="700" fill="var(--text)">${escapeHtml(item.title)}</text>`;
@@ -1846,10 +1881,10 @@
       if (validItems.length > 1) {
         const poolCy = PAD_T + items.length * rowH + rowH / 2;
         svg += `<line x1="10" y1="${poolCy - rowH / 2}" x2="${W - 10}" y2="${poolCy - rowH / 2}" stroke="var(--border)" stroke-width="1.2"/>`;
-        svg += `<rect x="8" y="${poolCy - rowH / 2 + 1}" width="${W - 16}" height="${rowH - 2}" fill="var(--blue-bg)" opacity="0.4" rx="4"/>`;
+        svg += `<rect x="8" y="${poolCy - rowH / 2 + 1}" width="${W - 16}" height="${rowH - 2}" fill="rgba(15,111,180,0.08)" stroke="rgba(15,111,180,0.25)" stroke-width="1" rx="6"/>`;
 
-        svg += `<text x="12" y="${poolCy + 4}" font-size="11" font-weight="800" fill="var(--accent)">🔶 Pooled Effect (Ước tính gộp)</text>`;
-        svg += `<text x="210" y="${poolCy + 4}" font-size="10" font-weight="700" fill="var(--accent)" class="mono">${totalN > 0 ? 'N=' + formatNumber(totalN) : 'N/A'}</text>`;
+        svg += `<text x="12" y="${poolCy + 4}" font-size="11" font-weight="800" fill="#0f6fb4">🔶 Pooled Effect (Ước tính gộp)</text>`;
+        svg += `<text x="210" y="${poolCy + 4}" font-size="10" font-weight="700" fill="#0f6fb4" class="mono">${totalN > 0 ? 'N=' + formatNumber(totalN) : 'N/A'}</text>`;
 
         const xPL = toX(pooledLower);
         const xPU = toX(pooledUpper);
@@ -1864,18 +1899,18 @@
 
       // X-Axis Axis Bar & Labels
       const axisY = H - PAD_B + 12;
-      svg += `<line x1="${plotX1}" y1="${axisY}" x2="${plotX2}" y2="${axisY}" stroke="var(--border-muted)" stroke-width="1.5"/>`;
+      svg += `<line x1="${plotX1}" y1="${axisY}" x2="${plotX2}" y2="${axisY}" stroke="var(--border)" stroke-width="1.5"/>`;
 
       const ticks = [axisMin, 1.0, axisMax];
       ticks.forEach(tVal => {
         const tx = toX(tVal);
         svg += `<line x1="${tx}" y1="${axisY}" x2="${tx}" y2="${axisY + 4}" stroke="var(--text-muted)" stroke-width="1.2"/>`;
-        svg += `<text x="${tx}" y="${axisY + 16}" text-anchor="middle" font-size="9" font-weight="700" fill="var(--text-muted)" class="mono">${tVal.toFixed(1)}</text>`;
+        svg += `<text x="${tx}" y="${axisY + 16}" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--text-muted)" class="mono">${tVal.toFixed(1)}</text>`;
       });
 
-      // Directional Favors Labels
-      svg += `<text x="${plotX1 + 10}" y="${axisY + 30}" text-anchor="start" font-size="9" font-weight="700" fill="#059669">← Ưu thế Can thiệp (Favors Drug)</text>`;
-      svg += `<text x="${plotX2 - 10}" y="${axisY + 30}" text-anchor="end" font-size="9" font-weight="700" fill="#dc2626">Ưu thế Giả dược (Favors Placebo) →</text>`;
+      // Directional Favors Labels - Placed at FAR LEFT (x=12) and FAR RIGHT (x=W-12) to prevent any collision
+      svg += `<text x="12" y="${axisY + 30}" text-anchor="start" font-size="9.5" font-weight="700" fill="#059669">← Ưu thế Can thiệp (Favors Drug)</text>`;
+      svg += `<text x="${W - 12}" y="${axisY + 30}" text-anchor="end" font-size="9.5" font-weight="700" fill="#dc2626">Ưu thế Giả dược (Favors Placebo) →</text>`;
 
       svg += `</svg>`;
 
@@ -4227,10 +4262,10 @@
     }
 
     // ════════════════════════════════
-    // GUIDELINE TIMELINE
+    // PRACTICE-CHANGING TIMELINE & DISEASE HUB
     // ════════════════════════════════
 
-    let _tlFilter = null;
+    let _tlConditionFilter = null;
 
     function renderTimeline() {
       const panel = document.getElementById('panel-timeline');
@@ -4239,40 +4274,150 @@
         panel.innerHTML = `<div class="empty-state"><div class="empty-state-icon">📅</div><p>Chưa có dữ liệu để hiển thị timeline.</p></div>`;
         return;
       }
-      _tlFilter = null;
+      _tlConditionFilter = null;
       const validYears = studies.map(s => s.year).filter(y => y && !isNaN(y));
       const minY = validYears.length ? Math.min(...validYears) : new Date().getFullYear();
       const maxY = validYears.length ? Math.max(...validYears) : new Date().getFullYear();
-      const specInUse = [...new Set(studies.map(s => s.specialty))].filter(k => SPECIALTIES[k]);
+
+      // Render top Condition Selector Bar
+      let condPillsHtml = `<button class="filter-pill ${_tlConditionFilter === null ? 'active' : ''}" onclick="window.filterTimelineCondition(null, this)">Tất cả Bệnh</button>`;
+      if (window.CLINICAL_CONDITIONS) {
+        Object.entries(window.CLINICAL_CONDITIONS).forEach(([key, cond]) => {
+          condPillsHtml += `<button class="filter-pill ${_tlConditionFilter === key ? 'active' : ''}" onclick="window.filterTimelineCondition('${key}', this)" title="ICD-10: ${cond.icd10.join(', ')}">${cond.icon} ${cond.name}</button>`;
+        });
+      }
+
       panel.innerHTML = `
         <div class="tl-wrapper">
           <div class="tl-top-bar">
-            <h2 class="tl-page-title">📅 Timeline Hướng Dẫn &amp; Nghiên Cứu Lâm Sàng</h2>
-            <p class="tl-page-subtitle">${studies.length} tài liệu${validYears.length>1?` · Từ ${minY} đến ${maxY}`:''}</p>
-            <div class="tl-filter-bar">
-              <button class="filter-pill active" onclick="filterTimeline(null,this)">Đầu tiên</button>
-              ${specInUse.map(k=>`
-                <button class="filter-pill" onclick="filterTimeline('${k}',this)">
-                  <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${SPECIALTIES[k].color};margin-right:3px;vertical-align:middle;"></span>
-                  ${SPECIALTIES[k].name}
-                </button>`).join('')}
+            <h2 class="tl-page-title">📅 Trục Thời Gian Tiến Trình Khuyến Cáo (Practice-Changing Timeline)</h2>
+            <p class="tl-page-subtitle">${studies.length} tài liệu · Theo dõi sự dịch chuyển khuyến cáo điều trị (2010 – 2026)</p>
+            <div class="tl-filter-bar" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;">
+              ${condPillsHtml}
+            </div>
+            <div id="tl-icd-badge-bar" style="margin-top:8px; font-size:0.78rem; color:var(--text-muted);">
+              📌 Mã ICD-10: <span id="active-icd-list" style="font-weight:700; color:var(--accent);">Tất cả các mã ICD-10 trong hệ thống</span>
             </div>
           </div>
+
+          <div id="tl-svg-container" style="background:var(--surface-2); border:1px solid var(--border-light); border-radius:12px; padding:12px; margin: 16px 0; overflow-x:auto;">
+            ${renderPracticeChangingTimelineSVG(null)}
+          </div>
+
           <div class="tl-body" id="tl-body">${buildTimelineHTML(null)}</div>
         </div>
       `;
     }
 
-    function buildTimelineHTML(fSpec) {
-      const sorted = [...studies].sort((a,b) => (b.year||0)-(a.year||0));
-      const byYear = {};
-      sorted.forEach(s => { const y=s.year||'N/A'; if(!byYear[y]) byYear[y]=[]; byYear[y].push(s); });
-      const groups = Object.entries(byYear).sort(([a],[b])=>{
-        const na=parseInt(a),nb=parseInt(b); return isNaN(na)?1:isNaN(nb)?-1:nb-na;
+    function renderPracticeChangingTimelineSVG(fCondKey) {
+      let filtered = [...studies];
+      if (fCondKey && window.CLINICAL_CONDITIONS && window.CLINICAL_CONDITIONS[fCondKey]) {
+        const condConfig = window.CLINICAL_CONDITIONS[fCondKey];
+        filtered = studies.filter(s => {
+          const matchKey = s.conditionKey === fCondKey;
+          const matchIcd = Array.isArray(s.icd10) && s.icd10.some(c => condConfig.icd10.some(ic => c.startsWith(ic) || ic.startsWith(c)));
+          return matchKey || matchIcd;
+        });
+      }
+
+      if (filtered.length === 0) return `<p style="text-align:center; padding:1rem; color:var(--text-muted); font-size:0.85rem;">Không có nghiên cứu/guideline nào cho chủ đề này.</p>`;
+
+      const validStudies = filtered.filter(s => s.year && !isNaN(s.year)).sort((a, b) => a.year - b.year);
+      if (validStudies.length === 0) return '';
+
+      const minYear = Math.min(...validStudies.map(s => s.year));
+      const maxYear = Math.max(...validStudies.map(s => s.year));
+      const startYear = Math.min(2015, minYear);
+      const endYear = Math.max(2026, maxYear);
+
+      const W = 840;
+      const H = 160;
+      const PAD_L = 60;
+      const PAD_R = 60;
+      const axisY = 80;
+      const plotW = W - PAD_L - PAD_R;
+
+      function toX(year) {
+        if (endYear === startYear) return PAD_L + plotW / 2;
+        return PAD_L + ((year - startYear) / (endYear - startYear)) * plotW;
+      }
+
+      let svg = `<svg class="timeline-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg">`;
+      svg += `<style>
+        .timeline-svg text { font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; }
+        .tl-node { cursor: pointer; transition: transform 0.2s ease; }
+        .tl-node:hover { transform: scale(1.12); }
+      </style>`;
+
+      // Base line
+      svg += `<line x1="${PAD_L}" y1="${axisY}" x2="${W - PAD_R}" y2="${axisY}" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" opacity="0.4"/>`;
+
+      // Year Ticks & Labels
+      const yearStep = endYear - startYear > 10 ? 2 : 1;
+      for (let y = startYear; y <= endYear; y += yearStep) {
+        const x = toX(y);
+        svg += `<line x1="${x}" y1="${axisY - 6}" x2="${x}" y2="${axisY + 6}" stroke="var(--text-muted)" stroke-width="1.5"/>`;
+        svg += `<text x="${x}" y="${axisY + 20}" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--text-muted)" class="mono">${y}</text>`;
+      }
+
+      // Render milestone nodes
+      const yearCount = {};
+      validStudies.forEach((study, idx) => {
+        const y = study.year;
+        yearCount[y] = (yearCount[y] || 0) + 1;
+        const subIdx = yearCount[y] - 1;
+        const x = toX(y);
+
+        const isTop = (idx + subIdx) % 2 === 0;
+        const pinY = isTop ? axisY - 32 - (subIdx * 20) : axisY + 32 + (subIdx * 20);
+
+        let icon = '🔬';
+        let badgeColor = '#0f6fb4';
+        if (study.sourceType === 'vn-moh') { icon = '🇻🇳'; badgeColor = '#dc2626'; }
+        else if (study.sourceType === 'intl-guideline') { icon = '🇪🇺'; badgeColor = '#0d9488'; }
+        else if (study.impact === 'practice-changing') { icon = '🔥'; badgeColor = '#ea580c'; }
+
+        const titleShort = study.title.length > 22 ? study.title.substring(0, 21) + '…' : study.title;
+
+        // Vertical Dashed Connector Line
+        svg += `<line x1="${x}" y1="${axisY}" x2="${x}" y2="${pinY}" stroke="${badgeColor}" stroke-width="1.5" stroke-dasharray="2,2"/>`;
+
+        // Node Group
+        svg += `<g class="tl-node" onclick="jumpToStudy('${study.id}')">`;
+        svg += `<circle cx="${x}" cy="${axisY}" r="5.5" fill="${badgeColor}" stroke="#ffffff" stroke-width="2"/>`;
+        svg += `<rect x="${x - 55}" y="${isTop ? pinY - 18 : pinY}" width="110" height="20" rx="10" fill="var(--surface)" stroke="${badgeColor}" stroke-width="1.2"/>`;
+        svg += `<text x="${x - 45}" y="${isTop ? pinY - 4 : pinY + 14}" font-size="8.8" font-weight="700" fill="var(--text)">${icon} ${escapeHtml(titleShort)}</text>`;
+        svg += `</g>`;
       });
-      return groups.map(([year,sts]) => {
-        const vis = fSpec ? sts.filter(s=>s.specialty===fSpec) : sts;
-        if (!vis.length) return '';
+
+      svg += `</svg>`;
+      return svg;
+    }
+
+    function buildTimelineHTML(fCondKey) {
+      let filtered = [...studies];
+      if (fCondKey && window.CLINICAL_CONDITIONS && window.CLINICAL_CONDITIONS[fCondKey]) {
+        const condConfig = window.CLINICAL_CONDITIONS[fCondKey];
+        filtered = studies.filter(s => {
+          const matchKey = s.conditionKey === fCondKey;
+          const matchIcd = Array.isArray(s.icd10) && s.icd10.some(c => condConfig.icd10.some(ic => c.startsWith(ic) || ic.startsWith(c)));
+          return matchKey || matchIcd;
+        });
+      }
+
+      if (filtered.length === 0) {
+        return `<div class="empty-state"><div class="empty-state-icon">🔍</div><p>Không tìm thấy tài liệu hướng dẫn nào thuộc Bệnh này.</p></div>`;
+      }
+
+      const sorted = filtered.sort((a, b) => (b.year || 0) - (a.year || 0));
+      const byYear = {};
+      sorted.forEach(s => { const y = s.year || 'N/A'; if (!byYear[y]) byYear[y] = []; byYear[y].push(s); });
+
+      const groups = Object.entries(byYear).sort(([a], [b]) => {
+        const na = parseInt(a), nb = parseInt(b); return isNaN(na) ? 1 : isNaN(nb) ? -1 : nb - na;
+      });
+
+      return groups.map(([year, sts]) => {
         return `
           <div class="tl-year-group">
             <div class="tl-year-pin">
@@ -4280,10 +4425,10 @@
               <div class="tl-year-line"></div>
             </div>
             <div class="tl-items">
-              ${vis.map(study => {
-                const spec = SPECIALTIES[study.specialty]||{name:study.specialty,color:'#666'};
-                const imp  = IMPACTS[study.impact]||{name:study.impact||'N/A',color:'#6b7280'};
-                const src  = SOURCE_TYPES[study.sourceType]||{name:study.sourceType||'',color:'#6b7280'};
+              ${sts.map(study => {
+                const spec = SPECIALTIES[study.specialty] || { name: study.specialty, color: '#666' };
+                const imp = IMPACTS[study.impact] || { name: study.impact || 'N/A', color: '#6b7280' };
+                const src = SOURCE_TYPES[study.sourceType] || { name: study.sourceType || '', color: '#6b7280' };
                 const stale = getStaleAlertBadge(study);
                 const fd = parseForestData(study.keyResults);
                 const detailLink = study.file ? `<a href="${study.file}" target="_blank" class="btn btn-small" style="font-size:0.7rem;padding:0.2rem 0.5rem;" onclick="event.stopPropagation()">📄 Chi tiết</a>` : '';
@@ -4299,16 +4444,17 @@
                         <span class="badge badge-src-${study.sourceType}" style="font-size:0.62rem;">${src.name}</span>
                         <span class="badge badge-${study.specialty}" style="font-size:0.62rem;">${spec.name}</span>
                         <span class="impact-badge impact-${study.impact}" style="font-size:0.62rem;"><span class="impact-dot"></span>${imp.name}</span>
-                        ${study.sampleSize?`<span class="tl-n-badge">n=${formatNumber(study.sampleSize)}</span>`:''}
+                        ${study.icd10 && study.icd10.length > 0 ? `<span class="badge" style="background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; font-size:0.62rem;">ICD: ${study.icd10.join(', ')}</span>` : ''}
+                        ${study.sampleSize ? `<span class="tl-n-badge">n=${formatNumber(study.sampleSize)}</span>` : ''}
                       </div>
                       <p class="tl-item-summary">${escapeHtml(study.summary)}</p>
-                      ${study.keyResults?`
+                      ${study.keyResults ? `
                       <div class="tl-results-row">
                         <code class="tl-results-code">${escapeHtml(study.keyResults)}</code>
-                        ${fd?`<div class="tl-forest">${renderForestPlotSVG(fd)}</div>`:''}
-                      </div>`:''}  
+                        ${fd ? `<div class="tl-forest">${renderForestPlotSVG(fd)}</div>` : ''}
+                      </div>` : ''}  
                       <div class="tl-item-footer">
-                        <span>${escapeHtml(study.drug||'')}${study.drug&&study.organization?' · ':''}${escapeHtml(study.organization||'')} (${study.year||''})</span>
+                        <span>${escapeHtml(study.drug || '')}${study.drug && study.organization ? ' · ' : ''}${escapeHtml(study.organization || '')} (${study.year || ''})</span>
                         <div style="display:flex;gap:4px;">
                           ${detailLink}
                           <button class="btn btn-small" style="font-size:0.7rem;padding:0.2rem 0.5rem;" onclick="event.stopPropagation();jumpToStudy('${study.id}')">↑ Xem trong bảng</button>
@@ -4322,13 +4468,29 @@
       }).join('');
     }
 
-    function filterTimeline(spec, btn) {
-      _tlFilter = spec;
+    function filterTimelineCondition(condKey, btn) {
+      _tlConditionFilter = condKey;
       document.querySelectorAll('.tl-filter-bar .filter-pill').forEach(p => p.classList.remove('active'));
       if (btn) btn.classList.add('active');
+
+      const icdLabel = document.getElementById('active-icd-list');
+      if (icdLabel) {
+        if (condKey && window.CLINICAL_CONDITIONS && window.CLINICAL_CONDITIONS[condKey]) {
+          const cond = window.CLINICAL_CONDITIONS[condKey];
+          icdLabel.textContent = `${cond.name} [ICD-10: ${cond.icd10.join(', ')}]`;
+        } else {
+          icdLabel.textContent = 'Tất cả các mã ICD-10 trong hệ thống';
+        }
+      }
+
+      const svgContainer = document.getElementById('tl-svg-container');
+      if (svgContainer) svgContainer.innerHTML = renderPracticeChangingTimelineSVG(condKey);
+
       const body = document.getElementById('tl-body');
-      if (body) body.innerHTML = buildTimelineHTML(spec);
+      if (body) body.innerHTML = buildTimelineHTML(condKey);
     }
+
+    window.filterTimelineCondition = filterTimelineCondition;
 
     function jumpToStudy(id) {
       switchTab('list');
