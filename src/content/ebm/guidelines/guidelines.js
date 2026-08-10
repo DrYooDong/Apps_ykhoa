@@ -158,17 +158,22 @@
         if (urlInput) urlInput.value = '';
         if (keyInput) keyInput.value = '';
         
+        // Null out trước để loadStudies() biết chưa đăng nhập
+        supabaseClient = null;
+        supabaseConfig = { url: '', key: '' };
+        
         selectedIds.clear();
         expandedIds.clear();
-        loadStudies();
+        loadStudies(); // Sẽ trả về mảng rỗng do supabaseClient === null
         
         closeSupabaseModal();
-        initSupabase();
+        updateSupabaseStatus('disconnected', 'Supabase: Ngoại tuyến (Chưa đăng nhập)');
         renderTable();
         renderUpdates();
         alert('🔒 Đã đăng xuất thành công! Dữ liệu nghiên cứu cá nhân đã được xóa sạch khỏi thiết bị hiện tại.');
       }
     }
+
 
     async function syncStudiesWithSupabase() {
       if (!supabaseClient) {
@@ -427,7 +432,7 @@
     }
 
     function loadStudies() {
-      // Clear legacy localStorage cache keys and old delete blocklist
+      // Clear ALL legacy localStorage cache keys every time
       try {
         localStorage.removeItem('clinicalGuidelines');
         localStorage.removeItem('internalMedicineStudies');
@@ -435,59 +440,31 @@
       } catch (e) {}
 
       studies = [];
-      const deletedList = getDeletedStudyIds();
+
+      // === SUPABASE-ONLY GATE ===
+      // Nếu chưa đăng nhập Supabase, xóa sạch cache local và không hiển thị gì.
+      // Chỉ load dữ liệu khi có kết nối Supabase hợp lệ.
+      if (!supabaseClient) {
+        try {
+          localStorage.removeItem('cliniportal_custom_studies');
+          localStorage.removeItem('cliniportal_deleted_study_ids');
+        } catch (e) {}
+        return; // Trả về mảng rỗng, không load gì thêm.
+      }
+
+      // Có Supabase: load từ cache localStorage (chỉ dùng làm bộ đệm phiên)
       let rawList = [];
-
-      const LEGACY_SAMPLE_IDS = new Set([
-        'study_2025_aha_acc_hypertension',
-        'study_2016_jama_sepsis_3_consensus',
-        'study_2026_surviving_sepsis_campaign_international_guidelines',
-        'study_2026_aha_acc_ada_asn_ckm_syndrome',
-        'study_2023_byt_benh_phoi_mo_ke',
-        'study_2026_byt_u_xo_tu_cung',
-        'study_2026_cap_nhat_soc_tim',
-        'study_byt_benh_than_kinh_dai_thao_duong_2025',
-        'study_2026_ada_diabetes',
-        'study_cap_nhat_ve_bao_giap_2026',
-        'study_phac_do_soc_nhiem_khuan_sepsis3',
-        'study_byt_lao_2024',
-        'study_gina_asthma_2026',
-        'study_kdigo_ckd_2024',
-        'study_aha_acc_htn_2025',
-        'study_esc_af_2024',
-        'study_byt_vpcd_2026',
-        'study_byt_sotret_2023',
-        'study_byt_dengue_2023',
-        'study_who_meningitis_2025',
-        'study_apasl_hbv_2026',
-        'study_byt_vgsvb_2026',
-        'study_antibiotics_basics_2026',
-        'study_ca_the_hoa_beta_lactam_2026',
-        'study_idsa_amr_2026',
-        'study_ks_bn_nang',
-        'study_empareg',
-        'study_jrs_copd_2026',
-        'study_byt_copd_2026'
-      ]);
-
       try {
         const storedCustom = localStorage.getItem('cliniportal_custom_studies');
         if (storedCustom) {
           const parsed = JSON.parse(storedCustom);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            const cleaned = parsed.filter(s => s && s.id && !LEGACY_SAMPLE_IDS.has(s.id));
-            if (cleaned.length !== parsed.length) {
-              localStorage.setItem('cliniportal_custom_studies', JSON.stringify(cleaned));
-            }
-            rawList = cleaned;
+            rawList = parsed;
           }
         }
       } catch (e) {}
 
-      if (rawList.length === 0 && typeof window.SAMPLE_STUDIES !== 'undefined' && Array.isArray(window.SAMPLE_STUDIES)) {
-        rawList = window.SAMPLE_STUDIES;
-      }
-
+      const deletedList = getDeletedStudyIds();
       if (Array.isArray(rawList)) {
         rawList.forEach(cs => {
           if (!isStudyDeleted(cs, deletedList)) {
