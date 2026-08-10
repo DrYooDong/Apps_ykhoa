@@ -18,6 +18,21 @@
   <link rel="stylesheet" href="guidelines.css">
   <link rel="stylesheet" href="../../../../css/components/header.css">
   <script src="../../../../components/header.js" defer></script>
+  <style>
+    .condition-drawer-container {
+      display: none;
+      width: 100%;
+      margin-top: 6px;
+    }
+    .condition-drawer-container.active {
+      display: block;
+      animation: fadeInDrawer 0.2s ease-in-out;
+    }
+    @keyframes fadeInDrawer {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 
 <body>

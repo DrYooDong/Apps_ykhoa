@@ -528,15 +528,94 @@
     // RENDER FUNCTIONS: FILTER PILLS
     // ════════════════════════════
 
+    const CONDITION_SPECIALTY_MAP = {
+      'heart-failure': ['cardio'],
+      'hypertension': ['cardio'],
+      'af': ['cardio'],
+      'cad': ['cardio'],
+      'valvular-heart': ['cardio'],
+      'diabetes-t2d': ['endo'],
+      'diabetes-t1d': ['endo'],
+      'thyroid': ['endo'],
+      'dyslipidemia': ['endo'],
+      'obesity': ['endo'],
+      'copd': ['pulmo'],
+      'asthma': ['pulmo'],
+      'pneumonia': ['pulmo'],
+      'interstitial-lung': ['pulmo'],
+      'tb': ['pulmo'],
+      'ckd': ['renal'],
+      'aki': ['renal'],
+      'nephrotic': ['renal'],
+      'bph-luts': ['renal'],
+      'uti': ['renal'],
+      'icu': ['icu', 'infect'],
+      'hepatitis-b': ['infect', 'gastro'],
+      'hepatitis-c': ['infect', 'gastro'],
+      'flu': ['infect', 'pulmo'],
+      'covid19': ['infect', 'pulmo'],
+      'hemorrhagic-fever': ['infect'],
+      'measles': ['infect', 'peds'],
+      'invasive-fungal': ['infect', 'pulmo', 'icu'],
+      'hfmd': ['infect', 'peds'],
+      'cirrhosis': ['gastro'],
+      'masld-mash': ['gastro', 'endo'],
+      'gerd-peptic': ['gastro'],
+      'ibd': ['gastro'],
+      'stroke': ['neuro', 'cardio'],
+      'epilepsy': ['neuro'],
+      'headache-migraine': ['neuro'],
+      'gout': ['rheuma', 'endo'],
+      'ra': ['rheuma'],
+      'osteoporosis': ['rheuma', 'endo'],
+      'lupus-sle': ['rheuma'],
+      'solid-cancers': ['onco'],
+      'vte-pe': ['hematology', 'cardio', 'icu']
+    };
+
     function renderFilterPills() {
-      // 0. Condition pills (Vấn đề / Bệnh gắn mã ICD-10)
+      // 0. Condition pills (Vấn đề / Bệnh chỉ hiện khi đã chọn Lọc Chuyên Khoa ở Sidebar)
+      const filterRowCond = document.getElementById('filter-row-condition');
       const condContainer = document.getElementById('condition-pills');
-      if (condContainer && window.CLINICAL_CONDITIONS) {
-        let condHtml = `<button class="filter-pill ${filters.condition === null ? 'active' : ''}" onclick="setFilter('condition', null)">Tất cả Bệnh</button>`;
-        Object.entries(window.CLINICAL_CONDITIONS).forEach(([key, cond]) => {
-          condHtml += `<button class="filter-pill ${filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Gắn mã ICD-10: ${cond.icd10.join(', ')}">${cond.icon} ${cond.name}</button>`;
-        });
-        condContainer.innerHTML = condHtml;
+
+      if (filterRowCond) {
+        if (!filters.specialty) {
+          // Khi Lọc Chuyên Khoa ở thanh bên là "Tất cả" -> Ẩn hoàn toàn hàng Vấn đề / Bệnh
+          filterRowCond.style.display = 'none';
+          filters.condition = null;
+        } else {
+          // Khi đã chọn 1 Chuyên Khoa ở thanh bên -> Hiện hàng Vấn đề / Bệnh thuộc riêng chuyên khoa đó
+          filterRowCond.style.display = 'flex';
+          
+          const specName = (SPECIALTIES && SPECIALTIES[filters.specialty]) ? SPECIALTIES[filters.specialty].name : 'Chuyên khoa';
+          const labelEl = filterRowCond.querySelector('.filter-row-label');
+          if (labelEl) labelEl.textContent = `Vấn đề / Bệnh (${specName})`;
+
+          if (condContainer && window.CLINICAL_CONDITIONS) {
+            const activeSpec = filters.specialty;
+            const matchingKeys = Object.keys(window.CLINICAL_CONDITIONS).filter(key => {
+              const mappedSpecs = CONDITION_SPECIALTY_MAP[key];
+              if (Array.isArray(mappedSpecs)) return mappedSpecs.includes(activeSpec);
+              if (typeof mappedSpecs === 'string') return mappedSpecs === activeSpec;
+              // Fallback for custom added conditions
+              const cond = window.CLINICAL_CONDITIONS[key];
+              return cond && cond.specialty === activeSpec;
+            });
+
+            let condHtml = `<button class="filter-pill ${filters.condition === null ? 'active' : ''}" onclick="setFilter('condition', null)">Tất cả Bệnh (${specName})</button>`;
+            
+            if (matchingKeys.length === 0) {
+              condHtml += `<span style="font-size:0.78rem; color:var(--text-muted); padding:4px 8px;">Chưa có bệnh mẫu nào cho chuyên khoa này.</span>`;
+            } else {
+              matchingKeys.forEach(key => {
+                const cond = window.CLINICAL_CONDITIONS[key];
+                condHtml += `<button class="filter-pill ${filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Mã ICD-10: ${cond.icd10.join(', ')}">${cond.icon} ${cond.name}</button>`;
+              });
+            }
+
+            condContainer.innerHTML = condHtml;
+          }
+        }
       }
 
       // 1. Source Type pills
@@ -614,6 +693,101 @@
         leftNavSpecList.innerHTML = specHtml;
       }
     }
+
+    function toggleConditionDrawer(e) {
+      if (e) e.stopPropagation();
+      let drawer = document.getElementById('condition-drawer');
+      if (!drawer) {
+        renderConditionDrawer();
+        drawer = document.getElementById('condition-drawer');
+      }
+      if (drawer) {
+        drawer.classList.toggle('active');
+        renderFilterPills();
+      }
+    }
+
+    function renderConditionDrawer() {
+      const parentRow = document.getElementById('filter-row-condition');
+      if (!parentRow) return;
+
+      let drawer = document.getElementById('condition-drawer');
+      if (!drawer) {
+        drawer = document.createElement('div');
+        drawer.id = 'condition-drawer';
+        drawer.className = 'condition-drawer-container';
+        parentRow.appendChild(drawer);
+      }
+
+      if (!window.CLINICAL_CONDITIONS) return;
+
+      const categories = [
+        { name: "🫀 Tim mạch", keys: ["heart-failure", "hypertension", "af", "cad", "valvular-heart"] },
+        { name: "🩸 Nội tiết & Chuyển hóa", keys: ["diabetes-t2d", "diabetes-t1d", "thyroid", "dyslipidemia", "obesity"] },
+        { name: "🫁 Hô hấp", keys: ["copd", "asthma", "pneumonia", "interstitial-lung", "tb"] },
+        { name: "🧪 Thận - Tiết niệu", keys: ["ckd", "aki", "nephrotic", "bph-luts", "uti"] },
+        { name: "🦠 Truyền nhiễm & Hồi sức", keys: ["icu", "hepatitis-b", "hepatitis-c", "flu", "covid19", "hemorrhagic-fever", "measles", "invasive-fungal", "hfmd"] },
+        { name: "🥑 Tiêu hóa & Gan mật", keys: ["cirrhosis", "masld-mash", "gerd-peptic", "ibd"] },
+        { name: "🧠 Thần kinh", keys: ["stroke", "epilepsy", "headache-migraine"] },
+        { name: "🦴 Cơ xương khớp", keys: ["gout", "ra", "osteoporosis", "lupus-sle"] },
+        { name: "🎗️ Ung bướu & Huyết học", keys: ["solid-cancers", "vte-pe"] }
+      ];
+
+      // Track mapped keys to collect any unmapped custom conditions in "Khác"
+      const mappedKeys = new Set();
+      categories.forEach(cat => cat.keys.forEach(k => mappedKeys.add(k)));
+
+      const unmappedKeys = Object.keys(window.CLINICAL_CONDITIONS).filter(k => !mappedKeys.has(k));
+      if (unmappedKeys.length > 0) {
+        categories.push({ name: "📁 Vấn đề khác", keys: unmappedKeys });
+      }
+
+      let drawerHtml = `
+        <div class="drawer-inner" style="padding: 12px; background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px; margin-top: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border-light);">
+            <strong style="font-size: 0.85rem; color: var(--color-primary); display: flex; align-items: center; gap: 6px;">
+              <span>📑 Danh Mục Bệnh Phân Theo Chuyên Khoa (${Object.keys(window.CLINICAL_CONDITIONS).length} Bệnh)</span>
+            </strong>
+            <button class="btn" onclick="toggleConditionDrawer(event)" style="padding: 2px 8px; font-size: 0.75rem;">Thu gọn ✕</button>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px;">
+      `;
+
+      categories.forEach(cat => {
+        const validKeys = cat.keys.filter(k => window.CLINICAL_CONDITIONS[k]);
+        if (validKeys.length === 0) return;
+
+        drawerHtml += `
+          <div class="drawer-cat-box" style="background: var(--surface-2); padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border-light);">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text); margin-bottom: 6px;">${cat.name}</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+        `;
+
+        validKeys.forEach(k => {
+          const cond = window.CLINICAL_CONDITIONS[k];
+          const isActive = filters.condition === k;
+          drawerHtml += `
+            <button class="filter-pill ${isActive ? 'active' : ''}" onclick="selectConditionFromDrawer('${k}')" style="font-size: 0.75rem; padding: 2px 7px;" title="Mã ICD-10: ${cond.icd10.join(', ')}">
+              ${cond.icon} ${cond.name}
+            </button>
+          `;
+        });
+
+        drawerHtml += `</div></div>`;
+      });
+
+      drawerHtml += `</div></div>`;
+      drawer.innerHTML = drawerHtml;
+    }
+
+    function selectConditionFromDrawer(key) {
+      setFilter('condition', key);
+      const drawer = document.getElementById('condition-drawer');
+      if (drawer) drawer.classList.remove('active');
+    }
+
+    window.toggleConditionDrawer = toggleConditionDrawer;
+    window.selectConditionFromDrawer = selectConditionFromDrawer;
 
     // Helper for period validation
     function isWithinPeriod(study, period) {
@@ -693,6 +867,9 @@
     }
 
     function setFilter(type, value) {
+      if (type === 'specialty') {
+        filters.condition = null;
+      }
       filters[type] = value;
       renderFilterPills();
       renderTable();
