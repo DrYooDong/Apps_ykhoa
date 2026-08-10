@@ -153,7 +153,15 @@
         localStorage.removeItem('internalMedicineStudies');
         localStorage.removeItem('cliniportal_custom_studies');
         localStorage.removeItem('cliniportal_deleted_study_ids');
+        localStorage.removeItem('cliniportal_custom_conditions');
         
+        // Reset condition registry back to empty/default state on logout for data privacy
+        if (window.DEFAULT_CLINICAL_CONDITIONS) {
+          window.CLINICAL_CONDITIONS = JSON.parse(JSON.stringify(window.DEFAULT_CLINICAL_CONDITIONS));
+        } else {
+          window.CLINICAL_CONDITIONS = {};
+        }
+
         const urlInput = document.getElementById('sb-url');
         const keyInput = document.getElementById('sb-key');
         if (urlInput) urlInput.value = '';
@@ -169,9 +177,11 @@
         
         closeSupabaseModal();
         updateSupabaseStatus('disconnected', 'Supabase: Ngoại tuyến (Chưa đăng nhập)');
+        renderFilterPills();
+        renderTimeline();
         renderTable();
         renderUpdates();
-        alert('🔒 Đã đăng xuất thành công! Dữ liệu nghiên cứu cá nhân đã được xóa sạch khỏi thiết bị hiện tại.');
+        alert('🔒 Đã đăng xuất thành công! Dữ liệu nghiên cứu và danh mục bệnh cá nhân đã được xóa sạch khỏi thiết bị hiện tại.');
       }
     }
 
@@ -4496,7 +4506,8 @@
     // CONDITION REGISTRY MANAGEMENT (KHO BỆNH & ICD-10)
     // ════════════════════════════════
 
-    function loadCustomConditions() {
+    async function loadCustomConditions() {
+      // 1. First load from localStorage for fast initial render
       try {
         const saved = localStorage.getItem('cliniportal_custom_conditions');
         if (saved) {
@@ -4508,13 +4519,58 @@
       } catch (e) {
         console.warn('Cannot load custom clinical conditions from localStorage:', e);
       }
+
+      // 2. Async fetch from Supabase if connected
+      if (supabaseClient) {
+        try {
+          const { data, error } = await supabaseClient.from('clinical_conditions').select('*');
+          if (!error && data && data.length > 0) {
+            const sbMap = {};
+            data.forEach(item => {
+              sbMap[item.id] = {
+                id: item.id,
+                name: item.name,
+                icd10: typeof item.icd10 === 'string' ? JSON.parse(item.icd10) : (item.icd10 || []),
+                icon: item.icon || '🩺',
+                color: item.color || '#0284c7',
+                bg: item.bg || '#f0f9ff'
+              };
+            });
+            window.CLINICAL_CONDITIONS = { ...window.CLINICAL_CONDITIONS, ...sbMap };
+            localStorage.setItem('cliniportal_custom_conditions', JSON.stringify(window.CLINICAL_CONDITIONS));
+            if (typeof renderFilterPills === 'function') renderFilterPills();
+            if (typeof renderTimeline === 'function') renderTimeline();
+            if (typeof renderTable === 'function') renderTable();
+          }
+        } catch (err) {
+          console.log('Supabase clinical_conditions table check/fetch (offline or optional table):', err);
+        }
+      }
     }
 
-    function saveCustomConditions() {
+    async function saveCustomConditions() {
+      // 1. Save to local storage
       try {
         localStorage.setItem('cliniportal_custom_conditions', JSON.stringify(window.CLINICAL_CONDITIONS));
       } catch (e) {
         console.warn('Cannot save custom clinical conditions to localStorage:', e);
+      }
+
+      // 2. Sync to Supabase table clinical_conditions if connected
+      if (supabaseClient && window.CLINICAL_CONDITIONS) {
+        try {
+          const rows = Object.values(window.CLINICAL_CONDITIONS).map(c => ({
+            id: c.id,
+            name: c.name,
+            icd10: Array.isArray(c.icd10) ? c.icd10 : [],
+            icon: c.icon || '🩺',
+            color: c.color || '#0284c7',
+            bg: c.bg || '#f0f9ff'
+          }));
+          await supabaseClient.from('clinical_conditions').upsert(rows);
+        } catch (err) {
+          console.warn('Sync custom conditions to Supabase table failed:', err);
+        }
       }
     }
 
