@@ -4492,6 +4492,188 @@
 
     window.filterTimelineCondition = filterTimelineCondition;
 
+    // ════════════════════════════════
+    // CONDITION REGISTRY MANAGEMENT (KHO BỆNH & ICD-10)
+    // ════════════════════════════════
+
+    function loadCustomConditions() {
+      try {
+        const saved = localStorage.getItem('cliniportal_custom_conditions');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+            window.CLINICAL_CONDITIONS = parsed;
+          }
+        }
+      } catch (e) {
+        console.warn('Cannot load custom clinical conditions from localStorage:', e);
+      }
+    }
+
+    function saveCustomConditions() {
+      try {
+        localStorage.setItem('cliniportal_custom_conditions', JSON.stringify(window.CLINICAL_CONDITIONS));
+      } catch (e) {
+        console.warn('Cannot save custom clinical conditions to localStorage:', e);
+      }
+    }
+
+    loadCustomConditions();
+
+    function openConditionSettingsModal() {
+      const modal = document.getElementById('condition-settings-modal');
+      if (!modal) return;
+      renderConditionMgmtTable();
+      modal.classList.add('active');
+    }
+
+    function closeConditionSettingsModal() {
+      const modal = document.getElementById('condition-settings-modal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function renderConditionMgmtTable() {
+      const tbody = document.getElementById('cond-mgmt-tbody');
+      if (!tbody) return;
+
+      if (!window.CLINICAL_CONDITIONS || Object.keys(window.CLINICAL_CONDITIONS).length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:1.5rem; color:var(--text-muted);">Chưa có danh mục bệnh nào.</td></tr>`;
+        return;
+      }
+
+      let html = '';
+      Object.entries(window.CLINICAL_CONDITIONS).forEach(([key, cond]) => {
+        const icdBadges = Array.isArray(cond.icd10) ? cond.icd10.map(code => `<span class="badge" style="background:${cond.bg || '#f1f5f9'}; color:${cond.color || '#334155'}; border:1px solid ${cond.color || '#cbd5e1'}40; font-size:0.7rem; font-weight:700; font-family:monospace; margin-right:3px;">${code}</span>`).join('') : '';
+        html += `
+          <tr style="border-bottom: 1px solid var(--border-light);">
+            <td style="padding: 10px; text-align: center; font-size: 1.3rem;">${cond.icon || '🩺'}</td>
+            <td style="padding: 10px; font-weight: 700; color: ${cond.color || 'var(--text)'};">
+              ${escapeHtml(cond.name)}
+              <div style="font-size:0.68rem; color:var(--text-muted); font-weight:400; font-family:monospace;">key: ${key}</div>
+            </td>
+            <td style="padding: 10px;">${icdBadges || '<span style="color:var(--text-muted); font-style:italic;">Chưa gắn mã</span>'}</td>
+            <td style="padding: 10px; text-align: center; white-space: nowrap;">
+              <button class="btn btn-small" onclick="openConditionEditModal('${key}')" title="Chỉnh sửa" style="padding:3px 8px; font-size:0.75rem; margin-right:4px;">✏️ Sửa</button>
+              <button class="btn btn-small" onclick="deleteConditionRegistryItem('${key}')" title="Xóa bệnh" style="padding:3px 8px; font-size:0.75rem; color:#dc2626; border-color:#fca5a5;">🗑️ Xóa</button>
+            </td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = html;
+    }
+
+    function openConditionEditModal(key) {
+      const modal = document.getElementById('condition-edit-modal');
+      if (!modal) return;
+
+      const titleEl = document.getElementById('cond-form-modal-title');
+      const keyInput = document.getElementById('cond-form-key');
+      const iconInput = document.getElementById('cond-form-icon');
+      const nameInput = document.getElementById('cond-form-name');
+      const icdInput = document.getElementById('cond-form-icd10');
+      const colorInput = document.getElementById('cond-form-color');
+      const bgInput = document.getElementById('cond-form-bg');
+
+      if (key && window.CLINICAL_CONDITIONS && window.CLINICAL_CONDITIONS[key]) {
+        const cond = window.CLINICAL_CONDITIONS[key];
+        if (titleEl) titleEl.textContent = `✏️ Chỉnh Sửa Vấn Đề / Bệnh: ${cond.name}`;
+        if (keyInput) keyInput.value = key;
+        if (iconInput) iconInput.value = cond.icon || '🩺';
+        if (nameInput) nameInput.value = cond.name || '';
+        if (icdInput) icdInput.value = Array.isArray(cond.icd10) ? cond.icd10.join(', ') : '';
+        if (colorInput) colorInput.value = cond.color || '#dc2626';
+        if (bgInput) bgInput.value = cond.bg || '#fef2f2';
+      } else {
+        if (titleEl) titleEl.textContent = '➕ Thêm Vấn Đề / Bệnh Mới';
+        if (keyInput) keyInput.value = '';
+        if (iconInput) iconInput.value = '🩺';
+        if (nameInput) nameInput.value = '';
+        if (icdInput) icdInput.value = '';
+        if (colorInput) colorInput.value = '#0284c7';
+        if (bgInput) bgInput.value = '#f0f9ff';
+      }
+
+      modal.classList.add('active');
+    }
+
+    function closeConditionEditModal() {
+      const modal = document.getElementById('condition-edit-modal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function handleSaveConditionForm(e) {
+      if (e) e.preventDefault();
+
+      const keyInput = document.getElementById('cond-form-key');
+      const iconInput = document.getElementById('cond-form-icon');
+      const nameInput = document.getElementById('cond-form-name');
+      const icdInput = document.getElementById('cond-form-icd10');
+      const colorInput = document.getElementById('cond-form-color');
+      const bgInput = document.getElementById('cond-form-bg');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      if (!name) return;
+
+      let key = keyInput ? keyInput.value.trim() : '';
+      if (!key) {
+        key = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+        if (!key) key = 'cond-' + Date.now();
+      }
+
+      const icon = iconInput ? iconInput.value.trim() : '🩺';
+      const rawIcd = icdInput ? icdInput.value : '';
+      const icdList = rawIcd.split(',').map(s => s.trim().toUpperCase()).filter(Boolean);
+      const color = colorInput ? colorInput.value : '#0284c7';
+      const bg = bgInput ? bgInput.value : '#f0f9ff';
+
+      if (!window.CLINICAL_CONDITIONS) window.CLINICAL_CONDITIONS = {};
+
+      window.CLINICAL_CONDITIONS[key] = {
+        id: key,
+        name: name,
+        icd10: icdList,
+        icon: icon,
+        color: color,
+        bg: bg
+      };
+
+      saveCustomConditions();
+      closeConditionEditModal();
+      renderConditionMgmtTable();
+
+      if (typeof renderFilterPills === 'function') renderFilterPills();
+      if (typeof renderTimeline === 'function') renderTimeline();
+      if (typeof renderTable === 'function') renderTable();
+    }
+
+    function deleteConditionRegistryItem(key) {
+      if (!window.CLINICAL_CONDITIONS || !window.CLINICAL_CONDITIONS[key]) return;
+      const name = window.CLINICAL_CONDITIONS[key].name;
+      if (!confirm(`Bạn có chắc chắn muốn xóa bệnh "${name}" khỏi kho danh mục?`)) return;
+
+      delete window.CLINICAL_CONDITIONS[key];
+      saveCustomConditions();
+      renderConditionMgmtTable();
+
+      if (typeof renderFilterPills === 'function') renderFilterPills();
+      if (typeof renderTimeline === 'function') renderTimeline();
+      if (typeof renderTable === 'function') renderTable();
+    }
+
+    function resetConditionRegistryDefault() {
+      if (!confirm('Bạn có chắc muốn khôi phục toàn bộ Kho Vấn Đề / Bệnh về mặc định?')) return;
+      localStorage.removeItem('cliniportal_custom_conditions');
+      location.reload();
+    }
+
+    window.openConditionSettingsModal = openConditionSettingsModal;
+    window.closeConditionSettingsModal = closeConditionSettingsModal;
+    window.openConditionEditModal = openConditionEditModal;
+    window.closeConditionEditModal = closeConditionEditModal;
+    window.handleSaveConditionForm = handleSaveConditionForm;
+    window.deleteConditionRegistryItem = deleteConditionRegistryItem;
+    window.resetConditionRegistryDefault = resetConditionRegistryDefault;
+
     function jumpToStudy(id) {
       switchTab('list');
       setTimeout(() => {
