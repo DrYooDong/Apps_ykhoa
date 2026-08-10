@@ -438,12 +438,48 @@
       const deletedList = getDeletedStudyIds();
       let rawList = [];
 
+      const LEGACY_SAMPLE_IDS = new Set([
+        'study_2025_aha_acc_hypertension',
+        'study_2016_jama_sepsis_3_consensus',
+        'study_2026_surviving_sepsis_campaign_international_guidelines',
+        'study_2026_aha_acc_ada_asn_ckm_syndrome',
+        'study_2023_byt_benh_phoi_mo_ke',
+        'study_2026_byt_u_xo_tu_cung',
+        'study_2026_cap_nhat_soc_tim',
+        'study_byt_benh_than_kinh_dai_thao_duong_2025',
+        'study_2026_ada_diabetes',
+        'study_cap_nhat_ve_bao_giap_2026',
+        'study_phac_do_soc_nhiem_khuan_sepsis3',
+        'study_byt_lao_2024',
+        'study_gina_asthma_2026',
+        'study_kdigo_ckd_2024',
+        'study_aha_acc_htn_2025',
+        'study_esc_af_2024',
+        'study_byt_vpcd_2026',
+        'study_byt_sotret_2023',
+        'study_byt_dengue_2023',
+        'study_who_meningitis_2025',
+        'study_apasl_hbv_2026',
+        'study_byt_vgsvb_2026',
+        'study_antibiotics_basics_2026',
+        'study_ca_the_hoa_beta_lactam_2026',
+        'study_idsa_amr_2026',
+        'study_ks_bn_nang',
+        'study_empareg',
+        'study_jrs_copd_2026',
+        'study_byt_copd_2026'
+      ]);
+
       try {
         const storedCustom = localStorage.getItem('cliniportal_custom_studies');
         if (storedCustom) {
           const parsed = JSON.parse(storedCustom);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            rawList = parsed;
+            const cleaned = parsed.filter(s => s && s.id && !LEGACY_SAMPLE_IDS.has(s.id));
+            if (cleaned.length !== parsed.length) {
+              localStorage.setItem('cliniportal_custom_studies', JSON.stringify(cleaned));
+            }
+            rawList = cleaned;
           }
         }
       } catch (e) {}
