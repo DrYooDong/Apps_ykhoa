@@ -444,10 +444,10 @@
 | `Y học chứng cứ/Guidelines/Guidelines.html` | Tra cứu guidelines |
 | `Y học chứng cứ/Guidelines/README.md` | Hướng dẫn sử dụng phân hệ Guidelines |
 | `Y học chứng cứ/Guidelines/Kho Guidelines/index.html` | **[MỚI]** Mục lục tổng hợp thư mục Kho Guidelines & Bộ lọc tìm kiếm tài liệu HTML |
-| `Y học chứng cứ/Guidelines/Kho Guidelines/apasl-vgsvb-2026.html` | **[MỚI]** APASL 2026 CPGs — Hướng dẫn điều trị Viêm gan B mạn tính & so sánh BYT (Standalone) |
-| `Y học chứng cứ/Guidelines/Kho Guidelines/byt-copd-2026.html` | Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính (COPD) Bộ Y tế 2026 (Standalone) |
-| `Y học chứng cứ/Guidelines/Kho Guidelines/ks-cho-bn-nang.html` | Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone) |
-| `Y học chứng cứ/Guidelines/Kho Guidelines/empa-reg.html` | EMPA-REG OUTCOME — Empagliflozin tim mạch (Standalone) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/2026-apasl-viem-gan-b.html` | **[MỚI]** APASL 2026 CPGs — Hướng dẫn điều trị Viêm gan B mạn tính & so sánh BYT (Standalone) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/2026-byt-copd.html` | Hướng dẫn chẩn đoán và điều trị bệnh phổi tắc nghẽn mạn tính (COPD) Bộ Y tế 2026 (Standalone) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/2026-icu-khang-sinh-cho-bn-nang.html` | Kháng sinh cho bệnh nhân nặng — Tổng quan Critical Care Clinics 2026 (Standalone) |
+| `Y học chứng cứ/Guidelines/Kho Guidelines/2015-nejm-empa-reg.html` | EMPA-REG OUTCOME — Empagliflozin tim mạch (Standalone) |
 | `Y học chứng cứ/Thống kê y học/Thongkeyhoc.html` | Thống kê y học (Hub chính 8 bài học) |
 | `Y học chứng cứ/Thống kê y học/quiz.html` | **[MỚI]** EBM Quiz Engine & Spaced Repetition (Thuật toán SM-2, Flashcard 3D & 16+ câu hỏi lâm sàng) |
 | `Y học chứng cứ/Thống kê y học/quiz.js` | Logic Spaced Repetition SM-2 (Interval & Ease Factor), lật thẻ 3D & ngân hàng 16 câu hỏi trắc nghiệm |
@@ -544,7 +544,7 @@
 | `src/content/skills/` | **[MỚI]** Phân hệ Kỹ năng Lâm sàng & Master Catalog `index.json` (bao gồm `kn-kham-danh-gia-phat-trien-the-chat-tre-em.html` - Khám Đánh Giá Phát Triển Thể Chất ở Trẻ Em, `kn-kham-khop-o-tre-em.html` - Khám Cơ Xương Khớp Ở Trẻ Em) |
 | `src/content/pathophysiology/` | **[MỚI]** Phân hệ Sinh lý & Sinh lý bệnh & Master Catalog `index.json` (67 items, bao gồm `slb-ccbs-hemophilia.html` - Bệnh Hemophilia ở trẻ em, `slb-ccbs-henpq.html` - Hen phế quản ở trẻ em, `slb-ccbs-vtpq.html` - Viêm tiểu phế quản cấp ở trẻ, `WORKFLOW_TAO_TRANG_SINH_LY_BENH.md`) |
 | `src/content/approaches/` | **[MỚI]** Phân hệ Tiếp cận Triệu chứng & Bệnh lý & Master Catalog `index.json` (58 items) |
-| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (bao gồm `guidelinesdata.js`, `js/ebm-recommendation-engine.js` - CDSS Recommendation Engine, `kho-guidelines/2016-jama-sepsis-3-consensus.html` - Tóm tắt Đồng thuận Quốc tế Sepsis-3 JAMA 2016, `kho-guidelines/ca-the-hoa-beta-lactam-2026.html` - Hướng dẫn đồng thuận cá thể hóa liều Beta-lactam ở bệnh nhân nặng 2026, `kho-guidelines/idsa-amr-2026.html` - Hướng dẫn IDSA 2026 điều trị nhiễm khuẩn Gram-âm kháng thuốc AMR) |
+| `src/content/ebm/` | **[MỚI]** Phân hệ Y học Chứng cứ & Guidelines & Master Catalog `index.json` (bao gồm `guidelinesdata.js`, `js/ebm-recommendation-engine.js` - CDSS Recommendation Engine, `kho-guidelines/images/` - Thư mục lưu trữ hình ảnh tóm tắt y khoa, `kho-guidelines/2016-jama-sepsis-3-consensus.html` - Tóm tắt Đồng thuận Quốc tế Sepsis-3 JAMA 2016, `kho-guidelines/2026-icu-ca-the-hoa-beta-lactam.html` - Hướng dẫn đồng thuận cá thể hóa liều Beta-lactam ở bệnh nhân nặng 2026, `kho-guidelines/2026-idsa-amr.html` - Hướng dẫn IDSA 2026 điều trị nhiễm khuẩn Gram-âm kháng thuốc AMR) |
 | `src/content/tcm/` | **[MỚI]** Phân hệ Y học Cổ truyền & Master Catalog `index.json` (17 items) |
 | `src/components/article-reader.html` | **[MỚI]** Standalone Article Reader Component Engine |
 | `src/components/clinical-flow-studio.html` | **[MỚI]** Standalone Clinical Flow Studio Studio Component Engine |

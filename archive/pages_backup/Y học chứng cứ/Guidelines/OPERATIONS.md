@@ -17,7 +17,7 @@ pages/Y học chứng cứ/Guidelines/
 ├── OPERATIONS.md          ← Tài liệu kỹ thuật này
 └── Kho Guidelines/        ← Thư mục các bài viết tóm tắt chi tiết (.html)
     ├── index.html
-    ├── ks-cho-bn-nang.html
+    ├── 2026-icu-khang-sinh-cho-bn-nang.html
     └── ...
 ```
 
@@ -78,7 +78,7 @@ Mỗi object trong mảng `studies[]` có cấu trúc:
   detailedConclusion: "Chi tiết bổ sung",
   fdaStatus: "FDA Approved 2016",
   sourceUrl: "https://...",      // Link PubMed / nguồn gốc
-  file: "Kho Guidelines/empa-reg.html",  // Đường dẫn tương đối tới bài tóm tắt
+  file: "Kho Guidelines/2015-nejm-empa-reg.html",  // Đường dẫn tương đối tới bài tóm tắt
   asianData: true,               // boolean: có dữ liệu bệnh nhân Châu Á
   bookmarked: false,             // boolean: đã đánh dấu sao
   subgroups: {                   // Object phân tích subgroup — xem phần Subgroup

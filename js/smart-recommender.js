@@ -14,7 +14,7 @@ const RECOMMENDATION_CATALOG = [
     specialty: "infect",
     specName: "Truyền Nhiễm / Hồi Sức",
     desc: "Tối ưu hóa liều nạp, truyền kéo dài Beta-lactam & hiệu chỉnh liều theo PK/PD.",
-    url: "src/content/ebm/guidelines/kho-guidelines/ks-cho-bn-nang.html"
+    url: "src/content/ebm/guidelines/kho-guidelines/2026-icu-khang-sinh-cho-bn-nang.html"
   },
   {
     title: "Bộ Tứ Trụ Cột Điều Trị Suy Tim (VNHA/VCS)",
@@ -28,14 +28,14 @@ const RECOMMENDATION_CATALOG = [
     specialty: "pulmo",
     specName: "Hô Hấp",
     desc: "Quyết định 2131/QĐ-BYT, phân nhóm ABE và tiêu chuẩn Rome 2022.",
-    url: "src/content/ebm/guidelines/kho-guidelines/byt-copd-2026.html"
+    url: "src/content/ebm/guidelines/kho-guidelines/2026-byt-copd.html"
   },
   {
     title: "Thử Nghiệm EMPA-REG OUTCOME",
     specialty: "cardio",
     specName: "Tim Mạch / Nội Tiết",
     desc: "Empagliflozin giảm 38% tử vong do tim mạch ở BN đái tháo đường.",
-    url: "src/content/ebm/guidelines/kho-guidelines/2015-empareg-outcome-nejm.html"
+    url: "src/content/ebm/guidelines/kho-guidelines/2015-nejm-empareg-outcome.html"
   }
 ];
 

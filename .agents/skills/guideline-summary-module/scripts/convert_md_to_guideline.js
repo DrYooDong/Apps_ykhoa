@@ -3,7 +3,7 @@
  * 
  * Script Node.js tự động chuyển đổi file Markdown (.md) tóm tắt Guideline / RCT y khoa
  * thành trang HTML tóm tắt ĐỈNH CAO (Flagship Standard) tại src/content/ebm/guidelines/kho-guidelines/<slug>.html
- * theo đúng tiêu chuẩn giao diện của byt-sot-xuat-huyet-dengue-2023.html
+ * theo đúng tiêu chuẩn giao diện của 2023-byt-sot-xuat-huyet-dengue.html
  * và tự động đăng ký bản ghi dữ liệu vào src/content/ebm/guidelines/guidelinesdata.js.
  * 
  * Cách sử dụng:

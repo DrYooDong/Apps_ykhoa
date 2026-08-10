@@ -34,7 +34,7 @@ Phân hệ hỗ trợ bác sĩ lâm sàng và nghiên cứu viên trong việc:
 | `detailedConclusion`| Kết luận chi tiết | `Text` (Multi-line) | Các kết quả chi tiết của tiêu chí phụ, tác dụng phụ hoặc phân tích dưới nhóm. | *Tử vong tim mạch giảm 38%...* |
 | `fdaStatus` | Phê duyệt / Khuyến cáo | `Text` | Trạng thái phê duyệt pháp lý hoặc phân độ khuyến cáo. | *FDA Approved 2016* |
 | `sourceUrl` | Link nguồn | `URL` | Đường dẫn trực tiếp tới PubMed hoặc trang chủ đơn vị ban hành. | *https://www.nejm.org/...* |
-| `file` | File HTML chi tiết | `Text` | Đường dẫn tương đối tới tệp báo cáo chuyên sâu offline trong hệ thống. | *studies/empa-reg.html* |
+| `file` | File HTML chi tiết | `Text` | Đường dẫn tương đối tới tệp báo cáo chuyên sâu offline trong hệ thống. | *studies/2015-nejm-empa-reg.html* |
 | `asianData` | Dữ liệu Châu Á | `Boolean` | Đánh dấu nếu nghiên cứu có nhóm bệnh nhân Châu Á để đối chiếu thực tế. | *Đã chọn (True)* |
 
 ---

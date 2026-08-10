@@ -40,7 +40,7 @@ src/content/ebm/guidelines/
 └── kho-guidelines/                       # Thư mục chứa các trang chi tiết (.html / .md nguồn)
     ├── 2024-kdigo-ckd.html               # Mẫu Guideline KDIGO 2024
     ├── 2025-aha-acc-hypertension.html    # Mẫu Guideline AHA/ACC 2025
-    ├── empa-reg.html                     # Mẫu RCT Landmark
+    ├── 2015-nejm-empa-reg.html                     # Mẫu RCT Landmark
     └── phac-do-soc-nhiem-khuan-sepsis3.md # Mẫu file nguồn Markdown (.md)
 ```
 

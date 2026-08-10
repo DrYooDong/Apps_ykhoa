@@ -1955,7 +1955,7 @@
       rowDiv.innerHTML = `
         <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted); min-width:22px;">#${count}</span>
         <input type="text" class="part-label-input" value="${escapeHtml(defaultLabel)}" placeholder="Tên phần (VD: Phần 1: Chẩn đoán)" style="flex:1; font-size:0.8rem; padding:5px 8px; border:1px solid var(--border); border-radius:6px; background:var(--surface); color:var(--text);">
-        <input type="text" class="part-file-input" value="${escapeHtml(file)}" placeholder="File HTML (VD: kho-guidelines/byt-lao-2024-p1.html)" style="flex:1.4; font-size:0.8rem; padding:5px 8px; border:1px solid var(--border); border-radius:6px; background:var(--surface); color:var(--text);">
+        <input type="text" class="part-file-input" value="${escapeHtml(file)}" placeholder="File HTML (VD: kho-guidelines/2024-byt-lao-p1.html)" style="flex:1.4; font-size:0.8rem; padding:5px 8px; border:1px solid var(--border); border-radius:6px; background:var(--surface); color:var(--text);">
         <button type="button" onclick="removeSummaryPartRow(this)" style="background:none; border:none; color:var(--red); cursor:pointer; font-size:18px; font-weight:bold; padding:2px 6px;" title="Xóa phần này">&times;</button>
       `;
       container.appendChild(rowDiv);

@@ -14,8 +14,9 @@ Khi có một file tài liệu y khoa `.md` (phác đồ, hướng dẫn điều
 File Nguồn (.md)
     │
     ├──► 1. Tạo HTML UI: src/content/ebm/guidelines/kho-guidelines/<slug>.html
+    ├──► 2. Lưu hình ảnh (nếu có): src/content/ebm/guidelines/kho-guidelines/images/<filename>.png
     │
-    └──► 2. Cập nhật Index: src/content/ebm/guidelines/guidelinesdata.js (SAMPLE_STUDIES)
+    └──► 3. Cập nhật Index: src/content/ebm/guidelines/guidelinesdata.js (SAMPLE_STUDIES)
 ```
 
 ---
@@ -76,8 +77,8 @@ tags: "Sepsis, Shock, Norepinephrine, Kháng sinh, Hồi sức"
 ### Step 2: Đặt tên Slug & Khai báo Đường dẫn
 - Đặt tên file HTML dạng slug gạch nối, ví dụ:
   - `2024-kdigo-ckd.html`
-  - `byt-sot-xuat-huyet-dengue-2023.html`
-  - `phac-do-soc-nhiem-khuan-sepsis3.html`
+  - `2023-byt-sot-xuat-huyet-dengue.html`
+  - `2021-ssc-soc-nhiem-khuan-sepsis3.html`
 - Thư mục lưu trữ: `src/content/ebm/guidelines/kho-guidelines/<slug>.html`.
 - Cấp thư mục: **Cấp 4** so với `Apps_ykhoa/`.
 - Tiền tố đường dẫn tương đối:
@@ -338,7 +339,7 @@ Mở file `src/content/ebm/guidelines/guidelinesdata.js` và thêm object mới 
   summary: "Nội dung tóm tắt cốt lõi 2-3 câu...",
   detailedConclusion: "Kết luận chi tiết về liều dùng và quy trình...",
   sourceUrl: "https://doi.org/...",
-  file: "kho-guidelines/phac-do-soc-nhiem-khuan-sepsis3.html", // Đường dẫn tính từ ebm/guidelines/
+  file: "kho-guidelines/2021-ssc-soc-nhiem-khuan-sepsis3.html", // Đường dẫn tính từ ebm/guidelines/
   asianData: true,
   bookmarked: false,
   subgroups: {                               // (Tùy chọn) hiển thị biểu đồ phụ

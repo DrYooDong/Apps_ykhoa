@@ -20,7 +20,7 @@ const EVIDENCE_DATABASE = {
     badgeClass: "byt-2026",
     title: "Hướng Dẫn Lâm Sàng Bộ Y Tế Việt Nam 2026",
     body: "Khuyến cáo chính thức của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 2131/QĐ-BYT ngày 14/07/2026 về chẩn đoán và điều trị bệnh lý tại Việt Nam.",
-    linkUrl: "src/content/ebm/guidelines/kho-guidelines/byt-copd-2026.html"
+    linkUrl: "src/content/ebm/guidelines/kho-guidelines/2026-byt-copd.html"
   },
   "esc-2026": {
     badgeText: "🇪🇺 ESC 2026 Update",
