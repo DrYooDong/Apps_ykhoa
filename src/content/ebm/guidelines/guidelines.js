@@ -1498,19 +1498,432 @@
     // ════════════════════════════
     // COMPARE TAB VIEW
     // ════════════════════════════
+    // META-FOREST PLOT ENGINE (SO SÁNH 2-4 RCT)
+    // ════════════════════════════
+
+    let currentMetaEndpointKey = 'mace';
+
+    const META_ENDPOINTS = {
+      'mace': { name: '🎯 3-Point MACE', desc: 'Tử vong TM, Nhồi máu cơ tim, Đột quỵ' },
+      'cvDeath': { name: '🫀 Tử vong Tim mạch', desc: 'Cardiovascular Death' },
+      'hhf': { name: '🏥 Nhập viện do Suy tim', desc: 'Hospitalization for Heart Failure' },
+      'allCauseDeath': { name: '☠️ Tử vong mọi nguyên nhân', desc: 'All-Cause Mortality' },
+      'renal': { name: '🩺 Tiêu chí Gộp Thận', desc: 'Renal Composite Outcome' },
+      'adverse': { name: '⚡ Tác dụng phụ / An toàn', desc: 'Severe Adverse Events (SAE)' }
+    };
+
+    function setMetaEndpoint(key) {
+      if (!META_ENDPOINTS[key]) return;
+      currentMetaEndpointKey = key;
+      const comparedStudies = studies.filter(s => selectedIds.has(s.id));
+      renderMetaForestPlotPanel(comparedStudies);
+    }
+
+    window.setMetaEndpoint = setMetaEndpoint;
+
+    function extractEndpointStats(study, endpointKey) {
+      if (!study) return null;
+
+      // 1. Matrix Endpoints Check
+      const me = study.matrixEndpoints || study.endpoints;
+      if (me && me[endpointKey]) {
+        const item = me[endpointKey];
+        const hr = parseFloat(item.hr || item.estimate || item.value);
+        let lower = null, upper = null;
+        if (item.ci) {
+          const parts = String(item.ci).split(/[-–—]/).map(p => parseFloat(p.trim()));
+          if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+            lower = parts[0]; upper = parts[1];
+          }
+        } else if (item.ciLower !== undefined && item.ciUpper !== undefined) {
+          lower = parseFloat(item.ciLower);
+          upper = parseFloat(item.ciUpper);
+        }
+        if (!isNaN(hr) && lower !== null && upper !== null) {
+          return {
+            hr, lower, upper,
+            pValue: item.p || item.pValue || 'N/A',
+            label: item.label || study.title,
+            sampleSize: study.sampleSize || 'N/A'
+          };
+        }
+      }
+
+      // 2. Statistics check if endpoint matches primary endpoint or default
+      if (study.statistics && ['mace', 'primary'].includes(endpointKey)) {
+        const st = study.statistics;
+        const hr = parseFloat(st.value || st.estimate);
+        const lower = parseFloat(st.ciLower);
+        const upper = parseFloat(st.ciUpper);
+        if (!isNaN(hr) && !isNaN(lower) && !isNaN(upper)) {
+          return {
+            hr, lower, upper,
+            pValue: st.pValue || 'N/A',
+            label: study.title,
+            sampleSize: study.sampleSize || 'N/A'
+          };
+        }
+      }
+
+      // 3. Fallback parse from keyResults
+      if (study.keyResults) {
+        const raw = parseForestDataRaw(study.keyResults);
+        if (raw && !isNaN(raw.estimate) && raw.lower !== undefined && raw.upper !== undefined) {
+          return {
+            hr: raw.estimate, lower: raw.lower, upper: raw.upper,
+            pValue: raw.pValue || 'N/A',
+            label: study.title,
+            sampleSize: study.sampleSize || 'N/A'
+          };
+        }
+      }
+
+      return null;
+    }
+
+    function renderMetaForestPlotPanel(comparedStudies) {
+      const panel = document.getElementById('meta-forest-container');
+      if (!panel) return;
+
+      if (!comparedStudies || comparedStudies.length < 2) {
+        panel.style.display = 'none';
+        return;
+      }
+
+      panel.style.display = 'flex';
+
+      const endpointConfig = META_ENDPOINTS[currentMetaEndpointKey] || META_ENDPOINTS['mace'];
+
+      // Render Endpoints Bar
+      const endpointsHtml = Object.keys(META_ENDPOINTS).map(key => {
+        const ep = META_ENDPOINTS[key];
+        const isActive = key === currentMetaEndpointKey;
+        return `<button class="endpoint-pill-btn ${isActive ? 'active' : ''}" onclick="setMetaEndpoint('${key}')" title="${ep.desc}">${ep.name}</button>`;
+      }).join('');
+
+      // Generate Meta-Forest SVG
+      const svgResult = renderMetaForestPlotSVG(comparedStudies, currentMetaEndpointKey);
+
+      panel.innerHTML = `
+        <div class="meta-forest-header">
+          <div class="meta-forest-title-group">
+            <div class="meta-forest-title">📊 Meta-Forest Plot So Sánh Đa Nghiên Cứu</div>
+            <span class="meta-badge">${comparedStudies.length} Thử Nghiệm RCT</span>
+          </div>
+          <div class="meta-forest-actions">
+            <button class="meta-btn" onclick="downloadMetaForestPNG()">📸 Tải ảnh (PNG)</button>
+            <button class="meta-btn" onclick="downloadMetaForestSVG()">📄 Tải SVG</button>
+          </div>
+        </div>
+
+        <div class="meta-forest-endpoints-bar">
+          ${endpointsHtml}
+        </div>
+
+        <div class="meta-forest-svg-container" id="meta-svg-wrapper">
+          ${svgResult.svg}
+        </div>
+
+        <div class="meta-forest-stats-bar">
+          <div>
+            <strong>Mô hình tổng hợp:</strong> Inverse-Variance Fixed-Effects Model
+          </div>
+          <div>
+            <strong>Độ không đồng nhất (Heterogeneity):</strong> 
+            <span class="heterogeneity-badge ${svgResult.hetClass}">I² = ${svgResult.iSquared}% (${svgResult.hetText})</span>
+          </div>
+          <div>
+            <strong>Cochran's Q:</strong> p = ${svgResult.qPVal}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMetaForestPlotSVG(comparedStudies, endpointKey) {
+      const items = [];
+      let totalN = 0;
+
+      comparedStudies.forEach(study => {
+        const stats = extractEndpointStats(study, endpointKey);
+        const name = study.title.length > 28 ? study.title.substring(0, 27) + '…' : study.title;
+        const drug = study.drug || 'N/A';
+        const n = study.sampleSize || 0;
+        if (typeof n === 'number') totalN += n;
+
+        if (stats) {
+          items.push({
+            id: study.id,
+            title: name,
+            drug: drug,
+            hr: stats.hr,
+            lower: stats.lower,
+            upper: stats.upper,
+            pValue: stats.pValue,
+            sampleSize: n,
+            hasData: true
+          });
+        } else {
+          items.push({
+            id: study.id,
+            title: name,
+            drug: drug,
+            hr: null, lower: null, upper: null, pValue: 'N/A',
+            sampleSize: n,
+            hasData: false
+          });
+        }
+      });
+
+      const validItems = items.filter(it => it.hasData && it.hr > 0 && it.lower < it.upper);
+
+      // Calculations for Pooled Diamond & Inverse-Variance Weighting
+      let pooledHR = 1.0, pooledLower = 1.0, pooledUpper = 1.0;
+      let sumW = 0, sumWlnHR = 0, qStat = 0;
+      let iSquared = 0;
+
+      validItems.forEach(it => {
+        const lnHR = Math.log(it.hr);
+        const lnL = Math.log(it.lower);
+        const lnU = Math.log(it.upper);
+        const se = (lnU - lnL) / (2 * 1.96);
+        it.se = se > 0 ? se : 0.1;
+        it.w = 1 / (it.se * it.se);
+        it.lnHR = lnHR;
+        sumW += it.w;
+        sumWlnHR += it.w * lnHR;
+      });
+
+      if (sumW > 0) {
+        const pooledLnHR = sumWlnHR / sumW;
+        const pooledSE = 1 / Math.sqrt(sumW);
+        pooledHR = Math.exp(pooledLnHR);
+        pooledLower = Math.exp(pooledLnHR - 1.96 * pooledSE);
+        pooledUpper = Math.exp(pooledLnHR + 1.96 * pooledSE);
+
+        // Percentage weights
+        validItems.forEach(it => {
+          it.weightPct = ((it.w / sumW) * 100).toFixed(1);
+          qStat += it.w * Math.pow(it.lnHR - pooledLnHR, 2);
+        });
+
+        const k = validItems.length;
+        if (k > 1 && qStat > (k - 1)) {
+          iSquared = Math.round(((qStat - (k - 1)) / qStat) * 100);
+        } else {
+          iSquared = 0;
+        }
+      }
+
+      let hetClass = 'het-low';
+      let hetText = 'Thấp';
+      if (iSquared >= 50) { hetClass = 'het-high'; hetText = 'Cao'; }
+      else if (iSquared >= 25) { hetClass = 'het-mod'; hetText = 'Trung bình'; }
+
+      const qPVal = qStat > 0 ? (qStat < 1.0 ? '> 0.3' : (qStat < 3.84 ? '0.05 - 0.3' : '< 0.05')) : 'N/A';
+
+      // SVG Layout Constants
+      const rowH = 36;
+      const PAD_T = 38;
+      const PAD_B = 52;
+      const W = 720;
+      const totalRows = items.length + (validItems.length > 1 ? 1 : 0);
+      const H = PAD_T + totalRows * rowH + PAD_B;
+
+      // Axis Range
+      let allLowers = validItems.map(d => d.lower);
+      let allUppers = validItems.map(d => d.upper);
+      if (validItems.length > 1) {
+        allLowers.push(pooledLower);
+        allUppers.push(pooledUpper);
+      }
+      const minVal = allLowers.length > 0 ? Math.min(...allLowers) : 0.5;
+      const maxVal = allUppers.length > 0 ? Math.max(...allUppers) : 1.5;
+
+      const axisMin = Math.max(0.2, Math.floor((minVal - 0.15) * 10) / 10);
+      const axisMax = Math.ceil((maxVal + 0.15) * 10) / 10;
+
+      const plotX1 = 250;
+      const plotX2 = 530;
+      const plotW = plotX2 - plotX1;
+
+      function toX(val) {
+        if (val <= axisMin) return plotX1;
+        if (val >= axisMax) return plotX2;
+        return plotX1 + ((val - axisMin) / (axisMax - axisMin)) * plotW;
+      }
+
+      const xNull = toX(1.0);
+
+      let svg = `<svg class="meta-forest-svg chart-svg" viewBox="0 0 ${W} ${H}" width="100%" height="${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Meta-Forest Plot Comparison">`;
+      svg += `<style>
+        .meta-forest-svg text { font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; }
+        .meta-forest-svg .mono { font-family: 'JetBrains Mono', monospace; }
+      </style>`;
+
+      // Header row
+      svg += `<text x="12" y="20" font-size="10" font-weight="800" fill="var(--text-muted)" text-transform="uppercase" letter-spacing="0.04em">Nghiên cứu / Thử nghiệm</text>`;
+      svg += `<text x="210" y="20" font-size="10" font-weight="800" fill="var(--text-muted)" text-transform="uppercase" letter-spacing="0.04em">Cỡ mẫu (n)</text>`;
+      svg += `<text x="${(plotX1 + plotX2) / 2}" y="20" text-anchor="middle" font-size="10" font-weight="800" fill="var(--text-muted)" text-transform="uppercase" letter-spacing="0.04em">Biểu đồ Hazard Ratio (95% CI)</text>`;
+      svg += `<text x="${W - 12}" y="20" text-anchor="end" font-size="10" font-weight="800" fill="var(--text-muted)" text-transform="uppercase" letter-spacing="0.04em">HR (95% CI) | Trọng số</text>`;
+      svg += `<line x1="10" y1="28" x2="${W - 10}" y2="28" stroke="var(--border)" stroke-width="1.2"/>`;
+
+      // Null line (HR = 1.0)
+      const nullY2 = H - PAD_B + 4;
+      svg += `<line x1="${xNull}" y1="29" x2="${xNull}" y2="${nullY2}" stroke="var(--border)" stroke-width="1.8" stroke-dasharray="4,3"/>`;
+
+      // Draw study rows
+      items.forEach((item, idx) => {
+        const cy = PAD_T + idx * rowH + rowH / 2;
+        const isOdd = idx % 2 === 1;
+        if (isOdd) {
+          svg += `<rect x="8" y="${cy - rowH / 2}" width="${W - 16}" height="${rowH}" fill="var(--surface-2)" opacity="0.6" rx="4"/>`;
+        }
+
+        svg += `<text x="12" y="${cy - 2}" font-size="10.5" font-weight="700" fill="var(--text)">${escapeHtml(item.title)}</text>`;
+        svg += `<text x="12" y="${cy + 11}" font-size="9" font-weight="600" fill="var(--text-muted)">${escapeHtml(item.drug)}</text>`;
+        svg += `<text x="210" y="${cy + 4}" font-size="10" font-weight="600" fill="var(--text-muted)" class="mono">${item.sampleSize !== 'N/A' ? 'n=' + formatNumber(item.sampleSize) : 'N/A'}</text>`;
+
+        if (item.hasData && item.hr) {
+          const xL = toX(item.lower);
+          const xU = toX(item.upper);
+          const xE = toX(item.hr);
+          const isGreen = item.hr < 1.0;
+          const dotColor = isGreen ? '#059669' : '#dc2626';
+          const lineBg = isGreen ? '#a7f3d0' : '#fca5a5';
+
+          // CI Horizontal Whisker Line
+          svg += `<line x1="${xL}" y1="${cy}" x2="${xU}" y2="${cy}" stroke="${lineBg}" stroke-width="3.5" stroke-linecap="round"/>`;
+          svg += `<line x1="${xL}" y1="${cy - 4}" x2="${xL}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>`;
+          svg += `<line x1="${xU}" y1="${cy - 4}" x2="${xU}" y2="${cy + 4}" stroke="${dotColor}" stroke-width="2"/>`;
+
+          // Point Estimate Box / Diamond
+          const boxSize = Math.max(6, Math.min(10, Math.sqrt(item.w || 10) * 1.2));
+          svg += `<rect x="${xE - boxSize / 2}" y="${cy - boxSize / 2}" width="${boxSize}" height="${boxSize}" fill="${dotColor}" rx="2"/>`;
+
+          // Text HR (CI)
+          const weightTxt = item.weightPct ? ` (${item.weightPct}%)` : '';
+          svg += `<text x="${W - 12}" y="${cy + 4}" text-anchor="end" font-size="10" font-weight="700" fill="${dotColor}" class="mono">HR ${item.hr.toFixed(2)} [${item.lower.toFixed(2)}-${item.upper.toFixed(2)}]${weightTxt}</text>`;
+        } else {
+          svg += `<text x="${(plotX1 + plotX2) / 2}" y="${cy + 4}" text-anchor="middle" font-size="9.5" fill="var(--text-faint)" font-style="italic">Chưa có báo cáo chỉ số cho tiêu chí này</text>`;
+          svg += `<text x="${W - 12}" y="${cy + 4}" text-anchor="end" font-size="10" fill="var(--text-faint)" class="mono">N/A</text>`;
+        }
+      });
+
+      // Combined Pooled Effect Row (if > 1 valid study)
+      if (validItems.length > 1) {
+        const poolCy = PAD_T + items.length * rowH + rowH / 2;
+        svg += `<line x1="10" y1="${poolCy - rowH / 2}" x2="${W - 10}" y2="${poolCy - rowH / 2}" stroke="var(--border)" stroke-width="1.2"/>`;
+        svg += `<rect x="8" y="${poolCy - rowH / 2 + 1}" width="${W - 16}" height="${rowH - 2}" fill="var(--blue-bg)" opacity="0.4" rx="4"/>`;
+
+        svg += `<text x="12" y="${poolCy + 4}" font-size="11" font-weight="800" fill="var(--accent)">🔶 Pooled Effect (Ước tính gộp)</text>`;
+        svg += `<text x="210" y="${poolCy + 4}" font-size="10" font-weight="700" fill="var(--accent)" class="mono">${totalN > 0 ? 'N=' + formatNumber(totalN) : 'N/A'}</text>`;
+
+        const xPL = toX(pooledLower);
+        const xPU = toX(pooledUpper);
+        const xPE = toX(pooledHR);
+
+        // Pooled Diamond Polygon
+        const diaH = 8;
+        svg += `<polygon points="${xPL},${poolCy} ${xPE},${poolCy - diaH} ${xPU},${poolCy} ${xPE},${poolCy + diaH}" fill="#d97706" stroke="#b45309" stroke-width="1.5" opacity="0.95"/>`;
+
+        svg += `<text x="${W - 12}" y="${poolCy + 4}" text-anchor="end" font-size="10.5" font-weight="800" fill="#b45309" class="mono">HR ${pooledHR.toFixed(2)} [${pooledLower.toFixed(2)}-${pooledUpper.toFixed(2)}] (100%)</text>`;
+      }
+
+      // X-Axis Axis Bar & Labels
+      const axisY = H - PAD_B + 12;
+      svg += `<line x1="${plotX1}" y1="${axisY}" x2="${plotX2}" y2="${axisY}" stroke="var(--border-muted)" stroke-width="1.5"/>`;
+
+      const ticks = [axisMin, 1.0, axisMax];
+      ticks.forEach(tVal => {
+        const tx = toX(tVal);
+        svg += `<line x1="${tx}" y1="${axisY}" x2="${tx}" y2="${axisY + 4}" stroke="var(--text-muted)" stroke-width="1.2"/>`;
+        svg += `<text x="${tx}" y="${axisY + 16}" text-anchor="middle" font-size="9" font-weight="700" fill="var(--text-muted)" class="mono">${tVal.toFixed(1)}</text>`;
+      });
+
+      // Directional Favors Labels
+      svg += `<text x="${plotX1 + 10}" y="${axisY + 30}" text-anchor="start" font-size="9" font-weight="700" fill="#059669">← Ưu thế Can thiệp (Favors Drug)</text>`;
+      svg += `<text x="${plotX2 - 10}" y="${axisY + 30}" text-anchor="end" font-size="9" font-weight="700" fill="#dc2626">Ưu thế Giả dược (Favors Placebo) →</text>`;
+
+      svg += `</svg>`;
+
+      return {
+        svg,
+        iSquared,
+        hetClass,
+        hetText,
+        qPVal
+      };
+    }
+
+    function downloadMetaForestSVG() {
+      const container = document.getElementById('meta-svg-wrapper');
+      if (!container) return;
+      const svgEl = container.querySelector('svg');
+      if (!svgEl) return;
+      const svgData = new XMLSerializer().serializeToString(svgEl);
+      const blob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `meta-forest-plot-${currentMetaEndpointKey}.svg`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadMetaForestPNG() {
+      const container = document.getElementById('meta-svg-wrapper');
+      if (!container) return;
+      const svgEl = container.querySelector('svg');
+      if (!svgEl) return;
+
+      const svgData = new XMLSerializer().serializeToString(svgEl);
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+
+      const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+
+      img.onload = function() {
+        canvas.width = img.width * 2;
+        canvas.height = img.height * 2;
+        ctx.scale(2, 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+
+        const pngUrl = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = pngUrl;
+        a.download = `meta-forest-plot-${currentMetaEndpointKey}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    }
+
+    window.downloadMetaForestSVG = downloadMetaForestSVG;
+    window.downloadMetaForestPNG = downloadMetaForestPNG;
 
     function renderCompareView() {
       const container = document.getElementById('compare-grid-container');
       const emptyState = document.getElementById('compare-empty-state');
-      
+      const panel = document.getElementById('meta-forest-container');
+
       if (selectedIds.size === 0) {
         container.innerHTML = '';
-        emptyState.style.display = 'block';
+        if (emptyState) emptyState.style.display = 'block';
+        if (panel) panel.style.display = 'none';
         return;
       }
 
-      emptyState.style.display = 'none';
+      if (emptyState) emptyState.style.display = 'none';
       const comparedStudies = studies.filter(s => selectedIds.has(s.id));
+      renderMetaForestPlotPanel(comparedStudies);
 
       container.innerHTML = comparedStudies.map(study => {
         const spec = SPECIALTIES[study.specialty] || { name: study.specialty, color: '#666', bg: '#f0f0f0' };
@@ -1651,6 +2064,7 @@
       if (emptyState) emptyState.style.display = 'none';
 
       const comparedStudies = studies.filter(s => selectedIds.has(s.id));
+      renderMetaForestPlotPanel(comparedStudies);
       
       const endpointLabels = [
         { key: 'mace', label: '🫀 Biến cố tim mạch (MACE)' },

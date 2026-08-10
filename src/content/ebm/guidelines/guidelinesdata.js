@@ -164,6 +164,23 @@
     summary: 'Hướng dẫn toàn diện chẩn đoán và điều trị viêm gan vi rút B theo Quyết định 1740/QĐ-BYT năm 2026 thay thế Quyết định 3310/QĐ-BYT năm 2019. Mở rộng chỉ định NAs, quy ước ALT nam/nữ, dự phòng MTCT và quản lý suy thận.',
     tags: ['HBV', 'Viêm gan B', 'Bộ Y tế', 'NAs', 'TDF', 'TAF', 'ETV', 'MTCT'],
     keyResults: 'QĐ 1740/QĐ-BYT | ULN ALT: Nam 30 U/L, Nữ 19 U/L | Chỉ định NAs từ F2 trở lên'
+  },
+
+  {
+    id: '2024-byt-vgsvc',
+    title: 'Bộ Y Tế 2024: Hướng Dẫn Chẩn Đoán & Điều Trị Viêm Gan Vi Rút C',
+    titleEn: 'Vietnam MOH Guidelines on Diagnosis & Treatment of Hepatitis C Virus Infection (2024)',
+    year: 2024,
+    sourceType: 'vn-moh',
+    design: 'guideline',
+    impact: 'practice-changing',
+    specialty: 'infect',
+    authors: 'Bộ Y tế Việt Nam (QĐ 2855/QĐ-BYT)',
+    journal: 'Bộ Y tế Việt Nam',
+    file: 'kho-guidelines/2024-byt-vgsvc.html',
+    summary: 'Hướng dẫn toàn diện chẩn đoán và điều trị viêm gan vi rút C theo Quyết định 2855/QĐ-BYT ngày 25/09/2024 của Bộ Y tế Việt Nam (thay thế QĐ 2065/QĐ-BYT 2021). Tiêu chuẩn khẳng định hiện nhiễm anti-HCV/HCV RNA/HCVcAg; phân loại xơ hóa APRI/FIB-4/FibroScan/Child-Pugh; phác đồ DAA theo độ tuổi & mốc cân nặng (SOF/VEL, G/P, SOF/DAC, SOF/LED); chống chỉ định -previr ở xơ gan mất bù; thuật toán xử trí quên thuốc DAA; phác đồ cứu vãn SOF/VEL/VOX; bảng tương tác DDI (Amiodaron, CYP3A, PPI, Statin); điều trị đồng nhiễm HIV/HBV/lao và tầm soát HCC sau SVR12.',
+    tags: ['HCV', 'Viêm gan C', 'Bộ Y tế', 'DAA', 'SOF/VEL', 'Glecaprevir', 'Pibrentasvir', 'SOF/VEL/VOX', 'SVR12', 'Quên thuốc', 'DDI', 'FibroScan', 'APRI', 'Child-Pugh', 'HCC'],
+    keyResults: 'QĐ 2855/QĐ-BYT | SVR12 giảm 85% HCC | Phác đồ DAA theo lứa tuổi & kg | Thuật toán xử trí quên thuốc DAA | Cấm -previr ở xơ gan mất bù'
   }
 ];
 
