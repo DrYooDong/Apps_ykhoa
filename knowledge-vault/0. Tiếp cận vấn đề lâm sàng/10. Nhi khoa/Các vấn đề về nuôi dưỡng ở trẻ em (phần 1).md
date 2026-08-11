@@ -1,3 +1,13 @@
+---
+title: "Các vấn đề về nuôi dưỡng ở trẻ em (phần 1)"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
 ## 1. Nuôi Ăn Ở Trẻ Dưới 1 Tuổi
 
 ### 1.1. Các Vấn Đề Từ Phía Bà Mẹ
@@ -14,9 +24,9 @@
     - _Xử trí:_ Cho trẻ bú thường xuyên đủ cữ để giúp các mạch sữa lưu thông. Trước khi cho bú có thể chườm ấm và vắt bớt sữa để giảm căng. Giữa các cữ bú nên chườm lạnh, mặc áo ngực rộng rãi và có thể dùng thuốc giảm đau nếu cần.
 - **Viêm vú:**
     
-    - Xảy ra ở khoảng $2 - 3%$ phụ nữ đang cho con bú, thường bị ở một bên vú với biểu hiện sốt, sưng, nóng, đỏ, đau tại chỗ, kèm mệt mỏi, đau đầu, đau cơ.
+    - Xảy ra ở khoảng $2 - 3%$ phụ nữ đang cho con bú, thường bị ở một bên vú với biểu hiện [[Sốt]], sưng, nóng, đỏ, đau tại chỗ, kèm mệt mỏi, đau đầu, đau cơ.
     - _Tác nhân vi sinh thường gặp:_ _Staphylococcus aureus_, _Escherichia coli_, _Streptococcus_ nhóm A, _Haemophilus influenzae_, _Klebsiella pneumoniae_ và _Bacteroides_.
-    - _Điều trị:_ Dùng kháng sinh và thuốc giảm đau. Bà mẹ vẫn có thể tiếp tục cho trẻ bú nếu chưa hình thành ổ áp-xe vú. Rửa tay sạch trước khi cho bú/hút sữa và sau khi thay tã cho trẻ giúp giảm nguy cơ nhiễm trùng vú. Nếu không điều trị kịp thời có thể tiến triển thành áp-xe vú cần rạch dẫn lưu.
+    - _Điều trị:_ Dùng [[Kháng sinh]] và thuốc giảm đau. Bà mẹ vẫn có thể tiếp tục cho trẻ bú nếu chưa hình thành ổ áp-xe vú. Rửa tay sạch trước khi cho bú/hút sữa và sau khi thay tã cho trẻ giúp giảm nguy cơ nhiễm trùng vú. Nếu không điều trị kịp thời có thể tiến triển thành áp-xe vú cần rạch dẫn lưu.
 - **Vấn đề sử dụng thuốc của bà mẹ:**
     
     - Các loại thuốc chống chỉ định tuyệt đối khi cho con bú bao gồm: chất phóng xạ, chất chống chuyển hóa, lithium, một vài loại thuốc kháng giáp và thuốc gây nghiện. Nếu bà mẹ bắt buộc phải sử dụng các thuốc này thì phải ngưng cho con bú.
@@ -27,15 +37,15 @@
 
 - **Uống không đủ sữa:**
     
-    - Trẻ sơ sinh cần được cho bú mẹ ít nhất 8 cữ/ngày. Việc bú không đủ sữa gây nguy cơ mất nước và vàng da trong những tuần đầu sau sinh.
-    - _Dấu hiệu nhận biết:_ Trẻ li bì, khóc không dỗ được, mau đòi bú lại, ít đi tiêu, giảm lượng nước tiểu, sụt cân $> 7 - 10%$ cân nặng lúc sinh, có biểu hiện mất nước ưu trương.
-    - _Nguyên nhân:_ Mẹ tiết không đủ sữa (do béo phì, đái tháo đường, xuất huyết sau sinh, sinh mổ, số lần cho bú ít), thiếu kiến thức nuôi con, hoặc trẻ bú mút kém.
+    - Trẻ sơ sinh cần được cho bú mẹ ít nhất 8 cữ/ngày. Việc bú không đủ sữa gây nguy cơ [[Mất nước]] và [[Vàng da]] trong những tuần đầu sau sinh.
+    - _Dấu hiệu nhận biết:_ Trẻ li bì, khóc không dỗ được, mau đòi bú lại, ít đi tiêu, giảm lượng nước tiểu, sụt cân $> 7 - 10%$ cân nặng lúc sinh, có biểu hiện [[Mất nước]] ưu trương.
+    - _Nguyên nhân:_ Mẹ tiết không đủ sữa (do béo phì, đái tháo đường, [[Xuất huyết]] sau sinh, sinh mổ, số lần cho bú ít), thiếu kiến thức nuôi con, hoặc trẻ bú mút kém.
 - **Dính thắng lưỡi:**
     
     - Dính thắng lưỡi có thể liên quan đến tình trạng đau đầu vú ở mẹ, trẻ ngậm bắt vú kém và tăng cân chậm. Tuy nhiên, hầu hết trẻ bị dính thắng lưỡi không gặp khó khăn nghiêm trọng trong việc nuôi ăn. Do đó, cần tránh chỉ định cắt thắng lưỡi nếu không thật sự cần thiết.
-- **Vàng da do bú mẹ (Breastfeeding jaundice):**
+- **[[Vàng da]] do bú mẹ (Breastfeeding jaundice):**
     
-    - Trong giai đoạn sơ sinh, trẻ bú mẹ thường có nồng độ bilirubin máu cao hơn trẻ uống sữa công thức. Tần suất bú mẹ trong 3 ngày đầu có tương quan nghịch với mức tăng bilirubin (do bú thường xuyên kích thích đi tiêu phân su và tăng đào thải bilirubin qua phân). Trẻ uống không đủ sữa và chậm tăng cân trong tuần đầu tiên dễ bị tăng bilirubin gián tiếp do tăng tái hấp thu bilirubin từ chu trình gan - ruột.
+    - Trong giai đoạn sơ sinh, trẻ bú mẹ thường có nồng độ bilirubin máu cao hơn trẻ uống sữa công thức. Tần suất bú mẹ trong 3 ngày đầu có tương quan nghịch với mức tăng bilirubin (do bú thường xuyên kích thích đi tiêu phân su và tăng đào thải bilirubin qua phân). Trẻ uống không đủ sữa và chậm tăng cân trong tuần đầu tiên dễ bị tăng bilirubin gián tiếp do tăng tái hấp thu bilirubin từ chu trình [[Gan]] - ruột.
 - **Vàng da sữa mẹ (Breast milk jaundice):**
     
     - Xuất hiện muộn hơn, từ ngày thứ 5 – 7 sau sinh và giảm dần sau 2 – 3 tuần.
@@ -89,7 +99,7 @@
 
 ### 2.2. Tổ Chức Ăn Ở Nhà Trẻ
 
-- Phụ huynh cần tìm hiểu kỹ về chất lượng bữa ăn và cách tổ chức ăn uống tại nhà trẻ. Trẻ ở lứa tuổi mẫu giáo (3 tuổi trở lên) cần được hướng dẫn sử dụng các dụng cụ ăn uống phù hợp với văn hóa.
+- Phụ huynh cần tìm hiểu kỹ về chất lượng bữa ăn và cách tổ chức ăn uống tại nhà trẻ. Trẻ ở lứa tuổi mẫu giáo (3 tuổi trở lên) cần được hướng dẫn sử dụng các dụng cụ ăn uống [[Phù]] hợp với văn hóa.
 
 ---
 
@@ -127,7 +137,7 @@
     - Nên phục vụ món rau củ vào đầu bữa ăn khi trẻ đang đói.
 - **Ăn ở trường:**
     
-    - Bữa ăn học đường cần cung cấp khẩu phần phù hợp lứa tuổi, đảm bảo mức năng lượng tối thiểu/tối đa, kiểm soát lượng chất béo bão hòa, đường và muối. Ngũ cốc nguyên cám chiếm ít nhất $1/2$ lượng ngũ cốc; bổ sung trái cây/rau củ vào bữa sáng và bữa trưa.
+    - Bữa ăn học đường cần cung cấp khẩu phần [[Phù]] hợp lứa tuổi, đảm bảo mức năng lượng tối thiểu/tối đa, kiểm soát lượng chất béo bão hòa, đường và muối. Ngũ cốc nguyên cám chiếm ít nhất $1/2$ lượng ngũ cốc; bổ sung trái cây/rau củ vào bữa sáng và bữa trưa.
 - **Ăn ngoài và ăn tiệc:**
     
     - _Ăn ngoài:_ Thức ăn nhà hàng/thức ăn nhanh thường có khẩu phần lớn, năng lượng cao, chứa nhiều chất béo bão hòa, muối và đường, ít chất xơ.
@@ -156,7 +166,7 @@
 
 ### 4.3. Thực Phẩm Hữu Cơ, Thực Phẩm Chức Năng Và Thảo Dược
 
-- **Thực phẩm hữu cơ (Organic food):** Được trồng/nuôi không sử dụng thuốc trừ sâu tổng hợp, phân bón hóa học, sinh vật biến đổi gen, hormone tăng trưởng hay kháng sinh. Trẻ ăn thực phẩm hữu cơ có nồng độ thuốc trừ sâu trong nước tiểu thấp hơn, tuy nhiên chưa có chứng cứ lâm sàng rõ rệt về việc cải thiện sức khỏe vượt trội. Nếu gia đình có điều kiện tài chính thì có thể sử dụng.
+- **Thực phẩm hữu cơ (Organic food):** Được trồng/nuôi không sử dụng thuốc trừ sâu tổng hợp, phân bón hóa học, sinh vật biến đổi gen, hormone tăng trưởng hay [[Kháng sinh]]. Trẻ ăn thực phẩm hữu cơ có nồng độ thuốc trừ sâu trong nước tiểu thấp hơn, tuy nhiên chưa có chứng cứ lâm sàng rõ rệt về việc cải thiện sức khỏe vượt trội. Nếu gia đình có điều kiện tài chính thì có thể sử dụng.
 - **Thực phẩm chức năng và thảo dược:** Dữ liệu về độ an toàn và hiệu quả ở trẻ em còn hạn chế. **Không khuyến cáo sử dụng Multivitamin (vitamin tổng hợp) hoặc thực phẩm chức năng thường quy** cho tất cả trẻ em khỏe mạnh.
 
 ---
@@ -180,7 +190,7 @@
 |**Bà mẹ sợ sữa mình không đủ hoặc không tốt**|Trấn an mẹ, giải thích tất cả các bà mẹ đều có chất lượng sữa tốt như nhau. Khuyên mẹ ăn uống đầy đủ, nghỉ ngơi hợp lý, tăng cường cho trẻ bú nhiều cữ vì động tác bú sẽ kích thích tạo nhiều sữa hơn.|
 |**Bà mẹ cho trẻ bú bình**|Hướng dẫn mẹ ngưng bú bình, thay thế bằng cách cho trẻ ăn/uống bằng chén (cốc) và muỗng sạch.|
 |**Bà mẹ không cho bú đầy đủ do đi làm xa**|Trao đổi giải pháp để trẻ ở gần mẹ hoặc mang trẻ đến nơi làm việc để bú. Hướng dẫn bà mẹ kỹ thuật vắt sữa và bảo quản sữa mẹ tại nhà.|
-|**Bà mẹ không muốn cho ăn thêm thức ăn khác cùng với cơm / kiêng cữ khi bệnh**|Giải thích trẻ từ 4 – 12 tháng cần được ăn thức ăn băm hoặc nghiền nhỏ. Thêm dầu/mỡ vào chén bột/cháo để cung cấp năng lượng (mỡ không gây tiêu chảy). Giải thích tính chất phân thay đổi khi ăn dặm là sinh lý. Khi trẻ chưa mọc răng vẫn tập cho ăn thức ăn mềm.|
+|**Bà mẹ không muốn cho ăn thêm thức ăn khác cùng với cơm / kiêng cữ khi bệnh**|Giải thích trẻ từ 4 – 12 tháng cần được ăn thức ăn băm hoặc nghiền nhỏ. Thêm dầu/mỡ vào chén bột/cháo để cung cấp năng lượng (mỡ không gây [[Tiêu chảy]]). Giải thích tính chất phân thay đổi khi ăn dặm là sinh lý. Khi trẻ chưa mọc răng vẫn tập cho ăn thức ăn mềm.|
 |**Trẻ biếng ăn khi bị bệnh**|Cho trẻ bú mẹ thường xuyên hơn và lâu hơn. Cho ăn thức ăn mềm, đa dạng, hợp khẩu vị, chia làm nhiều bữa nhỏ trong ngày. Làm sạch thông thoáng mũi nếu trẻ bị nghẹt mũi cản trở hô hấp khi ăn.|
 |**Bà mẹ không tích cực cho ăn / cho ăn không đủ số cữ**|Khuyên bà mẹ ngồi cùng trẻ, kiên nhẫn giúp đỡ và khuyến khích trẻ ăn. Cho trẻ ăn phần thức ăn riêng trong bát/đĩa xác định. Dặn rõ số lượng và số cữ ăn cần thiết theo độ tuổi.|
 

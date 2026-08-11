@@ -1,3 +1,13 @@
+---
+title: "Kê toa & Tham vấn sử dụng thuốc ở trẻ em"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT: KÊ TOA VÀ THAM VẤN SỬ DỤNG THUỐC Ở TRẺ EM
 
 ---
@@ -15,7 +25,7 @@ Với trình độ dân trí và sự hiểu biết ngày càng nâng cao, việ
 ### 2.1. Nguyên Tắc Kê Toa Thuốc
 
 - **Điều kiện bắt buộc:** Chỉ được kê toa thuốc sau khi đã thực hiện **khám bệnh và có chẩn đoán bệnh** rõ ràng.
-- **Độ phù hợp:** Toa thuốc phải phù hợp với chẩn đoán và mức độ nặng của bệnh.
+- **Độ [[Phù]] hợp:** Toa thuốc phải [[Phù]] hợp với chẩn đoán và mức độ nặng của bệnh.
 - **Mục tiêu:** Đạt được yêu cầu **an toàn, hợp lý và hiệu quả**. Ưu tiên kê toa thuốc dạng **đơn chất** hoặc **thuốc generic**.
 - **Căn cứ pháp lý và chuyên môn:** Việc kê toa phải phù hợp với một trong các tài liệu:
     - Hướng dẫn chẩn đoán và điều trị của Bộ Y tế hoặc của cơ sở khám chữa bệnh (nếu chưa có hướng dẫn của Bộ Y tế).
@@ -64,7 +74,7 @@ Với trình độ dân trí và sự hiểu biết ngày càng nâng cao, việ
 
 - **Ứng dụng CNTT:** Toa thuốc kê trên máy tính lưu trữ trên phần mềm của cơ sở y tế. Toa thuốc gây nghiện và hướng thần phải in ra đưa cho người bệnh và lưu bản giấy tại cơ sở.
 - **Thời gian lưu toa thuốc:**
-    - _Thuốc kháng sinh, thuốc kháng virus:_ Cơ sở pha chế, cấp, bán lẻ thuốc phải lưu toa (hoặc lưu thông tin toa) trong thời gian **01 (một) năm** kể từ ngày kê toa.
+    - _Thuốc [[Kháng sinh]], thuốc kháng virus:_ Cơ sở pha chế, cấp, bán lẻ thuốc phải lưu toa (hoặc lưu thông tin toa) trong thời gian **01 (một) năm** kể từ ngày kê toa.
     - _Thuốc gây nghiện, hướng thần, tiền chất:_ Lưu toa **01 (một) năm kể từ khi thuốc hết hạn sử dụng**. Khi hết hạn lưu, thành lập Hội đồng hủy tài liệu theo quy định.
 
 ---
@@ -111,8 +121,8 @@ _Lưu ý:_ Cán bộ y tế cần dặn người nhà điều chỉnh linh hoạ
 - **Quan sát người chăm sóc tự tập lường thuốc:** Yêu cầu người nhà tự thao tác lường liều hoặc nghiền viên thuốc. Quan sát, khen ngợi thao tác đúng và kiên nhẫn hướng dẫn lại nếu người nhà làm sai.
 - **Yêu cầu cho trẻ uống liều đầu tiên tại cơ sở y tế:**
     - Quan sát trẻ uống liều đầu.
-    - **Xử trí khi trẻ bị nôn:** Giải thích cho người nhà nếu trẻ bị nôn trong vòng **30 phút** sau khi uống (trong chất nôn có thấy viên thuốc hoặc sirô), cần cho trẻ **uống lại một liều khác**.
-    - _Lưu ý:_ Nếu trẻ đang bị mất nước và nôn ói nhiều, cần ưu tiên bù đủ nước trước rồi mới cho uống thuốc.
+    - **Xử trí khi trẻ bị [[Nôn ói|nôn]]:** Giải thích cho người nhà nếu trẻ bị nôn trong vòng **30 phút** sau khi uống (trong chất nôn có thấy viên thuốc hoặc sirô), cần cho trẻ **uống lại một liều khác**.
+    - _Lưu ý:_ Nếu trẻ đang bị [[Mất nước]] và [[Nôn ói]] nhiều, cần ưu tiên bù đủ nước trước rồi mới cho uống thuốc.
 
 ---
 

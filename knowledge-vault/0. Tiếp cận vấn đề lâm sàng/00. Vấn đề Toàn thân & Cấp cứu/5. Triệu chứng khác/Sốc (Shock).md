@@ -1,6 +1,10 @@
 ---
 title: "Sốc (Shock)"
-specialty: "Tiếp cận vấn đề lâm sàng"
-tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Triệu chứng khác"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+

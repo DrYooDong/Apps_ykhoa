@@ -1,9 +1,13 @@
 ---
 title: "Ý nghĩa thống kê và lâm sàng"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Chào bạn, dưới góc độ của một bác sĩ chuyên khoa sâu và nhà nghiên cứu lâm sàng (Clinical Researcher), việc phân định rạch ròi giữa **Ý nghĩa Lâm sàng (Clinical Significance)** và **Ý nghĩa Thống kê (Statistical Significance)** là một trong những kỹ năng phân tích dữ liệu quan trọng nhất. Sự nhầm lẫn giữa hai khái niệm này có thể dẫn đến việc đưa ra các quyết định điều trị sai lầm, lãng phí nguồn lực y tế, hoặc bỏ qua những liệu pháp thực sự có giá trị cho người bệnh.
 
 Dưới đây là phân tích chuyên sâu về sự khác biệt, cơ chế, và cách áp dụng tư duy này vào thực hành lâm sàng.
@@ -42,7 +46,7 @@ Tư duy thống kê hiện đại ưu tiên Khoảng tin cậy 95% vượt trộ
 Đây là công cụ diễn dịch ý nghĩa lâm sàng trực quan và có giá trị nhất đối với bác sĩ điều trị.
 *   **NNT:** Là số lượng bệnh nhân cần được điều trị bằng phác đồ mới trong một khoảng thời gian nhất định để mang lại lợi ích cho thêm 1 bệnh nhân. NNT là nghịch đảo của Mức giảm Nguy cơ Tuyệt đối (Absolute Risk Reduction - ARR).
 *   **NNH:** Là số lượng bệnh nhân cần tiếp xúc với phương pháp điều trị để có 1 người bị tác dụng phụ (nghịch đảo của tăng nguy cơ tuyệt đối).
-*   *Phân tích lợi ích - rủi ro:* Hướng dẫn JAMA và CONSORT yêu cầu cung cấp NNT và NNH kèm theo Khoảng tin cậy 95% của chúng để giúp các bác sĩ và bệnh nhân dễ dàng hiểu được giá trị thực sự của liệu pháp. Một loại thuốc có NNT = 50 (cần điều trị 50 người mới cứu được 1 người) nhưng lại có NNH = 10 (cứ 10 người uống thì 1 người bị xuất huyết tiêu hóa nặng) sẽ là một liệu pháp có ý nghĩa thống kê dương tính, nhưng **ý nghĩa lâm sàng mang tính phá hoại**, và không bao giờ được khuyên dùng.
+*   *Phân tích lợi ích - rủi ro:* Hướng dẫn JAMA và CONSORT yêu cầu cung cấp NNT và NNH kèm theo Khoảng tin cậy 95% của chúng để giúp các bác sĩ và bệnh nhân dễ dàng hiểu được giá trị thực sự của liệu pháp. Một loại thuốc có NNT = 50 (cần điều trị 50 người mới cứu được 1 người) nhưng lại có NNH = 10 (cứ 10 người uống thì 1 người bị [[Xuất huyết]] tiêu hóa nặng) sẽ là một liệu pháp có ý nghĩa thống kê dương tính, nhưng **ý nghĩa lâm sàng mang tính phá hoại**, và không bao giờ được khuyên dùng.
 
 ***
 

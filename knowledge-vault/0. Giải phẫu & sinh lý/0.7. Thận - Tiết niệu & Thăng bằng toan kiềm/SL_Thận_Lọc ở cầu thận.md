@@ -1,12 +1,17 @@
 ---
 title: "SL_Thận_Lọc ở cầu thận"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
-Dưới đây là phần tóm tắt ngắn gọn, trọng tâm về **Chức năng Lọc tại Cầu thận (Glomerular Filtration)** kèm theo sự giải thích các hình ảnh, lưu đồ minh họa được trích xuất từ các tài liệu sinh lý học y khoa:
 
-### I. MÀNG LỌC CẦU THẬN VÀ TÍNH THẤM
+Dưới đây là phần tóm tắt ngắn gọn, trọng tâm về **Chức năng Lọc tại Cầu [[Thận]] (Glomerular Filtration)** kèm theo sự giải thích các hình ảnh, lưu đồ minh họa được trích xuất từ các tài liệu sinh lý học y khoa:
+
+### I. MÀNG LỌC CẦU [[Thận]] VÀ TÍNH THẤM
 Quá trình tạo nước tiểu bắt đầu bằng cơ chế siêu lọc (ultrafiltration) huyết tương từ mao mạch cầu thận vào khoang Bowman. 
 
 **1. Cấu trúc 3 lớp của màng lọc:**

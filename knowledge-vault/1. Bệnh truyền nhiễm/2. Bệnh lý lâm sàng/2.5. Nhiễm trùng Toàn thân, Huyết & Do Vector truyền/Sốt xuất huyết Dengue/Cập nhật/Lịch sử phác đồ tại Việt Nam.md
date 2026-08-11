@@ -1,21 +1,28 @@
 ---
-ICD-10: A97
+title: "Lịch sử phác đồ tại Việt Nam"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-Phác đồ điều trị sốt xuất huyết Dengue (SXHD) tại Việt Nam chủ yếu do Bộ Y tế ban hành, với các thay đổi chính từ 2009 đến nay nhằm tăng cường can thiệp sớm, bổ sung dấu hiệu cảnh báo và tối ưu hóa truyền dịch dựa trên kinh nghiệm dịch lớn. Lịch sử trải qua các quyết định thay thế dần, kế thừa WHO 2009 và điều chỉnh theo dữ liệu thực tế Việt Nam.
+
+Phác đồ điều trị [[Sốt]] [[Xuất huyết]] Dengue (SXHD) tại Việt Nam chủ yếu do Bộ Y tế ban hành, với các thay đổi chính từ 2009 đến nay nhằm tăng cường can thiệp sớm, bổ sung dấu hiệu cảnh báo và tối ưu hóa truyền dịch dựa trên kinh nghiệm dịch lớn. Lịch sử trải qua các quyết định thay thế dần, kế thừa WHO 2009 và điều chỉnh theo dữ liệu thực tế Việt Nam.
 
 ## Giai đoạn 2009 (Quyết định 794/QĐ-BYT)
-Phác đồ đầu tiên chính thức, thay thế hướng dẫn cũ, nhấn mạnh phân độ theo WHO: SXHD không cảnh báo, có cảnh báo, nặng. Tập trung bù dịch uống sớm, paracetamol hạ sốt, tránh aspirin; nhập viện nếu dấu hiệu nguy hiểm (đau bụng, nôn, gan to). Không có chi tiết cụ thể về NS1 hay chỉ định CVP.
+Phác đồ đầu tiên chính thức, thay thế hướng dẫn cũ, nhấn mạnh phân độ theo WHO: SXHD không cảnh báo, có cảnh báo, nặng. Tập trung bù dịch uống sớm, [[Paracetamol]] hạ [[Sốt]], tránh [[Aspirin]]; nhập viện nếu dấu hiệu nguy hiểm ([[Đau bụng]], [[Nôn ói|nôn]], [[Gan]] to). Không có chi tiết cụ thể về NS1 hay chỉ định CVP.
 
 ## Giai đoạn 2011 (Quyết định 458/QĐ-BYT)
-Cập nhật từ 2009, bổ sung sơ đồ truyền dịch cho trẻ em/người lớn: giai đoạn sốt (bù uống), cảnh báo (truyền RL 5-7ml/kg/giờ), sốc (20ml/kg/giờ đầu). Nhấn theo dõi Hct tăng >20%, tiểu cầu giảm. Bị bãi bỏ 2019 do cần thống nhất hơn sau dịch lớn.
+Cập nhật từ 2009, bổ sung sơ đồ truyền dịch cho trẻ em/người lớn: giai đoạn sốt (bù uống), cảnh báo (truyền RL 5-7ml/kg/giờ), [[Sốc]] (20ml/kg/giờ đầu). Nhấn theo dõi Hct tăng >20%, [[Tiểu cầu]] giảm. Bị bãi bỏ 2019 do cần thống nhất hơn sau dịch lớn.
 
 ## Giai đoạn 2019 (Quyết định 3705/QĐ-BYT)
 **Điểm mới/thay đổi chính** (so 2011, phần đóng khung trong sơ đồ):
-- Bổ sung chẩn đoán sơ bộ: xuất huyết + tiểu cầu giảm.
-- Dấu hiệu cảnh báo rõ hơn: nôn ≥3 lần/24h, men gan >ALT 5 lần, tràn dịch màng.
+- Bổ sung chẩn đoán sơ bộ: [[Xuất huyết]] + [[Tiểu cầu]] giảm.
+- Dấu hiệu cảnh báo rõ hơn: [[Nôn ói|nôn]] ≥3 lần/24h, men [[Gan]] >ALT 5 lần, tràn dịch màng.
 - Nhập viện mở rộng: trẻ nhũ nhi, béo phì, mang thai, >60 tuổi, bệnh mạn.
 - Truyền dịch: RL 6ml/kg/giờ (người lớn), cân nặng hiệu chỉnh béo phì; CPT sớm nếu thất bại điện giải.
-- Sốc: RL 15ml/kg/giờ đầu (người lớn), chỉ định truyền máu/Hct<35% hoặc giảm>20%.
+- [[Sốc]]: RL 15ml/kg/giờ đầu (người lớn), chỉ định truyền máu/Hct<35% hoặc giảm>20%.
 Áp dụng thống nhất toàn quốc, giảm tử vong nhờ can thiệp sớm.
 
 

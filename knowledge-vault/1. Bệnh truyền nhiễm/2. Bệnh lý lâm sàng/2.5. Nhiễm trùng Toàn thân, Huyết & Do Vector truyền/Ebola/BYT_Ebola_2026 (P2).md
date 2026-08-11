@@ -1,3 +1,13 @@
+---
+title: "BYT_Ebola_2026 (P2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC: CHẨN ĐOÁN, ĐIỀU TRỊ VÀ PHÒNG LÂY NHIỄM BỆNH DO VI RÚT EBOLA (PHẦN 2)
 
 ---

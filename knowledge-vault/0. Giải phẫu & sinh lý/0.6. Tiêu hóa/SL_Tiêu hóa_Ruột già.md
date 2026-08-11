@@ -1,9 +1,14 @@
 ---
 title: "SL_Tiêu hóa_Ruột già"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Dưới đây là bài tổng hợp chi tiết về **Sinh lý Tiêu hóa tại Ruột già (Colonic Physiology)**, được biên soạn bám sát các tài liệu nguồn đã cung cấp và trình bày theo cấu trúc yêu cầu.
 
 ---
@@ -11,7 +16,7 @@ Dưới đây là bài tổng hợp chi tiết về **Sinh lý Tiêu hóa tại 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. Đại Cương Về Ruột Già
-Ruột già (đại tràng) là đoạn cuối cùng của ống tiêu hóa, bao gồm manh tràng, đại tràng lên, đại tràng ngang, đại tràng xuống, đại tràng sigma, trực tràng và ống hậu môn,,. 
+Ruột già (đại tràng) là đoạn cuối cùng của [[Đường tiêu hóa|ống tiêu hóa]], bao gồm manh tràng, đại tràng lên, đại tràng ngang, đại tràng xuống, đại tràng sigma, trực tràng và ống hậu môn,,. 
 Chức năng chính của ruột già không phải là tiêu hóa, mà tập trung vào:
 1. Hấp thu nước và các chất điện giải từ phần dưỡng trấp còn lại,.
 2. Tiêu hóa và hấp thu các thành phần không thể tiêu hóa ở phần ruột trên thông qua hệ vi sinh vật (microbiota),.
@@ -20,7 +25,7 @@ Chức năng chính của ruột già không phải là tiêu hóa, mà tập tr
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Figure 27-8: The human colon.
 > *   **Thuộc tài liệu:** `[Book] ganong's review of medical physiology 24th edition.pdf`
-> *   **Mô tả hình họa:** Hình ảnh mô tả giải phẫu các đoạn của ruột già ở người, bắt đầu từ hồi tràng đổ vào manh tràng (có ruột thừa), sau đó đi qua đại tràng lên, góc gan, đại tràng ngang, góc lách, đại tràng xuống, đại tràng sigma, trực tràng và cuối cùng là hệ thống cơ thắt hậu môn (trong và ngoài). Dải cơ dọc (Tenia coli) và các túi phình (Haustra) cũng được thể hiện rõ nét trên thành đại tràng.
+> *   **Mô tả hình họa:** Hình ảnh mô tả giải phẫu các đoạn của ruột già ở người, bắt đầu từ hồi tràng đổ vào manh tràng (có ruột thừa), sau đó đi qua đại tràng lên, góc [[Gan]], đại tràng ngang, góc lách, đại tràng xuống, đại tràng sigma, trực tràng và cuối cùng là hệ thống cơ thắt hậu môn (trong và ngoài). Dải cơ dọc (Tenia coli) và các túi phình (Haustra) cũng được thể hiện rõ nét trên thành đại tràng.
 >
 > *   **Tên hình:** Figure 64-5: Absorptive and storage functions of the large intestine.
 > *   **Thuộc tài liệu:** `[Book] Guyton and Hall Textbook of Medical Physiology (c2016, Elsevier)-pages-2.pdf`
@@ -36,14 +41,14 @@ Có 2 kiểu vận động chính tại ruột già:
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Plate 10.20 A: Mass movement in large intestine.
 > *   **Thuộc tài liệu:** `[Book] Color Atlas of Physiology.pdf`
-> *   **Mô tả hình họa:** Chuỗi 8 hình ảnh X-quang chụp liên tiếp mô tả một "cử động toàn khối" (Mass movement) đẩy thuốc cản quang (Barium meal) đi qua ruột già. Ở hình 1-4, chất cản quang lấp đầy manh tràng và đại tràng ngang. Ở hình 5-8 (chỉ diễn ra trong vòng vài phút sau bữa ăn), các túi phình (haustra) tại đại tràng ngang biến mất, đoạn ruột co thắt lại như một khối và đẩy mạnh toàn bộ lượng chất cản quang xuống thẳng đại tràng sigma.
+> *   **Mô tả hình họa:** Chuỗi 8 hình ảnh [[X-quang]] chụp liên tiếp mô tả một "cử động toàn khối" (Mass movement) đẩy thuốc cản quang (Barium meal) đi qua ruột già. Ở hình 1-4, chất cản quang lấp đầy manh tràng và đại tràng ngang. Ở hình 5-8 (chỉ diễn ra trong vòng vài phút sau bữa ăn), các túi phình (haustra) tại đại tràng ngang biến mất, đoạn ruột co thắt lại như một khối và đẩy mạnh toàn bộ lượng chất cản quang xuống thẳng đại tràng sigma.
 
 #### 1.3. Hấp Thu Nước Và Điện Giải Tại Ruột Già
 Mỗi ngày có khoảng 1500 - 2000 mL dưỡng trấp đi qua van hồi manh tràng vào ruột già,,. Hầu hết lượng nước và điện giải trong dưỡng trấp này được hấp thu tại đại tràng, chỉ để lại khoảng 100 - 200 mL chất lỏng và 1-5 mEq Natri, Clo được đào thải qua phân,,. Công suất hấp thu tối đa của ruột già có thể lên tới 5 đến 8 lít dịch và điện giải mỗi ngày.
 
 *   **Hấp thu Natri (Na+) và Nước:** Sự hấp thu nước được thúc đẩy thụ động bởi sự hấp thu chủ động các chất điện giải (đặc biệt là Na+),. Ở đại tràng xa, Na+ được hấp thu mạnh mẽ qua kênh điện hóa ENaC (Epithelial Sodium Channel) nằm trên màng đỉnh của tế bào, và bơm Na+-K+ ATPase ở màng đáy,,. Kênh ENaC này chịu sự kích thích trực tiếp của hormone Aldosterone, giúp cơ thể giữ lại Natri tối đa,,. Các liên kết chặt (tight junctions) giữa các tế bào biểu mô ruột già chặt chẽ hơn nhiều so với ruột non, ngăn cản sự khuếch tán ngược của các ion, cho phép hấp thu Na+ gần như hoàn toàn,. Nước sau đó đi theo sự chênh lệch áp suất thẩm thấu do ion tạo ra.
 *   **Hấp thu / Bài tiết Clo (Cl-) và Bicarbonate ($HCO_3^-$):** Niêm mạc ruột già có khả năng bài tiết ion Bicarbonate ($HCO_3^-$) để đổi lấy việc hấp thu ion Clo (Cl-). Sự bài tiết Bicarbonate này rất quan trọng để trung hòa các sản phẩm axit do vi khuẩn tạo ra trong ruột già,.
-*   **Bài tiết Kali (K+):** K+ được bài tiết tích cực vào lòng đại tràng thông qua cơ chế tương tự như ở ống lượn xa của thận, và quá trình này cũng được kích thích bởi Aldosterone,,.
+*   **Bài tiết Kali (K+):** K+ được bài tiết tích cực vào lòng đại tràng thông qua cơ chế tương tự như ở ống lượn xa của [[Thận]], và quá trình này cũng được kích thích bởi Aldosterone,,.
 *   **Bài tiết chất nhầy (Mucus):** Đại tràng có các tuyến Lieberkühn chứa nhiều tế bào đài tiết nhầy nhưng hầu như không tiết enzyme tiêu hóa. Chất nhầy được tiết ra dưới sự kích thích xúc giác trực tiếp và các dây thần kinh chậu (hệ phó giao cảm). Chất nhầy giúp bảo vệ thành ruột khỏi trầy xước, bảo vệ chống lại hoạt động của vi khuẩn, và cung cấp môi trường kết dính phân lại với nhau.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
@@ -86,7 +91,7 @@ Quá trình này được kiểm soát bởi hai cơ thắt hậu môn:
 >
 > *   **Tên hình:** Figure 64-6: Afferent and efferent pathways of the parasympathetic mechanism for enhancing the defecation reflex.
 > *   **Thuộc tài liệu:** `[Book] Guyton and Hall Textbook of Medical Physiology (c2016, Elsevier)-pages-2.pdf`
-> *   **Mô tả hình họa:** Sơ đồ cung phản xạ đại tiện. Các sợi thần kinh cảm giác (Afferent nerve fibers) nhận tín hiệu căng từ trực tràng truyền về tủy sống. Sợi thần kinh phó giao cảm (Pelvic nerves) truyền tín hiệu vận động (Efferent) ngược trở lại đại tràng xuống, đại tràng sigma, trực tràng để tăng cường nhu động và làm giãn cơ thắt trong. Cơ thắt hậu môn ngoài được kiểm soát bởi sợi thần kinh vận động thân thể (Skeletal motor nerve) từ vỏ não (Conscious cortex).
+> *   **Mô tả hình họa:** Sơ đồ cung phản xạ đại tiện. Các sợi thần kinh cảm giác (Afferent nerve fibers) nhận tín hiệu căng từ trực tràng truyền về tủy sống. Sợi thần kinh phó giao cảm (Pelvic nerves) truyền tín hiệu vận động (Efferent) ngược trở lại đại tràng xuống, đại tràng sigma, trực tràng để tăng cường nhu động và làm giãn cơ thắt trong. Cơ thắt hậu môn ngoài được kiểm soát bởi sợi thần kinh vận động thân thể (Skeletal motor nerve) từ [[Vỏ não]] (Conscious cortex).
 
 ---
 

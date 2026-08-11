@@ -1,9 +1,13 @@
 ---
 title: "Mẫu bệnh án Nội khoa chuẩn - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Mẫu bệnh án nội khoa chuẩn - BSCKI. Trần Thanh Tuấn
 
 # **MẪU BỆNH ÁN**
@@ -90,11 +94,11 @@ Thời điểm thăm khám ( ngày, giờ)
 
 + Da niêm : màu sắc niêm/ môi Da niêm hồng/ nhạt, da vàng… *(nếu bình thường thì môi hồng, da niêm hồng)*
 
-+ Xuất huyết Không xuất huyết/ xuất huyết dạng… ở *(nếu bình thường thì không xuất huyết da niêm)*
++ [[Xuất huyết]] Không [[Xuất huyết]]/ xuất huyết dạng… ở *(nếu bình thường thì không xuất huyết da niêm)*
 
 + Hạch ngoại vi Không to, hạnh … to *( nếu bình thường thì ghi hạch ngoại vi không to)*
 
-+ Phù/ da khô Không phù/ phù mềm ấn lõm ở… *(nếu bình thường thì không phù)*
++ [[Phù]]/ da khô Không [[Phù]]/ phù mềm ấn lõm ở… *(nếu bình thường thì không phù)*
 
 + Dấu hiệu khác… Lưỡi ướt, họng sạch… *(nếu bình thường thì lưỡi ướt, họng sạch)*
 
@@ -122,14 +126,14 @@ Thời điểm thăm khám ( ngày, giờ)
 - Mô tả sự di động theo nhịp thở (*nếu bình thường thì ghi ngực di động theo nhịp thở* )
 - Bất thường thành ngực không ghi nhận (nếu có thì ghi ra ví dụ: khoảng gian sườn giãn rộng, sẹo, sao mạch ... *nếu không có thì ghi không bất thường trên thành ngực*)
 
-Tim:
+[[Tim]]:
 
-- Mỏm tim : ở khoảng gian sườn mấy?, cách đường trung đòn bao nhiêu cm? độ nảy của mỏm tim như thế nào? , diện đập mỏm tim là bao nhiêu?
+- Mỏm [[Tim]] : ở khoảng gian sườn mấy?, cách đường trung đòn bao nhiêu cm? độ nảy của mỏm tim như thế nào? , diện đập mỏm tim là bao nhiêu?
 - Có dấu Harzer không (*nếu không có thì ghi không dấu Harzer*)
 - Có dấu nảy trước ngực không (*nếu không có thì ghi không dấu nảy trước ngực*)
 - Nghe tim T1 – T2 rõ hay không rõ , đều hay không đều, tần số bao nhiêu lần/ phút. Có tiếng tim hay âm thổi bất thường không? Nếu có thì mô tả tính chất (*nếu không có thì ghi không âm bệnh lý*)
 
-Phổi:
+[[Phổi]]:
 
 - Mô tả rung thanh *(nếu có làm thì ghi nếu không làm thì không ghi )*
 - Mô tả gõ … *(nếu có làm thì ghi nếu không làm thì không ghi )*
@@ -142,7 +146,7 @@ Phổi:
 - Nghe : Mô tả nhu động ruột và âm thổi vùng bụng *(nếu bình thường thì ghi nhu động ruột ... lần/ phút, không âm thổi vùng bụng)*
 - Mô tả gõ bụng *(nếu có làm thì ghi nếu không làm thì không ghi, nếu bình thường thi ghi gõ bụng trong )*
 - Mô tả tính chất khi ấn bụng *(nếu bình thường thì ghi không điểm đau khu trú)*
-- Xác định tính chất của Gan *(nếu có làm thì ghi nếu thấy bình thường thì ghi gan không to)*
+- Xác định tính chất của [[Gan]] *(nếu có làm thì ghi nếu thấy bình thường thì ghi [[Gan]] không to)*
 - Xác định lách to *(nếu có làm thì ghi nếu thấy bình thường thì ghi lách không to)*
 
 *d. Tứ chi*:

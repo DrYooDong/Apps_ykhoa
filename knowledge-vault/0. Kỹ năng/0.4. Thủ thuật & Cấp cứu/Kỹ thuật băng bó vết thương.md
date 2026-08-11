@@ -1,3 +1,13 @@
+---
+title: "Kỹ thuật băng bó vết thương"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 36
 # 4- KỸ THUẬT BĂNG BÓ VÉT THƯƠNG
 ## MỤC TIÊU HỌC TẬP
@@ -25,7 +35,7 @@ Hình 33: Vềt thương bằm tím tụ máu ể 00707070707070707070737370707Y
 
 37 J.2.2. Vết thương hỏ (vết thương bên ngoài): =9 dt >
 - Là loại vết thương làm tồn thương da bên
-ngoài lộ các thành phần tổ chức bên dưới, thường kèm theo chảy máu. SN
+ngoài lộ các thành phần tổ chức bên dưới, thường kèm theo [[Xuất huyết|chảy máu]]. SN
 - Loại này bao gồm: các vết rạch cứa, vết Loa à
 # thương đâm xuyên hoặc thậm chí là vết
 trượt sây sát trên da.
@@ -38,7 +48,7 @@ mm: ———
 Hình 35: Tổn thương phối hợp dập nát chỉ trên do máy ép nhựa
 2. Băng bó vết thương:
 2.1. Mục đích của băng bó vết thương
-- Cầm máu hoặc hạn chế sự chảy máu, giảm đau
+- Cầm máu hoặc hạn chế sự [[Xuất huyết|chảy máu]], giảm đau
 - Bảo vệ, che chở vết thương tránh bị cọ xát, va chạm gây ra những tồn thương
 thêm.
 - Tránh các biến chứng, đặc biệt là giảm nguy cơ nhiễm khuẩn từ môi trường.
@@ -84,7 +94,7 @@ Hình 36: Băng vòng xoắn
 
 39
 3.2. Băng số 8: Là kiểu đưa cuộn băng vòng theo hình số 8.
-- Áp dụng: băng tất cả các vết thương trên cơ thể từ chỗ đơn giản đến phức tạp. Phù
+- Áp dụng: băng tất cả các vết thương trên cơ thể từ chỗ đơn giản đến phức tạp. [[Phù]]
 hợp nhất với những vết thương ở vùng khớp vai, cẳng tay, gót chân, đùi, căng chân...vì giúp nạn nhân cử động dễ dàng hơn.
 - Cách băng:
 - Phủ gạc kín miệng vết thương:
@@ -144,13 +154,13 @@ uy Ä: nưườn kưôn vi vu” ra Hình 40: Băng xoăn ôc
 4. Băng một số vết thương đặc biệt:
 4.1. Vết thương bụng: a/ Trường hợp tạng (thường là ruột, mạc nối lớn) chưa bị lòi ra ngoài:
 - Sát khuẩn xung quanh vết thương
-- Thận trọng khép các mép vết thương với nhau để cầm máu, cũng là tránh
+- [[Thận]] trọng khép các mép vết thương với nhau để cầm máu, cũng là tránh
 ## tạng lòi thêm ra ngoài
 - Đặt nạn nhân ở tư thế nửa nằm nửa ngồi chống 2 chân để tránh hở vết
 thương và giảm áp lực lên vùng bị thương (nêu không có sôc).
 - Đặt một miếng gạc lớn che phủ vết thương rồi dùng băng cuộn hoặc băng
 dính băng nhẹ lên trên.
-- Nếu nạn nhân ho hoặc nôn thì dùng tay áp nhẹ lên trên vùng vết thương đề
+- Nếu nạn nhân ho hoặc [[Nôn ói|nôn]] thì dùng tay áp nhẹ lên trên vùng vết thương đề
 ## tránh lòi tạng ra ngoài
 b/ Trường hợp một phần tạng bị lòi ra ngoài:
 - Không chạm vào vết thương, không được đầy tạng vào trong vì sẽ mang
@@ -172,7 +182,7 @@ viện đề điều trị.
 - Vết thương ngực hở rộng: đặt ngay miếng gạc lớn hoặc lấy vải sạch đặt lên
 vết thương và băng kín, mục đích cầm máu và hạn chế khí tràn vào khoang ngực.
 - Đồi với vết thương ngực hở vừa-nhỏ: đặt băng dính lên và dính 3 chiều tạo thành
-van 1 chiều đề khí thoát ra ngoài mỗi khi nạn nhân thở, tránh tràn khí màng phổi.
+van 1 chiều đề khí thoát ra ngoài mỗi khi nạn nhân thở, tránh tràn khí màng [[Phổi]].
 - Đối với vết thương ngực có dị vật (dao, vật nhọn) cắm vào (vết thương
 xuyên thầu): Tuyệt đối không lấy bỏ dị vật đang cắm trên ngực do nguy cơ gây chảy máu ô ạt làm nạn nhân có thể tử vong nhanh chóng. Chỉ băng che phủ chân (chỗ dị vật xuyên vào cơ thể) và nhanh chóng chuyển bệnh nhân đến bệnh viện.
 - & người: l—

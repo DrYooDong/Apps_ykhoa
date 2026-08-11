@@ -1,9 +1,14 @@
 ---
 title: "SL_Nội tiết_Nguyên lý hoạt động hệ nội tiết"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/noi-tiet
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. ĐẠI CƯƠNG VỀ HỆ NỘI TIẾT VÀ GIAO TIẾP TẾ BÀO
@@ -27,9 +32,9 @@ Các tế bào trong cơ thể giao tiếp với nhau thông qua các chất tru
 #### 1.2. BẢN CHẤT HÓA HỌC VÀ SỰ TỔNG HỢP HORMONE
 Dựa vào bản chất hóa học, hormone được chia làm 4 nhóm chính, quyết định cách chúng được tổng hợp, vận chuyển và cơ chế tác động:
 
-1.  **Hormone Protein và Peptide (Tan trong nước):** Chiếm đa số các hormone trong cơ thể (như hormone tuyến yên, insulin, glucagon, parathyroid hormone). Chúng được tổng hợp trên ribosome dưới dạng tiền hormone không hoạt động (preprohormone). Sau khi đi vào lưới nội chất, tín hiệu peptide bị cắt bỏ tạo thành prohormone, sau đó được chuyển đến bộ máy Golgi để đóng gói vào các túi tiết. Tại đây, các enzyme tiếp tục cắt prohormone thành hormone hoạt động và được xuất bào (exocytosis) khi có tín hiệu kích thích (như tăng canxi nội bào).
-2.  **Hormone Catecholamine (Tan trong nước):** Bao gồm epinephrine, norepinephrine và dopamine từ tủy thượng thận. Chúng được tổng hợp thông qua sự biến đổi enzyme của axit amin tyrosine và được đóng gói, lưu trữ trong các túi tiết tương tự như hormone peptide.
-3.  **Hormone Steroid (Tan trong lipid):** Được tổng hợp từ tiền chất chung là cholesterol tại vỏ thượng thận (cortisol, aldosterone), tuyến sinh dục (estrogen, progesterone, testosterone) và nhau thai. Do bản chất ưa lipid, chúng không được dự trữ trong các túi tiết mà khuếch tán ngay qua màng tế bào vào máu sau khi được tổng hợp.
+1.  **Hormone Protein và Peptide (Tan trong nước):** Chiếm đa số các hormone trong cơ thể (như hormone tuyến yên, [[Insulin]], glucagon, parathyroid hormone). Chúng được tổng hợp trên ribosome dưới dạng tiền hormone không hoạt động (preprohormone). Sau khi đi vào lưới nội chất, tín hiệu peptide bị cắt bỏ tạo thành prohormone, sau đó được chuyển đến bộ máy Golgi để đóng gói vào các túi tiết. Tại đây, các enzyme tiếp tục cắt prohormone thành hormone hoạt động và được xuất bào (exocytosis) khi có tín hiệu kích thích (như tăng canxi nội bào).
+2.  **Hormone Catecholamine (Tan trong nước):** Bao gồm epinephrine, norepinephrine và dopamine từ tủy thượng [[Thận]]. Chúng được tổng hợp thông qua sự biến đổi enzyme của axit amin tyrosine và được đóng gói, lưu trữ trong các túi tiết tương tự như hormone peptide.
+3.  **Hormone Steroid (Tan trong lipid):** Được tổng hợp từ tiền chất chung là cholesterol tại vỏ thượng [[Thận]] (cortisol, aldosterone), tuyến sinh dục (estrogen, progesterone, testosterone) và nhau thai. Do bản chất ưa lipid, chúng không được dự trữ trong các túi tiết mà khuếch tán ngay qua màng tế bào vào máu sau khi được tổng hợp.
 4.  **Hormone Tuyến Giáp (Iodothyronines):** Cũng là dẫn xuất của axit amin tyrosine nhưng có đặc tính tan trong lipid. Chúng được kết hợp và dự trữ trong các nang tuyến giáp dưới dạng phân tử lớn thyroglobulin, khi cần thiết sẽ được cắt tách và giải phóng vào máu.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
@@ -47,7 +52,7 @@ Hormone chỉ tác động lên những tế bào có thụ thể (receptor) đ�
 **1. Tác động qua Thụ thể màng (Non-genomic action):**
 Dành cho các hormone tan trong nước (peptide, catecholamine) vì chúng không thể đi xuyên qua màng lipid của tế bào. Tác động này thường diễn ra rất nhanh (vài giây đến vài phút).
 *   **Thụ thể liên kết Protein G (G protein-coupled receptors - GPCR):** Là loại phổ biến nhất. Khi hormone gắn vào, thụ thể thay đổi cấu hình, kích hoạt protein G (gồm các tiểu đơn vị $\alpha, \beta, \gamma$). Protein G sẽ kích hoạt các enzyme màng như Adenylyl Cyclase (tạo chất truyền tin thứ hai cAMP) hoặc Phospholipase C (tạo $IP_3$ và DAG để giải phóng canxi nội bào). Các chất truyền tin thứ hai này tiếp tục kích hoạt chuỗi enzyme kinase gây ra đáp ứng sinh lý.
-*   **Thụ thể liên kết Enzyme (Enzyme-linked receptors):** Thường gặp ở các yếu tố tăng trưởng hoặc insulin. Thụ thể đi xuyên màng một lần, khi hormone gắn vào sẽ gây hiện tượng nhị phân hóa (dimerization) và kích hoạt gốc enzyme nội bào (như Tyrosine kinase), tự phosphoryl hóa và kích hoạt các protein tín hiệu khác.
+*   **Thụ thể liên kết Enzyme (Enzyme-linked receptors):** Thường gặp ở các yếu tố tăng trưởng hoặc [[Insulin]]. Thụ thể đi xuyên màng một lần, khi hormone gắn vào sẽ gây hiện tượng nhị phân hóa (dimerization) và kích hoạt gốc enzyme nội bào (như Tyrosine kinase), tự phosphoryl hóa và kích hoạt các protein tín hiệu khác.
 
 **2. Tác động qua Thụ thể nội bào (Genomic action):**
 Dành cho hormone tan trong lipid (steroid, hormone tuyến giáp). Các hormone này khuếch tán dễ dàng qua màng tế bào, gắn vào thụ thể trong bào tương hoặc trong nhân.
@@ -65,8 +70,8 @@ Dành cho hormone tan trong lipid (steroid, hormone tuyến giáp). Các hormone
 > *   **Mô tả hình họa:** Sơ đồ hormone ưa lipid (Lipophilic hormone) khuếch tán qua màng tế bào, gắn với thụ thể trong bào tương (Cytoplasmic receptor) hoặc nhân (Nuclear receptor). Phức hợp này gắn vào vùng Promoter của DNA (Hormone response element), kích hoạt phiên mã tạo mRNA, từ đó dịch mã trên ribosome tạo protein mới gây thay đổi chức năng tế bào.
 
 #### 1.4. VẬN CHUYỂN VÀ CHUYỂN HÓA HORMONE TRONG MÁU
-*   **Hormone tan trong nước (Peptide, Catecholamine):** Lưu hành tự do trong huyết tương. Chúng dễ dàng bị các enzyme trong máu và mô phân hủy, đồng thời được thận và gan bài tiết nhanh chóng, nên có thời gian bán hủy ngắn (từ vài phút đến dưới một giờ).
-*   **Hormone tan trong lipid (Steroid, Tuyến giáp):** Không tan tốt trong nước nên phải gắn kết với các protein vận chuyển đặc hiệu trong huyết tương (do gan sản xuất, ví dụ: TBG cho hormone giáp, SHBG cho hormone sinh dục, CBG cho cortisol). 
+*   **Hormone tan trong nước (Peptide, Catecholamine):** Lưu hành tự do trong huyết tương. Chúng dễ dàng bị các enzyme trong máu và mô phân hủy, đồng thời được thận và [[Gan]] bài tiết nhanh chóng, nên có thời gian bán hủy ngắn (từ vài phút đến dưới một giờ).
+*   **Hormone tan trong lipid (Steroid, Tuyến giáp):** Không tan tốt trong nước nên phải gắn kết với các protein vận chuyển đặc hiệu trong huyết tương (do [[Gan]] sản xuất, ví dụ: TBG cho hormone giáp, SHBG cho hormone sinh dục, CBG cho cortisol). 
     *   Chỉ có một tỷ lệ rất nhỏ hormone ở dạng **tự do (free)** mới có hoạt tính sinh học, có khả năng đi vào tế bào đích và tham gia vào hệ thống điều hòa ngược.
     *   Phần lớn hormone dạng gắn kết (bound) đóng vai trò như một kho dự trữ (reservoir) giúp đệm lại những thay đổi cấp tính, làm tăng thời gian bán hủy của hormone (lên đến vài giờ hoặc nhiều ngày) và ngăn cản sự lọc mất qua thận.
 
@@ -75,7 +80,7 @@ Hệ thống nội tiết hoạt động chủ yếu dựa trên hệ trục ba 
 Vùng hạ đồi tiết các hormone giải phóng (Releasing hormones - RH) hoặc ức chế (Inhibiting hormones - IH) kích thích tuyến yên trước. Tuyến yên trước tiết các hormone hướng tuyến (Tropic hormones) kích thích các tuyến ngoại biên. Các tuyến ngoại biên tiết hormone đích để tác động lên cơ quan và đồng thời thực hiện các cơ chế điều hòa ngược.
 
 **1. Điều hòa ngược âm tính (Negative Feedback):**
-Là cơ chế phổ biến nhất giúp duy trì sự ổn định nội môi ở một điểm chuẩn (set-point). Khi nồng độ hormone tuyến đích tăng lên, nó sẽ quay ngược lại ức chế sự bài tiết hormone của tuyến yên và vùng hạ đồi (vòng lặp dài). Hoặc sự gia tăng nồng độ một chất do hormone điều khiển (ví dụ: glucose máu tăng kích thích tiết insulin, insulin làm hạ đường huyết, đường huyết hạ sẽ ức chế tiết insulin).
+Là cơ chế phổ biến nhất giúp duy trì sự ổn định nội môi ở một điểm chuẩn (set-point). Khi nồng độ hormone tuyến đích tăng lên, nó sẽ quay ngược lại ức chế sự bài tiết hormone của tuyến yên và vùng hạ đồi (vòng lặp dài). Hoặc sự gia tăng nồng độ một chất do hormone điều khiển (ví dụ: glucose máu tăng kích thích tiết insulin, insulin làm [[Hạ đường huyết]], đường huyết hạ sẽ ức chế tiết insulin).
 
 **2. Điều hòa ngược dương tính (Positive Feedback):**
 Ít gặp hơn, mang tính bùng nổ và khuếch đại tín hiệu để tạo ra một sự thay đổi mang tính bước ngoặt, phá vỡ nội môi tạm thời. Ví dụ: Sự gia tăng mạnh mẽ nồng độ Estrogen trước ngày rụng trứng sẽ kích thích (thay vì ức chế) tuyến yên tiết ồ ạt hormone LH (LH surge) gây rụng trứng. Hoặc phản xạ mút vú của trẻ truyền tín hiệu thần kinh về hạ đồi làm liên tục tăng tiết Oxytocin và Prolactin cho đến khi trẻ ngừng bú.

@@ -1,20 +1,24 @@
 ---
 title: "Phân tích Sinh hóa chức năng gan"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Cận lâm sàng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
-Thuật ngữ "xét nghiệm chức năng gan" (Liver Function Tests - LFTs) thực ra chưa hoàn toàn chính xác, vì phần lớn các chỉ số này (như men gan) phản ánh vị trí và mức độ tổn thương của tế bào gan hoặc đường mật, chứ không đo lường chức năng thực sự của gan.
+
+Thuật ngữ "xét nghiệm chức năng gan" (Liver Function Tests - LFTs) thực ra chưa hoàn toàn chính xác, vì phần lớn các chỉ số này (như men gan) phản ánh vị trí và mức độ tổn thương của [[Gan|tế bào gan]] hoặc đường mật, chứ không đo lường chức năng thực sự của gan.
 
 Để đọc và phân tích các kết quả sinh hóa gan một cách toàn diện và hệ thống, bạn cần thực hiện theo các bước sau:
 
-**Bước 1: Đánh giá tình trạng phá hủy tế bào gan (Hepatocellular Pattern) qua Aminotransferase**
+**Bước 1: Đánh giá tình trạng phá hủy [[Gan|tế bào gan]] (Hepatocellular Pattern) qua Aminotransferase**
 Sự gia tăng của các men **ALT** (Alanine aminotransferase) và **AST** (Aspartate aminotransferase) cao không tương xứng so với Alkaline Phosphatase (ALP) gợi ý tổn thương tế bào gan. Mức bình thường của ALT là 4-36 IU/L và AST là 5-30 IU/L (tùy thuộc vào phòng xét nghiệm).
-*   **ALT đặc hiệu cho gan hơn:** ALT chủ yếu nằm trong bào tương của tế bào gan. Trong khi đó, AST có mặt ở cả ti thể và bào tương, đồng thời phân bố rộng rãi ở cơ tim, cơ vân, thận, não và hồng cầu.
+*   **ALT đặc hiệu cho gan hơn:** ALT chủ yếu nằm trong bào tương của tế bào gan. Trong khi đó, AST có mặt ở cả ti thể và bào tương, đồng thời phân bố rộng rãi ở [[Tim|cơ tim]], cơ vân, [[Thận]], não và [[Hồng cầu]].
 *   **Phân tích tỷ lệ AST/ALT:** 
     *   **Tăng ALT ưu thế:** Thường gặp trong viêm gan virus cấp hoặc mạn, viêm gan thoái hóa mỡ không do rượu (NASH), viêm gan tự miễn, ngộ độc thuốc, thiếu hụt alpha-1-antitrypsin, bệnh Wilson hoặc bệnh Celiac. 
-    *   **Tăng AST ưu thế:** Có thể do bệnh lý ngoài gan (tán huyết, bệnh lý cơ, nhồi máu cơ tim) hoặc xơ gan. Đặc biệt, nếu **tỷ lệ AST/ALT > 2:1**, đây là dấu hiệu sinh hóa sinh điển hình nhất của bệnh gan do rượu, do cồn gây tổn thương mạnh ti thể (nơi chứa nhiều AST).
-*   **Biên độ tăng:** Mức tăng men gan (có thể lớn hơn hàng ngàn đơn vị) thường tương quan với nguyên nhân gây tổn thương, đặc trưng nhất là trong viêm gan thiếu máu cục bộ (ischemic hepatitis), đợt cấp viêm gan virus, hoặc ngộ độc thuốc (như Paracetamol).
+    *   **Tăng AST ưu thế:** Có thể do bệnh lý ngoài gan (tán huyết, bệnh lý cơ, nhồi máu [[Tim|cơ tim]]) hoặc xơ gan. Đặc biệt, nếu **tỷ lệ AST/ALT > 2:1**, đây là dấu hiệu sinh hóa sinh điển hình nhất của bệnh gan do rượu, do cồn gây tổn thương mạnh ti thể (nơi chứa nhiều AST).
+*   **Biên độ tăng:** Mức tăng men gan (có thể lớn hơn hàng ngàn đơn vị) thường tương quan với nguyên nhân gây tổn thương, đặc trưng nhất là trong viêm gan thiếu máu cục bộ (ischemic hepatitis), đợt cấp viêm gan virus, hoặc ngộ độc thuốc (như [[Paracetamol]]).
 
 **Bước 2: Đánh giá tình trạng ứ mật (Cholestatic Pattern) qua ALP và GGT**
 Kiểu tổn thương ứ mật được xác định khi **Alkaline Phosphatase (ALP)** (bình thường 30-130 IU/L) tăng cao cùng với sự gia tăng của Bilirubin. 
@@ -24,9 +28,9 @@ Kiểu tổn thương ứ mật được xác định khi **Alkaline Phosphatase
 
 **Bước 3: Đánh giá chức năng tổng hợp và bài tiết thực sự của gan**
 *   **Bilirubin (Bình thường 2-17 µmol/L):** Có nguồn gốc từ sự dị hóa heme. 
-    *   *Bilirubin gián tiếp (chưa liên hợp):* Không tan trong nước, tăng cao gợi ý tình trạng tán huyết (phá hủy hồng cầu), sản xuất hồng cầu không hiệu quả hoặc hội chứng Gilbert.
+    *   *Bilirubin gián tiếp (chưa liên hợp):* Không tan trong nước, tăng cao gợi ý tình trạng tán huyết (phá hủy [[Hồng cầu]]), sản xuất hồng cầu không hiệu quả hoặc hội chứng Gilbert.
     *   *Bilirubin trực tiếp (đã liên hợp):* Tan trong nước và được bài tiết ra mật, nước tiểu. Tăng bilirubin trực tiếp cảnh báo tắc nghẽn đường mật hoặc tổn thương tế bào gan.
-*   **Albumin huyết thanh (35-50 g/L):** Được tổng hợp duy nhất tại gan, đóng vai trò duy trì áp lực keo. Gan có thể duy trì mức Albumin bình thường ngay cả khi chỉ còn 10% khối lượng tế bào gan hoạt động. Sự sụt giảm Albumin phản ánh tình trạng suy giảm chức năng gan mạn tính, hoặc do suy dinh dưỡng, thất thoát qua thận (hội chứng thận hư).
+*   **Albumin huyết thanh (35-50 g/L):** Được tổng hợp duy nhất tại gan, đóng vai trò duy trì áp lực keo. Gan có thể duy trì mức Albumin bình thường ngay cả khi chỉ còn 10% khối lượng tế bào gan hoạt động. Sự sụt giảm Albumin phản ánh tình trạng suy giảm chức năng gan mạn tính, hoặc do suy dinh dưỡng, thất thoát qua [[Thận]] (hội chứng thận hư).
 *   **Thời gian Prothrombin (PT/INR):** Đánh giá tốc độ chuyển đổi prothrombin thành thrombin, phụ thuộc vào các yếu tố đông máu do gan tổng hợp (liên quan đến Vitamin K). Đây là một trong những chỉ số nhạy nhất phản ánh suy giảm chức năng gan cấp hoặc mạn tính.
 
 **Bước 4: Sử dụng các xét nghiệm huyết thanh học và dấu ấn sinh học chuyên sâu**

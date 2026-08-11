@@ -1,4 +1,15 @@
-**VIÊM PHỔI MẮC PHẢI CỘNG ĐỒNG**
+---
+title: "TÓM TẮT VPCĐ_2026 "
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
+**VIÊM [[Phổi]] MẮC PHẢI CỘNG ĐỒNG**
 
 **Hướng Dẫn Lâm Sàng 2026**
 
@@ -15,11 +26,11 @@ QĐ 2147/QĐ-BYT (15/7/2026) thay thế QĐ 4815/QĐ-BYT (2020). Bảng dưới 
 | **Vi sinh vật / chẩn đoán** | Bổ sung B. pseudomallei (melioidosis) vào chương chẩn đoán; tăng cường vai trò UAT niệu Legionella \+ pneumococcal | **★★★** |
 | **Phân tầng MDR** | Thêm thang điểm PES để đánh giá nguy cơ vi khuẩn đa kháng (MDR) | **★★★** |
 | **Phối hợp β-lactam \+ macrolid** | Nhấn mạnh phối hợp này không chỉ phủ atypicals mà còn có lợi ích điều hòa miễn dịch (ACCESS trial 2024; clarithromycin) | **★★★** |
-| **Corticosteroid ICU** | Phác đồ chi tiết: hydrocortisone 200 mg/ngày hoặc methylprednisolone 0.5 mg/kg q12h, tổng 8–14 ngày (SPILF-SPLF 2025\) | **★★★** |
+| **[[Corticoid|Corticosteroid]] ICU** | Phác đồ chi tiết: hydrocortisone 200 mg/ngày hoặc methylprednisolone 0.5 mg/kg q12h, tổng 8–14 ngày (SPILF-SPLF 2025\) | **★★★** |
 | **Clarithromycin** | Bổ sung clarithromycin như lựa chọn cho Chlamydia và phối hợp cộng đồng (bên cạnh doxycycline, azithromycin) | **★★** |
 | **PCT-guided de-escalation** | Chính thức hóa: ngừng / chuyển uống khi PCT \< 0.25 ng/mL hoặc giảm ≥ 80% baseline | **★★** |
 | **HFNC / NIV** | Ưu tiên HFNC trước NIV, hạn chế đặt nội khí quản không cần thiết | **★★** |
-| **Phụ lục mới (3 phụ lục)** | Phụ lục 1: hiệu chỉnh liều suy thận (40 KS) | Phụ lục 2: ELF:serum ratio (11 KS) | Phụ lục 3: tương tác thuốc CCĐ (34 cặp) | **★★★** |
+| **Phụ lục mới (3 phụ lục)** | Phụ lục 1: hiệu chỉnh liều suy [[Thận]] (40 KS) | Phụ lục 2: ELF:serum ratio (11 KS) | Phụ lục 3: tương tác thuốc CCĐ (34 cặp) | **★★★** |
 
 Nguồn: Tóm tắt cập nhật VPCĐ 2026, QĐ 2147/QĐ-BYT, Bộ Y Tế VN, 15/7/2026.
 
@@ -59,7 +70,7 @@ Nguồn: Tóm tắt cập nhật VPCĐ 2026, QĐ 2147/QĐ-BYT, Bộ Y Tế VN, 1
 
 | TIÊU CHÍ LỚN (≥ 1\) | TIÊU CHÍ NHỎ (≥ 3\) |
 | ----- | ----- |
-| **Thở máy xâm nhập (mechanical ventilation)** **Sốc nhiễm khuẩn cần vận mạch (vasopressors)** | Nhịp thở ≥ 30 lần/phút PaO₂/FiO₂ ≤ 250 mmHg Tổn thương đa thùy trên X-quang Lú lẫn / mất định hướng BUN ≥ 20 mg/dL Bạch cầu \< 4 000/mm³ (không do hóa trị) Tiểu cầu \< 100 000/mm³ Thân nhiệt \< 36 °C Hạ huyết áp cần bồi dịch mạnh |
+| **Thở máy xâm nhập (mechanical ventilation)** **[[[[Sốc]] nhiễm khuẩn]] cần vận mạch (vasopressors)** | Nhịp thở ≥ 30 lần/phút PaO₂/FiO₂ ≤ 250 mmHg Tổn thương đa thùy trên [[X-quang]] Lú lẫn / mất định hướng BUN ≥ 20 mg/dL [[Bạch cầu]] \< 4 000/mm³ (không do hóa trị) [[Tiểu cầu]] \< 100 000/mm³ Thân nhiệt \< 36 °C Hạ huyết áp cần bồi dịch mạnh |
 
 **2.4. Thang điểm PES — Phân tầng nguy cơ MDR (MỚI 2026\)**
 
@@ -67,14 +78,14 @@ Nguồn: Tóm tắt cập nhật VPCĐ 2026, QĐ 2147/QĐ-BYT, Bộ Y Tế VN, 1
 | ----- | :---: | ----- |
 | Tuổi \> 65 | 1 |  |
 | Giới nam | 1 |  |
-| Dùng kháng sinh ≤ 90 ngày trước | 2 | Yếu tố quan trọng nhất |
-| Bệnh phổi mạn (COPD, giãn PQ) | 1 |  |
-| Suy thận mạn (CKD) | 1 |  |
-| Rối loạn tri giác | 1 |  |
+| Dùng [[Kháng sinh]] ≤ 90 ngày trước | 2 | Yếu tố quan trọng nhất |
+| Bệnh [[Phổi]] mạn (COPD, giãn PQ) | 1 |  |
+| Suy [[Thận]] mạn (CKD) | 1 |  |
+| [[[[Hôn mê]]|Rối loạn tri giác]] | 1 |  |
 | Không sốt (absence of fever) | 1 |  |
 | **TỔNG ≥ 4 → Nguy cơ cao MDR → KS phổ rộng** | **≥ 4** | Chỉ định KS phổ rộng |
 
-**III. PHÁC ĐỒ KHÁNG SINH THEO MỨC ĐỘ NẶNG**
+**III. PHÁC ĐỒ [[Kháng sinh]] THEO MỨC ĐỘ NẶNG**
 
 PK/PD: β-lactam time-dependent (truyền kéo dài); aminoglycoside concentration-dependent (once-daily); FQ/macrolid/vancomycin AUC-dependent.
 
@@ -83,14 +94,14 @@ PK/PD: β-lactam time-dependent (truyền kéo dài); aminoglycoside concentrati
 | Nhóm bệnh nhân | Phác đồ kháng sinh | Lưu ý lâm sàng |
 | ----- | ----- | ----- |
 | **Không bệnh nền, không MDR** | Amoxicillin 500 mg × 3 lần/ngày uống × 5–7 ngày | Đầu tay; CURB-65 0–1 |
-| **Có bệnh nền (ĐTĐ, tim, thận, phổi)** | Amoxicillin/clavulanate 875/125 mg q12h uống × 5–7 ngày± Azithromycin 500 mg q24h × 3–5 ngày  HOẶC  Doxycycline 100 mg q12h × 5–7 ngày | BLI bảo vệ β-lactamase |
+| **Có bệnh nền (ĐTĐ, [[Tim]], thận, phổi)** | Amoxicillin/clavulanate 875/125 mg q12h uống × 5–7 ngày± Azithromycin 500 mg q24h × 3–5 ngày  HOẶC  Doxycycline 100 mg q12h × 5–7 ngày | BLI bảo vệ β-lactamase |
 | **Nghi atypicals / dị ứng PCN** | Levofloxacin 750 mg q24h uống × 5 ngàyHOẶC Moxifloxacin 400 mg q24h × 5 ngày | Không dùng đồng thời antacid |
 
 **B. NỘI TRÚ — KHÔNG ICU (CURB-65 2 | PSI III–IV)**
 
 | Nhóm bệnh nhân | Phác đồ kháng sinh | Lưu ý lâm sàng |
 | ----- | ----- | ----- |
-| **Nội trú không ICU — không MDR** | Ceftriaxone 1–2 g q24h IVHOẶC Ampicillin/sulbactam 1.5–3 g q6h IV+ Azithromycin 500 mg/ngày IV/uống  HOẶC  Clarithromycin 500 mg q12h | β-lactam \+ macrolid chuẩn |
+| **Nội trú không ICU — không MDR** | [[Ceftriaxone]] 1–2 g q24h IVHOẶC Ampicillin/sulbactam 1.5–3 g q6h IV+ Azithromycin 500 mg/ngày IV/uống  HOẶC  Clarithromycin 500 mg q12h | β-lactam \+ macrolid chuẩn |
 | **Nội trú — thay thế / dị ứng β-lactam** | Levofloxacin 750 mg q24h IV × 5–7 ngàyHOẶC Moxifloxacin 400 mg q24h IV | FQ đơn trị liệu |
 | **Nghi P. aeruginosa (PES ≥ 4\)** | Piperacillin/tazobactam 4.5 g q6h IV kéo dài 4 hHOẶC Cefepime 2 g q8h IV+ Ciprofloxacin 400 mg q8h IV  HOẶC  Amikacin 15–20 mg/kg q24h IV | TDM amikacin bắt buộc |
 
@@ -98,11 +109,11 @@ PK/PD: β-lactam time-dependent (truyền kéo dài); aminoglycoside concentrati
 
 | Nhóm bệnh nhân | Phác đồ kháng sinh | Lưu ý lâm sàng |
 | ----- | ----- | ----- |
-| **ICU — không MDR/Pseudomonas** | Ceftriaxone 2 g q24h IV+ Azithromycin 500 mg/ngày IV  HOẶC  Levofloxacin 750 mg q24h IV | β-lactam \+ macrolid hoặc FQ |
+| **ICU — không MDR/Pseudomonas** | [[Ceftriaxone]] 2 g q24h IV+ Azithromycin 500 mg/ngày IV  HOẶC  Levofloxacin 750 mg q24h IV | β-lactam \+ macrolid hoặc FQ |
 | **ICU — nghi Pseudomonas** | Piperacillin/tazobactam 4.5 g q6h IV (kéo dài 4 h)HOẶC Cefepime 2 g q8h IV  HOẶC  Imipenem 500 mg q6h IV+ Ciprofloxacin 400 mg q8h  HOẶC  Amikacin 15–20 mg/kg q24h | 2 thuốc có tác dụng Pseudomonas |
 | **ICU — nghi MRSA** | Thêm:Vancomycin AUC₂₄ 400–600 µg·h/mL (TDM bắt buộc)HOẶC Teicoplanin 12 mg/kg q12h × 3 liều → q24hHOẶC Linezolid 600 mg q12h IV/uống | PES cao, cúm, không đáp ứng β-lactam |
 | **ICU — Melioidosis (B. pseudomallei)** | Ceftazidime 2 g q6h IV × ≥ 14 ngàyHOẶC Meropenem 1 g q8h IV × ≥ 14 ngày→ TMP-SMX 960 mg × 2/ngày uống × 3 tháng (eradication) | Tây Nguyên, ĐBSCL; cấy máu/đàm/nước tiểu |
-| **Corticosteroid ICU (thêm vào)** | Hydrocortisone 200 mg/ngày IV liên tụcHOẶC Methylprednisolone 0.5 mg/kg q12h IVTổng 8–14 ngày, giảm dần | SPILF-SPLF 2025; ARDS/sốc nhiễm khuẩn |
+| **[[Corticoid|Corticosteroid]] ICU (thêm vào)** | Hydrocortisone 200 mg/ngày IV liên tụcHOẶC Methylprednisolone 0.5 mg/kg q12h IVTổng 8–14 ngày, giảm dần | SPILF-SPLF 2025; ARDS/[[[[Sốc]] nhiễm khuẩn]] |
 
 **D. CHUYỂN IV → UỐNG (IV-to-Oral Switch)**
 
@@ -122,7 +133,7 @@ Phác đồ hướng đích sau khi có kết quả vi sinh. Nguồn: Chương 5
 | ----- | ----- | :---: | ----- |
 | **Nhạy penicillin (MIC ≤ 0.06 µg/mL)** | Benzylpenicillin G 2 MU q4h IV  HOẶC  Amoxicillin 500 mg q8h uống  HOẶC  Ampicillin 1–2 g q6h IV | 7–10 ngày | Đầu tay |
 | **Nhạy trung gian / kháng penicillin** | Ceftriaxone 2 g q24h IV  HOẶC  Levofloxacin 750 mg q24h  HOẶC  Moxifloxacin 400 mg q24h | 7–10 ngày | Không dùng amoxicillin liều thấp |
-| **Kháng penicillin cao \+ nhiễm khuẩn huyết** | Vancomycin AUC₂₄ 400–600 µg·h/mL  HOẶC  Linezolid 600 mg q12h | 10–14 ngày | TDM vancomycin bắt buộc |
+| **Kháng penicillin cao \+ [[Nhiễm trùng huyết|nhiễm khuẩn huyết]]** | Vancomycin AUC₂₄ 400–600 µg·h/mL  HOẶC  Linezolid 600 mg q12h | 10–14 ngày | TDM vancomycin bắt buộc |
 
 **◆ Haemophilus influenzae / Moraxella catarrhalis**
 
@@ -192,7 +203,7 @@ Nguồn: Phụ lục 1, VPCĐ 2026\. CrCl tính theo Cockcroft-Gault. HD \= hemo
 | **Cefepime** | 2 g q8h IV | Bình thường | 2 g q12h (30–60)2 g q24h (11–29) | 1 g q24h | HD: 1 g sau lọc |
 | **Ertapenem** | 1 g q24h IV | Không chỉnh (CrCl\>30) | Không chỉnh (CrCl\>30) | 500 mg q24h (CrCl≤30) | HD: 150 mg thêm sau lọc |
 | **Meropenem** | 1 g q8h IV | Bình thường | 1 g q12h (26–50)500 mg q12h (10–25) | 500 mg q24h | HD: sau lọc |
-| **Imipenem/Cilastatin** | 500 mg q6h IV | Bình thường | 250–500 mg q6–8h | 125–250 mg q12h | Giảm sớm → tránh co giật |
+| **Imipenem/Cilastatin** | 500 mg q6h IV | Bình thường | 250–500 mg q6–8h | 125–250 mg q12h | Giảm sớm → tránh [[Co giật]] |
 | **Ceftazidime/Avibactam** | 2.5 g q8h IV (3 h) | Bình thường | 1.25 g q8h (31–50)0.94 g q12h (16–30) | 0.94 g q24h | Chỉnh liều rất chặt theo CrCl |
 | **Vancomycin** | AUC₂₄ 400–600 | TDM-guided | TDM-guided ↑interval | TDM-guided ↑↑interval | Không dùng bolus; infusion 2 h |
 | **Teicoplanin** | 12 mg/kg q12h×3→q24h | Bình thường | q48h (40–60)q72h (10–40) | q72h | TDM Ctrough ≥ 15–20 mg/L (nặng) |
@@ -201,13 +212,13 @@ Nguồn: Phụ lục 1, VPCĐ 2026\. CrCl tính theo Cockcroft-Gault. HD \= hemo
 | **Clarithromycin** | 500 mg q12h | Bình thường | Giảm 50% hoặc q24h (CrCl\<30) | 250 mg q12h | CrCl\<30: giảm liều |
 | **Doxycycline** | 100 mg q12h | Không chỉnh | Không chỉnh | Không chỉnh | Thải qua phân; an toàn CKD |
 | **Levofloxacin** | 750 mg q24h | Bình thường | 500 mg q24h (20–49)250 mg q24h (10–19) | 250 mg q48h | HD: 500 mg tải → 250 mg q48h |
-| **Moxifloxacin** | 400 mg q24h | Không chỉnh | Không chỉnh | Không chỉnh | Thải qua gan; an toàn CKD |
+| **Moxifloxacin** | 400 mg q24h | Không chỉnh | Không chỉnh | Không chỉnh | Thải qua [[Gan]]; an toàn CKD |
 | **Ciprofloxacin** | 400 mg q8–12h IV | Bình thường | 400 mg q12h (30–50)400 mg q24h (\<30) | 200 mg q12h | HD: sau lọc |
 | **Amikacin** | 15–20 mg/kg q24h | Bình thường | 7.5 mg/kg q24–48h | 7.5 mg/kg q48–72h | TDM: peak 20–30, trough \<5 |
 | **Gentamicin** | 5–7 mg/kg q24h | Bình thường | 4 mg/kg q48h (20–50) | 2 mg/kg q72h | TDM: peak 8–10, trough \<1 |
 | **TMP-SMX** | 2 viên 960mg q12h | Bình thường | 1 viên q12h (CrCl 15–30) | Không dùng CrCl\<15 | Nguy cơ tăng kali ở CKD |
 | **Oseltamivir** | 75 mg q12h × 5 ngày | Bình thường | 75 mg q24h (CrCl 10–30) | 30 mg q24h (không chính thức) | CrCl\<10: chưa có dữ liệu đầy đủ |
-| **Metronidazole** | 500 mg q8h | Bình thường | Bình thường | Giảm 50% liều nếu cần | Thải qua gan; chú ý CKD nặng |
+| **Metronidazole** | 500 mg q8h | Bình thường | Bình thường | Giảm 50% liều nếu cần | Thải qua [[Gan]]; chú ý CKD nặng |
 
 **VI. TƯƠNG TÁC THUỐC CHỐNG CHỈ ĐỊNH / THẬN TRỌNG ĐẶC BIỆT**
 
@@ -221,15 +232,15 @@ Nguồn: Phụ lục 3, VPCĐ 2026\. 34 cặp tương tác quan trọng trong đ
 | **Moxifloxacin, Levofloxacin** | Amiodarone, sotalol, antipsychotics (QT-prolonging) | Xoắn đỉnh (Torsades de Pointes) | CCĐ phối hợp; kiểm tra QTc trước |
 | **Clarithromycin, Azithromycin** | Terfenadine, cisapride | QT kéo dài → loạn nhịp nguy hiểm | CCĐ tuyệt đối |
 | **Clarithromycin** | Statin (simvastatin, lovastatin) | Ức chế CYP3A4 → nguy cơ tiêu cơ vân | Ngừng statin tạm thời |
-| **Clarithromycin, Azithromycin** | Warfarin | Tăng INR đột ngột → chảy máu | Kiểm tra INR ngày 3–5 đầu |
+| **Clarithromycin, Azithromycin** | Warfarin | Tăng INR đột ngột → [[Xuất huyết|chảy máu]] | Kiểm tra INR ngày 3–5 đầu |
 | **Clarithromycin** | Colchicine | Tăng nồng độ colchicine → độc hại (không có antidote) | CCĐ nếu CKD; giảm liều nếu bắt buộc |
-| **Fluoroquinolones** | Theophylline | Ức chế CYP1A2 → tăng theophylline → co giật | TDM theophylline; giảm liều |
+| **Fluoroquinolones** | Theophylline | Ức chế CYP1A2 → tăng theophylline → [[Co giật]] | TDM theophylline; giảm liều |
 | **Linezolid** | SSRI (fluoxetine, sertraline, paroxetine) | Hội chứng serotonin | CCĐ; khoảng trống ≥ 14 ngày |
 | **Linezolid** | MAOI (phenelzine, selegiline, tramadol) | Serotonin syndrome \+ tăng HA khủng hoảng | CCĐ tuyệt đối |
 | **Linezolid** | Thực phẩm giàu tyramine | Tăng HA (MAOI-like) | Tránh pho-mát, rượu vang đỏ, đồ lên men |
 | **Vancomycin** | Aminoglycosides | Nephrotoxicity tăng | Theo dõi creatinine 2 lần/ngày; TDM cả 2 |
 | **Vancomycin** | NSAIDs, contrast, ciclosporin | Nephrotoxicity | Đủ dịch; tránh phối hợp |
-| **Metronidazole** | Rượu / ethanol | Disulfiram-like: đỏ mặt, nôn, đau đầu | Tránh rượu trong và 48 h sau điều trị |
+| **Metronidazole** | Rượu / ethanol | Disulfiram-like: đỏ mặt, [[Nôn ói|nôn]], đau đầu | Tránh rượu trong và 48 h sau điều trị |
 | **Metronidazole** | Warfarin | Ức chế CYP2C9 → INR tăng | Giảm warfarin 25–50%; kiểm tra INR |
 | **TMP-SMX** | ACE-i, ARB, heparin, spironolactone | Tăng kali máu nguy hiểm | Kiểm tra điện giải ngày 3–5 |
 | **TMP-SMX** | Warfarin | Ức chế CYP2C9 → INR tăng | Theo dõi INR; giảm liều warfarin |
@@ -244,7 +255,7 @@ Nguồn: Phụ lục 3, VPCĐ 2026\. 34 cặp tương tác quan trọng trong đ
 | **Clarithromycin** | Carbamazepine, phenytoin | Ức chế CYP3A4 → tăng nồng độ chống ĐK → độc tính | TDM thuốc chống ĐK; giảm liều |
 | **Clarithromycin** | Digoxin | Ức chế P-gp \+ vi khuẩn ruột → tăng digoxin | Giảm 50% liều digoxin; TDM |
 | **Azithromycin** | Digoxin | Thay đổi hệ vi khuẩn ruột → tăng hấp thu digoxin | Theo dõi nồng độ và dấu hiệu ngộ độc |
-| **Levofloxacin** | Insulin, sulfonylurea | Rối loạn đường huyết (hạ nặng đã báo cáo) | Monitor ĐHTP thường xuyên |
+| **Levofloxacin** | [[Insulin]], sulfonylurea | Rối loạn đường huyết (hạ nặng đã báo cáo) | Monitor ĐHTP thường xuyên |
 | **TMP-SMX** | Ciclosporin | Nephrotoxicity \+ ức chế chuyển hóa | Theo dõi creatinine và nồng độ ciclosporin |
 | **Doxycycline** | Warfarin | Tăng INR | Theo dõi INR |
 | **Oseltamivir** | Probenecid | Ức chế OAT3 → tăng nồng độ oseltamivir 2× | Giảm liều oseltamivir 50% |
@@ -276,7 +287,7 @@ Nguồn: Phụ lục 3, VPCĐ 2026\. 34 cặp tương tác quan trọng trong đ
 
 9\. DE-ESCALATION theo PCT: PCT \< 0.25 ng/mL hoặc giảm ≥ 80%; không kéo dài KS không có căn cứ.
 
-10\. PHÒNG NGỪA: vaccine phế cầu (PCV20 hoặc PPSV23) \+ cúm hàng năm cho BN ≥ 65 tuổi / bệnh nền.
+10\. PHÒNG NGỪA: [[Vắc-xin|vaccine]] phế cầu (PCV20 hoặc PPSV23) \+ cúm hàng năm cho BN ≥ 65 tuổi / bệnh nền.
 
 **7A.2. Pitfall Thường Gặp**
 
@@ -295,11 +306,11 @@ Nguồn: Phụ lục 3, VPCĐ 2026\. 34 cặp tương tác quan trọng trong đ
 
 **7B.1. Viêm Phổi Cộng Đồng là gì?**
 
-Viêm phổi cộng đồng (VPCĐ) là bệnh nhiễm trùng phổi mắc phải bên ngoài bệnh viện. Vi khuẩn hoặc virus tấn công các túi khí nhỏ trong phổi, gây: ho (có thể có đàm), sốt/ớn lạnh, khó thở, đau ngực khi thở, mệt mỏi.
+Viêm phổi cộng đồng (VPCĐ) là bệnh nhiễm trùng phổi mắc phải bên ngoài bệnh viện. Vi khuẩn hoặc virus tấn công các túi khí nhỏ trong phổi, gây: ho (có thể có đàm), sốt/ớn lạnh, [[Khó thở]], [[Đau ngực]] khi thở, mệt mỏi.
 
 **7B.2. Khi nào cần đến bệnh viện ngay?**
 
-🚨 Khó thở nặng, thở nhanh \> 30 lần/phút hoặc thở co kéo
+🚨 Khó thở nặng, [[Khó thở|thở nhanh]] \> 30 lần/phút hoặc thở co kéo
 
 🚨 Môi, ngón tay tím tái (thiếu oxy)
 
@@ -307,7 +318,7 @@ Viêm phổi cộng đồng (VPCĐ) là bệnh nhiễm trùng phổi mắc phả
 
 🚨 Lú lẫn, không nhớ ngày tháng, không nhận ra người thân
 
-🚨 Sốt \> 39.5 °C không giảm sau paracetamol
+🚨 Sốt \> 39.5 °C không giảm sau [[Paracetamol]]
 
 🚨 Trẻ em: thở lõm ngực, bỏ bú, li bì không thức được
 
@@ -329,7 +340,7 @@ Viêm phổi cộng đồng (VPCĐ) là bệnh nhiễm trùng phổi mắc phả
 
 **7B.4. Phòng ngừa viêm phổi**
 
-💉 VACCINE phế cầu: 1 mũi PCV20 cho người ≥ 65 tuổi hoặc bệnh nền (ĐTĐ, tim, phổi, thận)
+💉 [[Vắc-xin|VACCINE]] phế cầu: 1 mũi PCV20 cho người ≥ 65 tuổi hoặc bệnh nền (ĐTĐ, [[Tim]], phổi, thận)
 
 💉 VACCINE cúm: tiêm mỗi năm, tốt nhất tháng 9–11
 
@@ -343,7 +354,7 @@ Viêm phổi cộng đồng (VPCĐ) là bệnh nhiễm trùng phổi mắc phả
 
 Dùng cho tự học, giảng dạy và kiểm tra năng lực. Một đáp án đúng nhất. Đáp án và giải thích kèm theo.
 
-**1\. BN nam 70 tuổi, sốt 38.8°C, ho đàm vàng 3 ngày, X-quang đông đặc thùy dưới phải. CURB-65 \= 1 (chỉ điểm tuổi ≥65). Xử trí phù hợp nhất?**
+**1\. BN nam 70 tuổi, sốt 38.8°C, ho đàm vàng 3 ngày, [[X-quang]] đông đặc thùy dưới phải. CURB-65 \= 1 (chỉ điểm tuổi ≥65). Xử trí [[Phù]] hợp nhất?**
 
 A. Nhập ICU ngay
 
@@ -437,7 +448,7 @@ C. Linezolid \+ Ceftriaxone
 
 D. Linezolid \+ Doxycycline
 
-**✅ Đáp án: B —** Linezolid \+ SSRI → Hội chứng serotonin: sốt cao, run, co giật, mê sảng. Khoảng trống ≥ 14 ngày. CCĐ tuyệt đối.
+**✅ Đáp án: B —** Linezolid \+ SSRI → Hội chứng serotonin: [[Sốt|sốt cao]], run, co giật, mê sảng. Khoảng trống ≥ 14 ngày. CCĐ tuyệt đối.
 
 **9\. Tiêu chí chuyển IV → uống trong VPCĐ: tiêu chí nào KHÔNG có trong danh sách?**
 
@@ -445,11 +456,11 @@ A. Nhiệt độ ≤ 37.8°C
 
 B. Nhịp tim ≤ 100 lần/phút
 
-C. CRP bình thường hóa hoàn toàn
+C. [[CRP]] bình thường hóa hoàn toàn
 
 D. SaO₂ ≥ 90% thở khí phòng
 
-**✅ Đáp án: C —** 7 tiêu chí chuyển uống: T≤37.8°C, mạch≤100, nhịp thở≤24, HA≥90, SaO₂≥90%, ăn uống được, tri giác bình thường. CRP không phải tiêu chí.
+**✅ Đáp án: C —** 7 tiêu chí chuyển uống: T≤37.8°C, mạch≤100, nhịp thở≤24, HA≥90, SaO₂≥90%, ăn uống được, tri giác bình thường. [[CRP]] không phải tiêu chí.
 
 **10\. Protocol corticosteroid trong VPCĐ nặng (SPILF-SPLF 2025, được cập nhật trong VPCĐ 2026\) là:**
 
@@ -463,7 +474,7 @@ D. Methylprednisolone pulse 1 g/ngày × 3 ngày
 
 **✅ Đáp án: C —** SPILF-SPLF 2025: hydrocortisone 200 mg/ngày IV liên tục HOẶC methylprednisolone 0.5 mg/kg q12h × 8–14 ngày, giảm dần.
 
-**11\. BN ngoại trú 45 tuổi, dị ứng penicillin (phát ban), VPCĐ nhẹ không có MDR. Phác đồ phù hợp?**
+**11\. BN ngoại trú 45 tuổi, dị ứng penicillin (phát ban), VPCĐ nhẹ không có MDR. Phác đồ [[Phù]] hợp?**
 
 A. Ceftriaxone 1 g IM × 5 ngày
 
@@ -511,7 +522,7 @@ D. Không liên quan PCT, chỉ dùng lâm sàng
 
 **✅ Đáp án: B —** Tiêu chí VPCĐ 2026: de-escalation khi PCT \< 0.25 ng/mL HOẶC giảm ≥ 80% baseline. 1.8/12.5 \= giảm 85.6% → đủ tiêu chí (kết hợp cải thiện lâm sàng).
 
-**15\. BN ICU đang dùng valproate chống động kinh, cần carbapenem (meropenem) cho P. aeruginosa MDR. Điều gì xảy ra?**
+**15\. BN ICU đang dùng valproate chống [[Động kinh]], cần carbapenem (meropenem) cho P. aeruginosa MDR. Điều gì xảy ra?**
 
 A. Carbapenem an toàn với valproate
 
@@ -534,12 +545,12 @@ D. Chỉ imipenem ảnh hưởng, meropenem không
 | **5** | 5\. Ceftazidime/avibactam (thận bình thường) trong P. aeruginosa MDR: l… | **B** | Ceftazidime/avibactam 2.5 g q8h, truyền kéo dài 3 h (time-dependent PK/PD). Không dùng bolus. |
 | **6** | 6\. BN 55 tuổi từ Đắk Lắk, VPCĐ nặng không đáp ứng sau 3 ngày ceftriaxo… | **B** | Melioidosis: vùng lưu hành Tây Nguyên/ĐBSCL, không đáp ứng β-lactam thông thường, áp-xe đa thùy. Cấy máu/đàm/n… |
 | **7** | 7\. Kháng sinh nào KHÔNG cần chỉnh liều ở BN CKD (CrCl 20 mL/phút)?… | **B** | Moxifloxacin chủ yếu qua gan → không chỉnh liều thận. Levofloxacin, amikacin, vancomycin đều cần chỉnh liều kh… |
-| **8** | 8\. Cặp tương tác nguy hiểm nhất cần CCĐ tuyệt đối khi dùng linezolid?… | **B** | Linezolid \+ SSRI → Hội chứng serotonin: sốt cao, run, co giật, mê sảng. Khoảng trống ≥ 14 ngày. CCĐ tuyệt đối. |
+| **8** | 8\. Cặp tương tác nguy hiểm nhất cần CCĐ tuyệt đối khi dùng linezolid?… | **B** | Linezolid \+ SSRI → Hội chứng serotonin: [[Sốt|sốt cao]], run, co giật, mê sảng. Khoảng trống ≥ 14 ngày. CCĐ tuyệt đối. |
 | **9** | 9\. Tiêu chí chuyển IV → uống trong VPCĐ: tiêu chí nào KHÔNG có trong d… | **C** | 7 tiêu chí chuyển uống: T≤37.8°C, mạch≤100, nhịp thở≤24, HA≥90, SaO₂≥90%, ăn uống được, tri giác bình thường. … |
 | **10** | 10\. Protocol corticosteroid trong VPCĐ nặng (SPILF-SPLF 2025, được cập… | **C** | SPILF-SPLF 2025: hydrocortisone 200 mg/ngày IV liên tục HOẶC methylprednisolone 0.5 mg/kg q12h × 8–14 ngày, gi… |
 | **11** | 11\. BN ngoại trú 45 tuổi, dị ứng penicillin (phát ban), VPCĐ nhẹ không… | **B** | Dị ứng penicillin \+ không β-lactam → FQ hô hấp (levofloxacin 750 mg × 5 ngày hoặc moxifloxacin 400 mg × 5 ngày… |
 | **12** | 12\. Kháng sinh nào cần TDM theo AUC trong điều trị VPCĐ?… | **B** | Vancomycin: TDM theo AUC₂₄ 400–600 µg·h/mL (không dùng Ctrough đơn độc). Tối ưu hiệu quả, giảm nephrotoxicity. |
 | **13** | 13\. Phối hợp β-lactam \+ macrolid trong VPCĐ nhập viện có lợi ích gì NG… | **B** | ACCESS trial 2024: macrolid (clarithromycin/azithromycin) giảm cytokine bão, giảm tử vong trong VPCĐ nặng, độc… |
 | **14** | 14\. BN VPCĐ, PCT ban đầu 12.5 ng/mL, sau 4 ngày điều trị PCT \= 1.8 ng/… | **B** | Tiêu chí VPCĐ 2026: de-escalation khi PCT \< 0.25 ng/mL HOẶC giảm ≥ 80% baseline. 1.8/12.5 \= giảm 85.6% → đủ ti… |
-| **15** | 15\. BN ICU đang dùng valproate chống động kinh, cần carbapenem (merope… | **B** | Tất cả carbapenem đều làm giảm valproate 60–100% (ức chế hấp thu, tăng glucuronidation). Xem xét thay levetira… |
+| **15** | 15\. BN ICU đang dùng valproate chống [[Động kinh]], cần carbapenem (merope… | **B** | Tất cả carbapenem đều làm giảm valproate 60–100% (ức chế hấp thu, tăng glucuronidation). Xem xét thay levetira… |
 

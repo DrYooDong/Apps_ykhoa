@@ -1,10 +1,16 @@
 ---
+title: "Sởi"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ====
 # Đại cương và Lịch sử 
-Bệnh sởi (Measles hay Rubeola) là một bệnh truyền nhiễm cấp tính có khả năng lây lan cực kỳ cao, từng là nỗi ám ảnh y tế toàn cầu trước kỷ nguyên tiêm chủng. 
+Bệnh sởi (Measles hay Rubeola) là một bệnh truyền nhiễm cấp tính có khả năng lây lan cực kỳ cao, từng là nỗi ám ảnh y tế toàn cầu trước kỷ nguyên [[Vắc-xin|tiêm chủng]]. 
 Lịch sử dịch tễ học của sởi được đánh dấu bởi những nghiên cứu kinh điển, điển hình là các quan sát của Panum về đợt bùng phát dịch sởi tại quần đảo Faroe vào năm 1846. Một cột mốc quan trọng trong y học hiện đại diễn ra vào năm 1954 khi Enders và Peebles lần đầu tiên phân lập và nuôi cấy thành công virus sởi từ bệnh nhân trên môi trường nuôi cấy tế bào. Thành tựu này đã đặt nền móng trực tiếp cho sự phát triển của vắc-xin sởi sống giảm độc lực do Katz và Enders nghiên cứu sau đó.
 
 **Đặc điểm Vi sinh học và Cơ chế Sinh bệnh học** 
@@ -14,12 +20,12 @@ Một trong những đặc điểm lâm sàng và vi sinh cốt lõi của sởi
 
 **Dịch tễ học và Sự lây truyền** Sởi lây truyền chủ yếu qua đường hô hấp thông qua các giọt bắn nhỏ và có khả năng tồn tại, lây lan mạnh mẽ qua hệ thống thông gió cũng như trong không gian tiếp xúc gần của hộ gia đình.
 
-- **Nỗ lực loại trừ toàn cầu:** Nhờ vào các chương trình tiêm chủng, thế giới đã đạt được những tiến bộ to lớn trong việc kiểm soát và hướng tới loại trừ bệnh sởi trên phạm vi toàn cầu cũng như từng khu vực trong thế kỷ 21. Quá trình giám sát sự lây truyền của bệnh hiện nay phụ thuộc rất nhiều vào các phân tích dịch tễ học phân tử và đặc điểm di truyền học của virus sởi.
+- **Nỗ lực loại trừ toàn cầu:** Nhờ vào các chương trình [[Vắc-xin|tiêm chủng]], thế giới đã đạt được những tiến bộ to lớn trong việc kiểm soát và hướng tới loại trừ bệnh sởi trên phạm vi toàn cầu cũng như từng khu vực trong thế kỷ 21. Quá trình giám sát sự lây truyền của bệnh hiện nay phụ thuộc rất nhiều vào các phân tích dịch tễ học phân tử và đặc điểm di truyền học của virus sởi.
 - **Thách thức hiện tại:** Mặc dù Hoa Kỳ đã tuyên bố loại trừ được bệnh sởi trong hơn 20 năm qua, quốc gia này vẫn liên tục đối mặt với những thách thức lớn, bao gồm sự gia tăng các ca bệnh nhập cảnh và bùng phát dịch tại các cộng đồng có tỷ lệ tiêm chủng thấp.
 
 **Biểu hiện Lâm sàng và Biến chứng** Sởi có thể gây ra những biến chứng toàn thân cực kỳ nguy hiểm, đặc biệt ở trẻ suy dinh dưỡng hoặc những cá nhân có rối loạn quá trình tổng hợp gamma globulin tự nhiên.
 
-- **Viêm phổi tế bào khổng lồ (Giant-cell pneumonia):** Đây là một biến chứng hô hấp nặng nề có thể dẫn đến tử vong. Đặc biệt, biến chứng này có thể xuất hiện ngay cả ở những bệnh nhân bị nhiễm virus sởi nhưng hoàn toàn không có biểu hiện phát ban (without rash).
+- **Viêm [[Phổi]] tế bào khổng lồ (Giant-cell pneumonia):** Đây là một biến chứng hô hấp nặng nề có thể dẫn đến tử vong. Đặc biệt, biến chứng này có thể xuất hiện ngay cả ở những bệnh nhân bị nhiễm virus sởi nhưng hoàn toàn không có biểu hiện phát ban (without rash).
 - **Biến chứng Thần kinh:**
     - _Viêm não tủy do sởi (Measles encephalomyelitis):_ Là biến chứng thần kinh cấp tính đe dọa tính mạng.
     - _Bất thường điện não đồ (EEG):_ Các sóng bất thường trên điện não đồ có thể xuất hiện ngay cả trong những trường hợp được chẩn đoán là sởi "không biến chứng".

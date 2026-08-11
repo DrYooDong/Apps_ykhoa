@@ -1,3 +1,13 @@
+---
+title: "Khám hệ xương khớp ở trẻ em (Phần 2)"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: KHÁM CÁC KHỚP CHI DƯỚI, CỘT SỐNG VÀ CÁC NGHỆM PHÁP LÂM SÀNG KHÁM KHỚP Ở TRẺ EM)
 
 ---
@@ -31,7 +41,7 @@
 #### TRÍCH XUẤT HÌNH HỌA VÀ MÔ TẢ KHÁM KHỚP HÁNG
 
 - **Tên Hình/Sơ Đồ:** **Hình 69.4. Khám khớp háng**.
-- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf_ (Bài 69, trang 188).
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - [[Tim]] mạch.pdf_ (Bài 69, trang 188).
 - **Mô Tả Chi Tiết:** Sơ đồ minh họa các tư thế đánh giá biên độ vận động của khớp háng: (a) Đánh giá biên độ gập háng ($135^\circ$); (b) Đánh giá biên độ duỗi háng ($20 - 30^\circ$); (c) Đánh giá biên độ dạng háng ($45 - 50^\circ$) và khép háng ($30^\circ$); (d) Thao tác thực hiện nghiệm pháp Thomas test đánh giá co rút gập háng.
 
 ---
@@ -89,7 +99,7 @@
 ### 3.2. Đánh Giá Lâm Sàng Bàn Chân
 
 - **Tư thế thăm khám:** Thăm khám bàn chân ở cả hai tư thế: **chịu sức nặng** (đứng) và **không chịu sức nặng** (ngồi/nằm), khi có mang giày và không mang giày.
-- **Phát hiện tràn dịch cổ chân:** Bề mặt cổ chân đầy phồng, mất các rãnh tự nhiên xung quanh mắt cá nhưng **không ấn lõm** (phân biệt với phù mô mềm).
+- **Phát hiện tràn dịch cổ chân:** Bề mặt cổ chân đầy phồng, mất các rãnh tự nhiên xung quanh mắt cá nhưng **không ấn lõm** (phân biệt với [[Phù]] mô mềm).
 - **Các biến dạng bàn chân thường gặp:**
     - _Ngón cái vẹo ngoài (Hallux valgus)._
     - _Ngón chân hình búa (Hammer toe - duỗi quá mức khớp MTP, gập khớp IP)._
@@ -100,7 +110,7 @@
 #### TRÍCH XUẤT HÌNH HỌA VÀ MÔ TẢ KHÁM CỔ CHÂN
 
 - **Tên Hình/Sơ Đồ:** **Hình 69.5. Khám khớp cổ chân**.
-- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf_ (Bài 69, trang 190).
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - [[Tim]] mạch.pdf_ (Bài 69, trang 190).
 - **Mô Tả Chi Tiết:** Sơ đồ minh họa góc cử động gập lòng bàn chân ($50^\circ$), gập lưng bàn chân ($20^\circ$) và các mốc giải phẫu thăm khám vùng cổ chân - bàn chân.
 
 ---
@@ -154,9 +164,9 @@
 
 ## 5. Lưu Đồ Tiếp Cận Chẩn Đoán Trẻ Đau Chi / Rối Loạn Vận Động
 
-#### TRÍCH XUẤT LƯU ĐỒ TIẾP CẬN ĐAU CHI KHÔNG SỐT
+#### TRÍCH XUẤT LƯU ĐỒ TIẾP CẬN ĐAU CHI KHÔNG [[Sốt]]
 
-- **Tên Sơ Đồ/Lưu Đồ:** **Lưu đồ 58.2. Tiếp cận trẻ đau chi / rối loạn chức năng vận động không sốt**.
+- **Tên Sơ Đồ/Lưu Đồ:** **Lưu đồ 58.2. Tiếp cận trẻ đau chi / rối loạn chức năng vận động không [[Sốt]]**.
 - **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf_ (Bài 58, trang 41).
 - **Mô Tả Chi Tiết:** Lưu đồ phân nhánh đánh giá trẻ đau chi không sốt:
     - Kiểm tra tiền căn chấn thương $\rightarrow$ nếu có, nghi ngờ chấn thương không tai nạn / ngược đãi.
@@ -172,7 +182,7 @@
 - **Tên Sơ Đồ/Lưu Đồ:** **Lưu đồ 58.3. Lưu đồ tiếp cận trẻ có chi đau / rối loạn chức năng vận động sau chấn thương**.
 - **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf_ (Bài 58, trang 42).
 - **Mô Tả Chi Tiết:** Lưu đồ phân nhánh chẩn đoán đau chi sau chấn thương:
-    - Đánh giá sưng khớp, lỏng lẻo khớp, điểm đau chói, vết bầm $\rightarrow$ chỉ định X-quang, CT/MRI tìm gãy xương, trật khớp hoặc **tràn máu khớp (Hemarthrosis)**.
+    - Đánh giá sưng khớp, lỏng lẻo khớp, điểm đau chói, vết bầm $\rightarrow$ chỉ định [[X-quang]], CT/[[MRI]] tìm gãy xương, trật khớp hoặc **tràn máu khớp (Hemarthrosis)**.
     - _Lưu ý lâm sàng:_ Nếu xuất hiện tràn máu trong khớp sau chấn thương nhẹ, cần tầm soát ngay bệnh **Hemophilia** hoặc rối loạn đông máu nền.
 
 ---

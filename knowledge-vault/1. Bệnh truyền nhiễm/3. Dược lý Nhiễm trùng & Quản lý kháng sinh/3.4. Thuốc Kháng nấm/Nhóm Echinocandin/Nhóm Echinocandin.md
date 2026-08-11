@@ -1,7 +1,13 @@
 ---
+title: "Nhóm Echinocandin"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Tổng quan & Phân loại (Classification)
 
 - **Tên nhóm:** Echinocandin.
@@ -34,19 +40,19 @@ tags:
 
 - **Chỉ số PK/PD quyết định:** Tác dụng diệt nấm phụ thuộc nồng độ. Tỷ lệ Cmax/MIC hoặc AUC/MIC là các chỉ số dự đoán hiệu quả điều trị tốt nhất. Thuốc có tác dụng hậu kháng nấm (PAE) kéo dài.
 - **Hấp thu (A):** Sinh khả dụng đường uống rất kém, chỉ sử dụng đường tiêm tĩnh mạch (IV).
-- **Phân bố (D):** Thuốc thâm nhập rất tốt vào gan, lách, phổi và nhu mô thận. Tuy nhiên, do phân tử lượng lớn và tỷ lệ gắn protein huyết tương rất cao, thuốc **thâm nhập cực kỳ kém** vào dịch não tủy (CSF), nhu mô não, tuyến tiền liệt, dịch nhãn cầu và nước tiểu. Mặc dù nồng độ trong nước tiểu thấp, sự tích lũy thuốc trong nhu mô thận vẫn giúp điều trị thành công các ca nấm thận do _Candida_ trong một số báo cáo.
+- **Phân bố (D):** Thuốc thâm nhập rất tốt vào [[Gan]], lách, [[Phổi]] và [[Thận|nhu mô thận]]. Tuy nhiên, do phân tử lượng lớn và tỷ lệ gắn protein huyết tương rất cao, thuốc **thâm nhập cực kỳ kém** vào [[Dịch nào tủy|dịch não tủy]] (CSF), nhu mô não, tuyến tiền liệt, dịch nhãn cầu và nước tiểu. Mặc dù nồng độ trong nước tiểu thấp, sự tích lũy thuốc trong [[Thận|nhu mô thận]] vẫn giúp điều trị thành công các ca nấm thận do _Candida_ trong một số báo cáo.
 - **Chuyển hóa (M) & Thải trừ (E):**
-    - _Caspofungin & Micafungin:_ Bị giáng hóa chậm tại gan (và hồng cầu với micafungin) thành các chất chuyển hóa không hoạt tính, bài tiết qua mật.
+    - _Caspofungin & Micafungin:_ Bị giáng hóa chậm tại [[Gan]] (và [[Hồng cầu]] với micafungin) thành các chất chuyển hóa không hoạt tính, bài tiết qua mật.
     - _Anidulafungin:_ Tự giáng hóa ngay trong huyết tương, không qua gan.
     - _Rezafungin:_ Cấu trúc nhánh giúp phân tử ổn định, không bị mở vòng, thải trừ chủ yếu ở dạng nguyên vẹn qua phân.
 - **Thời gian bán thải (T1/2):** Caspofungin (9-11 giờ), Micafungin (11-17 giờ), Anidulafungin (24-26 giờ) cho phép dùng 1 lần/ngày. Rezafungin có T1/2 cực dài (>130 giờ), cho phép dùng liều 1 lần/tuần. Nhóm thuốc không bị loại bỏ qua lọc máu.
 
 ### 5. Chỉ định & Chiến lược điều trị (Stewardship)
 
-- **Nhiễm nấm Candida huyết (Candidemia) & Candida xâm lấn:** Echinocandin là thuốc **lựa chọn hàng đầu (First-line)** theo hướng dẫn của IDSA cho cả bệnh nhân giảm bạch cầu hạt và không giảm bạch cầu hạt. Hiệu quả điều trị tương đương hoặc vượt trội so với Fluconazole và Amphotericin B, đồng thời có độc tính thấp hơn.
+- **Nhiễm nấm Candida huyết (Candidemia) & Candida xâm lấn:** Echinocandin là thuốc **lựa chọn hàng đầu (First-line)** theo hướng dẫn của IDSA cho cả bệnh nhân giảm [[Bạch cầu]] hạt và không giảm [[Bạch cầu]] hạt. Hiệu quả điều trị tương đương hoặc vượt trội so với Fluconazole và Amphotericin B, đồng thời có độc tính thấp hơn.
     - _Xuống thang (Step-down):_ Bệnh nhân có thể được chuyển sang dùng Fluconazole sau 5-7 ngày nếu lâm sàng ổn định và vi nấm cấy ra nhạy cảm với Azole. Rezafungin được FDA ưu tiên dùng cho các bệnh nhân có hạn chế trong lựa chọn điều trị.
 - **Aspergillosis xâm lấn:** Không dùng làm thuốc ưu tiên. Chỉ dùng như liệu pháp cứu vãn (salvage therapy) hoặc phối hợp với thuốc khác (Azole hoặc Amphotericin B) trong giai đoạn đầu điều trị các ca bệnh nặng, đặc biệt ở bệnh nhân ung thư huyết học có giảm bạch cầu hạt kéo dài.
-- **Điều trị kinh nghiệm & Dự phòng:** Lựa chọn ưu tiên để điều trị kinh nghiệm ở bệnh nhân sốt giảm bạch cầu hạt (febrile neutropenia) không đáp ứng kháng sinh, hoặc dự phòng nấm xâm lấn ở bệnh nhân ghép tế bào gốc tạo máu, ghép gan.
+- **Điều trị kinh nghiệm & Dự phòng:** Lựa chọn ưu tiên để điều trị kinh nghiệm ở bệnh nhân [[Sốt]] giảm bạch cầu hạt (febrile neutropenia) không đáp ứng [[Kháng sinh]], hoặc dự phòng nấm xâm lấn ở bệnh nhân ghép tế bào gốc tạo máu, ghép gan.
 
 ### 6. An toàn thuốc (ADRs & Contraindications)
 
@@ -70,6 +76,6 @@ Tóm tắt 5 câu hỏi cốt lõi khi kê đơn Echinocandin:
 
 1. **Đúng chẩn đoán & Chỉ định?** (Là "tiêu chuẩn vàng" hiện tại cho nhiễm nấm _Candida_ huyết. Đã cân nhắc xuống thang sang Fluconazole sau 5-7 ngày để tiết kiệm chi phí và tiện lợi chưa?).
 2. **Đúng phổ nấm bệnh?** (Cực kỳ xuất sắc với _Candida_ và _Aspergillus_, nhưng tuyệt đối KHÔNG có tác dụng trên _Cryptococcus_, _Trichosporon_ hay _Mucorales_).
-3. **Vị trí nhiễm nấm có phù hợp không?** (Thuốc thấm rất kém vào nước tiểu, nội nhãn, dịch não tủy. Không được ưu tiên nếu nhiễm nấm khu trú tại các vị trí này).
-4. **Tốc độ truyền an toàn chưa?** (Điều dưỡng đã được y lệnh cài đặt tốc độ truyền chậm qua bơm tiêm điện trong $\ge$ 1 giờ để tránh sốc histamine chưa?).
+3. **Vị trí nhiễm nấm có [[Phù]] hợp không?** (Thuốc thấm rất kém vào nước tiểu, nội nhãn, [[Dịch nào tủy|dịch não tủy]]. Không được ưu tiên nếu nhiễm nấm khu trú tại các vị trí này).
+4. **Tốc độ truyền an toàn chưa?** (Điều dưỡng đã được y lệnh cài đặt tốc độ truyền chậm qua bơm tiêm điện trong $\ge$ 1 giờ để tránh [[Sốc]] histamine chưa?).
 5. **Chức năng gan của bệnh nhân?** (Nếu bệnh nhân bị suy gan trung bình và đang dùng Caspofungin, đã giảm liều chưa? Các thuốc khác không cần chỉnh liều).

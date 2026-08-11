@@ -1,4 +1,15 @@
-# BÀI HỌC CHUYÊN SÂU: HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ VIÊM GAN VI RÚT B (PHẦN 2)
+---
+title: "BYT_VGSVB_2026 (P2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
+# BÀI HỌC CHUYÊN SÂU: HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ VIÊM [[Gan]] VI RÚT B (PHẦN 2)
 
 _Tài liệu học tập chuyên sâu được biên soạn dựa trên Hướng dẫn chẩn đoán, điều trị viêm gan vi rút B của Bộ Y tế Việt Nam (ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16 tháng 06 năm 2026, ký bởi Thứ trưởng Trần Văn Thuấn). Đây là phần tiếp theo tập trung vào chẩn đoán, tiêu chuẩn chỉ định điều trị viêm gan B mạn, dược lý lâm sàng của các thuốc kháng vi rút (NAs), quản lý các quần thể đặc biệt, chẩn đoán thất bại điều trị và hệ thống các Phụ lục chuyên môn ban hành kèm theo hướng dẫn._
 
@@ -8,13 +19,13 @@ _Tài liệu học tập chuyên sâu được biên soạn dựa trên Hướng
 
 ### Đánh Giá và Chẩn Đoán Viêm Gan B Mạn
 
-- **Tiêu chuẩn chẩn đoán nhiễm HBV mạn:** Được xác định trên lâm sàng khi người bệnh có **HBsAg dương tính ở người lớn**, hoặc tình trạng **HBsAg tồn tại kéo dài từ 6 tháng trở lên ở vị thành niên và trẻ em**. Tất cả những người được chẩn đoán nhiễm HBV mạn cần được nhanh chóng kết nối với các cơ sở điều trị để được quản lý lâu dài và điều trị thuốc kháng vi rút (NAs) sớm nhằm ngăn chặn các biến chứng xơ gan hoặc ung thư biểu mô tế bào gan (HCC).
-- **Đánh giá lâm sàng:** Phần lớn người nhiễm HBV mạn không có biểu hiện lâm sàng rõ rệt cho đến khi tiến triển đến xơ gan hoặc HCC. Các biểu hiện lâm sàng của bệnh gan tiến triển bao gồm: gan to, lách to, mệt mỏi, ngứa, đau khớp, phù nề, ban đỏ lòng bàn tay, sao mạch. Khi xảy ra xơ gan mất bù, người bệnh sẽ xuất hiện các hội chứng tăng áp lực tĩnh mạch cửa (cổ chướng, vàng da, vỡ/giãn tĩnh mạch thực quản gây xuất huyết tiêu hóa, bệnh não gan). Biểu hiện ngoài gan có thể gặp bao gồm viêm cầu thận, viêm đa khớp, viêm mạch hoặc cryoglobulin máu.
+- **Tiêu chuẩn chẩn đoán nhiễm HBV mạn:** Được xác định trên lâm sàng khi người bệnh có **HBsAg dương tính ở người lớn**, hoặc tình trạng **HBsAg tồn tại kéo dài từ 6 tháng trở lên ở vị thành niên và trẻ em**. Tất cả những người được chẩn đoán nhiễm HBV mạn cần được nhanh chóng kết nối với các cơ sở điều trị để được quản lý lâu dài và điều trị thuốc kháng vi rút (NAs) sớm nhằm ngăn chặn các biến chứng xơ gan hoặc ung thư biểu mô [[Gan|tế bào gan]] (HCC).
+- **Đánh giá lâm sàng:** Phần lớn người nhiễm HBV mạn không có biểu hiện lâm sàng rõ rệt cho đến khi tiến triển đến xơ gan hoặc HCC. Các biểu hiện lâm sàng của bệnh gan tiến triển bao gồm: gan to, lách to, mệt mỏi, ngứa, đau khớp, [[Phù]] nề, ban đỏ lòng bàn tay, sao mạch. Khi xảy ra xơ gan mất bù, người bệnh sẽ xuất hiện các hội chứng tăng áp lực tĩnh mạch cửa (cổ chướng, [[Vàng da]], vỡ/giãn tĩnh mạch thực quản gây [[Xuất huyết]] tiêu hóa, bệnh não gan). Biểu hiện ngoài gan có thể gặp bao gồm viêm cầu [[Thận]], viêm đa khớp, viêm mạch hoặc cryoglobulin máu.
 - **Các xét nghiệm đánh giá toàn diện:**
-    - _Đánh giá chức năng gan và viêm gan:_ Tổng phân tích tế bào máu ngoại vi (lưu ý số lượng tiểu cầu), thời gian prothrombin, chỉ số INR (thay đổi khi xơ gan tiến triển); men gan AST/ALT (giới hạn trên bình thường ULN của ALT quy ước là **30 U/L đối với nam và 19 U/L đối với nữ**); bilirubin toàn phần và trực tiếp; albumin máu.
+    - _Đánh giá chức năng gan và viêm gan:_ Tổng phân tích tế bào máu ngoại vi (lưu ý [[[[Tiểu cầu]]|số lượng tiểu cầu]]), thời gian prothrombin, chỉ số INR (thay đổi khi xơ gan tiến triển); men gan AST/ALT (giới hạn trên bình thường ULN của ALT quy ước là **30 U/L đối với nam và 19 U/L đối với nữ**); bilirubin toàn phần và trực tiếp; albumin máu.
     - _Đánh giá tình trạng vi rút:_ Đo tải lượng HBV DNA bằng xét nghiệm tại phòng xét nghiệm (laboratory-based) hoặc hệ thống tại điểm chăm sóc (point-of-care); xét nghiệm huyết thanh HBeAg/anti-HBe; nếu có điều kiện, làm thêm xét nghiệm định lượng qHBsAg và HBcrAg để phân tầng nguy cơ.
-    - _Đánh giá xơ hóa gan và xơ gan:_ Sử dụng các phương pháp không xâm lấn (NITs) như chỉ số APRI, FIB-4, M2BPGi, FibroTest hoặc siêu âm độ đàn hồi gan (FibroScan, ARFI, MRE...). Chẩn đoán xơ gan khi mức độ xơ hóa đạt **F4** (ví dụ: chỉ số APRI > 1 hoặc kết quả đo FibroScan > 12,5 kPa). Đánh giá xơ gan còn bù hay mất bù dựa trên phân loại Child-Pugh (Child-Pugh A là còn bù; Child-Pugh B và C là mất bù).
-    - _Xét nghiệm tầm soát biến chứng:_ Xét nghiệm các chỉ dấu ung thư gan (AFP, PIVKA II, AFP-L3) phối hợp siêu âm ổ bụng, chụp cắt lớp vi tính (CT) hoặc cộng hưởng từ (MRI) gan mật. Nội soi dạ dày - thực quản được chỉ định khi nghi ngờ xơ gan để phát hiện sớm giãn tĩnh mạch thực quản.
+    - _Đánh giá xơ hóa gan và xơ gan:_ Sử dụng các phương pháp không xâm lấn (NITs) như chỉ số APRI, FIB-4, M2BPGi, FibroTest hoặc [[Siêu âm]] độ đàn hồi gan (FibroScan, ARFI, MRE...). Chẩn đoán xơ gan khi mức độ xơ hóa đạt **F4** (ví dụ: chỉ số APRI > 1 hoặc kết quả đo FibroScan > 12,5 kPa). Đánh giá xơ gan còn bù hay mất bù dựa trên phân loại Child-Pugh (Child-Pugh A là còn bù; Child-Pugh B và C là mất bù).
+    - _Xét nghiệm tầm soát biến chứng:_ Xét nghiệm các chỉ dấu ung thư gan (AFP, PIVKA II, AFP-L3) phối hợp [[Siêu âm]] ổ bụng, [[[[CT Scan]]|chụp cắt lớp vi tính]] (CT) hoặc cộng hưởng từ ([[MRI]]) gan mật. Nội soi dạ dày - thực quản được chỉ định khi nghi ngờ xơ gan để phát hiện sớm giãn tĩnh mạch thực quản.
     - _Đánh giá bệnh đồng nhiễm và đồng mắc:_ Tầm soát đồng nhiễm HIV, HCV, HDV, HEV và các bệnh đồng mắc như đái tháo đường, bệnh gan nhiễm mỡ liên quan đến rối loạn chuyển hóa (MAFLD).
 
 ---
@@ -28,8 +39,8 @@ Bộ Y tế khuyến cáo chỉ định điều trị kháng vi rút bằng thu�
 3. **Có bất kỳ yếu tố nào dưới đây kèm tải lượng HBV DNA trên ngưỡng phát hiện** (không phụ thuộc mức ALT và mức độ xơ hóa gan):
     - Đồng nhiễm các vi rút khác (HIV, HCV, HDV).
     - Có bệnh đồng mắc kèm theo (đái tháo đường, bệnh gan nhiễm mỡ liên quan đến rối loạn chuyển hóa).
-    - Trạng thái suy giảm miễn dịch (điều trị corticoid/steroid kéo dài, người bệnh ghép tạng).
-    - Có các biểu hiện ngoài gan hoạt động (viêm cầu thận, viêm mạch, viêm đa khớp).
+    - Trạng thái suy giảm miễn dịch (điều trị [[Corticoid]]/steroid kéo dài, người bệnh ghép tạng).
+    - Có các biểu hiện ngoài gan hoạt động (viêm cầu [[Thận]], viêm mạch, viêm đa khớp).
     - Tiền sử gia đình có người thân trực hệ (bố, mẹ, anh, chị, em ruột) bị ung thư gan hoặc xơ gan.
     - Người bệnh bị tái phát viêm gan B sau khi tự ý ngừng điều trị thuốc kháng HBV trước đó.
 4. **Trường hợp cơ sở y tế không thực hiện được xét nghiệm đo tải lượng HBV DNA:** Chỉ định điều trị kháng vi rút được đưa ra khi người bệnh có **ALT > ULN kéo dài liên tục trong vòng 6 - 12 tháng**, không phụ thuộc vào mức độ xơ hóa gan.
@@ -351,7 +362,7 @@ Quy chuẩn phân loại xơ hóa gan theo hệ thống điểm Metavir trên m�
 
 #### Hướng dẫn điều chỉnh liều thuốc kháng vi rút trên bệnh nhân suy thận
 
-Khi người bệnh có tình trạng suy chức năng thận, bác sĩ lâm sàng cần dựa vào mức lọc cầu thận (độ thanh thải Creatinine - CrCl) để lựa chọn thuốc và điều chỉnh khoảng cách liều phù hợp:
+Khi người bệnh có tình trạng suy chức năng thận, bác sĩ lâm sàng cần dựa vào mức lọc cầu thận (độ thanh thải Creatinine - CrCl) để lựa chọn thuốc và điều chỉnh khoảng cách liều [[Phù]] hợp:
 
 ##### Bảng 8: Điều chỉnh liều thuốc kháng vi rút theo mức lọc cầu thận
 

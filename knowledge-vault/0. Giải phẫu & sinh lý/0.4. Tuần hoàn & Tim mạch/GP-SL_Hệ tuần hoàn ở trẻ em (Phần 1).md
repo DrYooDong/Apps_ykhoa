@@ -1,16 +1,27 @@
-# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐẶC ĐIỂM SỰ PHÁT TRIỂN TUẦN HOÀN QUA CÁC GIAI ĐOẠN VÀ ĐẶC ĐIỂM GIẢI PHẪU TIM - MẠCH MÁU Ở TRẺ EM)
+---
+title: "GP-SL_Hệ tuần hoàn ở trẻ em (Phần 1)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
+# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐẶC ĐIỂM SỰ PHÁT TRIỂN TUẦN HOÀN QUA CÁC GIAI ĐOẠN VÀ ĐẶC ĐIỂM GIẢI PHẪU [[Tim]] - MẠCH MÁU Ở TRẺ EM)
 
 ---
 
 ## 1. Đặc Điểm Sinh Lý Tuần Hoàn Bào Thai (Fetal Circulation)
 
-### 1.1. Ba Cấu Trúc Tim Mạch Quan Trọng Trong Thai Kỳ
+### 1.1. Ba Cấu Trúc [[Tim]] Mạch Quan Trọng Trong Thai Kỳ
 
 Trong giai đoạn bào thai, hệ tuần hoàn của thai nhi sở hữu **ba cấu trúc thông nối đặc biệt**:
 
 1. **Ống tĩnh mạch (Ductus venosus):** Nối tĩnh mạch rốn với tĩnh mạch chủ dưới.
 2. **Lỗ bầu dục (Foramen ovale):** Lỗ thông giữa tâm nhĩ phải và tâm nhĩ trái.
-3. **Ống động mạch (Ductus arteriosus):** Ống nối động mạch phổi (tại vị trí phân nhánh) với eo động mạch chủ.
+3. **Ống động mạch (Ductus arteriosus):** Ống nối động mạch [[Phổi]] (tại vị trí phân nhánh) với eo động mạch chủ.
 
 ---
 
@@ -20,8 +31,8 @@ Giai đoạn bào thai hoạt động theo **cơ chế tuần hoàn song song** 
 
 - **Dòng máu từ nhau thai về tim trái:**
     
-    - Do nhau thai trao đổi khí không hiệu quả bằng phổi nên áp suất oxy ($PO_2$) ở tĩnh mạch rốn chỉ đạt khoảng **30 - 35 mmHg** (đây là mức $O_2$ cao nhất được cung cấp cho thai nhi).
-    - Từ nhau thai, khoảng **50% máu từ tĩnh mạch rốn đi vào gan**, **50% còn lại theo ống tĩnh mạch đổ về tĩnh mạch chủ dưới** để về nhĩ phải.
+    - Do nhau thai trao đổi khí không hiệu quả bằng [[Phổi]] nên áp suất oxy ($PO_2$) ở tĩnh mạch rốn chỉ đạt khoảng **30 - 35 mmHg** (đây là mức $O_2$ cao nhất được cung cấp cho thai nhi).
+    - Từ nhau thai, khoảng **50% máu từ tĩnh mạch rốn đi vào [[Gan]]**, **50% còn lại theo ống tĩnh mạch đổ về tĩnh mạch chủ dưới** để về nhĩ phải.
     - Tại nhĩ phải, nhờ **van Eustachian**, phần lớn dòng máu giàu $O_2$ này được hướng đi thẳng qua **lỗ bầu dục để vào nhĩ trái**.
     - Từ nhĩ trái, máu đi qua van hai lá xuống thất trái, rồi được tim bơm qua van động mạch chủ. Hầu hết máu từ động mạch chủ lên (**73% cung lượng động mạch chủ**) được cung cấp trực tiếp cho não và hai chi trên; phần còn lại (**27%**) đi vào động mạch chủ xuống.
     - Sau khi nuôi dưỡng phần dưới cơ thể, phần lớn lượng máu theo tĩnh mạch chủ dưới trở về tim, một phần nhỏ theo **hai động mạch rốn** trở về nhau thai.
@@ -41,7 +52,7 @@ Giai đoạn bào thai hoạt động theo **cơ chế tuần hoàn song song** 
 
 - **Tên Hình/Sơ Đồ:** **Hình 55.1 / Hình 1.1 / Hình 50.1. Tuần hoàn bào thai**.
 - **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf_ (Bài 55, trang 13) / _[Book] Nhi khoa YDS - Tập 5.md_ (Bài 1, trang 2) / _[Book] Nhi khoa YDS - Tập 4 - Tim mạch.pdf_ (Bài 50, trang 474).
-- **Mô Tả Chi Tiết:** Sơ đồ minh họa đường đi của dòng máu trong cơ chế tuần hoàn song song ở thai nhi, thể hiện vị trí ba cấu trúc thông nối sinh lý (ống tĩnh mạch, lỗ bầu dục, ống động mạch) và sự phân bố dòng máu từ nhau thai qua tĩnh mạch rốn, gan, tĩnh mạch chủ dưới, các buồng tim, động mạch chủ lên, động mạch chủ xuống, phổi và hai động mạch rốn.
+- **Mô Tả Chi Tiết:** Sơ đồ minh họa đường đi của dòng máu trong cơ chế tuần hoàn song song ở thai nhi, thể hiện vị trí ba cấu trúc thông nối sinh lý (ống tĩnh mạch, lỗ bầu dục, ống động mạch) và sự phân bố dòng máu từ nhau thai qua tĩnh mạch rốn, [[Gan]], tĩnh mạch chủ dưới, các buồng tim, động mạch chủ lên, động mạch chủ xuống, phổi và hai động mạch rốn.
 
 ---
 

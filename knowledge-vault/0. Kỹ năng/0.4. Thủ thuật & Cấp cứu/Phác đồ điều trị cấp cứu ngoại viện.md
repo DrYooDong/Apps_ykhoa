@@ -1,3 +1,13 @@
+---
+title: "Phác đồ điều trị cấp cứu ngoại viện"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 S Ở Y T Ế TP. H Ồ CHÍ MINH C Ộ NG HÒA XÃ H Ộ I CH Ủ NGHĨA VI Ệ T NAM B Ệ NH VI Ệ N ĐKKV TH Ủ Đ Ứ C Đ ộ c l ậ p - T ự do - H ạ nh phúc
 ### PHÁC Đ Ồ ĐI Ề U TR Ị C Ấ P C Ứ U
 ### VÀ C Ấ P C Ứ U 115
@@ -79,8 +89,8 @@ s ố ng còn ngo ạ i vi ệ n (t ạ i hi ệ n trư ờ ng) và chu ỗ i s 
 Hình 1.1: Chu ỗ i s ố ng còn n ộ i vi ệ n (trên) và ngo ạ i vi ệ n (dư ớ i) a) Chuỗi sinh tồn ngoại viện (tại hiện trường)
 - Bước 1: Nhận diện sớm nạn nhân ngừng tim và kích hoạt hệ thống cấp cứu
 - Bước 2: Ép tim sớm trong vòng 10 giây ngay khi nhận diện nạn nhân ngừng tim
-- Bước 3: Sốc điện sớm
-- Bước 4: Hồi sinh tim phổi nâng cao
+- Bước 3: [[Sốc]] điện sớm
+- Bước 4: Hồi sinh tim [[Phổi]] nâng cao
 - Bước 5: Chăm sóc sau ngừng tim
 - Bước 6: Phục hồi chức năng
 Trong đó, bư ớ c 1, 2, 3 dành cho ngư ờ i phát hi ệ n n ạ n nhân ng ừ ng tim đ ầ u tiên. Bư ớ c 2,
@@ -95,7 +105,7 @@ c ủ a phòng ng ừ a ng ừ ng tim x ả y ra.
 - Bước 1: Phòng ngừa ngừng tim trong bệnh viện
 - Bước 2: Phát hiện sớm bệnh nhân ngừng tim và kích hoạt hệ thống cấp cứu
 - Bước 3: Ép tim sớm trong 10 giây ngay khi nhận diện bệnh nhân ngừng tim
-- Bước 4: Sốc điện sớm - Hồi sinh tim phổi nâng cao
+- Bước 4: [[Sốc]] điện sớm - Hồi sinh tim [[Phổi]] nâng cao
 - Bước 5: Chăm sóc sau ngừng tim
 - Bước 6: Phục hồi chức năng
 Trong đó, bư ớ c 1, 2, 3 dành cho ngư ờ i phát hi ệ n n ạ n nhân ng ừ ng tim đ ầ u tiên. Bư ớ c 4
@@ -690,7 +700,7 @@ Bư ớ c 7: ti ế n hành s ố c đi ệ n kh ử rung l ầ n 3
 Bư ớ c 8: ti ế p t ụ c h ồ i sinh tim ph ổ i nâng cao 2 phút, s ử d ụ ng Amiodarone (li ề u đ ầ u: bolus
 300mg TM – li ề u th ứ 2: 150mg) ho ặ c Lidocain (li ề u đ ầ u: 1 - 1,5mg/kg TM – li ề u th ứ 2: 0,5 -
 0,75mg/kg), tìm và đi ề u tr ị các nguyên nhân gây ngưng tim có th ể h ồ i ph ụ c (5H5T)
-K ỹ thu ậ t s ố c đi ệ n: l ự a ch ọ n m ứ c đi ệ n th ế phù h ợ p v ớ i máy s ố c đi ệ n hi ệ n có.
+K ỹ thu ậ t s ố c đi ệ n: l ự a ch ọ n m ứ c đi ệ n th ế [[Phù]] h ợ p v ớ i máy s ố c đi ệ n hi ệ n có.
 + N ế u máy 1 pha: m ứ c đi ệ n th ế l ự a ch ọ n là 360J cho t ấ t c ả các l ầ n s ố c đi ệ n kh ử rung
 + N ế u máy 2 pha: m ứ c đi ệ n th ế l ự a là 120 - 200J d ự a trên khuy ế n cáo c ủ a nhà s ả n xu ấ t,
 n ế u không bi ế t có th ể l ự a ch ọ n m ứ c đi ệ n th ế cao nh ấ t hi ệ n có. M ứ c đ i ệ n th ế cho các
@@ -782,8 +792,8 @@ Adrenalin 1mg/ml m ỗ i 3 - 5 phút, không dùng Adrenalin li ề u cao.
 Adrenalin càng s ớ m càng t ố t. Adrenalin giúp tăng t ỷ l ệ khôi ph ụ c tu ầ n hoàn t ự nhiên
 (ROSC) nhưng không tăng t ỷ l ệ h ồ i ph ụ c nguyên v ẹ n th ầ n kinh. Các nghiên c ứ u ghi
 nh ậ n, s ử d ụ ng li ề u cao Adrenalin ho ặ c tích lũy li ề u Adrenalin lư ợ ng l ớ n s ẽ gây thi ế u
-máu nuôi cơ quan, tăng nhu c ầ u s ử d ụ ng oxy ở t ế bào cơ tim, tăng chuy ể n hóa y ế m
-khí ở t ế bào cơ tim, t ỷ l ệ thu ậ n v ớ i m ứ c đ ộ sau khi h ồ i ph ụ c tu ầ n hoàn t ự nhiên
+máu nuôi cơ quan, tăng nhu c ầ u s ử d ụ ng oxy ở t ế bào [[Tim|cơ tim]], tăng chuy ể n hóa y ế m
+khí ở t ế bào [[Tim|cơ tim]], t ỷ l ệ thu ậ n v ớ i m ứ c đ ộ sau khi h ồ i ph ụ c tu ầ n hoàn t ự nhiên
 (ROSC).
 + Đ ố i v ớ i trư ờ ng h ợ p ngưng hô h ấ p tu ầ n do nh ị p s ố c đư ợ c, Adrenalin có tác d ụ ng tăng
 lưu lư ợ ng máu nuôi tim và tăng kh ả năng h ồ i ph ụ c tu ầ n hoàn t ự nhiên (ROSC). N ế u
@@ -849,7 +859,7 @@ Khôi ph ụ c tu ầ n hoàn t ự nhiên (ROSC) là bư ớ c đ ầ u tiên t
 II. H Ộ I CH Ứ NG SAU NGƯNG TIM:
 H ộ i ch ứ ng sau ngưng tim đư ợ c đ ặ c trưng b ở i t ổ n thương não, r ố i lo ạ n ch ứ c năng cơ tim, đáp ứ ng h ệ th ố ng đ ố i v ớ i thi ế u máu/tái tư ớ i máu, cùng v ớ i các b ệ nh lý n ề n gây ngưng tim và b ệ nh lý n ề n trư ớ c đó.
 - T ổ n thương não:
-T ổ n thương não trong h ộ i ch ứ ng sau ngưn g tim đ ặ c trưng b ở i tình tr ạ ng phù não, thoái hóa do thi ế u máu và suy y ế u kh ả năng t ự đi ề u ch ỉ nh c ủ a não. T ế bào th ầ n kinh r ấ t d ễ b ị t ổ n thương do thi ế u máu, vì chúng có nhu c ầ u trao đ ổ i ch ấ t cao và s ử d ụ ng oxy làm cơ ch ấ t chuy ể n hóa. Phù não sau ngưng tim càng tr ở nên tr ầ m tr ọ ng hơn do kh ả năng t ự đi ề u ch ỉ nh c ủ a m ạ ch máu não b ị t ổ n thương. Khi huy ế t đ ộ ng không ổ n đ ị nh thì não b ộ s ẽ t ổ n thương theo c ả 2 hư ớ ng: t ổ n thương do thi ế u máu ti ế p di ễ n/nh ồ i máu vi m ạ ch; ho ặ c t ổ n thương do tái tư ớ i máu làm sung huy ế t . V ấ n đ ề tái tư ớ i máu sau ngưng tim cũng có th ể gây t ổ n h ạ i th ầ n kinh do kích ho ạ t chu trình ch ế t có l ậ p trình c ủ a t ế bào, b ị t ổ n thương do các g ố c oxy hóa t ự do ho ặ c do t ổ n thương ty th ể . Não b ộ c ự c k ỳ nh ạ y c ả m v ớ i các v ấ n đ ề như s ố t, tăng đư ờ ng huy ế t, đ ộ ng kinh ở giai đo ạ n sau ngưng tim. Trên lâm sàng, t ổ n thương não sau ngưng tim th ể hi ệ n qua vi ệ c m ấ t nh ậ n th ứ c 1 ph ầ n, hôn mê, co gi ậ t, đ ộ ng kinh, ch ế t não, …
+T ổ n thương não trong h ộ i ch ứ ng sau ngưn g tim đ ặ c trưng b ở i tình tr ạ ng [[Phù]] não, thoái hóa do thi ế u máu và suy y ế u kh ả năng t ự đi ề u ch ỉ nh c ủ a não. T ế bào th ầ n kinh r ấ t d ễ b ị t ổ n thương do thi ế u máu, vì chúng có nhu c ầ u trao đ ổ i ch ấ t cao và s ử d ụ ng oxy làm cơ ch ấ t chuy ể n hóa. Phù não sau ngưng tim càng tr ở nên tr ầ m tr ọ ng hơn do kh ả năng t ự đi ề u ch ỉ nh c ủ a m ạ ch máu não b ị t ổ n thương. Khi huy ế t đ ộ ng không ổ n đ ị nh thì não b ộ s ẽ t ổ n thương theo c ả 2 hư ớ ng: t ổ n thương do thi ế u máu ti ế p di ễ n/nh ồ i máu vi m ạ ch; ho ặ c t ổ n thương do tái tư ớ i máu làm sung huy ế t . V ấ n đ ề tái tư ớ i máu sau ngưng tim cũng có th ể gây t ổ n h ạ i th ầ n kinh do kích ho ạ t chu trình ch ế t có l ậ p trình c ủ a t ế bào, b ị t ổ n thương do các g ố c oxy hóa t ự do ho ặ c do t ổ n thương ty th ể . Não b ộ c ự c k ỳ nh ạ y c ả m v ớ i các v ấ n đ ề như s ố t, tăng đư ờ ng huy ế t, đ ộ ng kinh ở giai đo ạ n sau ngưng tim. Trên lâm sàng, t ổ n thương não sau ngưng tim th ể hi ệ n qua vi ệ c m ấ t nh ậ n th ứ c 1 ph ầ n, [[Hôn mê]], co gi ậ t, đ ộ ng kinh, ch ế t não, …
 - T ổ n thương t ế bào cơ tim:
 T ổ n thương t ế bào cơ tim sau ngưng tim có th ể h ồ i ph ụ c đư ợ c và thư ờ ng đ ặ c trưng b ở i tình tr ạ ng gi ả m đ ộ ng toàn b ộ cơ tim. Các b ệ nh lý tim m ạ ch hay b ệ nh lý m ạ ch vành trư ớ c đó càng làm n ặ ng hơn tình tr ạ ng t ổ n thương t ế bào cơ tim sau ngưng tim. BN ở giai đo ạ n sau ngưng tim thư ờ ng có huy ế t đ ộ ng không ổ n đ ị nh, kèm v ớ i tình tr ạ ng t ổ n thương t ế bào cơ tim sau ngưng tim thì kh ả năng ổ n đ ị nh huy ế t đ ộ ng càng khó khăn hơn. Trên lâm sàng, t ổ n thương t ế bào cơ tim thư ờ ng th ể hi ệ n b ở i tình tr ạ ng r ố i lo ạ n nh ị p tim, gi ả m phân su ấ t t ố ng máu, gi ả m cung lư ợ ng tim, …
 
@@ -864,7 +874,7 @@ T ổ n thương não là nguyên nhân gây t ử vong, chi ế m 2/3 trư ờ 
 2. Tr ụ y tim m ạ ch:
 T ổ n thương cơ tim tuy m ộ t ph ầ n có th ể đ ả o ngư ợ c nhưng là nguyên nhân gây t ử vong hàng đ ầ u trong 1 - 3 ngày đ ầ u sau ngưng tim. Đ ặ c trưng b ở i các tình tr ạ ng: gi ả m th ể tích n ộ i m ạ ch, dãn m ạ ch, t ổ n thương n ộ i m ạ ch và b ấ t thư ờ ng vi tu ầ n hoàn.
 3. Tư ớ i máu não:
-Não b ộ trong m ộ t kho ả ng th ờ i gian ng ắ n s ẽ không đư ợ c tái thông tư ớ i máu não c ụ c b ộ ở m ộ t vài v ị trí sau ngưng tim, sau đó m ớ i đư ợ c tái tư ớ i máu d ẫ n đ ế n sung huy ế t t ế bào th ầ n kinh, gây ra các t ổ n thương t ế bào th ầ n ki nh sau ngưng tim. Đ ộ ng kinh thư ờ ng x ả y ra sau ngưng tim và x ả y ra ở 1/3 BN v ẫ n còn hôn mê sau khi ROSC. Co gi ậ t cơ là thư ờ ng g ặ p nh ấ t, t ầ n su ấ t kho ả ng 18% - 25%, ph ầ n còn l ạ i thư ờ ng s ẽ là đ ộ ng kinh, co gi ậ t - co c ứ ng cơ toàn th ể ho ặ c c ụ c b ộ ho ặ c k ế t h ợ p v ớ i cá c d ạ ng đ ộ ng kinh khác. S ử d ụ ng EEG theo dõi các tác d ụ ng ch ẩ n đoán và theo dõi đáp ứ ng đi ề u tr ị trên BN b ị t ổ n thương t ế bào th ầ n kinh sau ngưng tim.
+Não b ộ trong m ộ t kho ả ng th ờ i gian ng ắ n s ẽ không đư ợ c tái thông tư ớ i máu não c ụ c b ộ ở m ộ t vài v ị trí sau ngưng tim, sau đó m ớ i đư ợ c tái tư ớ i máu d ẫ n đ ế n sung huy ế t t ế bào th ầ n kinh, gây ra các t ổ n thương t ế bào th ầ n ki nh sau ngưng tim. Đ ộ ng kinh thư ờ ng x ả y ra sau ngưng tim và x ả y ra ở 1/3 BN v ẫ n còn [[Hôn mê]] sau khi ROSC. Co gi ậ t cơ là thư ờ ng g ặ p nh ấ t, t ầ n su ấ t kho ả ng 18% - 25%, ph ầ n còn l ạ i thư ờ ng s ẽ là đ ộ ng kinh, co gi ậ t - co c ứ ng cơ toàn th ể ho ặ c c ụ c b ộ ho ặ c k ế t h ợ p v ớ i cá c d ạ ng đ ộ ng kinh khác. S ử d ụ ng EEG theo dõi các tác d ụ ng ch ẩ n đoán và theo dõi đáp ứ ng đi ề u tr ị trên BN b ị t ổ n thương t ế bào th ầ n kinh sau ngưng tim.
 Đ ộ ng kinh có th ể gây tăng chuy ể n hóa ở não, gây t ạ o t ổ n thương não khác sau ngưng tim; có th ể đi ề u tr ị b ở i : valproate, phenytoin, levetiracetam, benzodiazepines, babiturate ho ặ c propofol. Propofol có tác d ụ ng ch ố ng co gi ậ t sau thi ế u oxy. Đi ề u tr ị d ự phòng đ ộ ng kinh co gi ậ t sau ngưng tim không đư ợ c khuy ế n cáo.
 
 ---
@@ -1107,7 +1117,7 @@ b ụ ng kín g ặ p nhi ề u hơn ch ấ n thương b ụ ng h ở , tuy nhi�
 - Ch ấ n thương b ụ ng kín thư ờ ng d ễ b ị b ỏ sót n ế u có các ch ấ n thương khác đi kè như
 hôn mê do ch ấ n thươ ng s ọ não, gãy chi ch ả y máu nhi ề u…
 - Khi b ệ nh nhân có ch ấ n thương ng ự c ở vùng th ấ p ( t ừ 2 núm vú tr ở xu ố ng) c ầ n nghĩ
-đ ế n và ph ả i lo ạ i tr ừ ch ấ n thương b ụ ng đi kèm. + Trong ch ấ n thương b ụ ng kín, Lách là t ạ ng hay b ị t ổ n thương nh ấ t, sau đó đ ế n gan và các t ạ ng khác theo th ứ t ự sau:
+đ ế n và ph ả i lo ạ i tr ừ ch ấ n thương b ụ ng đi kèm. + Trong ch ấ n thương b ụ ng kín, Lách là t ạ ng hay b ị t ổ n thương nh ấ t, sau đó đ ế n [[Gan]] và các t ạ ng khác theo th ứ t ự sau:
 - Th ậ n
 - Ru ộ t non
 - Bàng quang
@@ -1161,10 +1171,10 @@ c ầ u ni ệ u).
 ---
 
 2. Ch ẩ n đoán hình ả nh:
-a. Siêu âm ổ b ụ ng c ấ p c ứ u:
+a. [[Siêu âm]] ổ b ụ ng c ấ p c ứ u:
 - Có th ể th ự c hi ệ n t ạ i Khoa C ấ p c ứ u.
 - Có giá tr ị phát hi ệ n d ị ch, máu trong ổ b ụ ng.
-+ Phát hi ệ n đư ợ c t ổ n thương các t ạ ng đ ặ c: gan, lách.
++ Phát hi ệ n đư ợ c t ổ n thương các t ạ ng đ ặ c: [[Gan]], lách.
 - Khó phát hi ệ n các thương t ổ n cơ hoành, t ạ ng r ỗ ng ho ặ c t ổ n thương t ụ y.
 b. Siêu âm ch ấ n thương nhanh FAST (Focused assessment with sonography for trauma) m ụ c đích đ ể phát hi ệ n d ị ch t ự do trong:
 - Khoang gan th ậ n.
@@ -1193,7 +1203,7 @@ b. Siêu âm ch ấ n thương nhanh FAST (Focused assessment with sonography fo
 - Có giá tr ị trong ch ẩ n đoán ch ấ n thương, nh ấ t là ch ấ n thương b ụ ng kín.
 - C ầ n cân nh ắ c ch ỉ đ ị nh ch ụ p n ế u tình tr ạ ng huy ế t đ ộ ng BN không ổ n đ ị nh.
 - C ầ n lưu ý r ằ ng khi không th ấ y thương t ổ n c ủ a gan và lách, vi ệ c phát hi ệ n d ị ch trong
-ổ b ụ ng trên CT scan g ợ i ý đ ế n m ộ t thương t ổ n c ủ a t ạ ng r ỗ ng hay c ủ a m ạ c treo ru ộ t. IV. HƯ Ớ NG X Ử TRÍ CH Ấ N THƯƠNG B Ụ NG KÍN.
+ổ b ụ ng trên [[CT Scan]] g ợ i ý đ ế n m ộ t thương t ổ n c ủ a t ạ ng r ỗ ng hay c ủ a m ạ c treo ru ộ t. IV. HƯ Ớ NG X Ử TRÍ CH Ấ N THƯƠNG B Ụ NG KÍN.
 - Khi ti ế p nh ậ n m ộ t b ệ nh nhân đa thương t ạ i phòng c ấ p c ứ u, các bi ệ n pháp sau đây c ầ n
 ph ả i đư ợ c ti ế n hành t ứ c thì và cùng lúc:
 - Đánh giá ch ứ c năng s ố ng: huy ế t đ ộ ng, hô h ấ p, tri giác.
@@ -1308,7 +1318,7 @@ Các đo ạ n gãy di l ệ ch d ọ c tr ụ c r ờ i xa nhau. G ọ i t ắ 
 4. Di l ệ ch g ấ p góc:
 Tr ụ c hai đo ạ n gãy t ạ o nên m ộ t góc (thư ờ ng tính b ằ ng góc nh ọ n).
 5. Di l ệ ch xoay:
-Đo ạ n gãy xa di l ệ ch xoay quanh tr ụ c d ọ c c ủ a xương. M ộ t gãy xương có th ể có m ộ t ho ặ c nhi ề u th ể di l ệ ch (nhi ề u nh ấ t là 4). Khi mô t ả di l ệ ch thì qui ư ớ c nói s ự di l ệ ch c ủ a đo ạ n gãy xa. VII. TÁC Đ Ộ NG C Ủ A XƯƠNG GÃY Đ Ế N VÙNG B Ị THƯƠNG TÍCH VÀ TOÀN THÂN Khi có gãy xương ch ỉ bi ế t nhìn vào phim X quang đ ể đánh giá t ổ n thương xương không thôi là m ộ t s ự sai l ầ m nghiêm tr ọ ng. Tác nhân bên ngoài làm gãy đư ợ c xương cũng như s ự di l ệ ch c ủ a các đo ạ n xương gãy t ạ o thêm ch ấ n thương bên trong s ẽ ả nh hư ở ng đ ế n t ấ t c ả các mô khác chung quanh nơi xương gãy ở các m ứ c đ ộ nh ấ t đ ị nh.
+Đo ạ n gãy xa di l ệ ch xoay quanh tr ụ c d ọ c c ủ a xương. M ộ t gãy xương có th ể có m ộ t ho ặ c nhi ề u th ể di l ệ ch (nhi ề u nh ấ t là 4). Khi mô t ả di l ệ ch thì qui ư ớ c nói s ự di l ệ ch c ủ a đo ạ n gãy xa. VII. TÁC Đ Ộ NG C Ủ A XƯƠNG GÃY Đ Ế N VÙNG B Ị THƯƠNG TÍCH VÀ TOÀN THÂN Khi có gãy xương ch ỉ bi ế t nhìn vào phim [[X-quang|X quang]] đ ể đánh giá t ổ n thương xương không thôi là m ộ t s ự sai l ầ m nghiêm tr ọ ng. Tác nhân bên ngoài làm gãy đư ợ c xương cũng như s ự di l ệ ch c ủ a các đo ạ n xương gãy t ạ o thêm ch ấ n thương bên trong s ẽ ả nh hư ở ng đ ế n t ấ t c ả các mô khác chung quanh nơi xương gãy ở các m ứ c đ ộ nh ấ t đ ị nh.
 1. Tác đ ộ ng lên các m ạ ch máu
 Ở b ấ t k ỳ m ộ t gãy xương nào các m ạ ch máu trong t ủ y xương, trong xương và ở vùng màng xương đ ề u b ị đ ứ t. Ngoài ra l ự c ch ấ n thương còn có th ể gây ch ả y máu thêm các mô m ề m chung quanh. Các ch ả y máu đó t ạ o nên máu t ụ vùng gãy x ương (g ọ i là ổ gãy). N ế u là các xương l ớ n b ị gãy, s ự ch ả y máu nhi ề u s ẽ gây m ấ t máu đáng k ể và n ạ n nhân có th ể b ị choáng, (gãy kín không th ấ y máu ch ả y ra ngoài, nhưng lư ợ ng máu t ụ trong ổ gãy không còn tham gia vào lưu thông tu ầ n hoàn nên xem như đã m ấ t). B ả ng dư ớ i đây ch ỉ m ộ t th ố ng kê c ủ a WLLENEGGER v ề m ứ c đ ộ ch ả y máu trong m ộ t s ổ gãy xương l ớ n:
 S ố lư ợ ng m ấ t máu (ml) S ố b ệ nh L o ạ i xương gãy N gay khi gãy xương B a ngày sau nhân T rung bình T ố i đa T rung bình T ố i đa
@@ -1376,8 +1386,8 @@ Bi ế n d ạ ng (5 ki ể u) C ử đ ộ ng b ấ t thư ờ ng Ti ế ng l �
 Đau Sưng, b ầ m tím M ấ t cơ năng Các trư ờ ng h ợ p gãy xương đ ề u có các d ấ u hi ệ u k ể trên. Song các ch ấ n thương khác (như tr ậ t kh ớ p, bong gân v..v.. ) cũng có các d ấ u hi ệ u đó, nên khó kh ẳ ng đ ị nh có ch ắ c là gãy xương hay không. X. CÁC D Ấ U HI Ệ U B Ằ NG HÌNH Ả NH C Ủ A GÃY XƯƠNG Có th ể dùng các hình th ứ c hình ả nh sau đây xác đ ị nh gãy xương
 1. X - Quang quy ư ớ c thông thư ờ ng (b ắ t bu ộ c ph ả i th ự c hi ệ n đ ố i v ớ i m ọ i gãy xương)
 T ố i thi ể u hai bình di ệ n (m ặ t và bên).
-2. Hình ả nh c ộ ng hư ở ng t ừ (MRI):
-ít dùng. Đ ặ c bi ệ t khi c ầ n xem chi ti ế t các t ổ n thương: S ụ n m ặ t kh ớ p, s ụ n chêm. Mô m ề m như cơ, dây ch ằ ng. Có trư ờ ng h ợ p ch ỉ h ỏ i cơ ch ế ch ấ n thương và d ự a vào các d ấ u hi ệ u lâ m sàng cũng có th ể xác đ ị nh đư ợ c gãy xương, nhưng c ầ n có phim X quang đ ể bi ế t đ ầ y đ ủ các chi ti ế t c ủ a gãy xương. Phim cho phép xác đ ị nh nh ữ ng chi ti ế t gãy xương sau đây: V ị trí gãy (đ ầ u xương hay đo ạ n 1/3 nào c ủ a thân xương) Đư ờ ng gãy (gãy ngang, chéo, xo ắ n, nhi ề u m ả nh..
+2. Hình ả nh c ộ ng hư ở ng t ừ ([[MRI]]):
+ít dùng. Đ ặ c bi ệ t khi c ầ n xem chi ti ế t các t ổ n thương: S ụ n m ặ t kh ớ p, s ụ n chêm. Mô m ề m như cơ, dây ch ằ ng. Có trư ờ ng h ợ p ch ỉ h ỏ i cơ ch ế ch ấ n thương và d ự a vào các d ấ u hi ệ u lâ m sàng cũng có th ể xác đ ị nh đư ợ c gãy xương, nhưng c ầ n có phim [[X-quang|X quang]] đ ể bi ế t đ ầ y đ ủ các chi ti ế t c ủ a gãy xương. Phim cho phép xác đ ị nh nh ữ ng chi ti ế t gãy xương sau đây: V ị trí gãy (đ ầ u xương hay đo ạ n 1/3 nào c ủ a thân xương) Đư ờ ng gãy (gãy ngang, chéo, xo ắ n, nhi ề u m ả nh..
 
 ---
 
@@ -1531,7 +1541,7 @@ trong d ầ n. Kh ố i máu t ụ h ố th ắ t lưng không to lên. Tình tr
 2. Xu hư ớ ng không ổ n đ ị nh
 - B ệ nh ti ế n tri ể n n ặ ng lên, b ệ nh nhân đái máu ti ế p di ễ n, r a máu c ụ c và máu tươi.
 - Kh ố i máu t ụ h ố th ắ t lưng tăng lên. C ầ n ph ả i đi ề u tr ị tích c ự c, truy ề n máu b ồ i ph ụ kh ố i
-lư ợ ng tu ầ n hoàn k ị p th ờ i và đi ề u tr ị kháng sinh. B ệ nh s ẽ di ễ n bi ế n ổ n đ ị nh ho ặ c không thuyên gi ả m thì ph ả i chuy ể n can thi ệ p ph ẫ u thu ậ t.
+lư ợ ng tu ầ n hoàn k ị p th ờ i và đi ề u tr ị [[Kháng sinh]]. B ệ nh s ẽ di ễ n bi ế n ổ n đ ị nh ho ặ c không thuyên gi ả m thì ph ả i chuy ể n can thi ệ p ph ẫ u thu ậ t.
 3. Ch ấ n thương n ặ ng
 - T ổ n thương th ậ n n ặ ng, v ỡ nát nhi ề u m ả nh hay đ ứ t cu ố ng th ậ n bi ể u hi ệ n đái máu d ữ d ộ i,
 kh ố i máu t ụ h ố th ắ t lưng tăng lên nhanh, tình tr ạ ng toàn thân s ố c n ặ ng, thi ế u máu c ấ p c ầ n ph ả i ph ẫ u thu ậ t c ấ p c ứ u ngay.
@@ -1551,7 +1561,7 @@ Ngu ồ n: Uptodate 2022
 VI. THÁI Đ Ộ X Ử TRÍ
 1. Đi ề u tr ị n ộ i khoa
 - B ệ nh nhân n ằ m b ấ t đ ộ ng t ạ i giư ờ ng, săn sóc đi ề u tr ị t ạ i giư ờ ng.
-- H ồ i s ứ c, truy ề n d ị ch, máu, kháng sinh toàn thân, thu ố c gi ả m đau.
+- H ồ i s ứ c, truy ề n d ị ch, máu, [[Kháng sinh]] toàn thân, thu ố c gi ả m đau.
 - Dùng l ợ i ti ể u nh ẹ Lasix 20mg 1 - 2 ố ng/ngày.
 - Theo dõi tình tr ạ ng toàn thân, di ễ n bi ế n c ủ a đái máu và ti ế n tri ể n c ủ a kh ố i máu t ụ
 vùng th ắ t lưng và tránh b ỏ sót các thương t ổ n ph ố i h ợ p có th ể g ặ p.
@@ -1640,7 +1650,7 @@ b ằ ng n ẹ p vít hay các d ụ ng c ụ khác.
 - C ậ n lâm sàng: CT ng ự c th ấ y ổ gãy xương ứ c, ít nhi ề u có di l ệ ch ngang, đôi khi có m ả nh
 r ờ i. T ụ máu sau xương ứ c, không có d ị ch màng tim.
 - X ử trí
-+ Theo dõi t ạ i b ệ nh vi ệ n, gi ả m đau, gi ả m viêm, ch ố ng phù n ề . Siêu âm tim ki ể m tra. + Sau 3 - 5 ngày ổ n đ ị nh s ẽ cho ra vi ệ n. N ế u xương gãy có di l ệ ch và gây đau nhi ề u, có th ể xem xét m ổ c ố đ ị nh xương ứ c b ằ ng n ẹ p vít hay ch ỉ thép.
++ Theo dõi t ạ i b ệ nh vi ệ n, gi ả m đau, gi ả m viêm, ch ố ng phù n ề . [[Siêu âm|Siêu âm tim]] ki ể m tra. + Sau 3 - 5 ngày ổ n đ ị nh s ẽ cho ra vi ệ n. N ế u xương gãy có di l ệ ch và gây đau nhi ề u, có th ể xem xét m ổ c ố đ ị nh xương ứ c b ằ ng n ẹ p vít hay ch ỉ thép.
 - M ủ màng ph ổ i
 + Ch ẩ n đoán
 - Lâm sàng:
@@ -1945,7 +1955,7 @@ các đư ờ ng lõm s ọ .
 - Xem ph ả n x ạ nôn - s ặ c.
 - D ấ u hi ệ u ch ả y d ị ch não t ủ y ở mũi và tai.
 - Khám c ộ t s ố ng: c ổ - lưng - ch ụ p Xquang c ộ t s ố ng
-XÉT NGHI Ệ M C Ậ N LÂM SÀNG + Ch ỉ đ ị nh ch ụ p X - quang: Lún s ọ ,Đư ờ ng n ứ t s ọ . R ạ n kh ớ p s ọ .V ỡ sàn s ọ trư ớ c và gi ữ a + Nguyên t ắ c ch ỉ đ ị nh chung CT Scan trong ch ấ n thương s ọ não:
+XÉT NGHI Ệ M C Ậ N LÂM SÀNG + Ch ỉ đ ị nh ch ụ p X - quang: Lún s ọ ,Đư ờ ng n ứ t s ọ . R ạ n kh ớ p s ọ .V ỡ sàn s ọ trư ớ c và gi ữ a + Nguyên t ắ c ch ỉ đ ị nh chung [[CT Scan]] trong ch ấ n thương s ọ não:
 - GCS> 13 đi ể m
 - D ấ u th ầ n kinh như:y ế u , li ệ t ½ ngư ờ i, lác m ắ t.
 
@@ -2032,7 +2042,7 @@ CHUY Ể N KHOA KHI CÓ CH Ỉ Đ Ị NH
 THEO DÕI T Ạ I KHOA C Ấ P C Ứ U
 - Theo dõi sát trong 48 gi ờ đ ầ u: thư ờ ng xuyên và đ ị nh kì đánh giá
 + Lâm sàng: m ỗ i 15 - 30 phút trong 24h đ ầ u, sau đó m ỗ i 2h trong ngày ti ế p theo + Tri giác: theo thang đi ể m Glasgow n ế u gi ả m 2 đi ể m so ban đ ầ u là có ý nghĩa. + D ấ u hi ệ u sinh t ồ n: m ạ ch, huy ế t áp, nh ị p th ở và nhi ệ t đ ộ . + D ấ u TK khu trú: y ế u li ệ t ½ ngư ờ i, giãn đ ồ ng t ử cùng bên t ổ n thương.
-- Nh ứ c đ ầ u ngày càng tăng kèm nôn ói d ẫ n đ ế n tăng P n ộ i s ọ .
+- Nh ứ c đ ầ u ngày càng tăng kèm [[Nôn ói]] d ẫ n đ ế n tăng P n ộ i s ọ .
 + C ậ n lâm sàng: ch ụ p l ạ i CT scan n ế u b ệ nh nhân đã ch ụ p CT scan s ớ m trong 3h đ ầ u sau ch ấ n thương s ọ não CHUY Ể N H Ồ I S Ứ C TÍCH C Ự C
 - Có d ấ u hi ệ u đe d ọ a t ụ t não
 - Hôn mê sâu (GCS < 8Đ)
@@ -2047,7 +2057,7 @@ cho ch ỉ đ ị nh ch ụ p CT – Scan não + Các d ấ u hi ệ u LS cu ả
 tr ọ ng cu ả tăng ALNS:
 - Có th ể có các bi ể u hi ệ n cu ả thoá t v ị – t ụ t não ch ế t ngư ờ i trong khi ALNS đo đư ợ c
 không cao nhi ề u (20 – 25 mmHg).
-- Có th ể ch ỉ có nh ữ ng bi ể u hi ệ n: nh ứ c đ ầ u, nôn ói, ng ủ gà nhưng khi đo ALNS thì đã
+- Có th ể ch ỉ có nh ữ ng bi ể u hi ệ n: nh ứ c đ ầ u, [[Nôn ói]], ng ủ gà nhưng khi đo ALNS thì đã
 th ấ y r ấ t cao ( # 90 mmHg). D Ấ U HI Ệ U S Ớ M ĐE D Ọ A T Ụ T NÃO
 - Nh ứ c đ ầ u lan to ả , d ữ d ộ i và liên t ụ c
 - R ố i lo ạ n ý th ứ c ở nhi ề u m ứ c đ ộ : ngáp, ng ủ gà, l ẫ n l ộ n và hôn mê.
@@ -2166,7 +2176,7 @@ D C ả m giác còn, v ậ n đ ộ ng gi ả m ít.
 E Ch ứ c năng v ậ n đ ộ ng c ả m giác bình thư ờ ng
 + H ộ i ch ứ ng t ủ y trung tâm: Li ệ t t ứ chi còn c ả m giác quanh h ậ u môn. + H ộ i ch ứ ng t ủ y trư ớ c: Còn c ả m giác sâu và c ả m giác b ả n th ể . + H ộ i ch ứ ng t ủ y sau: M ấ t c ả m giác ép sâu, đau sâu và b ả n th ể . + H ộ i ch ứ ng t ủ y bên (Brown - Sequart): M ấ t v ậ n đ ộ ng cùng bên t ổ n thương t ủ y v ớ i gi ả m c ả m giác đau và nhi ệ t đ ố i bên. + H ộ i ch ứ ng gi ậ p t ủ y CH Ẩ N ĐOÁN
 - D ự a vào nguyên nhân cơ ch ế ch ấ n thương, phân lo ạ i, tri ệ u ch ứ ng lâm sàng, hình ả nh
-h ọ c( X - quang c ộ t s ố ng c ổ th ẳ ng - nghiêng, C1 - C2 há mi ệ ng; X - quang c ộ t s ố ng th ắ t lưng th ẳ ng - nghiêng, CT scan, Mri). + Lâm sàng:
+h ọ c( X - quang c ộ t s ố ng c ổ th ẳ ng - nghiêng, C1 - C2 há mi ệ ng; X - quang c ộ t s ố ng th ắ t lưng th ẳ ng - nghiêng, CT scan, [[MRI]]). + Lâm sàng:
 - Đau v ùng c ổ (ho ặ c lưng).
 - Đi ể m gù.
 - Đơ c ổ , v ẹ o c ổ (co rút cơ c ạ nh c ộ t s ố ng th ắ t lưng).

@@ -1,22 +1,27 @@
 ---
 title: "TC_Đau bụng mạn"
-specialty: "Hệ Tiêu hóa"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa", "Đau bụng"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
-Dưới đây là bài học tiếp cận lâm sàng cho vấn đề Đau bụng mạn tính, được biên soạn bám sát các tài liệu nguồn đã cung cấp.
 
-# Tiếp cận lâm sàng cho vấn đề/triệu chứng [ĐAU BỤNG MẠN]
+Dưới đây là bài học tiếp cận lâm sàng cho vấn đề [[Đau bụng]] mạn tính, được biên soạn bám sát các tài liệu nguồn đã cung cấp.
+
+# Tiếp cận lâm sàng cho vấn đề/triệu chứng [[[Đau bụng]] MẠN]
 
 Đau bụng mạn tính và tái phát là một trong những triệu chứng tiêu hóa phổ biến, ảnh hưởng khoảng 22-25% dân số trưởng thành. Việc chẩn đoán thường gặp khó khăn do sự trùng lấp triệu chứng giữa các rối loạn tiêu hóa chức năng (như hội chứng ruột kích thích - IBS, hội chứng đau bụng trung ương - CAPS) và các bệnh lý thực thể nghiêm trọng. 
 
 Các bước tiếp cận lâm sàng (Clinical approach)
 
 ### Bước 1: Ổn định ban đầu – sàng lọc nguy cơ
-- Nhận diện các *dấu hiệu "cờ đỏ" (red flags) / triệu chứng báo động* chỉ điểm bệnh lý thực thể nghiêm trọng, xuất huyết hoặc bệnh lý ác tính tiềm ẩn bắt buộc phải nội soi/chẩn đoán chuyên sâu ngay lập tức:
+- Nhận diện các *dấu hiệu "cờ đỏ" (red flags) / triệu chứng báo động* chỉ điểm bệnh lý thực thể nghiêm trọng, [[Xuất huyết]] hoặc bệnh lý ác tính tiềm ẩn bắt buộc phải nội soi/chẩn đoán chuyên sâu ngay lập tức:
   - Sụt cân không chủ ý (giảm $\ge$ 5% trọng lượng cơ thể).
-  - Chảy máu dạ dày - ruột (nôn ra máu, tiêu phân đen, phân có máu tươi) hoặc có bằng chứng thiếu máu thiếu sắt.
-  - Nôn mửa dai dẳng kéo dài.
+  - [[Xuất huyết|Chảy máu]] dạ dày - ruột (nôn ra máu, tiêu phân đen, phân có máu tươi) hoặc có bằng chứng thiếu máu thiếu sắt.
+  - [[[[Nôn ói]]|Nôn mửa]] dai dẳng kéo dài.
   - Đau bụng dữ dội hoặc đau đánh thức bệnh nhân vào ban đêm.
   - Nuốt khó (chỉ điểm ung thư thực quản hoặc hẹp thực quản).
   - Khởi phát triệu chứng ở người lớn tuổi (trên 45 hoặc 60 tuổi tùy theo hướng dẫn).
@@ -32,7 +37,7 @@ Các bước tiếp cận lâm sàng (Clinical approach)
   - Tiền sử nghiện rượu (nguy cơ viêm tụy mạn, viêm dạ dày do rượu).
   - Yếu tố chế độ ăn (gluten, lactose, FODMAPs) hoặc yếu tố tâm lý (căng thẳng, trầm cảm, lo âu, tiền sử bị lạm dụng).
 - **Khám lâm sàng/thực thể:** 
-  - Khám bụng tìm khối u, gan lách to, đánh giá các điểm đau khu trú. 
+  - Khám bụng tìm khối u, [[Gan]] lách to, đánh giá các điểm đau khu trú. 
   - Mặc dù đau bụng mạn tính thường khám bụng mềm, không có phản ứng dội, nhưng việc thăm khám là cần thiết để định hướng nguyên nhân, đánh giá sụt cân và loại trừ các bệnh ngoài tiêu hóa.
 
 ### Bước 3: Lập danh sách chẩn đoán phân biệt (Differential diagnosis)
@@ -40,8 +45,8 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 | Nhóm nguyên nhân | Ví dụ bệnh / hội chứng | Đặc điểm lâm sàng chính |
 | ------ | ------ | ------ |
 | **Bệnh lý Dạ dày - Tá tràng** | **Viêm/Loét dạ dày tá tràng (PUD)**<br><br>**Trào ngược dạ dày thực quản (GERD)** | Đau cồn cào `***thượng vị***`, liên quan bữa ăn, giảm khi uống antacid, dùng NSAIDs.<br><br>Ợ nóng, ợ chua, đau rát sau xương ức tăng khi nằm. |
-| **Bệnh lý Gan - Mật - Tụy** | **Sỏi mật / Viêm túi mật mạn**<br><br>**Viêm tụy mạn tính** | Đau quặn thượng vị/hạ sườn phải lan lên vai, liên quan bữa ăn nhiều mỡ.<br><br>Đau lan ra `***sau lưng***`, tiêu chảy phân mỡ, tiền sử nghiện rượu nhiều năm. |
-| **Bệnh lý Ruột / Đại trực tràng** | **Hội chứng ruột kích thích (IBS)**<br><br>**Bệnh viêm ruột (IBD - Crohn/UC)** | Đau bụng lan tỏa, *thay đổi thói quen đại tiện* (táo bón/tiêu chảy), đau giảm sau khi đi tiêu.<br><br>Đau bụng mạn tính, *tiêu chảy có máu*, sụt cân, thiếu máu, tiền sử gia đình. |
+| **Bệnh lý [[Gan]] - Mật - Tụy** | **Sỏi mật / Viêm túi mật mạn**<br><br>**Viêm tụy mạn tính** | Đau quặn thượng vị/hạ sườn phải lan lên vai, liên quan bữa ăn nhiều mỡ.<br><br>Đau lan ra `***sau lưng***`, [[Tiêu chảy]] phân mỡ, tiền sử nghiện rượu nhiều năm. |
+| **Bệnh lý Ruột / Đại trực tràng** | **Hội chứng ruột kích thích (IBS)**<br><br>**Bệnh viêm ruột (IBD - Crohn/UC)** | Đau bụng lan tỏa, *thay đổi thói quen đại tiện* (táo bón/[[Tiêu chảy]]), đau giảm sau khi đi tiêu.<br><br>Đau bụng mạn tính, *tiêu chảy có máu*, sụt cân, thiếu máu, tiền sử gia đình. |
 | **Bệnh lý Chức năng / Thần kinh** | **Hội chứng đau bụng trung ương (CAPS)** | Đau liên tục/gần liên tục $\ge$ 6 tháng, *không liên quan* đến việc ăn uống hay đi tiêu, giới hạn sinh hoạt. |
 
 ### Bước 4. Biện luận lâm sàng (Clinical reasoning)
@@ -50,21 +55,21 @@ Các bước tiếp cận lâm sàng (Clinical approach)
   - Nếu bệnh nhân bị đau bụng mạn tính, đi kèm với những đợt tiêu chảy xen kẽ táo bón, bụng lình bình và đặc biệt **cơn đau giảm đi sau khi đi đại tiện** (không có các dấu hiệu sụt cân hay tiêu ra máu): Đây là dấu hiệu rất đặc trưng của `==Hội chứng ruột kích thích (IBS)==`.
   - Nếu bệnh nhân có cơn đau cồn cào, nóng rát ở vùng thượng vị, thường xảy ra vào lúc đói hoặc ban đêm, **giảm đau khi ăn vào hoặc khi dùng thuốc kháng acid**, và có tiền sử hút thuốc hoặc dùng NSAIDs: Nghĩ nhiều đến `==Viêm loét dạ dày tá tràng (PUD)==`.
   - Nếu bệnh nhân than phiền đau bụng liên tục hoặc gần như liên tục kéo dài trên 6 tháng, **không liên quan** tới bữa ăn hay đại tiện, gây ảnh hưởng đến chất lượng sống, đã làm nhiều xét nghiệm nhưng không tìm ra tổn thương thực thể: Thỏa mãn tiêu chuẩn chẩn đoán `==Hội chứng đau bụng qua trung gian trung ương (CAPS)==`.
-  - Nếu bệnh nhân có tiền sử uống rượu nhiều, đau thượng vị lan ra lưng, kèm theo sụt cân và đi tiêu phân lượng nhiều, khó xả nước (phân mỡ): Phù hợp với `==Viêm tụy mạn tính==`.
+  - Nếu bệnh nhân có tiền sử uống rượu nhiều, đau thượng vị lan ra lưng, kèm theo sụt cân và đi tiêu phân lượng nhiều, khó xả nước (phân mỡ): [[Phù]] hợp với `==Viêm tụy mạn tính==`.
 
 ### Bước 5. Cận lâm sàng hợp lý
 - Việc lạm dụng quá mức các xét nghiệm đối với bệnh nhân không có dấu hiệu báo động thường không mang lại lợi ích và làm bệnh nhân thêm lo lắng.
 - **Xét nghiệm máu cơ bản:** 
   - Công thức máu (CTM), Ferritin: Tầm soát thiếu máu thiếu sắt, chảy máu tiêu hóa rỉ rả.
-  - CRP, tốc độ máu lắng (ESR): Tăng cao trong các tình trạng viêm nhiễm như IBD, bình thường trong IBS.
+  - [[CRP]], tốc độ máu lắng (ESR): Tăng cao trong các tình trạng viêm nhiễm như IBD, bình thường trong IBS.
   - Điện giải đồ, Canxi, Ure, Creatinin, men gan, Albumin, men tụy (Lipase, Amylase).
 - **Vi sinh / Huyết thanh học / Phân:**
   - Test tìm *Helicobacter pylori* (qua hơi thở hoặc phân) đối với chứng khó tiêu.
   - Huyết thanh chẩn đoán Celiac (nếu nghi ngờ). Xét nghiệm máu ẩn trong phân (FOBT).
 - **Chẩn đoán hình ảnh / Nội soi:**
   - **Nội soi thực quản - dạ dày - tá tràng & Nội soi đại tràng:** Là *chỉ định ưu tiên* nếu bệnh nhân trên 45-60 tuổi, có triệu chứng báo động (sụt cân, thiếu máu, nôn kéo dài) hoặc nghi ngờ IBD, loét, ung thư.
-  - **Siêu âm ổ bụng / vùng chậu:** Là xét nghiệm hình ảnh đầu tay an toàn để loại trừ sỏi mật, khối u buồng trứng/tử cung.
-  - CT scan ổ bụng có cản quang, MRI, hoặc chụp mật tụy ngược dòng (ERCP): Chỉ định khi nghi ngờ viêm tụy mạn, khối u ổ bụng, hoặc bệnh lý đường mật.
+  - **[[Siêu âm]] ổ bụng / vùng chậu:** Là xét nghiệm hình ảnh đầu tay an toàn để loại trừ sỏi mật, khối u buồng trứng/tử cung.
+  - [[CT Scan]] ổ bụng có cản quang, [[MRI]], hoặc chụp mật tụy ngược dòng (ERCP): Chỉ định khi nghi ngờ viêm tụy mạn, khối u ổ bụng, hoặc bệnh lý đường mật.
 
 > 🔴 [LỆNH TRÍCH XUẤT BẢNG DỮ LIỆU & LƯU ĐỒ CHẨN ĐOÁN]: 
 > **[Diagnostic Criteria for Centrally Mediated Abdominal Pain Syndromes] - trích từ [61c0d0d54e60da861a7d171c_Chronic_Abdominal_Pain_Pathway_Aug_2019.pdf]**
@@ -99,11 +104,11 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 
 ### Bước 7. Khi nào cần chuyển tuyến / gọi hội chẩn (nếu có)
 - Chuyển bệnh nhân khám chuyên khoa Tiêu hóa (hoặc Ung bướu) ngay lập tức nếu xuất hiện bất kỳ triệu chứng "cờ đỏ" nào như: Sụt cân không rõ nguyên nhân, đi tiêu phân đen/máu, nôn kéo dài, thiếu máu thiếu sắt, hoặc đau bụng bắt đầu khởi phát ở độ tuổi > 45-60.
-- Bệnh nhân có biểu hiện tắc nghẽn ruột cơ học, vàng da, hoặc sờ thấy khối u bụng.
+- Bệnh nhân có biểu hiện tắc nghẽn ruột cơ học, [[Vàng da]], hoặc sờ thấy khối u bụng.
 - Gọi hội chẩn Tâm thần học nếu các triệu chứng loạn thần, trầm cảm nặng hoặc ý tưởng tự sát chiếm ưu thế trong bệnh cảnh lâm sàng.
 
 # 4. Lưu ý thực hành / “take‑home messages”
-- "Việc khai thác chi tiết các dấu hiệu báo động như sụt cân, thiếu máu, hay nôn máu là bước quan trọng nhất để không bỏ sót ***ung thư*** ống tiêu hóa ở bệnh nhân đau bụng mạn.".
+- "Việc khai thác chi tiết các dấu hiệu báo động như sụt cân, thiếu máu, hay nôn máu là bước quan trọng nhất để không bỏ sót ***ung thư*** [[Đường tiêu hóa|ống tiêu hóa]] ở bệnh nhân đau bụng mạn.".
 - "Với hội chứng đau bụng qua trung gian trung ương (CAPS), mục tiêu điều trị là giúp bệnh nhân kiểm soát triệu chứng để hòa nhập cuộc sống, tuyệt đối tránh lạm dụng các ***phẫu thuật*** hoặc hình ảnh học và nội soi liên tục không cần thiết.".
 - "Đau bụng mạn tính thay đổi theo thói quen đi tiêu, giảm sau đại tiện là chìa khóa để nhận diện hội chứng ***ruột kích thích*** (IBS) và giúp phân biệt với các bệnh lý thực thể khác.".
 

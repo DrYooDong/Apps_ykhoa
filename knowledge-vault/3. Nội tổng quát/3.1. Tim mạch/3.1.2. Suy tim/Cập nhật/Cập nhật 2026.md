@@ -1,12 +1,17 @@
 ---
 title: "Cập nhật 2026"
-specialty: "Tim mạch"
-tags: ["Nội tổng quát", "Tim mạch", "Bệnh lý cụ thể", "Suy tim", "Cập nhật"]
-last_updated: "2026-07-28"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
 ---
-Suy tim tiếp tục là một trong những thách thức lớn nhất của y học hiện đại, nhưng những năm 2025-2026 đã đánh dấu các bước ngoặt bản lề trong cả tư duy sinh lý bệnh lẫn thực hành lâm sàng. 
 
-Sự ra đời của các bản đồng thuận và khuyến cáo mới nhất, điển hình như Khuyến cáo của Cụm hiệp hội AHA/ACC/ADA/ASN năm 2026 về **Hội chứng Tim mạch - Thận - Chuyển hóa (CKM)** và Khuyến cáo của Hội Tim mạch Canada (CCS/CHFS) 2025, đã làm thay đổi hoàn toàn cục diện chẩn đoán và điều trị.
+Suy [[Tim]] tiếp tục là một trong những thách thức lớn nhất của y học hiện đại, nhưng những năm 2025-2026 đã đánh dấu các bước ngoặt bản lề trong cả tư duy sinh lý bệnh lẫn thực hành lâm sàng. 
+
+Sự ra đời của các bản đồng thuận và khuyến cáo mới nhất, điển hình như Khuyến cáo của Cụm hiệp hội AHA/ACC/ADA/ASN năm 2026 về **Hội chứng [[Tim]] mạch - [[Thận]] - Chuyển hóa (CKM)** và Khuyến cáo của Hội Tim mạch Canada (CCS/CHFS) 2025, đã làm thay đổi hoàn toàn cục diện chẩn đoán và điều trị.
 
 
 # 1. Thuật Ngữ Mới và Mô Hình Bệnh Sinh "Hội chứng CKM"
@@ -16,7 +21,7 @@ Sự phát triển của y học cá thể hóa đã làm thay đổi cách chú
 - **Đồng thuận về thuật ngữ HFnrEF (Suy tim phân suất tống máu không giảm):** 
 	- Khuyến cáo CCS/CHFS 2025 đã chính thức đưa ra thuật ngữ mới là =="HFnrEF"== (Heart failure with non-reduced ejection fraction) nhằm gộp chung hai nhóm: Suy tim phân suất tống máu giảm nhẹ (HFmrEF, LVEF 41-49%) và Suy tim phân suất tống máu bảo tồn (HFpEF, LVEF $\ge$ 50%). 
 	- Cơ sở sinh lý bệnh của sự gộp chung này là do cả hai nhóm đều có chung cơ chế nền tảng, đáp ứng điều trị và tiên lượng lâm sàng tương đồng, tạo ra một khung thực hành thống nhất cho bác sĩ.
-- **Định vị Suy tim trong Hội chứng CKM (Cardiovascular-Kidney-Metabolic):** Theo khuyến cáo AHA/ACC/ADA/ASN năm 2026, suy tim không còn được xem là một bệnh lý cơ quan đơn lẻ mà là hệ quả của hội chứng CKM. Suy tim lâm sàng được xếp vào **Giai đoạn 4 của Hội chứng CKM** (Giai đoạn có bệnh lý tim mạch lâm sàng trên nền yếu tố nguy cơ chuyển hóa hoặc bệnh thận mạn). Cơ chế bệnh sinh cốt lõi được nhấn mạnh là sự giao thoa giữa *mỡ nội tạng* (béo phì), *kháng insulin* (đái tháo đường) và *suy giảm chức năng thận*, dẫn đến ==viêm hệ thống, rối loạn nội mạc, và xơ hóa cơ tim==.
+- **Định vị Suy tim trong Hội chứng CKM (Cardiovascular-Kidney-Metabolic):** Theo khuyến cáo AHA/ACC/ADA/ASN năm 2026, suy tim không còn được xem là một bệnh lý cơ quan đơn lẻ mà là hệ quả của hội chứng CKM. Suy tim lâm sàng được xếp vào **Giai đoạn 4 của Hội chứng CKM** (Giai đoạn có bệnh lý tim mạch lâm sàng trên nền yếu tố nguy cơ chuyển hóa hoặc bệnh [[Thận]] mạn). Cơ chế bệnh sinh cốt lõi được nhấn mạnh là sự giao thoa giữa *mỡ nội tạng* (béo phì), *kháng [[Insulin]]* (đái tháo đường) và *suy giảm chức năng thận*, dẫn đến ==viêm hệ thống, rối loạn nội mạc, và xơ hóa cơ tim==.
 
 # 2. Thay Đổi Trọng Tâm Quản Lý Suy Tim Cấp (Paradigm Shift)
 
@@ -48,7 +53,7 @@ Dựa trên kết quả từ thử nghiệm FINEARTS-HF công bố gần đây, 
 
 # 4. Lưu Ý Khẳng Định Lại Trong Chẩn Đoán & Thực Hành
 
-- **Suy tim phân suất tống máu cải thiện (HFimpEF):** Khi điều trị suy tim phân suất tống máu giảm (HFrEF) đạt hiệu quả và siêu âm tim cho thấy EF phục hồi (ví dụ >40% hoặc >50%), các chuyên gia đồng thuận tuyệt đối: **Không được ngừng các thuốc GDMT (Tứ trụ)**. Nghiên cứu TRED-HF cho thấy nếu ngưng thuốc, tỷ lệ tái phát suy tim, suy giảm chức năng thất trái và tăng lại biomarker sẽ xảy ra ở phần lớn bệnh nhân trong vòng 6 tháng. Khỏi bệnh (remission) ở đây chỉ là trạng thái "ngủ đông", do đó việc duy trì thuốc là bắt buộc để ngăn chặn tái cấu trúc cơ tim.
+- **Suy tim phân suất tống máu cải thiện (HFimpEF):** Khi điều trị suy tim phân suất tống máu giảm (HFrEF) đạt hiệu quả và [[[[Siêu âm]]|siêu âm tim]] cho thấy EF phục hồi (ví dụ >40% hoặc >50%), các chuyên gia đồng thuận tuyệt đối: **Không được ngừng các thuốc GDMT (Tứ trụ)**. Nghiên cứu TRED-HF cho thấy nếu ngưng thuốc, tỷ lệ tái phát suy tim, suy giảm chức năng thất trái và tăng lại biomarker sẽ xảy ra ở phần lớn bệnh nhân trong vòng 6 tháng. Khỏi bệnh (remission) ở đây chỉ là trạng thái "ngủ đông", do đó việc duy trì thuốc là bắt buộc để ngăn chặn tái cấu trúc cơ tim.
 - **Can thiệp thiết bị cho bệnh lý van tim thứ phát:** Biện pháp can thiệp sửa van qua đường ống thông (TEER - Transcatheter edge-to-edge repair) tiếp tục được mở rộng bằng chứng. Kỹ thuật này hiện đã được nâng cấp không chỉ điều trị hiệu quả hở van hai lá cơ năng (như MitraClip) mà còn được chứng minh và ứng dụng điều trị hở van ba lá thứ phát (Tricuspid regurgitation) nhằm cải thiện triệu chứng suy tim phải.
 
 Tóm lại, xu hướng quản lý suy tim năm 2026 đặt trọng tâm vào việc đánh giá tổng thể người bệnh theo lăng kính CKM (Tim - Thận - Chuyển hóa), triển khai tối ưu hóa "Tứ trụ" ngay khi nhập viện, và áp dụng kỷ nguyên thuốc mới (GLP-1 RAs, nsMRA) cho nhóm bệnh nhân có EF bảo tồn hoặc giảm nhẹ.

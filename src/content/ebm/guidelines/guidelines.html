@@ -918,7 +918,7 @@ create table clinical_guidelines (
   <div class="modal-overlay" id="clinical-case-modal">
     <div class="modal" style="max-width: 780px; width: 92%;">
       <div class="modal-header">
-        <h3>🎯 Mode Trình Bệnh — Phân Tích & Gợi Ý Guidelines</h3>
+        <h3>🎯 Mode Trình Bệnh & CDSS Matcher — Phân Tích Bệnh Án & Tính Liều EBM</h3>
         <button class="modal-close" onclick="window.GuidelineTools && window.GuidelineTools.closeCaseModal()">&times;</button>
       </div>
       <div class="modal-body case-modal-body">
@@ -937,7 +937,36 @@ create table clinical_guidelines (
             </div>
           </div>
 
-          <div class="case-pref-options">
+          <!-- 🧮 VITAL SIGNS & CLINICAL PARAMETERS PANEL (CDSS DOSING MATCHING) -->
+          <div style="margin-top: 0.85rem; padding: 0.75rem 0.9rem; background: var(--surface-2); border: 1px dashed var(--border); border-radius: 10px;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px;">
+              <span>🧮 Thông Số Sinh Hiệu & Chức Năng Cơ Quan (Tùy chọn - Dùng để Khớp Liều & Cảnh Báo)</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.6rem;">
+              <div>
+                <label style="font-size: 0.72rem; font-weight: 600; color: var(--text-muted); display: block;">eGFR (mL/ph/1.73m²)</label>
+                <input type="number" id="case-egfr" placeholder="VD: 28" step="1" style="width: 100%; padding: 0.35rem 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8rem; background: var(--surface);">
+              </div>
+              <div>
+                <label style="font-size: 0.72rem; font-weight: 600; color: var(--text-muted); display: block;">LVEF (%)</label>
+                <input type="number" id="case-lvef" placeholder="VD: 35" step="1" style="width: 100%; padding: 0.35rem 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8rem; background: var(--surface);">
+              </div>
+              <div>
+                <label style="font-size: 0.72rem; font-weight: 600; color: var(--text-muted); display: block;">Huyết áp tâm thu (mmHg)</label>
+                <input type="number" id="case-sbp" placeholder="VD: 105" step="1" style="width: 100%; padding: 0.35rem 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8rem; background: var(--surface);">
+              </div>
+              <div>
+                <label style="font-size: 0.72rem; font-weight: 600; color: var(--text-muted); display: block;">HbA1c (%)</label>
+                <input type="number" id="case-hba1c" placeholder="VD: 8.2" step="0.1" style="width: 100%; padding: 0.35rem 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8rem; background: var(--surface);">
+              </div>
+              <div>
+                <label style="font-size: 0.72rem; font-weight: 600; color: var(--text-muted); display: block;">Kali máu (mmol/L)</label>
+                <input type="number" id="case-k" placeholder="VD: 4.8" step="0.1" style="width: 100%; padding: 0.35rem 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; font-size: 0.8rem; background: var(--surface);">
+              </div>
+            </div>
+          </div>
+
+          <div class="case-pref-options" style="margin-top: 0.75rem;">
             <label class="checkbox-label" style="font-size: 0.78rem;">
               <input type="checkbox" id="case-pref-asia" checked> 🌏 Ưu tiên có dữ liệu Bệnh nhân Châu Á
             </label>
@@ -949,17 +978,52 @@ create table clinical_guidelines (
             </label>
           </div>
 
-          <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
-            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; font-weight: 800;">🔍 Phân Tích Bệnh Án & Gợi Ý Guidelines</button>
+          <div style="margin-top: 0.85rem; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; font-weight: 800;">🔍 Phân Tích Bệnh Án & Gợi Ý Guidelines CDSS</button>
           </div>
         </form>
 
         <div id="case-results-container">
-          <!-- Dynamic Top 3 Suggestions Rendered via JS -->
+          <!-- Dynamic Top Suggestions & CDSS Dosing Matrix Rendered via JS -->
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ⚖️ MULTI-GUIDELINE / RCT 3D MATRIX COMPARATOR MODAL -->
+  <div class="modal-overlay" id="multi-compare-modal" style="z-index: 1050;">
+    <div class="modal" style="max-width: 1100px; width: 95%; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; background: var(--surface-2); border-bottom: 1px solid var(--border-light);">
+        <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">
+          <span>⚖️ Ma Trận Đối Sánh Đa Chiều (Head-to-Head RCT & Guideline Matrix)</span>
+        </h3>
+        <button class="modal-close" onclick="window.GuidelineTools && window.GuidelineTools.closeMultiCompareModal()">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 1.25rem; overflow-y: auto; flex: 1;" id="multi-compare-modal-body">
+        <!-- Rendered dynamically via JS -->
+      </div>
+      <div class="modal-footer" style="padding: 0.75rem 1.25rem; border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; background: var(--surface-2);">
+        <span style="font-size: 0.78rem; color: var(--text-muted);" id="compare-modal-status-text">Đang đối sánh các bài đã chọn</span>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn" onclick="window.GuidelineTools && window.GuidelineTools.clearCompareList()">🗑️ Xóa Danh Sách</button>
+          <button class="btn btn-primary" onclick="window.GuidelineTools && window.GuidelineTools.closeMultiCompareModal()">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 📌 FLOATING MULTI-COMPARE ACTION BAR -->
+  <div id="floating-compare-bar" style="display: none; position: fixed; bottom: 24px; right: 24px; z-index: 900; background: var(--surface); border: 2px solid var(--accent); border-radius: 30px; padding: 0.5rem 1.2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.18); align-items: center; gap: 12px; animation: slideUpFloat 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
+    <span style="font-size: 0.82rem; font-weight: 800; color: var(--text);" id="floating-compare-count">0 bài đã chọn</span>
+    <button class="btn btn-primary btn-small" onclick="window.GuidelineTools && window.GuidelineTools.openMultiCompareModal()" style="border-radius: 20px; font-weight: 700;">⚖️ Xem Ma Trận Đối Sánh</button>
+    <button class="btn btn-small" onclick="window.GuidelineTools && window.GuidelineTools.clearCompareList()" style="border-radius: 20px;">✖</button>
+  </div>
+  <style>
+    @keyframes slideUpFloat {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
 
   <!-- ⚙️ CONDITION REGISTRY SETTINGS MODAL (QUẢN LÝ KHO BỆNH & ICD-10) -->
   <div class="modal-overlay" id="condition-settings-modal">
@@ -1051,9 +1115,15 @@ create table clinical_guidelines (
   <!-- Load ICD-10 Data -->
   <script src="../../../../js/data/icd10-data.js"></script>
   <script src="guidelinesdata.js"></script>
+  <script src="js/guideline-sync.js"></script>
+  <script src="js/guideline-table.js"></script>
+  <script src="js/guideline-modals.js"></script>
   <script src="js/drug-linker.js"></script>
   <script src="js/guideline-visualizations.js"></script>
   <script src="js/guideline-evidence-analytics.js"></script>
+  <script src="js/guideline-cmd-palette.js"></script>
+  <script src="js/guideline-cdss.js"></script>
+  <script src="js/guideline-compare-matrix.js"></script>
   <script src="js/guideline-tools.js"></script>
   <script src="guidelines.js"></script>
 </body>

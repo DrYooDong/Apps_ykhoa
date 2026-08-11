@@ -1,16 +1,27 @@
-# Tóm tắt Khuyến cáo Mới nhất về Tăng Huyết áp (Phần 2)
+---
+title: "KHUYẾN CÁO MỚI NHẤT VỀ TĂNG HUYẾT ÁP - 2025 (PHẦN 2)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
+# Tóm tắt Khuyến cáo Mới nhất về [[Tăng huyết áp]] (Phần 2)
 
 ## 1. Nội Dung Điều Trị Và Quản Lý Chi Tiết
 
 ### Chiến lược Quản lý Lối sống và Can thiệp Tâm lý Xã hội
 
-Can thiệp lối sống là nền tảng không thể thiếu trong cả phòng ngừa sơ khởi lẫn quản lý điều trị tăng huyết áp ở mọi giai đoạn. Các can thiệp chính bao gồm:
+Can thiệp lối sống là nền tảng không thể thiếu trong cả phòng ngừa sơ khởi lẫn quản lý điều trị [[Tăng huyết áp]] ở mọi giai đoạn. Các can thiệp chính bao gồm:
 
 - **Giảm cân**: Khuyến cáo mạnh mẽ cho người thừa cân hoặc béo phì (BMI \(\ge 25.0\text{ kg/m}^2\) ở người da trắng và \(\ge 23.0\text{ kg/m}^2\) ở người gốc Á) nhằm đạt mức giảm tối thiểu 5% trọng lượng cơ thể. Mức hạ áp trung bình đạt khoảng 1 mm Hg (cả tâm thu và tâm trương) cho mỗi 1 kg cân nặng giảm được.
 - **Chế độ ăn DASH (Dietary Approaches to Stop Hypertension)**: Khuyến khích chế độ ăn giàu trái cây, rau quả, ngũ cốc nguyên hạt, sữa ít béo hoặc không béo; hạn chế chất béo bão hòa và chất béo toàn phần. DASH là mô hình ăn uống có bằng chứng khoa học mạnh mẽ nhất giúp hạ trung bình từ 5 đến 8 mm Hg huyết áp tâm thu (SBP).
 - **Giảm natri trong chế độ ăn**: Giảm lượng muối tiêu thụ xuống mức \(<2300\text{ mg/ngày}\), tiến dần tới mục tiêu lý tưởng là \(<1500\text{ mg/ngày}\) đối với hầu hết người trưởng thành. Việc cắt giảm này giúp hạ từ 6 đến 8 mm Hg SBP ở người tăng huyết áp.
-- **Sử dụng muối thay thế gốc kali**: Thay thế muối ăn thông thường (100% natri clorua) bằng muối chứa 25%–30% kali clorua (KCl) giúp hạ trung bình 5/1.5 mm Hg huyết áp. Can thiệp này đặc biệt hiệu quả ở người tự nấu ăn tại nhà, nhưng chống chỉ định ở người có bệnh thận mạn (CKD) hoặc đang dùng các thuốc làm giảm bài tiết kali.
-- **Bổ sung kali qua thực phẩm**: Tăng cường tiêu thụ thực phẩm giàu kali đạt đích 3500–5000 mg/ngày giúp hạ trung bình 6 mm Hg SBP (chống chỉ định nếu có suy thận hoặc nguy cơ tăng kali máu).
+- **Sử dụng muối thay thế gốc kali**: Thay thế muối ăn thông thường (100% natri clorua) bằng muối chứa 25%–30% kali clorua (KCl) giúp hạ trung bình 5/1.5 mm Hg huyết áp. Can thiệp này đặc biệt hiệu quả ở người tự nấu ăn tại nhà, nhưng chống chỉ định ở người có bệnh [[Thận]] mạn (CKD) hoặc đang dùng các thuốc làm giảm bài tiết kali.
+- **Bổ sung kali qua thực phẩm**: Tăng cường tiêu thụ thực phẩm giàu kali đạt đích 3500–5000 mg/ngày giúp hạ trung bình 6 mm Hg SBP (chống chỉ định nếu có suy [[Thận]] hoặc nguy cơ tăng kali máu).
 - **Cắt giảm rượu bia**: Mục tiêu tối ưu là kiêng hoàn toàn rượu bia. Nếu có sử dụng, khuyến cáo giới hạn \(\le 1\) đơn vị cồn/ngày đối với nữ giới và \(\le 2\) đơn vị cồn/ngày đối với nam giới.
 - **Hoạt động thể chất**: Tập luyện aerobic có cấu trúc (90–150 phút/tuần ở mức 65%–75% dự trữ nhịp tim), rèn luyện kháng lực động hoặc kháng lực tĩnh đều hỗ trợ giảm huyết áp đáng kể (từ 2 đến 10 mm Hg SBP).
 - **Giảm căng thẳng tâm lý**: Thực hành thiền định siêu việt (Transcendental meditation), yoga hoặc kỹ thuật kiểm soát nhịp thở bằng thiết bị hướng dẫn (giảm nhịp thở \(<10\) lần/phút) có thể cân nhắc như biện pháp bổ trợ giúp hạ khoảng 5 mm Hg SBP.
@@ -31,9 +42,9 @@ Can thiệp lối sống là nền tảng không thể thiếu trong cả phòng
 
 ---
 
-### Ngưỡng Khởi Trị Thuốc Hạ Áp Dựa Trên Nguy Cơ Tim Mạch PREVENT
+### Ngưỡng Khởi Trị Thuốc Hạ Áp Dựa Trên Nguy [[Tim|Cơ Tim]] Mạch PREVENT
 
-Quyết định bắt đầu sử dụng thuốc hạ áp không chỉ dựa vào trị số huyết áp đơn thuần mà phải tích hợp với đánh giá nguy cơ tim mạch toàn bộ 10 năm bằng phương trình PREVENT.
+Quyết định bắt đầu sử dụng thuốc hạ áp không chỉ dựa vào trị số huyết áp đơn thuần mà phải tích hợp với đánh giá nguy [[Tim|cơ tim]] mạch toàn bộ 10 năm bằng phương trình PREVENT.
 
 - **Huyết áp trung bình tại phòng khám \(\ge 140/90\) mm Hg**: Khuyến cáo khởi trị ngay bằng thuốc hạ áp kết hợp thay đổi lối sống cho tất cả bệnh nhân (COR 1, LOE A).
 - **Tăng huyết áp Độ 1 (Huyết áp trung bình \(130/80\) đến \(139/89\) mm Hg)**:
@@ -125,7 +136,7 @@ Bệnh nhân tăng huyết áp kháng trị đối mặt với nguy cơ biến c
 
 - **Tên bảng**: **Table 25. Patient Selection for Renal Denervation**
 - **Thuộc tài liệu**: _jones-et-al-2025-2025-aha-acc-aanp-aapa-abc-accp-acpm-ags-ama-aspc-nma-pcna-sgim-guideline-for-the-prevention-detection.pdf_
-- **Mô tả**: Bảng hướng dẫn lựa chọn bệnh nhân phù hợp cho thủ thuật triệt thần kinh thận (RDN):
+- **Mô tả**: Bảng hướng dẫn lựa chọn bệnh nhân [[Phù]] hợp cho thủ thuật triệt thần kinh thận (RDN):
     - **Chỉ định**: Tăng huyết áp kháng trị thực sự (Stage 2 với SBP phòng khám $\ge 140$ và DBP $\ge 90$ mm Hg dù đã dùng $\ge 4$ thuốc tối ưu liều); hoặc bệnh nhân không thể dung nạp thuốc hạ áp ở liều tối ưu.
     - **Chống chỉ định**: Hạ huyết áp tư thế do nguyên nhân thần kinh; có thai; loạn sản cơ sợi; đã đặt stent động mạch thận; phình động mạch thận; hẹp động mạch thận có ý nghĩa; u thận hoặc u tủy thượng thận bài tiết hormone.
 
@@ -150,7 +161,7 @@ Bệnh nhân tăng huyết áp kháng trị đối mặt với nguy cơ biến c
 - **Điều trị THA mạn tính**: Đưa mục tiêu huyết áp về **\(<140/90\) mm Hg** (COR 1, LOE B-R) để giảm tỷ lệ tiền sản giật nặng và sinh non.
 - **Lựa chọn thuốc**: **Labetalol** và **Nifedipine phóng thích kéo dài** là các thuốc ưu tiên hàng đầu do có dữ liệu an toàn tốt cho thai nhi.
 - **Chống chỉ định**: Tránh tuyệt đối việc sử dụng **Atenolol, các thuốc ACEi, ARB, ức chế renin trực tiếp (aliskiren), nitroprusside, và MRA (spironolactone)** do nguy cơ gây dị tật bẩm sinh, thiểu ối, suy thận thai nhi hoặc độc tính cyanide (COR 3: Harm, LOE C-LD/B-NR).
-- **Phòng ngừa tiền sản giật**: Khuyến cáo tư vấn sử dụng **Aspirin liều thấp (81 mg/ngày)** bắt đầu từ tuần thứ 12 của thai kỳ cho các đối tượng có nguy cơ cao hoặc trung bình mắc tiền sản giật (COR 1, LOE B-R).
+- **Phòng ngừa tiền sản giật**: Khuyến cáo tư vấn sử dụng **[[Aspirin]] liều thấp (81 mg/ngày)** bắt đầu từ tuần thứ 12 của thai kỳ cho các đối tượng có nguy cơ cao hoặc trung bình mắc tiền sản giật (COR 1, LOE B-R).
 
 ---
 
@@ -176,7 +187,7 @@ Bệnh nhân tăng huyết áp kháng trị đối mặt với nguy cơ biến c
 
 #### Cơn Tăng Huyết Áp Cấp Cứu (Hypertensive Emergencies)
 
-- **THA Cấp cứu**: Huyết áp tăng vọt nghiêm trọng (thường \(>180/120\) mm Hg) kèm theo bằng chứng của tổn thương cơ quan đích cấp tính (như phù phổi cấp, hội chứng vành cấp, suy thận cấp, đột quỵ, bóc tách động mạch chủ). Đòi hỏi phải nhập viện ngay vào đơn vị hồi sức tích cực (ICU) để giám sát huyết áp động mạch xâm lấn và dùng thuốc truyền tĩnh mạch liên tục.
+- **THA Cấp cứu**: Huyết áp tăng vọt nghiêm trọng (thường \(>180/120\) mm Hg) kèm theo bằng chứng của tổn thương cơ quan đích cấp tính (như [[Phù]] [[Phổi]] cấp, hội chứng vành cấp, suy thận cấp, đột quỵ, bóc tách động mạch chủ). Đòi hỏi phải nhập viện ngay vào đơn vị hồi sức tích cực (ICU) để giám sát huyết áp động mạch xâm lấn và dùng thuốc truyền tĩnh mạch liên tục.
 - **Chiến lược hạ áp**:
     - **Trường hợp không có tình trạng bắt buộc đặc biệt**: SBP nên được giảm không quá 25% trong giờ đầu tiên; nếu bệnh nhân ổn định lâm sàng, tiếp tục đưa về mức $<160/100$ mm Hg trong vòng 2–6 giờ tiếp theo, và đạt mức bình thường hóa thận trọng trong vòng 24–48 giờ (COR 1, LOE C-LD).
     - **Trường hợp có tình trạng bắt buộc đặc biệt (compelling conditions)**: Nhất là bệnh nhân **bóc tách động mạch chủ ngực cấp tính (acute aortic dissection)**, yêu cầu khẩn cấp giảm huyết áp tâm thu xuống **$<120$ mm Hg** và nhịp tim $<60$ chu kỳ/phút trong vòng 20 phút đầu tiên bằng các thuốc chẹn beta tĩnh mạch (như esmolol, labetalol) trước khi bắt đầu các thuốc giãn mạch trực tiếp để tránh nhịp nhanh phản xạ (COR 1, LOE C-LD).
@@ -187,7 +198,7 @@ Bệnh nhân tăng huyết áp kháng trị đối mặt với nguy cơ biến c
 - **Tên sơ đồ**: **Figure 9. Diagnosis and Treatment of Severe Hypertension and Hypertensive Emergency**
 - **Thuộc tài liệu**: _jones-et-al-2025-2025-aha-acc-aanp-aapa-abc-accp-acpm-ags-ama-aspc-nma-pcna-sgim-guideline-for-the-prevention-detection.pdf_
 - **Nội dung mô tả dưới sơ đồ**: Sơ đồ phân loại xử trí bệnh nhân có huyết áp cực cao SBP \(>180\) hoặc DBP \(>120\) mm Hg:
-    - Kiểm tra xem có tổn thương cơ quan đích cấp tính không (như suy tim cấp, nhồi máu cơ tim cấp, xuất huyết não, suy thận cấp, phình bóc tách động mạch chủ...).
+    - Kiểm tra xem có tổn thương cơ quan đích cấp tính không (như suy tim cấp, nhồi máu cơ tim cấp, [[Xuất huyết]] não, suy thận cấp, phình bóc tách động mạch chủ...).
     - **Nếu CÓ (Hypertensive Emergency)**: Nhập viện ICU ngay.
         - Nếu có bóc tách động mạch chủ cấp: Giảm nhanh SBP $<120$ mm Hg trong giờ đầu. Nếu có cơn khủng hoảng u tủy thượng thận (pheochromocytoma crisis): Giảm SBP $<140$ mm Hg trong giờ đầu.
         - Các trường hợp cấp cứu khác: Giảm SBP tối đa 25% trong giờ đầu, sau đó đạt $<160/100\text{–}110$ mm Hg trong 6 giờ tiếp theo và bình thường hóa trong 24–48 giờ.

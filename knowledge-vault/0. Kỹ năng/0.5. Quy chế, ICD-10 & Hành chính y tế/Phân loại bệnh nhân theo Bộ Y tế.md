@@ -1,3 +1,13 @@
+---
+title: "Phân loại bệnh nhân theo Bộ Y tế"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 9
 # „¬ PhằầH  -
 ## PHAN LOẠI NẠN NHẮN
@@ -21,7 +31,7 @@ thương của nạn nhân.
 - Việc phân loại được tiền hành từ 2 đến 5 phút là tối đa phụ thuộc vào tình
 trạng bệnh hoặc tổn thương. Trong trường hợp cấp cứu hàng loạt, mỗi nạn nhân chỉ đánh giá phân loại trong 30 đến 60 giây là tối đa, mục đích cố gắng cứu được càng nhiều nạn nhân càng tốt.
 - Trong trường hợp cấp cứu hàng loạt vượt quá khả năng của số người/lực
-lượng sơ cứu, cấp cứu thì cằn phân loại nhanh đề cấp cứu phù hợp.
+lượng sơ cứu, cấp cứu thì cằn phân loại nhanh đề cấp cứu [[Phù]] hợp.
 2. Thực hiện phân loại
 - Có nhiều cách phân loại nạn nhân tại hiện trường, tuy nhiên phân loại nhanh
 START - Simple Triage and Rapid Treatment được áp dụng phổ biến. Hệ thống
@@ -29,7 +39,7 @@ START - Simple Triage and Rapid Treatment được áp dụng phổ biến. Hệ
 họa dân sự từ năm 1983.
 - Phân loại START dựa trên việc đánh giá tình trạng hồ hấp, tuần hoàn và trí
 ### giác của nạn nhân qua đó sẽ xử lý những nguy cơ chính đe dọa đến mạng sống như
-tắc nghẽn đường thở và chảy máu ngoài nghiêm trọng. Phân loại này cho phép thực hiện trong khoảng 60 giây cho mỗi nạn nhân.
+tắc nghẽn đường thở và [[Xuất huyết|chảy máu]] ngoài nghiêm trọng. Phân loại này cho phép thực hiện trong khoảng 60 giây cho mỗi nạn nhân.
 ## MU  .  . .  ..... .  . .. .—  .. đc uy
 
 ---
@@ -78,8 +88,8 @@ phương tiện/máy móc, số nạn nhân...
 3.2. Thực hiện phân loại nạn nhân
 - Đánh giá nhanh tình trạng nạn nhân:
 - Tri giác: tỉnh hay không tính;
-- Tuần hoàn: có chảy máu hay không, chảy máu nhiều hay ít;
-- Hô hấp: có khó thở hoặc ngừng thở không, có chấn thương cột sống cổ
+- Tuần hoàn: có [[Xuất huyết|chảy máu]] hay không, chảy máu nhiều hay ít;
+- Hô hấp: có [[Khó thở]] hoặc ngừng thở không, có chấn thương cột sống cổ
 hay không...
 - Đưa nạn nhân ra khỏi hiện trường một cách nhanh chóng, an toàn và luôn
 đảm bảo các chức năng sống.
@@ -98,7 +108,7 @@ nhiều nạn nhân cần cấp cứu.
 - Các biển (thẻ) màu được sử dụng làm bằng chất liệu bìa carton cứng hoặc
 nhựa có cán cắm đánh dấu ở hiện trường đề phân khu vực.
 - Nạn nhân trong các khu vực đã gắn màu phải được kiểm tra phân loại lại
-liên tục để có phương án xử trí phù hợp với diễn biến sau đó.
+liên tục để có phương án xử trí [[Phù]] hợp với diễn biến sau đó.
 ## ——X 1 HN NGHI
 
 ---
@@ -106,7 +116,7 @@ liên tục để có phương án xử trí phù hợp với diễn biến sau 
 12 Kích cỡ : thẻ 10x13cm, cán dài 15cm cắm nơi hiện trường phân khu vực Hình 9: Thẻ màu sử dụng trong phân loại nạn nhân
 - Màu đỏ:
 Khu vực này gồm những nạn nhân sau khi đặt tư thế an toàn, đường thở thông thoáng nhưng có các dấu hiệu sau:
-- Thở nhanh trên 30 lằn/phút hoặc dưới 10 lằn/ phút, không sờ thầy mạch quay.
+- [[Khó thở|Thở nhanh]] trên 30 lằn/phút hoặc dưới 10 lằn/ phút, không sờ thầy mạch quay.
 - Thời gian đồ đầy mao mạch kéo dài hơn 2 giây (thời gian đồ đậy mao mạch là
 đo thời gian cần thiết để da trở lại màu cơ bản sau khi dùng lực ấn lên đầu ngón tay).
 Cách thực hiện: Lấy ngón tay cái ấn lên đầu ngón tay nạn nhân một vài giây rồi buông ra, thông thường thời gian hồng trở lại của ngón tay là < 2 giấy.
@@ -134,7 +144,7 @@ còn đi lại được, được hướng dẫn tập trung vào khu cấp cứ
 - Các bệnh nhân đã tử vong, hoàn toàn không thở sau khi đã thực hiện thông
 thoáng đường thở.
 - Màu đen còn chỉ thị cho các bệnh nhân đang hấp hồi, bệnh nhân chấn thương
-sọ não nặng, hôn mê sâu không còn khả năng cứu nếu có quá nhiều nạn nhân.
+sọ não nặng, [[Hôn mê]] sâu không còn khả năng cứu nếu có quá nhiều nạn nhân.
 ## CÂU HỎI LƯỢNG GIÁ
 Lựa chọn câu trả lời đúng:
 1. Lý do cần phải phân loại nạn nhân tại hiện trường là:

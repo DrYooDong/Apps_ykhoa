@@ -1,3 +1,13 @@
+---
+title: "Tiếp cận trẻ tím"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### Đại Cương Và Cơ Chế Xuất Hiện Tím
@@ -8,11 +18,11 @@ Trên lâm sàng, tím xuất hiện khi nồng độ Hb khử trong máu cao tr
 
 - **Ở trẻ có nồng độ Hb bình thường ($15\text{ g/dL}$):** Tím xuất hiện khi $SaO_2$ giảm xuống khoảng $70 - 80%$ (tương ứng Hb khử $3 - 5\text{ g/dL}$).
 - **Ở trẻ thiếu máu ($Hb = 10\text{ g/dL}$):** Tím chỉ thấy rõ khi $SaO_2$ giảm rất sâu xuống $50%$ (khi đó Hb khử mới đạt $5\text{ g/dL}$).
-- **Ở trẻ đa hồng cầu ($Hb = 20\text{ g/dL}$):** Tím xuất hiện rất sớm ngay cả khi $SaO_2$ còn ở mức $75%$ (Hb khử $5\text{ g/dL}$ chỉ chiếm $25%$ tổng Hb).
+- **Ở trẻ đa [[Hồng cầu]] ($Hb = 20\text{ g/dL}$):** Tím xuất hiện rất sớm ngay cả khi $SaO_2$ còn ở mức $75%$ (Hb khử $5\text{ g/dL}$ chỉ chiếm $25%$ tổng Hb).
 
 Vì vậy, khi đánh giá trẻ bị tím, không chỉ dựa vào quan sát màu da niêm hay đo độ bão hòa oxy mao mạch ($SpO_2$) mà phải luôn kết hợp với nồng độ Hb máu của bệnh nhân.
 
-> **Mô Tả Hình Ảnh:** **Tên hình:** Hình 57.1. Độ bão hòa oxy máu động mạch ($SaO_2$) ở thời điểm xuất hiện tím tùy thuộc nồng độ Hb toàn phần trong máu **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf **Nội dung mô tả:** Đồ thị biểu diễn mối tương quan giữa nồng độ Hb toàn phần ($g/L$), nồng độ Hb khử ($g/L$) và độ bão hòa oxy máu động mạch ($SaO_2$, %) tại thời điểm xuất hiện tím. Đồ thị cho thấy ở bệnh nhân đa hồng cầu ($Hb = 200\text{ g/L}$), triệu chứng tím xuất hiện sớm hơn khi $SaO_2$ đạt 75%; ở trẻ có $Hb$ bình thường ($150\text{ g/L}$), tím xuất hiện khi $SaO_2$ ở khoảng 70 - 80%; còn ở trẻ thiếu máu ($Hb = 100\text{ g/L}$), triệu chứng tím xuất hiện muộn hơn khi $SaO_2$ giảm xuống dưới 50%.
+> **Mô Tả Hình Ảnh:** **Tên hình:** Hình 57.1. Độ bão hòa oxy máu động mạch ($SaO_2$) ở thời điểm xuất hiện tím tùy thuộc nồng độ Hb toàn phần trong máu **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 2 (2020) - [[Tim]] mạch.pdf **Nội dung mô tả:** Đồ thị biểu diễn mối tương quan giữa nồng độ Hb toàn phần ($g/L$), nồng độ Hb khử ($g/L$) và độ bão hòa oxy máu động mạch ($SaO_2$, %) tại thời điểm xuất hiện tím. Đồ thị cho thấy ở bệnh nhân đa [[Hồng cầu]] ($Hb = 200\text{ g/L}$), triệu chứng tím xuất hiện sớm hơn khi $SaO_2$ đạt 75%; ở trẻ có $Hb$ bình thường ($150\text{ g/L}$), tím xuất hiện khi $SaO_2$ ở khoảng 70 - 80%; còn ở trẻ thiếu máu ($Hb = 100\text{ g/L}$), triệu chứng tím xuất hiện muộn hơn khi $SaO_2$ giảm xuống dưới 50%.
 
 ---
 
@@ -22,17 +32,17 @@ Dựa vào vị trí da niêm bị ảnh hưởng và chỉ số huyết động
 
 ##### 1. Tím Trung Vương
 
-- **Cơ chế:** Xảy ra khi giảm độ bão hòa oxy máu động mạch do bệnh lý tại phổi hoặc do có luồng thông (shunt) làm máu động mạch nhận một phần máu chưa được oxy hóa. Máu động mạch xuất phát từ tim có độ bão hòa oxy thấp hơn bình thường.
+- **Cơ chế:** Xảy ra khi giảm độ bão hòa oxy máu động mạch do bệnh lý tại [[Phổi]] hoặc do có luồng thông (shunt) làm máu động mạch nhận một phần máu chưa được oxy hóa. Máu động mạch xuất phát từ [[Tim]] có độ bão hòa oxy thấp hơn bình thường.
 - **Nguyên nhân:**
-    - Bệnh lý phổi: Giảm thông khí phế nang, giảm khuếch tán oxy qua màng phế nang, bất cân xứng thông khí – tưới máu ($V/Q$).
+    - Bệnh lý [[Phổi]]: Giảm thông khí phế nang, giảm khuếch tán oxy qua màng phế nang, bất cân xứng thông khí – tưới máu ($V/Q$).
     - Bệnh tim bẩm sinh có luồng thông (shunt) Phải – Trái trong tim hoặc ngoài tim.
     - Bệnh Methemoglobin bẩm sinh hoặc mắc phải ($Fe^{2+}$ bị oxy hóa thành $Fe^{3+}$ không thể gắn oxy).
-- **Lâm sàng & Cận lâm sàng:** Tím xuất hiện ở cả da và niêm mạc (miệng, má, dưới lưỡi). Khí máu động mạch có $PaO_2$, $SaO_2$ và $SpO_2$ giảm ($< 94$%).
+- **Lâm sàng & Cận lâm sàng:** Tím xuất hiện ở cả da và niêm mạc (miệng, má, dưới lưỡi). [[Khí máu động mạch]] có $PaO_2$, $SaO_2$ và $SpO_2$ giảm ($< 94$%).
 
 ##### 2. Tím Ngoại Biên
 
 - **Cơ chế:** Máu rời tim và phổi vẫn được bão hòa oxy hoàn toàn ($SaO_2$, $PaO_2$ bình thường), nhưng do sử dụng oxy ở mô quá mức hoặc do máu di chuyển chậm ở giường mao mạch ngoại biên khiến máu tĩnh mạch bị mất bão hòa oxy nặng.
-- **Nguyên nhân:** Tiếp xúc lạnh, bệnh Raynaud, suy tim, sốc, hạ đường huyết.
+- **Nguyên nhân:** Tiếp xúc lạnh, bệnh Raynaud, suy tim, [[Sốc]], [[Hạ đường huyết]].
 - **Lâm sàng & Cận lâm sàng:** Tím chỉ xuất hiện ở da đầu chi, trong khi niêm mạc (lưỡi, miệng) vẫn hồng. $SaO_2$ và $PaO_2$ trong máu động mạch bình thường.
 
 ##### 3. Tím Chuyên Biệt
@@ -76,18 +86,18 @@ Xảy ra khi sắt trong nhân heme bị oxy hóa từ dạng $Fe^{2+}$ thành $
 
 Việc phân biệt nguyên nhân tím trung ương do tim hay do phổi trên lâm sàng dựa vào các đặc điểm sau:
 
-- **Biểu hiện hô hấp:** Trẻ tím do phổi thường kèm thở nhanh, co lõm ngực nặng, phập phồng cánh mũi, thở rên. Trẻ tím do tim bẩm sinh thường không có triệu chứng hô hấp hoặc triệu chứng hô hấp ở mức độ nhẹ hơn so với mức độ tím.
+- **Biểu hiện hô hấp:** Trẻ tím do phổi thường kèm [[[[Khó thở]]|thở nhanh]], co lõm ngực nặng, phập phồng cánh mũi, thở rên. Trẻ tím do tim bẩm sinh thường không có triệu chứng hô hấp hoặc triệu chứng hô hấp ở mức độ nhẹ hơn so với mức độ tím.
 - **Thăm khám tim:** Tiếng tim bất thường, âm thổi ở tim gợi ý bệnh tim bẩm sinh (tuy nhiên một số tật tim bẩm sinh nặng ban đầu có thể không có âm thổi).
-- **X-quang ngực:** Giúp đánh giá bóng tim (to, hình dáng bất thường) và tình trạng tuần hoàn phổi (tăng, giảm hay bình thường), cũng như phát hiện tổn thương nhu mô phổi.
+- **[[X-quang]] ngực:** Giúp đánh giá bóng tim (to, hình dáng bất thường) và tình trạng tuần hoàn phổi (tăng, giảm hay bình thường), cũng như phát hiện tổn thương nhu mô phổi.
 - **Nghiệm pháp thở Oxy liều cao (Test Oxygen / Hyperoxia test):**
     - Cho trẻ thở oxy $100$% trong 10 phút.
     - _Nếu tím do bệnh phổi:_ $PaO_2$ tăng rõ rệt (thường $> 150\text{ mmHg}$) và $SpO_2$ cải thiện tốt.
     - _Nếu tím do tim bẩm sinh có shunt Phải – Trái:_ $PaO_2$ và $SpO_2$ tăng rất ít hoặc không tăng đáng kể.
-    - _Lưu ý:_ Cần thận trọng khi làm test oxy ở trẻ nghi ngờ tim bẩm sinh phụ thuộc ống động mạch vì oxy liều cao có thể làm co thắt và đóng ống động mạch, khiến tình trạng tím hoặc sốc nặng hơn. Bác sĩ có thể cân nhắc cho truyền Prostaglandin E1 ($PGE_1$) để duy trì mở ống động mạch cấp cứu.
+    - _Lưu ý:_ Cần [[Thận]] trọng khi làm test oxy ở trẻ nghi ngờ tim bẩm sinh phụ thuộc ống động mạch vì oxy liều cao có thể làm co thắt và đóng ống động mạch, khiến tình trạng tím hoặc [[Sốc]] nặng hơn. Bác sĩ có thể cân nhắc cho truyền Prostaglandin E1 ($PGE_1$) để duy trì mở ống động mạch cấp cứu.
 
-> **Mô Tả Lưu Đồ:** **Tên sơ đồ:** Sơ đồ 59.1. Phân biệt tím trung ương do tim bẩm sinh có shunt phải – trái và suy hô hấp **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf **Nội dung mô tả:** Thuật toán chẩn đoán phân biệt nguyên nhân tím trung ương (TÍM TƯ) ở trẻ em:
+> **Mô Tả Lưu Đồ:** **Tên sơ đồ:** Sơ đồ 59.1. Phân biệt tím trung ương do tim bẩm sinh có shunt phải – trái và [[Suy hô hấp]] **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf **Nội dung mô tả:** Thuật toán chẩn đoán phân biệt nguyên nhân tím trung ương (TÍM TƯ) ở trẻ em:
 > 
-> - Khi cho bệnh nhân thở Oxy, nếu triệu chứng tím cải thiện đáng kể ($+/-$) hoặc hết tím ($+$), nguyên nhân hướng tới Suy hô hấp (SHH) tại đường hô hấp, tim mạch, thần kinh, toan chuyển hóa hoặc thiếu máu nặng.
+> - Khi cho bệnh nhân thở Oxy, nếu triệu chứng tím cải thiện đáng kể ($+/-$) hoặc hết tím ($+$), nguyên nhân hướng tới [[Suy hô hấp]] (SHH) tại đường hô hấp, tim mạch, thần kinh, toan chuyển hóa hoặc thiếu máu nặng.
 > - Nếu tím không cải thiện ($-$): Hướng tới chẩn đoán Tim bẩm sinh có luồng thông Phải - Trái (TBS P-T) hoặc kết hợp Suy hô hấp nặng với Tim bẩm sinh.
 
 ---

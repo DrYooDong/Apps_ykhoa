@@ -1,3 +1,14 @@
+---
+title: "Khám hệ hô hấp ở trẻ em"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - he-co-quan/ho-hap
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### Nguyên Tắc Khai Thác Bệnh Sử Hô Hấp Ở Trẻ Em
@@ -10,12 +21,12 @@
     - _Lý do chính yếu đến khám_: Lý do chính đưa trẻ đến khám (hoặc lý do và nơi chuyển viện).
     - _Bệnh sử chi tiết_: Tập trung vào triệu chứng chính:
         - Tuổi khởi phát: khởi phát sớm sau sinh thường do di truyền hoặc liên quan bất thường bẩm sinh.
-        - Tính chất khởi phát: từ từ (viêm tiểu phế quản, viêm phổi) hoặc đột ngột (dị vật đường thở).
+        - Tính chất khởi phát: từ từ (viêm tiểu phế quản, viêm [[Phổi]]) hoặc đột ngột (dị vật đường thở).
         - Hoàn cảnh khởi phát: tự nhiên, sau gắng sức, sau tiếp xúc dị nguyên hô hấp (mùi nồng, khói thuốc lá...), sau triệu chứng nhiễm siêu vi hô hấp trên, sau bú/ăn, hoặc thay đổi theo mùa.
         - Thời gian xuất hiện: cấp tính ($< 3\text{ tuần}$), bán cấp ($3\text{ tuần} - 3\text{ tháng}$), mạn tính ($> 3\text{ tháng}$) hoặc tái phát.
         - Triệu chứng kèm theo và các can thiệp tuyến trước.
     - _Tiền căn bản thân và gia đình_:
-        - Bản thân: tuổi thai, cân nặng lúc sinh, suy hô hấp sau sinh, bệnh lý mắc phải, tình trạng chủng ngừa, phát triển thể chất – tâm vận, dị ứng, dùng thuốc kéo dài.
+        - Bản thân: tuổi thai, cân nặng lúc sinh, [[Suy hô hấp]] sau sinh, bệnh lý mắc phải, tình trạng chủng ngừa, phát triển thể chất – tâm vận, dị ứng, dùng thuốc kéo dài.
         - Gia đình: tiền căn nhiễm trùng hô hấp cấp, lao, hen, dị ứng.
     - _Môi trường sống_: đông đúc, thú nuôi, cây trồng, máy điều hòa, khói thuốc lá, nhang khói.
 
@@ -23,11 +34,11 @@
 
 - Bộc lộ toàn bộ lồng ngực của trẻ trong điều kiện đủ ánh sáng và yên tĩnh.
 - **Đánh giá nhịp thở**: Đếm tần số, nhịp điệu và sự gắng công hô hấp. Nhịp thở cần được đếm trong ít nhất 1 phút (lý tưởng là đếm lặp lại nhiều lần và lấy giá trị trung bình) khi trẻ nghỉ hoặc ngủ.
-- **Đánh giá dấu hiệu khó thở**:
-    - Quan sát dấu hiệu co lõm ngực, co kéo cơ hô hấp phụ, phập phồng cánh mũi, khó thở khi nằm hay hô hấp ngực - bụng ngược chiều. Co lõm ngực dễ thấy ở trẻ nhỏ do cơ gian sườn còn mỏng và mềm.
+- **Đánh giá dấu hiệu [[Khó thở]]**:
+    - Quan sát dấu hiệu co lõm ngực, co kéo cơ hô hấp phụ, phập phồng cánh mũi, [[Khó thở]] khi nằm hay hô hấp ngực - bụng ngược chiều. Co lõm ngực dễ thấy ở trẻ nhỏ do cơ gian sườn còn mỏng và mềm.
     - Dấu hiệu co kéo cơ ức đòn chũm và lõm hõm trên ức trong thì hít vào là dấu hiệu đáng tin cậy nhất chứng tỏ có tắc nghẽn đường hô hấp ngoài lồng ngực.
 - **Sự cân xứng của lồng ngực**: Quan sát tỷ số đường kính ngang và đường kính trước - sau của lồng ngực.
-- **Dấu hiệu ngoài phổi**: Quầng thâm dưới mắt (cơ địa dị ứng), màu sắc và kích thước niêm mạc mũi (tìm polyp), đầu chi dùi trống (bệnh phổi mô kẽ), thăm khám hầu họng (chẻ vòm, amidan to), sẹo lao.
+- **Dấu hiệu ngoài [[Phổi]]**: Quầng thâm dưới mắt (cơ địa dị ứng), màu sắc và kích thước niêm mạc mũi (tìm polyp), đầu chi dùi trống (bệnh phổi mô kẽ), thăm khám hầu họng (chẻ vòm, amidan to), sẹo lao.
 
 #### Kỹ Thuật Sờ Trong Khám Hô Hấp (Palpation)
 
@@ -56,7 +67,7 @@
 - **Âm bệnh lý của phổi**:
     - _Khò khè / Ran ngáy_: Âm thanh liên tục dạng nhạc (thường kéo dài $> 80\text{ ms}$), sinh ra do khí dao động trong đường dẫn khí bị hẹp.
     - _Ran ngáy_: Do vỡ màng dịch hoặc dao động thành ở đường dẫn khí lớn hơn ($< 300\text{ Hz}$, kéo dài $< 100\text{ ms}$).
-    - _Ran ẩm_: Âm thanh không liên tục (kéo dài $< 20\text{ ms}$), xuất hiện do luồng khí đi qua chỗ có dịch tiết hoặc do sự mở đột ngột của đường dẫn khí bị xẹp. Ran ẩm nhỏ hạt (mịn) ở cuối thì hít vào gặp trong bệnh phổi hạn chế hoặc suy tim ứ huyết giai đoạn đầu; ran ẩm to hạt (thô) ở đầu thì hít vào và thở ra gặp trong bệnh phổi tắc nghẽn mạn tính.
+    - _Ran ẩm_: Âm thanh không liên tục (kéo dài $< 20\text{ ms}$), xuất hiện do luồng khí đi qua chỗ có dịch tiết hoặc do sự mở đột ngột của đường dẫn khí bị xẹp. Ran ẩm nhỏ hạt (mịn) ở cuối thì hít vào gặp trong bệnh phổi hạn chế hoặc suy [[Tim]] ứ huyết giai đoạn đầu; ran ẩm to hạt (thô) ở đầu thì hít vào và thở ra gặp trong bệnh phổi tắc nghẽn mạn tính.
     - _Các tiếng ngoài lồng ngực_: Tiếng cọ màng phổi, tiếng thở rít (stridor - do khí qua vùng rất hẹp của đường thở ngoài lồng ngực, nghe chủ yếu thì hít vào), thở rên (grunting - thì thở ra do khép dây thanh âm tạo áp lực dương cuối kỳ thở ra), tiếng ngáy (do rung cơ vùng hầu).
 
 > **Bảng thông tin:** **Tên bảng:** Bảng 14.1. Các âm thanh của hô hấp **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 1 (2020).pdf **Nội dung mô tả:** Bảng phân loại các âm thanh hô hấp cơ bản và bệnh lý:

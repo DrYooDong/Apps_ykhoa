@@ -1,8 +1,13 @@
 ---
+title: "Suy dinh dưỡng"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
 tags:
-  - Lamsang
-  - Vande
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+
 # 1. Cơ chế bệnh sinh:
 Suy dinh dưỡng và sụt cân không chủ ý (Involuntary / Unintentional Weight Loss - IWL) có ý nghĩa lâm sàng khi bệnh nhân mất > 5% trọng lượng cơ thể thường ngày trong vòng 6–12 tháng. Cơ chế sinh lý bệnh của suy dinh dưỡng và sụt cân được chia thành ba nhóm chính:
 
@@ -13,10 +18,10 @@ Suy dinh dưỡng và sụt cân không chủ ý (Involuntary / Unintentional We
 # 2. Phân loại 
 Sụt cân và suy dinh dưỡng có thể được phân loại theo nguyên nhân thành các nhóm sau:
 
-- **Bệnh lý ác tính (Malignant neoplasms):** Là nhóm nguyên nhân phổ biến nhất, chiếm khoảng 25% (hoặc 19–36%) số ca. Phổ biến nhất là ung thư đường tiêu hóa, ung thư phổi và lymphoma.
+- **Bệnh lý ác tính (Malignant neoplasms):** Là nhóm nguyên nhân phổ biến nhất, chiếm khoảng 25% (hoặc 19–36%) số ca. Phổ biến nhất là ung thư [[Đường tiêu hóa]], ung thư [[Phổi]] và lymphoma.
 - **Rối loạn Tâm thần và Hành vi:** Chiếm khoảng 14–16%, bao gồm trầm cảm, nghiện rượu, chán ăn tâm thần (anorexia nervosa) và sự cô lập xã hội.
 - **Bệnh lý Tiêu hóa không ác tính:** Chiếm 13–17%, bao gồm loét dạ dày - tá tràng (PUD), bệnh viêm ruột (IBD), viêm tụy mạn, bệnh celiac và các vấn đề về răng miệng (chiếm tới 9% ở người > 65 tuổi).
-- **Bệnh lý Nội tiết và Chuyển hóa:** Chiếm khoảng 7%, nổi bật nhất là cường giáp, đái tháo đường, suy thượng thận và u tủy thượng thận.
+- **Bệnh lý Nội tiết và Chuyển hóa:** Chiếm khoảng 7%, nổi bật nhất là cường giáp, đái tháo đường, suy thượng [[Thận]] và u tủy thượng [[Thận]].
 - **Nhiễm trùng / Viêm mạn tính:** Lao (TB), HIV/AIDS, viêm nội tâm mạc nhiễm khuẩn bán cấp (SBE).
 - **Không rõ nguyên nhân (Unknown):** Chiếm tới 22% các trường hợp dù đã được đánh giá y khoa đầy đủ.
 
@@ -25,17 +30,17 @@ Sụt cân và suy dinh dưỡng có thể được phân loại theo nguyên nh
 **Bước 1: Ổn định ban đầu – sàng lọc nguy cơ**
 
 - **Xác minh sụt cân có thật hay không:** Đây là bước then chốt đầu tiên, vì 25–50% bệnh nhân than phiền sụt cân nhưng thực tế không hề giảm cân. Người già thường mất khối lượng cơ và trông có vẻ gầy đi. Cần xác minh bằng cách so sánh với số cân nặng trước đây trong hồ sơ, hoặc hỏi về sự thay đổi cỡ quần áo, cỡ thắt lưng.
-- **Nhận diện dấu hiệu "cờ đỏ":** Sụt cân đi kèm với khó thở, ho ra máu, tiêu phân đen/máu, đau bụng dai dẳng, sốt, đổ mồ hôi trộm, hoặc khối u có thể sờ thấy đòi hỏi đánh giá khẩn cấp để tìm bệnh lý ác tính hoặc nhiễm trùng nặng.
+- **Nhận diện dấu hiệu "cờ đỏ":** Sụt cân đi kèm với [[Khó thở]], ho ra máu, tiêu phân đen/máu, [[Đau bụng]] dai dẳng, [[Sốt]], đổ mồ hôi trộm, hoặc khối u có thể sờ thấy đòi hỏi đánh giá khẩn cấp để tìm bệnh lý ác tính hoặc nhiễm trùng nặng.
 
 **Bước 2: Thu thập dữ kiện tập trung**
 
-- **Đánh giá tình trạng kém hấp thu:** Bước then chốt thứ hai là hỏi về sự thay đổi thói quen đi tiêu. Hỏi xem bệnh nhân có bị tiêu chảy, hoặc phân có lượng lớn, mùi hôi khắm, nổi trên mặt nước và khó dội nước (phân mỡ) hay không.
+- **Đánh giá tình trạng kém hấp thu:** Bước then chốt thứ hai là hỏi về sự thay đổi thói quen đi tiêu. Hỏi xem bệnh nhân có bị [[Tiêu chảy]], hoặc phân có lượng lớn, mùi hôi khắm, nổi trên mặt nước và khó dội nước (phân mỡ) hay không.
 - **Đánh giá lượng calo nạp vào:** Bước thứ ba là xác định xem sụt cân do giảm ăn hay do tăng tiêu hao. Hỏi xem sự thèm ăn của bệnh nhân giảm, bình thường, hay tăng lên. Sụt cân kèm lượng ăn bình thường hoặc tăng gợi ý tình trạng dị hóa lớn (ung thư, cường giáp, đái tháo đường) hoặc kém hấp thu.
 - **Khám lâm sàng toàn diện:**
     - _Khám răng miệng và đầu mặt cổ:_ Đánh giá răng giả không vừa, mất răng, nấm miệng (thrush), viêm góc mép (cheilosis) hoặc viêm lưỡi (glossitis) gợi ý thiếu vitamin B, sắt. Khám hạch bạch huyết và tuyến giáp.
-    - _Khám da và tóc:_ Rụng tóc, tóc khô gãy (thiếu protein, kẽm, biotin), da khô, xuất huyết quanh nang lông, bầm máu (thiếu vitamin C, K).
+    - _Khám da và tóc:_ Rụng tóc, tóc khô gãy (thiếu protein, kẽm, biotin), da khô, [[Xuất huyết]] quanh nang lông, bầm máu (thiếu vitamin C, K).
     - _Khám thần kinh và cơ xương khớp:_ Đánh giá khối lượng cơ (teo cơ thái dương, cổ), sức nắm bàn tay, phản xạ gân xương, và dị cảm (gợi ý thiếu thiamine, B12). Đánh giá tình trạng tinh thần để sàng lọc trầm cảm và sa sút trí tuệ.
-    - _Khám tổng quát:_ Khám tim phổi, khám bụng tìm khối u, gan lách to, khám trực tràng tìm máu ẩn trong phân (FOBT).
+    - _Khám tổng quát:_ Khám [[Tim]] [[Phổi]], khám bụng tìm khối u, [[Gan]] lách to, khám trực tràng tìm máu ẩn trong phân (FOBT).
 
 **Bước 3: Lập danh sách chẩn đoán phân biệt (differential diagnosis)**
 
@@ -43,9 +48,9 @@ Sụt cân và suy dinh dưỡng có thể được phân loại theo nguyên nh
 |:--|:--|:--|
 |**Bệnh lý ác tính**|Ung thư tiêu hóa, Ung thư phổi, Lymphoma|Sụt cân, chán ăn, ho ra máu, có hạch to, có máu trong phân, no sớm, hoặc thiếu máu.|
 |**Nội tiết**|Cường giáp, Đái tháo đường, Suy thượng thận|Sụt cân kèm **ăn nhiều** (polyphagia), tiểu nhiều/khát nhiều (ĐTĐ), đánh trống ngực, vã mồ hôi, sợ nóng (Cường giáp), sạm da (Addison).|
-|**Kém hấp thu/Tiêu hóa**|Viêm tụy mạn, Bệnh Celiac, Loét dạ dày (PUD)|Phân mỡ khó xả nước, tiêu chảy mạn tính. Đau thượng vị, no sớm, tiền sử dùng NSAID (PUD).|
+|**Kém hấp thu/Tiêu hóa**|Viêm tụy mạn, Bệnh Celiac, Loét dạ dày (PUD)|Phân mỡ khó xả nước, [[Tiêu chảy]] mạn tính. Đau thượng vị, no sớm, tiền sử dùng NSAID (PUD).|
 |**Tâm thần / Xã hội**|Trầm cảm, Nghiện rượu|Cảm giác buồn bã, mất hứng thú, uống nhiều rượu (điểm sàng lọc CAGE/AUDIT cao), bỏ bê bản thân.|
-|**Nhiễm trùng**|Lao, HIV, Viêm nội tâm mạc (SBE)|Sốt, vã mồ hôi trộm, ho dai dẳng, tiền sử tiêm chích hoặc quan hệ tình dục không an toàn.|
+|**Nhiễm trùng**|Lao, HIV, Viêm nội tâm mạc (SBE)|[[Sốt]], vã mồ hôi trộm, ho dai dẳng, tiền sử tiêm chích hoặc quan hệ tình dục không an toàn.|
 
 **Bước 4. Biện luận lâm sàng (clinical reasoning)**
 
@@ -55,15 +60,15 @@ Sụt cân và suy dinh dưỡng có thể được phân loại theo nguyên nh
 
 # Bước 5. Cận lâm sàng hợp lý
 
-- **Sàng lọc cơ bản:** Thực hiện với hầu hết các bệnh nhân bao gồm: Công thức máu (CBC), sinh hóa máu (chức năng thận, gan, Canxi, điện giải), đường huyết đói, tốc độ máu lắng (ESR) hoặc CRP, TSH, xét nghiệm nước tiểu, xét nghiệm máu ẩn trong phân (FOBT), X-quang ngực, và xét nghiệm HIV.
+- **Sàng lọc cơ bản:** Thực hiện với hầu hết các bệnh nhân bao gồm: Công thức máu (CBC), sinh hóa máu (chức năng thận, [[Gan]], Canxi, điện giải), đường huyết đói, tốc độ máu lắng (ESR) hoặc [[CRP]], TSH, xét nghiệm nước tiểu, xét nghiệm máu ẩn trong phân (FOBT), [[X-quang]] ngực, và xét nghiệm HIV.
 - **Tầm soát ung thư theo độ tuổi:** Cập nhật các xét nghiệm tầm soát như nhũ ảnh (Mammogram), phết tế bào cổ tử cung (Pap smear), nội soi đại tràng, và chụp CT ngực liều thấp cho người có tiền sử hút thuốc lá.
-- **Cận lâm sàng mở rộng:** Nếu bệnh nhân không có triệu chứng chỉ điểm nhưng sụt cân đã được xác nhận, nội soi dạ dày thực quản (EGD) và siêu âm bụng là hai xét nghiệm nên được cân nhắc tiếp theo. EGD có tỷ lệ phát hiện bệnh từ 12-44% ở nhóm bệnh nhân này.
+- **Cận lâm sàng mở rộng:** Nếu bệnh nhân không có triệu chứng chỉ điểm nhưng sụt cân đã được xác nhận, nội soi dạ dày thực quản (EGD) và [[[[Siêu âm]]|siêu âm bụng]] là hai xét nghiệm nên được cân nhắc tiếp theo. EGD có tỷ lệ phát hiện bệnh từ 12-44% ở nhóm bệnh nhân này.
 
 # Bước 6. Hướng xử trí ban đầu
 
 - **Điều trị nguyên nhân nền:** Sụt cân sẽ cải thiện khi giải quyết được bệnh lý gốc (ví dụ: dùng thuốc ức chế bơm proton và diệt _H. pylori_ cho loét dạ dày; thuốc chống trầm cảm; ngừng uống rượu; ngừng các loại thuốc gây chán ăn).
-- **Hỗ trợ dinh dưỡng:** Việc sử dụng dinh dưỡng nhân tạo nhìn chung không mang lại hiệu quả ở phần lớn bệnh nhân, ngoại trừ nhóm có nguyên nhân cơ học đảo ngược được (như hẹp đường tiêu hóa, tắc ruột, sau hóa xạ trị vùng đầu cổ). Khi có chỉ định, dinh dưỡng đường ruột (Enteral nutrition) luôn được ưu tiên mạnh mẽ hơn so với dinh dưỡng tĩnh mạch (Parenteral nutrition) vì giúp duy trì chức năng ruột, giảm biến chứng nhiễm trùng và cải thiện tỷ lệ tử vong.
-- **Thuốc kích thích thèm ăn:** Có thể sử dụng các thuốc như megestrol acetate hoặc medroxyprogesterone để giảm buồn nôn, chán ăn và tăng cân (ví dụ trong ung thư giai đoạn cuối), nhưng cần thận trọng vì nguy cơ gây huyết khối tĩnh mạch, phù nề và ức chế thượng thận. Corticosteroid có thể cải thiện sự thèm ăn và cảm giác khỏe mạnh nhưng thường chỉ dành cho bệnh nhân giai đoạn cuối do nhiều tác dụng phụ.
+- **Hỗ trợ dinh dưỡng:** Việc sử dụng dinh dưỡng nhân tạo nhìn chung không mang lại hiệu quả ở phần lớn bệnh nhân, ngoại trừ nhóm có nguyên nhân cơ học đảo ngược được (như hẹp [[Đường tiêu hóa]], tắc ruột, sau hóa xạ trị vùng đầu cổ). Khi có chỉ định, dinh dưỡng đường ruột (Enteral nutrition) luôn được ưu tiên mạnh mẽ hơn so với dinh dưỡng tĩnh mạch (Parenteral nutrition) vì giúp duy trì chức năng ruột, giảm biến chứng nhiễm trùng và cải thiện tỷ lệ tử vong.
+- **Thuốc kích thích thèm ăn:** Có thể sử dụng các thuốc như megestrol acetate hoặc medroxyprogesterone để giảm [[[[Nôn ói]]|buồn nôn]], chán ăn và tăng cân (ví dụ trong ung thư giai đoạn cuối), nhưng cần thận trọng vì nguy cơ gây huyết khối tĩnh mạch, [[Phù]] nề và ức chế thượng thận. [[[[Corticoid]]|Corticosteroid]] có thể cải thiện sự thèm ăn và cảm giác khỏe mạnh nhưng thường chỉ dành cho bệnh nhân giai đoạn cuối do nhiều tác dụng phụ.
 
 ### Bước 7. Khi nào cần chuyển tuyến / gọi hội chẩn
 

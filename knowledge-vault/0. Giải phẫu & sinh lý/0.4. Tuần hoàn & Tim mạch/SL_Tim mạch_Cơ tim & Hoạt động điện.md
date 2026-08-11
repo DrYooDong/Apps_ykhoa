@@ -1,16 +1,21 @@
 ---
 title: "SL_Tim mạch_Cơ tim & Hoạt động điện"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
-Dưới đây là bài tổng hợp chi tiết về **Sinh lý Cơ tim và Hoạt động điện của Tim (Cardiac Electrophysiology)**, được biên soạn bám sát các tài liệu y khoa đã cung cấp và trình bày theo cấu trúc yêu cầu.
+
+Dưới đây là bài tổng hợp chi tiết về **Sinh lý [[Tim|Cơ tim]] và Hoạt động điện của Tim (Cardiac Electrophysiology)**, được biên soạn bám sát các tài liệu y khoa đã cung cấp và trình bày theo cấu trúc yêu cầu.
 
 ---
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
-#### 1.1. Cấu Trúc Sinh Lý Của Cơ Tim (Hợp Bào Cơ Tim)
+#### 1.1. Cấu Trúc Sinh Lý Của [[Tim|Cơ Tim]] (Hợp Bào Cơ Tim)
 Cơ tim là một loại cơ vân, chứa các tơ cơ với các sợi actin và myosin nằm song song và trượt lên nhau trong quá trình co cơ tương tự như cơ vân. Tuy nhiên, đặc điểm làm nên sự khác biệt cốt lõi của cơ tim là tính chất **hợp bào (syncytium)**. 
 Các sợi cơ tim được phân tách với nhau bởi các màng tế bào gọi là đĩa xen kẽ (intercalated discs). Tại mỗi đĩa xen kẽ, các màng tế bào dung hợp với nhau tạo thành các "mối nối khe" (gap junctions) có tính thấm rất cao, cho phép các ion khuếch tán dễ dàng dọc theo trục dọc của sợi cơ. Nhờ đó, khi một tế bào cơ tim bị kích thích, điện thế động sẽ lan truyền cực kỳ nhanh chóng từ tế bào này sang tế bào khác, làm cho toàn bộ khối cơ hoạt động như một hợp bào duy nhất.
 

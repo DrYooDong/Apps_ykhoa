@@ -1,9 +1,14 @@
 ---
 title: "Táo bón & Thay đổi thói quen đi tiêu"
-specialty: "Hệ Tiêu hóa"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+
 **1. Cơ chế bệnh sinh** Táo bón được định nghĩa là sự suy giảm tần suất đi tiêu (thường < 1 lần/tuần) hoặc khó khăn trong việc tống xuất phân, đi kèm với việc phải rặn nhiều, phân cứng, và cảm giác đi tiêu không hết,. Cơ chế sinh lý bệnh bao gồm:
 
 - **Rối loạn vận động đại tràng (Colonic dysmotility):** Thường do tổn thương thần kinh tự chủ (bệnh đái tháo đường, chấn thương tủy sống), suy giảm nội tiết tố (suy giáp), hoặc tác dụng phụ của thuốc (đặc biệt là thuốc nhóm opioid và kháng cholinergic) làm chậm thời gian vận chuyển phân,,.
@@ -18,7 +23,7 @@ last_updated: "2026-07-28"
 - **Theo nguyên nhân:**
     - _Tắc nghẽn cơ học:_ Ung thư đại trực tràng, bệnh túi thừa, thoát vị, xoắn ruột, lồng ruột,,.
     - _Đau vùng hậu môn:_ Nứt kẽ hậu môn, áp xe quanh hậu môn, trĩ nghẹt,.
-    - _Nội tiết và Chuyển hóa:_ Đái tháo đường, suy giáp (myxoedema), cường cận giáp (tăng canxi máu), hạ kali máu, mất nước,,.
+    - _Nội tiết và Chuyển hóa:_ Đái tháo đường, suy giáp (myxoedema), cường cận giáp (tăng canxi máu), hạ kali máu, [[Mất nước]],,.
     - _Thần kinh:_ Bệnh Parkinson, chấn thương tủy sống, bệnh đa xơ cứng, đột quỵ, bệnh Hirschsprung,,.
     - _Do thuốc:_ Opioid, thuốc kháng cholinergic, thuốc chẹn kênh canxi (đặc biệt verapamil), thuốc chống trầm cảm ba vòng, sắt, antacid chứa nhôm/canxi, lạm dụng thuốc nhuận tràng,,.
     - _Chức năng & Tâm lý:_ Hội chứng ruột kích thích thể táo bón (IBS-C), trầm cảm, chế độ ăn thiếu chất xơ và nước,,.
@@ -27,16 +32,16 @@ last_updated: "2026-07-28"
 
 **Bước 1: Ổn định ban đầu – sàng lọc nguy cơ**
 
-- **Loại trừ tắc ruột cấp tính:** Bệnh nhân táo bón cấp tính đi kèm với đau bụng quặn, nôn ói, chướng bụng, và bí trung đại tiện là những dấu hiệu chỉ điểm tắc ruột, một tình trạng cần can thiệp ngoại khoa,,.
-- **Nhận diện dấu hiệu "cờ đỏ" (Alarm symptoms):** Sự thay đổi thói quen đi tiêu mới khởi phát ở bệnh nhân > 50 tuổi, có máu trong phân, thiếu máu, sụt cân, sốt, hoặc tiền sử gia đình mắc ung thư đại tràng là những dấu hiệu cảnh báo bệnh lý ác tính bắt buộc phải đánh giá chuyên sâu,,.
+- **Loại trừ tắc ruột cấp tính:** Bệnh nhân táo bón cấp tính đi kèm với [[Đau bụng]] quặn, [[Nôn ói]], chướng bụng, và bí trung đại tiện là những dấu hiệu chỉ điểm tắc ruột, một tình trạng cần can thiệp ngoại khoa,,.
+- **Nhận diện dấu hiệu "cờ đỏ" (Alarm symptoms):** Sự thay đổi thói quen đi tiêu mới khởi phát ở bệnh nhân > 50 tuổi, có máu trong phân, thiếu máu, sụt cân, [[Sốt]], hoặc tiền sử gia đình mắc ung thư đại tràng là những dấu hiệu cảnh báo bệnh lý ác tính bắt buộc phải đánh giá chuyên sâu,,.
 
 **Bước 2: Thu thập dữ kiện tập trung**
 
-- **Mô tả triệu chứng:** Xác định thói quen đi tiêu bình thường của bệnh nhân là gì. Táo bón diễn ra cấp tính hay mạn tính? Phân có nhỏ dẹt, có nhầy, hay xen kẽ giữa tiêu chảy và táo bón (gợi ý hội chứng ruột kích thích hoặc ung thư đại tràng) không?,.
+- **Mô tả triệu chứng:** Xác định thói quen đi tiêu bình thường của bệnh nhân là gì. Táo bón diễn ra cấp tính hay mạn tính? Phân có nhỏ dẹt, có nhầy, hay xen kẽ giữa [[Tiêu chảy]] và táo bón (gợi ý hội chứng ruột kích thích hoặc ung thư đại tràng) không?,.
 - **Yếu tố nguy cơ:** Khai thác chi tiết lịch sử dùng thuốc (đặc biệt là thuốc giảm đau, antacid, thực phẩm chức năng), chế độ ăn (thiếu chất xơ, ăn nhiều thức ăn nhanh), lượng nước uống, và sự vận động thể lực,,.
 - **Khám lâm sàng:**
     - _Khám bụng:_ Đánh giá tình trạng chướng bụng, nghe âm ruột (tăng cao/âm sắc kim khí trong tắc ruột cơ học, hoặc vắng mặt trong liệt ruột),,. Khám tìm khối u ổ bụng.
-    - _Khám thần kinh & toàn thân:_ Tìm các dấu hiệu của suy giáp (tóc khô xơ, lưỡi to, phản xạ gân xương chậm), dấu hiệu mất nước,.
+    - _Khám thần kinh & toàn thân:_ Tìm các dấu hiệu của suy giáp (tóc khô xơ, lưỡi to, phản xạ gân xương chậm), dấu hiệu [[Mất nước]],.
     - _Khám trực tràng (DRE):_ **Bắt buộc thực hiện ở mọi bệnh nhân táo bón**. Giúp phát hiện trực tràng trống rỗng (tắc ruột đoạn cao), khối phân cứng kẹt ở trực tràng (fecal impaction), khối u trực tràng, trương lực cơ thắt hậu môn (đánh giá tổn thương thần kinh tủy sống), và các tổn thương gây đau như nứt kẽ hậu môn, trĩ,,,,. Đồng thời kiểm tra máu ẩn trong phân,.
 
 **Bước 3: Lập danh sách chẩn đoán phân biệt (differential diagnosis)**
@@ -45,9 +50,9 @@ last_updated: "2026-07-28"
 |:--|:--|:--|
 |**Tắc nghẽn cơ học**|Ung thư đại trực tràng, Bệnh túi thừa|Thay đổi thói quen đi tiêu ở người lớn tuổi, sụt cân, máu trong phân (không đau), thiếu máu,.|
 |**Bệnh lý hậu môn trực tràng**|Nứt kẽ hậu môn, Trĩ huyết khối|Đau dữ dội khi đại tiện, máu đỏ tươi dính ngoài phân hoặc trên giấy vệ sinh, thường xuyên nhịn đi tiêu,.|
-|**Nội tiết / Chuyển hóa**|Suy giáp, Tăng canxi máu (Cường cận giáp), Đái tháo đường|Táo bón kèm mệt mỏi, sợ lạnh (suy giáp), tiểu nhiều, buồn nôn, đau nhức xương (tăng canxi),.|
+|**Nội tiết / Chuyển hóa**|Suy giáp, Tăng canxi máu (Cường cận giáp), Đái tháo đường|Táo bón kèm mệt mỏi, sợ lạnh (suy giáp), tiểu nhiều, [[Nôn ói|buồn nôn]], đau nhức xương (tăng canxi),.|
 |**Do thuốc**|Lạm dụng opioid, thuốc kháng cholinergic|Táo bón có tiền sử dùng thuốc rõ ràng, giảm nhu động ruột,.|
-|**Chức năng**|Hội chứng ruột kích thích (IBS-C)|Đau bụng quặn giảm sau khi đi tiêu, táo bón xen kẽ tiêu chảy, có phân nhầy, không có sụt cân/thiếu máu,.|
+|**Chức năng**|Hội chứng ruột kích thích (IBS-C)|[[Đau bụng]] quặn giảm sau khi đi tiêu, táo bón xen kẽ [[Tiêu chảy]], có phân nhầy, không có sụt cân/thiếu máu,.|
 
 **Bước 4. Biện luận lâm sàng (clinical reasoning)**
 
@@ -56,10 +61,10 @@ last_updated: "2026-07-28"
 
 **Bước 5. Cận lâm sàng hợp lý**
 
-- **Cơ bản:** Xét nghiệm máu tìm thiếu máu (CBC), sinh hóa máu đánh giá chức năng thận, điện giải (đặc biệt là canxi và kali), xét nghiệm đường huyết, và chức năng tuyến giáp (TSH, T4),,.
-- **Chẩn đoán hình ảnh:** Chụp X-quang bụng không sửa soạn (AXR) hoặc CT scan ổ bụng nếu nghi ngờ có tắc ruột,,.
+- **Cơ bản:** Xét nghiệm máu tìm thiếu máu (CBC), sinh hóa máu đánh giá chức năng [[Thận]], điện giải (đặc biệt là canxi và kali), xét nghiệm đường huyết, và chức năng tuyến giáp (TSH, T4),,.
+- **Chẩn đoán hình ảnh:** [[X-quang|Chụp X-quang]] bụng không sửa soạn (AXR) hoặc [[CT Scan]] ổ bụng nếu nghi ngờ có tắc ruột,,.
 - **Nội soi:** Soi đại tràng sigma hoặc nội soi đại tràng toàn bộ là tiêu chuẩn vàng để tầm soát ung thư đại trực tràng, polyp hoặc các nguyên nhân viêm nhiễm,,.
-- **Chuyên sâu:** Đối với táo bón mạn tính không rõ nguyên nhân kháng trị, có thể cần đánh giá thời gian vận chuyển đại tràng, đo áp lực hậu môn trực tràng (anorectal manometry) và chụp X-quang động học tống phân (defecography) để phát hiện sự rối loạn chức năng cơ thắt,.
+- **Chuyên sâu:** Đối với táo bón mạn tính không rõ nguyên nhân kháng trị, có thể cần đánh giá thời gian vận chuyển đại tràng, đo áp lực hậu môn trực tràng (anorectal manometry) và [[X-quang|chụp X-quang]] động học tống phân (defecography) để phát hiện sự rối loạn chức năng cơ thắt,.
 
 **Bước 6. Hướng xử trí ban đầu**
 

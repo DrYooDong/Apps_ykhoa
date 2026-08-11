@@ -1,9 +1,13 @@
 ---
 title: "Tinhcomau"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Là một nhà nghiên cứu lâm sàng (Clinical Researcher), việc thiết kế nghiên cứu (Study Design) và tính toán cỡ mẫu (Sample Size Calculation) là hai bước mang tính "sống còn" quyết định đến độ giá trị (validity) và độ tin cậy (reliability) của một công trình y khoa. Nếu cỡ mẫu quá nhỏ, nghiên cứu sẽ không đủ sức mạnh thống kê để phát hiện ra sự khác biệt lâm sàng (sai lầm loại II); ngược lại, nếu cỡ mẫu quá lớn, chúng ta sẽ lãng phí tài nguyên, thời gian, và vi phạm nguyên lý đạo đức nghiên cứu khi phơi nhiễm những rủi ro không cần thiết cho quá nhiều bệnh nhân,.
 
 Dưới đây là phân tích chuyên sâu về sự liên hệ giữa các mô hình thiết kế và cách tính toán cỡ mẫu tương ứng trong thực hành lâm sàng.
@@ -29,7 +33,7 @@ Nghiên cứu cắt ngang đánh giá tình trạng phơi nhiễm và bệnh t�
 *   **Đối với biến định tính (Ước lượng tỷ lệ - ví dụ: Tỷ lệ hiện mắc đái tháo đường thai kỳ):**
     *   Công thức: $n = \frac{Z_{1-\alpha/2}^2 \cdot p(1-p)}{d^2}$.
     *   Trong đó: $p$ là tỷ lệ lưu hành dự kiến, $d$ là sai số tuyệt đối mong muốn (precision hay margin of error).
-*   **Đối với biến định lượng (Ước lượng số trung bình - ví dụ: Tuổi trung bình của bệnh nhân nhồi máu cơ tim):**
+*   **Đối với biến định lượng (Ước lượng số trung bình - ví dụ: Tuổi trung bình của bệnh nhân nhồi máu [[[[Tim]]|cơ tim]]):**
     *   Công thức: $n = \frac{Z_{1-\alpha/2}^2 \cdot SD^2}{d^2}$,.
     *   Trong đó: $SD$ là độ lệch chuẩn của quần thể, $d$ là sai số tuyệt đối cho phép.
 
@@ -39,7 +43,7 @@ Nghiên cứu bệnh - chứng là một thiết kế hồi cứu (retrospective
 
 **Ứng dụng Tính toán Cỡ mẫu:**
 Cỡ mẫu trong nghiên cứu bệnh - chứng phụ thuộc vào tỷ lệ nhóm chứng / nhóm bệnh ($r$). Nếu bệnh hiếm, ta có thể tăng số lượng nhóm chứng (ví dụ $r=2$ hoặc $r=3$) để tăng độ mạnh thống kê.
-*   **Đối với biến định tính (ví dụ: So sánh tỷ lệ hút thuốc giữa nhóm ung thư phổi và nhóm chứng):**
+*   **Đối với biến định tính (ví dụ: So sánh tỷ lệ hút thuốc giữa nhóm ung thư [[Phổi]] và nhóm chứng):**
     *   Công thức: $n = \frac{r+1}{r} \frac{p^*(1-p^*)(Z_\beta + Z_{\alpha/2})^2}{(p_1-p_2)^2}$,.
     *   Trong đó: $p_1, p_2$ là tỷ lệ phơi nhiễm ở nhóm bệnh và nhóm chứng, $p^*$ là tỷ lệ phơi nhiễm trung bình.
 *   **Đối với biến định lượng (ví dụ: So sánh cân nặng lúc sinh giữa nhóm trẻ béo phì và nhóm chứng lúc trưởng thành):**

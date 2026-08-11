@@ -1,6 +1,14 @@
 ---
+title: "Reoviridae"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-[[Rotavirus]]
-[[Coltivirus]]
+
+## 📌 Danh Mục Nội Dung
+
+1. [[Rotavirus]]
+2. [[Coltivirus]]

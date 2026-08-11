@@ -1,9 +1,13 @@
 ---
 title: "Hướng dẫn đọc xét nghiệm cận lâm sàng (Chi tiết)"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Cận lâm sàng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 Consensus statement
 ## International criteria for electrocardiographic
 Br J Sports Med: first published as
@@ -81,7 +85,7 @@ Mobitz type I (Wenckebach) 2° PR interval progressively lengthens until there i
 Consensus statement
 Table 2 Evaluation of ECG abnormalities in athletes
 Potential cardiac Recommended Br J Sports Med: first published as ECG abnormality disease* evaluation † Considerations
-T wave inversion HCM Echocardiogram Lateral or inferolateral T wave inversion is common in primary myocardial disease. Cardiac MRI in the lateral or DCM Cardiac MRI should be a routine diagnostic test for this ECG phenotype and is superior to echocardiography inferolateral LVNC Exercise ECG test for detecting apical HCM, left ventricular hypertrophy localised to the free lateral wall, ARVC leads ARVC (with Minimum 24 hours ECG monitor with predominant left ventricular involvement and myocarditis. predominant If cardiac MRI is not available, echocardiography with contrast should be considered as an left ventricular alternative investigation for apical HCM in patients with deep T wave inversion in leads V5-V6. involvement) Consider family evaluation if available and genetic screening. Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies. Myocarditis Annual follow-up testing is recommended throughout athletic career in athletes with normal results.
+T wave inversion HCM Echocardiogram Lateral or inferolateral T wave inversion is common in primary myocardial disease. Cardiac [[MRI]] in the lateral or DCM Cardiac [[MRI]] should be a routine diagnostic test for this ECG phenotype and is superior to echocardiography inferolateral LVNC Exercise ECG test for detecting apical HCM, left ventricular hypertrophy localised to the free lateral wall, ARVC leads ARVC (with Minimum 24 hours ECG monitor with predominant left ventricular involvement and myocarditis. predominant If cardiac MRI is not available, echocardiography with contrast should be considered as an left ventricular alternative investigation for apical HCM in patients with deep T wave inversion in leads V5-V6. involvement) Consider family evaluation if available and genetic screening. Protected by copyright, including for uses related to text and data mining, AI training, and similar technologies. Myocarditis Annual follow-up testing is recommended throughout athletic career in athletes with normal results.
 T wave inversion HCM Echocardiogram Consider cardiac MRI based on echocardiogram findings or clinical suspicion. isolated to the DCM inferior leads LVNC Myocarditis
 ARVC Echocardiogram The extent of investigations may vary based on clinical suspicion for ARVC and results from T wave inversion DCM Cardiac MRI initial testing. in the anterior Exercise ECG test leads ‡ 10.1136/bjsports-2016-097331 on Minimum 24 hours ECG monitor Signal averaged ECG
 ST segment HCM Echocardiogram Consider cardiac MRI and additional testing based on echocardiogram findings or clinical depression DCM suspicion. LVNC ARVC Myocarditis

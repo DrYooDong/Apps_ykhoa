@@ -1,14 +1,18 @@
 ---
 title: "Cách làm bệnh án Nội khoa - PGS.TS Hoàng Văn Sĩ"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # CÁCH LÀM
 # BỆNH ÁN NỘI KHOA
 # PGS.TS.BS. Hoàng Văn Sỹ
 # BM Nội Tổng Quát - Đại Học Y Dược TP. HCM
-# Khoa Nội Tim Mạch - Bệnh Viện Chợ Rẫy
+# Khoa Nội [[Tim]] Mạch - Bệnh Viện Chợ Rẫy
 
 # Mục tiêu
 # Sinh viên hiểu và biết cách làm bệnh án nội khoa
@@ -186,15 +190,15 @@ last_updated: "2026-07-28"
 
 # Lược qua các cơ quan
 # Các triệu chứng cơ năng BN có, diễn tiến, triệu chứng âm tính :
-# • Tim mạch : Đau ngực, hồi hộp đánh trống ngực, khó thở về đêm, khó thở
+# • [[Tim]] mạch : [[Đau ngực]], hồi hộp đánh trống ngực, [[Khó thở]] về đêm, [[Khó thở]]
 # khi nằm .
 # • Hô hấp : Khó thở, khò khè, ho khan, ho đàm, ho ra máu .
-# • Tiêu hóa : Nôn, buồn nôn, đau bụng, tiêu chảy, táo bón .
+# • Tiêu hóa : Nôn, [[[[Nôn ói]]|buồn nôn]], [[Đau bụng]], [[Tiêu chảy]], táo bón .
 # • Tiết niệu : Tiểu ít, tiểu nhiều, tiểu khó, tiểu gắt buốt, tiểu máu, tiểu sỏi, đau
-# quặn thận .
+# quặn [[Thận]] .
 # • Thần kinh – cơ xương khớp : Đau đầu, yếu cơ, đau cơ xương khớp, dị
 # cảm .
-# • Chuyển hóa : Sốt .
+# • Chuyển hóa : [[Sốt]] .
 
 # Cấu trúc bệnh án nội khoa
 # 1. Hành chính
@@ -218,14 +222,14 @@ last_updated: "2026-07-28"
 # Khám toàn thân
 # • Tri giác
 # o Tỉnh, tiếp xúc tốt .
-# o Rối loạn tri giác : Kích thích, ngủ gà, lơ mơ, mê .
+# o [[[[Hôn mê]]|Rối loạn tri giác]] : Kích thích, ngủ gà, lơ mơ, mê .
 # o Thang điểm Glasgow .
 # • Sinh hiệu : Mạch, huyết áp, nhịp thở, nhiệt độ, 𝑆𝑝𝑂
 # , nước tiểu .
 ## 2
 # • Thể trạng : Suy kiệt, béo phì, trung bình, cân nặng, chiều cao, BMI .
 # • Da vàng, kết mạc vàng, niêm nhạt .
-# • Xuất huyết da niêm, phù toàn thân .
+# • [[Xuất huyết]] da niêm, [[[[Phù]]|phù toàn thân]] .
 # • Lông, tóc, móng : Rụng tóc, móng khô dễ gãy, ngón tay dùi trống .
 
 # Khám lâm sàng
@@ -280,8 +284,8 @@ Kusko, M.C., Maselli, K. (2015). Introduction to Cardiac Auscultation. In: Taylo
 ## o Sờ : Rung thanh, lép bép dưới da, điểm đau chói .
 ## o Gõ : Độ vang của lồng ngực 2 bên, vị trí có độ vang bất thường .
 ## o Nghe
-## ▪ Tiếng phổi bình thường : Rì rào phế nang êm dịu 2 phế trường .
-## ▪ Tiếng phổi bất thường : Ran phổi (ẩm, nổ, rít, ngáy), tiếng cọ màng phổi .
+## ▪ Tiếng [[Phổi]] bình thường : Rì rào phế nang êm dịu 2 phế trường .
+## ▪ Tiếng [[Phổi]] bất thường : Ran phổi (ẩm, nổ, rít, ngáy), tiếng cọ màng phổi .
 
 # Khám lâm sàng
 # Khám cơ quan
@@ -291,7 +295,7 @@ Kusko, M.C., Maselli, K. (2015). Introduction to Cardiac Auscultation. In: Taylo
 # ▪ Tuần hoàn bàng hệ, báng bụng .
 # ▪ Sẹo mổ cũ, hậu môn nhân tạo, khối u thành bụng .
 # o Nghe
-# ▪ Âm thổi bất thường vùng gan, bụng, nhu động ruột .
+# ▪ Âm thổi bất thường vùng [[Gan]], bụng, nhu động ruột .
 
 # Khám lâm sàng
 Rev Esp Enferm Dig. 2012 May;104(5):264 - 5
@@ -299,7 +303,7 @@ Rev Esp Enferm Dig. 2012 May;104(5):264 - 5
 # Khám lâm sàng
 # Khám cơ quan
 # • Tiêu hóa :
-# o Gõ : Diện đục gan, lách, khối bất thường ổ bụng, dịch ổ bụng .
+# o Gõ : Diện đục [[Gan]], lách, khối bất thường ổ bụng, dịch ổ bụng .
 # o Sờ :
 # ▪ Điểm đau : Murphy, Mc Burney .
 # ▪ Phản ứng thành bụng, cảm ứng phúc mạc .
@@ -310,7 +314,7 @@ Rev Esp Enferm Dig. 2012 May;104(5):264 - 5
 # Khám cơ quan
 # • Tiết niệu :
 # o Nhìn : Số lượng và màu sắc nước tiểu .
-# o Sờ : Thận to, chạm thận, bập bềnh thận, điểm đau niệu quản .
+# o Sờ : [[Thận]] to, chạm thận, bập bềnh thận, điểm đau niệu quản .
 # o Gõ : Diện đục thận vùng thắt lưng .
 # o Nghe : Âm thổi hẹp động mạch thận .
 
@@ -477,7 +481,7 @@ Warner MJ, Hutchison J, Varacallo M. Bell Palsy. [Updated 2023 Aug 17]
 # o Tổng hợp các cận lâm sàng với mục đích chẩn đoán, loại trừ .
 # o Cận lâm sàng thường quy : Công thức máu, nhóm máu, Ure, creatinine,
 # ion đồ, AST, ALT, đường huyết, tổng phân tích nước tiểu, điện tâm đồ,
-# X quang phổi .
+# [[X-quang|X quang]] phổi .
 # o Cận lâm sàng chẩn đoán, loại trừ .
 # • Kết quả cận lâm sàng :
 # o Trình bày kết quả theo phân nhóm : Huyết học, sinh hóa, vi sinh, hình ảnh

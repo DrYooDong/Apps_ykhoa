@@ -1,3 +1,14 @@
+---
+title: "Hướng dẫn BYT 2024 (P3)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # TÓM TẮT HƯỚNG DẪN CHẨN ĐOÁN, ĐIỀU TRỊ VÀ DỰ PHÒNG BỆNH LAO - BỘ Y TẾ (PHẦN 3: ĐIỀU TRỊ BỆNH LAO)
 
 Nội dung phần điều trị bệnh lao dưới đây được tổng hợp chi tiết từ tài liệu chuyên môn ban hành kèm theo **Quyết định số 162/QĐ-BYT năm 2024** của Bộ Y tế.
@@ -12,7 +23,7 @@ Nội dung phần điều trị bệnh lao dưới đây được tổng hợp c
 
 - **Phối hợp các thuốc chống lao:** Mỗi loại thuốc chống lao có cơ chế tác dụng khác nhau (diệt khuẩn, kìm khuẩn hoặc triệt khuẩn).
     - _Đối với lao nhạy cảm thuốc:_ Phải phối hợp **ít nhất 03 loại thuốc chống lao trong giai đoạn tấn công** và **ít nhất 02 loại trong giai đoạn duy trì**.
-    - _Đối với lao kháng thuốc:_ Các thuốc phải được phối hợp theo nguyên tắc xây dựng phác đồ riêng biệt, tùy thuộc vào kết quả kháng sinh đồ kiểu gen hoặc kiểu hình.
+    - _Đối với lao kháng thuốc:_ Các thuốc phải được phối hợp theo nguyên tắc xây dựng phác đồ riêng biệt, tùy thuộc vào kết quả [[Kháng sinh]] đồ kiểu gen hoặc kiểu hình.
 - **Dùng thuốc đúng liều:** Liều lượng thuốc chống lao phải được tính toán chính xác **theo cân nặng của người bệnh**. Dùng liều quá thấp sẽ không đạt hiệu quả diệt khuẩn và dễ tạo ra vi khuẩn kháng thuốc; dùng liều quá cao sẽ dẫn đến các biến cố bất lợi nặng nề.
 - **Dùng thuốc đều đặn và có kiểm soát:** Người bệnh phải uống thuốc **vào cùng một khung giờ cố định hàng ngày, uống xa bữa ăn** (uống lúc đói) để đạt hấp thu tối đa. Đối với phác đồ lao kháng thuốc, đa số thuốc dùng một lần vào buổi sáng kết hợp bữa ăn, tần suất dùng 06 ngày/tuần. Tất cả các trường hợp điều trị lao phải được thực hiện **điều trị có kiểm soát trực tiếp (DOT)** hàng ngày.
 - **Dùng thuốc đủ thời gian:**
@@ -29,19 +40,19 @@ Các phác đồ chuẩn cho người lớn và trẻ em bao gồm:
 
 ##### Phác đồ A1: 2HRZE / 4RHE (Phác đồ 06 tháng dành cho người lớn)
 
-- **Chỉ định:** Các trường hợp lao phổi và lao ngoài phổi ở **người lớn** không có bằng chứng hay nghi ngờ kháng thuốc (áp dụng cho cả người nhiễm HIV và phụ nữ mang thai).
-- **Không chỉ định:** Lao hệ thần kinh trung ương (lao màng não) và lao xương khớp.
+- **Chỉ định:** Các trường hợp lao [[Phổi]] và lao ngoài phổi ở **người lớn** không có bằng chứng hay nghi ngờ kháng thuốc (áp dụng cho cả người nhiễm HIV và phụ nữ mang thai).
+- **Không chỉ định:** Lao [[Hệ thần kinh trung ương]] (lao màng não) và lao xương khớp.
 - **Cách dùng:** Giai đoạn tấn công 02 tháng dùng 4 thuốc H, R, Z, E hàng ngày; giai đoạn duy trì 04 tháng dùng 3 thuốc R, H, E hàng ngày.
 
 ##### Phác đồ A2: 2HRZE / 4RH (Phác đồ 06 tháng dành cho trẻ em)
 
 - **Chỉ định:** Lao ở **trẻ em** không có bằng chứng hay nghi ngờ kháng thuốc (có thể dùng cho trẻ nhiễm HIV).
-- **Không chỉ định:** Lao hệ thần kinh trung ương và lao xương khớp ở trẻ em.
+- **Không chỉ định:** Lao [[Hệ thần kinh trung ương]] và lao xương khớp ở trẻ em.
 
 ##### Phác đồ A2a: 2HRZE / 2RH (Phác đồ ngắn hạn 04 tháng dành cho trẻ em từ 3 tháng đến 16 tuổi)
 
 - **Chỉ định:** Áp dụng khi trẻ thỏa mãn đồng thời cả ba tiêu chí:
-    1. _Tổn thương nhẹ trên X-quang:_ Lao hạch trung thất không chèn ép đường thở; tổn thương nhu mô phổi khu trú trong một thùy (không chiếm hết thùy), không tạo hang và không có tổn thương kê; tràn dịch màng phổi không phức tạp.
+    1. _Tổn thương nhẹ trên [[X-quang]]:_ Lao hạch trung thất không chèn ép đường thở; tổn thương [[Phổi|nhu mô phổi]] khu trú trong một thùy (không chiếm hết thùy), không tạo hang và không có tổn thương kê; tràn dịch màng phổi không phức tạp.
     2. _Xét nghiệm vi sinh âm tính hoặc dương tính yếu:_ Kết quả Xpert MTB/RIF hoặc Ultra âm tính, vết, rất thấp hoặc thấp; hoặc AFB âm tính.
     3. _Lâm sàng nhẹ:_ Triệu chứng nhẹ, không cần nhập viện.
 - **Cách dùng:** Tấn công 02 tháng (H, R, Z, E); duy trì 02 tháng (R, H, E) dùng hàng ngày. Có thể kéo dài thêm 2 tháng duy trì nếu đáp ứng kém.
@@ -49,12 +60,12 @@ Các phác đồ chuẩn cho người lớn và trẻ em bao gồm:
 ##### Phác đồ B1: 2HRZE / 10RHE (Phác đồ 12 tháng dành cho người lớn)
 
 - **Chỉ định:** Lao hệ thần kinh trung ương, lao xương khớp ở người lớn.
-- **Cách dùng:** Tấn công 02 tháng (H, R, Z, E); duy trì 10 tháng (R, H, E) hàng ngày. Đối với lao màng não, cần dùng phối hợp **Corticosteroid giảm liều dần trong 6-8 tuần đầu**.
+- **Cách dùng:** Tấn công 02 tháng (H, R, Z, E); duy trì 10 tháng (R, H, E) hàng ngày. Đối với lao màng não, cần dùng phối hợp **[[Corticoid|Corticosteroid]] giảm liều dần trong 6-8 tuần đầu**.
 
 ##### Phác đồ B2: 2HRZE / 10RH (Phác đồ 12 tháng dành cho trẻ em)
 
 - **Chỉ định:** Lao hệ thần kinh trung ương, lao xương khớp ở trẻ em.
-- **Cách dùng:** Tấn công 02 tháng (H, R, Z, E) kết hợp Streptomycin; duy trì 10 tháng (R, H) hàng ngày. Kết hợp dùng Corticosteroid giảm liều dần trong 6-8 tuần đầu.
+- **Cách dùng:** Tấn công 02 tháng (H, R, Z, E) kết hợp Streptomycin; duy trì 10 tháng (R, H) hàng ngày. Kết hợp dùng [[Corticoid|Corticosteroid]] giảm liều dần trong 6-8 tuần đầu.
 
 ##### Phác đồ B2a: 6HRZEto (Phác đồ ngắn ngày 06 tháng điều trị lao màng não ở trẻ em và vị thành niên từ 0 đến 19 tuổi)
 
@@ -84,7 +95,7 @@ Các phác đồ điều trị lao kháng thuốc chính bao gồm:
 
 ##### Phác đồ C (Phác đồ ngắn hạn ngậm Bedaquiline từ 9 đến 11 tháng)
 
-- **Đối tượng áp dụng:** Bệnh nhân lao đa kháng (MDR-TB) nhạy cảm với Fluoroquinolones (FQ), chưa từng dùng thuốc hàng hai trong phác đồ quá 01 tháng (hoặc nếu dùng trên 1 tháng thì xét nghiệm kháng sinh đồ vẫn nhạy cảm).
+- **Đối tượng áp dụng:** Bệnh nhân lao đa kháng (MDR-TB) nhạy cảm với Fluoroquinolones (FQ), chưa từng dùng thuốc hàng hai trong phác đồ quá 01 tháng (hoặc nếu dùng trên 1 tháng thì xét nghiệm [[Kháng sinh]] đồ vẫn nhạy cảm).
 - **Chống chỉ định:** Lao phổi và lao ngoài phổi thể nặng.
 - **Thành phần và cách dùng:** Phác đồ chuẩn gồm 7 thuốc:
     - _Giai đoạn tấn công (4 - 6 tháng):_ `Bdq - Lfx - Lzd - E - Z - Hh - Cfz` (Trong đó Hh là Isoniazid liều cao).
@@ -115,20 +126,20 @@ Tài liệu của Bộ Y tế hướng dẫn chi tiết các tình huống lâm 
 - **Phụ nữ có thai hoặc cho con bú:**
     - _Lao nhạy cảm:_ Các thuốc hàng một (H, R, Z, E) nhìn chung an toàn, dung nạp tốt.
     - _Lao kháng thuốc:_ **Chống chỉ định tuyệt đối các thuốc tiêm** hàng hai (Aminoglycosides) vì độc cho thính lực thai nhi. **Tránh dùng Ethionamide (Pto/Eto)** do làm tăng nguy cơ dị tật thai nhi và gây nôn nghén nặng.
-- **Bệnh nhân có bệnh lý gan:**
-    - _Bệnh gan mạn tính:_ Ethambutol và Fluoroquinolones được coi là an toàn nhất. Không nên dùng phối hợp đồng thời cả 3 thuốc độc với gan (Z, H, R); nên thay bằng phác đồ kết hợp ít thuốc độc với gan hơn (như sử dụng Streptomycin + Ethambutol + FQ).
+- **Bệnh nhân có bệnh lý [[Gan]]:**
+    - _Bệnh [[Gan]] mạn tính:_ Ethambutol và Fluoroquinolones được coi là an toàn nhất. Không nên dùng phối hợp đồng thời cả 3 thuốc độc với gan (Z, H, R); nên thay bằng phác đồ kết hợp ít thuốc độc với gan hơn (như sử dụng Streptomycin + Ethambutol + FQ).
     - _Viêm gan cấp tính:_ Trì hoãn điều trị lao cho đến khi gan ổn định. Nếu bắt buộc phải điều trị do lao tiến triển nặng, dùng các phác đồ cá thể hóa ít hoặc không chứa thuốc độc với gan (như 9 HRE, 2HES/10HE, hoặc phác đồ hoàn toàn không độc với gan gồm SE + FQ).
     - _Xử trí tổn thương gan do thuốc lao:_ **Ngừng ngay lập tức toàn bộ thuốc lao** khi:
         1. Men gan (AST/ALT) tăng cao **gấp 5 lần** giới hạn bình thường trên (có hoặc không có triệu chứng).
-        2. Men gan tăng **gấp 3 lần** kèm theo triệu chứng lâm sàng (mệt mỏi, chán ăn, buồn nôn) hoặc vàng da (Bilirubin toàn phần > 3 mg/dL). _Tái sử dụng thuốc:_ Khi men gan trở về dưới 2 lần giới hạn bình thường, tiến hành sử dụng lại từng thuốc một, bắt đầu từ thuốc ít độc với gan nhất.
-- **Bệnh nhân suy thận:**
-    - Phác đồ **2RHZ/4RH** vẫn có thể áp dụng an toàn cho người bệnh suy thận thường.
+        2. Men gan tăng **gấp 3 lần** kèm theo triệu chứng lâm sàng (mệt mỏi, chán ăn, [[[[Nôn ói]]|buồn nôn]]) hoặc [[Vàng da]] (Bilirubin toàn phần > 3 mg/dL). _Tái sử dụng thuốc:_ Khi men gan trở về dưới 2 lần giới hạn bình thường, tiến hành sử dụng lại từng thuốc một, bắt đầu từ thuốc ít độc với gan nhất.
+- **Bệnh nhân suy [[Thận]]:**
+    - Phác đồ **2RHZ/4RH** vẫn có thể áp dụng an toàn cho người bệnh suy [[Thận]] thường.
     - _Đối với suy thận nặng (Độ thanh thải Creatinine < 30 ml/phút) hoặc chạy thận nhân tạo:_ Phải hiệu chỉnh liều lượng và tần suất dùng các thuốc thải trừ qua thận:
         - **Pyrazinamide (Z):** Dùng liều 25 - 35 mg/kg, tần suất **3 lần/tuần** (không dùng hàng ngày).
         - **Ethambutol (E):** Dùng liều 15 - 25 mg/kg, tần suất **3 lần/tuần**.
         - _Lưu ý:_ Các thuốc chống lao phải uống **sau khi kết thúc ca lọc máu**. Bổ sung Vitamin B6 để dự phòng bệnh lý não và thần kinh ngoại biên.
 - **Bệnh nhân đái tháo đường:**
-    - Bệnh nhân có tỷ lệ gặp biến cố thần kinh ngoại vi (do H) và thần kinh mắt (do E) cao hơn. Bắt buộc phải **bổ sung Pyridoxine (Vitamin B6) liều 10 - 25 mg/ngày**. Ưu tiên sử dụng Insulin để kiểm soát đường huyết ổn định.
+    - Bệnh nhân có tỷ lệ gặp biến cố thần kinh ngoại vi (do H) và thần kinh mắt (do E) cao hơn. Bắt buộc phải **bổ sung Pyridoxine (Vitamin B6) liều 10 - 25 mg/ngày**. Ưu tiên sử dụng [[Insulin]] để kiểm soát đường huyết ổn định.
 - **Người đồng mắc Lao và HIV/AIDS:**
     - Điều trị lao sớm và **không được trì hoãn** điều trị lao khi phát hiện đồng nhiễm.
     - _Lao nhạy cảm:_ Dùng phác đồ chuẩn 6 tháng 2RHZE/4RHE.
@@ -174,7 +185,7 @@ Tài liệu của Bộ Y tế hướng dẫn chi tiết các tình huống lâm 
 > - **Tình huống 3: Quên từ 1 đến 3 liều liên tiếp:**
 >     - _Xử trí:_ Cho người bệnh tiếp tục uống thuốc tuần bình thường, nhưng kéo dài tổng thời gian liệu trình điều trị để bù đủ số liều (lưu ý tổng thời gian hoàn thành 12 liều **không được vượt quá 16 tuần**).
 > - **Tình huống 4: Quên từ 4 liều trở lên (hoặc gián đoạn liên tục > 4 tuần):**
->     - _Xử trí:_ Cân nhắc ngừng phác đồ hiện tại và **chỉ định điều trị lại từ đầu**. Nếu đánh giá bệnh nhân không còn khả năng tuân thủ phác đồ 3HP, chuyển sang phác đồ điều trị lao tiềm ẩn khác phù hợp hơn.
+>     - _Xử trí:_ Cân nhắc ngừng phác đồ hiện tại và **chỉ định điều trị lại từ đầu**. Nếu đánh giá bệnh nhân không còn khả năng tuân thủ phác đồ 3HP, chuyển sang phác đồ điều trị lao tiềm ẩn khác [[Phù]] hợp hơn.
 
 ---
 

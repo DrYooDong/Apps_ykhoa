@@ -1,9 +1,13 @@
 ---
 title: "Đề nghị & Phân tích CLS - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Đề nghị và phân tích CLS - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**
@@ -13,7 +17,7 @@ Link: [https://thanhtuan.edubit.vn/blog/lam-benh-an-noi-khoa-de-nghi-va-phan-tic
 # **A. MỤC TIÊU**
 
 - Sau khi học qua bài người học có khả năng
-- Biết cách đề nghị cận lâm sàng phù hợp
+- Biết cách đề nghị cận lâm sàng [[Phù]] hợp
 
 # **B. Nội dung bài giảng**
 
@@ -21,7 +25,7 @@ Link: [https://thanhtuan.edubit.vn/blog/lam-benh-an-noi-khoa-de-nghi-va-phan-tic
 
 - Cận lâm sàng **chẩn đoán**: giúp cung cấp thêm bằng chứng để xác định bệnh nhân mắc một tình trạng bệnh lý.
 - Cận lâm sàng **tiên lượng**: giúp đánh giá mức độ nặng của bệnh, tiên lượng khả năng hồi phục, sống còn
-- Cận lâm sàng **điều trị**: giúp cung cấp thêm dữ liệu cho việc điều trị. Ví dụ: xét nghiệm INR trước khi dùng thuốc kháng đông, xét nghiệm chức năng thận trước khi dùng thuốc ức chế men chuyển
+- Cận lâm sàng **điều trị**: giúp cung cấp thêm dữ liệu cho việc điều trị. Ví dụ: xét nghiệm INR trước khi dùng thuốc kháng đông, xét nghiệm chức năng [[Thận]] trước khi dùng thuốc ức chế men chuyển
 - Cận lâm sàng **thường qui**: giúp tầm soát các bệnh thường gặp ở giai đoán sớm khi chưa có biểu hiện lâm sàng.
 
 ## **2. Phân tích vai trò của các cận lâm sàng:**
@@ -34,20 +38,20 @@ Link: [https://thanhtuan.edubit.vn/blog/lam-benh-an-noi-khoa-de-nghi-va-phan-tic
     
     |  | **Bệnh** | **Mức độ** | **Nguyên nhân** | **Biến chứng** |
     | --- | --- | --- | --- | --- |
-    |  | Suy tim trái | III | Bệnh cơ tim thiếu máu cục bộ | Loạn nhịp tim |
-    | X-quang ngực thẳng | X |  |  |  |
+    |  | Suy tim trái | III | Bệnh [[Tim|cơ tim]] thiếu máu cục bộ | Loạn nhịp tim |
+    | [[X-quang]] ngực thẳng | X |  |  |  |
     | NT-proBNP | X | X |  |  |
     | Điện tâm đồ |  |  | X | X |
-    | Siêu âm tim | X |  |  |  |
-    - **Nhìn theo chiều dọc**: chẩn đoán suy tim cần làm **X-quang** ngực thẳng *(phân tích: h/a bóng tim, dấu sung huyết)*, NT-proBNP và siêu âm tim.
-    - **Nhìn theo chiều ngang**: phân tích **ECG** trả lời các câu hỏi có dấu hiệu thiếu máu cơ tim hay không? Loạn nhịp của BN là gì?
+    | [[Siêu âm|Siêu âm tim]] | X |  |  |  |
+    - **Nhìn theo chiều dọc**: chẩn đoán suy tim cần làm **[[X-quang]]** ngực thẳng *(phân tích: h/a bóng tim, dấu sung huyết)*, NT-proBNP và [[Siêu âm|siêu âm tim]].
+    - **Nhìn theo chiều ngang**: phân tích **ECG** trả lời các câu hỏi có dấu hiệu thiếu máu [[Tim|cơ tim]] hay không? Loạn nhịp của BN là gì?
     
-    *Ví dụ: bệnh nhân đau ngực*
+    *Ví dụ: bệnh nhân [[Đau ngực]]*
     
     |  | **Bệnh** | **Mức độ** | **Biến chứng**  |
     | --- | --- | --- | --- |
     |  | Nhồi máu cơ tim giờ thứ 6 
-    Đau thắt ngực không ổn định giờ thứ 6 | Killip I | loạn nhịp |
+    [[Đau ngực|Đau thắt ngực]] không ổn định giờ thứ 6 | Killip I | loạn nhịp |
     | Điện tâm đồ | X |  | X |
     | Men tim | X |  |  |
     | NT-proBNP |  | X |  |
@@ -100,7 +104,7 @@ Gồm 3 bước: đọc kết quả, phân tích kết quả và kết luận.
 - *Bệnh nhân bị nhồi máu cơ tim cấp nhưng men tim trong giới hạn bình thường do bệnh nhân vô sớm nên men tim chưa tăng.*
 - *Cần làm lại kiểm tra sau …*
 
-**Ví dụ 3**: bệnh nhân nam có tăng huyết áp, khám lâm sàng hoàn toàn bình thường
+**Ví dụ 3**: bệnh nhân nam có [[Tăng huyết áp]], khám lâm sàng hoàn toàn bình thường
 
 *Kết quả:*
 
@@ -115,7 +119,7 @@ Gồm 3 bước: đọc kết quả, phân tích kết quả và kết luận.
 
 - *Với ECG nghĩ bệnh nhân có biến chứng lớn thất trái do tang huyết áp*
 
-**Ví dụ 4**: bệnh nhân nam bị tăng huyết áp
+**Ví dụ 4**: bệnh nhân nam bị [[Tăng huyết áp]]
 
 *Kết quả*
 
@@ -135,5 +139,5 @@ Gồm 3 bước: đọc kết quả, phân tích kết quả và kết luận.
 
 *Bàn luận:*
 
-- *Chức năng thận trong giới hạn bình thường*
+- *Chức năng [[Thận]] trong giới hạn bình thường*
 - *Chưa ghi nhận biến chứng thận do đái tháo đường*

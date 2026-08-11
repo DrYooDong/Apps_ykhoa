@@ -1,13 +1,17 @@
 ---
 title: "Cài đặt & Theo dõi Máy thở trong Hồi sức (Mechanical Ventilation Basics)"
-specialty: "Hồi sức"
-tags: ["Hồi sức", "Thông khí nhân tạo", "Máy thở", "ARDS", "PEEP", "FiO2"]
-last_updated: "2026-08-02"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
 ---
 
 # CÀI ĐẶT & THEO DÕI MÁY THỞ TRONG HỒI SỨC (MECHANICAL VENTILATION BASICS)
 
-Thông khí nhân tạo xâm nhập qua ống nội khí quản là thủ thuật hồi sức sống còn cho bệnh nhân suy hô hấp cấp nặng.
+Thông khí nhân tạo xâm nhập qua ống nội khí quản là thủ thuật hồi sức sống còn cho bệnh nhân [[[[Suy hô hấp]]|suy hô hấp cấp]] nặng.
 
 ---
 
@@ -17,7 +21,7 @@ Thông khí nhân tạo xâm nhập qua ống nội khí quản là thủ thuậ
     *   Cài đặt $6 - 8 \text{ mL/kg}$ theo **Cân nặng lý tưởng (Predicted Body Weight - PBW)**.
     *   *Công thức PBW (Nam):* $50 + 0.91 \times (\text{Chiều cao cm} - 152.4)$.
     *   *Công thức PBW (Nữ):* $45.5 + 0.91 \times (\text{Chiều cao cm} - 152.4)$.
-    *   *Đặc biệt trong ARDS:* Cần cài đặt $V_t$ thấp bảo vệ phổi: $4 - 6 \text{ mL/kg PBW}$.
+    *   *Đặc biệt trong ARDS:* Cần cài đặt $V_t$ thấp bảo vệ [[Phổi]]: $4 - 6 \text{ mL/kg PBW}$.
 2.  **Tần số thở ($RR$ - Respiratory Rate):**
     *   Ban đầu: $14 - 20 \text{ lần/phút}$ (điều chỉnh theo $PaCO_2$ mục tiêu).
 3.  **Phân đoạn Oxy hít vào ($FiO_2$):**
@@ -37,7 +41,7 @@ Thông khí nhân tạo xâm nhập qua ống nội khí quản là thủ thuậ
 
 ---
 
-## 3. THEO DÕI ÁP LỰC ĐƯỜNG THỞ & CHIẾN LƯỢC BẢO VỆ PHỔI (LUNG PROTECTIVE VENTILATION)
+## 3. THEO DÕI ÁP LỰC ĐƯỜNG THỞ & CHIẾN LƯỢC BẢO VỆ [[Phổi]] (LUNG PROTECTIVE VENTILATION)
 
 *   **Áp lực đỉnh ($P_{peak}$):** Áp lực tối đa trong thì hít vào. Mục tiêu $P_{peak} < 35 \text{ cmH}_2\text{O}$.
 *   **Áp lực cao nguyên ($P_{plat}$ - Plateau Pressure):** Áp lực đo được khi ngưng thở cuối thì hít vào (Inspiratory Hold), phản ảnh độ giãn nở (compliance) của phế nang.

@@ -1,3 +1,13 @@
+---
+title: "Sự tăng trưởng thể chất ở trẻ em (Phần 1)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐẶC ĐIỂM CÁC CHỈ SỐ VÀ TIÊU CHÍ ĐÁNH GIÁ TĂNG TRƯỞNG THỂ CHẤT Ở TRẺ EM)
 
 ---
@@ -8,7 +18,7 @@
 
 - **Cân nặng theo tuổi** là chỉ số rất nhạy, phản ánh tình trạng sức khỏe và dinh dưỡng hiện tại của trẻ. Cân nặng thay đổi nhanh chóng, việc theo dõi diễn biến cân nặng liên tiếp qua từng tháng giúp:
     - Phát hiện sớm tình trạng **suy dinh dưỡng** trước khi xuất hiện các triệu chứng lâm sàng rõ rệt.
-    - Theo dõi và đánh giá mức độ **mất nước** của cơ thể.
+    - Theo dõi và đánh giá mức độ **[[Mất nước]]** của cơ thể.
     - Xây dựng biện pháp phòng tránh và giáo dục y tế cho bà mẹ (điều chỉnh chế độ ăn, thức ăn bổ sung).
     - Đánh giá tình hình dinh dưỡng của một tập thể trẻ em.
 - **Phân biệt tác động yếu tố dinh dưỡng và nội tiết:** Ở trẻ dưới 5 tuổi, yếu tố dinh dưỡng tác động mạnh hơn di truyền.
@@ -84,7 +94,7 @@
 
 ---
 
-## 4. Chỉ Số Vòng Đầu Theo Tuổi và Sự Tăng Trưởng Khối Lượng Bán Cầu Đại Não
+## 4. Chỉ Số Vòng Đầu Theo Tuổi và Sự Tăng Trưởng Khối Lượng [[[[Vỏ não]]|Bán Cầu Đại Não]]
 
 ### 4.1. Ý Nghĩa và Kỹ Thuật Đo
 
@@ -161,7 +171,7 @@
 
 - Sự xuất hiện của các điểm cốt hóa xương tương xứng với độ tuổi sinh lý và được ứng dụng trên lâm sàng để chẩn đoán **tuổi xương**.
 - **Đánh giá tăng trưởng chiều cao:** Các đường nối giữa đầu xương và thân xương sẽ hàn kín hoàn toàn ở giai đoạn dậy thì, đánh dấu sự **kết thúc phát triển chiều cao** của trẻ.
-- **Ứng dụng lâm sàng:** Chụp X-quang xương (thường là xương cổ tay trái) để đếm các điểm cốt hóa giúp chẩn đoán bệnh **suy giáp bẩm sinh** và ứng dụng trong y pháp để xác định tuổi thật.
+- **Ứng dụng lâm sàng:** [[[[X-quang]]|Chụp X-quang]] xương (thường là xương cổ tay trái) để đếm các điểm cốt hóa giúp chẩn đoán bệnh **suy giáp bẩm sinh** và ứng dụng trong y pháp để xác định tuổi thật.
 
 ---
 

@@ -1,9 +1,13 @@
 ---
 title: "ỨNG DỤNG CỦA HỒI QUY LOGISTIC ĐA THỨC & KHUYẾN NGHỊ THỰC HÀNH"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐔̛́𝐧𝐠 𝐝𝐮̣𝐧𝐠 𝐜𝐮̉𝐚 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 𝐯𝐚̀ 𝐤𝐡𝐮𝐲𝐞̂́𝐧 𝐧𝐠𝐡𝐢̣ 𝐭𝐡𝐮̛̣𝐜 𝐡𝐚̀𝐧𝐡 (𝐏𝐡𝐚̂̀𝐧 𝟔 𝐜𝐮̉𝐚 𝐛𝐚̀𝐢 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜)
 
 TS. Đào Hồng Nam
@@ -14,21 +18,21 @@ Hồi quy logistic đa thức được ứng dụng rộng rãi trong nhiều l�
 
 𝟔.𝟏. 𝐍𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐝𝐢̣𝐜𝐡 𝐭𝐞̂̃ 𝐡𝐨̣𝐜
 
-Trong dịch tễ học, nhiều biến kết cục được phân loại thành nhiều nhóm nhưng không có thứ bậc tự nhiên. Ví dụ, căn nguyên gây viêm màng não có thể bao gồm Streptococcus pneumoniae, Neisseria meningitidis, Listeria monocytogenes, vi rút hoặc các căn nguyên khác. Mỗi căn nguyên có cơ chế bệnh sinh, yếu tố nguy cơ và chiến lược điều trị khác nhau nhưng không tồn tại quan hệ thứ bậc giữa các nhóm.
+Trong dịch tễ học, nhiều biến kết cục được phân loại thành nhiều nhóm nhưng không có thứ bậc tự nhiên. Ví dụ, căn nguyên gây [[Viêm màng não]] có thể bao gồm Streptococcus pneumoniae, Neisseria meningitidis, Listeria monocytogenes, vi rút hoặc các căn nguyên khác. Mỗi căn nguyên có cơ chế bệnh sinh, yếu tố nguy cơ và chiến lược điều trị khác nhau nhưng không tồn tại quan hệ thứ bậc giữa các nhóm.
 
-Trong trường hợp này, hồi quy logistic đa thức cho phép đánh giá đồng thời ảnh hưởng của tuổi, giới tính, tình trạng miễn dịch, tiền sử tiêm chủng và các yếu tố dịch tễ khác đối với từng căn nguyên gây bệnh sau khi đã hiệu chỉnh các yếu tố gây nhiễu. So với việc xây dựng nhiều mô hình hồi quy logistic nhị phân, phương pháp này bảo đảm tổng xác suất của các căn nguyên luôn bằng 1 và tránh các kết quả mâu thuẫn giữa các mô hình.
+Trong trường hợp này, hồi quy logistic đa thức cho phép đánh giá đồng thời ảnh hưởng của tuổi, giới tính, tình trạng miễn dịch, tiền sử [[[[Vắc-xin]]|tiêm chủng]] và các yếu tố dịch tễ khác đối với từng căn nguyên gây bệnh sau khi đã hiệu chỉnh các yếu tố gây nhiễu. So với việc xây dựng nhiều mô hình hồi quy logistic nhị phân, phương pháp này bảo đảm tổng xác suất của các căn nguyên luôn bằng 1 và tránh các kết quả mâu thuẫn giữa các mô hình.
 
-Ngoài nghiên cứu căn nguyên, hồi quy logistic đa thức còn được sử dụng để phân tích nguồn lây nhiễm, kiểu lưu hành của vi sinh vật, kiểu gen của tác nhân gây bệnh hoặc nhóm kháng kháng sinh trong các nghiên cứu giám sát dịch tễ học.
+Ngoài nghiên cứu căn nguyên, hồi quy logistic đa thức còn được sử dụng để phân tích nguồn lây nhiễm, kiểu lưu hành của vi sinh vật, kiểu gen của tác nhân gây bệnh hoặc nhóm kháng [[Kháng sinh]] trong các nghiên cứu giám sát dịch tễ học.
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟏𝟔. 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐜𝐚̆𝐧 𝐧𝐠𝐮𝐲𝐞̂𝐧 𝐠𝐚̂𝐲 𝐧𝐡𝐢𝐞̂̃𝐦 𝐤𝐡𝐮𝐚̂̉𝐧 𝐡𝐮𝐲𝐞̂́𝐭
 
-Một nghiên cứu đa trung tâm nhằm xác định các yếu tố liên quan đến căn nguyên gây nhiễm khuẩn huyết phân loại biến kết cục thành bốn nhóm: vi khuẩn Gram dương, vi khuẩn Gram âm, nấm và đa vi sinh vật. Sau khi hiệu chỉnh tuổi, bệnh nền, tình trạng suy giảm miễn dịch và tiền sử sử dụng kháng sinh, hồi quy logistic đa thức được sử dụng để ước lượng RRR của từng căn nguyên so với nhóm Gram dương là nhóm tham chiếu. Kết quả cho phép xác định các yếu tố nguy cơ đặc hiệu của từng nhóm căn nguyên và hỗ trợ lựa chọn kháng sinh kinh nghiệm phù hợp trong giai đoạn đầu điều trị.
+Một nghiên cứu đa trung tâm nhằm xác định các yếu tố liên quan đến căn nguyên gây [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] phân loại biến kết cục thành bốn nhóm: vi khuẩn Gram dương, vi khuẩn Gram âm, nấm và đa vi sinh vật. Sau khi hiệu chỉnh tuổi, bệnh nền, tình trạng suy giảm miễn dịch và tiền sử sử dụng [[Kháng sinh]], hồi quy logistic đa thức được sử dụng để ước lượng RRR của từng căn nguyên so với nhóm Gram dương là nhóm tham chiếu. Kết quả cho phép xác định các yếu tố nguy cơ đặc hiệu của từng nhóm căn nguyên và hỗ trợ lựa chọn kháng sinh kinh nghiệm [[Phù]] hợp trong giai đoạn đầu điều trị.
 
 𝟔.𝟐. 𝐍𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐥𝐚̂𝐦 𝐬𝐚̀𝐧𝐠
 
 Trong nghiên cứu lâm sàng, hồi quy logistic đa thức thường được sử dụng khi kết cục phản ánh nhiều lựa chọn điều trị hoặc nhiều hướng xử trí khác nhau thay vì chỉ có hai trạng thái.
 
-Ví dụ, đối với bệnh nhân mắc ung thư phổi không tế bào nhỏ, quyết định điều trị ban đầu có thể bao gồm phẫu thuật, hóa trị, điều trị nhắm trúng đích, điều trị miễn dịch hoặc chăm sóc giảm nhẹ. Các phương án này không có thứ tự ưu tiên cố định mà phụ thuộc vào giai đoạn bệnh, đặc điểm phân tử, tình trạng toàn thân và nguyện vọng của người bệnh.
+Ví dụ, đối với bệnh nhân mắc ung thư [[Phổi]] không tế bào nhỏ, quyết định điều trị ban đầu có thể bao gồm phẫu thuật, hóa trị, điều trị nhắm trúng đích, điều trị miễn dịch hoặc chăm sóc giảm nhẹ. Các phương án này không có thứ tự ưu tiên cố định mà phụ thuộc vào giai đoạn bệnh, đặc điểm phân tử, tình trạng toàn thân và nguyện vọng của người bệnh.
 
 Trong bối cảnh đó, hồi quy logistic đa thức giúp xác định các yếu tố độc lập liên quan đến từng lựa chọn điều trị, đồng thời lượng hóa xác suất dự báo của từng phương án đối với mỗi bệnh nhân. Các xác suất dự báo này có thể được sử dụng để hỗ trợ hội chẩn đa chuyên khoa hoặc xây dựng các công cụ hỗ trợ ra quyết định trên lâm sàng.
 
@@ -40,11 +44,11 @@ Trong lĩnh vực dược học, hồi quy logistic đa thức được sử d�
 
 Ví dụ, biến kết cục có thể bao gồm tiếp tục điều trị, chuyển sang thuốc khác cùng nhóm, chuyển sang thuốc khác nhóm hoặc ngừng điều trị hoàn toàn. Đây đều là các kết cục danh nghĩa và không có quan hệ thứ bậc.
 
-Thông qua hồi quy logistic đa thức, nhà nghiên cứu có thể đánh giá ảnh hưởng của tuổi, chức năng gan, chức năng thận, tác dụng không mong muốn, khả năng tuân thủ điều trị và chi phí thuốc đối với từng quyết định điều trị. Kết quả thu được giúp hiểu rõ hơn các yếu tố ảnh hưởng đến thực hành kê đơn và tối ưu hóa chiến lược sử dụng thuốc trong thực tế.
+Thông qua hồi quy logistic đa thức, nhà nghiên cứu có thể đánh giá ảnh hưởng của tuổi, chức năng [[Gan]], chức năng [[Thận]], tác dụng không mong muốn, khả năng tuân thủ điều trị và chi phí thuốc đối với từng quyết định điều trị. Kết quả thu được giúp hiểu rõ hơn các yếu tố ảnh hưởng đến thực hành kê đơn và tối ưu hóa chiến lược sử dụng thuốc trong thực tế.
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟏𝟕. 𝐋𝐮̛̣𝐚 𝐜𝐡𝐨̣𝐧 𝐭𝐡𝐮𝐨̂́𝐜 đ𝐢𝐞̂̀𝐮 𝐭𝐫𝐢̣ 𝐭𝐚̆𝐧𝐠 𝐡𝐮𝐲𝐞̂́𝐭 𝐚́𝐩
 
-Một nghiên cứu trên bệnh nhân tăng huyết áp mới được chẩn đoán phân loại lựa chọn điều trị ban đầu thành bốn nhóm: thuốc ức chế men chuyển, thuốc chẹn thụ thể angiotensin II, thuốc chẹn kênh calci và thuốc lợi tiểu. Hồi quy logistic đa thức cho thấy tuổi cao và bệnh thận mạn có liên quan đến xác suất lựa chọn thuốc chẹn thụ thể angiotensin II cao hơn so với thuốc ức chế men chuyển, trong khi tiền sử phù ngoại biên làm tăng xác suất lựa chọn thuốc lợi tiểu. Các kết quả này góp phần phản ánh thực hành kê đơn trong điều kiện lâm sàng thường quy và cung cấp bằng chứng cho việc xây dựng các chương trình quản lý sử dụng thuốc.
+Một nghiên cứu trên bệnh nhân [[Tăng huyết áp]] mới được chẩn đoán phân loại lựa chọn điều trị ban đầu thành bốn nhóm: thuốc ức chế men chuyển, thuốc chẹn thụ thể angiotensin II, thuốc chẹn kênh calci và thuốc lợi tiểu. Hồi quy logistic đa thức cho thấy tuổi cao và bệnh [[Thận]] mạn có liên quan đến xác suất lựa chọn thuốc chẹn thụ thể angiotensin II cao hơn so với thuốc ức chế men chuyển, trong khi tiền sử [[Phù]] ngoại biên làm tăng xác suất lựa chọn thuốc lợi tiểu. Các kết quả này góp phần phản ánh thực hành kê đơn trong điều kiện lâm sàng thường quy và cung cấp bằng chứng cho việc xây dựng các chương trình quản lý sử dụng thuốc.
 
 𝟔.𝟒. 𝐍𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐭𝐢𝐞̂𝐧 𝐥𝐮̛𝐨̛̣𝐧𝐠 𝐯𝐚̀ 𝐝𝐮̛̣ 𝐛𝐚́𝐨
 

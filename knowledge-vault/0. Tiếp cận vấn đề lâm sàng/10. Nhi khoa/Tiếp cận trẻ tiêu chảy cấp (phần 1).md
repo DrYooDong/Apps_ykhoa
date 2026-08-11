@@ -1,13 +1,23 @@
-# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐỊNH NGHĨA, NGUYÊN NHÂN, CƠ CHẾ BỆNH SINH VÀ ĐÁNH GIÁ LÂM SÀNG - PHÂN ĐỘ MẤT NƯỚC)
+---
+title: "Tiếp cận trẻ tiêu chảy cấp (phần 1)"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
+# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐỊNH NGHĨA, NGUYÊN NHÂN, CƠ CHẾ BỆNH SINH VÀ ĐÁNH GIÁ LÂM SÀNG - PHÂN ĐỘ [[Mất nước]])
 
 ---
 
-## 1. Định Nghĩa và Phân Loại Thể Lâm Sàng Bệnh Tiêu Chảy
+## 1. Định Nghĩa và Phân Loại Thể Lâm Sàng Bệnh [[Tiêu chảy]]
 
-- **Tiêu chảy (Diarrhea):** Là tình trạng đi tiêu phân lỏng bất thường hay toàn nước **từ 3 lần trở lên trong vòng 24 giờ**. Ở trẻ nhỏ, đặc biệt là trẻ bú mẹ, việc đi tiêu phân lợn cợn nhiều lần trong ngày vẫn được xem là bình thường. Để xác định có tiêu chảy hay không ở nhóm trẻ này, **sự thay đổi tính chất phân quan trọng hơn số lần đi tiêu**.
+- **[[Tiêu chảy]] (Diarrhea):** Là tình trạng đi tiêu phân lỏng bất thường hay toàn nước **từ 3 lần trở lên trong vòng 24 giờ**. Ở trẻ nhỏ, đặc biệt là trẻ bú mẹ, việc đi tiêu phân lợn cợn nhiều lần trong ngày vẫn được xem là bình thường. Để xác định có tiêu chảy hay không ở nhóm trẻ này, **sự thay đổi tính chất phân quan trọng hơn số lần đi tiêu**.
 - **Tiêu chảy cấp (Acute gastroenteritis):** Là đợt tiêu chảy khởi phát cấp tính và thời gian kéo dài **không quá 14 ngày**.
 - **Tiêu chảy kéo dài (Persistent diarrhea):** Là đợt tiêu chảy kéo dài **từ 14 ngày trở lên**.
-- **Hội chứng lỵ (Dysentery):** Là tình trạng đi tiêu nhiều lần trong ngày với số lượng phân ít, phân lỏng **có máu thấy được bằng mắt thường**, thường kèm theo sốt, mót rặn và đau bụng.
+- **Hội chứng lỵ (Dysentery):** Là tình trạng đi tiêu nhiều lần trong ngày với số lượng phân ít, phân lỏng **có máu thấy được bằng mắt thường**, thường kèm theo [[Sốt]], mót rặn và [[Đau bụng]].
 
 ---
 
@@ -19,22 +29,22 @@ Nguyên nhân gây tiêu chảy cấp ở trẻ em được chia thành hai nhó
 
 - **Virus:**
     - **Rotavirus:** Là **tác nhân hàng đầu** gây tiêu chảy cấp nặng ở trẻ em dưới 2 tuổi nhập viện trên toàn cầu (chiếm $35 - 60%$ các trường hợp nhập viện).
-    - **Norovirus:** Đứng thứ hai trong nhóm virus, thường gây ra các đợt dịch tiêu chảy kèm nôn ói tại trường học, nhà hàng, tàu du lịch.
+    - **Norovirus:** Đứng thứ hai trong nhóm virus, thường gây ra các đợt dịch tiêu chảy kèm [[[[Nôn ói|Nôn]] ói]] tại trường học, nhà hàng, tàu du lịch.
     - _Tác nhân siêu vi khác:_ Adenovirus (type 40, 41), Astrovirus, Enterovirus.
 - **Vi khuẩn:**
     - _Các vi khuẩn thường gặp:_ _Salmonella_ nontyphi, _Shigella_ (gây hội chứng lỵ điển hình), _Campylobacter jejuni_, _Yersinia enterocolitica_, các chủng _Escherichia coli_ (ETEC, EPEC, EIEC, STEC, EAEC).
-    - _Vibrio cholerae (Phẩy khuẩn tả):_ Gây các đợt dịch tả với đặc điểm tiêu chảy ồ ạt phân đục như nước vo gạo, tốc độ thải phân cao, gây mất nước nhanh chóng và tử vong.
-    - _Clostridioides difficile (C. difficile):_ Thường liên quan đến nhiễm trùng bệnh viện hoặc sử dụng kháng sinh kéo dài gây viêm đại tràng giả mạc.
+    - _Vibrio cholerae (Phẩy khuẩn tả):_ Gây các đợt dịch tả với đặc điểm tiêu chảy ồ ạt phân đục như nước vo gạo, tốc độ thải phân cao, gây [[Mất nước]] nhanh chóng và tử vong.
+    - _Clostridioides difficile (C. difficile):_ Thường liên quan đến nhiễm trùng bệnh viện hoặc sử dụng [[Kháng sinh]] kéo dài gây viêm đại tràng giả mạc.
 - **Ký sinh trùng / Động vật đơn bào (Protozoa):**
     - _Cryptosporidium spp., Giardia lamblia (G. intestinalis), Entamoeba histolytica_. Tiêu chảy do động vật đơn bào thường có xu hướng kéo dài $\ge 2\text{ tuần}$.
 
-### 2.2. Nhiễm Trùng Ngoài Đường Tiêu Hóa
+### 2.2. Nhiễm Trùng Ngoài [[Đường tiêu hóa]]
 
-- Tiêu chảy có thể là triệu chứng phụ đi kèm trong các bệnh nhiễm trùng ngoài ruột như: nhiễm trùng hô hấp (viêm phổi, viêm tai giữa), nhiễm trùng tiểu, nhiễm trùng huyết, viêm não màng não, bệnh tay chân miệng, sởi....
+- Tiêu chảy có thể là triệu chứng phụ đi kèm trong các bệnh nhiễm trùng ngoài ruột như: nhiễm trùng hô hấp (viêm [[Phổi]], viêm tai giữa), nhiễm trùng tiểu, [[Nhiễm trùng huyết]], [[Viêm não]] màng não, bệnh tay chân miệng, sởi....
 
 ### 2.3. Nhóm Nguyên Nhân Không Nhiễm Trùng
 
-- Dị ứng thức ăn (dị ứng đạm sữa bò), tiêu chảy do tác dụng phụ của thuốc (đặc biệt là kháng sinh), rối loạn quá trình tiêu hóa - hấp thu, viêm ruột do hóa trị/xạ trị, hoặc các bệnh lý ngoại khoa cấp cứu (lồng ruột, viêm ruột thừa).
+- Dị ứng thức ăn (dị ứng đạm sữa bò), tiêu chảy do tác dụng phụ của thuốc (đặc biệt là [[Kháng sinh]]), rối loạn quá trình tiêu hóa - hấp thu, viêm ruột do hóa trị/xạ trị, hoặc các bệnh lý ngoại khoa cấp cứu (lồng ruột, viêm ruột thừa).
 
 ---
 
@@ -70,8 +80,8 @@ Sự hình thành phân bình thường dựa trên sự cân bằng giữa hai 
 |:--|:--|:--|:--|
 |**Cơ chế**|Độc tố enterotoxin hoặc dính/xâm nhập nông|Viêm, phá hủy biểu mô (xâm nhập, cytotoxin)|Xâm nhập sâu|
 |**Vị trí tổn thương**|Đoạn gần ruột non|Đại tràng|Đoạn xa ruột non|
-|**Biểu hiện lâm sàng**|Tiêu lỏng nước|Hội chứng lỵ (tiêu đàm máu, mót rặn)|Sốt thương hàn|
-|**Xét nghiệm phân**|Không có bạch cầu phân; Lactoferrin không/tăng nhẹ|Bạch cầu đa nhân trung tính; Lactoferrin tăng nhiều|Bạch cầu đơn nhân|
+|**Biểu hiện lâm sàng**|Tiêu lỏng nước|Hội chứng lỵ (tiêu đàm máu, mót rặn)|[[Sốt]] thương hàn|
+|**Xét nghiệm phân**|Không có [[Bạch cầu]] phân; Lactoferrin không/tăng nhẹ|[[Bạch cầu|Bạch cầu đa nhân trung tính]]; Lactoferrin tăng nhiều|Bạch cầu đơn nhân|
 |**Tác nhân điển hình**|_Vibrio cholerae, ETEC, C. perfringens, B. cereus, S. aureus, Rotavirus, Norovirus, Giardia..._|_Shigella, EIEC, STEC, C. difficile, C. jejuni, E. histolytica..._|_Salmonella typhi, Salmonella paratyphi, Yersinia enterocolitica..._|
 
 ---
@@ -88,12 +98,12 @@ Quy trình đánh giá lâm sàng trẻ tiêu chảy cấp được thực hiệ
 
 ### 4.1. Khai Thác Bệnh Sử và Tiền Sử
 
-- **Dấu hiệu nguy hiểm toàn thân:** Đánh giá ngay xem trẻ có (1) Li bì/khó đánh thức, (2) Nôn ói tất cả mọi thứ, (3) Bỏ ăn/bỏ bú, (4) Co giật.
+- **Dấu hiệu nguy hiểm toàn thân:** Đánh giá ngay xem trẻ có (1) Li bì/khó đánh thức, (2) Nôn ói tất cả mọi thứ, (3) Bỏ ăn/bỏ bú, (4) [[Co giật]].
 - **Đặc điểm đợt tiêu chảy:**
     - Thời điểm khởi phát, số ngày bị tiêu chảy ($< 14\text{ ngày}$).
     - Số lần đi tiêu/ngày, thể tích phân.
     - Tính chất phân: Phân lỏng nước, phân đục như nước vo gạo (nghi tả), phân có đàm/máu đại thể (hội chứng lỵ).
-- **Các triệu chứng kèm theo:** Sốt, nôn ói, đau bụng, ho, khó thở....
+- **Các triệu chứng kèm theo:** Sốt, nôn ói, [[Đau bụng]], ho, [[Khó thở]]....
 - **Tiền sử & Yếu tố nguy cơ:** Tiền căn suy dinh dưỡng, chế độ bú mẹ/bú bình, tiền căn sử dụng kháng sinh hoặc thuốc giảm nhu động ruột, nguồn nước và điều kiện vệ sinh.
 
 ---
@@ -112,7 +122,7 @@ Quy trình đánh giá lâm sàng trẻ tiêu chảy cấp được thực hiệ
 
 |Phân độ mất nước|Dấu hiệu lâm sàng chẩn đoán ($\ge 2$ dấu hiệu)|% Lượng dịch đã mất|Thể tích dịch mất tương ứng|
 |:--|:--|:-:|:-:|
-|**MẤT NƯỚC NẶNG**|**Có $\ge 2$ trong các dấu hiệu sau:**1. Li bì hoặc khó đánh thức (hôn mê)2. Mắt trũng3. Không uống được hoặc uống rất kém4. Nếp véo da mất **rất chậm** ($> 2\text{ giây}$)|**$> 10%$** trọng lượng cơ thể|**$> 100\text{ mL/kg}$**|
+|**MẤT NƯỚC NẶNG**|**Có $\ge 2$ trong các dấu hiệu sau:**1. Li bì hoặc khó đánh thức ([[Hôn mê]])2. Mắt trũng3. Không uống được hoặc uống rất kém4. Nếp véo da mất **rất chậm** ($> 2\text{ giây}$)|**$> 10%$** trọng lượng cơ thể|**$> 100\text{ mL/kg}$**|
 |**CÓ MẤT NƯỚC**|**Có $\ge 2$ trong các dấu hiệu sau:**1. Vật vã, kích thích2. Mắt trũng3. Khát nước, uống háo hức4. Nếp véo da mất **chậm** ($< 2\text{ giây}$)|**$5 - 10%$** trọng lượng cơ thể|**$50 - 100\text{ mL/kg}$**|
 |**KHÔNG MẤT NƯỚC**|Không có đủ các dấu hiệu để phân loại mất nước nặng hoặc có mất nước|**$< 5%$** trọng lượng cơ thể|**$< 50\text{ mL/kg}$**|
 
@@ -123,23 +133,23 @@ _Lưu ý kỹ thuật:_ Nếp véo da thực hiện ở vùng da bụng dọc th
 ### 4.3. Đánh Giá Các Biến Chứng Của Tiêu Chảy Cấp
 
 - **Rối loạn điện giải:**
-    - _Tăng hoặc Hạ Natri máu:_ Gây quấy khóc, bứt rứt, li bì, co giật, hôn mê.
+    - _Tăng hoặc Hạ Natri máu:_ Gây quấy khóc, bứt rứt, li bì, [[Co giật]], hôn mê.
     - _Hạ Kali máu:_ Gây chướng bụng, liệt ruột, giảm trương lực cơ, yếu cơ, nhợn ói nhiều.
-- **Toan chuyển hóa:** Trẻ thở nhanh sâu (kiểu thở Kussmaul), môi khô đỏ.
-- **Hạ đường huyết:** Vã mồ hôi, da nhợt tái, nhịp tim nhanh, run giật chi, rối loạn tri giác, co giật.
-- **Suy thận cấp (Tổn thương thận cấp trước thận):** Trẻ tiểu ít hoặc vô niệu, phù, lừ đừ.
+- **Toan chuyển hóa:** Trẻ [[Khó thở|thở nhanh]] sâu (kiểu thở Kussmaul), môi khô đỏ.
+- **[[Hạ đường huyết]]:** Vã mồ hôi, da nhợt tái, nhịp [[Tim]] nhanh, run giật chi, [[Hôn mê|rối loạn tri giác]], co giật.
+- **Suy [[Thận]] cấp (Tổn thương [[Thận]] cấp trước thận):** Trẻ tiểu ít hoặc vô niệu, [[Phù]], lừ đừ.
 
 ---
 
 ### 4.4. Đánh Giá Nguy Cơ Thất Bại Bù Nước Đường Uống
 
-Xác định trẻ có nguy cơ thất bại bù dịch đường uống giúp chỉ định đường bù dịch phù hợp (truyền tĩnh mạch hoặc qua ống thông mũi - dạ dày):
+Xác định trẻ có nguy cơ thất bại bù dịch đường uống giúp chỉ định đường bù dịch [[Phù]] hợp (truyền tĩnh mạch hoặc qua ống thông mũi - dạ dày):
 
 1. Trẻ không uống được do rối loạn tri giác, hôn mê hoặc viêm loét miệng nặng.
 2. Nôn ói nhiều liên tục ($> 4\text{ lần/giờ}$) hoặc nôn tất cả mọi thứ.
 3. Liệt ruột, chướng bụng nhiều.
 4. Tốc độ thải phân quá cao: Tiêu phân lỏng nhiều nước $> 2\text{ lần/giờ}$ hoặc từ **$15 - 20\text{ mL phân/kg/giờ}$** khi cân phân.
-5. Bất dung nạp thành phần glucose trong gói ORS (uống ORS làm tốc độ thải phân tăng cao hơn).
+5. Bất dung nạp thành phần glucose trong gói [[Oresol|ORS]] (uống [[Oresol|ORS]] làm tốc độ thải phân tăng cao hơn).
 
 ---
 
@@ -148,8 +158,8 @@ Xác định trẻ có nguy cơ thất bại bù dịch đường uống giúp c
 - **Tên Lưu Đồ:** **Lưu đồ 30.1 & 30.2. Lưu đồ tiếp cận trẻ tiêu chảy cấp tại phòng khám (Hỏi bệnh sử và Khám lâm sàng)**.
 - **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 1 (2020).pdf_ (Bài 30, trang 397–398).
 - **Mô Tả Chi Tiết:** Lưu đồ quy trình tiếp cận 2 bước tại phòng khám:
-    - _Bước 1 (Hỏi bệnh sử):_ Sàng lọc dấu hiệu nguy hiểm toàn thân $\rightarrow$ Đánh giá hô hấp/sốc $\rightarrow$ Hỏi đặc điểm tiêu chảy, sốt, tiền sử và các nguy cơ.
-    - _Bước 2 (Khám lâm sàng):_ Đánh giá suy hô hấp/sốc $\rightarrow$ Đánh giá phân độ mất nước (Mất nước nặng / Có mất nước / Không mất nước) $\rightarrow$ Đánh giá biến chứng nặng và nguy cơ thất bại đường uống $\rightarrow$ Phân luồng điều trị theo Phác đồ A, B hoặc C.
+    - _Bước 1 (Hỏi bệnh sử):_ Sàng lọc dấu hiệu nguy hiểm toàn thân $\rightarrow$ Đánh giá hô hấp/[[Sốc]] $\rightarrow$ Hỏi đặc điểm tiêu chảy, sốt, tiền sử và các nguy cơ.
+    - _Bước 2 (Khám lâm sàng):_ Đánh giá [[Suy hô hấp]]/[[Sốc]] $\rightarrow$ Đánh giá phân độ mất nước (Mất nước nặng / Có mất nước / Không mất nước) $\rightarrow$ Đánh giá biến chứng nặng và nguy cơ thất bại đường uống $\rightarrow$ Phân luồng điều trị theo Phác đồ A, B hoặc C.
 
 ---
 

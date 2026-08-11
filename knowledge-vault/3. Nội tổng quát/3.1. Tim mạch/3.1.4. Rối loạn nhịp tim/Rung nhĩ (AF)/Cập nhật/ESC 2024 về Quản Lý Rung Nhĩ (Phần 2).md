@@ -1,3 +1,14 @@
+---
+title: "ESC 2024 về Quản Lý Rung Nhĩ (Phần 2)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 ## 1. Nội Dung Chi Tiết Khuyến Cáo ESC 2024 về Quản Lý Rung Nhĩ (Phần 2)
 
 Tiếp nối Phần 1, dưới đây là tóm tắt chi tiết của **Trụ cột [A] (Avoid stroke and thromboembolism - Dự phòng đột quỵ và thuyên tắc mạch)** và các tình huống phối hợp điều trị kháng đông đặc biệt theo khuyến cáo ESC 2024.
@@ -11,12 +22,12 @@ Rung nhĩ là một yếu tố nguy cơ chính gây ra thuyên tắc mạch, b�
 - **Sự thay đổi về thang điểm phân tầng nguy cơ:** Trước đây, thang điểm $CHA_2DS_2-VASc$ được sử dụng rộng rãi, trong đó giới tính nữ được tính là 1 điểm. Tuy nhiên, các bằng chứng đương đại cho thấy **giới tính nữ chỉ là một yếu tố điều chỉnh nguy cơ phụ thuộc vào tuổi hơn là một yếu tố nguy cơ độc lập**. Việc đưa giới tính vào thang điểm làm phức tạp hóa thực hành lâm sàng và bỏ sót những người phi nhị nguyên giới, người chuyển giới hoặc đang điều trị hormone.
 - **Khuyến cáo mới:** ESC 2024 đề xuất sử dụng thang điểm **$CHA_2DS_2-VA$** (loại bỏ hoàn toàn yếu tố giới tính nữ) để hỗ trợ quyết định điều trị kháng đông.
 - **Định nghĩa chi tiết các thành phần của thang điểm $CHA_2DS_2-VA$ (Bảng 10):**
-    - **C (Chronic Heart Failure - 1 điểm):** Có triệu chứng/dấu hiệu suy tim (bất kể phân suất tống máu thất trái LVEF, bao gồm cả HFpEF, HFmrEF, HFrEF) hoặc có tình trạng giảm chức năng tâm thu thất trái không triệu chứng với $LVEF \le 40%$.
+    - **C (Chronic Heart Failure - 1 điểm):** Có triệu chứng/dấu hiệu suy [[Tim]] (bất kể phân suất tống máu thất trái LVEF, bao gồm cả HFpEF, HFmrEF, HFrEF) hoặc có tình trạng giảm chức năng tâm thu thất trái không triệu chứng với $LVEF \le 40%$.
     - **H (Hypertension - 1 điểm):** Huyết áp lúc nghỉ $>140/90$ mmHg trong ít nhất hai lần đo, hoặc đang được điều trị bằng thuốc hạ huyết áp.
     - **A (Age $\ge 75$ - 2 điểm):** Tuổi tác là yếu tố quyết định độc lập nguy cơ đột quỵ thiếu máu não.
-    - **D (Diabetes mellitus - 1 điểm):** Đái tháo đường týp 1 hoặc týp 2, hoặc đang điều trị bằng thuốc hạ đường huyết.
+    - **D (Diabetes mellitus - 1 điểm):** Đái tháo đường týp 1 hoặc týp 2, hoặc đang điều trị bằng thuốc [[Hạ đường huyết]].
     - **S (Prior stroke/TIA/thromboembolism - 2 điểm):** Tiền sử đột quỵ thiếu máu não, cơn thiếu máu não thoáng qua hoặc thuyên tắc mạch hệ thống.
-    - **V (Vascular disease - 1 điểm):** Bệnh động mạch vành (tiền sử nhồi máu cơ tim, đau thắt ngực, tiền sử tái thông mạch vành qua da/ngoại khoa, hoặc hẹp mạch vành đáng kể trên hình ảnh học) HOẶC bệnh động mạch ngoại biên (PVD - đi lồi cách hồi, tiền sử can thiệp động mạch chủ, mảng xơ vữa động mạch chủ phức tạp $\ge 4$ mm hoặc có loét/di động).
+    - **V (Vascular disease - 1 điểm):** Bệnh động mạch vành (tiền sử nhồi máu [[Tim|cơ tim]], [[[[Đau ngực]]|đau thắt ngực]], tiền sử tái thông mạch vành qua da/ngoại khoa, hoặc hẹp mạch vành đáng kể trên hình ảnh học) HOẶC bệnh động mạch ngoại biên (PVD - đi lồi cách hồi, tiền sử can thiệp động mạch chủ, mảng xơ vữa động mạch chủ phức tạp $\ge 4$ mm hoặc có loét/di động).
     - **A (Age 65-74 - 1 điểm):** Tuổi từ 65 đến 74.
 - **Chỉ định điều trị dựa trên điểm số:**
     - Kháng đông đường uống (OAC) được **khuyến cáo** cho bệnh nhân rung nhĩ lâm sàng có điểm **$CHA_2DS_2-VA \ge 2$** (Class I, Level C).
@@ -25,17 +36,17 @@ Rung nhĩ là một yếu tố nguy cơ chính gây ra thuyên tắc mạch, b�
     - **Đánh giá động:** Khuyến cáo đánh giá lại định kỳ nguy cơ thuyên tắc mạch của bệnh nhân (Class I, Level B).
     - **Điều cấm kỵ (Class III):**
         - Không khuyến cáo sử dụng thể lâm sàng của rung nhĩ (kịch phát, bền bỉ hay vĩnh viễn) để quyết định chỉ định kháng đông (Class III, Level B).
-        - Không khuyến cáo sử dụng aspirin/clopidogrel đơn thuần để dự phòng đột quỵ do thiếu hiệu quả và tăng nguy cơ chảy máu (Class III, Level A).
+        - Không khuyến cáo sử dụng [[Aspirin]]/clopidogrel đơn thuần để dự phòng đột quỵ do thiếu hiệu quả và tăng nguy cơ [[Xuất huyết|chảy máu]] (Class III, Level A).
 
 ---
 
 ### Lựa chọn Thuốc Kháng Đông và Quản lý Liều lượng
 
-- **DOAC so với VKA:** Thuốc kháng đông đường uống trực tiếp (DOACs: apixaban, dabigatran, edoxaban, rivaroxaban) được **khuyến cáo ưu tiên** hơn các thuốc kháng vitamin K (VKA) nhờ hiệu quả tương đương/vượt trội trong dự phòng thuyên tắc nhưng giảm được 50% nguy cơ xuất huyết nội sọ (Class I, Level A).
+- **DOAC so với VKA:** Thuốc kháng đông đường uống trực tiếp (DOACs: apixaban, dabigatran, edoxaban, rivaroxaban) được **khuyến cáo ưu tiên** hơn các thuốc kháng vitamin K (VKA) nhờ hiệu quả tương đương/vượt trội trong dự phòng thuyên tắc nhưng giảm được 50% nguy cơ [[Xuất huyết]] nội sọ (Class I, Level A).
 - **Ngoại lệ bắt buộc dùng VKA:** Bệnh nhân có **van tim cơ học** hoặc **hẹp van hai lá mức độ vừa đến nặng** (Class I, Level A).
 - **Quản lý VKA:** Cần duy trì INR mục tiêu từ 2.0 - 3.0 (Class I, Level B) và đảm bảo thời gian trong khoảng điều trị (TTR) > 70% (Class IIa, Level A). Nếu TTR < 70%, khuyến cáo chuyển sang DOAC (Class I, Level B).
 - **Ngoại lệ giữ lại VKA ở người cao tuổi:** Ở bệnh nhân $\ge 75$ tuổi đang dùng VKA ổn định với TTR tốt và có tình trạng đa thuốc (polypharmacy), có thể cân nhắc tiếp tục dùng VKA thay vì chuyển sang DOAC để tránh nguy cơ xuất huyết tăng thêm (Class IIb, Level B).
-- **Tránh giảm liều DOAC không phù hợp:** Việc giảm liều DOAC tùy tiện không theo tiêu chuẩn được khuyến cáo tránh thực hiện do làm tăng nguy cơ đột quỵ mà không giảm được nguy cơ xuất huyết (Class III, Level B). Tiêu chuẩn giảm liều chuẩn được quy định nghiêm ngặt theo từng loại thuốc (Bảng 11):
+- **Tránh giảm liều DOAC không [[Phù]] hợp:** Việc giảm liều DOAC tùy tiện không theo tiêu chuẩn được khuyến cáo tránh thực hiện do làm tăng nguy cơ đột quỵ mà không giảm được nguy cơ xuất huyết (Class III, Level B). Tiêu chuẩn giảm liều chuẩn được quy định nghiêm ngặt theo từng loại thuốc (Bảng 11):
     - _Apixaban:_ 2.5 mg x 2 lần/ngày khi đáp ứng ít nhất 2/3 tiêu chuẩn (Tuổi $\ge 80$, Cân nặng $\le 60$ kg, Creatinine huyết thanh $\ge 133$ $\mu$mol/L).
     - _Dabigatran:_ 110 mg x 2 lần/ngày khi tuổi $\ge 80$ hoặc đang dùng verapamil đồng thời.
     - _Edoxaban:_ 30 mg x 1 lần/ngày khi CrCl 15-50 mL/phút, cân nặng $\le 60$ kg, hoặc dùng đồng thời các thuốc ức chế P-gp mạnh.
@@ -45,7 +56,7 @@ Rung nhĩ là một yếu tố nguy cơ chính gây ra thuyên tắc mạch, b�
 
 ### Rung nhĩ Cận lâm sàng Phát hiện qua Thiết bị (Subclinical AF)
 
-- Các thử nghiệm lớn như ARTESIA (apixaban vs aspirin) và NOAH (edoxaban vs placebo) cho thấy gánh nặng thuyên tắc ở nhóm rung nhĩ cận lâm sàng thấp hơn rung nhĩ lâm sàng.
+- Các thử nghiệm lớn như ARTESIA (apixaban vs [[Aspirin]]) và NOAH (edoxaban vs placebo) cho thấy gánh nặng thuyên tắc ở nhóm rung nhĩ cận lâm sàng thấp hơn rung nhĩ lâm sàng.
 - Điều trị kháng đông DOAC **có thể được cân nhắc** ở bệnh nhân có các đợt rung nhĩ cận lâm sàng không triệu chứng phát hiện qua thiết bị cấy ghép nếu có nguy cơ thuyên tắc mạch cao và không có nguy cơ xuất huyết cao (Class IIb, Level B).
 
 ---
@@ -53,7 +64,7 @@ Rung nhĩ là một yếu tố nguy cơ chính gây ra thuyên tắc mạch, b�
 ### Đánh giá và Quản lý Nguy cơ Xuất huyết
 
 - **Nguyên tắc cốt lõi:** Việc đánh giá nguy cơ chảy máu nhằm mục đích nhận diện và giải quyết các yếu tố nguy cơ chảy máu có thể thay đổi được, chứ **không được dùng điểm số chảy máu để trì hoãn hoặc từ chối chỉ định kháng đông** ở bệnh nhân có chỉ định (Class III, Level B).
-- Khuyến cáo đánh giá và quản lý các yếu tố nguy cơ chảy máu có thể thay đổi được (như kiểm soát huyết áp nghiêm ngặt, hạn chế rượu, tránh dùng NSAID hoặc kháng tiểu cầu không cần thiết, kiểm tra INR thường xuyên) ở tất cả bệnh nhân bắt đầu dùng OAC (Class I, Level B).
+- Khuyến cáo đánh giá và quản lý các yếu tố nguy cơ chảy máu có thể thay đổi được (như kiểm soát huyết áp nghiêm ngặt, hạn chế rượu, tránh dùng NSAID hoặc kháng [[Tiểu cầu]] không cần thiết, kiểm tra INR thường xuyên) ở tất cả bệnh nhân bắt đầu dùng OAC (Class I, Level B).
 - **Quản lý xuất huyết khi đang dùng kháng đông (Hình 11):**
     - Khi có chảy máu hoạt động: Khuyến cáo tạm ngừng kháng đông và thực hiện các biện pháp chẩn đoán/điều trị tìm nguyên nhân và xử trí tại chỗ (Class I, Level C).
     - **Đảo ngược tác dụng kháng đông khi chảy máu đe dọa tính mạng hoặc ở vị trí trọng yếu:**
@@ -74,7 +85,7 @@ Rung nhĩ là một yếu tố nguy cơ chính gây ra thuyên tắc mạch, b�
 
 ### Kháng đông Phối hợp ở Bệnh nhân Hội chứng Mạch vành cấp (ACS) hoặc Can thiệp Mạch vành qua da (PCI) (Hình 14)
 
-- Khi cần phối hợp kháng tiểu cầu và kháng đông: DOAC được khuyến cáo ưu tiên hơn VKA để giảm thiểu nguy cơ chảy máu (Class I, Level A).
+- Khi cần phối hợp kháng [[Tiểu cầu]] và kháng đông: DOAC được khuyến cáo ưu tiên hơn VKA để giảm thiểu nguy cơ chảy máu (Class I, Level A).
 - **Hội chứng mạch vành cấp (ACS) trải qua PCI không biến chứng:** Khuyến cáo dừng sớm aspirin ($\le 1$ tuần) và tiếp tục duy trì liệu pháp kép gồm OAC và một thuốc ức chế $P2Y_{12}$ (ưu tiên clopidogrel) kéo dài đến 12 tháng (Class I, Level A).
 - **Can thiệp mạch vành qua da (PCI) chương (không biến chứng):** Khuyến cáo dừng sớm aspirin ($\le 1$ tuần) và duy trì liệu pháp kép gồm OAC và thuốc ức chế $P2Y_{12}$ (ưu tiên clopidogrel) trong tối đa 6 tháng (Class I, Level A).
 - **Liệu pháp ba thuốc (Triple therapy) kéo dài:** Chỉ nên cân nhắc kéo dài liệu pháp 3 thuốc (OAC + $P2Y_{12}$i + aspirin) lên đến 1 tháng nếu nguy cơ thiếu máu cục bộ/tắc mạch vành vượt trội nguy cơ chảy máu (Class IIa, Level C đối với ACS; Class IIa, Level B đối với PCI chương).
@@ -90,10 +101,10 @@ Rung nhĩ là một yếu tố nguy cơ chính gây ra thuyên tắc mạch, b�
 - **Thuộc tài liệu:** _2024 ESC Guidelines for the management of atrial fibrillation developed in collaboration with the European Association for Cardio-Thoracic Surgery (EACTS)_
 - **Nội dung mô tả dưới hình:** Sơ đồ này cung cấp hướng dẫn toàn diện để quản lý nguy cơ chảy máu khi bắt đầu hoặc trong quá trình điều trị OAC:
     1. _Khẳng định nguyên tắc:_ Đánh giá bệnh sử kỹ lưỡng để xác định các yếu tố nguy cơ khi bắt đầu dùng OAC (Class I). Không sử dụng các thang điểm chảy máu để quyết định bắt đầu hay ngừng OAC (Class III).
-    2. _Quản lý các yếu tố nguy cơ chảy máu có thể thay đổi được (Class I):_ Kiểm soát huyết áp; dừng các NSAID và thay bằng giảm đau khác; loại bỏ kháng tiểu cầu phối hợp không có chỉ định; giảm lượng rượu dưới 3 đơn vị cồn tiêu chuẩn mỗi tuần; xem xét tương tác thuốc, giảm corticosteroid, dùng PPI nếu có nguy cơ xuất huyết tiêu hóa cao.
+    2. _Quản lý các yếu tố nguy cơ chảy máu có thể thay đổi được (Class I):_ Kiểm soát huyết áp; dừng các NSAID và thay bằng giảm đau khác; loại bỏ kháng tiểu cầu phối hợp không có chỉ định; giảm lượng rượu dưới 3 đơn vị cồn tiêu chuẩn mỗi tuần; xem xét tương tác thuốc, giảm [[[[Corticoid]]|corticosteroid]], dùng PPI nếu có nguy cơ xuất huyết tiêu hóa cao.
     3. _Quản lý INR không ổn định:_ Duy trì INR 2.0-3.0 (Class I) và TTR >70% (Class IIa), chuyển sang DOAC nếu không đạt mục tiêu TTR trên VKA (Class I).
     4. _Quản lý bệnh đồng mắc:_ Kiểm soát suy tim đạt thể tích tuần hoàn tối ưu, kiểm soát đường huyết chặt chẽ trong đái tháo đường (Class I).
-    5. _Đánh giá các yếu tố nguy cơ không thể thay đổi:_ Tuổi cao, tiền sử xuất huyết nặng, suy thận/suy gan nặng, ung thư, sa sút trí tuệ để tăng tần suất theo dõi định kỳ. Nếu có chống chỉ định tuyệt đối (như u não nguyên phát, xuất huyết não do thoái hóa bột), cân nhắc bít tiểu nhĩ (Class IIb).
+    5. _Đánh giá các yếu tố nguy cơ không thể thay đổi:_ Tuổi cao, tiền sử xuất huyết nặng, suy [[Thận]]/suy [[Gan]] nặng, ung thư, sa sút trí tuệ để tăng tần suất theo dõi định kỳ. Nếu có chống chỉ định tuyệt đối (như u não nguyên phát, xuất huyết não do thoái hóa bột), cân nhắc bít tiểu nhĩ (Class IIb).
 
 ---
 
@@ -102,7 +113,7 @@ Rung nhĩ là một yếu tố nguy cơ chính gây ra thuyên tắc mạch, b�
 - **Tên hình:** _Figure 11. Management of oral anticoagulant-related bleeding in patients with AF_
 - **Thuộc tài liệu:** _2024 ESC Guidelines for the management of atrial fibrillation developed in collaboration with the European Association for Cardio-Thoracic Surgery (EACTS)_
 - **Nội dung mô tả dưới hình:** Sơ đồ phân loại xử trí xuất huyết dựa trên mức độ nghiêm trọng và loại thuốc kháng đông đang sử dụng (VKA hay DOAC):
-    - _Mọi bệnh nhân:_ Thực hiện ép cơ học tại chỗ, đánh giá huyết động, xét nghiệm đông máu cơ bản, công thức máu và chức năng thận, xác định thời điểm và liều lượng kháng đông cuối cùng đã dùng. Khuyến cáo ngắt kháng đông và can thiệp tìm nguyên nhân (Class I).
+    - _Mọi bệnh nhân:_ Thực hiện ép cơ học tại chỗ, đánh giá huyết động, xét nghiệm đông máu cơ bản, công thức máu và chức năng [[Thận]], xác định thời điểm và liều lượng kháng đông cuối cùng đã dùng. Khuyến cáo ngắt kháng đông và can thiệp tìm nguyên nhân (Class I).
     - _Nhánh VKA:_
         - _Chảy máu nhẹ:_ Trì hoãn liều VKA cho đến khi INR < 2.0.
         - _Chảy máu nặng không đe dọa tính mạng:_ Bù dịch, truyền máu, cân nhắc dùng Vitamin K, FFP hoặc PCC.
@@ -135,4 +146,4 @@ Rung nhĩ là một yếu tố nguy cơ chính gây ra thuyên tắc mạch, b�
 
 ---
 
-📈 **Ở lượt tiếp theo, tôi có thể tiếp tục phân tích chi tiết Phần 3 của khuyến cáo – tập trung vào Trụ cột [R] (Reduce symptoms) bao gồm việc lựa chọn thuốc kiểm soát tần số thất, các chiến lược kiểm soát nhịp bằng thuốc chống loạn nhịp, sốc điện chuyển nhịp và đặc biệt là chỉ định can thiệp triệt đốt (Catheter Ablation) Class I mới nhất cho bệnh nhân Rung nhĩ chứ?**
+📈 **Ở lượt tiếp theo, tôi có thể tiếp tục phân tích chi tiết Phần 3 của khuyến cáo – tập trung vào Trụ cột [R] (Reduce symptoms) bao gồm việc lựa chọn thuốc kiểm soát tần số thất, các chiến lược kiểm soát nhịp bằng thuốc chống loạn nhịp, [[Sốc]] điện chuyển nhịp và đặc biệt là chỉ định can thiệp triệt đốt (Catheter Ablation) Class I mới nhất cho bệnh nhân Rung nhĩ chứ?**

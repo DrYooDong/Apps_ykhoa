@@ -1,9 +1,13 @@
 ---
 title: "Phân tích Điện tâm đồ (ECG) nâng cao"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Cận lâm sàng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 Để đọc và phân tích điện tâm đồ (ECG) ở mức độ nâng cao, bạn không chỉ dừng lại ở việc nhận diện các sóng đơn lẻ mà phải phân tích mối tương quan phức tạp giữa chúng, sử dụng các thuật toán chuyên sâu để chẩn đoán nguyên nhân loạn nhịp, định khu chính xác tổn thương nhồi máu, và nhận diện các rối loạn dẫn truyền hoặc bất thường cấu trúc. 
 
 Dưới đây là các bước phân tích ECG nâng cao được hệ thống hóa:
@@ -16,8 +20,8 @@ Khi đối mặt với nhịp nhanh có phức bộ QRS hẹp (< 0,12s), bước
 
 **Bước 2: Sử dụng Thuật toán Brugada trong Nhịp nhanh QRS rộng (Wide Complex Tachycardia)**
 Nhịp nhanh QRS rộng (> 0,12s) luôn là một thách thức, đe dọa tính mạng và cần phân biệt giữa Nhịp nhanh thất (VT) và Nhịp nhanh trên thất dẫn truyền lệch hướng (SVT with aberrancy). Bạn cần áp dụng **Thuật toán Brugada** theo trình tự sau:
-1.  **Có phức bộ RS ở các chuyển đạo trước tim (V1-V6) không?** Nếu hoàn toàn không có (tất cả đều là R hoặc QS, gọi là đồng dạng - concordance), chẩn đoán ngay là VT (độ đặc hiệu 100%).
-2.  **Khoảng RS > 100 ms (0,1s) ở bất kỳ chuyển đạo trước tim nào không?** (Đo từ đầu sóng R đến đáy sóng S). Nếu có, chẩn đoán là VT.
+1.  **Có phức bộ RS ở các chuyển đạo trước [[Tim]] (V1-V6) không?** Nếu hoàn toàn không có (tất cả đều là R hoặc QS, gọi là đồng dạng - concordance), chẩn đoán ngay là VT (độ đặc hiệu 100%).
+2.  **Khoảng RS > 100 ms (0,1s) ở bất kỳ chuyển đạo trước [[Tim]] nào không?** (Đo từ đầu sóng R đến đáy sóng S). Nếu có, chẩn đoán là VT.
 3.  **Có phân ly nhĩ thất không?** Việc thỉnh thoảng nhìn thấy sóng P độc lập, nhát bắt được thất (capture beats) hoặc nhát bóp hỗn hợp (fusion beats) là bằng chứng chắc chắn của VT.
 4.  **Tiêu chuẩn hình thái ở V1-V2 và V6:** 
     *   *Nếu có dạng Blốc nhánh phải:* Tại V1 có dạng R đơn pha, qR, hoặc tai thỏ phải ($R > R'$); tại V6 có dạng QS hoặc R/S < 1 thì nghiêng về VT.

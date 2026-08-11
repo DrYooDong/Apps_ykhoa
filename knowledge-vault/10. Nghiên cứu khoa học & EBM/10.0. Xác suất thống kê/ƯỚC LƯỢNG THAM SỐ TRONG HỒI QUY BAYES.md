@@ -1,16 +1,20 @@
 ---
 title: "ƯỚC LƯỢNG THAM SỐ TRONG HỒI QUY BAYES"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐔̛𝐨̛́𝐜 𝐥𝐮̛𝐨̛̣𝐧𝐠 𝐭𝐡𝐚𝐦 𝐬𝐨̂́ 𝐭𝐫𝐨𝐧𝐠 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐁𝐚𝐲𝐞𝐬. 𝐋𝐚̀𝐦 𝐭𝐡𝐞̂́ 𝐧𝐚̀𝐨 đ𝐞̂̉ 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐁𝐚𝐲𝐞𝐬 𝐭𝐢̀𝐦 𝐫𝐚 𝐥𝐨̛̀𝐢 𝐠𝐢𝐚̉𝐢?
 
 TS. Đào Hồng Nam
 
 Sau khi xây dựng mô hình và xác định phân bố hậu nghiệm, bước tiếp theo là ước lượng các tham số của mô hình. Trong nhiều bài toán thực tế, phân bố hậu nghiệm không thể tính toán trực tiếp, do đó các phương pháp lấy mẫu trở thành công cụ quan trọng để xấp xỉ nghiệm và thực hiện suy luận Bayes.
 
-Từ Gibbs Sampling, Metropolis–Hastings, Hamiltonian Monte Carlo đến No-U-Turn Sampler, mỗi thuật toán đều có nguyên lý hoạt động, ưu điểm và hạn chế riêng. Việc lựa chọn thuật toán phù hợp không chỉ ảnh hưởng đến tốc độ tính toán mà còn quyết định độ ổn định và độ tin cậy của kết quả phân tích.
+Từ Gibbs Sampling, Metropolis–Hastings, Hamiltonian Monte Carlo đến No-U-Turn Sampler, mỗi thuật toán đều có nguyên lý hoạt động, ưu điểm và hạn chế riêng. Việc lựa chọn thuật toán [[Phù]] hợp không chỉ ảnh hưởng đến tốc độ tính toán mà còn quyết định độ ổn định và độ tin cậy của kết quả phân tích.
 
 𝟒. 𝐔̛𝐨̛́𝐜 𝐥𝐮̛𝐨̛̣𝐧𝐠 𝐭𝐡𝐚𝐦 𝐬𝐨̂́ 𝐭𝐫𝐨𝐧𝐠 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐭𝐮𝐲𝐞̂́𝐧 𝐭𝐢́𝐧𝐡 𝐁𝐚𝐲𝐞𝐬
 
@@ -34,7 +38,7 @@ Về mặt toán học, việc xác định phân bố hậu nghiệm đòi hỏ
 
 Nếu mô hình chỉ bao gồm một hoặc hai tham số, việc tính các tích phân này đôi khi vẫn có thể thực hiện bằng các phương pháp giải tích. Số lượng tham số càng tăng thì không gian tham số càng mở rộng và trở nên phức tạp hơn, đặc biệt trong các mô hình có hàng chục hoặc hàng trăm tham số cần ước lượng. Khi đó, việc xác định phân bố hậu nghiệm bằng các công thức toán học thông thường gần như không còn khả thi và các phương pháp tính toán số trở thành lựa chọn cần thiết.
 
-𝐕𝐢́ 𝐝𝐮̣, một mô hình hồi quy dự báo huyết áp có thể đồng thời bao gồm tuổi, giới tính, BMI, vòng bụng, cholesterol, glucose máu, mức lọc cầu thận, tình trạng hút thuốc, hoạt động thể lực và nhiều biến tương tác. Khi đó, số lượng tham số cần ước lượng có thể lên tới vài chục hoặc vài trăm, đặc biệt nếu mô hình có thêm các hiệu ứng ngẫu nhiên hoặc cấu trúc phân cấp.
+𝐕𝐢́ 𝐝𝐮̣, một mô hình hồi quy dự báo huyết áp có thể đồng thời bao gồm tuổi, giới tính, BMI, vòng bụng, cholesterol, glucose máu, mức lọc cầu [[Thận]], tình trạng hút thuốc, hoạt động thể lực và nhiều biến tương tác. Khi đó, số lượng tham số cần ước lượng có thể lên tới vài chục hoặc vài trăm, đặc biệt nếu mô hình có thêm các hiệu ứng ngẫu nhiên hoặc cấu trúc phân cấp.
 
 Thay vì cố gắng giải chính xác phân bố hậu nghiệm, thống kê Bayes hiện đại sử dụng các phương pháp mô phỏng để lấy mẫu từ phân bố này. Đây là cơ sở của các thuật toán Markov Chain Monte Carlo.
 
@@ -82,7 +86,7 @@ Khi các chuỗi bắt đầu từ những điểm xuất phát khác nhau nhưn
 
 Việc sử dụng nhiều chuỗi Markov cũng là cơ sở để tính toán hệ số R̂, một trong những tiêu chí quan trọng nhất đánh giá sự hội tụ của MCMC sẽ được trình bày ở Mục 5.
 
-𝐕𝐢́ 𝐝𝐮̣ 4. Ước lượng hồi quy Bayes trong nghiên cứu chức năng thận
+𝐕𝐢́ 𝐝𝐮̣ 4. Ước lượng hồi quy Bayes trong nghiên cứu chức năng [[Thận]]
 
 Một nghiên cứu được thực hiện trên 210 bệnh nhân mắc bệnh thận mạn nhằm đánh giá ảnh hưởng của tuổi, huyết áp tâm thu, HbA1c và BMI đến mức lọc cầu thận ước tính.
 
@@ -138,7 +142,7 @@ So với Gibbs Sampling, Metropolis–Hastings có phạm vi ứng dụng rộng
 
 Hiệu quả lấy mẫu của Metropolis–Hastings lại phụ thuộc đáng kể vào phân bố đề xuất được lựa chọn. Khi bước nhảy giữa các trạng thái liên tiếp quá nhỏ, chuỗi chỉ di chuyển chậm trong không gian tham số và cần số lượng vòng lặp rất lớn để khám phá đầy đủ phân bố hậu nghiệm. Trường hợp bước nhảy được chọn quá lớn, nhiều giá trị đề xuất sẽ nằm ở những vùng có xác suất thấp và không được chấp nhận, khiến tỷ lệ chấp nhận giảm và quá trình lấy mẫu trở nên kém hiệu quả.
 
-Việc xác định một phân bố đề xuất phù hợp vì thế trở thành một trong những thách thức quan trọng nhất khi sử dụng Metropolis–Hastings. Khó khăn này càng rõ rệt trong các mô hình hồi quy có số chiều tham số lớn, nơi tốc độ hội tụ của thuật toán thường chậm hơn so với các phương pháp lấy mẫu hiện đại được phát triển sau này.
+Việc xác định một phân bố đề xuất [[Phù]] hợp vì thế trở thành một trong những thách thức quan trọng nhất khi sử dụng Metropolis–Hastings. Khó khăn này càng rõ rệt trong các mô hình hồi quy có số chiều tham số lớn, nơi tốc độ hội tụ của thuật toán thường chậm hơn so với các phương pháp lấy mẫu hiện đại được phát triển sau này.
 
 𝟒.𝟏𝟏. 𝐓𝐡𝐮𝐚̣̂𝐭 𝐭𝐨𝐚́𝐧 𝐇𝐚𝐦𝐢𝐥𝐭𝐨𝐧𝐢𝐚𝐧 𝐌𝐨𝐧𝐭𝐞 𝐂𝐚𝐫𝐥𝐨
 

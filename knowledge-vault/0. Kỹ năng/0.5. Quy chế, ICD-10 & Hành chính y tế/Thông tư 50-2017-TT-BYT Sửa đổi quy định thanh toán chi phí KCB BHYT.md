@@ -1,9 +1,13 @@
 ---
 title: "Thông tư 50-2017-TT-BYT Sửa đổi quy định thanh toán chi phí KCB BHYT"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 BỘ Y TẾ CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM -------- Độc lập - Tự do - Hạnh phúc ---------------
 Số: 50/2017/TT-BYT Hà Nội, ngày 29 tháng 12 năm 2017
 THÔNG TƯ
@@ -19,7 +23,7 @@ Bộ trưởng Bộ Y tế han hành Thông tư sửa đổi, bổ sung các quy
 sỹ, kỹ thuật viên chẩn đoán hình ảnh như sau:
 “Các cơ sở khám bệnh, chữa bệnh tổ chức lưu phim chẩn đoán hình ảnh bằng bản điện tử hoặc phim chụp, trừ trường hợp khám, đ iều trị ngoại trú.
 – Thông tin chụp phim chẩn đoán hình ảnh của người bệnh nội trú phải được thể hiện trong Hồ sơ bệnh án và sổ Chẩn đoán hình ảnh của cơ sở khám bệnh, chữa bệnh.
-– Trong trường hợp chuyển tuyến, cần chuyển các phim chẩn đoán hình ảnh kèm theo các giấy, phiếu chuyển viện: bác sỹ nơi chuyển người bệnh đi có trách nhiệm ký vào tờ photocopy của bản trả lời kết quả gửi đi đồng thời ghi thông tin về việc đã chuyển phim vào trong các phiếu yêu cầu thực hiện chẩn đoán hình ảnh (bao gồm: Phiếu chiếu/chụp X-quang; Phiếu chụp cắt lớp vi tính; Phiếu chụp cộng hường từ; Bản trả lời kết quả chiếu/chụp X-quang; Bản trả lời kết quả chụp cắt lớp vi tính; Bản trả lời kết quả chụp cộng hưởng từ) tương ứng với phim được chuyển và lưu cùng hồ sơ bệnh án.
+– Trong trường hợp chuyển tuyến, cần chuyển các phim chẩn đoán hình ảnh kèm theo các giấy, phiếu chuyển viện: bác sỹ nơi chuyển người bệnh đi có trách nhiệm ký vào tờ photocopy của bản trả lời kết quả gửi đi đồng thời ghi thông tin về việc đã chuyển phim vào trong các phiếu yêu cầu thực hiện chẩn đoán hình ảnh (bao gồm: Phiếu chiếu/[[X-quang|chụp X-quang]]; Phiếu [[CT Scan|chụp cắt lớp vi tính]]; Phiếu chụp cộng hường từ; Bản trả lời kết quả chiếu/[[X-quang|chụp X-quang]]; Bản trả lời kết quả [[CT Scan|chụp cắt lớp vi tính]]; Bản trả lời kết quả [[MRI|chụp cộng hưởng từ]]) tương ứng với phim được chuyển và lưu cùng hồ sơ bệnh án.
 – Trường hợp người được chụp phim thuộc đối tượng khám ngoại trú: trả phim đã chụp kèm theo bản trả lời kết quả tương ứng với phim đã chụp cho người đó. Người bệnh hoặc người đại diện của người bệnh phải ký xác nhận đã lấy phim chẩn đoán hình ảnh tại:
 + Sổ Khám bệnh của cơ sở khám bệnh, chữa bệnh (ghi rõ số lượng phim đã lấy) đối với trường hợp người bệnh không thuộc đối tượng bảo hiểm y tế;
 + Chứng từ thanh toán chi phí khám bệnh, chữa bệnh (ghi rõ số lượng phim đã lấy) đối với trường hợp người bệnh thuộc đối tượng bảo hiểm y tế”.
@@ -76,7 +80,7 @@ hương, Đinh hương, Quế, Gừng, Methyl salicylat, Gelatin, Ethanol” s�
 1. Phạm vi hoạt động chuyên môn ghi trên chứng chỉ hành nghề theo các nhóm chuyên khoa quy định tại
 Phụ lục 4b ban hành kèm theo Thông tư này.
 2. Người hành nghề đã được cấp chứng chỉ hành nghề có phạm vi hoạt động chuyên môn thuộc chuyên
-khoa nào thì được phép thực hiện các dịch vụ chuyên môn kỹ thuật của chuyên khoa đó, trừ trường hợp thực hiện một số phẫu thuật, thủ thuật loại đặc biệt quy định tại Thông tư số 50/2014/TT-BYT ngày 26 tháng 12 năm 2014 của Bộ trưởng Bộ Y tế quy định về việc phân loại phẫu thuật, thủ thuật và định mức nhân lực trong từng ca phẫu thuật, thủ thuật thì cần có thêm chứng chỉ, chứng nhận đào tạo phù hợp.
+khoa nào thì được phép thực hiện các dịch vụ chuyên môn kỹ thuật của chuyên khoa đó, trừ trường hợp thực hiện một số phẫu thuật, thủ thuật loại đặc biệt quy định tại Thông tư số 50/2014/TT-BYT ngày 26 tháng 12 năm 2014 của Bộ trưởng Bộ Y tế quy định về việc phân loại phẫu thuật, thủ thuật và định mức nhân lực trong từng ca phẫu thuật, thủ thuật thì cần có thêm chứng chỉ, chứng nhận đào tạo [[Phù]] hợp.
 Người chịu trách nhiệm chuyên môn kỹ thuật của cơ sở khám bệnh, chữa bệnh căn cứ vào phạm vi hoạt động chuyên môn ghi trên chứng chỉ hành nghề, văn bằng, chứng chỉ hoặc chứng nhận và năng lực của
 
 ---
@@ -88,7 +92,7 @@ người hành nghề để cho phép bằng văn bản người hành nghề đ
 1. Sửa đổi, bổ sung điểm b Khoản 1 Điều 3 như sau:
 “b) Được thực hiện theo quy trình chuyên môn do cấp có thẩm quyền phê duyệt, cụ thể:
 – Các cơ sở khám bệnh, chữa bệnh phải áp dụng thực hiện các tài liệu chuyên môn hướng dẫn về chẩn đoán, đ iều trị và quy trình kỹ thuật do Bộ Y tế ban hành hoặc do người đứng đầu cơ sở khám bệnh, chữa bệnh ban hành áp dụng tại cơ sở (trên cơ sở căn cứ vào các tài liệu chuyên môn hướng dẫn và quy trình kỹ thuật do Bộ Y tế ban hành và đ iều kiện thực tế của cơ sở).
-– Đối với các dịch vụ khám bệnh, chữa bệnh chưa được Bộ Y tế ban hành các hướng dẫn chuyên môn hoặc quy trình kỹ thuật, người đứng đầu cơ sở khám bệnh, chữa bệnh xây dựng và ban hành các hướng dẫn chuyên môn hoặc quy trình kỹ thuật để thực hiện tại cơ sở trên cơ sở tham khảo các nguồn tài liệu chính thống, có bằng chứng khoa học và phù hợp với đ iều kiện của cơ sở.
+– Đối với các dịch vụ khám bệnh, chữa bệnh chưa được Bộ Y tế ban hành các hướng dẫn chuyên môn hoặc quy trình kỹ thuật, người đứng đầu cơ sở khám bệnh, chữa bệnh xây dựng và ban hành các hướng dẫn chuyên môn hoặc quy trình kỹ thuật để thực hiện tại cơ sở trên cơ sở tham khảo các nguồn tài liệu chính thống, có bằng chứng khoa học và [[Phù]] hợp với đ iều kiện của cơ sở.
 – Khi ban hành các hướng dẫn chuyên môn hoặc quy trình kỹ thuật đế thực hiện tại cơ sở, người đứng đầu cơ sở khám bệnh, chữa bệnh có trách nhiệm gửi hướng dẫn hoặc quy trình đã ban hành đến cơ quan bảo hiểm xã hội tình nơi cơ sở khám bệnh, chữa bệnh đặt trụ sở.”
 2. Sửa đổi ví dụ tại điểm b Khoản 3 Điều 4 như sau:
 “Ví dụ: Người bệnh thuộc đối tượng có mức hưởng 95% chi phí khám bệnh, chữa bệnh, được chỉ định thực hiện dịch vụ kỹ thuật “Chụp cắt lớp vi tính toàn thân” (không có thuốc cản quang), thực hiện như sau:
@@ -110,12 +114,12 @@ mức giá thanh toán như sau:
 STT DVKT/Nhóm Điều kiện thanh toán Tỷ lệ, mức giá thanh toán
 DVKT
 1. Lọc máu cấp cứu Thực hiện đối với một trong các
-– Trường hợp phải đặt trường hợp sau: catheter, thanh toán bằng giá của dịch vụ kỹ thuật a) Quá tải thể tích không đáp ứng “Thận nhân tạo cấp cứu”. với đ iều trị hoặc có vô niệu, thiểu niệu; – Trường hợp không phải đặt catheter (do sử dụng b) Tăng kali có rối loạn trên điện được AVF có sẵn), thanh tâm đồ hoặc kali máu trên 6,5 toán bàng giá của dịch vụ meq/L; kỹ thuật “Thận nhân tạo cấp cứu” trừ (-) đi 130.000 c) Hội chứng ure máu cao: tràn dịch đồng (tương đương 1/4 màng tim, các biểu hiện rối loạn tâm (một p hần tư) giá của thần không lý giải được ở người catheter). bệnh suy thận;
+– Trường hợp phải đặt trường hợp sau: catheter, thanh toán bằng giá của dịch vụ kỹ thuật a) Quá tải thể tích không đáp ứng “[[Thận]] nhân tạo cấp cứu”. với đ iều trị hoặc có vô niệu, thiểu niệu; – Trường hợp không phải đặt catheter (do sử dụng b) Tăng kali có rối loạn trên điện được AVF có sẵn), thanh tâm đồ hoặc kali máu trên 6,5 toán bàng giá của dịch vụ meq/L; kỹ thuật “[[Thận]] nhân tạo cấp cứu” trừ (-) đi 130.000 c) Hội chứng ure máu cao: tràn dịch đồng (tương đương 1/4 màng [[Tim]], các biểu hiện rối loạn tâm (một p hần tư) giá của thần không lý giải được ở người catheter). bệnh suy thận;
 d) Toan chuyển hóa nặng (pH máu dưới 7,1);
 đ) Ngộ độc rượu, ngộ độc thuốc hoặc ngộ độc glycol.
 e) Các trường hợp ngộ độc khác có chỉ định lọc máu cấp cứu sau khi hội chẩn.
 10 Các xét nghiệm chỉ Chẩn đoán và theo dõi đ iều trị bệnh – Thanh toán theo giá điểm khối u bằng ung thư đối với một trong các xét DVKT “Xét nghiệm chỉ kỹ thuật miễn dịch nghiệm sau: điểm khối u bằng kỹ thuật phóng xạ hoặc hóa hóa sinh”; – Định lượng CA 125: Buồng trứng; sinh. – Không thanh toán đối với – Định lượng CA 15-3: Vú; trường hợp các kết quả xét nghiệm, chẩn đoán hình – Định lượng CA 19-9: Tụy, đường ảnh khác đã chẩn đoán xác mật; định hoặc đã đánh giá được kết quả đ iều trị bệnh ung – Định lượng CA 72 – 4: Dạ dày; thư. Trường hợp thực hiện các xct nghiệm để theo dõi – Định lượng CEA: Ung thư biểu kết quả đ iều trị, đánh giá mô. tái phát, di căn thì vẫn được thanh toán.
-11 Định lượng Chẩn đoán, theo dõi một trong các Thanh toán bằng giá CRP/CRP hs trường hợp sau đây: DVKT
+11 Định lượng Chẩn đoán, theo dõi một trong các Thanh toán bằng giá [[CRP]]/[[CRP]] hs trường hợp sau đây: DVKT
 a) Nghi ngờ có ổ nhiễm trùng, có ít nhất 02 trong 04 tiêu chuẩn sau:
 
 ---
@@ -123,15 +127,15 @@ a) Nghi ngờ có ổ nhiễm trùng, có ít nhất 02 trong 04 tiêu chuẩn s
 – Nhiệt độ cơ thể < 36°c hoặc > 38,3°C;
 – Nhịp tim nhanh 90 lần/phút;
 – Nhịp thở > 22 lần/phút hoặc PaCƠ2 <32 mmHg;
-– Bạch cầu máu >12G/L, hoặc < 4G/L hoặc > 10% bạch cầu non. Đổi với trẻ em: Khi nghi ngờ có ô nhiễm trùng, có nhiệt độ cơ thể < 36°c hoặc > 38,3°c và có nhịp tim hoặc nhịp thở thay đổi quá giới hạn sinh lý theo tuổi.
+– [[Bạch cầu]] máu >12G/L, hoặc < 4G/L hoặc > 10% [[Bạch cầu]] non. Đổi với trẻ em: Khi nghi ngờ có ô nhiễm trùng, có nhiệt độ cơ thể < 36°c hoặc > 38,3°c và có nhịp tim hoặc nhịp thở thay đổi quá giới hạn sinh lý theo tuổi.
 b) Nhiễm trùng sơ sinh;
-c) Bệnh mạch vành, nhồi máu cơ tim;
+c) Bệnh mạch vành, nhồi máu [[Tim|cơ tim]];
 d) Viêm da nhiễm độc, các bệnh tự miễn.
 12. Định lượng Pro-
 1. Chẩn đoán và theo dõi tình trạng
 Thanh toán bằng giá calcitonin nhiễm trùng nặng khi có một trong DVKT. những dấu hiệu sau đây: [Máu] Khi sử dụng xét nghiệm – Điểm suy đa tạng (SOFA) > 2; Procalcitonin để theo dõi tình trạng nhiễm trùng – Nghi ngờ có ổ nhiễm trùng và có 2 nặng và đáp ứng đ iều trị trong 3 tiêu chuẩn: Nhịp thở> 22 theo quy định tại Khoản 1 lần/phút; Huyết áp tâm thu < 100 m ục này: mmHg; Glassgow < 13 điểm. + Thanh toán tối đa 01
 2. Đối với trẻ em:
-lần/mỗi 24 giờ đối với người bệnh sốc nhiễm – Chẩn đoán và theo dõi các trường trùng; hợp nhiễm trùng huyết; + Thanh toán tối đa 01 – Theo dõi và tiên lượng suy đa tạng lần/mồi 48 giờ đối với khi có rối loạn chức năng từ 2 cơ người bệnh nhiễm trùng quan trở lên. nặng;
+lần/mỗi 24 giờ đối với người bệnh [[Sốc]] nhiễm – Chẩn đoán và theo dõi các trường trùng; hợp [[Nhiễm trùng huyết]]; + Thanh toán tối đa 01 – Theo dõi và tiên lượng suy đa tạng lần/mồi 48 giờ đối với khi có rối loạn chức năng từ 2 cơ người bệnh nhiễm trùng quan trở lên. nặng;
 + Không thanh toán đối với các trường hợp đã có bằng chứng chứng minh: hết dấu hiệu chỉ định và Procalcitonin < 02 lần giá trị tham chiếu.
 Các trường hợp nhiễm khuẩn khác. Thanh toán theo giá DVKT Định lượng CRP/CRP hs.
 Trường hợp chỉ định DVKT Định Thanh toán DVKT lượng CRP/CRP hs cùng thời điểm Procalcitonin và không hoặc đã có kết quả Procalcitonin để thanh toán DVKT Định chẩn đoán, theo dõi tình trạng nhiễm lượng CRP/CRP hs trùng nặng.
@@ -169,7 +173,7 @@ b) Bệnh lý sọ não có gây rối loạn nuốt do: Tai biến mạch máu 
 c) Bệnh lý dây thần kinh vận động do: Bại liệt hoặc Viêm đa dây đa rễ;
 d) Parkinson;
 đ) Xơ cột bên teo cơ.
-65 Chụp cộng hưởng từ khác Giám đốc cơ sở khám bệnh, chữa bệnh quy định các trường hợp được chỉ định chụp và gửi cơ quan bảo hiểm xã hội.
+65 [[MRI|Chụp cộng hưởng từ]] khác Giám đốc cơ sở khám bệnh, chữa bệnh quy định các trường hợp được chỉ định chụp và gửi cơ quan bảo hiểm xã hội.
 Trường hợp Giám đốc cơ sở khám bệnh, chữa bệnh không quy định được các trường hợp chỉ định chụp thì phải phê duyệt hoặc ủy quyền phê duyệt đối với từng trường hợp cụ thể. Trường hợp cần thiết phải tổ chức hội chẩn trước khi phê duyệt.
 Điều 8. Sửa đổi, bổ sung Thông tư số 04/2017/TT-BYT ngày 14 tháng 4 năm 2017 của Bộ trưởng Bộ Y tế ban hành Danh m ục và tỷ lệ, đ iều kiện thanh toán đối với vật tư y tế thuộc phạm vi được hưởng của người tham gia bảo hiểm y tế
 

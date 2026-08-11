@@ -1,9 +1,14 @@
 ---
 title: "SL_Tiêu hóa_Miệng & Thực quản"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. Hoạt Động Cơ Học Tại Miệng: Nhai (Mastication)
@@ -41,7 +46,7 @@ Khác với các dịch tiêu hóa khác, sự bài tiết nước bọt **đư�
 
 *   **Hệ phó giao cảm (Cranial nerves VII và IX):** Kích thích mạnh mẽ thông qua chất dẫn truyền Acetylcholine (ACh) gắn vào thụ thể muscarinic ($M_3$) trên tế bào nang và ống tuyến, qua chất truyền tin thứ hai là $IP_3/Ca^{2+}$. Kết quả tạo ra lượng lớn nước bọt loãng, nhiều nước, làm giãn mạch. Thuốc kháng cholinergic như atropine sẽ ức chế tiết nước bọt, gây khô miệng.
 *   **Hệ giao cảm:** Kích thích tiết nước bọt qua thụ thể $\beta$-adrenergic (chất dẫn truyền Norepinephrine), chất truyền tin thứ hai là cAMP. Nước bọt do giao cảm kích thích thường đặc, nhớt, giàu protein/mucin và thể tích ít hơn.
-*   **Các yếu tố ảnh hưởng:** Tiết nước bọt tăng lên nhờ thức ăn trong miệng, mùi, phản xạ có điều kiện (conditioned reflexes), và cảm giác buồn nôn. Tiết nước bọt giảm khi ngủ, sợ hãi, mất nước.
+*   **Các yếu tố ảnh hưởng:** Tiết nước bọt tăng lên nhờ thức ăn trong miệng, mùi, phản xạ có điều kiện (conditioned reflexes), và cảm giác [[[[Nôn ói]]|buồn nôn]]. Tiết nước bọt giảm khi ngủ, sợ hãi, [[Mất nước]].
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Figure 6.6 Regulation of salivary secretion.

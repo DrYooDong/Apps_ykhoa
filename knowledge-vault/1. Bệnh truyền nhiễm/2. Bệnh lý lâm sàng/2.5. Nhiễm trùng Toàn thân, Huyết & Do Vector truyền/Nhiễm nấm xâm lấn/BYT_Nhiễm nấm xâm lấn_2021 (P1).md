@@ -1,3 +1,12 @@
+---
+title: "BYT_Nhiễm nấm xâm lấn_2021 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
 
 # PHẦN 1: TỔNG QUAN, CƠ CHẾ BỆNH SINH VÀ CHẨN ĐOÁN NHIỄM NẤM XÂM LẤN
 
@@ -8,10 +17,10 @@
 - **Định nghĩa**: **Nhiễm nấm xâm lấn (NNXL)** được xác định khi **có mặt của nấm sợi hoặc nấm men ở các mô sâu** được xác nhận bằng xét nghiệm nuôi cấy hoặc mô bệnh học.
 - **Phân loại theo giải phẫu và vị trí tổn thương**:
     - _Nhiễm nấm da - niêm mạc_.
-    - _Nhiễm nấm sâu (nhiễm nấm xâm lấn các cơ quan)_: Trong đó, **nhiễm nấm máu** và **nhiễm nấm phổi** là hai thể bệnh phổ biến nhất.
+    - _Nhiễm nấm sâu (nhiễm nấm xâm lấn các cơ quan)_: Trong đó, **nhiễm nấm máu** và **nhiễm nấm [[Phổi]]** là hai thể bệnh phổ biến nhất.
 - **Phân loại theo dịch tễ học**:
     - _Nhiễm nấm lưu hành_: Gây ra bởi các chủng nấm **không phải thành phần của vi hệ bình thường** trên cơ thể (Ví dụ: _Coccidioides_), phần lớn lây nhiễm do tiếp xúc với môi trường.
-    - _Nhiễm nấm cơ hội_: Xảy ra khi tình trạng miễn dịch của cơ thể bị suy giảm bởi các tác nhân thuộc **thành phần của vi hệ bình thường** cư trú trên da, niêm mạc đường tiêu hóa (Ví dụ: _Candida_).
+    - _Nhiễm nấm cơ hội_: Xảy ra khi tình trạng miễn dịch của cơ thể bị suy giảm bởi các tác nhân thuộc **thành phần của vi hệ bình thường** cư trú trên da, niêm mạc [[Đường tiêu hóa]] (Ví dụ: _Candida_).
 - **Phân loại theo hình thái học**:
     - _Nấm men_: Cấu trúc đơn bào, hình cầu hoặc hình ovan (kích thước 2-60 µm), sinh sản bằng cách nảy chồi hoặc tạo túi bào tử/bào tử đảm. Khi chồi kéo dài không phân tách sẽ tạo thành sợi giả (_Pseudohyphae_).
     - _Nấm sợi (nấm mốc)_: Chia thành **nấm sợi có vách ngăn** (_Aspergillus, Trichophyton, Microsporum..._) và **nấm sợi không có vách ngăn** (_Rhizopus, Mucor..._).
@@ -26,7 +35,7 @@ Quá trình hình thành và phát triển của nhiễm nấm xâm lấn phụ 
     - _Né tránh hệ miễn dịch_: Các cấu trúc ngoại bào như lớp vỏ, dạng bào tử thiếu các lớp protein kỵ nước, hoặc **chất melanin** ở vách tế bào giúp nấm tránh hiện tượng thực bào.
     - _Sự chuyển đổi hình thái_: Khả năng chuyển đổi qua lại giữa dạng nấm men và nấm sợi đóng vai trò then chốt trong biểu hiện gene độc lực. **Dạng nấm men** ưu thế cho việc **lan tràn và cư trú** trên bề mặt, trong khi **dạng sợi** giúp nấm **dễ dàng xâm nhập sâu vào mô** và hình thành màng sinh học (_biofilm_).
 - **Sự suy giảm miễn dịch của ký chủ**:
-    - _Yếu tố suy giảm miễn dịch mắc phải_: Giảm bạch cầu hạt, sau ghép tạng, nhiễm HIV/AIDS, trẻ đẻ non, điều trị kháng sinh phổ rộng, điều trị hóa chất ung thư hoặc dùng các thuốc ức chế miễn dịch/corticoid kéo dài.
+    - _Yếu tố suy giảm miễn dịch mắc phải_: Giảm [[Bạch cầu]] hạt, sau ghép tạng, nhiễm HIV/AIDS, trẻ đẻ non, điều trị [[Kháng sinh]] phổ rộng, điều trị hóa chất ung thư hoặc dùng các thuốc ức chế miễn dịch/[[Corticoid]] kéo dài.
     - _Yếu tố suy giảm miễn dịch bẩm sinh_: Rối loạn hoạt động của hệ enzyme oxy hóa NADPH, bất thường trong tổng hợp yếu tố hoại tử khối u alpha (**TNF-α**), Interleukin 10...
 
 #### **Dịch Tễ Học Nhiễm Nấm Xâm Lấn Trên Thế Giới và Việt Nam**
@@ -52,7 +61,7 @@ _(Trích xuất từ Chương 1, mục 1.2.1, tài liệu: "BYT_Nhiễm nấm x�
 
 - **Tại Việt Nam**:
     - _Nhiễm nấm máu do Candida_: Ước tính có khoảng **5/100.000 dân** nhiễm nấm máu mỗi năm. Loài gây bệnh chủ yếu là **C. albicans** và **C. tropicalis** (chiếm tỷ lệ lần lượt khoảng 38 - 39,9% và 36,1 - 39,2% tùy nghiên cứu). Đáng chú ý, chưa có ca nhiễm chủng siêu kháng thuốc _C. auris_ nào được báo cáo chính thức tại Việt Nam (có thể do khó khăn trong định danh chính xác).
-    - _Aspergillus xâm lấn_: Chiếm tỷ lệ khoảng 10% ở bệnh nhân leucemi dòng tủy cấp và các bệnh máu ác tính khác; 3,9% ở bệnh nhân nhập viện vì bệnh phổi tắc nghẽn mạn tính (COPD).
+    - _Aspergillus xâm lấn_: Chiếm tỷ lệ khoảng 10% ở bệnh nhân leucemi dòng tủy cấp và các bệnh máu ác tính khác; 3,9% ở bệnh nhân nhập viện vì bệnh [[Phổi]] tắc nghẽn mạn tính (COPD).
     - _Talaromyces marneffei_: Trung bình chiếm **4,4%** số bệnh nhân AIDS nhập viện hàng năm tại BV Bệnh Nhiệt đới TP. HCM và là nguyên nhân tử vong cho **6,3%** trong số này.
 
 #### **Sinh Lý Bệnh Về Tình Trạng Đề Kháng Thuốc Kháng Nấm**
@@ -83,7 +92,7 @@ Theo tiêu chuẩn đồng thuận quốc tế **EORTC/MSG 2008**, chẩn đoán
     - Sử dụng môi trường **CHROMagar Candida** giúp phân biệt các loài _Candida_ qua màu sắc khuẩn lạc sau 24 giờ.
     - Nuôi cấy tìm _Aspergillus_ từ bệnh phẩm không vô trùng cần thực hiện trên cả **3 môi trường: SDA, BHI và PDA** ở nhiệt độ 30ºC và 37ºC trong 72 giờ.
 - **Huyết thanh học**:
-    - **β-D-Glucan**: Thành phần vách tế bào của nhiều loại nấm (_Candida, Aspergillus, P. jirovecii_), không đặc hiệu nhưng có giá trị loại trừ cao hoặc gợi ý nhiễm nấm sâu khi dương tính 2 lần liên tiếp. Cần lưu ý dương tính giả do lọc máu, truyền chế phẩm máu, hoặc dùng một số loại kháng sinh (piperacillin-tazobactam).
+    - **β-D-Glucan**: Thành phần vách tế bào của nhiều loại nấm (_Candida, Aspergillus, P. jirovecii_), không đặc hiệu nhưng có giá trị loại trừ cao hoặc gợi ý nhiễm nấm sâu khi dương tính 2 lần liên tiếp. Cần lưu ý dương tính giả do lọc máu, truyền chế phẩm máu, hoặc dùng một số loại [[Kháng sinh]] (piperacillin-tazobactam).
     - **Galactomannan (GM)**: Kháng nguyên đặc hiệu của _Aspergillus_, xét nghiệm trên huyết thanh hoặc dịch rửa phế quản (BAL). Dương tính 2 lần liên tiếp giúp chẩn đoán xác định.
     - **Mannan và Anti-mannan**: Cặp kháng nguyên-kháng thể đặc hiệu cho _Candida_, giúp tăng độ nhạy chẩn đoán lên 83% và độ đặc hiệu lên 86%.
 - **Sinh học phân tử**:

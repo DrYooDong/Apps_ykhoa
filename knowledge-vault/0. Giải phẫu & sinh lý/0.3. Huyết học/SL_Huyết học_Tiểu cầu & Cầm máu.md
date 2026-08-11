@@ -1,17 +1,22 @@
 ---
 title: "SL_Huyết học_Tiểu cầu & Cầm máu"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/huyet-hoc
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
-Dựa vào các tài liệu nguồn đã cung cấp, dưới đây là bài học chi tiết về Sinh lý Tiểu cầu và Quá trình Cầm máu, được biên soạn theo đúng cấu trúc yêu cầu:
+
+Dựa vào các tài liệu nguồn đã cung cấp, dưới đây là bài học chi tiết về Sinh lý [[Tiểu cầu]] và Quá trình Cầm máu, được biên soạn theo đúng cấu trúc yêu cầu:
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### Đại Cương Về Tiểu Cầu (Platelets / Thrombocytes)
 Tiểu cầu là những mảnh tế bào nhỏ, không có nhân, đóng vai trò quan trọng trong quá trình cầm máu,.
-*   **Nguồn gốc và Sinh sản:** Tiểu cầu được tạo ra từ các tế bào nhân khổng lồ (megakaryocytes) trong tủy xương. Megakaryocytes sẽ vỡ ra, tống các mảnh bào tương vào hệ tuần hoàn để tạo thành tiểu cầu,. Sự sản sinh tiểu cầu được điều hòa bởi Thrombopoietin (một yếu tố protein lưu hành do gan và thận sản xuất) và các yếu tố kích thích cụm (CSFs).
-*   **Số lượng và Đời sống:** Số lượng tiểu cầu bình thường trong máu dao động từ 150.000 đến 400.000 / $\mu L$,. Khoảng 60-75% tiểu cầu nằm trong máu tuần hoàn, phần còn lại chủ yếu nằm ở lách. Thời gian sống của tiểu cầu khoảng 4 ngày đến 8-12 ngày.
+*   **Nguồn gốc và Sinh sản:** Tiểu cầu được tạo ra từ các tế bào nhân khổng lồ (megakaryocytes) trong tủy xương. Megakaryocytes sẽ vỡ ra, tống các mảnh bào tương vào hệ tuần hoàn để tạo thành tiểu cầu,. Sự sản sinh tiểu cầu được điều hòa bởi Thrombopoietin (một yếu tố protein lưu hành do [[Gan]] và [[Thận]] sản xuất) và các yếu tố kích thích cụm (CSFs).
+*   **Số lượng và Đời sống:** [[Tiểu cầu|Số lượng tiểu cầu]] bình thường trong máu dao động từ 150.000 đến 400.000 / $\mu L$,. Khoảng 60-75% tiểu cầu nằm trong máu tuần hoàn, phần còn lại chủ yếu nằm ở lách. Thời gian sống của tiểu cầu khoảng 4 ngày đến 8-12 ngày.
 *   **Cấu trúc vi thể:** Tiểu cầu có đường kính 2-4 $\mu m$,. Màng tiểu cầu mang điện tích âm mạnh nhờ phân tử phospholipid và có hệ thống vi ống (microtubules) ở ngoại vi cùng màng lõm sâu tạo thành hệ thống kênh. 
 *   **Thành phần bên trong:** Bào tương chứa actin, myosin, glycogen, lysosome và hai loại hạt quan trọng: (1) **Hạt đặc (dense granules)** chứa serotonin, ADP và các nucleotide adenine; (2) **Hạt $\alpha$ ($\alpha$-granules)** chứa các yếu tố đông máu và yếu tố tăng trưởng nguồn gốc tiểu cầu (PDGF). Trên màng tiểu cầu có các thụ thể gắn collagen, ADP, yếu tố von Willebrand (vWF) và fibrinogen.
 
@@ -40,8 +45,8 @@ Khi một mạch máu nhỏ bị tổn thương hoặc cắt đứt, cơ thể k
 ---
 
 #### Giai Đoạn Cầm Máu Duy Trì - Đông Máu (Secondary Hemostasis / Blood Coagulation)
-Đối với các vết thương mạch máu lớn, nút chận tiểu cầu không đủ vững chắc. Quá trình đông máu (coagulation) sẽ được kích hoạt để tạo ra mạng lưới sợi huyết (fibrin) bao bọc lấy tiểu cầu và hồng cầu, tạo thành cục máu đông vững chắc,.
-Đông máu là một dòng thác phản ứng enzyme (cascade) liên quan đến các yếu tố đông máu (được đánh số La Mã, phần lớn do gan tổng hợp và tuần hoàn dưới dạng tiền chất không hoạt động),.
+Đối với các vết thương mạch máu lớn, nút chận tiểu cầu không đủ vững chắc. Quá trình đông máu (coagulation) sẽ được kích hoạt để tạo ra mạng lưới sợi huyết (fibrin) bao bọc lấy tiểu cầu và [[Hồng cầu]], tạo thành cục máu đông vững chắc,.
+Đông máu là một dòng thác phản ứng enzyme (cascade) liên quan đến các yếu tố đông máu (được đánh số La Mã, phần lớn do [[Gan]] tổng hợp và tuần hoàn dưới dạng tiền chất không hoạt động),.
 
 **Tên Bảng:** Table 31-5 - System for naming blood-clotting factors.
 **Thuộc Tài Liệu:** [Book] ganong's review of medical physiology 24th edition.pdf
@@ -81,7 +86,7 @@ Quá trình đông máu diễn ra theo 3 con đường:
 
 #### Các Cơ Chế Chống Đông Máu Tự Nhiên (Natural Anticoagulant Mechanisms)
 Để giữ cho máu ở trạng thái lỏng lỏng trong lòng mạch và ngăn chặn sự lan rộng quá mức của cục máu đông, cơ thể có các hệ thống bảo vệ (Thromboprotection):
-*   **Antithrombin III:** Là một chất ức chế protease tuần hoàn, có khả năng gắn và bất hoạt Thrombin (IIa) cũng như các yếu tố IXa, Xa, XIa, XIIa. Hoạt tính của Antithrombin III được tăng cường mạnh mẽ khi có mặt của **Heparin** (một chất chống đông tự nhiên do tế bào mast và bạch cầu ái kiềm sản xuất),.
+*   **Antithrombin III:** Là một chất ức chế protease tuần hoàn, có khả năng gắn và bất hoạt Thrombin (IIa) cũng như các yếu tố IXa, Xa, XIa, XIIa. Hoạt tính của Antithrombin III được tăng cường mạnh mẽ khi có mặt của **Heparin** (một chất chống đông tự nhiên do tế bào mast và [[Bạch cầu]] ái kiềm sản xuất),.
 *   **Hệ thống Thrombomodulin - Protein C:** Tế bào nội mô bình thường bài tiết Thrombomodulin. Thrombin khi gắn vào Thrombomodulin sẽ mất tính gây đông máu và thay vào đó nó trở thành chất chống đông bằng cách hoạt hóa **Protein C**,. Protein C hoạt hóa (APC) cùng với đồng yếu tố **Protein S** sẽ bất hoạt các yếu tố Va và VIIIa, ngăn chặn dòng thác đông máu,.
 *   **Prostacyclin ($PGI_2$) và Nitric Oxide (NO):** Do tế bào nội mô nguyên vẹn sản xuất, có tác dụng giãn mạch và ức chế sự bám dính/ngưng tập của tiểu cầu,.
 *   **Tissue Factor Pathway Inhibitor (TFPI):** Là chất ức chế con đường đông máu ngoại sinh bằng cách tạo phức hợp tứ phân với Tissue factor (TF), Yếu tố VIIa và Xa.

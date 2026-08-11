@@ -1,15 +1,20 @@
 ---
 title: "SL_Cơ xương" xương"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Dựa vào các tài liệu nguồn đã cung cấp, dưới đây là bài học chi tiết về Sinh lý học Cơ xương, được biên soạn theo đúng cấu trúc yêu cầu:
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### Cấu Trúc Đại Cương Của Cơ Xương (Skeletal Muscle Structure)
-Cơ xương (cơ vân) là loại cơ bám vào xương, chịu sự điều khiển chủ ý của hệ thần kinh trung ương và đóng vai trò quan trọng trong việc duy trì tư thế, vận động, hô hấp và sinh nhiệt,.
+Cơ xương (cơ vân) là loại cơ bám vào xương, chịu sự điều khiển chủ ý của [[Hệ thần kinh trung ương]] và đóng vai trò quan trọng trong việc duy trì tư thế, vận động, hô hấp và sinh nhiệt,.
 *   **Cấp độ đại thể đến vi thể:** Một bắp cơ bao gồm nhiều bó cơ (fasciculi). Mỗi bó cơ chứa nhiều sợi cơ (muscle fibers), và mỗi sợi cơ bản chất là một tế bào đa nhân, hình trụ dài, được bao bọc bởi màng tế bào gọi là màng sợi cơ (sarcolemma),. Bên trong mỗi sợi cơ chứa nhiều tơ cơ (myofibrils) chạy dọc theo trục của tế bào,.
 *   **Cấu trúc Sarcomere:** Đây là đơn vị co cơ cơ bản, có chiều dài trung bình khoảng 2 $\mu m$ khi nghỉ, được giới hạn bởi 2 vạch Z (Z lines),. 
     *   **Dải I (I band):** Vùng sáng chứa các sợi mảnh (thin filaments) bao gồm protein actin, tropomyosin và troponin. Sợi mảnh bắt đầu từ vạch Z và kéo dài hướng về tâm của sarcomere,,.

@@ -1,7 +1,13 @@
 ---
+title: "Mycobacterium tuberculosis (Lao)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Đại cương và Lịch sử
 
 - **Định nghĩa:** Bệnh lao (Tuberculosis - TB) là một bệnh lý truyền nhiễm bao gồm một phổ lâm sàng rộng do vi khuẩn _Mycobacterium tuberculosis_ (hoặc ít phổ biến hơn là _Mycobacterium bovis_) gây ra. Đây là nguyên nhân hàng đầu gây tử vong do một tác nhân truyền nhiễm đơn lẻ trên toàn thế giới.
@@ -12,7 +18,7 @@ tags:
 - **Hình thái và Cấu trúc:** _M. tuberculosis_ là trực khuẩn hiếu khí, kháng cồn kháng toan (acid-fast bacillus - AFB), có vách tế bào chứa hàm lượng cao các lipid trọng lượng phân tử lớn.
 - **Phức hợp _M. tuberculosis_ (MTBC):** Nhóm này bao gồm ít nhất 9 loài có sự tương đồng trình tự gen lên tới 99,9% và tiến hóa từ một tổ tiên chung. _M. tuberculosis sensu stricto_ gây ra phần lớn các ca bệnh ở người trên toàn cầu. _M. africanum_ gây bệnh chủ yếu ở Tây Phi, trong khi _M. bovis_ gây bệnh ở gia súc và có thể lây sang người qua tiếp xúc động vật hoặc uống sữa chưa tiệt trùng.
 - **Đa dạng di truyền:** Dựa trên giải trình tự toàn bộ hệ gen (WGS), phức hợp này được chia thành 7 nhánh phát sinh loài (từ L1 đến L7). Chẳng hạn, nhánh L2 (còn gọi là nhánh Đông Á hoặc chủng Bắc Kinh) cho thấy một số khác biệt về độc lực và khả năng lây truyền.
-- **Đặc trưng tổn thương:** Tổn thương mô bệnh học điển hình của lao là tạo u hạt và hiện tượng **hoại tử bã đậu** (caseous necrosis - chất hoại tử dạng phô mai, không có tế bào). Các hang lao ở phổi thường chứa một lượng vi khuẩn cực kỳ lớn.
+- **Đặc trưng tổn thương:** Tổn thương mô bệnh học điển hình của lao là tạo u hạt và hiện tượng **hoại tử bã đậu** (caseous necrosis - chất hoại tử dạng phô mai, không có tế bào). Các hang lao ở [[Phổi]] thường chứa một lượng vi khuẩn cực kỳ lớn.
 
 ### 3. Dịch tễ học và Đường lây truyền
 
@@ -23,8 +29,8 @@ tags:
 
 Bệnh lao có thể ảnh hưởng đến hầu hết mọi cơ quan trong cơ thể:
 
-- **Lao phổi (Pulmonary TB):** Là thể phổ biến nhất, với các triệu chứng như ho kéo dài, ho ra máu, sốt về chiều, vã mồ hôi trộm và sụt cân.
-- **Lao ngoài phổi (Extrapulmonary TB):** Bao gồm lao màng não (tuberculous meningitis), lao cột sống (bệnh Pott), lao màng ngoài tim (tuberculous pericarditis), và lao hạch (tuberculous lymphadenitis). Đáng chú ý, việc ăn/uống các sản phẩm từ sữa chưa tiệt trùng chứa _M. bovis_ thường gây ra bệnh cảnh lao hạch cổ.
+- **Lao [[Phổi]] (Pulmonary TB):** Là thể phổ biến nhất, với các triệu chứng như ho kéo dài, ho ra máu, [[Sốt]] về chiều, vã mồ hôi trộm và sụt cân.
+- **Lao ngoài phổi (Extrapulmonary TB):** Bao gồm lao màng não (tuberculous meningitis), lao cột sống (bệnh Pott), lao màng ngoài [[Tim]] (tuberculous pericarditis), và lao hạch (tuberculous lymphadenitis). Đáng chú ý, việc ăn/uống các sản phẩm từ sữa chưa tiệt trùng chứa _M. bovis_ thường gây ra bệnh cảnh lao hạch cổ.
 - **Lao kê (Miliary TB):** Là thể lao lan tỏa đường máu cấp tính, gây ra vô số tổn thương nhỏ li ti ở phổi và các cơ quan nội tạng. Thể này thường tiến triển nặng với các bất thường về huyết học.
 - **Lao tiềm ẩn (Latent TB Infection - LTBI) và Đồng nhiễm HIV:** Vi khuẩn có thể tồn tại im lặng trong cơ thể mà không gây triệu chứng. Tuy nhiên, ở những bệnh nhân suy giảm miễn dịch (đặc biệt là đồng nhiễm HIV), nguy cơ tái hoạt động và tiến triển thành lao lan tỏa nhanh chóng là rất cao.
 

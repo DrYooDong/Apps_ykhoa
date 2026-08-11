@@ -1,6 +1,14 @@
 ---
+title: "Caliciviridae"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-[[Norovirus]]
-[[Sapovirus]]
+
+## 📌 Danh Mục Nội Dung
+
+1. [[Norovirus]]
+2. [[Sapovirus]]

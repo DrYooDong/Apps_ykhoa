@@ -1,5 +1,10 @@
 ---
+title: "Hạ đường huyết"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
 tags:
-  - Vande
-  - Roiloan
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+

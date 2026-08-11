@@ -1,3 +1,14 @@
+---
+title: "BYT_VGSVB_2026 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC CHUYÊN SÂU: HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ VIÊM GAN VI RÚT B (PHẦN 1)
 
 _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn đoán, điều trị viêm gan vi rút B của Bộ Y tế Việt Nam, ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16 tháng 06 năm 2026, ký bởi Thứ trưởng Trần Văn Thuấn. Quyết định này chính thức có hiệu lực từ ngày ký và thay thế cho Hướng dẫn ban hành kèm theo Quyết định số 3310/QĐ-BYT ngày 29/7/2019. Ban biên soạn tài liệu gồm các chuyên gia hàng đầu từ Cục Quản lý Khám, chữa bệnh, Hội Truyền nhiễm Việt Nam, Hội Gan mật Việt Nam, Hội Gan mật TP. Hồ Chí Minh và các bệnh viện chuyên khoa lớn trong cả nước._
@@ -8,8 +19,8 @@ _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn
 
 ### Đại cương về bệnh viêm gan vi rút B (HBV)
 
-- **Tầm ảnh hưởng toàn cầu:** Viêm gan vi rút B (viêm gan B) là một bệnh truyền nhiễm phổ biến trên toàn cầu do vi rút viêm gan B (HBV) gây ra. Theo báo cáo năm 2022 của Tổ chức Y tế Thế giới (WHO), ước tính có khoảng **254 triệu người nhiễm HBV mạn** trên toàn thế giới, với **1,2 triệu ca nhiễm mới** và **1,1 triệu trường hợp tử vong hàng năm** (chủ yếu do các biến chứng xơ gan và ung thư biểu mô tế bào gan - HCC).
-- **Đặc điểm dịch tễ tại Việt Nam:** HBV lây truyền qua 3 con đường chính: đường máu, quan hệ tình dục và từ mẹ sang con. Tại Việt Nam, **đường lây chủ yếu là từ mẹ truyền sang con**. Tỷ lệ lưu hành HBsAg trong cộng đồng dân cư từ 18 tuổi trở lên tại Việt Nam ở mức rất cao, chiếm **≥ 9,4%**. Viêm gan B là nguyên nhân hàng đầu gây xơ gan và ung thư biểu mô tế bào gan (HCC) tại nước ta.
+- **Tầm ảnh hưởng toàn cầu:** Viêm gan vi rút B (viêm gan B) là một bệnh truyền nhiễm phổ biến trên toàn cầu do vi rút viêm gan B (HBV) gây ra. Theo báo cáo năm 2022 của Tổ chức Y tế Thế giới (WHO), ước tính có khoảng **254 triệu người nhiễm HBV mạn** trên toàn thế giới, với **1,2 triệu ca nhiễm mới** và **1,1 triệu trường hợp tử vong hàng năm** (chủ yếu do các biến chứng xơ gan và ung thư biểu mô [[Gan|tế bào gan]] - HCC).
+- **Đặc điểm dịch tễ tại Việt Nam:** HBV lây truyền qua 3 con đường chính: đường máu, quan hệ tình dục và từ mẹ sang con. Tại Việt Nam, **đường lây chủ yếu là từ mẹ truyền sang con**. Tỷ lệ lưu hành HBsAg trong cộng đồng dân cư từ 18 tuổi trở lên tại Việt Nam ở mức rất cao, chiếm **≥ 9,4%**. Viêm gan B là nguyên nhân hàng đầu gây xơ gan và ung thư biểu mô [[Gan|tế bào gan]] (HCC) tại nước ta.
 - **Đặc điểm vi rút học:** HBV thuộc họ _Hepadnaviridae_, có cấu trúc di truyền DNA và được chia thành **10 kiểu gen** ký hiệu từ A đến J. Vi rút có 3 loại kháng nguyên chính: **HBsAg, HBeAg và HBcAg**, tương ứng với 3 loại kháng thể là **Anti-HBs, Anti-HBe và Anti-HBc**. Việc xét nghiệm các dấu ấn huyết thanh này đóng vai trò quyết định trong việc chẩn đoán xác định bệnh, phân loại thể bệnh cũng như theo dõi diễn biến.
 
 ---
@@ -27,9 +38,9 @@ _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn
 - **Vùng xám (Grey zone):** Tình trạng người bệnh có các kết quả xét nghiệm không điển hình, không thể phân loại rõ ràng vào các giai đoạn tiêu chuẩn nêu trên, gây khó khăn cho việc đưa ra quyết định điều trị kháng vi rút.
 - **Viêm gan B thể ẩn (Occult HBV Infection - OBI):** Tình trạng nhiễm HBV mà người bệnh có **HBsAg âm tính nhưng HBV DNA vẫn tồn tại trên ngưỡng phát hiện** (thường ở nồng độ thấp < 200 IU/mL), đa số các trường hợp có anti-HBc toàn phần dương tính.
 - **Xơ gan:** Giai đoạn tiến triển nặng của bệnh lý gan, xác định bởi tình trạng xơ hóa lan rộng nhu mô gan, hình thành các nốt tái sinh và gây rối loạn nghiêm trọng cấu trúc cũng như tuần hoàn gan. Trên lâm sàng, xơ gan được xác định khi mức độ xơ hóa gan đạt mức **F4** bằng các phương pháp xâm lấn (sinh thiết) hoặc không xâm lấn.
-- **Xơ gan mất bù:** Giai đoạn cuối của bệnh gan mạn tính khi chức năng gan suy giảm nặng và không còn khả năng bù trừ. Được xác định khi người bệnh xuất hiện **≥ 1 biến cố mất bù** (bao gồm: cổ chướng, vỡ/giãn tĩnh mạch thực quản, bệnh não gan, vàng da) và/hoặc khi điểm đánh giá **Child-Pugh ≥ 7 điểm**.
+- **Xơ gan mất bù:** Giai đoạn cuối của bệnh gan mạn tính khi chức năng gan suy giảm nặng và không còn khả năng bù trừ. Được xác định khi người bệnh xuất hiện **≥ 1 biến cố mất bù** (bao gồm: cổ chướng, vỡ/giãn tĩnh mạch thực quản, bệnh não gan, [[Vàng da]]) và/hoặc khi điểm đánh giá **Child-Pugh ≥ 7 điểm**.
 - **Ung thư biểu mô tế bào gan (HCC):** Khối u ác tính xuất phát trực tiếp từ các tế bào nhu mô gan.
-- **Viêm gan B thể tối cấp:** Tình trạng suy gan cấp tiến triển nhanh chóng trong vòng vài tuần kể từ khi khởi phát triệu chứng vàng da, đặc trưng bởi 3 biểu hiện chính: **suy chức năng gan nghiêm trọng, bệnh não gan và rối loạn đông máu nặng**. Thể bệnh này có tỷ lệ tử vong cực kỳ cao (thường > 70%) nếu không được can thiệp hồi sức và điều trị kịp thời.
+- **Viêm gan B thể tối cấp:** Tình trạng suy gan cấp tiến triển nhanh chóng trong vòng vài tuần kể từ khi khởi phát triệu chứng [[Vàng da]], đặc trưng bởi 3 biểu hiện chính: **suy chức năng gan nghiêm trọng, bệnh não gan và rối loạn đông máu nặng**. Thể bệnh này có tỷ lệ tử vong cực kỳ cao (thường > 70%) nếu không được can thiệp hồi sức và điều trị kịp thời.
 - **Viêm gan B tái hoạt:** Tình trạng bệnh lý gan nghiêm trọng xảy ra khi HBV đang ở trạng thái không hoạt động hoặc thể ẩn đột ngột nhân lên nhanh chóng, gây viêm và hủy hoại tế bào gan cấp tính. Biểu hiện lâm sàng dao động từ nhẹ đến nặng, có thể tiến triển thành thể tối cấp và dẫn đến tử vong.
 - **Chuyển đảo huyết thanh HBeAg:** Tình trạng mất HBeAg (trở về âm tính) và xuất hiện anti-HBe (dương tính).
 - **Chuyển đảo huyết thanh HBsAg:** Tình trạng mất HBsAg (trở về âm tính) và xuất hiện anti-HBs (dương tính).
@@ -44,7 +55,7 @@ _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn
 2. Người đến khám, tư vấn và xét nghiệm tại các phòng khám lao, phòng khám HIV.
 3. Người có các hành vi nguy cơ cao lây nhiễm: người tiêm chích ma túy, nam quan hệ tình dục đồng giới (MSM), phụ nữ mại dâm, phạm nhân, người có quan hệ tình dục không an toàn.
 4. Người có biểu hiện nghi ngờ mắc viêm gan (lâm sàng gợi ý và/hoặc men gan tăng), người có biểu hiện xơ hóa gan hoặc xơ gan.
-5. Bệnh nhân phải chạy thận chu kỳ, lọc máu, truyền máu và các chế phẩm của máu.
+5. Bệnh nhân phải chạy [[Thận]] chu kỳ, lọc máu, truyền máu và các chế phẩm của máu.
 6. Người bệnh trước khi bắt đầu điều trị hóa trị liệu ung thư, điều trị các thuốc ức chế miễn dịch, người có khối u hoặc ung thư.
 7. Nhân viên y tế chưa được tiêm vắc xin viêm gan B phòng bệnh.
 8. Người hiến máu, hiến tạng, người cho trứng hoặc tinh trùng.
@@ -73,7 +84,7 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán, điều trị viêm gan vi 
 
 - **Nội dung mô tả và lưu ý lâm sàng dưới Bảng 1:**
     - Đối với những người có kết quả xét nghiệm **HBsAg dương tính**: Nhân viên y tế cần tư vấn kỹ lưỡng và nhanh chóng kết nối người bệnh đến các cơ sở y tế có khả năng quản lý và điều trị chuyên khoa lâu dài.
-    - Đối với những người có kết quả xét nghiệm **HBsAg âm tính**: Khuyến cáo nên thực hiện thêm xét nghiệm anti-HBc và anti-HBs (nếu trước đó chưa thực hiện) để làm cơ sở tư vấn các biện pháp phòng bệnh phù hợp (như tiêm ngừa vắc xin nếu chưa có kháng thể bảo vệ).
+    - Đối với những người có kết quả xét nghiệm **HBsAg âm tính**: Khuyến cáo nên thực hiện thêm xét nghiệm anti-HBc và anti-HBs (nếu trước đó chưa thực hiện) để làm cơ sở tư vấn các biện pháp phòng bệnh [[Phù]] hợp (như tiêm ngừa vắc xin nếu chưa có kháng thể bảo vệ).
 
 ---
 
@@ -84,7 +95,7 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán, điều trị viêm gan vi 
 - **Yếu tố tiền sử:** Người bệnh có tiền sử tiếp xúc hoặc phơi nhiễm với các nguồn nguy cơ (truyền máu/chế phẩm máu, tiêm chích, quan hệ tình dục không an toàn, xăm trổ, can thiệp y tế bằng dụng cụ chưa vô trùng tốt) trong khoảng thời gian từ **4 đến 24 tuần** (tương ứng với thời gian ủ bệnh của HBV) trước khi khởi phát triệu chứng.
 - **Triệu chứng lâm sàng:**
     - _Thể điển hình:_ Tiến triển qua 3 giai đoạn rõ rệt gồm:
-        1. _Giai đoạn tiền vàng da:_ Xuất hiện các triệu chứng không đặc hiệu như mệt mỏi, chán ăn, buồn nôn, nôn, sốt nhẹ (sốt thường giảm hoặc hết khi bắt đầu xuất hiện vàng da), đau tức nhẹ vùng hạ sườn phải.
+        1. _Giai đoạn tiền vàng da:_ Xuất hiện các triệu chứng không đặc hiệu như mệt mỏi, chán ăn, [[[[Nôn ói]]|buồn nôn]], nôn, [[[[Sốt]]|sốt nhẹ]] (sốt thường giảm hoặc hết khi bắt đầu xuất hiện vàng da), đau tức nhẹ vùng hạ sườn phải.
         2. _Giai đoạn vàng da:_ Xuất hiện triệu chứng vàng mắt, vàng da, ngứa da, nước tiểu sậm màu (như nước chè đặc), phân bạc màu (ít gặp hơn).
         3. _Giai đoạn hồi phục:_ Các triệu chứng lâm sàng giảm dần và cải thiện, người bệnh dần hồi phục sức khỏe.
     - _Thể lâm sàng khác:_
@@ -98,7 +109,7 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán, điều trị viêm gan vi 
 
 Cần phân biệt viêm gan B cấp với:
 
-- Viêm gan cấp do các chủng vi rút truyền qua đường tiêu hóa hoặc đường máu khác (HAV, HCV, HDV, HEV...).
+- Viêm gan cấp do các chủng vi rút truyền qua [[Đường tiêu hóa]] hoặc đường máu khác (HAV, HCV, HDV, HEV...).
 - Đợt bùng phát cấp tính của bệnh viêm gan B mạn tính (đây là phân biệt cực kỳ quan trọng vì định hướng điều trị lâu dài hoàn toàn khác nhau).
 - Viêm gan cấp do các nguyên nhân không do vi rút như ngộ độc thuốc, hóa chất, rượu... tùy theo bệnh cảnh lâm sàng cụ thể của người bệnh.
 

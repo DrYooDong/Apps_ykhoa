@@ -1,8 +1,11 @@
 ---
 title: "ĐÁNH GIÁ HIỆU QUẢ HẠ CHOLESTEROL CỦA ATORVASTATIN BẰNG PHƯƠNG PHÁP PHÂN TÍCH PHƯƠNG SAI CÓ LẶP"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
 
 Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐡𝐢𝐞̣̂𝐮 𝐪𝐮𝐚̉ 𝐡𝐚̣ 𝐂𝐡𝐨𝐥𝐞𝐬𝐭𝐞𝐫𝐨𝐥 𝐜𝐮̉𝐚 𝐀𝐭𝐨𝐫𝐯𝐚𝐬𝐭𝐚𝐭𝐢𝐧 𝐛𝐚̆̀𝐧𝐠 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐩𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐜𝐨́ 𝐥𝐚̣̆𝐩 (𝐑𝐞𝐩𝐞𝐚𝐭𝐞𝐝 𝐀𝐧𝐨𝐯𝐚)
@@ -35,7 +38,7 @@ Trước khi thực hiện ANOVA, giả định phân phối chuẩn được ki
 
 Giả định đồng nhất phương sai được đánh giá bằng kiểm định Levene/Brown–Forsythe. Kết quả cho thấy các kiểm định W0, W10 và W50 đều có giá trị p > 0,05, nghĩa là phương sai của nồng độ cholesterol toàn phần giữa ba nhóm không khác biệt có ý nghĩa thống kê.
 
-Như vậy, giả định đồng nhất phương sai được thỏa mãn và dữ liệu phù hợp để thực hiện ANOVA một yếu tố.
+Như vậy, giả định đồng nhất phương sai được thỏa mãn và dữ liệu [[Phù]] hợp để thực hiện ANOVA một yếu tố.
 
 𝐁𝐚̉𝐧𝐠 4. Kết quả phân tích phương sai một yếu tố (One-way ANOVA)
 
@@ -67,5 +70,5 @@ Trong ba nhóm nghiên cứu, nhóm bệnh nhân đái tháo đường týp 2 c�
 
 𝐊𝐞̂́𝐭 𝐥𝐮𝐚̣̂𝐧:
 
-Các giả định về phân phối chuẩn và đồng nhất phương sai đều được đáp ứng, do đó việc sử dụng ANOVA một yếu tố là phù hợp. Kết quả phân tích cho thấy nồng độ cholesterol toàn phần khác biệt có ý nghĩa thống kê giữa ba nhóm đối tượng (F(2,79) = 3,68; p = 0,0295). Phân tích hậu kiểm Bonferroni xác định sự khác biệt nằm giữa nhóm người khỏe mạnh và nhóm bệnh nhân đái tháo đường týp 2, với nồng độ cholesterol toàn phần ở nhóm đái tháo đường týp 2 cao hơn. Không ghi nhận sự khác biệt có ý nghĩa thống kê giữa nhóm người khỏe mạnh và nhóm tiền đái tháo đường cũng như giữa nhóm tiền đái tháo đường và nhóm đái tháo đường týp 2. Kết quả này gợi ý rằng tình trạng rối loạn chuyển hóa carbohydrate có liên quan đến xu hướng tăng nồng độ cholesterol toàn phần trong máu.
+Các giả định về phân phối chuẩn và đồng nhất phương sai đều được đáp ứng, do đó việc sử dụng ANOVA một yếu tố là [[Phù]] hợp. Kết quả phân tích cho thấy nồng độ cholesterol toàn phần khác biệt có ý nghĩa thống kê giữa ba nhóm đối tượng (F(2,79) = 3,68; p = 0,0295). Phân tích hậu kiểm Bonferroni xác định sự khác biệt nằm giữa nhóm người khỏe mạnh và nhóm bệnh nhân đái tháo đường týp 2, với nồng độ cholesterol toàn phần ở nhóm đái tháo đường týp 2 cao hơn. Không ghi nhận sự khác biệt có ý nghĩa thống kê giữa nhóm người khỏe mạnh và nhóm tiền đái tháo đường cũng như giữa nhóm tiền đái tháo đường và nhóm đái tháo đường týp 2. Kết quả này gợi ý rằng tình trạng rối loạn chuyển hóa carbohydrate có liên quan đến xu hướng tăng nồng độ cholesterol toàn phần trong máu.
 ![[Pasted image 20260723160205.png]]

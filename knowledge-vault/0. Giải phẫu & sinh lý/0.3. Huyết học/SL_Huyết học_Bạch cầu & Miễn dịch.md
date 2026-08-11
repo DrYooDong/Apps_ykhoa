@@ -1,16 +1,22 @@
 ---
 title: "SL_Huyết học_Bạch cầu & Miễn dịch"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/huyet-hoc
+  - he-co-quan/mien-dich
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
-Dưới đây là nội dung chi tiết về Sinh lý học Bạch cầu và Miễn dịch, được tổng hợp và biên soạn dựa trên các tài liệu y khoa bạn đã cung cấp:
+
+Dưới đây là nội dung chi tiết về Sinh lý học [[Bạch cầu]] và Miễn dịch, được tổng hợp và biên soạn dựa trên các tài liệu y khoa bạn đã cung cấp:
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### Đại Cương Về Bạch Cầu (White Blood Cells - Leukocytes)
 Bạch cầu là các tế bào máu lưu động đóng vai trò then chốt trong hệ thống miễn dịch, bảo vệ cơ thể chống lại các tác nhân gây bệnh như vi khuẩn, virus, ký sinh trùng và các tế bào khối u.
-*   **Số lượng và Phân loại:** Số lượng bạch cầu bình thường ở người dao động từ 4.000 đến 11.000 tế bào/µL máu. Chúng được chia thành 5 loại chính: Bạch cầu trung tính (Neutrophils, chiếm 50-70%), Bạch cầu ái toan (Eosinophils, 1-4%), Bạch cầu ái kiềm (Basophils, 0.4%), Bạch cầu lympho (Lymphocytes, 20-40%) và Bạch cầu đơn nhân (Monocytes, 2-8%).
+*   **Số lượng và Phân loại:** [[Bạch cầu|Số lượng bạch cầu]] bình thường ở người dao động từ 4.000 đến 11.000 tế bào/µL máu. Chúng được chia thành 5 loại chính: Bạch cầu trung tính (Neutrophils, chiếm 50-70%), Bạch cầu ái toan (Eosinophils, 1-4%), Bạch cầu ái kiềm (Basophils, 0.4%), Bạch cầu lympho (Lymphocytes, 20-40%) và Bạch cầu đơn nhân (Monocytes, 2-8%).
 *   **Quá trình sinh sản:** Tất cả các bạch cầu đều được sinh ra từ tế bào gốc vạn năng (Hematopoietic stem cells) tại tủy xương. Sự tăng sinh và biệt hóa của chúng được điều hòa chặt chẽ bởi các yếu tố kích thích khóm (Colony-stimulating factors - CSFs) như GM-CSF, G-CSF, M-CSF và các Interleukin (IL-1, IL-3, IL-6).
 
 **Tên Bảng:** Table 31-1 - Normal values for the cellular elements in human blood.
@@ -74,7 +80,7 @@ Miễn dịch đặc hiệu là phản ứng bảo vệ chậm hơn nhưng có t
 Viêm là phản ứng phức tạp tại chỗ chống lại các chất lạ. 
 *   **Cơ chế phân tử:** Yếu tố phiên mã NF-$\kappa$B đóng vai trò then chốt. Khi tế bào bị kích thích, NF-$\kappa$B di chuyển vào nhân, thúc đẩy phiên mã tạo ra hàng loạt chất trung gian gây viêm (Cytokine, chemokine).
 *   Tế bào Mast và Bạch cầu ái kiềm giải phóng histamine, proteoglycans, leukotrienes và prostaglandins, gây giãn mạch, tăng tính thấm mao mạch, tạo ra các triệu chứng sưng, nóng, đỏ, đau.
-*   Trong quá trình lành vết thương, tiểu cầu kết tập tạo cục máu đông. Bạch cầu dọn dẹp tế bào chết, sau đó giải phóng các yếu tố tăng trưởng (như PDGF) kích thích nguyên bào sợi (fibroblast) và tế bào nội mô tái tạo mô mới.
+*   Trong quá trình lành vết thương, [[Tiểu cầu]] kết tập tạo cục máu đông. Bạch cầu dọn dẹp tế bào chết, sau đó giải phóng các yếu tố tăng trưởng (như PDGF) kích thích nguyên bào sợi (fibroblast) và tế bào nội mô tái tạo mô mới.
 
 ---
 

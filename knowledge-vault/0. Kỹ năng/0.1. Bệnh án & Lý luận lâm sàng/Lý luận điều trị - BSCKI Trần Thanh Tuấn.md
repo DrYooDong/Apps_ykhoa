@@ -1,12 +1,16 @@
 ---
 title: "Lý luận điều trị - BSCKI Trần Thanh Tuấn" luận điều trị - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 Mục tiêu
 Sau khi đọc bài này người đọc có thể
-- Xác định mục tiêu điều trị phù hợp
+- Xác định mục tiêu điều trị [[Phù]] hợp
 - Đưa ra phương pháp điều trị và lý giải được phương pháp điều trị đã lựa chọn
 Nội dung
 1. Xác định mục tiêu
@@ -25,9 +29,9 @@ Trước khi tiến hành điều trị cần xác định mục tiêu điều t
 
 Tùy theo từng trường hợp cụ thể mà thứ tự các mục tiêu có thể thay đổi.
 
-Ví dụ : bệnh nhân vào viện vì đau ngực cấp được chẩn đoán là nhồi máu cơ tim và không có biến chứng. Mục tiêu trong trường hợp này là
+Ví dụ : bệnh nhân vào viện vì [[Đau ngực]] cấp được chẩn đoán là nhồi máu [[Tim|cơ tim]] và không có biến chứng. Mục tiêu trong trường hợp này là
 
-- Kiểm soát triệu chứng đau ngực
+- Kiểm soát triệu chứng [[Đau ngực]]
 
 - Tái thông mạch vành sớm
 
@@ -37,11 +41,11 @@ Ví dụ : bệnh nhân vào viện vì đau ngực cấp được chẩn đoán
 
 - Phòng ngừa biến chứng
 
-Ví dụ 2: bệnh nhân vào viện vì đau ngực cấp sau đó bệnh nhân khó thở nhiều. Được chẩn đoán nhồi máu cơ tim cấp có biến chứng phù phổi cấp - suy hô hấp
+Ví dụ 2: bệnh nhân vào viện vì đau ngực cấp sau đó bệnh nhân [[Khó thở]] nhiều. Được chẩn đoán nhồi máu [[Tim|cơ tim]] cấp có biến chứng [[Phù]] [[Phổi]] cấp - [[Suy hô hấp]]
 
 Mục tiêu điều trị lúc này sẽ ưu tiên kiểm soát biến chứng
 
-- Kiểm soát triệu chứng khó thở và duy trì PaO2 > 60 mmHg
+- Kiểm soát triệu chứng [[Khó thở]] và duy trì PaO2 > 60 mmHg
 
 - Kiểm soát triệu chứng đau ngực
 
@@ -53,17 +57,17 @@ Mục tiêu điều trị lúc này sẽ ưu tiên kiểm soát biến chứng
 
 Một bệnh nhân có thể có một hoặc nhiều nguyên nhân. Khi có nhiều mục tiêu cần xác định mục tiêu ưu tiên, nghĩa là mục tiêu cần giải quyết trước mắt. Đây thường là những mục tiêu có liên quan đến sống còn của bệnh nhân.
 Ví dụ 3
-Bệnh nhân nữ vào viện vì tiêu chảy. Bệnh nhân tiêu chảy 1 ngày kèm theo đau quặn ở bụng từng cơn, sốt từ 38,5 đến 39 độ. Sau đó bệnh nhân lơ mơ nên đến bệnh viện. Khám lơ mơ tiếp xúc chậm, môi khôi, lưỡi dơ. Mạch 110 lần/ phút, huyết áp 80/50 mmHg, ấn đau quanh rốn.
+Bệnh nhân nữ vào viện vì [[Tiêu chảy]]. Bệnh nhân [[Tiêu chảy]] 1 ngày kèm theo đau quặn ở bụng từng cơn, [[Sốt]] từ 38,5 đến 39 độ. Sau đó bệnh nhân lơ mơ nên đến bệnh viện. Khám lơ mơ tiếp xúc chậm, môi khôi, lưỡi dơ. Mạch 110 lần/ phút, huyết áp 80/50 mmHg, ấn đau quanh rốn.
 Vấn đề bệnh nhân
 - Choáng
 - Hội chứng nhiễm trùng
 - Rối loạn tiêu hóa
 Chẩn đoán
-Choáng nhiễm trùng - nhiễm trùng đường tiêu hóa
+Choáng nhiễm trùng - nhiễm trùng [[Đường tiêu hóa]]
 Mục tiêu
 - Huyết áp > 90 mmHg
 - Kiểm soát nhiễm trùng
-- Giảm triệu chứng ( sốt, đau bụng, tiêu chảy).
+- Giảm triệu chứng ( [[Sốt]], [[Đau bụng]], tiêu chảy).
 Như vậy với bệnh nhân trên tình trạng choáng và nhiễm trùng có thể đe dọa tính mạng bệnh nhân do đó cần phải đạt hai mục tiêu này trước tiên.
 2. Phương pháp điều trị
 Phần này gồm 3 phần là lựa chọn phương pháp, y lệnh cụ thể và chế độ theo dõi đánh giá hiệu quả điều trị
@@ -74,12 +78,12 @@ Dựa trên mục tiêu điều trị sẽ lựa chọn phương pháp điều t
 - Chế độ vận động / nghỉ ngơi
 - Chế độ hồi phục ( tập vật lý trị liệu)...
 Việc lựa chọn phương pháp tùy thuộc vào từng bệnh nhân cụ thể.
-Ví dụ bệnh nhân tăng huyết áp có thói quen ăn mặn và tập thể dục đều 30 phút mỗi ngày. Chế độ điều trị không dùng thuốc trong trường hợp này là khuyên bệnh nhân ăn lạt.
+Ví dụ bệnh nhân [[Tăng huyết áp]] có thói quen ăn mặn và tập thể dục đều 30 phút mỗi ngày. Chế độ điều trị không dùng thuốc trong trường hợp này là khuyên bệnh nhân ăn lạt.
 Phương pháp dùng thuốc/ điều trị can thiệp.
 Khi chọn một phương pháp, cần dựa giải thích các yếu tố sau
 - Chỉ định là gì và có chống chỉ định không.
 - Nếu là thuốc thì cần giải thích về đường dùng ( truyền tĩnh mạch, tiêm tĩnh mạch, uống...) đối với những thuốc có nhiều đường dùng. Tiếp theo là giải thích về liều dùng ( tại sao cần dùng liều thấp, tại sao phải dùng liều cao).
-Ví dụ bệnh nhân vào viện vì khó thở tăng dần 3 ngày nay. Bệnh nhân phải ngồi thở và khi khám mạch 110 lần/ phút, huyết áp 120/80 mmHg. Phổi có ran ẩm, đồng thời phù 2 chân. Bệnh nhân  được chẩn đoán rung nhĩ đáp ứng thất nhanh gây đợt mất bù suy tim trái / suy tim trái độ III ( có phân suất tống máu giảm nặng) do bệnh cơ tim thiếu máu cục bộ.
+Ví dụ bệnh nhân vào viện vì khó thở tăng dần 3 ngày nay. Bệnh nhân phải ngồi thở và khi khám mạch 110 lần/ phút, huyết áp 120/80 mmHg. [[Phổi]] có ran ẩm, đồng thời phù 2 chân. Bệnh nhân  được chẩn đoán rung nhĩ đáp ứng thất nhanh gây đợt mất bù suy tim trái / suy tim trái độ III ( có phân suất tống máu giảm nặng) do bệnh cơ tim thiếu máu cục bộ.
 Một trong những mục tiêu
 - Kiểm soát triệu chứng khó thở và duy trì SpO2 > 90%
 Phương pháp
@@ -133,7 +137,7 @@ Dovutamin 250mg 1 ống pha Natrichlorua 0,9% đủ 50ml SE 3 ml/ giờ ( 2 ug/k
 Aminodaron 150mg 1 ống pha Natrichlorua 0,9% đủ 20ml tiêm mạch chậm.
 Nếu thuốc phải dùng nhiều lần trong ngày thì ghi rõ buổi dùng hoặc thời gian dùng
 Enalapril 5mg 1 viên x 2 uống, sáng, chiều
-Insulin Langtus 15 UI tiêm dưới da trước ăn sáng 30 phút
+[[Insulin]] Langtus 15 UI tiêm dưới da trước ăn sáng 30 phút
 Enoxaparin 0,06g/ 0,6 ml 1 ống x 2 tiêm dưới da lúc 7 giờ và 19 giờ.
 Theo dõi bệnh nhân
 Theo dõi bệnh nhân để đánh giá hiệu quả điều trị và các vấn đề mới phát sinh, cũng như các tác động bất lợi của thuốc nếu có.

@@ -1,3 +1,13 @@
+---
+title: "Sự tăng trưởng thể chất ở trẻ em (Phần 2)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: QUY TRÌNH ĐÁNH GIÁ NHÂN TRẮC, BIỂU ĐỒ TĂNG TRƯỞNG WHO, BẤT THƯỜNG TĂNG TRƯỞNG VÀ TƯ VẤN DINH DƯỠNG)
 
 ---
@@ -130,7 +140,7 @@
 #### 3.1.1. Dấu Hiệu Nhận Biết Thể Marasmus Và Kwashiorkor
 
 - **Thể Marasmus (Thể teo đét):** Trẻ nhìn cực kỳ gầy gò, chỉ còn "da bọc xương" do mất sạch mô cơ và mô mỡ. Khuôn mặt trông giống như người già do mất lớp mỡ dưới da ở mặt. Các xương sườn lộ rõ, da vùng bụng và đùi nhăn nheo tạo nếp như "mặc quần thụng". Chỉ số cân nặng/tuổi và cân nặng/chiều cao rất thấp.
-- **Thể Kwashiorkor (Thể phù):** Trẻ bị mất khối cơ nhưng **bị phù toàn thân** nên hình thái nhìn không gầy gò. Trẻ bứt rứt, ăn uống kém, khuôn mặt sưng phù, tóc mỏng thưa và bạc màu, trên da xuất hiện các mảng giảm sắc tố rồi nứt nẻ, tróc da (dạng tróc sơn). Tình trạng phù có thể che lấp mức độ sụt cân thực sự của trẻ.
+- **Thể Kwashiorkor (Thể [[Phù]]):** Trẻ bị mất khối cơ nhưng **bị [[Phù|phù toàn thân]]** nên hình thái nhìn không gầy gò. Trẻ bứt rứt, ăn uống kém, khuôn mặt sưng phù, tóc mỏng thưa và bạc màu, trên da xuất hiện các mảng giảm sắc tố rồi nứt nẻ, tróc da (dạng tróc sơn). Tình trạng phù có thể che lấp mức độ sụt cân thực sự của trẻ.
 
 ---
 
@@ -154,9 +164,9 @@ Các nhóm nguyên nhân chính dẫn đến suy dinh dưỡng bao gồm:
 
 1. **Yếu tố môi trường và xã hội:** Thiếu sự quan tâm của gia đình, mẹ bị trầm cảm, hoàn cảnh kinh tế nghèo khó, gia đình cho ăn không đúng cách.
 2. **Bệnh lý tiêu hóa:** Xơ nang (cystic fibrosis), bệnh Celiac, trào ngược dạ dày thực quản, các hội chứng kém hấp thu.
-3. **Bệnh lý bẩm sinh:** Bất thường nhiễm sắc thể, đột biến gen, tim bẩm sinh, dị tật tiêu hóa (hẹp môn vị, sứt môi chẻ vòm), suy giảm miễn dịch bẩm sinh.
-4. **Bệnh lý nhiễm trùng:** Nhiễm HIV, lao, viêm gan, nhiễm trùng tiểu, nhiễm ký sinh trùng đường ruột.
-5. **Các bệnh lý khác:** Bệnh chuyển hóa, bệnh thần kinh (bại não, u não), bệnh thận mạn, bệnh huyết học (Thalassemia, thiếu máu thiếu sắt).
+3. **Bệnh lý bẩm sinh:** Bất thường nhiễm sắc thể, đột biến gen, [[Tim]] bẩm sinh, dị tật tiêu hóa (hẹp môn vị, sứt môi chẻ vòm), suy giảm miễn dịch bẩm sinh.
+4. **Bệnh lý nhiễm trùng:** Nhiễm HIV, lao, viêm [[Gan]], nhiễm trùng tiểu, nhiễm ký sinh trùng đường ruột.
+5. **Các bệnh lý khác:** Bệnh chuyển hóa, bệnh thần kinh (bại não, u não), bệnh [[Thận]] mạn, bệnh huyết học (Thalassemia, thiếu máu thiếu sắt).
 
 #### 3.1.3. Tác Hại Của Suy Dinh Dưỡng
 
@@ -171,11 +181,11 @@ Các nhóm nguyên nhân chính dẫn đến suy dinh dưỡng bao gồm:
 #### 3.2.1. Nguyên Nhân
 
 - **Chế độ ăn uống không hợp lý:** Dẫn đến **95% các trường hợp** thừa cân béo phì ở trẻ em.
-- **Nguyên nhân bệnh lý (5% còn lại):** Hội chứng Cushing, hội chứng Prader-Willi, hội chứng Turner ($46,XO$), hội chứng Alström, hội chứng Carpenter, hội chứng Fröhlich, tăng tiết insulin quá mức, loạn dưỡng cơ.
+- **Nguyên nhân bệnh lý (5% còn lại):** Hội chứng Cushing, hội chứng Prader-Willi, hội chứng Turner ($46,XO$), hội chứng Alström, hội chứng Carpenter, hội chứng Fröhlich, tăng tiết [[Insulin]] quá mức, loạn dưỡng cơ.
 
 #### 3.2.2. Tác Hại Và Biến Chứng
 
-- **Biến chứng chuyển hóa và tim mạch:** Tăng nguy cơ cao đái tháo đường type 2, tăng huyết áp, rối loạn lipid máu, bệnh gan nhiễm mỡ không do rượu. Hội chứng chuyển hóa làm tăng tỷ lệ tử vong tim mạch khi trưởng thành.
+- **Biến chứng chuyển hóa và [[Tim]] mạch:** Tăng nguy cơ cao đái tháo đường type 2, [[Tăng huyết áp]], rối loạn lipid máu, bệnh [[Gan]] nhiễm mỡ không do rượu. Hội chứng chuyển hóa làm tăng tỷ lệ tử vong tim mạch khi trưởng thành.
 - **Viêm mạn tính:** Nồng độ peptide chống viêm (adiponectin) sụt giảm, trong khi các chất tiền viêm ($IL-6$, $TNF-\alpha$) tăng cao.
 - **Hệ cơ quan khác:** Hội chứng ngưng thở khi ngủ, biến chứng chỉnh hình (trượt đầu xương đùi, bệnh Blount) và các rối loạn sức khỏe tâm thần (trầm cảm, bị kỳ thị).
 

@@ -1,26 +1,31 @@
 ---
 title: "TC_Đau bụng cấp_HCP"
-specialty: "Hệ Tiêu hóa"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa", "Đau bụng"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
-Dưới đây là bài học tiếp cận lâm sàng cho vấn đề Đau bụng cấp ở hố chậu phải (Right Lower Quadrant Abdominal Pain), được biên soạn bám sát các tài liệu nguồn đã cung cấp.
 
-# Tiếp cận lâm sàng cho vấn đề/triệu chứng [ĐAU BỤNG CẤP Ở HỐ CHẬU PHẢI]
+Dưới đây là bài học tiếp cận lâm sàng cho vấn đề [[Đau bụng|Đau bụng cấp]] ở hố chậu phải (Right Lower Quadrant Abdominal Pain), được biên soạn bám sát các tài liệu nguồn đã cung cấp.
+
+# Tiếp cận lâm sàng cho vấn đề/triệu chứng [[[Đau bụng|ĐAU BỤNG CẤP]] Ở HỐ CHẬU PHẢI]
 
 Các bước tiếp cận lâm sàng (Clinical approach)
 
 ### Bước 1: Ổn định ban đầu – sàng lọc nguy cơ
 - Nhận diện các *dấu hiệu "cờ đỏ" (red flags)* chỉ điểm tình trạng cấp cứu ngoại khoa hoặc bệnh lý đe dọa tính mạng ở bệnh nhân đau bụng hố chậu phải:
-  - Huyết động không ổn định: Tụt huyết áp, mạch nhanh, da xanh tái, sốc (cảnh báo thai ngoài tử cung vỡ xuất huyết nội hoặc sốc nhiễm khuẩn do viêm phúc mạc).
+  - Huyết động không ổn định: Tụt huyết áp, mạch nhanh, da xanh tái, [[Sốc]] (cảnh báo thai ngoài tử cung vỡ [[Xuất huyết]] nội hoặc [[[[Sốc]] nhiễm khuẩn]] do viêm phúc mạc).
   - Dấu hiệu viêm phúc mạc: Co cứng thành bụng (board-like rigidity), phản ứng dội (rebound tenderness), đau chói khi sờ nắn (gợi ý ruột thừa vỡ, thủng tạng rỗng).
   - Cơn đau đột ngột, dữ dội ở phụ nữ trong độ tuổi sinh sản đi kèm với trễ kinh hoặc ra máu âm đạo bất thường (cảnh báo vỡ thai ngoài tử cung hoặc xoắn phần phụ).
-  - Các triệu chứng toàn thân nặng nề như sốt cao, rét run, lú lẫn, hoặc bụng chướng căng bưng bít không trung đại tiện được (tắc ruột đoạn cuối).
+  - Các triệu chứng toàn thân nặng nề như [[[[Sốt]]|sốt cao]], rét run, lú lẫn, hoặc bụng chướng căng bưng bít không trung đại tiện được (tắc ruột đoạn cuối).
 
 ### Bước 2: Thu thập dữ kiện tập trung
 - **Mô tả triệu chứng:** 
   - *Thời gian và tính chất:* Đau khởi phát từ từ, bắt đầu âm ỉ ở vùng quanh rốn sau đó di trú (migration) và khu trú tại hố chậu phải trong 12-24 giờ là dấu hiệu kinh điển của viêm ruột thừa.
-  - *Triệu chứng đi kèm:* Chán ăn, buồn nôn và nôn (nôn thường xuất hiện sau khi đau trong viêm ruột thừa). Rối loạn thói quen đại tiện (tiêu chảy có thể gặp trong viêm dạ dày ruột hoặc viêm ruột thừa thể tiểu khung). 
+  - *Triệu chứng đi kèm:* Chán ăn, [[[[Nôn ói]]|buồn nôn]] và nôn (nôn thường xuất hiện sau khi đau trong viêm ruột thừa). Rối loạn thói quen đại tiện ([[Tiêu chảy]] có thể gặp trong viêm dạ dày ruột hoặc viêm ruột thừa thể tiểu khung). 
 - **Yếu tố nguy cơ:** 
   - *Sản phụ khoa:* Phụ nữ có hoạt động tình dục, trễ kinh (thai ngoài tử cung), tiền sử viêm nhiễm vùng chậu hoặc có dịch tiết âm đạo bất thường (nguy cơ viêm vùng chậu - PID). 
   - Nam giới trẻ tuổi cần loại trừ xoắn tinh hoàn gây đau quy chiếu.
@@ -33,9 +38,9 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 
 | Nhóm nguyên nhân | Ví dụ bệnh / hội chứng | Đặc điểm lâm sàng chính |
 | ------ | ------ | ------ |
-| **Bệnh lý Dạ dày - Ruột** | **Viêm ruột thừa cấp**<br><br>**Viêm túi thừa manh tràng / Viêm hồi tràng (Crohn)** | Đau di trú từ rốn xuống `***hố chậu phải***`, nôn, ấn đau điểm McBurney, phản ứng dội.<br><br>Đau hố chậu phải, có thể có tiêu chảy, tiền sử bệnh viêm ruột (IBD). |
+| **Bệnh lý Dạ dày - Ruột** | **Viêm ruột thừa cấp**<br><br>**Viêm túi thừa manh tràng / Viêm hồi tràng (Crohn)** | Đau di trú từ rốn xuống `***hố chậu phải***`, nôn, ấn đau điểm McBurney, phản ứng dội.<br><br>Đau hố chậu phải, có thể có [[Tiêu chảy]], tiền sử bệnh viêm ruột (IBD). |
 | **Bệnh lý Sản Phụ khoa** | **Thai ngoài tử cung (Ectopic pregnancy)**<br><br>**Viêm vùng chậu (PID) / Xoắn buồng trứng** | Chậm kinh, ra máu âm đạo, đau bụng dưới một bên, *test thai dương tính*.<br><br>Khí hư âm đạo, *đau khi lay cổ tử cung*, đau khởi phát đột ngột dữ dội (nếu xoắn). |
-| **Bệnh lý Thận - Tiết niệu** | **Sỏi niệu quản phải / Viêm thận bể thận** | Đau quặn từ hông lưng lan xuống bẹn, *tiểu buốt, đái máu*, không có dấu hiệu viêm phúc mạc. |
+| **Bệnh lý [[Thận]] - Tiết niệu** | **Sỏi niệu quản phải / Viêm [[Thận]] bể thận** | Đau quặn từ hông lưng lan xuống bẹn, *tiểu buốt, đái máu*, không có dấu hiệu viêm phúc mạc. |
 
 ### Bước 4. Biện luận lâm sàng (Clinical reasoning)
 - **Tỷ trọng/độ ưu tiên:** Đối với bệnh nhân đau hố chậu phải, bắt buộc phải ưu tiên loại trừ các cấp cứu ngoại khoa đe dọa tính mạng và chức năng sinh sản gồm `==Viêm ruột thừa cấp==`, `==Thai ngoài tử cung==` và `==Xoắn buồng trứng/xoắn tinh hoàn==`.
@@ -47,13 +52,13 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 
 ### Bước 5. Cận lâm sàng hợp lý
 - **Xét nghiệm máu cơ bản:** 
-  - Công thức máu (CTM), CRP để đánh giá tình trạng viêm. *Lưu ý:* Bạch cầu bình thường không thể loại trừ được viêm ruột thừa (một số nghiên cứu cho thấy gần 1/4 bệnh nhân viêm ruột thừa có bạch cầu bình thường).
+  - Công thức máu (CTM), [[CRP]] để đánh giá tình trạng viêm. *Lưu ý:* [[Bạch cầu]] bình thường không thể loại trừ được viêm ruột thừa (một số nghiên cứu cho thấy gần 1/4 bệnh nhân viêm ruột thừa có [[Bạch cầu]] bình thường).
 - **Vi sinh / Huyết thanh học:**
   - **Test thử thai ( $\beta$-hCG nước tiểu/máu):** Là *bắt buộc* ở mọi phụ nữ trong độ tuổi sinh sản có đau bụng dưới/hố chậu phải để loại trừ thai ngoài tử cung trước khi tiến hành các xét nghiệm hình ảnh có tia xạ.
-  - Tổng phân tích nước tiểu: Tầm soát nhiễm khuẩn tiết niệu, sỏi thận (hồng cầu vi thể).
+  - Tổng phân tích nước tiểu: Tầm soát nhiễm khuẩn tiết niệu, sỏi thận ([[Hồng cầu]] vi thể).
 - **Chẩn đoán hình ảnh:**
-  - **CT scan ổ bụng có cản quang tĩnh mạch:** Là *xét nghiệm tiêu chuẩn vàng và lựa chọn đầu tay* ở người lớn (không có thai) có đau hố chậu phải nghi ngờ viêm ruột thừa, do có độ nhạy và độ đặc hiệu rất cao (trên 94%).
-  - **Siêu âm ổ bụng / Siêu âm qua ngả âm đạo:** Là lựa chọn đầu tay cho phụ nữ mang thai, trẻ em và phụ nữ trong độ tuổi sinh sản (để đánh giá bệnh lý buồng trứng, tử cung).
+  - **[[CT Scan]] ổ bụng có cản quang tĩnh mạch:** Là *xét nghiệm tiêu chuẩn vàng và lựa chọn đầu tay* ở người lớn (không có thai) có đau hố chậu phải nghi ngờ viêm ruột thừa, do có độ nhạy và độ đặc hiệu rất cao (trên 94%).
+  - **[[Siêu âm]] ổ bụng / [[Siêu âm]] qua ngả âm đạo:** Là lựa chọn đầu tay cho phụ nữ mang thai, trẻ em và phụ nữ trong độ tuổi sinh sản (để đánh giá bệnh lý buồng trứng, tử cung).
 
 > 🔴 [LỆNH TRÍCH XUẤT BẢNG DỮ LIỆU & LƯU ĐỒ CHẨN ĐOÁN]: 
 > **[TABLE 4 - Recommended Initial Imaging Based on Location of Abdominal Pain] - trích từ [acute-abdominal-pain-adults.pdf]**
@@ -68,7 +73,7 @@ Các bước tiếp cận lâm sàng (Clinical approach)
   - Yêu cầu bệnh nhân nhịn ăn uống hoàn toàn (NPO) để chuẩn bị cho khả năng cần can thiệp phẫu thuật.
   - Thiết lập đường truyền tĩnh mạch và bù dịch tinh thể (Ringer Lactate hoặc NaCl 0.9%).
 - **Điều trị đặc hiệu:**
-  - Viêm ruột thừa: Sử dụng kháng sinh dự phòng/kinh nghiệm phổ rộng bao phủ vi khuẩn đường ruột (Gram âm và kỵ khí) trong vòng 1 giờ đầu và chuẩn bị phẫu thuật cắt ruột thừa (nội soi hoặc mổ mở).
+  - Viêm ruột thừa: Sử dụng [[Kháng sinh]] dự phòng/kinh nghiệm phổ rộng bao phủ vi khuẩn đường ruột (Gram âm và kỵ khí) trong vòng 1 giờ đầu và chuẩn bị phẫu thuật cắt ruột thừa (nội soi hoặc mổ mở).
   - Thai ngoài tử cung vỡ: Hồi sức chống sốc tích cực, truyền máu và phẫu thuật cấp cứu.
 - **Xử trí triệu chứng / Can thiệp:**
   - Giảm đau: Việc sử dụng thuốc giảm đau (như opioid đường tĩnh mạch) là an toàn, giúp bệnh nhân thoải mái hơn và *không làm lu mờ* các dấu hiệu chẩn đoán hay độ chính xác của thăm khám thực thể.
@@ -82,7 +87,7 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 > * -> Nếu Negative findings: Perform urine, colon, or pelvic examination.
 
 ### Bước 7. Khi nào cần chuyển tuyến / gọi hội chẩn (nếu có)
-- Bắt buộc hội chẩn Ngoại khoa tiêu hóa khẩn cấp đối với mọi trường hợp nghi ngờ viêm ruột thừa cấp, có phản ứng thành bụng, hoặc CT scan xác nhận có viêm ruột thừa/áp xe ruột thừa.
+- Bắt buộc hội chẩn Ngoại khoa tiêu hóa khẩn cấp đối với mọi trường hợp nghi ngờ viêm ruột thừa cấp, có phản ứng thành bụng, hoặc [[CT Scan]] xác nhận có viêm ruột thừa/áp xe ruột thừa.
 - Hội chẩn Sản Phụ khoa ngay lập tức khi bệnh nhân nữ có test thai dương tính kèm đau bụng, khối phần phụ, hoặc nghi ngờ thai ngoài tử cung, u buồng trứng xoắn.
 - Chuyển tuyến/Nhập khoa Hồi sức (ICU) khi có các dấu hiệu sốc, viêm phúc mạc toàn thể đe dọa tính mạng.
 

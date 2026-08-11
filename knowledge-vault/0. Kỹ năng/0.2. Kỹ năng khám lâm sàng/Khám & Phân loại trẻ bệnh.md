@@ -1,10 +1,20 @@
+---
+title: "Khám & Phân loại trẻ bệnh"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### Đại Cương Và Tầm Quan Trọng Của Việc Lọc Bệnh
 
-Ở trẻ em, hầu hết các trường hợp ngưng tim ngưng thở đều do diễn tiến nặng của tình trạng suy hô hấp, sốc hoặc cả hai. Khi trẻ đã ngưng tim, tiên lượng nói chung rất xấu. Tử vong ở trẻ em tại bệnh viện thường xảy ra trong vòng 24 giờ sau khi nhập viện, tuy nhiên nhiều trường hợp có thể ngăn ngừa được nếu trẻ bệnh nặng được nhận diện sớm và điều trị thích hợp ngay từ ban đầu.
+Ở trẻ em, hầu hết các trường hợp ngưng [[Tim]] ngưng thở đều do diễn tiến nặng của tình trạng [[Suy hô hấp]], [[Sốc]] hoặc cả hai. Khi trẻ đã ngưng [[Tim]], tiên lượng nói chung rất xấu. Tử vong ở trẻ em tại bệnh viện thường xảy ra trong vòng 24 giờ sau khi nhập viện, tuy nhiên nhiều trường hợp có thể ngăn ngừa được nếu trẻ bệnh nặng được nhận diện sớm và điều trị thích hợp ngay từ ban đầu.
 
-**Lọc bệnh (Triage)** là một tiến trình sàng lọc nhanh trẻ bệnh ngay khi trẻ vừa được đưa đến cơ sở y tế (tại phòng đăng ký, phòng khám bệnh hoặc khoa cấp cứu) nhằm nhận diện sớm các vấn đề đe dọa tính mạng như tắc nghẽn đường thở, suy hô hấp, suy tuần hoàn/sốc, rối loạn thần kinh nặng hoặc mất nước nặng.
+**Lọc bệnh (Triage)** là một tiến trình sàng lọc nhanh trẻ bệnh ngay khi trẻ vừa được đưa đến cơ sở y tế (tại phòng đăng ký, phòng khám bệnh hoặc khoa cấp cứu) nhằm nhận diện sớm các vấn đề đe dọa tính mạng như tắc nghẽn đường thở, [[Suy hô hấp]], suy tuần hoàn/[[Sốc]], rối loạn thần kinh nặng hoặc [[Mất nước]] nặng.
 
 ---
 
@@ -20,16 +30,16 @@ Trẻ cần được xử trí và cấp cứu ngay lập tức. Các dấu hi�
 - **Suy hô hấp nặng.**
 - **Tím trung ương.**
 - **Dấu hiệu sốc:** Tay lạnh, thời gian phục hồi màu da (CRT) $> 3\text{ giây}$, mạch nhanh nhẹ.
-- **Hôn mê.**
-- **Co giật.**
-- **Dấu mất nước nặng ở trẻ tiêu chảy:** Có $\ge 2$ trong 3 dấu hiệu (li bì, mắt trũng, dấu véo da mất rất chậm $> 2\text{ giây}$).
+- **[[Hôn mê]].**
+- **[[Co giật]].**
+- **[[Mất nước|Dấu mất nước]] nặng ở trẻ [[Tiêu chảy]]:** Có $\ge 2$ trong 3 dấu hiệu (li bì, mắt trũng, dấu véo da mất rất chậm $> 2\text{ giây}$).
 
 ##### 2. Trẻ Có Dấu Hiệu Ưu Tiên (Priority Signs)
 
 Trẻ có nguy cơ cao diễn tiến nặng hoặc tử vong, cần được **ưu tiên khám trước** mà không phải xếp hàng theo thứ tự. Dấu hiệu ưu tiên được ghi nhớ theo bảng mã **3TPR MOB**:
 
 - **Tiny baby:** Trẻ nhỏ dưới 2 tháng tuổi.
-- **Temperature:** Trẻ sốt cao.
+- **Temperature:** Trẻ [[[[Sốt]]|sốt cao]].
 - **Trauma:** Trẻ chấn thương hay có vấn đề ngoại khoa khẩn khác.
 - **Pallor:** Tái xanh / nhợt nặng.
 - **Poisoning:** Trẻ bị ngộ độc.
@@ -38,7 +48,7 @@ Trẻ có nguy cơ cao diễn tiến nặng hoặc tử vong, cần được **�
 - **Restless:** Trẻ bứt rứt, kích thích liên tục hay li bì.
 - **Referral:** Trẻ có giấy chuyển viện.
 - **Malnutrition:** Trẻ suy dinh dưỡng gầy mòn nặng rõ.
-- **Oedema:** Phù hai bàn chân.
+- **Oedema:** [[Phù]] hai bàn chân.
 - **Burns:** Trẻ bị bỏng.
 
 ##### 3. Trẻ Không Có Dấu Hiệu Cấp Cứu Hoặc Ưu Tiên
@@ -54,7 +64,7 @@ Khi tiếp cận ban đầu với trẻ, bác sĩ sử dụng **Ấn tượng ba
 > **Sơ Đồ Cơ Chế / Lưu Đồ:** **Tên sơ đồ:** Lưu đồ 98.1. Tiếp cận trẻ tại cấp cứu **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 4 - HSCC.pdf **Nội dung mô tả:** Lưu đồ phân nhánh xử trí dựa trên ấn tượng ban đầu:
 > 
 > - _Nếu trẻ Mê, Tím, Ngưng thở hoặc Thở ngáp:_ Đánh giá ngay xem trẻ có mạch hay không:
->     - **Không có mạch:** Tiến hành Hồi sức tim phổi (CPR) ngay lập tức.
+>     - **Không có mạch:** Tiến hành Hồi sức tim [[Phổi]] (CPR) ngay lập tức.
 >     - **Có mạch:** Thông đường thở, hỗ trợ thông khí, thở oxy, sau đó chuyển sang chuỗi "Đánh giá – Xác định – Can thiệp".
 > - _Nếu trẻ Tỉnh táo, không ngưng thở/mê:_ Thực hiện ngay chuỗi quy trình "Đánh giá – Xác định – Can thiệp".
 
@@ -66,8 +76,8 @@ Thăm khám theo hệ thống tuân thủ nghiêm ngặt bảng kiểm **ABCDE**
 
 ##### 1. Đánh Giá Đường Thở (Airway - A) Và Hô Hấp (Breathing - B)
 
-- **Tắc nghẽn đường thở trên:** Nhận biết qua các dấu hiệu gắng sức hít vào, thở co kéo, tiếng hít vào bất thường (thở ngáy, thở rít _stridor_), hoặc không nghe thấy âm thở dù trẻ đang cố sức thở (tắc nghẽn hoàn toàn).
-- **Tần số thở & Tăng công thở:** Đánh giá nhịp thở khi trẻ nằm yên, quan sát các dấu hiệu phập phồng cánh mũi, co lõm ngực, thở rên (_grunting_), đầu gật gù theo nhịp thở.
+- **Tắc nghẽn đường thở trên:** Nhận biết qua các dấu hiệu gắng sức hít vào, thở co kéo, tiếng hít vào bất thường (thở ngáy, [[Khó thở|thở rít]] _stridor_), hoặc không nghe thấy âm thở dù trẻ đang cố sức thở (tắc nghẽn hoàn toàn).
+- **Tần số thở & Tăng công thở:** Đánh giá nhịp thở khi trẻ nằm yên, quan sát các dấu hiệu phập phồng cánh mũi, co lõm ngực, [[Khó thở|thở rên]] (_grunting_), đầu gật gù theo nhịp thở.
 
 > **Bảng Thông Tin:** **Tên bảng:** Bảng 98.1. Tần số thở bình thường theo tuổi **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 4 - HSCC.pdf **Nội dung mô tả:** Bảng quy định ngưỡng tần số thở sinh lý bình thường ở trẻ em theo từng độ tuổi:
 > 
@@ -90,14 +100,14 @@ Thăm khám theo hệ thống tuân thủ nghiêm ngặt bảng kiểm **ABCDE**
 
 ##### 3. Đánh Giá Thần Kinh / Tri Giác (Disability - D)
 
-Sử dụng hai công cụ chuẩn hóa chính để đánh giá nhanh tri giác và chức năng vỏ não của trẻ:
+Sử dụng hai công cụ chuẩn hóa chính để đánh giá nhanh tri giác và chức năng [[Vỏ não]] của trẻ:
 
 > **Bảng Thông Tin:** **Tên bảng:** Thang điểm AVPU **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 4 - HSCC.pdf **Nội dung mô tả:** Đánh giá mức độ nhận thức của trẻ theo 4 cấp độ:
 > 
-> - **A (Alert - Tỉnh táo):** Trẻ thức, linh hoạt, đáp ứng phù hợp với kích thích từ cha mẹ và ngoại cảnh.
+> - **A (Alert - Tỉnh táo):** Trẻ thức, linh hoạt, đáp ứng [[Phù]] hợp với kích thích từ cha mẹ và ngoại cảnh.
 > - **V (Voice - Âm thanh):** Trẻ chỉ đáp ứng khi gọi tên hoặc nói lớn tiếng.
 > - **P (Pain - Đau):** Trẻ chỉ đáp ứng khi làm kích thích đau (ấn nền móng).
-> - **U (Unresponsive - Không đáp ứng):** Trẻ hoàn toàn không đáp ứng với bất kỳ kích thích nào (tương đương hôn mê / GCS $\le 8\text{ điểm}$, cần đặt nội khí quản bảo vệ đường thở).
+> - **U (Unresponsive - Không đáp ứng):** Trẻ hoàn toàn không đáp ứng với bất kỳ kích thích nào (tương đương [[Hôn mê]] / GCS $\le 8\text{ điểm}$, cần đặt nội khí quản bảo vệ đường thở).
 
 > **Bảng Thông Tin:** **Tên bảng:** Bảng 98.4. Thang điểm hôn mê Glasgow (GCS) **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 4 - HSCC.pdf **Nội dung mô tả:** Bảng chấm điểm hôn mê Glasgow hiệu chỉnh dành cho trẻ em và nhũ nhi dựa trên 3 phản ứng:
 > 
@@ -112,7 +122,7 @@ Sử dụng hai công cụ chuẩn hóa chính để đánh giá nhanh tri giác
 
 ##### 4. Bộc Lộ Toàn Thể (Exposure - E)
 
-Cởi bỏ quần áo trẻ để thăm khám toàn diện vùng đầu, thân mình, lưng, tứ chi nhằm tìm các dấu hiệu chấn thương, bỏng, tử ban hoặc đốm xuất huyết da niêm (dấu hiệu của sốc nhiễm trùng). Lưu ý luôn giữ ấm cho trẻ để phòng ngừa hạ thân nhiệt.
+Cởi bỏ quần áo trẻ để thăm khám toàn diện vùng đầu, thân mình, lưng, tứ chi nhằm tìm các dấu hiệu chấn thương, bỏng, tử ban hoặc đốm [[Xuất huyết]] da niêm (dấu hiệu của [[Sốc nhiễm khuẩn|sốc nhiễm trùng]]). Lưu ý luôn giữ ấm cho trẻ để phòng ngừa hạ thân nhiệt.
 
 ---
 

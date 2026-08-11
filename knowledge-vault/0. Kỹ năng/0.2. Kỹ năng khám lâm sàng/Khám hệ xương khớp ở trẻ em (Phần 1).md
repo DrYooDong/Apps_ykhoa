@@ -1,3 +1,13 @@
+---
+title: "Khám hệ xương khớp ở trẻ em (Phần 1)"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: NGUYÊN TẮC CHUNG, ĐÁNH GIÁ TRIỆU CHỨNG BẤT THƯỜNG VÀ KHÁM CÁC KHỚP CHI TRÊN Ở TRẺ EM)
 
 ---
@@ -89,7 +99,7 @@ Khám hệ thống cơ xương khớp được thực hiện dựa trên nhìn, 
 
 - **Tên Hình/Sơ Đồ:** **Hình 69.1. Khám khớp vai**.
     
-- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf_ (Bài 69, trang 185).
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - [[Tim]] mạch.pdf_ (Bài 69, trang 185).
     
 - **Mô Tả Chi Tiết:** Sơ đồ minh họa các bước thăm khám khớp vai ở trẻ em gồm: (a) Đánh giá tư thế và sờ nắn các mốc xương/bao khớp vai; (b) Khám biên độ dạng, gập và xoay ngoài; (c) Khám động tác xoay trong và khép vai.
     
@@ -104,7 +114,7 @@ Khám hệ thống cơ xương khớp được thực hiện dựa trên nhìn, 
 
 - **Tên Hình/Sơ Đồ:** **Hình 69.2. Khám khớp khuỷu**.
     
-- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - Tim mạch.pdf_ (Bài 69, trang 186).
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - [[Tim]] mạch.pdf_ (Bài 69, trang 186).
     
 - **Mô Tả Chi Tiết:** Sơ đồ minh họa tư thế sờ nắn khớp khuỷu gập $70^\circ$, vị trí kiểm tra mỏm khuỷu, rãnh khuỷu bên và đánh giá biên độ gập - duỗi khuỷu.
     

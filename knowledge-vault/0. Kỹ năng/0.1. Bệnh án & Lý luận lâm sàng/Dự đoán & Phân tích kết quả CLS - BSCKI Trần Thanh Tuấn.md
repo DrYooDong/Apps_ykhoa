@@ -1,9 +1,13 @@
 ---
 title: "Dự đoán & Phân tích kết quả CLS - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Dự đoán và phân tích kết quả cận lâm sàng - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**
@@ -39,14 +43,14 @@ Ví dụ:
 
 Bệnh nhân nam **40 tuổi**, vào viện vì **đau ngực cấp**. Sau khi hỏi bệnh và thăm khám bệnh nhân được chẩn đoán:
 
-- CĐSB: nhồi máu cơ tim cấp.
-- Phân biệt với: đau thắt ngực không ổn định, viêm cơ tim và viêm màng ngoài tim.
+- CĐSB: nhồi máu [[Tim|cơ tim]] cấp.
+- Phân biệt với: [[Đau ngực|đau thắt ngực]] không ổn định, viêm [[Tim|cơ tim]] và viêm màng ngoài tim.
 
 Bệnh nhân được chỉ định đo điện tâm đồ. **Dự đoán** điện tâm đồ có các tình huống sau:
 
 - Nếu ECG có hình ảnh *ST chênh lên dạng vòm* thì sẽ được chẩn đoán **nhồi máu cơ tim cấp có ST chênh lên**
 - Nếu ECG có hình ảnh *ST chênh lên dạng lõm* thì sẽ được chẩn đoán **viêm màng ngoài tim**
-- Nếu ECG có hình ảnh *ST chênh xuống* thì sẽ được chẩn đoán là **nhồi máu cơ tim không ST chênh lên**, hoặc **đau thắt ngực không ổn định**
+- Nếu ECG có hình ảnh *ST chênh xuống* thì sẽ được chẩn đoán là **nhồi máu cơ tim không ST chênh lên**, hoặc **[[Đau ngực|đau thắt ngực]] không ổn định**
 - Nếu ECG có hình ảnh *sóng T âm sâu* hoặc *sóng T cao nhọn* thì sẽ được chẩn đoán là **nhồi máu cơ tim không ST chênh lên**, hoặc **đau thắt ngực không ổn định**
 - Nếu ECG trong giới hạn *bình thường* thì loại trừ được **nhồi máu cơ tim có ST chênh lên** và **viêm màng ngoài tim cấp**.
 
@@ -66,8 +70,8 @@ Khi phân tích cận lâm sàng cần làm theo các bước sau.
 **B3**. Xác định **ý nghĩa của từng bước**. 
 
 - Nếu bình thường ⇒ có ý nghĩa gì?.
-- Nếu bất thường ⇒ có ý nghĩa gì? → Bất thường này giúp chẩn đoán hay bất thường này phù hợp với chẩn đoán?.
-- Trong trường hợp bất thường không phù hợp với chẩn đoán → Giải thích rõ tại sao không phù hợp?.
+- Nếu bất thường ⇒ có ý nghĩa gì? → Bất thường này giúp chẩn đoán hay bất thường này [[Phù]] hợp với chẩn đoán?.
+- Trong trường hợp bất thường không [[Phù]] hợp với chẩn đoán → Giải thích rõ tại sao không phù hợp?.
 
 *Theo ví dụ trên bệnh nhân có dấu hiệu lớn thất trái trên điện tâm đồ, nhưng mỏm tim ở vị trí bình thường → vậy dấu hiệu lớn nhất trên điện tâm đồ có ý nghĩa là gì? ⇒ Khả năng đây là do **dương tính giả**.*
 
@@ -123,7 +127,7 @@ ST chênh lên dạng vòm ở DII 2mm, DIII 3mm , aVF 2mm so với đường đ
 
 ### Ví dụ 2. Bệnh nhân nữ 55 tuổi đến khám vì mệt mỏi.
 
-1 tháng nay bệnh nhân cảm thấy mệt mỏi, đi bộ thì mệt nhiều hơn. Khi đi khoảng gần 100 m thì bệnh nhân mệt phải dừng lại nghỉ ngơi. Bệnh nhân đến khám bệnh. Tiền sử tăng huyết áp và đái tháo đường type 2 điều trị không liên tục. Khám mạch 92 lần/ phút. Huyết áp 140/90 mmHg. Thể trạng thừa cân. Các cơ quan không ghi nhận bất thường. Da niêm hồng hào, mỏm tim ở khoảng gian sườn V đường trung đòn trái, T1-T2 đều rõ, không âm bệnh lý, phổi không ran.
+1 tháng nay bệnh nhân cảm thấy mệt mỏi, đi bộ thì mệt nhiều hơn. Khi đi khoảng gần 100 m thì bệnh nhân mệt phải dừng lại nghỉ ngơi. Bệnh nhân đến khám bệnh. Tiền sử [[Tăng huyết áp]] và đái tháo đường type 2 điều trị không liên tục. Khám mạch 92 lần/ phút. Huyết áp 140/90 mmHg. Thể trạng thừa cân. Các cơ quan không ghi nhận bất thường. Da niêm hồng hào, mỏm tim ở khoảng gian sườn V đường trung đòn trái, T1-T2 đều rõ, không âm bệnh lý, [[Phổi]] không ran.
 
 Bệnh nhân có 2 **vấn đề**:
 
@@ -133,7 +137,7 @@ Bệnh nhân có 2 **vấn đề**:
 
 **Chẩn đoán**:
 
-- suy tim tâm trương - Tăng huyết áp độ I theo JNC - đái tháo đường type 2
+- suy tim tâm trương - [[Tăng huyết áp]] độ I theo JNC - đái tháo đường type 2
 
 - suy nhược - Tăng huyết áp độ I theo JNC - đái tháo đường type 2
 
@@ -141,14 +145,14 @@ Bệnh nhân có 2 **vấn đề**:
 
 - Bệnh nhân mệt nên dùng mệt để biện luận.
 - Mệt từ 1 tháng nay nên là ***mệt mỏi kéo dài***.
-- Mệt nghĩ do ***suy tim tâm trương*** vì bệnh nhân có: *yếu tố nguy cơ* suy tim tâm trương (như: nữ mãn kinh, tăng huyết áp, đái tháo đường, thừa cân) → do đó cần làm: siêu âm tim, NT-proBNP để kiểm tra
+- Mệt nghĩ do ***suy tim tâm trương*** vì bệnh nhân có: *yếu tố nguy cơ* suy tim tâm trương (như: nữ mãn kinh, tăng huyết áp, đái tháo đường, thừa cân) → do đó cần làm: [[Siêu âm|siêu âm tim]], NT-proBNP để kiểm tra
 - Ngoài ra mệt nghĩ do *suy nhược* vì đây là tình trạng thường gặp
 
 **Kết quả cận lâm sàng**:
 
 Bước 1: Dự đoán kết quả
 
-- Siêu âm tim: chức năng co bóp thất trái bình thường hoặc > 50%
+- [[Siêu âm|Siêu âm tim]]: chức năng co bóp thất trái bình thường hoặc > 50%
 
 - NT-proBNP ở tuổi 50 thì có giá trị chẩn đoán **> 100 pg/ ml** hoặc **> 300 pg/ ml**
 

@@ -1,10 +1,16 @@
 ---
+title: "Hepatitis C Virus (HCV)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 # 1. Đại cương và Lịch sử
 
-- **Định nghĩa:** Viêm gan C là bệnh lý do virus viêm gan C (HCV) gây ra. Đây là một nguyên nhân *hàng đầu trên toàn thế giới* gây ra bệnh gan mạn tính, bao gồm xơ gan và ung thư biểu mô tế bào gan (HCC).
+- **Định nghĩa:** Viêm gan C là bệnh lý do virus viêm gan C (HCV) gây ra. Đây là một nguyên nhân *hàng đầu trên toàn thế giới* gây ra bệnh gan mạn tính, bao gồm xơ gan và ung thư biểu mô [[Gan|tế bào gan]] (HCC).
 - **Lịch sử:** 
 	- Trước đây, căn bệnh này được gọi là ==viêm gan "non-A, non-B" (NANB)== do lây truyền qua đường truyền máu nhưng không phải do virus viêm gan A hay B. 
 	- Đến năm 1989, nhóm nghiên cứu của **Michael Houghton** đã xác định được căn nguyên và đặt tên là virus viêm gan C (HCV), khám phá này sau đó đã mang lại ==Giải Nobel Y sinh== năm 2020.
@@ -29,12 +35,12 @@ tags:
 
 # 4. Diễn tiến tự nhiên và Biểu hiện lâm sàng
 
-- **Viêm gan cấp tính:** Chỉ khoảng 15% - 30% người bệnh có triệu chứng cấp tính như mệt mỏi, buồn nôn, đau hạ sườn phải, nước tiểu sẫm màu và vàng da,. Suy gan tối cấp do HCV là rất hiếm gặp,.
-- **Viêm gan mạn tính:** Từ 50% đến 75% người nhiễm HCV cấp tính sẽ chuyển sang giai đoạn nhiễm trùng mạn tính,. Nếu không được điều trị, bệnh có thể tiến triển âm thầm trong nhiều thập kỷ dẫn đến xơ gan (sau 20 năm trở lên) và tăng rủi ro mắc ung thư biểu mô tế bào gan (HCC),. Các yếu tố như tuổi cao, sử dụng rượu nhiều, béo phì, và đồng nhiễm HIV/HBV sẽ làm tăng tốc độ xơ hóa gan,,.
+- **Viêm gan cấp tính:** Chỉ khoảng 15% - 30% người bệnh có triệu chứng cấp tính như mệt mỏi, [[[[Nôn ói]]|buồn nôn]], đau hạ sườn phải, nước tiểu sẫm màu và [[Vàng da]],. Suy gan tối cấp do HCV là rất hiếm gặp,.
+- **Viêm gan mạn tính:** Từ 50% đến 75% người nhiễm HCV cấp tính sẽ chuyển sang giai đoạn nhiễm trùng mạn tính,. Nếu không được điều trị, bệnh có thể tiến triển âm thầm trong nhiều thập kỷ dẫn đến xơ gan (sau 20 năm trở lên) và tăng rủi ro mắc ung thư biểu mô [[Gan|tế bào gan]] (HCC),. Các yếu tố như tuổi cao, sử dụng rượu nhiều, béo phì, và đồng nhiễm HIV/HBV sẽ làm tăng tốc độ xơ hóa gan,,.
 - **Biến chứng ngoài gan:** HCV còn gây ra nhiều bệnh lý toàn thân quan trọng như:
     - Tình trạng cryoglobulin huyết hỗn hợp (Mixed cryoglobulinemia) và viêm mạch,.
     - Các bệnh lý tăng sinh lympho tế bào B (như U lympho không Hodgkin),.
-    - Rối loạn chuyển hóa như kháng insulin, đái tháo đường type 2, gan nhiễm mỡ và các bệnh lý tim mạch,.
+    - Rối loạn chuyển hóa như kháng [[Insulin]], đái tháo đường type 2, gan nhiễm mỡ và các bệnh lý [[Tim]] mạch,.
 
 # 5. Chẩn đoán
 
@@ -52,7 +58,7 @@ tags:
 
 # 7. Phòng ngừa và Loại trừ HCV
 
-- **Vắc-xin:** Do tính đa dạng di truyền khổng lồ của virus và khả năng lẩn tránh miễn dịch, đến nay **vẫn chưa có vắc-xin** phòng ngừa viêm gan C,.
+- **[[Vắc-xin]]:** Do tính đa dạng di truyền khổng lồ của virus và khả năng lẩn tránh miễn dịch, đến nay **vẫn chưa có [[Vắc-xin]]** phòng ngừa viêm gan C,.
 - **Phòng ngừa:** Chủ yếu dựa vào các chiến lược giảm hại (cung cấp bơm kim tiêm sạch, điều trị thay thế opioid cho người tiêm chích ma túy), sàng lọc máu an toàn và kiểm soát nhiễm khuẩn trong môi trường y tế.
 - **Mục tiêu loại trừ:** Tổ chức Y tế Thế giới (WHO) đã đề ra mục tiêu loại trừ HCV như một mối đe dọa sức khỏe cộng đồng vào năm 2030 (giảm 90% số ca nhiễm mới và giảm 65% tỷ lệ tử vong) thông qua việc tăng cường xét nghiệm và mở rộng khả năng tiếp cận thuốc DAA,,.
 

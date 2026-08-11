@@ -1,14 +1,25 @@
+---
+title: "Tóm tắt khuyến cáo mới nhất về hen phế quản phần 2"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 # 1. Nội Dung Bệnh Lý Học Chi Tiết
 
 ## 1.1. Các Phương Thức Điều Trị Trọng Yếu Theo GINA 2026
 
-Báo cáo chiến lược GINA 2026 tiếp tục duy trì và củng cố mô hình quản lý hen thông qua **hai phương thức điều trị (Tracks)** dành cho người lớn và trẻ vị thành niên ($\ge 12$ tuổi), trong đó ưu tiên tuyệt đối việc sử dụng liệu pháp chứa Corticosteroid dạng hít (ICS) để bảo vệ an toàn cho người bệnh.
+Báo cáo chiến lược GINA 2026 tiếp tục duy trì và củng cố mô hình quản lý hen thông qua **hai phương thức điều trị (Tracks)** dành cho người lớn và trẻ vị thành niên ($\ge 12$ tuổi), trong đó ưu tiên tuyệt đối việc sử dụng liệu pháp chứa [[Corticoid|Corticosteroid]] dạng hít (ICS) để bảo vệ an toàn cho người bệnh.
 
 ### 1.1.1. Phương thức 1 (Track 1 - Ưu tiên hàng đầu)
 
 Phương thức này sử dụng phối hợp **ICS-formoterol liều thấp làm thuốc cắt cơn kháng viêm (Anti-inflammatory reliever - AIR)** xuyên suốt từ Bậc 1 đến Bậc 4.
 
-- **Cơ sở khoa học:** Formoterol là thuốc đồng vận beta-2 tác dụng kéo dài (LABA) nhưng có khởi phát tác dụng cực nhanh tương đương SABA. Việc dùng phối hợp ICS-formoterol giúp bệnh nhân tự động nhận được một liều kháng viêm mỗi khi cần cắt cơn, từ đó giảm thiểu đáng kể nguy cơ xảy ra đợt kịch phát nặng, giảm số lần nhập viện và hạn chế tối đa việc phải phơi nhiễm với corticosteroid đường toàn thân so với các phác đồ dùng SABA đơn thuần.
+- **Cơ sở khoa học:** Formoterol là thuốc đồng vận beta-2 tác dụng kéo dài (LABA) nhưng có khởi phát tác dụng cực nhanh tương đương SABA. Việc dùng phối hợp ICS-formoterol giúp bệnh nhân tự động nhận được một liều kháng viêm mỗi khi cần cắt cơn, từ đó giảm thiểu đáng kể nguy cơ xảy ra đợt kịch phát nặng, giảm số lần nhập viện và hạn chế tối đa việc phải phơi nhiễm với [[Corticoid|corticosteroid]] đường toàn thân so với các phác đồ dùng SABA đơn thuần.
 - **Bậc 1 và 2 (Chỉ dùng khi cần):** Bệnh nhân hít 1 liều ICS-formoterol thấp mỗi khi có triệu chứng.
 - **Bậc 3 và 4 (Liệu pháp duy trì và cắt cơn - MART):** Bệnh nhân dùng ICS-formoterol thấp/trung bình hằng ngày làm liều duy trì, và dùng chính bình hít này để cắt cơn khi có triệu chứng.
 - **Ngưỡng an toàn hằng ngày:**
@@ -29,7 +40,7 @@ Phương thức này sử dụng **SABA hoặc phối hợp ICS-SABA làm thuố
 `[Box 4-3. GINA 2026 Adults & adolescents 12+ years - Personalized asthma management] - trích từ Global Strategy for Asthma Management and --Prevention (2026 update).pdf`
 
 - **Nội dung và chú thích chi tiết:**
-    - **Chu kỳ quản lý cá thể hóa:** Đánh giá (Chẩn đoán, Kiểm soát triệu chứng, Bệnh đồng mắc, Kỹ thuật hít) $\rightarrow$ Điều chỉnh (Thuốc hen, Biện pháp không dùng thuốc, Xử trí yếu tố nguy cơ) $\rightarrow$ Xem xét đáp ứng (Triệu chứng, Đợt cấp, Chức năng phổi, Biomarkers).
+    - **Chu kỳ quản lý cá thể hóa:** Đánh giá (Chẩn đoán, Kiểm soát triệu chứng, Bệnh đồng mắc, Kỹ thuật hít) $\rightarrow$ Điều chỉnh (Thuốc hen, Biện pháp không dùng thuốc, Xử trí yếu tố nguy cơ) $\rightarrow$ Xem xét đáp ứng (Triệu chứng, Đợt cấp, Chức năng [[Phổi]], Biomarkers).
     - **Track 1 (Ưu tiên):** Thuốc cắt cơn là ICS-formoterol liều thấp.
         - _Bậc 1–2:_ Chỉ dùng khi cần (As-needed low dose ICS-formoterol).
         - _Bậc 3:_ MART với ICS-formoterol liều thấp duy trì.
@@ -50,7 +61,7 @@ Khi bệnh nhân không đạt kiểm soát ở Bậc 4 mặc dù đã tối ưu
 
 ### 1.2.1. Các thuốc sinh học mới (Biologics) trong GINA 2026
 
-- **Depemokimab (Kháng IL-5 tác dụng kéo dài):** Đây là bước đột phá lớn trong GINA 2026. Depemokimab là thuốc kháng IL-5 có tác dụng kéo dài, được dùng bằng đường tiêm **mỗi 26 tuần (6 tháng/lần)**. Thuốc được phê duyệt cho điều trị hen tăng bạch cầu ái toan nặng từ 12 tuổi trở lên và viêm mũi xoang mạn kèm polyp mũi từ 18 tuổi trở lên. Việc chuyển đổi sang dùng depemokimab có thể cân nhắc ở những bệnh nhân đang đáp ứng tốt với mepolizumab, nhưng hiện tại chưa có khuyến cáo chuyển đổi cho bệnh nhân đang đáp ứng tốt với benralizumab.
+- **Depemokimab (Kháng IL-5 tác dụng kéo dài):** Đây là bước đột phá lớn trong GINA 2026. Depemokimab là thuốc kháng IL-5 có tác dụng kéo dài, được dùng bằng đường tiêm **mỗi 26 tuần (6 tháng/lần)**. Thuốc được phê duyệt cho điều trị hen tăng [[Bạch cầu]] ái toan nặng từ 12 tuổi trở lên và viêm mũi xoang mạn kèm polyp mũi từ 18 tuổi trở lên. Việc chuyển đổi sang dùng depemokimab có thể cân nhắc ở những bệnh nhân đang đáp ứng tốt với mepolizumab, nhưng hiện tại chưa có khuyến cáo chuyển đổi cho bệnh nhân đang đáp ứng tốt với benralizumab.
 - **Omalizumab-igec (Biosimilar kháng IgE đầu tiên):** Mở rộng khả năng tiếp cận thuốc sinh học cho bệnh nhân hen dị ứng nặng nhờ giá thành tối ưu nhưng giữ nguyên các chỉ định lâm sàng tương tự Omalizumab gốc.
 
 ---
@@ -67,7 +78,7 @@ Khi bệnh nhân không đạt kiểm soát ở Bậc 4 mặc dù đã tối ưu
 
 - **Nội dung và chú thích chi tiết quy trình lựa chọn thuốc sinh học viêm Type 2:**
     1. **Anti-IgE (Omalizumab / Omalizumab-igec):** Thích hợp cho hen dị ứng nặng khởi phát từ nhỏ, có test lẩy da hoặc IgE đặc hiệu dương tính với dị nguyên khí thở, mức IgE toàn phần nằm trong khoảng liều điều trị.
-    2. **Anti-IL5 / Anti-IL5Rα (Mepolizumab, Benralizumab, Reslizumab, Depemokimab):** Thích hợp cho hen tăng bạch cầu ái toan nặng, có số lượng bạch cầu ái toan máu (BEC) $\ge 150/\mu\text{L}$ hoặc $\ge 300/\mu\text{L}$, xuất hiện nhiều đợt cấp trong năm qua, khởi phát ở tuổi trưởng thành hoặc có kèm polyp mũi.
+    2. **Anti-IL5 / Anti-IL5Rα (Mepolizumab, Benralizumab, Reslizumab, Depemokimab):** Thích hợp cho hen tăng bạch cầu ái toan nặng, có [[Bạch cầu|số lượng bạch cầu]] ái toan máu (BEC) $\ge 150/\mu\text{L}$ hoặc $\ge 300/\mu\text{L}$, xuất hiện nhiều đợt cấp trong năm qua, khởi phát ở tuổi trưởng thành hoặc có kèm polyp mũi.
     3. **Anti-IL4Rα (Dupilumab):** Thích hợp cho hen nặng kèm viêm Type 2 chiếm ưu thế, BEC $\ge 150/\mu\text{L}$ hoặc FeNO $\ge 25\text{ ppb}$, hoặc bệnh nhân đang phụ thuộc vào OCS duy trì, có kèm chàm thể tạng (atopic dermatitis) hoặc polyp mũi.
     4. **Anti-TSLP (Tezepelumab):** Nhắm vào alarmin thượng nguồn, thích hợp cho bệnh nhân có mức BEC cao, FeNO cao, kèm polyp mũi, hiệu quả cho cả kiểu hình viêm Type 2 lẫn không Type 2.
 
@@ -93,8 +104,8 @@ GINA 2026 đã tái cấu trúc toàn diện quy trình cấp cứu bằng việ
 
 - **Nội dung chú thích chi tiết về quản lý sử dụng Corticosteroid đường uống:**
     - Mặc dù OCS có vai trò cứu mạng trong các cơn kịch phát nặng, việc lạm dụng hoặc dùng OCS tích lũy mang lại tác hại tàn phá cơ thể vô cùng lớn.
-    - _Tác dụng phụ ngắn hạn:_ Rối loạn giấc ngủ, thèm ăn, trào ngược dạ dày thực quản, thay đổi tâm trạng, tăng nguy cơ nhiễm trùng huyết, viêm phổi và huyết khối tĩnh mạch.
-    - _Tác dụng phụ dài hạn:_ Chỉ cần dùng **4–5 đợt OCS ngắn hạn trong suốt cả cuộc đời** đã đủ để làm tăng đáng kể nguy cơ mắc bệnh đái tháo đường, đục thủy tinh thể, suy tim và loãng xương.
+    - _Tác dụng phụ ngắn hạn:_ Rối loạn giấc ngủ, thèm ăn, trào ngược dạ dày thực quản, thay đổi tâm trạng, tăng nguy cơ [[Nhiễm trùng huyết]], viêm [[Phổi]] và huyết khối tĩnh mạch.
+    - _Tác dụng phụ dài hạn:_ Chỉ cần dùng **4–5 đợt OCS ngắn hạn trong suốt cả cuộc đời** đã đủ để làm tăng đáng kể nguy cơ mắc bệnh đái tháo đường, đục thủy tinh thể, suy [[Tim]] và loãng xương.
     - _Chiến lược quản lý:_ Tối ưu hóa liệu pháp hít (ưu tiên AIR/MART), xử lý các yếu tố nguy cơ có thể thay đổi được, giáo dục kỹ thuật hít và tuân thủ điều trị để giảm thiểu tối đa việc phải sử dụng OCS.
 
 ---
@@ -118,7 +129,7 @@ Quá trình khởi phát hen phế quản chịu sự chi phối mạnh mẽ c�
 
 - **Tránh khói thuốc lá tuyệt đối:** Phụ nữ mang thai và trẻ nhỏ tuyệt đối không được tiếp xúc với khói thuốc lá chủ động hoặc thụ động (bao gồm cả thuốc lá điện tử/vape) do chúng trực tiếp làm biến đổi cấu trúc đường thở và tăng nguy cơ khò khè tái phát.
 - **Ưu tiên sinh thường đường âm đạo:** Sinh mổ làm tăng nguy cơ hen ở trẻ nhỏ do làm chậm quá trình hình thành hệ vi sinh đường ruột lành mạnh.
-- **Hạn chế kháng sinh phổ rộng đầu đời:** Chỉ dùng kháng sinh phổ rộng cho trẻ dưới 1 tuổi khi thực sự có chỉ định nhiễm khuẩn rõ ràng để bảo tồn hệ vi sinh (microbiota), giúp lập trình miễn dịch đi theo hướng dung nạp thay vì dị ứng.
+- **Hạn chế [[Kháng sinh]] phổ rộng đầu đời:** Chỉ dùng [[Kháng sinh]] phổ rộng cho trẻ dưới 1 tuổi khi thực sự có chỉ định nhiễm khuẩn rõ ràng để bảo tồn hệ vi sinh (microbiota), giúp lập trình miễn dịch đi theo hướng dung nạp thay vì dị ứng.
 - **Bổ sung Vitamin D cho thai phụ mắc hen:** Việc tầm soát và điều chỉnh tình trạng thiếu hụt Vitamin D ở phụ nữ mang thai giúp làm giảm đáng kể nguy cơ xuất hiện các đợt khò khè ở trẻ sơ sinh.
 
 ---

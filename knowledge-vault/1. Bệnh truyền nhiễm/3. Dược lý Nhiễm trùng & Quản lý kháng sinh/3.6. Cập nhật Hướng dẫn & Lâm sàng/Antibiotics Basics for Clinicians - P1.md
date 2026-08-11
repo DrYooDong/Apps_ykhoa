@@ -1,12 +1,16 @@
 ---
 title: "Antibiotics Basics for Clinicians - P1"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-### 1. Nội Dung Bệnh Lý Học Chi Tiết: Các Cập Nhật Mới Nhất Về Kháng Sinh
 
-Theo phiên bản cập nhật lần thứ 4 của tài liệu "Antibiotics Basics for Clinicians" (xuất bản năm 2026), các nội dung được cập nhật mới nhất tập trung vào sự xuất hiện của các nhóm kháng sinh mới ra mắt trong vòng 5 năm qua, cũng như những thay đổi trong hướng dẫn điều trị đối với các bệnh lý như viêm phổi và bệnh lao.
+### 1. Nội Dung Bệnh Lý Học Chi Tiết: Các Cập Nhật Mới Nhất Về [[Kháng sinh]]
+
+Theo phiên bản cập nhật lần thứ 4 của tài liệu "Antibiotics Basics for Clinicians" (xuất bản năm 2026), các nội dung được cập nhật mới nhất tập trung vào sự xuất hiện của các nhóm [[Kháng sinh]] mới ra mắt trong vòng 5 năm qua, cũng như những thay đổi trong hướng dẫn điều trị đối với các bệnh lý như viêm [[Phổi]] và bệnh lao.
 
 #### Cập Nhật Các Kháng Sinh Nhóm Beta-Lactam Mới
 
@@ -20,7 +24,7 @@ Theo phiên bản cập nhật lần thứ 4 của tài liệu "Antibiotics Basi
 |---|---|---|
 |First generation|Cefazolin|Cefadroxil, cephalexin|
 |Second generation|Cefotetan, a cefoxitin, a cefuroxime|Cefaclor, cefprozil, cefuroxime axetil|
-|Third generation|Cefotaxime, ceftazidime, ceftriaxone|Cefdinir, cefpodoxime proxetil, cefixime|
+|Third generation|Cefotaxime, ceftazidime, [[Ceftriaxone]]|Cefdinir, cefpodoxime proxetil, cefixime|
 |Fourth generation|Cefepime||
 |Fifth generation|Ceftaroline||
 |Cephalosporin plus ẞ-lactamase inhibitor combinations|Ceftazidime-avibactam, Ceftolozane-tazobactam||

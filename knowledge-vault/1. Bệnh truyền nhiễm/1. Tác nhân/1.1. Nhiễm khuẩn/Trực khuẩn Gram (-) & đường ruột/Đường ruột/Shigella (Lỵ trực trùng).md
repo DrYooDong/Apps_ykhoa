@@ -1,7 +1,14 @@
 ---
+title: "Shigella (Lỵ trực trùng)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - he-co-quan/tieu-hoa
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 # **Đại cương và Lịch sử** 
 Thuật ngữ "dysentery" (bệnh lỵ) đã được Hippocrates sử dụng từ thời cổ đại để mô tả tình trạng đi tiêu phân có máu và chất nhầy, đi kèm với đau rặn. Đến cuối thế kỷ 19 và đầu thế kỷ 20, các nhà khoa học mới phân biệt được lỵ amíp (do _Entamoeba histolytica_) và lỵ trực khuẩn. Năm 1906, Shiga đã chứng minh một cách thuyết phục rằng một loại vi khuẩn được tìm thấy trong phân của nhiều bệnh nhân mắc bệnh lỵ là tác nhân gây bệnh, đồng thời phát hiện ra các kháng thể ngưng kết (agglutinins) trong huyết thanh của những người nhiễm.
 
@@ -29,18 +36,18 @@ Quá trình nhiễm trùng của _Shigella_ đòi hỏi vi khuẩn phải xâm n
 - **Độc tố Shiga:** _S. dysenteriae_ type 1 có khả năng tiết ra độc tố Shiga, đóng vai trò quan trọng trong việc làm tổn thương niêm mạc ruột và gây ra các triệu chứng lỵ nặng nề.
 
 # **Biểu hiện Lâm sàng** 
-Bệnh lỵ trực khuẩn do _Shigella_ (hoặc EIEC) đặc trưng bởi tình trạng tiêu chảy cấp tính, thường có lẫn máu và nhầy trong phân, kèm theo đau bụng quặn và rặn. Bệnh cảnh lâm sàng của EIEC và _Shigella_ hầu như không thể phân biệt được, mặc dù EIEC thường có xu hướng nhẹ hơn. Ngoài các triệu chứng tiêu hóa, trẻ em bị nhiễm _Shigella_ có nguy cơ gặp phải các biến chứng ngoài ruột, nổi bật nhất là các biểu hiện liên quan đến hệ thần kinh trung ương (như co giật).
+Bệnh lỵ trực khuẩn do _Shigella_ (hoặc EIEC) đặc trưng bởi tình trạng [[Tiêu chảy]] cấp tính, thường có lẫn máu và nhầy trong phân, kèm theo [[Đau bụng]] quặn và rặn. Bệnh cảnh lâm sàng của EIEC và _Shigella_ hầu như không thể phân biệt được, mặc dù EIEC thường có xu hướng nhẹ hơn. Ngoài các triệu chứng tiêu hóa, trẻ em bị nhiễm _Shigella_ có nguy cơ gặp phải các biến chứng ngoài ruột, nổi bật nhất là các biểu hiện liên quan đến [[Hệ thần kinh trung ương]] (như [[Co giật]]).
 
 # **Điều trị**
 
-- **Kháng sinh liệu pháp:** Việc điều trị kháng sinh giúp rút ngắn thời gian bệnh và quan trọng hơn là giảm tình trạng bài xuất vi khuẩn ra môi trường, từ đó cắt đứt nguồn lây lan. Các thuốc thường được sử dụng cho người lớn và trẻ em bao gồm: **Ceftriaxone** (đường tĩnh mạch), **Cefixime**, **Ciprofloxacin**, **Levofloxacin**, và **Azithromycin**.
+- **[[Kháng sinh]] liệu pháp:** Việc điều trị [[Kháng sinh]] giúp rút ngắn thời gian bệnh và quan trọng hơn là giảm tình trạng bài xuất vi khuẩn ra môi trường, từ đó cắt đứt nguồn lây lan. Các thuốc thường được sử dụng cho người lớn và trẻ em bao gồm: **[[Ceftriaxone]]** (đường tĩnh mạch), **Cefixime**, **Ciprofloxacin**, **Levofloxacin**, và **Azithromycin**.
 - **Tình trạng kháng thuốc:** Tổ chức Y tế Thế giới và CDC đang cảnh báo về sự nổi lên của các chủng _Shigella_ đa kháng thuốc (MDR) và siêu kháng thuốc (XDR). Có sự gia tăng đáng kể các chủng kháng lại fluoroquinolone, macrolide và cephalosporin, bao gồm cả các chủng _S. sonnei_ lây truyền qua đường tình dục.
-- **Chống chỉ định:** Tuyệt đối không sử dụng các thuốc làm giảm nhu động ruột (thuốc cầm tiêu chảy như lomotil) vì chúng có thể làm bệnh trầm trọng thêm.
+- **Chống chỉ định:** Tuyệt đối không sử dụng các thuốc làm giảm nhu động ruột (thuốc cầm [[Tiêu chảy]] như lomotil) vì chúng có thể làm bệnh trầm trọng thêm.
 
-# **Phòng ngừa và Vắc-xin**
+# **Phòng ngừa và [[Vắc-xin]]**
 
 - Do lây truyền từ người sang người là phương thức chính, việc **rửa tay** và tuân thủ các biện pháp vệ sinh nghiêm ngặt là cách hiệu quả nhất để ngăn ngừa lây lan _Shigella_.
-- Hiện tại, **chưa có loại vắc-xin nào được cấp phép** để phòng bệnh lỵ trực khuẩn. Tuy nhiên, vì người từng mắc bệnh có thể phát triển khả năng miễn dịch đồng loài (homologous immunity), việc phát triển vắc-xin được cho là khả thi.
+- Hiện tại, **chưa có loại [[Vắc-xin]] nào được cấp phép** để phòng bệnh lỵ trực khuẩn. Tuy nhiên, vì người từng mắc bệnh có thể phát triển khả năng miễn dịch đồng loài (homologous immunity), việc phát triển vắc-xin được cho là khả thi.
 - Các nghiên cứu vắc-xin (bao gồm vắc-xin sống giảm độc lực đường uống, vắc-xin tế bào chết, và vắc-xin cộng hợp tiêm bắp) đang được tiến hành mạnh mẽ. Trọng tâm của các vắc-xin này là nhắm vào các chủng phổ biến nhất trên toàn cầu, bao gồm _S. sonnei_ và _S. flexneri_ (type 2a, 3a, và 6), với hy vọng đối phó được với sự gia tăng của các chủng kháng kháng sinh.
 
 ---

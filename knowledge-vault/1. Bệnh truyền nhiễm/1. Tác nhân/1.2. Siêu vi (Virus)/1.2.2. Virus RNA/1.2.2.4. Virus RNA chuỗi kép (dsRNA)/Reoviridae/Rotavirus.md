@@ -1,10 +1,16 @@
 ---
+title: "Rotavirus"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 # 1. Đại cương và Phân loại
 
-- **Định nghĩa:** Rotavirus là một chi virus thuộc họ _Sedoreoviridae_ (trước đây thường được xếp vào họ _Reoviridae_), là nguyên nhân quan trọng nhất gây ra bệnh viêm dạ dày ruột mất nước nặng ở ==trẻ em dưới 5 tuổi trên toàn cầu==.
+- **Định nghĩa:** Rotavirus là một chi virus thuộc họ _Sedoreoviridae_ (trước đây thường được xếp vào họ _Reoviridae_), là nguyên nhân quan trọng nhất gây ra bệnh viêm dạ dày ruột [[Mất nước]] nặng ở ==trẻ em dưới 5 tuổi trên toàn cầu==.
 - **Phân loại:** 
 	- Rotavirus được chia thành 9 nhóm (từ A đến I). 
 	- Trong đó, **nhóm A** là tác nhân quan trọng nhất gây ra các đợt dịch viêm dạ dày ruột lưu hành ở trẻ em trên toàn thế giới. Rotavirus nhóm A được phân loại chi tiết hơn theo hệ thống nhị thức dựa trên ==hai protein bề mặt==: kháng nguyên G (glycoprotein VP7) và kháng nguyên P (protease-sensitive VP4). 
@@ -21,7 +27,7 @@ tags:
 
 # 3. Dịch tễ học và Đường lây truyền
 
-- **Gánh nặng bệnh tật toàn cầu:** Bất chấp sự ra đời của vắc-xin, vào năm 2021, rotavirus vẫn gây ra khoảng 114 triệu đợt tiêu chảy, 1,8 triệu ca nhập viện và 128.500 ca tử vong ở trẻ dưới 5 tuổi. Phần lớn các ca tử vong tập trung ở các quốc gia có thu nhập thấp, đặc biệt là vùng châu Phi cận Sahara.
+- **Gánh nặng bệnh tật toàn cầu:** Bất chấp sự ra đời của [[Vắc-xin]], vào năm 2021, rotavirus vẫn gây ra khoảng 114 triệu đợt [[Tiêu chảy]], 1,8 triệu ca nhập viện và 128.500 ca tử vong ở trẻ dưới 5 tuổi. Phần lớn các ca tử vong tập trung ở các quốc gia có thu nhập thấp, đặc biệt là vùng châu Phi cận Sahara.
 - **Độ tuổi mắc bệnh:** Hầu hết trẻ em đều bị nhiễm rotavirus trong 2-3 năm đầu đời. Tỷ lệ bệnh *nặng cao nhất rơi vào nhóm từ 6 tháng đến 2 năm tuổi*.
 - **Đường lây truyền:** Lây truyền chủ yếu qua **đường phân - miệng**. Bệnh rất dễ lây lan do liều lây nhiễm cực kỳ thấp (chỉ cần khoảng 10 hạt virus) và nồng độ virus thải ra trong phân rất cao (lên đến $10^{11}$ hạt/mL). Virus cũng có thể lây lan qua bề mặt tiếp xúc (fomites), thức ăn, nước uống và có khả năng lây truyền qua đường hô hấp hoặc giọt bắn.
 - **Tính mùa vụ:** Ở các vùng khí hậu ôn đới, bệnh thường bùng phát vào các tháng mùa đông khô lạnh; trong khi ở vùng nhiệt đới, bệnh có thể xảy ra quanh năm.
@@ -29,16 +35,16 @@ tags:
 # 4. Cơ chế bệnh sinh
 
 - **Xâm nhập và Đích tấn công:** Rotavirus tấn công chủ yếu vào các *tế bào ruột non* (enterocytes) trưởng thành có chức năng hấp thu ở phần nhung mao ruột. Để thâm nhập hiệu quả, gai VP4 của virus phải được enzyme trypsin trong ruột phân cắt thành VP5* và VP8*. Virus sử dụng các **kháng nguyên nhóm máu mô (HBGAs)** trên bề mặt tế bào làm thụ thể bám dính (ví dụ: người có kiểu hình "secretor-negative" ít bị mắc bệnh do chủng P hơn).
-- **Cơ chế gây tiêu chảy:**
+- **Cơ chế gây [[Tiêu chảy]]:**
     1. Tổn thương cấu trúc biểu mô nhung mao ruột làm giảm diện tích hấp thu.
     2. Giảm hoạt động của enzyme disaccharidase ở bờ bàn chải, gây kém hấp thu đường.
     3. **Độc tố ruột (Enterotoxin) NSP4:** Đây là một protein không cấu trúc của virus có khả năng làm tăng nồng độ canxi nội bào, kích hoạt kênh clorua bài tiết nước và điện giải ra lòng ruột, gây tiêu chảy xuất tiết.
-    4. Kích thích hệ thần kinh ruột (Enteric Nervous System - ENS) giải phóng serotonin, góp phần gây ra tình trạng tăng nhu động ruột và triệu chứng nôn mửa nghiêm trọng.
+    4. Kích thích hệ thần kinh ruột (Enteric Nervous System - ENS) giải phóng serotonin, góp phần gây ra tình trạng tăng nhu động ruột và triệu chứng [[Nôn ói|nôn mửa]] nghiêm trọng.
 
 # 5. Biểu hiện Lâm sàng
 
-- **Triệu chứng điển hình:** Nhiễm trùng rotavirus gây ra bệnh cảnh nặng nề hơn so với các tác nhân tiêu chảy khác. Bệnh thường khởi phát bằng **nôn mửa nhiều** và sốt (kéo dài 2-3 ngày), theo sau là **tiêu chảy phân lỏng, toàn nước** (kéo dài 4-5 ngày). Tiêu chảy do rotavirus là tiêu chảy không viêm, phân thường không có máu hay bạch cầu.
-- **Biến chứng:** Căn nguyên tử vong chính là do tình trạng mất nước đẳng trương nghiêm trọng, rối loạn điện giải dẫn đến trụy tim mạch. Các biến chứng khác có thể gặp bao gồm co giật và viêm não màng não.
+- **Triệu chứng điển hình:** Nhiễm trùng rotavirus gây ra bệnh cảnh nặng nề hơn so với các tác nhân tiêu chảy khác. Bệnh thường khởi phát bằng **[[Nôn ói|nôn mửa]] nhiều** và [[Sốt]] (kéo dài 2-3 ngày), theo sau là **tiêu chảy phân lỏng, toàn nước** (kéo dài 4-5 ngày). Tiêu chảy do rotavirus là tiêu chảy không viêm, phân thường không có máu hay [[Bạch cầu]].
+- **Biến chứng:** Căn nguyên tử vong chính là do tình trạng [[Mất nước]] đẳng trương nghiêm trọng, rối loạn điện giải dẫn đến trụy [[Tim]] mạch. Các biến chứng khác có thể gặp bao gồm [[Co giật]] và [[Viêm não]] màng não.
 - **Miễn dịch:** Một người có thể bị tái nhiễm nhiều lần trong đời, nhưng các đợt nhiễm trùng sau thường nhẹ hơn hoặc không có triệu chứng do hệ miễn dịch đã có sự ghi nhớ. Kháng thể IgA tại ruột đóng vai trò quan trọng trong việc bảo vệ cơ thể.
 
 # 6. Chẩn đoán
@@ -52,13 +58,13 @@ tags:
 # 7. Điều trị
 
 - Hiện tại **không có thuốc kháng virus đặc hiệu** để điều trị rotavirus.
-- **Bù nước và điện giải** là nguyên tắc điều trị sống còn: Sử dụng dung dịch uống Oresol (ORS) đối với trẻ mất nước nhẹ đến trung bình, và truyền dịch tĩnh mạch đối với trẻ mất nước nặng hoặc không thể uống do nôn ói.
-- Cần duy trì việc cho con bú sữa mẹ và cho trẻ ăn lại thức ăn phù hợp với lứa tuổi càng sớm càng tốt để phục hồi dinh dưỡng đường ruột.
+- **Bù nước và điện giải** là nguyên tắc điều trị sống còn: Sử dụng dung dịch uống [[Oresol]] ([[Oresol|ORS]]) đối với trẻ mất nước nhẹ đến trung bình, và truyền dịch tĩnh mạch đối với trẻ mất nước nặng hoặc không thể uống do nôn ói.
+- Cần duy trì việc cho con bú sữa mẹ và cho trẻ ăn lại thức ăn [[Phù]] hợp với lứa tuổi càng sớm càng tốt để phục hồi dinh dưỡng đường ruột.
 - Các chế phẩm sinh học (Probiotics) như _Lactobacillus rhamnosus GG_ hoặc _Saccharomyces boulardii_ có thể được cân nhắc bổ sung theo một số khuyến cáo, dù dữ liệu về hiệu quả vẫn còn nhiều tranh cãi. Không khuyến cáo sử dụng thường quy các thuốc cầm tiêu chảy.
 
 # 8. Phòng ngừa và Vắc-xin
 
-- Các biện pháp vệ sinh môi trường thông thường có ít tác dụng trong việc ngăn chặn lây nhiễm rotavirus. **Tiêm chủng vắc-xin** là chiến lược hiệu quả nhất để giảm thiểu gánh nặng bệnh tật.
+- Các biện pháp vệ sinh môi trường thông thường có ít tác dụng trong việc ngăn chặn lây nhiễm rotavirus. **[[Vắc-xin|Tiêm chủng]] vắc-xin** là chiến lược hiệu quả nhất để giảm thiểu gánh nặng bệnh tật.
 - **Các loại vắc-xin hiện hành:** Tất cả đều là vắc-xin sống giảm độc lực dùng đường uống.
     - _Rotarix:_ Vắc-xin đơn giá (G1P) có nguồn gốc từ virus người.
     - _RotaTeq:_ Vắc-xin ngũ giá (phối hợp 5 chủng) có nguồn gốc tái tổ hợp từ virus người và bò.

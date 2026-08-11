@@ -1,3 +1,13 @@
+---
+title: "Tiếp cận chẩn đoán thiếu máu ở trẻ em"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### Định Nghĩa Và Đại Cương Thiếu Máu Ở Trẻ Em
@@ -12,20 +22,20 @@ Thiếu máu là tình trạng giảm khối lượng huyết sắc tố (hemogl
 
 - **Tuổi:** Trẻ nhũ nhi thường liên quan đến thiếu máu dinh dưỡng, thiếu máu di truyền hoặc nhiễm trùng. Trẻ lớn hơn thường gặp thiếu máu do nhiễm trùng, bệnh lý ác tính, bệnh miễn dịch hoặc di truyền.
 - **Giới tính:** Trẻ nam gợi ý thiếu máu tán huyết do thiếu men G6PD (di truyền liên kết giới tính X). Trẻ nữ tuổi dậy thì bị rong kinh gợi ý thiếu máu thiếu sắt do mất máu.
-- **Thời gian xuất hiện:** Giúp định hướng nguyên nhân cấp tính hay mạn tính. Ở trẻ dưới 5 tuổi, bệnh mạn tính thường diễn tiến từ từ và trẻ chỉ đến khám khi có một lý do cấp tính đi kèm (như sốt, ho, tiêu chảy).
+- **Thời gian xuất hiện:** Giúp định hướng nguyên nhân cấp tính hay mạn tính. Ở trẻ dưới 5 tuổi, bệnh mạn tính thường diễn tiến từ từ và trẻ chỉ đến khám khi có một lý do cấp tính đi kèm (như [[Sốt]], ho, [[Tiêu chảy]]).
 - **Mức độ ảnh hưởng sinh hoạt:** Trẻ nhỏ biểu hiện quấy khóc, lừ đừ, bỏ ăn, khó ngủ, chậm vận động. Trẻ lớn hơn có biểu hiện nhức đầu, chóng mặt, kém tập trung, nhanh mệt khi vận động.
-- **Triệu chứng đi kèm:** Sốt, vàng da, chấm xuất huyết.
+- **Triệu chứng đi kèm:** [[Sốt]], [[Vàng da]], chấm [[Xuất huyết]].
 - **Chế độ dinh dưỡng:** Trẻ sinh non, nhẹ cân, sinh đa thai dễ bị thiếu sắt do giảm dự trữ. Trẻ 6–12 tháng bú mẹ hoàn toàn không ăn dặm thực phẩm giàu sắt, hoặc trẻ nhũ nhi uống sữa tươi $> 600\text{ mL/ngày}$ dễ bị thiếu máu thiếu sắt. Trẻ bú sữa mẹ hoàn toàn từ mẹ ăn chay nghiêm ngặt dễ thiếu vitamin $B_{12}$.
 
 ##### 2. Khai Thác Tiền Căn
 
 - **Tiền căn sản khoa & Chu sinh:** Cân nặng lúc sinh, tuổi thai, đẻ non, đa thai.
-- **Tiền căn bệnh lý & Dùng thuốc:** Vàng da sơ sinh kéo dài (gợi ý bệnh hồng cầu hình cầu); tiền căn dùng thuốc oxy hóa (thúc đẩy tán huyết ở trẻ thiếu G6PD), penicillin (tán huyết miễn dịch), chloramphenicol (giảm sản xuất tủy); tiền căn du lịch đến vùng dịch tễ sốt rét.
-- **Tiền căn gia đình:** Có thành viên mắc thiếu máu hồng cầu nhỏ nhược sắc, thiếu máu thiếu sắt, thalassemia, sỏi mật hoặc đã cắt lách.
+- **Tiền căn bệnh lý & Dùng thuốc:** [[Vàng da]] sơ sinh kéo dài (gợi ý bệnh [[Hồng cầu]] hình cầu); tiền căn dùng thuốc oxy hóa (thúc đẩy tán huyết ở trẻ thiếu G6PD), penicillin (tán huyết miễn dịch), chloramphenicol (giảm sản xuất tủy); tiền căn du lịch đến vùng dịch tễ sốt rét.
+- **Tiền căn gia đình:** Có thành viên mắc thiếu máu [[Hồng cầu]] nhỏ nhược sắc, thiếu máu thiếu sắt, thalassemia, sỏi mật hoặc đã cắt lách.
 
 > **Bảng thông tin:** **Tên bảng:** Bảng 38.2. Những lưu ý khi hỏi bệnh sử, tiền căn một trẻ thiếu máu **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 1 (2020).pdf **Nội dung mô tả:** Bảng tổng hợp các yếu tố bệnh sử, tiền căn và nguyên nhân gợi ý tương ứng:
 > 
-> - _Tuổi:_ Sinh non/nhẹ cân $\rightarrow$ Thiếu máu thiếu sắt (TMTS); Thalassemia thường khởi phát sau 4–6 tháng tuổi khi HbF mất đi; Tuổi ăn dặm ăn không cân đối $\rightarrow$ TMTS; TMTS ở trẻ $> 8$ tuổi $\rightarrow$ Xuất huyết tiêu hóa; Nữ dậy thì rong kinh $\rightarrow$ TMTS do mất máu.
+> - _Tuổi:_ Sinh non/nhẹ cân $\rightarrow$ Thiếu máu thiếu sắt (TMTS); Thalassemia thường khởi phát sau 4–6 tháng tuổi khi HbF mất đi; Tuổi ăn dặm ăn không cân đối $\rightarrow$ TMTS; TMTS ở trẻ $> 8$ tuổi $\rightarrow$ [[Xuất huyết]] tiêu hóa; Nữ dậy thì rong kinh $\rightarrow$ TMTS do mất máu.
 > - _Giới:_ Nam + tán huyết $\rightarrow$ Thiếu men G6PD; Nữ + tán huyết $\rightarrow$ Tán huyết miễn dịch, Lupus đỏ hệ thống.
 > - _Dinh dưỡng & Tiêu hóa:_ Uống sữa bò tươi $> 600\text{ mL/ngày}$ $\rightarrow$ TMTS; Ăn chay $\rightarrow$ Thiếu Vitamin $B_{12}$, thiếu sắt; Uống sữa dê $\rightarrow$ Thiếu acid folic; Hội chứng PICA $\rightarrow$ Ngộ độc chì, TMTS; Tắc mật/kém hấp thu $\rightarrow$ Thiếu Vitamin E, sắt, $B_{12}$; Bệnh viêm ruột (IBD)/Dị ứng đạm sữa bò/Viêm loét dạ dày $\rightarrow$ TMTS do mất máu/viêm mạn.
 > - _Nhiễm trùng:_ Sán/Vi khuẩn đường ruột bộc phát $\rightarrow$ Thiếu $B_{12}$; Siêu vi (EBV, CMV, Parvovirus) $\rightarrow$ Ức chế tủy; _Mycoplasma_/Sốt rét $\rightarrow$ Tán huyết.
@@ -39,14 +49,14 @@ Khi tiếp cận trẻ xanh xao, bác sĩ cần đánh giá sinh hiệu để ph
 
 > **Sơ đồ cơ chế / Lưu đồ:** **Tên sơ đồ:** Lưu đồ 38.1. Lưu đồ tiếp cận xử trí bệnh nhi xanh xao **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 1 (2020).pdf **Nội dung mô tả:** Quy trình phân nhánh xử trí trẻ xanh xao:
 > 
-> - **Bệnh cấp tính nặng:** Đánh giá nhanh sinh hiệu, hỏi bệnh sử và khám tập trung, làm TPTTBM khẩn. Các nguyên nhân gợi ý gồm: Tụt huyết áp, giảm thể tích, nhiễm trùng huyết, sốc phản vệ, suy thận cấp, rối loạn vận mạch, xuất huyết, hạ đường huyết, thiếu máu nặng, biến chứng thần kinh.
-> - **Bệnh nhẹ hoặc kéo dài / Trẻ khỏe:** Hỏi bệnh sử và khám hoàn chỉnh, xét nghiệm TPTTBM và xét nghiệm khác. Nguyên nhân thường gặp gồm: Thiếu máu, màu sắc da do di truyền, bệnh mạn tính (ác tính, dị ứng, phù thận, suy tim, suy giáp, viêm mạch máu), xuất huyết dạ dày ruột/kém hấp thu, bệnh viêm nhiễm, bệnh tim/phổi, đái tháo đường.
+> - **Bệnh cấp tính nặng:** Đánh giá nhanh sinh hiệu, hỏi bệnh sử và khám tập trung, làm TPTTBM khẩn. Các nguyên nhân gợi ý gồm: Tụt huyết áp, giảm thể tích, [[Nhiễm trùng huyết]], [[Sốc]] phản vệ, suy [[Thận]] cấp, rối loạn vận mạch, xuất huyết, [[Hạ đường huyết]], thiếu máu nặng, biến chứng thần kinh.
+> - **Bệnh nhẹ hoặc kéo dài / Trẻ khỏe:** Hỏi bệnh sử và khám hoàn chỉnh, xét nghiệm TPTTBM và xét nghiệm khác. Nguyên nhân thường gặp gồm: Thiếu máu, màu sắc da do di truyền, bệnh mạn tính (ác tính, dị ứng, [[Phù]] [[Thận]], suy [[Tim]], suy giáp, viêm mạch máu), xuất huyết dạ dày ruột/kém hấp thu, bệnh viêm nhiễm, bệnh [[Tim]]/[[Phổi]], đái tháo đường.
 
 > **Bảng thông tin:** **Tên bảng:** Bảng 38.3. Những dấu hiệu lâm sàng liên quan thiếu máu **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 1 (2020).pdf **Nội dung mô tả:** Tổng hợp các dấu hiệu thực thể tại các cơ quan định hướng nguyên nhân thiếu máu:
 > 
-> - _Da:_ Tăng sắc tố/Dát cà phê sữa (Fanconi); Bạch biến (Thiếu $B_{12}$); Vàng da (Tán huyết, viêm gan); Chấm/đốm xuất huyết (Xâm lấn tủy, tán huyết miễn dịch kèm giảm tiểu cầu, HUS); Hồng ban cánh bướm (Lupus).
+> - _Da:_ Tăng sắc tố/Dát cà phê sữa (Fanconi); Bạch biến (Thiếu $B_{12}$); Vàng da (Tán huyết, viêm [[Gan]]); Chấm/đốm xuất huyết (Xâm lấn tủy, tán huyết miễn dịch kèm giảm [[Tiểu cầu]], HUS); Hồng ban cánh bướm (Lupus).
 > - _Đầu & Mắt & Miệng:_ Bướu trán (Thalassemia nặng, thiếu sắt nặng); Mắt nhỏ/Thiếu ngón cái/Thận to (Fanconi); Viêm lưỡi/Khóe miệng/Móng hình muỗng (Thiếu sắt, thiếu $B_{12}$); Chẻ môi/Ngực hình khiên (Diamond-Blackfan).
-> - _Bụng & Trực tràng:_ Gan lách to (Tán huyết, Thalassemia, u xâm lấn, sốt rét, EBV, tăng áp cửa, HCTBM); Tiêu máu/Trĩ (Xuất huyết tiêu hóa, tăng áp cửa).
+> - _Bụng & Trực tràng:_ [[Gan]] lách to (Tán huyết, Thalassemia, u xâm lấn, sốt rét, EBV, tăng áp cửa, HCTBM); Tiêu máu/Trĩ (Xuất huyết tiêu hóa, tăng áp cửa).
 > - _Thần kinh:_ Kích thích, thờ ơ (Thiếu sắt); Bệnh thần kinh ngoại biên, thất điều, giảm trí nhớ (Thiếu $B_{12}$, Vitamin E, ngộ độc chì); Đột quỵ (Hồng cầu liềm, PNH).
 
 ---
@@ -84,7 +94,7 @@ Khi tiếp cận trẻ xanh xao, bác sĩ cần đánh giá sinh hiệu để ph
 >     - Ferritin bình thường/tăng $\rightarrow$ Thalassemia, Bệnh hemoglobin.
 > 2. **MCV bình thường hoặc tăng (Hồng cầu to / Bình thường):**
 >     - **HCL $< 100\text{ K/}\mu\text{L}$ (Tủy giảm đáp ứng):**
->         - _Bạch cầu và Tiểu cầu giảm:_ Suy tủy, Thâm nhiễm tủy (Leukemia, MDS), Thiếu $B_{12}$/Folate, Nhiễm HIV, Giảm sản dòng hồng cầu bẩm sinh (DBA) hoặc mắc phải (TEC).
+>         - _Bạch cầu và [[Tiểu cầu]] giảm:_ Suy tủy, Thâm nhiễm tủy (Leukemia, MDS), Thiếu $B_{12}$/Folate, Nhiễm HIV, Giảm sản dòng hồng cầu bẩm sinh (DBA) hoặc mắc phải (TEC).
 >         - _Bạch cầu và Tiểu cầu bình thường:_ Nhiễm siêu vi, Bệnh thận mạn, Suy giáp, Bệnh gan.
 >     - **HCL $> 100\text{ K/}\mu\text{L}$ (Tủy tăng đáp ứng):** Mất máu cấp, Tán huyết miễn dịch, Bệnh màng/men hồng cầu, Bệnh mạch máu nhỏ, PNH.
 

@@ -1,3 +1,14 @@
+---
+title: "Hướng dẫn BYT 2024 (P2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 Dưới đây là tóm tắt chi tiết **Phần II: CHẨN ĐOÁN BỆNH LAO** thuộc tài liệu chuyên môn **“Hướng dẫn Chẩn đoán, điều trị và dự phòng bệnh Lao”** (ban hành kèm theo **Quyết định số 162/QĐ-BYT năm 2024** của Bộ trưởng Bộ Y tế).
 
 ---
@@ -8,8 +19,8 @@ Dưới đây là tóm tắt chi tiết **Phần II: CHẨN ĐOÁN BỆNH LAO** 
 
 Theo hướng dẫn mới nhất, **người nghi mắc bệnh lao** là người có ít nhất một trong các biểu hiện sau:
 
-- **Có triệu chứng lâm sàng nghi mắc bệnh lao:** Triệu chứng lâm sàng quan trọng nhất là **ho kéo dài trên 02 tuần** (có thể ho khan, ho có đờm, hoặc ho ra máu). Đi kèm với đó là các dấu hiệu toàn thân: sốt nhẹ về chiều, sốt kéo dài không rõ nguyên nhân trên 02 tuần, ra mồ hôi đêm, kém ăn, mệt mỏi, gầy sút cân. Ở trẻ em, cần đặc biệt lưu ý tình trạng chậm tăng cân, sụt cân, suy dinh dưỡng, giảm chơi đùa hoặc khò khè kéo dài tái diễn không đáp ứng với thuốc giãn phế quản.
-- **Có tình trạng bệnh lý hoặc yếu tố làm tăng nguy cơ mắc bệnh lao:** Người tiếp xúc hộ gia đình với bệnh nhân lao phổi, người nhiễm HIV, người đái tháo đường, suy thận mạn, người sử dụng corticoid hoặc thuốc ức chế miễn dịch kéo dài, người suy dinh dưỡng nặng, người nghiện ma túy/rượu/thuốc lá và nhân viên y tế.
+- **Có triệu chứng lâm sàng nghi mắc bệnh lao:** Triệu chứng lâm sàng quan trọng nhất là **ho kéo dài trên 02 tuần** (có thể ho khan, ho có đờm, hoặc ho ra máu). Đi kèm với đó là các dấu hiệu toàn thân: [[Sốt|sốt nhẹ]] về chiều, [[Sốt|sốt kéo dài]] không rõ nguyên nhân trên 02 tuần, ra mồ hôi đêm, kém ăn, mệt mỏi, gầy sút cân. Ở trẻ em, cần đặc biệt lưu ý tình trạng chậm tăng cân, sụt cân, suy dinh dưỡng, giảm chơi đùa hoặc khò khè kéo dài tái diễn không đáp ứng với thuốc giãn phế quản.
+- **Có tình trạng bệnh lý hoặc yếu tố làm tăng nguy cơ mắc bệnh lao:** Người tiếp xúc hộ gia đình với bệnh nhân lao [[Phổi]], người nhiễm HIV, người đái tháo đường, suy [[Thận]] mạn, người sử dụng [[Corticoid]] hoặc thuốc ức chế miễn dịch kéo dài, người suy dinh dưỡng nặng, người nghiện ma túy/rượu/thuốc lá và nhân viên y tế.
 - **Có hình ảnh bất thường nghi lao trên Xquang ngực** hoặc các phương pháp chẩn đoán hình ảnh khác.
 
 #### 1.2. Các Kỹ Thuật Sử Dụng Trong Chẩn Đoán Bệnh Lao
@@ -26,8 +37,8 @@ Bộ Y tế quy định hệ thống kỹ thuật đa cận lâm sàng đồng b
     - _Kháng sinh đồ (KSĐ) kiểu hình:_ Thực hiện trên môi trường lỏng/đặc đối với các thuốc hàng 1, hàng 2 và đặc biệt là các thuốc mới (Bedaquiline, Linezolid, Clofazimine, Delamanid, Pretomanid).
 - **Các kỹ thuật chẩn đoán hình ảnh:**
     - _Xquang ngực thẳng/nghiêng:_ Công cụ thường quy hàng đầu để chẩn đoán và theo dõi.
-    - _Chụp cắt lớp vi tính (CLVT) ngực/cơ quan:_ Chỉ định khi tổn thương trên Xquang hoặc siêu âm không rõ, cần chẩn đoán phân biệt hoặc tìm biến chứng.
-    - _Siêu âm chuyên khoa:_ Siêu âm màng phổi, màng tim, ổ bụng, khớp hoặc siêu âm hướng dẫn can thiệp.
+    - _Chụp cắt lớp vi tính (CLVT) ngực/cơ quan:_ Chỉ định khi tổn thương trên Xquang hoặc [[Siêu âm]] không rõ, cần chẩn đoán phân biệt hoặc tìm biến chứng.
+    - _Siêu âm chuyên khoa:_ [[Siêu âm]] màng [[Phổi]], màng [[Tim]], ổ bụng, khớp hoặc siêu âm hướng dẫn can thiệp.
 - **Chẩn đoán tế bào và mô bệnh học:** Nội soi phế quản, chọc hút hạch/dịch, sinh thiết mô tìm tổn thương viêm hạt, hoại tử bã đậu đặc trưng của lao.
 - **Xét nghiệm chẩn đoán nhiễm lao (Lao tiềm ẩn):** Thực hiện bằng test da Tuberculin (TST/Mantoux) hoặc xét nghiệm máu IGRA (QuantiFeron TB, T-SPOT).
 
@@ -43,7 +54,7 @@ Bệnh lao phổi được phân chia thành hai nhóm chính để quản lý �
 - **Lao phổi không có bằng chứng vi khuẩn (Chẩn đoán lâm sàng):** Áp dụng khi các xét nghiệm vi sinh cho kết quả âm tính nhưng người bệnh có:
     - Triệu chứng lâm sàng nghi lao rõ rệt.
     - Hình ảnh Xquang hoặc CLVT ngực bất thường gợi ý lao hoạt động.
-    - **Không đáp ứng với liệu trình điều trị kháng sinh phổ rộng ngoài lao (không sử dụng nhóm Fluoroquinolon)** trong vòng 01 - 02 tuần.
+    - **Không đáp ứng với liệu trình điều trị [[Kháng sinh]] phổ rộng ngoài lao (không sử dụng nhóm Fluoroquinolon)** trong vòng 01 - 02 tuần.
     - Được hội chẩn thống nhất chẩn đoán lao bởi hội đồng chuyên môn.
 
 #### 1.4. Lưu Ý Chẩn Đoán Lao Ở Các Đối Tượng Đặc Biệt
@@ -56,12 +67,12 @@ Bệnh lao phổi được phân chia thành hai nhóm chính để quản lý �
 
 ##### Chẩn đoán lao ở người nhiễm HIV
 
-- Người nhiễm HIV luôn cần được tầm soát lao tích cực chủ động bằng cách hỏi kỹ các triệu chứng lâm sàng kết hợp xét nghiệm CRP (nếu CRP > 5mg được coi là dấu hiệu nghi lao).
+- Người nhiễm HIV luôn cần được tầm soát lao tích cực chủ động bằng cách hỏi kỹ các triệu chứng lâm sàng kết hợp xét nghiệm [[CRP]] (nếu [[CRP]] > 5mg được coi là dấu hiệu nghi lao).
 - Ưu tiên chỉ định các xét nghiệm SHPT nhạy cao như Xpert Ultra (kết quả "vết" có giá trị chẩn đoán xác định) và kết hợp làm xét nghiệm nhanh LF-LAM nước tiểu.
 
 #### 1.5. Tiêu Chuẩn Chẩn Đoán Lao Kháng Thuốc
 
-Lao kháng thuốc được phân loại dựa trên kết quả kháng sinh đồ kiểu gen hoặc kiểu hình:
+Lao kháng thuốc được phân loại dựa trên kết quả [[Kháng sinh]] đồ kiểu gen hoặc kiểu hình:
 
 - **Lao kháng đơn thuốc:** Chỉ kháng duy nhất với 1 thuốc chống lao hàng một.
 - **Lao kháng nhiều thuốc:** Kháng từ 2 thuốc hàng một trở lên nhưng không kháng đồng thời cả Rifampicin (R) và Isoniazid (H).

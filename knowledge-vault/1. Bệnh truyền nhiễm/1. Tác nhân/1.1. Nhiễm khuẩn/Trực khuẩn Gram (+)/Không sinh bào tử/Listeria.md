@@ -1,6 +1,10 @@
 ---
 title: "Listeria"
+type: pathogen
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Tác nhân", "Nhiễm khuẩn", "Trực khuẩn Gram (+)", "Không sinh bào tử"]
-last_updated: "2026-07-28"
+tags:
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+

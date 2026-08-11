@@ -1,9 +1,13 @@
 ---
 title: "Thông tư 35-2016-TT-BYT Danh mục dịch vụ kỹ thuật y tế BHYT"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 BỘ Y TẾ CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM ------- Độc lập - Tự do - Hạnh phúc ---------------
 Số: 35/2016/TT-BYT Hà Nội, ngày 28 tháng 9 năm 2016
 THÔNG TƯ
@@ -62,8 +66,8 @@ b) Người bệnh thanh toán phần chi phí cùng chi trả (nếu có) bằn
 Danh mục 1 ban hành kèm theo Thông tư này.
 a) Quỹ bảo hiểm y tế thanh toán phần chi phí được tính theo giá của dịch vụ kỹ thuật y tế khác quy định tại Cột 4 của Danh mục 1 nhân (x) với mức hưởng.
 b) Người bệnh thanh toán phần chi phí cùng chi trả (nếu có) tính trên giá của dịch vụ kỹ thuật y tế khác quy định tại Cột 4 của Danh mục 1, không phải chi trả phần chi phí chênh lệch giữa giá của dịch vụ kỹ thuật y tế được thực hiện với giá của dịch vụ kỹ thuật khác quy định tại Cột 4 Danh mục 1 ban hành kèm theo Thông tư này.
-Ví dụ: Người bệnh thuộc đối tượng có mức hưởng 95% chi phí khám bệnh, chữa bệnh, được chỉ định thực hiện dịch vụ kỹ thuật “Lọc máu cấp cứu”, đáp ứng điều kiện thanh toán. Giá của dịch vụ kỹ thuật “Lọc máu cấp cứu” tương đương với giá của dịch vụ kỹ thuật “Thận nhân tạo cấp cứu”, có giá 1.515.000 đồng.
-Trường hợp người bệnh chưa đặt AVF hoặc dã đặt AVF nhưng chưa sử dụng được thì thanh toán theo giá dịch vụ “Thận nhân tạo cấp cứu”, như sau:
+Ví dụ: Người bệnh thuộc đối tượng có mức hưởng 95% chi phí khám bệnh, chữa bệnh, được chỉ định thực hiện dịch vụ kỹ thuật “Lọc máu cấp cứu”, đáp ứng điều kiện thanh toán. Giá của dịch vụ kỹ thuật “Lọc máu cấp cứu” tương đương với giá của dịch vụ kỹ thuật “[[Thận]] nhân tạo cấp cứu”, có giá 1.515.000 đồng.
+Trường hợp người bệnh chưa đặt AVF hoặc dã đặt AVF nhưng chưa sử dụng được thì thanh toán theo giá dịch vụ “[[Thận]] nhân tạo cấp cứu”, như sau:
 - Quỹ bảo hiểm y tế thanh toán: 1.515.000 đồng x 95% = 1.439.250 đồng.
 - Người bệnh thanh toán phần cùng chi trả: 1.515.000 đồng x 5% = 75.750 đồng.
 Trường hợp người bệnh đã đặt AVF và AVF sử dụng được, thanh toán theo giá dịch vụ “Thận nhân tạo chu kỳ”, có giá 543.000 đồng.
@@ -93,7 +97,7 @@ Trường hợp các văn bản dẫn chiếu trong Thông tư này bị thay th
 Thông tư này có hiệu lực thi hành kể từ ngày 01 tháng 12 năm 2016.
 Điều 8. Tổ chức thực hiện
 1. Bộ Y tế chủ trì, phối hợp với các cơ quan liên quan sửa đổi, bổ sung danh mục dịch vụ kỹ thuật y tế
-ban hành kèm theo Thông tư này bảo đảm nguyên tắc người bệnh được tiếp cận với dịch vụ kỹ thuật y tế có chất lượng, đáp ứng hiệu quả điều trị, phù hợp giữa mức đóng, mức hưởng bảo hiểm y tế, khuyến khích phát triển có kiểm soát sử dụng các dịch vụ kỹ thuật y tế với chi phí hợp lý.
+ban hành kèm theo Thông tư này bảo đảm nguyên tắc người bệnh được tiếp cận với dịch vụ kỹ thuật y tế có chất lượng, đáp ứng hiệu quả điều trị, [[Phù]] hợp giữa mức đóng, mức hưởng bảo hiểm y tế, khuyến khích phát triển có kiểm soát sử dụng các dịch vụ kỹ thuật y tế với chi phí hợp lý.
 2. Bảo hiểm xã hội Việt Nam tổ chức thực hiện, thanh toán chi phí khám bệnh, chữa bệnh bảo hiểm y tế
 theo quy định của pháp luật về bảo hiểm y tế và Thông tư này.
 3. Sở Y tế, Y tế các bộ, ngành chỉ đạo các cơ sở khám bệnh, chữa bệnh trực thuộc triển khai thực hiện
@@ -140,10 +144,10 @@ DVKT “Tắm điều trị tích cơ thể ở 02 vùng chi thể trở lên; b
 2. Người lớn có tổng diện tích bỏng từ 20% diện
 với tắm điều trị bệnh tích cơ thể ở 03 vùng chi thể trở lên. nhân bỏng có gây mê.
 Vùng chi thể xác định theo phương pháp chẩn đoán diện tích bỏng của Lê Thế Trung.
-3. Chụp cắt lớp vi tính
+3. [[CT Scan|Chụp cắt lớp vi tính]]
 Giám đốc cơ sở khám bệnh, chữa bệnh quy định Thanh toán bằng giá từ 1-32 dãy. các trường hợp được chỉ định chụp và gửi cơ DVKT. quan bảo hiểm xã hội. Nếu Giám đốc cơ sở khám bệnh, chữa bệnh không quy định được các trường hợp chỉ định chụp thì Giám đốc cơ sở khám bệnh, chữa bệnh (hoặc người được ủy quyền) phê duyệt hoặc có hội chẩn trước khi chụp cho người bệnh.
-4. Chụp cắt lớp vi tính
-Thực hiện đối với một trong các trường hợp sau: Thanh toán bằng giá 64 dãy đến 128 dãy DVKT, trường hợp a) Chụp hệ động mạch: não, cảnh, chủ chụp từ hai vị trí trở lên ngực/bụng, phổi, phế quản, mạc treo, thận, chậu, thanh toán tối đa bằng vành; giá DVKT “Chụp cắt lớp vi tính toàn thân”. b) Chụp hệ mạch tạng;
+4. [[CT Scan|Chụp cắt lớp vi tính]]
+Thực hiện đối với một trong các trường hợp sau: Thanh toán bằng giá 64 dãy đến 128 dãy DVKT, trường hợp a) Chụp hệ động mạch: não, cảnh, chủ chụp từ hai vị trí trở lên ngực/bụng, [[Phổi]], phế quản, mạc treo, thận, chậu, thanh toán tối đa bằng vành; giá DVKT “Chụp cắt lớp vi tính toàn thân”. b) Chụp hệ mạch tạng;
 c) Chụp đánh giá tưới máu não;
 
 ---
@@ -154,7 +158,7 @@ e) Đánh giá giai đoạn, tái phát, di căn ung thư để chỉ định ph
 Trường hợp khác. Thanh toán theo giá DVKT “Chụp cắt lớp vi tính từ 1-32 dãy”.
 5. Chụp cắt lớp vi tính
 Chụp hệ động mạch vành với nhịp tim trên 70 Thanh toán bằng giá từ 256 dãy trở lên chu kỳ/phút (sau khi đã sử dụng thuốc giảm nhịp DVKT, trường hợp tim) hoặc có bất thường nhịp; bệnh lý tim mạch chụp từ hai vị trí trở lên bẩm sinh ở trẻ em dưới 6 tuổi; bệnh lý tim mạch thanh toán tối đa bằng ở người từ 70 tuổi trở lên. giá DVKT “Chụp cắt lớp vi tính toàn thân”.
-Thực hiện đối với một trong các trường hợp: Thanh toán theo giá DVKT “Chụp cắt lớp vi a) Chụp hệ động mạch: não, cảnh, chủ tính 64-128 dãy”. ngực/bụng, phổi, phế quản, mạc treo, thận, chậu, vành;
+Thực hiện đối với một trong các trường hợp: Thanh toán theo giá DVKT “Chụp cắt lớp vi a) Chụp hệ động mạch: não, cảnh, chủ tính 64-128 dãy”. ngực/bụng, [[Phổi]], phế quản, mạc treo, thận, chậu, vành;
 b) Chụp hệ mạch tạng;
 c) Chụp đánh giá tưới máu não;
 d) Chụp hệ động/tĩnh mạch chi;
@@ -197,14 +201,14 @@ quả xét nghiệm, chẩn đường mật; đoán hình ảnh khác đã chẩ
 hoặc đã đánh giá được dày; kết quả điều trị bệnh ung thư.
 - Định lượng CEA: Chần đoán ung thư biểu mô.
 11. Định lượng
-- Định lượng CRP hs: Bệnh mạch vành hoặc
-Thanh toán bằng giá CRP/CRP hs nhồi máu cơ tim. DVKT
+- Định lượng [[CRP]] hs: Bệnh mạch vành hoặc
+Thanh toán bằng giá [[CRP]]/CRP hs nhồi máu [[Tim|cơ tim]]. DVKT
 - Định lượng CRP: Chẩn đoán tình trạng nhiễm
 trùng do viêm phổi, viêm ruột, viêm tụy cấp,
 
 ---
 
-xuất huyết tiêu hóa, xơ gan, viêm khớp dạng thấp, viêm da nhiễm độc, viêm vùng tiểu khung, bệnh tự miễn hoặc nhiễm trùng sau phẫu thuật.
+[[Xuất huyết]] tiêu hóa, xơ [[Gan]], viêm khớp dạng thấp, viêm da nhiễm độc, viêm vùng tiểu khung, bệnh tự miễn hoặc nhiễm trùng sau phẫu thuật.
 Các trường hợp khác. Thanh toán theo giá DVKT “Phản ứng CRP”.
 12. Định lượng Pro-
 Xác định tình trạng nhiễm khuẩn nặng với điểm Thanh toán bằng giá calcitonin [Máu] suy tạng (SOFA) ≥ 2 hoặc Lactat máu trên 1 DVKT mmol/l.
@@ -255,12 +259,12 @@ DỊCH VỤ KỸ THUẬT Y TẾ CÓ QUY ĐỊNH CỤ THỂ ĐIỀU KIỆN THANH 
 STT DVKT/Nhóm DVKT Điều kiện thanh toán
 (1) (2) (3)
 1 Thăm dò huyết động
-1. Sốc tim hoặc sốc nhiễm khuẩn, không đáp ứng với từ hai thuốc vận
+1. [[Sốc]] tim hoặc [[[[Sốc]] nhiễm khuẩn]], không đáp ứng với từ hai thuốc vận
 theo phương pháp mạch trở lên, không đạt được huyết áp trung bình mục tiêu trên PiCCO 65mmHg.
 2. Hội chẩn có bác sỹ chuyên khoa hồi sức cấp cứu.
 2 Hạ thân nhiệt chỉ huy 1. Thực hiện ở bệnh viện hạng đặc biệt và các cơ sở khám, chữa bệnh được Bộ Y tế phê duyệt.
 2. Bệnh nhân sau cấp cứu ngừng tuần hoàn thành công, có tái lập tuần
-hoàn, còn hôn mê, nhưng còn phản xạ đồng tử với ánh sáng.
+hoàn, còn [[Hôn mê]], nhưng còn phản xạ đồng tử với ánh sáng.
 3 Lọc máu hấp phụ bằng a) Ngộ độc: Paraquat, theophyllin, Carmabazepin hoặc thuốc chống quả lọc resin trầm cảm ba vòng;
 b) Ngộ độc: Valproic acid, disopyramide, meprobamate, phenytoin, phenobarbital, nấm độc, mật cá, nọc ong, nọc rắn hoặc bọ cạp mà các phương pháp điều trị khác không đáp ứng.
 4 Thẩm tách siêu lọc máu a) Người bệnh lọc máu chu kỳ: tối đa 02 lần/3 tháng; (Hemodiafiltration b) Cường cận giáp thứ phát: PTH cao gấp 3 lần, Phosphatase kiềm offline: HDF ON - tăng cao gấp 8 lần, Canxi tăng cao hoặc phospho tăng cao không đáp LINE) ứng với điều trị thông thường;
@@ -268,13 +272,13 @@ c) Hội chứng Amyloidosis có biến chứng.
 5 Thở máy xâm nhập hai Người bệnh đã được đặt ống nội khí quản hai nòng. phổi độc lập
 6 Đặt ống nội khí quản có Người bệnh tiên lượng thở máy trên 5 ngày. cửa hút trên bóng chèn (Hi-low EVAC)
 7 Điều trị rối loạn nhịp tim Nhịp nhanh nhĩ; cuồng nhĩ; nhịp nhanh thất hoặc các rối loạn nhịp tim phức tạp bằng sóng cao khác đã điều trị bằng sóng cao tần thông thường thất bại. tần
-8 Điện não đồ video Người bệnh có cơn động kinh lần đầu hoặc đã được chẩn đoán động kinh nhưng kết quả điện não đồ không rõ ràng hoặc người bệnh động kinh kháng thuốc.
+8 Điện não đồ video Người bệnh có cơn [[Động kinh]] lần đầu hoặc đã được chẩn đoán động kinh nhưng kết quả điện não đồ không rõ ràng hoặc người [[Động kinh|bệnh động kinh]] kháng thuốc.
 9 Đo đa ký hô hấp Khi có 2 trên 3 dấu hiệu: ngủ ngáy, buồn ngủ ban ngày quá mức (đánh giá theo bảng kiểm Epworth), cơn ngừng thở được người khác chứng kiến.
 10 Đặt nội khí quản 2 nòng Người bệnh bị ho máu hoặc nghi ngờ ho máu từ một bên phổi.
 11 Đo biến đổi thể tích toàn a) Theo dõi bệnh thần kinh: Hội chứng Guillain - Barre, nhược cơ thân - Body hoặc viêm tủy lan lên; Plethysmography b) Đánh giá ảnh hưởng của rối loạn trao đổi khí ở bệnh nhân có tổn thương phổi kẽ do Lupus ban đỏ, xơ cứng bì hoặc viêm khớp dạng thấp;
 c) Đánh giá hiệu quả các phương pháp điều trị bệnh hô hấp:
 - Bệnh nhân COPD, giãn phế quản có giảm oxy máu, tăng CO2 máu
-hoặc X quang có hình ảnh khí phế thũng;
+hoặc [[X-quang|X quang]] có hình ảnh khí phế thũng;
 
 ---
 
@@ -343,7 +347,7 @@ b) Xơ cứng rải rác;
 c) Chấn thương sọ não;
 d) Tổn thương tủy sống: Chấn thương tủy sống, Viêm tủy, Xơ cột bên teo cơ hoặc U tủy;
 đ) Bại não;
-e) Viêm não.
+e) [[Viêm não]].
 37 Tập tri giác và nhận thức Thanh toán tối đa 10 ngày cho một đợt điều trị.
 38 Tập mạnh cơ đáy chậu Thanh toán đối với các trường hợp sau: (cơ sàn chậu, Pelvis a) Sa sinh dục độ 1-2; floor)
 b) R ỉ tiểu sau phẫu thuật u xơ tiền liệt tuyến, sau phẫu thuật vùng tiểu khung, sau xạ trị;
@@ -363,7 +367,7 @@ d) Parkinson;
 - Tổn thương tủy sống do: Chấn thương tủy sống, Viêm tủy, Xơ cột
 bên teo cơ hoặc U tủy;
 - Tổn thương não do: Tai biến mạch máu não, Xơ cứng rải rác, Chấn
-thương sọ não, Viêm não hoặc U não;
+thương sọ não, [[Viêm não]] hoặc U não;
 - Tật nứt đốt sống (Spina bifida).
 42 Tiêm Botulinum toxine Chỉ định trong co cứng khu trú các cơ chi do một trong các nguyên vào điểm vận động để nhân sau: điều trị co cứng cơ a) Tai biến mạch máu não;
 b) Xơ cứng rải rác;
@@ -384,7 +388,7 @@ c) Rối loạn tiểu tiện trên bệnh nhân nứt đốt sống (Spina Bifi
 d) Parkinson.
 45 Các DVKT châm, cứu Thanh toán theo phương pháp, không thanh toán theo vị trí, vùng, bộ phận cơ thể.
 46 Các DVKT châm tê Khi thực hiện phẫu thuật, thủ thuật không thanh toán thêm DVKTchâm tê.
-47 Siêu âm tim có cản âm 1. Người thực hiện: Bác sỹ có chứng chỉ đào tạo định hướng tim mạch trở lên hoặc có tối thiểu 02 năm thực hành lâm sàng trong chuyên ngành tim mạch, có Chứng chỉ siêu âm tim được đào tạo từ 03 tháng trở lên đồng thời có Chứng chỉ đào tạo Siêu âm tim có cản âm.
+47 [[Siêu âm|Siêu âm tim]] có cản âm 1. Người thực hiện: Bác sỹ có chứng chỉ đào tạo định hướng tim mạch trở lên hoặc có tối thiểu 02 năm thực hành lâm sàng trong chuyên ngành tim mạch, có Chứng chỉ [[Siêu âm|siêu âm tim]] được đào tạo từ 03 tháng trở lên đồng thời có Chứng chỉ đào tạo Siêu âm tim có cản âm.
 2. Phát hiện luồng thông trong tim đối với người bệnh tắc mạch não,
 vành, thận, lách, mạc treo, chi hoặc áp lực động mạch phổi cao, nghi ngờ có những luồng thông bất thường của tim nhưng không xác định được bằng siêu âm tim và đã loại trừ nguyên nhân gây tắc mạch khác.
 48 Siêu âm tim qua thực
@@ -414,15 +418,15 @@ máu ảnh hoặc Bác sỹ có chứng chỉ về siêu âm mạch máu đượ
 2. Thanh toán 01 lần không phân biệt bên phải hoặc trái đối với hệ
 thống mạch máu đối xứng.
 53 Chụp cắt lớp vi tính a) Nghi ngờ có bệnh lý mạch vành khi đã có các kết quả xét nghiệm động mạch vành khác như thử nghiệm gắng sức hoặc siêu âm tim;
-b) Xác định các trường hợp đau ngực không điển hình ở người bệnh sau phẫu thuật làm cầu nối mạch vành hoặc có đặt stent.
+b) Xác định các trường hợp [[Đau ngực]] không điển hình ở người bệnh sau phẫu thuật làm cầu nối mạch vành hoặc có đặt stent.
 54 Chụp và nút mạch điều Sau chấn thương giả phình, chảy máu mũi không kiểm soát được trị chảy máu mũi số hóa bằng các phương pháp khác hoặc u vòm họng gây chảy máu mũi xóa nền không đáp ứng với các điều trị khác.
 55 Chụp và nút mạch tiền Các khối u có chỉ định phẫu thuật và có tăng sinh mạch máu, có nguy phẫu các khối u số hóa cơ chảy máu cao khi phẫu thuật. xóa nền
-56 Chụp và sinh thiết gan Người bệnh có rối loạn đông máu (chỉ số Prothrombin dưới 50). qua tĩnh mạch trên gan số hóa xóa nền
+56 Chụp và sinh thiết [[Gan]] Người bệnh có rối loạn đông máu (chỉ số Prothrombin dưới 50). qua tĩnh mạch trên gan số hóa xóa nền
 57 Điều trị tiêm xơ trực tiếp Dị dạng tĩnh mạch có lưu lượng dòng chảy cao (u máu thể hang). qua da số hóa xóa nền
 58 Điều trị bơm tắc mạch Dị dạng tĩnh mạch có lưu lượng dòng chảy cao (u máu thể hang). trực tiếp qua da số hóa xóa nền
-59 Chụp cộng hưởng từ tim Bệnh lý tim bẩm sinh phức tạp từ 2 thương tổn trở lên. đánh giá các bệnh lý tim bẩm sinh có tiêm thuốc tương phản
-60 Chụp cộng hưởng từ tim Bệnh lý tim bẩm sinh phức tạp từ 2 thương tổn trở lên. đánh giá các bệnh lý tim bẩm sinh
-61 Chụp cộng hưởng từ tim Chỉ định đối với bệnh lý cơ tim có EF < 50%: Cơ tim giãn hoặc Cơ đánh giá khuếch tán sức tim phì đại. căng
+59 [[MRI|Chụp cộng hưởng từ]] tim Bệnh lý tim bẩm sinh phức tạp từ 2 thương tổn trở lên. đánh giá các bệnh lý tim bẩm sinh có tiêm thuốc tương phản
+60 [[MRI|Chụp cộng hưởng từ]] tim Bệnh lý tim bẩm sinh phức tạp từ 2 thương tổn trở lên. đánh giá các bệnh lý tim bẩm sinh
+61 Chụp cộng hưởng từ tim Chỉ định đối với bệnh lý [[Tim|cơ tim]] có EF < 50%: Cơ tim giãn hoặc Cơ đánh giá khuếch tán sức tim phì đại. căng
 62 Chụp cộng hưởng từ gan Khi đã được chụp cộng hưởng từ gan bằng chất tương phản thông với chất tương phản đặc thường nhưng không xác định được bản chất mô bệnh học. hiệu mô
 63 Chụp cộng hưởng từ Thanh toán đối với các trường hợp sau: bệnh lý cơ tim có tiêm a) Viêm cơ tim; thuốc tương phản
 b) Đánh giá sống còn cơ tim sau nhồi máu cơ tim.
@@ -438,7 +442,7 @@ khác quyền) phê duyệt hoặc có hội chẩn;
 66 Chụp động mạch vành Thanh toán đối với các trường hợp sau:
 a) Nhồi máu cơ tim cấp có ST chênh lên;
 b) Đau ngực không ổn định và Nhồi máu cơ tim không ST chênh lên;
-c) Đau thắt ngực ổn định nhưng điều trị nội khoa tối ưu không khống chế được triệu chứng;
+c) [[Đau ngực|Đau thắt ngực]] ổn định nhưng điều trị nội khoa tối ưu không khống chế được triệu chứng;
 d) Sau cấp cứu ngừng tuần hoàn ngoài bệnh viện;
 đ) Đau ngực tái phát sau can thiệp động mạch vành hoặc sau phẫu thuật làm cầu nối;
 e) Suy tim không rõ nguyên nhân;
@@ -457,7 +461,7 @@ c) Sau ghép tế bào gốc tạo máu.
 ---
 
 phát.
-75 Xét nghiệm giải trình tự Thanh toán khi thực hiện đối với một trong các trường hợp sau: gen a) Phân tích đột biến gen bệnh máu (gen có nhiều loại đột biến hoặc đột biến trên nhiều gen). Đột biến gen kháng thuốc với các thuốc điều trị đích ở người bệnh Lơ xê mi kinh dòng bạch cầu hạt: Đã xác định dương tính với gen BCR-ABL bằng xét nghiệm RT - PCR và được điều trị bằng thuốc ức chế Tyrosine kinase sau 03 tháng nhưng không đáp ứng hoặc mất đáp ứng trong quá trình điều trị.
+75 Xét nghiệm giải trình tự Thanh toán khi thực hiện đối với một trong các trường hợp sau: gen a) Phân tích đột biến gen bệnh máu (gen có nhiều loại đột biến hoặc đột biến trên nhiều gen). Đột biến gen kháng thuốc với các thuốc điều trị đích ở người bệnh Lơ xê mi kinh dòng [[Bạch cầu]] hạt: Đã xác định dương tính với gen BCR-ABL bằng xét nghiệm RT - PCR và được điều trị bằng thuốc ức chế Tyrosine kinase sau 03 tháng nhưng không đáp ứng hoặc mất đáp ứng trong quá trình điều trị.
 b) Phân tích tồn dư tối thiểu ở bệnh máu ác tính đối với người bệnh đã được chẩn đoán bệnh máu ác tính bằng xét nghiệm huyết đồ, tủy đồ thuộc một trong các trường hợp sau:
 - Xét nghiệm RT-PCR âm tính với các gen AML1-ETO, PML-RAR a,
 CBFB-MIH11, NPM1, FLT3 (đối với bệnh Lơ xê mi cấp dòng tủy AML) hoặc gen BCR-ABL, TEL- AML1, MLL-AF4, E2A-PBX1 (đối với bệnh Lơ xê mi cấp dòng lympho ALL);
@@ -467,8 +471,8 @@ c) Xét nghiệm Chimerism sau ghép tế bào gốc tạo máu: Thực hiện k
 76 Nuôi cấy cụm tế bào gốc Ghép tế bào gốc tự thân. (colony firming culture)
 77 Phát hiện gen bệnh Bệnh Thalassemia hoặc nghi ngờ bệnh Thalassemia. Thalassemia bằng kỹ thuật PCR-RFLP
 78 Xét nghiệm phát hiện đột Bệnh Thalassemia hoặc nghi ngờ bệnh Thalassemia. biến gen thalassemia bằng kỹ thuật PCR
-79 Phát hiện kháng thể a) Người bệnh có chỉ định ghép tế bào gốc hoặc ghép tạng đối với kháng tiểu cầu bằng kỹ một trong các trường hợp nghi ngờ có kháng thể kháng tiểu cầu sau: thuật Flow- cytometry
-- Theo dõi ở một số bệnh có truyền tiểu cầu nhiều lần: Xuất huyết
+79 Phát hiện kháng thể a) Người bệnh có chỉ định ghép tế bào gốc hoặc ghép tạng đối với kháng [[Tiểu cầu]] bằng kỹ một trong các trường hợp nghi ngờ có kháng thể kháng [[Tiểu cầu]] sau: thuật Flow- cytometry
+- Theo dõi ở một số bệnh có truyền tiểu cầu nhiều lần: [[Xuất huyết]]
 giảm tiểu cầu, Suy tủy xương, Bệnh hệ thống, Lupus, giảm sinh tủy, sau hóa trị liệu hoặc sau ghép tế bào gốc tạo máu.
 - Các bệnh tự miễn.
 - Các trường hợp truyền tiểu cầu không hiệu lực.
@@ -483,15 +487,15 @@ c) Các trường hợp truyền tiểu cầu không hiệu lực.
 82 Xét nghiệm và chẩn Xác định loại tế bào trong tủy xương: u lympho xâm lấn tủy, u đoán hóa mô miễn dịch lympho thể tủy, đa u tủy xương, lơ xê mi cấp, lơ xê mi kinh dòng tủy xương cho một dấu lympho, hội chứng tăng sinh lympho, rối loạn sinh tủy hoặc ung thư ấn (Marker) trên máy di căn tủy. nhuộm tự động
 83 Định lượng Pro-BNP Chẩn đoán, theo dõi suy tim.
 84 Dịnh lượng HbA1c Thực hiện tối thiểu sau mỗi 3 tháng để đánh giá kết quả điều trị bệnh [Máu] đái tháo đường.
-85 Clostridium nuôi cấy, Người bị tiêu chảy nghi ngờ nhiễm C.difficle sau điều trị kháng sinh. định danh/Clostridium difficile miễn dịch tự động
-86 CMV Real-time PCR Chẩn đoán để điều trị các bệnh lý não, gan, mắt, ghép tạng, ghép tế bào gốc, sốt kéo dài hoặc tình trạng suy giảm miễn dịch không rõ nguyên nhân nghi ngờ do Cytomegalovirus.
+85 Clostridium nuôi cấy, Người bị [[Tiêu chảy]] nghi ngờ nhiễm C.difficle sau điều trị [[Kháng sinh]]. định danh/Clostridium difficile miễn dịch tự động
+86 CMV Real-time PCR Chẩn đoán để điều trị các bệnh lý não, gan, mắt, ghép tạng, ghép tế bào gốc, [[[[Sốt]]|sốt kéo dài]] hoặc tình trạng suy giảm miễn dịch không rõ nguyên nhân nghi ngờ do Cytomegalovirus.
 87 HBV đo tải lượng Real- Được bác sỹ của cơ sở khám bệnh, chữa bệnh có đơn vị điều trị viêm time PCR gan chỉ định, thực hiện trong các trường hợp:
 a) Xét nghiệm lần đầu.
 b) Người bệnh được điều trị thì thanh toán xét nghiệm lần đầu và những lần xét nghiệm tiếp theo cách nhau sau 3 đến 6 tháng.
 88 HCV đo tải lượng Real- Được bác sỹ của cơ sở khám bệnh, chữa bệnh có đơn vị điều trị viêm time PCR gan chỉ định, thực hiện trong các trường hợp:
 a) Xét nghiệm lần đầu;
 b) Người bệnh được điều trị thì được thanh toán cho lần đầu, thanh toán lần xét nghiệm thứ hai khi thực hiện cách lần đầu 4 tuần, những lần xét nghiệm tiếp theo cách nhau 3 đến 6 tháng.
-89 Helicobacter pylori nuôi Sau điều trị kháng sinh trên 15 ngày Helicobacter pylori vẫn dương cấy, định danh và kháng tính. thuốc
+89 Helicobacter pylori nuôi Sau điều trị [[Kháng sinh]] trên 15 ngày Helicobacter pylori vẫn dương cấy, định danh và kháng tính. thuốc
 90 Vi nấm giải trình tự gene Chỉ định định danh các vi nấm không nuôi cấy được, khó nuôi cấy, nuôi cấy trên 15 ngày hoặc chưa định hướng được căn nguyên vi nấm gây bệnh.
 91 HIV kháng thuốc giải Người bệnh dược điều trị theo phác đồ điều trị HIV/AIDS của Bộ Y trình tự gene tế nhưng nghi ngờ kháng thuốc.
 92 HCV genotype giải trình Chỉ định khi cần khẳng định genotype cho điều trị, khi DVKT “HCV tự gene genotype Real- time PCR” không thể xác định được genotype.

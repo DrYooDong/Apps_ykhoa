@@ -1,8 +1,19 @@
+---
+title: "Tóm tắt khuyến cáo mới nhất về hen phế quản phần 1"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 # 1. Nội Dung Bệnh Lý Học Chi Tiết
 
 ## 1.1. Định Nghĩa và Bản Chất Bệnh Lý của Hen Phế Quản
 
-**Hen phế quản** là một bệnh lý hô hấp mạn tính đa dạng (heterogeneous disease), thường đặc trưng bởi tình trạng viêm mạn tính của đường dẫn khí. Bệnh được định nghĩa trên lâm sàng bởi tiền sử có các triệu chứng hô hấp như khò khè (wheeze), khó thở (shortness of breath), nặng ngực (chest tightness) và ho (cough).
+**Hen phế quản** là một bệnh lý hô hấp mạn tính đa dạng (heterogeneous disease), thường đặc trưng bởi tình trạng viêm mạn tính của đường dẫn khí. Bệnh được định nghĩa trên lâm sàng bởi tiền sử có các triệu chứng hô hấp như khò khè (wheeze), [[Khó thở]] (shortness of breath), nặng ngực (chest tightness) và ho (cough).
 
 Các triệu chứng này có hai đặc điểm cốt lõi là **thay đổi theo thời gian và biến thiên về cường độ**, đồng thời đi kèm với **tình trạng giới hạn luồng khí thở ra dao động** (variable expiratory airflow). Sự cản trở dòng khí thở ra này xảy ra do ba cơ chế bệnh lý kết hợp:
 
@@ -16,11 +27,11 @@ Các triệu chứng này có hai đặc điểm cốt lõi là **thay đổi th
 
 ## 1.2. Tiêu Chuẩn và Quy Trình Chẩn Đoán Hen Phế Quản
 
-Việc chẩn đoán xác định hen phế quản trong thực hành lâm sàng đòi hỏi phải thu thập đầy đủ bằng chứng khách quan và ghi nhận vào hồ sơ y tế của người bệnh, tốt nhất là trước khi bắt đầu điều trị bằng các thuốc chứa Corticosteroid dạng hít (ICS). Quy trình chẩn đoán dựa trên hai tiêu chuẩn bắt buộc dưới đây:
+Việc chẩn đoán xác định hen phế quản trong thực hành lâm sàng đòi hỏi phải thu thập đầy đủ bằng chứng khách quan và ghi nhận vào hồ sơ y tế của người bệnh, tốt nhất là trước khi bắt đầu điều trị bằng các thuốc chứa [[[[Corticoid]]|Corticosteroid]] dạng hít (ICS). Quy trình chẩn đoán dựa trên hai tiêu chuẩn bắt buộc dưới đây:
 
 ### 1.2.1. Tiền sử có các triệu chứng hô hấp thay đổi điển hình
 
-Các triệu chứng đặc trưng (khò khè, khó thở, nặng ngực, ho) hỗ trợ chẩn đoán hen khi có các đặc điểm sau:
+Các triệu chứng đặc trưng (khò khè, [[Khó thở]], nặng ngực, ho) hỗ trợ chẩn đoán hen khi có các đặc điểm sau:
 
 - Các triệu chứng xuất hiện dao động, thay đổi theo thời gian và biến thiên cường độ.
 - Triệu chứng thường nặng hơn hoặc xuất hiện về đêm hoặc khi thức dậy.
@@ -28,7 +39,7 @@ Các triệu chứng đặc trưng (khò khè, khó thở, nặng ngực, ho) h�
 - **Triệu chứng nặng hơn sau khi ngừng gắng sức (worsen after end-exercise)** – đây là một dấu hiệu lâm sàng rất đặc trưng của hen.
 - Triệu chứng xuất hiện hoặc nặng lên trong các đợt nhiễm virus đường hô hấp.
 
-Ngược lại, các dấu hiệu sau ít nghĩ đến hen: ho khạc đờm mạn tính đơn độc, khó thở kèm chóng mặt hoặc tê bì ngoại vi, đau ngực, hoặc thở rít thì hít vào đơn độc.
+Ngược lại, các dấu hiệu sau ít nghĩ đến hen: ho khạc đờm mạn tính đơn độc, khó thở kèm chóng mặt hoặc tê bì ngoại vi, [[Đau ngực]], hoặc thở rít thì hít vào đơn độc.
 
 ### 1.2.2. Bằng chứng khách quan về giới hạn luồng khí thở ra dao động
 
@@ -40,7 +51,7 @@ Ngược lại, các dấu hiệu sau ít nghĩ đến hen: ho khạc đờm m�
 - **Biến thiên hằng ngày của PEF quá mức:** Bệnh nhân tự đo PEF 2 lần/ngày liên tục trong 2 tuần. Độ biến thiên trung bình hằng ngày đạt $> 10%$ ở người lớn hoặc $> 13%$ ở trẻ em.
 - **Đáp ứng đáng kể sau 4 tuần điều trị thử bằng ICS:** Chỉ số $FEV_1$ hoặc $FVC$ tăng $\ge 12%$ và $\ge 200\text{ mL}$ (người lớn) hoặc $FEV_1$ tăng $\ge 12%$ dự đoán (trẻ em).
 - **Test kích thích phế quản (Bronchial Challenge Test) dương tính:** Áp dụng khi bệnh nhân có triệu chứng nhưng chức năng hô hấp bình thường. Xác định khi $FEV_1$ giảm $\ge 20%$ sau khi hít methacholine hoặc giảm $> 10%$ và $> 200\text{ mL}$ sau nghiệm pháp gắng sức ở người lớn.
-- **Biến thiên quá mức chức năng phổi giữa các lần thăm khám:** Chỉ số $FEV_1$ thay đổi $\ge 12%$ và $\ge 200\text{ mL}$ ở người lớn, hoặc thay đổi $\ge 12%$ ở trẻ em.
+- **Biến thiên quá mức chức năng [[Phổi]] giữa các lần thăm khám:** Chỉ số $FEV_1$ thay đổi $\ge 12%$ và $\ge 200\text{ mL}$ ở người lớn, hoặc thay đổi $\ge 12%$ ở trẻ em.
 
 ---
 
@@ -51,8 +62,8 @@ Ngược lại, các dấu hiệu sau ít nghĩ đến hen: ho khạc đờm m�
 - **Nội dung chú thích dưới hình:**
     - Lưu đồ này áp dụng cho người lớn, trẻ vị thành niên và trẻ em từ 6–11 tuổi trình bày các triệu chứng hô hấp mạn tính hoặc tái phát trong thực hành lâm sàng.
     - Nếu bệnh nhân có triệu chứng nặng hoặc mất kiểm soát nghiêm trọng, cần điều trị ngay như một đợt kịch phát.
-    - Đo chức năng phổi bằng hô hấp ký (spirometry) là lựa chọn đầu tiên và đáng tin cậy hơn đo lưu lượng đỉnh (PEF). Khi đo PEF, phải dùng cùng một máy đo cho mỗi lần thực hiện và chỉ lấy giá trị cao nhất trong 3 lần đo.
-    - Ở những bệnh nhân có triệu chứng điển hình nhưng chức năng phổi bình thường hoặc test âm tính, việc phát hiện các dấu ấn sinh học viêm Type 2 tăng cao (FeNO hoặc bạch cầu ái toan máu) có thể hỗ trợ chẩn đoán hen phế quản.
+    - Đo chức năng [[Phổi]] bằng hô hấp ký (spirometry) là lựa chọn đầu tiên và đáng tin cậy hơn đo lưu lượng đỉnh (PEF). Khi đo PEF, phải dùng cùng một máy đo cho mỗi lần thực hiện và chỉ lấy giá trị cao nhất trong 3 lần đo.
+    - Ở những bệnh nhân có triệu chứng điển hình nhưng chức năng phổi bình thường hoặc test âm tính, việc phát hiện các dấu ấn sinh học viêm Type 2 tăng cao (FeNO hoặc [[Bạch cầu]] ái toan máu) có thể hỗ trợ chẩn đoán hen phế quản.
     - Nếu bệnh nhân đã và đang điều trị bằng ICS, quy trình chẩn đoán đòi hỏi các tiếp cận chuyên biệt (như điều trị thử tăng bậc hoặc giảm bậc để đánh giá sự thay đổi triệu chứng và chức năng phổi).
 
 ---
@@ -62,7 +73,7 @@ Ngược lại, các dấu hiệu sau ít nghĩ đến hen: ho khạc đờm m�
 - **Nội dung chi tiết trong bảng:**
     1. **Tiền sử có triệu chứng hô hấp thay đổi:** Triệu chứng điển hình gồm khò khè, khó thở, nặng ngực, ho. Hỗ trợ chẩn đoán khi triệu chứng thay đổi tần suất/mức độ, nặng hơn về đêm/gần sáng, kích phát bởi gắng sức, cười, dị nguyên, khí lạnh và nặng hơn rõ rệt sau khi ngừng gắng sức.
     2. **Bằng chứng về sự thay đổi lưu lượng thở ra:** Chỉ cần đáp ứng ít nhất một tiêu chí về test phục hồi phế quản (FEV1 tăng $\ge 12%$ và $\ge 200\text{ mL}$ ở người lớn; tăng $\ge 12%$ dự đoán ở trẻ em); hoặc biến thiên PEF hằng ngày $>10%$ ở người lớn ($>13%$ ở trẻ em); hoặc đáp ứng sau 4 tuần dùng ICS; hoặc test kích thích phế quản dương tính; hoặc biến thiên FEV1 giữa các lần khám $\ge 12%$.
-    3. **Vai trò của dấu ấn sinh học viêm Type 2:** Ở bệnh nhân có triệu chứng nhưng không làm được hô hấp ký hoặc kết quả âm tính, nồng độ FeNO tăng cao ($>50\text{ ppb}$ ở người lớn, $>35\text{ ppb}$ ở trẻ em) hoặc bạch cầu ái toan máu cao hơn trị số tham chiếu giúp hỗ trợ chẩn đoán hen Type 2. Mức FeNO hoặc bạch cầu ái toan thấp không dùng để loại trừ chẩn đoán hen.
+    3. **Vai trò của dấu ấn sinh học viêm Type 2:** Ở bệnh nhân có triệu chứng nhưng không làm được hô hấp ký hoặc kết quả âm tính, nồng độ FeNO tăng cao ($>50\text{ ppb}$ ở người lớn, $>35\text{ ppb}$ ở trẻ em) hoặc [[Bạch cầu]] ái toan máu cao hơn trị số tham chiếu giúp hỗ trợ chẩn đoán hen Type 2. Mức FeNO hoặc bạch cầu ái toan thấp không dùng để loại trừ chẩn đoán hen.
 
 ---
 

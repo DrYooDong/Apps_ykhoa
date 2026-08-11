@@ -1,4 +1,14 @@
-# BÀI HỌC: CHẨN ĐOÁN, BIỂU HIỆN LÂM SÀNG VÀ CẬN LÂM SÀNG SỐT XUẤT HUYẾT MARBURG (PHẦN 1)
+---
+title: "BYT_Marburg_2023 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
+# BÀI HỌC: CHẨN ĐOÁN, BIỂU HIỆN LÂM SÀNG VÀ CẬN LÂM SÀNG [[Sốt]] [[Xuất huyết]] MARBURG (PHẦN 1)
 
 ---
 
@@ -6,7 +16,7 @@
 
 ### Cơ Sở Pháp Lý và Tổ Chức Biên Soạn
 
-- **Quyết định ban hành:** Tài liệu chuyên môn **"Hướng dẫn chẩn đoán, điều trị, dự phòng và kiểm soát lây nhiễm bệnh sốt xuất huyết Marburg"** được ban hành kèm theo **Quyết định số 2201/QĐ-BYT** vào ngày **16 tháng 5 năm 2023** do Thứ trưởng Bộ Y tế **Trần Văn Thuấn** ký thay Bộ trưởng.
+- **Quyết định ban hành:** Tài liệu chuyên môn **"Hướng dẫn chẩn đoán, điều trị, dự phòng và kiểm soát lây nhiễm bệnh [[Sốt]] [[Xuất huyết]] Marburg"** được ban hành kèm theo **Quyết định số 2201/QĐ-BYT** vào ngày **16 tháng 5 năm 2023** do Thứ trưởng Bộ Y tế **Trần Văn Thuấn** ký thay Bộ trưởng.
 - **Cơ sở pháp lý:** Quyết định này được xây dựng căn cứ trên **Luật Khám bệnh, chữa bệnh năm 2009** và **Nghị định số 95/2022/NĐ-CP** ngày 15/11/2022 của Chính phủ quy định chức năng, nhiệm vụ, quyền hạn và cơ cấu tổ chức của Bộ Y tế.
 - **Phạm vi áp dụng và hiệu lực:** Quyết định áp dụng thống nhất cho tất cả các cơ sở khám bệnh, chữa bệnh Nhà nước và tư nhân trên phạm vi cả nước, có hiệu lực kể từ ngày ký ban hành.
 - **Ban biên soạn:** Ban biên soạn hoạt động dưới sự chỉ đạo trực tiếp của **GS.TS. Trần Văn Thuấn** (Thứ trưởng Bộ Y tế), **GS.TS. Nguyễn Văn Kính** (Phó Chủ tịch thường trực Tổng hội Y học Việt Nam, nguyên Giám đốc Bệnh viện Bệnh Nhiệt đới Trung ương) và đồng Chủ biên là **PGS.TS. Lương Ngọc Khuê** (Cục trưởng Cục Quản lý Khám, chữa bệnh). Thành viên biên soạn gồm nhiều chuyên gia đầu ngành từ các bệnh viện lớn trên toàn quốc.
@@ -122,11 +132,11 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán, điều trị, dự phòng 
 
 |Nhóm xét nghiệm|Chỉ số / Biểu hiện điển hình trên lâm sàng|Ý nghĩa đánh giá sinh lý bệnh học|
 |:--|:--|:--|
-|**Huyết học**|- **Bạch cầu:** Có xu hướng giảm trong 4 - 5 ngày đầu và tăng trở lại ở tuần tiếp theo.- **Tiểu cầu:** Giảm sâu, kéo dài từ ngày thứ 3 đến hơn 2 tuần.- **Hồng cầu:** Có thể giảm mạnh tùy thuộc vào mức độ xuất huyết trên lâm sàng.|Đánh giá phản ứng viêm hệ thống và mức độ mất máu cấp do xuất huyết.|
-|**Sinh hóa máu**|- **Điện giải:** Hạ Kali (\(K^+\)) và Canxi (\(Ca^{2+}\)) trong giai đoạn toàn phát do tình trạng nôn mửa và tiêu chảy kéo dài.- **Men gan:** SGOT và SGPT tăng cao trong giai đoạn tổn thương tạng sớm.- **Men tụy:** Amylase tăng nếu có tổn thương tuyến tụy kèm theo.- **Chức năng thận:** Creatinin, ure máu tăng vọt trong giai đoạn tổn thương tạng muộn có suy thận.|Theo dõi tình trạng mất nước điện giải, hủy hoại tế bào gan, tụy và mức độ suy thận cấp.|
-|**Khí máu & Sốc**|- Xuất hiện tình trạng toan chuyển hóa.- Chỉ số Lactate máu tăng cao.- Giảm phân áp oxy máu động mạch (\(PaO_2\)) khi có suy hô hấp.|Đánh giá mức độ giảm tưới máu mô trong tình trạng sốc và mức độ suy hô hấp cấp.|
+|**Huyết học**|- **[[Bạch cầu]]:** Có xu hướng giảm trong 4 - 5 ngày đầu và tăng trở lại ở tuần tiếp theo.- **[[Tiểu cầu]]:** Giảm sâu, kéo dài từ ngày thứ 3 đến hơn 2 tuần.- **[[Hồng cầu]]:** Có thể giảm mạnh tùy thuộc vào mức độ xuất huyết trên lâm sàng.|Đánh giá phản ứng viêm hệ thống và mức độ mất máu cấp do xuất huyết.|
+|**Sinh hóa máu**|- **Điện giải:** Hạ Kali (\(K^+\)) và Canxi (\(Ca^{2+}\)) trong giai đoạn toàn phát do tình trạng [[[[Nôn ói]]|nôn mửa]] và [[Tiêu chảy]] kéo dài.- **Men [[Gan]]:** SGOT và SGPT tăng cao trong giai đoạn tổn thương tạng sớm.- **Men tụy:** Amylase tăng nếu có tổn thương tuyến tụy kèm theo.- **Chức năng [[Thận]]:** Creatinin, ure máu tăng vọt trong giai đoạn tổn thương tạng muộn có suy [[Thận]].|Theo dõi tình trạng [[Mất nước]] điện giải, hủy hoại [[Gan|tế bào gan]], tụy và mức độ suy thận cấp.|
+|**Khí máu & [[Sốc]]**|- Xuất hiện tình trạng toan chuyển hóa.- Chỉ số Lactate máu tăng cao.- Giảm phân áp oxy máu động mạch (\(PaO_2\)) khi có [[Suy hô hấp]].|Đánh giá mức độ giảm tưới máu mô trong tình trạng [[Sốc]] và mức độ [[Suy hô hấp|suy hô hấp cấp]].|
 |**Đông máu (DIC)**|- Chỉ số D-dimer tăng cao.- Thời gian PT-INR hoặc aPTT kéo dài.- Nồng độ Fibrinogen giảm sút nghiêm trọng.- Xét nghiệm ROTEM hỗ trợ định hướng truyền chế phẩm máu (nếu có điều kiện).|Chẩn đoán xác định biến chứng rối loạn đông máu nội mạch lan tỏa (DIC) để bù chế phẩm máu kịp thời.|
-|**Nước tiểu & Khác**|- Xuất hiện hồng cầu niệu và protein niệu.- **Cấy máu:** Kết quả âm tính giúp loại trừ tình trạng nhiễm trùng huyết do vi khuẩn cơ hội.|Đánh giá tổn thương cầu thận và chẩn đoán phân biệt với các bệnh lý nhiễm khuẩn khác.|
+|**Nước tiểu & Khác**|- Xuất hiện [[Hồng cầu]] niệu và protein niệu.- **Cấy máu:** Kết quả âm tính giúp loại trừ tình trạng [[Nhiễm trùng huyết]] do vi khuẩn cơ hội.|Đánh giá tổn thương cầu thận và chẩn đoán phân biệt với các bệnh lý nhiễm khuẩn khác.|
 
 ---
 
@@ -134,11 +144,11 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán, điều trị, dự phòng 
 
 - **Ca bệnh nghi ngờ:** Người bệnh có đồng thời 2 yếu tố sau:
     1. **Tiền sử dịch tễ trong vòng 21 ngày trước đó:** Sống, làm việc hoặc di chuyển đến vùng dịch đang lưu hành; tiếp xúc với vật phẩm/sản phẩm động vật nghi ngờ nhiễm vi rút Marburg; hoặc người phơi nhiễm trong phòng thí nghiệm.
-    2. **Biểu hiện lâm sàng:** Xuất hiện đột ngột sốt kèm ít nhất 3 trong số các dấu hiệu: đau đầu, mệt lả, lờ đờ, đau cơ khớp, chán ăn, khó nuốt, nôn, khó thở, tiêu chảy, nấc. _Hoặc:_ Bệnh nhân tử vong không rõ nguyên nhân nhưng có yếu tố dịch tễ rõ ràng.
+    2. **Biểu hiện lâm sàng:** Xuất hiện đột ngột sốt kèm ít nhất 3 trong số các dấu hiệu: đau đầu, mệt lả, lờ đờ, đau cơ khớp, chán ăn, khó nuốt, nôn, [[Khó thở]], [[Tiêu chảy]], nấc. _Hoặc:_ Bệnh nhân tử vong không rõ nguyên nhân nhưng có yếu tố dịch tễ rõ ràng.
 - **Ca bệnh xác định:** Là ca bệnh nghi ngờ đã được khẳng định bằng một trong các xét nghiệm vi sinh dương tính (RT-PCR, kháng thể IgM, phát hiện kháng nguyên, trung hòa huyết thanh hoặc phân lập được vi rút).
 - **Chẩn đoán phân biệt:**
     - Các bệnh sốt xuất huyết truyền nhiễm khác có biểu hiện lâm sàng và dịch tễ tương đồng: sốt xuất huyết Dengue, bệnh do vi rút Ebola, sốt xuất huyết Crimean-Congo (CCHF), sốt xuất huyết Lassa.
-    - Các bệnh lý nhiễm trùng khác: nhiễm Rickettsia, Leptospira, sốt rét nặng, thương hàn, xuất huyết do nhiễm khuẩn huyết/sốc nhiễm khuẩn nói chung.
+    - Các bệnh lý nhiễm trùng khác: nhiễm Rickettsia, Leptospira, sốt rét nặng, thương hàn, xuất huyết do [[Nhiễm trùng huyết|nhiễm khuẩn huyết]]/[[Sốc nhiễm khuẩn]] nói chung.
 
 ### Nguyên Tắc Điều Trị
 

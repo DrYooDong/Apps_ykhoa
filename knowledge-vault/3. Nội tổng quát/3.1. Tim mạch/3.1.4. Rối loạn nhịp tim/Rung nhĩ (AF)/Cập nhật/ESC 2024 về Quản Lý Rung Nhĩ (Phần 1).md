@@ -1,8 +1,19 @@
+---
+title: "ESC 2024 về Quản Lý Rung Nhĩ (Phần 1)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 ## 1. Nội Dung Chi Tiết Khuyến Cáo ESC 2024 về Quản Lý Rung Nhĩ (Phần 1)
 
 ### Triết lý tiếp cận mới: Lộ trình AF-CARE
 
-Khuyến cáo năm 2024 của Hội Tim mạch Châu Âu (ESC) phối hợp với Hiệp hội Phẫu thuật Tim mạch-Lồng ngực Châu Âu (EACTS) đánh dấu bước chuyển dịch quan trọng trong tư duy quản lý bệnh nhân rung nhĩ (AF). Thay vì tiếp cận theo phác đồ ABC của các hướng dẫn trước đây, ESC 2024 giới thiệu khung tiếp cận **AF-CARE** hệ thống và toàn diện hơn. Lộ trình này đặt việc quản lý các bệnh lý đồng mắc và yếu tố nguy cơ làm trọng tâm ban đầu.
+Khuyến cáo năm 2024 của Hội [[Tim]] mạch Châu Âu (ESC) phối hợp với Hiệp hội Phẫu thuật [[Tim]] mạch-Lồng ngực Châu Âu (EACTS) đánh dấu bước chuyển dịch quan trọng trong tư duy quản lý bệnh nhân rung nhĩ (AF). Thay vì tiếp cận theo phác đồ ABC của các hướng dẫn trước đây, ESC 2024 giới thiệu khung tiếp cận **AF-CARE** hệ thống và toàn diện hơn. Lộ trình này đặt việc quản lý các bệnh lý đồng mắc và yếu tố nguy cơ làm trọng tâm ban đầu.
 
 Khung **AF-CARE** bao gồm 4 trụ cột cốt lõi:
 
@@ -44,7 +55,7 @@ Khái niệm này chỉ các đợt rung nhĩ không triệu chứng được ph
 
 #### 1. Đánh giá triệu chứng bằng thang điểm mEHRA hiệu chỉnh
 
-Triệu chứng của rung nhĩ rất đa dạng, từ hồi hộp, trống ngực điển hình đến mệt mỏi, khó thở khi gắng sức, giảm khả năng vận động, đau ngực, chóng mặt, lo âu và rối loạn giấc ngủ. Việc đánh giá mức độ ảnh hưởng của triệu chứng lên chất lượng cuộc sống được thực hiện qua thang điểm **mEHRA hiệu chỉnh (Bảng 7)**:
+Triệu chứng của rung nhĩ rất đa dạng, từ hồi hộp, trống ngực điển hình đến mệt mỏi, [[Khó thở]] khi gắng sức, giảm khả năng vận động, [[Đau ngực]], chóng mặt, lo âu và rối loạn giấc ngủ. Việc đánh giá mức độ ảnh hưởng của triệu chứng lên chất lượng cuộc sống được thực hiện qua thang điểm **mEHRA hiệu chỉnh (Bảng 7)**:
 
 - **mEHRA 1 (Không triệu chứng):** Rung nhĩ không gây ra bất kỳ triệu chứng nào.
 - **mEHRA 2a (Nhẹ):** Các hoạt động hàng ngày không bị ảnh hưởng.
@@ -56,11 +67,11 @@ Triệu chứng của rung nhĩ rất đa dạng, từ hồi hộp, trống ng�
 
 Tất cả bệnh nhân cần được đánh giá toàn diện bao gồm:
 
-- Hỏi tiền sử y khoa kỹ lưỡng để xác định thể rung nhĩ, tiền sử gia đình, đánh giá nguy cơ tắc mạch và nguy cơ chảy máu.
+- Hỏi tiền sử y khoa kỹ lưỡng để xác định thể rung nhĩ, tiền sử gia đình, đánh giá nguy cơ tắc mạch và nguy cơ [[Xuất huyết|chảy máu]].
 - Thực hiện **ECG 12 chuyển đạo** để xác nhận nhịp, tần số thất và tìm dấu hiệu bệnh tim cấu trúc.
 - Đánh giá triệu chứng và suy giảm chức năng (qua thang điểm mEHRA).
-- **Xét nghiệm máu cơ bản bắt buộc:** Công thức máu, chức năng thận (Creatinine clearance), điện giải đồ, chức năng gan, đường huyết/HbA1c và chức năng tuyến giáp (TSH).
-- **Siêu âm tim qua thành ngực (TTE):** Khuyến cáo thực hiện cho tất cả bệnh nhân mới chẩn đoán rung nhĩ khi kết quả siêu âm giúp định hướng các quyết định điều trị lâm sàng (Class I, Level C).
+- **Xét nghiệm máu cơ bản bắt buộc:** Công thức máu, chức năng [[Thận]] (Creatinine clearance), điện giải đồ, chức năng [[Gan]], đường huyết/HbA1c và chức năng tuyến giáp (TSH).
+- **[[[[Siêu âm]]|Siêu âm tim]] qua thành ngực (TTE):** Khuyến cáo thực hiện cho tất cả bệnh nhân mới chẩn đoán rung nhĩ khi kết quả siêu âm giúp định hướng các quyết định điều trị lâm sàng (Class I, Level C).
 
 ---
 
@@ -68,9 +79,9 @@ Tất cả bệnh nhân cần được đánh giá toàn diện bao gồm:
 
 Quản lý tích cực các yếu tố nguy cơ và bệnh đồng mắc là nền tảng cốt lõi để hạn chế sự tái phát, ngăn ngừa tiến triển của rung nhĩ và giảm thiểu các biến cố tim mạch bất lợi (Bảng 5 / Hình 8).
 
-#### 1. Tăng huyết áp
+#### 1. [[Tăng huyết áp]]
 
-Tăng huyết áp là yếu tố nguy cơ phổ biến nhất làm tăng khả năng đột quỵ, suy tim và chảy máu ở bệnh nhân rung nhĩ.
+[[Tăng huyết áp]] là yếu tố nguy cơ phổ biến nhất làm tăng khả năng đột quỵ, suy tim và [[Xuất huyết|chảy máu]] ở bệnh nhân rung nhĩ.
 
 - **Khuyến cáo:** Điều trị hạ áp được chỉ định cho bệnh nhân tăng huyết áp kèm rung nhĩ để giảm tái phát, làm chậm tiến triển của rung nhĩ và dự phòng biến cố tim mạch (Class I, Level B).
 - **Mục tiêu huyết áp:** Duy trì huyết áp tâm thu từ **120-129 mmHg** và huyết áp tâm trương **70-79 mmHg** ở hầu hết người trưởng thành. Đối với bệnh nhân rất cao tuổi ($\ge 85$ tuổi) hoặc thể trạng suy kiệt, mục tiêu huyết áp tâm thu có thể nới lỏng hơn (< 140 mmHg).
@@ -104,7 +115,7 @@ Suy tim xuất hiện ở khoảng một nửa số bệnh nhân rung nhĩ theo 
 
 #### 6. Hoạt động thể chất và Lối sống
 
-- **Tập luyện:** Khuyến cáo thiết lập một chương trình tập luyện cá thể hóa, phù hợp cho bệnh nhân rung nhĩ kịch phát hoặc bền bỉ để nâng cao thể trạng tim mạch và giảm tái phát rung nhĩ (Class I, Level B). Bệnh nhân nên duy trì lối sống năng động với tối thiểu 150-300 phút tập luyện cường độ trung bình hoặc 75-150 phút tập luyện cường độ cao mỗi tuần.
+- **Tập luyện:** Khuyến cáo thiết lập một chương trình tập luyện cá thể hóa, [[Phù]] hợp cho bệnh nhân rung nhĩ kịch phát hoặc bền bỉ để nâng cao thể trạng tim mạch và giảm tái phát rung nhĩ (Class I, Level B). Bệnh nhân nên duy trì lối sống năng động với tối thiểu 150-300 phút tập luyện cường độ trung bình hoặc 75-150 phút tập luyện cường độ cao mỗi tuần.
 - **Hạn chế rượu:** Khuyến cáo hạn chế uống rượu xuống mức **$\le 3$ đơn vị cồn tiêu chuẩn mỗi tuần** ($\le 30 \text{g}$ cồn nguyên chất) để ngăn ngừa rung nhĩ tái phát (Class I, Level B).
 
 ---
@@ -116,7 +127,7 @@ Suy tim xuất hiện ở khoảng một nửa số bệnh nhân rung nhĩ theo 
 - **Tên hình:** _Figure 1. Impacts and outcomes associated with clinical AF_
 - **Thuộc tài liệu:** _2024 ESC Guidelines for the management of atrial fibrillation developed in collaboration with the European Association for Cardio-Thoracic Surgery (EACTS)_
 - **Nội dung mô tả dưới hình:** Sơ đồ này mô tả tác động đa diện của rung nhĩ lâm sàng lên ba khía cạnh:
-    1. _Triệu chứng của bệnh nhân:_ Hồi hộp, khó thở, mệt mỏi, giảm khả năng gắng sức, chóng mặt, ngất, lo âu, trầm cảm và rối loạn giấc ngủ.
+    1. _Triệu chứng của bệnh nhân:_ Hồi hộp, [[Khó thở]], mệt mỏi, giảm khả năng gắng sức, chóng mặt, ngất, lo âu, trầm cảm và rối loạn giấc ngủ.
     2. _Biến cố bất lợi lâm sàng:_ Nhập viện tái diễn, suy tim (xuất hiện ở khoảng 50% bệnh nhân), đột quỵ thiếu máu não, thuyên tắc mạch hệ thống, suy giảm nhận thức/sa sút trí tuệ mạch máu, giảm chất lượng sống và tử vong.
     3. _Gánh nặng cho y tế và xã hội:_ Sự gia tăng nhanh chóng tỷ lệ lưu hành (dự kiến tăng gấp đôi từ 2010 đến 2060), nguy cơ mắc bệnh trọn đời đạt mức 1/3 đến 1/5 ở người lớn tuổi, và tiêu tốn từ 1% đến 2% tổng chi phí chi tiêu y tế quốc gia.
 

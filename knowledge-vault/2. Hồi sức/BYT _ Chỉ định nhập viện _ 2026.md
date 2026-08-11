@@ -1,3 +1,13 @@
+---
+title: "BYT _ Chỉ định nhập viện _ 2026"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
+
 BỘ Y TẾ CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM ------- Độc lập - Tự do - Hạnh phúc ---------------
 Số: 79 /QĐ-BYT Hà Nội, ngày 09 tháng 01 năm 2026
 QUYẾT ĐỊNH
@@ -36,7 +46,7 @@ Tham gia biên soạn và thẩm định
 GS.TS. Nguyễn Văn Kính Phó Chủ tịch Tổng hội Y Học Việt Nam, Chủ tịch Hội truyền nhiễm Việt Nam, nguyên Giám đốc Bệnh viện Bệnh nhiệt đới Trung ương
 GS.TS. Trần Hữu Dàng Chủ tịch Hội Nội tiết - Đái tháo đường Việt Nam
 TS. Nguyễn Trọng Khoa Phó Cục trưởng Cục Quản lý Khám, chữa bệnh
-GS.TS. Nguyễn Viết Nhung Nguyên Giám đốc Bệnh viện Phổi Trung ương
+GS.TS. Nguyễn Viết Nhung Nguyên Giám đốc Bệnh viện [[Phổi]] Trung ương
 GS.TS. Ngô Quý Châu Chủ tịch Hội Hô hấp Việt Nam
 GS.TS. Lê Văn Quảng Giám đốc Bệnh viện K
 GS.TS. Trần Minh Điển Giám đốc Bệnh viện Nhi trung ương
@@ -56,9 +66,9 @@ GS.TS. Phạm Mạnh Hùng Phó Chủ tịch Hội Tim mạch học Việt Nam
 PGS.TS. Nguyễn Văn Tuấn Viện trưởng Viện Sức khoẻ tâm thần - Bệnh viện Bạch Mai
 PGS.TS. Nguyễn Văn Chi Nguyên Phụ trách Trung tâm Cấp cứu A9 - Bệnh viện Bạch Mai
 PGS.TS. Nguyễn Anh Tuấn Giám đốc Trung tâm Cấp cứu A9 - Bệnh viện Bạch Mai
-TS. Nghiêm Trung Dũng Giám đốc Trung tâm Thận - Tiết niệu và Lọc máu - Bệnh viện Bạch Mai
+TS. Nghiêm Trung Dũng Giám đốc Trung tâm [[Thận]] - Tiết niệu và Lọc máu - Bệnh viện Bạch Mai
 PGS.TS. Đỗ Ngọc Sơn Giám đốc Trung tâm Hồi sức tích cực - Bệnh viện Bạch Mai
-PGS.TS. Nguyễn Công Long Giám đốc Trung tâm Tiêu hóa - Gan Mật - Bệnh viện Bạch Mai
+PGS.TS. Nguyễn Công Long Giám đốc Trung tâm Tiêu hóa - [[Gan]] Mật - Bệnh viện Bạch Mai
 TS. Nguyễn Trung Nguyên Giám đốc Trung tâm Chống độc - Bệnh viện Bạch Mai
 PGS.TS. Nguyễn Văn Hùng Giám đốc Trung tâm Cơ xương khớp - Bệnh viện Bạch Mai
 PGS.TS. Võ Hồng Khôi Viện trưởng Viện Thần kinh Bạch Mai - Bệnh viện Bạch Mai
@@ -80,7 +90,7 @@ ThS. Nguyễn Minh Anh Nguyên Trưởng phòng Kế hoạch tổng hợp - Bệ
 BSCKII. Cao Minh Hiệp Trưởng phòng Kế hoạch tổng hợp - Bệnh viện Nhi đồng 1
 ThS. Lê Thị Kim Nhung Trưởng phòng Quản lý chất lượng - Bệnh viện Hữu nghị Việt Đức
 BSCKII. Vũ Hiệp Phát Trưởng phòng Chỉ đạo tuyến - Bệnh viện Nhi Đồng 2, Thành phố Hồ Chí Minh
-TS. Nguyễn Hữu Dũng Phó Giám đốc Trung tâm Thận tiết niệu và Lọc máu - Bệnh viện Bạch Mai
+TS. Nguyễn Hữu Dũng Phó Giám đốc Trung tâm [[Thận]] tiết niệu và Lọc máu - Bệnh viện Bạch Mai
 ThS. Phạm Kiều Lộc Phó Trưởng khoa Hồi sức tích cực - Cấp cứu Nhi - Trung tâm Nhi - Bệnh viện Trung ương Huế
 ThS. Trương Lê Vân Ngọc Trưởng phòng Nghiệp vụ - Cục QLKCB
 DS. Đỗ Thị Ngát Chuyên viên phòng Nghiệp vụ - Cục QLKCB
@@ -117,15 +127,15 @@ d) Việc di chuyển về nhà hoặc trở lại các cơ sở khám bệnh, c
 3. XÁC ĐỊNH TÌNH TRẠNG CẤP CỨU Ở TRẺ EM
 1. Ngừng thở hoặc cơn ngừng thở
 2. Rối loạn nhịp tim hoặc suy tim
-3. Sốt cao liên tục ≥ 40 độ C hoặc hạ thân nhiệt ≤ 35,5 độ C
+3. [[[[Sốt]]|Sốt cao]] liên tục ≥ 40 độ C hoặc hạ thân nhiệt ≤ 35,5 độ C
 4. Rối loạn nhịp thở
 5. Có dấu hiệu của bít tắc đường thở hoặc dị vật đường thở
-6. Suy hô hấp các mức độ khác nhau
-7. Dấu hiệu của tiền sốc hoặc sốc
-8. Dấu hiệu của mất nước nặng hoặc rối loạn điện giải nặng
+6. [[Suy hô hấp]] các mức độ khác nhau
+7. Dấu hiệu của tiền [[Sốc]] hoặc [[Sốc]]
+8. Dấu hiệu của [[Mất nước]] nặng hoặc rối loạn điện giải nặng
 9. Suy giảm ý thức với các mức độ khác nhau
-10. Co giật do bất cứ nguyên nhân nào
-11. Yếu, liệt cấp tính tiến triển có nguy cơ suy hô hấp
+10. [[Co giật]] do bất cứ nguyên nhân nào
+11. Yếu, liệt cấp tính tiến triển có nguy cơ [[Suy hô hấp]]
 12. Thiếu máu nặng
 13. Trẻ bỏ ăn hoặc bỏ bú
 
@@ -139,8 +149,8 @@ Trauma Score - PTS), chi tiết trong Phụ lục số 01 kèm theo
 18. Đuối nước
 19. Ngộ độc cấp hoặc nghi ngộ độc cấp
 20. Sơ sinh non yếu, nhẹ cân phải nhập viện theo dõi sau sinh
-21. Vàng da sơ sinh trước 48h tuổi hoặc vàng da vùng 3 trở lên
-22. Xuất huyết hoặc mất máu cấp (xuất huyết tiêu hóa, đái máu…)
+21. [[Vàng da]] sơ sinh trước 48h tuổi hoặc [[Vàng da]] vùng 3 trở lên
+22. [[Xuất huyết]] hoặc mất máu cấp ([[Xuất huyết]] tiêu hóa, đái máu…)
 23. Cơn đau mức độ ≥ trung bình (> 4/10 theo thang điểm đau; Thang điểm đau chi tiết trong Phụ lục số 02 kèm
 theo )
 24. Phẫu thuật ngoại khoa cấp cứu
@@ -161,20 +171,20 @@ bàn chân hoặc vùng mặt hoặc vùng đầu hoặc vùng háng hoặc bẹ
 2. Mạch quá nhanh hoặc quá chậm hoặc không đều gây ảnh hưởng đến huyết động: tụt huyết áp, thay đổi ý
 thức, dấu hiệu của sốc, đau ngực, suy tim cấp
 3. Rối loạn thân nhiệt: Tăng thân nhiệt hoặc giảm thân nhiệt
-4. Cơn tăng huyết áp có/không dấu hiệu tổn thương cơ quan đích (huyết áp ≥ 180/120 mmHg) hoặc tụt huyết áp
+4. Cơn [[Tăng huyết áp]] có/không dấu hiệu tổn thương cơ quan đích (huyết áp ≥ 180/120 mmHg) hoặc tụt huyết áp
 (huyết áp < 90/60 mmHg) và các dấu hiệu của sốc
-5. Khó thở nguyên nhân tại đường thở, dị vật đường thở, hẹp đường thở, hội chứng xâm nhập
-6. Thở nhanh, thở chậm, thở rít, thở gấp, thở gắng sức, có cơn ngừng thở, nghẹt thở, rối loạn nhịp thở, tím tái
+5. [[Khó thở]] nguyên nhân tại đường thở, dị vật đường thở, hẹp đường thở, hội chứng xâm nhập
+6. [[Khó thở|Thở nhanh]], thở chậm, thở rít, thở gấp, thở gắng sức, có cơn ngừng thở, nghẹt thở, rối loạn nhịp thở, tím tái
 7. Suy hô hấp
 8. Người bệnh đang được hỗ trợ thông khí
 
 ---
 
-9. Co giật toàn thể đang xảy ra hoặc trong vòng 24 giờ
+9. [[Co giật]] toàn thể đang xảy ra hoặc trong vòng 24 giờ
 10. Ho ra máu số lượng vừa hoặc nặng, đang xảy ra hoặc trong vòng 24 giờ
 11. Ngất, xỉu hoặc rối loạn ý thức theo dõi do nguyên nhân thần kinh hoặc tim mạch, đang xảy ra hoặc trong vòng
 24 giờ
-12. Nôn nhiều hoặc nôn dai dẳng; tiêu chảy nặng, kéo dài ảnh hưởng đến chức năng sống
+12. Nôn nhiều hoặc nôn dai dẳng; [[Tiêu chảy]] nặng, kéo dài ảnh hưởng đến chức năng sống
 13. Nôn máu hoặc đại tiện ra máu, phân đen
 14. Chảy máu không cầm; chảy máu số lượng lớn; chảy máu khó cầm; chảy máu số lượng ít nhưng kéo dài;
 chảy máu có nguy cơ tắc nghẽn đường thở và chảy máu tiếp diễn
@@ -187,14 +197,14 @@ chức năng sống hoặc nguy cơ gây tàn phế, đuối nước, vết thư
 19. Các dấu hiệu cấp tính hoặc tiến triển: liệt hoặc rối loạn vận động, rối loạn ngôn ngữ, rối loạn cảm giác, rối
 loạn thị giác, chóng mặt, liệt mặt, đau đầu… xác định nguyên nhân do tổn thương thần kinh trung ương
 20. Xuất hiện dấu hiệu nghi ngờ hoặc phản vệ hoặc dị ứng nặng
-21. Phù khu trú hoặc Phù toàn thân nặng ảnh hưởng đến chức năng sống
+21. Phù khu trú hoặc [[Phù|Phù toàn thân]] nặng ảnh hưởng đến chức năng sống
 22. Rối loạn nước, điện giải, thăng bằng toan kiềm từ vừa đến nặng
 23. Hội chứng não - màng não
 24. Rối loạn ý thức, điểm GCS dưới 13, do nguyên nhân thực thể
 25. Thay đổi tri giác đột ngột hoặc rối loạn định hướng không gian, thời gian
 26. Rối loạn chức năng nuốt (nuốt nghẹn, nuốt khó liên tục hoặc đột ngột)
 27. Áp xe hoặc nhiễm trùng lan tỏa
-28. Đau bụng có phản ứng thành bụng hoặc cảm ứng phúc mạc; bụng cấp tính, dữ dội, chướng bụng ở người
+28. [[Đau bụng]] có phản ứng thành bụng hoặc cảm ứng phúc mạc; bụng cấp tính, dữ dội, chướng bụng ở người
 già, dấu hiệu rắn bò,…
 29. Nuốt, hít phải chất độc hoặc tiếp xúc với chất độc trực tiếp qua da, niêm mạc
 30. Bí đái, đái máu, thiểu niệu hoặc vô niệu, tiểu đau buốt do nguyên nhân nội hoặc ngoại khoa cần điều trị nội trú
@@ -221,7 +231,7 @@ quá liều các chất tác động tâm thần, Các tác dụng không mong m
 45. Đau tăng lên đột ngột
 46. Vết thương
 47. Nghi ngờ hoặc xác định các bệnh truyền nhiễm-nhiệt đới:
-- Viêm não, viêm màng não mủ
+- [[Viêm não]], [[[[Viêm màng não]]|viêm màng não mủ]]
 - Uốn ván
 - Bệnh truyền nhiễm gây dịch, có nguy cơ cao ảnh hưởng đến người bệnh và cộng đồng nếu không nhập viện:
 tả, bạch hầu, viêm đường hô hấp cấp tiến triển...
@@ -266,24 +276,24 @@ giảm; co giật; liệt vận động; rối loạn cảm giác; giãn đồng
 2. Hệ tuần
 1. Đau ngực kiểu động mạch vành cấp tính: đau thắt (bóp) nghẹt sau xương ức, có thể
 hoàn - lồng lan lên vai trái, lên cằm, lên cả hai vai, cơn đau thường xuất hiện sau một gắng sức nhẹ ngực hoặc xảy ra cả trong khi nghỉ, cơn đau thường kéo dài trên 20 phút
-2. Bằng chứng tổn thương cơ tim cấp, thể hiện:
+2. Bằng chứng tổn thương [[Tim|cơ tim]] cấp, thể hiện:
 - Thay đổi điện tâm đồ gợi ý hội chứng vành cấp (biến đổi ST - T)
 - Tăng chất chỉ điểm sinh học tim: Troponin T, Troponin I, CK-MB
 3. Tách thành động mạch chủ hoặc phình động mạch chủ đường kính lớn hơn 6cm hoặc
 các dấu hiệu nghi ngờ biến chứng của phình động mạch chủ
 4. Người bệnh huyết khối tĩnh mạch sâu chi dưới có Nguy cơ cao thuyên tắc động mạch
-phổi (Ước tính nguy cơ qua thang điểm Wells và Geneva)
+[[Phổi]] (Ước tính nguy cơ qua thang điểm Wells và Geneva)
 5. Người bệnh có bằng chứng của huyết khối động mạch phổi trực tiếp hoặc gián tiếp
-trên phim chụp cắt lớp vi tính hoặc siêu âm tim: Huyết khối ở thân chung hoặc nhánh động mạch phổi, thất phải giãn, dấu hiệu Mc Conell…
+trên phim [[[[CT Scan]]|chụp cắt lớp vi tính]] hoặc [[Siêu âm|siêu âm tim]]: Huyết khối ở thân chung hoặc nhánh động mạch phổi, thất phải giãn, dấu hiệu Mc Conell…
 6. Thuyên tắc tĩnh mạch chi với bằng chứng ứ trệ tuần hoàn và/hoặc thiếu máu chi nặng
 nề
 7. Dấu hiệu/triệu chứng thiếu máu chi cấp tính (Dấu hiệu 6P)
 8. Dấu hiệu và/hoặc triệu chứng thiếu máu/chảy máu ở người bệnh đang dùng thuốc
-chống huyết khối (chống đông hoặc kháng kết tập tiểu cầu)
+chống huyết khối (chống đông hoặc kháng kết tập [[Tiểu cầu]])
 9. Dấu hiệu lâm sàng đau ngực và/hoặc khó thở, kèm theo tổn thương tim trầm trọng
-qua siêu âm tim:
+qua [[Siêu âm|siêu âm tim]]:
 - Tràn dịch màng ngoài tim
-- Bệnh lý cơ tim nặng (Bệnh cơ tim phì đại, bệnh cơ tim giãn)
+- Bệnh lý [[Tim|cơ tim]] nặng (Bệnh cơ tim phì đại, bệnh cơ tim giãn)
 - Bệnh lý van tim nặng (hẹp chủ khít, hẹp hai lá khít…)
 
 ---
@@ -326,8 +336,8 @@ qua siêu âm tim:
 32.Huyết áp < 90/60 mmHg; hoặc huyết áp > 160/90 mmHg
 33.Tần số thở > 30 lần/phút; hoặc SpO2 < 96%
 34.Suy tim NYHA III trở lên
-35.Cơn đau thắt ngực mới xuất hiện lần đầu
-36.Cơn đau thắt ngực tái phát mức độ CCS III trở lên
+35.Cơn [[Đau ngực|đau thắt ngực]] mới xuất hiện lần đầu
+36.Cơn [[Đau ngực|đau thắt ngực]] tái phát mức độ CCS III trở lên
 37.Choáng hoặc ngất không rõ nguyên nhân
 38.Mất hoặc giảm mạch ngoại biên cấp tính
 39.Dấu hiệu tím tái hoặc lạnh hoặc phù chi bất thường
@@ -364,9 +374,9 @@ nhanh hoặc chậm, khoảng ngừng xoang > 2.0s).
 21.Phù phổi cấp
 4. Hệ tiêu hóa -
 1. Cổ trướng to cản trở hô hấp
-gan, mật, tụy
-2. Dị vật đường tiêu hóa
-3. Nhiễm khuẩn ổ bụng (nhiễm khuẩn huyết, nhiễm trùng đường mật, nhiễm trùng trong
+[[Gan]], mật, tụy
+2. Dị vật [[Đường tiêu hóa]]
+3. Nhiễm khuẩn ổ bụng ([[Nhiễm trùng huyết|nhiễm khuẩn huyết]], nhiễm trùng đường mật, nhiễm trùng trong
 ổ bụng, nhiễm khuẩn tiêu hoá, áp xe trong ổ bụng)
 4. Vàng da mới xuất hiện, tiến triển nhanh
 5. Suy gan cấp
@@ -378,7 +388,7 @@ hoá mỡ cấp) hoặc đợt tiến triển của bệnh gan mạn tính đã 
 10.Viêm tụy cấp
 11.Tổn thương gan cấp tính do thuốc
 12.Sốc mất máu
-13.Sốc nhiễm trùng
+13.[[Sốc nhiễm khuẩn|Sốc nhiễm trùng]]
 14.Xuất huyết tiêu hóa (nôn máu, đi ngoài phân đen, đi ngoài phân máu…) tất cả các mức độ từ nhẹ đến nặng
 15.Thủng thực quản, vỡ thực quản, dị vật thực quản, áp xe thực quản, hẹp thực quản
 16.Loét thủng dạ dày - tá tràng
@@ -398,23 +408,23 @@ hoá mỡ cấp) hoặc đợt tiến triển của bệnh gan mạn tính đã 
 
 ---
 
-30.Hôn mê gan
+30.[[Hôn mê]] gan
 31.Trĩ chảy máu, trĩ tắc mạch
 32.Hoại tử ruột (do xoắn, do tắc mạch, do nghẹt….)
 33.Thoát vị bẹn nghẹt, sa lồi thành bụng nghẹt, thoát vị thành bụng nghẹt
 34.Lồng ruột
-35.Đau bụng cấp
-36.Tiêu chảy cấp
+35.[[Đau bụng|Đau bụng cấp]]
+36.[[Tiêu chảy]] cấp
 37.Áp xe gan trên 05 cm hoặc có dấu hiệu dọa vỡ
 38.Áp xe gan nhỏ mà không đáp ứng điều trị
 39.Vàng da mới xuất hiện, tiến triển nhanh
-40.Hôn mê gan và các dấu hiệu hội chứng não-gan
+40.[[Hôn mê]] gan và các dấu hiệu hội chứng não-gan
 5. Hệ tiết niệu 1. Hội chứng urê máu cao có triệu chứng nặng (1 trong các biểu hiện):
 - Viêm màng ngoài tim do urê máu cao.
 - Bệnh não do urê máu cao (lơ mơ, hôn mê, co giật).
 - Xuất huyết tiêu hóa hoặc xuất huyết nội tạng liên quan đến hội chứng ure máu cao
 2. Quá tải thể tích gây dọa phù phổi cấp, phù phổi cấp.
-3. Tăng huyết áp cấp cứu: tăng huyết áp nặng có kèm theo tổn thương cơ quan đích
+3. [[Tăng huyết áp]] cấp cứu: tăng huyết áp nặng có kèm theo tổn thương cơ quan đích
 (não, tim, mắt, thận).
 4. Tăng kali máu nặng: K + ≥ 6.5 mmol/L hoặc có biến đổi trên điện tâm đồ (sóng T cao
 nhọn, PR kéo dài, QRS giãn rộng, mất sóng P, hình sin).
@@ -426,7 +436,7 @@ thận nặng: đợt cấp của viêm thận lupus, viêm cầu thận tiến 
 - Biến chứng tim mạch cấp tính: suy tim cấp, phù phổi cấp/dọa phù phổi cấp.
 - Biến chứng đường vào mạch máu:
 + Chảy máu không cầm được từ vị trí chọc kim hoặc từ đường vào mạch máu.
-+ Nhiễm trùng đường vào mạch máu, nhiễm trùng huyết.
++ Nhiễm trùng đường vào mạch máu, [[Nhiễm trùng huyết]].
 + Huyết khối cấp gây tắc nghẽn hoàn toàn đường vào mạch máu.
 + Các biến chứng nặng khác: Thiếu máu nặng có triệu chứng (đau ngực, khó thở), tụt huyết áp kéo dài không đáp ứng điều trị, nhiễm trùng cấp tính nặng.
 8. Người bệnh lọc màng bụng có biến chứng viêm phúc mạc
@@ -440,13 +450,13 @@ vật
 12. Đái máu
 13. Nghi ngờ sỏi hoặc vật cản đường tiết niệu, với một trong các triệu chứng sau:
 a. Cơn đau quặn thận
-b. Buồn nôn và/hoặc nôn
+b. [[[[Nôn ói]]|Buồn nôn]] và/hoặc nôn
 c. Chảy máu
 d. suy thận cấp hoặc mạn tính
 đ. Thiểu niệu hoặc vô niệu
 14. Tắc nghẽn cấp tính thông tiểu không có khả năng xử lý
 15. Nhiễm trùng đường tiết niệu với các triệu chứng toàn thân (nôn, ớn lạnh, sốt, đau
-mặc dù đã điều trị kháng sinh sau 3 ngày)
+mặc dù đã điều trị [[Kháng sinh]] sau 3 ngày)
 16. Thận bị tắc nghẽn hoặc không nhìn thấy được
 17. Rối loạn điện giải nặng (đủ tiêu chuẩn vào viện cấp cứu ở phần rối loạn điện giải) ở
 người bệnh mắc bệnh thận cấp và mạn tính
@@ -490,7 +500,7 @@ về triệu chứng lâm sàng, cận lâm sàng cần theo dõi sát.
 41. Tổn thương thận cấp giai đoạn 2, 3 theo KDIGO 2012.
 42. Nhiễm khuẩn đường tiết niệu.
 43. Hội chứng thận hư có một trong các biểu hiện:
-- Phù toàn thân mức độ nhiều, tràn dịch màng phổi lượng nhiều, giảm albumin máu
+- [[Phù|Phù toàn thân]] mức độ nhiều, tràn dịch màng phổi lượng nhiều, giảm albumin máu
 nặng.
 - Nhiễm trùng (da, hô hấp, tiêu hóa, thần kinh,… )
 - Tắc mạch (huyết khối tĩnh mạch sâu, thuyên tắc phổi,…)
@@ -500,7 +510,7 @@ nặng.
 2. Basedow có giảm bạch cầu trung tính < 1G/l hoặc có suy gan, viêm gan cấp tính.
 3. Cường giáp, suy giáp nặng
 4. Tăng Triglyceride máu rất nặng > 11 mmol/L
-5. Biến chứng cấp tính đái tháo đường như hạ đường huyết, nhiễm toan ceton, nhiễm
+5. Biến chứng cấp tính đái tháo đường như [[Hạ đường huyết]], nhiễm toan ceton, nhiễm
 toan lactic, tăng áp lực thẩm thấu
 6. Người bệnh đái tháo đường có tình trạng nhiễm trùng nặng
 7. Đái tháo đường thai kỳ có Glucose máu đói > 10,0 mmol/L hoặc Glucose máu bất kỳ ≥
@@ -511,7 +521,7 @@ toan lactic, tăng áp lực thẩm thấu
 máu và lympho
 2. Bệnh máu và cơ quan tạo máu (cả trường hợp nghi ngờ và trường hợp đã có chẩn
 đoán xác định) nếu có 1 trong các dấu hiệu sau:
-- Nhiễm trùng nặng có nguy cơ tiến triển thành sốc nhiễm khuẩn
+- Nhiễm trùng nặng có nguy cơ tiến triển thành [[Sốc nhiễm khuẩn]]
 - Nghi ngờ thâm nhiễm các cơ quan, chèn ép tủy sống hoặc thâm nhiễm thần kinh trung
 ương
 
@@ -521,10 +531,10 @@ máu và lympho
 - Triệu chứng nghi ngờ tắc mạch: phổi, não, tiêu hóa, dương vật…
 3. Giảm bạch cầu trung tính < 1G/L kèm theo dấu hiệu nhiễm trùng nặng, nguy cơ sốc
 nhiễm khuẩn
-4. Số lượng bạch cầu ≥ 100 G/L hoặc số lượng bạch cầu tăng hơn giá trị bình thường
+4. [[Bạch cầu|Số lượng bạch cầu]] ≥ 100 G/L hoặc [[Bạch cầu|số lượng bạch cầu]] tăng hơn giá trị bình thường
 kèm theo dấu hiệu tắc mạch hoặc có dấu hiệu ly giải tế bào
-5. Hb ≥ 165 G/L; HCT >0,55 l/l; Số lượng hồng cầu >6,0 T/L có nguy cơ tắc mạch
-6. Số lượng tiểu cầu ≥ 1.000 G/L hoặc có nguy cơ tắc mạch, chảy máu cao
+5. Hb ≥ 165 G/L; HCT >0,55 l/l; [[[[Hồng cầu]]|Số lượng hồng cầu]] >6,0 T/L có nguy cơ tắc mạch
+6. [[Tiểu cầu|Số lượng tiểu cầu]] ≥ 1.000 G/L hoặc có nguy cơ tắc mạch, chảy máu cao
 7. Tăng độ quánh máu toàn phần (>6,4), huyết tương (>1,8) hoặc có dấu hiệu thần kinh
 trung ương nếu không xét nghiệm được độ quánh hoặc chảy máu.
 8. Hệ cơ

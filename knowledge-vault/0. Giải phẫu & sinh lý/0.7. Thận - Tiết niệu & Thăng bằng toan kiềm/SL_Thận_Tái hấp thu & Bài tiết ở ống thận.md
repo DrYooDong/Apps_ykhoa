@@ -1,10 +1,15 @@
 ---
 title: "SL_Thận_Tái hấp thu & Bài tiết ở ống thận"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
-Chức năng tạo nước tiểu của thận là một quá trình phức tạp bao gồm ba khâu nối tiếp nhau: lọc tại cầu thận, tái hấp thu tại ống thận và bài tiết tại ống thận. 
+
+Chức năng tạo nước tiểu của [[Thận]] là một quá trình phức tạp bao gồm ba khâu nối tiếp nhau: lọc tại cầu [[Thận]], tái hấp thu tại ống thận và bài tiết tại ống thận. 
 
 Mặc dù mỗi ngày có khoảng 180 lít dịch được lọc qua cầu thận, nhưng chưa đến 1% lượng dịch này trở thành nước tiểu chính thức. Sự khác biệt khổng lồ này là nhờ vào hoạt động **tái hấp thu** (vận chuyển chất từ lòng ống thận trở lại máu mao mạch quanh ống) và **bài tiết** (vận chuyển chất từ máu vào lòng ống thận). Lượng chất bài xuất ra nước tiểu cuối cùng được tính theo công thức: **Bài xuất = Lọc - Tái hấp thu + Bài tiết**.
 

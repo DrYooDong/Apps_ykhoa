@@ -1,16 +1,21 @@
 ---
 title: "SL_Nội tiết_Tuyến tụy nội tiết"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/noi-tiet
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### I. Cấu Trúc Đảo Tụy (Islets of Langerhans)
-Tuyến tụy là một cơ quan có cả chức năng ngoại tiết (tiết men tiêu hóa) và nội tiết. Phần tụy nội tiết được cấu tạo bởi các đảo Langerhans, chiếm khoảng 1-2% thể tích tuyến tụy (với khoảng 1-2 triệu đảo ở người) nhưng lại nhận được lượng máu cung cấp dồi dào. Toàn bộ máu từ đảo tụy sẽ dẫn lưu vào tĩnh mạch cửa để đi trực tiếp về gan. 
+Tuyến tụy là một cơ quan có cả chức năng ngoại tiết (tiết men tiêu hóa) và nội tiết. Phần tụy nội tiết được cấu tạo bởi các đảo Langerhans, chiếm khoảng 1-2% thể tích tuyến tụy (với khoảng 1-2 triệu đảo ở người) nhưng lại nhận được lượng máu cung cấp dồi dào. Toàn bộ máu từ đảo tụy sẽ dẫn lưu vào tĩnh mạch cửa để đi trực tiếp về [[Gan]]. 
 
 Đảo tụy chứa ít nhất 4 loại tế bào nội tiết chính, được phân biệt dựa trên hình thái học và đặc tính bắt màu:
-*   **Tế bào B (Beta):** Là tế bào đông đảo nhất, chiếm 60 - 75% tổng số tế bào đảo tụy, thường nằm tập trung ở vùng trung tâm của đảo. Chức năng chính là tổng hợp và bài tiết **Insulin**.
+*   **Tế bào B (Beta):** Là tế bào đông đảo nhất, chiếm 60 - 75% tổng số tế bào đảo tụy, thường nằm tập trung ở vùng trung tâm của đảo. Chức năng chính là tổng hợp và bài tiết **[[Insulin]]**.
 *   **Tế bào A (Alpha):** Chiếm khoảng 20% tổng số tế bào, thường phân bố bao quanh các tế bào B ở vùng ngoại vi. Tế bào A bài tiết **Glucagon**.
 *   **Tế bào D (Delta):** Bài tiết **Somatostatin**. Tế bào này cũng thường nằm ở vùng ngoại vi.
 *   **Tế bào F (hoặc tế bào PP):** Bài tiết **Pancreatic Polypeptide (PP)**. Tế bào này tập trung nhiều hơn ở các đảo tụy thuộc phần sau của đầu tụy.
@@ -18,7 +23,7 @@ Tuyến tụy là một cơ quan có cả chức năng ngoại tiết (tiết me
 > **📌 TRÍCH XUẤT SƠ ĐỒ / HÌNH ẢNH MINH HỌA:**
 > *   **Tên Hình/Sơ đồ:** Fig. 39.5 The islets of Langerhans (endocrine pancreas) from rat.
 > *   **Thuộc tài liệu:** [Book] Berne and Levy Physiology 8e by Bruce M. Koeppen, Bruce A. Stanton.pdf
-> *   **Nội dung mô tả:** Ảnh mô học minh họa nang tụy ngoại tiết (exocrine acini) và đảo tụy nội tiết (endocrine islet) với mạng lưới mao mạch phong phú (A). Hình nhuộm hóa mô miễn dịch cho thấy sự định vị của tế bào beta tiết insulin nằm chủ yếu ở trung tâm (B) và tế bào alpha tiết glucagon nằm rải rác ở ngoại vi đảo tụy (C).
+> *   **Nội dung mô tả:** Ảnh mô học minh họa nang tụy ngoại tiết (exocrine acini) và đảo tụy nội tiết (endocrine islet) với mạng lưới mao mạch phong phú (A). Hình nhuộm hóa mô miễn dịch cho thấy sự định vị của tế bào beta tiết [[Insulin]] nằm chủ yếu ở trung tâm (B) và tế bào alpha tiết glucagon nằm rải rác ở ngoại vi đảo tụy (C).
 
 #### II. Sinh Lý Hormon Insulin
 **1. Sinh tổng hợp và Chuyển hóa**
@@ -26,7 +31,7 @@ Insulin là một hormon protein đồng hóa (anabolic hormone), cấu tạo g�
 *   Quá trình tổng hợp bắt đầu từ mạng lưới nội chất dưới dạng một phân tử lớn là *preproinsulin*. Sau khi bị cắt bỏ đoạn signal peptide, nó trở thành *proinsulin*. 
 *   Tại bộ máy Golgi, proinsulin được đóng gói vào các hạt tiết. Các enzyme prohormone convertase sẽ cắt proinsulin thành **Insulin trưởng thành** và **C-peptide** (connecting peptide).
 *   Tế bào B giải phóng Insulin và C-peptide vào máu với tỷ lệ phân tử 1:1. Việc định lượng C-peptide trong máu có giá trị lâm sàng cao để đánh giá chính xác chức năng tiết insulin nội sinh của tế bào B, do nó không bị nhầm lẫn với insulin ngoại sinh (thuốc tiêm) và có thời gian bán hủy dài hơn.
-*   Insulin có thời gian bán hủy trong máu rất ngắn, chỉ khoảng 5 phút. Khi đi qua gan qua đường tĩnh mạch cửa, khoảng 50% lượng insulin bị phân hủy ngay bởi enzyme insulinase (Insulin-degrading enzyme - IDE).
+*   Insulin có thời gian bán hủy trong máu rất ngắn, chỉ khoảng 5 phút. Khi đi qua [[Gan]] qua đường tĩnh mạch cửa, khoảng 50% lượng insulin bị phân hủy ngay bởi enzyme insulinase (Insulin-degrading enzyme - IDE).
 
 > **📌 TRÍCH XUẤT SƠ ĐỒ / HÌNH ẢNH MINH HỌA:**
 > *   **Tên Hình/Sơ đồ:** Fig. 39.6 Proinsulin is processed by prohormone convertases into a mature insulin molecule...
@@ -40,8 +45,8 @@ Thụ thể của insulin là một protein xuyên màng thuộc nhóm enzyme **
 
 **3. Tác dụng sinh lý của Insulin**
 Insulin là "hormon của sự dư thừa" (hormone of abundance), kích thích mạnh mẽ sự tích trữ năng lượng ở 3 cơ quan đích: gan, cơ xương và mô mỡ.
-*   **Chuyển hóa Glucid:** Làm giảm đường huyết bằng cách tăng thu nhận glucose ở cơ và mỡ (qua GLUT 4). Tại gan, insulin kích thích enzyme glucokinase để "bẫy" glucose dưới dạng Glucose-6-Phosphate, tăng tổng hợp Glycogen và ức chế quá trình tân tạo glucose (gluconeogenesis).
-*   **Chuyển hóa Lipid:** Kích thích tổng hợp triglyceride tại mô mỡ. Đặc biệt, insulin **ức chế mạnh mẽ enzyme HSL (Hormone-sensitive lipase)** nằm trong nội bào tế bào mỡ, qua đó ngăn chặn sự ly giải mỡ thành acid béo tự do. Trong Đái tháo đường (thiếu insulin), enzyme HSL hoạt động tự do làm giải phóng ồ ạt acid béo về gan, gan chuyển hóa chúng thành các thể ketone gây hôn mê toan ceton.
+*   **Chuyển hóa Glucid:** Làm [[[[Hạ đường huyết]]|giảm đường huyết]] bằng cách tăng thu nhận glucose ở cơ và mỡ (qua GLUT 4). Tại gan, insulin kích thích enzyme glucokinase để "bẫy" glucose dưới dạng Glucose-6-Phosphate, tăng tổng hợp Glycogen và ức chế quá trình tân tạo glucose (gluconeogenesis).
+*   **Chuyển hóa Lipid:** Kích thích tổng hợp triglyceride tại mô mỡ. Đặc biệt, insulin **ức chế mạnh mẽ enzyme HSL (Hormone-sensitive lipase)** nằm trong nội bào tế bào mỡ, qua đó ngăn chặn sự ly giải mỡ thành acid béo tự do. Trong Đái tháo đường (thiếu insulin), enzyme HSL hoạt động tự do làm giải phóng ồ ạt acid béo về gan, gan chuyển hóa chúng thành các thể ketone gây [[Hôn mê]] toan ceton.
 *   **Chuyển hóa Protid & Điện giải:** Tăng vận chuyển acid amin vào tế bào để tổng hợp protein, ức chế thoái hóa protein. Đồng thời, insulin kích thích bơm $Na^+/K^+$-ATPase làm tăng đưa ion $K^+$ vào trong nội bào (gây hạ Kali máu).
 
 **4. Điều hòa bài tiết Insulin**

@@ -1,6 +1,14 @@
 ---
+title: "Parvoviridae"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-[[Adeno-associated virus (AAV)]]
-[[Parvovirus B19]]
+
+## 📌 Danh Mục Nội Dung
+
+1. [[Adeno-associated virus (AAV)]]
+2. [[Parvovirus B19]]

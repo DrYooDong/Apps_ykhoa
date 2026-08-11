@@ -1,16 +1,20 @@
 ---
 title: "GIẢ ĐỊNH & XỬ LÝ VI PHẠM GIẢ ĐỊNH CỦA HỒI QUY LOGISTIC ĐA THỨC"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐂𝐚́𝐜 𝐠𝐢𝐚̉ đ𝐢̣𝐧𝐡 𝐯𝐚̀ 𝐱𝐮̛̉ 𝐥𝐲́ 𝐯𝐢 𝐩𝐡𝐚̣𝐦 𝐠𝐢𝐚̉ đ𝐢̣𝐧𝐡 𝐜𝐮̉𝐚 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜: 𝐏𝐡𝐚̂̀𝐧 𝟑- 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 đ𝐨̂́𝐢 𝐯𝐨̛́𝐢 𝐛𝐢𝐞̂́𝐧 𝐤𝐞̂́𝐭 𝐜𝐮̣𝐜 𝐝𝐚𝐧𝐡 𝐧𝐠𝐡𝐢̃𝐚
 
 TS. Đào Hồng Nam
 
 𝟑.𝟓. Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐦𝐮̛́𝐜 đ𝐨̣̂ 𝐩𝐡𝐮̀ 𝐡𝐨̛̣𝐩 𝐜𝐮̉𝐚 𝐦𝐨̂ 𝐡𝐢̀𝐧𝐡
 
-Sau khi các tham số của mô hình được ước lượng và ý nghĩa thống kê của mô hình được kiểm định, quá trình phân tích vẫn chưa kết thúc vì một mô hình có ý nghĩa thống kê chưa chắc đã phản ánh đầy đủ cấu trúc của dữ liệu hoặc có khả năng dự báo tốt trong thực tế. Một mô hình có thể cho thấy mối liên quan rõ ràng giữa các biến độc lập và biến kết cục nhưng vẫn tồn tại tình trạng phù hợp kém với dữ liệu quan sát hoặc hoạt động không ổn định khi áp dụng cho những đối tượng khác ngoài mẫu nghiên cứu. Chính vì vậy, việc đánh giá mức độ phù hợp của mô hình là một bước không thể thiếu trước khi diễn giải các hệ số hồi quy, tỷ số nguy cơ tương đối và các xác suất dự báo được tạo ra từ mô hình (Hosmer et al., 2013).
+Sau khi các tham số của mô hình được ước lượng và ý nghĩa thống kê của mô hình được kiểm định, quá trình phân tích vẫn chưa kết thúc vì một mô hình có ý nghĩa thống kê chưa chắc đã phản ánh đầy đủ cấu trúc của dữ liệu hoặc có khả năng dự báo tốt trong thực tế. Một mô hình có thể cho thấy mối liên quan rõ ràng giữa các biến độc lập và biến kết cục nhưng vẫn tồn tại tình trạng [[Phù]] hợp kém với dữ liệu quan sát hoặc hoạt động không ổn định khi áp dụng cho những đối tượng khác ngoài mẫu nghiên cứu. Chính vì vậy, việc đánh giá mức độ [[Phù]] hợp của mô hình là một bước không thể thiếu trước khi diễn giải các hệ số hồi quy, tỷ số nguy cơ tương đối và các xác suất dự báo được tạo ra từ mô hình (Hosmer et al., 2013).
 
 Đối với hồi quy logistic đa thức, việc đánh giá mô hình thường phức tạp hơn so với hồi quy tuyến tính vì không tồn tại một chỉ số duy nhất có vai trò tương đương hệ số xác định R² để phản ánh toàn diện chất lượng mô hình. Mỗi chỉ số đánh giá chỉ cung cấp thông tin về một khía cạnh nhất định, chẳng hạn như mức độ phù hợp với dữ liệu, sự cân bằng giữa độ phù hợp và độ phức tạp của mô hình hoặc khả năng áp dụng cho các quần thể khác. Vì lý do đó, việc đánh giá cần dựa trên nhiều tiêu chí bổ sung cho nhau thay vì chỉ tập trung vào một chỉ số riêng lẻ. Những tiêu chí thường được sử dụng bao gồm giá trị −2 Log Likelihood, các hệ số pseudo-R², Akaike Information Criterion (AIC) và Bayesian Information Criterion (BIC). Mối quan hệ giữa các chỉ số này được tóm tắt trong Sơ đồ 2, trong khi đặc điểm và cách diễn giải của từng chỉ số được trình bày trong Bảng 4.
 
@@ -54,9 +58,9 @@ Do mỗi hệ số pseudo-R² được xây dựng trên một nguyên lý khác
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟔. 𝐃𝐢𝐞̂̃𝐧 𝐠𝐢𝐚̉𝐢 𝐜𝐚́𝐜 𝐡𝐞̣̂ 𝐬𝐨̂́ 𝐩𝐬𝐞𝐮𝐝𝐨-𝐑²
 
-Một mô hình hồi quy logistic đa thức được xây dựng nhằm đánh giá các yếu tố liên quan đến lựa chọn phương pháp điều trị suy tim. Kết quả phân tích cho thấy McFadden R² đạt 0,27, Cox–Snell R² đạt 0,34 và Nagelkerke R² đạt 0,41 theo Bảng 5. Các giá trị này đều cho thấy mô hình cải thiện đáng kể khả năng mô tả dữ liệu so với mô hình chỉ bao gồm hệ số chặn, đồng thời phản ánh rằng các biến độc lập được đưa vào phân tích đã đóng góp đáng kể vào mức độ phù hợp chung của mô hình.
+Một mô hình hồi quy logistic đa thức được xây dựng nhằm đánh giá các yếu tố liên quan đến lựa chọn phương pháp điều trị suy [[Tim]]. Kết quả phân tích cho thấy McFadden R² đạt 0,27, Cox–Snell R² đạt 0,34 và Nagelkerke R² đạt 0,41 theo Bảng 5. Các giá trị này đều cho thấy mô hình cải thiện đáng kể khả năng mô tả dữ liệu so với mô hình chỉ bao gồm hệ số chặn, đồng thời phản ánh rằng các biến độc lập được đưa vào phân tích đã đóng góp đáng kể vào mức độ phù hợp chung của mô hình.
 
-Việc diễn giải các hệ số pseudo-R² cần được thực hiện thận trọng vì chúng không mang ý nghĩa tương đương với hệ số xác định R² trong hồi quy tuyến tính. Do đó, giá trị Nagelkerke R² bằng 0,41 không có nghĩa là mô hình giải thích được 41% biến thiên của biến kết cục. Cách hiểu phù hợp hơn là mô hình đạt mức độ cải thiện tương đối tốt so với mô hình rỗng theo tiêu chí của Nagelkerke, cho thấy mô hình có khả năng mô tả dữ liệu ở mức chấp nhận được và đủ cơ sở để tiếp tục được đánh giá thông qua các chỉ số khác như −2 Log Likelihood, AIC, BIC hoặc khả năng dự báo. Việc kết hợp nhiều tiêu chí đánh giá sẽ giúp đưa ra nhận định toàn diện hơn về chất lượng của mô hình thay vì dựa vào một chỉ số riêng lẻ.
+Việc diễn giải các hệ số pseudo-R² cần được thực hiện [[Thận]] trọng vì chúng không mang ý nghĩa tương đương với hệ số xác định R² trong hồi quy tuyến tính. Do đó, giá trị Nagelkerke R² bằng 0,41 không có nghĩa là mô hình giải thích được 41% biến thiên của biến kết cục. Cách hiểu phù hợp hơn là mô hình đạt mức độ cải thiện tương đối tốt so với mô hình rỗng theo tiêu chí của Nagelkerke, cho thấy mô hình có khả năng mô tả dữ liệu ở mức chấp nhận được và đủ cơ sở để tiếp tục được đánh giá thông qua các chỉ số khác như −2 Log Likelihood, AIC, BIC hoặc khả năng dự báo. Việc kết hợp nhiều tiêu chí đánh giá sẽ giúp đưa ra nhận định toàn diện hơn về chất lượng của mô hình thay vì dựa vào một chỉ số riêng lẻ.
 
 𝟑.𝟓.𝟑. 𝐓𝐢𝐞̂𝐮 𝐜𝐡𝐢́ 𝐭𝐡𝐨̂𝐧𝐠 𝐭𝐢𝐧 𝐀𝐤𝐚𝐢𝐤𝐞 𝐯𝐚̀ 𝐁𝐚𝐲𝐞𝐬𝐢𝐚𝐧
 
@@ -102,7 +106,7 @@ Về bản chất, giả định IIA phát sinh từ giả thiết rằng các s
 
 Giả định IIA thường phù hợp khi các nhóm kết cục đại diện cho những lựa chọn thực sự khác biệt. Ngược lại, nếu các nhóm có đặc điểm gần giống nhau hoặc có khả năng thay thế lẫn nhau, giả định này có thể bị vi phạm.
 
-Ví dụ, trong nghiên cứu lựa chọn phương pháp điều trị tăng huyết áp, hai nhóm thuốc ức chế men chuyển và thuốc chẹn thụ thể angiotensin II có cơ chế tác dụng tương đối giống nhau. Nếu một trong hai nhóm bị loại khỏi mô hình, xác suất lựa chọn nhóm còn lại có thể thay đổi đáng kể. Khi đó, giả định IIA có thể không còn phù hợp.
+Ví dụ, trong nghiên cứu lựa chọn phương pháp điều trị [[Tăng huyết áp]], hai nhóm thuốc ức chế men chuyển và thuốc chẹn thụ thể angiotensin II có cơ chế tác dụng tương đối giống nhau. Nếu một trong hai nhóm bị loại khỏi mô hình, xác suất lựa chọn nhóm còn lại có thể thay đổi đáng kể. Khi đó, giả định IIA có thể không còn phù hợp.
 
 𝟑.𝟔.𝟑. 𝐊𝐢𝐞̂̉𝐦 đ𝐢̣𝐧𝐡 𝐠𝐢𝐚̉ đ𝐢̣𝐧𝐡 𝐈𝐈𝐀
 

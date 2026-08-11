@@ -1,9 +1,14 @@
 ---
 title: "SL_Sinh sản" sản"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/noi-tiet
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. PHÂN HÓA VÀ PHÁT TRIỂN GIỚI TÍNH (SEX DIFFERENTIATION & DEVELOPMENT)
 
 Giới tính của một cá thể được xác định về mặt di truyền bởi hai nhiễm sắc thể giới tính: XX ở nữ và XY ở nam. Sự phát triển giới tính phụ thuộc vào sự hiện diện của nhiễm sắc thể Y, mang gen SRY (sex-determining region of the Y chromosome). Gen SRY mã hóa một protein hoạt động như yếu tố phiên mã, khởi động chuỗi gen cần thiết cho sự biệt hóa tinh hoàn. 
@@ -64,7 +69,7 @@ Khi bé gái sinh ra, buồng trứng có khoảng 1 đến 2 triệu nang noãn
 #### 3.2. Chu Kỳ Tử Cung (Uterine/Menstrual Cycle)
 1.  **Pha tăng sinh (Proliferative phase):** Đồng thời với pha nang noãn. Estrogen kích thích niêm mạc tử cung phát triển, làm dày lớp đệm và tuyến tử cung,.
 2.  **Pha chế tiết (Secretory phase):** Đồng thời với pha hoàng thể. Progesterone từ hoàng thể làm các tuyến tử cung ngoằn ngoèo, tích tụ nhiều chất tiết giàu glycogen và lipid, mạch máu phát triển mạnh, chuẩn bị môi trường tối ưu cho trứng thụ tinh làm tổ,.
-3.  **Hành kinh (Menstruation):** Nếu không thụ thai, hoàng thể thoái hóa làm sụt giảm đột ngột Estrogen và Progesterone. Sự sụt giảm nội tiết làm co thắt các động mạch xoắn của tử cung, gây thiếu máu cục bộ, hoại tử và bong tróc lớp niêm mạc tử cung chức năng, gây chảy máu kinh nguyệt,.
+3.  **Hành kinh (Menstruation):** Nếu không thụ thai, hoàng thể thoái hóa làm sụt giảm đột ngột Estrogen và Progesterone. Sự sụt giảm nội tiết làm co thắt các động mạch xoắn của tử cung, gây thiếu máu cục bộ, hoại tử và bong tróc lớp niêm mạc tử cung chức năng, gây [[Xuất huyết|chảy máu]] kinh nguyệt,.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** FIGURE 22-12: Relationship between ovarian and uterine changes during the menstrual cycle.
@@ -88,8 +93,8 @@ Khi bé gái sinh ra, buồng trứng có khoảng 1 đến 2 triệu nang noãn
 Nhau thai (Placenta) phát triển và hoạt động như một tuyến nội tiết khổng lồ, bài tiết các hormone thiết yếu:
 *   **Human Chorionic Gonadotropin (hCG):** Có cấu trúc tương tự LH, do tế bào lá nuôi hợp bào (syncytiotrophoblast) tiết ra ngay sau làm tổ. hCG ngăn chặn sự thoái hóa của hoàng thể, duy trì bài tiết Estrogen và Progesterone trong những tuần đầu thai kỳ cho đến khi nhau thai tự đảm nhận vai trò này,,.
 *   **Progesterone:** Làm giảm co thắt cơ trơn tử cung (ngăn ngừa sảy thai tự nhiên), duy trì màng rụng và giúp Estrogen phát triển tuyến vú,,.
-*   **Estrogens:** Nhau thai không thể tự tổng hợp estrogen từ đầu mà phải lấy tiền chất androgen (DHEAS) từ tuyến thượng thận của mẹ và thai nhi (fetoplacental unit) để chuyển hóa thành estriol, estradiol,. Estrogen làm tăng lưu lượng máu tử cung, phát triển hệ thống ống tuyến vú và kích thích tổng hợp receptor oxytocin, prostaglandin chuẩn bị cho chuyển dạ,.
-*   **Human Chorionic Somatomammotropin (hCS / hPL):** Hormone có tác dụng giống prolactin và growth hormone. Làm giảm sự nhạy cảm với insulin ở mẹ, tăng huy động acid béo, qua đó ưu tiên dành Glucose cho sự phát triển của thai nhi (hiệu ứng sinh tiểu đường của thai kỳ),.
+*   **Estrogens:** Nhau thai không thể tự tổng hợp estrogen từ đầu mà phải lấy tiền chất androgen (DHEAS) từ tuyến thượng [[Thận]] của mẹ và thai nhi (fetoplacental unit) để chuyển hóa thành estriol, estradiol,. Estrogen làm tăng lưu lượng máu tử cung, phát triển hệ thống ống tuyến vú và kích thích tổng hợp receptor oxytocin, prostaglandin chuẩn bị cho chuyển dạ,.
+*   **Human Chorionic Somatomammotropin (hCS / hPL):** Hormone có tác dụng giống prolactin và growth hormone. Làm giảm sự nhạy cảm với [[Insulin]] ở mẹ, tăng huy động acid béo, qua đó ưu tiên dành Glucose cho sự phát triển của thai nhi (hiệu ứng sinh tiểu đường của thai kỳ),.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Figure 83-7: Rates of secretion of estrogens and progesterone and concentration of human chorionic gonadotropin at different stages of pregnancy.

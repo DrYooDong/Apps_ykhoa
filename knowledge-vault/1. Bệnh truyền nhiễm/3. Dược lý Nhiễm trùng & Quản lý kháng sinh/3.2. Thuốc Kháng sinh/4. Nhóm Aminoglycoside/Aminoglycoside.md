@@ -1,6 +1,11 @@
 ---
+title: "Aminoglycoside"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 ### 1. Tổng quan & Phân loại (Classification)
@@ -14,7 +19,7 @@ tags:
 
 ### 2. Cơ chế tác dụng & Đề kháng (MOA & Resistance)
 
-- **Tính chất:** Là kháng sinh diệt khuẩn nhanh, phụ thuộc nồng độ và có tác dụng hậu kháng sinh (PAE) kéo dài.
+- **Tính chất:** Là [[Kháng sinh]] diệt khuẩn nhanh, phụ thuộc nồng độ và có tác dụng hậu [[Kháng sinh]] (PAE) kéo dài.
 - **Cơ chế tác dụng:**
     - Các phân tử aminoglycoside mang điện tích dương (polycationic) gắn vào các thành phần mang điện tích âm trên màng tế bào vi khuẩn (như lipopolysaccharide - LPS ở Gram âm), thay thế các ion $Mg^{2+}$ và $Ca^{2+}$, làm tăng tính thấm màng ngoài.
     - Thuốc xâm nhập vào bào tương qua các pha phụ thuộc năng lượng (EDP-I và EDP-II).
@@ -38,16 +43,16 @@ tags:
 ### 4. Dược động học & Dược lực học lâm sàng (PK/PD)
 
 - **Chỉ số PK/PD quyết định:** Hiệu quả diệt khuẩn tối ưu đạt được nhờ tỷ lệ diện tích dưới đường cong so với nồng độ ức chế tối thiểu (AUC/MIC).
-- **Hấp thu (A):** Rất kém qua đường tiêu hóa do cấu trúc phân cực, chỉ dùng đường uống (Neomycin/Paromomycin) với mục đích tác dụng tại chỗ ở ruột. Phải dùng đường tiêm tĩnh mạch, tiêm bắp, hoặc dạng khí dung (inhaled).
-- **Phân bố (D):** Thuốc ưa nước, phân bố chủ yếu ở dịch ngoại bào. Thể tích phân bố (Vd) nhỏ nhưng tăng đáng kể ở bệnh nhân phù nề, cổ trướng, bỏng, sốc nhiễm khuẩn hoặc xơ nang phổi. Khả năng thấm vào mô nội bào kém. Nồng độ thâm nhập vào dịch não tủy (CSF) và biểu mô phổi cực kỳ thấp. Tích lũy nồng độ rất cao ở tế bào ống lượn gần của thận và nội dịch tai.
-- **Chuyển hóa & Thải trừ (M/E):** Không bị chuyển hóa, đào thải nguyên vẹn >90% qua lọc cầu thận. Thời gian bán thải (T1/2) ở người chức năng thận bình thường khoảng 2 giờ. Thuốc bị loại bỏ đáng kể qua màng lọc máu nhân tạo hoặc thẩm phân phúc mạc.
+- **Hấp thu (A):** Rất kém qua [[Đường tiêu hóa]] do cấu trúc phân cực, chỉ dùng đường uống (Neomycin/Paromomycin) với mục đích tác dụng tại chỗ ở ruột. Phải dùng đường tiêm tĩnh mạch, tiêm bắp, hoặc dạng khí dung (inhaled).
+- **Phân bố (D):** Thuốc ưa nước, phân bố chủ yếu ở dịch ngoại bào. Thể tích phân bố (Vd) nhỏ nhưng tăng đáng kể ở bệnh nhân [[Phù]] nề, cổ trướng, bỏng, [[[[Sốc]] nhiễm khuẩn]] hoặc xơ nang [[Phổi]]. Khả năng thấm vào mô nội bào kém. Nồng độ thâm nhập vào [[Dịch nào tủy|dịch não tủy]] ([[Dịch nào tủy|CSF]]) và biểu mô [[Phổi]] cực kỳ thấp. Tích lũy nồng độ rất cao ở tế bào ống lượn gần của [[Thận]] và nội dịch tai.
+- **Chuyển hóa & Thải trừ (M/E):** Không bị chuyển hóa, đào thải nguyên vẹn >90% qua lọc cầu [[Thận]]. Thời gian bán thải (T1/2) ở người chức năng thận bình thường khoảng 2 giờ. Thuốc bị loại bỏ đáng kể qua màng lọc máu nhân tạo hoặc thẩm phân phúc mạc.
 
 ### 5. Chỉ định & Chiến lược điều trị (Stewardship)
 
 - **Chỉ định kinh nghiệm (Empiric) & Phối hợp:** Trong hầu hết các trường hợp nhiễm khuẩn toàn thân, aminoglycoside **không** được dùng đơn trị liệu do khả năng thấm mô kém và độc tính. Thuốc được phối hợp với $\beta$-lactam làm phác đồ kinh nghiệm cho:
-    - Sốc nhiễm khuẩn, nhiễm khuẩn huyết chưa rõ nguyên nhân.
+    - [[[[Sốc]] nhiễm khuẩn]], [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] chưa rõ nguyên nhân.
     - Viêm phổi bệnh viện/thở máy (HAP/VAP), đợt cấp xơ nang phổi.
-    - Sốt giảm bạch cầu hạt và các nhiễm trùng nghi ngờ do vi khuẩn Gram âm đa kháng (_P. aeruginosa_, CRE).
+    - [[Sốt]] giảm [[Bạch cầu]] hạt và các nhiễm trùng nghi ngờ do vi khuẩn Gram âm đa kháng (_P. aeruginosa_, CRE).
     - Hiệp đồng diệt khuẩn trong viêm nội tâm mạc do _Enterococcus_ hoặc _Streptococcus_.
 - **Chỉ định Đơn trị liệu (Trúng đích/Xuống thang):** Có thể sử dụng đơn độc một liều duy nhất cho Nhiễm khuẩn đường tiết niệu có biến chứng (Viêm thận bể thận) hoặc Viêm bàng quang cấp do các vi khuẩn đa kháng sinh (ESBL, AmpC, CRE, trực khuẩn mủ xanh), nhờ việc thuốc tích lũy nồng độ cực cao trong nước tiểu.
 - **Dạng khí dung (Aerosolized):** Tobramycin hoặc Amikacin dạng hít dùng trị nhiễm trùng đường thở mạn tính do _P. aeruginosa_ ở bệnh nhân xơ nang phổi, hoặc trị _M. avium_ kháng trị.
@@ -71,8 +76,8 @@ tags:
 
 Tóm tắt 5 câu hỏi cốt lõi khi kê đơn Aminoglycoside:
 
-1. **Đúng chỉ định & Đúng phổ?** (Bệnh nhân có nhiễm khuẩn huyết/sốc nhiễm khuẩn do Gram âm đa kháng (_P. aeruginosa_, CRE) hay cần phối hợp để diệt Enterococcus/Streptococcus? Aminoglycoside hầu như KHÔNG BAO GIỜ dùng đơn trị cho nhiễm khuẩn toàn thân).
+1. **Đúng chỉ định & Đúng phổ?** (Bệnh nhân có [[Nhiễm trùng huyết|nhiễm khuẩn huyết]]/sốc nhiễm khuẩn do Gram âm đa kháng (_P. aeruginosa_, CRE) hay cần phối hợp để diệt Enterococcus/Streptococcus? Aminoglycoside hầu như KHÔNG BAO GIỜ dùng đơn trị cho nhiễm khuẩn toàn thân).
 2. **Đã chọn chế độ liều chuẩn chưa?** (Đã áp dụng chế độ liều cao giãn cách (Once-daily dosing) để tối đa hóa hiệu lực và giảm độc tính trên thận chưa?).
-3. **Vị trí nhiễm trùng có thâm nhập tốt không?** (Tuyệt đối không dùng cho áp xe sâu, viêm màng não hoặc viêm phổi đơn độc vì thuốc thâm nhập nội bào và qua rào cản dịch não tủy cực kém).
+3. **Vị trí nhiễm trùng có thâm nhập tốt không?** (Tuyệt đối không dùng cho áp xe sâu, [[Viêm màng não]] hoặc viêm phổi đơn độc vì thuốc thâm nhập nội bào và qua rào cản dịch não tủy cực kém).
 4. **Có đánh giá nguy cơ độc tính không?** (Đã kiểm tra tương tác với các thuốc độc thận khác như Vancomycin, Amphotericin B, thuốc lợi tiểu chưa? Bệnh nhân có tiền sử nhược cơ hay khiếm thính không?).
 5. **Đã có kế hoạch giám sát tạng & TDM?** (Nếu liệu trình > 3 ngày, đã thiết lập đo Creatinin máu hàng ngày và đo nồng độ đáy/nồng độ đỉnh (trough/peak levels) để tránh nguy cơ suy thận chưa?).

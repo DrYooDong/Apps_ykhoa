@@ -1,9 +1,13 @@
 ---
 title: "THÀNH PHẦN QUYẾT ĐỊNH SỨC MẠNH CỦA HỒI QUY BAYES"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐁𝐚̣𝐧 đ𝐚̃ 𝐭𝐡𝐮̛̣𝐜 𝐬𝐮̛̣ 𝐡𝐢𝐞̂̉𝐮 𝐁𝐚𝐲𝐞𝐬 𝐥𝐚̀ 𝐠𝐢̀ 𝐜𝐡𝐮̛𝐚? 𝟑 𝐭𝐡𝐚̀𝐧𝐡 𝐩𝐡𝐚̂̀𝐧 𝐪𝐮𝐲𝐞̂́𝐭 đ𝐢̣𝐧𝐡 𝐬𝐮̛́𝐜 𝐦𝐚̣𝐧𝐡 𝐜𝐮̉𝐚 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐁𝐚𝐲𝐞𝐬 𝐥𝐚̀ 𝐠𝐢̀?
 
 TS. Đào Hồng Nam
@@ -22,7 +26,7 @@ Trong hồi quy tuyến tính cổ điển, các hệ số hồi quy được gi
 
 Về mặt bản chất, mô hình Bayes không thay đổi cấu trúc của mối quan hệ tuyến tính giữa biến phụ thuộc và các biến giải thích. Điều thay đổi là cách suy luận về các hệ số của mô hình. Theo quan điểm Bayes, trước khi quan sát dữ liệu, nhà nghiên cứu đã có một mức độ hiểu biết nhất định về giá trị có thể của các tham số. Sau khi có dữ liệu, những hiểu biết này được cập nhật để hình thành phân bố hậu nghiệm theo Công thức (1).
 
-Việc kết hợp thông tin tiên nghiệm với dữ liệu quan sát tạo ra một cơ chế cập nhật tri thức có hệ thống. Khi dữ liệu mới nhất quán với những gì được giả định trước đó, phân bố hậu nghiệm sẽ trở nên tập trung hơn, cho thấy mức độ không chắc chắn về tham số đã giảm xuống. Ngược lại, nếu dữ liệu cung cấp bằng chứng khác với thông tin tiên nghiệm, phân bố hậu nghiệm sẽ thay đổi theo hướng phản ánh tốt hơn các quan sát thực tế. Nhờ khả năng cập nhật liên tục khi có thêm bằng chứng mới, suy luận Bayes được xem là phù hợp với cách tri thức khoa học được tích lũy và điều chỉnh theo thời gian.
+Việc kết hợp thông tin tiên nghiệm với dữ liệu quan sát tạo ra một cơ chế cập nhật tri thức có hệ thống. Khi dữ liệu mới nhất quán với những gì được giả định trước đó, phân bố hậu nghiệm sẽ trở nên tập trung hơn, cho thấy mức độ không chắc chắn về tham số đã giảm xuống. Ngược lại, nếu dữ liệu cung cấp bằng chứng khác với thông tin tiên nghiệm, phân bố hậu nghiệm sẽ thay đổi theo hướng phản ánh tốt hơn các quan sát thực tế. Nhờ khả năng cập nhật liên tục khi có thêm bằng chứng mới, suy luận Bayes được xem là [[Phù]] hợp với cách tri thức khoa học được tích lũy và điều chỉnh theo thời gian.
 
 Một đặc điểm quan trọng khác là mọi suy luận trong hồi quy Bayes đều dựa trên phân bố hậu nghiệm thay vì các giá trị điểm. Vì vậy, khi đánh giá ảnh hưởng của một yếu tố nguy cơ, nhà nghiên cứu không chỉ quan tâm đến giá trị trung bình của hệ số hồi quy mà còn xem xét hình dạng của phân bố hậu nghiệm, độ phân tán của phân bố và xác suất để hệ số mang dấu dương hoặc dấu âm. Những thông tin này cung cấp cái nhìn toàn diện hơn về mức độ chắc chắn của kết quả nghiên cứu.
 
@@ -42,7 +46,7 @@ Mức độ thông tin chứa trong phân bố tiên nghiệm có thể khác nh
 
 Nếu phân bố tiên nghiệm phản ánh kiến thức trước nghiên cứu thì hàm hợp lý phản ánh thông tin chứa trong dữ liệu quan sát.
 
-Trong hồi quy tuyến tính Bayes, quá trình đánh giá mức độ phù hợp giữa các giá trị tham số và dữ liệu quan sát được thực hiện thông qua hàm hợp lý. Hàm này biểu thị xác suất thu được bộ dữ liệu hiện tại khi giả định tham số nhận một giá trị cụ thể và thường được xây dựng trên giả định rằng sai số của mô hình tuân theo phân bố chuẩn, tương tự như trong hồi quy tuyến tính cổ điển.
+Trong hồi quy tuyến tính Bayes, quá trình đánh giá mức độ [[Phù]] hợp giữa các giá trị tham số và dữ liệu quan sát được thực hiện thông qua hàm hợp lý. Hàm này biểu thị xác suất thu được bộ dữ liệu hiện tại khi giả định tham số nhận một giá trị cụ thể và thường được xây dựng trên giả định rằng sai số của mô hình tuân theo phân bố chuẩn, tương tự như trong hồi quy tuyến tính cổ điển.
 
 Những giá trị của tham số tạo ra các dự đoán gần với dữ liệu thực tế sẽ có hàm hợp lý lớn hơn, trong khi các giá trị dẫn đến sai lệch đáng kể giữa dự đoán và quan sát sẽ có hàm hợp lý nhỏ hơn. Nhờ đó, hàm hợp lý cho biết dữ liệu hiện có ủng hộ mức độ nào đối với các giá trị khác nhau của tham số và cung cấp thông tin quan trọng cho quá trình suy luận thống kê.
 
@@ -98,7 +102,7 @@ Việc lựa chọn phân bố tiên nghiệm là một trong những nội dung
 
 Một quan niệm chưa chính xác nhưng vẫn còn khá phổ biến là phân bố tiên nghiệm hoàn toàn mang tính chủ quan. Thực tế, trong nghiên cứu y học hiện đại, việc xây dựng phân bố tiên nghiệm thường dựa trên các bằng chứng khoa học đã được công bố thay vì chỉ dựa vào ý kiến cá nhân. Những nguồn thông tin này có thể bao gồm các phân tích gộp (meta-analysis), các tổng quan hệ thống (systematic reviews), các thử nghiệm lâm sàng ngẫu nhiên có chất lượng cao, các nghiên cứu đoàn hệ quy mô lớn hoặc các nghiên cứu thí điểm được thực hiện trên cùng quần thể nghiên cứu.
 
-Ví dụ, khi đánh giá ảnh hưởng của chỉ số khối cơ thể đến huyết áp tâm thu ở người trưởng thành Việt Nam, nếu nhiều nghiên cứu trước đây đã ghi nhận mối liên quan thuận với kích thước hiệu quả tương đối ổn định, nhà nghiên cứu có thể sử dụng các kết quả này để xây dựng phân bố tiên nghiệm cho hệ số hồi quy của BMI. Trong những trường hợp chưa có bằng chứng tương tự hoặc nghiên cứu được thực hiện trên các nhóm bệnh nhân có đặc điểm rất đặc thù, chẳng hạn người ghép gan hoặc người mắc bệnh hiếm, việc sử dụng phân bố tiên nghiệm thông tin yếu thường phù hợp hơn nhằm hạn chế ảnh hưởng quá lớn của các giả định ban đầu lên kết quả phân tích.
+Ví dụ, khi đánh giá ảnh hưởng của chỉ số khối cơ thể đến huyết áp tâm thu ở người trưởng thành Việt Nam, nếu nhiều nghiên cứu trước đây đã ghi nhận mối liên quan thuận với kích thước hiệu quả tương đối ổn định, nhà nghiên cứu có thể sử dụng các kết quả này để xây dựng phân bố tiên nghiệm cho hệ số hồi quy của BMI. Trong những trường hợp chưa có bằng chứng tương tự hoặc nghiên cứu được thực hiện trên các nhóm bệnh nhân có đặc điểm rất đặc thù, chẳng hạn người ghép [[Gan]] hoặc người mắc bệnh hiếm, việc sử dụng phân bố tiên nghiệm thông tin yếu thường phù hợp hơn nhằm hạn chế ảnh hưởng quá lớn của các giả định ban đầu lên kết quả phân tích.
 
 Mức độ mạnh hay yếu của phân bố tiên nghiệm cũng là một vấn đề cần được cân nhắc bên cạnh nguồn gốc của thông tin được sử dụng để xây dựng tiên nghiệm. Một phân bố tiên nghiệm quá hẹp sẽ làm cho phân bố hậu nghiệm chịu ảnh hưởng mạnh từ thông tin trước nghiên cứu, đặc biệt trong các nghiên cứu có cỡ mẫu nhỏ, khiến dữ liệu mới khó điều chỉnh các giả định ban đầu. Ở chiều ngược lại, khi phân bố tiên nghiệm được lựa chọn quá rộng, lượng thông tin mà tiên nghiệm đóng góp cho quá trình suy luận sẽ giảm đáng kể và mô hình có xu hướng hoạt động gần giống với hồi quy tuyến tính cổ điển.
 
@@ -130,7 +134,7 @@ Nhận thức rằng hồi quy Bayes chỉ phù hợp với các nghiên cứu c
 
 Ví dụ 2. Lựa chọn phân bố tiên nghiệm trong nghiên cứu ảnh hưởng của BMI đến huyết áp
 
-Một nhóm nghiên cứu thực hiện khảo sát trên 120 bệnh nhân tăng huyết áp nhằm đánh giá ảnh hưởng của tuổi, chỉ số khối cơ thể, nồng độ cholesterol toàn phần và mức lọc cầu thận đến huyết áp tâm thu.
+Một nhóm nghiên cứu thực hiện khảo sát trên 120 bệnh nhân [[Tăng huyết áp]] nhằm đánh giá ảnh hưởng của tuổi, chỉ số khối cơ thể, nồng độ cholesterol toàn phần và mức lọc cầu [[Thận]] đến huyết áp tâm thu.
 
 Trước khi phân tích, nhóm nghiên cứu rà soát các tổng quan hệ thống và phân tích gộp đã công bố về mối liên quan giữa BMI và huyết áp. Các kết quả trước đây đều cho thấy hệ số hồi quy của BMI có giá trị dương nhưng kích thước hiệu quả dao động giữa các nghiên cứu do khác biệt về đặc điểm dân số và phương pháp đo lường.
 

@@ -1,3 +1,14 @@
+---
+title: "GP-SL_Hệ thần kinh ở trẻ em (Phần 2)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: SỰ PHÁT TRIỂN HỆ THẦN KINH, SỰ PHÁT TRIỂN NÃO BỘ VÀ VAI TRÒ CỦA TRẢI NGHIỆM GIAI ĐOẠN SỚM)
 
 ---
@@ -39,7 +50,7 @@ Sự phát triển của não bộ bắt đầu trong vài tuần đầu tiên s
 
 ### 1.3. Giai Đoạn Di Chuyển Tế Bào Thần Kinh
 
-Sau khi sản xuất tại vùng tăng sinh brain thất, các tế bào thần kinh di chuyển trật tự ra lớp vỏ ngoài để hình thành **tân vỏ não có 6 lớp**:
+Sau khi sản xuất tại vùng tăng sinh brain thất, các tế bào thần kinh di chuyển trật tự ra lớp vỏ ngoài để hình thành **tân [[Vỏ não]] có 6 lớp**:
 
 1. **Sự dịch chuyển somal (Somal translocation):** Áp dụng khi khoảng cách di chuyển còn ngắn (giai đoạn sớm); tế bào kéo dài tế bào chất ra sát bề mặt tân vỏ brain rồi chuyển dịch nhân tế bào đến vị trí mới.
 2. **Di chuyển qua tế bào thần kinh đệm hướng dẫn xuyên tâm (Radial glial-guided migration):** Khi brain lớn hơn và khoảng cách xa hơn, các tế bào thần kinh tự gắn mình vào dây dẫn của "tế bào thần kinh đệm hướng dẫn xuyên tâm" để bò dọc theo dây dẫn ra vỏ brain.
@@ -49,7 +60,7 @@ Sau khi sản xuất tại vùng tăng sinh brain thất, các tế bào thần 
 
 #### TRÍCH XUẤT HÌNH HỌA VÀ MÔ TẢ DI CHUYỂN NEURON
 
-- **Tên Hình/Sơ Đồ:** **Hình 77.5 / Hình 1.5. Các kiểu di chuyển tế bào thần kinh đến tân vỏ não**.
+- **Tên Hình/Sơ Đồ:** **Hình 77.5 / Hình 1.5. Các kiểu di chuyển tế bào thần kinh đến tân [[Vỏ não]]**.
 - **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 2 (2020) - Nhiễm & TK.pdf_ (Bài 77, trang 333) / _[Book] Nhi khoa YDS - Tập 6.md_ (Bài 1, trang 10).
 - **Mô Tả Chi Tiết:** Sơ đồ mô tả sự di chuyển của các neuron từ vùng brain thất (ventricular zone) ra lớp vỏ ngoài (cortical plate - CP) thông qua hệ thống dây dẫn của tế bào thần kinh đệm hướng dẫn xuyên tâm và con đường di cư tiếp tuyến từ vùng GE.
 
@@ -89,7 +100,7 @@ Sau khi sản xuất tại vùng tăng sinh brain thất, các tế bào thần 
     - _Thời điểm:_ Myelin đã bắt đầu từ tam cá nguyệt thứ 3 của thai kỳ, nhưng **giai đoạn myelin hóa diễn ra nhanh nhất là trong 2 năm đầu tiên sau sinh**.
     - _Trình tự xuất hiện:_ Xuất hiện đầu tiên ở rễ thần kinh vận động - cảm giác, vùng cảm giác đặc biệt và thân brain.
     - _Đường dẫn truyền vỏ - tủy:_ Bắt đầu myelin hóa từ **36 tuần tuổi thai** và hoàn thành vào **cuối năm thứ 2 sau sinh**.
-    - _Tế bào thực hiện:_ Tế bào thần kinh đệm ít nhánh (oligodendrocyte) thực hiện myelin hóa ở hệ thần kinh trung ương (một tế bào tạo bao myelin cho **tối đa 50 sợi trục**), còn tế bào Schwann đảm nhận ở hệ thần kinh ngoại biên (một tế bào chỉ bọc **một sợi trục**).
+    - _Tế bào thực hiện:_ Tế bào thần kinh đệm ít nhánh (oligodendrocyte) thực hiện myelin hóa ở [[Hệ thần kinh trung ương]] (một tế bào tạo bao myelin cho **tối đa 50 sợi trục**), còn tế bào Schwann đảm nhận ở hệ thần kinh ngoại biên (một tế bào chỉ bọc **một sợi trục**).
 
 ---
 
@@ -188,4 +199,4 @@ Sau khi sản xuất tại vùng tăng sinh brain thất, các tế bào thần 
 
 ---
 
-🧠 _Bộ bài giảng 2 phần về **Đặc điểm Giải phẫu và Sinh lý Hệ thần kinh ở trẻ em** đã được hoàn thiện đầy đủ, chi tiết và chính xác theo nguồn YDS. Bạn có muốn tiếp tục biên soạn bài học tiếp theo về **Viêm màng não vi khuẩn ở trẻ em** hoặc **Bệnh tay chân miệng ở trẻ em** không?_
+🧠 _Bộ bài giảng 2 phần về **Đặc điểm Giải phẫu và Sinh lý Hệ thần kinh ở trẻ em** đã được hoàn thiện đầy đủ, chi tiết và chính xác theo nguồn YDS. Bạn có muốn tiếp tục biên soạn bài học tiếp theo về **[[Viêm màng não]] vi khuẩn ở trẻ em** hoặc **Bệnh tay chân miệng ở trẻ em** không?_

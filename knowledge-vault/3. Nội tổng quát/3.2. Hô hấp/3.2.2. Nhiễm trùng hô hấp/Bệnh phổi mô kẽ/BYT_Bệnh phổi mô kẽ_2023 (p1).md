@@ -1,8 +1,19 @@
+---
+title: "BYT_Bệnh phổi mô kẽ_2023 (p1)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 ### TỔNG QUAN VÀ PHÂN LOẠI BỆNH PHỎI MÔ KẼ (ILD)
 
 #### Khái niệm và Cơ chế bệnh sinh học chung
 
-Bệnh phổi mô kẽ (ILD) là một nhóm lớn bao gồm hàng trăm rối loạn đặc trưng bởi tình trạng tổn thương nhu mô phổi lan tỏa, có biểu hiện lâm sàng, hình ảnh học, giải phẫu bệnh và tiên lượng rất khác nhau. Về mặt bệnh sinh, tổn thương cốt lõi khởi phát bằng sự thâm nhiễm của các tế bào viêm, tế bào xơ tại thành phế nang, kèm theo hiện tượng tăng sinh của các phế bào biểu bì phế nang (phế bào type 2). Nếu không được chẩn đoán và điều trị kịp thời, các phản ứng viêm và tăng sinh xơ này sẽ tiến triển thành tổn thương không hồi phục, dẫn đến quá trình xơ hóa nhu mô phổi xơ hóa nặng nề, làm suy giảm nghiêm trọng chức năng trao đổi khí và gây giảm oxy máu trên lâm sàng.
+Bệnh phổi mô kẽ (ILD) là một nhóm lớn bao gồm hàng trăm rối loạn đặc trưng bởi tình trạng tổn thương [[Phổi|nhu mô phổi]] lan tỏa, có biểu hiện lâm sàng, hình ảnh học, giải phẫu bệnh và tiên lượng rất khác nhau. Về mặt bệnh sinh, tổn thương cốt lõi khởi phát bằng sự thâm nhiễm của các tế bào viêm, tế bào xơ tại thành phế nang, kèm theo hiện tượng tăng sinh của các phế bào biểu bì phế nang (phế bào type 2). Nếu không được chẩn đoán và điều trị kịp thời, các phản ứng viêm và tăng sinh xơ này sẽ tiến triển thành tổn thương không hồi phục, dẫn đến quá trình xơ hóa [[Phổi|nhu mô phổi]] xơ hóa nặng nề, làm suy giảm nghiêm trọng chức năng trao đổi khí và gây giảm oxy máu trên lâm sàng.
 
 #### Hệ thống phân loại hiện nay (Theo ATS/ERS 2013)
 
@@ -21,7 +32,7 @@ Do triệu chứng lâm sàng của ILD không đặc hiệu và có sự chồn
 
 ### PHƯƠNG PHÁP CẬN LÂM SÀNG CHỦ CHỐT TRONG TIẾP CẬN CHẨN ĐOÁN
 
-#### Chụp cắt lớp vi tính phân giải cao (HRCT)
+#### [[[[CT Scan]]|Chụp cắt lớp vi tính]] phân giải cao (HRCT)
 
 HRCT là **tiêu chuẩn vàng** và là công cụ không thể thiếu trong tiếp cận chẩn đoán ILD. Kỹ thuật chụp bắt buộc phải sử dụng các lát cắt mỏng (≤ 1,5mm) và mA cao (120 - 180mA) nhằm bộc lộ rõ ràng bộ khung mô kẽ phổi.
 
@@ -49,7 +60,7 @@ Việc chủ động tầm soát các tự kháng thể tự miễn là chỉ đ
 
 #### Rửa phế quản - phế nang (BAL) và Sinh thiết phổi
 
-- **Dịch rửa phế quản - phế nang (BAL):** Dù không giúp chẩn đoán xác định trực tiếp nhưng phân tích thành phần tế bào dịch BAL giúp định hướng nguyên nhân hiệu quả. Ví dụ: tỷ lệ tế bào Lympho tăng > 15% gợi ý các bệnh lý u hạt hoặc viêm phổi tăng cảm; tỷ lệ CD4/CD8 > 4 rất đặc hiệu cho Sarcoidosis; tỷ lệ bạch cầu ái toan \(\ge 25%\) định hướng viêm phổi tăng bạch cầu ái toan.
+- **Dịch rửa phế quản - phế nang (BAL):** Dù không giúp chẩn đoán xác định trực tiếp nhưng phân tích thành phần tế bào dịch BAL giúp định hướng nguyên nhân hiệu quả. Ví dụ: tỷ lệ tế bào Lympho tăng > 15% gợi ý các bệnh lý u hạt hoặc viêm phổi tăng cảm; tỷ lệ CD4/CD8 > 4 rất đặc hiệu cho Sarcoidosis; tỷ lệ [[Bạch cầu]] ái toan \(\ge 25%\) định hướng viêm phổi tăng [[Bạch cầu]] ái toan.
 - **Sinh thiết xuyên thành phế quản bằng kìm (TBLB):** Mẫu mô lấy được rất nhỏ nên hiệu quả chẩn đoán thấp, đặc biệt trong các trường hợp xơ hóa phổi.
 - **Sinh thiết xuyên thành phế quản bằng áp lạnh (Cryobiopsy):** Sử dụng khí hóa lỏng để lấy các mẫu mô phổi lớn hơn, bảo tồn cấu trúc tốt hơn, đạt tỷ lệ chẩn đoán xác định từ 80% trở lên.
 - **Sinh thiết phổi ngoại khoa (VATS):** Được thực hiện qua nội soi lồng ngực hỗ trợ video để lấy tối thiểu 2 mẫu mô lớn ở các thùy khác nhau. Đây vẫn là **tiêu chuẩn vàng** giúp khẳng định chính xác tổn thương mô bệnh học khi các phương pháp ít xâm lấn khác không mang lại chẩn đoán xác định.
@@ -60,7 +71,7 @@ Việc chủ động tầm soát các tự kháng thể tự miễn là chỉ đ
 
 #### Bước 1: Chẩn đoán xác định sự hiện diện của bệnh phổi mô kẽ
 
-- **Lâm sàng:** Nghi ngờ khi bệnh nhân có biểu hiện ho khan kéo dài mạn tính (thường từ 1 - 2 năm), khó thở tăng dần khi gắng sức (kéo dài > 6 mMRC), nghe phổi có tiếng **ran nổ Velcro** điển hình ở cuối thì hít vào ở cả hai đáy phổi, hoặc có ngón tay dùi trống ở giai đoạn muộn.
+- **Lâm sàng:** Nghi ngờ khi bệnh nhân có biểu hiện ho khan kéo dài mạn tính (thường từ 1 - 2 năm), [[Khó thở]] tăng dần khi gắng sức (kéo dài > 6 mMRC), nghe phổi có tiếng **ran nổ Velcro** điển hình ở cuối thì hít vào ở cả hai đáy phổi, hoặc có ngón tay dùi trống ở giai đoạn muộn.
 - **Hình ảnh học:** HRCT cho thấy rõ nét các tổn thương mô kẽ tiến triển như hình lưới, kính mờ hay tổ ong.
 - **Chức năng hô hấp:** Gợi ý rối loạn thông khí hạn chế (FVC < 80%) và giảm khuếch tán khí (\(D_LCO\) < 80%).
 
@@ -72,9 +83,9 @@ Việc chủ động tầm soát các tự kháng thể tự miễn là chỉ đ
 
 #### Bước 3: Chẩn đoán mức độ nặng của bệnh phổi mô kẽ
 
-- **Lâm sàng:** Đánh giá mức độ khó thở bằng thang điểm mMRC, khả năng gắng sức bằng khoảng cách đi bộ 6 phút (6MWD).
+- **Lâm sàng:** Đánh giá mức độ [[Khó thở]] bằng thang điểm mMRC, khả năng gắng sức bằng khoảng cách đi bộ 6 phút (6MWD).
 - **Chức năng phổi:** FVC là chỉ số tiên lượng quan trọng nhất; FVC càng thấp và tốc độ sụt giảm FVC càng nhanh thì bệnh càng nặng.
-- **Ảnh hưởng tim phổi toàn thân:** Thực hiện siêu âm tim nhằm đánh giá áp lực động mạch phổi và chức năng thất phải; khí máu động mạch đánh giá tình trạng suy hô hấp mạn tính.
+- **Ảnh hưởng [[Tim]] phổi toàn thân:** Thực hiện [[[[Siêu âm]]|siêu âm [[Tim]]]] nhằm đánh giá áp lực động mạch phổi và chức năng thất phải; [[Khí máu động mạch]] đánh giá tình trạng [[Suy hô hấp]] mạn tính.
 
 ---
 
@@ -93,7 +104,7 @@ Qua đối chiếu và phân tích sâu các chương mục trong tài liệu h�
 3. **Khoảng xám trong biện luận kết quả tự kháng thể ANA:**
     
     - _Mâu thuẫn:_ ANA được xem là công cụ sàng lọc có độ nhạy rất cao cho các bệnh lý tự miễn hệ thống. Tuy nhiên, tài liệu ghi nhận có tới 20% người già khỏe mạnh bình thường (đặc biệt là phụ nữ) có kết quả ANA dương tính hiệu giá thấp, đồng thời xét nghiệm ANA cũng có thể dương tính ở trên 50% số bệnh nhân mắc bệnh lý phổi kẽ chưa rõ nguyên nhân.
-    - _Hệ quả lâm sàng:_ Sự hiện diện của ANA dương tính không đồng nghĩa với việc bệnh nhân mắc bệnh lý mô liên kết thực sự (CTD-ILD). Khoảng trống này dễ dẫn đến việc lạm dụng corticosteroid hoặc thuốc ức chế miễn dịch độc hại nếu bác sĩ lâm sàng quá vội vàng kết luận nguyên nhân tự miễn mà không có sự đồng thuận biện luận kỹ lưỡng của hội đồng đa chuyên khoa (MDD) để phân biệt giữa xơ phổi vô căn (IPF), bệnh phổi kẽ có đặc điểm tự miễn (IPAF) hoặc bệnh lý mô liên kết xác lập thực sự.
+    - _Hệ quả lâm sàng:_ Sự hiện diện của ANA dương tính không đồng nghĩa với việc bệnh nhân mắc bệnh lý mô liên kết thực sự (CTD-ILD). Khoảng trống này dễ dẫn đến việc lạm dụng [[Corticoid|corticosteroid]] hoặc thuốc ức chế miễn dịch độc hại nếu bác sĩ lâm sàng quá vội vàng kết luận nguyên nhân tự miễn mà không có sự đồng thuận biện luận kỹ lưỡng của hội đồng đa chuyên khoa (MDD) để phân biệt giữa xơ phổi vô căn (IPF), bệnh phổi kẽ có đặc điểm tự miễn (IPAF) hoặc bệnh lý mô liên kết xác lập thực sự.
 
 ---
 
@@ -103,4 +114,4 @@ Qua đối chiếu và phân tích sâu các chương mục trong tài liệu h�
 
 ---
 
-_Bác sĩ có muốn tôi tóm tắt chi tiết tiếp tục sang **Phần 2** - tập trung sâu vào các phác đồ điều trị thuốc (Corticosteroid, thuốc ức chế miễn dịch, thuốc sinh học, kháng xơ nintedanib) và hướng dẫn chẩn đoán, điều trị chi tiết của từng thể bệnh kẽ cụ thể như IPF, CTD-ILD hay không?_
+_Bác sĩ có muốn tôi tóm tắt chi tiết tiếp tục sang **Phần 2** - tập trung sâu vào các phác đồ điều trị thuốc ([[Corticoid|Corticosteroid]], thuốc ức chế miễn dịch, thuốc sinh học, kháng xơ nintedanib) và hướng dẫn chẩn đoán, điều trị chi tiết của từng thể bệnh kẽ cụ thể như IPF, CTD-ILD hay không?_

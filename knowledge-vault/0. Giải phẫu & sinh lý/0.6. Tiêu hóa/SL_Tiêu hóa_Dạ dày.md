@@ -1,13 +1,18 @@
 ---
 title: "SL_Tiêu hóa_Dạ dày"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 **1. Nội Dung Sinh Lý Học Chi Tiết Về Tiêu Hóa Tại Dạ Dày**
 
 ### I. Cấu Trúc Giải Phẫu và Chức Năng Cơ Bản
-Dạ dày là một đoạn phình to của ống tiêu hóa, đóng vai trò như một túi chứa thức ăn tạm thời và khởi phát quá trình tiêu hóa protein. 
+Dạ dày là một đoạn phình to của [[Đường tiêu hóa|ống tiêu hóa]], đóng vai trò như một túi chứa thức ăn tạm thời và khởi phát quá trình tiêu hóa protein. 
 *   **Về mặt giải phẫu:** Dạ dày được chia thành ba vùng chính: đáy vị (fundus), thân vị (corpus/body), và hang vị (antrum). Hai đầu của dạ dày được giới hạn bởi cơ vòng tâm vị (nối với thực quản) và cơ vòng môn vị (nối với tá tràng),. Thành dạ dày có 4 lớp: thanh mạc, lớp cơ (cơ dọc bên ngoài, cơ vòng ở giữa, cơ chéo bên trong), lớp dưới niêm mạc và lớp niêm mạc.
 *   **Về mặt chức năng:** Dạ dày thường được chia thành 2 vùng:
     *   *Phần gần (Proximal stomach - đáy và thân vị):* Chức năng chủ yếu là chứa đựng thức ăn, tiết acid (HCl) và yếu tố nội tại,.
@@ -65,7 +70,7 @@ Sự bài tiết dịch vị được kiểm soát chặt chẽ bởi thần kin
 
 ### V. Tiêu Hóa và Hấp Thu Tại Dạ Dày
 *   **Tiêu hóa:** Sự tiêu hóa ở dạ dày không hoàn toàn nhưng quan trọng. Amylase từ nước bọt (hoạt động tốt ở pH trung tính) vẫn có thể tiếp tục phân giải tinh bột bên trong khối thức ăn ở dạ dày một thời gian nhờ được cơ chất bảo vệ khỏi acid. Men pepsin ở dạ dày bắt đầu cắt các protein thành các chuỗi polypeptide lớn và một lượng nhỏ acid amin,. Gastric lipase phân giải khoảng 10% triglyceride thành acid béo tự do,.
-*   **Hấp thu:** Dạ dày là cơ quan hấp thu rất kém vì không có vi nhung mao cấu trúc và thời gian thức ăn nằm lại ít. Hầu như không hấp thu chất dinh dưỡng. Tuy nhiên, nó có khả năng hấp thu tốt ethanol (rượu) và một số loại thuốc nhất định,. Một chức năng sống còn của dạ dày là tiết ra **yếu tố nội tại (Intrinsic Factor - IF)**, gắn kết với Vitamin B12 để bảo vệ và giúp B12 được hấp thu chủ động tại đoạn cuối hồi tràng,. Nếu viêm teo niêm mạc dạ dày mãn tính làm mất tế bào thành, cơ thể sẽ không có IF, dẫn đến bệnh thiếu máu ác tính (thiếu máu hồng cầu to do thiếu B12).
+*   **Hấp thu:** Dạ dày là cơ quan hấp thu rất kém vì không có vi nhung mao cấu trúc và thời gian thức ăn nằm lại ít. Hầu như không hấp thu chất dinh dưỡng. Tuy nhiên, nó có khả năng hấp thu tốt ethanol (rượu) và một số loại thuốc nhất định,. Một chức năng sống còn của dạ dày là tiết ra **yếu tố nội tại (Intrinsic Factor - IF)**, gắn kết với Vitamin B12 để bảo vệ và giúp B12 được hấp thu chủ động tại đoạn cuối hồi tràng,. Nếu viêm teo niêm mạc dạ dày mãn tính làm mất tế bào thành, cơ thể sẽ không có IF, dẫn đến bệnh thiếu máu ác tính (thiếu máu [[Hồng cầu]] to do thiếu B12).
 
 ---
 **2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA:**

@@ -1,9 +1,13 @@
 ---
 title: "Hướng dẫn làm bệnh án Nội khoa"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Làm bệnh án nội khoa
 
 Trạng thái: In progress

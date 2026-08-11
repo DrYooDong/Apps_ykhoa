@@ -1,6 +1,11 @@
 ---
 title: "Nhiễm trùng vết mổ"
-specialty: "Hệ Tiêu hóa"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+

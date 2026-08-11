@@ -1,9 +1,13 @@
 ---
 title: "NHỮNG SAI LẦM KHI TRẢ LỜI NGƯỜI PHẢN BIỆN"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐍𝐡𝐮̛̃𝐧𝐠 𝐬𝐚𝐢 𝐥𝐚̂̀𝐦 𝐤𝐡𝐢 𝐭𝐫𝐚̉ 𝐥𝐨̛̀𝐢 𝐧𝐠𝐮̛𝐨̛̀𝐢 𝐩𝐡𝐚̉𝐧 𝐛𝐢𝐞̣̂𝐧 (𝐏𝐞𝐞𝐫 𝐑𝐞𝐯𝐢𝐞𝐰): 𝐊𝐢𝐧𝐡 𝐧𝐠𝐡𝐢𝐞̣̂𝐦 𝐭𝐮̛̀ 𝐭𝐡𝐮̛̣𝐜 𝐡𝐚̀𝐧𝐡 𝐜𝐨̂𝐧𝐠 𝐛𝐨̂́ 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́ (𝐁𝐚̀𝐢 𝟏𝟒 - 𝐁𝐚̀𝐢 𝐜𝐮𝐨̂́𝐢 𝐭𝐫𝐨𝐧𝐠 𝐥𝐨𝐚̣𝐭 𝐛𝐚̀𝐢 𝐯𝐞̂̀ 𝐩𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐠𝐨̣̂𝐩)
 
 TS. Đào Hồng Nam
@@ -60,9 +64,9 @@ Một phản hồi hiệu quả thường gồm ba thành phần: ghi nhận nh�
 
 Quá trình phản biện khoa học đôi khi bao gồm những nhận xét mà tác giả cho là chưa chính xác hoặc chưa phản ánh đầy đủ nội dung nghiên cứu. Dù vậy, mục tiêu của thư phản hồi không phải là chứng minh người phản biện đúng hay sai mà là giải thích một cách khoa học và thuyết phục những vấn đề còn tồn tại. Những cách diễn đạt mang tính đối đầu như “người phản biện đã hiểu sai”, “nhận xét này hoàn toàn không đúng” hoặc “chúng tôi không đồng ý” thường tạo cảm giác phòng thủ và thiếu tính hợp tác, đồng thời có thể làm giảm hiệu quả của quá trình trao đổi học thuật.
 
-Trong trường hợp tác giả có quan điểm khác với nhận xét của phản biện, cách tiếp cận phù hợp là ghi nhận mối quan tâm được nêu ra, sau đó trình bày căn cứ chuyên môn, cơ sở phương pháp luận hoặc bằng chứng từ tài liệu tham khảo để giải thích vì sao nhóm nghiên cứu lựa chọn cách xử lý hiện tại. Ngay cả khi không thực hiện theo đề xuất của phản biện, tác giả vẫn cần cho thấy nhận xét đó đã được xem xét nghiêm túc và được cân nhắc trên cơ sở khoa học.
+Trong trường hợp tác giả có quan điểm khác với nhận xét của phản biện, cách tiếp cận [[Phù]] hợp là ghi nhận mối quan tâm được nêu ra, sau đó trình bày căn cứ chuyên môn, cơ sở phương pháp luận hoặc bằng chứng từ tài liệu tham khảo để giải thích vì sao nhóm nghiên cứu lựa chọn cách xử lý hiện tại. Ngay cả khi không thực hiện theo đề xuất của phản biện, tác giả vẫn cần cho thấy nhận xét đó đã được xem xét nghiêm túc và được cân nhắc trên cơ sở khoa học.
 
-𝐕𝐢́ 𝐝𝐮̣ 6. Một phản biện đề nghị loại bỏ một nghiên cứu khỏi phân tích gộp vì cho rằng nghiên cứu này có tiêu chí tuyển chọn bệnh nhân khác với các nghiên cứu còn lại. Thay vì trả lời: “Người phản biện đã sai. Nghiên cứu này hoàn toàn phù hợp”, nhóm tác giả viết: “Chúng tôi hiểu mối quan tâm của người phản biện liên quan đến tiêu chí tuyển chọn bệnh nhân. Sau khi xem xét lại, chúng tôi nhận thấy nghiên cứu này vẫn đáp ứng đầy đủ các tiêu chí lựa chọn đã được xác định trước trong đề cương nghiên cứu. Để làm rõ vấn đề, chúng tôi đã bổ sung phần giải thích về tiêu chí lựa chọn tại trang 8, dòng 185–198.” Cách trả lời này vừa giữ được tính chuyên nghiệp vừa giúp người phản biện hiểu rõ cơ sở của quyết định nghiên cứu.
+𝐕𝐢́ 𝐝𝐮̣ 6. Một phản biện đề nghị loại bỏ một nghiên cứu khỏi phân tích gộp vì cho rằng nghiên cứu này có tiêu chí tuyển chọn bệnh nhân khác với các nghiên cứu còn lại. Thay vì trả lời: “Người phản biện đã sai. Nghiên cứu này hoàn toàn [[Phù]] hợp”, nhóm tác giả viết: “Chúng tôi hiểu mối quan tâm của người phản biện liên quan đến tiêu chí tuyển chọn bệnh nhân. Sau khi xem xét lại, chúng tôi nhận thấy nghiên cứu này vẫn đáp ứng đầy đủ các tiêu chí lựa chọn đã được xác định trước trong đề cương nghiên cứu. Để làm rõ vấn đề, chúng tôi đã bổ sung phần giải thích về tiêu chí lựa chọn tại trang 8, dòng 185–198.” Cách trả lời này vừa giữ được tính chuyên nghiệp vừa giúp người phản biện hiểu rõ cơ sở của quyết định nghiên cứu.
 
 𝟕. Đ𝐨̂̀𝐧𝐠 𝐲́ 𝐧𝐡𝐮̛𝐧𝐠 𝐤𝐡𝐨̂𝐧𝐠 𝐬𝐮̛̉𝐚
 
@@ -76,7 +80,7 @@ Mỗi phản hồi chấp nhận góp ý cần đi kèm với thay đổi thực
 
 Mục tiêu của thư phản hồi không phải là chấp nhận tất cả các nhận xét của phản biện mà là chứng minh rằng mọi góp ý đều đã được xem xét một cách nghiêm túc. Trong nhiều trường hợp, nhóm tác giả có thể có cơ sở khoa học để không thực hiện theo đề xuất của phản biện. Khi đó, điều quan trọng không phải là việc đồng ý hay không đồng ý, mà là khả năng giải thích rõ ràng lý do cho quyết định của mình.
 
-Những phản hồi ngắn như “Chúng tôi không đồng ý” hoặc “Chúng tôi giữ nguyên quan điểm ban đầu” thường không đủ thuyết phục vì không cung cấp căn cứ chuyên môn cho quyết định đó. Một phản hồi phù hợp cần trình bày cơ sở phương pháp luận, tiêu chí nghiên cứu đã được xác định trước hoặc bằng chứng từ các tài liệu tham khảo có liên quan. Ngay cả khi giữ nguyên nội dung ban đầu, tác giả vẫn nên cho thấy rằng nhận xét của phản biện đã được đánh giá cẩn thận trước khi đưa ra quyết định cuối cùng.
+Những phản hồi ngắn như “Chúng tôi không đồng ý” hoặc “Chúng tôi giữ nguyên quan điểm ban đầu” thường không đủ thuyết phục vì không cung cấp căn cứ chuyên môn cho quyết định đó. Một phản hồi phù hợp cần trình bày cơ sở phương pháp luận, tiêu chí nghiên cứu đã được xác định trước hoặc bằng chứng từ các tài liệu tham khảo có liên quan. Ngay cả khi giữ nguyên nội dung ban đầu, tác giả vẫn nên cho thấy rằng nhận xét của phản biện đã được đánh giá cẩn [[Thận]] trước khi đưa ra quyết định cuối cùng.
 
 𝐕𝐢́ 𝐝𝐮̣ 8. Trong một phân tích gộp về hiệu quả của thuốc kháng đông, người phản biện đề nghị loại bỏ một thử nghiệm lâm sàng có cỡ mẫu chỉ 68 bệnh nhân vì cho rằng nghiên cứu quá nhỏ so với các nghiên cứu còn lại. Nhóm tác giả không thực hiện đề xuất này vì nghiên cứu vẫn đáp ứng đầy đủ các tiêu chí lựa chọn đã được đăng ký trước trên PROSPERO và không được đánh giá là có nguy cơ sai lệch cao. Thay vì trả lời đơn giản rằng nghiên cứu sẽ được giữ lại, tác giả giải thích trong thư phản hồi: “Chúng tôi hiểu mối quan tâm của phản biện liên quan đến cỡ mẫu của nghiên cứu này. Tuy nhiên, nghiên cứu vẫn đáp ứng tất cả các tiêu chí lựa chọn đã được xác định trước trong đề cương đăng ký trên PROSPERO và được đánh giá có nguy cơ sai lệch thấp theo công cụ RoB 2. Việc loại bỏ nghiên cứu sau khi đã biết kết quả có thể làm thay đổi tiêu chí lựa chọn ban đầu. Chúng tôi đã bổ sung phần giải thích này tại trang 12, dòng 268–279 và trích dẫn hướng dẫn Cochrane phù hợp.” Cách trả lời như vậy giúp phản biện hiểu được cơ sở khoa học của quyết định và tạo điều kiện cho quá trình trao đổi học thuật mang tính xây dựng.
 
@@ -90,7 +94,7 @@ Việc cập nhật tài liệu tham khảo không nên được thực hiện m
 
 𝟏𝟎. 𝐂𝐡𝐢̉ 𝐬𝐮̛̉𝐚 𝐧𝐨̣̂𝐢 𝐝𝐮𝐧𝐠 𝐥𝐨̛́𝐧 𝐦𝐚̀ 𝐛𝐨̉ 𝐪𝐮𝐚 𝐥𝐨̂̃𝐢 𝐧𝐡𝐨̉
 
-Quá trình sửa bản thảo sau phản biện không chỉ nhằm giải quyết các vấn đề lớn về phương pháp nghiên cứu, phân tích thống kê hoặc diễn giải kết quả. Những lỗi tưởng như rất nhỏ như lỗi chính tả, lỗi đánh máy, cách trình bày bảng biểu, chú thích hình hoặc định dạng tài liệu tham khảo cũng ảnh hưởng trực tiếp đến chất lượng học thuật và mức độ chuyên nghiệp của bản thảo. Một bài báo còn nhiều lỗi kỹ thuật sau khi đã trải qua ít nhất một vòng phản biện thường tạo cảm giác rằng nhóm tác giả chưa rà soát bản thảo một cách cẩn thận.
+Quá trình sửa bản thảo sau phản biện không chỉ nhằm giải quyết các vấn đề lớn về phương pháp nghiên cứu, phân tích thống kê hoặc diễn giải kết quả. Những lỗi tưởng như rất nhỏ như lỗi chính tả, lỗi đánh máy, cách trình bày bảng biểu, chú thích hình hoặc định dạng tài liệu tham khảo cũng ảnh hưởng trực tiếp đến chất lượng học thuật và mức độ chuyên nghiệp của bản thảo. Một bài báo còn nhiều lỗi kỹ thuật sau khi đã trải qua ít nhất một vòng phản biện thường tạo cảm giác rằng nhóm tác giả chưa rà soát bản thảo một cách cẩn [[Thận]].
 
 Người phản biện và biên tập viên thường xem việc sửa các lỗi nhỏ là một chỉ dấu về mức độ nghiêm túc của nhóm nghiên cứu đối với toàn bộ quá trình chỉnh sửa. Khi các lỗi đã được chỉ ra ở vòng phản biện trước vẫn tiếp tục xuất hiện trong phiên bản sửa đổi, người phản biện có thể đặt câu hỏi liệu những chỉnh sửa phức tạp hơn về phương pháp hoặc phân tích thống kê đã thực sự được thực hiện đầy đủ hay chưa. Vì vậy, sau khi hoàn thành các nội dung sửa đổi lớn, bản thảo nên được đọc lại từ đầu để phát hiện và khắc phục các lỗi kỹ thuật còn sót lại trước khi nộp lại cho tạp chí.
 

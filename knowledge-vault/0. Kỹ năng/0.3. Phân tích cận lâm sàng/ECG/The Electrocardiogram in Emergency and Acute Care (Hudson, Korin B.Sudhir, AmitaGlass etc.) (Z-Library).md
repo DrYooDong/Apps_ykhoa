@@ -1,3 +1,13 @@
+---
+title: "The Electrocardiogram in Emergency and Acute Care (Hudson, Korin B.Sudhir, AmitaGlass etc.) (Z-Library)"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 AL GRAWANY
 
 ---
@@ -220,7 +230,7 @@ Pericardial tamponade
 Hyperkalemia
 - Diffuse non- anatomical peaked T waves
 - Widening of PR interval and QRS complex widths
-Central nervous system (CNS) events
+Central nervous system ([[Hệ thần kinh trung ương|CNS]]) events
 - Diffuse, deep T wave inversions
 - Minor ST segment elevations in leads with T wave inversions overdose and intoxication
 - Rhythm disturbances
@@ -634,7 +644,7 @@ event
 - Chronic obstructive pulmonary disease (acute exac-
 - Postoperative period
 erbation)
-- Sepsis
+- [[Nhiễm trùng huyết|Sepsis]]
 - Pneumonia
 - Hypoxia
 Presenting symptoms may/may not have direct rela-
@@ -1623,7 +1633,7 @@ Sodium channel Wide QRS Complex IV Sodium bicarbonate (1–2 mEq/kg) bolus every
 Cardiac glycoside Bradycardia For bradycardia: toxicity
 - IV Atropine (0.5–2 mg)
 Hyperkalemia For hyperkalemia:
-- IV Sodium bicarbonate (1 meq/kg), IV insulin, and dextrose
+- IV Sodium bicarbonate (1 meq/kg), IV [[Insulin]], and dextrose
 - AVOID calcium which may potentiate asystole
 Ventricular For ventricular dysrhythmias: tachydysrhythmias
 - IV Lidocaine (50–100 mg for adult, 1 mg/kg for child)
@@ -1848,7 +1858,7 @@ Three management goals: Transient shifting of potassium intracellularly
 - Removal of potassium from the body
 - Dextrose (50%) 1 ampule IV
 permanently
-- Insulin (regular) 2–10 units IV
+- [[Insulin]] (regular) 2–10 units IV
 - Albuterol nebulized administration
 Treatment usually produces rapid results with lessen-
 - Epinephrine (1 : 10 000) IV – portions of 1 mg dose/
@@ -1948,7 +1958,7 @@ Long QT syndrome
 (LQTS) – congenital transmembrane ion channels pointes Sudden death
 Long QT syndrome – acquired ● Medications/toxins, Electrolyte
 - Syncope/“seizure” a Torsades de
-abnormality, CNS event pointes Sudden death
+abnormality, [[Hệ thần kinh trung ương|CNS]] event pointes Sudden death
 a Primary seizure disorder is not infrequently misdiagnosed when, in fact, the patient has experienced convulsive syncope as a result
 of a malignant ventricular dysrhythmia.
 Box 17.1 Clinical Consideration – Wellens’ Syndrome
@@ -2393,7 +2403,7 @@ Table 22.1 Differential diagnosis of narrow complex Clinical Presentation Box 22
 Sinus tachycardia should be considered a “reactive Sinus tachycardia rhythm.” Atrial fibrillation Consider the underlying causes of sinus tachycardia: Atrial flutter
 - ● hypovolemia (dehydration, hemorrhage)
 Paroxysmal supraventricular tachycardia (PSVT)
-- ● hypoperfusion (sepsis, anaphylaxis)
+- ● hypoperfusion ([[Nhiễm trùng huyết|sepsis]], anaphylaxis)
 Multifocal atrial tachycardia (MAT) Paroxysmal atrial tachycardia (PAT)
 - ● hypoxia
 Wolff–Parkinson–White syndrome NCT

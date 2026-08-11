@@ -1,9 +1,13 @@
 ---
 title: "CÁC KỸ THUẬT HẬU KIỂM, CỠ ẢNH HƯỞNG VÀ SAI SÓT THƯỜNG GẶP KHI BÁO CÁO KẾT QUẢ TRONG ANOVA"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐂𝐚́𝐜 𝐤𝐲̃ 𝐭𝐡𝐮𝐚̣̂𝐭 𝐡𝐚̣̂𝐮 𝐤𝐢𝐞̂̉𝐦, 𝐜𝐨̛̃ 𝐚̉𝐧𝐡 𝐡𝐮̛𝐨̛̉𝐧𝐠 𝐯𝐚̀ 𝐬𝐚𝐢 𝐬𝐨́𝐭 𝐭𝐡𝐮̛𝐨̛̀𝐧𝐠 𝐠𝐚̣̆𝐩 𝐤𝐡𝐢 𝐛𝐚́𝐨 𝐜𝐚́𝐨 𝐤𝐞̂́𝐭 𝐪𝐮𝐚̉ 𝐭𝐫𝐨𝐧𝐠 𝐀𝐧𝐨𝐯𝐚 - 𝐏𝐡𝐚̂̀𝐧 𝟔 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́
 
 TS. Đào Hồng Nam
@@ -22,7 +26,7 @@ Việc sử dụng các kiểm định hậu nghiệm xuất phát từ yêu c�
 
 𝟕.𝟐. 𝐋𝐮̛̣𝐚 𝐜𝐡𝐨̣𝐧 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐡𝐚̣̂𝐮 𝐧𝐠𝐡𝐢𝐞̣̂𝐦
 
-Hiện nay có nhiều phương pháp hậu nghiệm khác nhau và không có một phương pháp duy nhất phù hợp cho mọi nghiên cứu. Việc lựa chọn phụ thuộc vào mục tiêu nghiên cứu, số lượng nhóm, đặc điểm của dữ liệu và việc các giả định của ANOVA có được đáp ứng hay không.
+Hiện nay có nhiều phương pháp hậu nghiệm khác nhau và không có một phương pháp duy nhất [[Phù]] hợp cho mọi nghiên cứu. Việc lựa chọn phụ thuộc vào mục tiêu nghiên cứu, số lượng nhóm, đặc điểm của dữ liệu và việc các giả định của ANOVA có được đáp ứng hay không.
 
 Khi các nhóm có cỡ mẫu tương đối cân bằng và phương sai đồng nhất, 𝐓𝐮𝐤𝐞𝐲 𝐇𝐒𝐃 là lựa chọn phổ biến nhất nếu mục tiêu là so sánh tất cả các cặp nhóm. Nếu nghiên cứu chỉ quan tâm đến việc so sánh các nhóm điều trị với một nhóm chứng, Dunnett thường hiệu quả hơn vì giảm số lượng phép so sánh không cần thiết.
 
@@ -48,7 +52,7 @@ Partial η² lại là chỉ số được sử dụng phổ biến nhất trong
 
 Không giống giá trị p, cỡ ảnh hưởng phản ánh mức độ tác động của yếu tố nghiên cứu lên biến phụ thuộc và do đó có ý nghĩa thực tiễn rõ ràng hơn trong nghiên cứu y học. Một cỡ ảnh hưởng lớn cho thấy yếu tố nghiên cứu giải thích được phần đáng kể biến thiên của dữ liệu, trong khi cỡ ảnh hưởng nhỏ cho thấy tác động của yếu tố nghiên cứu còn hạn chế mặc dù vẫn có thể đạt ý nghĩa thống kê.
 
-Các ngưỡng được đề xuất cho η² và partial η² thường được sử dụng để hỗ trợ diễn giải mức độ ảnh hưởng của yếu tố nghiên cứu, trong đó Cohen phân loại cỡ ảnh hưởng thành các mức nhỏ, trung bình và lớn (Cohen, 1988). Việc áp dụng các ngưỡng này cần được thực hiện một cách thận trọng vì chúng được xây dựng như những giá trị tham khảo chung chứ không phải các tiêu chuẩn tuyệt đối có thể áp dụng cho mọi lĩnh vực nghiên cứu. Trong y học, một cỡ ảnh hưởng được xem là nhỏ trên phương diện thống kê vẫn có thể mang ý nghĩa lâm sàng đáng kể nếu biện pháp can thiệp an toàn, chi phí thấp hoặc có khả năng tác động đến một số lượng lớn người bệnh.
+Các ngưỡng được đề xuất cho η² và partial η² thường được sử dụng để hỗ trợ diễn giải mức độ ảnh hưởng của yếu tố nghiên cứu, trong đó Cohen phân loại cỡ ảnh hưởng thành các mức nhỏ, trung bình và lớn (Cohen, 1988). Việc áp dụng các ngưỡng này cần được thực hiện một cách [[Thận]] trọng vì chúng được xây dựng như những giá trị tham khảo chung chứ không phải các tiêu chuẩn tuyệt đối có thể áp dụng cho mọi lĩnh vực nghiên cứu. Trong y học, một cỡ ảnh hưởng được xem là nhỏ trên phương diện thống kê vẫn có thể mang ý nghĩa lâm sàng đáng kể nếu biện pháp can thiệp an toàn, chi phí thấp hoặc có khả năng tác động đến một số lượng lớn người bệnh.
 
 Ý nghĩa của cỡ ảnh hưởng chỉ có thể được đánh giá đầy đủ khi đặt trong bối cảnh cụ thể của vấn đề nghiên cứu, đặc điểm của biến kết cục và mục tiêu ứng dụng của kết quả. Chẳng hạn, một chương trình can thiệp giúp giảm huyết áp với mức thay đổi không lớn ở từng cá thể vẫn có thể tạo ra lợi ích sức khỏe cộng đồng đáng kể nếu được áp dụng trên quy mô dân số rộng. Ngược lại, một cỡ ảnh hưởng lớn quan sát được trong nghiên cứu cơ bản hoặc trên mô hình động vật chưa chắc đã chuyển thành lợi ích thực tế trong điều trị lâm sàng.
 
@@ -66,7 +70,7 @@ Trong nghiên cứu y học, khoảng tin cậy thường có giá trị thực 
 
 Trong những năm gần đây, các tạp chí quốc tế ngày càng yêu cầu báo cáo thống kê theo các hướng dẫn chuẩn hóa nhằm nâng cao tính minh bạch và khả năng tái lập của nghiên cứu. Theo hướng dẫn của Hiệp hội Tâm lý học Hoa Kỳ (APA), kết quả ANOVA nên bao gồm tối thiểu thống kê F, bậc tự do, giá trị p và cỡ ảnh hưởng (American Psychological Association, 2020).
 
-Một cách trình bày phù hợp có thể là: Kết quả ANOVA cho thấy có sự khác biệt giữa ba nhóm điều trị (F(2, 147) = 9,84; p < 0,001; η² = 0,118).
+Một cách trình bày [[Phù]] hợp có thể là: Kết quả ANOVA cho thấy có sự khác biệt giữa ba nhóm điều trị (F(2, 147) = 9,84; p < 0,001; η² = 0,118).
 
 Nếu nghiên cứu thực hiện các phép so sánh hậu nghiệm, cần tiếp tục trình bày phương pháp được sử dụng, chênh lệch trung bình, khoảng tin cậy và giá trị p đã được điều chỉnh.
 

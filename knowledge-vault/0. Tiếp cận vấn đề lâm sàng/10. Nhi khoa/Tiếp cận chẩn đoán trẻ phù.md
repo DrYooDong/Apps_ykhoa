@@ -1,3 +1,13 @@
+---
+title: "Tiếp cận chẩn đoán trẻ phù"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### Cơ Chế Sinh Lý Bệnh Hình Thành Phù Ở Trẻ Em
@@ -12,18 +22,18 @@ Sự mất cân bằng giữa các lực đối kháng này hoặc sự cản tr
 
 ##### 1. Tăng Áp Lực Thủy Tĩnh Mao Mạch Do Giữ Muối Và Nước
 
-- **Suy tim**: Tăng áp lực tĩnh mạch do giữ muối và nước do tim giảm cung lượng. Tùy thuộc vào vị trí tổn thương thất:
-    - Suy thất trái: Dẫn đến phù phổi là chủ yếu, không có phù ngoại biên.
+- **Suy [[Tim]]**: Tăng áp lực tĩnh mạch do giữ muối và nước do tim giảm cung lượng. Tùy thuộc vào vị trí tổn thương thất:
+    - Suy thất trái: Dẫn đến phù [[Phổi]] là chủ yếu, không có phù ngoại biên.
     - Suy thất phải đơn thuần: Dẫn đến phù tập trung rõ ở chi dưới.
-    - Bệnh lý cơ tim (ảnh hưởng cả hai thất): Khởi phát đồng thời cả phù phổi và phù ngoại biên.
-- **Viêm cầu thận cấp**: Phù chủ yếu do thận giảm bài tiết dẫn đến ứ muối và nước, thường kèm theo tăng huyết áp, tiểu máu (nước tiểu màu xá xị) và tiểu đạm.
+    - Bệnh lý [[Tim|cơ tim]] (ảnh hưởng cả hai thất): Khởi phát đồng thời cả phù [[Phổi]] và phù ngoại biên.
+- **Viêm cầu [[Thận]] cấp**: Phù chủ yếu do [[Thận]] giảm bài tiết dẫn đến ứ muối và nước, thường kèm theo [[Tăng huyết áp]], tiểu máu (nước tiểu màu xá xị) và tiểu đạm.
 - **Suy thận**: Suy thận cấp hoặc mạn gây giữ muối và nước do giảm độ lọc cầu thận.
 - **Do thuốc**: Thuốc hạ áp có tác dụng giãn mạch (minoxidil, thuốc ức chế calci nhóm dihydropyridine) gây giữ muối và nước thứ phát.
 
 ##### 2. Tăng Áp Lực Thủy Tĩnh Tĩnh Mạch Do Tắc Nghẽn
 
-- **Tắc nghẽn tĩnh mạch khu trú**: Do huyết khối, đè ép từ bên ngoài hoặc sung huyết tĩnh mạch nội sinh, gây ra phù ở vùng cơ thể nằm phía xa vị trí tắc nghẽn. Các yếu tố nguy cơ ở trẻ em gồm: đặt catheter tĩnh mạch, tim bẩm sinh tím, viêm mạch máu, hội chứng antiphospholipid, đa hồng cầu, bất động, bệnh lý ác tính, hội chứng thận hư, hoặc yếu tố gen (thiếu hụt protein C, protein S, antithrombin III, đột biến yếu tố V Leiden).
-- **Xơ gan**: Tổn thương xơ hóa nhu mô gan không hồi phục dẫn đến tăng áp lực tĩnh mạch cửa và gia tăng áp lực tĩnh mạch bên dưới gan, gây ra báng bụng và phù chi dưới.
+- **Tắc nghẽn tĩnh mạch khu trú**: Do huyết khối, đè ép từ bên ngoài hoặc sung huyết tĩnh mạch nội sinh, gây ra phù ở vùng cơ thể nằm phía xa vị trí tắc nghẽn. Các yếu tố nguy cơ ở trẻ em gồm: đặt catheter tĩnh mạch, tim bẩm sinh tím, viêm mạch máu, hội chứng antiphospholipid, đa [[Hồng cầu]], bất động, bệnh lý ác tính, hội chứng thận hư, hoặc yếu tố gen (thiếu hụt protein C, protein S, antithrombin III, đột biến yếu tố V Leiden).
+- **Xơ [[Gan]]**: Tổn thương xơ hóa nhu mô [[Gan]] không hồi phục dẫn đến tăng áp lực tĩnh mạch cửa và gia tăng áp lực tĩnh mạch bên dưới gan, gây ra báng bụng và [[Phù|phù chi]] dưới.
 
 ##### 3. Giảm Áp Lực Keo Mạch Máu
 
@@ -59,15 +69,15 @@ Dẫn đến phù khu trú (phù bạch huyết) do lượng dịch mô kẽ gi�
     - _Phù không ấn lõm_: Cần chú ý phù bạch huyết hoặc phù niêm trước xương chày.
 - **Phân loại phạm vi phù**:
     - _Phù toàn thân_: Cần đánh giá xem có kèm tràn dịch màng phổi, phù phổi, báng bụng, phù bìu/âm hộ, hoặc vết rạn da.
-    - _Phù khu trú_: Xác định vùng tĩnh mạch hoặc bạch huyết bị tắc nghẽn, hoặc vùng tiếp xúc dị nguyên; kiểm tra các dấu hiệu viêm (sốt, đỏ, đau) để loại trừ viêm mô tế bào. Nếu phù khu trú ở vùng mặt/cổ, cần đánh giá ngay sự thông thoáng của đường thở.
+    - _Phù khu trú_: Xác định vùng tĩnh mạch hoặc bạch huyết bị tắc nghẽn, hoặc vùng tiếp xúc dị nguyên; kiểm tra các dấu hiệu viêm ([[Sốt]], đỏ, đau) để loại trừ viêm mô tế bào. Nếu phù khu trú ở vùng mặt/cổ, cần đánh giá ngay sự thông thoáng của đường thở.
 
 > **Mô Tả Bảng Thông Tin:** **Tên bảng:** Tóm tắt biểu hiện lâm sàng định hướng nguyên nhân phù ở trẻ em **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 1 (2020).pdf (Bài 46: Tiếp cận chẩn đoán trẻ phù) **Nội dung mô tả:**
 > 
-> - _Suy tim:_ Phù kèm vã mồ hôi, khó thở khi gắng sức, tim nhanh, thở nhanh, ran phổi, gan to, tiếng tim gallop.
+> - _Suy tim:_ Phù kèm vã mồ hôi, [[Khó thở]] khi gắng sức, tim nhanh, [[Khó thở|thở nhanh]], ran phổi, gan to, tiếng tim gallop.
 > - _Phù mạch / Dị ứng:_ Phù cấp tính kèm mề đay, dị ứng thức ăn/thuốc, có thể ảnh hưởng đường thở.
-> - _Bệnh gan mạn / Ruột mất đạm:_ Phù kèm giảm albumin máu, vàng da, chậm tăng cân, tiêu máu hoặc đau bụng.
-> - _Hội chứng thận hư:_ Phù toàn thân tiến triển rõ ở mi mắt, giảm albumin máu nặng, tiểu đạm ngưỡng thận hư, ít triệu chứng toàn thân khác.
-> - _Viêm cầu thận cấp:_ Phù kèm tiểu màu xá xị (tiểu máu đại thể), tăng huyết áp.
+> - _Bệnh gan mạn / Ruột mất đạm:_ Phù kèm giảm albumin máu, [[Vàng da]], chậm tăng cân, tiêu máu hoặc [[Đau bụng]].
+> - _Hội chứng thận hư:_ [[Phù|Phù toàn thân]] tiến triển rõ ở mi mắt, giảm albumin máu nặng, tiểu đạm ngưỡng thận hư, ít triệu chứng toàn thân khác.
+> - _Viêm cầu thận cấp:_ Phù kèm tiểu màu xá xị (tiểu máu đại thể), [[Tăng huyết áp]].
 > - _Suy thận mạn:_ Phù kèm chán ăn, chậm tăng trưởng, tăng creatinin/BUN.
 
 ---
@@ -77,7 +87,7 @@ Dẫn đến phù khu trú (phù bạch huyết) do lượng dịch mô kẽ gi�
 ##### 1. Xét nghiệm Nước Tiểu (Thực Hiện Ở Tất Cả Trẻ Phù)
 
 - **Que nhúng (Dipstick)**: Tầm soát đạm niệu (chủ yếu phát hiện albumin).
-- **Soi Cặn Lắng Nước Tiểu**: Tìm hồng cầu dị dạng, bạch cầu, trụ hồng cầu hoặc trụ hạt (phát hiện tổn thương cầu thận/thận).
+- **Soi Cặn Lắng Nước Tiểu**: Tìm [[Hồng cầu]] dị dạng, [[Bạch cầu]], trụ hồng cầu hoặc trụ hạt (phát hiện tổn thương cầu thận/thận).
 
 ##### 2. Xét Nghiệm Máu Ban Đầu
 
@@ -93,9 +103,9 @@ Dẫn đến phù khu trú (phù bạch huyết) do lượng dịch mô kẽ gi�
 
 ##### 4. Cận Lâm Sàng Hình Ảnh Học
 
-- **Siêu âm Doppler**: Đánh giá dòng chảy mạch máu khi nghi ngờ tắc nghẽn hoặc huyết khối tĩnh mạch.
-- **X-quang ngực**: Phát hiện bóng tim to, phù phổi, tràn dịch màng phổi.
-- **Siêu âm tim**: Đánh giá chức năng thất, áp lực động mạch phổi, tràn dịch màng ngoài tim.
+- **[[Siêu âm]] Doppler**: Đánh giá dòng chảy mạch máu khi nghi ngờ tắc nghẽn hoặc huyết khối tĩnh mạch.
+- **[[X-quang]] ngực**: Phát hiện bóng tim to, phù phổi, tràn dịch màng phổi.
+- **[[Siêu âm|Siêu âm tim]]**: Đánh giá chức năng thất, áp lực động mạch phổi, tràn dịch màng ngoài tim.
 - **Sinh thiết thận**: Cân nhắc khi nghi ngờ viêm cầu thận, suy thận cấp/bán cấp không giải thích được, hoặc hội chứng thận hư không đáp ứng điều trị.
 
 ---
@@ -104,7 +114,7 @@ Dẫn đến phù khu trú (phù bạch huyết) do lượng dịch mô kẽ gi�
 
 1. **Hạn chế muối và nước**: Chế độ ăn hạn chế muối khoảng $2 - 3\text{ mEq Na/kg/ngày}$ (xấp xỉ $460 - 690\text{ mg Na/ngày}$ ở trẻ $10\text{ kg}$). Hạn chế nước cần cẩn trọng ở trẻ có giảm thể tích tuần hoàn hiệu quả (hội chứng thận hư, xơ gan) để tránh nguy cơ tắc mạch.
 2. **Thuốc lợi tiểu**: Chỉ định lợi tiểu quai (Furosemide) ở trẻ phù có tăng thể tích nội mạch (suy tim, viêm cầu thận cấp). Tránh dùng lợi tiểu đơn độc khi có giảm thể tích nội mạch nặng.
-3. **Truyền Albumin tĩnh mạch**: Chỉ định khi giảm albumin máu nặng kèm báng bụng/tràn dịch màng phổi ảnh hưởng hô hấp, sốc giảm thể tích hoặc dọa rạn da. Liều truyền $0,5 - 1\text{ g/kg}$ Albumin $20%$ truyền trong 4 giờ phối hợp với Furosemide $1\text{ mg/kg}$ tiêm tĩnh mạch.
+3. **Truyền Albumin tĩnh mạch**: Chỉ định khi giảm albumin máu nặng kèm báng bụng/tràn dịch màng phổi ảnh hưởng hô hấp, [[Sốc]] giảm thể tích hoặc dọa rạn da. Liều truyền $0,5 - 1\text{ g/kg}$ Albumin $20%$ truyền trong 4 giờ phối hợp với Furosemide $1\text{ mg/kg}$ tiêm tĩnh mạch.
 
 ---
 

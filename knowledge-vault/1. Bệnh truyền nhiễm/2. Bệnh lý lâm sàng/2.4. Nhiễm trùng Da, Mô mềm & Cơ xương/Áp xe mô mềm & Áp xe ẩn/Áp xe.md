@@ -1,8 +1,16 @@
 ---
+title: "Áp xe"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Benhly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-[[Áp xe gan]]
-[[Áp xe não]]
-[[Áp xe ẩn]]
-[[Áp xe phổi]]
+
+## 📌 Danh Mục Nội Dung
+
+1. [[Áp xe gan]]
+2. [[Áp xe não]]
+3. [[Áp xe ẩn]]
+4. [[Áp xe phổi]]

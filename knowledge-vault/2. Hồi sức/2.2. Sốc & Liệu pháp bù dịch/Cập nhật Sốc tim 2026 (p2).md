@@ -1,14 +1,24 @@
-### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Cập Nhật Sốc Tim (Phần 2)
+---
+title: "Cập nhật Sốc tim 2026 (p2)"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
 
-#### 1.1. Giám Sát Huyết Động Xâm Lấn Bằng Catheter Động Mạch Phổi (PAC)
+### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Cập Nhật [[Sốc]] Tim (Phần 2)
 
-Giám sát huyết động trong sốc tim đóng vai trò quyết định trong việc định hướng điều trị và đưa ra các quyết định lâm sàng quan trọng. Trong đó, Catheter động mạch phổi (PAC) cung cấp các thông tin khách quan vô giá về tình trạng dịch thể, áp lực đổ đầy tim phải, mức độ cản mạch phổi, sự tương xứng trong phân phối oxy và đặc biệt là đánh giá chức năng của thất phải.
+#### 1.1. Giám Sát Huyết Động Xâm Lấn Bằng Catheter Động Mạch [[Phổi]] (PAC)
+
+Giám sát huyết động trong sốc tim đóng vai trò quyết định trong việc định hướng điều trị và đưa ra các quyết định lâm sàng quan trọng. Trong đó, Catheter động mạch [[Phổi]] (PAC) cung cấp các thông tin khách quan vô giá về tình trạng dịch thể, áp lực đổ đầy tim phải, mức độ cản mạch phổi, sự tương xứng trong phân phối oxy và đặc biệt là đánh giá chức năng của thất phải.
 
 Các thông số thu được từ PAC bao gồm áp lực nhĩ phải (RAP), áp lực động mạch phổi (PAP), áp lực bít mao mạch phổi (PCWP), cung lượng tim (CO), và độ bão hòa oxy máu tĩnh mạch trộn (\(MvO_{2}\)). Một thông số quan trọng thu được từ PAC là **tỷ lệ áp lực nhĩ phải trên áp lực bít mao mạch phổi (RA/PCWP)**, giúp đánh giá tình trạng suy thất phải và phân biệt các nguyên nhân gây sung huyết thứ phát do thất trái với tình trạng giảm thể tích tuần hoàn phát sinh trong quá trình điều trị tích cực.
 
 > **Hình 2: Các hồ sơ huyết động trong Sốc (Hemodynamic Profiles in Shock)** _Trích từ tài liệu: "PIIS1053077026000546.pdf" trong Notebook này._
 > 
-> **Mô tả chi tiết đồ thị:** Đồ thị phân loại các trạng thái sốc dựa trên sự tương quan giữa áp lực đổ đầy tim phải (Trục hoành: Right Heart Filling Pressures - CVP hoặc RA, đơn vị mmHg) và áp lực đổ đầy tim trái (Trục tung: Left Heart Filling Pressures - PCWP, đơn vị mmHg):
+> **Mô tả chi tiết đồ thị:** Đồ thị phân loại các [[Sốc|trạng thái sốc]] dựa trên sự tương quan giữa áp lực đổ đầy tim phải (Trục hoành: Right Heart Filling Pressures - CVP hoặc RA, đơn vị mmHg) và áp lực đổ đầy tim trái (Trục tung: Left Heart Filling Pressures - PCWP, đơn vị mmHg):
 > 
 > - **Hypovolemic (Giảm thể tích):** Cả CVP/RA và PCWP đều nằm ở mức rất thấp (dưới góc trái dưới của đồ thị).
 > - **RV Congestion (Sung huyết thất phải):** Áp lực nhĩ phải (CVP hoặc RA) tăng cao rõ rệt, trong khi PCWP vẫn ở mức thấp hoặc bình thường.
@@ -19,15 +29,15 @@ Mặc dù thử nghiệm ESCAPE cho thấy hiệu quả trung tính của việc
 
 #### 1.2. Hỗ Trợ Tuần Hoàn Cơ Học (MCS) Và Bằng Chứng Hiệu Quả Lâm Sàng
 
-Trong bối cảnh các thuốc vận mạch và tăng co bóp truyền thống mang lại nhiều tác dụng phụ bất lợi như tăng tiêu thụ oxy cơ tim (\(MVO_{2}\)), tăng nguy cơ loạn nhịp và suy giảm tuần hoàn vi mạch, các thiết bị hỗ trợ tuần hoàn cơ học (Mechanical Circulatory Support - MCS) tạm thời đã nổi lên như một liệu pháp bắc cầu hoặc hỗ trợ chính yếu trong sốc tim nặng hoặc trơ.
+Trong bối cảnh các thuốc vận mạch và tăng co bóp truyền thống mang lại nhiều tác dụng phụ bất lợi như tăng tiêu thụ oxy [[Tim|cơ tim]] (\(MVO_{2}\)), tăng nguy cơ loạn nhịp và suy giảm tuần hoàn vi mạch, các thiết bị hỗ trợ tuần hoàn cơ học (Mechanical Circulatory Support - MCS) tạm thời đã nổi lên như một liệu pháp bắc cầu hoặc hỗ trợ chính yếu trong sốc tim nặng hoặc trơ.
 
 Các thiết bị MCS phổ biến hiện nay bao gồm: Bóng đối xung động mạch chủ (IABP), thiết bị bơm máu trực tiếp từ thất trái ra động mạch chủ (Impella 2.5, CP, 5.0, 5.5), hệ thống hỗ trợ tuần hoàn ngoài cơ thể phương thức tĩnh - động mạch (VA-ECMO), và thiết bị hỗ trợ thất TandemHeart.
 
 > **Bảng 3: Tác Động Huyết Động Của Các Thiết Bị Hỗ Trợ Tuần Hoàn Cơ Học Khác Nhau (Hemodynamic Effects of Different Mechanical Circulatory Support Devices)** _Trích từ tài liệu: "PIIS1053077026000546.pdf" trong Notebook này._
 > 
-> | Thông số huyết động | Impella 2.5 / CP | Impella 5.0 / 5.5 | VA-ECMO | IABP | | :--- | :---: | :---: | :---: | :---: | | **Dòng chảy thất trái (LV flow)** | Giảm (\(\downarrow\)) | Giảm nhiều (\(\downarrow\downarrow\)) | Tăng (\(\uparrow\)) | Giảm (\(\downarrow\)) | | **Cung lượng tim (CO)** | Tăng (\(\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) | Tăng rất mạnh (\(\uparrow\uparrow\uparrow\)) | Tăng nhẹ (\(\uparrow\)) | | **Huyết áp động mạch trung bình (MAP)** | Tăng (\(\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) | Tăng nhẹ (\(\uparrow\)) | | **Áp lực bít mao mạch phổi (PCWP)** | Giảm nhiều (\(\downarrow\downarrow\)) | Giảm nhiều (\(\downarrow\downarrow\)) | Tăng (\(\uparrow\)) hoặc Giảm (\(\downarrow\)) | Giảm (\(\downarrow\)) | | **Hậu gánh thất trái (LV afterload)** | Giảm (\(\downarrow\)) | Giảm (\(\downarrow\)) | Tăng (\(\uparrow\)) | Giảm (\(\downarrow\)) | | **Áp lực tĩnh mạch trung tâm (CVP)** | Giảm (\(\downarrow\)) | Giảm (\(\downarrow\)) | Giảm mạnh (\(\downarrow\downarrow\downarrow\)) | Giảm hoặc Giữ nguyên (\(\le\) / \(\downarrow\)) | | **Tiêu thụ oxy cơ tim (\(MVO_{2}\))** | Giảm nhiều (\(\downarrow\downarrow\)) | Giảm nhiều (\(\downarrow\downarrow\)) | Tăng (\(\uparrow\)) hoặc Giữ nguyên (\(\ge\)) | Giảm (\(\downarrow\)) | | **Tưới máu mạch vành (Coronary perfusion)** | Tăng (\(\uparrow\)) | Tăng (\(\uparrow\)) | Tăng (\(\uparrow\)) | Tăng (\(\uparrow\)) | | **Tưới máu mô ngoại vi (Peripheral tissue perfusion)** | Tăng (\(\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) | Tăng rất mạnh (\(\uparrow\uparrow\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) |
+> | Thông số huyết động | Impella 2.5 / CP | Impella 5.0 / 5.5 | VA-ECMO | IABP | | :--- | :---: | :---: | :---: | :---: | | **Dòng chảy thất trái (LV flow)** | Giảm (\(\downarrow\)) | Giảm nhiều (\(\downarrow\downarrow\)) | Tăng (\(\uparrow\)) | Giảm (\(\downarrow\)) | | **Cung lượng tim (CO)** | Tăng (\(\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) | Tăng rất mạnh (\(\uparrow\uparrow\uparrow\)) | Tăng nhẹ (\(\uparrow\)) | | **Huyết áp động mạch trung bình (MAP)** | Tăng (\(\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) | Tăng nhẹ (\(\uparrow\)) | | **Áp lực bít mao mạch phổi (PCWP)** | Giảm nhiều (\(\downarrow\downarrow\)) | Giảm nhiều (\(\downarrow\downarrow\)) | Tăng (\(\uparrow\)) hoặc Giảm (\(\downarrow\)) | Giảm (\(\downarrow\)) | | **Hậu gánh thất trái (LV afterload)** | Giảm (\(\downarrow\)) | Giảm (\(\downarrow\)) | Tăng (\(\uparrow\)) | Giảm (\(\downarrow\)) | | **Áp lực tĩnh mạch trung tâm (CVP)** | Giảm (\(\downarrow\)) | Giảm (\(\downarrow\)) | Giảm mạnh (\(\downarrow\downarrow\downarrow\)) | Giảm hoặc Giữ nguyên (\(\le\) / \(\downarrow\)) | | **Tiêu thụ oxy [[Tim|cơ tim]] (\(MVO_{2}\))** | Giảm nhiều (\(\downarrow\downarrow\)) | Giảm nhiều (\(\downarrow\downarrow\)) | Tăng (\(\uparrow\)) hoặc Giữ nguyên (\(\ge\)) | Giảm (\(\downarrow\)) | | **Tưới máu mạch vành (Coronary perfusion)** | Tăng (\(\uparrow\)) | Tăng (\(\uparrow\)) | Tăng (\(\uparrow\)) | Tăng (\(\uparrow\)) | | **Tưới máu mô ngoại vi (Peripheral tissue perfusion)** | Tăng (\(\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) | Tăng rất mạnh (\(\uparrow\uparrow\uparrow\)) | Tăng mạnh (\(\uparrow\uparrow\)) |
 
-Về mặt bằng chứng lâm sàng, các phân tích gộp cho thấy mặc dù MCS cải thiện đáng kể huyết động vĩ mô (tăng MAP, giảm lactate máu rõ rệt so với IABP), thiết bị này chưa chứng minh được lợi ích cải thiện tỷ lệ tử vong 30 ngày một cách đồng nhất, đồng thời làm gia tăng tỷ lệ biến chứng chảy máu nặng và thiếu máu cục bộ chi dưới. Thử nghiệm lâm sàng CULPRIT-SHOCK cũng chỉ ra rằng việc sử dụng MCS có liên quan độc lập đến tỷ lệ tử vong và nhu cầu lọc máu cao hơn tại thời điểm 30 ngày và 1 năm (mặc dù kết quả này bị nhiễu do xu hướng chỉ định MCS cho những bệnh nhân có huyết động cực kỳ bất ổn và nguy kịch hơn trên lâm sàng).
+Về mặt bằng chứng lâm sàng, các phân tích gộp cho thấy mặc dù MCS cải thiện đáng kể huyết động vĩ mô (tăng MAP, giảm lactate máu rõ rệt so với IABP), thiết bị này chưa chứng minh được lợi ích cải thiện tỷ lệ tử vong 30 ngày một cách đồng nhất, đồng thời làm gia tăng tỷ lệ biến chứng [[Xuất huyết|chảy máu]] nặng và thiếu máu cục bộ chi dưới. Thử nghiệm lâm sàng CULPRIT-SHOCK cũng chỉ ra rằng việc sử dụng MCS có liên quan độc lập đến tỷ lệ tử vong và nhu cầu lọc máu cao hơn tại thời điểm 30 ngày và 1 năm (mặc dù kết quả này bị nhiễu do xu hướng chỉ định MCS cho những bệnh nhân có huyết động cực kỳ bất ổn và nguy kịch hơn trên lâm sàng).
 
 #### 1.3. Cơ Chế Bệnh Sinh Và Giải Pháp Cho Tình Trạng Quá Tải Thất Trái (Left Ventricular Distension) Trong Chạy VA-ECMO
 
@@ -35,7 +45,7 @@ Mặc dù VA-ECMO cung cấp sự hỗ trợ tuần hoàn toàn diện và cải
 
 Hậu quả lâm sàng của tình trạng này là sự căng giãn thất trái quá mức (diastolic distension), dẫn đến:
 
-- Phù phổi cấp huyết động nghiêm trọng do ứ máu phổi.
+- [[Phù]] phổi cấp huyết động nghiêm trọng do ứ máu phổi.
 - Ứ trệ dòng máu trong lòng thất trái, làm tăng nguy cơ hình thành huyết khối buồng tim.
 - Tăng sức căng thành thất và tiêu thụ oxy cơ tim, cản trở trực tiếp sự phục hồi của tế bào cơ tim.
 
@@ -46,7 +56,7 @@ Hậu quả lâm sàng của tình trạng này là sự căng giãn thất trá
 
 > **Bảng 4: So Sánh Các Biện Pháp Giải Áp Thất Trái (Comparison Between Various LV Unloading Modalities)** _Trích từ tài liệu: "PIIS1053077026000546.pdf" trong Notebook này._
 > 
-> | Phương thức | Ưu điểm | Nhược điểm | | :--- | :--- | :--- | | **Thuốc tăng co bóp (Inotropes)** | Đơn giản, chi phí thấp, không cần can thiệp dụng cụ bổ sung. | Làm tăng tiêu thụ oxy cơ tim, tăng nguy cơ loạn nhịp thất, hiệu quả giải áp hạn chế. | | **Bóng đối xung động mạch chủ (IABP)** | Rất quen thuộc, dễ thực hiện tại giường, tỷ lệ biến chứng thấp, giúp tăng cường tuần hoàn vành. | Chỉ giải áp được một phần, nguy cơ thiếu máu chi, yêu cầu nhịp tim đều, chống chỉ định khi có hở van động mạch chủ hoặc phình động mạch chủ. | | **Chọc vách liên nhĩ (Atrial septostomy)** | Hút máu trực tiếp qua nhĩ trái/nhĩ phải, giúp giải áp thất trái trực tiếp nếu có hở van hai lá nặng kèm theo. | Nguy cơ thủng hoặc tổn thương các cấu trúc tim lân cận, nguy cơ di lệch stent, cần sử dụng chất cản quang gây độc cho thận, cần phải can thiệp đóng lại sau khi bệnh nhân hồi phục. | | **Thiết bị Impella** | Giải áp thất trái trực tiếp và chủ động, không cần đồng bộ nhịp tim, giúp tăng cường thêm dòng chảy hệ thống. | Tăng nguy cơ tán huyết, chảy máu và huyết khối; nguy cơ thiếu máu chi; chống chỉ định khi có hở van động mạch chủ/phình động mạch chủ; dòng Impella 5.0 yêu cầu can thiệp ngoại khoa để đặt. | | **Ống thông giải áp ngoại khoa (Surgical decompression cannula)** | Giải áp thất trực tiếp, hiệu quả tối ưu. | Biến chứng kỹ thuật đặt; nếu đặt ở động mạch phổi có thể gây thiếu máu cục bộ phổi; yêu cầu mở xương ức hoặc mở ngực nhỏ. | | **Ống thông giải áp qua da (Percutaneous decompression cannula)** | Giải áp trực tiếp, ít xâm lấn hơn ngoại khoa. | Biến chứng liên quan đến kỹ thuật chọc và đặt ống thông qua da. |
+> | Phương thức | Ưu điểm | Nhược điểm | | :--- | :--- | :--- | | **Thuốc tăng co bóp (Inotropes)** | Đơn giản, chi phí thấp, không cần can thiệp dụng cụ bổ sung. | Làm tăng tiêu thụ oxy cơ tim, tăng nguy cơ loạn nhịp thất, hiệu quả giải áp hạn chế. | | **Bóng đối xung động mạch chủ (IABP)** | Rất quen thuộc, dễ thực hiện tại giường, tỷ lệ biến chứng thấp, giúp tăng cường tuần hoàn vành. | Chỉ giải áp được một phần, nguy cơ thiếu máu chi, yêu cầu nhịp tim đều, chống chỉ định khi có hở van động mạch chủ hoặc phình động mạch chủ. | | **Chọc vách liên nhĩ (Atrial septostomy)** | Hút máu trực tiếp qua nhĩ trái/nhĩ phải, giúp giải áp thất trái trực tiếp nếu có hở van hai lá nặng kèm theo. | Nguy cơ thủng hoặc tổn thương các cấu trúc tim lân cận, nguy cơ di lệch stent, cần sử dụng chất cản quang gây độc cho [[Thận]], cần phải can thiệp đóng lại sau khi bệnh nhân hồi phục. | | **Thiết bị Impella** | Giải áp thất trái trực tiếp và chủ động, không cần đồng bộ nhịp tim, giúp tăng cường thêm dòng chảy hệ thống. | Tăng nguy cơ tán huyết, [[Xuất huyết|chảy máu]] và huyết khối; nguy cơ thiếu máu chi; chống chỉ định khi có hở van động mạch chủ/phình động mạch chủ; dòng Impella 5.0 yêu cầu can thiệp ngoại khoa để đặt. | | **Ống thông giải áp ngoại khoa (Surgical decompression cannula)** | Giải áp thất trực tiếp, hiệu quả tối ưu. | Biến chứng kỹ thuật đặt; nếu đặt ở động mạch phổi có thể gây thiếu máu cục bộ phổi; yêu cầu mở xương ức hoặc mở ngực nhỏ. | | **Ống thông giải áp qua da (Percutaneous decompression cannula)** | Giải áp trực tiếp, ít xâm lấn hơn ngoại khoa. | Biến chứng liên quan đến kỹ thuật chọc và đặt ống thông qua da. |
 
 #### 1.4. Quy Trình Leo Thang (Escalation) Và Hạ Bậc (De-escalation) Hỗ Trợ Tuần Hoàn Cơ Học (MCS)
 

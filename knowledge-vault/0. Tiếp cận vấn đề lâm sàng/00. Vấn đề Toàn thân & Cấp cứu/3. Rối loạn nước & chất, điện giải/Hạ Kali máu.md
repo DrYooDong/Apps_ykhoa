@@ -1,16 +1,21 @@
 ---
+title: "Hạ Kali máu"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
 tags:
-  - Vande
-  - Roiloan
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+
 # 1. Cơ chế bệnh sinh
 
 Kali (K+) là cation nội bào chính của cơ thể, với 98% lượng Kali nằm trong tế bào và chỉ 2% nằm ở ngoại bào. Nồng độ Kali máu được duy trì trong khoảng hẹp (3.5 - 5.0 mmol/L) nhờ ==ba cơ chế chính==: 
-	(1) sự nhập Kali (qua đường tiêu hóa), 
+	(1) sự nhập Kali (qua [[Đường tiêu hóa]]), 
 	(2) sự phân bố Kali qua màng tế bào (nhờ bơm Na-K-ATPase) 
-	(3) và sự đào thải Kali (chủ yếu qua thận và một phần qua phân, mồ hôi).
+	(3) và sự đào thải Kali (chủ yếu qua [[Thận]] và một phần qua phân, mồ hôi).
 
-Sự suy giảm nồng độ Kali máu không nhất thiết phản ánh sự thiếu hụt tổng lượng Kali cơ thể. Ví dụ, sự gia tăng hoạt động của bơm Na-K-ATPase (dưới tác dụng của insulin, catecholamine/beta-2 agonist, hoặc kiềm máu) sẽ đẩy Kali từ ngoại bào vào nội bào, gây hạ Kali máu cấp tính dù tổng lượng Kali cơ thể bình thường.
+Sự suy giảm nồng độ Kali máu không nhất thiết phản ánh sự thiếu hụt tổng lượng Kali cơ thể. Ví dụ, sự gia tăng hoạt động của bơm Na-K-ATPase (dưới tác dụng của [[Insulin]], catecholamine/beta-2 agonist, hoặc kiềm máu) sẽ đẩy Kali từ ngoại bào vào nội bào, gây hạ Kali máu cấp tính dù tổng lượng Kali cơ thể bình thường.
 
 **Vai trò then chốt của Magie (Mg2+):** Magie nội bào có tác dụng ức chế kênh ROMK (Renal Outer Medullary K+ channel) ở phần xa của nephron. Khi thiếu hụt Magie, sự ức chế này mất đi, kênh ROMK mở toang khiến Kali liên tục bị thất thoát ra nước tiểu. Do đó, hạ Magie máu luôn dẫn đến tình trạng hạ Kali máu kháng trị nếu không được bù Magie song song.
 
@@ -20,36 +25,36 @@ Sự suy giảm nồng độ Kali máu không nhất thiết phản ánh sự th
 
 - **Nhẹ:** 3.0 - 3.4 mmol/L.
 - **Trung bình:** 2.5 - 2.9 mmol/L.
-- **Nặng:** < 2.5 mmol/L (đe dọa tính mạng do nguy cơ liệt cơ hô hấp và rối loạn nhịp tim).
+- **Nặng:** < 2.5 mmol/L (đe dọa tính mạng do nguy cơ liệt cơ hô hấp và rối loạn nhịp [[Tim]]).
 
 **Phân loại theo cơ chế bệnh sinh (quyết định chẩn đoán nguyên nhân):**
 
-- **Chuyển dịch nội bào (Transcellular shift):** Kiềm máu, dùng insulin, thuốc đồng vận beta-2, liệt chu kỳ nhiễm độc giáp.
-- **Mất qua thận (Renal loss):** Lợi tiểu (quai, thiazid), cường Aldosterone, toan ống thận (RTA), hạ Magie máu.
-- **Mất ngoài thận (Extrarenal loss):** Tiêu chảy, nôn ói, lạm dụng thuốc nhuận tràng, dẫn lưu dạ dày.
+- **Chuyển dịch nội bào (Transcellular shift):** Kiềm máu, dùng [[Insulin]], thuốc đồng vận beta-2, liệt chu kỳ nhiễm độc giáp.
+- **Mất qua [[Thận]] (Renal loss):** Lợi tiểu (quai, thiazid), cường Aldosterone, toan ống thận (RTA), hạ Magie máu.
+- **Mất ngoài thận (Extrarenal loss):** [[Tiêu chảy]], [[Nôn ói]], lạm dụng thuốc nhuận tràng, dẫn lưu dạ dày.
 - **Giảm lượng nhập:** Suy dinh dưỡng, nghiện rượu, nhịn đói lâu ngày.
 
 # 3. Các bước tiếp cận lâm sàng (Clinical approach)
 
 #### Bước 1: Ổn định ban đầu – Sàng lọc nguy cơ
 
-- **Nhận diện "Red flags":** Bệnh nhân có ==liệt cơ== (đặc biệt cơ hô hấp, khó thở), ==rối loạn nhịp tim==, hoặc K+ < 2.5 mmol/L cần được cấp cứu bằng Kali đường tĩnh mạch ngay lập tức và mắc monitor theo dõi liên tục.
+- **Nhận diện "Red flags":** Bệnh nhân có ==liệt cơ== (đặc biệt cơ hô hấp, [[Khó thở]]), ==rối loạn nhịp [[Tim]]==, hoặc K+ < 2.5 mmol/L cần được cấp cứu bằng Kali đường tĩnh mạch ngay lập tức và mắc monitor theo dõi liên tục.
 - **Đo điện tâm đồ (ECG) ngay:** 
 	- Tìm các dấu hiệu sớm như sóng T dẹt, xuất hiện sóng U, ST chênh xuống, QT kéo dài, nhịp nhanh thất hoặc xoắn đỉnh. 
 	- Tuy nhiên, cần nhớ ECG không phải lúc nào cũng tương quan tuyến tính với nồng độ Kali máu.
 
 #### Bước 2: Thu thập dữ kiện tập trung
 
-- **Loại trừ hạ Kali máu giả tạo (Pseudohypokalemia):** Xảy ra khi mẫu máu bị để ở *nhiệt độ phòng quá lâu* trong tình trạng bệnh nhân có ==tăng bạch cầu quá mức== (> 100.000/mm3) hoặc ==mới tiêm insulin==.
+- **Loại trừ hạ Kali máu giả tạo (Pseudohypokalemia):** Xảy ra khi mẫu máu bị để ở *nhiệt độ phòng quá lâu* trong tình trạng bệnh nhân có ==tăng [[Bạch cầu]] quá mức== (> 100.000/mm3) hoặc ==mới tiêm insulin==.
 - **Mô tả triệu chứng:** Yếu cơ (thường bắt đầu từ hai chi dưới, hướng lên trên), mệt mỏi, chuột rút, chướng bụng, táo bón/liệt ruột.
-- **Yếu tố nguy cơ & Thuốc:** Khai thác kỹ tiền sử dùng ==thuốc== lợi tiểu, thuốc nhuận tràng, insulin, salbutamol, theophylline, kháng sinh (amphotericin B, aminoglycoside), hoặc thói quen cam thảo. Bệnh nhân ==xơ gan hoặc suy tim== có nguy cơ loạn nhịp và bệnh não gan cao hơn ngay cả khi hạ Kali nhẹ.
+- **Yếu tố nguy cơ & Thuốc:** Khai thác kỹ tiền sử dùng ==thuốc== lợi tiểu, thuốc nhuận tràng, insulin, salbutamol, theophylline, [[Kháng sinh]] (amphotericin B, aminoglycoside), hoặc thói quen cam thảo. Bệnh nhân ==xơ [[Gan]] hoặc suy tim== có nguy cơ loạn nhịp và bệnh não [[Gan]] cao hơn ngay cả khi hạ Kali nhẹ.
 
 #### Bước 3: Lập danh sách chẩn đoán phân biệt
 
 |Cơ chế|Bệnh lý / Yếu tố nguy cơ điển hình|Đặc điểm lâm sàng / Cận lâm sàng chính|
 |:--|:--|:--|
 |**Dịch chuyển nội bào**|Dùng Insulin, Beta-2 agonist, Kiềm máu.|K+ niệu thấp (< 15 mEq/L). Không thiếu hụt tổng lượng K+.|
-|**Mất ngoài thận**|Tiêu chảy, nôn ói, lạm dụng nhuận tràng.|K+ niệu thấp (< 15 mEq/L). Toan chuyển hóa (tiêu chảy) hoặc kiềm chuyển hóa (nôn).|
+|**Mất ngoài thận**|[[Tiêu chảy]], [[Nôn ói]], lạm dụng nhuận tràng.|K+ niệu thấp (< 15 mEq/L). Toan chuyển hóa (tiêu chảy) hoặc kiềm chuyển hóa (nôn).|
 |**Mất qua thận**|Lợi tiểu, Cường Aldosterone, Toan ống thận (RTA).|K+ niệu cao (> 15 mEq/L). Huyết áp tăng (Cường Aldosterone) hoặc bình thường/hạ.|
 
 #### Bước 4: Biện luận lâm sàng (Thuật toán tiếp cận)
@@ -57,7 +62,7 @@ Sự suy giảm nồng độ Kali máu không nhất thiết phản ánh sự th
 Sử dụng **Kali niệu (U_K)** và **Tình trạng Toan-Kiềm** để biện luận:
 
 1. **Kali niệu thấp (U_K < 15 mEq/L hoặc < 1.5 mmol K+/mmol Creatinin):** Thận đang giữ Kali tốt.
-    - _Nguyên nhân:_ Mất qua đường tiêu hóa, qua da hoặc chuyển dịch nội bào.
+    - _Nguyên nhân:_ Mất qua [[Đường tiêu hóa]], qua da hoặc chuyển dịch nội bào.
 2. **Kali niệu cao (U_K > 15 mEq/L):** Thận đang thải Kali. Chuyển sang đánh giá thăng bằng kiềm toan.
     - _Có Toan chuyển hóa:_ Nghĩ đến Toan ống thận (RTA type I, II), hoặc toan ceton đái tháo đường.
     - _Có Kiềm chuyển hóa:_ Cần đánh giá thêm Huyết áp và Thể tích dịch.
@@ -66,8 +71,8 @@ Sử dụng **Kali niệu (U_K)** và **Tình trạng Toan-Kiềm** để biện
 
 #### Bước 5: Cận lâm sàng hợp lý
 
-- **First-line:** Điện giải đồ máu (luôn làm kèm Magie và Canxi máu), Khí máu động mạch/tĩnh mạch (đánh giá pH máu), Điện tâm đồ (ECG), Kali niệu (mẫu ngẫu nhiên hoặc 24h).
-- **Second-line:** Aldosterone, Renin máu (khi nghi ngờ cường Aldosterone); Cortisol máu (nghi ngờ Cushing); Siêu âm tuyến giáp/hóc môn tuyến giáp (nếu có yếu cơ chu kỳ).
+- **First-line:** Điện giải đồ máu (luôn làm kèm Magie và Canxi máu), [[Khí máu động mạch]]/tĩnh mạch (đánh giá pH máu), Điện tâm đồ (ECG), Kali niệu (mẫu ngẫu nhiên hoặc 24h).
+- **Second-line:** Aldosterone, Renin máu (khi nghi ngờ cường Aldosterone); Cortisol máu (nghi ngờ Cushing); [[Siêu âm]] tuyến giáp/hóc môn tuyến giáp (nếu có yếu cơ chu kỳ).
 
 #### Bước 6: Hướng xử trí ban đầu
 

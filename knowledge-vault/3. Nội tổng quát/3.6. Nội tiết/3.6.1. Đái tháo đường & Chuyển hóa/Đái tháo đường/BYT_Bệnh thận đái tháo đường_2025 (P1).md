@@ -1,3 +1,15 @@
+---
+title: "BYT_Bệnh thận đái tháo đường_2025 (P1)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/noi-tiet
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 # TÓM TẮT HƯỚNG DẪN BỘ Y TẾ (PHẦN 1)
 
 _Văn bản gốc: "Hướng dẫn chẩn đoán và điều trị bệnh thần kinh đái tháo đường" (Ban hành kèm theo Quyết định số 3510/QĐ-BYT ngày 11 tháng 11 năm 2025 của Bộ trưởng Bộ Y tế)_
@@ -18,10 +30,10 @@ _Văn bản gốc: "Hướng dẫn chẩn đoán và điều trị bệnh thần
     - Theo Hội Đái tháo đường Hoa Kỳ (2022), biến chứng thần kinh là biến chứng mạn tính phổ biến nhất, ảnh hưởng đến **hơn 50%** người bệnh ĐTĐ trong suốt cuộc đời của họ.
     - Theo Liên đoàn Đái tháo đường Quốc tế (2021), tỷ lệ bệnh thần kinh ngoại biên dao động trong khoảng **30% - 50%** bệnh nhân ĐTĐ.
 - **Tại Việt Nam:**
-    - Theo số liệu thống kê năm 2020, biến chứng thần kinh ngoại biên xuất hiện ở **trên 38%** người bệnh ĐTĐ típ 2, chiếm tỷ lệ cao hơn cả biến chứng thận và biến chứng tim mạch.
+    - Theo số liệu thống kê năm 2020, biến chứng thần kinh ngoại biên xuất hiện ở **trên 38%** người bệnh ĐTĐ típ 2, chiếm tỷ lệ cao hơn cả biến chứng [[Thận]] và biến chứng [[Tim]] mạch.
 - **Tần suất theo thể lâm sàng:**
     - **Bệnh đa dây thần kinh ĐTĐ** là thể thường gặp nhất, chiếm **70% - 80%** trong tổng số các bệnh lý thần kinh do ĐTĐ.
-    - **Bệnh thần kinh tự chủ tim mạch (CAN):** Ở bệnh nhân ĐTĐ típ 1, tỷ lệ mắc tăng mạnh theo thời gian, đạt ít nhất **30% sau 20 năm** mắc bệnh (ở thanh thiếu niên ĐTĐ típ 1 và 2 có tỷ lệ ít nhất **20%**). Ở bệnh nhân ĐTĐ típ 2, tỷ lệ này có thể lên tới **60% sau 15 năm**.
+    - **Bệnh thần kinh tự chủ [[Tim]] mạch (CAN):** Ở bệnh nhân ĐTĐ típ 1, tỷ lệ mắc tăng mạnh theo thời gian, đạt ít nhất **30% sau 20 năm** mắc bệnh (ở thanh thiếu niên ĐTĐ típ 1 và 2 có tỷ lệ ít nhất **20%**). Ở bệnh nhân ĐTĐ típ 2, tỷ lệ này có thể lên tới **60% sau 15 năm**.
 
 ---
 
@@ -38,7 +50,7 @@ Các tế bào thần kinh rất dễ bị tổn thương khi nồng độ gluco
     - **Con đường hexosamine**.
     - **Con đường Protein Kinase C (PKC)**.
     - **Con đường hình thành các sản phẩm glycation bền vững (AGE)**.
-4. **Hậu quả cơ quan:** Sự hoạt hóa của các con đường chuyển hóa bất thường này dẫn đến tăng stress oxy hóa tế bào, đề kháng insulin, phản ứng viêm cục bộ và tổn thương các mao mạch (vasa nervorum) nuôi dưỡng dây thần kinh.
+4. **Hậu quả cơ quan:** Sự hoạt hóa của các con đường chuyển hóa bất thường này dẫn đến tăng stress oxy hóa tế bào, đề kháng [[Insulin]], phản ứng viêm cục bộ và tổn thương các mao mạch (vasa nervorum) nuôi dưỡng dây thần kinh.
 
 ---
 

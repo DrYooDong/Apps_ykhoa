@@ -1,14 +1,17 @@
 ---
 title: "SO SÁNH PHÁC ĐỒ APASL & BYT 2026"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Bệnh lý cụ thể", "Viêm gan", "Viêm gan siêu vi", "VGSV-B"]
-last_updated: "2026-07-28"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-
 
 # 
 
-So Sánh Phác Đồ Viêm Gan B Mạn (CHB) — APASL 2026 vs. BYT Việt Nam 2026
+So Sánh Phác Đồ Viêm [[Gan]] B Mạn (CHB) — APASL 2026 vs. BYT Việt Nam 2026
 
 QĐ 1740/QĐ-BYT (16/6/2026)  |  APASL 2026 — Hepatology International
 
@@ -53,7 +56,7 @@ Tương đồng
 | :---- | :---- | :---- | :---- |
 | Chiến lược tổng thể | **Treat-all** B1 Mở rộng cho cả bệnh nhân low-viremia, xơ hóa sớm | **4 tiêu chí cụ thể:** ① Xơ hóa ≥F2 ② HBV DNA \>2000 \+ ALT \>ULN ③ Bệnh đi kèm/đồng nhiễm ④ ALT tăng không có DNA | ⚠️ APASL điều trị nhiều hơn BYT. BYT thực tế hơn với nguồn lực VN. |
 | Ngưỡng HBV DNA | Detectable (bất kỳ) \+ ALT \>ULN | \>2,000 IU/mL \+ ALT \>ULN *hoặc* \>20,000 IU/mL (HBeAg+) | APASL: điều trị low-level viremia. BYT: ngưỡng rõ ràng hơn. |
-| Ngưỡng ALT ULN | ≥40 IU/L (ULN chuẩn cũ) | Nam: 30 U/L; Nữ: 19 U/L (ULN mới, thấp hơn) | BYT dùng ULN thấp hơn → phát hiện tổn thương gan sớm hơn. |
+| Ngưỡng ALT ULN | ≥40 IU/L (ULN chuẩn cũ) | Nam: 30 U/L; Nữ: 19 U/L (ULN mới, thấp hơn) | BYT dùng ULN thấp hơn → phát hiện tổn thương [[Gan]] sớm hơn. |
 | Bệnh nhân nguy cơ cao (xơ gan, HCC, ghép, ức chế MD) | Điều trị ngay, bất kể DNA/ALT A1 | Điều trị ngay, bất kể DNA/ALT | ✅ Đồng thuận |
 | Xơ hóa sớm (F0-F1) | Nên điều trị (B1) — đặc biệt có MAFLD, tiền sử gia đình xơ gan/HCC | Chỉ điều trị nếu có tiêu chí khác đi kèm | APASL chủ động hơn ở giai đoạn sớm. |
 | HCC risk from HBsAg | HBsAg ≥100 IU/mL → nguy cơ HCC tăng 3.6× nếu ≥1000 IU/mL | Không phân tầng theo HBsAg riêng cho HCC risk | APASL nhấn mạnh vai trò HBsAg tuyệt đối. |
@@ -63,9 +66,9 @@ Tương đồng
 | Nhóm thuốc | 🌏 APASL 2026 | 🇻🇳 BYT VN 2026 | Ý nghĩa lâm sàng   |
 | :---- | :---- | :---- | :---- |
 | NUC đầu tay | TAFTDFETVTMF\* \*TMF: Trung Quốc | TDF 300mg/ngàyTAF 25mg/ngàyETV 0.5mg/ngày | TMF chưa có tại VN. 3 NUC còn lại: tương đồng. |
-| TAF vs TDF — ưu tiên | TAF ưu tiên hơn TDF ở bệnh nhân CKD, loãng xương, cao tuổi A1 | TAF ưu tiên hơn TDF ở bệnh nhân có nguy cơ thận/xương — tương tự BYT có bảng liều CKD | ✅ Đồng thuận về ưu tiên TAF trong CKD. |
+| TAF vs TDF — ưu tiên | TAF ưu tiên hơn TDF ở bệnh nhân CKD, loãng xương, cao tuổi A1 | TAF ưu tiên hơn TDF ở bệnh nhân có nguy cơ [[Thận]]/xương — tương tự BYT có bảng liều CKD | ✅ Đồng thuận về ưu tiên TAF trong CKD. |
 | Peg-IFN phối hợp NUC (add-on) | **Có** B1 Thêm Peg-IFN khi HBsAg \<1,500 IU/mL trong lúc dùng NUC → tăng **15×** HBsAg seroclearance Dùng đến 96 tuần | Không đề cập Peg-IFN chỉ dùng đơn độc trong các trường hợp đặc biệt | ⚠️ Đây là chiến lược tiên tiến nhất để đạt *functional cure*. VN chưa tích hợp. |
-| Peg-IFN đơn độc | Lựa chọn thay thế đầu tay nếu không chống chỉ định A1 | Chỉ dùng trong trường hợp đặc biệt (trẻ em, muốn có thai, HBeAg+) | APASL đề cao Peg-IFN hơn; BYT dùng thận trọng hơn. |
+| Peg-IFN đơn độc | Lựa chọn thay thế đầu tay nếu không chống chỉ định A1 | Chỉ dùng trong trường hợp đặc biệt (trẻ em, muốn có thai, HBeAg+) | APASL đề cao Peg-IFN hơn; BYT dùng [[Thận]] trọng hơn. |
 | Lamivudine, Adefovir | Không khuyến cáo (xơ gan mất bù) | Không khuyến cáo dùng đầu tay | ✅ Đồng thuận: tránh LAM/ADV do kháng thuốc cao. |
 
 3\. Mục Tiêu Điều Trị (Treatment Goals)
@@ -103,7 +106,7 @@ Tương đồng
 
 | Nội dung | 🌏 APASL 2026 | 🇻🇳 BYT VN 2026 | Ý nghĩa lâm sàng   |
 | :---- | :---- | :---- | :---- |
-| Sàng lọc HCC — xơ gan | Siêu âm \+ AFP mỗi 6 tháng; suốt đời kể cả sau HBsAg clearance | Siêu âm \+ AFP mỗi 12–24 tuần (6 tháng) | ✅ Tương đồng về tần suất. APASL nhấn mạnh: tiếp tục dù đã mất HBsAg. |
+| Sàng lọc HCC — xơ gan | [[Siêu âm]] \+ AFP mỗi 6 tháng; suốt đời kể cả sau HBsAg clearance | [[Siêu âm]] \+ AFP mỗi 12–24 tuần (6 tháng) | ✅ Tương đồng về tần suất. APASL nhấn mạnh: tiếp tục dù đã mất HBsAg. |
 | Phân tầng nguy cơ HCC | HBsAg ≥1,000 IU/mL → nguy cơ HCC cao 3.6× HBsAg \<10 IU/mL → tiên lượng mất HBsAg | Không phân tầng cụ thể theo ngưỡng HBsAg | APASL ứng dụng qHBsAg trong tiên lượng HCC. |
 | Sàng lọc cộng đồng | Sàng lọc toàn dân tại vùng \>2% lưu hành B1 | Sàng lọc theo nhóm nguy cơ cao | APASL: WHO 2030 elimination — sàng lọc rộng hơn. |
 | Xét nghiệm HBV DNA | Dùng real-time qPCR, LLOQ \<10–20 IU/mL B1 | HBV DNA định lượng chuẩn | ✅ Tương đồng |

@@ -1,21 +1,31 @@
-### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Cập Nhật Sốc Tim (Phần 1)
+---
+title: "Cập nhật Sốc tim 2026 (p1)"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
 
-#### 1.1. Định Nghĩa, Dịch Tễ Học Và Gánh Nặng Lâm Sàng Của Sốc Tim (CS)
+### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Cập Nhật [[Sốc]] Tim (Phần 1)
+
+#### 1.1. Định Nghĩa, Dịch Tễ Học Và Gánh Nặng Lâm Sàng Của [[Sốc]] Tim (CS)
 
 Sốc tim (Cardiogenic Shock - CS) vẫn là một trong những nguyên nhân hàng đầu gây tử vong tại bệnh viện. Mỗi năm, ước tính có khoảng 40.000 đến 50.000 bệnh nhân tại Hoa Kỳ và 60.000 đến 70.000 bệnh nhân tại Châu Âu được điều trị vì sốc tim. Mặc dù đã có những tiến bộ lớn trong liệu pháp hỗ trợ tuần hoàn cơ học (Mechanical Circulatory Support - MCS) và dược lý học, kết quả ngắn hạn vẫn rất nghèo nàn với tỷ lệ tử vong trong vòng 30 ngày dao động từ 30% đến 60%.
 
-Nhồi máu cơ tim cấp (AMI) là nguyên nhân phổ biến nhất gây ra sốc tim, chiếm hơn 80% tổng số các trường hợp. Tỷ lệ xuất hiện sốc tim sau nhồi máu cơ tim cấp dao động từ 5% đến 15%. Sự duy trì tỷ lệ tử vong cao trong các đăng ký đương đại phản ánh tình trạng già hóa dân số và sự gia tăng các bệnh lý đi kèm ở bệnh nhân.
+Nhồi máu [[Tim|cơ tim]] cấp (AMI) là nguyên nhân phổ biến nhất gây ra sốc tim, chiếm hơn 80% tổng số các trường hợp. Tỷ lệ xuất hiện sốc tim sau nhồi máu [[Tim|cơ tim]] cấp dao động từ 5% đến 15%. Sự duy trì tỷ lệ tử vong cao trong các đăng ký đương đại phản ánh tình trạng già hóa dân số và sự gia tăng các bệnh lý đi kèm ở bệnh nhân.
 
 Về mặt định nghĩa, sốc tim được hiểu rộng rãi là tình trạng giảm tưới máu cơ quan đích do rối loạn chức năng tim nguyên phát (bao gồm cấu trúc hoặc dẫn truyền), biểu hiện qua các bằng chứng lâm sàng và hóa sinh của việc cung cấp oxy cho mô không đủ để đáp ứng nhu cầu chuyển hóa.
 
-- **Tiêu chuẩn huyết động kinh điển:** Huyết áp tâm thu (SBP) \(< 90\text{ mmHg}\), Chỉ số tim (Cardiac Index - CI) \(< 2.2\text{ L/min/m}^2\), chênh lệch oxy động - tĩnh mạch tăng \(> 5.5\text{ mL/dL}\) cùng với áp lực bít mao mạch phổi (PCWP) \(\ge 15\text{ mmHg}\).
+- **Tiêu chuẩn huyết [[Động kinh]] điển:** Huyết áp tâm thu (SBP) \(< 90\text{ mmHg}\), Chỉ số tim (Cardiac Index - CI) \(< 2.2\text{ L/min/m}^2\), chênh lệch oxy động - tĩnh mạch tăng \(> 5.5\text{ mL/dL}\) cùng với áp lực bít mao mạch [[Phổi]] (PCWP) \(\ge 15\text{ mmHg}\).
 - **Sốc tim huyết áp bình thường (Normotensive shock):** Các cơ chế bù trừ co mạch của cơ thể có thể duy trì huyết áp tạm thời trong giới hạn bình thường, tuy nhiên tình trạng giảm tưới máu mô vẫn âm thầm diễn tiến. Những bệnh nhân thuộc nhóm này thường có tiên lượng lâm sàng rất xấu.
 
 ---
 
 > **Bảng 1: Định nghĩa Sốc Tim trong các Thử nghiệm Lâm sàng và Hướng dẫn (Definition of Cardiogenic Shock in Clinical Trials and Guidelines)** _Trích từ tài liệu: "PIIS1053077026000546.pdf" trong Notebook này._
 > 
-> | Nghiên cứu / Hướng dẫn | Tiêu chuẩn lâm sàng và huyết động | | :--- | :--- | | **SHOCK** | 1. SBP < 90 mmHg trong \(\ge 30\) phút hoặc cần hỗ trợ để duy trì SBP \(\ge 90\) mmHg; VÀ2. Giảm tưới máu cơ quan đích (nước tiểu < 30 mL/h hoặc chi lạnh và nhịp tim > 60 bpm); VÀ3. Tiêu chuẩn huyết động (không bắt buộc nếu có nhồi máu vùng trước hoặc sung huyết phổi trên X-quang): CI \(\le 2.2\text{ L/min/m}^2\) VÀ PCWP \(\ge 15\text{ mmHg}\). | | **TRIUMPH** | 1. Thông thoáng động mạch liên quan nhồi máu (IRA) tự phát hoặc sau can thiệp mạch vành qua da (PCI); VÀ2. Sốc tim kháng trị > 1 giờ sau PCI với SBP < 100 mmHg bất chấp dùng thuốc vận mạch (dopamine \(\ge 7\ \mu\text{g/kg/min}\) hoặc norepinephrine/epinephrine \(\ge 0.15\ \mu\text{g/kg/min}\)); VÀ3. Giảm tưới máu cơ quan đích; VÀ4. Tiêu chuẩn lâm sàng/huyết động cho thấy tăng áp lực đổ đầy thất trái; VÀ5. Phân suất tống máu thất trái LVEF < 40%. | | **IABP-SHOCK II** | 1. SBP < 90 mmHg trong \(\ge 30\) phút hoặc cần catecholamine để duy trì SBP > 90 mmHg; VÀ2. Sung huyết phổi trên lâm sàng; VÀ3. Suy giảm tưới máu tạng với ít nhất 1 tiêu chuẩn: Thay đổi trạng thái tâm thần; Da/chi lạnh ẩm; Nước tiểu < 30 mL/h; Lactate > 2.0 mmol/L. | | **CULPRIT-SHOCK** | 1. Lên kế hoạch tái tưới máu sớm bằng PCI; VÀ2. Bệnh mạch vành nhiều nhánh (hẹp > 70% ở ít nhất 2 nhánh động mạch lớn \(\ge 2\text{ mm}\)) với tổn thương thủ phạm được xác định; VÀ3. SBP < 90 mmHg trong > 30 phút hoặc cần catecholamine để duy trì SBP > 90 mmHg; VÀ4. Sung huyết phổi; VÀ5. Suy giảm tưới máu tạng với ít nhất 1 tiêu chuẩn: Thay đổi trạng thái tâm thần; Da/chi lạnh ẩm; Nước tiểu < 30 mL/h; Lactate > 2.0 mmol/L. | | **ESC Heart Failure Guidelines** | SBP < 90 mmHg kèm thể tích tuần hoàn đầy đủ và các dấu hiệu lâm sàng hoặc xét nghiệm của giảm tưới máu.- _Lâm sàng:_ Chi lạnh, thiểu niệu, lú lẫn, chóng mặt, huyết áp kẹt (narrow pulse pressure).- _Xét nghiệm:_ Toan chuyển hóa, tăng lactate, tăng creatinine. |
+> | Nghiên cứu / Hướng dẫn | Tiêu chuẩn lâm sàng và huyết động | | :--- | :--- | | **SHOCK** | 1. SBP < 90 mmHg trong \(\ge 30\) phút hoặc cần hỗ trợ để duy trì SBP \(\ge 90\) mmHg; VÀ2. Giảm tưới máu cơ quan đích (nước tiểu < 30 mL/h hoặc chi lạnh và nhịp tim > 60 bpm); VÀ3. Tiêu chuẩn huyết động (không bắt buộc nếu có nhồi máu vùng trước hoặc sung huyết [[Phổi]] trên [[X-quang]]): CI \(\le 2.2\text{ L/min/m}^2\) VÀ PCWP \(\ge 15\text{ mmHg}\). | | **TRIUMPH** | 1. Thông thoáng động mạch liên quan nhồi máu (IRA) tự phát hoặc sau can thiệp mạch vành qua da (PCI); VÀ2. Sốc tim kháng trị > 1 giờ sau PCI với SBP < 100 mmHg bất chấp dùng thuốc vận mạch (dopamine \(\ge 7\ \mu\text{g/kg/min}\) hoặc norepinephrine/epinephrine \(\ge 0.15\ \mu\text{g/kg/min}\)); VÀ3. Giảm tưới máu cơ quan đích; VÀ4. Tiêu chuẩn lâm sàng/huyết động cho thấy tăng áp lực đổ đầy thất trái; VÀ5. Phân suất tống máu thất trái LVEF < 40%. | | **IABP-SHOCK II** | 1. SBP < 90 mmHg trong \(\ge 30\) phút hoặc cần catecholamine để duy trì SBP > 90 mmHg; VÀ2. Sung huyết phổi trên lâm sàng; VÀ3. Suy giảm tưới máu tạng với ít nhất 1 tiêu chuẩn: Thay đổi trạng thái tâm thần; Da/chi lạnh ẩm; Nước tiểu < 30 mL/h; Lactate > 2.0 mmol/L. | | **CULPRIT-SHOCK** | 1. Lên kế hoạch tái tưới máu sớm bằng PCI; VÀ2. Bệnh mạch vành nhiều nhánh (hẹp > 70% ở ít nhất 2 nhánh động mạch lớn \(\ge 2\text{ mm}\)) với tổn thương thủ phạm được xác định; VÀ3. SBP < 90 mmHg trong > 30 phút hoặc cần catecholamine để duy trì SBP > 90 mmHg; VÀ4. Sung huyết phổi; VÀ5. Suy giảm tưới máu tạng với ít nhất 1 tiêu chuẩn: Thay đổi trạng thái tâm thần; Da/chi lạnh ẩm; Nước tiểu < 30 mL/h; Lactate > 2.0 mmol/L. | | **ESC Heart Failure Guidelines** | SBP < 90 mmHg kèm thể tích tuần hoàn đầy đủ và các dấu hiệu lâm sàng hoặc xét nghiệm của giảm tưới máu.- _Lâm sàng:_ Chi lạnh, thiểu niệu, lú lẫn, chóng mặt, huyết áp kẹt (narrow pulse pressure).- _Xét nghiệm:_ Toan chuyển hóa, tăng lactate, tăng creatinine. |
 
 ---
 
@@ -46,9 +56,9 @@ At trung tâm của vòng xoắn này là tổn thương cơ tim ban đầu gây
 >     - _Giai đoạn nặng (Stage D, E):_ Giãn mạch liệt (paralytic dilatation) toàn bộ tiểu động mạch (Ad) và tiểu tĩnh mạch (Vd), ứ trệ mao mạch nghiêm trọng, rò rỉ dịch mao mạch do tăng tính thấm thành mạch và hình thành vi huyết khối lan tỏa (microthrombosis).
 > 3. **Tế bào và Ty thể:** Thiếu oxy kéo dài dẫn đến hủy hoại ty thể (mitochondrial loss), ngừng chu trình Krebs và chuyển hóa kỵ khí nặng nề.
 > 4. **Tổn thương đa cơ quan:**
->     - _Phổi:_ Tổn thương màng phế nang - mao mạch (ACM), phù phổi kẽ dẫn đến thiếu oxy máu và toan hóa.
->     - _Gan:_ Sung huyết gan (congestive hepatopathy) và tổn thương gan cấp (Acute Liver Injury), biểu hiện bằng sự tăng vọt các men GGT, Bilirubin, ALT, AST.
->     - _Thận:_ Thiếu máu cục bộ gây suy thận cấp biểu hiện bằng thiểu niệu, tăng Creatinine, BUN, Cystatin C và giảm eGFR.
+>     - _Phổi:_ Tổn thương màng phế nang - mao mạch (ACM), [[Phù]] phổi kẽ dẫn đến thiếu oxy máu và toan hóa.
+>     - _Gan:_ Sung huyết [[Gan]] (congestive hepatopathy) và tổn thương [[Gan]] cấp (Acute Liver Injury), biểu hiện bằng sự tăng vọt các men GGT, Bilirubin, ALT, AST.
+>     - _Thận:_ Thiếu máu cục bộ gây suy [[Thận]] cấp biểu hiện bằng thiểu niệu, tăng Creatinine, BUN, Cystatin C và giảm eGFR.
 >     - _Đông máu:_ Kích hoạt dòng thác SIRS tiến triển thành đông máu nội quản rải rác (DIC) và hình thành huyết khối (thrombosis).
 >     - _Ruột:_ Tăng tính thấm thành ruột, dịch chuyển vi khuẩn (bacterial translocation) và giải phóng nội độc tố/cytokine vào tuần hoàn.
 
@@ -70,10 +80,10 @@ Sốc tim dẫn đến những thay đổi phức tạp ở cấp độ tế bà
 
 - **Cardiac Troponin (cTn):** Là chỉ số vàng để đánh giá mức độ hoại tử tế bào cơ tim. Sự gia tăng tỷ lệ troponin tương quan chặt chẽ với nguy cơ loạn nhịp thất, ngưng tim và sự tiến triển thành sốc tim ở bệnh nhân nhồi máu cơ tim, suy tim.
 - **BNP và NT-proBNP:** Giải phóng từ tâm thất để đáp ứng với tình trạng căng thành tim do tăng áp lực và thể tích. Mặc dù giá trị chẩn đoán sốc tim chưa được thống nhất hoàn toàn do tính nhạy cao nhưng đặc hiệu thấp, nồng độ NT-proBNP khi kết hợp với IL-6 có vai trò tiên lượng sống sót rất tốt.
-- **Soluble ST2 (sST2):** Một chỉ số sinh học có giá trị tiên lượng cao trong suy tim và sốc tim. Điểm ưu việt của sST2 là nồng độ huyết thanh luôn duy trì ổn định, không bị nhiễu bởi tình trạng suy thận hay chỉ số khối cơ thể (BMI) của bệnh nhân (khác với natriuretic peptides). Chỉ số sST2 kết hợp với NT-proBNP giúp dự đoán tỷ lệ tử vong 30 ngày và 90 ngày ở bệnh nhân sốc tim do hội chứng vành cấp (ACS) và được tích hợp vào thang điểm CardShock.
+- **Soluble ST2 (sST2):** Một chỉ số sinh học có giá trị tiên lượng cao trong suy tim và sốc tim. Điểm ưu việt của sST2 là nồng độ huyết thanh luôn duy trì ổn định, không bị nhiễu bởi tình trạng suy [[Thận]] hay chỉ số khối cơ thể (BMI) của bệnh nhân (khác với natriuretic peptides). Chỉ số sST2 kết hợp với NT-proBNP giúp dự đoán tỷ lệ tử vong 30 ngày và 90 ngày ở bệnh nhân sốc tim do hội chứng vành cấp (ACS) và được tích hợp vào thang điểm CardShock.
 - **Dipeptidyl Peptidase 3 (DPP3):** Một protease tuần hoàn liên quan chặt chẽ đến huyết động của tim và thận. DPP3 hoạt động như một chất ức chế cơ tim trực tiếp; nồng độ DPP3 tuần hoàn cao liên quan đến tỷ lệ tử vong ngắn hạn cao, giảm mức lọc cầu thận eGFR, tăng lactate và creatinine. DPP3 tăng cao rõ rệt ở bệnh nhân sốc tim kháng trị so với sốc tim không kháng trị.
 - **Adrenomedullin (bio-ADM):** Một hormone giãn mạch có giá trị tiên lượng cao sau 48 giờ kể từ khi chẩn đoán sốc tim, phản ánh tình trạng huyết động bị suy giảm và rối loạn chức năng đa tạng.
-- **Angiopoietin 2:** Yếu tố tham gia duy trì tính toàn vẹn mạch máu. Sự gia tăng nồng độ angiopoietin 2 ở thời điểm 72 giờ liên quan chặt chẽ với sự xuất hiện của tổn thương thận cấp (AKI), biến chứng chảy máu và suy giảm tái tưới máu cơ tim.
+- **Angiopoietin 2:** Yếu tố tham gia duy trì tính toàn vẹn mạch máu. Sự gia tăng nồng độ angiopoietin 2 ở thời điểm 72 giờ liên quan chặt chẽ với sự xuất hiện của tổn thương thận cấp (AKI), biến chứng [[Xuất huyết|chảy máu]] và suy giảm tái tưới máu cơ tim.
 - **Điểm tổ hợp 4 Protein (Complex of 4 Proteins Score):** Bao gồm B-2 microglobulin, protein gắn acid béo ở gan (L-FABP), fructose-bisphosphate aldolase B và SerpinG1. Điểm số này tăng vọt trong bối cảnh tổn thương đa cơ quan và phản ứng viêm hệ thống nặng, giúp tái phân loại và nâng cao độ chính xác dự đoán tử vong khi kết hợp với thang điểm CardShock và nhóm IABP-SHOCK II.
 
 #### 1.5. Các Thang Điểm Tiên Lượng Lâm Sàng Trong Sốc Tim

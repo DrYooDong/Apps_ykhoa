@@ -1,9 +1,13 @@
 ---
 title: "Sơ đồ lựa chọn Test thống kê (Statistical Tests)"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Thống kê sinh học (Biostatistics)"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Thống kê y học, tôi xin trình bày hướng dẫn lựa chọn các thuật toán thống kê (Statistical Tests) dựa trên các nguyên tắc phương pháp luận được cung cấp trong tài liệu.
 
 Việc lựa chọn sai test thống kê sẽ dẫn đến kết quả phân tích bị sai lệch, từ đó đưa ra các kết luận lâm sàng không chính xác. Để chọn đúng test, nhà nghiên cứu cần trải qua một tư duy logic dựa trên 3 câu hỏi cốt lõi.

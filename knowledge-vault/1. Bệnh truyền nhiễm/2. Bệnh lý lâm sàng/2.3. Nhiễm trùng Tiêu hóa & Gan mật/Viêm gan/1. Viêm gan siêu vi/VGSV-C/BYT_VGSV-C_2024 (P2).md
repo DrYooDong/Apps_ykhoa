@@ -1,4 +1,15 @@
-# BÀI HỌC CHUYÊN SÂU: HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ BỆNH VIÊM GAN VI RÚT C (PHẦN 2)
+---
+title: "BYT_VGSV-C_2024 (P2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
+# BÀI HỌC CHUYÊN SÂU: HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ BỆNH VIÊM [[Gan]] VI RÚT C (PHẦN 2)
 
 _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn đoán và điều trị bệnh viêm gan vi rút C của Bộ Y tế Việt Nam, ban hành kèm theo Quyết định số 2855/QĐ-BYT ngày 25 tháng 9 năm 2024, ký bởi Thứ trưởng Trần Văn Thuấn. Tài liệu tập trung vào các phác đồ điều trị DAA thế hệ mới, liều lượng thuốc, quản lý quần thể đặc biệt, xử trí quên thuốc, điều trị thất bại và tương tác thuốc lâm sàng._
 
@@ -8,7 +19,7 @@ _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn
 
 ### Mục tiêu và nguyên tắc điều trị kháng vi rút trực tiếp (DAAs)
 
-- **Mục tiêu điều trị:** **Loại trừ hoàn toàn HCV ra khỏi cơ thể** người bệnh, đạt được đáp ứng vi rút bền vững (**SVR**), được xác định khi tải lượng HCV RNA dưới ngưỡng phát hiện ở **tuần thứ 12 sau khi hoàn thành điều trị (SVR12)** hoặc từ tuần thứ 12 đến tuần thứ 24 nếu không thực hiện được xét nghiệm ở tuần 12. Đồng thời, điều trị giúp **phòng ngừa các biến chứng nguy hiểm** tại gan và ngoài gan như viêm gan tiến triển, xơ hóa gan, xơ gan, ung thư biểu mô tế bào gan (HCC), biểu hiện ngoài gan nặng và giảm thiểu tỷ lệ tử vong, ngăn chặn lây nhiễm HCV trong cộng đồng.
+- **Mục tiêu điều trị:** **Loại trừ hoàn toàn HCV ra khỏi cơ thể** người bệnh, đạt được đáp ứng vi rút bền vững (**SVR**), được xác định khi tải lượng HCV RNA dưới ngưỡng phát hiện ở **tuần thứ 12 sau khi hoàn thành điều trị (SVR12)** hoặc từ tuần thứ 12 đến tuần thứ 24 nếu không thực hiện được xét nghiệm ở tuần 12. Đồng thời, điều trị giúp **phòng ngừa các biến chứng nguy hiểm** tại gan và ngoài gan như viêm gan tiến triển, xơ hóa gan, xơ gan, ung thư biểu mô [[Gan|tế bào gan]] (HCC), biểu hiện ngoài gan nặng và giảm thiểu tỷ lệ tử vong, ngăn chặn lây nhiễm HCV trong cộng đồng.
 - **Nguyên tắc điều trị:** Người bệnh được chẩn đoán nhiễm HCV cần được **chỉ định điều trị sớm**, đặc biệt ưu tiên các đối tượng có mức độ xơ hóa gan \(\ge\) F2, có biểu hiện ngoài gan nghiêm trọng, đồng nhiễm HIV/HCV hoặc HBV/HCV, người tiêm chích ma túy, hoặc phụ nữ trong độ tuổi sinh đẻ có nguyện vọng mang thai. Hướng dẫn ưu tiên lựa chọn các **phác đồ có hoạt tính kháng tất cả kiểu gen** (pangenotypic) để tối ưu hóa khả năng điều trị sớm và điều trị trong ngày.
 
 ---
@@ -46,7 +57,7 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán và điều trị bệnh vi�
 
 _**Chú thích lưu ý lâm sàng từ Bảng 2:**_
 
-- Khi sử dụng phác đồ kết hợp với Ribavirin (RBV), liều lượng RBV cần được **điều chỉnh linh hoạt theo cân nặng thực tế, mức độ thiếu máu và mức độ suy thận** của người bệnh.
+- Khi sử dụng phác đồ kết hợp với Ribavirin (RBV), liều lượng RBV cần được **điều chỉnh linh hoạt theo cân nặng thực tế, mức độ thiếu máu và mức độ suy [[Thận]]** của người bệnh.
 - Các trường hợp xơ gan mất bù bắt buộc phải được quản lý và điều trị trực tiếp tại các **cơ sở y tế chuyên khoa tuyến tỉnh hoặc trung ương**.
 
 ---
@@ -74,7 +85,7 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán và điều trị bệnh vi�
 - **Chống chỉ định bổ sung đối với phác đồ có Ribavirin (RBV):**
     - Người bệnh mẫn cảm với thành phần RBV.
     - Người bệnh có tình trạng **thiếu máu nặng** (nồng độ huyết sắc tố Hemoglobin < 8,5 g/dL).
-    - Người bệnh mắc các bệnh lý về huyết sắc tố di truyền như **hồng cầu hình liềm hoặc bệnh Thalassemia**.
+    - Người bệnh mắc các bệnh lý về huyết sắc tố di truyền như **[[Hồng cầu]] hình liềm hoặc bệnh Thalassemia**.
     - Phụ nữ đang mang thai, phụ nữ đang cho con bú, hoặc phụ nữ trong độ tuổi sinh đẻ không đồng ý áp dụng các biện pháp tránh thai an toàn; nam giới có bạn tình đang mang thai hoặc có dự định mang thai.
 
 ---
@@ -89,7 +100,7 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán và điều trị bệnh vi�
 
 - **Chiến lược can thiệp:** Chỉ định điều trị bằng thuốc kháng retrovirus (ARV/ART) ngay khi phát hiện nhiễm HIV. Bắt đầu khởi động điều trị viêm gan C bằng DAA ngay khi người bệnh đạt trạng thái **dung nạp tốt với thuốc ARV**. Chỉ định điều trị HCV trên nhóm đối tượng này tương tự người không nhiễm HIV.
 - _Lưu ý tương tác thuốc ARV:_
-    - Bệnh nhân đang sử dụng phác đồ ARV chuẩn **TLD (Tenofovir/Lamivudin/Dolutegravir)**: Tiến hành điều trị viêm gan C như một bệnh nhân không nhiễm HIV. Không phối hợp phác đồ có chứa SOF/VEL hoặc SOF/LDV nếu mức lọc cầu thận của bệnh nhân **< 60 mL/phút/1,73m²**.
+    - Bệnh nhân đang sử dụng phác đồ ARV chuẩn **TLD (Tenofovir/Lamivudin/Dolutegravir)**: Tiến hành điều trị viêm gan C như một bệnh nhân không nhiễm HIV. Không phối hợp phác đồ có chứa SOF/VEL hoặc SOF/LDV nếu mức lọc cầu [[Thận]] của bệnh nhân **< 60 mL/phút/1,73m²**.
     - Bệnh nhân đang dùng phác đồ ARV có **Efavirenz (EFV) hoặc Nevirapine (NVP)**: Ưu tiên lựa chọn phác đồ **SOF/DAC**, đồng thời bắt buộc phải **tăng liều Daclatasvir lên 90 mg/ngày**. Không phối hợp SOF/VEL hoặc SOF/VEL/VOX hoặc G/P với EFV, NVP.
     - Bệnh nhân đang dùng phác đồ ARV có **Lopinavir/ritonavir (LPV/r)**: Ưu tiên dùng SOF/VEL hoặc SOF/DAC; có thể dùng SOF/LDV làm phác đồ thay thế. **Tuyệt đối chống chỉ định phối hợp** với các thuốc G/P, ELB/GRZ và SOF/VEL/VOX.
     - Tương tác giữa Ledipasvir (LDV) và Tenofovir (TDF) làm **tăng độc tính trên thận**. Tránh phối hợp hoặc phải theo dõi sát chức năng thận; không dùng phác đồ có LDV nếu mức lọc cầu thận < 60 mL/phút/1,73m².
@@ -124,7 +135,7 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán và điều trị bệnh vi�
 
 - **Xác định khỏi bệnh:** Người bệnh đạt được đáp ứng vi rút bền vững (**SVR**) khi kết quả xét nghiệm tải lượng HCV RNA dưới ngưỡng phát hiện ở **tuần thứ 12 sau khi kết thúc điều trị (SVR12)**. Nếu không làm được xét nghiệm ở tuần thứ 12, có thể thực hiện kiểm tra trong khoảng từ tuần thứ 12 đến tuần thứ 24 để kết luận.
 - **Theo dõi biến chứng sau khi khỏi bệnh:**
-    - Mọi người bệnh có mức độ xơ hóa gan trước điều trị **\(\ge\) F3** bắt buộc phải duy trì tầm soát sớm ung thư gan (HCC) bằng **siêu âm ổ bụng phối hợp định lượng các chỉ dấu khối u (AFP và/hoặc AFP-L3 và/hoặc PIVKA-II) định kỳ mỗi 6 tháng**.
+    - Mọi người bệnh có mức độ xơ hóa gan trước điều trị **\(\ge\) F3** bắt buộc phải duy trì tầm soát sớm ung thư gan (HCC) bằng **[[Siêu âm]] ổ bụng phối hợp định lượng các chỉ dấu khối u (AFP và/hoặc AFP-L3 và/hoặc PIVKA-II) định kỳ mỗi 6 tháng**.
     - Người bệnh xơ gan cần được nội soi dạ dày định kỳ để phát hiện sớm và can thiệp dự phòng giãn tĩnh mạch thực quản.
 
 ---

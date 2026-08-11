@@ -1,8 +1,11 @@
 ---
 title: "Trichomonas vaginalis"
+type: pathogen
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Ký sinh trùng", "Trichomonas", "STD", "Sinh dục"]
-last_updated: "2026-08-02"
+tags:
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 # TRICHOMONAS VAGINALIS
@@ -20,7 +23,7 @@ last_updated: "2026-08-02"
 *   **Ở phụ nữ (Viêm âm đạo - Viêm cổ tử cung):**
     *   Khí hư (huyết trắng) ra nhiều, màu vàng-xanh, có bọt, mùi hôi nồng.
     *   Ngứa rát âm đạo, đau khi quan hệ tình dục (dyspareunia), đau khi đi tiểu.
-    *   Khám âm đạo: Niêm mạc âm đạo sung huyết đỏ, dấu hiệu cổ tử cung hình trái dâu tây (**Strawberry cervix** - các nốt xuất huyết nhỏ dạng chấm).
+    *   Khám âm đạo: Niêm mạc âm đạo sung huyết đỏ, dấu hiệu cổ tử cung hình trái dâu tây (**Strawberry cervix** - các nốt [[Xuất huyết]] nhỏ dạng chấm).
 *   **Ở nam giới:**
     *   Đa số bất triệu chứng (người lành mang trùng). Một số ít gây viêm niệu đạo nhẹ (tiết dịch niệu đạo trong, ngứa rát đầu dương vật).
 

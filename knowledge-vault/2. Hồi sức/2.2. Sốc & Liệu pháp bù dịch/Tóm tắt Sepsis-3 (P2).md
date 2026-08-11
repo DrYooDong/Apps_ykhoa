@@ -1,14 +1,24 @@
+---
+title: "Tóm tắt Sepsis-3 (P2)"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Nghiên Cứu Đồng Thuận Sepsis-3 (Phần 2)
 
-Tiếp nối Phần 1 về bối cảnh và định nghĩa mới, phần này tập trung vào phương pháp nghiên cứu, quá trình xác thực dữ liệu lâm sàng quy mô lớn để xây dựng thang điểm SOFA/qSOFA, cơ sở dữ liệu định hình tiêu chuẩn Sốc nhiễm khuẩn (Septic Shock), cùng các tranh luận và hạn chế được ghi nhận trong văn bản đồng thuận Sepsis-3.
+Tiếp nối Phần 1 về bối cảnh và định nghĩa mới, phần này tập trung vào phương pháp nghiên cứu, quá trình xác thực dữ liệu lâm sàng quy mô lớn để xây dựng thang điểm SOFA/qSOFA, cơ sở dữ liệu định hình tiêu chuẩn [[[[Sốc]] nhiễm khuẩn]] (Septic Shock), cùng các tranh luận và hạn chế được ghi nhận trong văn bản đồng thuận Sepsis-3.
 
 ---
 
 #### 1.1. Quá Trình Xây Dựng Và Xác Thực Các Thang Điểm SOFA Và qSOFA (Phân Tích Dữ Liệu Hệ Thống)
 
-Để đánh giá và lựa chọn các tiêu chí lâm sàng có giá trị tiên lượng tốt nhất cho tình trạng nhiễm khuẩn huyết, Ban đồng thuận đã tiến hành phân tích trên các cơ sở dữ liệu bệnh án điện tử lớn:
+Để đánh giá và lựa chọn các tiêu chí lâm sàng có giá trị tiên lượng tốt nhất cho tình trạng [[Nhiễm trùng huyết|nhiễm khuẩn huyết]], Ban đồng thuận đã tiến hành phân tích trên các cơ sở dữ liệu bệnh án điện tử lớn:
 
-- **Cơ sở dữ liệu huấn luyện (UPMC):** Nhóm nghiên cứu đã phân tích dữ liệu từ **1,3 triệu lượt khám** tại 12 bệnh viện thuộc hệ thống Y tế Đại học Pittsburgh (University of Pittsburgh Medical Center - UPMC) ở Tây Nam Pennsylvania. Trong đó, xác định được **148.907 bệnh nhân nghi ngờ nhiễm trùng** (được định nghĩa là những bệnh nhân có mẫu bệnh phẩm được nuôi cấy và được sử dụng kháng sinh).
+- **Cơ sở dữ liệu huấn luyện (UPMC):** Nhóm nghiên cứu đã phân tích dữ liệu từ **1,3 triệu lượt khám** tại 12 bệnh viện thuộc hệ thống Y tế Đại học Pittsburgh (University of Pittsburgh Medical Center - UPMC) ở Tây Nam Pennsylvania. Trong đó, xác định được **148.907 bệnh nhân nghi ngờ nhiễm trùng** (được định nghĩa là những bệnh nhân có mẫu bệnh phẩm được nuôi cấy và được sử dụng [[Kháng sinh]]).
 - **Cơ sở dữ liệu xác thực bên ngoài:** Các tiêu chí được thử nghiệm tiếp tục trên 4 cơ sở dữ liệu độc lập khác của Hoa Kỳ và quốc tế với tổng cộng **hơn 700.000 bệnh nhân** bị nhiễm trùng cộng đồng và nhiễm trùng bệnh viện.
 - **Phương pháp đánh giá:** Giá trị tiên lượng (predictive validity) được đo lường bằng diện tích dưới đường cong ROC (AUROC) đối với tỷ lệ tử vong tại viện, thời gian nằm ICU kéo dài từ 3 ngày trở lên, hoặc cả hai.
 
@@ -29,16 +39,16 @@ Thông qua mô hình hồi quy đa biến, Ban đồng thuận đã xác định
 
 ---
 
-#### 1.2. Nghiên Cứu Định Hình Tiêu Chuẩn Sốc Nhiễm Khuẩn (Septic Shock) Qua Các Cơ Sở Dữ Liệu Lớn
+#### 1.2. Nghiên Cứu Định Hình Tiêu Chuẩn [[[[Sốc]] nhiễm khuẩn]] (Septic Shock) Qua Các Cơ Sở Dữ Liệu Lớn
 
-Sốc nhiễm khuẩn được định nghĩa là một phân nhóm của nhiễm khuẩn huyết có nguy cơ tử vong cao hơn nhiều do các rối loạn sâu sắc về tuần hoàn, tế bào và chuyển hóa. Quy trình xây dựng tiêu chuẩn lâm sàng cho sốc nhiễm khuẩn được thực hiện qua các bước đồng thuận Delphi và kiểm chứng dữ liệu thực tế:
+Sốc nhiễm khuẩn được định nghĩa là một phân nhóm của [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] có nguy cơ tử vong cao hơn nhiều do các rối loạn sâu sắc về tuần hoàn, tế bào và chuyển hóa. Quy trình xây dựng tiêu chuẩn lâm sàng cho sốc nhiễm khuẩn được thực hiện qua các bước đồng thuận Delphi và kiểm chứng dữ liệu thực tế:
 
 ##### 1.2.1. Quy trình Delphi thiết lập các thông số huyết động
 
 Ban đồng thuận (với sự tham gia biểu quyết của các thành viên) đã thống nhất:
 
 - **Hạ huyết áp:** Xác định khi huyết áp động mạch trung bình (MAP) < 65 mmHg, do đây là trị số được ghi nhận phổ biến nhất trong các bộ dữ liệu điều trị.
-- **Tăng lactate máu:** Được đồng thuận là dấu hiệu phản ánh tình trạng rối loạn chức năng tế bào và là một dấu hiệu nhạy để đánh giá độ nặng của bệnh, mặc dù sự gia tăng lactate còn chịu ảnh hưởng bởi nhiều yếu tố khác (thiếu oxy mô, giảm thanh thải gan, tăng đường phân hiếu khí).
+- **Tăng lactate máu:** Được đồng thuận là dấu hiệu phản ánh tình trạng rối loạn chức năng tế bào và là một dấu hiệu nhạy để đánh giá độ nặng của bệnh, mặc dù sự gia tăng lactate còn chịu ảnh hưởng bởi nhiều yếu tố khác (thiếu oxy mô, giảm thanh thải [[Gan]], tăng đường phân hiếu khí).
 
 ##### 1.2.2. Kiểm chứng mối tương quan tử vong trên ba cơ sở dữ liệu lớn
 

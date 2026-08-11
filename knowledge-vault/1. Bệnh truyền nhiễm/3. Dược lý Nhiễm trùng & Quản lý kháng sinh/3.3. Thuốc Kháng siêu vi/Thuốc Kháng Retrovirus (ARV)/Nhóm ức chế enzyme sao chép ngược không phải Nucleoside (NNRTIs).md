@@ -1,6 +1,11 @@
 ---
+title: "Nhóm ức chế enzyme sao chép ngược không phải Nucleoside (NNRTIs)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 ### 1. Tổng quan & Phân loại (Classification)
@@ -33,7 +38,7 @@ tags:
 
 ### 6. An toàn thuốc (ADRs & Contraindications)
 
-- **Độc tính Thần kinh trung ương (CNS toxicity):** Đặc trưng ở Efavirenz. Độc tính này có liên quan đến nồng độ thuốc, do đó việc giữ nồng độ efavirenz trong khoảng điều trị giúp giảm thiểu nguy cơ tác dụng phụ trên hệ thần kinh.
+- **Độc tính Thần kinh trung ương ([[Hệ thần kinh trung ương|CNS]] toxicity):** Đặc trưng ở Efavirenz. Độc tính này có liên quan đến nồng độ thuốc, do đó việc giữ nồng độ efavirenz trong khoảng điều trị giúp giảm thiểu nguy cơ tác dụng phụ trên hệ thần kinh.
 - **Phụ nữ có thai:** **Tuyệt đối không** sử dụng Efavirenz trong 3 tháng đầu thai kỳ (first trimester).
 - **Tương tác thuốc nghiêm trọng (Đặc biệt với thuốc điều trị Lao):**
     - **Với Rifampin (Chất cảm ứng enzyme mạnh):**
@@ -56,5 +61,5 @@ Tóm tắt 5 câu hỏi cốt lõi khi kê đơn NNRTIs:
 1. **Chỉ định và kết hợp phác đồ?** (Thuốc NNRTI đã được kết hợp đúng nguyên tắc với các thuốc ARV khác (như NRTIs) để tối ưu hóa hiệu quả ức chế virus chưa?).
 2. **Đã loại trừ tương tác thuốc với Rifamycin chưa?** (Bệnh nhân có đang điều trị Lao với Rifampin không? Nếu có, tuyệt đối tránh dùng Nevirapine, Rilpivirine và Etravirine).
 3. **Bệnh nhân có đang mang thai không?** (Nếu bệnh nhân mang thai 3 tháng đầu, tuyệt đối KHÔNG kê đơn Efavirenz).
-4. **Bệnh nhân có nguy cơ gặp độc tính Thần kinh trung ương không?** (Cảnh giác với độc tính CNS khi sử dụng Efavirenz; nếu cần thiết, có thể cân nhắc áp dụng giám sát nồng độ thuốc TDM).
+4. **Bệnh nhân có nguy cơ gặp độc tính Thần kinh trung ương không?** (Cảnh giác với độc tính [[Hệ thần kinh trung ương|CNS]] khi sử dụng Efavirenz; nếu cần thiết, có thể cân nhắc áp dụng giám sát nồng độ thuốc TDM).
 5. **Bệnh nhân có nguy cơ mang virus kháng thuốc không?** (Cần kiểm tra tiền sử điều trị xem bệnh nhân có khả năng mang virus đột biến K103N không, vì đột biến này gây kháng hoàn toàn với Nevirapine và Efavirenz).

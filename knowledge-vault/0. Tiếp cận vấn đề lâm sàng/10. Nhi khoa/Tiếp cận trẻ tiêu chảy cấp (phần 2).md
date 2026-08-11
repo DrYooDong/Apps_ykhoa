@@ -1,17 +1,27 @@
-# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: CẬN LÂM SÀNG, NGUYÊN TẮC VÀ CÁC PHÁC ĐỒ ĐIỀU TRỊ BÙ DỊCH, THUỐC HỖ TRỢ VÀ CHỈ ĐỊNH KHÁNG SINH TRONG TIÊU CHẢY CẤP)
+---
+title: "Tiếp cận trẻ tiêu chảy cấp (phần 2)"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
+# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: CẬN LÂM SÀNG, NGUYÊN TẮC VÀ CÁC PHÁC ĐỒ ĐIỀU TRỊ BÙ DỊCH, THUỐC HỖ TRỢ VÀ CHỈ ĐỊNH [[Kháng sinh]] TRONG [[Tiêu chảy]] CẤP)
 
 ---
 
 ## 1. Vai Trò Của Các Xét Nghiệm Cận Lâm Sàng
 
-- **Nguyên tắc chung:** Xét nghiệm phân hoặc các xét nghiệm máu **không cần phải thực hiện thường quy** cho tất cả các trường hợp tiêu chảy cấp ở trẻ em.
+- **Nguyên tắc chung:** Xét nghiệm phân hoặc các xét nghiệm máu **không cần phải thực hiện thường quy** cho tất cả các trường hợp [[Tiêu chảy]] cấp ở trẻ em.
 - **Chỉ định xét nghiệm cơ bản (Huyết đồ, Soi phân, Cấy phân):**
-    - Tiêu chảy phân có máu đại thể (hội chứng lỵ) hoặc soi phân thấy hồng cầu $(++)$, bạch cầu $(++)$.
+    - Tiêu chảy phân có máu đại thể (hội chứng lỵ) hoặc soi phân thấy [[Hồng cầu]] $(++)$, [[Bạch cầu]] $(++)$.
     - Nghi ngờ bệnh dịch tả hoặc nhiễm trùng nặng.
     - Bệnh nhi có cơ địa suy giảm miễn dịch, tiêu chảy kéo dài kém đáp ứng điều trị.
-- **Chỉ định xét nghiệm đánh giá biến chứng (Khí máu động mạch, Ion đồ, Chức năng thận, Đường huyết, CRP):**
-    - Trẻ có phân độ mất nước nặng hoặc có dấu hiệu lâm sàng của biến chứng (co giật, li bì, thở Kussmaul, chướng bụng, vô niệu).
-    - Trẻ nôn ói nhiều liên tục hoặc có tốc độ thải phân cao ($> 15 - 20\text{ mL/kg/giờ}$).
+- **Chỉ định xét nghiệm đánh giá biến chứng ([[Khí máu động mạch]], Ion đồ, Chức năng [[Thận]], Đường huyết, [[CRP]]):**
+    - Trẻ có phân độ [[Mất nước]] nặng hoặc có dấu hiệu lâm sàng của biến chứng ([[Co giật]], li bì, thở Kussmaul, chướng bụng, vô niệu).
+    - Trẻ [[[[Nôn ói|Nôn]] ói]] nhiều liên tục hoặc có tốc độ thải phân cao ($> 15 - 20\text{ mL/kg/giờ}$).
 
 ---
 
@@ -19,18 +29,18 @@
 
 Việc điều trị tiêu chảy cấp tuân thủ các nguyên tắc cốt lõi của Tổ chức Y tế Thế giới (WHO) và các Hiệp hội Tiêu hóa Nhi khoa:
 
-1. **Xử trí cấp cứu khẩn cấp:** Cấp cứu chống sốc hoặc suy hô hấp nếu có.
-2. **Bù nước và điện giải:** Bù lại lượng dịch đã mất và bù lượng dịch tiếp tục mất theo phân độ mất nước.
+1. **Xử trí cấp cứu khẩn cấp:** Cấp cứu chống [[Sốc]] hoặc [[Suy hô hấp]] nếu có.
+2. **Bù nước và điện giải:** Bù lại lượng dịch đã mất và bù lượng dịch tiếp tục mất theo phân độ [[Mất nước]].
 3. **Bổ sung Kẽm nguyên tố:** Đủ 14 ngày để rút ngắn thời gian đợt bệnh và phòng ngừa các đợt tiêu chảy trong 2 - 3 tháng tới.
 4. **Dinh dưỡng hợp lý:** Cho ăn lại sớm, tiếp tục cho bú mẹ, không ép trẻ nhịn ăn.
-5. **Điều trị đặc hiệu:** Chỉ dùng kháng sinh khi có chỉ định rõ ràng.
+5. **Điều trị đặc hiệu:** Chỉ dùng [[Kháng sinh]] khi có chỉ định rõ ràng.
 6. **Phòng ngừa lây lan:** Hướng dẫn vệ sinh rửa tay và chăm sóc tại nhà.
 
 ---
 
-## 3. Thành Phần Dung Dịch Oresol Áp Lực Thẩm Thấu Thấp
+## 3. Thành Phần Dung Dịch [[Oresol]] Áp Lực Thẩm Thấu Thấp
 
-- Dung dịch Oresol (ORS) áp lực thẩm thấu thấp ($245\text{ mOsm/L}$) được WHO/UNICEF khuyến cáo sử dụng rộng rãi vì giúp **giảm lượng phân thải ra, giảm nôn ói và giảm nguy cơ phải truyền tĩnh mạch ngoài dự kiến** so với gói ORS chuẩn trước đây ($311\text{ mOsm/L}$).
+- Dung dịch [[Oresol]] (ORS) áp lực thẩm thấu thấp ($245\text{ mOsm/L}$) được WHO/UNICEF khuyến cáo sử dụng rộng rãi vì giúp **giảm lượng phân thải ra, giảm nôn ói và giảm nguy cơ phải truyền tĩnh mạch ngoài dự kiến** so với gói ORS chuẩn trước đây ($311\text{ mOsm/L}$).
 
 ---
 
@@ -114,7 +124,7 @@ _Lưu ý sinh lý:_ Tránh cho trẻ uống các loại nước ngọt công ngh
 
 ## 6. Các Thuốc Hỗ Trợ Theo Khuyến Cáo Của ESPGHAN
 
-Ngoại trừ khuyến cáo của WHO, Hiệp hội Tiêu hóa - Dinh dưỡng - Gan mật Nhi khoa Châu Âu (ESPGHAN) chỉ định thêm một số thuốc hỗ trợ:
+Ngoại trừ khuyến cáo của WHO, Hiệp hội Tiêu hóa - Dinh dưỡng - [[Gan]] mật Nhi khoa Châu Âu (ESPGHAN) chỉ định thêm một số thuốc hỗ trợ:
 
 1. **Probiotics (Men vi sinh - Khuyến cáo mạnh, Bằng chứng IA):**
     - Giúp rút ngắn thời gian tiêu chảy khoảng 1 ngày.
@@ -165,9 +175,9 @@ Ngoại trừ khuyến cáo của WHO, Hiệp hội Tiêu hóa - Dinh dưỡng -
     2. Nôn ói tất cả mọi thứ.
     3. Trẻ trở nên rất khát.
     4. Ăn uống kém hoặc bỏ bú.
-    5. Sốt cao hơn hoặc không tốt lên sau 2 ngày.
+    5. [[[[Sốt]]|Sốt cao]] hơn hoặc không tốt lên sau 2 ngày.
     6. Có máu trong phân.
-    7. Co giật hoặc lừ đừ.
+    7. [[Co giật]] hoặc lừ đừ.
 
 ---
 

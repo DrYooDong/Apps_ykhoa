@@ -1,13 +1,18 @@
 ---
+title: "Rickettsia"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 **Đại cương và Đặc điểm Vi sinh học** _Rickettsia_ là một chi vi khuẩn gồm các trực khuẩn Gram âm nhỏ gọn, là ký sinh trùng nội bào bắt buộc. Bộ gen của chúng khá nhỏ (từ 0.7 đến 2.1 Mb) do quá trình thoái hóa bộ gen (genome reduction) trong quá trình tiến hóa; chúng mất đi nhiều gen và phải phụ thuộc hoàn toàn vào bào tương của tế bào vật chủ để thực hiện các chức năng tổng hợp sinh học và sinh tồn. Hiện tượng thu gọn bộ gen này được cho là một trong những yếu tố giúp một số loài gia tăng độc lực.
 
-Tên gọi _Rickettsia_ được đặt để vinh danh Howard Taylor Ricketts, người đã xác định vai trò của ve trong việc lây truyền tác nhân gây bệnh Sốt đốm Rocky Mountain (Rocky Mountain spotted fever - RMSF) vào cuối thế kỷ 19.
+Tên gọi _Rickettsia_ được đặt để vinh danh Howard Taylor Ricketts, người đã xác định vai trò của ve trong việc lây truyền tác nhân gây bệnh [[Sốt]] đốm Rocky Mountain (Rocky Mountain spotted fever - RMSF) vào cuối thế kỷ 19.
 
-**Cơ chế bệnh sinh** Bệnh lý do _Rickettsia_ đặc trưng bởi sự lây nhiễm vào các tế bào đích là tế bào nội mạc mạch máu (endothelial cells). Quá trình xâm nhập vào tế bào chủ phụ thuộc vào các protein màng ngoài như rOmpA, rOmpB và Sca2. Rickettsia lẩn tránh sự tiêu diệt của tế bào bằng cách thoát ra khỏi phagosome nhờ các enzyme như phospholipase D và hemolysin. Trong bào tương, phần lớn các loài thuộc nhóm sốt đốm có khả năng điều khiển bộ khung actin của tế bào chủ (actin-based motility) để di chuyển linh hoạt và xâm nhập sang các tế bào nội mạc lân cận. Tổn thương tế bào nội mạc dẫn đến sự thay đổi thể tích máu, rò rỉ huyết tương, rối loạn tuần hoàn và kích hoạt hệ thống đông máu. Độc lực gây tổn thương tế bào còn có sự tham gia của enzyme phospholipase A2.
+**Cơ chế bệnh sinh** Bệnh lý do _Rickettsia_ đặc trưng bởi sự lây nhiễm vào các tế bào đích là tế bào nội mạc mạch máu (endothelial cells). Quá trình xâm nhập vào tế bào chủ phụ thuộc vào các protein màng ngoài như rOmpA, rOmpB và Sca2. Rickettsia lẩn tránh sự tiêu diệt của tế bào bằng cách thoát ra khỏi phagosome nhờ các enzyme như phospholipase D và hemolysin. Trong bào tương, phần lớn các loài thuộc nhóm [[Sốt]] đốm có khả năng điều khiển bộ khung actin của tế bào chủ (actin-based motility) để di chuyển linh hoạt và xâm nhập sang các tế bào nội mạc lân cận. Tổn thương tế bào nội mạc dẫn đến sự thay đổi thể tích máu, rò rỉ huyết tương, rối loạn tuần hoàn và kích hoạt hệ thống đông máu. Độc lực gây tổn thương tế bào còn có sự tham gia của enzyme phospholipase A2.
 
 **Phân loại và Dịch tễ học (Eco-Epidemiology)** Việc phân loại loài của _Rickettsia_ dựa trên sự khác biệt về trình tự gen 16S rRNA, citrate synthase, các protein màng ngoài (OmpA, OmpB) và Sca4. Chi _Rickettsia_ lây nhiễm sang người chủ yếu được chia thành hai nhóm lớn dựa trên cấu trúc kháng nguyên và sinh thái học:
 
@@ -21,7 +26,7 @@ Tên gọi _Rickettsia_ được đặt để vinh danh Howard Taylor Ricketts, 
     - _Rickettsia prowazekii:_ Gây Sốt phát ban dịch tễ (Epidemic typhus), lây truyền qua rận cơ thể người (body lice). Bệnh còn có ổ chứa tự nhiên ở loài sóc bay tại Bắc Mỹ.
     - _Rickettsia typhi:_ Gây Sốt phát ban chuột (Murine typhus/Endemic typhus). Tác nhân này lây truyền qua bọ chét chuột và bọ chét mèo, với ổ chứa là chuột và chồn opossum ở các khu vực đô thị và ngoại ô.
 
-**Biểu hiện Lâm sàng** Tam chứng kinh điển của rickettsiosis là **sốt, phát ban và nhức đầu** ở những bệnh nhân có tiền sử đi du lịch, tiếp xúc với động vật hoặc bị côn trùng/ve cắn. Tuy nhiên, chỉ một thiểu số bệnh nhân (nhất là trong bệnh RMSF) biểu hiện đầy đủ cả ba triệu chứng này lúc mới thăm khám. Nhiều loại rickettsia tạo ra một **vết loét đen (eschar)** tại vị trí bị cắn (đặc trưng cho _R. akari, R. parkeri, R. africae, R. conorii_), kèm theo sưng hạch bạch huyết khu trú. Sự vắng mặt của vết loét là đặc điểm của RMSF do _R. rickettsii_ và các bệnh thuộc nhóm Typhus. Các bất thường trên xét nghiệm thường gặp trong trường hợp sốt chưa rõ nguyên nhân do rickettsia bao gồm: giảm bạch cầu, giảm bạch cầu hạt trung tính, giảm tiểu cầu và tăng transaminase (men gan) mức độ vừa phải.
+**Biểu hiện Lâm sàng** Tam chứng kinh điển của rickettsiosis là **sốt, phát ban và nhức đầu** ở những bệnh nhân có tiền sử đi du lịch, tiếp xúc với động vật hoặc bị côn trùng/ve cắn. Tuy nhiên, chỉ một thiểu số bệnh nhân (nhất là trong bệnh RMSF) biểu hiện đầy đủ cả ba triệu chứng này lúc mới thăm khám. Nhiều loại rickettsia tạo ra một **vết loét đen (eschar)** tại vị trí bị cắn (đặc trưng cho _R. akari, R. parkeri, R. africae, R. conorii_), kèm theo sưng hạch bạch huyết khu trú. Sự vắng mặt của vết loét là đặc điểm của RMSF do _R. rickettsii_ và các bệnh thuộc nhóm Typhus. Các bất thường trên xét nghiệm thường gặp trong trường hợp sốt chưa rõ nguyên nhân do rickettsia bao gồm: giảm [[Bạch cầu]], giảm [[Bạch cầu]] hạt trung tính, giảm [[Tiểu cầu]] và tăng transaminase (men [[Gan]]) mức độ vừa phải.
 
 **Chẩn đoán**
 
@@ -30,7 +35,7 @@ Tên gọi _Rickettsia_ được đặt để vinh danh Howard Taylor Ricketts, 
 - **Hóa mô miễn dịch (Immunohistochemistry):** Sử dụng kháng thể để phát hiện trực tiếp kháng nguyên vi khuẩn bên trong tế bào nội mạc từ các mẫu sinh thiết da.
 - **Huyết thanh học:** Sự gia tăng hiệu giá kháng thể là tiêu chuẩn vàng hồi cứu, tuy nhiên nó không có ý nghĩa lớn trong giai đoạn bệnh cấp tính vì kháng thể thường xuất hiện muộn.
 
-**Điều trị** Sự hiện diện của sốt, phát ban và các bất thường xét nghiệm (như giảm tiểu cầu, tăng men gan) vào mùa ấm trong vùng dịch tễ phải là cơ sở để tiến hành điều trị theo kinh nghiệm ngay lập tức. **Doxycycline** là kháng sinh đặc hiệu và là tiêu chuẩn vàng để điều trị tất cả các bệnh lý do Rickettsia ở mọi lứa tuổi. Việc chậm trễ trong điều trị có thể dẫn đến các biến chứng suy đa tạng và tử vong, đặc biệt là với _R. rickettsii_ và _R. prowazekii_.
+**Điều trị** Sự hiện diện của sốt, phát ban và các bất thường xét nghiệm (như giảm [[Tiểu cầu]], tăng men [[Gan]]) vào mùa ấm trong vùng dịch tễ phải là cơ sở để tiến hành điều trị theo kinh nghiệm ngay lập tức. **Doxycycline** là [[Kháng sinh]] đặc hiệu và là tiêu chuẩn vàng để điều trị tất cả các bệnh lý do Rickettsia ở mọi lứa tuổi. Việc chậm trễ trong điều trị có thể dẫn đến các biến chứng suy đa tạng và tử vong, đặc biệt là với _R. rickettsii_ và _R. prowazekii_.
 
 ---
 

@@ -1,6 +1,12 @@
 ---
+title: "Clostridioides difficile (Viêm ruột màng giả)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - he-co-quan/tieu-hoa
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 **Đại cương và Đặc điểm Vi sinh học** _
@@ -12,9 +18,9 @@ Hầu hết các chủng gây bệnh đều sản sinh hai loại độc tố ch
 
 - **Nhiễm trùng liên quan đến chăm sóc y tế (HCA-CDI):** Đây từng là nguồn lây chính, do bệnh nhân tiếp xúc với môi trường hoặc nhân viên y tế mang bào tử _C. difficile_.
 - **Nhiễm trùng cộng đồng (CA-CDI):** Tỷ lệ mắc CDI tại cộng đồng đang gia tăng, chiếm gần một nửa số ca bệnh hiện nay. Hầu hết các ca cộng đồng đều có lịch sử phơi nhiễm với cơ sở y tế ở mức độ thấp hoặc cao trong vòng 12 tuần trước đó,.
-- **Chủng siêu độc lực NAP1/BI/027:** Sự xuất hiện của chủng PCR ribotype 027 (hay NAP1/BI) mang các đột biến làm tăng sản xuất độc tố (đột biến gen tcdC), sản sinh độc tố nhị phân CDT và đề kháng với nhóm kháng sinh fluoroquinolone đã gây ra các vụ dịch CDI với mức độ nghiêm trọng và tỷ lệ tử vong rất cao trên toàn cầu,,.
+- **Chủng siêu độc lực NAP1/BI/027:** Sự xuất hiện của chủng PCR ribotype 027 (hay NAP1/BI) mang các đột biến làm tăng sản xuất độc tố (đột biến gen tcdC), sản sinh độc tố nhị phân CDT và đề kháng với nhóm [[Kháng sinh]] fluoroquinolone đã gây ra các vụ dịch CDI với mức độ nghiêm trọng và tỷ lệ tử vong rất cao trên toàn cầu,,.
 
-**Cơ chế bệnh sinh và Yếu tố nguy cơ** Bệnh sinh cốt lõi của nhiễm trùng _C. difficile_ (CDI) là sự phá vỡ hệ vi sinh vật đường ruột bản địa (gut microbiota) thường do việc sử dụng kháng sinh,. Khi hàng rào vi sinh vật bảo vệ này bị mất đi, các bào tử _C. difficile_ nảy mầm (kích thích bởi axit mật thứ phát), sinh sôi và tiết độc tố gây viêm đại tràng giả mạc (pseudomembranous colitis),.
+**Cơ chế bệnh sinh và Yếu tố nguy cơ** Bệnh sinh cốt lõi của nhiễm trùng _C. difficile_ (CDI) là sự phá vỡ hệ vi sinh vật đường ruột bản địa (gut microbiota) thường do việc sử dụng [[Kháng sinh]],. Khi hàng rào vi sinh vật bảo vệ này bị mất đi, các bào tử _C. difficile_ nảy mầm (kích thích bởi axit mật thứ phát), sinh sôi và tiết độc tố gây viêm đại tràng giả mạc (pseudomembranous colitis),.
 
 Các yếu tố nguy cơ chính gây bệnh và tái phát CDI bao gồm:
 
@@ -25,14 +31,14 @@ Các yếu tố nguy cơ chính gây bệnh và tái phát CDI bao gồm:
 
 **Biểu hiện Lâm sàng và Chẩn đoán**
 
-- **Lâm sàng:** Triệu chứng điển hình là tiêu chảy phân nước (thường $\ge$ 3 lần/24 giờ), đau bụng, sốt. Thể tối cấp (fulminant CDI) biểu hiện bằng hạ huyết áp, sốc, liệt ruột hoặc phình đại tràng nhiễm độc (toxic megacolon),. Đáng chú ý, tình trạng mang trùng không triệu chứng (asymptomatic carriage) rất phổ biến, đặc biệt ở trẻ nhỏ dưới 1 tuổi và bệnh nhân nhập viện,.
+- **Lâm sàng:** Triệu chứng điển hình là [[Tiêu chảy]] phân nước (thường $\ge$ 3 lần/24 giờ), [[Đau bụng]], [[Sốt]]. Thể tối cấp (fulminant CDI) biểu hiện bằng hạ huyết áp, [[Sốc]], liệt ruột hoặc phình đại tràng nhiễm độc (toxic megacolon),. Đáng chú ý, tình trạng mang trùng không triệu chứng (asymptomatic carriage) rất phổ biến, đặc biệt ở trẻ nhỏ dưới 1 tuổi và bệnh nhân nhập viện,.
 - **Chẩn đoán:** Dựa trên lâm sàng kết hợp với xét nghiệm phân. Các thuật toán chẩn đoán hiện nay thường sử dụng xét nghiệm khuếch đại axit nucleic (NAAT/PCR) có độ nhạy cao để phát hiện gen độc tố, kết hợp với xét nghiệm men immunoassay (EIA) tìm kháng nguyên glutamate dehydrogenase (GDH) hoặc độc tố A/B tự do trong phân.
 
 **Điều trị** 
 Tuyệt đối không điều trị cho người mang trùng không triệu chứng vì điều này không mang lại lợi ích và việc dùng kháng sinh (như vancomycin) có thể cản trở sự phục hồi của hệ vi sinh vật bình thường.
 
 - **CDI Khởi phát (Mức độ nhẹ đến nặng):** Kháng sinh **Fidaxomicin** (200 mg uống 2 lần/ngày x 10 ngày) hoặc **Vancomycin** (125 mg uống 4 lần/ngày x 10 ngày) là lựa chọn đầu tay. Metronidazole không còn được khuyến cáo là phác đồ ưu tiên, chỉ dùng khi không có sẵn hai loại thuốc trên,.
-- **CDI Tối cấp (Fulminant):** Yêu cầu điều trị tích cực bằng **Vancomycin liều cao** đường uống (500 mg x 4 lần/ngày), có thể kết hợp thụt tháo Vancomycin nếu bị liệt ruột, cộng với tiêm tĩnh mạch Metronidazole (500 mg mỗi 8 giờ),. Các trường hợp có phình đại tràng nhiễm độc hoặc sốc có thể cần can thiệp phẫu thuật cắt bỏ đại tràng,.
+- **CDI Tối cấp (Fulminant):** Yêu cầu điều trị tích cực bằng **Vancomycin liều cao** đường uống (500 mg x 4 lần/ngày), có thể kết hợp thụt tháo Vancomycin nếu bị liệt ruột, cộng với tiêm tĩnh mạch Metronidazole (500 mg mỗi 8 giờ),. Các trường hợp có phình đại tràng nhiễm độc hoặc [[Sốc]] có thể cần can thiệp phẫu thuật cắt bỏ đại tràng,.
 - **CDI Tái phát:** Khoảng 25% bệnh nhân gặp tình trạng tái phát sau đợt điều trị đầu tiên.
     - _Kháng sinh:_ Sử dụng Fidaxomicin hoặc phác đồ Vancomycin giảm liều dần và ngắt quãng (taper/pulse regimen).
     - _Cấy ghép hệ vi sinh vật trong phân (Fecal Microbiota Transplantation - FMT):_ Được chỉ định cho bệnh nhân tái phát nhiều lần, có hiệu quả rất cao (khỏi bệnh lên tới 85%) trong việc khôi phục hệ vi sinh vật và ngăn ngừa tái phát,.

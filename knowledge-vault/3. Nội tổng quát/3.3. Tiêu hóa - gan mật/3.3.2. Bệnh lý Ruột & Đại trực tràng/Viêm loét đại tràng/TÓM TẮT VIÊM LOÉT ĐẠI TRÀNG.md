@@ -1,3 +1,14 @@
+---
+title: "TÓM TẮT VIÊM LOÉT ĐẠI TRÀNG"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 **VIÊM LOÉT ĐẠI TRÀNG (ULCERATIVE COLITIS)**
 
 **TÓM TẮT GUIDELINE ACG 2025 — CẬP NHẬT 2026**
@@ -8,13 +19,13 @@
 
 **1\. CHẨN ĐOÁN & ĐÁNH GIÁ**
 
-▸ Loại trừ Clostridioides difficile trước điều trị: bắt buộc ở UC mới khởi phát và UC nặng cấp nhập viện. Lưu ý bệnh nhân UC thường không có yếu tố nguy cơ điển hình (kháng sinh, nhập viện gần đây). Tỷ lệ C. difficile trong UC tái phát: 5–47%.
+▸ Loại trừ Clostridioides difficile trước điều trị: bắt buộc ở UC mới khởi phát và UC nặng cấp nhập viện. Lưu ý bệnh nhân UC thường không có yếu tố nguy cơ điển hình ([[Kháng sinh]], nhập viện gần đây). Tỷ lệ C. difficile trong UC tái phát: 5–47%.
 
 ▸ Fecal calprotectin (FCP): đo mỗi 3–6 tháng, kể cả khi không có triệu chứng. Tương quan tốt với lui bệnh nội soi và mô học (sensitivity 87,3%; specificity 77,1%). Dùng để đánh giá đáp ứng điều trị và phát hiện tái phát sớm.
 
 ▸ Chẩn đoán UC: nội soi đại tràng toàn bộ kèm sinh thiết. Hình ảnh: mất vascular markings, niêm mạc hạt, xói mòn. Sinh thiết vùng viêm và không viêm.
 
-▸ Mục tiêu điều trị (STRIDE-II): Hết chảy máu trực tràng \+ bình thường hóa thói quen đại tiện \+ không còn viêm trên nội soi.
+▸ Mục tiêu điều trị (STRIDE-II): Hết [[Xuất huyết|chảy máu]] trực tràng \+ bình thường hóa thói quen đại tiện \+ không còn viêm trên nội soi.
 
 **2\. PHÂN LOẠI MỨC ĐỘ BỆNH**
 
@@ -22,7 +33,7 @@
 | :---- | :---- | :---- |
 | Nhẹ (Mild) | \< 4 phân/ngày, Hb bình thường, ESR \< 30 mm/h, FCP 150–200 µg/g | MES \= 1, UCEIS \= 2–4 |
 | Vừa–Nặng (Moderate–Severe) | 6–10 phân/ngày, urgency, hematochezia, ESR ≥ 30, Hb \< 75% bình thường | MES \= 2–3, UCEIS \= 5–8 |
-| Nặng cấp (Acute Severe) | ≥ 6 phân/ngày \+ ≥ 1 dấu hiệu toàn thân: nhịp nhanh, sốt, thiếu máu, ESR ≥ 30 hoặc CRP tăng | Cần nhập viện |
+| Nặng cấp (Acute Severe) | ≥ 6 phân/ngày \+ ≥ 1 dấu hiệu toàn thân: nhịp nhanh, [[Sốt]], thiếu máu, ESR ≥ 30 hoặc [[CRP]] tăng | Cần nhập viện |
 
 **3\. ĐIỀU TRỊ THEO MỨC ĐỘ BỆNH**
 
@@ -36,17 +47,17 @@
 
 **3.2 UC Vừa–Nặng (Moderate–Severe UC)**
 
-▸ Corticosteroid uống (prednisone 40–60 mg/ngày × 8–12 tuần) hoặc liệu pháp tiên tiến — xem Mục 4\.
+▸ [[Corticoid|Corticosteroid]] uống (prednisone 40–60 mg/ngày × 8–12 tuần) hoặc liệu pháp tiên tiến — xem Mục 4\.
 
-▸ KHÔNG dùng corticosteroid duy trì lui bệnh (bất kể mức độ nào).
+▸ KHÔNG dùng [[Corticoid|corticosteroid]] duy trì lui bệnh (bất kể mức độ nào).
 
-▸ Lựa chọn liệu pháp tiên tiến dựa trên: mức độ nặng, bệnh ngoài ruột, nguy cơ nhiễm trùng, bệnh đồng mắc tim mạch, đường dùng, chi phí, khả năng tiếp cận.
+▸ Lựa chọn liệu pháp tiên tiến dựa trên: mức độ nặng, bệnh ngoài ruột, nguy cơ nhiễm trùng, bệnh đồng mắc [[Tim]] mạch, đường dùng, chi phí, khả năng tiếp cận.
 
 **3.3 UC Nặng Cấp (Acute Severe UC) — Nhập viện**
 
 ▸ Điều trị ban đầu: IV methylprednisolone 60 mg/ngày hoặc hydrocortisone 100 mg × 3–4 lần/ngày.
 
-▸ Steroid-refractory (sau 3–5 ngày IV corticosteroids): ≥ 8 phân/ngày, hoặc 3–7 phân/ngày \+ CRP \> 45 mg/L.
+▸ Steroid-refractory (sau 3–5 ngày IV corticosteroids): ≥ 8 phân/ngày, hoặc 3–7 phân/ngày \+ [[CRP]] \> 45 mg/L.
 
 ▸ Rescue therapy: Infliximab hoặc Cyclosporine — hiệu quả tương đương ngắn hạn (đáp ứng 60–80%; thời gian đáp ứng trung bình 5–7 ngày).
 
@@ -69,10 +80,10 @@ Một systematic review \+ network meta-analysis (29 nghiên cứu) không ghi n
 
 | Thuốc / Nhóm | Tác dụng phụ cần chú ý | Biện pháp |
 | :---- | :---- | :---- |
-| JAK inhibitors | Herpes zoster ↑ (2,67/100 person-years) | Tiêm vaccine Herpes zoster trước điều trị nếu có thể |
-| S1P receptor modulators | Bradycardia (RR 2,64; 95% CI 1,77–3,96) AV block (RR 1,73; 95% CI 1,03–2,91) | ECG trước điều trị; theo dõi tim 6h sau liều đầu tiên |
+| JAK inhibitors | Herpes zoster ↑ (2,67/100 person-years) | Tiêm [[Vắc-xin|vaccine]] Herpes zoster trước điều trị nếu có thể |
+| S1P receptor modulators | Bradycardia (RR 2,64; 95% CI 1,77–3,96) AV block (RR 1,73; 95% CI 1,03–2,91) | ECG trước điều trị; theo dõi [[Tim]] 6h sau liều đầu tiên |
 | Infliximab (Anti-TNF) | Immunogenicity → mất đáp ứng, phản ứng dị ứng | Kết hợp thiopurine để giảm nguy cơ |
-| Cyclosporine | Độc thận, THA, nhiễm trùng cơ hội | Thận trọng CKD, bệnh nhân cao tuổi; theo dõi creatinine chặt |
+| Cyclosporine | Độc [[Thận]], THA, nhiễm trùng cơ hội | [[Thận]] trọng CKD, bệnh nhân cao tuổi; theo dõi creatinine chặt |
 
 **6\. BẢNG TÓM TẮT CÁC KHUYẾN CÁO CHÍNH**
 

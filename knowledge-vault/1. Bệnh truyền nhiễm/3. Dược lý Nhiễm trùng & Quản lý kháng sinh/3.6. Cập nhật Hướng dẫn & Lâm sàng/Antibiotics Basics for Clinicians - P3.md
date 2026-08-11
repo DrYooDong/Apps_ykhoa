@@ -1,16 +1,20 @@
 ---
 title: "Antibiotics Basics for Clinicians - P3"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Nội Dung Bệnh Lý Học Chi Tiết: Tối Ưu Hóa Phác Đồ Trị Liệu Cho Các Hội Chứng Nhiễm Khuẩn Khác
 
-Tiếp nối các cập nhật về kháng sinh mới và liệu pháp kinh nghiệm cho các bệnh lý hô hấp, tiêu hóa, thần kinh và tim mạch, phần này sẽ bổ sung chi tiết về các hội chứng lâm sàng quan trọng còn lại bao gồm: nhiễm khuẩn da - mô mềm, viêm tai giữa cấp, viêm vùng chậu, nhiễm khuẩn do catheter và bệnh lao.
+Tiếp nối các cập nhật về [[Kháng sinh]] mới và liệu pháp kinh nghiệm cho các bệnh lý hô hấp, tiêu hóa, thần kinh và [[Tim]] mạch, phần này sẽ bổ sung chi tiết về các hội chứng lâm sàng quan trọng còn lại bao gồm: nhiễm khuẩn da - mô mềm, viêm tai giữa cấp, viêm vùng chậu, nhiễm khuẩn do catheter và bệnh lao.
 
 #### Bệnh Lý Viêm Mô Tế Bào (Cellulitis)
 
-Viêm mô tế bào ở người có hệ miễn dịch bình thường và không có yếu tố phơi nhiễm đặc biệt thường do _Staphylococcus aureus_, _Streptococcus pyogenes_ hoặc các chủng _Streptococcus_ khác gây ra. Trong trường hợp viêm mô tế bào có mụn mủ, áp xe hoặc dịch tiết có mủ, _S. aureus_ là nguyên nhân có khả năng cao nhất. Phác đồ điều trị kinh nghiệm được quyết định dựa trên nguy cơ bệnh nhân nhiễm _S. aureus_ kháng methicillin (MRSA) và mức độ nghiêm trọng của bệnh (điều trị ngoại trú bằng thuốc uống hay nội trú bằng thuốc tĩnh mạch). Các kháng sinh mới như dalbavancin, oritavancin, telavancin, delafloxacin và omadacycline hiện đã được đưa vào danh sách các lựa chọn thay thế an toàn cho MRSA. Đối với những bệnh nhân suy giảm miễn dịch nghiêm trọng, cần bao vây rộng theo kinh nghiệm cả vi khuẩn Gram âm bằng cách kết hợp vancomycin với cefepime hoặc carbapenem.
+Viêm mô tế bào ở người có hệ miễn dịch bình thường và không có yếu tố phơi nhiễm đặc biệt thường do _Staphylococcus aureus_, _Streptococcus pyogenes_ hoặc các chủng _Streptococcus_ khác gây ra. Trong trường hợp viêm mô tế bào có mụn mủ, áp xe hoặc dịch tiết có mủ, _S. aureus_ là nguyên nhân có khả năng cao nhất. Phác đồ điều trị kinh nghiệm được quyết định dựa trên nguy cơ bệnh nhân nhiễm _S. aureus_ kháng methicillin (MRSA) và mức độ nghiêm trọng của bệnh (điều trị ngoại trú bằng thuốc uống hay nội trú bằng thuốc tĩnh mạch). Các [[Kháng sinh]] mới như dalbavancin, oritavancin, telavancin, delafloxacin và omadacycline hiện đã được đưa vào danh sách các lựa chọn thay thế an toàn cho MRSA. Đối với những bệnh nhân suy giảm miễn dịch nghiêm trọng, cần bao vây rộng theo kinh nghiệm cả vi khuẩn Gram âm bằng cách kết hợp vancomycin với cefepime hoặc carbapenem.
 
 **[Table 20-2 Empiric Antimicrobial Therapy for Cellulitis]** - trích từ [Antibiotics Basics for Clinicians 4th Edition 2026.pdf]
 
@@ -49,7 +53,7 @@ Viêm tai giữa cấp là bệnh lý thường gặp nhất khiến trẻ em �
 |Penicillin/ẞ-lactamase inhibitor|Amoxicillin/clavulanate|
 |**If mild allergy to penicillin**||
 |Oral cephalosporin|Cefdinir, cefpodoxime, cefuroxime|
-|IV or IM cephalosporin|Ceftriaxone|
+|IV or IM cephalosporin|[[Ceftriaxone]]|
 |**If type I hypersensitivity allergic reaction**||
 |Macrolide|Azithromycin, clarithromycin|
 |Clindamycin||
@@ -58,13 +62,13 @@ Chú thích: IM, intramuscular; IV, intravenous.
 
 #### Bệnh Lý Viêm Vùng Chậu (Pelvic Inflammatory Disease - PID)
 
-Bệnh sinh của PID liên quan đến sự tương tác phức tạp giữa các vi khuẩn lây truyền qua đường tình dục (_Neisseria gonorrhoeae_, _Chlamydia trachomatis_) và hệ vi sinh vật bình thường tại âm đạo, đặc biệt là vi khuẩn kỵ khí. Do đó, điều trị kinh nghiệm PID bắt buộc phải bao phủ được _N. gonorrhoeae_ và _C. trachomatis_. Đồng thời, nhiều chuyên gia khuyến cáo cần bao vây cả vi khuẩn kỵ khí. Đối với bệnh mức độ nhẹ đến trung bình, bệnh nhân có thể điều trị ngoại trú bằng một liều tiêm bắp cephalosporin (ceftriaxone, cefoxitin kèm probenecid, hoặc cefotaxime) kết hợp với 14 ngày uống doxycycline, có thể kèm hoặc không kèm metronidazole.
+Bệnh sinh của PID liên quan đến sự tương tác phức tạp giữa các vi khuẩn lây truyền qua đường tình dục (_Neisseria gonorrhoeae_, _Chlamydia trachomatis_) và hệ vi sinh vật bình thường tại âm đạo, đặc biệt là vi khuẩn kỵ khí. Do đó, điều trị kinh nghiệm PID bắt buộc phải bao phủ được _N. gonorrhoeae_ và _C. trachomatis_. Đồng thời, nhiều chuyên gia khuyến cáo cần bao vây cả vi khuẩn kỵ khí. Đối với bệnh mức độ nhẹ đến trung bình, bệnh nhân có thể điều trị ngoại trú bằng một liều tiêm bắp cephalosporin ([[Ceftriaxone]], cefoxitin kèm probenecid, hoặc cefotaxime) kết hợp với 14 ngày uống doxycycline, có thể kèm hoặc không kèm metronidazole.
 
 **[Table 18-2 Empiric Antimicrobial Therapy for Pelvic Inflammatory Disease]** - trích từ [Antibiotics Basics for Clinicians 4th Edition 2026.pdf] | | | | :--- | :--- | | **Mild-to-moderate disease** | | | Single IM dose of cephalosporin | Ceftriaxone, cefoxitin plus probenecid, cefotaxime | | + Oral doxycycline | | | Oral metronidazole | | | **Severe diseaseª** | | | Ceftriaxone | | | + Oral doxycycline | | | + Oral metronidazole | | | **or** | | | Cephalosporin | Cefotetan, cefoxitin | | + Oral doxycycline | | Chú thích: IM, intramuscular. ªTwenty-four to 48 hours after clinical improvement, intravenous antibiotics may be discontinued, and a total 14-day course of therapy completed with oral doxycycline combined with oral metronidazole.
 
-#### Nhiễm Khuẩn Huyết Liên Quan Đến Catheter (Intravascular-Related Catheter Infections)
+#### [[Nhiễm trùng huyết|Nhiễm Khuẩn Huyết]] Liên Quan Đến Catheter (Intravascular-Related Catheter Infections)
 
-Hầu hết các trường hợp nhiễm khuẩn huyết do catheter tĩnh mạch đều bị gây ra bởi các hệ vi sinh vật trên da di cư dọc theo ống thông, điển hình là staphylococci coagulase âm tính (đặc biệt là _S. epidermidis_) và _S. aureus_. Phác đồ điều trị kinh nghiệm tập trung vào staphylococci, do đó vancomycin hiện là thuốc được lựa chọn ưu tiên tại hầu hết các cơ sở y tế do tỷ lệ kháng methicillin cao. Ở những bệnh nhân suy giảm miễn dịch hoặc bệnh nặng, kháng sinh có hoạt tính chống lại trực khuẩn Gram âm hiếu khí (như ceftazidime, cefepime, meropenem, imipenem hoặc piperacillin-tazobactam) cần được bổ sung.
+Hầu hết các trường hợp [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] do catheter tĩnh mạch đều bị gây ra bởi các hệ vi sinh vật trên da di cư dọc theo ống thông, điển hình là staphylococci coagulase âm tính (đặc biệt là _S. epidermidis_) và _S. aureus_. Phác đồ điều trị kinh nghiệm tập trung vào staphylococci, do đó vancomycin hiện là thuốc được lựa chọn ưu tiên tại hầu hết các cơ sở y tế do tỷ lệ kháng methicillin cao. Ở những bệnh nhân suy giảm miễn dịch hoặc bệnh nặng, kháng sinh có hoạt tính chống lại trực khuẩn Gram âm hiếu khí (như ceftazidime, cefepime, meropenem, imipenem hoặc piperacillin-tazobactam) cần được bổ sung.
 
 **[Table 23-2 Empiric Antimicrobial Therapy for Intravascular-Related Catheter Infections]** - trích từ [Antibiotics Basics for Clinicians 4th Edition 2026.pdf]
 

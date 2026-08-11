@@ -1,3 +1,13 @@
+---
+title: "ECG made easy (Atul Luthra.) (Z-Library)"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 # ECG Made Easy
 
 ---
@@ -1275,7 +1285,7 @@ Brugada syndrome belongs to a group of congenital channelopathies responsible fo
 Abnormalities of QRS Complex 83
 Arrhythmogenic RV Dysplasia
 Arrhythmogenic right ventricular dysplasia (ARVD) produces incomplete right bundle branch block (RBBB) pattern, with a post-depolarization epsilon wave at the end of the QRS complex, best seen in lead V 1 . There is also T wave inversion in the right precordial leads V 1 to V 4 .
-Echocardiography reveals a mildly dilated right ventricle with akinetic regions due to substitution of portions of the right ventricular musculature with fibrotic adipose tissue. A definitive diagnosis of ARVD comes from magnetic reso- nance imaging (MRI). Electrophysiology study demonstrates inducible polymorphic ventricular tachycardia. These patients merit life-long arrhythmia prophylaxis with a beta-blocker or an implantable cardioverter defibrillator (ICD).
+Echocardiography reveals a mildly dilated right ventricle with akinetic regions due to substitution of portions of the right ventricular musculature with fibrotic adipose tissue. A definitive diagnosis of ARVD comes from magnetic reso- nance imaging ([[MRI]]). Electrophysiology study demonstrates inducible polymorphic ventricular tachycardia. These patients merit life-long arrhythmia prophylaxis with a beta-blocker or an implantable cardioverter defibrillator (ICD).
 Acute Pulmonary Embolism
 Pulmonary embolism causing acute corpulmonale, is a prominent cause of acute onset right bundle branch block. Various ECG features of acute pulmonary embolism are:
  Sinus tachycardia (invariable)
@@ -1489,7 +1499,7 @@ Wide, bizarre QRS
 A-V block and arrhythmias
 The common causes of hyperkalemia include renal failure, adrenal insufficiency, metabolic acidosis and excessive potassium intake. The clinical importance of hyperkalemia lies in the fact that it can cause life-threatening arrhythmias.
 Since hyperkalemia severe enough to cause gross ECG changes is most often due to renal failure, the clinical picture is usually that of uremia with hypertension, fluid overload, anemia and low urinary output.
-Treatment of hyperkalemia includes elimination of dietary potassium, infusion of glucose with insulin, bicarbonate administration to combat acidosis, cation-exchange resins to bind potassium and hemodialysis in extreme situations.
+Treatment of hyperkalemia includes elimination of dietary potassium, infusion of glucose with [[Insulin]], bicarbonate administration to combat acidosis, cation-exchange resins to bind potassium and hemodialysis in extreme situations.
 In the hyperacute phase of myocardial infarction, there is S-T segment elevation (convex upwards) along with tall T waves, the proximal limb of the T wave blending with the elevated S-T segment (Fig. 8.9) .
 This phase is followed by serial evolution of ECG changes with appearance of Q waves, settling down of the S-T segment and inversion of the T waves. Because of myocardial necrosis secondary to coronary occlusion, the serum levels of cardiac enzymes (CPK, SGOT) are raised.
 

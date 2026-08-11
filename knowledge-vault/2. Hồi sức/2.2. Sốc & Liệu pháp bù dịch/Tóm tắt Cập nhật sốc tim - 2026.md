@@ -1,125 +1,14 @@
-CẬP NHẬT SỐC TIM: BẰNG CHỨNG HIỆN TẠI, GÓC NHÌN TỪ GUIDELINES VÀ OUTCOMES
+---
+title: "Tóm tắt Cập nhật sốc tim - 2026"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
 
-1. ĐỊNH NGHĨA VÀ GÁNH NẶNG
+## 📌 Danh Mục Nội Dung
 
-- Sốc tim vẫn là một trong những nguyên nhân t.ử v.o.n.g nội viện hàng đầu. Mỗi năm ước tính có khoảng 40.000 - 50.000 bệnh nhân được điều trị tại Hoa Kỳ và 60.000 - 70.000 bệnh nhân tại châu Âu. Dù điều trị thuốc và hỗ trợ tuần hoàn cơ học đã tiến bộ đáng kể, t.ử v.o.n.g trong 30 ngày vẫn ở mức 30 - 60%.
-
-- Nhồi máu cơ tim cấp là nguyên nhân thường gặp nhất, chiếm hơn 80% các trường hợp. Khoảng 5–15% bệnh nhân nhồi máu cơ tim diễn biến thành sốc tim.
-
-- Sốc tim được định nghĩa là tình trạng giảm tưới máu cơ quan do rối loạn chức năng tim nguyên phát, biểu hiện bằng bằng chứng lâm sàng và sinh hóa của việc cung cấp oxy cho mô không đầy đủ. Nguyên nhân có thể do tổn thương cấu trúc hoặc rối loạn dẫn truyền và có thể tiến triển thành suy đa tạng, t.ử [v.ong.](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnXvDXCSmm7beewiphIxGrwCGTzxNdJhtKvFkbHltFCmjI9YRCTBa1pqpYwA_aem_oaINpgH3gE7vcRHEd87jeA&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg)
-
-- Các tiêu chuẩn kinh điển gồm huyết áp tâm thu <90 mmHg, chỉ số tim CI <2,2 L/phút/m², chênh lệch hàm lượng oxy động - tĩnh mạch >5,5 mL/dL và áp lực mao mạch phổi bít >15 mmHg.
-
-- Tuy nhiên, việc co mạch để bù trừ có thể duy trì huyết áp trong khi tưới máu mô vẫn suy giảm. Vì vậy, huyết áp bình thường không loại trừ sốc tim. Sốc tim nhưng không tụt huyết áp thậm chí có thể liên quan đến tiên lượng xấu.
-
-2. SINH LÝ BỆNH LÀ VÒNG XOẮN SỐC
-
-- Sốc tim phản ánh sự mất cân bằng giữa cung lượng tim và nhu cầu chuyển hóa của cơ thể. Tổn thương cơ tim ban đầu làm giảm cung lượng tim, kích hoạt hệ thần kinh - nội tiết, co mạch và đáp ứng viêm. Các cơ chế này giúp duy trì huyết áp trong giai đoạn đầu nhưng đồng thời làm tăng hậu gánh, tăng nhu cầu oxy cơ tim và tiếp tục làm xấu chức năng thất.
-
-- Rối loạn vi tuần hoàn có thể xuất hiện trước khi huyết động đại tuần hoàn sụp đổ. Lưu lượng mao mạch giảm và mất khả năng điều chỉnh theo nhu cầu chuyển hóa làm nặng thêm tình trạng thiếu oxy mô. Khoảng 40% bệnh nhân có biểu hiện viêm hệ thống vào ngày thứ hai, tăng IL-1β, IL-6 và IL-7 sớm liên quan với t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHieVXGBWaxCYhY2fh61ZDvDiEz7kqvTh_5FwNB_O32hyfCPD8ZTVR0nTYN6G_aem_BmKU5BPWFCzDdVamT0u2fQ&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) cao hơn.
-
-- Đường tiêu hóa là một trong những cơ quan bị ảnh hưởng sớm. Giảm tưới máu làm tổn thương hàng rào niêm mạc, tạo điều kiện cho vi khuẩn chuyển vị và nhiễm khuẩn. Suy thận, suy gan, rối loạn đông máu và suy đa cơ quan là những mắt xích tiếp theo của vòng xoắn sốc. Một số yếu tố điều trị như thuốc chống loạn nhịp, lợi tiểu hoặc thuốc an thần ức chế cơ tim cũng có thể làm nặng tình trạng huyết động.
-
-3. DẤU ẤN SINH HỌC VÀ THANG ĐIỂM TIÊN LƯỢNG
-
-- Troponin giúp đánh giá mức độ hoại tử cơ tim và có giá trị tiên lượng ở bệnh nhân nhồi máu cơ tim, suy tim hoặc sau phẫu thuật van tim. Vai trò của BNP và NT-proBNP trong sốc tim chưa được xác lập rõ như trong suy tim. ST2 hòa tan, khi kết hợp với NT-proBNP, có thể dự báo t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHk7VsHJaeuF5--M4beiBvXrSyNBVe56WdpBEPgo6VnS9Ali4svuip0S5Frv7_aem_4UwYi1k-NkbVL9BFjRpkGw&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) 30 và 90 ngày trong sốc tim liên quan hội chứng vành cấp.
-
-- Một số dấu ấn mới đang được nghiên cứu gồm DPP3, adrenomedullin và angiopoietin-2. DPP3 cao liên quan với tăng lactate, tổn thương thận và t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHvOxhmm4BxYR8qfe55MWSLzy2e8_cKaW5lllGkWmdP2igXpGfdOINGOg0M7j_aem_RzyLfEXluPnjRgmhr8G_yQ&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) ngắn hạn, giảm DPP3 trong 24 giờ đầu gắn với tiên lượng tốt hơn. Angiopoietin-2 tăng sau 72 giờ liên quan với tổn thương thận cấp, chảy máu và tái tưới máu kém. Tuy nhiên, chưa có dấu ấn nào đủ đặc hiệu để sử dụng đơn độc trong quyết định điều trị.
-
-- Các thang điểm thường được sử dụng gồm CardShock, IABP-SHOCK II, SAVE và ENCOURAGE. CardShock kết hợp tuổi, tiền sử tim mạch, nguyên nhân hội chứng vành cấp, phân suất tống máu, tri giác, huyết áp, lactate và chức năng thận. SAVE và ENCOURAGE chủ yếu hỗ trợ tiên lượng ở bệnh nhân sốc tim cần VA-ECMO. Các thang điểm giúp phân tầng nguy cơ nhưng không thể thay thế đánh giá diễn biến huyết động liên tục.
-
-4. PHÂN LOẠI SCAI
-
-- Hệ thống SCAI chia sốc tim thành năm giai đoạn, cho phép đánh giá nhanh và theo dõi sự tiến triển:
-
-+ Giai đoạn A - Nguy cơ: có bệnh tim cấp nhưng huyết động còn ổn định, chưa có giảm tưới máu.
-
-+ Giai đoạn B - Tiền sốc: có tụt huyết áp tương đối hoặc nhịp nhanh nhưng chưa biểu hiện giảm tưới máu rõ.
-
-+ Giai đoạn C - Sốc tim điển hình: có giảm tưới máu và cần ít nhất một biện pháp điều trị ngoài bù dịch, như thuốc vận mạch, thuốc tăng co bóp hoặc thiết bị hỗ trợ tuần hoàn.
-
-+ Giai đoạn D - Diễn biến xấu: không đáp ứng điều trị ban đầu, phải tăng số lượng hoặc cường độ thuốc hay bổ sung hỗ trợ tuần hoàn cơ học.
-
-+ Giai đoạn E - Cực kỳ nguy kịch: trụy tim mạch, ngừng tim kháng trị, đang hồi sinh tim phổi hoặc cần nhiều biện pháp hỗ trợ đồng thời.
-
-- Cardiogenic Shock Working Group đề xuất các ngưỡng thực hành cụ thể hơn:
-
-+ Giai đoạn D thường có huyết áp tâm thu 60–90 mmHg hoặc MAP 50–65 mmHg, đồng thời lactate 5–10 mmol/L hoặc ALT >500 U/L.
-
-+ Giai đoạn E được gợi ý khi huyết áp tâm thu <60 mmHg, MAP <50 mmHg, lactate >10 mmol/L, pH ≤7,2 hoặc phải sử dụng từ ba thuốc/thiết bị trở lên.
-
-+ Tất cả trường hợp ngừng tim ngoại viện được xếp vào giai đoạn E trong mô hình này.
-
-- T.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHvOxhmm4BxYR8qfe55MWSLzy2e8_cKaW5lllGkWmdP2igXpGfdOINGOg0M7j_aem_RzyLfEXluPnjRgmhr8G_yQ&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) tăng dần theo giai đoạn SCAI. Đánh giá lại nhiều lần quan trọng hơn chỉ ghi nhận giai đoạn lúc nhập viện, bởi một số bệnh nhân ban đầu ở giai đoạn thấp nhưng tiến triển rất nhanh. Tuổi cao, ngừng tim ngoại viện, viêm hệ thống, toan chuyển hóa nặng và tổn thương thận cấp tiếp tục làm tăng nguy cơ trong từng giai đoạn.
-
-5. MỤC TIÊU ĐIỀU TRỊ
-
-- Điều trị cần hướng đến ba mục tiêu:
-
-+ Giảm và ngừng được thuốc vận mạch và thuốc tăng co bóp
-
-+ Phát hiện sớm để nâng bậc hỗ trợ khi sốc kháng trị
-
-+ Hạ bậc, cai thiết bị khi cơ tim hồi phục.
-
-- Đồng thời phải điều trị nguyên nhân, hạn chế hoại tử cơ tim tiếp diễn và phòng biến chứng của hỗ trợ tuần hoàn cơ học như chảy máu, thiếu máu chi, tan máu và nhiễm khuẩn. Mô hình đội sốc đa chuyên khoa gồm tim mạch can thiệp, hồi sức tim mạch, phẫu thuật tim và chuyên gia suy tim tiến triển có liên quan với cải thiện sống còn ở những quần thể được lựa chọn.
-
-- Ở bệnh nhân nhồi máu cơ tim có sốc tim, tái thông mạch vành sớm vẫn là nền tảng điều trị và mang khuyến cáo mức I, bằng chứng B. Tuy vậy, không nên trì hoãn hỗ trợ tuần hoàn cơ học một cách không cần thiết nếu bệnh nhân đang mất ổn định huyết động.
-
-6. THEO DÕI HUYẾT ĐỘNG VÀ VAI TRÒ CỦA CATHETER ĐỘNG MẠCH PHỔI
-
-- Đánh giá ban đầu bao gồm khám lâm sàng, dấu hiệu sinh tồn, điện tâm đồ, chức năng thận và siêu âm tim. Lactate và độ bão hòa oxy máu tĩnh mạch trộn có giá trị tiên lượng, nhưng xu hướng biến đổi theo thời gian có ý nghĩa hơn một giá trị đơn lẻ. Không thanh thải được lactate trong 24 giờ gợi ý khả năng đáp ứng kém với hỗ trợ tuần hoàn.
-
-- Catheter động mạch phổi có thể xác định tình trạng thể tích, áp lực đổ đầy hai thất, cung lượng tim, sức cản mạch phổi và mức độ cung cấp oxy. Các thông số quan trọng gồm công suất tim, tỷ số áp lực nhĩ phải/PCWP, chỉ số dao động động mạch phổi và TAPSE. Sau 24 giờ, công suất tim <0,6 W hoặc chỉ số dao động động mạch phổi <1,0 liên quan với t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHkdB1NzFwzzzPjNMQPEw5LFgzCXkIUKaqdSj1wACzTVpPtsoGk-uBpnV4PtS_aem_L0CYApcR9hzvOGWGT0riwg&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) 30 ngày cao hơn.
-
-- Các dữ liệu quan sát và phân tích gộp cho thấy theo dõi bằng catheter động mạch phổi có thể liên quan với giảm t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHk7VsHJaeuF5--M4beiBvXrSyNBVe56WdpBEPgo6VnS9Ali4svuip0S5Frv7_aem_4UwYi1k-NkbVL9BFjRpkGw&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg), đặc biệt khi được thực hiện sớm trước hỗ trợ tuần hoàn cơ học. Tuy nhiên, mức độ không đồng nhất giữa các nghiên cứu rất lớn và CardShock không ghi nhận giảm t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHpKVqEawLlb9sJ58nFPmFMm7rQJxOKBG0RXuv6Ftjo-GoPSeycNHXIiZEC4M_aem_w2XiDl2HZ9mqOpvK3hWyTA&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) 30 ngày.
-
-- Vì vậy, bài báo không ủng hộ đặt thường quy cho mọi bệnh nhân mà nhấn mạnh sử dụng ở sốc trung bình - nặng, chẩn đoán hoặc kiểu hình huyết động chưa rõ, không đáp ứng điều trị ban đầu và khi cần hướng dẫn nâng hoặc hạ bậc hỗ trợ.
-
-7. HỖ TRỢ TUẦN HOÀN CƠ HỌC
-
-- Thuốc vận mạch và tăng co bóp giúp duy trì huyết áp, tăng cung lượng tim nhưng có thể làm tăng nhu cầu oxy cơ tim, gây loạn nhịp và làm xấu vi tuần hoàn. Do đó, hỗ trợ tuần hoàn cơ học được cân nhắc ở sốc nặng hoặc kháng trị, dựa trên kiểu suy thất và mục tiêu điều trị.
-
-- IABP làm giảm hậu gánh thất trái và tăng tưới máu mạch vành nhưng mức hỗ trợ cung lượng tim tương đối hạn chế. Impella trực tiếp hút máu khỏi thất trái, giảm áp lực đổ đầy, giảm công cơ tim và tăng dòng máu hệ thống; các phiên bản 5.0/5.5 có thể cung cấp lưu lượng tới 5–5,5 L/phút. VA-ECMO cho mức hỗ trợ tuần hoàn và oxy hóa mạnh nhất nhưng làm tăng đáng kể hậu gánh thất trái, có thể dẫn đến giãn thất trái, phù phổi, ứ máu và huyết khối trong thất.
-
-- Cần đánh giá nâng bậc khi bệnh nhân còn rối loạn chuyển hóa, tổn thương cơ quan, áp lực đổ đầy thất trái cao hoặc cần thuốc tăng co bóp kéo dài. Điểm thuốc tăng co bóp >20 khi đang hỗ trợ cơ học hoặc vẫn cần thuốc sau 48 giờ là tín hiệu phải đánh giá lại toàn bộ huyết động.
-
-- Với suy thất trái đơn thuần, có thể bắt đầu bằng IABP hoặc Impella 2.5/CP, sau đó chuyển sang Impella 5.0/5.5 nếu cần lưu lượng lớn và thời gian hỗ trợ dài hơn. Thiết bị này có thể đóng vai trò cầu nối tới quyết định, LVAD bền vững hoặc ghép tim.
-
-- Suy hai thất cần được nhận diện và nâng bậc khẩn cấp. Rối loạn thất phải được gợi ý bởi áp lực nhĩ phải >16 mmHg, chỉ số dao động động mạch phổi <1,85 hoặc tỷ số RAP/PCWP >0,59. Trước tiên cần loại trừ các nguyên nhân có thể đảo ngược như tràn khí màng phổi, xẹp phổi, thuyên tắc phổi, toan máu, tăng CO₂ hoặc sự cố vị trí bơm. Các lựa chọn hỗ trợ hai thất gồm VA-ECMO, bổ sung RVAD qua ProtekDuo hoặc phối hợp hai Impella – BiPELLA.
-
-8. BẰNG CHỨNG VỀ HIỆU QUẢ CỦA HỖ TRỢ CƠ HỌC
-
-- Nhìn chung, hỗ trợ tuần hoàn cơ học cải thiện một số thông số huyết động nhưng chưa chứng minh chắc chắn lợi ích t.ử [v.ong.](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhBxxV28qtdH30EXLzrjS-uFIW-3kJ9G_k2B2EJ58P2yJxu3wDyUmz1N40dt_aem_TLm0lhwhLCfuwgMDckWDVg&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) So với IABP, các thiết bị hỗ trợ mạnh hơn làm tăng MAP trung bình khoảng 11,85 mmHg và giảm lactate khoảng 1,36 mmol/L, nhưng không cải thiện có ý nghĩa chỉ số tim hoặc PCWP.
-
-- T.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHgRxLYY52mlDehd2pzVc5_FFNKKQEBwUJtNxMvxcbMNq_EIIYdJOwPIEL0VI_aem_CGJ1VXaDaODupShlh-MxPQ&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) 30 ngày gần như tương đương: 45,5% với hỗ trợ cơ học so với 45,1% với IABP. Ngược lại, nguy cơ chảy máu tăng khoảng 2,5 lần và thiếu máu chi có xu hướng tăng. IABP-SHOCK II cũng không chứng minh lợi ích t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnXvDXCSmm7beewiphIxGrwCGTzxNdJhtKvFkbHltFCmjI9YRCTBa1pqpYwA_aem_oaINpgH3gE7vcRHEd87jeA&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) của IABP trong sốc tim do nhồi máu cơ tim.
-
-- Phân tích phụ CULPRIT-SHOCK ghi nhận nhóm được hỗ trợ cơ học có t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHkdB1NzFwzzzPjNMQPEw5LFgzCXkIUKaqdSj1wACzTVpPtsoGk-uBpnV4PtS_aem_L0CYApcR9hzvOGWGT0riwg&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg), lọc máu, đột quỵ và chảy máu cao hơn. Kết quả này phần nào phản ánh việc thiết bị thường được dùng cho những bệnh nhân nặng hơn, nhưng nhấn mạnh rằng không nên sử dụng hỗ trợ cơ học một cách thường quy nếu chưa lựa chọn đúng bệnh nhân, thời điểm và mục tiêu.
-
-9. GIẢM TẢI THẤT TRÁI KHI SỬ DỤNG VA-ECMO
-
-- VA-ECMO cải thiện tưới máu hệ thống nhưng làm tăng hậu gánh, áp lực cuối tâm trương thất trái và áp lực tĩnh mạch phổi. Hậu quả có thể là phù phổi, giãn thất trái, tăng sức căng cơ tim và huyết khối. Vì vậy, giảm tải thất trái thường được phối hợp bằng thuốc giãn mạch, IABP, mở thông vách liên nhĩ, dẫn lưu thất trái hoặc Impella.
-
-- Các nghiên cứu quan sát cho thấy giảm tải thất trái khi chạy VA-ECMO có thể làm giảm t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnXvDXCSmm7beewiphIxGrwCGTzxNdJhtKvFkbHltFCmjI9YRCTBa1pqpYwA_aem_oaINpgH3gE7vcRHEd87jeA&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg), đặc biệt ở bệnh nhân nhồi máu cơ tim. Một phân tích gộp ghi nhận mức giảm tương đối khoảng 12%, nhưng đi kèm nhiều biến chứng hơn. Do bằng chứng chủ yếu không phải thử nghiệm ngẫu nhiên, lựa chọn phương pháp vẫn phải dựa trên đặc điểm người bệnh và kinh nghiệm của trung tâm.
-
-- Có thể hạ bậc VA-ECMO khi lactate giảm, tưới máu mô cải thiện, không còn tổn thương cơ quan tiến triển và nhu cầu thuốc vận mạch giảm. Nếu còn suy thất trái đơn thuần, có thể chuyển từ VA-ECMO sang Impella để tiếp tục hỗ trợ và tạo điều kiện phục hồi cơ tim.
-
-10. CAN THIỆP BỆNH TIM CẤU TRÚC
-
-- Bằng chứng về can thiệp van tim trong sốc tim còn hạn chế. Với hở van hai lá, sửa van qua catheter có thể khả thi ở những bệnh nhân được lựa chọn. Một nghiên cứu ghi nhận t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHieVXGBWaxCYhY2fh61ZDvDiEz7kqvTh_5FwNB_O32hyfCPD8ZTVR0nTYN6G_aem_BmKU5BPWFCzDdVamT0u2fQ&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) nội viện sau can thiệp khoảng 15,6%, nếu thủ thuật thành công, t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhBxxV28qtdH30EXLzrjS-uFIW-3kJ9G_k2B2EJ58P2yJxu3wDyUmz1N40dt_aem_TLm0lhwhLCfuwgMDckWDVg&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) một năm là 39,7%, thấp hơn mức 69,2% khi không đạt thành công thiết bị.
-
-- TAVI cũng có thể là biện pháp cứu vãn ở sốc tim do hẹp van động mạch chủ nặng hoặc thoái hóa van sinh học. Một loạt ca ghi nhận thành công thiết bị 94,1%, t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhBxxV28qtdH30EXLzrjS-uFIW-3kJ9G_k2B2EJ58P2yJxu3wDyUmz1N40dt_aem_TLm0lhwhLCfuwgMDckWDVg&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) 30 ngày 11,8% và t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHjirKrRd0EIqvnKNfSi9IvmbDMcEqG74v1L6KkpmoaHvNuOy-v8RyPJfsXt3_aem_YN53uJmqOHv-fxW_NsShGA&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) một năm 25,7%. Tuy nhiên, đây là dữ liệu từ những quần thể được lựa chọn và chưa thể khái quát thành chỉ định thường quy.
-
-11. VẬN DỤNG
-
-- Bệnh nhân sốc tim nặng nên được điều trị tại trung tâm sốc cấp độ 1, hoạt động 24/7, có khả năng theo dõi huyết động xâm lấn, hỗ trợ đa cơ quan, can thiệp mạch vành, phẫu thuật tim và triển khai các thiết bị hỗ trợ tuần hoàn.
-
-- Thuốc tăng co bóp vẫn được sử dụng khi có giảm tưới máu cơ quan, nhưng lựa chọn thuốc cần dựa trên huyết áp, kiểu hình huyết động, nguy cơ loạn nhịp và nguồn lực sẵn có. Hỗ trợ tuần hoàn cơ học tạm thời hiện chỉ mang khuyến cáo IIb và cần quyết định bởi đội đa chuyên khoa, dựa trên tiên lượng, mục tiêu điều trị và mong muốn của người bệnh.
-
-12. KẾT LUẬN
-
-- Sốc tim vẫn có t.ử [v.ong](https://l.facebook.com/l.php?u=http%3A%2F%2Fv.ong%2F%3Futm_id%3D97758_v0_s00_e0_tv2_a1demoo42t15nt%26fbclid%3DIwcGRvZgVleHRuA2FlbQIxMABicmlkETFweTlCOHpWOU1iNFU3cGZ6c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHgRxLYY52mlDehd2pzVc5_FFNKKQEBwUJtNxMvxcbMNq_EIIYdJOwPIEL0VI_aem_CGJ1VXaDaODupShlh-MxPQ&h=AUDcOKu4DkXNQ7WIRVBV-A6zT-cA7b8jgYsr0gfEEsB9Rx_UIV-UoIO3LwFxQJvbo_C87K-Gql0aIjZTjWncxpwdbX1HV7y5KIPxkqfvQoJPd3orE2L3zIcVGJayyvy02W5ObmDcUXtIABgM&__tn__=-UK-R&c[0]=AUCjgsW2kzjSSR1AoolcVF8OwDnJHVay3xZMUPQXzdJoLkdDMfTn2-AOw7CGfIBq6zxZmOvqB8hudPlYFTHlXiZnCOiUnheQo9EI8PzAyJWzjUqah1aAUZ5MhdiY3Wr5rLy7QFCOi6E3bATsRKz3QG87grNhAgYQUjdB0Kmv48D-qofasxDjK31WP-mCQEmwmDsB0edtDGc1vVc2SA2-e63vZdtxXg) rất cao dù điều trị thuốc và hỗ trợ tuần hoàn cơ học ngày càng phát triển. Bài tổng quan nhấn mạnh rằng cải thiện kết quả có lẽ không phụ thuộc vào một thiết bị hay biện pháp đơn lẻ, mà nằm ở nhận diện sớm, phân tầng và đánh giá lại theo SCAI, xác định đúng kiểu hình huyết động, lựa chọn bệnh nhân hợp lý và phối hợp đa chuyên khoa.
-
-- Đáng lưu ý, đây là bài tổng quan chuyên gia, không phải một hướng dẫn thực hành mới. Các bằng chứng về catheter động mạch phổi, Impella, VA-ECMO và giảm tải thất trái phần lớn vẫn là dữ liệu quan sát, có nguy cơ sai lệch lựa chọn. Vì vậy, hỗ trợ cơ học cần được cá thể hóa, theo dõi sát hiệu quả - biến chứng và luôn gắn với một đích điều trị rõ ràng: hồi phục cơ tim, cầu nối tới quyết định, LVAD, ghép tim hoặc chăm sóc giảm nhẹ.
-![[Pasted image 20260808203734.png]]
-![[Pasted image 20260808203752.png]]
+1. [[Pasted image 20260808203734.png]]
+2. [[Pasted image 20260808203752.png]]

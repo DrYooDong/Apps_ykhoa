@@ -1,9 +1,13 @@
 ---
 title: "HỒI QUY LOGISTIC ĐA THỨC ĐỐI VỚI BIẾN KẾT CỤC DANH NGHĨA"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐏𝐡𝐚̂̀𝐧 𝟐- 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 đ𝐨̂́𝐢 𝐯𝐨̛́𝐢 𝐛𝐢𝐞̂́𝐧 𝐤𝐞̂́𝐭 𝐜𝐮̣𝐜 𝐝𝐚𝐧𝐡 𝐧𝐠𝐡𝐢̃𝐚: 𝐂𝐨̛ 𝐬𝐨̛̉ 𝐥𝐲́ 𝐭𝐡𝐮𝐲𝐞̂́𝐭, 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐱𝐚̂𝐲 𝐝𝐮̛̣𝐧𝐠 𝐦𝐨̂ 𝐡𝐢̀𝐧𝐡 𝐯𝐚̀ 𝐮̛́𝐧𝐠 𝐝𝐮̣𝐧𝐠 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮
 
 TS. Đào Hồng Nam
@@ -18,7 +22,7 @@ Giả sử bộ dữ liệu nghiên cứu gồm n đối tượng, trong đó m�
 
 Khác với hồi quy tuyến tính, trong đó các hệ số được tính trực tiếp từ hệ phương trình chuẩn, hồi quy logistic đa thức không có nghiệm giải tích dạng đóng. Vì vậy, việc tìm bộ tham số cực đại của hàm hợp lý phải được thực hiện bằng các thuật toán lặp số.
 
-Trong thực hành, việc ước lượng các tham số của hồi quy logistic đa thức gần như luôn được thực hiện thông qua các phần mềm thống kê chuyên dụng như R, Stata, SAS hoặc SPSS. Các phần mềm này sử dụng những thuật toán tối ưu hóa khác nhau để giải bài toán cực đại hóa hàm hợp lý, chẳng hạn như Newton–Raphson, Fisher scoring hoặc các biến thể của phương pháp quasi-Newton. Mặc dù quy trình tính toán cụ thể có thể khác nhau giữa các phần mềm và thuật toán, mục tiêu cuối cùng đều giống nhau là tìm bộ hệ số β làm cho hàm hợp lý của mô hình đạt giá trị lớn nhất, qua đó xác định bộ tham số phù hợp nhất với dữ liệu quan sát.
+Trong thực hành, việc ước lượng các tham số của hồi quy logistic đa thức gần như luôn được thực hiện thông qua các phần mềm thống kê chuyên dụng như R, Stata, SAS hoặc SPSS. Các phần mềm này sử dụng những thuật toán tối ưu hóa khác nhau để giải bài toán cực đại hóa hàm hợp lý, chẳng hạn như Newton–Raphson, Fisher scoring hoặc các biến thể của phương pháp quasi-Newton. Mặc dù quy trình tính toán cụ thể có thể khác nhau giữa các phần mềm và thuật toán, mục tiêu cuối cùng đều giống nhau là tìm bộ hệ số β làm cho hàm hợp lý của mô hình đạt giá trị lớn nhất, qua đó xác định bộ tham số [[Phù]] hợp nhất với dữ liệu quan sát.
 
 Quá trình ước lượng thường bắt đầu từ một tập giá trị khởi tạo của các tham số, sau đó các hệ số hồi quy được cập nhật liên tục qua nhiều vòng lặp. Ở mỗi bước, thuật toán đánh giá mức độ cải thiện của hàm hợp lý và điều chỉnh các tham số theo hướng làm tăng giá trị của hàm này. Quá trình lặp được tiếp tục cho đến khi sự thay đổi của hàm hợp lý hoặc của các hệ số giữa hai lần lặp liên tiếp trở nên rất nhỏ và nhỏ hơn ngưỡng hội tụ đã được thiết lập trước. Khi đó, mô hình được xem là đã hội tụ và các hệ số ước lượng cuối cùng sẽ được sử dụng cho việc suy luận thống kê và diễn giải kết quả. Toàn bộ quy trình này được minh họa trong Sơ đồ 1.
 
@@ -32,11 +36,11 @@ Cả hai thuật toán đều tận dụng thông tin từ đạo hàm bậc nh�
 
 Trong quá trình ước lượng, các hệ số hồi quy được cập nhật liên tục và giá trị của hàm log-hợp lý được theo dõi đồng thời để đánh giá mức độ hội tụ của mô hình. Quá trình này được xem là hoàn tất khi sự thay đổi của log-hợp lý và các hệ số hồi quy giữa hai vòng lặp liên tiếp trở nên rất nhỏ, thấp hơn ngưỡng dung sai được thiết lập trong phần mềm thống kê. Khi điều kiện đó được đáp ứng, nghiệm hiện tại được chấp nhận là nghiệm tối ưu và các hệ số thu được sẽ được sử dụng để tính sai số chuẩn, khoảng tin cậy, kiểm định giả thuyết và các chỉ số diễn giải khác của mô hình.
 
-Trong thực hành, việc mô hình không đạt được trạng thái hội tụ thường là dấu hiệu cho thấy dữ liệu hoặc cấu trúc mô hình đang tồn tại vấn đề cần được xem xét. Những nguyên nhân thường gặp bao gồm kích thước mẫu không đủ lớn so với số lượng tham số cần ước lượng, sự hiện diện của đa cộng tuyến mạnh giữa các biến độc lập hoặc số lượng quan sát quá ít ở một số nhóm kết cục. Ngoài ra, hiện tượng phân tách hoàn toàn (complete separation), trong đó một hoặc một số biến giải thích dự đoán gần như hoàn hảo một nhóm kết cục nhất định, cũng có thể khiến các hệ số hồi quy tiến dần đến những giá trị rất lớn và làm quá trình lặp không thể hội tụ. Khi gặp những tình huống này, nhà nghiên cứu cần đánh giá lại dữ liệu, xem xét gộp các nhóm có tần suất quá thấp, đơn giản hóa mô hình hoặc áp dụng các phương pháp ước lượng phù hợp hơn để bảo đảm tính ổn định và độ tin cậy của kết quả phân tích.
+Trong thực hành, việc mô hình không đạt được trạng thái hội tụ thường là dấu hiệu cho thấy dữ liệu hoặc cấu trúc mô hình đang tồn tại vấn đề cần được xem xét. Những nguyên nhân thường gặp bao gồm kích thước mẫu không đủ lớn so với số lượng tham số cần ước lượng, sự hiện diện của đa cộng tuyến mạnh giữa các biến độc lập hoặc số lượng quan sát quá ít ở một số nhóm kết cục. Ngoài ra, hiện tượng phân tách hoàn toàn (complete separation), trong đó một hoặc một số biến giải thích dự đoán gần như hoàn hảo một nhóm kết cục nhất định, cũng có thể khiến các hệ số hồi quy tiến dần đến những giá trị rất lớn và làm quá trình lặp không thể hội tụ. Khi gặp những tình huống này, nhà nghiên cứu cần đánh giá lại dữ liệu, xem xét gộp các nhóm có tần suất quá thấp, đơn giản hóa mô hình hoặc áp dụng các phương pháp ước lượng [[Phù]] hợp hơn để bảo đảm tính ổn định và độ tin cậy của kết quả phân tích.
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟒. 𝐐𝐮𝐚́ 𝐭𝐫𝐢̀𝐧𝐡 𝐡𝐨̣̂𝐢 𝐭𝐮̣ 𝐜𝐮̉𝐚 𝐭𝐡𝐮𝐚̣̂𝐭 𝐭𝐨𝐚́𝐧 𝐜𝐮̛̣𝐜 đ𝐚̣𝐢 𝐡𝐨̛̣𝐩 𝐥𝐲́
 
-Một nghiên cứu trên 1.186 bệnh nhân mắc bệnh thận mạn được thực hiện nhằm xác định các yếu tố liên quan đến lựa chọn phương pháp điều trị thay thế thận. Biến kết cục gồm ba nhóm: điều trị bảo tồn, lọc máu chu kỳ và ghép thận.
+Một nghiên cứu trên 1.186 bệnh nhân mắc bệnh [[Thận]] mạn được thực hiện nhằm xác định các yếu tố liên quan đến lựa chọn phương pháp điều trị thay thế [[Thận]]. Biến kết cục gồm ba nhóm: điều trị bảo tồn, lọc máu chu kỳ và ghép thận.
 
 Sau khi mô hình được xây dựng, phần mềm thống kê tiến hành quá trình ước lượng tham số bằng thuật toán Newton–Raphson thông qua nhiều vòng lặp liên tiếp. Trong ví dụ này, giá trị log-hợp lý tăng dần qua từng vòng lặp và đạt trạng thái ổn định sau vòng lặp thứ sáu. Khi mức thay đổi của log-hợp lý giữa hai vòng lặp liên tiếp giảm xuống thấp hơn ngưỡng hội tụ được quy định trước, quá trình tối ưu hóa được xem là hoàn tất và bộ hệ số hồi quy tại thời điểm đó được sử dụng cho các bước đánh giá mô hình, kiểm định giả thuyết và diễn giải kết quả.
 

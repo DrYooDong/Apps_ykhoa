@@ -1,15 +1,19 @@
 ---
 title: "PHÂN TÍCH PHƯƠNG SAI (ANALYSIS OF VARIANCE, ANOVA)"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐀𝐧𝐨𝐯𝐚 2 𝐲𝐞̂́𝐮 𝐭𝐨̂́ - 𝐏𝐡𝐚̂̀𝐧 3 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 (𝐀𝐧𝐚𝐥𝐲𝐬𝐢𝐬 𝐨𝐟 𝐕𝐚𝐫𝐢𝐚𝐧𝐜𝐞, 𝐀𝐍𝐎𝐕𝐀) 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́
 
 TS. Đào Hồng Nam
 Phân tích phương sai (Analysis of Variance, ANOVA) là một trong những phương pháp thống kê suy luận quan trọng và được sử dụng rộng rãi nhất trong nghiên cứu y học nhằm đánh giá sự khác biệt giữa giá trị trung bình của từ ba nhóm nghiên cứu trở lên. Kể từ khi được phát triển trên nền tảng lý thuyết của Fisher vào đầu thế kỷ XX, ANOVA đã trở thành công cụ cơ bản trong phân tích dữ liệu của các nghiên cứu thực nghiệm, thử nghiệm lâm sàng, nghiên cứu tiền lâm sàng và nhiều lĩnh vực khác của khoa học sức khỏe. Mặc dù hiện nay đã xuất hiện nhiều mô hình thống kê hiện đại như mô hình hỗn hợp tuyến tính, mô hình Bayes hay các phương pháp học máy, ANOVA vẫn giữ vai trò nền tảng trong việc xây dựng tư duy phân tích dữ liệu và là cơ sở phát triển của nhiều kỹ thuật thống kê đa biến được sử dụng trong nghiên cứu y sinh học (Montgomery, 2020).
 
-Trong nghiên cứu y học, nhu cầu so sánh hiệu quả của các biện pháp can thiệp, các phác đồ điều trị hoặc các yếu tố nguy cơ giữa nhiều nhóm đối tượng xuất hiện rất thường xuyên. Ví dụ, một thử nghiệm lâm sàng có thể cần so sánh hiệu quả của ba thuốc điều trị tăng huyết áp; một nghiên cứu dịch tễ học có thể đánh giá sự khác biệt về nồng độ cholesterol giữa nhiều nhóm tuổi; hoặc một nghiên cứu phục hồi chức năng có thể theo dõi sự thay đổi điểm đánh giá vận động của bệnh nhân tại nhiều thời điểm sau can thiệp. Trong các tình huống này, việc thực hiện nhiều phép kiểm định t độc lập không chỉ làm tăng xác suất sai lầm loại I mà còn khiến quá trình phân tích trở nên thiếu hiệu quả và khó diễn giải. ANOVA được phát triển nhằm giải quyết vấn đề đó bằng cách đánh giá đồng thời sự khác biệt giữa nhiều nhóm trong cùng một mô hình thống kê (Field, 2018).
+Trong nghiên cứu y học, nhu cầu so sánh hiệu quả của các biện pháp can thiệp, các phác đồ điều trị hoặc các yếu tố nguy cơ giữa nhiều nhóm đối tượng xuất hiện rất thường xuyên. Ví dụ, một thử nghiệm lâm sàng có thể cần so sánh hiệu quả của ba thuốc điều trị [[Tăng huyết áp]]; một nghiên cứu dịch tễ học có thể đánh giá sự khác biệt về nồng độ cholesterol giữa nhiều nhóm tuổi; hoặc một nghiên cứu phục hồi chức năng có thể theo dõi sự thay đổi điểm đánh giá vận động của bệnh nhân tại nhiều thời điểm sau can thiệp. Trong các tình huống này, việc thực hiện nhiều phép kiểm định t độc lập không chỉ làm tăng xác suất sai lầm loại I mà còn khiến quá trình phân tích trở nên thiếu hiệu quả và khó diễn giải. ANOVA được phát triển nhằm giải quyết vấn đề đó bằng cách đánh giá đồng thời sự khác biệt giữa nhiều nhóm trong cùng một mô hình thống kê (Field, 2018).
 
 Điểm cốt lõi của ANOVA không nằm ở việc so sánh trực tiếp các giá trị trung bình mà ở việc phân tích nguồn gốc của biến thiên trong dữ liệu. Thay vì chỉ xem xét sự khác biệt giữa các trung bình quan sát được, ANOVA phân tách tổng biến thiên thành phần biến thiên do yếu tố nghiên cứu tạo ra và phần biến thiên do sai số ngẫu nhiên. Nếu phần biến thiên do yếu tố nghiên cứu lớn hơn đáng kể so với biến thiên ngẫu nhiên, có thể kết luận rằng yếu tố nghiên cứu có ảnh hưởng đến biến phụ thuộc. Chính nguyên lý này tạo nên tên gọi "phân tích phương sai", mặc dù mục tiêu cuối cùng của phương pháp là so sánh các giá trị trung bình giữa các nhóm (Kutner et al., 2005).
 
@@ -43,9 +47,9 @@ Bên cạnh ưu điểm về kiểm soát sai số, ANOVA còn có khả năng m
 
 Mặc dù ANOVA là phương pháp mạnh và tương đối bền vững trước một số sai lệch nhỏ của dữ liệu, kết quả phân tích chỉ đáng tin cậy khi các giả định của mô hình được đáp ứng ở mức chấp nhận được. Các giả định này bao gồm tính độc lập giữa các quan sát, phân phối chuẩn của phần dư và đồng nhất phương sai đối với các mô hình ANOVA truyền thống. Đối với các biến thể mở rộng như ANOVA đo lặp hoặc MANOVA, các giả định bổ sung như tính cầu phương hoặc đồng nhất ma trận hiệp phương sai cũng cần được xem xét. Tổng hợp các giả định cơ bản được trình bày trong Bảng 1.
 
-𝐕𝐢́ 𝐝𝐮̣ 𝟏. Một nghiên cứu đánh giá hiệu quả của 4 phác đồ điều trị tăng huyết áp trên 240 bệnh nhân. Sau 12 tuần điều trị, huyết áp tâm thu được đo ở tất cả các đối tượng. Mục tiêu của nghiên cứu là xác định liệu huyết áp trung bình sau điều trị có khác nhau giữa bốn phác đồ hay không.
+𝐕𝐢́ 𝐝𝐮̣ 𝟏. Một nghiên cứu đánh giá hiệu quả của 4 phác đồ điều trị [[Tăng huyết áp]] trên 240 bệnh nhân. Sau 12 tuần điều trị, huyết áp tâm thu được đo ở tất cả các đối tượng. Mục tiêu của nghiên cứu là xác định liệu huyết áp trung bình sau điều trị có khác nhau giữa bốn phác đồ hay không.
 
-Trong trường hợp này, biến phụ thuộc là huyết áp tâm thu sau điều trị, còn yếu tố nghiên cứu là phác đồ điều trị với bốn mức. Vì nghiên cứu chỉ có một biến phụ thuộc định lượng và một yếu tố phân loại, ANOVA một yếu tố là phương pháp phân tích phù hợp. Nếu kết quả ANOVA cho thấy có sự khác biệt tổng thể giữa các nhóm, nghiên cứu sẽ tiếp tục thực hiện các kiểm định hậu nghiệm để xác định cụ thể những phác đồ nào khác nhau. Quy trình phân tích tổng quát của ANOVA được minh họa trong Sơ đồ 1.
+Trong trường hợp này, biến phụ thuộc là huyết áp tâm thu sau điều trị, còn yếu tố nghiên cứu là phác đồ điều trị với bốn mức. Vì nghiên cứu chỉ có một biến phụ thuộc định lượng và một yếu tố phân loại, ANOVA một yếu tố là phương pháp phân tích [[Phù]] hợp. Nếu kết quả ANOVA cho thấy có sự khác biệt tổng thể giữa các nhóm, nghiên cứu sẽ tiếp tục thực hiện các kiểm định hậu nghiệm để xác định cụ thể những phác đồ nào khác nhau. Quy trình phân tích tổng quát của ANOVA được minh họa trong Sơ đồ 1.
 
 Có thể thấy rằng ANOVA không chỉ là một phép kiểm định thống kê đơn lẻ mà là nền tảng của một hệ thống các mô hình phân tích dữ liệu được sử dụng rộng rãi trong nghiên cứu y học. Việc hiểu rõ nguyên lý hình thành, phạm vi áp dụng và cấu trúc của phương pháp sẽ giúp nhà nghiên cứu lựa chọn đúng mô hình cho từng thiết kế nghiên cứu và tạo tiền đề cho việc tiếp cận các biến thể nâng cao sẽ được trình bày trong các mục tiếp theo.
 𝟑. 𝐀𝐍𝐎𝐕𝐀 𝐡𝐚𝐢 𝐲𝐞̂́𝐮 𝐭𝐨̂́
@@ -88,7 +92,7 @@ Cần lưu ý rằng việc diễn giải hiệu ứng chính chỉ thực sự 
 
 Hiệu ứng tương tác (interaction effect) là đặc điểm quan trọng nhất của ANOVA hai yếu tố và cũng là nội dung phân biệt phương pháp này với ANOVA một yếu tố. Hiệu ứng tương tác xuất hiện khi ảnh hưởng của một yếu tố thay đổi theo mức của yếu tố còn lại. Nói cách khác, tác động của yếu tố A không còn giống nhau ở tất cả các mức của yếu tố B.
 
-Hiệu ứng tương tác xuất hiện khá phổ biến trong các nghiên cứu y học, bởi tác động của một yếu tố lên kết quả nghiên cứu không phải lúc nào cũng giống nhau ở mọi nhóm đối tượng. Hiệu quả của một thuốc, chẳng hạn, có thể thay đổi theo giới tính, tuổi, tình trạng béo phì, kiểu gen hoặc giai đoạn bệnh. Khi mối tương tác này tồn tại nhưng không được đưa vào mô hình phân tích, ảnh hưởng thực sự của các yếu tố nghiên cứu có thể bị che khuất hoặc diễn giải không chính xác, từ đó dẫn đến những kết luận và khuyến nghị điều trị chưa phù hợp với từng nhóm bệnh nhân cụ thể.
+Hiệu ứng tương tác xuất hiện khá phổ biến trong các nghiên cứu y học, bởi tác động của một yếu tố lên kết quả nghiên cứu không phải lúc nào cũng giống nhau ở mọi nhóm đối tượng. Hiệu quả của một thuốc, chẳng hạn, có thể thay đổi theo giới tính, tuổi, tình trạng béo phì, kiểu gen hoặc giai đoạn bệnh. Khi mối tương tác này tồn tại nhưng không được đưa vào mô hình phân tích, ảnh hưởng thực sự của các yếu tố nghiên cứu có thể bị che khuất hoặc diễn giải không chính xác, từ đó dẫn đến những kết luận và khuyến nghị điều trị chưa [[Phù]] hợp với từng nhóm bệnh nhân cụ thể.
 
 Về mặt trực quan, nếu biểu diễn trung bình của các nhóm bằng biểu đồ đường, hiệu ứng tương tác thường được nhận biết thông qua việc các đường biểu diễn không song song hoặc cắt nhau. Nguyên lý này được minh họa trong Hình 1.
 

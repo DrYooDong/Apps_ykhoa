@@ -1,3 +1,13 @@
+---
+title: "Sự phát triển tâm thần - vận động ở trẻ em (Phần 1)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐẶC ĐIỂM PHÁT TRIỂN TÂM THẦN - VẬN ĐỘNG THEO TUỔI Ở TRẺ EM)
 
 ---

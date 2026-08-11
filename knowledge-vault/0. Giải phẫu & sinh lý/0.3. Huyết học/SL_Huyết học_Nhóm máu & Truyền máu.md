@@ -1,13 +1,18 @@
 ---
 title: "SL_Huyết học_Nhóm máu & Truyền máu"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/huyet-hoc
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. Đại Cương Về Nhóm Máu
-Màng tế bào hồng cầu của con người chứa nhiều loại kháng nguyên (antigen) hay còn gọi là ngưng kết nguyên (agglutinogen). Sự hiện diện hay vắng mặt của các kháng nguyên này quyết định nhóm máu của một cá thể. Mặc dù có ít nhất 30 loại kháng nguyên phổ biến và hàng trăm kháng nguyên hiếm gặp, nhưng trong thực hành lâm sàng và truyền máu, hai hệ thống nhóm máu quan trọng nhất là hệ thống O-A-B (hệ ABO) và hệ thống Rh.
+Màng tế bào [[Hồng cầu]] của con người chứa nhiều loại kháng nguyên (antigen) hay còn gọi là ngưng kết nguyên (agglutinogen). Sự hiện diện hay vắng mặt của các kháng nguyên này quyết định nhóm máu của một cá thể. Mặc dù có ít nhất 30 loại kháng nguyên phổ biến và hàng trăm kháng nguyên hiếm gặp, nhưng trong thực hành lâm sàng và truyền máu, hai hệ thống nhóm máu quan trọng nhất là hệ thống O-A-B (hệ ABO) và hệ thống Rh.
 
 #### 1.2. Hệ Thống Nhóm Máu ABO
 **Bản chất kháng nguyên:** Các kháng nguyên của hệ ABO bản chất là các phân tử đường oligosaccharide. 
@@ -15,7 +20,7 @@ Màng tế bào hồng cầu của con người chứa nhiều loại kháng ngu
 *   Người nhóm máu A có thêm enzyme transferase thứ hai gắn N-acetylgalactosamine vào kháng nguyên H tạo thành kháng nguyên A. 
 *   Người nhóm máu B có enzyme gắn galactose vào kháng nguyên H tạo thành kháng nguyên B.
 *   Người nhóm máu O không có cả hai enzyme trên nên kháng nguyên H vẫn được giữ nguyên (không có kháng nguyên A hay B).
-*   Khoảng 80% số người có kháng nguyên A hoặc B hiện diện không chỉ trên màng hồng cầu mà còn trong nước bọt, bạch cầu, tiểu cầu và tế bào biểu mô.
+*   Khoảng 80% số người có kháng nguyên A hoặc B hiện diện không chỉ trên màng [[Hồng cầu]] mà còn trong nước bọt, [[Bạch cầu]], [[Tiểu cầu]] và tế bào biểu mô.
 
 **Phân loại và Di truyền học:**
 Sự di truyền nhóm máu được quyết định bởi 3 alen: $I^A$, $I^B$, và $I^O$. Alen O là gen lặn, trong khi A và B là gen đồng trội.
@@ -53,7 +58,7 @@ Khác với hệ ABO, kháng thể anti-D không có sẵn tự nhiên trong huy
 **Bất đồng nhóm máu mẹ - con hệ Rh (Erythroblastosis Fetalis):**
 Xảy ra khi người mẹ Rh- mang thai đứa trẻ Rh+ (di truyền từ bố).
 *   Ở lần mang thai đầu tiên, mẹ chưa có kháng thể anti-D nên thai nhi thường an toàn. Tuy nhiên, trong quá trình sinh, một lượng máu thai nhi lọt vào tuần hoàn mẹ sẽ kích thích hệ miễn dịch của mẹ sản xuất kháng thể anti-D (đạt nồng độ tối đa sau 2-4 tháng).
-*   Ở các lần mang thai tiếp theo với thai nhi Rh+, kháng thể anti-D (IgG) của mẹ đi qua hàng rào nhau thai, tấn công và làm ngưng kết hồng cầu của thai nhi. Điều này gây ra bệnh tan máu ở trẻ sơ sinh, dẫn đến thiếu máu nặng, vàng da (do giải phóng bilirubin), phù nề (hydrops fetalis), và có thể gây hội chứng vàng da nhân não (kernicterus) do bilirubin chưa liên hợp lắng đọng ở hạch nền.
+*   Ở các lần mang thai tiếp theo với thai nhi Rh+, kháng thể anti-D (IgG) của mẹ đi qua hàng rào nhau thai, tấn công và làm ngưng kết hồng cầu của thai nhi. Điều này gây ra bệnh tan máu ở trẻ sơ sinh, dẫn đến thiếu máu nặng, [[Vàng da]] (do giải phóng bilirubin), [[Phù]] nề (hydrops fetalis), và có thể gây hội chứng [[Vàng da]] nhân não (kernicterus) do bilirubin chưa liên hợp lắng đọng ở hạch nền.
 *   *Phòng ngừa:* Sử dụng Rh immune globulin (kháng thể Anti-D) tiêm cho người mẹ Rh- ở tuần thứ 28-30 của thai kỳ và ngay sau khi sinh. Kháng thể này sẽ gắn vào và dọn sạch các hồng cầu Rh+ của thai nhi lọt vào tuần hoàn mẹ, ngăn chặn cơ thể mẹ tự sản sinh kháng thể.
 
 > **[TRÍCH XUẤT SƠ ĐỒ]**
@@ -78,7 +83,7 @@ Nguyên tắc quan trọng nhất là: **Hồng cầu của người cho không 
 **Tai biến do truyền nhầm nhóm máu (Transfusion Reactions):**
 Khi truyền sai nhóm máu, kháng thể sẽ gắn vào hồng cầu, liên kết chúng tạo thành các cụm ngưng kết làm tắc nghẽn các mạch máu nhỏ. Sau đó, hồng cầu bị phá hủy (tán huyết) giải phóng hemoglobin. Các hậu quả lâm sàng nghiêm trọng bao gồm:
 1.  *Vàng da:* Do hemoglobin bị đại thực bào chuyển hóa thành bilirubin.
-2.  *Suy thận cấp:* Là biến chứng nguy hiểm nhất, có thể gây tử vong. Do ba nguyên nhân: (1) Phản ứng kháng nguyên-kháng thể gây co thắt mạch thận mạnh; (2) Sốc tuần hoàn làm hạ huyết áp trầm trọng; (3) Hemoglobin tự do trong máu vượt quá khả năng gắn kết của haptoglobin sẽ rò rỉ qua màng lọc cầu thận, kết tủa và làm tắc nghẽn hoàn toàn ống thận.
+2.  *Suy [[Thận]] cấp:* Là biến chứng nguy hiểm nhất, có thể gây tử vong. Do ba nguyên nhân: (1) Phản ứng kháng nguyên-kháng thể gây co thắt mạch [[Thận]] mạnh; (2) [[Sốc]] tuần hoàn làm hạ huyết áp trầm trọng; (3) Hemoglobin tự do trong máu vượt quá khả năng gắn kết của haptoglobin sẽ rò rỉ qua màng lọc cầu thận, kết tủa và làm tắc nghẽn hoàn toàn ống thận.
 
 > **[TRÍCH XUẤT SƠ ĐỒ]**
 > *   **Tên sơ đồ:** Plate 4.7 C: ABO blood group incompatibility.

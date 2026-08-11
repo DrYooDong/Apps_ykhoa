@@ -1,9 +1,14 @@
 ---
 title: "SL_Tiêu hóa_Gan & Tụy ngoại tiết"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 **1. Sinh lý tiêu hóa tại Tụy (Tụy ngoại tiết)**
 
 Tuyến tụy đóng vai trò trung tâm trong việc tiêu hóa các đại phân tử thức ăn và trung hòa acid dạ dày. Phần tụy ngoại tiết (chiếm 80% khối lượng tụy) có cấu trúc gồm hai thành phần tế bào với chức năng bài tiết khác biệt:
@@ -24,8 +29,8 @@ Tuyến tụy đóng vai trò trung tâm trong việc tiêu hóa các đại ph�
 
 Gan không trực tiếp tiết ra các enzyme tiêu hóa cấu trúc phân tử, nhưng nó tiết ra dịch mật - một thành phần không thể thiếu để tiêu hóa và hấp thu chất béo.
 
-*   **Sự tạo mật ở tế bào gan:**
-    Gan sản xuất khoảng 500 - 1.000 mL mật mỗi ngày. Mật chứa các thành phần như muối mật (chiếm 50% chất hòa tan), cholesterol, lecithin (phosphatidylcholine), sắc tố mật (bilirubin) và các chất điện giải. Muối mật được tế bào gan tổng hợp từ tiền chất là cholesterol, sau đó liên hợp với glycine hoặc taurine để tạo thành muối mật bài tiết vào vi ống mật.
+*   **Sự tạo mật ở [[Gan|tế bào gan]]:**
+    Gan sản xuất khoảng 500 - 1.000 mL mật mỗi ngày. Mật chứa các thành phần như muối mật (chiếm 50% chất hòa tan), cholesterol, lecithin (phosphatidylcholine), sắc tố mật (bilirubin) và các chất điện giải. Muối mật được [[Gan|tế bào gan]] tổng hợp từ tiền chất là cholesterol, sau đó liên hợp với glycine hoặc taurine để tạo thành muối mật bài tiết vào vi ống mật.
 *   **Cô đặc và dự trữ tại túi mật:**
     Giữa các bữa ăn, cơ vòng Oddi đóng lại, mật được chuyển hướng vào dự trữ ở túi mật (thể tích tối đa 30-60 mL). Tại đây, niêm mạc túi mật hấp thu tích cực $Na^+$, $Cl^-$ và nước, làm mật được cô đặc từ 5 đến 20 lần.
 *   **Chức năng tiêu hóa của Muối mật:**

@@ -1,6 +1,12 @@
 ---
 title: "Bệnh thận do đái tháo đường"
-specialty: "Nội tiết"
-tags: ["Nội tổng quát", "Nội tiết", "Bệnh lý cụ thể", "Đái tháo đường"]
-last_updated: "2026-07-28"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/noi-tiet
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
 ---
+

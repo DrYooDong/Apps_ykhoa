@@ -1,16 +1,27 @@
+---
+title: "GP-SL_Hệ hô hấp ở trẻ em (Phần 1)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### 1.1. Tổng Quan Sự Khác Biệt Giữa Hệ Hô Hấp Trẻ Em Và Người Lớn
 
-Trẻ em không phải là người lớn thu nhỏ. Sự khác biệt đáng kể về đặc điểm giải phẫu và sinh lý hô hấp giữa trẻ em và người lớn giải thích lý do tại sao hệ hô hấp của trẻ (đặc biệt là trẻ nhũ nhi) dễ bị mất bù và tiến triển đến suy hô hấp nhanh chóng khi mắc bệnh lý.
+Trẻ em không phải là người lớn thu nhỏ. Sự khác biệt đáng kể về đặc điểm giải phẫu và sinh lý hô hấp giữa trẻ em và người lớn giải thích lý do tại sao hệ hô hấp của trẻ (đặc biệt là trẻ nhũ nhi) dễ bị mất bù và tiến triển đến [[Suy hô hấp]] nhanh chóng khi mắc bệnh lý.
 
 > **Bảng Thông Tin:** **Tên bảng:** Bảng 5.1. Những khác biệt chính về đặc điểm giải phẫu và sinh lý của hệ hô hấp trẻ em so với người lớn **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 1 (2025) - P1.md **Nội dung mô tả:**
 > 
 > - **Hệ thần kinh – cơ chưa trưởng thành:** Hậu quả gây điều hòa nhịp thở kém, dễ mỏi cơ hô hấp, tăng nguy cơ ngưng thở.
 > - **Thành ngực mềm, mỏng, tính đàn hồi cao:** Hậu quả làm giảm hiệu quả hô hấp của khung sườn, cơ hoành và các cơ hô hấp phụ.
 > - **Đường dẫn khí ngắn, hẹp và vòng sụn mềm:** Hậu quả làm kháng trở đường thở cao, trẻ rất dễ bị tắc nghẽn đường thở.
-> - **Thể tích phổi nhỏ, dung tích cặn cơ năng nhỏ:** Hậu quả khiến tần số hô hấp cao, tốn nhiều công hô hấp, trẻ bị mất bão hòa oxy rất nhanh trong giai đoạn ngưng thở.
-> - **Thông khí bàng hệ kém:** Hậu quả làm trẻ dễ bị xẹp phổi.
+> - **Thể tích [[Phổi]] nhỏ, dung tích cặn cơ năng nhỏ:** Hậu quả khiến tần số hô hấp cao, tốn nhiều công hô hấp, trẻ bị mất bão hòa oxy rất nhanh trong giai đoạn ngưng thở.
+> - **Thông khí bàng hệ kém:** Hậu quả làm trẻ dễ bị xẹp [[Phổi]].
 > - **Tốc độ chuyển hóa cao:** Hậu quả làm tăng nhu cầu tiêu thụ oxy của cơ thể.
 
 ---
@@ -35,13 +46,13 @@ Chức năng chính của vùng dẫn khí là cung cấp con đường cho khí
 ##### 1. Mũi Và Khoang Mũi
 
 - Mũi của trẻ nhũ nhi ngắn hơn, hẹp hơn nên **kháng trở đường thở cao hơn** người lớn. Khoang mũi tăng dần thể tích trong 5 năm đầu đời.
-- Trẻ từ 2 đến 6 tháng tuổi (hoặc dưới 6 tháng) hô hấp chủ yếu qua mũi. Do đó, khi niêm mạc mũi bị phù nề (do hít không khí lạnh hoặc do viêm) rất dễ gây tắc nghẽn đường thở và tăng công hô hấp.
+- Trẻ từ 2 đến 6 tháng tuổi (hoặc dưới 6 tháng) hô hấp chủ yếu qua mũi. Do đó, khi niêm mạc mũi bị [[Phù]] nề (do hít không khí lạnh hoặc do viêm) rất dễ gây tắc nghẽn đường thở và tăng công hô hấp.
 
 ##### 2. Các Xoang Cạnh Mũi
 
 Các xoang cạnh mũi là các hốc rỗng bên trong một số xương mặt và sọ, thông với khoang mũi, có tác dụng làm nhẹ khối xương mặt và cộng hưởng phát âm. Các mầm xoang xuất hiện rất sớm từ tuần thứ 8 của thai kỳ nhưng thời điểm phát triển và rỗng hóa hoàn thiện sau sinh khác nhau:
 
-- **Xoang hàm:** Phát triển sớm nhất từ tuần thứ 17 (hoặc tháng thứ 3) của thai kỳ. Xoang rỗng hóa dần, chụp X-quang lúc 1–6 tháng tuổi có thể thấy thông khí hoàn toàn. Xoang hàm có hai pha tăng trưởng mạnh lúc 4–5 tuổi và sau 8 tuổi; đạt kích thước như người lớn sau 15 tuổi (thể tích 12–18 mL). Đây là xoang thường bị viêm nhất và có thể gặp ở trẻ $> 6$ tuổi.
+- **Xoang hàm:** Phát triển sớm nhất từ tuần thứ 17 (hoặc tháng thứ 3) của thai kỳ. Xoang rỗng hóa dần, [[[[X-quang]]|chụp X-quang]] lúc 1–6 tháng tuổi có thể thấy thông khí hoàn toàn. Xoang hàm có hai pha tăng trưởng mạnh lúc 4–5 tuổi và sau 8 tuổi; đạt kích thước như người lớn sau 15 tuổi (thể tích 12–18 mL). Đây là xoang thường bị viêm nhất và có thể gặp ở trẻ $> 6$ tuổi.
 - **Xoang trán:** Hình thành từ tháng thứ 4 của thai kỳ nhưng lớn chậm và rỗng hóa chậm, xuất hiện rõ trên X-quang lúc 4–7 tuổi. Ngừng tăng trưởng lúc 16–18 tuổi (bên phải) và 25 tuổi (bên trái), thể tích đạt 4–7 mL. Viêm xoang trán thường gặp ở trẻ $> 12$ tuổi.
 - **Xoang sàng:** Phát triển từ 12 tuần tuổi thai. Thể tích xoang sàng tăng mạnh trong 7 năm đầu, đạt gần bằng người lớn lúc 12 tuổi và tiếp tục tăng đến 25 tuổi (thể tích 4–5 mL).
 - **Xoang bướm:** Phát triển từ tháng thứ 3 của thai kỳ. Phát hiện trên X-quang lúc 3–5 tuổi, có hai mốc phát triển vượt trội là trước 5 tuổi và khoảng 6–10 tuổi; thể tích đạt 3–8 mL lúc 25 tuổi.
@@ -58,11 +69,11 @@ Các xoang cạnh mũi là các hốc rỗng bên trong một số xương mặt
 
 ##### 4. Thanh Quản, Khí Quản Và Phế Quản
 
-- **Thanh quản:** Nằm ở vị trí cao hơn (ngang mức đốt sống cổ C1-C2 hoặc C3-C4 ở trẻ $< 2$ tuổi; C5 lúc 6 tuổi; so với C4-C5 hoặc C6 ở người lớn) và hướng ra trước gần khoang miệng hơn. Thanh quản thuôn dài và mềm hơn người lớn nên khi viêm dễ bị tắc nghẽn và xuất hiện triệu chứng **thở rít thanh quản**. Giới hạn dưới của sụn nhẫn là vị trí hẹp nhất trên đường thở ở trẻ dưới 5 tuổi.
+- **Thanh quản:** Nằm ở vị trí cao hơn (ngang mức đốt sống cổ C1-C2 hoặc C3-C4 ở trẻ $< 2$ tuổi; C5 lúc 6 tuổi; so với C4-C5 hoặc C6 ở người lớn) và hướng ra trước gần khoang miệng hơn. Thanh quản thuôn dài và mềm hơn người lớn nên khi viêm dễ bị tắc nghẽn và xuất hiện triệu chứng **[[Khó thở|thở rít]] thanh quản**. Giới hạn dưới của sụn nhẫn là vị trí hẹp nhất trên đường thở ở trẻ dưới 5 tuổi.
 - **Khí quản:** Khí quản trẻ nhỏ ngắn, đường kính nhỏ và sụn mềm. Do sụn khí quản còn mềm nên khi gập hoặc ngửa cổ quá mức có thể gây tắc nghẽn một phần hoặc hoàn toàn đường thở. Chiều dài khí quản trẻ nhũ nhi đạt 40% người lớn nhưng đường kính ngang chỉ đạt 10–15%. Tuyến ức còn to trong năm đầu đời có thể chèn ép vào khí quản nằm phía sau.
 - **Phế quản chính:** Phế quản chính ở trẻ em ít gập góc hơn so với người lớn nên dị vật đường thở có thể rơi vào cả phế quản chính phải hoặc trái. Khi trẻ lớn lên, phế quản chính trái trở nên gập góc hơn so với phế quản chính phải nên dị vật đường thở dễ gặp hơn ở phế quản chính phải.
 
-> **Mô Tả Hình Ảnh:** **Tên hình:** Hình 6.3. Sự khác biệt của đường dẫn khí ở trẻ em so với người lớn **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 1 (2020).pdf **Nội dung mô tả:** Sơ đồ tổng hợp các đặc điểm giải phẫu đường thở trẻ em: Hầu mũi và mũi nhỏ dễ tắc; Amidan phát triển mạnh $< 12$ tuổi; Lưỡi to so với khoang miệng; Thanh thiệt dài, mềm, dễ phù nề; Thanh môn và thanh thiệt nằm cao; Sụn giáp, sụn nhẫn, sụn khí quản còn mềm dễ hẹp khi gập cổ; Mô mềm nhiều và biểu mô niêm mạc liên kết lỏng lẻo dễ gây phù nề tắc nghẽn.
+> **Mô Tả Hình Ảnh:** **Tên hình:** Hình 6.3. Sự khác biệt của đường dẫn khí ở trẻ em so với người lớn **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 1 (2020).pdf **Nội dung mô tả:** Sơ đồ tổng hợp các đặc điểm giải phẫu đường thở trẻ em: Hầu mũi và mũi nhỏ dễ tắc; Amidan phát triển mạnh $< 12$ tuổi; Lưỡi to so với khoang miệng; Thanh thiệt dài, mềm, dễ [[Phù]] nề; Thanh môn và thanh thiệt nằm cao; Sụn giáp, sụn nhẫn, sụn khí quản còn mềm dễ hẹp khi gập cổ; Mô mềm nhiều và biểu mô niêm mạc liên kết lỏng lẻo dễ gây phù nề tắc nghẽn.
 
 ---
 

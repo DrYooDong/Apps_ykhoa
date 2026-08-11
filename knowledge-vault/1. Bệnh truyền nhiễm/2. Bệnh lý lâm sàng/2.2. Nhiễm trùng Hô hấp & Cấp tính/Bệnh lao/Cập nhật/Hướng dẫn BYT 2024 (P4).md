@@ -1,3 +1,14 @@
+---
+title: "Hướng dẫn BYT 2024 (P4)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 Dưới đây là tóm tắt chi tiết **Phần IV: CHẨN ĐOÁN VÀ ĐIỀU TRỊ LAO TIỀM ẨN** thuộc tài liệu chuyên môn **“Hướng dẫn Chẩn đoán, điều trị và dự phòng bệnh Lao”** (ban hành kèm theo **Quyết định số 162/QĐ-BYT năm 2024** của Bộ trưởng Bộ Y tế).
 
 ---
@@ -8,22 +19,22 @@ Dưới đây là tóm tắt chi tiết **Phần IV: CHẨN ĐOÁN VÀ ĐIỀU T
 
 - **Định nghĩa:** Lao tiềm ẩn (Z22.7) là tình trạng cơ thể người có đáp ứng miễn dịch với kháng nguyên của vi khuẩn lao (_Mycobacterium tuberculosis_) nhưng chưa có bất kỳ dấu hiệu lâm sàng hay cận lâm sàng nào cho thấy bệnh lao đang hoạt động.
 - **Nhóm người nguy cơ cao mắc lao tiềm ẩn:**
-    - **Người tiếp xúc hộ gia đình:** Những người tiếp xúc gần, thường xuyên với người bệnh lao phổi có nguy cơ lây nhiễm lao và phát triển thành bệnh lao hoạt động.
-    - **Các nhóm đối tượng lâm sàng đặc biệt:** Người nhiễm HIV; bệnh nhân chuẩn bị hoặc đang điều trị thuốc ức chế miễn dịch kéo dài (như thuốc sinh học kháng TNF-alpha, hóa trị liệu ung thư, thuốc dùng trong ghép tạng hoặc ghép tủy); người mắc bệnh đái tháo đường, suy thận mạn; người suy dinh dưỡng nặng.
+    - **Người tiếp xúc hộ gia đình:** Những người tiếp xúc gần, thường xuyên với người bệnh lao [[Phổi]] có nguy cơ lây nhiễm lao và phát triển thành bệnh lao hoạt động.
+    - **Các nhóm đối tượng lâm sàng đặc biệt:** Người nhiễm HIV; bệnh nhân chuẩn bị hoặc đang điều trị thuốc ức chế miễn dịch kéo dài (như thuốc sinh học kháng TNF-alpha, hóa trị liệu ung thư, thuốc dùng trong ghép tạng hoặc ghép tủy); người mắc bệnh đái tháo đường, suy [[Thận]] mạn; người suy dinh dưỡng nặng.
 
 #### 1.2. Các Kỹ Thuật Xét Nghiệm Chẩn Đoán Nhiễm Lao (Lao Tiềm Ẩn)
 
 Bộ Y tế quy định ba nhóm kỹ thuật cơ bản để phát hiện tình trạng nhiễm lao:
 
-- **Phản ứng Mantoux (TST - Tuberculin Skin Test):** Tiêm trong da kháng nguyên Tuberculin (PPD). Kỹ thuật này giúp phát hiện đáp ứng miễn dịch qua trung gian tế bào, tuy nhiên có thể xảy ra dương tính giả đối với người đã tiêm vắc-xin BCG hoặc nhiễm vi khuẩn Mycobacteria ngoài lao (NTM).
+- **Phản ứng Mantoux (TST - Tuberculin Skin Test):** Tiêm trong da kháng nguyên Tuberculin (PPD). Kỹ thuật này giúp phát hiện đáp ứng miễn dịch qua trung gian tế bào, tuy nhiên có thể xảy ra dương tính giả đối với người đã tiêm [[Vắc-xin]] BCG hoặc nhiễm vi khuẩn Mycobacteria ngoài lao (NTM).
 - **Các test da khác (TBST - Tuberculosis Skin Test):** Diaskintest, Cy-Tb, C-TST.... Đây là các test da thế hệ mới, có độ đặc hiệu cao hơn TST vì chỉ sử dụng các kháng nguyên đặc hiệu cho vi khuẩn lao người.
-- **Xét nghiệm IGRA (Interferon-Gamma Release Assay):** QuantiFeron-TB Gold Plus hoặc T-SPOT.TB. Xét nghiệm máu (sử dụng chất chống đông Lithium Heparin hoặc bộ ống chuyên dụng) giúp định lượng Interferon-gamma được giải phóng bởi tế bào lympho T sau khi tiếp xúc với kháng nguyên đặc hiệu của vi khuẩn lao người. Ưu điểm vượt trội là độ đặc hiệu cao, không bị ảnh hưởng chéo bởi tình trạng tiêm chủng BCG trước đó.
+- **Xét nghiệm IGRA (Interferon-Gamma Release Assay):** QuantiFeron-TB Gold Plus hoặc T-SPOT.TB. Xét nghiệm máu (sử dụng chất chống đông Lithium Heparin hoặc bộ ống chuyên dụng) giúp định lượng Interferon-gamma được giải phóng bởi tế bào lympho T sau khi tiếp xúc với kháng nguyên đặc hiệu của vi khuẩn lao người. Ưu điểm vượt trội là độ đặc hiệu cao, không bị ảnh hưởng chéo bởi tình trạng [[Vắc-xin|tiêm chủng]] BCG trước đó.
 
 ---
 
 > **📌 TRÍCH XUẤT CÁC LƯU ĐỒ QUY TRÌNH CHẨN ĐOÁN VÀ ĐIỀU TRỊ LAO TIỀM ẨN**
 > 
-> _Tên Sơ đồ:_ SƠ ĐỒ 7: QUY TRÌNH CHẨN ĐOÁN, ĐIỀU TRỊ LAO TIỀM ẨN (cho trẻ tiếp xúc hộ gia đình bệnh nhân lao phổi dưới 5 tuổi và người nhiễm HIV) VÀ SƠ ĐỒ 8: QUY TRÌNH CHẨN ĐOÁN, ĐIỀU TRỊ LAO TIỀM ẨN (cho người tiếp xúc hộ gia đình bệnh nhân lao phổi từ 5 tuổi trở lên và các nhóm nguy cơ cao khác) _Thuộc Tài liệu:_ "Lao-phoi-162-2024.pdf" - Bộ Y tế
+> _Tên Sơ đồ:_ SƠ ĐỒ 7: QUY TRÌNH CHẨN ĐOÁN, ĐIỀU TRỊ LAO TIỀM ẨN (cho trẻ tiếp xúc hộ gia đình bệnh nhân lao [[Phổi]] dưới 5 tuổi và người nhiễm HIV) VÀ SƠ ĐỒ 8: QUY TRÌNH CHẨN ĐOÁN, ĐIỀU TRỊ LAO TIỀM ẨN (cho người tiếp xúc hộ gia đình bệnh nhân lao phổi từ 5 tuổi trở lên và các nhóm nguy cơ cao khác) _Thuộc Tài liệu:_ "Lao-phoi-162-2024.pdf" - Bộ Y tế
 > 
 > **Mô tả cấu trúc phân nhánh quyết định điều trị:**
 > 
@@ -47,7 +58,7 @@ Bộ Y tế phê duyệt năm phác đồ điều trị lao tiềm ẩn chính, 
 ##### Phác đồ 3HP (Isoniazid + Rifapentine hàng tuần trong 12 tuần)
 
 - **Cách dùng:** Điều trị hàng tuần bằng Isoniazid (H) phối hợp Rifapentine (P) liên tục trong 12 tuần (tổng cộng 12 liều) cho người lớn và trẻ em từ 2 tuổi trở lên. Phải uống Rifapentine kèm thức ăn ít béo.
-- **Chống chỉ định:** Người tiếp xúc nguồn lây kháng thuốc H hoặc R; phụ nữ mang thai hoặc dự định mang thai trong thời gian điều trị; người có bệnh gan cấp/mạn tính hoặc viêm đa dây thần kinh.
+- **Chống chỉ định:** Người tiếp xúc nguồn lây kháng thuốc H hoặc R; phụ nữ mang thai hoặc dự định mang thai trong thời gian điều trị; người có bệnh [[Gan]] cấp/mạn tính hoặc viêm đa dây thần kinh.
 - **Tương tác thuốc quan trọng:** Sử dụng an toàn với các phác đồ ARV chứa TDF và Efavirenz (EFV) mà không cần chỉnh liều Dolutegravir (DTG) hoặc Raltegravir (RAL) ở người lớn. **Chống chỉ định dùng đồng thời** với các thuốc ức chế protease (PIs), Nevirapine (NVP) hoặc Tenofovir alafenamide (TAF).
 
 ---
@@ -79,7 +90,7 @@ Bộ Y tế phê duyệt năm phác đồ điều trị lao tiềm ẩn chính, 
 ##### Phác đồ 6H (Isoniazid hàng ngày trong 6 tháng)
 
 - **Cách dùng:** Điều trị hàng ngày bằng Isoniazid đơn độc liên tục trong 6 tháng (tổng cộng 180 liều).
-- **Chống chỉ định:** Người tiếp xúc nguồn lây kháng Isoniazid, người có bệnh lý gan hoặc thần kinh ngoại biên.
+- **Chống chỉ định:** Người tiếp xúc nguồn lây kháng Isoniazid, người có bệnh lý [[Gan]] hoặc thần kinh ngoại biên.
 
 ##### Phác đồ 6L (Levofloxacin hàng ngày trong 6 tháng)
 
@@ -96,7 +107,7 @@ Bộ Y tế phê duyệt năm phác đồ điều trị lao tiềm ẩn chính, 
     - Người đồng nhiễm HIV.
     - Phụ nữ có thai hoặc phụ nữ đang trong 3 tháng đầu sau sinh.
 - **Xử trí chỉ số men gan tăng trong điều trị lao tiềm ẩn:**
-    - _ALT/AST tăng dưới 03 lần giới hạn bình thường trên:_ Tiếp tục điều trị dự phòng lao tiềm ẩn, tư vấn dặn dò người bệnh theo dõi sát các triệu chứng mệt mỏi, chán ăn, vàng da, vàng mắt.
+    - _ALT/AST tăng dưới 03 lần giới hạn bình thường trên:_ Tiếp tục điều trị dự phòng lao tiềm ẩn, tư vấn dặn dò người bệnh theo dõi sát các triệu chứng mệt mỏi, chán ăn, [[Vàng da]], vàng mắt.
     - _AST/ALT tăng trên 3 lần kèm theo triệu chứng lâm sàng_ (hoặc _tăng trên 5 lần không có triệu chứng_): **Ngừng điều trị ngay lập tức** (tạm thời hoặc vĩnh viễn tùy diễn tiến). Chưa chỉ định điều trị lại khi chưa tìm ra căn nguyên và men gan chưa trở về bình thường.
 
 #### 1.5. Tiêu Chuẩn Đánh Giá Kết Quả Điều Trị Lao Tiềm Ẩn
@@ -141,7 +152,7 @@ Bộ Y tế quy định các định nghĩa rõ ràng về kết quả của m�
 - **Gián đoạn trên 01 tuần:**
     - _Nếu quên trên 07 liều liên tiếp:_ Chỉ định **điều trị lại từ đầu**.
     - _Nếu quên trên 07 liều không liên tiếp:_ Uống liều tiếp theo ngay khi nhớ ra và bổ sung những liều quên vào tổng thời gian điều trị (đảm bảo hoàn thành trong thời gian tối đa **08 tuần**).
-    - _Nếu đánh giá bệnh nhân không thể tuân thủ 1HP:_ Ngừng hẳn phác đồ này và chỉ định điều trị lại từ đầu bằng phác đồ khác phù hợp hơn.
+    - _Nếu đánh giá bệnh nhân không thể tuân thủ 1HP:_ Ngừng hẳn phác đồ này và chỉ định điều trị lại từ đầu bằng phác đồ khác [[Phù]] hợp hơn.
 
 ---
 

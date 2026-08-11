@@ -1,6 +1,10 @@
 ---
 title: "Áp xe ẩn"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Bệnh lý cụ thể", "Áp xe", "Áp xe ẩn"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+

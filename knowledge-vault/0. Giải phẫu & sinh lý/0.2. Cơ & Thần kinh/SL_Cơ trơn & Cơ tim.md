@@ -1,13 +1,18 @@
 ---
 title: "SL_Cơ trơn & Cơ tim"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
-### 1. SINH LÝ CƠ TIM (CARDIAC MUSCLE PHYSIOLOGY)
+
+### 1. SINH LÝ [[Tim|CƠ TIM]] (CARDIAC MUSCLE PHYSIOLOGY)
 
 **Đặc điểm Cấu trúc và Tính Hợp bào (Syncytium)**
-Cơ tim là một loại cơ vân, chứa các tơ cơ (myofibrils) với các sợi actin và myosin sắp xếp thành các đơn vị co cơ (sarcomere). Tuy nhiên, khác với cơ vân, các tế bào cơ tim nhỏ hơn, có phân nhánh và nối kết chặt chẽ với nhau thông qua các đĩa xen kẽ (intercalated discs). Tại đĩa xen kẽ, các màng tế bào hợp nhất tạo thành các liên kết khe (gap junctions) có điện trở thấp, cho phép các ion khuếch tán dễ dàng. Nhờ đó, hoạt động điện có thể lan truyền nhanh chóng từ tế bào này sang tế bào khác, làm cho toàn bộ khối cơ tim hoạt động như một hợp bào (syncytium) duy nhất (gồm hợp bào tâm nhĩ và hợp bào tâm thất). 
+[[Tim|Cơ tim]] là một loại cơ vân, chứa các tơ cơ (myofibrils) với các sợi actin và myosin sắp xếp thành các đơn vị co cơ (sarcomere). Tuy nhiên, khác với cơ vân, các tế bào cơ tim nhỏ hơn, có phân nhánh và nối kết chặt chẽ với nhau thông qua các đĩa xen kẽ (intercalated discs). Tại đĩa xen kẽ, các màng tế bào hợp nhất tạo thành các liên kết khe (gap junctions) có điện trở thấp, cho phép các ion khuếch tán dễ dàng. Nhờ đó, hoạt động điện có thể lan truyền nhanh chóng từ tế bào này sang tế bào khác, làm cho toàn bộ khối cơ tim hoạt động như một hợp bào (syncytium) duy nhất (gồm hợp bào tâm nhĩ và hợp bào tâm thất). 
 
 **Điện thế động và Tính trơ của Cơ tim**
 Điện thế động của tế bào cơ tâm thất kéo dài (200-400 ms) và chia làm 5 pha:

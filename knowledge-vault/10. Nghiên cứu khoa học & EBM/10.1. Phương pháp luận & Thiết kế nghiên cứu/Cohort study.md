@@ -1,9 +1,13 @@
 ---
 title: "Cohort study"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Phương pháp luận & Thiết kế nghiên cứu"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Dưới góc độ của một chuyên gia Y học chứng cứ (EBM), tôi xin trình bày bản phân tích chuyên sâu về thiết kế **Nghiên cứu đoàn hệ** (hay còn gọi là **Nghiên cứu thuần tập** - _Cohort study_) dựa trên các tài liệu đã được cung cấp.
 
 ### 1. KHÁI NIỆM VÀ ĐẶC ĐIỂM THIẾT KẾ CỐT LÕI
@@ -46,6 +50,6 @@ Mặc dù là thiết kế quan sát mạnh nhất, nghiên cứu đoàn hệ v�
 - **Sai lệch do mất dấu theo dõi (Attrition bias / Loss to follow-up):**
     - Do yêu cầu phải theo dõi đối tượng trong thời gian dài, chi phí tốn kém, hiện tượng đối tượng "bỏ cuộc" là nhược điểm rất lớn.
     - _Góc nhìn phản biện:_ Nếu tỷ lệ mất dấu theo dõi lớn (dưới mức 80%), và lý do mất dấu khác biệt giữa hai nhóm (ví dụ: nhóm can thiệp bỏ cuộc nhiều hơn vì tác dụng phụ nặng), ước lượng hiệu quả của nghiên cứu sẽ bị sai lệch nghiêm trọng,.
-- **Sai lệch trong đo lường kết cục (Flawed measurement of outcome):** Cần thận trọng nếu có sự khác biệt trong hệ thống giám sát và phát hiện kết cục (differential surveillance) giữa nhóm phơi nhiễm và nhóm không phơi nhiễm.
+- **Sai lệch trong đo lường kết cục (Flawed measurement of outcome):** Cần [[Thận]] trọng nếu có sự khác biệt trong hệ thống giám sát và phát hiện kết cục (differential surveillance) giữa nhóm phơi nhiễm và nhóm không phơi nhiễm.
 
 **Kết luận:** Dưới góc nhìn Y học thực chứng, nghiên cứu đoàn hệ là công cụ bản lề để thiết lập mối quan hệ nguyên nhân - kết quả trong các nghiên cứu về tiên lượng, các biến cố tác hại (harms), hoặc đánh giá các can thiệp y tế không thể thực hiện bằng thử nghiệm ngẫu nhiên do rào cản y đức. Tuy nhiên, tính hợp lệ của nó phụ thuộc hoàn toàn vào tỷ lệ duy trì bệnh nhân qua thời gian và khả năng xử lý triệt để các yếu tố gây nhiễu bằng công cụ thống kê.

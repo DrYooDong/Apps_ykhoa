@@ -1,0 +1,241 @@
+/**
+ * guidelines-table.css
+ * Study Data Tables, Row Cards, Timeline Layout & Forest Plot SVG Styling
+ * Pure Vanilla CSS3
+ */
+
+/* ── BẢNG DỮ LIỆU chính ── */
+.table-container {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.study-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.83rem;
+  min-width: 950px;
+}
+.study-table thead {
+  background: var(--surface-2);
+  border-bottom: 2px solid var(--border-light);
+}
+.study-table th {
+  padding: 0.75rem 0.5rem; text-align: left;
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--text-muted); white-space: nowrap;
+  user-select: none; transition: color var(--tr);
+}
+.study-table th.sortable {
+  cursor: pointer;
+}
+.study-table th.sortable:hover { color: var(--accent); }
+
+.study-table td {
+  padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+}
+.study-table tbody tr.main-row {
+  transition: background var(--tr);
+}
+.study-table tbody tr.main-row:hover { background: var(--accent-light); }
+.study-table tbody tr.main-row.expanded {
+  background: var(--accent-light);
+}
+
+/* Cell icons */
+.cell-center {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+.col-checkbox { width: 35px; }
+.col-star { width: 35px; }
+.col-expand { width: 35px; }
+
+.row-selector {
+  accent-color: var(--accent);
+  cursor: pointer;
+  width: 15px; height: 15px;
+}
+
+.btn-star {
+  background: none; border: none; font-size: 1rem; color: var(--text-faint);
+  cursor: pointer; transition: transform var(--tr), color var(--tr);
+}
+.btn-star:hover { transform: scale(1.2); color: #eab308; }
+.btn-star.active { color: #eab308; }
+
+.btn-expand {
+  background: none; border: none; font-size: 0.8rem; color: var(--text-muted);
+  cursor: pointer; transition: transform var(--tr);
+}
+.btn-expand.expanded { transform: rotate(90deg); }
+
+/* Columns dynamic details */
+.col-study { min-width: 180px; }
+.study-title-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.study-title {
+  font-weight: 700; color: var(--text);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+.study-title:hover {
+  color: var(--accent);
+}
+.study-drug {
+  font-size: 0.75rem; color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.col-impact { width: 140px; }
+.impact-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 9px; border-radius: 12px;
+  font-size: 0.7rem; font-weight: 700;
+  white-space: nowrap;
+}
+.impact-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+}
+
+.impact-practice-changing { background: var(--bg-practice-changing); color: var(--color-practice-changing); }
+.impact-practice-changing .impact-dot { background: var(--color-practice-changing); }
+.impact-informative { background: var(--bg-informative); color: var(--color-informative); }
+.impact-informative .impact-dot { background: var(--color-informative); }
+.impact-early-signal { background: var(--bg-early-signal); color: var(--color-early-signal); }
+.impact-early-signal .impact-dot { background: var(--color-early-signal); }
+.impact-negative { background: var(--bg-negative); color: var(--color-negative); }
+.impact-negative .impact-dot { background: var(--color-negative); }
+.impact-regulatory { background: var(--bg-regulatory); color: var(--color-regulatory); }
+.impact-regulatory .impact-dot { background: var(--color-regulatory); }
+
+.badge-src-intl-study { background: var(--bg-src-intl-study); color: var(--color-src-intl-study); }
+.badge-src-intl-guideline { background: var(--bg-src-intl-guideline); color: var(--color-src-intl-guideline); }
+.badge-src-vn-moh { background: var(--bg-src-vn-moh); color: var(--color-src-vn-moh); }
+.badge-src-vn-doh { background: var(--bg-src-vn-doh); color: var(--color-src-vn-doh); }
+.badge-src-vn-association { background: var(--bg-src-vn-association); color: var(--color-src-vn-association); }
+
+/* ── CÓ GÌ MỚI (TOP UPDATES) ── */
+.updates-section {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.updates-header {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  color: #fff;
+}
+.updates-header h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem; font-weight: 800; margin-bottom: 0.25rem;
+}
+.updates-header p {
+  font-size: 0.75rem; opacity: 0.9;
+}
+.updates-list {
+  padding: 0.5rem 0;
+}
+.update-item {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+  transition: background var(--tr);
+  cursor: pointer;
+}
+.update-item:last-child { border-bottom: none; }
+.update-item:hover { background: var(--accent-light); }
+
+/* ── GUIDELINE TIMELINE ── */
+.tl-wrapper { display: flex; flex-direction: column; gap: 1rem; }
+.tl-top-bar {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+}
+.tl-page-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem; font-weight: 800; color: var(--text);
+}
+.tl-page-subtitle { font-size: 0.78rem; color: var(--text-faint); margin-top: 2px; }
+.tl-filter-bar { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+.tl-body { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.tl-year-group {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 0 1.25rem;
+}
+.tl-year-pin {
+  display: flex; flex-direction: column;
+  align-items: center; padding-top: 0.1rem;
+}
+.tl-year-badge {
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 800;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px; white-space: nowrap; z-index: 1;
+}
+.tl-year-line {
+  width: 2px; flex: 1;
+  background: linear-gradient(to bottom, var(--accent), rgba(124,58,237,0.05));
+  margin-top: 4px; min-height: 30px;
+}
+.tl-items { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.tl-item {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--tl-color, var(--accent));
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  transition: box-shadow 200ms, border-left-color 200ms;
+  position: relative;
+}
+.tl-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+/* ── SUBGROUP EXPLORER & MINI FOREST PLOT SVGs ── */
+.sg-panel {
+  margin-top: 1.25rem;
+  border: 1.5px solid var(--border-light, #e2e8f0);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface, #ffffff);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.sg-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.85rem;
+  padding: 1rem;
+  background: var(--surface, #ffffff);
+}
+
+.sg-card {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 12px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.sg-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+  border-color: var(--accent-mid, #8b5cf6);
+}

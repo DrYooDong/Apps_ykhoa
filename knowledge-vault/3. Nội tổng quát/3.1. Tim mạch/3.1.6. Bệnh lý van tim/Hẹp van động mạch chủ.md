@@ -1,5 +1,11 @@
 ---
+title: "Hẹp van động mạch chủ"
+type: disease
+specialty: "Nội khoa"
 tags:
-  - Benhly
-  - Capcuu
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
 ---
+

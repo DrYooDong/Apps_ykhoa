@@ -1,10 +1,20 @@
-### 1. Nội Dung Bệnh Lý Học Chi Tiết: Khuyến Cáo Đồng Thuận Về Cá Thể Hóa Liều Kháng Sinh Beta-Lactam Ở Bệnh Nhân Nặng (Phần 1)
+---
+title: "Cá Thể Hóa Liều Kháng Sinh Beta-Lactam Ở Bệnh Nhân Nặng (Phần 1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
 
-Dựa trên tài liệu đồng thuận hướng dẫn mới nhất năm 2026, đợt cập nhật này tập trung vào các khái niệm, bằng chứng lâm sàng và mục tiêu dược động học/dược lực học (PK/PD) đối với chiến lược "cá thể hóa liều" (dose individualization) của kháng sinh nhóm Beta-lactam ở nhóm bệnh nhân cấp cứu và hồi sức tích cực (ICU).
+### 1. Nội Dung Bệnh Lý Học Chi Tiết: Khuyến Cáo Đồng Thuận Về Cá Thể Hóa Liều [[Kháng sinh]] Beta-Lactam Ở Bệnh Nhân Nặng (Phần 1)
+
+Dựa trên tài liệu đồng thuận hướng dẫn mới nhất năm 2026, đợt cập nhật này tập trung vào các khái niệm, bằng chứng lâm sàng và mục tiêu dược động học/dược lực học (PK/PD) đối với chiến lược "cá thể hóa liều" (dose individualization) của [[Kháng sinh]] nhóm Beta-lactam ở nhóm bệnh nhân cấp cứu và hồi sức tích cực (ICU).
 
 #### Cơ Sở Của Việc Cá Thể Hóa Liều Kháng Sinh Beta-Lactam
 
-Kháng sinh Beta-lactam là phương pháp điều trị đầu tay cho hầu hết các hội chứng nhiễm khuẩn lớn ở bệnh nhân nặng. Tuy nhiên, các phác đồ liều lượng hiện tại thường tuân theo cách tiếp cận "một kích cỡ phù hợp cho tất cả" (one size fits all), chỉ hiệu chỉnh đơn giản qua cân nặng cơ thể hoặc ước tính độ thanh thải của thận. Ở bệnh nhân nặng, do sự thay đổi sinh lý phức tạp, tình trạng này dẫn đến sự biến thiên rất lớn về dược động học và dược lực học (PK/PD), khiến cho nồng độ thuốc trong huyết thanh không ổn định, làm giảm hiệu quả điều trị và đe dọa sự an toàn. Do đó, các hướng dẫn lâm sàng quốc tế hiện nay khuyến cáo áp dụng cá thể hóa liều Beta-lactam – tức là thiết kế chế độ liều cho một bệnh nhân cụ thể dựa trên việc đo lường nồng độ thuốc của chính bệnh nhân đó.
+Kháng sinh Beta-lactam là phương pháp điều trị đầu tay cho hầu hết các hội chứng nhiễm khuẩn lớn ở bệnh nhân nặng. Tuy nhiên, các phác đồ liều lượng hiện tại thường tuân theo cách tiếp cận "một kích cỡ [[Phù]] hợp cho tất cả" (one size fits all), chỉ hiệu chỉnh đơn giản qua cân nặng cơ thể hoặc ước tính độ thanh thải của [[Thận]]. Ở bệnh nhân nặng, do sự thay đổi sinh lý phức tạp, tình trạng này dẫn đến sự biến thiên rất lớn về dược động học và dược lực học (PK/PD), khiến cho nồng độ thuốc trong huyết thanh không ổn định, làm giảm hiệu quả điều trị và đe dọa sự an toàn. Do đó, các hướng dẫn lâm sàng quốc tế hiện nay khuyến cáo áp dụng cá thể hóa liều Beta-lactam – tức là thiết kế chế độ liều cho một bệnh nhân cụ thể dựa trên việc đo lường nồng độ thuốc của chính bệnh nhân đó.
 
 #### Định Nghĩa Các Thuật Ngữ Quan Trọng Trong Cá Thể Hóa Liều
 
@@ -31,22 +41,22 @@ _Chú thích bảng:_ [Table 2: Important terms and definitions] định nghĩa 
 #### Tác Động Của Việc Cá Thể Hóa Liều Đối Với Kết Cục Điều Trị
 
 - **Cải thiện kết cục lâm sàng:** Khuyến cáo đề xuất áp dụng cá thể hóa liều kháng sinh Beta-lactam để cải thiện kết cục điều trị lấy bệnh nhân làm trung tâm. Các nghiên cứu cho thấy chiến lược này có khả năng làm tăng đáng kể tỷ lệ chữa khỏi về mặt lâm sàng (clinical cure) so với cách tiếp cận tiêu chuẩn.
-- **Mục tiêu PK/PD:** Các chương trình cá thể hóa liều Beta-lactam được khuyến cáo hướng đến mục tiêu PK/PD tối thiểu là duy trì nồng độ thuốc tự do lớn hơn MIC trong toàn bộ khoảng cách liều (100% $fT_{>MIC}$) để tăng xác suất thành công về lâm sàng. Đối với các nhiễm khuẩn ở những vùng cơ thể mà thuốc khó phân bố (ví dụ: viêm màng não), một mục tiêu huyết tương khắt khe hơn như 100% $fT_{>4xMIC}$ có thể phù hợp để đảm bảo nồng độ thuốc tại vị trí nhiễm khuẩn đạt mức yêu cầu.
+- **Mục tiêu PK/PD:** Các chương trình cá thể hóa liều Beta-lactam được khuyến cáo hướng đến mục tiêu PK/PD tối thiểu là duy trì nồng độ thuốc tự do lớn hơn MIC trong toàn bộ khoảng cách liều (100% $fT_{>MIC}$) để tăng xác suất thành công về lâm sàng. Đối với các nhiễm khuẩn ở những vùng cơ thể mà thuốc khó phân bố (ví dụ: [[Viêm màng não]]), một mục tiêu huyết tương khắt khe hơn như 100% $fT_{>4xMIC}$ có thể [[Phù]] hợp để đảm bảo nồng độ thuốc tại vị trí nhiễm khuẩn đạt mức yêu cầu.
 - **Chiến lược truyền thuốc:** Để đạt được mục tiêu PK/PD tối thiểu (100% $fT_{>MIC}$) một cách chắc chắn, việc sử dụng các liều nạp ban đầu (loading doses) và/hoặc truyền kéo dài (prolonged infusions) là một kỹ thuật không thể thiếu đi kèm với quá trình cá thể hóa.
 
 #### Tác Động Của Cá Thể Hóa Liều Đối Với An Toàn Bệnh Nhân
 
 - Dữ liệu hiện tại chưa đủ để thiết lập một mục tiêu dược động học cụ thể nhằm cải thiện hoặc dự đoán hoàn toàn các biến cố an toàn (độc tính).
 - Tuy nhiên, ở những bệnh nhân có nguy cơ cao tích lũy thuốc, việc sử dụng cá thể hóa liều có thể giúp ngăn ngừa nồng độ thuốc vượt ngưỡng dư thừa quá mức, qua đó giảm nguy cơ độc tính. Khuyến cáo bắt buộc phải theo dõi các biến cố bất lợi, đặc biệt là độc tính trên thần kinh (neurotoxicity) ở nhóm bệnh nhân này.
-- Cefepime được ghi nhận là loại Beta-lactam thường xuyên liên quan nhất đến độc tính trên thần kinh (đặc biệt khi có nồng độ đáy vượt mức 20-35 mg/L), do đó cần giám sát rất sát sao ở các bệnh nhân lớn tuổi, người có thời gian điều trị kéo dài, hoặc suy giảm chức năng thận.
+- Cefepime được ghi nhận là loại Beta-lactam thường xuyên liên quan nhất đến độc tính trên thần kinh (đặc biệt khi có nồng độ đáy vượt mức 20-35 mg/L), do đó cần giám sát rất sát sao ở các bệnh nhân lớn tuổi, người có thời gian điều trị kéo dài, hoặc suy giảm chức năng [[Thận]].
 
 #### Đối Tượng Cần Áp Dụng Cá Thể Hóa Liều Kháng Sinh Beta-Lactam
 
 Cá thể hóa liều Beta-lactam được ủng hộ sử dụng mạnh mẽ ở các nhóm đối tượng sau:
 
-1. Bệnh nhân mắc bệnh lý nguy kịch (nằm ICU, nhiễm khuẩn huyết, sốc nhiễm khuẩn).
+1. Bệnh nhân mắc bệnh lý nguy kịch (nằm ICU, [[Nhiễm trùng huyết|nhiễm khuẩn huyết]], [[[[Sốc]] nhiễm khuẩn]]).
 2. Bệnh nhân có sử dụng các thiết bị hỗ trợ ngoài cơ thể như: màng trao đổi oxy ngoài cơ thể (ECMO), liệu pháp thay thế thận liên tục (CRRT/KRT), thay huyết tương, và hệ thống hấp phụ/lọc máu.
-3. Bệnh nhân có rối loạn chức năng thận (tổn thương thận cấp hoặc bệnh thận mạn) hoặc tình trạng tăng thanh thải thận (augmented renal clearance). Bên cạnh đó, việc giám sát nồng độ này cũng có thể cân nhắc trên các bệnh nhân có sinh lý thay đổi như: giảm albumin máu, béo phì hoặc nhẹ cân cực đoan, phỏng nặng, bệnh xơ nang (cystic fibrosis), mang thai, xơ gan, hoặc nhiễm các vi khuẩn đa kháng thuốc có đáp ứng lâm sàng kém.
+3. Bệnh nhân có rối loạn chức năng thận (tổn thương thận cấp hoặc bệnh thận mạn) hoặc tình trạng tăng thanh thải thận (augmented renal clearance). Bên cạnh đó, việc giám sát nồng độ này cũng có thể cân nhắc trên các bệnh nhân có sinh lý thay đổi như: giảm albumin máu, béo phì hoặc nhẹ cân cực đoan, phỏng nặng, bệnh xơ nang (cystic fibrosis), mang thai, xơ [[Gan]], hoặc nhiễm các vi khuẩn đa kháng thuốc có đáp ứng lâm sàng kém.
 
 ### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
 

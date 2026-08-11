@@ -1,6 +1,11 @@
 ---
+title: "Nhóm ức chế enzyme Protease (PIs)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 Lưu ý: Một số chi tiết về cơ chế tác dụng phân tử và các tác dụng phụ chuyển hóa trong bài viết này không có trong các tài liệu (sources) bạn đã cung cấp; tôi đã bổ sung từ kiến thức y khoa bên ngoài để hoàn thiện cấu trúc lâm sàng và bạn có thể cần xác minh độc lập những thông tin này._
@@ -28,11 +33,11 @@ Lưu ý: Một số chi tiết về cơ chế tác dụng phân tử và các t�
 - **Ứng dụng của Thương số ức chế (Inhibitory Quotient - IQ):** Do sự hiện diện của các đột biến kháng thuốc làm giảm nhạy cảm của virus, việc sử dụng các chỉ số kết hợp giữa Dược động học và tính nhạy cảm của virus được ưu tiên áp dụng.
     - Nổi bật nhất là **gIQ (Genotype Inhibitory Quotient)**, được tính bằng tỷ lệ giữa Cmin và số lượng các đột biến kháng PI quan trọng trên lâm sàng.
     - Chỉ số gIQ (cùng các biến thể như nIQ, vIQ) đặc biệt hữu ích trong việc dự đoán hiệu quả ức chế virus của Darunavir, Lopinavir/ritonavir ở những bệnh nhân HIV đã từng điều trị (treatment-experienced) và mang virus đa kháng.
-- **Chuyển hóa qua Gan:** Các thuốc nhóm PIs được chuyển hóa mạnh mẽ qua hệ thống enzyme Cytochrome P450 (CYP), đóng vai trò then chốt trong các tương tác thuốc.
+- **Chuyển hóa qua [[Gan]]:** Các thuốc nhóm PIs được chuyển hóa mạnh mẽ qua hệ thống enzyme Cytochrome P450 (CYP), đóng vai trò then chốt trong các tương tác thuốc.
 
 ### 5. Chỉ định & Chiến lược điều trị (Stewardship)
 
-- **Chiến lược "Boosting" (Tăng cường Dược động học):** Đây là chiến lược cốt lõi khi sử dụng PIs. **Ritonavir** được sử dụng (ở liều thấp) không phải để diệt virus mà để chủ động ức chế enzyme CYP3A ở ruột và gan. Sự ức chế này làm tăng mạnh hấp thu và kéo dài nồng độ của các PIs dùng chung (như Tipranavir, Darunavir, Nirmatrelvir), giúp giảm số lần dùng thuốc, tăng hiệu quả và giảm chi phí điều trị tổng thể.
+- **Chiến lược "Boosting" (Tăng cường Dược động học):** Đây là chiến lược cốt lõi khi sử dụng PIs. **Ritonavir** được sử dụng (ở liều thấp) không phải để diệt virus mà để chủ động ức chế enzyme CYP3A ở ruột và [[Gan]]. Sự ức chế này làm tăng mạnh hấp thu và kéo dài nồng độ của các PIs dùng chung (như Tipranavir, Darunavir, Nirmatrelvir), giúp giảm số lần dùng thuốc, tăng hiệu quả và giảm chi phí điều trị tổng thể.
 - **Chỉ định:**
     - Dùng trong phác đồ ARV phối hợp cho bệnh nhân HIV, đặc biệt là nồng độ Ctrough có giá trị tiên lượng đáp ứng rất tốt ở những bệnh nhân đã từng thất bại với các phác đồ trước đó (antiretroviral treatment-experienced patients).
     - Paxlovid (Nirmatrelvir/Ritonavir) được chỉ định điều trị COVID-19.
@@ -41,14 +46,14 @@ Lưu ý: Một số chi tiết về cơ chế tác dụng phân tử và các t�
 
 - **Tác dụng không mong muốn (ADRs):**
     - **Tăng Bilirubin máu (Hyperbilirubinemia):** Là một tác dụng phụ đặc trưng và phổ biến liên quan trực tiếp đến nồng độ thuốc (Ctrough) của **Atazanavir**.
-    - _(Thông tin ngoài tài liệu: Nhóm PIs có liên quan mật thiết đến các tác dụng phụ trên chuyển hóa như rối loạn phân bố mỡ (lipodystrophy), tăng lipid máu, và đề kháng insulin)._
+    - _(Thông tin ngoài tài liệu: Nhóm PIs có liên quan mật thiết đến các tác dụng phụ trên chuyển hóa như rối loạn phân bố mỡ (lipodystrophy), tăng lipid máu, và đề kháng [[Insulin]])._
 - **Tương tác thuốc nghiêm trọng (Qua hệ CYP):**
     - Thuốc cảm ứng enzyme CYP (ví dụ: Rifampin) sẽ làm tăng tốc độ chuyển hóa, làm giảm nghiêm trọng nồng độ PIs trong máu và dẫn đến thất bại điều trị.
-    - Bản thân Ritonavir là một chất ức chế CYP3A cực mạnh, do đó chống chỉ định dùng chung hoặc phải cực kỳ thận trọng/chỉnh liều các thuốc dùng kèm chuyển hóa qua CYP3A để tránh ngộ độc.
+    - Bản thân Ritonavir là một chất ức chế CYP3A cực mạnh, do đó chống chỉ định dùng chung hoặc phải cực kỳ [[Thận]] trọng/chỉnh liều các thuốc dùng kèm chuyển hóa qua CYP3A để tránh ngộ độc.
 
 ### 7. Theo dõi & Giám sát (Monitoring)
 
-- **Giám sát Nồng độ thuốc (TDM):** Theo dõi nồng độ đáy (Ctrough) được chứng minh là có giá trị ứng dụng cao để tối ưu hóa hiệu quả diệt virus (với Lopinavir, Darunavir) và tránh độc tính (vàng da với Atazanavir), đặc biệt trên bệnh nhân có tiền sử điều trị phức tạp.
+- **Giám sát Nồng độ thuốc (TDM):** Theo dõi nồng độ đáy (Ctrough) được chứng minh là có giá trị ứng dụng cao để tối ưu hóa hiệu quả diệt virus (với Lopinavir, Darunavir) và tránh độc tính ([[Vàng da]] với Atazanavir), đặc biệt trên bệnh nhân có tiền sử điều trị phức tạp.
 - **Giám sát đột biến kháng thuốc:** Ở bệnh nhân đã từng điều trị thất bại, cần làm giải trình tự gen virus để đếm số lượng đột biến kháng PIs. Dữ liệu này được dùng để tính chỉ số gIQ nhằm quyết định liều lượng và dự đoán khả năng thành công của phác đồ mới.
 
 ### 8. Bảng kiểm lâm sàng nhanh (Quick Checklist)

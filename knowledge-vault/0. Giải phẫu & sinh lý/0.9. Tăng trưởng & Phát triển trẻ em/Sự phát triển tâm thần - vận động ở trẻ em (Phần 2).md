@@ -1,3 +1,13 @@
+---
+title: "Sự phát triển tâm thần - vận động ở trẻ em (Phần 2)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: NHẬN DIỆN BẤT THƯỜNG, NGUYÊN NHÂN CHẬM PHÁT TRIỂN TÂM THẦN - VẬN ĐỘNG VÀ KHUYẾN CÁO TẦM SOÁT)
 
 ---
@@ -89,7 +99,7 @@
 |**Tai:**||
 |- Tai ngoài đóng thấp, dị hình|Tam bội nhiễm sắc thể (ví dụ: Trisomy 18), hội chứng Rubinstein-Taybi, hội chứng Down, hội chứng CHARGE, hội chứng脑 - tai - mặt - xương, tác dụng của phenytoin lên bào thai|
 |- Nghe|Mất khả năng nghe trong mucopolysaccharidosis, tăng nhạy cảm âm thanh trong bệnh não|
-|**Tim:**|Bất thường liên quan hội chứng CHARGE, hội chứng CATCH-22, hội chứng velocardiofacial, glycogenosis II, thai nhi có mẹ nghiện rượu, mucopolysaccharidosis I, bất thường nhiễm sắc thể (hội chứng Down), mẹ bị phenylketon niệu; tím tái mạn tính có thể gây chậm phát triển trí tuệ|
+|**[[Tim]]:**|Bất thường liên quan hội chứng CHARGE, hội chứng CATCH-22, hội chứng velocardiofacial, glycogenosis II, thai nhi có mẹ nghiện rượu, mucopolysaccharidosis I, bất thường nhiễm sắc thể (hội chứng Down), mẹ bị phenylketon niệu; tím tái mạn tính có thể gây chậm phát triển trí tuệ|
 |**Thần kinh:**||
 |- Yếu cơ không đối xứng|Tổn thương khu trú, bại não|
 |- Giảm trương lực cơ|Hội chứng Prader-Willi, hội chứng Down, hội chứng Angelman, gangliosidosis, bại não sớm|
@@ -115,7 +125,7 @@ Quá trình phát triển tâm thần - vận động của trẻ chịu tác đ
 |**Quá trình hình thành phôi thai**|- Bất thường nhiễm sắc thể.- Các yếu tố ảnh hưởng đến mẹ trong thai kỳ (nghiện rượu, lạm dụng chất gây quái thai, nhiễm TORCH...).- Yếu tố môi trường và xã hội.|
 |**Quá trình mang thai và sinh sản**|- Suy dinh dưỡng bào thai, suy nhau thai.- Biến chứng trong khi sinh (sinh non, sinh ngạt, chấn thương khi sinh).|
 |**Yếu tố di truyền**|- Rối loạn chuyển hóa bẩm sinh (bệnh Tay-Sachs, bệnh Hunter, phenylketon niệu).- Bất thường đơn gen (neurofibromatosis, xơ cứng củ).- Bất thường nhiễm sắc thể (hội chứng NST X dễ gãy, đột biến mất đoạn như hội chứng Prader-Willi).- Bất thường đa gen (các rối loạn phát triển lan tỏa).|
-|**Các bệnh lý mắc phải tuổi thơ**|- Bệnh lý cấp tính gây ảnh hưởng sự phát triển.- Nhiễm trùng (đặc biệt là viêm não và viêm màng nào/màng não).- Chấn thương sọ nào/sọ não (tai nạn và lạm dụng trẻ em).- Tai nạn (chết đuối, điện giật).- Ngộ độc từ môi trường (ngộ độc chì...).|
+|**Các bệnh lý mắc phải tuổi thơ**|- Bệnh lý cấp tính gây ảnh hưởng sự phát triển.- Nhiễm trùng (đặc biệt là [[Viêm não]] và viêm màng nào/màng não).- Chấn thương sọ nào/sọ não (tai nạn và lạm dụng trẻ em).- Tai nạn (chết đuối, điện giật).- Ngộ độc từ môi trường (ngộ độc chì...).|
 |**Nguyên nhân không rõ**|Không xác định chính xác nguyên nhân (có thể do kết hợp nhiều yếu tố).|
 
 ---
@@ -140,16 +150,16 @@ Theo khuyến cáo của Hiệp hội Nhi khoa Hoa Kỳ (AAP):
 ## 4. Tư Vấn Thân Nhân và Hướng Can Thiệp - Phòng Ngừa
 
 - **Tư vấn về tình trạng phát triển của trẻ:**
-    - Cha mẹ có thể tự theo dõi sự phát triển của con có phù hợp với lứa tuổi hay không dựa trên các mốc tiêu chuẩn và đưa trẻ đi khám định kỳ để làm các test đánh giá khi cần.
+    - Cha mẹ có thể tự theo dõi sự phát triển của con có [[Phù]] hợp với lứa tuổi hay không dựa trên các mốc tiêu chuẩn và đưa trẻ đi khám định kỳ để làm các test đánh giá khi cần.
     - Giải thích cho thân nhân hiểu rằng chậm phát triển do nhiều nguyên nhân gây ra; bác sĩ sẽ tìm các triệu chứng đi kèm để xác định chính xác căn nguyên.
 - **Nguyên tắc điều trị và can thiệp:**
     - Can thiệp chậm phát triển là sự phối hợp giữa **y tế, giáo dục và xã hội**.
     - Bác sĩ tiến hành xác định nguyên nhân để điều trị căn nguyên và các bệnh lý đi kèm.
     - Trẻ chậm phát triển cần được hỗ trợ học **giáo dục hòa nhập, phục hồi chức năng và nhận sự hỗ trợ từ cộng đồng**.
 - **Các biện pháp phòng ngừa:**
-    - **Trước khi mang thai:** Phụ nữ trong độ tuổi sinh sản cần được tiêm chủng đầy đủ (ví dụ: chích ngừa Rubella trước khi mang thai để phòng ngừa trẻ sinh ra bị tim bẩm sinh, đầu nhỏ và đục thủy tinh thể).
-    - **Trong và sau khi sinh:** Bà mẹ cần sinh con tại cơ sở y tế và đưa trẻ đi tiêm chủng định kỳ sau sinh.
-    - Thực hiện phòng ngừa các bệnh lý mắc phải (như tiêm vitamin K phòng xuất huyết não - màng nào/màng não muộn, phòng ngừa viêm màng não).
+    - **Trước khi mang thai:** Phụ nữ trong độ tuổi sinh sản cần được [[Vắc-xin|tiêm chủng]] đầy đủ (ví dụ: chích ngừa Rubella trước khi mang thai để phòng ngừa trẻ sinh ra bị [[Tim]] bẩm sinh, đầu nhỏ và đục thủy tinh thể).
+    - **Trong và sau khi sinh:** Bà mẹ cần sinh con tại cơ sở y tế và đưa trẻ đi [[Vắc-xin|tiêm chủng]] định kỳ sau sinh.
+    - Thực hiện phòng ngừa các bệnh lý mắc phải (như tiêm vitamin K phòng [[Xuất huyết]] não - màng nào/màng não muộn, phòng ngừa [[Viêm màng não]]).
 
 ---
 

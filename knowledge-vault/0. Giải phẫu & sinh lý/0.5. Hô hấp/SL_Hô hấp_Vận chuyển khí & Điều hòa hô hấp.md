@@ -1,24 +1,29 @@
 ---
 title: "SL_Hô hấp_Vận chuyển khí & Điều hòa hô hấp"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Dưới đây là nội dung chi tiết về Sinh lý Vận chuyển khí trong máu và Điều hòa hô hấp, được biên soạn bám sát các tài liệu nguồn, trích xuất hình ảnh minh họa và trích dẫn theo chuẩn AMA.
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### I. VẬN CHUYỂN OXY ($O_2$) TRONG MÁU
-Oxy được vận chuyển trong máu dưới hai dạng chính: dạng hòa tan trong huyết tương và dạng kết hợp hóa học với Hemoglobin (Hb) bên trong hồng cầu.
+Oxy được vận chuyển trong máu dưới hai dạng chính: dạng hòa tan trong huyết tương và dạng kết hợp hóa học với Hemoglobin (Hb) bên trong [[Hồng cầu]].
 *   **Dạng hòa tan:** Đây là dạng chuyên chở thứ yếu, chỉ chiếm một tỷ lệ rất nhỏ (khoảng 3%) tổng lượng oxy vận chuyển. Tuy nhiên, dạng hòa tan lại rất quan trọng vì nó quyết định phân áp oxy trong máu ($PO_2$), và chỉ có dạng oxy hòa tan mới có thể khuếch tán vào ti thể của tế bào để sử dụng.
 *   **Dạng kết hợp với Hemoglobin ($HbO_2$):** Đây là dạng vận chuyển chủ yếu, chiếm khoảng 95-97% tổng lượng oxy được chuyên chở. Mỗi phân tử Hb chứa 4 nhân heme có ion sắt $Fe^{2+}$, do đó có khả năng gắn lỏng lẻo và thuận nghịch tối đa với 4 phân tử oxy. Khả năng gắn oxy của Hb làm tăng sức chứa oxy của máu lên khoảng 65 - 70 lần so với dạng hòa tan đơn thuần.
 
 **Đường cong phân ly Oxy-Hemoglobin (Đường cong Barcroft):**
-Sự gắn kết của oxy vào Hb tuân theo hiệu ứng hợp tác (cooperativity), tạo ra đường cong phân ly có hình chữ S (sigmoid). Ở phân áp oxy cao (như ở phổi, $PO_2 \approx 100$ mm Hg), Hb gần như bão hòa hoàn toàn (khoảng 98%). Ở phân áp thấp (như ở mô, $PO_2 \approx 40$ mm Hg), đường cong dốc đứng, giúp Hb dễ dàng nhả oxy cho mô khi chỉ cần một sự sụt giảm nhỏ của $PO_2$.
+Sự gắn kết của oxy vào Hb tuân theo hiệu ứng hợp tác (cooperativity), tạo ra đường cong phân ly có hình chữ S (sigmoid). Ở phân áp oxy cao (như ở [[Phổi]], $PO_2 \approx 100$ mm Hg), Hb gần như bão hòa hoàn toàn (khoảng 98%). Ở phân áp thấp (như ở mô, $PO_2 \approx 40$ mm Hg), đường cong dốc đứng, giúp Hb dễ dàng nhả oxy cho mô khi chỉ cần một sự sụt giảm nhỏ của $PO_2$.
 
 **Các yếu tố ảnh hưởng đến ái lực của Hb với Oxy:**
-*   **Hiệu ứng Bohr:** Sự gia tăng $PCO_2$ và nồng độ ion $H^+$ (tức giảm pH máu) ở các mô hoạt động chuyển hóa mạnh sẽ làm giảm ái lực của Hb với oxy. Điều này làm đường cong lệch sang **phải**, giúp Hb nhả nhiều oxy hơn cho mô sử dụng. Tại phổi, hiện tượng diễn ra ngược lại: $CO_2$ thoát ra làm pH tăng, đường cong lệch trái, giúp Hb tăng gắn kết với oxy.
-*   **Nhiệt độ và 2,3-DPG:** Nhiệt độ tăng và sự gia tăng hợp chất 2,3-diphosphoglycerate (2,3-DPG - sản phẩm của chuyển hóa hồng cầu) trong lúc vận động hoặc thiếu oxy cũng làm đường cong lệch phải, tăng nhả oxy cho mô.
+*   **Hiệu ứng Bohr:** Sự gia tăng $PCO_2$ và nồng độ ion $H^+$ (tức giảm pH máu) ở các mô hoạt động chuyển hóa mạnh sẽ làm giảm ái lực của Hb với oxy. Điều này làm đường cong lệch sang **phải**, giúp Hb nhả nhiều oxy hơn cho mô sử dụng. Tại [[Phổi]], hiện tượng diễn ra ngược lại: $CO_2$ thoát ra làm pH tăng, đường cong lệch trái, giúp Hb tăng gắn kết với oxy.
+*   **Nhiệt độ và 2,3-DPG:** Nhiệt độ tăng và sự gia tăng hợp chất 2,3-diphosphoglycerate (2,3-DPG - sản phẩm của chuyển hóa [[Hồng cầu]]) trong lúc vận động hoặc thiếu oxy cũng làm đường cong lệch phải, tăng nhả oxy cho mô.
 *   **Carbon Monoxide (CO):** CO có ái lực với Hb cao gấp khoảng 200 - 210 lần so với oxy. Khi gắn vào Hb tạo thành Carboxyhemoglobin, CO không chỉ chiếm chỗ của oxy mà còn làm đường cong của các vị trí gắn oxy còn lại lệch mạnh sang trái, khiến Hb không thể nhả oxy cho mô, gây ngạt.
 
 > 📌 **TRÍCH XUẤT LƯU ĐỒ / HÌNH ẢNH MINH HỌA:**
@@ -59,7 +64,7 @@ Hô hấp được điều hòa bởi hệ thống thần kinh trung ương và 
 > *   **Nội dung mô tả:** Sơ đồ trung tâm hô hấp ở thân não. Nhóm hô hấp lưng (DRG) và nhóm hô hấp bụng (VRG) nằm ở hành não cung cấp các kích thích co cơ hít vào và thở ra. Trung tâm pneumotaxic ở cầu não đóng vai trò gửi xung ức chế để giới hạn thì hít vào. Chúng nhận tín hiệu hướng tâm từ thụ thể hóa học và thụ thể sức căng qua dây X.
 
 **2. Điều hòa hóa học (Chemoreceptors):**
-*   **Thụ thể hóa học trung ương (Central Chemoreceptors):** Nằm ở mặt bụng của hành não, nhạy cảm với sự thay đổi pH của dịch não tủy (CSF). Mặc dù ion $H^+$ và $HCO_3^-$ khó qua hàng rào máu não, $CO_2$ lại khuếch tán qua rất dễ dàng. Khi $PaCO_2$ trong máu tăng, $CO_2$ vào dịch não tủy và tạo ra $H^+$. Sự gia tăng $H^+$ ở dịch não tủy sẽ kích thích mạnh mẽ thụ thể trung ương, làm tăng thông khí phế nang để thải $CO_2$. $PCO_2$ là yếu tố quan trọng nhất kiểm soát hô hấp trong điều kiện bình thường.
+*   **Thụ thể hóa học trung ương (Central Chemoreceptors):** Nằm ở mặt bụng của hành não, nhạy cảm với sự thay đổi pH của [[Dịch nào tủy|dịch não tủy]] ([[Dịch nào tủy|CSF]]). Mặc dù ion $H^+$ và $HCO_3^-$ khó qua hàng rào máu não, $CO_2$ lại khuếch tán qua rất dễ dàng. Khi $PaCO_2$ trong máu tăng, $CO_2$ vào dịch não tủy và tạo ra $H^+$. Sự gia tăng $H^+$ ở dịch não tủy sẽ kích thích mạnh mẽ thụ thể trung ương, làm tăng thông khí phế nang để thải $CO_2$. $PCO_2$ là yếu tố quan trọng nhất kiểm soát hô hấp trong điều kiện bình thường.
 *   **Thụ thể hóa học ngoại biên (Peripheral Chemoreceptors):** Bao gồm thể cảnh (carotid bodies - dẫn truyền qua dây IX) và thể chủ (aortic bodies - dẫn truyền qua dây X). Chúng phản ứng chủ yếu với tình trạng giảm oxy máu ($PO_2$), đồng thời cũng bị kích thích bởi tăng $PCO_2$ và giảm pH. Kích thích thông khí do giảm $O_2$ chỉ thực sự rõ rệt khi $PO_2$ động mạch tụt xuống dưới 60-75 mm Hg.
 
 > 📌 **TRÍCH XUẤT LƯU ĐỒ / HÌNH ẢNH MINH HỌA:**

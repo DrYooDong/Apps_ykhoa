@@ -1,16 +1,20 @@
 ---
 title: "Phân tích Điện tâm đồ (ECG) cơ bản"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Cận lâm sàng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 Để đọc và phân tích một bản điện tâm đồ (ECG) một cách chính xác và không bỏ sót tổn thương, bạn cần tuân thủ một quy trình phân tích có hệ thống. Trước khi bắt đầu, hãy luôn kiểm tra **chuẩn hóa (calibration)** của máy: tốc độ giấy chạy chuẩn là $25~mm/gi\hat{a}y$ (1 ô nhỏ = 0,04 giây, 1 ô lớn = 0,20 giây) và test điện thế chuẩn là $1~mV=10~mm$ (2 ô lớn).
 
 Dưới đây là 9 bước cơ bản để đọc và phân tích ECG:
 
 **Bước 1: Đánh giá Tần số và Sự đều đặn (Rate and Regularity)**
-*   **Sự đều đặn:** Quan sát khoảng cách giữa các đỉnh R (khoảng RR) xem nhịp tim có đều hay không.
-*   **Tính tần số tim:**
+*   **Sự đều đặn:** Quan sát khoảng cách giữa các đỉnh R (khoảng RR) xem nhịp [[Tim]] có đều hay không.
+*   **Tính tần số [[Tim]]:**
     *   *Nếu nhịp đều:* Lấy 300 chia cho số ô vuông lớn giữa 2 sóng R liên tiếp (Tần số = 300 / số ô lớn). Để chính xác hơn, có thể lấy 1500 chia cho số ô vuông nhỏ giữa 2 R.
     *   *Mức bình thường:* Dao động từ 60 - 100 lần/phút. Nếu < 60 lần/phút là nhịp chậm (bradycardia), nếu > 100 lần/phút là nhịp nhanh (tachycardia).
 
@@ -31,8 +35,8 @@ Trục điện tim được xác định nhanh dựa vào chiều hướng của
 Sóng P đại diện cho quá trình lan truyền xung điện khử cực 2 tâm nhĩ. 
 *   **Bình thường:** Thời gian < 0,12 giây (< 3 ô nhỏ) và biên độ < 2,5 mm (< 2,5 ô nhỏ).
 *   **Bất thường:**
-    *   **P phế (P pulmonale):** Sóng P cao, nhọn (biên độ $\ge 2,5~mm$) ở DII. Đây là dấu hiệu của **dày/lớn nhĩ phải** (thường do bệnh phổi mạn tính, hẹp van 3 lá, tâm phế mạn).
-    *   **P hai lá (P mitrale):** Sóng P rộng ($\ge 0,12$ giây) và có khấc hình lưng lạc đà ở DII; pha âm rộng ở V1. Đây là dấu hiệu của **dày/lớn nhĩ trái** (thường do bệnh van hai lá, tăng huyết áp).
+    *   **P phế (P pulmonale):** Sóng P cao, nhọn (biên độ $\ge 2,5~mm$) ở DII. Đây là dấu hiệu của **dày/lớn nhĩ phải** (thường do bệnh [[Phổi]] mạn tính, hẹp van 3 lá, tâm phế mạn).
+    *   **P hai lá (P mitrale):** Sóng P rộng ($\ge 0,12$ giây) và có khấc hình lưng lạc đà ở DII; pha âm rộng ở V1. Đây là dấu hiệu của **dày/lớn nhĩ trái** (thường do bệnh van hai lá, [[Tăng huyết áp]]).
 
 **Bước 5: Khoảng PR / PQ (Dẫn truyền nhĩ - thất)**
 Đo từ đầu sóng P đến đầu phức bộ QRS, phản ánh thời gian dẫn truyền từ nhĩ qua nút nhĩ thất xuống thất.
@@ -50,13 +54,13 @@ Sóng P đại diện cho quá trình lan truyền xung điện khử cực 2 t�
 
 **Bước 7: Đoạn ST**
 Đoạn ST nằm từ cuối phức bộ QRS (điểm J) đến đầu sóng T. Bình thường đoạn ST nằm ngang trên đường đẳng điện.
-*   **ST chênh lên (Elevation):** Dấu hiệu cực kỳ quan trọng của **tổn thương cơ tim xuyên thành (Nhồi máu cơ tim cấp - STEMI)** với hình ảnh ST chênh lên lồi. Nếu ST chênh lên lõm (saddle-shaped) lan tỏa ở nhiều chuyển đạo kèm PR chênh xuống, đó là dấu hiệu của **viêm màng ngoài tim cấp**. Co thắt mạch vành (đau thắt ngực Prinzmetal) cũng gây ST chênh lên.
-*   **ST chênh xuống (Depression):** Dấu hiệu của **thiếu máu cơ tim dưới nội tâm mạc** (NSTEMI, cơn đau thắt ngực), hoặc do phì đại thất, ngộ độc Digoxin (chênh xuống hình đáy chén).
+*   **ST chênh lên (Elevation):** Dấu hiệu cực kỳ quan trọng của **tổn thương cơ tim xuyên thành (Nhồi máu cơ tim cấp - STEMI)** với hình ảnh ST chênh lên lồi. Nếu ST chênh lên lõm (saddle-shaped) lan tỏa ở nhiều chuyển đạo kèm PR chênh xuống, đó là dấu hiệu của **viêm màng ngoài tim cấp**. Co thắt mạch vành ([[Đau ngực|đau thắt ngực]] Prinzmetal) cũng gây ST chênh lên.
+*   **ST chênh xuống (Depression):** Dấu hiệu của **thiếu máu cơ tim dưới nội tâm mạc** (NSTEMI, cơn [[Đau ngực|đau thắt ngực]]), hoặc do phì đại thất, ngộ độc Digoxin (chênh xuống hình đáy chén).
 
 **Bước 8: Sóng T (Tái cực thất)**
 Sóng T thường rộng, hai nhánh không đối xứng, dương ở các chuyển đạo DI, DII, V3-V6 và âm ở aVR.
 *   **Sóng T cao, nhọn, đối xứng:** Xuất hiện rất sớm trong nhồi máu cơ tim cấp (Hyperacute T wave) hoặc là dấu hiệu điển hình của **tăng Kali máu**.
-*   **Sóng T đảo ngược (âm) và đối xứng:** Là biểu hiện của **thiếu máu cục bộ cơ tim** hoặc nhồi máu cơ tim. Nó cũng có thể xuất hiện thứ phát do phì đại thất, blốc nhánh, thuyên tắc phổi hoặc tổn thương hệ thần kinh trung ương (sóng T khổng lồ).
+*   **Sóng T đảo ngược (âm) và đối xứng:** Là biểu hiện của **thiếu máu cục bộ cơ tim** hoặc nhồi máu cơ tim. Nó cũng có thể xuất hiện thứ phát do phì đại thất, blốc nhánh, thuyên tắc [[Phổi]] hoặc tổn thương [[Hệ thần kinh trung ương]] (sóng T khổng lồ).
 
 **Bước 9: Khoảng QT (hoặc QTc) và Sóng U**
 *   **Khoảng QT:** Đo từ đầu QRS đến cuối sóng T, phản ánh toàn bộ thời gian tâm thu của thất. Do QT thay đổi theo nhịp tim nên cần dùng QT hiệu chỉnh (QTc). Bình thường $QTc \le 0,45$ giây ở nam và $\le 0,46$ giây ở nữ. 

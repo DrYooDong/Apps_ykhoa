@@ -1,9 +1,14 @@
 ---
+title: "Thuốc Trị Giun Sán & Đơn bào"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
-(Lưu ý: Do các nhóm thuốc trị Đơn bào đặc hiệu như Metronidazole hay Thuốc trị Sốt rét đã được phân tích sâu ở các phần trước, nội dung dưới đây sẽ tập trung vào các chiến lược phối hợp thuốc giun sán kinh điển và các thuốc trị đơn bào phổ rộng/thể ruột dựa trên tài liệu cung cấp. Một số cơ chế phân tử kinh điển không có trong tài liệu sẽ được tôi bổ sung và ghi chú rõ ràng để đảm bảo tính toàn vẹn của tư duy dược lý).
+(Lưu ý: Do các nhóm thuốc trị Đơn bào đặc hiệu như Metronidazole hay Thuốc trị [[Sốt]] rét đã được phân tích sâu ở các phần trước, nội dung dưới đây sẽ tập trung vào các chiến lược phối hợp thuốc giun sán kinh điển và các thuốc trị đơn bào phổ rộng/thể ruột dựa trên tài liệu cung cấp. Một số cơ chế phân tử kinh điển không có trong tài liệu sẽ được tôi bổ sung và ghi chú rõ ràng để đảm bảo tính toàn vẹn của tư duy dược lý).
 
 ### 1. Cơ chế tác dụng và Phổ kháng vi sinh vật (MOA & Spectrum)
 
@@ -12,8 +17,8 @@ tags:
 - **Albendazole & Praziquantel:**
     - _Cơ chế:_ _(Thông tin y khoa bổ sung ngoài tài liệu: Albendazole ức chế quá trình trùng hợp vi ống $\beta$-tubulin của ký sinh trùng, làm cạn kiệt năng lượng. Praziquantel làm tăng tính thấm của màng tế bào sán với ion canxi, gây co thắt và liệt cứng)._
     - _Phổ lâm sàng:_ Phối hợp Albendazole và Praziquantel được chứng minh là liệu pháp mang lại hiệu quả vượt trội trong điều trị bệnh nang sán thần kinh (Neurocysticercosis). Albendazole cũng phối hợp với Ivermectin để điều trị giun chỉ _Wuchereria bancrofti_.
-- **Doxycycline (Kháng sinh diệt nội cộng sinh):**
-    - _Cơ chế:_ Một chiến lược dược lý độc đáo là sử dụng kháng sinh nhóm Tetracycline để tiêu diệt _Wolbachia_ - một loại vi khuẩn hội sinh nội bào đóng vai trò thiết yếu cho khả năng sinh sản và sự sống còn của các loài giun tròn (nematodes) gây bệnh giun chỉ.
+- **Doxycycline ([[Kháng sinh]] diệt nội cộng sinh):**
+    - _Cơ chế:_ Một chiến lược dược lý độc đáo là sử dụng [[Kháng sinh]] nhóm Tetracycline để tiêu diệt _Wolbachia_ - một loại vi khuẩn hội sinh nội bào đóng vai trò thiết yếu cho khả năng sinh sản và sự sống còn của các loài giun tròn (nematodes) gây bệnh giun chỉ.
     - _Ứng dụng:_ Dùng phối hợp để tăng cường khả năng diệt giun trưởng thành (macrofilaricidal) của các thuốc diệt vi giun chỉ (như Ivermectin hoặc Albendazole), từ đó giảm mạnh gánh nặng ký sinh trùng.
 
 **B. Nhóm thuốc Trị Đơn bào (Antiprotozoals)**
@@ -31,18 +36,18 @@ tags:
 
 - **Atovaquone - Nghệ thuật tối ưu hóa hấp thu qua bữa ăn:**
     - Thuốc có tính ưa lipid (lipophilic) cực kỳ cao và sinh khả dụng đường uống biến thiên mạnh.
-    - _Tư duy lâm sàng:_ Sự hấp thu của Atovaquone diễn ra chậm, nhưng sẽ **tăng vọt gấp 2 đến 3 lần** nếu bệnh nhân uống thuốc cùng với một bữa ăn giàu chất béo (fatty meal). Thuốc gắn kết protein huyết tương >99.9%, chu trình ruột - gan giúp kéo dài thời gian bán thải, và thải trừ chủ yếu qua phân (<1% qua nước tiểu). _(Ngoài tài liệu: Albendazole cũng có đặc tính tương tự, phải uống cùng thức ăn nhiều chất béo để thuốc ngấm vào máu đi lên mô não trị nang sán)._
+    - _Tư duy lâm sàng:_ Sự hấp thu của Atovaquone diễn ra chậm, nhưng sẽ **tăng vọt gấp 2 đến 3 lần** nếu bệnh nhân uống thuốc cùng với một bữa ăn giàu chất béo (fatty meal). Thuốc gắn kết protein huyết tương >99.9%, chu trình ruột - [[Gan]] giúp kéo dài thời gian bán thải, và thải trừ chủ yếu qua phân (<1% qua nước tiểu). _(Ngoài tài liệu: Albendazole cũng có đặc tính tương tự, phải uống cùng thức ăn nhiều chất béo để thuốc ngấm vào máu đi lên mô não trị nang sán)._
 - **Paromomycin - Động học khu trú tại đích (Luminal agent):**
     - Là một aminoglycoside đường uống, Paromomycin gần như không được hấp thu vào máu mà duy trì nồng độ cực cao tại lòng ruột.
-    - _Tư duy lâm sàng:_ Dựa vào đặc tính này, nó là "mảnh ghép" bắt buộc phải có trong phác đồ trị amip. Metronidazole ngấm vào mô tốt để diệt amip trong áp xe gan hoặc thành ruột (tissue amebicide) nhưng không diệt được kén amip trôi nổi trong lòng ruột. Paromomycin sẽ đảm nhiệm vai trò quét sạch kén ở lòng ruột để chống tái phát.
+    - _Tư duy lâm sàng:_ Dựa vào đặc tính này, nó là "mảnh ghép" bắt buộc phải có trong phác đồ trị amip. Metronidazole ngấm vào mô tốt để diệt amip trong áp xe [[Gan]] hoặc thành ruột (tissue amebicide) nhưng không diệt được kén amip trôi nổi trong lòng ruột. Paromomycin sẽ đảm nhiệm vai trò quét sạch kén ở lòng ruột để chống tái phát.
 
 ### 3. Vấn đề Kháng thuốc và An toàn
 
 - **Atovaquone và Chức năng Tạng:**
-    - Bản thân Atovaquone không yêu cầu chỉnh liều ở bệnh nhân suy thận. Tuy nhiên, khi dùng dưới dạng viên phối hợp Atovaquone-Proguanil (Malarone), do Proguanil thải trừ qua thận, **chống chỉ định** dùng thuốc này ở bệnh nhân có độ thanh thải creatinin (CrCl) < 30 mL/min để tránh độc tính huyết học do tích lũy Proguanil.
+    - Bản thân Atovaquone không yêu cầu chỉnh liều ở bệnh nhân suy [[Thận]]. Tuy nhiên, khi dùng dưới dạng viên phối hợp Atovaquone-Proguanil (Malarone), do Proguanil thải trừ qua [[Thận]], **chống chỉ định** dùng thuốc này ở bệnh nhân có độ thanh thải creatinin (CrCl) < 30 mL/min để tránh độc tính huyết học do tích lũy Proguanil.
     - Atovaquone có thể bị giảm đào thải ở bệnh nhân suy gan vừa (do suy giảm chu trình ruột-gan), cần thận trọng theo dõi. Đề kháng Atovaquone ở _Babesia_ hoặc _Pneumocystis_ có liên quan đến các đột biến trên gen cytochrome b của ký sinh trùng.
 - **Phản ứng viêm toàn thân trong điều trị Giun sán:**
-    - _(Thông tin y khoa bổ sung ngoài tài liệu: Mặc dù tài liệu nhắc đến sự cần thiết của phác đồ Albendazole phối hợp Praziquantel cho bệnh nang sán thần kinh, các bác sĩ lâm sàng phải đặc biệt lưu ý: việc tiêu diệt ồ ạt các nang sán trong não sẽ giải phóng lượng lớn kháng nguyên, gây ra phản ứng viêm màng não, phù não, hoặc co giật dữ dội. BẮT BUỘC phải dùng Dexamethasone hoặc Corticosteroid liều cao trước và trong quá trình diệt sán)._
+    - _(Thông tin y khoa bổ sung ngoài tài liệu: Mặc dù tài liệu nhắc đến sự cần thiết của phác đồ Albendazole phối hợp Praziquantel cho bệnh nang sán thần kinh, các bác sĩ lâm sàng phải đặc biệt lưu ý: việc tiêu diệt ồ ạt các nang sán trong não sẽ giải phóng lượng lớn kháng nguyên, gây ra phản ứng [[Viêm màng não]], [[Phù]] não, hoặc [[Co giật]] dữ dội. BẮT BUỘC phải dùng [[Corticoid|Dexamethasone]] hoặc [[Corticoid|Corticosteroid]] liều cao trước và trong quá trình diệt sán)._
 
 ### 4. Lưu ý thực hành / “take‑home messages”
 

@@ -1,13 +1,19 @@
 ---
+title: "Retroviridae"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Đại cương và Phân loại
 
 - **Định nghĩa:** Retrovirus là một nhóm các virus chứa RNA, có đặc điểm nổi bật là sinh sản thông qua một chất trung gian là DNA. Tên gọi "retrovirus" xuất phát từ khả năng đảo ngược luồng thông tin di truyền thông thường (từ RNA sang DNA) thông qua một enzyme đặc hiệu.
 - **Phân loại sinh học:** Các retrovirus gây bệnh ở người thuộc họ _Retroviridae_ và được chia thành các chi chính:
     - **Chi _Lentivirus_:** Nổi bật nhất là virus gây suy giảm miễn dịch ở người (HIV-1 và HIV-2).
-    - **Chi _Deltaretrovirus_** (trước đây gọi là _Oncovirus_): Bao gồm virus T-lymphotropic ở người (HTLV-1 và HTLV-2) và virus bệnh bạch cầu ở bò.
+    - **Chi _Deltaretrovirus_** (trước đây gọi là _Oncovirus_): Bao gồm virus T-lymphotropic ở người (HTLV-1 và HTLV-2) và virus bệnh [[Bạch cầu]] ở bò.
 
 ### 2. Đặc điểm Vi sinh và Cơ chế Nhân lên (Replication Cycle)
 

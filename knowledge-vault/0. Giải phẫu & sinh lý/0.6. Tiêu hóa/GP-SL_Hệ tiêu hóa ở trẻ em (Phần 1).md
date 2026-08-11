@@ -1,3 +1,14 @@
+---
+title: "GP-SL_Hệ tiêu hóa ở trẻ em (Phần 1)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐẶC ĐIỂM GIẢI PHẪU VÀ SINH LÝ RĂNG, THỰC QUẢN, DẠ DÀY VÀ RUỘT Ở TRẺ EM)
 
 ---
@@ -39,7 +50,7 @@
 
 - **Kích thước và sự phát triển:** Thực quản dài khoảng **8 – 10 cm** lúc mới sinh, dài gấp đôi sau 2 – 3 năm đầu đời và đạt khoảng **25 cm** ở người trưởng thành.
 - **Hoạt động nuốt:**
-    - Hiện tượng nuốt xuất hiện từ tuần 16 – 20 của thai kỳ, giúp thai luân chuyển dịch ối. Đa ối là dấu hiệu của bất thường hoạt động nuốt hoặc tắc nghẽn thực quản hay đường tiêu hóa trên.
+    - Hiện tượng nuốt xuất hiện từ tuần 16 – 20 của thai kỳ, giúp thai luân chuyển dịch ối. Đa ối là dấu hiệu của bất thường hoạt động nuốt hoặc tắc nghẽn thực quản hay [[Đường tiêu hóa]] trên.
     - Sự phối hợp giữa bú và nuốt chưa hoàn chỉnh nếu thai nhỏ hơn 34 tuần tuổi, gây thách thức lớn trong việc nuôi ăn ở trẻ sinh non.
 - **Cấu trúc vi thể và cơ học:**
     - Lòng thực quản được bao phủ bởi biểu mô lát tầng không sừng hóa và đột ngột chuyển thành biểu mô trụ đơn ở dạ dày tại chỗ nối thực quản - dạ dày.
@@ -54,7 +65,7 @@
 ### 3.1. Sự Hình Thành Phôi Thai và Hệ Thần Kinh Ruột
 
 - **Sự phân đoạn ống tiêu hóa nguyên thủy (từ tuần 4):**
-    - **Ruột trước:** Hình thành đường tiêu hóa trên gồm thực quản, dạ dày, tá tràng đến đoạn tiếp xúc với ống gan chung.
+    - **Ruột trước:** Hình thành [[Đường tiêu hóa]] trên gồm thực quản, dạ dày, tá tràng đến đoạn tiếp xúc với ống [[Gan]] chung.
     - **Ruột giữa:** Hình thành phần còn lại của ruột non và đại tràng đến phân nửa đại tràng ngang.
     - **Ruột sau:** Hình thành phần còn lại của đại tràng và phần trên của ống hậu môn.
 - **Quá trình xoay của ruột giữa:** Ruột trước phát triển nhanh chui ra ngoài ổ bụng qua vòng rốn trong giai đoạn phôi thai, sau đó ruột giữa quay lại vào khoang phúc mạc và quay ngược chiều kim đồng hồ cho đến khi manh tràng nằm ở 1/4 dưới phải của ổ bụng (hoàn tất vào tuần thứ 8 của thai kỳ).

@@ -1,25 +1,30 @@
 ---
 title: "Tổn thương thận cấp (AKI)"
-specialty: "Hệ Thận - Niệu"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Thận - Niệu"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
-**1. Cơ chế bệnh sinh** Tổn thương thận cấp (AKI) – trước đây gọi là suy thận cấp (ARF) – là một hội chứng lâm sàng đặc trưng bởi sự suy giảm đột ngột chức năng lọc của cầu thận trong vài giờ đến vài ngày, dẫn đến ứ đọng các chất thải nitơ, mất cân bằng nước, điện giải và toan kiềm,. Theo tiêu chuẩn KDIGO, AKI được chẩn đoán khi có một trong các dấu hiệu: tăng creatinine huyết thanh (SCr) $\ge$ 0.3 mg/dL trong vòng 48 giờ, hoặc SCr tăng $\ge$ 1.5 lần so với mức nền trong vòng 7 ngày, hoặc thể tích nước tiểu < 0.5 mL/kg/giờ trong ít nhất 6 giờ,. Cơ chế sinh lý bệnh được chia thành ba nhóm chính:
 
-- **Trước thận (Prerenal):** Xảy ra do tình trạng giảm tưới máu thận. Ban đầu, cơ chế tự điều hòa (autoregulation) của thận cố gắng duy trì áp lực lọc bằng cách co tiểu động mạch ra và giãn tiểu động mạch vào. Khi tình trạng giảm tưới máu kéo dài hoặc nghiêm trọng (do sốc, xuất huyết, mất nước, hoặc suy tim), hoặc khi cơ chế tự điều hòa bị suy yếu (do dùng thuốc NSAID, ACEI/ARB), áp lực lọc cầu thận sẽ giảm mạnh,. Nếu tưới máu không được khôi phục, tình trạng thiếu máu cục bộ kéo dài sẽ dẫn đến hoại tử tế bào ống thận.
+**1. Cơ chế bệnh sinh** Tổn thương [[Thận]] cấp (AKI) – trước đây gọi là suy [[Thận]] cấp (ARF) – là một hội chứng lâm sàng đặc trưng bởi sự suy giảm đột ngột chức năng lọc của cầu thận trong vài giờ đến vài ngày, dẫn đến ứ đọng các chất thải nitơ, mất cân bằng nước, điện giải và toan kiềm,. Theo tiêu chuẩn KDIGO, AKI được chẩn đoán khi có một trong các dấu hiệu: tăng creatinine huyết thanh (SCr) $\ge$ 0.3 mg/dL trong vòng 48 giờ, hoặc SCr tăng $\ge$ 1.5 lần so với mức nền trong vòng 7 ngày, hoặc thể tích nước tiểu < 0.5 mL/kg/giờ trong ít nhất 6 giờ,. Cơ chế sinh lý bệnh được chia thành ba nhóm chính:
+
+- **Trước thận (Prerenal):** Xảy ra do tình trạng giảm tưới máu thận. Ban đầu, cơ chế tự điều hòa (autoregulation) của thận cố gắng duy trì áp lực lọc bằng cách co tiểu động mạch ra và giãn tiểu động mạch vào. Khi tình trạng giảm tưới máu kéo dài hoặc nghiêm trọng (do [[Sốc]], [[Xuất huyết]], [[Mất nước]], hoặc suy [[Tim]]), hoặc khi cơ chế tự điều hòa bị suy yếu (do dùng thuốc NSAID, ACEI/ARB), áp lực lọc cầu thận sẽ giảm mạnh,. Nếu tưới máu không được khôi phục, tình trạng thiếu máu cục bộ kéo dài sẽ dẫn đến hoại tử tế bào ống thận.
 - **Tại thận (Intrarenal/Intrinsic):** Tổn thương cấu trúc trực tiếp tại thận. Phổ biến nhất là hoại tử ống thận cấp (ATN) do thiếu máu cục bộ kéo dài hoặc do độc chất (thuốc cản quang, aminoglycoside, myoglobin trong tiêu cơ vân),,,. Các nguyên nhân khác bao gồm tổn thương mô kẽ (viêm thận kẽ cấp do thuốc/nhiễm trùng), bệnh lý cầu thận (viêm cầu thận cấp), và tổn thương vi mạch (huyết khối vi mạch, thuyên tắc cholesterol),,,.
 - **Sau thận (Postrenal):** Sự tắc nghẽn cơ học đường thoát nước tiểu từ đài bể thận đến niệu đạo làm tăng áp lực ngược dòng lên bao Bowman, làm giảm hoặc ngừng độ lọc cầu thận,.
 
 **2. Phân loại** Phân loại theo nguyên nhân,,:
 
-- **Trước thận (Prerenal):** Chiếm khoảng 20-30% ca AKI. Thường do giảm thể tích tuần hoàn thực sự hoặc giảm thể tích tuần hoàn hiệu dụng (suy tim, xơ gan).
+- **Trước thận (Prerenal):** Chiếm khoảng 20-30% ca AKI. Thường do giảm thể tích tuần hoàn thực sự hoặc giảm thể tích tuần hoàn hiệu dụng (suy [[Tim]], xơ [[Gan]]).
 - **Tại thận (Intrarenal):** Chiếm 40-60%. Trong đó ATN là nguyên nhân phổ biến nhất (chiếm ~50% tổng số ca AKI ở bệnh nhân nội trú).
 - **Sau thận (Postrenal):** Chiếm 1-10%. Ở nam giới, nguyên nhân thường gặp nhất là phì đại tuyến tiền liệt lành tính (BPH).
 
 Phân loại theo thể tích nước tiểu,,:
 
 - **Thiểu niệu (Oliguria):** Nước tiểu < 400 mL/24 giờ.
-- **Vô niệu (Anuria):** Nước tiểu < 100 mL/24 giờ (gợi ý tắc nghẽn hoàn toàn, sốc nặng, huyết khối động mạch thận hai bên hoặc hoại tử vỏ thận).
+- **Vô niệu (Anuria):** Nước tiểu < 100 mL/24 giờ (gợi ý tắc nghẽn hoàn toàn, [[Sốc]] nặng, huyết khối động mạch thận hai bên hoặc hoại tử vỏ thận).
 - **Không thiểu niệu (Nonoliguric):** Nước tiểu > 400 mL/24 giờ (thường gặp trong ATN do độc chất hoặc giai đoạn hồi phục).
 
 Phân loại theo giai đoạn KDIGO (Staging):
@@ -32,17 +37,17 @@ Phân loại theo giai đoạn KDIGO (Staging):
 
 **Bước 1: Ổn định ban đầu – sàng lọc nguy cơ**
 
-- **Nhận diện các dấu hiệu đe dọa tính mạng (Red Flags):** Cần đánh giá ngay lập tức các biến chứng cấp tính của AKI đòi hỏi phải can thiệp cấp cứu hoặc chạy thận nhân tạo (tiêu chuẩn AEIOU): **A**cidosis (Toan chuyển hóa nặng kháng trị), **E**lectrolytes (Tăng kali máu gây thay đổi ECG), **I**ntoxication (Ngộ độc rượu độc/thuốc), **O**verload (Quá tải thể tích gây phù phổi cấp không đáp ứng lợi tiểu), và **U**remia (Hội chứng ure huyết cao gây viêm màng ngoài tim, bệnh lý não hoặc chảy máu),,.
+- **Nhận diện các dấu hiệu đe dọa tính mạng (Red Flags):** Cần đánh giá ngay lập tức các biến chứng cấp tính của AKI đòi hỏi phải can thiệp cấp cứu hoặc chạy thận nhân tạo (tiêu chuẩn AEIOU): **A**cidosis (Toan chuyển hóa nặng kháng trị), **E**lectrolytes (Tăng kali máu gây thay đổi ECG), **I**ntoxication (Ngộ độc rượu độc/thuốc), **O**verload (Quá tải thể tích gây [[Phù]] [[Phổi]] cấp không đáp ứng lợi tiểu), và **U**remia (Hội chứng ure huyết cao gây viêm màng ngoài tim, bệnh lý não hoặc chảy máu),,.
 - **Đánh giá huyết động:** Nếu bệnh nhân có tụt huyết áp hoặc sốc, cần thiết lập đường truyền tĩnh mạch và hồi sức dịch/vận mạch ngay lập tức vì tưới máu thận kém là nguyên nhân hàng đầu gây AKI và ATN,.
 
 **Bước 2: Thu thập dữ kiện tập trung**
 
 - **Bệnh sử:**
-    - Hỏi về các triệu chứng giảm thể tích (nôn, tiêu chảy, khát nước, xuất huyết) hoặc các triệu chứng của suy tim, xơ gan (khó thở, phù, báng bụng).
-    - Khai thác cực kỳ chi tiết tiền sử dùng thuốc: NSAIDs, thuốc ức chế men chuyển (ACEI), chẹn thụ thể (ARB), kháng sinh (aminoglycoside, vancomycin), các thuốc có thể gây viêm thận kẽ, hoặc tiền sử chụp chiếu có dùng thuốc cản quang gần đây,,,.
+    - Hỏi về các triệu chứng giảm thể tích ([[Nôn ói|nôn]], [[Tiêu chảy]], khát nước, [[Xuất huyết]]) hoặc các triệu chứng của suy tim, xơ [[Gan]] ([[Khó thở]], [[Phù]], báng bụng).
+    - Khai thác cực kỳ chi tiết tiền sử dùng thuốc: NSAIDs, thuốc ức chế men chuyển (ACEI), chẹn thụ thể (ARB), [[Kháng sinh]] (aminoglycoside, vancomycin), các thuốc có thể gây viêm thận kẽ, hoặc tiền sử chụp chiếu có dùng thuốc cản quang gần đây,,,.
     - Sàng lọc triệu chứng tắc nghẽn đường tiểu: Tiểu ngập ngừng, tia nước tiểu yếu, tiểu đêm, tiểu rắt, hoặc đau quặn hông lưng,.
 - **Khám lâm sàng:**
-    - _Đánh giá tình trạng dịch (Volume status):_ Tìm dấu hiệu hạ huyết áp tư thế, nhịp tim nhanh, niêm mạc khô, giảm độ đàn hồi da (trước thận do thiếu dịch),,. Khám tĩnh mạch cổ nổi (JVD), tiếng ngựa phi S3, ran rít ở phổi, hoặc phù ngoại vi (trước thận do suy tim/quá tải dịch),.
+    - _Đánh giá tình trạng dịch (Volume status):_ Tìm dấu hiệu hạ huyết áp tư thế, nhịp tim nhanh, niêm mạc khô, giảm độ đàn hồi da (trước thận do thiếu dịch),,. Khám tĩnh mạch cổ nổi (JVD), tiếng ngựa phi S3, ran rít ở [[Phổi]], hoặc phù ngoại vi (trước thận do suy tim/quá tải dịch),.
     - _Khám bụng và vùng chậu:_ Sờ tìm cầu bàng quang căng to ở vùng hạ vị để phát hiện bí tiểu; khám trực tràng đánh giá kích thước tuyến tiền liệt,.
     - _Khám da niêm:_ Tìm mảng lưới tím (livedo reticularis) trong thuyên tắc cholesterol, hoặc ban đỏ trong viêm thận kẽ/viêm mạch,.
 
@@ -52,9 +57,9 @@ Phân loại theo giai đoạn KDIGO (Staging):
 |:--|:--|:--|
 |**Trước thận (Prerenal)**|Giảm thể tích, Suy tim, Xơ gan, Do thuốc (NSAID, ACEI)|Hạ huyết áp tư thế, niêm mạc khô, phù/báng bụng. Tỷ lệ BUN/Cr > 20:1, FENa < 1%,,.|
 |**Tại thận (Ống thận - ATN)**|Thiếu máu cục bộ kéo dài, Độc chất (Cản quang, Rhabdomyolysis)|Thường sau một đợt tụt huyết áp kéo dài hoặc sau dùng thuốc/chụp cản quang. Trụ hạt bùn nâu trong nước tiểu, FENa > 1-2%,,.|
-|**Tại thận (Mô kẽ - AIN)**|Viêm thận kẽ dị ứng cấp|Sốt, phát ban, đau khớp, tiền sử mới dùng kháng sinh (penicillin, sulfa) hoặc NSAID. Có bạch cầu trong nước tiểu,,.|
-|**Tại thận (Cầu thận - GN)**|Viêm cầu thận sau nhiễm trùng, Lupus, Viêm mạch ANCA|Hội chứng thận viêm: Phù, tăng huyết áp, tiểu máu. Nước tiểu có hồng cầu biến dạng và trụ hồng cầu,,,.|
-|**Sau thận (Postrenal)**|Phì đại tuyến tiền liệt (BPH), Sỏi niệu quản hai bên, U bàng quang|Nam giới lớn tuổi, tiểu khó, cầu bàng quang (+), siêu âm có thận ứ nước hai bên,,,.|
+|**Tại thận (Mô kẽ - AIN)**|Viêm thận kẽ dị ứng cấp|[[Sốt]], phát ban, đau khớp, tiền sử mới dùng [[Kháng sinh]] (penicillin, sulfa) hoặc NSAID. Có [[Bạch cầu]] trong nước tiểu,,.|
+|**Tại thận (Cầu thận - GN)**|Viêm cầu thận sau nhiễm trùng, Lupus, Viêm mạch ANCA|Hội chứng thận viêm: Phù, [[Tăng huyết áp]], tiểu máu. Nước tiểu có [[Hồng cầu]] biến dạng và trụ [[Hồng cầu]],,,.|
+|**Sau thận (Postrenal)**|Phì đại tuyến tiền liệt (BPH), Sỏi niệu quản hai bên, U bàng quang|Nam giới lớn tuổi, tiểu khó, cầu bàng quang (+), [[Siêu âm]] có thận ứ nước hai bên,,,.|
 
 **Bước 4. Biện luận lâm sàng (clinical reasoning)**
 
@@ -62,15 +67,15 @@ Phân loại theo giai đoạn KDIGO (Staging):
     - _Điểm ủng hộ Trước thận:_ Tỷ lệ BUN/Creatinine > 20:1. Phân suất bài xuất Natri (FENa) < 1%, Phân suất bài xuất Ure (FEurea) < 35%, Natri niệu (UNa) < 20 mEq/L, và cặn lắng nước tiểu sạch hoặc chỉ có trụ trong (hyaline casts). Chức năng thận thường cải thiện nhanh chóng (trong vòng 24-72h) sau khi bù dịch,,,,.
     - _Điểm ủng hộ ATN:_ Tỷ lệ BUN/Creatinine < 10-15:1. FENa > 1% (thường > 2%), FEurea > 50%, UNa > 40 mEq/L. Soi cặn lắng nước tiểu thấy các trụ hạt màu bùn nâu (muddy brown granular casts) và tế bào biểu mô ống thận. Chức năng thận không cải thiện ngay sau khi bù đủ dịch,,,.
 - **Điểm chống lại FENa:** FENa có thể < 1% trong ATN nếu bệnh nhân có bệnh lý trước thận mạn tính từ trước (suy tim, xơ gan), hoặc nguyên nhân ATN là do thuốc cản quang, tiêu cơ vân,. Trong trường hợp bệnh nhân đang dùng thuốc lợi tiểu, chỉ số FENa bị sai lệch, lúc này Phân suất bài xuất Ure (FEurea < 35% cho trước thận) hoặc Phân suất bài xuất Acid Uric (FE Uric Acid < 7% cho trước thận) sẽ chính xác hơn,.
-- **Độ ưu tiên:** Bắt buộc phải siêu âm thận hoặc đo thể tích nước tiểu tồn dư (bằng siêu âm bàng quang/đặt thông tiểu) ở mọi bệnh nhân AKI để loại trừ nguyên nhân tắc nghẽn (sau thận), bởi vì đây là nguyên nhân có thể điều trị đảo ngược hoàn toàn một cách dễ dàng,,.
+- **Độ ưu tiên:** Bắt buộc phải [[Siêu âm]] thận hoặc đo thể tích nước tiểu tồn dư (bằng siêu âm bàng quang/đặt thông tiểu) ở mọi bệnh nhân AKI để loại trừ nguyên nhân tắc nghẽn (sau thận), bởi vì đây là nguyên nhân có thể điều trị đảo ngược hoàn toàn một cách dễ dàng,,.
 
 **Bước 5. Cận lâm sàng hợp lý**
 
-- **Xét nghiệm nước tiểu (Urinalysis) & Cặn lắng nước tiểu (Urine sediment):** Là xét nghiệm bắt buộc đầu tay để phân biệt các nguyên nhân tại thận. Trụ hồng cầu (RBC casts) hướng tới viêm cầu thận; trụ bạch cầu (WBC casts) hướng tới viêm thận kẽ; trụ hạt bùn nâu hướng tới ATN,,,.
+- **Xét nghiệm nước tiểu (Urinalysis) & Cặn lắng nước tiểu (Urine sediment):** Là xét nghiệm bắt buộc đầu tay để phân biệt các nguyên nhân tại thận. Trụ hồng cầu (RBC casts) hướng tới viêm cầu thận; trụ [[Bạch cầu]] (WBC casts) hướng tới viêm thận kẽ; trụ hạt bùn nâu hướng tới ATN,,,.
 - **Chỉ số sinh hóa nước tiểu (Urinary indices):** Đo Natri niệu, Creatinine niệu, Ure niệu cùng lúc với máu để tính FENa và FEurea,.
 - **Siêu âm thận tiết niệu:** Được chỉ định ở đa số bệnh nhân để đánh giá kích thước thận (thận teo nhỏ gợi ý suy thận mạn) và tìm dấu hiệu thận ứ nước (hydronephrosis) giúp xác định nguyên nhân tắc nghẽn,,,.
-- **Xét nghiệm máu cơ bản:** Công thức máu, BUN, Creatinine, điện giải đồ (đặc biệt chú ý Kali, Canxi, Phosphate), khí máu động mạch (đánh giá toan chuyển hóa),,.
-- **Sinh thiết thận (Renal biopsy):** Được cân nhắc khi nguyên nhân AKI không rõ ràng sau các bước đánh giá ban đầu, hoặc có dấu hiệu gợi ý viêm cầu thận tiến triển nhanh (rapidly progressive GN) hay viêm thận kẽ cần chẩn đoán xác định trước khi dùng corticoid,,.
+- **Xét nghiệm máu cơ bản:** Công thức máu, BUN, Creatinine, điện giải đồ (đặc biệt chú ý Kali, Canxi, Phosphate), [[Khí máu động mạch]] (đánh giá toan chuyển hóa),,.
+- **Sinh thiết thận (Renal biopsy):** Được cân nhắc khi nguyên nhân AKI không rõ ràng sau các bước đánh giá ban đầu, hoặc có dấu hiệu gợi ý viêm cầu thận tiến triển nhanh (rapidly progressive GN) hay viêm thận kẽ cần chẩn đoán xác định trước khi dùng [[Corticoid]],,.
 
 **Bước 6. Hướng xử trí ban đầu**
 
@@ -85,7 +90,7 @@ Phân loại theo giai đoạn KDIGO (Staging):
 
 - **Hội chẩn Nội thận (Nephrology):** Cần hội chẩn trong vòng 48 giờ cho đa số các ca AKI, hoặc ngay lập tức nếu bệnh nhân có các chỉ định cần chạy thận cấp cứu, nghi ngờ viêm cầu thận cấp, viêm thận kẽ hoặc cần sinh thiết thận,,.
 - **Hội chẩn Tiết niệu (Urology):** Yêu cầu nếu siêu âm phát hiện tắc nghẽn đường tiểu trên (thận ứ nước do sỏi, khối u) hoặc không thể đặt được ống thông niệu đạo.
-- **Chuyển Đơn vị Hồi sức tích cực (ICU):** Bệnh nhân AKI đi kèm với sốc, suy đa tạng, suy hô hấp do quá tải dịch, hoặc cần áp dụng các phương thức lọc máu liên tục (CRRT),.
+- **Chuyển Đơn vị Hồi sức tích cực (ICU):** Bệnh nhân AKI đi kèm với sốc, suy đa tạng, [[Suy hô hấp]] do quá tải dịch, hoặc cần áp dụng các phương thức lọc máu liên tục (CRRT),.
 
 **4. Lưu ý thực hành / “take‑home messages”**
 

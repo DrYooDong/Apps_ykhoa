@@ -1,6 +1,10 @@
 ---
 title: "U xơ tử cung"
+type: disease
 specialty: "Sản phụ khoa"
-tags: ["Sản phụ khoa", "Thai ngoài tử cung"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/san-phu-khoa
+updated: "2026-08-11"
 ---
+

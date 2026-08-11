@@ -1,12 +1,17 @@
 ---
 title: "SL_Tim mạch_Chu kỳ tim & Cung lượng tim"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 **1. NỘI DUNG SINH LÝ HỌC CHI TIẾT**
 
-### A. Sinh lý Chu kỳ tim (Cardiac Cycle)
+### A. Sinh lý Chu kỳ [[Tim]] (Cardiac Cycle)
 
 Chu kỳ tim là một chuỗi các sự kiện điện học và cơ học xảy ra lặp đi lặp lại trong mỗi nhịp đập của tim, giúp tim bơm máu đi khắp cơ thể và hút máu trở về. Ở một người bình thường với nhịp tim khoảng 75 lần/phút, một chu kỳ tim kéo dài khoảng 0,8 giây, trong đó thời gian tâm trương dài hơn tâm thu.
 
@@ -14,7 +19,7 @@ Chu kỳ tim là một chuỗi các sự kiện điện học và cơ học xả
 Tâm thu bao gồm sự co bóp của tâm nhĩ và tâm thất để đẩy máu đi.
 *   **Thu nhĩ (Atrial systole):** Kéo dài khoảng 0,1 giây. Xảy ra ngay sau sóng B trên điện tâm đồ (thể hiện sự khử cực nhĩ). Tâm nhĩ co bóp giúp đẩy nốt 30% lượng máu còn lại xuống tâm thất (70% lượng máu đã đi xuống thụ động từ trước). Dòng máu dội mạnh vào thành tâm thất trong giai đoạn này tạo ra tiếng tim thứ tư (T4 hoặc S4), thường khó nghe thấy ở người bình thường.
 *   **Thu thất (Ventricular systole):** Kéo dài khoảng 0,3 giây, tính từ lúc đóng van nhĩ thất đến khi đóng van bán nguyệt.
-    *   *Co đồng thể tích (Isovolumetric contraction):* Bắt đầu khi áp suất tâm thất vượt quá áp suất tâm nhĩ làm đóng van nhĩ thất (tạo ra tiếng tim thứ nhất - T1/S1). Lúc này van bán nguyệt (van động mạch chủ và van động mạch phổi) chưa mở. Tâm thất trở thành một buồng kín, cơ tim co gồng mạnh làm áp suất trong tâm thất tăng vọt rất nhanh nhưng thể tích máu không đổi và chiều dài sợi cơ không đổi.
+    *   *Co đồng thể tích (Isovolumetric contraction):* Bắt đầu khi áp suất tâm thất vượt quá áp suất tâm nhĩ làm đóng van nhĩ thất (tạo ra tiếng tim thứ nhất - T1/S1). Lúc này van bán nguyệt (van động mạch chủ và van động mạch [[Phổi]]) chưa mở. Tâm thất trở thành một buồng kín, [[Tim|cơ tim]] co gồng mạnh làm áp suất trong tâm thất tăng vọt rất nhanh nhưng thể tích máu không đổi và chiều dài sợi cơ không đổi.
     *   *Bơm máu ra ngoài (Ventricular ejection):* Khi áp suất trong tâm thất (khoảng 80 mmHg ở thất trái và 10 mmHg ở thất phải) vượt qua áp suất của động mạch, van bán nguyệt mở ra. Giai đoạn này chia làm hai pha: pha bơm máu nhanh (chiếm 1/3 thời gian nhưng bơm được 70% thể tích nhát bóp) và pha bơm máu chậm (chiếm 2/3 thời gian nhưng chỉ bơm 30% thể tích).
 
 **2. Giai đoạn Tâm trương (Diastole):**
@@ -57,14 +62,14 @@ Trong đó:
 > **📌 TRÍCH XUẤT SƠ ĐỒ / HÌNH ẢNH MINH HỌA:**
 > *   **Tên Hình/Sơ đồ:** Fig. 16.44 Schema illustrating the Fick principle for measuring cardiac output.
 > *   **Thuộc tài liệu:** [Book] Berne and Levy Physiology 8e.pdf.
-> *   **Nội dung mô tả:** Sơ đồ minh họa nguyên lý Fick. Phổi là nơi tiếp nhận $O_2$ (ví dụ: $250 mL/phút$). Máu đi vào động mạch phổi có nồng độ $O_2$ thấp ($0.15 mL O_2/mL máu$), máu đi ra tĩnh mạch phổi có nồng độ $O_2$ cao ($0.20 mL O_2/mL máu$). Áp dụng công thức, cung lượng tim bằng lượng $O_2$ tiêu thụ chia cho hiệu số $O_2$ ($250 / (0.20 - 0.15) = 5000 mL/phút$).
+> *   **Nội dung mô tả:** Sơ đồ minh họa nguyên lý Fick. [[Phổi]] là nơi tiếp nhận $O_2$ (ví dụ: $250 mL/phút$). Máu đi vào động mạch phổi có nồng độ $O_2$ thấp ($0.15 mL O_2/mL máu$), máu đi ra tĩnh mạch phổi có nồng độ $O_2$ cao ($0.20 mL O_2/mL máu$). Áp dụng công thức, cung lượng tim bằng lượng $O_2$ tiêu thụ chia cho hiệu số $O_2$ ($250 / (0.20 - 0.15) = 5000 mL/phút$).
 
 **3. Các yếu tố điều hòa Cung lượng tim:**
 Cung lượng tim được điều khiển bởi 4 yếu tố chính yếu:
 *   **Nhịp tim (Heart rate):** Được kiểm soát chủ yếu bởi hệ thần kinh tự chủ. Thần kinh giao cảm giải phóng Norepinephrine/Epinephrine gắn vào thụ thể $\beta_1$ làm tăng nhịp tim, trong khi thần kinh phó giao cảm (vagus) giải phóng Acetylcholine gắn vào thụ thể Muscarinic làm giảm nhịp tim.
 *   **Tiền tải (Preload):** Được định nghĩa là lực làm kéo căng sợi cơ tim ngay trước khi co bóp (tương ứng với thể tích hoặc áp suất cuối tâm trương). 
     *   *Định luật Frank-Starling:* Thể hiện sự phụ thuộc của lực co cơ vào chiều dài ban đầu. Lượng máu tĩnh mạch đổ về tim càng nhiều $\rightarrow$ thể tích cuối tâm trương càng lớn $\rightarrow$ sợi cơ tim càng bị kéo căng $\rightarrow$ tạo ra lực co bóp càng mạnh ở nhịp ngay sau đó, giúp tống hết lượng máu dư thừa đi.
-*   **Hậu tải (Afterload):** Là áp suất hoặc sức cản mà tâm thất phải vượt qua để có thể mở van bán nguyệt và tống máu đi (chủ yếu là áp suất động mạch chủ đối với thất trái). Hậu tải tăng (như trong tăng huyết áp, hẹp van động mạch chủ) có xu hướng làm giảm thể tích nhát bóp và giảm vận tốc co cơ.
+*   **Hậu tải (Afterload):** Là áp suất hoặc sức cản mà tâm thất phải vượt qua để có thể mở van bán nguyệt và tống máu đi (chủ yếu là áp suất động mạch chủ đối với thất trái). Hậu tải tăng (như trong [[Tăng huyết áp]], hẹp van động mạch chủ) có xu hướng làm giảm thể tích nhát bóp và giảm vận tốc co cơ.
 *   **Sức co bóp (Contractility / Inotropism):** Là khả năng tạo lực co của cơ tim ở một mức Tiền tải và Hậu tải nhất định, không phụ thuộc vào chiều dài sợi cơ tim ban đầu (homometric regulation). Sức co bóp tăng chủ yếu do tăng dòng $Ca^{2+}$ nội bào dưới tác dụng của thần kinh giao cảm (catecholamine) hoặc thuốc (như Digitalis), dẫn đến tăng thể tích nhát bóp và phân suất tống máu (Ejection Fraction). 
 
 > **📌 TRÍCH XUẤT SƠ ĐỒ / HÌNH ẢNH MINH HỌA:**

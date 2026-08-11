@@ -1,9 +1,13 @@
 ---
 title: "Thống kê mô tả (Descriptive Statistics)"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Thống kê sinh học (Biostatistics)"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Thống kê y học, tôi xin trình bày phân tích chi tiết về **Thống kê mô tả (Descriptive Statistics)**. Thống kê mô tả là nền tảng cơ bản nhất trong phân tích dữ liệu, giúp tóm tắt, trình bày đặc tính của một bộ số liệu thông qua các chỉ số về độ tập trung, độ phân tán và hình dáng phân bố dữ liệu.
 
 ### 1. ĐO LƯỜNG ĐỘ TẬP TRUNG (MEASURES OF CENTRAL TENDENCY)
@@ -24,14 +28,14 @@ Các chỉ số này giúp xác định vị trí trung tâm của một tập h
 
 ### 3. HÌNH DÁNG PHÂN BỐ DỮ LIỆU (DATA DISTRIBUTION)
 
-Việc xác định hình dáng phân bố là điều kiện tiên quyết để chọn lựa test thống kê phù hợp.
+Việc xác định hình dáng phân bố là điều kiện tiên quyết để chọn lựa test thống kê [[Phù]] hợp.
 
 - **Phân bố chuẩn (Normal distribution):** Đường cong phân bố có hình dáng hình chuông và đối xứng. Trong phân bố chuẩn, giá trị trung bình, trung vị và mốt xấp xỉ bằng nhau và nằm ở điểm cao nhất của đường cong. Khoảng $68%$ dữ liệu sẽ nằm trong khoảng $\pm 1$ độ lệch chuẩn (SD) từ giá trị trung bình, và $95%$ dữ liệu nằm trong khoảng $\pm 1,96$ độ lệch chuẩn.
 - **Phân bố lệch (Skewed distribution):** Xảy ra khi dữ liệu không đối xứng, có thể là lệch trái hoặc lệch phải. Đối với dữ liệu này, giá trị trung bình sẽ bị kéo về phía đuôi dài của đường cong, do đó trung vị mới là đại lượng đo lường độ tập trung chính xác nhất.
 
 ### 4. TƯ DUY PHẢN BIỆN LÂM SÀNG TRONG BÁO CÁO THỐNG KÊ MÔ TẢ
 
-Theo chuẩn mực báo cáo thử nghiệm lâm sàng quốc tế (CONSORT 2025), việc báo cáo thống kê mô tả đặc điểm nền (baseline characteristics) của bệnh nhân là cực kỳ quan trọng để bác sĩ lâm sàng đánh giá **Tính ứng dụng thực tế (External Validity)**, giúp họ nhận định xem kết quả nghiên cứu có phù hợp với bệnh nhân thực tế tại phòng khám hay không.
+Theo chuẩn mực báo cáo thử nghiệm lâm sàng quốc tế (CONSORT 2025), việc báo cáo thống kê mô tả đặc điểm nền (baseline characteristics) của bệnh nhân là cực kỳ quan trọng để bác sĩ lâm sàng đánh giá **Tính ứng dụng thực tế (External Validity)**, giúp họ nhận định xem kết quả nghiên cứu có [[Phù]] hợp với bệnh nhân thực tế tại phòng khám hay không.
 
 Khi đọc và ứng dụng y văn, cần nhận diện các sai lầm phương pháp luận sau đây trong thống kê mô tả:
 

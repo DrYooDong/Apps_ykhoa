@@ -1,9 +1,13 @@
 ---
 title: "Case - control study"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Phương pháp luận & Thiết kế nghiên cứu"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Phương pháp luận nghiên cứu khoa học, tôi xin trình bày bản phân tích chi tiết về thiết kế **Nghiên cứu bệnh - chứng (Case-Control Study)** dựa trên các tài liệu đã được cung cấp.
 
 ### 1. KHÁI NIỆM VÀ ĐẶC ĐIỂM THIẾT KẾ
@@ -23,12 +27,12 @@ Trong hệ thống phân cấp giá trị của chứng cứ y khoa, nghiên c�
 **Điểm mạnh đặc thù và giá trị ứng dụng:**
 
 - **Tối ưu cho bệnh hiếm gặp:** Đây là thiết kế đặc biệt hữu ích và đôi khi là duy nhất khả thi để khảo sát các bệnh lý hoặc kết cục lâm sàng ít gặp (rare outcomes/diseases).
-- **Phát hiện tác dụng phụ:** Thiết kế này rất phù hợp để điều tra các mối liên hệ giữa một kết cục hiếm với nhiều yếu tố phơi nhiễm khác nhau trong quá khứ. Do đó, nó đóng vai trò quan trọng trong việc tạo ra các bằng chứng về biến cố bất lợi (adverse effects) hoặc các lợi ích ngoài dự kiến của một can thiệp y tế.
+- **Phát hiện tác dụng phụ:** Thiết kế này rất [[Phù]] hợp để điều tra các mối liên hệ giữa một kết cục hiếm với nhiều yếu tố phơi nhiễm khác nhau trong quá khứ. Do đó, nó đóng vai trò quan trọng trong việc tạo ra các bằng chứng về biến cố bất lợi (adverse effects) hoặc các lợi ích ngoài dự kiến của một can thiệp y tế.
 - **Đánh giá y tế công cộng:** Nghiên cứu bệnh - chứng còn được ứng dụng để đánh giá hiệu quả của các chương trình can thiệp y tế công cộng quy mô lớn, ví dụ như các chương trình tầm soát bệnh hay phòng chống tai nạn.
 
 ### 3. TƯ DUY PHẢN BIỆN LÂM SÀNG (CRITICAL APPRAISAL)
 
-Là một nghiên cứu quan sát, nghiên cứu bệnh - chứng tiềm ẩn nguy cơ sai lệch (bias) cao hơn nhiều so với các thử nghiệm ngẫu nhiên, do đó kết quả từ thiết kế này luôn phải được diễn dịch một cách thận trọng. Khi thẩm định, cần chú ý các yếu tố sau:
+Là một nghiên cứu quan sát, nghiên cứu bệnh - chứng tiềm ẩn nguy cơ sai lệch (bias) cao hơn nhiều so với các thử nghiệm ngẫu nhiên, do đó kết quả từ thiết kế này luôn phải được diễn dịch một cách [[Thận]] trọng. Khi thẩm định, cần chú ý các yếu tố sau:
 
 **A. Sai lệch đánh giá phơi nhiễm (Exposure Assessment Bias) và Sai lệch nhớ lại (Recall Bias):**
 

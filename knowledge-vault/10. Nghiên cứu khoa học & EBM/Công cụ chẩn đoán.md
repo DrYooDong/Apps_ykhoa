@@ -1,9 +1,13 @@
 ---
 title: "Công cụ chẩn đoán"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Chào bạn, dưới góc độ của một bác sĩ chuyên khoa sâu và nhà nghiên cứu lâm sàng (Clinical Researcher), việc đánh giá giá trị của một công cụ chẩn đoán không chỉ đơn thuần là nhìn vào kết quả "dương tính" hay "âm tính". Để áp dụng một xét nghiệm vào thực hành, chúng ta phải hiểu rõ bản chất thống kê, sai số, và giá trị thực sự của nó trên từng quần thể bệnh nhân chuyên biệt. 
 
 Dưới đây là phân tích chuyên sâu về các chỉ số xác suất và giá trị của công cụ chẩn đoán trong y học thực chứng.
@@ -17,7 +21,7 @@ Mọi công cụ chẩn đoán (từ thăm khám lâm sàng, xét nghiệm sinh 
 ## Ứng dụng Thực hành Lâm sàng: Lựa chọn và Đánh giá Xét nghiệm
 
 Việc ra quyết định trên lâm sàng đòi hỏi bác sĩ phải đánh đổi (trade-off) giữa việc không bỏ sót bệnh và việc tránh báo động nhầm. 
-*   **Khi hậu quả của việc bỏ sót bệnh là cực kỳ nghiêm trọng** (ví dụ: ung thư giai đoạn sớm, nhồi máu cơ tim, HIV), bác sĩ cần một công cụ có **Độ nhạy cao** để sàng lọc.
+*   **Khi hậu quả của việc bỏ sót bệnh là cực kỳ nghiêm trọng** (ví dụ: ung thư giai đoạn sớm, nhồi máu [[[[Tim]]|cơ tim]], HIV), bác sĩ cần một công cụ có **Độ nhạy cao** để sàng lọc.
 *   **Khi hậu quả của một kết quả dương tính giả là rất nặng nề** (ví dụ: dẫn đến phẫu thuật cắt bỏ cơ quan, hoặc gây gánh nặng tâm lý lớn, chi phí cao), bác sĩ cần ưu tiên một công cụ có **Độ đặc hiệu cao** để chẩn đoán xác định.
 
 Đối với các xét nghiệm cho ra kết quả dưới dạng biến liên tục (ví dụ: nồng độ men tim, kháng thể), bác sĩ không thể chỉ dựa vào một con số để kết luận bệnh. Việc xác định **điểm cắt (cut-off point)** chia ranh giới giữa "bình thường" và "bất thường" là một quyết định lâm sàng và kinh tế, trong đó việc tăng độ nhạy sẽ dẫn đến giảm độ đặc hiệu và ngược lại.

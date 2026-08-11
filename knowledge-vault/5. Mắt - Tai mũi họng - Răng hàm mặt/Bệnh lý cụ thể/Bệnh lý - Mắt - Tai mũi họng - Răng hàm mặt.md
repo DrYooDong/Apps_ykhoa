@@ -1,9 +1,16 @@
 ---
+title: "Bệnh lý - Mắt - Tai mũi họng - Răng hàm mặt"
+type: disease
+specialty: "Chuyên khoa lẻ"
 tags:
-  - Chuyenkhoa
+  - loai/benh-ly
+  - y-khoa/chuyen-khoa-le
+updated: "2026-08-11"
 ---
-# Khác
-[[Glaucoma góc đóng cấp]]
-[[U dây thần kinh số VIII]]
-[[Viêm tai giữa]]
-[[Viêm xoang cấp]]
+
+## 📌 Danh Mục Nội Dung
+
+1. [[Glaucoma góc đóng cấp]]
+2. [[U dây thần kinh số VIII]]
+3. [[Viêm tai giữa]]
+4. [[Viêm xoang cấp]]

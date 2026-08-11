@@ -1,3 +1,14 @@
+---
+title: "Khám hệ tim mạch ở trẻ em"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - he-co-quan/tim-mach
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### Khai Thác Bệnh Sử Tim Mạch Ở Trẻ Em
@@ -9,10 +20,10 @@ Hỏi bệnh sử trẻ bị bệnh tim mạch cần tập trung vào các nhóm
     - Mệt khi hoạt động gắng sức (hoạt động gắng sức chủ yếu ở trẻ nhỏ là bú và khóc).
     - _Mệt khi bú_: Trẻ khỏe mạnh thường bú một cữ khoảng 10 – 15 phút rồi ngủ 2 – 3 tiếng. Trẻ bị bệnh tim thường bú kém, bú yếu, cữ bú kéo dài trên 30 phút, bú ngắt quãng (phải dừng lại để thở), bú xong vẫn còn đói do không mút đủ lực và lượng sữa; trẻ đổ mồ hôi nhiều mỗi khi bú.
     - _Mệt khi khóc_: Trẻ khóc yếu, đổ mồ hôi nhiều khi khóc, tím khi khóc; khi ngừng khóc trẻ thở mệt, bỏ bú hoặc bú yếu.
-- **Triệu chứng ứ trệ máu ở phổi**: Trẻ hay bị ho, khò khè, thở nhanh, thở mạnh/thở khác thường ngay những lúc không bị bệnh hô hấp; trẻ luôn đòi ẵm bồng (do dễ thở hơn khi ở tư thế đứng/ẵm) và thường bị nhiễm trùng hô hấp tái đi tái lại nhiều lần.
-- **Triệu chứng giảm lưu lượng máu lên phổi**: Trẻ thường bị tím trung ương (tím niêm mạc), tím liên tục, tím tăng lên khi gắng sức (khi khóc, khi bú). Cần khai thác thời điểm xuất hiện tím để phân biệt với các nguyên nhân ngoài tim.
+- **Triệu chứng ứ trệ máu ở [[Phổi]]**: Trẻ hay bị ho, khò khè, [[[[Khó thở]]|thở nhanh]], thở mạnh/thở khác thường ngay những lúc không bị bệnh hô hấp; trẻ luôn đòi ẵm bồng (do dễ thở hơn khi ở tư thế đứng/ẵm) và thường bị nhiễm trùng hô hấp tái đi tái lại nhiều lần.
+- **Triệu chứng giảm lưu lượng máu lên [[Phổi]]**: Trẻ thường bị tím trung ương (tím niêm mạc), tím liên tục, tím tăng lên khi gắng sức (khi khóc, khi bú). Cần khai thác thời điểm xuất hiện tím để phân biệt với các nguyên nhân ngoài tim.
 - **Triệu chứng hoạt hóa hệ thần kinh giao cảm**: Trẻ hay đổ mồ hôi nhiều khi bú và ngay cả khi ngủ.
-- **Triệu chứng ở trẻ lớn và thanh thiếu niên**: Khai thác các triệu chứng xuất hiện muộn gồm đau ngực, hồi hộp, đánh trống ngực, ngất, giảm khả năng hoạt động thể lực (leo cầu thang, đi bộ), khó thở về đêm, ngủ phải nằm đầu cao.
+- **Triệu chứng ở trẻ lớn và thanh thiếu niên**: Khai thác các triệu chứng xuất hiện muộn gồm [[Đau ngực]], hồi hộp, đánh trống ngực, ngất, giảm khả năng hoạt động thể lực (leo cầu thang, đi bộ), khó thở về đêm, ngủ phải nằm đầu cao.
 
 ---
 
@@ -22,12 +33,12 @@ Hỏi bệnh sử trẻ bị bệnh tim mạch cần tập trung vào các nhóm
     - Mẹ bị đái tháo đường thai kỳ (tăng nguy cơ bệnh tim bẩm sinh).
     - Mẹ bị Lupus ban đỏ hệ thống (trẻ có nguy cơ bị block nhĩ - thất bẩm sinh).
     - Mẹ nghiện thuốc lá, rượu (tăng tần suất dị tật VSD, PDA, ASD, Tứ chứng Fallot, hội chứng rượu bào thai).
-    - Mẹ nhiễm Rubella, CMV, Herpes virus, Coxsackie virus B trong thai kỳ (Rubella gây hẹp ĐMP, PDA; các virus khác gây dị dạng thai hoặc viêm cơ tim sơ sinh).
+    - Mẹ nhiễm Rubella, CMV, Herpes virus, Coxsackie virus B trong thai kỳ (Rubella gây hẹp ĐMP, PDA; các virus khác gây dị dạng thai hoặc viêm [[Tim|cơ tim]] sơ sinh).
     - Mẹ sử dụng các thuốc trong thai kỳ: Amphetamine, Phenytoin, Trimethadione, thuốc ức chế men chuyển, Lithium, Retinoic acid, Acid Valproic, Progesterone/Estrogen.
     - Cân nặng lúc sinh: Trẻ nhẹ cân đủ tháng (thai chậm phát triển trong tử cung) hoặc trẻ quá cân có nguy cơ bị dị tật tim cao hơn.
 - **Tiền căn gia đình**:
     - Trẻ có anh/chị em sinh đôi bị tim bẩm sinh (đặc biệt hội chứng thiểu sản tim trái có tỷ lệ mắc lại trong gia đình đến 3 – 10%).
-    - Gia đình có người mắc hội chứng Marfan, Holt-Oram, hội chứng QT kéo dài, đột tử, van động mạch chủ hai mảnh, bệnh cơ tim phì đại.
+    - Gia đình có người mắc hội chứng Marfan, Holt-Oram, hội chứng QT kéo dài, đột tử, van động mạch chủ hai mảnh, bệnh [[Tim|cơ tim]] phì đại.
 
 ---
 
@@ -37,7 +48,7 @@ Hỏi bệnh sử trẻ bị bệnh tim mạch cần tập trung vào các nhóm
 
 - Tạo môi trường ấm áp, kiên nhẫn, nhờ sự trợ giúp của bà mẹ (cho bú, dỗ dành) để trẻ nằm yên hợp tác.
 - Sử dụng ống nghe có bản nhỏ thích hợp cho trẻ em; nếu dùng ống nghe lớn cần đặt đúng vị trí, áp sát thành ngực hoặc dùng phần chuông (bell) để nghe rõ hơn ở các khe liên sườn hẹp.
-- Sử dụng băng quấn huyết áp kế có kích thước phù hợp và thiết bị đo độ bão hòa oxy mao mạch (Pulse-oximeter) có sensor phù hợp với đầu chi của trẻ.
+- Sử dụng băng quấn huyết áp kế có kích thước [[Phù]] hợp và thiết bị đo độ bão hòa oxy mao mạch (Pulse-oximeter) có sensor [[Phù]] hợp với đầu chi của trẻ.
 - Thực hiện đo cân nặng, chiều cao, vòng đầu ở tất cả trẻ nghi ngờ có bệnh tim.
 
 ##### 2. Khám Dấu Hiệu Sinh Tồn Về Tuần Hoàn
@@ -71,7 +82,7 @@ Hỏi bệnh sử trẻ bị bệnh tim mạch cần tập trung vào các nhóm
 - **Bắt mạch ngoại biên và trung ương**:
     - Đánh giá tần số, nhịp điệu (đều hay không đều).
     - So sánh bắt mạch tứ chi: Mạch chi dưới nhẹ/trễ hơn chi trên gợi ý hẹp eo động mạch chủ, hẹp động mạch chủ ngực, viêm mạch Takayasu. Mạch tay mất hoặc yếu hơn mạch cảnh/chân gợi ý hẹp tắc mạch dưới đòn.
-    - Mạch yếu/mất toàn thân kèm CRT kéo dài là dấu hiệu của suy tim, sốc tim.
+    - Mạch yếu/mất toàn thân kèm CRT kéo dài là dấu hiệu của suy tim, [[Sốc]] tim.
     - Mạch nảy mạnh chìm nhanh (mạch Corrigan) gặp trong hở van động mạch chủ, còn ống động mạch, rò động - tĩnh mạch.
     - _Mạch nghịch (Pulsus paradoxus)_: Xác định khi huyết áp tâm thu giảm $> 10\text{ mmHg}$ trong thì hít vào, gợi ý chẹn tim cấp (tràn dịch màng tim) hoặc viêm màng ngoài tim co thắt.
     - Đánh giá thời gian phục hồi màu da ($CRT$, bình thường $\le 2 - 3\text{ giây}$).
@@ -98,7 +109,7 @@ Hỏi bệnh sử trẻ bị bệnh tim mạch cần tập trung vào các nhóm
     - _Cường độ_: Mờ/yếu trong suy tim nặng, hở 2 lá nặng, tràn dịch màng tim; T1 đanh (mạnh, gọn) trong hẹp van 2 lá.
     - _Tách đôi_: T1 tách đôi thuận ($M_1 - T_1$) khi van 2 lá đóng sớm (hở chủ) hoặc van 3 lá đóng trễ (ASD, hẹp 3 lá, block nhánh phải); T1 tách đôi nghịch ($T_1 - M_1$) khi van 2 lá đóng trễ (hẹp 2 lá, VSD, PDA, block nhánh trái).
 - **Tiếng T2**:
-    - _Cường độ_: T2 mờ/yếu trong suy tim nặng, hẹp/hở van ĐMC nặng; T2 đanh/mạnh trong tăng áp động mạch phổi, tăng huyết áp.
+    - _Cường độ_: T2 mờ/yếu trong suy tim nặng, hẹp/hở van ĐMC nặng; T2 đanh/mạnh trong tăng áp động mạch phổi, [[Tăng huyết áp]].
     - _Tách đôi_: T2 tách đôi rộng và cố định là dấu hiệu đặc trưng của **thông liên nhĩ**. T2 đơn âm gợi ý teo van ĐMP, teo van ĐMC, hoán vị đại động mạch, tăng áp ĐMP nặng.
 - **Các tiếng tim bất thường**: Tiếng T3, T4, tiếng clăng (click) tống máu, tiếng clăng mở van 2 lá (opening snap).
 - **Nghe âm thổi (Murmur)**:
@@ -118,14 +129,14 @@ Hỏi bệnh sử trẻ bị bệnh tim mạch cần tập trung vào các nhóm
 - Tiếng T2 có thể nghe đơn âm trong vài ngày đầu sau sinh.
 - Tiếng click tống máu có thể nghe được trong vài giờ đầu do áp lực động mạch phổi còn cao.
 - Âm thổi vô tội thường gặp do tăng lưu lượng máu qua động mạch phổi hoặc do ống động mạch chưa đóng hoàn toàn.
-- Giảm hoặc mất mạch chi dưới kèm sốc, toan chuyển hóa, suy thận là dấu hiệu báo động **hẹp eo động mạch chủ nặng** ở trẻ sơ sinh.
+- Giảm hoặc mất mạch chi dưới kèm [[Sốc]], toan chuyển hóa, suy [[Thận]] là dấu hiệu báo động **hẹp eo động mạch chủ nặng** ở trẻ sơ sinh.
 
 ---
 
 #### Khám Các Cơ Quan Liên Quan
 
 - **Phổi**: Dấu hiệu ứ trệ máu ở phổi (tăng tuần hoàn phổi thụ động) hoặc tăng lưu lượng máu lên phổi (tăng tuần hoàn phổi chủ động) làm trẻ khò khè, phổi có ran ẩm, ran ngáy, ran rít.
-- **Gan**: Gan to kiểu "gan tim", gan đập theo nhịp tim là biểu hiện của hở van 3 lá nặng (tăng áp ĐMP nặng, bệnh Ebstein).
+- **[[Gan]]**: [[Gan]] to kiểu "gan tim", gan đập theo nhịp tim là biểu hiện của hở van 3 lá nặng (tăng áp ĐMP nặng, bệnh Ebstein).
 
 ---
 
@@ -137,4 +148,4 @@ Hỏi bệnh sử trẻ bị bệnh tim mạch cần tập trung vào các nhóm
 
 ---
 
-💓 Bạn có muốn đi sâu hơn vào cách phân tích điện tâm đồ (ECG) cơ bản hoặc cách đọc phim X-quang ngực thẳng trong bệnh lý tim mạch ở trẻ em không?
+💓 Bạn có muốn đi sâu hơn vào cách phân tích điện tâm đồ (ECG) cơ bản hoặc cách đọc phim [[X-quang]] ngực thẳng trong bệnh lý tim mạch ở trẻ em không?

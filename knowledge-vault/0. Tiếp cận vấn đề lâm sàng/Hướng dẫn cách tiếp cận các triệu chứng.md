@@ -1,9 +1,13 @@
 ---
 title: "Hướng dẫn cách tiếp cận các triệu chứng"
-specialty: "Tiếp cận vấn đề lâm sàng"
-tags: ["Tiếp cận vấn đề lâm sàng"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+
 Cấu trúc chuẩn tiếp cận một triệu chứng dành cho bác sĩ lâm sàng, đi từ khai thác triệu chứng đến chẩn đoán và xử trí:
 
 ## 1) Định nghĩa triệu chứng và đặc tính then chốt
@@ -12,7 +16,7 @@ Cấu trúc chuẩn tiếp cận một triệu chứng dành cho bác sĩ lâm s
     
 - **Đặc tính then chốt cần khai thác** theo mô hình "5 đặc tính":
     
-    - **Chất lượng**: loại đau, tính chất ho, kiểu mệt, loại sốt...
+    - **Chất lượng**: loại đau, tính chất ho, kiểu mệt, loại [[Sốt]]...
         
     - **Cường độ**: mức độ nặng (thang điểm, ảnh hưởng chức năng).
         
@@ -40,11 +44,11 @@ Cấu trúc chuẩn tiếp cận một triệu chứng dành cho bác sĩ lâm s
 
 ## 3) Khám thực thể định hướng
 
-- **Khám toàn thân**: quan sát chung, dấu hiệu toàn thân (suy nhược, sụt cân, sốt...).
+- **Khám toàn thân**: quan sát chung, dấu hiệu toàn thân (suy nhược, sụt cân, [[Sốt]]...).
     
 - **Khám hệ cơ quan liên quan**: tập trung vào hệ nghi ngờ tổn thương.
     
-- **Khám chuyên biệt**: theo triệu chứng (ví dụ: thần kinh, tim mạch, hô hấp, tiêu hóa).
+- **Khám chuyên biệt**: theo triệu chứng (ví dụ: thần kinh, [[Tim]] mạch, hô hấp, tiêu hóa).
     
 - **Dấu hiệu then chốt**: tìm dấu hiệu đặc hiệu để xác định vị trí tổn thương.
     
@@ -62,11 +66,11 @@ Gồm **4 thành phần** trong 1–2 câu:
 4. **Dữ kiện cận lâm sàng** tương thích (xét nghiệm, hình ảnh nếu có).
     
 
-_Ví dụ_: "Nam 65 tuổi, tiền căn ĐTĐ, tăng HA, đau ngực dữ dội khi gắng sức lan vai trái 2 giờ, không giảm nghỉ ngơi; ST cao 2–4, NKD (+)."
+_Ví dụ_: "Nam 65 tuổi, tiền căn ĐTĐ, tăng HA, [[Đau ngực]] dữ dội khi gắng sức lan vai trái 2 giờ, không giảm nghỉ ngơi; ST cao 2–4, NKD (+)."
 
 ## 5) Xác định vị trí giải phẫu và sinh lý bệnh
 
-- **Vị trí tổn thương**: đơn tổn thương hay đa tổn thương? CNS hay ngoại biên? Vỏ não, chất trắng, thân não, tủy, dây thần kinh, cơ....
+- **Vị trí tổn thương**: đơn tổn thương hay đa tổn thương? [[Hệ thần kinh trung ương|CNS]] hay ngoại biên? [[Vỏ não]], chất trắng, thân não, tủy, dây thần kinh, cơ....
     
 - **Cơ chế sinh lý bệnh**: mạch máu, nhiễm trùng, miễn dịch, chuyển hóa, thoái hóa, tân sinh.
     
@@ -94,18 +98,18 @@ Chỉ định xét nghiệm nhằm **4 mục tiêu**:
 
 1. **Xác định chẩn đoán**: xét nghiệm đặc hiệu, tiêu chuẩn chẩn đoán.
     
-2. **Đánh giá mức độ nặng/tổn thương cơ quan**: chức năng gan thận, điện tim, hình ảnh.
+2. **Đánh giá mức độ nặng/tổn thương cơ quan**: chức năng [[Gan]] [[Thận]], điện [[Tim]], hình ảnh.
     
 3. **Tìm nguyên nhân/yếu tố thúc đẩy**: vi sinh, dị ứng, tự miễn, chuyển hóa.
     
-4. **Nền trước điều trị và theo dõi**: công thức máu, điện giải, men gan/thận, theo dõi đáp ứng/độc tính.
+4. **Nền trước điều trị và theo dõi**: công thức máu, điện giải, men [[Gan]]/[[Thận]], theo dõi đáp ứng/độc tính.
     
 
-**Nguyên tắc**: không chỉ định CT/MRI khi chưa có định hướng lâm sàng rõ ràng; tránh chi phí không cần.
+**Nguyên tắc**: không chỉ định CT/[[MRI]] khi chưa có định hướng lâm sàng rõ ràng; tránh chi phí không cần.
 
 ## 8) Biện luận chẩn đoán và chẩn đoán đầy đủ
 
-- **Biện luận chẩn đoán**: so sánh đặc điểm triệu chứng với từng chẩn đoán trong danh sách; xác định chẩn đoán nào phù hợp nhất.
+- **Biện luận chẩn đoán**: so sánh đặc điểm triệu chứng với từng chẩn đoán trong danh sách; xác định chẩn đoán nào [[Phù]] hợp nhất.
     
 - **Chẩn đoán đầy đủ** gồm:
     

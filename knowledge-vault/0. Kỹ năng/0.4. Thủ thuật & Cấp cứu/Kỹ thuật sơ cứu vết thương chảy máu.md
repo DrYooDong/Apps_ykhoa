@@ -1,7 +1,17 @@
+---
+title: "Kỹ thuật sơ cứu vết thương chảy máu"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 27
-# 3- SƠ CỨU, CÁP CỨU VÉT THƯƠNG CHẢY MÁU
+# 3- SƠ CỨU, CÁP CỨU VÉT THƯƠNG [[Xuất huyết|CHẢY MÁU]]
 ## MỤC TIÊU HỌC TẬP
-J.. Phát hiện, đánh giá vết thương chảy máu và mức độ thương tôn.
+J.. Phát hiện, đánh giá vết thương [[Xuất huyết|chảy máu]] và mức độ thương tôn.
 2. Thực hiện được kỹ thuật cầm máu tạm thời một số vết thương cháy máu ngoài
 tại hiện trường.
 ## NỘI DỤNG
@@ -24,7 +34,7 @@ màu đỏ sâm.
 ## lu Ñ
 \ ' 7;
 - MÁU PHUN THÀNH VÒI :
-- ĐẬP THEO NHỊP TIM - MÁU CHẢY TRÀN, CHẬM - MÁU CHẢY RỊN
+- ĐẬP THEO NHỊP [[Tim]] - MÁU CHẢY TRÀN, CHẬM - MÁU CHẢY RỊN
 - MÀU SẮC MÁU ĐỎ TƯƠI. 1. “MÀU SẮC MÁU ĐỎ THẪM. - MÁU ĐỎ TƯƠI
 ## Hình 21: Các loại chấy máu qua vết thương
 Đa số các vết thương gây chảy máu nhẹ như vết cắt, vết sây sát phần mềm
@@ -43,8 +53,8 @@ cho chỉ dưới.
 - Thực hiện khẩn trương
 - Sử dụng mọi phương tiện kiểm soát chảy máu nhanh nhất có thể
 - Nhanh chóng thông báo y tế hỗ trợ và chuyền nạn nhân đến cơ sở y tế gần nhất.
-- Nghi ngờ sốc đặt nạn nhân nằm ngửa đầu thấp chân cao hoặc tư thế nằm
-nghiêng an toàn nếu bệnh nhân có biểu hiệu nôn hoặc nôn.
+- Nghi ngờ [[Sốc]] đặt nạn nhân nằm ngửa đầu thấp chân cao hoặc tư thế nằm
+nghiêng an toàn nếu bệnh nhân có biểu hiệu [[Nôn ói|nôn]] hoặc [[Nôn ói|nôn]].
 —¬
 , _— x..
 = — : = << 3 - = xe=ZÀ Hình 22: Nạn nhân nằm ngữu đầu thấp chân cao
@@ -220,7 +230,7 @@ bên lành, do vậy việc băng ép mạch cổ cần dụng cụ và phương
 - Cố định băng có 2 cách :
 - Cách 1: Băng chéo từ nách bên đối diện vòng qua cổ bên tổn thương mạch
 - Cách 2: Dùng cách tay bên đối diện là điểm tỳ để cuốn băng
-=4 Hình 31: Cách băng cằm máu vết thương mạch cánh *Lzu ý: Tùy tình trạng người bệnh mà chọn cách cằm máu cho phù hợp.
+=4 Hình 31: Cách băng cằm máu vết thương mạch cánh *Lzu ý: Tùy tình trạng người bệnh mà chọn cách cằm máu cho [[Phù]] hợp.
 ## CÂU HỎI LƯỢNG GIÁ
 Lựa chọn câu trả lời đúng:
 1. Dấu hiệu nào sau đây nghỉ ngờ chảy máu từ động mạch?
@@ -235,7 +245,7 @@ D. Chảy máu chậm, số lượng ít.
 # A. Nạn nhân đau kêu la nhiều
 ## B. Lịm đi, vã mồ hôi, nhợt, không bắt được mạch
 C. Các gãy xương lớn: xương đùi, xương chậu.
-## D. Gãy vỡ xương cột sống có sốc
+## D. Gãy vỡ xương cột sống có [[Sốc]]
 E. Tắt cả các ý trên.
 3. Một số nguyên tắc khi đặt ga-rô
 A. Trên vết thương nhỏ 2cm B. Trên vết thương lớn 5cm C. Đặt miếng vải sạch trên da trước khi đặt ga rô D. Kiểm tra khi không thấy chảy máu là được.

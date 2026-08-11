@@ -1,4 +1,10 @@
 ---
+title: "Ngón tay dùi trống (clubbing)"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
 tags:
-  - Trieuchung
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+

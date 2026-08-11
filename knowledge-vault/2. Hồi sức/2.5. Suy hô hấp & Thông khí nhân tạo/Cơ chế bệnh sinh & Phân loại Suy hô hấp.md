@@ -1,10 +1,15 @@
 ---
 title: "Cơ chế bệnh sinh & Phân loại Suy hô hấp"
-specialty: "Suy hô hấp"
-tags: ["Hồi sức", "Suy hô hấp"]
-last_updated: "2026-07-28"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
 ---
-### 1. Tổng Quan Cơ Chế Sinh Lý Bệnh Suy Hô Hấp Cấp
+
+### 1. Tổng Quan Cơ Chế Sinh Lý Bệnh [[[[Suy hô hấp]]|Suy Hô Hấp Cấp]]
 
 Suy hô hấp là tình trạng hệ hô hấp bị suy yếu một hoặc cả hai chức năng giúp cơ thể trao đổi khí: chức năng oxy hóa máu và chức năng loại bỏ $CO_{2}$ ra khỏi máu tĩnh mạch trộn. Dựa trên cơ chế sinh lý bệnh, suy hô hấp cấp được phân chia thành 2 phân nhóm chính: Suy hô hấp hạ oxy máu (Type 1) và Suy hô hấp tăng $CO_{2}$ máu (Type 2).
 
@@ -12,26 +17,26 @@ Suy hô hấp là tình trạng hệ hô hấp bị suy yếu một hoặc cả 
 
 > **Tên Sơ Đồ:** Hình 1: Phân loại suy hô hấp cấp theo cơ chế sinh lý bệnh. **Thuộc Tài Liệu:** "TiepCanSuyHoHapCap.pdf" **Nội dung mô tả:** SUY HÔ HẤP CẤP được chia thành 2 nhánh:
 > 
-> 1. Suy phổi (Lung failure): Dẫn đến rối loạn trao đổi khí, biểu hiện bởi hạ oxy máu (Type 1).
+> 1. Suy [[Phổi]] (Lung failure): Dẫn đến rối loạn trao đổi khí, biểu hiện bởi hạ oxy máu (Type 1).
 > 2. Suy bơm (Pump failure): Dẫn đến rối loạn thông khí, biểu hiện bởi tăng $CO_{2}$ máu (Type 2).
 
 ---
 
 ### 2. Cơ Chế Bệnh Sinh Suy Hô Hấp Hạ Oxy Máu (Type 1)
 
-Suy hô hấp type 1 là hậu quả của sự suy giảm quá trình trao đổi khí tại phổi, được định nghĩa bởi tình trạng hạ oxy máu $(PaO_{2} < 60 mmHg)$ kèm theo $CO_{2}$ trong máu bình thường hoặc thấp. Có 5 cơ chế sinh lý bệnh chính dẫn đến tình trạng này:
+Suy hô hấp type 1 là hậu quả của sự suy giảm quá trình trao đổi khí tại [[Phổi]], được định nghĩa bởi tình trạng hạ oxy máu $(PaO_{2} < 60 mmHg)$ kèm theo $CO_{2}$ trong máu bình thường hoặc thấp. Có 5 cơ chế sinh lý bệnh chính dẫn đến tình trạng này:
 
 1. **Bất xứng thông khí - tưới máu $(V/Q$ mismatch):** Đây là nguyên nhân phổ biến nhất. Sự mất cân bằng giữa lượng khí đi vào phế nang và lượng máu tưới cho vùng đó làm giảm hiệu quả oxy hóa máu. Tình trạng này có thể điều chỉnh bằng liệu pháp oxy.
 2. **Shunt (Nối tắt phải-trái):** Xảy ra khi có những vùng phổi hoàn toàn không có thông khí phế nang $(V = 0)$ nhưng tưới máu vẫn bình thường, khiến dòng máu đi qua không được oxy hóa. Hạ oxy máu do shunt không đáp ứng với việc tăng $FiO_{2}$ (khi phân suất shunt > 50%, $PaO_{2}$ hoàn toàn độc lập với $FiO_{2}$).
-3. **Rối loạn khuếch tán (Diffusion limitation):** Do dày màng phế nang - mao mạch làm cản trở oxy khuếch tán vào máu, thường bộc lộ rõ khi gắng sức hoặc cung lượng tim tăng.
+3. **Rối loạn khuếch tán (Diffusion limitation):** Do dày màng phế nang - mao mạch làm cản trở oxy khuếch tán vào máu, thường bộc lộ rõ khi gắng sức hoặc cung lượng [[Tim]] tăng.
 4. **Giảm thông khí phế nang (Hypoventilation):** Làm giảm áp lực oxy trong phế nang $(PAO_{2})$ mà không thay đổi khả năng chiết xuất oxy của mao mạch.
-5. **Mất cân bằng cung cấp - tiêu thụ oxy (Oxygen delivery-consumption imbalance):** Khi nhu cầu oxy của mô ngoại vi vượt quá khả năng cung cấp (trong các trạng thái tăng chuyển hóa, cung lượng tim thấp, thiếu máu).
+5. **Mất cân bằng cung cấp - tiêu thụ oxy (Oxygen delivery-consumption imbalance):** Khi nhu cầu oxy của mô ngoại vi vượt quá khả năng cung cấp (trong các trạng thái tăng chuyển hóa, cung lượng [[Tim]] thấp, thiếu máu).
 
 **Mô Tả Bảng Tổng Hợp Các Cơ Chế Hạ Oxy Máu**
 
 > **Tên Bảng:** Table 1: Mechanisms of hypoxemia **Thuộc Tài Liệu:** "nihms-1958041.pdf" **Nội dung mô tả:**
 > 
-> - **Bất xứng V/Q:** Đặc trưng lâm sàng là khuynh áp A-a rộng, cải thiện khi thở $O_{2}$. Ví dụ: Viêm phổi, phù phổi, xẹp phổi, nhồi máu phổi, hen suyễn nặng.
+> - **Bất xứng V/Q:** Đặc trưng lâm sàng là khuynh áp A-a rộng, cải thiện khi thở $O_{2}$. Ví dụ: Viêm phổi, [[Phù]] phổi, xẹp phổi, nhồi máu phổi, hen suyễn nặng.
 > - **Shunt:** Khuynh áp A-a rộng, KHÔNG cải thiện đáng kể với $O_{2}$. Ví dụ: Shunt trong tim (ASD, PFO), Shunt tại phổi (ARDS, xẹp phổi hoàn toàn).
 > - **Rối loạn khuếch tán:** Khuynh áp A-a rộng, cải thiện với $O_{2}$. Ví dụ: Bệnh phổi mô kẽ, khí phế thũng, bệnh lý mạch máu phổi.
 > - **Giảm thông khí:** Khuynh áp A-a BÌNH THƯỜNG, cải thiện với $O_{2}$. Ví dụ: Bệnh thần kinh cơ, rối loạn thành ngực, dùng thuốc an thần.
@@ -50,7 +55,7 @@ Suy hô hấp type 1 là hậu quả của sự suy giảm quá trình trao đ�
 
 > **Tên Lưu Đồ:** Hình 5: Lưu đồ tiếp cận hạ oxy máu. **Thuộc Tài Liệu:** "TiepCanSuyHoHapCap.pdf" **Nội dung mô tả:** Lưu đồ bắt đầu bằng câu hỏi: $PaO_{2}$ có cải thiện với oxy trị liệu?
 > 
-> - Nếu **KHÔNG**: Nghĩ đến cơ chế **Shunt** (Shunt phổi do ARDS, viêm phổi, phù phổi, xẹp phổi; hoặc Shunt tim như PFO, VSD).
+> - Nếu **KHÔNG**: Nghĩ đến cơ chế **Shunt** (Shunt phổi do ARDS, viêm phổi, [[Phù]] phổi, xẹp phổi; hoặc Shunt tim như PFO, VSD).
 > - Nếu **CÓ**, tính tiếp Khuynh áp phế nang - động mạch $(A-a)PO_{2}$:
 >     - Nếu **$(A-a)PO_{2}$ tăng**: Nghĩ đến Bất xứng V/Q hoặc rối loạn khuếch tán (Hen, COPD, Bệnh phổi mô kẽ, Thuyên tắc phổi).
 >     - Nếu **$(A-a)PO_{2}$ bình thường**: Kiểm tra $PaCO_{2}$. Nếu $PaCO_{2}$ tăng $\rightarrow$ Kém thông khí (Mất cân bằng giữa khả năng và nhu cầu thông khí). Nếu $PaCO_{2}$ bình thường/giảm $\rightarrow$ Giảm $PiO_{2}$ do độ cao.
@@ -73,7 +78,7 @@ Về cơ chế bệnh sinh chi tiết, tăng $CO_{2}$ máu được chia thành 
 > 
 > 1. **"Won't breathe" (Không chịu thở):** Giảm điều khiển từ thần kinh trung ương. Ví dụ: Ngộ độc thuốc an thần, đột quỵ, chấn thương sọ não, hội chứng béo phì giảm thông khí.
 > 2. **"Can't breathe" (Không thể thở):** Suy giảm chức năng cơ hô hấp do thần kinh-cơ hoặc cấu trúc thành ngực, hoặc tăng khoảng chết do tắc nghẽn. Ví dụ: Hội chứng Guillain-Barre, nhược cơ, gù vẹo cột sống, COPD, hen suyễn nặng.
-> 3. **"Can't breathe enough" (Thở không đủ):** Sự sản xuất $CO_{2}$ áp đảo khả năng đào thải của phổi. Ví dụ: Sốt cao, nhiễm trùng huyết, gắng sức quá mức, tăng chuyển hóa.
+> 3. **"Can't breathe enough" (Thở không đủ):** Sự sản xuất $CO_{2}$ áp đảo khả năng đào thải của phổi. Ví dụ: [[[[Sốt]]|Sốt cao]], [[Nhiễm trùng huyết]], gắng sức quá mức, tăng chuyển hóa.
 
 ---
 
@@ -102,7 +107,7 @@ Cơ chế bệnh sinh của suy hô hấp trong ARDS trải qua quá trình viê
 
 **Mô Tả Cơ Chế Giai Đoạn Xuất Tiết (Exudative phase)**
 
-> **Tên Hình/Sơ Đồ:** Exudative phase (Sơ đồ cơ chế sinh lý bệnh ARDS). **Thuộc Tài Liệu:** "2.7.1. TS.BS. Lê Đức Nhân.pptx.pdf" **Nội dung mô tả:** Tổn thương khởi phát làm đại thực bào phế nang kích hoạt, giải phóng các cytokine tiền viêm (IL-6, IL-8, TNF). Bạch cầu trung tính xâm nhập, phóng thích ROS, protease phá hủy màng đáy và tế bào biểu mô phế nang type I. Mất chức năng hàng rào dẫn đến tràn dịch giàu protein vào phế nang, bất hoạt surfactant, hình thành màng hyaline và vi huyết khối mạch máu.
+> **Tên Hình/Sơ Đồ:** Exudative phase (Sơ đồ cơ chế sinh lý bệnh ARDS). **Thuộc Tài Liệu:** "2.7.1. TS.BS. Lê Đức Nhân.pptx.pdf" **Nội dung mô tả:** Tổn thương khởi phát làm đại thực bào phế nang kích hoạt, giải phóng các cytokine tiền viêm (IL-6, IL-8, TNF). [[Bạch cầu]] trung tính xâm nhập, phóng thích ROS, protease phá hủy màng đáy và tế bào biểu mô phế nang type I. Mất chức năng hàng rào dẫn đến tràn dịch giàu protein vào phế nang, bất hoạt surfactant, hình thành màng hyaline và vi huyết khối mạch máu.
 
 Sau đó, ARDS có thể bước vào giai đoạn tăng sinh (phục hồi biểu mô hoặc tăng sinh nguyên bào sợi) và giai đoạn xơ hóa (lắng đọng collagen quá mức làm giảm độ giãn nở của phổi vĩnh viễn).
 
@@ -126,7 +131,7 @@ Bên cạnh giai đoạn xuất tiết (khởi phát) đã được đề cập,
 
 > **Tên Sơ Đồ/Hình Ảnh:** B Proliferative phase / Fibrotic phase **Thuộc Tài Liệu:** "2.7.1. TS.BS. Lê Đức Nhân.pptx.pdf" **Nội dung mô tả:** Sơ đồ mô tả chi tiết cấp độ tế bào:
 > 
-> - Ở giai đoạn tăng sinh (Proliferative phase): Sự tăng sinh của tế bào biểu mô type II và biệt hóa thành type I (AECI), phục hồi các liên kết chặt chẽ (tight junctions) và chức năng hàng rào biểu mô. Các đại thực bào thực bào các bạch cầu trung tính chết theo chương trình.
+> - Ở giai đoạn tăng sinh (Proliferative phase): Sự tăng sinh của tế bào biểu mô type II và biệt hóa thành type I (AECI), phục hồi các liên kết chặt chẽ (tight junctions) và chức năng hàng rào biểu mô. Các đại thực bào thực bào các [[Bạch cầu]] trung tính chết theo chương trình.
 > - Ở giai đoạn xơ hóa (Fibrotic phase): Màng đáy bị bộc lộ và thiếu hụt sản xuất surfactant. Các nguyên bào sợi tăng sinh mạnh, biệt hóa thành myofibroblasts, gây lắng đọng ma trận ngoại bào diện rộng làm xơ hóa khoảng kẽ và tắc nghẽn các vi mao mạch.
 
 ### 7. Cơ Chế Tổn Thương Phổi Thứ Phát (VILI và P-SILI)
@@ -150,7 +155,7 @@ Bệnh phổi tắc nghẽn mạn tính (COPD) là nguyên nhân hàng đầu g�
 
 - **Tương tác GETomics:** COPD là kết quả cuối cùng của sự tương tác phức tạp và tích lũy giữa Di truyền (Genetics - G), Môi trường (Environment - E) diễn ra trong suốt thời gian sống (Time - T) của bệnh nhân. Các phơi nhiễm môi trường (khói thuốc, bụi hạt mịn) tương tác với bộ gen nhạy cảm làm thay đổi quỹ đạo phát triển phổi hoặc đẩy nhanh sự lão hóa của phổi,.
 - **Bẫy khí và Căng phồng phổi (Hyperinflation):** Viêm mạn tính gây ra biến đổi cấu trúc, hẹp tiểu phế quản, tiết dịch trong lòng ống và phá hủy nhu mô phổi (khí phế thũng) làm mất độ đàn hồi đàn hồi bình thường. Các thay đổi này làm hạn chế việc làm trống phổi trong kỳ thở ra, dẫn đến khí bị bẫy lại và căng phồng phổi.
-    - Tình trạng này làm giảm khả năng hoạt động của cơ hoành và tăng công hô hấp, là cơ chế chính gây ra khó thở, suy giảm khả năng gắng sức và cuối cùng là suy hô hấp,.
+    - Tình trạng này làm giảm khả năng hoạt động của cơ hoành và tăng công hô hấp, là cơ chế chính gây ra [[Khó thở]], suy giảm khả năng gắng sức và cuối cùng là suy hô hấp,.
 - **Mất cân bằng Hệ Vi sinh (Dysbiosis):** Đường hô hấp dưới của bệnh nhân COPD không hề vô trùng mà có sự rối loạn hệ vi sinh (dysbiosis). Sự rối loạn này làm thay đổi phòng vệ niêm mạc, kích thích các phản ứng miễn dịch viêm (tạo vòng xoắn bệnh lý) và liên quan trực tiếp đến tần suất các đợt cấp.
 
 > **Tên Sơ Đồ/Hình Ảnh:** Figure 1.1: FEV1 Trajectories (TR) Over the Life Course **Thuộc Tài Liệu:** "GOLD-2025-Report-v1.0-15Nov2024_WMV.pdf" **Nội dung mô tả:** Đồ thị mô tả quỹ đạo chức năng phổi (FEV1) theo tuổi đời. Một người bình thường sẽ có sự phát triển phổi đạt đỉnh vào khoảng 20-25 tuổi, sau đó suy giảm từ từ theo quá trình lão hóa (Normal). Các cá thể mắc COPD có thể do hai quỹ đạo: (1) Sụt giảm nhanh chóng từ mức đỉnh bình thường (Accelerated Decline) do các yếu tố như hút thuốc; hoặc (2) Do phổi không phát triển đạt mức bình thường lúc trưởng thành (Growth Failure) sau đó suy giảm theo tốc độ bình thường hoặc nhanh (Below Normal).

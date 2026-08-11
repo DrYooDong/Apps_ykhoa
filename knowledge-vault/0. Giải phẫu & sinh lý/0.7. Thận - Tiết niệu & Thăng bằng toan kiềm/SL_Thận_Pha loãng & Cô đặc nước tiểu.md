@@ -1,9 +1,14 @@
 ---
 title: "SL_Thận_Pha loãng & Cô đặc nước tiểu"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Dưới đây là bài tổng hợp chi tiết về **Sinh lý Sự Pha loãng và Cô đặc Nước tiểu – Điều hòa Dịch cơ thể**, được biên soạn dựa trên các tài liệu y khoa bạn đã cung cấp.
 
 ---
@@ -25,8 +30,8 @@ Tổng lượng nước cơ thể (Total body water - TBW) chiếm khoảng 60% 
 > *   **Mô tả hình họa:** Sơ đồ biểu diễn sự phân chia các khoang dịch trong cơ thể. Tổng lượng nước cơ thể (Total body water) được chia thành Dịch nội bào (Intracellular - chiếm 2/3) và Dịch ngoại bào (Extracellular - chiếm 1/3). Dịch ngoại bào tiếp tục được chia thành Huyết tương (Plasma) và Dịch kẽ (Interstitial).
 
 #### 1.2. SỰ ĐIỀU HÒA DỊCH VÀ CẢM GIÁC KHÁT
-Cơ thể bảo vệ áp suất thẩm thấu của ECF thông qua hai cơ chế chính: (1) Cảm giác khát giúp điều hòa lượng nước nhập vào, và (2) Hormone chống bài niệu (ADH/Vasopressin) kiểm soát lượng nước thải ra qua thận.
-*   Khi áp suất thẩm thấu tăng (ví dụ do mất nước, nồng độ $Na^+$ tăng), các thụ thể thẩm thấu (osmoreceptors) ở vùng dưới đồi (đặc biệt tại cơ quan mạch của tấm tận cùng - OVLT) sẽ co lại do mất nước.
+Cơ thể bảo vệ áp suất thẩm thấu của ECF thông qua hai cơ chế chính: (1) Cảm giác khát giúp điều hòa lượng nước nhập vào, và (2) Hormone chống bài niệu (ADH/Vasopressin) kiểm soát lượng nước thải ra qua [[Thận]].
+*   Khi áp suất thẩm thấu tăng (ví dụ do [[Mất nước]], nồng độ $Na^+$ tăng), các thụ thể thẩm thấu (osmoreceptors) ở vùng dưới đồi (đặc biệt tại cơ quan mạch của tấm tận cùng - OVLT) sẽ co lại do [[Mất nước]].
 *   Sự co rút này tạo tín hiệu kích thích trung tâm khát, khiến cơ thể muốn uống nước.
 *   Đồng thời, tín hiệu truyền xuống thùy sau tuyến yên để tăng giải phóng ADH vào máu.
 
@@ -36,7 +41,7 @@ Cơ thể bảo vệ áp suất thẩm thấu của ECF thông qua hai cơ chế
 > *   **Mô tả hình họa:** Lưu đồ vòng lặp phản hồi. Mất nước (Water deficit) $\rightarrow$ Tăng áp suất thẩm thấu ngoại bào $\rightarrow$ Kích thích thụ thể thẩm thấu ở dưới đồi $\rightarrow$ Tuyến yên sau tăng tiết ADH $\rightarrow$ Tăng ADH trong huyết tương $\rightarrow$ Tăng tính thấm nước ở ống lượn xa và ống góp $\rightarrow$ Tăng tái hấp thu nước $\rightarrow$ Giảm bài tiết nước, đưa áp suất thẩm thấu về bình thường.
 
 #### 1.3. CƠ CHẾ TÁC ĐỘNG CỦA HORMONE ADH (VASOPRESSIN)
-Tác dụng sinh lý quan trọng nhất của ADH tại thận là tăng tính thấm nước của tế bào biểu mô ống lượn xa muộn, ống nối và ống góp.
+Tác dụng sinh lý quan trọng nhất của ADH tại [[Thận]] là tăng tính thấm nước của tế bào biểu mô ống lượn xa muộn, ống nối và ống góp.
 *   Trong trường hợp không có ADH, màng đỉnh của các tế bào biểu mô này gần như không thấm nước.
 *   Khi có ADH, hormone này gắn vào thụ thể $V_2$ ở màng đáy - bên (basolateral) của tế bào chính (principal cells). Phản ứng này kích hoạt G-protein kích thích ($G_s$), làm tăng adenylyl cyclase và tạo ra cAMP.
 *   cAMP kích hoạt protein kinase A, gây ra sự di chuyển các túi chứa kênh nước **Aquaporin-2 (AQP-2)** hòa màng vào màng đỉnh (apical membrane). Quá trình này tạo ra các kênh cho phép nước khuếch tán nhanh chóng từ lòng ống vào khoảng kẽ.
@@ -83,12 +88,12 @@ Khi cơ thể dư thừa nước, thận có thể bài tiết tới 20 L/ngày 
 Màng tế bào linh hoạt và thấm nước dễ dàng, nên tế bào sẽ co lại hoặc phình ra phụ thuộc vào áp suất thẩm thấu ngoại bào (ECF):
 *   **Khi truyền dịch đẳng trương (Isotonic NaCl):** Không làm thay đổi áp suất thẩm thấu ECF, nên không có sự di chuyển nước giữa ECF và ICF. Chỉ có thể tích ECF tăng.
 *   **Khi mất dịch nhược trương (ví dụ đổ mồ hôi nhiều/Sweating):** Nước bị mất nhiều hơn muối, ECF trở nên ưu trương. Nước sẽ bị rút từ trong tế bào (ICF) ra ngoài ECF. Kết quả là cả ECF và ICF đều giảm thể tích, nhưng áp suất thẩm thấu của cả hai đều tăng.
-*   **Hội chứng tiết ADH không thích hợp (SIADH):** Cơ thể tái hấp thu quá nhiều nước dù không thiếu nước, làm ECF bị nhược trương (giảm nồng độ Natri máu). Nước từ ECF tràn vào trong tế bào làm thể tích tế bào (ICF) tăng lên, gây phù tế bào, đặc biệt nguy hiểm nếu là tế bào não gây co giật.
+*   **Hội chứng tiết ADH không thích hợp (SIADH):** Cơ thể tái hấp thu quá nhiều nước dù không thiếu nước, làm ECF bị nhược trương (giảm nồng độ Natri máu). Nước từ ECF tràn vào trong tế bào làm thể tích tế bào (ICF) tăng lên, gây [[Phù]] tế bào, đặc biệt nguy hiểm nếu là tế bào não gây [[Co giật]].
 
 > **[TRÍCH XUẤT SƠ ĐỒ]**
 > *   **Tên sơ đồ:** Figure 5.2 Shifts of water between body fluid compartments.
 > *   **Thuộc tài liệu:** `[Book] Linda S. Costanzo - Physiology (2018, LWW).pdf`
-> *   **Mô tả hình họa:** Sơ đồ 6 đồ thị thể hiện sự thay đổi thể tích (trục ngang) và áp suất thẩm thấu (trục dọc) của ECF và ICF trong các tình huống: Tiêu chảy (Volume contraction), Truyền NaCl đẳng trương (Volume expansion), Mất nước do ở sa mạc (Lost in desert), Ăn quá nhiều muối (Excessive NaCl intake), Suy thượng thận (Adrenal insufficiency), và Hội chứng SIADH. Nét liền là bình thường, nét đứt là sự dịch chuyển mới.
+> *   **Mô tả hình họa:** Sơ đồ 6 đồ thị thể hiện sự thay đổi thể tích (trục ngang) và áp suất thẩm thấu (trục dọc) của ECF và ICF trong các tình huống: [[Tiêu chảy]] (Volume contraction), Truyền NaCl đẳng trương (Volume expansion), Mất nước do ở sa mạc (Lost in desert), Ăn quá nhiều muối (Excessive NaCl intake), Suy thượng thận (Adrenal insufficiency), và Hội chứng SIADH. Nét liền là bình thường, nét đứt là sự dịch chuyển mới.
 
 ---
 

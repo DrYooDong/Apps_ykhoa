@@ -1,13 +1,16 @@
 ---
 title: "Chẩn đoán & Diễn giải Khí máu động mạch (ABG Interpretation)"
-specialty: "Hồi sức"
-tags: ["Hồi sức", "Khí máu động mạch", "ABG", "Toan kiềm", "Anion Gap"]
-last_updated: "2026-08-02"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
 ---
 
-# CHẨN ĐOÁN & DIỄN GIẢI KHÍ MÁU ĐỘNG MẠCH (ABG INTERPRETATION)
+# CHẨN ĐOÁN & DIỄN GIẢI [[Khí máu động mạch]] (ABG INTERPRETATION)
 
-Khí máu động mạch (Arterial Blood Gas - ABG) là xét nghiệm khẩn cấp tối quan trọng giúp đánh giá tình trạng thông khí, trao đổi khí và thăng bằng toan - kiềm ở bệnh nhân nặng.
+[[Khí máu động mạch]] (Arterial Blood Gas - ABG) là xét nghiệm khẩn cấp tối quan trọng giúp đánh giá tình trạng thông khí, trao đổi khí và thăng bằng toan - kiềm ở bệnh nhân nặng.
 
 ---
 
@@ -56,7 +59,7 @@ $$\text{Delta Ratio} = \frac{AG_{\text{đo}} - 12}{24 - HCO_{3\text{ đo}}^-}$$
 *   $1.0 - 2.0$: Toan chuyển hóa tăng AG đơn thuần.
 *   $> 2.0$: Kết hợp **Kiềm chuyển hóa** đi kèm.
 
-### Bước 6: Đánh giá Trao đổi Oxy tại Phổi
+### Bước 6: Đánh giá Trao đổi Oxy tại [[Phổi]]
 *   **Tỷ lệ $P/F$ (Horovitz Index):** $P/F = \frac{PaO_2}{FiO_2}$.
     *   $P/F > 400$: Bình thường.
     *   $P/F \le 300$: ARDS mức độ nhẹ.

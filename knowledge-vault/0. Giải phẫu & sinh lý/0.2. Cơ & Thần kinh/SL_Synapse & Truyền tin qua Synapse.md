@@ -1,9 +1,14 @@
 ---
 title: "SL_Synapse & Truyền tin qua Synapse"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 **I. Cấu trúc và phân loại Synapse**
 
 Các hình ảnh giải phẫu vi thể và phân loại synapse cung cấp cái nhìn nền tảng về cách các tế bào thần kinh giao tiếp:

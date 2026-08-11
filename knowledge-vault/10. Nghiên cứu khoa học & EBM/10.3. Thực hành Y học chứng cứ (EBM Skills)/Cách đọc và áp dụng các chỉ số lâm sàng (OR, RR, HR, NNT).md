@@ -1,9 +1,13 @@
 ---
 title: "Cách đọc và áp dụng các chỉ số lâm sàng (OR, RR, HR, NNT)"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Thực hành Y học chứng cứ (EBM Skills)"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Thống kê y học, tôi xin phân tích chi tiết cách đọc hiểu, diễn dịch và áp dụng các chỉ số thống kê lâm sàng cốt lõi: **Tỷ số chênh (OR)**, **Tỷ số nguy cơ (RR)**, **Tỷ số rủi ro (HR)** và **Số bệnh nhân cần điều trị (NNT)** dựa trên các tài liệu đã cung cấp.
 
 Trong Y học chứng cứ, việc lựa chọn và diễn giải đúng các chỉ số này quyết định việc một bác sĩ có đánh giá chính xác lợi ích thực sự của phương pháp điều trị hay không.
@@ -28,7 +32,7 @@ Các chỉ số này biểu diễn kết quả của nhóm can thiệp tương �
 #### C. Tỷ số rủi ro (Hazard Ratio - HR)
 
 - **Định nghĩa:** Tương tự như RR nhưng được sử dụng riêng cho dữ liệu **thời gian đến khi có biến cố (time-to-event / survival data)**. Nó đo lường nguy cơ tức thời (instantaneous risk) tại bất kỳ một thời điểm nào đó trong suốt quá trình theo dõi.
-- **Ứng dụng:** Thường thấy trong các biểu đồ sống còn Kaplan-Meier ở các thử nghiệm ung thư hoặc tim mạch. Ví dụ: HR = 2 nghĩa là tại bất kỳ thời điểm nào, một bệnh nhân chưa gặp biến cố ở nhóm này sẽ có nguy cơ gặp biến cố cao gấp đôi nhóm kia.
+- **Ứng dụng:** Thường thấy trong các biểu đồ sống còn Kaplan-Meier ở các thử nghiệm ung thư hoặc [[Tim]] mạch. Ví dụ: HR = 2 nghĩa là tại bất kỳ thời điểm nào, một bệnh nhân chưa gặp biến cố ở nhóm này sẽ có nguy cơ gặp biến cố cao gấp đôi nhóm kia.
 
 ---
 

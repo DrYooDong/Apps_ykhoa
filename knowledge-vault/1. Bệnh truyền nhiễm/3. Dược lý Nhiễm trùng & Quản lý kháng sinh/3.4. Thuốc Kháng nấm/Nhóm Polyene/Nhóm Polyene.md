@@ -1,9 +1,13 @@
 ---
 title: "Nhóm Polyene"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Kháng nấm", "Nhóm Polyene"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Tổng quan & Phân loại (Classification)
 
 - **Tên nhóm:** Kháng nấm nhóm Polyene. Đây là một trong những nhóm thuốc kháng nấm lâu đời nhất với hơn 70 năm lịch sử.
@@ -27,8 +31,8 @@ last_updated: "2026-07-28"
 
 Nhóm Polyene (Amphotericin B) sở hữu phổ kháng nấm cực kỳ rộng, bao phủ hầu hết các vi nấm gây bệnh xâm lấn nguy hiểm trên lâm sàng:
 
-- **Nấm men (Yeasts):** Tác dụng mạnh trên _Candida_ spp., và _Cryptococcus neoformans_ (đặc biệt trong viêm màng não).
-- **Nấm mốc (Molds):** Hoạt tính tốt trên _Aspergillus_ spp. (gây Aspergillosis phổi/xâm lấn),.
+- **Nấm men (Yeasts):** Tác dụng mạnh trên _Candida_ spp., và _Cryptococcus neoformans_ (đặc biệt trong [[Viêm màng não]]).
+- **Nấm mốc (Molds):** Hoạt tính tốt trên _Aspergillus_ spp. (gây Aspergillosis [[Phổi]]/xâm lấn),.
 - **Nấm lưỡng hình (Dimorphic fungi):** Nhạy cảm với _Histoplasma_, và _Talaromyces_ (trước đây là _Penicillium marneffei_).
 - _(Thông tin y khoa bổ sung ngoài tài liệu: Amphotericin B là "tiêu chuẩn vàng" có hoạt tính cực mạnh trên họ nấm tiếp hợp Mucorales - tác nhân gây bệnh nấm đen Mucormycosis, trong khi nhiều loại Azole hoặc Echinocandin không có tác dụng)._
 
@@ -36,26 +40,26 @@ Nhóm Polyene (Amphotericin B) sở hữu phổ kháng nấm cực kỳ rộng, 
 
 - Đặc tính dược lý học của Amphotericin B phụ thuộc rất nhiều vào dạng bào chế lipid của nó,.
 - **Phân bố (D):** Thuốc tập trung mạnh ở các tế bào nội mô, đặc biệt là các tế bào nội mô đang hoạt hóa tại vị trí mô bị nhiễm trùng.
-- **Ưu điểm của các dạng Lipid (LAMB, ABLC, ABCD):** Các công nghệ gắn lipid này làm thay đổi đáng kể phân bố sinh học của thuốc so với dạng deoxycholate cổ điển, qua đó giúp làm giảm độ tập trung thuốc tại thận và giảm thiểu rủi ro độc tính một cách rõ rệt,.
+- **Ưu điểm của các dạng Lipid (LAMB, ABLC, ABCD):** Các công nghệ gắn lipid này làm thay đổi đáng kể phân bố sinh học của thuốc so với dạng deoxycholate cổ điển, qua đó giúp làm giảm độ tập trung thuốc tại [[Thận]] và giảm thiểu rủi ro độc tính một cách rõ rệt,.
 - _(Thông tin y khoa bổ sung ngoài tài liệu: PK/PD của Amphotericin B là diệt nấm phụ thuộc nồng độ, chỉ số quyết định hiệu quả là Cmax/MIC)._
 
 ### 5. Chỉ định & Chiến lược điều trị (Stewardship)
 
-- **Điều trị tấn công (Induction therapy):** Dùng làm phác đồ tấn công mạnh mẽ trong các nhiễm nấm đe dọa tính mạng như viêm màng não do _Cryptococcus_ (đã có phác đồ dùng Liposomal Amphotericin B - LAMB liều duy nhất), bệnh Histoplasmosis ở bệnh nhân AIDS, hoặc Talaromycosis ở bệnh nhân nhiễm HIV.
+- **Điều trị tấn công (Induction therapy):** Dùng làm phác đồ tấn công mạnh mẽ trong các nhiễm nấm đe dọa tính mạng như [[Viêm màng não]] do _Cryptococcus_ (đã có phác đồ dùng Liposomal Amphotericin B - LAMB liều duy nhất), bệnh Histoplasmosis ở bệnh nhân AIDS, hoặc Talaromycosis ở bệnh nhân nhiễm HIV.
 - **Nhiễm nấm Aspergillosis xâm lấn:** Có thể dùng phác đồ LAMB liều nạp cao trong giai đoạn đầu. Thường được dùng như liệu pháp cứu vãn (salvage therapy) hoặc phối hợp với nhóm Echinocandin (Caspofungin) cho các ca bệnh nặng, kháng trị,. Tuy nhiên, cần lưu ý Voriconazole được chứng minh có ưu thế hơn Amphotericin B cổ điển trong điều trị Aspergillosis xâm lấn nguyên phát,.
-- **Điều trị kinh nghiệm (Empirical therapy):** Là thuốc ưu tiên cho các bệnh nhân có tình trạng sốt và giảm bạch cầu hạt kéo dài.
-- **Chỉ định dạng khí dung (Aerosolized):** LAMB khí dung có thể được dùng để dự phòng Aspergillosis phổi xâm lấn trong thời kỳ giảm bạch cầu hạt, hoặc hỗ trợ loại bỏ sự khu trú của _Candida_ ở đường hô hấp trên bệnh nhân hồi sức tích cực (ICU).
+- **Điều trị kinh nghiệm (Empirical therapy):** Là thuốc ưu tiên cho các bệnh nhân có tình trạng [[Sốt]] và giảm [[Bạch cầu]] hạt kéo dài.
+- **Chỉ định dạng khí dung (Aerosolized):** LAMB khí dung có thể được dùng để dự phòng Aspergillosis [[Phổi]] xâm lấn trong thời kỳ giảm [[Bạch cầu]] hạt, hoặc hỗ trợ loại bỏ sự khu trú của _Candida_ ở đường hô hấp trên bệnh nhân hồi sức tích cực (ICU).
 
 ### 6. An toàn thuốc (ADRs & Contraindications)
 
-- **Độc tính trên Thận (Nephrotoxicity):** Đây là tác dụng phụ kinh điển, phổ biến và giới hạn liều lớn nhất của Amphotericin B. Nguy cơ suy thận cấp giảm đi đáng kể nếu bệnh nhân được chỉ định dùng các dạng bào chế lipid (LAMB, ABLC) thay vì dạng deoxycholate cổ điển (ABD).
+- **Độc tính trên [[Thận]] (Nephrotoxicity):** Đây là tác dụng phụ kinh điển, phổ biến và giới hạn liều lớn nhất của Amphotericin B. Nguy cơ suy thận cấp giảm đi đáng kể nếu bệnh nhân được chỉ định dùng các dạng bào chế lipid (LAMB, ABLC) thay vì dạng deoxycholate cổ điển (ABD).
 - **Phản ứng liên quan đến truyền dịch (Infusion-related reactions):** Rất phổ biến trong quá trình truyền tĩnh mạch thuốc.
-- _(Thông tin y khoa bổ sung ngoài tài liệu: Các phản ứng truyền cấp tính thường bao gồm sốt cao, rét run (shake and bake), buồn nôn, tụt huyết áp. Độc tính trên ống thận thường kéo theo tình trạng thất thoát điện giải ồ ạt, dẫn đến hạ Kali máu và hạ Magie máu nghiêm trọng)._
+- _(Thông tin y khoa bổ sung ngoài tài liệu: Các phản ứng truyền cấp tính thường bao gồm [[Sốt|sốt cao]], rét run (shake and bake), [[[[Nôn ói]]|buồn nôn]], tụt huyết áp. Độc tính trên ống thận thường kéo theo tình trạng thất thoát điện giải ồ ạt, dẫn đến hạ Kali máu và hạ Magie máu nghiêm trọng)._
 
 ### 7. Theo dõi & Giám sát (Monitoring)
 
 - **Giám sát Chức năng thận:** Do rủi ro độc tính thận rất cao, bắt buộc phải theo dõi sát sao nồng độ Creatinin máu trước và trong suốt quá trình điều trị để có biện pháp can thiệp kịp thời,.
-- _(Thông tin y khoa bổ sung ngoài tài liệu: Bệnh nhân bắt buộc phải được theo dõi sát điện giải đồ (đặc biệt là Kali và Magie máu) mỗi ngày. Khuyến cáo bù dịch chủ động bằng NaCl 0.9% trước và sau khi truyền Amphotericin B để giảm nguy cơ độc tính ống thận. Đồng thời, có thể cần sử dụng trước (pre-medication) các thuốc hạ sốt (Paracetamol), kháng histamin (Diphenhydramine) hoặc Hydrocortisone để dự phòng phản ứng rét run khi truyền)._
+- _(Thông tin y khoa bổ sung ngoài tài liệu: Bệnh nhân bắt buộc phải được theo dõi sát điện giải đồ (đặc biệt là Kali và Magie máu) mỗi ngày. Khuyến cáo bù dịch chủ động bằng NaCl 0.9% trước và sau khi truyền Amphotericin B để giảm nguy cơ độc tính ống thận. Đồng thời, có thể cần sử dụng trước (pre-medication) các thuốc hạ sốt ([[Paracetamol]]), kháng histamin (Diphenhydramine) hoặc Hydrocortisone để dự phòng phản ứng rét run khi truyền)._
 
 ### 8. Bảng kiểm lâm sàng nhanh (Quick Checklist)
 

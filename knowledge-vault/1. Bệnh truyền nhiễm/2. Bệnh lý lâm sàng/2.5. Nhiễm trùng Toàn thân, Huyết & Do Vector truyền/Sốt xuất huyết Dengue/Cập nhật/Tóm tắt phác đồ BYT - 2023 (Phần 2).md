@@ -1,6 +1,16 @@
-### 1. Nội Dung Điều Trị Và Chăm Sóc Sốt Xuất Huyết Dengue Chi Tiết
+---
+title: "Tóm tắt phác đồ BYT - 2023 (Phần 2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
 
-#### Điều Trị Sốt Xuất Huyết Dengue Ngoại Trú (Thông Thường)
+### 1. Nội Dung Điều Trị Và Chăm Sóc [[Sốt]] [[Xuất huyết]] Dengue Chi Tiết
+
+#### Điều Trị Sốt [[Xuất huyết]] Dengue Ngoại Trú (Thông Thường)
 
 Phần lớn các trường hợp sốt xuất huyết Dengue (SXHD) đều được điều trị ngoại trú và theo dõi chặt chẽ tại y tế cơ
 ### 1. Nội Dung Điều Trị và Chăm Sóc Sốt Xuất Huyết Dengue Chi Tiết
@@ -11,12 +21,12 @@ Phần lớn các trường hợp sốt xuất huyết Dengue (SXHD) thông thư
 
 ##### Điều trị triệu chứng
 
-- **Hạ sốt:** Khi sốt cao $\ge 38,5^{\circ}\text{C}$, cho bệnh nhân uống **Paracetamol đơn chất** với liều **10 - 15 mg/kg/lần**, cách nhau mỗi **4 - 6 giờ**.
+- **Hạ sốt:** Khi [[Sốt|sốt cao]] $\ge 38,5^{\circ}\text{C}$, cho bệnh nhân uống **[[Paracetamol]] đơn chất** với liều **10 - 15 mg/kg/lần**, cách nhau mỗi **4 - 6 giờ**.
 - _Lưu ý quan trọng về thuốc hạ sốt:_
-    - **Tổng liều Paracetamol không vượt quá 60 mg/kg/24 giờ**.
-    - **Tuyệt đối không dùng Aspirin (acetylsalicylic acid), Analgin, hay Ibuprofen** vì có thể gây xuất huyết nặng và toan máu.
+    - **Tổng liều [[Paracetamol]] không vượt quá 60 mg/kg/24 giờ**.
+    - **Tuyệt đối không dùng [[Aspirin]] (acetylsalicylic acid), Analgin, hay Ibuprofen** vì có thể gây xuất huyết nặng và toan máu.
     - Phối hợp nới lỏng quần áo và lau mát bằng nước ấm.
-- **Bù dịch sớm bằng đường uống:** Khuyến khích người bệnh uống nhiều dung dịch **Oresol**, nước trái cây (nước dừa, cam, chanh) hoặc nước cháo loãng pha muối. Uống theo nhu cầu cơ bản và khuyến khích uống nhiều.
+- **Bù dịch sớm bằng đường uống:** Khuyến khích người bệnh uống nhiều dung dịch **[[Oresol]]**, nước trái cây (nước dừa, cam, chanh) hoặc nước cháo loãng pha muối. Uống theo nhu cầu cơ bản và khuyến khích uống nhiều.
 - _Lưu ý dinh dưỡng:_ Không ăn hoặc uống các thực phẩm có màu nâu hoặc đỏ (như xá xị, sô-cô-la) để tránh nhầm lẫn với tình trạng nôn ra máu.
 
 ##### Theo dõi ngoại trú
@@ -24,8 +34,8 @@ Phần lớn các trường hợp sốt xuất huyết Dengue (SXHD) thông thư
 - Người bệnh cần được tái khám và thực hiện xét nghiệm hàng ngày.
 - **Các dấu hiệu cần đưa người bệnh đến cơ sở y tế cấp cứu ngay lập tức:**
     - Cảm thấy khó chịu, mệt lả, bứt rứt nhiều hơn mặc dù sốt đã giảm hoặc hết sốt.
-    - Không ăn uống được, nôn ói nhiều.
-    - Đau bụng nhiều.
+    - Không ăn uống được, [[Nôn ói]] nhiều.
+    - [[Đau bụng]] nhiều.
     - Tay chân lạnh, ẩm.
     - Chảy máu mũi, miệng hoặc xuất huyết âm đạo bất thường.
     - Không tiểu trên 6 giờ.
@@ -39,19 +49,19 @@ Bệnh nhân có dấu hiệu cảnh báo bắt buộc phải **nhập viện đ
 
 ##### Đối với trẻ em (< 16 tuổi)
 
-- **Chỉ định truyền dịch tĩnh mạch:** Khi trẻ có ít nhất 1 trong các dấu hiệu: lừ đừ, không uống được nước, nôn ói nhiều, đau bụng nhiều, có dấu hiệu mất nước hoặc Hematocrit (Hct) tăng cao.
+- **Chỉ định truyền dịch tĩnh mạch:** Khi trẻ có ít nhất 1 trong các dấu hiệu: lừ đừ, không uống được nước, [[Nôn ói]] nhiều, [[Đau bụng]] nhiều, có dấu hiệu [[Mất nước]] hoặc Hematocrit (Hct) tăng cao.
 - **Dịch truyền lựa chọn:** Ringer lactate, Ringer acetate hoặc NaCl 0,9%.
 - **Phương thức truyền dịch:**
     - Bắt đầu truyền **6 - 7 ml/kg/giờ trong 1 - 3 giờ**, sau đó giảm xuống **5 ml/kg/giờ trong 2 - 4 giờ**. Theo dõi sát lâm sàng và Hct mỗi 2 - 4 giờ.
     - Nếu mạch, huyết áp (HA) ổn định, Hct giảm và nước tiểu $\ge 0,5 - 1\text{ ml/kg/giờ}$: giảm tốc độ truyền dịch xuống **3 ml/kg/giờ trong 2 - 4 giờ**. Có thể ngừng dịch hoàn toàn sau **24 - 48 giờ** nếu lâm sàng tiếp tục cải thiện.
-    - Nếu mạch nhanh, HA tụt hoặc kẹt, Hct tăng cao: Tiến hành xử trí toan hóa, xuất huyết, hạ đường huyết, hạ calci huyết nếu có.
+    - Nếu mạch nhanh, HA tụt hoặc kẹt, Hct tăng cao: Tiến hành xử trí toan hóa, xuất huyết, [[Hạ đường huyết]], hạ calci huyết nếu có.
         - Nếu tổng lượng dịch truyền đã $> 60\text{ ml/kg}$: Chuyển sang dịch **cao phân tử (CPT)** truyền tĩnh mạch **10 - 20 ml/kg/giờ trong 1 giờ**.
-        - Nếu tổng lượng dịch truyền $\le 60\text{ ml/kg}$: Tăng tốc độ dịch tinh thể lên **10 - 20 ml/kg/giờ trong 1 giờ**, sau đó xử trí theo phác đồ sốc.
-- _Lưu ý xử trí trung gian:_ Nếu trẻ có biểu hiện chi mát, mạch nhanh nhưng HA còn bình thường: truyền dịch tinh thể **10 ml/kg/giờ trong 1 giờ** rồi đánh giá lại. Nếu có sốc thực sự, truyền **20 ml/kg/giờ trong 1 giờ** và xử trí theo phác đồ chống sốc.
+        - Nếu tổng lượng dịch truyền $\le 60\text{ ml/kg}$: Tăng tốc độ dịch tinh thể lên **10 - 20 ml/kg/giờ trong 1 giờ**, sau đó xử trí theo phác đồ [[Sốc]].
+- _Lưu ý xử trí trung gian:_ Nếu trẻ có biểu hiện chi mát, mạch nhanh nhưng HA còn bình thường: truyền dịch tinh thể **10 ml/kg/giờ trong 1 giờ** rồi đánh giá lại. Nếu có [[Sốc]] thực sự, truyền **20 ml/kg/giờ trong 1 giờ** và xử trí theo phác đồ chống sốc.
 
 ##### Đối với người lớn ( $\ge$ 16 tuổi)
 
-- **Chỉ định truyền dịch:** Xem xét truyền khi người bệnh nôn nhiều, không uống được, Hct tăng cao hoặc có dấu hiệu mất nước.
+- **Chỉ định truyền dịch:** Xem xét truyền khi người bệnh nôn nhiều, không uống được, Hct tăng cao hoặc có dấu hiệu [[Mất nước]].
 - **Phương thức truyền dịch:**
     - Truyền dịch tinh thể (Ringer lactate, Ringer acetate hoặc NaCl 0,9%) tốc độ **6 ml/kg/giờ trong 1 - 2 giờ**, sau đó giảm còn **3 ml/kg/giờ trong 2 - 4 giờ**. Theo dõi lâm sàng và Hct mỗi 2 - 4 giờ.
     - Nếu huyết động ổn định, Hct giảm và nước tiểu tốt: giảm tốc độ truyền xuống **1,5 ml/kg/giờ trong 6 - 18 giờ**. Xem xét ngừng dịch hoàn toàn sau **12 - 24 giờ**.
@@ -70,8 +80,8 @@ Sốc SXHD là tình trạng cấp cứu nặng, cần bù nhanh thể tích huy
 - **Đánh giá lại sau 1 giờ:**
     - **Nếu cải thiện lâm sàng** (mạch giảm, HA bình thường, hết kẹt): Giảm tốc độ truyền tinh thể xuống **10 ml/kg/giờ trong 1 - 2 giờ** $\rightarrow$ **7,5 ml/kg/giờ trong 1 - 2 giờ** $\rightarrow$ **5 ml/kg/giờ trong 3 - 4 giờ** $\rightarrow$ **3 ml/kg/giờ trong 4 - 6 giờ**. Có thể ngừng truyền dịch sau **24 - 48 giờ**.
     - **Nếu không cải thiện lâm sàng** (HA vẫn kẹt, tụt, mạch nhanh nhẹ):
-        - _Nếu Hct còn tăng cao hoặc $\ge 40%$:_ Chuyển sang truyền dịch **cao phân tử (CPT)** gồm Dextran 40, Dextran 70 hoặc HES 200 với tốc độ **10 - 20 ml/kg/giờ trong 1 giờ**. (Chú ý tác dụng phụ rối loạn đông máu, suy gan, thận của HES nếu tổng liều $> 60\text{ ml/kg}$).
-        - _Nếu Hct giảm thấp hoặc $\le 35%$ hoặc giảm $> 20%$ so với ban đầu:_ Nghi ngờ xuất huyết nội nặng, cần **truyền hồng cầu lắng 5 ml/kg** hoặc **máu toàn phần 10 ml/kg** trong 1 - 2 giờ, song song truyền dịch CPT **10 ml/kg/giờ**.
+        - _Nếu Hct còn tăng cao hoặc $\ge 40%$:_ Chuyển sang truyền dịch **cao phân tử (CPT)** gồm Dextran 40, Dextran 70 hoặc HES 200 với tốc độ **10 - 20 ml/kg/giờ trong 1 giờ**. (Chú ý tác dụng phụ rối loạn đông máu, suy [[Gan]], [[Thận]] của HES nếu tổng liều $> 60\text{ ml/kg}$).
+        - _Nếu Hct giảm thấp hoặc $\le 35%$ hoặc giảm $> 20%$ so với ban đầu:_ Nghi ngờ xuất huyết nội nặng, cần **truyền [[Hồng cầu]] lắng 5 ml/kg** hoặc **máu toàn phần 10 ml/kg** trong 1 - 2 giờ, song song truyền dịch CPT **10 ml/kg/giờ**.
 - **Sốc SXHD ở trẻ thiếu niên (13 - 16 tuổi):** Do sinh lý gần giống người lớn và thất thoát huyết tương ít hơn trẻ nhỏ, tốc độ giảm dịch truyền nhanh hơn (thời gian duy trì ở mỗi mức dịch bằng $1/2$ trẻ nhỏ), sau đó duy trì **1,5 ml/kg/giờ trong 12 - 18 giờ** để tránh quá tải dịch.
 
 ##### Chống sốc ở người lớn ( $\ge$ 16 tuổi)
@@ -80,7 +90,7 @@ Sốc SXHD là tình trạng cấp cứu nặng, cần bù nhanh thể tích huy
 - **Đánh giá lại sau 1 giờ:**
     - **Nếu cải thiện:** Giảm dịch xuống **10 ml/kg/giờ trong 2 giờ** $\rightarrow$ **6 ml/kg/giờ trong 2 giờ** $\rightarrow$ **3 ml/kg/giờ trong 5 - 7 giờ** $\rightarrow$ **1,5 ml/kg/giờ trong 12 giờ**.
     - **Nếu không cải thiện:**
-        - Nếu Hct giảm $> 20$ % so với lúc vào sốc hoặc Hct $< 35$%: Xử trí theo phác đồ xuất huyết nặng (truyền hồng cầu lắng hoặc máu toàn phần).
+        - Nếu Hct giảm $> 20$ % so với lúc vào sốc hoặc Hct $< 35$%: Xử trí theo phác đồ xuất huyết nặng (truyền [[Hồng cầu]] lắng hoặc máu toàn phần).
         - Nếu Hct tăng hoặc không đổi:_ Chuyển sang dịch **cao phân tử 10 - 15 ml/kg/giờ trong 1 giờ**.
 
 ##### Chống sốc nặng / Sốc nguy kịch (mạch = 0, HA = 0 hoặc tụt HA rất nặng)
@@ -103,32 +113,32 @@ Sốc SXHD là tình trạng cấp cứu nặng, cần bù nhanh thể tích huy
     - _Liều lượng:_ Hồng cầu lắng **5 - 10 ml/kg** (ưu tiên) hoặc máu toàn phần (mới $< 7$ ngày) **10 - 20 ml/kg**.
 - **Chỉ định truyền huyết tương tươi đông lạnh (FFP):** Rối loạn đông máu nặng (PT hoặc aPTT $> 1,5$ lần bình thường hoặc INR $> 1,5$) kèm theo đang xuất huyết nặng, chuẩn bị làm thủ thuật xâm lấn hoặc truyền máu khối lượng lớn. Liều: **10 - 20 ml/kg truyền trong 2 - 4 giờ**.
 - **Chỉ định truyền kết tủa lạnh:** Đang xuất huyết nặng kèm nồng độ Fibrinogen $< 1\text{ g/L}$. Liều: **1 túi/6 kg** (để đạt mục tiêu Fibrinogen $> 1\text{ g/L}$).
-- **Chỉ định truyền tiểu cầu:**
-    - Tiểu cầu giảm cực nặng **$< 5.000/\text{mm}^3$** (xem xét cụ thể từng trường hợp dù chưa xuất huyết).
-    - Tiểu cầu **$< 50.000/\text{mm}^3$** kèm theo tình trạng xuất huyết nặng hoặc chuẩn bị làm thủ thuật xâm lấn (như chọc màng phổi, màng bụng).
+- **Chỉ định truyền [[Tiểu cầu]]:**
+    - [[Tiểu cầu]] giảm cực nặng **$< 5.000/\text{mm}^3$** (xem xét cụ thể từng trường hợp dù chưa xuất huyết).
+    - Tiểu cầu **$< 50.000/\text{mm}^3$** kèm theo tình trạng xuất huyết nặng hoặc chuẩn bị làm thủ thuật xâm lấn (như chọc màng [[Phổi]], màng bụng).
     - _Liều lượng:_ **1 đơn vị tiểu cầu đậm đặc/5 kg** hoặc **1 đơn vị tiểu cầu chiết tách (apheresis)/10 kg**, truyền trong 1 - 2 giờ.
 
 ##### Suy tạng nặng và các rối loạn chuyển hóa
 
 - **Toan chuyển hóa** ( $\text{pH} < 7,35$ và/hoặc $\text{HCO}_3^- < 17$ ): Truyền tĩnh mạch chậm **Natri bicarbonate 4,2% với liều 2 ml/kg**.
-- **Hạ đường huyết** (đường huyết $< 40\text{ mg/dL}$): Tiêm tĩnh mạch chậm **Dextrose 30% với liều 1 - 2 ml/kg**.
+- **[[Hạ đường huyết]]** (đường huyết $< 40\text{ mg/dL}$): Tiêm tĩnh mạch chậm **Dextrose 30% với liều 1 - 2 ml/kg**.
 - **Hạ Calci huyết** (Calci ion hóa $< 1\text{ mmol/L}$): Truyền tĩnh mạch chậm **Calci clorua 10% liều 0,1 - 0,2 ml/kg** (tối đa 2 - 5 ml/liều), pha loãng trong Dextrose 5% truyền trong 5 - 10 phút.
-- **Tổn thương gan nặng và suy gan cấp** (AST, ALT $\ge 1000\text{ U/L}$):
+- **Tổn thương [[Gan]] nặng và suy gan cấp** (AST, ALT $\ge 1000\text{ U/L}$):
     - **Tránh dùng các thuốc hại gan**, tuyệt đối tránh dùng dung dịch Ringer lactate và Paracetamol. Dung dịch điện giải thay thế được chọn là **NaCl 0,9% hoặc Ringer acetate**.
     - Xem xét truyền tĩnh mạch hỗ trợ **N-Acetylcystein**.
     - Điều trị bệnh lý não gan bằng Lactulose và/hoặc thụt tháo.
     - Chỉ định lọc máu liên tục (CVVHDF) hoặc thay huyết tương thể tích cao khi có suy đa cơ quan hoặc điều trị nội khoa thất bại.
-- **Tổn thương thận cấp (AKI):** Chẩn đoán theo tiêu chuẩn KDIGO hoặc giảm lượng nước tiểu. Điều trị bảo tồn bằng cách tối ưu hóa huyết động, hạn chế dịch nhập khi hết sốc và tránh thuốc độc thận. Chỉ định điều trị thay thế thận (CRRT) khi quá tải dịch thất bại điều trị nội khoa, toan chuyển hóa nặng hoặc tăng kali máu.
-- **Sốt xuất huyết Dengue thể não:** Cho nằm đầu cao $30^{\circ}$, hỗ trợ hô hấp, bảo vệ đường thở. Kiểm soát co giật bằng Diazepam, nếu thất bại phối hợp Phenobarbital. Chống phù não và tăng áp lực nội sọ bằng **Mannitol 20% liều 0,5 g/kg/lần** truyền nhanh trong 30 phút và/hoặc **Natri chlorua 3% liều 4 ml/kg trong 30 phút**.
+- **Tổn thương [[Thận]] cấp (AKI):** Chẩn đoán theo tiêu chuẩn KDIGO hoặc giảm lượng nước tiểu. Điều trị bảo tồn bằng cách tối ưu hóa huyết động, hạn chế dịch nhập khi hết sốc và tránh thuốc độc thận. Chỉ định điều trị thay thế thận (CRRT) khi quá tải dịch thất bại điều trị nội khoa, toan chuyển hóa nặng hoặc tăng kali máu.
+- **Sốt xuất huyết Dengue thể não:** Cho nằm đầu cao $30^{\circ}$, hỗ trợ hô hấp, bảo vệ đường thở. Kiểm soát [[Co giật]] bằng [[Diazepam]], nếu thất bại phối hợp Phenobarbital. Chống [[Phù]] não và tăng áp lực nội sọ bằng **Mannitol 20% liều 0,5 g/kg/lần** truyền nhanh trong 30 phút và/hoặc **Natri chlorua 3% liều 4 ml/kg trong 30 phút**.
 
-##### Quá tải dịch và phù phổi cấp
+##### Quá tải dịch và [[Phù]] [[Phổi]] cấp
 
-- **Dấu hiệu nhận biết:** Ho đột ngột, khó thở, thở nhanh, tím tái, tĩnh mạch cổ nổi, phế trường có ran ẩm rải rác, khạc bọt hồng. Hct giảm thấp do hiện tượng pha loãng máu trong giai đoạn tái hấp thu dịch.
+- **Dấu hiệu nhận biết:** Ho đột ngột, [[Khó thở]], [[Khó thở|thở nhanh]], tím tái, tĩnh mạch cổ nổi, phế trường có ran ẩm rải rác, khạc bọt hồng. Hct giảm thấp do hiện tượng pha loãng máu trong giai đoạn tái hấp thu dịch.
 - **Xử trí:**
     - **Ngừng truyền dịch tĩnh mạch ngay lập tức**.
     - Cho nằm đầu cao, hỗ trợ hô hấp bằng thở máy không xâm lấn (NCPAP) hoặc đặt nội khí quản thở máy.
     - Sử dụng thuốc lợi tiểu **Furosemide liều 0,5 - 1 mg/kg tĩnh mạch chậm** (nếu huyết động cho phép).
-    - Sử dụng các thuốc tăng sức co bóp cơ tim như Dobutamine hoặc Dopamine.
+    - Sử dụng các thuốc tăng sức co bóp [[[[Tim]]|cơ tim]] như Dobutamine hoặc Dopamine.
 
 ---
 
@@ -148,12 +158,12 @@ Sốc SXHD là tình trạng cấp cứu nặng, cần bù nhanh thể tích huy
 
 - Bệnh nhân có Hct nền rất thấp, do đó cô đặc máu xảy ra khi Hct tăng $20%$ so với Hct nền của chính bệnh nhân.
 - Có nguy cơ tổn thương cơ tim, suy tim và tổn thương gan nặng nề hơn.
-- **Xử trí:** Duy trì Hct từ $25% - 30%$ bằng cách truyền máu sớm. Lựa chọn dịch truyền ban đầu là NaCl 0,9% hoặc Ringer acetate để bảo vệ gan. Chống sốc tích cực kết hợp đo áp lực tĩnh mạch trung tâm (CVP) và siêu âm tim phổi sát sao.
+- **Xử trí:** Duy trì Hct từ $25% - 30%$ bằng cách truyền máu sớm. Lựa chọn dịch truyền ban đầu là NaCl 0,9% hoặc Ringer acetate để bảo vệ gan. Chống sốc tích cực kết hợp đo áp lực tĩnh mạch trung tâm (CVP) và [[[[Siêu âm]]|siêu âm tim]] phổi sát sao.
 
 ##### Nhũ nhi ( Trẻ em $\le$ 12 tháng tuổi)
 
 - Phát hiện sốc thường trễ vì các dấu hiệu lâm sàng khó đánh giá và Hct bình thường của trẻ ở mức thấp ($30 - 35$%) do thiếu máu sinh lý.
-- Rất khó đo CVP nên cần ưu tiên sử dụng siêu âm để khảo sát sự thay đổi đường kính tĩnh mạch chủ dưới theo nhịp thở nhằm đánh giá thể tích dịch nội mạch. Cần kiểm soát chặt chẽ tốc độ truyền dịch để tránh quá tải tuần hoàn gây suy hô hấp.
+- Rất khó đo CVP nên cần ưu tiên sử dụng siêu âm để khảo sát sự thay đổi đường kính tĩnh mạch chủ dưới theo nhịp thở nhằm đánh giá thể tích dịch nội mạch. Cần kiểm soát chặt chẽ tốc độ truyền dịch để tránh quá tải tuần hoàn gây [[Suy hô hấp]].
 
 ---
 
@@ -171,7 +181,7 @@ Sốc SXHD là tình trạng cấp cứu nặng, cần bù nhanh thể tích huy
 
 #### Sơ đồ 5: Lưu đồ xử trí sốc sốt xuất huyết Dengue không đáp ứng dịch truyền
 
-- **Mô tả nội dung dưới sơ đồ:** Lưu đồ xử trí các trường hợp sốc trơ với dịch truyền. Yêu cầu khẩn cấp hội chẩn chuyên gia, kiểm tra Hct, điện tâm đồ (ECG), Troponin I, siêu âm tim, khí máu động mạch, lactate, đường máu và canxi máu. Tiến hành đo huyết áp động mạch xâm lấn (HAĐMXL), đo áp lực tĩnh mạch trung tâm (CVP) hoặc đánh giá huyết động bằng các phương pháp khác. Thực hiện test dịch bằng CPT $5\text{ ml/kg/30 phút}$. Nếu CVP tăng $\ge 5\text{ cmH}_2\text{O}$ hoặc không đáp ứng dịch truyền: xem xét dùng vận mạch Noradrenaline, điều chỉnh rối loạn thăng bằng kiềm toan, điện giải, đường huyết (quy tắc ABCS) và xem xét truyền bù Albumin nếu Albumin máu $\le 2,5\text{ g/dL}$.
+- **Mô tả nội dung dưới sơ đồ:** Lưu đồ xử trí các trường hợp sốc trơ với dịch truyền. Yêu cầu khẩn cấp hội chẩn chuyên gia, kiểm tra Hct, điện tâm đồ (ECG), Troponin I, siêu âm tim, [[Khí máu động mạch]], lactate, đường máu và canxi máu. Tiến hành đo huyết áp động mạch xâm lấn (HAĐMXL), đo áp lực tĩnh mạch trung tâm (CVP) hoặc đánh giá huyết động bằng các phương pháp khác. Thực hiện test dịch bằng CPT $5\text{ ml/kg/30 phút}$. Nếu CVP tăng $\ge 5\text{ cmH}_2\text{O}$ hoặc không đáp ứng dịch truyền: xem xét dùng vận mạch Noradrenaline, điều chỉnh rối loạn thăng bằng kiềm toan, điện giải, đường huyết (quy tắc ABCS) và xem xét truyền bù Albumin nếu Albumin máu $\le 2,5\text{ g/dL}$.
 - **Nguồn tài liệu:** Phụ lục 18 ban hành kèm theo Quyết định số 2760/QĐ-BYT ngày 04 tháng 7 năm 2023 của Bộ trưởng Bộ Y tế.
 
 #### Bảng 2: Chỉ định truyền máu và chế phẩm máu trong sốt xuất huyết Dengue

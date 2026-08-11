@@ -1,8 +1,13 @@
 ---
+title: "Hạ Natri máu"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
 tags:
-  - Vande
-  - Roiloan
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+
 Dưới đây là hướng dẫn tiếp cận lâm sàng hạ natri máu, được cấu trúc theo tư duy ra quyết định của bác sĩ thực hành, ưu tiên tính an toàn và logic xử trí.
 
 # 1. Cơ chế bệnh sinh
@@ -10,7 +15,7 @@ Dưới đây là hướng dẫn tiếp cận lâm sàng hạ natri máu, đư�
 Hạ Natri máu chủ yếu là **rối loạn về nước** (thừa nước tự do tương đối so với lượng natri) chứ không chỉ đơn thuần là mất natri. Nồng độ Natri huyết thanh được quyết định bởi công thức Edelman: 
 $Na_{máu} \approx \frac{Tổng Na + Tổng K}{Tổng lượng nước cơ thể}$.
 
-- **Cơ chế thích nghi của não:** Khi hạ natri máu cấp, nước di chuyển vào nội bào gây phù não (đe dọa tính mạng). Nếu hạ natri máu tiến triển mạn tính (≥ 48 giờ), tế bào não thích nghi bằng cách tống xuất các chất thẩm thấu hữu cơ ra ngoài để giảm thể tích tế bào về bình thường.
+- **Cơ chế thích nghi của não:** Khi hạ natri máu cấp, nước di chuyển vào nội bào gây [[Phù]] não (đe dọa tính mạng). Nếu hạ natri máu tiến triển mạn tính (≥ 48 giờ), tế bào não thích nghi bằng cách tống xuất các chất thẩm thấu hữu cơ ra ngoài để giảm thể tích tế bào về bình thường.
 - **Nguy cơ điều trị:** Nếu bù natri quá nhanh ở bệnh nhân mạn tính, tế bào não không kịp thu hồi lại các chất thẩm thấu, dẫn đến teo tế bào và gây **Hội chứng hủy myelin do thẩm thấu (ODS - Osmotic Demyelination Syndrome)**, để lại di chứng thần kinh không hồi phục.
 - **Vai trò của ADH:** Ở trạng thái bình thường, giảm áp lực thẩm thấu sẽ ức chế ADH. Tuy nhiên, khi thể tích tuần hoàn hiệu dụng (EABV) giảm, kích thích từ thụ thể áp lực (baroreceptor) sẽ "ghi đè" thụ thể thẩm thấu, kích thích giải phóng ADH ồ ạt để giữ nước, gây hạ natri máu.
 
@@ -19,10 +24,10 @@ $Na_{máu} \approx \frac{Tổng Na + Tổng K}{Tổng lượng nước cơ thể
 Việc phân loại quyết định trực tiếp đến thái độ xử trí:
 
 - **Theo triệu chứng (Quan trọng nhất để cấp cứu):**
-    - _Nặng:_ Co giật, hôn mê, ngủ gà sâu, suy hô hấp.
-    - _Trung bình:_ Buồn nôn, lú lẫn, đau đầu.
+    - _Nặng:_ [[Co giật]], [[Hôn mê]], ngủ gà sâu, [[Suy hô hấp]].
+    - _Trung bình:_ [[[[Nôn ói]]|Buồn nôn]], lú lẫn, đau đầu.
 - **Theo thời gian diễn biến:**
-    - _Cấp tính:_ < 48 giờ (nguy cơ cao phù não).
+    - _Cấp tính:_ < 48 giờ (nguy cơ cao [[Phù]] não).
     - _Mạn tính:_ $\ge$ 48 giờ hoặc không rõ thời gian (nguy cơ cao ODS nếu bù nhanh). Mặc định coi là mạn tính nếu không có bằng chứng rõ ràng.
 - **Theo Áp lực thẩm thấu (ALTT) máu:**
     - Nhược trương (ALTT máu thấp): Hạ natri máu thật sự.
@@ -38,7 +43,7 @@ Việc phân loại quyết định trực tiếp đến thái độ xử trí:
 
 ## Bước 1: Ổn định ban đầu – Sàng lọc nguy cơ
 
-- **Nhận diện "Red flags":** Bệnh nhân có triệu chứng thần kinh nặng (co giật, lơ mơ, hôn mê, nôn nhiều) không?
+- **Nhận diện "Red flags":** Bệnh nhân có triệu chứng thần kinh nặng ([[Co giật]], lơ mơ, [[Hôn mê]], nôn nhiều) không?
 - _Tư duy:_ Nếu có triệu chứng nặng, **xử trí cấp cứu bằng NaCl 3% ngay lập tức** để giảm phù não trước khi tìm nguyên nhân.
 
 ## Bước 2: Thu thập dữ kiện tập trung
@@ -46,7 +51,7 @@ Việc phân loại quyết định trực tiếp đến thái độ xử trí:
 - **Loại trừ hạ natri "giả":** 
 	- Luôn kiểm tra đường huyết. Nồng độ natri máu sẽ giảm 1.6 mmol/L (thậm chí 2.4 mmol/L) cho mỗi 100 mg/dL (5.5 mmol/L) glucose tăng thêm. 
 	- Nếu có tăng lipid/protein máu rầm rộ, cần dùng máy khí máu (đo trực tiếp) để tránh sai số pha loãng.
-- **Mô tả yếu tố nguy cơ:** Tiền sử dùng thuốc (đặc biệt Thiazide, SSRIs, Carbamazepin, Haloperidol), các bệnh lý tim, gan, thận, tuyến giáp, thượng thận, nôn/tiêu chảy, thói quen uống nước.
+- **Mô tả yếu tố nguy cơ:** Tiền sử dùng thuốc (đặc biệt Thiazide, SSRIs, Carbamazepin, Haloperidol), các bệnh lý [[Tim]], [[Gan]], [[Thận]], tuyến giáp, thượng [[Thận]], nôn/[[Tiêu chảy]], thói quen uống nước.
 - **Khám lâm sàng đánh giá thể tích (Pre-test probability):** 
 	- Đánh giá da niêm, tĩnh mạch cổ, huyết áp tư thế, phù, báng bụng. 
 	- Tuy nhiên, **khám lâm sàng thể tích dịch có độ nhạy và đặc hiệu rất thấp** (chỉ khoảng 30-50% đối với độ đặc hiệu), do đó không nên chỉ dựa vào khám lâm sàng để ra quyết định.
@@ -63,8 +68,8 @@ Sử dụng các chỉ số UOsm và UNa để phân biệt nguyên nhân (chín
 #### 2. Natri niệu (UNa): Thận đang giữ hay thải Natri?
 
 - **UNa $\le$ 30 mmol/L:** Thận đang giữ muối tối đa $\rightarrow$ Thể tích tuần hoàn hiệu dụng (EABV) giảm.
-    - _Giảm thể tích thật (ECF giảm):_ Nôn mửa, tiêu chảy, phỏng, mất vào khoang thứ 3.
-    - _Tăng thể tích (ECF tăng):_ Suy tim, xơ gan, hội chứng thận hư.
+    - _Giảm thể tích thật (ECF giảm):_ Nôn mửa, [[Tiêu chảy]], phỏng, mất vào khoang thứ 3.
+    - _Tăng thể tích (ECF tăng):_ Suy [[Tim]], xơ [[Gan]], hội chứng thận hư.
 - **UNa > 30 mmol/L:** Thận đang đào thải muối $\rightarrow$ Đánh giá xem có đang dùng lợi tiểu hoặc có bệnh thận không.
     - _Có dùng lợi tiểu/Bệnh thận:_ UNa không còn phản ánh đúng tình trạng thể tích. Cần khai thác kỹ tiền sử.
     - _Không dùng lợi tiểu/ECF bình thường (Đẳng tích):_ Ưu tiên nghĩ tới **SIADH** (Hội chứng tiết ADH không thích hợp). _Lưu ý: SIADH là chẩn đoán loại trừ, bắt buộc phải loại trừ ==suy tuyến giáp== và ==suy thượng thận== nguyên phát/thứ phát trước_.

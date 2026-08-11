@@ -1,12 +1,16 @@
 ---
 title: "Phân tích X-quang bụng không chuẩn bị"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Cận lâm sàng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
-Tương tự như X-quang ngực, việc đọc X-quang bụng không chuẩn bị (AXR - Abdominal X-ray) cũng cần một phương pháp tiếp cận có hệ thống để không bỏ sót tổn thương. 
 
-Cần lưu ý rằng X-quang bụng có liều lượng tia bức xạ tương đương khoảng 50 lần chụp X-quang ngực. Hiện nay, CT scan thường được ưu tiên hơn do có độ chính xác cao, tuy nhiên X-quang bụng vẫn có giá trị đặc biệt trong các trường hợp: nghi ngờ tắc ruột, đợt cấp của bệnh viêm ruột (để tìm phình đại tràng độc tính), sỏi thận, hoặc nuốt phải dị vật.
+Tương tự như [[X-quang]] ngực, việc đọc X-quang bụng không chuẩn bị (AXR - Abdominal X-ray) cũng cần một phương pháp tiếp cận có hệ thống để không bỏ sót tổn thương. 
+
+Cần lưu ý rằng X-quang bụng có liều lượng tia bức xạ tương đương khoảng 50 lần [[X-quang|chụp X-quang]] ngực. Hiện nay, [[CT Scan]] thường được ưu tiên hơn do có độ chính xác cao, tuy nhiên X-quang bụng vẫn có giá trị đặc biệt trong các trường hợp: nghi ngờ tắc ruột, đợt cấp của bệnh viêm ruột (để tìm phình đại tràng độc tính), sỏi [[Thận]], hoặc nuốt phải dị vật.
 
 Dưới đây là các bước hệ thống để phân tích phim X-quang bụng:
 
@@ -24,15 +28,15 @@ Dưới đây là các bước hệ thống để phân tích phim X-quang bụn
     *   **Bất thường thành ruột:** Dày thành ruột tạo hình ảnh "ấn ngón tay" (Thumb-printing) gặp trong thiếu máu cục bộ ruột hoặc viêm đại tràng. Mất các nếp gấp niêm mạc bình thường gặp trong viêm ruột (IBD).
 
 **Bước 3: Khí ngoài lòng ruột (Extraluminal Gas)**
-Bất kỳ hình ảnh khí nào nằm ngoài ống tiêu hóa đều là bất thường và cần giải thích:
+Bất kỳ hình ảnh khí nào nằm ngoài [[Đường tiêu hóa|ống tiêu hóa]] đều là bất thường và cần giải thích:
 *   **Tràn khí phúc mạc (Pneumoperitoneum):** Thấy được trên phim nằm ngửa qua **Dấu hiệu Rigler** (nhìn thấy rõ cả mặt trong và mặt ngoài của thành ruột do có khí bao quanh hai mặt), hình tam giác khí ở góc phần tư trên phải, hoặc vòng khí dưới thành bụng trước. (Lưu ý: Dấu hiệu khí dưới vòm hoành điển hình nhạy hơn trên phim ngực thẳng đứng).
 *   **Khí trong đường mật (Pneumobilia):** Thường do sau can thiệp ERCP/cắt cơ vòng, rò mật - ruột (như trong tắc ruột do sỏi mật - Gallstone ileus), hoặc viêm đường mật.
 *   **Khí trong thành ruột (Intramural gas):** Là dấu hiệu rất nặng, gợi ý hoại tử ruột.
 *   **Khí trong hệ tiết niệu:** Gợi ý có rò từ ruột sang bàng quang.
 
 **Bước 4: Đánh giá Tạng đặc và Mô mềm (Soft Tissues)**
-Xác định kích thước, vị trí của gan, lách và bàng quang. 
-*   **Bóng thận (Kidneys):** Thường dài bằng khoảng 2.5 đến 3.5 thân đốt sống thắt lưng. Thận phải thường nằm thấp hơn thận trái do bị gan đẩy xuống. Ranh giới thận thường thấy được do có lớp mỡ quanh thận bao bọc.
+Xác định kích thước, vị trí của [[Gan]], lách và bàng quang. 
+*   **Bóng [[Thận]] (Kidneys):** Thường dài bằng khoảng 2.5 đến 3.5 thân đốt sống thắt lưng. Thận phải thường nằm thấp hơn thận trái do bị [[Gan]] đẩy xuống. Ranh giới thận thường thấy được do có lớp mỡ quanh thận bao bọc.
 *   **Bóng cơ thắt lưng chậu (Psoas shadow):** Sự biến mất của bóng cơ psoas có thể là dấu hiệu của tình trạng viêm hoặc tụ dịch sau phúc mạc (như viêm tụy cấp).
 *   **Sự dịch chuyển:** Gan to sẽ đẩy các quai ruột sang trái; lách to đẩy ruột và bóng hơi dạ dày sang phải; bàng quang căng to sẽ đẩy ruột lên trên.
 
@@ -47,4 +51,4 @@ Mặc dù không phải là phim chuyên dụng cho xương, bạn vẫn có th�
 *   Khảo sát cột sống thắt lưng, khung chậu và các xương sườn dưới cùng.
 *   Tìm kiếm cong vẹo cột sống, các dấu hiệu thoái hóa (gai xương, hẹp khe khớp), viêm khớp cùng chậu (sacroiliitis) hoặc các vùng hủy xương/tạo xương do di căn ung thư (bone metastases).
 
-**Tóm lại:** Khi đọc X-quang bụng, hãy luôn đối chiếu với bệnh cảnh lâm sàng. Nếu bệnh nhân có cơn đau quặn bụng từng cơn, nôn mửa, chướng bụng và bí trung đại tiện, hãy tập trung tìm các dấu hiệu dãn ruột và mức nước-hơi (Tắc ruột). Nếu bệnh nhân đau bụng dữ dội như dao đâm kèm bụng cứng như gỗ, hãy lập tức tìm các dấu hiệu của khí tự do trong ổ bụng (Thủng tạng rỗng).
+**Tóm lại:** Khi đọc X-quang bụng, hãy luôn đối chiếu với bệnh cảnh lâm sàng. Nếu bệnh nhân có cơn đau quặn bụng từng cơn, [[[[Nôn ói]]|nôn mửa]], chướng bụng và bí trung đại tiện, hãy tập trung tìm các dấu hiệu dãn ruột và mức nước-hơi (Tắc ruột). Nếu bệnh nhân [[Đau bụng]] dữ dội như dao đâm kèm bụng cứng như gỗ, hãy lập tức tìm các dấu hiệu của khí tự do trong ổ bụng (Thủng tạng rỗng).

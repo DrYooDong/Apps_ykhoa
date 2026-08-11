@@ -1,9 +1,13 @@
 ---
 title: "Phát ban (Rash, Skin Lesion)"
-specialty: "Tiếp cận vấn đề lâm sàng"
-tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Triệu chứng khác"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+
 **Tiếp cận vấn đề lâm sàng: Bệnh nhân có phát ban (Rash / Skin Lesion)**
 
 # **1. Nguyên tắc khám và Cơ chế bệnh sinh**
@@ -21,15 +25,15 @@ Phát ban trên da có thể là biểu hiện của một bệnh lý da liễu 
 #### Bước 1: Ổn định ban đầu – Sàng lọc các "Cờ đỏ" (Red Flags) 
 Phát ban hiếm khi gây tử vong ngay lập tức, trừ khi nó là biểu hiện của các phản ứng đe dọa tính mạng. Cần rà soát ngay:
 
-- **Hội chứng Stevens-Johnson (SJS) / Hoại tử thượng bì nhiễm độc (TEN):** Dát đỏ thẫm, bọng nước, nhăn nheo, bong trợt da diện rộng đi kèm với **tổn thương viêm loét ở nhiều hốc tự nhiên (niêm mạc miệng, mắt, sinh dục)** và triệu chứng toàn thân nặng nề (sốt cao, mệt mỏi). Phân biệt dựa trên diện tích bong da: SJS (<30%) và TEN ($\ge$ 30%).
-- **Hội chứng DRESS (Phản ứng thuốc có tăng bạch cầu ái toan và triệu chứng toàn thân):** Phát ban xuất hiện muộn (2-6 tuần sau dùng thuốc), kèm theo sốt $\ge$ 38.5°C, hạch to, tăng bạch cầu ái toan và **tổn thương nội tạng (đặc biệt là viêm gan, viêm thận)**.
+- **Hội chứng Stevens-Johnson (SJS) / Hoại tử thượng bì nhiễm độc (TEN):** Dát đỏ thẫm, bọng nước, nhăn nheo, bong trợt da diện rộng đi kèm với **tổn thương viêm loét ở nhiều hốc tự nhiên (niêm mạc miệng, mắt, sinh dục)** và triệu chứng toàn thân nặng nề ([[[[Sốt]]|sốt cao]], mệt mỏi). Phân biệt dựa trên diện tích bong da: SJS (<30%) và TEN ($\ge$ 30%).
+- **Hội chứng DRESS (Phản ứng thuốc có tăng [[Bạch cầu]] ái toan và triệu chứng toàn thân):** Phát ban xuất hiện muộn (2-6 tuần sau dùng thuốc), kèm theo sốt $\ge$ 38.5°C, hạch to, tăng [[Bạch cầu]] ái toan và **tổn thương nội tạng (đặc biệt là viêm [[Gan]], viêm [[Thận]])**.
 - **Hội chứng bong vảy da do tụ cầu (SSSS):** Gặp chủ yếu ở trẻ < 5 tuổi do ngoại độc tố tụ cầu. Đỏ da lan tỏa, bọng nước nông nhăn nheo như giấy cuốn thuốc lá, bong vảy diện rộng nhưng **không có tổn thương niêm mạc**.
 
 #### Bước 2: Thu thập bệnh sử và Đặc điểm tổn thương
 
 - **Tiền sử thuốc:** Rà soát kỹ mọi loại thuốc uống/bôi, thực phẩm chức năng (nguyên nhân hàng đầu của SJS/TEN, DRESS, hồng ban đa dạng).
 - **Dấu hiệu tiền triệu:** Sốt, ho, chảy mũi, viêm kết mạc (dấu hiệu 3C của Sởi); cảm giác châm chích, bỏng rát dọc dây thần kinh (Zona); hoặc nhạy cảm với gluten (bệnh Duhring-Brocq).
-- **Nghiệm pháp Ấn kính (Diascopy):** Dùng kính lúp hoặc tấm kính trong ấn lên tổn thương để xem có mất màu (blanching) hay không. **Ban đỏ do sung huyết (như sởi, dị ứng) sẽ mất màu, trong khi ban xuất huyết (purpuric/petechial) sẽ không mất màu**.
+- **Nghiệm pháp Ấn kính (Diascopy):** Dùng kính lúp hoặc tấm kính trong ấn lên tổn thương để xem có mất màu (blanching) hay không. **Ban đỏ do sung huyết (như sởi, dị ứng) sẽ mất màu, trong khi ban [[Xuất huyết]] (purpuric/petechial) sẽ không mất màu**.
 - **Dấu hiệu Nikolsky:** Dùng ngón tay miết nhẹ trên vùng da lành cạnh bọng nước, nếu da dễ dàng bị trợt và bong ra là Nikolsky dương tính (gặp trong SSSS, SJS/TEN, Pemphigus). Âm tính trong Pemphigoid hoặc bọng nước dạng Duhring-Brocq.
 - **Dấu hiệu Koebner:** Tổn thương mới mọc dọc theo vết gãi xước (gặp trong Vảy nến, Hạt cơm phẳng, U mềm lây).
 
@@ -61,20 +65,20 @@ Phát ban hiếm khi gây tử vong ngay lập tức, trừ khi nó là biểu h
 #### Bước 6: Hướng xử trí ban đầu
 
 - **Cấp cứu SJS/TEN/SSSS:** Ngừng ngay thuốc nghi ngờ. Nhập khoa cấp cứu/hồi sức tích cực, theo dõi chức năng sống, chăm sóc da trong điều kiện vô khuẩn như bỏng nặng. Bồi phụ nước điện giải, bảo vệ niêm mạc mắt/miệng để tránh dính mi mắt, mù lòa.
-- **Bệnh truyền nhiễm (Sởi, Thủy đậu, Zona):** Điều trị triệu chứng, vệ sinh da. Với Zona hoặc Thủy đậu nặng, sử dụng thuốc kháng virus (Acyclovir) sớm. Tuyệt đối không sử dụng Corticoid khi chưa loại trừ bệnh Sởi.
-- **Nhiễm khuẩn da (Chốc, Nhọt):** Vệ sinh tại chỗ bằng thuốc tím/dung dịch màu. Dùng kháng sinh bôi (Mupirocin, Acid fusidic). Kháng sinh toàn thân (Cephalosporin, Augmentin) nếu tổn thương lan rộng hoặc có nguy cơ biến chứng viêm cầu thận cấp.
-- **Bệnh cơ địa/Tự miễn (Viêm da cơ địa, Vảy nến):** Dùng kem dưỡng ẩm, thuốc bạt sừng (Salicylic). Corticoid tại chỗ là nền tảng nhưng phải dùng đúng liều lượng, đúng vùng da và thời gian để tránh teo da.
+- **Bệnh truyền nhiễm (Sởi, Thủy đậu, Zona):** Điều trị triệu chứng, vệ sinh da. Với Zona hoặc Thủy đậu nặng, sử dụng thuốc kháng virus (Acyclovir) sớm. Tuyệt đối không sử dụng [[Corticoid]] khi chưa loại trừ bệnh Sởi.
+- **Nhiễm khuẩn da (Chốc, Nhọt):** Vệ sinh tại chỗ bằng thuốc tím/dung dịch màu. Dùng [[Kháng sinh]] bôi (Mupirocin, Acid fusidic). [[Kháng sinh]] toàn thân (Cephalosporin, Augmentin) nếu tổn thương lan rộng hoặc có nguy cơ biến chứng viêm cầu [[Thận]] cấp.
+- **Bệnh cơ địa/Tự miễn (Viêm da cơ địa, Vảy nến):** Dùng kem dưỡng ẩm, thuốc bạt sừng (Salicylic). [[Corticoid]] tại chỗ là nền tảng nhưng phải dùng đúng liều lượng, đúng vùng da và thời gian để tránh teo da.
 
 #### Bước 7: Khi nào cần chuyển tuyến / gọi hội chẩn
 
-- **Chuyển Cấp cứu/ICU:** Mọi bệnh nhân nghi ngờ SJS, TEN, DRESS, SSSS, hoặc có sốc, suy đa tạng.
+- **Chuyển Cấp cứu/ICU:** Mọi bệnh nhân nghi ngờ SJS, TEN, DRESS, SSSS, hoặc có [[Sốc]], suy đa tạng.
 - **Hội chẩn Chuyên khoa Mắt:** Bắt buộc đối với SJS/TEN hoặc bọng nước có tổn thương mi mắt/kết mạc để tránh biến chứng mù lòa.
 - **Hội chẩn Da liễu/Sinh thiết:** Khi phát ban kéo dài không đáp ứng điều trị, nghi ngờ ung thư da (BCC, SCC, Melanoma) hoặc cần sinh thiết/MDHQ chẩn đoán bệnh bọng nước tự miễn.
 
 # 3. Sai lệch nhận thức thường gặp (Cognitive Biases)
 
 - **Lỗi neo tư duy (Anchoring Bias):** Bác sĩ cấp cứu khi thấy một trẻ em nổi ban đỏ toàn thân, sốt thường dễ dàng "neo" vào chẩn đoán Sởi hoặc Rubella mà quên mất việc rà soát kỹ tiền sử dùng thuốc. Điều này cực kỳ nguy hiểm vì có thể bỏ sót giai đoạn sớm của Hội chứng Stevens-Johnson hoặc DRESS.
-- **Bỏ sót vùng mù (Blind spots):** Đánh giá một bệnh nhân phát ban nhưng không yêu cầu bệnh nhân tháo tất, cởi áo, và quên khám **niêm mạc miệng, lòng bàn tay, bàn chân**. Hậu quả là bỏ sót các manh mối chẩn đoán độc quyền như: Giang mai thời kỳ 2, Bệnh Tay chân miệng, hoặc thâm nhiễm của ban xuất huyết.
+- **Bỏ sót vùng mù (Blind spots):** Đánh giá một bệnh nhân phát ban nhưng không yêu cầu bệnh nhân tháo tất, cởi áo, và quên khám **niêm mạc miệng, lòng bàn tay, bàn chân**. Hậu quả là bỏ sót các manh mối chẩn đoán độc quyền như: Giang mai thời kỳ 2, Bệnh Tay chân miệng, hoặc thâm nhiễm của ban [[Xuất huyết]].
 
 # 4. Lưu ý thực hành / “Take‑home messages”
 

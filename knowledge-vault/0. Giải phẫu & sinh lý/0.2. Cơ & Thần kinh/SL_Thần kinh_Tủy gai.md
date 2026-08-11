@@ -1,9 +1,14 @@
 ---
 title: "SL_Thần kinh_Tủy gai"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 1. Nội Dung Sinh Lý Học Chi Tiết:
 
 ### Cấu Trúc Đại Cương Của Tủy Gai
@@ -19,7 +24,7 @@ Tủy gai là một bộ phận thuộc hệ thống thần kinh trung ương n�
 Tủy gai thực hiện chức năng dẫn truyền tín hiệu cảm giác từ ngoại vi lên não và dẫn truyền mệnh lệnh vận động từ não xuống cơ quan đáp ứng.
 
 **1. Dẫn truyền cảm giác (Ascending tracts):**
-*   **Cảm giác sâu có ý thức (Xúc giác tinh tế):** Dẫn truyền qua bó thon và bó chêm nằm ở cột sau chất trắng tủy gai. Các tín hiệu từ nửa dưới cơ thể đi theo bó thon, nửa trên cơ thể đi theo bó chêm. Khi lên đến hành não (nhân thon, nhân chêm), các sợi này mới bắt chéo sang đối bên để lên đồi thị và vỏ não.
+*   **Cảm giác sâu có ý thức (Xúc giác tinh tế):** Dẫn truyền qua bó thon và bó chêm nằm ở cột sau chất trắng tủy gai. Các tín hiệu từ nửa dưới cơ thể đi theo bó thon, nửa trên cơ thể đi theo bó chêm. Khi lên đến hành não (nhân thon, nhân chêm), các sợi này mới bắt chéo sang đối bên để lên đồi thị và [[Vỏ não]].
 *   **Cảm giác đau, nhiệt độ và xúc giác thô sơ:** Dẫn truyền qua bó gai đồi thị bên (đau, nhiệt) và bó gai đồi thị trước (sờ/xúc giác). Đặc điểm của đường này là khi sợi trục đi vào tủy gai, nó bắt chéo ngay lập tức sang sừng đối bên, rồi mới đi lên đồi thị.
 *   **Cảm giác sâu không ý thức:** Đi theo bó gai tiểu não (gồm bó thẳng và bó chéo) dẫn truyền tín hiệu từ cơ, xương, khớp về trương lực cơ để giúp tiểu não điều hòa phối hợp động tác và giữ thăng bằng.
 
@@ -28,7 +33,7 @@ Tủy gai thực hiện chức năng dẫn truyền tín hiệu cảm giác từ
 **Nội Dung Mô Tả:** Sơ đồ cho thấy bó thon và bó chêm (hệ thống cột sau - posterior funiculus) dẫn truyền cảm giác xúc giác và cảm giác bản thể từ rễ lưng lên hành não, bắt chéo tại liềm trong (medial lemniscus) để lên đồi thị. Bó gai đồi thị (spinothalamic tract) dẫn truyền cảm giác đau và nhiệt độ, bắt chéo ngay tại tủy gai rồi đi lên đồi thị.
 
 **2. Dẫn truyền vận động (Descending tracts):**
-*   **Dẫn truyền vận động chủ ý (Hệ tháp):** Mệnh lệnh từ vỏ não vận động đi xuống hành não, phần lớn bắt chéo tạo thành bó vỏ gai bên (nằm ở cột bên tủy gai), phần nhỏ đi thẳng tạo thành bó vỏ gai trước. Cả hai đều tiếp hợp với neuron vận động dưới ở sừng trước tủy gai đối bên để chi phối cơ vân.
+*   **Dẫn truyền vận động chủ ý (Hệ tháp):** Mệnh lệnh từ [[Vỏ não]] vận động đi xuống hành não, phần lớn bắt chéo tạo thành bó vỏ gai bên (nằm ở cột bên tủy gai), phần nhỏ đi thẳng tạo thành bó vỏ gai trước. Cả hai đều tiếp hợp với neuron vận động dưới ở sừng trước tủy gai đối bên để chi phối cơ vân.
 *   **Dẫn truyền vận động không chủ ý (Hệ ngoại tháp):** Bắt nguồn từ các cấu trúc dưới vỏ (nhân đỏ, thân não...) tạo thành bó đỏ gai, lưới gai, tiền đình gai... đi đến sừng trước tủy gai để duy trì tư thế, chỉnh thế và thăng bằng cơ thể.
 
 ### Chức Năng Phản Xạ Của Tủy Gai (Spinal Reflexes)
@@ -36,7 +41,7 @@ Cung phản xạ tủy bao gồm 5 thành phần: (1) Bộ phận nhận cảm, 
 
 **Tên Hình:** Figure 12-1 The reflex arc.
 **Thuộc Tài Liệu:** [Book] ganong's review of medical physiology 24th edition.pdf.
-**Nội Dung Mô Tả:** Hình ảnh mô tả một cung phản xạ cơ bản. Tín hiệu từ cơ quan nhận cảm (sense organ) tạo ra điện thế nhận cảm, truyền theo neuron hướng tâm (afferent neuron) vào hệ thần kinh trung ương. Tại đây xảy ra các điện thế kích thích hoặc ức chế sau synapse (EPSPs/IPSPs), kích hoạt neuron ly tâm (efferent neuron) tạo điện thế hoạt động truyền tới thụ thể ở cơ, gây co cơ.
+**Nội Dung Mô Tả:** Hình ảnh mô tả một cung phản xạ cơ bản. Tín hiệu từ cơ quan nhận cảm (sense organ) tạo ra điện thế nhận cảm, truyền theo neuron hướng tâm (afferent neuron) vào [[Hệ thần kinh trung ương]]. Tại đây xảy ra các điện thế kích thích hoặc ức chế sau synapse (EPSPs/IPSPs), kích hoạt neuron ly tâm (efferent neuron) tạo điện thế hoạt động truyền tới thụ thể ở cơ, gây co cơ.
 
 **1. Phản xạ một synapse (Monosynaptic reflex / Phản xạ căng cơ):**
 *   Phản xạ căng cơ (Stretch reflex / Myotatic reflex) xảy ra khi một cơ bị kéo căng đột ngột, cơ đó sẽ co lại để chống lại sự kéo căng.

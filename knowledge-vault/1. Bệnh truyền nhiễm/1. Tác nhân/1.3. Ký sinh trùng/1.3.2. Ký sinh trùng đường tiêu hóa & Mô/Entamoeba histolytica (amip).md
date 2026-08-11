@@ -1,24 +1,30 @@
 ---
+title: "Entamoeba histolytica (amip)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - he-co-quan/tieu-hoa
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 ### 1. Đại cương và Lịch sử
 
-- **Định nghĩa:** Bệnh amip (Amebiasis) là tình trạng nhiễm trùng do ký sinh trùng đơn bào _Entamoeba histolytica_ gây ra. Đây là tác nhân chính gây viêm đại tràng amip, áp-xe gan, và hiếm hơn là áp-xe não.
-- **Lịch sử:** Bệnh kiết lỵ từng được Hippocrates ghi nhận từ thời cổ đại. Năm 1875, Fedor Lösch lần đầu tiên mô tả amip trong phân của một bệnh nhân mắc bệnh lỵ mãn tính và chứng minh được mầm bệnh thông qua việc cấy vào chó (đáp ứng định đề Koch). Vào những năm 1880, Stephen Kartulis là người đầu tiên chứng minh sự hiện diện của amip trong các ổ áp-xe gan và não.
+- **Định nghĩa:** Bệnh amip (Amebiasis) là tình trạng nhiễm trùng do ký sinh trùng đơn bào _Entamoeba histolytica_ gây ra. Đây là tác nhân chính gây viêm đại tràng amip, áp-xe [[Gan]], và hiếm hơn là áp-xe não.
+- **Lịch sử:** Bệnh kiết lỵ từng được Hippocrates ghi nhận từ thời cổ đại. Năm 1875, Fedor Lösch lần đầu tiên mô tả amip trong phân của một bệnh nhân mắc bệnh lỵ mãn tính và chứng minh được mầm bệnh thông qua việc cấy vào chó (đáp ứng định đề Koch). Vào những năm 1880, Stephen Kartulis là người đầu tiên chứng minh sự hiện diện của amip trong các ổ áp-xe [[Gan]] và não.
 
 ### 2. Đặc điểm Vi sinh học
 
-- **Phân loại:** _E. histolytica_ có hình thái hoàn toàn giống với 3 loài amip đường ruột khác ở người là _E. dispar_, _E. moshkovskii_ và _E. bangladeshi_. Trong khi _E. histolytica_ gây bệnh xâm lấn, _E. dispar_ và _E. bangladeshi_ hoàn toàn không gây bệnh, còn _E. moshkovskii_ có thể gây tiêu chảy không xâm lấn.
-- **Đặc điểm sinh học:** Gen của _E. histolytica_ và loài không gây bệnh _E. dispar_ giống nhau đến 90%. Dấu hiệu hình thái duy nhất có giá trị để nhận diện _E. histolytica_ dưới kính hiển vi là hình ảnh amip **thực bào hồng cầu** (chứa hồng cầu bên trong), tuy nhiên dấu hiệu này chỉ xuất hiện ở khoảng 68% ca bệnh _E. histolytica_ và đôi khi vẫn xuất hiện ở _E. dispar_.
+- **Phân loại:** _E. histolytica_ có hình thái hoàn toàn giống với 3 loài amip đường ruột khác ở người là _E. dispar_, _E. moshkovskii_ và _E. bangladeshi_. Trong khi _E. histolytica_ gây bệnh xâm lấn, _E. dispar_ và _E. bangladeshi_ hoàn toàn không gây bệnh, còn _E. moshkovskii_ có thể gây [[Tiêu chảy]] không xâm lấn.
+- **Đặc điểm sinh học:** Gen của _E. histolytica_ và loài không gây bệnh _E. dispar_ giống nhau đến 90%. Dấu hiệu hình thái duy nhất có giá trị để nhận diện _E. histolytica_ dưới kính hiển vi là hình ảnh amip **thực bào [[Hồng cầu]]** (chứa [[Hồng cầu]] bên trong), tuy nhiên dấu hiệu này chỉ xuất hiện ở khoảng 68% ca bệnh _E. histolytica_ và đôi khi vẫn xuất hiện ở _E. dispar_.
 - **Vòng đời:** Ký sinh trùng tồn tại ở dạng **nang (cyst)** – dạng lây nhiễm, có khả năng tồn tại bền vững trong môi trường và kháng được clo xử lý nước – và dạng **hoạt động (trophozoite)** có khả năng xâm lấn mô bào.
 
 ### 3. Dịch tễ học
 
 - **Gánh nặng bệnh tật:** Ước tính có khoảng 34 đến 50 triệu ca nhiễm _E. histolytica_ có triệu chứng trên toàn thế giới mỗi năm, dẫn đến khoảng 100.000 trường hợp tử vong.
 - **Đường lây truyền:** Bệnh lây nhiễm chủ yếu qua đường phân-miệng từ người sang người, thông qua nước và thực phẩm ô nhiễm. Lượng vi khuẩn đủ để gây bệnh là rất thấp (dưới 100 sinh vật).
-- **Nhóm nguy cơ cao:** Bệnh tập trung chủ yếu ở các cộng đồng nghèo, thiếu điều kiện vệ sinh tại khu vực Mỹ Latinh, Châu Phi và Tiểu lục địa Ấn Độ. Trẻ sơ sinh và trẻ nhỏ (đặc biệt ở độ tuổi mẫu giáo) là đối tượng dễ bị viêm đại tràng và tiêu chảy nhất. Ở người lớn, 90% các ca áp-xe gan và não do amip xảy ra ở nam giới trẻ tuổi.
+- **Nhóm nguy cơ cao:** Bệnh tập trung chủ yếu ở các cộng đồng nghèo, thiếu điều kiện vệ sinh tại khu vực Mỹ Latinh, Châu Phi và Tiểu lục địa Ấn Độ. Trẻ sơ sinh và trẻ nhỏ (đặc biệt ở độ tuổi mẫu giáo) là đối tượng dễ bị viêm đại tràng và [[Tiêu chảy]] nhất. Ở người lớn, 90% các ca áp-xe gan và não do amip xảy ra ở nam giới trẻ tuổi.
 - **Các nhóm đặc biệt:** _E. histolytica_ là nguyên nhân phổ biến thứ hai gây tiêu chảy ở khách du lịch quốc tế. Ngoài ra, nhóm nam quan hệ tình dục đồng giới (MSM) có nguy cơ cao đồng nhiễm HIV và amip, đặc biệt tại các quốc gia như Nhật Bản và Đài Loan.
 
 ### 4. Cơ chế Bệnh sinh và Miễn dịch
@@ -29,7 +35,7 @@ tags:
 
 ### 5. Biểu hiện Lâm sàng
 
-- **Viêm đại tràng amip (Kiết lỵ):** Đặc trưng bởi tình trạng tiêu chảy, có thể tiến triển thành viêm đại tràng tối cấp (fulminant amebic colitis) với tỷ lệ tử vong cao (lên tới >40%). Bệnh nặng thường gặp ở trẻ nhỏ, phụ nữ có thai, người suy dinh dưỡng và người sử dụng corticosteroid.
+- **Viêm đại tràng amip (Kiết lỵ):** Đặc trưng bởi tình trạng tiêu chảy, có thể tiến triển thành viêm đại tràng tối cấp (fulminant amebic colitis) với tỷ lệ tử vong cao (lên tới >40%). Bệnh nặng thường gặp ở trẻ nhỏ, phụ nữ có thai, người suy dinh dưỡng và người sử dụng [[[[Corticoid]]|corticosteroid]].
 - **Áp-xe gan và não:** Amip có thể theo dòng máu lan đến gan gây áp-xe, và từ gan lan lên não gây áp-xe não.
 
 ### 6. Chẩn đoán
@@ -41,7 +47,7 @@ tags:
 
 Phác đồ điều trị amip xâm lấn luôn bao gồm 2 bước: sử dụng thuốc diệt amip trong mô, theo sau là thuốc diệt amip trong lòng ruột để diệt trừ tận gốc nang amip.
 
-- **Điều trị mô (Áp-xe gan/Viêm đại tràng):** **Metronidazole** là thuốc ưu tiên, liều người lớn 750 mg uống 3 lần/ngày trong vòng 10 ngày. Tác dụng phụ thường gặp gồm rối loạn tiêu hóa, buồn nôn, vị kim loại, phản ứng dị ứng khi dùng chung với rượu (disulfiram-like) và đôi khi có độc tính thần kinh.
+- **Điều trị mô (Áp-xe gan/Viêm đại tràng):** **Metronidazole** là thuốc ưu tiên, liều người lớn 750 mg uống 3 lần/ngày trong vòng 10 ngày. Tác dụng phụ thường gặp gồm rối loạn tiêu hóa, [[[[Nôn ói]]|buồn nôn]], vị kim loại, phản ứng dị ứng khi dùng chung với rượu (disulfiram-like) và đôi khi có độc tính thần kinh.
 - **Điều trị trong lòng ruột (Luminal agents):** Sau khi dùng Metronidazole, bệnh nhân cần được điều trị tiếp bằng **Paromomycin** hoặc **Diloxanide furoate** để tiêu diệt thể nang còn sót lại trong lòng ruột. (Diloxanide furoate cũng là thuốc được lựa chọn cho những người mang nang amip không triệu chứng).
 
 ---

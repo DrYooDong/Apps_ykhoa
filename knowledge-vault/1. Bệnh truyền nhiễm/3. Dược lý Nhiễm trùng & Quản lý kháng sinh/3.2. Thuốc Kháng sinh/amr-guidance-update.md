@@ -1,3 +1,13 @@
+---
+title: "amr-guidance-update"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 Infectious Diseases Society of America 202 6 Guidance on the Treatment of Antimicrobial -
 Resistant Gram - Negative Infections
 Pranita D. Tamma 1 , Robert A. Bonomo 2 , Emily L. Heil 3 , Julie Ann Justo 4 ,
@@ -262,7 +272,7 @@ ESBLs other than CTX - M enzymes with unique hydrolyzing abilities are also pres
 variants of TEM and SHV β - lactamases with amino acid substitutions [17 - 20] . Routine ES B L
 testing is not performed by most clinical microbiology laboratories and is not considered
 compulsory by the CLSI [21] . Rather, E. coli , K. pneumoniae , or K. oxytoca isolates resistan t to
-ceftriaxone (i.e., ceftriaxone minimum inhibitory concentrations [MICs] ≥ 4 μg/mL) is a threshold
+[[Ceftriaxone]] (i.e., [[Ceftriaxone]] minimum inhibitory concentrations [MICs] ≥ 4 μg/mL) is a threshold
 commonly acknowledged as a surrogate for ESBL - produc tion [15, 22 - 24] . Treatment
 suggestions for ESBL - E infections assume that in vitro activity of preferred and alternative
 antibiotics has been demonstrated.
@@ -2916,7 +2926,7 @@ care unit patients. J Antimicrob Chemother 2014 ; 69(11): 3108 – 11.
 84. Burkhardt O, Kumar V, Katterwe D, et al. Ertapenem in critically ill patients with early - onset ventilator -
 associated pneumonia: pharmacokinetics with special consideration of free - drug concentration. J Antimicrob Chemother 2007 ; 59(2): 277 – 84.
 85. Brink AJ, Richards GA, Schillack V, Kiem S, Schentag J. Pharmacokinetics of once - daily dosing of
-ertapenem in critically ill patients with severe sepsis. Int J Antimicrob Agents 2009 ; 33(5): 432 – 6.
+ertapenem in critically ill patients with severe [[Nhiễm trùng huyết|sepsis]]. Int J Antimicrob Agents 2009 ; 33(5): 432 – 6.
 86. Shah S, Clarke LG, Balasubramani GK, Peng L, Smith BJ, Shields RK. Impact of hypoalbuminemia on
 patients receiving ertapenem combination therapy for methicillin - susceptible Staphylococcus aureus bacteraemia. J Antimicrob Chemother 2025 ; 80(7): 1823 – 7.
 87. Zusman O, Farbman L, Tredler Z, et al. Association between hypoalbuminemia and mortality among
@@ -3539,7 +3549,7 @@ in Complicated Intra - abdominal Infections in the Investigating Gram - Negative
 Prospective Trial of Eravacycline vs Meropenem in the Treatment of Complicated Intraabdominal Infections. Clin Infect Dis 2019 ; 69(6): 921 – 9.
 360. Patino K, Vathy R, Albrecht B, Suchindran S, Green SB. Combating resistant pathogens: exploring the
 efficacy of eravacycline utilization in multidrug - resistant infections. Microbiol Spectr 2025 ; 13(12): e0131425.
-361. Wang Z, Gan G, Yao H. Gastrointestinal risk profile of tigecycline, omadacycline and eravacycline:
+361. Wang Z, [[Gan]] G, Yao H. Gastrointestinal risk profile of tigecycline, omadacycline and eravacycline:
 Evidence from the FDA adverse event reporting system. Acta Pharm 2025 .
 362. Chen A, Smith KP, Whitfield BA, et al. Activity of minocycline against Klebsiella pneumoniae
 carbapenemase (KPC) - producing Enterobacteriaceae clinical isolates, with comparison to doxycycline and tigecycline. Diagn Microbiol Infect Dis 2017 ; 88(4): 365 – 7.
@@ -3911,7 +3921,7 @@ surveillance.com/login . Accessed December 31, 2025.
 523. Jaruratanasirikul S, Nitchot W, Wongpoowarak W, Samaeng M, Nawakitrangsan M. Population
 pharmacokinetics and Monte Carlo simulations of sulbactam to optimize dosage regimens in patients with ventilator - associated pneumonia caused by Acinetobacter baumanni i. Eur J Pharm Sci 2019 ; 136: 104940.
 524. Jaruratanasirikul S, Wongpoowarak W, Wattanavijitkul T, et al. Population Pharmacokinetics and
-Pharmacodynamics Modeling To Optimize Dosage Regimens of Sulbactam in Critically Ill Patients with Severe Sepsis Caused by Acinetobacter baumannii. Antimicrob Ag ents Chemother 2016 ; 60(12): 7236 – 44.
+Pharmacodynamics Modeling To Optimize Dosage Regimens of Sulbactam in Critically Ill Patients with Severe [[Nhiễm trùng huyết|Sepsis]] Caused by Acinetobacter baumannii. Antimicrob Ag ents Chemother 2016 ; 60(12): 7236 – 44.
 525. Fernandez - Cuenca F, Tomas M, Caballero - Moyano FJ, et al. Reporting antimicrobial susceptibilities and
 resistance phenotypes in Acinetobacter spp: a nationwide proficiency study. J Antimicrob Chemother 2018 ; 73(3): 692 – 7.
 526. Viana GF, Saalfeld SM, Moreira RR, et al. Can ampicillin/sulbactam resistance in Acinetobacter

@@ -1,3 +1,13 @@
+---
+title: "Tiếp cận trẻ bị táo bón"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT: TIẾP CẬN TRẺ BỊ TÁO BÓN
 
 ---
@@ -22,7 +32,7 @@
 - **Vòng xoắn bệnh lý luẩn quẩn:**
     - Khi trẻ nín giữ phân, niêm mạc trực tràng tiếp tục **hấp thu nước trong phân**, làm khối phân ngày càng khô cứng và khó rặn ra hơn.
     - Khối phân ứ đọng làm **trực tràng giãn rộng**, dẫn đến tình trạng **són phân** (máu/dịch phân rỉ qua kẽ khối phân), **mất cảm giác ở trực tràng** và cuối cùng là **mất cảm giác mắc rặn**.
-    - Sự ứ đọng phân kéo dài tại trực tràng còn làm **giảm nhu động ruột**, gây chán ăn, chướng bụng và đau bụng mạn tính.
+    - Sự ứ đọng phân kéo dài tại trực tràng còn làm **giảm nhu động ruột**, gây chán ăn, chướng bụng và [[Đau bụng]] mạn tính.
 
 ---
 
@@ -75,7 +85,7 @@
 4. Phân dạng ruy-băng (ribbon stools).
 5. Phân có máu đại thể mà không có nứt hậu môn.
 6. Chậm tăng trưởng, suy dinh dưỡng.
-7. Sốt, ói dịch mật, bụng chướng căng.
+7. [[Sốt]], ói dịch mật, bụng chướng căng.
 8. Vị trí hậu môn bất thường, rò quanh hậu môn, sẹo hậu môn.
 9. Mất phản xạ da bìu và phản xạ hậu môn, giảm sức cơ/trương lực/phản xạ chi dưới.
 10. Bất thường vùng cùng cụt: lúm đồng xông, nhúm lông ở cột sống, rãnh gian mông bị lệch.
@@ -85,8 +95,8 @@
 
 ## 4. Vai Trò Của Các Xét Nghiệm Cận Lâm Sàng
 
-- **X-quang bụng:** **Không có vai trò của chụp X-quang bụng thường quy** trong chẩn đoán táo bón chức năng. Chỉ chỉ định chụp X-quang bụng đứng không sửa soạn khi nghi ngờ trẻ có ứ phân nhưng không thể thăm khám trực tràng hoặc thăm khám không đáng tin cậy.
-- **Các thăm khám không khuyến cáo thường quy:** Không khuyến cáo chỉ định khảo sát vận chuyển đại tràng (_colonic transit studies_) hay siêu âm qua ngả trực tràng để chẩn đoán táo bón chức năng.
+- **X-quang bụng:** **Không có vai trò của [[X-quang|chụp X-quang]] bụng thường quy** trong chẩn đoán táo bón chức năng. Chỉ chỉ định [[X-quang|chụp X-quang]] bụng đứng không sửa soạn khi nghi ngờ trẻ có ứ phân nhưng không thể thăm khám trực tràng hoặc thăm khám không đáng tin cậy.
+- **Các thăm khám không khuyến cáo thường quy:** Không khuyến cáo chỉ định khảo sát vận chuyển đại tràng (_colonic transit studies_) hay [[Siêu âm]] qua ngả trực tràng để chẩn đoán táo bón chức năng.
 - **Xét nghiệm sinh hóa/miễn dịch:** Nếu không có dấu hiệu báo động, **không khuyến cáo** làm test dị ứng đạm sữa bò, tầm soát suy giáp, bệnh Celiac hay định lượng calci máu một cách thường quy.
 
 ---
@@ -151,4 +161,4 @@
 
 ---
 
-💩 _Bài học về **Tiếp cận trẻ bị táo bón** đã được hoàn thiện đầy đủ, chuyên sâu và chuẩn xác theo tài liệu Nhi khoa YDS. Bạn có muốn tiếp tục biên soạn bài học cho bài tiếp theo: **Bài 27: Tiếp cận đau bụng ở trẻ em** hoặc **Bài 26: Tiếp cận trẻ chậm tăng trưởng** không?_
+💩 _Bài học về **Tiếp cận trẻ bị táo bón** đã được hoàn thiện đầy đủ, chuyên sâu và chuẩn xác theo tài liệu Nhi khoa YDS. Bạn có muốn tiếp tục biên soạn bài học cho bài tiếp theo: **Bài 27: Tiếp cận [[Đau bụng]] ở trẻ em** hoặc **Bài 26: Tiếp cận trẻ chậm tăng trưởng** không?_

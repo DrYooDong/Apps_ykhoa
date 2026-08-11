@@ -1,9 +1,13 @@
 ---
 title: "Case report & Case series"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Phương pháp luận & Thiết kế nghiên cứu"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Phương pháp luận nghiên cứu khoa học, tôi xin trình bày phân tích chuyên sâu về hai thiết kế nghiên cứu cơ bản: **Báo cáo ca bệnh (Case Report)** và **Loạt ca bệnh (Case Series)** dựa trên các tài liệu đã được cung cấp.
 
 ### 1. KHÁI NIỆM VÀ ĐẶC ĐIỂM THIẾT KẾ

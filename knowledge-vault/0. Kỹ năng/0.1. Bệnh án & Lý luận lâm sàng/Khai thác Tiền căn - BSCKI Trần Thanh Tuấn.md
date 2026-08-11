@@ -1,9 +1,13 @@
 ---
 title: "Khai thác Tiền căn - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Tiền căn - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**
@@ -61,7 +65,7 @@ Link: [https://thanhtuan.edubit.vn/blog/lam-benh-an-noi-khoa---tien-can](https:/
 - *Ngoại khoa: Chưa ghi nhận tiền căn chấn thương hay phẩu thuật trước đây*
 - *Nội khoa:*
     
-    *+ Có tăng huyết áp phát hiện cách nay 3 năm, huyết áp cao nhất là **180mmHg**, bệnh nhân uống thuốc đều cho đến nay. Huyết áp ổn định ở mức 120 – 130mmHg, chưa ghi nhận biến - chứng trước đây của tăng huyết áp, chưa lần nào phải nhập viện vì cơn tăng huyết áp*
+    *+ Có [[Tăng huyết áp]] phát hiện cách nay 3 năm, huyết áp cao nhất là **180mmHg**, bệnh nhân uống thuốc đều cho đến nay. Huyết áp ổn định ở mức 120 – 130mmHg, chưa ghi nhận biến - chứng trước đây của [[Tăng huyết áp]], chưa lần nào phải nhập viện vì cơn tăng huyết áp*
     
     *+ Đái tháo đường phát hiện 1 năm, đang điều trị thuốc uống, HbA1c gần nhất là **6,5%***
     

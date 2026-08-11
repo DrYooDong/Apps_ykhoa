@@ -1,13 +1,16 @@
 ---
 title: "Đọc & Diễn giải Kháng sinh đồ (Antibiogram)"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Cơ sở & chẩn đoán vi sinh", "Kháng sinh đồ", "MIC", "CLSI"]
-last_updated: "2026-08-02"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
-# ĐỌC & DIỄN GIẢI KHÁNG SINH ĐỒ (INTERPRETATION OF ANTIBIOGRAM & SUSCEPTIBILITY TESTING)
+# ĐỌC & DIỄN GIẢI [[Kháng sinh]] ĐỒ (INTERPRETATION OF ANTIBIOGRAM & SUSCEPTIBILITY TESTING)
 
-Kháng sinh đồ (Antimicrobial Susceptibility Testing - AST) là xét nghiệm cận lâm sàng quan trọng nhất giúp tối ưu hóa liệu pháp kháng sinh nhắm mục tiêu (Targeted Antimicrobial Therapy) và phòng ngừa vi khuẩn kháng thuốc.
+Kháng sinh đồ (Antimicrobial Susceptibility Testing - AST) là xét nghiệm cận lâm sàng quan trọng nhất giúp tối ưu hóa [[Kháng sinh|liệu pháp kháng sinh]] nhắm mục tiêu (Targeted Antimicrobial Therapy) và phòng ngừa vi khuẩn kháng thuốc.
 
 ---
 

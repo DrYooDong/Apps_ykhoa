@@ -1,9 +1,14 @@
 ---
 title: "SL_Tim mạch_Hệ mạch & Điều hòa huyết áp"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Dựa vào các tài liệu sinh lý học đã cung cấp, dưới đây là bài tổng hợp chi tiết về **Sinh lý Hệ Mạch và Điều hòa Huyết áp**, được chia thành các phần rõ ràng và minh họa bằng các sơ đồ/lưu đồ cơ chế.
 
 ---
@@ -30,9 +35,9 @@ Hệ tuần hoàn là hệ thống vận chuyển và phân phối máu chứa c
 
 ### 2. HUYẾT ÁP ĐỘNG MẠCH
 
-Huyết áp là lực của máu tác động lên một đơn vị diện tích thành mạch. Dòng máu trong động mạch có tính chất mạch đập (pulsatile) do tim bơm máu từng đợt.
+Huyết áp là lực của máu tác động lên một đơn vị diện tích thành mạch. Dòng máu trong động mạch có tính chất mạch đập (pulsatile) do [[Tim]] bơm máu từng đợt.
 *   **Huyết áp tâm thu (Systolic pressure):** Là giới hạn áp suất cao nhất trong mạch, đo được ngay sau khi tâm thất co bóp tống máu vào động mạch. Bình thường khoảng 120 mmHg.
-*   **Huyết áp tâm trương (Diastolic pressure):** Là giới hạn áp suất thấp nhất, ghi nhận lúc tim giãn (tâm trương) và máu đang trở về tim. Bình thường khoảng 80 mmHg.
+*   **Huyết áp tâm trương (Diastolic pressure):** Là giới hạn áp suất thấp nhất, ghi nhận lúc [[Tim]] giãn (tâm trương) và máu đang trở về tim. Bình thường khoảng 80 mmHg.
 *   **Hiệu áp (Pulse pressure):** Là hiệu số giữa HA tâm thu và HA tâm trương, phản ánh trực tiếp thể tích nhát bóp (stroke volume) và độ giãn nở (compliance) của động mạch. Tuổi càng cao, động mạch càng xơ cứng làm giảm độ giãn nở, dẫn đến hiệu áp tăng.
 *   **Huyết áp trung bình (Mean Arterial Pressure - MAP):** Là áp suất tạo ra dòng máu chảy liên tục. Công thức tính xấp xỉ: $MAP = HA_{tâm\ trương} + 1/3 (Hiệu\ áp)$.
 
@@ -52,7 +57,7 @@ $J_v = K_f [(P_c - P_i) - \sigma(\pi_c - \pi_i)]$.
 *   $\pi_c$ (Áp suất keo mao mạch): Tạo ra bởi protein huyết tương (chủ yếu là Albumin), là lực chính giữ nước và hút nước từ mô kẽ trở lại lòng mạch.
 *   $\pi_i$ (Áp suất keo mô kẽ): Thường rất nhỏ do ít protein thoát được ra mô kẽ.
 
-Hệ thống mạch bạch huyết (Lymphatic system) có vai trò hút phần dịch dư thừa (khoảng 15%) và các phân tử protein lọt ra mô kẽ để trả về hệ tuần hoàn tĩnh mạch, giúp ngăn ngừa phù nề (edema).
+Hệ thống mạch bạch huyết (Lymphatic system) có vai trò hút phần dịch dư thừa (khoảng 15%) và các phân tử protein lọt ra mô kẽ để trả về hệ tuần hoàn tĩnh mạch, giúp ngăn ngừa [[Phù]] nề (edema).
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Figure 3.18 Starling forces across the capillary wall.
@@ -88,17 +93,17 @@ Cơ chế này giúp điều chỉnh huyết áp nhanh chóng (từng phút, t�
     Các thụ thể áp suất nằm ở xoang cảnh (chi phối bởi dây thần kinh sọ số IX) và quai động mạch chủ (dây số X). 
     Khi huyết áp giảm $\rightarrow$ làm giảm độ căng thành mạch $\rightarrow$ giảm tần số xung động truyền về trung tâm vận mạch ở hành não $\rightarrow$ **Tăng** giao cảm và **Giảm** phó giao cảm (dây phế vị). Kết quả là: (1) Tăng nhịp tim và sức co bóp cơ tim; (2) Co tiểu động mạch làm tăng sức cản ngoại biên (TPR); (3) Co tĩnh mạch giúp đẩy máu về tim. Từ đó huyết áp được khôi phục.
 *   **Phản xạ hóa thụ quan (Chemoreceptor Reflex):** Nhạy cảm với tình trạng giảm $PO_2$, tăng $PCO_2$ và tăng $H^+$. Khi huyết áp giảm trầm trọng làm máu tưới mô kém, hóa thụ quan bị kích thích sẽ gửi tín hiệu gây co mạch mạnh.
-*   **Phản ứng thiếu máu não cục bộ (CNS Ischemic Response):** Khi huyết áp hạ xuống mức nguy hiểm (< 60 mmHg) làm lưu lượng máu đến hành não bị suy giảm, trung tâm vận mạch bị kích thích tột độ bởi lượng $CO_2$ tích tụ, gây ra co mạch giao cảm tối đa toàn thân. Đây là cơ chế "phòng thủ cuối cùng" (last-ditch stand) để cứu vãn mạng sống.
+*   **Phản ứng thiếu máu não cục bộ ([[Hệ thần kinh trung ương|CNS]] Ischemic Response):** Khi huyết áp hạ xuống mức nguy hiểm (< 60 mmHg) làm lưu lượng máu đến hành não bị suy giảm, trung tâm vận mạch bị kích thích tột độ bởi lượng $CO_2$ tích tụ, gây ra co mạch giao cảm tối đa toàn thân. Đây là cơ chế "phòng thủ cuối cùng" (last-ditch stand) để cứu vãn mạng sống.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Figure 3.16 Role of the baroreceptor reflex in the cardiovascular response to hemorrhage.
 > *   **Thuộc tài liệu:** `[Book] Linda S. Costanzo - Physiology (2018, LWW).pdf`
-> *   **Mô tả hình họa:** Lưu đồ cơ chế phản xạ Baroreceptor khi bị xuất huyết cấp tính (Hemorrhage). Mất máu làm giảm huyết áp trung bình ($P_a$) $\rightarrow$ giảm độ căng ở xoang cảnh $\rightarrow$ giảm tần số phóng điện của dây Hering $\rightarrow$ tăng hoạt động thần kinh giao cảm (tăng nhịp tim, co bóp, co động mạch và tĩnh mạch) đồng thời giảm hoạt động phó giao cảm $\rightarrow$ Huyết áp ($P_a$) tăng trở lại bình thường.
+> *   **Mô tả hình họa:** Lưu đồ cơ chế phản xạ Baroreceptor khi bị [[Xuất huyết]] cấp tính (Hemorrhage). Mất máu làm giảm huyết áp trung bình ($P_a$) $\rightarrow$ giảm độ căng ở xoang cảnh $\rightarrow$ giảm tần số phóng điện của dây Hering $\rightarrow$ tăng hoạt động thần kinh giao cảm (tăng nhịp tim, co bóp, co động mạch và tĩnh mạch) đồng thời giảm hoạt động phó giao cảm $\rightarrow$ Huyết áp ($P_a$) tăng trở lại bình thường.
 
-#### 6.2. Điều Hòa Dài Hạn Thông Qua Hệ Thống Nội Tiết - Thận
+#### 6.2. Điều Hòa Dài Hạn Thông Qua Hệ Thống Nội Tiết - [[Thận]]
 Quá trình này tác động chậm hơn nhưng kiểm soát huyết áp trong dài hạn bằng cách điều chỉnh thể tích máu:
 *   **Hệ Renin-Angiotensin-Aldosterone (RAAS):** 
-    Khi huyết áp giảm (hoặc giảm lưu lượng máu đến thận), tế bào cạnh cầu thận sẽ tiết ra enzym Renin. Renin chuyển Angiotensinogen thành Angiotensin I. Tại phổi, men chuyển (ACE) xúc tác đổi Angiotensin I thành Angiotensin II (một chất co mạch cực mạnh).
+    Khi huyết áp giảm (hoặc giảm lưu lượng máu đến [[Thận]]), tế bào cạnh cầu thận sẽ tiết ra enzym Renin. Renin chuyển Angiotensinogen thành Angiotensin I. Tại [[Phổi]], men chuyển (ACE) xúc tác đổi Angiotensin I thành Angiotensin II (một chất co mạch cực mạnh).
     Angiotensin II có các tác dụng chính:
     1. Trực tiếp gây co tiểu động mạch toàn thân (tăng TPR).
     2. Kích thích vỏ thượng thận tiết Aldosterone. Aldosterone tác động lên ống lượn xa và ống góp làm tăng tái hấp thu $Na^+$ và nước vào máu.
@@ -108,7 +113,7 @@ Quá trình này tác động chậm hơn nhưng kiểm soát huyết áp trong 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Figure 3.17 Role of the renin angiotensin aldosterone system in the cardiovascular response to hemorrhage.
 > *   **Thuộc tài liệu:** `[Book] Linda S. Costanzo - Physiology (2018, LWW).pdf`
-> *   **Mô tả hình họa:** Lưu đồ biểu diễn phản ứng của hệ RAAS với tình trạng xuất huyết cấp tính. Giảm áp lực tưới máu thận $\rightarrow$ Tăng Renin $\rightarrow$ Chuyển Angiotensinogen thành Angiotensin I $\rightarrow$ ACE chuyển thành Angiotensin II $\rightarrow$ Tăng tiết Aldosterone (góp phần tái hấp thu $Na^+$), kích thích khát nước, và co mạch (tăng TPR) $\rightarrow$ Đưa huyết áp trung bình ($P_a$) về bình thường.
+> *   **Mô tả hình họa:** Lưu đồ biểu diễn phản ứng của hệ RAAS với tình trạng [[Xuất huyết]] cấp tính. Giảm áp lực tưới máu thận $\rightarrow$ Tăng Renin $\rightarrow$ Chuyển Angiotensinogen thành Angiotensin I $\rightarrow$ ACE chuyển thành Angiotensin II $\rightarrow$ Tăng tiết Aldosterone (góp phần tái hấp thu $Na^+$), kích thích khát nước, và co mạch (tăng TPR) $\rightarrow$ Đưa huyết áp trung bình ($P_a$) về bình thường.
 
 *   **Peptide lợi niệu tâm nhĩ (ANP):** Trái ngược với RAAS, khi thể tích máu quá lớn gây căng buồng tâm nhĩ, các tế bào cơ nhĩ sẽ giải phóng ANP. ANP làm giãn mạch, tăng bài tiết $Na^+$ và nước ở thận, đồng thời ức chế tiết Renin, giúp hạ huyết áp.
 

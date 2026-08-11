@@ -1,9 +1,13 @@
 ---
 title: "SL_Đại cương & Nội môi"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. Đại cương về Sinh lý học và Tế bào
@@ -27,19 +31,19 @@ Cơ thể con người hoạt động như một "hệ thống mở", nghĩa là
 
 Gần như tất cả các hệ thống cơ quan đều đóng góp vào việc duy trì hằng định nội môi:
 *   **Hệ tuần hoàn:** Vận chuyển và trộn lẫn dịch ngoại bào liên tục khắp cơ thể.
-*   **Cung cấp dưỡng chất:** Hệ hô hấp (lấy $O_2$), hệ tiêu hóa (hấp thu carbohydrate, acid béo, acid amin), gan và cơ quan chuyển hóa, cùng với hệ cơ xương (giúp cơ thể di chuyển tìm kiếm thức ăn),,.
-*   **Loại bỏ chất thải chuyển hóa:** Phổi (thải $CO_2$), thận (thải các sản phẩm chứa nitơ, ion dư thừa),.
+*   **Cung cấp dưỡng chất:** Hệ hô hấp (lấy $O_2$), hệ tiêu hóa (hấp thu carbohydrate, acid béo, acid amin), [[Gan]] và cơ quan chuyển hóa, cùng với hệ cơ xương (giúp cơ thể di chuyển tìm kiếm thức ăn),,.
+*   **Loại bỏ chất thải chuyển hóa:** [[Phổi]] (thải $CO_2$), [[Thận]] (thải các sản phẩm chứa nitơ, ion dư thừa),.
 *   **Hệ thống điều hòa:** Hệ thần kinh (trung tâm chỉ huy và phản xạ tự chủ), hệ nội tiết (các hormone điều hòa chuyển hóa tế bào).
 *   **Bảo vệ cơ thể:** Hệ miễn dịch (phân biệt và tiêu diệt mầm bệnh lạ) và hệ vỏ bọc gồm da, lông, tóc, móng (tạo ranh giới bảo vệ, điều nhiệt, bài tiết),.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Plate 1.1: Internal and External Environment
 > *   **Thuộc tài liệu:** `[Book] Color Atlas of Physiology.pdf`
-> *   **Mô tả hình họa:** Sơ đồ so sánh hai hệ thống sinh học. (A) Sinh vật đơn bào sống trực tiếp trong môi trường biển nguyên thủy (Primordial sea) lấy chất dinh dưỡng và thải chất cặn bã ngay tại chỗ. (B) Ở con người đa bào, để duy trì một môi trường nội môi hằng định (Internal environment), cơ thể cần các cơ quan chuyên biệt giao tiếp với môi trường ngoài: Phổi (Lungs) trao đổi khí; Ống tiêu hóa (Digestive tract) và Gan (Liver) lấy dưỡng chất; Thận (Kidney) và Da (Skin) thải cặn bã, nước và nhiệt. Máu (Blood) và không gian ngoại bào (Extracellular space) là cầu nối vận chuyển, bao bọc các tế bào (Intracellular space) và được tích hợp bởi hệ thần kinh cùng nội tiết.
+> *   **Mô tả hình họa:** Sơ đồ so sánh hai hệ thống sinh học. (A) Sinh vật đơn bào sống trực tiếp trong môi trường biển nguyên thủy (Primordial sea) lấy chất dinh dưỡng và thải chất cặn bã ngay tại chỗ. (B) Ở con người đa bào, để duy trì một môi trường nội môi hằng định (Internal environment), cơ thể cần các cơ quan chuyên biệt giao tiếp với môi trường ngoài: [[Phổi]] (Lungs) trao đổi khí; [[Đường tiêu hóa|Ống tiêu hóa]] (Digestive tract) và [[Gan]] (Liver) lấy dưỡng chất; [[Thận]] (Kidney) và Da (Skin) thải cặn bã, nước và nhiệt. Máu (Blood) và không gian ngoại bào (Extracellular space) là cầu nối vận chuyển, bao bọc các tế bào (Intracellular space) và được tích hợp bởi hệ thần kinh cùng nội tiết.
 >
 > *   **Tên hình:** Fig. 2.1: Whole-body steady-state water balance.
 > *   **Thuộc tài liệu:** `[Book] Berne and Levy Physiology 8e by Bruce M. Koeppen, Bruce A. Stanton.pdf`
-> *   **Mô tả hình họa:** Sơ đồ biểu diễn cân bằng trạng thái ổn định của nước trong cơ thể. Bộ phận cảm biến thần kinh trung ương (CNS sensor) đo lường áp suất thẩm thấu cơ thể so với điểm chuẩn (Set-point). Khi có sự chênh lệch, tín hiệu thực thi (Effector signal) như cảm giác khát (Thirst) hoặc tiết hormone ADH sẽ kích hoạt để điều chỉnh lượng Nước nhập (từ ăn uống, chuyển hóa) sao cho luôn bằng với lượng Nước xuất (thoát qua phổi, da, đường tiêu hóa, và thận).
+> *   **Mô tả hình họa:** Sơ đồ biểu diễn cân bằng trạng thái ổn định của nước trong cơ thể. Bộ phận cảm biến thần kinh trung ương ([[Hệ thần kinh trung ương|CNS]] sensor) đo lường áp suất thẩm thấu cơ thể so với điểm chuẩn (Set-point). Khi có sự chênh lệch, tín hiệu thực thi (Effector signal) như cảm giác khát (Thirst) hoặc tiết hormone ADH sẽ kích hoạt để điều chỉnh lượng Nước nhập (từ ăn uống, chuyển hóa) sao cho luôn bằng với lượng Nước xuất (thoát qua phổi, da, [[Đường tiêu hóa]], và thận).
 
 > **[TRÍCH XUẤT BẢNG THÔNG TIN]**
 > *   **Tên Bảng:** Table 1-1: Important Constituents and Physical Characteristics of Extracellular Fluid
@@ -59,14 +63,14 @@ Gần như tất cả các hệ thống cơ quan đều đóng góp vào việc 
 Cơ thể có hàng ngàn hệ thống điều khiển khác nhau. Hầu hết các hệ thống này vận hành dựa trên cơ chế **phản hồi âm tính (Negative feedback)**,.
 
 *   **Cơ chế Phản hồi âm tính:** Khi một yếu tố trở nên quá mức hoặc thiếu hụt, hệ thống điều khiển sẽ khởi phát một chuỗi các sự kiện làm thay đổi tình trạng hiện tại nhằm đưa yếu tố đó trở về một giá trị trung bình (giá trị chuẩn / set-point),,. Một hệ thống phản hồi âm chuẩn gồm có một bộ điều khiển lập trình sẵn giá trị chuẩn, các cơ quan thực thi (effectors) để tạo ra sự thay đổi, và bộ phận cảm biến (sensors) liên tục đo lường báo cáo sai lệch.
-    *(Ví dụ: Tăng $CO_2$ kích thích hô hấp để thải $CO_2$ dư thừa; Tăng huyết áp kích thích các baroreceptor báo về não để giảm nhịp tim và giãn mạch làm hạ huyết áp,).*
+    *(Ví dụ: Tăng $CO_2$ kích thích hô hấp để thải $CO_2$ dư thừa; [[Tăng huyết áp]] kích thích các baroreceptor báo về não để giảm nhịp [[Tim]] và giãn mạch làm hạ huyết áp,).*
 *   **Độ lợi (Gain):** Mức độ hiệu quả của một hệ thống phản hồi âm trong việc duy trì hằng định nội môi được định lượng bằng "độ lợi". Công thức tính là: $Gain = Correction / Error$ (Độ lợi = Sự sửa chữa / Sai số còn lại).
 *   **Phản hồi dương tính (Positive feedback):** Phản hồi dương tính thường dẫn đến sự mất ổn định chứ không phải sự hằng định. Đặc trưng của nó là kích thích ban đầu gây ra thêm nhiều phản ứng cùng loại, tạo thành "vòng luẩn quẩn" (vicious cycles) có thể gây tử vong. Tuy nhiên, trong một số ít trường hợp sinh lý, cơ thể cố tình sử dụng phản hồi dương tính có ích như hiện tượng đông máu, co thắt tử cung trong chuyển dạ, hoặc kích hoạt mở kênh Natri tạo điện thế động thần kinh.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Figure 1-4: Recovery of heart pumping caused by negative feedback...
 > *   **Thuộc tài liệu:** `[Book] Guyton and Hall Textbook of Medical Physiology (c2016, Elsevier)-pages-1.pdf`
-> *   **Mô tả hình họa:** Đồ thị biểu diễn hiệu suất bơm máu của tim (Lít/phút) theo thời gian (Giờ). Khi cơ thể bị mất 1 lít máu (Bled 1 liter), cơ chế phản hồi âm tính hoạt động hiệu quả giúp lực bơm của tim phục hồi trở lại mức bình thường (Return to normal). Tuy nhiên, khi mất 2 lít máu (Bled 2 liters), lượng máu giảm quá trầm trọng làm tim không bơm đủ máu để nuôi chính cơ tim, gây suy yếu tim dần dần, tạo thành vòng luẩn quẩn của phản hồi dương tính đẩy hiệu suất bơm tụt dốc liên tục dẫn đến tử vong (Death).
+> *   **Mô tả hình họa:** Đồ thị biểu diễn hiệu suất bơm máu của tim (Lít/phút) theo thời gian (Giờ). Khi cơ thể bị mất 1 lít máu (Bled 1 liter), cơ chế phản hồi âm tính hoạt động hiệu quả giúp lực bơm của tim phục hồi trở lại mức bình thường (Return to normal). Tuy nhiên, khi mất 2 lít máu (Bled 2 liters), lượng máu giảm quá trầm trọng làm tim không bơm đủ máu để nuôi chính [[Tim|cơ tim]], gây suy yếu tim dần dần, tạo thành vòng luẩn quẩn của phản hồi dương tính đẩy hiệu suất bơm tụt dốc liên tục dẫn đến tử vong (Death).
 
 ---
 

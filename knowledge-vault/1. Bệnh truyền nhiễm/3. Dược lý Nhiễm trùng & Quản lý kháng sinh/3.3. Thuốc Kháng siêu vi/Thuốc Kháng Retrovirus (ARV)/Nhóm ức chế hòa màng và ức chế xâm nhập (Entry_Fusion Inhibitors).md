@@ -1,7 +1,13 @@
 ---
+title: "Nhóm ức chế hòa màng và ức chế xâm nhập (Entry_Fusion Inhibitors)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 _Lưu ý: Các tài liệu bạn cung cấp chỉ đề cập rất ngắn gọn về đặc tính Dược động học/Dược lực học (PK/PD) và vị trí điều trị của Maraviroc cùng Fostemsavir. Để đảm bảo cấu trúc hệ thống kiến thức lâm sàng toàn diện theo yêu cầu, tôi đã bổ sung các chi tiết về cơ chế phân tử, tác dụng phụ và quy trình giám sát từ kiến thức y khoa chuyên ngành bên ngoài (được ghi chú rõ ràng để bạn có thể xác minh độc lập)._
 
 ### 1. Tổng quan & Phân loại (Classification)
@@ -42,9 +48,9 @@ _Lưu ý: Các tài liệu bạn cung cấp chỉ đề cập rất ngắn gọn
 
 _(Lưu ý: Tài liệu được cung cấp không ghi nhận thông tin về ADRs, các thông tin dưới đây hoàn toàn là kiến thức y khoa bổ sung)._
 
-- **Độc tính trên Gan (với Maraviroc):** Có cảnh báo hộp đen về nguy cơ nhiễm độc gan nghiêm trọng, có thể kèm theo phản ứng dị ứng toàn thân.
+- **Độc tính trên [[Gan]] (với Maraviroc):** Có cảnh báo hộp đen về nguy cơ nhiễm độc [[Gan]] nghiêm trọng, có thể kèm theo phản ứng dị ứng toàn thân.
 - **Phản ứng tại chỗ tiêm (với Enfuvirtide):** Hầu như tất cả bệnh nhân (gần 100%) gặp phải phản ứng đau, sưng, ban đỏ nốt sần tại vị trí tiêm dưới da, đây là nguyên nhân chính khiến bệnh nhân từ chối điều trị.
-- **Tương tác thuốc qua CYP3A4:** Maraviroc là cơ chất của hệ CYP3A4. Phải hết sức thận trọng và hiệu chỉnh liều khi dùng chung với các thuốc cảm ứng mạnh (như Rifampin trong điều trị lao) hoặc ức chế mạnh (như các PIs - Protease Inhibitors) CYP3A4.
+- **Tương tác thuốc qua CYP3A4:** Maraviroc là cơ chất của hệ CYP3A4. Phải hết sức [[Thận]] trọng và hiệu chỉnh liều khi dùng chung với các thuốc cảm ứng mạnh (như Rifampin trong điều trị lao) hoặc ức chế mạnh (như các PIs - Protease Inhibitors) CYP3A4.
 
 ### 7. Theo dõi & Giám sát (Monitoring)
 

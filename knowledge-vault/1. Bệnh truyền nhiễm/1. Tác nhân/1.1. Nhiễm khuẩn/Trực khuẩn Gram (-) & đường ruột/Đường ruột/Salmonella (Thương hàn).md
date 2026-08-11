@@ -1,6 +1,12 @@
 ---
+title: "Salmonella (Thương hàn)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - he-co-quan/tieu-hoa
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 **Tổng quan và Phân loại học (Taxonomy)** 
@@ -28,17 +34,17 @@ Trong y học lâm sàng, _Salmonella_ thường được chia thành hai nhóm 
 
 **Biểu hiện Lâm sàng**
 
-- **Viêm dạ dày ruột:** Là biểu hiện phổ biến nhất của NTS, đặc trưng bởi tiêu chảy (đôi khi có máu), sốt và đau bụng.
-- **Bệnh lý xâm lấn:** Bao gồm nhiễm khuẩn huyết, nhiễm trùng nội mạc mạch máu (như viêm nội tâm mạc, phình động mạch nhiễm trùng) và các ổ nhiễm trùng khu trú (viêm màng não, viêm tủy xương, viêm khớp). Nguy cơ bệnh xâm lấn cao hơn ở những bệnh nhân suy giảm miễn dịch (HIV, ung thư, ghép tạng, sử dụng thuốc kháng TNF-alpha) và ở trẻ nhỏ hoặc người già.
+- **Viêm dạ dày ruột:** Là biểu hiện phổ biến nhất của NTS, đặc trưng bởi [[Tiêu chảy]] (đôi khi có máu), [[Sốt]] và [[Đau bụng]].
+- **Bệnh lý xâm lấn:** Bao gồm [[Nhiễm trùng huyết|nhiễm khuẩn huyết]], nhiễm trùng nội mạc mạch máu (như viêm nội tâm mạc, phình động mạch nhiễm trùng) và các ổ nhiễm trùng khu trú ([[Viêm màng não]], viêm tủy xương, viêm khớp). Nguy cơ bệnh xâm lấn cao hơn ở những bệnh nhân suy giảm miễn dịch (HIV, ung thư, ghép tạng, sử dụng thuốc kháng TNF-alpha) và ở trẻ nhỏ hoặc người già.
 - **Tình trạng mang trùng mạn tính:** Khoảng 0,2% - 0,6% bệnh nhân có thể trở thành người mang trùng mạn tính (mang vi khuẩn trong túi mật trên 1 năm), có thể xảy ra ở cả mầm bệnh Thương hàn (_S. Typhi_) và NTS.
 
 **Chẩn đoán và Điều trị**
 
-- **Chẩn đoán:** Tiêu chuẩn vàng là nuôi cấy vi khuẩn từ máu, dịch não tủy, các dịch vô trùng khác của cơ thể, hoặc từ phân đối với trường hợp viêm dạ dày ruột. Các xét nghiệm huyết thanh học (serology) không có giá trị đối với bệnh lý xâm lấn.
+- **Chẩn đoán:** Tiêu chuẩn vàng là nuôi cấy vi khuẩn từ máu, [[Dịch nào tủy|dịch não tủy]], các dịch vô trùng khác của cơ thể, hoặc từ phân đối với trường hợp viêm dạ dày ruột. Các xét nghiệm huyết thanh học (serology) không có giá trị đối với bệnh lý xâm lấn.
 - **Điều trị:**
     - Với bệnh nhân viêm dạ dày ruột nhẹ: Chủ yếu là bù nước và điện giải.
-    - Với ca bệnh nặng, bệnh nhân có nguy cơ cao, viêm dạ dày ruột do Thương hàn, hoặc nhiễm khuẩn huyết/nhiễm trùng khu trú: Bắt buộc sử dụng kháng sinh theo kinh nghiệm bằng **Ceftriaxone** hoặc **Fluoroquinolones**.
-- **Kháng kháng sinh:** Đang có sự gia tăng đáng lo ngại của các chủng _Salmonella_ đa kháng thuốc (MDR) và các chủng giảm nhạy cảm với fluoroquinolone. Điều trị đặc hiệu cần dựa vào kết quả kháng sinh đồ.
+    - Với ca bệnh nặng, bệnh nhân có nguy cơ cao, viêm dạ dày ruột do Thương hàn, hoặc [[Nhiễm trùng huyết|nhiễm khuẩn huyết]]/nhiễm trùng khu trú: Bắt buộc sử dụng [[Kháng sinh]] theo kinh nghiệm bằng **[[Ceftriaxone]]** hoặc **Fluoroquinolones**.
+- **Kháng [[Kháng sinh]]:** Đang có sự gia tăng đáng lo ngại của các chủng _Salmonella_ đa kháng thuốc (MDR) và các chủng giảm nhạy cảm với fluoroquinolone. Điều trị đặc hiệu cần dựa vào kết quả kháng sinh đồ.
 
 **Dự phòng** Việc kiểm soát _Salmonella_ đòi hỏi phản ứng phối hợp từ y tế công cộng để giám sát và xác định các mối nguy từ trang trại đến bàn ăn. Các biện pháp bao gồm: vệ sinh an toàn thực phẩm, tiêm phòng cho vật nuôi và gia cầm (gà đẻ trứng), hạn chế sử dụng kháng sinh làm chất kích thích tăng trưởng trong chăn nuôi, và chú ý rửa tay sạch sẽ sau khi tiếp xúc với động vật (đặc biệt là thú cưng họ bò sát).
 

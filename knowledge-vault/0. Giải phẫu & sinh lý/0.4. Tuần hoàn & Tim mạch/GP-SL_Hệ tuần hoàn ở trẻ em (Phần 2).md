@@ -1,10 +1,21 @@
+---
+title: "GP-SL_Hệ tuần hoàn ở trẻ em (Phần 2)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: CÁC CHỈ SỐ HUYẾT ĐỘNG HỌC CƠ BẢN Ở TRẺ EM)
 
 ---
 
-## 1. Đặc Điểm Sinh Lý Nhịp Tim ở Trẻ Em (Heart Rate)
+## 1. Đặc Điểm Sinh Lý Nhịp [[Tim]] ở Trẻ Em (Heart Rate)
 
-### 1.1. Sự Thay Đổi Nhịp Tim Theo Lứa Tuổi và Trạng Thái Hoạt Động
+### 1.1. Sự Thay Đổi Nhịp [[Tim]] Theo Lứa Tuổi và Trạng Thái Hoạt Động
 
 - **Tính chất chung:** Nhịp tim ở trẻ sơ sinh và trẻ nhỏ **nhanh và rất dễ thay đổi**.
 - **Nhịp tim ở trẻ sơ sinh:** Nhịp tim trung bình ở trẻ sơ sinh dao động từ **120 đến 140 lần/phút**. Nhịp tim có thể tăng lên đến **170 lần/phút** khi trẻ khóc hoặc vận động, và giảm xuống còn **70 - 90 lần/phút** khi trẻ ngủ ngoan.
@@ -55,8 +66,8 @@
     - Tiếng Korotkoff pha 5 (K5 - khi tiếng đập biến mất) được dùng để xác định **huyết áp tâm trương**. Trong trường hợp tiếng K5 vẫn còn nghe đến mức 0 mmHg, bác sĩ sẽ lấy tiếng Korotkoff pha 4 (K4 - khi tiếng đập mờ đi) làm trị số huyết áp tâm trương.
 - **Khuyến cáo của Hiệp hội Nhi khoa Hoa Kỳ (AAP 2017):**
     - Trẻ từ **$\ge$ 3 tuổi** nên được đo huyết áp tầm soát **mỗi năm 1 lần**.
-    - Đo huyết áp ở **mỗi lần thăm khám** đối với trẻ $\ge$ 3 tuổi có béo phì, đang dùng thuốc có nguy cơ gây tăng huyết áp, có bệnh lý thận, tiền căn hẹp eo động mạch chủ hoặc đái tháo đường.
-    - Chẩn đoán **cao huyết áp** khi huyết áp đo bằng ống nghe **$\ge$ bách phân vị thứ 95** ở **3 lần thăm khám khác nhau**.
+    - Đo huyết áp ở **mỗi lần thăm khám** đối với trẻ $\ge$ 3 tuổi có béo phì, đang dùng thuốc có nguy cơ gây [[Tăng huyết áp]], có bệnh lý [[Thận]], tiền căn hẹp eo động mạch chủ hoặc đái tháo đường.
+    - Chẩn đoán **[[Tăng huyết áp|cao huyết áp]]** khi huyết áp đo bằng ống nghe **$\ge$ bách phân vị thứ 95** ở **3 lần thăm khám khác nhau**.
 
 ---
 

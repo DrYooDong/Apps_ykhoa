@@ -1,9 +1,13 @@
 ---
 title: "Chiến lược tìm kiếm tài liệu chuyên sâu (MeSH & Boolean)"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Thực hành Y học chứng cứ (EBM Skills)"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Phương pháp luận nghiên cứu khoa học, tôi xin trình bày bản phân tích chuyên sâu về **Chiến lược tìm kiếm tài liệu (Literature Search Strategies)**, tập trung vào việc ứng dụng Hệ thống từ vựng kiểm soát (MeSH) và Toán tử logic (Boolean) dựa trên các tài liệu đã được cung cấp.
 
 Trong Y học thực chứng, việc tìm kiếm y văn không chỉ là một thao tác công nghệ thông tin đơn thuần, mà là một quy trình khoa học có hệ thống, minh bạch và có thể lặp lại (reproducible) nhằm giảm thiểu tối đa các sai lệch chọn lựa (selection bias) ngay từ giai đoạn thu thập dữ liệu.
@@ -57,7 +61,7 @@ Dưới góc nhìn phương pháp luận, chiến lược tìm kiếm bộc lộ
 - **Sai lệch do chỉ dùng MEDLINE (Database Bias):** Một nghiên cứu cho thấy nếu chỉ tìm kiếm đơn độc trên MEDLINE, bạn sẽ chỉ nhận diện được từ 30% - 80% tổng số các thử nghiệm ngẫu nhiên (RCT) đã công bố. Việc dựa hoàn toàn vào MEDLINE sẽ tạo ra một tập hợp dữ liệu không mang tính đại diện, dẫn đến sai lệch chọn lựa.
 - **Sai lệch ngôn ngữ (Language Bias):** Tổ chức Cochrane khuyến cáo mạnh mẽ **không được áp dụng các giới hạn về ngôn ngữ** (Language restrictions) trong chiến lược tìm kiếm. Việc loại bỏ các nghiên cứu không phải tiếng Anh có thể làm thay đổi kết quả của phân tích gộp (mặc dù điều này vẫn còn đang được tranh luận).
 - **Hội chứng rập khuôn PICO:** Mặc dù câu hỏi nghiên cứu được xây dựng theo khung PICO (Patient, Intervention, Comparison, Outcome), nhưng khi thiết lập lệnh tìm kiếm, **không nên đưa yếu tố Kết cục (Outcome) vào lệnh tìm**. Lý do là các kết cục (outcomes) thường không được mô tả đầy đủ trong tiêu đề/tóm tắt và không được gán nhãn MeSH chuẩn xác, nếu đưa vào sẽ làm rớt mất rất nhiều bài báo quan trọng.
-- **Nguy cơ từ Bộ lọc thiết kế nghiên cứu (Search Filters):** Việc dùng các "bộ lọc" để tìm nhanh RCT hoặc Tổng quan hệ thống cần rất thận trọng vì chúng có giới hạn về độ nhạy và độ chính xác.
+- **Nguy cơ từ Bộ lọc thiết kế nghiên cứu (Search Filters):** Việc dùng các "bộ lọc" để tìm nhanh RCT hoặc Tổng quan hệ thống cần rất [[Thận]] trọng vì chúng có giới hạn về độ nhạy và độ chính xác.
 
 ---
 

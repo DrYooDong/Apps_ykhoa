@@ -1,9 +1,13 @@
 ---
 title: "Phân tích Xét nghiệm nhuộm soi vi sinh"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Cận lâm sàng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 Đọc và phân tích tiêu bản soi tươi cũng như nhuộm Gram là một trong những kỹ năng vi sinh cơ bản và quan trọng nhất để định hướng chẩn đoán tác nhân gây bệnh. Dưới đây là các bước thực hiện và phân tích chi tiết dựa trên các tài liệu vi sinh và hướng dẫn thực hành lâm sàng chuẩn.
 
 ### PHẦN 1: CÁC BƯỚC ĐỌC VÀ PHÂN TÍCH NHUỘM GRAM
@@ -33,10 +37,10 @@ Nhuộm Gram giúp phân loại vi khuẩn dựa trên cấu trúc vách tế b�
     *   *Trực khuẩn (Rods):* Rất phổ biến, điển hình như *Escherichia coli*.
     *   *Trực khuẩn cong (Cánh chim hải âu/chữ S):* Điển hình của *Campylobacter jejuni*.
     *   *Cầu trực khuẩn đa hình thái (Coccobacilli):* Rất nhỏ, gợi ý *Haemophilus influenzae*. Trực khuẩn có hai đầu nhọn vát (Fusiform) là *Fusobacterium*.
-    *   *Song cầu khuẩn (Diplococci):* Hình hạt cà phê hoặc quả thận đứng úp vào nhau, đặc trưng của *Neisseria gonorrhoeae* hoặc *Neisseria meningitidis*.
+    *   *Song cầu khuẩn (Diplococci):* Hình hạt cà phê hoặc quả [[Thận]] đứng úp vào nhau, đặc trưng của *Neisseria gonorrhoeae* hoặc *Neisseria meningitidis*.
 
 **Bước 4: Giải quyết sự cố bất thường (Troubleshooting)**
-*   **Gram dương trông giống Gram âm (màu hồng):** Xảy ra khi tẩy màu quá mức, quên cố định I-ốt, mẫu cấy đã quá cũ (vách tế bào bị thoái hóa), hoặc bệnh nhân đang dùng kháng sinh (làm hỏng vách tế bào).
+*   **Gram dương trông giống Gram âm (màu hồng):** Xảy ra khi tẩy màu quá mức, quên cố định I-ốt, mẫu cấy đã quá cũ (vách tế bào bị thoái hóa), hoặc bệnh nhân đang dùng [[Kháng sinh]] (làm hỏng vách tế bào).
 *   **Gram âm trông giống Gram dương (màu tím):** Chủ yếu do phết lam quá dày khiến thuốc nhuộm bị kẹt lại, hoặc tẩy màu chưa đủ thời gian.
 
 ---
@@ -57,7 +61,7 @@ Phương pháp này bảo tồn cực tốt cấu trúc tơ nấm và bào tử.
 
 **3. Soi tươi phân với Lugol's Iodine (Tìm Ký sinh trùng đường ruột)**
 Sử dụng để tạo độ tương phản, giúp làm nổi bật cấu trúc bên trong của trứng và nang ký sinh trùng (ova and protozoan cysts).
-*   **Tiến hành:** Nhỏ 1 giọt nước muối sinh lý (0.85%) ở một đầu lam kính, và 1 giọt dung dịch Lugol's iodine (1%) ở đầu kia. Dùng que tăm nhũ tương hóa một lượng nhỏ phân vào giọt nước muối, lặp lại với giọt Iodine. Đậy lamen cẩn thận để tránh bọt khí. 
+*   **Tiến hành:** Nhỏ 1 giọt nước muối sinh lý (0.85%) ở một đầu lam kính, và 1 giọt dung dịch Lugol's iodine (1%) ở đầu kia. Dùng que tăm nhũ tương hóa một lượng nhỏ phân vào giọt nước muối, lặp lại với giọt Iodine. Đậy lamen cẩn [[Thận]] để tránh bọt khí. 
 *   **Phân tích:** Soi dưới vật kính thấp, chú ý phải giảm cường độ ánh sáng của kính hiển vi (ánh sáng quá mạnh sẽ làm chói và bỏ sót nang ký sinh trùng). Tế bào chất của ký sinh trùng không bắt màu nhưng nhân của chúng sẽ bắt màu I-ốt thành màu nâu nhạt (pale brown), giúp phân biệt dễ dàng. *Lưu ý: Thể hoạt động (trophozoites) chỉ có thể phát hiện được ở mẫu soi tươi trong nước muối chưa tập trung*.
 
 **4. Soi tươi / Nhuộm nhanh với Acridine Orange (Tìm trùng roi âm đạo)**

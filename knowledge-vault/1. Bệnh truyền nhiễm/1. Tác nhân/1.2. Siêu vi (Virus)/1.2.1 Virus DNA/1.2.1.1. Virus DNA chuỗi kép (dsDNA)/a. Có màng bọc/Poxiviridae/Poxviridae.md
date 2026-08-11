@@ -1,6 +1,14 @@
 ---
+title: "Poxviridae"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-[[Poxviridae (Đậu mùa)]]
-[[Molluscum contagiosum]]
+
+## 📌 Danh Mục Nội Dung
+
+1. [[Poxviridae (Đậu mùa)]]
+2. [[Molluscum contagiosum]]

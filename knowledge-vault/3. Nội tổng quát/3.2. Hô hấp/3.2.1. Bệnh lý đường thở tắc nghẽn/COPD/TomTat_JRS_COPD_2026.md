@@ -1,6 +1,17 @@
+---
+title: "TomTat_JRS_COPD_2026"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 **TÓM TẮT HƯỚNG DẪN JRS 2026**
 
-**QUẢN LÝ BỆNH PHỔI TẮC NGHẼN MẠN TÍNH (COPD) — ẤN BẢN LẦN 7**
+**QUẢN LÝ BỆNH [[Phổi]] TẮC NGHẼN MẠN TÍNH (COPD) — ẤN BẢN LẦN 7**
 
 *Japanese Respiratory Society (JRS) — Respiratory Investigation 64 (2026) 101482*
 
@@ -29,7 +40,7 @@
 * **★** Nút nhầy đường thở phát hiện trên CT (mucus plugging) được công nhận là yếu tố tiên lượng độc lập.  
 * **★** Đưa lão hóa tế bào (cellular senescence) và kiểu hình tiết liên quan lão hóa (SASP) vào cơ chế bệnh sinh.  
 * Quản lý bệnh đồng mắc (đặc biệt tim mạch quanh đợt cấp) được nâng thành mục tiêu điều trị cốt lõi, không còn là ghi chú phụ.  
-* Giữ nguyên 15 câu hỏi lâm sàng (CQ1–15) của ấn bản 6; bổ sung 7 CQ mới (CQ16–22): macrolide dài hạn, giảm thể tích phổi qua nội soi phế quản (BLVR), và quản lý đợt cấp toàn diện (giãn phế quản, corticosteroid toàn thân, kháng sinh, hỗ trợ hô hấp).  
+* Giữ nguyên 15 câu hỏi lâm sàng (CQ1–15) của ấn bản 6; bổ sung 7 CQ mới (CQ16–22): macrolide dài hạn, giảm thể tích [[Phổi]] qua nội soi phế quản (BLVR), và quản lý đợt cấp toàn diện (giãn phế quản, [[Corticoid|corticosteroid]] toàn thân, [[Kháng sinh]], hỗ trợ hô hấp).  
 * Dupilumab (kháng thể kháng thụ thể chung IL-4/IL-13) — khuyến cáo mới cho bệnh nhân viêm type 2 kèm đợt cấp thường xuyên.  
 * Khởi động dự án quốc gia “COMORE-By 2032” nhằm phát hiện sớm COPD và nâng nhận thức cộng đồng, gắn với chính sách “Health Japan 21 (kỳ 3)”.
 
@@ -40,18 +51,18 @@
 * Etiotype GOLD 2023: 7 phân nhóm theo nguyên nhân chủ đạo, phản ánh tương tác gen–môi trường tích lũy suốt đời, không chỉ do thuốc lá.  
 * Yếu tố nguy cơ mở rộng: PM2,5, oxit nitơ (NOx), đốt sinh khối, nhiễm trùng, suy giảm phát triển phổi thời thơ ấu.  
 * **★** Eosinophil máu ≥300 tế bào/μL hướng dẫn dùng ICS ở bệnh nhân đợt cấp thường xuyên; FeNO hỗ trợ chẩn đoán ACO; BNP/NT-proBNP hỗ trợ đánh giá bệnh đồng mắc tim mạch.  
-* Ba khái niệm bệnh học mới được nhấn mạnh: (1) nút nhầy trên CT — tiên lượng độc lập, tăng đợt cấp và tử vong; (2) lão hóa tế bào/SASP — thúc đẩy viêm đường thở và phá hủy nhu mô kéo dài; (3) dữ liệu multi-omics gợi ý trình tự viêm tiểu phế quản tận (đại thực bào, bạch cầu trung tính) đi trước hình thành khí phế thũng.
+* Ba khái niệm bệnh học mới được nhấn mạnh: (1) nút nhầy trên CT — tiên lượng độc lập, tăng đợt cấp và tử vong; (2) lão hóa tế bào/SASP — thúc đẩy viêm đường thở và phá hủy nhu mô kéo dài; (3) dữ liệu multi-omics gợi ý trình tự viêm tiểu phế quản tận (đại thực bào, [[Bạch cầu]] trung tính) đi trước hình thành khí phế thũng.
 
 **3.2. Bệnh đồng mắc: tim mạch (CVD) và giãn phế quản**
 
-* Bệnh mạch vành thiếu máu cục bộ tăng rõ rệt ở bệnh nhân COPD so với dân số chung (nghiên cứu NOVELTY); suy tim phân suất tống máu bảo tồn (HFpEF) thường gặp, tăng nguy cơ tử vong; viêm hệ thống mạn (IL-6, CRP, TNF-α) là cơ chế bệnh sinh chung giữa COPD và CVD.  
-* **★** Nguy cơ biến cố tim mạch (nhồi máu cơ tim, suy tim, loạn nhịp) tăng vọt trong các tuần đầu SAU đợt cấp COPD — dữ liệu từ thử nghiệm IMPACT và chương trình EXACOS-CV đa quốc gia (bao gồm dữ liệu Nhật Bản), nguy cơ vẫn tăng kéo dài quá giai đoạn cấp (phân tích gộp EXACOS-CV). Khuyến cáo tầm soát chủ động bằng BNP/NT-proBNP, điện tâm đồ 12 chuyển đạo, siêu âm tim sau đợt cấp.  
-* Phối hợp COPD–giãn phế quản (bronchiectasis) là kiểu hình riêng biệt trong ấn bản 7, xác định theo tiêu chuẩn ROSE (Radiology, Obstruction, Symptoms, Exposure — đồng thuận EMBARC Airways Working Group); tăng tần suất đợt cấp và tử vong. Macrolide (CQ16) là lựa chọn điều trị liên quan; thận trọng ICS vì tăng nguy cơ viêm phổi.
+* Bệnh mạch vành thiếu máu cục bộ tăng rõ rệt ở bệnh nhân COPD so với dân số chung (nghiên cứu NOVELTY); suy tim phân suất tống máu bảo tồn (HFpEF) thường gặp, tăng nguy cơ tử vong; viêm hệ thống mạn (IL-6, [[CRP]], TNF-α) là cơ chế bệnh sinh chung giữa COPD và CVD.  
+* **★** Nguy cơ biến cố tim mạch (nhồi máu [[Tim|cơ tim]], suy tim, loạn nhịp) tăng vọt trong các tuần đầu SAU đợt cấp COPD — dữ liệu từ thử nghiệm IMPACT và chương trình EXACOS-CV đa quốc gia (bao gồm dữ liệu Nhật Bản), nguy cơ vẫn tăng kéo dài quá giai đoạn cấp (phân tích gộp EXACOS-CV). Khuyến cáo tầm soát chủ động bằng BNP/NT-proBNP, điện tâm đồ 12 chuyển đạo, [[Siêu âm|siêu âm tim]] sau đợt cấp.  
+* Phối hợp COPD–giãn phế quản (bronchiectasis) là kiểu hình riêng biệt trong ấn bản 7, xác định theo tiêu chuẩn ROSE (Radiology, Obstruction, Symptoms, Exposure — đồng thuận EMBARC Airways Working Group); tăng tần suất đợt cấp và tử vong. Macrolide (CQ16) là lựa chọn điều trị liên quan; [[Thận]] trọng ICS vì tăng nguy cơ viêm phổi.
 
 **3.3. Pre-COPD và PRISm**
 
 * Pre-COPD (khái niệm mới từ GOLD 2023, thay thế “GOLD Stage 0”): có triệu chứng hô hấp và/hoặc bất thường cấu trúc trên CT và/hoặc suy giảm sinh lý (giảm khả năng khuếch tán CO, bẫy khí, giảm FEV1 nhanh) nhưng FEV1/FVC sau giãn phế quản vẫn ≥0,70. Chiếm 7,2–22,3% quần thể nguy cơ; tốc độ giảm FEV1 trung gian giữa người khỏe mạnh và COPD đã xác lập — gợi ý cửa sổ can thiệp sớm.  
-* PRISm (Preserved Ratio Impaired Spirometry): FEV1/FVC ≥0,70 nhưng %FEV1 dự đoán \<80%. Tỷ lệ 1,4–19,6% (nghiên cứu quốc tế), 4,4–16,7% (nghiên cứu Nhật). Liên quan tăng tử vong mọi nguyên nhân, tăng nguy cơ tim mạch, và tiến triển thành COPD.
+* PRISm (Preserved Ratio Impaired Spirometry): FEV1/FVC ≥0,70 nhưng %FEV1 dự đoán \<80%. Tỷ lệ 1,4–19,6% (nghiên cứu quốc tế), 4,4–16,7% (nghiên cứu Nhật). Liên quan tăng tử vong mọi nguyên nhân, tăng nguy [[Tim|cơ tim]] mạch, và tiến triển thành COPD.
 
 **3.4. Tiêu chuẩn chẩn đoán (không đổi so với ấn bản 6\)**
 
@@ -62,7 +73,7 @@
 **3.5. Mục tiêu quản lý**
 
 * Hai trục chính: (1) cải thiện/duy trì hiện trạng — giảm triệu chứng, cải thiện chất lượng cuộc sống (CAT), dung nạp gắng sức, hoạt động thể lực; (2) giảm nguy cơ tương lai — ngừa đợt cấp, làm chậm tiến triển bệnh, kéo dài tuổi thọ khỏe mạnh (gắn với chính sách quốc gia “Health Japan 21 kỳ 3”, mục tiêu 2032).  
-* **★** Quản lý bệnh đồng mắc được nâng thành mục tiêu cốt lõi (không tách rời quản lý hô hấp) — đặc biệt tầm soát chủ động CVD bằng BNP/NT-proBNP, ECG, siêu âm tim.
+* **★** Quản lý bệnh đồng mắc được nâng thành mục tiêu cốt lõi (không tách rời quản lý hô hấp) — đặc biệt tầm soát chủ động CVD bằng BNP/NT-proBNP, ECG, [[Siêu âm|siêu âm tim]].
 
 **4\. BẢNG TÓM TẮT CHẨN ĐOÁN/PHÂN LOẠI**
 
@@ -83,7 +94,7 @@
 | Eosinophil máu ngoại vi | ≥ 300 tế bào/μL (đo lặp lại do dao động) | Hướng dẫn thêm ICS ở BN đợt cấp thường xuyên; xét chỉ định anti-IL-4Rα (dupilumab) |
 | FeNO | Không có ngưỡng cố định trong bài | Hỗ trợ chẩn đoán hen–COPD chồng lấp (ACO) |
 | BNP / NT-proBNP | Tăng bất thường | Tầm soát/loại trừ bệnh đồng mắc tim mạch — đặc biệt SAU đợt cấp |
-| CRP / Procalcitonin | Tăng | Hướng dẫn quyết định dùng kháng sinh trong đợt cấp (phân biệt nguyên nhân vi khuẩn) |
+| [[CRP]] / Procalcitonin | Tăng | Hướng dẫn quyết định dùng [[Kháng sinh]] trong đợt cấp (phân biệt nguyên nhân vi khuẩn) |
 
 **5\. KHUYẾN CÁO ĐIỀU TRỊ — CỤ THỂ VÀ ÁP DỤNG ĐƯỢC**
 
@@ -91,18 +102,18 @@
 
 * Triệu chứng thoáng qua → giãn phế quản tác dụng ngắn (SABA/SAMA) khi cần.  
 * **★** LAMA đơn trị là điều trị nền hàng đầu ở bệnh nhân triệu chứng dai dẳng — CQ02: khuyến cáo mạnh, bằng chứng A. Nếu LAMA hạn chế do tác dụng phụ, chuyển sang LABA. Bệnh nhân không dùng được thiết bị hít có thể dùng LABA dán qua da.  
-* LAMA \+ LABA phối hợp khi đơn trị không đủ hiệu quả — CQ04: khuyến cáo yếu, bằng chứng A; có thể khởi đầu ngay ở bệnh nhân khó thở nặng (mMRC ≥2 hoặc CAT ≥10) hoặc suy giảm hoạt động thể lực rõ.  
+* LAMA \+ LABA phối hợp khi đơn trị không đủ hiệu quả — CQ04: khuyến cáo yếu, bằng chứng A; có thể khởi đầu ngay ở bệnh nhân [[Khó thở]] nặng (mMRC ≥2 hoặc CAT ≥10) hoặc suy giảm hoạt động thể lực rõ.  
 * Thêm ICS (→ LAMA+LABA+ICS/triple therapy) khi: có ACO (bất kể độ nặng), HOẶC đợt cấp thường xuyên (≥2 đợt trung bình và/hoặc ≥1 đợt nặng/năm) kèm eosinophil máu ≥300/μL — CQ06: khuyến cáo yếu, bằng chứng A. ICS KHÔNG được dùng đơn trị.  
 * **★** Bệnh nhân cao tuổi, thể trạng gầy (đặc điểm điển hình của người châu Á) dùng ICS có nguy cơ viêm phổi và nhiễm mycobacteria không lao (NTM) cao hơn — giảm liều/ngừng ICS nếu nhiễm trùng hô hấp tái diễn.  
 * Dupilumab (mới — CQ tương ứng dựa trên BOREAS/NOTUS): kháng thể đơn dòng kháng thụ thể chung IL-4/IL-13; giảm \~30% đợt cấp trung bình-nặng so với giả dược. Chỉ định add-on cho bệnh nhân KHÔNG có ACO, FEV1 \>30% và ≤70% dự đoán, ≥2 đợt cấp trung bình hoặc ≥1 đợt nặng/năm, eosinophil ≥300/μL, dù đã dùng LAMA+LABA+ICS (hoặc LAMA+LABA nếu không dùng được ICS). Ở bệnh nhân có ACO: cân nhắc từ bậc điều trị hen bước 3 trở lên.  
-* Macrolide dài hạn (CQ16 — mới): giảm đợt cấp có ý nghĩa (OR 0,34; KTC95% 0,19–0,59) và cải thiện chất lượng cuộc sống — khuyến cáo yếu, bằng chứng B, ưu tiên cho bệnh nhân đợt cấp thường xuyên có viêm đường thở bạch cầu trung tính hoặc giãn phế quản đi kèm. Không được BHYT Nhật chi trả cho chỉ định COPD (clarithromycin được chi trả riêng cho bệnh viêm đường thở neutrophil).  
+* Macrolide dài hạn (CQ16 — mới): giảm đợt cấp có ý nghĩa (OR 0,34; KTC95% 0,19–0,59) và cải thiện chất lượng cuộc sống — khuyến cáo yếu, bằng chứng B, ưu tiên cho bệnh nhân đợt cấp thường xuyên có viêm đường thở [[Bạch cầu]] trung tính hoặc giãn phế quản đi kèm. Không được BHYT Nhật chi trả cho chỉ định COPD (clarithromycin được chi trả riêng cho bệnh viêm đường thở neutrophil).  
 * Mucolytic (CQ08): khuyến cáo yếu, bằng chứng C, cho bệnh nhân tăng tiết đàm rõ.  
 * Theophylline liều thấp (CQ07): khuyến cáo yếu, bằng chứng C, add-on vào giãn phế quản dài hạn — BẮT BUỘC theo dõi nồng độ máu do cửa sổ điều trị hẹp.
 
 **5.2. Giai đoạn ổn định — Không dược lý**
 
 * **★** Ngừng hút thuốc lá (bao gồm thuốc lá điện tử, thuốc lá nung nóng) — CQ10: khuyến cáo mạnh, bằng chứng B (nâng cấp từ D ở ấn bản 6); liệu pháp thay thế nicotine và varenicline có bằng chứng mạnh làm chậm giảm FEV1 và giảm tử vong.  
-* **★** Tiêm chủng: phế cầu — CQ11 khuyến cáo mạnh, bằng chứng B. Ấn bản 7 mở rộng thêm cúm mùa, SARS-CoV-2 (COVID-19), và RSV hằng năm.  
+* **★** [[Vắc-xin|Tiêm chủng]]: phế cầu — CQ11 khuyến cáo mạnh, bằng chứng B. Ấn bản 7 mở rộng thêm cúm mùa, SARS-CoV-2 (COVID-19), và RSV hằng năm.  
 * **★** Phục hồi chức năng hô hấp toàn diện — CQ12: khuyến cáo mạnh, bằng chứng A; nên áp dụng sớm cho mọi bệnh nhân có triệu chứng (thực tế còn hạn chế do thiếu cơ sở phục hồi chức năng ngoại trú).  
 * Dinh dưỡng và vận động: khuyến khích từ giai đoạn sớm/không triệu chứng — CQ13: khuyến cáo yếu, bằng chứng D (bằng chứng bổ sung dinh dưỡng còn hạn chế).  
 * Oxy liệu pháp dài hạn (LTOT): chỉ định khi PaO2 ≤55 Torr, hoặc ≤60 Torr nếu giảm oxy máu đáng kể khi ngủ/gắng sức (không đổi) — CQ14: khuyến cáo yếu, bằng chứng C.  
@@ -115,14 +126,14 @@
 * ICS: giảm liều/ngừng ở bệnh nhân cao tuổi, gầy, có nhiễm trùng hô hấp tái diễn (nguy cơ viêm phổi, NTM tăng).  
 * Theophylline: theo dõi nồng độ máu bắt buộc — nguy cơ độc tính cao ở người cao tuổi/suy gan-thận kèm theo.  
 * Macrolide dài hạn: cân nhắc kéo dài QT, tương tác thuốc (CYP3A4), và nguy cơ chọn lọc vi khuẩn kháng thuốc khi dùng kéo dài.  
-* Corticosteroid toàn thân (đợt cấp): thận trọng đường huyết, loãng xương, tăng huyết áp ở người cao tuổi/đái tháo đường đi kèm — dùng liều thấp, ngắn ngày theo khuyến cáo (xem mục 5.4).
+* [[Corticoid|Corticosteroid]] toàn thân (đợt cấp): [[Thận]] trọng đường huyết, loãng xương, [[Tăng huyết áp]] ở người cao tuổi/đái tháo đường đi kèm — dùng liều thấp, ngắn ngày theo khuyến cáo (xem mục 5.4).
 
 **5.4. Quản lý đợt cấp**
 
-Định nghĩa: triệu chứng hô hấp xấu đi cấp tính (khó thở tăng, ho/đàm tăng, tức ngực mới khởi phát) vượt quá khả năng kiểm soát của điều trị nền, khởi phát trong vòng 14 ngày; cần loại trừ các nguyên nhân khác (viêm phổi, suy tim, tràn khí màng phổi, thuyên tắc phổi).
+Định nghĩa: triệu chứng hô hấp xấu đi cấp tính ([[Khó thở]] tăng, ho/đàm tăng, tức ngực mới khởi phát) vượt quá khả năng kiểm soát của điều trị nền, khởi phát trong vòng 14 ngày; cần loại trừ các nguyên nhân khác (viêm phổi, suy tim, tràn khí màng phổi, thuyên tắc phổi).
 
 * **★** Bệnh nhân châu Á (Nhật) thường báo cáo dưới mức triệu chứng và đợt cấp thực tế — cần hỏi bệnh sử có cấu trúc, sử dụng công cụ chuyên biệt (CERT-J).  
-* **★** Đánh giá: khí máu động mạch bắt buộc nếu SpO2 \<92% hoặc nghi suy hô hấp; CRP/procalcitonin hướng dẫn quyết định kháng sinh; X-quang/CT tìm nguyên nhân; BNP/NT-proBNP được khuyến cáo mới để loại trừ mất bù tim cấp (có thể giả dạng hoặc làm phức tạp đợt cấp).
+* **★** Đánh giá: [[Khí máu động mạch]] bắt buộc nếu SpO2 \<92% hoặc nghi [[Suy hô hấp]]; CRP/procalcitonin hướng dẫn quyết định kháng sinh; [[X-quang]]/CT tìm nguyên nhân; BNP/NT-proBNP được khuyến cáo mới để loại trừ mất bù tim cấp (có thể giả dạng hoặc làm phức tạp đợt cấp).
 
 **Điều trị dược lý đợt cấp (4 CQ mới CQ18–21):**
 
@@ -135,7 +146,7 @@
 
 * Oxy bổ sung khi PaO2 \<60 Torr hoặc SpO2 \<90%, đích SpO2 88–92% (tránh tăng CO2 máu).  
 * HFNC khi tăng CO2 nhẹ (PaCO2 45–55 Torr, pH ≥7,35) và không dung nạp/chống chỉ định NPPV.  
-* **★** NPPV được khuyến cáo ưu tiên hơn oxy đơn thuần cho suy hô hấp tăng CO2 (pH \<7,35, PaCO2 \>45 Torr) — CQ22: khuyến cáo yếu, bằng chứng B; 17 RCT: giảm tử vong nội viện (RR 0,54) và tỷ lệ đặt nội khí quản (RR 0,36).  
+* **★** NPPV được khuyến cáo ưu tiên hơn oxy đơn thuần cho [[Suy hô hấp]] tăng CO2 (pH \<7,35, PaCO2 \>45 Torr) — CQ22: khuyến cáo yếu, bằng chứng B; 17 RCT: giảm tử vong nội viện (RR 0,54) và tỷ lệ đặt nội khí quản (RR 0,36).  
 * Thở máy xâm lấn khi NPPV/HFNC thất bại hoặc có dấu hiệu đe dọa tính mạng (ngưng thở/tim, rối loạn ý thức, huyết động không ổn dù dùng vận mạch, loạn nhịp nặng, hít sặc lượng lớn, không khạc đàm được, giảm oxy máu trơ).
 
 **6\. THEO DÕI VÀ ĐÁNH GIÁ ĐÁP ỨNG ĐIỀU TRỊ**
@@ -148,10 +159,10 @@
 
 **Dấu hiệu cảnh báo cần xử trí khẩn:**
 
-* SpO2 \<92% → làm khí máu động mạch ngay.  
+* SpO2 \<92% → làm [[Khí máu động mạch]] ngay.  
 * pH \<7,35 kèm PaCO2 \>45 Torr → suy hô hấp tăng CO2, cân nhắc NPPV sớm (CQ22).  
 * Dấu hiệu đe dọa tính mạng (ngưng thở/ngưng tim, rối loạn ý thức, huyết động không ổn định dù dùng vận mạch, loạn nhịp nặng, hít sặc lượng lớn, không khạc đàm được, giảm oxy máu trơ) → chỉ định thở máy xâm lấn.  
-* **★** Triệu chứng tim mạch mới (đau ngực, khó thở không tương xứng, phù) trong vòng vài tuần sau đợt cấp → tầm soát BNP/NT-proBNP, ECG, siêu âm tim ngay.
+* **★** Triệu chứng tim mạch mới ([[Đau ngực]], khó thở không tương xứng, [[Phù]]) trong vòng vài tuần sau đợt cấp → tầm soát BNP/NT-proBNP, ECG, siêu âm tim ngay.
 
 **7\. ĐIỂM CẦN LƯU Ý ĐẶC BIỆT CHO THỰC HÀNH TẠI VIỆT NAM**
 
@@ -169,7 +180,7 @@
 
 **8.1. Giai đoạn ổn định (mô tả theo Hình 1–2 của guideline)**
 
-BƯỚC 0 — Mọi bệnh nhân: giãn phế quản tác dụng ngắn (SABA/SAMA) khi cần \+ ngừng thuốc lá \+ tiêm chủng \+ quản lý hoạt động thể lực \+ quản lý bệnh đồng mắc (song song, liên tục).
+BƯỚC 0 — Mọi bệnh nhân: giãn phế quản tác dụng ngắn (SABA/SAMA) khi cần \+ ngừng thuốc lá \+ [[Vắc-xin|tiêm chủng]] \+ quản lý hoạt động thể lực \+ quản lý bệnh đồng mắc (song song, liên tục).
 
 ĐIỂM QUYẾT ĐỊNH 1 — Có ACO (hen–COPD chồng lấp) hay không?
 
@@ -211,7 +222,7 @@ BƯỚC 1 — Nhận diện: khó thở/ho/đàm tăng cấp tính hoặc tức 
 
   → Loại trừ chẩn đoán phân biệt: viêm phổi, suy tim, tràn khí màng phổi, thuyên tắc phổi.
 
-BƯỚC 2 — Đánh giá: SpO2, khí máu động mạch (nếu SpO2\<92%/nghi suy hô hấp), CRP/procalcitonin, X-quang/CT, BNP/NT-proBNP (loại trừ mất bù tim cấp).
+BƯỚC 2 — Đánh giá: SpO2, khí máu động mạch (nếu SpO2\<92%/nghi suy hô hấp), CRP/procalcitonin, [[X-quang]]/CT, BNP/NT-proBNP (loại trừ mất bù tim cấp).
 
 BƯỚC 3 — Điều trị nền tảng: SABA \+ SAMA khi cần; tiếp tục/khởi động LABD (LAMA/LABA).
 

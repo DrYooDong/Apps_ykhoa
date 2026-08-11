@@ -1,8 +1,11 @@
 ---
 title: "Bệnh Đậu mùa & Đậu mùa khỉ (Smallpox & Mpox)"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Poxviridae", "Smallpox", "Mpox", "Đậu mùa khỉ"]
-last_updated: "2026-08-02"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 # BỆNH ĐẬU MÙA & ĐẬU MÙA KHỈ (SMALLPOX & MPOX)
@@ -11,7 +14,7 @@ last_updated: "2026-08-02"
 
 ## 1. TỔNG QUAN & NGUYÊN NHÂN GÂY BỆNH
 *   **Họ Virus:** *Poxviridae*, chi *Orthopoxvirus*. Đây là các virus DNA chuỗi kép kích thước lớn.
-*   **Đậu mùa kinh điển (Smallpox / Variola virus):** Bệnh truyền nhiễm nguy hiểm gây ra tử vong cao ($10 - 30\%$). Đã được WHO tuyên bố thanh toán hoàn toàn trên toàn cầu từ năm 1980 nhờ chiến dịch vắc-xin rộng khắp.
+*   **Đậu mùa kinh điển (Smallpox / Variola virus):** Bệnh truyền nhiễm nguy hiểm gây ra tử vong cao ($10 - 30\%$). Đã được WHO tuyên bố thanh toán hoàn toàn trên toàn cầu từ năm 1980 nhờ chiến dịch [[Vắc-xin]] rộng khắp.
 *   **Đậu mùa khỉ (Monkeypox / Mpox virus):** Bệnh truyền nhiễm từ động vật sang người (Zoonosis) và lây truyền giữa người với người (qua tiếp xúc trực tiếp sang thương da, dịch cơ thể, quan hệ tình dục hoặc giọt bắn hô hấp). Gồm 2 nhánh di truyền chính: Clade I (Tây Phi, độc lực cao hơn) và Clade II (phổ biến toàn cầu từ 2022).
 
 ---
@@ -19,7 +22,7 @@ last_updated: "2026-08-02"
 ## 2. BỂN HIỆN LÂM SÀNG
 
 ### 2.1. Giai đoạn Tiền triêu (Prodromal Phase)
-*   Sốt cao đột ngột ($38.5^\circ C - 40^\circ C$), ớn lạnh.
+*   [[[[Sốt]]|Sốt cao]] đột ngột ($38.5^\circ C - 40^\circ C$), ớn lạnh.
 *   Đau đầu dữ dội, đau cơ, đau lưng, mệt mỏi toàn thân.
 *   **Dấu hiệu đặc trưng phân biệt Mpox với Đậu mùa:** Mpox gây **Nổi hạch to (Lymphadenopathy)** rõ rệt ở vùng cổ, nách hoặc bẹn (chiếm $> 90\%$ ca Mpox).
 
@@ -48,8 +51,8 @@ last_updated: "2026-08-02"
 *   **Điều trị hỗ trợ:** Giảm đau, hạ sốt, chăm sóc da vệ sinh tránh nhiễm trùng trùng lặp, duy trì dinh dưỡng & nước điện giải.
 *   **Thuốc kháng virus đặc hiệu (cho ca nặng hoặc miễn dịch suy giảm):**
     *   **Tecovirimat (TPOXX):** Thuốc kháng virus thế hệ mới ức chế protein VP37 của Orthopoxvirus, ngăn virus đóng gói và phát tán.
-    *   **Cidofovir / Brincidofovir:** Kháng sinh tổng hợp ức chế DNA polymerase của virus.
+    *   **Cidofovir / Brincidofovir:** [[Kháng sinh]] tổng hợp ức chế DNA polymerase của virus.
 
 ### 4.2. Phòng ngừa
-*   **Vắc-xin:** Vắc-xin thế hệ thứ 3 (JYNNEOS / Imvanex) sử dụng virus Ankara biến đổi không nhân lên, an toàn cho người suy giảm miễn dịch, hiệu quả phòng ngừa đạt $> 85\%$.
+*   **[[Vắc-xin]]:** Vắc-xin thế hệ thứ 3 (JYNNEOS / Imvanex) sử dụng virus Ankara biến đổi không nhân lên, an toàn cho người suy giảm miễn dịch, hiệu quả phòng ngừa đạt $> 85\%$.
 *   **Cách ly:** Cách ly người bệnh cho đến khi tất cả các vảy tiết đã bong hoàn toàn và lớp da mới hình thành bên dưới.

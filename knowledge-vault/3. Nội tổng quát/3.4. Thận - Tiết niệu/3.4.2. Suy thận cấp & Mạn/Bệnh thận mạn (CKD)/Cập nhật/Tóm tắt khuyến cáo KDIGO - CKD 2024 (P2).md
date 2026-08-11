@@ -1,4 +1,15 @@
-# BÀI HỌC CHUYÊN ĐỀ: HƯỚNG DẪN ĐIỀU TRỊ VÀ QUẢN LÝ BỆNH THẬN MẠN (CKD) PHẦN 2
+---
+title: "Tóm tắt khuyến cáo KDIGO - CKD 2024 (P2)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
+# BÀI HỌC CHUYÊN ĐỀ: HƯỚNG DẪN ĐIỀU TRỊ VÀ QUẢN LÝ BỆNH [[Thận]] MẠN (CKD) PHẦN 2
 
 ## (Dựa trên Đồng thuận và Khuyến cáo Lâm sàng từ Hướng dẫn KDIGO 2024)
 
@@ -8,7 +19,7 @@
 
 #### 1.1 Tiếp cận toàn diện trong Điều trị và Giảm thiểu Nguy cơ tiến triển CKD (Chương 3)
 
-Mục tiêu cốt lõi của quản lý bệnh thận mạn tính (CKD) không chỉ giới hạn ở việc làm chậm tốc độ suy giảm chức năng lọc cầu thận mà còn hướng tới giảm thiểu tối đa các biến cố tim mạch đồng mắc, cải thiện chất lượng cuộc sống (QoL) và kiểm soát các biểu hiện hệ thống của hội chứng ure huyết [524]. Phương pháp tiếp cận tích hợp đa chuyên khoa, cá thể hóa theo mức độ nguy cơ dựa trên phân loại CGA là nền tảng của mọi can thiệp [36, 524].
+Mục tiêu cốt lõi của quản lý bệnh [[Thận]] mạn tính (CKD) không chỉ giới hạn ở việc làm chậm tốc độ suy giảm chức năng lọc cầu thận mà còn hướng tới giảm thiểu tối đa các biến cố [[Tim]] mạch đồng mắc, cải thiện chất lượng cuộc sống (QoL) và kiểm soát các biểu hiện hệ thống của hội chứng ure huyết [524]. Phương pháp tiếp cận tích hợp đa chuyên khoa, cá thể hóa theo mức độ nguy cơ dựa trên phân loại CGA là nền tảng của mọi can thiệp [36, 524].
 
 ---
 
@@ -16,19 +27,19 @@ Mục tiêu cốt lõi của quản lý bệnh thận mạn tính (CKD) không c
 
 _Mô tả Lưu đồ Phương pháp tiếp cận toàn diện (Được dịch nghĩa và trích xuất nguyên văn từ sơ đồ):_
 
-- **Tầng 1: Thay đổi lối sống (Lifestyle):** Chế độ ăn uống lành mạnh (Healthy diet), hoạt động thể chất phù hợp (Physical activity), cai hoàn toàn thuốc lá (Stop use of tobacco products), kiểm soát cân nặng tối ưu (Weight management) [38].
+- **Tầng 1: Thay đổi lối sống (Lifestyle):** Chế độ ăn uống lành mạnh (Healthy diet), hoạt động thể chất [[Phù]] hợp (Physical activity), cai hoàn toàn thuốc lá (Stop use of tobacco products), kiểm soát cân nặng tối ưu (Weight management) [38].
 - **Tầng 2: Liệu pháp dược lý hàng đầu cho hầu hết bệnh nhân (First-line drug therapy for most patients):**
     - Thuốc ức chế SGLT2 (SGLT2i): Tiếp tục điều trị cho đến khi bắt đầu lọc máu hoặc ghép thận [38].
     - Mục tiêu Huyết áp tâm thu (SBP) < 120 mmHg [38].
-    - Sử dụng thuốc ức chế hệ Renin-Angiotensin (RASi) ở liều tối đa có thể dung nạp được (nếu có tăng huyết áp và albumin niệu) [38].
+    - Sử dụng thuốc ức chế hệ Renin-Angiotensin (RASi) ở liều tối đa có thể dung nạp được (nếu có [[Tăng huyết áp]] và albumin niệu) [38].
     - Điều trị nền tảng bằng Statin cường độ trung bình hoặc cao [38].
-- **Tầng 3: Các liệu pháp nhắm mục tiêu bảo vệ tim - thận cụ thể (Targeted therapies):**
+- **Tầng 3: Các liệu pháp nhắm mục tiêu bảo vệ [[Tim]] - thận cụ thể (Targeted therapies):**
     - Quản lý tăng đường huyết theo Hướng dẫn Đái tháo đường của KDIGO, bao gồm việc ưu tiên chất đồng vận thụ thể GLP-1 (GLP-1 RA) khi có chỉ định [38].
     - Sử dụng thuốc kháng thụ thể mineralocorticoid không steroid (ns-MRA) ở bệnh nhân đái tháo đường có chỉ định [39].
     - Phối hợp thuốc chẹn kênh canxi phân nhóm Dihydropyridine (CCB) và/hoặc thuốc lợi tiểu nếu cần để đạt huyết áp mục tiêu [39].
     - Sử dụng chất ức chế PCSK9, Ezetimibe dựa trên nguy cơ xơ vữa động mạch (ASCVD) và lipid máu [39].
-    - Sử dụng thuốc kháng kết tập tiểu cầu (Aspirin liều thấp) cho bệnh xơ vữa động mạch đã thiết lập [39].
-    - Sử dụng MRA dạng steroid nếu cần thiết cho tăng huyết áp kháng trị khi eGFR $\ge$ 45 mL/phút/1.73 m2 [39].
+    - Sử dụng thuốc kháng kết tập [[Tiểu cầu]] ([[Aspirin]] liều thấp) cho bệnh xơ vữa động mạch đã thiết lập [39].
+    - Sử dụng MRA dạng steroid nếu cần thiết cho [[Tăng huyết áp]] kháng trị khi eGFR $\ge$ 45 mL/phút/1.73 m2 [39].
 - **Tầng 4: Điều trị biến chứng hệ thống (Targeted therapies for complications):**
     - Quản lý thiếu máu (Anemia), rối loạn khoáng chất và xương (CKD-MBD), toan chuyển hóa (acidosis) và các bất thường kali máu [39].
 - **Đánh giá định kỳ:** Thực hiện tái đánh giá các yếu tố nguy cơ mỗi 3–6 tháng một lần [38].
@@ -74,7 +85,7 @@ _Quy trình giám sát sau khi khởi trị hoặc tăng liều RASi (Trích xu�
     - Chỉ giảm liều hoặc ngừng hẳn RASi nếu các biện pháp xử trí trên không hiệu quả [43, 260].
 5. **Tình huống 3: Mức giảm eGFR $\ge$ 30% (trong vòng 4 tuần):**
     - Đánh giá lại các nguyên nhân gây tổn thương thận cấp (AKI).
-    - Bồi phụ thể tích tuần hoàn nếu có mất nước.
+    - Bồi phụ thể tích tuần hoàn nếu có [[Mất nước]].
     - Đánh giá và điều chỉnh các thuốc dùng kèm (như thuốc lợi tiểu, NSAID).
     - Loại trừ hẹp động mạch thận hai bên.
     - Chỉ giảm liều hoặc ngừng thuốc nếu mức giảm eGFR nghiêm trọng không hồi phục sau khi xử lý các yếu tố thúc đẩy [43, 258].
@@ -105,10 +116,10 @@ SGLT2i được nâng hạng thành liệu pháp nền tảng bắt buộc để
 _Mô tả Sơ đồ Tiếp cận Quản lý Kali máu (Xử trí theo bậc thang):_
 
 - **Bậc 1 (Hàng đầu - 1st line): Xử trí các yếu tố có thể điều chỉnh được:**
-    - Đánh giá và ngừng các thuốc không thiết yếu làm tăng kali (ví dụ: NSAID, kháng sinh Trimethoprim).
+    - Đánh giá và ngừng các thuốc không thiết yếu làm tăng kali (ví dụ: NSAID, [[Kháng sinh]] Trimethoprim).
     - Đánh giá lượng kali nạp vào từ chế độ ăn (hạn chế thực phẩm siêu chế biến, chất phụ gia kali; tăng cường giáo dục chế độ ăn bởi chuyên gia dinh dưỡng) [45, 270, 661].
 - **Bậc 2: Liệu pháp dược lý hỗ trợ:**
-    - Sử dụng thuốc lợi tiểu thải kali phù hợp (quai hoặc thiazide) [45, 661].
+    - Sử dụng thuốc lợi tiểu thải kali [[Phù]] hợp (quai hoặc thiazide) [45, 661].
     - Kiểm soát toan chuyển hóa bằng Natri bicarbonat [45, 661].
     - Sử dụng các chất nhựa trao đổi kali (Potassium binders) như Sodium Zirconium Cyclosilicate (SZC) hoặc Patiromer cho phép điều trị mạn tính an toàn và dung nạp tốt hơn nhóm Polystyrene Sulfonate cổ điển [45, 654, 661].
 - **Bậc 3 (Giải pháp cuối cùng - 3rd line / Last resort):**
@@ -122,16 +133,16 @@ _Mô tả Sơ đồ Tiếp cận Quản lý Kali máu (Xử trí theo bậc than
     - Người lớn $\ge$ 50 tuổi có eGFR < 60 mL/phút/1.73 m2 (G3a-G5): Khuyến cáo điều trị bằng statin đơn trị liệu hoặc phối hợp statin/ezetimibe (Khuyến cáo 1A) [45, 274].
     - Người lớn $\ge$ 50 tuổi có eGFR $\ge$ 60 mL/phút/1.73 m2 (G1-G2): Khuyến cáo điều trị bằng statin (Khuyến cáo 1B) [45, 274].
     - Người lớn từ 18 đến 49 tuổi bị CKD chưa lọc máu/ghép thận: Chỉ gợi ý dùng statin nếu có thêm ít nhất 1 yếu tố nguy cơ (bệnh mạch vành, đái tháo đường, tiền sử đột quỵ, hoặc nguy cơ tim mạch 10 năm > 10%) (Khuyến cáo 2A) [45, 274].
-- **Thuốc chống kết tập tiểu cầu:** Khuyến cáo sử dụng Aspirin liều thấp cho mục đích phòng ngừa thứ phát các biến cố tim mạch ở bệnh nhân CKD đã có bệnh xơ vữa động mạch thiết lập (Khuyến cáo 1C) [46, 712].
+- **Thuốc chống kết tập [[Tiểu cầu]]:** Khuyến cáo sử dụng [[Aspirin]] liều thấp cho mục đích phòng ngừa thứ phát các biến cố tim mạch ở bệnh nhân CKD đã có bệnh xơ vữa động mạch thiết lập (Khuyến cáo 1C) [46, 712].
 - **Rung nhĩ đồng mắc:** Khuyến cáo ưu tiên sử dụng các thuốc kháng đông đường uống không phải kháng vitamin K (NOACs/DOACs) hơn Warfarin để dự phòng đột quỵ ở bệnh nhân rung nhĩ có CKD giai đoạn G1-G4 (Khuyến cáo 1C) [46, 742]. Cần hiệu chỉnh liều NOAC dựa trên độ thanh thải creatinine và theo dõi sát ở giai đoạn CKD tiến triển G4-G5 [46, 759].
 
 #### 1.6 Quản lý Thuốc và Giám sát Sử dụng Thuốc an toàn (Chương 4)
 
-- **Độc tính trên thận:** Bệnh nhân CKD nhạy cảm hơn với tác dụng phụ gây độc thận của nhiều nhóm thuốc thông dụng [60, 284]. Cần chủ động rà soát, hiệu chỉnh liều theo mức GFR thực tế và hạn chế tối đa các thuốc giảm đau kháng viêm non-steroid (NSAIDs), kháng sinh nhóm aminoglycoside, vancomycin và các thuốc ức chế bơm proton (PPIs) dùng kéo dài không chỉ định rõ ràng [60, 284, 767, 770].
-- **Quy tắc ngày ốm (Sick Day Rules):** Trong các giai đoạn mất nước cấp tính (như tiêu chảy, sốt cao, nôn mửa), cần hướng dẫn bệnh nhân tạm ngừng các thuốc trong nhóm dễ gây độc thận hoặc tích lũy gây biến chứng, thường được viết tắt bằng ký tự **SADMANS** (bao gồm: Sulfonylureas, ACEi, Diuretics, Metformin, ARBs, NSAIDs, SGLT2i) [60, 795]. Cần có kế hoạch tái khởi động rõ ràng khi bệnh nhân bình phục để tránh tình trạng bỏ quên thuốc làm mất hiệu quả bảo vệ lâu dài [60, 795].
+- **Độc tính trên thận:** Bệnh nhân CKD nhạy cảm hơn với tác dụng phụ gây độc thận của nhiều nhóm thuốc thông dụng [60, 284]. Cần chủ động rà soát, hiệu chỉnh liều theo mức GFR thực tế và hạn chế tối đa các thuốc giảm đau kháng viêm non-steroid (NSAIDs), [[Kháng sinh]] nhóm aminoglycoside, vancomycin và các thuốc ức chế bơm proton (PPIs) dùng kéo dài không chỉ định rõ ràng [60, 284, 767, 770].
+- **Quy tắc ngày ốm (Sick Day Rules):** Trong các giai đoạn [[Mất nước]] cấp tính (như [[Tiêu chảy]], [[[[Sốt]]|sốt cao]], [[[[Nôn ói]]|nôn mửa]]), cần hướng dẫn bệnh nhân tạm ngừng các thuốc trong nhóm dễ gây độc thận hoặc tích lũy gây biến chứng, thường được viết tắt bằng ký tự **SADMANS** (bao gồm: Sulfonylureas, ACEi, Diuretics, Metformin, ARBs, NSAIDs, SGLT2i) [60, 795]. Cần có kế hoạch tái khởi động rõ ràng khi bệnh nhân bình phục để tránh tình trạng bỏ quên thuốc làm mất hiệu quả bảo vệ lâu dài [60, 795].
 - **Sử dụng thuốc cản quang:**
     - Chủ động đánh giá nguy cơ tổn thương thận cấp do thuốc cản quang (CA-AKI) trước khi thực hiện chụp mạch có bơm thuốc cản quang [60, 290].
-    - Đối với gadolinium trong chụp cộng hưởng từ (MRI): Bệnh nhân có eGFR < 30 mL/phút/1.73 m2 nên được ưu tiên sử dụng nhóm chất cản từ thế hệ mới nhóm II và III (độ ổn định cao) để giảm thiểu tối đa nguy cơ xơ hóa hệ thống do thận (NSF) [61, 291, 812, 813].
+    - Đối với gadolinium trong [[[[MRI]]|chụp cộng hưởng từ]] (MRI): Bệnh nhân có eGFR < 30 mL/phút/1.73 m2 nên được ưu tiên sử dụng nhóm chất cản từ thế hệ mới nhóm II và III (độ ổn định cao) để giảm thiểu tối đa nguy cơ xơ hóa hệ thống do thận (NSF) [61, 291, 812, 813].
 
 #### 1.7 Xây dựng Mô hình Chăm sóc Tối ưu và Chuẩn bị thay thế thận (Chương 5)
 
@@ -155,7 +166,7 @@ _Mô tả Bảng tiêu chuẩn chuyển tuyến chuyên khoa Thận (Trích xu�
     - Có sự xuất hiện đồng thời của albumin niệu đáng kể (ACR $\ge$ 300 mg/g) VÀ tiểu máu vi thể chưa rõ nguyên nhân [61, 293].
     - Albumin niệu tăng gấp đôi trong các lần theo dõi định kỳ [61, 294].
     - Đo ACR niệu tăng cao dai dẳng **> 700 mg/g** [61, 294].
-    - Sự xuất hiện của trụ hồng cầu trong nước tiểu hoặc hồng cầu niệu > 20 tế bào/HPF dai dẳng [61, 294].
+    - Sự xuất hiện của trụ [[Hồng cầu]] trong nước tiểu hoặc [[Hồng cầu]] niệu > 20 tế bào/HPF dai dẳng [61, 294].
 - **Nhóm Biến chứng kèm theo:**
     - Tăng huyết áp kháng trị (không đạt mục tiêu dù đã dùng phối hợp từ 4 nhóm thuốc hạ áp trở lên) [61, 294].
     - Rối loạn kali máu hoặc toan kiềm dai dẳng [61, 294].

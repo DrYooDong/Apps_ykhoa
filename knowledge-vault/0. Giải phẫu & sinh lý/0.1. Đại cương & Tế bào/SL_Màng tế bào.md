@@ -1,9 +1,13 @@
 ---
 title: "SL_Màng tế bào" tế bào"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Dưới đây là nội dung sinh lý học chi tiết về sự vận chuyển chất qua màng tế bào, được biên soạn bám sát các tài liệu nguồn đã cung cấp, bao gồm các hình ảnh/sơ đồ minh họa theo đúng yêu cầu của bạn:
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
@@ -73,7 +77,7 @@ Tế bào biểu mô tạo thành các rào cản ngăn cách môi trường bê
 > **📌 MÔ TẢ HÌNH HỌA:**
 > *   **Tên Hình/Sơ đồ:** Fig. 2.11 Symmetrical cell vs Epithelial cell.
 > *   **Thuộc tài liệu:** [Book] Berne and Levy Physiology 8e by Bruce M. Koeppen, Bruce A. Stanton.pdf
-> *   **Nội dung mô tả:** Hình so sánh sự phân bố protein vận chuyển. (A) Ở tế bào đối xứng (như hồng cầu), protein phân bố đều. (B) Tế bào biểu mô là tế bào bất đối xứng, các protein vận chuyển được đưa đến đích ở màng đỉnh hoặc màng đáy bên (được ngăn cách bởi tight junction). Trong hình, kênh $Na^+$ nằm ở màng đỉnh, còn bơm $Na^+, K^+$-ATPase và kênh $K^+$ nằm ở màng đáy bên, cho phép vận chuyển có hướng từ đỉnh xuống đáy.
+> *   **Nội dung mô tả:** Hình so sánh sự phân bố protein vận chuyển. (A) Ở tế bào đối xứng (như [[Hồng cầu]]), protein phân bố đều. (B) Tế bào biểu mô là tế bào bất đối xứng, các protein vận chuyển được đưa đến đích ở màng đỉnh hoặc màng đáy bên (được ngăn cách bởi tight junction). Trong hình, kênh $Na^+$ nằm ở màng đỉnh, còn bơm $Na^+, K^+$-ATPase và kênh $K^+$ nằm ở màng đáy bên, cho phép vận chuyển có hướng từ đỉnh xuống đáy.
 
 ***
 

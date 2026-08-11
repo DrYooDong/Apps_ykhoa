@@ -1,9 +1,13 @@
 ---
 title: "BAO GIỜ CÓ THỂ TIN VÀO KẾT QUẢ HỒI QUY BAYES"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐁𝐚𝐨 𝐠𝐢𝐨̛̀ 𝐜𝐨́ 𝐭𝐡𝐞̂̉ 𝐭𝐢𝐧 𝐯𝐚̀𝐨 𝐤𝐞̂́𝐭 𝐪𝐮𝐚̉ 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐁𝐚𝐲𝐞𝐬? Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐡𝐨̣̂𝐢 𝐭𝐮̣ 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐜𝐡𝐮̛́𝐜 𝐧𝐚̆𝐧𝐠 𝐭𝐡𝐚̣̂𝐧.
 
 TS. Đào Hồng Nam
@@ -18,7 +22,7 @@ Trong thống kê Bayes, các giá trị của tham số không được tính t
 
 Khái niệm hội tụ (convergence) được hiểu là trạng thái mà tại đó chuỗi Markov không còn chịu ảnh hưởng của giá trị khởi tạo và đã đạt đến phân bố hậu nghiệm mục tiêu. Khi chuỗi hội tụ, các mẫu được tạo ra có thể được xem là các mẫu ngẫu nhiên từ phân bố hậu nghiệm và được sử dụng để tính toán các đại lượng thống kê.
 
-Một quan niệm sai lầm thường gặp là cho rằng chỉ cần tăng số vòng lặp thì chuỗi chắc chắn sẽ hội tụ. Trong thực tế, số vòng lặp lớn không bảo đảm hội tụ nếu mô hình được xây dựng chưa phù hợp, phân bố tiên nghiệm quá mạnh, dữ liệu có vấn đề hoặc thuật toán lấy mẫu hoạt động không hiệu quả. Vì vậy, việc đánh giá hội tụ cần dựa trên nhiều tiêu chí định lượng và định tính thay vì chỉ dựa vào số lượng vòng lặp.
+Một quan niệm sai lầm thường gặp là cho rằng chỉ cần tăng số vòng lặp thì chuỗi chắc chắn sẽ hội tụ. Trong thực tế, số vòng lặp lớn không bảo đảm hội tụ nếu mô hình được xây dựng chưa [[Phù]] hợp, phân bố tiên nghiệm quá mạnh, dữ liệu có vấn đề hoặc thuật toán lấy mẫu hoạt động không hiệu quả. Vì vậy, việc đánh giá hội tụ cần dựa trên nhiều tiêu chí định lượng và định tính thay vì chỉ dựa vào số lượng vòng lặp.
 
 Các hướng dẫn hiện đại đều khuyến nghị sử dụng đồng thời đồ thị trực quan và các chỉ số định lượng để đánh giá hội tụ. Cách tiếp cận này giúp phát hiện những vấn đề mà một tiêu chí đơn lẻ có thể bỏ sót, đồng thời tăng tính minh bạch và khả năng tái lập của nghiên cứu.
 
@@ -40,7 +44,7 @@ Khi các chuỗi MCMC đã hội tụ đến cùng một phân bố hậu nghi�
 
 Hình dạng của Density plot cũng phản ánh lượng thông tin mà dữ liệu cung cấp cho việc ước lượng tham số. Các phân bố hậu nghiệm có dạng đối xứng và tập trung thường cho thấy tham số được ước lượng tương đối ổn định, trong khi những phân bố lệch mạnh hoặc xuất hiện nhiều đỉnh có thể gợi ý rằng dữ liệu còn hạn chế, mô hình chưa mô tả đầy đủ cấu trúc của dữ liệu hoặc tồn tại nhiều vùng giá trị tham số có xác suất tương đương.
 
-Ngoài vai trò đánh giá hội tụ, Density plot còn hỗ trợ phát hiện các đặc điểm bất thường của phân bố hậu nghiệm như hiện tượng cắt cụt, đuôi phân bố kéo dài hoặc sự xuất hiện của nhiều cụm tách biệt. Những đặc điểm này có thể ảnh hưởng đáng kể đến việc diễn giải kết quả và thường cần được xem xét cẩn thận trước khi đưa ra các kết luận thống kê.
+Ngoài vai trò đánh giá hội tụ, Density plot còn hỗ trợ phát hiện các đặc điểm bất thường của phân bố hậu nghiệm như hiện tượng cắt cụt, đuôi phân bố kéo dài hoặc sự xuất hiện của nhiều cụm tách biệt. Những đặc điểm này có thể ảnh hưởng đáng kể đến việc diễn giải kết quả và thường cần được xem xét cẩn [[Thận]] trước khi đưa ra các kết luận thống kê.
 
 𝟓.𝟒. Đ𝐨̂̀ 𝐭𝐡𝐢̣ 𝐀𝐮𝐭𝐨𝐜𝐨𝐫𝐫𝐞𝐥𝐚𝐭𝐢𝐨𝐧 𝐩𝐥𝐨𝐭
 
@@ -98,7 +102,7 @@ Không giống R̂ chỉ phản ánh sự hội tụ của chuỗi, MCSE phản 
 
 Sau khi xác định rằng chuỗi MCMC đã hội tụ, bước tiếp theo là đánh giá xem mô hình Bayes có mô tả tốt dữ liệu hay không.
 
-Một trong những phương pháp được sử dụng phổ biến để đánh giá độ phù hợp của mô hình là Posterior Predictive Check (PPC). Phương pháp này dựa trên việc sử dụng phân bố hậu nghiệm đã ước lượng để sinh ra nhiều bộ dữ liệu mô phỏng theo cùng cơ chế tạo dữ liệu mà mô hình giả định. Các bộ dữ liệu mô phỏng sau đó được đối chiếu với dữ liệu quan sát thông qua những đặc trưng như giá trị trung bình, phương sai, hình dạng phân bố hoặc các chỉ số thống kê quan trọng khác. Khi mô hình mô tả dữ liệu tốt, các đặc điểm của dữ liệu mô phỏng sẽ tương đồng với dữ liệu thực tế. Sự khác biệt lớn giữa hai nhóm dữ liệu là dấu hiệu cho thấy mô hình có thể chưa phản ánh đúng cấu trúc của dữ liệu hoặc một số giả định cơ bản của mô hình không được thỏa mãn.
+Một trong những phương pháp được sử dụng phổ biến để đánh giá độ [[Phù]] hợp của mô hình là Posterior Predictive Check (PPC). Phương pháp này dựa trên việc sử dụng phân bố hậu nghiệm đã ước lượng để sinh ra nhiều bộ dữ liệu mô phỏng theo cùng cơ chế tạo dữ liệu mà mô hình giả định. Các bộ dữ liệu mô phỏng sau đó được đối chiếu với dữ liệu quan sát thông qua những đặc trưng như giá trị trung bình, phương sai, hình dạng phân bố hoặc các chỉ số thống kê quan trọng khác. Khi mô hình mô tả dữ liệu tốt, các đặc điểm của dữ liệu mô phỏng sẽ tương đồng với dữ liệu thực tế. Sự khác biệt lớn giữa hai nhóm dữ liệu là dấu hiệu cho thấy mô hình có thể chưa phản ánh đúng cấu trúc của dữ liệu hoặc một số giả định cơ bản của mô hình không được thỏa mãn.
 
 Trong thực hành, Posterior Predictive Check thường được trình bày dưới dạng các đồ thị trực quan như histogram chồng lên nhau, biểu đồ mật độ hoặc biểu đồ phân tán. Các ví dụ minh họa được trình bày trong Hình 4.
 
@@ -180,7 +184,7 @@ Cách tiếp cận này phù hợp với bản chất của nghiên cứu khoa h
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟔. Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐡𝐨̣̂𝐢 𝐭𝐮̣ 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐜𝐡𝐮̛́𝐜 𝐧𝐚̆𝐧𝐠 𝐭𝐡𝐚̣̂𝐧
 
-Một nghiên cứu nhằm đánh giá các yếu tố ảnh hưởng đến mức lọc cầu thận ở bệnh nhân đái tháo đường đã xây dựng mô hình hồi quy Bayes với năm biến độc lập gồm tuổi, BMI, HbA1c, huyết áp tâm thu và thời gian mắc bệnh.
+Một nghiên cứu nhằm đánh giá các yếu tố ảnh hưởng đến mức lọc cầu [[Thận]] ở bệnh nhân đái tháo đường đã xây dựng mô hình hồi quy Bayes với năm biến độc lập gồm tuổi, BMI, HbA1c, huyết áp tâm thu và thời gian mắc bệnh.
 
 Quá trình ước lượng được thực hiện bằng thuật toán No-U-Turn Sampler với bốn chuỗi Markov độc lập. Sau khi hoàn thành việc lấy mẫu, chất lượng của mô hình được đánh giá thông qua nhiều tiêu chí khác nhau nhằm kiểm tra cả sự hội tụ của các chuỗi, chất lượng lấy mẫu và khả năng dự đoán của mô hình.
 

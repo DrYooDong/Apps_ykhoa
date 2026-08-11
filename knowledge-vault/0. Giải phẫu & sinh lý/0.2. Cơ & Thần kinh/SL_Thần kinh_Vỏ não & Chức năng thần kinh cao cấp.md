@@ -1,12 +1,17 @@
 ---
 title: "SL_Thần kinh_Vỏ não & Chức năng thần kinh cao cấp"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
-### 1. CẤU TRÚC VÀ TỔ CHỨC CỦA VỎ NÃO (CEREBRAL CORTEX)
 
-Vỏ não là một lớp tế bào thần kinh mỏng bao phủ bề mặt các nếp gấp của đại não, có độ dày từ 2 đến 5 mm và chứa khoảng 100 tỷ neuron. Phần lớn vỏ não ở người là tân vỏ não (neocortex), bao gồm 6 lớp tế bào phân biệt từ ngoài vào trong:
+### 1. CẤU TRÚC VÀ TỔ CHỨC CỦA [[Vỏ não]] (CEREBRAL CORTEX)
+
+[[Vỏ não]] là một lớp tế bào thần kinh mỏng bao phủ bề mặt các nếp gấp của đại não, có độ dày từ 2 đến 5 mm và chứa khoảng 100 tỷ neuron. Phần lớn vỏ não ở người là tân vỏ não (neocortex), bao gồm 6 lớp tế bào phân biệt từ ngoài vào trong:
 1.  **Lớp I (Lớp phân tử - Molecular layer):** Rất ít thân tế bào, chủ yếu là các cúc tận cùng sợi trục tiếp hợp với các sợi nhánh đỉnh.
 2.  **Lớp II (Lớp hạt ngoài - External granular layer):** Chứa nhiều tế bào sao (stellate cells).
 3.  **Lớp III (Lớp tháp ngoài - External pyramidal layer):** Chứa các tế bào tháp nhỏ. Sợi trục từ lớp II và III chủ yếu phóng chiếu đến các vùng vỏ não lân cận hoặc sang bán cầu đối diện qua thể chai.
@@ -84,11 +89,11 @@ Trí nhớ được chia làm hai dạng sinh lý chính dựa vào sự tham gi
 *   **Sóng Beta ($\beta$, >14 Hz đến 80 Hz):** Điện thế thấp, không đồng bộ, xuất hiện khi mở mắt, chú ý, hoặc hoạt động trí óc (hiện tượng block alpha/giải đồng bộ).
 *   **Sóng Delta ($\delta$, 0.5-4 Hz) và Theta ($\theta$, 3-7 Hz):** Tần số thấp, biên độ cao, xuất hiện bình thường trong giấc ngủ sâu hoặc ở trẻ em. Sự xuất hiện của chúng ở người lớn đang thức là dấu hiệu của bệnh lý não.
 
-**Sự thức tỉnh (Arousal):** Sự tỉnh táo được duy trì bởi **Hệ thống Lưới Hoạt hóa Thượng hành (ARAS)**. ARAS là một mạng lưới đa synap phức tạp từ thân não và vùng dưới đồi, phóng chiếu các tín hiệu không đặc hiệu qua đồi thị lên toàn bộ vỏ não để duy trì sự hoạt hóa của vỏ não. Mất tín hiệu cảm giác truyền vào ARAS (như tổn thương thân não) sẽ đưa não vào trạng thái hôn mê.
+**Sự thức tỉnh (Arousal):** Sự tỉnh táo được duy trì bởi **Hệ thống Lưới Hoạt hóa Thượng hành (ARAS)**. ARAS là một mạng lưới đa synap phức tạp từ thân não và vùng dưới đồi, phóng chiếu các tín hiệu không đặc hiệu qua đồi thị lên toàn bộ vỏ não để duy trì sự hoạt hóa của vỏ não. Mất tín hiệu cảm giác truyền vào ARAS (như tổn thương thân não) sẽ đưa não vào trạng thái [[Hôn mê]].
 
 **Giấc ngủ:** Được chia làm 2 pha:
-*   **Ngủ sóng chậm (NREM):** Chiếm phần lớn thời gian, sóng EEG chậm dần, đồng bộ hóa mạnh (sóng delta ở giai đoạn 3, 4). Cơ thể thư giãn, nhịp tim và hô hấp giảm.
-*   **Ngủ chuyển động mắt nhanh (REM):** Sóng EEG nhanh và mất đồng bộ giống như lúc thức. Liên quan mật thiết đến giấc mơ, nhịp tim/hô hấp không đều, hoạt động não tăng cao (PET scan cho thấy tăng hoạt động vùng viền và cầu não), nhưng trương lực cơ vân giảm mạnh (trừ cơ mắt).
+*   **Ngủ sóng chậm (NREM):** Chiếm phần lớn thời gian, sóng EEG chậm dần, đồng bộ hóa mạnh (sóng delta ở giai đoạn 3, 4). Cơ thể thư giãn, nhịp [[Tim]] và hô hấp giảm.
+*   **Ngủ chuyển động mắt nhanh (REM):** Sóng EEG nhanh và mất đồng bộ giống như lúc thức. Liên quan mật thiết đến giấc mơ, nhịp [[Tim]]/hô hấp không đều, hoạt động não tăng cao (PET scan cho thấy tăng hoạt động vùng viền và cầu não), nhưng trương lực cơ vân giảm mạnh (trừ cơ mắt).
 
 ---
 **TÀI LIỆU THAM KHẢO**

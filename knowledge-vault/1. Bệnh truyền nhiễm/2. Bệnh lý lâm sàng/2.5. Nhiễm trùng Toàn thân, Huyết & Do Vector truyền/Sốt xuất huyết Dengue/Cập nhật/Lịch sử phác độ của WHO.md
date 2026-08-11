@@ -1,15 +1,22 @@
 ---
-ICD-10: A97
+title: "Lịch sử phác độ của WHO"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-Phác đồ WHO về sốt xuất huyết Dengue (Dengue) đã tiến hóa từ phân loại nghiêm ngặt (1997) sang linh hoạt hơn (2009), với cập nhật 2025 tập trung arbovirus tổng quát và công cụ đơn giản phát hiện sốc sớm. Các thay đổi chính nhằm cải thiện nhận diện sớm, quản lý ngoại trú và giảm tử vong toàn cầu.
+
+Phác đồ WHO về [[Sốt]] [[Xuất huyết]] Dengue (Dengue) đã tiến hóa từ phân loại nghiêm ngặt (1997) sang linh hoạt hơn (2009), với cập nhật 2025 tập trung arbovirus tổng quát và công cụ đơn giản phát hiện [[Sốc]] sớm. Các thay đổi chính nhằm cải thiện nhận diện sớm, quản lý ngoại trú và giảm tử vong toàn cầu.
 
 ## Giai đoạn 1997 (Dengue Haemorrhagic Fever Guidelines)
 Phân loại: 
 	Dengue Fever (DF), 
 	Dengue Haemorrhagic Fever (DHF) 
-		I-II (xuất huyết nhẹ), 
-		III-IV (sốc). 
-Nhấn plasma rò rỉ, tiểu cầu thấp, Hct tăng. 
+		I-II ([[Xuất huyết]] nhẹ), 
+		III-IV ([[Sốc]]). 
+Nhấn plasma rò rỉ, [[Tiểu cầu]] thấp, Hct tăng. 
 Điều trị: truyền dịch RL 20ml/kg bolus sốc, theo dõi Hct. 
 Hạn chế: bỏ sót nhiều ca nặng không đủ tiêu chí plasma rò rỉ.
 
@@ -18,9 +25,9 @@ Hạn chế: bỏ sót nhiều ca nặng không đủ tiêu chí plasma rò rỉ
 - Phân loại: 
 	- Dengue 
 		- không cảnh báo, 
-		- có cảnh báo (nôn ≥3, đau bụng, gan to, Hct tăng tiểu cầu giảm), 
-		- nặng (sốc, suy hô hấp, nặng máu).
-- Giai đoạn: sốt (1-5 ngày), nguy kịch (3-7 ngày), hồi phục.
+		- có cảnh báo ([[Nôn ói|nôn]] ≥3, [[Đau bụng]], [[Gan]] to, Hct tăng [[Tiểu cầu]] giảm), 
+		- nặng (sốc, [[Suy hô hấp]], nặng máu).
+- Giai đoạn: [[Sốt]] (1-5 ngày), nguy kịch (3-7 ngày), hồi phục.
 - Quản lý: ngoại trú nếu không cảnh báo, nhập viện cảnh báo; bolus 5-7ml/kg/giờ RL, CPT nếu thất bại. Tránh truyền tiểu cầu dự phòng.
 ==Giảm bỏ sót ca nặng 4 lần so 1997==.
 
@@ -34,8 +41,8 @@ Hạn chế: bỏ sót nhiều ca nặng không đủ tiêu chí plasma rò rỉ
 **Điểm mới/thay đổi chính** (cập nhật từ 2009/2012):
 - Bao quát *Dengue + Chikungunya, Zika, Yellow fever*.
 - ***Không nặng*** (ngoại trú): 
-	- uống 400-500ml/6h (NL), 200ml/6h (trẻ), oresol ưu tiên; 
-	- paracetamol, tránh NSAID/corticoid.
+	- uống 400-500ml/6h (NL), 200ml/6h (trẻ), [[Oresol]] ưu tiên; 
+	- [[Paracetamol]], tránh NSAID/[[Corticoid]].
 - ***Nặng*** (nhập viện): 
 	- CRT (thời gian đổ đầy mao mạch >2s), 
 	- test nâng chân phát hiện sốc sớm; 
@@ -43,7 +50,7 @@ Hạn chế: bỏ sót nhiều ca nặng không đủ tiêu chí plasma rò rỉ
 - **==7 khuyến cáo==**: 
 	- không truyền tiểu cầu dự phòng, 
 	- ưu tiên bù dịch trước. 
-	- Phù hợp Việt Nam 2023.
+	- [[Phù]] hợp Việt Nam 2023.
 
 
 ## So sánh thay đổi chính
@@ -51,12 +58,12 @@ Hạn chế: bỏ sót nhiều ca nặng không đủ tiêu chí plasma rò rỉ
 | Yếu tố | 1997 | 2009 | 2025 |
 | :-- | :-- | :-- | :-- |
 | **Phân loại** | DF/DHF I-IV (plasma rò rỉ bắt buộc) | Không CB/CB/Nặng (dấu hiệu linh hoạt) | Không nặng/Nặng + arbovirus khác |
-| **Ngoại trú** | Ít nhấn mạnh | Không CB: uống oresol | Cụ thể lượng nước/6h, oresol |
+| **Ngoại trú** | Ít nhấn mạnh | Không CB: uống [[Oresol]] | Cụ thể lượng nước/6h, oresol |
 | **Sốc** | Bolus 20ml/kg RL | 5-7ml/kg/giờ, CPT nếu thất bại | + CRT >2s, test nâng chân |
 | **Truyền tiểu cầu** | Có thể dự phòng | Không dự phòng | Cấm dự phòng |
 | **Chẩn đoán** | Lâm sàng + huyết thanh | + NS1/PCR, giai đoạn nguy kịch | Giữ + test nhanh |
 
-WHO 2009 là nền tảng cho Việt Nam 2011-2019, với 2025 bổ sung công cụ đơn giản phù hợp lâm sàng ngoại viện. Phác đồ Việt Nam điều chỉnh cụ thể hơn cho người lớn/béo phì so WHO.
+WHO 2009 là nền tảng cho Việt Nam 2011-2019, với 2025 bổ sung công cụ đơn giản [[Phù]] hợp lâm sàng ngoại viện. Phác đồ Việt Nam điều chỉnh cụ thể hơn cho người lớn/béo phì so WHO.
 
 # Nguồn:
 [^2]: https://www.who.int/publications/i/item/9789241547871

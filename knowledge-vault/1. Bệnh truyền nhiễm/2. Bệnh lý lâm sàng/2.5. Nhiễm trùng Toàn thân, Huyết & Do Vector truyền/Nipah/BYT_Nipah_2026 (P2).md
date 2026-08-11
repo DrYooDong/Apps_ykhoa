@@ -1,3 +1,13 @@
+---
+title: "BYT_Nipah_2026 (P2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 ### **1. NỘI DUNG SINH LÝ HỌC & CƠ CHẾ ĐIỀU TRỊ - PHÒNG BỆNH CHI TIẾT**
 
 #### **Nguyên Tắc Chung Trong Quản Lý Và Điều Trị**
@@ -30,15 +40,15 @@ _(Dưới đây là hình ảnh biểu trưng chính thức được tích hợp
 
 Do vi rút Nipah gây tổn thương sâu sắc lên nhiều hệ cơ quan, việc điều trị triệu chứng và hồi sức tích cực cần được tiến hành cá thể hóa và khẩn trương:
 
-- **Kiểm soát thân nhiệt (Sốt):**
-    - Chỉ định sử dụng **Paracetamol** để hạ sốt cho người bệnh.
-    - **Chống chỉ định tuyệt đối với các thuốc nhóm NSAID** (như Ibuprofen, Aspirin...) do nhóm thuốc này làm tăng đáng kể nguy cơ gây ra các biến chứng chảy máu nghiêm trọng hoặc khởi phát hội chứng Reye ở bệnh nhân.
-- **Hỗ trợ cơ quan hô hấp:** Tùy thuộc vào mức độ suy hô hấp và diễn tiến của hội chứng suy hô hấp cấp tiến triển (ARDS) ở từng người bệnh để áp dụng kịp thời các biện pháp hỗ trợ hô hấp, hồi sức hô hấp phù hợp (như thở oxy, thở máy không xâm nhập hoặc xâm nhập).
-- **Hỗ trợ cơ quan thần kinh (Viêm não và tăng áp lực nội sọ):**
-    - **Chống co giật:** Khi bệnh nhân xuất hiện các cơn co giật do viêm não, cần sử dụng các thuốc chống co giật theo liều lượng khuyến cáo bao gồm: **diazepam, phenobarbitone, phenytoin hoặc levetiracetam**.
-    - **Kiểm soát tăng áp lực nội sọ:** Thực hiện các biện pháp nội khoa tích cực bao gồm nâng cao đầu giường của bệnh nhân một góc **30 độ**, đồng thời phối hợp truyền tĩnh mạch **mannitol** để giảm phù não.
-    - **Bảo vệ đường thở:** Đối với những bệnh nhân rơi vào trạng thái hôn mê sâu, cần nhanh chóng tiến hành **đặt nội khí quản** để bảo vệ đường thở và thiết lập thở máy kịp thời.
-- **Kiểm soát nhiễm khuẩn thứ phát:** Chỉ tiến hành sử dụng thuốc **kháng sinh** khi lâm sàng hoặc cận lâm sàng có bằng chứng rõ ràng về tình trạng nhiễm khuẩn thứ phát (bội nhiễm).
+- **Kiểm soát thân nhiệt ([[Sốt]]):**
+    - Chỉ định sử dụng **[[Paracetamol]]** để hạ [[Sốt]] cho người bệnh.
+    - **Chống chỉ định tuyệt đối với các thuốc nhóm NSAID** (như Ibuprofen, [[Aspirin]]...) do nhóm thuốc này làm tăng đáng kể nguy cơ gây ra các biến chứng [[Xuất huyết|chảy máu]] nghiêm trọng hoặc khởi phát hội chứng Reye ở bệnh nhân.
+- **Hỗ trợ cơ quan hô hấp:** Tùy thuộc vào mức độ [[Suy hô hấp]] và diễn tiến của hội chứng [[Suy hô hấp|suy hô hấp cấp]] tiến triển (ARDS) ở từng người bệnh để áp dụng kịp thời các biện pháp hỗ trợ hô hấp, hồi sức hô hấp [[Phù]] hợp (như thở oxy, thở máy không xâm nhập hoặc xâm nhập).
+- **Hỗ trợ cơ quan thần kinh ([[Viêm não]] và tăng áp lực nội sọ):**
+    - **Chống [[Co giật]]:** Khi bệnh nhân xuất hiện các [[Co giật|cơn co giật]] do [[Viêm não]], cần sử dụng các thuốc chống co giật theo liều lượng khuyến cáo bao gồm: **[[Diazepam]], phenobarbitone, phenytoin hoặc levetiracetam**.
+    - **Kiểm soát tăng áp lực nội sọ:** Thực hiện các biện pháp nội khoa tích cực bao gồm nâng cao đầu giường của bệnh nhân một góc **30 độ**, đồng thời phối hợp truyền tĩnh mạch **mannitol** để giảm [[Phù]] não.
+    - **Bảo vệ đường thở:** Đối với những bệnh nhân rơi vào trạng thái [[Hôn mê]] sâu, cần nhanh chóng tiến hành **đặt nội khí quản** để bảo vệ đường thở và thiết lập thở máy kịp thời.
+- **Kiểm soát nhiễm khuẩn thứ phát:** Chỉ tiến hành sử dụng thuốc **[[Kháng sinh]]** khi lâm sàng hoặc cận lâm sàng có bằng chứng rõ ràng về tình trạng nhiễm khuẩn thứ phát (bội nhiễm).
 - **Cân bằng nước và điện giải:** Cần theo dõi sát để duy trì trạng thái cân bằng dịch, điện giải thông qua đường uống (nếu bệnh nhân còn tỉnh táo và không có rối loạn nuốt) hoặc thiết lập đường truyền tĩnh mạch.
 - **Thuốc kháng vi rút đặc hiệu:** Hiện tại các thuốc kháng vi rút Nipah vẫn đang trong quá trình nghiên cứu lâm sàng và **chưa có khuyến cáo sử dụng chuẩn** cho các thể bệnh.
 
@@ -46,7 +56,7 @@ Do vi rút Nipah gây tổn thương sâu sắc lên nhiều hệ cơ quan, vi�
 
 #### **Biện Pháp Phòng Bệnh Chủ Động**
 
-- **Vắc-xin phòng ngừa:** Cho đến thời điểm hiện tại, y học **chưa có vắc-xin** được phê duyệt để phòng ngừa bệnh do vi rút Nipah ở người.
+- **[[Vắc-xin]] phòng ngừa:** Cho đến thời điểm hiện tại, y học **chưa có [[Vắc-xin]]** được phê duyệt để phòng ngừa bệnh do vi rút Nipah ở người.
 - **Chiến lược phòng bệnh:** Biện pháp phòng bệnh chủ yếu và hiệu quả nhất hiện nay là tập trung thực hiện các biện pháp ngăn chặn triệt để các con đường lây truyền (từ dơi sang người, từ động vật trung gian sang người và từ người sang người) theo đúng các quy định phòng chống dịch do Bộ Y tế ban hành.
 
 ---

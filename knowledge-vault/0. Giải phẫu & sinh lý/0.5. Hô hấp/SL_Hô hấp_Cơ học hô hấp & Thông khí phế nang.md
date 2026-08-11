@@ -1,9 +1,14 @@
 ---
 title: "SL_Hô hấp_Cơ học hô hấp & Thông khí phế nang"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Dưới đây là nội dung chi tiết về Sinh lý Cơ học Hô hấp và Thông khí phế nang, được biên soạn bám sát các tài liệu (Ganong, Berne & Levy, Color Atlas, và bài giảng video), loại trừ hoàn toàn các nguồn không được yêu cầu. Các hình ảnh/biểu đồ được trích xuất và giải thích chi tiết theo đúng định dạng.
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
@@ -13,8 +18,8 @@ Hệ hô hấp được chia thành hai vùng chức năng chính:
 *   **Vùng dẫn khí (Conducting airway):** Bắt đầu từ khí quản phân chia nhánh liên tục (16 thế hệ đầu tiên) cho đến tiểu phế quản tận cùng. Vùng này không tham gia trao đổi khí (tạo thành khoảng chết giải phẫu) mà có chức năng dẫn khí, làm ấm, làm ẩm và lọc bụi bẩn nhờ hệ thống lông chuyển và nhầy. 
 *   **Vùng hô hấp (Respiratory zone):** Bao gồm 7 thế hệ phân nhánh cuối cùng: tiểu phế quản hô hấp, ống phế nang và phế nang. Diện tích mặt cắt ngang của đường thở tăng vọt (từ $2.5~cm^{2}$ ở khí quản lên $11.800~cm^{2}$ ở phế nang), làm cho vận tốc dòng khí giảm xuống mức rất thấp, tạo điều kiện thuận lợi cho sự khuếch tán khí.
 
-#### II. Cơ học các động tác hô hấp và Áp suất màng phổi
-Phổi và thành ngực là các cấu trúc đàn hồi. Hoạt động hô hấp dựa trên sự thay đổi thể tích lồng ngực tạo ra chênh lệch áp suất để hút và đẩy khí.
+#### II. Cơ học các động tác hô hấp và Áp suất màng [[Phổi]]
+[[Phổi]] và thành ngực là các cấu trúc đàn hồi. Hoạt động hô hấp dựa trên sự thay đổi thể tích lồng ngực tạo ra chênh lệch áp suất để hút và đẩy khí.
 *   **Hít vào (Inspiration):** Là quá trình chủ động. Sự co của cơ hoành (chiếm 75% sự thay đổi thể tích lồng ngực) và các cơ liên sườn ngoài làm lồng ngực mở rộng. Thể tích lồng ngực tăng làm áp suất khoang màng phổi (intrapleural pressure) càng âm hơn (từ -2.5 mmHg xuống -6 mmHg). Điều này kéo phổi nở ra, làm áp suất phế nang giảm xuống dưới mức áp suất khí quyển, hút khí vào phổi.
 *   **Thở ra (Expiration):** Trong hô hấp bình thường, thở ra là thụ động. Các cơ hít vào giãn ra, lực đàn hồi của phổi và lồng ngực kéo chúng về vị trí nghỉ. Áp suất phế nang trở nên dương so với khí quyển, đẩy khí ra ngoài.
 

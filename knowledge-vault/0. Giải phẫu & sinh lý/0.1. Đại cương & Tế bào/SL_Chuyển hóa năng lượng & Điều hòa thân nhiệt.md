@@ -1,9 +1,14 @@
 ---
 title: "SL_Chuyển hóa năng lượng & Điều hòa thân nhiệt"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/noi-tiet
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### 1.1. CHUYỂN HÓA NĂNG LƯỢNG (ENERGY METABOLISM)
@@ -19,7 +24,7 @@ Tất cả các tế bào trong cơ thể đều cần năng lượng để ho�
 **Hệ thống cung cấp năng lượng từ các đại phân tử**
 *   **Carbohydrate:** Glucose là nhiên liệu phổ biến của mọi tế bào. Quá trình đường phân yếm khí (glycolysis) bẻ gãy glucose thành pyruvic acid và chỉ tạo ra 2 ATP (hoặc 3 ATP nếu đi từ glycogen dự trữ). Tuy nhiên, nếu có oxy, pyruvic acid đi vào ty thể biến đổi thành Acetyl-CoA và tham gia chu trình Krebs (citric acid cycle), giải phóng năng lượng khổng lồ dưới dạng ATP thông qua chuỗi chuyền điện tử và quá trình phosphoryl hóa oxy hóa, tạo ra tổng cộng 38 ATP cho mỗi phân tử glucose,,.
 *   **Lipid (Chất béo):** Acid béo được vận chuyển vào ty thể nhờ carnitine. Tại đây, chúng trải qua quá trình beta-oxy hóa (beta-oxidation) để phân cắt thành các phân tử Acetyl-CoA gồm 2 carbon. Quá trình oxy hóa acid béo tạo ra lượng ATP rất lớn (ví dụ: 1 phân tử acid stearic có thể tạo ra 146 phân tử ATP).
-*   **Protein:** Khi lượng protein nạp vào vượt quá nhu cầu cấu trúc, hoặc trong tình trạng đói kém, acid amin sẽ bị khử amin (deamination) tại gan. Các acid keto thu được có thể đi vào chu trình Krebs để cung cấp năng lượng hoặc tham gia tân tạo glucose (gluconeogenesis) và tạo thể ketone (ketogenesis),,.
+*   **Protein:** Khi lượng protein nạp vào vượt quá nhu cầu cấu trúc, hoặc trong tình trạng đói kém, acid amin sẽ bị khử amin (deamination) tại [[Gan]]. Các acid keto thu được có thể đi vào chu trình Krebs để cung cấp năng lượng hoặc tham gia tân tạo glucose (gluconeogenesis) và tạo thể ketone (ketogenesis),,.
 
 > **[TRÍCH XUẤT SƠ ĐỒ CƠ CHẾ]**
 > *   **Tên hình:** Figure 73-1: Overall schema of energy transfer from foods to the adenylic acid system and then to the functional elements of the cells.
@@ -31,7 +36,7 @@ Tất cả các tế bào trong cơ thể đều cần năng lượng để ho�
 Gần như tất cả năng lượng tiêu hao của cơ thể cuối cùng đều chuyển hóa thành nhiệt năng, ngoại trừ khi cơ bắp thực hiện công cơ học tác động lên các vật thể bên ngoài. Do đó, tốc độ chuyển hóa (metabolic rate) thường được biểu diễn bằng tốc độ giải phóng nhiệt, đo lường thông qua đơn vị Calorie (kilocalorie - kcal),.
 
 Các thành phần tiêu hao năng lượng trong cơ thể bao gồm:
-1.  **Chuyển hóa cơ sở (Basal Metabolic Rate - BMR):** Chiếm khoảng 50 - 70% tổng mức tiêu hao năng lượng hàng ngày ở người ít vận động. Đây là mức năng lượng tối thiểu để duy trì sự sống (cho hệ thần kinh trung ương, tim, thận...) khi nghỉ ngơi hoàn toàn,.
+1.  **Chuyển hóa cơ sở (Basal Metabolic Rate - BMR):** Chiếm khoảng 50 - 70% tổng mức tiêu hao năng lượng hàng ngày ở người ít vận động. Đây là mức năng lượng tối thiểu để duy trì sự sống (cho [[Hệ thần kinh trung ương]], [[Tim]], [[Thận]]...) khi nghỉ ngơi hoàn toàn,.
 2.  **Hoạt động thể lực (Physical activity):** Là yếu tố thay đổi mạnh mẽ nhất. Chuyển hóa có thể tăng gấp 50 lần so với lúc nghỉ trong vài giây vận động tối đa, hoặc tăng gấp 20 lần trong hoạt động bền bỉ ở vận động viên,.
 3.  **Tác dụng sinh nhiệt của thức ăn (Thermogenic effect of food):** Sau bữa ăn, năng lượng cần cho tiêu hóa, hấp thu và lưu trữ thức ăn làm tăng tốc độ chuyển hóa (chiếm khoảng 8% tổng tiêu hao hàng ngày). Bữa ăn giàu protein có thể làm tăng tiêu hao lên đến 30%,.
 4.  **Sinh nhiệt không do run (Nonshivering thermogenesis):** Kích thích giao cảm giải phóng norepinephrine/epinephrine tác động lên mô mỡ nâu (đặc biệt ở trẻ sơ sinh) làm tăng tốc độ chuyển hóa, tỏa nhiệt để chống lạnh,.
@@ -74,9 +79,9 @@ Nhiệt độ cơ thể được điều chỉnh chủ yếu bởi các cơ ch�
 > *   **Thuộc tài liệu:** `[Book] Color Atlas of Physiology.pdf`
 > *   **Mô tả hình họa:** Sơ đồ thể hiện con đường thần kinh điều nhiệt. Tín hiệu từ cảm biến nhiệt trung ương (Central thermosensors) và ngoại vi (Peripheral thermosensors) truyền về Vùng hạ đồi (Hypothalamus). Từ đó, tín hiệu ly tâm đi qua: (1) Hệ thần kinh giao cảm (phân nhánh cholinergic đến tuyến mồ hôi giúp bay hơi; nhánh $\alpha_1$-adrenergic co mạch máu cản luồng nhiệt từ lõi ra da; nhánh $\beta_3$-adrenergic kích thích mô mỡ nâu sinh nhiệt không do run); và (2) Hệ thần kinh sinh dưỡng (sợi cholinergic) đến cơ vân gây sinh nhiệt bằng cách run (Shivering).
 
-#### 1.5. SINH LÝ BỆNH CỦA SỐT (FEVER)
+#### 1.5. SINH LÝ BỆNH CỦA [[Sốt]] (FEVER)
 
-Sốt là tình trạng nhiệt độ cơ thể vượt quá ngưỡng bình thường do sự bất thường trong não hoặc do các chất độc làm thay đổi trung tâm điều nhiệt.
+[[Sốt]] là tình trạng nhiệt độ cơ thể vượt quá ngưỡng bình thường do sự bất thường trong não hoặc do các chất độc làm thay đổi trung tâm điều nhiệt.
 *   **Chất gây sốt (Pyrogens):** Độc tố vi khuẩn (như lipopolysaccharide) hoặc các sản phẩm phân hủy mô có khả năng làm tăng "điểm chuẩn" (set-point) của bộ điều nhiệt vùng hạ đồi. Đại thực bào và tế bào Kupffer khi tiếp xúc với nội độc tố sẽ tiết ra các Cytokine (như IL-1, TNF-alpha). Các cytokine này kích thích giải phóng Prostaglandin $E_2$ tại vùng hạ đồi, làm điểm chuẩn bị đẩy lên cao.
 *   **Cơn ớn lạnh (Chills):** Khi điểm chuẩn đột ngột tăng lên (ví dụ lên 103°F/39.4°C), nhiệt độ máu hiện tại thấp hơn điểm chuẩn mới. Vùng hạ đồi hiểu rằng cơ thể đang "quá lạnh" và kích hoạt cơ chế tăng nhiệt: co mạch da, run rẩy. Người bệnh sẽ cảm thấy ớn lạnh (chills) cho đến khi thân nhiệt thực tế tăng chạm đến điểm chuẩn mới.
 *   **Cơn vã mồ hôi / Thoái lui (Crisis / Flush):** Khi yếu tố gây sốt bị loại bỏ (hoặc do dùng thuốc hạ sốt ức chế Prostaglandin), điểm chuẩn hạ đột ngột về mức bình thường. Lúc này, thân nhiệt thực tế đang cao hơn điểm chuẩn, vùng hạ đồi ngay lập tức kích hoạt cơ chế tản nhiệt: vã mồ hôi đầm đìa và giãn mạch da đỏ rực (flush) để đẩy nhiệt độ về bình thường.
@@ -88,7 +93,7 @@ Sốt là tình trạng nhiệt độ cơ thể vượt quá ngưỡng bình th�
 
 > *   **Tên hình:** FIGURE 17-15: Pathogenesis of fever.
 > *   **Thuộc tài liệu:** `[Book] ganong's review of medical physiology 24th edition.pdf`
-> *   **Mô tả hình họa:** Lưu đồ sinh bệnh học của sốt. Nội độc tố/viêm (Endotoxin/Inflammation) kích thích Bạch cầu đơn nhân/Đại thực bào/Tế bào Kupffer sinh ra các Cytokines. Các Cytokines tác động lên Vùng trước thị của hạ đồi (Preoptic area of hypothalamus) sản sinh Prostaglandins, làm tăng điểm chuẩn nhiệt độ (Raise temperature set point), dẫn tới Sốt (Fever).
+> *   **Mô tả hình họa:** Lưu đồ sinh bệnh học của sốt. Nội độc tố/viêm (Endotoxin/Inflammation) kích thích [[Bạch cầu]] đơn nhân/Đại thực bào/Tế bào Kupffer sinh ra các Cytokines. Các Cytokines tác động lên Vùng trước thị của hạ đồi (Preoptic area of hypothalamus) sản sinh Prostaglandins, làm tăng điểm chuẩn nhiệt độ (Raise temperature set point), dẫn tới Sốt (Fever).
 
 ---
 

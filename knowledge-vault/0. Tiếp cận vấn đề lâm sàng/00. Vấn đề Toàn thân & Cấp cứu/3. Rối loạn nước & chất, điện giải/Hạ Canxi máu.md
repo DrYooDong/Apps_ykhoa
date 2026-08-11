@@ -1,23 +1,26 @@
 ---
+title: "Hạ Canxi máu"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
 tags:
-  - Vande
-  - Roiloan
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
-
 
 ### 1. Cơ chế bệnh sinh
 
 Canxi trong máu tồn tại ở 3 dạng: ~50% ở dạng ion hóa (dạng hoạt động sinh lý), ~40% gắn với protein (chủ yếu là albumin), và ~10% tạo phức hợp với các anion như phosphat, citrate.
 
-- **Cơ chế điều hòa:** Nồng độ canxi được kiểm soát chặt chẽ bởi Hormone tuyến cận giáp (PTH) và Vitamin D. Khi canxi ion hóa giảm, tuyến cận giáp tăng tiết PTH để huy động canxi từ xương, tăng tái hấp thu ở thận và kích thích thận chuyển hóa Vitamin D thành dạng hoạt động (calcitriol) để tăng hấp thu canxi ở ruột,.
-- **Cơ chế gây triệu chứng:** Hạ canxi ion hóa làm giảm ngưỡng điện thế hoạt động của màng tế bào, dẫn đến tăng tính kích thích của hệ thần kinh - cơ (gây co rút cơ, tetany, co giật) và ảnh hưởng đến dẫn truyền cơ tim (kéo dài QT, loạn nhịp),.
+- **Cơ chế điều hòa:** Nồng độ canxi được kiểm soát chặt chẽ bởi Hormone tuyến cận giáp (PTH) và Vitamin D. Khi canxi ion hóa giảm, tuyến cận giáp tăng tiết PTH để huy động canxi từ xương, tăng tái hấp thu ở [[Thận]] và kích thích [[Thận]] chuyển hóa Vitamin D thành dạng hoạt động (calcitriol) để tăng hấp thu canxi ở ruột,.
+- **Cơ chế gây triệu chứng:** Hạ canxi ion hóa làm giảm ngưỡng điện thế hoạt động của màng tế bào, dẫn đến tăng tính kích thích của hệ thần kinh - cơ (gây co rút cơ, tetany, [[Co giật]]) và ảnh hưởng đến dẫn truyền [[[[Tim]]|cơ tim]] (kéo dài QT, loạn nhịp),.
 - **Ảnh hưởng của pH:** Tình trạng kiềm hóa máu (kiềm hô hấp hoặc kiềm chuyển hóa) làm tăng ái lực gắn của canxi với albumin, dẫn đến giảm canxi ion hóa đột ngột mà tổng lượng canxi không đổi, gây ra triệu chứng cấp tính,.
 
 ### 2. Phân loại
 
 **Theo mức độ nặng (quyết định thái độ cấp cứu):**
 
-- **Nặng / Có triệu chứng:** Canxi toàn phần hiệu chỉnh ≤ 1.9 mmol/L hoặc Canxi ion hóa (iCa2+) < 1.00 mmol/L, có đe dọa loạn nhịp, co giật, co thắt thanh quản,.
+- **Nặng / Có triệu chứng:** Canxi toàn phần hiệu chỉnh ≤ 1.9 mmol/L hoặc Canxi ion hóa (iCa2+) < 1.00 mmol/L, có đe dọa loạn nhịp, [[Co giật]], co thắt thanh quản,.
 - **Nhẹ - Trung bình / Không triệu chứng:** 1.9 - 2.1 mmol/L. Thường theo dõi ngoại trú hoặc bù đường uống.
 
 **Theo cơ chế / Nguyên nhân:**
@@ -42,7 +45,7 @@ Canxi trong máu tồn tại ở 3 dạng: ~50% ở dạng ion hóa (dạng ho�
 - **Triệu chứng lâm sàng then chốt:** Tê bì quanh miệng và đầu chi (dấu hiệu sớm nhất), co cứng cơ (chuột rút). Khám tìm dấu hiệu **Chvostek** (gõ dây thần kinh mặt) và **Trousseau** (co thắt bàn tay khi bơm băng huyết áp lớn hơn huyết áp tâm thu 20mmHg trong 3 phút),.
 - **Yếu tố nguy cơ & Tiền sử:**
     - Vết mổ vùng cổ (cắt tuyến giáp/cận giáp),.
-    - Bệnh lý tiêu hóa (tiêu chảy, kém hấp thu), bệnh thận mạn.
+    - Bệnh lý tiêu hóa ([[Tiêu chảy]], kém hấp thu), bệnh thận mạn.
     - Các thuốc đang dùng: Bisphosphonate, Denosumab, lợi tiểu quai (Furosemide), thuốc ức chế bơm proton (PPI - gây hạ Magie), hóa chất (Cisplatin),.
     - Bệnh cảnh cấp tính: Chấn thương dập nát cơ (tiêu cơ vân), viêm tụy cấp, truyền máu khối lượng lớn,,.
 
@@ -53,8 +56,8 @@ Canxi trong máu tồn tại ở 3 dạng: ~50% ở dạng ion hóa (dạng ho�
 |**Giả hạ canxi**|Giảm Albumin máu|Canxi toàn phần thấp, Canxi ion hóa bình thường. Không có triệu chứng.|
 |**Bất thường PTH**|Suy cận giáp (sau mổ, tự miễn)|Canxi thấp, Phốt pho cao, PTH thấp,.|
 |**Bất thường Vitamin D**|Suy thận mạn, thiếu cung cấp|Canxi thấp, Phốt pho cao (nếu suy thận) hoặc thấp, PTH tăng cao (cường cận giáp thứ phát),.|
-|**Lắng đọng / Chuyển dịch**|Viêm tụy cấp, Tiêu cơ vân, Truyền máu khối lượng lớn, Kiềm hô hấp|Bệnh cảnh cấp tính rầm rộ (tăng CK, amylase, hoặc thở nhanh sâu/kiềm hóa máu),,.|
-|**Hạ Magie máu**|Tiêu chảy mạn, dùng PPI, nghiện rượu|Hạ canxi kháng trị với việc bù canxi đơn thuần,.|
+|**Lắng đọng / Chuyển dịch**|Viêm tụy cấp, Tiêu cơ vân, Truyền máu khối lượng lớn, Kiềm hô hấp|Bệnh cảnh cấp tính rầm rộ (tăng CK, amylase, hoặc [[[[Khó thở]]|thở nhanh]] sâu/kiềm hóa máu),,.|
+|**Hạ Magie máu**|[[Tiêu chảy]] mạn, dùng PPI, nghiện rượu|Hạ canxi kháng trị với việc bù canxi đơn thuần,.|
 
 #### Bước 4: Biện luận lâm sàng (Clinical reasoning)
 

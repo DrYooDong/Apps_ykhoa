@@ -1,9 +1,13 @@
 ---
 title: "PHÂN TÍCH PHƯƠNG SAI THEO GÓC NHÌN CỦA CÁC BÀI BÁO CHUẨN QUỐC TẾ"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐀𝐍𝐂𝐎𝐕𝐀 - 𝐏𝐡𝐚̂̀𝐧 5 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́
 
 TS. Đào Hồng Nam
@@ -18,7 +22,7 @@ Cơ sở của ANCOVA là mở rộng mô hình ANOVA bằng cách đưa thêm m
 
 ANCOVA được sử dụng khi nghiên cứu có một biến phụ thuộc định lượng, ít nhất một yếu tố phân loại và một hoặc nhiều biến đồng biến liên tục. Mục tiêu của phương pháp là so sánh các nhóm sau khi đã loại bỏ ảnh hưởng của các biến đồng biến.
 
-Trong thử nghiệm lâm sàng, tình huống phổ biến nhất là sử dụng giá trị nền (baseline value) của biến phụ thuộc làm biến đồng biến. Ví dụ, khi đánh giá hiệu quả của thuốc điều trị tăng huyết áp, huyết áp trước điều trị thường được đưa vào mô hình để hiệu chỉnh sự khác biệt ban đầu giữa các nhóm. Tương tự, trong nghiên cứu về kiểm soát đường huyết, HbA1c trước điều trị thường được sử dụng làm biến đồng biến khi phân tích HbA1c sau điều trị.
+Trong thử nghiệm lâm sàng, tình huống phổ biến nhất là sử dụng giá trị nền (baseline value) của biến phụ thuộc làm biến đồng biến. Ví dụ, khi đánh giá hiệu quả của thuốc điều trị [[Tăng huyết áp]], huyết áp trước điều trị thường được đưa vào mô hình để hiệu chỉnh sự khác biệt ban đầu giữa các nhóm. Tương tự, trong nghiên cứu về kiểm soát đường huyết, HbA1c trước điều trị thường được sử dụng làm biến đồng biến khi phân tích HbA1c sau điều trị.
 
 Ngoài giá trị nền, các biến như tuổi, chỉ số khối cơ thể, thời gian mắc bệnh hoặc điểm đánh giá chức năng ban đầu cũng thường được đưa vào mô hình nếu có khả năng ảnh hưởng đến biến kết cục.
 
@@ -48,9 +52,9 @@ Ví dụ, khi đánh giá hiệu quả của thuốc điều trị đái tháo �
 
 ANCOVA kế thừa toàn bộ các giả định quan trọng của ANOVA và đồng thời bổ sung thêm những yêu cầu liên quan đến biến đồng biến cũng như cấu trúc hồi quy của mô hình. Việc kiểm tra các giả định này trước khi tiến hành phân tích là cần thiết để bảo đảm rằng các ước lượng và kết luận thu được có giá trị khoa học.
 
-Giả định 1: Mối quan hệ tuyến tính giữa biến đồng biến và biến phụ thuộc. ANCOVA giả định rằng ảnh hưởng của biến đồng biến lên biến phụ thuộc có thể được mô tả bằng một mối quan hệ tuyến tính. Mức độ phù hợp của giả định này thường được đánh giá thông qua biểu đồ phân tán hoặc phân tích hồi quy trước khi xây dựng mô hình ANCOVA.
+Giả định 1: Mối quan hệ tuyến tính giữa biến đồng biến và biến phụ thuộc. ANCOVA giả định rằng ảnh hưởng của biến đồng biến lên biến phụ thuộc có thể được mô tả bằng một mối quan hệ tuyến tính. Mức độ [[Phù]] hợp của giả định này thường được đánh giá thông qua biểu đồ phân tán hoặc phân tích hồi quy trước khi xây dựng mô hình ANCOVA.
 
-Giả định 2: Đồng nhất hệ số hồi quy (homogeneity of regression slopes). Mối quan hệ giữa biến đồng biến và biến phụ thuộc cần tương tự nhau ở tất cả các nhóm nghiên cứu. Nói cách khác, hệ số hồi quy của biến đồng biến không được thay đổi theo nhóm. Nếu mối quan hệ này khác nhau giữa các nhóm, việc sử dụng một hệ số hiệu chỉnh chung cho toàn bộ mô hình sẽ không còn phù hợp.
+Giả định 2: Đồng nhất hệ số hồi quy (homogeneity of regression slopes). Mối quan hệ giữa biến đồng biến và biến phụ thuộc cần tương tự nhau ở tất cả các nhóm nghiên cứu. Nói cách khác, hệ số hồi quy của biến đồng biến không được thay đổi theo nhóm. Nếu mối quan hệ này khác nhau giữa các nhóm, việc sử dụng một hệ số hiệu chỉnh chung cho toàn bộ mô hình sẽ không còn [[Phù]] hợp.
 
 Giả định 3: Không có tương tác giữa biến đồng biến và yếu tố nghiên cứu. Giả định đồng nhất hệ số hồi quy thường được kiểm tra bằng cách đưa thành phần tương tác giữa biến đồng biến và yếu tố nghiên cứu vào mô hình. Khi tương tác này có ý nghĩa thống kê, giả định đồng nhất hệ số hồi quy bị vi phạm và ANCOVA cổ điển không còn thích hợp. Mô hình dùng để kiểm định tương tác này được trình bày trong Công thức 28.
 

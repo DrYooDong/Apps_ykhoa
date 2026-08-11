@@ -1,10 +1,14 @@
 ---
 title: "Cấu trúc bài báo khoa học chuẩn (IMRaD)"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Quy trình viết & Xuất bản (Scientific Writing)"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
- **Chuẩn báo cáo thử nghiệm lâm sàng quốc tế CONSORT 2025** và **Cẩm nang Cochrane**, cấu trúc của một bài báo khoa học chuẩn mực hoàn toàn tuân thủ theo trình tự 4 phần cốt lõi này.
+
+**Chuẩn báo cáo thử nghiệm lâm sàng quốc tế CONSORT 2025** và **Cẩm nang Cochrane**, cấu trúc của một bài báo khoa học chuẩn mực hoàn toàn tuân thủ theo trình tự 4 phần cốt lõi này.
 
 ### 1. GIỚI THIỆU (INTRODUCTION / BACKGROUND)
 

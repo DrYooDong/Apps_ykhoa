@@ -1,3 +1,14 @@
+---
+title: "BYT_Cúm mùa_2025 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC: CHẨN ĐOÁN, PHÂN ĐỘ VÀ PHÁC ĐỒ KHÁNG VI RÚT CÚM MÙA (PHẦN 1)
 
 ---

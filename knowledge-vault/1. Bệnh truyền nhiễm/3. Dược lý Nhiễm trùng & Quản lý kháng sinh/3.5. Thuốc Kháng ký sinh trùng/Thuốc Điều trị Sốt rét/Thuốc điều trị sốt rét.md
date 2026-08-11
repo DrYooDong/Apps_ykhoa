@@ -1,18 +1,23 @@
 ---
+title: "Thuốc điều trị sốt rét"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
-**1. Cơ chế tác dụng và Phổ kháng ký sinh trùng sốt rét (MOA & Spectrum)**
+**1. Cơ chế tác dụng và Phổ kháng ký sinh trùng [[Sốt]] rét (MOA & Spectrum)**
 
-Mục tiêu cốt lõi trong điều trị sốt rét là cắt cơn (diệt thể phân liệt trong máu) và tiệt căn (diệt thể ngủ ở gan để chống tái phát).
+Mục tiêu cốt lõi trong điều trị [[Sốt]] rét là cắt cơn (diệt thể phân liệt trong máu) và tiệt căn (diệt thể ngủ ở [[Gan]] để chống tái phát).
 
 - **Nhóm Artemisinin & Dẫn xuất (Artesunate, Artemether, Dihydroartemisinin - DHA):**
-    - _Cơ chế:_ Kháng sốt rét cực mạnh và nhanh nhất hiện nay. Khi vào hồng cầu nhiễm, thuốc tương tác với heme giải phóng các gốc tự do, ức chế proteasome và làm hỏng hàng loạt protein thiết yếu của ký sinh trùng.
+    - _Cơ chế:_ Kháng sốt rét cực mạnh và nhanh nhất hiện nay. Khi vào [[Hồng cầu]] nhiễm, thuốc tương tác với heme giải phóng các gốc tự do, ức chế proteasome và làm hỏng hàng loạt protein thiết yếu của ký sinh trùng.
     - _Phổ tác dụng:_ Rộng, tiêu diệt cả các chủng _Plasmodium falciparum_ và _Plasmodium vivax_ đa kháng thuốc.
 - **Nhóm 4-Aminoquinoline & Dẫn xuất (Chloroquine, Quinine, Lumefantrine, Piperaquine, Mefloquine):**
     - _Cơ chế:_ Ký sinh trùng tiêu hóa hemoglobin của vật chủ tạo ra heme độc, sau đó tự chuyển hóa heme thành tinh thể hemozoin không độc. Các thuốc nhóm này gắn vào heme, ức chế quá trình chuyển hóa này, làm tích tụ heme độc giết chết ký sinh trùng.
-    - _Phổ tác dụng:_ Chỉ diệt thể máu (không tác dụng trên thể gan). _P. falciparum_ đã kháng Chloroquine ở hầu hết mọi nơi.
+    - _Phổ tác dụng:_ Chỉ diệt thể máu (không tác dụng trên thể [[Gan]]). _P. falciparum_ đã kháng Chloroquine ở hầu hết mọi nơi.
 - **Nhóm 8-Aminoquinoline (Primaquine, Tafenoquine):**
     - _Cơ chế:_ Là nhóm thuốc ĐỘC NHẤT có khả năng tiêu diệt thể ngủ (hypnozoites) tại gan.
     - _Phổ tác dụng:_ Tiệt căn, chống tái phát đối với _P. vivax_ và _P. ovale_. Tafenoquine là thuốc mới tác dụng kéo dài, cho phép tiệt căn chỉ với 1 liều duy nhất.
@@ -34,7 +39,7 @@ Mục tiêu cốt lõi trong điều trị sốt rét là cắt cơn (diệt th�
 - **Độc tính Huyết học và Thiếu men G6PD (Vô cùng quan trọng):**
     - Primaquine và Tafenoquine gây stress oxy hóa mạnh. Ở người thiếu hụt men G6PD (Glucose-6-phosphate dehydrogenase), việc sử dụng thuốc sẽ gây ra cơn thiếu máu tán huyết nghiêm trọng đe dọa tính mạng. Bắt buộc phải test G6PD trước khi kê đơn tiệt căn.
 - **Hiện tượng Thiếu máu tán huyết muộn do Artesunate (Post-artesunate delayed hemolysis):**
-    - Khoảng 1/3 số bệnh nhân (đặc biệt là bệnh nhân du lịch/không miễn dịch) được điều trị Artesunate IV cho sốt rét ác tính sẽ xuất hiện tình trạng thiếu máu tán huyết muộn từ ngày thứ 8 đến ngày 28 sau điều trị. Nguyên nhân do hồng cầu đã chứa ký sinh trùng dù được làm sạch vẫn bị lách bắt giữ và tiêu hủy muộn. Thường tự phục hồi trong 4-6 tuần.
+    - Khoảng 1/3 số bệnh nhân (đặc biệt là bệnh nhân du lịch/không miễn dịch) được điều trị Artesunate IV cho sốt rét ác tính sẽ xuất hiện tình trạng thiếu máu tán huyết muộn từ ngày thứ 8 đến ngày 28 sau điều trị. Nguyên nhân do [[Hồng cầu]] đã chứa ký sinh trùng dù được làm sạch vẫn bị lách bắt giữ và tiêu hủy muộn. Thường tự phục hồi trong 4-6 tuần.
 - **An toàn trong Thai kỳ:**
     - ACT (đặc biệt là Artemether-Lumefantrine) hiện được WHO khuyến cáo là an toàn để điều trị sốt rét _P. falciparum_ không biến chứng ở **tất cả các tam cá nguyệt** (kể cả 3 tháng đầu), vì nguy cơ do bệnh sốt rét lớn hơn nhiều so với rủi ro của thuốc.
 
@@ -44,7 +49,7 @@ Mục tiêu cốt lõi trong điều trị sốt rét là cắt cơn (diệt th�
 2. **Không bao giờ dùng Artesunate đơn trị liệu uống:** Bắt buộc kê đơn phối hợp (ACT) cho sốt rét _P. falciparum_ không biến chứng để chống kháng thuốc. Khi bệnh nhân đang truyền IV Artesunate có thể uống được, phải "xuống thang" chuyển sang 1 liệu trình ACT uống đủ 3 ngày.
 3. **Xét nghiệm G6PD là bắt buộc:** Tuyệt đối không cấp phát Primaquine 14 ngày hoặc Tafenoquine 1 liều duy nhất để diệt thể ngủ _P. vivax/ovale_ nếu chưa biết tình trạng G6PD của bệnh nhân.
 4. **Cảnh giác Thiếu máu muộn:** Luôn hẹn bệnh nhân đã điều trị Artesunate IV kiểm tra lại Hemoglobin vào ngày thứ 14 để theo dõi biến chứng tán huyết muộn.
-5. **Dự phòng Mefloquine cần cẩn trọng tâm thần kinh:** Tránh dùng Mefloquine dự phòng cho người có tiền sử rối loạn tâm thần, trầm cảm hoặc động kinh do thuốc gây các phản ứng phụ lên hệ thần kinh trung ương.
+5. **Dự phòng Mefloquine cần cẩn trọng tâm thần kinh:** Tránh dùng Mefloquine dự phòng cho người có tiền sử rối loạn tâm thần, trầm cảm hoặc [[Động kinh]] do thuốc gây các phản ứng phụ lên [[Hệ thần kinh trung ương]].
 
 **5. Tài liệu tham khảo**
 

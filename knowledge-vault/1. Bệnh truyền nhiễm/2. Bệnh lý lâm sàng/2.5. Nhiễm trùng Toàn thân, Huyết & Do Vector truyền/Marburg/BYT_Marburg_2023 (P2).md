@@ -1,4 +1,14 @@
-# BÀI HỌC: ĐIỀU TRỊ CỤ THỂ, BIỆN PHÁP KIỂM SOÁT LÂY NHIỄM VÀ QUY TRÌNH QUẢN LÝ MẪU SỐT XUẤT HUYẾT MARBURG (PHẦN 2)
+---
+title: "BYT_Marburg_2023 (P2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
+# BÀI HỌC: ĐIỀU TRỊ CỤ THỂ, BIỆN PHÁP KIỂM SOÁT LÂY NHIỄM VÀ QUY TRÌNH QUẢN LÝ MẪU [[Sốt]] [[Xuất huyết]] MARBURG (PHẦN 2)
 
 ---
 
@@ -6,26 +16,26 @@
 
 ### Nguyên Tắc và Phác Đồ Điều Trị Triệu Chứng
 
-- **Hạ sốt:** Sử dụng hoạt chất **Paracetamol** kết hợp với các biện pháp vật lý để hạ nhiệt độ cơ thể. **CHỐNG CHỈ ĐỊNH** tuyệt đối các thuốc hạ sốt giảm đau nhóm NSAIDs (như Diclofenac, Ibuprofen...) hoặc nhóm Salicylate (Aspirin) vì các thuốc này ức chế kết tập tiểu cầu và ảnh hưởng đến chức năng đông máu, làm trầm trọng thêm tình trạng xuất huyết của bệnh nhân.
-- **Bồi phụ nước và điện giải:** Khuyến khích người bệnh chủ động uống dung dịch **Oresol** ngay cả khi chưa xuất hiện các dấu hiệu mất nước rõ rệt trên lâm sàng. Tiến hành bổ sung dịch bằng đường uống hoặc đường tiêm truyền tĩnh mạch với thể tích tương xứng nếu bệnh nhân có biểu hiện mất nước trên lâm sàng.
-- **Điều chỉnh rối loạn điện giải:** Cần chú ý theo dõi sát và điều chỉnh kịp thời các rối loạn điện giải, đặc biệt là nồng độ Natri, Kali và Canxi trong máu vốn dễ bị suy giảm nghiêm trọng do tình trạng nôn mửa và tiêu chảy kéo dài.
+- **Hạ [[Sốt]]:** Sử dụng hoạt chất **[[Paracetamol]]** kết hợp với các biện pháp vật lý để hạ nhiệt độ cơ thể. **CHỐNG CHỈ ĐỊNH** tuyệt đối các thuốc hạ sốt giảm đau nhóm NSAIDs (như Diclofenac, Ibuprofen...) hoặc nhóm Salicylate ([[Aspirin]]) vì các thuốc này ức chế kết tập [[Tiểu cầu]] và ảnh hưởng đến chức năng đông máu, làm trầm trọng thêm tình trạng [[Xuất huyết]] của bệnh nhân.
+- **Bồi phụ nước và điện giải:** Khuyến khích người bệnh chủ động uống dung dịch **[[Oresol]]** ngay cả khi chưa xuất hiện các dấu hiệu [[Mất nước]] rõ rệt trên lâm sàng. Tiến hành bổ sung dịch bằng đường uống hoặc đường tiêm truyền tĩnh mạch với thể tích tương xứng nếu bệnh nhân có biểu hiện [[Mất nước]] trên lâm sàng.
+- **Điều chỉnh rối loạn điện giải:** Cần chú ý theo dõi sát và điều chỉnh kịp thời các rối loạn điện giải, đặc biệt là nồng độ Natri, Kali và Canxi trong máu vốn dễ bị suy giảm nghiêm trọng do tình trạng [[[[Nôn ói]]|nôn mửa]] và [[Tiêu chảy]] kéo dài.
 - **Kiểm soát nôn:** Sử dụng thuốc chống nôn nếu bệnh nhân nôn ói nhiều:
     - _Người lớn:_ Sử dụng **Chlorpromazine** hoặc **Metoclopramide** cho đến khi kiểm soát được triệu chứng nôn.
     - _Trẻ em trên 2 tuổi:_ Có thể chỉ định sử dụng **Promethazine**, nhưng bắt buộc phải theo dõi sát các phản ứng ngoại tháp.
-- **Kiểm soát cơn co giật:**
-    - _Cắt cơn giật cấp tính:_ Sử dụng **Diazepam** tiêm tĩnh mạch chậm (liều cho người lớn: 10 - 20mg; liều cho trẻ em: 0,1 - 0,3mg/kg).
-    - _Dự phòng tái phát:_ Tiếp tục duy trì và khống chế cơn co giật bằng các thuốc chống co giật như **Phenobarbital** hoặc **Acid valproic**.
-- **Kiểm soát nhiễm trùng thứ phát:** Chỉ định sử dụng thuốc kháng sinh thích hợp nếu có biểu hiện hoặc bằng chứng của tình trạng bội nhiễm vi khuẩn.
+- **Kiểm soát [[Co giật|cơn co giật]]:**
+    - _Cắt cơn giật cấp tính:_ Sử dụng **[[Diazepam]]** tiêm tĩnh mạch chậm (liều cho người lớn: 10 - 20mg; liều cho trẻ em: 0,1 - 0,3mg/kg).
+    - _Dự phòng tái phát:_ Tiếp tục duy trì và khống chế [[Co giật|cơn co giật]] bằng các thuốc chống co giật như **Phenobarbital** hoặc **Acid valproic**.
+- **Kiểm soát nhiễm trùng thứ phát:** Chỉ định sử dụng thuốc [[Kháng sinh]] thích hợp nếu có biểu hiện hoặc bằng chứng của tình trạng bội nhiễm vi khuẩn.
 
 ---
 
-**Bảng 1: Phác đồ xử trí xuất huyết, sốc, suy đa tạng và các biện pháp điều trị đang nghiên cứu**  
+**Bảng 1: Phác đồ xử trí xuất huyết, [[Sốc]], suy đa tạng và các biện pháp điều trị đang nghiên cứu**  
 _Thuộc tài liệu: "Hướng dẫn chẩn đoán, điều trị, dự phòng và kiểm soát lây nhiễm bệnh sốt xuất huyết Marburg" ban hành kèm theo Quyết định số 2201/QĐ-BYT ngày 16 tháng 5 năm 2023 của Bộ trưởng Bộ Y tế (nằm trong file `BYT_Marburg_2023.pdf`)._
 
 |Nội dung điều trị|Nguyên tắc và biện pháp xử trí cụ thể trên lâm sàng|
 |:--|:--|
-|**Xử trí tình trạng xuất huyết**|- Đánh giá chính xác mức độ xuất huyết trên lâm sàng kết hợp với các xét nghiệm đông máu để đưa ra quyết định truyền các chế phẩm máu phù hợp (như khối hồng cầu, các yếu tố đông máu, tiểu cầu...).- **Đối với phụ nữ mang thai:** Đây là nhóm đối tượng có nguy cơ cực kỳ cao bị sảy thai, đẻ non và chảy máu sau sinh dữ dội. Chỉ định sử dụng thuốc co hồi tử cung (**Oxytocin**) và thực hiện các can thiệp sản khoa kịp thời để kiểm soát, cầm máu hiệu quả.|
-|**Xử trí sốc và suy đa tạng**|- Theo dõi sát các dấu hiệu sinh tồn: mạch, huyết áp, tình trạng da niêm mạc, lượng nước tiểu, áp lực tĩnh mạch trung tâm (CVP) và công thức máu để phát hiện, xử trí kịp thời.- Chuyển người bệnh điều trị tại các đơn vị hồi sức tích cực (ICU) có đầy đủ trang thiết bị giám sát, thuốc hồi sức và nhân viên chuyên khoa.- Đảm bảo duy trì thể tích tuần hoàn tối ưu, cân bằng nước - điện giải, thăng bằng kiềm toan, duy trì huyết áp và lượng nước tiểu ổn định.- Chỉ định các biện pháp hồi sức tích cực nâng cao bao gồm: thở oxy, thở máy, lọc máu liên tục (hoặc ECMO) nếu có tình trạng suy hô hấp hoặc toan chuyển hóa nặng, suy thận cấp, hoặc sốc.|
+|**Xử trí tình trạng xuất huyết**|- Đánh giá chính xác mức độ xuất huyết trên lâm sàng kết hợp với các xét nghiệm đông máu để đưa ra quyết định truyền các chế phẩm máu [[Phù]] hợp (như khối [[Hồng cầu]], các yếu tố đông máu, [[Tiểu cầu]]...).- **Đối với phụ nữ mang thai:** Đây là nhóm đối tượng có nguy cơ cực kỳ cao bị sảy thai, đẻ non và chảy máu sau sinh dữ dội. Chỉ định sử dụng thuốc co hồi tử cung (**Oxytocin**) và thực hiện các can thiệp sản khoa kịp thời để kiểm soát, cầm máu hiệu quả.|
+|**Xử trí [[Sốc]] và suy đa tạng**|- Theo dõi sát các dấu hiệu sinh tồn: mạch, huyết áp, tình trạng da niêm mạc, lượng nước tiểu, áp lực tĩnh mạch trung tâm (CVP) và công thức máu để phát hiện, xử trí kịp thời.- Chuyển người bệnh điều trị tại các đơn vị hồi sức tích cực (ICU) có đầy đủ trang thiết bị giám sát, thuốc hồi sức và nhân viên chuyên khoa.- Đảm bảo duy trì thể tích tuần hoàn tối ưu, cân bằng nước - điện giải, thăng bằng kiềm toan, duy trì huyết áp và lượng nước tiểu ổn định.- Chỉ định các biện pháp hồi sức tích cực nâng cao bao gồm: thở oxy, thở máy, lọc máu liên tục (hoặc ECMO) nếu có tình trạng [[Suy hô hấp]] hoặc toan chuyển hóa nặng, suy [[Thận]] cấp, hoặc sốc.|
 |**Các biện pháp điều trị đang nghiên cứu**|- Hiện tại thế giới **chưa có thuốc điều trị đặc hiệu** được cấp phép đối với vi rút Marburg.- Các liệu pháp điều trị đang thử nghiệm bao gồm: thuốc kháng vi rút (**remdesivir, favipiravir**); kháng thể đơn dòng **Mab114 (ansuvimab-zykl)**; hỗn hợp cocktail **REGN-EB3** (phối hợp 3 kháng thể đơn dòng atoltivimab, maftivimab và odesivimab-ebgn); hoặc truyền huyết thanh của người đã khỏi bệnh.- _Lưu ý:_ Các liệu pháp này đã được thử nghiệm đối với bệnh Ebola nhưng **chưa được chứng minh có hiệu quả điều trị đối với người nhiễm vi rút Marburg**. Việc chỉ định các thuốc thử nghiệm này trên bệnh nhân bắt buộc phải tuân thủ nghiêm ngặt các quy định về thử nghiệm lâm sàng trên người.|
 |**Các điều trị hỗ trợ khác**|- Đảm bảo cung cấp đầy đủ dinh dưỡng và bổ sung các vitamin cần thiết cho người bệnh.- Thực hiện liệu pháp hỗ trợ tâm lý tích cực cho người bệnh trong suốt thời gian điều trị cách ly.|
 
@@ -40,13 +50,13 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán, điều trị, dự phòng 
 - **Tiêu chuẩn khỏi bệnh và ra viện:** Người bệnh điều trị sốt xuất huyết Marburg được phép xuất viện khi đáp ứng đầy đủ tất cả các tiêu chuẩn sau:
     1. Đã cắt sốt liên tục trên 2 ngày.
     2. Lâm sàng cải thiện tốt, toàn trạng bệnh nhân ổn định và có khả năng tự thực hiện được các hoạt động sinh hoạt cá nhân hàng ngày.
-    3. Không còn bất kỳ dấu hiệu lâm sàng nào cho thấy vi rút đang đào thải ra môi trường bên ngoài (như không còn ho, không có triệu chứng chảy máu hay tiêu chảy...).
+    3. Không còn bất kỳ dấu hiệu lâm sàng nào cho thấy vi rút đang đào thải ra môi trường bên ngoài (như không còn ho, không có triệu chứng chảy máu hay [[Tiêu chảy]]...).
     4. Có kết quả xét nghiệm RT-PCR đối với vi rút Marburg trong máu âm tính.
 
 ### Dự Phòng Lây Truyền và Thiết Lập Cách Ly Tại Cơ Sở Y Tế
 
 - **Nguyên tắc chung:**
-    - Hiện tại **chưa có vắc-xin phòng ngừa đặc hiệu** được phê duyệt và cấp phép lưu hành.
+    - Hiện tại **chưa có [[Vắc-xin]] phòng ngừa đặc hiệu** được phê duyệt và cấp phép lưu hành.
     - Áp dụng nghiêm ngặt nguyên tắc **phòng ngừa chuẩn** kết hợp với phòng ngừa lây truyền qua đường tiếp xúc trực tiếp/gián tiếp và đường máu.
     - Tránh tiếp xúc trực tiếp với máu, dịch tiết sinh học của người bệnh (bao gồm cả tinh dịch và sữa mẹ). Nam giới sau khi hồi phục cần sử dụng bao cao su khi quan hệ tình dục và xử lý bao cao su an toàn trong vòng **12 tháng** kể từ khi khởi phát triệu chứng.
     - Tử thi tử vong do nhiễm Marburg phải được xử lý vệ sinh và thực hiện **hỏa táng** theo quy định đối với bệnh truyền nhiễm nhóm A tại Thông tư 21/2021/TT-BYT.

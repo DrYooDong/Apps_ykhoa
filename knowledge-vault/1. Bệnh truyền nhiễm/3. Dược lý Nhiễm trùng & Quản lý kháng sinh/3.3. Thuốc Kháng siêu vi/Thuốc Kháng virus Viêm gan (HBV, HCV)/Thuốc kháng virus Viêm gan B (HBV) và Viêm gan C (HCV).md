@@ -1,12 +1,18 @@
 ---
+title: "Thuốc kháng virus Viêm gan B (HBV) và Viêm gan C (HCV)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 Lưu ý quan trọng: Các tài liệu y khoa bạn cung cấp tập trung rất sâu vào các thuốc kháng virus tác động trực tiếp (DAAs) điều trị HCV, các nguyên lý Dược động học/Dược lực học (PK/PD) của chúng, và vai trò của yếu tố di truyền (Pharmacogenomics) trong đáp ứng điều trị. Do tài liệu thiếu vắng các thông tin dược lý của thuốc điều trị HBV (như Tenofovir, Entecavir), tôi đã bổ sung các kiến thức y khoa chuyên ngành bên ngoài để đảm bảo cấu trúc lâm sàng trọn vẹn. Các thông tin ngoài tài liệu sẽ được ghi chú rõ ràng để bạn có thể xác minh độc lập.
 
 ### 1. Cơ chế tác dụng và Phổ kháng virus (MOA & Spectrum)
 
-- **Thuốc kháng virus Viêm gan C (HCV):**
+- **Thuốc kháng virus Viêm [[Gan]] C (HCV):**
     - HCV là một bệnh nhiễm trùng có thể **chữa khỏi hoàn toàn (curable)**, nhưng virus rất dễ đột biến kháng thuốc. Sự ra đời của các thuốc kháng virus tác động trực tiếp (Direct-Acting Antivirals - DAAs) vào năm 2011 đã tạo ra cuộc cách mạng trong điều trị.
     - Các nhóm DAAs chính bao gồm:
         1. Chất ức chế protease NS3/4A (ví dụ: Paritaprevir, Boceprevir, Telaprevir).
@@ -16,7 +22,7 @@ Lưu ý quan trọng: Các tài liệu y khoa bạn cung cấp tập trung rất
     - _Interferon-$\alpha$ (IFN-$\alpha$) & Ribavirin:_ Đây là phác đồ kinh điển. Sự kết hợp giữa IFN-$\alpha$ và Ribavirin kích hoạt con đường tín hiệu kháng virus JAK-STAT.
     - _Liệu pháp kháng thể:_ Thuốc ức chế chốt kiểm duyệt miễn dịch PD-1 (Pembrolizumab) đã được ghi nhận có khả năng tạo ra đáp ứng kháng virus HCV (cùng với đáp ứng chống khối u) ở một số bệnh nhân.
 - **Thuốc kháng virus Viêm gan B (HBV):**
-    - _(Thông tin y khoa bổ sung ngoài tài liệu: Khác với HCV, HBV tích hợp vào DNA của tế bào gan dưới dạng cccDNA, do đó các thuốc hiện tại chỉ ức chế sự nhân lên của virus (suppressive) chứ hiếm khi chữa khỏi hoàn toàn. Các thuốc chủ lực là nhóm ức chế enzyme sao chép ngược Nucleos(t)ide analogues (NAs) như Entecavir, Tenofovir Disoproxil Fumarate [TDF], và Tenofovir Alafenamide [TAF])._
+    - _(Thông tin y khoa bổ sung ngoài tài liệu: Khác với HCV, HBV tích hợp vào DNA của [[Gan|tế bào gan]] dưới dạng cccDNA, do đó các thuốc hiện tại chỉ ức chế sự nhân lên của virus (suppressive) chứ hiếm khi chữa khỏi hoàn toàn. Các thuốc chủ lực là nhóm ức chế enzyme sao chép ngược Nucleos(t)ide analogues (NAs) như Entecavir, Tenofovir Disoproxil Fumarate [TDF], và Tenofovir Alafenamide [TAF])._
 
 ### 2. Dược động học/Dược lực học (PK/PD) ứng dụng
 
@@ -24,7 +30,7 @@ Lưu ý quan trọng: Các tài liệu y khoa bạn cung cấp tập trung rất
     - **Thế hệ DAAs đầu tiên (Boceprevir, Telaprevir):** Hiệu quả ức chế virus phụ thuộc cực kỳ lớn vào nồng độ đáy ($C_{min}$). Thử nghiệm lâm sàng pha II của Telaprevir đã chứng minh nguyên lý này: việc chia nhỏ liều (uống 3 lần/ngày) mang lại tỷ lệ đáp ứng virus bền vững (SVR) cao hơn hẳn so với việc gộp liều (uống 2 lần/ngày) dù tổng liều trong ngày là như nhau. Do đó, việc tuân thủ khoảng cách liều nghiêm ngặt là sống còn.
     - **Thế hệ DAAs mới (Sofosbuvir-Ledipasvir):** Với hiệu lực kháng virus quá mạnh mẽ và việc kết hợp thuốc, mối quan hệ PK-PD truyền thống trở nên mờ nhạt. Các nghiên cứu đã không thể tìm ra một mối tương quan có thể dự đoán được giữa các thông số PK của Sofosbuvir/Ledipasvir và kết cục SVR, bởi vì nồng độ thuốc đạt được luôn nằm trong vùng bão hòa hiệu quả.
     - **Phác đồ 3D (Paritaprevir/Ritonavir/Ombitasvir + Dasabuvir + Ribavirin):** Phân tích PK-PD cho thấy chỉ có **AUC của Ombitasvir** là yếu tố dự đoán có ý nghĩa đối với tỷ lệ đạt SVR. Trong khi đó, sự gia tăng AUC của Paritaprevir không làm tăng thêm hiệu quả mà lại liên quan tuyến tính với sự gia tăng xác suất xảy ra **tác dụng phụ độ 3 (Grade 3 adverse events)**.
-- _(Thông tin y khoa bổ sung ngoài tài liệu về HBV: Đối với Tenofovir, dạng bào chế mới TAF có độ ổn định trong huyết tương cao hơn TDF, giúp thuốc tập trung chủ yếu vào tế bào gan. Nhờ đó, liều TAF chỉ cần 25mg (so với 300mg của TDF) để đạt hiệu quả tương đương, làm giảm mạnh nồng độ Tenofovir lưu hành trong máu, từ đó bảo vệ bệnh nhân khỏi độc tính trên thận và suy giảm mật độ xương)._
+- _(Thông tin y khoa bổ sung ngoài tài liệu về HBV: Đối với Tenofovir, dạng bào chế mới TAF có độ ổn định trong huyết tương cao hơn TDF, giúp thuốc tập trung chủ yếu vào tế bào gan. Nhờ đó, liều TAF chỉ cần 25mg (so với 300mg của TDF) để đạt hiệu quả tương đương, làm giảm mạnh nồng độ Tenofovir lưu hành trong máu, từ đó bảo vệ bệnh nhân khỏi độc tính trên [[Thận]] và suy giảm mật độ xương)._
 
 ### 3. Vấn đề Kháng thuốc, Di truyền học và An toàn
 
@@ -42,7 +48,7 @@ Lưu ý quan trọng: Các tài liệu y khoa bạn cung cấp tập trung rất
 2. **"Hiệu lực DAAs mới đã thay đổi tư duy PK/PD":** Với các thuốc cũ, việc giữ nồng độ đáy ($C_{min}$) bằng cách chia liều ngắn là sống còn. Nhưng với các DAAs mới (như Sofosbuvir/Ledipasvir), thuốc đủ mạnh để tạo ra đáp ứng bão hòa (plateau) mà không cần phải giám sát PK quá gắt gao.
 3. **"Rà soát tương tác thuốc hệ CYP trước khi trị HCV":** Bệnh nhân nhiễm HCV (đặc biệt là đồng nhiễm HIV/Lao) đang dùng Rifampin sẽ bị mất hoàn toàn tác dụng của DAAs. Phải kiểm tra kỹ DDIs để tránh thất bại điều trị.
 4. **"Yếu tố di truyền quyết định đáp ứng Interferon":** Nếu định dùng phác đồ có Interferon cho viêm gan C, xét nghiệm kiểu gen IL28B (IFNL3) sẽ giúp tiên lượng tỷ lệ đáp ứng của bệnh nhân.
-5. _(Thông tin y khoa bổ sung ngoài tài liệu): "Ưu tiên TAF hơn TDF ở người loãng xương/suy thận"_ khi điều trị HBV mạn tính nhờ cải tiến về dược động học hướng đích.
+5. _(Thông tin y khoa bổ sung ngoài tài liệu): "Ưu tiên TAF hơn TDF ở người loãng xương/suy [[Thận]]"_ khi điều trị HBV mạn tính nhờ cải tiến về dược động học hướng đích.
 
 ### 5. Tài liệu tham khảo
 

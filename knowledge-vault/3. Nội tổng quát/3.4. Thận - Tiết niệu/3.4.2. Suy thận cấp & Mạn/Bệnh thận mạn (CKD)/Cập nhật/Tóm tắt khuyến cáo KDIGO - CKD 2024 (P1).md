@@ -1,8 +1,19 @@
-# BÀI HỌC KHUYẾN CÁO KDIGO 2024 VỀ ĐÁNH GIÁ VÀ TIÊN LƯỢNG NGUY CƠ BỆNH THẬN MẠN (CKD) - PHẦN 1
+---
+title: "Tóm tắt khuyến cáo KDIGO - CKD 2024 (P1)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
+# BÀI HỌC KHUYẾN CÁO KDIGO 2024 VỀ ĐÁNH GIÁ VÀ TIÊN LƯỢNG NGUY CƠ BỆNH [[Thận]] MẠN (CKD) - PHẦN 1
 
 ## 1. NỘI DUNG BỆNH LÝ HỌC CHI TIẾT
 
-Bệnh thận mạn (CKD) là một vấn đề sức khỏe cộng đồng toàn cầu với gánh nặng bệnh tật ngày càng gia tăng. Hướng dẫn Lâm sàng KDIGO 2024 cung cấp các khuyến cáo và điểm thực hành lâm sàng toàn diện nhằm chuẩn hóa quá trình phát hiện, đánh giá nguyên nhân, phân giai đoạn và tiên lượng nguy cơ cho bệnh nhân CKD. Phần 1 này tóm tắt hai chương đầu tiên của hướng dẫn: Đánh giá CKD và Đánh giá nguy cơ tiến triển ở người bệnh CKD.
+Bệnh [[Thận]] mạn (CKD) là một vấn đề sức khỏe cộng đồng toàn cầu với gánh nặng bệnh tật ngày càng gia tăng. Hướng dẫn Lâm sàng KDIGO 2024 cung cấp các khuyến cáo và điểm thực hành lâm sàng toàn diện nhằm chuẩn hóa quá trình phát hiện, đánh giá nguyên nhân, phân giai đoạn và tiên lượng nguy cơ cho bệnh nhân CKD. Phần 1 này tóm tắt hai chương đầu tiên của hướng dẫn: Đánh giá CKD và Đánh giá nguy cơ tiến triển ở người bệnh CKD.
 
 ---
 
@@ -58,18 +69,18 @@ _* Chú thích của nguồn:_ Relative to the young adult level.
 
 ### 1.2 Quy Trình Sàng Lọc Phát Hiện CKD ở Người Lớn
 
-Sàng lọc CKD được khuyến cáo thực hiện chủ yếu ở các đối tượng có nguy cơ cao (đái tháo đường, tăng huyết áp, bệnh tim mạch). Quá trình phát hiện cần kết hợp cả xét nghiệm GFR và định lượng albumin niệu do CKD thường diễn tiến âm thầm.
+Sàng lọc CKD được khuyến cáo thực hiện chủ yếu ở các đối tượng có nguy cơ cao (đái tháo đường, [[Tăng huyết áp]], bệnh [[Tim]] mạch). Quá trình phát hiện cần kết hợp cả xét nghiệm GFR và định lượng albumin niệu do CKD thường diễn tiến âm thầm.
 
 **[Figure 3. Screening algorithm for diagnosis and staging of chronic kidney disease (CKD) in adults] - trích từ [KDIGO-2024-CKD-Guideline.pdf]**
 
-- **Bước 1:** Xác định người lớn có nguy cơ mắc CKD (Đái tháo đường, Tăng huyết áp, Bệnh tim mạch - bao gồm suy tim, Tiền sử AKI/AKD, Tiền sử gia đình mắc bệnh thận, hoặc các yếu tố phơi nhiễm môi trường/độc chất/thuốc độc thận).
+- **Bước 1:** Xác định người lớn có nguy cơ mắc CKD (Đái tháo đường, [[Tăng huyết áp]], Bệnh [[Tim]] mạch - bao gồm suy tim, Tiền sử AKI/AKD, Tiền sử gia đình mắc bệnh thận, hoặc các yếu tố phơi nhiễm môi trường/độc chất/thuốc độc thận).
 - **Bước 2:** Xét nghiệm đồng thời GFR và ACR nước tiểu (hoặc các dấu hiệu tổn thương thận khác).
 - **Bước 3:**
     - Nếu GFR $< 60\text{ ml/min/1.73 m}^2$ HOẶC ACR $\ge 30\text{ mg/g}$ ($\ge 3\text{ mg/mmol}$) HOẶC có dấu hiệu tổn thương thận khác: Tiến hành loại trừ tổn thương thận cấp (AKI)/bệnh thận cấp (AKD). Nếu AKI/AKD hiện diện, xử trí theo hướng dẫn AKI.
     - Nếu các kết quả trên bình thường: Không mắc CKD tại thời điểm hiện tại. Lên kế hoạch tái xét nghiệm dựa trên đặc điểm nguy cơ của từng cá nhân.
 - **Bước 4:** Nếu tình trạng giảm GFR hoặc tăng ACR kéo dài trên 3 tháng (hoặc có bằng chứng mạn tính rõ ràng trước đó): Xác định chẩn đoán CKD.
 - **Bước 5:** Thực hiện đo eGFRcr-cys (nếu chưa thực hiện và có sẵn nguồn lực) để tăng độ chính xác.
-- **Bước 6:** Phân giai đoạn theo CGA (Nguyên nhân - GFR - ACR), đánh giá nguyên nhân tiềm ẩn và ước tính nguy cơ tiến triển. Khởi đầu điều trị phù hợp.
+- **Bước 6:** Phân giai đoạn theo CGA (Nguyên nhân - GFR - ACR), đánh giá nguyên nhân tiềm ẩn và ước tính nguy cơ tiến triển. Khởi đầu điều trị [[Phù]] hợp.
 
 ---
 
@@ -98,11 +109,11 @@ KDIGO 2024 nhấn mạnh việc tìm kiếm nguyên nhân gốc rễ của CKD t
     - Phân tích nước tiểu và cặn lắng nước tiểu.
     - Tỷ lệ Albumin-to-Creatinine nước tiểu (ACR).
     - Xét nghiệm huyết thanh chẩn đoán.
-    - Siêu âm hệ tiết niệu.
+    - [[Siêu âm]] hệ tiết niệu.
     - Sinh thiết thận (Kidney Biopsy).
     - Xét nghiệm di truyền (Genetic testing).
 
-_Khuyến cáo về Sinh thiết Thận (Recommendation 1.1.4.1 - Cấp độ 2D):_ KDIGO đề xuất thực hiện sinh thiết thận như một xét nghiệm chẩn đoán an toàn và chấp nhận được để đánh giá nguyên nhân và hướng dẫn các quyết định điều trị khi phù hợp về mặt lâm sàng.
+_Khuyến cáo về Sinh thiết Thận (Recommendation 1.1.4.1 - Cấp độ 2D):_ KDIGO đề xuất thực hiện sinh thiết thận như một xét nghiệm chẩn đoán an toàn và chấp nhận được để đánh giá nguyên nhân và hướng dẫn các quyết định điều trị khi [[Phù]] hợp về mặt lâm sàng.
 
 ---
 
@@ -134,7 +145,7 @@ _Khuyến cáo về Sinh thiết Thận (Recommendation 1.1.4.1 - Cấp độ 2D
     - (ii) Nồng độ cystatin C huyết thanh làm tròn đến hai chữ số thập phân với đơn vị conventional ($\text{mg/l}$).
 - Đo lường các chất đánh dấu lọc bằng phương pháp đặc hiệu, chính xác (hệ số biến thiên $\text{CV} < 2.3%$ đối với creatinine và $< 2.0%$ đối với cystatin C) với hiệu chuẩn có thể truy nguyên theo các vật liệu tham chiếu chuẩn quốc tế và sai số mong muốn thấp ($< 3.7%$ với creatinine và $< 3.2%$ với cystatin C).
 - Sử dụng phương pháp enzym (enzymatic method) để định lượng creatinine bất cứ khi nào có thể (hạn chế phương pháp Jaffe do nhiều chất gây nhiễu).
-- Tách huyết thanh/huyết tương khỏi hồng cầu bằng cách ly tâm trong vòng 12 giờ sau khi lấy máu.
+- Tách huyết thanh/huyết tương khỏi [[Hồng cầu]] bằng cách ly tâm trong vòng 12 giờ sau khi lấy máu.
 - Khi cystatin C được đo lường, phải đo đồng thời creatinine trên cùng một mẫu để cho phép tính toán eGFRcr-cys.
 
 #### Lựa Chọn Phương Trình Ước Tính GFR và Tránh Sử Dụng Yếu Tố Chủng Tộc

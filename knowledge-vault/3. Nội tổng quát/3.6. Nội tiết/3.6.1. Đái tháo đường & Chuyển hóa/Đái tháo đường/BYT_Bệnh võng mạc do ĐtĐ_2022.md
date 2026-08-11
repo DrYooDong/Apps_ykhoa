@@ -1,3 +1,14 @@
+---
+title: "BYT_Bệnh võng mạc do ĐtĐ_2022"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/noi-tiet
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 # BÀI HỌC CHUYÊN MÔN: BỆNH VÕNG MẠC ĐÁI THÁO ĐƯỜNG (BYT 2022)
 
 ---
@@ -19,12 +30,12 @@ Bệnh võng mạc đái tháo đường (VMĐTĐ) là một trong những biế
 
 ### Nguyên Nhân và Các Yếu Tố Nguy Cơ Kích Hoạt Biến Chứng
 
-Bệnh VMĐTĐ xuất hiện do tổn thương các mạch máu của võng mạc dẫn đến các hiện tượng rò rỉ huyết tương, tắc mạch gây thiếu máu, xuất huyết và kích thích sự phát triển của các tân mạch bất thường. Bệnh có thể xảy ra ở cả ĐTĐ típ 1 và ĐTĐ típ 2.
+Bệnh VMĐTĐ xuất hiện do tổn thương các mạch máu của võng mạc dẫn đến các hiện tượng rò rỉ huyết tương, tắc mạch gây thiếu máu, [[Xuất huyết]] và kích thích sự phát triển của các tân mạch bất thường. Bệnh có thể xảy ra ở cả ĐTĐ típ 1 và ĐTĐ típ 2.
 
 - **Thời gian mắc ĐTĐ (Yếu tố quyết định):** Thời gian mắc bệnh càng dài thì nguy cơ tổn thương võng mạc càng tăng cao.
     - **Đối với ĐTĐ típ 1:** Sau 5 năm tỷ lệ mắc khoảng 25%; sau 10 năm tăng lên 60%; và sau 15 năm đạt tới **80%**.
     - **Đối với ĐTĐ típ 2:** Sau 5 năm tỷ lệ mắc đạt khoảng 40%, trong đó có **2%** đã tiến triển sang thể bệnh VMĐTĐ tăng sinh đe dọa thị lực nghiêm trọng.
-- **Các yếu tố nguy cơ phối hợp:** Kiểm soát đường huyết kém (HbA1c cao), tăng huyết áp đồng mắc, biến chứng bệnh thận đái tháo đường, tình trạng thiếu máu kéo dài, rối loạn lipid máu, và phụ nữ mang thai.
+- **Các yếu tố nguy cơ phối hợp:** Kiểm soát đường huyết kém (HbA1c cao), [[Tăng huyết áp]] đồng mắc, biến chứng bệnh [[Thận]] đái tháo đường, tình trạng thiếu máu kéo dài, rối loạn lipid máu, và phụ nữ mang thai.
 
 ---
 
@@ -32,11 +43,11 @@ Bệnh VMĐTĐ xuất hiện do tổn thương các mạch máu của võng mạ
 
 #### 1. Hỏi bệnh sử lâm sàng
 
-Khai thác kỹ thời điểm phát hiện bệnh ĐTĐ, mức độ kiểm soát đường huyết và các chỉ số huyết áp, tiền sử sử dụng thuốc hạ đường huyết, các bệnh lý toàn thân phối hợp, và tiền sử can thiệp điều trị tại mắt từ trước.
+Khai thác kỹ thời điểm phát hiện bệnh ĐTĐ, mức độ kiểm soát đường huyết và các chỉ số huyết áp, tiền sử sử dụng thuốc [[Hạ đường huyết]], các bệnh lý toàn thân phối hợp, và tiền sử can thiệp điều trị tại mắt từ trước.
 
 #### 2. Thăm khám chức năng và bán phần trước
 
-- **Đo thị lực:** Cần lưu ý rằng **mức độ giảm thị lực không tương xứng với mức độ tiến triển thực tế của bệnh VMĐTĐ**. Trong nhiều trường hợp, tổn thương võng mạc đã tiến triển rất nặng nhưng thị lực của người bệnh vẫn được bảo tồn tương đối ổn định cho đến khi xuất hiện biến chứng xuất huyết dịch kính hoặc phù hoàng điểm.
+- **Đo thị lực:** Cần lưu ý rằng **mức độ giảm thị lực không tương xứng với mức độ tiến triển thực tế của bệnh VMĐTĐ**. Trong nhiều trường hợp, tổn thương võng mạc đã tiến triển rất nặng nhưng thị lực của người bệnh vẫn được bảo tồn tương đối ổn định cho đến khi xuất hiện biến chứng [[Xuất huyết]] dịch kính hoặc [[Phù]] hoàng điểm.
 - **Đo nhãn áp:** Nhằm phát hiện sớm tình trạng tăng nhãn áp thứ phát do biến chứng glôcôm tân mạch.
 - **Khám sinh hiển vi:** Phát hiện các tổn thương bán phần trước như đục thể thủy tinh (ĐTTT) hoặc **tân mạch mống mắt** (thường xuất hiện muộn, bắt đầu từ bờ đồng tử sau đó tiến triển dần về phía góc tiền phòng gây nghẽn đường dẫn lưu dịch và tăng nhãn áp).
 
@@ -51,7 +62,7 @@ Các tổn thương đặc hiệu trên võng mạc bao gồm:
 - **Bất thường tĩnh mạch:** Tĩnh mạch võng mạc giãn rộng, ngoằn ngoèo, thay đổi kích thước tạo hình ảnh phình tĩnh mạch chuỗi hạt hoặc vòng tĩnh mạch.
 - **Bất thường vi mạch trong võng mạc (IRMA):** Là tổ hợp các mao mạch giãn đóng vai trò như các shunt nối trực tiếp giữa tiểu động mạch và tiểu tĩnh mạch võng mạc nhằm bù trừ cho vùng thiếu máu.
 - **Tân mạch võng mạc và đĩa thị:** Xuất hiện tại ranh giới giữa vùng võng mạc thiếu máu và võng mạc lành. Tân mạch phát triển xuyên qua màng giới hạn trong lên bề mặt võng mạc hoặc nhô vào trong dịch kính (tân mạch đĩa thị), rất dễ vỡ gây xuất huyết.
-- **Phù hoàng điểm:** Tích tụ dịch trong nhu mô võng mạc vùng hoàng điểm làm võng mạc dày lên, có hoặc không kèm theo xuất tiết cứng. Đây là **nguyên nhân hàng đầu gây mất thị lực trung tâm** ở mọi giai đoạn của bệnh VMĐTĐ.
+- **[[Phù]] hoàng điểm:** Tích tụ dịch trong nhu mô võng mạc vùng hoàng điểm làm võng mạc dày lên, có hoặc không kèm theo xuất tiết cứng. Đây là **nguyên nhân hàng đầu gây mất thị lực trung tâm** ở mọi giai đoạn của bệnh VMĐTĐ.
 
 ---
 
@@ -60,8 +71,8 @@ Các tổn thương đặc hiệu trên võng mạc bao gồm:
 - **Chụp đáy mắt không huỳnh quang:** Sử dụng máy chụp ảnh đáy mắt (cầm tay hoặc cố định) để lưu trữ hình ảnh tổn thương đáy mắt phục vụ cho chẩn đoán, phân loại giai đoạn và theo dõi tiến triển. Phương pháp này có độ nhạy từ 76–97% và độ đặc hiệu từ 91–99% so với soi đáy mắt trực tiếp.
 - **Chụp mạch huỳnh quang võng mạc (FA - Fluorescein Angiography):** Là **phương pháp xâm lấn giúp chẩn đoán chính xác nhất bệnh VMĐTĐ**.
     - _Chỉ định:_ Đánh giá chi tiết vùng võng mạc thiếu máu (vùng đen giảm huỳnh quang), xác định vị trí rò dịch của vi phình mạch (tăng huỳnh quang muộn), phát hiện các tân mạch nhỏ và phân biệt IRMA với tân mạch võng mạc.
-    - _Chống chỉ định:_ Người có tiền sử dị ứng với fluorescein, phụ nữ mang thai, và bệnh nhân suy thận giai đoạn cuối có mức lọc cầu thận (eGFR) < 15 mL/phút/1,73 m².
-    - _Tác dụng phụ:_ Buồn nôn, mẩn ngứa, viêm tắc tĩnh mạch nơi tiêm, sưng đỏ do thoát mạch, co thắt phế quản, hoặc sốc phản vệ gây ngừng tim (hiếm gặp).
+    - _Chống chỉ định:_ Người có tiền sử dị ứng với fluorescein, phụ nữ mang thai, và bệnh nhân suy [[Thận]] giai đoạn cuối có mức lọc cầu thận (eGFR) < 15 mL/phút/1,73 m².
+    - _Tác dụng phụ:_ [[[[Nôn ói]]|Buồn nôn]], mẩn ngứa, viêm tắc tĩnh mạch nơi tiêm, sưng đỏ do thoát mạch, co thắt phế quản, hoặc [[Sốc]] phản vệ gây ngừng [[Tim]] (hiếm gặp).
 - **Chụp cắt lớp võng mạc (OCT):** Phương pháp không xâm lấn, cung cấp hình ảnh cắt lớp vi thể võng mạc. Đây là **công cụ hiệu quả nhất để phát hiện và đánh giá định lượng mức độ phù hoàng điểm đái tháo đường** thông qua đo chiều dày trung tâm võng mạc và thể tích hoàng điểm. Trên hình ảnh OCT có thể phát hiện các dấu hiệu: nang trong võng mạc, dịch dưới võng mạc, rối loạn cấu trúc các lớp võng mạc trong (DRILL), các ổ tăng phản xạ, và tình trạng màng co kéo dịch kính võng mạc.
 
 ---
@@ -109,8 +120,8 @@ Cần phân biệt bệnh VMĐTĐ với các bệnh lý mạch máu võng mạc 
 
 - **Tắc tĩnh mạch trung tâm võng mạc (CRVO):** Tổn thương thường chỉ khu trú ở một mắt, khởi phát đột ngột. Khám đáy mắt thấy phù đĩa thị rõ rệt, tĩnh mạch giãn to và ngoằn ngoèo hơn, xuất huyết lan tỏa dạng ngọn lửa chủ yếu ở lớp sợi thần kinh, và thường không có vi phình mạch hay xuất tiết cứng.
 - **Tắc nhánh tĩnh mạch võng mạc (BRVO):** Xuất huyết phân bố dọc theo một nhánh tĩnh mạch bị tắc và không bao giờ vượt qua đường ngang giữa chia đôi võng mạc.
-- **Bệnh võng mạc do tăng huyết áp:** Xuất huyết ít hơn và thường có dạng ngọn lửa nông, động mạch võng mạc co nhỏ, xuất hiện dấu hiệu động tĩnh mạch bắt chéo cắt đứt nhau (A-V nicking), xuất tiết dạng bông rải rác và rất hiếm khi quan sát thấy vi phình mạch.
-- **Phân biệt thể tăng sinh (PDR):** Cần phân biệt với các nguyên nhân gây tân mạch võng mạc khác như biến chứng sau tắc động mạch/tĩnh mạch võng mạc, bệnh võng mạc hồng cầu hình liềm, hoặc hội chứng thiếu máu cục bộ mắt.
+- **Bệnh võng mạc do [[Tăng huyết áp]]:** Xuất huyết ít hơn và thường có dạng ngọn lửa nông, động mạch võng mạc co nhỏ, xuất hiện dấu hiệu động tĩnh mạch bắt chéo cắt đứt nhau (A-V nicking), xuất tiết dạng bông rải rác và rất hiếm khi quan sát thấy vi phình mạch.
+- **Phân biệt thể tăng sinh (PDR):** Cần phân biệt với các nguyên nhân gây tân mạch võng mạc khác như biến chứng sau tắc động mạch/tĩnh mạch võng mạc, bệnh võng mạc [[Hồng cầu]] hình liềm, hoặc hội chứng thiếu máu cục bộ mắt.
 
 ---
 
@@ -123,7 +134,7 @@ Cần phân biệt bệnh VMĐTĐ với các bệnh lý mạch máu võng mạc 
 Kiểm soát tối ưu các yếu tố nguy cơ là bắt buộc để ngăn ngừa sự xuất hiện và làm chậm tiến triển của biến chứng võng mạc.
 
 - **Mục tiêu kiểm soát ở người trưởng thành không mang thai (Theo QĐ 5481/QĐ-BYT):**
-    - **HbA1c:** Target chung là **< 7%**. Tuy nhiên mục tiêu này cần cá thể hóa: có thể thắt chặt hơn (< 6,5%) ở người trẻ tuổi, mới chẩn đoán và không có bệnh tim mạch; hoặc nới lỏng hơn (7,5–8%) ở người lớn tuổi, mắc bệnh lâu năm, nhiều bệnh đồng mắc hoặc có tiền sử hạ đường huyết nặng.
+    - **HbA1c:** Target chung là **< 7%**. Tuy nhiên mục tiêu này cần cá thể hóa: có thể thắt chặt hơn (< 6,5%) ở người trẻ tuổi, mới chẩn đoán và không có bệnh [[Tim]] mạch; hoặc nới lỏng hơn (7,5–8%) ở người lớn tuổi, mắc bệnh lâu năm, nhiều bệnh đồng mắc hoặc có tiền sử [[Hạ đường huyết]] nặng.
     - **Glucose huyết tương lúc đói (trước ăn):** Đạt 80–130 mg/dL (4,4–7,2 mmol/L).
     - **Đỉnh glucose huyết tương sau ăn 1–2 giờ:** < 180 mg/dL (10,0 mmol/L).
     - **Huyết áp:** Đích chung là < 140/90 mmHg; thắt chặt xuống **< 130/80 mmHg** nếu bệnh nhân đã có biến chứng thận hoặc có nguy cơ cao mắc bệnh tim mạch do xơ vữa.
@@ -145,7 +156,7 @@ Kiểm soát tối ưu các yếu tố nguy cơ là bắt buộc để ngăn ng�
 ##### **2. Điều trị phù hoàng điểm đái tháo đường (DME):**
 
 - **Kháng VEGF (Anti-VEGF):** Là **lựa chọn điều trị đầu tay** (First-line) cho các trường hợp phù hoàng điểm có ảnh hưởng đến thị lực. Thuốc được tiêm trực tiếp vào buồng dịch kính theo phác đồ điều trị nghiêm ngặt.
-- **Corticosteroid:** Có thể chỉ định tiêm nội nhãn hoặc cạnh nhãn cầu trong một số trường hợp cụ thể như bệnh nhân đã đặt thấu kính nhân tạo (pseudophakic), bệnh nhân sau phẫu thuật cắt dịch kính, hoặc người có nguy cơ cao gặp các biến cố tắc mạch huyết khối.
+- **[[[[Corticoid]]|Corticosteroid]]:** Có thể chỉ định tiêm nội nhãn hoặc cạnh nhãn cầu trong một số trường hợp cụ thể như bệnh nhân đã đặt thấu kính nhân tạo (pseudophakic), bệnh nhân sau phẫu thuật cắt dịch kính, hoặc người có nguy cơ cao gặp các biến cố tắc mạch huyết khối.
 - **Laser võng mạc:** Laser quang đông quanh hoàng điểm (hình móng ngựa, hình vòng hoặc dạng lưới ở cực sau) giúp tạo sẹo võng mạc, bít các vi phình mạch rò dịch để giới hạn vùng phù và bảo vệ vùng hoàng điểm lành.
 
 ##### **3. Điều trị biến chứng (Phẫu thuật cắt dịch kính):**

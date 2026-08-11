@@ -1,15 +1,20 @@
 ---
 title: "SL_Nội tiết_Tuyến giáp"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/noi-tiet
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Dưới đây là bài học chi tiết về Sinh lý học Tuyến giáp, được biên soạn dựa trên các tài liệu y khoa và bài giảng đã cung cấp.
 
 ### 1. NỘI DUNG SINH LÝ HỌC CHI TIẾT
 
 #### I. Cấu trúc Giải phẫu và Mô học của Tuyến Giáp
-Tuyến giáp (thyroid gland) là tuyến nội tiết lớn nhất trong cơ thể, nằm ở vùng cổ, phía dưới thanh quản và phía trước khí quản, gồm hai thùy phải và trái nối với nhau qua eo giáp. Tuyến giáp nhận lượng máu nuôi rất phong phú (chiếm khoảng 1% cung lượng tim).
+Tuyến giáp (thyroid gland) là tuyến nội tiết lớn nhất trong cơ thể, nằm ở vùng cổ, phía dưới thanh quản và phía trước khí quản, gồm hai thùy phải và trái nối với nhau qua eo giáp. Tuyến giáp nhận lượng máu nuôi rất phong phú (chiếm khoảng 1% cung lượng [[Tim]]).
 
 Đơn vị chức năng cơ bản của tuyến giáp là **nang giáp (thyroid follicle)**.
 *   Mỗi nang có dạng hình cầu, được bao bọc bởi một lớp tế bào biểu mô nang giáp (follicular cell).
@@ -65,14 +70,14 @@ Hormon giáp cần kênh vận chuyển chủ động (ví dụ MCT8) để đi 
 > **📌 TRÍCH XUẤT LƯU ĐỒ / HÌNH ẢNH MINH HỌA:**
 > *   **Tên Hình/Sơ đồ:** Hình 28.7. Cơ chế tác động trên gen của hormon giáp (T3).
 > *   **Thuộc tài liệu:** [Book] Sinh lý học - UMP 2024.pdf
-> *   **Nội dung mô tả:** Lưu đồ diễn tiến: $T_4$ vào bào tương $\rightarrow$ $T_3$ $\rightarrow$ Gắn thụ thể nhân $\rightarrow$ Phiên mã mRNA $\rightarrow$ Tổng hợp các protein mới (như bơm $Na^+/K^+$-ATPase, enzyme ti thể). Kết quả dẫn đến tăng chuyển hóa cơ chất, tăng tiêu thụ oxy, sinh nhiệt, tăng cung lượng tim và thông khí, ảnh hưởng lên sự tăng trưởng toàn cơ thể.
+> *   **Nội dung mô tả:** Lưu đồ diễn tiến: $T_4$ vào bào tương $\rightarrow$ $T_3$ $\rightarrow$ Gắn thụ thể nhân $\rightarrow$ Phiên mã mRNA $\rightarrow$ Tổng hợp các protein mới (như bơm $Na^+/K^+$-ATPase, enzyme ti thể). Kết quả dẫn đến tăng chuyển hóa cơ chất, tăng tiêu thụ oxy, sinh nhiệt, tăng cung lượng [[Tim]] và thông khí, ảnh hưởng lên sự tăng trưởng toàn cơ thể.
 
 #### V. Tác Dụng Sinh Lý Của Hormon Giáp
 Hormon giáp tác động lên hầu hết mọi tế bào trong cơ thể, thiết lập mức chuyển hóa cơ bản (Basal Metabolic Rate - BMR).
 *   **Chuyển hóa năng lượng và sinh nhiệt:** Làm tăng ti thụ oxy và BMR ở hầu hết các mô (trừ não trưởng thành, lách, tinh hoàn). Tăng hoạt động bơm $Na^+/K^+$-ATPase, tăng số lượng và hoạt động ti thể. Đặc biệt kích thích tổng hợp protein UCP1 (thermogenin) tại mô mỡ nâu giúp giải phóng năng lượng dưới dạng nhiệt.
-*   **Chuyển hóa các chất:** Thúc đẩy phản ứng "đói" của cơ thể. Tăng hấp thu glucose ở ruột, tăng tân sinh glucose và phân giải glycogen ở gan. Kích thích mạnh ly giải mỡ (lipolysis), làm giảm cholesterol máu (nhờ tăng biểu hiện thụ thể LDL tại gan). Tăng tổng hợp nhưng cũng làm tăng thoái hóa protein.
+*   **Chuyển hóa các chất:** Thúc đẩy phản ứng "đói" của cơ thể. Tăng hấp thu glucose ở ruột, tăng tân sinh glucose và phân giải glycogen ở [[Gan]]. Kích thích mạnh ly giải mỡ (lipolysis), làm giảm cholesterol máu (nhờ tăng biểu hiện thụ thể LDL tại [[Gan]]). Tăng tổng hợp nhưng cũng làm tăng thoái hóa protein.
 *   **Hệ Tim mạch:** Tác dụng cực kỳ quan trọng. Hormon giáp làm **tăng số lượng thụ thể $\beta$-adrenergic** trên cơ tim, làm tim nhạy cảm hơn với catecholamine. Gây tăng nhịp tim, tăng sức co bóp cơ tim, giãn mạch ngoại vi (do tăng chuyển hóa mô tạo nhiệt và $CO_2$) dẫn đến tăng cung lượng tim (Cardiac Output) và rộng huyết áp tâm thu/tâm trương.
-*   **Hệ Thần kinh & Tăng trưởng:** Hormon giáp tuyệt đối cần thiết cho sự phát triển của hệ thần kinh trung ương ở bào thai và trẻ nhũ nhi (tạo synapse, myelin hóa). Thiếu $T_3, T_4$ bẩm sinh gây bệnh đần độn (Cretinism) kèm lùn. Ở người lớn, nó giúp duy trì sự hưng phấn, tỉnh táo, và tốc độ phản xạ thần kinh cơ. Ở mô xương, nó tác dụng hiệp đồng với GH và IGF-1 để thúc đẩy sụn đầu xương hóa cốt và phát triển chiều cao.
+*   **Hệ Thần kinh & Tăng trưởng:** Hormon giáp tuyệt đối cần thiết cho sự phát triển của [[Hệ thần kinh trung ương]] ở bào thai và trẻ nhũ nhi (tạo synapse, myelin hóa). Thiếu $T_3, T_4$ bẩm sinh gây bệnh đần độn (Cretinism) kèm lùn. Ở người lớn, nó giúp duy trì sự hưng phấn, tỉnh táo, và tốc độ phản xạ thần kinh cơ. Ở mô xương, nó tác dụng hiệp đồng với GH và IGF-1 để thúc đẩy sụn đầu xương hóa cốt và phát triển chiều cao.
 
 > **📌 TRÍCH XUẤT LƯU ĐỒ / HÌNH ẢNH MINH HỌA:**
 > *   **Tên Hình/Sơ đồ:** Fig. 42.11 Mechanisms by which thyroid hormone increases cardiac output.

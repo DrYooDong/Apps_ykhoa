@@ -1,9 +1,13 @@
 ---
 title: "Thu thập thông tin & Hành chính - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Thu thập thông tin - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**
@@ -84,7 +88,7 @@ Viết bệnh án là kết hợp giữa nghệ thuật và tính khoa học. Bi
 
 - Nên chọn **một** lý do.
     
-    *Ví dụ: Bệnh nhân mệt mỏi 2 ngày nay kèm theo ăn uống kém và khó ngủ, cách nhập viện 2 giờ bệnh nhân đang nằm ngủ thì đột ngột đau ngực dữ dội…* ⇒ Lý do đến khám là **đau ngực**.
+    *Ví dụ: Bệnh nhân mệt mỏi 2 ngày nay kèm theo ăn uống kém và khó ngủ, cách nhập viện 2 giờ bệnh nhân đang nằm ngủ thì đột ngột [[Đau ngực]] dữ dội…* ⇒ Lý do đến khám là **[[Đau ngực]]**.
     
 - Nên là lý do **đặc hiệu**.
     
@@ -119,18 +123,18 @@ Viết bệnh án là kết hợp giữa nghệ thuật và tính khoa học. Bi
     
     → Thời gian vàng cho việc cấp cứu 1 bệnh
     
-    *Ví dụ nhồi máu cơ tim cấp cần can thiệp tái thông mạch vành sớm trong 12 giờ đầu*
+    *Ví dụ nhồi máu cơ [[Tim]] cấp cần can thiệp tái thông mạch vành sớm trong 12 giờ đầu*
     
     ### *b. Hoàn cảnh khởi phát của triệu chứng*
     
     Hoàn cảnh khởi phát giúp cho việc chẩn đoán. 
     
     *Thí dụ:
-    + Bệnh nhân đang nằm bất động vì gãy cổ xương đùi, đột ngột đau ngực dữ dội thì nghĩ đến bệnh nhân bị **thuyên tắc phổi**. 
-    + Bệnh nhân nôn ói nhiều lần sau đó nôn ra máu đỏ tươi thì nghĩ đến **hội chứng Malllory West**.*
+    + Bệnh nhân đang nằm bất động vì gãy cổ xương đùi, đột ngột đau ngực dữ dội thì nghĩ đến bệnh nhân bị **thuyên tắc [[Phổi]]**. 
+    + Bệnh nhân [[[[Nôn ói|Nôn]] ói]] nhiều lần sau đó nôn ra máu đỏ tươi thì nghĩ đến **hội chứng Malllory West**.*
     
     - Bệnh **mới xuất hiện**: Bệnh nhân đang làm gì thì xuất hiện triệu chứng. Thường bệnh nhân **nhớ rõ**. *VD: bệnh nhân sau khi khiêng bao gạo 20kg và đi được khoảng 2m thì đau ngực dữ dội.*
-    - Bệnh **xuất hiện từ lâu**: Bệnh nhân thường làm gì thì xuất hiện triệu chứng. *VD: Mỗi khi bệnh nhân đi bộ khoảng 20m thì bệnh nhân cảm thấy tim đập nhanh, thở nhanh và mệt mỏi*
+    - Bệnh **xuất hiện từ lâu**: Bệnh nhân thường làm gì thì xuất hiện triệu chứng. *VD: Mỗi khi bệnh nhân đi bộ khoảng 20m thì bệnh nhân cảm thấy [[Tim]] đập nhanh, thở nhanh và mệt mỏi*
     
     ### *c. Mô tả đầy đủ tính chất của triệu chứng chính hoặc các triệu chứng quan trọng giúp ích cho việc chẩn đoán*
     
@@ -149,17 +153,17 @@ Viết bệnh án là kết hợp giữa nghệ thuật và tính khoa học. Bi
 
 1.  **Tránh** **dùng** **từ** **chuyên** **môn:**
     - *Đau ngực sau xương ức* ⇒ Đau ở giữa ngực và đau sâu bên trong
-    - *Bệnh nhân có những cơn khó thở kịch phát về đêm* ⇒ Bệnh nhân nằm ngủ thì cảm thấy khó thở, cơn khó thở nhiều khiến bệnh nhân phải thức giấc và ngồi dậy để thở. Sau 15 phút, bệnh nhân giảm từ từ và hết khó thở, khi đó bệnh nhân nằm xuống và tiếp tục ngủ.
+    - *Bệnh nhân có những cơn [[Khó thở]] kịch phát về đêm* ⇒ Bệnh nhân nằm ngủ thì cảm thấy [[Khó thở]], cơn khó thở nhiều khiến bệnh nhân phải thức giấc và ngồi dậy để thở. Sau 15 phút, bệnh nhân giảm từ từ và hết khó thở, khi đó bệnh nhân nằm xuống và tiếp tục ngủ.
     
-    Các từ **không nên ghi** trong bệnh sử: Cơn đau thắt ngực, cơn đau quặn mật/ thận, cơn co thắt phế quản,…
+    Các từ **không nên ghi** trong bệnh sử: Cơn đau thắt ngực, cơn đau quặn mật/ [[Thận]], cơn co thắt phế quản,…
     
 2. **Tránh** **dùng** **từ** **không** **rõ** **nghĩa:**
     - *Mệt, giảm khả năng ráng sức* ⇒ Hằng ngày bệnh nhân đi bộ được 1000m, nhưng từ 1 tuần nay, bệnh nhân đi bộ khoảng 200m thì thấy mệt mỏi và hồi hộp đánh trống ngực.
     - *Bệnh nhân đau ngực mức độ trung bình* ⇒ Bệnh nhân thấy đau ngực nhưng vẫn chịu đựng được.
     - *Bệnh nhân khó thở hai thì* ⇒ Trong cơn khó thở bệnh nhân thấy khó khăn khi hít vô và thở ra…
 3. **Tránh** **dùng** **mô** **tả** **thực** **thể:**
-    - Bệnh nhân thấy “**phù** **trắng** **mềm** **hai** **chân”** ⇒ Nên viết thành: bệnh nhân cảm giác chân nặng nề, sờ vào mềm, ấn lõm ở mu chân và không đau.
-    - Bệnh nhân phát hiện bị **“phù 2 mi mắt”** ⇒ Nên viết thành: bệnh nhân cảm thấy nặng hai mi mắt và soi gương bệnh nhân thấy hai mi mắt đầy.
+    - Bệnh nhân thấy “**[[Phù]]** **trắng** **mềm** **hai** **chân”** ⇒ Nên viết thành: bệnh nhân cảm giác chân nặng nề, sờ vào mềm, ấn lõm ở mu chân và không đau.
+    - Bệnh nhân phát hiện bị **“[[Phù]] 2 mi mắt”** ⇒ Nên viết thành: bệnh nhân cảm thấy nặng hai mi mắt và soi gương bệnh nhân thấy hai mi mắt đầy.
 4. **Không** **nên** **viết** **quá** **ít** **thông tin, thiếu chi tiết:**
     
     Cách nhập viện 2 giờ, bệnh nhân bị đau ngực, dữ dội. Đau ngực kéo dài > 30 phút, bệnh nhân đến bệnh viện. Trong quá trình đưa đến bệnh viện bệnh nhân khó thở nhiều sau đó ngất.
@@ -168,14 +172,14 @@ Viết bệnh án là kết hợp giữa nghệ thuật và tính khoa học. Bi
 - Từ lúc nào?, đang làm gì?, bị cái gì?, bị như thế nào?.
     
     *Ví dụ: Cách nhập viện khoảng 2 giờ, bệnh nhân đang ngồi xem ti vi thì bị đau ngực và mệt mỏi. Đau ở vùng ngực bên trái, cảm giác đau sâu bên trong, lan lên vai trái và mỏi ở hàm. Bệnh nhân cảm thấy nặng ở ngực nhưng không chịu đựng nổi. Đau liên tục bệnh nhân nằm nghỉ nhưng không giảm. Khi bệnh nhân hít thở mạnh hay xoay trở không làm đau tăng lên. Sau đau khoảng 30 phút bệnh nhân bắt đầu cảm thấy mệt mỏi và người vã hết mồ hôi. Bệnh nhân nằm nghỉ cho đến khoảng 1 giờ sau, người thân đi làm về phát hiện bệnh nhân bị đau ngực nên đưa bệnh nhân đến bệnh viện.*
-    Trong quá trình bệnh ngoài đau ngực bệnh nhân không có ho, sốt…
+    Trong quá trình bệnh ngoài đau ngực bệnh nhân không có ho, [[Sốt]]…
     
 - Nên có **triệu chứng âm tính** có giá trị cho loại trừ chẩn đoán
     
     **Ghi ở cuối cùng*
     
     *Ví dụ: Cách nhập viện khoảng 2 giờ, bệnh nhân đang ngồi xem ti vi thì bị đau ngực và mệt mỏi. Đau ở vùng ngực bên trái, cảm giác đau sâu bên trong, lan lên vai trái và mỏi ở hàm. Bệnh nhân cảm thấy nặng ở ngực nhưng không chịu đựng nổi. Đau liên tục bệnh nhân nằm nghỉ nhưng không giảm. Khi bệnh nhân hít thở mạnh hay xoay trở không làm đau tang lên. Sau đau khoảng 30 phút bệnh nhân bắt đầu cảm thấy mệt mỏi và người vã hết mồ hôi. Bệnh nhân nằm nghỉ cho đến khoảng 1 giờ sau, người thân đi làm về phát hiện bệnh nhân bị đau ngực nên đưa bệnh nhân đến bệnh viện.*
-    Trong quá trình bệnh ngoài đau ngực bệnh nhân không có ho, sốt…
+    Trong quá trình bệnh ngoài đau ngực bệnh nhân không có ho, [[Sốt]]…
     
 - Có chẩn đoán và xử trí của **tuyến trước** (ghi thông tin chính)
     
@@ -194,7 +198,7 @@ Viết bệnh án là kết hợp giữa nghệ thuật và tính khoa học. Bi
     
     </aside>
     
-    *Ví dụ: Tại bệnh viện A, bệnh nhân được chụp X-quang ngực ghi nhận có cung động mạch phồng, làm Ct-scan ngực không ghi nhận bóc tách động mạch chủ. Bệnh nhân được chẩn đoán cơn tăng huyết áp và được truyền nitroglycerin với liều 30ug/phút. Sau 30 phút huyết áp vẫn là 200mmHg nên bệnh nhân được chuyển viện.*
+    *Ví dụ: Tại bệnh viện A, bệnh nhân được [[[[X-quang]]|chụp X-quang]] ngực ghi nhận có cung động mạch phồng, làm Ct-scan ngực không ghi nhận bóc tách động mạch chủ. Bệnh nhân được chẩn đoán cơn [[Tăng huyết áp]] và được truyền nitroglycerin với liều 30ug/phút. Sau 30 phút huyết áp vẫn là 200mmHg nên bệnh nhân được chuyển viện.*
     
 - **Tình** **trạng** **lúc** **nhập** **viện**:
     

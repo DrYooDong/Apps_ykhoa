@@ -1,16 +1,27 @@
+---
+title: "NGHIÊN CỨU EMPA-REG OUTCOME"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/noi-tiet
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 # BÀI HỌC LÂM SÀNG: NGHIÊN CỨU EMPA-REG OUTCOME
 
 ---
 
 ## 1. Nội Dung Sinh Lý Học & Kết Quả Lâm Sàng Chi Tiết
 
-Nghiên cứu **EMPA-REG OUTCOME** (Empagliflozin, Cardiovascular Outcomes, and Mortality in Type 2 Diabetes) là một thử nghiệm lâm sàng landmark ngẫu nhiên, mù đôi, kiểm chứng với placebo. Nghiên cứu này đánh giá hiệu quả và độ an toàn của empagliflozin – một chất ức chế đồng vận chuyển sodium–glucose cotransporter 2 (SGLT2) – khi phối hợp vào phác đồ điều trị tiêu chuẩn ở bệnh nhân đái tháo đường tuýp 2 có nguy cơ tim mạch cao.
+Nghiên cứu **EMPA-REG OUTCOME** (Empagliflozin, Cardiovascular Outcomes, and Mortality in Type 2 Diabetes) là một thử nghiệm lâm sàng landmark ngẫu nhiên, mù đôi, kiểm chứng với placebo. Nghiên cứu này đánh giá hiệu quả và độ an toàn của empagliflozin – một chất ức chế đồng vận chuyển sodium–glucose cotransporter 2 (SGLT2) – khi phối hợp vào phác đồ điều trị tiêu chuẩn ở bệnh nhân đái tháo đường tuýp 2 có nguy [[[[Tim]]|cơ tim]] mạch cao.
 
 ---
 
 ### Cơ Chế Sinh Lý Học của Thuốc Ức Chế SGLT2 (Empagliflozin)
 
-- **Cơ chế tác dụng tại thận**: Thận đóng vai trò quan trọng trong việc hằng định nội môi glucose thông qua quá trình lọc và tái hấp thu. Ở người bình thường, SGLT2 nằm ở ống lượn gần chịu trách nhiệm tái hấp thu phần lớn lượng glucose được lọc qua cầu thận.
+- **Cơ chế tác dụng tại [[Thận]]**: [[Thận]] đóng vai trò quan trọng trong việc hằng định nội môi glucose thông qua quá trình lọc và tái hấp thu. Ở người bình thường, SGLT2 nằm ở ống lượn gần chịu trách nhiệm tái hấp thu phần lớn lượng glucose được lọc qua cầu thận.
 - **Hiệu ứng bài niệu glucose**: Empagliflozin là chất ức chế chọn lọc SGLT2. Bằng cách giảm tái hấp thu glucose ở ống lượn gần, thuốc làm tăng đào thải glucose qua nước tiểu, từ đó giúp giảm nồng độ glucose trong máu ở bệnh nhân đái tháo đường tuýp 2.
 - **Hiệu ứng huyết động và chuyển hóa ngoài đường huyết**:
     - Giảm cân nặng và mỡ tạng.
@@ -74,13 +85,13 @@ _Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
 |Tiêu chí kết cục lâm sàng|Nhóm Placebo (N=2333)|Nhóm Empagliflozin gộp (N=4687)|Tỷ số nguy hại HR (95% CI)|Trị số P|
 |:--|:-:|:-:|:-:|:-:|
 |**Tiêu chí gộp chính (3-point MACE)**|**282 (12.1%)**|**490 (10.5%)**|**0.86 (0.74–0.99)**|**0.04 (ưu trội)**|
-|**Tiêu chí gộp phụ** (MACE + nhập viện đau thắt ngực không ổn định)|333 (14.3%)|599 (12.8%)|0.89 (0.78–1.01)|0.08 (ưu trội)|
+|**Tiêu chí gộp phụ** (MACE + nhập viện [[Đau ngực|đau thắt ngực]] không ổn định)|333 (14.3%)|599 (12.8%)|0.89 (0.78–1.01)|0.08 (ưu trội)|
 |**Tử vong do mọi nguyên nhân**|**194 (8.3%)**|**269 (5.7%)**|**0.68 (0.57–0.82)**|**<0.001**|
 |**Tử vong do nguyên nhân Tim mạch**|**137 (5.9%)**|**172 (3.7%)**|**0.62 (0.49–0.77)**|**<0.001**|
 |Nhồi máu cơ tim (tử vong hoặc không tử vong)*|126 (5.4%)|223 (4.8%)|0.87 (0.70–1.09)|0.23|
 |Đột quỵ (tử vong hoặc không tử vong)|69 (3.0%)|164 (3.5%)|1.18 (0.89–1.56)|0.26|
 |**Nhập viện do suy tim**|**95 (4.1%)**|**126 (2.7%)**|**0.65 (0.50–0.85)**|**0.002**|
-|Nhập viện do đau thắt ngực không ổn định|66 (2.8%)|133 (2.8%)|0.99 (0.74–1.34)|0.97|
+|Nhập viện do [[Đau ngực|đau thắt ngực]] không ổn định|66 (2.8%)|133 (2.8%)|0.99 (0.74–1.34)|0.97|
 
 _*Ghi chú:_ Không bao gồm nhồi máu cơ tim thầm lặng (silent myocardial infarction). Không có sự khác biệt có ý nghĩa thống kê giữa hai nhóm đối với biến cố nhồi máu cơ tim hoặc đột quỵ đơn độc.
 
@@ -145,8 +156,8 @@ _Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
 |:--|:-:|:-:|:-:|
 |**Bất kỳ biến cố bất lợi nào**|2139 (91.7%)|4230 (90.2%)|P < 0.05|
 |Biến cố bất lợi nghiêm trọng|988 (42.3%)|1789 (38.2%)|P < 0.001|
-|Hạ đường huyết xác định (bất kỳ)|650 (27.9%)|1303 (27.8%)|Không khác biệt|
-|Hạ đường huyết nặng cần hỗ trợ|36 (1.5%)|63 (1.3%)|Không khác biệt|
+|[[Hạ đường huyết]] xác định (bất kỳ)|650 (27.9%)|1303 (27.8%)|Không khác biệt|
+|[[Hạ đường huyết]] nặng cần hỗ trợ|36 (1.5%)|63 (1.3%)|Không khác biệt|
 |Biến cố nghi nhiễm trùng tiểu (UTI)|423 (18.1%)|842 (18.0%)|Không khác biệt|
 |**Nhiễm trùng sinh dục** (Nam giới)|**25 (1.5%)**|**166 (5.0%)**|**P < 0.001**|
 |**Nhiễm trùng sinh dục** (Nữ giới)|**17 (2.6%)**|**135 (10.0%)**|**P < 0.001**|
@@ -159,7 +170,7 @@ _Tài liệu tham khảo:_ `NEJMoa1504720.pdf` trong Notebook.
 - **Các điểm lưu ý lâm sàng đặc biệt về độ an toàn**:
     1. **Nhiễm trùng sinh dục**: Là tác dụng phụ phổ biến nhất tăng lên rõ rệt khi dùng empagliflozin (đạt 10.0% ở nữ giới và 5.0% ở nam giới dùng thuốc).
     2. **An toàn trên thận**: Tỷ lệ suy thận cấp và tổn thương thận cấp ở nhóm dùng empagliflozin thấp hơn đáng kể so với placebo, chứng minh vai trò duy trì ổn định chức năng thận lâu dài của nhóm thuốc này.
-    3. **Xét nghiệm máu**: Chỉ số dung tích hồng cầu (hematocrit) tăng nhẹ ở các nhóm sử dụng empagliflozin (tăng khoảng 4.8% đến 5.0% so với mức nền) do tác dụng bài niệu thẩm thấu.
+    3. **Xét nghiệm máu**: Chỉ số dung tích [[Hồng cầu]] (hematocrit) tăng nhẹ ở các nhóm sử dụng empagliflozin (tăng khoảng 4.8% đến 5.0% so với mức nền) do tác dụng bài niệu thẩm thấu.
 
 ---
 

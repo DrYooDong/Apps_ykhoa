@@ -1,112 +1,83 @@
 ---
+title: "Tác nhân"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
-  - Truyennhiem
-  - MOC
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-# Danh mục Tác nhân Truyền nhiễm (MOC)
 
-### 🦠 Siêu vi (Virus)
-**Virus DNA**:
-*Virus DNA chuỗi kép (dsDNA)*:
-[[Herpesviridae]]
-[[Poxviridae]]
-[[Adenoviridae]]
-[[Papillomaviridae]]
-[[Polyomaviridae]]
+## 📌 Danh Mục Nội Dung
 
-*Virus DNA sợi đơn (ssDNA)*
-[[Parvoviridae]]
-
-
-**Virus RNA**:
-*Virus RNA sợi đơn, mang nghĩa dương (+ssRNA):*
-[[Coronaviridae]]
-[[Flaviviridae]]
-[[Chikungunya]]
-[[Rubella]]
-[[Caliciviridae]]
-[[Hepatitis E Virus (HEV)]]
-[[Picornaviridae]]
-
-*Virus RNA sợi đơn, mang nghĩa dương (+ssRNA)*
-[[Filoviridae]]
-[[Paramyxoviridae]]
-[[Rhabdoviridae]]
-[[Orthomyxoviridae (Virus Cúm)]]
-
-*Virus RNA sợi đơn, nghĩa hỗn hợp (Ambisense ssRNA)*
-[[Arenaviridae]]
-[[Bunyavirales]]
-
-*Virus RNA chuỗi kép (dsRNA)*:
-[[Reoviridae]]
-
-**Virus sao chép ngược**:
-[[Hepatitis B Virus (HBV)]]
-[[Retroviridae]]
-
-### 🧫 Nhiễm khuẩn (Bacteria)
-**Cầu khuẩn gram dương**
-- [[Liên cầu (Streptococcus)]]
-- [[Phế cầu (Streptococcus pneumoniae)]]
-- [[Tụ cầu (Staphylococcus epidermidis)]]
-- [[Tụ cầu vàng (Staphylococcus aureus)]]
-
-**Song cầu gram âm**
-- [[Neisseria gonorrhoeae (Lậu cầu)]]
-+ [[Neisseria meningitidis (Não mô cầu)]]
-- [[Moraxella catarrhalis]]
-- [[Kingella]]
-
-**Trực khuẩn Gram dương (Gram-positive Bacilli)**
-- _Sinh bào tử:_ [[Clostridium tetani (uốn ván)]], [[Clostridium perfringens (hoại tử sinh hơi)]], [[Clostridium botulinum]], [[Clostridioides difficile (Viêm ruột màng giả)]], [[Bacillus]]
-- _Không sinh bào tử:_ [[Corynebacterium diphtheriae (Bạch hầu )]], [[Listeria]], [[Erysipelothrix rhusiopathiae]], [[Cutibacterium acnes]]
-
-**Trực khuẩn Gram âm & Đường ruột (Gram-negative Bacilli)**
-- [[Acinetobacter baumannii]]
-- [[Escherichia coli (E. coli)]]
-- [[Vibrio Cholera (Tả)]]
-- [[Haemophilus influenzae (H. influenzae)]]
-*Đường ruột*:
-+ [[Escherichia coli (E. coli)]]
-+ [[Klebsiella spp]]
-+ [[Salmonella (Thương hàn)]]
-+ [[Shigella (Lỵ trực trùng)]]
-+ [[Yersinia enterocolitica]]
-*Không lên men:*
-+ [[Pseudomonas aeruginosa (Trực khuẩn mủ xanh)]]
-
-
-**Vi khuẩn nội bào, Xoắn khuẩn
-- [[Mycobacterium tuberculosis (Lao)]]
-- [[Nontuberculous mycobacteria - NTM (Lao không điển hình)]]
-- [[Chlamydia trachomatis]]
-- [[Borrelia burgdorferi sensu lato]]
-- [[Leptospira]]
-- [[Rickettsia]]
-- [[Sốt mò (Scrub typhus)]]
-
-**Vi khuẩn kỵ khí & khác:**
-- [[Cutibacterium acnes]]
-- [[Clostridioides difficile (Viêm ruột màng giả)]]
-- [[Clostridium botulinum]]
-- [[Clostridium perfringens (hoại tử sinh hơi)]]
-- [[Clostridium tetani (uốn ván)]]
-- [[Brucella]]
-
-### 🦟 Ký sinh trùng (Parasites)
-**Đơn bào (Protozoa)**
-- [[Plasmodium (Sốt rét)]]
-- [[Entamoeba histolytica (amip)]]]
-- [[Toxoplasma gondii]]
-- [[Trichomonas vaginalis]]
-- [[Giardia lamblia]]
-
-**Giun sán (Helminths)**
-- [[Các loại giun sán]]
-
-### 🍄 Vi nấm (Fungi)
-- [[Candida spp]]
-- [[Cryptococcus neoformans]]
-- [[Aspergillus spp.]]
+1. [[Herpesviridae]]
+2. [[Poxviridae]]
+3. [[Adenoviridae]]
+4. [[Papillomaviridae]]
+5. [[Polyomaviridae]]
+6. [[Parvoviridae]]
+7. [[Coronaviridae]]
+8. [[Flaviviridae]]
+9. [[Chikungunya]]
+10. [[Rubella]]
+11. [[Caliciviridae]]
+12. [[Hepatitis E Virus (HEV)]]
+13. [[Picornaviridae]]
+14. [[Filoviridae]]
+15. [[Paramyxoviridae]]
+16. [[Rhabdoviridae]]
+17. [[Orthomyxoviridae (Virus Cúm)]]
+18. [[Arenaviridae]]
+19. [[Bunyavirales]]
+20. [[Reoviridae]]
+21. [[Hepatitis B Virus (HBV)]]
+22. [[Retroviridae]]
+23. [[Liên cầu (Streptococcus)]]
+24. [[Phế cầu (Streptococcus pneumoniae)]]
+25. [[Tụ cầu (Staphylococcus epidermidis)]]
+26. [[Tụ cầu vàng (Staphylococcus aureus)]]
+27. [[Neisseria gonorrhoeae (Lậu cầu)]]
+28. [[Neisseria meningitidis (Não mô cầu)]]
+29. [[Moraxella catarrhalis]]
+30. [[Kingella]]
+31. [[Clostridium tetani (uốn ván)]]
+32. [[Clostridium perfringens (hoại tử sinh hơi)]]
+33. [[Clostridium botulinum]]
+34. [[Clostridioides difficile (Viêm ruột màng giả)]]
+35. [[Bacillus]]
+36. [[Corynebacterium diphtheriae (Bạch hầu )]]
+37. [[Listeria]]
+38. [[Erysipelothrix rhusiopathiae]]
+39. [[Cutibacterium acnes]]
+40. [[Acinetobacter baumannii]]
+41. [[Escherichia coli (E. coli)]]
+42. [[Vibrio Cholera (Tả)]]
+43. [[Haemophilus influenzae (H. influenzae)]]
+44. [[Escherichia coli (E. coli)]]
+45. [[Klebsiella spp]]
+46. [[Salmonella (Thương hàn)]]
+47. [[Shigella (Lỵ trực trùng)]]
+48. [[Yersinia enterocolitica]]
+49. [[Pseudomonas aeruginosa (Trực khuẩn mủ xanh)]]
+50. [[Mycobacterium tuberculosis (Lao)]]
+51. [[Nontuberculous mycobacteria - NTM (Lao không điển hình)]]
+52. [[Chlamydia trachomatis]]
+53. [[Borrelia burgdorferi sensu lato]]
+54. [[Leptospira]]
+55. [[Rickettsia]]
+56. [[Sốt mò (Scrub typhus)]]
+57. [[Cutibacterium acnes]]
+58. [[Clostridioides difficile (Viêm ruột màng giả)]]
+59. [[Clostridium botulinum]]
+60. [[Clostridium perfringens (hoại tử sinh hơi)]]
+61. [[Clostridium tetani (uốn ván)]]
+62. [[Brucella]]
+63. [[Plasmodium (Sốt rét)]]
+64. [[Entamoeba histolytica (amip)]]
+65. [[Toxoplasma gondii]]
+66. [[Trichomonas vaginalis]]
+67. [[Giardia lamblia]]
+68. [[Các loại giun sán]]
+69. [[Candida spp]]
+70. [[Cryptococcus neoformans]]
+71. [[Aspergillus spp.]]

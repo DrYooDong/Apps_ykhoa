@@ -1,4 +1,15 @@
-# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: ĐẶC ĐIỂM GIẢI PHẪU VÀ SINH LÝ TUYẾN TỤY NGOẠI TIẾT VÀ HỆ GAN - MẬT Ở TRẺ EM)
+---
+title: "GP-SL_Hệ tiêu hóa ở trẻ em (Phần 2)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
+# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: ĐẶC ĐIỂM GIẢI PHẪU VÀ SINH LÝ TUYẾN TỤY NGOẠI TIẾT VÀ HỆ [[Gan]] - MẬT Ở TRẺ EM)
 
 ---
 
@@ -26,7 +37,7 @@
 
 - **Men Amylase và Lipase tụy:** Mặc dù đã xuất hiện từ sớm trong thai kỳ, lượng amylase và lipase được tiết ra ở trẻ nhũ nhi còn ở mức rất thấp, thường chỉ đạt đến mức tương đương người trưởng thành khi trẻ **gần 1 tuổi**.
 - **Cơ chế bù trừ tiêu hóa ở trẻ nhỏ:**
-    - _Tiêu hóa tinh bột:_ Việc tiêu hóa tinh bột trong các loại sữa dành cho trẻ nhũ nhi phụ thuộc vào lượng amylase ít ỏi của nước bọt đi xuống được đến tá tràng. Chính vì vậy, việc nuôi ăn trẻ nhũ nhi bằng các công thức chứa nhiều tinh bột hoặc nhiều polymer đường có thể gây ra tình trạng **tiêu chảy do bất dung nạp**.
+    - _Tiêu hóa tinh bột:_ Việc tiêu hóa tinh bột trong các loại sữa dành cho trẻ nhũ nhi phụ thuộc vào lượng amylase ít ỏi của nước bọt đi xuống được đến tá tràng. Chính vì vậy, việc nuôi ăn trẻ nhũ nhi bằng các công thức chứa nhiều tinh bột hoặc nhiều polymer đường có thể gây ra tình trạng **[[Tiêu chảy]] do bất dung nạp**.
     - _Tiêu hóa bù trừ chất béo và tinh bột:_ Lượng amylase và lipase tá tràng thấp được bù trừ một phần nhờ **amylase trong nước bọt** và **lipase trong tuyến lưỡi**. Điều này giải thích hiện tượng bất dung nạp tương đối tinh bột và chất béo ở trẻ sinh non.
 - **Men Protease (Trypsinogen, Chymotrypsinogen):** Trẻ sơ sinh tiết ra lượng trypsinogen và chymotrypsinogen đạt khoảng **70%** so với trẻ 1 tuổi.
 
@@ -43,12 +54,12 @@
 
 - Gan nhận máu từ hai nguồn chính:
     1. **Động mạch gan:** Cung cấp **25%** lưu lượng máu (máu đã được oxy hóa).
-    2. **Tĩnh mạch cửa:** Cung cấp **75%** lưu lượng máu (máu đã bị khử oxy phần lớn nhưng chứa rất nhiều chất dinh dưỡng hấp thu từ đường tiêu hóa).
-- Hai dòng máu này trộn lẫn với nhau trong các **xoang gan (sinusoids)** rồi đi đến tĩnh mạch trung tâm tiểu thùy, hợp lại thành tĩnh mạch gan và trở về tim qua tĩnh mạch chủ dưới.
+    2. **Tĩnh mạch cửa:** Cung cấp **75%** lưu lượng máu (máu đã bị khử oxy phần lớn nhưng chứa rất nhiều chất dinh dưỡng hấp thu từ [[Đường tiêu hóa]]).
+- Hai dòng máu này trộn lẫn với nhau trong các **xoang gan (sinusoids)** rồi đi đến tĩnh mạch trung tâm tiểu thùy, hợp lại thành tĩnh mạch gan và trở về [[Tim]] qua tĩnh mạch chủ dưới.
 
 ### 2.3. Khả Năng Mất Bù và Khả Năng Tái Tạo của Gan
 
-- **Nguy cơ mất bù ở trẻ sinh non:** Gan ở trẻ sinh non rất dễ bị mất bù do tế bào gan chưa trưởng thành, chưa đạt được mức độ khử độc cũng như chức năng tổng hợp tối ưu; đồng thời trẻ sinh non có nguy cơ cao bị thiếu oxy mô và nhiễm trùng huyết.
+- **Nguy cơ mất bù ở trẻ sinh non:** Gan ở trẻ sinh non rất dễ bị mất bù do [[Gan|tế bào gan]] chưa trưởng thành, chưa đạt được mức độ khử độc cũng như chức năng tổng hợp tối ưu; đồng thời trẻ sinh non có nguy cơ cao bị thiếu oxy mô và [[Nhiễm trùng huyết]].
 - **Khả năng tái tạo mạnh mẽ:** Ở gan trưởng thành, chỉ có khoảng $1/10.000 - 1/20.000$ tế bào gan đang trong quá trình phân chia. Tuy nhiên, nếu gan bị tổn thương hoặc cắt bỏ, chỉ cần còn **25% mô gan lành lặn** vẫn có khả năng tái tạo phục hồi lại thành gan có kích thước ban đầu. Các yếu tố thúc đẩy quá trình tái tạo gan bao gồm nhiễm siêu vi, xơ gan, thiếu máu, chấn thương và phẫu thuật cắt gan.
 
 ---
@@ -72,7 +83,7 @@
 ### 3.3. Chức Năng Chuyển Hóa Protein
 
 - Gan tổng hợp hầu hết các protein huyết tương quan trọng như **albumin** và các **yếu tố đông máu** (II, VII, IX, X...).
-- Gan tham gia vào quá trình chuyển hóa amino acid và thực hiện **khử độc $NH_3$** (sinh ra từ quá trình chuyển hóa đạm) thành urea để thải qua thận.
+- Gan tham gia vào quá trình chuyển hóa amino acid và thực hiện **khử độc $NH_3$** (sinh ra từ quá trình chuyển hóa đạm) thành urea để thải qua [[Thận]].
 
 ### 3.4. Chức Năng Chuyển Hóa Sinh Học và Khử Độc (Biotransformation)
 
@@ -82,7 +93,7 @@
 ### 3.5. Chuyển Hóa và Bài Tiết Bilirubin
 
 - Gan tiếp nhận bilirubin tự do (gián tiếp) từ máu, thực hiện liên hợp với acid glucuronic nhờ enzyme **UGT1A1** tại tế bào gan thành bilirubin trực tiếp, sau đó bài tiết vào đường mật xuống ruột.
-- Ở trẻ sơ sinh, do hệ enzyme liên hợp UGT1A1 chưa trưởng thành kết hợp với chu trình ruột - gan tăng hoạt động nên dễ dẫn đến hiện tượng **vàng da sinh lý** hoặc **vàng da bệnh lý** do tăng bilirubin gián tiếp.
+- Ở trẻ sơ sinh, do hệ enzyme liên hợp UGT1A1 chưa trưởng thành kết hợp với chu trình ruột - gan tăng hoạt động nên dễ dẫn đến hiện tượng **[[Vàng da]] sinh lý** hoặc **[[Vàng da]] bệnh lý** do tăng bilirubin gián tiếp.
 
 ---
 

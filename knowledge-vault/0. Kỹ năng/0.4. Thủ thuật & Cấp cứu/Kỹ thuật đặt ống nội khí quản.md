@@ -1,3 +1,13 @@
+---
+title: "Kỹ thuật đặt ống nội khí quản"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 T Ổ NG QUAN
 ## KỸ THUẬT ĐẶT NỘI KHÍ QUẢN CẤP CỨU
 ### D ươ ng Minh Ng ọ c* Tr ầ n V ă n Ng ọ c**
@@ -10,7 +20,7 @@ TH Ờ I S Ự Y H Ọ C 10/2017 53
 ---
 
 CHUYÊN ĐỀ HÔ H Ấ P TH Ự C HÀNH
-th ươ ng, d ị v ậ t, b ỏ ng đườ ng hô h ấ p trên, nhi ễ m trùng, phù m ạ ch, phù n ề hay co th ắ t thanh qu ả n, u thanh qu ả n
+th ươ ng, d ị v ậ t, b ỏ ng đườ ng hô h ấ p trên, nhi ễ m trùng, [[Phù]] m ạ ch, [[Phù]] n ề hay co th ắ t thanh qu ả n, u thanh qu ả n
 - M ấ t các ph ả n x ạ b ả o v ệ đườ ng th ở do b ệ nh
 nhân r ố i lo ạ n tri giác do ch ấ n th ươ ng đầ u, quá li ề u thu ố c, tai bi ế n m ạ ch máu não hay nhi ễ m trùng h ệ th ầ n kinh trung ươ ng
 - Suy hô h ấ p gi ả m oxy máu, t ă ng CO 2
@@ -59,7 +69,7 @@ n ộ i khí qu ả n, que d ẫ n đườ ng, bóng bóp giúp qu ả n th ở
 - C ố đị nh ố ng n ộ i khí qu ả n b ằ ng dây v ả i
 - Ch ọ n ố ng n ộ i khí qu ả n có kích th ướ c phù
 - Thông khí cho b ệ nh nhân và ti ế p t ụ c theo
-h ợ p. Nhìn chung, ố ng n ộ i khí qu ả n có dõi tình tr ạ ng c ủ a b ệ nh nhân và v ị trí c ủ a đườ ng kính 8 mm là phù h ợ p cho b ệ nh nhân ố ng n ộ i khí qu ả n (b ằ ng lâm sàng hay b ằ ng (ng ườ i l ớ n) nam và 7 mm cho b ệ nh nhân các ph ươ ng ti ệ n khác (X quang ng ự c th ẳ ng) (ng ườ i l ớ n) n ữ .
+h ợ p. Nhìn chung, ố ng n ộ i khí qu ả n có dõi tình tr ạ ng c ủ a b ệ nh nhân và v ị trí c ủ a đườ ng kính 8 mm là phù h ợ p cho b ệ nh nhân ố ng n ộ i khí qu ả n (b ằ ng lâm sàng hay b ằ ng (ng ườ i l ớ n) nam và 7 mm cho b ệ nh nhân các ph ươ ng ti ệ n khác ([[X-quang|X quang]] ng ự c th ẳ ng) (ng ườ i l ớ n) n ữ .
 54 TH Ờ I S Ự Y H Ọ C 10/2017
 
 ---
@@ -78,8 +88,8 @@ Bàng 1: Kích c ỡ ố ng n ộ i khí qu ả n và l ưỡ i đ èn
 Tu ổ i Sinh non S ơ sinh 6 tháng 1-2 tu ổ i 4-6 tu ổ i 8-12 tu ổ i Ng ườ i l ớ n
 C ỡ ố ng 2.5 3-3.5 3.5-4 4-5 5-5.5 6-7 7.5-8 (mm) C ỡ l ưỡ i đ èn 0 0-1 1 1-2 2 2-3 4-5
 qu ả n, (b) t ạ i v ị trí đặ t n ộ i khí qu ả n và (c) sau khi
-- N ế u b ệ nh nhân đ ang đượ c xoa bóp tim
-rút n ộ i khí qu ả n. ngoài l ồ ng ng ự c, c ầ n ph ả i gi ả m thi ể u t ố i đ a s ự gián đ o ạ n quá trình xoa bóp tim. Đư a Trong khi đặ t n ộ i khí qu ả n: l ưỡ i đ èn vào và ố ng n ộ i khí qu ả n đ ã s ẵ n
+- N ế u b ệ nh nhân đ ang đượ c xoa bóp [[Tim]]
+rút n ộ i khí qu ả n. ngoài l ồ ng ng ự c, c ầ n ph ả i gi ả m thi ể u t ố i đ a s ự gián đ o ạ n quá trình xoa bóp [[Tim]]. Đư a Trong khi đặ t n ộ i khí qu ả n: l ưỡ i đ èn vào và ố ng n ộ i khí qu ả n đ ã s ẵ n
 - Đặ t nh ầ m n ộ i khí qu ả n vào th ự c qu ả n: b ệ nh
 sàng trên tay ngay khi t ạ m ng ư ng xoa bóp nhân không đượ c thông khí và oxy hóa máu tim. Gián đ o ạ n quá trình xoa bóp tim ch ỉ để tr ừ khi còn các nh ị p t ự th ở . N ế u không nh ậ n quan sát các dây thanh và đư a ố ng n ộ i khí ra đặ t n ộ i khí qu ả n nh ầ m vào th ự c qu ả n, qu ả n vào; lí t ưở ng là không quá 10 giây. b ệ nh nhân có th ể b ị t ổ n th ươ ng não v ĩ nh Quay tr ở l ạ i xoa bóp tim ngay khi ố ng n ộ i vi ễ n hay t ử vong. khí qu ả n đ i qua gi ữ a 2 dây thanh.
 - Gây ch ấ n th ươ ng:
@@ -127,7 +137,7 @@ m ạ ch vô danh, hay khí qu ả n- độ ng m ạ ch đ àm tr ướ c khi x 
 - T ổ n th ươ ng th ầ n kinh thanh qu ả n trên và
 - Nh ậ n bi ế t d ấ u hi ệ u t ắ c ố ng, bán t ắ c
 qu ặ t ng ượ c B ả ng 2. Thu ố c dùng khi đặ t n ộ i khí qu ả n:
-Thu ố c Li ề u ng ườ i l ớ n Kh ở i phát Th ờ i gian Thu ậ n l ợ i Th ậ n tr ọ ng tác d ụ ng tác d ụ ng Atropine 0.01 mg/kg tiêm 2 phút 5 phút Ng ă n ng ừ a nh ị p ch ậ m m ạ ch do ph ả n x ạ Etomidate 0.3 mg/kg 0.5-1 phút 3-5 phút Không thay đổ i huy ế t R ố i lo ạ n ch ứ c n ă ng độ ng hay áp l ự c n ộ i v ỏ th ượ ng th ậ n Bolus t ĩ nh m ạ ch s ọ , không gây ng ư ng thoáng qua th ở , dùng cho b ệ nh Co gi ậ t c ơ nhân đ a th ươ ng và t ụ t Bu ồ n nôn, nôn huy ế t áp Fentanyl 1-2 mcg/kg TM 1 phút 30 phút Gi ả m đ áp ứ ng t ă ng T ụ t huy ế t áp T ă ng ch ậ m huy ế t áp áp n ộ i s ọ Lidocain Bolus 1,5-2 mg/kg 1-2 phút 10-20 phút T ố t cho b ệ nh nhân T ụ t huy ế t áp ít nh ấ t 2 phút hen, COPD để gi ả m tr ướ c đặ t n ộ i khí t ă ng huy ế t áp ph ả n qu ả n ứ ng Ứ c ch ế ho Morphine 0.05 mg/kg tiêm 3-5 phút 3-5 gi ờ Th ờ i gian tác d ụ ng kéo HATT 70 - 90 m ạ ch trong 2 phút. dài mmHg T ố i đ a 15 mg Bù d ị ch cho b ệ nh nhân gi ả m th ể tích tr ướ c khi dùng morphine Midazolam 0.01 mg/kg, tiêm 1-5 phút 2-5 phút Tác d ụ ng nhanh, th ờ i Gi ả m li ề u n ế u gian tác d ụ ng ng ắ n HATT <100 mmHg m ạ ch ch ậ m trong hay b ệ nh nhân >60 2 phút (t ố i đ a 0.1 tu ổ i mg/kg) Gi ả m co bóp c ơ tim 0.05 mg/kg duy trì sau đặ t n ộ i khí qu ả n Propofol 2-3 mg/kg bolus < 1 phút 3-10 phút B ả o v ệ não: gi ả m áp Gây t ụ t huy ế t áp t ĩ nh m ạ ch l ự c n ộ i s ọ Ứ c ch ế hô h ấ p ph ụ Gây quên thu ộ c li ề u HATT: huy ế t áp tâm thu
+Thu ố c Li ề u ng ườ i l ớ n Kh ở i phát Th ờ i gian Thu ậ n l ợ i Th ậ n tr ọ ng tác d ụ ng tác d ụ ng Atropine 0.01 mg/kg tiêm 2 phút 5 phút Ng ă n ng ừ a nh ị p ch ậ m m ạ ch do ph ả n x ạ Etomidate 0.3 mg/kg 0.5-1 phút 3-5 phút Không thay đổ i huy ế t R ố i lo ạ n ch ứ c n ă ng độ ng hay áp l ự c n ộ i v ỏ th ượ ng th ậ n Bolus t ĩ nh m ạ ch s ọ , không gây ng ư ng thoáng qua th ở , dùng cho b ệ nh Co gi ậ t c ơ nhân đ a th ươ ng và t ụ t Bu ồ n [[Nôn ói|nôn]], [[Nôn ói|nôn]] huy ế t áp Fentanyl 1-2 mcg/kg TM 1 phút 30 phút Gi ả m đ áp ứ ng t ă ng T ụ t huy ế t áp T ă ng ch ậ m huy ế t áp áp n ộ i s ọ Lidocain Bolus 1,5-2 mg/kg 1-2 phút 10-20 phút T ố t cho b ệ nh nhân T ụ t huy ế t áp ít nh ấ t 2 phút hen, COPD để gi ả m tr ướ c đặ t n ộ i khí t ă ng huy ế t áp ph ả n qu ả n ứ ng Ứ c ch ế ho Morphine 0.05 mg/kg tiêm 3-5 phút 3-5 gi ờ Th ờ i gian tác d ụ ng kéo HATT 70 - 90 m ạ ch trong 2 phút. dài mmHg T ố i đ a 15 mg Bù d ị ch cho b ệ nh nhân gi ả m th ể tích tr ướ c khi dùng morphine Midazolam 0.01 mg/kg, tiêm 1-5 phút 2-5 phút Tác d ụ ng nhanh, th ờ i Gi ả m li ề u n ế u gian tác d ụ ng ng ắ n HATT <100 mmHg m ạ ch ch ậ m trong hay b ệ nh nhân >60 2 phút (t ố i đ a 0.1 tu ổ i mg/kg) Gi ả m co bóp c ơ tim 0.05 mg/kg duy trì sau đặ t n ộ i khí qu ả n Propofol 2-3 mg/kg bolus < 1 phút 3-10 phút B ả o v ệ não: gi ả m áp Gây t ụ t huy ế t áp t ĩ nh m ạ ch l ự c n ộ i s ọ Ứ c ch ế hô h ấ p ph ụ Gây quên thu ộ c li ề u HATT: huy ế t áp tâm thu
 TH Ờ I S Ự Y H Ọ C 10/2017 57
 
 ---
@@ -141,7 +151,7 @@ l ầ n hút
 Ki ể m tra v ị trí ố ng NKQ c ầ n
 - Th ườ ng ở v ị trí 20-25 cm
 - Hút s ạ ch đ àm nh ớ t
-- Ki ể m tra trên X quang ph ổ i
+- Ki ể m tra trên [[X-quang|X quang]] ph ổ i
 - X ả x ẹ p bóng chèn hoàn toàn r ồ i m ớ i rút
  Theo dõi SpO 2
 - Cho b ệ nh nhân th ở oxy

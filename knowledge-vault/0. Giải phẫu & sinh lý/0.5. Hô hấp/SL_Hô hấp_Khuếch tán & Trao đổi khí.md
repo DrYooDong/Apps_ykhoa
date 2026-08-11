@@ -1,9 +1,14 @@
 ---
 title: "SL_Hô hấp_Khuếch tán & Trao đổi khí"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. NGUYÊN LÝ VẬT LÝ VÀ CƠ HỌC CỦA SỰ KHUẾCH TÁN KHÍ
 
 Sự trao đổi khí trong cơ thể dựa trên nguyên lý khuếch tán thụ động từ nơi có áp suất (hoặc nồng độ) cao đến nơi có áp suất (hoặc nồng độ) thấp. Quá trình này được chi phối bởi các định luật vật lý cơ bản:
@@ -24,15 +29,15 @@ Sự trao đổi khí trong cơ thể dựa trên nguyên lý khuếch tán th�
 
 ### 2. TRAO ĐỔI KHÍ TẠI MÀNG PHẾ NANG - MAO MẠCH
 
-Tại phổi, màng phế nang - mao mạch có độ dày rất mỏng (chỉ từ 0,4 đến 2,0 micromet). Máu đi vào mao mạch phổi (máu tĩnh mạch) có phân áp oxy ($PO_2$) khoảng 40 mmHg và phân áp carbon dioxide ($PCO_2$) khoảng 45-46 mmHg. Trong khi đó, không khí trong phế nang có $PO_2$ khoảng 100-104 mmHg và $PCO_2$ khoảng 40 mmHg.
+Tại [[Phổi]], màng phế nang - mao mạch có độ dày rất mỏng (chỉ từ 0,4 đến 2,0 micromet). Máu đi vào mao mạch [[Phổi]] (máu tĩnh mạch) có phân áp oxy ($PO_2$) khoảng 40 mmHg và phân áp carbon dioxide ($PCO_2$) khoảng 45-46 mmHg. Trong khi đó, không khí trong phế nang có $PO_2$ khoảng 100-104 mmHg và $PCO_2$ khoảng 40 mmHg.
 *   Do sự chênh lệch áp suất này, $O_2$ khuếch tán từ phế nang vào máu mao mạch phổi, và $CO_2$ khuếch tán từ máu ra phế nang.
 *   Thời gian máu đi qua mao mạch phổi ở người bình thường nghỉ ngơi là khoảng 0,75 giây, nhưng quá trình cân bằng $O_2$ và $CO_2$ giữa phế nang và máu diễn ra rất nhanh, chỉ mất khoảng 0,25 giây đầu tiên (chiếm 1/3 thời gian).
-*   Sự trao đổi của $O_2$ và $CO_2$ là quá trình **giới hạn bởi tưới máu (perfusion-limited)**, nghĩa là lượng khí trao đổi phụ thuộc vào lưu lượng máu. Trong khi đó, việc trao đổi khí Carbon Monoxide (CO) bị **giới hạn bởi khuếch tán (diffusion-limited)** do CO gắn với Hemoglobin cực kỳ mạnh nên áp suất riêng phần của nó trong máu tăng lên rất chậm và không bao giờ đạt mức cân bằng trong thời gian hồng cầu đi qua mao mạch.
+*   Sự trao đổi của $O_2$ và $CO_2$ là quá trình **giới hạn bởi tưới máu (perfusion-limited)**, nghĩa là lượng khí trao đổi phụ thuộc vào lưu lượng máu. Trong khi đó, việc trao đổi khí Carbon Monoxide (CO) bị **giới hạn bởi khuếch tán (diffusion-limited)** do CO gắn với Hemoglobin cực kỳ mạnh nên áp suất riêng phần của nó trong máu tăng lên rất chậm và không bao giờ đạt mức cân bằng trong thời gian [[Hồng cầu]] đi qua mao mạch.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**
 > *   **Tên hình:** Figure 40-9: Ultrastructure of the alveolar respiratory membrane.
 > *   **Thuộc tài liệu:** `[Book] Guyton and Hall Textbook of Medical Physiology (c2016, Elsevier)-pages-1.pdf`
-> *   **Mô tả hình họa:** Bản vẽ mặt cắt ngang cấu trúc siêu vi của màng hô hấp phế nang. Màng gồm 6 lớp: (1) lớp dịch lót phế nang có chứa surfactant, (2) lớp biểu mô phế nang, (3) màng đáy biểu mô, (4) khoảng kẽ, (5) màng đáy mao mạch (nhiều chỗ hòa lẫn với màng đáy biểu mô), và (6) lớp nội mô mao mạch. Hình ảnh thể hiện chiều khuếch tán của $O_2$ vào hồng cầu và $CO_2$ đi ra phế nang.
+> *   **Mô tả hình họa:** Bản vẽ mặt cắt ngang cấu trúc siêu vi của màng hô hấp phế nang. Màng gồm 6 lớp: (1) lớp dịch lót phế nang có chứa surfactant, (2) lớp biểu mô phế nang, (3) màng đáy biểu mô, (4) khoảng kẽ, (5) màng đáy mao mạch (nhiều chỗ hòa lẫn với màng đáy biểu mô), và (6) lớp nội mô mao mạch. Hình ảnh thể hiện chiều khuếch tán của $O_2$ vào [[Hồng cầu]] và $CO_2$ đi ra phế nang.
 >
 > *   **Tên hình:** Figure 24.3: Uptake of nitrous oxide ($N_2O$), carbon monoxide (CO), and $O_2$ in blood.
 > *   **Thuộc tài liệu:** `[Book] Berne and Levy Physiology 8e by Bruce M. Koeppen, Bruce A. Stanton.pdf`

@@ -1,10 +1,20 @@
+---
+title: "Tiếp cận trẻ rối loạn tri giác"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết
 
 #### Đại Cương Và Sinh Lý Học Cơ Bản
 
-Tri giác tỉnh táo của trẻ phụ thuộc vào sự toàn vẹn chức năng của **vỏ não** và **hệ lưới hoạt hóa hướng lên** (ARAS - _ascending reticular activating system_) đến các cơ quan đích ở vùng dưới đồi và đồi thị. ARAS là mạng lưới tế bào thần kinh trong thân nổi có chức năng điều chỉnh các đáp ứng với tín hiệu kích thích từ môi trường. Nhận thức dựa trên mạng lưới kết nối phân bố rộng rãi giữa các cấu trúc vỏ não và dưới vỏ.
+Tri giác tỉnh táo của trẻ phụ thuộc vào sự toàn vẹn chức năng của **[[Vỏ não]]** và **hệ lưới hoạt hóa hướng lên** (ARAS - _ascending reticular activating system_) đến các cơ quan đích ở vùng dưới đồi và đồi thị. ARAS là mạng lưới tế bào thần kinh trong thân nổi có chức năng điều chỉnh các đáp ứng với tín hiệu kích thích từ môi trường. Nhận thức dựa trên mạng lưới kết nối phân bố rộng rãi giữa các cấu trúc [[Vỏ não]] và dưới vỏ.
 
-Tình trạng tỉnh táo có hai đặc điểm chính là **tỉnh thức** và **nhận thức**. Rối loạn tri giác có thể diễn tiến qua các mức độ: bứt rứt, kích thích, ngủ gà, li bì, lơ mơ và hôn mê. Hôn mê là tình trạng rối loạn tri giác nặng, cấp cứu, đe dọa tính mạng bệnh nhi, cần được lượng giá và can thiệp kịp thời.
+Tình trạng tỉnh táo có hai đặc điểm chính là **tỉnh thức** và **nhận thức**. [[Hôn mê|Rối loạn tri giác]] có thể diễn tiến qua các mức độ: bứt rứt, kích thích, ngủ gà, li bì, lơ mơ và hôn mê. Hôn mê là tình trạng [[Hôn mê|rối loạn tri giác]] nặng, cấp cứu, đe dọa tính mạng bệnh nhi, cần được lượng giá và can thiệp kịp thời.
 
 ---
 
@@ -12,7 +22,7 @@ Tình trạng tỉnh táo có hai đặc điểm chính là **tỉnh thức** v�
 
 ##### 1. Rối Loạn Tri Giác Dạng Kích Thích
 
-Thường gặp ở trẻ lớn, ít gặp ở trẻ nhỏ. Nguyên nhân phổ biến bao gồm ngộ độc, nhiễm trùng, sốt, rối loạn chuyển hóa và động kinh.
+Thường gặp ở trẻ lớn, ít gặp ở trẻ nhỏ. Nguyên nhân phổ biến bao gồm ngộ độc, nhiễm trùng, [[Sốt]], rối loạn chuyển hóa và [[Động kinh]].
 
 - **Ảo giác (hallucinations):** Tri giác hoàn toàn không có đối tượng cảm nhận.
 - **Ảo tưởng (illusions):** Tri giác sai lầm về một sự vật có thật.
@@ -37,7 +47,7 @@ Thang điểm AVPU được sử dụng để đánh giá nhanh chức năng c�
 
 > **Bảng Thông Tin:** **Tên bảng:** Bảng 86.1. Thang điểm đánh giá tri giác AVPU **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 2 (2020) - HSCC.pdf **Nội dung mô tả:** Bảng phân loại nhanh tri giác thành 4 mức độ:
 > 
-> - **A (Alert - Tỉnh táo):** Trẻ thức, linh hoạt, đáp ứng phù hợp với kích thích từ cha mẹ và ngoại cảnh.
+> - **A (Alert - Tỉnh táo):** Trẻ thức, linh hoạt, đáp ứng [[Phù]] hợp với kích thích từ cha mẹ và ngoại cảnh.
 > - **V (Voice - Âm thanh):** Trẻ chỉ đáp ứng với âm thanh (gọi tên hoặc nói lớn tiếng).
 > - **P (Painful - Đau):** Trẻ chỉ đáp ứng với kích thích gây đau (bấm nền móng).
 > - **U (Unresponsive - Không đáp ứng):** Trẻ không đáp ứng với bất kỳ kích thích nào.
@@ -61,13 +71,13 @@ Thang điểm Glasgow giúp đánh giá khách quan và theo dõi diễn tiến 
 
 #### Nguyên Nhân Gây Rối Loạn Tri Giác Ở Trẻ Em
 
-- **Nhiễm trùng (thường gặp nhất trong các nguyên nhân không chấn thương):** Viêm màng não, viêm não – màng não, áp-xe não.
-- **Chấn thương:** Xuất huyết nội sọ, phù não.
+- **Nhiễm trùng (thường gặp nhất trong các nguyên nhân không chấn thương):** [[Viêm màng não]], [[Viêm não]] – màng não, áp-xe não.
+- **Chấn thương:** [[Xuất huyết]] nội sọ, [[Phù]] não.
 - **Ngộ độc**.
-- **Tổn thương não thiếu oxy – thiếu máu não:** Hậu quả của suy hô hấp nặng, sốc, ngạt nước, sau ngưng tim ngưng thở.
-- **Bệnh hệ thống:** Suy gan, suy thận, bệnh nổi tăng huyết áp.
-- **Rối loạn chuyển hóa:** Hạ đường huyết, toan ceton đái tháo đường, rối loạn điện giải, rối loạn áp lực thẩm thấu máu, tăng $CO_2$ máu, tăng $NH_3$ máu, hạ thân nhiệt, rối loạn chuyển hóa bẩm sinh.
-- **Động kinh:** Trạng thái động kinh.
+- **Tổn thương não thiếu oxy – thiếu máu não:** Hậu quả của [[Suy hô hấp]] nặng, [[Sốc]], ngạt nước, sau ngưng [[Tim]] ngưng thở.
+- **Bệnh hệ thống:** Suy [[Gan]], suy [[Thận]], bệnh nổi [[Tăng huyết áp]].
+- **Rối loạn chuyển hóa:** [[Hạ đường huyết]], toan ceton đái tháo đường, rối loạn điện giải, rối loạn áp lực thẩm thấu máu, tăng $CO_2$ máu, tăng $NH_3$ máu, hạ thân nhiệt, rối loạn chuyển hóa bẩm sinh.
+- **[[Động kinh]]:** Trạng thái động kinh.
 - **Tăng áp lực nội sọ (ICP):** U nổi, phù não.
 - **Bệnh lý mạch máu:** Đột quỵ, vỡ dị dạng mạch máu não, não úng thủy (tắc shunt).
 
@@ -86,7 +96,7 @@ Các yếu tố ảnh hưởng trực tiếp đến lưu lượng máu tưới n
 
 ##### 2. Học Thuyết Monro – Kellie
 
-Thể tích nội sọ gồm 3 thành phần: **Nhu mô não**, **Dịch não tủy (CSF)** và **Máu**. Sự gia tăng thể tích của một thành phần sẽ làm tăng áp lực nội sọ nếu không có sự giảm tương ứng thể tích của các thành phần khác.
+Thể tích nội sọ gồm 3 thành phần: **Nhu mô não**, **[[Dịch nào tủy|Dịch não tủy]] ([[Dịch nào tủy|CSF]])** và **Máu**. Sự gia tăng thể tích của một thành phần sẽ làm tăng áp lực nội sọ nếu không có sự giảm tương ứng thể tích của các thành phần khác.
 
 > **Mô Tả Hình Ảnh:** **Tên hình:** Hình 86.2. Tương quan giữa thể tích và áp lực nội sọ **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 2 (2020) - HSCC.pdf **Nội dung mô tả:** Đồ thị biểu diễn mối tương quan giữa thể tích khối chèn ép và áp lực nội sọ ($ICP$). Trong giai đoạn đầu (bù trừ), gia tăng thể tích được bù bằng việc dịch chuyển dịch não tủy ($CSF$) và máu tĩnh mạch ra khỏi hộp sọ nên $ICP$ tăng ít. Khi đạt đến giới hạn (mất bù), sự gia tăng nhỏ thể tích cũng khiến $ICP$ tăng vọt vượt ngưỡng $20 - 50\text{ mmHg}$, dẫn đến nguy cơ thoát vị não tử vong.
 
@@ -98,22 +108,22 @@ Thể tích nội sọ gồm 3 thành phần: **Nhu mô não**, **Dịch não t�
 
 ##### 1. Đánh Giá Ban Đầu Và Xử Trí Cấp Cứu Theo ABCDE
 
-- **Airway (A - Đường thở):** Đảm bảo đường thở thông thoáng (ngửa đầu - nâng cằm, nâng hàm). Nếu trẻ có điểm $P$ hoặc $U$ (thang AVPU), hoặc mất phản xạ ho/nôn, đường thở có nguy cơ tắc nghẽn $\rightarrow$ **chỉ định đặt nội khí quản bảo vệ đường thở**.
+- **Airway (A - Đường thở):** Đảm bảo đường thở thông thoáng (ngửa đầu - nâng cằm, nâng hàm). Nếu trẻ có điểm $P$ hoặc $U$ (thang AVPU), hoặc mất phản xạ ho/[[Nôn ói|nôn]], đường thở có nguy cơ tắc nghẽn $\rightarrow$ **chỉ định đặt nội khí quản bảo vệ đường thở**.
 - **Breathing (B - Hô hấp):** Thở oxy lưu lượng cao qua mask có túi dự trữ. Nếu giảm thông khí $\rightarrow$ hỗ trợ thông khí bằng bóng - mask và xem xét đặt nội khí quản thở máy nhằm tránh tăng $PaCO_2$ gây tăng áp lực nội sọ.
-- **Circulation (C - Tuần hoàn):** Đánh giá nhịp tim, mạch, huyết áp, CRT, màu da. Nhịp tim quá chậm gợi ý tăng $ICP$. Tụ máu/Sốc $\rightarrow$ truyền dịch Normal Saline 0,9% và sử dụng vận mạch tối ưu hóa huyết áp nhằm duy trì áp lực tưới máu não $CPP$.
-- **Disability (D - Thần kinh):** Đánh giá AVPU, GCS, phản xạ đồng tử, dấu thần kinh khu trú, tư thế bất thường. **Kiểm tra ngay đường huyết mao mạch tại giường** để loại trừ và điều trị hạ đường huyết cấp.
+- **Circulation (C - Tuần hoàn):** Đánh giá nhịp [[Tim]], mạch, huyết áp, CRT, màu da. Nhịp tim quá chậm gợi ý tăng $ICP$. Tụ máu/[[Sốc]] $\rightarrow$ truyền dịch Normal Saline 0,9% và sử dụng vận mạch tối ưu hóa huyết áp nhằm duy trì áp lực tưới máu não $CPP$.
+- **Disability (D - Thần kinh):** Đánh giá AVPU, GCS, phản xạ đồng tử, dấu thần kinh khu trú, tư thế bất thường. **Kiểm tra ngay đường huyết mao mạch tại giường** để loại trừ và điều trị [[Hạ đường huyết]] cấp.
 - **Exposure (E - Bộc lộ & Kiểm soát môi trường):** Tìm tổn thương chấn thương, tử ban da niêm; giữ ấm cho trẻ.
 
 ##### 2. Xử Trí Tăng Áp Lực Nội Sọ (ICP)
 
-- **Dấu hiệu gợi ý tăng ICP:** Đồng tử giãn, thóp phồng, tư thế gồng mất vỏ/mất não, tam chứng Cushing (Mạch chậm, Tăng huyết áp, Rối loạn nhịp thở).
+- **Dấu hiệu gợi ý tăng ICP:** Đồng tử giãn, thóp phồng, tư thế gồng mất vỏ/mất não, tam chứng Cushing (Mạch chậm, [[Tăng huyết áp]], Rối loạn nhịp thở).
 
 > **Mô Tả Sơ Đồ / Lưu Đồ:** **Tên lưu đồ:** Lưu đồ điều trị tăng áp lực nội sọ ($ICP$) **Thuộc tài liệu:** [Book] Nhi khoa YDS - Tập 2 (2020) - HSCC.pdf **Nội dung mô tả:** Thuật toán tiếp cận khi có dấu hiệu tăng $ICP$:
 > 
-> 1. _Khắc phục nguyên nhân tăng $ICP$ do chăm sóc:_ An thần đầy đủ, chỉnh tư thế đầu thẳng trục nâng cao $30^\circ$, kiểm tra thông khí, hạ sốt.
-> 2. _Chụp CT scan sọ não khẩn._
+> 1. _Khắc phục nguyên nhân tăng $ICP$ do chăm sóc:_ An thần đầy đủ, chỉnh tư thế đầu thẳng trục nâng cao $30^\circ$, kiểm tra thông khí, hạ [[Sốt]].
+> 2. _Chụp [[CT Scan]] sọ não khẩn._
 > 3. _Điều trị duy trì:_ Duy trì $CPP > 50\text{ mmHg}$, $SpO_2\ 96 - 99%$, $PaCO_2\ 30 - 40\text{ mmHg}$, thân nhiệt $< 37,5^\circ C$.
-> 4. _Thuốc chống phù não:_ Truyền **Natri ưu trương 3%** (duy trì $Na < 155\text{ mEq/L}$, áp lực thẩm thấu $< 360\text{ mOsmol/L}$) hoặc **Mannitol**; sử dụng Dexamethasone nếu phù nội do u não.
+> 4. _Thuốc chống phù não:_ Truyền **Natri ưu trương 3%** (duy trì $Na < 155\text{ mEq/L}$, áp lực thẩm thấu $< 360\text{ mOsmol/L}$) hoặc **Mannitol**; sử dụng [[[[Corticoid]]|Dexamethasone]] nếu phù nội do u não.
 
 ---
 
@@ -122,16 +132,16 @@ Thể tích nội sọ gồm 3 thành phần: **Nhu mô não**, **Dịch não t�
 ##### 1. Khai Thác Bệnh Sử Vấn Đề Thần Kinh
 
 - **Khởi phát đột ngột ở trẻ không sốt:** Gợi ý vỡ dị dạng mạch máu não, ngộ độc cấp, hạ đường huyết, chấn thương sọ não, ngạt nước.
-- **Tiến triển từ từ ở trẻ không sốt (kèm nhức đầu, nôn ói):** Gợi ý u nổi.
-- **Rối loạn tri giác kèm sốt:** Gợi ý các bệnh lý nhiễm trùng hệ thần kinh trung ương (viêm não, viêm màng não vi khuẩn/lao/nấm, áp-xe não, sốt rét thể não).
+- **Tiến triển từ từ ở trẻ không sốt (kèm nhức đầu, [[Nôn ói]]):** Gợi ý u nổi.
+- **Rối loạn tri giác kèm sốt:** Gợi ý các bệnh lý nhiễm trùng [[Hệ thần kinh trung ương]] ([[Viêm não]], [[Viêm màng não]] vi khuẩn/lao/nấm, áp-xe não, sốt rét thể não).
 
 ##### 2. Thăm Khám Toàn Diện
 
-- **Da:** Tìm đốm/tử ban (gợi ý nhiễm não mô cầu, phế cầu, sốc nhiễm trùng).
+- **Da:** Tìm đốm/tử ban (gợi ý nhiễm não mô cầu, phế cầu, [[Sốc nhiễm khuẩn|sốc nhiễm trùng]]).
 - **Đầu, Tai, Mũi:** Chảy máu hoặc dịch não tủy qua tai/mũi gợi ý nứt sàn sọ.
-- **Cổ:** Dấu hiệu cổ gượng, Kernig, Brudzinski (viêm màng não, xuất huyết não).
+- **Cổ:** Dấu hiệu cổ gượng, Kernig, Brudzinski (viêm màng não, [[Xuất huyết]] não).
 - **Mùi hơi thở:** Mùi đặc trưng trong ngộ độc rượu, toan ceton đái tháo đường, rối loạn chuyển hóa bẩm sinh.
-- **Bụng:** Gan to gợi ý bệnh lý gan (bệnh não gan), rối loạn chuyển hóa.
+- **Bụng:** [[Gan]] to gợi ý bệnh lý gan (bệnh não gan), rối loạn chuyển hóa.
 
 ---
 

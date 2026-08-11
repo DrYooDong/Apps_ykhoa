@@ -1,9 +1,13 @@
 ---
 title: "HỒI QUY TUYẾN TÍNH BAYES TRONG NGHIÊN CỨU Y HỌC"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐭𝐮𝐲𝐞̂́𝐧 𝐭𝐢́𝐧𝐡 𝐁𝐚𝐲𝐞𝐬 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐲 𝐡𝐨̣𝐜: 𝐂𝐨̛ 𝐬𝐨̛̉ 𝐥𝐲́ 𝐭𝐡𝐮𝐲𝐞̂́𝐭, 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐬𝐮𝐲 𝐥𝐮𝐚̣̂𝐧 𝐯𝐚̀ 𝐮̛́𝐧𝐠 𝐝𝐮̣𝐧𝐠 - 𝐏𝐡𝐚̂̀𝐧 𝟏
 
 TS. Đào Hồng Nam
@@ -18,17 +22,17 @@ Bài này trình bày cơ sở lý thuyết của hồi quy tuyến tính Bayes,
 
 𝐆𝐢𝐨̛́𝐢 𝐭𝐡𝐢𝐞̣̂𝐮
 
-Trong nhiều thập kỷ qua, hồi quy tuyến tính là một trong những phương pháp thống kê được sử dụng phổ biến nhất trong nghiên cứu y học nhằm đánh giá mối liên quan giữa một biến kết cục liên tục với một hoặc nhiều biến giải thích. Các ứng dụng của hồi quy tuyến tính trải rộng trên nhiều lĩnh vực như dịch tễ học, nội khoa, ngoại khoa, dược học, sức khỏe cộng đồng và nghiên cứu dịch vụ y tế. Những biến kết cục thường được phân tích bằng hồi quy tuyến tính bao gồm huyết áp, nồng độ glucose huyết tương, cholesterol huyết thanh, mật độ xương, chức năng thận, điểm chất lượng cuộc sống và nhiều chỉ số sinh học khác. Nhờ khả năng mô tả mối liên quan định lượng giữa các biến, hồi quy tuyến tính đã trở thành một công cụ nền tảng trong phân tích dữ liệu y học.
+Trong nhiều thập kỷ qua, hồi quy tuyến tính là một trong những phương pháp thống kê được sử dụng phổ biến nhất trong nghiên cứu y học nhằm đánh giá mối liên quan giữa một biến kết cục liên tục với một hoặc nhiều biến giải thích. Các ứng dụng của hồi quy tuyến tính trải rộng trên nhiều lĩnh vực như dịch tễ học, nội khoa, ngoại khoa, dược học, sức khỏe cộng đồng và nghiên cứu dịch vụ y tế. Những biến kết cục thường được phân tích bằng hồi quy tuyến tính bao gồm huyết áp, nồng độ glucose huyết tương, cholesterol huyết thanh, mật độ xương, chức năng [[Thận]], điểm chất lượng cuộc sống và nhiều chỉ số sinh học khác. Nhờ khả năng mô tả mối liên quan định lượng giữa các biến, hồi quy tuyến tính đã trở thành một công cụ nền tảng trong phân tích dữ liệu y học.
 
 Theo cách tiếp cận của thống kê tần suất (frequentist statistics), các hệ số hồi quy được xem là các hằng số cố định nhưng chưa biết và được ước lượng thông qua các phương pháp như bình phương tối thiểu (Ordinary Least Squares, OLS) hoặc cực đại hóa hàm hợp lý (Maximum Likelihood Estimation, MLE). Ý nghĩa thống kê của các hệ số thường được đánh giá thông qua giá trị p, khoảng tin cậy 95% và các kiểm định giả thuyết với H₀ và H₁ (Gelman và cộng sự, 2021).
 
 Hồi quy tuyến tính theo trường phái tần suất đã chứng minh hiệu quả trong nhiều lĩnh vực nghiên cứu, nhưng những nguyên tắc nền tảng của phương pháp cũng tạo ra các giới hạn nhất định trong quá trình suy luận thống kê. Một trong số đó là việc mọi kết luận đều được xây dựng từ dữ liệu của nghiên cứu hiện tại mà không cho phép tích hợp trực tiếp bằng chứng từ các nghiên cứu trước hoặc ý kiến chuyên gia vào quá trình ước lượng tham số. Trong thực hành y học, nơi các nghiên cứu mới thường được hình thành trên nền tảng của các thử nghiệm lâm sàng, nghiên cứu quan sát hoặc phân tích gộp đã công bố, việc không khai thác trực tiếp các nguồn thông tin này có thể làm giảm hiệu quả của quá trình suy luận.
 
-Những khó khăn trong diễn giải kết quả cũng là vấn đề được thảo luận rộng rãi trong thống kê tần suất. Chẳng hạn, khoảng tin cậy 95% thường được hiểu là có 95% xác suất tham số thực sự nằm trong khoảng ước lượng, mặc dù cách diễn giải này không phù hợp với cơ sở lý thuyết của phương pháp. Theo quan điểm tần suất, tham số được xem là cố định còn khoảng tin cậy là đại lượng ngẫu nhiên; do đó, xác suất được gắn với thủ tục lấy mẫu chứ không gắn với giá trị của tham số. Sự khác biệt giữa cách diễn giải thống kê và cách hiểu trực quan của các nhà lâm sàng đã được xem là một trong những động lực thúc đẩy sự phát triển của thống kê Bayes (Kruschke, 2015).
+Những khó khăn trong diễn giải kết quả cũng là vấn đề được thảo luận rộng rãi trong thống kê tần suất. Chẳng hạn, khoảng tin cậy 95% thường được hiểu là có 95% xác suất tham số thực sự nằm trong khoảng ước lượng, mặc dù cách diễn giải này không [[Phù]] hợp với cơ sở lý thuyết của phương pháp. Theo quan điểm tần suất, tham số được xem là cố định còn khoảng tin cậy là đại lượng ngẫu nhiên; do đó, xác suất được gắn với thủ tục lấy mẫu chứ không gắn với giá trị của tham số. Sự khác biệt giữa cách diễn giải thống kê và cách hiểu trực quan của các nhà lâm sàng đã được xem là một trong những động lực thúc đẩy sự phát triển của thống kê Bayes (Kruschke, 2015).
 
 Các hạn chế này trở nên rõ rệt hơn trong những nghiên cứu có cỡ mẫu nhỏ hoặc dữ liệu không đầy đủ, vốn là tình huống thường gặp trong nghiên cứu bệnh hiếm, nghiên cứu thí điểm, nghiên cứu ở trẻ em hoặc các thử nghiệm lâm sàng giai đoạn đầu. Khi lượng thông tin thu được từ dữ liệu còn hạn chế, các hệ số hồi quy thường đi kèm sai số chuẩn lớn, khoảng tin cậy rộng và khả năng phát hiện các mối liên quan bị suy giảm, làm cho việc diễn giải và ứng dụng kết quả trở nên khó khăn hơn.
 
-Cùng với sự phát triển của y học dữ liệu, nhiều bộ dữ liệu hiện nay không còn phù hợp hoàn toàn với các giả định của những kỹ thuật hồi quy cổ điển. Dữ liệu từ hồ sơ bệnh án điện tử, nghiên cứu đa trung tâm, dữ liệu sinh học phân tử hoặc các nền tảng “omics” thường chứa số lượng lớn biến dự báo, hiện tượng đa cộng tuyến, phân bố không chuẩn và tỷ lệ dữ liệu thiếu đáng kể. Những đặc điểm này làm tăng độ phức tạp của quá trình phân tích và tạo ra nhu cầu ngày càng lớn đối với các phương pháp thống kê linh hoạt hơn.
+Cùng với sự phát triển của y học dữ liệu, nhiều bộ dữ liệu hiện nay không còn [[Phù]] hợp hoàn toàn với các giả định của những kỹ thuật hồi quy cổ điển. Dữ liệu từ hồ sơ bệnh án điện tử, nghiên cứu đa trung tâm, dữ liệu sinh học phân tử hoặc các nền tảng “omics” thường chứa số lượng lớn biến dự báo, hiện tượng đa cộng tuyến, phân bố không chuẩn và tỷ lệ dữ liệu thiếu đáng kể. Những đặc điểm này làm tăng độ phức tạp của quá trình phân tích và tạo ra nhu cầu ngày càng lớn đối với các phương pháp thống kê linh hoạt hơn.
 
 Trong bối cảnh đó, thống kê Bayes đã trở thành một trong những hướng phát triển quan trọng của thống kê ứng dụng. Mặc dù Định lý Bayes được Thomas Bayes đề xuất từ thế kỷ XVIII, phải đến cuối thế kỷ XX và đầu thế kỷ XXI, cùng với sự phát triển mạnh mẽ của năng lực tính toán và các thuật toán mô phỏng, các phương pháp Bayes mới được ứng dụng rộng rãi trong nhiều lĩnh vực khoa học, đặc biệt là y học và khoa học sức khỏe (Spiegelhalter và cộng sự, 2004).
 
@@ -38,7 +42,7 @@ Khác với thống kê tần suất, thống kê Bayes xem mọi tham số chư
 
 Trong hai thập kỷ gần đây, cùng với sự phát triển của các thuật toán MCMC, HMC và NUTS, việc ước lượng các mô hình Bayes có số lượng lớn tham số đã trở nên khả thi. Các phần mềm như Stan, JAGS, WinBUGS, OpenBUGS, JASP, brms và rstanarm đã giúp tự động hóa hầu hết các bước tính toán, giảm đáng kể rào cản kỹ thuật đối với người sử dụng (Bürkner, 2017; Carpenter và cộng sự, 2017). Nhờ đó, hồi quy tuyến tính Bayes ngày càng được áp dụng rộng rãi trong phân tích dữ liệu lâm sàng, nghiên cứu dịch tễ học, dược động học, mô hình hóa nguy cơ bệnh tật và y học chính xác.
 
-Một thách thức quan trọng của hồi quy Bayes nằm ở việc lựa chọn phân bố tiên nghiệm, bởi lựa chọn này có thể ảnh hưởng đáng kể đến kết quả phân tích nếu không được xem xét thận trọng. Ngoài yêu cầu về tiên nghiệm, các mô hình Bayes thường tiêu tốn nhiều thời gian tính toán hơn và đòi hỏi người nghiên cứu phải hiểu rõ các khái niệm như phân bố hậu nghiệm, sự hội tụ của chuỗi MCMC, Bayes Factor hay kiểm tra dự đoán hậu nghiệm. Những yêu cầu này khiến việc sử dụng hồi quy Bayes không chỉ phụ thuộc vào năng lực thống kê mà còn gắn chặt với mức độ am hiểu bối cảnh lâm sàng và vấn đề nghiên cứu cụ thể.
+Một thách thức quan trọng của hồi quy Bayes nằm ở việc lựa chọn phân bố tiên nghiệm, bởi lựa chọn này có thể ảnh hưởng đáng kể đến kết quả phân tích nếu không được xem xét [[Thận]] trọng. Ngoài yêu cầu về tiên nghiệm, các mô hình Bayes thường tiêu tốn nhiều thời gian tính toán hơn và đòi hỏi người nghiên cứu phải hiểu rõ các khái niệm như phân bố hậu nghiệm, sự hội tụ của chuỗi MCMC, Bayes Factor hay kiểm tra dự đoán hậu nghiệm. Những yêu cầu này khiến việc sử dụng hồi quy Bayes không chỉ phụ thuộc vào năng lực thống kê mà còn gắn chặt với mức độ am hiểu bối cảnh lâm sàng và vấn đề nghiên cứu cụ thể.
 
 Xu hướng phát triển của y học hiện đại cho thấy vai trò của thống kê Bayes sẽ tiếp tục gia tăng. Các hướng dẫn báo cáo nghiên cứu gần đây đã khuyến khích sử dụng các phương pháp Bayes như một công cụ bổ sung hoặc thay thế cho các phương pháp tần suất trong nhiều tình huống nghiên cứu, đặc biệt khi cần tổng hợp bằng chứng, đánh giá xác suất của các giả thuyết hoặc xây dựng các mô hình dự đoán có khả năng lượng hóa mức độ không chắc chắn (Kruschke, 2021; van de Schoot và cộng sự, 2021).
 

@@ -1,13 +1,18 @@
 ---
 title: "SL_Huyết học_Hồng cầu"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/huyet-hoc
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 **1. NỘI DUNG SINH LÝ HỌC CHI TIẾT:**
 
-### I. Đại cương và Cấu trúc Hồng cầu
-Hồng cầu (Erythrocytes) là loại tế bào chiếm số lượng đông đảo nhất trong máu, đóng vai trò vận chuyển khí yếu hầu cho cơ thể. Ở người trưởng thành, số lượng hồng cầu dao động khoảng 5,4 triệu/µL ở nam và 4,8 triệu/µL ở nữ,. Đối với người Việt Nam trưởng thành, con số này khoảng từ 3,8 triệu đến 4,5 triệu hồng cầu/mm³ máu,. Thể tích chiếm bởi hồng cầu trên tổng thể tích máu toàn phần được gọi là dung tích hồng cầu (Hematocrit), bình thường khoảng 47% ở nam và 42% ở nữ,,.
+### I. Đại cương và Cấu trúc [[Hồng cầu]]
+Hồng cầu (Erythrocytes) là loại tế bào chiếm số lượng đông đảo nhất trong máu, đóng vai trò vận chuyển khí yếu hầu cho cơ thể. Ở người trưởng thành, [[Hồng cầu|số lượng hồng cầu]] dao động khoảng 5,4 triệu/µL ở nam và 4,8 triệu/µL ở nữ,. Đối với người Việt Nam trưởng thành, con số này khoảng từ 3,8 triệu đến 4,5 triệu hồng cầu/mm³ máu,. Thể tích chiếm bởi hồng cầu trên tổng thể tích máu toàn phần được gọi là dung tích hồng cầu (Hematocrit), bình thường khoảng 47% ở nam và 42% ở nữ,,.
 
 **Đặc điểm cấu trúc:**
 *   Hồng cầu có dạng hình dĩa lõm hai mặt, phần trung tâm mỏng hơn ngoại vi, với đường kính trung bình khoảng 7,5 µm và bề dày 2 µm,,. Cấu trúc này giúp hồng cầu dễ dàng biến dạng, uốn ván để chui qua các mao mạch nhỏ (đường kính chỉ khoảng 5 µm) và làm tăng diện tích tiếp xúc, tối ưu hóa tốc độ khuếch tán khí,,,,.
@@ -38,9 +43,9 @@ Phần lớn bào tương của hồng cầu được dành để chứa Hemoglo
 > *   **Nội dung mô tả:** Sơ đồ minh họa phân tử Hemoglobin A của người trưởng thành. Phân tử gồm bốn tiểu đơn vị: hai chuỗi polypeptide $\alpha$ và hai chuỗi polypeptide $\beta$. Trung tâm của mỗi chuỗi chứa một cấu trúc đĩa (màu xanh) đại diện cho phân tử Heme có chứa ion sắt.
 
 ### III. Sự sinh sản Hồng cầu (Erythropoiesis)
-*   **Nơi sản xuất:** Thay đổi theo giai đoạn phát triển. Những tuần đầu thai kỳ, túi noãn hoàng tạo ra tế bào máu. Đến tháng thứ 4-5 của thai nhi, gan và lách là nơi sản xuất chủ yếu. Từ tháng thứ 7-8 cho đến sau khi sinh và suốt đời trưởng thành, tủy xương (chủ yếu là xương dẹt và đầu xương dài) đảm nhận chức năng sản xuất hồng cầu,,,,.
+*   **Nơi sản xuất:** Thay đổi theo giai đoạn phát triển. Những tuần đầu thai kỳ, túi noãn hoàng tạo ra tế bào máu. Đến tháng thứ 4-5 của thai nhi, [[Gan]] và lách là nơi sản xuất chủ yếu. Từ tháng thứ 7-8 cho đến sau khi sinh và suốt đời trưởng thành, tủy xương (chủ yếu là xương dẹt và đầu xương dài) đảm nhận chức năng sản xuất hồng cầu,,,,.
 *   **Các giai đoạn phát triển:** Từ tế bào gốc tạo máu, hồng cầu biệt hóa qua các giai đoạn: Tiền nguyên hồng cầu (kích thước to, có nhân) $\rightarrow$ Nguyên hồng cầu ưa kiềm $\rightarrow$ Nguyên hồng cầu đa sắc $\rightarrow$ Nguyên hồng cầu ưa acid. Ở cuối giai đoạn ưa acid, tế bào đẩy nhân ra ngoài tạo thành Hồng cầu lưới. Hồng cầu lưới xuyên mạch ra máu ngoại vi và trong vòng 24 giờ sẽ mất mạng lưới tàn dư ARN để trở thành Hồng cầu trưởng thành,,,. Hoạt động tổng hợp Hb bắt đầu có dấu vết từ tiền nguyên hồng cầu và đạt mức bão hòa tối đa ở giai đoạn hồng cầu lưới,,,.
-*   **Điều hòa sản xuất:** Yếu tố chính kích thích sinh hồng cầu là tình trạng thiếu oxy ở mô (hypoxia). Tình trạng này kích thích thận (và một phần nhỏ ở gan) tăng tiết hormone Erythropoietin (EPO). EPO tác động lên tủy xương, đẩy nhanh tốc độ trưởng thành của các tiền nguyên hồng cầu để tăng sinh hồng cầu,,,,,,.
+*   **Điều hòa sản xuất:** Yếu tố chính kích thích sinh hồng cầu là tình trạng thiếu oxy ở mô (hypoxia). Tình trạng này kích thích [[Thận]] (và một phần nhỏ ở [[Gan]]) tăng tiết hormone Erythropoietin (EPO). EPO tác động lên tủy xương, đẩy nhanh tốc độ trưởng thành của các tiền nguyên hồng cầu để tăng sinh hồng cầu,,,,,,.
 *   **Nguyên liệu tạo hồng cầu:**
     *   *Sắt:* Hấp thu ở tá tràng, được vận chuyển trong huyết tương bởi Transferrin đến tủy xương để tổng hợp nhân Heme, hoặc dự trữ ở gan dưới dạng Ferritin/Hemosiderin. Thiếu sắt gây thiếu máu hồng cầu nhỏ, nhược sắc,,,.
     *   *Vitamin B12 (Cobalamin) và Acid Folic (Vitamin B9):* Hấp thu ở hồi tràng (B12 cần Yếu tố nội tại của dạ dày) và hỗng tràng. Tham gia chu trình Folat tổng hợp DNA giúp phân chia tế bào. Thiếu hụt gây thiếu máu hồng cầu to,,,,,.
@@ -77,7 +82,7 @@ Hemoglobin đóng vai trò là một hệ đệm quan trọng của máu (chiế
 > **TRÍCH XUẤT LƯU ĐỒ / SƠ ĐỒ HÌNH ẢNH:**
 > *   **Tên Hình/Sơ đồ:** Plate 4.1 B. Life cycle of red blood cells.
 > *   **Thuộc tài liệu:** [Book] Color Atlas of Physiology.pdf
-> *   **Nội dung mô tả:** Sơ đồ vòng đời hồng cầu từ lúc được sinh ra tại tủy xương dưới sự kích thích của Erythropoietin (từ thận khi bị thiếu oxy $PO_2 \downarrow$). Hồng cầu lưu thông trong máu 120 ngày. Khi quá già, chúng bị thực bào bởi các đại thực bào tại lách, tủy xương và gan, trải qua quá trình phân giải (hemolysis).
+> *   **Nội dung mô tả:** Sơ đồ vòng đời hồng cầu từ lúc được sinh ra tại tủy xương dưới sự kích thích của Erythropoietin (từ [[Thận]] khi bị thiếu oxy $PO_2 \downarrow$). Hồng cầu lưu thông trong máu 120 ngày. Khi quá già, chúng bị thực bào bởi các đại thực bào tại lách, tủy xương và gan, trải qua quá trình phân giải (hemolysis).
 
 ***
 

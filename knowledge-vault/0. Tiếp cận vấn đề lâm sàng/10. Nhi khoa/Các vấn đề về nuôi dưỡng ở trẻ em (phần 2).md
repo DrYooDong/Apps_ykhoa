@@ -1,3 +1,13 @@
+---
+title: "Các vấn đề về nuôi dưỡng ở trẻ em (phần 2)"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: TIẾP CẬN TRẺ KHÓ NUÔI ĂN, CÁC KIỂU NUÔI ĂN, RỐI LOẠN NUÔI ĂN VÀ RỐI LOẠN ĂN TÂM THẦN Ở TRẺ EM)
 
 ---
@@ -16,9 +26,9 @@
     - Ăn đêm ở trẻ $> 1\text{ tuổi}$.
     - Không tăng lượng thức ăn, bú mẹ hoặc bú bình kéo dài, thất bại khi chuyển sang ăn thức ăn đặc hơn.
 - **Dấu hiệu cảnh báo thực thể (Cần loại trừ bệnh lý):**
-    - Khó nuốt, hít sặc, đau khi ăn, nôn ói, tiêu chảy.
+    - Khó nuốt, hít sặc, đau khi ăn, [[[[Nôn ói|Nôn]] ói]], [[Tiêu chảy]].
     - Chậm phát triển, chậm tăng trưởng.
-    - Bệnh tim phổi mạn tính, thiếu chất dinh dưỡng.
+    - Bệnh [[Tim]] [[Phổi]] mạn tính, thiếu chất dinh dưỡng.
 - **Dấu hiệu cảnh báo hành vi:**
     - Cố định loại thức ăn, cho ăn độc hại (ngược đãi), ngưng nuôi ăn, nhợn ói trước ăn, chậm lớn.
 - **Dấu hiệu gợi ý chậm vận động miệng:**
@@ -49,7 +59,7 @@
 - **Nhận thức sai:** Cha mẹ lo lắng quá mức và chọn phương pháp nuôi ăn không thích hợp mặc dù tốc độ tăng trưởng của trẻ hoàn toàn bình thường. _Xử trí:_ Thuyết phục cha mẹ về tốc độ tăng trưởng bình thường của trẻ và hướng dẫn các nguyên tắc nuôi ăn cơ bản.
 - **Trẻ năng động:** Thường xảy ra ở giai đoạn chuyển tiếp khi trẻ tự ăn; trẻ thích chơi và nói chuyện hơn ăn mà không có nguyên nhân thực thể. _Xử trí:_ Giải quyết xung đột giữa trẻ và cha mẹ; chú ý khen ngợi khi hành vi ăn tốt và phớt lờ khi hành vi không tốt. Nếu kèm chậm tăng trưởng, cung cấp chế độ ăn giàu năng lượng hoặc thực phẩm bổ sung.
 - **Trẻ thờ ơ:** Trẻ không thích ăn và không thích giao tiếp, hay kèm trầm cảm và suy dinh dưỡng. _Xử trí:_ Cung cấp chế độ dinh dưỡng đầy đủ và tạo tương tác hỗ trợ với người cho ăn có kinh nghiệm.
-- **Bệnh thực thể:** Do bất thường cấu trúc, bệnh lý tiêu hóa (viêm thực quản, viêm dạ dày, trào ngược dạ dày thực quản), bệnh tim mạch, hô hấp, thần kinh, chuyển hóa. _Xử trí:_ Điều trị nguyên nhân thực thể, hỗ trợ dinh dưỡng (gavage sonde hoặc nuôi ăn tĩnh mạch nếu cần).
+- **Bệnh thực thể:** Do bất thường cấu trúc, bệnh lý tiêu hóa (viêm thực quản, viêm dạ dày, trào ngược dạ dày thực quản), bệnh [[Tim]] mạch, hô hấp, thần kinh, chuyển hóa. _Xử trí:_ Điều trị nguyên nhân thực thể, hỗ trợ dinh dưỡng (gavage sonde hoặc nuôi ăn tĩnh mạch nếu cần).
 
 ---
 
@@ -83,10 +93,10 @@
     3. Khuyến khích sự thèm ăn tự nhiên của trẻ.
     4. Giới hạn thời gian bữa ăn trong vòng **20 – 30 phút**.
     5. Phân bổ **4 – 6 bữa** (chính + phụ) mỗi ngày.
-    6. Thức ăn phù hợp với lứa tuổi.
+    6. Thức ăn [[Phù]] hợp với lứa tuổi.
     7. Giới thiệu thức ăn mới lặp lại **8 – 15 lần**.
     8. Khuyến khích trẻ tự ăn.
-    9. Chấp nhận sự bừa bộn phù hợp với lứa tuổi của trẻ.
+    9. Chấp nhận sự bừa bộn [[Phù]] hợp với lứa tuổi của trẻ.
 
 ---
 
@@ -135,7 +145,7 @@
     - _Bất thường gen/NST:_ Hội chứng Down, bệnh lý thần kinh.
     - _Bất thường sọ mặt:_ Hội chứng Pierre Robin, chẻ vòm hầu.
     - _Giảm chức năng não:_ Chấn thương sọ não, đột quỵ, bại não.
-    - _Rối loạn đường tiêu hóa:_ Trào ngược dạ dày thực quản, táo bón.
+    - _Rối loạn [[Đường tiêu hóa]]:_ Trào ngược dạ dày thực quản, táo bón.
     - _Rối loạn phát triển thần kinh:_ Tự kỷ, chậm phát triển, thiểu năng trí tuệ.
 
 ---
@@ -222,9 +232,9 @@ Trẻ bị rối loạn ăn cần được chỉ định nhập viện ngay khi 
 1. **Dấu hiệu sinh tồn & Sinh hóa bất ổn:**
     - Nhịp tim $< 50\text{ lần/phút}$ (hoặc $< 45\text{ lần/phút}$ lúc nghỉ).
     - Hạ huyết áp tư thế.
-    - Rối loạn điện giải nặng (hạ $K^+$, hạ $PO_4^{3-}$), hạ đường huyết, nhiệt độ cơ thể $< 36,1^\circ\text{C}$.
+    - Rối loạn điện giải nặng (hạ $K^+$, hạ $PO_4^{3-}$), [[Hạ đường huyết]], nhiệt độ cơ thể $< 36,1^\circ\text{C}$.
 2. **Trọng lượng cơ thể sụt giảm nghiêm trọng:** Cân nặng $< 80$% cân nặng lý tưởng.
-3. **Biến chứng cơ quan:** Tổn thương chức năng tim, gan, thận.
+3. **Biến chứng cơ quan:** Tổn thương chức năng tim, [[Gan]], [[Thận]].
 4. **Tâm thần & Ý thức:** Có ý định tự tử, suy nghĩ dạng _ego-syntonic_ (coi hành vi bệnh lý là phù hợp), không có động lực điều trị.
 5. **Khác:** Thất bại với điều trị ngoại trú hoặc gia đình không có khả năng giám sát.
 

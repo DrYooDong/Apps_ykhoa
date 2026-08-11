@@ -1,10 +1,20 @@
+---
+title: "BYT_Nipah_2026 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 ### **1. NỘI DUNG SINH LÝ HỌC & CƠ CHẾ BỆNH SINH CHI TIẾT**
 
 #### **Đại Cương về Bệnh do Vi rút Nipah (NiV)**
 
 Bệnh do vi rút Nipah (NiV) là một bệnh truyền nhiễm cấp tính lây truyền từ động vật sang người (zoonosis), đồng thời có khả năng lây truyền trực tiếp giữa người với người. Tác nhân này được phát hiện lần đầu tiên vào năm 1998 tại Malaysia. Kể từ thời điểm đó, các đợt dịch bùng phát lẻ tẻ nhưng diễn ra khá thường xuyên đã được ghi nhận tại nhiều quốc gia khu vực châu Á bao gồm Bangladesh, Ấn Độ, Singapore và Philippines.
 
-Về mặt lâm sàng, các biểu hiện mức độ nặng đặc trưng nhất của bệnh là tình trạng **viêm não** và **viêm phổi nặng**. Bệnh có tiên lượng rất xấu với **tỷ lệ tử vong dao động cực kỳ cao từ 40% đến 75%**, hoặc nếu người bệnh may mắn sống sót thì cũng thường gánh chịu những di chứng thần kinh nặng nề. Chính vì lý do này, bệnh do vi rút Nipah đã được xếp vào danh mục **bệnh truyền nhiễm nhóm A**, có tiềm năng tiến triển thành đại dịch nguy hiểm và nằm trong danh sách các tác nhân gây bệnh ưu tiên hàng đầu của Tổ chức Y tế Thế giới (WHO).
+Về mặt lâm sàng, các biểu hiện mức độ nặng đặc trưng nhất của bệnh là tình trạng **[[Viêm não]]** và **viêm [[Phổi]] nặng**. Bệnh có tiên lượng rất xấu với **tỷ lệ tử vong dao động cực kỳ cao từ 40% đến 75%**, hoặc nếu người bệnh may mắn sống sót thì cũng thường gánh chịu những di chứng thần kinh nặng nề. Chính vì lý do này, bệnh do vi rút Nipah đã được xếp vào danh mục **bệnh truyền nhiễm nhóm A**, có tiềm năng tiến triển thành đại dịch nguy hiểm và nằm trong danh sách các tác nhân gây bệnh ưu tiên hàng đầu của Tổ chức Y tế Thế giới (WHO).
 
 _(Dưới đây là hình ảnh pháp lý liên quan đến hướng dẫn ban hành chính thức)_
 
@@ -30,8 +40,8 @@ _(Dưới đây là hình ảnh pháp lý liên quan đến hướng dẫn ban h
 **Cơ chế và các đường lây truyền bệnh:**
 
 - **Từ động vật sang người:** Con người bị nhiễm bệnh thông qua việc tiếp xúc trực tiếp với động vật bị bệnh hoặc tiếp xúc với chất tiết sinh học của chúng như nước tiểu, nước bọt. Bên cạnh đó, hành vi tiêu thụ các loại thực phẩm bị nhiễm chất bài tiết của dơi ăn quả (ví dụ như uống nhựa cây chà là tươi, ăn các loại trái cây có vết cắn của dơi) cũng là con đường lây nhiễm phổ biến.
-- **Từ người sang người:** Sự lây truyền giữa người và người xảy ra thông qua tiếp xúc trực tiếp với dịch tiết đường hô hấp, nước tiểu hoặc chất nôn của bệnh nhân. Vi rút phát tán ra môi trường xung quanh dưới dạng các **giọt bắn (droplets)** khi người bệnh ho hoặc hắt hơi.
-- **Hệ số lây nhiễm:** Hệ số lây nhiễm từ người sang người của vi rút Nipah tương đối thấp, chỉ dao động trong khoảng từ **0,2 đến 0,4**. Đáng chú ý về mặt sinh lý bệnh, những bệnh nhân có biểu hiện triệu chứng ở đường hô hấp (như ho, khó thở) có nguy cơ phát tán và lây truyền vi rút cao hơn nhiều so với những bệnh nhân chỉ biểu hiện triệu chứng viêm não đơn thuần.
+- **Từ người sang người:** Sự lây truyền giữa người và người xảy ra thông qua tiếp xúc trực tiếp với dịch tiết đường hô hấp, nước tiểu hoặc chất [[Nôn ói|nôn]] của bệnh nhân. Vi rút phát tán ra môi trường xung quanh dưới dạng các **giọt bắn (droplets)** khi người bệnh ho hoặc hắt hơi.
+- **Hệ số lây nhiễm:** Hệ số lây nhiễm từ người sang người của vi rút Nipah tương đối thấp, chỉ dao động trong khoảng từ **0,2 đến 0,4**. Đáng chú ý về mặt sinh lý bệnh, những bệnh nhân có biểu hiện triệu chứng ở đường hô hấp (như ho, [[Khó thở]]) có nguy cơ phát tán và lây truyền vi rút cao hơn nhiều so với những bệnh nhân chỉ biểu hiện triệu chứng [[Viêm não]] đơn thuần.
 
 _(Dưới đây là hình ảnh bìa tài liệu hướng dẫn chuyên môn)_
 
@@ -44,14 +54,14 @@ _(Dưới đây là hình ảnh bìa tài liệu hướng dẫn chuyên môn)_
 
 #### **Biểu Hiện Lâm Sàng: Từ Ủ Bệnh Đến Các Biến Chứng Thần Kinh và Hô Hấp**
 
-Quá trình diễn tiến lâm sàng của bệnh do vi rút Nipah trải qua các giai đoạn rõ rệt với sự tổn thương sâu sắc ở hệ thần kinh trung ương và hệ hô hấp:
+Quá trình diễn tiến lâm sàng của bệnh do vi rút Nipah trải qua các giai đoạn rõ rệt với sự tổn thương sâu sắc ở [[Hệ thần kinh trung ương]] và hệ hô hấp:
 
 1. **Thời gian ủ bệnh:** Thông thường dao động từ **3 đến 14 ngày**, tuy nhiên các thể lâm sàng đặc biệt có thời gian ủ bệnh kéo dài lên đến **45 ngày** (mặc dù trường hợp này rất hiếm gặp).
-2. **Giai đoạn khởi phát:** Bệnh cảnh bắt đầu một cách đột ngột với các triệu chứng nhiễm trùng cấp tính không điển hình bao gồm: sốt cao, đau đầu dữ dội, đau mỏi cơ bắp toàn thân, đau họng, nôn ói và tiêu chảy.
+2. **Giai đoạn khởi phát:** Bệnh cảnh bắt đầu một cách đột ngột với các triệu chứng nhiễm trùng cấp tính không điển hình bao gồm: [[[[Sốt]]|sốt cao]], đau đầu dữ dội, đau mỏi cơ bắp toàn thân, đau họng, [[Nôn ói]] và [[Tiêu chảy]].
 3. **Giai đoạn toàn phát:** Bệnh nhanh chóng tiến triển nặng với các tổn thương cơ quan đích nguy hiểm:
-    - **Biểu hiện thần kinh (Viêm não cấp tính):** Người bệnh xuất hiện triệu chứng chóng mặt, lơ mơ, lú lẫn sâu sắc và mất định hướng về cả không gian lẫn thời gian. Ý thức của bệnh nhân suy giảm nhanh chóng ở các mức độ khác nhau và có thể **tiến triển từ trạng thái lơ mơ sang hôn mê sâu chỉ trong vòng 24 đến 48 giờ**. Các triệu chứng tổn thương thần kinh khu trú khác kèm theo bao gồm các cơn co giật, yếu liệt chi, liệt mềm toàn thân, hoặc liệt vận nhãn.
-    - **Biểu hiện hô hấp:** Bệnh nhân xuất hiện ho, khó thở dữ dội và tình trạng suy hô hấp tiến triển cực kỳ nhanh chóng.
-    - **Suy đa tạng:** Khi bệnh tiến triển đến giai đoạn cực kỳ nặng, cơ thể người bệnh rơi vào trạng thái suy đa tạng bao gồm suy thận cấp, suy tim, xuất huyết tiêu hóa nặng và nhiễm trùng huyết. Tỷ lệ tử vong ở giai đoạn toàn phát này là cực kỳ cao, chiếm khoảng **40% đến 75%**.
+    - **Biểu hiện thần kinh (Viêm não cấp tính):** Người bệnh xuất hiện triệu chứng chóng mặt, lơ mơ, lú lẫn sâu sắc và mất định hướng về cả không gian lẫn thời gian. Ý thức của bệnh nhân suy giảm nhanh chóng ở các mức độ khác nhau và có thể **tiến triển từ trạng thái lơ mơ sang [[Hôn mê]] sâu chỉ trong vòng 24 đến 48 giờ**. Các triệu chứng tổn thương thần kinh khu trú khác kèm theo bao gồm các [[[[Co giật]]|cơn co giật]], yếu liệt chi, liệt mềm toàn thân, hoặc liệt vận nhãn.
+    - **Biểu hiện hô hấp:** Bệnh nhân xuất hiện ho, [[Khó thở]] dữ dội và tình trạng [[Suy hô hấp]] tiến triển cực kỳ nhanh chóng.
+    - **Suy đa tạng:** Khi bệnh tiến triển đến giai đoạn cực kỳ nặng, cơ thể người bệnh rơi vào trạng thái suy đa tạng bao gồm suy [[Thận]] cấp, suy [[Tim]], [[Xuất huyết]] tiêu hóa nặng và [[Nhiễm trùng huyết]]. Tỷ lệ tử vong ở giai đoạn toàn phát này là cực kỳ cao, chiếm khoảng **40% đến 75%**.
     - **Biến chứng thần kinh muộn:** Một đặc điểm sinh lý bệnh đặc biệt của vi rút Nipah là khả năng gây **viêm não muộn hoặc tái phát**. Một số bệnh nhân đã vượt qua giai đoạn cấp tính và hồi phục hoàn toàn vẫn có nguy cơ bị viêm não tái phát sau nhiều tháng hoặc thậm chí nhiều năm sau đó.
 4. **Giai đoạn lui bệnh và di chứng:** Phần lớn những người sống sót qua cơn nguy kịch có khả năng hồi phục thể chất hoàn toàn. Mặc dù vậy, có khoảng **20% bệnh nhân sống sót phải chịu đựng các di chứng thần kinh kéo dài** bao gồm tình trạng mệt mỏi dai dẳng, biến đổi tính cách, rối loạn trầm cảm và các dấu hiệu tổn thương thần kinh khu trú.
 
@@ -63,20 +73,20 @@ Công tác xét nghiệm cận lâm sàng đóng vai trò then chốt trong vi�
 
 **a. Xét nghiệm chẩn đoán căn nguyên:**
 
-- **Xét nghiệm Real-time RT-PCR hoặc Giải trình tự gen:** Đây là phương pháp sinh học phân tử giúp phát hiện trực tiếp RNA của vi rút Nipah. Mẫu bệnh phẩm được thu thập từ các nguồn dịch tiết đường hô hấp, nước tiểu, máu toàn phần và dịch não tủy. Quá trình lấy mẫu, bảo quản, đóng gói và vận chuyển bệnh phẩm bắt buộc phải tuân thủ nghiêm ngặt các quy định an toàn sinh học theo hướng dẫn của Bộ Y tế.
-- **Xét nghiệm huyết thanh học (ELISA):** Được áp dụng để phát hiện sự hiện diện của kháng thể kháng vi rút Nipah trong máu hoặc dịch não tủy, có giá trị cao trong cả giai đoạn cấp và giai đoạn hồi phục của bệnh.
+- **Xét nghiệm Real-time RT-PCR hoặc Giải trình tự gen:** Đây là phương pháp sinh học phân tử giúp phát hiện trực tiếp RNA của vi rút Nipah. Mẫu bệnh phẩm được thu thập từ các nguồn dịch tiết đường hô hấp, nước tiểu, máu toàn phần và [[Dịch nào tủy|dịch não tủy]]. Quá trình lấy mẫu, bảo quản, đóng gói và vận chuyển bệnh phẩm bắt buộc phải tuân thủ nghiêm ngặt các quy định an toàn sinh học theo hướng dẫn của Bộ Y tế.
+- **Xét nghiệm huyết thanh học (ELISA):** Được áp dụng để phát hiện sự hiện diện của kháng thể kháng vi rút Nipah trong máu hoặc [[Dịch nào tủy|dịch não tủy]], có giá trị cao trong cả giai đoạn cấp và giai đoạn hồi phục của bệnh.
     - **Kháng thể IgM:** Thường xuất hiện rất sớm trong vòng **5 ngày đầu** kể từ khi khởi phát các triệu chứng lâm sàng.
     - **Kháng thể IgG:** Xuất hiện muộn hơn trong khoảng từ **2 đến 4 tuần** sau khi khởi phát và có khả năng tồn tại lâu dài trong cơ thể.
 - **Phân lập vi rút:** Đây là phương pháp nuôi cấy phát hiện trực tiếp tác nhân sống, tuy nhiên do tính chất nguy hiểm cực kỳ cao của vi rút Nipah, xét nghiệm này **chỉ được phép thực hiện trong các phòng thí nghiệm đạt tiêu chuẩn an toàn sinh học cấp độ 4 (BSL-4)**.
 
 **b. Các xét nghiệm hỗ trợ và đánh giá tổn thương:**
 
-- **Công thức máu:** Thường ghi nhận tình trạng giảm số lượng bạch cầu, tăng tỷ lệ bạch cầu lympho tương đối và giảm số lượng tiểu cầu.
-- **Sinh hóa máu:** Phản ánh rõ nét tình trạng tổn thương đa tạng với các chỉ số tăng men gan, suy giảm chức năng thận, rối loạn điện giải sâu sắc (đặc biệt là tình trạng **hạ natri máu**) và rối loạn đường huyết.
-- **Xét nghiệm dịch não tủy:** Ghi nhận số lượng bạch cầu tăng nhẹ, nồng độ protein tăng nhẹ hoặc giữ ở mức bình thường, trong khi nồng độ glucose trong dịch não tủy bình thường. Kết quả này rất quan trọng để giúp bác sĩ lâm sàng loại trừ các nguyên nhân gây viêm màng mủ do vi khuẩn.
+- **Công thức máu:** Thường ghi nhận tình trạng giảm [[Bạch cầu|số lượng bạch cầu]], tăng tỷ lệ bạch cầu lympho tương đối và giảm [[[[Tiểu cầu]]|số lượng tiểu cầu]].
+- **Sinh hóa máu:** Phản ánh rõ nét tình trạng tổn thương đa tạng với các chỉ số tăng men [[Gan]], suy giảm chức năng [[Thận]], rối loạn điện giải sâu sắc (đặc biệt là tình trạng **hạ natri máu**) và rối loạn đường huyết.
+- **Xét nghiệm dịch não tủy:** Ghi nhận [[Bạch cầu|số lượng bạch cầu]] tăng nhẹ, nồng độ protein tăng nhẹ hoặc giữ ở mức bình thường, trong khi nồng độ glucose trong dịch não tủy bình thường. Kết quả này rất quan trọng để giúp bác sĩ lâm sàng loại trừ các nguyên nhân gây viêm màng mủ do vi khuẩn.
 - **Chẩn đoán hình ảnh:**
-    - **Chụp X-quang ngực thẳng:** Phát hiện các tổn thương phổi như viêm phổi kẽ, thâm nhiễm lan tỏa hai phế trường hoặc đông đặc phổi. Xét nghiệm này đặc biệt quan trọng đối với các bệnh nhân có hội ứng suy hô hấp cấp tiến triển (ARDS). Hướng dẫn khuyến cáo nên sử dụng máy X-quang di động ngay tại giường trong khu vực cách ly để hạn chế lây nhiễm chéo.
-    - **Chụp cộng hưởng từ (MRI) não:** Thực hiện khi bệnh nhân có biểu hiện tổn thương hệ thần kinh. Hình ảnh MRI điển hình ghi nhận tình trạng **tăng tín hiệu trên chuỗi xung T2 và FLAIR**, với vị trí tổn thương chủ yếu phân bố ở vùng chất trắng dưới vỏ não.
+    - **[[[[X-quang]]|Chụp X-quang]] ngực thẳng:** Phát hiện các tổn thương [[Phổi]] như viêm phổi kẽ, thâm nhiễm lan tỏa hai phế trường hoặc đông đặc phổi. Xét nghiệm này đặc biệt quan trọng đối với các bệnh nhân có hội ứng [[Suy hô hấp|suy hô hấp cấp]] tiến triển (ARDS). Hướng dẫn khuyến cáo nên sử dụng máy X-quang di động ngay tại giường trong khu vực cách ly để hạn chế lây nhiễm chéo.
+    - **[[[[MRI]]|Chụp cộng hưởng từ]] (MRI) não:** Thực hiện khi bệnh nhân có biểu hiện tổn thương hệ thần kinh. Hình ảnh MRI điển hình ghi nhận tình trạng **tăng tín hiệu trên chuỗi xung T2 và FLAIR**, với vị trí tổn thương chủ yếu phân bố ở vùng chất trắng dưới [[Vỏ não]].
 
 ---
 
@@ -93,7 +103,7 @@ Công tác xét nghiệm cận lâm sàng đóng vai trò then chốt trong vi�
 
 **c. Chẩn đoán phân biệt:** Do biểu hiện lâm sàng của bệnh do vi rút Nipah trùng lặp với nhiều bệnh lý nhiễm trùng cấp tính khác, cần thực hiện chẩn đoán phân biệt kỹ lưỡng:
 
-- **Nhóm bệnh lý viêm não và nhiễm trùng thần kinh:** Phân biệt với bệnh viêm não Nhật Bản, viêm não do vi rút Herpes (HSV), hoặc tình trạng viêm màng não do vi khuẩn.
+- **Nhóm bệnh lý viêm não và nhiễm trùng thần kinh:** Phân biệt với bệnh viêm não Nhật Bản, viêm não do vi rút Herpes (HSV), hoặc tình trạng [[Viêm màng não]] do vi khuẩn.
 - **Nhóm bệnh lý hô hấp:** Phân biệt với tất cả các nguyên nhân khác có khả năng gây ra tình trạng viêm phổi nặng tiến triển nhanh.
 
 ---

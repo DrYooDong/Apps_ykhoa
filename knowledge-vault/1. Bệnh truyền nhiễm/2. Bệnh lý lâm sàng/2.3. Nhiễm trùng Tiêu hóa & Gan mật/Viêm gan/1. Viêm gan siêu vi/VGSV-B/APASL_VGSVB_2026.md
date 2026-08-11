@@ -1,9 +1,14 @@
 ---
 title: "APASL_VGSVB_2026"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Bệnh lý cụ thể", "Viêm gan", "Viêm gan siêu vi", "VGSV-B"]
-last_updated: "2026-07-28"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 **TÓM TẮT HƯỚNG DẪN LÂM SÀNG**
 
 **APASL CLINICAL PRACTICE GUIDELINES ON THE MANAGEMENT OF**
@@ -50,9 +55,9 @@ last_updated: "2026-07-28"
 
 **3\. TÓM TẮT CÁC Ý CHÍNH THEO CHỦ ĐỀ**
 
-**A. Tiêm chủng (Vaccination)**
+**A. [[Vắc-xin|Tiêm chủng]] (Vaccination)**
 
-•  ★ Tất cả trẻ sơ sinh ổn định: tiêm liều vắc-xin viêm gan B đầu tiên trong vòng 24 giờ sau sinh. (A1)
+•  ★ Tất cả trẻ sơ sinh ổn định: tiêm liều vắc-xin viêm [[Gan]] B đầu tiên trong vòng 24 giờ sau sinh. (A1)
 
 •  ★ Trẻ từ mẹ HBsAg(+): trong 12 giờ đầu \+ HBIG (hepatitis B immune globulin) → giảm lây mẹ-con xuống \<5%. (A1)
 
@@ -60,9 +65,9 @@ last_updated: "2026-07-28"
 
 •  Người miễn dịch bình thường đã hoàn thành đầy đủ liều cơ bản: KHÔNG khuyến cáo liều nhắc định kỳ. (A1)
 
-•  Người nguy cơ cao / suy giảm miễn dịch (lọc thận, HIV…): xem xét liều nhắc khi anti-HBs \< 10 mIU/mL. (A1)
+•  Người nguy cơ cao / suy giảm miễn dịch (lọc [[Thận]], HIV…): xem xét liều nhắc khi anti-HBs \< 10 mIU/mL. (A1)
 
-•  Xét nghiệm sau tiêm chủng: chỉ định cho nhóm nguy cơ (bệnh nhân suy giảm miễn dịch, nhân viên y tế, trẻ từ mẹ HBsAg+, tiếp xúc gia đình/tình dục) – kiểm tra anti-HBs 1-2 tháng sau liều cuối. (A1)
+•  Xét nghiệm sau [[Vắc-xin|tiêm chủng]]: chỉ định cho nhóm nguy cơ (bệnh nhân suy giảm miễn dịch, nhân viên y tế, trẻ từ mẹ HBsAg+, tiếp xúc gia đình/tình dục) – kiểm tra anti-HBs 1-2 tháng sau liều cuối. (A1)
 
 **B. Tầm soát (Screening)**
 
@@ -74,13 +79,13 @@ last_updated: "2026-07-28"
 
 •  Xét nghiệm HBV DNA phản xạ (reflex testing) trên mẫu HBsAg(+) → tăng kết nối điều trị. (B2)
 
-**C. Đánh giá xơ hóa gan (Liver Fibrosis Assessment)**
+**C. Đánh giá xơ hóa [[Gan]] (Liver Fibrosis Assessment)**
 
-•  Sinh thiết gan: tiêu chuẩn vàng; cá thể hóa chỉ định khi NITs không phù hợp hoặc kết quả mâu thuẫn. (A1)
+•  Sinh thiết gan: tiêu chuẩn vàng; cá thể hóa chỉ định khi NITs không [[Phù]] hợp hoặc kết quả mâu thuẫn. (A1)
 
 •  ★ NITs (non-invasive tests) là lựa chọn đầu tay. (B1)
 
-•  FIB-4 (tuổi, AST, ALT, tiểu cầu): FIB-4 \>1,3 → xơ hóa có ý nghĩa (≥F2); \>2,67 → xơ tiến triển/xơ gan. Người ≥65 tuổi: ngưỡng điều chỉnh \>2,0 và \>3,25. (B1)
+•  FIB-4 (tuổi, AST, ALT, [[Tiểu cầu]]): FIB-4 \>1,3 → xơ hóa có ý nghĩa (≥F2); \>2,67 → xơ tiến triển/xơ gan. Người ≥65 tuổi: ngưỡng điều chỉnh \>2,0 và \>3,25. (B1)
 
 •  APRI: \>0,5–0,7 → xơ hóa đáng kể; \>0,8–1,2 → xơ gan (WHO 2024: bắt đầu điều trị khi APRI \>0,5 bất kể HBV DNA hay ALT). (B1)
 
@@ -124,13 +129,13 @@ last_updated: "2026-07-28"
 
 •  ALD+HBV: kiêng rượu hoàn toàn (A1); NUCs dài hạn/suốt đời; Peg-IFN-α chống chỉ định; hỗ trợ đa chuyên khoa.
 
-•  ESLD: TAF/TDF/ETV an toàn trong xơ gan mất bù; ưu tiên TAF về thận/xương (A1); điều trị vô thời hạn (A1). Sau ghép: HBIG \+ NUCs (nguy cơ cao); NUC đơn trị (nguy cơ thấp).
+•  ESLD: TAF/TDF/ETV an toàn trong xơ gan mất bù; ưu tiên TAF về [[Thận]]/xương (A1); điều trị vô thời hạn (A1). Sau ghép: HBIG \+ NUCs (nguy cơ cao); NUC đơn trị (nguy cơ thấp).
 
 •  MAFLD+CHB: kiểm soát đường máu tối ưu (A1); can thiệp lối sống (A1). NUCs không loại bỏ nguy cơ từ MAFLD.
 
 **G. Tầm soát và phòng ngừa HCC**
 
-•  ★ Tất cả bệnh nhân NUCs với mPAGE-B ≥9: AFP \+ siêu âm mỗi 6 tháng. (A1)
+•  ★ Tất cả bệnh nhân NUCs với mPAGE-B ≥9: AFP \+ [[Siêu âm]] mỗi 6 tháng. (A1)
 
 •  ★ Thêm PIVKA-II kết hợp AFP \+ siêu âm → độ nhạy \>90%, phát hiện thêm 43% HCC sớm. (B1)
 
@@ -154,7 +159,7 @@ last_updated: "2026-07-28"
 
 | Thang điểm | Thông số | Phân tầng nguy cơ 5 năm |
 | :---- | :---- | :---- |
-| mPAGE-B (2018) | Tuổi, giới, tiểu cầu, albumin | Thấp: 0–8 | Trung: 9–12 | Cao: 13–21 |
+| mPAGE-B (2018) | Tuổi, giới, [[Tiểu cầu]], albumin | Thấp: 0–8 | Trung: 9–12 | Cao: 13–21 |
 | PAGE-B (2016) | Tuổi, giới, tiểu cầu | Thấp: 0–9 | Trung: 10–17 | Cao: 18–25 |
 | aMAP (2020) | Tuổi, giới, tiểu cầu, albumin, bilirubin | Thấp: 0–49,9 | Trung: 50–59,9 | Cao: 60–100 |
 | REAL-B (2020) | Tuổi, giới, xơ gan, tiểu cầu, AFP, ĐTĐ, rượu | Thấp: 0–3 | Trung: 4–7 | Cao: 8–13 |
@@ -180,7 +185,7 @@ last_updated: "2026-07-28"
 | TAF | 25 mg/ngày uống | Ưu tiên: NCT, suy thận (eGFR ≥15 dùng được), loãng xương. An toàn thận/xương vượt TDF. |
 | TDF | 300 mg/ngày uống | Điều chỉnh liều khi eGFR \<50; dùng lâu dài ở NCT → nguy cơ gãy xương tăng. Ưu tiên trong phòng ngừa MTCT. |
 | ETV | 0,5 mg/ngày (naïve); 1 mg/ngày (kháng LAM) | Điều chỉnh khi eGFR \<50. An toàn thận/xương. KHÔNG dùng đơn trị ở HIV+HBV (kháng thuốc HIV). |
-| Peg-IFN-α-2a | 180 µg/tuần SC, 48–96 tuần | Chống chỉ định: xơ gan mất bù (Child B/C), VGAN tự miễn, bệnh tuyến giáp không kiểm soát, động kinh không kiểm soát, thai kỳ, suy thận nặng. Giảm liều eGFR \<30. |
+| Peg-IFN-α-2a | 180 µg/tuần SC, 48–96 tuần | Chống chỉ định: xơ gan mất bù (Child B/C), VGAN tự miễn, bệnh tuyến giáp không kiểm soát, [[Động kinh]] không kiểm soát, thai kỳ, suy thận nặng. Giảm liều eGFR \<30. |
 
 **Điều chỉnh liều theo thận (eGFR mL/min/1,73m²):**
 
@@ -198,7 +203,7 @@ last_updated: "2026-07-28"
 
 •  HBV DNA (ngưỡng phát hiện \<10–20 IU/mL), qHBsAg, HBeAg/anti-HBe, ALT/AST, bilirubin, CBC, creatinine/eGFR
 
-•  Đánh giá xơ hóa: FIB-4 và/hoặc VCTE; siêu âm bụng
+•  Đánh giá xơ hóa: FIB-4 và/hoặc VCTE; [[Siêu âm|siêu âm bụng]]
 
 •  Tầm soát MAFLD: BMI, đường máu, lipid, huyết áp
 
@@ -252,7 +257,7 @@ last_updated: "2026-07-28"
 
 •  MAFLD: ngày càng tăng ở bệnh nhân VN đô thị – CHB+MAFLD cần được quản lý đồng thời; không thể chỉ trông cậy NUCs để kiểm soát nguy cơ tổng thể.
 
-•  Chi phí – hiệu quả tại VN: chiến lược "treat-all" phù hợp về kinh tế (dữ liệu từ Trung Quốc, Hàn Quốc, Mỹ ủng hộ) – ưu tiên mở rộng độ bao phủ điều trị qua hệ thống y tế cơ sở.
+•  Chi phí – hiệu quả tại VN: chiến lược "treat-all" [[Phù]] hợp về kinh tế (dữ liệu từ Trung Quốc, Hàn Quốc, Mỹ ủng hộ) – ưu tiên mở rộng độ bao phủ điều trị qua hệ thống y tế cơ sở.
 
 **8\. LƯU ĐỒ XỬ TRÍ CHB (APASL 2026\)**
 

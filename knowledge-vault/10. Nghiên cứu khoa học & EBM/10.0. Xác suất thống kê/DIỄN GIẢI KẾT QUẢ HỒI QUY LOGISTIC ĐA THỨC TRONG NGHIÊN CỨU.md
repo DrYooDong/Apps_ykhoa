@@ -1,16 +1,20 @@
 ---
 title: "DIỄN GIẢI KẾT QUẢ HỒI QUY LOGISTIC ĐA THỨC TRONG NGHIÊN CỨU"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐃𝐢𝐞̂̃𝐧 𝐠𝐢𝐚̉𝐢 𝐤𝐞̂́𝐭 𝐪𝐮𝐚̉ 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐘–𝐃𝐮̛𝐨̛̣𝐜 (𝐏𝐡𝐚̂̀𝐧 𝟒 𝐭𝐫𝐨𝐧𝐠 𝐛𝐚̀𝐢 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 đ𝐨̂́𝐢 𝐯𝐨̛́𝐢 𝐛𝐢𝐞̂́𝐧 𝐤𝐞̂́𝐭 𝐜𝐮̣𝐜 𝐝𝐚𝐧𝐡 𝐧𝐠𝐡𝐢̃𝐚)
 
 TS. Đào Hồng Nam
 
 𝟒. 𝐃𝐢𝐞̂̃𝐧 𝐠𝐢𝐚̉𝐢 𝐤𝐞̂́𝐭 𝐪𝐮𝐚̉ 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐘–𝐃𝐮̛𝐨̛̣𝐜
 
-Diễn giải kết quả là bước cuối cùng nhưng có ý nghĩa quyết định đối với giá trị khoa học của một nghiên cứu sử dụng hồi quy logistic đa thức. Một mô hình được xây dựng đúng, các giả định được kiểm tra đầy đủ và có mức độ phù hợp tốt vẫn có thể dẫn đến kết luận sai nếu các hệ số hồi quy được diễn giải không đúng bản chất thống kê. Trong nhiều nghiên cứu Y–Dược, những sai sót phổ biến bao gồm diễn giải trực tiếp hệ số β như sự thay đổi của xác suất, nhầm lẫn giữa tỷ số nguy cơ tương đối và nguy cơ tương đối hoặc chỉ tập trung vào giá trị p mà bỏ qua kích thước hiệu quả và khoảng tin cậy 95%.
+Diễn giải kết quả là bước cuối cùng nhưng có ý nghĩa quyết định đối với giá trị khoa học của một nghiên cứu sử dụng hồi quy logistic đa thức. Một mô hình được xây dựng đúng, các giả định được kiểm tra đầy đủ và có mức độ [[Phù]] hợp tốt vẫn có thể dẫn đến kết luận sai nếu các hệ số hồi quy được diễn giải không đúng bản chất thống kê. Trong nhiều nghiên cứu Y–Dược, những sai sót phổ biến bao gồm diễn giải trực tiếp hệ số β như sự thay đổi của xác suất, nhầm lẫn giữa tỷ số nguy cơ tương đối và nguy cơ tương đối hoặc chỉ tập trung vào giá trị p mà bỏ qua kích thước hiệu quả và khoảng tin cậy 95%.
 
 Mục tiêu của phần này là trình bày nguyên tắc diễn giải các hệ số hồi quy, tỷ số nguy cơ tương đối, xác suất dự báo và ý nghĩa lâm sàng của các kết quả, đồng thời chỉ ra những sai sót thường gặp trong quá trình báo cáo và thảo luận kết quả nghiên cứu.
 
@@ -42,9 +46,9 @@ Bên cạnh giá trị ước lượng, khoảng tin cậy 95% cần được tr
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟗. 𝐃𝐢𝐞̂̃𝐧 𝐠𝐢𝐚̉𝐢 𝐑𝐑𝐑
 
-Một nghiên cứu đánh giá các yếu tố liên quan đến lựa chọn điều trị ở bệnh nhân đái tháo đường típ 2 cho thấy đối với nhóm điều trị bằng insulin so với nhóm đơn trị liệu metformin, HbA1c có RRR bằng 1,38, khoảng tin cậy 95% từ 1,22 đến 1,56 và p < 0,001 theo Bảng 10.
+Một nghiên cứu đánh giá các yếu tố liên quan đến lựa chọn điều trị ở bệnh nhân đái tháo đường típ 2 cho thấy đối với nhóm điều trị bằng [[Insulin]] so với nhóm đơn trị liệu metformin, HbA1c có RRR bằng 1,38, khoảng tin cậy 95% từ 1,22 đến 1,56 và p < 0,001 theo Bảng 10.
 
-Kết quả này được diễn giải như sau: sau khi đã hiệu chỉnh tuổi, giới tính, thời gian mắc bệnh và các yếu tố gây nhiễu khác, mỗi một đơn vị tăng của HbA1c có liên quan đến sự gia tăng 38% tỷ số xác suất lựa chọn điều trị bằng insulin so với đơn trị liệu metformin. Kết luận này chỉ áp dụng cho phép so sánh giữa hai nhóm điều trị nói trên và không phản ánh xác suất tuyệt đối bệnh nhân sẽ được chỉ định insulin.
+Kết quả này được diễn giải như sau: sau khi đã hiệu chỉnh tuổi, giới tính, thời gian mắc bệnh và các yếu tố gây nhiễu khác, mỗi một đơn vị tăng của HbA1c có liên quan đến sự gia tăng 38% tỷ số xác suất lựa chọn điều trị bằng [[Insulin]] so với đơn trị liệu metformin. Kết luận này chỉ áp dụng cho phép so sánh giữa hai nhóm điều trị nói trên và không phản ánh xác suất tuyệt đối bệnh nhân sẽ được chỉ định insulin.
 
 𝟒.𝟑. 𝐃𝐢𝐞̂̃𝐧 𝐠𝐢𝐚̉𝐢 𝐱𝐚́𝐜 𝐬𝐮𝐚̂́𝐭 𝐝𝐮̛̣ 𝐛𝐚́𝐨
 
@@ -54,7 +58,7 @@ Khác với RRR, xác suất dự báo phản ánh trực tiếp khả năng x�
 
 Trong các bài báo quốc tế, xác suất dự báo thường được trình bày dưới dạng bảng hoặc đồ thị. Khi trình bày kết quả, cần mô tả rõ các giá trị của những biến được giữ cố định trong quá trình tính toán xác suất nhằm bảo đảm khả năng tái lập của nghiên cứu. Một ví dụ minh họa được trình bày tại Hình 1.
 
-Ví dụ, trong nghiên cứu lựa chọn kháng sinh điều trị viêm phổi cộng đồng, xác suất dự báo có thể được tính cho các bệnh nhân giả định có cùng tuổi, giới tính và điểm CURB-65 nhưng khác nhau về tiền sử sử dụng kháng sinh trong vòng ba tháng trước nhập viện. Nếu xác suất được chỉ định carbapenem tăng từ 0,15 lên 0,41 khi có tiền sử sử dụng kháng sinh, kết quả này sẽ trực quan hơn nhiều so với việc chỉ trình bày hệ số β hoặc RRR.
+Ví dụ, trong nghiên cứu lựa chọn [[Kháng sinh]] điều trị viêm [[Phổi]] cộng đồng, xác suất dự báo có thể được tính cho các bệnh nhân giả định có cùng tuổi, giới tính và điểm CURB-65 nhưng khác nhau về tiền sử sử dụng [[Kháng sinh]] trong vòng ba tháng trước nhập viện. Nếu xác suất được chỉ định carbapenem tăng từ 0,15 lên 0,41 khi có tiền sử sử dụng kháng sinh, kết quả này sẽ trực quan hơn nhiều so với việc chỉ trình bày hệ số β hoặc RRR.
 
 Việc trình bày xác suất dự báo không thay thế cho RRR mà bổ sung thêm góc nhìn về ý nghĩa lâm sàng của kết quả. Trong các nghiên cứu hướng đến hỗ trợ quyết định điều trị, nên báo cáo đồng thời RRR và xác suất dự báo để giúp người đọc hiểu đầy đủ cả kích thước hiệu quả tương đối và khả năng xảy ra của từng kết cục.
 
@@ -62,13 +66,13 @@ tiếp
 
 𝟒.𝟒. 𝐃𝐢𝐞̂̃𝐧 𝐠𝐢𝐚̉𝐢 𝐤𝐞̂́𝐭 𝐪𝐮𝐚̉ đ𝐨̂́𝐢 𝐯𝐨̛́𝐢 𝐜𝐚́𝐜 𝐥𝐨𝐚̣𝐢 𝐛𝐢𝐞̂́𝐧 đ𝐨̣̂𝐜 𝐥𝐚̣̂𝐩
 
-Mặc dù nguyên lý ước lượng của hồi quy logistic đa thức là giống nhau đối với mọi biến giải thích, cách diễn giải kết quả lại phụ thuộc vào bản chất của từng loại biến. Việc áp dụng cùng một cách diễn giải cho tất cả các biến có thể dẫn đến những kết luận không chính xác hoặc làm giảm giá trị ứng dụng của nghiên cứu. Do đó, nhà nghiên cứu cần lựa chọn cách trình bày phù hợp đối với biến định lượng liên tục, biến định tính và các thành phần tương tác.
+Mặc dù nguyên lý ước lượng của hồi quy logistic đa thức là giống nhau đối với mọi biến giải thích, cách diễn giải kết quả lại phụ thuộc vào bản chất của từng loại biến. Việc áp dụng cùng một cách diễn giải cho tất cả các biến có thể dẫn đến những kết luận không chính xác hoặc làm giảm giá trị ứng dụng của nghiên cứu. Do đó, nhà nghiên cứu cần lựa chọn cách trình bày [[Phù]] hợp đối với biến định lượng liên tục, biến định tính và các thành phần tương tác.
 
 𝟒.𝟒.𝟏. 𝐁𝐢𝐞̂́𝐧 đ𝐢̣𝐧𝐡 𝐥𝐮̛𝐨̛̣𝐧𝐠 𝐥𝐢𝐞̂𝐧 𝐭𝐮̣𝐜
 
 Đối với các biến định lượng liên tục, hệ số hồi quy và RRR phản ánh mức thay đổi tương đối của tỷ số xác suất giữa nhóm kết cục đang xét và nhóm tham chiếu khi biến độc lập tăng thêm một đơn vị đo lường, trong điều kiện các biến còn lại trong mô hình được giữ nguyên. Cách diễn giải này có ý nghĩa về mặt thống kê nhưng không phải lúc nào cũng thuận tiện trong thực hành lâm sàng, bởi đơn vị đo lường ban đầu đôi khi quá nhỏ để phản ánh một thay đổi có ý nghĩa về mặt sinh học hoặc điều trị.
 
-Tình huống này thường gặp trong các nghiên cứu Y–Dược sử dụng những biến liên tục có đơn vị đo rất chi tiết. Chẳng hạn, nếu huyết áp tâm thu được đo bằng mmHg, việc diễn giải ảnh hưởng của mỗi 1 mmHg tăng thêm thường không giúp người đọc hình dung rõ ý nghĩa thực tế của kết quả. Tương tự, sự thay đổi của một năm tuổi hoặc 1 mg/L CRP có thể quá nhỏ để tạo ra khác biệt đáng kể về mặt lâm sàng. Trong những trường hợp như vậy, nhà nghiên cứu thường lựa chọn các đơn vị diễn giải phù hợp hơn với thực hành, chẳng hạn 10 mmHg đối với huyết áp tâm thu, 10 năm đối với tuổi hoặc 10 mg/L đối với CRP. Việc chuẩn hóa theo các khoảng thay đổi có ý nghĩa giúp kết quả trở nên trực quan hơn mà không làm thay đổi bản chất thống kê của mô hình.
+Tình huống này thường gặp trong các nghiên cứu Y–Dược sử dụng những biến liên tục có đơn vị đo rất chi tiết. Chẳng hạn, nếu huyết áp tâm thu được đo bằng mmHg, việc diễn giải ảnh hưởng của mỗi 1 mmHg tăng thêm thường không giúp người đọc hình dung rõ ý nghĩa thực tế của kết quả. Tương tự, sự thay đổi của một năm tuổi hoặc 1 mg/L [[CRP]] có thể quá nhỏ để tạo ra khác biệt đáng kể về mặt lâm sàng. Trong những trường hợp như vậy, nhà nghiên cứu thường lựa chọn các đơn vị diễn giải phù hợp hơn với thực hành, chẳng hạn 10 mmHg đối với huyết áp tâm thu, 10 năm đối với tuổi hoặc 10 mg/L đối với [[CRP]]. Việc chuẩn hóa theo các khoảng thay đổi có ý nghĩa giúp kết quả trở nên trực quan hơn mà không làm thay đổi bản chất thống kê của mô hình.
 
 Điều quan trọng là việc thay đổi đơn vị đo phải được thực hiện trước khi xây dựng mô hình và cần được mô tả rõ trong phần phương pháp để người đọc hiểu chính xác ý nghĩa của các hệ số hồi quy và RRR được báo cáo. Mục đích của việc chuẩn hóa đơn vị là hỗ trợ diễn giải và tăng tính thực tiễn của kết quả, không phải để làm cho kích thước hiệu quả trông lớn hơn hoặc có vẻ quan trọng hơn. Vì lý do đó, việc thay đổi đơn vị sau khi đã hoàn tất phân tích chỉ để làm nổi bật kết quả là không phù hợp và có thể gây khó khăn khi đối chiếu với các nghiên cứu khác sử dụng cùng biến số nhưng được biểu diễn theo đơn vị gốc.
 
@@ -82,7 +86,7 @@ Chẳng hạn, nếu biến giới tính được mã hóa với nam là nhóm t
 
 Việc diễn giải trở nên phức tạp hơn khi biến định tính có nhiều hơn hai mức phân loại. Đối với các biến như trình độ học vấn, nhóm chỉ số khối cơ thể hoặc mức độ hoạt động thể lực, mỗi mức sẽ được so sánh với cùng một nhóm tham chiếu và có một hệ số hồi quy riêng trong mô hình. Các hệ số này cần được xem xét trong mối liên hệ với nhau thay vì được diễn giải như những kết quả hoàn toàn độc lập. Chẳng hạn, nếu RRR tăng dần từ nhóm thừa cân đến béo phì độ I và béo phì độ II, kết quả đó có thể gợi ý sự hiện diện của một xu hướng tăng nguy cơ theo mức độ phơi nhiễm.
 
-Việc quan sát thấy các hệ số hoặc RRR thay đổi theo một hướng nhất quán giữa các mức phân loại đôi khi cho phép thảo luận về khả năng tồn tại mối liên quan theo liều – đáp ứng. Dù vậy, cần thận trọng khi diễn giải vì các mức của biến đã được phân nhóm trước khi đưa vào mô hình. Sự gia tăng hoặc giảm dần của các ước lượng giữa các nhóm chưa đủ để khẳng định quan hệ tuyến tính giữa biến độc lập và biến kết cục. Muốn đánh giá chính xác tính tuyến tính, biến cần được mô hình hóa dưới dạng liên tục hoặc được khảo sát bằng các kỹ thuật phù hợp dành cho mối liên hệ phi tuyến.
+Việc quan sát thấy các hệ số hoặc RRR thay đổi theo một hướng nhất quán giữa các mức phân loại đôi khi cho phép thảo luận về khả năng tồn tại mối liên quan theo liều – đáp ứng. Dù vậy, cần [[Thận]] trọng khi diễn giải vì các mức của biến đã được phân nhóm trước khi đưa vào mô hình. Sự gia tăng hoặc giảm dần của các ước lượng giữa các nhóm chưa đủ để khẳng định quan hệ tuyến tính giữa biến độc lập và biến kết cục. Muốn đánh giá chính xác tính tuyến tính, biến cần được mô hình hóa dưới dạng liên tục hoặc được khảo sát bằng các kỹ thuật phù hợp dành cho mối liên hệ phi tuyến.
 
 𝟒.𝟒.𝟑. 𝐓𝐡𝐚̀𝐧𝐡 𝐩𝐡𝐚̂̀𝐧 𝐭𝐮̛𝐨̛𝐧𝐠 𝐭𝐚́𝐜
 
@@ -90,11 +94,11 @@ Trong nhiều nghiên cứu, ảnh hưởng của một biến độc lập lên
 
 Sự hiện diện của tương tác làm cho việc diễn giải các hệ số hồi quy trở nên phức tạp hơn đáng kể. Trong nhiều trường hợp, việc tập trung vào từng hệ số riêng lẻ không còn cung cấp thông tin có ý nghĩa về mặt lâm sàng vì ảnh hưởng của một biến thay đổi theo giá trị của biến còn lại. Do đó, thay vì diễn giải trực tiếp các hệ số hồi quy, cách tiếp cận phù hợp hơn là tính xác suất dự báo hoặc RRR tại các mức khác nhau của biến tương tác. Các kết quả này thường được trình bày dưới dạng bảng hoặc đồ thị để thể hiện trực quan cách mà ảnh hưởng của một yếu tố thay đổi giữa các nhóm đối tượng. Việc sử dụng Hình 2 hoặc Bảng 11 vì vậy giúp người đọc hiểu rõ hơn bản chất của mối tương tác so với việc chỉ xem xét các hệ số hồi quy riêng lẻ.
 
-Chẳng hạn, trong một nghiên cứu về lựa chọn phương pháp điều trị suy tim, ảnh hưởng của tuổi đến khả năng được chỉ định ghép tim có thể khác nhau giữa bệnh nhân có bệnh thận mạn và bệnh nhân không có bệnh thận mạn. Nếu thành phần tương tác giữa tuổi và bệnh thận mạn đạt ý nghĩa thống kê, điều đó cho thấy mối liên hệ giữa tuổi và quyết định điều trị không giống nhau ở hai nhóm bệnh nhân này. Trong trường hợp đó, việc báo cáo một hệ số chung của tuổi cho toàn bộ quần thể sẽ không phản ánh đúng bản chất của dữ liệu. Cách trình bày phù hợp hơn là ước tính và báo cáo xác suất dự báo hoặc RRR riêng cho nhóm có bệnh thận mạn và nhóm không có bệnh thận mạn, từ đó làm rõ mức độ khác biệt trong ảnh hưởng của tuổi đối với quyết định điều trị ở từng nhóm bệnh nhân.
+Chẳng hạn, trong một nghiên cứu về lựa chọn phương pháp điều trị suy [[Tim]], ảnh hưởng của tuổi đến khả năng được chỉ định ghép [[Tim]] có thể khác nhau giữa bệnh nhân có bệnh [[Thận]] mạn và bệnh nhân không có bệnh thận mạn. Nếu thành phần tương tác giữa tuổi và bệnh thận mạn đạt ý nghĩa thống kê, điều đó cho thấy mối liên hệ giữa tuổi và quyết định điều trị không giống nhau ở hai nhóm bệnh nhân này. Trong trường hợp đó, việc báo cáo một hệ số chung của tuổi cho toàn bộ quần thể sẽ không phản ánh đúng bản chất của dữ liệu. Cách trình bày phù hợp hơn là ước tính và báo cáo xác suất dự báo hoặc RRR riêng cho nhóm có bệnh thận mạn và nhóm không có bệnh thận mạn, từ đó làm rõ mức độ khác biệt trong ảnh hưởng của tuổi đối với quyết định điều trị ở từng nhóm bệnh nhân.
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟏𝟎. 𝐃𝐢𝐞̂̃𝐧 𝐠𝐢𝐚̉𝐢 𝐛𝐢𝐞̂́𝐧 𝐥𝐢𝐞̂𝐧 𝐭𝐮̣𝐜 𝐯𝐚̀ 𝐛𝐢𝐞̂́𝐧 đ𝐢̣𝐧𝐡 𝐭𝐢́𝐧𝐡
 
-Một nghiên cứu về lựa chọn phương pháp điều trị ung thư gan xây dựng mô hình hồi quy logistic đa thức với tuổi, giới tính, nồng độ α-fetoprotein và giai đoạn bệnh là các biến giải thích.
+Một nghiên cứu về lựa chọn phương pháp điều trị ung thư [[Gan]] xây dựng mô hình hồi quy logistic đa thức với tuổi, giới tính, nồng độ α-fetoprotein và giai đoạn bệnh là các biến giải thích.
 
 Kết quả cho thấy tuổi được chuẩn hóa theo mỗi 10 năm trước khi đưa vào mô hình. Đối với nhóm điều trị toàn thân so với nhóm phẫu thuật, RRR của tuổi bằng 1,24. Điều này được diễn giải rằng, sau khi đã hiệu chỉnh các yếu tố khác, cứ tăng thêm 10 tuổi thì tỷ số xác suất lựa chọn điều trị toàn thân so với phẫu thuật tăng 24%.
 

@@ -1,3 +1,13 @@
+---
+title: "BYT_Sởi_2025 (P2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC: PHÁC ĐỒ ĐIỀU TRỊ, CHĂM SÓC VÀ PHÒNG NGỪA BỆNH SỞI (PHẦN 2)
 
 ---
@@ -9,7 +19,7 @@
 - **Phân loại và cách ly:** Tiến hành điều trị dựa trên việc phân loại và sàng lọc người bệnh Sởi hoặc nghi ngờ Sởi. **Bắt buộc cách ly ca bệnh ngay khi nghi ngờ mắc Sởi** để tránh lây nhiễm chéo.
 - **Bổ sung Vitamin A:** Cho người bệnh **uống Vitamin A liều cao** ngay khi chẩn đoán.
 - **Điều trị hỗ trợ:** Tập trung vào **điều trị triệu chứng, phát hiện và xử trí sớm các biến chứng** kết hợp với **đảm bảo chế độ dinh dưỡng đầy đủ**.
-- **Chống chỉ định quan trọng:** **Không tự ý sử dụng Corticoid đường toàn thân** cho người bệnh khi chưa loại trừ hoàn toàn bệnh Sởi.
+- **Chống chỉ định quan trọng:** **Không tự ý sử dụng [[Corticoid]] đường toàn thân** cho người bệnh khi chưa loại trừ hoàn toàn bệnh Sởi.
 
 ### Phác Đồ Điều Trị Bệnh Sởi Không Biến Chứng (Ngoại Trú)
 
@@ -35,36 +45,36 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán và điều trị bệnh S�
 ---
 
 - **Điều trị triệu chứng và nâng đỡ:**
-    - **Hạ sốt:** Khi người bệnh sốt cao \(\ge 38,5^\circ\text{C}\), sử dụng **Paracetamol** uống hoặc nhét hậu môn với liều **10 - 15 mg/kg mỗi 4 - 6 giờ** (tối đa 4 lần/ngày) hoặc dùng **Ibuprofen** uống với liều **5 - 10 mg/kg/lần** (tối đa 3 lần/ngày).
-    - **Sốt co giật:** Tiến hành lau mát tích cực tại **03 vị trí ấm: trán, 02 bên nách và 02 bên bẹn** để hỗ trợ hạ thân nhiệt nhanh.
+    - **Hạ [[Sốt]]:** Khi người bệnh [[Sốt|sốt cao]] \(\ge 38,5^\circ\text{C}\), sử dụng **[[Paracetamol]]** uống hoặc nhét hậu môn với liều **10 - 15 mg/kg mỗi 4 - 6 giờ** (tối đa 4 lần/ngày) hoặc dùng **Ibuprofen** uống với liều **5 - 10 mg/kg/lần** (tối đa 3 lần/ngày).
+    - **Sốt [[Co giật]]:** Tiến hành lau mát tích cực tại **03 vị trí ấm: trán, 02 bên nách và 02 bên bẹn** để hỗ trợ hạ thân nhiệt nhanh.
     - **Vệ sinh:** Chú ý giữ vệ sinh sạch sẽ vùng da, mắt, mũi, miệng hằng ngày.
-    - **Dinh dưỡng:** Bảo đảm chế độ ăn đầy đủ dinh dưỡng phù hợp theo lứa tuổi, khuyến khích trẻ tiếp tục bú mẹ.
+    - **Dinh dưỡng:** Bảo đảm chế độ ăn đầy đủ dinh dưỡng [[Phù]] hợp theo lứa tuổi, khuyến khích trẻ tiếp tục bú mẹ.
 - **Tái khám và theo dõi:**
     - Người bệnh cần được tái khám định kỳ **mỗi 2 - 3 ngày** cho đến khi cắt sốt hoàn toàn.
     - **BẮT BUỘC NHẬP VIỆN NGAY** nếu người bệnh xuất hiện ít nhất một trong các **dấu hiệu cảnh báo nặng** sau:
         1. Không ăn uống được hoặc trẻ bỏ bú.
-        2. Nôn ói tất cả mọi thứ sau khi ăn uống.
+        2. [[[[Nôn ói|Nôn]] ói]] tất cả mọi thứ sau khi ăn uống.
         3. Xuất hiện tình trạng tím tái.
-        4. Thở nhanh, thở gắng sức.
-        5. Xuất hiện rối loạn tri giác (lờ đờ, lơ mơ, co giật...).
+        4. [[[[Khó thở]]|Thở nhanh]], thở gắng sức.
+        5. Xuất hiện [[[[Hôn mê]]|rối loạn tri giác]] (lờ đờ, lơ mơ, [[Co giật]]...).
 
 ### Phác Đồ Điều Trị Bệnh Sởi Có Biến Chứng (Nội Trú)
 
 Tất cả các ca bệnh Sởi có biến chứng bắt buộc phải nhập viện điều trị tại **khu vực cách ly chuyên biệt** của cơ sở y tế và tuân thủ nghiêm ngặt các hướng dẫn phòng ngừa chuẩn.
 
 - **Xử trí biến chứng Tai - Mắt - Miệng:**
-    - **Viêm tai giữa cấp:** Tiến hành rửa tai và làm khô tai hằng ngày nếu có chảy mủ; dùng thuốc giảm đau hạ sốt Paracetamol/Ibuprofen; kháng sinh ban đầu ưu tiên lựa chọn **Amoxicillin** hoặc **Amoxicillin-acid clavulanic** đường uống.
-    - **Viêm kết mạc mủ:** Thực hiện rửa mắt hoặc lau sạch dịch mủ bằng dung dịch **Natriclorua 0,9%**; nhỏ mắt bằng kháng sinh **Chloramphenicol** hoặc **Tobramycin**.
-    - **Viêm loét giác mạc:** Chuyển bệnh nhân khám và điều trị phối hợp chuyên khoa mắt. Chỉ định kháng sinh toàn thân đường uống (**Amoxicillin-acid clavulanic**) hoặc đường tĩnh mạch (**Cefotaxim** hoặc **Ceftriaxon**). Nhỏ mắt hoặc tra mắt bằng kháng sinh phổ rộng: **Ciprofloxacin**, **Ofloxacin** hoặc **Levofloxacin**. **CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI:** Không sử dụng bất kỳ chế phẩm nhỏ mắt nào có chứa thành phần Corticoid.
+    - **Viêm tai giữa cấp:** Tiến hành rửa tai và làm khô tai hằng ngày nếu có chảy mủ; dùng thuốc giảm đau hạ sốt [[Paracetamol]]/Ibuprofen; [[Kháng sinh]] ban đầu ưu tiên lựa chọn **Amoxicillin** hoặc **Amoxicillin-acid clavulanic** đường uống.
+    - **Viêm kết mạc mủ:** Thực hiện rửa mắt hoặc lau sạch dịch mủ bằng dung dịch **Natriclorua 0,9%**; nhỏ mắt bằng [[Kháng sinh]] **Chloramphenicol** hoặc **Tobramycin**.
+    - **Viêm loét giác mạc:** Chuyển bệnh nhân khám và điều trị phối hợp chuyên khoa mắt. Chỉ định kháng sinh toàn thân đường uống (**Amoxicillin-acid clavulanic**) hoặc đường tĩnh mạch (**Cefotaxim** hoặc **Ceftriaxon**). Nhỏ mắt hoặc tra mắt bằng kháng sinh phổ rộng: **Ciprofloxacin**, **Ofloxacin** hoặc **Levofloxacin**. **CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI:** Không sử dụng bất kỳ chế phẩm nhỏ mắt nào có chứa thành phần [[Corticoid]].
     - **Viêm loét miệng:** Súc miệng và vệ sinh khoang miệng bằng Natriclorua 0,9%, đánh răng sau ăn (ít nhất 4 lần/ngày). Cho ăn thức ăn nguội, lỏng để tránh gây đau đớn. Nếu có loét miệng sâu, dùng **Amoxicillin** uống phối hợp với **Metronidazol** uống (liều 7,5 mg/kg/lần, ngày 3 lần, trong 5 ngày). Nếu đồng nhiễm nấm Candida miệng, chỉ định dùng **Nystatin** uống trong 7 ngày.
 - **Xử trí biến chứng Hô hấp:**
-    - **Viêm thanh khí phế quản (Croup):** Hỗ trợ hô hấp tùy theo mức độ suy hô hấp; chỉ định **khí dung Adrenalin** khi có biểu hiện co thắt, phù nề thanh khí quản; kết hợp phun khí dung Corticoid.
-    - **Viêm phổi bội nhiễm:**
+    - **Viêm thanh khí phế quản (Croup):** Hỗ trợ hô hấp tùy theo mức độ [[Suy hô hấp]]; chỉ định **khí dung Adrenalin** khi có biểu hiện co thắt, [[Phù]] nề thanh khí quản; kết hợp phun khí dung Corticoid.
+    - **Viêm [[Phổi]] bội nhiễm:**
         - _Tác nhân thường gặp:_ Phế cầu, _Hemophilus influenzae_, Tụ cầu.
         - _Hỗ Trợ Hô Hấp Bậc Thang:_ Cho thở oxy gọng kính (cannula) nhằm duy trì mục tiêu SpO2 \(\ge\) 94%. Nếu thất bại, chuyển sang thở áp lực dương liên tục qua mũi (**NCPAP**) hoặc thở máy dòng cao (**HFNC**). Trường hợp thất bại với các biện pháp trên, tiến hành đặt ống nội khí quản và thở máy xâm nhập.
         - _Phác đồ kháng sinh ban đầu:_ Sử dụng **Amoxicillin-acid clavulanic** (đường uống) hoặc **Cefotaxim/Ceftriaxon** (đường tĩnh mạch). Nếu người bệnh thất bại với oxy gọng kính, tiến hành phối hợp thêm **Oxacillin/Cloxacillin** tĩnh mạch (nếu nghi ngờ tụ cầu nhạy methicillin - MSSA) hoặc dùng **Vancomycin** tĩnh mạch (nếu nghi ngờ tụ cầu kháng methicillin - MRSA).
         - _Điều chỉnh kháng sinh sau 48 giờ không đáp ứng:_ Phối hợp Cefotaxim hoặc Ceftriaxon với Vancomycin; HOẶC dùng các kháng sinh phổ rộng (**Ceftazidim**, **Cefepim**, **Levofloxacin**, **Imipenem** hoặc **Meropenem**) phối hợp với Vancomycin/Linezolid (nếu trước đó đã dùng Vancomycin).
-        - _Đối với viêm phổi bệnh viện do vi khuẩn đa kháng (Pseudomonas, Acinetobacter, ESBL+):_ Kháng sinh ban đầu dùng Ceftazidim, Cefepim, Imipenem, Meropenem hoặc Piperacillin/Tazobactam phối hợp với nhóm Aminoglycosid (**Amikacin** hoặc **Tobramycin**). Phối hợp thêm Vancomycin nếu nghi MRSA. Sau 48 giờ nếu lâm sàng xấu đi, cân nhắc phối hợp thêm **Colistin** (khi nghi ngờ do _Acinetobacter baumannii_) hoặc chuyển sang **Linezolid** (nếu đã dùng Vancomycin trước đó).
+        - _Đối với viêm [[Phổi]] bệnh viện do vi khuẩn đa kháng (Pseudomonas, Acinetobacter, ESBL+):_ Kháng sinh ban đầu dùng Ceftazidim, Cefepim, Imipenem, Meropenem hoặc Piperacillin/Tazobactam phối hợp với nhóm Aminoglycosid (**Amikacin** hoặc **Tobramycin**). Phối hợp thêm Vancomycin nếu nghi MRSA. Sau 48 giờ nếu lâm sàng xấu đi, cân nhắc phối hợp thêm **Colistin** (khi nghi ngờ do _Acinetobacter baumannii_) hoặc chuyển sang **Linezolid** (nếu đã dùng Vancomycin trước đó).
         - _Hồi sức nâng cao:_ Chỉ định truyền **IVIG** tĩnh mạch cho trường hợp viêm phổi nặng tiến triển nhanh thành ARDS (PaO2/FiO2 < 300). Chỉ định **ECMO** khi hồi sức hô hấp thất bại kèm theo suy tuần hoàn và suy đa tạng.
 
 ---

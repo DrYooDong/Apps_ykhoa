@@ -1,3 +1,15 @@
+---
+title: "BYT_Bệnh thận đái tháo đường_2025 (P2)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/noi-tiet
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 # TÓM TẮT HƯỚNG DẪN BỘ Y TẾ (PHẦN 2)
 
 _Văn bản gốc: "Hướng dẫn chẩn đoán và điều trị bệnh thần kinh đái tháo đường" (Ban hành kèm theo Quyết định số 3510/QĐ-BYT ngày 11 tháng 11 năm 2025 của Bộ trưởng Bộ Y tế)_

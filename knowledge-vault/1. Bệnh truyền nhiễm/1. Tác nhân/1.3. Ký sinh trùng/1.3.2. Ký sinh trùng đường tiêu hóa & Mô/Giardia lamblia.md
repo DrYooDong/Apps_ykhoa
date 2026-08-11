@@ -1,8 +1,12 @@
 ---
 title: "Giardia lamblia (Giardia duodenalis)"
+type: pathogen
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Ký sinh trùng", "Đơn bào", "Giardia", "Tiêu hóa"]
-last_updated: "2026-08-02"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 # GIARDIA LAMBLIA (GIARDIA DUODENALIS / INTESTINALIS)
@@ -18,13 +22,13 @@ last_updated: "2026-08-02"
 ## 2. CHU TRÌNH PHÁT TRIỂN & SINH LÝ BỆNH
 *   Bào nang (Cyst) đi qua dạ dày nhờ vách dày kháng acid, vào tá tràng nở ra giải phóng 2 thể hoạt động (Trophozoites).
 *   Thể hoạt động có hình quả lê khuyết với 2 nhân và đĩa hút (Ventral sucking disk) bám chặt vào vi nhung mao niêm mạc tá tràng và hỗng tràng.
-*   *Cơ chế gây bệnh:* Sự bao phủ niêm mạc của Giardia gây tổn thương vi nhung mao, giảm các enzyme disaccharidase (đặc biệt lactase) gây **kém hấp thu chất béo và lactose**, dẫn đến tiêu chảy mỡ (steatorrhea).
+*   *Cơ chế gây bệnh:* Sự bao phủ niêm mạc của Giardia gây tổn thương vi nhung mao, giảm các enzyme disaccharidase (đặc biệt lactase) gây **kém hấp thu chất béo và lactose**, dẫn đến [[Tiêu chảy]] mỡ (steatorrhea).
 
 ---
 
 ## 3. LÂM SÀNG & CHẨN ĐOÁN
 *   **Triệu chứng:**
-    *   Tiêu chảy nước, phân sống, có bọt, mùi hôi nồng đặc trưng, có vệt mỡ nổi (không có máu/nhầy).
+    *   [[Tiêu chảy]] nước, phân sống, có bọt, mùi hôi nồng đặc trưng, có vệt mỡ nổi (không có máu/nhầy).
     *   Đầy hơi, ợ hơi mùi trứng thối ($H_2S$), chướng bụng, đau quặn bụng vùng thượng vị/quanh rốn.
     *   Sụt cân, mệt mỏi, tiêu chảy kéo dài mạn tính.
 *   **Chẩn đoán:**

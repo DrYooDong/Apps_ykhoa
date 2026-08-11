@@ -1,6 +1,11 @@
 ---
+title: "Nhóm ức chế enzyme sao chép ngược Nucleoside (NRTIs)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 ### 1. Tổng quan & Phân loại (Classification)
@@ -38,16 +43,16 @@ tags:
 ### 6. An toàn thuốc (ADRs & Contraindications)
 
 - **Độc tính ty thể (Mitochondrial toxicity):** Các NRTIs, đặc biệt là các thế hệ cũ, có thể gây nhiễu loạn sinh lý của tế bào vật chủ, dẫn đến độc tính ty thể.
-- **Độc tính trên thận (Nephrotoxicity):** Nồng độ Tenofovir cao trong huyết tương có liên quan mật thiết đến việc gia tăng rủi ro độc tính trên thận.
+- **Độc tính trên [[Thận]] (Nephrotoxicity):** Nồng độ Tenofovir cao trong huyết tương có liên quan mật thiết đến việc gia tăng rủi ro độc tính trên [[Thận]].
 - **Tối ưu hóa an toàn với TAF:** Dạng tiền thuốc mới Tenofovir alafenamide (TAF) giúp giảm rủi ro độc tính trên thận bằng cách tối đa hóa sự hấp thu trực tiếp vào tế bào (nơi thuốc phát huy tác dụng), qua đó giảm phơi nhiễm thuốc trong huyết tương và thay đổi phân bố sinh học so với TDF.
-- **Tương tác thuốc:** Tenofovir alafenamide có thể bị ảnh hưởng khi phối hợp với các thuốc nhóm Rifamycin (ví dụ: Rifampin, Rifabutin - là các chất cảm ứng men gan).
-- **Tiêu hóa:** Tiêu chảy là một trong những tác dụng phụ thường gặp với các thuốc kháng retrovirus thế hệ cũ.
+- **Tương tác thuốc:** Tenofovir alafenamide có thể bị ảnh hưởng khi phối hợp với các thuốc nhóm Rifamycin (ví dụ: Rifampin, Rifabutin - là các chất cảm ứng men [[Gan]]).
+- **Tiêu hóa:** [[Tiêu chảy]] là một trong những tác dụng phụ thường gặp với các thuốc kháng retrovirus thế hệ cũ.
 
 ### 7. Theo dõi & Giám sát (Monitoring)
 
 - **Giám sát tải lượng virus:** Đánh giá sự sụt giảm nồng độ HIV-1 RNA trong máu để đo lường hiệu quả điều trị và tuân thủ thuốc.
 - **Theo dõi chức năng thận:** Đối với bệnh nhân sử dụng Tenofovir disoproxil fumarate (TDF), cần phải giám sát chặt chẽ chức năng thận do nguy cơ độc tính.
-- **Giám sát nồng độ thuốc (TDM):** Đối với NRTIs, việc giám sát nồng độ thuốc trong huyết tương ít mang lại giá trị trực tiếp để hướng dẫn liều dùng do thuốc có tác dụng ở dạng chuyển hóa bên trong tế bào bạch cầu CD4+.
+- **Giám sát nồng độ thuốc (TDM):** Đối với NRTIs, việc giám sát nồng độ thuốc trong huyết tương ít mang lại giá trị trực tiếp để hướng dẫn liều dùng do thuốc có tác dụng ở dạng chuyển hóa bên trong tế bào [[Bạch cầu]] CD4+.
 
 ### 8. Bảng kiểm lâm sàng nhanh (Quick Checklist)
 

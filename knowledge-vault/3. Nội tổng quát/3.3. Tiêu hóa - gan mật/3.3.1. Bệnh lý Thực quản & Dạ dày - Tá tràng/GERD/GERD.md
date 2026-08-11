@@ -1,6 +1,11 @@
 ---
 title: "GERD"
-specialty: "Tiêu hóa - gan mật"
-tags: ["Nội tổng quát", "Tiêu hóa - gan mật", "Bệnh lý cụ thể", "GERD"]
-last_updated: "2026-07-28"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
 ---
+

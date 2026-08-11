@@ -1,3 +1,13 @@
+---
+title: "BYT_Ebola_2026 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC: CHẨN ĐOÁN, ĐIỀU TRỊ VÀ PHÒNG LÂY NHIỄM BỆNH DO VI RÚT EBOLA (PHẦN 1)
 
 ---
@@ -6,7 +16,7 @@
 
 ### Đại Cương và Phân Loại Vi rút Ebola
 
-- **Lịch sử phát hiện:** Bệnh do vi rút Ebola được phát hiện lần đầu tiên vào năm 1976 tại Cộng hoà Dân chủ Công-gô, gần sông Ebola (trước đây bệnh thường được gọi là sốt xuất huyết Ebola). Đây là một bệnh truyền nhiễm cấp tính nguy hiểm và có khả năng bùng phát thành các dịch lớn.
+- **Lịch sử phát hiện:** Bệnh do vi rút Ebola được phát hiện lần đầu tiên vào năm 1976 tại Cộng hoà Dân chủ Công-gô, gần sông Ebola (trước đây bệnh thường được gọi là [[Sốt]] [[Xuất huyết]] Ebola). Đây là một bệnh truyền nhiễm cấp tính nguy hiểm và có khả năng bùng phát thành các dịch lớn.
 - **Phân loại vi học:** Vi rút Ebola là một trong ba chi thuộc họ _Filoviridae_ (họ filovirus), bên cạnh hai chi khác là _Marburgvirus_ và _Cuevavirus_. Chi _Ebolavirus_ hiện được xác định bao gồm 6 loài khác nhau:
     - _Zaire ebolavirus_ (vi rút Ebola - EBOV): Đây là loài duy nhất tính đến nay đã có vắc xin phòng ngừa và liệu pháp kháng thể đơn dòng điều trị đặc hiệu.
     - _Sudan ebolavirus_ (vi rút Sudan - SUDV).
@@ -18,7 +28,7 @@
 ### Cơ Chế Lây Truyền và Đối Tượng Nguy Cơ
 
 - **Đường lây truyền:** Vi rút Ebola lây truyền chủ yếu do việc tiếp xúc trực tiếp với mô, máu và dịch cơ thể (bao gồm phân, nước tiểu, nước bọt, tinh dịch) của động vật hoặc người bị nhiễm bệnh. Ngoài ra, vi rút cũng có thể lây truyền gián tiếp khi tiếp xúc với các đồ dùng bị ô nhiễm của người bệnh như quần áo, chăn màn, hoặc kim tiêm đã qua sử dụng.
-- **Đặc điểm bệnh học:** Bệnh có biểu hiện lâm sàng rất nghiêm trọng, thường đặc trưng bởi hội chứng xuất huyết dữ dội kèm theo tình trạng suy đa tạng. Tỉ lệ tử vong trung bình của bệnh là khoảng 50%, dao động cực kỳ rộng từ 25% đến 90% tùy theo đợt dịch và điều kiện y tế.
+- **Đặc điểm bệnh học:** Bệnh có biểu hiện lâm sàng rất nghiêm trọng, thường đặc trưng bởi hội chứng [[Xuất huyết]] dữ dội kèm theo tình trạng suy đa tạng. Tỉ lệ tử vong trung bình của bệnh là khoảng 50%, dao động cực kỳ rộng từ 25% đến 90% tùy theo đợt dịch và điều kiện y tế.
 - **Đối tượng có nguy cơ mắc bệnh cao:**
     - Thợ săn, người sinh sống hoặc hoạt động trong rừng có tiếp xúc trực tiếp với động vật hoang dã bị ốm hoặc chết do nhiễm vi rút Ebola (như tinh tinh, vượn người, khỉ rừng, linh dương, nhím, dơi ăn quả…).
     - Những người tiếp xúc trực tiếp với máu, dịch cơ thể, đồ dùng sinh hoạt của người bệnh hoặc thi thể của người tử vong do Ebola.
@@ -30,8 +40,8 @@
 - **Triệu chứng khởi phát và toàn thân:**
     - Mệt mỏi rã rời.
     - Đau đầu dữ dội, đau mỏi cơ khớp toàn thân, đau họng.
-    - Nôn và buồn nôn.
-    - Tiêu chảy cấp, đau bụng âm ỉ hoặc quặn thắt.
+    - Nôn và [[Nôn ói|buồn nôn]].
+    - [[Tiêu chảy]] cấp, [[Đau bụng]] âm ỉ hoặc quặn thắt.
     - Viêm kết mạc mắt.
 - **Phát ban:** Ban đầu xuất hiện dưới dạng các ban nhú đỏ sẫm màu như đinh ghim tập trung chủ yếu ở các nang lông. Sau đó, tổn thương tiến triển thành các ban dát sẩn có ranh giới rõ ràng và cuối cùng hợp lại thành các mảng ban lan tỏa toàn thân (thường xảy ra trong tuần đầu tiên của bệnh).
 - **Triệu chứng xuất huyết và biến chứng nặng:**
@@ -40,7 +50,7 @@
     - Ho ra máu, chảy máu chân răng.
     - Đái ra máu.
     - Chảy máu âm đạo bất thường ở phụ nữ.
-    - Tiến triển nặng dẫn đến sốc và suy đa tạng nhanh chóng (đặc biệt là suy gan, suy thận...).
+    - Tiến triển nặng dẫn đến [[Sốc]] và suy đa tạng nhanh chóng (đặc biệt là suy [[Gan]], suy [[Thận]]...).
 
 ### Xét Nghiệm Cận Lâm Sàng
 
@@ -49,15 +59,15 @@
     - _RT-PCR (Tiêu chuẩn vàng):_ Được sử dụng để khẳng định chắc chắn ca bệnh do vi rút Ebola.
     - _Giải trình tự gen và nuôi cấy vi rút:_ Chỉ được thực hiện tại các phòng xét nghiệm đạt tiêu chuẩn an toàn sinh học cấp III và cấp IV. _(Quá trình lấy mẫu, bảo quản và vận chuyển mẫu bệnh phẩm phải tuân thủ nghiêm ngặt Hướng dẫn giám sát, phòng, chống bệnh do vi rút Ebola của Bộ Y tế)_.
 - **Các xét nghiệm hỗ trợ và đánh giá cơ quan:**
-    - _Tổng phân tích tế bào máu:_ Thường ghi nhận tình trạng giảm bạch cầu và giảm tiểu cầu nghiêm trọng.
-    - _Hóa sinh máu:_ Tăng rõ rệt nồng độ men gan AST, ALT. Creatinin và ure máu tăng dần trong giai đoạn tiến triển, phản ánh tình trạng suy thận cấp.
+    - _Tổng phân tích tế bào máu:_ Thường ghi nhận tình trạng giảm [[Bạch cầu]] và giảm [[Tiểu cầu]] nghiêm trọng.
+    - _Hóa sinh máu:_ Tăng rõ rệt nồng độ men [[Gan]] AST, ALT. Creatinin và ure máu tăng dần trong giai đoạn tiến triển, phản ánh tình trạng suy [[Thận]] cấp.
     - _Đông máu:_ Rối loạn đông máu nội mạch rải rác (DIC).
     - _Xét nghiệm nước tiểu:_ Xuất hiện protein niệu.
-    - _Xét nghiệm khác:_ Đo CRP, Pro-calcitonin, nuôi cấy máu/dịch tìm vi khuẩn để chẩn đoán phân biệt và phát hiện tình trạng nhiễm trùng thứ phát. Thực hiện chẩn đoán hình ảnh để đánh giá tổn thương tạng tùy lâm sàng.
+    - _Xét nghiệm khác:_ Đo [[CRP]], Pro-calcitonin, nuôi cấy máu/dịch tìm vi khuẩn để chẩn đoán phân biệt và phát hiện tình trạng nhiễm trùng thứ phát. Thực hiện chẩn đoán hình ảnh để đánh giá tổn thương tạng tùy lâm sàng.
 
 ### Tiêu Chuẩn Chẩn Đoán và Chẩn Đoán Phân Biệt
 
-- **Ca bệnh nghi ngờ:** Là ca bệnh xuất hiện triệu chứng sốt cấp tính \(\ge 38^\circ\text{C}\) kèm theo ít nhất một trong các biểu hiện lâm sàng sau: đau đầu, nôn/tiêu chảy, đau bụng, xuất huyết không giải thích được nguyên nhân. **ĐỒNG THỜI** có yếu tố dịch tễ rõ ràng trong vòng 21 ngày trước khi khởi phát triệu chứng:
+- **Ca bệnh nghi ngờ:** Là ca bệnh xuất hiện triệu chứng [[Sốt]] cấp tính \(\ge 38^\circ\text{C}\) kèm theo ít nhất một trong các biểu hiện lâm sàng sau: đau đầu, nôn/tiêu chảy, [[Đau bụng]], xuất huyết không giải thích được nguyên nhân. **ĐỒNG THỜI** có yếu tố dịch tễ rõ ràng trong vòng 21 ngày trước khi khởi phát triệu chứng:
     - Có tiếp xúc trực tiếp với máu, dịch cơ thể hoặc đồ dùng cá nhân của người bệnh đã được xác định hoặc nghi ngờ nhiễm vi rút Ebola; HOẶC
     - Trở về từ vùng có dịch bệnh do vi rút Ebola đang lưu hành; HOẶC
     - Trực tiếp tiếp xúc, xử lý động vật bị ốm hoặc chết do vi rút Ebola.
@@ -66,8 +76,8 @@
     - Sốt rét.
     - Sốt xuất huyết Dengue.
     - Bệnh nhiễm khuẩn do liên cầu lợn (_Streptococcus suis_).
-    - Nhiễm trùng huyết do não mô cầu.
-    - Nhiễm khuẩn huyết và sốc nhiễm khuẩn nói chung.
+    - [[Nhiễm trùng huyết]] do não mô cầu.
+    - [[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] và [[[[Sốc]] nhiễm khuẩn]] nói chung.
     - Bệnh Leptospirosis.
 
 ### Nguyên Tắc và Phác Đồ Điều Trị Hỗ Trợ
@@ -83,12 +93,12 @@
 
 |Triệu chứng lâm sàng|Phương pháp xử trí cụ thể|
 |:--|:--|
-|**Sốt, đau**|- Hạ sốt bằng **Paracetamol**: Liều 10-15mg/kg mỗi 4-6 giờ, tối đa không quá 60mg/kg/ngày.- Giảm đau bằng **Paracetamol** (nếu đau nhẹ) hoặc **Morphin** (nếu đau trung bình đến nặng).- **CHỐNG CHỈ ĐỊNH:** Tuyệt đối tránh dùng các thuốc nhóm NSAIDs (như Diclofenac, Ibuprofen,...) hoặc các thuốc nhóm Salicylate vì chúng làm trầm trọng thêm tình trạng rối loạn đông máu.|
-|**Tiêu chảy, nôn, có dấu hiệu mất nước**|- Cho uống dung dịch **Oresol** ngay cả khi chưa xuất hiện dấu hiệu mất nước rõ trên lâm sàng.- Theo dõi sát các dấu hiệu mất nước để bù dịch kịp thời theo phác đồ.- **Xử trí buồn nôn và nôn:** Sử dụng thuốc chống nôn giúp kiểm soát triệu chứng để người bệnh có thể uống được Oresol: + _Người lớn:_ Sử dụng **Chlorpromazine** 25-50mg tiêm bắp 4 lần/ngày hoặc **Metoclopramide** 10mg tiêm tĩnh mạch/uống 3 lần/ngày cho đến khi hết nôn. + _Trẻ em trên 2 tuổi:_ Dùng **Promethazine**, lưu ý theo dõi sát các phản ứng ngoại tháp.|
-|**Co giật**|- **Cắt cơn giật cấp tính:** Dùng **Diazepam** (Người lớn: 20mg; Trẻ em: 0,1-0,3mg/kg) tiêm tĩnh mạch chậm.- **Khống chế và dự phòng tái phát:** Dùng **Phenobarbital** (Người lớn: 10mg/kg; Trẻ em: 10-15mg/kg) pha truyền tĩnh mạch chậm trong vòng 15 phút.|
-|**Mất máu cấp hoặc sốc giảm thể tích**|- Chỉ định truyền máu toàn phần và các chế phẩm của máu phù hợp.|
+|**Sốt, đau**|- Hạ sốt bằng **[[Paracetamol]]**: Liều 10-15mg/kg mỗi 4-6 giờ, tối đa không quá 60mg/kg/ngày.- Giảm đau bằng **[[Paracetamol]]** (nếu đau nhẹ) hoặc **Morphin** (nếu đau trung bình đến nặng).- **CHỐNG CHỈ ĐỊNH:** Tuyệt đối tránh dùng các thuốc nhóm NSAIDs (như Diclofenac, Ibuprofen,...) hoặc các thuốc nhóm Salicylate vì chúng làm trầm trọng thêm tình trạng rối loạn đông máu.|
+|**Tiêu chảy, nôn, có dấu hiệu [[Mất nước]]**|- Cho uống dung dịch **[[Oresol]]** ngay cả khi chưa xuất hiện dấu hiệu [[Mất nước]] rõ trên lâm sàng.- Theo dõi sát các dấu hiệu mất nước để bù dịch kịp thời theo phác đồ.- **Xử trí [[Nôn ói|buồn nôn]] và nôn:** Sử dụng thuốc chống nôn giúp kiểm soát triệu chứng để người bệnh có thể uống được [[Oresol]]: + _Người lớn:_ Sử dụng **Chlorpromazine** 25-50mg tiêm bắp 4 lần/ngày hoặc **Metoclopramide** 10mg tiêm tĩnh mạch/uống 3 lần/ngày cho đến khi hết nôn. + _Trẻ em trên 2 tuổi:_ Dùng **Promethazine**, lưu ý theo dõi sát các phản ứng ngoại tháp.|
+|**[[Co giật]]**|- **Cắt cơn giật cấp tính:** Dùng **[[Diazepam]]** (Người lớn: 20mg; Trẻ em: 0,1-0,3mg/kg) tiêm tĩnh mạch chậm.- **Khống chế và dự phòng tái phát:** Dùng **Phenobarbital** (Người lớn: 10mg/kg; Trẻ em: 10-15mg/kg) pha truyền tĩnh mạch chậm trong vòng 15 phút.|
+|**Mất máu cấp hoặc sốc giảm thể tích**|- Chỉ định truyền máu toàn phần và các chế phẩm của máu [[Phù]] hợp.|
 |**Sốc, suy đa tạng**|- Tiến hành điều trị tích cực tại khoa hồi sức: Đảm bảo thể tích tuần hoàn tối ưu, duy trì huyết áp ổn định, dùng thuốc lợi tiểu, hỗ trợ các tạng bị suy (hỗ trợ hô hấp bằng oxy hoặc thở máy, lọc máu liên tục, thực hiện ECMO khi có chỉ định chuyên biệt).|
-|**Nhiễm trùng thứ phát**|- Sử dụng kháng sinh phổ rộng phù hợp ngay khi nghi ngờ hoặc có bằng chứng xác định tình trạng bội nhiễm vi khuẩn.|
+|**Nhiễm trùng thứ phát**|- Sử dụng [[Kháng sinh]] phổ rộng [[Phù]] hợp ngay khi nghi ngờ hoặc có bằng chứng xác định tình trạng bội nhiễm vi khuẩn.|
 |**Đồng nhiễm ở vùng dịch tễ**|- Điều trị đặc hiệu sốt rét nếu có bằng chứng xét nghiệm/ký sinh trùng học.|
 |**Điều trị hỗ trợ khác**|- **Dinh dưỡng:** Cung cấp đầy đủ năng lượng, khuyến khích người bệnh ăn sớm bằng đường miệng; tiến hành hỗ trợ dinh dưỡng qua đường tĩnh mạch nếu bệnh nhân không thể ăn uống được.- **Tâm lý:** Hỗ trợ liệu pháp tâm lý tích cực cho người bệnh và người nhà.- Theo dõi sát sao mọi diễn biến lâm sàng để kịp thời điều chỉnh kế hoạch chăm sóc.|
 
@@ -108,9 +118,9 @@
 |**Thành phần hoạt chất**|Phối hợp giữa **Atoltivimab**, **Maftivimab** và **Odesivimab-ebgn**.|**Ansuvimab-zykl**.|
 |**Chỉ định điều trị**|Điều trị nhiễm loài _Zaire ebolavirus_ ở người lớn và trẻ em (bao gồm cả trẻ sơ sinh được sinh ra từ những người mẹ có xét nghiệm RT-PCR dương tính với _Zaire ebolavirus_).|Điều trị nhiễm loài _Zaire ebolavirus_ ở người lớn và trẻ em (bao gồm cả trẻ sơ sinh được sinh ra từ những người mẹ có xét nghiệm RT-PCR dương tính với _Zaire ebolavirus_).|
 |**Liều dùng & Đường dùng**|Liều **50 mg/kg** cho mỗi loại kháng thể trong hỗn hợp (tương đương với 50 mg/kg atoltivimab, 50 mg/kg maftivimab và 50 mg/kg odesivimab).**Truyền tĩnh mạch liều duy nhất.**|Liều **50 mg/kg** hoạt chất.**Truyền tĩnh mạch liều duy nhất.**|
-|**Tác dụng phụ thường gặp (ADRs)**|Sốt, ớn lạnh, nhịp tim nhanh, nhịp thở nhanh, nôn mửa.|Sốt, nhịp tim nhanh, tiêu chảy, nôn mửa, hạ huyết áp, thở nhanh, ớn lạnh.|
+|**Tác dụng phụ thường gặp (ADRs)**|Sốt, ớn lạnh, nhịp [[Tim]] nhanh, nhịp [[Khó thở|thở nhanh]], nôn mửa.|Sốt, nhịp [[Tim]] nhanh, tiêu chảy, nôn mửa, hạ huyết áp, [[Khó thở|thở nhanh]], ớn lạnh.|
 |**Chống chỉ định**|**Không có chống chỉ định** (do tỷ lệ tử vong của bệnh lý này cực kỳ cao, lợi ích cứu sống tính mạng vượt trội hơn mọi rủi ro có thể xảy ra)._Lưu ý:_ Cần thận trọng và theo dõi sát phản ứng quá mẫn với thuốc.|**Không có chống chỉ định** (do tỷ lệ tử vong của bệnh lý này cực kỳ cao, lợi ích cứu sống tính mạng vượt trội hơn mọi rủi ro có thể xảy ra)._Lưu ý:_ Cần thận trọng và theo dõi sát phản ứng quá mẫn với thuốc.|
-|**Lưu ý lâm sàng quan trọng**|**Không sử dụng đồng thời** các liệu pháp kháng thể đơn dòng này với các loại vắc-xin sống giảm độc lực phòng bệnh Ebola (ví dụ như vắc-xin **Ervebo**).|**Không sử dụng đồng thời** các liệu pháp kháng thể đơn dòng này với các loại vắc-xin sống giảm độc lực phòng bệnh Ebola (ví dụ như vắc-xin **Ervebo**).|
+|**Lưu ý lâm sàng quan trọng**|**Không sử dụng đồng thời** các liệu pháp kháng thể đơn dòng này với các loại [[Vắc-xin]] sống giảm độc lực phòng bệnh Ebola (ví dụ như [[Vắc-xin]] **Ervebo**).|**Không sử dụng đồng thời** các liệu pháp kháng thể đơn dòng này với các loại vắc-xin sống giảm độc lực phòng bệnh Ebola (ví dụ như vắc-xin **Ervebo**).|
 
 ---
 
@@ -118,7 +128,7 @@
 
 - **Phụ nữ mang thai:** Đây là nhóm đối tượng có nguy cơ cực kỳ cao bị sảy thai, đẻ non hoặc chảy máu sau sinh dữ dội. Việc chỉ định thuốc co hồi tử cung (như oxytocin) và thực hiện các can thiệp cầm máu sau sinh cần phải tuân thủ nghiêm ngặt các hướng dẫn chuyên khoa để cứu sống người bệnh.
 - **Phụ nữ đang cho con bú:** Vi rút Ebola có khả năng bài tiết và lây truyền qua sữa mẹ, do đó **bắt buộc phải ngừng cho con bú** ngay lập tức. Khi nghi ngờ người mẹ nhiễm bệnh, cả mẹ và trẻ cần phải được nhập viện và tiến hành cách ly nghiêm ngặt cho đến khi có xét nghiệm loại trừ hoàn toàn.
-- **Trẻ em:** Ưu tiên hàng đầu là thực hiện bù dịch bằng đường uống; phải tính toán và điều chỉnh liều lượng thuốc điều trị chặt chẽ theo cân nặng thực tế; đặc biệt chú ý dự phòng và phát hiện sớm biến chứng hạ đường huyết và hạ thân nhiệt ở trẻ.
+- **Trẻ em:** Ưu tiên hàng đầu là thực hiện bù dịch bằng đường uống; phải tính toán và điều chỉnh liều lượng thuốc điều trị chặt chẽ theo cân nặng thực tế; đặc biệt chú ý dự phòng và phát hiện sớm biến chứng [[Hạ đường huyết]] và hạ thân nhiệt ở trẻ.
 - **Người cao tuổi và người suy giảm miễn dịch:** Nhóm này có nguy cơ tiến triển nặng rất nhanh chóng, đòi hỏi nhân viên y tế phải theo dõi sát các dấu hiệu sinh tồn và chức năng tạng.
 
 ### Tiêu Chuẩn Xuất Viện
@@ -126,7 +136,7 @@
 Người bệnh điều trị Ebola được phép xuất viện khi đáp ứng toàn bộ các tiêu chuẩn sau:
 
 1. Đã cắt sốt liên tục trên 3 ngày.
-2. Không còn bất kỳ triệu chứng lâm sàng nào gợi ý có sự đào thải vi rút ra ngoài môi trường (như tiêu chảy/đi ngoài phân lỏng, ho, xuất huyết...).
+2. Không còn bất kỳ triệu chứng lâm sàng nào gợi ý có sự đào thải vi rút ra ngoài môi trường (như tiêu chảy/[[Tiêu chảy|đi ngoài phân lỏng]], ho, xuất huyết...).
 3. Các triệu chứng lâm sàng cải thiện tốt, toàn trạng bệnh nhân ổn định và có thể tự thực hiện được các hoạt động sinh hoạt thường ngày.
 4. **Đối với xét nghiệm vi rút học (nếu cơ sở thực hiện được):**
     - Có kết quả xét nghiệm RT-PCR vi rút Ebola âm tính (mẫu bệnh phẩm lấy từ ngày thứ 3 trở đi kể từ khi khởi phát bệnh).

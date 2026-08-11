@@ -1,9 +1,13 @@
 ---
 title: "HỒI QUY BAYES ĐANG THAY ĐỔI NKCH NHƯ THẾ NÀO"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐜𝐚́𝐜 𝐲𝐞̂́𝐮 𝐭𝐨̂́ 𝐚̉𝐧𝐡 𝐡𝐮̛𝐨̛̉𝐧𝐠 đ𝐞̂́𝐧 𝐡𝐮𝐲𝐞̂́𝐭 𝐚́𝐩 𝐭𝐚̂𝐦 𝐭𝐡𝐮 𝐯𝐚̀ 𝐃𝐮̛̣ 𝐛𝐚́𝐨 đ𝐚́𝐩 𝐮̛́𝐧𝐠 đ𝐢𝐞̂̀𝐮 𝐭𝐫𝐢̣ 𝐮𝐧𝐠 𝐭𝐡𝐮̛ 𝐯𝐮́.
 
 TS. Đào Hồng Nam
@@ -12,7 +16,7 @@ TS. Đào Hồng Nam
 
 Sự phát triển của thống kê Bayes trong khoảng hai thập kỷ gần đây đã tạo ra những thay đổi đáng kể trong phương pháp phân tích dữ liệu y học. Nếu trước đây hồi quy tuyến tính Bayes chủ yếu được sử dụng trong các nghiên cứu phương pháp luận hoặc trong một số lĩnh vực chuyên biệt như thử nghiệm lâm sàng thích ứng, thì hiện nay phương pháp này đã được ứng dụng rộng rãi trong dịch tễ học, y tế công cộng, nghiên cứu lâm sàng, dược học, kinh tế y tế, nghiên cứu hệ gen và y học chính xác. Sự phát triển của các phần mềm như Stan, JASP, brms, rstanarm và cmdstanr đã làm giảm đáng kể rào cản kỹ thuật, giúp các nhà nghiên cứu có thể xây dựng và ước lượng các mô hình Bayes mà không cần lập trình các thuật toán MCMC từ đầu (Bürkner, 2017; Carpenter và cộng sự, 2017).
 
-Khác với hồi quy tuyến tính cổ điển, hồi quy Bayes không chỉ cung cấp các ước lượng tham số mà còn cho phép lượng hóa trực tiếp mức độ không chắc chắn của các kết quả, tích hợp bằng chứng từ các nghiên cứu trước và xây dựng các mô hình có khả năng dự đoán tốt hơn trong điều kiện dữ liệu hạn chế. Những đặc điểm này làm cho phương pháp Bayes đặc biệt phù hợp với đặc thù của nghiên cứu y học, nơi dữ liệu thường không hoàn hảo và các quyết định lâm sàng luôn phải được đưa ra trong điều kiện tồn tại sự không chắc chắn.
+Khác với hồi quy tuyến tính cổ điển, hồi quy Bayes không chỉ cung cấp các ước lượng tham số mà còn cho phép lượng hóa trực tiếp mức độ không chắc chắn của các kết quả, tích hợp bằng chứng từ các nghiên cứu trước và xây dựng các mô hình có khả năng dự đoán tốt hơn trong điều kiện dữ liệu hạn chế. Những đặc điểm này làm cho phương pháp Bayes đặc biệt [[Phù]] hợp với đặc thù của nghiên cứu y học, nơi dữ liệu thường không hoàn hảo và các quyết định lâm sàng luôn phải được đưa ra trong điều kiện tồn tại sự không chắc chắn.
 
 𝟔.𝟏. 𝐔̛́𝐧𝐠 𝐝𝐮̣𝐧𝐠 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐝𝐢̣𝐜𝐡 𝐭𝐞̂̃ 𝐡𝐨̣𝐜
 
@@ -34,7 +38,7 @@ Các kết quả thu được cho thấy các hệ số hồi quy có độ ổn
 
 𝟔.𝟐. 𝐔̛́𝐧𝐠 𝐝𝐮̣𝐧𝐠 𝐭𝐫𝐨𝐧𝐠 𝐧𝐠𝐡𝐢𝐞̂𝐧 𝐜𝐮̛́𝐮 𝐥𝐚̂𝐦 𝐬𝐚̀𝐧𝐠
 
-Trong nghiên cứu lâm sàng, hồi quy tuyến tính Bayes được sử dụng để đánh giá hiệu quả điều trị khi biến kết cục là biến liên tục. Các biến này có thể bao gồm huyết áp, HbA1c, LDL-cholesterol, mức lọc cầu thận, mật độ xương, điểm đau, điểm chất lượng cuộc sống hoặc các thang điểm đánh giá chức năng.
+Trong nghiên cứu lâm sàng, hồi quy tuyến tính Bayes được sử dụng để đánh giá hiệu quả điều trị khi biến kết cục là biến liên tục. Các biến này có thể bao gồm huyết áp, HbA1c, LDL-cholesterol, mức lọc cầu [[Thận]], mật độ xương, điểm đau, điểm chất lượng cuộc sống hoặc các thang điểm đánh giá chức năng.
 
 Một đặc điểm của các thử nghiệm lâm sàng là quá trình nghiên cứu thường diễn ra theo nhiều giai đoạn. Các nghiên cứu giai đoạn đầu cung cấp những bằng chứng ban đầu về hiệu quả và độ an toàn của thuốc, trong khi các nghiên cứu giai đoạn sau có cỡ mẫu lớn hơn nhằm xác nhận kết quả. Trong khuôn khổ Bayes, các bằng chứng thu được từ các giai đoạn trước có thể được sử dụng làm phân bố tiên nghiệm cho các nghiên cứu tiếp theo, qua đó tăng hiệu quả của quá trình suy luận.
 
@@ -44,7 +48,7 @@ Ngoài ra, nhiều thử nghiệm lâm sàng hiện đại áp dụng thiết k�
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟖. Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐡𝐢𝐞̣̂𝐮 𝐪𝐮𝐚̉ 𝐜𝐮̉𝐚 𝐭𝐡𝐮𝐨̂́𝐜 𝐡𝐚̣ 𝐡𝐮𝐲𝐞̂́𝐭 𝐚́𝐩 𝐦𝐨̛́𝐢
 
-Một thử nghiệm lâm sàng ngẫu nhiên đánh giá hiệu quả của một thuốc hạ huyết áp mới trên 90 bệnh nhân tăng huyết áp nguyên phát.
+Một thử nghiệm lâm sàng ngẫu nhiên đánh giá hiệu quả của một thuốc hạ huyết áp mới trên 90 bệnh nhân [[Tăng huyết áp]] nguyên phát.
 
 Biến kết cục chính là mức giảm huyết áp tâm thu sau 12 tuần điều trị.
 
@@ -62,11 +66,11 @@ Các nghiên cứu dược động học thường thu thập nhiều mẫu máu
 
 Các mô hình Bayes phân cấp cho phép kết hợp thông tin của toàn bộ quần thể với thông tin của từng cá thể, từ đó xây dựng các mô hình dược động học quần thể (population pharmacokinetic models).
 
-Việc lựa chọn liều điều trị phù hợp cho từng bệnh nhân là một trong những thách thức quan trọng của dược động học lâm sàng, bởi cùng một liều dùng có thể tạo ra những đáp ứng rất khác nhau giữa các cá thể. Hồi quy Bayes cung cấp một cách tiếp cận hiệu quả cho vấn đề này bằng cách kết hợp dữ liệu từ quần thể với thông tin thu thập được trên từng bệnh nhân cụ thể. Khi đã có các dữ liệu ban đầu như nồng độ thuốc trong máu hoặc các đặc điểm lâm sàng của bệnh nhân, mô hình có thể cập nhật phân bố hậu nghiệm của các tham số dược động học và sử dụng những thông tin đã được cá thể hóa đó để dự đoán liều điều trị tối ưu cho chính bệnh nhân đang được theo dõi.
+Việc lựa chọn liều điều trị [[Phù]] hợp cho từng bệnh nhân là một trong những thách thức quan trọng của dược động học lâm sàng, bởi cùng một liều dùng có thể tạo ra những đáp ứng rất khác nhau giữa các cá thể. Hồi quy Bayes cung cấp một cách tiếp cận hiệu quả cho vấn đề này bằng cách kết hợp dữ liệu từ quần thể với thông tin thu thập được trên từng bệnh nhân cụ thể. Khi đã có các dữ liệu ban đầu như nồng độ thuốc trong máu hoặc các đặc điểm lâm sàng của bệnh nhân, mô hình có thể cập nhật phân bố hậu nghiệm của các tham số dược động học và sử dụng những thông tin đã được cá thể hóa đó để dự đoán liều điều trị tối ưu cho chính bệnh nhân đang được theo dõi.
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟗. 𝐌𝐨̂ 𝐡𝐢̀𝐧𝐡 𝐡𝐨́𝐚 𝐧𝐨̂̀𝐧𝐠 đ𝐨̣̂ 𝐯𝐚𝐧𝐜𝐨𝐦𝐲𝐜𝐢𝐧
 
-Một nghiên cứu được thực hiện trên 120 bệnh nhân điều trị bằng vancomycin tại khoa hồi sức tích cực nhằm đánh giá ảnh hưởng của tuổi, cân nặng, mức lọc cầu thận và nồng độ albumin huyết thanh đến nồng độ đáy của thuốc.
+Một nghiên cứu được thực hiện trên 120 bệnh nhân điều trị bằng vancomycin tại khoa hồi sức tích cực nhằm đánh giá ảnh hưởng của tuổi, cân nặng, mức lọc cầu [[Thận]] và nồng độ albumin huyết thanh đến nồng độ đáy của thuốc.
 
 Sự khác biệt về số lượng mẫu máu được thu thập ở mỗi bệnh nhân làm cho dữ liệu có cấu trúc phân cấp và khó xử lý bằng các mô hình hồi quy thông thường. Để khai thác đồng thời thông tin ở mức cá thể và mức quần thể, nhóm nghiên cứu sử dụng mô hình hồi quy Bayes phân cấp trong quá trình phân tích.
 
@@ -84,7 +88,7 @@ Việc kết hợp bằng chứng trước đó với dữ liệu hiện tại g
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟏𝟎. Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐤𝐡𝐚̉ 𝐧𝐚̆𝐧𝐠 𝐠𝐚̆́𝐧𝐠 𝐬𝐮̛́𝐜 𝐨̛̉ 𝐛𝐞̣̂𝐧𝐡 𝐧𝐡𝐚̂𝐧 𝐭𝐚̆𝐧𝐠 𝐚́𝐩 đ𝐨̣̂𝐧𝐠 𝐦𝐚̣𝐜𝐡 𝐩𝐡𝐨̂̉𝐢
 
-Một nghiên cứu trên 42 bệnh nhân tăng áp động mạch phổi đánh giá ảnh hưởng của nồng độ NT-proBNP đến quãng đường đi bộ sáu phút.
+Một nghiên cứu trên 42 bệnh nhân tăng áp động mạch [[Phổi]] đánh giá ảnh hưởng của nồng độ NT-proBNP đến quãng đường đi bộ sáu phút.
 
 Do cỡ mẫu nhỏ, nhóm nghiên cứu sử dụng phân bố tiên nghiệm dựa trên một phân tích gộp đã công bố trước đó.
 

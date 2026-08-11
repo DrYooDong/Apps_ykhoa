@@ -1,21 +1,31 @@
+---
+title: "Tóm tắt SSC 2026 ở trẻ em (p3)"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Khuyến Cáo Surviving Sepsis Campaign 2026 (Phần 3)
 
-Phần này tập trung vào các khuyến cáo về các liệu pháp hỗ trợ bổ sung (Adjunctive Therapies), các liệu pháp hỗ trợ chung khác (Additional Supportive Therapies), mục tiêu chăm sóc (Goals of Care), chuyển tiếp chăm sóc (Transitions of Care), và phục hồi chức năng dài hạn (Long-term Outcomes and Recovery) cho bệnh nhân người lớn bị nhiễm khuẩn huyết và sốc nhiễm khuẩn.
+Phần này tập trung vào các khuyến cáo về các liệu pháp hỗ trợ bổ sung (Adjunctive Therapies), các liệu pháp hỗ trợ chung khác (Additional Supportive Therapies), mục tiêu chăm sóc (Goals of Care), chuyển tiếp chăm sóc (Transitions of Care), và phục hồi chức năng dài hạn (Long-term Outcomes and Recovery) cho bệnh nhân người lớn bị [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] và [[[[Sốc]] nhiễm khuẩn]].
 
 ---
 
-#### 1.1. Các Liệu Pháp Hỗ Trợ Bổ Sung Trong Nhiễm Khuẩn Huyết (Adjunctive Therapies)
+#### 1.1. Các Liệu Pháp Hỗ Trợ Bổ Sung Trong [[Nhiễm trùng huyết|Nhiễm Khuẩn Huyết]] (Adjunctive Therapies)
 
-##### 1.1.1. Corticosteroid truyền tĩnh mạch
+##### 1.1.1. [[Corticoid|Corticosteroid]] truyền tĩnh mạch
 
-- **Khuyến cáo (Khuyến cáo 79):** Đối với bệnh nhân người lớn bị sốc nhiễm khuẩn, gợi ý **sử dụng corticosteroid đường tĩnh mạch**.
+- **Khuyến cáo (Khuyến cáo 79):** Đối với bệnh nhân người lớn bị [[[[Sốc]] nhiễm khuẩn]], gợi ý **sử dụng [[Corticoid|corticosteroid]] đường tĩnh mạch**.
     - _Mức độ khuyến cáo:_ Khuyến cáo có điều kiện (Conditional recommendation).
     - _Mức độ bằng chứng:_ Chất lượng bằng chứng thấp (Low-certainty evidence).
     - _Lưu ý lâm sàng:_ Corticosteroid giúp tăng tỷ lệ đảo ngược sốc tại thời điểm 7 ngày. Liệu trình low-dose được khuyến nghị là **hydrocortisone với liều lượng tối đa \(\le 260\text{ mg/ngày}\)** (thường dùng liều \(200\text{ mg/ngày}\) tiêm ngắt quãng hơn là truyền liên tục).
 
-##### 1.1.2. Thuốc hạ sốt (Antipyretics)
+##### 1.1.2. Thuốc hạ [[Sốt]] (Antipyretics)
 
-- **Khuyến cáo (Khuyến cáo 80):** Đối với người lớn bị nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn có sốt, gợi ý **CHỐNG LẠI việc sử dụng liệu pháp hạ sốt thường quy** (bằng thuốc hoặc làm mát bề mặt) với mục đích cải thiện kết cục lâm sàng.
+- **Khuyến cáo (Khuyến cáo 80):** Đối với người lớn bị nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn có [[Sốt]], gợi ý **CHỐNG LẠI việc sử dụng liệu pháp hạ sốt thường quy** (bằng thuốc hoặc làm mát bề mặt) với mục đích cải thiện kết cục lâm sàng.
     - _Mức độ khuyến cáo:_ Khuyến cáo có điều kiện chống lại (Conditional recommendation against).
     - _Mức độ bằng chứng:_ Chất lượng bằng chứng rất thấp (Very low-certainty evidence).
     - _Ngoại lệ lâm sàng:_ Khuyến cáo này không áp dụng cho việc sử dụng thuốc hạ sốt nhằm kiểm soát đau, kiểm soát triệu chứng của bệnh nhân, hoặc ở những bệnh nhân có chỉ định kiểm soát thân nhiệt khác (như bệnh nhân hồi sức thần kinh hoặc sau ngưng tuần hoàn).
@@ -40,10 +50,10 @@ Phần này tập trung vào các khuyến cáo về các liệu pháp hỗ tr�
 
 ##### 1.2.1. Dự phòng loét do stress (Stress Ulcer Prophylaxis)
 
-- **Khuyến cáo (Khuyến cáo 87):** Đối với bệnh nhân nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn **có các yếu tố nguy cơ chảy máu tiêu hóa**, gợi ý **sử dụng dự phòng loét do stress bằng thuốc ức chế bơm proton (PPI)** thay vì không dự phòng.
+- **Khuyến cáo (Khuyến cáo 87):** Đối với bệnh nhân nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn **có các yếu tố nguy cơ [[Xuất huyết|chảy máu]] tiêu hóa**, gợi ý **sử dụng dự phòng loét do stress bằng thuốc ức chế bơm proton (PPI)** thay vì không dự phòng.
     - _Mức độ khuyến cáo:_ Khuyến cáo có điều kiện (Conditional recommendation).
     - _Mức độ bằng chứng:_ Chất lượng bằng chứng trung bình (Moderate-certainty evidence).
-    - _Yếu tố nguy cơ chính:_ Suy thận cấp (AKI), nam giới, bệnh lý đông máu, tình trạng sốc, và suy gan mạn.
+    - _Yếu tố nguy cơ chính:_ Suy [[Thận]] cấp (AKI), nam giới, bệnh lý đông máu, tình trạng sốc, và suy [[Gan]] mạn.
 
 ##### 1.2.2. Chế phẩm sinh học (Probiotics)
 
@@ -62,9 +72,9 @@ Phần này tập trung vào các khuyến cáo về các liệu pháp hỗ tr�
 
 - **Truyền máu (Khuyến cáo 90):** Khuyến nghị sử dụng **chiến lược truyền máu hạn chế (restrictive)** thay vì chiến lược tự do (liberal) (Khuyến cáo mạnh mẽ, bằng chứng chất lượng trung bình - Carryover).
 - **Dinh dưỡng (Khuyến cáo 91):** Gợi ý bắt đầu **dinh dưỡng đường ruột sớm (trong vòng 72 giờ đầu)** (Khuyến cáo có điều kiện, bằng chứng chất lượng rất thấp - Carryover).
-- **Kiểm soát đường huyết (Khuyến cáo 92):** Khuyến nghị khởi đầu **liệu pháp insulin khi nồng độ glucose máu \(\ge 180\text{ mg/dL}\ (10\text{ mmol/L})\)** (Khuyến cáo mạnh mẽ, bằng chứng chất lượng trung bình - Carryover).
+- **Kiểm soát đường huyết (Khuyến cáo 92):** Khuyến nghị khởi đầu **liệu pháp [[Insulin]] khi nồng độ glucose máu \(\ge 180\text{ mg/dL}\ (10\text{ mmol/L})\)** (Khuyến cáo mạnh mẽ, bằng chứng chất lượng trung bình - Carryover).
 
-##### 1.2.5. Liệu pháp thay thế thận (RRT) và Sodium Bicarbonate
+##### 1.2.5. Liệu pháp thay thế [[Thận]] (RRT) và Sodium Bicarbonate
 
 - **Khuyến cáo (Khuyến cáo 93-96):**
     - Gợi ý **CHỐNG LẠI sử dụng RRT** nếu bệnh nhân bị tổn thương thận cấp **nhưng không có chỉ định tuyệt đối** cho RRT (Khuyến cáo có điều kiện, bằng chứng chất lượng trung bình - Carryover).
@@ -104,7 +114,7 @@ Phần này tập trung vào các khuyến cáo về các liệu pháp hỗ tr�
 ##### 1.3.4. Chăm sóc giảm nhẹ (Palliative Care)
 
 - **Khuyến cáo (Khuyến cáo 106-107):**
-    - Các nguyên lý của chăm sóc giảm nhẹ **nên được tích hợp vào kế hoạch điều trị** khi phù hợp để giải quyết các triệu chứng và sự đau đớn của bệnh nhân và gia đình (Good Practice Statement).
+    - Các nguyên lý của chăm sóc giảm nhẹ **nên được tích hợp vào kế hoạch điều trị** khi [[Phù]] hợp để giải quyết các triệu chứng và sự đau đớn của bệnh nhân và gia đình (Good Practice Statement).
     - Gợi ý **CHỐNG LẠI việc hội chẩn chăm sóc giảm nhẹ chuyên khoa thường quy cho tất cả bệnh nhân**, mà nên thực hiện dựa trên đánh giá và quyết định lâm sàng của bác sĩ điều trị (Khuyến cáo có điều kiện chống lại, bằng chứng chất lượng thấp - Carryover).
 
 ---
@@ -113,7 +123,7 @@ Phần này tập trung vào các khuyến cáo về các liệu pháp hỗ tr�
 
 ##### 1.4.1. Chuyển khoa và Đối chiếu thuốc (Medication Reconciliation)
 
-- **Khai báo chuyển khoa (Khuyến cáo 108-110):** Gợi ý sử dụng chương trình chuyển tiếp chăm sóc tích cực (transition program) khi chuyển bệnh nhân từ ICU ra khoa phòng thường, bàn giao thông tin lâm sàng cốt lõi chuẩn hóa, và **sàng lọc các nhu cầu hỗ trợ kinh tế - xã hội** (nhà ở, dinh dưỡng, tài chính, tâm linh) để hỗ trợ kết nối phù hợp (Good Practice Statement).
+- **Khai báo chuyển khoa (Khuyến cáo 108-110):** Gợi ý sử dụng chương trình chuyển tiếp chăm sóc tích cực (transition program) khi chuyển bệnh nhân từ ICU ra khoa phòng thường, bàn giao thông tin lâm sàng cốt lõi chuẩn hóa, và **sàng lọc các nhu cầu hỗ trợ kinh tế - xã hội** (nhà ở, dinh dưỡng, tài chính, tâm linh) để hỗ trợ kết nối [[Phù]] hợp (Good Practice Statement).
 - **Đối chiếu thuốc (Khuyến cáo 111-112):**
     - Việc **đối chiếu thuốc toàn diện phải được thực hiện tại các thời điểm chuyển tiếp chăm sóc**, bao gồm cả khi xuất khoa ICU và xuất viện (Good Practice Statement).
     - Gợi ý thực hiện **đối chiếu thuốc dưới sự điều phối của dược sĩ lâm sàng** (pharmacist-based approach) tại các thời điểm chuyển tiếp này (Khuyến cáo có điều kiện, bằng chứng chất lượng rất thấp).

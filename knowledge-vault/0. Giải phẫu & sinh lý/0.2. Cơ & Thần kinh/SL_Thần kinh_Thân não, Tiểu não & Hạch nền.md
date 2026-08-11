@@ -1,20 +1,25 @@
 ---
 title: "SL_Thần kinh_Thân não, Tiểu não & Hạch nền"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 ### 1. SINH LÝ THÂN NÃO (BRAIN STEM) TRONG ĐIỀU HÒA VẬN ĐỘNG
 
-Thân não bao gồm hành não (medulla), cầu não (pons), và trung não (midbrain). Đây là cấu trúc mở rộng của tủy sống đi lên hộp sọ, chứa các nhân vận động và cảm giác thực hiện chức năng cho vùng mặt và đầu. Ngoài ra, thân não đóng vai trò như một trạm trung chuyển cho các tín hiệu chỉ huy từ các trung tâm thần kinh cao hơn và cung cấp các chức năng kiểm soát đặc biệt như: hô hấp, hệ tim mạch, tiêu hóa, chuyển động dập khuôn, thăng bằng và chuyển động của mắt.
+Thân não bao gồm hành não (medulla), cầu não (pons), và trung não (midbrain). Đây là cấu trúc mở rộng của tủy sống đi lên hộp sọ, chứa các nhân vận động và cảm giác thực hiện chức năng cho vùng mặt và đầu. Ngoài ra, thân não đóng vai trò như một trạm trung chuyển cho các tín hiệu chỉ huy từ các trung tâm thần kinh cao hơn và cung cấp các chức năng kiểm soát đặc biệt như: hô hấp, hệ [[Tim]] mạch, tiêu hóa, chuyển động dập khuôn, thăng bằng và chuyển động của mắt.
 
 Trong kiểm soát tư thế và chống lại trọng lực, các nhân lưới (reticular nuclei) và nhân tiền đình (vestibular nuclei) đóng vai trò cốt lõi.
 *   **Hệ thống nhân lưới cầu não (Pontine Reticular System):** Truyền tín hiệu kích thích qua dải lưới-tủy cầu não (pontine reticulospinal tract) đến các neuron vận động chi phối cơ trục (cơ chống trọng lực như cơ cột sống và cơ duỗi chi),. Các nhân này có tính hưng phấn tự nhiên rất cao.
 *   **Hệ thống nhân lưới hành não (Medullary Reticular System):** Truyền tín hiệu ức chế đến các cơ chống trọng lực qua dải lưới-tủy hành não (medullary reticulospinal tract),. Hệ thống này nhận tín hiệu từ dải vỏ-tủy (corticospinal) và dải đỏ-tủy (rubrospinal) để đối trọng lại với hệ thống cầu não, giúp cơ thể không bị căng cứng bất thường.
 *   **Hệ thống nhân tiền đình (Vestibular Nuclei):** Hoạt động phối hợp với nhân lưới cầu não để kiểm soát các cơ chống trọng lực. Tín hiệu được truyền qua dải tiền đình-tủy bên và giữa (lateral and medial vestibulospinal tracts) để duy trì thăng bằng phản ứng lại với các tín hiệu từ cơ quan tiền đình,,.
 
-**Cứng cơ mất não và Cứng cơ vỏ não (Decerebrate & Decorticate Rigidity):**
-*   **Cứng cơ mất não (Decerebrate Rigidity):** Cắt ngang thân não ở mức giữa hai lồi não (midcollicular) làm gián đoạn mọi tín hiệu ức chế từ vỏ não và nhân đỏ. Do sự kích thích không bị đối trọng từ hệ thống lưới cầu não lên các neuron vận động gamma và alpha, bệnh nhân hoặc động vật xuất hiện co cứng mạnh ở các cơ duỗi chống trọng lực ở cả 4 chi,,,,.
+**Cứng cơ mất não và Cứng cơ [[Vỏ não]] (Decerebrate & Decorticate Rigidity):**
+*   **Cứng cơ mất não (Decerebrate Rigidity):** Cắt ngang thân não ở mức giữa hai lồi não (midcollicular) làm gián đoạn mọi tín hiệu ức chế từ [[Vỏ não]] và nhân đỏ. Do sự kích thích không bị đối trọng từ hệ thống lưới cầu não lên các neuron vận động gamma và alpha, bệnh nhân hoặc động vật xuất hiện co cứng mạnh ở các cơ duỗi chống trọng lực ở cả 4 chi,,,,.
 *   **Cứng cơ vỏ não (Decorticate Rigidity):** Cắt bỏ vỏ não hoặc tổn thương bao trong dẫn đến mất kiểm soát vỏ não nhưng vẫn giữ lại chức năng nhân đỏ. Biểu hiện là gấp các chi trên ở khuỷu tay (do dải đỏ-tủy kích thích cơ gấp) và co cứng cơ duỗi ở các chi dưới.
 
 > **[TRÍCH XUẤT HÌNH ẢNH / SƠ ĐỒ]**

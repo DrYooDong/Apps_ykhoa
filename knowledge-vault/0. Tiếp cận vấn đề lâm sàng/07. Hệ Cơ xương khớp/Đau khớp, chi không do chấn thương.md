@@ -1,6 +1,11 @@
 ---
 title: "Đau khớp, chi không do chấn thương"
-specialty: "Tiếp cận vấn đề lâm sàng"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Cơ xương khớp"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/co-xuong-khop
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+

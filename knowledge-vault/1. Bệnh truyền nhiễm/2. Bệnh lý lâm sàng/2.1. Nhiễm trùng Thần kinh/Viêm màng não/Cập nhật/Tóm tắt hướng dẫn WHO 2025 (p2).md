@@ -1,20 +1,21 @@
 ---
-title: WHO 2025
-specialty: Bệnh truyền nhiễm
+title: "WHO 2025"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Bệnh truyền nhiễm
-  - Bệnh lý cụ thể
-  - Viêm màng não
-  - Cập nhật
-last_updated: 2026-07-28
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Nội Dung Hướng Dẫn Chi Tiết: Khuyến Cáo Mới Nhất Từ WHO (Phần 2 - Điều Trị & Quản Lý Di Chứng)
 
 **I. Thời Điểm Khởi Đầu Điều Trị Kháng Sinh Theo Kinh Nghiệm (Timing of Empiric Antimicrobial Treatment)**
 
 - **Trước khi nhập viện hoặc chuyển viện:**
-    - _Khuyến cáo có điều kiện (Conditional recommendation):_ Cần xem xét điều trị kháng sinh đường tiêm (parenteral) trước khi nhập viện hoặc chuyển viện ở trẻ em và người lớn nghi ngờ viêm màng não cấp tính.
-    - _Ý nghĩa lâm sàng:_ Việc điều trị sớm này có lợi ích lớn nhất khi nghi ngờ mạnh mẽ viêm màng não nhiễm khuẩn và thời gian vận chuyển/chuyển tuyến dự kiến bị trì hoãn đáng kể. Đường tiêm tĩnh mạch là tối ưu; nếu không thiết lập được đường truyền, sử dụng đường tiêm bắp. Tuy nhiên, việc điều trị này không được làm trì hoãn quá trình nhập viện hoặc chuyển viện.
+    - _Khuyến cáo có điều kiện (Conditional recommendation):_ Cần xem xét điều trị kháng sinh đường tiêm (parenteral) trước khi nhập viện hoặc chuyển viện ở trẻ em và người lớn nghi ngờ [[Viêm màng não]] cấp tính.
+    - _Ý nghĩa lâm sàng:_ Việc điều trị sớm này có lợi ích lớn nhất khi nghi ngờ mạnh mẽ [[Viêm màng não]] nhiễm khuẩn và thời gian vận chuyển/chuyển tuyến dự kiến bị trì hoãn đáng kể. Đường tiêm tĩnh mạch là tối ưu; nếu không thiết lập được đường truyền, sử dụng đường tiêm bắp. Tuy nhiên, việc điều trị này không được làm trì hoãn quá trình nhập viện hoặc chuyển viện.
 - **Sau khi nhập viện/chuyển viện:**
     - _Khuyến cáo mạnh mẽ (Strong recommendation):_ Kháng sinh tĩnh mạch theo kinh nghiệm phải được dùng càng sớm càng tốt cho trẻ em và người lớn nghi ngờ viêm màng não cấp tính.
     - _Khung giờ vàng:_ **"Khung giờ 1 giờ" (1-hour window)** được coi là tiêu chuẩn vàng để khởi đầu điều trị kháng sinh tĩnh mạch theo kinh nghiệm ngay khi nghi ngờ viêm màng não nhiễm khuẩn.
@@ -22,14 +23,14 @@ last_updated: 2026-07-28
 
 **II. Phác Đồ Kháng Sinh Theo Kinh Nghiệm (Empiric Antimicrobial Treatment Regimens)**
 
-- **Kháng sinh hàng đầu:** Khuyến cáo sử dụng **Ceftriaxone hoặc Cefotaxime đường tĩnh mạch** làm điều trị theo kinh nghiệm cho trẻ em và người lớn nghi ngờ hoặc có khả năng cao mắc viêm màng não nhiễm khuẩn (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp). Ceftriaxone được ưu tiên hơn Cefotaxime trong các vụ dịch do phế cầu hoặc não mô cầu do tính khả dụng cao và chu kỳ bán rã dài hơn (cho phép dùng 2 lần/ngày).
-- **Bổ sung cho nhóm nguy cơ nhiễm _Listeria monocytogenes_:** Cần phối hợp thêm **Ampicillin hoặc Amoxicillin tĩnh mạch** vào phác đồ ban đầu nếu người bệnh có ít nhất một yếu tố nguy cơ nhiễm _L. monocytogenes_ bao gồm: tuổi trên 60, đang mang thai, hoặc có tình trạng suy giảm miễn dịch (như điều trị ức chế miễn dịch, ghép tạng, ung thư, nhiễm HIV tiến triển, đái tháo đường, suy thận mạn giai đoạn cuối, xơ gan, lạm dụng rượu) (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp).
+- **Kháng sinh hàng đầu:** Khuyến cáo sử dụng **[[Ceftriaxone]] hoặc Cefotaxime đường tĩnh mạch** làm điều trị theo kinh nghiệm cho trẻ em và người lớn nghi ngờ hoặc có khả năng cao mắc viêm màng não nhiễm khuẩn (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp). [[Ceftriaxone]] được ưu tiên hơn Cefotaxime trong các vụ dịch do phế cầu hoặc não mô cầu do tính khả dụng cao và chu kỳ bán rã dài hơn (cho phép dùng 2 lần/ngày).
+- **Bổ sung cho nhóm nguy cơ nhiễm _Listeria monocytogenes_:** Cần phối hợp thêm **Ampicillin hoặc Amoxicillin tĩnh mạch** vào phác đồ ban đầu nếu người bệnh có ít nhất một yếu tố nguy cơ nhiễm _L. monocytogenes_ bao gồm: tuổi trên 60, đang mang thai, hoặc có tình trạng suy giảm miễn dịch (như điều trị ức chế miễn dịch, ghép tạng, ung thư, nhiễm HIV tiến triển, đái tháo đường, suy [[Thận]] mạn giai đoạn cuối, xơ [[Gan]], lạm dụng rượu) (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp).
 - **Bổ sung khi có nguy cơ phế cầu kháng thuốc:** Ở những vùng có tỷ lệ lưu hành cao của _Streptococcus pneumoniae_ kháng penicillin hoặc kháng cephalosporin thế hệ 3, cần cân nhắc bổ sung **Vancomycin tĩnh mạch** vào phác đồ điều trị ban đầu (Khuyến cáo có điều kiện, bằng chứng có chất lượng rất thấp). Ở những nơi có gánh nặng bệnh lao thấp, có thể thay thế Vancomycin bằng Rifampicin; ngược lại, ở vùng có gánh nặng lao cao, Rifampicin chỉ được dùng khi Vancomycin không sẵn có hoặc có chống chỉ định để tránh nguy cơ kháng thuốc lao.
-- **Phác đồ thay thế khi thiếu Cephalosporin thế hệ 3:** Kết hợp **Chloramphenicol tĩnh mạch với Benzylpenicillin, Ampicillin hoặc Amoxicillin** chỉ nên được cân nhắc khi Ceftriaxone hoặc Cefotaxime không sẵn có ngay lập tức (Khuyến cáo có điều kiện, bằng chứng có chất lượng rất thấp). Ở những nơi có tỷ lệ tiêm chủng _H. influenzae_ typ b thấp, nên ưu tiên chọn Amoxicillin hoặc Ampicillin hơn Benzylpenicillin để phối hợp với Chloramphenicol.
+- **Phác đồ thay thế khi thiếu Cephalosporin thế hệ 3:** Kết hợp **Chloramphenicol tĩnh mạch với Benzylpenicillin, Ampicillin hoặc Amoxicillin** chỉ nên được cân nhắc khi Ceftriaxone hoặc Cefotaxime không sẵn có ngay lập tức (Khuyến cáo có điều kiện, bằng chứng có chất lượng rất thấp). Ở những nơi có tỷ lệ [[[[Vắc-xin]]|tiêm chủng]] _H. influenzae_ typ b thấp, nên ưu tiên chọn Amoxicillin hoặc Ampicillin hơn Benzylpenicillin để phối hợp với Chloramphenicol.
 
 ---
 
-**Bảng 3.2: Liệu pháp kháng sinh đặc hiệu cho các nguyên nhân viêm màng não vi khuẩn thường gặp**
+**Bảng 3.2: [[Kháng sinh|Liệu pháp kháng sinh]] đặc hiệu cho các nguyên nhân viêm màng não vi khuẩn thường gặp**
 
 _Trích xuất từ Tài liệu "9789240108042-eng.pdf" - Phần B.2.4, Bảng 3.2 (Table 3.2)._
 
@@ -48,8 +49,8 @@ _Mô tả dưới bảng:_ Bảng hướng dẫn lựa chọn kháng sinh đích
 **III. Thời Gian Điều Trị Kháng Sinh Theo Kinh Nghiệm (Duration of Empiric Antimicrobial Treatment)**
 
 - **Trong điều kiện không có dịch (Non-epidemic settings) và không xác định được tác nhân:**
-    - _Khuyến cáo có điều kiện (Conditional recommendation):_ Có thể xem xét ngừng liệu pháp kháng sinh theo kinh nghiệm sau **7 ngày** nếu người bệnh đã phục hồi lâm sàng hoàn toàn.
-    - _Tiêu chí phục hồi lâm sàng:_ Người bệnh duy trì được tất cả các biểu hiện sau trong ít nhất 48 giờ: hết sốt, các dấu hiệu sinh tồn bình thường (huyết áp, nhịp tim, nhịp thở, độ bão hòa oxy), hết rối loạn tri giác và trạng thái tâm thần bình thường. Nếu chưa phục hồi lâm sàng sau 1 tuần, phải kéo dài thời gian dùng thuốc và tiến hành chọc dò tủy sống lại để tìm nguyên nhân.
+    - _Khuyến cáo có điều kiện (Conditional recommendation):_ Có thể xem xét ngừng [[Kháng sinh|liệu pháp kháng sinh]] theo kinh nghiệm sau **7 ngày** nếu người bệnh đã phục hồi lâm sàng hoàn toàn.
+    - _Tiêu chí phục hồi lâm sàng:_ Người bệnh duy trì được tất cả các biểu hiện sau trong ít nhất 48 giờ: hết [[Sốt]], các dấu hiệu sinh tồn bình thường (huyết áp, nhịp [[Tim]], nhịp thở, độ bão hòa oxy), hết [[[[Hôn mê]]|rối loạn tri giác]] và trạng thái tâm thần bình thường. Nếu chưa phục hồi lâm sàng sau 1 tuần, phải kéo dài thời gian dùng thuốc và tiến hành chọc dò tủy sống lại để tìm nguyên nhân.
 - **Trong bối cảnh dịch bệnh (Epidemic settings):**
     - **Dịch viêm màng não do não mô cầu (_N. meningitidis_):** Sử dụng Ceftriaxone đường tiêm trong **5 ngày** cho trẻ em và người lớn (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp). Nếu hệ thống y tế quá tải trong đại dịch quy mô lớn, phác đồ liều đơn ceftriaxone có thể được áp dụng nếu dịch đã được xác nhận do não mô cầu và bệnh nhân được theo dõi sát ở mốc 24 và 48 giờ.
     - **Dịch viêm màng não do phế phầu (_S. pneumoniae_):** Sử dụng Ceftriaxone đường tiêm trong **10 ngày** cho cả trẻ em và người lớn (Khuyến cáo có điều kiện, bằng chứng có chất lượng rất thấp).
@@ -61,35 +62,35 @@ _Mô tả dưới bảng:_ Bảng hướng dẫn lựa chọn kháng sinh đích
     - **Ca bệnh tản phát:** Dự phòng cho người tiếp xúc gần của các ca bệnh đã được xác định bằng xét nghiệm (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp).
     - **Dịch quy mô lớn:** Dự phòng cho người tiếp xúc gần của các ca bệnh nghi ngờ trên lâm sàng (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp).
     - **Thuốc thay thế:** Xem xét sử dụng **Rifampicin** khi không thể dùng Ceftriaxone hoặc Ciprofloxacin (Khuyến cáo có điều kiện, bằng chứng có chất lượng rất thấp). Do nguy cơ phát triển vi khuẩn kháng thuốc của Rifampicin cao hơn, việc chọn lựa thuốc cần được hướng dẫn bởi mô hình nhạy cảm kháng sinh tại địa phương.
-- _Định nghĩa tiếp xúc gần:_ Người có tiếp xúc kéo dài ở khoảng cách dưới 1 mét (như thành viên trong cùng hộ gia đình) hoặc tiếp xúc trực tiếp với dịch tiết hầu họng của người bệnh (hôn, hô hấp nhân tạo, đặt nội khí quản) trong vòng 7 ngày trước khi ca bệnh khởi phát triệu chứng cho đến 24 giờ sau khi ca bệnh bắt đầu điều trị kháng sinh phù hợp. Hiệu quả dự phòng giảm rõ rệt hoặc không còn tác dụng nếu dùng muộn hơn 14 ngày.
+- _Định nghĩa tiếp xúc gần:_ Người có tiếp xúc kéo dài ở khoảng cách dưới 1 mét (như thành viên trong cùng hộ gia đình) hoặc tiếp xúc trực tiếp với dịch tiết hầu họng của người bệnh (hôn, hô hấp nhân tạo, đặt nội khí quản) trong vòng 7 ngày trước khi ca bệnh khởi phát triệu chứng cho đến 24 giờ sau khi ca bệnh bắt đầu điều trị kháng sinh [[Phù]] hợp. Hiệu quả dự phòng giảm rõ rệt hoặc không còn tác dụng nếu dùng muộn hơn 14 ngày.
 
-**V. Sử Dụng Corticosteroid Hỗ Trợ (Adjunctive Corticosteroids)**
+**V. Sử Dụng [[Corticoid|Corticosteroid]] Hỗ Trợ (Adjunctive Corticosteroids)**
 
 - **Trong điều kiện không có dịch (Non-epidemic settings):**
-    - **Nơi thực hiện được chọc dò tủy sống (LP):** Khuyến cáo bắt đầu dùng **Corticosteroid đường tĩnh mạch** (Dexamethasone, Hydrocortisone, hoặc Methylprednisolone) **đồng thời hoặc ngay trước liều kháng sinh đầu tiên** ở trẻ em và người lớn nghi ngờ viêm màng não vi khuẩn cấp tính (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng thấp). Nếu kết quả dịch não tủy sau đó không phù hợp với viêm màng não vi khuẩn, phải ngừng ngay Corticosteroid.
+    - **Nơi thực hiện được chọc dò tủy sống (LP):** Khuyến cáo bắt đầu dùng **[[Corticoid|Corticosteroid]] đường tĩnh mạch** (Dexamethasone, Hydrocortisone, hoặc Methylprednisolone) **đồng thời hoặc ngay trước liều kháng sinh đầu tiên** ở trẻ em và người lớn nghi ngờ viêm màng não vi khuẩn cấp tính (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng thấp). Nếu kết quả [[Dịch nào tủy|dịch não tủy]] sau đó không [[Phù]] hợp với viêm màng não vi khuẩn, phải ngừng ngay Corticosteroid.
     - **Nơi KHÔNG thực hiện được chọc dò tủy sống (LP):** Có thể khởi đầu Corticosteroid tĩnh mạch cùng liều kháng sinh đầu tiên nếu nghi ngờ lâm sàng rất mạnh và không có chống chỉ định đồng thời (Khuyến cáo có điều kiện, bằng chứng có chất lượng rất thấp).
 - **Trong bối cảnh dịch bệnh (Epidemic settings):**
     - **Dịch do não mô cầu:** Khuyến cáo **KHÔNG sử dụng Corticosteroid hỗ trợ thường quy** cho trẻ em và người lớn nghi ngờ hoặc có khả năng mắc viêm màng não do não mô cầu (Khuyến cáo mạnh mẽ chống lại, bằng chứng có chất lượng rất thấp).
     - **Dịch do phế cầu:** Khuyến cáo khởi đầu Corticosteroid tĩnh mạch đồng thời với liều kháng sinh đầu tiên (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp).
 - **Nguyên tắc sử dụng và thời gian duy trì:**
     - **Dexamethasone** là lựa chọn ưu tiên hàng đầu. Nếu thiếu hoặc khó duy trì phác đồ dùng mỗi 6 giờ do hạn chế nguồn lực, có thể thay thế bằng Hydrocortisone hoặc Methylprednisolone với liều tương đương và lịch trình phù hợp.
-    - Nếu dịch não tủy phù hợp với viêm màng não vi khuẩn, tiếp tục dùng Corticosteroid tĩnh mạch tối đa trong **4 ngày**.
+    - Nếu [[Dịch nào tủy|dịch não tủy]] phù hợp với viêm màng não vi khuẩn, tiếp tục dùng Corticosteroid tĩnh mạch tối đa trong **4 ngày**.
     - Nếu đã xác định được tác nhân qua nuôi cấy/PCR: Tiếp tục đủ 4 ngày nếu là _S. pneumoniae_ hoặc _H. influenzae_ typ b. Nếu là tác nhân vi khuẩn khác, có thể ngừng Corticosteroid.
-    - **Chống chỉ định tuyệt đối:** Không dùng Corticosteroid hỗ trợ cho bệnh nhân sốt rét thể não (cerebral malaria) do làm kéo dài thời gian hôn mê. Không chứng minh được lợi ích ở bệnh nhân nhiễm HIV giai đoạn tiến triển (advanced HIV disease).
+    - **Chống chỉ định tuyệt đối:** Không dùng Corticosteroid hỗ trợ cho bệnh nhân [[Sốt]] rét thể não (cerebral malaria) do làm kéo dài thời gian hôn mê. Không chứng minh được lợi ích ở bệnh nhân nhiễm HIV giai đoạn tiến triển (advanced HIV disease).
 
 **VI. Điều Trị Tăng Áp Lực Nội Sọ, Liệu Pháp Dịch Truyền Và Thuốc Chống Co Giật**
 
 - **Kiểm soát tăng áp lực nội sọ:**
     - **Khuyến cáo chống lại việc dùng Glycerol hỗ trợ thường quy** (Khuyến cáo có điều kiện chống lại, bằng chứng có chất lượng thấp). Glycerol đường uống có liên quan đến việc gia tăng tỷ lệ tử vong trong một số nghiên cứu ở vùng có dịch nhiễm HIV cao.
-    - Các tác nhân thẩm thấu khác như **Mannitol, Sorbitol và nước muối ưu trương** có thể được dùng làm biện pháp tạm thời để kiểm soát tăng áp lực nội sọ có nguy cơ đe dọa tụt não (như thay đổi ý thức nhanh, tăng huyết áp kết hợp chậm nhịp tim, mất phản xạ đồng tử).
+    - Các tác nhân thẩm thấu khác như **Mannitol, Sorbitol và nước muối ưu trương** có thể được dùng làm biện pháp tạm thời để kiểm soát tăng áp lực nội sọ có nguy cơ đe dọa tụt não (như thay đổi ý thức nhanh, [[Tăng huyết áp]] kết hợp chậm nhịp [[Tim]], mất phản xạ đồng tử).
 - **Liệu pháp dịch truyền:**
-    - **Khuyến cáo chống lại việc hạn chế dịch truyền thường quy** ở trẻ em và người lớn mắc viêm màng não vi khuẩn (Khuyến cáo có điều kiện chống lại, bằng chứng có chất lượng rất thấp). Dịch truyền duy trì ưu tiên dùng đường uống hoặc qua ống thông dạ dày (ở trẻ nhỏ, sữa mẹ là tối ưu). Nếu phải truyền tĩnh mạch, sử dụng dung dịch đẳng trương (như Ringer's lactate hoặc nước muối sinh lý). Chỉ hạn chế dịch mức độ vừa phải khi bệnh nhân có biểu hiện của Hội chứng tiết hormone bài niệu không thích hợp (SIADH) mà không có sốc hoặc giảm thể tích tuần hoàn.
+    - **Khuyến cáo chống lại việc hạn chế dịch truyền thường quy** ở trẻ em và người lớn mắc viêm màng não vi khuẩn (Khuyến cáo có điều kiện chống lại, bằng chứng có chất lượng rất thấp). Dịch truyền duy trì ưu tiên dùng đường uống hoặc qua ống thông dạ dày (ở trẻ nhỏ, sữa mẹ là tối ưu). Nếu phải truyền tĩnh mạch, sử dụng dung dịch đẳng trương (như Ringer's lactate hoặc nước muối sinh lý). Chỉ hạn chế dịch mức độ vừa phải khi bệnh nhân có biểu hiện của Hội chứng tiết hormone bài niệu không thích hợp (SIADH) mà không có [[Sốc]] hoặc giảm thể tích tuần hoàn.
 - **Quản lý co giật cấp tính:**
-    - Ở trẻ em và người lớn có cơn co giật triệu chứng cấp tính do viêm màng não, thuốc chống co giật (anti-seizure medicines - ASM) chỉ nên được tiếp tục sử dụng **không quá 3 tháng** nếu bệnh nhân không bị tái phát cơn co giật nào khác (Khuyến cáo có điều kiện, bằng chứng có chất lượng rất thấp). Việc kéo dài sử dụng không cần thiết làm tăng tác dụng phụ, tương tác thuốc và chi phí điều trị.
+    - Ở trẻ em và người lớn có [[Co giật|cơn co giật]] triệu chứng cấp tính do viêm màng não, thuốc chống co giật (anti-seizure medicines - ASM) chỉ nên được tiếp tục sử dụng **không quá 3 tháng** nếu bệnh nhân không bị tái phát [[Co giật|cơn co giật]] nào khác (Khuyến cáo có điều kiện, bằng chứng có chất lượng rất thấp). Việc kéo dài sử dụng không cần thiết làm tăng tác dụng phụ, tương tác thuốc và chi phí điều trị.
 
 **VII. Đánh Giá Lâm Sàng Và Phục Hồi Chức Năng Sau Viêm Màng Não (Management of Sequelae & Rehabilitation)**
 
-- **Đánh giá di chứng:** Trẻ em và người lớn sau viêm màng não do bất kỳ nguyên nhân nào đều phải được đánh giá lâm sàng phát hiện di chứng (như giảm thính lực, giảm thị lực, khiếm khuyết thần kinh khu trú, suy giảm nhận thức/trí tuệ, động kinh, hoại tử chi sẹo da) bởi nhân viên y tế **trước khi xuất viện** và tái khám đánh giá ít nhất một lần **trong vòng 4 tuần sau xuất viện** (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp).
+- **Đánh giá di chứng:** Trẻ em và người lớn sau viêm màng não do bất kỳ nguyên nhân nào đều phải được đánh giá lâm sàng phát hiện di chứng (như giảm thính lực, giảm thị lực, khiếm khuyết thần kinh khu trú, suy giảm nhận thức/trí tuệ, [[Động kinh]], hoại tử chi sẹo da) bởi nhân viên y tế **trước khi xuất viện** và tái khám đánh giá ít nhất một lần **trong vòng 4 tuần sau xuất viện** (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp).
 - **Chỉ định Phục hồi chức năng:** Cần cung cấp các can thiệp phục hồi chức năng đa chuyên khoa cho người bệnh có di chứng càng sớm càng tốt (Khuyến cáo mạnh mẽ, bằng chứng có chất lượng rất thấp). Việc can thiệp sớm tận dụng tối đa khả năng mềm dẻo của não bộ (neuroplasticity), đặc biệt ở trẻ dưới 3 tuổi.
 
 ---

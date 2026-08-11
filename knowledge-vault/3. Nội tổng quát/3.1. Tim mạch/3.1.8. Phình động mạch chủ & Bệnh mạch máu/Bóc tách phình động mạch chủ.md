@@ -1,6 +1,11 @@
 ---
 title: "Bóc tách phình động mạch chủ"
-specialty: "Tim mạch"
-tags: ["Nội tổng quát", "Tim mạch", "Bệnh lý cụ thể", "Phình động mạch chủ"]
-last_updated: "2026-07-28"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
 ---
+

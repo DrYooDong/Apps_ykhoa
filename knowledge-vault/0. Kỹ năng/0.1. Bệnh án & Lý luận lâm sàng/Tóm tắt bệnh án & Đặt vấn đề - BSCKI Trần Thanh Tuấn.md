@@ -1,9 +1,13 @@
 ---
 title: "Tóm tắt bệnh án & Đặt vấn đề - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Tóm tắt & Đặt vấn đề - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**
@@ -71,13 +75,13 @@ Ngoài các dấu hiệu trên thì không ghi nhận những bất thường kh
     
     *Tiền căn*:
     
-    - Tăng huyết áp 10 năm, 2 ngày nay ngưng điều trị.
+    - [[Tăng huyết áp]] 10 năm, 2 ngày nay ngưng điều trị.
     - Ngoài các triệu chứng trên bệnh nhân có bất thường gì khác
     
     **Vấn đề**:
     
     - Đau đầu cấp
-    - Cơn tăng huyết áp
+    - Cơn [[Tăng huyết áp]]
 
 ## **IX. Chẩn đoán:**
 
@@ -86,7 +90,7 @@ Ngoài các dấu hiệu trên thì không ghi nhận những bất thường kh
     - Chẩn đoán phân biệt (các chẩn đoán có khả năng xảy ra nhưng với xác xuất thấp hơn)
 - **Thành phần** chẩn đoán bao gồm: Bệnh gì? , Mức độ? (nhẹ, trung bình, nặng) , Nguyên nhân? , Biến chứng? , Bệnh đi kèm? (nếu có).
     
-    *Ví dụ: Chẩn đoán: Suy tim trái độ IV theo NYHA do bệnh cơ tim thiếu máu cục bộ, có biến chứng loạn nhịp – đái tháo đường type 2*
+    *Ví dụ: Chẩn đoán: Suy tim trái độ IV theo NYHA do bệnh [[Tim|cơ tim]] thiếu máu cục bộ, có biến chứng loạn nhịp – đái tháo đường type 2*
     
 
 **Lưu ý**:
@@ -95,8 +99,8 @@ Ngoài các dấu hiệu trên thì không ghi nhận những bất thường kh
     
     VD:
     
-    - Sơ bộ: *Nhồi máu cơ tim cấp giờ thứ 3, Killip I , Tăng huyết áp*
-    - Phân biệt: Đau thắt ngực không ổn định
+    - Sơ bộ: *Nhồi máu [[Tim|cơ tim]] cấp giờ thứ 3, Killip I , Tăng huyết áp*
+    - Phân biệt: [[[[Đau ngực]]|Đau thắt ngực]] không ổn định
     
     Trong trường hợp này **không cân đối** vì trong chẩn đoán sơ bộ chẩn đoán có 3 nội dung, trong khi chẩn đoán phân biệt chỉ có một nội dung
     

@@ -1,4 +1,11 @@
 ---
+title: "Phù phổi cấp"
+type: disease
+specialty: "Nội khoa"
 tags:
-  - Benhly
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
 ---
+

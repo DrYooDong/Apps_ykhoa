@@ -1,7 +1,13 @@
 ---
+title: "Nhóm ức chế quá trình chuyển chuỗi của enzyme Integrase (INSTIs)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 (Lưu ý: Các tài liệu bạn cung cấp tập trung chủ yếu vào đặc tính Dược động học/Dược lực học (PK/PD) và các thử nghiệm lâm sàng của nhóm thuốc này, không mô tả chi tiết cơ chế phân tử, phổ đề kháng hay tác dụng phụ. Để đảm bảo trọn vẹn cấu trúc chuẩn lâm sàng được yêu cầu, tôi đã bổ sung các kiến thức y khoa chuyên ngành ở một số mục và có ghi chú rõ ràng đây là thông tin ngoài tài liệu để bạn có thể xác minh độc lập).
 
 ### 1. Tổng quan & Phân loại (Classification)

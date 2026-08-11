@@ -1,12 +1,22 @@
+---
+title: "Tóm tắt Sepsis-3 (P1)"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
+
 ## 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Nghiên Cứu Đồng Thuận Sepsis-3 (Phần 1)
 
-Đồng thuận quốc tế lần thứ ba về định nghĩa Nhiễm khuẩn huyết và Sốc nhiễm khuẩn (Sepsis-3) được công bố vào năm 2016 bởi Hiệp hội Y học Hồi sức Cấp cứu Hoa Kỳ (SCCM) và Hiệp hội Hồi sức Cấp cứu Châu Âu (ESICM) nhằm cập nhật các khái niệm đã tồn tại hơn hai thập kỷ từ năm 1991 (Sepsis-1) và năm 2001 (Sepsis-2).
+Đồng thuận quốc tế lần thứ ba về định nghĩa [[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] và [[[[Sốc]] nhiễm khuẩn]] (Sepsis-3) được công bố vào năm 2016 bởi Hiệp hội Y học Hồi sức Cấp cứu Hoa Kỳ (SCCM) và Hiệp hội Hồi sức Cấp cứu Châu Âu (ESICM) nhằm cập nhật các khái niệm đã tồn tại hơn hai thập kỷ từ năm 1991 (Sepsis-1) và năm 2001 (Sepsis-2).
 
 #### 1.1. Bối Cảnh Và Sự Cần Thiết Của Việc Thay Đổi Định Nghĩa
 
 Các định nghĩa trước đây (Sepsis-1 và Sepsis-2) tập trung quá mức vào phản ứng viêm hệ thống thông qua tiêu chuẩn SIRS (Systemic Inflammatory Response Syndrome). Tuy nhiên, SIRS phản ánh phản ứng thích nghi sinh lý bình thường của cơ thể đối với "mối nguy hiểm" hơn là một phản ứng mất điều hòa mang tính đe dọa tính mạng. SIRS có độ nhạy và độ đặc hiệu kém: nhiều bệnh nhân nội viện có tiêu chuẩn SIRS nhưng không bao giờ tiến triển thành nhiễm trùng hoặc có kết cục xấu; ngược lại, cứ 8 bệnh nhân nhập ICU vì nhiễm trùng kèm suy tạng thì có 1 bệnh nhân không đáp ứng đủ tiêu chuẩn SIRS.
 
-Hơn nữa, mô hình cũ coi sepsis là một diễn tiến liên tục (continuum) từ nhiễm trùng đơn thuần sang nhiễm khuẩn huyết (Sepsis), nhiễm khuẩn huyết nặng (Severe Sepsis), rồi đến sốc nhiễm khuẩn (Septic Shock) là không chính xác về mặt bệnh học. Sepsis là một hội chứng phức tạp liên quan đến cả phản ứng tiền viêm và kháng viêm sớm, kèm theo các rối loạn lớn ở các con đường không liên quan đến miễn dịch như tim mạch, thần kinh, nội tiết, chuyển hóa và đông máu. Do đó, Ban đồng thuận quyết định loại bỏ hoàn toàn thuật ngữ **"Nhiễm khuẩn huyết nặng" (Severe Sepsis)** vì tính chất dư thừa của nó.
+Hơn nữa, mô hình cũ coi sepsis là một diễn tiến liên tục (continuum) từ nhiễm trùng đơn thuần sang [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] (Sepsis), nhiễm khuẩn huyết nặng (Severe Sepsis), rồi đến [[[[Sốc]] nhiễm khuẩn]] (Septic Shock) là không chính xác về mặt bệnh học. Sepsis là một hội chứng phức tạp liên quan đến cả phản ứng tiền viêm và kháng viêm sớm, kèm theo các rối loạn lớn ở các con đường không liên quan đến miễn dịch như [[Tim]] mạch, thần kinh, nội tiết, chuyển hóa và đông máu. Do đó, Ban đồng thuận quyết định loại bỏ hoàn toàn thuật ngữ **"Nhiễm khuẩn huyết nặng" (Severe Sepsis)** vì tính chất dư thừa của nó.
 
 ---
 
@@ -17,7 +27,7 @@ Hơn nữa, mô hình cũ coi sepsis là một diễn tiến liên tục (contin
 > - Thân nhiệt \(>38^\circ\text{C}\) hoặc \(<36^\circ\text{C}\)
 > - Nhịp tim \(>90\) lần/phút
 > - Nhịp thở \(>20\) lần/phút hoặc \(PaCO_2 <32\text{ mmHg}\) (\(4.3\text{ kPa}\))
-> - Số lượng bạch cầu \(>12.000/\text{mm}^3\) hoặc \(<4000/\text{mm}^3\) hoặc có \(>10%\) bạch cầu đũa (immature bands)
+> - [[[[Bạch cầu]]|Số lượng bạch cầu]] \(>12.000/\text{mm}^3\) hoặc \(<4000/\text{mm}^3\) hoặc có \(>10%\) bạch cầu đũa (immature bands)
 
 ---
 
@@ -41,9 +51,9 @@ Hơn nữa, mô hình cũ coi sepsis là một diễn tiến liên tục (contin
 
 Để vận hành định nghĩa trên lâm sàng, tình trạng rối loạn chức năng cơ quan được xác định bằng **sự gia tăng cấp tính của điểm SOFA (Sequential Organ Failure Assessment) từ 2 điểm trở lên** do nhiễm trùng gây ra.
 
-- Điểm SOFA đánh giá mức độ suy chức năng của 6 hệ cơ quan (hô hấp, đông máu, gan, tim mạch, thần kinh trung ương và thận).
+- Điểm SOFA đánh giá mức độ suy chức năng của 6 hệ cơ quan (hô hấp, đông máu, [[Gan]], tim mạch, thần kinh trung ương và [[Thận]]).
 - Điểm SOFA nền của bệnh nhân được giả định bằng 0 trừ khi bệnh nhân đã có rối loạn chức năng cơ quan cấp tính hoặc mạn tính từ trước khi xảy ra nhiễm trùng.
-- Sự gia tăng điểm SOFA \(\ge 2\) điểm tương ứng với tỷ lệ tử vong trong bệnh viện khoảng hơn 10% trong quần thể bệnh nhân nghi ngờ nhiễm trùng. Mức độ nguy cơ này cao hơn cả tỷ lệ tử vong của nhồi máu cơ tim cấp có ST chênh lên (STEMI) (khoảng 8.1%).
+- Sự gia tăng điểm SOFA \(\ge 2\) điểm tương ứng với tỷ lệ tử vong trong bệnh viện khoảng hơn 10% trong quần thể bệnh nhân nghi ngờ nhiễm trùng. Mức độ nguy cơ này cao hơn cả tỷ lệ tử vong của nhồi máu [[Tim|cơ tim]] cấp có ST chênh lên (STEMI) (khoảng 8.1%).
 
 ---
 

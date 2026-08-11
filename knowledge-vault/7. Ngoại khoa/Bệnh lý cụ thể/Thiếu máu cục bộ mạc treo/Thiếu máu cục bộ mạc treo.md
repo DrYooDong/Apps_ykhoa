@@ -1,4 +1,20 @@
-﻿---
+---
+title: "Thiếu máu cục bộ mạc treo"
+type: disease
+specialty: "Ngoại khoa"
 tags:
-  - Benhly
----[[1. Areas/7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/1. Tổng quan & Dịch tễ học|1. Tổng quan & Dịch tễ học]]][[1. Areas/7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/2. Cơ chế bệnh sinh|2. Cơ chế bệnh sinh]]][[1. Areas/7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/3. Lâm sàng|3. Lâm sàng]]][[1. Areas/7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/4. Cận lâm sàng|4. Cận lâm sàng]]][[1. Areas/7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/5. Chẩn đoán|5. Chẩn đoán]]][[1. Areas/7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/6. Điều trị chung|6. Điều trị chung]]][[1. Areas/7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/7. Biến chứng|7. Biến chứng]]][[1. Areas/7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/8. Tiên lượng|8. Tiên lượng]]]
+  - loai/benh-ly
+  - y-khoa/ngoai-khoa
+updated: "2026-08-11"
+---
+
+## 📌 Danh Mục Nội Dung
+
+1. [[7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/1. Tổng quan & Dịch tễ học|1. Tổng quan & Dịch tễ học]]
+2. [[7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/2. Cơ chế bệnh sinh|2. Cơ chế bệnh sinh]]
+3. [[7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/3. Lâm sàng|3. Lâm sàng]]
+4. [[7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/4. Cận lâm sàng|4. Cận lâm sàng]]
+5. [[7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/5. Chẩn đoán|5. Chẩn đoán]]
+6. [[7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/6. Điều trị chung|6. Điều trị chung]]
+7. [[7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/7. Biến chứng|7. Biến chứng]]
+8. [[7. Ngoại khoa/Bệnh lý cụ thể/Thiếu máu cục bộ mạc treo/8. Tiên lượng|8. Tiên lượng]]

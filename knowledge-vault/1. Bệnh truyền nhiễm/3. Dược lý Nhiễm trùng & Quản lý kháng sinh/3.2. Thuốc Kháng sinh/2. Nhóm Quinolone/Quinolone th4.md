@@ -1,6 +1,11 @@
 ---
+title: "Quinolone th4"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 ### 1. Tổng quan & Phân loại (Classification)
@@ -9,12 +14,12 @@ tags:
 - **Các hoạt chất đại diện:**
     - **Delafloxacin:** Hoạt chất mới nhất, tiêu biểu nhất cho nhóm này hiện nay đang được sử dụng lâm sàng.
     - **Sitafloxacin:** Chủ yếu được lưu hành tại một số quốc gia (như Nhật Bản).
-    - **Trovafloxacin:** Từng được phê duyệt nhưng đã bị rút khỏi thị trường do độc tính nghiêm trọng trên gan.
+    - **Trovafloxacin:** Từng được phê duyệt nhưng đã bị rút khỏi thị trường do độc tính nghiêm trọng trên [[Gan]].
 - **Cấu trúc hóa học:** Vẫn mang cấu trúc vòng đôi lõi của quinolone với nguyên tử Fluor ở vị trí C6. Điểm đột phá của Delafloxacin là có nhóm thế 3-hydroxy-1-azetidinyl (anionic) ở vị trí C7 và nhóm 1-6-amino-3,5-difluoro-2-pyridinyl ở vị trí C1. Nhờ cấu trúc này, Delafloxacin có **tính acid yếu**, giúp tăng cường thâm nhập và duy trì hoạt tính diệt khuẩn mạnh mẽ ngay cả trong môi trường có độ pH thấp (như ổ áp xe).
 
 ### 2. Cơ chế tác dụng & Đề kháng (MOA & Resistance)
 
-- **Tính chất:** Là kháng sinh diệt khuẩn (Bactericidal).
+- **Tính chất:** Là [[Kháng sinh]] diệt khuẩn (Bactericidal).
 - **Cơ chế tác dụng:** Quinolone ức chế hai enzyme topoisomerase type II của vi khuẩn là **DNA gyrase** (ở Gram-âm) và **Topoisomerase IV** (ở Gram-dương), làm ngăn cản quá trình tháo xoắn và sao chép DNA, dẫn đến ly giải tế bào vi khuẩn. Delafloxacin có đặc điểm ưu việt là ức chế cân bằng và tác động mạnh lên cả hai đích enzyme này cùng lúc.
 - **Cơ chế đề kháng chính:** Vi khuẩn kháng thuốc thông qua đột biến gen đích (_gyrA, parC_), tăng hoạt động bơm tống thuốc (efflux pumps) và giảm tính thấm màng. Tuy nhiên, nhờ khả năng ức chế song song cả hai enzyme đích, **Delafloxacin có xác suất chọn lọc đột biến kháng thuốc rất thấp**, đặc biệt là đối với _Staphylococcus aureus_.
 
@@ -43,18 +48,18 @@ Thế hệ 4 có phổ kháng khuẩn cực kỳ rộng, bao phủ hầu hết c
 
 ### 6. An toàn thuốc (ADRs & Contraindications)
 
-- **Đặc điểm an toàn nổi bật của Delafloxacin:** Trái ngược với moxifloxacin hay các quinolone cũ, Delafloxacin **không gây kéo dài khoảng QT** trên điện tâm đồ, do đó an toàn hơn trên bệnh nhân có bệnh lý tim mạch.
+- **Đặc điểm an toàn nổi bật của Delafloxacin:** Trái ngược với moxifloxacin hay các quinolone cũ, Delafloxacin **không gây kéo dài khoảng QT** trên điện tâm đồ, do đó an toàn hơn trên bệnh nhân có bệnh lý [[Tim]] mạch.
 - **Tác dụng không mong muốn (ADRs) chung của nhóm:**
-    - **Cơ xương khớp (Cảnh báo hộp đen):** Nguy cơ viêm gân và đứt gân gót (Achilles), rủi ro cao hơn ở người lớn tuổi hoặc dùng chung corticoid.
-    - **Thần kinh:** Bệnh lý thần kinh ngoại biên, đau đầu, chóng mặt, và nguy cơ hạ ngưỡng co giật.
-    - **Khác:** Rối loạn tiêu hóa, tiêu chảy do bùng phát _Clostridioides difficile_, và rối loạn đường huyết.
+    - **Cơ xương khớp (Cảnh báo hộp đen):** Nguy cơ viêm gân và đứt gân gót (Achilles), rủi ro cao hơn ở người lớn tuổi hoặc dùng chung [[Corticoid]].
+    - **Thần kinh:** Bệnh lý thần kinh ngoại biên, đau đầu, chóng mặt, và nguy cơ hạ ngưỡng [[Co giật]].
+    - **Khác:** Rối loạn tiêu hóa, [[Tiêu chảy]] do bùng phát _Clostridioides difficile_, và rối loạn đường huyết.
 - **Tương tác thuốc:** **Tuyệt đối tránh** uống Delafloxacin cùng lúc với các thuốc kháng acid dạ dày (chứa Nhôm, Magie) hoặc viên uống bổ sung Sắt, Canxi, Kẽm do tạo phức chelate làm mất hấp thu thuốc. Cần uống cách xa ít nhất 2 giờ trước hoặc 2-6 giờ sau.
 
 ### 7. Theo dõi & Giám sát (Monitoring)
 
-- **Giám sát chức năng Thận:**
-    - Với dạng tiêm tĩnh mạch (IV) của Delafloxacin, **phải giảm liều hoặc chuyển sang đường uống** khi mức lọc cầu thận CrCl < 30 mL/min. Nguyên nhân không hẳn do bản thân thuốc, mà do nguy cơ tích lũy tá dược _sulfobutylether-β-cyclodextrin_ (SBECD) trong dung dịch tiêm truyền có thể gây độc cho thận.
-- **Giám sát chức năng Gan:** Delafloxacin không yêu cầu hiệu chỉnh liều trên bệnh nhân suy gan.
+- **Giám sát chức năng [[Thận]]:**
+    - Với dạng tiêm tĩnh mạch (IV) của Delafloxacin, **phải giảm liều hoặc chuyển sang đường uống** khi mức lọc cầu [[Thận]] CrCl < 30 mL/min. Nguyên nhân không hẳn do bản thân thuốc, mà do nguy cơ tích lũy tá dược _sulfobutylether-β-cyclodextrin_ (SBECD) trong dung dịch tiêm truyền có thể gây độc cho thận.
+- **Giám sát chức năng [[Gan]]:** Delafloxacin không yêu cầu hiệu chỉnh liều trên bệnh nhân suy gan.
 - **Dấu hiệu cảnh báo lâm sàng:** Yêu cầu bệnh nhân ngừng thuốc và báo ngay cho bác sĩ nếu gặp tình trạng đau gót chân, sưng gân, hoặc có dấu hiệu tê bì/kiến bò tay chân (thần kinh ngoại biên).
 
 ### 8. Bảng kiểm lâm sàng nhanh (Quick Checklist)
@@ -63,6 +68,6 @@ Tóm tắt 5 câu hỏi cốt lõi khi kê đơn Delafloxacin (Quinolone thế h
 
 1. **Đúng chẩn đoán & Chỉ định?** (Là nhiễm trùng da mô mềm phức tạp/cấp tính có nguy cơ cao do MRSA hoặc vi khuẩn kỵ khí sinh mủ?).
 2. **Đúng phổ?** (Thuốc bao phủ xuất sắc MRSA, Gram-âm và Kỵ khí. Đặc biệt ưu thế ở các ổ viêm áp xe có pH thấp).
-3. **Bệnh nhân có chức năng thận kém không?** (Nếu CrCl < 30 mL/min, **KHÔNG** dùng dạng truyền tĩnh mạch (IV) do tích lũy tá dược SBECD, phải ưu tiên dùng đường uống (PO) nếu đường tiêu hóa ổn định).
+3. **Bệnh nhân có chức năng thận kém không?** (Nếu CrCl < 30 mL/min, **KHÔNG** dùng dạng truyền tĩnh mạch (IV) do tích lũy tá dược SBECD, phải ưu tiên dùng đường uống (PO) nếu [[Đường tiêu hóa]] ổn định).
 4. **Tương tác thuốc?** (Đã hướng dẫn bệnh nhân uống cách xa các chế phẩm chứa kim loại đa hóa trị (Sắt, Canxi, Magie, thuốc dạ dày) chưa?).
 5. **Bệnh nhân có nguy cơ đứt gân/thần kinh không?** (Mặc dù thuốc không kéo dài QT, nhưng vẫn mang cảnh báo hộp đen về viêm đứt gân và thần kinh ngoại biên tương tự các Quinolone khác).

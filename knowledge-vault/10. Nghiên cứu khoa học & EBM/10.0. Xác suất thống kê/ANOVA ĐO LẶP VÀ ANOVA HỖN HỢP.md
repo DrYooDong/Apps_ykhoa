@@ -1,9 +1,13 @@
 ---
 title: "ANOVA ĐO LẶP VÀ ANOVA HỖN HỢP"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐀𝐧𝐨𝐯𝐚 đ𝐨 𝐥𝐚̣̆𝐩 (𝐑𝐞𝐩𝐞𝐚𝐭𝐞𝐝 𝐀𝐧𝐨𝐯𝐚) 𝐯𝐚̀ 𝐀𝐧𝐨𝐯𝐚 𝐡𝐨̂̃𝐧 𝐡𝐨̛̣𝐩 - 𝐏𝐡𝐚̂̀𝐧 𝟒 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́
 
 TS. Đào Hồng Nam
@@ -18,11 +22,11 @@ Trong nhiều nghiên cứu y học, mục tiêu không chỉ là so sánh các 
 
 ANOVA đo lặp được sử dụng khi cùng một biến phụ thuộc được đo nhiều lần trên cùng một đối tượng nghiên cứu. Các lần đo có thể được thực hiện theo thời gian hoặc dưới nhiều điều kiện can thiệp khác nhau.
 
-Trong nghiên cứu lâm sàng, ANOVA đo lặp thường được áp dụng để đánh giá diễn biến của các chỉ số sinh học sau điều trị, theo dõi đáp ứng miễn dịch sau tiêm vaccine, đánh giá chức năng vận động trong quá trình phục hồi chức năng hoặc theo dõi chất lượng cuộc sống của bệnh nhân trong nhiều giai đoạn khác nhau.
+Trong nghiên cứu lâm sàng, ANOVA đo lặp thường được áp dụng để đánh giá diễn biến của các chỉ số sinh học sau điều trị, theo dõi đáp ứng miễn dịch sau tiêm [[Vắc-xin|vaccine]], đánh giá chức năng vận động trong quá trình phục hồi chức năng hoặc theo dõi chất lượng cuộc sống của bệnh nhân trong nhiều giai đoạn khác nhau.
 
-Điều kiện quan trọng nhất của mô hình là tất cả các lần đo đều được thực hiện trên cùng một đối tượng. Nếu các nhóm quan sát ở từng thời điểm gồm những đối tượng khác nhau, ANOVA đo lặp không còn phù hợp và cần sử dụng ANOVA giữa các nhóm hoặc các mô hình khác.
+Điều kiện quan trọng nhất của mô hình là tất cả các lần đo đều được thực hiện trên cùng một đối tượng. Nếu các nhóm quan sát ở từng thời điểm gồm những đối tượng khác nhau, ANOVA đo lặp không còn [[Phù]] hợp và cần sử dụng ANOVA giữa các nhóm hoặc các mô hình khác.
 
-𝐕𝐢́ 𝐝𝐮̣ 10. Một nghiên cứu đánh giá hiệu quả của một thuốc điều trị đái tháo đường trên 60 bệnh nhân. Nồng độ HbA1c được đo trước điều trị, sau 3 tháng, 6 tháng và 12 tháng. Vì cả bốn lần đo đều được thực hiện trên cùng một bệnh nhân nên các quan sát có tương quan với nhau. Trong trường hợp này, ANOVA đo lặp là phương pháp phù hợp để đánh giá sự thay đổi của HbA1c theo thời gian.
+𝐕𝐢́ 𝐝𝐮̣ 10. Một nghiên cứu đánh giá hiệu quả của một thuốc điều trị đái tháo đường trên 60 bệnh nhân. Nồng độ HbA1c được đo trước điều trị, sau 3 tháng, 6 tháng và 12 tháng. Vì cả bốn lần đo đều được thực hiện trên cùng một bệnh nhân nên các quan sát có tương quan với nhau. Trong trường hợp này, ANOVA đo lặp là phương pháp [[Phù]] hợp để đánh giá sự thay đổi của HbA1c theo thời gian.
 
 𝟒.𝟐. 𝐌𝐨̂ 𝐡𝐢̀𝐧𝐡 𝐜𝐮̉𝐚 𝐀𝐍𝐎𝐕𝐀 đ𝐨 𝐥𝐚̣̆𝐩
 
@@ -88,13 +92,13 @@ Sau khi xác định ANOVA có ý nghĩa thống kê, bước tiếp theo là ph
 
 Trong báo cáo khoa học, kết quả nên bao gồm thống kê F, bậc tự do đã hiệu chỉnh (nếu có), giá trị p, cỡ ảnh hưởng và phương pháp hiệu chỉnh được sử dụng. Nếu thực hiện các phép so sánh từng cặp, cần trình bày rõ chênh lệch trung bình, khoảng tin cậy 95% và giá trị p đã điều chỉnh.
 
-𝐕𝐢́ 𝐝𝐮̣ 12. Một nghiên cứu đánh giá chức năng hô hấp ở bệnh nhân mắc bệnh phổi tắc nghẽn mạn tính trước điều trị và sau 1, 3, 6 và 12 tháng. Kiểm định Mauchly cho kết quả p = 0,018, cho thấy giả định cầu phương bị vi phạm. Sau khi hiệu chỉnh theo Greenhouse-Geisser, ANOVA đo lặp cho thấy chức năng hô hấp thay đổi có ý nghĩa thống kê theo thời gian (F(2,84; 224,36) = 18,52; p < 0,001; partial η² = 0,190). Phân tích hậu nghiệm với hiệu chỉnh Bonferroni cho thấy chỉ số FEV₁ cải thiện rõ rệt từ trước điều trị đến tháng thứ 3 và tiếp tục tăng đến tháng thứ 6, trong khi sự khác biệt giữa tháng thứ 6 và tháng thứ 12 không còn có ý nghĩa thống kê. Kết quả này cho thấy hiệu quả của chương trình điều trị tập trung chủ yếu trong sáu tháng đầu, sau đó chức năng hô hấp duy trì ở mức tương đối ổn định.
+𝐕𝐢́ 𝐝𝐮̣ 12. Một nghiên cứu đánh giá chức năng hô hấp ở bệnh nhân mắc bệnh [[Phổi]] tắc nghẽn mạn tính trước điều trị và sau 1, 3, 6 và 12 tháng. Kiểm định Mauchly cho kết quả p = 0,018, cho thấy giả định cầu phương bị vi phạm. Sau khi hiệu chỉnh theo Greenhouse-Geisser, ANOVA đo lặp cho thấy chức năng hô hấp thay đổi có ý nghĩa thống kê theo thời gian (F(2,84; 224,36) = 18,52; p < 0,001; partial η² = 0,190). Phân tích hậu nghiệm với hiệu chỉnh Bonferroni cho thấy chỉ số FEV₁ cải thiện rõ rệt từ trước điều trị đến tháng thứ 3 và tiếp tục tăng đến tháng thứ 6, trong khi sự khác biệt giữa tháng thứ 6 và tháng thứ 12 không còn có ý nghĩa thống kê. Kết quả này cho thấy hiệu quả của chương trình điều trị tập trung chủ yếu trong sáu tháng đầu, sau đó chức năng hô hấp duy trì ở mức tương đối ổn định.
 
 Mặc dù ANOVA đo lặp là công cụ hữu hiệu đối với các nghiên cứu theo dõi dọc trên một nhóm đối tượng, nhiều nghiên cứu lâm sàng đồng thời có nhiều nhóm điều trị và nhiều thời điểm đánh giá. Trong những tình huống này, nhà nghiên cứu cần đánh giá đồng thời ảnh hưởng của nhóm điều trị, thời gian và sự tương tác giữa hai yếu tố. Mô hình phù hợp cho loại thiết kế này là ANOVA hỗn hợp, sẽ được trình bày trong mục tiếp theo.
 
 𝟓. 𝐀𝐍𝐎𝐕𝐀 𝐡𝐨̂̃𝐧 𝐡𝐨̛̣𝐩
 
-Trong nhiều thử nghiệm lâm sàng, nhà nghiên cứu không chỉ quan tâm đến sự thay đổi của một chỉ số theo thời gian mà còn muốn xác định liệu mức độ thay đổi đó có khác nhau giữa các nhóm điều trị hay không. Chẳng hạn, một nghiên cứu có thể so sánh ba thuốc điều trị tăng huyết áp và theo dõi huyết áp của bệnh nhân trước điều trị, sau 4 tuần, 8 tuần và 12 tuần. Trong thiết kế này, mỗi bệnh nhân được đo lặp nhiều lần theo thời gian nhưng đồng thời chỉ thuộc một nhóm điều trị duy nhất. Dữ liệu vì vậy vừa có yếu tố giữa các nhóm (between-subject factor), vừa có yếu tố trong nhóm (within-subject factor). ANOVA hỗn hợp (Mixed ANOVA hay Mixed-design ANOVA) được phát triển để phân tích đồng thời hai loại yếu tố này trong cùng một mô hình thống kê (Field, 2018).
+Trong nhiều thử nghiệm lâm sàng, nhà nghiên cứu không chỉ quan tâm đến sự thay đổi của một chỉ số theo thời gian mà còn muốn xác định liệu mức độ thay đổi đó có khác nhau giữa các nhóm điều trị hay không. Chẳng hạn, một nghiên cứu có thể so sánh ba thuốc điều trị [[Tăng huyết áp]] và theo dõi huyết áp của bệnh nhân trước điều trị, sau 4 tuần, 8 tuần và 12 tuần. Trong thiết kế này, mỗi bệnh nhân được đo lặp nhiều lần theo thời gian nhưng đồng thời chỉ thuộc một nhóm điều trị duy nhất. Dữ liệu vì vậy vừa có yếu tố giữa các nhóm (between-subject factor), vừa có yếu tố trong nhóm (within-subject factor). ANOVA hỗn hợp (Mixed ANOVA hay Mixed-design ANOVA) được phát triển để phân tích đồng thời hai loại yếu tố này trong cùng một mô hình thống kê (Field, 2018).
 
 So với ANOVA đo lặp hoặc ANOVA hai yếu tố, ANOVA hỗn hợp cho phép đánh giá toàn diện hơn hiệu quả của can thiệp. Phương pháp không chỉ xác định liệu các nhóm điều trị có khác nhau hay không, liệu chỉ số nghiên cứu có thay đổi theo thời gian hay không, mà còn trả lời câu hỏi quan trọng nhất trong nhiều nghiên cứu lâm sàng: các nhóm điều trị có thay đổi theo thời gian theo cùng một xu hướng hay không. Đây chính là hiệu ứng tương tác giữa nhóm nghiên cứu và thời gian.
 

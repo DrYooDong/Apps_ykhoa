@@ -1,10 +1,16 @@
 ---
+title: "Sốt mò (Scrub typhus)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 # 1. Đại cương và Lịch sử
 
-- **Định nghĩa:** Sốt mò (Scrub typhus) là căn bệnh truyền nhiễm cấp tính, được xem là nguyên nhân hàng đầu gây ra các bệnh lý sốt không biệt hóa có thể điều trị được tại nhiều khu vực thuộc Đông Nam Á.
+- **Định nghĩa:** [[Sốt]] mò (Scrub typhus) là căn bệnh truyền nhiễm cấp tính, được xem là nguyên nhân hàng đầu gây ra các bệnh lý [[Sốt]] không biệt hóa có thể điều trị được tại nhiều khu vực thuộc Đông Nam Á.
 - **Lịch sử:** Những ghi chép lâm sàng đầu tiên về sốt mò xuất hiện từ năm 313 TCN trong một tài liệu y học của Trung Quốc (_Zhouhofang_). Đến năm 1810, tại Niigata, Nhật Bản, bệnh được xác định có liên quan đến ve/mò truyền bệnh, từ đó ra đời định nghĩa lâm sàng đầu tiên về bệnh sốt tsutsugamushi. Trong Thế chiến II, sốt mò là nguyên nhân gây nhập viện nhiều thứ hai (chỉ sau sốt rét) đối với lính Mỹ tại mặt trận Thái Bình Dương.
 
 # 2. Đặc điểm Vi sinh học
@@ -23,8 +29,8 @@ tags:
 # 4. Cơ chế bệnh sinh và Biểu hiện Lâm sàng
 
 - **Tổn thương tại chỗ (Eschar):** Khi ấu trùng mò cắn và hút bạch huyết, chúng tiết nước bọt truyền vi khuẩn vào cơ thể. Tại vết cắn (thường ở các vị trí da mềm, ẩm hoặc bị quần áo cọ xát như thắt lưng, cổ áo, nách, bẹn, nếp dưới vú), một vết loét hoại tử có vảy đen đặc trưng gọi là **eschar (vết loét mò cắn)** sẽ hình thành.
-- **Ái tính mô học:** Tại vết loét eschar, vi khuẩn _Orientia_ cho thấy ái tính (tropism) xâm nhập mạnh mẽ vào các **tế bào đuôi gai (dendritic cells) và tế bào bạch cầu đơn nhân (monocytes)** thay vì tế bào nội mô.
-- **Phát tán và tổn thương hệ thống:** Vi khuẩn xâm nhập và nhân lên trong vùng quanh nhân của tế bào nội mạc mạch máu, tạo thành các ổ thâm nhiễm tế bào đơn nhân (CD14+ monocytes/macrophages) và tế bào T (CD3+) quanh các mạch máu nhỏ, gây viêm mạch máu lan tỏa. Bệnh có thể gây biến chứng nặng dẫn đến suy đa tạng, viêm não màng não và tử vong nếu không được điều trị kịp thời.
+- **Ái tính mô học:** Tại vết loét eschar, vi khuẩn _Orientia_ cho thấy ái tính (tropism) xâm nhập mạnh mẽ vào các **tế bào đuôi gai (dendritic cells) và tế bào [[Bạch cầu]] đơn nhân (monocytes)** thay vì tế bào nội mô.
+- **Phát tán và tổn thương hệ thống:** Vi khuẩn xâm nhập và nhân lên trong vùng quanh nhân của tế bào nội mạc mạch máu, tạo thành các ổ thâm nhiễm tế bào đơn nhân (CD14+ monocytes/macrophages) và tế bào T (CD3+) quanh các mạch máu nhỏ, gây viêm mạch máu lan tỏa. Bệnh có thể gây biến chứng nặng dẫn đến suy đa tạng, [[Viêm não]] màng não và tử vong nếu không được điều trị kịp thời.
 
 # 5. Chẩn đoán
 
@@ -34,9 +40,9 @@ tags:
 
 # 6. Điều trị
 
-- Sốt mò là bệnh nhiễm rickettsia có thể điều trị hiệu quả bằng kháng sinh. **Doxycycline** và **Azithromycin** là các thuốc được lựa chọn hàng đầu.
+- Sốt mò là bệnh nhiễm rickettsia có thể điều trị hiệu quả bằng [[Kháng sinh]]. **Doxycycline** và **Azithromycin** là các thuốc được lựa chọn hàng đầu.
 - Trong trường hợp sốt mò tiến triển nặng, bệnh nhân cần được điều trị bằng Doxycycline tiêm tĩnh mạch, Azithromycin tiêm tĩnh mạch, hoặc kết hợp cả hai.
-- Trước đây có một số báo cáo e ngại về tình trạng _O. tsutsugamushi_ kháng doxycycline ở miền Bắc Thái Lan, tuy nhiên các đánh giá y khoa hiện đại đã chỉ ra đây là một sự hiểu lầm (misconception) và Doxycycline vẫn là nền tảng điều trị hiệu quả. Hiện tại vẫn chưa có vắc-xin phòng ngừa bệnh hiệu quả.
+- Trước đây có một số báo cáo e ngại về tình trạng _O. tsutsugamushi_ kháng doxycycline ở miền Bắc Thái Lan, tuy nhiên các đánh giá y khoa hiện đại đã chỉ ra đây là một sự hiểu lầm (misconception) và Doxycycline vẫn là nền tảng điều trị hiệu quả. Hiện tại vẫn chưa có [[Vắc-xin]] phòng ngừa bệnh hiệu quả.
 
 ---
 

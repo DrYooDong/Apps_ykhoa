@@ -1,11 +1,16 @@
 ---
+title: "Monobactam (Aztreonam)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 ## 1. Tổng quan & Phân loại (Classification)
 
-- **Tên nhóm:** Monobactam (Kháng sinh $\beta$-lactam đơn vòng).
+- **Tên nhóm:** Monobactam ([[Kháng sinh]] $\beta$-lactam đơn vòng).
 - **Các hoạt chất đại diện:** Aztreonam là hoạt chất duy nhất trong nhóm này hiện đang được sử dụng trên lâm sàng. (Một hoạt chất khác là Carumonam hiện không còn được sử dụng).
 - **Lịch sử & Nguồn gốc:** Khung cấu trúc cốt lõi của nhóm được phân lập ban đầu từ vi khuẩn _Chromobacterium violaceum_.
 - **Cấu trúc hóa học:** Khác với các penicillins và cephalosporins có cấu trúc vòng đôi (bicyclic), Aztreonam là một $\beta$-lactam tổng hợp có cấu trúc lõi chỉ gồm một vòng đơn chứa 2-oxoazetidine-1-sulfonic acid.
@@ -15,7 +20,7 @@ tags:
 
 ### 2. Cơ chế tác dụng & Đề kháng (MOA & Resistance)
 
-- **Tính chất:** Là kháng sinh diệt khuẩn (Bactericidal), có dược lực học phụ thuộc thời gian ($f$T > MIC).
+- **Tính chất:** Là [[Kháng sinh]] diệt khuẩn (Bactericidal), có dược lực học phụ thuộc thời gian ($f$T > MIC).
 - **Cơ chế tác dụng:** Aztreonam dễ dàng xuyên qua màng ngoài của vi khuẩn và gắn với ái lực rất cao vào Protein gắn Penicillin 3 (PBP3) của vi khuẩn Gram-âm. Sự ức chế PBP3 gây ra hiện tượng tạo sợi (filamentation) ở tế bào vi khuẩn, dẫn đến ly giải và chết tế bào.
 - **Cơ chế đề kháng chính:**
     1. **Sản xuất enzyme $\beta$-lactamase:** Aztreonam rất bền vững và **không bị thủy phân** bởi tất cả các enzyme Metallo-$\beta$-lactamase (MBLs - Ambler class B) như NDM, VIM, IMP. Tuy nhiên, thuốc lại bị thủy phân mạnh bởi các enzyme $\beta$-lactamase phổ rộng (ESBLs), enzyme AmpC và các serine carbapenemase (như KPC). Ở các chủng _Pseudomonas aeruginosa_, _Enterobacter cloacae_, và _Citrobacter freundii_ kháng thuốc, nguyên nhân phần lớn là do vi khuẩn sản xuất men AmpC.
@@ -32,11 +37,11 @@ tags:
 
 ### 4. Dược động học & Dược lực học lâm sàng (PK/PD)
 
-- **Hấp thu (A):** Thuốc không được hấp thu qua đường tiêu hóa nên chỉ có các dạng tiêm/truyền tĩnh mạch (IV), tiêm bắp (IM) và dạng hít (inhalation).
+- **Hấp thu (A):** Thuốc không được hấp thu qua [[Đường tiêu hóa]] nên chỉ có các dạng tiêm/truyền tĩnh mạch (IV), tiêm bắp (IM) và dạng hít (inhalation).
 - **Chuyển hóa & Thải trừ (M/E):**
-    - Quá trình chuyển hóa qua gan không đáng kể.
-    - Thải trừ chủ yếu dưới dạng nguyên vẹn qua thận (60-65% thu hồi trong nước tiểu). Tốc độ thanh thải của Aztreonam tỷ lệ tuyến tính với độ thanh thải creatinin trong nước tiểu.
-    - Thời gian bán thải (T1/2) ở người lớn có chức năng thận và gan bình thường là khoảng 1.7 giờ. Ở trẻ sơ sinh dưới 7 ngày tuổi, T1/2 kéo dài khoảng 6 giờ. Bệnh nhân suy giảm chức năng thận sẽ có T1/2 kéo dài hơn đáng kể.
+    - Quá trình chuyển hóa qua [[Gan]] không đáng kể.
+    - Thải trừ chủ yếu dưới dạng nguyên vẹn qua [[Thận]] (60-65% thu hồi trong nước tiểu). Tốc độ thanh thải của Aztreonam tỷ lệ tuyến tính với độ thanh thải creatinin trong nước tiểu.
+    - Thời gian bán thải (T1/2) ở người lớn có chức năng [[Thận]] và [[Gan]] bình thường là khoảng 1.7 giờ. Ở trẻ sơ sinh dưới 7 ngày tuổi, T1/2 kéo dài khoảng 6 giờ. Bệnh nhân suy giảm chức năng thận sẽ có T1/2 kéo dài hơn đáng kể.
     - Aztreonam bị loại bỏ qua lọc máu ngắt quãng (khoảng một nửa liều 1g bị loại bỏ ngay trước khi lọc), lọc máu liên tục (CVVH) và thẩm phân phúc mạc.
 
 ### 5. Chỉ định & Chiến lược điều trị (Stewardship)
@@ -54,7 +59,7 @@ tags:
 - **Tác dụng không mong muốn (ADRs):** Nói chung thuốc dung nạp tốt.
     - **Gan:** Tăng men gan (ALT/AST) được ghi nhận ở 39.6% người tình nguyện khỏe mạnh, phổ biến hơn khi dùng liều cao tới 8 g/ngày.
     - **Tại chỗ:** Viêm tĩnh mạch tại vị trí tiêm (<2%).
-    - **Hệ tiêu hóa & Khác:** Tiêu chảy, buồn nôn, nôn, phát ban và giảm bạch cầu hạt (khoảng 1%).
+    - **Hệ tiêu hóa & Khác:** [[Tiêu chảy]], [[[[Nôn ói]]|buồn nôn]], nôn, phát ban và giảm [[Bạch cầu]] hạt (khoảng 1%).
 - **Dị ứng & Phản ứng chéo (Đặc biệt quan trọng):**
     - Tỷ lệ phản ứng chéo giữa Aztreonam với các Penicillin và Cephalosporin là **cực kỳ hiếm**, ngay cả ở những bệnh nhân đã được xác nhận có dị ứng qua trung gian IgE với các $\beta$-lactam khác.
     - **Tuy nhiên**, do Aztreonam chia sẻ chung cấu trúc chuỗi bên R1 với **Ceftazidime** và **Cefiderocol**, nên bệnh nhân có tiền sử dị ứng với Ceftazidime/Cefiderocol có nguy cơ dị ứng chéo với Aztreonam. Chống chỉ định hoặc cần hết sức thận trọng ở nhóm bệnh nhân này.
@@ -63,7 +68,7 @@ tags:
 
 - **Chức năng thận:** Bắt buộc theo dõi độ thanh thải Creatinin (CrCl) để giảm liều ở bệnh nhân suy thận. Với bệnh nhân chạy thận nhân tạo, liều Aztreonam nên được dùng **sau khi kết thúc** mỗi ca lọc máu.
 - **Chức năng gan:** Dù suy gan mạn tính không yêu cầu chỉnh liều (nếu chức năng thận bình thường), nhưng vẫn cần theo dõi sát men gan (AST/ALT) do nguy cơ tăng men gan đã được ghi nhận trong các thử nghiệm lâm sàng, đặc biệt với các liệu trình liều cao.
-- **Công thức máu:** Theo dõi nguy cơ giảm bạch cầu hạt (neutropenia) ở bệnh nhân.
+- **Công thức máu:** Theo dõi nguy cơ giảm [[Bạch cầu]] hạt (neutropenia) ở bệnh nhân.
 
 ### 8. Bảng kiểm lâm sàng nhanh (Quick Checklist)
 

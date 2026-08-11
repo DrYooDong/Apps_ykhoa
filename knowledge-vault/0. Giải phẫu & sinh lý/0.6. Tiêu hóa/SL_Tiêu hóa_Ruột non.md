@@ -1,13 +1,18 @@
 ---
 title: "SL_Tiêu hóa_Ruột non"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
-Ruột non là cơ quan quan trọng nhất của ống tiêu hóa, đảm nhận vai trò thiết yếu trong việc tiêu hóa triệt để thức ăn và hấp thu phần lớn các chất dinh dưỡng, nước và điện giải vào cơ thể. Quá trình này đòi hỏi sự phối hợp nhịp nhàng của bốn hoạt động sinh lý cơ bản: cơ học, bài tiết, tiêu hóa và hấp thu. Nhờ cấu trúc đặc biệt với các nếp gấp niêm mạc, nhung mao (villi) và vi nhung mao (microvilli) tạo thành bờ bàn chải, diện tích hấp thu của ruột non được tăng lên gấp 600 lần, đạt khoảng $250~m^{2}$.
+
+Ruột non là cơ quan quan trọng nhất của [[Đường tiêu hóa|ống tiêu hóa]], đảm nhận vai trò thiết yếu trong việc tiêu hóa triệt để thức ăn và hấp thu phần lớn các chất dinh dưỡng, nước và điện giải vào cơ thể. Quá trình này đòi hỏi sự phối hợp nhịp nhàng của bốn hoạt động sinh lý cơ bản: cơ học, bài tiết, tiêu hóa và hấp thu. Nhờ cấu trúc đặc biệt với các nếp gấp niêm mạc, nhung mao (villi) và vi nhung mao (microvilli) tạo thành bờ bàn chải, diện tích hấp thu của ruột non được tăng lên gấp 600 lần, đạt khoảng $250~m^{2}$.
 
 **1. Hoạt động cơ học của ruột non**
-Hoạt động cơ học của ruột non có chức năng nhào trộn dưỡng trấp (chyme) với các dịch tiêu hóa và đẩy chúng di chuyển dọc theo chiều dài ống tiêu hóa.
+Hoạt động cơ học của ruột non có chức năng nhào trộn dưỡng trấp (chyme) với các dịch tiêu hóa và đẩy chúng di chuyển dọc theo chiều dài [[Đường tiêu hóa|ống tiêu hóa]].
 *   **Co bóp phân đoạn (Segmentation):** Đây là cử động đặc trưng nhất khi có thức ăn, trong đó các vòng cơ trơn co thắt chia ruột thành từng đoạn ngắn (khoảng 1 cm). Cử động này di chuyển dưỡng trấp tới lui, giúp nhào trộn kỹ thức ăn với dịch tiêu hóa và tăng tối đa diện tích tiếp xúc với niêm mạc để hấp thu. Tần số co bóp phân đoạn cao hơn ở tá tràng (khoảng 12 lần/phút) và giảm dần xuống hồi tràng (8 lần/phút), tạo ra một khuynh hướng đẩy nhẹ dưỡng trấp về phía ruột già.
 *   **Nhu động (Peristalsis):** Là một làn sóng co thắt xuất hiện ở phía trên viên thức ăn và giãn ra ở phía dưới, giúp đẩy dưỡng trấp di chuyển về phía hậu môn. Ở ruột non, nhu động thường yếu và chậm (khoảng $1~cm/ph\text{út}$), khiến dưỡng trấp mất từ 3 đến 5 giờ để đi qua hết chiều dài ruột non.
 *   **Phức hợp vận động di chuyển (Migrating Motor Complex - MMC):** Xuất hiện trong giai đoạn giữa các bữa ăn (lúc đói), khoảng 90-100 phút một lần, dưới sự kích thích của hormon **motilin**. Đây là những làn sóng co thắt mạnh quét qua toàn bộ ruột non để dọn dẹp các mảnh vụn thức ăn chưa tiêu hóa hết và dịch thừa xuống ruột già, đồng thời ngăn chặn vi khuẩn trào ngược từ đại tràng lên ruột non.
@@ -16,7 +21,7 @@ Hoạt động cơ học của ruột non có chức năng nhào trộn dưỡng
 **2. Hoạt động bài tiết**
 Ruột non không tự tiêu hóa thức ăn mà cần sự hỗ trợ đắc lực từ dịch tụy, dịch mật và dịch ruột.
 *   **Dịch tụy:** Tuyến tụy ngoại tiết tiết ra khoảng 1,2-1,5 lít dịch mỗi ngày. Dịch tụy chứa ion **bicarbonate ($HCO_3^-$)** giúp trung hòa acid từ dạ dày đưa xuống, bảo vệ niêm mạc tá tràng và tạo môi trường pH tối ưu cho các men tiêu hóa hoạt động. Các enzyme tiêu hóa của tụy rất mạnh và đa dạng: **amylase** (tiêu hóa tinh bột), **lipase** (tiêu hóa lipid), và các tiền men tiêu hóa protein như **trypsinogen**, chymotrypsinogen, procarboxypeptidase. Trypsinogen được men enterokinase của bờ bàn chải ruột hoạt hóa thành trypsin, từ đó trypsin sẽ hoạt hóa tất cả các men còn lại. Sự bài tiết dịch tụy được kích thích mạnh mẽ bởi hormon **secretin** (tăng tiết $HCO_3^-$) và **cholecystokinin - CCK** (tăng tiết men) từ tá tràng.
-*   **Dịch mật:** Do gan sản xuất và dự trữ/cô đặc tại túi mật. Mật chứa **muối mật** (bile salts), đóng vai trò như một chất tẩy rửa sinh học giúp **nhũ tương hóa** (emulsification) các hạt mỡ lớn thành các hạt nhỏ, làm tăng diện tích tiếp xúc cho men lipase hoạt động. Sau đó, muối mật bao bọc các sản phẩm tiêu hóa mỡ tạo thành **hạt micelle** hòa tan trong nước, giúp vận chuyển mỡ qua lớp dịch không di động để tiếp cận tế bào ruột. Khoảng 94-95% muối mật được tái hấp thu chủ động tại hồi tràng và trở về gan qua **chu trình ruột - gan**.
+*   **Dịch mật:** Do [[Gan]] sản xuất và dự trữ/cô đặc tại túi mật. Mật chứa **muối mật** (bile salts), đóng vai trò như một chất tẩy rửa sinh học giúp **nhũ tương hóa** (emulsification) các hạt mỡ lớn thành các hạt nhỏ, làm tăng diện tích tiếp xúc cho men lipase hoạt động. Sau đó, muối mật bao bọc các sản phẩm tiêu hóa mỡ tạo thành **hạt micelle** hòa tan trong nước, giúp vận chuyển mỡ qua lớp dịch không di động để tiếp cận tế bào ruột. Khoảng 94-95% muối mật được tái hấp thu chủ động tại hồi tràng và trở về [[Gan]] qua **chu trình ruột - gan**.
 *   **Dịch ruột:** Tuyến Brunner ở tá tràng tiết chất nhầy bảo vệ niêm mạc khỏi acid dịch vị. Tuyến Lieberkühn tiết ra dịch lỏng chứa nước và chất điện giải để hòa tan dưỡng trấp. Các enzyme của ruột non (peptidase, maltase, sucrase, lactase) không bài tiết vào lòng ruột mà gắn chặt trên màng vi nhung mao (bờ bàn chải), thực hiện khâu tiêu hóa cuối cùng ngay tại bề mặt hấp thu.
 
 **3. Hoạt động tiêu hóa và hấp thu**

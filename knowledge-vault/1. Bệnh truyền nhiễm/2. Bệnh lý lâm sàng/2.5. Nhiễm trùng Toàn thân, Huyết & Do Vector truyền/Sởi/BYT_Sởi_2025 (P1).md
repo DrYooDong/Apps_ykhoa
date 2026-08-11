@@ -1,3 +1,13 @@
+---
+title: "BYT_Sởi_2025 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC: CHẨN ĐOÁN, BIỂU HIỆN LÂM SÀNG VÀ CẬN LÂM SÀNG BỆNH SỞI (PHẦN 1)
 
 ---
@@ -20,7 +30,7 @@
 - **Định nghĩa:** Bệnh Sởi là bệnh truyền nhiễm cấp tính, lây lan mạnh do **vi rút Sởi** gây ra. Bệnh thường gặp ở trẻ dưới 3 tuổi, tuy nhiên người lớn chưa tiêm hoặc tiêm phòng không đầy đủ cũng có nguy cơ mắc.
 - **Đặc điểm cấu trúc vi rút:** Vi rút Sởi thuộc họ _Paramyxoviridae_, chi _Morbillivirus_. Đây là vi rút chứa **RNA sợi đơn**, sở hữu hai protein bề mặt chính là **hemagglutinin (H)** và **fusion (F)** đóng vai trò quan trọng trong đáp ứng miễn dịch. Kháng thể trung hòa chủ yếu tác động lên protein H, trong khi protein F giúp hạn chế sự phát triển của vi rút.
 - **Phân loại kiểu gen:** Theo Tổ chức Y tế Thế giới (WHO), vi rút Sởi được phân chia thành **8 nhóm (A-H) và 23 kiểu gen** nhằm phục vụ công tác giám sát, theo dõi sự lây lan dịch dịch tễ.
-- **Đường lây truyền sinh học:** Sởi lây truyền chủ yếu qua **đường không khí, giọt bắn** hoặc khi **tiếp xúc trực tiếp với dịch tiết hô hấp** của người nhiễm bệnh. Vắc-xin phòng ngừa Sởi có hiệu quả bảo vệ cao, thực tế ghi nhận phần lớn trẻ mắc bệnh sởi đều chưa được tiêm ngừa đầy đủ.
+- **Đường lây truyền sinh học:** Sởi lây truyền chủ yếu qua **đường không khí, giọt bắn** hoặc khi **tiếp xúc trực tiếp với dịch tiết hô hấp** của người nhiễm bệnh. [[Vắc-xin]] phòng ngừa Sởi có hiệu quả bảo vệ cao, thực tế ghi nhận phần lớn trẻ mắc bệnh sởi đều chưa được tiêm ngừa đầy đủ.
 
 ### Diễn Tiến Lâm Sàng Bệnh Sởi Thể Điển Hình
 
@@ -28,12 +38,12 @@ Lâm sàng của bệnh Sởi thể điển hình tiến triển tuần tự qua
 
 - **Giai đoạn ủ bệnh (Từ 7 đến 21 ngày, trung bình 10 ngày):** Người bệnh chưa xuất hiện triệu chứng lâm sàng rõ rệt; các triệu chứng y khoa thường bắt đầu xuất hiện sau phơi nhiễm từ 10 - 14 ngày.
 - **Giai đoạn khởi phát (giai đoạn viêm long - kéo dài từ 2 đến 4 ngày):**
-    - Người bệnh xuất hiện **sốt cao**, biểu hiện **viêm long đường hô hấp trên** (ho nhiều, chảy nước mũi) và **viêm kết mạc**.
+    - Người bệnh xuất hiện **[[Sốt|sốt cao]]**, biểu hiện **viêm long đường hô hấp trên** (ho nhiều, chảy nước mũi) và **viêm kết mạc**.
     - **Hạt Koplik (Triệu chứng đặc hiệu):** Là các hạt nhỏ kích thước từ 0,5 - 1 mm, màu trắng hoặc xám, có quầng ban đỏ nổi gồ lên trên bề mặt niêm mạc má (vị trí phía trong miệng, ngang tầm răng hàm trên). Hạt Koplik thường xuất hiện khoảng 1 ngày trước khi phát ban và chỉ tồn tại từ 2 - 3 ngày sau khi ban bắt đầu mọc.
 - **Giai đoạn toàn phát (Kéo dài từ 2 đến 5 ngày):**
-    - Thường xảy ra sau khi sốt cao liên tục từ 3 - 4 ngày.
+    - Thường xảy ra sau khi [[Sốt|sốt cao]] liên tục từ 3 - 4 ngày.
     - Người bệnh bắt đầu xuất hiện **phát ban dạng dát sẩn** màu đỏ; khi căng da thì ban biến mất.
-    - **Trình tự mọc ban:** Xuất hiện tuần tự từ sau tai, sau gáy, lan ra trán, mặt, cổ, sau đó lan xuống thân mình và cuối cùng lan ra tứ chi (bao gồm cả ở lòng bàn tay và gan bàn chân). Ban có thể hợp lại thành các mảng lớn, đặc biệt ở vùng mặt và thân mình.
+    - **Trình tự mọc ban:** Xuất hiện tuần tự từ sau tai, sau gáy, lan ra trán, mặt, cổ, sau đó lan xuống thân mình và cuối cùng lan ra tứ chi (bao gồm cả ở lòng bàn tay và [[Gan]] bàn chân). Ban có thể hợp lại thành các mảng lớn, đặc biệt ở vùng mặt và thân mình.
     - **Đặc điểm thân nhiệt:** Khi ban đã mọc lan rộng hết toàn thân thì nhiệt độ cơ thể của người bệnh bắt đầu giảm dần.
 - **Giai đoạn hồi phục:** Ban nhạt màu dần chuyển sang màu xám, bong vảy phấn sẫm màu và biến mất theo đúng trình tự mọc, để lại các vết thâm có hình dạng đặc trưng gọi là **vết thâm "vằn da hổ"**.
 

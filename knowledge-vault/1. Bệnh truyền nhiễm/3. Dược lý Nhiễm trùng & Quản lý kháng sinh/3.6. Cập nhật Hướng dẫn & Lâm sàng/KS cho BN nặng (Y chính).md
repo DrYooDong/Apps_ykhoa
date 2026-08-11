@@ -1,23 +1,27 @@
 ---
 title: "KS cho BN nặng (Y chính)"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-NÓNG HỔI: KHÁNG SINH Ở BỆNH NHÂN NẶNG
+
+NÓNG HỔI: [[Kháng sinh]] Ở BỆNH NHÂN NẶNG
 Link: [Kháng sinh ở bệnh nhân nặng.pdf - Google Drive](https://drive.google.com/file/d/1V0ey2paO8Enbt8U4OtH1xK0Vn_MIS6Tn/view?ts=6a58efa8)
 
-Bài tổng quan đăng trên Critical Care Clinics năm 2026 nhấn mạnh việc sử dụng kháng sinh ở bệnh nhân hồi sức không chỉ là chọn “thuốc càng rộng càng tốt”, mà phải đồng thời giải quyết ba vấn đề: điều trị đủ sớm, bao phủ đúng tác nhân và đạt được nồng độ thuốc thích hợp.
+Bài tổng quan đăng trên Critical Care Clinics năm 2026 nhấn mạnh việc sử dụng [[Kháng sinh]] ở bệnh nhân hồi sức không chỉ là chọn “thuốc càng rộng càng tốt”, mà phải đồng thời giải quyết ba vấn đề: điều trị đủ sớm, bao phủ đúng tác nhân và đạt được nồng độ thuốc thích hợp.
 
 # 1. KHÔNG PHẢI MỌI BỆNH NHÂN ĐỀU CẦN KHÁNG SINH PHỔ RỘNG NGAY
 
-- Bệnh nhân ICU rất không đồng nhất: từ người sốt nhưng chưa có suy cơ quan, đến nhiễm khuẩn huyết và sốc nhiễm khuẩn. Nhiều tình trạng không nhiễm khuẩn như viêm tụy, phản ứng thuốc, viêm sau phẫu thuật hoặc thuyên tắc phổi cũng có thể giống nhiễm khuẩn.
+- Bệnh nhân ICU rất không đồng nhất: từ người [[Sốt]] nhưng chưa có suy cơ quan, đến [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] và [[[[Sốc]] nhiễm khuẩn]]. Nhiều tình trạng không nhiễm khuẩn như viêm tụy, phản ứng thuốc, viêm sau phẫu thuật hoặc thuyên tắc [[Phổi]] cũng có thể giống nhiễm khuẩn.
 
 - Vì vậy:
 
-+ Sốc nhiễm khuẩn: phải ưu tiên kháng sinh có hiệu lực càng sớm càng tốt. Mỗi giờ trì hoãn có liên quan với nguy cơ tử vong tăng dần.
++ [[[[Sốc]] nhiễm khuẩn]]: phải ưu tiên kháng sinh có hiệu lực càng sớm càng tốt. Mỗi giờ trì hoãn có liên quan với nguy cơ tử vong tăng dần.
 
-+ Nhiễm khuẩn huyết không sốc: vẫn cần đánh giá và điều trị sớm, nhưng có thêm thời gian để xác định khả năng nhiễm khuẩn và lựa chọn phác đồ hợp lý.
++ [[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] không sốc: vẫn cần đánh giá và điều trị sớm, nhưng có thêm thời gian để xác định khả năng nhiễm khuẩn và lựa chọn phác đồ hợp lý.
 
 + Chỉ nghi nhiễm khuẩn, chưa có sepsis: không nên phản xạ dùng ngay kháng sinh phổ rộng nếu người bệnh ổn định.
 
@@ -29,7 +33,7 @@ Bài tổng quan đăng trên Critical Care Clinics năm 2026 nhấn mạnh vi�
 
 - Nên lấy:
 
-+ Ít nhất các bộ cấy máu phù hợp.
++ Ít nhất các bộ cấy máu [[Phù]] hợp.
 
 + Cấy đờm, nước tiểu, dịch vết thương hoặc bệnh phẩm theo ổ nhiễm nghi ngờ.
 
@@ -43,13 +47,13 @@ Bài tổng quan đăng trên Critical Care Clinics năm 2026 nhấn mạnh vi�
 
 Điều trị kinh nghiệm phải bắt đầu bằng một chẩn đoán định hướng rõ ràng.
 
-## 3.1. Viêm phổi cộng đồng
+## 3.1. Viêm [[Phổi]] cộng đồng
 
 - Tác nhân thường gặp gồm phế cầu, H. influenzae và vi khuẩn không điển hình.
 
 - Phác đồ gợi ý:
 
-+ Ceftriaxone + azithromycin.
++ [[Ceftriaxone]] + azithromycin.
 
 + Levofloxacin là lựa chọn thay thế, nhưng không nên dùng đơn trị trong sốc nhiễm khuẩn.
 
@@ -63,7 +67,7 @@ Bài tổng quan đăng trên Critical Care Clinics năm 2026 nhấn mạnh vi�
 
 ## 3.3. Nhiễm khuẩn ổ bụng
 
-- Nguy cơ thấp: Ceftriaxone + metronidazole.
+- Nguy cơ thấp: [[Ceftriaxone]] + metronidazole.
 
 - Trong sốc có thể dùng piperacillin/tazobactam hoặc cefepime + metronidazole.
 
@@ -129,11 +133,11 @@ Bài tổng quan đăng trên Critical Care Clinics năm 2026 nhấn mạnh vi�
 
 + Bao phủ được phần lớn vi khuẩn Gram âm, kể cả Pseudomonas.
 
-- Ceftazidime có tác dụng chống Pseudomonas nhưng bao phủ Gram dương yếu, vì vậy không phù hợp để đơn trị kinh nghiệm khi còn lo ngại tác nhân Gram dương.
+- Ceftazidime có tác dụng chống Pseudomonas nhưng bao phủ Gram dương yếu, vì vậy không [[Phù]] hợp để đơn trị kinh nghiệm khi còn lo ngại tác nhân Gram dương.
 
 - Piperacillin/tazobactam hay cefepime?
 
-+ Các nghiên cứu trước đây từng lo ngại vancomycin + piperacillin/tazobactam gây tổn thương thận nhiều hơn vancomycin + cefepime. Tuy nhiên, thử nghiệm ACORN và một số phân tích gần đây không cho thấy khác biệt rõ về biến cố thận.
++ Các nghiên cứu trước đây từng lo ngại vancomycin + piperacillin/tazobactam gây tổn thương [[Thận]] nhiều hơn vancomycin + cefepime. Tuy nhiên, thử nghiệm ACORN và một số phân tích gần đây không cho thấy khác biệt rõ về biến cố [[Thận]].
 
 + Ngược lại, cefepime có nguy cơ độc thần kinh, đặc biệt ở: Người cao tuổi, suy thận, bệnh nhân hồi sức, dùng liều không được hiệu chỉnh phù hợp.
 
@@ -233,11 +237,11 @@ Tuy vậy, dữ liệu đối với viêm phổi hoại tử vẫn còn hạn ch
 
 Các thay đổi thường gặp gồm:
 
-+ Giảm hấp thu đường tiêu hóa do phù ruột, opioid, thuốc vận mạch hoặc phẫu thuật.
++ Giảm hấp thu [[Đường tiêu hóa]] do phù ruột, opioid, thuốc vận mạch hoặc phẫu thuật.
 
-+ Tăng thể tích phân bố do truyền dịch, rò mao mạch, suy tim và giảm albumin.
++ Tăng thể tích phân bố do truyền dịch, rò mao mạch, suy [[Tim]] và giảm albumin.
 
-+ Thay đổi chuyển hóa gan.
++ Thay đổi chuyển hóa [[Gan]].
 
 + Thay đổi nhanh độ thanh thải thận.
 
@@ -245,7 +249,7 @@ Các thay đổi thường gặp gồm:
 
 - Vì vậy, cùng một liều tiêu chuẩn có thể gây thiếu thuốc ở giai đoạn đầu nhưng lại gây tích lũy và độc tính sau đó.
 
-- Trong bệnh cảnh nặng, đường tĩnh mạch thường được ưu tiên vì hấp thu qua đường tiêu hóa không ổn định.
+- Trong bệnh cảnh nặng, đường tĩnh mạch thường được ưu tiên vì hấp thu qua [[Đường tiêu hóa]] không ổn định.
 
 # 14. LIỀU NẠP RẤT QUAN TRỌNG
 

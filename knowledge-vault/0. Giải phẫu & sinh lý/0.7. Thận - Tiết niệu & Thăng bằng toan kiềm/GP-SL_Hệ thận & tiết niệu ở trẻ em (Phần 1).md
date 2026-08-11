@@ -1,3 +1,14 @@
+---
+title: "GP-SL_Hệ thận & tiết niệu ở trẻ em (Phần 1)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐẶC ĐIỂM GIẢI PHẪU VÀ TỔNG QUAN CHỨC NĂNG LỌC CỦA HỆ THẬN - TIẾT NIỆU Ở TRẺ EM)
 
 ---
@@ -8,7 +19,7 @@
 
 - **Vị trí và di động:** Thận là tạng nằm ở khoang sau phúc mạc. Ở trẻ sơ sinh, thận còn giữ cấu tạo thùy từ thời kỳ bào thai nên nhìn thấy có nhiều múi, sau đó đặc điểm này mới mất dần đi. Thận ở trẻ em rất dễ di động do tổ chức mỡ quanh thận chưa phát triển hoàn thiện.
 - **Kích thước và trọng lượng:** Chiều dài và trọng lượng của thận tăng dần theo thời gian, phát triển từ **6 cm và 24 g** ở trẻ sơ sinh đủ tháng cho đến **> 12 cm và 150 g** ở người trưởng thành.
-- **Ước tính chiều dài thận trên siêu âm:** Trên thực tế lâm sàng, chiều dài thận được đánh giá qua siêu âm và có thể ước tính nhanh theo lứa tuổi:
+- **Ước tính chiều dài thận trên [[Siêu âm]]:** Trên thực tế lâm sàng, chiều dài thận được đánh giá qua [[Siêu âm]] và có thể ước tính nhanh theo lứa tuổi:
     - Trẻ sơ sinh: trung bình **4 cm**.
     - Trẻ < 1 tuổi: trung bình **6 cm**.
     - Trẻ < 5 tuổi: trung bình **8 cm**.
@@ -36,9 +47,9 @@
 
 ---
 
-### 1.2. Cấu Trúc Nhu Mô Thận và Mạch Máu
+### 1.2. Cấu Trúc [[Thận|Nhu Mô Thận]] và Mạch Máu
 
-Cấu trúc nhu mô thận gồm hai lớp rõ rệt:
+Cấu trúc [[Thận|nhu mô thận]] gồm hai lớp rõ rệt:
 
 1. **Lớp vỏ thận (Cortex) bên ngoài:** Chứa các cầu thận (glomeruli), ống lượn gần (proximal convoluted tubules), ống lượn xa (distal convoluted tubules) và ống góp (collecting ducts).
 2. **Lớp tủy thận (Medulla) bên trong:** Chứa phần thẳng của các ống thận, quai Henle, mạch thẳng (vasa recta) và đoạn cuối của ống góp.
@@ -50,7 +61,7 @@ Cấu trúc nhu mô thận gồm hai lớp rõ rệt:
 - Tiểu động mạch đi tạo ra hai loại mạng lưới mao mạch:
     - _Cầu thận vùng vỏ:_ Tiểu động mạch đi tạo thành **mạng lưới mao mạch quanh ống**, cung cấp máu nuôi ống lượn gần, ống lượn xa và dẫn lưu về tĩnh mạch gian tiểu thùy $\rightarrow$ tĩnh mạch cung $\rightarrow$ tĩnh mạch gian thùy $\rightarrow$ tĩnh mạch thận.
     - _Cầu thận sát vùng cận tủy:_ Tiểu động mạch đi phân nhánh thành các **mạch thẳng (vasa recta)** chui sâu vào tủy thận theo hình chữ U.
-- **Đặc điểm lưu lượng máu:** Lưu lượng máu thận chiếm **20% cung lượng tim**. Trong đó, **90% máu đi vào vùng vỏ** và chỉ có **10% máu đi vào vùng tủy**. Do nhận ít máu hơn hẳn, vùng tủy thận rất nhạy cảm với tình trạng thiếu $O_2$ mô và dễ bị tổn thương do thiếu máu cục bộ.
+- **Đặc điểm lưu lượng máu:** Lưu lượng máu thận chiếm **20% cung lượng [[Tim]]**. Trong đó, **90% máu đi vào vùng vỏ** và chỉ có **10% máu đi vào vùng tủy**. Do nhận ít máu hơn hẳn, vùng tủy thận rất nhạy cảm với tình trạng thiếu $O_2$ mô và dễ bị tổn thương do thiếu máu cục bộ.
 - Tĩnh mạch thận bên trái dài hơn bên phải nên trong phẫu thuật ghép thận từ người cho sống, bác sĩ thường ưu tiên cắt lấy thận trái.
 
 ---
@@ -73,7 +84,7 @@ Cấu trúc nhu mô thận gồm hai lớp rõ rệt:
 
 - **Đơn vị Nephron:** Đơn vị cấu tạo và chức năng của thận là **nephron** (mỗi nephron gồm một cầu thận và các ống thận đi kèm). Mỗi thận có khoảng **1 triệu nephron** (dao động từ 200.000 đến 1,8 - 2 triệu).
 - **Quá trình phát triển:** Thận bắt đầu hình thành từ tuần thứ 5 của thai kỳ. Các nephron được tạo hoàn chỉnh vào tuần 34 - 36 đến 40 của thai kỳ. Sau khi sinh, **không có nephron mới nào được tạo thêm**.
-- **Ý nghĩa sinh lý bệnh:** Việc giảm số lượng nephron thứ phát do sinh non, nhẹ cân lúc sinh hoặc các yếu tố gen/môi trường sẽ gây tình trạng **tăng lọc (hyperfiltration)** ở các nephron còn lại, khiến các đơn vị này hoạt động quá mức và dẫn đến **xơ hóa (sclerosis)**, làm tăng nguy cơ tăng huyết áp nguyên phát và suy thận tiến triển khi trưởng thành.
+- **Ý nghĩa sinh lý bệnh:** Việc giảm số lượng nephron thứ phát do sinh non, nhẹ cân lúc sinh hoặc các yếu tố gen/môi trường sẽ gây tình trạng **tăng lọc (hyperfiltration)** ở các nephron còn lại, khiến các đơn vị này hoạt động quá mức và dẫn đến **xơ hóa (sclerosis)**, làm tăng nguy cơ [[Tăng huyết áp]] nguyên phát và suy thận tiến triển khi trưởng thành.
 - **Màng lọc cầu thận:** Gồm 3 thành phần chính:
     1. Lớp tế bào nội mô mao mạch: Có nhiều lỗ thủng (fenestrations).
     2. Màng đáy cầu thận (GBM): Cấu trúc liên tục gồm 3 lớp: lớp _lamina densa_ tích điện âm dày đặc ở giữa, lớp _lamina rara interna_ và _lamina rara externa_ kề sát hai bên.
@@ -150,7 +161,7 @@ Cấu trúc nhu mô thận gồm hai lớp rõ rệt:
 2. Cân bằng nồng độ nước và điện giải.
 3. Tái hấp thu các phân tử nhỏ (amino acid, glucose, peptide), các ion ($Na^+$, $Cl^-$, $Ca^{2+}$, $PO_4^{3-}$) và nước.
 4. Điều hòa huyết áp thông qua hệ thống Renin - Angiotensin - Aldosterone (RAA).
-5. Sản xuất Erythropoietin kích thích tạo hồng cầu ở tủy xương.
+5. Sản xuất Erythropoietin kích thích tạo [[Hồng cầu]] ở tủy xương.
 6. Hoạt hóa $1,25\text{-(OH)}_2\text{-vitamin D}_3$ (Calcitriol) tham gia chuyển hóa calcium.
 
 ### 6.2. Sự Phát Triển Độ Lọc Cầu Thận (GFR)

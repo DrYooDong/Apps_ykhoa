@@ -1,7 +1,13 @@
 ---
+title: "Orthomyxoviridae (Virus Cúm)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Đại cương và Lịch sử
 
 - **Định nghĩa:** Họ _Orthomyxoviridae_ bao gồm các virus cúm (Influenza viruses) lây nhiễm ở người, chim, lợn và nhiều loài động vật có vú khác. Chúng là nguyên nhân gây ra các đợt dịch cúm mùa hàng năm và những trận đại dịch có sức tàn phá khủng khiếp trong lịch sử (như đại dịch Cúm Tây Ban Nha năm 1918).
@@ -28,9 +34,9 @@ Bên cạnh các biện pháp không dùng thuốc (như cách ly, đeo khẩu t
 - **Thuốc ức chế Neuraminidase (NAIs):** Oseltamivir là nền tảng điều trị cúm trong nhiều năm. Tuy nhiên, sự xuất hiện và lan rộng của các đột biến kháng thuốc tại khu vực trung tâm hoạt động (active site) của enzym neuraminidase đang là mối đe dọa làm vô hiệu hóa hàng rào phòng vệ này.
 - **Thuốc ức chế Endonuclease (CEN):** **Baloxavir marboxil** là một thuốc kháng virus thế hệ mới, nhắm mục tiêu ức chế hoạt tính endonuclease phụ thuộc cap của tiểu phần PA thuộc phức hợp polymerase của virus. Thuốc chỉ cần dùng một liều duy nhất và đã được chứng minh có hiệu quả cao đối với bệnh cúm không biến chứng.
 
-### 5. Vắc-xin và Phòng ngừa
+### 5. [[Vắc-xin]] và Phòng ngừa
 
-- **Vắc-xin theo mùa:** Chiến lược phòng ngừa chủ đạo hiện nay là sử dụng vắc-xin cúm (bất hoạt hoặc sống giảm độc lực). Vắc-xin sống giảm độc lực (LAIV, như FluMist) được thiết kế dựa trên các chủng virus đã được làm suy yếu bằng cách nuôi cấy thích nghi để nhạy cảm với nhiệt độ và chỉ phát triển ở môi trường lạnh (chủng A/Ann Arbor/6/60 và B/Ann Arbor/1/66).
+- **[[Vắc-xin]] theo mùa:** Chiến lược phòng ngừa chủ đạo hiện nay là sử dụng vắc-xin cúm (bất hoạt hoặc sống giảm độc lực). Vắc-xin sống giảm độc lực (LAIV, như FluMist) được thiết kế dựa trên các chủng virus đã được làm suy yếu bằng cách nuôi cấy thích nghi để nhạy cảm với nhiệt độ và chỉ phát triển ở môi trường lạnh (chủng A/Ann Arbor/6/60 và B/Ann Arbor/1/66).
 - **Thách thức do sự thích nghi với trứng (Egg-adapted mutations):** Hầu hết vắc-xin hiện nay được sản xuất qua nuôi cấy trên trứng gà. Quá trình này có thể ép virus (đặc biệt là chủng H3N2) tạo ra các đột biến hình thành vị trí glycosyl hóa mới. Sự thay đổi kháng nguyên này làm giảm khả năng gắn kết của các kháng thể do vắc-xin tạo ra, dẫn đến việc hiệu quả bảo vệ của vắc-xin suy giảm.
 - **Vắc-xin Cúm phổ rộng (Universal Vaccines):** Để giải quyết vấn đề virus liên tục biến đổi (drift/shift) và nguy cơ đại dịch, các nhà khoa học đang phát triển thế hệ vắc-xin phổ rộng mới. Trọng tâm của các nghiên cứu này là tạo ra vắc-xin dựa trên **vùng thân (stalk domain)** - một vùng cấu trúc rất bảo tồn của protein hemagglutinin. Các kháng thể nhắm vào vùng thân HA đã chứng minh được khả năng bảo vệ chuột chống lại nhiều phân tuýp cúm khác nhau (như bảo vệ chéo chống lại H7N9).
 

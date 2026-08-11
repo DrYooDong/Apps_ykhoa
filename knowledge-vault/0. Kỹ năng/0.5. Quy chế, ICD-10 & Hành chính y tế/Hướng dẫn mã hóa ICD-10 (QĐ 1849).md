@@ -1,9 +1,13 @@
 ---
 title: "Hướng dẫn mã hóa ICD-10 (QĐ 1849)"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 BỘ Y TẾ CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM Độc lập - Tự do - Hạnh phúc 1849 23 6 Số: /QĐ - B YT Hà Nội, ngày tháng năm 202 6
 QUYẾT ĐỊNH
 Ban hành t ài liệu hướng dẫn kỹ thuật mã hoá bệnh tật, nguyên nhân tử vong theo ICD - 10
@@ -73,15 +77,15 @@ Chương này bao g ồ m 21 kh ố i sau:
 6. A65 - A69 Bệnh do xoắn khuẩn khác
 7. A70 - A74 Bệnh khác do Chlamydia
 8. A75 - A79 Bệnh do Rickettsia
-9. A80 - A89 Nhiễm virus ở hệ thần kinh trung ương
-10. A92 - A99 Bệnh sốt virus và sốt xuất huyết virus do tiết túc truyền
+9. A80 - A89 Nhiễm virus ở [[Hệ thần kinh trung ương]]
+10. A92 - A99 Bệnh [[Sốt]] virus và [[Sốt]] [[Xuất huyết]] virus do tiết túc truyền
 [virus arbo]
 11. B00 - B09 Nhiễm virus có đặc điểm tổn thương tại da và niêm mạc
 
 ---
 
 2
-12. B15 - B19 Viêm gan do virus
+12. B15 - B19 Viêm [[Gan]] do virus
 13. B20 - B24 Bệnh do nhiễm virus suy giảm miễn dịch ở người [HIV]
 14. B25 - B34 Bệnh nhiễm virus khác
 15. B35 - B49 Bệnh nhiễm nấm
@@ -123,10 +127,10 @@ Nhi ễ m virus ở h ệ th ầ n kinh trung ương (A80 - A89)
 Lo ạ i tr ừ :
 - D i ch ứ ng c ủ a:
 - B ệ nh b ạ i li ệ t (B91)
-- B ệ nh viêm não do virus ( B94.1 )
+- B ệ nh [[Viêm não]] do virus ( B94.1 )
 B ệ nh s ố t virus và s ố t xu ấ t huy ế t virus do ti ế t túc truy ề n [virus arbo] ( A92 - A99)
 Nhi ễ m virus có đ ặ c đi ể m t ổ n thương t ạ i da và niêm m ạ c (B00 - B09)
-Viêm gan do virus (B15 - B19)
+Viêm [[Gan]] do virus (B15 - B19)
 
 ---
 
@@ -159,7 +163,7 @@ B ệ nh ch ấ y r ậ n, b ệ nh gh ẻ và nhi ễ m ký sinh trùng khác (
 Di ch ứ ng c ủ a b ệ nh truy ề n nhi ễ m và ký sinh trùng (B90 - B94)
 Lưu ý:
 D ả i mã B90 - B94 đư ợ c s ử d ụ ng đ ể ch ỉ ra các b ệ nh lý thu ộ c d ả i mã A00 - B89 là nguyên nhân gây ra di ch ứ ng, b ả n thân di ch ứ ng đư ợ c phân lo ạ i m ụ c khác. “Di ch ứ ng” bao g ồ m các tình tr ạ ng đư ợ c xác đ ị nh như v ậ y; chúng cũng bao g ồ m các tác đ ộ ng mu ộ n c ủ a b ệ nh đư ợ c phân lo ạ i vào các d ả i mã trên n ế u có b ằ ng ch ứ ng cho th ấ y b ả n thân căn b ệ nh đó không còn n ữ a. Đ ể s ử d ụ ng d ả i mã này, c ầ n tham kh ả o các quy t ắ c và hư ớ ng d ẫ n mã hóa b ệ nh t ậ t và t ử vong có liên quan trong Ph ụ l ụ c 2 ban hành kèm theo Quy ế t đ ị nh này.
-Không đư ợ c s ử d ụ ng đ ể mã hóa b ệ nh nhi ễ m trùng m ạ n tính. Mã hóa các b ệ nh nhi ễ m trùng hi ệ n t ạ i sang b ệ nh nhi ễ m trùng m ạ n tính ho ặ c b ệ nh nhi ễ m trùng th ể ho ạ t đ ộ ng n ế u phù h ợ p.
+Không đư ợ c s ử d ụ ng đ ể mã hóa b ệ nh nhi ễ m trùng m ạ n tính. Mã hóa các b ệ nh nhi ễ m trùng hi ệ n t ạ i sang b ệ nh nhi ễ m trùng m ạ n tính ho ặ c b ệ nh nhi ễ m trùng th ể ho ạ t đ ộ ng n ế u [[Phù]] h ợ p.
 Vi khu ẩ n, virus và tác nhân gây nhi ễ m trùng khác (B95 - B98)
 Lưu ý:
 Nh ữ ng mã trong d ả i mã này không đư ợ c s ử d ụ ng làm mã b ệ nh chính và ch ỉ đư ợ c s ử d ụ ng làm mã b ệ nh kèm theo ho ặ c mã b ệ nh b ổ sung khi mu ố n xác đ ị nh (các) tác nhân gây nhi ễ m trùng do các b ệ nh đư ợ c phân lo ạ i m ụ c khác.
@@ -291,7 +295,7 @@ Chương này g ồ m 6 kh ố i sau:
 1. D50 - D53 Thiếu máu do thiếu dinh dưỡng
 2. D55 - D59 Thiếu máu do tan máu
 3. D60 - D64 Suy tủy xương và thiếu máu khác
-4. D65 - D69 Rối loạn đông máu, ban xuất huyết và bệnh lý xuất huyết
+4. D65 - D69 Rối loạn đông máu, ban [[Xuất huyết]] và bệnh lý xuất huyết
 khác
 5. D70 - D77 Bệnh khác của máu và cơ quan tạo máu
 6. D80 - D89 Một số rối loạn liên quan cơ chế miễn dịch
@@ -326,7 +330,7 @@ thai k ỳ , sinh đ ẻ và/ho ặ c th ờ i k ỳ sau đ ẻ ( O98.7 )
 15
 Chương IV B ệ nh n ộ i ti ế t, dinh dư ỡ ng và chuy ể n hóa (E00 - E99)
 Lưu ý:
-T ấ t c ả các kh ố i u, dù có ho ạ t đ ộ ng ch ứ c năng hay không, đ ề u đư ợ c phân lo ạ i ở Chương II. N ế u c ầ n có th ể s ử d ụ ng các mã phù h ợ p trong chương này (t ứ c là E05.8, E07.0, E16, E31, E34. - ) làm mã b ệ nh kèm theo đ ể ch ỉ ho ạ t đ ộ ng ch ứ c năng c ủ a kh ố i u và mô n ộ i ti ế t l ạ c ch ỗ , ho ặ c đ ể ch ỉ cư ờ ng năng hay như ợ c năng tuy ế n n ộ i ti ế t liên quan đ ế n kh ố i u và nh ữ ng tình tr ạ ng khác đư ợ c phân lo ạ i m ụ c khác.
+T ấ t c ả các kh ố i u, dù có ho ạ t đ ộ ng ch ứ c năng hay không, đ ề u đư ợ c phân lo ạ i ở Chương II. N ế u c ầ n có th ể s ử d ụ ng các mã [[Phù]] h ợ p trong chương này (t ứ c là E05.8, E07.0, E16, E31, E34. - ) làm mã b ệ nh kèm theo đ ể ch ỉ ho ạ t đ ộ ng ch ứ c năng c ủ a kh ố i u và mô n ộ i ti ế t l ạ c ch ỗ , ho ặ c đ ể ch ỉ cư ờ ng năng hay như ợ c năng tuy ế n n ộ i ti ế t liên quan đ ế n kh ố i u và nh ữ ng tình tr ạ ng khác đư ợ c phân lo ạ i m ụ c khác.
 Lo ạ i tr ừ :
 - B i ế n ch ứ ng trong thai k ỳ , sinh đ ẻ và th ờ i k ỳ sau đ ẻ ( O00 - O99 )
 - T ri ệ u ch ứ ng, d ấ u hi ệ u và nh ữ ng b ấ t thư ờ ng lâm sàng, c ậ n lâm sàng ,
@@ -355,11 +359,11 @@ R ố i lo ạ n tuy ế n giáp E00 - E07
 Đái tháo đư ờ ng (E10 - E14)
 C ó th ể s ử d ụ ng mã nguyên nhân bên ngoài b ổ sung (Chương XX) đ ể xác đ ị nh thu ố c n ế u do thu ố c gây ra.
 B ộ ký t ự th ứ tư dư ớ i đây đư ợ c dùng phân chia m ụ c phân lo ạ i E10 - E14:
-.0 Kèm hôn mê B ệ nh ti ể u đư ờ ng:
+.0 Kèm [[Hôn mê]] B ệ nh ti ể u đư ờ ng:
 - H ôn mê kèm ho ặ c không kèm nhi ễ m toan ceton
 - H ôn mê do tăng áp l ự c th ẩ m th ấ u
 - H ôn mê h ạ đư ờ ng huy ế t
-Hôn mê tăng đư ờ ng huy ế t không xác đ ị nh khác .1 Kèm nhi ễ m toan ceton B ệ nh đái tháo đư ờ ng:
+[[Hôn mê]] tăng đư ờ ng huy ế t không xác đ ị nh khác .1 Kèm nhi ễ m toan ceton B ệ nh đái tháo đư ờ ng:
 - N hi ễ m toan không đ ề c ậ p đ ế n hôn mê
 - N hi ễ m toan ceton không đ ề c ậ p đ ế n hôn mê
 .2 † Kèm bi ế n ch ứ ng th ậ n B ệ nh lý th ậ n do đái tháo đư ờ ng (N08.3 *) B ệ nh c ầ u th ậ n n ộ i mao m ạ ch (N08.3 *) H ộ i ch ứ ng Kimmelstiel - Wilson (N08.3 *) .3 † Kèm bi ế n ch ứ ng m ắ t B ệ nh đái tháo đư ờ ng:
@@ -449,7 +453,7 @@ Khối này bao gồm một nhóm các rối loạn tâm thần được xếp c
 
 20
 loạn chức năng này có thể là nguyên phát như trong bệnh lý não, chấn thương và tổn thương ảnh hưởng đễn não một cách trực tiếp và có chọn lọc, hoặc có thể là thứ phát như trong bệnh và rối loạn hệ thống chỉ tác động lên não như một trong nhiều cơ quan hoặc hệ thống của cơ thể có liên quan.
-Sa sút trí tuệ (F00 - F03) là hội chứng do bệnh lý não, thường có tính chất mạn tính hoặc tiến triển, trong đó có sự rối loạn của nhiều chức năng cao cấp của vỏ não bao gồm trí nhớ, tư duy, khuynh hướng, hiểu biết, tính toán, khả năng học tập, ngôn ngữ và khả năng phán đoán. Ý thức không bị lu mờ. Suy giảm chức năng nhận thức thường đi kèm và đôi khi xảy ra trước sự suy giảm khả năng kiểm soát cảm xúc, hành vi xã hội hoặc động lực. Hội chứng này xảy ra do bệnh Alzheimer, bệnh mạch máu não và do các bệnh lý khác ảnh hưởng chủ yếu hoặc thứ phát đến não.
+Sa sút trí tuệ (F00 - F03) là hội chứng do bệnh lý não, thường có tính chất mạn tính hoặc tiến triển, trong đó có sự rối loạn của nhiều chức năng cao cấp của [[Vỏ não]] bao gồm trí nhớ, tư duy, khuynh hướng, hiểu biết, tính toán, khả năng học tập, ngôn ngữ và khả năng phán đoán. Ý thức không bị lu mờ. Suy giảm chức năng nhận thức thường đi kèm và đôi khi xảy ra trước sự suy giảm khả năng kiểm soát cảm xúc, hành vi xã hội hoặc động lực. Hội chứng này xảy ra do bệnh Alzheimer, bệnh mạch máu não và do các bệnh lý khác ảnh hưởng chủ yếu hoặc thứ phát đến não.
 C ó thể sử dụng mã bổ sung để xác định bệnh lý nền.
 R ố i lo ạ n tâm th ầ n và hành vi do s ử d ụ ng ch ấ t hư ớ ng th ầ n (F10 - F19)
 Khối này bao gồm nhiều loại rối loạn khác nhau về mức độ nghiêm trọng và thể lâm sàng nhưng tất cả đều có liên quan đến việc sử dụng một hoặc nhiều chất hướng thần, có thể được kê đơn hoặc có thể không. Ký tự thứ ba của mã xác định chất liên quan và ký tự thứ tư xác định tình trạng lâm sàng. S ử dụng các mã theo nhu cầu, cho từng chất được xác định, nhưng lưu ý rằng không phải tất cả các mã ký tự thứ tư đều có thể áp dụng cho tất cả các chất.
@@ -463,7 +467,7 @@ Lo ạ i tr ừ :
 21
 Bộ ký tự thứ tư sau đây được dùng phân chia dải mã F10 - F19:
 .0 Nhiễm độc cấp
-Tình trạng sau khi sử dụng một chất hướng thần dẫn đến rối loạn mức độ ý thức, nhận thức, tri giác, cảm xúc hoặc hành vi hoặc các chức năng và phản ứng tâm sinh lý khác. Các rối loạn này có liên quan trực tiếp đến tác dụng dược lý cấp tính của chất này và giảm dần theo thời gian, với sự phục hồi hoàn toàn trừ trường hợp tổn thương mô hoặc các biến chứng khác đã phát sinh. Các biến chứng có thể bao gồm chấn thương, hít phải chất nôn, mê sảng, hôn mê, co giật và các biến chứng nội khoa khác. Bản chất của nhữn g biến chứng này phụ thuộc vào nhóm dược lý của chất và cách sử dụng.
+Tình trạng sau khi sử dụng một chất hướng thần dẫn đến rối loạn mức độ ý thức, nhận thức, tri giác, cảm xúc hoặc hành vi hoặc các chức năng và phản ứng tâm sinh lý khác. Các rối loạn này có liên quan trực tiếp đến tác dụng dược lý cấp tính của chất này và giảm dần theo thời gian, với sự phục hồi hoàn toàn trừ trường hợp tổn thương mô hoặc các biến chứng khác đã phát sinh. Các biến chứng có thể bao gồm chấn thương, hít phải chất [[Nôn ói|nôn]], mê sảng, hôn mê, [[Co giật]] và các biến chứng nội khoa khác. Bản chất của nhữn g biến chứng này phụ thuộc vào nhóm dược lý của chất và cách sử dụng.
 - Say rư ợ u c ấ p tính (do nghi ệ n rư ợ u)
 - " Tr ả i nghi ệ m th ứ c th ầ n " (ma túy) [ là tr ạ ng thái bi ế n đ ổ i t ạ m th ờ i c ủ a ý
 th ứ c do s ử d ụ ng ch ấ t th ứ c th ầ n ]
@@ -477,7 +481,7 @@ Một hình thức sử dụng chất hướng thần gây tổn hại cho sức
 - L ạ m d ụ ng ch ấ t hư ớ ng th ầ n
 .2 Hội chứng nghiện
 Một nhóm các hiện tượng hành vi, nhận thức và sinh lý xuất hiện sau khi sử dụng chất hướng thần nhiều lần mà biểu hiện chính là gồm sự thèm muốn mạnh mẽ để sử dụng thuốc/ma túy khó kiểm chế sử dụng, sử dụng dai dẳng bất chấp hậu quả có hại, ưu tiên sử dụng thuốc/ma túy hơn là các hoạt động và nghĩa vụ khác, tăng khả năng dung nạp và đôi khi là trạng thái cai thể chất.
-Hội chứng nghiện có thể xuất hiện đối với một chất hướng thần cụ thể (ví dụ: thuốc lá, rượu hoặc diazepam), đối với một nhóm chất (ví dụ: thuốc opioid), hoặc đối với một loạt các chất hướng thần khác nhau về mặt dược lý.
+Hội chứng nghiện có thể xuất hiện đối với một chất hướng thần cụ thể (ví dụ: thuốc lá, rượu hoặc [[Diazepam]]), đối với một nhóm chất (ví dụ: thuốc opioid), hoặc đối với một loạt các chất hướng thần khác nhau về mặt dược lý.
 
 ---
 
@@ -488,7 +492,7 @@ Hội chứng nghiện có thể xuất hiện đối với một chất hướn
 .3 Trạng thái cai
 Một nhóm các triệu chứng với các tập hợp và mức độ trầm trọng khác nhau xảy ra khi ngừng sử dụng tương đối hoặc tuyệt đối một chất hướng thần sau khi sử dụng liên tục. Khởi phát và diễn tiến của trạng thái cai có giới hạn về thời gian và liên quan đến loại chất hướng thần và liều sử dụng ngay trước khi ngừng hoặc giảm sử dụng. Trạng thái cai có thể có biến chứng c o giật.
 .4 Trạng thái cai kèm mê sảng
-Một tình trạng gồm trạng thái cai như đã xác định trong ký tự thứ tư chung .3 là có biến chứng mê sảng như đã xác định trong F05. - . Co giật cũng có thể xảy ra. Khi các yếu tố thực tổn cũng được coi là đ ó ng một vai trò trong căn nguyên, tình trạng này nên được xếp loại F05.8.
+Một tình trạng gồm trạng thái cai như đã xác định trong ký tự thứ tư chung .3 là có biến chứng mê sảng như đã xác định trong F05. - . [[Co giật]] cũng có thể xảy ra. Khi các yếu tố thực tổn cũng được coi là đ ó ng một vai trò trong căn nguyên, tình trạng này nên được xếp loại F05.8.
 - S ả ng run (do rư ợ u gây ra)
 .5 Loạn thần
 Một nhóm các hiện tượng loạn thần xảy ra trong hoặc sau khi sử dụng chất hướng thần không giải thích được nếu chỉ dựa trên tình trạng nhiễm độc cấp tính và không phải là một phần của trạng thái cai. Rối loạn này được đặc trưng bởi ảo giác ( điển hình là thính giác, nhưng nhiều lúc là của nhiều giác quan), nhận nhầm, ảo tưởng (thường có tính chất hoang tưởng hoặc hoang tưởng bị hại), rối loạn tâm thần vận động (hưng phấn hoặc sững sờ) và một cảm xúc bất thường đi từ sợ hãi dữ dội đến trạng thái ngây ngất. Cảm giác thường rõ ràng như ng có thể có ý thức mù mờ, dù kh ô ng đến mức bị nhầm lẫn nặng nề.
@@ -552,7 +556,7 @@ Ch ậ m phát tri ể n trí tu ệ (F70 - F79)
 Trạng thái ngừng phát triển hoặc phát triển không đầy đủ về trí tuệ được đặc trưng chủ yếu bởi sự suy giảm các kỹ năng biểu hiện trong giai đoạn phát triển, các kỹ năng đóng góp vào toàn bộ trí thông minh chung như khả năng nhận thức, ngôn ngữ, vận động và các năng lực xã hội. Chậm phát triển trí tuệ có thể xuất hiện kèm hoặc k hông kèm theo bất kỳ bệnh lý về thể chất hoặc tâm thần nào khác.
 Mức độ chậm phát triển trí tuệ thường được xác định bằng các bài kiểm tra trắc nghiệm về trí thông minh được chuẩn hóa. Những câu hỏi trắc nghiệm này có thể được bổ sung bằng thang đo đánh giá sự thích nghi xã hội trong một môi trường nhất định. Các phương pháp đo lường cho kết quả gần đúng về mức độ chậm phát triển trí tuệ. Việc chẩn đoán cũng sẽ phụ thuộc vào đánh giá tổng thể về chức năng t rí tuệ của bác sỹ có kinh nghiệm.
 Khả năng trí tuệ và khả năng thích nghi với xã hội có thể thay đổi theo thời gian, và có thể cải thiện nhờ đào tạo và phục hồi chức năng cho dù kém đến đâu. Chẩn đoán phải dựa trên mức độ chức năng hiện tại.
-C ó thể sử dụng mã bổ sung để xác định các tình trạng liên quan như chứng tự kỷ, rối loạn phát triển khác, động kinh, rối loạn cư xử hoặc khiếm khuyết nghiêm trọng về thể chất.
+C ó thể sử dụng mã bổ sung để xác định các tình trạng liên quan như chứng tự kỷ, rối loạn phát triển khác, [[Động kinh]], rối loạn cư xử hoặc khiếm khuyết nghiêm trọng về thể chất.
 
 ---
 
@@ -560,7 +564,7 @@ C ó thể sử dụng mã bổ sung để xác định các tình trạng liên
 Bộ ký tự thứ tư sau đây được dùng phân chia dải mã F70 - F79 để xác định mức độ suy giảm hành vi:
 .0 G hi nhận là hành vi không suy giảm hoặc chỉ ở mức tối thiểu .1 S uy giảm đáng kể hành vi cần được chú ý hoặc điều trị .8 B hững khiếm khuyết khác về hành vi .9 K hông đề cập đến suy giảm hành vi
 R ố i lo ạ n v ề phát tri ể n tâm lý (F80 - F89)
-Rối loạn trong khối này có điểm chung như sau: (a) khởi phát luôn trong thời kỳ sơ sinh và/hoặc thời thơ ấu; (b) suy giảm hoặc chậm phát triển các chức năng liên quan nhiều đến sự trưởng thành sinh học của hệ thần kinh trung ương; và (c) m ột quá trình điều trị ổn định không thuyên giảm và không tái phát. Trong hầu hết các trường hợp, các chức năng bị ảnh hưởng bao gồm ngôn ngữ, kỹ năng thị giác - không gian và phối hợp vận động. Thông thường, tình trạng chậm phát triển hoặc suy giảm chức năng tâm lý tồn tại ngay từ lúc có khả năng chẩn đoán rõ ràng và giảm dần trong quá trình trẻ lớn lên, mặc dù nhiều lúc những khiếm khuyết nhẹ hơn vẫn tồn tại ở tuổi trưởng thành.
+Rối loạn trong khối này có điểm chung như sau: (a) khởi phát luôn trong thời kỳ sơ sinh và/hoặc thời thơ ấu; (b) suy giảm hoặc chậm phát triển các chức năng liên quan nhiều đến sự trưởng thành sinh học của [[Hệ thần kinh trung ương]]; và (c) m ột quá trình điều trị ổn định không thuyên giảm và không tái phát. Trong hầu hết các trường hợp, các chức năng bị ảnh hưởng bao gồm ngôn ngữ, kỹ năng thị giác - không gian và phối hợp vận động. Thông thường, tình trạng chậm phát triển hoặc suy giảm chức năng tâm lý tồn tại ngay từ lúc có khả năng chẩn đoán rõ ràng và giảm dần trong quá trình trẻ lớn lên, mặc dù nhiều lúc những khiếm khuyết nhẹ hơn vẫn tồn tại ở tuổi trưởng thành.
 R ố i lo ạ n hành vi và c ả m xúc thư ờ ng kh ở i phát ở tu ổ i tr ẻ em và thanh thi ế u niên (F90 - F98)
 R ố i lo ạ n tâm th ầ n không xác đ ị nh (F99 - F99)
 
@@ -594,9 +598,9 @@ thần kinh ngoại biên
 10. G80 - G83 Bại não và những hội chứng liệt khác
 11. G90 - G99 Rối loạn khác của hệ thần kinh
 Danh m ụ c b ệ nh d ấ u sao (*) c ủ a chương này bao g ồ m:
-1. G01* Bệnh viêm màng não do bệnh nhiễm khuẩn phân loại mục
+1. G01* Bệnh [[Viêm màng não]] do bệnh nhiễm khuẩn phân loại mục
 khác
-2. G02* Bệnh viêm màng não do bệnh nhiễm trùng và/hoặc ký sinh
+2. G02* Bệnh [[Viêm màng não]] do bệnh nhiễm trùng và/hoặc ký sinh
 trùng phân loại mục khác
 3. G05* Viêm não, viêm tủy và/hoặc viêm não - tủy do bệnh phân loại
 mục khác
@@ -784,9 +788,9 @@ không phân lo ạ i m ụ c khác ( R00 - R99 )
 Chương này bao g ồ m 10 kh ố i sau:
 1. I00 - I02 Bệnh thấp tim cấp tính
 2. I05 - I09 Bệnh tim mạn tính do thấp
-3. I10 - I15 Bệnh lý tăng huyết áp
+3. I10 - I15 Bệnh lý [[Tăng huyết áp]]
 4. I20 - I25 Bệnh tim thiếu máu cục bộ
-5. I26 - I28 Bệnh tim do phổi và bệnh tuần hoàn phổi
+5. I26 - I28 Bệnh tim do [[Phổi]] và bệnh tuần hoàn [[Phổi]]
 6. I30 - I52 Thể khác của bệnh tim
 7. I60 - I69 Bệnh mạch máu não
 8. I70 - I79 Bệnh động mạch, tiểu động mạch và mao mạch
@@ -797,8 +801,8 @@ Danh m ụ c b ệ nh d ấ u sao (*) c ủ a chương này bao g ồ m:
 1. I32* Viêm màng ngoài tim do bệnh phân loại mục khác
 2. I39* Viêm nội tâm mạc và/hoặc bệnh van tim do bệnh phân loại
 mục khác
-3. I41* Bệnh viêm cơ tim do bệnh phân loại mục khác
-4. I43* Bệnh lý cơ tim do bệnh phân loại mục khác
+3. I41* Bệnh viêm [[Tim|cơ tim]] do bệnh phân loại mục khác
+4. I43* Bệnh lý [[Tim|cơ tim]] do bệnh phân loại mục khác
 5. I52* Rối loạn tim khác do bệnh phân loại mục khác
 6. I68* Rối loạn mạch máu não do bệnh phân loại mục khác
 7. I79* Rối loạn động mạch, tiểu động mạch và/hoặc mao mạch do
@@ -1243,8 +1247,8 @@ Lo ạ i tr ừ :
 - T ri ệ u ch ứ ng, d ấ u hi ệ u và nh ữ ng b ấ t thư ờ ng lâm sàng, c ậ n lâm sàng ,
 không phân lo ạ i m ụ c khác ( R00 - R99 )
 Chương này bao g ồ m 11 kh ố i sau:
-1. N00 - N08 Bệnh cầu thận
-2. N10 - N16 Bệnh kẽ ống thận
+1. N00 - N08 Bệnh cầu [[Thận]]
+2. N10 - N16 Bệnh kẽ ống [[Thận]]
 3. N17 - N19 Suy thận
 4. N20 - N23 Sỏi tiết niệu
 5. N25 - N29 Rối loạn khác của thận và niệu quản
@@ -1355,7 +1359,7 @@ phân lo ạ i m ụ c khác ( F53. - )
 - M ang thai bình thư ờ ng ( Z34. - )
 Chương này bao g ồ m 8 kh ố i sau:
 1. O00 - O08 Thai kỳ kết thúc bằng sảy thai
-2. O10 - O16 Phù, protein niệu và tăng huyết áp trong thai kỳ, khi đẻ và
+2. O10 - O16 Phù, protein niệu và [[Tăng huyết áp]] trong thai kỳ, khi đẻ và
 sau đẻ
 3. O20 - O29 Rối loạn thai sản khác chủ yếu liên quan đến thai kỳ
 4. O30 - O48 Chăm sóc thai sản liên quan đến thai, buồng ối và vấn đề có
@@ -1670,7 +1674,7 @@ Phát hi ệ n ch ẩ n đoán hình ả nh và thăm dò ch ứ c năng b ấ t
 Bao g ồ m:
 - Phát hi ệ n b ấ t thư ờ ng không xác đ ị nh c ụ th ể trên ch ẩ n đoán hình ả nh b ằ ng:
 - C ắ t l ớ p vi tính tr ụ c [CAT scan]
-- C h ụ p c ộ ng hư ở ng t ừ [MRI][NMR]
+- C h ụ p c ộ ng hư ở ng t ừ [[[MRI]]][NMR]
 - C h ụ p c ắ t l ớ p phát x ạ positron [PET scan]
 - C h ụ p nhi ệ t b ứ c x ạ
 - S iêu âm [echogram]
@@ -3201,7 +3205,7 @@ Trong bảng mã bệnh tật ở Phụ lục ban hành kèm theo Thông tư 06/
 9. Dấu chấm gạch ngang “(. - )” được sử dụng trong một số trường hợp ký
 tự thứ 4 của mã bệnh được thay bằng dấu gạch ngang.
 Ví dụ : Mã bệnh G03: “Bệnh viêm màng não do nguyên nhân khác và/hoặc không xác định.
-Loại trừ: bệnh viêm não - màng não (G04. - )
+Loại trừ: bệnh [[Viêm não|viêm não - màng não]] (G04. - )
 bệnh viêm tủy - màng tủy (G04. - )”.
 Dấu chấm gạch ngang để lưu ý đối với người mã hóa là bệnh đó có ký tự thứ 4 và phải tìm thêm một ký tự thích hợp để điền vào.
 10. Thuật ngữ “bao gồm”: Trong Bảng mã bệnh tật ở Phụ lục ban hành
@@ -3212,7 +3216,7 @@ C02.3 U ác tính ở hai ph ầ n ba
 - M ộ t ph ầ n ba [1/3] gi ữ a c ủ a lư ỡ i không xác
 [2/3] trư ớ c c ủ a lư ỡ i, đ ị nh khác ph ầ n không xác đ ị nh
 - Ph ầ n di đ ộ ng c ủ a lư ỡ i không xác đ ị nh khác
-T36.5 Ng ộ đ ộ c kháng sinh Streptomycin aminoglycosid
+T36.5 Ng ộ đ ộ c [[Kháng sinh]] Streptomycin aminoglycosid
 Trong trư ờ ng h ợ p thu ậ t ng ữ “bao g ồ m” xu ấ t hi ệ n ở đ ầ u chương ho ặ c đ ầ u kh ố i trong Ph ụ l ụ c 1 ban hành kèm theo Quy ế t đ ị nh này thì đư ợ c hi ể u là mô t ả chung cho c ả chương ho ặ c kh ố i đó.
 
 ---
@@ -3334,7 +3338,7 @@ Vì d ả i mã B95 - B98 không đư ợ c dùng làm mã b ệ nh chính .
 Ví dụ 3: Bệnh chính : Lao phổi đa kháng thuốc
 B ệ nh khác: —
 Mã hóa b ệ nh chính: A15.3 - B ệ nh lao ph ổ i, đư ợ c kh ẳ ng đ ị nh b ằ ng phương pháp không xác đ ị nh
-Mã hóa b ệ nh kèm theo : U83.7 - Kháng đa kháng sinh ( là mã b ệ nh b ổ sung không đư ợ c dùng làm mã b ệ nh chính ghi vào trư ờ ng MA_BENH_KT ) .
+Mã hóa b ệ nh kèm theo : U83.7 - Kháng đa [[Kháng sinh]] ( là mã b ệ nh b ổ sung không đư ợ c dùng làm mã b ệ nh chính ghi vào trư ờ ng MA_BENH_KT ) .
 Ví d ụ 4: B ệ nh chính : M ổ l ấ y thai
 B ệ nh khác : Thai ch ế t lưu ph ả i m ổ c ấ p c ứ u
 Mã hóa b ệ nh chính: O82.1 - M ổ l ấ y thai c ấ p c ứ u
@@ -3489,7 +3493,7 @@ Ví dụ 3 7 : Bệnh chính: “Hạ thân nhiệt nặng - người bệnh b�
 
 36
 W18 - Ngã khác trên cùng mặt bằng (các mã bổ sung được ghi vào trường dữ liệu CHAN_DOAN_RV hoặc CHAN_DOAN_ VAO nếu c ần xác định nguyên nhân).
-Ví dụ 3 8 : Bệnh chính: “Song thị do phản ứng dị ứng với thuốc kháng histamine được dùng theo đơn của bác sĩ ” Mã hóa b ệ nh chính: H53.2 - Song th ị Mã hóa bệnh bổ sung: Y43.0 – Tác động bất lợi của thuốc chống dị ứng và/hoặc thuốc chống nôn (mã bổ sung được ghi vào trường dữ liệu CHAN_DOAN_RV hoặc CHAN_DOAN_ VAO nếu c ần xác định nguyên nhân).
+Ví dụ 3 8 : Bệnh chính: “Song thị do phản ứng dị ứng với thuốc kháng histamine được dùng theo đơn của bác sĩ ” Mã hóa b ệ nh chính: H53.2 - Song th ị Mã hóa bệnh bổ sung: Y43.0 – Tác động bất lợi của thuốc chống dị ứng và/hoặc thuốc chống [[Nôn ói|nôn]] (mã bổ sung được ghi vào trường dữ liệu CHAN_DOAN_RV hoặc CHAN_DOAN_ VAO nếu c ần xác định nguyên nhân).
 e) Mã hóa bệnh lý và biến chứng sau can thiệp y tế : Biến chứng và tác động không mong muốn của can thiệp y tế là nhóm bệnh cần quan tâm đặc biệt để liên tục cải thiện chất lượng dịch vụ khám chữa bệnh. Có ba cách xác định bệnh thuộc nhóm này:
 - Chương XIX (T80 - T88) cung cấp một số mã bệnh tật thể hiện biến chứng
 sau can thiệp ngoại khoa hoặc nội khoa.
@@ -3518,7 +3522,7 @@ vô tình
 Y10 - Y19 : Bi ế n c ố không xác đ ị nh đư ợ c ý đ ồ d ụ ng
 - Tác dụng có hại khi
 Y40 - Y59 : Dư ợ c ch ấ t, thu ố c đi ề u tr ị và sinh ph ẩ m gây dùng để điều trị tác đ ộ ng b ấ t l ợ i khi s ử d ụ ng cho m ụ c đích đi ề u tr ị
-Ví dụ: Người bệnh bị ngộ độc do paracetamol khi sử dụng điều trị đau.
+Ví dụ: Người bệnh bị ngộ độc do [[Paracetamol]] khi sử dụng điều trị đau.
 Xác đ ị nh kh ố i b ệ nh là T36 - T50 thu ộ c Chương XIX. Tra c ứ u thu ố c paracetamol và c ộ t XIX. Ghi mã b ệ nh là T39.1 - Ng ộ đ ộ c ch ấ t d ẫ n xu ấ t 4 - aminophenol.
 
 ---
@@ -3749,7 +3753,7 @@ A
 Ngộ độc Tác dụng có hại khi dùng Chương XIX Vô tình Cố ý tự Không rõ Chất để điều trị làm hại ý định sử dụng
 Abrine T62.2 X49 X69 Y19 Absinthe T51.0 X45 X65 Y15 Acebutolol T44.7 X43 X63 Y13 Y51.7 Acecarbromal T42.6 X41 X61 Y11 Y47.4 Aceclidine T44.1 X43 X63 Y13 Y51.1 Acedapsone T37.0 X44 X64 Y14 Y41.0 Acefylline piperazine T48.6 X44 X64 Y14 Y55.6 Acemetacin T39.3 X40 X60 Y10 Y45.3 Acemorphan T40.2 X42 X62 Y12 Y45.0 Acenocoumarin T45.5 X44 X64 Y14 Y44.2 Acenocoumarol T45.5 X44 X64 Y14 Y44.2 Acepifylline T48.6 X44 X64 Y14 Y55.6 Acepromazine T43.3 X41 X61 Y11 Y49.3 Acesulfamethoxypyridazine T37.0 X44 X64 Y14 Y41.0 Acetal T52.8 X46 X66 Y16 Acetaldehyde (vapor) T52.8 X46 X66 Y16
 - liquid T65.8 X49 X69 Y19
-p-Acetamidophenol T39.1 X40 X60 Y10 Y45.5 Acetaminophen T39.1 X40 X60 Y10 Y45.5 Acetanilide T39.1 X40 X60 Y10 Y45.5 Acetarsol T37.3 X44 X64 Y14 Y41.3 Acetazolamide T50.2 X44 X64 Y14 Y54.2 Acetiamine Acetic T45.2 X44 X64 Y14 Y57.7
+p-Acetamidophenol T39.1 X40 X60 Y10 Y45.5 [[Paracetamol|Acetaminophen]] T39.1 X40 X60 Y10 Y45.5 Acetanilide T39.1 X40 X60 Y10 Y45.5 Acetarsol T37.3 X44 X64 Y14 Y41.3 Acetazolamide T50.2 X44 X64 Y14 Y54.2 Acetiamine Acetic T45.2 X44 X64 Y14 Y57.7
 - acid T54.2 X49 X69 Y19
 --ester (solvent) (vapor) T52.8 X46 X66 Y16 --medicinal (lotion) T49.2 X44 X64 Y14 Y56.2
 - anhydride T65.8 X49 X69 Y19
@@ -4078,7 +4082,7 @@ Arsine (gas) T57.0 X49 X69 Y19 Arsthinol T37.3 X44 X64 Y14 Y41.3 Articaine T41.3
 
 ---
 
-Asbestos T57.8 X49 X69 Y19 Ascaridole T37.4 X44 X64 Y14 Y41.4 Ascorbic acid T45.2 X44 X64 Y14 Y57.7 Asparaginase T45.1 X44 X64 Y14 Y43.3 Aspirin (aluminum) (soluble) T39.0 X40 X60 Y10 Y45.1 Aspoxicillin T36.0 X44 X64 Y14 Y40.0 Astemizole T45.0 X44 X64 Y14 Y43.0 Astringent (local) T49.2 X44 X64 Y14 Y56.2
+Asbestos T57.8 X49 X69 Y19 Ascaridole T37.4 X44 X64 Y14 Y41.4 Ascorbic acid T45.2 X44 X64 Y14 Y57.7 Asparaginase T45.1 X44 X64 Y14 Y43.3 [[Aspirin]] (aluminum) (soluble) T39.0 X40 X60 Y10 Y45.1 Aspoxicillin T36.0 X44 X64 Y14 Y40.0 Astemizole T45.0 X44 X64 Y14 Y43.0 Astringent (local) T49.2 X44 X64 Y14 Y56.2
 - specified NEC T49.2 X44 X64 Y14 Y56.2
 Astromicin T36.5 X44 X64 Y14 Y40.5 Ataractic drug NEC T43.5 X41 X61 Y11 Y49.5 Atenolol T44.7 X43 X63 Y13 Y51.7 Atracurium besilate T48.1 X44 X64 Y14 Y55.1 Atropine T44.3 X43 X63 Y13 Y51.3
 - derivative T44.3 X43 X63 Y13 Y51.3
@@ -4102,7 +4106,7 @@ Barbitone T42.3 X41 X61 Y11 Y47.0 Barbiturate NEC T42.3 X41 X61 Y11 Y47.0
 Barium (carbonate) (chloride) (sulfite) T57.8 X49 X69 Y19
 - pesticide T60.4 X48 X68 Y18
 - sulfate (medicinal) T50.8 X44 X64 Y14 Y57.5
-Barrier cream T49.3 X44 X64 Y14 Y56.3 Basic fuchsin T49.0 X44 X64 Y14 Y56.0 Battery acid or fluid T54.2 X49 X69 Y19 Bay rum T51.8 X45 X65 Y15 BCG (vaccine) T50.9 X44 X64 Y14 Y58.0 BCNU T45.1 X44 X64 Y14 Y43.3 Beclamide T42.6 X41 X61 Y11 Y46.6 Beclometasone T44.5 X43 X63 Y13 Y51.5 Befunolol T49.5 X44 X64 Y14 Y56.5 Bekanamycin T36.5 X44 X64 Y14 Y40.5 Belladonna
+Barrier cream T49.3 X44 X64 Y14 Y56.3 Basic fuchsin T49.0 X44 X64 Y14 Y56.0 Battery acid or fluid T54.2 X49 X69 Y19 Bay rum T51.8 X45 X65 Y15 BCG ([[Vắc-xin|vaccine]]) T50.9 X44 X64 Y14 Y58.0 BCNU T45.1 X44 X64 Y14 Y43.3 Beclamide T42.6 X41 X61 Y11 Y46.6 Beclometasone T44.5 X43 X63 Y13 Y51.5 Befunolol T49.5 X44 X64 Y14 Y56.5 Bekanamycin T36.5 X44 X64 Y14 Y40.5 Belladonna
 - alkaloids T44.3 X43 X63 Y13 Y51.3
 - extract T44.3 X43 X63 Y13 Y51.3
 - herb T44.3 X43 X63 Y13 Y51.3
@@ -4292,7 +4296,7 @@ Cefacetrile T36.1 X44 X64 Y14 Y40.1 Cefaclor T36.1 X44 X64 Y14 Y40.1 Cefadroxil 
 
 ---
 
-Cefamandole T36.1 X44 X64 Y14 Y40.1 Cefamycin antibiotic T36.1 X44 X64 Y14 Y40.1 Cefapirin T36.1 X44 X64 Y14 Y40.1 Cefatrizine T36.1 X44 X64 Y14 Y40.1 Cefazedone T36.1 X44 X64 Y14 Y40.1 Cefazolin T36.1 X44 X64 Y14 Y40.1 Cefbuperazone T36.1 X44 X64 Y14 Y40.1 Cefetamet T36.1 X44 X64 Y14 Y40.1 Cefixime T36.1 X44 X64 Y14 Y40.1 Cefmenoxime T36.1 X44 X64 Y14 Y40.1 Cefmetazole T36.1 X44 X64 Y14 Y40.1 Cefminox T36.1 X44 X64 Y14 Y40.1 Cefonicid T36.1 X44 X64 Y14 Y40.1 Cefoperazone T36.1 X44 X64 Y14 Y40.1 Ceforanide T36.1 X44 X64 Y14 Y40.1 Cefotaxime T36.1 X44 X64 Y14 Y40.1 Cefotetan T36.1 X44 X64 Y14 Y40.1 Cefotiam T36.1 X44 X64 Y14 Y40.1 Cefoxitin T36.1 X44 X64 Y14 Y40.1 Cefpimizole T36.1 X44 X64 Y14 Y40.1 Cefpiramide T36.1 X44 X64 Y14 Y40.1 Cefradine T36.1 X44 X64 Y14 Y40.1 Cefroxadine T36.1 X44 X64 Y14 Y40.1 Cefsulodin T36.1 X44 X64 Y14 Y40.1 Ceftazidime T36.1 X44 X64 Y14 Y40.1 Cefteram T36.1 X44 X64 Y14 Y40.1 Ceftezole T36.1 X44 X64 Y14 Y40.1 Ceftizoxime T36.1 X44 X64 Y14 Y40.1 Ceftriaxone T36.1 X44 X64 Y14 Y40.1 Cefuroxime T36.1 X44 X64 Y14 Y40.1 Cefuzonam T36.1 X44 X64 Y14 Y40.1 Celiprolol T44.7 X43 X63 Y13 Y51.7 Cellulose
+Cefamandole T36.1 X44 X64 Y14 Y40.1 Cefamycin antibiotic T36.1 X44 X64 Y14 Y40.1 Cefapirin T36.1 X44 X64 Y14 Y40.1 Cefatrizine T36.1 X44 X64 Y14 Y40.1 Cefazedone T36.1 X44 X64 Y14 Y40.1 Cefazolin T36.1 X44 X64 Y14 Y40.1 Cefbuperazone T36.1 X44 X64 Y14 Y40.1 Cefetamet T36.1 X44 X64 Y14 Y40.1 Cefixime T36.1 X44 X64 Y14 Y40.1 Cefmenoxime T36.1 X44 X64 Y14 Y40.1 Cefmetazole T36.1 X44 X64 Y14 Y40.1 Cefminox T36.1 X44 X64 Y14 Y40.1 Cefonicid T36.1 X44 X64 Y14 Y40.1 Cefoperazone T36.1 X44 X64 Y14 Y40.1 Ceforanide T36.1 X44 X64 Y14 Y40.1 Cefotaxime T36.1 X44 X64 Y14 Y40.1 Cefotetan T36.1 X44 X64 Y14 Y40.1 Cefotiam T36.1 X44 X64 Y14 Y40.1 Cefoxitin T36.1 X44 X64 Y14 Y40.1 Cefpimizole T36.1 X44 X64 Y14 Y40.1 Cefpiramide T36.1 X44 X64 Y14 Y40.1 Cefradine T36.1 X44 X64 Y14 Y40.1 Cefroxadine T36.1 X44 X64 Y14 Y40.1 Cefsulodin T36.1 X44 X64 Y14 Y40.1 Ceftazidime T36.1 X44 X64 Y14 Y40.1 Cefteram T36.1 X44 X64 Y14 Y40.1 Ceftezole T36.1 X44 X64 Y14 Y40.1 Ceftizoxime T36.1 X44 X64 Y14 Y40.1 [[Ceftriaxone]] T36.1 X44 X64 Y14 Y40.1 Cefuroxime T36.1 X44 X64 Y14 Y40.1 Cefuzonam T36.1 X44 X64 Y14 Y40.1 Celiprolol T44.7 X43 X63 Y13 Y51.7 Cellulose
 - cathartic T47.4 X44 X64 Y14 Y53.4
 - hydroxyethyl T47.4 X44 X64 Y14 Y53.4
 - oxidized T49.4 X44 X64 Y14 Y56.4
@@ -4345,7 +4349,7 @@ Chlorophacinone T60.4 X48 X68 Y18 Chlorophenol T53.7 X46 X66 Y16 Chlorophenothan
 - pesticide T60.8 X48 X68 Y18
 Chloroprocaine T41.3 X44 X64 Y14 Y48.3
 - spinal T41.3 X44 X64 Y14 Y48.3
-Chloropurine T45.1 X44 X64 Y14 Y43.1 Chloropyramine T45.0 X44 X64 Y14 Y43.0 Chloropyrifos T60.0 X48 X68 Y18 Chloropyrilene T45.0 X44 X64 Y14 Y43.0 Chloroquine T37.2 X44 X64 Y14 Y41.2 Chlorothalonil T60.3 X48 X68 Y18 Chlorothiazide T50.2 X44 X64 Y14 Y54.3 Chlorothymol T49.4 X44 X64 Y14 Y56.4 Chlorotrianisene T38.5 X44 X64 Y14 Y42.5 Chlorovinyldichloroarsine, not in war T57.0 X49 X69 Y19 Chloroxine T49.4 X44 X64 Y14 Y56.4 Chloroxylenol T49.0 X44 X64 Y14 Y56.0 Chlorphenamine T45.0 X44 X64 Y14 Y43.0 Chlorphenesin T42.8 X41 X61 Y11 Y46.8 Chlorpheniramine T45.0 X44 X64 Y14 Y43.0 Chlorphenoxamine T45.0 X44 X64 Y14 Y43.0 Chlorphentermine T50.5 X44 X64 Y14 Y57.0 Chlorprocaine - see Chloroprocaine Chlorproguanil T37.2 X44 X64 Y14 Y41.2 Chlorpromazine T43.3 X41 X61 Y11 Y49.3 Chlorpropamide T38.3 X44 X64 Y14 Y42.3 Chlorprothixene T43.4 X41 X61 Y11 Y49.4 Chlorquinaldol T49.0 X44 X64 Y14 Y56.0 Chlorquinol T49.0 X44 X64 Y14 Y56.0 Chlortalidone T50.2 X44 X64 Y14 Y54.5 Chlortetracycline T36.4 X44 X64 Y14 Y40.4 Chlorthalidone T50.2 X44 X64 Y14 Y54.5 Chlorthion T60.0 X48 X68 Y18 Chlorthiophos T60.0 X48 X68 Y18 Chlorzoxazone T42.8 X41 X61 Y11 Y46.8 Choke damp T59.7 X47 X67 Y17 Cholagogues T47.5 X44 X64 Y14 Y53.5 Cholecalciferol T45.2 X44 X64 Y14 Y54.7 Cholecystokinin T50.8 X44 X64 Y14 Y57.6 Cholera vaccine T50.9 X44 X64 Y14 Y58.2
+Chloropurine T45.1 X44 X64 Y14 Y43.1 Chloropyramine T45.0 X44 X64 Y14 Y43.0 Chloropyrifos T60.0 X48 X68 Y18 Chloropyrilene T45.0 X44 X64 Y14 Y43.0 Chloroquine T37.2 X44 X64 Y14 Y41.2 Chlorothalonil T60.3 X48 X68 Y18 Chlorothiazide T50.2 X44 X64 Y14 Y54.3 Chlorothymol T49.4 X44 X64 Y14 Y56.4 Chlorotrianisene T38.5 X44 X64 Y14 Y42.5 Chlorovinyldichloroarsine, not in war T57.0 X49 X69 Y19 Chloroxine T49.4 X44 X64 Y14 Y56.4 Chloroxylenol T49.0 X44 X64 Y14 Y56.0 Chlorphenamine T45.0 X44 X64 Y14 Y43.0 Chlorphenesin T42.8 X41 X61 Y11 Y46.8 Chlorpheniramine T45.0 X44 X64 Y14 Y43.0 Chlorphenoxamine T45.0 X44 X64 Y14 Y43.0 Chlorphentermine T50.5 X44 X64 Y14 Y57.0 Chlorprocaine - see Chloroprocaine Chlorproguanil T37.2 X44 X64 Y14 Y41.2 Chlorpromazine T43.3 X41 X61 Y11 Y49.3 Chlorpropamide T38.3 X44 X64 Y14 Y42.3 Chlorprothixene T43.4 X41 X61 Y11 Y49.4 Chlorquinaldol T49.0 X44 X64 Y14 Y56.0 Chlorquinol T49.0 X44 X64 Y14 Y56.0 Chlortalidone T50.2 X44 X64 Y14 Y54.5 Chlortetracycline T36.4 X44 X64 Y14 Y40.4 Chlorthalidone T50.2 X44 X64 Y14 Y54.5 Chlorthion T60.0 X48 X68 Y18 Chlorthiophos T60.0 X48 X68 Y18 Chlorzoxazone T42.8 X41 X61 Y11 Y46.8 Choke damp T59.7 X47 X67 Y17 Cholagogues T47.5 X44 X64 Y14 Y53.5 Cholecalciferol T45.2 X44 X64 Y14 Y54.7 Cholecystokinin T50.8 X44 X64 Y14 Y57.6 Cholera [[Vắc-xin|vaccine]] T50.9 X44 X64 Y14 Y58.2
 29
 
 ---
@@ -4425,7 +4429,7 @@ Coronary vasodilator NEC T46.3 X44 X64 Y14 Y52.3 Corrosive NEC T54.9 X49 X69 Y19
 - aromatics T54.1 X49 X69 Y19
 - fumes NEC T54.9 X47 X67 Y17
 - sublimate T56.1 X49 X69 Y19
-Corticosteroid
+[[Corticoid|Corticosteroid]]
 - mineral T50.0 X44 X64 Y14 Y54.0
 - ophthalmic T49.5 X44 X64 Y14 Y56.5
 Corticotrophin T38.8 X44 X64 Y14 Y42.8
@@ -4479,11 +4483,11 @@ Deptropine T45.0 X44 X64 Y14 Y43.0 Dequalinium (chloride) T49.0 X44 X64 Y14 Y56.
 Desoxycortone T50.0 X44 X64 Y14 Y54.0 Desoxyephedrine T43.6 X41 X61 Y11 Y49.7 Detaxtran T46.6 X44 X64 Y14 Y52.6 Detergent (local) (medicinal) NEC T49.2 X44 X64 Y14 Y56.2
 - nonmedicinal T55 X49 X69 Y19
 - specified NEC T49.2 X44 X64 Y14 Y56.2
-Detoxifying agent T50.6 X44 X64 Y14 Y57.2 Dexamethasone T38.0 X44 X64 Y14 Y42.0 Dexamfetamine T43.6 X41 X61 Y11 Y49.7 Dexamphetamine T43.6 X41 X61 Y11 Y49.7 Dexbrompheniramine T45.0 X44 X64 Y14 Y43.0 Dexchlorpheniramine T45.0 X44 X64 Y14 Y43.0 Dexetimide T44.3 X43 X63 Y13 Y51.3 Dexfenfluramine T50.5 X44 X64 Y14 Y57.0 Dexpanthenol T45.2 X44 X64 Y14 Y57.7 Dextran (40) (70) (150) T45.8 X44 X64 Y14 Y44.7 Dextriferron T45.4 X44 X64 Y14 Y44.0 Dextroamphetamine T43.6 X41 X61 Y11 Y49.7 Dextromethorphan T48.3 X44 X64 Y14 Y55.3 Dextromoramide T40.4 X42 X62 Y12 Y45.0 Dextropropoxyphene T40.4 X42 X62 Y12 Y45.0 Dextrose T50.3 X44 X64 Y14 Y54.6
+Detoxifying agent T50.6 X44 X64 Y14 Y57.2 [[Corticoid|Dexamethasone]] T38.0 X44 X64 Y14 Y42.0 Dexamfetamine T43.6 X41 X61 Y11 Y49.7 Dexamphetamine T43.6 X41 X61 Y11 Y49.7 Dexbrompheniramine T45.0 X44 X64 Y14 Y43.0 Dexchlorpheniramine T45.0 X44 X64 Y14 Y43.0 Dexetimide T44.3 X43 X63 Y13 Y51.3 Dexfenfluramine T50.5 X44 X64 Y14 Y57.0 Dexpanthenol T45.2 X44 X64 Y14 Y57.7 Dextran (40) (70) (150) T45.8 X44 X64 Y14 Y44.7 Dextriferron T45.4 X44 X64 Y14 Y44.0 Dextroamphetamine T43.6 X41 X61 Y11 Y49.7 Dextromethorphan T48.3 X44 X64 Y14 Y55.3 Dextromoramide T40.4 X42 X62 Y12 Y45.0 Dextropropoxyphene T40.4 X42 X62 Y12 Y45.0 Dextrose T50.3 X44 X64 Y14 Y54.6
 - concentrated solution, intravenous T46.8 X44 X64 Y14 Y52.8
 Dextrothyroxine sodium T38.1 X44 X64 Y14 Y42.1 DHE T37.3 X44 X64 Y14 Y41.3
 - 45 T46.5 X44 X64 Y14 Y52.5
-Diacerein T39.3 X40 X60 Y10 Y45.3 Diacetone alcohol T52.4 X46 X66 Y16 Diacetylmorphine T40.1 X42 X62 Y12 Y45.0 Diachylon plaster T49.4 X44 X64 Y14 Y56.4 Diaethylstilboestrolum T38.5 X44 X64 Y14 Y42.5 Diagnostic agent NEC T50.8 X44 X64 Y14 Y57.6 Dialkyl carbonate T52.9 X46 X66 Y16 Diallymal T42.3 X41 X61 Y11 Y47.0 Dialysis solution (intraperitoneal) T50.3 X44 X64 Y14 Y54.6 Diaminodiphenylsulfone T37.1 X44 X64 Y14 Y41.1 Diamorphine T40.1 X42 X62 Y12 Y45.0 Diamthazole T49.0 X44 X64 Y14 Y56.0 Dianthone T47.2 X44 X64 Y14 Y53.2 Diaphenylsulfone T37.0 X44 X64 Y14 Y41.0 Diastase T47.5 X44 X64 Y14 Y53.5 Diatrizoate T50.8 X44 X64 Y14 Y57.5 Diazepam T42.4 X41 X61 Y11 Y47.1 Diazinon T60.0 X48 X68 Y18 Diazomethane (gas) T59.8 X47 X67 Y17
+Diacerein T39.3 X40 X60 Y10 Y45.3 Diacetone alcohol T52.4 X46 X66 Y16 Diacetylmorphine T40.1 X42 X62 Y12 Y45.0 Diachylon plaster T49.4 X44 X64 Y14 Y56.4 Diaethylstilboestrolum T38.5 X44 X64 Y14 Y42.5 Diagnostic agent NEC T50.8 X44 X64 Y14 Y57.6 Dialkyl carbonate T52.9 X46 X66 Y16 Diallymal T42.3 X41 X61 Y11 Y47.0 Dialysis solution (intraperitoneal) T50.3 X44 X64 Y14 Y54.6 Diaminodiphenylsulfone T37.1 X44 X64 Y14 Y41.1 Diamorphine T40.1 X42 X62 Y12 Y45.0 Diamthazole T49.0 X44 X64 Y14 Y56.0 Dianthone T47.2 X44 X64 Y14 Y53.2 Diaphenylsulfone T37.0 X44 X64 Y14 Y41.0 Diastase T47.5 X44 X64 Y14 Y53.5 Diatrizoate T50.8 X44 X64 Y14 Y57.5 [[Diazepam]] T42.4 X41 X61 Y11 Y47.1 Diazinon T60.0 X48 X68 Y18 Diazomethane (gas) T59.8 X47 X67 Y17
 38
 
 ---
@@ -4673,7 +4677,7 @@ Etoglucid T45.1 X44 X64 Y14 Y43.3 Etomidate T41.1 X44 X64 Y14 Y48.1
 
 ---
 
-Etomidoline T44.3 X43 X63 Y13 Y51.3 Etoposide T45.1 X44 X64 Y14 Y43.3 Etosalamide T39.0 X40 X60 Y10 Y45.1 Etozolin T50.1 X44 X64 Y14 Y54.4 Etretinate T50.9 X44 X64 Y14 Y57.8 Etybenzatropine T44.3 X43 X63 Y13 Y51.3 Etynodiol T38.4 X44 X64 Y14 Y42.4 Eucaine T41.3 X44 X64 Y14 Y48.3 Eucalyptus oil T49.7 X44 X64 Y14 Y56.7 Eucatropine T49.5 X44 X64 Y14 Y56.5 Evans blue T50.8 X44 X64 Y14 Y57.6 Exalamide T49.0 X44 X64 Y14 Y56.0 Exhaust gas T58 X47 X67 Y17 Expectorant NEC T48.4 X44 X64 Y14 Y55.4 Extended insulin zinc suspension T38.3 X44 X64 Y14 Y42.3 Extrapyramidal antagonist NEC T44.3 X43 X63 Y13 Y51.3 Eye drug NEC T49.5 X44 X64 Y14 Y56.5 F
+Etomidoline T44.3 X43 X63 Y13 Y51.3 Etoposide T45.1 X44 X64 Y14 Y43.3 Etosalamide T39.0 X40 X60 Y10 Y45.1 Etozolin T50.1 X44 X64 Y14 Y54.4 Etretinate T50.9 X44 X64 Y14 Y57.8 Etybenzatropine T44.3 X43 X63 Y13 Y51.3 Etynodiol T38.4 X44 X64 Y14 Y42.4 Eucaine T41.3 X44 X64 Y14 Y48.3 Eucalyptus oil T49.7 X44 X64 Y14 Y56.7 Eucatropine T49.5 X44 X64 Y14 Y56.5 Evans blue T50.8 X44 X64 Y14 Y57.6 Exalamide T49.0 X44 X64 Y14 Y56.0 Exhaust gas T58 X47 X67 Y17 Expectorant NEC T48.4 X44 X64 Y14 Y55.4 Extended [[Insulin]] zinc suspension T38.3 X44 X64 Y14 Y42.3 Extrapyramidal antagonist NEC T44.3 X43 X63 Y13 Y51.3 Eye drug NEC T49.5 X44 X64 Y14 Y56.5 F
 Chất Ngộ độc Tác dụng có hại khi dùng Chương XIX Vô tình Cố ý tự Không rõ để điều trị làm hại ý định sử dụng
 FAC (fluorouracil + doxorubicin + T45.1 X44 X64 Y14 Y43.3 cyclophosphamide)
 Factor
@@ -4818,7 +4822,7 @@ Ginger T47.5 X44 X64 Y14 Y53.5
 - jamaica T62.2 X49 X69 Y19
 Gitalin T46.0 X44 X64 Y14 Y52.0
 - amorphous T46.0 X44 X64 Y14 Y52.0
-Gitaloxin T46.0 X44 X64 Y14 Y52.0 Glafenine T39.8 X40 X60 Y10 Y45.8 Glibenclamide T38.3 X44 X64 Y14 Y42.3 Glibornuride T38.3 X44 X64 Y14 Y42.3 Gliclazide T38.3 X44 X64 Y14 Y42.3 Glimidine T38.3 X44 X64 Y14 Y42.3 Glipizide T38.3 X44 X64 Y14 Y42.3 Gliquidone T38.3 X44 X64 Y14 Y42.3 Glisolamide T38.3 X44 X64 Y14 Y42.3 Glisoxepide T38.3 X44 X64 Y14 Y42.3 Globin zinc insulin T38.3 X44 X64 Y14 Y42.3 Globulin
+Gitaloxin T46.0 X44 X64 Y14 Y52.0 Glafenine T39.8 X40 X60 Y10 Y45.8 Glibenclamide T38.3 X44 X64 Y14 Y42.3 Glibornuride T38.3 X44 X64 Y14 Y42.3 Gliclazide T38.3 X44 X64 Y14 Y42.3 Glimidine T38.3 X44 X64 Y14 Y42.3 Glipizide T38.3 X44 X64 Y14 Y42.3 Gliquidone T38.3 X44 X64 Y14 Y42.3 Glisolamide T38.3 X44 X64 Y14 Y42.3 Glisoxepide T38.3 X44 X64 Y14 Y42.3 Globin zinc [[Insulin]] T38.3 X44 X64 Y14 Y42.3 Globulin
 - antilymphocytic T50.9 X44 X64 Y14 Y59.3
 - antirhesus T50.9 X44 X64 Y14 Y59.3
 - antivenin T50.9 X44 X64 Y14 Y59.3
@@ -6143,7 +6147,7 @@ TT STT MÃ CHAPTER TÊN MÃ MAIN TÊN MÃ SUB TÊN MÃ TYPE TÊN LOẠI MÃ MÃ 
 
 ---
 
-17 II C00- Neoplasm U tân C00- Neoplasms U ác tính C81-C96 Maligna U ác C91 Lymphoid Bệnh C91.2 C912 Subacute Bệnh 20/10 Hủy do official- D48 s sinh C97 nt của hệ leukaemia bạch cầu lymphocyt bạch cầu /2020 WHO who- neoplas lympho, dạng ic dạng 11:38: không updates- ms, hệ tạo lympho leukaemia lympho 34 có mã combined- stated máu và bán cấp này 1996- or các mô 2012- presum liên volume- ed to quan 1.pdf be Ngày chấp primary, thuận of 10/2008, lymphoi ngày hiệu d, lực haemat 01/2010 opoietic and related tissue
+17 II C00- Neoplasm U tân C00- Neoplasms U ác tính C81-C96 Maligna U ác C91 Lymphoid Bệnh C91.2 C912 Subacute Bệnh 20/10 Hủy do official- D48 s sinh C97 nt của hệ leukaemia [[Bạch cầu]] lymphocyt [[Bạch cầu]] /2020 WHO who- neoplas lympho, dạng ic dạng 11:38: không updates- ms, hệ tạo lympho leukaemia lympho 34 có mã combined- stated máu và bán cấp này 1996- or các mô 2012- presum liên volume- ed to quan 1.pdf be Ngày chấp primary, thuận of 10/2008, lymphoi ngày hiệu d, lực haemat 01/2010 opoietic and related tissue
 18 II C00- Neoplasm U tân C00- Neoplasms U ác tính C81-C96 Maligna U ác C93 Monocytic Bệnh C93.2 C932 Subacute Bệnh 20/10 Hủy do official- D48 s sinh C97 nt của hệ leukaemia bạch cầu monocytic bạch cầu /2020 WHO who- neoplas lympho, đơn leukaemia đơn 11:38: không updates- ms, hệ tạo nhân nhân 34 có mã combined- stated máu và bán cấp này 1996- or các mô 2012- presum liên volume- ed to quan 1.pdf be Ngày chấp primary, thuận of 10/2008, lymphoi ngày hiệu d, lực haemat 01/2010 opoietic and related tissue
 8
 
@@ -6284,7 +6288,7 @@ TT STT MÃ CHAPTER TÊN MÃ MAIN TÊN MÃ SUB TÊN MÃ TYPE TÊN LOẠI MÃ MÃ 
 ---
 
 84 XI K00- Diseases Bệnh hệ K50- Noninfecti Viêm K51 Ulcerative Viêm K51.1 K511 Ulcerative Viêm 20/10 Hủy do official- K93 of the tiêu hóa K52 ve enteritis ruột colitis loét đại (chronic) loét hồi - /2020 WHO who- digestive and colitis non và tràng ileocolitis đại 11:38: không updates- system đại chảy máu tràng(mã 34 có mã combined- tràng n) này 1996- không 2012- do volume- nhiễm 1.pdf trùng Ngày chấp thuận 10/2005, ngày hiệu lực 01/2010
-85 XI K00- Diseases Bệnh hệ K55- Other Bệnh K58 Irritable Hội K58.0 K580 Irritable Hội 20/10 Hủy do WHO bỏ K93 of the tiêu hóa K64 diseases đường bowel chứng bowel chứng /2020 WHO từ năm digestive of ruột syndrome ruột kích syndrome ruột kích 11:38: không 2017 system intestines khác thích with thích, có 34 có mã theo tài diarrhoea tiêu chảy này liệu được ban hành tháng 10/2017, hiệu lực từ tháng 1/2019 86 XI K00- Diseases Bệnh hệ K55- Other Bệnh K58 Irritable Hội K58.9 K589 Irritable Hội 20/10 Hủy do WHO bỏ K93 of the tiêu hóa K64 diseases đường bowel chứng bowel chứng /2020 WHO từ năm digestive of ruột syndrome ruột kích syndrome ruột kích 11:38: không 2017 system intestines khác thích without thích, 34 có mã theo tài diarrhoea không này liệu được tiêu chảy ban hành tháng 10/2017, hiệu lực từ tháng 1/2019
+85 XI K00- Diseases Bệnh hệ K55- Other Bệnh K58 Irritable Hội K58.0 K580 Irritable Hội 20/10 Hủy do WHO bỏ K93 of the tiêu hóa K64 diseases đường bowel chứng bowel chứng /2020 WHO từ năm digestive of ruột syndrome ruột kích syndrome ruột kích 11:38: không 2017 system intestines khác thích with thích, có 34 có mã theo tài diarrhoea [[Tiêu chảy]] này liệu được ban hành tháng 10/2017, hiệu lực từ tháng 1/2019 86 XI K00- Diseases Bệnh hệ K55- Other Bệnh K58 Irritable Hội K58.9 K589 Irritable Hội 20/10 Hủy do WHO bỏ K93 of the tiêu hóa K64 diseases đường bowel chứng bowel chứng /2020 WHO từ năm digestive of ruột syndrome ruột kích syndrome ruột kích 11:38: không 2017 system intestines khác thích without thích, 34 có mã theo tài diarrhoea không này liệu được [[Tiêu chảy]] ban hành tháng 10/2017, hiệu lực từ tháng 1/2019
 29
 
 ---
@@ -12894,7 +12898,7 @@ disorders trừ: các in rối loạn diseases kẽ ống classified thận do e
 ---
 
 11321 XVIII R00- Sympt Triệu R00- Sympto Triệu R00 Abnorma Nhịp R00.3 R003 Pulseless Excl.: Ngừng Loại trừ: R99 oms, chứng, R09 ms and chứng lities of tim bất electrical cardiac tim với ngừng signs dấu signs và heart thường activity, arrest hoạt tim (I46.-) and hiệu involvin dấu beat not (I46.-) động abnor và g the hiệu elsewher điện vô mal những circulat liên e mạch, clinical bất ory quan classified không and thườn and tới hệ phân labora g lâm respirat tuần loại mục tory sàng, ory hoàn khác finding cận systems và hệ s, not lâm hô hấp elsewh sàng, ere không classifi phân ed loại mục khác
-11376 XVIII R00- Sympt Triệu R10- Sympto Triệu R17 Hyperbili Tăng R17.0 R170 Hyperbili Jaundice Tăng Vàng da R99 oms, chứng, R19 ms and chứng rubinae bilirubin rubinaem NOS bilirubin không signs dấu signs và mia, máu, ia with máu, có xác định and hiệu involvin dấu with or có hoặc mention đề cập khác abnor và g the hiệu without không of vàng mal những digestiv liên jaundice, vàng jaundice, da, clinical bất e quan not da, not không and thườn system tới hệ elsewher không elsewher phân labora g lâm and tiêu e phân e loại mục tory sàng, abdome hóa classified loại classified khác finding cận n và mục s, not lâm vùng khác elsewh sàng, bụng ere không classifi phân ed loại mục khác
+11376 XVIII R00- Sympt Triệu R10- Sympto Triệu R17 Hyperbili Tăng R17.0 R170 Hyperbili Jaundice Tăng [[Vàng da]] R99 oms, chứng, R19 ms and chứng rubinae bilirubin rubinaem NOS bilirubin không signs dấu signs và mia, máu, ia with máu, có xác định and hiệu involvin dấu with or có hoặc mention đề cập khác abnor và g the hiệu without không of vàng mal những digestiv liên jaundice, vàng jaundice, da, clinical bất e quan not da, not không and thườn system tới hệ elsewher không elsewher phân labora g lâm and tiêu e phân e loại mục tory sàng, abdome hóa classified loại classified khác finding cận n và mục s, not lâm vùng khác elsewh sàng, bụng ere không classifi phân ed loại mục khác
 
 ---
 

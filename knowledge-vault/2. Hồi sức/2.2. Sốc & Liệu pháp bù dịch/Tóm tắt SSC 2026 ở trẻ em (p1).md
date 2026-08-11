@@ -1,6 +1,16 @@
+---
+title: "Tóm tắt SSC 2026 ở trẻ em (p1)"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Tóm Tắt Khuyến Cáo Surviving Sepsis Campaign 2026 (Phần 1)
 
-Nhiễm khuẩn huyết (sepsis) là tình trạng rối loạn chức năng cơ quan cấp tính đe dọa tính mạng do phản ứng mất điều hòa của ký chủ đối với nhiễm trùng. Đây là một ưu tiên y tế toàn cầu với ước tính khoảng 49 triệu ca mắc và 13 triệu ca tử vong liên quan mỗi năm. Hướng dẫn của Chiến dịch Sống sót sau Nhiễm khuẩn huyết (Surviving Sepsis Campaign - SSC) năm 2026 được đồng tài trợ và phát triển bởi Hội Y học Hồi sức Cấp cứu Hoa Kỳ (SCCM) và Hội Hồi sức Cấp cứu Châu Âu (ESICM) nhằm cung cấp các khuyến cáo dựa trên bằng chứng lâm sàng mới nhất.
+[[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] (sepsis) là tình trạng rối loạn chức năng cơ quan cấp tính đe dọa tính mạng do phản ứng mất điều hòa của ký chủ đối với nhiễm trùng. Đây là một ưu tiên y tế toàn cầu với ước tính khoảng 49 triệu ca mắc và 13 triệu ca tử vong liên quan mỗi năm. Hướng dẫn của Chiến dịch Sống sót sau [[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] (Surviving Sepsis Campaign - SSC) năm 2026 được đồng tài trợ và phát triển bởi Hội Y học Hồi sức Cấp cứu Hoa Kỳ (SCCM) và Hội Hồi sức Cấp cứu Châu Âu (ESICM) nhằm cung cấp các khuyến cáo dựa trên bằng chứng lâm sàng mới nhất.
 
 ---
 
@@ -37,13 +47,13 @@ Nhiễm khuẩn huyết (sepsis) là tình trạng rối loạn chức năng cơ
 
 ##### 1.1.6. Thu thập cấy máu (Blood Cultures)
 
-- **Khuyến cáo:** Đối với người lớn có khả năng, có thể, hoặc chắc chắn bị nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn, **khuyến nghị thu thập cấy máu càng sớm càng tốt và lý tưởng nhất là trước khi bắt đầu liệu pháp kháng sinh**. Việc thu thập cấy máu không được làm chậm trễ việc sử dụng kháng sinh, đặc biệt là ở bệnh nhân có tụt huyết áp.
+- **Khuyến cáo:** Đối với người lớn có khả năng, có thể, hoặc chắc chắn bị nhiễm khuẩn huyết hoặc [[[[Sốc]] nhiễm khuẩn]], **khuyến nghị thu thập cấy máu càng sớm càng tốt và lý tưởng nhất là trước khi bắt đầu [[[[Kháng sinh]]|liệu pháp kháng sinh]]**. Việc thu thập cấy máu không được làm chậm trễ việc sử dụng kháng sinh, đặc biệt là ở bệnh nhân có tụt huyết áp.
     - _Mức độ khuyến cáo:_ Khuyến cáo mạnh mẽ (Strong recommendation).
     - _Mức độ bằng chứng:_ Chất lượng bằng chứng thấp (Low-certainty evidence).
 
 ##### 1.1.7. Đo nồng độ Lactate máu
 
-- **Khuyến cáo:** Gợi ý **đo nồng độ lactate máu** cho bệnh nhân người lớn có khả năng hoặc có thể bị nhiễm khuẩn huyết hoặc sốc nhiễm khuẩn. Việc truyền dịch sau liều bolus ban đầu nên được cá thể hóa dựa trên sự sụt giảm lactate hơn là tiếp tục truyền dịch cho đến khi lactate trở về hoàn toàn bình thường.
+- **Khuyến cáo:** Gợi ý **đo nồng độ lactate máu** cho bệnh nhân người lớn có khả năng hoặc có thể bị nhiễm khuẩn huyết hoặc [[[[Sốc]] nhiễm khuẩn]]. Việc truyền dịch sau liều bolus ban đầu nên được cá thể hóa dựa trên sự sụt giảm lactate hơn là tiếp tục truyền dịch cho đến khi lactate trở về hoàn toàn bình thường.
     - _Mức độ khuyến cáo:_ Khuyến cáo có điều kiện (Conditional recommendation).
     - _Mức độ bằng chứng:_ Chất lượng bằng chứng thấp (Low-certainty evidence).
 
@@ -51,7 +61,7 @@ Nhiễm khuẩn huyết (sepsis) là tình trạng rối loạn chức năng cơ
 
 > **Bảng 3: Thuật ngữ Nhiễm khuẩn huyết trong Hướng dẫn này (Sepsis Terminology in This Guideline)** _Trích từ tài liệu: "surviving-sepsis-campaign-international-guidelines-for.pdf" trong Notebook này._
 > 
-> | Thuật ngữ | Định nghĩa dựa trên lâm sàng | | :--- | :--- | | **Nhiễm khuẩn huyết chắc chắn** _(Definite sepsis)_ | Nhiễm khuẩn huyết được xác nhận dựa trên bệnh sử, thăm khám lâm sàng và xét nghiệm chẩn đoán. Một chẩn đoán thay thế khác là rất ít khả năng xảy ra. | | **Nhiễm khuẩn huyết có khả năng** _(Probable sepsis)_ | Nghi ngờ cao về nhiễm khuẩn huyết. Sepsis là chẩn đoán có khả năng nhất dựa trên bệnh sử, lâm sàng và xét nghiệm. Chẩn đoán thay thế ít khả năng xảy ra hơn. | | **Nhiễm khuẩn huyết có thể** _(Possible sepsis)_ | Nghi ngờ trung bình về nhiễm khuẩn huyết. Sepsis là một chẩn đoán có thể xảy ra; tuy nhiên, một chẩn đoán thay thế cũng có khả năng tương đương dựa trên bệnh sử, lâm sàng và xét nghiệm. | | **Nhiễm khuẩn huyết ít khả năng** _(Unlikely sepsis)_ | Nghi ngờ thấp về nhiễm khuẩn huyết. Đánh giá lâm sàng không phù hợp với nhiễm khuẩn huyết, hoặc một chẩn đoán thay thế khác có khả năng xảy ra cao hơn dựa trên bệnh sử, lâm sàng và xét nghiệm. |
+> | Thuật ngữ | Định nghĩa dựa trên lâm sàng | | :--- | :--- | | **Nhiễm khuẩn huyết chắc chắn** _(Definite sepsis)_ | Nhiễm khuẩn huyết được xác nhận dựa trên bệnh sử, thăm khám lâm sàng và xét nghiệm chẩn đoán. Một chẩn đoán thay thế khác là rất ít khả năng xảy ra. | | **Nhiễm khuẩn huyết có khả năng** _(Probable sepsis)_ | Nghi ngờ cao về nhiễm khuẩn huyết. Sepsis là chẩn đoán có khả năng nhất dựa trên bệnh sử, lâm sàng và xét nghiệm. Chẩn đoán thay thế ít khả năng xảy ra hơn. | | **Nhiễm khuẩn huyết có thể** _(Possible sepsis)_ | Nghi ngờ trung bình về nhiễm khuẩn huyết. Sepsis là một chẩn đoán có thể xảy ra; tuy nhiên, một chẩn đoán thay thế cũng có khả năng tương đương dựa trên bệnh sử, lâm sàng và xét nghiệm. | | **Nhiễm khuẩn huyết ít khả năng** _(Unlikely sepsis)_ | Nghi ngờ thấp về nhiễm khuẩn huyết. Đánh giá lâm sàng không [[Phù]] hợp với nhiễm khuẩn huyết, hoặc một chẩn đoán thay thế khác có khả năng xảy ra cao hơn dựa trên bệnh sử, lâm sàng và xét nghiệm. |
 
 ---
 

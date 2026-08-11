@@ -1,7 +1,13 @@
 ---
+title: "Thuốc kháng Herpesvirus"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 Lưu ý quan trọng: Các tài liệu y khoa bạn cung cấp hiện tại tập trung chủ yếu vào thuốc Foscarnet (điều trị Cytomegalovirus - CMV), Tenofovir bôi tại chỗ (đối với HSV-2), và các cơ chế lẩn tránh miễn dịch của họ Herpesvirus. Để đảm bảo cấu trúc lâm sàng trọn vẹn, tôi sẽ phân tích sâu các dữ liệu có trong tài liệu, đồng thời bổ sung các thông tin kinh điển về nhóm thuốc (như Acyclovir, Ganciclovir) từ kiến thức y khoa bên ngoài. Các thông tin ngoài tài liệu sẽ được ghi chú rõ ràng để bạn có thể xác minh độc lập._
 
 ### 1. Cơ chế tác dụng và Phổ kháng virus
@@ -13,12 +19,12 @@ Lưu ý quan trọng: Các tài liệu y khoa bạn cung cấp hiện tại tậ
 ### 2. Dược động học/Dược lực học (PK/PD) ứng dụng
 
 - **Foscarnet và Chỉ số PK/PD:**
-    - Đối với Foscarnet, có một mối tương quan PK/PD và PK/Độc tính cực kỳ chặt chẽ: Tổng lượng thuốc phơi nhiễm (AUC) tương quan mạnh với việc kéo dài thời gian không tiến triển của bệnh viêm võng mạc do CMV, đồng thời cũng tương quan tỷ lệ thuận với nguy cơ độc tính trên thận (nephrotoxicity).
+    - Đối với Foscarnet, có một mối tương quan PK/PD và PK/Độc tính cực kỳ chặt chẽ: Tổng lượng thuốc phơi nhiễm (AUC) tương quan mạnh với việc kéo dài thời gian không tiến triển của bệnh viêm võng mạc do CMV, đồng thời cũng tương quan tỷ lệ thuận với nguy cơ độc tính trên [[Thận]] (nephrotoxicity).
     - **Giám sát nồng độ thuốc (TDM):** Dù TDM chưa được chuẩn hóa rộng rãi cho foscarnet, nhưng nó đã được ứng dụng thành công trên bệnh nhân lọc máu (hemodialysis). Mục tiêu lâm sàng là hiệu chỉnh liều để đạt được nồng độ đỉnh (Cmax) từ **500–800 $\mu$M**. Khoảng nồng độ này nằm ở "cửa sổ trị liệu" rất hẹp: cao hơn ngưỡng hiệu quả ức chế virus (CMV IC50 = 100–300 $\mu$M) và thấp hơn ngưỡng gây độc tính (>1000 $\mu$M).
 - **Chiến lược vượt qua rào cản PK/Độc tính với Tenofovir bôi tại chỗ:**
     - Nồng độ hiệu quả (EC50) của Tenofovir đối với HSV-2 là rất cao (14,000–19,000 ng/mL). Nếu dùng đường uống để đạt được nồng độ này tại đường sinh dục, bệnh nhân sẽ bị phơi nhiễm huyết tương vượt quá giới hạn an toàn, gây độc toàn thân nghiêm trọng.
     - Tuy nhiên, việc dùng dạng bôi tại chỗ (gel 1%) giúp đưa thuốc trực tiếp đến vị trí nhiễm trùng, bỏ qua các lo ngại về an toàn hệ thống. Việc duy trì nồng độ Tenofovir tại đường sinh dục $\ge$ 10,000 ng/mL có tương quan đáng kể với việc giảm nguy cơ mắc HSV-2.
-- _**Bổ sung ngoài tài liệu:**_ _Đối với Acyclovir truyền tĩnh mạch, thuốc bài tiết qua thận và dễ kết tinh gây suy thận cấp. Cần chỉnh liều nghiêm ngặt theo mức lọc cầu thận (CrCl) và truyền chậm phối hợp bù dịch._
+- _**Bổ sung ngoài tài liệu:**_ _Đối với Acyclovir truyền tĩnh mạch, thuốc bài tiết qua [[Thận]] và dễ kết tinh gây suy thận cấp. Cần chỉnh liều nghiêm ngặt theo mức lọc cầu thận (CrCl) và truyền chậm phối hợp bù dịch._
 
 ### 3. Vấn đề Kháng thuốc và An toàn
 
@@ -27,13 +33,13 @@ Lưu ý quan trọng: Các tài liệu y khoa bạn cung cấp hiện tại tậ
     - _Khả năng lẩn tránh miễn dịch:_ Họ Herpesvirus (bao gồm HSV và Human Cytomegalovirus - HCMV) có khả năng sinh ra các glycoprotein tại lưới nội chất (như US6 của HCMV) làm bất hoạt phức hợp vận chuyển peptide (TAP). Điều này giúp virus không bị trình diện kháng nguyên MHC, qua đó trốn tránh được hệ miễn dịch của cơ thể.
     - _Khiếm khuyết miễn dịch bẩm sinh:_ Bệnh nhân thiếu hụt tế bào diệt tự nhiên (NK cells) có nguy cơ nhạy cảm đặc biệt với các đợt nhiễm Herpesvirus và Varicella nghiêm trọng.
     - _Viêm não Herpes simplex (HSE):_ Thường liên quan đến sự suy giảm đáp ứng Interferon-$\alpha$/$\beta$ do đột biến các gen TLR3, TRIF, UNC93B1, TBK1, hoặc TRAF3.
-- _**Bổ sung ngoài tài liệu:**_ _Kháng Acyclovir thường do đột biến gen UL23 (không sinh thymidine kinase). Khi đó, virus vẫn nhạy cảm với Foscarnet vì Foscarnet không cần enzyme virus để hoạt hóa. Độc tính giới hạn liều của Ganciclovir/Valganciclovir là suy tủy (giảm bạch cầu, giảm tiểu cầu)._
+- _**Bổ sung ngoài tài liệu:**_ _Kháng Acyclovir thường do đột biến gen UL23 (không sinh thymidine kinase). Khi đó, virus vẫn nhạy cảm với Foscarnet vì Foscarnet không cần enzyme virus để hoạt hóa. Độc tính giới hạn liều của Ganciclovir/Valganciclovir là suy tủy (giảm [[Bạch cầu]], giảm [[Tiểu cầu]])._
 
 ### 4. Lưu ý thực hành / “take‑home messages”
 
 1. **"Tối ưu hóa cửa sổ trị liệu của Foscarnet":** Nếu sử dụng Foscarnet trị CMV (đặc biệt ở bệnh nhân suy thận/lọc máu), hãy nhắm tới Cmax mục tiêu 500-800 $\mu$M để cân bằng giữa việc kìm hãm CMV và tránh hoại tử ống thận.
 2. **"Nồng độ tại mô đích quan trọng hơn trong máu":** Nồng độ thuốc ức chế virus đôi khi quá cao để dùng đường toàn thân (như Tenofovir với HSV-2), việc chuyển sang các dạng bào chế tại chỗ là chiến lược dược lý tuyệt vời để tối đa hóa hiệu quả và giảm độc tính.
-3. **"Luôn cảnh giác với bệnh lý miễn dịch nền":** Nếu gặp bệnh nhân (đặc biệt là trẻ em/thanh thiếu niên) bị viêm não do HSV tái phát hoặc nhiễm VZV đe dọa tính mạng, đừng chỉ tập trung cho thuốc kháng virus, hãy nghĩ đến việc sàng lọc khiếm khuyết miễn dịch bẩm sinh (ví dụ: khiếm khuyết TLR3 hoặc tế bào NK).
+3. **"Luôn cảnh giác với bệnh lý miễn dịch nền":** Nếu gặp bệnh nhân (đặc biệt là trẻ em/thanh thiếu niên) bị [[Viêm não]] do HSV tái phát hoặc nhiễm VZV đe dọa tính mạng, đừng chỉ tập trung cho thuốc kháng virus, hãy nghĩ đến việc sàng lọc khiếm khuyết miễn dịch bẩm sinh (ví dụ: khiếm khuyết TLR3 hoặc tế bào NK).
 4. ***(Ngoài tài liệu): "Acyclovir IV + Truyền dịch"***: _Luôn bù dịch đầy đủ (hydration) trước và trong khi truyền tĩnh mạch Acyclovir để tránh tinh thể thuốc lắng đọng gây suy thận cấp._
 
 ### 5. Tài liệu tham khảo

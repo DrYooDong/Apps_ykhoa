@@ -1,9 +1,13 @@
 ---
 title: "Kỹ năng Thăm khám - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Thăm khám - BSCKI. Trần Thanh Tuấn
 
 [https://thanhtuan.edubit.vn/blog/huong-dan-viet-benh-an-noi-khoa-kham](https://thanhtuan.edubit.vn/blog/huong-dan-viet-benh-an-noi-khoa-kham)
@@ -25,8 +29,8 @@ last_updated: "2026-07-28"
 
 *Ví dụ: Tại thời điểm thăm khám ghi nhận*
 
-- *Bệnh nhân giảm đau ngực, còn đau ngực 3/10*
-- *Không khó thở*
+- *Bệnh nhân giảm [[Đau ngực]], còn [[Đau ngực]] 3/10*
+- *Không [[Khó thở]]*
 - *Không ho*
 - *Ăn uống được, tiêu tiểu bình thường*
 
@@ -66,11 +70,11 @@ Trình tự các mục trong phần khám:
 
 + Da niêm: Màu sắc niêm/ môi Da niêm hồng/ nhạt, da vàng…
 
-+ Xuất huyết: Không xuất huyết/ xuất huyết dạng… ở….
++ [[Xuất huyết]]: Không [[Xuất huyết]]/ xuất huyết dạng… ở….
 
 + Hạch ngoại vi: Không to / hạnh … to
 
-+ Phù/ da: khô-Không phù/ phù mềm ấn lõm, ở…
++ [[Phù]]/ da: khô-Không [[Phù]]/ phù mềm ấn lõm, ở…
 
 + Dấu hiệu khác… Lưỡi ướt, họng sạch…
 
@@ -102,13 +106,13 @@ Trình tự các mục trong phần khám:
 - Mô tả sự di động theo nhịp thở
 - Bất thường thành ngực không ghi nhận (nếu có thì ghi ra)
 
-Tim:
+[[Tim]]:
 
-- **Mỏm tim**: vị trí ở khoảng gian sườn mấy?, cách đường trung đòn bao nhiêu cm, độ nảy của mỏm tim, diện đập mỏm tim
+- **Mỏm [[Tim]]**: vị trí ở khoảng gian sườn mấy?, cách đường trung đòn bao nhiêu cm, độ nảy của mỏm tim, diện đập mỏm tim
 - **Dấu**: dấu Hardzer, dấu nảy trước ngực…
 - T1 – T2 rõ, đều, tần số …mô tả tiếng tim và âm thổi bất thường nếu có
 
-Phổi:
+[[Phổi]]:
 
 - Mô tả rung thanh
 - Mô tả gõ …
@@ -123,7 +127,7 @@ Phổi:
 - Mô tả tần số nhu động ruột, mô tả âm thổi vùng bụng
 - Mô tả gõ bụng
 - Mô tả tính chất khi ấn bụng
-- Xác định *tính chất* của Gan
+- Xác định *tính chất* của [[Gan]]
 - Xác định lách to
 
 *d. Tứ chi*:

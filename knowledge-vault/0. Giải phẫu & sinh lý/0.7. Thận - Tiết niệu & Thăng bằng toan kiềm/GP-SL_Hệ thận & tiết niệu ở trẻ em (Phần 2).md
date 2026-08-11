@@ -1,4 +1,15 @@
-# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: CHỨC NĂNG ỐNG THẬN, SỰ TẠO NƯỚC TIỂU, HỆ RAA VÀ CHỨC NĂNG NỘI TIẾT CỦA THẬN)
+---
+title: "GP-SL_Hệ thận & tiết niệu ở trẻ em (Phần 2)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
+# NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: CHỨC NĂNG ỐNG [[Thận]], SỰ TẠO NƯỚC TIỂU, HỆ RAA VÀ CHỨC NĂNG NỘI TIẾT CỦA [[Thận]])
 
 ---
 
@@ -40,7 +51,7 @@ Chức năng ống thận bắt đầu hình thành từ tam cá nguyệt thứ 
 
 ### 1.3. Khả Năng Cô Đặc Và Pha Loãng Nước Tiểu
 
-- **Khả năng cô đặc nước tiểu:** Ở trẻ sơ sinh còn hạn chế, làm trẻ dễ bị mất nước hơn. Khả năng cô đặc nước tiểu tối đa tăng dần theo tuổi:
+- **Khả năng cô đặc nước tiểu:** Ở trẻ sơ sinh còn hạn chế, làm trẻ dễ bị [[Mất nước]] hơn. Khả năng cô đặc nước tiểu tối đa tăng dần theo tuổi:
     - Trẻ sơ sinh non tháng: $\sim 400\text{ mOsm/L}$.
     - Trẻ sơ sinh đủ tháng: $600 - 800\text{ mOsm/L}$.
     - Trẻ lớn và người lớn: $\sim 1.200\text{ mOsm/L}$.
@@ -62,14 +73,14 @@ Chức năng ống thận bắt đầu hình thành từ tam cá nguyệt thứ 
 ### 2.1. Tần Suất Và Đặc Điểm Tiểu Tiện Sau Sinh
 
 - **Tiểu lần đầu:** $98%$ trẻ sơ sinh đủ tháng đi tiểu lần đầu tiên trong vòng 30 giờ đầu sau sinh. Nếu sau 48 giờ tuổi trẻ vẫn chưa đi tiểu, cần tiến hành thăm khám và xét nghiệm nhanh để loại trừ tổn thương thận.
-- **Trong 3 ngày đầu:** Trẻ thường tiểu ít do hiện tượng mất nước sinh lý.
+- **Trong 3 ngày đầu:** Trẻ thường tiểu ít do hiện tượng [[Mất nước]] sinh lý.
 - **Tần suất đi tiểu ở trẻ nhũ nhi:** Trẻ nhũ nhi bình thường có thể đi tiểu khoảng 20 lần mỗi ngày do dung tích nước tiểu mỗi lần ít và khả năng làm trống bàng quang chưa hoàn chỉnh.
 
 ---
 
 ### 2.2. Phản Xạ Đi Tiểu Và Sự Phát Triển Kiểm Soát Bàng Quang Tự Chủ
 
-- **Cơ chế phản xạ:** Hoạt động của bàng quang ở trẻ nhũ nhi được điều hành chủ yếu bởi **phản xạ không chủ ý của tủy sống**, hoàn toàn chưa có sự kiểm soát tự chủ của vỏ não, do đó trẻ đi tiểu không kiểm soát.
+- **Cơ chế phản xạ:** Hoạt động của bàng quang ở trẻ nhũ nhi được điều hành chủ yếu bởi **phản xạ không chủ ý của tủy sống**, hoàn toàn chưa có sự kiểm soát tự chủ của [[Vỏ não]], do đó trẻ đi tiểu không kiểm soát.
 - **Tiến trình kiểm soát đi tiểu tự chủ:**
     - **Ban ngày (khi thức):** Kiểm soát bàng quang tự chủ thường đạt được khi trẻ khoảng **4 tuổi**.
     - **Ban đêm (khi ngủ):** Đạt được sau khi đã kiểm soát ban ngày từ vài tháng đến vài năm, thường khi trẻ khoảng **5 – 7 tuổi**.
@@ -98,15 +109,15 @@ Phức hợp cận cầu thận là cấu trúc chuyên biệt điều hòa huy�
     - Vết đặc cảm nhận sự sụt giảm nồng độ $\text{NaCl}$ đi đến ống lượn xa.
 - **Trình tự chuyển hóa và tác dụng sinh lý:**
     
-    - Renin xúc tác chuyển Angiotensinogen (từ gan) thành **Angiotensin I**.
+    - Renin xúc tác chuyển Angiotensinogen (từ [[Gan]]) thành **Angiotensin I**.
     - Men chuyển (ACE) biến đổi Angiotensin I thành **Angiotensin II** (đồng thời làm phân hủy Bradykinin).
     - **Angiotensin II** gắn vào thụ thể Angiotensin II loại I (AT1 receptor), tạo ra các đáp ứng:
         1. **Co tiểu động mạch đi:** Tăng phân suất lọc (filtration fraction - FF), giúp duy trì độ lọc cầu thận (GFR) khi áp lực tưới máu thận giảm.
         2. **Kích thích tế bào biểu mô ống lượn gần:** Tăng hoạt động trao đổi $\text{Na}^+/\text{H}^+$, tăng tái hấp thu $\text{Na}^+$, $\text{HCO}_3^-$ và nước.
         3. **Kích thích vỏ thượng thận tiết Aldosterone:** Aldosterone tác động lên tế bào chính của ống góp $\rightarrow$ tăng tái hấp thu $\text{Na}^+$ và bài tiết $\text{K}^+$.
         4. **Kích thích tế bào thân của ống góp:** Tăng bài tiết ion $\text{H}^+$ nhờ bơm $\text{H}^+$-ATPase chủ động.
-        5. **Tác động lên hệ thần kinh trung ương:** Kích thích vùng hạ đồi gây cảm giác khát và kích thích tuyến yên sau giải phóng **ADH** $\rightarrow$ tăng tái hấp thu nước tự do tại ống góp.
-        6. **Co mạch máu hệ thống:** Tăng sức cản ngoại biên, gây tăng huyết áp.
+        5. **Tác động lên [[Hệ thần kinh trung ương]]:** Kích thích vùng hạ đồi gây cảm giác khát và kích thích tuyến yên sau giải phóng **ADH** $\rightarrow$ tăng tái hấp thu nước tự do tại ống góp.
+        6. **Co mạch máu hệ thống:** Tăng sức cản ngoại biên, gây [[Tăng huyết áp]].
 
 ---
 
@@ -125,7 +136,7 @@ Bên cạnh chức năng bài tiết và lọc, thận còn đóng vai trò là 
 ### 4.1. Sản Xuất Erythropoietin
 
 - **Vị trí tổng hợp:** Erythropoietin được tiết ra từ các **tế bào kẽ (interstitial cells)** nằm ở giường mao mạch quanh ống (peritubular capillary bed) thuộc vùng tủy thận.
-- **Tác dụng:** Tiết ra đáp ứng với tình trạng **thiếu oxy mô (hypoxia)**, có vai trò kích thích tủy xương tăng cường sản xuất hồng cầu.
+- **Tác dụng:** Tiết ra đáp ứng với tình trạng **thiếu oxy mô (hypoxia)**, có vai trò kích thích tủy xương tăng cường sản xuất [[Hồng cầu]].
 
 ### 4.2. Chuyển Hóa Vitamin D
 

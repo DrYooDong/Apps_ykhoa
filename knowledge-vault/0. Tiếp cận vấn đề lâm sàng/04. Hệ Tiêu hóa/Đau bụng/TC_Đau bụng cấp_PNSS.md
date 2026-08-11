@@ -1,12 +1,17 @@
 ---
 title: "TC_Đau bụng cấp_PNSS"
-specialty: "Hệ Tiêu hóa"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa", "Đau bụng"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
-Dưới đây là bài học tiếp cận lâm sàng cho vấn đề Đau bụng cấp ở phụ nữ trong độ tuổi sinh sản, được biên soạn bám sát các tài liệu nguồn đã cung cấp.
 
-# Tiếp cận lâm sàng cho vấn đề/triệu chứng [ĐAU BỤNG CẤP Ở PHỤ NỮ TRONG ĐỘ TUỔI SINH SẢN]
+Dưới đây là bài học tiếp cận lâm sàng cho vấn đề [[Đau bụng|Đau bụng cấp]] ở phụ nữ trong độ tuổi sinh sản, được biên soạn bám sát các tài liệu nguồn đã cung cấp.
+
+# Tiếp cận lâm sàng cho vấn đề/triệu chứng [[[Đau bụng|ĐAU BỤNG CẤP]] Ở PHỤ NỮ TRONG ĐỘ TUỔI SINH SẢN]
 
 Đau bụng cấp ở phụ nữ trong độ tuổi sinh sản là một thách thức chẩn đoán vì sự trùng lấp triệu chứng giữa các bệnh lý tiêu hóa, tiết niệu và đặc biệt là các bệnh lý sản phụ khoa. Việc loại trừ tình trạng mang thai và các biến chứng của nó là bước đi đầu tiên và mang tính sống còn.
 
@@ -14,14 +19,14 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 
 ### Bước 1: Ổn định ban đầu – sàng lọc nguy cơ
 - Nhận diện các *dấu hiệu "cờ đỏ" (red flags)* chỉ điểm tình trạng cấp cứu ngoại khoa hoặc bệnh lý đe dọa tính mạng:
-  - Dấu hiệu huyết động không ổn định: Tụt huyết áp, mạch nhanh nhỏ, vã mồ hôi, da xanh tái, ngất xỉu hoặc choáng (cảnh báo tình trạng xuất huyết nội do vỡ thai ngoài tử cung hoặc vỡ nang buồng trứng xuất huyết).
+  - Dấu hiệu huyết động không ổn định: Tụt huyết áp, mạch nhanh nhỏ, vã mồ hôi, da xanh tái, ngất xỉu hoặc choáng (cảnh báo tình trạng [[Xuất huyết]] nội do vỡ thai ngoài tử cung hoặc vỡ nang buồng trứng [[Xuất huyết]]).
   - Dấu hiệu viêm phúc mạc: Co cứng thành bụng, phản ứng dội (rebound tenderness), đau chói khi sờ nắn bụng (gợi ý thai ngoài tử cung vỡ, áp-xe phần phụ vỡ hoặc viêm phúc mạc).
   - Đau bụng cấp, dữ dội đi kèm với trễ kinh, mất kinh hoặc ra máu ***âm đạo*** bất thường.
 
 ### Bước 2: Thu thập dữ kiện tập trung
 - **Mô tả triệu chứng:**
   - *Thời gian và tính chất:* Đau khởi phát đột ngột, đau nhói ở một bên hố chậu (gợi ý xoắn buồng trứng, vỡ nang buồng trứng hoặc thai ngoài tử cung). Đau âm ỉ vùng bụng dưới lan tỏa 2 bên (viêm vùng chậu - PID). Cơn đau có liên quan đến chu kỳ kinh nguyệt không (đau giữa kỳ kinh - Mittelschmerz, hay thống kinh - Dysmenorrhea).
-  - *Hướng lan và triệu chứng đi kèm:* Đau lan lên vai hoặc chóng mặt tư thế (dấu hiệu tụ máu trong ổ bụng kích thích cơ hoành do thai ngoài tử cung vỡ). Buồn nôn, nôn mửa, sốt.
+  - *Hướng lan và triệu chứng đi kèm:* Đau lan lên vai hoặc chóng mặt tư thế (dấu hiệu tụ máu trong ổ bụng kích thích cơ hoành do thai ngoài tử cung vỡ). [[Nôn ói|Buồn nôn]], nôn mửa, [[Sốt]].
 - **Yếu tố nguy cơ (Bệnh sử Sản Phụ khoa):** 
   - Khai thác bắt buộc: Ngày đầu của kỳ kinh cuối cùng (LNMP) để xác định tình trạng trễ kinh.
   - Tiền sử sản khoa: Đang mang thai, sẩy thai gần đây, tiền sử thai ngoài tử cung.
@@ -35,8 +40,8 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 | Nhóm nguyên nhân | Ví dụ bệnh / hội chứng | Đặc điểm lâm sàng chính |
 | ------ | ------ | ------ |
 | **Bệnh lý Sản khoa** | **Thai ngoài tử cung (Ectopic pregnancy)**<br><br>**Sẩy thai / Dọa sẩy** | Trễ kinh, ra máu âm đạo đen lợn cợn, đau bụng dưới 1 bên, *test thai (+)*, có thể choáng/ngất.<br><br>Có thai, đau quặn bụng dưới từng cơn, ra máu đỏ tươi, cổ tử cung mở. |
-| **Bệnh lý Phụ khoa** | **Viêm vùng chậu (PID)**<br><br>**Xoắn buồng trứng / U nang**<br><br>**Lạc nội mạc tử cung** | Đau bụng dưới 2 bên, sốt, tiết dịch âm đạo mủ, *đau khi lay cổ tử cung*.<br><br>Đau đột ngột dữ dội 1 bên, buồn nôn, sờ thấy khối phần phụ nắn đau.<br><br>Đau bụng kinh dữ dội (thống kinh thứ phát), đau khi giao hợp. |
-| **Bệnh lý Tiêu hóa / Tiết niệu** | **Viêm ruột thừa cấp**<br><br>**Sỏi niệu quản / Viêm bàng quang** | Đau di trú từ rốn xuống hố chậu phải, buồn nôn, sốt nhẹ.<br><br>Đau quặn lan xuống bẹn, tiểu buốt, tiểu máu. |
+| **Bệnh lý Phụ khoa** | **Viêm vùng chậu (PID)**<br><br>**Xoắn buồng trứng / U nang**<br><br>**Lạc nội mạc tử cung** | Đau bụng dưới 2 bên, sốt, tiết dịch âm đạo mủ, *đau khi lay cổ tử cung*.<br><br>Đau đột ngột dữ dội 1 bên, [[Nôn ói|buồn nôn]], sờ thấy khối phần phụ nắn đau.<br><br>Đau bụng kinh dữ dội (thống kinh thứ phát), đau khi giao hợp. |
+| **Bệnh lý Tiêu hóa / Tiết niệu** | **Viêm ruột thừa cấp**<br><br>**Sỏi niệu quản / Viêm bàng quang** | Đau di trú từ rốn xuống hố chậu phải, buồn nôn, [[Sốt|sốt nhẹ]].<br><br>Đau quặn lan xuống bẹn, tiểu buốt, tiểu máu. |
 
 ### Bước 4. Biện luận lâm sàng (Clinical reasoning)
 - **Tỷ trọng/độ ưu tiên:** Ở bất kỳ phụ nữ nào trong độ tuổi sinh sản đến khám vì đau bụng cấp, nguyên tắc tối thượng là phải loại trừ bằng được `==Thai ngoài tử cung (Ectopic pregnancy)==` trước khi nghĩ đến các nguyên nhân khác, vì đây là nguyên nhân gây tử vong hàng đầu trong 3 tháng đầu thai kỳ. Tiếp theo là các cấp cứu bảo tồn chức năng sinh sản như `==Xoắn buồng trứng==` và `==Viêm vùng chậu (PID)==`.
@@ -51,8 +56,8 @@ Các bước tiếp cận lâm sàng (Clinical approach)
   - **Test thử thai ( $\beta$-hCG nước tiểu hoặc máu):** Là xét nghiệm *bắt buộc tuyệt đối* và phải làm đầu tiên ở mọi phụ nữ trước mãn kinh bị đau bụng, bất kể lịch sử kinh nguyệt hay sử dụng biện pháp tránh thai.
   - Phết dịch cổ tử cung/âm đạo làm xét nghiệm khuếch đại axit nucleic (NAATs) tìm *N. gonorrhoeae* và *C. trachomatis* nếu nghi ngờ viêm vùng chậu.
 - **Chẩn đoán hình ảnh:**
-  - **Siêu âm vùng chậu / Siêu âm qua ngả âm đạo:** Là *phương tiện chẩn đoán hình ảnh đầu tay* (first-line) đối với phụ nữ trong độ tuổi sinh sản bị đau bụng dưới/khung chậu, giúp đánh giá thai ngoài tử cung, xoắn buồng trứng, khối áp-xe phần phụ và viêm ruột thừa.
-  - **MRI không cản từ:** Được khuyến cáo nếu bệnh nhân đang mang thai mà siêu âm không thể kết luận được (ví dụ nghi ngờ viêm ruột thừa) nhằm tránh phơi nhiễm tia X cho thai nhi.
+  - **[[Siêu âm]] vùng chậu / [[Siêu âm]] qua ngả âm đạo:** Là *phương tiện chẩn đoán hình ảnh đầu tay* (first-line) đối với phụ nữ trong độ tuổi sinh sản bị đau bụng dưới/khung chậu, giúp đánh giá thai ngoài tử cung, xoắn buồng trứng, khối áp-xe phần phụ và viêm ruột thừa.
+  - **[[MRI]] không cản từ:** Được khuyến cáo nếu bệnh nhân đang mang thai mà siêu âm không thể kết luận được (ví dụ nghi ngờ viêm ruột thừa) nhằm tránh phơi nhiễm tia X cho thai nhi.
   - Chụp CT bụng chậu (có cản quang): Chỉ được thực hiện khi *test thai đã âm tính* và lâm sàng nghi ngờ các bệnh lý tiêu hóa như viêm ruột thừa, viêm túi thừa.
 - **Xét nghiệm máu cơ bản:** Công thức máu, nhóm máu và phản ứng chéo (cực kỳ quan trọng nếu nghi ngờ vỡ thai ngoài tử cung chuẩn bị mổ/truyền máu), chức năng đông máu.
 
@@ -66,11 +71,11 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 
 ### Bước 6. Hướng xử trí ban đầu
 - **Hồi sức / Cấp cứu:** 
-  - Đánh giá ABC. Nếu bệnh nhân có dấu hiệu sốc (thai ngoài tử cung vỡ, áp-xe vỡ): Thiết lập ngay 2 đường truyền tĩnh mạch lớn, bù dịch tinh thể nhanh (NaCl 0.9% hoặc Ringer Lactate), lấy máu thử nhóm máu, chuẩn bị máu truyền và kích hoạt quy trình xuất huyết khối lượng lớn.
+  - Đánh giá ABC. Nếu bệnh nhân có dấu hiệu [[Sốc]] (thai ngoài tử cung vỡ, áp-xe vỡ): Thiết lập ngay 2 đường truyền tĩnh mạch lớn, bù dịch tinh thể nhanh (NaCl 0.9% hoặc Ringer Lactate), lấy máu thử nhóm máu, chuẩn bị máu truyền và kích hoạt quy trình xuất huyết khối lượng lớn.
   - Bệnh nhân nhịn ăn uống hoàn toàn (NPO) để chuẩn bị can thiệp ngoại khoa.
 - **Điều trị đặc hiệu:**
   - **Thai ngoài tử cung:** Phẫu thuật nội soi cấp cứu (nếu vỡ/huyết động không ổn định) hoặc điều trị nội khoa bằng Methotrexate (nếu chưa vỡ, khối thai nhỏ và huyết động ổn định). Lưu ý tiêm Anti-D immunoglobulin cho phụ nữ có Rh âm.
-  - **Viêm vùng chậu (PID):** Khởi động kháng sinh kinh nghiệm sớm bao vây lậu cầu, Chlamydia và vi khuẩn kỵ khí (Ví dụ: Ceftriaxone tiêm bắp liều duy nhất + Doxycycline uống + Metronidazole).
+  - **Viêm vùng chậu (PID):** Khởi động [[Kháng sinh]] kinh nghiệm sớm bao vây lậu cầu, Chlamydia và vi khuẩn kỵ khí (Ví dụ: [[Ceftriaxone]] tiêm bắp liều duy nhất + Doxycycline uống + Metronidazole).
   - **Xoắn buồng trứng / Viêm ruột thừa:** Can thiệp phẫu thuật ngoại khoa khẩn cấp.
 - **Xử trí triệu chứng / Can thiệp:**
   - Sử dụng thuốc giảm đau (NSAIDs hoặc Opioid đường tĩnh mạch) tùy mức độ đau để bệnh nhân thoải mái hợp tác khám. Thuốc giảm đau không làm che lấp các dấu hiệu viêm phúc mạc.
@@ -94,12 +99,12 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 
 ### Bước 7. Khi nào cần chuyển tuyến / gọi hội chẩn (nếu có)
 - Nhập viện và hội chẩn khẩn cấp chuyên khoa **Sản Phụ khoa (OB-GYN)** ngay lập tức đối với bất kỳ bệnh nhân nào có test thai dương tính kèm đau bụng và/hoặc ra máu âm đạo, nghi ngờ có khối u buồng trứng xoắn, hoặc viêm vùng chậu có khối áp-xe phần phụ.
-- Chuyển bệnh nhân lên khoa Hồi sức tích cực (ICU) hoặc phòng mổ cấp cứu nếu bệnh nhân có dấu hiệu sốc, tụt huyết áp hoặc viêm phúc mạc toàn thể.
+- Chuyển bệnh nhân lên khoa Hồi sức tích cực (ICU) hoặc phòng mổ cấp cứu nếu bệnh nhân có dấu hiệu [[Sốc]], tụt huyết áp hoặc viêm phúc mạc toàn thể.
 
 # 4. Lưu ý thực hành / “take‑home messages”
 - "Việc thực hiện xét nghiệm thử thai ( $\beta$-hCG) là một chỉ định ***bắt buộc tuyệt đối*** và không được phép bỏ sót ở mọi phụ nữ trong độ tuổi sinh sản đến khám vì đau bụng cấp, bất kể lịch sử kinh nguyệt hay thói quen tình dục."
 - "Siêu âm ***vùng chậu*** hoặc qua ngả ***âm đạo*** là phương tiện chẩn đoán hình ảnh đầu tay, an toàn và nhạy bén nhất để đánh giá các nguyên nhân đau bụng phụ khoa như thai ngoài tử cung hay xoắn buồng trứng."
-- "Đau bụng dưới hai bên kèm theo sốt, khí hư và đau nhói khi di động ***cổ tử cung*** là tam chứng kinh điển đòi hỏi phải điều trị kháng sinh kinh nghiệm ngay lập tức cho bệnh viêm vùng chậu (PID) để bảo vệ khả năng sinh sản của người bệnh."
+- "Đau bụng dưới hai bên kèm theo sốt, khí hư và đau nhói khi di động ***cổ tử cung*** là tam chứng kinh điển đòi hỏi phải điều trị [[Kháng sinh]] kinh nghiệm ngay lập tức cho bệnh viêm vùng chậu (PID) để bảo vệ khả năng sinh sản của người bệnh."
 
 # 5. Tài liệu tham khảo
 - acute-abdominal-pain-adults.pdf

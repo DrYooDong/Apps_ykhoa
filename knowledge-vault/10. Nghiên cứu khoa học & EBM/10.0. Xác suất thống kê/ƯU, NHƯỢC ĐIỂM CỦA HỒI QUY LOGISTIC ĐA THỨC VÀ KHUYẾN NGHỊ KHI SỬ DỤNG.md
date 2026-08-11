@@ -1,9 +1,13 @@
 ---
 title: "ƯU, NHƯỢC ĐIỂM CỦA HỒI QUY LOGISTIC ĐA THỨC VÀ KHUYẾN NGHỊ KHI SỬ DỤNG"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐔̛𝐮, 𝐧𝐡𝐮̛𝐨̛̣𝐜 đ𝐢𝐞̂̉𝐦 𝐜𝐮̉𝐚 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 𝐯𝐚̀ 𝐤𝐡𝐮𝐲𝐞̂́𝐧 𝐧𝐠𝐡𝐢̣ 𝐤𝐡𝐢 𝐬𝐮̛̉ 𝐝𝐮̣𝐧𝐠 (𝐏𝐡𝐚̂̀𝐧 𝟕 - 𝐩𝐡𝐚̂̀𝐧 𝐜𝐮𝐨̂́𝐢)
 
 𝐓𝐒. Đ𝐚̀𝐨 𝐇𝐨̂̀𝐧𝐠 𝐍𝐚𝐦
@@ -30,7 +34,7 @@ Phương pháp này cũng dựa trên giả định độc lập của các lự
 
 Hồi quy logistic đa thức được xây dựng nhằm lượng hóa mối liên quan giữa các biến giải thích và các nhóm kết cục, vì vậy các kết quả thu được từ mô hình chỉ phản ánh những mối liên hệ thống kê quan sát được trong dữ liệu. Việc diễn giải các hệ số ước lượng theo hướng nhân quả phải dựa trên thiết kế nghiên cứu và các giả định của suy luận nhân quả hơn là bản thân mô hình hồi quy. Do đó, các hệ số hồi quy không thể được xem là bằng chứng trực tiếp cho quan hệ nhân quả nếu những điều kiện cần thiết của nghiên cứu nhân quả không được đáp ứng.
 
-Khả năng mô hình hóa các quan hệ phi tuyến cũng là một hạn chế của hồi quy logistic đa thức khi áp dụng cho những dữ liệu có cấu trúc phức tạp. Trong dạng mô hình cơ bản, mối liên hệ giữa biến liên tục và logit thường được giả định là tuyến tính, khiến các dạng phi tuyến có thể không được phản ánh đầy đủ. Trong những trường hợp này, việc mở rộng mô hình bằng spline hoặc các kỹ thuật mô hình hóa linh hoạt hơn thường cần thiết để cải thiện mức độ phù hợp với dữ liệu.
+Khả năng mô hình hóa các quan hệ phi tuyến cũng là một hạn chế của hồi quy logistic đa thức khi áp dụng cho những dữ liệu có cấu trúc phức tạp. Trong dạng mô hình cơ bản, mối liên hệ giữa biến liên tục và logit thường được giả định là tuyến tính, khiến các dạng phi tuyến có thể không được phản ánh đầy đủ. Trong những trường hợp này, việc mở rộng mô hình bằng spline hoặc các kỹ thuật mô hình hóa linh hoạt hơn thường cần thiết để cải thiện mức độ [[Phù]] hợp với dữ liệu.
 
 𝟖.𝟑. 𝐓𝐫𝐢𝐞̂̉𝐧 𝐯𝐨̣𝐧𝐠 𝐩𝐡𝐚́𝐭 𝐭𝐫𝐢𝐞̂̉𝐧
 
@@ -52,13 +56,13 @@ Một hướng nghiên cứu có nhiều triển vọng là phát triển các m
 
 Hồi quy logistic đa thức là một trong những phương pháp thống kê nền tảng để phân tích các biến kết cục định tính danh nghĩa có từ ba mức trở lên trong nghiên cứu Y–Dược. Khác với việc xây dựng nhiều mô hình hồi quy logistic nhị phân độc lập, hồi quy logistic đa thức cho phép mô hình hóa đồng thời xác suất của tất cả các nhóm kết cục trong cùng một khuôn khổ thống kê thống nhất, từ đó bảo đảm tính nhất quán của các xác suất dự báo và nâng cao hiệu quả phân tích. Nhờ khả năng hiệu chỉnh đồng thời nhiều yếu tố gây nhiễu và lượng hóa ảnh hưởng của từng biến độc lập đối với từng nhóm kết cục, mô hình đã trở thành công cụ phân tích quan trọng trong nghiên cứu dịch tễ học, nghiên cứu lâm sàng, dược học, y tế công cộng và nghiên cứu dịch vụ y tế.
 
-Bài tổng quan này đã trình bày một cách hệ thống cơ sở lý thuyết, cấu trúc toán học, nguyên lý ước lượng tham số bằng phương pháp cực đại hợp lý, các kiểm định thống kê, tiêu chí đánh giá mức độ phù hợp của mô hình, các giả định cần kiểm tra, chiến lược xây dựng mô hình, nguyên tắc diễn giải kết quả và các tình huống ứng dụng của hồi quy logistic đa thức trong nghiên cứu Y–Dược. Nội dung được tổng hợp trên cơ sở các tài liệu phương pháp luận kinh điển kết hợp với các hướng dẫn báo cáo nghiên cứu hiện hành nhằm cung cấp một tài liệu tham khảo có tính hệ thống cho các nhà nghiên cứu, học viên sau đại học và cán bộ y tế.
+Bài tổng quan này đã trình bày một cách hệ thống cơ sở lý thuyết, cấu trúc toán học, nguyên lý ước lượng tham số bằng phương pháp cực đại hợp lý, các kiểm định thống kê, tiêu chí đánh giá mức độ [[Phù]] hợp của mô hình, các giả định cần kiểm tra, chiến lược xây dựng mô hình, nguyên tắc diễn giải kết quả và các tình huống ứng dụng của hồi quy logistic đa thức trong nghiên cứu Y–Dược. Nội dung được tổng hợp trên cơ sở các tài liệu phương pháp luận kinh điển kết hợp với các hướng dẫn báo cáo nghiên cứu hiện hành nhằm cung cấp một tài liệu tham khảo có tính hệ thống cho các nhà nghiên cứu, học viên sau đại học và cán bộ y tế.
 
 Một trong những thông điệp quan trọng của bài tổng quan là việc lựa chọn đúng loại mô hình chỉ là điều kiện cần để bảo đảm chất lượng phân tích. Giá trị khoa học của nghiên cứu còn phụ thuộc vào việc xây dựng mô hình trên cơ sở giả thuyết nghiên cứu, lựa chọn hợp lý các biến độc lập, đánh giá đầy đủ các giả định của mô hình, kiểm soát hiện tượng đa cộng tuyến và yếu tố gây nhiễu, đồng thời diễn giải kết quả trên cơ sở kết hợp giữa bằng chứng thống kê và ý nghĩa lâm sàng. Việc chỉ tập trung vào giá trị p hoặc lựa chọn mô hình hoàn toàn bằng các thuật toán tự động có thể làm giảm khả năng khái quát hóa và giá trị ứng dụng của kết quả nghiên cứu.
 
 Bài viết cũng nhấn mạnh rằng các hệ số hồi quy của mô hình không nên được diễn giải trực tiếp mà cần được chuyển đổi thành tỷ số nguy cơ tương đối theo Công thức 4 và kết hợp với khoảng tin cậy 95% để đánh giá kích thước hiệu quả. Trong các nghiên cứu hướng đến hỗ trợ quyết định lâm sàng, việc trình bày thêm xác suất dự báo theo Công thức 15 sẽ giúp người đọc hiểu rõ hơn ý nghĩa thực tiễn của các kết quả phân tích. Đồng thời, việc đánh giá chất lượng mô hình cần dựa trên nhiều tiêu chí khác nhau, bao gồm kiểm định tỷ số hợp lý, giá trị −2 Log Likelihood, các hệ số pseudo-R², AIC và BIC, thay vì dựa trên một chỉ số đơn lẻ.
 
-Mặc dù có nhiều ưu điểm, hồi quy logistic đa thức cũng có những hạn chế cần được cân nhắc khi áp dụng trong nghiên cứu thực tiễn. Mô hình đòi hỏi kích thước mẫu tương đối lớn, đặc biệt khi số nhóm kết cục hoặc số lượng biến độc lập tăng lên. Giả định độc lập của các lựa chọn không liên quan cần được kiểm tra cẩn thận vì đây là giả định đặc trưng của mô hình và có thể không phù hợp trong một số bối cảnh lâm sàng. Ngoài ra, khi dữ liệu có cấu trúc phân cấp, có sự phụ thuộc giữa các quan sát hoặc biến kết cục có thứ bậc tự nhiên, các mô hình mở rộng như hồi quy logistic đa mức, mô hình logit lồng, mô hình logit hỗn hợp hoặc hồi quy logistic thứ bậc có thể là lựa chọn phù hợp hơn.
+Mặc dù có nhiều ưu điểm, hồi quy logistic đa thức cũng có những hạn chế cần được cân nhắc khi áp dụng trong nghiên cứu thực tiễn. Mô hình đòi hỏi kích thước mẫu tương đối lớn, đặc biệt khi số nhóm kết cục hoặc số lượng biến độc lập tăng lên. Giả định độc lập của các lựa chọn không liên quan cần được kiểm tra cẩn [[Thận]] vì đây là giả định đặc trưng của mô hình và có thể không phù hợp trong một số bối cảnh lâm sàng. Ngoài ra, khi dữ liệu có cấu trúc phân cấp, có sự phụ thuộc giữa các quan sát hoặc biến kết cục có thứ bậc tự nhiên, các mô hình mở rộng như hồi quy logistic đa mức, mô hình logit lồng, mô hình logit hỗn hợp hoặc hồi quy logistic thứ bậc có thể là lựa chọn phù hợp hơn.
 
 Trong bối cảnh dữ liệu y sinh ngày càng đa dạng và phức tạp, hồi quy logistic đa thức vẫn giữ vai trò quan trọng nhờ nền tảng lý thuyết vững chắc, khả năng diễn giải rõ ràng và tính minh bạch trong suy luận thống kê. Mặc dù các phương pháp học máy đang được ứng dụng ngày càng rộng rãi trong dự báo lâm sàng, hồi quy logistic đa thức vẫn có ưu thế nổi bật trong việc lượng hóa ảnh hưởng của từng yếu tố, kiểm soát các yếu tố gây nhiễu và giải thích kết quả theo ngôn ngữ dịch tễ học và lâm sàng. Trong tương lai, việc kết hợp hồi quy logistic đa thức với các phương pháp chọn biến hiện đại, các kỹ thuật suy luận nhân quả, thẩm định mô hình và trí tuệ nhân tạo được kỳ vọng sẽ nâng cao hơn nữa giá trị của phương pháp trong nghiên cứu Y–Dược cũng như trong hỗ trợ ra quyết định dựa trên bằng chứng.
 

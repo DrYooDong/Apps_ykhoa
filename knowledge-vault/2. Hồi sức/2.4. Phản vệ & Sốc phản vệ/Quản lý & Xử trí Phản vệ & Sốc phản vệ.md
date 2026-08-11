@@ -1,9 +1,13 @@
 ---
 title: "Quản lý & Xử trí Phản vệ & Sốc phản vệ"
-specialty: "Hồi sức"
-tags: ["Hồi sức", "Phản vệ"]
-last_updated: "2026-07-28"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
 ---
+
 Dưới đây là bài học chi tiết về Xử trí các mức độ Phản vệ, được biên soạn bám sát tuyệt đối vào các tài liệu y khoa và Hướng dẫn của Bộ Y tế (Thông tư 51/2017/TT-BYT).
 
 ### 1. NGUYÊN TẮC CHUNG TRONG XỬ TRÍ CẤP CỨU PHẢN VỆ
@@ -11,7 +15,7 @@ Tất cả các trường hợp phản vệ phải được phát hiện sớm, 
 Adrenalin là thuốc thiết yếu, quan trọng hàng đầu cứu sống người bệnh bị phản vệ, phải được tiêm bắp ngay khi chẩn đoán phản vệ từ độ II trở lên.
 
 ### 2. XỬ TRÍ PHẢN VỆ NHẸ (ĐỘ I)
-Phản vệ độ I là tình trạng dị ứng (chỉ có các triệu chứng về da, niêm mạc như nổi ban, ngứa, phù mạch) nhưng có thể chuyển thành nặng hoặc nguy kịch một cách đột ngột.
+Phản vệ độ I là tình trạng dị ứng (chỉ có các triệu chứng về da, niêm mạc như nổi ban, ngứa, [[Phù]] mạch) nhưng có thể chuyển thành nặng hoặc nguy kịch một cách đột ngột.
 *   **Thuốc sử dụng:** Sử dụng thuốc methylprednisolon (liều 1-2mg/kg) hoặc diphenhydramin (liều 1mg/kg) đường uống hoặc tiêm tùy tình trạng người bệnh.
 *   **Theo dõi:** Tiếp tục theo dõi ít nhất 24 giờ để xử trí kịp thời các yếu tố như sinh hiệu, kiểu thở, và diễn tiến của triệu chứng da niêm.
 
@@ -19,14 +23,14 @@ Phản vệ độ I là tình trạng dị ứng (chỉ có các triệu chứng
 Phản vệ độ II có thể nhanh chóng chuyển sang độ III, độ IV. Vì vậy, phải khẩn trương xử trí đồng thời theo diễn biến bệnh:
 1.  Ngừng ngay tiếp xúc với thuốc hoặc dị nguyên (nếu có).
 2.  Tiêm hoặc truyền adrenalin ngay lập tức.
-3.  Cho người bệnh nằm tại chỗ, đầu thấp, nghiêng trái nếu có nôn (hoặc phụ nữ có thai nằm nghiêng trái, suy hô hấp nằm đầu cao/ngồi).
+3.  Cho người bệnh nằm tại chỗ, đầu thấp, nghiêng trái nếu có [[Nôn ói|nôn]] (hoặc phụ nữ có thai nằm nghiêng trái, [[Suy hô hấp]] nằm đầu cao/ngồi).
 4.  Thở oxy: người lớn 6-10 lít/phút, trẻ em 2-4 lít/phút qua mặt nạ hở.
-5.  Đánh giá tình trạng hô hấp (A, B, C), tuần hoàn, ý thức và các biểu hiện ở da, niêm mạc của người bệnh. Ép tim ngoài lồng ngực và bóp bóng nếu ngừng hô hấp, tuần hoàn; hoặc đặt nội khí quản/mở khí quản cấp cứu nếu khó thở thanh quản.
+5.  Đánh giá tình trạng hô hấp (A, B, C), tuần hoàn, ý thức và các biểu hiện ở da, niêm mạc của người bệnh. Ép [[Tim]] ngoài lồng ngực và bóp bóng nếu ngừng hô hấp, tuần hoàn; hoặc đặt nội khí quản/mở khí quản cấp cứu nếu [[Khó thở]] thanh quản.
 6.  Thiết lập đường truyền adrenalin tĩnh mạch với dây truyền thông thường nhưng kim tiêm to (cỡ 14 hoặc 16G) hoặc đặt catheter tĩnh mạch và một đường truyền tĩnh mạch thứ hai để truyền dịch nhanh.
 7.  Hội ý với các đồng nghiệp, tập trung xử lý, báo cáo cấp trên, hội chẩn với bác sĩ chuyên khoa cấp cứu, hồi sức.
 
 ### 4. PHÁC ĐỒ SỬ DỤNG ADRENALIN VÀ TRUYỀN DỊCH
-Mục tiêu là nâng và duy trì ổn định huyết áp tâm thu của người lớn lên $\ge$ 90mmHg, trẻ em $\ge$ 70mmHg và không còn các dấu hiệu về hô hấp (thở rít, khó thở), tiêu hóa (nôn mửa, ỉa chảy).
+Mục tiêu là nâng và duy trì ổn định huyết áp tâm thu của người lớn lên $\ge$ 90mmHg, trẻ em $\ge$ 70mmHg và không còn các dấu hiệu về hô hấp (thở rít, [[Khó thở]]), tiêu hóa ([[Nôn ói|nôn mửa]], ỉa chảy).
 
 **A. Đường Tiêm Bắp (Thuốc adrenalin 1 mg = 1 ml = 1 ống):**
 *   Trẻ sơ sinh hoặc trẻ < 10kg: 0,2ml (tương đương 1/5 ống).
@@ -59,7 +63,7 @@ Mục tiêu là nâng và duy trì ổn định huyết áp tâm thu của ngư�
 ### 5. XỬ TRÍ PHẢN VỆ ĐỘ IV (NGỪNG TUẦN HOÀN)
 Trường hợp bệnh nhân có biểu hiện ngừng hô hấp, tuần hoàn (Độ IV), tiến hành ngay các bước theo hướng dẫn cấp cứu ngưng hô hấp tuần hoàn (BLS và ACLS). 
 Quy trình CPR áp dụng theo C-A-B: 
-*   **C (Compressions):** Ép tim ngoài lồng ngực mạnh và nhanh.
+*   **C (Compressions):** Ép [[Tim]] ngoài lồng ngực mạnh và nhanh.
 *   **A (Airway):** Khai thông đường thở.
 *   **B (Breathing):** Thở máy/Bóp bóng bỗ trợ hô hấp.
 
@@ -69,9 +73,9 @@ Quy trình CPR áp dụng theo C-A-B:
 *(Chú thích: Sơ đồ triển khai các bước tiếp cận tại cơ sở y tế khi bệnh nhân tiếp xúc dị nguyên)*
 > **XÁC ĐỊNH TÌNH TRẠNG PHẢN VỆ $\rightarrow$ NGỪNG NGAY TIẾP XÚC VỚI DỊ NGUYÊN + GỌI HỖ TRỢ**
 > 
-> *   **Nhẹ (Độ I):** Chỉ có triệu chứng da (mày đay, ngứa, phù mạch). Xử trí: Diphenhydramin (1mg/kg) + Methylprednisolon (1-2mg/kg).
-> *   **Nặng (Độ II):** Mày đay xuất hiện nhanh; Khó thở, tức ngực, thở rít; Đau bụng quặn, nôn; HA chưa tụt hoặc tăng. Không rối loạn ý thức.
-> *   **Nguy kịch (Độ III):** Đường thở khản tiếng, rít thanh quản; Thở khò khè, tím tái; Tuần hoàn da nhợt, tụt HA; Rối loạn ý thức, hôn mê.
+> *   **Nhẹ (Độ I):** Chỉ có triệu chứng da (mày đay, ngứa, [[Phù]] mạch). Xử trí: Diphenhydramin (1mg/kg) + Methylprednisolon (1-2mg/kg).
+> *   **Nặng (Độ II):** Mày đay xuất hiện nhanh; Khó thở, tức ngực, thở rít; [[Đau bụng]] quặn, nôn; HA chưa tụt hoặc tăng. Không rối loạn ý thức.
+> *   **Nguy kịch (Độ III):** Đường thở khản tiếng, rít thanh quản; Thở khò khè, tím tái; Tuần hoàn da nhợt, tụt HA; Rối loạn ý thức, [[Hôn mê]].
 >
 > **XỬ TRÍ ĐỘ II, III NGAY BẰNG ADRENALIN (Duy nhất cứu sống BN):**
 > *   **TIÊM BẮP:** Người lớn 1/2 ống; Trẻ em 1/5-1/3 ống. Nhắc lại mỗi 3-5 phút cho đến khi HA ổn định. Thiết lập đường truyền NaCl 0.9%.
@@ -88,10 +92,10 @@ Sau khi xử trí cấp cứu ban đầu bằng Adrenalin, tùy mức độ suy 
 *   **Hỗ trợ hô hấp:** Bóp bóng AMBU, đặt ống nội khí quản, hoặc truyền tĩnh mạch chậm aminophyllin/salbutamol/terbutalin.
 *   **Dung dịch keo:** Bổ sung nếu không nâng được huyết áp sau khi đã truyền đủ tinh thể và adrenalin.
 *   **Thuốc phối hợp khác:**
-    *   Corticosteroid: Methylprednisolon (1-2mg/kg) hoặc Hydrocortison (200mg/người lớn) tiêm tĩnh mạch.
+    *   [[[[Corticoid]]|Corticosteroid]]: Methylprednisolon (1-2mg/kg) hoặc Hydrocortison (200mg/người lớn) tiêm tĩnh mạch.
     *   Kháng histamin H1 (Diphenhydramin 25-50mg/người lớn) và H2 (Ranitidin 50mg/người lớn).
     *   Glucagon: Dùng khi tụt HA và nhịp chậm không đáp ứng adrenalin (đặc biệt bệnh nhân đang dùng chẹn Beta).
-    *   Thuốc vận mạch (Dopamin, Noradrenalin): Truyền TM khi sốc nặng dai dẳng.
+    *   Thuốc vận mạch (Dopamin, Noradrenalin): Truyền TM khi [[Sốc]] nặng dai dẳng.
 *   **Chế độ theo dõi:** 
     *   Giai đoạn cấp: Theo dõi mạch, huyết áp, nhịp thở, SpO2 và tri giác 3-5 phút/lần cho đến khi ổn định.
     *   Giai đoạn ổn định: Theo dõi liên tục mỗi 1-2 giờ trong ít nhất 24 giờ tiếp theo để đề phòng phản vệ pha 2 (biphasic reactions). Nếu cấp cứu ngừng tuần hoàn tích cực không kết quả mới ra y lệnh ngừng cấp cứu.

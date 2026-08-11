@@ -1,3 +1,14 @@
+---
+title: "BYT_VGSV-C_2024 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC CHUYÊN SÂU: HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ BỆNH VIÊM GAN VI RÚT C (PHẦN 1)
 
 _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn đoán và điều trị bệnh viêm gan vi rút C của Bộ Y tế Việt Nam, ban hành kèm theo Quyết định số 2855/QĐ-BYT ngày 25 tháng 9 năm 2024, ký bởi Thứ trưởng Trần Văn Thuấn. Quyết định này chính thức có hiệu lực kể từ ngày ký và thay thế cho Hướng dẫn ban hành kèm theo Quyết định số 2065/QĐ-BYT ngày 29/04/2021. Ban chỉ đạo biên soạn là GS.TS. Trần Văn Thuấn và Chủ biên là GS.TS. Nguyễn Văn Kinh._
@@ -9,9 +20,9 @@ _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn
 ### Đặc điểm vi-rút học và dịch tễ học bệnh viêm gan vi-rút C
 
 - **Đặc điểm vi sinh:** Viêm gan vi rút C là bệnh truyền nhiễm do vi rút viêm gan C (**HCV**) gây ra. HCV có cấu trúc di truyền là **sợi đơn RNA**, thuộc họ _Flaviviridae_. Vi rút này được chia làm **6 kiểu gen** (ký hiệu từ 1 đến 6), mỗi kiểu gen lại chứa nhiều dưới nhóm khác nhau. Tại Việt Nam, hai kiểu gen thường gặp nhất trên lâm sàng là **kiểu gen 1 và kiểu gen 6**, trong khi kiểu gen 2 và 3 có tỷ lệ ít gặp hơn.
-- **Đường lây truyền:** HCV chủ yếu lây truyền qua **đường máu**, ngoài ra còn có thể lây qua **đường tình dục** và **lây truyền từ mẹ sang con**. Hiện tại, y học **chưa có vắc-xin hiệu quả** để phòng ngừa vi rút viêm gan C.
+- **Đường lây truyền:** HCV chủ yếu lây truyền qua **đường máu**, ngoài ra còn có thể lây qua **đường tình dục** và **lây truyền từ mẹ sang con**. Hiện tại, y học **chưa có [[Vắc-xin]] hiệu quả** để phòng ngừa vi rút viêm gan C.
 - **Gánh nặng bệnh tật:**
-    - _Toàn cầu:_ Ước tính có khoảng **50 triệu người nhiễm HCV mạn**, với khoảng 1 triệu ca nhiễm mới mỗi năm. Năm 2022, có khoảng 242.000 ca tử vong do các biến chứng liên quan đến HCV (chủ yếu là xơ gan và ung thư biểu mô tế bào gan - HCC).
+    - _Toàn cầu:_ Ước tính có khoảng **50 triệu người nhiễm HCV mạn**, với khoảng 1 triệu ca nhiễm mới mỗi năm. Năm 2022, có khoảng 242.000 ca tử vong do các biến chứng liên quan đến HCV (chủ yếu là xơ gan và ung thư biểu mô [[Gan|tế bào gan]] - HCC).
     - _Việt Nam:_ Là nước đứng thứ 4 trong khu vực Tây Thái Bình Dương về gánh nặng bệnh gan. Tỷ lệ nhiễm HCV mạn tính trong cộng đồng năm 2018 là khoảng 1% (tỷ lệ này tăng cao ở các nhóm nguy cơ như người sống chung với HIV và người tiêm chích ma túy). Ước tính nước ta có **hơn 900.000 người nhiễm HCV mạn**, dẫn đến gần 5.000 ca tử vong hàng năm.
 
 ---
@@ -23,8 +34,8 @@ _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn
     - **Cơ xương khớp:** Đau khớp, viêm khớp, đau cơ.
     - **Da và tóc:** Viêm da, tóc dễ gãy rụng.
     - **Huyết thanh:** Tình trạng **cryoglobulinemia** (sự xuất hiện của globulin bất thường trong máu).
-    - **Tim mạch:** Bệnh cơ tim.
-    - **Thận:** Viêm cầu thận tăng sinh màng.
+    - **[[Tim]] mạch:** Bệnh [[Tim|cơ tim]].
+    - **[[Thận]]:** Viêm cầu [[Thận]] tăng sinh màng.
 
 ---
 
@@ -50,8 +61,8 @@ _Tài liệu học tập được biên soạn dựa trên Hướng dẫn chẩn
 - **Đánh giá xơ hóa gan:** Áp dụng các phương pháp không xâm lấn bao gồm:
     - _Chỉ số sinh hóa máu:_ APRI, FIB-4, FibroTest.
     - _Chẩn đoán hình ảnh đàn hồi:_ FibroScan, ARFI.
-- **Các xét nghiệm hóa sinh thường quy:** ALT, AST (có thể tăng hoặc bình thường); số lượng tiểu cầu, thời gian prothrombin, albumin, bilirubin, mức lọc cầu thận.
-- **Tầm soát biến chứng ung thư biểu mô tế bào gan (HCC):** Định lượng các chỉ dấu khối u như **AFP, AFP-L3, PIVKA-II** kết hợp với siêu âm ổ bụng, chụp cắt lớp vi tính (CT) hoặc cộng hưởng từ (MRI).
+- **Các xét nghiệm hóa sinh thường quy:** ALT, AST (có thể tăng hoặc bình thường); [[[[Tiểu cầu]]|số lượng tiểu cầu]], thời gian prothrombin, albumin, bilirubin, mức lọc cầu thận.
+- **Tầm soát biến chứng ung thư biểu mô [[Gan|tế bào gan]] (HCC):** Định lượng các chỉ dấu khối u như **AFP, AFP-L3, PIVKA-II** kết hợp với [[Siêu âm]] ổ bụng, [[[[CT Scan]]|chụp cắt lớp vi tính]] (CT) hoặc cộng hưởng từ ([[MRI]]).
 
 ---
 
@@ -64,7 +75,7 @@ Chẩn đoán xác định viêm gan C cấp khi người bệnh có tiền sử
 1. Có sự **chuyển đảo huyết thanh** rõ rệt: Kết quả xét nghiệm anti-HCV biến đổi từ âm tính sang dương tính trong vòng dưới 6 tháng.
 2. Xét nghiệm **anti-HCV âm tính nhưng kháng nguyên HCV (HCV RNA hoặc HCVcAg) dương tính** ở người có chức năng miễn dịch bình thường.
 
-- _Các yếu tố hỗ trợ chẩn đoán:_ Thời gian nhiễm < 6 tháng; men gan AST, ALT thường tăng; có thể có hoặc không biểu hiện mệt mỏi, vàng mắt, vàng da.
+- _Các yếu tố hỗ trợ chẩn đoán:_ Thời gian nhiễm < 6 tháng; men gan AST, ALT thường tăng; có thể có hoặc không biểu hiện mệt mỏi, vàng mắt, [[Vàng da]].
 
 #### Viêm gan vi rút C mạn
 

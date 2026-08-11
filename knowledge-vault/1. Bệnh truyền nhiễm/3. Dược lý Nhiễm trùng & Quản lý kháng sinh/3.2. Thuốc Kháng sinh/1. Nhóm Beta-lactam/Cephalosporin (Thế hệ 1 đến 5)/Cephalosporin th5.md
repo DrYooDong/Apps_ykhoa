@@ -1,7 +1,13 @@
 ---
+title: "Cephalosporin th5"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Tổng quan & Phân loại (Classification)
 
 - **Tên nhóm/Phân nhóm:** Cephalosporin thế hệ 5, hay còn gọi là Cephalosporin có hoạt tính trên MRSA (MRSA-active cephalosporins).
@@ -12,7 +18,7 @@ tags:
 
 ### 2. Cơ chế tác dụng & Đề kháng (MOA & Resistance)
 
-- **Cơ chế tác dụng (MOA):** Là kháng sinh diệt khuẩn, ức chế quá trình tổng hợp vách tế bào vi khuẩn. Đặc tính nổi bật và duy nhất của thế hệ này so với các Cephalosporin trước đây là có cấu trúc thay đổi ở vị trí C3 và C7, giúp thuốc bền vững và gắn kết chặt chẽ với enzyme PBP2A (do gen _mecA_ quy định) – vốn là đích tác động bị thay đổi gây ra sự kháng methicillin ở tụ cầu vàng (MRSA),. Thuốc cũng gắn mạnh vào các PBP đột biến (PBP1A, PBP2B, PBP2X) ở Phế cầu.
+- **Cơ chế tác dụng (MOA):** Là [[Kháng sinh]] diệt khuẩn, ức chế quá trình tổng hợp vách tế bào vi khuẩn. Đặc tính nổi bật và duy nhất của thế hệ này so với các Cephalosporin trước đây là có cấu trúc thay đổi ở vị trí C3 và C7, giúp thuốc bền vững và gắn kết chặt chẽ với enzyme PBP2A (do gen _mecA_ quy định) – vốn là đích tác động bị thay đổi gây ra sự kháng methicillin ở tụ cầu vàng (MRSA),. Thuốc cũng gắn mạnh vào các PBP đột biến (PBP1A, PBP2B, PBP2X) ở Phế cầu.
 - **Cơ chế đề kháng chính:**
     - **Sản xuất $\beta$-lactamase:** Dù có tác dụng xuất sắc trên Gram-dương, thế hệ 5 rất dễ bị thủy phân bởi các enzyme $\beta$-lactamase phổ rộng (ESBLs) như CTX-M sinh ra từ vi khuẩn Gram-âm. Thuốc cũng bị bất hoạt bởi các men Carbapenemase (KPC) hay Metallo-$\beta$-lactamase,.
     - **AmpC:** Ceftobiprole bền vững hơn trước sự bất hoạt của enzyme AmpC so với Ceftaroline.
@@ -31,23 +37,23 @@ tags:
 ### 4. Dược động học & Dược lực học lâm sàng (PK/PD)
 
 - **Chỉ số PK/PD quyết định:** Tương tự các $\beta$-lactam khác, hiệu quả diệt khuẩn phụ thuộc thời gian ($f$T > MIC),. Với Ceftobiprole, để đạt mức diệt khuẩn tối ưu (1 đến 2-log kill), thời gian $f$T > MIC cần đạt 20-40% khoảng cách liều đối với _S. aureus_ / _S. pneumoniae_, và 40-60% đối với vi khuẩn Gram-âm đường ruột.
-- **Hấp thu & Phân bố:** Tiền thuốc chuyển hóa nhanh và hoàn toàn thành dạng có hoạt tính. Tỷ lệ gắn kết protein thấp (Ceftobiprole khoảng 16-20%). Thuốc phân bố rất tốt vào mô cơ, mô mỡ, dịch lót biểu mô phổi và xương. Xâm nhập vào dịch não tủy ở mức thấp/chưa có bằng chứng mạnh để dùng cho nhiễm trùng thần kinh trung ương.
-- **Thải trừ:** Thuốc thải trừ chủ yếu dưới dạng nguyên vẹn qua thận,. Bệnh nhân suy thận buộc phải chỉnh liều,.
+- **Hấp thu & Phân bố:** Tiền thuốc chuyển hóa nhanh và hoàn toàn thành dạng có hoạt tính. Tỷ lệ gắn kết protein thấp (Ceftobiprole khoảng 16-20%). Thuốc phân bố rất tốt vào mô cơ, mô mỡ, dịch lót biểu mô [[Phổi]] và xương. Xâm nhập vào [[Dịch nào tủy|dịch não tủy]] ở mức thấp/chưa có bằng chứng mạnh để dùng cho nhiễm trùng thần kinh trung ương.
+- **Thải trừ:** Thuốc thải trừ chủ yếu dưới dạng nguyên vẹn qua [[Thận]],. Bệnh nhân suy [[Thận]] buộc phải chỉnh liều,.
 
 ### 5. Chỉ định & Chiến lược điều trị (Stewardship)
 
 - **Chỉ định với Ceftaroline:**
-    - Chỉ định FDA: Nhiễm trùng da và mô mềm cấp tính (ABSSSI) và Viêm phổi cộng đồng (CABP).
-    - Sử dụng Off-label (kinh nghiệm): Có vai trò rất lớn trong điều trị cứu vãn (salvage therapy) Nhiễm khuẩn huyết do MRSA, Viêm nội tâm mạc, nhiễm trùng xương khớp, và nhiễm trùng bàn chân đái tháo đường,. Thường phối hợp với Daptomycin trong MRSA dai dẳng.
+    - Chỉ định FDA: Nhiễm trùng da và mô mềm cấp tính (ABSSSI) và Viêm [[Phổi]] cộng đồng (CABP).
+    - Sử dụng Off-label (kinh nghiệm): Có vai trò rất lớn trong điều trị cứu vãn (salvage therapy) [[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] do MRSA, Viêm nội tâm mạc, nhiễm trùng xương khớp, và nhiễm trùng bàn chân đái tháo đường,. Thường phối hợp với Daptomycin trong MRSA dai dẳng.
 - **Chỉ định với Ceftobiprole:**
-    - Được FDA phê duyệt cho Nhiễm khuẩn huyết do _S. aureus_ (SAB) bao gồm cả viêm nội tâm mạc tim phải, ABSSSI, và CABP (cho cả người lớn và trẻ em).
+    - Được FDA phê duyệt cho [[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] do _S. aureus_ (SAB) bao gồm cả viêm nội tâm mạc [[Tim]] phải, ABSSSI, và CABP (cho cả người lớn và trẻ em).
     - Tại Châu Âu (EMA), thuốc còn được chỉ định cho Viêm phổi bệnh viện (HAP - ngoại trừ VAP),.
 
 ### 6. An toàn thuốc (ADRs & Contraindications)
 
-- **Tác dụng không mong muốn (ADRs):** Nói chung an toàn và dung nạp tốt. Phổ biến nhất là buồn nôn, tiêu chảy, đau đầu,. Với Ceftobiprole, bệnh nhân có thể gặp tình trạng rối loạn vị giác (dysgeusia) hoặc nôn.
-- **Dị ứng/Quá mẫn:** Phát ban. Chống chỉ định ở bệnh nhân có tiền sử sốc phản vệ với Cephalosporin,.
-- **Huyết học:** Test Coombs dương tính giả. Tình trạng giảm bạch cầu hạt (neutropenia) hiếm gặp, thường chỉ xảy ra khi phải điều trị kéo dài nhiều tuần và hồi phục sau khi ngưng thuốc.
+- **Tác dụng không mong muốn (ADRs):** Nói chung an toàn và dung nạp tốt. Phổ biến nhất là [[[[Nôn ói]]|buồn nôn]], [[Tiêu chảy]], đau đầu,. Với Ceftobiprole, bệnh nhân có thể gặp tình trạng rối loạn vị giác (dysgeusia) hoặc nôn.
+- **Dị ứng/Quá mẫn:** Phát ban. Chống chỉ định ở bệnh nhân có tiền sử [[Sốc]] phản vệ với Cephalosporin,.
+- **Huyết học:** Test Coombs dương tính giả. Tình trạng giảm [[Bạch cầu]] hạt (neutropenia) hiếm gặp, thường chỉ xảy ra khi phải điều trị kéo dài nhiều tuần và hồi phục sau khi ngưng thuốc.
 - **Tiêu hóa:** Có nguy cơ viêm đại tràng giả mạc do bùng phát _Clostridioides difficile_.
 
 ### 7. Theo dõi & Giám sát (Monitoring)
@@ -55,7 +61,7 @@ tags:
 - **Chức năng thận:** Bắt buộc theo dõi độ thanh thải Creatinin (CrCl) để chỉnh liều.
     - Với Ceftaroline: Liều chuẩn 600mg q12h. Phải giảm liều khi CrCl < 50 mL/min (xuống 400mg), CrCl < 30 mL/min (xuống 300mg) và bệnh nhân lọc máu (200mg).
     - Với Ceftobiprole: Liều chuẩn 500mg truyền tĩnh mạch 2 giờ mỗi 8 tiếng. Khi có tổn thương thận, cần phải hiệu chỉnh,. Với bệnh nhân có tăng thanh thải thận (CrCl > 150 mL/min) ở ICU, có thể cân nhắc tăng liều hoặc truyền kéo dài.
-- **Công thức máu:** Theo dõi sát bạch cầu đối với các trường hợp điều trị dài ngày (như viêm xương khớp, viêm nội tâm mạc).
+- **Công thức máu:** Theo dõi sát [[Bạch cầu]] đối với các trường hợp điều trị dài ngày (như viêm xương khớp, viêm nội tâm mạc).
 
 ### 8. Bảng kiểm lâm sàng nhanh (Quick Checklist)
 
@@ -65,4 +71,4 @@ Tóm tắt 5 câu hỏi cốt lõi khi kê đơn Cephalosporin thế hệ 5:
 2. **Đã loại trừ vi khuẩn sinh ESBL chưa?** (Thuốc hoàn toàn bị bất hoạt bởi ESBL và Carbapenemase, KHÔNG dùng nếu nghi ngờ Enterobacterales kháng thuốc).
 3. **Có cần bao phủ Pseudomonas không?** (Nếu CÓ, phải chọn Ceftobiprole. Tuyệt đối KHÔNG dùng Ceftaroline đơn độc để bao phủ trực khuẩn mủ xanh).
 4. **Đúng liều theo chức năng thận chưa?** (Đã tính mức lọc cầu thận CrCl để giảm liều khi CrCl < 50 mL/min chưa?).
-5. **Vị trí nhiễm trùng ở đâu?** (Thấm xuất sắc vào da mô mềm, phổi, xương khớp; tuy nhiên kinh nghiệm sử dụng ở hệ thần kinh trung ương/dịch não tủy còn rất hạn chế).
+5. **Vị trí nhiễm trùng ở đâu?** (Thấm xuất sắc vào da mô mềm, phổi, xương khớp; tuy nhiên kinh nghiệm sử dụng ở [[Hệ thần kinh trung ương]]/[[Dịch nào tủy|dịch não tủy]] còn rất hạn chế).

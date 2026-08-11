@@ -1,3 +1,13 @@
+---
+title: "Khám đánh giá phát triển thể chất ở trẻ em (Phần 1)"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: QUY TRÌNH VÀ KỸ THUẬT ĐO ĐẠC CÁC CHỈ SỐ NHÂN TRẮC LÂM SÀNG VÀ NHẬN DIỆN THỂ SUY DINH DƯỠNG CẤP NẶNG)
 
 ---
@@ -34,9 +44,9 @@ Trẻ bị suy dinh dưỡng thể Marasmus hoặc Kwashiorkor thuộc nhóm đ�
 
 ---
 
-### 2.2. Thể Kwashiorkor (Thể Phù)
+### 2.2. Thể Kwashiorkor (Thể [[Phù]])
 
-- **Hình thái tổng quát:** Trẻ bị mất khối cơ nhưng **bị phù toàn thân** nên hình thái nhìn không gầy gò. Tình trạng phù có thể che lấp đi mức độ sụt cân thực sự của trẻ.
+- **Hình thái tổng quát:** Trẻ bị mất khối cơ nhưng **bị [[Phù|phù toàn thân]]** nên hình thái nhìn không gầy gò. Tình trạng phù có thể che lấp đi mức độ sụt cân thực sự của trẻ.
 - **Triệu chứng kèm theo:** Trẻ thường bứt rứt, vẻ mặt không khỏe và ăn uống rất kém.
 - **Biến đổi da và tóc:** Khuôn mặt sưng phù, tóc mỏng, thưa và thỉnh thoại bị bạc màu. Trên da xuất hiện những mảng giảm sắc tố, sau đó tiến triển nứt và tróc da.
 

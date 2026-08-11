@@ -1,3 +1,14 @@
+---
+title: "Hướng dẫn BYT 2024 (P1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 Tài liệu **“Hướng dẫn Chẩn đoán, điều trị và dự phòng bệnh Lao”** được Bộ Y tế ban hành kèm theo **Quyết định số 162/QĐ-BYT năm 2024** (ký bởi Thứ trưởng Trần Văn Thuấn), chính thức áp dụng tại các cơ sở khám bệnh, chữa bệnh trên cả nước và thay thế cho Quyết định số 1314/QĐ-BYT ngày 24/03/2020.
 
 Dưới đây là tóm tắt nội dung chi tiết của **Phần I: ĐẠI CƯƠNG** thuộc tài liệu chuyên môn này:
@@ -8,10 +19,10 @@ Dưới đây là tóm tắt nội dung chi tiết của **Phần I: ĐẠI CƯ�
 
 Tài liệu của Bộ Y tế quy định rõ các khái niệm cốt lõi lâm sàng bao gồm:
 
-- **Bệnh lao:** Là bệnh lây nhiễm do vi khuẩn lao (_Mycobacterium tuberculosis_ - MTB) gây nên. Bệnh có thể tổn thương ở mọi bộ phận cơ thể, trong đó **lao phổi là thể phổ biến nhất (chiếm 80-85%) và là nguồn lây chính** cho cộng đồng. Bệnh lây qua đường không khí do hít phải hạt bụi nhỏ chứa vi khuẩn lao phát tán khi người bệnh lao phổi tiến triển ho, khạc, hắt hơi. Lao có thể gây tử vong nhưng hoàn toàn có thể điều trị khỏi và dự phòng được.
+- **Bệnh lao:** Là bệnh lây nhiễm do vi khuẩn lao (_Mycobacterium tuberculosis_ - MTB) gây nên. Bệnh có thể tổn thương ở mọi bộ phận cơ thể, trong đó **lao [[Phổi]] là thể phổ biến nhất (chiếm 80-85%) và là nguồn lây chính** cho cộng đồng. Bệnh lây qua đường không khí do hít phải hạt bụi nhỏ chứa vi khuẩn lao phát tán khi người bệnh lao phổi tiến triển ho, khạc, hắt hơi. Lao có thể gây tử vong nhưng hoàn toàn có thể điều trị khỏi và dự phòng được.
 - **Lao tiềm ẩn:** Là tình trạng cơ thể người có đáp ứng miễn dịch với kháng nguyên của vi khuẩn lao nhưng **chưa có bất kỳ dấu hiệu lâm sàng hay cận lâm sàng nào** cho thấy bệnh lao đang hoạt động.
 - **Người nghi mắc bệnh lao:** Là người có ít nhất một triệu chứng lâm sàng nghi lao hoặc có hình ảnh bất thường nghi lao trên Xquang ngực hay các phương pháp chẩn đoán hình ảnh khác.
-- **Người mắc bệnh lao:** Người bệnh có tình trạng bệnh lý do vi khuẩn lao gây ra, biểu hiện triệu chứng bệnh lao và được xác định bằng cách tìm thấy vi khuẩn lao (qua kỹ thuật vi sinh), có bằng chứng mô bệnh học tổn thương lao, hoặc chẩn đoán dựa trên lâm sàng kết hợp cận lâm sàng phù hợp khi chưa tìm thấy bằng chứng vi sinh/mô bệnh học.
+- **Người mắc bệnh lao:** Người bệnh có tình trạng bệnh lý do vi khuẩn lao gây ra, biểu hiện triệu chứng bệnh lao và được xác định bằng cách tìm thấy vi khuẩn lao (qua kỹ thuật vi sinh), có bằng chứng mô bệnh học tổn thương lao, hoặc chẩn đoán dựa trên lâm sàng kết hợp cận lâm sàng [[Phù]] hợp khi chưa tìm thấy bằng chứng vi sinh/mô bệnh học.
 - **Người tiếp xúc với người bệnh lao phổi:** Là thành viên sống cùng nhà, người làm việc/học tập cùng phòng với người bệnh lao phổi; hoặc người ngủ cùng nhà/phòng ít nhất 1 đêm/tuần trong 3 tháng trước khi người bệnh được chẩn đoán; hoặc người ở cùng nhà/phòng ít nhất 1 giờ/ngày và liên tục 5 ngày/tuần trong vòng 3 tháng trước khi người bệnh được chẩn đoán.
 - **Người mắc bệnh nhiễm trùng do NTM:** Người bệnh có tình trạng bệnh lý do vi khuẩn ngoài lao (_Nontuberculous Mycobacteria_ - NTM) thuộc họ _Mycobacteria_ gây ra. NTM tồn tại nhiều trong tự nhiên, ít gây bệnh nhưng khi gây bệnh ở phổi hoặc ngoài phổi sẽ có các triệu chứng tương tự bệnh lao. Bệnh được chẩn đoán bằng kỹ thuật sinh học phân tử LPA và giải trình tự gen.
 
@@ -23,8 +34,8 @@ Tài liệu của Bộ Y tế quy định rõ các khái niệm cốt lõi lâm 
 
 #### 2.1. Theo vị trí giải phẫu
 
-- **Lao phổi:** Bệnh lao có tổn thương ở nhu mô phổi hoặc phế quản, bao gồm cả lao hạch lồng ngực (rốn phổi và/hoặc trung thất) mà không có bất thường Xquang ở phổi. Các trường hợp tổn thương phối hợp cả ở phổi và cơ quan ngoài phổi đều được phân loại là lao phổi. Lao kê tại phổi cũng được phân loại là lao phổi.
-- **Lao ngoài phổi:** Bệnh lao tổn thương tại các cơ quan ngoài phổi như màng phổi, hạch ngoại vi, ổ bụng, màng não, màng tim, xương khớp, da, đường sinh dục tiết niệu....
+- **Lao phổi:** Bệnh lao có tổn thương ở [[Phổi|nhu mô phổi]] hoặc phế quản, bao gồm cả lao hạch lồng ngực (rốn phổi và/hoặc trung thất) mà không có bất thường Xquang ở phổi. Các trường hợp tổn thương phối hợp cả ở phổi và cơ quan ngoài phổi đều được phân loại là lao phổi. Lao kê tại phổi cũng được phân loại là lao phổi.
+- **Lao ngoài phổi:** Bệnh lao tổn thương tại các cơ quan ngoài phổi như màng phổi, hạch ngoại vi, ổ bụng, màng não, màng [[Tim]], xương khớp, da, đường sinh dục tiết niệu....
 
 #### 2.2. Theo tiền sử điều trị bệnh lao trước đó
 

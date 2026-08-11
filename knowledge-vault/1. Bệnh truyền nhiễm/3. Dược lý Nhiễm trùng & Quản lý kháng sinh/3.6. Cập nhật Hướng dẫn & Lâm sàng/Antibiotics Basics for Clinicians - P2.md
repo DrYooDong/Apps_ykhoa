@@ -1,21 +1,25 @@
 ---
 title: "Antibiotics Basics for Clinicians - P2"
+type: disease
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Dược lý - Nhiễm", "Cập nhật"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 ### 1. Nội Dung Bệnh Lý Học Chi Tiết: Các Cập Nhật Mới Về Phác Đồ Kinh Nghiệm (Empiric Therapy)
 
-Trong phần 2 của đợt cập nhật, bên cạnh các thuốc kháng sinh mới, tài liệu nhấn mạnh vào việc tối ưu hóa các phác đồ điều trị theo kinh nghiệm (empiric therapy) đối với các hội chứng nhiễm khuẩn lâm sàng phổ biến, đặc biệt trong bối cảnh tỷ lệ vi khuẩn đa kháng thuốc ngày càng gia tăng.
+Trong phần 2 của đợt cập nhật, bên cạnh các thuốc [[Kháng sinh]] mới, tài liệu nhấn mạnh vào việc tối ưu hóa các phác đồ điều trị theo kinh nghiệm (empiric therapy) đối với các hội chứng nhiễm khuẩn lâm sàng phổ biến, đặc biệt trong bối cảnh tỷ lệ vi khuẩn đa kháng thuốc ngày càng gia tăng.
 
-#### Bệnh Lý Viêm Phổi Mắc Phải Tại Cộng Đồng (Community-Acquired Pneumonia - CAP)
+#### Bệnh Lý Viêm [[Phổi]] Mắc Phải Tại Cộng Đồng (Community-Acquired Pneumonia - CAP)
 
-Viêm phổi mắc phải tại cộng đồng được chia thành điển hình và không điển hình, tuy nhiên sự phân biệt lâm sàng không đủ rõ ràng để làm cơ sở lựa chọn kháng sinh. Liệu pháp kinh nghiệm tối ưu cho CAP được thiết lập dựa trên các vi khuẩn gây bệnh phổ biến nhất, các yếu tố cơ địa của bệnh nhân và mức độ nghiêm trọng của bệnh. Đối với bệnh nhân viêm phổi mức độ trung bình cần nhập viện, các chuyên gia khuyến cáo bệnh nhân nên nhận được một trong hai phác đồ: (1) phối hợp một macrolide (như azithromycin, clarithromycin) với một Beta-lactam (cefotaxime, ceftriaxone, ceftaroline, ampicillin/sulbactam) hoặc (2) đơn trị liệu bằng một quinolone diệt phế cầu (moxifloxacin, levofloxacin). Đối với bệnh nhân CAP nghiêm trọng cần nhập viện chăm sóc tích cực (ICU), phác đồ cần là sự phối hợp của Beta-lactam với azithromycin hoặc quinolone.
+Viêm [[Phổi]] mắc phải tại cộng đồng được chia thành điển hình và không điển hình, tuy nhiên sự phân biệt lâm sàng không đủ rõ ràng để làm cơ sở lựa chọn [[Kháng sinh]]. Liệu pháp kinh nghiệm tối ưu cho CAP được thiết lập dựa trên các vi khuẩn gây bệnh phổ biến nhất, các yếu tố cơ địa của bệnh nhân và mức độ nghiêm trọng của bệnh. Đối với bệnh nhân viêm phổi mức độ trung bình cần nhập viện, các chuyên gia khuyến cáo bệnh nhân nên nhận được một trong hai phác đồ: (1) phối hợp một macrolide (như azithromycin, clarithromycin) với một Beta-lactam (cefotaxime, [[Ceftriaxone]], ceftaroline, ampicillin/sulbactam) hoặc (2) đơn trị liệu bằng một quinolone diệt phế cầu (moxifloxacin, levofloxacin). Đối với bệnh nhân CAP nghiêm trọng cần nhập viện chăm sóc tích cực (ICU), phác đồ cần là sự phối hợp của Beta-lactam với azithromycin hoặc quinolone.
 
 **[Figure 16-1 Activities of agents used to treat community-acquired pneumonia]** - trích từ [Antibiotics Basics for Clinicians 4th Edition 2026.pdf]
 
 - **Amoxicillin/beta-lactamase inhibitor, Cefuroxime:** _Streptococcus pneumoniae, Haemophilus influenzae, Other aerobic gram-negative bacteria, Staphylococcus aureus_
-- **Cefotaxime, Ceftriaxone, High-dose ampicillin, Ceftaroline:** _Streptococcus pneumoniae, Haemophilus influenzae, Other aerobic gram-negative bacteria, Staphylococcus aureus_
+- **Cefotaxime, [[Ceftriaxone]], High-dose ampicillin, Ceftaroline:** _Streptococcus pneumoniae, Haemophilus influenzae, Other aerobic gram-negative bacteria, Staphylococcus aureus_
 - **Quinolone:** _Streptococcus pneumoniae, Haemophilus influenzae, Legionella spp., Mycoplasma pneumoniae, Chlamydia pneumoniae, Other aerobic gram-negative bacteria, Staphylococcus aureus_
 - **Macrolide, Doxycycline:** _Streptococcus pneumoniae, Haemophilus influenzae, Legionella spp., Mycoplasma pneumoniae, Chlamydia pneumoniae, Staphylococcus aureus_
 
@@ -55,7 +59,7 @@ Viêm phổi mắc phải tại cộng đồng được chia thành điển hìn
 
 #### Bệnh Lý Viêm Phổi Liên Quan Đến Thở Máy (Ventilator-Associated Pneumonia - VAP)
 
-Sự hiện diện của ống nội khí quản làm tổn thương các rào cản bảo vệ tự nhiên của phổi, tạo điều kiện cho nhiễm khuẩn, trong đó 80% viêm phổi bệnh viện (HAP) là viêm phổi liên quan đến thở máy (VAP), phát triển sau 48 giờ đặt nội khí quản. Đối với bệnh nhân VAP có các yếu tố nguy cơ nhiễm vi khuẩn đa kháng (ví dụ: dùng kháng sinh tĩnh mạch trong vòng 90 ngày trước, sốc nhiễm khuẩn, ARDS, nằm viện >5 ngày trước khi bị VAP), khuyến cáo sử dụng liệu pháp phối hợp với các kháng sinh từ ít nhất ba nhóm khác nhau để tối đa hóa khả năng có ít nhất một thuốc có hiệu quả,.
+Sự hiện diện của ống nội khí quản làm tổn thương các rào cản bảo vệ tự nhiên của phổi, tạo điều kiện cho nhiễm khuẩn, trong đó 80% viêm phổi bệnh viện (HAP) là viêm phổi liên quan đến thở máy (VAP), phát triển sau 48 giờ đặt nội khí quản. Đối với bệnh nhân VAP có các yếu tố nguy cơ nhiễm vi khuẩn đa kháng (ví dụ: dùng kháng sinh tĩnh mạch trong vòng 90 ngày trước, [[[[Sốc]] nhiễm khuẩn]], ARDS, nằm viện >5 ngày trước khi bị VAP), khuyến cáo sử dụng liệu pháp phối hợp với các kháng sinh từ ít nhất ba nhóm khác nhau để tối đa hóa khả năng có ít nhất một thuốc có hiệu quả,.
 
 **[Figure 16-2 Activities of agents used to treat hospital-acquired pneumonia]** - trích từ [Antibiotics Basics for Clinicians 4th Edition 2026.pdf]
 
@@ -82,9 +86,9 @@ Sự hiện diện của ống nội khí quản làm tổn thương các rào c
 ||or||
 ||Polymyxin|Colistin, polymyxin B|
 
-#### Bệnh Lý Viêm Màng Não Nhiễm Khuẩn Cấp Tính (Acute Bacterial Meningitis)
+#### Bệnh Lý [[Viêm màng não]] Nhiễm Khuẩn Cấp Tính (Acute Bacterial Meningitis)
 
-Cơ chế bệnh sinh của viêm màng não liên quan đến sự nhân lên của vi khuẩn trong dịch não tủy (CSF) – môi trường vốn thường thiếu kháng thể và bổ thể. Do đó, các kháng sinh kìm khuẩn (bacteriostatic) là không tối ưu; thay vào đó, bắt buộc phải dùng các kháng sinh diệt khuẩn (bactericidal) với nồng độ cao để vượt qua hàng rào máu não. Cephalosporin thế hệ 3 (ceftriaxone, cefotaxime) là xương sống của hầu hết các phác đồ kinh nghiệm do có tính diệt khuẩn và thấm tốt vào dịch não tủy. Tuy nhiên, vancomycin phải được kết hợp ngay từ đầu để chống lại các chủng _S. pneumoniae_ kháng penicillin. Ampicillin được bổ sung ở bệnh nhi <3 tháng tuổi hoặc người lớn >50 tuổi để bao vây _Listeria monocytogenes_,.
+Cơ chế bệnh sinh của [[Viêm màng não]] liên quan đến sự nhân lên của vi khuẩn trong [[Dịch nào tủy|dịch não tủy]] (CSF) – môi trường vốn thường thiếu kháng thể và bổ thể. Do đó, các kháng sinh kìm khuẩn (bacteriostatic) là không tối ưu; thay vào đó, bắt buộc phải dùng các kháng sinh diệt khuẩn (bactericidal) với nồng độ cao để vượt qua hàng rào máu não. Cephalosporin thế hệ 3 (ceftriaxone, cefotaxime) là xương sống của hầu hết các phác đồ kinh nghiệm do có tính diệt khuẩn và thấm tốt vào [[Dịch nào tủy|dịch não tủy]]. Tuy nhiên, vancomycin phải được kết hợp ngay từ đầu để chống lại các chủng _S. pneumoniae_ kháng penicillin. Ampicillin được bổ sung ở bệnh nhi <3 tháng tuổi hoặc người lớn >50 tuổi để bao vây _Listeria monocytogenes_,.
 
 **[Figure 19-1 Activities of agents used to treat acute bacterial meningitis]** - trích từ [Antibiotics Basics for Clinicians 4th Edition 2026.pdf]
 
@@ -119,7 +123,7 @@ Môi trường bảo vệ của các nùi sùi (vegetation) khiến vi khuẩn g
 
 #### Nhiễm Khuẩn Đường Tiết Niệu (Urinary Tract Infections - UTIs)
 
-UTI được phân loại thành "không biến chứng" (ở phụ nữ trẻ, khỏe mạnh, không mang thai) hoặc "có biến chứng". Việc điều trị kinh nghiệm viêm bàng quang cấp không biến chứng được ưu tiên sử dụng liệu trình nitrofurantoin 5 ngày. Mặc dù trimethoprim-sulfamethoxazole (uống 3 ngày) từng là lựa chọn hàng đầu, hiện nay thuốc này chỉ được khuyên dùng nếu tỷ lệ kháng thuốc tại địa phương không vượt quá 20% và bệnh nhân không dùng thuốc này trong 3 tháng trước đó. Viêm đài bể thận không biến chứng cần điều trị bằng quinolone hoặc Beta-lactam, vì nitrofurantoin không đạt nồng độ máu đủ cao để xử lý vãng khuẩn huyết đi kèm.
+UTI được phân loại thành "không biến chứng" (ở phụ nữ trẻ, khỏe mạnh, không mang thai) hoặc "có biến chứng". Việc điều trị kinh nghiệm viêm bàng quang cấp không biến chứng được ưu tiên sử dụng liệu trình nitrofurantoin 5 ngày. Mặc dù trimethoprim-sulfamethoxazole (uống 3 ngày) từng là lựa chọn hàng đầu, hiện nay thuốc này chỉ được khuyên dùng nếu tỷ lệ kháng thuốc tại địa phương không vượt quá 20% và bệnh nhân không dùng thuốc này trong 3 tháng trước đó. Viêm đài bể [[Thận]] không biến chứng cần điều trị bằng quinolone hoặc Beta-lactam, vì nitrofurantoin không đạt nồng độ máu đủ cao để xử lý vãng khuẩn huyết đi kèm.
 
 **[Table 17-2 Empiric Antimicrobial Therapy for Urinary Tract Infections]** - trích từ [Antibiotics Basics for Clinicians 4th Edition 2026.pdf]
 

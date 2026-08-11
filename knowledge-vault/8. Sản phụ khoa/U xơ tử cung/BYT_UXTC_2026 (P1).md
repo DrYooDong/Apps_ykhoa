@@ -1,3 +1,13 @@
+---
+title: "BYT_UXTC_2026 (P1)"
+type: disease
+specialty: "Sản phụ khoa"
+tags:
+  - loai/benh-ly
+  - y-khoa/san-phu-khoa
+updated: "2026-08-11"
+---
+
 # 1. Nội Dung Sinh Lý Học Chi Tiết
 
 ## Đại Cương Và Cơ Chế Bệnh Sinh U Xơ Cơ Tử Cung
@@ -25,7 +35,7 @@ Các yếu tố nguy cơ làm gia tăng tỉ lệ phát sinh UXCTC bao gồm:
 - **Yếu tố di truyền:** Liên quan đến các đột biến gene (như _MED12, HMGA2, CYP1A1, CYP1B1_) và bất thường nhiễm sắc thể (trisomy 12; đảo đoạn 12q, 6p, 10q, 13q; mất đoạn 7q, 3q, 1p).
 - **Khoảng cách sinh con:** Khoảng cách giữa các lần sinh từ **5 năm trở lên** làm tăng nguy cơ phát triển u xơ gấp **2 - 3 lần**.
 - **Giai đoạn tiền mãn kinh:** Nguy cơ bị u xơ cao gấp **10 lần** so với giai đoạn đã mãn kinh.
-- **Hội chứng chuyển hóa và Tăng huyết áp:** Béo phì, kháng insulin, hội chứng buồng trứng đa nang, tăng lipid máu... góp phần tăng nguy cơ. Riêng phụ nữ bị **tăng huyết áp** có nguy cơ phát triển UXCTC cao **gần 5 lần** so với người bình thường.
+- **Hội chứng chuyển hóa và [[Tăng huyết áp]]:** Béo phì, kháng [[Insulin]], hội chứng buồng trứng đa nang, tăng lipid máu... góp phần tăng nguy cơ. Riêng phụ nữ bị **[[Tăng huyết áp]]** có nguy cơ phát triển UXCTC cao **gần 5 lần** so với người bình thường.
 - **Lối sống và chế độ ăn uống:** Ít vận động, căng thẳng (stress) kéo dài, ăn nhiều acid béo động vật, thịt đỏ, thịt bò, thiếu hụt vitamin D, tiêu thụ nhiều cồn và caffeine làm tăng nguy cơ.
 - **Chất phụ gia thực phẩm:** Các chất phụ gia dùng trong chế biến và bảo quản thực phẩm làm tăng nguy cơ phát triển u xơ lên **đến 3 lần**.
 
@@ -52,9 +62,9 @@ Hiện nay, hệ thống phân loại theo vị trí của **Liên đoàn Sản 
 
 ### Định hướng xử trí theo phân loại FIGO:
 
-- **Nhóm L0, L1, L2:** Thường gây xuất huyết tử cung bất thường (AUB), vô sinh, sẩy thai. Phương pháp điều trị tối ưu là **phẫu thuật nội soi buồng tử cung**.
-- **Nhóm L3:** Có thể gây xuất huyết tử cung hoặc không. Ưu tiên điều trị nội khoa bằng thuốc để giảm kích thước khối u trước khi bệnh nhân mang thai.
-- **Nhóm L4 - L8:** Thường không gây xuất huyết tử cung bất thường. Chỉ can thiệp điều trị khi khối u có kích thước lớn hoặc chèn ép gây biến chứng đường niệu (thận ứ nước, bí tiểu) hoặc đường tiêu hóa (táo bón). Đối với phụ nữ muốn mang thai, có thể cân nhắc điều trị nội khoa hoặc phẫu thuật bóc u.
+- **Nhóm L0, L1, L2:** Thường gây [[Xuất huyết]] tử cung bất thường (AUB), vô sinh, sẩy thai. Phương pháp điều trị tối ưu là **phẫu thuật nội soi buồng tử cung**.
+- **Nhóm L3:** Có thể gây [[Xuất huyết]] tử cung hoặc không. Ưu tiên điều trị nội khoa bằng thuốc để giảm kích thước khối u trước khi bệnh nhân mang thai.
+- **Nhóm L4 - L8:** Thường không gây xuất huyết tử cung bất thường. Chỉ can thiệp điều trị khi khối u có kích thước lớn hoặc chèn ép gây biến chứng đường niệu ([[Thận]] ứ nước, bí tiểu) hoặc [[Đường tiêu hóa]] (táo bón). Đối với phụ nữ muốn mang thai, có thể cân nhắc điều trị nội khoa hoặc phẫu thuật bóc u.
 
 ---
 

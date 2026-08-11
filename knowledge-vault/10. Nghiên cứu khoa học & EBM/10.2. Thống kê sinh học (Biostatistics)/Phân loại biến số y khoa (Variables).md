@@ -1,16 +1,20 @@
 ---
 title: "Phân loại biến số y khoa (Variables)"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Thống kê sinh học (Biostatistics)"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Dưới góc độ của một chuyên gia về Y học chứng cứ (EBM) và Phương pháp luận nghiên cứu khoa học, tôi xin trình bày hệ thống phân loại biến số (Variables) trong nghiên cứu y khoa và dịch tễ học dựa trên các tài liệu đã được cung cấp.
 
 ### 1. KHÁI NIỆM CƠ BẢN VỀ BIẾN SỐ
 
 Trong nghiên cứu khoa học, biến số (Variable) được định nghĩa là một đặc điểm, thuộc tính của con người, sự vật hoặc hiện tượng có thể mang các giá trị khác nhau. Ví dụ: tuổi tác có thể nhận các giá trị 20, 25 tuổi; giới tính có thể là nam hoặc nữ.
 
-Việc phân loại và xác định đúng bản chất của biến số là nền tảng cốt lõi để nhà nghiên cứu lựa chọn thiết kế nghiên cứu phù hợp, quyết định công cụ thu thập dữ liệu và áp dụng chính xác các thuật toán thống kê y học.
+Việc phân loại và xác định đúng bản chất của biến số là nền tảng cốt lõi để nhà nghiên cứu lựa chọn thiết kế nghiên cứu [[Phù]] hợp, quyết định công cụ thu thập dữ liệu và áp dụng chính xác các thuật toán thống kê y học.
 
 ---
 
@@ -31,7 +35,7 @@ Dưới góc nhìn của thống kê y học và tiêu chuẩn của Cochrane, d
 Là những biến mà giá trị của nó phản ánh các đặc điểm được đo lường, đếm được và biểu diễn bằng những con số.
 
 - **Biến liên tục (Continuous data):** Dữ liệu có thể mang một số lượng giá trị vô hạn trong một khoảng nhất định (có thể có số thập phân). _Ví dụ:_ Chiều cao, Cân nặng, Huyết áp, Thu nhập.
-- **Biến số đếm và Tỷ suất (Counts and Rates):** Đo lường số lần một biến cố xảy ra trên một cá thể (ví dụ: số lần nhồi máu cơ tim, số răng bị sâu). Nếu số đếm này được gắn với một khoảng thời gian theo dõi (ví dụ: số biến cố / 100 người-năm), nó trở thành biến tỷ suất (Rate data).
+- **Biến số đếm và Tỷ suất (Counts and Rates):** Đo lường số lần một biến cố xảy ra trên một cá thể (ví dụ: số lần nhồi máu [[[[Tim]]|cơ tim]], số răng bị sâu). Nếu số đếm này được gắn với một khoảng thời gian theo dõi (ví dụ: số biến cố / 100 người-năm), nó trở thành biến tỷ suất (Rate data).
 - **Biến thời gian đến khi có biến cố (Time-to-event / Survival data):** Phân tích thời gian tính từ lúc bắt đầu theo dõi cho đến khi một biến cố (như tử vong) xảy ra, thường bao gồm cả dữ liệu bị kiểm duyệt (censored data - những người không gặp biến cố trong thời gian nghiên cứu).
 
 ---

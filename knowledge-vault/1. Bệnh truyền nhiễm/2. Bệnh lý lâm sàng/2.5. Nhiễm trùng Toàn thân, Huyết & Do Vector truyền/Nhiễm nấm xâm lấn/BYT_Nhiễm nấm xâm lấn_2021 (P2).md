@@ -1,3 +1,13 @@
+---
+title: "BYT_Nhiễm nấm xâm lấn_2021 (P2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 ### PHẦN 2: DƯỢC LÝ LÂM SÀNG, PHÁC ĐỒ ĐIỀU TRỊ VÀ DỰ PHÒNG NHIỄM NẤM XÂM LẤN
 
 ---
@@ -11,15 +21,15 @@ Theo cấu trúc hóa học và cơ chế tác dụng, các thuốc kháng nấm
 - **Nhóm Azol (Dẫn chất Imidazol và Triazol)**:
     - _Cơ chế tác dụng_: Các azol có tác dụng kìm nấm bằng cách **ức chế enzyme CYP450 14α-demethylase của nấm**, dẫn đến làm giảm tổng hợp ergosterol, từ đó ngăn chặn sự hình thành màng tế bào nấm.
     - _Đặc tính dược động học_:
-        - **Fluconazol** và **Voriconazol** có sinh khả dụng đường uống rất cao (> 90%), hấp thu tốt và thấm rất tốt vào dịch não tủy.
+        - **Fluconazol** và **Voriconazol** có sinh khả dụng đường uống rất cao (> 90%), hấp thu tốt và thấm rất tốt vào [[Dịch nào tủy|dịch não tủy]].
         - **Itraconazol** và **Posaconazol** (dạng hỗn dịch) hấp thu bấp bênh, cần độ acid dịch vị và chất béo của thức ăn để hòa tan, do đó bắt buộc phải dùng kèm bữa ăn giàu chất béo.
-        - _Thải trừ_: Fluconazol ít chuyển hóa qua gan, chủ yếu thải trừ ở dạng còn hoạt tính qua nước tiểu (80%), cần chỉnh liều chặt chẽ ở bệnh nhân suy thận. Ngược lại, đa số các azol phổ rộng khác chuyển hóa mạnh qua gan (chủ yếu CYP3A4 và CYP2C19) nên không có vai trò trong điều trị Candida đường tiết niệu.
+        - _Thải trừ_: Fluconazol ít chuyển hóa qua [[Gan]], chủ yếu thải trừ ở dạng còn hoạt tính qua nước tiểu (80%), cần chỉnh liều chặt chẽ ở bệnh nhân suy [[Thận]]. Ngược lại, đa số các azol phổ rộng khác chuyển hóa mạnh qua [[Gan]] (chủ yếu CYP3A4 và CYP2C19) nên không có vai trò trong điều trị Candida đường tiết niệu.
 - **Nhóm Polyen (Amphotericin B)**:
     - _Cơ chế tác dụng_: Có tác dụng kìm nấm hoặc diệt nấm tùy thuộc nồng độ. Thuốc **gắn trực tiếp vào ergosterol ở màng tế bào nấm**, tạo ra các lỗ rò làm rò rỉ thành phần nội bào và gây chết tế bào.
-    - _Dược lý bào chế_: Amphotericin B deoxycholat (dạng quy ước) có độc tính trên thận rất cao. Các dạng bào chế lipid (Amphotericin B liposom - L-AMB, Amphotericin B phức hợp lipid - ABLC) giúp cải thiện đáng kể độc tính trên thận nhờ hướng đích mô tốt hơn.
+    - _Dược lý bào chế_: Amphotericin B deoxycholat (dạng quy ước) có độc tính trên [[Thận]] rất cao. Các dạng bào chế lipid (Amphotericin B liposom - L-AMB, Amphotericin B phức hợp lipid - ABLC) giúp cải thiện đáng kể độc tính trên thận nhờ hướng đích mô tốt hơn.
 - **Nhóm Echinocandin (Caspofungin, Micafungin, Anidulafungin)**:
     - _Cơ chế tác dụng_: **Ức chế tổng hợp β (1,3)-D-glucan** – thành phần vách tế bào thiết yếu của nấm. Thuốc có tác dụng **diệt nấm đối với Candida spp.** nhưng chỉ có tác dụng **kìm nấm đối với Aspergillus spp.**.
-    - _Dược động học_: Hấp thu qua đường tiêu hóa kém nên chỉ dùng đường truyền tĩnh mạch.
+    - _Dược động học_: Hấp thu qua [[Đường tiêu hóa]] kém nên chỉ dùng đường truyền tĩnh mạch.
 - **Nhóm Ức Chế Tổng Hợp Thymidylat (Flucytosin - 5-FC)**:
     - _Cơ chế tác dụng_: Xâm nhập vào tế bào nấm qua protein vận chuyển màng, chuyển hóa thành chất hoạt tính **ức chế tổng hợp DNA và RNA**, từ đó ngừng tổng hợp protein của nấm. Thường phối hợp với Amphotericin B để tăng hiệu quả diệt nấm và tránh kháng thuốc nhanh.
 

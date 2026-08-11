@@ -1,12 +1,17 @@
 ---
 title: "SL_Thận_Thăng bằng Toan - Kiềm"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-tiet-nieu
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 **1. NỘI DUNG SINH LÝ HỌC CHI TIẾT:**
 
-Thận đóng vai trò then chốt trong việc duy trì thăng bằng toan - kiềm của cơ thể bằng cách giữ cho nồng độ ion $H^+$ và $HCO_3^-$ trong dịch ngoại bào luôn ở mức hằng định. Hoạt động này được thực hiện thông qua hai nhiệm vụ chính: (1) tái hấp thu gần như toàn bộ $HCO_3^-$ được lọc qua cầu thận để tránh mất chất đệm quan trọng này qua nước tiểu và (2) bài tiết một lượng acid tương đương với lượng acid cố định (không bay hơi) sinh ra từ quá trình chuyển hóa hằng ngày của cơ thể. 
+[[Thận]] đóng vai trò then chốt trong việc duy trì thăng bằng toan - kiềm của cơ thể bằng cách giữ cho nồng độ ion $H^+$ và $HCO_3^-$ trong dịch ngoại bào luôn ở mức hằng định. Hoạt động này được thực hiện thông qua hai nhiệm vụ chính: (1) tái hấp thu gần như toàn bộ $HCO_3^-$ được lọc qua cầu [[Thận]] để tránh mất chất đệm quan trọng này qua nước tiểu và (2) bài tiết một lượng acid tương đương với lượng acid cố định (không bay hơi) sinh ra từ quá trình chuyển hóa hằng ngày của cơ thể. 
 
 Quá trình điều hòa này bao gồm các cơ chế sinh lý sau:
 

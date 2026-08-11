@@ -1,17 +1,23 @@
 ---
+title: "Pseudomonas aeruginosa (Trực khuẩn mủ xanh)"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - he-co-quan/tieu-hoa
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
 
 ### 1. Đặc điểm Vi sinh và Di truyền học
 
 - **Hình thái và đặc tính sinh hóa:** _P. aeruginosa_ là trực khuẩn Gram âm, di động, hiếu khí bắt buộc. Trên môi trường nuôi cấy, vi khuẩn tạo thành các khuẩn lạc tròn, nhẵn với mùi đặc trưng giống mùi nho hoặc "taco ngô" (corn-taco). Một trong những điểm nhận diện nổi bật là khả năng tiết ra các sắc tố như **pyocyanin** (màu xanh lam), **pyoverdin** (màu xanh lục), pyorubin (màu đỏ đậm) và pyomelanin (màu đen). Vi khuẩn này sinh men oxidase dương tính và có khả năng phát triển ở nhiệt độ **42°C**, đặc điểm giúp phân biệt chúng với các loài _Pseudomonas_ khác (như _P. fluorescens_ và _P. putida_).
 - **Đặc điểm bộ gen:** _P. aeruginosa_ có bộ gen lớn (hơn 6 triệu cặp base) và rất phức tạp. Thay vì sao chép gen, bộ gen của chúng chứa vô số họ gen khác nhau, cho phép vi khuẩn thích nghi linh hoạt với các hốc sinh thái đa dạng và môi trường khắc nghiệt.
-- **Kiểu hình nhầy (Mucoid phenotype):** Một số chủng _P. aeruginosa_ (đặc biệt ở bệnh nhân xơ nang) có khả năng sản xuất quá mức một loại polysaccharide ngoại bào gọi là **alginate**, tạo ra các khuẩn lạc dạng nhầy giúp vi khuẩn chống lại sự thực bào và kháng lại kháng sinh.
+- **Kiểu hình nhầy (Mucoid phenotype):** Một số chủng _P. aeruginosa_ (đặc biệt ở bệnh nhân xơ nang) có khả năng sản xuất quá mức một loại polysaccharide ngoại bào gọi là **alginate**, tạo ra các khuẩn lạc dạng nhầy giúp vi khuẩn chống lại sự thực bào và kháng lại [[Kháng sinh]].
 
 ### 2. Dịch tễ học và Sự mang trùng
 
-- **Môi trường sống:** _Pseudomonas_ là vi khuẩn phân bố rộng rãi khắp nơi trong tự nhiên (đất, nước, thực vật, động vật). Đáng chú ý, dự án Hệ vi sinh vật người (Human Microbiome Project) đã chứng minh rằng _P. aeruginosa_ **không phải là vi khuẩn thường trú ở người khỏe mạnh** (không có trên da, niêm mạc hay mũi). Sự xâm cư thường chỉ xảy ra sau khi bệnh nhân nhập viện hoặc tiếp xúc với kháng sinh.
+- **Môi trường sống:** _Pseudomonas_ là vi khuẩn phân bố rộng rãi khắp nơi trong tự nhiên (đất, nước, thực vật, động vật). Đáng chú ý, dự án Hệ vi sinh vật người (Human Microbiome Project) đã chứng minh rằng _P. aeruginosa_ **không phải là vi khuẩn thường trú ở người khỏe mạnh** (không có trên da, niêm mạc hay mũi). Sự xâm cư thường chỉ xảy ra sau khi bệnh nhân nhập viện hoặc tiếp xúc với [[Kháng sinh]].
 - **Nhiễm trùng bệnh viện (Nosocomial infections):** _P. aeruginosa_ là mầm bệnh phổ biến thứ tư gây nhiễm trùng bệnh viện ở người lớn tại Hoa Kỳ. Nó đặc biệt phổ biến tại các đơn vị chăm sóc tích cực (ICU) và các bệnh viện chăm sóc cấp tính dài hạn (LTACHs).
 - **Nguồn lây truyền:**
     - **Trong bệnh viện:** Nước là ổ chứa chính (vòi nước, bồn rửa, vòi hoa sen), bên cạnh các dụng cụ y tế như máy thở, ống soi phế quản và cả bàn tay nhân viên y tế.
@@ -33,9 +39,9 @@ Sự nguy hiểm của _P. aeruginosa_ đến từ một "kho vũ khí" độc l
 
 _P. aeruginosa_ gây ra nhiều bệnh lý nghiêm trọng, đặc biệt ở người suy giảm miễn dịch hoặc có thiết bị y tế xâm lấn:
 
-- **Nhiễm khuẩn huyết (BSI):** Vô cùng nguy hiểm với tỷ lệ tử vong có thể lên tới 60%. Đây là vi khuẩn Gram âm phổ biến thứ ba gây nhiễm khuẩn huyết bệnh viện.
-- **Viêm phổi:**
-    - Là căn nguyên Gram âm hàng đầu gây **viêm phổi liên quan đến máy thở (VAP)**. Quá trình bắt đầu từ sự xâm cư ở đường hô hấp trên, sau đó vi khuẩn đi vào phổi thông qua ống nội khí quản.
+- **[[Nhiễm trùng huyết|Nhiễm khuẩn huyết]] (BSI):** Vô cùng nguy hiểm với tỷ lệ tử vong có thể lên tới 60%. Đây là vi khuẩn Gram âm phổ biến thứ ba gây [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] bệnh viện.
+- **Viêm [[Phổi]]:**
+    - Là căn nguyên Gram âm hàng đầu gây **viêm [[Phổi]] liên quan đến máy thở (VAP)**. Quá trình bắt đầu từ sự xâm cư ở đường hô hấp trên, sau đó vi khuẩn đi vào phổi thông qua ống nội khí quản.
     - Viêm phổi mắc phải tại cộng đồng do _P. aeruginosa_ hiếm gặp nhưng có tỷ lệ tử vong cao (28%), thường gặp ở bệnh nhân có bệnh nền như COPD, giãn phế quản, hút thuốc hoặc suy giảm miễn dịch.
 - **Nhiễm trùng ở bệnh nhân Xơ nang (Cystic Fibrosis - CF):** Bệnh nhân CF thường bị nhiễm trùng mạn tính. Vi khuẩn ở giai đoạn này chuyển sang kiểu hình nhầy (tiết nhiều alginate), tạo màng sinh học và trở nên đa kháng thuốc, dẫn đến suy giảm chức năng phổi nghiêm trọng.
 - **Nhiễm trùng da, mô mềm và xương khớp:**

@@ -1,10 +1,21 @@
+---
+title: "GP-SL_Hệ thần kinh ở trẻ em (Phần 1)"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - he-co-quan/than-kinh
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 1: ĐẶC ĐIỂM GIẢI PHẪU VÀ CẤU TẠO HỆ THẦN KINH Ở TRẺ EM)
 
 ---
 
 ## 1. Đặc Điểm Giải Phẫu và Cấu Tạo của Đại Não (Cerebrum)
 
-### 1.1. Cấu Trúc Tổng Thể và Phân Vùng Vỏ Não
+### 1.1. Cấu Trúc Tổng Thể và Phân Vùng [[Vỏ não]]
 
 - **Khối lượng và phân chia bán cầu:** Đại não là phần lớn nhất và phát triển cao nhất của não người, chiếm $2/3$ khối lượng não bộ, nằm ở trên và bao quanh hầu hết các cấu trúc của brain bộ. Phần ngoài (dày từ $1,5 - 5\text{ mm}$) của đại brain được bao phủ bởi một lớp mô xám gọi là vỏ brain. Đại brain được chia làm hai bán cầu (phải và trái), nối với nhau qua **thể chai (corpus callosum)**.
 - **Phân thùy và vùng chức năng:** Trên bề mặt vỏ brain có các rãnh chia mỗi bán cầu thành 4 thùy chính: **thùy trán, thùy chẩm, thùy đỉnh và thùy thái dương**. Để nghiên cứu chức năng, Brodmann chia vỏ brain thành 52 vùng.
@@ -14,7 +25,7 @@
 
 - **Số lượng và sự biệt hóa tế bào:** Brain của trẻ sơ sinh có khoảng **14 - 17 tỉ tế bào thần kinh**. Vỏ brain gồm 6 lớp, tuy nhiên phải đến **8 tuổi** các tế bào mới được biệt hóa hoàn toàn giống như người lớn. Ở trẻ sơ sinh, sự phát triển của brain chủ yếu tập trung vào các **trung tâm dưới vỏ** (thể vân, thể thị, nhân xám), sau đó vỏ brain và thể tân vân (thể vân mới) mới tiếp tục được hình thành và phát triển.
 - **Ranh giới chất xám - chất trắng:** Brain của trẻ sơ sinh rất khó phân biệt ranh giới giữa chất xám và chất trắng vì thân tế bào thần kinh (neuron) nằm lấn sang cả chất trắng.
-- **Đặc điểm mạch máu và nguy cơ xuất huyết:** Mạng lưới mao mạch trong brain trẻ sơ sinh phát triển mạnh, lưu lượng máu lên brain lớn, nhưng **thành mạch máu rất mỏng manh**. Do đó, khi trẻ bị ngạt, sức bền thành mạch giảm nhiều (giảm tới $20%$) nên trẻ rất **dễ bị xuất huyết脑**.
+- **Đặc điểm mạch máu và nguy cơ [[Xuất huyết]]:** Mạng lưới mao mạch trong brain trẻ sơ sinh phát triển mạnh, lưu lượng máu lên brain lớn, nhưng **thành mạch máu rất mỏng manh**. Do đó, khi trẻ bị ngạt, sức bền thành mạch giảm nhiều (giảm tới $20%$) nên trẻ rất **dễ bị [[Xuất huyết]]脑**.
 - **Thành phần hóa học và sự phát triển khối lượng:**
     - Thành phần brain bộ của trẻ em bao gồm chủ yếu là nước, protid và lipid; đến 2 tuổi, thành phần hóa học gần giống như người lớn.
     - **Trọng lượng brain:** Trọng lượng brain sơ sinh đạt **370 - 390 g** (chiếm $1/8 - 1/9$ trọng lượng cơ thể), trong khi ở người lớn khoảng **1.400 g** (chiếm $1/40 - 1/50$ trọng lượng cơ thể). Brain phát triển rất nhanh trong năm đầu (1 tuổi đạt **900 g**), từ 7 - 8 tuổi phát triển chậm lại và ngừng phát triển ở tuổi 30 - 40.
@@ -44,7 +55,7 @@
 
 - **Vị trí và thành phần:** Là vùng nối liền giữa đại brain với tủy sống, bao gồm **trung brain (não giữa), cầu brain và hành nào**. Các neuron vận động và cảm giác đi ngang qua thân brain, chuyển tiếp tín hiệu giữa brain và tủy sống, kiểm soát các tín hiệu vận động và chức năng thần kinh tự động.
 - **Trung brain (Não giữa):** Là phần trên của thân brain, nối giữa brain trước và brain sau. Chức năng: kiểm soát đáp ứng sự nhìn, vận động mắt, giãn đồng tử, vận động cơ thể và nghe.
-- **Cầu brain, Hành nào, Thể lưới (Não sau):** Đảm nhận vai trò thức tỉnh, thăng bằng, các phản xạ tim, tuần hoàn, vận động chính xác, duy trì trương lực cơ và ngủ.
+- **Cầu brain, Hành nào, Thể lưới (Não sau):** Đảm nhận vai trò thức tỉnh, thăng bằng, các phản xạ [[Tim]], tuần hoàn, vận động chính xác, duy trì trương lực cơ và ngủ.
 
 ---
 
@@ -59,7 +70,7 @@
 
 ---
 
-## 5. Đặc Điểm Hệ Thống Não Thất và Dịch Não Tủy
+## 5. Đặc Điểm Hệ Thống Não Thất và [[Dịch nào tủy|Dịch Não Tủy]]
 
 ### 5.1. Cấu Trúc Hệ Thống Não Thất và Cấu Tạo DNT
 
@@ -68,7 +79,7 @@
     - **Não thất III** nằm ở trung tâm đại brain, thông với brain thất bên qua **lỗ Monro** và thông với brain thất IV qua **cống brain (cống Sylvius)**.
     - **Não thất IV** có hình kim tự tháp nằm ở đường giữa (phía trước là cầu brain, hành nào; phía sau là tiểu nào). Phía trên thông với brain thất III qua cống Sylvius; phía dưới thông với bể lớn qua **lỗ Magendie** và hai bên qua **lỗ Luschka** vào góc cầu tiểu nào.
     - **Cống brain** là vị trí hẹp nhất và dễ bị tắc nghẽn nhất trong hệ thống brain thất gây ra bệnh **não úng thủy**.
-- **Sự tạo thành và tuần hoàn Dịch Não Tủy (DNT):**
+- **Sự tạo thành và tuần hoàn [[Dịch nào tủy|Dịch Não Tủy]] (DNT):**
     - Các brain thất được lót bằng tế bào nội tủy; các tế bào này kết hợp với màng mềm tạo ra **đám rối mạch mạc**.
     - DNT được tạo ra từ đám rối mạch mạc ở hai brain thất bên $\rightarrow$ qua lỗ Monro $\rightarrow$ vào brain thất III $\rightarrow$ qua cống Sylvius $\rightarrow$ vào brain thất IV $\rightarrow$ qua lỗ Magendie và Luschka $\rightarrow$ đi vào khoang dưới nhện bao bọc xung quanh brain bộ, tủy sống $\rightarrow$ được các mao mạch hấp thu trở lại tuần hoàn.
 
@@ -89,9 +100,9 @@
     - Trẻ 1 tuổi: **35 mL**.
     - Người lớn: **120 - 150 mL**.
 - **Tính chất màu sắc và thành phần sinh hóa:**
-    - **Màu sắc:** DNT ở trẻ sơ sinh có thể **hơi vàng**, trùng với giai đoạn vàng da sinh lý.
+    - **Màu sắc:** DNT ở trẻ sơ sinh có thể **hơi vàng**, trùng với giai đoạn [[Vàng da]] sinh lý.
     - **Protein:** Nồng độ protein trong DNT của trẻ sơ sinh hơi cao (**0,4 - 0,8 g/L**), do đó phản ứng Pandy có thể dương tính nhẹ.
-    - **Bạch cầu:**
+    - **[[Bạch cầu]]:**
         - Trẻ sinh non: $\le 50\text{ bạch cầu/mm}^3$.
         - Trẻ sơ sinh đủ tháng: $\le 30\text{ bạch cầu/mm}^3$.
         - Trẻ lớn: $\le 5\text{ bạch cầu/mm}^3$ (chủ yếu là lymphocyte).
@@ -142,7 +153,7 @@
     1. **Hệ động mạch cảnh trong:** Đi phía trước, vào trong sọ chia thành động mạch brain trước và động mạch brain giữa, cấp máu chủ yếu cho phần trước của bán cầu đại brain (thùy trán, thùy đỉnh, thùy thái dương).
     2. **Hệ động mạch đốt sống - thân nền:** Động mạch đốt sống đi phía sau, vào trong sọ hợp nhất hai bên tạo thành động mạch thân nền, chia các nhánh cấp máu chủ yếu cho thân brain, tiểu brain và thùy chẩm.
 - **Đa giác Willis:** Các nhánh nối thông ở nền sọ của hai hệ động mạch này tạo thành **đa giác Willis**.
-- **Hệ thống tĩnh mạch:** Toàn bộ máu nuôi brain trở về tim qua hai hệ thống tĩnh mạch: hệ sâu (nhận máu dưới vỏ) và hệ nông (nhận máu vỏ brain). Các tĩnh mạch hợp nhất lại thành các xoang tĩnh mạch màng cứng đưa máu về tim qua hai tĩnh mạch cảnh trong.
+- **Hệ thống tĩnh mạch:** Toàn bộ máu nuôi brain trở về [[Tim]] qua hai hệ thống tĩnh mạch: hệ sâu (nhận máu dưới vỏ) và hệ nông (nhận máu vỏ brain). Các tĩnh mạch hợp nhất lại thành các xoang tĩnh mạch màng cứng đưa máu về tim qua hai tĩnh mạch cảnh trong.
 
 ---
 

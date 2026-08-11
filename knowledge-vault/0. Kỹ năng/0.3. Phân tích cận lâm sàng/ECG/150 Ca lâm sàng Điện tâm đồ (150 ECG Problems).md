@@ -1,9 +1,13 @@
 ---
 title: "150 Ca lâm sàng Điện tâm đồ (150 ECG Problems)"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Cận lâm sàng"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 Preface
 # 150
 # ECG
@@ -111,7 +115,7 @@ infarction. There are also small Q waves in leads V 5 –V 6 , but these may be 
 - ST segments normal, with no elevation in the leads showing Q waves
 - Inverted T waves in leads II, III and VF
 Clinical interpretation The Q waves in the inferior leads, together with inverted T waves, point to an old inferior myocardial infarction.
-What to do The patient seems to have had a myocardial infarction at some point in the past, and by implication his vague chest pain may be due to angina. Attention must be paid to risk factors (smoking, blood pressure, plasma cholesterol), and he probably needs long-term treatment with aspirin and a statin. An exercise test or a perfusion scan will be the best way of deciding whether he has coronary disease that merits angiography.
+What to do The patient seems to have had a myocardial infarction at some point in the past, and by implication his vague chest pain may be due to angina. Attention must be paid to risk factors (smoking, blood pressure, plasma cholesterol), and he probably needs long-term treatment with [[Aspirin]] and a statin. An exercise test or a perfusion scan will be the best way of deciding whether he has coronary disease that merits angiography.
 Summary  Old inferior myocardial infarction.
 See p. 91, 8E See p. 215, 6E
 4
@@ -163,7 +167,7 @@ The ECG shows:
 - Raised ST segments in leads V 2 –V 4
 - Inverted T waves in leads I, VL, V 2 –V 6
 Clinical interpretation This is a classic acute ST segment elevation anterior myocardial infarction (STEMI).
-What to do More than 18 h have elapsed since the onset of pain, so this patient is outside the conventional limit for thrombolysis or percutaneous coronary intervention (PCI). Nevertheless, if he is still in pain and still looks unwell, PCI or thrombolytic treat - ment should be given unless there are good reasons not to do so. In any case, he should be given pain relief and aspirin, and must be admitted to hospital for observation.
+What to do More than 18 h have elapsed since the onset of pain, so this patient is outside the conventional limit for thrombolysis or percutaneous coronary intervention (PCI). Nevertheless, if he is still in pain and still looks unwell, PCI or thrombolytic treat - ment should be given unless there are good reasons not to do so. In any case, he should be given pain relief and [[Aspirin]], and must be admitted to hospital for observation.
 Summary  Acute anterior STEMI.
 See p. 91, 92, 8E See p. 217, 6E
 8
@@ -1165,7 +1169,7 @@ The ECG shows:
 - RSR 1 pattern in leads V 1 –V 3 , indicating right bundle branch block (RBBB)
 The chest X-ray shows a large pleural effusion on the right side with some atelectasis above it, and also a small left-sided effusion. There is upper-zone blood diversion, indicating heart failure.
 Clinical interpretation In this ECG the usual ‘irregular baseline’ of atrial fibrillation is not apparent, but the QRS complexes are so irregular that this must be the rhythm. The rhythm change, together with the development of RBBB, could be due to a chest infection but is more likely to have been caused by a pulmonary embolus. The right-sided pleural effusion could also be due to either infection or embolism, but the patient clearly has heart failure because the effusions are bilateral (although asymmetrical) and there is diversion of blood flow to the upper zones of the lungs.
-What to do In a postoperative patient, anticoagulation can always cause haemorrhage. Never - theless, the risk of death from a pulmonary embolus is so high that the patient should immediately be given heparin while steps are taken (white blood cell count, sputum culture, CT scan) to differentiate between a chest infection and a pulmonary embolus.
+What to do In a postoperative patient, anticoagulation can always cause haemorrhage. Never - theless, the risk of death from a pulmonary embolus is so high that the patient should immediately be given heparin while steps are taken (white blood cell count, sputum culture, [[CT Scan]]) to differentiate between a chest infection and a pulmonary embolus.
 Summary    Atrial fibrillation with RBBB.
 See p. 43, 76, 8E See p. 125, 6E
 86

@@ -1,9 +1,14 @@
 ---
 title: "Nuốt khó"
-specialty: "Hệ Tiêu hóa"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Tiêu hóa"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+
 **1. Cơ chế bệnh sinh** Nuốt khó (Dysphagia) là cảm giác chủ quan của bệnh nhân về sự cản trở sự di chuyển của thức ăn (đặc hoặc lỏng) từ miệng xuống dạ dày. Cơ chế sinh lý bệnh của nuốt khó được chia thành hai nhóm chính:
 
 - **Tắc nghẽn cơ học (Mechanical obstruction):** Xảy ra do thu hẹp lòng thực quản, có thể do nguyên nhân trong lòng thực quản (dị vật, cục thức ăn lớn), tại thành thực quản (viêm, màng/vòng thực quản, hẹp do sẹo loét, khối u ác tính) hoặc do chèn ép từ bên ngoài (cột sống cổ thoái hóa, tuyến giáp to, khối u trung thất, chèn ép mạch máu).
@@ -19,7 +24,7 @@ last_updated: "2026-07-28"
 
 **Bước 1: Ổn định ban đầu – sàng lọc nguy cơ**
 
-- **Tắc nghẽn hoàn toàn đe dọa đường thở:** Bệnh nhân nuốt khó cấp tính, không thể nuốt được cả nước bọt (chảy nước dãi), nghẹt thở, khó thở hoặc thở rít (stridor) báo hiệu sự tắc nghẽn đường thở hoặc chèn ép khí quản. Đây là cấp cứu cần bảo vệ đường thở, hút đờm dãi liên tục và nội soi gắp dị vật khẩn cấp.
+- **Tắc nghẽn hoàn toàn đe dọa đường thở:** Bệnh nhân nuốt khó cấp tính, không thể nuốt được cả nước bọt (chảy nước dãi), nghẹt thở, [[Khó thở]] hoặc [[Khó thở|thở rít]] (stridor) báo hiệu sự tắc nghẽn đường thở hoặc chèn ép khí quản. Đây là cấp cứu cần bảo vệ đường thở, hút đờm dãi liên tục và nội soi gắp dị vật khẩn cấp.
 - **Dấu hiệu "cờ đỏ" ác tính:** Nuốt khó diễn tiến nhanh (< 4 tuần), đi kèm sụt cân nhiều, người bệnh > 50 tuổi là dấu hiệu cảnh báo ung thư thực quản hoặc vùng tâm vị cho đến khi có bằng chứng ngược lại. Cần nhập viện để truyền dịch tĩnh mạch và nhịn ăn (NPO) nếu bệnh nhân nuốt khó hoàn toàn.
 
 **Bước 2: Thu thập dữ kiện tập trung**
@@ -29,8 +34,8 @@ last_updated: "2026-07-28"
     - _Thực quản:_ Hỏi bệnh nhân vị trí cảm thấy thức ăn bị kẹt (thường ở vùng sau xương ức).
 - **Đặc điểm thức ăn:** Nuốt khó chỉ với thức ăn đặc hay cả đặc lẫn lỏng?.
 - **Diễn tiến:** Triệu chứng xuất hiện từng đợt (ngắt quãng) hay tiến triển ngày càng nặng dần?.
-- **Triệu chứng kèm theo:** Tiền sử ợ nóng/trào ngược dạ dày thực quản (GERD) lâu năm, nôn ra máu, đau ngực, hoặc đau khi nuốt (odynophagia).
-- **Khám lâm sàng:** Khám thần kinh chi tiết (đặc biệt các dấu hiệu hành não), khám vùng hầu họng, tìm hạch cổ to, tuyến giáp to, gan to, và đánh giá tình trạng sụt cân, suy dinh dưỡng.
+- **Triệu chứng kèm theo:** Tiền sử ợ nóng/trào ngược dạ dày thực quản (GERD) lâu năm, [[Nôn ói|nôn]] ra máu, [[Đau ngực]], hoặc đau khi nuốt (odynophagia).
+- **Khám lâm sàng:** Khám thần kinh chi tiết (đặc biệt các dấu hiệu hành não), khám vùng hầu họng, tìm hạch cổ to, tuyến giáp to, [[Gan]] to, và đánh giá tình trạng sụt cân, suy dinh dưỡng.
 
 **Bước 3: Lập danh sách chẩn đoán phân biệt (differential diagnosis)**
 
@@ -38,8 +43,8 @@ last_updated: "2026-07-28"
 |:--|:--|:--|
 |**Hầu họng (Thần kinh - Cơ)**|Đột quỵ, Parkinson, Nhược cơ (Myasthenia Gravis)|Khó bắt đầu nuốt, ho/sặc, trào ngược lên mũi, có các dấu hiệu thần kinh khu trú.|
 |**Thực quản cơ học (Chỉ khó nuốt thức ăn đặc)**|Hẹp do loét (Peptic stricture), Ung thư thực quản, Vòng Schatzki|Vòng Schatzki (ngắt quãng); Ung thư (tiến triển nhanh, >50 tuổi, sụt cân); Hẹp do loét (tiến triển chậm, có ợ nóng).|
-|**Thực quản vận động (Khó nuốt cả đặc & lỏng)**|Co thắt tâm vị (Achalasia), Xơ cứng bì, Co thắt thực quản lan tỏa|Co thắt tâm vị (tiến triển, không ợ nóng); Xơ cứng bì (tiến triển, có ợ nóng); Co thắt lan tỏa (ngắt quãng, kèm đau ngực).|
-|**Dị vật / Viêm thực quản**|Kẹt cục thịt, Viêm thực quản tăng bạch cầu ái toan, Nấm Candida|Khởi phát cấp tính, chảy nước dãi (dị vật); Nuốt đau, suy giảm miễn dịch (Candida).|
+|**Thực quản vận động (Khó nuốt cả đặc & lỏng)**|Co thắt tâm vị (Achalasia), Xơ cứng bì, Co thắt thực quản lan tỏa|Co thắt tâm vị (tiến triển, không ợ nóng); Xơ cứng bì (tiến triển, có ợ nóng); Co thắt lan tỏa (ngắt quãng, kèm [[Đau ngực]]).|
+|**Dị vật / Viêm thực quản**|Kẹt cục thịt, Viêm thực quản tăng [[Bạch cầu]] ái toan, Nấm Candida|Khởi phát cấp tính, chảy nước dãi (dị vật); Nuốt đau, suy giảm miễn dịch (Candida).|
 |**Chèn ép từ bên ngoài**|Túi thừa Zenker, Bướu cổ lớn, Ung thư phế quản|Khối phồng ở cổ, gurgling (tiếng ọc ọc), trào ngược thức ăn chưa tiêu hóa khi nằm (Túi thừa Zenker).|
 
 **Bước 4. Biện luận lâm sàng (clinical reasoning)**
@@ -50,7 +55,7 @@ last_updated: "2026-07-28"
 **Bước 5. Cận lâm sàng hợp lý**
 
 - **Nội soi dạ dày thực quản (EGD):** Là xét nghiệm ưu tiên hàng đầu (đặc biệt ở người có dấu hiệu "cờ đỏ") vì cho phép quan sát trực tiếp, sinh thiết tổn thương ác tính và can thiệp điều trị (nong hẹp).
-- **Chụp X-quang thực quản cản quang (Barium swallow):** Hữu ích để đánh giá nuốt khó vùng hầu họng (bằng videofluoroscopy), khi nghi ngờ co thắt tâm vị, hoặc để chẩn đoán túi thừa Zenker ở vùng cổ.
+- **[[[[X-quang]]|Chụp X-quang]] thực quản cản quang (Barium swallow):** Hữu ích để đánh giá nuốt khó vùng hầu họng (bằng videofluoroscopy), khi nghi ngờ co thắt tâm vị, hoặc để chẩn đoán túi thừa Zenker ở vùng cổ.
 - **Đo áp lực thực quản (Manometry):** Được chỉ định khi EGD và X-quang bình thường nhưng triệu chứng vẫn tồn tại, giúp chẩn đoán các rối loạn vận động như co thắt tâm vị (achalasia) hoặc co thắt thực quản lan tỏa.
 - **Chụp CT cổ/ngực:** Để đánh giá mức độ xâm lấn của ung thư, u trung thất hoặc các khối chèn ép từ bên ngoài.
 

@@ -2,12 +2,13 @@ const fs = require('fs');
 const path = require('path');
 
 const VAULT_DIR = path.join(__dirname, '../knowledge-vault');
-const OUT_FILE = path.join(VAULT_DIR, 'search-index.json');
+const OUT_FILE = path.join(VAULT_DIR, '_resources/data/search-index.json');
 
 function walkSync(dir, filelist = []) {
   if (!fs.existsSync(dir)) return filelist;
   const files = fs.readdirSync(dir);
   for (const file of files) {
+    if (file.startsWith('.') || file.startsWith('_')) continue;
     const filepath = path.join(dir, file);
     const stat = fs.statSync(filepath);
     if (stat.isDirectory()) {

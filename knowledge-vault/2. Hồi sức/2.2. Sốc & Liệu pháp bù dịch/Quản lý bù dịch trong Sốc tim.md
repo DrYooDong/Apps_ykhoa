@@ -1,30 +1,34 @@
 ---
 title: "Quản lý bù dịch trong Sốc tim"
-specialty: "Hồi sức"
-tags: ["Hồi sức", "Sốc - Bù dịch"]
-last_updated: "2026-07-28"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
 ---
-**I. Nguyên Tắc Cốt Lõi Về Bù Dịch Trong Sốc Tim**
 
-Khác với sốc giảm thể tích hay sốc nhiễm trùng, liệu pháp truyền dịch **không phải là phương pháp điều trị đầu tay** đối với sốc tim (đặc biệt là sốc tim trái). Việc truyền dịch ở bệnh nhân sốc tim tiềm ẩn nguy cơ rất cao làm trầm trọng thêm tình trạng suy tim, tăng áp lực đổ đầy và dẫn đến phù phổi cấp. 
+**I. Nguyên Tắc Cốt Lõi Về Bù Dịch Trong [[Sốc]] [[Tim]]**
 
-Việc xử trí dịch trong sốc tim cần được tiếp cận cá thể hóa, thận trọng từng trường hợp cụ thể và phải luôn song hành với đánh giá huyết động liên tục cũng như theo dõi chặt chẽ dấu hiệu sung huyết.
+Khác với [[Sốc]] giảm thể tích hay [[Sốc nhiễm khuẩn|sốc nhiễm trùng]], liệu pháp truyền dịch **không phải là phương pháp điều trị đầu tay** đối với sốc tim (đặc biệt là sốc tim trái). Việc truyền dịch ở bệnh nhân sốc tim tiềm ẩn nguy cơ rất cao làm trầm trọng thêm tình trạng suy tim, tăng áp lực đổ đầy và dẫn đến [[Phù]] [[Phổi]] cấp. 
+
+Việc xử trí dịch trong sốc tim cần được tiếp cận cá thể hóa, [[Thận]] trọng từng trường hợp cụ thể và phải luôn song hành với đánh giá huyết động liên tục cũng như theo dõi chặt chẽ dấu hiệu sung huyết.
 
 **II. Chỉ Định Và Chống Chỉ Định Bù Dịch Trong Sốc Tim**
 
 **1. Chỉ định thử nghiệm bù dịch (Fluid Challenge):**
-*   Bệnh nhân có tình trạng giảm tưới máu nhưng **không có** dấu hiệu quá tải thể tích hoặc sung huyết (không có tĩnh mạch cổ nổi, không có phù phổi, không có tràn dịch màng phổi, không có phù ngoại vi).
-*   Nghi ngờ hoặc xác định sốc do nhồi máu cơ tim thất phải hoặc tắc nghẽn đường ra thất trái động.
-*   *Lưu ý ở sốc tắc nghẽn (như chèn ép tim cấp):* Dịch chỉ được truyền hết sức thận trọng như một biện pháp tạm thời để duy trì hồi lưu tĩnh mạch trước khi giải áp màng ngoài tim dứt điểm, không được làm trì hoãn can thiệp.
+*   Bệnh nhân có tình trạng giảm tưới máu nhưng **không có** dấu hiệu quá tải thể tích hoặc sung huyết (không có tĩnh mạch cổ nổi, không có [[Phù]] [[Phổi]], không có tràn dịch màng phổi, không có phù ngoại vi).
+*   Nghi ngờ hoặc xác định sốc do nhồi máu [[Tim|cơ tim]] thất phải hoặc tắc nghẽn đường ra thất trái động.
+*   *Lưu ý ở sốc tắc nghẽn (như chèn ép tim cấp):* Dịch chỉ được truyền hết sức [[Thận]] trọng như một biện pháp tạm thời để duy trì hồi lưu tĩnh mạch trước khi giải áp màng ngoài tim dứt điểm, không được làm trì hoãn can thiệp.
 
 **2. Chống chỉ định bù dịch:**
 *   Có các dấu hiệu sung huyết rõ trên lâm sàng (phù phổi, tràn dịch màng phổi, phù ngoại vi). Trong trường hợp này, liệu pháp lợi tiểu (diuresis) hoặc siêu lọc cần được ưu tiên xem xét.
-*   Có bằng chứng siêu âm hoặc huyết động của sung huyết tim phải nặng (CVP > 10 mmHg, thất phải giãn lớn hơn thất trái).
+*   Có bằng chứng [[Siêu âm]] hoặc huyết động của sung huyết tim phải nặng (CVP > 10 mmHg, thất phải giãn lớn hơn thất trái).
 
 **III. Phác Đồ Đánh Giá Và Bù Dịch Cụ Thể**
 
 **1. Đánh giá trước khi bù dịch:**
-*   **Siêu âm tim (Echocardiography):** Là công cụ hình ảnh đầu tay để đánh giá phân loại sốc, đánh giá chức năng tâm thu thất trái/thất phải và tình trạng huyết động.
+*   **[[Siêu âm|Siêu âm tim]] (Echocardiography):** Là công cụ hình ảnh đầu tay để đánh giá phân loại sốc, đánh giá chức năng tâm thu thất trái/thất phải và tình trạng huyết động.
 *   **Đánh giá khả năng đáp ứng bù dịch (Fluid Responsiveness):** Không sử dụng các chỉ số tĩnh (như CVP) để quyết định truyền dịch. Phải sử dụng các chỉ số động (Dynamic parameters). Ưu tiên sử dụng nghiệm pháp nâng chân thụ động (Passive Leg Raise - PLR) hoặc nghiệm pháp tắc nghẽn cuối thì thở ra (EEOT) kết hợp với đo lường sự thay đổi của cung lượng tim (CO) hoặc thể tích nhát bóp (SV).
 *   **Đánh giá sức dung nạp dịch (Fluid Tolerance):** Đánh giá nguy cơ gây hại của dịch thông qua áp lực đổ đầy, siêu âm phổi (tìm đường B báo hiệu phù phổi kẽ), nước phổi ngoài mạch máu (EVLW), chỉ số tính thấm mạch phổi (PVPI), hoặc thang điểm siêu âm tĩnh mạch sung huyết (VExUS).
 
@@ -44,7 +48,7 @@ Việc xử trí dịch trong sốc tim cần được tiếp cận cá thể h�
 
 **1. Y lệnh theo dõi huyết động & Xét nghiệm:**
 *   Thiết lập đường truyền tĩnh mạch trung tâm (CVC) và catheter động mạch (Arterial line) để theo dõi huyết áp xâm lấn liên tục.
-*   Mục tiêu huyết áp trung bình (MAP): $\ge 65$ mmHg. Có thể cá thể hóa mức MAP cao hơn nếu bệnh nhân có tiền sử tăng huyết áp mạn tính.
+*   Mục tiêu huyết áp trung bình (MAP): $\ge 65$ mmHg. Có thể cá thể hóa mức MAP cao hơn nếu bệnh nhân có tiền sử [[Tăng huyết áp]] mạn tính.
 *   Đo lactate máu động mạch mỗi 2 - 4 giờ cho đến khi ổn định huyết động.
 *   Theo dõi lượng nước tiểu liên tục qua sonde tiểu.
 
@@ -71,4 +75,4 @@ Nếu bệnh nhân tiến triển sang sốc kháng trị (SCAI Stage D hoặc E
 1. ESICM. *ESICM guidelines on circulatory shock and hemodynamic monitoring 2025*. European Society of Intensive Care Medicine; 2025.
 2. Intensive Care NSW. *Management of cardiogenic shock: Clinical practice guide*. Agency for Clinical Innovation; April 2026.
 3. ESICM. *ESICM 2025 Guideline on Fluid Therapy in Adult Critically Ill Patients (Part 2)*. European Society of Intensive Care Medicine; 2025.
-4. KSCCM. *Early management of adult sepsis and septic shock: Korean clinical practice guidelines*. Acute and Critical Care; 2024.
+4. KSCCM. *Early management of adult [[Nhiễm trùng huyết|sepsis]] and septic shock: Korean clinical practice guidelines*. Acute and Critical Care; 2024.

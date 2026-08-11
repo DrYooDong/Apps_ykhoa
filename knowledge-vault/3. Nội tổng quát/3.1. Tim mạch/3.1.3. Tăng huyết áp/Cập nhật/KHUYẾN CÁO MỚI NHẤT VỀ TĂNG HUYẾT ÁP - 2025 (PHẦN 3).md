@@ -1,10 +1,21 @@
-# Tóm tắt Khuyến cáo Mới nhất về Tăng Huyết áp (Phần 3)
+---
+title: "KHUYẾN CÁO MỚI NHẤT VỀ TĂNG HUYẾT ÁP - 2025 (PHẦN 3)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
+# Tóm tắt Khuyến cáo Mới nhất về [[Tăng huyết áp]] (Phần 3)
 
 ## 1. Nội Dung Chi Tiết Khuyến Cáo (Chuyên Sâu)
 
-### Chuyên Sâu Các Nguyên Nhân Tăng Huyết Áp Thứ Phát (Secondary Hypertension)
+### Chuyên Sâu Các Nguyên Nhân [[Tăng huyết áp]] Thứ Phát (Secondary Hypertension)
 
-Tăng huyết áp thứ phát có thể được xác định ở khoảng **5% đến 25%** số bệnh nhân người lớn. Việc phát hiện và điều trị đúng nguyên nhân gốc rễ giúp cải thiện đáng kể khả năng kiểm soát huyết áp và giảm thiểu nguy cơ tim mạch.
+Tăng huyết áp thứ phát có thể được xác định ở khoảng **5% đến 25%** số bệnh nhân người lớn. Việc phát hiện và điều trị đúng nguyên nhân gốc rễ giúp cải thiện đáng kể khả năng kiểm soát huyết áp và giảm thiểu nguy [[[[Tim]]|cơ tim]] mạch.
 
 #### Các dấu hiệu lâm sàng gợi ý cần tầm soát tăng huyết áp thứ phát:
 
@@ -15,7 +26,7 @@ Tăng huyết áp thứ phát có thể được xác định ở khoảng **5% 
 - Tổn thương cơ quan đích không tương xứng với mức độ hoặc thời gian bị tăng huyết áp.
 - Hạ kali máu tự phát hoặc hạ kali máu nghiêm trọng khởi kích do dùng thuốc lợi tiểu.
 - Có biểu hiện buồn ngủ ban ngày, ngáy nhiều hoặc nghẹt thở khi ngủ (gợi ý hội chứng ngưng thở khi ngủ).
-- Phát hiện tình cờ khối u tuyến thượng thận trên chẩn đoán hình ảnh.
+- Phát hiện tình cờ khối u tuyến thượng [[Thận]] trên chẩn đoán hình ảnh.
 
 #### Cường Aldosterone Nguyên Phát (Primary Aldosteronism):
 
@@ -25,13 +36,13 @@ Tăng huyết áp thứ phát có thể được xác định ở khoảng **5% 
 - **Quy trình tầm soát**:
     1. _Đo hoạt độ_: Khuyến cáo sử dụng xét nghiệm nồng độ aldosterone huyết tương (PAC), hoạt độ renin huyết tương (PRA), và tỷ lệ aldosterone/renin (ARR) làm bước sàng lọc ban đầu. Ngưỡng ARR dương tính thường là $\ge 30$ khi PAC đạt ít nhất $10 \text{ ng/dL}$ và renin bị ức chế (\(<1 \text{ ng/mL/h}\)).
     2. _Quản lý thuốc trước tầm soát_: Khuyến cáo **tiếp tục hầu hết các thuốc hạ áp** (ngoại trừ thuốc kháng thụ thể mineralocorticoid - MRA như spironolactone hay eplerenone phải dừng ít nhất **4 đến 6 tuần**) trước khi lấy máu xét nghiệm ARR ban đầu để giảm thiểu rào cản trì hoãn. Nếu ARR nghi ngờ, có thể tạm thời thay thế bằng các thuốc ít ảnh hưởng đến hệ renin như chẹn kênh calci nhóm non-dihydropyridine hoặc thuốc chẹn alpha ngoại vi trong 2 đến 4 tuần trước khi đo lại.
-    3. _Xác chẩn_: Thực hiện nghiệm pháp truyền dịch muối đẳng trương tĩnh mạch (IV saline infusion) hoặc nghiệm pháp nạp muối đường uống (oral sodium loading). Nếu có bằng chứng u một bên tuyến thượng thận sản xuất aldosterone quá mức, chỉ định phẫu thuật cắt tuyến thượng thận nội soi một bên (laparoscopic adrenalectomy) được ưu tiên chọn lựa. Nếu u cả hai bên hoặc không thể phẫu thuật, điều trị duy trì bằng thuốc MRA là chỉ định bắt buộc.
+    3. _Xác chẩn_: Thực hiện nghiệm pháp truyền dịch muối đẳng trương tĩnh mạch (IV saline infusion) hoặc nghiệm pháp nạp muối đường uống (oral sodium loading). Nếu có bằng chứng u một bên tuyến thượng [[Thận]] sản xuất aldosterone quá mức, chỉ định phẫu thuật cắt tuyến thượng thận nội soi một bên (laparoscopic adrenalectomy) được ưu tiên chọn lựa. Nếu u cả hai bên hoặc không thể phẫu thuật, điều trị duy trì bằng thuốc MRA là chỉ định bắt buộc.
 
 #### Hẹp Động Mạch Thận (Renal Artery Stenosis):
 
 - Narrowing động mạch thận có ý nghĩa huyết động khi lòng mạch bị hẹp **>75%**. Nguyên nhân chủ yếu là do xơ vữa động mạch (chiếm 90%) và loạn sản cơ sợi (fibromuscular dysplasia - FMD, phổ biến ở phụ nữ trẻ tuổi dưới 50 tuổi).
-- **Khuyến cáo điều trị hẹp do xơ vữa**: Không có thử nghiệm lâm sàng ngẫu nhiên (RCT) nào chứng minh việc tái thông mạch máu thận (nong mạch hoặc đặt stent) mang lại lợi ích lâm sàng vượt trội hơn so với điều trị nội khoa tối ưu đơn thuần. Phương pháp tiếp cận tối ưu được khuyến cáo là **điều trị nội khoa tích cực** bằng hệ ức chế RAAS (ACEi hoặc ARB), statin cường độ cao, kiểm soát đường huyết, chống kết tập tiểu cầu và ngừng thuốc lá.
-- **Chỉ định can thiệp tái thông**: Chỉ hợp lý đối với các trường hợp điều trị nội khoa thất bại (như tăng huyết áp kháng trị thực sự, suy giảm chức năng thận tiến triển không giải thích được, hoặc xuất hiện cơn suy tim cấp/phù phổi cấp huyết động đột ngột - flash pulmonary edema).
+- **Khuyến cáo điều trị hẹp do xơ vữa**: Không có thử nghiệm lâm sàng ngẫu nhiên (RCT) nào chứng minh việc tái thông mạch máu thận (nong mạch hoặc đặt stent) mang lại lợi ích lâm sàng vượt trội hơn so với điều trị nội khoa tối ưu đơn thuần. Phương pháp tiếp cận tối ưu được khuyến cáo là **điều trị nội khoa tích cực** bằng hệ ức chế RAAS (ACEi hoặc ARB), statin cường độ cao, kiểm soát đường huyết, chống kết tập [[Tiểu cầu]] và ngừng thuốc lá.
+- **Chỉ định can thiệp tái thông**: Chỉ hợp lý đối với các trường hợp điều trị nội khoa thất bại (như tăng huyết áp kháng trị thực sự, suy giảm chức năng thận tiến triển không giải thích được, hoặc xuất hiện cơn suy tim cấp/[[Phù]] [[Phổi]] cấp huyết động đột ngột - flash pulmonary edema).
 - **Đối với loạn sản cơ sợi (FMD)**: Thủ thuật nong mạch thận bằng bong bóng (angioplasty) không đặt stent có thể giúp cải thiện kiểm soát huyết áp hoặc thậm chí chữa khỏi hoàn toàn tăng huyết áp.
 
 #### Hội Chứng Ngưng Thở Khi Ngủ Do Tắc Nghẽn (Obstructive Sleep Apnea - OSA):
@@ -52,16 +63,16 @@ Tăng huyết áp thứ phát có thể được xác định ở khoảng **5% 
 - **Thuộc tài liệu**: _jones-et-al-2025-2025-aha-acc-aanp-aapa-abc-accp-acpm-ags-ama-aspc-nma-pcna-sgim-guideline-for-the-prevention-detection.pdf_
 - **Mô tả**: Bảng tổng hợp các nguyên nhân thứ phát thường gặp, chỉ định tầm soát cận lâm sàng và xét nghiệm xác chẩn:
     - **OSA (25%-50%)**: Ngáy, nghẹt thở khi ngủ, THA kháng trị $\rightarrow$ Tầm soát bằng bảng câu hỏi STOP-Bang hoặc Berlin $\rightarrow$ Xác chẩn bằng đa ký giấc ngủ (polysomnography) hoặc đo đa ký hô hấp tại nhà.
-    - **Bệnh thận mạn CKD (14%)**: Đái tháo đường, tiểu máu, creatinine máu cao $\rightarrow$ Đo điện giải đồ, creatinine máu (eGFR), phân tích nước tiểu, siêu âm thận.
+    - **Bệnh thận mạn CKD (14%)**: Đái tháo đường, tiểu máu, creatinine máu cao $\rightarrow$ Đo điện giải đồ, creatinine máu (eGFR), phân tích nước tiểu, [[Siêu âm]] thận.
     - **Cường Aldosterone nguyên phát (5%-25%)**: THA kháng trị, hạ kali máu tự phát hoặc do lợi diệu, u thượng thận tình cờ $\rightarrow$ Đo điện giải, ARR (tỷ lệ aldosterone/renin) $\rightarrow$ Xác chẩn bằng nghiệm pháp truyền dịch muối 4 giờ hoặc nạp muối đường uống 3 ngày, chụp CT thượng thận và lấy mẫu máu tĩnh mạch thận (AVS).
-    - **Do thuốc hoặc rượu cồn (2%-20%)**: Sử dụng NSAID, corticoid, cam thảo, thuốc tránh thai, rượu bia, decongestant... $\rightarrow$ Sàng lọc bằng hỏi tiền sử dùng thuốc, xét nghiệm độc chất nước tiểu.
-    - **Hẹp động mạch thận xơ vữa (0.1%-5%)**: THA kháng trị, phù phổi cấp huyết động $\rightarrow$ Tầm soát bằng siêu âm duplex Doppler động mạch thận, chụp cộng hưởng từ mạch máu (MRA) hoặc CT mạch máu động mạch thận $\rightarrow$ Xác chẩn bằng chụp mạch thận cản quang số hóa xóa nền (DSA).
+    - **Do thuốc hoặc rượu cồn (2%-20%)**: Sử dụng NSAID, [[Corticoid]], cam thảo, thuốc tránh thai, rượu bia, decongestant... $\rightarrow$ Sàng lọc bằng hỏi tiền sử dùng thuốc, xét nghiệm độc chất nước tiểu.
+    - **Hẹp động mạch thận xơ vữa (0.1%-5%)**: THA kháng trị, [[Phù]] [[Phổi]] cấp huyết động $\rightarrow$ Tầm soát bằng [[Siêu âm]] duplex Doppler động mạch thận, [[[[MRI]]|chụp cộng hưởng từ]] mạch máu (MRA) hoặc CT mạch máu động mạch thận $\rightarrow$ Xác chẩn bằng chụp mạch thận cản quang số hóa xóa nền (DSA).
 
 ---
 
 ### Quản Lý Tăng Huyết Áp Ở Bệnh Nhân Bệnh Mạch Máu Não (Cerebrovascular Disease)
 
-#### Xuất huyết não tự phát cấp tính (Acute Spontaneous Intracerebral Hemorrhage - ICH):
+#### [[Xuất huyết]] não tự phát cấp tính (Acute Spontaneous Intracerebral Hemorrhage - ICH):
 
 - **Bệnh nhân nhập viện với SBP từ 150 đến 220 mm Hg**: Khuyến cáo hạ huyết áp tâm thu ngay lập tức xuống mức **130 đến <140 mm Hg** và duy trì tối thiểu trong vòng 7 ngày đầu sau đột quỵ để hạn chế thể tích khối máu tụ lan rộng, cải thiện kết cục chức năng thần kinh lâu dài và chất lượng cuộc sống (COR 2a, LOE A).
 - **Cảnh báo an toàn**: **Phải ngừng ngay các thuốc hạ áp nếu SBP giảm xuống <130 mm Hg** vì mức huyết áp quá thấp này đã được chứng minh lâm sàng là gây hại cho người bệnh.
@@ -71,7 +82,7 @@ Tăng huyết áp thứ phát có thể được xác định ở khoảng **5% 
 #### Đột quỵ nhồi máu não cấp tính (Acute Ischemic Stroke):
 
 - **Tưới máu não vùng tranh tối tranh sáng (Penumbra)**: Cơ chế tự điều hòa lưu lượng máu não bị suy giảm nặng nề tại vùng nhu mô não bị thiếu máu. Do đó tưới máu tại đây phụ thuộc hoàn toàn vào áp lực tưới máu hệ thống.
-- **Đối với bệnh nhân đủ tiêu chuẩn dùng thuốc tiêu sợi huyết (IV Thrombolytics)**: Bắt buộc phải hạ huyết áp xuống mức **<185/110 mm Hg** trước khi bắt đầu truyền thuốc tiêu sợi huyết (như alteplase) và duy trì huyết áp ổn định dưới mức **<180/105 mm Hg** trong suốt 24 giờ đầu sau đó để phòng ngừa biến chứng xuất huyết chuyển dạng đe dọa tính mạng (COR 1, LOE B-NR).
+- **Đối với bệnh nhân đủ tiêu chuẩn dùng thuốc tiêu sợi huyết (IV Thrombolytics)**: Bắt buộc phải hạ huyết áp xuống mức **<185/110 mm Hg** trước khi bắt đầu truyền thuốc tiêu sợi huyết (như alteplase) và duy trì huyết áp ổn định dưới mức **<180/105 mm Hg** trong suốt 24 giờ đầu sau đó để phòng ngừa biến chứng [[Xuất huyết]] chuyển dạng đe dọa tính mạng (COR 1, LOE B-NR).
 - **Đối với bệnh nhân can thiệp lấy huyết khối cơ học (EVT)**: Khuyến cáo duy trì huyết áp **\(\le\) 180/105 mm Hg** trong suốt quá trình thủ thuật và 24 giờ đầu sau can thiệp (COR 2a, LOE B-NR).
 - **Chống chỉ định quan trọng sau khi tái thông mạch máu thành công**: Ở những bệnh nhân đã được tái thông mạch máu lớn thành công bằng can thiệp cơ học EVT, **việc cố ý hạ SBP xuống dưới <140 mm Hg trong vòng 24 đến 72 giờ đầu sau tái thông có thể làm trầm trọng thêm tình trạng thiếu máu não và làm xấu đi kết cục chức năng thần kinh dài hạn** (COR 3 Harm, LOE A). Các nghiên cứu lâm sàng lớn như ENCHANTED-2 MT và OPTIMAL-BP đều bị dừng sớm do ghi nhận tỷ lệ tàn phế và tử vong tăng đáng kể ở nhóm hạ huyết áp tích cực xuống dưới 120 mm Hg hoặc 140 mm Hg.
 - **Bệnh nhân không điều trị tiêu sợi huyết hay can thiệp EVT**:

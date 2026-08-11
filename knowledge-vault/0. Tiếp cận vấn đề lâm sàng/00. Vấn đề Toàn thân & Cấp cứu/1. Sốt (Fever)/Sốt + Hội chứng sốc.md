@@ -1,14 +1,18 @@
 ---
 title: "Sốt + Hội chứng sốc"
-specialty: "Tiếp cận vấn đề lâm sàng"
-tags: ["Tiếp cận vấn đề lâm sàng", "Vấn đề Toàn thân & Cấp cứu", "Sốt (Fever)"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
-Dưới đây là bài học tiếp cận lâm sàng cho vấn đề Sốt kết hợp Hội chứng sốc, được biên soạn bám sát các tài liệu nguồn đã cung cấp.
 
-# Tiếp cận lâm sàng cho vấn đề/triệu chứng [SỐT + HỘI CHỨNG SỐC]
+Dưới đây là bài học tiếp cận lâm sàng cho vấn đề [[Sốt]] kết hợp Hội chứng [[Sốc]], được biên soạn bám sát các tài liệu nguồn đã cung cấp.
 
-Hội chứng sốc (bao gồm tụt huyết áp và giảm tưới máu mô/cơ quan đích) đi kèm với sốt là một tình trạng cấp cứu nội - ngoại khoa cực kỳ nghiêm trọng, đe dọa tính mạng tính bằng phút. Ở bệnh nhân có sốt, sốc thường là hậu quả của phản ứng viêm hệ thống toàn thân do nhiễm trùng (sốc nhiễm khuẩn), hoặc do mất dịch/thoát huyết tương nghiêm trọng (sốc sốt xuất huyết Dengue).
+# Tiếp cận lâm sàng cho vấn đề/triệu chứng [[[Sốt]] + HỘI CHỨNG [[Sốc]]]
+
+Hội chứng sốc (bao gồm tụt huyết áp và giảm tưới máu mô/cơ quan đích) đi kèm với sốt là một tình trạng cấp cứu nội - ngoại khoa cực kỳ nghiêm trọng, đe dọa tính mạng tính bằng phút. Ở bệnh nhân có sốt, sốc thường là hậu quả của phản ứng viêm hệ thống toàn thân do nhiễm trùng ([[Sốc nhiễm khuẩn]]), hoặc do mất dịch/thoát huyết tương nghiêm trọng (sốc sốt [[Xuất huyết]] Dengue).
 
 Các bước tiếp cận lâm sàng (Clinical approach)
 
@@ -17,51 +21,51 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 - Nhận diện các _dấu hiệu "cờ đỏ" (red flags)_ chỉ điểm tình trạng suy tuần hoàn hô hấp nguy kịch:
     - Huyết động không ổn định: Huyết áp tâm thu < 90 mmHg (ở người lớn), kẹt huyết áp (hiệu áp $\le$ 20 mmHg), hoặc không đo được huyết áp,,.
     - Mạch: Nhanh, nhỏ, khó bắt (> 120 lần/phút ở người lớn) hoặc nhịp chậm/không đều trong giai đoạn muộn,,.
-    - Dấu hiệu tưới máu mô kém: Đầu chi lạnh, vã mồ hôi, da nổi vân tím, thời gian đổ đầy mao mạch (CRT) kéo dài > 3 giây,,. Lưu ý: Trong sốc nhiễm khuẩn giai đoạn sớm, bệnh nhân có thể có biểu hiện **sốc ấm** (warm shock) với chi ấm và mạch nảy mạnh,,.
-    - Rối loạn tri giác: Lơ mơ, vật vã, lú lẫn, kích thích hoặc hôn mê sâu,,.
+    - Dấu hiệu tưới máu mô kém: Đầu chi lạnh, vã mồ hôi, da nổi vân tím, thời gian đổ đầy mao mạch (CRT) kéo dài > 3 giây,,. Lưu ý: Trong [[Sốc nhiễm khuẩn]] giai đoạn sớm, bệnh nhân có thể có biểu hiện **sốc ấm** (warm shock) với chi ấm và mạch nảy mạnh,,.
+    - [[[[Hôn mê]]|Rối loạn tri giác]]: Lơ mơ, vật vã, lú lẫn, kích thích hoặc hôn mê sâu,,.
     - Thiểu niệu hoặc vô niệu (nước tiểu < 400 ml/24 giờ hoặc giảm < 1 mg/kg/giờ),,.
 
 ### Bước 2: Thu thập dữ kiện tập trung
 
-- **Mô tả triệu chứng:** Xác định tính chất sốt (sốt cao rét run, sốt liên tục). Khai thác thời điểm xuất hiện các triệu chứng suy sụp tuần hoàn. Tìm kiếm các ổ nhiễm trùng nguyên phát gợi ý (ho/khó thở, đau bụng, tiểu buốt, tiêu chảy, đau đầu/cổ cứng),,.
+- **Mô tả triệu chứng:** Xác định tính chất sốt (sốt cao rét run, sốt liên tục). Khai thác thời điểm xuất hiện các triệu chứng suy sụp tuần hoàn. Tìm kiếm các ổ nhiễm trùng nguyên phát gợi ý (ho/[[Khó thở]], [[Đau bụng]], tiểu buốt, [[Tiêu chảy]], đau đầu/cổ cứng),,.
 - **Yếu tố nguy cơ:**
-    - Khai thác cực kỳ kỹ lưỡng **yếu tố dịch tễ**: Đang trong vùng dịch Sốt xuất huyết Dengue, dịch Não mô cầu, Tả, hoặc sốt rét,.
-    - Tiền sử suy giảm miễn dịch, sử dụng Corticoid kéo dài, phẫu thuật gần đây, đặt các ống thông (catheter) mạch máu hoặc ống thông tiểu,.
+    - Khai thác cực kỳ kỹ lưỡng **yếu tố dịch tễ**: Đang trong vùng dịch Sốt [[Xuất huyết]] Dengue, dịch Não mô cầu, Tả, hoặc sốt rét,.
+    - Tiền sử suy giảm miễn dịch, sử dụng [[Corticoid]] kéo dài, phẫu thuật gần đây, đặt các ống thông (catheter) mạch máu hoặc ống thông tiểu,.
 - **Khám lâm sàng/thực thể:**
     - _Đánh giá toàn trạng:_ ABCDE (Đường thở - Hô hấp - Tuần hoàn - Thần kinh - Toàn thân),.
     - _Da niêm mạc:_ Tìm các ban xuất huyết, chấm xuất huyết (Dengue), ban hoại tử hình sao (não mô cầu), hoặc các ổ mủ/loét ngoài da,,.
-    - _Khám bụng:_ Đánh giá gan to, đau tức vùng gan (dấu hiệu cảnh báo sốc Dengue), phản ứng thành bụng để loại trừ nguyên nhân nhiễm trùng ổ bụng,,.
+    - _Khám bụng:_ Đánh giá [[Gan]] to, đau tức vùng [[Gan]] (dấu hiệu cảnh báo sốc Dengue), phản ứng thành bụng để loại trừ nguyên nhân nhiễm trùng ổ bụng,,.
 
 ### Bước 3: Lập danh sách chẩn đoán phân biệt (Differential diagnosis)
 
 |Nhóm nguyên nhân|Ví dụ bệnh / hội chứng|Đặc điểm lâm sàng chính|
 |---|---|---|
-|**Sốc Phân bố (Distributive shock)**|**Sốc nhiễm khuẩn (Septic shock)Sốc phản vệ (có bội nhiễm)**|Sốt cao rét run, mạch nảy mạnh/chi ấm ở giai đoạn sớm, lú lẫn, nhịp thở nhanh, _nguồn nhiễm trùng rõ_,,.Có thể sốt nếu do tiêm kháng sinh/vắc-xin, nổi mày đay, khó thở rít, tụt huyết áp nhanh,.|
-|**Sốc Giảm thể tích (Hypovolemic shock)**|**Sốc Sốt xuất huyết Dengue****Sốc do Tiêu chảy cấp / Tả**|Dịch tễ Dengue, sốt cao $\ge$ 2 ngày, _kẹt huyết áp, gan to, xuất huyết_, HCT tăng cao,,.Sốt, nôn, _tiêu chảy ồ ạt_, mắt trũng sâu, nếp véo da mất rất chậm,.|
-|**Sốc Tim / Tắc nghẽn**|**Viêm cơ tim / Chèn ép tim do mủ**|Sốt, khó thở, tĩnh mạch cổ nổi, tiếng ngựa phi T3, _phổi có ran ẩm_, chi lạnh,,.|
+|**Sốc Phân bố (Distributive shock)**|**Sốc nhiễm khuẩn (Septic shock)Sốc phản vệ (có bội nhiễm)**|Sốt cao rét run, mạch nảy mạnh/chi ấm ở giai đoạn sớm, lú lẫn, nhịp [[Khó thở|thở nhanh]], _nguồn nhiễm trùng rõ_,,.Có thể sốt nếu do tiêm [[Kháng sinh]]/[[Vắc-xin]], nổi mày đay, khó thở rít, tụt huyết áp nhanh,.|
+|**Sốc Giảm thể tích (Hypovolemic shock)**|**Sốc Sốt xuất huyết Dengue****Sốc do [[Tiêu chảy]] cấp / Tả**|Dịch tễ Dengue, sốt cao $\ge$ 2 ngày, _kẹt huyết áp, gan to, xuất huyết_, HCT tăng cao,,.Sốt, [[Nôn ói|nôn]], _tiêu chảy ồ ạt_, mắt trũng sâu, nếp véo da mất rất chậm,.|
+|**Sốc [[Tim]] / Tắc nghẽn**|**Viêm [[Tim|cơ tim]] / Chèn ép tim do mủ**|Sốt, khó thở, tĩnh mạch cổ nổi, tiếng ngựa phi T3, _phổi có ran ẩm_, chi lạnh,,.|
 
 ### Bước 4. Biện luận lâm sàng (Clinical reasoning)
 
-- **Tỷ trọng/độ ưu tiên:** Khi bệnh nhân có sốt đi kèm với tụt huyết áp hoặc mạch nhanh nhỏ, bắt buộc phải hồi sức tức thời và đặt `==Sốc nhiễm khuẩn==` cùng `==Sốc Sốt xuất huyết Dengue==` lên hàng đầu để can thiệp truyền dịch và kháng sinh sinh tử,,.
+- **Tỷ trọng/độ ưu tiên:** Khi bệnh nhân có sốt đi kèm với tụt huyết áp hoặc mạch nhanh nhỏ, bắt buộc phải hồi sức tức thời và đặt `==Sốc nhiễm khuẩn==` cùng `==Sốc Sốt xuất huyết Dengue==` lên hàng đầu để can thiệp truyền dịch và [[Kháng sinh]] sinh tử,,.
 - **Điểm ủng hộ:**
     - Nếu bệnh nhân có sốt, nhịp thở nhanh, nhịp tim nhanh nhưng **chi ấm, mạch nảy mạnh (bounding pulses)** và thời gian đổ đầy mao mạch nhanh: Đây là dấu hiệu kinh điển của `==Sốc nhiễm khuẩn==` (sốc giãn mạch/sốc ấm) do đáp ứng viêm hệ thống,,.
     - Nếu bệnh nhân sống trong vùng dịch tễ, sốt cao 3-5 ngày bắt đầu hạ sốt nhưng lại xuất hiện **vật vã, lừ đừ, chi lạnh ẩm, huyết áp kẹt $\le$ 20 mmHg** và có chấm xuất huyết: Chẩn đoán `==Sốc Sốt xuất huyết Dengue==` do thoát huyết tương ồ ạt,,.
     - Nếu trẻ nhỏ có sốt cao, ban xuất huyết trên da kèm theo cổ cứng hoặc thóp phồng: Gợi ý sốc do `==Nhiễm khuẩn huyết Não mô cầu==`,.
-    - Nếu sốt kèm theo tĩnh mạch cổ nổi, nhịp ngựa phi và phổi có ran: Cần cẩn trọng với `==Sốc tim==` (Cardiogenic shock) do viêm cơ tim hoặc viêm nội tâm mạc nhiễm khuẩn, việc bù dịch ồ ạt có thể gây phù phổi cấp,.
+    - Nếu sốt kèm theo tĩnh mạch cổ nổi, nhịp ngựa phi và [[Phổi]] có ran: Cần cẩn trọng với `==Sốc tim==` (Cardiogenic shock) do viêm cơ tim hoặc viêm nội tâm mạc nhiễm khuẩn, việc bù dịch ồ ạt có thể gây [[Phù]] [[Phổi]] cấp,.
 
 ### Bước 5. Cận lâm sàng hợp lý
 
 - **Xét nghiệm máu cơ bản:**
     - Lactate máu: Rất quan trọng, Lactate > 2 mmol/L (hoặc > 4 mmol/L) là tiêu chuẩn để chẩn đoán mức độ nặng của sốc và giảm tưới máu mô,,.
-    - Công thức máu: Hematocrit (HCT tăng cao chứng tỏ cô đặc máu trong Dengue; HCT giảm chứng tỏ mất máu), Bạch cầu (tăng hoặc giảm sâu), Tiểu cầu (thường giảm trong nhiễm trùng huyết và Dengue),,,.
-    - CRP và Procalcitonin (> 0.5 ng/mL): Đánh giá tình trạng nhiễm khuẩn,.
-    - Chức năng tạng: Ure, Creatinin, AST, ALT, Khí máu động mạch (đánh giá toan chuyển hóa), Đông máu toàn bộ (PT, PTT, Fibrinogen),,.
+    - Công thức máu: Hematocrit (HCT tăng cao chứng tỏ cô đặc máu trong Dengue; HCT giảm chứng tỏ mất máu), [[Bạch cầu]] (tăng hoặc giảm sâu), [[Tiểu cầu]] (thường giảm trong [[Nhiễm trùng huyết]] và Dengue),,,.
+    - [[CRP]] và Procalcitonin (> 0.5 ng/mL): Đánh giá tình trạng nhiễm khuẩn,.
+    - Chức năng tạng: Ure, Creatinin, AST, ALT, [[Khí máu động mạch]] (đánh giá toan chuyển hóa), Đông máu toàn bộ (PT, PTT, Fibrinogen),,.
 - **Vi sinh / Huyết thanh học:**
     - **Cấy máu:** Cực kỳ quan trọng, _bắt buộc phải lấy trước khi tiêm liều kháng sinh đầu tiên_ ở bệnh nhân nghi ngờ sốc nhiễm khuẩn. Chỉ khoảng 1/3 các ca sốc nhiễm khuẩn có cấy máu dương tính,.
-    - Soi/cấy các dịch khác (nước tiểu, đờm, dịch não tủy) tùy ổ nhiễm trùng nguyên phát,. Test nhanh NS1 hoặc IgM/IgG Dengue.
-- **Chẩn đoán hình ảnh:** X-quang phổi, Siêu âm tim (đánh giá chức năng co bóp và tràn dịch màng tim), Siêu âm ổ bụng (tìm tràn dịch màng bụng/màng phổi hoặc áp xe),.
+    - Soi/cấy các dịch khác (nước tiểu, đờm, [[Dịch nào tủy|dịch não tủy]]) tùy ổ nhiễm trùng nguyên phát,. Test nhanh NS1 hoặc IgM/IgG Dengue.
+- **Chẩn đoán hình ảnh:** [[X-quang]] phổi, [[[[Siêu âm]]|Siêu âm tim]] (đánh giá chức năng co bóp và tràn dịch màng tim), Siêu âm ổ bụng (tìm tràn dịch màng bụng/màng phổi hoặc áp xe),.
 
-> 🔴 [LỆNH TRÍCH XUẤT BẢNG DỮ LIỆU & LƯU ĐỒ CHẨN ĐOÁN]: **[Symptoms of severe sepsis] - trích từ [Critical Care Medicine An Algorithmic Approach 2023.pdf]**
+> 🔴 [LỆNH TRÍCH XUẤT BẢNG DỮ LIỆU & LƯU ĐỒ CHẨN ĐOÁN]: **[Symptoms of severe [[Nhiễm trùng huyết|sepsis]]] - trích từ [Critical Care Medicine An Algorithmic Approach 2023.pdf]**
 > 
 > - Symptoms of severe sepsis1,2:
 > - Chills and rigors
@@ -84,14 +88,14 @@ Các bước tiếp cận lâm sàng (Clinical approach)
 ### Bước 6. Hướng xử trí ban đầu
 
 - **Hồi sức / Cấp cứu:** Đây là can thiệp ưu tiên số một.
-    - Đường thở & Hô hấp: Cung cấp oxy lưu lượng cao (qua mask hoặc gọng mũi), chuẩn bị đặt nội khí quản nếu bệnh nhân có rối loạn tri giác (GCS $\le$ 8) hoặc suy hô hấp nặng,,.
+    - Đường thở & Hô hấp: Cung cấp oxy lưu lượng cao (qua mask hoặc gọng mũi), chuẩn bị đặt nội khí quản nếu bệnh nhân có rối loạn tri giác (GCS $\le$ 8) hoặc [[Suy hô hấp]] nặng,,.
     - Tuần hoàn (Bù dịch): Nằm đầu thấp. Thiết lập ngay 1-2 đường truyền tĩnh mạch lớn (hoặc truyền trong xương ở trẻ em). Truyền dịch nhanh (Bolus) bằng dung dịch đẳng trương (Ringer Lactate hoặc Natri Clorid 0.9%) với tốc độ 20 ml/kg trong vòng 15-30 phút,,,,.
     - Vận mạch: Trong sốc nhiễm khuẩn, nếu huyết áp trung bình (MAP) vẫn < 65 mmHg hoặc Lactate $\ge$ 2 mmol/L sau khi đã bù đủ dịch, cần sử dụng thuốc vận mạch (Adrenalin, Noradrenalin hoặc Dopamin),,.
 - **Điều trị đặc hiệu:**
     - **Sốc nhiễm khuẩn:** Phải chỉ định kháng sinh phổ rộng đường tĩnh mạch _ngay lập tức_ (trong vòng 1-3 giờ đầu tiên) ngay sau khi lấy máu cấy. Lựa chọn kháng sinh dựa trên ổ nhiễm trùng nghi ngờ (VD: Cephalosporin thế hệ 3 + Vancomycin),,.
 - **Xử trí triệu chứng / Can thiệp:**
     - Kiểm soát ổ nhiễm khuẩn (source control): Dẫn lưu ổ mủ, rút catheter nhiễm trùng, hoặc can thiệp phẫu thuật ngoại khoa nếu viêm phúc mạc/áp xe,.
-    - Hỗ trợ cơ quan: Truyền các chế phẩm máu nếu có rối loạn đông máu, điều chỉnh toan kiềm, điện giải và hạ đường huyết.
+    - Hỗ trợ cơ quan: Truyền các chế phẩm máu nếu có rối loạn đông máu, điều chỉnh toan kiềm, điện giải và [[Hạ đường huyết]].
 
 > 🔴 [LỆNH TRÍCH XUẤT PHÁC ĐỒ & BẢNG LIỀU LƯỢNG]: **[Điều trị sốc sốt xuất huyết Dengue nặng] - trích từ [HƢỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ BỆNH TRẺ EM (Cập nhật năm 2020)]** 4.3.2. Điều trị sốc sốt xuất huyết Dengue nặng Trường hợp người bệnh vào viện trong tình trạng sốc nặng thì xử trí khẩn trương.
 > 

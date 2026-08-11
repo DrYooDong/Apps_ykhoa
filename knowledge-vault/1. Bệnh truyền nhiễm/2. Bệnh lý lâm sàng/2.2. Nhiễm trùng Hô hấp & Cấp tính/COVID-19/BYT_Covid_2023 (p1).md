@@ -1,3 +1,14 @@
+---
+title: "BYT_Covid_2023 (p1)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC: CHẨN ĐOÁN, BIỂU HIỆN LÂM SÀNG VÀ CẬN LÂM SÀNG BỆNH COVID-19 (PHẦN 1)
 
 ---
@@ -12,7 +23,7 @@
     - _Chỉ đạo biên soạn:_ GS.TS. Trần Văn Thuấn (Thứ trưởng Bộ Y tế).
     - _Chủ biên:_ GS.TS. Nguyễn Gia Binh (Chủ tịch Hội Hồi sức cấp cứu và chống độc Việt Nam).
     - _Đồng chủ biên:_ PGS.TS. Lương Ngọc Khuê (Cục trưởng Cục Quản lý Khám, chữa bệnh - Bộ Y tế).
-    - _Thành viên tham gia:_ Ban biên soạn quy tụ nhiều chuyên gia đầu ngành từ các đơn vị lớn như GS.TS. Nguyễn Văn Kính (Chủ tịch Hội truyền nhiễm Việt Nam), GS.TS. Ngô Quý Châu (Chủ tịch Hội Hô hấp Việt Nam), GS.TS. Trần Hữu Dàng (Chủ tịch Hội Nội tiết - Đái tháo đường Việt Nam), PGS.TS. Trần Trọng Hải (Chủ tịch Hội Phục hồi chức năng Việt Nam), cùng lãnh đạo, chuyên gia các bệnh viện lớn (Bạch Mai, Chợ Rẫy, Nhi Trung ương, Phổi Trung ương, Bệnh nhiệt đới Trung ương...).
+    - _Thành viên tham gia:_ Ban biên soạn quy tụ nhiều chuyên gia đầu ngành từ các đơn vị lớn như GS.TS. Nguyễn Văn Kính (Chủ tịch Hội truyền nhiễm Việt Nam), GS.TS. Ngô Quý Châu (Chủ tịch Hội Hô hấp Việt Nam), GS.TS. Trần Hữu Dàng (Chủ tịch Hội Nội tiết - Đái tháo đường Việt Nam), PGS.TS. Trần Trọng Hải (Chủ tịch Hội Phục hồi chức năng Việt Nam), cùng lãnh đạo, chuyên gia các bệnh viện lớn (Bạch Mai, Chợ Rẫy, Nhi Trung ương, [[Phổi]] Trung ương, Bệnh nhiệt đới Trung ương...).
 
 ---
 
@@ -92,7 +103,7 @@
 **Bảng 1: Thang điểm siêu âm phổi (Lung Ultrasound Scoring - LUSS)**  
 _Thuộc tài liệu: "Hướng dẫn chẩn đoán và điều trị COVID-19" ban hành kèm theo Quyết định số 2671/QĐ-BYT ngày 26 tháng 6 năm 2023 của Bộ trưởng Bộ Y tế (nằm trong file `BYT_COVID_2023.pdf`)._
 
-|Điểm số|Đặc điểm hình ảnh siêu âm phổi|Ý nghĩa tổn thương sinh lý bệnh|
+|Điểm số|Đặc điểm hình ảnh [[Siêu âm]] [[Phổi]]|Ý nghĩa tổn thương sinh lý bệnh|
 |:--|:--|:--|
 |**LUSS 0**|Đường màng phổi bình thường, các đường A vẫn còn bảo tồn, có từ 1 - 2 đường B.|Phổi bình thường hoặc tổn thương tối thiểu.|
 |**LUSS 1**|Đường màng phổi dày và không đều, có > 2 đường B nhưng rời rạc, các đường A bị gián đoạn.|Tổn thương mô kẽ mức độ nhẹ.|
@@ -106,10 +117,10 @@ _**Giá trị tiên lượng của LUSS:** Tổng điểm LUSS trên 12 vùng ph
 ### Phân Loại Mức Độ Lâm Sàng và Chỉ Định Điều Trị Hô Hấp Theo Bậc Thang
 
 - **Người nhiễm không triệu chứng:** Không có triệu chứng lâm sàng; nhịp thở < 22 lần/phút, SpO2 > 96% khi thở khí trời.
-- **Mức độ nhẹ:** Có triệu chứng lâm sàng nhưng không có biểu hiện viêm phổi hay khó thở, SpO2 > 96% khi thở khí trời, X-quang phổi bình thường hoặc tổn thương ít.
-- **Mức độ trung bình (Viêm phổi):** Thở nhanh **22 - 30 lần/phút**, khó thở khi vận động nhẹ, **SpO2 từ 94 - 96%** khi thở khí phòng. X-quang phổi có tổn thương < 50%.
+- **Mức độ nhẹ:** Có triệu chứng lâm sàng nhưng không có biểu hiện viêm phổi hay [[Khó thở]], SpO2 > 96% khi thở khí trời, [[X-quang]] phổi bình thường hoặc tổn thương ít.
+- **Mức độ trung bình (Viêm phổi):** [[Khó thở|Thở nhanh]] **22 - 30 lần/phút**, khó thở khi vận động nhẹ, **SpO2 từ 94 - 96%** khi thở khí phòng. [[X-quang]] phổi có tổn thương < 50%.
 - **Mức độ nặng (Viêm phổi nặng):** Khó thở ngay cả khi nghỉ, thở co kéo cơ hô hấp phụ, **nhịp thở > 30 lần/phút, SpO2 < 94%** khi thở khí phòng. Tổn thương trên X-quang/CT phổi > 50%.
-- **Mức độ nguy kịch:** Suy hô hấp cấp nguy kịch (ARDS), thở gắng sức nhiều, thở bất thường hoặc chậm < 10 lần/phút, SpO2 < 92% dù đã thở oxy lưu lượng cao, ý thức giảm/hôn mê, hoặc có sốc, suy đa cơ quan.
+- **Mức độ nguy kịch:** [[[[Suy hô hấp]]|Suy hô hấp cấp]] nguy kịch (ARDS), thở gắng sức nhiều, thở bất thường hoặc chậm < 10 lần/phút, SpO2 < 92% dù đã thở oxy lưu lượng cao, ý thức giảm/[[Hôn mê]], hoặc có [[Sốc]], suy đa cơ quan.
 
 ---
 
@@ -120,11 +131,11 @@ _Thuộc tài liệu: "Hướng dẫn chẩn đoán và điều trị COVID-19" 
 |:--|:--|:--|:--|:--|
 |**Bão hòa oxy**|SpO2 \(\ge\) 96%|SpO2 94 - 96% (thở khí trời)|SpO2 < 94% (thở khí trời)|Đủ tiêu chuẩn ARDS hoặc cần cung cấp oxy > 6 l/phút để duy trì SpO2 > 92%|
 |**Nhịp thở (lần/phút)**|12 - 21|22 - 30|> 30|Thở nhanh hơn hoặc chậm < 10 lần/phút hoặc ngừng thở|
-|**Huyết áp và nhịp tim**|> 90/60 mmHg (không thấp hơn mức bình thường)|> 90/60 mmHg (không thấp hơn mức bình thường)|> 90/60 mmHg (không thấp hơn mức bình thường)|HATT < 90mmHg; HATB < 65mmHg hoặc có dấu hiệu sốc (CRT > 3 giây, nổi bông da, chi lạnh, thiểu niệu)|
-|**Tri giác**|Tỉnh táo|Tỉnh táo|Bứt rứt, mệt mỏi|Lú lẫn, lơ mơ, hôn mê|
-|**Nơi điều trị phù hợp**|Cách ly, theo dõi tại nhà|Phòng bệnh nặng cần theo dõi sát (HDU) của bệnh viện|Phòng hồi sức/Khoa hồi sức tích cực (ICU)|Khoa hồi sức tích cực (ICU)|
+|**Huyết áp và nhịp [[Tim]]**|> 90/60 mmHg (không thấp hơn mức bình thường)|> 90/60 mmHg (không thấp hơn mức bình thường)|> 90/60 mmHg (không thấp hơn mức bình thường)|HATT < 90mmHg; HATB < 65mmHg hoặc có dấu hiệu [[Sốc]] (CRT > 3 giây, nổi bông da, chi lạnh, thiểu niệu)|
+|**Tri giác**|Tỉnh táo|Tỉnh táo|Bứt rứt, mệt mỏi|Lú lẫn, lơ mơ, [[Hôn mê]]|
+|**Nơi điều trị [[Phù]] hợp**|Cách ly, theo dõi tại nhà|Phòng bệnh nặng cần theo dõi sát (HDU) của bệnh viện|Phòng hồi sức/Khoa hồi sức tích cực (ICU)|Khoa hồi sức tích cực (ICU)|
 
-_**Dấu hiệu cảnh báo chuyển độ nặng (từ Nhẹ lên Trung bình/Nặng):** SpO2 giảm dưới 96%, khó thở khi vận động, sốt cao liên tục không đáp ứng thuốc hạ sốt, có các chỉ số viêm tăng cao đột ngột (CRP > 125mg/L, Ferritin > 500ng/mL, D-dimer > 1000ng/mL, Lymphocyte < 1K/uL)._
+_**Dấu hiệu cảnh báo chuyển độ nặng (từ Nhẹ lên Trung bình/Nặng):** SpO2 giảm dưới 96%, khó thở khi vận động, [[[[Sốt]]|sốt cao]] liên tục không đáp ứng thuốc hạ sốt, có các chỉ số viêm tăng cao đột ngột ([[CRP]] > 125mg/L, Ferritin > 500ng/mL, D-dimer > 1000ng/mL, Lymphocyte < 1K/uL)._
 
 ---
 

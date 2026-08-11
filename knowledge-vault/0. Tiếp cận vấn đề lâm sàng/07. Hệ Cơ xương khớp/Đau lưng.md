@@ -1,9 +1,14 @@
 ---
 title: "Đau lưng"
-specialty: "Tiếp cận vấn đề lâm sàng"
-tags: ["Tiếp cận vấn đề lâm sàng", "Hệ Cơ xương khớp"]
-last_updated: "2026-07-28"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - he-co-quan/co-xuong-khop
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
 ---
+
 # 1. Cơ chế bệnh sinh 
 Đau lưng là một triệu chứng cực kỳ phổ biến, có thể phát sinh từ cấu trúc giải phẫu tại chỗ hoặc là biểu hiện của các bệnh lý toàn thân, nội tạng. Các cơ chế sinh lý bệnh chính gây đau lưng bao gồm,:
 
@@ -19,27 +24,27 @@ last_updated: "2026-07-28"
     - _Cơ học không đặc hiệu (Nonspecific/Mechanical):_ Chiếm 95% trường hợp, không có nguyên nhân giải phẫu rõ ràng, bao gồm bong gân, căng cơ, thoái hóa đĩa đệm, trượt đốt sống.
     - _Có nguyên nhân cơ xương khớp đặc hiệu:_ Bệnh lý rễ thần kinh do thoát vị đĩa đệm, hẹp ống sống, hội chứng chùm đuôi ngựa.
 - **Đau lưng do bệnh lý hệ thống tại cột sống (Systemic disease):**
-    - _Khối u ác tính:_ Đa u tủy, ung thư di căn (vú, phổi, tuyến tiền liệt), u nguyên phát.
+    - _Khối u ác tính:_ Đa u tủy, ung thư di căn (vú, [[Phổi]], tuyến tiền liệt), u nguyên phát.
     - _Nhiễm trùng:_ Viêm tủy xương đốt sống (osteomyelitis), áp xe ngoài màng cứng, viêm đĩa đệm.
     - _Gãy xương:_ Gãy lún đốt sống do loãng xương.
     - _Viêm khớp:_ Viêm cột sống dính khớp, viêm khớp vảy nến, viêm khớp phản ứng.
-- **Đau lưng do bệnh lý nội tạng (Visceral disease):** Phình động mạch chủ bụng (AAA), viêm tuyến tiền liệt, viêm vùng chậu (PID), sỏi thận, viêm đài bể thận, viêm tụy, viêm túi mật,,.
+- **Đau lưng do bệnh lý nội tạng (Visceral disease):** Phình động mạch chủ bụng (AAA), viêm tuyến tiền liệt, viêm vùng chậu (PID), sỏi [[Thận]], viêm đài bể [[Thận]], viêm tụy, viêm túi mật,,.
 
 **3. Các bước tiếp cận lâm sàng (clinical approach)**
 
 **Bước 1: Ổn định ban đầu – sàng lọc nguy cơ** Việc quan trọng nhất là phải nhận diện các "dấu hiệu đỏ" (red flags) cảnh báo các nguyên nhân nguy hiểm,,,,:
 
-- **Hội chứng chùm đuôi ngựa (Cauda equina syndrome):** Là một cấp cứu ngoại khoa. Các dấu hiệu bao gồm: bí tiểu (dấu hiệu rất nhạy), mất cảm giác vùng yên ngựa, yếu hai chân, mất phản xạ gân xương chi dưới, và đau thần kinh tọa hai bên. Bệnh nhân cần được chụp MRI khẩn cấp và phẫu thuật giải ép ngay lập tức,,.
-- **Chèn ép tủy/Áp xe ngoài màng cứng/Viêm tủy xương:** Cảnh giác ở bệnh nhân có sốt, suy giảm miễn dịch, sử dụng ma túy đường tiêm tĩnh mạch, hoặc có nhiễm trùng da/đường tiểu gần đây,.
+- **Hội chứng chùm đuôi ngựa (Cauda equina syndrome):** Là một cấp cứu ngoại khoa. Các dấu hiệu bao gồm: bí tiểu (dấu hiệu rất nhạy), mất cảm giác vùng yên ngựa, yếu hai chân, mất phản xạ gân xương chi dưới, và đau thần kinh tọa hai bên. Bệnh nhân cần được chụp [[MRI]] khẩn cấp và phẫu thuật giải ép ngay lập tức,,.
+- **Chèn ép tủy/Áp xe ngoài màng cứng/Viêm tủy xương:** Cảnh giác ở bệnh nhân có [[Sốt]], suy giảm miễn dịch, sử dụng ma túy đường tiêm tĩnh mạch, hoặc có nhiễm trùng da/đường tiểu gần đây,.
 - **Bệnh lý ác tính tiềm ẩn:** Tiền sử ung thư, sụt cân không rõ nguyên nhân, tuổi > 50, đau không giảm khi nghỉ ngơi và đau nhiều về đêm,,,,.
-- **Phình động mạch chủ bụng (AAA) vỡ/bóc tách:** Đau lưng dữ dội, tụt huyết áp, sờ thấy khối đập theo nhịp mạch ở bụng, đặc biệt ở người có yếu tố nguy cơ tim mạch,,.
+- **Phình động mạch chủ bụng (AAA) vỡ/bóc tách:** Đau lưng dữ dội, tụt huyết áp, sờ thấy khối đập theo nhịp mạch ở bụng, đặc biệt ở người có yếu tố nguy [[[[Tim]]|cơ tim]] mạch,,.
 
 **Bước 2: Thu thập dữ kiện tập trung**
 
 - **Bệnh sử:**
     - _Hoàn cảnh khởi phát:_ Có chấn thương không? (nghĩ đến gãy xương, trượt đốt sống). Đau xuất hiện đột ngột hay từ từ?.
     - _Kiểu đau:_ Đau kiểu cơ học thường giảm khi nằm nghỉ. Đau thần kinh tọa do thoát vị đĩa đệm đau lan xuống chân qua quá gối, tăng lên khi ho, hắt hơi, rặn hoặc ngồi lâu,,. Đau do hẹp ống sống (đau cách hồi thần kinh) tăng lên khi đứng hoặc đi bộ, giảm khi ngồi hoặc cúi gập người về phía trước,.
-    - _Yếu tố nguy cơ:_ Tuổi > 70, nữ giới, dùng corticosteroid, tiền sử loãng xương gợi ý gãy lún đốt sống,,. Đau lưng kiểu viêm (khởi phát < 45 tuổi, kéo dài > 3 tháng, cứng khớp buổi sáng, cải thiện khi vận động, không giảm khi nghỉ) gợi ý viêm cột sống dính khớp,,.
+    - _Yếu tố nguy cơ:_ Tuổi > 70, nữ giới, dùng [[Corticoid|corticosteroid]], tiền sử loãng xương gợi ý gãy lún đốt sống,,. Đau lưng kiểu viêm (khởi phát < 45 tuổi, kéo dài > 3 tháng, cứng khớp buổi sáng, cải thiện khi vận động, không giảm khi nghỉ) gợi ý viêm cột sống dính khớp,,.
 - **Khám lâm sàng:**
     - _Khám thần kinh:_ Tìm các dấu hiệu teo cơ, yếu cơ, mất phản xạ, giảm cảm giác theo phân bố rễ thần kinh (dermatome).
     - _Nghiệm pháp nâng chân thẳng (Straight Leg Raising - SLR):_ Bệnh nhân nằm ngửa, thụ động nâng chân thẳng. Nghiệm pháp dương tính khi tái tạo cảm giác đau rễ thần kinh (lan xuống chân) ở góc 30-60 độ, giúp phát hiện chèn ép rễ L5/S1,,. Nghiệm pháp SLR chéo (nâng chân lành gây đau chân bệnh) rất đặc hiệu cho thoát vị đĩa đệm,,.
@@ -54,9 +59,9 @@ last_updated: "2026-07-28"
 |**Cơ học / Không đặc hiệu**|Căng cơ, Bong gân, Thoái hóa cột sống|Đau khu trú, không có triệu chứng thần kinh hay toàn thân. Thường tự khỏi sau 4-6 tuần,.|
 |**Chèn ép rễ thần kinh**|Thoát vị đĩa đệm (L4-L5, L5-S1)|Đau thần kinh tọa (sciatica), nghiệm pháp SLR dương tính, giảm phản xạ gót (S1), yếu duỗi ngón cái (L5),,.|
 |**Chèn ép ống sống**|Hẹp ống sống thắt lưng (Spinal stenosis)|Đau cách hồi thần kinh (neurogenic claudication), giảm đau khi ngồi/cúi người, dáng đi chân đế rộng, thường ở người > 65 tuổi,,.|
-|**Ác tính / Hệ thống**|Ung thư di căn (vú, phổi, tiền liệt tuyến), Đa u tủy|Tuổi > 50, sụt cân, tiền sử ung thư, đau không giảm khi nghỉ, đau nhiều về đêm,,.|
-|**Nhiễm trùng**|Viêm tủy xương, Áp xe ngoài màng cứng|Sốt, lạnh run, đau chói tại chỗ cột sống, tiền sử tiêm chích ma túy hoặc nhiễm trùng gần đây,,.|
-|**Chấn thương / Xương**|Gãy lún đốt sống do loãng xương|Người già, nữ giới, dùng corticosteroid kéo dài, có thể có hoặc không có tiền sử chấn thương rõ ràng,,.|
+|**Ác tính / Hệ thống**|Ung thư di căn (vú, [[Phổi]], tiền liệt tuyến), Đa u tủy|Tuổi > 50, sụt cân, tiền sử ung thư, đau không giảm khi nghỉ, đau nhiều về đêm,,.|
+|**Nhiễm trùng**|Viêm tủy xương, Áp xe ngoài màng cứng|[[Sốt]], lạnh run, đau chói tại chỗ cột sống, tiền sử tiêm chích ma túy hoặc nhiễm trùng gần đây,,.|
+|**Chấn thương / Xương**|Gãy lún đốt sống do loãng xương|Người già, nữ giới, dùng [[Corticoid|corticosteroid]] kéo dài, có thể có hoặc không có tiền sử chấn thương rõ ràng,,.|
 |**Mạch máu**|Bệnh động mạch ngoại biên (PAD)|Đau bắp chân khi đi lại, giảm khi đứng nghỉ, mạch mu chân/chày sau yếu, ABI giảm (cần phân biệt với hẹp ống sống),.|
 
 **Bước 4. Biện luận lâm sàng (clinical reasoning)**
@@ -68,10 +73,10 @@ last_updated: "2026-07-28"
 
 **Bước 5. Cận lâm sàng hợp lý**
 
-- **Nguyên tắc chung:** Tuyệt đối không chỉ định chụp X-quang hoặc MRI thường quy cho đau lưng cấp tính (< 4 tuần) nếu không có các dấu hiệu đỏ, vì hình ảnh học không giúp cải thiện kết cục lâm sàng,,. Khoảng 40-80% người bình thường có phình đĩa đệm trên MRI và >90% người trên 50 tuổi có thoái hóa đĩa đệm không triệu chứng,.
+- **Nguyên tắc chung:** Tuyệt đối không chỉ định [[[[X-quang]]|chụp X-quang]] hoặc [[MRI]] thường quy cho đau lưng cấp tính (< 4 tuần) nếu không có các dấu hiệu đỏ, vì hình ảnh học không giúp cải thiện kết cục lâm sàng,,. Khoảng 40-80% người bình thường có phình đĩa đệm trên MRI và >90% người trên 50 tuổi có thoái hóa đĩa đệm không triệu chứng,.
 - **X-quang cột sống:** Chỉ định khi nghi ngờ gãy xương lún (người già, loãng xương, dùng steroid), chấn thương, hoặc viêm cột sống dính khớp,,.
 - **MRI cột sống:** Là xét nghiệm tiêu chuẩn vàng, bắt buộc chỉ định khẩn cấp nếu nghi ngờ hội chứng chùm đuôi ngựa, áp xe ngoài màng cứng, viêm tủy xương, hoặc ung thư di căn. MRI cũng được chỉ định trước khi can thiệp phẫu thuật cho thoát vị đĩa đệm/hẹp ống sống không đáp ứng điều trị nội khoa,,,,.
-- **Xét nghiệm máu:** Xét nghiệm tốc độ lắng máu (ESR) và CRP rất hữu ích để sàng lọc nhiễm trùng hoặc ung thư (ESR $\ge$ 100 mm/h có độ đặc hiệu >99% cho bệnh lý ác tính/nhiễm trùng),. Xét nghiệm HLA-B27 nếu nghi ngờ viêm cột sống dính khớp.
+- **Xét nghiệm máu:** Xét nghiệm tốc độ lắng máu (ESR) và [[CRP]] rất hữu ích để sàng lọc nhiễm trùng hoặc ung thư (ESR $\ge$ 100 mm/h có độ đặc hiệu >99% cho bệnh lý ác tính/nhiễm trùng),. Xét nghiệm HLA-B27 nếu nghi ngờ viêm cột sống dính khớp.
 - **Đo điện cơ (EMG / NCS):** Hữu ích để xác định và định khu tổn thương rễ thần kinh (radiculopathy) kéo dài trên 3-4 tuần khi lâm sàng và MRI không tương xứng,,.
 
 **Bước 6. Hướng xử trí ban đầu**
@@ -79,7 +84,7 @@ last_updated: "2026-07-28"
 - **Đau lưng cấp tính (Cơ học/Nonspecific):**
     - Tiên lượng rất tốt (75-90% hồi phục trong 1 tháng),.
     - Khuyến khích bệnh nhân duy trì các hoạt động bình thường trong giới hạn dung nạp được. **Tránh nằm bất động tại giường** quá 2 ngày vì có thể làm kéo dài thời gian đau,,.
-    - Sử dụng thuốc giảm đau: NSAIDs là lựa chọn đầu tay. Có thể kết hợp thuốc giãn cơ (muscle relaxants). Acetaminophen thường không hiệu quả trong các thử nghiệm lâm sàng đối với đau lưng cấp. Chườm nóng có lợi trong giai đoạn cấp,,.
+    - Sử dụng thuốc giảm đau: NSAIDs là lựa chọn đầu tay. Có thể kết hợp thuốc giãn cơ (muscle relaxants). [[[[Paracetamol]]|Acetaminophen]] thường không hiệu quả trong các thử nghiệm lâm sàng đối với đau lưng cấp. Chườm nóng có lợi trong giai đoạn cấp,,.
 - **Đau lưng mạn tính / Bán cấp:** NSAIDs, thuốc chống trầm cảm ba vòng, gabapentin (đặc biệt nếu có đau rễ thần kinh), hoặc tramadol. Các liệu pháp vận động (vật lý trị liệu), liệu pháp nhận thức - hành vi (CBT), và châm cứu có bằng chứng mang lại hiệu quả,,,.
 - **Bệnh lý rễ thần kinh (Thoát vị đĩa đệm):** Bắt đầu bằng điều trị bảo tồn (NSAIDs, gabapentin, có thể thêm một đợt ngắn corticoid uống). Tiêm corticoid ngoài màng cứng có thể giảm đau tạm thời. Phẫu thuật (Cắt bỏ đĩa đệm) được chỉ định nếu có suy giảm vận động thần kinh tiến triển, hội chứng chùm đuôi ngựa, hoặc đau không thể chịu đựng nổi kéo dài trên 6-8 tuần,,.
 - **Hẹp ống sống:** Thường tiến triển chậm. Vật lý trị liệu (các bài tập gập lưng như đạp xe thường dễ chịu hơn đi bộ), NSAIDs, gabapentin. Phẫu thuật giải ép khi đau tăng dần và không đáp ứng điều trị nội khoa,,,.

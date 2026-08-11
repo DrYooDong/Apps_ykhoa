@@ -1,7 +1,14 @@
 ---
+title: "Nhóm thuốc Kháng virus hô hấp (Cúm, SARS-CoV-2) & Các virus khác"
+type: disease
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Duocly
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+
 (Lưu ý: Các tài liệu y khoa được cung cấp tập trung nhiều vào dịch tễ học, các thử nghiệm lâm sàng bản lề và cơ chế đề kháng qua đột biến. Để hoàn thiện bức tranh Dược động học/Dược lực học (PK/PD) và tương tác thuốc phục vụ thực hành lâm sàng, tôi đã bổ sung các kiến thức y khoa chuyên ngành bên ngoài và ghi chú rõ ràng để bạn có thể tham chiếu độc lập).
 
 ### 1. Cơ chế tác dụng và Phổ kháng virus (MOA & Spectrum)
@@ -15,13 +22,13 @@ tags:
     - **Molnupiravir:** Cũng nhắm vào RdRp nhưng hoạt động bằng cơ chế "gây đột biến ngẫu nhiên" (lethal mutagenesis), chèn các lỗi sao chép vào bộ gen virus cho đến khi virus không thể tồn tại.
 - **Ribavirin (Kháng virus phổ rộng):**
     - _(Ngoài tài liệu: Là một guanosine analogue, ức chế tổng hợp mRNA của virus)._
-    - _Phổ lâm sàng:_ Trong tài liệu ghi nhận Ribavirin được sử dụng để điều trị Viêm gan E mạn tính ở bệnh nhân ghép tạng. Thuốc cũng được dùng (thường phối hợp với immune globulin) trong các ca nhiễm _Human metapneumovirus (hMPV)_ thể nặng hoặc phối hợp với Interferon điều trị Hội chứng hô hấp Trung Đông (MERS-CoV).
+    - _Phổ lâm sàng:_ Trong tài liệu ghi nhận Ribavirin được sử dụng để điều trị Viêm [[Gan]] E mạn tính ở bệnh nhân ghép tạng. Thuốc cũng được dùng (thường phối hợp với immune globulin) trong các ca nhiễm _Human metapneumovirus (hMPV)_ thể nặng hoặc phối hợp với Interferon điều trị Hội chứng hô hấp Trung Đông (MERS-CoV).
 
 ### 2. Dược động học/Dược lực học (PK/PD) ứng dụng
 
 - **Nirmatrelvir/Ritonavir và nghệ thuật "Boosting":**
-    - Như đã đề cập ở nhóm Protease Inhibitor (PI), sự hiện diện của Ritonavir đóng vai trò ức chế mạnh mẽ enzyme CYP3A4 tại gan và ruột. Nhờ đó, Nirmatrelvir (chuyển hóa qua CYP3A4) đạt được nồng độ ức chế (Ctrough) cao và duy trì đủ lâu trong huyết tương.
-    - _(Ngoài tài liệu: Bệnh nhân suy thận có eGFR từ 30-59 mL/phút bắt buộc phải giảm một nửa liều Nirmatrelvir (chỉ uống 1 viên 150mg + 1 viên Ritonavir 100mg) mỗi 12 giờ. Chống chỉ định khi eGFR < 30 mL/phút hoặc suy gan nặng)._
+    - Như đã đề cập ở nhóm Protease Inhibitor (PI), sự hiện diện của Ritonavir đóng vai trò ức chế mạnh mẽ enzyme CYP3A4 tại [[Gan]] và ruột. Nhờ đó, Nirmatrelvir (chuyển hóa qua CYP3A4) đạt được nồng độ ức chế (Ctrough) cao và duy trì đủ lâu trong huyết tương.
+    - _(Ngoài tài liệu: Bệnh nhân suy [[Thận]] có eGFR từ 30-59 mL/phút bắt buộc phải giảm một nửa liều Nirmatrelvir (chỉ uống 1 viên 150mg + 1 viên Ritonavir 100mg) mỗi 12 giờ. Chống chỉ định khi eGFR < 30 mL/phút hoặc suy gan nặng)._
 - **Chiến lược tối ưu thời gian "Cửa sổ vàng" (Window of opportunity):**
     - Đặc tính chung của các thuốc kháng virus hô hấp cấp tính là hiệu quả phụ thuộc cực kỳ lớn vào thời điểm khởi trị. Remdesivir, Molnupiravir và Nirmatrelvir/Ritonavir đều chứng minh hiệu quả giảm tỷ lệ nhập viện và tử vong rõ rệt nhất khi được cấp phát sớm (trong vòng 5 ngày đầu khởi phát triệu chứng) cho bệnh nhân ngoại trú có nguy cơ cao.
     - Đối với bệnh nhân nhiễm cúm, Oseltamivir mang lại lợi ích lâm sàng cao nhất khi được dùng trong vòng 48 giờ đầu. Việc điều trị trễ ở các bệnh nhân nhiễm cúm A(H7N9) làm kéo dài thời gian thải trừ virus và tăng tỷ lệ tử vong.
@@ -32,7 +39,7 @@ tags:
     - **Cúm A(H7N9):** Sử dụng Oseltamivir có thể dẫn đến sự xuất hiện của các chủng đột biến kháng thuốc (điển hình là đột biến trên gen NA), dẫn đến tình trạng virus tiếp tục nhân lên (sustained viral shedding) và kết cục lâm sàng xấu đi nhanh chóng.
     - **Tiến hóa của SARS-CoV-2 trên cơ địa suy giảm miễn dịch:** Các bệnh nhân nhiễm HIV kiểm soát kém hoặc suy giảm miễn dịch nặng không thể tự thanh thải virus, tạo điều kiện cho SARS-CoV-2 tích lũy các đột biến gene liên tục trong thời gian dài. Những biến thể này thay đổi cấu trúc protein Gai (Spike), giúp chúng trốn tránh kháng thể trung hòa (neutralizing antibodies) và đề kháng với các liệu pháp kháng thể đơn dòng (Monoclonal antibodies).
 - **An toàn & Tương tác thuốc then chốt:**
-    - **Tương tác thuốc tử thần của Ritonavir:** Ức chế CYP3A4 của Ritonavir trong Paxlovid có thể gây tăng vọt nồng độ của hàng loạt thuốc dùng chung, dẫn đến ngộ độc nghiêm trọng (ví dụ: ngộ độc statin, chảy máu do thuốc chống đông trực tiếp DOACs, ngộ độc thuốc ức chế miễn dịch tacrolimus).
+    - **Tương tác thuốc tử thần của Ritonavir:** Ức chế CYP3A4 của Ritonavir trong Paxlovid có thể gây tăng vọt nồng độ của hàng loạt thuốc dùng chung, dẫn đến ngộ độc nghiêm trọng (ví dụ: ngộ độc statin, [[Xuất huyết|chảy máu]] do thuốc chống đông trực tiếp DOACs, ngộ độc thuốc ức chế miễn dịch tacrolimus).
     - _(Ngoài tài liệu: Molnupiravir có cơ chế chèn ép gen gây đột biến, do đó chống chỉ định tuyệt đối cho phụ nữ có thai, trẻ em dưới 18 tuổi và nam giới có ý định sinh con trong thời gian dùng thuốc do rủi ro độc tính phôi thai và xương khớp)._
     - _(Ngoài tài liệu: Ribavirin gây thiếu máu tán huyết phụ thuộc liều và là chất sinh quái thai mạnh, phải theo dõi sát công thức máu)._
 

@@ -1,3 +1,13 @@
+---
+title: "Khám đánh giá phát triển thể chất ở trẻ em (Phần 2)"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT (PHẦN 2: PHÂN TÍCH CHỈ SỐ NHÂN TRẮC THEO Z-SCORE, ĐƯỜNG TĂNG TRƯỞNG WHO VÀ BÀI TẬP ỨNG DỤNG LÂM SÀNG)
 
 ---

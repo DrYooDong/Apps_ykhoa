@@ -1,14 +1,18 @@
 ---
 title: "Quản lý bù dịch trong Sốc bỏng"
-specialty: "Hồi sức"
-tags: ["Hồi sức", "Sốc - Bù dịch"]
-last_updated: "2026-07-28"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
 ---
-**I. Nguyên Tắc Cốt Lõi Trong Xử Trí Sốc Bỏng**
 
-Phác đồ xử trí sốc bỏng cấp tính dưới đây được xây dựng dựa trên Hướng dẫn Thực hành Lâm sàng năm 2023 của Hiệp hội Bỏng Hoa Kỳ (ABA), áp dụng cho bệnh nhân người lớn bị bỏng từ 20% diện tích bề mặt cơ thể (TBSA) trở lên trong 48 giờ đầu tiên sau bỏng. 
+**I. Nguyên Tắc Cốt Lõi Trong Xử Trí [[Sốc]] Bỏng**
 
-Mục tiêu cốt lõi của hồi sức hiện đại là đạt được sự cân bằng: cung cấp đủ dịch để duy trì tưới máu cơ quan nhưng phải tránh hiện tượng "tràn dịch" (fluid creep) – tức là tình trạng hồi sức quá mức dẫn đến các biến chứng phù nề nguy hiểm như hội chứng chèn ép khoang ổ bụng, chi, hốc mắt và phù phổi.
+Phác đồ xử trí [[Sốc]] bỏng cấp tính dưới đây được xây dựng dựa trên Hướng dẫn Thực hành Lâm sàng năm 2023 của Hiệp hội Bỏng Hoa Kỳ (ABA), áp dụng cho bệnh nhân người lớn bị bỏng từ 20% diện tích bề mặt cơ thể (TBSA) trở lên trong 48 giờ đầu tiên sau bỏng. 
+
+Mục tiêu cốt lõi của hồi sức hiện đại là đạt được sự cân bằng: cung cấp đủ dịch để duy trì tưới máu cơ quan nhưng phải tránh hiện tượng "tràn dịch" (fluid creep) – tức là tình trạng hồi sức quá mức dẫn đến các biến chứng [[Phù]] nề nguy hiểm như hội chứng chèn ép khoang ổ bụng, chi, hốc mắt và [[Phù]] [[Phổi]].
 
 **II. Phác Đồ Bù Dịch Cấp Cứu Trong Sốc Bỏng**
 
@@ -19,7 +23,7 @@ Mục tiêu cốt lõi của hồi sức hiện đại là đạt được sự 
 
 **2. Đích chuẩn độ dịch (Titration Endpoints)**
 *   **Lượng nước tiểu (UOP):** Là tiêu chuẩn vàng và thước đo chính để điều chỉnh dịch. Mục tiêu lượng nước tiểu thường được duy trì ở mức 30-50 mL/giờ hoặc khoảng $0.5~mL/kg/gi\dot{o}$.
-*   **Không khuyến cáo sử dụng các thông số huyết động xâm lấn:** Không khuyến cáo sử dụng các thông số bắt nguồn từ pha loãng nhiệt qua phổi (TPTD - như ITBVI, GEDVI, CI, EVLWI) để hướng dẫn bù dịch nhằm mục đích giảm thể tích dịch hoặc giảm biến chứng phù nề.
+*   **Không khuyến cáo sử dụng các thông số huyết động xâm lấn:** Không khuyến cáo sử dụng các thông số bắt nguồn từ pha loãng nhiệt qua [[Phổi]] (TPTD - như ITBVI, GEDVI, CI, EVLWI) để hướng dẫn bù dịch nhằm mục đích giảm thể tích dịch hoặc giảm biến chứng phù nề.
 *   **Phần mềm hỗ trợ quyết định (CDSS):** Có thể cân nhắc sử dụng phần mềm hỗ trợ quyết định trên máy tính (như Burn Navigator) để giúp bác sĩ chuẩn độ dịch chặt chẽ hơn và có khả năng giảm tổng lượng dịch hồi sức.
 
 **III. Vai Trò Của Dung Dịch Keo (Albumin & Huyết Tương)**
@@ -35,7 +39,7 @@ Mục tiêu cốt lõi của hồi sức hiện đại là đạt được sự 
 
 **1. Vitamin C liều cao**
 *   **Không khuyến cáo thường quy:** Dù có một số nghiên cứu cho thấy Vitamin C liều cao ($66~mg/kg/gi\dot{o}$) giúp lợi tiểu và tiết kiệm dịch, nhưng ABA không đưa ra khuyến cáo ủng hộ việc sử dụng liệu pháp này.
-*   **Nguy cơ:** Việc sử dụng Vitamin C liều cao có liên quan đến nguy cơ làm sai lệch thông số nước tiểu, gây lợi tiểu thẩm thấu gây mất nước, và đặc biệt là nguy cơ bệnh lý thận do lắng đọng tinh thể oxalate (oxalate nephropathy) dẫn đến tổn thương thận cấp (AKI).
+*   **Nguy cơ:** Việc sử dụng Vitamin C liều cao có liên quan đến nguy cơ làm sai lệch thông số nước tiểu, gây lợi tiểu thẩm thấu gây [[Mất nước]], và đặc biệt là nguy cơ bệnh lý [[Thận]] do lắng đọng tinh thể oxalate (oxalate nephropathy) dẫn đến tổn thương [[Thận]] cấp (AKI).
 
 **2. Thuốc vận mạch**
 *   Đối với bệnh nhân bỏng từ 20% TBSA trở lên có tình trạng tụt huyết áp kéo dài (liệt mạch kháng trị) dù đã bù đủ dịch, cần phải sử dụng thuốc vận mạch. 
@@ -58,7 +62,7 @@ Khuyến cáo theo dõi có chọn lọc (không phải thường quy cho mọi 
 *(Lưu ý: Y lệnh sau đây mô phỏng phác đồ $2~mL/kg/\%TBSA$ của ABA 2023, cần điều chỉnh theo từng bệnh nhân cụ thể).*
 
 **1. Hô hấp & Theo dõi**
-*   Thở oxy qua mask hoặc xem xét đặt NKQ nếu có bỏng đường thở/suy hô hấp.
+*   Thở oxy qua mask hoặc xem xét đặt NKQ nếu có bỏng đường thở/[[Suy hô hấp]].
 *   Theo dõi liên tục: ECG, SpO2, Huyết áp động mạch xâm lấn (Arterial line) nếu có chỉ định.
 *   **Đặt Sonde tiểu:** Theo dõi lượng nước tiểu (UOP) **MỖI GIỜ**. Đây là chỉ số quan trọng nhất.
 
@@ -82,7 +86,7 @@ Khuyến cáo theo dõi có chọn lọc (không phải thường quy cho mọi 
 *   (Có thể cân nhắc thêm `Vasopressin` nếu yêu cầu liều Norepinephrine cao).
 
 **5. Xét nghiệm & Cận lâm sàng**
-*   Khí máu động mạch (ABG) + Lactate máu mỗi 4-6 giờ.
+*   [[Khí máu động mạch]] ([[Khí máu động mạch|ABG]]) + Lactate máu mỗi 4-6 giờ.
 *   Đo áp lực ổ bụng (IAP) qua sonde tiểu mỗi 4 giờ (nếu tổng dịch truyền dự kiến $> 250~mL/kg$). Nếu IAP $> 20$ mmHg kèm suy tạng, báo ngay bác sĩ phẫu thuật.
 
 ***

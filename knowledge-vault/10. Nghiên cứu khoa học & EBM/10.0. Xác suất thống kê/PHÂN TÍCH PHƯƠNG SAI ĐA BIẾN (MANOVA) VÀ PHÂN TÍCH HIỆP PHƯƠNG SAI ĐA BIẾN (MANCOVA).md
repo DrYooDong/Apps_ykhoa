@@ -1,16 +1,20 @@
 ---
 title: "PHÂN TÍCH PHƯƠNG SAI ĐA BIẾN (MANOVA) VÀ PHÂN TÍCH HIỆP PHƯƠNG SAI ĐA BIẾN (MANCOVA)"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 đ𝐚 𝐛𝐢𝐞̂́𝐧 (𝐌𝐀𝐍𝐎𝐕𝐀) 𝐯𝐚̀ 𝐩𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐡𝐢𝐞̣̂𝐩 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 đ𝐚 𝐛𝐢𝐞̂́𝐧 (𝐌𝐀𝐍𝐂𝐎𝐕𝐀) (𝐏𝐡𝐚̂̀𝐧 8 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́)
 
 TS. Đào Hồng Nam
 
 𝟗. 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 đ𝐚 𝐛𝐢𝐞̂́𝐧 (𝐌𝐀𝐍𝐎𝐕𝐀) 𝐯𝐚̀ 𝐩𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐡𝐢𝐞̣̂𝐩 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 đ𝐚 𝐛𝐢𝐞̂́𝐧 (𝐌𝐀𝐍𝐂𝐎𝐕𝐀)
 
-Trong nhiều nghiên cứu y học, hiệu quả của một biện pháp can thiệp không thể được phản ánh đầy đủ chỉ bằng một biến kết quả duy nhất. Một thuốc điều trị tăng huyết áp có thể đồng thời làm thay đổi huyết áp tâm thu, huyết áp tâm trương và nhịp tim. Một chương trình phục hồi chức năng có thể cải thiện đồng thời khả năng vận động, khả năng tự chăm sóc và chất lượng cuộc sống. Nếu phân tích từng biến phụ thuộc bằng nhiều mô hình ANOVA riêng biệt, số lượng phép kiểm định sẽ tăng lên, xác suất sai lầm loại I cũng tăng theo và mối liên hệ giữa các biến kết quả sẽ bị bỏ qua. Phân tích phương sai đa biến (Multivariate Analysis of Variance, MANOVA) được phát triển nhằm giải quyết những hạn chế này bằng cách đánh giá đồng thời nhiều biến phụ thuộc trong cùng một mô hình thống kê (Johnson & Wichern, 2019).
+Trong nhiều nghiên cứu y học, hiệu quả của một biện pháp can thiệp không thể được phản ánh đầy đủ chỉ bằng một biến kết quả duy nhất. Một thuốc điều trị [[Tăng huyết áp]] có thể đồng thời làm thay đổi huyết áp tâm thu, huyết áp tâm trương và nhịp [[Tim]]. Một chương trình phục hồi chức năng có thể cải thiện đồng thời khả năng vận động, khả năng tự chăm sóc và chất lượng cuộc sống. Nếu phân tích từng biến phụ thuộc bằng nhiều mô hình ANOVA riêng biệt, số lượng phép kiểm định sẽ tăng lên, xác suất sai lầm loại I cũng tăng theo và mối liên hệ giữa các biến kết quả sẽ bị bỏ qua. Phân tích phương sai đa biến (Multivariate Analysis of Variance, MANOVA) được phát triển nhằm giải quyết những hạn chế này bằng cách đánh giá đồng thời nhiều biến phụ thuộc trong cùng một mô hình thống kê (Johnson & Wichern, 2019).
 
 MANOVA có thể được xem là phần mở rộng tự nhiên của ANOVA. Nếu ANOVA đánh giá sự khác biệt giữa các nhóm dựa trên một biến phụ thuộc, MANOVA đánh giá sự khác biệt dựa trên một tập hợp các biến phụ thuộc có tương quan với nhau. Khi các biến kết quả phản ánh những khía cạnh khác nhau của cùng một quá trình sinh học hoặc lâm sàng, việc phân tích đồng thời thường mang lại nhiều thông tin hơn so với việc xem xét từng biến riêng lẻ (Tabachnick & Fidell, 2019).
 
@@ -18,11 +22,11 @@ MANOVA có thể được xem là phần mở rộng tự nhiên của ANOVA. N�
 
 MANOVA được sử dụng khi nghiên cứu có một hoặc nhiều yếu tố phân loại và từ hai biến phụ thuộc định lượng trở lên. Điều kiện quan trọng là các biến phụ thuộc cần có mối tương quan nhất định. Nếu các biến hoàn toàn độc lập với nhau, việc sử dụng MANOVA thường không mang lại lợi ích đáng kể so với thực hiện nhiều ANOVA riêng biệt.
 
-Trong nghiên cứu y học, MANOVA thường được áp dụng khi đánh giá đồng thời nhiều chỉ số sinh lý, nhiều chỉ số sinh hóa hoặc nhiều thang điểm lâm sàng. Ví dụ, một nghiên cứu điều trị bệnh tim mạch có thể đồng thời phân tích huyết áp tâm thu, huyết áp tâm trương và nhịp tim; một nghiên cứu về bệnh thận có thể đồng thời đánh giá creatinin huyết thanh, mức lọc cầu thận ước tính và protein niệu.
+Trong nghiên cứu y học, MANOVA thường được áp dụng khi đánh giá đồng thời nhiều chỉ số sinh lý, nhiều chỉ số sinh hóa hoặc nhiều thang điểm lâm sàng. Ví dụ, một nghiên cứu điều trị bệnh [[Tim]] mạch có thể đồng thời phân tích huyết áp tâm thu, huyết áp tâm trương và nhịp tim; một nghiên cứu về bệnh [[Thận]] có thể đồng thời đánh giá creatinin huyết thanh, mức lọc cầu [[Thận]] ước tính và protein niệu.
 
 Việc sử dụng MANOVA trong các tình huống này không chỉ giúp giảm số lượng phép kiểm định mà còn tận dụng được thông tin về mối tương quan giữa các biến kết quả để tăng hiệu quả của phân tích.
 
-𝐕𝐢́ 𝐝𝐮̣ 21. Một nghiên cứu đánh giá hiệu quả của 3 chương trình phục hồi chức năng sau đột quỵ trên 150 bệnh nhân. Sau 12 tuần điều trị, ba biến phụ thuộc được ghi nhận gồm điểm vận động, điểm thăng bằng và điểm sinh hoạt hằng ngày. Vì 3 biến này đều phản ánh mức độ hồi phục chức năng và có tương quan với nhau, MANOVA là phương pháp phù hợp để đánh giá hiệu quả của chương trình điều trị.
+𝐕𝐢́ 𝐝𝐮̣ 21. Một nghiên cứu đánh giá hiệu quả của 3 chương trình phục hồi chức năng sau đột quỵ trên 150 bệnh nhân. Sau 12 tuần điều trị, ba biến phụ thuộc được ghi nhận gồm điểm vận động, điểm thăng bằng và điểm sinh hoạt hằng ngày. Vì 3 biến này đều phản ánh mức độ hồi phục chức năng và có tương quan với nhau, MANOVA là phương pháp [[Phù]] hợp để đánh giá hiệu quả của chương trình điều trị.
 
 𝟗.𝟐. 𝐌𝐨̂ 𝐡𝐢̀𝐧𝐡 𝐜𝐮̉𝐚 𝐌𝐀𝐍𝐎𝐕𝐀
 
@@ -52,7 +56,7 @@ Hotelling-Lawley Trace và Roy's Largest Root ít được sử dụng hơn tron
 
 ANOVA và MANOVA cùng dựa trên nhiều giả định thống kê cơ bản như tính độc lập giữa các quan sát, phân phối chuẩn và đồng nhất phương sai. Việc đồng thời phân tích nhiều biến phụ thuộc trong MANOVA làm phát sinh thêm một số yêu cầu liên quan đến cấu trúc đa biến của dữ liệu, vì vậy các giả định cần được đánh giá không chỉ ở từng biến riêng lẻ mà còn trên tập hợp các biến phụ thuộc được đưa vào mô hình.
 
-Giả định 1: Phân phối chuẩn đa biến. Toàn bộ tập hợp các biến phụ thuộc cần tuân theo phân phối chuẩn đa biến trong từng nhóm nghiên cứu. Trong thực hành, giả định này thường được đánh giá bằng cách kết hợp kiểm tra phân phối của từng biến phụ thuộc, xác định các giá trị ngoại lai đa biến thông qua khoảng cách Mahalanobis và xem xét các biểu đồ chẩn đoán phù hợp.
+Giả định 1: Phân phối chuẩn đa biến. Toàn bộ tập hợp các biến phụ thuộc cần tuân theo phân phối chuẩn đa biến trong từng nhóm nghiên cứu. Trong thực hành, giả định này thường được đánh giá bằng cách kết hợp kiểm tra phân phối của từng biến phụ thuộc, xác định các giá trị ngoại lai đa biến thông qua khoảng cách Mahalanobis và xem xét các biểu đồ chẩn đoán [[Phù]] hợp.
 
 Giả định 2: Đồng nhất ma trận hiệp phương sai giữa các nhóm. Mối quan hệ giữa các biến phụ thuộc cần tương đối giống nhau ở tất cả các nhóm nghiên cứu. Kiểm định Box's M là phương pháp được sử dụng phổ biến nhất để đánh giá giả định này. Khi kết quả kiểm định không có ý nghĩa thống kê, ma trận hiệp phương sai của các nhóm thường được xem là tương đương và việc áp dụng MANOVA được xem là phù hợp.
 
@@ -128,7 +132,7 @@ Cách các quan sát được thu thập từ đối tượng nghiên cứu là 
 
 Toàn bộ quá trình lựa chọn mô hình được tổng hợp trong Sơ đồ 3, giúp nhà nghiên cứu xác định phương pháp thích hợp dựa trên thiết kế nghiên cứu thay vì dựa trên phần mềm thống kê.
 
-𝐕𝐢́ 𝐝𝐮̣ 23. Một nghiên cứu đánh giá hiệu quả của ba thuốc điều trị tăng huyết áp. Huyết áp tâm thu được đo trước điều trị, sau 1 tháng, 3 tháng và 6 tháng. Ngoài ra, tuổi và chỉ số khối cơ thể được ghi nhận vì có khả năng ảnh hưởng đến đáp ứng điều trị. Trong nghiên cứu này có một biến phụ thuộc định lượng, một yếu tố giữa các nhóm (loại thuốc), một yếu tố đo lặp (thời gian) và hai biến đồng biến. Nếu mục tiêu chỉ đánh giá ảnh hưởng của thuốc và thời gian, ANOVA hỗn hợp là phù hợp. Nếu cần đồng thời hiệu chỉnh ảnh hưởng của tuổi và chỉ số khối cơ thể, mô hình hỗn hợp tuyến tính sẽ thích hợp hơn vì ANCOVA truyền thống không xử lý đầy đủ thiết kế vừa đo lặp vừa có biến đồng biến.
+𝐕𝐢́ 𝐝𝐮̣ 23. Một nghiên cứu đánh giá hiệu quả của ba thuốc điều trị [[Tăng huyết áp]]. Huyết áp tâm thu được đo trước điều trị, sau 1 tháng, 3 tháng và 6 tháng. Ngoài ra, tuổi và chỉ số khối cơ thể được ghi nhận vì có khả năng ảnh hưởng đến đáp ứng điều trị. Trong nghiên cứu này có một biến phụ thuộc định lượng, một yếu tố giữa các nhóm (loại thuốc), một yếu tố đo lặp (thời gian) và hai biến đồng biến. Nếu mục tiêu chỉ đánh giá ảnh hưởng của thuốc và thời gian, ANOVA hỗn hợp là phù hợp. Nếu cần đồng thời hiệu chỉnh ảnh hưởng của tuổi và chỉ số khối cơ thể, mô hình hỗn hợp tuyến tính sẽ thích hợp hơn vì ANCOVA truyền thống không xử lý đầy đủ thiết kế vừa đo lặp vừa có biến đồng biến.
 
 Khả năng thực hiện một phép phân tích trên phần mềm thống kê không phải là cơ sở duy nhất để lựa chọn mô hình, bởi nhiều phần mềm hiện nay cho phép áp dụng các phương pháp khác nhau trên cùng một bộ dữ liệu mặc dù không phải phương pháp nào cũng phù hợp với cấu trúc của thiết kế nghiên cứu. Việc lựa chọn mô hình cần xuất phát từ câu hỏi nghiên cứu, loại biến số được thu thập và mối quan hệ giữa các quan sát, từ đó bảo đảm rằng mô hình phân tích phản ánh đúng bản chất của dữ liệu. Chính vì vậy, mô hình thống kê nên được xác định ngay từ giai đoạn xây dựng đề cương nghiên cứu để quá trình thu thập dữ liệu, xác định cỡ mẫu và tổ chức nghiên cứu đáp ứng đầy đủ các yêu cầu của phương pháp phân tích dự kiến.
 

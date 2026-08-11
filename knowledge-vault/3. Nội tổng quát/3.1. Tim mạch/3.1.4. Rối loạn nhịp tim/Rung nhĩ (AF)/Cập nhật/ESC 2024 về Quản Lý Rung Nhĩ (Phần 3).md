@@ -1,3 +1,14 @@
+---
+title: "ESC 2024 về Quản Lý Rung Nhĩ (Phần 3)"
+type: disease
+specialty: "Nội khoa"
+tags:
+  - he-co-quan/tim-mach
+  - loai/benh-ly
+  - y-khoa/noi-khoa
+updated: "2026-08-11"
+---
+
 ## 1. Nội Dung Sinh Lý Học Chi Tiết (Phần 3: Trụ cột [R] - Reduce Symptoms)
 
 Trụ cột **[R] (Reduce symptoms by rate and rhythm control)** trong lộ trình AF-CARE tập trung vào việc giảm triệu chứng và cải thiện chất lượng cuộc sống cho bệnh nhân thông qua hai chiến lược: **kiểm soát tần số thất (rate control)** và **kiểm soát nhịp (rhythm control)**. Việc lựa chọn giữa hai chiến lược này không phải là tuyệt đối loại trừ nhau; trên thực tế, hầu hết bệnh nhân đều cần sự phối hợp linh hoạt của cả hai phương pháp.
@@ -8,7 +19,7 @@ Trụ cột **[R] (Reduce symptoms by rate and rhythm control)** trong lộ trì
 
 Kiểm soát tần số thất là biện pháp điều trị ban đầu thiết yếu trong pha cấp tính, hỗ trợ cho liệu pháp kiểm soát nhịp hoặc là chiến lược điều trị duy nhất cho những bệnh nhân rung nhĩ vĩnh viễn.
 
-- **Mục tiêu tần số thất:** Khuyến cáo ban đầu là kiểm soát tần số thất **nhẹ nhàng (lenient rate control)** với mục tiêu tần số tim lúc nghỉ **< 110 lần/phút (lần/phút - b.p.m.)** (Class IIa, Level B). Chiến lược kiểm soát tần số thất nghiêm ngặt hơn chỉ được đặt ra khi bệnh nhân vẫn còn triệu chứng hoặc khi nghi ngờ có bệnh cơ tim do nhịp nhanh (tachycardia-induced cardiomyopathy).
+- **Mục tiêu tần số thất:** Khuyến cáo ban đầu là kiểm soát tần số thất **nhẹ nhàng (lenient rate control)** với mục tiêu tần số [[Tim]] lúc nghỉ **< 110 lần/phút (lần/phút - b.p.m.)** (Class IIa, Level B). Chiến lược kiểm soát tần số thất nghiêm ngặt hơn chỉ được đặt ra khi bệnh nhân vẫn còn triệu chứng hoặc khi nghi ngờ có bệnh [[Tim|cơ tim]] do nhịp nhanh (tachycardia-induced cardiomyopathy).
 - **Lựa chọn thuốc theo phân suất tống máu thất trái (LVEF):**
     - **Bệnh nhân có $LVEF > 40%$:** Thuốc chẹn beta, diltiazem, verapamil hoặc digoxin được khuyến cáo là những lựa chọn hàng đầu (Class I, Level B).
     - **Bệnh nhân có $LVEF \le 40%$ (suy tim phân suất tống máu giảm - HFrEF):** Thuốc chẹn beta và/hoặc digoxin được khuyến cáo để kiểm soát tần số thất (Class I, Level B). **Chống chỉ định** sử dụng các thuốc chẹn kênh Canxi nhóm non-dihydropyridine (verapamil, diltiazem) ở nhóm bệnh nhân này vì tác dụng giảm co bóp cơ tim.
@@ -26,10 +37,10 @@ Kiểm soát nhịp hướng tới việc khôi phục và duy trì nhịp xoang
 
 - **Thời điểm khởi trị kiểm soát nhịp:** Khuyến cáo chủ động tiến hành chiến lược kiểm soát nhịp **sớm trong vòng 12 tháng kể từ khi chẩn đoán** ở những bệnh nhân chọn lọc có nguy cơ thuyên tắc mạch nhằm giảm tử vong tim mạch và giảm tỷ lệ nhập viện (Class IIa, Level B).
 - **Tiếp cận "Chờ và xem" (Wait-and-see):** Ở những bệnh nhân rung nhĩ mới khởi phát, huyết động ổn định, có thể trì hoãn việc chuyển nhịp ngay lập tức để theo dõi khả năng tự phục hồi nhịp xoang trong vòng **48 giờ** (Class IIa, Level B).
-- **Sốc điện chuyển nhịp (Electrical Cardioversion - ECV) và Kháng đông:**
-    - Sốc điện chuyển nhịp cấp cứu được chỉ định ngay lập tức ở bệnh nhân rung nhĩ có **huyết động không ổn định** hoặc chuyển tiến xấu đi (Class I, Level C).
+- **[[Sốc]] điện chuyển nhịp (Electrical Cardioversion - ECV) và Kháng đông:**
+    - [[Sốc]] điện chuyển nhịp cấp cứu được chỉ định ngay lập tức ở bệnh nhân rung nhĩ có **huyết động không ổn định** hoặc chuyển tiến xấu đi (Class I, Level C).
     - Đối với chuyển nhịp chương trình (scheduled cardioversion), bệnh nhân phải được điều trị kháng đông đường uống (OAC) đầy đủ ít nhất **3 tuần trước thủ thuật** (Class I, Level B).
-    - **Quy tắc 24 giờ:** Nếu cơn rung nhĩ kéo dài **trên 24 giờ** hoặc không rõ thời gian khởi phát, **không khuyến cáo chuyển nhịp sớm** nếu chưa dùng kháng đông đủ 3 tuần hoặc chưa được siêu âm tim qua thực quản (TOE) để loại trừ huyết khối buồng tim (Class III, Level C).
+    - **Quy tắc 24 giờ:** Nếu cơn rung nhĩ kéo dài **trên 24 giờ** hoặc không rõ thời gian khởi phát, **không khuyến cáo chuyển nhịp sớm** nếu chưa dùng kháng đông đủ 3 tuần hoặc chưa được [[[[Siêu âm]]|siêu âm tim]] qua thực quản (TOE) để loại trừ huyết khối buồng tim (Class III, Level C).
     - Mọi bệnh nhân sau chuyển nhịp thành công cần tiếp tục dùng OAC ít nhất **4 tuần** (Class I, Level B). Việc dùng kháng đông dài hạn sau đó hoàn toàn phụ thuộc vào điểm số nguy cơ thuyên tắc mạch $CHA_2DS_2-VA$ chứ không phụ thuộc vào việc có duy trì được nhịp xoang hay không.
 - **Chuyển nhịp bằng thuốc (Pharmacological Cardioversion) (Bảng 13):**
     - **Không có bệnh tim cấu trúc:** Khuyến cáo dùng Flecainide hoặc Propafenone tĩnh mạch (Class I, Level A) hoặc Vernakalant tĩnh mạch (Class I, Level A). Có thể cân nhắc liệu pháp tự dùng thuốc uống một liều duy nhất **"Pill-in-the-pocket"** (Flecainide hoặc Propafenone) ở bệnh nhân rung nhĩ kịch phát tần suất thưa sau khi đã được đánh giá an toàn tại viện (Class IIa, Level B).
@@ -37,14 +48,14 @@ Kiểm soát nhịp hướng tới việc khôi phục và duy trì nhịp xoang
 - **Thuốc chống loạn nhịp (AADs) duy trì nhịp xoang dài hạn (Bảng 18):**
     - **Bệnh nhân suy tim HFrEF:** Khuyến cáo dùng **Amiodarone** và cần theo dõi sát các độc tính ngoài tim (Class I, Level A).
     - **Bệnh nhân suy tim phân suất tống máu giảm nhẹ/bảo tồn (HFmrEF, HFpEF), bệnh mạch vành hoặc bệnh van tim:** Khuyến cáo dùng **Dronedarone** (Class I, Level A).
-    - **Không có hoặc có bệnh tim cấu trúc tối thiểu:** Khuyến cáo dùng Dronedarone, Flecainide hoặc Propafenone (Class I, Level A). Sotalol có thể được cân nhắc nhưng yêu cầu theo dõi nghiêm ngặt khoảng QTc, kali máu và chức năng thận (Class IIb, Level A).
+    - **Không có hoặc có bệnh tim cấu trúc tối thiểu:** Khuyến cáo dùng Dronedarone, Flecainide hoặc Propafenone (Class I, Level A). Sotalol có thể được cân nhắc nhưng yêu cầu theo dõi nghiêm ngặt khoảng QTc, kali máu và chức năng [[Thận]] (Class IIb, Level A).
     - **Lưu ý an toàn:** Không khuyến cáo dùng AADs ở bệnh nhân có rối loạn dẫn truyền nặng chưa được đặt máy tạo nhịp (Class III, Level C).
 
 ---
 
 ### Can Thiệp Triệt Đốt Rung Nhĩ Qua Ống Thông (Catheter Ablation)
 
-Triệt đốt rung nhĩ qua ống thông cô lập tĩnh mạch phổi (PVI) là phương pháp hiệu quả nhất để duy trì nhịp xoang và giảm gánh nặng rung nhĩ.
+Triệt đốt rung nhĩ qua ống thông cô lập tĩnh mạch [[Phổi]] (PVI) là phương pháp hiệu quả nhất để duy trì nhịp xoang và giảm gánh nặng rung nhĩ.
 
 - **Chỉ định Class I mới:**
     - Triệt đốt được khuyến cáo như một **lựa chọn hàng đầu (first-line)** trong chiến lược kiểm soát nhịp đồng thuận với bệnh nhân có **rung nhĩ kịch phát** (Class I, Level A).

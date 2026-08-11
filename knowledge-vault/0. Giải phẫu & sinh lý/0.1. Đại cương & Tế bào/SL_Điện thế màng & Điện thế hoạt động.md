@@ -1,14 +1,18 @@
 ---
 title: "SL_Điện thế màng & Điện thế hoạt động"
-specialty: "Sinh lý học"
-tags: ["Sinh lý học"]
-last_updated: "2026-07-28"
+type: physiology
+specialty: "Giải phẫu & Sinh lý"
+tags:
+  - loai/benh-ly
+  - y-khoa/giai-phau-sinh-ly
+updated: "2026-08-11"
 ---
+
 Nội Dung Sinh Lý Học Chi Tiết:
 
 ### Điện Thế Màng Nghỉ (Resting Membrane Potential)
 Điện thế màng nghỉ là sự chênh lệch điện thế giữa hai bên màng tế bào khi tế bào ở trạng thái không bị kích thích, trong đó mặt trong màng tích điện âm so với mặt ngoài ``, ``, ``, ``.
-*   **Trị số:** Điện thế màng nghỉ thường ở mức khoảng -70 mV ở nơ-ron thần kinh ``, ``, `` và thay đổi từ -60 mV đến -90 mV ở tế bào cơ tim hoặc cơ vân tùy thuộc vào vùng tế bào ``, ``.
+*   **Trị số:** Điện thế màng nghỉ thường ở mức khoảng -70 mV ở nơ-ron thần kinh ``, ``, `` và thay đổi từ -60 mV đến -90 mV ở tế bào [[[[Tim]]|cơ tim]] hoặc cơ vân tùy thuộc vào vùng tế bào ``, ``.
 *   **Cơ chế hình thành:** 
     *   **Sự phân bố ion không đồng đều:** Nồng độ ion $K^+$ bên trong tế bào cao hơn rất nhiều so với bên ngoài, trong khi nồng độ $Na^+$ và $Cl^-$ bên ngoài cao hơn bên trong ``, ``, ``, ``, ``.
     *   **Bơm $Na^+/K^+$ ATPase:** Bơm này liên tục sử dụng năng lượng ATP để vận chuyển chủ động 3 ion $Na^+$ ra ngoài và 2 ion $K^+$ vào trong tế bào ``, ``, ``, ``, ``, ``. Đây là một bơm sinh điện (electrogenic pump) do việc tống ra lượng điện tích dương nhiều hơn lượng đưa vào, góp phần tạo ra điện thế âm bên trong tế bào ``, ``.

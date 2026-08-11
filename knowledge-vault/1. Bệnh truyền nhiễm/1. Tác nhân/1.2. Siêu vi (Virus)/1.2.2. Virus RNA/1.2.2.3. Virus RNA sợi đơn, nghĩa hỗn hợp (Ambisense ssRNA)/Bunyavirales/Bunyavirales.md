@@ -1,7 +1,15 @@
 ---
+title: "Bunyavirales"
+type: pathogen
+specialty: "Bệnh truyền nhiễm"
 tags:
-  - Tacnhan
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
-[[Hantavirus]]
-[[Rift Valley fever]]
-[[Virus La Crosse]]
+
+## 📌 Danh Mục Nội Dung
+
+1. [[Hantavirus]]
+2. [[Rift Valley fever]]
+3. [[Virus La Crosse]]

@@ -1,4 +1,15 @@
-# TÓM TẮT LÂM SÀNG HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ VIÊM GAN VI RÚT B
+---
+title: "TÓM TẮT HƯỚNG DẪN BYT VGSVB 2026"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/tieu-hoa
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
+# TÓM TẮT LÂM SÀNG HƯỚNG DẪN CHẨN ĐOÁN VÀ ĐIỀU TRỊ VIÊM [[Gan]] VI RÚT B
 *(Ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16/06/2026 của Bộ trưởng Bộ Y tế Việt Nam)*
 
 ---
@@ -7,7 +18,7 @@
 
 ### 1. Căn cứ pháp lý & Dịch tễ học
 - **Văn bản thay thế:** Quyết định số 1740/QĐ-BYT ngày 16/06/2026 (ký bởi Thứ trưởng Trần Văn Thuấn), chính thức thay thế Quyết định số 3310/QĐ-BYT ngày 29/07/2019.
-- **Dịch tễ Việt Nam:** Tỷ lệ nhiễm HBsAg ở người dân $\ge$ 18 tuổi tại Việt Nam ở mức rất cao ($\ge$ 9,4%). Bệnh lây qua 3 đường (máu, tình dục, mẹ sang con), trong đó **lây từ mẹ sang con là con đường chủ yếu**. Viêm gan B là nguyên nhân hàng đầu gây xơ gan và ung thư biểu mô tế bào gan (HCC).
+- **Dịch tễ Việt Nam:** Tỷ lệ nhiễm HBsAg ở người dân $\ge$ 18 tuổi tại Việt Nam ở mức rất cao ($\ge$ 9,4%). Bệnh lây qua 3 đường (máu, tình dục, mẹ sang con), trong đó **lây từ mẹ sang con là con đường chủ yếu**. Viêm gan B là nguyên nhân hàng đầu gây xơ gan và ung thư biểu mô [[Gan|tế bào gan]] (HCC).
 - **Quy ước ngưỡng ALT bình thường (ULN):** Trong hướng dẫn 2026, giới hạn trên bình thường của ALT được quy định thống nhất là **30 U/L đối với nam** và **19 U/L đối với nữ**.
 
 ### 2. Thuật ngữ và các giai đoạn lâm sàng chính
@@ -15,7 +26,7 @@
 - **Nhiễm HBV mạn:** HBsAg dương tính kéo dài **$\ge$ 6 tháng**.
 - **Viêm gan B thể ẩn (Occult HBV - OBI):** HBsAg âm tính nhưng HBV DNA vẫn tồn tại trên ngưỡng phát hiện (thường < 200 IU/mL), đa số anti-HBc (+).
 - **Xơ gan:** Đạt mức độ xơ hóa **F4** (APRI > 1 hoặc FibroScan > 12,5 kPa).
-- **Xơ gan mất bù:** Xơ gan có $\ge$ 1 biến cố mất bù (cổ chướng, vỡ/giãn tĩnh mạch thực quản, bệnh não gan, vàng da) và/hoặc điểm Child-Pugh $\ge$ 7.
+- **Xơ gan mất bù:** Xơ gan có $\ge$ 1 biến cố mất bù (cổ chướng, vỡ/giãn tĩnh mạch thực quản, bệnh não gan, [[Vàng da]]) và/hoặc điểm Child-Pugh $\ge$ 7.
 - **Viêm gan B thể tối cấp:** Suy gan cấp tiến triển nhanh trong vài tuần, biểu hiện: suy chức năng gan nặng, bệnh não gan và INR > 1,5. Tử vong > 70%.
 - **Tái hoạt HBV:** HBV từ trạng thái không hoạt động/thể ẩn đột ngột nhân lên cấp tính, gây hủy hoại tế bào gan nặng.
 
@@ -23,7 +34,7 @@
 
 ## II. SÀNG LỌC VÀ PHIÊN GIẢI XÉT NGHIỆM HUYẾT THÀNH
 
-Khuyến cáo sàng lọc toàn dân, đặc biệt ưu tiên các đối tượng nguy cơ cao (sinh trước 2003, bệnh nhân lao/HIV, đối tượng nguy cơ cao, chạy thận, trước hóa trị/ức chế miễn dịch, nhân viên y tế, phụ nữ mang thai).
+Khuyến cáo sàng lọc toàn dân, đặc biệt ưu tiên các đối tượng nguy cơ cao (sinh trước 2003, bệnh nhân lao/HIV, đối tượng nguy cơ cao, chạy [[Thận]], trước hóa trị/ức chế miễn dịch, nhân viên y tế, phụ nữ mang thai).
 
 ### Bảng Phiên Giải Huyết Thanh Học Nhiễm HBV (Bảng 1 QĐ 1740/QĐ-BYT)
 
@@ -69,8 +80,8 @@ Chỉ định NAs khi người bệnh đáp ứng **1 trong 4 tiêu chuẩn** sa
 3. **Có yếu tố nguy cơ (+)** KÈM **HBV DNA trên ngưỡng phát hiện** (không phụ thuộc ALT và mức độ xơ hóa):
    - Đồng nhiễm HIV, HCV, HDV.
    - Bệnh đồng mắc: Đái tháo đường, bệnh gan nhiễm mỡ liên quan đến rối loạn chuyển hóa (MAFLD).
-   - Suy giảm miễn dịch (dùng corticoid kéo dài, ghép tạng).
-   - Biểu hiện ngoài gan hoạt động (viêm cầu thận, viêm mạch, viêm đa khớp).
+   - Suy giảm miễn dịch (dùng [[Corticoid]] kéo dài, ghép tạng).
+   - Biểu hiện ngoài gan hoạt động (viêm cầu [[Thận]], viêm mạch, viêm đa khớp).
    - Tiền sử gia đình có bố, mẹ, anh, chị, em ruột bị ung thư gan (HCC) hoặc xơ gan.
    - Bệnh nhân tái phát sau khi tự ý ngừng thuốc NAs trước đó.
 4. **Nơi không đo được HBV DNA:** Chỉ định NAs khi **ALT > ULN kéo dài liên tục 6–12 tháng**.
@@ -85,7 +96,7 @@ Chỉ định NAs khi người bệnh đáp ứng **1 trong 4 tiêu chuẩn** sa
 | **Entecavir (ETV)** | 0,5 mg/ngày *(1 mg/ngày nếu từng dùng LAM hoặc xơ gan mất bù)* | **Không dùng cho phụ nữ mang thai**. Điều chỉnh liều theo CrCl khi CrCl < 50 mL/phút. | Nhiễm toan lactic. |
 | **Tenofovir alafenamide (TAF)** | 25 mg/ngày | **Không cần giảm liều** khi suy thận nhẹ, vừa, nặng hoặc đang chạy thận nhân tạo. Dùng được cho xơ gan mất bù. Avoid nếu CrCl < 15 mL/phút không lọc máu. | Tăng cân, tăng cholesterol máu, nhiễm toan lactic. |
 | **TDF/3TC** hoặc **TDF/FTC** | 1 viên/ngày | Chỉ sử dụng khi không sẵn có TDF đơn chất. | Độc tính thận, loãng xương, nhiễm toan lactic. |
-| **Peg-IFN-$\alpha$-2a** | 180 $\mu$g/tuần (tiêm dưới da 48 tuần) | Khuyên dùng ở người trẻ muốn điều trị ngắn hạn, đồng nhiễm HDV, hoặc tải lượng thấp kèm ALT cao. | Hội chứng giả cúm, mệt mỏi, rối loạn tâm thần/trầm cảm, giảm bạch cầu, rối loạn tuyến giáp. |
+| **Peg-IFN-$\alpha$-2a** | 180 $\mu$g/tuần (tiêm dưới da 48 tuần) | Khuyên dùng ở người trẻ muốn điều trị ngắn hạn, đồng nhiễm HDV, hoặc tải lượng thấp kèm ALT cao. | Hội chứng giả cúm, mệt mỏi, rối loạn tâm thần/trầm cảm, giảm [[Bạch cầu]], rối loạn tuyến giáp. |
 
 ---
 

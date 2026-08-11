@@ -1,6 +1,10 @@
 ---
 title: "HHV-6"
+type: pathogen
 specialty: "Bệnh truyền nhiễm"
-tags: ["Bệnh truyền nhiễm", "Tác nhân", "Siêu vi (Virus)", "Virus DNA", "Virus DNA chuỗi kép (dsDNA)", "a. Có màng bọc", "Herpesviridae", "Betaherpesviruses"]
-last_updated: "2026-07-28"
+tags:
+  - loai/tac-nhan
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
 ---
+

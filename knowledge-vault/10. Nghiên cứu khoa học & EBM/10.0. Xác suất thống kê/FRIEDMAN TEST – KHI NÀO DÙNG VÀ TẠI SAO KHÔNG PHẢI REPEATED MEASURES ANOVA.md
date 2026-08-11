@@ -1,14 +1,18 @@
 ---
 title: "FRIEDMAN TEST – KHI NÀO DÙNG VÀ TẠI SAO KHÔNG PHẢI REPEATED MEASURES ANOVA"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 Trước đây mình đã viết về Repeated Measures ANOVA – lựa chọn thông dụng nhất khi so sánh nhiều thời điểm trên cùng một nhóm đối tượng. Tuy nhiên, một câu hỏi rất hay mà nhiều học viên thường gặp là:
 
 "Nếu dữ liệu không phân phối chuẩn thì sao? Có dùng ANOVA ghép cặp được không?"
 
-Câu trả lời là: Không. Khi đó Friedman test mới là lựa chọn phù hợp.
+Câu trả lời là: Không. Khi đó Friedman test mới là lựa chọn [[Phù]] hợp.
 
 FRIEDMAN TEST – KHI NÀO DÙNG VÀ TẠI SAO KHÔNG PHẢI REPEATED MEASURES ANOVA?
 

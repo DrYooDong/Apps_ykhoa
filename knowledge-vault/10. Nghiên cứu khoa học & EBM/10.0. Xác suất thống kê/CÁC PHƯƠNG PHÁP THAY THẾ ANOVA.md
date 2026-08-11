@@ -1,18 +1,22 @@
 ---
 title: "CÁC PHƯƠNG PHÁP THAY THẾ ANOVA"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐂𝐚́𝐜 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐭𝐡𝐚𝐲 𝐭𝐡𝐞̂́ 𝐀𝐍𝐎𝐕𝐀: 𝐖𝐞𝐥𝐜𝐡 𝐀𝐧𝐨𝐯𝐚, 𝐑𝐨𝐛𝐮𝐬 𝐀𝐧𝐨𝐯𝐚, 𝐅𝐫𝐢𝐞𝐝𝐦𝐚𝐧, 𝐊𝐫𝐮𝐬𝐤𝐚𝐥-𝐖𝐚𝐥𝐥𝐢𝐬, 𝐛𝐢𝐞̂́𝐧 đ𝐨̂̉𝐢 𝐝𝐮̛̃ 𝐥𝐢𝐞̣̂𝐮 (𝐏𝐡𝐚̂̀𝐧 𝟕 𝐜𝐮̉𝐚 𝐜𝐡𝐮̉ đ𝐞̂̀ 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐬𝐚𝐢 𝐭𝐡𝐞𝐨 𝐠𝐨́𝐜 𝐧𝐡𝐢̀𝐧 𝐜𝐮̉𝐚 𝐜𝐚́𝐜 𝐛𝐚̀𝐢 𝐛𝐚́𝐨 𝐜𝐡𝐮𝐚̂̉𝐧 𝐪𝐮𝐨̂́𝐜 𝐭𝐞̂́)
 
 TS. Đào Hồng Nam
 
 𝟖. 𝐂𝐚́𝐜 𝐩𝐡𝐮̛𝐨̛𝐧𝐠 𝐩𝐡𝐚́𝐩 𝐭𝐡𝐚𝐲 𝐭𝐡𝐞̂́ 𝐀𝐍𝐎𝐕𝐀
 
-ANOVA là một phương pháp thống kê mạnh và được sử dụng rộng rãi trong nghiên cứu y học, nhưng độ tin cậy của kết quả phụ thuộc vào mức độ đáp ứng các giả định của mô hình. Trong thực tế, dữ liệu nghiên cứu thường có phân phối lệch, phương sai không đồng nhất, cỡ mẫu nhỏ hoặc chứa các giá trị ngoại lai. Nhiều biến kết quả trong y học cũng được đo trên thang thứ bậc hoặc không thỏa mãn các yêu cầu của các phương pháp tham số. Khi những đặc điểm này xuất hiện, việc áp dụng ANOVA cổ điển có thể dẫn đến các suy luận thống kê thiếu chính xác. Trong những tình huống đó, các phương pháp thay thế phù hợp hơn với đặc điểm của dữ liệu cần được xem xét và sử dụng (Conover, 1999; Field, 2018).
+ANOVA là một phương pháp thống kê mạnh và được sử dụng rộng rãi trong nghiên cứu y học, nhưng độ tin cậy của kết quả phụ thuộc vào mức độ đáp ứng các giả định của mô hình. Trong thực tế, dữ liệu nghiên cứu thường có phân phối lệch, phương sai không đồng nhất, cỡ mẫu nhỏ hoặc chứa các giá trị ngoại lai. Nhiều biến kết quả trong y học cũng được đo trên thang thứ bậc hoặc không thỏa mãn các yêu cầu của các phương pháp tham số. Khi những đặc điểm này xuất hiện, việc áp dụng ANOVA cổ điển có thể dẫn đến các suy luận thống kê thiếu chính xác. Trong những tình huống đó, các phương pháp thay thế [[Phù]] hợp hơn với đặc điểm của dữ liệu cần được xem xét và sử dụng (Conover, 1999; Field, 2018).
 
-Việc chuyển sang một phương pháp phân tích khác không nên được thực hiện một cách tự động ngay khi phát hiện sự vi phạm giả định của ANOVA. Mức độ vi phạm, cỡ mẫu của nghiên cứu, đặc điểm của dữ liệu và khả năng áp dụng các biện pháp khắc phục đều cần được đánh giá trước khi đưa ra quyết định. Nhiều trường hợp có thể được xử lý bằng các kỹ thuật biến đổi dữ liệu hoặc các phương pháp hiệu chỉnh phù hợp mà vẫn duy trì được mô hình ANOVA ban đầu. Chỉ khi những giải pháp này không còn đáp ứng yêu cầu của phân tích hoặc không bảo đảm độ tin cậy của kết quả thì các phương pháp thay thế mới thực sự trở thành lựa chọn cần thiết.
+Việc chuyển sang một phương pháp phân tích khác không nên được thực hiện một cách tự động ngay khi phát hiện sự vi phạm giả định của ANOVA. Mức độ vi phạm, cỡ mẫu của nghiên cứu, đặc điểm của dữ liệu và khả năng áp dụng các biện pháp khắc phục đều cần được đánh giá trước khi đưa ra quyết định. Nhiều trường hợp có thể được xử lý bằng các kỹ thuật biến đổi dữ liệu hoặc các phương pháp hiệu chỉnh [[Phù]] hợp mà vẫn duy trì được mô hình ANOVA ban đầu. Chỉ khi những giải pháp này không còn đáp ứng yêu cầu của phân tích hoặc không bảo đảm độ tin cậy của kết quả thì các phương pháp thay thế mới thực sự trở thành lựa chọn cần thiết.
 
 𝟖.𝟏. 𝐖𝐞𝐥𝐜𝐡 𝐀𝐍𝐎𝐕𝐀
 

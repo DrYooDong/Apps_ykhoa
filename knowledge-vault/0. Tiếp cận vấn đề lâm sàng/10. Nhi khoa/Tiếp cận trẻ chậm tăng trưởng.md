@@ -1,3 +1,13 @@
+---
+title: "Tiếp cận trẻ chậm tăng trưởng"
+type: symptom
+specialty: "Tiếp cận lâm sàng"
+tags:
+  - loai/trieu-chung
+  - y-khoa/tiep-can
+updated: "2026-08-11"
+---
+
 # NỘI DUNG SINH LÝ HỌC CHI TIẾT: TIẾP CẬN TRẺ CHẬM TĂNG TRƯỞNG
 
 ---
@@ -44,8 +54,8 @@ Nguyên nhân gây chậm tăng trưởng rất đa dạng, bao gồm hai nhóm 
     - _Rối loạn hành vi nuôi ăn:_ Ép ăn quá mức, căng thẳng bữa ăn, chọn sai cấu trúc thức ăn.
 2. **Nguyên nhân thực thể tại các cơ quan:**
     - _Tiêu hóa:_ Trào ngược dạ dày - thực quản, hẹp môn vị, viêm thực quản eosinophil, ruột xoay bất toàn, hội chứng kém hấp thu (bệnh Celiac, dị ứng đạm sữa bò).
-    - _Nội tiết & Chuyển hóa:_ Đái tháo đường, suy giáp, thiếu hormone tăng trưởng (GH), suy thượng thận, toan hóa ống thận, rối loạn chu trình ure, xơ nang (Cystic Fibrosis).
-    - _Tim mạch & Hô hấp:_ Tim bẩm sinh có luồng thông T-P lớn, suy tim, hen suyễn nặng, viêm phế quản mạn, ngáy/tắc nghẽn hô hấp trên.
+    - _Nội tiết & Chuyển hóa:_ Đái tháo đường, suy giáp, thiếu hormone tăng trưởng (GH), suy thượng [[Thận]], toan hóa ống [[Thận]], rối loạn chu trình ure, xơ nang (Cystic Fibrosis).
+    - _Tim mạch & Hô hấp:_ [[Tim]] bẩm sinh có luồng thông T-P lớn, suy [[Tim]], hen suyễn nặng, viêm phế quản mạn, ngáy/tắc nghẽn hô hấp trên.
     - _Huyết học & Thận:_ Thiếu máu thiếu sắt nặng, bệnh Thalassemia, suy thận mạn.
     - _Gen & Dị tật bẩm sinh:_ Bất thường nhiễm sắc thể (hội chứng Down, Turner), hội chứng thai nhi nghiện rượu, loạn sản xương, hội chứng CHARGE, VATER.
 
@@ -62,7 +72,7 @@ Nguyên nhân gây chậm tăng trưởng rất đa dạng, bao gồm hai nhóm 
     - Đánh giá kỹ năng vận động miệng: Trẻ có chảy nước dãi nhiều, nhai khó, hay bị nghẹn/sặc khi nuốt.
     - Nhật ký bữa ăn **3 ngày**: Loại thực phẩm, số lượng, cách chế biến và lượng ăn thực tế.
     - Phong tục tập quán: Ăn chay trường (nguy cơ thiếu đạm, vitamin $B_{12}$, sắt), chỉ uống sữa dê (thiếu folate), sữa gạo (thiếu protein).
-- **Khai thác triệu chứng cơ quan tìm bệnh thực thể:** Sốt, đổ mồ hôi trộm, nôn ói, tiêu chảy, táo bón, ho, khò khè, rối loạn đi tiểu, sụt cân.
+- **Khai thác triệu chứng cơ quan tìm bệnh thực thể:** [[Sốt]], đổ mồ hôi trộm, [[[[Nôn ói|Nôn]] ói]], [[Tiêu chảy]], táo bón, ho, khò khè, rối loạn đi tiểu, sụt cân.
 - **Tiền sử:** Tiền sử thai kỳ (sức khỏe mẹ, tăng cân, rượu/thuốc lá), chu sinh (CNLS, CDLS, VĐLS), bản thân (bệnh lý mạn tính, phẫu thuật) và tiền sử tăng trưởng/dậy thì của thành viên gia đình.
 
 ---
@@ -73,7 +83,7 @@ Nguyên nhân gây chậm tăng trưởng rất đa dạng, bao gồm hai nhóm 
 - **Thăm khám hệ thống:**
     - _Tổng trạng & Sinh hiệu:_ Mức độ gầy còm, phân bố mô cơ và mô mỡ, các dấu hiệu dị hình.
     - _Đầu mặt cổ:_ Kích thước thóp, sự thông thoáng đường thở, dấu hiệu viêm tai/dị ứng.
-    - _Tim mạch - Hô hấp - Tiêu hóa - Thần kinh:_ Tiếng tim, âm thổi, ran phổi, gan lách to, khối u bụng, trương lực cơ, phản xạ thần kinh.
+    - _Tim mạch - Hô hấp - Tiêu hóa - Thần kinh:_ Tiếng tim, âm thổi, ran [[Phổi]], [[Gan]] lách to, khối u bụng, trương lực cơ, phản xạ thần kinh.
 
 ---
 
@@ -126,7 +136,7 @@ $$\text{Nhu cầu năng lượng (kcal/kg/ngày)} = \frac{(\text{Nhu cầu kcal/
 
 Trẻ chậm tăng trưởng cần được chỉ định nhập viện trong các tình huống:
 
-1. Suy dinh dưỡng cấp nặng ($SD D < -3\text{SD}$ hoặc có phù).
+1. Suy dinh dưỡng cấp nặng ($SD D < -3\text{SD}$ hoặc có [[Phù]]).
 2. Cần thực hiện các khảo sát cận lâm sàng chuyên sâu để tìm nguyên nhân bệnh lý thực thể phức tạp.
 3. Nghi ngờ có rối loạn giả tạo do người chăm sóc (hội chứng Munchausen) hoặc bị lạm dụng/ngược đãi nghiêm trọng.
 
@@ -154,9 +164,9 @@ Trẻ chậm tăng trưởng cần được chỉ định nhập viện trong c�
 - **Mô Tả Chi Tiết:** Lưu đồ thuật toán chẩn đoán phân nhánh từ Hỏi bệnh sử & Khám lâm sàng:
     - Nếu _Có chậm phát triển / rối loạn thần kinh cơ_ $\rightarrow$ Hỏi bệnh sử nuôi ăn, lượng calo, xét nghiệm TORCH, microarray, hội chẩn chuyên gia ngôn ngữ.
     - Nếu _Gợi ý bệnh thực thể_ $\rightarrow$ Khảo sát theo cơ quan:
-        - _Nôn ói/trớ nhiều:_ Chụp đường tiêu hóa trên, đo pH dạ dày, xét nghiệm chuyển hóa.
+        - _Nôn ói/trớ nhiều:_ Chụp [[Đường tiêu hóa]] trên, đo pH dạ dày, xét nghiệm chuyển hóa.
         - _Tiêu chảy/bụng chướng:_ Soi phân mỡ, tìm KST, Celiac panel, test Clo mồ hôi, kẽm.
-        - _Ngáy/thở bất thường:_ X-quang cổ nghiêng, hội chẩn Tai Mũi Họng.
+        - _Ngáy/thở bất thường:_ [[X-quang]] cổ nghiêng, hội chẩn Tai Mũi Họng.
     - Nếu _Không gợi ý bệnh thực thể_ $\rightarrow$ Đánh giá vấn đề nuôi ăn & tâm lý xã hội $\rightarrow$ Làm xét nghiệm sàng lọc (CTM, sinh hóa, TPTNT, Celiac, Clo mồ hôi, TSH) $\rightarrow$ Phân loại Lượng nhập không đủ / Ghét ăn / Yếu tố tâm lý xã hội.
 
 ---
@@ -169,4 +179,4 @@ Trẻ chậm tăng trưởng cần được chỉ định nhập viện trong c�
 
 ---
 
-📏 _Bài học về **Tiếp cận trẻ chậm tăng trưởng** đã hoàn thành trọn vẹn và chính xác tuyệt đối theo nguồn YDS. Bạn có muốn tiếp tục biên soạn bài học theo cấu trúc này cho bài tiếp theo: **Bài 27: Tiếp cận đau bụng ở trẻ em** hoặc **Bài 33: Suy dinh dưỡng ở trẻ em** không?_
+📏 _Bài học về **Tiếp cận trẻ chậm tăng trưởng** đã hoàn thành trọn vẹn và chính xác tuyệt đối theo nguồn YDS. Bạn có muốn tiếp tục biên soạn bài học theo cấu trúc này cho bài tiếp theo: **Bài 27: Tiếp cận [[Đau bụng]] ở trẻ em** hoặc **Bài 33: Suy dinh dưỡng ở trẻ em** không?_

@@ -1,3 +1,13 @@
+---
+title: "Mẫu bệnh án Nhi khoa"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
+---
+
 # NỘI DUNG CHI TIẾT: CÁCH LÀM BỆNH ÁN NHI KHOA
 
 ---
@@ -32,7 +42,7 @@
     - Các dị tật bẩm sinh được phát hiện ngay sau khi sinh.
 - **Phát triển thể chất, tâm thần, vận động:** Đánh giá sự phát triển của trẻ theo mốc tuổi nhằm phát hiện các di chứng não, bệnh lý chuyển hóa bẩm sinh hoặc di truyền.
 - **Dinh dưỡng:** Khai thác chế độ nuôi dưỡng để phát hiện các bệnh lý dinh dưỡng (thiếu máu, các thể suy dinh dưỡng) hoặc vấn đề nuôi dưỡng chưa đúng cách.
-- **Chủng ngừa:** Đánh giá các mũi tiêm trong và ngoài Chương trình Tiêm chủng mở rộng (Lao, Bạch hầu - Ho gà - Uốn ván - Bại liệt - HiB - Viêm gan B, Sởi, Rotarix, Synflorix, Cúm, Sởi - Quai bị - Rubella, Thủy đậu, Viêm não Nhật Bản B, Viêm gan A, Pneumo 23, Meningo AC, Typhim, Cervarix/Gardasil) và kiểm tra sẹo BCG.
+- **Chủng ngừa:** Đánh giá các mũi tiêm trong và ngoài Chương trình [[[[Vắc-xin]]|Tiêm chủng]] mở rộng (Lao, Bạch hầu - Ho gà - Uốn ván - Bại liệt - HiB - Viêm [[Gan]] B, Sởi, Rotarix, Synflorix, Cúm, Sởi - Quai bị - Rubella, Thủy đậu, [[Viêm não]] Nhật Bản B, Viêm [[Gan]] A, Pneumo 23, Meningo AC, Typhim, Cervarix/Gardasil) và kiểm tra sẹo BCG.
 - **Dị ứng:** Tiền căn dị ứng thuốc, thức ăn hoặc các dị nguyên khác.
 - **Bệnh lý:** Các bệnh lý nội/ngoại khoa, cấp/mạn tính, bẩm sinh/mắc phải từ lúc sinh ra đến thời điểm nhập viện, phương pháp điều trị và kết quả. Khai thác thêm thói quen ăn uống, sinh hoạt, điều kiện môi trường sống.
 - **Dịch tễ:** Tiền căn tiếp xúc người mắc bệnh truyền nhiễm, yếu tố du lịch hoặc sinh sống trong vùng dịch tễ.
@@ -51,7 +61,7 @@
     - Khai thác đầy đủ tính chất của từng triệu chứng cơ năng.
     - Sắp xếp các triệu chứng theo đúng **thứ tự thời gian**.
     - Khai thác các điều trị trước đó: Điều trị ở đâu, dùng thuốc gì, liều lượng, đường dùng (uống/tiêm), thời gian điều trị và đáp ứng của trẻ.
-    - Khai thác các **triệu chứng nguy hiểm toàn thân**: Bỏ bú hoặc không uống được, nôn tất cả mọi thứ, co giật, li bì/khó đánh thức.
+    - Khai thác các **triệu chứng nguy hiểm toàn thân**: Bỏ bú hoặc không uống được, [[Nôn ói|nôn]] tất cả mọi thứ, [[Co giật]], li bì/khó đánh thức.
     - Khai thác các triệu chứng âm tính có giá trị để loại trừ chẩn đoán phân biệt.
 - **Tình trạng lúc nhập viện:** Ghi nhận tổng trạng, sinh hiệu và các cơ quan ghi nhận bất thường lúc vào viện.
 - **Diễn tiến sau nhập viện:** Diễn tiến triệu chứng cơ năng, sự thay đổi của triệu chứng, điều trị và đáp ứng với điều trị cho đến thời điểm khám. Chú ý các biến cố quan trọng xảy ra trong quá trình nằm viện.
@@ -62,7 +72,7 @@
 
 ### 5.1. Khám Tổng Trạng và Đánh Giá Tri Giác
 
-- **Đánh giá tri giác:** Xác định trẻ tỉnh táo, kích thích, lừ đừ, li bì hay hôn mê theo thang điểm AVPU hoặc thang điểm Glasgow.
+- **Đánh giá tri giác:** Xác định trẻ tỉnh táo, kích thích, lừ đừ, li bì hay [[Hôn mê]] theo thang điểm AVPU hoặc thang điểm Glasgow.
     - _AVPU:_ **A** (Alert - Tỉnh táo), **V** (Voice - Đáp ứng với lời nói), **P** (Pain - Đáp ứng với kích thích đau), **U** (Unresponsive - Không đáp ứng).
 
 ---
@@ -102,7 +112,7 @@
 ||Không đáp ứng|1|
 |**Lời nói**|Định hướng tốt|5|
 ||Nhầm lẫn|4|
-||Từ ngữ không phù hợp|3|
+||Từ ngữ không [[Phù]] hợp|3|
 ||Âm thanh vô nghĩa|2|
 ||Không đáp ứng|1|
 |**Vận động**|Theo yêu cầu|6|
@@ -112,7 +122,7 @@
 ||Gồng mất não|2|
 ||Không đáp ứng|1|
 
-- **Phân độ rối loạn tri giác theo Glasgow:**
+- **Phân độ [[Hôn mê|rối loạn tri giác]] theo Glasgow:**
     - Glasgow $\le 8$: Rối loạn tri giác nặng.
     - Glasgow 9 - 12: Rối loạn tri giác trung bình.
     - Glasgow 12 - 14: Rối loạn tri giác nhẹ.
@@ -122,7 +132,7 @@
 - **Sinh hiệu:** Mạch, huyết áp, nhiệt độ, nhịp thở.
 - **Chỉ số nhân trắc:** Cân nặng (kg, đối với sơ sinh tính bằng gram), chiều cao (cm), vòng đầu, vòng ngực, vòng cánh tay.
 - **Diện tích bề mặt cơ thể:** Tính theo công thức Mosteller: $$\text{Diện tích da (m}^2\text{)} = \sqrt{\frac{\text{Cân nặng (kg)} \times \text{Chiều cao (cm)}}{3600}}$$
-- **Da niêm và phù:** Khám màu sắc da niêm, lông, tóc, móng, ban da; đánh giá tình trạng phù toàn thân hay phù khu trú; khám hệ thống hạch bạch huyết.
+- **Da niêm và phù:** Khám màu sắc da niêm, lông, tóc, móng, ban da; đánh giá tình trạng [[Phù|phù toàn thân]] hay phù khu trú; khám hệ thống hạch bạch huyết.
 
 ### 5.2. Đầu - Mặt - Cổ
 
@@ -131,8 +141,8 @@
 ### 5.3. Lồng Ngực
 
 - Quan sát hình dạng lồng ngực (dấu hiệu đối xứng hay mất đối xứng hai bên).
-- **Khám tim:** Xác định nhịp tim, tiếng T1, T2, T3, T4, âm thổi, vị trí mỏm tim, các dấu hiệu tim to.
-- **Khám phổi:** Khám rung thanh (trẻ lớn), nghe tiếng thở bất thường, ran phổi, các dấu hiệu nguy kịch hô hấp và suy hô hấp.
+- **Khám [[Tim]]:** Xác định nhịp [[Tim]], tiếng T1, T2, T3, T4, âm thổi, vị trí mỏm tim, các dấu hiệu tim to.
+- **Khám [[Phổi]]:** Khám rung thanh (trẻ lớn), nghe tiếng thở bất thường, ran [[Phổi]], các dấu hiệu nguy kịch hô hấp và [[Suy hô hấp]].
 
 ### 5.4. Bụng
 
@@ -210,9 +220,9 @@
 
 ## 11. Điều Trị
 
-1. **Điều trị cấp cứu:** Thực hiện theo thứ tự ưu tiên **ABCDEs** (thở oxy, chống sốc, thủ thuật Heimlich...).
-2. **Điều trị nguyên nhân:** Kháng sinh (nhiễm trùng), kháng virus (nhiễm siêu vi), thuốc giãn phế quản/kháng viêm (suyễn)....
-3. **Điều trị triệu chứng - biến chứng:** Hạ sốt, lau mát, bù dịch qua đường uống/tĩnh mạch, giảm ho, long đàm....
+1. **Điều trị cấp cứu:** Thực hiện theo thứ tự ưu tiên **ABCDEs** (thở oxy, chống [[Sốc]], thủ thuật Heimlich...).
+2. **Điều trị nguyên nhân:** [[Kháng sinh]] (nhiễm trùng), kháng virus (nhiễm siêu vi), thuốc giãn phế quản/kháng viêm (suyễn)....
+3. **Điều trị triệu chứng - biến chứng:** Hạ [[Sốt]], lau mát, bù dịch qua đường uống/tĩnh mạch, giảm ho, long đàm....
 4. **Điều trị bệnh đi kèm**.
 
 ---
@@ -238,12 +248,12 @@
 - Ghi đầy đủ triệu chứng cơ năng và thực thể (gồm cả triệu chứng âm tính có giá trị).
 - Ghi chẩn đoán và chẩn đoán phân biệt mỗi ngày.
 - Ghi nhận kết quả xét nghiệm cận lâm sàng ngay bên dưới phần diễn tiến.
-- Nêu rõ lý do sử dụng các thuốc kháng sinh, thuốc độc, thuốc gây nghiện hoặc các thuốc đặc biệt.
+- Nêu rõ lý do sử dụng các thuốc [[Kháng sinh]], thuốc độc, thuốc gây nghiện hoặc các thuốc đặc biệt.
 
 ### 14.2. Phần Ghi Y Lệnh Điều Trị
 
 - **Tư thế bệnh nhân** và **thông khí hỗ trợ** (oxy, NCPAP, thở máy).
-- Đánh số thứ tự ngày dùng thuốc đối với kháng sinh, thuốc độc, thuốc gây nghiện, corticosteroid.
+- Đánh số thứ tự ngày dùng thuốc đối với kháng sinh, thuốc độc, thuốc gây nghiện, [[[[Corticoid]]|corticosteroid]].
 - **Thứ tự ghi thuốc:** Thuốc truyền tĩnh mạch $\rightarrow$ Tiêm tĩnh mạch $\rightarrow$ Thuốc uống $\rightarrow$ Thuốc dùng ngoài da.
 - **Thứ tự dạng thuốc uống:** Viên $\rightarrow$ Gói $\rightarrow$ Siro.
 - Các liệu pháp hỗ trợ (vật lý trị liệu hô hấp, rửa/thay băng vết thương).

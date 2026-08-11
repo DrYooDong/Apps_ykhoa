@@ -1,3 +1,13 @@
+---
+title: "Cập nhật 2026 _ Dinh dưỡng ở bệnh nhân nặng (P2)"
+type: disease
+specialty: "Hồi sức cấp cứu"
+tags:
+  - loai/benh-ly
+  - y-khoa/hoi-suc
+updated: "2026-08-11"
+---
+
 # TÓM TẮT NGHIÊN CỨU: LIỆU PHÁP DINH DƯỠNG Ở NGƯỜI LỚN BỊ BỆNH NGUY KỊCH (PHẦN 2)
 
 ## 1. Nội Dung Sinh Lý Học Chi Tiết
@@ -6,7 +16,7 @@
 
 #### Lý thuyết về liều cao và thực tế lâm sàng
 
-Tình trạng mất protein nghiêm trọng xảy ra rất sớm trong giai đoạn cấp tính của bệnh nguy kịch đã hình thành nên giả thuyết cho rằng bổ sung lượng protein cao có thể giúp cải thiện cân bằng nitơ, giảm đề kháng đồng hóa và thúc đẩy quá trình tổng hợp cơ. Từ giả thuyết này, Hướng dẫn Dinh dưỡng Hồi sức tích cực năm 2016 của Hiệp hội Dinh dưỡng Tĩnh mạch và Đường tiêu hóa Hoa Kỳ (ASPEN) phối hợp cùng Hội Y học Hồi sức tích cực (SCCM) đã khuyến nghị một khoảng liều lượng protein khá rộng từ **1,2 đến 2,0 g/kg/ngày**.
+Tình trạng mất protein nghiêm trọng xảy ra rất sớm trong giai đoạn cấp tính của bệnh nguy kịch đã hình thành nên giả thuyết cho rằng bổ sung lượng protein cao có thể giúp cải thiện cân bằng nitơ, giảm đề kháng đồng hóa và thúc đẩy quá trình tổng hợp cơ. Từ giả thuyết này, Hướng dẫn Dinh dưỡng Hồi sức tích cực năm 2016 của Hiệp hội Dinh dưỡng Tĩnh mạch và [[Đường tiêu hóa]] Hoa Kỳ (ASPEN) phối hợp cùng Hội Y học Hồi sức tích cực (SCCM) đã khuyến nghị một khoảng liều lượng protein khá rộng từ **1,2 đến 2,0 g/kg/ngày**.
 
 Tuy nhiên, các khảo sát thực tế cho thấy bệnh nhân ICU nhận được lượng protein ít hơn nhiều so với khuyến cáo. Một cuộc khảo sát toàn cầu tại 187 khoa ICU cho thấy những bệnh nhân nguy kịch được kê đơn liều protein theo khuyến nghị là 1,3 g/kg/ngày trên thực tế **chỉ nhận được khoảng 55% lượng protein đích** (tương đương 0,7 g/kg/ngày).
 
@@ -25,8 +35,8 @@ Phát hiện này nhấn mạnh một giới hạn chuyển hóa nội sinh nghi
 
 Những lợi ích quan sát được từ lượng protein cao trong các nghiên cứu chất lượng thấp trước đây đã hoàn toàn không thể tái hiện trong các thử nghiệm lâm sàng ngẫu nhiên có đối chứng quy mô lớn và thiết kế chặt chẽ:
 
-- **Thử nghiệm EFFORT Protein (1.301 bệnh nhân)**: So sánh liều protein cao (≥ 2,2 g/kg/ngày) với liều thông thường (≤ 1,2 g/kg/ngày) được khởi đầu trong vòng 96 giờ sau khi nhập viện ICU. Kết quả cho thấy không có sự khác biệt về thời gian xuất viện còn sống ở ngày thứ 60 hoặc các kết cục phụ giữa hai nhóm. Đáng chú ý, **tín hiệu gây hại (harm signals) đã xuất hiện ở nhóm bệnh nhân có mức độ nghiêm trọng của bệnh cao hơn và ở những người bị tổn thương thận cấp (AKI) chưa nhận liệu pháp thay thế thận** khi họ được dùng protein liều cao. Ngoài ra, phân tích dưới nhóm cũng chỉ ra rằng việc tăng liều protein không giúp cải thiện kết cục ở những bệnh nhân có suy dinh dưỡng từ trước.
-- **Thử nghiệm PRECISE (935 bệnh nhân)**: Sử dụng chế độ dinh dưỡng đường tiêu hóa đẳng calo (isocaloric) để so sánh giữa protein liều tiêu chuẩn (1,3 g/kg/ngày) và liều cao (2,0 g/kg/ngày). Nhóm nhận **protein liều cao gặp nhiều biến cố bất lợi liên quan đến nuôi ăn đường tiêu hóa hơn** và có **điểm số chất lượng cuộc sống liên quan đến sức khỏe thấp hơn đáng kể sau 6 tháng xuất viện ICU**.
+- **Thử nghiệm EFFORT Protein (1.301 bệnh nhân)**: So sánh liều protein cao (≥ 2,2 g/kg/ngày) với liều thông thường (≤ 1,2 g/kg/ngày) được khởi đầu trong vòng 96 giờ sau khi nhập viện ICU. Kết quả cho thấy không có sự khác biệt về thời gian xuất viện còn sống ở ngày thứ 60 hoặc các kết cục phụ giữa hai nhóm. Đáng chú ý, **tín hiệu gây hại (harm signals) đã xuất hiện ở nhóm bệnh nhân có mức độ nghiêm trọng của bệnh cao hơn và ở những người bị tổn thương [[Thận]] cấp (AKI) chưa nhận liệu pháp thay thế [[Thận]]** khi họ được dùng protein liều cao. Ngoài ra, phân tích dưới nhóm cũng chỉ ra rằng việc tăng liều protein không giúp cải thiện kết cục ở những bệnh nhân có suy dinh dưỡng từ trước.
+- **Thử nghiệm PRECISE (935 bệnh nhân)**: Sử dụng chế độ dinh dưỡng [[Đường tiêu hóa]] đẳng calo (isocaloric) để so sánh giữa protein liều tiêu chuẩn (1,3 g/kg/ngày) và liều cao (2,0 g/kg/ngày). Nhóm nhận **protein liều cao gặp nhiều biến cố bất lợi liên quan đến nuôi ăn đường tiêu hóa hơn** và có **điểm số chất lượng cuộc sống liên quan đến sức khỏe thấp hơn đáng kể sau 6 tháng xuất viện ICU**.
 - **Thử nghiệm TARGET Protein (3.412 bệnh nhân)**: So sánh việc tăng cường cung cấp protein qua đường tiêu hóa (sử dụng công thức đậm đặc protein 100 g/L) với chế độ thông thường (công thức tiêu chuẩn 63 g/L) đẳng calo. Kết quả cho thấy không có sự khác biệt về số ngày xuất viện và còn sống ở ngày thứ 90. Đồng thời, phân tích dưới nhóm gợi ý **khả năng gây hại ở những bệnh nhân bắt đầu nhận liệu pháp thay thế thận mới**.
 
 Các dữ liệu này được củng cố bởi hai phân tích gộp lớn khẳng định protein liều cao không mang lại lợi ích vượt trội, thậm chí có thể gây nguy hiểm cho bệnh nhân AKI và bệnh nhân có mức độ nặng cao. Do đó, Hướng dẫn thực hành lâm sàng cập nhật năm 2023 của ESPEN đã khuyến nghị **tăng dần liều protein một cách thận trọng để đạt mức 1,3 g/kg/ngày trong tuần đầu tiên nằm ICU**.
@@ -37,21 +47,21 @@ Các dữ liệu này được củng cố bởi hai phân tích gộp lớn kh�
 
 #### Rối loạn nhu động ruột và phân loại biến cố bất lợi
 
-Các biến cố bất lợi khi nuôi ăn qua đường tiêu hóa rất thường gặp và liên quan chặt chẽ đến tình trạng rối loạn nhu động ruột xuất hiện sớm trong bệnh nguy kịch. Việc thiết lập các công cụ giám sát phù hợp tại giường bệnh là tối quan trọng nhằm đảm bảo an toàn cho bệnh nhân.
+Các biến cố bất lợi khi nuôi ăn qua đường tiêu hóa rất thường gặp và liên quan chặt chẽ đến tình trạng rối loạn nhu động ruột xuất hiện sớm trong bệnh nguy kịch. Việc thiết lập các công cụ giám sát [[Phù]] hợp tại giường bệnh là tối quan trọng nhằm đảm bảo an toàn cho bệnh nhân.
 
 Các dấu hiệu lâm sàng thường gặp tại giường bao gồm:
 
 - Âm ruột giảm/mất (hypoactive bowel sounds).
 - Chướng bụng (abdominal distention).
-- Buồn nôn, nôn (nausea, vomiting).
+- [[Nôn ói|Buồn nôn]], nôn (nausea, vomiting).
 - Bí trung đại tiện hoặc táo bón (obstipation, constipation).
 
-Nhóm Công tác về Chức năng Tiêu hóa của Hiệp hội Y học Hồi sức Châu Âu (ESICM) đã phân loại chi tiết mức độ nghiêm trọng của các biến cố bất lợi này theo một thang liên tục bao gồm cả tiêu chảy, xuất huyết tiêu hóa, tăng áp lực ổ bụng, hội chứng chèn ép khoang ổ bụng, và thiếu máu cục bộ hoặc nhồi máu ruột. Trong thực hành lâm sàng, các dấu hiệu này được chia thành hai nhóm chính để định hướng xử trí:
+Nhóm Công tác về Chức năng Tiêu hóa của Hiệp hội Y học Hồi sức Châu Âu (ESICM) đã phân loại chi tiết mức độ nghiêm trọng của các biến cố bất lợi này theo một thang liên tục bao gồm cả [[Tiêu chảy]], [[Xuất huyết]] tiêu hóa, tăng áp lực ổ bụng, hội chứng chèn ép khoang ổ bụng, và thiếu máu cục bộ hoặc nhồi máu ruột. Trong thực hành lâm sàng, các dấu hiệu này được chia thành hai nhóm chính để định hướng xử trí:
 
-1. **Nhóm nguy cơ thấp (Low-risk features)**: Gồm các dấu hiệu và triệu chứng điển hình (như buồn nôn, chướng bụng nhẹ). Xử trí bằng cách tạm dừng hoặc duy trì tốc độ nuôi ăn hiện tại cho đến khi các triệu chứng thuyên giảm. Tuy nhiên, cần lưu ý ở những bệnh nhân rất nặng, các triệu chứng ban đầu trông có vẻ "nguy cơ thấp" có thể là biểu hiện tiến triển của một biến chứng nguy cơ cao.
+1. **Nhóm nguy cơ thấp (Low-risk features)**: Gồm các dấu hiệu và triệu chứng điển hình (như [[Nôn ói|buồn nôn]], chướng bụng nhẹ). Xử trí bằng cách tạm dừng hoặc duy trì tốc độ nuôi ăn hiện tại cho đến khi các triệu chứng thuyên giảm. Tuy nhiên, cần lưu ý ở những bệnh nhân rất nặng, các triệu chứng ban đầu trông có vẻ "nguy cơ thấp" có thể là biểu hiện tiến triển của một biến chứng nguy cơ cao.
 2. **Nhóm nguy cơ cao (High-risk features)**: Gồm tăng áp lực ổ bụng nghiêm trọng, hội chứng chèn ép khoang ổ bụng, và thiếu máu cục bộ ruột. Xử trí bằng cách **ngừng nuôi ăn đường tiêu hóa ngay lập tức** và tiến hành đánh giá lại toàn diện tình trạng lâm sàng.
 
-#### Tiếp cận riêng biệt đối với tiêu chảy và xuất huyết tiêu hóa
+#### Tiếp cận riêng biệt đối với [[Tiêu chảy]] và [[Xuất huyết]] tiêu hóa
 
 Tiêu chảy và xuất huyết tiêu hóa nên được đánh giá độc lập vì nuôi ăn đường tiêu hóa hiếm khi cần phải dừng lại hoàn toàn vì những lý do này.
 
@@ -62,13 +72,13 @@ Tiêu chảy và xuất huyết tiêu hóa nên được đánh giá độc lậ
 
 ### Quản Lý Rối Loạn Chuyển Hóa và Kiểm Soát Đường Huyết (Metabolic Instability and Glycemic Control)
 
-Sự bất ổn định về chuyển hóa trong giai đoạn cấp tính của bệnh nguy kịch đặc trưng bởi sự gia tăng mạnh mẽ quá trình tân tạo đường nội sinh tại gan. Khi kết hợp nguồn glucose nội sinh này với nguồn năng lượng ngoại sinh được cung cấp (đặc biệt là khi nuôi ăn toàn liều ngay từ đầu) sẽ dễ dẫn đến tình trạng **quá tải dinh dưỡng tương đối (relative overfeeding)**.
+Sự bất ổn định về chuyển hóa trong giai đoạn cấp tính của bệnh nguy kịch đặc trưng bởi sự gia tăng mạnh mẽ quá trình tân tạo đường nội sinh tại [[Gan]]. Khi kết hợp nguồn glucose nội sinh này với nguồn năng lượng ngoại sinh được cung cấp (đặc biệt là khi nuôi ăn toàn liều ngay từ đầu) sẽ dễ dẫn đến tình trạng **quá tải dinh dưỡng tương đối (relative overfeeding)**.
 
 Hậu quả của quá tải dinh dưỡng tương đối bao gồm:
 
 - Làm trầm trọng thêm tình trạng tăng đường huyết do stress.
 - Gia tăng mức độ dao động của đường huyết (glycemic variability).
-- Tăng nhu cầu sử dụng insulin ngoại sinh để kiểm soát đường huyết.
+- Tăng nhu cầu sử dụng [[Insulin]] ngoại sinh để kiểm soát đường huyết.
 
 Dựa trên kết quả từ nhiều thử nghiệm lâm sàng ngẫu nhiên có đối chứng, Hướng dẫn kiểm soát đường huyết năm 2024 của SCCM khuyến nghị kiểm soát tình trạng tăng đường huyết ở bệnh nhân hồi sức bằng cách **duy trì nồng độ glucose máu dưới 180 mg/dL (10 mmol/L)**.
 
@@ -105,13 +115,13 @@ Kết quả cho thấy nhóm hạn chế calo (slow ramp-up) có kết cục lâ
 
 ### Loại Bỏ Việc Theo Dõi Thể Tích Dạ Dày Tồn Dư (Gastric Residual Volume Monitoring)
 
-Mặc dù thiếu hụt các bằng chứng khoa học chứng minh thể tích dạ dày tồn dư (GRV) là một chỉ số chính xác phản ứng tốc độ làm rỗng dạ dày hoặc nguy cơ hít sặc và viêm phổi, việc theo dõi GRV thường quy vẫn tồn tại dai dẳng trong quy trình chăm sóc bệnh nhân ICU nhận dinh dưỡng đường tiêu hóa.
+Mặc dù thiếu hụt các bằng chứng khoa học chứng minh thể tích dạ dày tồn dư (GRV) là một chỉ số chính xác phản ứng tốc độ làm rỗng dạ dày hoặc nguy cơ hít sặc và viêm [[Phổi]], việc theo dõi GRV thường quy vẫn tồn tại dai dẳng trong quy trình chăm sóc bệnh nhân ICU nhận dinh dưỡng đường tiêu hóa.
 
 Tuy nhiên, giá trị của việc làm này đã bị bác bỏ hoàn toàn qua các nghiên cứu lớn trong hai thập kỷ qua:
 
 - Một nghiên cứu trên bệnh nhân thở máy cho thấy **không có mối liên quan nào giữa thể tích dạ dày tồn dư và tình trạng hít sặc** (được đánh giá khách quan bằng kính hiển vi so màu và khối phổ). Tỷ lệ hít sặc là tương đương nhau bất kể GRV của bệnh nhân dưới 50 ml hay trên 400 ml.
 - **Thử nghiệm REGANE**: So sánh việc áp dụng ngưỡng GRV cao (500 ml) với ngưỡng thấp (200 ml) để tạm dừng nuôi ăn. Kết quả ghi nhận nhóm áp dụng ngưỡng cao (500 ml) có **tỷ lệ biến chứng tiêu hóa thấp hơn và hiệu suất truyền đạt dinh dưỡng tốt hơn**.
-- **Thử nghiệm NUTRIREA-1**: Cho thấy **không có sự khác biệt** về tỷ lệ viêm phổi liên quan đến máy thở (VAP), tỷ lệ tử vong, hay thời gian nằm ICU giữa nhóm được theo dõi GRV thường quy và nhóm hoàn toàn không theo dõi GRV.
+- **Thử nghiệm NUTRIREA-1**: Cho thấy **không có sự khác biệt** về tỷ lệ viêm [[Phổi]] liên quan đến máy thở (VAP), tỷ lệ tử vong, hay thời gian nằm ICU giữa nhóm được theo dõi GRV thường quy và nhóm hoàn toàn không theo dõi GRV.
 - Một phân tích gộp từ 7 thử nghiệm lâm sàng (trên 1.240 bệnh nhân) chỉ ra rằng việc **không theo dõi GRV giúp giảm đáng kể các lần gián đoạn nuôi dưỡng không cần thiết**, trong khi không làm thay đổi tỷ lệ viêm phổi, thời gian nằm viện hay tỷ lệ tử vong.
 
 Do đó, việc theo dõi GRV thường quy chỉ gây cản trở việc cung cấp đủ dinh dưỡng cho bệnh nhân mà không mang lại bất kỳ lợi ích lâm sàng nào (kể cả ở nhóm bệnh nhân ICU ngoại khoa và nội khoa). Hướng dẫn hiện tại **khuyến cáo mạnh mẽ không nên theo dõi GRV thường quy** như một dấu hiệu để đánh giá biến cố bất lợi của nuôi ăn đường tiêu hóa.
@@ -126,7 +136,7 @@ Do đó, việc theo dõi GRV thường quy chỉ gây cản trở việc cung c
 
 |Chủ đề & Thử nghiệm (Năm)|Cỡ mẫu & Quần thể|Can thiệp|So sánh|Kết quả chính|Biến chứng|
 |:--|:--|:--|:--|:--|:--|
-|**Hội chứng Nuôi ăn lại**REFEEDING (2015)|339 bệnh nhân tại các ICU nội-ngoại khoa|20 kcal/giờ trong 2 ngày, sau đó tăng dần chậm dựa trên nồng độ phosphate|Chăm sóc tiêu chuẩn (Standard care)|Nhóm hạn chế calo có số ngày sống sót tại ngày 60 và 90 nhiều hơn|Nhóm chăm sóc tiêu chuẩn có nhiều đợt nhiễm trùng, tăng đường huyết và cần nhiều insulin hơn|
+|**Hội chứng Nuôi ăn lại**REFEEDING (2015)|339 bệnh nhân tại các ICU nội-ngoại khoa|20 kcal/giờ trong 2 ngày, sau đó tăng dần chậm dựa trên nồng độ phosphate|Chăm sóc tiêu chuẩn (Standard care)|Nhóm hạn chế calo có số ngày sống sót tại ngày 60 và 90 nhiều hơn|Nhóm chăm sóc tiêu chuẩn có nhiều đợt nhiễm trùng, tăng đường huyết và cần nhiều [[Insulin]] hơn|
 |**Liều lượng Protein**EFFORT Protein (2023)|1.301 bệnh nhân thở máy tại các ICU nội-ngoại khoa|Liều protein cao (≥ 2,2 g/kg/ngày)|Liều protein thấp (≤ 1,2 g/kg/ngày)|Không có sự khác biệt ý nghĩa về thời gian xuất viện còn sống ở ngày 60|Không có sự khác biệt về biến chứng tiêu hóa do nuôi ăn đường tiêu hóa|
 |**Liều lượng Protein**PRECISE (2024)|935 bệnh nhân thở máy tại các ICU nội-ngoại khoa|Liều protein cao (2,0 g/kg/ngày)|Protein tiêu chuẩn (1,3 g/kg/ngày)|Điểm số hữu dụng sức khỏe (chất lượng cuộc sống) sau 6 tháng ở nhóm protein cao thấp hơn|Nhóm protein cao gặp nhiều biến chứng tiêu hóa do nuôi ăn đường tiêu hóa hơn|
 |**Liều lượng Protein**TARGET Protein (2025)|3.397 bệnh nhân tại 8 ICU nội-ngoại khoa ở Úc và New Zealand|Công thức đẳng calo, đậm đặc protein (100 g/L)|Công thức đẳng calo, protein tiêu chuẩn (63 g/L)|Không có sự khác biệt ý nghĩa về số ngày sống và xuất viện ở ngày 90|Không có sự khác biệt ý nghĩa về tỷ lệ cần liệu pháp thay thế thận mới|

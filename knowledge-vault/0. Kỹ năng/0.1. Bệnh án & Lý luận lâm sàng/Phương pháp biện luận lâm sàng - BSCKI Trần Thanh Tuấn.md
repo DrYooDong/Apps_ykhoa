@@ -1,9 +1,13 @@
 ---
 title: "Phương pháp biện luận lâm sàng - BSCKI Trần Thanh Tuấn"
-specialty: "Kỹ năng"
-tags: ["Kỹ năng", "Bệnh án"]
-last_updated: "2026-07-28"
+type: skill
+specialty: "Kỹ năng lâm sàng"
+tags:
+  - loai/ky-nang
+  - y-khoa/ky-nang
+updated: "2026-08-11"
 ---
+
 # Phương pháp biện luận - BSCKI. Trần Thanh Tuấn
 
 Nguồn: **SINH VIÊN Y KHOA**
@@ -40,9 +44,9 @@ Có **hai phương pháp** biện luận thường được sử dụng:
 
 Với cách phân tích này có **3 tình huống** xảy ra.
 
-+ Nếu phù hợp thì nghĩ đến bệnh lý đó và cần thêm các dữ kiện khác để củng cố chẩn đoán.
++ Nếu [[Phù]] hợp thì nghĩ đến bệnh lý đó và cần thêm các dữ kiện khác để củng cố chẩn đoán.
 
-+ Nếu ít phù hợp thì không loại trừ và cần dùng thêm các dữ kiện khác để xác định hoặc loại trừ chẩn đoán.
++ Nếu ít [[Phù]] hợp thì không loại trừ và cần dùng thêm các dữ kiện khác để xác định hoặc loại trừ chẩn đoán.
 
 + Nếu không phù hợp thì loại trừ chẩn đoán
 
@@ -76,10 +80,10 @@ Bệnh nhân nam **50 tuổi**.
 
 **Bệnh sử**:
 
-- Cách nhập viện 5 ngày, bệnh nhân sốt nhẹ, kèm theo cảm giác mệt mỏi và đau nhức người. Thỉnh thoảng bệnh nhân có hắt hơi và chảy nước mũi trong. Bệnh nhân tự mua paracetamol uống, khoảng 2 ngày thì hết sốt và mệt mỏi.
+- Cách nhập viện 5 ngày, bệnh nhân [[[[Sốt]]|sốt nhẹ]], kèm theo cảm giác mệt mỏi và đau nhức người. Thỉnh thoảng bệnh nhân có hắt hơi và chảy nước mũi trong. Bệnh nhân tự mua [[Paracetamol]] uống, khoảng 2 ngày thì hết sốt và mệt mỏi.
 - Cách nhập viện 4 giờ, bệnh nhân đang ngồi uống bia với bạn (lúc này bệnh nhân đã uống khoảng 2 lon bia). Bệnh nhân đột ngột cảm thấy đau dữ dội ở vùng giữa ngực. Bệnh nhân nhân có cảm giác đè nặng ở vùng ngực và không lan. Kèm theo bệnh nhân vã mồ hôi. Bệnh nhân lấy tay ôm ngực. Lúc này bệnh nhân có hít thở hay xoay người thì không còn đau tăng lên. Bệnh nhân được đưa đi nằm nghỉ, sau 30 phút đau giảm chỉ còn khoảng 7/10 so với ban đầu. Do đau còn nên bệnh nhân được người quen đưa đến bệnh viện.
 
-**Tiền căn**: bệnh nhân có đái tháo đường. Không tăng huyết áp. Không tiền căn tắc tĩnh mạch trước đây. Gần đây không có ngồi lâu hay bất động lâu. Hay ăn mặn, hút thuốc lá khoảng 1 gói/ ngày. Uống rượu bia thỉnh thoảng.
+**Tiền căn**: bệnh nhân có đái tháo đường. Không [[Tăng huyết áp]]. Không tiền căn tắc tĩnh mạch trước đây. Gần đây không có ngồi lâu hay bất động lâu. Hay ăn mặn, hút thuốc lá khoảng 1 gói/ ngày. Uống rượu bia thỉnh thoảng.
 
 **Khám**: mạch 90 lần/ phút, huyết áp 130/80 mmHg. Các cơ quan không ghi nhận bất thường.
 
@@ -113,17 +117,17 @@ b. Mô tả **đặc điểm** đau ngực: đau ngực khiến bệnh nhân ph�
 
 c. Liệt kê các **nguyên nhân** thường gặp. Các nguyên nhân *thường gặp* của đau ngực cấp:
 
-- nhồi máu cơ tim cấp
+- nhồi máu [[Tim|cơ tim]] cấp
 
-- đau thắt ngực không ổn định
+- [[Đau ngực|đau thắt ngực]] không ổn định
 
 - phình bóc tách động mạch chủ ngực
 
-- thuyên tắc phổi
+- thuyên tắc [[Phổi]]
 
-- tràn khí màng phổi
+- tràn khí màng [[Phổi]]
 
-- viêm cơ tim
+- viêm [[Tim|cơ tim]]
 
 - viêm màng ngoài tim cấp
 
@@ -142,7 +146,7 @@ d. **Biện luận** từng nguyên nhân:
 
 - bệnh nhân phải có huyết áp cao lúc khám
 
-- trên cơ địa bệnh nhân có tăng huyết áp, huyết áp không điều trị hoặc không kiểm soát tốt.
+- trên cơ địa bệnh nhân có [[Tăng huyết áp]], huyết áp không điều trị hoặc không kiểm soát tốt.
 
 *→ Bệnh nhân này đau giữa ngực, không lan, huyết áp không cao và không có tiền sử tăng huyết áp nên không nghĩ đến phình bóc tách động mạch chủ ngực*
 
@@ -150,13 +154,13 @@ d. **Biện luận** từng nguyên nhân:
 
 - đau ngực kiểu màng phổi, nghĩa là đau tăng lên khi hít thở hay xoay trở. 
 
-- có thể kèm theo khó thở hay ho ra máu. 
+- có thể kèm theo [[Khó thở]] hay ho ra máu. 
 
 - khám có: mạch nhanh, dấu hiệu tắc tĩnh mạch chân (với biểu hiện chân to một bên). 
 
 - trên cơ địa nằm lâu bất động kéo dài.
 
-*→ Bệnh nhân đau ngực thì không thay đổi theo hô hấp và tư thế, không khó thở, không ho ra máu, mạch không nhanh, không có dấu hiệu tắc tĩnh mạch và không có nằm lâu bất động kéo dài nên không nghĩ đến thuyên tắc phổi.*
+*→ Bệnh nhân đau ngực thì không thay đổi theo hô hấp và tư thế, không [[Khó thở]], không ho ra máu, mạch không nhanh, không có dấu hiệu tắc tĩnh mạch và không có nằm lâu bất động kéo dài nên không nghĩ đến thuyên tắc phổi.*
 
 + Nếu bệnh nhân bị **tràn khí màng phổi** thì bệnh nhân sẽ: 
 
@@ -178,7 +182,7 @@ d. **Biện luận** từng nguyên nhân:
 
 *→ Bệnh nhân đau ngực dữ dội liên tục, có nhiều yếu tố nguy cơ tim mạch là nam giới, đái tháo đường, hút thuốc lá ăn mặn. Do đó nghĩ nhiều là nhồi máu cơ tim vì vậy cần làm thêm điện tâm đồ và men tim để khẳng định chẩn đoán.*
 
-+ **Đau thắt ngực không ổn định** có biểu hiện: 
++ **[[Đau ngực|Đau thắt ngực]] không ổn định** có biểu hiện: 
 
 - tương tự nhồi máu cơ tim
 
@@ -192,7 +196,7 @@ d. **Biện luận** từng nguyên nhân:
 
 - có bệnh cảnh nhiễm siêu vi trước đó.
 
-*→ Bệnh nhân này có đau ngực dữ dội, nghe không có tiếng cọ màng tim, tuy nhiên không thể loại trừ vì tiếng cọ chỉ xuất hiện khoảng 30% trường hợp. Bên cạnh đó bệnh nhân có biểu hiện của nhiễm siêu âm vi trước đó nên đây là một chẩn đoán phân biệt. Để chẩn đoán cần làm thêm điện tâm đồ và siêu âm tim.*
+*→ Bệnh nhân này có đau ngực dữ dội, nghe không có tiếng cọ màng tim, tuy nhiên không thể loại trừ vì tiếng cọ chỉ xuất hiện khoảng 30% trường hợp. Bên cạnh đó bệnh nhân có biểu hiện của nhiễm siêu âm vi trước đó nên đây là một chẩn đoán phân biệt. Để chẩn đoán cần làm thêm điện tâm đồ và [[Siêu âm|siêu âm tim]].*
 
 + **Viêm cơ tim** thì bệnh nhân thường sẽ: 
 
@@ -238,7 +242,7 @@ Cùng với ví dụ trên, đây là cách **biện luận tổng hợp**.
 - Bệnh nhân được nghĩ đến là ***nhồi máu cơ tim cấp*** vì bệnh nhân có đau ngực cấp và có nhiều yếu tố nguy cơ bệnh mạch vành (gồm: nam, đái tháo đường, hút thuốc lá, ăn mặn). → Cần làm thêm: điện tâm đồ và men tim để chẩn đoán.
 - Bệnh nhân được nghĩ đến là ***đau thắt ngực không ổn định*** vì bệnh nhân đau ngực trên cơ địa có nhiều yếu tố nguy cơ bệnh mạch vành
 - Bệnh nhân được nghĩ đến ***viêm cơ tim*** vì bệnh nhân đau ngực có tình trạng nhiễm siêu vi trước đó → Cần làm thêm men tim để chẩn đoán.
-- Bệnh nhân được nghĩ đến ***viêm màng ngoài tim*** vì bệnh nhân đau ngực có tình trạng nhiễm siêu vi trước đó. → Cần làm thêm điện tâm đồ và siêu âm tim để chẩn đoán.
+- Bệnh nhân được nghĩ đến ***viêm màng ngoài tim*** vì bệnh nhân đau ngực có tình trạng nhiễm siêu vi trước đó. → Cần làm thêm điện tâm đồ và [[Siêu âm|siêu âm tim]] để chẩn đoán.
 </aside>
 
 **Như vậy**: 

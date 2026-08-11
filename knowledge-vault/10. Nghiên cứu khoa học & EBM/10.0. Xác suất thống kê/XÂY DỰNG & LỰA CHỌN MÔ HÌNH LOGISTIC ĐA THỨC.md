@@ -1,16 +1,20 @@
 ---
 title: "XÂY DỰNG & LỰA CHỌN MÔ HÌNH LOGISTIC ĐA THỨC"
+type: guideline
 specialty: "Nghiên cứu khoa học & EBM"
-tags: ["Nghiên cứu khoa học & EBM", "Xác suất thống kê"]
-last_updated: "2026-07-28"
+tags:
+  - loai/benh-ly
+  - y-khoa/ebm
+updated: "2026-08-11"
 ---
+
 𝐗𝐚̂𝐲 𝐝𝐮̛̣𝐧𝐠 𝐯𝐚̀ 𝐥𝐮̛̣𝐚 𝐜𝐡𝐨̣𝐧 𝐦𝐨̂ 𝐡𝐢̀𝐧𝐡 𝐡𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜 (𝐏𝐡𝐚̂̀𝐧 𝟓 𝐜𝐮̉𝐚 𝐛𝐚̀𝐢 𝐇𝐨̂̀𝐢 𝐪𝐮𝐲 𝐥𝐨𝐠𝐢𝐬𝐭𝐢𝐜 đ𝐚 𝐭𝐡𝐮̛́𝐜)
 
 TS. Đào Hồng Nam
 
 Phần 5 trình bày quy trình xây dựng mô hình hồi quy logistic đa thức, bao gồm lựa chọn biến, đánh giá yếu tố gây nhiễu và tương tác, lựa chọn mô hình tối ưu, kiểm định và đánh giá độ ổn định của mô hình, xử lý dữ liệu thiếu, kèm các ví dụ minh họa (Ví dụ 11–15).
 
-Xây dựng một mô hình hồi quy logistic đa thức phù hợp không chỉ đơn thuần là lựa chọn những biến có giá trị p nhỏ rồi đưa vào phân tích. Mô hình cuối cùng cần phản ánh hợp lý cơ chế của hiện tượng nghiên cứu, tận dụng được các bằng chứng khoa học hiện có và đồng thời duy trì khả năng dự báo đối với những đối tượng ngoài bộ dữ liệu ban đầu. Vì vậy, quá trình xây dựng mô hình luôn đòi hỏi sự kết hợp giữa hiểu biết chuyên môn, cơ sở lý thuyết và các nguyên tắc thống kê. Một mô hình được lựa chọn chỉ dựa trên ý nghĩa thống kê hoặc các thuật toán lựa chọn biến tự động có thể hoạt động rất tốt trên bộ dữ liệu nghiên cứu nhưng lại dễ rơi vào tình trạng quá khớp (overfitting), làm giảm khả năng khái quát hóa khi áp dụng cho các quần thể khác (Harrell, 2015).
+Xây dựng một mô hình hồi quy logistic đa thức [[Phù]] hợp không chỉ đơn thuần là lựa chọn những biến có giá trị p nhỏ rồi đưa vào phân tích. Mô hình cuối cùng cần phản ánh hợp lý cơ chế của hiện tượng nghiên cứu, tận dụng được các bằng chứng khoa học hiện có và đồng thời duy trì khả năng dự báo đối với những đối tượng ngoài bộ dữ liệu ban đầu. Vì vậy, quá trình xây dựng mô hình luôn đòi hỏi sự kết hợp giữa hiểu biết chuyên môn, cơ sở lý thuyết và các nguyên tắc thống kê. Một mô hình được lựa chọn chỉ dựa trên ý nghĩa thống kê hoặc các thuật toán lựa chọn biến tự động có thể hoạt động rất tốt trên bộ dữ liệu nghiên cứu nhưng lại dễ rơi vào tình trạng quá khớp (overfitting), làm giảm khả năng khái quát hóa khi áp dụng cho các quần thể khác (Harrell, 2015).
 
 Cách tiếp cận trong xây dựng mô hình cũng đã thay đổi đáng kể trong những năm gần đây. Trọng tâm không còn là tìm kiếm tập hợp các biến cho giá trị p nhỏ nhất mà là xác định những biến thực sự có ý nghĩa đối với câu hỏi nghiên cứu. Quyết định đưa một biến vào mô hình vì thế thường dựa trên nhiều nguồn thông tin khác nhau, bao gồm bằng chứng từ y văn, hiểu biết về cơ chế bệnh sinh, ý nghĩa lâm sàng của biến và kết quả phân tích thống kê trên dữ liệu hiện có. Cách tiếp cận này giúp hạn chế việc giữ lại những biến chỉ xuất hiện do dao động ngẫu nhiên của mẫu nghiên cứu, đồng thời làm cho mô hình có cơ sở khoa học vững chắc hơn.
 
@@ -22,7 +26,7 @@ Quá trình xây dựng mô hình nên bắt đầu bằng việc xác định m
 
 Trong nghiên cứu Y–Dược, việc xây dựng mô hình khái niệm thường dựa trên tổng quan tài liệu, hướng dẫn chuyên môn và hiểu biết về cơ chế sinh lý bệnh. Cách tiếp cận này giúp hạn chế việc lựa chọn biến hoàn toàn dựa trên dữ liệu thu thập được, từ đó giảm nguy cơ phát hiện các mối liên quan ngẫu nhiên không có ý nghĩa sinh học.
 
-Trong nhiều nghiên cứu dịch tễ học hiện đại, sơ đồ nhân quả có hướng (Directed Acyclic Graph, DAG) được sử dụng để hỗ trợ xác định các biến cần hiệu chỉnh. Mặc dù DAG không thay thế các phương pháp phân tích thống kê, công cụ này giúp phân biệt biến gây nhiễu, biến trung gian và biến va chạm, từ đó hạn chế hiện tượng hiệu chỉnh không phù hợp (Greenland et al., 1999).
+Trong nhiều nghiên cứu dịch tễ học hiện đại, sơ đồ nhân quả có hướng (Directed Acyclic Graph, DAG) được sử dụng để hỗ trợ xác định các biến cần hiệu chỉnh. Mặc dù DAG không thay thế các phương pháp phân tích thống kê, công cụ này giúp phân biệt biến gây nhiễu, biến trung gian và biến va chạm, từ đó hạn chế hiện tượng hiệu chỉnh không [[Phù]] hợp (Greenland et al., 1999).
 
 Quy trình xây dựng mô hình khái niệm được tóm tắt trong Sơ đồ 4.
 
@@ -56,7 +60,7 @@ Các tiêu chí đánh giá được trình bày trong Bảng 11.
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟏𝟐. Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐛𝐢𝐞̂́𝐧 𝐠𝐚̂𝐲 𝐧𝐡𝐢𝐞̂̃𝐮
 
-Một nghiên cứu đánh giá các yếu tố liên quan đến lựa chọn phương pháp điều trị suy tim đã sử dụng tuổi làm biến nghiên cứu chính trong mô hình hồi quy đa biến. Mô hình ban đầu bao gồm tuổi, giới tính, mức lọc cầu thận và các đặc điểm lâm sàng liên quan. Khi loại bỏ biến mức lọc cầu thận, hệ số β của tuổi thay đổi hơn 10% so với mô hình ban đầu. Theo tiêu chí đánh giá biến gây nhiễu trong Bảng 11, mức thay đổi này cho thấy mức lọc cầu thận có khả năng là một biến gây nhiễu. Mặc dù biến này không đạt ý nghĩa thống kê riêng lẻ, việc loại bỏ nó vẫn làm thay đổi đáng kể ước lượng của biến nghiên cứu chính. Bên cạnh đó, mối liên hệ giữa chức năng thận, tuổi và quyết định lựa chọn phương pháp điều trị suy tim cũng có cơ sở sinh học và dịch tễ học hợp lý. Vì vậy, mức lọc cầu thận được giữ lại trong mô hình nhằm kiểm soát nhiễu và bảo đảm tính chính xác của các ước lượng hồi quy. Trường hợp này cho thấy việc quyết định giữ hay loại một biến không nên chỉ dựa trên giá trị p mà cần xem xét đồng thời mức độ thay đổi của hệ số hồi quy và cơ sở khoa học của biến đó.
+Một nghiên cứu đánh giá các yếu tố liên quan đến lựa chọn phương pháp điều trị suy [[Tim]] đã sử dụng tuổi làm biến nghiên cứu chính trong mô hình hồi quy đa biến. Mô hình ban đầu bao gồm tuổi, giới tính, mức lọc cầu [[Thận]] và các đặc điểm lâm sàng liên quan. Khi loại bỏ biến mức lọc cầu [[Thận]], hệ số β của tuổi thay đổi hơn 10% so với mô hình ban đầu. Theo tiêu chí đánh giá biến gây nhiễu trong Bảng 11, mức thay đổi này cho thấy mức lọc cầu thận có khả năng là một biến gây nhiễu. Mặc dù biến này không đạt ý nghĩa thống kê riêng lẻ, việc loại bỏ nó vẫn làm thay đổi đáng kể ước lượng của biến nghiên cứu chính. Bên cạnh đó, mối liên hệ giữa chức năng thận, tuổi và quyết định lựa chọn phương pháp điều trị suy [[Tim]] cũng có cơ sở sinh học và dịch tễ học hợp lý. Vì vậy, mức lọc cầu thận được giữ lại trong mô hình nhằm kiểm soát nhiễu và bảo đảm tính chính xác của các ước lượng hồi quy. Trường hợp này cho thấy việc quyết định giữ hay loại một biến không nên chỉ dựa trên giá trị p mà cần xem xét đồng thời mức độ thay đổi của hệ số hồi quy và cơ sở khoa học của biến đó.
 
 𝟓.𝟓. Đ𝐚́𝐧𝐡 𝐠𝐢𝐚́ 𝐭𝐮̛𝐨̛𝐧𝐠 𝐭𝐚́𝐜 𝐠𝐢𝐮̛̃𝐚 𝐜𝐚́𝐜 𝐛𝐢𝐞̂́𝐧
 
@@ -84,17 +88,17 @@ Nếu các hệ số và khoảng tin cậy thu được tương đối ổn đ�
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟏𝟑. 𝐊𝐢𝐞̂̉𝐦 đ𝐢̣𝐧𝐡 đ𝐨̣̂ 𝐨̂̉𝐧 đ𝐢̣𝐧𝐡 𝐜𝐮̉𝐚 𝐦𝐨̂ 𝐡𝐢̀𝐧𝐡
 
-Một nghiên cứu trên bệnh nhân ung thư phổi không tế bào nhỏ xây dựng mô hình hồi quy logistic đa thức nhằm đánh giá các yếu tố liên quan đến lựa chọn điều trị ban đầu. Sau khi hoàn thành mô hình cuối cùng, nhóm nghiên cứu thực hiện bootstrap với 1.000 mẫu lặp. Kết quả cho thấy các hệ số hồi quy của tuổi, giai đoạn bệnh và tình trạng đột biến gen thay đổi rất ít giữa các lần lặp, chứng tỏ mô hình có độ ổn định cao và có khả năng áp dụng cho các quần thể tương tự.
+Một nghiên cứu trên bệnh nhân ung thư [[Phổi]] không tế bào nhỏ xây dựng mô hình hồi quy logistic đa thức nhằm đánh giá các yếu tố liên quan đến lựa chọn điều trị ban đầu. Sau khi hoàn thành mô hình cuối cùng, nhóm nghiên cứu thực hiện bootstrap với 1.000 mẫu lặp. Kết quả cho thấy các hệ số hồi quy của tuổi, giai đoạn bệnh và tình trạng đột biến gen thay đổi rất ít giữa các lần lặp, chứng tỏ mô hình có độ ổn định cao và có khả năng áp dụng cho các quần thể tương tự.
 
-Ví dụ, căn nguyên gây viêm màng não có thể bao gồm Streptococcus pneumoniae, Neisseria meningitidis, Listeria monocytogenes, vi rút hoặc các căn nguyên khác. Mỗi căn nguyên có cơ chế bệnh sinh, yếu tố nguy cơ và chiến lược điều trị khác nhau nhưng không tồn tại quan hệ thứ bậc giữa các nhóm.
+Ví dụ, căn nguyên gây [[Viêm màng não]] có thể bao gồm Streptococcus pneumoniae, Neisseria meningitidis, Listeria monocytogenes, vi rút hoặc các căn nguyên khác. Mỗi căn nguyên có cơ chế bệnh sinh, yếu tố nguy cơ và chiến lược điều trị khác nhau nhưng không tồn tại quan hệ thứ bậc giữa các nhóm.
 
-Trong trường hợp này, hồi quy logistic đa thức cho phép đánh giá đồng thời ảnh hưởng của tuổi, giới tính, tình trạng miễn dịch, tiền sử tiêm chủng và các yếu tố dịch tễ khác đối với từng căn nguyên gây bệnh sau khi đã hiệu chỉnh các yếu tố gây nhiễu. So với việc xây dựng nhiều mô hình hồi quy logistic nhị phân, phương pháp này bảo đảm tổng xác suất của các căn nguyên luôn bằng 1 và tránh các kết quả mâu thuẫn giữa các mô hình.
+Trong trường hợp này, hồi quy logistic đa thức cho phép đánh giá đồng thời ảnh hưởng của tuổi, giới tính, tình trạng miễn dịch, tiền sử [[[[Vắc-xin]]|tiêm chủng]] và các yếu tố dịch tễ khác đối với từng căn nguyên gây bệnh sau khi đã hiệu chỉnh các yếu tố gây nhiễu. So với việc xây dựng nhiều mô hình hồi quy logistic nhị phân, phương pháp này bảo đảm tổng xác suất của các căn nguyên luôn bằng 1 và tránh các kết quả mâu thuẫn giữa các mô hình.
 
-Ngoài nghiên cứu căn nguyên, hồi quy logistic đa thức còn được sử dụng để phân tích nguồn lây nhiễm, kiểu lưu hành của vi sinh vật, kiểu gen của tác nhân gây bệnh hoặc nhóm kháng kháng sinh trong các nghiên cứu giám sát dịch tễ học.
+Ngoài nghiên cứu căn nguyên, hồi quy logistic đa thức còn được sử dụng để phân tích nguồn lây nhiễm, kiểu lưu hành của vi sinh vật, kiểu gen của tác nhân gây bệnh hoặc nhóm kháng [[Kháng sinh]] trong các nghiên cứu giám sát dịch tễ học.
 
 𝐕𝐢́ 𝐝𝐮̣ 𝟏𝟒. 𝐏𝐡𝐚̂𝐧 𝐭𝐢́𝐜𝐡 𝐜𝐚̆𝐧 𝐧𝐠𝐮𝐲𝐞̂𝐧 𝐠𝐚̂𝐲 𝐧𝐡𝐢𝐞̂̃𝐦 𝐤𝐡𝐮𝐚̂̉𝐧 𝐡𝐮𝐲𝐞̂́𝐭
 
-Một nghiên cứu đa trung tâm nhằm xác định các yếu tố liên quan đến căn nguyên gây nhiễm khuẩn huyết phân loại biến kết cục thành bốn nhóm: vi khuẩn Gram dương, vi khuẩn Gram âm, nấm và đa vi sinh vật. Sau khi hiệu chỉnh tuổi, bệnh nền, tình trạng suy giảm miễn dịch và tiền sử sử dụng kháng sinh, hồi quy logistic đa thức được sử dụng để ước lượng RRR của từng căn nguyên so với nhóm Gram dương là nhóm tham chiếu. Kết quả cho phép xác định các yếu tố nguy cơ đặc hiệu của từng nhóm căn nguyên và hỗ trợ lựa chọn kháng sinh kinh nghiệm phù hợp trong giai đoạn đầu điều trị.
+Một nghiên cứu đa trung tâm nhằm xác định các yếu tố liên quan đến căn nguyên gây [[Nhiễm trùng huyết|nhiễm khuẩn huyết]] phân loại biến kết cục thành bốn nhóm: vi khuẩn Gram dương, vi khuẩn Gram âm, nấm và đa vi sinh vật. Sau khi hiệu chỉnh tuổi, bệnh nền, tình trạng suy giảm miễn dịch và tiền sử sử dụng [[Kháng sinh]], hồi quy logistic đa thức được sử dụng để ước lượng RRR của từng căn nguyên so với nhóm Gram dương là nhóm tham chiếu. Kết quả cho phép xác định các yếu tố nguy cơ đặc hiệu của từng nhóm căn nguyên và hỗ trợ lựa chọn kháng sinh kinh nghiệm phù hợp trong giai đoạn đầu điều trị.
 
 𝟓.𝟖. 𝐗𝐮̛̉ 𝐥𝐲́ 𝐝𝐮̛̃ 𝐥𝐢𝐞̣̂𝐮 𝐭𝐡𝐢𝐞̂́𝐮 𝐭𝐫𝐮̛𝐨̛́𝐜 𝐤𝐡𝐢 𝐱𝐚̂𝐲 𝐝𝐮̛̣𝐧𝐠 𝐦𝐨̂ 𝐡𝐢̀𝐧𝐡
 

@@ -1,8 +1,19 @@
+---
+title: "Hướng dẫn BYT 2024 (P5)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Sinh Lý Học Chi Tiết: Dự Phòng Bệnh Lao
 
 #### 1.1. Cơ Chế Sinh Lý Bệnh Của Sự Lây Truyền Và Các Yếu Tố Ảnh Hưởng
 
-**Cơ chế lây truyền qua đường hô hấp:** Bệnh lao là bệnh lây truyền qua đường hô hấp do hít phải các hạt bụi nhỏ (hạt khí dung) trong không khí có chứa vi khuẩn lao. Các hạt bụi nhỏ chứa vi khuẩn này được phát tán ra môi trường khi người mắc lao phổi trong giai đoạn tiến triển thực hiện các hoạt động như ho, khạc, hắt hơi.
+**Cơ chế lây truyền qua đường hô hấp:** Bệnh lao là bệnh lây truyền qua đường hô hấp do hít phải các hạt bụi nhỏ (hạt khí dung) trong không khí có chứa vi khuẩn lao. Các hạt bụi nhỏ chứa vi khuẩn này được phát tán ra môi trường khi người mắc lao [[Phổi]] trong giai đoạn tiến triển thực hiện các hoạt động như ho, khạc, hắt hơi.
 
 - **Kích thước hạt khí dung:** Các hạt bụi nhỏ này có đường kính siêu nhỏ, chỉ khoảng **1 - 5 micrô-mét**.
 - **Thời gian bay lơ lửng:** Nhờ kích thước siêu nhỏ, chúng có thể bay lơ lửng trong không khí khoảng từ **vài giờ đến 24 giờ**.
@@ -24,10 +35,10 @@
 > 
 > **Mô tả quy trình quyết định can thiệp dự phòng:**
 > 
-> - **Nguồn lây (Người bệnh lao phổi tiến triển)** ──(Ho, khạc, hắt hơi)──> **Hạt khí dung chứa vi khuẩn lao (1 - 5 µm)** ──(Bay lơ lửng 24 giờ)──> **Người tiếp xúc hít phải**.
+> - **Nguồn lây (Người bệnh lao [[Phổi]] tiến triển)** ──(Ho, khạc, hắt hơi)──> **Hạt khí dung chứa vi khuẩn lao (1 - 5 µm)** ──(Bay lơ lửng 24 giờ)──> **Người tiếp xúc hít phải**.
 > - **Phân nhánh can thiệp dự phòng:**
 >     1. **Nhánh 1: Giảm nguy cơ nhiễm vi khuẩn lao** (Áp dụng các biện pháp kiểm soát hành chính, kiểm soát vệ sinh môi trường, và kiểm soát hô hấp nhằm hạn chế tối đa nguy cơ lan truyền trong cộng đồng).
->     2. **Nhánh 2: Giảm nguy cơ chuyển từ nhiễm lao sang bệnh lao** (Áp dụng tiêm chủng vắc-xin BCG cho trẻ em và tiến hành điều trị dự phòng lao tiềm ẩn cho các nhóm nguy cơ cao).
+>     2. **Nhánh 2: Giảm nguy cơ chuyển từ nhiễm lao sang bệnh lao** (Áp dụng [[Vắc-xin|tiêm chủng]] vắc-xin BCG cho trẻ em và tiến hành điều trị dự phòng lao tiềm ẩn cho các nhóm nguy cơ cao).
 
 ---
 
@@ -48,7 +59,7 @@ Kiểm soát nhiễm khuẩn lao là sự kết hợp đồng bộ các biện p
 
 #### 1.4. Cơ Chế Miễn Dịch Của Vắc-Xin BCG Và Xử Trí Biến Cố Dự Phòng
 
-**Cơ chế tác dụng của vắc-xin BCG:** Tiêm vắc-xin BCG (Bacille Calmette-Guérin) thuộc Chương trình Tiêm chủng mở rộng nhằm giúp cơ thể người được tiêm hình thành đáp ứng miễn dịch chủ động chống lại vi khuẩn lao khi bị nhiễm. Để đảm bảo hiệu quả sinh miễn dịch tốt nhất, yêu cầu phải tiêm đúng kỹ thuật, đúng liều lượng; đồng thời vắc-xin phải được bảo quản đúng tiêu chuẩn trong suốt hệ thống dây chuyền lạnh cho đến khi sử dụng cho trẻ.
+**Cơ chế tác dụng của vắc-xin BCG:** Tiêm vắc-xin BCG (Bacille Calmette-Guérin) thuộc Chương trình [[Vắc-xin|Tiêm chủng]] mở rộng nhằm giúp cơ thể người được tiêm hình thành đáp ứng miễn dịch chủ động chống lại vi khuẩn lao khi bị nhiễm. Để đảm bảo hiệu quả sinh miễn dịch tốt nhất, yêu cầu phải tiêm đúng kỹ thuật, đúng liều lượng; đồng thời vắc-xin phải được bảo quản đúng tiêu chuẩn trong suốt hệ thống dây chuyền lạnh cho đến khi sử dụng cho trẻ.
 
 ---
 
@@ -83,7 +94,7 @@ Dự phòng lây nhiễm lao trong hộ gia đình là áp dụng các biện ph
     4. Rửa tay sạch bằng xà phòng ngay sau đó.
     5. _Trường hợp khẩn cấp không kịp lấy giấy:_ Phải che miệng bằng mặt trong cánh tay, sau đó phải thay giặt áo ngay.
 - Người bệnh tuyệt đối không được khạc nhổ bừa bãi ra môi trường xung quanh.
-- Hạn chế tối đa việc giao tiếp trực tiếp với người khác trong giai đoạn đờm còn chứa vi khuẩn, đặc biệt là với trẻ em, người già và người bị suy giảm miễn dịch (như người nhiễm HIV, đái tháo đường, người sử dụng corticoid...).
+- Hạn chế tối đa việc giao tiếp trực tiếp với người khác trong giai đoạn đờm còn chứa vi khuẩn, đặc biệt là với trẻ em, người già và người bị suy giảm miễn dịch (như người nhiễm HIV, đái tháo đường, người sử dụng [[Corticoid]]...).
 - Nếu điều kiện gia đình cho phép, người bệnh nên ở trong phòng riêng và thực hiện tiếp khách ngoài trời. Thường xuyên tắm rửa giữ vệ sinh cơ thể sạch sẽ.
 - Người bệnh lao cần tránh đến những nơi đông người (như đám cưới, đám giỗ...) hoặc tham gia giao thông công cộng. Khi bắt buộc phải nói chuyện với người khác, không được đứng ở vị trí đầu luồng gió.
 

@@ -1,3 +1,14 @@
+---
+title: "BYT_Covid_2023 (p2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - he-co-quan/ho-hap
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 # BÀI HỌC: PHÁC ĐỒ ĐIỀU TRỊ, KIỂM SOÁT BIẾN CHỨNG VÀ TIÊU CHUẨN XUẤT VIỆN BỆNH COVID-19 (PHẦN 2)
 
 ---
@@ -8,20 +19,20 @@
 
 - **Nguyên tắc chung:** Điều trị COVID-19 đòi hỏi sự phối hợp toàn diện bao gồm điều trị nguyên nhân (thuốc kháng vi rút), hỗ trợ hô hấp, điều trị suy tuần hoàn, điều hòa miễn dịch (chống bão cytokine), chống đông, kiểm soát bội nhiễm, kiểm soát đường huyết, dinh dưỡng và phục hồi chức năng.
 - **Thuốc kháng vi rút:**
-    - **Remdesivir:** Chỉ định cho bệnh nhân nội trú mức độ nhẹ có yếu tố nguy cơ cao, trung bình, và nặng khởi phát dưới 10 ngày có suy hô hấp phải thở oxy/HFNC/NIV. **Liều dùng:** Người lớn \(\ge 12\) tuổi và nặng \(> 40\) kg dùng liều ngày đầu 200mg, các ngày sau 100mg/ngày truyền tĩnh mạch 1 lần. Trẻ em từ 3kg đến dưới 40kg dùng ngày đầu 5mg/kg, sau đó 2.5mg/kg/ngày. Thời gian điều trị thông thường là 5 ngày, có thể kéo dài đến 10 ngày nếu không cải thiện lâm sàng. Cần theo dõi sát men gan (ngưng thuốc nếu ALT tăng \(> 5\) lần) và chức năng thận (eGFR \(< 30\) ml/phút).
-    - **Nirmatrelvir phối hợp Ritonavir (Paxlovid):** Dùng cho người lớn và trẻ em từ 12 tuổi trở lên, nặng \(\ge 40\) kg mức độ nhẹ/trung bình có ít nhất 1 yếu tố nguy cơ cao tiến triển nặng, dùng trong vòng 5 ngày đầu kể từ khi khởi phát triệu chứng hoặc có xét nghiệm dương tính. **Liều dùng:** Với eGFR \(\ge 60\) ml/phút dùng 300mg nirmatrelvir (2 viên 150mg) uống đồng thời với 100mg ritonavir (1 viên 100mg) x 2 lần/ngày x 5 ngày. Hiệu chỉnh giảm liều khi eGFR từ 30 - 60 ml/phút; không khuyến cáo sử dụng khi eGFR \(< 30\) ml/phút hoặc suy gan nặng.
+    - **Remdesivir:** Chỉ định cho bệnh nhân nội trú mức độ nhẹ có yếu tố nguy cơ cao, trung bình, và nặng khởi phát dưới 10 ngày có [[Suy hô hấp]] phải thở oxy/HFNC/NIV. **Liều dùng:** Người lớn \(\ge 12\) tuổi và nặng \(> 40\) kg dùng liều ngày đầu 200mg, các ngày sau 100mg/ngày truyền tĩnh mạch 1 lần. Trẻ em từ 3kg đến dưới 40kg dùng ngày đầu 5mg/kg, sau đó 2.5mg/kg/ngày. Thời gian điều trị thông thường là 5 ngày, có thể kéo dài đến 10 ngày nếu không cải thiện lâm sàng. Cần theo dõi sát men [[Gan]] (ngưng thuốc nếu ALT tăng \(> 5\) lần) và chức năng [[Thận]] (eGFR \(< 30\) ml/phút).
+    - **Nirmatrelvir phối hợp Ritonavir (Paxlovid):** Dùng cho người lớn và trẻ em từ 12 tuổi trở lên, nặng \(\ge 40\) kg mức độ nhẹ/trung bình có ít nhất 1 yếu tố nguy cơ cao tiến triển nặng, dùng trong vòng 5 ngày đầu kể từ khi khởi phát triệu chứng hoặc có xét nghiệm dương tính. **Liều dùng:** Với eGFR \(\ge 60\) ml/phút dùng 300mg nirmatrelvir (2 viên 150mg) uống đồng thời với 100mg ritonavir (1 viên 100mg) x 2 lần/ngày x 5 ngày. Hiệu chỉnh giảm liều khi eGFR từ 30 - 60 ml/phút; không khuyến cáo sử dụng khi eGFR \(< 30\) ml/phút hoặc suy [[Gan]] nặng.
     - **Molnupiravir:** Chỉ định cho người bệnh \(\ge 18\) tuổi mức độ nhẹ hoặc vừa có nguy cơ chuyển nặng, dùng trong 5 ngày đầu khởi phát. **Liều dùng:** 800mg/lần x 2 lần/ngày x 5 ngày. **Chống chỉ định tuyệt đối** cho phụ nữ mang thai. Bệnh nhân nữ cần loại trừ mang thai trước khi dùng và áp dụng tránh thai hiệu quả đến 4 ngày sau liều cuối; nam giới cần tránh thai hiệu quả đến 3 tháng sau liều cuối.
 
-### Liệu Pháp Điều Hòa Miễn Dịch (Corticoid và Các Thuốc Ức Chế Thụ Thể)
+### Liệu Pháp Điều Hòa Miễn Dịch ([[Corticoid]] và Các Thuốc Ức Chế Thụ Thể)
 
-- **Corticoid:**
+- **[[Corticoid]]:**
     - **Chỉ định:** Dành riêng cho bệnh nhân COVID-19 mức độ nặng và nguy kịch. Không sử dụng corticoid cho người nhiễm không triệu chứng, mức độ nhẹ và vừa.
     - **Phác đồ:** **Dexamethason** 6 - 12 mg/ngày tiêm tĩnh mạch x 5 ngày, sau đó giảm nửa liều trong 5 ngày; HOẶC **Methylprednisolon** 1 - 2 mg/kg/ngày tiêm tĩnh mạch x 5 ngày, sau đó giảm nửa liều trong 5 ngày.
     - **Lưu ý lâm sàng:** Khởi đầu tăng liều ngay khi có dấu hiệu chuyển nặng. Sử dụng liều cao nên duy trì dưới 7 ngày và giảm liều nhanh khi lâm sàng cải thiện để tránh tác dụng phụ. Chú ý tầm soát nhiễm khuẩn, nấm thứ phát, điều chỉnh đường huyết và điện giải.
 - **Thuốc ức chế Interleukin-6 (Tocilizumab):**
-    - Chỉ định cho bệnh nhân \(\ge 2\) tuổi nhập viện trong vòng 3 ngày có suy hô hấp phải thở oxy/HFNC/NIV và CRP \(\ge 75\) mg/L; hoặc nhập viện trong vòng 24 giờ cần thở máy xâm nhập.
+    - Chỉ định cho bệnh nhân \(\ge 2\) tuổi nhập viện trong vòng 3 ngày có [[Suy hô hấp]] phải thở oxy/HFNC/NIV và [[CRP]] \(\ge 75\) mg/L; hoặc nhập viện trong vòng 24 giờ cần thở máy xâm nhập.
     - **Liều dùng:** Cân nặng \(\ge 30\) kg dùng 8 mg/kg truyền tĩnh mạch 1 lần (tối đa 800mg); cân nặng \(< 30\) kg dùng 12 mg/kg. Có thể dùng liều thứ 2 sau 8 giờ nếu không cải thiện.
-    - **Chống chỉ định:** Người bệnh suy giảm miễn dịch, bạch cầu trung tính \(< 1\) G/L, tiểu cầu \(< 50\) G/L, hoặc ALT tăng \(> 5\) lần.
+    - **Chống chỉ định:** Người bệnh suy giảm miễn dịch, [[Bạch cầu]] trung tính \(< 1\) G/L, [[Tiểu cầu]] \(< 50\) G/L, hoặc ALT tăng \(> 5\) lần.
 - **Thuốc ức chế Janus Kinase (Baricitinib):**
     - Chỉ định cho bệnh nhân \(\ge 2\) tuổi cần hỗ trợ hô hấp (thở oxy, NIV, MV hoặc ECMO).
     - **Liều dùng cho người \(\ge 9\) tuổi:** eGFR \(\ge 60\) dùng 4mg uống 1 lần/ngày; eGFR 30 đến \(< 60\) dùng 2mg/ngày; eGFR 15 đến \(< 30\) dùng 1mg/ngày; không dùng nếu eGFR \(< 15\). Thời gian điều trị tối đa 14 ngày hoặc đến khi ra viện.
@@ -33,8 +44,8 @@
     - _Mức độ trung bình:_ Dùng liều dự phòng.
     - _Mức độ nặng:_ Dùng liều điều trị.
     - _Mức độ nguy kịch:_ Liều dự phòng nếu có giảm đông, hoặc liều điều trị tùy thuộc bối cảnh lâm sàng.
-- **Chống chỉ định tuyệt đối:** Đang có chảy máu, mới xuất huyết não, Fibrinogen \(< 0,5\) g/L, viêm nội tâm mạc nhiễm khuẩn cấp.
-- **Chống chỉ định liều điều trị:** Tiểu cầu \(< 50\) G/L, Hgb \(< 8\) g/L, đang dùng kháng ngưng tập tiểu cầu kép, tiền sử chảy máu trong vòng 30 ngày, rối loạn đông máu di truyền/mắc phải.
+- **Chống chỉ định tuyệt đối:** Đang có [[Xuất huyết|chảy máu]], mới [[Xuất huyết]] não, Fibrinogen \(< 0,5\) g/L, viêm nội tâm mạc nhiễm khuẩn cấp.
+- **Chống chỉ định liều điều trị:** [[Tiểu cầu]] \(< 50\) G/L, Hgb \(< 8\) g/L, đang dùng kháng ngưng tập tiểu cầu kép, tiền sử chảy máu trong vòng 30 ngày, rối loạn đông máu di truyền/mắc phải.
 - **Lựa chọn hoạt chất:** Ưu tiên dùng **Enoxaparin (LMWH)** hoặc Heparin tiêu chuẩn (UFH).
 
 ---

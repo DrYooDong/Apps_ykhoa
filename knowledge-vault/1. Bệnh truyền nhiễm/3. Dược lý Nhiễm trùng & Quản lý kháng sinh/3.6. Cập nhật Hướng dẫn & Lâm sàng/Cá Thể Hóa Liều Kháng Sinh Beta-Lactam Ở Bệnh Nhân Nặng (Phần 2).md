@@ -1,6 +1,16 @@
+---
+title: "Cá Thể Hóa Liều Kháng Sinh Beta-Lactam Ở Bệnh Nhân Nặng (Phần 2)"
+type: disease
+specialty: "Bệnh truyền nhiễm"
+tags:
+  - loai/benh-ly
+  - y-khoa/truyen-nhiem
+updated: "2026-08-11"
+---
+
 ### 1. Nội Dung Bệnh Lý Học Chi Tiết: Các Yếu Tố Kỹ Thuật, Phương Pháp Luận Và Triển Khai Thực Tiễn Trong Cá Thể Hóa Liều Beta-Lactam (Phần 2)
 
-Tiếp nối các khuyến cáo về mục tiêu lâm sàng, phần này tập trung vào cách thức triển khai, đo lường phòng xét nghiệm và phương pháp luận tối ưu hóa liều (MIPD - Model-Informed Personalized Dosing) đối với kháng sinh Beta-lactam ở bệnh nhân cấp cứu và hồi sức tích cực.
+Tiếp nối các khuyến cáo về mục tiêu lâm sàng, phần này tập trung vào cách thức triển khai, đo lường phòng xét nghiệm và phương pháp luận tối ưu hóa liều (MIPD - Model-Informed Personalized Dosing) đối với [[Kháng sinh]] Beta-lactam ở bệnh nhân cấp cứu và hồi sức tích cực.
 
 #### Yêu Cầu Về Triển Khai Thực Tiễn Và Các Bên Liên Quan
 
@@ -18,11 +28,11 @@ Sự phát triển và triển khai thành công chương trình cá thể hóa 
 
 _Chú thích Bảng 4:_ Các bên liên quan tham gia vào quá trình cá thể hóa liều beta-lactam và vai trò cụ thể của từng nhóm từ lâm sàng đến vận hành và quản lý.
 
-**Loại Mẫu Xét Nghiệm:** Khuyến cáo ưu tiên sử dụng mẫu huyết tương (plasma) hoặc huyết thanh (serum) cho quá trình cá thể hóa liều beta-lactam. Huyết tương có lợi thế là có thể được xử lý (ly tâm) ngay lập tức mà không cần chờ đông máu, điều này rất quan trọng đối với các beta-lactam vốn không ổn định ở nhiệt độ phòng. Các mẫu thay thế như nước tiểu, dịch phổi, dịch não tủy chỉ nên dùng trong những bối cảnh nghiên cứu cụ thể do đòi hỏi thủ thuật xâm lấn và bị ảnh hưởng bởi nhiều yếu tố động học phức tạp tại mô.
+**Loại Mẫu Xét Nghiệm:** Khuyến cáo ưu tiên sử dụng mẫu huyết tương (plasma) hoặc huyết thanh (serum) cho quá trình cá thể hóa liều beta-lactam. Huyết tương có lợi thế là có thể được xử lý (ly tâm) ngay lập tức mà không cần chờ đông máu, điều này rất quan trọng đối với các beta-lactam vốn không ổn định ở nhiệt độ phòng. Các mẫu thay thế như nước tiểu, dịch [[Phổi]], [[Dịch nào tủy|dịch não tủy]] chỉ nên dùng trong những bối cảnh nghiên cứu cụ thể do đòi hỏi thủ thuật xâm lấn và bị ảnh hưởng bởi nhiều yếu tố động học phức tạp tại mô.
 
 #### Các Yếu Tố Kỹ Thuật Và Phương Pháp Luận Khi Dùng MIPD (Model-Informed Personalized Dosing)
 
-**1. Lựa Chọn Mô Hình Dược Động Học (PK):** MIPD chủ động được đánh giá cao hơn so với Giám sát nồng độ thuốc trị liệu truyền thống (TDM mang tính phản ứng). Khi không thể tự xây dựng và kiểm chứng một mô hình PK mới tại cơ sở, việc chọn lựa các mô hình có sẵn cần xét đến các đặc tính hiệp biến thiết yếu như: chỉ số kích thước cơ thể (cân nặng, diện tích bề mặt) và chỉ số chức năng thận, cũng như thời gian truyền (truyền ngắt quãng hay kéo dài) và mức độ tương đồng giữa quần thể gốc của mô hình với người bệnh.
+**1. Lựa Chọn Mô Hình Dược Động Học (PK):** MIPD chủ động được đánh giá cao hơn so với Giám sát nồng độ thuốc trị liệu truyền thống (TDM mang tính phản ứng). Khi không thể tự xây dựng và kiểm chứng một mô hình PK mới tại cơ sở, việc chọn lựa các mô hình có sẵn cần xét đến các đặc tính hiệp biến thiết yếu như: chỉ số kích thước cơ thể (cân nặng, diện tích bề mặt) và chỉ số chức năng [[Thận]], cũng như thời gian truyền (truyền ngắt quãng hay kéo dài) và mức độ tương đồng giữa quần thể gốc của mô hình với người bệnh.
 
 **2. Giải Quyết Sai Lệch Giữa Nồng Độ Dự Đoán Và Thực Tế (Discordance):** Khi sự chênh lệch giữa nồng độ quan sát thực tế và nồng độ do mô hình dự đoán vượt ngưỡng 20%, tính tin cậy của MIPD sẽ giảm, đòi hỏi một quy trình tiếp cận có hệ thống để điều tra trước khi thay đổi liều.
 
@@ -30,12 +40,12 @@ _Chú thích Bảng 4:_ Các bên liên quan tham gia vào quá trình cá thể
 
 _Lưu đồ xử lý:_
 
-- **Bước 1:** Đánh giá tính phù hợp của mô hình dựa trên các yếu tố hiệp biến của bệnh nhân (Evaluate model appropriateness). Nếu không phù hợp $\rightarrow$ Đánh giá lại mô hình khác nếu có.
+- **Bước 1:** Đánh giá tính [[Phù]] hợp của mô hình dựa trên các yếu tố hiệp biến của bệnh nhân (Evaluate model appropriateness). Nếu không [[Phù]] hợp $\rightarrow$ Đánh giá lại mô hình khác nếu có.
 - **Bước 2:** Đánh giá dữ liệu đầu vào (Evaluate input data: doses, timing, covariates, assays). Nếu sai $\rightarrow$ Sửa lại dữ liệu đầu vào.
 - **Bước 3:** Bệnh nhân có thay đổi không? (Patient changes: unstable, new interacting drugs). Nếu không ổn định $\rightarrow$ Cập nhật thay đổi vào hệ thống.
 - **Bước 4:** Nếu dự đoán vẫn tiếp tục kém chính xác $\rightarrow$ Tiến hành lấy thêm mẫu (Gather additional sample) và căn chỉnh lại mô hình. Nếu vẫn sai lệch và không có mô hình thay thế $\rightarrow$ Sử dụng phương pháp TDM truyền thống thay vì MIPD.
 
-_Chú thích Hình 1:_ Các bước đầu tiên để đánh giá sự không phù hợp giữa nồng độ dự đoán từ mô hình và nồng độ quan sát là xem xét tính thích hợp của mô hình cho bệnh nhân, kiểm tra cẩn thận dữ liệu đầu vào (lỗi liều lượng, sai thời gian lấy mẫu), và xem xét sự thay đổi sinh lý hoặc thuốc tương tác mới ở bệnh nhân. Trong trường hợp không tìm thấy giải pháp từ mô hình, nên xem xét các chiến lược không dựa trên mô hình.
+_Chú thích Hình 1:_ Các bước đầu tiên để đánh giá sự không phù hợp giữa nồng độ dự đoán từ mô hình và nồng độ quan sát là xem xét tính thích hợp của mô hình cho bệnh nhân, kiểm tra cẩn [[Thận]] dữ liệu đầu vào (lỗi liều lượng, sai thời gian lấy mẫu), và xem xét sự thay đổi sinh lý hoặc thuốc tương tác mới ở bệnh nhân. Trong trường hợp không tìm thấy giải pháp từ mô hình, nên xem xét các chiến lược không dựa trên mô hình.
 
 **3. Đánh Giá Nồng Độ Ức Chế Tối Thiểu (MIC) Của Vi Khuẩn:** Do có sự biến thiên sinh học và kỹ thuật trong xét nghiệm in vitro (sai số $\pm1$ đến $\pm2$ nấc pha loãng [dilution]), khuyến cáo không đơn thuần dùng duy nhất kết quả MIC được báo cáo để làm mục tiêu PK/PD nếu giá trị này nằm trong dải nhạy cảm.
 
@@ -51,7 +61,7 @@ _Lưu đồ lựa chọn:_
 
 _Chú thích Hình 2:_ Thuật toán từng bước để xác định mục tiêu PK/PD tối thiểu cho liệu pháp beta-lactam dựa trên MIC đặc hiệu cho bệnh nhân, điểm gãy nhạy cảm và giá trị ngưỡng dịch tễ học (ECV/ECOFF). Nếu không có dữ liệu vi sinh (điều trị kinh nghiệm), nên sử dụng breakpoint hoặc ECV/ECOFF của các mầm bệnh có khả năng nhất.
 
-**4. Khái Niệm Nồng Độ Tự Do (Unbound/Free) So Với Nồng Độ Toàn Phần:** Chỉ có nồng độ beta-lactam ở dạng tự do mới có khả năng đi qua màng tế bào và tạo ra tác dụng diệt khuẩn. Việc xét nghiệm nồng độ tự do là ưu tiên hàng đầu, đặc biệt ở các kháng sinh có tỷ lệ gắn kết protein cao (như ceftriaxone, ertapenem, cefazolin) hoặc ở bệnh nhân có rối loạn như giảm albumin máu. Tuy nhiên, xét nghiệm này phức tạp và đắt tiền (đòi hỏi kỹ thuật siêu lọc - ultrafiltration) nên ít phổ biến. Khi chỉ có thể đo nồng độ toàn phần, khuyến cáo ước tính nồng độ tự do thông qua các hệ số gắn kết protein được công bố, dù phương pháp này có thể gặp hạn chế về độ tin cậy ở bệnh nhân nặng.
+**4. Khái Niệm Nồng Độ Tự Do (Unbound/Free) So Với Nồng Độ Toàn Phần:** Chỉ có nồng độ beta-lactam ở dạng tự do mới có khả năng đi qua màng tế bào và tạo ra tác dụng diệt khuẩn. Việc xét nghiệm nồng độ tự do là ưu tiên hàng đầu, đặc biệt ở các [[Kháng sinh]] có tỷ lệ gắn kết protein cao (như [[Ceftriaxone]], ertapenem, cefazolin) hoặc ở bệnh nhân có rối loạn như giảm albumin máu. Tuy nhiên, xét nghiệm này phức tạp và đắt tiền (đòi hỏi kỹ thuật siêu lọc - ultrafiltration) nên ít phổ biến. Khi chỉ có thể đo nồng độ toàn phần, khuyến cáo ước tính nồng độ tự do thông qua các hệ số gắn kết protein được công bố, dù phương pháp này có thể gặp hạn chế về độ tin cậy ở bệnh nhân nặng.
 
 #### Những Lưu Ý Đặc Biệt Khác
 
