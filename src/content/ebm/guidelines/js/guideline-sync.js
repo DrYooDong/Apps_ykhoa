@@ -198,7 +198,7 @@
 
   async function syncStudiesWithSupabase() {
     if (!window.supabaseClient) {
-      window.studies = [];
+      loadStudies();
       if (window.renderTable) window.renderTable();
       if (window.renderUpdates) window.renderUpdates();
       return;
@@ -214,8 +214,10 @@
       if (error) throw error;
       
       if (data) {
-        window.studies = data.map(s => processStudyFields(s));
-        window.studies.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        const remoteStudies = data.map(s => processStudyFields(s));
+        const combined = [...remoteStudies, ...(window.SAMPLE_STUDIES || [])];
+        window.studies = processAndDeduplicateStudies(combined);
+        window.studies.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
         
         saveStudies();
         if (window.renderTable) window.renderTable();
@@ -224,6 +226,9 @@
       }
     } catch (err) {
       console.error('Supabase Sync failed:', err);
+      loadStudies();
+      if (window.renderTable) window.renderTable();
+      if (window.renderUpdates) window.renderUpdates();
       updateSupabaseStatus('error', 'Supabase: Conn Error');
     }
   }
@@ -474,18 +479,7 @@
     try {
       localStorage.removeItem('clinicalGuidelines');
       localStorage.removeItem('internalMedicineStudies');
-      localStorage.removeItem('cliniportal_deleted_study_ids');
     } catch (e) {}
-
-    window.studies = [];
-
-    if (!window.supabaseClient) {
-      try {
-        localStorage.removeItem('cliniportal_custom_studies');
-        localStorage.removeItem('cliniportal_deleted_study_ids');
-      } catch (e) {}
-      return;
-    }
 
     let rawList = [];
     try {
@@ -498,20 +492,9 @@
       }
     } catch (e) {}
 
-    const deletedList = getDeletedStudyIds();
-    if (Array.isArray(rawList)) {
-      rawList.forEach(cs => {
-        if (!isStudyDeleted(cs, deletedList)) {
-          const processed = processStudyFields(cs);
-          const idx = window.studies.findIndex(s => s.id === processed.id);
-          if (idx !== -1) {
-            window.studies[idx] = processed;
-          } else {
-            window.studies.push(processed);
-          }
-        }
-      });
-    }
+    const combined = [...rawList, ...(window.SAMPLE_STUDIES || [])];
+    window.studies = processAndDeduplicateStudies(combined);
+    window.studies.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
   }
 
   function saveStudies() {

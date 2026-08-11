@@ -119,6 +119,41 @@
       });
       designContainer.innerHTML = designHtml;
     }
+
+    const impactContainer = document.getElementById('impact-pills');
+    if (impactContainer && window.IMPACTS) {
+      let impactHtml = `<button class="filter-pill ${window.filters.impact === null ? 'active' : ''}" onclick="setFilter('impact', null)">Tất cả</button>`;
+      Object.entries(window.IMPACTS).forEach(([key, imp]) => {
+        impactHtml += `<button class="filter-pill ${window.filters.impact === key ? 'active' : ''}" onclick="setFilter('impact', '${key}')" style="border-color:${imp.color}30; color:${imp.color}; background:${imp.bg};">${imp.name}</button>`;
+      });
+      impactContainer.innerHTML = impactHtml;
+    }
+
+    const periodContainer = document.getElementById('period-pills');
+    if (periodContainer) {
+      const currentYear = new Date().getFullYear();
+      const periods = [
+        { key: null, label: 'Tất cả' },
+        { key: `${currentYear}`, label: `${currentYear}` },
+        { key: `${currentYear - 1}`, label: `${currentYear - 1}` },
+        { key: `${currentYear - 2}`, label: `${currentYear - 2}` },
+        { key: 'last5', label: '5 năm gần đây' }
+      ];
+      let periodHtml = periods.map(p =>
+        `<button class="filter-pill ${window.filters.period === p.key ? 'active' : ''}" onclick="setFilter('period', ${p.key === null ? 'null' : `'${p.key}'`})">${p.label}</button>`
+      ).join('');
+      periodContainer.innerHTML = periodHtml;
+    }
+
+    // Render spec filter list in sidebar (left nav)
+    const specFilterList = document.getElementById('spec-filter-list');
+    if (specFilterList && window.SPECIALTIES) {
+      let specNavHtml = `<button class="left-nav-link ${window.filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)"><span class="left-nav-icon">🏥</span><span class="left-nav-text">Tất cả chuyên khoa</span></button>`;
+      Object.entries(window.SPECIALTIES).forEach(([key, spec]) => {
+        specNavHtml += `<button class="left-nav-link ${window.filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')"><span class="left-nav-icon" style="width:10px; height:10px; border-radius:50%; background:${spec.color}; display:inline-block;"></span><span class="left-nav-text" style="color:${window.filters.specialty === key ? '' : spec.color};">${spec.name}</span></button>`;
+      });
+      specFilterList.innerHTML = specNavHtml;
+    }
   }
 
   function setFilter(type, value) {
@@ -271,6 +306,9 @@
     if (table) {
       const th = table.querySelector(`thead th[data-col="${colName}"]`);
       if (th) th.style.display = isVisible ? '' : 'none';
+      table.querySelectorAll(`tbody td.col-${colName.toLowerCase()}`).forEach(td => {
+        td.style.display = isVisible ? '' : 'none';
+      });
     }
     renderTable();
   }
@@ -385,12 +423,89 @@
         }
       }
 
+      if (window.filters.period && window.filters.period !== null) {
+        const yr = study.year ? parseInt(study.year) : 0;
+        if (window.filters.period === 'last5') {
+          if (yr < new Date().getFullYear() - 4) return false;
+        } else {
+          const filterYr = parseInt(window.filters.period);
+          if (yr !== filterYr) return false;
+        }
+      }
+
       return true;
     });
   }
 
+  function renderJournalMetricsBadge(study) {
+    const metrics = (window.getJournalMetrics) ? window.getJournalMetrics(study.journal || study.organization, study) : null;
+    const ifVal = (metrics && metrics.if) ? metrics.if : (study.impactFactor || study.if || null);
+    const qVal = (metrics && metrics.quartile) ? metrics.quartile : (study.quartile || (study.sourceType === 'vn-moh' ? 'MOH' : null));
+    const sjrVal = (metrics && metrics.sjr) ? metrics.sjr : (study.sjr || null);
+    const snipVal = (metrics && metrics.snip) ? metrics.snip : (study.snip || null);
+    const hVal = (metrics && metrics.hIndex) ? metrics.hIndex : (study.hIndex || null);
+
+    if (!ifVal && !qVal && !sjrVal) {
+      if (study.sourceType === 'vn-moh') {
+        return `<span class="journal-metrics-tag tag-moh" title="Khuyến cáo Cấp Quốc gia — Bộ Y tế Việt Nam">🇻🇳 BYT</span>`;
+      }
+      return '';
+    }
+
+    const titleText = `Tạp chí: ${study.journal || study.organization || 'N/A'}\n• Impact Factor (IF): ${ifVal || 'N/A'}\n• Quartile: ${qVal || 'N/A'}\n• SJR Index: ${sjrVal || 'N/A'}\n• SNIP Index: ${snipVal || 'N/A'}\n• H-Index: ${hVal || 'N/A'}`;
+
+    let qClass = 'tag-q1';
+    if (qVal === 'Q2') qClass = 'tag-q2';
+    if (qVal === 'Q3') qClass = 'tag-q3';
+    if (qVal === 'Q4') qClass = 'tag-q4';
+    if (qVal === 'MOH') qClass = 'tag-moh';
+
+    return `
+      <span class="journal-metrics-tag ${qClass}" title="${escapeHtml(titleText)}">
+        ${ifVal ? `<strong>⭐ IF: ${ifVal}</strong>` : ''}
+        ${qVal ? `<span class="q-chip">${qVal}</span>` : ''}
+      </span>
+    `;
+  }
+
+  function renderJournalMetricsColumn(study) {
+    const metrics = (window.getJournalMetrics) ? window.getJournalMetrics(study.journal || study.organization, study) : null;
+    const ifVal = (metrics && metrics.if) ? metrics.if : (study.impactFactor || study.if || null);
+    const qVal = (metrics && metrics.quartile) ? metrics.quartile : (study.quartile || (study.sourceType === 'vn-moh' ? 'MOH' : null));
+    const sjrVal = (metrics && metrics.sjr) ? metrics.sjr : (study.sjr || null);
+    const snipVal = (metrics && metrics.snip) ? metrics.snip : (study.snip || null);
+    const hVal = (metrics && metrics.hIndex) ? metrics.hIndex : (study.hIndex || null);
+
+    if (!ifVal && !qVal && !sjrVal) {
+      if (study.sourceType === 'vn-moh') {
+        return `<span class="journal-metrics-tag tag-moh">🇻🇳 Bộ Y tế</span>`;
+      }
+      return '<span style="color:var(--text-muted); font-size:0.75rem;">-</span>';
+    }
+
+    let qClass = 'tag-q1';
+    if (qVal === 'Q2') qClass = 'tag-q2';
+    if (qVal === 'Q3') qClass = 'tag-q3';
+    if (qVal === 'Q4') qClass = 'tag-q4';
+    if (qVal === 'MOH') qClass = 'tag-moh';
+
+    return `
+      <div class="journal-metrics-col-box" style="display:flex; flex-direction:column; gap:3px; font-size:0.75rem;">
+        <div style="display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+          ${ifVal ? `<span class="journal-metrics-tag ${qClass}" style="padding:2px 6px; font-size:0.7rem;">⭐ IF: ${ifVal}</span>` : ''}
+          ${qVal ? `<span class="journal-metrics-tag ${qClass}" style="padding:2px 6px; font-size:0.7rem;">${qVal}</span>` : ''}
+        </div>
+        ${(sjrVal || hVal) ? `
+          <div style="font-size:0.68rem; color:var(--text-muted); line-height:1.2;">
+            ${sjrVal ? `SJR: ${sjrVal}` : ''} ${hVal ? `• H: ${hVal}` : ''}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
   function renderTable() {
-    const tbody = document.getElementById('studies-tbody');
+    const tbody = document.getElementById('studies-tbody') || document.getElementById('table-body');
     const displayCount = document.getElementById('display-count');
     const totalCountSidebar = document.getElementById('total-count-sidebar');
     const savedCountSidebar = document.getElementById('saved-count-sidebar');
@@ -405,6 +520,16 @@
     if (displayCount) displayCount.textContent = filtered.length;
 
     if (!tbody) return;
+
+    const isCompact = window.viewMode === 'compact';
+    const table = document.getElementById('studies-table-element');
+    if (table) {
+      const detailedCols = ['sourceType', 'specialty', 'design', 'organization', 'journalMetrics', 'intervention', 'primaryEndpoint', 'keyResults', 'conclusion', 'sampleSize', 'population', 'icd10'];
+      detailedCols.forEach(col => {
+        const th = table.querySelector(`thead th[data-col="${col}"]`);
+        if (th) th.style.display = (window.columnVisibility[col] && !isCompact) ? '' : 'none';
+      });
+    }
 
     if (filtered.length === 0) {
       tbody.innerHTML = '';
@@ -434,6 +559,8 @@
       const designObj = window.DESIGNS && window.DESIGNS[study.design] ? window.DESIGNS[study.design] : { name: study.design };
       const impactObj = window.IMPACTS && window.IMPACTS[study.impact] ? window.IMPACTS[study.impact] : { name: study.impact, color: '#2563eb', bg: '#eff6ff' };
 
+      const showCol = (colName) => (window.columnVisibility[colName] && !isCompact) ? '' : 'none';
+
       html += `
         <tr class="study-row ${isSelected ? 'selected' : ''}" data-id="${study.id}">
           <td class="col-select" onclick="event.stopPropagation()">
@@ -450,39 +577,47 @@
                   <span class="spec-tag" style="background:${specObj.bg}; color:${specObj.color}; border: 1px solid ${specObj.color}30;">${escapeHtml(specObj.name)}</span>
                   ${study.drug ? `<span class="drug-tag">💊 ${escapeHtml(study.drug)}</span>` : ''}
                   ${study.year ? `<span class="year-tag">📅 ${study.year}</span>` : ''}
+                  ${renderJournalMetricsBadge(study)}
                   ${renderSummaryButton(study, 'badge')}
                 </div>
               </div>
             </div>
           </td>
-          <td class="col-source" style="display:${window.columnVisibility.sourceType ? '' : 'none'};">
+          <td class="col-source" style="display:${showCol('sourceType')};">
             <span class="source-tag" style="background:${sourceObj.bg}; color:${sourceObj.color};">${escapeHtml(sourceObj.name)}</span>
           </td>
-          <td class="col-specialty" style="display:${window.columnVisibility.specialty ? '' : 'none'};">
+          <td class="col-specialty" style="display:${showCol('specialty')};">
             <span class="spec-tag" style="background:${specObj.bg}; color:${specObj.color};">${escapeHtml(specObj.name)}</span>
           </td>
-          <td class="col-design" style="display:${window.columnVisibility.design ? '' : 'none'};">${escapeHtml(designObj.name)}</td>
-          <td class="col-org" style="display:${window.columnVisibility.organization ? '' : 'none'};">${escapeHtml(study.organization || 'N/A')}</td>
-          <td class="col-interv" style="display:${window.columnVisibility.intervention ? '' : 'none'};">${escapeHtml(study.intervention || 'N/A')}</td>
-          <td class="col-endpoint" style="display:${window.columnVisibility.primaryEndpoint ? '' : 'none'};">${escapeHtml(study.primaryEndpoint || 'N/A')}</td>
-          <td class="col-results" style="display:${window.columnVisibility.keyResults ? '' : 'none'};">${escapeHtml(study.keyResults || 'N/A')}</td>
+          <td class="col-design" style="display:${showCol('design')};">${escapeHtml(designObj.name)}</td>
+          <td class="col-org" style="display:${showCol('organization')};">${escapeHtml(study.journal || study.organization || 'N/A')}</td>
+          <td class="col-journal-metrics" style="display:${showCol('journalMetrics')};">${renderJournalMetricsColumn(study)}</td>
+          <td class="col-interv" style="display:${showCol('intervention')};">${escapeHtml(study.intervention || 'N/A')}</td>
+          <td class="col-endpoint" style="display:${showCol('primaryEndpoint')};">${escapeHtml(study.primaryEndpoint || 'N/A')}</td>
+          <td class="col-results" style="display:${showCol('keyResults')};">${escapeHtml(study.keyResults || 'N/A')}</td>
           <td class="col-impact" style="display:${window.columnVisibility.impact ? '' : 'none'};">
             <span class="impact-tag" style="background:${impactObj.bg}; color:${impactObj.color};">${escapeHtml(impactObj.name)}</span>
           </td>
+          <td class="col-conclusion" style="display:${showCol('conclusion')};">${escapeHtml(study.summary || 'N/A')}</td>
+          <td class="col-samplesize" style="display:${showCol('sampleSize')};">${study.sampleSize ? study.sampleSize.toLocaleString() : 'N/A'}</td>
+          <td class="col-population" style="display:${showCol('population')};">${escapeHtml(study.population || 'N/A')}</td>
+          <td class="col-icd10" style="display:${showCol('icd10')};">${escapeHtml(Array.isArray(study.icd10) ? study.icd10.join(', ') : (study.icd10 || 'N/A'))}</td>
           <td class="col-actions" onclick="event.stopPropagation()">
-            <div style="display:flex; gap:4px; align-items:center;">
+            <div style="display:flex; gap:4px; align-items:center; justify-content:center;">
               <button class="btn btn-small" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh">⚖️</button>
               ${study.file ? `<a href="${window.resolveStudyFile ? window.resolveStudyFile(study.file) : study.file}" target="_blank" class="btn btn-small btn-primary" title="Đọc bài tóm tắt">📖</a>` : ''}
               <button class="btn btn-small" onclick="openEditModal('${study.id}')" title="Chỉnh sửa">✏️</button>
+              <button class="btn btn-small btn-danger" onclick="deleteStudy('${study.id}')" title="Xóa nghiên cứu này">🗑️</button>
             </div>
           </td>
         </tr>
       `;
 
+
       if (isExpanded) {
         html += `
           <tr class="expanded-detail-row">
-            <td colspan="11" style="padding: 1rem; background: var(--surface-2); border-bottom: 2px solid var(--accent);">
+            <td colspan="15" style="padding: 1rem; background: var(--surface-2); border-bottom: 2px solid var(--accent);">
               <div style="font-size:0.85rem; line-height:1.6; color:var(--text);">
                 <strong>💡 Tóm tắt chi tiết:</strong> ${study.summary}
               </div>
@@ -527,6 +662,42 @@
     renderTable();
   }
 
+  function deleteStudy(id) {
+    const study = (window.studies || []).find(s => s.id === id);
+    const name = study ? study.title : id;
+    if (!confirm(`🗑️ Bạn có chắc muốn XÓA nghiên cứu:\n"${name}"?\n\nThao tác này không thể hoàn tác!`)) return;
+
+    window.studies = (window.studies || []).filter(s => s.id !== id);
+    window.selectedIds.delete(id);
+    window.expandedIds.delete(id);
+
+    if (window.saveStudies) window.saveStudies();
+    if (window.dbDeleteStudy) window.dbDeleteStudy(id);
+
+    renderTable();
+    if (window.renderUpdates) window.renderUpdates();
+  }
+
+  function deleteSelectedStudies() {
+    if (!window.selectedIds || window.selectedIds.size === 0) {
+      alert('⚠️ Vui lòng tích chọn ít nhất 1 nghiên cứu trong danh sách để xóa!');
+      return;
+    }
+    const count = window.selectedIds.size;
+    if (!confirm(`🗑️ Bạn có chắc chắn muốn XÓA HÀNG LOẠT ${count} nghiên cứu/tài liệu đã chọn?\n\nThao tác này không thể hoàn tác!`)) return;
+
+    window.studies = (window.studies || []).filter(s => !window.selectedIds.has(s.id));
+    window.selectedIds.forEach(id => {
+      if (window.dbDeleteStudy) window.dbDeleteStudy(id);
+      window.expandedIds.delete(id);
+    });
+    window.selectedIds.clear();
+
+    if (window.saveStudies) window.saveStudies();
+    renderTable();
+    if (window.renderUpdates) window.renderUpdates();
+  }
+
   // Export Table APIs to window
   window.CONDITION_SPECIALTY_MAP = CONDITION_SPECIALTY_MAP;
   window.renderFilterPills = renderFilterPills;
@@ -547,5 +718,7 @@
   window.toggleSelectStudy = toggleSelectStudy;
   window.toggleBookmark = toggleBookmark;
   window.toggleExpandRow = toggleExpandRow;
+  window.deleteStudy = deleteStudy;
+  window.deleteSelectedStudies = deleteSelectedStudies;
 
 })();

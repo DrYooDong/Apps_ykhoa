@@ -28,6 +28,15 @@
     }
   }
 
+  function closeMobileSidebar() {
+    if (window.innerWidth <= 1024) {
+      const leftNav = document.getElementById('left-nav');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (leftNav) leftNav.classList.remove('mobile-open');
+      if (backdrop) backdrop.classList.remove('active');
+    }
+  }
+
   function initSidebarState() {
     const isMobile = window.innerWidth <= 1024;
     const leftNav = document.getElementById('left-nav');
@@ -39,6 +48,14 @@
         leftNav.classList.add('collapsed');
         if (appShell) appShell.classList.add('sidebar-collapsed');
       }
+    }
+
+    if (leftNav) {
+      leftNav.addEventListener('click', (e) => {
+        if (e.target.closest('.left-nav-link') || e.target.closest('button')) {
+          closeMobileSidebar();
+        }
+      });
     }
   }
 
@@ -58,6 +75,33 @@
     if (targetEl && !isAlreadyActive) {
       targetEl.classList.add('active');
     }
+  }
+
+  // ── Settings Dropdown (Cài đặt menu) ──
+  function toggleSettingsMenu(event) {
+    if (event) event.stopPropagation();
+    const wrapper = document.getElementById('settings-dropdown-wrapper');
+    if (!wrapper) return;
+    const isActive = wrapper.classList.toggle('active');
+    const btn = document.getElementById('settings-toggle-btn');
+    if (btn) btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+  }
+
+  function closeSettingsMenu() {
+    const wrapper = document.getElementById('settings-dropdown-wrapper');
+    if (wrapper) wrapper.classList.remove('active');
+    const btn = document.getElementById('settings-toggle-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  }
+
+  function filterByStudyId(id) {
+    const study = (window.studies || []).find(s => s.id === id);
+    if (!study) return;
+    if (window.filters) window.filters.search = study.title || '';
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) searchInput.value = study.title || '';
+    if (typeof window.switchTab === 'function') window.switchTab('list');
+    if (typeof window.renderTable === 'function') window.renderTable();
   }
 
   function handleSearch(e) {
@@ -116,7 +160,7 @@
   // ════════════════════════════════════════════════════════════════
 
   function renderUpdates() {
-    const container = document.getElementById('recent-updates-container');
+    const container = document.getElementById('updates-list') || document.getElementById('recent-updates-container');
     if (!container) return;
     const studies = window.studies || [];
     const recent = studies.slice(0, 4);
@@ -143,7 +187,7 @@
   }
 
   function toggleRecentUpdatesSec() {
-    const container = document.getElementById('recent-updates-container');
+    const container = document.getElementById('updates-list') || document.getElementById('recent-updates-container');
     const label = document.getElementById('recent-updates-toggle-label');
     const icon = document.getElementById('recent-updates-toggle-icon');
     if (!container) return;
@@ -175,11 +219,19 @@
     }
   });
 
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', async function() {
     initSidebarState();
 
-    if (window.initSupabase) window.initSupabase();
-    if (window.loadStudies) window.loadStudies();
+    if (window.initSupabase) {
+      const isConnected = window.initSupabase();
+      if (isConnected && window.syncStudiesWithSupabase) {
+        await window.syncStudiesWithSupabase();
+      } else if (window.loadStudies) {
+        window.loadStudies();
+      }
+    } else if (window.loadStudies) {
+      window.loadStudies();
+    }
     parseUrlState();
 
     // NNT listeners
@@ -208,6 +260,13 @@
       }
       if (!e.target.closest('.actions-dropdown')) {
         closeAllActionsDropdowns();
+      }
+      // Close settings menu when clicking outside
+      const settingsWrapper = document.getElementById('settings-dropdown-wrapper');
+      if (settingsWrapper && settingsWrapper.classList.contains('active')) {
+        if (!settingsWrapper.contains(e.target)) {
+          closeSettingsMenu();
+        }
       }
     });
 
@@ -241,8 +300,12 @@
 
   // Export Core Hub APIs to window
   window.toggleSidebar = toggleSidebar;
+  window.closeMobileSidebar = closeMobileSidebar;
   window.toggleActionsDropdown = toggleActionsDropdown;
   window.closeAllActionsDropdowns = closeAllActionsDropdowns;
+  window.toggleSettingsMenu = toggleSettingsMenu;
+  window.closeSettingsMenu = closeSettingsMenu;
+  window.filterByStudyId = filterByStudyId;
   window.calculateNNT = calculateNNT;
   window.renderUpdates = renderUpdates;
   window.toggleRecentUpdatesSec = toggleRecentUpdatesSec;

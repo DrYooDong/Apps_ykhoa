@@ -11,8 +11,8 @@
   // 1. HERO BENTO DASHBOARD CARDS
   // ════════════════════════════════════════════════════════════════
 
-  function renderBentoDashboard(studies, filterCallback) {
-    const container = document.getElementById('updates-list');
+  function renderBentoDashboard(studies, containerId = 'analytics-bento-container') {
+    const container = document.getElementById(containerId) || document.getElementById('analytics-bento-container') || document.getElementById('updates-list');
     if (!container || !Array.isArray(studies)) return;
 
     const pcStudies = studies.filter(s => s.impact === 'practice-changing');
@@ -434,6 +434,144 @@
       .replace(/"/g, '&quot;');
   }
 
+  // ════════════════════════════════════════════════════════════════
+  // 4. MAIN ANALYTICS & TIMELINE RENDERERS
+  // ════════════════════════════════════════════════════════════════
+
+  function renderAnalytics() {
+    const container = document.getElementById('panel-analytics');
+    if (!container) return;
+
+    const studies = window.studies || window.SAMPLE_STUDIES || [];
+
+    if (!studies || studies.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">📊</div>
+          <p>Chưa có dữ liệu để lập biểu đồ phân tích & thống kê.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const gapMapHtml = typeof window.renderEvidenceGapMap === 'function' ? window.renderEvidenceGapMap(studies) : '';
+
+    container.innerHTML = `
+      <div class="analytics-dashboard-wrapper" style="display: flex; flex-direction: column; gap: 1.5rem;">
+        
+        <!-- SECTION 1: BENTO OVERVIEW GRID -->
+        <div id="analytics-bento-container"></div>
+
+        <!-- SECTION 2: BẢN ĐỒ KHOẢNG TRỐNG BẰNG CHỨNG (GAP MAP TREEMAP) -->
+        <div id="analytics-gapmap-container">${gapMapHtml}</div>
+
+        <!-- SECTION 3: EVIDENCE BUBBLE CHART (SVG) -->
+        <div id="analytics-bubble-container"></div>
+
+        <!-- SECTION 4: HEATMAP MATRIX (CHUYÊN KHOA × NĂM) -->
+        <div id="analytics-heatmap-container"></div>
+      </div>
+    `;
+
+    // Render Bento Dashboard
+    renderBentoDashboard(studies);
+
+    // Render Evidence Bubble Chart SVG
+    renderEvidenceBubbleChart(studies, 'analytics-bubble-container', (studyId) => {
+      if (typeof window.filterByStudyId === 'function') {
+        window.filterByStudyId(studyId);
+      }
+    });
+
+    // Render Heatmap Matrix
+    renderHeatmapMatrix(studies, 'analytics-heatmap-container', (specialty, year) => {
+      if (window.filters) {
+        window.filters.specialty = specialty;
+        window.filters.period = String(year);
+      }
+      if (typeof window.switchTab === 'function') window.switchTab('list');
+      if (typeof window.renderFilterPills === 'function') window.renderFilterPills();
+      if (typeof window.renderTable === 'function') window.renderTable();
+    });
+  }
+
+  function renderTimeline() {
+    const container = document.getElementById('panel-timeline');
+    if (!container) return;
+
+    const studies = window.studies || window.SAMPLE_STUDIES || [];
+    if (!studies || studies.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">📅</div>
+          <p>Chưa có dữ liệu để lập Timeline Hướng dẫn.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Group studies by year (descending)
+    const grouped = {};
+    studies.forEach(s => {
+      const yr = s.year || 2026;
+      if (!grouped[yr]) grouped[yr] = [];
+      grouped[yr].push(s);
+    });
+
+    const sortedYears = Object.keys(grouped).map(Number).sort((a, b) => b - a);
+
+    let html = `
+      <div class="tl-wrapper">
+        <div class="tl-top-bar">
+          <div class="tl-page-title">📅 Timeline Hướng Dẫn & Thử Nghiệm Lâm Sàng</div>
+          <div class="tl-page-subtitle">Dòng thời gian công bố các hướng dẫn điều trị và thử nghiệm lâm sàng (${studies.length} tài liệu)</div>
+        </div>
+
+        <div class="tl-body">
+    `;
+
+    sortedYears.forEach(year => {
+      const items = grouped[year];
+      html += `
+        <div class="tl-year-group">
+          <div class="tl-year-pin">
+            <span class="tl-year-badge">${year}</span>
+            <div class="tl-year-line"></div>
+          </div>
+          <div class="tl-items">
+      `;
+
+      items.forEach(study => {
+        const specObj = window.SPECIALTIES && window.SPECIALTIES[study.specialty] ? window.SPECIALTIES[study.specialty] : { name: study.specialty || 'Chuyên khoa', color: '#7c3aed' };
+        const impactObj = window.IMPACTS && window.IMPACTS[study.impact] ? window.IMPACTS[study.impact] : { name: study.impact || 'Thông tin', color: '#2563eb' };
+
+        html += `
+          <div class="tl-item" style="--tl-color: ${specObj.color};" onclick="window.filterByStudyId && window.filterByStudyId('${study.id}')">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px;">
+              <span class="spec-tag" style="background: ${specObj.color}15; color: ${specObj.color}; border: 1px solid ${specObj.color}30;">${escapeHtml(specObj.name)}</span>
+              <span class="impact-tag" style="background: ${impactObj.color}15; color: ${impactObj.color};">${escapeHtml(impactObj.name)}</span>
+            </div>
+            <div style="font-weight: 700; font-size: 0.88rem; color: var(--text); line-height: 1.35;">${escapeHtml(study.title)}</div>
+            ${study.drug ? `<div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 4px;">💊 ${escapeHtml(study.drug)}</div>` : ''}
+            ${study.summary ? `<div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; line-height: 1.4;">${escapeHtml(study.summary.slice(0, 150))}...</div>` : ''}
+          </div>
+        `;
+      });
+
+      html += `
+          </div>
+        </div>
+      `;
+    });
+
+    html += `
+        </div>
+      </div>
+    `;
+
+    container.innerHTML = html;
+  }
+
   // Export to global scope for guidelines.js to call
   window.GuidelineVisualizations = {
     renderBentoDashboard,
@@ -441,4 +579,8 @@
     renderHeatmapMatrix
   };
 
+  window.renderAnalytics = renderAnalytics;
+  window.renderTimeline = renderTimeline;
+
 })();
+
