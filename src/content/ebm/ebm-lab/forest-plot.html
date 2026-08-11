@@ -280,6 +280,10 @@
         <div class="fp-card">
           <div class="fp-card-title">
             <span><i class="fa-solid fa-chart-line" style="color: var(--ebm-primary);"></i> Biểu Đồ Forest Plot SVG Tương Tác:</span>
+            <div style="display: flex; gap: 0.5rem;">
+              <button id="btn-export-svg" class="fp-btn-add" style="border: 1px solid var(--ebm-primary); color: var(--ebm-primary); background: transparent; padding: 0.35rem 0.75rem;"><i class="fa-solid fa-download"></i> Tải SVG</button>
+              <button id="btn-export-png" class="fp-btn-add" style="border: 1px solid var(--ebm-purple); color: var(--ebm-purple); background: transparent; padding: 0.35rem 0.75rem;"><i class="fa-solid fa-file-image"></i> Tải PNG (HD)</button>
+            </div>
           </div>
           <p class="fp-card-desc">Biểu đồ cập nhật thời gian thực theo bảng dữ liệu phía dưới. Kích thước hình vuông thể hiện Trọng số (Weight %), khoảng gạch ngang thể hiện 95% CI và hình thoi biểu thị Hiệu quả gộp.</p>
 
@@ -289,8 +293,8 @@
 
           <div class="fp-stats-bar">
             <div><strong>Ước tính dị biệt (Heterogeneity I²):</strong> <span id="fp-stat-i2" style="color: var(--ebm-primary-dark); font-weight: 800;">12%</span></div>
-            <div><strong>Đường vô hiệu (Null line):</strong> <span>HR/RR = 1.0</span></div>
-            <div><strong>Thang đo:</strong> <span>Tuyến tính (Linear Scale)</span></div>
+            <div><strong>Đường vô hiệu (Null line):</strong> <span id="fp-stat-null">1.0</span></div>
+            <div><strong>Thang đo (Scale Mode):</strong> <span id="fp-stat-scale" style="color: var(--ebm-purple); font-weight: 700;">Logarithmic Scale</span></div>
           </div>
         </div>
 
@@ -300,14 +304,25 @@
             <span><i class="fa-solid fa-table" style="color: var(--ebm-purple);"></i> Bảng Dữ Liệu Nghiên Cứu / Subgroups</span>
           </div>
 
-          <!-- PRESET SELECTOR BAR -->
-          <div class="fp-preset-bar">
-            <span class="fp-preset-label"><i class="fa-solid fa-folder-open"></i> Nạp bộ dữ liệu mẫu:</span>
-            <select class="fp-select" id="fp-preset-select">
-              <option value="empareg">EMPA-REG OUTCOME (Tim mạch - Empagliflozin)</option>
-              <option value="dapahf">DAPA-HF (Suy tim - Dapagliflozin)</option>
-              <option value="esc2026">ESC 2026 AF Trials (Kháng đông DOACs vs Warfarin)</option>
-            </select>
+          <!-- PRESET & METRIC MODE BAR -->
+          <div class="fp-preset-bar" style="justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <span class="fp-preset-label"><i class="fa-solid fa-folder-open"></i> Bộ dữ liệu mẫu:</span>
+              <select class="fp-select" id="fp-preset-select">
+                <option value="multi_tier_ada">ADA 2026 EBM Multi-Tier Outcomes (Khung EBM Đa Tầng)</option>
+                <option value="empareg">EMPA-REG OUTCOME (Tim mạch - Empagliflozin)</option>
+                <option value="dapahf">DAPA-HF (Suy tim - Dapagliflozin)</option>
+                <option value="esc2026">ESC 2026 AF Trials (Kháng đông DOACs vs Warfarin)</option>
+              </select>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <span class="fp-preset-label"><i class="fa-solid fa-sliders"></i> Loại chỉ số (Metric Mode):</span>
+              <select class="fp-select" id="fp-metric-type-select">
+                <option value="ratio">Tỷ số (Ratio: HR, OR, RR) — Log Scale (Null = 1.0)</option>
+                <option value="difference">Liều/Hiệu (Difference: MD, SMD) — Linear Scale (Null = 0.0)</option>
+              </select>
+            </div>
           </div>
 
           <!-- TABLE EDITOR -->
@@ -315,12 +330,13 @@
             <table class="fp-editor-table">
               <thead>
                 <tr>
-                  <th style="width: 35%;">Tên Nghiên Cứu / Phân Nhóm</th>
-                  <th style="width: 15%;">Tỷ Số (HR/OR)</th>
-                  <th style="width: 15%;">95% CI Thấp</th>
-                  <th style="width: 15%;">95% CI Cao</th>
-                  <th style="width: 15%;">Trọng Số (%)</th>
-                  <th style="width: 5%;">Xóa</th>
+                  <th style="width: 20%;">Tầng Kết Cục</th>
+                  <th style="width: 30%;">Tên Nghiên Cứu / Kết Cục</th>
+                  <th style="width: 12%;">Giá Trị</th>
+                  <th style="width: 12%;">95% CI Thấp</th>
+                  <th style="width: 12%;">95% CI Cao</th>
+                  <th style="width: 10%;">Trọng Số (%)</th>
+                  <th style="width: 4%;">Xóa</th>
                 </tr>
               </thead>
               <tbody id="fp-table-body">
@@ -329,7 +345,7 @@
             </table>
           </div>
 
-          <button class="fp-btn-add" id="fp-btn-add-row"><i class="fa-solid fa-plus"></i> Thêm Nghiên Cứu Mới</button>
+          <button class="fp-btn-add" id="fp-btn-add-row"><i class="fa-solid fa-plus"></i> Thêm Outcome Mới</button>
         </div>
 
       </div>

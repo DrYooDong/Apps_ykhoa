@@ -156,6 +156,88 @@
     .rx-tag.highlight { background: var(--blue-bg); color: var(--accent); border-color: var(--blue-light); font-weight: 600; }
     .rx-tag.alert { background: var(--red-bg); color: var(--red); border-color: var(--red-light); font-weight: 600; }
 
+    /* ══════════════════════════════════════════════════════
+       EBM EVIDENCE HIERARCHY & RECOMMENDATIONS UI SYSTEM
+    ══════════════════════════════════════════════════════ */
+    .ebm-badge-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .cor-badge, .loe-badge {
+      padding: 0.2rem 0.55rem;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      line-height: 1.3;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .cor-class-1 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .cor-class-2a { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+    .cor-class-2b { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .cor-class-3 { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
+
+    [data-theme="dark"] .cor-class-1 { background: rgba(6, 78, 59, 0.5); color: #4ade80; border-color: #059669; }
+    [data-theme="dark"] .cor-class-2a { background: rgba(12, 74, 110, 0.5); color: #38bdf8; border-color: #0284c7; }
+    [data-theme="dark"] .cor-class-2b { background: rgba(120, 53, 15, 0.5); color: #fbbf24; border-color: #d97706; }
+    [data-theme="dark"] .cor-class-3 { background: rgba(127, 29, 29, 0.5); color: #f87171; border-color: #dc2626; }
+
+    .loe-badge {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .loe-grade-a { background: rgba(16, 185, 129, 0.12); color: #047857; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .loe-grade-b { background: rgba(59, 130, 246, 0.12); color: #1d4ed8; border: 1px solid rgba(59, 130, 246, 0.35); }
+    .loe-grade-c { background: rgba(245, 158, 11, 0.12); color: #b45309; border: 1px solid rgba(245, 158, 11, 0.35); }
+    .loe-grade-e { background: rgba(107, 114, 128, 0.12); color: #4b5563; border: 1px solid rgba(107, 114, 128, 0.35); }
+
+    [data-theme="dark"] .loe-grade-a { color: #34d399; border-color: rgba(52, 211, 153, 0.3); }
+    [data-theme="dark"] .loe-grade-b { color: #60a5fa; border-color: rgba(96, 165, 250, 0.3); }
+    [data-theme="dark"] .loe-grade-c { color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
+    [data-theme="dark"] .loe-grade-e { color: #9ca3af; border-color: rgba(156, 163, 175, 0.3); }
+
+    /* EBM Recommendation Card */
+    .ebm-rec-card {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.85rem;
+      transition: box-shadow var(--tr);
+    }
+    .ebm-rec-card.class-1 { border-left-color: #059669; }
+    .ebm-rec-card.class-2a { border-left-color: #0284c7; }
+    .ebm-rec-card.class-2b { border-left-color: #d97706; }
+    .ebm-rec-card.class-3 { border-left-color: #dc2626; }
+    .ebm-rec-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+    .ebm-rec-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .ebm-rec-text {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
     code { font-family: 'JetBrains Mono', monospace; background: var(--surface-2); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.82em; border: 1px solid var(--border-light); }
 
     /* CITATION & FOOTER */
@@ -271,15 +353,29 @@
       </div>
       <div class="sec-body">
         
-        <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Giới thiệu và Hệ thống Phân loại Bằng chứng ADA</h3>
-        <div class="infobox info">
-          <span class="infobox-icon">ℹ️</span>
-          <div>
-            <strong>Hệ thống Phân loại Mức độ Bằng chứng ADA (Table 1):</strong><br>
-            • <strong>Mức độ A:</strong> Minh chứng rõ ràng từ các thử nghiệm lâm sàng ngẫu nhiên có đối chứng (RCT) thiết kế tốt, cỡ mẫu đủ lớn.<br>
-            • <strong>Mức độ B:</strong> Minh chứng hỗ trợ từ các nghiên cứu thuần tập tiến cứu hoặc sổ đăng ký dữ liệu lớn / bệnh chứng.<br>
-            • <strong>Mức độ C:</strong> Minh chứng hỗ trợ từ các nghiên cứu kiểm soát kém hoặc không có đối chứng.<br>
-            • <strong>Mức độ E:</strong> Đồng thuận của các chuyên gia hoặc kinh nghiệm lâm sàng.
+        <h3 class="sec-subtitle"><i class="fa-solid fa-layer-group"></i> Giới thiệu & Hệ thống Phân loại Bằng chứng EBM ADA</h3>
+        <div class="infobox info" style="flex-direction: column; gap: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="infobox-icon" style="font-size: 1.1rem;">⚖️</span>
+            <span>Hệ thống Phân loại Mức độ Bằng chứng & Khuyến cáo Lâm sàng (ADA EBM Matrix):</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.65rem; width: 100%;">
+            <div style="background: var(--surface); padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-light);">
+              <span class="loe-badge loe-grade-a"><i class="fa-solid fa-ribbon"></i> Mức độ A (Grade A)</span>
+              <p style="font-size: 0.78rem; margin-top: 0.35rem; color: var(--text-muted); line-height: 1.45;">Minh chứng rõ ràng từ RCT ngẫu nhiên đối chứng cỡ mẫu lớn hoặc Meta-analysis.</p>
+            </div>
+            <div style="background: var(--surface); padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-light);">
+              <span class="loe-badge loe-grade-b"><i class="fa-solid fa-award"></i> Mức độ B (Grade B)</span>
+              <p style="font-size: 0.78rem; margin-top: 0.35rem; color: var(--text-muted); line-height: 1.45;">Minh chứng từ nghiên cứu thuần tập tiến cứu lớn, Cohort hoặc Case-control chuẩn.</p>
+            </div>
+            <div style="background: var(--surface); padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-light);">
+              <span class="loe-badge loe-grade-c"><i class="fa-solid fa-shield"></i> Mức độ C (Grade C)</span>
+              <p style="font-size: 0.78rem; margin-top: 0.35rem; color: var(--text-muted); line-height: 1.45;">Minh chứng từ nghiên cứu quan sát nhỏ, kém kiểm soát hoặc kết quả chưa đồng nhất.</p>
+            </div>
+            <div style="background: var(--surface); padding: 0.65rem 0.85rem; border-radius: 8px; border: 1px solid var(--border-light);">
+              <span class="loe-badge loe-grade-e"><i class="fa-solid fa-user-doctor"></i> Mức độ E (Expert Opinion)</span>
+              <p style="font-size: 0.78rem; margin-top: 0.35rem; color: var(--text-muted); line-height: 1.45;">Đồng thuận của các chuyên gia hàng đầu dựa trên thực hành lâm sàng.</p>
+            </div>
           </div>
         </div>
 
@@ -356,9 +452,27 @@
         </ul>
 
         <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Sàng lọc & Dự phòng ĐTĐ Tuýp 2 (Chương 3)</h3>
-        <p>• <strong>Tuổi bắt đầu sàng lọc quy ước:</strong> Bắt đầu từ <strong>35 tuổi</strong> cho người không triệu chứng (Mức độ B), lặp lại mỗi 3 năm.<br>
-        • <strong>Sàng lọc thừa cân/béo phì:</strong> Thực hiện khi <strong>BMI ≥ 25 kg/m²</strong> (hoặc <strong>≥ 23 kg/m²</strong> ở người gốc Á) kèm theo yếu tố nguy cơ (tiền sử gia đình ĐTĐ, tăng HA ≥ 130/80, HDL &lt; 35, Triglyceride &gt; 250, PCOS, CVD, MASLD).<br>
-        • <strong>Can thiệp Tiền Đái Tháo Đường:</strong> Giảm <strong>5–7% cân nặng</strong>, thể dục aerobic ≥ 150 phút/tuần (Mức độ A). Khuyến cáo chế độ ăn Địa Trung Hải hoặc low-carb (Mức độ B). Cân nhắc dùng <strong>Metformin</strong> ở người 25–59 tuổi, BMI ≥ 35 kg/m², FPG ≥ 110 mg/dL, HbA1c ≥ 6.0% hoặc tiền sử ĐTĐ thai kỳ (Mức độ A).</p>
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-hdr">
+            <strong>Sàng lọc định kỳ Tiền ĐTĐ & ĐTĐ Tuýp 2</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">Class I</span>
+              <span class="loe-badge loe-grade-b">Grade B</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text">Bắt đầu sàng lọc từ <strong>35 tuổi</strong> cho người không có triệu chứng, lặp lại mỗi 3 năm. Thực hiện sớm hơn ở người thừa cân/béo phì (BMI ≥ 25 kg/m², hoặc ≥ 23 kg/m² ở người gốc Á) có kèm yếu tố nguy cơ (tiền sử gia đình, tăng HA, lipid máu bất thường, PCOS, CVD, MASLD).</p>
+        </div>
+
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-hdr">
+            <strong>Can thiệp Tiền Đái Tháo Đường</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">Class I</span>
+              <span class="loe-badge loe-grade-a">Grade A</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text">Giảm <strong>5–7% cân nặng</strong> và duy trì vận động thể lực aerobic ≥ 150 phút/tuần <span class="loe-badge loe-grade-a">Grade A</span>. Khuyến cáo chế độ ăn Địa Trung Hải hoặc low-carb <span class="loe-badge loe-grade-b">Grade B</span>. Cân nhắc <strong>Metformin</strong> ở người 25–59 tuổi, BMI ≥ 35 kg/m², FPG ≥ 110 mg/dL, HbA1c ≥ 6.0% hoặc có tiền sử ĐTĐ thai kỳ <span class="loe-badge loe-grade-a">Grade A</span>.</p>
+        </div>
 
       </div>
     </div>
@@ -372,22 +486,39 @@
       <div class="sec-body">
         
         <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Bệnh Gan Nhiễm Mỡ Liên Quan Rối Loạn Chuyển Hóa (MASLD/MASH)</h3>
-        <p>• <strong>Sàng lọc ban đầu:</strong> Tính chỉ số xơ hóa gan <strong>FIB-4</strong> định kỳ cho tất cả người mắc ĐTĐ tuýp 2 hoặc tiền đái tháo đường (Mức độ B).<br>
-        • <strong>Phân tầng nguy cơ:</strong> Nếu <code>FIB-4 ≥ 1.3</code>, cần đo độ cứng gan (FibroScan) hoặc thử nghiệm máu ELF (Mức độ B).<br>
-        • <strong>Điều trị lựa chọn:</strong> Ưu tiên dùng <strong>GLP-1 RA</strong> hoặc <strong>GIP/GLP-1 RA</strong> giúp kiểm soát glucose, cân nặng và cải thiện tổn thương mô học gan (Mức độ A/B).</p>
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-hdr">
+            <strong>Sàng lọc & Phân tầng Nguy cơ Gan Nhiễm Mỡ</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">Class I</span>
+              <span class="loe-badge loe-grade-b">Grade B</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text">Tính chỉ số xơ hóa gan <strong>FIB-4</strong> định kỳ cho tất cả người mắc ĐTĐ tuýp 2 hoặc tiền đái tháo đường. Nếu <code>FIB-4 ≥ 1.3</code>, cần đo độ cứng gan (FibroScan) hoặc ELF <span class="loe-badge loe-grade-b">Grade B</span>. Ưu tiên dùng <strong>GLP-1 RA</strong> hoặc <strong>GIP/GLP-1 RA</strong> giúp kiểm soát glucose, cân nặng và cải thiện tổn thương mô học gan <span class="loe-badge loe-grade-a">Grade A</span>.</p>
+        </div>
 
         <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Sức Khỏe Xương & Ngăn Ngừa Gãy Xương</h3>
-        <p>• Đo mật độ xương <strong>DEXA</strong> ở người bệnh ≥ 65 tuổi hoặc người trẻ có nguy cơ gãy xương mỗi 2–3 năm (Mức độ A).<br>
-        • Tránh sử dụng <strong>TZDs</strong> và <strong>Sulfonylureas</strong> ở những bệnh nhân nguy cơ cao gãy xương (Mức độ B).</p>
+        <div class="ebm-rec-card class-2a">
+          <div class="ebm-rec-hdr">
+            <strong>Tầm soát Loãng Xương & Lựa chọn Thuốc</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-2a">Class IIa</span>
+              <span class="loe-badge loe-grade-a">Grade A</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text">Đo mật độ xương <strong>DEXA</strong> ở người bệnh ≥ 65 tuổi hoặc có nguy cơ gãy xương mỗi 2–3 năm <span class="loe-badge loe-grade-a">Grade A</span>. Tránh sử dụng <strong>TZDs</strong> và <strong>Sulfonylureas</strong> ở những bệnh nhân nguy cơ cao gãy xương <span class="loe-badge loe-grade-b">Grade B</span>.</p>
+        </div>
 
         <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Khuyến Cáo Dinh Dưỡng & Vận Động (Chương 5)</h3>
         <div class="infobox success">
           <span class="infobox-icon">✅</span>
           <div>
-            <strong>Dinh dưỡng & Lối sống Chuẩn ADA 2026:</strong><br>
-            • <strong>Chất xơ:</strong> Khuyên nạp ít nhất <strong>14 g chất xơ / 1,000 kcal</strong> tiêu thụ hàng ngày (Mức độ B).<br>
-            • <strong>Natri:</strong> Giới hạn natri <strong>&lt; 2,300 mg/ngày</strong> (Mức độ B).<br>
-            • <strong>Hoạt động thể chất:</strong> Ngắt thời gian ngồi liên tục sau mỗi 30 phút. Tập Aerobic <strong>≥ 150 phút/tuần</strong> trải đều ít nhất 3 ngày/tuần; kháng lực 2–3 buổi/tuần (Mức độ B/C).
+            <strong>Dinh dưỡng & Lối sống Chuẩn ADA 2026:</strong>
+            <ul style="margin-top: 0.4rem; line-height: 1.7;">
+              <li><strong>Chất xơ:</strong> Khuyên nạp ít nhất <strong>14 g chất xơ / 1,000 kcal</strong> tiêu thụ hàng ngày <span class="loe-badge loe-grade-b">Grade B</span>.</li>
+              <li><strong>Natri:</strong> Giới hạn natri <strong>&lt; 2,300 mg/ngày</strong> <span class="loe-badge loe-grade-b">Grade B</span>.</li>
+              <li><strong>Hoạt động thể chất:</strong> Ngắt thời gian ngồi liên tục sau mỗi 30 phút. Tập Aerobic <strong>≥ 150 phút/tuần</strong> trải đều ít nhất 3 ngày/tuần; kháng lực 2–3 buổi/tuần <span class="loe-badge loe-grade-b">Grade B</span>.</li>
+            </ul>
           </div>
         </div>
 
@@ -464,8 +595,16 @@
         </div>
 
         <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Công Nghệ Đái Tháo Đường (Chương 7)</h3>
-        <p>• <strong>Hệ thống phân phối insulin tự động (AID):</strong> Là phương pháp ưu tiên hơn MDI cho tất cả bệnh nhân ĐTĐ tuýp 1 (Mức độ A) và ĐTĐ tuýp 2 cần insulin (Mức độ A).<br>
-        • Không yêu cầu rào cản xét nghiệm C-peptide hay thời gian dùng insulin trước khi chỉ định AID/CGM.</p>
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-hdr">
+            <strong>Hệ thống Phân phối Insulin Tự Động (AID) & CGM</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">Class I</span>
+              <span class="loe-badge loe-grade-a">Grade A</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text">Hệ thống AID là phương pháp ưu tiên hơn tiêm nhiều mũi insulin (MDI) cho tất cả bệnh nhân ĐTĐ tuýp 1 <span class="loe-badge loe-grade-a">Grade A</span> và ĐTĐ tuýp 2 cần insulin <span class="loe-badge loe-grade-a">Grade A</span>. Không yêu cầu rào cản C-peptide hay thời gian dùng insulin trước khi chỉ định AID/CGM.</p>
+        </div>
 
       </div>
     </div>
@@ -479,9 +618,18 @@
       <div class="sec-body">
         
         <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Quản Lý Cân Nặng & Thừa Cân / Béo Phì (Chương 8)</h3>
-        <p>• <strong>Giảm cân 5–7%:</strong> Cải thiện đáng kể kiểm soát glucose và nguy cơ tim mạch (Mức độ A).<br>
-        • <strong>Giảm cân &gt; 10%:</strong> Cải thiện MASH và mở ra cơ hội <strong>lui bệnh ĐTĐ tuýp 2</strong> (Mức độ A).<br>
-        • <strong>Ưu tiên Dược lý béo phì:</strong> **Semaglutide** hoặc **Tirzepatide** (GLP-1 RA / GIP-GLP-1 RA) với hiệu quả giảm cân mạnh nhất.</p>
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-hdr">
+            <strong>Mục tiêu Giảm Cân & Dược Lý Béo Phì</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">Class I</span>
+              <span class="loe-badge loe-grade-a">Grade A</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text">• <strong>Giảm cân 5–7%:</strong> Cải thiện đáng kể kiểm soát glucose và nguy cơ tim mạch <span class="loe-badge loe-grade-a">Grade A</span>.<br>
+          • <strong>Giảm cân &gt; 10%:</strong> Cải thiện MASH và mở ra cơ hội <strong>lui bệnh ĐTĐ tuýp 2</strong> <span class="loe-badge loe-grade-a">Grade A</span>.<br>
+          • <strong>Dược lý ưu tiên:</strong> <strong>Semaglutide</strong> hoặc <strong>Tirzepatide</strong> (GLP-1 RA / GIP-GLP-1 RA) đạt hiệu quả giảm cân mạnh nhất <span class="loe-badge loe-grade-a">Grade A</span>.</p>
+        </div>
 
         <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Thuốc Hạ Glucose ở Người Lớn ĐTĐ Tuýp 2 (Figure 9.4)</h3>
         <div class="flowchart-card">
@@ -535,9 +683,39 @@ benefit) [Symptomatic HFpEF  nếu SGLT2i                     cao     (Mức đ�
       <div class="sec-body">
         
         <h3 class="sec-subtitle"><i class="fa-solid fa-angle-right"></i> Tiếp Cận Đa Yếu Tố Giảm Nguy Cơ Tim Mạch (Figure 10.1)</h3>
-        <p>• <strong>Huyết áp target:</strong> <span class="rx-tag highlight">&lt; 130/80 mmHg</span> cho hầu hết bệnh nhân. Cân nhắc tâm thu &lt; 120 mmHg nếu nguy cơ tim mạch/thận cao. Ưu tiên ACEi/ARB khi có albumin niệu.<br>
-        • <strong>Lipid mỡ máu:</strong> Dự phòng thứ phát (đã có ASCVD) dùng <strong>statin cường độ cao</strong> nhằm giảm ≥ 50% LDL-C và đạt <strong>LDL-C &lt; 55 mg/dL</strong> (&lt; 1.4 mmol/L). Phối hợp Ezetimibe / PCSK9i nếu chưa đạt. Dùng <strong>Bempedoic acid</strong> nếu không dung nạp statin.<br>
-        • <strong>Suy tim (HF):</strong> <strong>SGLT2i</strong> là lựa chọn hàng đầu cho HFrEF và HFpEF. Phối hợp thêm <strong>nonsteroidal MRA (Finerenone)</strong> nếu suy tim giai đoạn C kèm phân suất tống máu &gt; 40%.</p>
+        
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-hdr">
+            <strong>Kiểm Soát Huyết Áp & Nguy Cơ Tim Mạch</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">Class I</span>
+              <span class="loe-badge loe-grade-a">Grade A</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text">Huyết áp target <span class="rx-tag highlight">&lt; 130/80 mmHg</span> cho hầu hết bệnh nhân. Cân nhắc tâm thu &lt; 120 mmHg nếu nguy cơ tim mạch/thận cao. Ưu tiên <strong>ACEi / ARB</strong> khi có albumin niệu <span class="loe-badge loe-grade-a">Grade A</span>.</p>
+        </div>
+
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-hdr">
+            <strong>Quản Lý Lipid Mỡ Máu & Statin Cường Độ Cao</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">Class I</span>
+              <span class="loe-badge loe-grade-a">Grade A</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text">Dự phòng thứ phát (đã có ASCVD) dùng <strong>statin cường độ cao</strong> nhằm giảm ≥ 50% LDL-C và đạt <strong>LDL-C &lt; 55 mg/dL</strong> (&lt; 1.4 mmol/L) <span class="loe-badge loe-grade-a">Grade A</span>. Phối hợp Ezetimibe / PCSK9i nếu chưa đạt target <span class="loe-badge loe-grade-a">Grade A</span>. Dùng <strong>Bempedoic acid</strong> nếu không dung nạp statin <span class="loe-badge loe-grade-a">Grade A</span>.</p>
+        </div>
+
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-hdr">
+            <strong>Bảo Vệ Suy Tim (Heart Failure)</strong>
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">Class I</span>
+              <span class="loe-badge loe-grade-a">Grade A</span>
+            </span>
+          </div>
+          <p class="ebm-rec-text"><strong>SGLT2i</strong> là lựa chọn hàng đầu cho cả HFrEF và HFpEF <span class="loe-badge loe-grade-a">Grade A</span>. Phối hợp thêm <strong>nonsteroidal MRA (Finerenone)</strong> nếu suy tim giai đoạn C kèm phân suất tống máu &gt; 40% <span class="loe-badge loe-grade-a">Grade A</span>.</p>
+        </div>
 
       </div>
     </div>

@@ -95,19 +95,50 @@
               <input type="text" id="pico-c" class="pico-input" placeholder="VD: Giả dược (Placebo) hoặc Điều trị chuẩn">
             </div>
 
-            <!-- O: Outcome -->
-            <div class="pico-field">
+            <!-- O: Outcome (Multi-tier Extractor) -->
+            <div class="pico-field full-width" style="grid-column: 1 / -1;">
               <label class="pico-label" for="pico-o">
-                <span class="pico-label-badge o">O</span> Outcome (Kết cục)
+                <span class="pico-label-badge o">O</span> Outcome — Phân Tích & Bóc Tách Kết Cục Đa Tầng (EBM Outcome Framework)
               </label>
-              <input type="text" id="pico-o" class="pico-input" placeholder="VD: Giảm tử vong do tim mạch và nhập viện do suy tim">
+              <div class="outcome-tier-manager" style="background: var(--ebm-surface-2, #f8fafc); border: 1px solid var(--ebm-border, #e2e8f0); border-radius: 12px; padding: 1rem; margin-top: 0.5rem;">
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap; align-items: center;">
+                  <span style="font-size: 0.8rem; font-weight: 700; color: var(--ebm-text);">Tầng Kết Cục:</span>
+                  <select id="pico-o-category" class="pico-input" style="width: auto; padding: 0.35rem 0.6rem; font-size: 0.82rem;">
+                    <option value="primary">🎯 Primary Hard Outcome (Tử vong, MACE, Biến cố lâm sàng cứng)</option>
+                    <option value="composite">🧩 Composite Outcome (Kết cục gộp nhiều thành phần)</option>
+                    <option value="surrogate">🧪 Surrogate Endpoint (Hạ HbA1c, Giảm HA, Sinh hóa...)</option>
+                    <option value="safety">⚠️ Safety Endpoint (Hạ đường huyết, Tác dụng phụ...)</option>
+                  </select>
+                  <select id="pico-o-metric" class="pico-input" style="width: auto; padding: 0.35rem 0.6rem; font-size: 0.82rem;">
+                    <option value="HR">Hazard Ratio (HR)</option>
+                    <option value="OR">Odds Ratio (OR)</option>
+                    <option value="RR">Relative Risk (RR)</option>
+                    <option value="MD">Mean Difference (MD)</option>
+                  </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center;" class="outcome-input-row">
+                  <input type="text" id="pico-o-name" class="pico-input" placeholder="Tên kết cục (VD: Tử vong do mọi nguyên nhân)">
+                  <input type="number" step="0.01" id="pico-o-val" class="pico-input" placeholder="Tỷ số (VD: 0.78)">
+                  <input type="number" step="0.01" id="pico-o-low" class="pico-input" placeholder="95% CI Thấp">
+                  <input type="number" step="0.01" id="pico-o-high" class="pico-input" placeholder="95% CI Cao">
+                  <button type="button" id="btn-add-outcome" class="btn-copy" style="background: var(--ebm-primary, #0284c7); color: #fff; border: none; white-space: nowrap;"><i class="fa-solid fa-plus"></i> Thêm Outcome</button>
+                </div>
+
+                <!-- OUTCOME LIST DISPLAY -->
+                <div id="pico-outcome-list" style="display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem;">
+                  <!-- Dynamically populated outcomes -->
+                </div>
+              </div>
+              <input type="hidden" id="pico-o" value="">
             </div>
           </div>
 
           <!-- PICO OUTPUT BOX -->
           <div class="pico-output-box">
-            <div class="pico-output-header">
+            <div class="pico-output-header" style="display: flex; justify-content: space-between; align-items: center;">
               <span class="pico-output-title"><i class="fa-solid fa-sparkles"></i> Câu Hỏi Lâm Sàng Hoàn Chỉnh:</span>
+              <button id="btn-export-forest" class="btn-copy" style="background: #7c3aed; color: white; border: none;"><i class="fa-solid fa-chart-column"></i> Xem Forest Plot Từ PICO</button>
             </div>
             <div class="pico-question-preview" id="pico-question-preview">
               Nhập thông tin PICO phía trên để xem câu hỏi hoàn chỉnh...

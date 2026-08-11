@@ -110,18 +110,23 @@
 
 ## ⚙️ js/
 
-| File | Vai trò | Dùng cho |
+| File / Subfolder | Vai trò | Dùng cho |
 |------|---------|---------|
-| `main.js` | Theme switching, sidebar toggle, keyboard shortcuts | Mọi trang |
-| `mui-port.js` | Xử lý tương tác Material UI components (Ripple, Accordion, Animated Tabs, Tooltips, Dialogs, Toasts/Snackbars) | `pages/demo-mui-port.html` & các trang tùy chọn |
+| `main.js` | Theme switching, sidebar toggle, keyboard shortcuts (Root Controller) | Mọi trang |
+| `toc.js` | Engine tự động xây dựng & theo dõi mục lục động bám dính (Sticky TOC) | Mọi trang có bài viết dài |
+| `core/cliniportal-sync.js` | Engine đồng bộ thời gian thực 4 module y khoa & kho Guidelines EBM | Xuyên phân hệ |
+| `core/mui-port.js` | Xử lý tương tác Material UI components (Ripple, Accordion, Animated Tabs, Dialogs) | Demo MUI & các trang tùy chọn |
+| `core/pulse.js` | Activity & Timer Ticker toàn hệ thống | Trang chủ & Công cụ |
+| `pharmacology/` | Phân hệ Dược lý (cross-links, drug-passport, emergency-dosing, moa-theater, heatmap...) | `pages/Dược lý/**` |
+| `approach/` | Phân hệ Tiếp cận Lâm sàng (flowchart, approach-symptom, ma-tran-trieu-chung...) | `pages/Tiếp cận/**` |
+| `skills/` | Phân hệ Kỹ năng Lâm sàng (clinical-skill-tabs, auscultation-trainer, ecg-trainer, osce...) | `pages/Kỹ năng/**` |
+| `simulators/` | CDSS Engine, Bệnh án Nội khoa & Simulators (benh-an, case-simulator, cdss-bayesian...) | Các trang Ca bệnh & Bệnh án |
+| `dashboard/` | Widgets & hiệu ứng Bento Dashboard (homepage-effects, homepage-widgets, module-dashboard) | `index.html` & Hubs |
+| `knowledge/` | Đồ thị Tri thức & EBM Bridges (evidence-bridge, knowledge-graph, knowledge-sync...) | Kho Kiến thức & EBM |
+| `tools/` | Engine Vẽ & Render Lâm sàng (good-day-calculator, clinical-infographic-renderer...) | `pages/Công cụ/**` |
 | `data/icd10-data.js` | Cơ sở dữ liệu 15.844+ mã ICD-10 theo Thông tư 06/2026/TT-BYT | `Tracuu_maICD10.html` |
 | `data/bhyt-mapping.js` | Cơ sở dữ liệu Ánh xạ Dịch vụ kỹ thuật (CLS, Thuốc, PTTT) BHYT với ICD-10 | `Tracuu_maICD10.html` |
-| `cliniportal-sync.js` | Engine đồng bộ thời gian thực 4 module y khoa & kho Guidelines EBM | Xuyên phân hệ |
-| `cdss-bayesian-engine.js` | Bộ máy tính toán xác suất Bayes và suy diễn quyết định lâm sàng (CDSS Core Engine) | Xuyên phân hệ |
-| `flowchart.js` | switchPane, toggleNode, R-Ratio calculator | `pages/Tiếp cận/**` |
-| `approach-symptom.js` | Tự động tạo mục lục & ScrollSpy triệu chứng | `pages/Tiếp cận/2. Triệu chứng/**` |
-| `approach-hub.js` | Search + filter lưu đồ | `tiep-can.html` |
-| `clinical-skill-tabs.js` | Tab switching kỹ năng lâm sàng | `pages/Kỹ năng/**` |
+| `data/lab-values.js` | Chỉ số cận lâm sàng chuẩn & khoảng tham chiếu | `pages/Kỹ năng/Cận lâm sàng/**` |
 | `Kỹ năng/js/osce-evaluator.js` | Core JS engine xử lý dữ liệu JSON Schema bảng chấm điểm OSCE & tính điểm động | `pages/Kỹ năng/**` |
 | `Kỹ năng/js/markdown-skill-parser.js` | Core JS parser biến file Markdown (.md) thành giao diện bài đọc kỹ năng | `pages/Kỹ năng/**` |
 | `Kỹ năng/js/lab-simulator.js` | Core JS engine giả lập chỉ số cận lâm sàng từ dữ liệu JSON Schema | `pages/Kỹ năng/**` |
@@ -557,9 +562,12 @@
 |------|---------|
 | `PROJECT_OVERVIEW.md` | Tổng quan kiến trúc & quy tắc toàn bộ hệ thống |
 | `FILE_MAP.md` | Bản đồ file & cấu trúc cây thư mục |
+| `WORKFLOW_CHECKLISTS.md` | **[MỚI]** Tập hợp 5 Bảng kiểm quy trình (Checklists A/B/C/D/E) chuẩn hóa |
+| `FRONTEND_CHECKLIST_VAULT.md` | **[MỚI]** Kho Tiêu chuẩn & Bảng kiểm Front-End (7 Section QA Treasury) dựa trên thedaviddias/Front-End-Checklist |
 | `DESIGN_TO_CODE.md` | **[MỚI]** Hướng dẫn quy trình chuyển đổi thiết kế từ Figma sang Vanilla CSS |
 | `HUONG_DAN_THIET_KE_VA_VE_LUU_DO_YKHOA.md` | Quy chuẩn thiết kế lưu đồ thuật toán y khoa |
 | `src/content/pathophysiology/pathophysiology-cases/WORKFLOW_TAO_TRANG_SINH_LY_BENH.md` | **[MỚI]** Quy trình Workflow 6 bước khởi tạo bài học Sinh lý bệnh & Cơ chế bệnh sinh chuẩn Y khoa |
+
 
 ---
 

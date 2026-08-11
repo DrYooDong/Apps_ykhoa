@@ -12,3 +12,7 @@
 
 3. **BẢO VỆ REGISTRY & TỰ ĐỘNG DỌN DẸP**:
    - Khi tạo file theo yêu cầu, phải kiểm tra danh sách `SAMPLE_STUDIES` để tránh ghi trùng lặp các key ID / slug.
+
+4. **BẮT BUỘC CHUẨN HÓA PHÂN CẤP BẰNG CHỨNG (EBM EVIDENCE HIERARCHY)**:
+   - Mọi trang Guideline được khởi tạo hoặc cập nhật từ nay về sau **BẮT BUỘC** phải tích hợp bộ linh kiện Phân cấp Bằng chứng EBM trực quan: Thẻ khuyến cáo `.ebm-rec-card`, nhãn Khuyến cáo `.cor-badge` (Class I, IIa, IIb, III) và nhãn Bằng chứng `.loe-badge` (Level/Grade A, B, C, E) theo đúng chuẩn thiết kế trong Skill `guideline-summary-module`.
+

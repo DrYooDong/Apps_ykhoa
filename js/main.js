@@ -849,6 +849,229 @@ window.CliniPortalUtils.throttle = function throttle(func, limit = 250) {
 window.debounce = window.CliniPortalUtils.debounce;
 window.throttle = window.CliniPortalUtils.throttle;
 
+// ============================================================================
+// CLINICAL COMMAND CENTER & CHEATSHEETS ENGINE (MODAL POPUP)
+// ============================================================================
+(function initClinicalCommandCenter() {
+  function setupCommandCenter() {
+    const grid = document.getElementById('cheatsheetsGridContainer');
+    const filterControls = document.getElementById('cheatsheetsFilterControls');
+    const openBtn = document.getElementById('openCheatsheetModalBtn');
+    const closeBtn = document.getElementById('closeCheatsheetModalBtn');
+    const modalOverlay = document.getElementById('cheatsheetsModalOverlay');
+    const searchInput = document.getElementById('cheatsheetSearchInput');
+
+    let currentFilter = 'all';
+    let currentQuery = '';
+
+    // 1. Keyboard Shortcut Handler (Ctrl+K or /)
+    document.addEventListener('keydown', (e) => {
+      const isCmdOrCtrl = e.metaKey || e.ctrlKey;
+      if ((isCmdOrCtrl && e.key.toLowerCase() === 'k') || (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA')) {
+        e.preventDefault();
+        const targetInput = document.querySelector('.search-bar-container input') || document.querySelector('.search-box-container input');
+        if (targetInput) {
+          targetInput.focus();
+          targetInput.select();
+        }
+      }
+
+      // Close cheatsheets modal on ESC key
+      if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    if (!grid || !window.CLINICAL_CHEATSHEETS_DATA) return;
+
+    let pinnedIds = JSON.parse(localStorage.getItem('cliniportal_pinned_cheatsheets') || '[]');
+
+    // 2. Modal Open / Close Logic
+    function openModal() {
+      if (!modalOverlay) return;
+      modalOverlay.style.display = 'flex';
+      requestAnimationFrame(() => {
+        modalOverlay.classList.add('active');
+      });
+      document.body.style.overflow = 'hidden';
+      if (searchInput) {
+        setTimeout(() => searchInput.focus(), 150);
+      }
+      renderCheatsheets(currentFilter, currentQuery);
+    }
+
+    function closeModal() {
+      if (!modalOverlay) return;
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        modalOverlay.style.display = 'none';
+      }, 300);
+    }
+
+    const triggerElements = document.querySelectorAll('#openCheatsheetModalBtn, .open-cheatsheet-btn, .cheatsheet-trigger-btn');
+    triggerElements.forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal();
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+    }
+
+    // 3. Render Engine
+    function renderCheatsheets(filter = 'all', query = '') {
+      const data = window.CLINICAL_CHEATSHEETS_DATA;
+      let items = [...data];
+
+      // Filter by category badge
+      if (filter !== 'all') {
+        items = items.filter(item => {
+          if (filter === 'emergency') return item.badge === 'EMERGENCY' || item.badge === 'ACLS';
+          if (filter === 'cardiac') return item.category === 'Tim mạch' || item.badge === 'ACUTE CARDIAC';
+          if (filter === 'formula') return item.category === 'Thận - Điện giải' || item.badge === 'FORMULA';
+          if (filter === 'score') return item.badge === 'SCORE';
+          return true;
+        });
+      }
+
+      // Filter by keyword query
+      if (query.trim() !== '') {
+        const q = query.trim().toLowerCase();
+        items = items.filter(item => {
+          const inTitle = item.title.toLowerCase().includes(q);
+          const inCategory = item.category.toLowerCase().includes(q);
+          const inSummary = item.summary.toLowerCase().includes(q);
+          const inTags = item.tags.some(t => t.toLowerCase().includes(q));
+          const inDetails = item.details && item.details.firstLine.toLowerCase().includes(q);
+          return inTitle || inCategory || inSummary || inTags || inDetails;
+        });
+      }
+
+      // Sort pinned cards first
+      items.sort((a, b) => {
+        const isAPinned = pinnedIds.includes(a.id);
+        const isBPinned = pinnedIds.includes(b.id);
+        if (isAPinned && !isBPinned) return -1;
+        if (!isAPinned && isBPinned) return 1;
+        return 0;
+      });
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--color-text-muted);">
+            <i class="fa-solid fa-folder-open" style="font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.5;"></i>
+            <p style="font-weight: 600; margin: 0; font-size: 1.05rem;">Không tìm thấy phác đồ / công thức phù hợp</p>
+            <small style="opacity: 0.75;">Thử tìm kiếm với từ khóa khác như "Adrenaline", "Glasgow", "Sodium"...</small>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = items.map(item => {
+        const isPinned = pinnedIds.includes(item.id);
+        const dosingHtml = item.details.dosing.map(d => `<li>${d}</li>`).join('');
+        const tagsHtml = item.tags.map(t => `<span class="cheatsheet-tag">#${t}</span>`).join('');
+
+        return `
+          <div class="cheatsheet-card" data-id="${item.id}">
+            <div class="cheatsheet-card-top">
+              <div class="cheatsheet-card-title-group">
+                <div class="cheatsheet-icon-box">
+                  <i class="fa-solid ${item.icon}"></i>
+                </div>
+                <div>
+                  <h4>${item.title}</h4>
+                  <span class="cheatsheet-card-category">${item.category}</span>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.35rem;">
+                <span class="cheatsheet-badge ${item.badgeClass}">${item.badge}</span>
+                <button class="cheatsheet-pin-btn ${isPinned ? 'pinned' : ''}" data-pin-id="${item.id}" title="${isPinned ? 'Bỏ ghim' : 'Ghim lên đầu'}">
+                  <i class="${isPinned ? 'fa-solid' : 'fa-regular'} fa-star"></i>
+                </button>
+              </div>
+            </div>
+            
+            <p class="cheatsheet-summary">${item.summary}</p>
+            
+            <div class="cheatsheet-details-box">
+              <span class="cheatsheet-first-line">${item.details.firstLine}</span>
+              <ul class="cheatsheet-dosing-list">
+                ${dosingHtml}
+              </ul>
+            </div>
+
+            <div class="cheatsheet-tags">
+              ${tagsHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Attach Pin Listeners
+      grid.querySelectorAll('.cheatsheet-pin-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const cardId = btn.dataset.pinId;
+          if (pinnedIds.includes(cardId)) {
+            pinnedIds = pinnedIds.filter(id => id !== cardId);
+          } else {
+            pinnedIds.push(cardId);
+          }
+          localStorage.setItem('cliniportal_pinned_cheatsheets', JSON.stringify(pinnedIds));
+          renderCheatsheets(currentFilter, currentQuery);
+        });
+      });
+    }
+
+    // 4. Filter Buttons & Search Listeners
+    if (filterControls) {
+      filterControls.addEventListener('click', (e) => {
+        const btn = e.target.closest('.cheatsheet-filter-btn');
+        if (!btn) return;
+        filterControls.querySelectorAll('.cheatsheet-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderCheatsheets(currentFilter, currentQuery);
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentQuery = e.target.value;
+        renderCheatsheets(currentFilter, currentQuery);
+      });
+    }
+
+    // Initial render call
+    renderCheatsheets('all', '');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCommandCenter);
+  } else {
+    setupCommandCenter();
+  }
+})();
+
+
 
 
 

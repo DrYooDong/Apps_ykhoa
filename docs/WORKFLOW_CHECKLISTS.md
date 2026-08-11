@@ -121,3 +121,18 @@ Dùng trước khi commit hoặc hoàn tất bất kỳ bài tập / tính năng
   - Thử tra cứu ô Search / Filter (nếu trang có tính năng tra cứu).
 - [ ] **6. Chạy Kiểm Tra Tổng Thể Dự Án**:
   - Chạy `node scratch/check_tags.js` cho toàn bộ file HTML mới sửa.
+
+---
+
+## 🗂️ Checklist E: Kho Tiêu Chuẩn & Bảng Kiểm Front-End Toàn Diện (Front-End Quality Treasury)
+
+> **Kho tra cứu độc lập**: Đối chiếu chi tiết 7 Section theo tiêu chuẩn quốc tế [thedaviddias/Front-End-Checklist](https://github.com/thedaviddias/Front-End-Checklist) đã được Việt hóa và tối ưu riêng cho CliniPortal tại **[docs/FRONTEND_CHECKLIST_VAULT.md](file:///d:/Apps_ykhoa/docs/FRONTEND_CHECKLIST_VAULT.md)**.
+
+- [ ] **1. Head & Meta Data**: Doctype, `lang="vi"`, Viewport, Title độc nhất, Meta description, Open Graph images.
+- [ ] **2. HTML Semantic & Accessibility**: HTML5 tags, 1 thẻ `<h1>`, ARIA roles, Tab key navigation.
+- [ ] **3. CSS & Design System**: Biến CSS `var(--color-...)`, 0 hardcode hex `#0284c7`, Dark Mode, Touch target $\ge 44 \times 44\text{px}$.
+- [ ] **4. JS & DOM Performance**: `defer` attribute, Pure Vanilla JS, clean `console.log`, safe dereferencing `el?.`.
+- [ ] **5. Media & Assets**: `alt="..."` cho 100% ảnh, explicit `width/height`, WebP/SVG, `loading="lazy"`.
+- [ ] **6. Security & Performance**: `rel="noopener noreferrer"`, Core Web Vitals (LCP < 2.5s, CLS < 0.1).
+- [ ] **7. CliniPortal Medical**: Relative paths audit (`./`, `../`, `../../`, `../../../`, `../../../../`), Dynamic Header/Footer injection, EBM Citations, Registry synchronization (`FILE_MAP.md`).
+

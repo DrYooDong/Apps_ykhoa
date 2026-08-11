@@ -1,126 +1,15 @@
-/* ============================================================
-   EVIDENCE BRIDGE SYSTEM — CROSS-MODULE LOGIC
-   Location: js/evidence-bridge.js
-============================================================ */
-
-document.addEventListener("DOMContentLoaded", function () {
-  initEvidenceBridge();
-});
-
-const EVIDENCE_DATABASE = {
-  "class-1a": {
-    badgeText: "🔬 Class I-A (ESC/ACC)",
-    badgeClass: "class-1a",
-    title: "Mức Chỉ Định Class I — Bằng Chứng Mức A",
-    body: "Khuyến cáo có hiệu quả cao và bắt buộc áp dụng cho tất cả bệnh nhân phù hợp tiêu chuẩn (trừ khi có chống chỉ định tuyệt đối). Được chứng minh từ nhiều Thử nghiệm lâm sàng ngẫu nhiên ngẫu nhiên (RCT) lớn.",
-    linkUrl: "src/content/ebm/guidelines/guidelines.html"
-  },
-  "byt-2026": {
-    badgeText: "🇻🇳 QĐ 2131/QĐ-BYT 2026",
-    badgeClass: "byt-2026",
-    title: "Hướng Dẫn Lâm Sàng Bộ Y Tế Việt Nam 2026",
-    body: "Khuyến cáo chính thức của Bộ Y tế Việt Nam ban hành kèm theo Quyết định số 2131/QĐ-BYT ngày 14/07/2026 về chẩn đoán và điều trị bệnh lý tại Việt Nam.",
-    linkUrl: "src/content/ebm/guidelines/kho-guidelines/2026-byt-copd.html"
-  },
-  "esc-2026": {
-    badgeText: "🇪🇺 ESC 2026 Update",
-    badgeClass: "esc-2026",
-    title: "Khuyến Cáo Hiệp Hội Tim Mạch Châu Âu (ESC 2026)",
-    body: "Cập nhật thay đổi thực hành lâm sàng mới nhất năm 2026 từ ESC, tối ưu hóa phân tầng nguy cơ và sử dụng các thuốc thế hệ mới.",
-    linkUrl: "src/content/ebm/guideline-radar/radar.html"
+/**
+ * Facade Stub for evidence-bridge.js
+ * Relocated to /js/knowledge/evidence-bridge.js
+ */
+(function() {
+  var currentScript = document.currentScript;
+  if (currentScript) {
+    var basePath = currentScript.src.substring(0, currentScript.src.lastIndexOf('/'));
+    var s = document.createElement('script');
+    s.src = basePath + '/knowledge/evidence-bridge.js';
+    if (currentScript.defer) s.defer = true;
+    if (currentScript.async) s.async = true;
+    document.head.appendChild(s);
   }
-};
-
-function initEvidenceBridge() {
-  createModalStructure();
-  scanAndInjectBadges();
-}
-
-function createModalStructure() {
-  if (document.getElementById("eb-modal-overlay")) return;
-
-  const modalHtml = `
-    <div class="eb-modal-overlay" id="eb-modal-overlay">
-      <div class="eb-modal-card">
-        <button class="eb-modal-close" id="eb-modal-close">&times;</button>
-        <span class="eb-modal-badge" id="eb-modal-badge-tag">Evidence</span>
-        <h3 class="eb-modal-title" id="eb-modal-title">Tóm Tắt Bằng Chứng Y Học</h3>
-        <p class="eb-modal-body" id="eb-modal-body">Nội dung tóm tắt...</p>
-        <div class="eb-modal-footer">
-          <a href="#" class="eb-btn-link" id="eb-modal-link-btn">Xem Guideline Chi Tiết <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  `;
-
-  document.body.insertAdjacentHTML("beforeend", modalHtml);
-
-  const overlay = document.getElementById("eb-modal-overlay");
-  const closeBtn = document.getElementById("eb-modal-close");
-
-  closeBtn.addEventListener("click", () => overlay.classList.remove("active"));
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) overlay.classList.remove("active");
-  });
-}
-
-function scanAndInjectBadges() {
-  // Scan elements with data-evidence attribute
-  const elements = document.querySelectorAll("[data-evidence]");
-
-  elements.forEach((el) => {
-    const key = el.getAttribute("data-evidence");
-    const data = EVIDENCE_DATABASE[key];
-    if (!data) return;
-
-    const badge = document.createElement("span");
-    badge.className = `eb-badge ${data.badgeClass}`;
-    badge.innerHTML = data.badgeText;
-
-    badge.addEventListener("click", (e) => {
-      e.stopPropagation();
-      openEvidenceModal(key);
-    });
-
-    el.appendChild(badge);
-  });
-}
-
-function openEvidenceModal(key) {
-  const data = EVIDENCE_DATABASE[key];
-  if (!data) return;
-
-  const overlay = document.getElementById("eb-modal-overlay");
-  const title = document.getElementById("eb-modal-title");
-  const body = document.getElementById("eb-modal-body");
-  const badgeTag = document.getElementById("eb-modal-badge-tag");
-  const linkBtn = document.getElementById("eb-modal-link-btn");
-
-  title.textContent = data.title;
-  body.textContent = data.body;
-  badgeTag.className = `eb-modal-badge ${data.badgeClass}`;
-  badgeTag.textContent = data.badgeText;
-
-  // Resolve relative link based on current page location depth
-  const depth = getEBPathDepthPrefix();
-  linkBtn.href = depth + data.linkUrl;
-
-  overlay.classList.add("active");
-}
-
-function getEBPathDepthPrefix() {
-  if (typeof window.getPathDepthPrefix === "function" && window.getPathDepthPrefix !== getEBPathDepthPrefix) {
-    return window.getPathDepthPrefix();
-  }
-  const holder = document.getElementById('header-placeholder') || document.getElementById('footer-placeholder');
-  const path = holder?.dataset?.headerPath || holder?.dataset?.footerPath;
-  if (path) {
-    const idx = path.lastIndexOf('components/');
-    if (idx !== -1) return path.substring(0, idx);
-  }
-  const p = window.location.pathname;
-  if (p.includes("/src/content/ebm/guidelines/kho-guidelines/")) return "../../../../";
-  if (p.includes("/src/content/ebm/ebm-lab/") || p.includes("/src/content/ebm/guideline-radar/")) return "../../../";
-  if (p.includes("/src/content/")) return "../../";
-  return "./";
-}
+})();

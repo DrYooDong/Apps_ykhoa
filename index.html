@@ -46,14 +46,15 @@
   <link rel="stylesheet" href="./css/components/mui-port.css">
 
   <script src="./js/core/category-mapper.js" defer></script>
+  <script src="./js/data/clinical-cheatsheets-data.js" defer></script>
   <script src="./js/main.js" defer></script>
   <script src="./components/footer.js" defer></script>
-  <script src="./js/pulse.js" defer></script>
-  <script src="./js/evidence-bridge.js" defer></script>
-  <script src="./js/smart-recommender.js" defer></script>
+  <script src="./js/core/pulse.js" defer></script>
+  <script src="./js/knowledge/evidence-bridge.js" defer></script>
+  <script src="./js/simulators/smart-recommender.js" defer></script>
   <script src="./data/search-index-bundle.js" defer></script>
   <script src="./js/components/clinical-heatmap.js" defer></script>
-  <script src="./js/good-day-calculator.js" defer></script>
+  <script src="./js/tools/good-day-calculator.js" defer></script>
 </head>
 
 <body>
@@ -146,6 +147,9 @@
       </div>
 
       <div class="header-actions">
+        <button id="header-cheatsheets-btn" class="header-settings-btn open-cheatsheet-btn" title="Tra Cứu Siêu Tốc (Clinical Cheatsheets)" aria-label="Tra cứu siêu tốc">
+          <i class="fa-solid fa-bolt" style="color: var(--color-primary);"></i>
+        </button>
         <button id="sync-settings-btn" class="header-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">
           <i class="fa-solid fa-gear"></i>
         </button>
@@ -242,7 +246,26 @@
           </section>
         </div>
 
-        <!-- ── ROW 2: 8 PHÂN HỆ Y KHOA NAV STRIP ────────────── -->
+        <!-- ── ROW 1.5: CLINICAL CHEATSHEETS QUICK ACTION BANNER ────────────────── -->
+        <div class="cheatsheet-trigger-banner" id="openCheatsheetModalBtn" role="button" tabindex="0" aria-label="Mở Tra Cứu Siêu Tốc">
+          <div class="cheatsheet-trigger-content">
+            <div class="cheatsheet-trigger-icon">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="cheatsheet-trigger-text">
+              <h3>Tra Cứu Siêu Tốc (Clinical Cheatsheets)</h3>
+              <p>Phác đồ cấp cứu khẩn, thang điểm &amp; công thức lâm sàng tra cứu tức thì</p>
+            </div>
+          </div>
+          <div class="cheatsheet-trigger-action">
+            <span class="cheatsheet-trigger-badge">⚡ Quick Access</span>
+            <button class="cheatsheet-trigger-btn" type="button">
+              Mở bảng tra cứu <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── ROW 2: 8 PHÂN HỆ Y KHOA NAV STRIP (MASTER INDEX) ────────────── -->
         <div class="bento-modules-row" aria-label="8 Phân hệ kiến thức y khoa">
           <a href="src/content/skills/ky-nang.html" class="bento-cell bento-module bento-mod-skills">
             <div class="bento-mod-top-box">
@@ -776,11 +799,43 @@
     </div>
   </div>
 
+  <!-- Tra Cứu Siêu Tốc Modal Overlay -->
+  <div class="cheatsheets-modal-overlay" id="cheatsheetsModalOverlay" role="dialog" aria-modal="true" aria-labelledby="cheatsheets-modal-title" style="display: none;">
+    <div class="cheatsheets-modal-container">
+      <div class="cheatsheets-modal-header">
+        <h2 class="cheatsheets-modal-title" id="cheatsheets-modal-title">
+          <i class="fa-solid fa-bolt"></i> Tra Cứu Siêu Tốc (Clinical Cheatsheets)
+        </h2>
+        <button class="cheatsheets-modal-close" id="closeCheatsheetModalBtn" aria-label="Đóng bảng tra cứu">&times;</button>
+      </div>
+
+      <div class="cheatsheets-modal-toolbar">
+        <div class="cheatsheets-controls" id="cheatsheetsFilterControls">
+          <button class="cheatsheet-filter-btn active" data-filter="all">Tất cả</button>
+          <button class="cheatsheet-filter-btn" data-filter="emergency">🚨 Cấp cứu khẩn</button>
+          <button class="cheatsheet-filter-btn" data-filter="cardiac">❤️ Tim mạch</button>
+          <button class="cheatsheet-filter-btn" data-filter="formula">🧪 Công thức / Thận</button>
+          <button class="cheatsheet-filter-btn" data-filter="score">📊 Thang điểm</button>
+        </div>
+        <div class="cheatsheet-search-wrapper">
+          <i class="fa-solid fa-magnifying-glass cheatsheet-search-icon"></i>
+          <input type="text" id="cheatsheetSearchInput" class="cheatsheet-search-input" placeholder="Tìm phác đồ, thuốc, thang điểm..." autocomplete="off">
+        </div>
+      </div>
+
+      <div class="cheatsheets-modal-body">
+        <div class="cheatsheets-grid" id="cheatsheetsGridContainer">
+          <!-- Render động từ clinical-cheatsheets-data.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
-  <script src="./js/homepage-widgets.js" defer></script>
-  <script src="./js/homepage-effects.js" defer></script>
+  <script src="./js/dashboard/homepage-widgets.js" defer></script>
+  <script src="./js/dashboard/homepage-effects.js" defer></script>
   <script src="./js/toc.js" defer></script>
-  <script src="./js/mui-port.js" defer></script>
+  <script src="./js/core/mui-port.js" defer></script>
   <script type="module" src="./src/index.ts"></script>
 </body>
 
