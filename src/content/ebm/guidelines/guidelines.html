@@ -10,12 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Supabase JS Client SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="guidelines.css">
+  <link rel="stylesheet" href="css/journal-quality.css">
   <link rel="stylesheet" href="../../../../css/components/header.css">
   <script src="../../../../components/header.js" defer></script>
   <style>
@@ -752,10 +750,12 @@
             <input type="password" id="sb-key" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." required>
           </div>
 
+          <div id="sb-test-result" style="display: none; padding: 10px 12px; border-radius: 8px; font-size: 0.78rem; margin-top: 10px; line-height: 1.5;"></div>
+
           <details style="margin-top: 1rem; border: 1px solid var(--border-light); border-radius: 8px; padding: 0.5rem;">
-            <summary style="font-size: 0.75rem; font-weight: 700; color: var(--accent); cursor: pointer; user-select: none;">💡 Câu lệnh SQL tạo bảng mẫu trên Supabase</summary>
-            <pre style="font-size: 0.68rem; background: var(--surface-2); padding: 0.5rem; border-radius: 6px; overflow-x: auto; margin-top: 0.5rem; color: var(--text-muted); text-align: left; max-height: 150px; font-family: monospace;">
-create table clinical_guidelines (
+            <summary style="font-size: 0.75rem; font-weight: 700; color: var(--accent); cursor: pointer; user-select: none;">💡 Câu lệnh SQL tạo bảng & Phân quyền RLS trên Supabase</summary>
+            <pre style="font-size: 0.68rem; background: var(--surface-2); padding: 0.5rem; border-radius: 6px; overflow-x: auto; margin-top: 0.5rem; color: var(--text-muted); text-align: left; max-height: 160px; font-family: monospace;">
+create table if not exists clinical_guidelines (
   id text primary key,
   title text not null,
   author text,
@@ -782,21 +782,26 @@ create table clinical_guidelines (
   icd10 text,
   subgroups text,
   parts text,
-  "matrixEndpoints" jsonb,
-  "decisionTree" jsonb,
-  "pocketCard" jsonb,
-  "citation" jsonb,
-  "radarUrl" text,
+  "conditionKey" text,
   "createdAt" timestamp with time zone default timezone('utc'::text, now())
-);</pre>
+);
+
+-- Phân quyền RLS truy cập cho role public/anon:
+alter table clinical_guidelines enable row level security;
+create policy "Allow anon select" on clinical_guidelines for select using (true);
+create policy "Allow anon insert" on clinical_guidelines for insert with check (true);
+create policy "Allow anon update" on clinical_guidelines for update using (true);
+create policy "Allow anon delete" on clinical_guidelines for delete using (true);</pre>
           </details>
           
-          <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem;">
-            <button type="button" class="btn" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" onclick="clearSupabaseConfig()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất / Thoát tài khoản</button>
+          <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.25rem; flex-wrap: wrap;">
+            <button type="button" class="btn" onclick="testSupabaseConnection()" style="color: var(--accent); border-color: var(--accent-light);">🔍 Test kết nối</button>
+            <button type="button" class="btn" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" onclick="clearSupabaseConfig()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>
             <button type="button" class="btn" onclick="closeSupabaseModal()">Hủy</button>
-            <button type="submit" class="btn btn-primary">Lưu & Kết nối</button>
+            <button type="submit" class="btn btn-primary">💾 Lưu & Kết nối</button>
           </div>
         </form>
+
       </div>
     </div>
   </div>
@@ -863,6 +868,39 @@ create table clinical_guidelines (
       </div>
     </div>
   </div>
+
+  <!-- DUPLICATE RESOLUTION MODAL -->
+  <div class="modal-overlay" id="duplicate-resolution-modal">
+    <div class="modal modal-large" style="max-width: 960px;">
+      <div class="modal-header">
+        <h3>🛡️ Phép Kiểm Trùng Lặp Dữ Liệu Nghiên Cứu</h3>
+        <button class="modal-close" onclick="closeDuplicateResolutionModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="dup-summary-banner" id="dup-summary-banner">
+          <!-- Dynamic banner rendered via JS -->
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; background: var(--surface-2); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-light); flex-wrap: wrap; gap: 8px;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--text);">⚡ Thao tác nhanh hàng loạt cho các bản ghi trùng:</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-small" onclick="applyGlobalDupAction('skip')" style="font-size: 0.72rem; padding: 4px 10px;">🚫 Bỏ qua tất cả trùng</button>
+            <button type="button" class="btn btn-small" onclick="applyGlobalDupAction('overwrite')" style="font-size: 0.72rem; padding: 4px 10px;">🔄 Ghi đè tất cả trùng</button>
+            <button type="button" class="btn btn-small" onclick="applyGlobalDupAction('new')" style="font-size: 0.72rem; padding: 4px 10px;">➕ Giữ cả hai (Thêm mới)</button>
+          </div>
+        </div>
+
+        <div id="dup-items-container" style="display: flex; flex-direction: column; gap: 1rem; max-height: 55vh; overflow-y: auto; padding-right: 4px;">
+          <!-- Items list rendered via JS -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" onclick="closeDuplicateResolutionModal()">Hủy bỏ</button>
+        <button type="button" class="btn btn-primary" onclick="executeDuplicateImport()" style="font-weight: 800;">✅ Xác Nhận Thực Thi Nạp Dữ Liệu</button>
+      </div>
+    </div>
+  </div>
+
 
   <!-- POCKET CHEAT-SHEET MODAL -->
   <div class="modal-overlay" id="pocket-modal">
@@ -1185,7 +1223,13 @@ create table clinical_guidelines (
   <!-- Load ICD-10 Data -->
   <script src="../../../../js/data/icd10-data.js"></script>
   <script src="guidelinesdata.js"></script>
+  <script src="data/predatory-blacklist.js"></script>
+  <script src="js/openalex-service.js"></script>
+  <script src="js/journal-trust-scorer.js"></script>
+  <!-- Supabase JS Client Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/guideline-sync.js"></script>
+
   <script src="js/guideline-table.js"></script>
   <script src="js/guideline-modals.js"></script>
   <script src="js/drug-linker.js"></script>

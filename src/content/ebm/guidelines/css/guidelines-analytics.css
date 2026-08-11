@@ -168,12 +168,23 @@
 
 .bar-segment {
   height: 100%;
-  transition: width 0.4s ease;
+  transition: width 0.4s ease, filter 0.2s;
 }
+.bar-segment:hover { filter: brightness(1.2); }
 .bar-rct { background: #3b82f6; }
 .bar-gdl { background: #10b981; }
 .bar-meta { background: #8b5cf6; }
 .bar-other { background: #94a3b8; }
+
+.jq-bubble-svg circle {
+  transition: r 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), stroke-width 0.2s, fill-opacity 0.2s;
+  cursor: crosshair;
+}
+.jq-bubble-svg circle:hover {
+  r: 14px;
+  stroke-width: 2px;
+  fill-opacity: 1;
+}
 
 .bento-gauge-legend {
   display: flex;

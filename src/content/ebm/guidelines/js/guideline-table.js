@@ -438,12 +438,13 @@
   }
 
   function renderJournalMetricsBadge(study) {
-    const metrics = (window.getJournalMetrics) ? window.getJournalMetrics(study.journal || study.organization, study) : null;
+    const profile = window.getJournalQualityProfile ? window.getJournalQualityProfile(study.journal || study.organization, study) : null;
+    const metrics = profile ? profile.metrics : (window.getJournalMetrics ? window.getJournalMetrics(study.journal || study.organization, study) : null);
     const ifVal = (metrics && metrics.if) ? metrics.if : (study.impactFactor || study.if || null);
     const qVal = (metrics && metrics.quartile) ? metrics.quartile : (study.quartile || (study.sourceType === 'vn-moh' ? 'MOH' : null));
     const sjrVal = (metrics && metrics.sjr) ? metrics.sjr : (study.sjr || null);
-    const snipVal = (metrics && metrics.snip) ? metrics.snip : (study.snip || null);
-    const hVal = (metrics && metrics.hIndex) ? metrics.hIndex : (study.hIndex || null);
+    const ts = profile ? profile.trustScore : null;
+    const pAudit = profile ? profile.predatoryAudit : null;
 
     if (!ifVal && !qVal && !sjrVal) {
       if (study.sourceType === 'vn-moh') {
@@ -452,29 +453,36 @@
       return '';
     }
 
-    const titleText = `Tạp chí: ${study.journal || study.organization || 'N/A'}\n• Impact Factor (IF): ${ifVal || 'N/A'}\n• Quartile: ${qVal || 'N/A'}\n• SJR Index: ${sjrVal || 'N/A'}\n• SNIP Index: ${snipVal || 'N/A'}\n• H-Index: ${hVal || 'N/A'}`;
-
     let qClass = 'tag-q1';
     if (qVal === 'Q2') qClass = 'tag-q2';
     if (qVal === 'Q3') qClass = 'tag-q3';
     if (qVal === 'Q4') qClass = 'tag-q4';
     if (qVal === 'MOH') qClass = 'tag-moh';
 
+    let predBadge = '';
+    if (pAudit && pAudit.isPredatory) {
+      predBadge = `<span class="journal-metrics-tag tag-moh" style="background:#7f1d1d; color:#fca5a5;" title="${pAudit.summary}">🚨 Predatory Risk</span>`;
+    }
+
     return `
-      <span class="journal-metrics-tag ${qClass}" title="${escapeHtml(titleText)}">
+      <span class="journal-metrics-tag ${qClass}">
         ${ifVal ? `<strong>⭐ IF: ${ifVal}</strong>` : ''}
         ${qVal ? `<span class="q-chip">${qVal}</span>` : ''}
+        ${ts ? `<span style="opacity:0.85; font-size:0.65rem;">(${ts.score} pts)</span>` : ''}
       </span>
+      ${predBadge}
     `;
   }
 
   function renderJournalMetricsColumn(study) {
-    const metrics = (window.getJournalMetrics) ? window.getJournalMetrics(study.journal || study.organization, study) : null;
+    const profile = window.getJournalQualityProfile ? window.getJournalQualityProfile(study.journal || study.organization, study) : null;
+    const metrics = profile ? profile.metrics : (window.getJournalMetrics ? window.getJournalMetrics(study.journal || study.organization, study) : null);
     const ifVal = (metrics && metrics.if) ? metrics.if : (study.impactFactor || study.if || null);
     const qVal = (metrics && metrics.quartile) ? metrics.quartile : (study.quartile || (study.sourceType === 'vn-moh' ? 'MOH' : null));
     const sjrVal = (metrics && metrics.sjr) ? metrics.sjr : (study.sjr || null);
-    const snipVal = (metrics && metrics.snip) ? metrics.snip : (study.snip || null);
     const hVal = (metrics && metrics.hIndex) ? metrics.hIndex : (study.hIndex || null);
+    const ts = profile ? profile.trustScore : null;
+    const pAudit = profile ? profile.predatoryAudit : null;
 
     if (!ifVal && !qVal && !sjrVal) {
       if (study.sourceType === 'vn-moh') {
@@ -489,17 +497,22 @@
     if (qVal === 'Q4') qClass = 'tag-q4';
     if (qVal === 'MOH') qClass = 'tag-moh';
 
+    let predHtml = '';
+    if (pAudit && pAudit.isPredatory) {
+      predHtml = `<div style="font-size:0.65rem; color:#dc2626; font-weight:800;" title="${pAudit.summary}">🚨 Risk: High Predatory</div>`;
+    }
+
     return `
       <div class="journal-metrics-col-box" style="display:flex; flex-direction:column; gap:3px; font-size:0.75rem;">
         <div style="display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
           ${ifVal ? `<span class="journal-metrics-tag ${qClass}" style="padding:2px 6px; font-size:0.7rem;">⭐ IF: ${ifVal}</span>` : ''}
           ${qVal ? `<span class="journal-metrics-tag ${qClass}" style="padding:2px 6px; font-size:0.7rem;">${qVal}</span>` : ''}
         </div>
-        ${(sjrVal || hVal) ? `
-          <div style="font-size:0.68rem; color:var(--text-muted); line-height:1.2;">
-            ${sjrVal ? `SJR: ${sjrVal}` : ''} ${hVal ? `• H: ${hVal}` : ''}
-          </div>
-        ` : ''}
+        <div style="font-size:0.68rem; color:var(--text-muted); line-height:1.2; display:flex; gap:6px; align-items:center;">
+          ${ts ? `<span style="font-weight:700; color:${ts.color};">TS: ${ts.score}/100</span>` : ''}
+          ${sjrVal ? `<span>SJR: ${sjrVal}</span>` : ''}
+        </div>
+        ${predHtml}
       </div>
     `;
   }
@@ -531,6 +544,20 @@
       });
     }
 
+    const selectAllCb = document.getElementById('select-all-checkboxes');
+    if (selectAllCb) {
+      if (filtered.length > 0 && filtered.every(s => window.selectedIds && window.selectedIds.has(s.id))) {
+        selectAllCb.checked = true;
+        selectAllCb.indeterminate = false;
+      } else if (filtered.some(s => window.selectedIds && window.selectedIds.has(s.id))) {
+        selectAllCb.checked = false;
+        selectAllCb.indeterminate = true;
+      } else {
+        selectAllCb.checked = false;
+        selectAllCb.indeterminate = false;
+      }
+    }
+
     if (filtered.length === 0) {
       tbody.innerHTML = '';
       if (emptyState) emptyState.style.display = 'block';
@@ -538,6 +565,7 @@
     } else {
       if (emptyState) emptyState.style.display = 'none';
     }
+
 
     // Sort filtered list
     filtered.sort((a, b) => {
@@ -642,6 +670,25 @@
     renderTable();
   }
 
+  function toggleSelectAllRows(isChecked) {
+    const filtered = getFilteredStudies();
+    if (!filtered || filtered.length === 0) return;
+
+    if (!window.selectedIds) window.selectedIds = new Set();
+
+    if (isChecked) {
+      filtered.forEach(s => window.selectedIds.add(s.id));
+    } else {
+      filtered.forEach(s => window.selectedIds.delete(s.id));
+    }
+
+    if (window.GuidelineTools && typeof window.GuidelineTools.updateFloatingCompareBar === 'function') {
+      window.GuidelineTools.updateFloatingCompareBar();
+    }
+    renderTable();
+  }
+
+
   function toggleBookmark(id, event) {
     if (event) event.stopPropagation();
     const study = (window.studies || []).find(s => s.id === id);
@@ -716,7 +763,9 @@
   window.getFilteredStudies = getFilteredStudies;
   window.renderTable = renderTable;
   window.toggleSelectStudy = toggleSelectStudy;
+  window.toggleSelectAllRows = toggleSelectAllRows;
   window.toggleBookmark = toggleBookmark;
+
   window.toggleExpandRow = toggleExpandRow;
   window.deleteStudy = deleteStudy;
   window.deleteSelectedStudies = deleteSelectedStudies;

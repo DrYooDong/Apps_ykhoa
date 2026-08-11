@@ -30,6 +30,85 @@
     const metaPct = Math.round((metaCount / total) * 100);
     const otherPct = Math.max(0, 100 - (rctPct + gdlPct + metaPct));
 
+    // ─── JOURNAL QUALITY CALCULATIONS (PHASE 4) ───
+    let q1 = 0, q2 = 0, q3 = 0, q4 = 0, qMoh = 0, qNa = 0;
+    const bubbleData = [];
+
+    studies.forEach(s => {
+      let metrics = {
+        if: parseFloat(s.impactFactor || s.if || 0),
+        sjr: parseFloat(s.sjr || 0),
+        quartile: s.quartile || (s.sourceType === 'vn-moh' ? 'MOH' : 'N/A')
+      };
+      
+      if (window.getJournalQualityProfile && s.journal) {
+         const profile = window.getJournalQualityProfile(s.journal, s);
+         if (profile && profile.metrics) {
+            metrics.if = parseFloat(profile.metrics.if || profile.metrics.impactFactor || 0);
+            metrics.sjr = parseFloat(profile.metrics.sjr || 0);
+            metrics.quartile = profile.metrics.quartile || 'N/A';
+         }
+      }
+
+      if (metrics.quartile === 'Q1') q1++;
+      else if (metrics.quartile === 'Q2') q2++;
+      else if (metrics.quartile === 'Q3') q3++;
+      else if (metrics.quartile === 'Q4') q4++;
+      else if (metrics.quartile === 'MOH') qMoh++;
+      else qNa++;
+
+      if (metrics.if > 0 || metrics.sjr > 0) {
+        bubbleData.push({
+          title: s.title,
+          journal: s.journal || 'Tạp chí',
+          if: metrics.if,
+          sjr: metrics.sjr,
+          q: metrics.quartile,
+          sample: parseInt(s.sampleSize) || 100
+        });
+      }
+    });
+
+    const totalQ = q1 + q2 + q3 + q4 + qMoh;
+    const q1Pct = totalQ > 0 ? Math.round((q1/totalQ)*100) : 0;
+    const q2Pct = totalQ > 0 ? Math.round((q2/totalQ)*100) : 0;
+    const q3Pct = totalQ > 0 ? Math.round((q3/totalQ)*100) : 0;
+    const q4Pct = totalQ > 0 ? Math.round((q4/totalQ)*100) : 0;
+    const mohPct = totalQ > 0 ? Math.max(0, 100 - (q1Pct + q2Pct + q3Pct + q4Pct)) : 0;
+
+    // Generate Bubble SVG for IF vs SJR
+    let bubbleSvg = '<div class="empty-state" style="padding:1rem;"><p>Chưa đủ dữ liệu IF/SJR</p></div>';
+    if (bubbleData.length > 0) {
+      const maxIf = Math.max(10, ...bubbleData.map(d => d.if)) * 1.1;
+      const maxSjr = Math.max(3, ...bubbleData.map(d => d.sjr)) * 1.1;
+      const svgW = 300, svgH = 150;
+      
+      const bubbles = bubbleData.map(d => {
+        const cx = (d.if / maxIf) * (svgW - 20) + 10;
+        const cy = svgH - ((d.sjr / maxSjr) * (svgH - 20) + 10);
+        const r = Math.max(3, Math.min(12, Math.sqrt(d.sample) * 0.15));
+        let fill = '#94a3b8';
+        if (d.q === 'Q1') fill = '#16a34a';
+        else if (d.q === 'Q2') fill = '#2563eb';
+        else if (d.q === 'Q3') fill = '#ca8a04';
+        else if (d.q === 'Q4') fill = '#475569';
+        else if (d.q === 'MOH') fill = '#dc2626';
+        
+        return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" fill-opacity="0.8" stroke="#ffffff" stroke-width="0.5"><title>${escapeHtml(d.journal)} | IF: ${d.if} | SJR: ${d.sjr}</title></circle>`;
+      }).join('');
+      
+      bubbleSvg = `
+        <svg viewBox="0 0 ${svgW} ${svgH}" width="100%" height="150" class="jq-bubble-svg" style="background:var(--surface-2); border-radius:8px;">
+          <!-- Axes -->
+          <line x1="10" y1="${svgH - 10}" x2="${svgW}" y2="${svgH - 10}" stroke="var(--border-light)"/>
+          <line x1="10" y1="0" x2="10" y2="${svgH - 10}" stroke="var(--border-light)"/>
+          <text x="${svgW - 20}" y="${svgH - 2}" font-size="8" fill="var(--text-muted)">IF</text>
+          <text x="12" y="10" font-size="8" fill="var(--text-muted)">SJR</text>
+          ${bubbles}
+        </svg>
+      `;
+    }
+
     // Top spotlight items (up to 3)
     const spotlightItems = pcStudies.slice(0, 3);
 
@@ -102,6 +181,53 @@
               <span class="legend-chip"><i class="dot dot-gdl"></i> Guideline (${gdlCount})</span>
               <span class="legend-chip"><i class="dot dot-meta"></i> Meta (${metaCount})</span>
             </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: JOURNAL QUALITY HUB & TRUST ANALYZER -->
+        <div class="bento-card" style="background: linear-gradient(135deg, var(--surface) 0%, color-mix(in srgb, var(--accent) 5%, var(--surface)) 100%); border-color: color-mix(in srgb, var(--accent) 30%, var(--border-light)); cursor: pointer;" onclick="window.location.href='journal-quality-analyzer.html'">
+          <div class="bento-card-header">
+            <div class="bento-badge badge-primary">🏆 Journal Quality Hub</div>
+            <span class="bento-card-sublabel">OpenAlex & Trust Score</span>
+          </div>
+          <div class="bento-card-body">
+            <p class="bento-card-text">Tra cứu Impact Factor, SJR, Quartile Q1-Q4 và Kiểm tra Tạp chí Biến tướng (Predatory Warning).</p>
+            <div class="bento-card-footer-link" style="color: var(--accent); font-weight: 800; margin-top: 0.5rem;">Mở Công cụ Phân tích Tạp chí ➔</div>
+          </div>
+        </div>
+
+        <!-- CARD 6: STACKED BAR QUARTILE DISTRIBUTION -->
+        <div class="bento-card bento-card-quartile">
+          <div class="bento-card-header">
+            <div class="bento-badge badge-info">📈 Chất lượng (Quartile)</div>
+            <span class="bento-card-sublabel">Tạp chí Q1-Q4 & MOH</span>
+          </div>
+          <div class="bento-gauge-body">
+            <div class="bento-progress-bar-stacked" style="height: 12px; margin-bottom: 0.5rem; border-radius: 6px; overflow: hidden; display: flex; background: var(--surface-2);">
+              <div class="bar-segment jq-q1" style="width: ${q1Pct}%; background: #16a34a;" title="Q1: ${q1} (${q1Pct}%)"></div>
+              <div class="bar-segment jq-q2" style="width: ${q2Pct}%; background: #2563eb;" title="Q2: ${q2} (${q2Pct}%)"></div>
+              <div class="bar-segment jq-q3" style="width: ${q3Pct}%; background: #ca8a04;" title="Q3: ${q3} (${q3Pct}%)"></div>
+              <div class="bar-segment jq-q4" style="width: ${q4Pct}%; background: #475569;" title="Q4: ${q4} (${q4Pct}%)"></div>
+              <div class="bar-segment jq-moh" style="width: ${mohPct}%; background: #dc2626;" title="MOH: ${qMoh} (${mohPct}%)"></div>
+            </div>
+            <div class="bento-gauge-legend" style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem;">
+              <span class="legend-chip"><i class="dot" style="background:#16a34a;"></i> Q1 (${q1})</span>
+              <span class="legend-chip"><i class="dot" style="background:#2563eb;"></i> Q2 (${q2})</span>
+              <span class="legend-chip"><i class="dot" style="background:#ca8a04;"></i> Q3 (${q3})</span>
+              <span class="legend-chip"><i class="dot" style="background:#475569;"></i> Q4 (${q4})</span>
+              <span class="legend-chip"><i class="dot" style="background:#dc2626;"></i> MOH (${qMoh})</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 7: BUBBLE CHART IF vs SJR -->
+        <div class="bento-card bento-card-bubble">
+          <div class="bento-card-header" style="margin-bottom: 0.5rem;">
+            <div class="bento-badge" style="background: var(--surface-2); color: var(--text);">🟣 IF vs SJR Scatter</div>
+            <span class="bento-card-sublabel">X=IF, Y=SJR, Size=N</span>
+          </div>
+          <div class="bento-card-body" style="padding:0;">
+            ${bubbleSvg}
           </div>
         </div>
 

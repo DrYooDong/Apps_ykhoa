@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Công cụ tra cứu, đánh giá điểm uy tín (Trust Score) và nhận biết tạp chí y khoa biến tướng (Predatory Journals) tích hợp OpenAlex REST API">
+  <title>Phân Tích & Đánh Giá Tạp Chí Y Khoa – CliniPortal EBM</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="guidelines.css">
+  <link rel="stylesheet" href="css/journal-quality.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <script src="../../../../components/header.js" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg, #f0f4f8); color: var(--text, #0f172a); line-height: 1.65; }
+
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light, #e2e8f0); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent, #0f6fb4); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; }
+    .topnav-back:hover { background: var(--blue-bg, #eff6ff); }
+
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #0f6fb4 50%, #0d9488 100%); color: #fff; padding: 3rem 1.5rem 3.5rem; text-align: center; position: relative; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.75rem; }
+    .hero-sub { font-size: 0.95rem; opacity: 0.9; max-width: 720px; margin: 0 auto 1.5rem; }
+
+    .search-box-container { max-width: 680px; margin: 0 auto; position: relative; }
+    .search-input-main { width: 100%; padding: 0.9rem 1.25rem 0.9rem 3.2rem; border-radius: 14px; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); font-size: 0.95rem; outline: none; box-shadow: 0 8px 24px rgba(0,0,0,0.15); font-family: inherit; }
+    .search-input-main:focus { background: #fff; border-color: #38bdf8; box-shadow: 0 8px 30px rgba(56,189,248,0.3); }
+    .search-icon-main { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 1.1rem; }
+
+    .main-container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: flex; flex-direction: column; gap: 2rem; }
+    .sec-card { background: var(--surface, #fff); border: 1px solid var(--border-light, #e2e8f0); border-radius: var(--radius, 16px); padding: 1.5rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; color: var(--text); }
+
+    /* Compare Grid */
+    .compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+
+    /* Table styling */
+    .table-container { overflow-x: auto; border: 1px solid var(--border-light); border-radius: 12px; }
+    .jq-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .jq-table th, .jq-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-light); }
+    .jq-table th { background: var(--surface-2, #f8fafc); font-weight: 700; color: var(--text-muted); }
+    .jq-table tr:hover { background: var(--surface-2, #f8fafc); }
+
+    /* Guide Grid */
+    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+    .guide-card { background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.15rem; }
+    .guide-card h4 { font-weight: 800; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--accent); }
+    .guide-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+    </a>
+    <div style="margin-left: auto; display: flex; gap: 1rem; align-items: center;">
+      <span class="openalex-badge"><i class="fa-solid fa-globe"></i> OpenAlex REST API Powered</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">🏆 Journal Quality Analyzer & Trust Scorer</h1>
+      <p class="hero-sub">Tra cứu chỉ số Impact Factor, SJR, Quartile (Q1-Q4), tính toán Điểm Uy Tín (Trust Score 0-100) và Nhận diện Tạp chí Nghi ngờ Biến tướng (Predatory Warning).</p>
+      
+      <div class="search-box-container">
+        <i class="fa-solid fa-magnifying-glass search-icon-main"></i>
+        <input type="text" id="analyzer-search-input" class="search-input-main" placeholder="Nhập tên tạp chí (vd: NEJM, Lancet, Circulation, CHEST, Frontiers)..." autocomplete="off">
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-container">
+
+    <!-- LIVE SEARCH & RESULT CARD -->
+    <section id="search-result-section" class="sec-card" style="display: none;">
+      <h2 class="sec-title"><i class="fa-solid fa-square-poll-vertical"></i> Kết Quả Phân Tích Tạp Chí</h2>
+      <div id="search-results-container"></div>
+    </section>
+
+    <!-- SO SÁNH TẠP CHÍ SIDE-BY-SIDE -->
+    <section class="sec-card">
+      <h2 class="sec-title"><i class="fa-solid fa-scale-balanced"></i> So Sánh Tạp Chí Y Khoa (Side-by-Side)</h2>
+      <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:1rem;">Chọn hoặc tìm các tạp chí để so sánh trực quan các chỉ số chất lượng:</p>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:1rem;">
+        <button class="btn" style="padding:0.4rem 0.9rem; font-size:0.78rem; font-weight:700; border-radius:8px; background:var(--blue-bg); color:var(--accent); border:1px solid var(--blue-light);" onclick="loadPresetCompare(['NEJM', 'Lancet', 'JAMA'])">🏆 NEJM vs Lancet vs JAMA</button>
+        <button class="btn" style="padding:0.4rem 0.9rem; font-size:0.78rem; font-weight:700; border-radius:8px; background:var(--surface-2); border:1px solid var(--border-light);" onclick="loadPresetCompare(['Circulation', 'Eur Heart J', 'J Am Coll Cardiol'])">🫀 Circulation vs EHJ vs JACC</button>
+        <button class="btn" style="padding:0.4rem 0.9rem; font-size:0.78rem; font-weight:700; border-radius:8px; background:var(--surface-2); border:1px solid var(--border-light);" onclick="loadPresetCompare(['Lancet Respir Med', 'Am J Respir Crit Care Med', 'Chest'])">🫁 Lancet Respir vs AJRCCM vs CHEST</button>
+      </div>
+
+      <div id="compare-grid-container" class="compare-grid"></div>
+    </section>
+
+    <!-- BẢNG CƠ SỞ DỮ LIỆU TẠP CHÍ -->
+    <section class="sec-card">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+        <h2 class="sec-title" style="margin-bottom:0;"><i class="fa-solid fa-database"></i> Cơ Sở Dữ Liệu Tạp Chí Y Khoa Chuyên Khoa</h2>
+        <div style="display:flex; gap:8px;">
+          <select id="category-filter" style="padding:0.4rem 0.75rem; border-radius:8px; border:1px solid var(--border-light); font-size:0.8rem;" onchange="filterJournalTable()">
+            <option value="ALL">Tất cả Chuyên khoa</option>
+            <option value="General Medicine">Nội khoa Tổng quát</option>
+            <option value="Cardiology">Tim mạch</option>
+            <option value="Pulmonology">Hô hấp / ICU</option>
+            <option value="Infectious Disease">Truyền nhiễm</option>
+            <option value="Gastroenterology">Tiêu hóa / Gan mật</option>
+            <option value="Endocrinology">Nội tiết / Thận</option>
+            <option value="Pediatrics">Nhi khoa / Huyết học</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="jq-table">
+          <thead>
+            <tr>
+              <th>Tạp chí Y khoa</th>
+              <th>Chuyên khoa</th>
+              <th>Quartile</th>
+              <th>Impact Factor (IF)</th>
+              <th>SJR Index</th>
+              <th>Trust Score</th>
+              <th>Nhà xuất bản</th>
+            </tr>
+          </thead>
+          <tbody id="journal-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- GÓC KIẾN THỨC EBM: GIẢI THÍCH CHỈ SỐ & CẢNH BÁO PREDATORY -->
+    <section class="sec-card">
+      <h2 class="sec-title"><i class="fa-solid fa-graduation-cap"></i> Cẩm Nang Đánh Giá Tạp Chí Dành Cho Bác Sĩ & Sinh Viên Y Khoa</h2>
+
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h4><i class="fa-solid fa-chart-line"></i> Impact Factor (IF) là gì?</h4>
+          <p>Impact Factor (IF) do Clarivate Analytics công bố hàng năm, đo lường số lần trích dẫn trung bình của các bài báo xuất bản trong 2 năm trước đó. IF cao phản ánh mức độ ảnh hưởng rộng rãi của tạp chí trong cộng đồng khoa học.</p>
+        </div>
+
+        <div class="guide-card">
+          <h4><i class="fa-solid fa-layer-group"></i> Quartile (Q1 - Q4) là gì?</h4>
+          <p>Phân loại Quartile nhóm các tạp chí theo từng ngành (chuyên khoa). <strong>Q1 (Top 25%)</strong> đại diện cho nhóm uy tín nhất. Việc đánh giá theo Q1-Q4 giúp so sánh công bằng giữa các ngành có tần suất trích dẫn khác nhau (vd: Ung bưu vs Da liễu).</p>
+        </div>
+
+        <div class="guide-card">
+          <h4><i class="fa-solid fa-award"></i> SJR & SNIP Index</h4>
+          <p><strong>SJR (SCImago Journal Rank)</strong> tính đến chất lượng của nguồn trích dẫn (trích dẫn từ tạp chí lớn có giá trị cao hơn). <strong>SNIP (Source Normalized Impact per Paper)</strong> điều chỉnh sự chênh lệch trích dẫn giữa các lĩnh vực hẹp.</p>
+        </div>
+
+        <div class="guide-card" style="border-color:#fca5a5; background:linear-gradient(135deg, #fff1f2 0%, #fef2f2 100%);">
+          <h4 style="color:#dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> Nhận diện Tạp chí Biến tướng (Predatory)</h4>
+          <p>Tạp chí biến tướng lợi dụng mô hình Open Access để thu phí APC cao mà <strong>bỏ qua phản biện chuyên môn</strong>. Dấu hiệu: Tuyên bố phản biện siêu tốc (< 5 ngày), sử dụng tên chỉ số giả mạo (GIF, UIF, COSMOS), hoặc mạo danh tên tạp chí lớn.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../../../../js/core/cliniportal-sync.js"></script>
+  <script src="guidelinesdata.js"></script>
+  <script src="data/predatory-blacklist.js"></script>
+  <script src="js/openalex-service.js"></script>
+  <script src="js/journal-trust-scorer.js"></script>
+  <script src="js/journal-quality-analyzer.js"></script>
+</body>
+</html>

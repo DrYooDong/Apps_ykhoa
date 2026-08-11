@@ -109,7 +109,7 @@
     if (list) { list.style.display = 'none'; list.innerHTML = ''; }
   }
 
-  function autoLookupJournalMetrics() {
+  async function autoLookupJournalMetrics() {
     const journalInput = getValueFromIds('study-organization', 'form-organization');
     const btn = document.getElementById('journal-lookup-btn');
     const statusEl = document.getElementById('journal-lookup-status');
@@ -122,49 +122,106 @@
     }
 
     // Loading state
-    if (btn) { btn.querySelector('.lookup-label').textContent = 'Đang tra cứu...'; btn.disabled = true; }
+    if (btn) {
+      const lbl = btn.querySelector('.lookup-label');
+      if (lbl) lbl.textContent = 'Đang tìm kiếm...';
+      btn.disabled = true;
+    }
 
-    setTimeout(() => {
-      if (window.getJournalMetrics) {
-        const metrics = window.getJournalMetrics(journalInput);
-        if (metrics) {
-          _fillJournalMetricsFromObj(metrics);
-          showJournalResultCard(metrics);
-          if (statusEl) { statusEl.textContent = '✅ Đã điền tự động'; statusEl.className = 'journal-lookup-status status-ok'; statusEl.style.display = 'inline-flex'; }
-        } else {
-          hideJournalResultCard();
-          if (statusEl) { statusEl.textContent = '⚠️ Không tìm thấy trong CSDL — vui lòng điền thủ công'; statusEl.className = 'journal-lookup-status status-warn'; statusEl.style.display = 'inline-flex'; }
+    let metrics = window.getJournalMetrics ? window.getJournalMetrics(journalInput) : null;
+    let sourceUsed = 'CSDL Local';
+
+    // Fallback: If not in local DB, search OpenAlex REST API live
+    if (!metrics && window.searchOpenAlexJournals) {
+      if (statusEl) { statusEl.textContent = '🌐 Đang tra cứu OpenAlex API...'; statusEl.className = 'journal-lookup-status status-ok'; statusEl.style.display = 'inline-flex'; }
+      try {
+        const oaResults = await window.searchOpenAlexJournals(journalInput);
+        if (oaResults && oaResults.length > 0) {
+          metrics = oaResults[0];
+          sourceUsed = 'OpenAlex Live';
         }
+      } catch (e) {
+        console.warn('[Modal Lookup] OpenAlex fetch error:', e);
       }
-      if (btn) { btn.querySelector('.lookup-label').textContent = 'Tra cứu tự động'; btn.disabled = false; }
-      setTimeout(() => { if (statusEl) statusEl.style.display = 'none'; }, 4000);
-    }, 350); // brief delay for UX feel
+    }
+
+    if (metrics) {
+      _fillJournalMetricsFromObj(metrics);
+      showJournalResultCard(metrics, sourceUsed);
+      if (statusEl) {
+        statusEl.textContent = `✅ Đã điền (${sourceUsed})`;
+        statusEl.className = 'journal-lookup-status status-ok';
+        statusEl.style.display = 'inline-flex';
+      }
+    } else {
+      hideJournalResultCard();
+      if (statusEl) {
+        statusEl.textContent = '⚠️ Không tìm thấy — vui lòng điền thủ công';
+        statusEl.className = 'journal-lookup-status status-warn';
+        statusEl.style.display = 'inline-flex';
+      }
+    }
+
+    if (btn) {
+      const lbl = btn.querySelector('.lookup-label');
+      if (lbl) lbl.textContent = 'Tra cứu tự động';
+      btn.disabled = false;
+    }
+    setTimeout(() => { if (statusEl) statusEl.style.display = 'none'; }, 4500);
   }
 
   function _fillJournalMetricsFromObj(metrics) {
-    setValueToIds(metrics.if || '', 'study-impact-factor');
+    setValueToIds(metrics.if || metrics.impactFactor || '', 'study-impact-factor');
     setValueToIds(metrics.quartile || 'Q1', 'study-quartile');
     setValueToIds(metrics.sjr || '', 'study-sjr');
     setValueToIds(metrics.snip || '', 'study-snip');
     setValueToIds(metrics.hIndex || '', 'study-hindex');
   }
 
-  function showJournalResultCard(m) {
+  function showJournalResultCard(m, sourceUsed = 'CSDL Local') {
     const card = document.getElementById('journal-result-card');
     if (!card) return;
-    const qClass = m.quartile === 'Q1' ? 'tag-q1' : m.quartile === 'Q2' ? 'tag-q2' : m.quartile === 'Q3' ? 'tag-q3' : 'tag-q4';
+
+    // Get Trust Score & Predatory Risk Profile
+    const profile = window.getJournalQualityProfile ? window.getJournalQualityProfile(m.name || m.journal, m) : null;
+    const ts = profile ? profile.trustScore : { score: 75, grade: 'Chưa xếp hạng', color: '#2563eb' };
+    const pAudit = profile ? profile.predatoryAudit : { isPredatory: false, flags: [] };
+
+    const qClass = m.quartile === 'Q1' ? 'tag-q1' : m.quartile === 'Q2' ? 'tag-q2' : m.quartile === 'Q3' ? 'tag-q3' : m.quartile === 'Q4' ? 'tag-q4' : 'tag-moh';
+
+    let predatoryHtml = '';
+    if (pAudit && pAudit.flags && pAudit.flags.length > 0) {
+      predatoryHtml = `
+        <div class="predatory-alert-banner" style="margin-top: 0.6rem; padding: 0.65rem 0.85rem; font-size: 0.78rem;">
+          <div class="predatory-title-row">
+            <span>${pAudit.summary}</span>
+          </div>
+          <div class="predatory-flag-list">
+            ${pAudit.flags.map(f => `<div>• <strong>${f.title}</strong>: ${f.detail}</div>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+
     card.innerHTML = `
-      <div class="jrc-header">
-        <div class="jrc-name">${m.name || m.journal || '—'}</div>
-        <div class="jrc-category">${m.category || ''}</div>
+      <div class="jrc-header" style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+        <div>
+          <div class="jrc-name" style="font-weight:800; font-size:0.9rem;">${m.name || m.journal || '—'}</div>
+          <div class="jrc-category" style="font-size:0.75rem; color:var(--text-muted);">${m.publisher || m.category || ''} ${m.issn ? '• ISSN: ' + m.issn : ''}</div>
+        </div>
+        <div style="text-align:right;">
+          <span class="openalex-badge">${sourceUsed === 'OpenAlex Live' ? '🌐 OpenAlex API' : '📚 CSDL Local'}</span>
+          <div style="font-size:0.75rem; font-weight:800; color:${ts.color}; margin-top:2px;">Trust Score: ${ts.score}/100</div>
+        </div>
       </div>
-      <div class="jrc-metrics">
+
+      <div class="jrc-metrics" style="margin-top:0.5rem;">
         <div class="jrc-metric">
           <div class="jrc-metric-val">${m.if ?? '—'}</div>
           <div class="jrc-metric-key">Impact Factor</div>
         </div>
         <div class="jrc-metric">
-          <div class="jrc-metric-val"><span class="journal-metrics-tag ${qClass}" style="font-size:0.9rem;">${m.quartile ?? '—'}</span></div>
+          <div class="jrc-metric-val"><span class="journal-metrics-tag ${qClass}" style="font-size:0.85rem;">${m.quartile ?? '—'}</span></div>
           <div class="jrc-metric-key">Quartile</div>
         </div>
         <div class="jrc-metric">
@@ -180,6 +237,8 @@
           <div class="jrc-metric-key">H-Index</div>
         </div>
       </div>
+
+      ${predatoryHtml}
     `;
     card.style.display = 'block';
     card.classList.remove('jrc-animate');
@@ -281,6 +340,28 @@
       createdAt: new Date().toISOString()
     };
 
+    // 🛡️ PHÉP KIỂM TRÙNG LẶP CHO THÊM MỚI THỦ CÔNG
+    if (!editingStudyId && window.detectStudyDuplicate) {
+      const dupCheck = window.detectStudyDuplicate(studyData, window.studies);
+      if (dupCheck && dupCheck.isDuplicate && dupCheck.matchedStudy) {
+        const matched = dupCheck.matchedStudy;
+        const confirmMsg = `⚠️ PHÉP KIỂM TRÙNG LẶP DỮ LIỆU:\n` +
+          `Hệ thống phát hiện nghiên cứu vừa nhập có nguy cơ trùng với bài đã có trong Kho Dữ Liệu!\n\n` +
+          `• Bài đã có: "${matched.title}"\n` +
+          `• Năm: ${matched.year} • Nguồn: ${matched.organization || matched.journal || 'N/A'}\n` +
+          `• Lý do đối sánh: ${dupCheck.reasons.join(', ')}\n\n` +
+          `Bạn có muốn GHI ĐÈ / CẬP NHẬT thông tin lên bài đã có không?\n` +
+          `- Nhấn [OK / Đồng ý]: Ghi đè cập nhật bài cũ.\n` +
+          `- Nhấn [Cancel / Hủy]: Tạo bài mới độc lập.`;
+        
+        const shouldOverwrite = confirm(confirmMsg);
+        if (shouldOverwrite) {
+          studyData.id = matched.id;
+          editingStudyId = matched.id;
+        }
+      }
+    }
+
     if (editingStudyId) {
       const idx = (window.studies || []).findIndex(s => s.id === editingStudyId);
       if (idx !== -1) {
@@ -307,8 +388,10 @@
   }
 
   // ════════════════════════════════════════════════════════════════
-  // 2. IMPORT / EXPORT JSON HANDLERS
+  // 2. IMPORT / EXPORT JSON HANDLERS & DUPLICATE RESOLUTION
   // ════════════════════════════════════════════════════════════════
+
+  let pendingImportBatch = []; // Holds { item, dupResult, action: 'overwrite'|'skip'|'new' }
 
   function openImportModal() {
     const modal = document.getElementById('import-modal');
@@ -320,31 +403,52 @@
     if (modal) modal.classList.remove('active');
   }
 
-  function handleImportJson() {
-    const textarea = document.getElementById('import-json-textarea');
-    if (!textarea) return;
-    const raw = textarea.value.trim();
+  function cleanJSONString(str) {
+    if (!str) return '';
+    let cleaned = str.trim();
+    // Strip markdown code fences ```json ... ```
+    cleaned = cleaned.replace(/^```[a-z]*\s*/i, '').replace(/\s*```$/, '');
+    return cleaned;
+  }
 
-    if (!raw) {
-      alert('⚠️ Vui lòng dán chuỗi dữ liệu JSON vào ô!');
+  function processJSONImport(rawText) {
+    const cleaned = cleanJSONString(rawText);
+    if (!cleaned) {
+      alert('⚠️ Vui lòng dán chuỗi dữ liệu JSON hoặc chọn file JSON!');
       return;
     }
 
+    let parsed = null;
     try {
-      const parsed = JSON.parse(raw);
-      const items = Array.isArray(parsed) ? parsed : [parsed];
+      parsed = JSON.parse(cleaned);
+    } catch (err) {
+      alert('❌ Chuỗi JSON không hợp lệ. Vui lòng kiểm tra định dạng cú pháp dữ liệu!');
+      console.error(err);
+      return;
+    }
 
+    const rawArray = Array.isArray(parsed) ? parsed : [parsed];
+    if (rawArray.length === 0) {
+      alert('⚠️ Dữ liệu JSON không chứa bản ghi nghiên cứu nào!');
+      return;
+    }
+
+    // Run Smart Duplicate Detector against current DB (window.studies)
+    const checkedBatch = window.batchCheckDuplicates ? window.batchCheckDuplicates(rawArray, window.studies) : rawArray.map(item => ({
+      item: window.processStudyFields ? window.processStudyFields(item) : item,
+      dupResult: { isDuplicate: false, score: 0, matchedStudy: null, reasons: [], matchLevel: 'none' }
+    }));
+
+    const duplicates = checkedBatch.filter(b => b.dupResult && b.dupResult.isDuplicate);
+
+    if (duplicates.length === 0) {
+      // Direct smooth import if zero duplicates detected
       let count = 0;
-      items.forEach(item => {
-        if (item && item.title) {
-          const processed = window.processStudyFields ? window.processStudyFields(item) : item;
-          const idx = (window.studies || []).findIndex(s => s.id === processed.id);
-          if (idx !== -1) {
-            window.studies[idx] = processed;
-          } else {
-            window.studies.push(processed);
-          }
-          if (window.dbSaveStudy) window.dbSaveStudy(processed);
+      checkedBatch.forEach(b => {
+        const study = b.item;
+        if (study && study.title) {
+          window.studies.unshift(study);
+          if (window.dbSaveStudy) window.dbSaveStudy(study);
           count++;
         }
       });
@@ -352,11 +456,238 @@
       if (window.saveStudies) window.saveStudies();
       closeImportModal();
       if (window.renderTable) window.renderTable();
-      alert(`📥 Nhập thành công ${count} tài liệu vào hệ thống!`);
-    } catch (err) {
-      alert('❌ Chuỗi JSON không hợp lệ. Vui lòng kiểm tra lại định dạng!');
-      console.error(err);
+      if (window.renderUpdates) window.renderUpdates();
+      alert(`📥 Phép kiểm hoàn tất: Đã nạp thành công ${count} nghiên cứu mới! (Không phát hiện trùng lặp)`);
+    } else {
+      // Set default actions per item
+      pendingImportBatch = checkedBatch.map(b => ({
+        ...b,
+        action: b.dupResult.isDuplicate ? (b.dupResult.matchLevel === 'exact' || b.dupResult.score >= 90 ? 'overwrite' : 'skip') : 'new'
+      }));
+
+      closeImportModal();
+      openDuplicateResolutionModal();
     }
+  }
+
+  function handleImportJson() {
+    const textarea = document.getElementById('json-text') || document.getElementById('import-json-textarea');
+    if (!textarea) return;
+    processJSONImport(textarea.value);
+  }
+
+  function importFromText() {
+    handleImportJson();
+  }
+
+  function handleFileSelect(event) {
+    const file = event && event.target && event.target.files ? event.target.files[0] : null;
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      processJSONImport(e.target.result);
+    };
+    reader.readAsText(file);
+  }
+
+  function fillSampleJSON() {
+    const textarea = document.getElementById('json-text') || document.getElementById('import-json-textarea');
+    if (!textarea) return;
+    textarea.value = `[
+  {
+    "title": "2026 ESC Guidelines for the Diagnosis and Treatment of Acute and Chronic Heart Failure",
+    "year": 2026,
+    "organization": "European Society of Cardiology (ESC)",
+    "specialty": "cardio",
+    "drug": "Empagliflozin / Dapagliflozin + ARNI",
+    "design": "guideline",
+    "summary": "Khuyến cáo mới cập nhật phác đồ 4 trụ cột trong điều trị suy tim phân suất tống máu giảm (HFrEF)."
+  }
+]`;
+  }
+
+  // ── DUPLICATE RESOLUTION CONTROLLERS ──
+
+  function openDuplicateResolutionModal() {
+    const modal = document.getElementById('duplicate-resolution-modal');
+    if (!modal) return;
+    modal.classList.add('active');
+    renderDuplicateResolutionItems();
+  }
+
+  function closeDuplicateResolutionModal() {
+    const modal = document.getElementById('duplicate-resolution-modal');
+    if (modal) modal.classList.remove('active');
+    pendingImportBatch = [];
+  }
+
+  function applyGlobalDupAction(action) {
+    if (!pendingImportBatch || pendingImportBatch.length === 0) return;
+    pendingImportBatch.forEach(item => {
+      if (item.dupResult && item.dupResult.isDuplicate) {
+        item.action = action;
+      }
+    });
+    renderDuplicateResolutionItems();
+  }
+
+  function setPerItemDupAction(index, action) {
+    if (pendingImportBatch && pendingImportBatch[index]) {
+      pendingImportBatch[index].action = action;
+    }
+  }
+
+  function renderDuplicateResolutionItems() {
+    const bannerEl = document.getElementById('dup-summary-banner');
+    const containerEl = document.getElementById('dup-items-container');
+    if (!containerEl) return;
+
+    const total = pendingImportBatch.length;
+    const dupCount = pendingImportBatch.filter(b => b.dupResult && b.dupResult.isDuplicate).length;
+    const newCount = total - dupCount;
+
+    if (bannerEl) {
+      bannerEl.innerHTML = `
+        <div>
+          <div style="font-size: 0.95rem; font-weight: 800; color: var(--accent);">
+            🔍 Phép Kiểm Trùng Lặp: Phát hiện ${dupCount} / ${total} bản ghi có nguy cơ trùng lặp!
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">
+            Hệ thống đã tự động đối sánh theo: Bệnh/Vấn đề, Năm công bố & Nguồn/Tổ chức/Tạp chí. Vui lòng chọn thao tác bên dưới.
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span class="dup-badge dup-badge-new">✨ ${newCount} bài mới</span>
+          <span class="dup-badge dup-badge-exact">⚠️ ${dupCount} bài trùng</span>
+        </div>
+      `;
+    }
+
+    let html = '';
+    pendingImportBatch.forEach((batch, idx) => {
+      const newItem = batch.item;
+      const dup = batch.dupResult;
+      const isDup = dup && dup.isDuplicate;
+      const matched = dup ? dup.matchedStudy : null;
+
+      let badgeClass = 'dup-badge-new';
+      let badgeLabel = '✨ Bài mới hoàn toàn';
+      if (isDup) {
+        if (dup.matchLevel === 'exact') { badgeClass = 'dup-badge-exact'; badgeLabel = '🔴 Trùng khớp 100%'; }
+        else if (dup.matchLevel === 'high') { badgeClass = 'dup-badge-high'; badgeLabel = `🟠 Trùng nguy cơ cao (${dup.score}%)`; }
+        else { badgeClass = 'dup-badge-moderate'; badgeLabel = `🟡 Trùng nguy cơ vừa (${dup.score}%)`; }
+      }
+
+      html += `
+        <div class="dup-item-card" style="${isDup ? 'border-left: 4px solid var(--accent);' : 'border-left: 4px solid var(--color-success, #16a34a);'}">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="font-weight: 800; font-size: 0.82rem; color: var(--text-muted);">#${idx + 1}</span>
+              <span class="dup-badge ${badgeClass}">${badgeLabel}</span>
+              ${isDup ? `<span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Lý do: ${escapeHtml(dup.reasons.join(' • '))}</span>` : ''}
+            </div>
+            
+            <div class="dup-action-selector">
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Hành động:</span>
+              <label>
+                <input type="radio" name="dup_action_${idx}" value="overwrite" ${batch.action === 'overwrite' ? 'checked' : ''} onchange="setPerItemDupAction(${idx}, 'overwrite')">
+                <span>🔄 Ghi đè bài cũ</span>
+              </label>
+              <label>
+                <input type="radio" name="dup_action_${idx}" value="skip" ${batch.action === 'skip' ? 'checked' : ''} onchange="setPerItemDupAction(${idx}, 'skip')">
+                <span>🚫 Bỏ qua bài này</span>
+              </label>
+              <label>
+                <input type="radio" name="dup_action_${idx}" value="new" ${batch.action === 'new' ? 'checked' : ''} onchange="setPerItemDupAction(${idx}, 'new')">
+                <span>➕ Giữ cả hai (Thêm mới)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="dup-comparison-grid">
+            <!-- Incoming Item -->
+            <div class="dup-subcard">
+              <div class="dup-subcard-header" style="color: var(--accent);">📥 Dữ Liệu Mới Nạp Mới</div>
+              <div class="dup-subcard-title">${escapeHtml(newItem.title || 'Không có tiêu đề')}</div>
+              <div class="dup-subcard-meta">
+                <span>📅 Năm: <strong>${newItem.year || 'N/A'}</strong></span>
+                <span>🏛️ Nguồn: <strong>${escapeHtml(newItem.organization || newItem.journal || 'N/A')}</strong></span>
+                <span>💊 Thuốc: <strong>${escapeHtml(newItem.drug || 'N/A')}</strong></span>
+              </div>
+            </div>
+
+            <!-- Existing Item -->
+            <div class="dup-subcard" style="${matched ? 'background: var(--surface); border-color: var(--accent-light);' : 'opacity: 0.6;'}">
+              <div class="dup-subcard-header" style="color: var(--text-muted);">
+                ${matched ? '💾 Dữ Liệu Đang Có Trong Hệ Thống' : '💾 Không Có Bản Ghi Tương Tự'}
+              </div>
+              ${matched ? `
+                <div class="dup-subcard-title">${escapeHtml(matched.title)}</div>
+                <div class="dup-subcard-meta">
+                  <span>📅 Năm: <strong>${matched.year || 'N/A'}</strong></span>
+                  <span>🏛️ Nguồn: <strong>${escapeHtml(matched.organization || matched.journal || 'N/A')}</strong></span>
+                  <span>🔑 ID: <code style="font-size: 0.7rem;">${matched.id}</code></span>
+                </div>
+              ` : `
+                <div style="font-size: 0.8rem; color: var(--text-muted); padding: 6px 0;">Sẵn sàng nạp mới trực tiếp.</div>
+              `}
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    containerEl.innerHTML = html;
+  }
+
+  function executeDuplicateImport() {
+    if (!pendingImportBatch || pendingImportBatch.length === 0) return;
+
+    let addedCount = 0;
+    let overwrittenCount = 0;
+    let skippedCount = 0;
+
+    pendingImportBatch.forEach(batch => {
+      const newItem = batch.item;
+      const action = batch.action;
+      const dup = batch.dupResult;
+      const matched = dup ? dup.matchedStudy : null;
+
+      if (action === 'skip') {
+        skippedCount++;
+      } else if (action === 'overwrite' && matched) {
+        // Overwrite existing record
+        const idx = (window.studies || []).findIndex(s => s.id === matched.id);
+        const updated = {
+          ...matched,
+          ...newItem,
+          id: matched.id // Preserve original ID
+        };
+        if (idx !== -1) {
+          window.studies[idx] = updated;
+        } else {
+          window.studies.unshift(updated);
+        }
+        if (window.dbSaveStudy) window.dbSaveStudy(updated);
+        overwrittenCount++;
+      } else {
+        // Add as new (ensure unique ID)
+        const newStudy = {
+          ...newItem,
+          id: (matched && matched.id === newItem.id) ? (window.generateId ? window.generateId() : 'study_' + Date.now() + Math.random().toString(36).substr(2, 5)) : (newItem.id || (window.generateId ? window.generateId() : 'study_' + Date.now()))
+        };
+        window.studies.unshift(newStudy);
+        if (window.dbSaveStudy) window.dbSaveStudy(newStudy);
+        addedCount++;
+      }
+    });
+
+    if (window.saveStudies) window.saveStudies();
+    closeDuplicateResolutionModal();
+    if (window.renderTable) window.renderTable();
+    if (window.renderUpdates) window.renderUpdates();
+
+    alert(`🎉 Phép kiểm hoàn tất & đã thực thi nạp dữ liệu!\n• Thêm mới thành công: ${addedCount} bài\n• Ghi đè / Cập nhật: ${overwrittenCount} bài\n• Bỏ qua bài trùng: ${skippedCount} bài.`);
   }
 
   // ════════════════════════════════════════════════════════════════
@@ -364,6 +695,7 @@
   // ════════════════════════════════════════════════════════════════
 
   function openConditionSettingsModal() {
+
     const modal = document.getElementById('condition-settings-modal');
     if (!modal) return;
     modal.classList.add('active');
@@ -519,6 +851,14 @@
   window.openImportModal = openImportModal;
   window.closeImportModal = closeImportModal;
   window.handleImportJson = handleImportJson;
+  window.importFromText = importFromText;
+  window.handleFileSelect = handleFileSelect;
+  window.fillSampleJSON = fillSampleJSON;
+  window.openDuplicateResolutionModal = openDuplicateResolutionModal;
+  window.closeDuplicateResolutionModal = closeDuplicateResolutionModal;
+  window.applyGlobalDupAction = applyGlobalDupAction;
+  window.setPerItemDupAction = setPerItemDupAction;
+  window.executeDuplicateImport = executeDuplicateImport;
   window.openConditionSettingsModal = openConditionSettingsModal;
   window.closeConditionSettingsModal = closeConditionSettingsModal;
   window.renderConditionManagementTable = renderConditionManagementTable;
@@ -529,3 +869,4 @@
   window.resetConditionRegistryDefault = resetConditionRegistryDefault;
 
 })();
+
