@@ -609,7 +609,7 @@
             } else {
               matchingKeys.forEach(key => {
                 const cond = window.CLINICAL_CONDITIONS[key];
-                condHtml += `<button class="filter-pill ${filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Mã ICD-10: ${cond.icd10.join(', ')}">${cond.icon} ${cond.name}</button>`;
+                condHtml += `<button class="filter-pill ${filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Mã ICD-10: ${cond.icd10.join(', ')}">${cond.name}</button>`;
               });
             }
 
@@ -768,7 +768,7 @@
           const isActive = filters.condition === k;
           drawerHtml += `
             <button class="filter-pill ${isActive ? 'active' : ''}" onclick="selectConditionFromDrawer('${k}')" style="font-size: 0.75rem; padding: 2px 7px;" title="Mã ICD-10: ${cond.icd10.join(', ')}">
-              ${cond.icon} ${cond.name}
+              ${cond.name}
             </button>
           `;
         });
@@ -4470,7 +4470,7 @@
       let condPillsHtml = `<button class="filter-pill ${_tlConditionFilter === null ? 'active' : ''}" onclick="window.filterTimelineCondition(null, this)">Tất cả Bệnh</button>`;
       if (window.CLINICAL_CONDITIONS) {
         Object.entries(window.CLINICAL_CONDITIONS).forEach(([key, cond]) => {
-          condPillsHtml += `<button class="filter-pill ${_tlConditionFilter === key ? 'active' : ''}" onclick="window.filterTimelineCondition('${key}', this)" title="ICD-10: ${cond.icd10.join(', ')}">${cond.icon} ${cond.name}</button>`;
+          condPillsHtml += `<button class="filter-pill ${_tlConditionFilter === key ? 'active' : ''}" onclick="window.filterTimelineCondition('${key}', this)" title="ICD-10: ${cond.icd10.join(', ')}">${cond.name}</button>`;
         });
       }
 
@@ -4740,7 +4740,6 @@
             id: c.id,
             name: c.name,
             icd10: Array.isArray(c.icd10) ? c.icd10 : [],
-            icon: c.icon || '🩺',
             color: c.color || '#0284c7',
             bg: c.bg || '#f0f9ff'
           }));
@@ -4770,7 +4769,7 @@
       if (!tbody) return;
 
       if (!window.CLINICAL_CONDITIONS || Object.keys(window.CLINICAL_CONDITIONS).length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:1.5rem; color:var(--text-muted);">Chưa có danh mục bệnh nào.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:1.5rem; color:var(--text-muted);">Chưa có danh mục bệnh nào.</td></tr>`;
         return;
       }
 
@@ -4779,7 +4778,6 @@
         const icdBadges = Array.isArray(cond.icd10) ? cond.icd10.map(code => `<span class="badge" style="background:${cond.bg || '#f1f5f9'}; color:${cond.color || '#334155'}; border:1px solid ${cond.color || '#cbd5e1'}40; font-size:0.7rem; font-weight:700; font-family:monospace; margin-right:3px;">${code}</span>`).join('') : '';
         html += `
           <tr style="border-bottom: 1px solid var(--border-light);">
-            <td style="padding: 10px; text-align: center; font-size: 1.3rem;">${cond.icon || '🩺'}</td>
             <td style="padding: 10px; font-weight: 700; color: ${cond.color || 'var(--text)'};">
               ${escapeHtml(cond.name)}
               <div style="font-size:0.68rem; color:var(--text-muted); font-weight:400; font-family:monospace;">key: ${key}</div>
@@ -4801,7 +4799,6 @@
 
       const titleEl = document.getElementById('cond-form-modal-title');
       const keyInput = document.getElementById('cond-form-key');
-      const iconInput = document.getElementById('cond-form-icon');
       const nameInput = document.getElementById('cond-form-name');
       const icdInput = document.getElementById('cond-form-icd10');
       const colorInput = document.getElementById('cond-form-color');
@@ -4811,7 +4808,6 @@
         const cond = window.CLINICAL_CONDITIONS[key];
         if (titleEl) titleEl.textContent = `✏️ Chỉnh Sửa Vấn Đề / Bệnh: ${cond.name}`;
         if (keyInput) keyInput.value = key;
-        if (iconInput) iconInput.value = cond.icon || '🩺';
         if (nameInput) nameInput.value = cond.name || '';
         if (icdInput) icdInput.value = Array.isArray(cond.icd10) ? cond.icd10.join(', ') : '';
         if (colorInput) colorInput.value = cond.color || '#dc2626';
@@ -4819,7 +4815,6 @@
       } else {
         if (titleEl) titleEl.textContent = '➕ Thêm Vấn Đề / Bệnh Mới';
         if (keyInput) keyInput.value = '';
-        if (iconInput) iconInput.value = '🩺';
         if (nameInput) nameInput.value = '';
         if (icdInput) icdInput.value = '';
         if (colorInput) colorInput.value = '#0284c7';
@@ -4838,7 +4833,6 @@
       if (e) e.preventDefault();
 
       const keyInput = document.getElementById('cond-form-key');
-      const iconInput = document.getElementById('cond-form-icon');
       const nameInput = document.getElementById('cond-form-name');
       const icdInput = document.getElementById('cond-form-icd10');
       const colorInput = document.getElementById('cond-form-color');
@@ -4853,7 +4847,6 @@
         if (!key) key = 'cond-' + Date.now();
       }
 
-      const icon = iconInput ? iconInput.value.trim() : '🩺';
       const rawIcd = icdInput ? icdInput.value : '';
       const icdList = rawIcd.split(',').map(s => s.trim().toUpperCase()).filter(Boolean);
       const color = colorInput ? colorInput.value : '#0284c7';
@@ -4865,7 +4858,6 @@
         id: key,
         name: name,
         icd10: icdList,
-        icon: icon,
         color: color,
         bg: bg
       };

@@ -984,7 +984,6 @@ create table clinical_guidelines (
           <table class="cond-mgmt-table" style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
             <thead>
               <tr style="background: var(--surface-2); border-bottom: 1.5px solid var(--border-light); text-align: left;">
-                <th style="padding: 10px; width: 60px; text-align: center;">Icon</th>
                 <th style="padding: 10px; min-width: 160px;">Tên Vấn Đề / Bệnh</th>
                 <th style="padding: 10px;">Mã ICD-10 Liên Quan</th>
                 <th style="padding: 10px; width: 110px; text-align: center;">Hành Động</th>
@@ -1016,15 +1015,9 @@ create table clinical_guidelines (
         <form id="cond-edit-form" onsubmit="handleSaveConditionForm(event)">
           <input type="hidden" id="cond-form-key" value="">
           
-          <div style="display: grid; grid-template-columns: 90px 1fr; gap: 10px; margin-bottom: 12px;">
-            <div>
-              <label style="font-size: 0.78rem; font-weight: 700; display: block; margin-bottom: 4px;">Icon Emoji</label>
-              <input type="text" id="cond-form-icon" placeholder="🫀" required style="width: 100%; text-align: center; font-size: 1.2rem; padding: 0.4rem; border: 1px solid var(--border-light); border-radius: 6px; background: var(--surface);">
-            </div>
-            <div>
-              <label style="font-size: 0.78rem; font-weight: 700; display: block; margin-bottom: 4px;">Tên Vấn Đề / Bệnh</label>
-              <input type="text" id="cond-form-name" placeholder="VD: Suy tim, Rung nhĩ..." required style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; background: var(--surface); font-weight: 700;">
-            </div>
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 0.78rem; font-weight: 700; display: block; margin-bottom: 4px;">Tên Vấn Đề / Bệnh</label>
+            <input type="text" id="cond-form-name" placeholder="VD: Suy tim, Rung nhĩ..." required style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 6px; background: var(--surface); font-weight: 700;">
           </div>
 
           <div style="margin-bottom: 12px;">

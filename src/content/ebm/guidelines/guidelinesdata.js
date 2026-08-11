@@ -47,65 +47,65 @@ const IMPACTS = {
 };
 
 const CLINICAL_CONDITIONS = {
-  // 🫀 TIM MẠCH
-  'heart-failure': { id: 'heart-failure', name: 'Suy tim (Heart Failure)', icd10: ['I50', 'I50.1', 'I50.9'], icon: '🫀', color: '#dc2626', bg: '#fef2f2' },
-  'hypertension': { id: 'hypertension', name: 'Tăng huyết áp', icd10: ['I10', 'I11', 'I15'], icon: '🫁', color: '#0891b2', bg: '#ecfeff' },
-  'af': { id: 'af', name: 'Rung nhĩ (AF)', icd10: ['I48', 'I48.0'], icon: '⚡', color: '#ea580c', bg: '#fff7ed' },
-  'cad': { id: 'cad', name: 'Bệnh động mạch vành (CAD/CCS)', icd10: ['I25', 'I20', 'I21'], icon: '❤️‍🔥', color: '#b91c1c', bg: '#fff1f1' },
-  'valvular-heart': { id: 'valvular-heart', name: 'Bệnh van tim', icd10: ['I34', 'I35', 'I05'], icon: '💓', color: '#be123c', bg: '#fff1f2' },
+  // TIM MẠCH
+  'heart-failure': { id: 'heart-failure', name: 'Suy tim (Heart Failure)', icd10: ['I50', 'I50.1', 'I50.9'], color: '#dc2626', bg: '#fef2f2' },
+  'hypertension': { id: 'hypertension', name: 'Tăng huyết áp', icd10: ['I10', 'I11', 'I15'], color: '#0891b2', bg: '#ecfeff' },
+  'af': { id: 'af', name: 'Rung nhĩ (AF)', icd10: ['I48', 'I48.0'], color: '#ea580c', bg: '#fff7ed' },
+  'cad': { id: 'cad', name: 'Bệnh động mạch vành (CAD/CCS)', icd10: ['I25', 'I20', 'I21'], color: '#b91c1c', bg: '#fff1f1' },
+  'valvular-heart': { id: 'valvular-heart', name: 'Bệnh van tim', icd10: ['I34', 'I35', 'I05'], color: '#be123c', bg: '#fff1f2' },
 
-  // 🩸 NỘI TIẾT - CHUYỂN HÓA
-  'diabetes-t2d': { id: 'diabetes-t2d', name: 'Đái tháo đường Típ 2', icd10: ['E11', 'E11.9', 'E11.2'], icon: '🩸', color: '#7c3aed', bg: '#faf5ff' },
-  'diabetes-t1d': { id: 'diabetes-t1d', name: 'Đái tháo đường Típ 1', icd10: ['E10', 'E10.9'], icon: '💉', color: '#6d28d9', bg: '#f5f3ff' },
-  'thyroid': { id: 'thyroid', name: 'Bệnh lý tuyến giáp (Bão giáp / Nhược giáp)', icd10: ['E05', 'E05.5', 'E03'], icon: '🦋', color: '#0284c7', bg: '#f0f9ff' },
-  'dyslipidemia': { id: 'dyslipidemia', name: 'Rối loạn lipid máu', icd10: ['E78', 'E78.0', 'E78.5'], icon: '🧪', color: '#d97706', bg: '#fffbeb' },
-  'obesity': { id: 'obesity', name: 'Béo phì & Hội chứng chuyển hóa', icd10: ['E66', 'E66.9', 'E88.81'], icon: '⚖️', color: '#9a3412', bg: '#fff7ed' },
+  // NỘI TIẾT - CHUYỂN HÓA
+  'diabetes-t2d': { id: 'diabetes-t2d', name: 'Đái tháo đường Típ 2', icd10: ['E11', 'E11.9', 'E11.2'], color: '#7c3aed', bg: '#faf5ff' },
+  'diabetes-t1d': { id: 'diabetes-t1d', name: 'Đái tháo đường Típ 1', icd10: ['E10', 'E10.9'], color: '#6d28d9', bg: '#f5f3ff' },
+  'thyroid': { id: 'thyroid', name: 'Bệnh lý tuyến giáp (Bão giáp / Nhược giáp)', icd10: ['E05', 'E05.5', 'E03'], color: '#0284c7', bg: '#f0f9ff' },
+  'dyslipidemia': { id: 'dyslipidemia', name: 'Rối loạn lipid máu', icd10: ['E78', 'E78.0', 'E78.5'], color: '#d97706', bg: '#fffbeb' },
+  'obesity': { id: 'obesity', name: 'Béo phì & Hội chứng chuyển hóa', icd10: ['E66', 'E66.9', 'E88.81'], color: '#9a3412', bg: '#fff7ed' },
 
-  // 🫁 HÔ HẤP
-  'copd': { id: 'copd', name: 'Bệnh phổi tắc nghẽn mạn tính (COPD)', icd10: ['J44', 'J44.9', 'J44.1'], icon: '🌬️', color: '#0284c7', bg: '#f0f9ff' },
-  'asthma': { id: 'asthma', name: 'Hen suyễn (Asthma)', icd10: ['J45', 'J45.9'], icon: '💨', color: '#0d9488', bg: '#f0fdfa' },
-  'pneumonia': { id: 'pneumonia', name: 'Viêm phổi mắc phải cộng đồng & Bệnh viện', icd10: ['J18', 'J15', 'J18.9'], icon: '🩺', color: '#2563eb', bg: '#eff6ff' },
-  'interstitial-lung': { id: 'interstitial-lung', name: 'Bệnh phổi mô kẽ & Xơ phổi', icd10: ['J84', 'J84.1'], icon: '🫁', color: '#475569', bg: '#f8fafc' },
-  'tb': { id: 'tb', name: 'Lao phổi & Lao ngoài phổi', icd10: ['A15', 'A16', 'A19'], icon: '🔬', color: '#b45309', bg: '#fef3c7' },
+  // HÔ HẤP
+  'copd': { id: 'copd', name: 'Bệnh phổi tắc nghẽn mạn tính (COPD)', icd10: ['J44', 'J44.9', 'J44.1'], color: '#0284c7', bg: '#f0f9ff' },
+  'asthma': { id: 'asthma', name: 'Hen suyễn (Asthma)', icd10: ['J45', 'J45.9'], color: '#0d9488', bg: '#f0fdfa' },
+  'pneumonia': { id: 'pneumonia', name: 'Viêm phổi mắc phải cộng đồng & Bệnh viện', icd10: ['J18', 'J15', 'J18.9'], color: '#2563eb', bg: '#eff6ff' },
+  'interstitial-lung': { id: 'interstitial-lung', name: 'Bệnh phổi mô kẽ & Xơ phổi', icd10: ['J84', 'J84.1'], color: '#475569', bg: '#f8fafc' },
+  'tb': { id: 'tb', name: 'Lao phổi & Lao ngoài phổi', icd10: ['A15', 'A16', 'A19'], color: '#b45309', bg: '#fef3c7' },
 
-  // 🧪 THẬN - TIẾT NIỆU
-  'ckd': { id: 'ckd', name: 'Bệnh thận mạn (CKD)', icd10: ['N18', 'N18.3', 'N18.9'], icon: '🧪', color: '#059669', bg: '#ecfdf5' },
-  'aki': { id: 'aki', name: 'Tổn thương thận cấp (AKI)', icd10: ['N17', 'N17.9'], icon: '💧', color: '#047857', bg: '#f0fdf4' },
-  'nephrotic': { id: 'nephrotic', name: 'Hội chứng thận hư & Viêm cầu thận', icd10: ['N04', 'N00', 'N03'], icon: '🧫', color: '#0f766e', bg: '#f0fdfa' },
-  'bph-luts': { id: 'bph-luts', name: 'Tăng sinh lành tính tuyến tiền liệt (BPH/LUTS)', icd10: ['N40', 'N40.1'], icon: '𚡀', color: '#4338ca', bg: '#eef2ff' },
-  'uti': { id: 'uti', name: 'Nhiễm khuẩn tiết niệu', icd10: ['N39.0', 'N10'], icon: '🚽', color: '#1d4ed8', bg: '#eff6ff' },
+  // THẬN - TIẾT NIỆU
+  'ckd': { id: 'ckd', name: 'Bệnh thận mạn (CKD)', icd10: ['N18', 'N18.3', 'N18.9'], color: '#059669', bg: '#ecfdf5' },
+  'aki': { id: 'aki', name: 'Tổn thương thận cấp (AKI)', icd10: ['N17', 'N17.9'], color: '#047857', bg: '#f0fdf4' },
+  'nephrotic': { id: 'nephrotic', name: 'Hội chứng thận hư & Viêm cầu thận', icd10: ['N04', 'N00', 'N03'], color: '#0f766e', bg: '#f0fdfa' },
+  'bph-luts': { id: 'bph-luts', name: 'Tăng sinh lành tính tuyến tiền liệt (BPH/LUTS)', icd10: ['N40', 'N40.1'], color: '#4338ca', bg: '#eef2ff' },
+  'uti': { id: 'uti', name: 'Nhiễm khuẩn tiết niệu', icd10: ['N39.0', 'N10'], color: '#1d4ed8', bg: '#eff6ff' },
 
-  // 🦠 TRUYỀN NHIỄM & HỒI SỨC
-  'icu': { id: 'icu', name: 'Nhiễm trùng Hồi sức & Sốc nhiễm khuẩn', icd10: ['A41', 'A41.9', 'R65.2', 'R57.2'], icon: '💉', color: '#059669', bg: '#ecfdf5' },
-  'hepatitis-b': { id: 'hepatitis-b', name: 'Viêm gan vi rút B', icd10: ['B18.0', 'B18.1'], icon: '🟡', color: '#ca8a04', bg: '#fefce8' },
-  'hepatitis-c': { id: 'hepatitis-c', name: 'Viêm gan vi rút C', icd10: ['B18.2'], icon: '🟢', color: '#16a34a', bg: '#f0fdf4' },
-  'flu': { id: 'flu', name: 'Cúm mùa', icd10: ['J09', 'J10', 'J11'], icon: '🌡️', color: '#2563eb', bg: '#eff6ff' },
-  'covid19': { id: 'covid19', name: 'COVID-19', icd10: ['U07.1'], icon: '🦠', color: '#6366f1', bg: '#e0e7ff' },
-  'hemorrhagic-fever': { id: 'hemorrhagic-fever', name: 'Sốt xuất huyết (Dengue/Marburg/Ebola/Nipah)', icd10: ['A90', 'A91', 'A98.3', 'A98.4', 'A98'], icon: '⚠️', color: '#be185d', bg: '#fce7f3' },
-  'measles': { id: 'measles', name: 'Sởi', icd10: ['B05'], icon: '🔴', color: '#e11d48', bg: '#fff1f2' },
-  'invasive-fungal': { id: 'invasive-fungal', name: 'Nhiễm nấm xâm lấn & Aspergillus', icd10: ['B49', 'B44'], icon: '🧫', color: '#854d0e', bg: '#fefce8' },
-  'hfmd': { id: 'hfmd', name: 'Bệnh Tay chân miệng', icd10: ['B08.4'], icon: '👶', color: '#ea580c', bg: '#fff7ed' },
+  // TRUYỀN NHIỄM & HỒI SỨC
+  'icu': { id: 'icu', name: 'Nhiễm trùng Hồi sức & Sốc nhiễm khuẩn', icd10: ['A41', 'A41.9', 'R65.2', 'R57.2'], color: '#059669', bg: '#ecfdf5' },
+  'hepatitis-b': { id: 'hepatitis-b', name: 'Viêm gan vi rút B', icd10: ['B18.0', 'B18.1'], color: '#ca8a04', bg: '#fefce8' },
+  'hepatitis-c': { id: 'hepatitis-c', name: 'Viêm gan vi rút C', icd10: ['B18.2'], color: '#16a34a', bg: '#f0fdf4' },
+  'flu': { id: 'flu', name: 'Cúm mùa', icd10: ['J09', 'J10', 'J11'], color: '#2563eb', bg: '#eff6ff' },
+  'covid19': { id: 'covid19', name: 'COVID-19', icd10: ['U07.1'], color: '#6366f1', bg: '#e0e7ff' },
+  'hemorrhagic-fever': { id: 'hemorrhagic-fever', name: 'Sốt xuất huyết (Dengue/Marburg/Ebola/Nipah)', icd10: ['A90', 'A91', 'A98.3', 'A98.4', 'A98'], color: '#be185d', bg: '#fce7f3' },
+  'measles': { id: 'measles', name: 'Sởi', icd10: ['B05'], color: '#e11d48', bg: '#fff1f2' },
+  'invasive-fungal': { id: 'invasive-fungal', name: 'Nhiễm nấm xâm lấn & Aspergillus', icd10: ['B49', 'B44'], color: '#854d0e', bg: '#fefce8' },
+  'hfmd': { id: 'hfmd', name: 'Bệnh Tay chân miệng', icd10: ['B08.4'], color: '#ea580c', bg: '#fff7ed' },
 
-  // 🫀 TIÊU HÓA - GAN MẬT
-  'cirrhosis': { id: 'cirrhosis', name: 'Xơ gan & Tăng áp tĩnh mạch cửa', icd10: ['K74', 'K70.3'], icon: '🍷', color: '#991b1b', bg: '#fef2f2' },
-  'masld-mash': { id: 'masld-mash', name: 'Gan nhiễm mỡ (MASLD / MASH)', icd10: ['K76.0', 'K75.8'], icon: '🥑', color: '#65a30d', bg: '#f7fee7' },
-  'gerd-peptic': { id: 'gerd-peptic', name: 'Trào ngược GERD & Loét dạ dày', icd10: ['K21', 'K25', 'K27'], icon: '🔥', color: '#c2410c', bg: '#fff7ed' },
-  'ibd': { id: 'ibd', name: 'Viêm ruột mạn tính (IBD - Crohn / UC)', icd10: ['K50', 'K51'], icon: '🌀', color: '#7e22ce', bg: '#faf5ff' },
+  // TIÊU HÓA - GAN MẬT
+  'cirrhosis': { id: 'cirrhosis', name: 'Xơ gan & Tăng áp tĩnh mạch cửa', icd10: ['K74', 'K70.3'], color: '#991b1b', bg: '#fef2f2' },
+  'masld-mash': { id: 'masld-mash', name: 'Gan nhiễm mỡ (MASLD / MASH)', icd10: ['K76.0', 'K75.8'], color: '#65a30d', bg: '#f7fee7' },
+  'gerd-peptic': { id: 'gerd-peptic', name: 'Trào ngược GERD & Loét dạ dày', icd10: ['K21', 'K25', 'K27'], color: '#c2410c', bg: '#fff7ed' },
+  'ibd': { id: 'ibd', name: 'Viêm ruột mạn tính (IBD - Crohn / UC)', icd10: ['K50', 'K51'], color: '#7e22ce', bg: '#faf5ff' },
 
-  // 🧠 THẦN KINH
-  'stroke': { id: 'stroke', name: 'Đột quỵ thiếu máu & Xuất huyết não', icd10: ['I63', 'I61', 'I64', 'G45'], icon: '🧠', color: '#9333ea', bg: '#faf5ff' },
-  'epilepsy': { id: 'epilepsy', name: 'Động kinh & Co giật', icd10: ['G40', 'G40.9'], icon: '⚡', color: '#a855f7', bg: '#f3e8ff' },
-  'headache-migraine': { id: 'headache-migraine', name: 'Đau đầu & Migraine', icd10: ['G43', 'G44'], icon: '🤯', color: '#6b21a8', bg: '#faf5ff' },
+  // THẦN KINH
+  'stroke': { id: 'stroke', name: 'Đột quỵ thiếu máu & Xuất huyết não', icd10: ['I63', 'I61', 'I64', 'G45'], color: '#9333ea', bg: '#faf5ff' },
+  'epilepsy': { id: 'epilepsy', name: 'Động kinh & Co giật', icd10: ['G40', 'G40.9'], color: '#a855f7', bg: '#f3e8ff' },
+  'headache-migraine': { id: 'headache-migraine', name: 'Đau đầu & Migraine', icd10: ['G43', 'G44'], color: '#6b21a8', bg: '#faf5ff' },
 
-  // 🦴 CƠ XƯƠNG KHỚP
-  'gout': { id: 'gout', name: 'Bệnh Gút (Gout)', icd10: ['M10', 'M10.0'], icon: '🦶', color: '#b91c1c', bg: '#fef2f2' },
-  'ra': { id: 'ra', name: 'Viêm khớp dạng thấp (RA)', icd10: ['M05', 'M06'], icon: '🦴', color: '#c05621', bg: '#fffaf0' },
-  'osteoporosis': { id: 'osteoporosis', name: 'Loãng xương', icd10: ['M81', 'M80'], icon: '🦴', color: '#71717a', bg: '#f4f4f5' },
-  'lupus-sle': { id: 'lupus-sle', name: 'Lupus ban đỏ hệ thống (SLE)', icd10: ['M32'], icon: '🦋', color: '#be185d', bg: '#fce7f3' },
+  // CƠ XƯƠNG KHỚP
+  'gout': { id: 'gout', name: 'Bệnh Gút (Gout)', icd10: ['M10', 'M10.0'], color: '#b91c1c', bg: '#fef2f2' },
+  'ra': { id: 'ra', name: 'Viêm khớp dạng thấp (RA)', icd10: ['M05', 'M06'], color: '#c05621', bg: '#fffaf0' },
+  'osteoporosis': { id: 'osteoporosis', name: 'Loãng xương', icd10: ['M81', 'M80'], color: '#71717a', bg: '#f4f4f5' },
+  'lupus-sle': { id: 'lupus-sle', name: 'Lupus ban đỏ hệ thống (SLE)', icd10: ['M32'], color: '#be185d', bg: '#fce7f3' },
 
-  // 🎗️ UNG BƯỚU & HUYẾT HỌC
-  'solid-cancers': { id: 'solid-cancers', name: 'Ung thư các tạng (Phổi, Gan, Vú, Đại trực tràng)', icd10: ['C34', 'C22', 'C50', 'C18'], icon: '🎗️', color: '#be123c', bg: '#fff1f2' },
-  'vte-pe': { id: 'vte-pe', name: 'Huyết khối tĩnh mạch & Thuyên tắc phổi (VTE/PE)', icd10: ['I82', 'I26'], icon: '🩸', color: '#9f1239', bg: '#fff1f2' }
+  // UNG BƯỚU & HUYẾT HỌC
+  'solid-cancers': { id: 'solid-cancers', name: 'Ung thư các tạng (Phổi, Gan, Vú, Đại trực tràng)', icd10: ['C34', 'C22', 'C50', 'C18'], color: '#be123c', bg: '#fff1f2' },
+  'vte-pe': { id: 'vte-pe', name: 'Huyết khối tĩnh mạch & Thuyên tắc phổi (VTE/PE)', icd10: ['I82', 'I26'], color: '#9f1239', bg: '#fff1f2' }
 };
 
 window.CLINICAL_CONDITIONS = CLINICAL_CONDITIONS;
