@@ -4690,11 +4690,16 @@
         if (saved) {
           const parsed = JSON.parse(saved);
           if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+            Object.values(parsed).forEach(c => { if (c) delete c.icon; });
             window.CLINICAL_CONDITIONS = parsed;
           }
         }
       } catch (e) {
         console.warn('Cannot load custom clinical conditions from localStorage:', e);
+      }
+
+      if (window.CLINICAL_CONDITIONS) {
+        Object.values(window.CLINICAL_CONDITIONS).forEach(c => { if (c) delete c.icon; });
       }
 
       // 2. Async fetch from Supabase if connected
@@ -4708,16 +4713,17 @@
                 id: item.id,
                 name: item.name,
                 icd10: typeof item.icd10 === 'string' ? JSON.parse(item.icd10) : (item.icd10 || []),
-                icon: item.icon || '🩺',
                 color: item.color || '#0284c7',
                 bg: item.bg || '#f0f9ff'
               };
             });
             window.CLINICAL_CONDITIONS = { ...window.CLINICAL_CONDITIONS, ...sbMap };
+            Object.values(window.CLINICAL_CONDITIONS).forEach(c => { if (c) delete c.icon; });
             localStorage.setItem('cliniportal_custom_conditions', JSON.stringify(window.CLINICAL_CONDITIONS));
             if (typeof renderFilterPills === 'function') renderFilterPills();
             if (typeof renderTimeline === 'function') renderTimeline();
             if (typeof renderTable === 'function') renderTable();
+            if (typeof renderConditionMgmtTable === 'function') renderConditionMgmtTable();
           }
         } catch (err) {
           console.log('Supabase clinical_conditions table check/fetch (offline or optional table):', err);
