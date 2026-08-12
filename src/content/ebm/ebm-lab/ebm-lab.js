@@ -923,3 +923,40 @@ function renderFaganNomogram(prePct, lrPlus, lrMinus, postPosPct, postNegPct) {
   svg.innerHTML = html;
 }
 
+/* ── 5. ANALYSIS PIPELINE PRESETS ── */
+window.loadPipelinePreset = function(type) {
+  const contentEl = document.getElementById('pipeline-interpretation-content');
+  if (!contentEl) return;
+
+  if (type === 'forest') {
+    contentEl.innerHTML = `
+      <div style="margin-bottom:0.6rem;">
+        <strong style="color:#0284c7;">📊 Mẫu Phân Tích Forest Plot (ADA 2026 SGLT2i Meta-Analysis):</strong>
+      </div>
+      <ul style="padding-left:1.2rem; margin:0 0 0.8rem 0; font-size:0.82rem; line-height:1.6;">
+        <li><strong>Pooled Estimate:</strong> HR = 0.72 (95% CI: 0.64 - 0.81), p < 0.0001 → Giảm 28% nguy cơ biến cố cố định so với Giả dược.</li>
+        <li><strong>Chỉ số dị biệt (Heterogeneity):</strong> I² = 24% (p = 0.28) → Dị biệt ở mức thấp, kết quả nhất quán giữa các nghiên cứu.</li>
+        <li><strong>Sensitivity Analysis (Leave-one-out):</strong> Loại bỏ từng nghiên cứu đơn lẻ vẫn giữ HR trong khoảng 0.70 - 0.75 → Kết quả phân tích gộp có tính bền vững rất cao.</li>
+      </ul>
+      <div style="background:var(--ebm-surface-2, #f8fafc); border-radius:8px; padding:0.6rem 0.8rem; font-weight:700; color:var(--ebm-primary, #10b981); font-size:0.8rem;">
+        💡 Khuyến cáo lâm sàng: Đủ chứng cứ GRADE A để khuyến cáo sử dụng nhóm thuốc SGLT2i giảm nguy cơ tử vong tim mạch ở bệnh nhân ĐTĐ typ 2.
+      </div>
+    `;
+  } else if (type === 'km') {
+    contentEl.innerHTML = `
+      <div style="margin-bottom:0.6rem;">
+        <strong style="color:#7c3aed;">📈 Mẫu Phân Tích Kaplan-Meier (KEYNOTE-189 OS Curve):</strong>
+      </div>
+      <ul style="padding-left:1.2rem; margin:0 0 0.8rem 0; font-size:0.82rem; line-height:1.6;">
+        <li><strong>Trung vị thời gian sống còn (Median Survival):</strong> Nhóm Can thiệp = 22.0 tháng vs Nhóm Giả dược = 10.7 tháng (Cải thiện +11.3 tháng).</li>
+        <li><strong>Hazard Ratio (HR):</strong> HR = 0.49 (95% CI: 0.38 - 0.64), Log-rank p < 0.0001.</li>
+        <li><strong>Dải tin cậy 95% CI Bands:</strong> Hai đường phân tách rõ rệt từ tháng thứ 3 và duy trì khoảng cách đến 24 tháng.</li>
+      </ul>
+      <div style="background:var(--ebm-surface-2, #f8fafc); border-radius:8px; padding:0.6rem 0.8rem; font-weight:700; color:#7c3aed; font-size:0.8rem;">
+        💡 Khuyến cáo lâm sàng: Phác đồ Pembrolizumab kết hợp Hóa trị kéo dài đáng kể thời gian sống còn so với Hóa trị đơn thuần.
+      </div>
+    `;
+  }
+};
+
+

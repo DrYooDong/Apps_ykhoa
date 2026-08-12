@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bài 11: Mô hình Dự đoán & Học máy (Machine Learning) — CliniPortal">
-  <title>Bài 11: Mô hình Dự đoán & Học máy — CliniPortal</title>
+  <meta name="description" content="Bài 11: Mô Hình Dự Đoán Lâm Sàng & Machine Learning — CliniPortal">
+  <title>Bài 11: Mô Hình Dự Đoán & Machine Learning — CliniPortal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../../css/components/toc.css">
   <link rel="stylesheet" href="text-style.css">
+  <link rel="stylesheet" href="../css/ebm-premium-system.css">
   <script src="../../../../js/toc.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,13 +34,12 @@
     .lesson-readtime { font-size: 0.78rem; color: var(--text-faint); display: flex; align-items: center; gap: 0.3rem; }
     .lesson-header h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.02em; }
     .content-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin-bottom: 2rem; }
-    @media (max-width: 768px) {
-      .lesson-header h1 { font-size: 1.8rem; }
-      .content-box { padding: 1.5rem; }
-    }
+    .concept-card { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 12px; margin: 1.5rem 0; }
   </style>
   <link rel="stylesheet" href="../../../../css/components/header.css">
   <script src="../../../../components/header.js" defer></script>
+  <script src="../js/ebm-premium-system.js" defer></script>
+  <script src="../js/ebm-bookmarks.js" defer></script>
 </head>
 <body>
   <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
@@ -50,26 +50,33 @@
       Thống kê Y học
     </a>
     <div class="topnav-divider"></div>
-    <div class="topnav-title">📚 Bài 11</div>
-    <span class="topnav-pill">Machine Learning & Prediction</span>
+    <div class="topnav-title">📚 Bài 11: Machine Learning Dự Đoán</div>
+    <span class="topnav-pill">Clinical Prediction Models</span>
   </nav>
+
   <div class="main-container">
     <div class="lesson-header">
       <div class="lesson-meta">
         <span class="lesson-tag">Bài 11</span>
-        <span class="lesson-readtime">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          15 phút đọc
-        </span>
+        <span class="lesson-readtime">⏱ 18 phút đọc</span>
       </div>
-      <h1>Mô hình Dự đoán & Học máy trong Y khoa</h1>
+      <h1>Bài 11: Xây Dựng Mô Hình Dự Đoán Lâm Sàng & Machine Learning</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Ứng dụng thuật toán học máy (Random Forest, XGBoost) và chỉ số AUC/Calibration Curve trong tiên lượng bệnh y khoa.</p>
     </div>
-    <div class="content-box text-content">
-      <p class="lead-text">Bài viết này đang được xây dựng. Nội dung sẽ xoay quanh cách đánh giá mô hình bằng ROC/AUC, Nomogram và ứng dụng AI/ML dự đoán biến cố lâm sàng.</p>
+
+    <div class="content-box">
+      <h2>1. Thang Điểm Dự Đoán Lâm Sàng (Clinical Prediction Rules)</h2>
+      <p>Các thang điểm nổi tiếng như CHA₂DS₂-VASc (Rung nhĩ), Wells Score (Huyết khối), CHADS₂ đều được phát triển dựa trên mô hình hồi quy đa biến nhằm ước tính xác suất xảy ra biến cố tương lai.</p>
+
+      <div class="concept-card">
+        <strong>🎯 Hai Tiêu Chí Đánh Giá Mô Hình Dự Đoán:</strong>
+        <p>1. <strong>Discrimination (Khả năng phân biệt):</strong> Đo bằng chỉ số C-statistic / AUC-ROC. AUC > 0.8 chứng tỏ mô hình phân biệt tốt bệnh nhân biến cố vs không biến cố.<br>
+        2. <strong>Calibration (Độ chuẩn độ):</strong> Đánh giá mức độ phù hợp giữa nguy cơ dự đoán và xác suất xảy ra thực tế (Calibration slope & intercept).</p>
+      </div>
+
+      <h2>2. Machine Learning vs Hồi Quy Truyền Thống</h2>
+      <p>Các thuật toán Học máy hiện đại như XGBoost, LightGBM và Neural Networks có khả năng bắt được các mối quan hệ phi tuyến tính phức tạp (Non-linear interactions) giữa các chỉ số sinh học của bệnh nhân.</p>
     </div>
   </div>
-  <script>
-    localStorage.setItem('thongke-bai11', 'done');
-  </script>
 </body>
 </html>

@@ -1,0 +1,345 @@
+/**
+ * ebm-premium-system.css
+ * Hệ thống UI/UX Premium dùng chung cho phân hệ EBM
+ * Glassmorphism, Micro-Animations, Skeletons, FAB, Reading Progress
+ */
+
+:root {
+  --ebm-glass-bg: rgba(255, 255, 255, 0.7);
+  --ebm-glass-border: rgba(255, 255, 255, 0.3);
+  --ebm-glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --ebm-tr-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --ebm-tr-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="dark"] {
+  --ebm-glass-bg: rgba(15, 23, 42, 0.75);
+  --ebm-glass-border: rgba(255, 255, 255, 0.1);
+  --ebm-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   1. Glassmorphism Utilities
+   ========================================================================== */
+.glass-panel {
+  background: var(--ebm-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--ebm-glass-border);
+  box-shadow: var(--ebm-glass-shadow);
+}
+
+/* ==========================================================================
+   2. Micro-Animations Library
+   ========================================================================== */
+/* Fade In Up */
+.anim-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s var(--ebm-tr-smooth) forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay modifiers */
+.anim-d-1 { animation-delay: 100ms; }
+.anim-d-2 { animation-delay: 200ms; }
+.anim-d-3 { animation-delay: 300ms; }
+.anim-d-4 { animation-delay: 400ms; }
+
+/* Scale In / Pop */
+.anim-pop {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: popIn 0.5s var(--ebm-tr-bounce) forwards;
+}
+
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform var(--ebm-tr-smooth), box-shadow var(--ebm-tr-smooth), border-color var(--ebm-tr-smooth);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.hover-glow-blue:hover {
+  border-color: #0284c7;
+  box-shadow: 0 0 15px rgba(2, 132, 199, 0.3);
+}
+.hover-glow-purple:hover {
+  border-color: #7c3aed;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+/* ==========================================================================
+   3. Skeleton Loading System
+   ========================================================================== */
+.skeleton {
+  background: #f1f5f9;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.6) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .skeleton {
+  background-color: #1e293b;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.skeleton-text {
+  height: 14px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+.skeleton-text.short { width: 60%; }
+.skeleton-title {
+  height: 20px;
+  margin-bottom: 12px;
+  width: 80%;
+}
+.skeleton-circle {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+}
+
+/* ==========================================================================
+   4. Floating Action Button (FAB) & Menu
+   ========================================================================== */
+.ebm-fab-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.ebm-fab-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: bottom center;
+}
+
+.ebm-fab-container.active .ebm-fab-menu {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.ebm-fab-item {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border-light, #e2e8f0);
+  color: var(--text, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  position: relative;
+  text-decoration: none;
+}
+
+.ebm-fab-item:hover {
+  background: var(--surface-2, #f8fafc);
+  transform: scale(1.1);
+}
+
+.ebm-fab-item::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  transition: all 0.2s;
+}
+
+.ebm-fab-item:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ebm-fab-main {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+}
+
+.ebm-fab-main:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(2, 132, 199, 0.5);
+}
+
+.ebm-fab-container.active .ebm-fab-main {
+  transform: rotate(45deg);
+  background: linear-gradient(135deg, #475569 0%, #334155 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   5. Reading Progress Bar
+   ========================================================================== */
+.reading-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.reading-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0284c7, #38bdf8, #7c3aed);
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* ==========================================================================
+   6. Toast Notifications System
+   ========================================================================== */
+.ebm-toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.ebm-toast {
+  background: var(--surface, #fff);
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 280px;
+  max-width: 380px;
+  transform: translateX(-120%);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.ebm-toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.ebm-toast.hide {
+  transform: translateX(-120%);
+  opacity: 0;
+}
+
+[data-theme="dark"] .ebm-toast {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.ebm-toast-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.ebm-toast-icon.success { color: #10b981; }
+.ebm-toast-icon.error { color: #ef4444; }
+.ebm-toast-icon.info { color: #3b82f6; }
+.ebm-toast-icon.warning { color: #f59e0b; }
+
+.ebm-toast-content {
+  flex: 1;
+}
+
+.ebm-toast-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text, #0f172a);
+  margin-bottom: 2px;
+}
+
+.ebm-toast-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted, #475569);
+  line-height: 1.4;
+}
+
+.ebm-toast-close {
+  background: none;
+  border: none;
+  color: var(--text-faint, #94a3b8);
+  cursor: pointer;
+  padding: 2px;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.ebm-toast-close:hover {
+  color: var(--text, #0f172a);
+}

@@ -20,10 +20,12 @@
   <link rel="stylesheet" href="../../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../../css/components/footer.css">
   <!-- Module CSS -->
+  <link rel="stylesheet" href="../css/ebm-premium-system.css">
   <link rel="stylesheet" href="ebm-lab.css">
 
   <script src="../../../../components/header.js" defer></script>
   <script src="../../../../components/footer.js" defer></script>
+  <script src="../js/ebm-premium-system.js" defer></script>
 </head>
 
 <body>
@@ -61,6 +63,9 @@
         </button>
         <button class="lab-tab-btn" data-tab="charts" role="tab">
           <i class="fa-solid fa-chart-column"></i> 4. SVG Plot Suite
+        </button>
+        <button class="lab-tab-btn" data-tab="pipeline" role="tab">
+          <i class="fa-solid fa-diagram-next"></i> 5. Analysis Pipeline
         </button>
       </div>
 
@@ -451,6 +456,60 @@
               <span style="font-size: 0.8rem; font-weight: 700; color: #047857; display: inline-flex; align-items: center; gap: 0.3rem;">Mở công cụ <i class="fa-solid fa-arrow-right"></i></span>
             </a>
 
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════ TAB 5: EBM ANALYSIS PIPELINE ════════════════════ -->
+      <div class="lab-panel" id="panel-pipeline">
+        <div class="lab-card">
+          <h2 class="lab-card-title"><i class="fa-solid fa-diagram-next" style="color: var(--ebm-primary);"></i> Quy Trình Phân Tích Thống Kê Lâm Sàng (Analysis Pipeline)</h2>
+          <p class="lab-card-desc">Tích hợp 4 bước liên hoàn: Nhập dữ liệu → Chọn loại phân tích → Render SVG tương tác & Sensitivity Analysis → Tự động tạo thẻ hướng dẫn phiên giải lâm sàng (Interpretation Guide).</p>
+
+          <!-- PIPELINE STEPS STEPR -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+            <div style="background: var(--ebm-surface-2, #f8fafc); border: 1.5px solid var(--ebm-primary); border-radius: 14px; padding: 1rem; text-align: center;">
+              <span style="font-size: 0.72rem; font-weight: 800; color: var(--ebm-primary); text-transform: uppercase;">Bước 1</span>
+              <h4 style="font-size: 0.9rem; font-weight: 800; margin: 4px 0;">📥 Nạp Dữ Liệu</h4>
+              <p style="font-size: 0.75rem; color: var(--ebm-text-muted); margin: 0;">CSV / JSON / Preset</p>
+            </div>
+            <div style="background: var(--ebm-surface-2, #f8fafc); border: 1.5px solid var(--ebm-border, #e2e8f0); border-radius: 14px; padding: 1rem; text-align: center;">
+              <span style="font-size: 0.72rem; font-weight: 800; color: var(--ebm-text-muted); text-transform: uppercase;">Bước 2</span>
+              <h4 style="font-size: 0.9rem; font-weight: 800; margin: 4px 0;">⚙️ Chọn Model</h4>
+              <p style="font-size: 0.75rem; color: var(--ebm-text-muted); margin: 0;">Forest / KM / ROC / Funnel</p>
+            </div>
+            <div style="background: var(--ebm-surface-2, #f8fafc); border: 1.5px solid var(--ebm-border, #e2e8f0); border-radius: 14px; padding: 1rem; text-align: center;">
+              <span style="font-size: 0.72rem; font-weight: 800; color: var(--ebm-text-muted); text-transform: uppercase;">Bước 3</span>
+              <h4 style="font-size: 0.9rem; font-weight: 800; margin: 4px 0;">📊 Render & Sensitivity</h4>
+              <p style="font-size: 0.75rem; color: var(--ebm-text-muted); margin: 0;">SVG & Leave-one-out</p>
+            </div>
+            <div style="background: var(--ebm-surface-2, #f8fafc); border: 1.5px solid var(--ebm-border, #e2e8f0); border-radius: 14px; padding: 1rem; text-align: center;">
+              <span style="font-size: 0.72rem; font-weight: 800; color: var(--ebm-text-muted); text-transform: uppercase;">Bước 4</span>
+              <h4 style="font-size: 0.9rem; font-weight: 800; margin: 4px 0;">💡 Phiên Giải Lâm Sàng</h4>
+              <p style="font-size: 0.75rem; color: var(--ebm-text-muted); margin: 0;">AI Interpretation & Export</p>
+            </div>
+          </div>
+
+          <!-- PIPELINE INTERACTIVE ENGINE CONTAINER -->
+          <div style="background: var(--ebm-surface, #fff); border: 1.5px solid var(--ebm-border, #e2e8f0); border-radius: 16px; padding: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+              <h3 style="font-size: 1rem; font-weight: 800; margin: 0;">🧪 Quick Analysis Pipeline Engine</h3>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="btn" onclick="loadPipelinePreset('forest')" style="font-weight: 700; font-size: 0.78rem;">📊 Sample Forest Plot</button>
+                <button class="btn" onclick="loadPipelinePreset('km')" style="font-weight: 700; font-size: 0.78rem;">📈 Sample Kaplan-Meier</button>
+              </div>
+            </div>
+
+            <!-- INTERPRETATION CARD -->
+            <div id="pipeline-interpretation-card" style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%); border: 1px solid rgba(2, 132, 199, 0.2); border-left: 4px solid var(--ebm-primary, #10b981); border-radius: 14px; padding: 1.25rem; margin-top: 1rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.78rem; font-weight: 800; color: var(--ebm-primary, #10b981); text-transform: uppercase;">💡 Phân Tích & Phiên Giải Lâm Sàng Tự Động</span>
+                <span style="font-size: 0.72rem; font-weight: 700; color: var(--ebm-text-muted);">EBM Pipeline AI</span>
+              </div>
+              <div id="pipeline-interpretation-content" style="font-size: 0.85rem; color: var(--ebm-text); line-height: 1.5;">
+                Chọn một bài mẫu hoặc tải dữ liệu để hệ thống phân tích và kết xuất kết quả phân tích thống kê kèm hướng dẫn lâm sàng tại giường bệnh.
+              </div>
+            </div>
           </div>
         </div>
       </div>

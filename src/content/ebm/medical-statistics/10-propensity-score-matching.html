@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bài 10: Ghép cặp điểm xu hướng (Propensity Score Matching) — CliniPortal">
-  <title>Bài 10: Ghép cặp điểm xu hướng — CliniPortal</title>
+  <meta name="description" content="Bài 10: Propensity Score Matching (PSM) trong Nghiên Cứu Quan Sát Y Học — CliniPortal">
+  <title>Bài 10: Propensity Score Matching — CliniPortal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../../css/components/toc.css">
   <link rel="stylesheet" href="text-style.css">
+  <link rel="stylesheet" href="../css/ebm-premium-system.css">
   <script src="../../../../js/toc.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,13 +34,12 @@
     .lesson-readtime { font-size: 0.78rem; color: var(--text-faint); display: flex; align-items: center; gap: 0.3rem; }
     .lesson-header h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.02em; }
     .content-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin-bottom: 2rem; }
-    @media (max-width: 768px) {
-      .lesson-header h1 { font-size: 1.8rem; }
-      .content-box { padding: 1.5rem; }
-    }
+    .concept-card { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 12px; margin: 1.5rem 0; }
   </style>
   <link rel="stylesheet" href="../../../../css/components/header.css">
   <script src="../../../../components/header.js" defer></script>
+  <script src="../js/ebm-premium-system.js" defer></script>
+  <script src="../js/ebm-bookmarks.js" defer></script>
 </head>
 <body>
   <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
@@ -50,26 +50,37 @@
       Thống kê Y học
     </a>
     <div class="topnav-divider"></div>
-    <div class="topnav-title">📚 Bài 10</div>
-    <span class="topnav-pill">Propensity Score Matching</span>
+    <div class="topnav-title">📚 Bài 10: Propensity Score Matching</div>
+    <span class="topnav-pill">PSM Analysis</span>
   </nav>
+
   <div class="main-container">
     <div class="lesson-header">
       <div class="lesson-meta">
         <span class="lesson-tag">Bài 10</span>
-        <span class="lesson-readtime">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          15 phút đọc
-        </span>
+        <span class="lesson-readtime">⏱ 12 phút đọc</span>
       </div>
-      <h1>Ghép cặp điểm xu hướng (Propensity Score Matching)</h1>
+      <h1>Bài 10: Ghép Cặp Điểm Xu Hướng (Propensity Score Matching - PSM)</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Kỹ thuật bắt chước thử nghiệm ngẫu nhiên đối chứng (Pseudo-RCT) trong các nghiên cứu quan sát để giảm thiểu sai số chọn.</p>
     </div>
-    <div class="content-box text-content">
-      <p class="lead-text">Bài viết này đang được xây dựng. Nội dung sẽ xoay quanh kỹ thuật cân bằng yếu tố nhiễu trong nghiên cứu quan sát để tiệm cận với RCT.</p>
+
+    <div class="content-box">
+      <h2>1. Tại Sao Cần Propensity Score Matching?</h2>
+      <p>Trong các nghiên cứu quan sát (Observational Studies), nhóm bệnh nhân được điều trị và không được điều trị thường có các đặc điểm nền (Age, Sex, Comorbidities) rất khác nhau. Sai số gây nhiễu (Confounding Bias) này khiến so sánh trực tiếp bị chênh lệch nghiêm trọng.</p>
+
+      <div class="concept-card">
+        <strong>💡 Điểm Xu Hướng (Propensity Score):</strong>
+        <p>Là xác suất một bệnh nhân nhận được can thiệp điều trị cụ thể dựa trên tất cả các đặc điểm nền của họ, được tính bằng mô hình Hồi quy Logistic: $e(X) = P(T = 1 | X)$.</p>
+      </div>
+
+      <h2>2. Quy Trình 4 Bước Triển Khai PSM</h2>
+      <ol style="padding-left: 1.2rem; line-height: 1.8;">
+        <li><strong>Ước tính Điểm Xu Hướng:</strong> Chạy logistic regression với biến phụ thuộc là Can thiệp (0/1) và các biến nhiễu làm biến độc lập.</li>
+        <li><strong>Bắt cặp (Matching):</strong> Ghép cặp 1:1 hoặc 1:k giữa bệnh nhân can thiệp và đối chứng có điểm xu hướng gần nhau nhất (Nearest Neighbor, Caliper).</li>
+        <li><strong>Kiểm tra Cân bằng (Balance Check):</strong> Đánh giá chỉ số Standardized Mean Difference (SMD < 0.1 chứng tỏ 2 nhóm đã cân bằng hoàn hảo).</li>
+        <li><strong>Phân tích Kết cục (Outcome Estimation):</strong> So sánh kết quả điều trị trên tập dữ liệu đã bắt cặp.</li>
+      </ol>
     </div>
   </div>
-  <script>
-    localStorage.setItem('thongke-bai10', 'done');
-  </script>
 </body>
 </html>

@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bài 9: Phân tích Sinh tồn (Survival Analysis) — CliniPortal">
-  <title>Bài 9: Phân tích Sinh tồn — CliniPortal</title>
+  <meta name="description" content="Bài 9: Phân Tích Sinh Tồn (Survival Analysis), Mô hình Kaplan-Meier & Cox Proportional Hazards trong Y Học — CliniPortal">
+  <title>Bài 9: Phân Tích Sinh Tồn — CliniPortal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../../css/components/toc.css">
   <link rel="stylesheet" href="text-style.css">
+  <link rel="stylesheet" href="../css/ebm-premium-system.css">
   <script src="../../../../js/toc.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,13 +34,12 @@
     .lesson-readtime { font-size: 0.78rem; color: var(--text-faint); display: flex; align-items: center; gap: 0.3rem; }
     .lesson-header h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.02em; }
     .content-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; margin-bottom: 2rem; }
-    @media (max-width: 768px) {
-      .lesson-header h1 { font-size: 1.8rem; }
-      .content-box { padding: 1.5rem; }
-    }
+    .concept-card { background: var(--accent-light); border-left: 4px solid var(--accent); padding: 1.25rem; border-radius: 12px; margin: 1.5rem 0; }
   </style>
   <link rel="stylesheet" href="../../../../css/components/header.css">
   <script src="../../../../components/header.js" defer></script>
+  <script src="../js/ebm-premium-system.js" defer></script>
+  <script src="../js/ebm-bookmarks.js" defer></script>
 </head>
 <body>
   <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
@@ -50,26 +50,43 @@
       Thống kê Y học
     </a>
     <div class="topnav-divider"></div>
-    <div class="topnav-title">📚 Bài 9</div>
+    <div class="topnav-title">📚 Bài 9: Phân Tích Sinh Tồn</div>
     <span class="topnav-pill">Survival Analysis</span>
   </nav>
+
   <div class="main-container">
     <div class="lesson-header">
       <div class="lesson-meta">
         <span class="lesson-tag">Bài 9</span>
-        <span class="lesson-readtime">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          15 phút đọc
-        </span>
+        <span class="lesson-readtime">⏱ 15 phút đọc</span>
       </div>
-      <h1>Phân tích Sinh tồn (Survival Analysis)</h1>
+      <h1>Bài 9: Phân Tích Sinh Tồn (Survival Analysis) & Mô Hình Cox</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Tìm hiểu cách phân tích thời gian dẫn tới biến cố (Time-to-event), xử lý dữ liệu khuyết góc (Censoring) và đọc hiểu Hazard Ratio (HR).</p>
     </div>
-    <div class="content-box text-content">
-      <p class="lead-text">Bài viết này đang được xây dựng. Nội dung sẽ xoay quanh đường cong Kaplan-Meier, Log-rank test và hồi quy Cox.</p>
+
+    <div class="content-box">
+      <h2>1. Tại Sao Phải Dùng Phân Tích Sinh Tồn?</h2>
+      <p>Trong nghiên cứu y khoa, biến cố không chỉ là "Có" hay "Không" (Binary), mà yếu tố <strong>thời gian</strong> xảy ra biến cố đóng vai trò cốt lõi. Ví dụ: Thời gian sống còn của bệnh nhân ung thư, thời gian tái phát sau phẫu thuật, hoặc thời gian nhập viện vì suy tim.</p>
+
+      <div class="concept-card">
+        <strong>📌 Dữ Liệu Khuyết Góc (Censoring):</strong>
+        <p>Hiện tượng bệnh nhân rút khỏi nghiên cứu, mất theo dõi hoặc chưa xảy ra biến cố tại thời điểm kết thúc theo dõi. Phân tích sinh tồn giúp tính toán chính xác xác suất sống còn mà không loại bỏ các bệnh nhân này.</p>
+      </div>
+
+      <h2>2. Ước Tính Kaplan-Meier (KM Estimator)</h2>
+      <p>Đường cong Kaplan-Meier là đồ thị dạng bậc thang thể hiện xác suất sinh tồn tích lũy theo thời gian $S(t)$. Tại mỗi thời điểm $t_i$ xảy ra biến cố:</p>
+      <p style="text-align: center; font-weight: 700; margin: 1rem 0; font-size: 1.1rem; color: var(--accent);">
+        $$S(t) = \prod_{t_i \le t} \left(1 - \frac{d_i}{n_i}\right)$$
+      </p>
+
+      <h2>3. Mô Hình Hồi Quy Cox (Cox Proportional Hazards)</h2>
+      <p>Mô hình Cox giúp đánh giá tác động của nhiều biến độc lập (tuổi, giới, thuốc) lên nguy cơ biến cố thông qua chỉ số <strong>Hazard Ratio (HR)</strong>:</p>
+      <ul>
+        <li><strong>HR = 1:</strong> Không có sự khác biệt nguy cơ giữa 2 nhóm.</li>
+        <li><strong>HR < 1:</strong> Can thiệp giảm nguy cơ (Yếu tố bảo vệ).</li>
+        <li><strong>HR > 1:</strong> Can thiệp tăng nguy cơ (Yếu tố nguy cơ).</li>
+      </ul>
     </div>
   </div>
-  <script>
-    localStorage.setItem('thongke-bai9', 'done');
-  </script>
 </body>
 </html>
