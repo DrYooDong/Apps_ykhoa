@@ -29,6 +29,7 @@
     specialty: true,
     design: true,
     organization: true,
+    journalMetrics: true,
     intervention: true,
     primaryEndpoint: true,
     keyResults: true,
@@ -767,9 +768,81 @@
     return union > 0 ? intersection / union : 0;
   }
 
+  function extractCoreDiseaseTopic(title) {
+    if (!title) return '';
+    let str = String(title).toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd').replace(/Đ/g, 'd');
+    
+    // Remove administrative preambles & boilerplate
+    str = str.replace(/ban hanh kem theo quyet dinh so [0-9/\-a-z\s]+/gi, ' ');
+    str = str.replace(/quyet dinh so [0-9/\-a-z\s]+/gi, ' ');
+    str = str.replace(/bo truong bo y te/gi, ' ');
+    str = str.replace(/bo y te viet nam|bo y te/gi, ' ');
+    str = str.replace(/huong dan chan doan va dieu tri/gi, ' ');
+    str = str.replace(/huong dan chan doan/gi, ' ');
+    str = str.replace(/huong dan dieu tri/gi, ' ');
+    str = str.replace(/huong dan phong va dieu tri/gi, ' ');
+    str = str.replace(/huong dan phong nghe/gi, ' ');
+    str = str.replace(/huong dan/gi, ' ');
+    str = str.replace(/guidelines? for diagnosis and treatment of/gi, ' ');
+    str = str.replace(/guidelines? for management of/gi, ' ');
+    str = str.replace(/guidelines? for/gi, ' ');
+    str = str.replace(/clinical practice guidelines?/gi, ' ');
+    str = str.replace(/nam \d{4}/gi, ' ');
+    str = str.replace(/\([^)]*\)/g, ' ');
+    str = str.replace(/[^a-z0-9\s]/g, ' ');
+
+    const stopWords = new Set(['va', 've', 'o', 'cho', 'truoc', 'sau', 'tren', 'duoi', 'trong', 'theo', 'mot', 'so', 'benh', 'ly']);
+    const tokens = str.split(/\s+/).filter(w => w.length >= 2 && !stopWords.has(w));
+    return tokens.join(' ').trim();
+  }
+
+  function checkDiseaseMatch(cand, ex) {
+    // 1. Explicit condition keys
+    const candKey = cand.conditionKey;
+    const exKey = ex.conditionKey;
+    if (candKey && exKey && candKey !== 'other' && exKey !== 'other') {
+      return { match: candKey === exKey, label: candKey };
+    }
+
+    // 2. ICD-10 Category check
+    const candIcd = Array.isArray(cand.icd10) ? cand.icd10.map(i => i.trim().toUpperCase().substring(0, 3)) : [];
+    const exIcd = Array.isArray(ex.icd10) ? ex.icd10.map(i => i.trim().toUpperCase().substring(0, 3)) : [];
+    if (candIcd.length > 0 && exIcd.length > 0) {
+      const icdOverlap = candIcd.filter(c => exIcd.includes(c));
+      if (icdOverlap.length > 0) {
+        return { match: true, label: `ICD-10 (${icdOverlap.join(', ')})` };
+      } else {
+        return { match: false, label: 'Khác mã ICD-10' };
+      }
+    }
+
+    // 3. Core Disease Topic Extracted from Title
+    const candCore = extractCoreDiseaseTopic(cand.title || '');
+    const exCore = extractCoreDiseaseTopic(ex.title || '');
+    
+    if (!candCore || !exCore) {
+      return { match: true, label: 'Không xác định' };
+    }
+
+    if (candCore === exCore || candCore.includes(exCore) || exCore.includes(candCore)) {
+      return { match: true, label: candCore };
+    }
+
+    const candTokens = new Set(candCore.split(/\s+/));
+    const exTokens = new Set(exCore.split(/\s+/));
+    const jaccard = calculateSetJaccard(candTokens, exTokens);
+    if (jaccard >= 0.35) {
+      return { match: true, label: candCore };
+    }
+
+    return { match: false, label: `Khác Bệnh/Vấn đề ("${candCore}" vs "${exCore}")` };
+  }
+
   /**
    * detectStudyDuplicate
-   * Compares a candidate study with an existing DB array.
+   * Compares a candidate study with an existing DB array using 3 Primary Factors (Disease, Year, Source).
    * Returns { isDuplicate, score, matchedStudy, reasons, matchLevel }
    */
   function detectStudyDuplicate(candidate, existingList) {
@@ -779,12 +852,9 @@
 
     const candId = candidate.id ? String(candidate.id).trim().toLowerCase() : '';
     const candNormTitle = normalizeMedicalTitle(candidate.title || '');
-    const candTitleTokens = getTitleTokenSet((candidate.title || '') + ' ' + (candidate.titleEn || ''));
     const candYear = parseInt(candidate.year, 10) || null;
     const candOrgNorm = normalizeOrgName(candidate.organization || candidate.journal || candidate.authors);
-    const candCondKey = candidate.conditionKey || 'other';
     const candDrug = (candidate.drug || '').toLowerCase().trim();
-    const candIcd = Array.isArray(candidate.icd10) ? candidate.icd10.map(i => i.trim().toUpperCase()) : [];
 
     let bestMatch = null;
     let highestScore = 0;
@@ -813,61 +883,66 @@
           isDuplicate: true,
           score: 100,
           matchedStudy: existing,
-          reasons: ['Trùng Tiêu đề nghiên cứu chuẩn hóa'],
+          reasons: ['Trùng Tiêu đề nghiên cứu chuẩn hóa 100%'],
           matchLevel: 'exact'
         };
       }
 
-      // 3. Multi-Factor Similarity Assessment
-      let score = 0;
-      const reasons = [];
-
-      // A. Disease / Topic / Drug Similarity (Max 45 pts)
-      const exCondKey = existing.conditionKey || 'other';
-      const exDrug = (existing.drug || '').toLowerCase().trim();
-      const exIcd = Array.isArray(existing.icd10) ? existing.icd10.map(i => i.trim().toUpperCase()) : [];
-      const exTitleTokens = getTitleTokenSet((existing.title || '') + ' ' + (existing.titleEn || ''));
-
-      if (candCondKey !== 'other' && exCondKey !== 'other' && candCondKey === exCondKey) {
-        score += 20;
-        reasons.push(`Cùng Bệnh/Vấn đề: ${candCondKey}`);
+      // 3. Primary 3-Factor Gating Check (Disease + Year + Source)
+      // Factor 1: Disease / Topic / Condition Mismatch
+      const diseaseCheck = checkDiseaseMatch(candidate, existing);
+      if (!diseaseCheck.match) {
+        continue;
       }
 
-      if (candDrug && exDrug && candDrug !== 'n/a' && exDrug !== 'n/a' && (candDrug.includes(exDrug) || exDrug.includes(candDrug))) {
-        score += 15;
-        reasons.push(`Cùng Thuốc can thiệp: ${existing.drug}`);
-      }
-
-      const icdOverlap = candIcd.filter(c => exIcd.includes(c));
-      if (icdOverlap.length > 0) {
-        score += 10;
-        reasons.push(`Mã ICD-10 trùng khớp: ${icdOverlap.join(', ')}`);
-      }
-
-      const tokenJaccard = calculateSetJaccard(candTitleTokens, exTitleTokens);
-      if (tokenJaccard >= 0.4) {
-        const titleScore = Math.min(25, Math.round(tokenJaccard * 30));
-        score += titleScore;
-        reasons.push(`Từ khóa tiêu đề trùng khớp (${Math.round(tokenJaccard * 100)}%)`);
-      }
-
-      // B. Publication Year Similarity (Max 30 pts)
+      // Factor 2: Publication Year Mismatch
       const exYear = parseInt(existing.year, 10) || null;
-      if (candYear && exYear) {
-        if (candYear === exYear) {
-          score += 30;
-          reasons.push(`Cùng Năm công bố: ${candYear}`);
-        } else if (Math.abs(candYear - exYear) <= 1) {
+      if (candYear && exYear && candYear !== exYear) {
+        continue;
+      }
+
+      // Factor 3: Organization / Source Mismatch
+      const exOrgNorm = normalizeOrgName(existing.organization || existing.journal || existing.authors);
+      if (candOrgNorm && exOrgNorm && candOrgNorm !== exOrgNorm && !candOrgNorm.includes(exOrgNorm) && !exOrgNorm.includes(candOrgNorm)) {
+        continue;
+      }
+
+      // 🌟 ALL 3 PRIMARY FACTORS MATCHED!
+      let score = 60;
+      const reasons = [
+        `Cùng Bệnh/Vấn đề (${diseaseCheck.label})`,
+        `Cùng Năm công bố: ${candYear || exYear || 'N/A'}`,
+        `Cùng Nguồn/Tổ chức: ${existing.organization || existing.journal || 'N/A'}`
+      ];
+
+      // Calculate Secondary Factors (+40% max)
+      // Secondary 1: Detailed Title Similarity (+15% max)
+      const candTitleTokens = getTitleTokenSet((candidate.title || '') + ' ' + (candidate.titleEn || ''));
+      const exTitleTokens = getTitleTokenSet((existing.title || '') + ' ' + (existing.titleEn || ''));
+      const tokenJaccard = calculateSetJaccard(candTitleTokens, exTitleTokens);
+      if (tokenJaccard >= 0.3) {
+        const titleBonus = Math.min(15, Math.round(tokenJaccard * 15));
+        score += titleBonus;
+        reasons.push(`Nội dung Tiêu đề trùng khớp (+${titleBonus}%)`);
+      }
+
+      // Secondary 2: Drug / Intervention Matching (+15% max)
+      const exDrug = (existing.drug || '').toLowerCase().trim();
+      if (candDrug && exDrug && candDrug !== 'n/a' && exDrug !== 'n/a') {
+        if (candDrug === exDrug || candDrug.includes(exDrug) || exDrug.includes(candDrug)) {
           score += 15;
-          reasons.push(`Năm công bố cận kề: ${candYear} vs ${exYear}`);
+          reasons.push(`Trùng Thuốc/Can thiệp (+15%)`);
         }
       }
 
-      // C. Source / Organization / Journal (Max 25 pts)
-      const exOrgNorm = normalizeOrgName(existing.organization || existing.journal || existing.authors);
-      if (candOrgNorm && exOrgNorm && (candOrgNorm === exOrgNorm || candOrgNorm.includes(exOrgNorm) || exOrgNorm.includes(candOrgNorm))) {
-        score += 25;
-        reasons.push(`Cùng Nguồn/Tổ chức: ${existing.organization || existing.journal || 'N/A'}`);
+      // Secondary 3: Key Results / Summary / Outcome Matching (+10% max)
+      const candSummaryTokens = getTitleTokenSet(candidate.summary || candidate.keyResults || '');
+      const exSummaryTokens = getTitleTokenSet(existing.summary || existing.keyResults || '');
+      const summaryJaccard = calculateSetJaccard(candSummaryTokens, exSummaryTokens);
+      if (summaryJaccard >= 0.25) {
+        const summaryBonus = Math.min(10, Math.round(summaryJaccard * 10));
+        score += summaryBonus;
+        reasons.push(`Tóm tắt/Kết quả tương đồng (+${summaryBonus}%)`);
       }
 
       if (score > highestScore) {
@@ -877,11 +952,11 @@
       }
     }
 
-    const isDup = highestScore >= 70;
+    const isDup = highestScore >= 60;
     let level = 'none';
-    if (highestScore >= 90) level = 'high';
-    else if (highestScore >= 70) level = 'moderate';
-    else if (highestScore >= 50) level = 'possible';
+    if (highestScore >= 90) level = 'exact';
+    else if (highestScore >= 75) level = 'high';
+    else if (highestScore >= 60) level = 'moderate';
 
     return {
       isDuplicate: isDup,

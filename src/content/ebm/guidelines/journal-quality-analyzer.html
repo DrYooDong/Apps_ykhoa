@@ -19,41 +19,52 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg, #f0f4f8); color: var(--text, #0f172a); line-height: 1.65; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg, #faf5ff); color: var(--text, #0f172a); line-height: 1.65; }
 
     .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light, #e2e8f0); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
-    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.9); }
-    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent, #0f6fb4); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; }
-    .topnav-back:hover { background: var(--blue-bg, #eff6ff); }
+    [data-theme="dark"] .topnav { background: rgba(15, 23, 42, 0.92); border-color: rgba(255,255,255,0.1); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent, #7c3aed); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 8px; transition: background 0.2s ease; }
+    .topnav-back:hover { background: var(--accent-light, #ede9fe); }
 
-    .hero { background: linear-gradient(135deg, #0f172a 0%, #0f6fb4 50%, #0d9488 100%); color: #fff; padding: 3rem 1.5rem 3.5rem; text-align: center; position: relative; }
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #6d28d9 50%, #0f6fb4 100%); color: #fff; padding: 3.5rem 1.5rem 4rem; text-align: center; position: relative; }
     .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 0.75rem; }
-    .hero-sub { font-size: 0.95rem; opacity: 0.9; max-width: 720px; margin: 0 auto 1.5rem; }
+    .hero-sub { font-size: 0.95rem; opacity: 0.92; max-width: 780px; margin: 0 auto 1.75rem; line-height: 1.6; }
 
-    .search-box-container { max-width: 680px; margin: 0 auto; position: relative; }
-    .search-input-main { width: 100%; padding: 0.9rem 1.25rem 0.9rem 3.2rem; border-radius: 14px; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.95); font-size: 0.95rem; outline: none; box-shadow: 0 8px 24px rgba(0,0,0,0.15); font-family: inherit; }
-    .search-input-main:focus { background: #fff; border-color: #38bdf8; box-shadow: 0 8px 30px rgba(56,189,248,0.3); }
-    .search-icon-main { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 1.1rem; }
+    .search-box-container { max-width: 760px; margin: 0 auto; position: relative; }
+    .search-input-main { width: 100%; padding: 0.95rem 1.35rem 0.95rem 3.3rem; border-radius: 14px; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.96); font-size: 0.95rem; outline: none; box-shadow: 0 10px 28px rgba(0,0,0,0.18); font-family: inherit; transition: all 0.2s ease; }
+    .search-input-main:focus { background: #fff; border-color: var(--accent, #7c3aed); box-shadow: 0 10px 35px rgba(124, 58, 237, 0.3); }
+    .search-icon-main { position: absolute; left: 1.25rem; top: 50%; transform: translateY(-50%); color: #64748b; font-size: 1.15rem; }
 
-    .main-container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; display: flex; flex-direction: column; gap: 2rem; }
-    .sec-card { background: var(--surface, #fff); border: 1px solid var(--border-light, #e2e8f0); border-radius: var(--radius, 16px); padding: 1.5rem; }
-    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; color: var(--text); }
+    .main-container { max-width: 1280px; margin: 0 auto; padding: 2.25rem 1.5rem 5rem; display: flex; flex-direction: column; gap: 2.25rem; }
+    .sec-card { background: var(--surface, #fff); border: 1px solid var(--border-light, #e2e8f0); border-radius: var(--radius, 16px); padding: 1.75rem 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+    [data-theme="dark"] .sec-card { background: #1e293b; border-color: rgba(255,255,255,0.1); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: var(--text, #0f172a); }
 
     /* Compare Grid */
-    .compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.35rem; margin-top: 1.15rem; }
 
     /* Table styling */
-    .table-container { overflow-x: auto; border: 1px solid var(--border-light); border-radius: 12px; }
-    .jq-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-    .jq-table th, .jq-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-light); }
-    .jq-table th { background: var(--surface-2, #f8fafc); font-weight: 700; color: var(--text-muted); }
+    .table-container { overflow-x: auto; border: 1px solid var(--border-light, #e2e8f0); border-radius: 12px; }
+    .jq-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .jq-table th, .jq-table td { padding: 0.85rem 1.15rem; text-align: left; border-bottom: 1px solid var(--border-light, #e2e8f0); }
+    .jq-table th { background: var(--surface-2, #f8fafc); font-weight: 700; color: var(--text-muted, #475569); }
     .jq-table tr:hover { background: var(--surface-2, #f8fafc); }
+    [data-theme="dark"] .jq-table th { background: #0f172a; color: #94a3b8; }
+    [data-theme="dark"] .jq-table tr:hover { background: #0f172a; }
 
     /* Guide Grid */
-    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
-    .guide-card { background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.15rem; }
-    .guide-card h4 { font-weight: 800; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--accent); }
-    .guide-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; }
+    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.35rem; margin-top: 1.15rem; }
+    .guide-card { background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light, #e2e8f0); border-radius: 14px; padding: 1.35rem 1.5rem; transition: all 0.2s ease; }
+    .guide-card:hover { border-color: var(--accent, #7c3aed); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.04); }
+    [data-theme="dark"] .guide-card { background: #0f172a; border-color: rgba(255,255,255,0.1); }
+    .guide-card h4 { font-weight: 800; font-size: 0.98rem; margin-bottom: 0.6rem; color: var(--accent, #7c3aed); display: flex; align-items: center; gap: 8px; }
+    .guide-card p { font-size: 0.86rem; color: var(--text-muted, #475569); line-height: 1.6; }
+    [data-theme="dark"] .guide-card p { color: #cbd5e1; }
+
+    .guide-card-predatory { border-color: #fca5a5 !important; background: linear-gradient(135deg, #fff1f2 0%, #fef2f2 100%) !important; }
+    .guide-card-predatory h4 { color: #dc2626 !important; }
+    [data-theme="dark"] .guide-card-predatory { background: linear-gradient(135deg, rgba(127,29,29,0.3) 0%, rgba(159,18,57,0.2) 100%) !important; border-color: rgba(239,68,68,0.4) !important; }
+    [data-theme="dark"] .guide-card-predatory h4 { color: #fca5a5 !important; }
   </style>
 </head>
 <body>
@@ -160,9 +171,9 @@
           <p><strong>SJR (SCImago Journal Rank)</strong> tính đến chất lượng của nguồn trích dẫn (trích dẫn từ tạp chí lớn có giá trị cao hơn). <strong>SNIP (Source Normalized Impact per Paper)</strong> điều chỉnh sự chênh lệch trích dẫn giữa các lĩnh vực hẹp.</p>
         </div>
 
-        <div class="guide-card" style="border-color:#fca5a5; background:linear-gradient(135deg, #fff1f2 0%, #fef2f2 100%);">
-          <h4 style="color:#dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> Nhận diện Tạp chí Biến tướng (Predatory)</h4>
-          <p>Tạp chí biến tướng lợi dụng mô hình Open Access để thu phí APC cao mà <strong>bỏ qua phản biện chuyên môn</strong>. Dấu hiệu: Tuyên bố phản biện siêu tốc (< 5 ngày), sử dụng tên chỉ số giả mạo (GIF, UIF, COSMOS), hoặc mạo danh tên tạp chí lớn.</p>
+        <div class="guide-card guide-card-predatory">
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> Nhận diện Tạp chí Biến tướng (Predatory)</h4>
+          <p>Tạp chí biến tướng lợi dụng mô hình Open Access để thu phí APC cao mà <strong>bỏ qua phản biện chuyên môn</strong>. Dấu hiệu: Tuyên bố phản biện siêu tốc (&lt; 5 ngày), sử dụng tên chỉ số giả mạo (GIF, UIF, COSMOS), hoặc mạo danh tên tạp chí lớn.</p>
         </div>
       </div>
     </section>

@@ -537,7 +537,7 @@
     const isCompact = window.viewMode === 'compact';
     const table = document.getElementById('studies-table-element');
     if (table) {
-      const detailedCols = ['sourceType', 'specialty', 'design', 'organization', 'journalMetrics', 'intervention', 'primaryEndpoint', 'keyResults', 'conclusion', 'sampleSize', 'population', 'icd10'];
+      const detailedCols = ['sourceType', 'specialty', 'design', 'organization', 'journalMetrics', 'intervention', 'primaryEndpoint', 'keyResults', 'impact', 'conclusion', 'sampleSize', 'population', 'icd10'];
       detailedCols.forEach(col => {
         const th = table.querySelector(`thead th[data-col="${col}"]`);
         if (th) th.style.display = (window.columnVisibility[col] && !isCompact) ? '' : 'none';
@@ -622,8 +622,8 @@
           <td class="col-journal-metrics" style="display:${showCol('journalMetrics')};">${renderJournalMetricsColumn(study)}</td>
           <td class="col-interv" style="display:${showCol('intervention')};">${escapeHtml(study.intervention || 'N/A')}</td>
           <td class="col-endpoint" style="display:${showCol('primaryEndpoint')};">${escapeHtml(study.primaryEndpoint || 'N/A')}</td>
-          <td class="col-results" style="display:${showCol('keyResults')};">${escapeHtml(study.keyResults || 'N/A')}</td>
-          <td class="col-impact" style="display:${window.columnVisibility.impact ? '' : 'none'};">
+          <td class="col-results" style="display:${showCol('keyResults')};">${window.renderStudyMiniChart ? window.renderStudyMiniChart(study) : escapeHtml(study.keyResults || 'N/A')}</td>
+          <td class="col-impact" style="display:${showCol('impact')};">
             <span class="impact-tag" style="background:${impactObj.bg}; color:${impactObj.color};">${escapeHtml(impactObj.name)}</span>
           </td>
           <td class="col-conclusion" style="display:${showCol('conclusion')};">${escapeHtml(study.summary || 'N/A')}</td>
@@ -643,11 +643,13 @@
 
 
       if (isExpanded) {
+        const subgroupChart = window.renderSubgroupForestPlot ? window.renderSubgroupForestPlot(study.subgroups) : '';
         html += `
           <tr class="expanded-detail-row">
-            <td colspan="15" style="padding: 1rem; background: var(--surface-2); border-bottom: 2px solid var(--accent);">
-              <div style="font-size:0.85rem; line-height:1.6; color:var(--text);">
-                <strong>💡 Tóm tắt chi tiết:</strong> ${study.summary}
+            <td colspan="15" style="padding: 1.25rem; background: var(--surface-2); border-bottom: 2.5px solid var(--accent);">
+              <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.85rem; line-height:1.6; color:var(--text);">
+                <div><strong>💡 Tóm tắt chi tiết:</strong> ${escapeHtml(study.detailedConclusion || study.summary || 'Chưa có thông tin')}</div>
+                ${subgroupChart ? `<div><strong>🧬 Phân tích Phân nhóm (Subgroups):</strong>${subgroupChart}</div>` : ''}
               </div>
             </td>
           </tr>

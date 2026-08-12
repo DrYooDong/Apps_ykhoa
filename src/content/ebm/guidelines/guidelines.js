@@ -163,7 +163,7 @@
     const container = document.getElementById('updates-list') || document.getElementById('recent-updates-container');
     if (!container) return;
     const studies = window.studies || [];
-    const recent = studies.slice(0, 4);
+    const recent = studies.slice(0, 2);
 
     if (recent.length === 0) {
       container.innerHTML = `<div style="font-size:0.8rem; color:var(--text-muted); padding:0.5rem;">Chưa có cập nhật mới nào.</div>`;

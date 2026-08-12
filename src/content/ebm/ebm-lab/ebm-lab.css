@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    EBM PRACTICE LAB — STYLESHEET
    Location: src/content/ebm/EBM Lab/ebm-lab.css
 ============================================================ */
@@ -293,6 +293,148 @@
   background: var(--ebm-primary-dark);
 }
 
+/* ── MULTI-DESIGN STUDY TYPE SELECTOR ── */
+.study-type-selector {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--ebm-surface-2);
+  border: 1px solid var(--ebm-border);
+  padding: 0.4rem;
+  border-radius: 14px;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.study-type-pill {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid transparent;
+  background: var(--ebm-surface);
+  color: var(--ebm-text-muted);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all var(--ebm-tr);
+  white-space: nowrap;
+}
+
+.study-type-pill:hover {
+  background: var(--ebm-purple-light);
+  color: var(--ebm-purple);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.study-type-pill.active {
+  background: var(--ebm-purple);
+  color: #ffffff;
+  border-color: var(--ebm-purple);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+/* ── APPRAISAL WORKSPACE GRID ── */
+.appraisal-workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.appraisal-questions-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.appraisal-type-header {
+  background: linear-gradient(135deg, var(--ebm-purple-light) 0%, var(--ebm-surface-2) 100%);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.appraisal-analytics-column {
+  position: sticky;
+  top: 80px;
+}
+
+.appraisal-analytics-card {
+  background: var(--ebm-surface-2);
+  border: 1.5px solid var(--ebm-border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.analytics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--ebm-border);
+}
+
+.analytics-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ebm-text);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-reset-sm {
+  background: transparent;
+  border: 1px solid var(--ebm-border);
+  color: var(--ebm-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--ebm-tr);
+}
+
+.btn-reset-sm:hover {
+  background: var(--ebm-danger-light);
+  color: var(--ebm-danger);
+  border-color: var(--ebm-danger);
+}
+
+/* ── RADAR CHART STYLING ── */
+.radar-chart-box {
+  margin-top: 1.25rem;
+  background: var(--ebm-surface);
+  border: 1px solid var(--ebm-border);
+  border-radius: 12px;
+  padding: 0.85rem;
+}
+
+.radar-chart-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ebm-text-muted);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.radar-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
 /* ── CASP APPRAISAL TOOLKIT ── */
 .casp-grid {
   display: flex;
@@ -301,18 +443,18 @@
 }
 
 .casp-item {
-  background: var(--ebm-surface-2);
+  background: var(--ebm-surface);
   border: 1px solid var(--ebm-border);
   border-radius: 12px;
   padding: 1.1rem;
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  transition: background var(--ebm-tr);
+  transition: background var(--ebm-tr), border-color var(--ebm-tr);
 }
 
 .casp-item:hover {
-  background: var(--ebm-surface);
+  border-color: var(--ebm-primary);
 }
 
 .casp-num {
@@ -340,6 +482,7 @@
   font-weight: 700;
   color: var(--ebm-text);
   margin-bottom: 0.25rem;
+  line-height: 1.45;
 }
 
 .casp-hint {
@@ -352,6 +495,7 @@
 .casp-options {
   display: flex;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .casp-radio-label {
@@ -376,19 +520,19 @@
   color: var(--ebm-primary-dark);
 }
 
-.casp-radio-label.yes:has(input:checked) {
+.casp-radio-label.yes:has(input:checked), .casp-radio-label.yes.selected {
   background: var(--ebm-success-light);
   border-color: var(--ebm-success);
   color: #065f46;
 }
 
-.casp-radio-label.no:has(input:checked) {
+.casp-radio-label.no:has(input:checked), .casp-radio-label.no.selected {
   background: var(--ebm-danger-light);
   border-color: var(--ebm-danger);
   color: #991b1b;
 }
 
-.casp-radio-label.cant:has(input:checked) {
+.casp-radio-label.cant:has(input:checked), .casp-radio-label.cant.selected {
   background: var(--ebm-warning-light);
   border-color: var(--ebm-warning);
   color: #92400e;
@@ -396,10 +540,10 @@
 
 .casp-summary-box {
   background: var(--ebm-surface);
-  border: 2px solid var(--ebm-border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-top: 1.5rem;
+  border: 1.5px solid var(--ebm-border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -408,10 +552,10 @@
 }
 
 .casp-score-badge {
-  padding: 0.5rem 1.25rem;
+  padding: 0.45rem 1rem;
   border-radius: 30px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
@@ -434,6 +578,16 @@
   background: var(--ebm-danger-light);
   color: #991b1b;
   border: 1.5px solid var(--ebm-danger);
+}
+
+@media (max-width: 992px) {
+  .appraisal-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appraisal-analytics-column {
+    position: static;
+  }
 }
 
 /* ── NNT & ARR CALCULATOR ── */
@@ -581,4 +735,175 @@
 .legend-dot.saved { background: #10b981; }
 .legend-dot.event { background: #ef4444; }
 .legend-dot.unaffected { background: #cbd5e1; }
+
+/* ── EBM CALCULATOR SUBTAB BAR ── */
+.calc-subtab-bar {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--ebm-surface-2);
+  border: 1px solid var(--ebm-border);
+  padding: 0.35rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.calc-subtab-btn {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ebm-text-muted);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all var(--ebm-tr);
+}
+
+.calc-subtab-btn:hover {
+  background: var(--ebm-surface);
+  color: var(--ebm-text);
+}
+
+.calc-subtab-btn.active {
+  background: var(--ebm-surface);
+  color: var(--ebm-primary-dark);
+  border-color: var(--ebm-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.calc-subpanel {
+  display: none;
+  animation: fadeIn 300ms ease;
+}
+
+.calc-subpanel.active {
+  display: block;
+}
+
+/* ── DIAGNOSTIC 2x2 & FAGAN NOMOGRAM STYLES ── */
+.diag-preset-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  background: var(--ebm-surface-2);
+  border: 1px solid var(--ebm-border);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.btn-preset-sm {
+  background: var(--ebm-surface);
+  border: 1px solid var(--ebm-border);
+  color: var(--ebm-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--ebm-tr);
+}
+
+.btn-preset-sm:hover {
+  border-color: var(--ebm-primary);
+  color: var(--ebm-primary-dark);
+  background: var(--ebm-primary-light);
+}
+
+.diag-workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .diag-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.table-2x2-box {
+  background: var(--ebm-surface-2);
+  border: 1.5px solid var(--ebm-border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.table-2x2-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cell-head {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--ebm-text-muted);
+  text-align: center;
+}
+
+.cell-head.label-row {
+  text-align: right;
+  padding-right: 0.5rem;
+}
+
+.input-sm {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+}
+
+.diag-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.nomogram-card {
+  background: var(--ebm-surface-2);
+  border: 1.5px solid var(--ebm-border);
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.nomogram-header {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--ebm-text);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.nomogram-svg-wrapper {
+  background: var(--ebm-surface);
+  border: 1px solid var(--ebm-border);
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nomogram-footnote {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ebm-text-muted);
+  text-align: center;
+  margin-top: 0.75rem;
+}
 

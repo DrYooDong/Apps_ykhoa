@@ -132,7 +132,7 @@
         <div class="trust-score-meter">
           <div class="trust-score-header">
             <span style="color:${ts.color};">${ts.grade}</span>
-            <span>Trọng số IF + Q1 + SJR + SNIP</span>
+            <span style="font-size:0.72rem; color:var(--text-muted); font-weight:600;">(IF • Q1 • SJR • SNIP)</span>
           </div>
           <div class="trust-score-track">
             <div class="trust-score-fill" style="width: ${ts.score}%;"></div>

@@ -659,6 +659,348 @@
       font-size: 0.9rem;
       margin: -0.3rem 0 0.3rem;
     }
+
+    /* ── SVG FLOWCHART DIFF ENGINE ── */
+    .radar-modal-box {
+      max-width: 1000px !important;
+    }
+
+    .svg-flowchart-wrapper {
+      background: var(--color-bg);
+      border: 1px solid var(--color-divider);
+      border-radius: 16px;
+      padding: 1rem;
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+
+    .node-detail-callout {
+      background: linear-gradient(135deg, var(--color-surface) 0%, var(--diff-new-bg) 100%);
+      border: 1.5px solid var(--radar-accent);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      animation: slideDown 250ms ease;
+    }
+
+    .callout-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--radar-accent);
+    }
+
+    .btn-close-xs {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .callout-body {
+      font-size: 0.84rem;
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    /* ── COR/LOE EVIDENCE HEATMAP GRID ── */
+    .heatmap-container {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-divider);
+      border-radius: 14px;
+      padding: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .heatmap-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .heatmap-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: 140px repeat(3, 1fr);
+      gap: 6px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .heatmap-grid {
+        grid-template-columns: 100px repeat(3, 1fr);
+        font-size: 0.75rem;
+      }
+    }
+
+    .heatmap-cell-head {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--color-text-muted);
+      text-align: center;
+      padding: 0.25rem;
+    }
+
+    .heatmap-cell-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.4rem 0.6rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .heatmap-cell-label.cor-1 { background: #dcfce7; color: #15803d; }
+    .heatmap-cell-label.cor-2a { background: #e0f2fe; color: #0369a1; }
+    .heatmap-cell-label.cor-2b { background: #fef3c7; color: #b45309; }
+    .heatmap-cell-label.cor-3 { background: #ffe4e6; color: #be123c; }
+
+    .heatmap-cell {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-divider);
+      border-radius: 10px;
+      padding: 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 200ms ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .heatmap-cell:hover {
+      border-color: var(--radar-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .heatmap-cell.cell-active {
+      border-color: var(--radar-accent);
+      background: #f0fdf4;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+    }
+
+    .heatmap-cell .count-val {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--radar-accent);
+      line-height: 1;
+    }
+
+    .heatmap-cell .cell-desc {
+      font-size: 0.68rem;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── ALIGNMENT MATRIX VIEW STYLES ── */
+    .matrix-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .matrix-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .align-summary-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .align-badge {
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .align-badge.align-full { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .align-badge.align-partial { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .align-badge.align-diff { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+    .matrix-table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--color-divider);
+      border-radius: 14px;
+    }
+
+    .alignment-matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .alignment-matrix-table th {
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 0.85rem 1rem;
+      border-bottom: 1.5px solid var(--color-divider);
+    }
+
+    .alignment-matrix-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--color-divider);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .alignment-matrix-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .alignment-matrix-table tr:hover td {
+      background: var(--color-surface-2);
+    }
+
+    /* ── PHASE 3: TOAST & INFOGRAPHIC EXPORTER STYLES ── */
+    .radar-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 2000;
+      background: var(--color-surface);
+      color: var(--color-text);
+      border: 1.5px solid var(--radar-accent);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      animation: toastSlideUp 300ms ease-out;
+    }
+
+    @keyframes toastSlideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .badge-new-30 {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1.5px solid #fde68a;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* INFOGRAPHIC POSTER PREVIEW CARD */
+    .infographic-preview-card {
+      background: linear-gradient(145deg, var(--color-surface) 0%, var(--color-surface-2) 100%);
+      border: 2px solid var(--radar-primary);
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+      margin-top: 1rem;
+    }
+
+    .infographic-header {
+      border-bottom: 2px solid var(--radar-primary);
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .infographic-brand {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--radar-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .infographic-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .infographic-diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .infographic-diff-grid { grid-template-columns: 1fr; }
+    }
+
+    .infographic-box {
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .infographic-box.old {
+      background: var(--diff-old-bg);
+      border: 1px stroke var(--diff-old-border);
+      color: var(--diff-old-text);
+    }
+
+    .infographic-box.new {
+      background: var(--diff-new-bg);
+      border: 1px stroke var(--diff-new-border);
+      color: var(--diff-new-text);
+    }
+
+    .infographic-footer {
+      border-top: 1px dashed var(--color-divider);
+      padding-top: 0.85rem;
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
@@ -687,6 +1029,9 @@
         <button class="mode-btn" id="view-mode-timeline">
           <i class="fa-solid fa-timeline"></i> Timeline Lịch Sử Tiến Hóa Guideline
         </button>
+        <button class="mode-btn" id="view-mode-matrix">
+          <i class="fa-solid fa-table-cells"></i> Ma Trận Đối Sánh Quốc Tế vs Bộ Y Tế VN
+        </button>
       </div>
 
       <!-- CONTROLS & FILTER BAR -->
@@ -710,6 +1055,77 @@
           <button class="filter-pill" data-filter-type="spec" data-filter-val="neuro">🧠 Thần kinh</button>
           <button class="filter-pill" data-filter-type="spec" data-filter-val="gastro">🩺 Tiêu hóa</button>
           <button class="filter-pill" data-filter-type="spec" data-filter-val="vn">🇻🇳 Bộ Y Tế VN</button>
+          <button class="filter-pill" data-filter-type="my_spec" data-filter-val="my_spec" style="border-color: var(--radar-accent); font-weight: 800;"><i class="fa-solid fa-user-doctor" style="color: var(--radar-accent);"></i> Chuyên Khoa Của Tôi</button>
+        </div>
+
+        <!-- COR/LOE EVIDENCE HEATMAP GRID -->
+        <div class="heatmap-container" id="radar-heatmap-box">
+          <div class="heatmap-header">
+            <span class="heatmap-title"><i class="fa-solid fa-fire-flame-curved" style="color: #ef4444;"></i> Ma Trận Nhiệt Bằng Chứng (COR x LOE Heatmap Grid)</span>
+            <span style="font-size: 0.75rem; color: var(--color-text-muted);">Click 1-click vào ô bất kỳ để lọc thông báo:</span>
+          </div>
+          <div class="heatmap-grid">
+            <div class="heatmap-cell-head"></div>
+            <div class="heatmap-cell-head">LOE A (RCT Đa trung tâm)</div>
+            <div class="heatmap-cell-head">LOE B (RCT Đơn / Quan sát)</div>
+            <div class="heatmap-cell-head">LOE C (Đồng thuận Chuyên gia)</div>
+
+            <div class="heatmap-cell-label cor-1">Class I (Mạnh)</div>
+            <div class="heatmap-cell" data-heatmap-cor="class1" data-heatmap-loe="A">
+              <span class="count-val" id="hm-c1-a">5</span>
+              <span class="cell-desc">Class I · LOE A</span>
+            </div>
+            <div class="heatmap-cell" data-heatmap-cor="class1" data-heatmap-loe="B">
+              <span class="count-val" id="hm-c1-b">1</span>
+              <span class="cell-desc">Class I · LOE B</span>
+            </div>
+            <div class="heatmap-cell" data-heatmap-cor="class1" data-heatmap-loe="C">
+              <span class="count-val" id="hm-c1-c">0</span>
+              <span class="cell-desc">Class I · LOE C</span>
+            </div>
+
+            <div class="heatmap-cell-label cor-2a">Class IIa (Nên dùng)</div>
+            <div class="heatmap-cell" data-heatmap-cor="class2a" data-heatmap-loe="A">
+              <span class="count-val" id="hm-c2a-a">1</span>
+              <span class="cell-desc">Class IIa · LOE A</span>
+            </div>
+            <div class="heatmap-cell" data-heatmap-cor="class2a" data-heatmap-loe="B">
+              <span class="count-val" id="hm-c2a-b">1</span>
+              <span class="cell-desc">Class IIa · LOE B</span>
+            </div>
+            <div class="heatmap-cell" data-heatmap-cor="class2a" data-heatmap-loe="C">
+              <span class="count-val" id="hm-c2a-c">0</span>
+              <span class="cell-desc">Class IIa · LOE C</span>
+            </div>
+
+            <div class="heatmap-cell-label cor-2b">Class IIb (Cân nhắc)</div>
+            <div class="heatmap-cell" data-heatmap-cor="class2b" data-heatmap-loe="A">
+              <span class="count-val" id="hm-c2b-a">0</span>
+              <span class="cell-desc">Class IIb · LOE A</span>
+            </div>
+            <div class="heatmap-cell" data-heatmap-cor="class2b" data-heatmap-loe="B">
+              <span class="count-val" id="hm-c2b-b">0</span>
+              <span class="cell-desc">Class IIb · LOE B</span>
+            </div>
+            <div class="heatmap-cell" data-heatmap-cor="class2b" data-heatmap-loe="C">
+              <span class="count-val" id="hm-c2b-c">0</span>
+              <span class="cell-desc">Class IIb · LOE C</span>
+            </div>
+
+            <div class="heatmap-cell-label cor-3">Class III (Hại/Không ích)</div>
+            <div class="heatmap-cell" data-heatmap-cor="class3" data-heatmap-loe="A">
+              <span class="count-val" id="hm-c3-a">1</span>
+              <span class="cell-desc">Class III · LOE A</span>
+            </div>
+            <div class="heatmap-cell" data-heatmap-cor="class3" data-heatmap-loe="B">
+              <span class="count-val" id="hm-c3-b">0</span>
+              <span class="cell-desc">Class III · LOE B</span>
+            </div>
+            <div class="heatmap-cell" data-heatmap-cor="class3" data-heatmap-loe="C">
+              <span class="count-val" id="hm-c3-c">0</span>
+              <span class="cell-desc">Class III · LOE C</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1111,7 +1527,44 @@
             Sacubitril/Valsartan (ARNI) chứng minh giảm 20% tử vong do tim mạch so với Enalapril, mở ra chương mới trong điều trị suy tim phân xuất tống máu giảm.
           </p>
         </div>
+      </div>
 
+      <!-- VIEW 3: INTERNATIONAL VS VIETNAM MOH ALIGNMENT MATRIX -->
+      <div class="matrix-feed" id="radar-matrix-feed" style="display: none;">
+        <div class="matrix-card">
+          <div class="matrix-card-header">
+            <div>
+              <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.3rem;">
+                🇻🇳 Ma Trận Đối Sánh Phác Đồ Quốc Tế vs Bộ Y Tế Việt Nam
+              </h2>
+              <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0;">
+                Đối sánh chi tiết từng chỉ định điều trị giữa khuyến cáo mới nhất từ các Hiệp hội Y khoa Quốc tế (ESC, ADA, GINA, GOLD, ESO) và Hướng dẫn chẩn đoán điều trị của Bộ Y Tế Việt Nam.
+              </p>
+            </div>
+            <div class="align-summary-badges" id="matrix-summary-badges">
+              <span class="align-badge align-full"><i class="fa-solid fa-circle-check"></i> 3 Đồng thuận</span>
+              <span class="align-badge align-partial"><i class="fa-solid fa-circle-nodes"></i> 2 Bổ sung</span>
+              <span class="align-badge align-diff"><i class="fa-solid fa-triangle-exclamation"></i> 1 Chưa cập nhật</span>
+            </div>
+          </div>
+
+          <div class="matrix-table-wrapper">
+            <table class="alignment-matrix-table">
+              <thead>
+                <tr>
+                  <th style="width: 18%;">📌 Chủ Đề Lâm Sàng</th>
+                  <th style="width: 25%;">🌐 Khuyến Cáo Quốc Tế (2026)</th>
+                  <th style="width: 25%;">🇻🇳 Hướng Dẫn Bộ Y Tế VN</th>
+                  <th style="width: 14%;">⚖️ Đối Sánh</th>
+                  <th style="width: 18%;">💊 Ghi Chú Kê Đơn BHYT</th>
+                </tr>
+              </thead>
+              <tbody id="matrix-table-body">
+                <!-- Dynamically populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -1122,12 +1575,60 @@
     <div class="radar-modal-box">
       <button class="modal-close-icon" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
       <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--color-text);" id="modalTitle">So Sánh Lưu Đồ Thuật Toán Chẩn Đoán & Điều Trị</h2>
-      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.25rem;" id="modalSubtitle">So sánh các bước tiếp cận giữa quy trình cũ và quy trình khuyến cáo mới nhất</p>
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.25rem;" id="modalSubtitle">So sánh lưu đồ vector trực quan giữa phác đồ truyền thống ❌ và khuyến cáo mới nhất ✅</p>
 
-      <div class="algo-grid" id="modalAlgoGrid">
-        <!-- Dynamic content injected via Javascript -->
+      <!-- SVG FLOWCHART CONTAINER -->
+      <div id="svg-flowchart-wrapper" class="svg-flowchart-wrapper">
+        <svg id="algo-flowchart-svg" viewBox="0 0 960 460" width="100%" height="440" style="font-family: Inter, sans-serif;">
+          <!-- Dynamically rendered SVG Flowchart -->
+        </svg>
+      </div>
+
+      <!-- CLICKED NODE CLINICAL DETAIL POPOVER -->
+      <div id="node-detail-callout" class="node-detail-callout" style="display: none;">
+        <div class="callout-header">
+          <span id="callout-node-title"><i class="fa-solid fa-capsules"></i> Chi tiết chỉ định lâm sàng</span>
+          <button type="button" id="btn-close-callout" class="btn-close-xs">&times;</button>
+        </div>
+        <div id="callout-node-body" class="callout-body"></div>
+      </div>
+
+      <div class="algo-grid" id="modalAlgoGrid" style="margin-top: 1rem;">
+        <!-- Fallback text & link -->
       </div>
     </div>
+  </div>
+
+  <!-- INFOGRAPHIC EXPORT MODAL BACKDROP -->
+  <div class="radar-modal-backdrop" id="exportModalBackdrop">
+    <div class="radar-modal-box">
+      <button class="modal-close-icon" id="exportModalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--color-text);">
+        <i class="fa-solid fa-share-nodes" style="color: var(--radar-accent);"></i> Thẻ Báo Cáo Infographic Diff Viewer
+      </h2>
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 0.25rem;">
+        Xem trước và xuất tóm tắt so sánh phác đồ dạng thẻ Infographic Poster hoặc Sao chép văn bản EBM.
+      </p>
+
+      <div id="infographic-preview-container">
+        <!-- Dynamically rendered Infographic Card -->
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.25rem; flex-wrap: wrap;">
+        <button type="button" id="btn-copy-exp-md" class="action-btn-link" style="background: var(--color-surface); font-weight: 700;">
+          <i class="fa-solid fa-copy"></i> Sao Chép Markdown EBM
+        </button>
+        <button type="button" id="btn-print-infographic" class="action-btn-link" style="background: var(--radar-primary); color: white; border-radius: 10px; font-weight: 700;">
+          <i class="fa-solid fa-print"></i> In / Xuất Thẻ Báo Cáo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="radar-toast" class="radar-toast" style="display: none;">
+    <i class="fa-solid fa-circle-check" style="color: var(--radar-accent); font-size: 1.1rem;"></i>
+    <span id="toast-message">Đã sao chép tóm tắt EBM vào Bộ nhớ tạm!</span>
   </div>
 
   <footer class="global-footer">
@@ -1200,6 +1701,145 @@
         });
       }
 
+      // PHASE 3: TOAST & EXPORTER UTILS
+      function showToast(msg) {
+        const toast = document.getElementById("radar-toast");
+        const toastMsg = document.getElementById("toast-message");
+        if (toast && toastMsg) {
+          toastMsg.textContent = msg;
+          toast.style.display = "flex";
+          setTimeout(() => {
+            toast.style.display = "none";
+          }, 3000);
+        }
+      }
+
+      function getMySpecialty() {
+        return localStorage.getItem("cliniportal_radar_my_spec") || "cardio";
+      }
+
+      function copyCardMarkdown(card) {
+        if (!card) return;
+        const title = card.querySelector(".radar-card-title")?.textContent.trim() || "";
+        const metaSpans = card.querySelectorAll(".radar-meta span");
+        const org = metaSpans[0]?.textContent.trim() || "Bộ Y Tế / Hội Chuyên Khoa";
+        const date = metaSpans[1]?.textContent.trim() || "2026";
+        const corBadge = card.querySelector(".cor-badge")?.textContent.trim() || "Class I";
+        const oldText = card.querySelector(".diff-box.old .diff-text")?.textContent.trim() || "";
+        const newText = card.querySelector(".diff-box.new .diff-text")?.textContent.trim() || "";
+        const reasonText = card.querySelector(".diff-reason-box")?.textContent.replace(/\s+/g, " ").trim() || "";
+
+        const md = `### 🛰️ [Guideline Radar Diff] ${title}
+
+* **Tổ chức phát hành**: ${org} (${date})
+* **Mức độ khuyến cáo**: ${corBadge}
+
+#### ❌ Phác đồ / Khuyến cáo cũ:
+> ${oldText}
+
+#### ✅ Khuyến cáo mới cập nhật (2026):
+> ${newText}
+
+${reasonText ? `> 💡 **Bằng chứng & Lý do thay đổi**: ${reasonText}\n` : ""}
+---
+*Nguồn: CliniPortal Guideline Radar Diff Viewer & Evidence Hub*`;
+
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(md).then(() => {
+            showToast("Đã sao chép tóm tắt EBM dạng Markdown vào Bộ nhớ tạm!");
+          });
+        } else {
+          showToast("Đã chọn tóm tắt EBM!");
+        }
+      }
+
+      function openExportModal(card) {
+        if (!card) return;
+        const exportModal = document.getElementById("exportModalBackdrop");
+        const container = document.getElementById("infographic-preview-container");
+        if (!exportModal || !container) return;
+
+        const title = card.querySelector(".radar-card-title")?.textContent.trim() || "";
+        const metaSpans = card.querySelectorAll(".radar-meta span");
+        const org = metaSpans[0]?.textContent.trim() || "Bộ Y Tế / Hội Chuyên Khoa";
+        const date = metaSpans[1]?.textContent.trim() || "2026";
+        const corText = card.querySelector(".cor-badge")?.textContent.trim() || "Class I";
+        const oldText = card.querySelector(".diff-box.old .diff-text")?.textContent.trim() || "";
+        const newText = card.querySelector(".diff-box.new .diff-text")?.textContent.trim() || "";
+        const reasonText = card.querySelector(".diff-reason-box")?.textContent.replace(/\s+/g, " ").trim() || "";
+
+        container.innerHTML = `
+          <div class="infographic-preview-card" id="active-infographic-card">
+            <div class="infographic-header">
+              <div class="infographic-brand">
+                <span><i class="fa-solid fa-satellite-dish"></i> CLINIPORTAL GUIDELINE RADAR 2.0</span>
+                <span><i class="fa-solid fa-certificate"></i> ${corText}</span>
+              </div>
+              <h3 class="infographic-title">${title}</h3>
+              <div style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.4rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <span><i class="fa-solid fa-building-columns"></i> ${org}</span>
+                <span><i class="fa-regular fa-calendar"></i> ${date}</span>
+              </div>
+            </div>
+
+            <div class="infographic-diff-grid">
+              <div class="infographic-box old">
+                <div style="font-weight: 800; font-size: 0.78rem; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--diff-old-text);">
+                  Bản Khuyến Cáo / Phác Đồ Cũ ❌
+                </div>
+                <div style="font-size: 0.88rem; line-height: 1.5; opacity: 0.85; text-decoration: line-through;">${oldText}</div>
+              </div>
+
+              <div class="infographic-box new">
+                <div style="font-weight: 800; font-size: 0.78rem; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--diff-new-text);">
+                  Khuyến Cáo & Thay Đổi Mới (2026) ✅
+                </div>
+                <div style="font-size: 0.88rem; line-height: 1.5; font-weight: 600;">${newText}</div>
+              </div>
+            </div>
+
+            ${reasonText ? `
+              <div style="background: var(--color-surface-2); border: 1px dashed var(--color-divider); border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.82rem; color: var(--color-text-muted); line-height: 1.5;">
+                ${reasonText}
+              </div>
+            ` : ''}
+
+            <div class="infographic-footer">
+              <span>CliniPortal EBM Practice Lab & Guideline Diff Viewer</span>
+              <span>cliniportal.vn</span>
+            </div>
+          </div>
+        `;
+
+        exportModal.classList.add("open");
+
+        const btnCopyMd = document.getElementById("btn-copy-exp-md");
+        const btnPrint = document.getElementById("btn-print-infographic");
+
+        if (btnCopyMd) {
+          btnCopyMd.onclick = () => copyCardMarkdown(card);
+        }
+        if (btnPrint) {
+          btnPrint.onclick = () => window.print();
+        }
+      }
+
+      const exportModalBackdrop = document.getElementById("exportModalBackdrop");
+      const exportModalCloseBtn = document.getElementById("exportModalCloseBtn");
+
+      if (exportModalCloseBtn) {
+        exportModalCloseBtn.addEventListener("click", () => {
+          if (exportModalBackdrop) exportModalBackdrop.classList.remove("open");
+        });
+      }
+      if (exportModalBackdrop) {
+        exportModalBackdrop.addEventListener("click", (e) => {
+          if (e.target === exportModalBackdrop) {
+            exportModalBackdrop.classList.remove("open");
+          }
+        });
+      }
+
       function bindRadarCardEvents() {
         document.querySelectorAll(".bookmark-btn").forEach(btn => {
           if (!btn.dataset.bound) {
@@ -1219,6 +1859,36 @@
             });
           }
         });
+
+        // Bind Copy Markdown & Export Infographic Card buttons
+        document.querySelectorAll(".radar-card").forEach(card => {
+          const footer = card.querySelector(".card-footer-bar");
+          if (footer && !footer.dataset.p3bound) {
+            footer.dataset.p3bound = "true";
+
+            const copyBtn = document.createElement("button");
+            copyBtn.className = "action-btn-link copy-md-btn";
+            copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i> Sao Chép Markdown';
+            copyBtn.title = "Sao chép tóm tắt EBM dạng Markdown";
+            copyBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              copyCardMarkdown(card);
+            });
+
+            const exportBtn = document.createElement("button");
+            exportBtn.className = "action-btn-link export-card-btn";
+            exportBtn.innerHTML = '<i class="fa-solid fa-share-nodes"></i> Xuất Infographic';
+            exportBtn.title = "Xuất thẻ Infographic báo cáo";
+            exportBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              openExportModal(card);
+            });
+
+            footer.appendChild(copyBtn);
+            footer.appendChild(exportBtn);
+          }
+        });
+
         updateBookmarkUI();
       }
 
@@ -1227,6 +1897,7 @@
       // 2. SEARCH & FILTER LOGIC
       function filterCards() {
         const saved = getSavedCards();
+        const mySpec = getMySpecialty();
         const cards = document.querySelectorAll(".radar-card");
         cards.forEach(card => {
           const cardId = card.getAttribute("data-card-id");
@@ -1238,6 +1909,8 @@
 
           if (currentFilterType === "spec") {
             matchesFilter = (currentFilterVal === "all") || cardSpec.includes(currentFilterVal);
+          } else if (currentFilterType === "my_spec") {
+            matchesFilter = cardSpec.includes(mySpec);
           } else if (currentFilterType === "cor") {
             matchesFilter = (cardCor === currentFilterVal);
           } else if (currentFilterType === "saved") {
@@ -1272,19 +1945,130 @@
         });
       }
 
-      // 3. VIEW MODE TOGGLE (FEED vs TIMELINE)
-      modeBtnDiff.addEventListener("click", () => {
-        modeBtnDiff.classList.add("active");
-        modeBtnTimeline.classList.remove("active");
-        feedList.style.display = "flex";
-        timelineList.style.display = "none";
-      });
+      // 3. VIEW MODE TOGGLE (FEED vs TIMELINE vs MATRIX)
+      const modeBtnMatrix = document.getElementById("view-mode-matrix");
+      const matrixFeed = document.getElementById("radar-matrix-feed");
+      const controlsBox = document.querySelector(".radar-controls");
 
-      modeBtnTimeline.addEventListener("click", () => {
-        modeBtnTimeline.classList.add("active");
-        modeBtnDiff.classList.remove("active");
-        feedList.style.display = "none";
-        timelineList.style.display = "flex";
+      function switchViewMode(mode) {
+        [modeBtnDiff, modeBtnTimeline, modeBtnMatrix].forEach(btn => {
+          if (btn) btn.classList.remove("active");
+        });
+        if (feedList) feedList.style.display = "none";
+        if (timelineList) timelineList.style.display = "none";
+        if (matrixFeed) matrixFeed.style.display = "none";
+
+        if (mode === "diff") {
+          if (modeBtnDiff) modeBtnDiff.classList.add("active");
+          if (feedList) feedList.style.display = "flex";
+          if (controlsBox) controlsBox.style.display = "flex";
+        } else if (mode === "timeline") {
+          if (modeBtnTimeline) modeBtnTimeline.classList.add("active");
+          if (timelineList) timelineList.style.display = "flex";
+          if (controlsBox) controlsBox.style.display = "none";
+        } else if (mode === "matrix") {
+          if (modeBtnMatrix) modeBtnMatrix.classList.add("active");
+          if (matrixFeed) matrixFeed.style.display = "block";
+          if (controlsBox) controlsBox.style.display = "none";
+          renderAlignmentMatrix();
+        }
+      }
+
+      if (modeBtnDiff) modeBtnDiff.addEventListener("click", () => switchViewMode("diff"));
+      if (modeBtnTimeline) modeBtnTimeline.addEventListener("click", () => switchViewMode("timeline"));
+      if (modeBtnMatrix) modeBtnMatrix.addEventListener("click", () => switchViewMode("matrix"));
+
+      // 3.1 ALIGNMENT MATRIX DATA & RENDERER
+      const alignmentMatrixData = [
+        {
+          topic: "Rung nhĩ (AF) — Phân tầng nguy cơ & Kháng đông",
+          intl: "ESC 2026: Ưu tiên thang điểm CARE-AF (tích hợp eGFR & biomarker). Chỉ định DOACs là Class I cho mọi bệnh nhân nguy cơ trung bình-cao.",
+          vn: "BYT QĐ 4845: Sử dụng thang điểm CHA2DS2-VASc. Kháng đông đường uống (VKA hoặc DOAC) cho CHA2DS2-VASc ≥ 2 (Nam) / ≥ 3 (Nữ).",
+          status: "partial",
+          statusText: "🟢 Bổ sung",
+          notes: "DOACs đã được BHYT Việt Nam thanh toán theo tỷ lệ quy định đối với Rung nhĩ phi van tim."
+        },
+        {
+          topic: "Đái tháo đường Typ 2 (T2D) — Khởi đầu điều trị",
+          intl: "ADA 2026: Ưu tiên khởi đầu SGLT2i hoặc GLP-1RA ngay từ đầu ở bệnh nhân có CKD, bệnh tim mạch xơ vữa (ASCVD) hoặc Suy tim bất kể HbA1c ban đầu.",
+          vn: "BYT QĐ 5481: Metformin vẫn là lựa chọn hàng 1 ban đầu. Phối hợp SGLT2i khi có bệnh tim mạch xơ vữa hoặc bệnh thận mạn chưa kiểm soát.",
+          status: "full",
+          statusText: "🟢 Đồng thuận",
+          notes: "SGLT2i (Empagliflozin, Dapagliflozin) được BHYT xuất toán theo tiêu chuẩn QĐ 5481."
+        },
+        {
+          topic: "COPD — Phân nhóm & Khởi đầu giãn phế quản",
+          intl: "GOLD 2026: Hợp nhất nhóm C/D thành Nhóm E (bị đợt cấp). Ưu tiên khởi đầu bộ đôi LABA + LAMA cho nhóm B & E. Chỉ dùng ICS khi Eosinophil ≥ 300.",
+          vn: "BYT QĐ 2766: Vẫn giữ phân loại 4 nhóm A, B, C, D. Nhóm C/D có thể dùng ICS/LABA hoặc LAMA đơn trị.",
+          status: "diff",
+          statusText: "🔴 Chưa cập nhật",
+          notes: "Khuyến cáo lâm sàng: Ưu tiên bộ đôi LABA/LAMA cho bệnh nhân có nhiều đợt cấp theo GOLD 2026."
+        },
+        {
+          topic: "Hen suyễn (Asthma) — Thuốc cắt cơn ban đầu",
+          intl: "GINA 2026: Tuyệt đối KHÔNG dùng SABA đơn thuần làm thuốc cắt cơn. Ưu tiên ICS-Formoterol liều thấp làm thuốc cắt cơn & ngừa cơn (Track 1).",
+          vn: "BYT QĐ 4284: Cho phép dùng SABA (Salbutamol) cắt cơn khi cần, kết hợp ICS liều thấp duy trì hàng ngày.",
+          status: "partial",
+          statusText: "🟡 Bổ sung",
+          notes: "BHYT thanh toán ICS-Formoterol dạng hít bình phân liều (Budesonide/Formoterol)."
+        },
+        {
+          topic: "Đột quỵ thiếu máu cục bộ cấp — Cửa sổ tái thông",
+          intl: "ESO / ASA 2026: Tenecteplase (TNK-tPA) 0.25 mg/kg bolus thay thế Alteplase. Mở rộng cửa sổ can thiệp lấy huyết khối (EVT) lên 24h dựa trên hình ảnh Penumbra.",
+          vn: "BYT QĐ 5331: Alteplase (rt-PA) trong 4.5h đầu. Can thiệp lấy huyết khối cơ học (EVT) trong 6h đầu (mở rộng đến 24h tại trung tâm đột quỵ kỹ thuật cao).",
+          status: "full",
+          statusText: "🟢 Đồng thuận",
+          notes: "Alteplase và EVT được BHYT chi trả 100% tại các trung tâm Đột quỵ đạt chuẩn."
+        },
+        {
+          topic: "Viêm gan B mạn tính — Tiêu chuẩn khởi đầu Tenofovir/Entecavir",
+          intl: "EASL / AASLD 2026: Mở rộng chỉ định điều trị kháng virus Tenofovir Alafenamide (TAF) / Entecavir cho tất cả BN HBV DNA (+) kèm ALT tăng nhẹ hoặc FIB-4 ≥ 1.3.",
+          vn: "BYT QĐ 3310: Chỉ định điều trị khi HBV DNA ≥ 10^4 copies/ml kèm ALT tăng > 2 lần hoặc có xơ hóa gan F ≥ 2.",
+          status: "partial",
+          statusText: "🟡 Bổ sung",
+          notes: "Tenofovir TAF / Entecavir được BHYT chi trả theo tuyến điều trị."
+        }
+      ];
+
+      function renderAlignmentMatrix() {
+        const tbody = document.getElementById("matrix-table-body");
+        if (!tbody) return;
+
+        tbody.innerHTML = alignmentMatrixData.map(item => {
+          let badgeClass = "align-full";
+          if (item.status === "partial") badgeClass = "align-partial";
+          else if (item.status === "diff") badgeClass = "align-diff";
+
+          return `
+            <tr>
+              <td style="font-weight: 800; color: var(--color-text);">${item.topic}</td>
+              <td style="color: var(--diff-new-text); font-weight: 600; background: var(--diff-new-bg); border-radius: 8px;">${item.intl}</td>
+              <td style="color: var(--color-text); background: var(--color-surface-2); border-radius: 8px;">${item.vn}</td>
+              <td><span class="align-badge ${badgeClass}">${item.statusText}</span></td>
+              <td style="font-size: 0.8rem; color: var(--color-text-muted);">${item.notes}</td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      // 3.2 HEATMAP CELL CLICK HANDLER
+      document.querySelectorAll(".heatmap-cell").forEach(cell => {
+        cell.addEventListener("click", () => {
+          const cor = cell.getAttribute("data-heatmap-cor");
+
+          document.querySelectorAll(".heatmap-cell").forEach(c => c.classList.remove("cell-active"));
+          cell.classList.add("cell-active");
+
+          currentFilterType = "cor";
+          currentFilterVal = cor;
+
+          filterPills.forEach(p => p.classList.remove("active"));
+          const matchingPill = document.querySelector(`.filter-pill[data-filter-val="${cor}"]`);
+          if (matchingPill) matchingPill.classList.add("active");
+
+          switchViewMode("diff");
+          filterCards();
+        });
       });
 
       // 4. TOGGLE DEEP DIVE ACCORDION
@@ -1303,65 +2087,195 @@
         });
       });
 
-      // 5. ALGORITHM DIFF MODAL DATA & HANDLERS
-      const algoData = {
+      // 5. INTERACTIVE SVG FLOWCHART DIFF ENGINE & MODAL HANDLERS
+      const algoFlowchartData = {
         af: {
-          title: "So Sánh Thuật Toán: Quản Lý Rung Nhĩ (AF 2020 vs 2026)",
-          oldSteps: [
-            "1. Tiêu chuẩn chẩn đoán ECG 12 chuyển đạo",
-            "2. Đánh giá thang điểm CHA2DS2-VASc",
-            "3. Nếu CHA2DS2-VASc ≥ 2 (Nam) / ≥ 3 (Nữ) ➔ Chỉ định Kháng đông",
-            "4. Kiểm soát tần số tim ngắt quãng"
+          title: "Lưu Đồ Đồ Họa Vector So Sánh: Quản Lý Rung Nhĩ (AF 2020 vs 2026)",
+          nodes: [
+            { id: "start", type: "start", text: "1. Bệnh Nhân Rung Nhĩ Chẩn Đoán (AF)", x: 480, y: 35, w: 280, h: 38 },
+            { id: "decision", type: "decision", text: "2. Đánh Giá Nguy Cơ Đột Quỵ & Chức Năng Thận", x: 480, y: 110, w: 320, h: 42 },
+
+            // Left Path: OLD ❌
+            { id: "old_score", type: "old", text: "❌ Thang CHA2DS2-VASc đơn thuần", x: 230, y: 195, w: 260, h: 48, detail: "⚠️ Thang điểm CHA2DS2-VASc đơn thuần bỏ sót 18% bệnh nhân có suy thận mạn hoặc hs-TnT tăng có nguy cơ đột quỵ cao." },
+            { id: "old_rx", type: "old", text: "❌ Warfarin (VKA) hoặc Dùng DOAC ngắt quãng", x: 230, y: 285, w: 260, h: 52, detail: "❌ ĐÃ THAY THẾ: Warfarin có tỷ lệ xuất huyết não cao và bắt buộc thử máu theo dõi chỉ số INR liên tục." },
+            { id: "old_end", type: "old", text: "Kiểm soát Tần Số Tim Đơn Thuần (Rate Control)", x: 230, y: 375, w: 260, h: 48, detail: "Rate control đơn thuần chỉ cải thiện triệu chứng, không làm giảm tử vong do biến cố thuyên tắc mạch hệ thống." },
+
+            // Right Path: NEW 2026 ✅
+            { id: "new_score", type: "new", text: "✅ Thang CARE-AF (Tích hợp eGFR + Biomarker)", x: 730, y: 195, w: 290, h: 48, detail: "✅ KHUYẾN CÁO MỚI (Class I): CARE-AF tích hợp eGFR, hs-Tn, NT-proBNP giúp tái phân tầng nguy cơ đột quỵ chính xác hơn 18%." },
+            { id: "new_rx", type: "new", text: "✅ DOACs Ưu Tiên Hàng Đầu (Class I, LOE A)", x: 730, y: 285, w: 290, h: 52, detail: "✅ CLASS I, LOE A: DOACs (Apixaban, Rivaroxaban, Dabigatran) giảm 51% xuất huyết não và giảm 10% tử vong toàn bộ so với Warfarin." },
+            { id: "new_end", type: "new", text: "✅ Tái Lập Nhịp Sớm Bằng Triệt Đốt Catheter Ablation", x: 730, y: 375, w: 290, h: 48, detail: "✅ CLASS I, LOE A: Triệt đốt qua ống thông sớm trong 12 tháng đầu giúp cải thiện chức năng thất T và giảm 26% tái nhập viện." }
           ],
-          newSteps: [
-            "1. Tiêu chuẩn chẩn đoán ECG hoặc Holter/Smartwatch",
-            "2. Đánh giá thang điểm CARE-AF (Tích hợp eGFR + hs-Tn)",
-            "3. Nguy cơ trung bình-cao ➔ Chỉ định DOAC ưu tiên hàng đầu (Class I)",
-            "4. Đánh giá kiểm soát nhịp tim sớm & Tái lập nhịp bằng Catheter Ablation"
+          links: [
+            { from: "start", to: "decision" },
+            { from: "decision", to: "old_score", label: "Phác đồ Cũ ❌" },
+            { from: "decision", to: "new_score", label: "Khuyến cáo Mới 2026 ✅" },
+            { from: "old_score", to: "old_rx" },
+            { from: "old_rx", to: "old_end" },
+            { from: "new_score", to: "new_rx" },
+            { from: "new_rx", to: "new_end" }
           ]
         },
         copd: {
-          title: "So Sánh Thuật Toán: Phân Nhóm & Khởi Đầu Điều Trị COPD (ABCD vs ABE)",
-          oldSteps: [
-            "1. Phân loại 4 nhóm A, B, C, D dựa trên triệu chứng (mMRC/CAT) & Đợt cấp",
-            "2. Nhóm C/D ➔ Khởi đầu ICS/LABA hoặc LAMA đơn trị",
-            "3. Thêm ICS rộng rãi khi có tiền sử đợt cấp"
+          title: "Lưu Đồ Đồ Họa Vector So Sánh: Phân Nhóm & Khởi Đầu COPD (ABCD vs ABE)",
+          nodes: [
+            { id: "start", type: "start", text: "1. Bệnh Nhân COPD Xác Định (FEV1/FVC < 0.7)", x: 480, y: 35, w: 290, h: 38 },
+            { id: "decision", type: "decision", text: "2. Đánh Giá Triệu Chứng & Tiền Sử Đợt Cấp", x: 480, y: 110, w: 320, h: 42 },
+
+            // Left Path: OLD ❌
+            { id: "old_score", type: "old", text: "❌ Phân loại 4 nhóm A, B, C, D cũ", x: 230, y: 195, w: 260, h: 48, detail: "⚠️ Phân loại C/D cũ khắt khe nhưng phác đồ điều trị không giúp giảm tử vong đợt cấp." },
+            { id: "old_rx", type: "old", text: "❌ Khởi đầu ICS/LABA đơn trị hoặc LAMA", x: 230, y: 285, w: 260, h: 52, detail: "❌ ĐÃ BÃI BỎ: ICS/LABA không còn là lựa chọn hàng đầu đơn thuần do tăng 35% nguy cơ Viêm phổi." },
+            { id: "old_end", type: "old", text: "Dùng ICS rộng rãi khi có tiền sử đợt cấp", x: 230, y: 375, w: 260, h: 48, detail: "Dùng ICS tràn lan gây lạm dụng corticoid hít và bùng phát nhiễm trùng hô hấp dưới." },
+
+            // Right Path: NEW 2026 ✅
+            { id: "new_score", type: "new", text: "✅ Hợp nhất Nhóm E (≥ 2 đợt cấp / ≥ 1 nhập viện)", x: 730, y: 195, w: 290, h: 48, detail: "✅ KHUYẾN CÁO MỚI (GOLD 2026): Hợp nhất nhóm C/D thành nhóm E giúp tập trung can thiệp ngăn ngừa đợt cấp tái phát." },
+            { id: "new_rx", type: "new", text: "✅ BỘ ĐÔI LABA + LAMA Hàng Đầu (Class I)", x: 730, y: 285, w: 290, h: 52, detail: "✅ CLASS I, LOE A: Bộ đôi giãn phế quản kép LABA+LAMA giảm 22% đợt cấp và cải thiện FEV1 vượt trội so với đơn trị." },
+            { id: "new_end", type: "new", text: "✅ Chỉ thêm ICS cho Nhóm E khi Eosinophil ≥ 300", x: 730, y: 375, w: 290, h: 48, detail: "✅ CLASS I: Đếm Eosinophil máu làm chỉ dấu sinh học xác định bệnh nhân thực sự hưởng lợi từ Corticoid hít." }
           ],
-          newSteps: [
-            "1. Phân loại 3 nhóm A, B, E (Nhóm E gồm tất cả BN có ≥ 2 đợt cấp hoặc ≥ 1 đợt cấp nhập viện)",
-            "2. Nhóm B & E ➔ Ưu tiên khởi đầu bộ đôi LABA + LAMA",
-            "3. Chỉ thêm ICS cho Nhóm E khi Eosinophil máu ≥ 300 tế bào/µL (Class I)"
+          links: [
+            { from: "start", to: "decision" },
+            { from: "decision", to: "old_score", label: "GOLD Cũ (ABCD) ❌" },
+            { from: "decision", to: "new_score", label: "GOLD 2026 (Nhóm ABE) ✅" },
+            { from: "old_score", to: "old_rx" },
+            { from: "old_rx", to: "old_end" },
+            { from: "new_score", to: "new_rx" },
+            { from: "new_rx", to: "new_end" }
           ]
         }
       };
+
+      function renderSvgFlowchartDiff(algoKey) {
+        const svg = document.getElementById("algo-flowchart-svg");
+        const callout = document.getElementById("node-detail-callout");
+        if (!svg) return;
+
+        if (callout) callout.style.display = "none";
+
+        const data = algoFlowchartData[algoKey] || algoFlowchartData.af;
+
+        const nodeMap = {};
+        data.nodes.forEach(n => { nodeMap[n.id] = n; });
+
+        let svgHtml = `
+          <defs>
+            <marker id="arrowhead" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
+            </marker>
+            <marker id="arrowhead-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" />
+            </marker>
+            <marker id="arrowhead-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444" />
+            </marker>
+          </defs>
+        `;
+
+        data.links.forEach(l => {
+          const fromNode = nodeMap[l.from];
+          const toNode = nodeMap[l.to];
+          if (!fromNode || !toNode) return;
+
+          const isNew = toNode.type === "new";
+          const isOld = toNode.type === "old";
+          const strokeColor = isNew ? "#10b981" : (isOld ? "#f87171" : "#94a3b8");
+          const markerId = isNew ? "arrowhead-green" : (isOld ? "arrowhead-red" : "arrowhead");
+
+          const startX = fromNode.x;
+          const startY = fromNode.y + fromNode.h / 2;
+          const endX = toNode.x;
+          const endY = toNode.y - toNode.h / 2;
+
+          const midY = (startY + endY) / 2;
+          const pathD = `M ${startX} ${startY} C ${startX} ${midY}, ${endX} ${midY}, ${endX} ${endY}`;
+
+          svgHtml += `<path d="${pathD}" fill="none" stroke="${strokeColor}" stroke-width="${isNew ? 2.5 : 1.8}" stroke-dasharray="${isOld ? '4 3' : 'none'}" marker-end="url(#${markerId})" />`;
+
+          if (l.label) {
+            const lblX = (startX + endX) / 2;
+            const lblY = midY - 6;
+            const lblFill = isNew ? "#059669" : (isOld ? "#dc2626" : "#64748b");
+            svgHtml += `<text x="${lblX}" y="${lblY}" text-anchor="middle" font-size="11" font-weight="bold" fill="${lblFill}">${l.label}</text>`;
+          }
+        });
+
+        data.nodes.forEach(n => {
+          const x = n.x - n.w / 2;
+          const y = n.y - n.h / 2;
+
+          let fill = "var(--color-surface)";
+          let stroke = "var(--color-divider)";
+          let textColor = "var(--color-text)";
+          let badgeText = "";
+
+          if (n.type === "start") {
+            fill = "#0284c7";
+            stroke = "#0369a1";
+            textColor = "#ffffff";
+          } else if (n.type === "decision") {
+            fill = "var(--color-surface-2)";
+            stroke = "#94a3b8";
+            textColor = "var(--color-text)";
+          } else if (n.type === "old") {
+            fill = "var(--diff-old-bg)";
+            stroke = "var(--diff-old-border)";
+            textColor = "var(--diff-old-text)";
+            badgeText = "❌ CŨ / BÃI BỎ";
+          } else if (n.type === "new") {
+            fill = "var(--diff-new-bg)";
+            stroke = "var(--radar-accent)";
+            textColor = "var(--diff-new-text)";
+            badgeText = "✅ MỚI 2026 · CLASS I";
+          }
+
+          svgHtml += `
+            <g class="svg-flow-node" data-node-id="${n.id}" style="cursor: pointer;">
+              <rect x="${x}" y="${y}" width="${n.w}" height="${n.h}" rx="10" fill="${fill}" stroke="${stroke}" stroke-width="${n.type === 'new' ? 2.5 : 1.5}" />
+              ${badgeText ? `<text x="${x + 10}" y="${y + 14}" font-size="9" font-weight="900" fill="${n.type === 'new' ? '#059669' : '#dc2626'}">${badgeText}</text>` : ''}
+              <text x="${n.x}" y="${y + (badgeText ? 30 : n.h / 2 + 4)}" text-anchor="middle" font-size="11" font-weight="${n.type === 'start' || n.type === 'new' ? 'bold' : 'normal'}" fill="${textColor}">${n.text}</text>
+            </g>
+          `;
+        });
+
+        svg.innerHTML = svgHtml;
+
+        document.querySelectorAll(".svg-flow-node").forEach(el => {
+          el.addEventListener("click", () => {
+            const nodeId = el.getAttribute("data-node-id");
+            const node = nodeMap[nodeId];
+            if (node && node.detail && callout) {
+              document.getElementById("callout-node-title").innerHTML = `<i class="fa-solid fa-lightbulb"></i> Chi tiết chỉ định: <strong>${node.text}</strong>`;
+              document.getElementById("callout-node-body").innerHTML = node.detail;
+              callout.style.display = "block";
+            }
+          });
+        });
+      }
 
       const modalBackdrop = document.getElementById("algoModalBackdrop");
       const modalTitle = document.getElementById("modalTitle");
       const modalAlgoGrid = document.getElementById("modalAlgoGrid");
       const modalCloseBtn = document.getElementById("modalCloseBtn");
+      const btnCloseCallout = document.getElementById("btn-close-callout");
+
+      if (btnCloseCallout) {
+        btnCloseCallout.addEventListener("click", () => {
+          const callout = document.getElementById("node-detail-callout");
+          if (callout) callout.style.display = "none";
+        });
+      }
 
       document.querySelectorAll(".open-algo-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-          const algoKey = btn.getAttribute("data-algo");
-          const data = algoData[algoKey];
-          if (data) {
-            modalTitle.textContent = data.title;
-            
-            let oldHtml = `<div class="algo-box"><div class="algo-title" style="color: var(--diff-old-text);">Phác Đồ Cũ ❌</div>`;
-            data.oldSteps.forEach(step => {
-              oldHtml += `<div class="algo-step"><i class="fa-solid fa-arrow-right" style="color: var(--color-text-muted);"></i> ${step}</div>`;
-            });
-            oldHtml += `</div>`;
+          const algoKey = btn.getAttribute("data-algo") || "af";
+          const flowchartData = algoFlowchartData[algoKey] || algoFlowchartData.af;
+          
+          if (modalTitle) modalTitle.textContent = flowchartData.title;
 
-            let newHtml = `<div class="algo-box" style="border-color: var(--radar-primary);"><div class="algo-title" style="color: var(--diff-new-text);">Khuyến Cáo Mới 2026 ✅</div>`;
-            data.newSteps.forEach(step => {
-              newHtml += `<div class="algo-step" style="background: var(--diff-new-bg); border-color: var(--diff-new-border); font-weight: 600;"><i class="fa-solid fa-check" style="color: var(--radar-accent);"></i> ${step}</div>`;
-            });
-            newHtml += `</div>`;
+          renderSvgFlowchartDiff(algoKey);
 
-            modalAlgoGrid.innerHTML = oldHtml + newHtml + '<div style="grid-column: 1 / -1; margin-top:1rem; text-align:right;"><a href="../guidelines/guidelines.html?mode=matrix" class="action-btn-link" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; padding:0.6rem 1.2rem; background:var(--radar-primary); color:white; border-radius:10px; font-weight:700;"><i class="fa-solid fa-table-cells"></i> Mở Bảng Ma Trận Chứng Cứ Heatmap trong Kho Guidelines &rarr;</a></div>';
-            modalBackdrop.classList.add("open");
+          if (modalAlgoGrid) {
+            modalAlgoGrid.innerHTML = '<div style="grid-column: 1 / -1; text-align:right;"><a href="../guidelines/guidelines.html?mode=matrix" class="action-btn-link" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; padding:0.6rem 1.2rem; background:var(--radar-primary); color:white; border-radius:10px; font-weight:700;"><i class="fa-solid fa-table-cells"></i> Mở Bảng Ma Trận Chứng Cứ Heatmap trong Kho Guidelines &rarr;</a></div>';
           }
+          if (modalBackdrop) modalBackdrop.classList.add("open");
         });
       });
 

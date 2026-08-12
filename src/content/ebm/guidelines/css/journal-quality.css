@@ -37,7 +37,8 @@
 }
 .trust-score-header {
   display: flex; align-items: center; justify-content: space-between;
-  font-size: 0.8rem; font-weight: 700;
+  font-size: 0.78rem; font-weight: 700; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 2px;
 }
 .trust-score-num {
   font-size: 1.15rem; font-weight: 900; letter-spacing: -0.02em;
@@ -101,22 +102,25 @@
 }
 
 .jq-metrics-grid {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
   background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light);
-  border-radius: 12px; padding: 0.85rem 0.6rem; text-align: center;
+  border-radius: 12px; padding: 0.75rem 0.25rem; text-align: center;
 }
 .jq-metric-item {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  border-right: 1px solid var(--border-light); padding: 0 4px;
+  border-right: 1px solid var(--border-light); padding: 0 2px; min-width: 0;
+  overflow: hidden;
 }
 .jq-metric-item:last-child { border-right: none; }
 .jq-metric-val {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.15rem; font-weight: 900; color: var(--text); line-height: 1.2;
+  font-size: 1.05rem; font-weight: 900; color: var(--text); line-height: 1.2;
+  white-space: nowrap;
 }
 .jq-metric-lbl {
-  font-size: 0.68rem; font-weight: 700; color: var(--text-muted);
-  text-transform: uppercase; letter-spacing: 0.04em; margin-top: 3px;
+  font-size: 0.64rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.02em; margin-top: 3px;
+  line-height: 1.15; text-align: center; word-break: break-word;
 }
 
 /* ── 5. OPENALEX LOOKUP RESULTS & MODAL ENHANCEMENTS ── */

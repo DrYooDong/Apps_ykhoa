@@ -36,6 +36,7 @@
 .study-table td {
   padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border-light);
   vertical-align: top;
+  word-break: break-word; overflow-wrap: break-word;
 }
 .study-table tbody tr.main-row,
 .study-table tbody tr.study-row {
@@ -58,7 +59,7 @@
   vertical-align: middle !important;
 }
 .col-checkbox, .col-select { width: 38px; text-align: center; vertical-align: middle; }
-.col-title, .col-study { min-width: 280px; max-width: 400px; }
+.col-title, .col-study { min-width: 250px; max-width: 480px; word-break: break-word; overflow-wrap: break-word; white-space: normal; }
 .col-source { min-width: 110px; }
 .col-specialty { min-width: 100px; }
 .col-design { min-width: 110px; }
@@ -82,23 +83,27 @@
 
 .study-title-text {
   font-weight: 700; color: var(--text);
-  font-size: 0.86rem; line-height: 1.35;
+  font-size: 0.86rem; line-height: 1.4;
   cursor: pointer; transition: color var(--tr);
+  word-break: break-word; overflow-wrap: break-word; white-space: normal;
+  display: block;
 }
 .study-title-text:hover { color: var(--accent); }
 
 .study-meta-sub {
   display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
-  margin-top: 6px;
+  margin-top: 6px; max-width: 100%;
 }
 
 .spec-tag, .source-tag, .impact-tag {
   font-size: 0.72rem; font-weight: 700; padding: 2px 7px; border-radius: 6px;
-  display: inline-flex; align-items: center; gap: 3px; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; max-width: 100%;
 }
 .drug-tag {
-  font-size: 0.7rem; font-weight: 600; padding: 2px 7px; border-radius: 6px;
-  display: inline-flex; align-items: center; gap: 3px; white-space: nowrap;
+  font-size: 0.7rem; font-weight: 600; padding: 3px 8px; border-radius: 6px;
+  display: inline-flex; align-items: flex-start; gap: 3px;
+  white-space: normal; word-break: break-word; overflow-wrap: anywhere; max-width: 100%;
+  line-height: 1.35;
   background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa;
 }
 .year-tag {

@@ -828,6 +828,31 @@
     }
   }
 
+  function updateChartPreview() {
+    const inputEl = document.getElementById('study-key-results');
+    const panel = document.getElementById('chart-preview-panel');
+    const body = document.getElementById('chart-preview-body');
+    if (!inputEl || !panel || !body || !window.renderKeyResultsChart) return;
+    const text = inputEl.value.trim();
+    if (!text) { panel.style.display = 'none'; return; }
+    body.innerHTML = window.renderKeyResultsChart(text);
+    panel.style.display = 'block';
+  }
+
+  function updateSubgroupPreview() {
+    const textareaEl = document.getElementById('study-subgroups');
+    const panel = document.getElementById('subgroup-preview-panel');
+    const body = document.getElementById('subgroup-preview-body');
+    if (!textareaEl || !panel || !body || !window.renderSubgroupForestPlot) return;
+    const raw = textareaEl.value.trim();
+    if (!raw) { panel.style.display = 'none'; return; }
+    try {
+      const parsed = JSON.parse(raw);
+      body.innerHTML = window.renderSubgroupForestPlot(parsed);
+      panel.style.display = 'block';
+    } catch (e) { panel.style.display = 'none'; }
+  }
+
   function escapeHtml(str) {
     if (!str) return '';
     return String(str)
@@ -870,3 +895,123 @@
 
 })();
 
+
+// ══════════════════════════════════════════════════════════════════
+// LIVE CHART PREVIEW ENGINE — Wires the Edit Modal's key-results
+// and subgroups fields to the guideline-charts-engine.js renderer.
+// Runs in its own IIFE to avoid polluting the original IIFE scope.
+// ══════════════════════════════════════════════════════════════════
+
+(function () {
+  'use strict';
+
+  const CHART_TYPE_LABELS = {
+    forest : '🌲 Forest Plot',
+    col    : '📊 Biểu đồ Cột',
+    hbar   : '📉 Biểu đồ Ngang',
+    comp   : '⚖️ So sánh 2 Nhóm',
+    donut  : '🍩 Vòng Donut',
+    text   : '📄 Văn bản thuần'
+  };
+
+  function detectChartType(text) {
+    if (!text || !text.trim()) return 'none';
+    const t = text.trim();
+    if (/^(?:COL|CỘT|BAR_V|COLUMN)\s*:/i.test(t))       return 'col';
+    if (/^(?:HBAR|NGANG|BAR_H|HORIZONTAL)\s*:/i.test(t)) return 'hbar';
+    if (/\b(HR|OR|RR|aHR|aOR|aRR)\s*[:=]?\s*[\d.]+/i.test(t)) return 'forest';
+    if (/[\d.]+\s*%\s*(?:vs\.?|so với|versus)\s*[\d.]+\s*%/i.test(t)) return 'comp';
+    if (/[\d.]+\s*%/.test(t)) return 'donut';
+    return 'text';
+  }
+
+  /**
+   * Live preview for #study-key-results
+   */
+  function updateChartPreview() {
+    const inputEl = document.getElementById('study-key-results');
+    const panel   = document.getElementById('chart-preview-panel');
+    const body    = document.getElementById('chart-preview-body');
+    const badge   = document.getElementById('chart-preview-type-badge');
+
+    if (!inputEl || !panel || !body) return;
+    const text = inputEl.value.trim();
+
+    if (!text || !window.renderKeyResultsChart) {
+      panel.style.display = 'none';
+      return;
+    }
+
+    const chartHtml = window.renderKeyResultsChart(text);
+    const type      = detectChartType(text);
+
+    if (chartHtml) {
+      body.innerHTML = chartHtml;
+      if (badge) {
+        badge.textContent    = CHART_TYPE_LABELS[type] || '📈 Biểu đồ';
+        badge.style.display  = 'inline-block';
+      }
+    } else {
+      body.innerHTML = `<div style="font-size:0.82rem;color:var(--text-muted);padding:4px 0;">
+        📄 Hiển thị văn bản thuần — Không phát hiện cú pháp biểu đồ hợp lệ.
+      </div>`;
+      if (badge) {
+        badge.textContent   = CHART_TYPE_LABELS.text;
+        badge.style.display = 'inline-block';
+      }
+    }
+    panel.style.display = 'block';
+  }
+
+  /**
+   * Live preview for #study-subgroups (Subgroup Forest Plot JSON)
+   */
+  function updateSubgroupPreview() {
+    const textareaEl = document.getElementById('study-subgroups');
+    const panel      = document.getElementById('subgroup-preview-panel');
+    const body       = document.getElementById('subgroup-preview-body');
+
+    if (!textareaEl || !panel || !body || !window.renderSubgroupForestPlot) return;
+    const raw = textareaEl.value.trim();
+
+    if (!raw) {
+      panel.style.display = 'none';
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(raw);
+      if (typeof parsed !== 'object' || Array.isArray(parsed) || !Object.keys(parsed).length) {
+        panel.style.display = 'none';
+        return;
+      }
+      const chartHtml = window.renderSubgroupForestPlot(parsed);
+      if (chartHtml) {
+        body.innerHTML      = chartHtml;
+        panel.style.display = 'block';
+      } else {
+        panel.style.display = 'none';
+      }
+    } catch (e) {
+      panel.style.display = 'none';
+    }
+  }
+
+  // ── Patch openEditModal so previews refresh automatically on open ──
+  document.addEventListener('DOMContentLoaded', function () {
+    const _orig = window.openEditModal;
+    if (typeof _orig === 'function') {
+      window.openEditModal = function (id) {
+        _orig(id);
+        requestAnimationFrame(function () {
+          updateChartPreview();
+          updateSubgroupPreview();
+        });
+      };
+    }
+  });
+
+  window.updateChartPreview    = updateChartPreview;
+  window.updateSubgroupPreview = updateSubgroupPreview;
+
+})();
