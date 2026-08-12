@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -27,23 +27,37 @@
   <script src="../../../components/footer.js" defer></script>
 
   <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
-  <style>
-    /* ================================================================
-       TIẾP CẬN LÂM SÀNG — Section Color System
-       Dùng CSS custom properties cascade để đồng bộ màu sắc theo section
-       ================================================================ */
 
-    /* Color tokens mới */
+  <style>
+    /* ============================================================
+       VIPPRO 2000$ COMMAND CENTER OVERRIDE — TIẾP CẬN LÂM SÀNG
+    ============================================================ */
     :root {
+      --hub-indigo: #6366f1;
+      --hub-indigo-dark: #4338ca;
+      --hub-indigo-light: rgba(99, 102, 241, 0.12);
+      --hub-surface: var(--color-surface, #ffffff);
+      --hub-surface-2: var(--color-surface-2, #f8fafc);
+      --hub-border: var(--color-divider, #e2e8f0);
+      --hub-text: var(--color-text, #0f172a);
+      --hub-text-muted: var(--color-text-muted, #475569);
+      --hub-tr: 300ms cubic-bezier(0.16, 1, 0.3, 1);
       --color-indigo: #6366f1;
       --color-indigo-hl: #eef2ff;
     }
+
     [data-theme="dark"] {
+      --hub-surface: var(--color-surface, #1e293b);
+      --hub-surface-2: var(--color-surface-2, #0f172a);
+      --hub-border: var(--color-divider, #334155);
+      --hub-text: var(--color-text, #f8fafc);
+      --hub-text-muted: var(--color-text-muted, #94a3b8);
+      --hub-indigo-light: rgba(129, 140, 248, 0.15);
       --color-indigo: #818cf8;
       --color-indigo-hl: #1e1b4b;
     }
 
-    /* Mỗi section khai báo --part-color để toàn bộ child tự inherit */
+    /* Section colors */
     #part1-section       { --part-color: var(--color-danger);  --part-color-rgb: var(--color-danger-rgb);  --part-color-hl: var(--color-danger-hl);  }
     #part2-section       { --part-color: var(--color-primary); --part-color-rgb: var(--color-primary-rgb); --part-color-hl: var(--color-primary-hl); }
     #part-criteria-section { --part-color: var(--color-indigo); --part-color-rgb: 99, 102, 241;            --part-color-hl: var(--color-indigo-hl);  }
@@ -53,9 +67,307 @@
     #part6-section       { --part-color: var(--color-pink);    --part-color-rgb: 219, 39, 119;             --part-color-hl: var(--color-pink-hl);    }
     [data-theme="dark"] #part6-section { --part-color-rgb: 244, 114, 182; }
 
-    /* ================================================================
-       COMPACT LIST-ITEM CARD (.info-card) — Đồng bộ toàn section
-       ================================================================ */
+    /* 1. HERO COMMAND CENTER */
+    .hero-dashboard.hero-approach {
+      position: relative;
+      background: linear-gradient(135deg, #1e1b4b 0%, #311b92 30%, #4338ca 65%, #be123c 100%) !important;
+      border-radius: 24px !important;
+      padding: 3rem 2.5rem !important;
+      margin-bottom: 2rem !important;
+      overflow: hidden;
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
+      box-shadow: 0 20px 50px rgba(30, 27, 75, 0.35) !important;
+    }
+
+    .hero-dashboard.hero-approach::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -100px;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.35) 0%, rgba(99, 102, 241, 0.06) 60%, transparent 70%);
+      filter: blur(40px);
+      animation: app-glow 8s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+
+    .hero-dashboard.hero-approach::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: 15%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.25) 0%, transparent 70%);
+      filter: blur(40px);
+      animation: app-glow 10s infinite alternate-reverse ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes app-glow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      100% { transform: scale(1.15) translate(20px, -20px); opacity: 1; }
+    }
+
+    @keyframes tree-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+
+    .tcm-hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-intro {
+      flex: 1;
+    }
+
+    .hero-intro::before {
+      content: "🤒 Command Center — Tiếp cận Lâm sàng";
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #c4b5fd;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-intro h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: clamp(1.8rem, 1.3rem + 2vw, 2.75rem) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.035em !important;
+      line-height: 1.15 !important;
+      margin: 0 0 0.85rem !important;
+      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 50%, #fda4af 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+
+    .hero-intro p {
+      font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem) !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      max-width: 58ch !important;
+      line-height: 1.65 !important;
+      margin: 0 !important;
+    }
+
+    /* Hero KPI stats strip */
+    .hero-kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+    }
+
+    .hero-kpi-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 100px;
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      color: #fff;
+      backdrop-filter: blur(10px);
+      transition: all var(--hub-tr);
+      white-space: nowrap;
+    }
+
+    .hero-kpi-pill:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: #c4b5fd;
+      transform: translateY(-2px);
+    }
+
+    .hero-quick-tools {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+      align-items: center;
+    }
+
+    .hero-tool-btn {
+      background: rgba(255, 255, 255, 0.12) !important;
+      border: 1px solid rgba(255, 255, 255, 0.22) !important;
+      color: #fff !important;
+      padding: 0.45rem 0.9rem !important;
+      border-radius: 100px !important;
+      font-size: 0.8rem !important;
+      font-weight: 700 !important;
+      backdrop-filter: blur(10px) !important;
+      transition: all var(--hub-tr) !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      cursor: pointer !important;
+    }
+
+    .hero-tool-btn:hover {
+      background: rgba(255, 255, 255, 0.25) !important;
+      border-color: #c4b5fd !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .tcm-hero-decor {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      opacity: 0.85;
+    }
+
+    .tree-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 24px rgba(167, 139, 250, 0.6));
+      animation: tree-pulse 6s ease-in-out infinite;
+    }
+
+    .hero-pattern { display: none !important; }
+
+    /* 2. DASHBOARD CONTROLS TOOLBAR & SEARCH BAR */
+    .dashboard-controls {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 18px !important;
+      padding: 0.85rem 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
+      margin-bottom: 2rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 1.25rem !important;
+      flex-wrap: wrap !important;
+    }
+
+    .search-box-container {
+      position: relative !important;
+      flex: 1 !important;
+      min-width: 260px !important;
+      background: var(--hub-surface-2) !important;
+      border: 1.5px solid var(--hub-border) !important;
+      border-radius: 100px !important;
+      padding: 0.4rem 0.75rem 0.4rem 1.25rem !important;
+      transition: all var(--hub-tr) !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
+    .search-box-container:focus-within {
+      border-color: var(--hub-indigo) !important;
+      box-shadow: 0 0 0 4px var(--hub-indigo-light) !important;
+      background: var(--hub-surface) !important;
+      transform: none !important;
+    }
+
+    #lesson-search {
+      background: transparent !important;
+      border: none !important;
+      color: var(--hub-text) !important;
+      font-size: 0.92rem !important;
+      outline: none !important;
+      box-shadow: none !important;
+      width: 100%;
+    }
+
+    #lesson-search:focus {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .hotkey-badge {
+      font-family: monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--hub-border);
+      color: var(--hub-text-muted);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .flashcard-btn {
+      background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%) !important;
+      color: #fff !important;
+      border: none !important;
+      padding: 0.55rem 1.2rem !important;
+      border-radius: 100px !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3) !important;
+      transition: all var(--hub-tr) !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+    }
+
+    .flashcard-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 22px rgba(99, 102, 241, 0.45) !important;
+    }
+
+    /* 3. STICKY NAV SIDEBAR */
+    .layout-nav-sidebar {
+      position: sticky !important;
+      top: calc(60px + 1.5rem) !important;
+    }
+
+    .nav-sidebar-sticky {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+
+    .part-nav-item {
+      border-radius: 12px !important;
+      padding: 0.65rem 0.85rem !important;
+      transition: all var(--hub-tr) !important;
+    }
+
+    .part-nav-item:hover, .part-nav-item.active {
+      background: var(--hub-indigo-light) !important;
+      color: var(--hub-indigo) !important;
+      transform: translateX(4px) !important;
+    }
+
+    /* 4. CARDS & GROUP CONTAINERS */
+    .physio-group-container {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.5rem !important;
+      margin-bottom: 1.75rem !important;
+      box-shadow: var(--shadow-sm) !important;
+      transition: all var(--hub-tr) !important;
+    }
+
+    .physio-group-container:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+      border-color: var(--hub-indigo) !important;
+    }
+
     .infographic-grid {
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
       gap: 14px !important;
@@ -64,193 +376,40 @@
 
     .info-card {
       padding: 16px 20px !important;
-      border-radius: 12px !important;
-      background: var(--color-surface) !important;
-      border: 1px solid var(--color-border) !important;
-      /* Tự inherit màu từ --part-color của section cha */
+      border-radius: 14px !important;
+      background: var(--hub-surface-2) !important;
+      border: 1px solid var(--hub-border) !important;
       border-left: 4px solid var(--part-color, var(--color-primary)) !important;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
-      min-height: auto !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-      position: relative;
-      overflow: hidden;
-      display: block;
+      transition: all var(--hub-tr) !important;
     }
-
-    .info-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 0;
-      background: linear-gradient(90deg, rgba(var(--part-color-rgb, 2, 132, 199), 0.07) 0%, transparent 100%);
-    }
-
-    .info-card:hover::before { opacity: 1; }
 
     .info-card:hover {
       transform: translateY(-3px) !important;
-      box-shadow: 0 8px 20px rgba(var(--part-color-rgb, 2, 132, 199), 0.1) !important;
-      border-color: rgba(var(--part-color-rgb, 2, 132, 199), 0.4) !important;
-      border-left-color: var(--part-color, var(--color-primary)) !important;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08) !important;
+      background: var(--hub-surface) !important;
+      border-color: var(--part-color, var(--color-primary)) !important;
     }
 
-    .info-card .specialty-card-top {
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 0 !important;
-      position: relative;
-      z-index: 1;
+    /* 5. SIDEBAR WIDGET CARDS */
+    .layout-widget-sidebar .widget-card {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
     }
 
-    .info-card .specialty-info {
-      flex: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
-
-    .info-card .specialty-info h3 {
-      font-size: 15px !important;
-      font-weight: 600 !important;
-      color: var(--color-text) !important;
-      margin: 0 !important;
-      line-height: 1.4 !important;
-      transition: color 0.2s ease;
-    }
-
-    .info-card:hover .specialty-info h3 {
-      color: var(--part-color, var(--color-primary)) !important;
-    }
-
-    .info-card .specialty-info::after {
-      content: '\f105';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      font-size: 14px;
-      color: var(--color-text-muted);
-      transition: transform 0.3s ease, color 0.3s ease;
-      margin-left: 12px;
-    }
-
-    .info-card:hover .specialty-info::after {
-      color: var(--part-color, var(--color-primary));
-      transform: translateX(4px);
-    }
-
-    .info-card .specialty-card-action { display: none !important; }
-
-    /* ================================================================
-       SECTION TITLE HELPERS
-       ================================================================ */
-    .sub-specialty-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--part-color, var(--color-primary));
-      margin: 24px 0 12px 0;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--color-border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .sub-specialty-title::before {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 16px;
-      background: var(--part-color, var(--color-primary));
-      border-radius: 4px;
-    }
-
-    .empty-text {
-      font-size: 13.5px;
-      color: var(--color-text-muted);
-      font-style: italic;
-      background: var(--color-surface);
-      padding: 12px 16px;
-      border-radius: 8px;
-      border: 1px dashed var(--color-border);
-      display: inline-block;
-    }
-
-    /* ================================================================
-       SIDEBAR NAV — Tiêu chuẩn chẩn đoán item (Indigo)
-       ================================================================ */
-    .part-nav-item.p-criteria:hover  { background: rgba(99, 102, 241, 0.07); color: var(--color-indigo); }
-    .part-nav-item.p-criteria.active { background: var(--color-indigo-hl); color: var(--color-indigo); font-weight: 600; }
-
-    /* ================================================================
-       SECTION CTA BANNER — Tái sử dụng cho Part5 & Part-criteria
-       ================================================================ */
-    .section-cta-banner {
-      background: linear-gradient(135deg,
-        rgba(var(--part-color-rgb, 2, 132, 199), 0.07) 0%,
-        rgba(var(--part-color-rgb, 2, 132, 199), 0.03) 100%);
-      border: 1px solid rgba(var(--part-color-rgb, 2, 132, 199), 0.2);
-      border-radius: 16px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-      margin-bottom: 16px;
-    }
-
-    .section-cta-banner .cta-info { flex: 1; min-width: 260px; }
-
-    .section-cta-banner .cta-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 3px 10px;
-      background: rgba(var(--part-color-rgb, 2, 132, 199), 0.12);
-      color: var(--part-color, var(--color-primary));
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .section-cta-banner h4 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--color-text);
-      margin-bottom: 6px;
-    }
-
-    .section-cta-banner p {
-      font-size: 0.88rem;
-      color: var(--color-text-muted);
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .section-cta-banner .cta-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      white-space: nowrap;
-      background: var(--part-color, var(--color-primary));
-      box-shadow: 0 4px 14px rgba(var(--part-color-rgb, 2, 132, 199), 0.3);
-      transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .section-cta-banner .cta-link:hover {
-      opacity: 0.92;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(var(--part-color-rgb, 2, 132, 199), 0.4);
+    @media (max-width: 768px) {
+      .hero-dashboard.hero-approach {
+        padding: 2rem 1.5rem !important;
+      }
+      .tcm-hero-decor {
+        display: none;
+      }
+      .hero-kpi-strip {
+        gap: 0.6rem;
+      }
     }
   </style>
 </head>
@@ -270,15 +429,20 @@
       <clini-breadcrumb
         items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Tiếp cận lâm sàng"}]'></clini-breadcrumb>
 
+      <!-- ===== VIPPRO COMMAND CENTER HERO ===== -->
       <section class="hero-dashboard hero-approach" aria-labelledby="hero-title">
         <div class="tcm-hero-content">
           <div class="hero-intro">
             <h1 id="hero-title">🤒 TIẾP CẬN LÂM SÀNG</h1>
-            <p>Hệ thống sơ đồ tiếp cận chẩn đoán phân biệt theo triệu chứng, hội chứng, bệnh lý và bất thường cận lâm
-              sàng dựa trên y học chứng cứ.</p>
-            <div class="hero-quick-tools" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; align-items: center;">
+            <p>Hệ thống sơ đồ tiếp cận chẩn đoán phân biệt theo triệu chứng, hội chứng, bệnh lý và bất thường cận lâm sàng dựa trên y học chứng cứ.</p>
+            <div class="hero-kpi-strip">
+              <span class="hero-kpi-pill"><i class="fa-solid fa-diagram-project"></i> <strong>150+</strong> Sơ đồ tiếp cận</span>
+              <span class="hero-kpi-pill"><i class="fa-solid fa-triangle-exclamation"></i> <strong>Red Flags</strong> Alert System</span>
+              <span class="hero-kpi-pill"><i class="fa-solid fa-bolt"></i> <strong>Bedside</strong> Decision Support</span>
+            </div>
+            <div class="hero-quick-tools">
               <a href="1. hs-cc/phan-loai-triage-cap-cuu.html" class="hero-tool-btn"
-                title="Mở Hướng dẫn & Công cụ Phân loại Triage Cấp cứu">
+                title="Mở Hướng dẫn &amp; Công cụ Phân loại Triage Cấp cứu">
                 <i class="fa-solid fa-hospital-user" style="color: #f43f5e;"></i> Phân Loại Triage ESI
               </a>
               <a href="pathology/diagnostic-criteria/index.html" class="hero-tool-btn"
@@ -303,11 +467,11 @@
               </button>
             </div>
           </div>
-          <div class="tcm-hero-decor">
+          <div class="tcm-hero-decor" aria-hidden="true">
             <!-- Decision Tree SVG -->
             <svg class="tree-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M50 15 L25 45 M50 15 L75 45 M25 45 L12 75 M25 45 L38 75 M75 45 L62 75 M75 45 L88 75"
-                stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6" />
+                stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.75" />
               <circle cx="50" cy="15" r="10" fill="#ffffff" stroke="#6366f1" stroke-width="3" />
               <circle cx="25" cy="45" r="8" fill="#ffffff" stroke="#6366f1" stroke-width="3" />
               <circle cx="75" cy="45" r="8" fill="#ffffff" stroke="#6366f1" stroke-width="3" />
@@ -319,7 +483,6 @@
             </svg>
           </div>
         </div>
-        <div class="hero-pattern"></div>
       </section>
 
       <!-- ===== TOOLBAR / CONTROL BAR ===== -->
@@ -334,6 +497,7 @@
           </span>
           <input type="text" id="lesson-search" placeholder="Tìm kiếm vấn đề lâm sàng..."
             aria-label="Tìm kiếm vấn đề lâm sàng">
+          <span class="hotkey-badge">Ctrl K</span>
           <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
             style="display: none;">&times;</button>
         </div>
@@ -416,7 +580,6 @@
                   <span class="part-text">Dược lý lâm sàng</span>
                 </a>
               </li>
-
             </ul>
           </div>
         </aside>
@@ -458,9 +621,6 @@
             </div>
           </section>
 
-
-
-
           <!-- PHẦN 1: CẤP CỨU - HỒI SỨC -->
           <section id="part1-section" aria-labelledby="part1-heading">
             <div class="physio-group-container">
@@ -501,7 +661,6 @@
               </div>
             </div>
           </section>
-
 
           <!-- PHẦN 2: TRIỆU CHỨNG - HỘI CHỨNG -->
           <section id="part2-section" aria-labelledby="part2-heading">
@@ -568,7 +727,6 @@
             </div>
           </section>
 
-
           <!-- PHẦN: TIÊU CHUẨN CHẨN ĐOÁN -->
           <section id="part-criteria-section" aria-labelledby="part-criteria-heading">
             <div class="physio-group-container">
@@ -592,9 +750,6 @@
               </div>
             </div>
           </section>
-
-
-
 
           <!-- PHẦN 3: CẬN LÂM SÀNG -->
           <section id="part3-section" aria-labelledby="part3-heading">
@@ -703,7 +858,6 @@
                   Mở Dashboard Bệnh Lý <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
-
             </div>
           </section>
 
@@ -739,7 +893,7 @@
                 <a href="pharmacology/tc-dl-vanmach.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
-                      <h3>Dược lý Vận mạch & Trợ tim</h3>
+                      <h3>Dược lý Vận mạch &amp; Trợ tim</h3>
                     </div>
                   </div>
                 </a>
@@ -760,7 +914,7 @@
                 <a href="pharmacology/tc-dl-noitiet.html" class="specialty-card info-card">
                   <div class="specialty-card-top">
                     <div class="specialty-info">
-                      <h3>Dược lý Nội tiết & ĐTĐ</h3>
+                      <h3>Dược lý Nội tiết &amp; ĐTĐ</h3>
                     </div>
                   </div>
                 </a>
@@ -768,6 +922,7 @@
             </div>
           </section>
         </main>
+
         <!-- SIDEBAR WIDGET -->
         <aside class="layout-widget-sidebar" aria-label="Widget tiếp cận triệu chứng tương tác">
           <section class="widget-card" aria-labelledby="symptom-checker-title">
@@ -883,6 +1038,19 @@
   <script src="../../../js/approach/ma-tran-trieu-chung-data.js" defer></script>
   <script src="../../../js/dashboard/module-dashboard.js" defer></script>
 
+  <!-- Hotkey Ctrl+K listener -->
+  <script>
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('lesson-search');
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      }
+    });
+  </script>
 
   <!-- ===================== SYMPTOM MATRIX SCRIPT ===================== -->
   <script>
@@ -891,7 +1059,7 @@
         sot: {
           redFlags: [
             "Co giật hoặc rối loạn tri giác (lơ mơ, hôn mê)",
-            "Cứng cổ, sợ ánh sáng (gợi ý kích thích màng não)",
+            "Cứng cổ, sợ ánh sáng (gợi ý kích thích màng nào)",
             "Phát ban xuất huyết hình bản đồ hoặc chấm nốt",
             "Tụt huyết áp, mạch nhanh, thiểu niệu (dấu hiệu Sốc)",
             "Sốt cao liên tục > 40°C không đáp ứng hạ sốt"
@@ -1022,9 +1190,6 @@
       // Initialize
       updateSymptom("sot");
 
-      // Initialize
-      updateSymptom("sot");
-
       // Event listener
       selectEl.addEventListener("change", (e) => {
         updateSymptom(e.target.value);
@@ -1032,7 +1197,7 @@
     });
 
     // ==========================================
-    // RED FLAGS FLASHCARD ENGINE (MATCHING SINH LÝ)
+    // RED FLAGS FLASHCARD ENGINE
     // ==========================================
     document.addEventListener("DOMContentLoaded", () => {
       const redFlagsCards = [
@@ -1238,7 +1403,7 @@
               <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm hoặc ấn Spacebar để lật thẻ xem đáp án</p>
             </div>
             <div class="flashcard-back">
-              <span class="fc-badge back-badge">💡 Dấu hiệu & Xử trí nguy kịch</span>
+              <span class="fc-badge back-badge">💡 Dấu hiệu &amp; Xử trí nguy kịch</span>
               <h3 id="fc-answer">Đang tải đáp án...</h3>
               <p class="fc-explanation" id="fc-explanation"></p>
             </div>

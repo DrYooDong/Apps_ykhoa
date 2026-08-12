@@ -4,13 +4,14 @@
  * Pure Vanilla CSS3
  */
 
-/* ── BẢNG DỮ LIỆU chính ── */
+/* ── BẢNG DỮ LIỆU CHÍNH ── */
 .table-container {
   background: var(--surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius);
   overflow-x: auto;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--tr);
 }
 
 .study-table {
@@ -21,11 +22,16 @@
 .study-table thead {
   background: var(--surface-2);
   border-bottom: 2px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .study-table th {
-  padding: 0.75rem 0.5rem; text-align: left;
-  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.05em; color: var(--text-muted); white-space: nowrap;
+  padding: 0.85rem 0.65rem; text-align: left;
+  font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-muted); white-space: nowrap;
   user-select: none; transition: color var(--tr);
 }
 .study-table th.sortable {
@@ -34,23 +40,34 @@
 .study-table th.sortable:hover { color: var(--accent); }
 
 .study-table td {
-  padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border-light);
+  padding: 0.85rem 0.65rem; border-bottom: 1px solid var(--border-light);
   vertical-align: top;
   word-break: break-word; overflow-wrap: break-word;
 }
 .study-table tbody tr.main-row,
 .study-table tbody tr.study-row {
-  transition: background var(--tr);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: rowSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+@keyframes rowSlideUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .study-table tbody tr.main-row:hover,
-.study-table tbody tr.study-row:hover { background: var(--accent-light); }
+.study-table tbody tr.study-row:hover {
+  background: var(--accent-light);
+  box-shadow: inset 4px 0 0 var(--accent);
+}
 .study-table tbody tr.main-row.expanded,
 .study-table tbody tr.study-row.expanded {
   background: var(--accent-light);
+  box-shadow: inset 4px 0 0 var(--accent);
 }
 .study-table tbody tr.study-row.selected {
-  background: rgba(124, 58, 237, 0.07);
-  outline: none;
+  background: rgba(124, 58, 237, 0.08);
+  box-shadow: inset 4px 0 0 var(--accent-mid);
 }
 
 /* Cell icons */

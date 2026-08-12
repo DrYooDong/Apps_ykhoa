@@ -3,32 +3,38 @@
 ============================================================ */
 .global-header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
   height: var(--header-height, 60px);
   z-index: 200;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
   gap: 1rem;
-  max-width: 100vw;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 24px rgba(0,0,0,0.03);
-  transition: background var(--tr), box-shadow var(--tr);
+  max-width: 1600px;
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: all var(--tr);
 }
 
-/* Subtle gradient accent line at the very top */
-.global-header::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--gradient-accent);
-  opacity: 0.8;
+[data-theme="dark"] .global-header {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
+
+/* Removed top accent line for pill design */
 
 /* ── Zone 1: Header Left (Logo, Mobile Menu, Quay lại) ── */
 .header-left {
@@ -725,6 +731,14 @@
 /* Mobile (≤ 767px) */
 @media (max-width: 767px) {
   .global-header {
+    top: 0;
+    width: 100%;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
     padding: 0 0.75rem;
     gap: 0.5rem;
     justify-content: space-between;

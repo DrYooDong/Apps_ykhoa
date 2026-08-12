@@ -55,6 +55,29 @@
   <script src="./data/search-index-bundle.js" defer></script>
   <script src="./js/components/clinical-heatmap.js" defer></script>
   <script src="./js/tools/good-day-calculator.js" defer></script>
+  <script src="./js/effects/premium-interactions.js" defer></script>
+
+  <!-- Schema.org MedicalWebPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "CliniPortal - Hệ sinh thái Công cụ & Hỗ trợ Quyết định Lâm sàng",
+    "description": "Hệ thống hỗ trợ quyết định lâm sàng (CDSS) tĩnh cho bác sĩ: Máy tính y học, Phác đồ cấp cứu, Y học chứng cứ và Dược lý.",
+    "url": "https://cliniportal.org",
+    "inLanguage": "vi",
+    "audience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Clinician"
+    },
+    "medicalSpecialty": [
+      "EmergencyMedicine",
+      "InternalMedicine",
+      "Cardiology",
+      "IntensiveCare"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -212,57 +235,6 @@
             <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
             <div class="hero-pattern" aria-hidden="true"></div>
           </section>
-
-          <!-- Emergency Fast-Action -->
-          <section class="bento-cell bento-emergency" id="emergency-section" aria-labelledby="emergency-title">
-            <div class="bento-cell-header">
-              <h2 class="bento-cell-title" id="emergency-title">
-                <i class="fa-solid fa-truck-medical"></i> Cấp cứu khẩn
-              </h2>
-              <span class="emergency-badge-pulse">Fast Action</span>
-            </div>
-            <div class="bento-emergency-list">
-              <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="bento-emergency-item">
-                <div class="bento-emg-icon"><i class="fa-solid fa-mosquito"></i></div>
-                <span>SXHD nặng</span>
-                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-              </a>
-              <a href="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" class="bento-emergency-item">
-                <div class="bento-emg-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                <span>Đau ngực & ACS</span>
-                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-              </a>
-              <a href="src/content/calculators/renal/dg-abg-studio.html" class="bento-emergency-item">
-                <div class="bento-emg-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
-                <span>Toan kiềm & SHH</span>
-                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-              </a>
-              <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="bento-emergency-item">
-                <div class="bento-emg-icon"><i class="fa-solid fa-capsules"></i></div>
-                <span>Sốc nhiễm khuẩn</span>
-                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-              </a>
-            </div>
-          </section>
-        </div>
-
-        <!-- ── ROW 1.5: CLINICAL CHEATSHEETS QUICK ACTION BANNER ────────────────── -->
-        <div class="cheatsheet-trigger-banner" id="openCheatsheetModalBtn" role="button" tabindex="0" aria-label="Mở Tra Cứu Siêu Tốc">
-          <div class="cheatsheet-trigger-content">
-            <div class="cheatsheet-trigger-icon">
-              <i class="fa-solid fa-bolt"></i>
-            </div>
-            <div class="cheatsheet-trigger-text">
-              <h3>Tra Cứu Siêu Tốc (Clinical Cheatsheets)</h3>
-              <p>Phác đồ cấp cứu khẩn, thang điểm &amp; công thức lâm sàng tra cứu tức thì</p>
-            </div>
-          </div>
-          <div class="cheatsheet-trigger-action">
-            <span class="cheatsheet-trigger-badge">⚡ Quick Access</span>
-            <button class="cheatsheet-trigger-btn" type="button">
-              Mở bảng tra cứu <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </button>
-          </div>
         </div>
 
         <!-- ── ROW 2: 8 PHÂN HỆ Y KHOA NAV STRIP (MASTER INDEX) ────────────── -->
@@ -717,6 +689,27 @@
   </main>
 
   <!-- ========== GLOBAL UI OVERLAYS ========== -->
+
+  <!-- Floating Action Dock -->
+  <nav class="floating-action-dock" aria-label="Cấp cứu khẩn">
+    <div class="dock-container">
+      <a href="src/content/calculators/emergency/acls-resus-studio.html" class="dock-item" data-tooltip="ACLS Ngừng tim" style="--dock-color: #ef4444;">
+        <div class="dock-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+      </a>
+      <a href="src/content/calculators/emergency/stroke-pro-studio.html" class="dock-item" data-tooltip="Cấp cứu Đột quỵ" style="--dock-color: #0284c7;">
+        <div class="dock-icon"><i class="fa-solid fa-brain"></i></div>
+      </a>
+      <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="dock-item" data-tooltip="SXHD nặng" style="--dock-color: #f59e0b;">
+        <div class="dock-icon"><i class="fa-solid fa-mosquito"></i></div>
+      </a>
+      <a href="src/content/calculators/renal/dg-abg-studio.html" class="dock-item" data-tooltip="Toan kiềm & SHH" style="--dock-color: #10b981;">
+        <div class="dock-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
+      </a>
+      <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="dock-item" data-tooltip="Sốc nhiễm khuẩn" style="--dock-color: #ec4899;">
+        <div class="dock-icon"><i class="fa-solid fa-capsules"></i></div>
+      </a>
+    </div>
+  </nav>
 
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>

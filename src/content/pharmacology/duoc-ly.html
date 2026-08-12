@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -47,28 +47,430 @@
   <script src="../../../js/pharmacology/pharmacology-heatmap.js" defer></script>
   <script src="../../../js/pharmacology/moa-theater.js" defer></script>
   <script src="../../../js/pharmacology/adr-bodymap.js" defer></script>
+
   <style>
+    /* ============================================================
+       VIPPRO 2000$ COMMAND CENTER OVERRIDE — DƯỢC LÝ LÂM SÀNG
+    ============================================================ */
+    :root {
+      --hub-emerald: #10b981;
+      --hub-emerald-dark: #047857;
+      --hub-emerald-light: rgba(16, 185, 129, 0.12);
+      --hub-teal: #0d9488;
+      --hub-surface: var(--color-surface, #ffffff);
+      --hub-surface-2: var(--color-surface-2, #f8fafc);
+      --hub-border: var(--color-divider, #e2e8f0);
+      --hub-text: var(--color-text, #0f172a);
+      --hub-text-muted: var(--color-text-muted, #475569);
+      --hub-tr: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --hub-surface: var(--color-surface, #1e293b);
+      --hub-surface-2: var(--color-surface-2, #0f172a);
+      --hub-border: var(--color-divider, #334155);
+      --hub-text: var(--color-text, #f8fafc);
+      --hub-text-muted: var(--color-text-muted, #94a3b8);
+      --hub-emerald-light: rgba(52, 211, 153, 0.15);
+    }
+
     /* Styling for group main titles in content area */
     .group-main-title {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 2.5rem 0 1.5rem 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--hub-emerald-dark);
+      margin: 2rem 0 1.25rem 0;
       padding-bottom: 0.75rem;
-      border-bottom: 2px solid var(--color-primary-hl);
+      border-bottom: 2px solid var(--hub-emerald-light);
       display: flex;
       align-items: center;
       gap: 0.6rem;
     }
 
     [data-theme="dark"] .group-main-title {
-      border-bottom-color: var(--color-border);
+      color: var(--hub-emerald);
+      border-bottom-color: var(--hub-border);
     }
 
     /* Hide the entire group if all its sections are hidden by search */
     .main-section-group:not(:has(section:not([style*="display: none"]))) {
       display: none !important;
+    }
+
+    /* 1. HERO COMMAND CENTER */
+    .hero-dashboard.hero-pharm {
+      position: relative;
+      background: linear-gradient(135deg, #064e3b 0%, #047857 30%, #0d9488 65%, #0284c7 100%) !important;
+      border-radius: 24px !important;
+      padding: 3rem 2.5rem !important;
+      margin-bottom: 2rem !important;
+      overflow: hidden;
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
+      box-shadow: 0 20px 50px rgba(6, 78, 59, 0.35) !important;
+    }
+
+    .hero-dashboard.hero-pharm::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -100px;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.35) 0%, rgba(13, 148, 136, 0.06) 60%, transparent 70%);
+      filter: blur(40px);
+      animation: mol-glow 8s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+
+    .hero-dashboard.hero-pharm::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: 15%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+      filter: blur(40px);
+      animation: mol-glow 10s infinite alternate-reverse ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes mol-glow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      100% { transform: scale(1.15) translate(20px, -20px); opacity: 1; }
+    }
+
+    @keyframes mol-pulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.08) rotate(180deg); }
+    }
+
+    .tcm-hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-intro {
+      flex: 1;
+    }
+
+    .hero-intro::before {
+      content: "💊 Command Center — Dược lý & Kê đơn";
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #a7f3d0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-intro h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: clamp(1.8rem, 1.3rem + 2vw, 2.75rem) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.035em !important;
+      line-height: 1.15 !important;
+      margin: 0 0 0.85rem !important;
+      background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 50%, #38bdf8 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+
+    .hero-intro p {
+      font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem) !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      max-width: 58ch !important;
+      line-height: 1.65 !important;
+      margin: 0 !important;
+    }
+
+    /* Hero KPI stats strip */
+    .hero-kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-kpi-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 100px;
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      color: #fff;
+      backdrop-filter: blur(10px);
+      transition: all var(--hub-tr);
+      white-space: nowrap;
+    }
+
+    .hero-kpi-pill:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: #a7f3d0;
+      transform: translateY(-2px);
+    }
+
+    .tcm-hero-decor {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      opacity: 0.85;
+    }
+
+    .molecule-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 24px rgba(52, 211, 153, 0.6));
+      animation: mol-pulse 16s ease-in-out infinite;
+    }
+
+    .hero-pattern { display: none !important; }
+
+    /* 2. DASHBOARD CONTROLS TOOLBAR & SEARCH BAR */
+    .dashboard-controls {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 18px !important;
+      padding: 0.85rem 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
+      margin-bottom: 2rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 1.25rem !important;
+      flex-wrap: wrap !important;
+    }
+
+    .search-box-container {
+      position: relative !important;
+      flex: 1 !important;
+      min-width: 260px !important;
+      background: var(--hub-surface-2) !important;
+      border: 1.5px solid var(--hub-border) !important;
+      border-radius: 100px !important;
+      padding: 0.4rem 0.75rem 0.4rem 1.25rem !important;
+      transition: all var(--hub-tr) !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
+    .search-box-container:focus-within {
+      border-color: var(--hub-emerald) !important;
+      box-shadow: 0 0 0 4px var(--hub-emerald-light) !important;
+      background: var(--hub-surface) !important;
+      transform: none !important;
+    }
+
+    #lesson-search {
+      background: transparent !important;
+      border: none !important;
+      color: var(--hub-text) !important;
+      font-size: 0.92rem !important;
+      outline: none !important;
+      box-shadow: none !important;
+      width: 100%;
+    }
+
+    #lesson-search:focus {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .hotkey-badge {
+      font-family: monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--hub-border);
+      color: var(--hub-text-muted);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .flashcard-btn {
+      background: linear-gradient(135deg, #059669 0%, #0d9488 100%) !important;
+      color: #fff !important;
+      border: none !important;
+      padding: 0.55rem 1.2rem !important;
+      border-radius: 100px !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3) !important;
+      transition: all var(--hub-tr) !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+    }
+
+    .flashcard-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 22px rgba(16, 185, 129, 0.45) !important;
+    }
+
+    /* 3. STICKY NAV SIDEBAR */
+    .layout-nav-sidebar {
+      position: sticky !important;
+      top: calc(60px + 1.5rem) !important;
+    }
+
+    .nav-sidebar-sticky {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+
+    .part-nav-item {
+      border-radius: 12px !important;
+      padding: 0.65rem 0.85rem !important;
+      transition: all var(--hub-tr) !important;
+    }
+
+    .part-nav-item:hover, .part-nav-item.active {
+      background: var(--hub-emerald-light) !important;
+      color: var(--hub-emerald-dark) !important;
+      transform: translateX(4px) !important;
+    }
+
+    [data-theme="dark"] .part-nav-item:hover, [data-theme="dark"] .part-nav-item.active {
+      color: var(--hub-emerald) !important;
+    }
+
+    /* 4. GROUP CONTAINERS & BENTO CARDS */
+    .physio-group-container {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.5rem !important;
+      margin-bottom: 1.75rem !important;
+      box-shadow: var(--shadow-sm) !important;
+      transition: all var(--hub-tr) !important;
+    }
+
+    .physio-group-container:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+      border-color: var(--hub-emerald) !important;
+    }
+
+    .specialty-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)) !important;
+      gap: 1.1rem !important;
+    }
+
+    .specialty-card {
+      background: var(--hub-surface-2) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-left: 4px solid var(--hub-emerald) !important;
+      border-radius: 16px !important;
+      padding: 1.25rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      text-decoration: none !important;
+      transition: all var(--hub-tr) !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .specialty-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+      border-color: var(--hub-emerald) !important;
+      background: var(--hub-surface) !important;
+    }
+
+    .specialty-icon {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 12px !important;
+      background: var(--hub-emerald-light) !important;
+      color: var(--hub-emerald) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 1.35rem !important;
+      transition: transform var(--hub-tr) !important;
+      flex-shrink: 0 !important;
+    }
+
+    .specialty-card:hover .specialty-icon {
+      transform: scale(1.12) rotate(5deg) !important;
+    }
+
+    .specialty-info h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+      color: var(--hub-text) !important;
+      margin-bottom: 0.35rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .specialty-info p {
+      font-size: 0.78rem !important;
+      color: var(--hub-text-muted) !important;
+      line-height: 1.5 !important;
+    }
+
+    .specialty-card-action {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      color: var(--hub-emerald) !important;
+      margin-top: 1rem !important;
+      padding-top: 0.6rem !important;
+      border-top: 1px dashed var(--hub-border) !important;
+    }
+
+    .specialty-card:hover .specialty-card-action i {
+      transform: translateX(4px) !important;
+    }
+
+    .specialty-card-action i {
+      transition: transform var(--hub-tr) !important;
+    }
+
+    /* 5. WIDGET SIDEBAR — ANTIDOTE FINDER */
+    .layout-widget-sidebar .widget-card {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+
+    @media (max-width: 768px) {
+      .hero-dashboard.hero-pharm {
+        padding: 2rem 1.5rem !important;
+      }
+      .tcm-hero-decor {
+        display: none;
+      }
+      .hero-kpi-strip {
+        gap: 0.6rem;
+      }
     }
   </style>
 </head>
@@ -88,32 +490,35 @@
       <clini-breadcrumb
         items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Dược lý lâm sàng"}]'></clini-breadcrumb>
 
+      <!-- ===== VIPPRO COMMAND CENTER HERO ===== -->
       <section class="hero-dashboard hero-pharm" aria-labelledby="hero-title">
         <div class="tcm-hero-content">
           <div class="hero-intro">
             <h1 id="hero-title">💊 DƯỢC LÝ LÂM SÀNG</h1>
-            <p>Hệ thống hóa nguyên lý dược động học, dược lực học và tối ưu hóa liều lượng thuốc cá thể hóa. Hướng dẫn
-              sử
-              dụng thuốc an toàn, tra cứu tương tác lâm sàng nghiêm ngặt dựa trên bằng chứng.</p>
+            <p>Hệ thống hóa nguyên lý dược động học (PK), dược lực học (PD) và tối ưu hóa liều lượng thuốc cá thể hóa. Tra cứu tương tác lâm sàng, độc chất &amp; phác đồ kê đơn an toàn.</p>
+            <div class="hero-kpi-strip">
+              <span class="hero-kpi-pill"><i class="fa-solid fa-pills"></i> <strong>100+</strong> Hoạt chất lâm sàng</span>
+              <span class="hero-kpi-pill"><i class="fa-solid fa-chart-line"></i> <strong>PK/PD</strong> Simulator &amp; Optimizer</span>
+              <span class="hero-kpi-pill"><i class="fa-solid fa-shield-virus"></i> <strong>Antidote</strong> &amp; Toxidrome Finder</span>
+            </div>
           </div>
-          <div class="tcm-hero-decor">
+          <div class="tcm-hero-decor" aria-hidden="true">
             <!-- Molecule SVG -->
             <svg class="molecule-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z M50 20 L50 5 M75 35 L90 27 M75 65 L90 73 M50 80 L50 95 M25 65 L10 73 M25 35 L10 27"
                 stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z" stroke="#10b981" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
-              <circle cx="50" cy="5" r="5" fill="#10b981" />
+              <path d="M50 30 L67 40 L67 60 L50 70 L33 60 L33 40 Z" stroke="#a7f3d0" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" opacity="0.75" />
+              <circle cx="50" cy="5" r="5" fill="#a7f3d0" />
               <circle cx="90" cy="27" r="5" fill="#ffffff" />
-              <circle cx="90" cy="73" r="5" fill="#10b981" />
+              <circle cx="90" cy="73" r="5" fill="#a7f3d0" />
               <circle cx="50" cy="95" r="5" fill="#ffffff" />
-              <circle cx="10" cy="73" r="5" fill="#10b981" />
+              <circle cx="10" cy="73" r="5" fill="#a7f3d0" />
               <circle cx="10" cy="27" r="5" fill="#ffffff" />
             </svg>
           </div>
         </div>
-        <div class="hero-pattern"></div>
       </section>
 
       <!-- ===== TOOLBAR / CONTROL BAR ===== -->
@@ -128,6 +533,7 @@
           </span>
           <input type="text" id="lesson-search" placeholder="Tìm kiếm dược lý, thuốc..."
             aria-label="Tìm kiếm dược lý, thuốc">
+          <span class="hotkey-badge">Ctrl K</span>
           <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
             style="display: none;">&times;</button>
         </div>
@@ -178,7 +584,7 @@
               <li>
                 <a href="#tools-section" class="part-nav-item p3" data-target="tools-section">
                   <span class="part-icon"><i class="fa-solid fa-chart-line"></i></span>
-                  <span class="part-text">Công cụ & Đồ thị Trực quan</span>
+                  <span class="part-text">Công cụ &amp; Đồ thị Trực quan</span>
                   <span class="part-count-badge">4</span>
                 </a>
               </li>
@@ -189,11 +595,9 @@
                   <span class="part-count-badge" style="background: #10b981; color: #fff;">NEW</span>
                 </a>
               </li>
-
             </ul>
           </div>
         </aside>
-
 
         <!-- Main Content Area -->
         <main class="layout-content-area" id="lessons-container">
@@ -236,7 +640,7 @@
 
             <!-- NHÓM: CÔNG CỤ TRA CỨU & MA TRẬN TƯƠNG TÁC -->
             <div class="main-section-group" id="group-tools">
-              <h2 class="group-main-title"><i class="fa-solid fa-calculator"></i> Công cụ tra cứu & Ma trận tương tác</h2>
+              <h2 class="group-main-title"><i class="fa-solid fa-calculator"></i> Công cụ tra cứu &amp; Ma trận tương tác</h2>
               <section id="tools-section" aria-labelledby="tools-heading">
                 <div class="physio-group-container">
                   <div class="specialty-grid">
@@ -246,7 +650,7 @@
                         <div class="specialty-icon">📊</div>
                         <div class="specialty-info">
                           <h3>Ma trận Tương tác Thuốc 2D</h3>
-                          <p>Tra cứu trực quan ma trận 10x10 tương tác giữa các nhóm thuốc lâm sàng (CCĐ, Thận trọng & Hiệp đồng).</p>
+                          <p>Tra cứu trực quan ma trận 10x10 tương tác giữa các nhóm thuốc lâm sàng (CCĐ, Thận trọng &amp; Hiệp đồng).</p>
                         </div>
                       </div>
                       <div class="specialty-card-action">
@@ -300,8 +704,6 @@
                 </div>
               </section>
             </div>
-
-
 
             <!-- NHÓM: DƯỢC LÝ THEO TRIỆU CHỨNG -->
             <div class="main-section-group" id="group-symptoms">
@@ -469,7 +871,6 @@
             </div>
           </div>
 
-
         </main>
         <!-- SIDEBAR WIDGET -->
         <aside class="layout-widget-sidebar" aria-label="Widget độc chất tương tác">
@@ -540,7 +941,18 @@
           if (targetPanel) targetPanel.classList.add('active');
         });
       });
+    });
 
+    // Hotkey Ctrl+K listener
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('lesson-search');
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      }
     });
   </script>
 
@@ -555,11 +967,11 @@
         <div class="fc-header-actions">
           <select id="fc-category-select" class="fc-select" aria-label="Chọn nhóm dược lý">
             <option value="all">🌟 Tất cả chủ đề</option>
-            <option value="Tim mạch">🫀 Tim mạch & Vận mạch</option>
-            <option value="Kháng sinh">💊 Kháng sinh & Tương tác</option>
-            <option value="Hồi sức">🚑 Hồi sức & Cấp cứu</option>
-            <option value="Độc chất">🧪 Độc chất & Giải độc</option>
-            <option value="Tiêu hóa">🥗 Tiêu hóa & Chuyển hóa</option>
+            <option value="Tim mạch">🫀 Tim mạch &amp; Vận mạch</option>
+            <option value="Kháng sinh">💊 Kháng sinh &amp; Tương tác</option>
+            <option value="Hồi sức">🚑 Hồi sức &amp; Cấp cứu</option>
+            <option value="Độc chất">🧪 Độc chất &amp; Giải độc</option>
+            <option value="Tiêu hóa">🥗 Tiêu hóa &amp; Chuyển hóa</option>
           </select>
           <button id="fc-shuffle" class="fc-icon-btn" title="Xáo trộn ngẫu nhiên" aria-label="Xáo trộn thẻ">
             <i class="fa-solid fa-shuffle"></i>
@@ -581,7 +993,7 @@
               <p class="fc-hint"><i class="fa-solid fa-rotate"></i> Bấm hoặc ấn Spacebar để lật thẻ xem đáp án</p>
             </div>
             <div class="flashcard-back">
-              <span class="fc-badge back-badge">💡 Đáp án & Giải thích</span>
+              <span class="fc-badge back-badge">💡 Đáp án &amp; Giải thích</span>
               <h3 id="fc-answer">Đang tải đáp án...</h3>
               <p class="fc-explanation" id="fc-explanation"></p>
             </div>

@@ -532,6 +532,18 @@
     if (summaryCountSidebar) summaryCountSidebar.textContent = (window.studies || []).filter(s => (s.parts && s.parts.length > 0) || s.file).length;
     if (displayCount) displayCount.textContent = filtered.length;
 
+    // Update Hero Stats Counters
+    const heroTotal = document.getElementById('hero-total-count');
+    const heroPractice = document.getElementById('hero-practice-changing-count');
+    const heroVn = document.getElementById('hero-vn-count');
+    const heroSpecialty = document.getElementById('hero-specialty-count');
+
+    const allStudies = window.studies || [];
+    if (heroTotal) heroTotal.textContent = allStudies.length;
+    if (heroPractice) heroPractice.textContent = allStudies.filter(s => s.impact === 'practice-changing').length;
+    if (heroVn) heroVn.textContent = allStudies.filter(s => s.sourceType && s.sourceType.startsWith('vn-')).length;
+    if (heroSpecialty) heroSpecialty.textContent = new Set(allStudies.map(s => s.specialty).filter(Boolean)).size;
+
     if (!tbody) return;
 
     const isCompact = window.viewMode === 'compact';

@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CliniPortal - Module Giải phẫu & Sinh lý học Lâm sàng Trực quan">
+    <meta name="description" content="CliniPortal - Module Giải phẫu & Sinh lý học Lâm sàng Trực quan Command Center">
     <title>Giải phẫu & Sinh lý – CliniPortal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -32,6 +32,357 @@
     <script src="js/physio-progress.js" defer></script>
     <script src="js/physio-quiz-engine.js" defer></script>
     <script src="js/physio-mirror.js" defer></script>
+
+    <style>
+        /* ============================================================
+           VIPPRO 2000$ COMMAND CENTER OVERRIDE — GIẢI PHẪU & SINH LÝ
+        ============================================================ */
+        :root {
+            --hub-emerald: #059669;
+            --hub-emerald-dark: #047857;
+            --hub-emerald-light: rgba(5, 150, 105, 0.12);
+            --hub-teal: #0d9488;
+            --hub-cyan: #0891b2;
+            --hub-surface: var(--color-surface, #ffffff);
+            --hub-surface-2: var(--color-surface-2, #f8fafc);
+            --hub-border: var(--color-divider, #e2e8f0);
+            --hub-text: var(--color-text, #0f172a);
+            --hub-text-muted: var(--color-text-muted, #475569);
+            --hub-radius: 20px;
+            --hub-tr: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] {
+            --hub-surface: var(--color-surface, #1e293b);
+            --hub-surface-2: var(--color-surface-2, #0f172a);
+            --hub-border: var(--color-divider, #334155);
+            --hub-text: var(--color-text, #f8fafc);
+            --hub-text-muted: var(--color-text-muted, #94a3b8);
+            --hub-emerald-light: rgba(52, 211, 153, 0.15);
+        }
+
+        /* 1. HERO COMMAND CENTER */
+        .module-hero.hero-physio {
+            position: relative;
+            background: linear-gradient(135deg, #022c22 0%, #065f46 35%, #0f766e 70%, #0369a1 100%) !important;
+            border-radius: 24px !important;
+            padding: 3rem 2.5rem !important;
+            margin-bottom: 2rem !important;
+            overflow: hidden;
+            color: #fff !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .module-hero.hero-physio::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.3) 0%, rgba(13, 148, 136, 0.05) 60%, transparent 70%);
+            filter: blur(40px);
+            animation: pulse-glow 8s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        .module-hero.hero-physio::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 20%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: pulse-glow 10s infinite alternate-reverse ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+            100% { transform: scale(1.15) translate(20px, -20px); opacity: 1; }
+        }
+
+        .module-hero-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.6rem !important;
+            padding: 0.4rem 1.1rem !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            border-radius: 100px !important;
+            font-size: 0.78rem !important;
+            font-weight: 700 !important;
+            color: #a7f3d0 !important;
+            letter-spacing: 0.04em !important;
+            text-transform: uppercase !important;
+            backdrop-filter: blur(12px) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .module-hero-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: clamp(1.8rem, 1.3rem + 2vw, 2.75rem) !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.035em !important;
+            line-height: 1.15 !important;
+            margin-top: 0.85rem !important;
+            margin-bottom: 0.85rem !important;
+            background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 50%, #38bdf8 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        .module-hero-desc {
+            font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem) !important;
+            color: rgba(255, 255, 255, 0.82) !important;
+            max-width: 64ch !important;
+            line-height: 1.65 !important;
+            margin-bottom: 1.75rem !important;
+        }
+
+        .module-hero-stats {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 0.85rem !important;
+        }
+
+        .module-hero-stat-pill {
+            background: rgba(255, 255, 255, 0.12) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 100px !important;
+            padding: 0.45rem 1rem !important;
+            font-size: 0.82rem !important;
+            color: #fff !important;
+            backdrop-filter: blur(10px) !important;
+            transition: all var(--hub-tr) !important;
+        }
+
+        .module-hero-stat-pill:hover {
+            background: rgba(255, 255, 255, 0.22) !important;
+            border-color: #a7f3d0 !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* 2. DASHBOARD CONTROLS TOOLBAR & SEARCH BAR (CTRL + K) */
+        .dashboard-controls {
+            background: var(--hub-surface) !important;
+            border: 1px solid var(--hub-border) !important;
+            border-radius: 18px !important;
+            padding: 0.85rem 1.25rem !important;
+            box-shadow: var(--shadow-sm) !important;
+            margin-bottom: 2rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 1.25rem !important;
+            flex-wrap: wrap !important;
+        }
+
+        .search-box-container {
+            position: relative !important;
+            flex: 1 !important;
+            min-width: 260px !important;
+            display: flex !items-center !important;
+            background: var(--hub-surface-2) !important;
+            border: 1.5px solid var(--hub-border) !important;
+            border-radius: 100px !important;
+            padding: 0.4rem 0.75rem 0.4rem 1.25rem !important;
+            transition: all var(--hub-tr) !important;
+        }
+
+        .search-box-container:focus-within {
+            border-color: var(--hub-emerald) !important;
+            box-shadow: 0 0 0 4px var(--hub-emerald-light) !important;
+            background: var(--hub-surface) !important;
+        }
+
+        .search-box-container input {
+            width: 100% !important;
+            background: transparent !important;
+            border: none !important;
+            color: var(--hub-text) !important;
+            font-size: 0.92rem !important;
+            outline: none !important;
+        }
+
+        .flashcard-btn {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%) !important;
+            color: #fff !important;
+            border: none !important;
+            padding: 0.55rem 1.2rem !important;
+            border-radius: 100px !important;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3) !important;
+            transition: all var(--hub-tr) !important;
+            cursor: pointer !important;
+        }
+
+        .flashcard-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 22px rgba(5, 150, 105, 0.45) !important;
+        }
+
+        /* 3. STICKY SIDEBAR NAV */
+        .layout-nav-sidebar {
+            position: sticky !important;
+            top: calc(60px + 1.5rem) !important;
+        }
+
+        .nav-sidebar-sticky {
+            background: var(--hub-surface) !important;
+            border: 1px solid var(--hub-border) !important;
+            border-radius: 20px !important;
+            padding: 1.25rem !important;
+            box-shadow: var(--shadow-sm) !important;
+        }
+
+        .part-nav-item {
+            border-radius: 12px !important;
+            padding: 0.65rem 0.85rem !important;
+            transition: all var(--hub-tr) !important;
+        }
+
+        .part-nav-item:hover, .part-nav-item.active {
+            background: var(--hub-emerald-light) !important;
+            color: var(--hub-emerald) !important;
+            transform: translateX(4px) !important;
+        }
+
+        /* 4. GROUP HEADERS & SPECIALTY BENTO CARDS */
+        .physio-group-container {
+            background: var(--hub-surface) !important;
+            border: 1px solid var(--hub-border) !important;
+            border-radius: 20px !important;
+            padding: 1.5rem !important;
+            margin-bottom: 1.75rem !important;
+            box-shadow: var(--shadow-sm) !important;
+            transition: all var(--hub-tr) !important;
+        }
+
+        .physio-group-container:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+            border-color: var(--hub-emerald) !important;
+        }
+
+        .physio-group-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            margin-bottom: 1.25rem !important;
+            padding-bottom: 0.75rem !important;
+            border-bottom: 2px solid var(--hub-surface-2) !important;
+        }
+
+        .physio-group-icon {
+            width: 42px !important;
+            height: 42px !important;
+            border-radius: 12px !important;
+            background: var(--hub-emerald-light) !important;
+            color: var(--hub-emerald) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.25rem !important;
+        }
+
+        .specialty-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr)) !important;
+            gap: 1.1rem !important;
+        }
+
+        .specialty-card {
+            background: var(--hub-surface-2) !important;
+            border: 1px solid var(--hub-border) !important;
+            border-left: 4px solid var(--hub-emerald) !important;
+            border-radius: 16px !important;
+            padding: 1.25rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            text-decoration: none !important;
+            transition: all var(--hub-tr) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+            border-color: var(--hub-emerald) !important;
+            background: var(--hub-surface) !important;
+        }
+
+        .specialty-icon {
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 12px !important;
+            background: var(--hub-emerald-light) !important;
+            color: var(--hub-emerald) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.35rem !important;
+            transition: transform var(--hub-tr) !important;
+            flex-shrink: 0 !important;
+        }
+
+        .specialty-card:hover .specialty-icon {
+            transform: scale(1.12) rotate(-5deg) !important;
+        }
+
+        .specialty-info h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            color: var(--hub-text) !important;
+            margin-bottom: 0.35rem !important;
+            line-height: 1.35 !important;
+        }
+
+        .specialty-info p {
+            font-size: 0.78rem !important;
+            color: var(--hub-text-muted) !important;
+            line-height: 1.5 !important;
+        }
+
+        .specialty-card-action {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            font-size: 0.78rem !important;
+            font-weight: 700 !important;
+            color: var(--hub-emerald) !important;
+            margin-top: 1rem !important;
+            padding-top: 0.6rem !important;
+            border-top: 1px dashed var(--hub-border) !important;
+        }
+
+        .specialty-card:hover .specialty-card-action i {
+            transform: translateX(4px) !important;
+        }
+
+        .specialty-card-action i {
+            transition: transform var(--hub-tr) !important;
+        }
+
+        /* 5. HOTKEY BADGE & ACCENTS */
+        .hotkey-badge {
+            font-family: monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: var(--hub-border);
+            color: var(--hub-text-muted);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            margin-left: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,12 +403,12 @@
                 </ol>
             </nav>
 
-            <!--HERO BANNER-->
+            <!--VIPPRO COMMAND CENTER HERO BANNER-->
             <div class="module-hero hero-physio">
                 <div class="module-hero-content">
                     <div class="module-hero-text">
                         <div class="module-hero-badge">
-                            <i class="fa-solid fa-bone"></i> Module Giải phẫu & Sinh lý
+                            <i class="fa-solid fa-bone"></i> Command Center — Giải phẫu & Sinh lý
                         </div>
                         <h1 class="module-hero-title">🦴🧬 Giải Phẫu & Sinh Lý Lâm Sàng Trực Quan</h1>
                         <p class="module-hero-desc">
@@ -75,7 +426,7 @@
                 </div>
             </div>
 
-            <!--CONTROL BAR / TOOLBAR-->
+            <!--DASHBOARD CONTROLS / TOOLBAR-->
             <div class="dashboard-controls">
                 <div class="search-box-container">
                     <span class="search-icon-svg">
@@ -87,12 +438,13 @@
                     </span>
                     <input type="text" id="lesson-search" placeholder="Tìm kiếm bài học giải phẫu, sinh lý..."
                         aria-label="Tìm kiếm bài học">
+                    <span class="hotkey-badge">Ctrl K</span>
                     <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
                         style="display: none;">&times;</button>
                 </div>
                 <div class="view-toggle-container">
                     <button id="flashcard-btn" class="flashcard-btn" title="Flashcard Ôn tập">
-                        <i class="fa-solid fa-clone"></i> <span>Flashcards</span>
+                        <i class="fa-solid fa-clone"></i> <span>Flashcards Ôn Tập</span>
                     </button>
                     <span class="toggle-label">Chế độ xem:</span>
                     <div class="toggle-buttons">
@@ -251,13 +603,12 @@
                                     <h3 id="part1-heading">Phần 1: Giải phẫu & Sinh lý Đại cương và Tế bào</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part1/sl-noimoi-buhang.html" class="specialty-card">
+                                    <a href="physiology/part1/sl-noimoi-buhang.html" class="specialty-card" style="border-left-color: #059669;">
                                         <div class="specialty-card-top">
                                             <div class="specialty-icon"><i class="fa-solid fa-scale-balanced"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 1: Khái niệm Nội môi (Homeostasis) & Cơ chế Bù hằng</h3>
-                                                <p>Khái niệm nội môi, dịch ngoại bào (ECF), dịch nội bào (ICF) và các cơ
-                                                    chế điều hòa ngược âm tính (Negative Feedback) & dương tính.</p>
+                                                <p>Khái niệm nội môi, dịch ngoại bào (ECF), dịch nội bào (ICF) và các cơ chế điều hòa ngược âm tính (Negative Feedback) & dương tính.</p>
                                             </div>
                                         </div>
                                         <div class="specialty-card-action">
@@ -265,13 +616,12 @@
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part1/sl-tb-vanchuyen.html" class="specialty-card">
+                                    <a href="physiology/part1/sl-tb-vanchuyen.html" class="specialty-card" style="border-left-color: #059669;">
                                         <div class="specialty-card-top">
                                             <div class="specialty-icon"><i class="fa-solid fa-cubes"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 2: Vận chuyển Chất qua Màng Tế bào</h3>
-                                                <p>Cấu trúc màng tế bào, cơ chế khuếch tán thụ động, khuếch tán được hỗ
-                                                    trợ, vận chuyển tích cực nguyên phát & thứ phát.</p>
+                                                <p>Cấu trúc màng tế bào, cơ chế khuếch tán thụ động, khuếch tán được hỗ trợ, vận chuyển tích cực nguyên phát & thứ phát.</p>
                                             </div>
                                         </div>
                                         <div class="specialty-card-action">
@@ -279,13 +629,12 @@
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part1/sl-tb-diensinhly.html" class="specialty-card">
+                                    <a href="physiology/part1/sl-tb-diensinhly.html" class="specialty-card" style="border-left-color: #059669;">
                                         <div class="specialty-card-top">
                                             <div class="specialty-icon"><i class="fa-solid fa-bolt"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 3: Điện thế Màng & Điện thế Hoạt động</h3>
-                                                <p>Cơ sở ion của điện thế nghỉ (Nernst, Goldman) và quá trình khử cực,
-                                                    tái cực, trơ của điện thế hoạt động.</p>
+                                                <p>Cơ sở ion của điện thế nghỉ (Nernst, Goldman) và quá trình khử cực, tái cực, trơ của điện thế hoạt động.</p>
                                             </div>
                                         </div>
                                         <div class="specialty-card-action">
@@ -301,104 +650,97 @@
                         <section id="part2-section" aria-labelledby="part2-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-brain"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed;"><i class="fa-solid fa-brain"></i></span>
                                     <h3 id="part2-heading">Phần 2: Giải phẫu & Sinh lý Thần kinh và Cơ</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part2/sl-synapse.html" class="specialty-card">
+                                    <a href="physiology/part2/sl-synapse.html" class="specialty-card" style="border-left-color: #7c3aed;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-network-wired"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed;"><i class="fa-solid fa-network-wired"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 1: Sinh lý Synapse & Chất Dẫn truyền Thần kinh</h3>
-                                                <p>Cấu trúc synapse hóa học, cơ chế giải phóng neurotransmitter, EPSP,
-                                                    IPSP và cộng thế theo thời gian/không gian.</p>
+                                                <p>Cấu trúc synapse hóa học, cơ chế giải phóng neurotransmitter, EPSP, IPSP và cộng thế theo thời gian/không gian.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #7c3aed;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part2/sl-thankinh-tuchu.html" class="specialty-card">
+                                    <a href="physiology/part2/sl-thankinh-tuchu.html" class="specialty-card" style="border-left-color: #7c3aed;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-sliders"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed;"><i class="fa-solid fa-sliders"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 2: Sinh lý Hệ Thần kinh Tự chủ (ANS)</h3>
-                                                <p>Phân nhóm Giao cảm (Sympathetic) & Đối giao cảm (Parasympathetic),
-                                                    thụ thể Adrenergic & Cholinergic.</p>
+                                                <p>Phân nhóm Giao cảm (Sympathetic) & Đối giao cảm (Parasympathetic), thụ thể Adrenergic & Cholinergic.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #7c3aed;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part2/sl-coxuong.html" class="specialty-card">
+                                    <a href="physiology/part2/sl-coxuong.html" class="specialty-card" style="border-left-color: #7c3aed;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed;"><i class="fa-solid fa-dumbbell"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 3: Cơ chế Co cơ Xương & Khớp Thần kinh-Cơ</h3>
-                                                <p>Cấu trúc Sarcomere, thuyết sợi trượt (Sliding Filament), vai trò của
-                                                    Ca2+, Troponin, Tropomyosin và ATP.</p>
+                                                <p>Cấu trúc Sarcomere, thuyết sợi trượt (Sliding Filament), vai trò của Ca2+, Troponin, Tropomyosin và ATP.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #7c3aed;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part2/sl-cotron-cotim.html" class="specialty-card">
+                                    <a href="physiology/part2/sl-cotron-cotim.html" class="specialty-card" style="border-left-color: #7c3aed;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed;"><i class="fa-solid fa-heart-pulse"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 4: Sinh lý Cơ trơn & Cơ tim</h3>
-                                                <p>So sánh đặc điểm điện thế hoạt động, cơ chế co cơ trơn (Calmodulin)
-                                                    và tính tự động của cơ tim.</p>
+                                                <p>So sánh đặc điểm điện thế hoạt động, cơ chế co cơ trơn (Calmodulin) và tính tự động của cơ tim.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #7c3aed;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part2/sl-tuygai.html" class="specialty-card">
+                                    <a href="physiology/part2/sl-tuygai.html" class="specialty-card" style="border-left-color: #7c3aed;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-wave-square"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed;"><i class="fa-solid fa-wave-square"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 5: Sinh lý Tủy gai & Cung Phản xạ</h3>
-                                                <p>Chức năng dẫn truyền đường cảm giác - vận động và các phản xạ tủy gai
-                                                    (phản xạ gân cơ, phản xạ rút lui).</p>
+                                                <p>Chức năng dẫn truyền đường cảm giác - vận động và các phản xạ tủy gai (phản xạ gân cơ, phản xạ rút lui).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #7c3aed;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part2/sl-thannao-tieunao-hachnen.html" class="specialty-card">
+                                    <a href="physiology/part2/sl-thannao-tieunao-hachnen.html" class="specialty-card" style="border-left-color: #7c3aed;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed;"><i class="fa-solid fa-diagram-project"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 6: Chức năng Thân não, Tiểu não & Hạch nền</h3>
-                                                <p>Điều hòa trương lực cơ, phối hợp động tác của tiểu não và điều hòa
-                                                    vận động tự ý của hệ hạch nền.</p>
+                                                <p>Điều hòa trương lực cơ, phối hợp động tác của tiểu não và điều hòa vận động tự ý của hệ hạch nền.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #7c3aed;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part2/sl-vonao-chucnangtkcaocap.html" class="specialty-card">
+                                    <a href="physiology/part2/sl-vonao-chucnangtkcaocap.html" class="specialty-card" style="border-left-color: #7c3aed;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed;"><i class="fa-solid fa-lightbulb"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 7: Vỏ não & Chức năng Thần kinh Cao cấp</h3>
-                                                <p>Định khu chức năng vỏ não, vùng ngôn ngữ Broca/Wernicke, cơ chế trí
-                                                    nho, học tập và giấc ngủ.</p>
+                                                <p>Định khu chức năng vỏ não, vùng ngôn ngữ Broca/Wernicke, cơ chế trí nho, học tập và giấc ngủ.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #7c3aed;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -411,76 +753,71 @@
                         <section id="part3-section" aria-labelledby="part3-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-droplet"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(225, 29, 72, 0.15); color: #e11d48;"><i class="fa-solid fa-droplet"></i></span>
                                     <h3 id="part3-heading">Phần 3: Giải phẫu & Sinh lý Hệ Máu và Miễn dịch</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part3/sl-hemau-huyethoc.html" class="specialty-card">
+                                    <a href="physiology/part3/sl-hemau-huyethoc.html" class="specialty-card" style="border-left-color: #e11d48;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-vial"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(225, 29, 72, 0.15); color: #e11d48;"><i class="fa-solid fa-vial"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 1: Đại cương Máu & Huyết tương</h3>
-                                                <p>Thành phần, độ quánh, áp suất thẩm thấu, áp suất keo và chức năng duy
-                                                    trì thể tích tuần hoàn của huyết tương.</p>
+                                                <p>Thành phần, độ quánh, áp suất thẩm thấu, áp suất keo và chức năng duy trì thể tích tuần hoàn của huyết tương.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #e11d48;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part3/sl-hongcau.html" class="specialty-card">
+                                    <a href="physiology/part3/sl-hongcau.html" class="specialty-card" style="border-left-color: #e11d48;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-circle-dot"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(225, 29, 72, 0.15); color: #e11d48;"><i class="fa-solid fa-circle-dot"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 2: Sinh lý Hồng cầu & Vận chuyển Khí</h3>
-                                                <p>Quá trình sinh hồng cầu (Erythropoiesis), vai trò Erythropoietin, cấu
-                                                    trúc Hemoglobin và đồ thị gắn O2/CO2.</p>
+                                                <p>Quá trình sinh hồng cầu (Erythropoiesis), vai trò Erythropoietin, cấu trúc Hemoglobin và đồ thị gắn O2/CO2.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #e11d48;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part3/sl-bachcau-mien-dich.html" class="specialty-card">
+                                    <a href="physiology/part3/sl-bachcau-mien-dich.html" class="specialty-card" style="border-left-color: #e11d48;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(225, 29, 72, 0.15); color: #e11d48;"><i class="fa-solid fa-shield-halved"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 3: Sinh lý Bạch cầu & Hệ thống Miễn dịch</h3>
-                                                <p>Đáp ứng miễn dịch tự nhiên (Neutrophil, Macrophage) và đáp ứng miễn
-                                                    dịch thích ứng (Lympho T, B & Kháng thể).</p>
+                                                <p>Đáp ứng miễn dịch tự nhiên (Neutrophil, Macrophage) và đáp ứng miễn dịch thích ứng (Lympho T, B & Kháng thể).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #e11d48;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part3/sl-tieucaucammau.html" class="specialty-card">
+                                    <a href="physiology/part3/sl-tieucaucammau.html" class="specialty-card" style="border-left-color: #e11d48;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(225, 29, 72, 0.15); color: #e11d48;"><i class="fa-solid fa-notes-medical"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 4: Sinh lý Tiểu cầu & Quá trình Cầm máu - Đông máu</h3>
-                                                <p>Giai đoạn thành mạch, nút tiểu cầu, con đường đông máu nội sinh - ngoại
-                                                    sinh và hệ thống tiêu sợi huyết (Plasmin).</p>
+                                                <p>Giai đoạn thành mạch, nút tiểu cầu, con đường đông máu nội sinh - ngoại sinh và hệ thống tiêu sợi huyết (Plasmin).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #e11d48;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part3/sl-nhommau-truyenmau.html" class="specialty-card">
+                                    <a href="physiology/part3/sl-nhommau-truyenmau.html" class="specialty-card" style="border-left-color: #e11d48;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-syringe"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(225, 29, 72, 0.15); color: #e11d48;"><i class="fa-solid fa-syringe"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 5: Hệ Nhóm máu ABO, Rh & Nguyên tắc Truyền máu</h3>
-                                                <p>Kháng nguyên màng hồng cầu, kháng thể tự nhiên/miễn dịch, phản ứng
-                                                    ngưng kết và quy tắc truyền máu an toàn.</p>
+                                                <p>Kháng nguyên màng hồng cầu, kháng thể tự nhiên/miễn dịch, phản ứng ngưng kết và quy tắc truyền máu an toàn.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #e11d48;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -493,90 +830,84 @@
                         <section id="part4-section" aria-labelledby="part4-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-heart-pulse"></i></span>
                                     <h3 id="part4-heading">Phần 4: Giải phẫu & Sinh lý Hệ Tim mạch và Hô hấp</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part4/sl-chu-ky-tim.html" class="specialty-card">
+                                    <a href="physiology/part4/sl-chu-ky-tim.html" class="specialty-card" style="border-left-color: #0284c7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-heart"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-heart"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 1: Chức năng Bơm Tim & Chu kỳ Tim</h3>
-                                                <p>Các giai đoạn tâm thu - tâm trương, biến đổi thể tích/áp suất thất
-                                                    (Biểu đồ Wiggers) và thể tích nhát bóp (SV).</p>
+                                                <p>Các giai đoạn tâm thu - tâm trương, biến đổi thể tích/áp suất thất (Biểu đồ Wiggers) và thể tích nhát bóp (SV).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #0284c7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part4/sl-dieu-hoa-tim.html" class="specialty-card">
+                                    <a href="physiology/part4/sl-dieu-hoa-tim.html" class="specialty-card" style="border-left-color: #0284c7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-chart-line"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-chart-line"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 2: Điều hòa Cung lượng Tim & Huyết áp</h3>
-                                                <p>Cung lượng tim (CO = HR x SV), định luật Frank-Starling, điều hòa
-                                                    giao cảm/đối giao cảm và thụ thể áp lực (Baroreceptors).</p>
+                                                <p>Cung lượng tim (CO = HR x SV), định luật Frank-Starling, điều hòa giao cảm/đối giao cảm và thụ thể áp lực (Baroreceptors).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #0284c7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part4/sl-mach-mau-tuan-hoan.html" class="specialty-card">
+                                    <a href="physiology/part4/sl-mach-mau-tuan-hoan.html" class="specialty-card" style="border-left-color: #0284c7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-arrows-spin"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 3: Sinh lý Hệ Mạch máu & Động học Dòng máu</h3>
-                                                <p>Áp suất động mạch, sức cản ngoại vi (Poiseuille), trao đổi chất tại mao
-                                                    mạch và hệ thống tĩnh mạch - bạch huyết.</p>
+                                                <p>Áp suất động mạch, sức cản ngoại vi (Poiseuille), trao đổi chất tại mao mạch và hệ thống tĩnh mạch - bạch huyết.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #0284c7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part4/sl-thongkhi.html" class="specialty-card">
+                                    <a href="physiology/part4/sl-thongkhi.html" class="specialty-card" style="border-left-color: #0284c7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-wind"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-wind"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 4: Cơ học Hô hấp & Thông khí Phổi</h3>
-                                                <p>Động tác hít vào - thở ra, áp suất khoang màng phổi, độ giãn nở
-                                                    (Compliance) và vai trò của Surfactant.</p>
+                                                <p>Động tác hít vào - thở ra, áp suất khoang màng phổi, độ giãn nở (Compliance) và vai trò của Surfactant.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #0284c7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part4/sl-traodoikhi.html" class="specialty-card">
+                                    <a href="physiology/part4/sl-traodoikhi.html" class="specialty-card" style="border-left-color: #0284c7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-lungs"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-lungs"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 5: Trao đổi Khí tại Phổi & Mô</h3>
-                                                <p>Khuếch tán khí qua màng phế nang - mao mạch, áp suất riêng phần khí
-                                                    và tỷ lệ Thông khí/Tưới máu (V/Q ratio).</p>
+                                                <p>Khuếch tán khí qua màng phế nang - mao mạch, áp suất riêng phần khí và tỷ lệ Thông khí/Tưới máu (V/Q ratio).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #0284c7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part4/sl-dieuhoa-hohap.html" class="specialty-card">
+                                    <a href="physiology/part4/sl-dieuhoa-hohap.html" class="specialty-card" style="border-left-color: #0284c7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-gauge-high"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 6: Điều hòa Hô hấp</h3>
-                                                <p>Trung tâm hô hấp tại hành-cầu não, vai trò thụ thể hóa học trung ương
-                                                    (CO2/H+) và ngoại vi (O2/pH).</p>
+                                                <p>Trung tâm hô hấp tại hành-cầu não, vai trò thụ thể hóa học trung ương (CO2/H+) và ngoại vi (O2/pH).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #0284c7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -589,90 +920,84 @@
                         <section id="part5-section" aria-labelledby="part5-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-bowl-food"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-bowl-food"></i></span>
                                     <h3 id="part5-heading">Phần 5: Giải phẫu & Sinh lý Hệ Tiêu hóa và Chuyển hóa</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part5/sl-th-mieng-tq.html" class="specialty-card">
+                                    <a href="physiology/part5/sl-th-mieng-tq.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-utensils"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-utensils"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 1: Tiêu hóa ở Miệng & Thực quản</h3>
-                                                <p>Động tác nhai, tiết nước bọt (Amylase), cơ chế nuốt và nhu động thực
-                                                    quản (LES).</p>
+                                                <p>Động tác nhai, tiết nước bọt (Amylase), cơ chế nuốt và nhu động thực quản (LES).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part5/sl-th-daday.html" class="specialty-card">
+                                    <a href="physiology/part5/sl-th-daday.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-disease"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-disease"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 2: Tiêu hóa & Tiết dịch ở Dạ dày</h3>
-                                                <p>Tiết HCl bởi tế bào viền, Pepsinogen, chất nhầy bảo vệ màng niêm mạc
-                                                    và sự tống thức ăn xuống tá tràng.</p>
+                                                <p>Tiết HCl bởi tế bào viền, Pepsinogen, chất nhầy bảo vệ màng niêm mạc và sự tống thức ăn xuống tá tràng.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part5/sl-th-gantuy.html" class="specialty-card">
+                                    <a href="physiology/part5/sl-th-ruot-tuy-gan.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-microchip"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 3: Chức năng Tiêu hóa của Tụy ngoại tiết & Gan-Mật</h3>
-                                                <p>Dịch tụy (Enzyme tiêu hóa Protein, Lipid, Glucid), chức năng tạo mật,
-                                                    muối mật và chu trình gan-ruột.</p>
+                                                <h3>Bài 3: Tiêu hóa ở Ruột non & Dịch Tụy - Mật</h3>
+                                                <p>Enzyme tụy ngoại tiết (Trypsin, Lipase), muối mật nhũ tương hóa lipid và nhu động ruột non.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part5/sl-th-ruotnon.html" class="specialty-card">
+                                    <a href="physiology/part5/sl-hap-thu-ruot.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-bacteria"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-filter"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 4: Nhu động & Hấp thu Chất tại Ruột non</h3>
-                                                <p>Cơ chế co bóp phân đoạn & nhu động, hấp thu Carbohydrate, Amino acid,
-                                                    Lipid, Điện giải & Nước.</p>
+                                                <h3>Bài 4: Cơ chế Hấp thu Chất tại Ruột non</h3>
+                                                <p>Hấp thu Carbohydrate (SGLT1, GLUT2), Protein (Pept1), Lipid (Chylomicron) và Vitamin, Nước.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part5/sl-th-ruotgia.html" class="specialty-card">
+                                    <a href="physiology/part5/sl-th-ruotgia.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-toilet-paper"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-toilet"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 5: Chức năng Ruột già & Hệ Vi sinh vật Ruột</h3>
-                                                <p>Hấp thu nước - điện giải, chức năng của vi khuẩn đường ruột (tổng hợp
-                                                    Vitamin K, B) và phản xạ đại tiện.</p>
+                                                <h3>Bài 5: Chức năng Ruột già & Hệ Vi sinh Ruột</h3>
+                                                <p>Hấp thu nước/điện giải, vai trò vi sinh vật ruột (Microbiota) và phản xạ đại tiện.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part5/sl-chuyenhoa-nhiet.html" class="specialty-card">
+                                    <a href="physiology/part5/sl-chuyenhoa-chathan-nhiet.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-fire"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-fire"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 6: Chuyển hóa Năng lượng & Điều hòa Thân nhiệt</h3>
-                                                <p>Chuyển hóa cơ bản (BMR), các phương thức thải nhiệt (sinh nhiệt/thải
-                                                    nhiệt) và trung tâm điều nhiệt ở Vùng Hạ đồi.</p>
+                                                <p>Chuyển hóa cơ bản (BMR), trung tâm điều nhiệt hạ đồi, cơ chế thải nhiệt (Bức xạ, Bốc hơi) và sinh nhiệt.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -681,66 +1006,62 @@
                             </div>
                         </section>
 
-                        <!-- Phần 6: Giải phẫu & Sinh lý Thận và Dịch cơ thể -->
+                        <!-- Phần 6: Giải phẫu & Sinh lý Hệ Thận và Dịch cơ thể -->
                         <section id="part6-section" aria-labelledby="part6-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-filter"></i></span>
-                                    <h3 id="part6-heading">Phần 6: Giải phẫu & Sinh lý Thận và Dịch cơ thể</h3>
+                                    <span class="physio-group-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-filter"></i></span>
+                                    <h3 id="part6-heading">Phần 6: Giải phẫu & Sinh lý Hệ Thận và Dịch cơ thể</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part6/sl-loc-cauthan.html" class="specialty-card">
+                                    <a href="physiology/part6/sl-loc-cauthan.html" class="specialty-card" style="border-left-color: #06b6d4;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-filter"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-filter-circle-dollar"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 1: Chức năng Lọc Cầu thận (GFR)</h3>
-                                                <p>Màng lọc cầu thận, các áp suất điều hòa mức lọc cầu thận (định luật
-                                                    Starling) và cơ chế tự điều hòa GFR.</p>
+                                                <p>Màng lọc cầu thận, áp suất lọc siêu vi, các yếu tố ảnh hưởng GFR và cơ chế tự điều hòa Renal Autoregulation.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #06b6d4;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part6/sl-taitap-ongthan.html" class="specialty-card">
+                                    <a href="physiology/part6/sl-taitapthu-ongthan.html" class="specialty-card" style="border-left-color: #06b6d4;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-recycle"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-rotate"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 2: Tái hấp thu & Tiết chất tại Ống thận</h3>
-                                                <p>Chức năng ống lượn gần, quai Henle, ống lượn xa và ống góp đối với Na+,
-                                                    K+, Glucose, Bicarbonate & Nước.</p>
+                                                <h3>Bài 2: Tái Hấp thu & Bài tiết tại Ống thận</h3>
+                                                <p>Tái hấp thu Glucose, Na+ tại ống lượn gần, cơ chế nhân nồng độ ngược dòng tại quai Henle và ống lượn xa.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #06b6d4;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part6/sl-codac-nuoctieu.html" class="specialty-card">
+                                    <a href="physiology/part6/sl-dieuhoa-noidich-diengiai.html" class="specialty-card" style="border-left-color: #06b6d4;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-glass-water"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-vial-circle-check"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 3: Cơ chế Cô đặc - Pha loãng Nước tiểu & Vai trò ADH</h3>
-                                                <p>Cơ chế nhân nồng độ ngược dòng (Countercurrent Mechanism), tủy thận u
-                                                    ưu trương và vai trò hormone ADH (Vasopressin).</p>
+                                                <h3>Bài 3: Điều hòa Thể tích Dịch & Điện giải</h3>
+                                                <p>Vai trò Hormone ADH (Vasopressin), Aldosterone, ANP trong điều hòa cân bằng Nước, Na+, K+ và áp suất thẩm thấu.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #06b6d4;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part6/sl-than-toankiem.html" class="specialty-card">
+                                    <a href="physiology/part6/sl-canbang-toan-kiem.html" class="specialty-card" style="border-left-color: #06b6d4;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-flask"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-scale-balanced"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 4: Vai trò của Thận trong Điều hòa Thăng bằng Toan - Kiềm</h3>
-                                                <p>Cơ chế tái hấp thu HCO3-, bài tiết H+ (đệm Phosphate, đệm Amoni NH4+)
-                                                    và sinh HCO3- mới tại thận.</p>
+                                                <h3>Bài 4: Điều hòa Cân bằng Toan - Kiềm (Acid-Base Balance)</h3>
+                                                <p>Hệ đệm hóa học (Bicarbonate), đệm hô hấp (CO2) và đệm thận (tái hấp thu HCO3-, bài tiết H+ & NH4+).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #06b6d4;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -753,75 +1074,71 @@
                         <section id="part7-section" aria-labelledby="part7-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-venus-mars"></i></span>
                                     <h3 id="part7-heading">Phần 7: Giải phẫu & Sinh lý Hệ Nội tiết và Sinh sản</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part7/sl-nt-hadoi-tuyenyen.html" class="specialty-card">
+                                    <a href="physiology/part7/sl-nt-dieuhoa-trutho-tuyenyen.html" class="specialty-card" style="border-left-color: #a855f7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-sitemap"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-diagram-project"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 1: Sinh lý Hệ Hạ đồi - Tuyến yên</h3>
-                                                <p>Các hormone giải phóng/ức chế vùng hạ đồi, hormone tuyến yên trước
-                                                    (GH, TSH, ACTH, FSH, LH, PRL) & yên sau (Oxytocin, ADH).</p>
+                                                <h3>Bài 1: Đại cương Hệ Nội tiết & Trục Hạ đồi - Tuyến yên</h3>
+                                                <p>Bản chất hóa học của Hormone, cơ chế tác động qua thụ thể màng/nhân và hệ thống mạch môn Hạ đồi - Tuyến yên.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #a855f7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part7/sl-nt-tuyengiap.html" class="specialty-card">
+                                    <a href="physiology/part7/sl-nt-tuyengiap.html" class="specialty-card" style="border-left-color: #a855f7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-dna"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-capsules"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 2: Sinh lý Tuyến Giáp & Tuyến Cận giáp</h3>
-                                                <p>Tổng hợp T3-T4, tác dụng chuyển hóa & tăng trưởng của hormone giáp;
-                                                    điều hòa Calci máu bởi PTH, Calcitonin, Vitamin D3.</p>
+                                                <p>Tổng hợp T3/T4, tác dụng chuyển hóa năng lượng, và điều hòa Canxi máu bởi PTH, Calcitonin, Vitamin D3.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #a855f7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part7/sl-nt-vothuongthan.html" class="specialty-card">
+                                    <a href="physiology/part7/sl-nt-tuyen-thuong-than.html" class="specialty-card" style="border-left-color: #a855f7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-shield"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-shield-virus"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 3: Sinh lý Tuyến Vỏ & Tủy Thượng thận</h3>
-                                                <p>Tác dụng của Glucocorticoid (Cortisol), Mineralocorticoid (Aldosterone),
-                                                    Androgen vỏ thượng thận và Catecholamine tủy thượng thận.</p>
+                                                <h3>Bài 3: Sinh lý Tuyến Thượng thận</h3>
+                                                <p>Chức năng Vỏ thượng thận (Cortisol, Aldosterone, Androgen) và Tủy thượng thận (Adrenaline, Noradrenaline).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #a855f7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part7/sl-nt-tuyentuy.html" class="specialty-card">
+                                    <a href="physiology/part7/sl-nt-tuyentuy.html" class="specialty-card" style="border-left-color: #a855f7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-cubes"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-cubes"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 4: Sinh lý Tuyến Tụy Nội tiết & Điều hòa Glucose máu</h3>
-                                                <p>Chức năng Insulin (tế bào Beta), Glucagon (tế bào Alpha), Somatostatin
-                                                    và cơ chế duy trì nồng độ đường huyết hằng định.</p>
+                                                <p>Chức năng Insulin (tế bào Beta), Glucagon (tế bào Alpha), Somatostatin và cơ chế duy trì nồng độ đường huyết hằng định.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #a855f7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part7/sl-ss-sinhsan.html" class="specialty-card">
+                                    <a href="physiology/part7/sl-ss-sinhsan.html" class="specialty-card" style="border-left-color: #a855f7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-venus-mars"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i class="fa-solid fa-venus-mars"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 5: Sinh lý Hệ Thống Sinh Sản (Reproductive Physiology)</h3>
                                                 <p>Chức năng tạo tinh trùng, sản sinh trứng, chu kỳ kinh nguyệt nữ và các hormone thai kỳ chính.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #a855f7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -834,32 +1151,32 @@
                         <section id="part8-section" aria-labelledby="part8-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-person-pregnant"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;"><i class="fa-solid fa-person-pregnant"></i></span>
                                     <h3 id="part8-heading">Phần 8: Giải phẫu & Sinh lý Hệ Sản phụ khoa</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part8/sl-san-mangthai-nhauthai.html" class="specialty-card">
+                                    <a href="physiology/part8/sl-san-mangthai-nhauthai.html" class="specialty-card" style="border-left-color: #ec4899;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-person-pregnant"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;"><i class="fa-solid fa-person-pregnant"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 1: Sinh lý Mang thai & Chức năng Nhau thai</h3>
                                                 <p>Sự thụ tinh, làm tổ của phôi, các hormone thai kỳ (hCG, Progesterone, Estrogen, hPL) và sự trao đổi chất qua hàng rào nhau thai.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #ec4899;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part8/sl-san-chuyenda-suame.html" class="specialty-card">
+                                    <a href="physiology/part8/sl-san-chuyenda-suame.html" class="specialty-card" style="border-left-color: #ec4899;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-person-breastfeeding"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;"><i class="fa-solid fa-person-breastfeeding"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 2: Cơ chế Chuyển dạ & Sinh lý Tiết sữa mẹ</h3>
                                                 <p>Cơ chế khởi phát chuyển dạ (Oxytocin, Prostaglandin), phản xạ bài tiết và tống sữa (Prolactin, Oxytocin) trong thời kỳ hậu sản.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #ec4899;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -872,71 +1189,71 @@
                         <section id="part9-section" aria-labelledby="part9-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-baby"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-baby"></i></span>
                                     <h3 id="part9-heading">Phần 9: Giải phẫu & Sinh lý Hệ Nhi khoa</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="physiology/part9/sl-nhi-hohap.html" class="specialty-card">
+                                    <a href="physiology/part9/sl-nhi-hohap.html" class="specialty-card" style="border-left-color: #f59e0b;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-lungs"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-lungs"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 1: Giải phẫu & Sinh lý Hệ Hô hấp ở Trẻ em</h3>
                                                 <p>Đặc điểm khung sườn, cơ hô hấp, vùng dẫn khí, xoang cạnh mũi, thanh-khí-phế quản, sự tăng sinh phế nang, thông khí bàng hệ lỗ Kohn và hệ mạch máu phổi ở trẻ nhi.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f59e0b;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part9/sl-nhi-than-tietnieu.html" class="specialty-card">
+                                    <a href="physiology/part9/sl-nhi-than-tietnieu.html" class="specialty-card" style="border-left-color: #f59e0b;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-disease"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-disease"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 2: Giải phẫu & Sinh lý Hệ Thận & Tiết Niệu ở Trẻ em</h3>
                                                 <p>Cấu trúc nhu mô thận, màng lọc cầu thận, tiến trình trưởng thành GFR, chức năng ống thận, khả năng cô đặc nước tiểu, hệ RAA và vai trò nội tiết ở trẻ em.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f59e0b;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part9/sl-nhi-tuanhoan-sosinh.html" class="specialty-card">
+                                    <a href="physiology/part9/sl-nhi-tuanhoan-sosinh.html" class="specialty-card" style="border-left-color: #f59e0b;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-heart-pulse"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 3: Giải phẫu & Sinh lý Hệ Tuần Hoàn ở Trẻ em & Thích Nghi Sơ Sinh</h3>
                                                 <p>Tuần hoàn thai nhi song song, 3 cấu trúc thông nối, biến đổi tuần hoàn chuyển tiếp sau sinh, đặc điểm tim-mạch máu, chỉ số nhịp tim, huyết áp và cung lượng tim ở trẻ nhi.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f59e0b;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part9/sl-nhi-tieuhoa.html" class="specialty-card">
+                                    <a href="physiology/part9/sl-nhi-tieuhoa.html" class="specialty-card" style="border-left-color: #f59e0b;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-utensils"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-utensils"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bài 4: Giải phẫu & Sinh lý Hệ Tiêu Hóa ở Trẻ em</h3>
                                                 <p>Tiến trình mọc răng, thực quản, tuyến acid dạ dày, ruột non, đại tràng, tiêu hóa chất dinh dưỡng, chức năng tuyến tụy ngoại tiết và hệ gan - mật ở trẻ nhi.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f59e0b;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="physiology/part9/sl-nhi-tangtruong-phattrien.html" class="specialty-card">
+                                    <a href="physiology/part9/sl-nhi-tangtruong-phattrien.html" class="specialty-card" style="border-left-color: #f59e0b;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-child-reaching"></i></div>
                                             <div class="specialty-info">
-                                                <h3>Bài 5: Sinh Lý Tăng Trưởng &amp; Phát Triển Thể Chất ở Trẻ Em</h3>
+                                                <h3>Bài 5: Sinh Lý Tăng Trưởng & Phát Triển Thể Chất ở Trẻ Em</h3>
                                                 <p>Quy luật tăng cân nặng, chiều cao, vòng đầu, khối lượng não, tỷ lệ cơ thể theo lứa tuổi, kỹ thuật đo nhân trắc lâm sàng, đánh giá biểu đồ WHO, phân loại Z-score và các bất thường thể chất.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f59e0b;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -1025,6 +1342,20 @@
     </div>
 
     <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+    <!-- HOTKEY SHORTCUT SCRIPT -->
+    <script>
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.getElementById('lesson-search');
+                if (searchInput) {
+                    searchInput.focus();
+                    searchInput.select();
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>

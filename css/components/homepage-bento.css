@@ -36,10 +36,10 @@ body {
   box-sizing: border-box;
 }
 
-/* Row 1: Hero Banner + Emergency Fast-Action */
+/* Row 1: Hero Banner */
 .bento-toprow {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr;
   gap: 1rem;
   width: 100%;
 }
@@ -87,12 +87,26 @@ body {
    BENTO CELL: HERO BANNER
 ────────────────────────────────────────────────────────── */
 .bento-hero {
-  background: linear-gradient(135deg, #0c4a7a 0%, #0369a1 45%, #0f172a 100%);
+  background: 
+    radial-gradient(ellipse at top left, rgba(2, 132, 199, 0.4) 0%, transparent 70%),
+    radial-gradient(ellipse at bottom right, rgba(124, 58, 237, 0.4) 0%, transparent 70%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(3, 105, 161, 0.6) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 24px 64px -12px rgba(2, 132, 199, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
   color: #fff;
-  padding: 1.25rem 1.75rem;
-  min-height: auto;
-  border: none;
-  box-shadow: 0 12px 32px -8px rgba(2, 132, 199, 0.35);
+  padding: 1.5rem 2rem;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
 }
 
 .bento-hero:hover {
@@ -190,86 +204,96 @@ body {
 }
 
 /* ──────────────────────────────────────────────────────────
-   BENTO CELL: EMERGENCY (Red-tinted cell)
+   FLOATING ACTION DOCK (macOS style)
 ────────────────────────────────────────────────────────── */
-.bento-emergency {
-  background: linear-gradient(160deg, rgba(239, 68, 68, 0.08) 0%, var(--color-surface) 60%);
-  border-color: rgba(239, 68, 68, 0.2);
-  padding: 0;
-}
-
-.bento-emergency .bento-cell-header { border-bottom-color: rgba(239, 68, 68, 0.15); }
-.bento-emergency .bento-cell-title i { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
-
-.emergency-badge-pulse {
-  font-size: 9px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 2px 8px;
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  border-radius: 999px;
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  animation: pulseBadge 2s ease-in-out infinite;
-}
-
-@keyframes pulseBadge {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.6; }
-}
-
-.bento-emergency-list {
+.floating-action-dock {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
   display: flex;
-  flex-direction: column;
-  gap: 0;
-  flex: 1;
-  padding: 0.25rem 0;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none; /* Let clicks pass through outside the dock container */
 }
 
-.bento-emergency-item {
+.floating-action-dock .dock-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.42rem 0.85rem;
-  color: var(--color-text);
-  text-decoration: none;
-  font-size: 0.76rem;
-  font-weight: 600;
-  transition: background 200ms ease, color 200ms;
-  border-radius: 0;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  pointer-events: auto;
+  transition: all 0.3s ease;
 }
 
-.bento-emergency-item:hover {
-  background: rgba(239, 68, 68, 0.08);
-  color: #ef4444;
+[data-theme="dark"] .floating-action-dock .dock-container {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
-.bento-emg-icon {
-  width: 26px;
-  height: 26px;
+.floating-action-dock .dock-item {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: rgba(var(--dock-color, 255, 255, 255), 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  border-radius: 7px;
-  font-size: 0.78rem;
-  flex-shrink: 0;
-  transition: background 200ms;
+  text-decoration: none;
+  color: var(--dock-color, var(--color-primary));
+  font-size: 1.25rem;
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: bottom center;
 }
 
-.bento-emergency-item:hover .bento-emg-icon { background: rgba(239, 68, 68, 0.2); }
-
-.bento-emg-arrow {
-  margin-left: auto;
-  font-size: 0.65rem;
-  color: var(--color-text-muted);
+.floating-action-dock .dock-item::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
   opacity: 0;
-  transition: opacity 200ms, transform 200ms;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.bento-emergency-item:hover .bento-emg-arrow { opacity: 1; transform: translateX(3px); }
+.floating-action-dock .dock-item:hover {
+  transform: scale(1.4) translateY(-10px);
+  background: rgba(var(--dock-color, 255, 255, 255), 0.2);
+  z-index: 10;
+  margin: 0 10px;
+}
+
+.floating-action-dock .dock-item:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.floating-action-dock .dock-item:active {
+  transform: scale(1.2) translateY(-5px);
+}
 
 /* ──────────────────────────────────────────────────────────
    BENTO CELL: MODULE CARDS (8 core modules)
@@ -1411,4 +1435,126 @@ body {
   line-height: 1.35;
   margin-bottom: 0.25rem;
 }
+
+/* ============================================================
+   $1000 PREMIUM CLINICAL COMMAND CENTER UI ENHANCEMENTS
+   ============================================================ */
+
+/* 1. Glassmorphism Header Floating Effect */
+.global-header {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .global-header {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.7) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 2. Bento Hero Mesh Gradient & Orbs */
+.bento-hero {
+  background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 40%, #0f172a 100%) !important;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px !important;
+}
+
+.bento-hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, transparent 65%);
+  pointer-events: none;
+  animation: pulseMesh 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseMesh {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.15) translate(-20px, 20px); }
+}
+
+/* 3. Emergency Fast-Action Item Neon Pulse */
+.bento-emergency-item {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid var(--color-border);
+}
+
+.bento-emergency-item:hover {
+  transform: translateY(-2px) translateX(3px) !important;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.15) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+/* 4. Cheatsheet Trigger Banner Metallic Glow */
+.cheatsheet-trigger-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.cheatsheet-trigger-banner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transform: translateX(-100%);
+  animation: shineBanner 4s infinite;
+}
+
+@keyframes shineBanner {
+  0% { transform: translateX(-100%); }
+  30%, 100% { transform: translateX(100%); }
+}
+
+/* 5. 3D Perspective Flashcard Quiz */
+.flashcard-container {
+  perspective: 1000px;
+}
+
+.flashcard-card {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+/* 6. General Cell Elevated Shadows */
+.bento-cell {
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.bento-cell:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .bento-cell:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
 

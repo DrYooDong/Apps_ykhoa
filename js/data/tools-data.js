@@ -151,6 +151,15 @@ const clinicalToolsData = [
     tags: ["cấp cứu", "hồi sức", "ecg", "điện tâm đồ", "tim mạch", "stemi", "caliper", "studio"]
   },
   {
+    id: "acls-resus-studio",
+    title: "ACLS Resuscitation Pro Studio — Cấp Cứu Ngừng Tuần Hoàn",
+    description: "Workstation cấp cứu ngừng tim: Đồng hồ CPR 2 phút SVG, Visual/Audio Metronome 110bpm, Đếm lùi tiêm Adrenaline 3-5m, Cây thuật toán VF/pVT vs Asystole/PEA, 5H5T checklist & ROSC protocol",
+    icon: "🫀",
+    link: "emergency/acls-resus-studio.html",
+    part: "part3-section",
+    tags: ["cấp cứu", "hồi sức", "ngừng tim", "cpr", "acls", "adrenaline", "shock", "metronome", "5h5t", "rosc", "studio"]
+  },
+  {
     id: "dg-dot-quy",
     title: "Stroke Pro Studio — Workstation Cấp Cứu Đột Quỵ Nào Cấp",
     description: "Workstation đột quỵ khẩn cấp: Thanh cửa sổ thời gian (rtPA ≤ 4.5h / EVT ≤ 24h), NIHSS 11 mục Visual, CT ASPECTS Score 10 vùng, RACE Score LVO, Liều rtPA & HA Nicardipine",

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -25,6 +25,336 @@
   <script src="../../../components/header.js" defer></script>
   <script src="../../../components/footer.js" defer></script>
   <script src="../../../js/main.js" defer></script>
+
+  <style>
+    /* ============================================================
+       VIPPRO 2000$ COMMAND CENTER OVERRIDE — Y HỌC CỔ TRUYỀN
+    ============================================================ */
+    :root {
+      --hub-jade: #0d9488;
+      --hub-jade-dark: #042f2e;
+      --hub-jade-light: rgba(13, 148, 136, 0.12);
+      --hub-amber: #d97706;
+      --hub-amber-light: rgba(217, 119, 6, 0.12);
+      --hub-surface: var(--color-surface, #ffffff);
+      --hub-surface-2: var(--color-surface-2, #f8fafc);
+      --hub-border: var(--color-divider, #e2e8f0);
+      --hub-text: var(--color-text, #0f172a);
+      --hub-text-muted: var(--color-text-muted, #475569);
+      --hub-tr: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --hub-surface: var(--color-surface, #1e293b);
+      --hub-surface-2: var(--color-surface-2, #0f172a);
+      --hub-border: var(--color-divider, #334155);
+      --hub-text: var(--color-text, #f8fafc);
+      --hub-text-muted: var(--color-text-muted, #94a3b8);
+      --hub-jade-light: rgba(45, 212, 191, 0.15);
+      --hub-amber-light: rgba(251, 191, 36, 0.15);
+    }
+
+    /* 1. HERO COMMAND CENTER */
+    .hero-dashboard.tcm-hero {
+      position: relative;
+      background: linear-gradient(135deg, #064e3b 0%, #042f2e 30%, #0f766e 65%, #b45309 100%) !important;
+      border-radius: 24px !important;
+      padding: 3rem 2.5rem !important;
+      margin-bottom: 2rem !important;
+      overflow: hidden;
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
+      box-shadow: 0 20px 50px rgba(6, 78, 59, 0.35) !important;
+    }
+
+    .hero-dashboard.tcm-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -100px;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(52, 211, 153, 0.35) 0%, rgba(15, 118, 110, 0.06) 60%, transparent 70%);
+      filter: blur(40px);
+      animation: yinyang-glow 8s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+
+    .hero-dashboard.tcm-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: 15%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.25) 0%, transparent 70%);
+      filter: blur(40px);
+      animation: yinyang-glow 10s infinite alternate-reverse ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes yinyang-glow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      100% { transform: scale(1.15) translate(20px, -20px); opacity: 1; }
+    }
+
+    .tcm-hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-intro {
+      flex: 1;
+    }
+
+    .hero-intro::before {
+      content: "☯️ Command Center — Đông Y & Y Học Cổ Truyền";
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #a7f3d0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-intro h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: clamp(1.8rem, 1.3rem + 2vw, 2.75rem) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.035em !important;
+      line-height: 1.15 !important;
+      margin: 0 0 0.85rem !important;
+      background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 50%, #fef08a 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+
+    .hero-intro p {
+      font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem) !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      max-width: 58ch !important;
+      line-height: 1.65 !important;
+      margin: 0 !important;
+    }
+
+    /* Hero KPI stats strip */
+    .hero-kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-kpi-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 100px;
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      color: #fff;
+      backdrop-filter: blur(10px);
+      transition: all var(--hub-tr);
+      white-space: nowrap;
+    }
+
+    .hero-kpi-pill:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: #a7f3d0;
+      transform: translateY(-2px);
+    }
+
+    .tcm-hero-decor {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      opacity: 0.9;
+    }
+
+    .yinyang-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 24px rgba(45, 212, 191, 0.6)) !important;
+      animation: rotateYinyang 20s linear infinite;
+    }
+
+    .hero-pattern { display: none !important; }
+
+    /* 2. DASHBOARD CONTROLS TOOLBAR & SEARCH BAR */
+    .tcm-controls-bar {
+      background: var(--hub-surface);
+      border: 1px solid var(--hub-border);
+      border-radius: 18px;
+      padding: 0.85rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .search-box-container {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+      background: var(--hub-surface-2);
+      border: 1.5px solid var(--hub-border);
+      border-radius: 100px;
+      padding: 0.4rem 0.75rem 0.4rem 1.25rem;
+      transition: all var(--hub-tr);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .search-box-container:focus-within {
+      border-color: var(--hub-jade);
+      box-shadow: 0 0 0 4px var(--hub-jade-light);
+      background: var(--hub-surface);
+    }
+
+    #lesson-search {
+      background: transparent;
+      border: none;
+      color: var(--hub-text);
+      font-size: 0.92rem;
+      outline: none;
+      width: 100%;
+    }
+
+    .hotkey-badge {
+      font-family: monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--hub-border);
+      color: var(--hub-text-muted);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* 3. BENTO CARDS & CATEGORIES OVERRIDE */
+    .tcm-category-group {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.5rem !important;
+      margin-bottom: 1.5rem !important;
+      box-shadow: var(--shadow-sm) !important;
+      transition: all var(--hub-tr) !important;
+    }
+
+    .tcm-category-group:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+      border-color: var(--hub-jade) !important;
+    }
+
+    .tcm-group-header {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+      margin-bottom: 1.25rem !important;
+      padding-bottom: 0.75rem !important;
+      border-bottom: 2px solid var(--hub-surface-2) !important;
+    }
+
+    .tcm-group-header h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 1.05rem !important;
+      font-weight: 700 !important;
+      color: var(--hub-text) !important;
+      margin: 0 !important;
+    }
+
+    .tcm-group-header i {
+      color: var(--hub-jade) !important;
+      font-size: 1.25rem !important;
+    }
+
+    .tcm-items-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(min(270px, 100%), 1fr)) !important;
+      gap: 1.1rem !important;
+    }
+
+    .tcm-item-card {
+      background: var(--hub-surface-2) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-left: 4px solid var(--hub-jade) !important;
+      border-radius: 16px !important;
+      padding: 1.25rem !important;
+      transition: all var(--hub-tr) !important;
+      text-decoration: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+    }
+
+    .tcm-item-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+      border-color: var(--hub-jade) !important;
+      background: var(--hub-surface) !important;
+    }
+
+    .tcm-card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 0.98rem !important;
+      font-weight: 700 !important;
+      color: var(--hub-text) !important;
+      margin-bottom: 0.35rem !important;
+    }
+
+    .tcm-card-desc {
+      font-size: 0.78rem !important;
+      color: var(--hub-text-muted) !important;
+      line-height: 1.5 !important;
+    }
+
+    /* 4. SIDEBAR WIDGET — TÝ NGỌ LƯU CHÚ */
+    .clock-widget {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 24px !important;
+      padding: 1.5rem !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+
+    .herb-spotlight {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.5rem !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+
+    @media (max-width: 768px) {
+      .hero-dashboard.tcm-hero {
+        padding: 2rem 1.5rem !important;
+      }
+      .tcm-hero-decor {
+        display: none;
+      }
+      .hero-kpi-strip {
+        gap: 0.6rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -42,15 +372,19 @@
       <clini-breadcrumb
         items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Y học cổ truyền"}]'></clini-breadcrumb>
 
-      <!-- HERO SECTION -->
+      <!-- ===== VIPPRO COMMAND CENTER HERO ===== -->
       <section class="hero-dashboard tcm-hero" aria-labelledby="hero-title">
         <div class="tcm-hero-content">
           <div class="hero-intro">
             <h1 id="hero-title">☯️ Y HỌC CỔ TRUYỀN</h1>
-            <p>Kho lưu trữ kiến thức Đông y học: Hệ kinh mạch huyệt vị, các thủ thuật châm cứu, xoa bóp và học thuyết
-              dược liệu cổ phương.</p>
+            <p>Kho lưu trữ kiến thức Đông y học: Hệ kinh mạch huyệt vị, các thủ thuật châm cứu, xoa bóp và học thuyết dược liệu cổ phương chuẩn hóa.</p>
+            <div class="hero-kpi-strip">
+              <span class="hero-kpi-pill"><i class="fa-solid fa-route"></i> <strong>14</strong> Đường Kinh Mạch &amp; 361 Huyệt</span>
+              <span class="hero-kpi-pill"><i class="fa-solid fa-yin-yang"></i> <strong>Tý Ngọ Lưu Chú</strong> Realtime Clock</span>
+              <span class="hero-kpi-pill"><i class="fa-solid fa-eye"></i> <strong>Tứ Chẩn</strong> &amp; 28 Mạch Tượng</span>
+            </div>
           </div>
-          <div class="tcm-hero-decor">
+          <div class="tcm-hero-decor" aria-hidden="true">
             <!-- Animated Yin-Yang SVG -->
             <svg class="yinyang-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="100" cy="100" r="95" fill="none" stroke="#0d9488" stroke-width="6" />
@@ -69,8 +403,23 @@
             </svg>
           </div>
         </div>
-        <div class="hero-pattern"></div>
       </section>
+
+      <!-- ===== CONTROLS & SEARCH BAR ===== -->
+      <div class="tcm-controls-bar">
+        <div class="search-box-container">
+          <span class="search-icon-svg">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="text" id="lesson-search" placeholder="Tìm kiếm kinh mạch, huyệt vị, dược thảo, bài thuốc..."
+            aria-label="Tìm kiếm y học cổ truyền">
+          <span class="hotkey-badge">Ctrl K</span>
+        </div>
+      </div>
 
       <!-- TWO COLUMN LAYOUT -->
       <div class="tcm-layout-grid">
@@ -84,16 +433,16 @@
               <i class="fa-solid fa-border-all"></i> Tất cả
             </button>
             <button class="tcm-filter-btn" data-filter="theory">
-              <i class="fa-solid fa-yin-yang"></i> Lý luận & Ngũ hành
+              <i class="fa-solid fa-yin-yang"></i> Lý luận &amp; Ngũ hành
             </button>
             <button class="tcm-filter-btn" data-filter="diagnosis">
-              <i class="fa-solid fa-stetho"></i> Chẩn đoán học (Tứ chẩn)
+              <i class="fa-solid fa-stethoscope"></i> Chẩn đoán học (Tứ chẩn)
             </button>
             <button class="tcm-filter-btn" data-filter="therapy">
-              <i class="fa-solid fa-hand-holding-medical"></i> Trị liệu & Huyệt vị
+              <i class="fa-solid fa-hand-holding-medical"></i> Trị liệu &amp; Huyệt vị
             </button>
             <button class="tcm-filter-btn" data-filter="herbs">
-              <i class="fa-solid fa-leaf"></i> Dược thảo & Cổ phương
+              <i class="fa-solid fa-leaf"></i> Dược thảo &amp; Cổ phương
             </button>
           </nav>
 
@@ -103,14 +452,13 @@
             <div class="tcm-category-group" data-category="theory">
               <div class="tcm-group-header">
                 <i class="fa-solid fa-diagram-project"></i>
-                <h3>Lý luận Đông Y & Ngũ Hành</h3>
+                <h3>Lý luận Đông Y &amp; Ngũ Hành</h3>
               </div>
               <div class="tcm-items-grid">
                 <a href="theory-ngu-hanh/ngu-hanh-studio.html" class="tcm-item-card">
                   <div class="tcm-card-icon">📊</div>
                   <div class="tcm-card-title">Ngũ Hành Tương Tác Studio</div>
-                  <div class="tcm-card-desc">Sơ đồ 5 hành Mộc-Hỏa-Thổ-Kim-Thủy: Tương sinh, tương khắc, ngũ du huyết &
-                    mô phỏng thể bệnh.</div>
+                  <div class="tcm-card-desc">Sơ đồ 5 hành Mộc-Hỏa-Thổ-Kim-Thủy: Tương sinh, tương khắc, ngũ du huyết &amp; mô phỏng thể bệnh.</div>
                 </a>
               </div>
             </div>
@@ -125,15 +473,13 @@
                 <a href="diagnostics/thiet-chan-atlas.html" class="tcm-item-card">
                   <div class="tcm-card-icon">👅</div>
                   <div class="tcm-card-title">Atlas Thiệt Chẩn Tương Tác</div>
-                  <div class="tcm-card-desc">Bản đồ chẩn đoán qua lưỡi: Phân vùng tạng phủ, sắc lưỡi, rêu lưỡi & thử
-                    thách Quiz lâm sàng.</div>
+                  <div class="tcm-card-desc">Bản đồ chẩn đoán qua lưỡi: Phân vùng tạng phủ, sắc lưỡi, rêu lưỡi &amp; thử thách Quiz lâm sàng.</div>
                 </a>
 
                 <a href="diagnostics/mach-chan-simulator.html" class="tcm-item-card">
                   <div class="tcm-card-icon">🧘</div>
                   <div class="tcm-card-title">Mạch Chẩn Simulator</div>
-                  <div class="tcm-card-desc">Giả lập bắt mạch 28 mạch tượng: Sóng SVG real-time, áp lực ngón tay
-                    Thốn-Quan-Xích & đối chiếu Tây y.</div>
+                  <div class="tcm-card-desc">Giả lập bắt mạch 28 mạch tượng: Sóng SVG real-time, áp lực ngón tay Thốn-Quan-Xích &amp; đối chiếu Tây y.</div>
                 </a>
               </div>
             </div>
@@ -142,14 +488,13 @@
             <div class="tcm-category-group" data-category="therapy">
               <div class="tcm-group-header">
                 <i class="fa-solid fa-hands-holding"></i>
-                <h3>Xoa bóp & Bấm huyệt</h3>
+                <h3>Xoa bóp &amp; Bấm huyệt</h3>
               </div>
               <div class="tcm-items-grid">
                 <a href="acupressure/ban-do-huyet-vi.html" class="tcm-item-card">
                   <div class="tcm-card-icon">📍</div>
                   <div class="tcm-card-title">Bản đồ Huyệt vị Tương tác</div>
-                  <div class="tcm-card-desc">Atlas 14 đường kinh mạch & huyệt vị chủ chốt với 4 lớp hiển thị trực quan.
-                  </div>
+                  <div class="tcm-card-desc">Atlas 14 đường kinh mạch &amp; huyệt vị chủ chốt với 4 lớp hiển thị trực quan.</div>
                 </a>
 
                 <a href="#" class="tcm-item-card" onclick="return false;">
@@ -170,15 +515,14 @@
               <div class="tcm-items-grid">
                 <a href="#" class="tcm-item-card" onclick="return false;">
                   <div class="tcm-card-icon">🩺</div>
-                  <div class="tcm-card-title">Kỹ thuật Châm & Cứu</div>
-                  <div class="tcm-card-desc">Kỹ thuật bổ tả, hào châm, ôn châm, cứu ngải và cứu gián tiếp bằng gừng/tỏi.
-                  </div>
+                  <div class="tcm-card-title">Kỹ thuật Châm &amp; Cứu</div>
+                  <div class="tcm-card-desc">Kỹ thuật bổ tả, hào châm, ôn châm, cứu ngải và cứu gián tiếp bằng gừng/tỏi.</div>
                   <span class="badge-dev">Đang phát triển</span>
                 </a>
 
                 <a href="#" class="tcm-item-card" onclick="return false;">
                   <div class="tcm-card-icon">⚠️</div>
-                  <div class="tcm-card-title">An toàn châm cứu & Tai biến</div>
+                  <div class="tcm-card-title">An toàn châm cứu &amp; Tai biến</div>
                   <div class="tcm-card-desc">Cách phòng ngừa và xử trí vượng châm, trúng kim, cong kim, gãy kim...</div>
                   <span class="badge-dev">Đang phát triển</span>
                 </a>
@@ -195,15 +539,13 @@
                 <a href="herbs-formulas/duoc-thao-database.html" class="tcm-item-card">
                   <div class="tcm-card-icon">🍵</div>
                   <div class="tcm-card-title">Tra cứu Dược thảo</div>
-                  <div class="tcm-card-desc">Atlas tra cứu 30+ vị thuốc Đông y với bộ lọc Tính-Vị-Quy kinh, so sánh &
-                    tương kỵ Thập bát phản.</div>
+                  <div class="tcm-card-desc">Atlas tra cứu 30+ vị thuốc Đông y với bộ lọc Tính-Vị-Quy kinh, so sánh &amp; tương kỵ Thập bát phản.</div>
                 </a>
 
                 <a href="herbs-formulas/phuong-te-studio.html" class="tcm-item-card">
                   <div class="tcm-card-icon">📜</div>
                   <div class="tcm-card-title">Phương tễ học (Bài thuốc)</div>
-                  <div class="tcm-card-desc">Sơ đồ phân tích Quân - Thần - Tá - Sứ của 25+ bài thuốc cổ phương & giả lập
-                    gia giảm bài thuốc.</div>
+                  <div class="tcm-card-desc">Sơ đồ phân tích Quân - Thần - Tá - Sứ của 25+ bài thuốc cổ phương &amp; giả lập gia giảm bài thuốc.</div>
                 </a>
               </div>
             </div>
@@ -212,21 +554,19 @@
             <div class="tcm-category-group" data-category="wellness">
               <div class="tcm-group-header">
                 <i class="fa-solid fa-spa"></i>
-                <h3>Dưỡng Sinh & Ôn Tập Game</h3>
+                <h3>Dưỡng Sinh &amp; Ôn Tập Game</h3>
               </div>
               <div class="tcm-items-grid">
                 <a href="wellness-games/yhct-quiz-arena.html" class="tcm-item-card">
                   <div class="tcm-card-icon">🎮</div>
                   <div class="tcm-card-title">YHCT Quiz Arena</div>
-                  <div class="tcm-card-desc">Đấu trường trắc nghiệm game hóa 4 chế độ Thiệt chẩn, Mạch chẩn, Dược thảo &
-                    Bài thuốc.</div>
+                  <div class="tcm-card-desc">Đấu trường trắc nghiệm game hóa 4 chế độ Thiệt chẩn, Mạch chẩn, Dược thảo &amp; Bài thuốc.</div>
                 </a>
 
                 <a href="wellness-games/duong-sinh-dashboard.html" class="tcm-item-card">
                   <div class="tcm-card-icon">🧘</div>
-                  <div class="tcm-card-title">Dưỡng Sinh & 24 Tiết Khí</div>
-                  <div class="tcm-card-desc">Lịch 24 tiết khí trong năm, trắc nghiệm 9 thể chất YHCT & gợi ý huyệt tự
-                    bấm tại nhà.</div>
+                  <div class="tcm-card-title">Dưỡng Sinh &amp; 24 Tiết Khí</div>
+                  <div class="tcm-card-desc">Lịch 24 tiết khí trong năm, trắc nghiệm 9 thể chất YHCT &amp; gợi ý huyệt tự bấm tại nhà.</div>
                 </a>
               </div>
             </div>
@@ -241,8 +581,7 @@
                 <a href="dong-tay-y-bridge/dong-tay-y-bridge.html" class="tcm-item-card">
                   <div class="tcm-card-icon">🔗</div>
                   <div class="tcm-card-title">Cầu Nối Đông - Tây Y (East-West Bridge)</div>
-                  <div class="tcm-card-desc">Ma trận đối chiếu Bệnh danh YHCT ↔ ICD-10 Tây y, phác đồ kết hợp an toàn &
-                    cảnh báo tương tác thuốc.</div>
+                  <div class="tcm-card-desc">Ma trận đối chiếu Bệnh danh YHCT ↔ ICD-10 Tây y, phác đồ kết hợp an toàn &amp; cảnh báo tương tác thuốc.</div>
                 </a>
               </div>
             </div>
@@ -251,7 +590,7 @@
           <!-- SPOTLIGHT: HERB OF THE DAY -->
           <section class="herb-spotlight" aria-labelledby="herb-spotlight-title">
             <div class="herb-spotlight-title" id="herb-spotlight-title">
-              <i class="fa-solid fa-leaf"></i> Dược liệu & Bài thuốc tiêu biểu
+              <i class="fa-solid fa-leaf"></i> Dược liệu &amp; Bài thuốc tiêu biểu
             </div>
 
             <div class="herb-tabs" id="herbTabs">
@@ -276,8 +615,7 @@
           </div>
 
           <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: 1rem; line-height: 1.4;">
-            Đồng hồ kinh học 12 canh giờ. Canh giờ hiện tại được tự động kích hoạt và đánh dấu màu ngọc lục bảo. Bạn có
-            thể chọn múi giờ khác để khám phá.
+            Đồng hồ kinh học 12 canh giờ. Canh giờ hiện tại được tự động kích hoạt và đánh dấu màu ngọc lục bảo. Bạn có thể chọn múi giờ khác để khám phá.
           </p>
 
           <!-- Circular Clock Face -->
@@ -337,15 +675,14 @@
   <!-- ===================== TCM WEB APP SCRIPT ===================== -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // 1. FILTER CATEGORIES LOGIC
+      // 1. FILTER CATEGORIES LOGIC & SEARCH FILTER
       const filterBtns = document.querySelectorAll(".tcm-filter-btn");
       const categoryGroups = document.querySelectorAll(".tcm-category-group");
+      const searchInput = document.getElementById("lesson-search");
 
       filterBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-          // Remove active class from all buttons
           filterBtns.forEach(b => b.classList.remove("active"));
-          // Add active class to clicked button
           btn.classList.add("active");
 
           const filterValue = btn.getAttribute("data-filter");
@@ -358,6 +695,36 @@
             }
           });
         });
+      });
+
+      // Search functionality
+      if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          const itemCards = document.querySelectorAll(".tcm-item-card");
+
+          itemCards.forEach(card => {
+            const title = card.querySelector(".tcm-card-title")?.textContent.toLowerCase() || "";
+            const desc = card.querySelector(".tcm-card-desc")?.textContent.toLowerCase() || "";
+
+            if (title.includes(query) || desc.includes(query)) {
+              card.style.display = "flex";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      }
+
+      // Hotkey Ctrl+K
+      document.addEventListener("keydown", function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+          e.preventDefault();
+          if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+          }
+        }
       });
 
       // 2. HERB OF THE DAY / SPOTLIGHT DATA
@@ -449,7 +816,6 @@
         });
       });
 
-
       // 3. MERIDIAN CLOCK LOGIC (TÝ NGỌ LƯU CHÚ)
       const meridiansClockData = [
         {
@@ -501,7 +867,7 @@
           fullName: "Thủ Dương Minh Đại Trường Kinh",
           element: "Kim",
           elClass: "element-metal",
-          desc: "Ruột già co bóp mạnh để thải chất cặn bã ra ngoài, giải độc cho cơ thể trước ngày mới.",
+          desc: "Ruột giải co bóp mạnh để thải chất cặn bã ra ngoài, giải độc cho cơ thể trước ngày mới.",
           advice: "Thời điểm vàng để thức dậy, uống một ly nước ấm và đi đại tiện để làm sạch đại tràng, ngăn ngừa tích tụ độc tố."
         },
         {
@@ -620,10 +986,9 @@
       let activeIndex = -1;
       let userSelected = false;
 
-      // Generate 12 Markers
       function renderWheelMarkers() {
-        const radius = 86; // px
-        const center = 120; // px
+        const radius = 86;
+        const center = 120;
 
         meridiansClockData.forEach((data, index) => {
           const marker = document.createElement("div");
@@ -632,8 +997,6 @@
           marker.innerText = data.zodiac;
           marker.title = `${data.zodiac} (${data.timeStr}) - ${data.name}`;
 
-          // Calculate positions
-          // Tý is at 6 o'clock (90deg), Mão is at 9 o'clock (180deg), Ngọ is at 12 o'clock (270deg), Dậu is at 3 o'clock (360deg)
           const angle = 90 + (index * 30);
           const rad = (angle * Math.PI) / 180;
 
@@ -655,7 +1018,6 @@
       }
 
       function highlightMeridian(index) {
-        // Clear all actives
         document.querySelectorAll(".meridian-marker").forEach(m => m.classList.remove("active"));
 
         const activeMarker = document.getElementById(`marker-${index}`);
@@ -664,11 +1026,9 @@
         const data = meridiansClockData[index];
         activeIndex = index;
 
-        // Update Center
         centerMeridianName.innerText = data.name;
         centerMeridianTime.innerText = data.timeStr;
 
-        // Update details card
         meridianDetailsCard.innerHTML = `
           <div class="meridian-details-header">
             <h4>
@@ -699,14 +1059,12 @@
 
         clockCurrentTime.innerText = `Giờ hệ thống: ${hrs.toString().padStart(2, '0')}:${mins}:${secs}`;
 
-        if (userSelected) return; // Do not override if user is looking at another meridian
+        if (userSelected) return;
 
-        // Find active meridian index
         let activeIdx = 0;
         for (let i = 0; i < meridiansClockData.length; i++) {
           const item = meridiansClockData[i];
           if (item.startHour === 23) {
-            // Special case for Tý (23:00 - 1:00)
             if (hrs >= 23 || hrs < 1) {
               activeIdx = i;
               break;
@@ -726,22 +1084,22 @@
         }
       }
 
-      // Initialize clock widget
       renderWheelMarkers();
       checkSystemTime();
-      setInterval(checkSystemTime, 1000); // update system clock display every second and checks logic
+      setInterval(checkSystemTime, 1000);
 
-      // Double click center to resume automatic time tracking
       const centerBtn = document.getElementById("meridianCenter");
-      centerBtn.style.cursor = "pointer";
-      centerBtn.title = "Click đúp để quay lại giờ tự động";
-      centerBtn.addEventListener("dblclick", () => {
-        userSelected = false;
-        activeIndex = -1;
-        centerStatus.innerText = "Đang chạy";
-        centerStatus.style.color = "var(--color-text-faint)";
-        checkSystemTime();
-      });
+      if (centerBtn) {
+        centerBtn.style.cursor = "pointer";
+        centerBtn.title = "Click đúp để quay lại giờ tự động";
+        centerBtn.addEventListener("dblclick", () => {
+          userSelected = false;
+          activeIndex = -1;
+          centerStatus.innerText = "Đang chạy";
+          centerStatus.style.color = "var(--color-text-faint)";
+          checkSystemTime();
+        });
+      }
     });
   </script>
 </body>

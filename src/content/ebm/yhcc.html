@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CliniPortal - Trung tâm Y Học Chứng Cứ: Thống kê y học & Kho Guidelines lâm sàng">
-  <title>CliniPortal - Y Học Chứng Cứ</title>
+  <meta name="description" content="CliniPortal - Trung tâm Y Học Chứng Cứ Command Center: Thống kê y học, 6S Pyramid & Kho Guidelines lâm sàng">
+  <title>CliniPortal - Trung Tâm Y Học Chứng Cứ</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <link rel="stylesheet" href="../../../css/reset.css">
   <link rel="stylesheet" href="../../../css/main.css">
@@ -26,14 +27,18 @@
 
   <style>
     /* ============================================================
-       YHCC HUB — DESIGN TOKENS
+       YHCC VIPPRO HUB — DESIGN SYSTEM TOKENS & UTILITIES
     ============================================================ */
     :root {
       --hub-blue: #0284c7;
-      --hub-blue-light: #e0f2fe;
+      --hub-blue-light: rgba(2, 132, 199, 0.12);
       --hub-blue-dark: #0369a1;
       --hub-purple: #7c3aed;
-      --hub-purple-light: #ede9fe;
+      --hub-purple-light: rgba(124, 58, 237, 0.12);
+      --hub-emerald: #10b981;
+      --hub-emerald-light: rgba(16, 185, 129, 0.12);
+      --hub-amber: #f59e0b;
+      --hub-cyan: #06b6d4;
       --hub-surface: var(--color-surface, #ffffff);
       --hub-surface-2: var(--color-surface-2, #f8fafc);
       --hub-border: var(--color-divider, #e2e8f0);
@@ -41,158 +46,303 @@
       --hub-text-muted: var(--color-text-muted, #475569);
       --hub-text-faint: var(--color-text-faint, #94a3b8);
       --hub-radius: 20px;
+      --hub-radius-sm: 12px;
       --hub-tr: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+      --hub-glow-blue: 0 8px 32px rgba(2, 132, 199, 0.25);
+      --hub-glow-purple: 0 8px 32px rgba(124, 58, 237, 0.25);
+    }
+
+    [data-theme="dark"] {
+      --hub-surface: var(--color-surface, #1e293b);
+      --hub-surface-2: var(--color-surface-2, #0f172a);
+      --hub-border: var(--color-divider, #334155);
+      --hub-text: var(--color-text, #f8fafc);
+      --hub-text-muted: var(--color-text-muted, #94a3b8);
+      --hub-text-faint: var(--color-text-faint, #64748b);
+      --hub-blue-light: rgba(56, 189, 248, 0.15);
+      --hub-purple-light: rgba(167, 139, 250, 0.15);
+      --hub-emerald-light: rgba(52, 211, 153, 0.15);
     }
 
     /* ============================================================
-       HERO SECTION
+       VIPPRO HERO COMMAND CENTER
     ============================================================ */
-    .hub-hero {
+    .hub-hero-vippro {
       position: relative;
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0c4a6e 100%);
+      background: linear-gradient(135deg, #070b14 0%, #0f172a 35%, #1e1b4b 70%, #0c4a6e 100%);
       border-radius: 24px;
       padding: 3rem 2.5rem;
       margin-bottom: 2rem;
       overflow: hidden;
       color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     }
 
-    .hub-hero::before {
-      content: '';
+    .hub-hero-mesh-bg {
       position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       pointer-events: none;
+      overflow: hidden;
     }
 
-    .hub-hero::after {
-      content: '';
+    .hub-hero-mesh-1 {
       position: absolute;
-      bottom: -80px;
-      left: 30%;
-      width: 280px;
-      height: 280px;
-      background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, transparent 70%);
-      pointer-events: none;
+      top: -100px;
+      right: -100px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(2, 132, 199, 0.05) 50%, transparent 70%);
+      filter: blur(40px);
+      animation: pulse-glow 8s infinite alternate ease-in-out;
+    }
+
+    .hub-hero-mesh-2 {
+      position: absolute;
+      bottom: -120px;
+      left: 20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.22) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 70%);
+      filter: blur(40px);
+      animation: pulse-glow 10s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      100% { transform: scale(1.15) translate(20px, -20px); opacity: 1; }
     }
 
     .hub-hero-inner {
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
-    .hub-hero-eyebrow {
+    .hub-hero-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .hub-hero-eyebrow-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 1rem;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
       color: #7dd3fc;
-      margin-bottom: 1.25rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     }
 
-    .hub-hero h1 {
+    .hub-hero-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8;
+      animation: pulse-dot-anim 1.8s infinite;
+    }
+
+    @keyframes pulse-dot-anim {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+    }
+
+    .hub-hero-title-main {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.5rem);
+      font-size: clamp(1.8rem, 1.3rem + 2vw, 2.75rem);
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       line-height: 1.15;
+      margin-top: 0.75rem;
       margin-bottom: 0.85rem;
-      background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #bae6fd 60%, #c084fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .hub-hero p {
-      font-size: clamp(0.88rem, 0.82rem + 0.25vw, 1rem);
-      color: rgba(255, 255, 255, 0.72);
-      max-width: 58ch;
+    .hub-hero-desc {
+      font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem);
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 64ch;
       line-height: 1.65;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
 
-    .hub-hero-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
+    /* KHO GUIDELINE HERO BUTTON */
+    .hub-hero-btn-kho {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.4rem;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.45);
+      transition: all var(--hub-tr);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .hub-hero-stat {
+    .hub-hero-btn-kho:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(2, 132, 199, 0.65);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* KPI STATS CARDS (4 COLUMNS) */
+    .hub-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .hub-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hub-kpi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hub-kpi-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 1.1rem;
+      backdrop-filter: blur(16px);
+      transition: all var(--hub-tr);
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      justify-content: space-between;
+      gap: 0.5rem;
     }
 
-    .hub-hero-stat-value {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1;
+    .hub-kpi-card:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
     }
 
-    .hub-hero-stat-label {
-      font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.55);
-      font-weight: 500;
+    .hub-kpi-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hub-kpi-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .hub-kpi-label {
+      font-size: 0.73rem;
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 600;
+      text-transform: uppercase;
       letter-spacing: 0.03em;
     }
 
-    .hub-hero-stat-divider {
-      width: 1px;
-      background: rgba(255, 255, 255, 0.15);
-      align-self: stretch;
+    .hub-kpi-val {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
     }
 
-    /* ============================================================
-       HERO SEARCH BAR
-    ============================================================ */
-    .hub-hero-search {
+    .hub-kpi-sub {
+      font-size: 0.72rem;
+      color: #7dd3fc;
+      font-weight: 600;
+    }
+
+    /* COMMAND SEARCH BAR (CTRL + K) */
+    .hub-command-search-wrapper {
+      position: relative;
+      max-width: 680px;
+      margin-top: 2rem;
+    }
+
+    .hub-command-search {
       display: flex;
       align-items: center;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
       border-radius: 100px;
-      padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-      max-width: 600px;
-      margin-top: 2rem;
-      backdrop-filter: blur(10px);
+      padding: 0.6rem 0.6rem 0.6rem 1.6rem;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       transition: all var(--hub-tr);
     }
 
-    .hub-hero-search:focus-within {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    .hub-command-search:focus-within {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: #38bdf8;
+      box-shadow: 0 12px 40px rgba(56, 189, 248, 0.35);
     }
 
-    .hub-hero-search input {
+    .hub-command-search input {
       flex: 1;
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-family: 'Inter', sans-serif;
       outline: none;
     }
 
-    .hub-hero-search input::placeholder {
-      color: rgba(255, 255, 255, 0.6);
+    .hub-command-search input::placeholder {
+      color: rgba(255, 255, 255, 0.55);
     }
 
-    .hub-hero-search button {
-      background: var(--hub-blue);
+    .hub-hotkey-badge {
+      font-family: monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      margin-right: 0.75rem;
+      user-select: none;
+    }
+
+    .hub-command-search button {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
       color: #fff;
       border: none;
       width: 44px;
@@ -202,11 +352,38 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background var(--hub-tr);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+      transition: transform var(--hub-tr);
     }
 
-    .hub-hero-search button:hover {
-      background: var(--hub-blue-dark);
+    .hub-command-search button:hover {
+      transform: scale(1.08);
+    }
+
+    .hub-search-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.85rem;
+    }
+
+    .hub-search-tag-chip {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: all var(--hub-tr);
+    }
+
+    .hub-search-tag-chip:hover {
+      background: rgba(255, 255, 255, 0.22);
+      color: #fff;
+      border-color: #38bdf8;
     }
 
     /* ============================================================
@@ -214,8 +391,8 @@
     ============================================================ */
     .hub-section-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
-      font-weight: 700;
+      font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+      font-weight: 800;
       color: var(--hub-text);
       margin-bottom: 1.25rem;
       display: flex;
@@ -231,234 +408,273 @@
     }
 
     /* ============================================================
-       KHO GUIDELINE HERO BUTTON
+       EBM DUAL LAYOUT GRID (LEFT MAIN + RIGHT SIDEBAR)
     ============================================================ */
-    .hub-hero-btn-kho {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.65rem 1.35rem;
-      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-      color: #ffffff !important;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      border-radius: 100px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
-      transition: all var(--hub-tr);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .hub-hero-btn-kho:hover {
-      background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.6);
-      border-color: rgba(255, 255, 255, 0.7);
-    }
-
-    /* ============================================================
-       2x2 MODULE CARDS GRID
-    ============================================================ */
-    .hub-modules {
+    .ebm-layout-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 1.75rem;
+      align-items: start;
+      margin-top: 1rem;
     }
 
-    @media (max-width: 768px) {
-      .hub-modules {
+    @media (max-width: 992px) {
+      .ebm-layout-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .hub-module-card {
+    /* ============================================================
+       BENTO GRID MODULE CARDS (4 COLUMNS / 2x2 FLEX)
+    ============================================================ */
+    .bento-modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .bento-modules-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bento-card {
       position: relative;
       border-radius: var(--hub-radius);
-      padding: 1.75rem 1.5rem;
+      padding: 1.85rem 1.6rem;
       overflow: hidden;
-      cursor: pointer;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform var(--hub-tr), box-shadow var(--hub-tr);
-      border: 1px solid transparent;
+      transition: all var(--hub-tr);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
     }
 
-    .hub-module-card:hover {
-      transform: translateY(-4px);
+    .bento-card:hover {
+      transform: translateY(-5px);
     }
 
-    /* Card 1: Thống kê — Blue */
-    .hub-module-card.stat {
-      background: linear-gradient(145deg, #0c4a6e 0%, #0369a1 100%);
-      box-shadow: 0 4px 20px rgba(3, 105, 161, 0.3);
+    .bento-card.stat {
+      background: linear-gradient(145deg, #093b58 0%, #0284c7 100%);
+      box-shadow: var(--hub-glow-blue);
     }
 
-    .hub-module-card.stat:hover {
-      box-shadow: 0 16px 48px rgba(3, 105, 161, 0.45);
-    }
-
-    /* Card 2: Guidelines — Purple */
-    .hub-module-card.guide {
+    .bento-card.guide {
       background: linear-gradient(145deg, #3b0764 0%, #7c3aed 100%);
-      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+      box-shadow: var(--hub-glow-purple);
     }
 
-    .hub-module-card.guide:hover {
-      box-shadow: 0 16px 48px rgba(124, 58, 237, 0.45);
+    .bento-card.radar {
+      background: linear-gradient(145deg, #064e3b 0%, #10b981 100%);
+      box-shadow: 0 8px 32px rgba(16, 185, 129, 0.25);
     }
 
-    /* Card 3: Radar — Emerald */
-    .hub-module-card.radar {
-      background: linear-gradient(145deg, #065f46 0%, #10b981 100%);
-      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+    .bento-card.lab {
+      background: linear-gradient(145deg, #085366 0%, #06b6d4 100%);
+      box-shadow: 0 8px 32px rgba(6, 182, 212, 0.25);
     }
 
-    .hub-module-card.radar:hover {
-      box-shadow: 0 16px 48px rgba(16, 185, 129, 0.45);
-    }
-
-    .hub-module-card-bg {
+    .bento-card-bg-circle {
       position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 180px;
-      height: 180px;
+      top: -50px;
+      right: -50px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.08);
       pointer-events: none;
     }
 
-    .hub-module-card-bg2 {
-      position: absolute;
-      bottom: -60px;
-      left: -20px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.04);
-      pointer-events: none;
+    .bento-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .hub-module-icon {
-      width: 56px;
-      height: 56px;
+    .bento-card-icon {
+      width: 54px;
+      height: 54px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.75rem;
-      margin-bottom: 1.25rem;
-      position: relative;
-      z-index: 1;
       transition: transform var(--hub-tr);
     }
 
-    .hub-module-card:hover .hub-module-icon {
-      transform: scale(1.1) rotate(-3deg);
+    .bento-card:hover .bento-card-icon {
+      transform: scale(1.12) rotate(-5deg);
     }
 
-    .hub-module-card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hub-module-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.15);
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.7rem;
+    .bento-card-badge {
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 0.75rem;
+      backdrop-filter: blur(8px);
     }
 
-    .hub-module-card h2 {
+    .bento-card-body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bento-card-body h3 {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.4rem;
       font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.65rem;
       line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: #fff;
     }
 
-    .hub-module-card p {
+    .bento-card-body p {
       font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.72);
+      color: rgba(255, 255, 255, 0.8);
       line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .bento-card-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
       margin-bottom: 1.5rem;
     }
 
-    .hub-module-features {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .hub-module-feature {
+    .bento-card-bullet {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.9);
     }
 
-    .hub-module-feature-dot {
-      width: 5px;
-      height: 5px;
+    .bento-bullet-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
+      background: #fff;
       flex-shrink: 0;
     }
 
-    .hub-module-cta {
+    .bento-card-footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bento-card-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.35rem;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 10px;
+      gap: 0.6rem;
+      padding: 0.65rem 1.3rem;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
       color: #fff;
-      font-size: 0.85rem;
       font-weight: 700;
-      transition: background var(--hub-tr), transform var(--hub-tr);
+      font-size: 0.85rem;
+      backdrop-filter: blur(10px);
+      transition: all var(--hub-tr);
     }
 
-    .hub-module-card:hover .hub-module-cta {
-      background: rgba(255, 255, 255, 0.28);
-      transform: translateX(3px);
-    }
-
-    .hub-cta-arrow {
-      transition: transform var(--hub-tr);
-    }
-
-    .hub-module-card:hover .hub-cta-arrow {
+    .bento-card:hover .bento-card-btn {
+      background: rgba(255, 255, 255, 0.32);
       transform: translateX(4px);
     }
 
     /* ============================================================
-       SPECIALTY LOOKUP SECTION
+       BEDSIDE EBM QUICK TOOLS BAR (PICO BUILDER & NNT CALCULATOR)
+    ============================================================ */
+    .quick-ebm-tools-card {
+      background: var(--hub-surface);
+      border: 1px solid var(--hub-border);
+      border-radius: var(--hub-radius);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quick-tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .quick-tools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quick-tool-box {
+      background: var(--hub-surface-2);
+      border: 1px solid var(--hub-border);
+      border-radius: 16px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .quick-tool-box h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--hub-text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0;
+    }
+
+    .quick-tool-inputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+
+    .quick-tool-inputs input {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--hub-border);
+      background: var(--hub-surface);
+      color: var(--hub-text);
+      font-size: 0.8rem;
+      outline: none;
+    }
+
+    .quick-tool-result-box {
+      background: var(--hub-surface);
+      border: 1px dashed var(--hub-border);
+      border-radius: 10px;
+      padding: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--hub-text);
+    }
+
+    /* ============================================================
+       SPECIALTY LOOKUP MATRIX
     ============================================================ */
     .hub-spec-lookup-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
       gap: 1rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     .hub-spec-lookup-card {
@@ -526,6 +742,7 @@
       font-weight: 700;
       color: var(--hub-text);
       transition: color var(--hub-tr);
+      margin: 0;
     }
 
     .hub-spec-lookup-card:hover .hub-spec-info h4 {
@@ -536,6 +753,7 @@
       font-size: 0.75rem;
       color: var(--hub-text-muted);
       line-height: 1.4;
+      margin: 0;
     }
 
     .hub-spec-arrow {
@@ -560,62 +778,8 @@
     }
 
     /* ============================================================
-       RESPONSIVE
+       SIDEBAR DUAL STUDIO (6S PYRAMID & 5AS WHEEL)
     ============================================================ */
-    @media (max-width: 767px) {
-      .hub-hero {
-        padding: 2rem 1.25rem;
-      }
-
-      .hub-hero-stats {
-        gap: 1rem;
-      }
-
-      .hub-hero-stat-divider {
-        display: none;
-      }
-
-      .hub-modules {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ============================================================
-       DARK MODE
-    ============================================================ */
-    [data-theme="dark"] .hub-module-card.stat {
-      background: linear-gradient(145deg, #082f49 0%, #075985 100%);
-    }
-
-    [data-theme="dark"] .hub-module-card.guide {
-      background: linear-gradient(145deg, #2e1065 0%, #5b21b6 100%);
-    }
-
-    [data-theme="dark"] .hub-module-card.radar {
-      background: linear-gradient(145deg, #022c22 0%, #047857 100%);
-    }
-
-    [data-theme="dark"] .hub-spec-lookup-card:hover {
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    /* ============================================================
-       EBM INTERACTIVE SIDEBAR & PYRAMID
-    ============================================================ */
-    .ebm-layout-grid {
-      display: grid;
-      grid-template-columns: 2.2fr 1fr;
-      gap: 1.75rem;
-      align-items: start;
-      margin-top: 1rem;
-    }
-
-    @media (max-width: 992px) {
-      .ebm-layout-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .layout-widget-sidebar {
       position: sticky;
       top: calc(60px + 1.5rem);
@@ -638,140 +802,97 @@
       border-color: var(--hub-blue);
     }
 
-    .widget-card-title {
+    /* STUDIO TABS BAR */
+    .studio-tabs-bar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid var(--hub-surface-2);
-      padding-bottom: 0.75rem;
+      gap: 0.4rem;
+      background: var(--hub-surface-2);
+      padding: 0.35rem;
+      border-radius: 14px;
+      border: 1px solid var(--hub-border);
       margin-bottom: 1rem;
     }
 
-    .widget-card-title h3 {
-      font-size: 1.05rem;
+    .studio-tab-btn {
+      flex: 1;
+      padding: 0.55rem 0.5rem;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: var(--hub-text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
       font-weight: 700;
-      margin: 0;
-      color: var(--hub-text);
+      cursor: pointer;
+      transition: all var(--hub-tr);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 0.35rem;
     }
 
-    .clock-current-time {
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 20px;
+    .studio-tab-btn.active {
+      background: var(--hub-surface);
+      color: var(--hub-blue);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
-    .pyramid-container {
+    [data-theme="dark"] .studio-tab-btn.active {
+      color: #38bdf8;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 6S PYRAMID STYLING */
+    .pyramid-6s-wrapper {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 0.35rem;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
     }
 
-    .pyramid-level {
-      width: var(--level-width, 100%);
-      background: var(--level-bg, var(--hub-blue));
+    .pyramid-6s-layer {
+      width: var(--layer-width, 100%);
+      margin: 0 auto;
+      background: var(--layer-bg, var(--hub-blue));
       color: #fff;
-      font-size: 10px;
+      padding: 0.55rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.72rem;
       font-weight: 700;
       text-align: center;
-      padding: 0.65rem 0.25rem;
-      border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow-sm);
-      clip-path: polygon(var(--clip-left, 0%) 0%, var(--clip-right, 100%) 0%, 100% 100%, 0% 100%);
-    }
-
-    .pyramid-level:hover {
-      transform: scale(1.03);
-      filter: brightness(1.1);
-    }
-
-    .pyramid-level.active {
-      transform: scale(1.05);
-      box-shadow: 0 0 12px rgba(124, 58, 237, 0.4);
-      filter: brightness(1.1);
-      border: 1.5px solid #fff;
-    }
-
-    .physio-details-card {
-      background: var(--hub-surface-2);
-      border: 1px solid var(--hub-border);
-      border-radius: 12px;
-      padding: 1.1rem;
-      margin-top: 1rem;
-      transition: all var(--hub-tr);
-    }
-
-    .physio-details-header {
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.65rem;
-      border-bottom: 1px solid var(--hub-border);
-      padding-bottom: 0.5rem;
+      justify-content: space-between;
     }
 
-    .physio-details-header h4 {
-      margin: 0;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--hub-text);
+    .pyramid-6s-layer:hover, .pyramid-6s-layer.active {
+      transform: scale(1.03);
+      filter: brightness(1.15);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
     }
 
-    .ebm-badge-row {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.65rem;
+    .pyramid-6s-layer.active {
+      border: 2px solid #fff;
     }
 
-    .ebm-badge {
-      font-size: 9px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 20px;
-      color: #fff;
+    .pyramid-grade-pill {
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.25);
+      font-weight: 800;
     }
 
-    .ebm-badge.level {
-      background: var(--hub-blue);
-    }
-
-    .ebm-badge.recommend {
-      background: var(--hub-purple);
-    }
-
-    .meridian-detail-row {
-      margin-bottom: 0.65rem;
-      font-size: 0.78rem;
-      line-height: 1.45;
-    }
-
-    .meridian-detail-row strong {
-      color: var(--hub-text);
-    }
-
-    .meridian-detail-desc {
-      color: var(--hub-text-muted);
-      margin: 0.15rem 0 0 0;
-    }
-
-    [data-theme="dark"] .widget-card:hover {
-      border-color: var(--hub-purple);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    /* EBM Wheel specific styling */
+    /* EBM 5AS SVG WHEEL STYLING */
     .ebm-wheel-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 1.25rem 0;
+      margin: 1rem 0;
       position: relative;
     }
 
@@ -787,287 +908,477 @@
       transition: opacity 0.2s, stroke-width 0.2s;
     }
 
-    .ebm-sector:hover {
+    .ebm-sector:hover, .ebm-sector.active {
       opacity: 1 !important;
     }
 
-    .ebm-sector.active {
-      opacity: 1 !important;
+    .physio-details-card {
+      background: var(--hub-surface-2);
+      border: 1px solid var(--hub-border);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 0.75rem;
+      transition: all var(--hub-tr);
     }
   </style>
 </head>
 
 <body>
+
   <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <div class="app-container">
 
-    <!-- SIDEBAR -->
-    <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT WRAPPER -->
     <div class="main-wrapper" id="mainContent">
 
       <!-- BREADCRUMB -->
       <clini-breadcrumb
         items="[{&quot;label&quot;: &quot;🏠 Home&quot;, &quot;url&quot;: &quot;../../index.html&quot;}, {&quot;label&quot;: &quot;Y học chứng cứ&quot;}]"></clini-breadcrumb>
 
-      <!-- HERO -->
-      <section class="hub-hero" aria-labelledby="hub-hero-title">
+      <!-- VIPPRO HERO COMMAND CENTER BANNER -->
+      <section class="hub-hero-vippro" aria-labelledby="hub-hero-title">
+        <div class="hub-hero-mesh-bg">
+          <div class="hub-hero-mesh-1"></div>
+          <div class="hub-hero-mesh-2"></div>
+        </div>
+
         <div class="hub-hero-inner">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+          <div class="hub-hero-header-row">
             <div>
-              <div class="hub-hero-eyebrow">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  aria-hidden="true">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                </svg>
-                Y Học Chứng Cứ — Evidence-Based Medicine
+              <div class="hub-hero-eyebrow-badge">
+                <span class="hub-hero-pulse-dot"></span>
+                EBM Command Center — Evidence-Based Medicine
               </div>
-              <h1 id="hub-hero-title">Y Học Chứng Cứ<br>& Hướng Dẫn Lâm Sàng</h1>
+              <h1 class="hub-hero-title-main" id="hub-hero-title">Trung Tâm Y Học Chứng Cứ<br>& Hướng Dẫn Điều Trị</h1>
             </div>
 
-            <!-- KHO GUIDELINE BUTTON -->
+            <!-- KHO GUIDELINE HERO BUTTON -->
             <a href="guidelines/kho-guidelines/index.html" class="hub-hero-btn-kho" title="Truy cập Kho Guidelines tóm tắt">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
               </svg>
-              <span>Kho Guideline</span>
+              <span>Kho Guidelines</span>
             </a>
           </div>
 
-          <p>Hệ thống tổng hợp và phân tích lý thuyết thống kê, thiết kế nghiên cứu khoa học cùng kho hướng dẫn thực
-            hành điều trị từ các tổ chức y tế uy tín.</p>
+          <p class="hub-hero-desc">
+            Hệ thống tổng hợp và phân tích lý thuyết thống kê, thiết kế nghiên cứu khoa học, tháp bằng chứng 6S cùng kho hướng dẫn thực hành lâm sàng EBM từ các hiệp hội y học thế giới & Bộ Y Tế.
+          </p>
 
-          <!-- EBM SEARCH BAR -->
-          <div class="hub-hero-search-wrapper" style="position: relative; max-width: 600px; margin-top: 2rem;">
-            <div class="hub-hero-search" style="margin-top: 0;">
-              <input type="text" id="ebm-global-search" placeholder="Tìm kiếm Guideline, Thống kê, Cập nhật mới..."
-                aria-label="Tìm kiếm" autocomplete="off">
-              <button aria-label="Nút tìm kiếm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2.5">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg></button>
+          <!-- REALTIME KPI METRICS GRID -->
+          <div class="hub-kpi-grid">
+            <div class="hub-kpi-card">
+              <div class="hub-kpi-top">
+                <span class="hub-kpi-label">Tổng Guidelines</span>
+                <div class="hub-kpi-icon">📚</div>
+              </div>
+              <div class="hub-kpi-val" id="stat-total-guidelines">---</div>
+              <div class="hub-kpi-sub">Đồng bộ tự động</div>
             </div>
-            <div id="ebm-search-results"
-              style="display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--hub-surface, #fff); border: 1px solid var(--hub-border); border-radius: 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.18); z-index: 300; max-height: 360px; overflow-y: auto; padding: 0.75rem;">
+
+            <div class="hub-kpi-card">
+              <div class="hub-kpi-top">
+                <span class="hub-kpi-label">Practice-Changing</span>
+                <div class="hub-kpi-icon">🏆</div>
+              </div>
+              <div class="hub-kpi-val" id="stat-practice-changing">---</div>
+              <div class="hub-kpi-sub">Thay đổi điều trị</div>
+            </div>
+
+            <div class="hub-kpi-card">
+              <div class="hub-kpi-top">
+                <span class="hub-kpi-label">Bộ Y Tế / Hội VN</span>
+                <div class="hub-kpi-icon">🇻🇳</div>
+              </div>
+              <div class="hub-kpi-val" id="stat-moh-guidelines">---</div>
+              <div class="hub-kpi-sub">Khuyến cáo chuẩn</div>
+            </div>
+
+            <div class="hub-kpi-card">
+              <div class="hub-kpi-top">
+                <span class="hub-kpi-label">Quốc Tế (ESC/ADA)</span>
+                <div class="hub-kpi-icon">🌐</div>
+              </div>
+              <div class="hub-kpi-val" id="stat-intl-guidelines">---</div>
+              <div class="hub-kpi-sub">Cập nhật toàn cầu</div>
             </div>
           </div>
+
+          <!-- COMMAND SEARCH BAR (CTRL + K) -->
+          <div class="hub-command-search-wrapper">
+            <div class="hub-command-search">
+              <input type="text" id="ebm-global-search" placeholder="Tìm kiếm Guideline, Thống kê, Cập nhật mới..."
+                aria-label="Tìm kiếm Y Học Chứng Cứ" autocomplete="off">
+              <span class="hub-hotkey-badge" title="Nhấn Ctrl + K để tìm kiếm nhanh">Ctrl K</span>
+              <button aria-label="Nút tìm kiếm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- SEARCH TAG SUGGESTIONS -->
+            <div class="hub-search-tags">
+              <span style="font-size: 0.73rem; color: rgba(255,255,255,0.6); font-weight: 600;">Gợi ý:</span>
+              <span class="hub-search-tag-chip" onclick="quickSearch('#TimMạch')">#TimMạch</span>
+              <span class="hub-search-tag-chip" onclick="quickSearch('#TiểuĐường')">#TiểuĐường</span>
+              <span class="hub-search-tag-chip" onclick="quickSearch('#ESC2024')">#ESC2024</span>
+              <span class="hub-search-tag-chip" onclick="quickSearch('#BộYTế')">#BộYTế</span>
+              <span class="hub-search-tag-chip" onclick="quickSearch('#HôHấp')">#HôHấp</span>
+            </div>
+
+            <!-- SEARCH RESULTS MODAL / DROPDOWN -->
+            <div id="ebm-search-results"
+              style="display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--hub-surface, #fff); border: 1px solid var(--hub-border); border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.25); z-index: 300; max-height: 380px; overflow-y: auto; padding: 0.85rem;">
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <!-- TWO COLUMN LAYOUT -->
+      <!-- TWO COLUMN MAIN LAYOUT GRID -->
       <div class="ebm-layout-grid">
 
-        <!-- LEFT COLUMN: MODULES & SPECIALTY GRID -->
-        <div style="display: flex; flex-direction: column; gap: 1.25rem; width: 100%; min-width: 0;">
+        <!-- LEFT COLUMN: BENTO MODULES & SPECIALTY LOOKUP -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%; min-width: 0;">
 
-          <!-- 2x2 MODULE CARDS HEADER -->
-          <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 0;">
-            <h2 class="hub-section-title" style="margin-bottom: 0; flex: 1;">📦 Các Mô-đun Chính</h2>
-            <a href="guidelines/kho-guidelines/index.html" style="font-size: 0.82rem; font-weight: 700; color: var(--hub-blue); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; background: var(--hub-blue-light); padding: 0.35rem 0.85rem; border-radius: 20px; transition: all var(--hub-tr);" title="Trực tiếp tới Kho Guidelines">
-              🗂️ Kho Guidelines <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
+          <!-- 1. BENTO GRID 4 CORE MODULES CARDS -->
+          <div>
+            <h2 class="hub-section-title">📦 Các Mô-đun Chính</h2>
 
-          <div class="hub-modules">
+            <div class="bento-modules-grid">
 
-            <!-- Card 1: Thống kê y học -->
-            <a href="medical-statistics/thongkeyhoc.html" class="hub-module-card stat" id="card-thongke"
-              aria-label="Mở Thống kê y học">
-              <div class="hub-module-card-bg"></div>
-              <div class="hub-module-card-bg2"></div>
-              <div class="hub-module-icon">📊</div>
-              <div class="hub-module-card-content">
-                <div class="hub-module-tag">Mô-đun 1</div>
-                <h2>Thống Kê Y Học & Nghiên Cứu</h2>
-                <p>Học tập tư duy thống kê, các phương pháp thiết kế nghiên cứu khoa học, đọc hiểu và phân tích bằng
-                  chứng
-                  lâm sàng.</p>
-                <div class="hub-module-features">
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Bài 1: Ý nghĩa thống kê và ý nghĩa lâm sàng
+              <!-- Module Card 1: Thống Kê Y Học -->
+              <a href="medical-statistics/thongkeyhoc.html" class="bento-card stat" id="card-thongke">
+                <div class="bento-card-bg-circle"></div>
+                <div>
+                  <div class="bento-card-header">
+                    <div class="bento-card-icon">📊</div>
+                    <span class="bento-card-badge">Mô-đun 1</span>
                   </div>
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Bài 2: Đánh giá giá trị các công cụ chẩn đoán
-                  </div>
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Bài 3: Thiết kế nghiên cứu khoa học y học
-                  </div>
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Bài 4: Phân tích bằng chứng RCT và Meta-analysis
+                  <div class="bento-card-body">
+                    <h3>Thống Kê Y Học & Nghiên Cứu</h3>
+                    <p>Tư duy thống kê y học, các phương pháp thiết kế nghiên cứu khoa học, đọc hiểu RCT và Meta-analysis.</p>
+                    <div class="bento-card-bullets">
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bài 1: Ý nghĩa thống kê & ý nghĩa lâm sàng</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bài 2: Đánh giá giá trị xét nghiệm chẩn đoán</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bài 3: Thiết kế nghiên cứu y học (Cohort/RCT)</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bài 4: Đọc hiểu và phân tích Meta-analysis</div>
+                    </div>
                   </div>
                 </div>
-                <span class="hub-module-cta">
-                  Vào học ngay
-                  <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2.5">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </span>
-              </div>
-            </a>
+                <div class="bento-card-footer">
+                  <span class="bento-card-btn">
+                    Vào học ngay <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                </div>
+              </a>
 
-            <!-- Card 2: Guidelines -->
-            <a href="guidelines/guidelines.html" class="hub-module-card guide" id="card-guidelines"
-              aria-label="Mở Hướng dẫn & Nghiên cứu">
-              <div class="hub-module-card-bg"></div>
-              <div class="hub-module-card-bg2"></div>
-              <div class="hub-module-icon">📋</div>
-              <div class="hub-module-card-content">
-                <div class="hub-module-tag">Mô-đun 2</div>
-                <h2>Guidelines & Nghiên Cứu</h2>
-                <p>Hướng dẫn lâm sàng từ Bộ Y tế, Sở Y tế Việt Nam, hiệp hội y khoa và thử nghiệm lâm sàng quốc tế.</p>
-                <div class="hub-module-features">
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Tài liệu Việt Nam (BYT, VNHA...) & Quốc tế (ESC, ADA...)
+              <!-- Module Card 2: Guidelines -->
+              <a href="guidelines/guidelines.html" class="bento-card guide" id="card-guidelines">
+                <div class="bento-card-bg-circle"></div>
+                <div>
+                  <div class="bento-card-header">
+                    <div class="bento-card-icon">📋</div>
+                    <span class="bento-card-badge">Mô-đun 2</span>
                   </div>
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Bộ lọc phân loại nguồn & thiết kế nghiên cứu lâm sàng
-                  </div>
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Công cụ tính thang điểm lâm sàng tích hợp
-                  </div>
-                  <div class="hub-module-feature">
+                  <div class="bento-card-body">
+                    <h3>Guidelines & Khuyến Cáo</h3>
+                    <p>Hướng dẫn điều trị chuẩn hóa từ Bộ Y tế Việt Nam, ESC, ADA, GINA, GOLD và các hiệp hội quốc tế.</p>
+                    <div class="bento-card-bullets">
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Tài liệu Bộ Y Tế Việt Nam & Hội chuyên khoa</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Khuyến cáo quốc tế ESC, ADA, ACC/AHA</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bộ lọc đa chiều theo chuyên khoa & nguồn</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Thang điểm và lưu đồ chẩn đoán tích hợp</div>
+                    </div>
                   </div>
                 </div>
-                <span class="hub-module-cta">
-                  Khám phá ngay
-                  <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2.5">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </span>
-              </div>
-            </a>
+                <div class="bento-card-footer">
+                  <span class="bento-card-btn">
+                    Khám phá ngay <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                </div>
+              </a>
 
-            <!-- Card 3: Guideline Radar -->
-            <a href="guideline-radar/radar.html" class="hub-module-card radar" id="card-radar"
-              aria-label="Mở Guideline Radar">
-              <div class="hub-module-card-bg"></div>
-              <div class="hub-module-card-bg2"></div>
-              <div class="hub-module-icon">📡</div>
-              <div class="hub-module-card-content">
-                <div class="hub-module-tag">Cập nhật</div>
-                <h2>Guideline Radar</h2>
-                <p>Trạm theo dõi các cập nhật y khoa mới nhất và những thay đổi ảnh hưởng đến thực hành lâm sàng.</p>
-                <div class="hub-module-features">
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    So sánh "Trước & Sau" GitHub-style Diff View
+              <!-- Module Card 3: Guideline Radar -->
+              <a href="guideline-radar/radar.html" class="bento-card radar" id="card-radar">
+                <div class="bento-card-bg-circle"></div>
+                <div>
+                  <div class="bento-card-header">
+                    <div class="bento-card-icon">📡</div>
+                    <span class="bento-card-badge">Cập nhật</span>
                   </div>
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Huy hiệu Practice-Changing vs Informative
-                  </div>
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    Điểm tin ESC, ADA, GINA, GOLD & Bộ Y tế
+                  <div class="bento-card-body">
+                    <h3>Guideline Radar</h3>
+                    <p>Trạm radar theo dõi các cập nhật y học mới nhất và những thay đổi ảnh hưởng đến thực hành lâm sàng.</p>
+                    <div class="bento-card-bullets">
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Giao diện Diff View "Trước & Sau" độc đáo</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Huy hiệu Practice-Changing vs Informative</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Điểm tin nhanh ESC, ADA, GINA, GOLD & BYT</div>
+                    </div>
                   </div>
                 </div>
-                <span class="hub-module-cta">
-                  Xem diff view
-                  <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2.5">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </span>
-              </div>
-            </a>
+                <div class="bento-card-footer">
+                  <span class="bento-card-btn">
+                    Xem diff view <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                </div>
+              </a>
 
-            <!-- Card 4: EBM Practice Lab -->
-            <a href="ebm-lab/ebm-lab.html" class="hub-module-card lab" id="card-ebm-lab"
-              aria-label="Mở EBM Practice Lab"
-              style="background: linear-gradient(145deg, #0e7490 0%, #06b6d4 100%); box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);">
-              <div class="hub-module-card-bg"></div>
-              <div class="hub-module-card-bg2"></div>
-              <div class="hub-module-icon">🧪</div>
-              <div class="hub-module-card-content">
-                <div class="hub-module-tag" style="background: rgba(255,255,255,0.25);">Thực Hành</div>
-                <h2>EBM Practice Lab</h2>
-                <p>Phòng thực hành tương tác giúp cấu trúc PICO, thẩm định sai số nghiên cứu và tính toán NNT.</p>
-                <div class="hub-module-features">
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    PICO Builder & Máy tạo PubMed Search String
+              <!-- Module Card 4: EBM Practice Lab -->
+              <a href="ebm-lab/ebm-lab.html" class="bento-card lab" id="card-ebm-lab">
+                <div class="bento-card-bg-circle"></div>
+                <div>
+                  <div class="bento-card-header">
+                    <div class="bento-card-icon">🧪</div>
+                    <span class="bento-card-badge">Thực Hành</span>
                   </div>
-                  <div class="hub-module-feature">
-                    <span class="hub-module-feature-dot"></span>
-                    NNT/ARR Calculator & Biểu đồ 100 Bệnh Nhân
+                  <div class="bento-card-body">
+                    <h3>EBM Practice Lab</h3>
+                    <p>Phòng thực hành tương tác giúp cấu trúc PICO, thẩm định sai số nghiên cứu và tính toán NNT/ARR.</p>
+                    <div class="bento-card-bullets">
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>PICO Builder & PubMed Search String Generator</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>NNT/ARR Calculator & Biểu đồ 100 Bệnh Nhân</div>
+                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bảng kiểm thẩm định phê bình nghiên cứu CASP</div>
+                    </div>
                   </div>
                 </div>
-                <span class="hub-module-cta">
-                  Vào thực hành
-                  <svg class="hub-cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2.5">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
+                <div class="bento-card-footer">
+                  <span class="bento-card-btn">
+                    Vào thực hành <i class="fa-solid fa-arrow-right"></i>
+                  </span>
+                </div>
+              </a>
 
-        <!-- RIGHT COLUMN: SIDEBAR WIDGET -->
-        <aside class="layout-widget-sidebar">
-          <section class="widget-card" aria-labelledby="ebm-wheel-title">
-            <div class="widget-card-title">
-              <h3 id="ebm-wheel-title"><i class="fa-solid fa-rotate"></i> Chu Trình EBM</h3>
-              <span class="clock-current-time"
-                style="background: var(--hub-purple-light, rgba(124, 58, 237, 0.15)); color: var(--hub-purple, #7c3aed);">EBM
-                5 As</span>
             </div>
-            <p style="font-size: var(--text-xs); color: var(--hub-text-muted); margin-bottom: 1rem; line-height: 1.4;">
-              Nhấp chọn từng bước trong chu trình thực hành Y học chứng cứ (5 As) trên vòng xoay để tra cứu mục tiêu và
-              công cụ hỗ trợ.
+          </div>
+
+          <!-- 2. BEDSIDE QUICK EBM TOOLS (PICO BUILDER & NNT CALCULATOR) -->
+          <section class="quick-ebm-tools-card" aria-labelledby="quick-tools-title">
+            <h2 class="hub-section-title" id="quick-tools-title" style="margin-bottom: 0;">⚡ Công Cụ EBM Nhanh Tại Giường Bệnh</h2>
+            <p style="font-size: 0.83rem; color: var(--hub-text-muted); margin-top: 0.35rem; margin-bottom: 1rem;">
+              Tính toán chỉ số y học chứng cứ và tạo từ khóa tìm kiếm nhanh PubMed ngay lập tức.
             </p>
 
-            <div class="ebm-wheel-container">
-              <svg viewBox="0 0 200 200" class="ebm-svg" id="ebmSvg" xmlns="http://www.w3.org/2000/svg">
-                <!-- Sector 1: ASK (Hỏi) - Angle -90 to -18 (active) -->
-                <path class="ebm-sector active" data-index="0" d="M 100 100 L 100 20 A 80 80 0 0 1 176.08 75.28 Z"
-                  fill="#7c3aed" opacity="0.85" stroke="#fff" stroke-width="1.5" />
-                <!-- Sector 2: ACQUIRE (Tìm) - Angle -18 to 54 -->
-                <path class="ebm-sector" data-index="1" d="M 100 100 L 176.08 75.28 A 80 80 0 0 1 147.02 164.72 Z"
-                  fill="#06b6d4" opacity="0.85" stroke="#fff" stroke-width="1.5" />
-                <!-- Sector 3: APPRAISE (Đánh giá) - Angle 54 to 126 -->
-                <path class="ebm-sector" data-index="2" d="M 100 100 L 147.02 164.72 A 80 80 0 0 1 52.98 164.72 Z"
-                  fill="#3b82f6" opacity="0.85" stroke="#fff" stroke-width="1.5" />
-                <!-- Sector 4: APPLY (Áp dụng) - Angle 126 to 198 -->
-                <path class="ebm-sector" data-index="3" d="M 100 100 L 52.98 164.72 A 80 80 0 0 1 23.92 75.28 Z"
-                  fill="#10b981" opacity="0.85" stroke="#fff" stroke-width="1.5" />
-                <!-- Sector 5: ASSESS (Đánh giá lại) - Angle 198 to 270 (which is -90) -->
-                <path class="ebm-sector" data-index="4" d="M 100 100 L 23.92 75.28 A 80 80 0 0 1 100 20 Z"
-                  fill="#f59e0b" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+            <div class="quick-tools-grid">
+              <!-- Tool 1: PICO Quick Builder -->
+              <div class="quick-tool-box">
+                <h4><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--hub-purple);"></i> PICO Builder & Search String</h4>
+                <div class="quick-tool-inputs">
+                  <input type="text" id="pico-p" placeholder="P (Bệnh nhân/Tuổi)...">
+                  <input type="text" id="pico-i" placeholder="I (Can thiệp/Thuốc)...">
+                  <input type="text" id="pico-c" placeholder="C (So sánh/Giả dược)...">
+                  <input type="text" id="pico-o" placeholder="O (Kết cục)...">
+                </div>
+                <div class="quick-tool-result-box" id="pico-output">
+                  <span style="color: var(--hub-text-muted);">Nhập thông tin PICO để tự động sinh từ khóa tìm kiếm PubMed.</span>
+                </div>
+              </div>
 
-                <!-- Center Donut cutout overlay -->
-                <circle cx="100" cy="100" r="40" fill="var(--hub-surface)" stroke="var(--hub-border)"
-                  stroke-width="1.5" />
-                <!-- Center text indicators -->
-                <text x="100" y="96" text-anchor="middle" id="ebmCenterLabel" font-size="8px" font-weight="700"
-                  fill="var(--hub-text-muted)" style="letter-spacing: 0.5px; text-transform: uppercase;">Chu
-                  trình</text>
-                <text x="100" y="112" text-anchor="middle" id="ebmCenterName" font-size="10px" font-weight="800"
-                  fill="var(--hub-text)">ASK</text>
-              </svg>
+              <!-- Tool 2: NNT / ARR Quick Calculator -->
+              <div class="quick-tool-box">
+                <h4><i class="fa-solid fa-calculator" style="color: var(--hub-blue);"></i> Máy Tính NNT / ARR Nhanh</h4>
+                <div class="quick-tool-inputs">
+                  <div>
+                    <label style="font-size: 0.72rem; font-weight: 600; color: var(--hub-text-muted);">Tỷ lệ nhóm chứng (CER %)</label>
+                    <input type="number" id="nnt-cer" placeholder="Ví dụ: 12.5" step="0.1">
+                  </div>
+                  <div>
+                    <label style="font-size: 0.72rem; font-weight: 600; color: var(--hub-text-muted);">Tỷ lệ can thiệp (EER %)</label>
+                    <input type="number" id="nnt-eer" placeholder="Ví dụ: 7.2" step="0.1">
+                  </div>
+                </div>
+                <div class="quick-tool-result-box" id="nnt-output">
+                  <span style="color: var(--hub-text-muted);">Nhập CER (%) và EER (%) để tính Giảm nguy cơ tuyệt đối (ARR) & NNT.</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. SPECIALTY LOOKUP MATRIX -->
+          <div>
+            <h2 class="hub-section-title">🏥 Tra Cứu Theo Chuyên Khoa</h2>
+
+            <div class="hub-spec-lookup-grid">
+              <!-- Tim Mạch -->
+              <a href="guidelines/kho-guidelines/index.html?spec=cardiology" class="hub-spec-lookup-card" style="--spec-color: #ef4444; --spec-bg: rgba(239, 68, 68, 0.12);">
+                <div class="hub-spec-icon-wrapper">🫀</div>
+                <div class="hub-spec-info">
+                  <h4>Tim Mạch</h4>
+                  <p>Tăng huyết áp, ĐMV, Suy tim, Rung nhĩ</p>
+                </div>
+                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+              </a>
+
+              <!-- Nội Tiết -->
+              <a href="guidelines/kho-guidelines/index.html?spec=endocrinology" class="hub-spec-lookup-card" style="--spec-color: #f59e0b; --spec-bg: rgba(245, 158, 11, 0.12);">
+                <div class="hub-spec-icon-wrapper">🩺</div>
+                <div class="hub-spec-info">
+                  <h4>Nội Tiết & ĐTĐ</h4>
+                  <p>Đái tháo đường T2, Tuyến giáp, Đột quỵ</p>
+                </div>
+                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+              </a>
+
+              <!-- Hô Hấp -->
+              <a href="guidelines/kho-guidelines/index.html?spec=pulmonology" class="hub-spec-lookup-card" style="--spec-color: #06b6d4; --spec-bg: rgba(6, 182, 212, 0.12);">
+                <div class="hub-spec-icon-wrapper">🫁</div>
+                <div class="hub-spec-info">
+                  <h4>Hô Hấp</h4>
+                  <p>COPD, Hen phế quản, Viêm phổi</p>
+                </div>
+                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+              </a>
+
+              <!-- Tiêu Hóa -->
+              <a href="guidelines/kho-guidelines/index.html?spec=gastroenterology" class="hub-spec-lookup-card" style="--spec-color: #10b981; --spec-bg: rgba(16, 185, 129, 0.12);">
+                <div class="hub-spec-icon-wrapper">🩺</div>
+                <div class="hub-spec-info">
+                  <h4>Tiêu Hóa - Gan Mật</h4>
+                  <p>Xơ gan, Xuất huyết tiêu hóa, GERD</p>
+                </div>
+                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+              </a>
+
+              <!-- Cấp Cứu - Hồi Sức -->
+              <a href="guidelines/kho-guidelines/index.html?spec=icu" class="hub-spec-lookup-card" style="--spec-color: #7c3aed; --spec-bg: rgba(124, 58, 237, 0.12);">
+                <div class="hub-spec-icon-wrapper">⚡</div>
+                <div class="hub-spec-info">
+                  <h4>Cấp Cứu - ICU</h4>
+                  <p>Nhiễm trùng huyết, ARDS, Sốc nhiễm khuẩn</p>
+                </div>
+                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+              </a>
+
+              <!-- Nhi Khoa -->
+              <a href="guidelines/kho-guidelines/index.html?spec=pediatrics" class="hub-spec-lookup-card" style="--spec-color: #ec4899; --spec-bg: rgba(236, 72, 153, 0.12);">
+                <div class="hub-spec-icon-wrapper">👶</div>
+                <div class="hub-spec-info">
+                  <h4>Nhi Khoa</h4>
+                  <p>Sốt cao co giật, Tiêu chảy cấp, Viêm tiểu phế quản</p>
+                </div>
+                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+              </a>
+            </div>
+          </div>
+
+          <!-- 4. RECENT PRACTICE-CHANGING UPDATES WIDGET -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <h2 class="hub-section-title" style="margin-bottom: 0;">📡 Cập Nhật Mới Nhất (Radar Feed)</h2>
+              <button onclick="toggleYhccUpdates()" style="background: transparent; border: none; font-size: 0.82rem; font-weight: 700; color: var(--hub-blue); cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                <span id="yhcc-updates-toggle-label">Thu gọn</span>
+                <span id="yhcc-updates-toggle-icon">▲</span>
+              </button>
             </div>
 
-            <!-- Details Panel -->
-            <div class="physio-details-card" id="ebmDetailsCard"
-              style="background: var(--hub-surface-2); border-radius: 12px; border: 1px solid var(--hub-border); margin-top: 0.5rem;">
+            <div id="yhcc-updates-content" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 1rem;">
+              <!-- Dynamic populated by JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: DUAL STUDIO WIDGET (6S PYRAMID & 5AS WHEEL) -->
+        <aside class="layout-widget-sidebar">
+          <section class="widget-card" aria-labelledby="ebm-studio-title">
+
+            <!-- STUDIO TAB SWITCHER -->
+            <div class="studio-tabs-bar">
+              <button class="studio-tab-btn active" id="tab-btn-pyramid" onclick="switchEbmStudioTab('pyramid')">
+                <i class="fa-solid fa-layer-group"></i> Tháp 6S EBM
+              </button>
+              <button class="studio-tab-btn" id="tab-btn-wheel" onclick="switchEbmStudioTab('wheel')">
+                <i class="fa-solid fa-rotate"></i> Chu Trình 5As
+              </button>
+            </div>
+
+            <!-- VIEW 1: 6S EVIDENCE PYRAMID -->
+            <div id="studio-view-pyramid">
+              <div style="text-align: center; margin-bottom: 0.75rem;">
+                <h3 id="ebm-studio-title" style="font-size: 1rem; font-weight: 800; color: var(--hub-text); margin: 0;">🔺 Tháp Bằng Chứng 6S</h3>
+                <p style="font-size: 0.75rem; color: var(--hub-text-muted); margin: 0.25rem 0 0 0;">
+                  Phân cấp bằng chứng theo mô hình 6S của Haynes. Nhấp chọn từng tầng để thẩm định.
+                </p>
+              </div>
+
+              <div class="pyramid-6s-wrapper" id="pyramid6sContainer">
+                <!-- Level 6 -->
+                <div class="pyramid-6s-layer active" data-level="6" style="--layer-width: 55%; --layer-bg: #7c3aed;">
+                  <span>L6. Systems (Hệ thống)</span>
+                  <span class="pyramid-grade-pill">GRADE A</span>
+                </div>
+                <!-- Level 5 -->
+                <div class="pyramid-6s-layer" data-level="5" style="--layer-width: 64%; --layer-bg: #0284c7;">
+                  <span>L5. Summaries (Tóm tắt)</span>
+                  <span class="pyramid-grade-pill">GRADE A/B</span>
+                </div>
+                <!-- Level 4 -->
+                <div class="pyramid-6s-layer" data-level="4" style="--layer-width: 73%; --layer-bg: #06b6d4;">
+                  <span>L4. Synopses Syntheses</span>
+                  <span class="pyramid-grade-pill">GRADE B</span>
+                </div>
+                <!-- Level 3 -->
+                <div class="pyramid-6s-layer" data-level="3" style="--layer-width: 82%; --layer-bg: #10b981;">
+                  <span>L3. Syntheses (Tổng quan)</span>
+                  <span class="pyramid-grade-pill">GRADE B</span>
+                </div>
+                <!-- Level 2 -->
+                <div class="pyramid-6s-layer" data-level="2" style="--layer-width: 91%; --layer-bg: #f59e0b;">
+                  <span>L2. Synopses Studies</span>
+                  <span class="pyramid-grade-pill">GRADE C</span>
+                </div>
+                <!-- Level 1 -->
+                <div class="pyramid-6s-layer" data-level="1" style="--layer-width: 100%; --layer-bg: #64748b;">
+                  <span>L1. Single Studies (Nghiên cứu)</span>
+                  <span class="pyramid-grade-pill">GRADE C/D</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIEW 2: 5AS ROTATING WHEEL -->
+            <div id="studio-view-wheel" style="display: none;">
+              <div style="text-align: center; margin-bottom: 0.75rem;">
+                <h3 style="font-size: 1rem; font-weight: 800; color: var(--hub-text); margin: 0;">🔄 Chu Trình 5As EBM</h3>
+                <p style="font-size: 0.75rem; color: var(--hub-text-muted); margin: 0.25rem 0 0 0;">
+                  5 bước thực hành lâm sàng y học chứng cứ. Nhấp vào các phần bánh xe để khám phá.
+                </p>
+              </div>
+
+              <div class="ebm-wheel-container">
+                <svg viewBox="0 0 200 200" class="ebm-svg" id="ebmSvg" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Sector 1: ASK -->
+                  <path class="ebm-sector active" data-index="0" d="M 100 100 L 100 20 A 80 80 0 0 1 176.08 75.28 Z"
+                    fill="#7c3aed" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                  <!-- Sector 2: ACQUIRE -->
+                  <path class="ebm-sector" data-index="1" d="M 100 100 L 176.08 75.28 A 80 80 0 0 1 147.02 164.72 Z"
+                    fill="#06b6d4" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                  <!-- Sector 3: APPRAISE -->
+                  <path class="ebm-sector" data-index="2" d="M 100 100 L 147.02 164.72 A 80 80 0 0 1 52.98 164.72 Z"
+                    fill="#3b82f6" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                  <!-- Sector 4: APPLY -->
+                  <path class="ebm-sector" data-index="3" d="M 100 100 L 52.98 164.72 A 80 80 0 0 1 23.92 75.28 Z"
+                    fill="#10b981" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+                  <!-- Sector 5: ASSESS -->
+                  <path class="ebm-sector" data-index="4" d="M 100 100 L 23.92 75.28 A 80 80 0 0 1 100 20 Z"
+                    fill="#f59e0b" opacity="0.85" stroke="#fff" stroke-width="1.5" />
+
+                  <!-- Center Donut Cutout -->
+                  <circle cx="100" cy="100" r="40" fill="var(--hub-surface)" stroke="var(--hub-border)" stroke-width="1.5" />
+                  <text x="100" y="96" text-anchor="middle" font-size="8px" font-weight="700" fill="var(--hub-text-muted)" style="letter-spacing: 0.5px; text-transform: uppercase;">Chu trình</text>
+                  <text x="100" y="112" text-anchor="middle" id="ebmCenterName" font-size="10px" font-weight="800" fill="var(--hub-text)">ASK</text>
+                </svg>
+              </div>
+            </div>
+
+            <!-- DETAILS PANEL FOR ACTIVE STUDIO COMPONENT -->
+            <div class="physio-details-card" id="ebmDetailsCard">
               <!-- Populated dynamically by JS -->
             </div>
+
           </section>
         </aside>
 
@@ -1078,16 +1389,69 @@
 
   <footer class="global-footer">
     <div class="footer-copyright">
-      <p>CliniPortal © 2026 · Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop · Chỉ mang tính hỗ trợ tham
-        khảo, không thay thế phán xét lâm sàng của bác sĩ y khoa.</p>
+      <p>CliniPortal © 2026 · Giao diện tối ưu hóa hiển thị linh hoạt trên Mobile và Desktop · Chỉ mang tính hỗ trợ tham khảo, không thay thế phán xét lâm sàng của bác sĩ y khoa.</p>
     </div>
   </footer>
 
   <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 
-  <!-- ===================== EBM CYCLE WHEEL SCRIPT ===================== -->
+  <!-- ===================== EBM DUAL STUDIO SCRIPT ===================== -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+
+      // --- DATA 1: 6S EVIDENCE PYRAMID DATA ---
+      const pyramidData = {
+        6: {
+          title: "Tầng 6: Systems (Hệ Thống Hỗ Trợ Ra Quyết Định CDSS)",
+          color: "#7c3aed",
+          grade: "GRADE Level A (Rất Cao)",
+          desc: "Hệ thống máy tính tích hợp hồ sơ bệnh án điện tử (EMR) tự động kết nối dữ liệu bệnh nhân với y văn chứng cứ để đưa ra cảnh báo điều trị cá thể hóa.",
+          tools: "UpToDate Advanced, Zynx Health, EHR Order Sets tích hợp CDSS.",
+          pearl: "Đỉnh cao nhất của EBM vì không tốn thời gian tra cứu thủ công tại giường bệnh."
+        },
+        5: {
+          title: "Tầng 5: Summaries (Tóm Tắt Khuyến Cáo & Guidelines)",
+          color: "#0284c7",
+          grade: "GRADE Level A/B (Cao)",
+          desc: "Các tài liệu tóm tắt khuyến cáo thực hành lâm sàng được xây dựng dựa trên đánh giá phê bình toàn bộ các nghiên cứu tổng quan hệ thống.",
+          tools: "Kho Guidelines Bộ Y Tế, ESC Guidelines, ADA Standards of Care, GINA, GOLD.",
+          pearl: "Công cụ tham chiếu hàng ngày hàng đầu cho bác sĩ lâm sàng khi đưa ra phác đồ."
+        },
+        4: {
+          title: "Tầng 4: Synopses of Syntheses (Tóm Tắt Các Tổng Quan)",
+          color: "#06b6d4",
+          grade: "GRADE Level B (Trung Bình - Cao)",
+          desc: "Bài tóm tắt ngắn gọn (1-2 trang) kết quả của một hoặc nhiều nghiên cứu Tổng quan hệ thống (Systematic Review), có rút ra bài học thực hành.",
+          tools: "BMJ Clinical Evidence, ACP Journal Club Summary, Evidence-Based Medicine Online.",
+          pearl: "Giúp nắm bắt kết quả tổng quan hệ thống nhanh chóng trong 3-5 phút."
+        },
+        3: {
+          title: "Tầng 3: Syntheses (Tổng Quan Hệ Thống & Meta-Analysis)",
+          color: "#10b981",
+          grade: "GRADE Level B (Trung Bình)",
+          desc: "Nghiên cứu tổng hợp bài bản toàn bộ các thử nghiệm lâm sàng ngẫu nhiên đối chứng (RCT) về một câu hỏi cụ thể, kèm phân tích gộp (Forest Plot).",
+          tools: "Cochrane Database of Systematic Reviews (CDSR), PubMed Meta-Analysis Filter.",
+          pearl: "Nguồn chứng cứ mạnh nhất để trả lời câu hỏi về hiệu quả của một phương pháp điều trị."
+        },
+        2: {
+          title: "Tầng 2: Synopses of Single Studies (Tóm Tắt Nghiên Cứu Đơn Lẻ)",
+          color: "#f59e0b",
+          grade: "GRADE Level C (Trung Bình - Thấp)",
+          desc: "Bài tóm tắt ngắn gọn có phản biện lâm sàng về một nghiên cứu thử nghiệm đơn lẻ mới xuất bản.",
+          tools: "Journal Watch, DARE (Database of Abstracts of Reviews of Effects).",
+          pearl: "Tiết kiệm thời gian đọc toàn văn bài báo gốc mà vẫn nắm được sai số chính."
+        },
+        1: {
+          title: "Tầng 1: Single Studies (Nghiên Cứu Đơn Lẻ)",
+          color: "#64748b",
+          grade: "GRADE Level C/D (Thấp)",
+          desc: "Các báo cáo nghiên cứu gốc đơn lẻ: Thử nghiệm lâm sàng ngẫu nhiên đối chứng (RCT), Nghiên cứu đoàn hệ (Cohort), Bệnh chứng (Case-Control).",
+          tools: "NEJM, Lancet, JAMA, Circulation, PubMed Primary Studies.",
+          pearl: "Cần cảnh giác với sai số chọn, sai số làm mù trước khi áp dụng trực tiếp."
+        }
+      };
+
+      // --- DATA 2: 5AS EBM WHEEL DATA ---
       const ebmData = [
         {
           abbr: "ASK",
@@ -1131,13 +1495,81 @@
         }
       ];
 
+      let currentStudioMode = 'pyramid'; // 'pyramid' or 'wheel'
+      const detailsCard = document.getElementById("ebmDetailsCard");
+
+      // --- SWITCH STUDIO TAB FUNCTION ---
+      window.switchEbmStudioTab = function(mode) {
+        currentStudioMode = mode;
+        const btnPyramid = document.getElementById('tab-btn-pyramid');
+        const btnWheel = document.getElementById('tab-btn-wheel');
+        const viewPyramid = document.getElementById('studio-view-pyramid');
+        const viewWheel = document.getElementById('studio-view-wheel');
+
+        if (mode === 'pyramid') {
+          btnPyramid.classList.add('active');
+          btnWheel.classList.remove('active');
+          viewPyramid.style.display = 'block';
+          viewWheel.style.display = 'none';
+          highlightPyramidLevel(6);
+        } else {
+          btnWheel.classList.add('active');
+          btnPyramid.classList.remove('active');
+          viewPyramid.style.display = 'none';
+          viewWheel.style.display = 'block';
+          highlightSector(0);
+        }
+      };
+
+      // --- HIGHLIGHT 6S PYRAMID LEVEL ---
+      function highlightPyramidLevel(lvl) {
+        const layers = document.querySelectorAll('.pyramid-6s-layer');
+        layers.forEach(l => {
+          if (parseInt(l.getAttribute('data-level')) === lvl) {
+            l.classList.add('active');
+          } else {
+            l.classList.remove('active');
+          }
+        });
+
+        const data = pyramidData[lvl];
+        if (!data || !detailsCard) return;
+
+        detailsCard.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--hub-border); padding-bottom: 0.4rem; margin-bottom: 0.5rem;">
+            <h4 style="font-size: 0.88rem; font-weight: 700; color: ${data.color}; margin: 0;">${data.title}</h4>
+            <span style="font-size: 0.65rem; font-weight: 800; padding: 2px 7px; border-radius: 12px; background: ${data.color}; color: #fff;">${data.grade}</span>
+          </div>
+          <div style="margin-bottom: 0.4rem; font-size: 0.78rem;">
+            <strong>Mô tả & Định nghĩa:</strong>
+            <p style="margin: 0.15rem 0 0 0; color: var(--hub-text); line-height: 1.45;">${data.desc}</p>
+          </div>
+          <div style="margin-bottom: 0.4rem; font-size: 0.78rem;">
+            <strong>Công cụ tiêu biểu:</strong>
+            <p style="margin: 0.15rem 0 0 0; color: var(--hub-text-muted); line-height: 1.45;">${data.tools}</p>
+          </div>
+          <div style="border-top: 1px dashed var(--hub-border); padding-top: 0.4rem; margin-top: 0.4rem; font-size: 0.78rem;">
+            <strong>Lưu ý áp dụng:</strong>
+            <p style="margin: 0.15rem 0 0 0; color: ${data.color}; font-weight: 600;">💡 ${data.pearl}</p>
+          </div>
+        `;
+      }
+
+      // Add click listeners to Pyramid Layers
+      const layers = document.querySelectorAll('.pyramid-6s-layer');
+      layers.forEach(l => {
+        l.addEventListener('click', function () {
+          const lvl = parseInt(this.getAttribute('data-level'));
+          highlightPyramidLevel(lvl);
+        });
+      });
+
+      // --- HIGHLIGHT 5AS WHEEL SECTOR ---
       const sectors = document.querySelectorAll(".ebm-sector");
       const ebmSvg = document.getElementById("ebmSvg");
       const centerName = document.getElementById("ebmCenterName");
-      const detailsCard = document.getElementById("ebmDetailsCard");
 
       function highlightSector(index) {
-        // Toggle active class
         sectors.forEach((sec, idx) => {
           if (idx === index) {
             sec.classList.add("active");
@@ -1151,43 +1583,42 @@
         });
 
         const data = ebmData[index];
+        if (!data || !detailsCard) return;
 
-        // Update SVG center text
-        centerName.innerText = data.abbr;
-        centerName.setAttribute("fill", data.color);
+        if (centerName) {
+          centerName.innerText = data.abbr;
+          centerName.setAttribute("fill", data.color);
+        }
 
-        // Render details card
         detailsCard.innerHTML = `
-          <div class="physio-details-header" style="border-bottom-color: var(--hub-border); margin-bottom: 0.5rem; padding-bottom: 0.25rem;">
+          <div style="border-bottom: 1px solid var(--hub-border); margin-bottom: 0.4rem; padding-bottom: 0.4rem;">
             <h4 style="font-size: 0.88rem; font-weight: 700; color: ${data.color}; margin: 0;">${data.title}</h4>
           </div>
-          <div class="meridian-detail-row" style="margin-bottom: 0.5rem; font-size: 0.78rem;">
+          <div style="margin-bottom: 0.4rem; font-size: 0.78rem;">
             <strong>Mục tiêu cốt lõi:</strong>
-            <p class="meridian-detail-desc" style="margin:0.15rem 0 0 0; color: var(--hub-text);">${data.goal}</p>
+            <p style="margin:0.15rem 0 0 0; color: var(--hub-text); line-height: 1.45;">${data.goal}</p>
           </div>
-          <div class="meridian-detail-row" style="margin-bottom: 0.5rem; font-size: 0.78rem;">
+          <div style="margin-bottom: 0.4rem; font-size: 0.78rem;">
             <strong>Công cụ áp dụng:</strong>
-            <p class="meridian-detail-desc" style="margin:0.15rem 0 0 0; color: var(--hub-text-muted);">${data.tools}</p>
+            <p style="margin:0.15rem 0 0 0; color: var(--hub-text-muted); line-height: 1.45;">${data.tools}</p>
           </div>
-          <div class="meridian-detail-row" style="margin-bottom: 0; border-top: 1px dashed var(--hub-border); padding-top: 0.5rem; margin-top: 0.5rem; font-size: 0.78rem;">
+          <div style="border-top: 1px dashed var(--hub-border); padding-top: 0.4rem; margin-top: 0.4rem; font-size: 0.78rem;">
             <strong>Mẹo lâm sàng thực tế:</strong>
-            <p class="meridian-detail-desc" style="margin:0.15rem 0 0 0; color: ${data.color}; font-weight: 500;">💡 ${data.pearl}</p>
+            <p style="margin:0.15rem 0 0 0; color: ${data.color}; font-weight: 600;">💡 ${data.pearl}</p>
           </div>
         `;
       }
 
-      // Add click listeners to sectors
       sectors.forEach((sec, idx) => {
         sec.addEventListener("click", () => {
-          // 5 sectors = 72 degrees each. Rotate so clicked is at top (offset -0 deg)
           const targetAngle = -idx * 72;
-          ebmSvg.style.transform = `rotate(${targetAngle}deg)`;
+          if (ebmSvg) ebmSvg.style.transform = `rotate(${targetAngle}deg)`;
           highlightSector(idx);
         });
       });
 
-      // Initialize with sector 0 (ASK)
-      highlightSector(0);
+      // Initialize Studio Pyramid Level 6
+      highlightPyramidLevel(6);
     });
   </script>
 
@@ -1195,37 +1626,31 @@
   <script src="../../../js/core/cliniportal-sync.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+
+      // --- 1. REALTIME KPI STATS ENGINE ---
       function renderEbmHubWidgets() {
         if (!window.CliniPortalSync) return;
 
-        // 1. Render Stats
         const stats = window.CliniPortalSync.getSummaryStats();
         const totalEl = document.getElementById('stat-total-guidelines');
-        const mohEl = document.getElementById('stat-moh-guidelines');
         const practiceEl = document.getElementById('stat-practice-changing');
+        const mohEl = document.getElementById('stat-moh-guidelines');
+        const intlEl = document.getElementById('stat-intl-guidelines');
 
-        if (totalEl) totalEl.textContent = stats.total + ' Bài';
-        if (mohEl) mohEl.textContent = (stats.mohCount + stats.associationCount) + ' Guideline';
-        if (practiceEl) practiceEl.textContent = stats.practiceChangingCount + ' Đổi mới';
+        if (totalEl) totalEl.textContent = (stats.total || 0) + ' Bài';
+        if (practiceEl) practiceEl.textContent = (stats.practiceChangingCount || 0) + ' Đổi mới';
+        if (mohEl) mohEl.textContent = ((stats.mohCount || 0) + (stats.associationCount || 0)) + ' Bài';
+        if (intlEl) intlEl.textContent = (stats.intlCount || 0) + ' Bài';
       }
 
-      window.addEventListener('cliniportal:guidelines-updated', function() {
-        renderEbmHubWidgets();
-        renderRecentUpdatesWidget();
-      });
-
-      // Render initial stats and updates widget
-      renderEbmHubWidgets();
-      renderRecentUpdatesWidget();
-
-      // 2. Render Recent Updates Widget (Có Gì Mới)
+      // --- 2. RECENT UPDATES RADAR FEED ---
       function renderRecentUpdatesWidget() {
         const contentEl = document.getElementById('yhcc-updates-content');
         if (!contentEl) return;
 
-        const studies = window.CliniPortalSync ? window.CliniPortalSync.getRecentPracticeChanging(3) : [];
+        const studies = window.CliniPortalSync ? window.CliniPortalSync.getRecentPracticeChanging(4) : [];
         if (!studies || studies.length === 0) {
-          contentEl.innerHTML = `<div style="font-size:0.8rem; color:var(--hub-text-muted); padding:0.5rem; text-align:center;">Chưa có dữ liệu cập nhật mới.</div>`;
+          contentEl.innerHTML = `<div style="font-size:0.82rem; color:var(--hub-text-muted); padding:1rem; text-align:center; grid-column: 1/-1;">Đang tải hoặc chưa có dữ liệu cập nhật mới.</div>`;
           return;
         }
 
@@ -1234,22 +1659,22 @@
           const rawFile = item.file || '';
           const fileUrl = rawFile ? ('guidelines/' + (rawFile.startsWith('kho-guidelines/') ? rawFile : rawFile)) : 'guidelines/guidelines.html';
           const isPractice = item.impact === 'practice-changing';
-          const badgeBg = isPractice ? '#ecfdf5' : '#eff6ff';
-          const badgeColor = isPractice ? '#047857' : '#1e40af';
+          const badgeBg = isPractice ? 'rgba(16, 185, 129, 0.15)' : 'rgba(2, 132, 199, 0.15)';
+          const badgeColor = isPractice ? '#10b981' : '#0284c7';
           const badgeText = isPractice ? '🏆 Practice-Changing' : '📘 Guideline Update';
 
           html += `
-            <a href="${fileUrl}" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--hub-surface-2); border: 1px solid var(--hub-border); border-radius: 12px; padding: 0.85rem 1rem; text-decoration: none; color: var(--hub-text); transition: all 0.2s;" onmouseover="this.style.borderColor='var(--hub-blue)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--hub-border)'; this.style.transform='none'">
+            <a href="${fileUrl}" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--hub-surface); border: 1px solid var(--hub-border); border-radius: 14px; padding: 1rem; text-decoration: none; color: var(--hub-text); transition: all 0.2s; box-shadow: var(--shadow-sm);" onmouseover="this.style.borderColor='var(--hub-blue)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--hub-border)'; this.style.transform='none'">
               <div>
-                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem;">
-                  <span style="font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; background: ${badgeBg}; color: ${badgeColor};">${badgeText}</span>
-                  <span style="font-size: 0.7rem; color: var(--hub-text-faint); font-weight: 600;">${item.year || '2026'}</span>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.4rem;">
+                  <span style="font-size: 0.68rem; font-weight: 700; padding: 2px 8px; border-radius: 12px; background: ${badgeBg}; color: ${badgeColor};">${badgeText}</span>
+                  <span style="font-size: 0.72rem; color: var(--hub-text-faint); font-weight: 600;">${item.year || '2026'}</span>
                 </div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: var(--hub-text); line-height: 1.35; margin-bottom: 0.35rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.title || ''}</div>
+                <div style="font-size: 0.88rem; font-weight: 700; color: var(--hub-text); line-height: 1.35; margin-bottom: 0.4rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.title || ''}</div>
               </div>
-              <div style="font-size: 0.73rem; color: var(--hub-text-muted); display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; padding-top: 0.35rem; border-top: 1px dashed var(--hub-border);">
+              <div style="font-size: 0.75rem; color: var(--hub-text-muted); display: flex; align-items: center; justify-content: space-between; margin-top: 0.6rem; padding-top: 0.4rem; border-top: 1px dashed var(--hub-border);">
                 <span>${item.organization || 'Bộ Y Tế / Hội VN'}</span>
-                <span style="color: var(--hub-blue); font-weight: 700;">Xem →</span>
+                <span style="color: var(--hub-blue); font-weight: 700;">Xem chi tiết →</span>
               </div>
             </a>
           `;
@@ -1293,19 +1718,37 @@
       renderEbmHubWidgets();
       renderRecentUpdatesWidget();
 
-      // Subscribe to real-time update events
       window.addEventListener('cliniportal:guidelines-updated', function() {
         renderEbmHubWidgets();
         renderRecentUpdatesWidget();
       });
 
-      // 3. Search Bar Interactivity
+      // --- 3. COMMAND SEARCH BAR (CTRL + K) ENGINE ---
       const searchInput = document.getElementById('ebm-global-search');
       const resultsContainer = document.getElementById('ebm-search-results');
 
+      window.quickSearch = function(tag) {
+        if (!searchInput) return;
+        searchInput.value = tag;
+        searchInput.dispatchEvent(new Event('input'));
+        searchInput.focus();
+      };
+
+      document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+          }
+        }
+      });
+
       if (searchInput && resultsContainer) {
         searchInput.addEventListener('input', function () {
-          const query = searchInput.value.trim();
+          let query = searchInput.value.trim();
+          if (query.startsWith('#')) query = query.substring(1);
+
           if (!query) {
             resultsContainer.style.display = 'none';
             return;
@@ -1313,15 +1756,16 @@
 
           const matches = window.CliniPortalSync ? window.CliniPortalSync.searchGuidelines(query) : [];
           if (matches.length === 0) {
-            resultsContainer.innerHTML = `<div style="font-size: 0.8rem; color: var(--hub-text-muted); padding: 0.5rem; text-align: center;">Không tìm thấy bài Guideline phù hợp</div>`;
+            resultsContainer.innerHTML = `<div style="font-size: 0.82rem; color: var(--hub-text-muted); padding: 0.75rem; text-align: center;">Không tìm thấy bài Guideline phù hợp với từ khóa "${query}"</div>`;
           } else {
             let resHtml = `<div style="font-size: 0.72rem; font-weight: 700; color: var(--hub-text-muted); margin-bottom: 0.5rem; text-transform: uppercase;">Kết quả Guidelines (${matches.length})</div>`;
-            matches.slice(0, 5).forEach(m => {
-              const fileUrl = m.file ? ('Guidelines/' + m.file) : ('Guidelines/Guidelines.html');
+            matches.slice(0, 6).forEach(m => {
+              const rawFile = m.file || '';
+              const fileUrl = rawFile ? ('guidelines/' + (rawFile.startsWith('kho-guidelines/') ? rawFile : rawFile)) : 'guidelines/guidelines.html';
               resHtml += `
-                <a href="${fileUrl}" style="display: block; padding: 0.5rem; border-radius: 8px; text-decoration: none; color: var(--hub-text); font-size: 0.82rem; transition: background 0.15s;" onmouseover="this.style.background='var(--hub-surface-2)'" onmouseout="this.style.background='transparent'">
+                <a href="${fileUrl}" style="display: block; padding: 0.6rem; border-radius: 10px; text-decoration: none; color: var(--hub-text); font-size: 0.85rem; transition: background 0.15s;" onmouseover="this.style.background='var(--hub-surface-2)'" onmouseout="this.style.background='transparent'">
                   <div style="font-weight: 700; color: var(--hub-blue);">${m.title}</div>
-                  <div style="font-size: 0.75rem; color: var(--hub-text-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${m.organization || ''} · ${m.drug || ''}</div>
+                  <div style="font-size: 0.76rem; color: var(--hub-text-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${m.organization || ''} · ${m.specialty || ''}</div>
                 </a>
               `;
             });
@@ -1336,6 +1780,92 @@
           }
         });
       }
+
+      // --- 4. BEDSIDE PICO BUILDER & NNT CALCULATOR REALTIME INTERACTION ---
+      const picoP = document.getElementById('pico-p');
+      const picoI = document.getElementById('pico-i');
+      const picoC = document.getElementById('pico-c');
+      const picoO = document.getElementById('pico-o');
+      const picoOut = document.getElementById('pico-output');
+
+      function updatePicoString() {
+        if (!picoOut) return;
+        const p = picoP ? picoP.value.trim() : '';
+        const i = picoI ? picoI.value.trim() : '';
+        const c = picoC ? picoC.value.trim() : '';
+        const o = picoO ? picoO.value.trim() : '';
+
+        if (!p && !i && !c && !o) {
+          picoOut.innerHTML = `<span style="color: var(--hub-text-muted);">Nhập thông tin PICO để tự động sinh từ khóa tìm kiếm PubMed.</span>`;
+          return;
+        }
+
+        let terms = [];
+        if (p) terms.push(`("${p}"[Title/Abstract])`);
+        if (i) terms.push(`("${i}"[Title/Abstract])`);
+        if (c) terms.push(`("${c}"[Title/Abstract])`);
+        if (o) terms.push(`("${o}"[Title/Abstract])`);
+
+        const queryStr = terms.join(' AND ');
+        const pubmedUrl = `https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(queryStr)}`;
+
+        picoOut.innerHTML = `
+          <div style="font-weight: 700; font-family: monospace; font-size: 0.78rem; color: var(--hub-purple); word-break: break-all; margin-bottom: 0.4rem;">${queryStr}</div>
+          <a href="${pubmedUrl}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 700; color: #fff; background: var(--hub-purple); padding: 3px 10px; border-radius: 6px; text-decoration: none;">
+            🔍 Tra cứu PubMed <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        `;
+      }
+
+      [picoP, picoI, picoC, picoO].forEach(el => {
+        if (el) el.addEventListener('input', updatePicoString);
+      });
+
+      // NNT Calculator
+      const nntCer = document.getElementById('nnt-cer');
+      const nntEer = document.getElementById('nnt-eer');
+      const nntOut = document.getElementById('nnt-output');
+
+      function updateNntCalc() {
+        if (!nntOut) return;
+        const cer = parseFloat(nntCer ? nntCer.value : NaN);
+        const eer = parseFloat(nntEer ? nntEer.value : NaN);
+
+        if (isNaN(cer) || isNaN(eer)) {
+          nntOut.innerHTML = `<span style="color: var(--hub-text-muted);">Nhập CER (%) và EER (%) để tính Giảm nguy cơ tuyệt đối (ARR) & NNT.</span>`;
+          return;
+        }
+
+        const arr = (cer - eer) / 100;
+        if (arr === 0) {
+          nntOut.innerHTML = `<span style="color: var(--hub-text-muted);">CER và EER bằng nhau (ARR = 0%), không có sự khác biệt điều trị.</span>`;
+          return;
+        }
+
+        const nnt = Math.ceil(1 / Math.abs(arr));
+        const isHarm = arr < 0;
+        const labelText = isHarm ? 'NNH (Cần điều trị để gây hại 1 bệnh nhân)' : 'NNT (Cần điều trị để ngừa 1 biến cố)';
+        const arrPct = (Math.abs(arr) * 100).toFixed(2);
+        const themeColor = isHarm ? '#ef4444' : '#10b981';
+
+        nntOut.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+            <div>
+              <div style="font-size: 0.73rem; color: var(--hub-text-muted);">${labelText}</div>
+              <div style="font-size: 1.25rem; font-weight: 800; color: ${themeColor};">${nnt} người</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.73rem; color: var(--hub-text-muted);">Giảm nguy cơ tuyệt đối (ARR)</div>
+              <div style="font-size: 1rem; font-weight: 700; color: var(--hub-text);">${arrPct}%</div>
+            </div>
+          </div>
+        `;
+      }
+
+      [nntCer, nntEer].forEach(el => {
+        if (el) el.addEventListener('input', updateNntCalc);
+      });
+
     });
   </script>
 </body>

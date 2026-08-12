@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -31,6 +31,496 @@
   <link rel="stylesheet" href="../../../css/components/module-dashboard.css">
   <link rel="stylesheet" href="../../../css/components/cong-cu.css">
   <link rel="stylesheet" href="../../../css/components/overflow-list.css">
+
+  <style>
+    /* ============================================================
+       VIPPRO 2000$ COMMAND CENTER OVERRIDE — CÔNG CỤ LÂM SÀNG
+    ============================================================ */
+    :root {
+      --hub-violet: #7c3aed;
+      --hub-violet-dark: #5b21b6;
+      --hub-violet-light: rgba(124, 58, 237, 0.12);
+      --hub-indigo: #4f46e5;
+      --hub-surface: var(--color-surface, #ffffff);
+      --hub-surface-2: var(--color-surface-2, #f8fafc);
+      --hub-border: var(--color-divider, #e2e8f0);
+      --hub-text: var(--color-text, #0f172a);
+      --hub-text-muted: var(--color-text-muted, #475569);
+      --hub-tr: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --hub-surface: var(--color-surface, #1e293b);
+      --hub-surface-2: var(--color-surface-2, #0f172a);
+      --hub-border: var(--color-divider, #334155);
+      --hub-text: var(--color-text, #f8fafc);
+      --hub-text-muted: var(--color-text-muted, #94a3b8);
+      --hub-violet-light: rgba(167, 139, 250, 0.15);
+    }
+
+    /* 1. HERO COMMAND CENTER */
+    .hero-dashboard.hero-tools {
+      position: relative;
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 30%, #4338ca 60%, #0891b2 100%) !important;
+      border-radius: 24px !important;
+      padding: 3rem 2.5rem !important;
+      margin-bottom: 2rem !important;
+      overflow: hidden;
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .hero-dashboard.hero-tools::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -100px;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.35) 0%, rgba(99, 102, 241, 0.06) 60%, transparent 70%);
+      filter: blur(40px);
+      animation: calc-glow 8s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+
+    .hero-dashboard.hero-tools::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: 15%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%);
+      filter: blur(40px);
+      animation: calc-glow 10s infinite alternate-reverse ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes calc-glow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      100% { transform: scale(1.15) translate(20px, -20px); opacity: 1; }
+    }
+
+    /* Spinning gears decoration */
+    @keyframes gear-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes gear-spin-reverse {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    .gears-svg .gear-large {
+      transform-origin: 40px 40px;
+      animation: gear-spin 12s linear infinite;
+    }
+    .gears-svg .gear-small {
+      transform-origin: 72px 68px;
+      animation: gear-spin-reverse 8s linear infinite;
+    }
+
+    .tcm-hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-intro {
+      flex: 1;
+    }
+
+    /* Hero badge above title */
+    .hero-intro::before {
+      content: "⚙️ Command Center — Công cụ Lâm sàng";
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #c4b5fd;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-intro h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: clamp(1.8rem, 1.3rem + 2vw, 2.75rem) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.035em !important;
+      line-height: 1.15 !important;
+      margin: 0 0 0.85rem !important;
+      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 50%, #38bdf8 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+    }
+
+    .hero-intro p {
+      font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem) !important;
+      color: rgba(255, 255, 255, 0.82) !important;
+      max-width: 56ch !important;
+      line-height: 1.65 !important;
+      margin: 0 !important;
+    }
+
+    /* Hero KPI stats strip */
+    .hero-kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero-kpi-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 100px;
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      color: #fff;
+      backdrop-filter: blur(10px);
+      transition: all var(--hub-tr);
+      white-space: nowrap;
+    }
+
+    .hero-kpi-pill:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: #c4b5fd;
+      transform: translateY(-2px);
+    }
+
+    .tcm-hero-decor {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      opacity: 0.8;
+    }
+
+    .gears-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 24px rgba(167, 139, 250, 0.6));
+    }
+
+    .hero-pattern { display: none !important; }
+
+    /* 2. DASHBOARD CONTROLS TOOLBAR & SEARCH BAR */
+    .dashboard-controls {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 18px !important;
+      padding: 0.85rem 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
+      margin-bottom: 2rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 1.25rem !important;
+      flex-wrap: wrap !important;
+    }
+
+    .search-box-container {
+      position: relative !important;
+      flex: 1 !important;
+      min-width: 260px !important;
+      background: var(--hub-surface-2) !important;
+      border: 1.5px solid var(--hub-border) !important;
+      border-radius: 100px !important;
+      padding: 0.4rem 0.75rem 0.4rem 1.25rem !important;
+      transition: all var(--hub-tr) !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
+    .search-box-container:focus-within {
+      border-color: var(--hub-violet) !important;
+      box-shadow: 0 0 0 4px var(--hub-violet-light) !important;
+      background: var(--hub-surface) !important;
+      transform: none !important;
+    }
+
+    #lesson-search {
+      background: transparent !important;
+      border: none !important;
+      color: var(--hub-text) !important;
+      font-size: 0.92rem !important;
+      outline: none !important;
+      box-shadow: none !important;
+      width: 100%;
+    }
+
+    #lesson-search:focus {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .hotkey-badge {
+      font-family: monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--hub-border);
+      color: var(--hub-text-muted);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .calc-history-btn {
+      background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%) !important;
+      color: #fff !important;
+      border: none !important;
+      padding: 0.55rem 1.2rem !important;
+      border-radius: 100px !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3) !important;
+      transition: all var(--hub-tr) !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+    }
+
+    .calc-history-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 22px rgba(124, 58, 237, 0.45) !important;
+    }
+
+    /* 3. STICKY NAV SIDEBAR */
+    .layout-nav-sidebar {
+      position: sticky !important;
+      top: calc(60px + 1.5rem) !important;
+    }
+
+    .nav-sidebar-sticky {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+
+    .part-nav-item {
+      border-radius: 12px !important;
+      padding: 0.65rem 0.85rem !important;
+      transition: all var(--hub-tr) !important;
+    }
+
+    .part-nav-item:hover, .part-nav-item.active {
+      background: var(--hub-violet-light) !important;
+      color: var(--hub-violet) !important;
+      transform: translateX(4px) !important;
+    }
+
+    /* 4. GROUP CONTAINERS */
+    .physio-group-container {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.5rem !important;
+      margin-bottom: 1.75rem !important;
+      box-shadow: var(--shadow-sm) !important;
+      transition: all var(--hub-tr) !important;
+    }
+
+    .physio-group-container:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+      border-color: var(--hub-violet) !important;
+    }
+
+    .physio-group-header {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+      margin-bottom: 1.25rem !important;
+      padding-bottom: 0.75rem !important;
+      border-bottom: 2px solid var(--hub-surface-2) !important;
+    }
+
+    .physio-group-icon {
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 12px !important;
+      background: var(--hub-violet-light) !important;
+      color: var(--hub-violet) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 1.25rem !important;
+    }
+
+    /* 5. TOOL BENTO CARDS */
+    .specialty-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr)) !important;
+      gap: 1.1rem !important;
+    }
+
+    .specialty-card, .tool-card {
+      background: var(--hub-surface-2) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-left: 4px solid var(--hub-violet) !important;
+      border-radius: 16px !important;
+      padding: 1.25rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      text-decoration: none !important;
+      transition: all var(--hub-tr) !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .specialty-card:hover, .tool-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+      border-color: var(--hub-violet) !important;
+      background: var(--hub-surface) !important;
+    }
+
+    .specialty-icon {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 12px !important;
+      background: var(--hub-violet-light) !important;
+      color: var(--hub-violet) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 1.35rem !important;
+      transition: transform var(--hub-tr) !important;
+      flex-shrink: 0 !important;
+    }
+
+    .specialty-card:hover .specialty-icon,
+    .tool-card:hover .specialty-icon {
+      transform: scale(1.12) rotate(5deg) !important;
+    }
+
+    .specialty-info h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+      color: var(--hub-text) !important;
+      margin-bottom: 0.35rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .specialty-info p {
+      font-size: 0.78rem !important;
+      color: var(--hub-text-muted) !important;
+      line-height: 1.5 !important;
+    }
+
+    .specialty-card-action {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      color: var(--hub-violet) !important;
+      margin-top: 1rem !important;
+      padding-top: 0.6rem !important;
+      border-top: 1px dashed var(--hub-border) !important;
+    }
+
+    .specialty-card:hover .specialty-card-action i,
+    .tool-card:hover .specialty-card-action i {
+      transform: translateX(4px) !important;
+    }
+
+    .specialty-card-action i {
+      transition: transform var(--hub-tr) !important;
+    }
+
+    /* 6. WIDGET SIDEBAR — LAB VALUES */
+    .layout-widget-sidebar .widget-card {
+      background: var(--hub-surface) !important;
+      border: 1px solid var(--hub-border) !important;
+      border-radius: 20px !important;
+      padding: 1.25rem !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
+
+    .widget-card-title {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 0.75rem !important;
+    }
+
+    .widget-card-title h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 0.95rem !important;
+      font-weight: 700 !important;
+      color: var(--hub-text) !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+    }
+
+    .widget-card-title h3 i {
+      color: var(--hub-violet) !important;
+    }
+
+    .clock-current-time {
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      padding: 0.3rem 0.75rem !important;
+      border-radius: 100px !important;
+    }
+
+    .lab-tabs {
+      display: flex !important;
+      gap: 0.4rem !important;
+      margin-bottom: 0.85rem !important;
+      flex-wrap: wrap !important;
+    }
+
+    .lab-tab-btn {
+      padding: 0.35rem 0.75rem !important;
+      border-radius: 100px !important;
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      background: var(--hub-surface-2) !important;
+      border: 1px solid var(--hub-border) !important;
+      color: var(--hub-text-muted) !important;
+      cursor: pointer !important;
+      transition: all var(--hub-tr) !important;
+    }
+
+    .lab-tab-btn.active, .lab-tab-btn:hover {
+      background: var(--hub-violet-light) !important;
+      color: var(--hub-violet) !important;
+      border-color: var(--hub-violet) !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-dashboard.hero-tools {
+        padding: 2rem 1.5rem !important;
+      }
+      .tcm-hero-decor {
+        display: none;
+      }
+      .hero-kpi-strip {
+        gap: 0.6rem;
+      }
+    }
+  </style>
 </head>
 
 
@@ -49,25 +539,44 @@
       <clini-breadcrumb
         items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Công cụ lâm sàng"}]'></clini-breadcrumb>
 
+      <!-- ===== VIPPRO COMMAND CENTER HERO ===== -->
       <section class="hero-dashboard hero-tools" aria-labelledby="hero-title">
         <div class="tcm-hero-content">
           <div class="hero-intro">
             <h1 id="hero-title">🧮 CÔNG CỤ LÂM SÀNG</h1>
-            <p>Hệ thống hỗ trợ quyết định lâm sàng, chuẩn hóa đánh giá bệnh nhân tại giường.</p>
+            <p>Hệ thống hỗ trợ quyết định lâm sàng, chuẩn hóa đánh giá bệnh nhân tại giường. Từ tính điểm nguy cơ đến phác đồ xử trí chuyên sâu.</p>
+            <div class="hero-kpi-strip">
+              <span class="hero-kpi-pill"><i class="fa-solid fa-calculator"></i> <strong>30+</strong> Công cụ tính</span>
+              <span class="hero-kpi-pill"><i class="fa-solid fa-layer-group"></i> <strong>10</strong> Nhóm chuyên khoa</span>
+              <span class="hero-kpi-pill"><i class="fa-solid fa-bolt"></i> <strong>Bedside</strong> Decision Support</span>
+            </div>
           </div>
-          <div class="tcm-hero-decor">
-            <!-- Gears SVG -->
+          <div class="tcm-hero-decor" aria-hidden="true">
+            <!-- Animated Gears SVG -->
             <svg class="gears-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="40" cy="40" r="18" stroke="#ffffff" stroke-width="4" stroke-dasharray="8 4" />
-              <circle cx="40" cy="40" r="8" stroke="#ffffff" stroke-width="3" />
-              <circle cx="72" cy="68" r="12" stroke="#0d9488" stroke-width="3" stroke-dasharray="6 3" />
-              <circle cx="72" cy="68" r="5" stroke="#0d9488" stroke-width="2" />
+              <g class="gear-large">
+                <circle cx="40" cy="40" r="18" stroke="#ffffff" stroke-width="4" stroke-dasharray="8 4" />
+                <circle cx="40" cy="40" r="8" stroke="#ffffff" stroke-width="3" />
+                <!-- Gear teeth (large) -->
+                <rect x="37" y="19" width="6" height="7" rx="2" fill="rgba(255,255,255,0.7)" />
+                <rect x="37" y="55" width="6" height="7" rx="2" fill="rgba(255,255,255,0.7)" />
+                <rect x="19" y="37" width="7" height="6" rx="2" fill="rgba(255,255,255,0.7)" />
+                <rect x="54" y="37" width="7" height="6" rx="2" fill="rgba(255,255,255,0.7)" />
+              </g>
+              <g class="gear-small">
+                <circle cx="72" cy="68" r="12" stroke="#a78bfa" stroke-width="3" stroke-dasharray="6 3" />
+                <circle cx="72" cy="68" r="5" stroke="#a78bfa" stroke-width="2" />
+                <!-- Gear teeth (small) -->
+                <rect x="69.5" y="53" width="5" height="5" rx="1.5" fill="rgba(167,139,250,0.7)" />
+                <rect x="69.5" y="77" width="5" height="5" rx="1.5" fill="rgba(167,139,250,0.7)" />
+                <rect x="57" y="65.5" width="5" height="5" rx="1.5" fill="rgba(167,139,250,0.7)" />
+                <rect x="81" y="65.5" width="5" height="5" rx="1.5" fill="rgba(167,139,250,0.7)" />
+              </g>
               <line x1="40" y1="40" x2="72" y2="68" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                 stroke-dasharray="2 4" opacity="0.5" />
             </svg>
           </div>
         </div>
-        <div class="hero-pattern"></div>
       </section>
 
       <!-- ===== TOOLBAR / CONTROL BAR ===== -->
@@ -82,6 +591,7 @@
           </span>
           <input type="text" id="lesson-search" placeholder="Tìm kiếm công cụ tính toán..."
             aria-label="Tìm kiếm công cụ tính toán">
+          <span class="hotkey-badge">Ctrl K</span>
           <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
             style="display: none;">&times;</button>
         </div>
@@ -140,42 +650,42 @@
               <li>
                 <a href="#part3-section" class="part-nav-item p3" data-target="part3-section">
                   <span class="part-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
-                  <span class="part-text">Phần 3: Cấp cứu & Hồi sức</span>
+                  <span class="part-text">Phần 3: Cấp cứu &amp; Hồi sức</span>
                   <span class="part-count-badge">6</span>
                 </a>
               </li>
               <li>
                 <a href="#part4-section" class="part-nav-item p4" data-target="part4-section">
                   <span class="part-icon"><i class="fa-solid fa-lungs"></i></span>
-                  <span class="part-text">Phần 4: Hô hấp & Lao</span>
+                  <span class="part-text">Phần 4: Hô hấp &amp; Lao</span>
                   <span class="part-count-badge">2</span>
                 </a>
               </li>
               <li>
                 <a href="#part5-section" class="part-nav-item p5" data-target="part5-section">
                   <span class="part-icon"><i class="fa-solid fa-apple-whole"></i></span>
-                  <span class="part-text">Phần 5: Tiêu hóa & Dinh dưỡng</span>
+                  <span class="part-text">Phần 5: Tiêu hóa &amp; Dinh dưỡng</span>
                   <span class="part-count-badge">4</span>
                 </a>
               </li>
               <li>
                 <a href="#part6-section" class="part-nav-item p6" data-target="part6-section">
                   <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
-                  <span class="part-text">Phần 6: Thận & Điện giải</span>
+                  <span class="part-text">Phần 6: Thận &amp; Điện giải</span>
                   <span class="part-count-badge">4</span>
                 </a>
               </li>
               <li>
                 <a href="#part7-section" class="part-nav-item p7" data-target="part7-section">
                   <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
-                  <span class="part-text">Phần 7: Tim mạch & Huyết khối</span>
+                  <span class="part-text">Phần 7: Tim mạch &amp; Huyết khối</span>
                   <span class="part-count-badge">5</span>
                 </a>
               </li>
               <li>
                 <a href="#part8-section" class="part-nav-item p8" data-target="part8-section">
                   <span class="part-icon"><i class="fa-solid fa-droplet"></i></span>
-                  <span class="part-text">Phần 8: Nội tiết & Chuyển hóa</span>
+                  <span class="part-text">Phần 8: Nội tiết &amp; Chuyển hóa</span>
                   <span class="part-count-badge">1</span>
                 </a>
               </li>
@@ -275,9 +785,23 @@
   <script src="../../../js/core/clinical-calculator-base.js" defer></script>
   <script src="../../../js/components/calculation-history-modal.js" defer></script>
   <script src="../../../js/dashboard/module-dashboard.js" defer></script>
-  <script src="../../../js/tools-data.js?v=10" defer></script>
-  <script src="../../../js/cong-cu-logic.js?v=10" defer></script>
+  <script src="../../../js/data/tools-data.js" defer></script>
+  <script src="../../../js/tools/cong-cu-logic.js" defer></script>
   <script src="../../../js/data/lab-values.js" defer></script>
+
+  <!-- HOTKEY SHORTCUT SCRIPT -->
+  <script>
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('lesson-search');
+        if (searchInput) {
+          searchInput.focus();
+          searchInput.select();
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>

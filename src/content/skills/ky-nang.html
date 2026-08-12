@@ -32,6 +32,225 @@
   <link rel="stylesheet" href="../../../css/components/auscultation-trainer.css">
   <link rel="stylesheet" href="../../../css/components/ecg-trainer.css">
   <link rel="stylesheet" href="../../../css/components/procedure-animator.css">
+  <!-- ===================== VIPPRO $2000 CLINICAL SKILLS DESIGN SYSTEM ===================== -->
+  <style>
+    /* VIPPRO $2000 Tokens & Layout */
+    .skills-vipro-hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.15) 0%, rgba(16, 185, 129, 0.08) 50%, rgba(99, 102, 241, 0.05) 100%), var(--color-surface);
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      border-radius: 1.25rem;
+      padding: 2.25rem 2.5rem;
+      margin-bottom: 1.75rem;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08);
+      backdrop-filter: blur(12px);
+    }
+    
+    [data-theme="dark"] .skills-vipro-hero {
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.18) 0%, rgba(16, 185, 129, 0.1) 50%, rgba(99, 102, 241, 0.08) 100%), #0f172a;
+      border-color: rgba(14, 165, 233, 0.35);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .skills-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      background: rgba(2, 132, 199, 0.12);
+      color: var(--color-primary);
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      margin-bottom: 1rem;
+    }
+
+    .skills-hero-title-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .skills-hero-intro {
+      max-width: 720px;
+    }
+
+    .skills-hero-intro h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin: 0 0 0.6rem 0;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .skills-hero-intro p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      margin: 0 0 1.25rem 0;
+    }
+
+    .skills-kpi-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .skills-kpi-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .skills-kpi-pill i {
+      color: var(--color-primary);
+    }
+
+    /* Animated EKG Wave Ornament */
+    .skills-hero-decor {
+      position: relative;
+      width: 140px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .skills-ecg-svg {
+      width: 120px;
+      height: 80px;
+      filter: drop-shadow(0 0 8px rgba(2, 132, 199, 0.4));
+    }
+
+    .skills-ecg-path {
+      stroke: var(--color-primary);
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      animation: skills-ecg-dash 3s infinite linear;
+    }
+
+    @keyframes skills-ecg-dash {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* OSCE Banner Upgrade */
+    .osce-banner-vipro {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.12), rgba(139, 92, 246, 0.12));
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      border-radius: 1rem;
+      padding: 1.25rem 1.75rem;
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .osce-banner-icon {
+      background: linear-gradient(135deg, var(--color-primary), #6366f1);
+      color: white;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.35);
+      transition: transform 0.3s ease;
+    }
+
+    .osce-banner-vipro:hover .osce-banner-icon {
+      transform: rotate(15deg) scale(1.08);
+    }
+
+    .osce-banner-btn {
+      background: linear-gradient(135deg, var(--color-primary), #0284c7);
+      color: white !important;
+      text-decoration: none;
+      padding: 0.75rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+      transition: all 0.25s ease;
+    }
+
+    .osce-banner-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45);
+    }
+
+    /* Cards 3D Lift VIPPRO */
+    .specialty-card {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .specialty-card:hover {
+      transform: translateY(-6px) scale(1.015) !important;
+      box-shadow: 0 14px 30px rgba(2, 132, 199, 0.15) !important;
+      border-color: rgba(2, 132, 199, 0.4) !important;
+    }
+
+    [data-theme="dark"] .specialty-card:hover {
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    .specialty-card-action i {
+      transition: transform 0.25s ease;
+    }
+
+    .specialty-card:hover .specialty-card-action i {
+      transform: translateX(4px);
+    }
+
+    /* Search Shortcut Badge */
+    .search-box-container {
+      position: relative;
+    }
+
+    .search-ctrl-k {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.68rem;
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      color: var(--color-text-muted);
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -49,43 +268,60 @@
       <clini-breadcrumb
         items='[{"label": "🏠 Home", "url": "../../index.html"}, {"label": "Kỹ năng lâm sàng"}]'></clini-breadcrumb>
 
-      <section class="hero-dashboard hero-skills" aria-labelledby="hero-title">
-        <div class="tcm-hero-content">
-          <div class="hero-intro">
-            <h1 id="hero-title">🩺 KỸ NĂNG LÂM SÀNG</h1>
-            <p>Quy trình thăm khám lâm sàng chuẩn xác, bảng kiểm bedside và triệu chứng học y khoa dựa trên Macleod's
-              Clinical Examination.</p>
+      <!-- ===== HERO DASHBOARD COMMAND CENTER ===== -->
+      <section class="skills-vipro-hero" aria-labelledby="hero-title">
+        <div class="skills-hero-badge">
+          <i class="fa-solid fa-square-check"></i> Macleod's Clinical Examination EBM
+        </div>
+
+        <div class="skills-hero-title-box">
+          <div class="skills-hero-intro">
+            <h1 id="hero-title">
+              <i class="fa-solid fa-stethoscope" style="color:var(--color-primary);"></i> KỸ NĂNG LÂM SÀNG
+            </h1>
+            <p>
+              Quy trình thăm khám lâm sàng chuẩn mực, 30+ bảng kiểm Bedside &amp; OSCE, chẩn đoán triệu chứng học y khoa dựa trên tài liệu chuẩn quốc tế <strong>Macleod's Clinical Examination 14th Ed</strong>.
+            </p>
+
+            <div class="skills-kpi-row">
+              <div class="skills-kpi-pill">
+                <i class="fa-solid fa-folder-tree"></i> 6 Phân hệ Kỹ năng
+              </div>
+              <div class="skills-kpi-pill">
+                <i class="fa-solid fa-clipboard-check"></i> 30+ Bảng kiểm Bedside
+              </div>
+              <div class="skills-kpi-pill">
+                <i class="fa-solid fa-brain"></i> 12 Dây Thần kinh Sọ Interactive
+              </div>
+              <div class="skills-kpi-pill">
+                <i class="fa-solid fa-vr-cardboard"></i> Bệnh nhân Ảo Sim
+              </div>
+            </div>
           </div>
-          <div class="tcm-hero-decor">
-            <!-- Heartbeat ECG SVG -->
-            <svg class="ecg-svg" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path class="ecg-path"
+
+          <div class="skills-hero-decor">
+            <svg class="skills-ecg-svg" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="skills-ecg-path"
                 d="M 0 40 L 20 40 L 25 35 L 30 45 L 35 40 L 45 40 L 50 15 L 55 65 L 60 40 L 70 40 L 73 37 L 76 43 L 79 40 L 100 40"
-                stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
         </div>
-        <div class="hero-pattern"></div>
       </section>
 
-      <!-- OSCE RANDOMIZER BANNER -->
-      <div
-        style="background: linear-gradient(135deg, var(--color-primary-hl), var(--color-purple-hl)); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-sm); flex-wrap: wrap; gap: 1rem;">
-        <div style="display: flex; align-items: center; gap: 1rem;">
-          <div
-            style="background: var(--color-primary); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);">
+      <!-- ===== OSCE RANDOMIZER BANNER ===== -->
+      <div class="osce-banner-vipro">
+        <div style="display: flex; align-items: center; gap: 1.15rem;">
+          <div class="osce-banner-icon">
             <i class="fa-solid fa-dice"></i>
           </div>
           <div>
-            <h3 style="margin: 0; font-size: 1.1rem; color: var(--color-text);">Luyện tập thi OSCE?</h3>
-            <p style="margin: 0.25rem 0 0; font-size: 0.9rem; color: var(--color-text-muted);">Trải nghiệm ngay Hệ thống
-              Tình huống Lâm sàng Ngẫu nhiên mới nhất!</p>
+            <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: var(--color-text);">Luyện tập thi Trạm OSCE Lâm Sàng?</h3>
+            <p style="margin: 0.3rem 0 0; font-size: 0.9rem; color: var(--color-text-muted);">Trải nghiệm ngay Hệ thống Tình huống Lâm sàng Ngẫu nhiên mới nhất!</p>
           </div>
         </div>
-        <a href="osce-randomizer.html"
-          style="background: var(--color-primary); color: white; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;"
-          onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-          Thử ngay <i class="fa-solid fa-arrow-right"></i>
+        <a href="osce-randomizer.html" class="osce-banner-btn">
+          Thử trạm OSCE ngay <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
 
@@ -101,6 +337,7 @@
           </span>
           <input type="text" id="lesson-search" placeholder="Tìm kiếm kỹ năng lâm sàng..."
             aria-label="Tìm kiếm kỹ năng lâm sàng">
+          <kbd class="search-ctrl-k">Ctrl K</kbd>
           <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
             style="display: none;">&times;</button>
         </div>
@@ -1023,6 +1260,18 @@
         btn.addEventListener("click", () => {
           showNerveDetail(btn.getAttribute("data-nerve"));
         });
+      });
+
+      // Ctrl + K Shortcut Listener for Search Box
+      document.addEventListener("keydown", function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+          e.preventDefault();
+          const searchInput = document.getElementById("lesson-search");
+          if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+          }
+        }
       });
     });
   </script>

@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CliniPortal - Module Cơ chế Bệnh sinh & Sinh lý bệnh Lâm sàng">
+    <meta name="description" content="CliniPortal - Module Cơ chế Bệnh sinh & Sinh lý bệnh Lâm sàng Command Center">
     <title>Cơ chế Bệnh sinh & Sinh lý bệnh – CliniPortal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -32,6 +32,355 @@
     <script src="js/physio-progress.js" defer></script>
     <script src="js/physio-quiz-engine.js" defer></script>
     <script src="js/physio-mirror.js" defer></script>
+
+    <style>
+        /* ============================================================
+           VIPPRO 2000$ COMMAND CENTER OVERRIDE — CƠ CHẾ BỆNH SINH
+        ============================================================ */
+        :root {
+            --hub-patho: #dc2626;
+            --hub-patho-dark: #991b1b;
+            --hub-patho-light: rgba(220, 38, 38, 0.12);
+            --hub-surface: var(--color-surface, #ffffff);
+            --hub-surface-2: var(--color-surface-2, #f8fafc);
+            --hub-border: var(--color-divider, #e2e8f0);
+            --hub-text: var(--color-text, #0f172a);
+            --hub-text-muted: var(--color-text-muted, #475569);
+            --hub-radius: 20px;
+            --hub-tr: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="dark"] {
+            --hub-surface: var(--color-surface, #1e293b);
+            --hub-surface-2: var(--color-surface-2, #0f172a);
+            --hub-border: var(--color-divider, #334155);
+            --hub-text: var(--color-text, #f8fafc);
+            --hub-text-muted: var(--color-text-muted, #94a3b8);
+            --hub-patho-light: rgba(248, 113, 113, 0.15);
+        }
+
+        /* 1. HERO COMMAND CENTER */
+        .module-hero.hero-patho {
+            position: relative;
+            background: linear-gradient(135deg, #1c0519 0%, #4c0519 35%, #2d1b69 70%, #0c4a6e 100%) !important;
+            border-radius: 24px !important;
+            padding: 3rem 2.5rem !important;
+            margin-bottom: 2rem !important;
+            overflow: hidden;
+            color: #fff !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35) !important;
+        }
+
+        .module-hero.hero-patho::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.3) 0%, rgba(190, 18, 60, 0.05) 60%, transparent 70%);
+            filter: blur(40px);
+            animation: pulse-glow 8s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        .module-hero.hero-patho::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 20%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: pulse-glow 10s infinite alternate-reverse ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
+            100% { transform: scale(1.15) translate(20px, -20px); opacity: 1; }
+        }
+
+        .module-hero-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.6rem !important;
+            padding: 0.4rem 1.1rem !important;
+            background: rgba(255, 255, 255, 0.12) !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            border-radius: 100px !important;
+            font-size: 0.78rem !important;
+            font-weight: 700 !important;
+            color: #fecdd3 !important;
+            letter-spacing: 0.04em !important;
+            text-transform: uppercase !important;
+            backdrop-filter: blur(12px) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .module-hero-title {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: clamp(1.8rem, 1.3rem + 2vw, 2.75rem) !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.035em !important;
+            line-height: 1.15 !important;
+            margin-top: 0.85rem !important;
+            margin-bottom: 0.85rem !important;
+            background: linear-gradient(135deg, #ffffff 0%, #fecdd3 50%, #c084fc 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        .module-hero-desc {
+            font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.05rem) !important;
+            color: rgba(255, 255, 255, 0.82) !important;
+            max-width: 64ch !important;
+            line-height: 1.65 !important;
+            margin-bottom: 1.75rem !important;
+        }
+
+        .module-hero-stats {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 0.85rem !important;
+        }
+
+        .module-hero-stat-pill {
+            background: rgba(255, 255, 255, 0.12) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 100px !important;
+            padding: 0.45rem 1rem !important;
+            font-size: 0.82rem !important;
+            color: #fff !important;
+            backdrop-filter: blur(10px) !important;
+            transition: all var(--hub-tr) !important;
+        }
+
+        .module-hero-stat-pill:hover {
+            background: rgba(255, 255, 255, 0.22) !important;
+            border-color: #fecdd3 !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* 2. DASHBOARD CONTROLS TOOLBAR & SEARCH BAR (CTRL + K) */
+        .dashboard-controls {
+            background: var(--hub-surface) !important;
+            border: 1px solid var(--hub-border) !important;
+            border-radius: 18px !important;
+            padding: 0.85rem 1.25rem !important;
+            box-shadow: var(--shadow-sm) !important;
+            margin-bottom: 2rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 1.25rem !important;
+            flex-wrap: wrap !important;
+        }
+
+        .search-box-container {
+            position: relative !important;
+            flex: 1 !important;
+            min-width: 260px !important;
+            display: flex !items-center !important;
+            background: var(--hub-surface-2) !important;
+            border: 1.5px solid var(--hub-border) !important;
+            border-radius: 100px !important;
+            padding: 0.4rem 0.75rem 0.4rem 1.25rem !important;
+            transition: all var(--hub-tr) !important;
+        }
+
+        .search-box-container:focus-within {
+            border-color: var(--hub-patho) !important;
+            box-shadow: 0 0 0 4px var(--hub-patho-light) !important;
+            background: var(--hub-surface) !important;
+        }
+
+        .search-box-container input {
+            width: 100% !important;
+            background: transparent !important;
+            border: none !important;
+            color: var(--hub-text) !important;
+            font-size: 0.92rem !important;
+            outline: none !important;
+        }
+
+        .flashcard-btn {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%) !important;
+            color: #fff !important;
+            border: none !important;
+            padding: 0.55rem 1.2rem !important;
+            border-radius: 100px !important;
+            font-weight: 700 !important;
+            font-size: 0.85rem !important;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3) !important;
+            transition: all var(--hub-tr) !important;
+            cursor: pointer !important;
+        }
+
+        .flashcard-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 22px rgba(225, 29, 72, 0.45) !important;
+        }
+
+        /* 3. STICKY SIDEBAR NAV */
+        .layout-nav-sidebar {
+            position: sticky !important;
+            top: calc(60px + 1.5rem) !important;
+        }
+
+        .nav-sidebar-sticky {
+            background: var(--hub-surface) !important;
+            border: 1px solid var(--hub-border) !important;
+            border-radius: 20px !important;
+            padding: 1.25rem !important;
+            box-shadow: var(--shadow-sm) !important;
+        }
+
+        .part-nav-item {
+            border-radius: 12px !important;
+            padding: 0.65rem 0.85rem !important;
+            transition: all var(--hub-tr) !important;
+        }
+
+        .part-nav-item:hover, .part-nav-item.active {
+            background: var(--hub-patho-light) !important;
+            color: var(--hub-patho) !important;
+            transform: translateX(4px) !important;
+        }
+
+        /* 4. GROUP HEADERS & SPECIALTY BENTO CARDS */
+        .physio-group-container {
+            background: var(--hub-surface) !important;
+            border: 1px solid var(--hub-border) !important;
+            border-radius: 20px !important;
+            padding: 1.5rem !important;
+            margin-bottom: 1.75rem !important;
+            box-shadow: var(--shadow-sm) !important;
+            transition: all var(--hub-tr) !important;
+        }
+
+        .physio-group-container:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+            border-color: var(--hub-patho) !important;
+        }
+
+        .physio-group-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            margin-bottom: 1.25rem !important;
+            padding-bottom: 0.75rem !important;
+            border-bottom: 2px solid var(--hub-surface-2) !important;
+        }
+
+        .physio-group-icon {
+            width: 42px !important;
+            height: 42px !important;
+            border-radius: 12px !important;
+            background: var(--hub-patho-light) !important;
+            color: var(--hub-patho) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.25rem !important;
+        }
+
+        .specialty-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr)) !important;
+            gap: 1.1rem !important;
+        }
+
+        .specialty-card {
+            background: var(--hub-surface-2) !important;
+            border: 1px solid var(--hub-border) !important;
+            border-left: 4px solid var(--hub-patho) !important;
+            border-radius: 16px !important;
+            padding: 1.25rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            text-decoration: none !important;
+            transition: all var(--hub-tr) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .specialty-card:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+            border-color: var(--hub-patho) !important;
+            background: var(--hub-surface) !important;
+        }
+
+        .specialty-icon {
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 12px !important;
+            background: var(--hub-patho-light) !important;
+            color: var(--hub-patho) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.35rem !important;
+            transition: transform var(--hub-tr) !important;
+            flex-shrink: 0 !important;
+        }
+
+        .specialty-card:hover .specialty-icon {
+            transform: scale(1.12) rotate(-5deg) !important;
+        }
+
+        .specialty-info h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            color: var(--hub-text) !important;
+            margin-bottom: 0.35rem !important;
+            line-height: 1.35 !important;
+        }
+
+        .specialty-info p {
+            font-size: 0.78rem !important;
+            color: var(--hub-text-muted) !important;
+            line-height: 1.5 !important;
+        }
+
+        .specialty-card-action {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            font-size: 0.78rem !important;
+            font-weight: 700 !important;
+            color: var(--hub-patho) !important;
+            margin-top: 1rem !important;
+            padding-top: 0.6rem !important;
+            border-top: 1px dashed var(--hub-border) !important;
+        }
+
+        .specialty-card:hover .specialty-card-action i {
+            transform: translateX(4px) !important;
+        }
+
+        .specialty-card-action i {
+            transition: transform var(--hub-tr) !important;
+        }
+
+        /* 5. HOTKEY BADGE & ACCENTS */
+        .hotkey-badge {
+            font-family: monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: var(--hub-border);
+            color: var(--hub-text-muted);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            margin-left: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,19 +401,19 @@
                 </ol>
             </nav>
 
-            <!--HERO BANNER-->
+            <!--VIPPRO COMMAND CENTER HERO BANNER-->
             <div class="module-hero hero-patho">
                 <div class="module-hero-content">
                     <div class="module-hero-text">
                         <div class="module-hero-badge">
-                            <i class="fa-solid fa-house-medical"></i> Module Sinh lý bệnh
+                            <i class="fa-solid fa-house-medical"></i> Command Center — Sinh Lý Bệnh
                         </div>
                         <h1 class="module-hero-title">🔬 Cơ Chế Bệnh Sinh & Sinh Lý Bệnh Lâm Sàng</h1>
                         <p class="module-hero-desc">
                             Phân tích diễn tiến sinh học gây bệnh và sự rối loạn chức năng cơ quan, hỗ trợ thiết lập lập luận chẩn đoán phân biệt và phác đồ điều trị trúng đích.
                         </p>
                         <div class="module-hero-stats">
-                            <span class="module-hero-stat-pill"><i class="fa-solid fa-stethoscope"></i> <strong>16</strong> Chuyên khoa</span>
+                            <span class="module-hero-stat-pill"><i class="fa-solid fa-stethoscope"></i> <strong>10</strong> Chuyên khoa</span>
                             <span class="module-hero-stat-pill"><i class="fa-solid fa-diagram-project"></i> <strong>20+</strong> Flowcharts</span>
                             <span class="module-hero-stat-pill"><i class="fa-solid fa-bolt"></i> <strong>High-Yield</strong> Clinical Pearls</span>
                         </div>
@@ -75,7 +424,7 @@
                 </div>
             </div>
 
-            <!--CONTROL BAR / TOOLBAR-->
+            <!--DASHBOARD CONTROLS / TOOLBAR-->
             <div class="dashboard-controls">
                 <div class="search-box-container">
                     <span class="search-icon-svg">
@@ -87,12 +436,13 @@
                     </span>
                     <input type="text" id="lesson-search" placeholder="Tìm kiếm cơ chế bệnh sinh..."
                         aria-label="Tìm kiếm bài học">
+                    <span class="hotkey-badge">Ctrl K</span>
                     <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
                         style="display: none;">&times;</button>
                 </div>
                 <div class="view-toggle-container">
                     <button id="flashcard-btn" class="flashcard-btn" title="Flashcard Ôn tập">
-                        <i class="fa-solid fa-clone"></i> <span>Flashcards</span>
+                        <i class="fa-solid fa-clone"></i> <span>Flashcards Ôn Tập</span>
                     </button>
                     <span class="toggle-label">Chế độ xem:</span>
                     <div class="toggle-buttons">
@@ -229,58 +579,58 @@
                         <section id="patho-timmach-section" aria-labelledby="patho-timmach-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-heart-pulse"></i></span>
                                     <h3 id="patho-timmach-heading">Tim mạch</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-st.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-st.html" class="specialty-card" style="border-left-color: #ef4444;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-heart-crack"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-heart-crack"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Suy tim (Heart Failure)</h3>
                                                 <p>Cơ chế bù trừ thần kinh thể chất (SNS, RAAS), tái cấu trúc cơ tim, suy tim HFrEF vs HFpEF và tắc nghẽn phổi.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #ef4444;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-acs.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-acs.html" class="specialty-card" style="border-left-color: #ef4444;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-heart-circle-bolt"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-heart-circle-bolt"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Hội chứng mạch vành cấp (ACS)</h3>
                                                 <p>Nứt vỡ mảng xơ vữa, hình thành huyết khối tiểu cầu, thiếu máu cục bộ cơ tim và hoại tử tế bào cơ tim.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #ef4444;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-ccs.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-ccs.html" class="specialty-card" style="border-left-color: #ef4444;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-shield-heart"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Hội chứng vành mạn (CCS)</h3>
                                                 <p>Mất cân bằng cung-cầu oxy cơ tim, xơ vữa và co thắt thượng tâm mạc, rối loạn chức năng vi tuần hoàn (CMD).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #ef4444;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-tha.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-tha.html" class="specialty-card" style="border-left-color: #ef4444;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;"><i class="fa-solid fa-gauge-high"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Tăng huyết áp</h3>
                                                 <p>Hệ giao cảm SNS, RAAS, tăng tái hấp thu muối nước ở thận, tái cấu trúc thành mạch và tăng sức cản ngoại biên.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #ef4444;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -293,45 +643,45 @@
                         <section id="patho-hohap-section" aria-labelledby="patho-hohap-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-wind"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-wind"></i></span>
                                     <h3 id="patho-hohap-heading">Hô hấp</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-copd.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-copd.html" class="specialty-card" style="border-left-color: #06b6d4;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-wind"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-wind"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bệnh phổi tắc nghẽn mạn tính (COPD)</h3>
                                                 <p>Mô hình tương tác GETomics, mất cân bằng protease, bẫy khí/căng phồng phổi, bất tương xứng V/Q và tương tác tim phổi.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #06b6d4;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-vp.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-vp.html" class="specialty-card" style="border-left-color: #06b6d4;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-lungs-virus"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-lungs-virus"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Viêm phổi</h3>
                                                 <p>Đông đặc phế nang, các giai đoạn mô bệnh học thùy, phế quản phế viêm, độc tố hoại tử mô, huyết khối vi mạch.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #06b6d4;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-henpq.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-henpq.html" class="specialty-card" style="border-left-color: #06b6d4;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-lungs"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;"><i class="fa-solid fa-lungs"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Hen phế quản ở trẻ em</h3>
                                                 <p>Viêm mạn tính đường thở qua Th2/Eosinophil &amp; Neutrophil, tái cấu trúc đường thở (Airway Remodeling), tăng đáp ứng AHR và cơ chế kích phát do siêu vi &amp; gắng sức.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #06b6d4;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -344,50 +694,50 @@
                         <section id="patho-tieuhoa-section" aria-labelledby="patho-tieuhoa-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-bowl-food"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-bowl-food"></i></span>
                                     <h3 id="patho-tieuhoa-heading">Tiêu hóa</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-gerd.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-gerd.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-fire"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-fire"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Trào ngược dạ dày thực quản (GERD)</h3>
                                                 <p>Cơ chế suy yếu hàng rào LES/TLESRs, túi axit sau ăn, rối loạn nhu động thực quản, các phân nhóm NERD.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-vtc.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-vtc.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-fire-flame-simple"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-fire-flame-simple"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Viêm tụy cấp</h3>
                                                 <p>Tự tiêu hủy do hoạt hóa trypsinogen sớm, phù nề hoại tử vi mạch, hội chứng đáp ứng viêm toàn thân (SIRS).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-xg.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-xg.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-vial-virus"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;"><i class="fa-solid fa-vial-virus"></i></div>
                                             <div class="specialty-info">
                                                  <h3>Xơ gan (Liver Cirrhosis)</h3>
                                                 <p>Hoạt hóa tế bào Kupffer & HSCs thành myofibroblasts, xơ hóa nhu mô, tăng áp lực tĩnh mạch cửa, báng bụng và CAIDS.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-xhth-tren.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-xhth-tren.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
                                             <div class="specialty-icon" style="background:rgba(220,38,38,0.12);color:#dc2626;"><i class="fa-solid fa-stomach"></i></div>
                                             <div class="specialty-info">
@@ -395,12 +745,12 @@
                                                 <p>Vỡ giãn TM cửa (Variceal), cơ chế acid/pepsin ly giải cục máu đông (PUD), phân loại Forrest &amp; PPI liều cao IV.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-xhth-duoi.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-xhth-duoi.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
                                             <div class="specialty-icon" style="background:rgba(217,119,6,0.12);color:#d97706;"><i class="fa-solid fa-circle-nodes"></i></div>
                                             <div class="specialty-info">
@@ -408,12 +758,12 @@
                                                 <p>Chảy máu túi thừa (ĐM vỡ ồ ạt), dị sản mạch, Dieulafoy, Trĩ, thuốc chống đông &amp; nút mạch CTA/IR.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-ibd.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-ibd.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
                                             <div class="specialty-icon" style="background:rgba(147,51,234,0.12);color:#9333ea;"><i class="fa-solid fa-disease"></i></div>
                                             <div class="specialty-info">
@@ -421,12 +771,12 @@
                                                 <p>Phân biệt Crohn (CD) &amp; Viêm loét đại tràng (UC), loạn khuẩn dysbiosis, cạn kiệt SCFA Butyrate, Calprotectin phân, tổn thương xuyên thành &amp; u hạt.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-ibs.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-ibs.html" class="specialty-card" style="border-left-color: #d97706;">
                                         <div class="specialty-card-top">
                                             <div class="specialty-icon" style="background:rgba(2,132,199,0.12);color: var(--color-primary);"><i class="fa-solid fa-brain"></i></div>
                                             <div class="specialty-info">
@@ -434,7 +784,7 @@
                                                 <p>Rối loạn tương tác ruột-não DGBI, tăng nhạy cảm nội tạng, PI-IBS sau nhiễm trùng, chế độ ăn Low-FODMAP, kém hấp thu axit mật BAM &amp; rối loạn sàn chậu.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #d97706;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -447,32 +797,32 @@
                         <section id="patho-thannieu-section" aria-labelledby="patho-thannieu-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-filter"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-filter"></i></span>
                                     <h3 id="patho-thannieu-heading">Thận niệu</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-aki.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-aki.html" class="specialty-card" style="border-left-color: #0284c7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-triangle-exclamation"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Tổn thương thận cấp (AKI)</h3>
                                                 <p>Cơ chế giảm tưới máu trước thận, hoại tử ống thận cấp (ATN) do thiếu máu/độc chất, phản ứng viêm tủy thận.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #0284c7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-ckd.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-ckd.html" class="specialty-card" style="border-left-color: #0284c7;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.15); color: #0284c7;"><i class="fa-solid fa-clock-rotate-left"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bệnh thận mạn (CKD)</h3>
                                                 <p>Xơ hóa cầu thận tiến triển, quá tải áp lực nephon còn lại, tăng phosphat máu và rối loạn chuyển hóa khoáng-xương.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #0284c7;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -485,19 +835,19 @@
                         <section id="patho-noitiet-section" aria-labelledby="patho-noitiet-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-venus-mars"></i></span>
                                     <h3 id="patho-noitiet-heading">Nội tiết</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-dtd.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-dtd.html" class="specialty-card" style="border-left-color: #f59e0b;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-cubes"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-cubes"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Đái tháo đường Type 2</h3>
                                                 <p>Đề kháng insulin mô đích, suy giảm chức năng tế bào beta tụy, bộ tám nguy hiểm (Ominous Octet) và biến chứng vi/vĩ mạch.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f59e0b;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -510,32 +860,32 @@
                         <section id="patho-ngoai-section" aria-labelledby="patho-ngoai-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-kit-medical"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-kit-medical"></i></span>
                                     <h3 id="patho-ngoai-heading">Ngoại khoa</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-vrt.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-vrt.html" class="specialty-card" style="border-left-color: #10b981;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-burst"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-burst"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Viêm ruột thừa cấp</h3>
                                                 <p>Tắc nghẽn lòng ruột thừa, tăng áp suất nội lòng, vi khuẩn tăng sinh quá mức, thiếu máu cục bộ thành và vỡ gây viêm phúc mạc.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #10b981;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-trr.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-trr.html" class="specialty-card" style="border-left-color: #10b981;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-link-slash"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;"><i class="fa-solid fa-link-slash"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Tắc ruột cơ học</h3>
                                                 <p>Cơ chế tắc quai kín/hở, sự ứ đọng dịch và khí, giãn quai ruột trên tắc, tăng tính thấm thành và hoại tử ruột.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #10b981;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -548,19 +898,19 @@
                         <section id="patho-san-section" aria-labelledby="patho-san-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-baby-carriage"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;"><i class="fa-solid fa-baby-carriage"></i></span>
                                     <h3 id="patho-san-heading">Sản khoa</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-tsg.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-tsg.html" class="specialty-card" style="border-left-color: #ec4899;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-person-pregnant"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;"><i class="fa-solid fa-person-pregnant"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Tiền giật giật (Preeclampsia)</h3>
                                                 <p>Rối loạn tái cấu trúc ĐM xoắn bánh nhau, thiếu máu cục bộ bánh nhau, giải phóng yếu tố chống tạo mạch (sFlt-1/PlGF) gây tổn thương nội mạc toàn thân.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #ec4899;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -573,45 +923,45 @@
                         <section id="patho-hoisu-section" aria-labelledby="patho-hoisu-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-heart-circle-exclamation"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(220, 38, 38, 0.15); color: #dc2626;"><i class="fa-solid fa-heart-circle-exclamation"></i></span>
                                     <h3 id="patho-hoisu-heading">Hồi sức</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-soc.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-soc.html" class="specialty-card" style="border-left-color: #dc2626;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(220, 38, 38, 0.15); color: #dc2626;"><i class="fa-solid fa-heart-pulse"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Sốc (Shock)</h3>
                                                 <p>Sinh lý DO₂, huyết động 4 loại sốc (giảm thể tích, phân bố, tim, tắc nghẽn), vi tuần hoàn, bão cytokine, glycocalyx, vòng luẩn quẩn sốc tim, TAMOF và cơ chế chuyên sâu đặc thù.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #dc2626;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-suy-ho-hap.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-suy-ho-hap.html" class="specialty-card" style="border-left-color: #dc2626;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-lungs"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(220, 38, 38, 0.15); color: #dc2626;"><i class="fa-solid fa-lungs"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Suy hô hấp (Respiratory Failure)</h3>
                                                 <p>Phân loại Type 1 Hạ oxy máu & Type 2 Tăng CO₂, 5 cơ chế hypoxemia, A-a gradient, hypoxia mô, ARDS tế bào, Brain-Lung Crosstalk, VILI/P-SILI và bẫy khí COPD.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #dc2626;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-sepsis.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-sepsis.html" class="specialty-card" style="border-left-color: #dc2626;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon" style="background:rgba(220,38,38,0.12);color:#dc2626;"><i class="fa-solid fa-bacteria"></i></div>
+                                            <div class="specialty-icon" style="background:rgba(220,38,38,0.15);color:#dc2626;"><i class="fa-solid fa-bacteria"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Sepsis &amp; Shock Sepsis</h3>
                                                 <p>Mô hình Sepsis-3 vs SIRS, rối loạn ty thể PDH, tổn thương vi tuần hoàn NO/S1P/Endocan, suy giảm miễn dịch Immunoparalysis, hội chứng TAMOF và biến đổi dược động học PK.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #dc2626;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -624,58 +974,58 @@
                         <section id="patho-truyen-nhiem-section" aria-labelledby="patho-truyen-nhiem-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-virus-covid"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;"><i class="fa-solid fa-virus-covid"></i></span>
                                     <h3 id="patho-truyen-nhiem-heading">Truyền nhiễm</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-bach-hau.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-bach-hau.html" class="specialty-card" style="border-left-color: #8b5cf6;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;"><i class="fa-solid fa-shield-virus"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bệnh Bạch hầu</h3>
                                                 <p>Ngoại độc tố DT, gen tox phage, ADP-ribosyl hóa eEF-2, màng giả bám dính, cổ bạnh và độc tính cơ tim, thần kinh.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #8b5cf6;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-sot-ret.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-sot-ret.html" class="specialty-card" style="border-left-color: #8b5cf6;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-mosquito"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;"><i class="fa-solid fa-mosquito"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bệnh Sốt rét</h3>
                                                 <p>Chu kỳ 5 loài Plasmodium, thể ngủ hypnozoite, ẩn trú vi mạch (PfEMP1), sốt rét thể nào, toan chuyển hóa và sốt rét nhau thai.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #8b5cf6;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-sxhd.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-sxhd.html" class="specialty-card" style="border-left-color: #8b5cf6;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-droplet"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;"><i class="fa-solid fa-droplet"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Sốt xuất huyết Dengue (SXHD)</h3>
                                                 <p>Hiện tượng ADE, bão cytokine, rò rỉ huyết tương qua nội mô, suy giảm tiểu cầu và rối loạn đông máu toàn thân.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #8b5cf6;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-lao.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-lao.html" class="specialty-card" style="border-left-color: #8b5cf6;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon"><i class="fa-solid fa-lungs-virus"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;"><i class="fa-solid fa-lungs-virus"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bệnh Lao (Tuberculosis)</h3>
                                                 <p>Vi sinh AFB, u hạt Granuloma, phức hợp Ghon/Ranke, lan truyền nội phế quản/đường máu, lao ngoài phổi, đột biến rpoB kháng thuốc &amp; đồng nhiễm HIV.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #8b5cf6;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -688,45 +1038,45 @@
                         <section id="patho-nhikhoa-section" aria-labelledby="patho-nhikhoa-heading">
                             <div class="physio-group-container">
                                 <div class="physio-group-header">
-                                    <span class="physio-group-icon"><i class="fa-solid fa-child"></i></span>
+                                    <span class="physio-group-icon" style="background: rgba(249, 115, 22, 0.15); color: #f97316;"><i class="fa-solid fa-child"></i></span>
                                     <h3 id="patho-nhikhoa-heading">Nhi khoa</h3>
                                 </div>
                                 <div class="specialty-grid">
-                                    <a href="pathophysiology-cases/slb-ccbs-vtpq.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-vtpq.html" class="specialty-card" style="border-left-color: #f97316;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon" style="background:rgba(2,132,199,0.12);color: var(--color-primary);"><i class="fa-solid fa-baby"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(249, 115, 22, 0.15); color: #f97316;"><i class="fa-solid fa-baby"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Viêm tiểu phế quản cấp</h3>
                                                 <p>Hoại tử biểu mô hô hấp, nút nhầy tắc nghẽn, hiện tượng ứ khí phế nang &amp; xẹp phổi, bất tương xứng V/Q, RSV và các dấu ấn sinh học độ nặng (IL-33, IL-13, SP-A).</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f97316;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-henpq.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-henpq.html" class="specialty-card" style="border-left-color: #f97316;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon" style="background:rgba(147,51,234,0.12);color:#9333ea;"><i class="fa-solid fa-lungs"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(249, 115, 22, 0.15); color: #f97316;"><i class="fa-solid fa-lungs"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Hen phế quản ở trẻ em</h3>
                                                 <p>Viêm mạn tính đường thở qua Th2/Eosinophil &amp; Neutrophil, tái cấu trúc đường thở (Airway Remodeling), tăng đáp ứng AHR và cơ chế bùng phát cơn hen do siêu vi &amp; gắng sức.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f97316;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
                                     </a>
-                                    <a href="pathophysiology-cases/slb-ccbs-hemophilia.html" class="specialty-card">
+                                    <a href="pathophysiology-cases/slb-ccbs-hemophilia.html" class="specialty-card" style="border-left-color: #f97316;">
                                         <div class="specialty-card-top">
-                                            <div class="specialty-icon" style="background:rgba(220,38,38,0.12);color:#dc2626;"><i class="fa-solid fa-droplet"></i></div>
+                                            <div class="specialty-icon" style="background: rgba(249, 115, 22, 0.15); color: #f97316;"><i class="fa-solid fa-droplet"></i></div>
                                             <div class="specialty-info">
                                                 <h3>Bệnh Hemophilia ở trẻ em</h3>
                                                 <p>Di truyền lặn liên kết NST X (F8/F9), đứt gãy phức hợp Tenase nội sinh, mất bùng phát Thrombin, xuất huyết khớp (Hemophilic Arthropathy) &amp; biến chứng Inhibitor.</p>
                                             </div>
                                         </div>
-                                        <div class="specialty-card-action">
+                                        <div class="specialty-card-action" style="color: #f97316;">
                                             <span>Xem bài học</span>
                                             <i class="fa-solid fa-arrow-right-long"></i>
                                         </div>
@@ -816,6 +1166,20 @@
     </div>
 
     <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+    <!-- HOTKEY SHORTCUT SCRIPT -->
+    <script>
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.getElementById('lesson-search');
+                if (searchInput) {
+                    searchInput.focus();
+                    searchInput.select();
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 // Logic hiển thị, tìm kiếm và quản lý "Yêu thích" cho Công cụ lâm sàng
 
-document.addEventListener("DOMContentLoaded", () => {
+function initCongCuLogic() {
   const lessonsContainer = document.getElementById("lessons-container");
   if (!lessonsContainer) return;
 
@@ -225,4 +225,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCongCuLogic);
+} else {
+  initCongCuLogic();
+}
