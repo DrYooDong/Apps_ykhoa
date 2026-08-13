@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tổng quan Y khoa 2026 trên tạp chí Molecular Biomedicine về ARDS: Định nghĩa Toàn cầu 2023, Phân loại Kiểu hình Clinicomolecular & Omics, Thử nghiệm Tế bào gốc MSCs, Treatable Traits và Y học Cá thể hóa.">
+  <title>Hội Chứng Suy Hô Hấp Cấp Tiến Triển (ARDS) – Molecular Biomedicine 2026 | CliniPortal EBM Guidelines</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --indigo: #4338ca; --indigo-bg: #eef2ff; --indigo-light: #c7d2fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.15); --green-light: rgba(5, 150, 105, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.15); --orange-light: rgba(217, 119, 6, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.15); --red-light: rgba(220, 38, 38, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.15); --blue-light: rgba(37, 99, 235, 0.3);
+      --indigo-bg: rgba(67, 56, 202, 0.2); --indigo-light: rgba(99, 102, 241, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .badge-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid var(--purple-light); }
+    .badge-teal { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #1e1b4b 0%, #4338ca 35%, #0f6fb4 75%, #059669 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(99, 102, 241, 0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.35rem 0.95rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #c7d2fe; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #a5b4fc, #818cf8, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.68em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.98rem; opacity: 0.9; max-width: 740px; margin-bottom: 1.75rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.82rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--indigo); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--orange); }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .pillars-inner { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--purple); }
+    .pillar.p3::before { background: var(--teal); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
+    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.75rem; }
+
+    /* SEC CARD */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1rem 1.35rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.65rem; }
+    .sec-hdr-icon { font-size: 1.2rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.98rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.4rem; }
+
+    /* INFOBOX ALERTS */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.15rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.86rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.25rem; flex-shrink: 0; line-height: 1.2; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* EBM RECOMMENDATION CARDS & BADGES */
+    .ebm-rec-card { background: var(--surface); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.85rem; font-size: 0.86rem; line-height: 1.6; }
+    .ebm-rec-card.class-1 { border-left-color: var(--green); background: var(--green-bg); }
+    .ebm-rec-card.class-2a { border-left-color: var(--blue); background: var(--blue-bg); }
+    .ebm-rec-card.class-2b { border-left-color: var(--orange); background: var(--orange-bg); }
+    .ebm-rec-card.class-3 { border-left-color: var(--red); background: var(--red-bg); }
+    .ebm-badge-group { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-right: 0.5rem; vertical-align: middle; }
+    .cor-badge, .loe-badge { padding: 0.2rem 0.55rem; border-radius: 8px; font-size: 0.72rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .cor-class-1 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .cor-class-2a { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+    .cor-class-2b { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .cor-class-3 { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
+    .loe-grade-a { background: rgba(16, 185, 129, 0.12); color: #047857; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .loe-grade-b { background: rgba(59, 130, 246, 0.12); color: #1d4ed8; border: 1px solid rgba(59, 130, 246, 0.35); }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 0.5rem; }
+    .regimen-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; }
+    .regimen-table th { background: var(--surface-2); color: var(--text-muted); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 0.85rem; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .regimen-table td { padding: 0.85rem 0.85rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .regimen-table tbody tr:hover td { background: var(--surface-2); }
+    .rx-tag { display: inline-block; background: var(--border-light); color: var(--text-muted); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.45rem; border-radius: 5px; margin: 0.1rem 0.1rem 0.1rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); font-weight: 600; }
+    .rx-tag.warning { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); font-weight: 600; }
+
+    /* BENTO GRID CARDS */
+    .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1.25rem; }
+    .update-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .update-card:hover { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); }
+    .update-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .update-card-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; background: var(--surface); border: 1px solid var(--border-light); }
+    .update-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); line-height: 1.3; }
+    .update-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* TIMELINE BOX */
+    .timeline-list { position: relative; padding-left: 1.5rem; border-left: 2px solid var(--border-light); margin: 1rem 0; }
+    .timeline-item { position: relative; margin-bottom: 1.2rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.95rem; top: 0.25rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); }
+    .timeline-year { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.8rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .timeline-text { font-size: 0.84rem; color: var(--text); line-height: 1.55; }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .updates-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Mol Biomed 2026: Tổng Quan ARDS &amp; Y Học Cá Thể Hóa</div>
+    <div class="topnav-badges">
+      <span class="badge badge-purple">Precision Medicine</span>
+      <span class="badge badge-teal">Mol Biomed 2026</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-dna"></i> State-of-the-Art Review · Molecular Biomedicine 2026</div>
+      <h1 class="hero-title">
+        <span>The Acute Respiratory Distress Syndrome (ARDS) — Tan D, Zhou J, et al.</span>
+        Hội Chứng Suy Hô Hấp Cấp Tiến Triển (ARDS): Dịch Tễ, Định Nghĩa Mới 2023, Phân Loại Kiểu Hình &amp; Y Học Cá Thể Hóa
+      </h1>
+      <p class="hero-subtitle">
+        Tổng quan chuyên sâu 2026 về tiến trình tiến hóa định nghĩa ARDS (từ 1967 đến Định nghĩa Toàn cầu 2023), sinh lý học các can thiệp hô hấp (Low VT, Driving Pressure, Prone, HFNO), phân loại kiểu hình Clinicomolecular &amp; Omics, thử nghiệm tế bào gốc MSCs và triết lý quản lý theo Treatable Traits.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-regular fa-hospital"></i> Tạp chí: Molecular Biomedicine</div>
+        <div class="hero-meta-item"><i class="fa-regular fa-calendar"></i> Xuất bản: 2026 (Vol 7: 130)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Tác giả: De Tan, Jun Zhou, Lin Li, Yi Zhong, Zhen Cheng, Tiangang Yang</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Sinh lý can thiệp Hô hấp</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Định nghĩa Toàn cầu 2023</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Phân loại Kiểu hình &amp; Omics</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Liệu pháp Tế bào gốc (MSCs)</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Treatable Traits &amp; Y học Cá thể hóa</a>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <section class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🫁</div>
+        <div>
+          <div class="pillar-title">Driving Pressure Cốt Lõi</div>
+          <div class="pillar-desc">Low VT (4-8 mL/kg) + Pplat &lt; 30 cmH2O. Tối ưu Driving Pressure (Pplat - PEEP) giảm tối đa VILI.</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🌍</div>
+        <div>
+          <div class="pillar-title">Định Nghĩa Toàn Cầu 2023</div>
+          <div class="pillar-desc">Chấp nhận SpO2/FiO2 (&le;97%), Siêu âm phổi (LUS) &amp; ARDS không đặt ETT thở HFNO (&ge;30 L/phút).</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🧬</div>
+        <div>
+          <div class="pillar-title">Cá Thể Hóa "Treatable Traits"</div>
+          <div class="pillar-desc">Phân loại kiểu hình Viêm mạnh (Hyper-) vs Viêm nhẹ (Hypo-), Proteomics C1-C3, Tế bào MSCs &amp; Đích phân tử mới.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-content">
+
+    <!-- SEC 1: SINH LÝ HỌC CAN THIỆP HÔ HẤP -->
+    <article class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🩺</span>
+        <h2 class="sec-title">1. Cơ Sở Sinh Lý Học Của Các Can Thiệp Hỗ Trợ Hô Hấp Nền Tảng</h2>
+      </div>
+      <div class="sec-body">
+        <p>Hiểu rõ cơ chế sinh lý giúp bác sĩ thoát khỏi công thức máy móc và thực hiện cá thể hóa điều trị tại giường bệnh:</p>
+        
+        <div class="updates-grid" style="margin-top: 1rem;">
+          <div class="update-card" style="border-top: 3px solid var(--blue);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--blue);"><i class="fa-solid fa-gauge-high"></i></div>
+              <div class="update-card-title">Thông Khí Bảo Vệ Phổi (Low VT &amp; Driving Pressure)</div>
+            </div>
+            <div class="update-card-body">
+              • Mục tiêu tối thượng: Ngăn chặn <strong>VILI (Ventilator-induced lung injury)</strong>.<br>
+              • Duy trì <strong>Low VT (4–8 mL/kg IBW)</strong> và <strong>Pplat &lt; 30 cmH2O</strong> ngăn Barotrauma &amp; Volutrauma.<br>
+              • <strong>Tối ưu hóa Áp lực đẩy (Driving Pressure = Pplat – PEEP):</strong> Giảm VT đơn thuần chưa đủ; Driving Pressure là yếu tố tiên lượng độc lập quan trọng nhất giảm ứng suất cơ học (stress/strain) lên nhu mô phổi.
+            </div>
+          </div>
+
+          <div class="update-card" style="border-top: 3px solid var(--green);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--green);"><i class="fa-solid fa-person-praying"></i></div>
+              <div class="update-card-title">Tư Thế Nằm Sấp (Prone Positioning)</div>
+            </div>
+            <div class="update-card-body">
+              • Tối ưu hóa tương hợp thông khí - tưới máu <strong>(V/Q matching)</strong>.<br>
+              • Phân phối lại tỷ lệ khí-trên-mô đồng đều theo trục thấp-cao (dependent-nondependent axis).<br>
+              • Huy động các phế nang bị xẹp vùng thấp (recruitment of dependent lung regions) và giảm căng giãn quá mức vùng phổi lành.
+            </div>
+          </div>
+
+          <div class="update-card" style="border-top: 3px solid var(--teal);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--teal);"><i class="fa-solid fa-wind"></i></div>
+              <div class="update-card-title">Oxy Dòng Cao Qua Mũi (HFNO)</div>
+            </div>
+            <div class="update-card-body">
+              • Giảm khoảng chết giải phẫu hầu họng, cung cấp <strong>PEEP nhẹ (3–5 cmH2O)</strong>.<br>
+              • Đáp ứng nhu cầu dòng đỉnh (peak inspiratory flow) của bệnh nhân tự thở, làm giảm công thở và nỗ lực hô hấp hiệu quả.
+            </div>
+          </div>
+        </div>
+
+        <!-- FIGURE 1 -->
+        <figure class="fig-card" style="margin: 1.25rem 0 0; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1rem; text-align: center;">
+          <img src="./images/2026-mbm-ards-fig1.png" alt="Sơ đồ Cơ chế Sinh lý học của các Can thiệp Hỗ trợ Hô hấp trong ARDS" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: 0 4px 14px rgba(0,0,0,0.06);" loading="lazy">
+          <figcaption style="margin-top: 0.65rem; font-size: 0.81rem; color: var(--text-muted); font-style: italic; line-height: 1.5;">
+            <strong>Hình 1 (Molecular Biomedicine 2026):</strong> Tóm tắt cơ sở sinh lý học tác động của Thông khí Low VT, Driving Pressure, Tư thế Nằm sấp (Prone V/Q matching) và Oxy dòng cao (HFNO) giúp hạn chế tối đa VILI và giảm công thở.
+          </figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- SEC 2: TIẾN TRÌNH TIẾN HÓA & ĐỊNH NGHĨA TOÀN CẦU 2023 -->
+    <article class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📜</span>
+        <h2 class="sec-title">2. Tiến Trình Tiến Hóa Tiêu Chuẩn Chẩn Đoán &amp; Định Nghĩa Toàn Cầu 2023</h2>
+      </div>
+      <div class="sec-body">
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">A. Tiến trình lịch sử chẩn đoán ARDS (1967 – 2023)</h3>
+        
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <div class="timeline-year">1967</div>
+            <div class="timeline-text">Báo cáo Ashbaugh đầu tiên mô tả các triệu chứng cơ bản: Thở nhanh, giảm oxy máu, giảm độ giãn nở phổi.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1988</div>
+            <div class="timeline-text"><strong>Lung Injury Score</strong> ra đời, tích hợp thâm nhiễm X-quang và mức PEEP.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1994</div>
+            <div class="timeline-text">Tiêu chuẩn <strong>AECC</strong> đưa ra khái niệm Tổn thương phổi cấp (ALI) và ngưỡng PaO2/FiO2.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2012</div>
+            <div class="timeline-text"><strong>Định nghĩa Berlin</strong> thiết lập khung thời gian cấp tính (7 ngày), yêu cầu PEEP &ge; 5 cmH2O trên thở máy xâm lấn/không xâm lấn.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2015</div>
+            <div class="timeline-text"><strong>Sửa đổi Kigali</strong> mở đường chẩn đoán tại nơi thiếu nguồn lực (không bắt buộc PEEP).</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2023 (Bước Ngoặt)</div>
+            <div class="timeline-text"><strong>Định nghĩa Toàn cầu (Global Definition 2023)</strong> chính thức ban hành, mở rộng chẩn đoán bao trùm.</div>
+          </div>
+        </div>
+
+        <!-- FIGURE 3 -->
+        <figure class="fig-card" style="margin: 1.25rem 0; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1rem; text-align: center;">
+          <img src="./images/2026-mbm-ards-fig3.png" alt="Fig. 3: Sự tiến hóa của các tiêu chuẩn chẩn đoán ARDS (1967 – 2023)" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: 0 4px 14px rgba(0,0,0,0.06);" loading="lazy">
+          <figcaption style="margin-top: 0.65rem; font-size: 0.81rem; color: var(--text-muted); font-style: italic; line-height: 1.5;">
+            <strong>Hình 3 (Molecular Biomedicine 2026):</strong> Tiến trình tiến hóa tiêu chuẩn chẩn đoán ARDS từ Ashbaugh (1967), LIS (1988), AECC (1994), Berlin (2012), Kigali (2015) đến Định nghĩa Toàn cầu (Global Definition 2023) mở rộng chẩn đoán bằng Siêu âm phổi (LUS), SpO2/FiO2 và ARDS không đặt ETT (HFNO &ge; 30 L/min).
+          </figcaption>
+        </figure>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-top:1.5rem; margin-bottom:0.5rem; color:var(--text);">B. Phân tích 4 trục cốt lõi của Định nghĩa Toàn cầu 2023</h3>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Trục Đánh Giá</th>
+                <th>Tiêu Chuẩn Đổi Mới Của Định Nghĩa Toàn Cầu 2023</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Thời gian (Timing)</strong></td>
+                <td>Khởi phát cấp tính trong vòng <strong>7 ngày</strong> kể từ khi có tổn thương lâm sàng.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Hình ảnh học (Imaging)</strong></td>
+                <td>Mở rộng từ X-quang thâm nhiễm 2 bên sang chấp nhận cả <strong>CT ngực</strong> và đặc biệt là <strong>Siêu âm phổi (LUS - Lung Ultrasound)</strong> khi không có sẵn X-quang. *(Lưu ý phụ thuộc năng lực bác sĩ làm LUS)*.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Oxy hóa máu (Oxygenation)</strong></td>
+                <td>Chấp nhận chỉ số <strong>SpO2/FiO2</strong> khi không có khí máu động mạch (ABG). Ngưỡng <strong>SpO2 &le; 97%</strong> được chọn để đảm bảo đường cong phân ly Oxy-Hemoglobin nằm ở vùng tuyến tính. *(Cảnh giác sai số ở người da đậm hoặc shock)*.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Áp lực / Hỗ trợ hô hấp</strong></td>
+                <td>Bao gồm phân loại <strong>"ARDS không đặt nội khí quản" (Non-intubated ARDS)</strong> cho bệnh nhân thở <strong>HFNO &ge; 30 L/phút</strong> hoặc NIV/CPAP với PEEP &ge; 5 cmH2O.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-top:1.5rem; margin-bottom:0.5rem; color:var(--text);">C. Đối chiếu Khuyến cáo ATS vs ESICM</h3>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Can Thiệp Lâm Sàng</th>
+                <th>Mức Độ Đồng Thuận / Bất Đồng Giữa ATS &amp; ESICM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Low VT &amp; Pplat &lt; 30 cmH2O</strong></td>
+                <td><strong>Đồng thuận mạnh mẽ:</strong> Cả ATS và ESICM đều coi đây là nền tảng bắt buộc.</td>
+              </tr>
+              <tr>
+                <td><strong>Tư thế Nằm sấp (Prone)</strong></td>
+                <td><strong>Đồng thuận:</strong> Khuyến cáo mạnh cho ARDS trung bình - nặng (duy trì &gt; 16h/ngày).</td>
+              </tr>
+              <tr>
+                <td><strong>VV-ECMO</strong></td>
+                <td><strong>ATS (Conditional) / ESICM (Strong):</strong> Khuyến cáo áp dụng theo tiêu chuẩn nghiên cứu EOLIA.</td>
+              </tr>
+              <tr>
+                <td><strong>Thuốc giãn cơ (NMBA)</strong></td>
+                <td><strong>Bất đồng:</strong> ATS ủng hộ dùng sớm trong ARDS nặng (dựa trên ACURASYS). ESICM không khuyến cáo thường quy sau nghiên cứu ROSE.</td>
+              </tr>
+              <tr>
+                <td><strong>Corticosteroids</strong></td>
+                <td><strong>Đồng thuận tương đối:</strong> Ưu tiên dùng sớm (như DEXA-ARDS). Dùng muộn (&gt;72-96h như ESCAPe) không có lợi rõ rệt.</td>
+              </tr>
+              <tr>
+                <td><strong>Nghiệm pháp Huy động phế nang (RM)</strong></td>
+                <td><strong>Đồng thuận:</strong> Phản đối huy động phế nang kéo dài hoặc dùng áp lực quá cao thường quy.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <!-- SEC 3: PHÂN LOẠI KIỂU HÌNH & OMICS -->
+    <article class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🧬</span>
+        <h2 class="sec-title">3. Phân Loại Kiểu Hình (Phenotypes) &amp; Sự Khu Trú Miễn Dịch</h2>
+      </div>
+      <div class="sec-body">
+        <div class="infobox warning">
+          <span class="infobox-icon">🔬</span>
+          <div>
+            <strong>Khái niệm Sự Khu Trú Miễn Dịch (Immune Compartmentalization):</strong><br>
+            Phản ứng viêm hệ thống (máu ngoại vi) và phản ứng viêm tại phế nang/nhu mô phổi diễn tiến theo các quỹ đạo khác biệt. Giải thích tại sao các thử nghiệm ức chế viêm dựa trên IL-6 máu ngoại vi thất bại, do không phản ánh chính xác gánh nặng viêm thực sự trong phổi.
+          </div>
+        </div>
+
+        <div class="updates-grid" style="margin-top: 1rem;">
+          <!-- Card 1: Clinicomolecular -->
+          <div class="update-card" style="border-top: 3px solid var(--red);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--red);"><i class="fa-solid fa-fire"></i></div>
+              <div class="update-card-title">Kiểu Hình Lâm Sàng - Phân Tử</div>
+            </div>
+            <div class="update-card-body">
+              • <strong>Viêm mạnh (Hyperinflammatory):</strong> Nồng độ cytokine tiền viêm (IL-6, IL-8, TNF) rất cao, thường gặp ở nam, tuổi cao, kèm tổn thương tạng ngoài phổi (AKI, coagulopathy). Tử vong cao nhưng đáp ứng rất tốt với liệu pháp kháng viêm mạnh.<br>
+              • <strong>Viêm nhẹ (Hypoinflammatory):</strong> Nồng độ dấu ấn viêm thấp hơn, tiên lượng phục hồi tốt hơn.
+            </div>
+          </div>
+
+          <!-- Card 2: Omics Subphenotypes -->
+          <div class="update-card" style="border-top: 3px solid var(--purple);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--purple);"><i class="fa-solid fa-dna"></i></div>
+              <div class="update-card-title">Kiểu Hình Dựa Trên Omics</div>
+            </div>
+            <div class="update-card-body">
+              • <strong>Proteomics (3 phân nhóm):</strong><br>
+              - <em>C1:</em> Kích hoạt miễn dịch bẩm sinh mạnh mẽ.<br>
+              - <em>C2:</em> Ức chế miễn dịch &amp; phục hồi chống viêm.<br>
+              - <em>C3:</em> Trạng thái trung gian.<br>
+              • <strong>Genomics:</strong> Biến thể di truyền gene <em>HMGCR</em> (chuyển hóa cholesterol) làm tăng cảm nhiễm ARDS.<br>
+              • <strong>Metagenomics:</strong> Kiểu hình viêm mạnh chồng lấp với dấu ấn đáp ứng nhiễm trùng (SRS1/SRS2).
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox danger" style="margin-top: 1.25rem;">
+          <span class="infobox-icon">⏳</span>
+          <div>
+            <strong>Kiểu hình Động (Dynamic Phenotyping):</strong><br>
+            Kiểu hình ARDS không phải là trạng thái tĩnh mà biến đổi liên tục theo thời gian. Kiểu hình <strong>Viêm mạnh</strong> có tính mất ổn định tạm thời rất cao, có thể nhanh chóng chuyển sang ức chế miễn dịch. Do đó, <strong>Corticosteroids</strong> mang lại lợi ích trong giai đoạn viêm mạnh nhưng có thể gây hại nếu lạm dụng ở nhóm viêm nhẹ hoặc khi bệnh nhân đã chuyển sang giai đoạn phục hồi.
+          </div>
+        </div>
+
+        <!-- FIGURE 4-6 -->
+        <figure class="fig-card" style="margin: 1.25rem 0 0; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1rem; text-align: center;">
+          <img src="./images/2026-mbm-ards-fig4-6.png" alt="Hình 4–6: Khung Y học cá thể hóa, Phân loại Kiểu hình Omics và Đích điều trị Treatable Traits trong ARDS" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: 0 4px 14px rgba(0,0,0,0.06);" loading="lazy">
+          <figcaption style="margin-top: 0.65rem; font-size: 0.81rem; color: var(--text-muted); font-style: italic; line-height: 1.5;">
+            <strong>Hình 4–6 (Molecular Biomedicine 2026):</strong> Tích hợp dữ liệu sinh lý, lâm sàng và Omics (Proteomics C1-C3) để phân tầng kiểu hình Viêm mạnh vs Viêm nhẹ, nhắm vào các đặc điểm có thể điều trị (Treatable Traits: RIPK3, NLRP3, TRAMs) và mô hình thử nghiệm nền tảng thích ứng (Adaptive Platform Trials PANTHER).
+          </figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- SEC 4: LIỆU PHÁP TẾ BÀO GỐC (MSCs) -->
+    <article class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🧫</span>
+        <h2 class="sec-title">4. Liệu Pháp Tế Bào Gốc Trung Mô (MSCs) &amp; Túi Ngoại Bào (EVs)</h2>
+      </div>
+      <div class="sec-body">
+        <p>Tế bào gốc trung mô (MSCs) là hệ thống điều biến miễn dịch thông minh đa mục tiêu: Tăng biểu hiện <strong>CD24</strong> để tái lập trình neutrophil sang kiểu kháng viêm, tiết <strong>PGE2</strong> phân cực đại thực bào M1 &rarr; M2, ức chế bão cytokine của tế bào T và NK.</p>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-top:1.25rem; margin-bottom:0.5rem; color:var(--text);">Bảng tổng hợp Bằng chứng Thử nghiệm Lâm sàng MSCs (Table 2):</h3>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Thử Nghiệm &amp; Mã Số</th>
+                <th>Đối Tượng Bệnh Nhân</th>
+                <th>Liều Dùng &amp; Đường Dùng</th>
+                <th>Kết Quả Lâm Sàng Chính</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>STAT</strong><br><span class="rx-tag">NCT03818854</span></td>
+                <td>ARDS vừa - nặng</td>
+                <td>10 &times; 10⁶ tế bào/kg (IV)</td>
+                <td>Chung cuộc âm tính về chỉ số oxy hóa (OI), nhưng phân tích dưới nhóm dựa theo dấu ấn sinh học cho thấy triển vọng lớn ở nhóm đích.</td>
+              </tr>
+              <tr>
+                <td><strong>REALIST-COVID</strong><br><span class="rx-tag">NCT03042143</span></td>
+                <td>COVID-19 ARDS</td>
+                <td>400 &times; 10⁶ tế bào (IV)</td>
+                <td>An toàn, nhưng không cải thiện đáng kể chức năng phổi trong ngắn hạn. *(Theo dõi 2 năm cần cảnh giác nguy cơ ác tính)*.</td>
+              </tr>
+              <tr>
+                <td><strong>NCT04371393</strong></td>
+                <td>COVID-19 ARDS</td>
+                <td>2 &times; 10⁶ tế bào/kg (2 liều IV)</td>
+                <td>Không cải thiện tỷ lệ tử vong 30 ngày.</td>
+              </tr>
+              <tr>
+                <td><strong>NCT04615429</strong></td>
+                <td>COVID-19 ARDS</td>
+                <td>1 &times; 10⁶ tế bào/kg (IV)</td>
+                <td>Có thể đẩy nhanh quá trình phục hồi chức năng phổi và rút ngắn thời gian xuất viện.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox warning" style="margin-top: 1rem;">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Thách thức &amp; Rào cản Chuyển dịch Lâm sàng MSCs:</strong><br>
+            • <strong>MSC licensing:</strong> MSCs bắt buộc phải được "kích hoạt" bởi chính vi môi trường viêm tại phổi mới thực hiện chức năng điều hòa.<br>
+            • <strong>Tương tác với Corticosteroid:</strong> Dùng đồng thời corticosteroid có thể làm lu mờ hoặc giảm hiệu năng kháng viêm/chống xơ hóa của MSCs.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SEC 5: TREATABLE TRAITS & Y HỌC CÁ THỂ HÓA -->
+    <article class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🎯</span>
+        <h2 class="sec-title">5. Triết Lý "Treatable Traits" &amp; Thiết Kế Thử Nghiệm Lâm Sàng Tương Lai</h2>
+      </div>
+      <div class="sec-body">
+        <p>Quản lý ARDS hiện đại dịch chuyển sang khung quản lý dựa trên các **"Đặc điểm có thể điều trị" (Treatable Traits)**, can thiệp trúng đích phân tử:</p>
+
+        <div class="updates-grid" style="margin-top: 1rem;">
+          <div class="update-card" style="border-top: 3px solid var(--teal);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--teal);"><i class="fa-solid fa-crosshairs"></i></div>
+              <div class="update-card-title">Các Đích Phân Tử Mới</div>
+            </div>
+            <div class="update-card-body">
+              • <strong>Neutrophil:</strong> Ức chế PDE4 (Ribociclib) &amp; PI3K (Palbociclib) giảm stress oxy hóa.<br>
+              • <strong>Đại thực bào nhu mô (TRAMs):</strong> Resolvin D1 (RvD1) thúc đẩy tự làm mới &amp; thực bào.<br>
+              • <strong>Chống tử vong tế bào:</strong> Ức chế <strong>RIPK3 (UH15-38)</strong> ngăn Necroptosis; ức chế <strong>NLRP3 (Bigelovin)</strong>; Dipyridamole ngăn Ferroptosis.<br>
+              • <strong>Miễn dịch chuyên biệt:</strong> Tế bào iNKT (AgenT-797), IL-4 tác động lên Basophils.
+            </div>
+          </div>
+
+          <div class="update-card" style="border-top: 3px solid var(--indigo);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--indigo);"><i class="fa-solid fa-diagram-next"></i></div>
+              <div class="update-card-title">Thử Nghiệm Thích Ứng (Precision RCTs)</div>
+            </div>
+            <div class="update-card-body">
+              • <strong>Prognostic &amp; Predictive enrichment:</strong> Tuyển chọn bệnh nhân nguy cơ cao và có đúng cơ chế phân tử đích của thuốc.<br>
+              • <strong>Adaptive platform trials (ví dụ PANTHER trial):</strong> Đánh giá nhiều thuốc cùng lúc, điều chỉnh phân nhóm theo dữ liệu kiểu hình thời gian thực.<br>
+              • Mô hình hóa tác động điều trị cá thể (ITE - Individualized Treatment Effect).
+            </div>
+          </div>
+        </div>
+
+        <div class="infobox info" style="margin-top: 1.25rem;">
+          <span class="infobox-icon">🏥</span>
+          <div>
+            <strong>Gói ABCDEF Bundle &amp; Chăm sóc Dài hạn Sau ARDS:</strong><br>
+            Di chứng thể chất, nhận thức và tâm lý (PICS - Post Intensive Care Syndrome) có thể kéo dài tới 5 năm. Bắt buộc áp dụng triệt để <strong>ABCDEF bundle</strong> trong ICU để giảm thiểu tổn thương do điều trị (sảng, yếu cơ hồi sức) và phối hợp phục hồi chức năng đa chuyên khoa.
+          </div>
+        </div>
+
+        <!-- CITATION -->
+        <div class="citation-box" style="margin-top: 1.5rem;">
+          <strong>Trích dẫn AMA chuẩn:</strong><br>
+          Tan D, Zhou J, Li L, Zhong Y, Cheng Z, Yang T. The Acute Respiratory Distress Syndrome (ARDS): epidemiology, etiology, molecular mechanisms, diagnosis and therapeutic strategies. <em>Molecular Biomedicine</em>. 2026;7:130. doi:10.1186/s43556-026-00532-2.
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines</a>
+          <a href="2026-icm-namsap-ards.html" class="btn"><i class="fa-solid fa-lungs"></i> Xem Bài Tóm Tắt Nằm Sấp Trong ARDS (ICM 2026)</a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Quy trình 7 bước tiếp cận chẩn đoán phân tầng nguy cơ ngất (syncope), phân biệt ngất phế vị, hạ huyết áp tư thế, ngất do tim và hướng xử trí lâm sàng.">
+  <title>Tiếp cận Ngất (Syncope) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS Core (5 levels up to root) -->
+  <link rel="stylesheet" href="../../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../../css/components/footer.css">
+
+  <!-- CSS Layout tiếp cận triệu chứng -->
+  <link rel="stylesheet" href="../../../../../css/components/approach-symptom.css">
+
+  <style>
+    /* Sub-navigation Switcher Bar */
+    .tc-sub-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .sub-nav-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sub-nav-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-right: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all var(--tr);
+    }
+
+    .sub-nav-link:hover {
+      color: var(--color-primary);
+      background: var(--color-bg);
+    }
+
+    .sub-nav-link.active {
+      color: var(--color-primary);
+      background: var(--color-primary-hl);
+      border: 1px solid var(--color-primary);
+    }
+
+    .step-alert-box {
+      margin-top: 12px;
+      padding: 12px 16px;
+      background-color: var(--color-danger-hl);
+      border-left: 4px solid var(--color-danger);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .step-alert-box i {
+      color: var(--color-danger);
+      font-size: 1.1rem;
+      margin-top: 2px;
+    }
+
+    /* Process Flow Visual */
+    .flow-steps-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .flow-step-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 500;
+    }
+
+    .flow-node-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <clini-breadcrumb items='[{"label": "🏠 Trang chủ", "url": "../../../../../index.html"}, {"label": "Tiếp cận lâm sàng", "url": "../../../../../src/content/approaches/tiep-can.html"}, {"label": "Triệu chứng - Hội chứng", "url": "../../../../../src/content/approaches/tiep-can.html#part2-section"}, {"label": "Tiếp cận Ngất"}]'></clini-breadcrumb>
+
+      <!-- QUICK SUB-NAVIGATION -->
+      <div class="tc-sub-nav">
+        <div class="sub-nav-group">
+          <span class="sub-nav-label">Hệ Tim mạch & Thần kinh:</span>
+          <a href="../../tiep-can.html" class="sub-nav-link">🏠 Tổng quan tiếp cận</a>
+          <a href="../than-phien-ho-hap-tim-mach/tc-daunguc.html" class="sub-nav-link">🫀 Đau ngực cấp</a>
+          <a href="../than-phien-ho-hap-tim-mach/tc-khotho.html" class="sub-nav-link">🫁 Khó thở</a>
+          <a href="tc-ngat.html" class="sub-nav-link active">💫 Ngất (Syncope)</a>
+        </div>
+      </div>
+
+      <!-- HERO BANNER -->
+      <section class="hero-dashboard">
+        <div class="hero-intro">
+          <h1>💫 TIẾP CẬN BỆNH NHÂN NGẤT (SYNCOPE)</h1>
+          <p>Quy trình lâm sàng 7 bước phân tầng nguy cơ đột tử, chẩn đoán phân biệt ngất phế vị, hạ huyết áp tư thế, ngất do tim và hướng xử trí lâm sàng.</p>
+        </div>
+      </section>
+
+      <!-- SYMPTOM GRID LAYOUT (BƯỚC 1 -> 7) -->
+      <div class="symptom-grid">
+
+        <!-- BƯỚC 1: Ổn định ban đầu - sàng lọc nguy cơ -->
+        <div class="symptom-step-card border-danger symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-danger">Bước 1</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-exclamation-triangle"></i> Ổn định ban đầu – Sàng lọc nguy cơ (Dấu hiệu Cờ đỏ)</h3>
+          <div class="step-card-body">
+            <p><strong>Xác định tình trạng khẩn cấp và ổn định ban đầu:</strong> Ngay khi tiếp nhận bệnh nhân ngất (hoặc nghi ngờ ngất), cần tiến hành đánh giá nhanh dấu hiệu sinh tồn và tri giác.</p>
+            <ul>
+              <li>Nếu bệnh nhân <strong>vẫn đang mất ý thức</strong> hoặc có các dấu hiệu sinh tồn nguy kịch (nhịp tim &lt; 40 lần/phút hoặc &gt; 100 lần/phút, SpO2 &lt; 92% khi thở khí trời, huyết áp tâm thu &lt; 90 mmHg) hoặc có chấn thương nghiêm trọng: Cần chuyển ngay đến giường bệnh có trang bị máy theo dõi liên tục (Telemetry), thiết lập đường truyền tĩnh mạch và cung cấp điều trị khẩn cấp phù hợp (thở oxy, truyền dịch, giảm đau).</li>
+            </ul>
+
+            <p style="margin-top: 12px;"><strong>Sàng lọc dấu hiệu "cờ đỏ" (Red Flags)</strong> chỉ điểm nguy cơ cao đột tử hoặc đe dọa tính mạng:</p>
+            <ul>
+              <li><strong>Đặc điểm cơn ngất:</strong> Ngất xảy ra trong khi đang <strong>gắng sức</strong>, hoặc ngất khi bệnh nhân đang ở tư thế <strong>nằm ngửa/ngồi</strong>. Ngất đột ngột không có triệu chứng báo trước (prodrome).</li>
+              <li><strong>Triệu chứng đi kèm:</strong> Đau ngực, khó thở, đau bụng hoặc đau lưng dữ dội đột ngột. Cảm giác hồi hộp, đánh trống ngực dồn dập ngay trước khi mất ý thức.</li>
+              <li><strong>Tiền sử:</strong> Tiền sử gia đình có người đột tử ở tuổi trẻ (&lt; 40 tuổi) không rõ nguyên nhân. Tiền sử bản thân có bệnh tim thực thể (suy tim, bệnh mạch vành, nhồi máu cơ tim, bệnh cơ tim phì đại, bệnh van tim nặng).</li>
+              <li><strong>Khám lâm sàng:</strong> Tiếng thổi tim thực thể mới xuất hiện hoặc có ý nghĩa (như hẹp van động mạch chủ), tĩnh mạch cổ nổi (JVD), ran ẩm ở phổi, phù chi dưới.</li>
+              <li><strong>Điện tâm đồ (ECG) bất thường:</strong> Nhịp chậm xoang nặng (&lt; 40 lần/phút) khi không dùng thuốc giảm nhịp, block nhĩ thất độ II hoặc độ III, block phân nhánh hoặc block nhánh, khoảng QT kéo dài hoặc ngắn, sóng Delta/PR ngắn trong hội chứng kích thích sớm WPW, hoặc hình ảnh hội chứng Brugada.</li>
+            </ul>
+
+            <div class="step-alert-box">
+              <i class="fas fa-ambulance"></i>
+              <span><strong>Cảnh báo lâm sàng:</strong> Ngất do tim là yếu tố tiên lượng độc lập có tỷ lệ tử vong trong vòng 1 năm rất cao (18–33%). Nếu có bất kỳ dấu hiệu cờ đỏ nào, bắt buộc phải nhập viện theo dõi telemetry và làm siêu âm tim khẩn cấp.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 2: Thu thập dữ kiện tập trung -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 2</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-notes-medical"></i> Thu thập dữ kiện tập trung</h3>
+          <div class="step-card-body">
+            <p><strong>1. Mô tả triệu chứng (Symptom description):</strong></p>
+            <ul>
+              <li><strong>Hoàn cảnh xuất hiện (Precipitants/Triggers):</strong> Tìm kiếm các yếu tố kích hoạt như đứng lâu trong môi trường nóng bức, ngột ngạt; sau khi nhìn thấy máu, ngửi mùi khó chịu, hoặc sau khi bị đau đột ngột (gợi ý ngất phế vị). Ngất xảy ra liên quan đến ho, đi tiểu (micturition), đại tiện, hoặc nuốt (gợi ý ngất tình huống). Ngất xuất hiện khi quay đầu, cạo râu hoặc mặc áo cổ quá chật (gợi ý hội chứng xoang cảnh). Ngất ngay sau khi đổi tư thế đứng (gợi ý hạ huyết áp tư thế).</li>
+              <li><strong>Triệu chứng báo trước (Prodromal symptoms):</strong> Khai thác sự xuất hiện của các dấu hiệu kích hoạt hệ thần kinh tự chủ như vã mồ hôi, da tái nhợt, buồn nôn, nôn, ù tai, tối sầm mắt từ vùng biên (tunnel vision). Sự vắng mặt hoàn toàn của các triệu chứng báo trước hoặc cảm giác trống ngực dồn dập trước ngất là bằng chứng hướng tới nguyên nhân tim mạch.</li>
+              <li><strong>Biểu hiện trong cơn:</strong> Hỏi nhân chứng về tư thế ngã (tự đổ người hay ngã sụp), mắt nhắm hay mở, có hiện tượng giật cơ hay không (giật cơ ngắn, không nhịp nhàng, không đối xứng thường gặp trong <em>ngất co giật / convulsive syncope</em> do thiếu máu não thoáng qua và dễ bị nhầm với động kinh). Xác định xem có tình trạng cắn vào bên cạnh lưỡi (gợi ý động kinh) hay chỉ cắn đầu lưỡi.</li>
+              <li><strong>Thời gian mất ý thức và phục hồi:</strong> Ngất điển hình thường diễn ra dưới 1 phút và ý thức phục hồi hoàn toàn, nhanh chóng ngay sau khi được đặt nằm phẳng. Nếu có trạng thái lú lẫn sau cơn (postictal confusion) kéo dài &gt; 5 phút hoặc liệt nửa người, cần hướng tới co giật hoặc tai biến mạch máu não.</li>
+            </ul>
+
+            <p style="margin-top: 12px;"><strong>2. Yếu tố nguy cơ (Risk factors):</strong></p>
+            <ul>
+              <li><strong>Tiền sử dùng thuốc:</strong> Khai thác kỹ các thuốc đang sử dụng, đặc biệt là thuốc hạ huyết áp, thuốc giãn mạch (nitrates, thuốc chẹn kênh canxi), thuốc lợi tiểu, thuốc chống trầm cảm ba vòng, thuốc chống loạn thần, thuốc điều trị Parkinson (levodopa), rượu, hoặc các chất dạng thuốc phiện (opioids). Ghi nhận bất kỳ sự thay đổi liều lượng hoặc mới bắt đầu sử dụng thuốc gần đây.</li>
+              <li><strong>Bệnh lý nền:</strong> Đái tháo đường, suy thận, bệnh lý thần kinh tự chủ, Parkinson hoặc các bệnh lý tim mạch sẵn có.</li>
+            </ul>
+
+            <p style="margin-top: 12px;"><strong>3. Khám lâm sàng / thực thể (Physical examination):</strong></p>
+            <ul>
+              <li><strong>Đo huyết áp và nhịp tim tư thế nằm và tư thế đứng (Lying and standing BP/pulse):</strong> Đo ngay khi đứng dậy và sau 3 phút đứng. Tiêu chuẩn hạ huyết áp tư thế đứng (OH) là huyết áp tâm thu giảm &ge; 20 mmHg (hoặc &ge; 30 mmHg ở người có cao huyết áp tư thế nằm) hoặc huyết áp tâm trương giảm &ge; 10 mmHg trong vòng 3 phút sau khi đứng dậy. Nhịp tim tăng &ge; 30 nhịp/phút khi đứng gợi ý hội chứng nhịp nhanh tư thế (POTS).</li>
+              <li><strong>Khám tim mạch chi tiết:</strong> Phát hiện nhịp tim không đều, tiếng thổi thực thể (tiếng thổi tâm thu mạnh lên khi đứng dậy hoặc làm nghiệm pháp Valsalva gợi ý bệnh cơ tim phì đại, tiếng thổi hẹp van động mạch chủ), tĩnh mạch cổ nổi (JVD), ran ở phổi, phù ngoại vi.</li>
+              <li><strong>Khám thần kinh cơ bản:</strong> Đánh giá tri giác (GCS), dây thần kinh sọ, rung giật nhãn cầu, dáng đi để phát hiện các dấu hiệu tổn thương khu trú hoặc hội chứng tiền đình.</li>
+              <li><strong>Khám khác:</strong> Thăm trực tràng để phát hiện máu ẩn trong phân (FOBT) nhằm loại trừ chảy máu đường tiêu hóa âm thầm gây giảm thể tích tuần hoàn.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 3: Lập danh sách chẩn đoán phân biệt -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-list-ul"></i> Bước 3: Danh sách Chẩn đoán phân biệt</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Nhóm nguyên nhân</th>
+                    <th>Ví dụ bệnh / hội chứng</th>
+                    <th>Đặc điểm lâm sàng chính</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Ngất phản xạ</strong><br><em>(Reflex / Neurally Mediated)</em></td>
+                    <td>
+                      • <strong>Ngất phế vị (Vasovagal)</strong><br>
+                      • <strong>Ngất tình huống (Situational)</strong><br>
+                      • <strong>Hội chứng xoang cảnh (Carotid sinus syndrome)</strong>
+                    </td>
+                    <td>
+                      - Thường gặp ở người trẻ, có tiền sử ngất tái phát nhiều lần trước 40 tuổi.<br>
+                      - Xuất hiện sau các kích thích (đứng lâu, không gian nóng, sợ hãi, đau đớn, nhìn thấy máu).<br>
+                      - Triệu chứng báo trước kinh điển: Vã mồ hôi, buồn nôn, tái nhợt.<br>
+                      - Ngất tình huống xảy ra trong hoặc ngay sau khi ho, đi tiểu, nuốt, đại tiện.<br>
+                      - Hội chứng xoang cảnh xuất hiện khi quay đầu, cạo râu, mặc áo cổ chật.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hạ huyết áp tư thế đứng</strong><br><em>(Orthostatic Hypotension)</em></td>
+                    <td>
+                      • <strong>Do giảm thể tích</strong> (mất nước, xuất huyết)<br>
+                      • <strong>Do thuốc</strong> (lợi tiểu, hạ áp, giãn mạch)<br>
+                      • <strong>Suy giảm thần kinh tự chủ</strong> (Đái tháo đường, Parkinson, teo đa hệ thống - MSA)
+                    </td>
+                    <td>
+                      - Ngất xảy ra nhanh chóng (vài giây đến vài phút) ngay sau khi đứng dậy.<br>
+                      - Thường liên quan đến việc mới bắt đầu hoặc tăng liều các thuốc lợi tiểu, hạ áp, giãn mạch.<br>
+                      - Khám thấy huyết áp tư thế đứng giảm đạt tiêu chuẩn (giảm &ge; 20/10 mmHg).<br>
+                      - Ở bệnh nhân suy giảm thần kinh tự chủ, nhịp tim không tăng tương ứng khi huyết áp tụt sâu.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ngất do tim</strong><br><em>(Cardiac Syncope)</em></td>
+                    <td>
+                      • <strong>Rối loạn nhịp tim</strong> (Nhịp chậm xoang nặng, block AV độ cao, nhịp nhanh thất VT, hội chứng QT dài/ngắn, Brugada)<br>
+                      • <strong>Bệnh lý tim thực thể</strong> (Hẹp van động mạch chủ, bệnh cơ tim phì đại, u nhầy nhĩ trái)<br>
+                      • <strong>Thuyên tắc phổi (PE)</strong>
+                    </td>
+                    <td>
+                      - Ngất xảy ra khi đang nằm ngửa hoặc ngồi, hoặc ngất trong lúc đang gắng sức.<br>
+                      - Có thể đi kèm cảm giác hồi hộp, trống ngực dồn dập hoặc đau ngực trước ngất.<br>
+                      - Khám thấy tiếng thổi tim bất thường, tĩnh mạch cổ nổi, ran phổi.<br>
+                      - ECG có các biến đổi đặc hiệu; siêu âm tim phát hiện bất thường cấu trúc.<br>
+                      - Thuyên tắc phổi kèm khó thở đột ngột, đau ngực kiểu màng phổi, giảm oxy máu nặng.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Giả ngất / Bệnh lý bắt chước</strong><br><em>(Mimics / Nonsyncopal)</em></td>
+                    <td>
+                      • <strong>Cơn co giật / Động kinh</strong><br>
+                      • <strong>Hạ đường huyết</strong><br>
+                      • <strong>Cơn thoáng thiếu máu não hệ sau (Vertebrobasilar TIA)</strong>
+                    </td>
+                    <td>
+                      - <strong>Co giật:</strong> Co giật cơ kéo dài, cắn bên lưỡi, tiểu không tự chủ, lú lẫn sau cơn &gt; 5 phút.<br>
+                      - <strong>Hạ đường huyết:</strong> Đói, vã mồ hôi, lú lẫn từ từ trước cơn mất ý thức; hồi phục sau khi bổ sung đường.<br>
+                      - <strong>TIA hệ sau:</strong> Ngất kèm chóng mặt xoay, song thị, thất điều dáng đi, nói khó.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BỔ TRỢ BƯỚC 3: Bảng điểm Sheldon -->
+        <div class="symptom-step-card border-warning symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-warning">Bổ trợ Bước 3</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-calculator"></i> Bảng điểm Lâm sàng Sheldon (Sheldon Point Score) phân biệt Co giật và Ngất</h3>
+          <div class="step-card-body">
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Tiêu chí lâm sàng</th>
+                    <th style="width: 120px; text-align: center;">Điểm số</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Thức dậy với vết cắn ở bên lưỡi (Waking with cut tongue)</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-danger);">+2</td>
+                  </tr>
+                  <tr>
+                    <td>Hành vi bất thường được chứng kiến (vận động co giật cơ, run báo trước, ảo giác)</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-danger);">+1</td>
+                  </tr>
+                  <tr>
+                    <td>Mất ý thức xảy ra khi bị stress tâm lý</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-danger);">+1</td>
+                  </tr>
+                  <tr>
+                    <td>Lú lẫn sau cơn (Postictal confusion) kéo dài</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-danger);">+1</td>
+                  </tr>
+                  <tr>
+                    <td>Quay đầu sang một bên trong cơn mất ý thức</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-danger);">+1</td>
+                  </tr>
+                  <tr>
+                    <td>Cảm giác Déjà vu báo trước cơn</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-danger);">+1</td>
+                  </tr>
+                  <tr>
+                    <td>Có bất kỳ triệu chứng tiền ngất (presyncope) nào trước cơn</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-success);">-2</td>
+                  </tr>
+                  <tr>
+                    <td>Mất ý thức xảy ra khi đứng trong thời gian dài</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-success);">-2</td>
+                  </tr>
+                  <tr>
+                    <td>Vã mồ hôi trước cơn mất ý thức (Diaphoresis before a spell)</td>
+                    <td style="text-align: center; font-weight: 700; color: var(--color-success);">-2</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size: var(--text-sm); margin-top: 10px; color: var(--color-text-muted);">
+              <strong>Đánh giá kết quả điểm Sheldon:</strong><br>
+              • <strong>Tổng điểm &ge; 1:</strong> Gợi ý nguyên nhân mất ý thức do <strong>Co giật / Động kinh (Seizures)</strong>.<br>
+              • <strong>Tổng điểm &lt; 1:</strong> Gợi ý nguyên nhân do <strong>Ngất (Syncope)</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- BƯỚC 4: Biện luận lâm sàng -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-filter"></i> Bước 4: Biện luận lâm sàng (Clinical reasoning)</h3>
+          <div class="step-card-body">
+            <p><strong>1. Tỷ trọng / Độ ưu tiên:</strong></p>
+            <ul>
+              <li><strong>Nguyên nhân do tim (Cardiac syncope)</strong> bắt buộc phải là nhóm bệnh lý đầu tiên cần được loại trừ ở mọi bệnh nhân. Ngất do tim là một yếu tố tiên lượng độc lập có tỷ lệ tử vong trong vòng 1 năm rất cao (18–33% so với 6% ở các nguyên nhân khác).</li>
+              <li><strong>Thuyên tắc phổi (PE)</strong> và <strong>xuất huyết nội cấp tính</strong> (do vỡ phình động mạch chủ bụng AAA, vỡ lách do chấn thương, hoặc vỡ thai ngoài tử cung ở phụ nữ độ tuổi sinh đẻ) là các nguyên nhân đe dọa tính mạng cấp tính cần loại trừ ngay lập tức khi bệnh nhân có biểu hiện huyết động không ổn định hoặc kèm theo đau bụng/đau lưng dữ dội.</li>
+            </ul>
+
+            <p style="margin-top: 12px;"><strong>2. Điểm ủng hộ chẩn đoán:</strong></p>
+            <ul>
+              <li><strong>Ngất phế vị (Vasovagal):</strong> Được ủng hộ mạnh mẽ khi bệnh nhân có tiền sử ngất tái phát từ trẻ (&lt; 40 tuổi), xảy ra sau các kích thích đặc hiệu, có triệu chứng báo trước tự chủ rõ ràng (vã mồ hôi, tái nhợt, buồn nôn), hồi phục ý thức lập tức khi nằm phẳng, và hoàn toàn không có bất kỳ dấu hiệu cờ đỏ nào.</li>
+              <li><strong>Hạ huyết áp tư thế (Orthostatic):</strong> Được ủng hộ khi cơn ngất xảy ra ngay sau khi đứng dậy, ghi nhận huyết áp tư thế đứng giảm đạt tiêu chuẩn vàng (giảm &ge; 20 mmHg tâm thu hoặc &ge; 10 mmHg tâm trương) và có liên quan chặt chẽ với tiền sử dùng thuốc gây hạ áp/giảm thể tích.</li>
+              <li><strong>Ngất do tim (Cardiac):</strong> Được ủng hộ khi ngất xảy ra ở tư thế nằm hoặc khi đang gắng sức, có cảm giác hồi hộp trước ngất, khám lâm sàng phát hiện tiếng thổi tim thực thể hoặc dấu hiệu suy tim, và ECG phát hiện các rối loạn dẫn truyền hoặc nhịp tim bất thường.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BỔ TRỢ BƯỚC 4: Lưu đồ tiếp cận NEJM 2026 -->
+        <div class="symptom-step-card border-success symptom-col-6">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-success">Bổ trợ Bước 4</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-project-diagram"></i> Thuật toán Tiếp cận Ban đầu & Phân tầng Nguy cơ (NEJM 2026)</h3>
+          <div class="step-card-body">
+            <p>Quy trình quyết định lâm sàng đối với bệnh nhân nghi ngờ ngất tại phòng cấp cứu:</p>
+            <div class="flow-steps-visual">
+              <div class="flow-step-item">
+                <span class="flow-node-badge">1</span>
+                <span><strong>Bệnh nhân nghi ngờ Ngất</strong> → Xác định có Mất ý thức tạm thời (TLOC)</span>
+              </div>
+              <div class="flow-step-item">
+                <span class="flow-node-badge">2</span>
+                <span><strong>Đánh giá ban đầu:</strong> Khai thác bệnh sử, thông tin nhân chứng, đo HA tư thế, khám thực thể & ECG 12 dẫn truyền</span>
+              </div>
+              <div class="flow-step-item" style="border-left: 4px solid var(--color-success);">
+                <span class="flow-node-badge" style="background: var(--color-success);">3A</span>
+                <span><strong>Nếu nguyên nhân rõ ràng:</strong> Điều trị theo nguyên nhân cụ thể (Ngất phế vị / Hạ HA tư thế)</span>
+              </div>
+              <div class="flow-step-item" style="border-left: 4px solid var(--color-danger);">
+                <span class="flow-node-badge" style="background: var(--color-danger);">3B</span>
+                <span><strong>Nếu nguyên nhân chưa rõ ràng:</strong> Tiến hành Đánh giá phân tầng nguy cơ (Risk Assessment)</span>
+              </div>
+              <div class="flow-step-item" style="background: var(--color-surface-2);">
+                <span class="flow-node-badge" style="background: var(--color-warning);">4</span>
+                <span><strong>Quyết định hướng xử trí:</strong><br>
+                • <em>Nguy cơ cao:</em> Nhập viện theo dõi Telemetry / ICU<br>
+                • <em>Nguy cơ trung bình:</em> Lưu cấp cứu (ED observation &lt; 24h)<br>
+                • <em>Nguy cơ thấp:</em> Cho về theo dõi ngoại trú</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 5: Cận lâm sàng hợp lý -->
+        <div class="symptom-step-card border-info symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag tag-info">Bước 5</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-vials"></i> Bước 5: Chỉ định Cận lâm sàng hợp lý</h3>
+          <div class="step-card-body">
+            <p><strong>1. Xét nghiệm máu cơ bản:</strong></p>
+            <ul>
+              <li><strong>Công thức máu (CBC) và Hematocrit (Hct):</strong> Chỉ định khi nghi ngờ mất máu cấp gây giảm thể tích tuần hoàn hoặc thiếu máu nặng.</li>
+              <li><strong>Điện giải đồ (BMP/Chemistry panel) và Đường huyết tại giường (BM):</strong> Để loại trừ các rối loạn chuyển hóa, hạ đường huyết hoặc rối loạn điện giải nặng gây mất ý thức hoặc loạn nhịp.</li>
+              <li><strong>Troponin tim:</strong> Chỉ định khi nghi ngờ ngất do nhồi máu cơ tim cấp hoặc thiếu máu cơ tim.</li>
+              <li><strong>BNP hoặc NT-proBNP:</strong> Chỉ định khi nghi ngờ suy tim thực thể đồng mắc.</li>
+              <li><strong>D-dimer:</strong> Thực hiện khi có nghi ngờ lâm sàng về thuyên tắc phổi (kết hợp thang điểm Wells).</li>
+              <li><strong>Beta-hCG nước tiểu/máu:</strong> Bắt buộc đối với phụ nữ trong độ tuổi sinh đẻ có đau bụng dưới và ngất để loại trừ thai ngoài tử cung vỡ.</li>
+            </ul>
+
+            <p style="margin-top: 12px;"><strong>2. Chẩn đoán hình ảnh & Thăm dò tim mạch chuyên sâu:</strong></p>
+            <ul>
+              <li><strong>Điện tâm đồ (ECG) 12 dẫn truyền:</strong> Là cận lâm sàng <strong>lựa chọn đầu tay và bắt buộc</strong> đối với tất cả các bệnh nhân ngất để sàng lọc nguyên nhân loạn nhịp tim hoặc thiếu máu cơ tim cấp.</li>
+              <li><strong>Siêu âm tim qua thành ngực (TTE):</strong> Thực hiện khi lâm sàng nghi ngờ bệnh tim cấu trúc, van tim thực thể, suy tim hoặc khi ECG ban đầu bất thường.</li>
+              <li><strong>Theo dõi điện tâm đồ liên tục (Telemetry / Holter ECG / ILR):</strong> Telemetry trong phòng cấp cứu được chỉ định cho các ca nguy cơ trung bình đến cao. Holter ECG 24-48 giờ cho các cơn ngất xảy ra hàng ngày/hàng tuần. Máy ghi vòng lặp cấy dưới da (ILR) được lựa chọn cho các bệnh nhân ngất không rõ nguyên nhân có cơn thưa (vài tháng/năm) nhờ thời gian pin kéo dài đến 4 năm.</li>
+              <li><strong>X-quang ngực thẳng:</strong> Sàng lọc các bệnh lý tim to, phù phổi, tràn dịch màng phổi.</li>
+              <li><strong>Chụp cắt lớp vi tính động mạch phổi (CTA động mạch phổi):</strong> Tiêu chuẩn vàng để chẩn đoán thuyên tắc phổi khi lâm sàng nghi ngờ cao hoặc D-dimer dương tính.</li>
+              <li><strong>Nghiệm pháp bàn nghiêng (Tilt-table test):</strong> Chỉ định để chẩn đoán xác định ngất phản xạ phế vị ở bệnh nhân có cơn tái phát nhiều lần mà lâm sàng chưa rõ ràng.</li>
+              <li><strong>Xoa xoang cảnh (Carotid sinus massage - CSM):</strong> Thực hiện ở bệnh nhân &gt; 40 tuổi có ngất không rõ nguyên nhân hoặc ngã không rõ lý do. <em>Chống chỉ định</em> khi có tiếng thổi động mạch cảnh, hẹp xoang cảnh &gt; 70%, nhồi máu cơ tim hoặc tai biến mạch máu não/TIA trong vòng 3-6 tháng gần nhất.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- BƯỚC 6: Hướng xử trí ban đầu -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 6</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hand-holding-medical"></i> Bước 6: Hướng xử trí ban đầu & Điều trị</h3>
+          <div class="step-card-body">
+            <p><strong>1. Hồi sức / Cấp cứu:</strong></p>
+            <ul>
+              <li><strong>Ngất phản xạ hoặc hạ huyết áp tư thế đứng cấp tính:</strong> Đặt bệnh nhân nằm ngửa, nâng cao hai chân để tăng thể tích tuần hoàn trở về tim.</li>
+              <li><strong>Hạ huyết áp tư thế đứng do giảm thể tích (mất nước, mất máu):</strong> Thiết lập đường truyền tĩnh mạch lớn, truyền nhanh dịch đẳng trương (Normal Saline hoặc Ringer's Lactate). Truyền máu khẩn cấp nếu có xuất huyết cấp tính đe dọa tính mạng.</li>
+              <li><strong>Nhịp chậm đe dọa tính mạng gây bất ổn huyết động:</strong> Tiêm tĩnh mạch <strong>Atropine 500 mcg IV</strong>, có thể lặp lại mỗi 3-5 phút (tối đa 3 mg). Nếu không đáp ứng, chuẩn bị tạo nhịp ngoài da (transcutaneous pacing) hoặc truyền tĩnh mạch các thuốc vận mạch như dopamine hoặc epinephrine.</li>
+              <li><strong>Nhịp nhanh thất (VT) hoặc Rung thất (VF) không mạch:</strong> Thực hiện ngay phác đồ hồi sức tim phổi nâng cao (ACLS) và sốc điện phá rung không đồng bộ.</li>
+            </ul>
+
+            <p style="margin-top: 12px;"><strong>2. Điều trị đặc hiệu theo nhóm nguyên nhân:</strong></p>
+            <ul>
+              <li><strong>Ngất phản xạ (phế vị) tái phát:</strong>
+                <ul>
+                  <li>Tránh các yếu tố kích hoạt (đứng lâu, không gian nóng, thiếu nước).</li>
+                  <li>Hướng dẫn bệnh nhân thực hiện <em>nghiệm pháp đối phó vật lý (isometric counterpressure maneuvers)</em> như gồng tay (hand grip), căng cơ cánh tay (arm tensing), ngồi xổm (squatting), hoặc bắt chéo chân gồng cơ (leg crossing) trong vòng 2 phút ngay khi xuất hiện triệu chứng báo trước để nâng huyết áp và ngăn ngừa cơn ngất.</li>
+                  <li><strong>Midodrine</strong> (thuốc cường alpha-1 adrenergic co mạch) có thể chỉ định cho bệnh nhân có cơn ngất phế vị tái phát nhiều lần, kháng trị với các biện pháp thay đổi lối sống.</li>
+                  <li>Cấy máy tạo nhịp 2 buồng (dual-chamber pacemaker) được chỉ định cho bệnh nhân &gt; 40 tuổi bị ngất phế vị thể ức chế tim nặng, tái phát nhiều lần, có ghi nhận ngừng tim do phản xạ kéo dài (ngừng xoang &gt; 3 giây có triệu chứng hoặc &gt; 6 giây không triệu chứng).</li>
+                  <li><strong>Cardioneural ablation</strong> (triệt đốt ganglionated plexuses thượng tâm mạc qua catheter) là một phương pháp can thiệp mới cho ngất phản xạ thể cardioinhibitory.</li>
+                </ul>
+              </li>
+              <li><strong>Hạ huyết áp tư thế đứng mạn tính:</strong>
+                <ul>
+                  <li>Rà soát và ngừng hoặc giảm liều tối đa các thuốc gây hạ huyết áp (đặc biệt là thuốc lợi tiểu, thuốc chẹn alpha, nitrates).</li>
+                  <li>Khuyên bệnh nhân tăng lượng nước uống hàng ngày và tăng lượng muối trong chế độ ăn.</li>
+                  <li>Hướng dẫn thay đổi tư thế chậm rãi (ngồi trên mép giường vài phút trước khi đứng dậy). Sử dụng tất áp lực y khoa cao đến đùi hoặc waist-high support hose.</li>
+                  <li><strong>Fludrocortisone</strong> (mineralocorticoid giữ muối nước tăng thể tích tuần hoàn) là lựa chọn thuốc đầu tay. Có thể phối hợp thêm <strong>Midodrine</strong>.</li>
+                </ul>
+              </li>
+              <li><strong>Ngất do tim:</strong> Cấy máy tạo nhịp vĩnh viễn đối với suy nút xoang hoặc block nhĩ thất độ cao. Cấy máy phá rung tự động (ICD) cho bệnh nhân suy tim phân suất tống máu giảm (LVEF &le; 35%) có nguy cơ cao đột tử. Phẫu thuật thay van động mạch chủ cho hẹp khít van ĐMC. Điều trị thuốc kháng đông cho thuyên tắc phổi.</li>
+            </ul>
+
+            <p style="margin-top: 16px;"><strong>3. Bảng liều lượng các thuốc điều trị nội khoa ngất do hạ huyết áp tư thế đứng mạn tính & cấp cứu nhịp chậm:</strong></p>
+            <div class="symptom-table-wrapper">
+              <table class="symptom-table">
+                <thead>
+                  <tr>
+                    <th>Tên thuốc / Hoạt chất</th>
+                    <th>Liều lượng chi tiết</th>
+                    <th>Chỉ định lâm sàng</th>
+                    <th>Lưu ý thực hành quan trọng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Fludrocortisone Acetate</strong></td>
+                    <td>• Liều khởi đầu: 0.1 mg/ngày PO (đôi khi từ 0.05 mg/ngày).<br>• Có thể điều chỉnh từ 0.05–0.2 mg/ngày.</td>
+                    <td>• Adrenocortical insufficiency.<br>• Điều trị hạ huyết áp tư thế đứng mạn tính kháng trị với các biện pháp không dùng thuốc.</td>
+                    <td>• Cần theo dõi sát tình trạng giữ muối nước, phù ngoại vi, suy tim sung huyết tiến triển và hạ kali máu.<br>• Thường phối hợp với bổ sung muối ăn.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Midodrine</strong></td>
+                    <td>• Alpha-1 agonist co mạch tĩnh mạch và động mạch.<br>• Thường dùng liều chia 3 lần/ngày (2.5–10 mg/lần).</td>
+                    <td>• Hạ huyết áp tư thế đứng mạn tính.<br>• Dự phòng ngất phế vị tái phát thể vasodepressor kháng trị.</td>
+                    <td>• Tác dụng phụ gây bí tiểu, tăng huyết áp tư thế nằm ngửa dữ dội (supine hypertension). Tránh uống thuốc trước khi đi ngủ.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Atropine</strong></td>
+                    <td>• Liều cấp cứu: 500 mcg (0.5 mg) tiêm tĩnh mạch trực tiếp (IV bolus).<br>• Có thể lặp lại mỗi 3-5 phút đến tổng liều 3 mg.</td>
+                    <td>• Cấp cứu nhịp chậm xoang hoặc block nhĩ thất gây bất ổn huyết động, tụt huyết áp.</td>
+                    <td>• Thận trọng ở bệnh nhân nghi ngờ thiếu máu cơ tim cấp vì có thể làm tăng nhịp tim gây tăng nhu cầu oxy cơ tim.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Epinephrine (Adrenaline)</strong></td>
+                    <td>• Liều hồi sức tim phổi: 1 mg (1:10,000) IV mỗi 3-5 phút.<br>• Dạng truyền liên tục: 2–10 mcg/phút IV.</td>
+                    <td>• Hồi sức ngưng tuần hoàn (asystole, VF/VT không mạch).<br>• Phản vệ gây tụt huyết áp dữ dội.</td>
+                    <td>• Phải truyền qua đường truyền tĩnh mạch lớn hoặc catheter tĩnh mạch trung tâm để tránh hoại tử mô do thoát mạch.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- BƯỚC 7: Khi nào cần chuyển tuyến / gọi hội chẩn -->
+        <div class="symptom-step-card border-primary symptom-col-12">
+          <div class="step-card-header">
+            <span class="step-card-tag">Bước 7</span>
+          </div>
+          <h3 class="step-card-title"><i class="fas fa-hospital-user"></i> Bước 7: Khi nào cần chuyển tuyến / Gọi hội chẩn</h3>
+          <div class="step-card-body">
+            <ul>
+              <li><strong>Tiêu chuẩn chuyển khoa Hồi sức tích cực (ICU) hoặc Hồi sức tim mạch (CCU):</strong>
+                <ul>
+                  <li>Ngất đi kèm huyết động không ổn định (sốc, huyết áp tụt sâu không đáp ứng với bù dịch ban đầu).</li>
+                  <li>Ngất do loạn nhịp tim nguy hiểm chưa được kiểm soát (như nhịp nhanh thất bền bỉ, block nhĩ thất độ III có triệu chứng).</li>
+                  <li>Ngất do nhồi máu cơ tim cấp, phình tách động mạch chủ bụng/ngực vỡ hoặc chèn ép tim cấp.</li>
+                  <li>Ngất do thuyên tắc phổi diện rộng có suy tuần hoàn hoặc suy hô hấp nặng.</li>
+                  <li>Ngất kèm chấn thương sọ não nặng hoặc tri giác suy giảm kéo dài không phục hồi sau cơn (GCS giảm).</li>
+                </ul>
+              </li>
+              <li><strong>Hội chẩn chuyên khoa sâu:</strong>
+                <ul>
+                  <li>Hội chẩn chuyên khoa <strong>Tim mạch / Điện sinh lý tim</strong> để đánh giá chỉ định thực hiện thăm dò điện sinh lý (EPS), cấy máy tạo nhịp vĩnh viễn hoặc máy phá rung tự động (ICD).</li>
+                  <li>Hội chẩn chuyên khoa <strong>Thần kinh</strong> khi nghi ngờ nguyên nhân động kinh, đột quỵ hệ tuần hoàn brain sau hoặc bệnh lý thần kinh tự chủ tiến triển.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- THÔNG ĐIỆP CỐT LÕI -->
+      <section class="take-home-card">
+        <div class="take-home-title">
+          <i class="fas fa-lightbulb"></i> Thông điệp Cốt lõi (Take-home Messages)
+        </div>
+        <div class="take-home-body">
+          <ul>
+            <li>Mọi bệnh nhân ngất đều phải được thực hiện đo <strong>điện tâm đồ (ECG) 12 dẫn truyền ngay lập tức</strong> tại thời điểm tiếp cận ban đầu để loại trừ các nguyên nhân loạn nhịp tim tiềm tàng gây đột tử.</li>
+            <li>Hiện tượng giật cơ ngắn (myoclonic jerks) trong <strong>ngất co giật (convulsive syncope)</strong> là một phản ứng sinh lý do thiếu máu não thoáng qua, cần được phân biệt rõ với cơn động kinh thực sự dựa trên sự vắng mặt của tình trạng lú lẫn kéo dài sau cơn và vết cắn ở bên cạnh lưỡi.</li>
+            <li><strong>Huyết áp tư thế đứng</strong> là phép đo bắt buộc để chẩn đoán hạ huyết áp tư thế; một mức giảm huyết áp tâm thu &ge; 20 mmHg trong vòng 3 phút khi đứng dậy là tiêu chuẩn vàng định hướng.</li>
+            <li>Ở những bệnh nhân lớn tuổi, ngất phế vị có thể biểu hiện không điển hình dưới dạng các <strong>cú ngã không rõ nguyên nhân</strong>; do đó, thực hiện <strong>xoa xoang cảnh</strong> ở cả tư thế nằm và tư thế đứng là chìa khóa để chẩn đoán hội chứng xoang cảnh.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- TÀI LIỆU THAM KHẢO -->
+      <section class="references-card">
+        <div class="references-title">
+          <i class="fas fa-book"></i> Tài liệu Tham khảo
+        </div>
+        <ol class="references-list">
+          <li>Kenny RA. Syncope. <em>New England Journal of Medicine</em>. 2026;395(6):582-591. doi:10.1056/NEJMcp2517255.</li>
+          <li>Toy EC, Sellack JW, Sandmann SM, et al. <em>Symptoms to Diagnosis: An Evidence-Based Guide</em>. 4th ed. McGraw-Hill Education; 2020. Chapter 31: Syncope &amp; Chapter 26: Syncope.</li>
+          <li><em>Algorithms for Emergency Medicine</em>. Oxford University Press; 2023. Chapter 3: Syncope and Pre-syncope.</li>
+          <li><em>Harrison's Manual of Medicine</em>. 20th ed. McGraw-Hill Education; 2019. Chapter 52: Syncope.</li>
+          <li><em>Internal Medicine On Call</em>. 4th ed. McGraw-Hill Education; 2004. Chapter 59: Syncope.</li>
+        </ol>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
+
+  <!-- JS Core -->
+  <script src="../../../../../js/main.js" defer></script>
+  <script src="../../../../../components/header.js" defer></script>
+  <script src="../../../../../components/footer.js" defer></script>
+
+  <!-- JS Layout tiếp cận triệu chứng -->
+  <script src="../../../../../js/approach/approach-symptom.js" defer></script>
+</body>
+
+</html>

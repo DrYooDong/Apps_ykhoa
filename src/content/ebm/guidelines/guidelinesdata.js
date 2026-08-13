@@ -205,7 +205,89 @@ window.getJournalMetrics = getJournalMetrics;
 window.CLINICAL_CONDITIONS = CLINICAL_CONDITIONS;
 window.DEFAULT_CLINICAL_CONDITIONS = CLINICAL_CONDITIONS;
 
-const SAMPLE_STUDIES = [];
+const SAMPLE_STUDIES = [
+  {
+    id: "study_nejm_syncope_2026",
+    title: "NEJM 2026: Tiếp cận Chẩn đoán & Quản lý Lâm sàng Bệnh nhân Ngất (Syncope)",
+    drug: "Midodrine, Fludrocortisone, Droxidopa, Atropine, Epinephrine",
+    sourceType: "intl-guideline",
+    specialty: "cardio",
+    design: "review",
+    intervention: "Đánh giá ban đầu 4 bước (Class I), Bảng điểm Sheldon phân biệt Co giật, Phân tầng nguy cơ 3 cấp độ (ED Observation 6-12h), Máy tạo nhịp tim 2 buồng, Cardioneural Ablation & Phác đồ thuốc co mạch.",
+    primaryEndpoint: "Giảm tỷ lệ tái phát ngất và phòng ngừa chấn thương / đột tử do tim",
+    keyResults: "COL: Ngất phản xạ: 40% | Hạ HA tư thế: 20% | Ngất do tim: 30%",
+    impact: "practice-changing",
+    year: 2026,
+    organization: "New England Journal of Medicine (NEJM)",
+    phase: "Clinical Practice Review",
+    sampleSize: null,
+    population: "Bệnh nhân trưởng thành & người lớn tuổi bị ngất (TLOC) hoặc ngã không rõ nguyên nhân",
+    summary: "Tổng quan y khoa toàn diện cập nhật năm 2026 về sinh lý bệnh, thuật toán 7 bước phân tầng nguy cơ đột tử, tiêu chuẩn Bảng điểm Sheldon, phân biệt giả ngất và các phương pháp điều trị tiên tiến.",
+    detailedConclusion: "Đánh giá ban đầu bắt buộc 100% gồm bệnh sử, khám lâm sàng, đo HA nằm/đứng và ECG 12 dẫn truyền. Ngất do tim có tử vong 1 năm tới 33%. Điều trị bằng biện pháp đối phó vật lý, Midodrine, Fludrocortisone, Pacemaker 2 buồng và Triệt đốt phế vị Cardioneural Ablation.",
+    sourceUrl: "https://doi.org/10.1056/NEJMcp2517255",
+    file: "kho-guidelines/2026-nejm-ngat.html",
+    asianData: true,
+    bookmarked: false,
+    subgroups: {
+      "Nguy cơ tử vong 1 năm do Tim": "COL: Ngất do Tim: 33% | Nguyên nhân khác: 6%",
+      "Giảm tái phát ngất nhờ Pacemaker": "HBAR: Cấy Pacemaker 2 buồng: 52% | Điều trị bảo tồn: 0%"
+    }
+  },
+  {
+    id: "study_icm_namsap_ards_2026",
+    title: "ICM 2026: Khuyến Cáo & Sinh Lý Học Tư Thế Nằm Sấp Trong ARDS (Prone Positioning)",
+    drug: "HFNC, CPAP, NIV, NMBA (Neuromuscular Blockers), Sedatives",
+    sourceType: "intl-guideline",
+    specialty: "icu",
+    design: "guideline",
+    intervention: "Nằm sấp kéo dài ≥ 16h/ngày cho ARDS đặt ETT (PaO2/FiO2 < 150) và Nằm sấp thức tỉnh (APP > 8-10h/ngày) cho ARDS chưa đặt ETT thở HFNC.",
+    primaryEndpoint: "Giảm tỷ lệ tử vong 28 ngày (PROSEVA Trial: 16% vs 32.8%) và giảm thất bại điều trị (Meta-trial: 33% vs 44%)",
+    keyResults: "HR 0.75 (95% CI 0.62-0.91, p=0.001)",
+    impact: "practice-changing",
+    year: 2026,
+    organization: "Intensive Care Medicine (ICM) / ESICM / ATS",
+    phase: "State-of-the-Art Clinical Practice Review",
+    sampleSize: 1121,
+    population: "Bệnh nhân ARDS thở máy xâm lấn (trung bình-nặng) và bệnh nhân AHRF/COVID-19 tự thở trên HFNC",
+    summary: "Tổng quan khuyến cáo y khoa 2026 trên ICM về Tư thế nằm sấp trong ARDS: Sinh lý V/Q matching, dỡ tải thất phải, thử nghiệm PROSEVA và Meta-trial APP giảm tỷ lệ đặt ETT/tử vong.",
+    detailedConclusion: "Nằm sấp sớm (<36h) và kéo dài (≥16h/ngày) ở ARDS đặt ETT giảm tử vong 28 ngày từ 32.8% xuống 16%. Nằm sấp thức tỉnh (APP) thở HFNC với liều >8-10h/ngày giúp giảm thất bại điều trị từ 44% xuống 33%. Cần theo dõi chỉ số ROX Index để đặt ETT kịp thời.",
+    sourceUrl: "https://doi.org/10.1007/s00134-026-08543-x",
+    file: "kho-guidelines/2026-icm-namsap-ards.html",
+    asianData: true,
+    bookmarked: false,
+    subgroups: {
+      "Tử vong 28 ngày (PROSEVA Trial)": "COL: Nằm sấp ≥16h/ngày: 16.0% | Nằm ngửa: 32.8%",
+      "Thất bại điều trị APP (Meta-trial)": "COL: Thở HFNC + APP (>8h): 33.0% | Thở HFNC đơn thuần: 44.0%"
+    }
+  },
+  {
+    id: "study_mbm_ards_overview_2026",
+    title: "Molecular Biomedicine 2026: Tổng Quan ARDS, Định Nghĩa Mới 2023 & Y Học Cá Thể Hóa",
+    drug: "Ribociclib, Palbociclib, Resolvin D1, UH15-38, Bigelovin, Dipyridamole, AgenT-797, MSCs",
+    sourceType: "intl-guideline",
+    specialty: "icu",
+    design: "review",
+    intervention: "Tối ưu Driving Pressure (Pplat - PEEP), Định nghĩa Toàn cầu 2023 (LUS & SpO2/FiO2 & Non-intubated ARDS HFNO ≥ 30L/min), Phân loại Kiểu hình Viêm mạnh vs Viêm nhẹ & Thử nghiệm Tế bào gốc MSCs.",
+    primaryEndpoint: "Chuyển dịch sang Y học chính xác (Precision Medicine) và quản lý theo Treatable Traits",
+    keyResults: "DEXA-ARDS & PROSEVA có lợi; MSCs an toàn; Driving Pressure là chỉ số tiên lượng độc lập hàng đầu",
+    impact: "practice-changing",
+    year: 2026,
+    organization: "Molecular Biomedicine / ATS / ESICM",
+    phase: "State-of-the-Art Review",
+    sampleSize: null,
+    population: "Bệnh nhân suy hô hấp cấp tiến triển (ARDS) thở máy xâm lấn và không xâm lấn",
+    summary: "Tổng quan y khoa 2026 về ARDS: Định nghĩa Toàn cầu 2023, phân loại kiểu hình Clinicomolecular & Omics, thử nghiệm tế bào gốc MSCs, các đích phân tử mới và triết lý Treatable Traits.",
+    detailedConclusion: "Cần thay đổi tư thế điều trị từ 'one-size-fits-all' sang y học cá thể hóa. Thông khí Low VT (4-8 mL/kg) kết hợp kiểm soát Driving Pressure và Nằm sấp sớm (>16h/ngày). Phân loại kiểu hình Viêm mạnh vs Viêm nhẹ giúp chọn đúng đối tượng hưởng lợi từ Corticosteroids và các liệu pháp nhắm đích phân tử.",
+    sourceUrl: "https://doi.org/10.1186/s43556-026-00532-2",
+    file: "kho-guidelines/2026-mbm-tongquan-ards.html",
+    asianData: true,
+    bookmarked: false,
+    subgroups: {
+      "Kiểu hình Viêm mạnh (Hyperinflammatory)": "COL: Tỷ lệ tử vong: 45.0% | Đáp ứng kháng viêm mạnh: Rất cao",
+      "Kiểu hình Viêm nhẹ (Hypoinflammatory)": "COL: Tỷ lệ tử vong: 19.0% | Đáp ứng kháng viêm mạnh: Thấp"
+    }
+  }
+];
 
 window.SAMPLE_STUDIES = SAMPLE_STUDIES;
 

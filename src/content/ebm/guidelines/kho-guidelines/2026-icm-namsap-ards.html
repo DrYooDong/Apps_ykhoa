@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tổng quan khuyến cáo y khoa 2026 trên tạp chí Intensive Care Medicine (ICM) về Tư Thế Nằm Sấp Trong ARDS: Cơ chế sinh lý, Thử nghiệm PROSEVA, Thử nghiệm Meta-trial Nằm sấp thức tỉnh (APP) & Phác đồ quy chuẩn lâm sàng.">
+  <title>Tư Thế Nằm Sấp Trong ARDS (Prone Positioning) – ICM 2026 | CliniPortal EBM Guidelines</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --indigo: #4338ca; --indigo-bg: #eef2ff; --indigo-light: #c7d2fe;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #0f172a;
+      --border: #334155; --border-light: #1e293b;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.15); --green-light: rgba(5, 150, 105, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.15); --orange-light: rgba(217, 119, 6, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.15); --red-light: rgba(220, 38, 38, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.15); --blue-light: rgba(37, 99, 235, 0.3);
+      --indigo-bg: rgba(67, 56, 202, 0.2); --indigo-light: rgba(99, 102, 241, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(30, 41, 59, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); }
+    .badge-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-light); }
+    .badge-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid var(--blue-light); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 35%, #059669 75%, #0d9488 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56, 189, 248, 0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 20px; padding: 0.35rem 0.95rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #38bdf8, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.68em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.98rem; opacity: 0.9; max-width: 740px; margin-bottom: 1.75rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.82rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.6rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--teal); }
+
+    /* PILLARS STRIP */
+    .pillars { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .pillars-inner { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .pillar { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.85rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .pillar::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 4px 0 0 4px; }
+    .pillar.p1::before { background: var(--blue); }
+    .pillar.p2::before { background: var(--green); }
+    .pillar.p3::before { background: var(--purple); }
+    .pillar:hover { box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); }
+    .pillar-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .pillar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
+    .pillar-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.75rem; }
+
+    /* SEC CARD */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1rem 1.35rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.65rem; }
+    .sec-hdr-icon { font-size: 1.2rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.98rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.4rem; }
+
+    /* INFOBOX ALERTS */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.15rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.86rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.25rem; flex-shrink: 0; line-height: 1.2; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* EBM RECOMMENDATION CARDS & BADGES */
+    .ebm-rec-card { background: var(--surface); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.85rem; font-size: 0.86rem; line-height: 1.6; }
+    .ebm-rec-card.class-1 { border-left-color: var(--green); background: var(--green-bg); }
+    .ebm-rec-card.class-2a { border-left-color: var(--blue); background: var(--blue-bg); }
+    .ebm-rec-card.class-2b { border-left-color: var(--orange); background: var(--orange-bg); }
+    .ebm-rec-card.class-3 { border-left-color: var(--red); background: var(--red-bg); }
+    .ebm-badge-group { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-right: 0.5rem; vertical-align: middle; }
+    .cor-badge, .loe-badge { padding: 0.2rem 0.55rem; border-radius: 8px; font-size: 0.72rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .cor-class-1 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .cor-class-2a { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+    .cor-class-2b { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+    .cor-class-3 { background: #ffe4e6; color: #be123c; border: 1px solid #fda4af; }
+    .loe-grade-a { background: rgba(16, 185, 129, 0.12); color: #047857; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .loe-grade-b { background: rgba(59, 130, 246, 0.12); color: #1d4ed8; border: 1px solid rgba(59, 130, 246, 0.35); }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 0.5rem; }
+    .regimen-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; }
+    .regimen-table th { background: var(--surface-2); color: var(--text-muted); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 0.85rem; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .regimen-table td { padding: 0.85rem 0.85rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .regimen-table tbody tr:hover td { background: var(--surface-2); }
+    .rx-tag { display: inline-block; background: var(--border-light); color: var(--text-muted); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; padding: 0.15rem 0.45rem; border-radius: 5px; margin: 0.1rem 0.1rem 0.1rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-light); font-weight: 600; }
+
+    /* BENTO GRID CARDS */
+    .updates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1.25rem; }
+    .update-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .update-card:hover { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); }
+    .update-card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .update-card-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; background: var(--surface); border: 1px solid var(--border-light); }
+    .update-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); line-height: 1.3; }
+    .update-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* TIMELINE BOX */
+    .timeline-list { position: relative; padding-left: 1.5rem; border-left: 2px solid var(--border-light); margin: 1rem 0; }
+    .timeline-item { position: relative; margin-bottom: 1.2rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.95rem; top: 0.25rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); }
+    .timeline-year { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.8rem; color: var(--accent); margin-bottom: 0.2rem; }
+    .timeline-text { font-size: 0.84rem; color: var(--text); line-height: 1.55; }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.83rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .updates-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">ICM 2026: Tư Thế Nằm Sấp Trong ARDS (Prone Positioning)</div>
+    <div class="topnav-badges">
+      <span class="badge badge-green">Practice-Changing</span>
+      <span class="badge badge-blue">ICM State of the Art 2026</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-lungs"></i> Intensive Care Medicine State-of-the-Art Review 2026</div>
+      <h1 class="hero-title">
+        <span>Prone Positioning in ARDS — Ehrmann S, Li J, Liu L, Guérin C</span>
+        Tư Thế Nằm Sấp Trong ARDS: Từ Thở Máy Xâm Lấn Đến Nằm Sấp Thức Tỉnh (APP)
+      </h1>
+      <p class="hero-subtitle">
+        Tổng quan khuyến cáo y khoa 2026 toàn diện về cơ chế sinh lý học, tiến trình lịch sử (Thử nghiệm PROSEVA &amp; Meta-trial COVID-19), chỉ định phân tầng, phác đồ thực hành và các tiêu chuẩn theo dõi an toàn cho cả hai nhóm bệnh nhân ARDS đặt nội khí quản và tự thở.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-regular fa-hospital"></i> Tạp chí: Intensive Care Medicine (ICM)</div>
+        <div class="hero-meta-item"><i class="fa-regular fa-calendar"></i> Xuất bản: July 20, 2026</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Tác giả: Stephan Ehrmann, Jie Li, Ling Liu, Claude Guérin</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Bệnh nhân Thở máy (Đặt ETT)</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Lịch sử &amp; PROSEVA Trial</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Nằm sấp Thức tỉnh (APP)</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Quy trình Thực hành &amp; Theo dõi</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Thử nghiệm Đang diễn ra</a>
+    </div>
+  </div>
+
+  <!-- PILLARS STRIP -->
+  <section class="pillars">
+    <div class="pillars-inner">
+      <div class="pillar p1">
+        <div class="pillar-icon">🫁</div>
+        <div>
+          <div class="pillar-title">ARDS Thở Máy Xâm Lấn</div>
+          <div class="pillar-desc">PaO2/FiO2 &lt; 150, PEEP &ge; 5 cmH2O. Nằm sấp sớm, duy trì <strong>&ge; 16 giờ/ngày</strong> (Khuyến cáo mạnh).</div>
+        </div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🫁</div>
+        <div>
+          <div class="pillar-title">Nằm Sấp Thức Tỉnh (APP)</div>
+          <div class="pillar-desc">Bệnh nhân chưa đặt ETT thở HFNC. Mục tiêu <strong>&gt; 8 – 10 giờ/ngày</strong>. Giảm thất bại điều trị từ 44% &rarr; 33%.</div>
+        </div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🛡️</div>
+        <div>
+          <div class="pillar-title">Cơ Chế Sinh Lý Cốt Lõi</div>
+          <div class="pillar-desc">Tối ưu tương hợp V/Q, huy động phế nang lưng, hạn chế VILI / PSILI &amp; giảm hậu tải thất phải.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-content">
+
+    <!-- SEC 1: BỆNH NHÂN ĐẶT NỘI KHÍ QUẢN -->
+    <article class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🩺</span>
+        <h2 class="sec-title">1. Sinh Lý Học &amp; Khuyến Cáo Nằm Sấp Ở Bệnh Nhân ARDS Đặt Nội Khí Quản</h2>
+      </div>
+      <div class="sec-body">
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-bottom:0.6rem; color:var(--text);">A. Cơ chế sinh lý học (Physiologic Rationale - Figure 1 ICM 2026)</h3>
+        
+        <div class="updates-grid">
+          <div class="update-card" style="border-top: 3px solid var(--red);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--red);"><i class="fa-solid fa-bed"></i></div>
+              <div class="update-card-title">Tư Thế Nằm Ngửa (SUPINE)</div>
+            </div>
+            <div class="update-card-body">
+              • <strong>Phân bố thông khí bất đồng đều:</strong> Trọng lực và áp lực tim/tạng ổ bụng đè nén gây xẹp phế nang ở vùng lưng (Alveolar collapse) và căng giãn quá mức ở vùng bụng (Hyperinflation).<br>
+              • <strong>Bất tương hợp V/Q nặng nề (Shunt):</strong> Tưới máu vẫn tập trung ở vùng lưng xẹp gây hạ oxy máu nặng (Hypoxemia).<br>
+              • <strong>Tăng nguy cơ VILI &amp; PSILI:</strong> Tăng drive hô hấp, căng giãn không đồng đều.<br>
+              • <strong>Tăng hậu tải thất phải (Increased RV afterload):</strong> Do tăng kháng lực mạch máu phổi.
+            </div>
+          </div>
+
+          <div class="update-card" style="border-top: 3px solid var(--green);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--green);"><i class="fa-solid fa-person-praying"></i></div>
+              <div class="update-card-title">Tư Thế Nằm Sấp (PRONE)</div>
+            </div>
+            <div class="update-card-body">
+              • <strong>Đảo ngược lực trọng trường &amp; ép xương ức:</strong> Giải phóng vùng phổi phía sau khỏi sự chèn ép của tim.<br>
+              • <strong>Tái phân bố thông khí đồng đều (Aeration redistribution):</strong> Huy động lại các phế nang bị xẹp (Alveolar recruitment) giúp thể tích phổi đồng đều.<br>
+              • <strong>Khớp V/Q cải thiện vượt trội:</strong> Tưới máu vùng lưng duy trì tốt kết hợp phế nang lưng được mở rộng.<br>
+              • <strong>Giảm VILI &amp; Dỡ tải thất phải:</strong> Phân bố đồng đều stress/strain, giảm drive hô hấp và giảm hậu tải thất phải (Reduced RV afterload).
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-top:1.5rem; margin-bottom:0.6rem; color:var(--text);">B. Khuyến cáo lâm sàng cho bệnh nhân thở máy (Figure 3 ICM 2026)</h3>
+
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-badge-group">
+            <span class="cor-badge cor-class-1"><i class="fa-solid fa-circle-check"></i> Khuyến Cáo Mạnh</span>
+            <span class="loe-badge loe-grade-a">ESICM &amp; ATS</span>
+          </div>
+          <strong>Chỉ định:</strong> Áp dụng tư thế nằm sấp cho bệnh nhân ARDS đặt nội khí quản mức độ trung bình đến nặng có <strong>PaO2/FiO2 &lt; 150 mmHg</strong> và <strong>PEEP &ge; 5 cmH2O</strong> (sau khi đã tối ưu hóa thông số máy thở bảo vệ phổi).
+        </div>
+
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-badge-group">
+            <span class="cor-badge cor-class-1">Thời Điểm &amp; Liều Lượng</span>
+            <span class="loe-badge loe-grade-a">LOE A</span>
+          </div>
+          • <strong>Thời điểm (Timing):</strong> Bắt đầu <strong>sớm trong vòng 36 giờ</strong> sau khi đặt nội khí quản và sau một giai đoạn ổn định ngắn.<br>
+          • <strong>Thời gian duy trì (Duration):</strong> Duy trì <strong>kéo dài liên tục &ge; 16 giờ/ngày</strong> trong mỗi phiên nằm sấp.<br>
+          • <strong>Tiêu chuẩn ngừng nằm sấp:</strong> Đánh giá định kỳ chỉ số PaO2/FiO2 ở tư thế nằm ngửa sau khi resupination. Ngừng khi PaO2/FiO2 &ge; 150 mmHg với PEEP &le; 10 cmH2O và FiO2 &le; 0.60 duy trì ít nhất 4 giờ sau lật ngửa.
+        </div>
+
+        <div class="infobox warning" style="margin-top: 1rem;">
+          <span class="infobox-icon">💊</span>
+          <div>
+            <strong>Sử dụng Thuốc Giãn Cơ (NMBA):</strong><br>
+            Sử dụng đồng thời an thần + thuốc giãn cơ sớm mang lại hiệu ứng cộng gộp bảo vệ phổi. Tuy nhiên, <strong>ESICM khuyến cáo không nên truyền NMBA liên tục thường quy</strong>, trong khi <strong>ATS đưa ra khuyến cáo có điều kiện</strong> đối với NMBA.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SEC 2: LỊCH SỬ THỬ NGHIỆM & PROSEVA TRIAL -->
+    <article class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">📜</span>
+        <h2 class="sec-title">2. Lịch Sử Phát Triển &amp; Thử Nghiệm Bản Lề PROSEVA (2013)</h2>
+      </div>
+      <div class="sec-body">
+        <p>Tư thế nằm sấp đã chuyển dịch từ một biện pháp cứu cánh (rescue therapy) sang can thiệp cốt lõi của chiến lược thông khí bảo vệ phổi.</p>
+
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <div class="timeline-year">1967</div>
+            <div class="timeline-text">Ashbaugh công bố ca bệnh mô tả ARDS đầu tiên.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1974 – 1988</div>
+            <div class="timeline-text">Nghiên cứu thực nghiệm về các cơ chế VILI (Barotrauma, Volutrauma, Atelectrauma, Biotrauma) và báo cáo lâm sàng đầu tiên về nằm sấp.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2000</div>
+            <div class="timeline-text">Nghiên cứu ARMA chứng minh chiến lược thông khí thể tích lưu thông thấp (Low VT 6 mL/kg).</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2001 – 2010</div>
+            <div class="timeline-text">Giai đoạn 4 thử nghiệm ngẫu nhiên lớn (Gattinoni 2001, Guerin 2004, Mancebo 2006, Taccone 2009). Chưa chứng minh giảm tử vong do nằm sấp thời gian ngắn (7–8h/ngày) hoặc VT cao. Năm 2010 có thử nghiệm ACURASYS về NMBA.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2012</div>
+            <div class="timeline-text">Định nghĩa Berlin về ARDS chính thức ban hành.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2013 (Bước Ngoặt)</div>
+            <div class="timeline-text">Thử nghiệm ngẫu nhiên bản lề <strong>PROSEVA (Guérin et al., NEJM 2013)</strong> chứng minh nằm sấp sớm (&lt;36h) và kéo dài (&ge;16h/ngày) ở ARDS trung bình-nặng làm <strong>giảm tỷ lệ tử vong 28 ngày từ 32.8% xuống 16.0% (p &lt; 0.001)</strong>.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2020 – 2026</div>
+            <div class="timeline-text">Đại dịch COVID-19 bùng phát thúc đẩy Nằm sấp thức tỉnh (Awake Prone Positioning - APP). Hướng dẫn ICM 2026 chính thức đưa ra khuyến cáo mạnh mẽ.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SEC 3: NẰM SẤP THỨC TỈNH (APP) -->
+    <article class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🧘</span>
+        <h2 class="sec-title">3. Tư Thế Nằm Sấp Thức Tỉnh (Awake Prone Positioning - APP)</h2>
+      </div>
+      <div class="sec-body">
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">A. Sinh lý học ở bệnh nhân tự thở</h3>
+        <ul style="padding-left: 1.2rem; line-height: 1.7; font-size: 0.86rem;">
+          <li><strong>Phân bố thông khí đồng đều hơn:</strong> Nhịp thở tự nhiên được bảo tồn. Đánh giá qua Cắt lớp trở kháng điện (EIT) chứng minh APP thúc đẩy thông khí đồng đều trên toàn bộ phổi.</li>
+          <li><strong>Tương tác với các thiết bị hỗ trợ hô hấp không xâm lấn:</strong>
+            <ul>
+              <li><strong>Hiệu quả tối ưu nhất khi phối hợp với HFNC</strong> (Oxy dòng cao qua mũi) hoặc oxy thông thường: Cải thiện rõ rệt V/Q matching và thể tích phế nang.</li>
+              <li><strong>Hiệu quả bổ sung tối thiểu khi phối hợp với CPAP / NIV:</strong> Do CPAP và NIV vốn đã cung cấp PEEP cao huy động phế nang, làm giới hạn khả năng huy động thêm từ nằm sấp.</li>
+            </ul>
+          </li>
+          <li><strong>Tác động lên nỗ lực hít vào &amp; P-SILI:</strong> Giảm tần số thở và giảm nhu cầu thông khí phút. Tuy nhiên biên độ dao động áp lực thực quản có thể tăng hoặc không đổi, cần theo dõi sát để tránh P-SILI.</li>
+        </ul>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-top:1.5rem; margin-bottom:0.5rem; color:var(--text);">B. Thử nghiệm Meta-trial 2021 &amp; Mối quan hệ Liều - Đáp ứng</h3>
+        
+        <div class="infobox success">
+          <span class="infobox-icon">🏆</span>
+          <div>
+            <strong>Thử nghiệm Đa quốc gia Meta-trial (Ehrmann et al., Lancet Respir Med 2021):</strong><br>
+            Nghiên cứu trên <strong>1.121 bệnh nhân COVID-19</strong> thở HFNC tại 6 quốc gia. Dừng sớm vì hiệu quả vượt trội: APP giúp <strong>giảm tỷ lệ thất bại điều trị (đặt ETT hoặc tử vong 28 ngày) từ 44% xuống 33% (HR 0.75, p=0.001)</strong>.
+          </div>
+        </div>
+
+        <div class="infobox warning" style="margin-top: 0.75rem;">
+          <span class="infobox-icon">⏱️</span>
+          <div>
+            <strong>Mối quan hệ Liều - Đáp ứng (Dose-Response Effect):</strong><br>
+            Sự khác biệt giữa các thử nghiệm RCT sau đó (COVID-PRONE, Alhazzani 2022...) là do tính tuân thủ thời gian. Phân tích gộp gộp (Luo 2025, Liu 2024) chứng minh lợi ích lâm sàng rõ rệt (bao gồm giảm tử vong) <strong>chỉ đạt được khi thời gian nằm sấp duy trì liên tục &gt; 8 đến 10 giờ mỗi ngày</strong>.
+          </div>
+        </div>
+
+        <h3 style="font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:700; margin-top:1.5rem; margin-bottom:0.5rem; color:var(--text);">C. Khuyến cáo thực hành APP (ESICM 2023 / ICM 2026)</h3>
+        <div class="table-wrapper">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Tiêu Chí</th>
+                <th>Hướng Dẫn Thực Hành Lâm Sàng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Lựa chọn Bệnh nhân (Who)</strong></td>
+                <td>Bệnh nhân suy hô hấp giảm oxy máu cấp (AHRF) liên quan COVID-19 chưa đặt ETT đang thở HFNC/CPAP/NIV. Bệnh nhân trẻ, BMI trung bình, AHRF nhẹ-trung bình, <strong>tỉnh táo, hợp tác tốt, huyết động ổn định</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>Thời điểm (When)</strong></td>
+                <td>Khởi đầu <strong>sớm trong vòng 24 giờ đầu</strong> từ khi bắt đầu HFNC hoặc nhập viện.</td>
+              </tr>
+              <tr>
+                <td><strong>Liều lượng (How)</strong></td>
+                <td>Mục tiêu nằm sấp <strong>&gt; 8 – 10 giờ/ngày</strong> (có thể chia nhỏ nhiều phiên trong ngày tùy khả năng dung nạp).</td>
+              </tr>
+              <tr>
+                <td><strong>Chỉ số Theo dõi (Monitoring)</strong></td>
+                <td>
+                  • Theo dõi SpO2, PaO2/FiO2, nhịp thở (RR).<br>
+                  • <strong>Chỉ số ROX Index = (SpO2 / FiO2) / RR:</strong> Công cụ cốt lõi tiên lượng thất bại. <strong>ROX &lt; 3.85 (sau 12h)</strong> cảnh báo nguy cơ cao thất bại, cần đặt ETT kịp thời, không trì hoãn.<br>
+                  • <strong>Siêu âm phổi (LUS):</strong> Sự tăng thông khí vùng lưng sau phiên APP đầu tiên dự báo thành công tránh đặt ETT.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <!-- SEC 4: QUY TRÌNH THỰC HÀNH & AN TOÀN -->
+    <article class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🛡️</span>
+        <h2 class="sec-title">4. Quy Trình An Toàn, Chống Chỉ Định &amp; Nhân Sự</h2>
+      </div>
+      <div class="sec-body">
+        <div class="updates-grid">
+          <!-- Card 1: Chống chỉ định -->
+          <div class="update-card" style="border-top: 3px solid var(--red);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--red);"><i class="fa-solid fa-ban"></i></div>
+              <div class="update-card-title">Chống Chỉ Định &amp; Biến Cố</div>
+            </div>
+            <div class="update-card-body">
+              • <strong>Chống chỉ định tuyệt đối duy nhất:</strong> Tổn thương cột sống không ổn định.<br>
+              • <strong>Chống chỉ định tương đối:</strong> Béo phì, mới phẫu thuật bụng, đặt dẫn lưu (không phải rào cản tuyệt đối nếu kíp điều trị giàu kinh nghiệm).<br>
+              • <strong>Biến cố bất lợi:</strong> Tổn thương đè ép/loét tì đè (phổ biến nhất), phù mặt, tuột ETT ngoài ý muốn, tổn thương dây thần kinh ngoại biên chi trên.
+            </div>
+          </div>
+
+          <!-- Card 2: Nhân sự Prone Team -->
+          <div class="update-card" style="border-top: 3px solid var(--teal);">
+            <div class="update-card-header">
+              <div class="update-card-icon" style="color: var(--teal);"><i class="fa-solid fa-users-gear"></i></div>
+              <div class="update-card-title">Yêu Cầu Nhân Sự &amp; Prone Team</div>
+            </div>
+            <div class="update-card-body">
+              • <strong>Kíp lật bệnh nhân đặt ETT:</strong> Yêu cầu kíp phối hợp gồm <strong>3 đến 5 nhân viên y tế được đào tạo bài bản</strong> cho mỗi lần lật bệnh nhân.<br>
+              • <strong>1 Bác sĩ / KTV giữ và bảo vệ đường thở (ETT)</strong> ở đầu giường.<br>
+              • 2–4 Điều dưỡng hỗ trợ lật thân mình, quản lý dây máy thở, catheter và lót đệm giảm áp lực tì đè.
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SEC 5: THỬ NGHIỆM ĐANG DIỄN RA -->
+    <article class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <span class="sec-hdr-icon">🔬</span>
+        <h2 class="sec-title">5. Các Thử Nghiệm Lâm Sàng Đang Diễn Ra (Không Do COVID-19)</h2>
+      </div>
+      <div class="sec-body">
+        <p>Hiệu quả của APP ở bệnh nhân AHRF <strong>không do COVID-19</strong> hiện là khoảng trống y văn lớn và đang được làm sáng tỏ qua 3 thử nghiệm RCT quy mô lớn:</p>
+        
+        <div class="table-wrapper" style="margin-top: 0.75rem;">
+          <table class="regimen-table">
+            <thead>
+              <tr>
+                <th>Tên Thử Nghiệm</th>
+                <th>Quy Mô Bệnh Nhân</th>
+                <th>Mục Tiêu &amp; Tiêu Chí Đánh Giá</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PRONELIFE</strong><br><span class="rx-tag">NCT05056090</span></td>
+                <td><strong>650 bệnh nhân</strong> từ 35 đơn vị ICU toàn cầu.</td>
+                <td>Đánh giá tỷ lệ đặt nội khí quản ở ngày thứ 14 ở bệnh nhân AHRF không do COVID-19.</td>
+              </tr>
+              <tr>
+                <td><strong>UK Multicenter Trial</strong><br><span class="rx-tag">ISRCTN63784375</span></td>
+                <td><strong>1.708 bệnh nhân</strong> tại Vương quốc Anh.</td>
+                <td>Đánh giá tỷ lệ đặt nội khí quản và tỷ lệ tử vong ở ngày thứ 30.</td>
+              </tr>
+              <tr>
+                <td><strong>French CAP Trial</strong><br><span class="rx-tag">NCT06966310</span></td>
+                <td><strong>1.078 bệnh nhân</strong> viêm phổi mắc phải cộng đồng (CAP) thở HFNC.</td>
+                <td>Đánh giá tỷ lệ đặt nội khí quản ở thời điểm 28 ngày.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CITATION -->
+        <div class="citation-box" style="margin-top: 1.5rem;">
+          <strong>Trích dẫn AMA chuẩn:</strong><br>
+          Ehrmann S, Li J, Liu L, Guérin C. Prone positioning in ARDS. <em>Intensive Care Med</em>. Published online July 20, 2026. doi:10.1007/s00134-026-08543-x.
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines</a>
+          <a href="../../../../pages/Công cụ/Cấp cứu & hồi sức/sepsis-studio.html" class="btn"><i class="fa-solid fa-calculator"></i> Mở Sepsis Pro Studio</a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+</body>
+</html>
