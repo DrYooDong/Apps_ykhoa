@@ -27,7 +27,7 @@
   <script src="../../../../js/main.js" defer></script>
   <script src="../../../../components/header.js" defer></script>
   <script src="../../../../components/footer.js" defer></script>
-  <script src="../../../../js/pharmacology/pharmacology-heatmap.js" defer></script>
+  <script type="module" src="./interaction-matrix.ts"></script>
 
   <style>
     .quick-tabs-container {
@@ -161,39 +161,7 @@
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      const tabPanes = document.querySelectorAll('.tab-pane');
 
-      function switchTab(targetId) {
-        tabBtns.forEach(btn => btn.classList.remove('active'));
-        tabPanes.forEach(pane => pane.classList.remove('active'));
-
-        const targetBtn = document.querySelector(`.tab-btn[data-target="${targetId}"]`);
-        const targetPane = document.getElementById(targetId);
-
-        if (targetBtn && targetPane) {
-          targetBtn.classList.add('active');
-          targetPane.classList.add('active');
-        }
-      }
-
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          switchTab(btn.dataset.target);
-          window.history.replaceState(null, null, `#${btn.dataset.target}`);
-        });
-      });
-
-      if (window.location.hash) {
-        const hash = window.location.hash.substring(1);
-        if (document.getElementById(hash)) {
-          switchTab(hash);
-        }
-      }
-    });
-  </script>
 
 </body>
 

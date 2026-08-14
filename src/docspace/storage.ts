@@ -23,6 +23,8 @@ import {
   PatientDemographic,
   VitalsRecord,
   SoapPatientRecord,
+  WeeklySummaryRecord,
+  CalculatorSession,
 } from './types';
 import { signRecord, verifyRecordIntegrity } from './features/audit-shield';
 import { FhirAdapter } from './data/fhir-adapter';
@@ -30,8 +32,123 @@ import { redactSoapRecord } from './ai/phi-redactor';
 import { PouchSyncAdapter } from './storage/pouch-adapter';
 
 // ─────────────────────────────────────────────
-// HELPERS
+// SAFE STORAGE & SECURITY HELPERS
 // ─────────────────────────────────────────────
+
+const DOCSPACE_CRYPTO_SALT = 'CliniPortal#DocSpace$SecureShield!2026';
+
+export function maskSecret(plain?: string): string {
+  if (!plain) return '';
+  const trimmed = plain.trim();
+  if (!trimmed) return '';
+  if (trimmed.startsWith('enc:v1:')) return trimmed; // Already masked
+  try {
+    let xor = '';
+    for (let i = 0; i < trimmed.length; i++) {
+      xor += String.fromCharCode(trimmed.charCodeAt(i) ^ DOCSPACE_CRYPTO_SALT.charCodeAt(i % DOCSPACE_CRYPTO_SALT.length));
+    }
+    return 'enc:v1:' + btoa(unescape(encodeURIComponent(xor)));
+  } catch {
+    return 'enc:v1:' + btoa(trimmed);
+  }
+}
+
+export function unmaskSecret(cipher?: string): string {
+  if (!cipher) return '';
+  const trimmed = cipher.trim();
+  if (!trimmed) return '';
+  if (!trimmed.startsWith('enc:v1:')) return trimmed; // Backwards compatible with plain text
+  try {
+    const rawB64 = trimmed.slice(7);
+    const decoded = decodeURIComponent(escape(atob(rawB64)));
+    let result = '';
+    for (let i = 0; i < decoded.length; i++) {
+      result += String.fromCharCode(decoded.charCodeAt(i) ^ DOCSPACE_CRYPTO_SALT.charCodeAt(i % DOCSPACE_CRYPTO_SALT.length));
+    }
+    return result;
+  } catch {
+    try {
+      return atob(trimmed.slice(7));
+    } catch {
+      return trimmed;
+    }
+  }
+}
+
+export function maskProfileSecrets(p: DoctorProfile): DoctorProfile {
+  const cloned: DoctorProfile = JSON.parse(JSON.stringify(p));
+  if (cloned.aiSettings) {
+    if (cloned.aiSettings.apiKey) cloned.aiSettings.apiKey = maskSecret(cloned.aiSettings.apiKey);
+    if (cloned.aiSettings.geminiApiKey) cloned.aiSettings.geminiApiKey = maskSecret(cloned.aiSettings.geminiApiKey);
+    if (cloned.aiSettings.secondaryApiKey) cloned.aiSettings.secondaryApiKey = maskSecret(cloned.aiSettings.secondaryApiKey);
+  }
+  if (cloned.syncSettings) {
+    if (cloned.syncSettings.password) cloned.syncSettings.password = maskSecret(cloned.syncSettings.password);
+    if (cloned.syncSettings.passphrase) cloned.syncSettings.passphrase = maskSecret(cloned.syncSettings.passphrase);
+  }
+  return cloned;
+}
+
+export function unmaskProfileSecrets(p: DoctorProfile): DoctorProfile {
+  const cloned: DoctorProfile = JSON.parse(JSON.stringify(p));
+  if (cloned.aiSettings) {
+    if (cloned.aiSettings.apiKey) cloned.aiSettings.apiKey = unmaskSecret(cloned.aiSettings.apiKey);
+    if (cloned.aiSettings.geminiApiKey) cloned.aiSettings.geminiApiKey = unmaskSecret(cloned.aiSettings.geminiApiKey);
+    if (cloned.aiSettings.secondaryApiKey) cloned.aiSettings.secondaryApiKey = unmaskSecret(cloned.aiSettings.secondaryApiKey);
+  }
+  if (cloned.syncSettings) {
+    if (cloned.syncSettings.password) cloned.syncSettings.password = unmaskSecret(cloned.syncSettings.password);
+    if (cloned.syncSettings.passphrase) cloned.syncSettings.passphrase = unmaskSecret(cloned.syncSettings.passphrase);
+  }
+  return cloned;
+}
+
+export function sanitizeProfileId(rawId: string): string {
+  if (!rawId) return 'default_doctor';
+  const normalized = rawId
+    .trim()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9_-]/g, '_')
+    .replace(/^_+|_+$/g, '');
+  
+  const safeId = normalized || 'doctor';
+  const reservedWords = ['profiles', 'active_profile', 'supabase_url', 'supabase_key', 'last_export'];
+  if (reservedWords.includes(safeId.toLowerCase())) {
+    return `user_${safeId}`;
+  }
+  return safeId.slice(0, 40);
+}
+
+export function safeStorageGet(key: string, defaultVal = ''): string {
+  try {
+    return localStorage.getItem(key) ?? defaultVal;
+  } catch (err) {
+    console.error(`[DocSpace Storage] Failed to read key "${key}":`, err);
+    return defaultVal;
+  }
+}
+
+export function safeStorageSet(key: string, value: string): boolean {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (err: any) {
+    console.error(`[DocSpace Storage Error] Quota exceeded or cannot write key "${key}":`, err);
+    if (typeof window !== 'undefined' && window.dispatchEvent) {
+      window.dispatchEvent(new CustomEvent('docspace:quota-exceeded', { detail: { key, error: err } }));
+    }
+    return false;
+  }
+}
+
+export function safeStorageRemove(key: string): void {
+  try {
+    localStorage.removeItem(key);
+  } catch (err) {
+    console.error(`[DocSpace Storage] Failed to remove key "${key}":`, err);
+  }
+}
 
 function uuid(): string {
   return crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -42,20 +159,28 @@ function now(): string {
 }
 
 function storageKey(profileId: string, store: string): string {
-  return `dsp_${profileId}_${store}`;
+  const safeId = sanitizeProfileId(profileId);
+  const safeStore = store.trim().replace(/[^a-zA-Z0-9_-]/g, '_');
+  return `dsp_${safeId}_${safeStore}`;
 }
 
 function load<T>(profileId: string, store: string): T[] {
   try {
-    const raw = localStorage.getItem(storageKey(profileId, store));
+    const raw = safeStorageGet(storageKey(profileId, store), '');
     return raw ? (JSON.parse(raw) as T[]) : [];
-  } catch {
+  } catch (err) {
+    console.warn(`[DocSpace Storage] Failed to parse store "${store}":`, err);
     return [];
   }
 }
 
-function save<T>(profileId: string, store: string, data: T[]): void {
-  localStorage.setItem(storageKey(profileId, store), JSON.stringify(data));
+function save<T>(profileId: string, store: string, data: T[]): boolean {
+  try {
+    return safeStorageSet(storageKey(profileId, store), JSON.stringify(data));
+  } catch (err) {
+    console.error(`[DocSpace Storage] Failed to save store "${store}":`, err);
+    return false;
+  }
 }
 
 // ─────────────────────────────────────────────
@@ -67,27 +192,38 @@ const ACTIVE_PROFILE_KEY = 'dsp_active_profile';
 
 export function getAllProfiles(): DoctorProfile[] {
   try {
-    const raw = localStorage.getItem(PROFILE_LIST_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
+    const raw = safeStorageGet(PROFILE_LIST_KEY, '');
+    if (!raw) return [];
+    const profiles = JSON.parse(raw) as DoctorProfile[];
+    return Array.isArray(profiles) ? profiles.map(unmaskProfileSecrets) : [];
+  } catch (err) {
+    console.error('[DocSpace Storage] Failed to get profiles:', err);
     return [];
   }
 }
 
 export function saveProfile(profile: DoctorProfile): void {
-  const profiles = getAllProfiles();
-  const idx = profiles.findIndex(p => p.id === profile.id);
-  if (idx >= 0) {
-    profiles[idx] = profile;
-  } else {
-    profiles.push(profile);
+  try {
+    const safeId = sanitizeProfileId(profile.id);
+    profile.id = safeId;
+    const profiles = getAllProfiles();
+    const idx = profiles.findIndex(p => p.id === safeId);
+    if (idx >= 0) {
+      profiles[idx] = profile;
+    } else {
+      profiles.push(profile);
+    }
+    const maskedList = profiles.map(maskProfileSecrets);
+    safeStorageSet(PROFILE_LIST_KEY, JSON.stringify(maskedList));
+  } catch (err) {
+    console.error('[DocSpace Storage] Failed to save profile:', err);
   }
-  localStorage.setItem(PROFILE_LIST_KEY, JSON.stringify(profiles));
 }
 
 export function createProfile(id: string, displayName: string, specialty?: string): DoctorProfile {
+  const cleanId = sanitizeProfileId(id);
   const profile: DoctorProfile = {
-    id: id.trim(),
+    id: cleanId,
     displayName: displayName.trim(),
     ...(specialty ? { specialty } : {}),
     createdAt: now(),
@@ -95,7 +231,7 @@ export function createProfile(id: string, displayName: string, specialty?: strin
     quickLinks: [...DEFAULT_QUICK_LINKS],
   };
   saveProfile(profile);
-  setActiveProfile(id);
+  setActiveProfile(cleanId);
   return profile;
 }
 
@@ -112,7 +248,8 @@ const URL_MIGRATION_MAP: Record<string, string> = {
 };
 
 export function getProfile(id: string): DoctorProfile | null {
-  const profile = getAllProfiles().find(p => p.id === id) || null;
+  const cleanId = sanitizeProfileId(id);
+  const profile = getAllProfiles().find(p => p.id === cleanId) || null;
   if (profile && profile.quickLinks) {
     let modified = false;
     profile.quickLinks = profile.quickLinks.map(link => {
@@ -131,9 +268,10 @@ export function getProfile(id: string): DoctorProfile | null {
 }
 
 export function setActiveProfile(id: string): void {
-  localStorage.setItem(ACTIVE_PROFILE_KEY, id);
+  const cleanId = sanitizeProfileId(id);
+  safeStorageSet(ACTIVE_PROFILE_KEY, cleanId);
   // Update lastActiveAt
-  const profile = getProfile(id);
+  const profile = getProfile(cleanId);
   if (profile) {
     profile.lastActiveAt = now();
     saveProfile(profile);
@@ -141,7 +279,8 @@ export function setActiveProfile(id: string): void {
 }
 
 export function getActiveProfileId(): string | null {
-  return localStorage.getItem(ACTIVE_PROFILE_KEY);
+  const id = safeStorageGet(ACTIVE_PROFILE_KEY, '');
+  return id ? sanitizeProfileId(id) : null;
 }
 
 export function getActiveProfile(): DoctorProfile | null {
@@ -150,16 +289,22 @@ export function getActiveProfile(): DoctorProfile | null {
 }
 
 export function deleteProfile(id: string): void {
-  // Thực tế có thể nên dùng soft delete hoặc confirm dialog từ UI.
-  // Xóa cứng theo yêu cầu gốc, nhưng trong Phase 0 UI sẽ có window.confirm.
-  const keys = Object.keys(localStorage).filter(k => k.startsWith(`dsp_${id}_`));
-  keys.forEach(k => localStorage.removeItem(k));
+  const safeId = sanitizeProfileId(id);
+  try {
+    const keys = Object.keys(localStorage).filter(k => k.startsWith(`dsp_${safeId}_`));
+    keys.forEach(k => safeStorageRemove(k));
+  } catch (err) {
+    console.error('[DocSpace Storage] Failed to delete profile keys:', err);
+  }
+  
   // Remove from profile list
-  const profiles = getAllProfiles().filter(p => p.id !== id);
-  localStorage.setItem(PROFILE_LIST_KEY, JSON.stringify(profiles));
+  const profiles = getAllProfiles().filter(p => sanitizeProfileId(p.id) !== safeId);
+  const maskedList = profiles.map(maskProfileSecrets);
+  safeStorageSet(PROFILE_LIST_KEY, JSON.stringify(maskedList));
+  
   // Clear active if it was this profile
-  if (getActiveProfileId() === id) {
-    localStorage.removeItem(ACTIVE_PROFILE_KEY);
+  if (getActiveProfileId() === safeId) {
+    safeStorageRemove(ACTIVE_PROFILE_KEY);
   }
 }
 
@@ -826,14 +971,14 @@ export interface SupabaseConfig {
 
 export function getSoapSupabaseConfig(): SupabaseConfig {
   return {
-    url: localStorage.getItem('dsp_supabase_url') || '',
-    key: localStorage.getItem('dsp_supabase_key') || ''
+    url: safeStorageGet('dsp_supabase_url', ''),
+    key: unmaskSecret(safeStorageGet('dsp_supabase_key', ''))
   };
 }
 
 export function saveSoapSupabaseConfig(url: string, key: string): void {
-  localStorage.setItem('dsp_supabase_url', url.trim());
-  localStorage.setItem('dsp_supabase_key', key.trim());
+  safeStorageSet('dsp_supabase_url', url.trim());
+  safeStorageSet('dsp_supabase_key', maskSecret(key.trim()));
 }
 
 export async function syncSoapToSupabase(patient: SoapPatientRecord): Promise<{ success: boolean; error?: string }> {
@@ -985,7 +1130,8 @@ export async function exportProfile(profileId: string): Promise<void> {
   URL.revokeObjectURL(url);
   
   // Record export time
-  localStorage.setItem(`dsp_last_export_${profileId}`, now());
+  const safePid = sanitizeProfileId(profileId);
+  safeStorageSet(`dsp_last_export_${safePid}`, now());
 }
 
 function validateSnapshot(data: any): boolean {
@@ -1186,11 +1332,13 @@ export interface DocSpaceStats {
   noteCount: number;
   drugCount: number;
   protocolCount: number;
+  soapCount: number;
   lastBackupDays: number | null;
 }
 
 export async function getStats(profileId: string): Promise<DocSpaceStats> {
-  const lastExport = localStorage.getItem(`dsp_last_export_${profileId}`);
+  const safePid = sanitizeProfileId(profileId);
+  const lastExport = safeStorageGet(`dsp_last_export_${safePid}`, '');
   let daysSince = null;
   if (lastExport) {
     daysSince = Math.floor((Date.now() - new Date(lastExport).getTime()) / (1000 * 60 * 60 * 24));
@@ -1203,6 +1351,88 @@ export async function getStats(profileId: string): Promise<DocSpaceStats> {
     noteCount: getAllNotes(profileId).length,
     drugCount: getAllDrugEntries(profileId).length,
     protocolCount: getAllProtocols(profileId).length,
+    soapCount: getAllSoapPatients(profileId).length,
     lastBackupDays: daysSince,
   };
+}
+
+// ─────────────────────────────────────────────
+// AI INSIGHTS & GEMINI KEY HELPERS (Cluster 5)
+// ─────────────────────────────────────────────
+
+const GLOBAL_GEMINI_KEY = 'CLINI_GEMINI_KEY';
+
+export function getGeminiApiKey(profileId?: string): string {
+  if (profileId) {
+    const profile = getProfile(profileId);
+    if (profile?.aiSettings?.geminiApiKey) return unmaskSecret(profile.aiSettings.geminiApiKey).trim();
+    if (profile?.aiSettings?.apiKey && profile.aiSettings.provider === 'gemini') return unmaskSecret(profile.aiSettings.apiKey).trim();
+  }
+  return unmaskSecret(safeStorageGet(GLOBAL_GEMINI_KEY, '')).trim();
+}
+
+export function setGeminiApiKey(profileId: string | undefined, key: string): void {
+  const cleanKey = key.trim();
+  safeStorageSet(GLOBAL_GEMINI_KEY, maskSecret(cleanKey));
+  if (profileId) {
+    const profile = getProfile(profileId);
+    if (profile) {
+      profile.aiSettings = profile.aiSettings || {
+        enabled: true,
+        provider: 'gemini',
+        endpoint: 'https://generativelanguage.googleapis.com/v1beta/openai/',
+        model: 'gemini-2.0-flash',
+      };
+      profile.aiSettings.geminiApiKey = cleanKey;
+      saveProfile(profile);
+    }
+  }
+}
+
+export function getAllWeeklySummaries(profileId: string): WeeklySummaryRecord[] {
+  return load<WeeklySummaryRecord>(profileId, 'weekly_summaries').sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}
+
+export function saveWeeklySummary(profileId: string, summary: Omit<WeeklySummaryRecord, 'id' | 'doctorId' | 'createdAt'>): WeeklySummaryRecord {
+  const list = load<WeeklySummaryRecord>(profileId, 'weekly_summaries');
+  const record: WeeklySummaryRecord = {
+    ...summary,
+    id: uuid(),
+    doctorId: profileId,
+    createdAt: now(),
+  };
+  list.unshift(record);
+  save(profileId, 'weekly_summaries', list);
+  return record;
+}
+
+// ─────────────────────────────────────────────
+// CALCULATOR SESSIONS (Phase 3)
+// ─────────────────────────────────────────────
+
+export function getCalculatorSessions(profileId: string): CalculatorSession[] {
+  return load<CalculatorSession>(profileId, 'calc_sessions').sort(
+    (a, b) => new Date(b.calculatedAt).getTime() - new Date(a.calculatedAt).getTime()
+  );
+}
+
+export function saveCalculatorSession(
+  profileId: string,
+  session: Omit<CalculatorSession, 'id' | 'calculatedAt'>
+): CalculatorSession {
+  const list = load<CalculatorSession>(profileId, 'calc_sessions');
+  const record: CalculatorSession = {
+    ...session,
+    id: uuid(),
+    calculatedAt: now(),
+  };
+  list.unshift(record);
+  // Keep maximum 50 most recent sessions
+  if (list.length > 50) {
+    list.length = 50;
+  }
+  save(profileId, 'calc_sessions', list);
+  return record;
 }

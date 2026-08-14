@@ -437,6 +437,134 @@ function initForestPlotBuilder() {
     });
   }
 
+  // Living Review Topic Selector & Bedside Snippet Integration
+  const livingTopicSelect = document.getElementById("fp-living-topic-select");
+  const verdictBadge = document.getElementById("fp-verdict-badge");
+  const verdictText = document.getElementById("fp-verdict-text");
+  const bedsideSnippetDisplay = document.getElementById("fp-bedside-snippet-display");
+  const snippetFormatSelect = document.getElementById("fp-snippet-format");
+  const btnCopySnippet = document.getElementById("fp-btn-copy-snippet");
+
+  let currentActiveTrial = null;
+
+  if (livingTopicSelect) {
+    livingTopicSelect.addEventListener("change", (e) => {
+      const topicId = e.target.value;
+      if (!topicId) return;
+
+      if (window.CliniBedsideCopilot) {
+        const vault = window.CliniBedsideCopilot.getEvidenceVault();
+        const trial = vault.find(t => t.id === topicId);
+        if (trial) {
+          currentActiveTrial = trial;
+          document.querySelector("h1").textContent = `Forest Plot: ${trial.title}`;
+          const descEl = document.querySelector(".fp-card-desc");
+          if (descEl) descEl.textContent = `PICO: ${trial.pico.p} | Can thiệp: ${trial.pico.i} vs ${trial.pico.c} | Kết cục: ${trial.pico.o}`;
+
+          studiesData = trial.studies.map(s => ({
+            category: s.category || "primary",
+            name: s.name,
+            val: s.val,
+            low: s.low,
+            high: s.high,
+            weight: s.weight
+          }));
+
+          metricMode = trial.metric === "MD" ? "difference" : "ratio";
+          currentMetric = trial.metric || "RR";
+          nullVal = metricMode === "ratio" ? 1.0 : 0.0;
+          minAxis = metricMode === "ratio" ? 0.3 : -1.5;
+          maxAxis = metricMode === "ratio" ? 1.8 : 1.5;
+
+          if (metricTypeSelect) metricTypeSelect.value = metricMode;
+          if (statNull) statNull.textContent = nullVal.toFixed(1);
+          if (statScale) statScale.textContent = metricMode === "ratio" ? "Logarithmic Scale" : "Linear Scale";
+
+          recalculatePooled();
+          renderTable();
+          renderSvgForestPlot();
+          updateVerdictAndSnippet(trial);
+        }
+      }
+    });
+  }
+
+  function updateVerdictAndSnippet(trialData) {
+    if (!verdictBadge || !bedsideSnippetDisplay) return;
+
+    const fmt = snippetFormatSelect ? snippetFormatSelect.value : 'compact';
+
+    if (trialData) {
+      // Use existing trial data
+      const verdict = trialData.verdict || 'yes';
+      verdictBadge.className = `verdict-badge ${verdict}`;
+      verdictBadge.innerHTML = `<i class="fa-solid ${verdict === 'yes' ? 'fa-circle-check' : (verdict === 'no' ? 'fa-circle-xmark' : 'fa-circle-question')}"></i> <span>${trialData.verdictText || 'Evidence Assessed'}</span>`;
+
+      if (trialData.formats && trialData.formats[fmt]) {
+        bedsideSnippetDisplay.textContent = trialData.formats[fmt];
+      } else {
+        bedsideSnippetDisplay.textContent = `[EBM] ${trialData.pico.i} (${trialData.title}: ${trialData.metric || 'RR'} ${pooledData.val} [${pooledData.low}-${pooledData.high}])`;
+      }
+    } else {
+      // Compute dynamic verdict from pooledData
+      let verdict = 'maybe';
+      let vText = 'Bằng chứng chưa thống nhất (Inconclusive)';
+
+      if (metricMode === 'ratio') {
+        if (pooledData.high < 1.0) {
+          verdict = 'yes';
+          vText = 'Bằng chứng ủng hộ can thiệp (Favors Intervention - Yes)';
+        } else if (pooledData.low > 1.0) {
+          verdict = 'no';
+          vText = 'Bằng chứng ủng hộ nhóm chứng (Favors Control - No)';
+        }
+      } else {
+        if (pooledData.high < 0.0) {
+          verdict = 'yes';
+          vText = 'Can thiệp làm giảm chỉ số có ý nghĩa (Yes)';
+        } else if (pooledData.low > 0.0) {
+          verdict = 'no';
+          vText = 'Can thiệp làm tăng chỉ số (No)';
+        }
+      }
+
+      verdictBadge.className = `verdict-badge ${verdict}`;
+      verdictBadge.innerHTML = `<i class="fa-solid ${verdict === 'yes' ? 'fa-circle-check' : (verdict === 'no' ? 'fa-circle-xmark' : 'fa-circle-question')}"></i> <span>${vText}</span>`;
+
+      const pTitle = document.querySelector("h1").textContent.replace("Forest Plot: ", "") || "Can thiệp lâm sàng";
+      if (fmt === 'order') {
+        bedsideSnippetDisplay.textContent = `✓ Y lệnh ${pTitle} (Pooled ${currentMetric}: ${pooledData.val} [${pooledData.low}-${pooledData.high}] | CliniPortal EBM)`;
+      } else if (fmt === 'dx') {
+        bedsideSnippetDisplay.textContent = `[EBM-Dx] ${pTitle} (Pooled ${currentMetric}: ${pooledData.val} [${pooledData.low}-${pooledData.high}])`;
+      } else {
+        bedsideSnippetDisplay.textContent = `[EBM] ${pTitle} (Meta-Analysis Pooled ${currentMetric}: ${pooledData.val} [${pooledData.low}-${pooledData.high}], I²=${statI2 ? statI2.textContent : '0%'})`;
+      }
+    }
+  }
+
+  if (snippetFormatSelect) {
+    snippetFormatSelect.addEventListener("change", () => {
+      updateVerdictAndSnippet(currentActiveTrial);
+    });
+  }
+
+  if (btnCopySnippet && bedsideSnippetDisplay) {
+    btnCopySnippet.addEventListener("click", () => {
+      const text = bedsideSnippetDisplay.textContent.trim();
+      if (window.CliniBedsideCopilot && window.CliniBedsideCopilot.copySnippet) {
+        window.CliniBedsideCopilot.copySnippet(text, 'Đã copy Snippet 1 dòng vào Bệnh án!');
+      } else {
+        navigator.clipboard.writeText(text).then(() => {
+          const toast = document.getElementById("copilot-toast");
+          if (toast) {
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 2400);
+          }
+        });
+      }
+    });
+  }
+
   // Export SVG & PNG Handlers
   const btnExportSvg = document.getElementById("btn-export-svg");
   const btnExportPng = document.getElementById("btn-export-png");
@@ -507,4 +635,5 @@ function initForestPlotBuilder() {
   recalculatePooled();
   renderTable();
   renderSvgForestPlot();
+  updateVerdictAndSnippet(currentActiveTrial);
 }

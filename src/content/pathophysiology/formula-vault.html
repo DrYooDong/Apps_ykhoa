@@ -35,8 +35,7 @@
     <script src="../../../components/header.js" defer></script>
     <script src="../../../components/footer.js" defer></script>
     <script src="../../../js/main.js" defer></script>
-    <script src="js/physio-shared.js" defer></script>
-    <script src="js/physio-formula-engine.js" defer></script>
+    <script type="module" src="./formula-vault.ts"></script>
 </head>
 
 <body>
@@ -69,13 +68,6 @@
 
     <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (window.PhysioFormulaEngine) {
-                PhysioFormulaEngine.init('formula-container', 'data/formula-vault.json');
-            }
-        });
-    </script>
 </body>
 
 </html>

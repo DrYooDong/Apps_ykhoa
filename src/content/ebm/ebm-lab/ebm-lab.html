@@ -21,11 +21,13 @@
   <link rel="stylesheet" href="../../../../css/components/footer.css">
   <!-- Module CSS -->
   <link rel="stylesheet" href="../css/ebm-premium-system.css">
+  <link rel="stylesheet" href="../css/ebm-bedside-copilot.css">
   <link rel="stylesheet" href="ebm-lab.css">
 
   <script src="../../../../components/header.js" defer></script>
   <script src="../../../../components/footer.js" defer></script>
   <script src="../js/ebm-premium-system.js" defer></script>
+  <script src="../js/ebm-bedside-copilot.js" defer></script>
 </head>
 
 <body>
@@ -494,7 +496,8 @@
           <div style="background: var(--ebm-surface, #fff); border: 1.5px solid var(--ebm-border, #e2e8f0); border-radius: 16px; padding: 1.5rem;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
               <h3 style="font-size: 1rem; font-weight: 800; margin: 0;">🧪 Quick Analysis Pipeline Engine</h3>
-              <div style="display: flex; gap: 0.5rem;">
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <a href="forest-plot.html" class="btn" style="background: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%); color: #fff; border: none; font-weight: 700; font-size: 0.78rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-bolt-lightning"></i> Living Rapid Review</a>
                 <button class="btn" onclick="loadPipelinePreset('forest')" style="font-weight: 700; font-size: 0.78rem;">📊 Sample Forest Plot</button>
                 <button class="btn" onclick="loadPipelinePreset('km')" style="font-weight: 700; font-size: 0.78rem;">📈 Sample Kaplan-Meier</button>
               </div>
@@ -527,7 +530,7 @@
 
   <!-- Scripts -->
   <script src="../../../../js/main.js" defer></script>
-  <script src="ebm-lab.js" defer></script>
+  <script type="module" src="./ebm-lab.ts"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 import { ClinicalSession } from '../types';
+import { safeStorageSet, safeStorageGet, safeStorageRemove } from '../storage';
 
 const SESSION_KEY = 'cp_clinical_session';
 
@@ -6,7 +7,7 @@ const SESSION_KEY = 'cp_clinical_session';
  * Lưu ClinicalSession vào localStorage và phát CustomEvent
  */
 export function publishSession(session: ClinicalSession): void {
-  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+  safeStorageSet(SESSION_KEY, JSON.stringify(session));
   
   // Same-tab reactivity
   window.dispatchEvent(new CustomEvent('cp:session-update', { detail: session }));
@@ -40,7 +41,7 @@ export function onSessionUpdate(cb: (s: ClinicalSession) => void): () => void {
  */
 export function getActiveSession(): ClinicalSession | null {
   try {
-    const raw = localStorage.getItem(SESSION_KEY);
+    const raw = safeStorageGet(SESSION_KEY, '');
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
@@ -51,7 +52,7 @@ export function getActiveSession(): ClinicalSession | null {
  * Xóa session hiện tại
  */
 export function clearSession(): void {
-  localStorage.removeItem(SESSION_KEY);
+  safeStorageRemove(SESSION_KEY);
   window.dispatchEvent(new CustomEvent('cp:session-update', { detail: null }));
 }
 

@@ -1,85 +1,113 @@
 import { DRUG_INTERACTIONS, DrugInteractionRule } from '../data/drug-interactions';
 import { getActiveProfile } from '../storage';
 import { analyzeDrugInteractionsWithAI, generateClinicalScenario } from '../ai/llm-client';
+import { renderSidebar, renderDocSpaceHeader, escapeHtml } from '../docspace-view';
 
 export function renderSimulationView(profileId: string, sessionId?: string): string {
+  const profile = getActiveProfile();
+  if (!profile) return '';
+
   return `
-    <div class="dsp-view-container animate-fade-in">
-      <header class="dsp-header dsp-flex dsp-justify-between dsp-items-center">
-        <div>
-          <h2 class="dsp-text-2xl dsp-font-bold dsp-text-primary">
-            <i class="fa-solid fa-flask dsp-mr-2"></i> Simulation Sandbox & AI Clinical Lab
-          </h2>
-          <p class="dsp-text-muted">Kiểm tra tương tác thuốc & Mô phỏng Ca bệnh OSCE bằng AI (Phase 2.2)</p>
-        </div>
-      </header>
-      
-      <div class="dsp-content dsp-mt-6 dsp-flex" style="gap: 2rem; align-items: flex-start;">
-        
-        <!-- Cột trái: Form nhập -->
-        <div class="dsp-card dsp-p-6" style="flex: 0 0 350px;">
-          <!-- Section 1: Drug interaction -->
-          <div style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border);">
-            <h3 class="dsp-font-bold dsp-mb-2"><i class="fa-solid fa-pills dsp-text-primary"></i> Tra cứu Tương tác Thuốc</h3>
-            <p class="dsp-text-sm dsp-text-muted dsp-mb-3">Nhập tên các loại thuốc (cách nhau bởi dấu phẩy).</p>
-            <form id="dspSandboxForm" novalidate>
-              <div class="dsp-form-group">
-                <textarea id="dspDrugList" class="dsp-textarea" rows="3" placeholder="VD: vancomycin, gentamicin, furosemide" required></textarea>
-              </div>
-              <div style="display:flex; flex-direction:column; gap:6px;">
-                <button type="submit" class="dsp-btn dsp-btn-primary dsp-w-full" style="font-size:12px;">
-                  <i class="fa-solid fa-shield-virus dsp-mr-1"></i> Tra cứu Offline
-                </button>
-                <button type="button" id="btnAiAnalyzeDrugs" class="dsp-btn dsp-btn-outline dsp-w-full" style="font-size:12px; color:var(--color-primary); border-color:var(--color-primary);">
-                  <i class="fa-solid fa-wand-magic-sparkles dsp-mr-1"></i> ✨ Phân tích AI Chuyên sâu
-                </button>
-              </div>
-            </form>
-          </div>
+    <div class="dsp-layout" id="dspLayout">
+      ${renderSidebar(profile, 'sandbox')}
+      <main class="dsp-main" id="dspMain">
+        ${renderDocSpaceHeader(profile, 'sandbox')}
 
-          <!-- Section 2: OSCE Simulator -->
-          <div>
-            <h3 class="dsp-font-bold dsp-mb-2"><i class="fa-solid fa-user-doctor dsp-text-primary"></i> Mô phỏng Ca Bệnh OSCE</h3>
-            <p class="dsp-text-sm dsp-text-muted dsp-mb-3">Sinh ca bệnh giả lập thử thách lâm sàng.</p>
-            <form id="dspOsceForm" novalidate>
-              <div class="dsp-form-group" style="margin-bottom: 8px;">
-                <label style="font-size: 11px; font-weight: 700;">Chuyên khoa</label>
-                <select id="osceSpecialty" class="dsp-input" style="font-size:12px; padding:4px 8px;">
-                  <option value="Nội tim mạch">Nội Tim Mạch</option>
-                  <option value="Nội hô hấp">Nội Hô Hấp</option>
-                  <option value="Nội thận - Tiết niệu">Nội Thận - Tiết Niệu</option>
-                  <option value="Cấp cứu - Hồi sức">Cấp Cứu - Hồi Sức (ICU)</option>
-                  <option value="Ngoại khoa">Ngoại Khoa</option>
-                  <option value="Nhi khoa">Nhi Khoa</option>
-                </select>
-              </div>
-              <div class="dsp-form-group" style="margin-bottom: 12px;">
-                <label style="font-size: 11px; font-weight: 700;">Độ khó</label>
-                <select id="osceDifficulty" class="dsp-input" style="font-size:12px; padding:4px 8px;">
-                  <option value="easy">Cơ bản (Sinh viên Y)</option>
-                  <option value="medium" selected>Trung bình (Bác sĩ Nội trú)</option>
-                  <option value="hard">Nâng cao (Chuyên khoa)</option>
-                </select>
-              </div>
-              <button type="submit" class="dsp-btn dsp-btn-primary dsp-w-full" style="font-size:12px; background:#8b5cf6; border-color:#8b5cf6;">
-                <i class="fa-solid fa-dice dsp-mr-1"></i> 🎲 Sinh Ca Bệnh OSCE (AI)
-              </button>
-            </form>
-          </div>
-        </div>
+        <div class="dsp-page-content">
 
-        <!-- Cột phải: Kết quả -->
-        <div class="dsp-card dsp-p-6" style="flex: 1;">
-          <h3 class="dsp-font-bold dsp-mb-4" id="sandboxResultTitle">Kết quả Phân tích & Mô phỏng</h3>
-          <div id="dspSandboxResult">
-            <div class="dsp-empty-state dsp-p-8">
-              <i class="fa-solid fa-stethoscope dsp-text-4xl dsp-text-muted dsp-mb-2"></i>
-              <p>Chọn Tra cứu tương tác thuốc hoặc Sinh ca bệnh OSCE từ cột bên trái.</p>
+          <!-- Page Header -->
+          <div class="dsp-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+            <div>
+              <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem;">
+                <h1 class="dsp-page-title" style="margin:0;"><i class="fa-solid fa-flask" style="color:var(--dsp-amber);"></i> Simulation Sandbox &amp; AI Clinical Lab</h1>
+                <span class="dsp-badge" style="background:var(--dsp-violet); color:#fff; border:none;">AI Lab Phase 3</span>
+              </div>
+              <p class="dsp-page-subtitle" style="margin:0;">
+                Kiểm tra tương tác dược lực học offline &amp; Mô phỏng ca bệnh thử thách lâm sàng OSCE bằng AI.
+              </p>
             </div>
+            <a href="#/docspace" class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="btnBackSandbox">
+              <i class="fa-solid fa-arrow-left"></i> Quay lại Dashboard
+            </a>
           </div>
-        </div>
+          
+          <div style="display:grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: 1.5rem; align-items: flex-start;">
+            
+            <!-- Cột trái: Form nhập -->
+            <div class="dsp-card">
+              <!-- Section 1: Drug interaction -->
+              <div style="margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--color-border);">
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.35rem;">
+                  <i class="fa-solid fa-pills" style="color:var(--dsp-rose); font-size:1.1rem;"></i>
+                  <h3 style="margin:0; font-size:0.98rem; font-weight:800; color:var(--color-text);">Tra cứu Tương tác Thuốc</h3>
+                </div>
+                <p style="font-size:0.78rem; color:var(--color-text-muted); margin-bottom:0.75rem;">Nhập danh sách thuốc cách nhau bởi dấu phẩy.</p>
+                <form id="dspSandboxForm" novalidate>
+                  <div class="dsp-form-group">
+                    <textarea id="dspDrugList" class="dsp-textarea" rows="3" placeholder="VD: vancomycin, gentamicin, furosemide" style="min-height:80px;" required></textarea>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; margin-top:0.5rem;">
+                    <button type="submit" class="dsp-btn dsp-btn-primary dsp-btn-full" style="font-size:0.85rem;">
+                      <i class="fa-solid fa-shield-virus"></i> Tra cứu Offline
+                    </button>
+                    <button type="button" id="btnAiAnalyzeDrugs" class="dsp-btn dsp-btn-outline dsp-btn-full" style="font-size:0.85rem; color:var(--dsp-sky); border-color:rgba(14,165,233,0.3);">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ Phân tích AI Chuyên sâu
+                    </button>
+                  </div>
+                </form>
+              </div>
 
-      </div>
+              <!-- Section 2: OSCE Simulator -->
+              <div>
+                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.35rem;">
+                  <i class="fa-solid fa-user-doctor" style="color:var(--dsp-violet); font-size:1.1rem;"></i>
+                  <h3 style="margin:0; font-size:0.98rem; font-weight:800; color:var(--color-text);">Mô phỏng Ca Bệnh OSCE</h3>
+                </div>
+                <p style="font-size:0.78rem; color:var(--color-text-muted); margin-bottom:0.75rem;">Sinh ca bệnh giả lập thử thách ra quyết định lâm sàng.</p>
+                <form id="dspOsceForm" novalidate>
+                  <div class="dsp-form-group">
+                    <label class="dsp-label">Chuyên khoa</label>
+                    <select id="osceSpecialty" class="dsp-input">
+                      <option value="Nội tim mạch">Nội Tim Mạch</option>
+                      <option value="Nội hô hấp">Nội Hô Hấp</option>
+                      <option value="Nội thận - Tiết niệu">Nội Thận - Tiết Niệu</option>
+                      <option value="Cấp cứu - Hồi sức">Cấp Cứu - Hồi Sức (ICU)</option>
+                      <option value="Ngoại khoa">Ngoại Khoa</option>
+                      <option value="Nhi khoa">Nhi Khoa</option>
+                    </select>
+                  </div>
+                  <div class="dsp-form-group">
+                    <label class="dsp-label">Độ khó</label>
+                    <select id="osceDifficulty" class="dsp-input">
+                      <option value="easy">Cơ bản (Sinh viên Y khoa)</option>
+                      <option value="medium" selected>Trung bình (Bác sĩ Nội trú)</option>
+                      <option value="hard">Nâng cao (Bác sĩ Chuyên khoa)</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="dsp-btn dsp-btn-primary dsp-btn-full" style="background:linear-gradient(135deg, #8b5cf6, #6366f1); border-color:#8b5cf6; margin-top:0.5rem; font-size:0.85rem;">
+                    <i class="fa-solid fa-dice"></i> 🎲 Sinh Ca Bệnh OSCE (AI)
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Cột phải: Kết quả -->
+            <div class="dsp-card">
+              <h3 style="margin-top:0; font-size:1rem; font-weight:800; color:var(--color-text); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;" id="sandboxResultTitle">
+                <i class="fa-solid fa-square-poll-vertical" style="color:var(--dsp-sky);"></i> Kết quả Phân tích &amp; Mô phỏng
+              </h3>
+              <div id="dspSandboxResult">
+                <div class="dsp-empty-profiles" style="padding: 3rem 1rem;">
+                  <i class="fa-solid fa-stethoscope"></i>
+                  <p>Chọn <strong>Tra cứu tương tác thuốc</strong> hoặc <strong>Sinh ca bệnh OSCE</strong> từ cột bên trái để bắt đầu mô phỏng.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </main>
     </div>
   `;
 }

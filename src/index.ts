@@ -67,6 +67,7 @@ function syncSidebarActiveState(): void {
 function mountToApp(html: string): void {
   const appContainer = document.getElementById('app');
   const mainContent = document.getElementById('mainContent');
+  const dock = document.querySelector('.floating-action-dock') as HTMLElement;
 
   const rawHash = window.location.hash || '#/';
   const cleanHash = rawHash.replace(/^#/, '').trim();
@@ -74,12 +75,20 @@ function mountToApp(html: string): void {
 
   if (isHomePage) {
     if (mainContent) mainContent.style.display = '';
+    if (dock) dock.style.display = '';
+    document.body.classList.remove('dsp-active');
     if (appContainer) {
       appContainer.style.display = 'none';
       appContainer.innerHTML = '';
     }
   } else {
     if (mainContent) mainContent.style.display = 'none';
+    if (dock) dock.style.display = 'none';
+    if (cleanHash.startsWith('/docspace') || cleanHash.startsWith('docspace')) {
+      document.body.classList.add('dsp-active');
+    } else {
+      document.body.classList.remove('dsp-active');
+    }
     if (appContainer) {
       appContainer.style.display = 'block';
       appContainer.innerHTML = html;

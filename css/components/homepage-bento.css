@@ -218,6 +218,14 @@ body {
   pointer-events: none; /* Let clicks pass through outside the dock container */
 }
 
+/* Ẩn Dock cấp cứu khi đang trong DocSpace / SOAP / Modals */
+body.dsp-active .floating-action-dock,
+body.modal-open .floating-action-dock,
+.modal-open .floating-action-dock,
+#app:not([style*="display: none"]) ~ .floating-action-dock {
+  display: none !important;
+}
+
 .floating-action-dock .dock-container {
   display: flex;
   align-items: center;

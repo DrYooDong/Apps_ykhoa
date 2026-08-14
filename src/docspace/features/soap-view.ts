@@ -6,7 +6,8 @@
 import { 
   getAllSoapPatients, getSoapPatientById, saveSoapPatient, updateSoapPatient, deleteSoapPatient,
   getSoapSupabaseConfig, saveSoapSupabaseConfig, fetchAllSoapFromSupabase,
-  addSoapDailyLog, switchSoapPatientDate, getProfile, getActiveProfile, saveSBAR, saveCase, getAllPatients
+  addSoapDailyLog, switchSoapPatientDate, getProfile, getActiveProfile, saveSBAR, saveCase, getAllPatients,
+  safeStorageGet, safeStorageSet
 } from '../storage';
 import { SoapPatientRecord, SoapPrescriptionItem } from '../types';
 import { renderSidebar, renderDocSpaceHeader, escapeHtml } from '../docspace-view';
@@ -14,65 +15,14 @@ import { generateSOAPSuggestion, generateDischargeSummary } from '../ai/llm-clie
 import { icdPicker } from './icd-picker';
 import { ebmBridge } from './ebm-bridge-view';
 import { drugPicker } from './drug-picker';
-import { calculatorPicker } from './calculator-picker';
 import { resourcePicker } from './resource-picker';
-import { parseVitals, evaluateRiskScores, RiskScoreResult } from './risk-score-calculator';
+import { openScorePickerModal } from '../tools/score-modal';
+import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
 
 const ALERT_KEYWORDS = [
   'hạ kali', 'tụt kali', 'tăng kali',
   'creatinine tăng', 'troponin', 'spO2 giảm', 'sốt cao', 'huyết áp tụt',
   'nguy kịch', 'chống chỉ định', 'dương tính'
-];
-
-interface CdssToolOption {
-  name: string;
-  path: string;
-  icon?: string;
-}
-
-interface CdssKeywordMapping {
-  keywords: string[];
-  tools: CdssToolOption[];
-}
-
-const CDSS_KEYWORD_MAP: CdssKeywordMapping[] = [
-  {
-    keywords: ['rung nhĩ', 'af', 'afib', 'cuồng nhĩ'],
-    tools: [
-      { name: 'CHA₂DS₂-VASc', path: 'content/calculators/cardiology/cha2ds2-vasc.html', icon: 'fa-heart-pulse' },
-      { name: 'HAS-BLED', path: 'content/calculators/cardiology/has-bled.html', icon: 'fa-shield-heart' }
-    ]
-  },
-  {
-    keywords: ['suy tim', 'nyha', 'khó thở khi nằm', 'phù phổi'],
-    tools: [
-      { name: 'Phân loại NYHA', path: 'content/calculators/cardiology/nyha.html', icon: 'fa-heart-crack' }
-    ]
-  },
-  {
-    keywords: ['viêm phổi', 'ho sốt', 'đờm đục', 'cap'],
-    tools: [
-      { name: 'Thang điểm CURB-65', path: 'content/calculators/respiratory/curb65.html', icon: 'fa-lungs' }
-    ]
-  },
-  {
-    keywords: ['tri giác', 'hôn mê', 'gcs', 'glasgow'],
-    tools: [
-      { name: 'Hôn mê Glasgow (GCS)', path: 'content/calculators/neurology/gcs.html', icon: 'fa-brain' }
-    ]
-  },
-  {
-    keywords: ['suy thận', 'egfr', 'ckd', 'creatinine'],
-    tools: [
-      { name: 'Máy tính eGFR (CKD-EPI)', path: 'content/calculators/nephrology/egfr.html', icon: 'fa-kidneys' }
-    ]
-  },
-  {
-    keywords: ['béo phì', 'bmi', 'cân nặng', 'thừa cân'],
-    tools: [
-      { name: 'Máy tính BMI & BSA', path: 'content/calculators/general/bmi.html', icon: 'fa-weight-scale' }
-    ]
-  }
 ];
 
 function highlightAlerts(text: string): string {
@@ -88,11 +38,11 @@ function highlightAlerts(text: string): string {
 
 function getMasterDate(): string {
   const today: string = new Date().toISOString().split('T')[0]!;
-  return localStorage.getItem('dsp_soap_master_date') || today;
+  return safeStorageGet('dsp_soap_master_date', today);
 }
 
 function setMasterDate(dateStr: string): void {
-  localStorage.setItem('dsp_soap_master_date', dateStr);
+  safeStorageSet('dsp_soap_master_date', dateStr);
 }
 
 function getDayOfWeekName(dateStr: string): string {
@@ -262,61 +212,62 @@ export async function renderSoapView(profileId: string, activePatientId?: string
 
     return `
       <div class="dsp-soap-card dsp-soap-row" data-patient-id="${p.id}">
-        <!-- Card Header -->
+        <!-- Card Header (Compact 1-row) -->
         <div class="dsp-soap-card-header">
           <div class="dsp-soap-patient-info">
             <div class="dsp-soap-patient-name">
-              ${p.patientCode} - ${p.fullName}
-              <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; background:var(--color-bg); color:var(--color-text); border:1px solid var(--color-border);">
-                Giường: ${p.bedNumber}
+              <span>${p.patientCode} - ${p.fullName}</span>
+              <span style="font-size:10px; padding:1px 6px; border-radius:6px; font-weight:700; background:rgba(2,132,199,0.1); color:var(--color-primary); border:1px solid rgba(2,132,199,0.2);">
+                G.${p.bedNumber}
               </span>
             </div>
             <div class="dsp-soap-patient-meta">
-              ${p.age}t · ${p.gender === 'nam' ? 'Nam' : p.gender === 'nu' ? 'Nữ' : 'Khác'}
-              &nbsp;&nbsp;|&nbsp;&nbsp; <strong>CĐ:</strong> ${p.admissionDiagnosis}
+              <span>${p.age}t · ${p.gender === 'nam' ? 'Nam' : p.gender === 'nu' ? 'Nữ' : 'Khác'}</span>
+              <span>· <strong>CĐ:</strong> ${p.admissionDiagnosis}</span>
             </div>
             ${p.demographicId && demographics.find(d => d.id === p.demographicId)?.allergies?.length ? `
-              <div style="margin-top: 4px; font-size: 11px; display: flex; gap: 4px; flex-wrap: wrap;">
-                ${demographics.find(d => d.id === p.demographicId)?.allergies?.map(a => `<span style="background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-triangle-exclamation"></i> Dị ứng: ${a.allergen}</span>`).join('')}
+              <div style="font-size: 10px; display: inline-flex; gap: 4px; margin-left: 4px;">
+                ${demographics.find(d => d.id === p.demographicId)?.allergies?.map(a => `<span style="background: #fee2e2; color: #b91c1c; padding: 1px 5px; border-radius: 4px; font-weight: 600;"><i class="fa-solid fa-triangle-exclamation"></i> Dị ứng: ${a.allergen}</span>`).join('')}
               </div>
             ` : ''}
           </div>
 
           <div class="dsp-soap-header-actions">
+            <!-- Ngày switcher -->
             <div class="dsp-soap-badges-row">
-              <div style="font-size:10px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; display:flex; align-items:center; margin-right:4px;">
-                <i class="fa-solid fa-calendar-days"></i> Ngày:
-              </div>
+              <span style="font-size:10px; font-weight:700; color:var(--color-text-muted);"><i class="fa-solid fa-calendar-day"></i></span>
               ${dateBadgesHtml}
-              <button class="js-add-date dsp-btn dsp-btn-sm dsp-btn-ghost" data-id="${p.id}" title="Thêm ngày mới" style="padding: 2px 6px; font-size: 11px;">
-                <i class="fa-solid fa-plus"></i> Thêm
+              <button class="js-add-date dsp-icon-btn" data-id="${p.id}" title="Thêm ngày diễn tiến mới" style="width:22px; height:22px; font-size:10px;">
+                <i class="fa-solid fa-plus"></i>
               </button>
             </div>
             
-            <div class="dsp-soap-badges-row">
-              <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; ${p.isEmrEntered ? 'background:#dcfce7; color:#15803d;' : 'background:#fef3c7; color:#b45309;'}">
+            <div class="dsp-soap-badges-row" style="border-left:1px solid var(--color-border); padding-left:6px; margin-left:4px;">
+              <span style="font-size:10px; padding:2px 6px; border-radius:6px; font-weight:700; ${p.isEmrEntered ? 'background:#dcfce7; color:#15803d;' : 'background:#fef3c7; color:#b45309;'}" title="Trạng thái nhập EMR">
                 ${p.isEmrEntered ? '✓ EMR' : '⏳ EMR'}
               </span>
-              <span style="font-size:10px; padding:2px 8px; border-radius:12px; font-weight:600; ${p.soapStatus === 'da_lam' ? 'background:#e0f2fe; color:#0369a1;' : 'background:#f3f4f6; color:#4b5563;'}">
+              <span style="font-size:10px; padding:2px 6px; border-radius:6px; font-weight:700; ${p.soapStatus === 'da_lam' ? 'background:#e0f2fe; color:#0369a1;' : 'background:#f3f4f6; color:#4b5563;'}" title="Trạng thái làm SOAP">
                 ${p.soapStatus === 'da_lam' ? '✓ SOAP' : '○ SOAP'}
               </span>
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-row-collapse" data-id="${p.id}" title="Thu gọn/Mở rộng" style="padding:2px 8px;">
+
+              <button class="dsp-icon-btn js-edit-soap" data-id="${p.id}" title="Chỉnh sửa SOAP & Kê đơn" style="color:var(--color-primary);">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button class="dsp-icon-btn js-print-rx" data-id="${p.id}" title="In Đơn Thuốc (eRx)" style="color:var(--color-text-muted);">
+                <i class="fa-solid fa-print"></i>
+              </button>
+              <button class="dsp-icon-btn js-discharge-summary" data-id="${p.id}" title="Tạo Tóm tắt Bệnh án Ra viện (AI)" style="color:var(--color-info);">
+                <i class="fa-solid fa-file-medical"></i>
+              </button>
+              ${renderSoapToProtocolBtn(p.id)}
+              <button class="dsp-icon-btn js-toggle-emr" data-id="${p.id}" title="Đổi trạng thái EMR (Đã xong / Chưa xong)">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+              <button class="dsp-icon-btn dsp-icon-btn--danger js-delete-patient" data-id="${p.id}" title="Xóa hồ sơ bệnh nhân">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+              <button class="dsp-icon-btn js-toggle-row-collapse" data-id="${p.id}" title="Thu gọn / Mở rộng card này" style="background:var(--color-bg);">
                 <i class="fa-solid fa-chevron-up"></i>
-              </button>
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-edit-soap" data-id="${p.id}" title="Chỉnh sửa SOAP" style="padding:2px 8px;">
-                <i class="fa-solid fa-pen"></i>
-              </button>
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-print-rx" data-id="${p.id}" title="In Đơn Thuốc eRx" style="padding:2px 8px; color:var(--color-primary);">
-                <i class="fa-solid fa-file-prescription"></i> In Đơn
-              </button>
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-discharge-summary" data-id="${p.id}" title="Tạo Tóm tắt Bệnh án Ra viện bằng AI" style="padding:2px 8px; color:var(--color-primary);">
-                <i class="fa-solid fa-file-medical"></i> Tóm tắt Ra viện
-              </button>
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-toggle-emr" data-id="${p.id}" title="Đổi trạng thái EMR" style="padding:2px 8px;">
-                <i class="fa-solid fa-rotate"></i>
-              </button>
-              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-delete-patient" data-id="${p.id}" title="Xóa hồ sơ bệnh nhân" style="color:var(--color-danger); padding:2px 8px;">
-                <i class="fa-solid fa-trash"></i>
               </button>
             </div>
           </div>
@@ -421,37 +372,46 @@ export async function renderSoapView(profileId: string, activePatientId?: string
         ${renderDocSpaceHeader(profile, 'soap')}
         <div class="dsp-page-content" style="max-width:100%;">
           
-          <!-- Header Bar -->
-          <div class="dsp-hero-header">
-            <div class="dsp-hero-content">
-              <h1 class="dsp-hero-title">
-                <i class="fa-solid fa-notes-medical"></i> Sổ Tay Bệnh Phòng SOAP
+          <!-- Compact Toolbar Bar (Thay cho Hero Header to tướng) -->
+          <div class="dsp-hero-header" style="padding:8px 16px; margin-bottom:12px; border-radius:10px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h1 class="dsp-hero-title" style="font-size:1.05rem; margin:0; display:flex; align-items:center; gap:6px;">
+                <i class="fa-solid fa-notes-medical" style="color:var(--color-primary);"></i> Sổ Tay Bệnh Phòng
               </h1>
-              <p class="dsp-hero-subtitle">Theo dõi diễn tiến lâm sàng, In Phiếu Theo Dõi Bệnh Nhân & đồng bộ Cloud Supabase</p>
+              <span class="dsp-badge" style="font-size:11px; background:rgba(2,132,199,0.1); color:var(--color-primary); font-weight:700;">
+                ${patients.length} BN
+              </span>
             </div>
             
-            <div class="dsp-hero-actions">
+            <div class="dsp-hero-actions" style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
               <!-- CHỌN NGÀY CHÍNH (MASTER DATE SELECTOR) -->
-              <div style="display:flex; align-items:center; background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; padding:6px 12px; gap:8px; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
-                <i class="fa-solid fa-calendar-day" style="color:var(--color-primary); font-size:14px;"></i>
-                <span style="font-size:12px; font-weight:700; color:var(--color-text-muted);">NGÀY ĐI BUỒNG:</span>
-                <input type="date" id="masterDateSelect" value="${masterDate}" style="border:none; background:transparent; font-size:13px; font-weight:700; color:var(--color-primary); cursor:pointer; outline:none;" />
+              <div style="display:flex; align-items:center; background:var(--color-surface); border:1px solid var(--color-border); border-radius:6px; padding:3px 8px; gap:6px; box-shadow:0 1px 2px rgba(0,0,0,0.03);">
+                <i class="fa-solid fa-calendar-day" style="color:var(--color-primary); font-size:12px;"></i>
+                <span style="font-size:11px; font-weight:700; color:var(--color-text-muted);">NGÀY:</span>
+                <input type="date" id="masterDateSelect" value="${masterDate}" style="border:none; background:transparent; font-size:12px; font-weight:700; color:var(--color-primary); cursor:pointer; outline:none; padding:0;" />
               </div>
 
-              <!-- NÚT IN PHIẾU THEO DÕI -->
-              <button class="dsp-btn dsp-btn-ghost" id="btnPrintAllSoap" title="In Phiếu Theo Dõi Toàn Khoa" style="border:1px solid rgba(0,0,0,0.1);">
-                <i class="fa-solid fa-print"></i> In Phiếu Theo Dõi
+              <!-- NÚT THU GỌN TẤT CẢ -->
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnToggleCollapseAll" title="Thu gọn / Mở rộng tất cả bệnh nhân" style="font-size:11px; padding:4px 8px;">
+                <i class="fa-solid fa-up-right-and-down-left-from-center"></i> <span>Thu gọn</span>
               </button>
 
-              <button class="dsp-btn dsp-btn-ghost" id="btnSupabaseModal" title="Cấu hình Supabase Cloud Sync" style="border:1px solid rgba(0,0,0,0.1);">
+              <!-- NÚT IN PHIẾU THEO DÕI -->
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrintAllSoap" title="In Phiếu Theo Dõi Toàn Khoa" style="font-size:11px; padding:4px 8px;">
+                <i class="fa-solid fa-print"></i> <span>In phiếu</span>
+              </button>
+
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnSupabaseModal" title="Cấu hình Supabase Cloud Sync" style="font-size:11px; padding:4px 8px;">
                 <i class="fa-solid fa-cloud" style="color:${isSbConnected ? '#10b981' : '#94a3b8'};"></i>
-                <span>${isSbConnected ? 'Supabase: Đã kết nối' : 'Supabase: Cấu hình Sync'}</span>
+                <span>${isSbConnected ? 'Đã sync' : 'Sync'}</span>
               </button>
-              <button class="dsp-btn dsp-btn-ghost" id="btnExistingPatient">
-                <i class="fa-solid fa-bed-pulse"></i> Bệnh Nội Trú
+
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnExistingPatient" title="Lấy bệnh nhân từ danh sách nội trú" style="font-size:11px; padding:4px 8px;">
+                <i class="fa-solid fa-bed-pulse"></i> <span>Nội trú</span>
               </button>
-              <button class="dsp-btn dsp-btn-primary" id="btnNewPatient">
-                <i class="fa-solid fa-user-plus"></i> Nhận Bệnh Mới
+
+              <button class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnNewPatient" title="Nhận bệnh nhân mới vào sổ tay" style="font-size:11px; padding:4px 10px;">
+                <i class="fa-solid fa-plus"></i> <span>Nhận Bệnh</span>
               </button>
             </div>
           </div>
@@ -475,7 +435,7 @@ export async function renderSoapView(profileId: string, activePatientId?: string
     <div id="soapPrintArea" style="display:none;"></div>
 
     <!-- Modal Form Nhận Bệnh -->
-    <div id="modalNewPatient" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; padding:20px;">
+    <div id="modalNewPatient" style="display:none; position:fixed; inset:0; z-index:1050; background:rgba(15,23,42,0.65); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:20px;">
       <div style="background:var(--color-surface); border-radius:12px; max-width:500px; width:100%; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
           <h3 id="modalNewPatientTitle" style="margin:0; font-size:18px;"><i class="fa-solid fa-user-plus"></i> Nhận Bệnh Mới Vào Khoa</h3>
@@ -540,7 +500,7 @@ export async function renderSoapView(profileId: string, activePatientId?: string
     </div>
 
     <!-- Modal Cấu Hình Supabase Cloud -->
-    <div id="modalSupabase" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; padding:20px;">
+    <div id="modalSupabase" style="display:none; position:fixed; inset:0; z-index:1050; background:rgba(15,23,42,0.65); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:20px;">
       <div style="background:var(--color-surface); border-radius:12px; max-width:600px; width:100%; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
           <h3 style="margin:0; font-size:18px; color:var(--color-primary);"><i class="fa-solid fa-cloud"></i> Cấu Hình Đồng Bộ Supabase Cloud</h3>
@@ -586,7 +546,7 @@ CREATE POLICY "Allow all" ON soap_patients FOR ALL USING (true);</pre>
     </div>
 
     <!-- Modal Chọn Bệnh Nhân In Phiếu Theo Dõi -->
-    <div id="modalPrintOptions" style="display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; padding:20px;">
+    <div id="modalPrintOptions" style="display:none; position:fixed; inset:0; z-index:1050; background:rgba(15,23,42,0.65); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:20px;">
       <div style="background:var(--color-surface); border-radius:12px; max-width:550px; width:100%; padding:24px; box-shadow:0 10px 25px rgba(0,0,0,0.2);">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
           <h3 style="margin:0; font-size:18px; color:var(--color-primary);"><i class="fa-solid fa-print"></i> Chọn Bệnh Nhân In Phiếu Theo Dõi</h3>
@@ -623,7 +583,7 @@ CREATE POLICY "Allow all" ON soap_patients FOR ALL USING (true);</pre>
     </div>
 
     <!-- Modal Edit SOAP Bệnh Nhân -->
-    <div id="modalEditSoap" style="display:${activePatient ? 'flex' : 'none'}; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; padding:20px;">
+    <div id="modalEditSoap" style="display:${activePatient ? 'flex' : 'none'}; position:fixed; inset:0; z-index:1050; background:rgba(15,23,42,0.65); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:20px;">
       ${activePatient ? renderEditSoapModalContent(activePatient) : ''}
     </div>
   `;
@@ -789,14 +749,6 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
               </div>
             </div>
 
-            <!-- CDSS suggestions -->
-            <div id="cdssSuggestions" style="display:none; align-items:center; flex-wrap:wrap; gap:6px; padding:7px 14px; background:rgba(2,132,199,0.04); border-bottom:1px solid rgba(2,132,199,0.12);">
-              <span style="font-size:11px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:4px; flex-shrink:0;">
-                <i class="fa-solid fa-lightbulb" style="color:#eab308;"></i> Gợi ý CDSS:
-              </span>
-              <div id="cdssPillsList" style="display:flex; flex-wrap:wrap; gap:5px;"></div>
-            </div>
-
             <div style="padding:12px 14px;">
               <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Ghi nhận đánh giá lâm sàng hoặc chẩn đoán (Ví dụ: Suy tim (I50.0), Rung nhĩ (I48), Viêm phổi)...">${p.aAssessment || ''}</textarea>
             </div>
@@ -828,6 +780,7 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <span style="font-size:11px; font-weight:800; color:#065f46; text-transform:uppercase; letter-spacing:0.06em;">Y lệnh khác (Chăm sóc, Dinh dưỡng...)</span>
               </div>
               <div style="display:flex; gap:4px; flex-wrap:wrap;">
+                ${renderProtocolQuickApplyBtn()}
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="plan" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
                 </button>
@@ -909,24 +862,6 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
             </div>
           </div>
         </form>
-      </div>
-
-      <!-- CDSS Side Panel Drawer -->
-      <div id="cdssSidePanel" style="position:absolute; top:0; right:0; bottom:0; width:100%; max-width:550px; background:var(--color-surface); box-shadow:-5px 0 20px rgba(0,0,0,0.15); z-index:50; display:flex; flex-direction:column; transform:translateX(105%); transition:transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-left:1px solid var(--color-border);">
-        <div style="padding:12px 16px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg);">
-          <h4 id="cdssSidePanelTitle" style="margin:0; font-size:15px; color:var(--color-primary); display:flex; align-items:center; gap:8px;">
-            <i class="fa-solid fa-calculator"></i> <span>Công cụ CDSS</span>
-          </h4>
-          <div style="display:flex; gap:8px; align-items:center;">
-            <button type="button" id="btnInsertCdssResult" class="dsp-btn dsp-btn-sm dsp-btn-primary" style="font-size:12px; padding:4px 10px;">
-              <i class="fa-solid fa-download"></i> Chèn kết quả
-            </button>
-            <button type="button" id="btnCloseCdssSidePanel" style="background:none; border:none; font-size:22px; cursor:pointer; color:var(--color-text-muted);">&times;</button>
-          </div>
-        </div>
-        <div style="flex:1; overflow:hidden; position:relative; background:#fff;">
-          <iframe id="cdssIframe" style="width:100%; height:100%; border:none;"></iframe>
-        </div>
       </div>
     </div>
   `;
@@ -1494,6 +1429,53 @@ export function mountSoapController(profileId: string): void {
     window.location.hash = '#/docspace/cases';
   });
 
+  // Modal Toolbar Buttons (+ Thang điểm, + ICD-10, Tra cứu EBM, + Thuốc, + Kỹ năng)
+  document.getElementById('btnScoreSoap')?.addEventListener('click', () => {
+    openScorePickerModal({ targetFieldId: 'esAAssessment' });
+  });
+
+  document.getElementById('btnIcdSoap')?.addEventListener('click', () => {
+    icdPicker.open((icd) => {
+      const aEl = document.getElementById('esAAssessment') as HTMLTextAreaElement;
+      if (aEl) {
+        const cur = aEl.value.trim();
+        const icdText = `${icd.code} - ${icd.name}`;
+        aEl.value = cur ? `${cur}\n• Chẩn đoán ICD-10: ${icdText}` : `• Chẩn đoán ICD-10: ${icdText}`;
+        aEl.focus();
+      }
+    });
+  });
+
+  document.getElementById('btnSearchEBM')?.addEventListener('click', () => {
+    const aText = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value || '';
+    const diag = (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value || '';
+    ebmBridge.openSearch(aText || diag);
+  });
+
+  document.getElementById('btnPrescribeSoap')?.addEventListener('click', () => {
+    drugPicker.open(undefined, (drug) => {
+      const pEl = document.getElementById('esPPlan') as HTMLTextAreaElement;
+      if (pEl) {
+        const cur = pEl.value.trim();
+        const drugText = `• ${drug.name}: ${drug.dosage?.standardAdult || ''} (${drug.brandNames?.join(', ') || ''})`;
+        pEl.value = cur ? `${cur}\n${drugText}` : drugText;
+        pEl.focus();
+      }
+    });
+  });
+
+  document.getElementById('btnSkillSoap')?.addEventListener('click', () => {
+    resourcePicker.open((res) => {
+      const pEl = document.getElementById('esPPlan') as HTMLTextAreaElement;
+      if (pEl) {
+        const cur = pEl.value.trim();
+        const resText = `• Kỹ thuật / Thủ thuật: ${res.title}`;
+        pEl.value = cur ? `${cur}\n${resText}` : resText;
+        pEl.focus();
+      }
+    });
+  });
+
   // AI Co-Pilot Suggestion Handlers in Edit SOAP Modal
   let activeAiTargetField: 'esSNotes' | 'esONotes' | 'esAAssessment' | 'esPPlan' = 'esAAssessment';
 
@@ -1656,6 +1638,37 @@ export function mountSoapController(profileId: string): void {
     });
   });
 
+  // Toggle Collapse Single Row / Card
+  document.querySelectorAll('.js-toggle-row-collapse').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const card = (e.currentTarget as HTMLElement).closest('.dsp-soap-row');
+      if (card) {
+        card.classList.toggle('is-collapsed');
+      }
+    });
+  });
+
+  // Toggle Collapse All Cards (Thu gọn / Mở rộng tất cả)
+  let isAllCollapsed = false;
+  document.getElementById('btnToggleCollapseAll')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    isAllCollapsed = !isAllCollapsed;
+    const cards = document.querySelectorAll('.dsp-soap-row');
+    cards.forEach(card => {
+      if (isAllCollapsed) {
+        card.classList.add('is-collapsed');
+      } else {
+        card.classList.remove('is-collapsed');
+      }
+    });
+    const btn = document.getElementById('btnToggleCollapseAll');
+    if (btn) {
+      btn.innerHTML = isAllCollapsed 
+        ? `<i class="fa-solid fa-down-left-and-up-right-to-center"></i> <span>Mở rộng</span>`
+        : `<i class="fa-solid fa-up-right-and-down-left-from-center"></i> <span>Thu gọn</span>`;
+    }
+  });
 
   // Delete Patient Button (Row & Modal)
   document.querySelectorAll('.js-delete-patient').forEach(btn => {
@@ -1721,14 +1734,13 @@ export function mountSoapController(profileId: string): void {
     });
   });
 
-  // Tra cứu EBM (đã nâng cấp để nhận nhiều mã ICD)
+  // Tra cứu EBM
   document.getElementById('btnSearchEBM')?.addEventListener('click', () => {
-    const text = (document.getElementById('esAAssessment') as HTMLTextAreaElement).value;
-    if (!text.trim()) {
-      alert('Vui lòng nhập chẩn đoán trước khi tra cứu.');
-      return;
-    }
-    ebmBridge.openSearch(text);
+    const aText = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value.trim() || '';
+    const sText = (document.getElementById('esSNotes') as HTMLTextAreaElement)?.value.trim() || '';
+    const oText = (document.getElementById('esONotes') as HTMLTextAreaElement)?.value.trim() || '';
+    const query = aText || `${sText} ${oText}`.trim();
+    ebmBridge.openSearch(query, { targetFieldId: 'esAAssessment' });
   });
 
   // Kê đơn
@@ -1743,7 +1755,9 @@ export function mountSoapController(profileId: string): void {
 
   // Thang điểm
   document.getElementById('btnScoreSoap')?.addEventListener('click', () => {
-    calculatorPicker.open('esAAssessment');
+    const id = (document.getElementById('esPatientId') as HTMLInputElement)?.value;
+    const p = id ? getSoapPatientById(profileId, id) : null;
+    calculatorPicker.open('esAAssessment', p);
   });
 
   // Kỹ năng
@@ -1810,177 +1824,6 @@ export function mountSoapController(profileId: string): void {
     });
   });
 
-  // Contextual CDSS Linking & Dynamic Risk Score Engine
-  const esSNotesEl = document.getElementById('esSNotes') as HTMLTextAreaElement;
-  const esONotesEl = document.getElementById('esONotes') as HTMLTextAreaElement;
-  const esAAssessmentEl = document.getElementById('esAAssessment') as HTMLTextAreaElement;
-  const esAgeEl = document.getElementById('esAge') as HTMLInputElement;
-  const cdssSuggestionsEl = document.getElementById('cdssSuggestions');
-  const cdssPillsListEl = document.getElementById('cdssPillsList');
-  const cdssSidePanelEl = document.getElementById('cdssSidePanel');
-  const cdssIframeEl = document.getElementById('cdssIframe') as HTMLIFrameElement;
-  const cdssTitleEl = document.getElementById('cdssSidePanelTitle');
-  const btnCloseCdssSidePanelEl = document.getElementById('btnCloseCdssSidePanel');
-  const btnInsertCdssResultEl = document.getElementById('btnInsertCdssResult');
-
-  let cdssDebounceTimeout: any = null;
-
-  const updateCdssSuggestions = () => {
-    if (!cdssSuggestionsEl || !cdssPillsListEl) return;
-
-    const sText = esSNotesEl?.value || '';
-    const oText = esONotesEl?.value || '';
-    const aText = esAAssessmentEl?.value || '';
-    const combinedText = `${sText} ${oText} ${aText}`.trim();
-
-    if (!combinedText) {
-      cdssSuggestionsEl.style.display = 'none';
-      cdssPillsListEl.innerHTML = '';
-      return;
-    }
-
-    const patientAge = esAgeEl ? parseInt(esAgeEl.value, 10) || 50 : 50;
-
-    // 1. Dynamic Risk Score Calculation from Free Text Vitals
-    const vitals = parseVitals(`${sText} ${oText}`);
-    const riskScores = evaluateRiskScores(vitals, patientAge);
-
-    // 2. Keyword-based CDSS Tool Matching
-    const matchedTools: CdssToolOption[] = [];
-    const lowerAText = aText.toLowerCase();
-    CDSS_KEYWORD_MAP.forEach(item => {
-      if (item.keywords.some(kw => lowerAText.includes(kw) || combinedText.toLowerCase().includes(kw))) {
-        item.tools.forEach(t => {
-          if (!matchedTools.some(mt => mt.path === t.path)) {
-            matchedTools.push(t);
-          }
-        });
-      }
-    });
-
-    let pillsHtml = '';
-
-    // Render Risk Score Pills first (High Priority)
-    if (riskScores.length > 0) {
-      pillsHtml += riskScores.map(rs => {
-        const isHigh = rs.riskLevel === 'high';
-        const isMod = rs.riskLevel === 'moderate';
-        const bg = isHigh ? 'rgba(239,68,68,0.15)' : isMod ? 'rgba(245,158,11,0.15)' : 'var(--color-surface)';
-        const border = isHigh ? '#ef4444' : isMod ? '#f59e0b' : 'var(--color-primary)';
-        const color = isHigh ? '#ef4444' : isMod ? '#f59e0b' : 'var(--color-primary)';
-        const icon = isHigh ? 'fa-triangle-exclamation' : 'fa-calculator';
-
-        return `
-          <button type="button" class="js-risk-pill-btn dsp-btn dsp-btn-sm" data-id="${rs.id}" data-summary="${escapeHtml(rs.summary)}" data-query="${escapeHtml(rs.protocolQuery)}"
-            style="background:${bg}; border:1px solid ${border}; color:${color}; font-size:11px; font-weight:700; padding:3px 10px; border-radius:12px; height:auto; display:inline-flex; align-items:center; gap:4px;">
-            <i class="fa-solid ${icon}"></i> ${rs.summary}
-          </button>
-        `;
-      }).join('');
-    }
-
-    // Render Keyword Tool Pills
-    if (matchedTools.length > 0) {
-      pillsHtml += matchedTools.map(tool => `
-        <button type="button" class="js-cdss-pill-btn dsp-btn dsp-btn-sm dsp-btn-ghost" data-path="${tool.path}" data-name="${tool.name}"
-          style="background:var(--color-surface); border:1px solid var(--color-primary); color:var(--color-primary); font-size:11px; font-weight:700; padding:3px 10px; border-radius:12px; height:auto; display:inline-flex; align-items:center; gap:4px;">
-          <i class="fa-solid ${tool.icon || 'fa-calculator'}"></i> ${tool.name}
-        </button>
-      `).join('');
-    }
-
-    if (pillsHtml) {
-      cdssSuggestionsEl.style.display = 'flex';
-      cdssPillsListEl.innerHTML = pillsHtml;
-
-      // Event listener for Risk Score Pills (Click to Insert Result + Trigger Living Protocol AI)
-      cdssPillsListEl.querySelectorAll<HTMLButtonElement>('.js-risk-pill-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const summary = btn.getAttribute('data-summary') || '';
-          const query = btn.getAttribute('data-query') || '';
-
-          if (esAAssessmentEl) {
-            const currentVal = esAAssessmentEl.value.trim();
-            const prefix = currentVal ? '\n' : '';
-            esAAssessmentEl.value = currentVal + prefix + `[Đánh giá Nguy cơ]: ${summary}`;
-            esAAssessmentEl.focus();
-          }
-
-          if (confirm(`Đã chèn kết quả điểm nguy cơ vào Đánh giá (A).\n\nBạn có muốn mở Living Protocols AI / Tra cứu EBM cho "${query}" không?`)) {
-            ebmBridge.openSearch(query);
-          }
-        });
-      });
-
-      // Event listener for Keyword Tool Pills
-      cdssPillsListEl.querySelectorAll<HTMLButtonElement>('.js-cdss-pill-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const path = btn.getAttribute('data-path') || '';
-          const name = btn.getAttribute('data-name') || '';
-          openCdssSidePanel(path, name);
-        });
-      });
-    } else {
-      cdssSuggestionsEl.style.display = 'none';
-      cdssPillsListEl.innerHTML = '';
-    }
-  };
-
-  const openCdssSidePanel = (path: string, name: string) => {
-    if (!cdssSidePanelEl || !cdssIframeEl) return;
-    if (cdssTitleEl) {
-      cdssTitleEl.innerHTML = `<i class="fa-solid fa-calculator"></i> <span>${name}</span>`;
-    }
-    cdssIframeEl.src = path;
-    cdssSidePanelEl.style.transform = 'translateX(0)';
-  };
-
-  const closeCdssSidePanel = () => {
-    if (!cdssSidePanelEl) return;
-    cdssSidePanelEl.style.transform = 'translateX(105%)';
-    if (cdssIframeEl) cdssIframeEl.src = 'about:blank';
-  };
-
-  btnCloseCdssSidePanelEl?.addEventListener('click', closeCdssSidePanel);
-
-  btnInsertCdssResultEl?.addEventListener('click', () => {
-    if (!cdssIframeEl || !cdssIframeEl.contentWindow) return;
-    try {
-      const idoc = cdssIframeEl.contentWindow.document;
-      const resultBox = idoc.querySelector('#result-box, .result-box, #result, .alert-success, .alert-danger, .alert-warning, .result') as HTMLElement;
-      let text = '';
-      if (resultBox) {
-        text = resultBox.innerText.trim().replace(/\n+/g, ' ');
-      } else {
-        text = idoc.body.innerText.substring(0, 300).trim().replace(/\n+/g, ' ');
-      }
-
-      if (text && esAAssessmentEl) {
-        const startPos = esAAssessmentEl.selectionStart || esAAssessmentEl.value.length;
-        const endPos = esAAssessmentEl.selectionEnd || esAAssessmentEl.value.length;
-        const currentVal = esAAssessmentEl.value;
-        const prefix = currentVal.length > 0 && !currentVal.endsWith('\n') ? '\n' : '';
-        esAAssessmentEl.value = currentVal.substring(0, startPos) + prefix + `[KQ CDSS]: ${text}` + currentVal.substring(endPos);
-        alert('✅ Đã chèn kết quả CDSS vào ô Đánh giá!');
-        closeCdssSidePanel();
-      } else {
-        alert('Vui lòng thực hiện tính toán trên công cụ trước khi chèn kết quả.');
-      }
-    } catch (e) {
-      console.error('Lỗi lấy kết quả từ Iframe CDSS:', e);
-      alert('Không thể trích xuất tự động. Bạn có thể copy thủ công từ giao diện công cụ.');
-    }
-  });
-
-  // Attach input listeners to S, O, A textareas to update CDSS dynamically
-  const formInputs = [esSNotesEl, esONotesEl, esAAssessmentEl].filter(Boolean);
-  formInputs.forEach(input => {
-    input?.addEventListener('input', () => {
-      clearTimeout(cdssDebounceTimeout);
-      cdssDebounceTimeout = setTimeout(updateCdssSuggestions, 300);
-    });
-  });
-
-  // Initial check on modal load
-  updateCdssSuggestions();
+  // Khởi tạo các sự kiện AI & Protocol Bridge (SOAP ↔ Protocol)
+  initSoapAiBridgeEvents(profileId);
 }

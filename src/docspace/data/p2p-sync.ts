@@ -6,6 +6,7 @@
  */
 
 import { DocSpaceSnapshot } from '../types';
+import { safeStorageGet, safeStorageSet, sanitizeProfileId } from '../storage';
 
 export type PeerRole = 'host' | 'client';
 
@@ -175,11 +176,12 @@ export class P2PSyncEngine {
       return;
     }
 
+    const safePid = sanitizeProfileId(profileId);
     const mergeCollection = <T extends { id: string; updatedAt?: string; createdAt?: string }>(
       storeKey: string,
       remoteItems: T[]
     ) => {
-      const rawLocal = localStorage.getItem(`dsp_${profileId}_${storeKey}`);
+      const rawLocal = safeStorageGet(`dsp_${safePid}_${storeKey}`, '');
       const localItems: T[] = rawLocal ? JSON.parse(rawLocal) : [];
 
       const map = new Map<string, T>();
@@ -203,7 +205,7 @@ export class P2PSyncEngine {
       });
 
       // Lưu ngược lại
-      localStorage.setItem(`dsp_${profileId}_${storeKey}`, JSON.stringify(Array.from(map.values())));
+      safeStorageSet(`dsp_${safePid}_${storeKey}`, JSON.stringify(Array.from(map.values())));
     };
 
     // Thực hiện merge các collections chính
@@ -222,23 +224,23 @@ export class P2PSyncEngine {
     if (remote.shifts) mergeCollection('shifts', remote.shifts);
 
     // Profile settings
-    const localProfileStr = localStorage.getItem('dsp_profiles');
+    const localProfileStr = safeStorageGet('dsp_profiles', '');
     if (localProfileStr) {
       const profiles = JSON.parse(localProfileStr);
-      const idx = profiles.findIndex((p: any) => p.id === profileId);
+      const idx = profiles.findIndex((p: any) => p.id === safePid);
       if (idx >= 0) {
         const localTime = new Date(profiles[idx].lastActiveAt || 0).getTime();
         const remoteTime = new Date(remote.profile.lastActiveAt || 0).getTime();
         if (remoteTime > localTime) {
           profiles[idx] = remote.profile;
-          localStorage.setItem('dsp_profiles', JSON.stringify(profiles));
+          safeStorageSet('dsp_profiles', JSON.stringify(profiles));
         }
       } else {
         profiles.push(remote.profile);
-        localStorage.setItem('dsp_profiles', JSON.stringify(profiles));
+        safeStorageSet('dsp_profiles', JSON.stringify(profiles));
       }
     } else {
-      localStorage.setItem('dsp_profiles', JSON.stringify([remote.profile]));
+      safeStorageSet('dsp_profiles', JSON.stringify([remote.profile]));
     }
 
     this.onSyncCompleted();

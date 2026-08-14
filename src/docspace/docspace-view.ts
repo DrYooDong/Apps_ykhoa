@@ -7,20 +7,22 @@ import { getActiveProfile, getAllProfiles, createProfile, setActiveProfile, expo
 import { DoctorProfile, DocSpaceNavItem } from './types';
 
 export const DSP_NAV_ITEMS: DocSpaceNavItem[] = [
-  { id: 'dashboard', label: 'Tổng quan',      href: '#/docspace',          icon: 'fa-solid fa-house-medical',    phase: 1 },
-  { id: 'patients',  label: 'Bệnh nhân',      href: '#/docspace/patients', icon: 'fa-solid fa-users',            phase: 1 },
-  { id: 'soap',      label: 'Sổ Tay SOAP',    href: '#/docspace/soap',     icon: 'fa-solid fa-notes-medical',   phase: 1 },
-  { id: 'sbar',      label: 'SBAR',           href: '#/docspace/sbar',     icon: 'fa-solid fa-file-waveform',    phase: 1 },
-  { id: 'oncall',    label: 'Checklist công việc', href: '#/docspace/oncall', icon: 'fa-solid fa-list-check',      phase: 1 },
-  { id: 'cases',     label: 'Ca Bệnh',        href: '#/docspace/cases',    icon: 'fa-solid fa-stethoscope',      phase: 1 },
-  { id: 'notes',     label: 'Ghi chú',        href: '#/docspace/notes',    icon: 'fa-solid fa-note-sticky',      phase: 1 },
-  { id: 'drugs',     label: 'Nhật ký Thuốc',  href: '#/docspace/drugs',    icon: 'fa-solid fa-pills',            phase: 1 },
-  { id: 'protocol',  label: 'Phác đồ Riêng',  href: '#/docspace/protocol', icon: 'fa-solid fa-clipboard-list',   phase: 1 },
-  { id: 'dependency-map', label: 'Bản đồ Phụ thuộc (Core & Content)', href: '#/docspace/dependency-map', icon: 'fa-solid fa-diagram-project', phase: 1 },
-  { id: 'living-protocols', label: 'Phác đồ Động', href: '#/docspace/living-protocols', icon: 'fa-solid fa-network-wired', phase: 3 },
-  { id: 'sandbox',   label: 'Sandbox Mô phỏng', href: '#/docspace/sandbox', icon: 'fa-solid fa-flask',            phase: 3 },
-  { id: 'links',     label: 'Liên kết nhanh', href: '#/docspace/links',    icon: 'fa-solid fa-link',             phase: 1 },
-  { id: 'sync-settings', label: 'Đồng bộ Đa thiết bị', href: '#/docspace/sync-settings', icon: 'fa-solid fa-cloud-arrow-up', phase: 1 },
+  { id: 'dashboard',        label: 'Tổng quan',           href: '#/docspace',                  icon: 'fa-solid fa-house-medical',   phase: 1 },
+  { id: 'patients',         label: 'Bệnh nhân',           href: '#/docspace/patients',          icon: 'fa-solid fa-users',           phase: 1 },
+  { id: 'soap',             label: 'Sổ Tay SOAP',         href: '#/docspace/soap',              icon: 'fa-solid fa-notes-medical',  phase: 1 },
+  { id: 'sbar',             label: 'SBAR',                href: '#/docspace/sbar',              icon: 'fa-solid fa-file-waveform',   phase: 1 },
+  { id: 'oncall',           label: 'Checklist công việc', href: '#/docspace/oncall',            icon: 'fa-solid fa-list-check',     phase: 1 },
+  { id: 'cases',            label: 'Ca Bệnh',             href: '#/docspace/cases',             icon: 'fa-solid fa-stethoscope',     phase: 1 },
+  { id: 'notes',            label: 'Ghi chú',             href: '#/docspace/notes',             icon: 'fa-solid fa-note-sticky',     phase: 1 },
+  { id: 'drugs',            label: 'Nhật ký Thuốc',       href: '#/docspace/drugs',             icon: 'fa-solid fa-pills',           phase: 1 },
+  { id: 'protocol',         label: 'Phác đồ Riêng',       href: '#/docspace/protocol',          icon: 'fa-solid fa-clipboard-list',  phase: 1 },
+  { id: 'insights',         label: 'AI Insights & Sức Khỏe', href: '#/docspace/insights',      icon: 'fa-solid fa-brain',           phase: 1 },
+  { id: 'living-protocols', label: 'Phác đồ Động',        href: '#/docspace/living-protocols',  icon: 'fa-solid fa-network-wired',   phase: 3 },
+  { id: 'sandbox',          label: 'Sandbox Mô phỏng',    href: '#/docspace/sandbox',           icon: 'fa-solid fa-flask',           phase: 3 },
+  { id: 'links',            label: 'Liên kết nhanh',      href: '#/docspace/links',             icon: 'fa-solid fa-link',            phase: 1 },
+  { id: 'sync-settings',    label: 'Đồng bộ Đa thiết bị', href: '#/docspace/sync-settings',     icon: 'fa-solid fa-cloud-arrow-up',  phase: 1 },
+  { id: 'ai-settings',      label: 'Cấu hình AI',         href: '#/docspace/ai-settings',       icon: 'fa-solid fa-microchip',       phase: 1 },
+  { id: 'dependency-map',   label: 'Bản đồ Phụ thuộc',    href: '#/docspace/dependency-map',    icon: 'fa-solid fa-diagram-project', phase: 1 },
 ];
 
 // ─── Profile Selector Screen ─────────────────────────────────────
@@ -223,6 +225,43 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
 
           <!-- Main Dashboard Panel Layout -->
           <div class="dsp-dashboard-grid">
+            
+            <!-- AI Insights & Practice Pulse Banner Widget -->
+            <div class="dsp-section-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(2, 132, 199, 0.1), rgba(99, 102, 241, 0.08)); border: 1px solid rgba(56, 189, 248, 0.25);">
+              <div class="dsp-section-header" style="border-bottom: 1px solid rgba(56, 189, 248, 0.15); padding-bottom: 0.75rem;">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span style="width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg, #0284c7, #6366f1); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.85rem;">
+                    <i class="fa-solid fa-brain"></i>
+                  </span>
+                  <h2 class="dsp-section-title" style="margin:0; font-size:1.05rem;">AI Practice Insights &amp; Sức Khỏe Nghề Nghiệp</h2>
+                </div>
+                <a href="#/docspace/insights" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight:700; font-size:0.8rem;">
+                  Mở Toàn Diện Insights <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+              <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.75rem;">
+                <div style="background:var(--color-surface); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border);">
+                  <div style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fa-solid fa-chart-pie" style="color:var(--color-primary);"></i> Top Bệnh Lý</div>
+                  <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:2px;">Top 10 Phân Tích</div>
+                  <div style="font-size:0.7rem; color:var(--color-primary); margin-top:2px;">Biểu đồ SVG Donut</div>
+                </div>
+                <div style="background:var(--color-surface); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border);">
+                  <div style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fa-solid fa-heart-pulse" style="color:#10b981;"></i> Wellness Guardian</div>
+                  <div style="font-size:1rem; font-weight:800; color:#10b981; margin-top:2px;">Đo tải trọng &amp; Kiệt sức</div>
+                  <div style="font-size:0.7rem; color:var(--color-text-muted); margin-top:2px;">Burnout Signal Alert</div>
+                </div>
+                <div style="background:var(--color-surface); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border);">
+                  <div style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fa-solid fa-sparkles" style="color:#818cf8;"></i> Gemini Weekly Summary</div>
+                  <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:2px;">Tóm tắt Tuần Lâm sàng</div>
+                  <div style="font-size:0.7rem; color:#818cf8; margin-top:2px;">Gemini 1M Context AI</div>
+                </div>
+                <div style="background:var(--color-surface); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border);">
+                  <div style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fa-solid fa-book-medical" style="color:#f59e0b;"></i> EBM Bridge 2.0</div>
+                  <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:2px;">Gợi ý chứng cứ 2 chiều</div>
+                  <div style="font-size:0.7rem; color:#f59e0b; margin-top:2px;">Kho Guidelines CliniPortal</div>
+                </div>
+              </div>
+            </div>
             
             <!-- Quick Actions Card -->
             <div class="dsp-section-card">

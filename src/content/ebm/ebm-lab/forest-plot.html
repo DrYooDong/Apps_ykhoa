@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="../../../../css/components/sidebar.css">
   <link rel="stylesheet" href="../../../../css/components/footer.css">
 
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="../css/ebm-bedside-copilot.css">
+
   <script src="../../../../components/header.js" defer></script>
   <script src="../../../../components/footer.js" defer></script>
 
@@ -96,6 +99,46 @@
       border-radius: var(--ebm-radius);
       padding: 1.75rem;
       box-shadow: var(--shadow-sm);
+    }
+
+    .fp-living-banner {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+      border: 1.5px solid rgba(2, 132, 199, 0.25);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .fp-living-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .fp-living-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .fp-snippet-card {
+      background: var(--ebm-surface-2);
+      border: 1.5px solid var(--ebm-border);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin-top: 1.25rem;
     }
 
     .fp-card-title {
@@ -276,6 +319,31 @@
 
       <div class="fp-layout">
         
+        <!-- LIVING SYSTEMATIC REVIEW QUICK SELECTOR BANNER -->
+        <div class="fp-living-banner">
+          <div class="fp-living-info">
+            <div class="fp-living-icon">
+              <i class="fa-solid fa-bolt-lightning"></i>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--ebm-primary); letter-spacing: 0.05em;">Living Rapid Systematic Review Engine</div>
+              <div style="font-weight: 700; font-size: 0.95rem; color: var(--ebm-text);">Tổng Hợp Tức Thì Từ Y Văn PubMed & PubMedQA Pipeline</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <select class="fp-select" id="fp-living-topic-select" style="border-color: var(--ebm-primary); font-weight: 700;">
+              <option value="">⚡ Chọn chủ đề lâm sàng Living Review...</option>
+              <option value="ards-steroid">🫁 Dexamethasone trong ARDS COVID-19 (3 RCTs)</option>
+              <option value="hfpef-sglt2i">❤️ Empagliflozin trong Suy Tim HFpEF (2 RCTs lớn)</option>
+              <option value="afib-doac">🩸 DOACs vs Warfarin trong Rung Nhĩ (4 Landmark RCTs)</option>
+              <option value="sepsis-crrt-early">⚠️ Lọc máu CRRT Sớm vs Trì hoãn trong Sepsis AKI (3 RCTs)</option>
+              <option value="cirrhosis-sbp-albumin">🧪 Truyền Albumin trong Viêm phúc mạc SBP (2 RCTs)</option>
+              <option value="sepsis-statin">❌ Khởi đầu Statin trong Sốc Nhiễm Khuẩn (2 RCTs)</option>
+              <option value="troponin-0h1h">⏱️ hs-cTnT Thuật toán 0h/1h trong NSTE-ACS (2 Nghiên cứu)</option>
+            </select>
+          </div>
+        </div>
+
         <!-- TOP CARD: VISUAL SVG CANVAS -->
         <div class="fp-card">
           <div class="fp-card-title">
@@ -295,6 +363,39 @@
             <div><strong>Ước tính dị biệt (Heterogeneity I²):</strong> <span id="fp-stat-i2" style="color: var(--ebm-primary-dark); font-weight: 800;">12%</span></div>
             <div><strong>Đường vô hiệu (Null line):</strong> <span id="fp-stat-null">1.0</span></div>
             <div><strong>Thang đo (Scale Mode):</strong> <span id="fp-stat-scale" style="color: var(--ebm-purple); font-weight: 700;">Logarithmic Scale</span></div>
+          </div>
+
+          <!-- DYNAMIC PUBMEDQA VERDICT & BEDSIDE SNIPPET BOX -->
+          <div class="fp-snippet-card" id="fp-verdict-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span style="font-weight: 800; font-size: 0.82rem; text-transform: uppercase; color: var(--ebm-text-muted);">Kết Luận Bằng Chứng (PubMedQA Verdict):</span>
+                <span class="verdict-badge yes" id="fp-verdict-badge">
+                  <i class="fa-solid fa-circle-check"></i> <span id="fp-verdict-text">Evidence Strongly Favors Intervention (Yes)</span>
+                </span>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--ebm-text-muted);">
+                <i class="fa-solid fa-notes-medical"></i> Bedside 1-Line Snippet
+              </div>
+            </div>
+
+            <div class="snippet-box" id="fp-bedside-snippet-display" title="Nhấp đúp để chọn hoặc bấm nút Copy">
+              [EBM] Dexamethasone 6mg/d x10d (RECOVERY 2021: RR 0.82 [0.72-0.94] | PMID: 32678530)
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; gap: 0.4rem; align-items: center;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--ebm-text-muted);">Định dạng:</span>
+                <select id="fp-snippet-format" class="copilot-format-select" style="padding: 0.2rem 0.4rem; font-size: 0.75rem;">
+                  <option value="compact">Ultra-Compact (1 Dòng)</option>
+                  <option value="order">Y Lệnh Bệnh Viện</option>
+                  <option value="dx">Chẩn Đoán EBM-Dx</option>
+                </select>
+              </div>
+              <button class="btn-copy-snippet" id="fp-btn-copy-snippet">
+                <i class="fa-solid fa-copy"></i> Copy Snippet Vào Bệnh Án
+              </button>
+            </div>
           </div>
         </div>
 
@@ -353,6 +454,12 @@
     </div>
   </div>
 
+  <!-- Toast Element -->
+  <div class="copilot-toast" id="copilot-toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="copilot-toast-text">Đã sao chép EBM Snippet vào bộ nhớ tạm!</span>
+  </div>
+
   <footer class="global-footer">
     <div class="footer-copyright">
       <p>CliniPortal © 2026 · Interactive Forest Plot Builder · Đồ họa SVG thuần linh hoạt</p>
@@ -364,6 +471,8 @@
   <!-- Scripts -->
   <script src="../../../../js/main.js" defer></script>
   <script src="../js/ebm-format-loader.js"></script>
+  <script src="../js/ebm-bedside-copilot.js"></script>
   <script src="forest-plot.js" defer></script>
+  <script type="module" src="./ebm-lab.ts"></script>
 </body>
 </html>

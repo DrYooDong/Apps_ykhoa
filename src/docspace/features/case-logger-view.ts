@@ -14,7 +14,7 @@ import { ebmBridge } from './ebm-bridge-view';
 import { drugPicker } from './drug-picker';
 import { resourcePicker } from './resource-picker';
 import { icdPicker } from './icd-picker';
-import { calculatorPicker } from './calculator-picker';
+import { openScorePickerModal } from '../tools/score-modal';
 import { abgPicker } from './abg-picker';
 
 const CONTEXT_OPTIONS: { value: CaseContext; label: string; icon: string }[] = [
@@ -406,6 +406,11 @@ export function mountCaseLoggerController(profileId: string): void {
 
   document.getElementById('dspCaseComplaint')?.addEventListener('input', triggerEbmSearch);
   document.getElementById('dspCaseDiagnosis')?.addEventListener('input', triggerEbmSearch);
+
+  // Nút + Thang điểm
+  document.getElementById('btnScoreCase')?.addEventListener('click', () => {
+    openScorePickerModal({ targetFieldId: 'dspCaseDiagnosis' });
+  });
 
   // Nút Tra cứu EBM
   document.getElementById('btnSearchEBMCase')?.addEventListener('click', () => {

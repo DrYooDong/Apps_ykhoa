@@ -7,7 +7,7 @@ import { router } from '../core/router';
 import {
   getActiveProfile, getAllProfiles, createProfile, setActiveProfile,
   exportProfile, importProfile, exportProfileToFHIR, importProfileFromFHIR,
-  getProfileSnapshot
+  getProfileSnapshot, safeStorageGet, safeStorageRemove
 } from './storage';
 import {
   renderProfileSelector, renderDashboard, renderSidebar,
@@ -28,32 +28,43 @@ import { renderSimulationView, mountSimulationController } from './features/simu
 import { renderSyncModal, mountSyncController } from './features/p2p-sync-view';
 import { renderDependencyMapView, mountDependencyMapController } from './features/dependency-map-view';
 import { initGlobalQuickSaveHook } from './features/quick-save';
-import { renderAISettings } from './features/ai-settings-view';
-import { renderSyncSettings } from './features/sync-settings-view';
+import { renderAISettingsView, mountAISettingsController } from './features/ai-settings-view';
+import { renderSyncSettingsView, mountSyncSettingsController } from './features/sync-settings-view';
+import { renderInsightsView, mountInsightsController } from './features/insights-view';
 import { loadRAGIndex } from './ai/rag-engine';
 
 // ─── Mount helper ─────────────────────────────────────────────────
 
-function mountDocSpace(html: string): void {
+async function mountDocSpace(html: string): Promise<void> {
   const app = document.getElementById('app');
   const main = document.getElementById('mainContent');
   if (main) main.style.display = 'none';
+
+  // Ẩn Floating Action Dock của trang chủ khi đang ở trong DocSpace
+  const dock = document.querySelector('.floating-action-dock') as HTMLElement;
+  if (dock) dock.style.display = 'none';
+  document.body.classList.add('dsp-active');
+
   if (app) {
     app.style.display = 'block';
     app.innerHTML = html;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Đảm bảo trình duyệt parse & paint DOM xong hoàn toàn trước khi controllers bind events
+    await new Promise<void>(resolve => {
+      requestAnimationFrame(() => resolve());
+    });
   }
 }
 
 // ─── Guard: Require profile ───────────────────────────────────────
 
-function requireProfile(cb: (profileId: string) => void): void {
+async function requireProfile(cb: (profileId: string) => Promise<void> | void): Promise<void> {
   const profile = getActiveProfile();
   if (!profile) {
-    mountDocSpace(renderProfileSelector());
+    await mountDocSpace(renderProfileSelector());
     mountProfileSelectorController();
   } else {
-    cb(profile.id);
+    await cb(profile.id);
   }
 }
 
@@ -121,7 +132,7 @@ function mountDashboardController(profileId: string): void {
   document.getElementById('dspExportBtn')?.addEventListener('click', () => exportProfile(profileId));
   document.getElementById('dspExportFhirBtn')?.addEventListener('click', () => exportProfileToFHIR(profileId));
   document.getElementById('dspSwitchProfileBtn')?.addEventListener('click', () => {
-    localStorage.removeItem('dsp_active_profile');
+    safeStorageRemove('dsp_active_profile');
     window.location.hash = '#/docspace';
   });
   mountSidebarFooterControls(profileId);
@@ -133,7 +144,7 @@ function mountSidebarFooterControls(profileId: string): void {
   document.getElementById('dspSidebarExport')?.addEventListener('click', () => exportProfile(profileId));
   document.getElementById('dspSidebarExportFhir')?.addEventListener('click', () => exportProfileToFHIR(profileId));
   document.getElementById('dspSidebarSwitch')?.addEventListener('click', () => {
-    localStorage.removeItem('dsp_active_profile');
+    safeStorageRemove('dsp_active_profile');
     window.location.hash = '#/docspace';
   });
   
@@ -161,7 +172,7 @@ export function initDocSpaceRoutes(): void {
   window.addEventListener('beforeunload', () => {
     const profile = getActiveProfile();
     if (!profile) return;
-    const lastExport = localStorage.getItem(`dsp_last_export_${profile.id}`);
+    const lastExport = safeStorageGet(`dsp_last_export_${profile.id}`, '');
     const daysSince = lastExport
       ? (Date.now() - new Date(lastExport).getTime()) / 86400000
       : Infinity;
@@ -174,7 +185,7 @@ export function initDocSpaceRoutes(): void {
   router.register('/docspace', 'DocSpace — Không gian Riêng', () => {
     requireProfile(async (pid) => {
       const profile = getActiveProfile()!;
-      mountDocSpace(await renderDashboard(profile));
+      await mountDocSpace(await renderDashboard(profile));
       mountDashboardController(pid);
     });
   });
@@ -182,7 +193,7 @@ export function initDocSpaceRoutes(): void {
   // Patient Demographics (OpenEMR Integration)
   router.register('/docspace/patients', 'DocSpace — Quản lý Bệnh nhân', () => {
     requireProfile(async (pid) => {
-      mountDocSpace(await renderPatientDemographicsView(pid));
+      await mountDocSpace(await renderPatientDemographicsView(pid));
       bindPatientDemographicsEvents();
       mountSidebarFooterControls(pid);
     });
@@ -192,7 +203,7 @@ export function initDocSpaceRoutes(): void {
   router.register('/docspace/soap', 'DocSpace — Sổ Tay Bệnh Phòng SOAP Digital', () => {
     requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(await renderSoapView(pid, editId));
+      await mountDocSpace(await renderSoapView(pid, editId));
       mountSoapController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -202,7 +213,7 @@ export function initDocSpaceRoutes(): void {
   router.register('/docspace/sbar', 'DocSpace — SBAR', () => {
     requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(await renderSBARView(pid, editId));
+      await mountDocSpace(await renderSBARView(pid, editId));
       mountSBARController(pid);
       mountSidebarFooterControls(pid);
       loadRAGIndex(); // Load index in background
@@ -212,7 +223,7 @@ export function initDocSpaceRoutes(): void {
   // On-Call (Checklist công việc)
   router.register('/docspace/oncall', 'DocSpace — Checklist công việc', () => {
     requireProfile(async (pid) => {
-      mountDocSpace(await renderOnCallView(pid));
+      await mountDocSpace(await renderOnCallView(pid));
       mountOnCallController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -221,7 +232,7 @@ export function initDocSpaceRoutes(): void {
   // Case Logger
   router.register('/docspace/cases', 'DocSpace — Ca Bệnh', () => {
     requireProfile(async (pid) => {
-      mountDocSpace(await renderCaseLoggerView(pid));
+      await mountDocSpace(await renderCaseLoggerView(pid));
       mountCaseLoggerController(pid);
       mountSidebarFooterControls(pid);
       loadRAGIndex(); // Load index in background
@@ -231,7 +242,7 @@ export function initDocSpaceRoutes(): void {
   // Quick Links
   router.register('/docspace/links', 'DocSpace — Liên kết Nhanh', () => {
     requireProfile(async (pid) => {
-      mountDocSpace(await renderQuickLinksView(pid));
+      await mountDocSpace(await renderQuickLinksView(pid));
       mountQuickLinksController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -241,7 +252,7 @@ export function initDocSpaceRoutes(): void {
   router.register('/docspace/notes', 'DocSpace — Ghi Chú Cá Nhân', () => {
     requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(await renderNotepadView(pid, editId));
+      await mountDocSpace(await renderNotepadView(pid, editId));
       mountNotepadController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -251,7 +262,7 @@ export function initDocSpaceRoutes(): void {
   router.register('/docspace/drugs', 'DocSpace — Nhật Ký Thuốc', () => {
     requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(await renderDrugJournalView(pid, editId));
+      await mountDocSpace(await renderDrugJournalView(pid, editId));
       mountDrugJournalController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -261,7 +272,7 @@ export function initDocSpaceRoutes(): void {
   router.register('/docspace/protocol', 'DocSpace — Phác Đồ Cá Nhân', () => {
     requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(await renderProtocolView(pid, editId));
+      await mountDocSpace(await renderProtocolView(pid, editId));
       mountProtocolController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -270,7 +281,7 @@ export function initDocSpaceRoutes(): void {
   // Dependency Map
   router.register('/docspace/dependency-map', 'DocSpace — Bản đồ Phụ thuộc (Core & Content)', () => {
     requireProfile(async (pid) => {
-      mountDocSpace(await renderDependencyMapView(pid));
+      await mountDocSpace(await renderDependencyMapView(pid));
       mountDependencyMapController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -280,11 +291,11 @@ export function initDocSpaceRoutes(): void {
     requireProfile(async (pid) => {
       const profile = getActiveProfile();
       if (!profile?.aiSettings?.labModeEnabled) {
-        mountDocSpace(renderFeatureUnavailable('Phác Đồ Động', 'lab'));
+        await mountDocSpace(renderFeatureUnavailable('Phác Đồ Động', 'lab'));
         return;
       }
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      mountDocSpace(await renderLivingProtocolView(pid, editId));
+      await mountDocSpace(await renderLivingProtocolView(pid, editId));
       mountLivingProtocolController(pid);
       mountSidebarFooterControls(pid);
     });
@@ -294,29 +305,40 @@ export function initDocSpaceRoutes(): void {
     requireProfile(async (pid) => {
       const profile = getActiveProfile();
       if (!profile?.aiSettings?.labModeEnabled) {
-        mountDocSpace(renderFeatureUnavailable('Sandbox Mô Phỏng', 'lab'));
+        await mountDocSpace(renderFeatureUnavailable('Sandbox Mô Phỏng', 'lab'));
         return;
       }
       const sessionId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('session') || undefined;
-      mountDocSpace(await renderSimulationView(pid, sessionId));
+      await mountDocSpace(await renderSimulationView(pid, sessionId));
       mountSimulationController(pid);
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // AI Insights & Practice Analytics (Cluster 5)
+  router.register('/docspace/insights', 'DocSpace — AI Insights & Sức Khỏe Nghề Nghiệp', () => {
+    requireProfile(async (pid) => {
+      await mountDocSpace(await renderInsightsView(pid));
+      mountInsightsController(pid);
       mountSidebarFooterControls(pid);
     });
   });
 
   // AI Settings
   router.register('/docspace/ai-settings', 'DocSpace — Cấu hình AI', () => {
-    requireProfile(() => {
-      mountDocSpace('<div id="ai-settings-placeholder"></div>'); // Placeholder will be replaced by renderAISettings
-      renderAISettings();
+    requireProfile(async (pid) => {
+      await mountDocSpace(renderAISettingsView(pid));
+      mountAISettingsController(pid);
+      mountSidebarFooterControls(pid);
     });
   });
 
   // Sync Settings (Đồng bộ Đa thiết bị)
   router.register('/docspace/sync-settings', 'DocSpace — Cấu hình Đồng bộ Đa thiết bị', () => {
-    requireProfile(() => {
-      mountDocSpace('<div id="sync-settings-placeholder"></div>');
-      renderSyncSettings();
+    requireProfile(async (pid) => {
+      await mountDocSpace(renderSyncSettingsView(pid));
+      mountSyncSettingsController(pid);
+      mountSidebarFooterControls(pid);
     });
   });
 }

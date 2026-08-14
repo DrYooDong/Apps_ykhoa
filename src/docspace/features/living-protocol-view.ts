@@ -3,85 +3,113 @@ import { evaluateBranch, evaluateStaticFormula, lookupValue } from './rule-engin
 import { VANCOMYCIN_PROTOCOL } from '../data/living-protocol-templates/vancomycin-dosing';
 import { getActiveProfile } from '../storage';
 import { generateProtocolFromDescription } from '../ai/llm-client';
+import { renderSidebar, renderDocSpaceHeader, escapeHtml } from '../docspace-view';
 
 const PROTOCOLS: LivingProtocol[] = [VANCOMYCIN_PROTOCOL];
 
 export function renderLivingProtocolView(profileId: string, protocolId?: string): string {
+  const profile = getActiveProfile();
+  if (!profile) return '';
+
+  let bodyContent = '';
   if (protocolId) {
     const protocol = PROTOCOLS.find(p => p.id === protocolId);
-    if (!protocol) return `<div class="dsp-view-container"><div class="dsp-alert dsp-alert-danger">Không tìm thấy phác đồ</div></div>`;
-    return renderProtocolWizard(protocol);
+    if (!protocol) {
+      bodyContent = `<div class="dsp-card" style="text-align:center; padding:3rem;"><div class="dsp-badge dsp-badge--closed" style="margin-bottom:1rem;">Không tìm thấy phác đồ</div><br><a href="#/docspace/living-protocols" class="dsp-btn dsp-btn-primary">Quay lại danh sách</a></div>`;
+    } else {
+      bodyContent = renderProtocolWizard(protocol);
+    }
+  } else {
+    bodyContent = `
+      <div class="dsp-page-header" style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.25rem;">
+            <h1 class="dsp-page-title" style="margin:0;"><i class="fa-solid fa-network-wired" style="color:var(--dsp-violet);"></i> Phác đồ Động (Living Protocols)</h1>
+            <span class="dsp-badge" style="background:var(--dsp-violet); color:#fff; border:none;">AI Lab Phase 3</span>
+          </div>
+          <p class="dsp-page-subtitle" style="margin:0;">
+            Tính toán &amp; nội suy quy trình lâm sàng động, tự động phân nhánh quyết định điều trị.
+          </p>
+        </div>
+        <button type="button" class="dsp-btn dsp-btn-primary" id="btnCreateAiProtocol">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ Tạo Phác đồ Mới bằng AI
+        </button>
+      </div>
+
+      <div class="dsp-preset-grid" id="lpProtocolGrid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;">
+        ${PROTOCOLS.map(p => `
+          <div class="dsp-card dsp-preset-card" style="cursor: pointer; padding: 1.25rem;" data-action="open-protocol" data-id="${p.id}">
+            <div class="dsp-preset-card-title" style="font-size: 1.05rem; margin-bottom: 0.5rem;">
+              <i class="fa-solid fa-file-medical" style="color:var(--dsp-sky);"></i>
+              <span>${escapeHtml(p.title)}</span>
+            </div>
+            <p class="dsp-preset-desc" style="font-size: 0.82rem; margin-bottom: 1rem;"><strong>Biến đầu vào:</strong> ${p.inputs.join(', ')}</p>
+            <div style="margin-top: auto; display:flex; justify-content:space-between; align-items:center; width:100%;">
+              <span class="dsp-badge" style="background:rgba(14,165,233,0.15); color:var(--dsp-sky);">Quy trình tương tác</span>
+              <span class="dsp-btn dsp-btn-sm dsp-btn-primary" style="font-size:0.78rem;">Chạy phác đồ →</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
   }
 
   return `
-    <div class="dsp-view-container animate-fade-in">
-      <header class="dsp-header dsp-flex dsp-justify-between dsp-items-center">
-        <div>
-          <h2 class="dsp-text-2xl dsp-font-bold dsp-text-primary">
-            <i class="fa-solid fa-network-wired dsp-mr-2"></i> Phác đồ Động (Living Protocols)
-          </h2>
-          <p class="dsp-text-muted">Tính toán & Nội suy quy trình lâm sàng động (Phase 5.1 AI Builder)</p>
+    <div class="dsp-layout" id="dspLayout">
+      ${renderSidebar(profile, 'living-protocols')}
+      <main class="dsp-main" id="dspMain">
+        ${renderDocSpaceHeader(profile, 'living-protocols')}
+        <div class="dsp-page-content">
+          ${bodyContent}
         </div>
-        <button type="button" class="dsp-btn dsp-btn-primary" id="btnCreateAiProtocol">
-          <i class="fa-solid fa-wand-magic-sparkles dsp-mr-2"></i> ✨ Tạo Phác đồ Mới bằng AI
-        </button>
-      </header>
-      <div class="dsp-content dsp-mt-6">
-        <div class="dsp-grid" id="lpProtocolGrid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
-          ${PROTOCOLS.map(p => `
-            <div class="dsp-card dsp-p-6 dsp-cursor-pointer hover:dsp-shadow-lg" style="transition: all 0.2s" data-action="open-protocol" data-id="${p.id}">
-              <h3 class="dsp-font-bold dsp-text-lg dsp-mb-2"><i class="fa-solid fa-file-medical dsp-text-primary"></i> ${p.title}</h3>
-              <p class="dsp-text-sm dsp-text-muted">Biến đầu vào: ${p.inputs.join(', ')}</p>
-              <div class="dsp-mt-4">
-                <span class="dsp-badge dsp-badge-primary">Chạy phác đồ →</span>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
+      </main>
     </div>
   `;
 }
 
 function renderProtocolWizard(protocol: LivingProtocol): string {
   return `
-    <div class="dsp-view-container animate-fade-in" id="lpWizardContainer" data-protocol-id="${protocol.id}">
-      <header class="dsp-header dsp-flex dsp-items-center">
-        <button class="dsp-icon-btn dsp-mr-4" data-action="back-to-list" title="Quay lại">
-          <i class="fa-solid fa-arrow-left"></i>
+    <div class="animate-fade-in" id="lpWizardContainer" data-protocol-id="${protocol.id}">
+      <div class="dsp-page-header" style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+        <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" data-action="back-to-list" title="Quay lại danh sách">
+          <i class="fa-solid fa-arrow-left"></i> Quay lại
         </button>
         <div>
-          <h2 class="dsp-text-2xl dsp-font-bold dsp-text-primary">
-            ${protocol.title}
-          </h2>
-          <p class="dsp-text-muted">Vui lòng nhập các thông số đầu vào để hệ thống tính toán</p>
+          <h1 class="dsp-page-title" style="margin:0; font-size:1.25rem;">
+            ${escapeHtml(protocol.title)}
+          </h1>
+          <p class="dsp-page-subtitle" style="margin:0;">Vui lòng nhập các thông số đầu vào để hệ thống tính toán và nội suy</p>
         </div>
-      </header>
+      </div>
       
-      <div class="dsp-content dsp-mt-6 dsp-flex" style="gap: 2rem; align-items: flex-start;">
+      <div style="display:grid; grid-template-columns: minmax(280px, 360px) 1fr; gap: 1.5rem; align-items: flex-start;">
         
         <!-- Cột trái: Form nhập liệu -->
-        <div class="dsp-card dsp-p-6" style="flex: 0 0 350px;">
-          <h3 class="dsp-font-bold dsp-mb-4">Biến số lâm sàng</h3>
+        <div class="dsp-card">
+          <h3 style="margin-top:0; font-size:1rem; font-weight:800; color:var(--color-text); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+            <i class="fa-solid fa-sliders" style="color:var(--dsp-sky);"></i> Biến số lâm sàng
+          </h3>
           <form id="lpInputForm" novalidate>
             ${protocol.inputs.map(input => `
               <div class="dsp-form-group">
                 <label class="dsp-label">${input.toUpperCase()}</label>
-                <input type="number" class="dsp-input lp-input-field" data-var="${input}" required />
+                <input type="number" class="dsp-input lp-input-field" data-var="${input}" placeholder="Nhập giá trị..." required />
               </div>
             `).join('')}
-            <button type="submit" class="dsp-btn dsp-btn-primary dsp-mt-4 dsp-w-full">
-              <i class="fa-solid fa-calculator dsp-mr-2"></i> Phân tích
+            <button type="submit" class="dsp-btn dsp-btn-primary dsp-btn-full" style="margin-top:1rem;">
+              <i class="fa-solid fa-calculator"></i> Phân tích phác đồ
             </button>
           </form>
         </div>
 
         <!-- Cột phải: Kết quả thực thi -->
-        <div class="dsp-card dsp-p-6" style="flex: 1;">
-          <h3 class="dsp-font-bold dsp-mb-4">Kết quả Phác đồ</h3>
-          <div id="lpExecutionTimeline" class="dsp-empty-state dsp-p-8">
-            <i class="fa-solid fa-hourglass-empty dsp-text-4xl dsp-text-muted dsp-mb-2"></i>
-            <p>Nhập thông số và bấm Phân tích để xem kết quả nội suy.</p>
+        <div class="dsp-card">
+          <h3 style="margin-top:0; font-size:1rem; font-weight:800; color:var(--color-text); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+            <i class="fa-solid fa-square-poll-vertical" style="color:var(--dsp-violet);"></i> Kết quả Phân tích Phác đồ
+          </h3>
+          <div id="lpExecutionTimeline" class="dsp-empty-profiles" style="padding:2.5rem 1rem;">
+            <i class="fa-solid fa-hourglass-empty"></i>
+            <p>Nhập thông số ở cột bên trái và bấm <strong>Phân tích</strong> để xem lộ trình điều trị.</p>
           </div>
         </div>
 
@@ -204,7 +232,7 @@ function executeProtocol(protocol: LivingProtocol, context: Record<string, numbe
       }
     } 
     else if (currentNode.type === 'branch' && currentNode.branch_var && currentNode.branches) {
-      const val = context[currentNode.branch_var];
+      const val = context[currentNode.branch_var] ?? 0;
       html += `<div class="dsp-text-sm">Biến: <strong>${currentNode.branch_var} = ${val}</strong></div>`;
       
       let branchMatched = false;

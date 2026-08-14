@@ -57,6 +57,9 @@ export interface AISettings {
   secondaryEndpoint?: string;
   secondaryModel?: string;
   secondaryApiKey?: string;
+  // Gemini Dedicated Engine
+  geminiApiKey?: string;
+  geminiModel?: string;
 }
 
 export interface QuickLink {
@@ -283,6 +286,26 @@ export interface SimulationResult {
 }
 
 // ─────────────────────────────────────────────
+// CLINICAL TOOLS & CALCULATOR SESSIONS (Phase 3)
+// ─────────────────────────────────────────────
+
+export interface CalculatorSession {
+  id: string;
+  calculatorId: string;
+  calculatorName: string;
+  patientId?: string;
+  inputs: Record<string, any>;
+  result: {
+    score?: number;
+    maxScore?: number;
+    label: string;
+    severity: 'low' | 'moderate' | 'high' | 'critical' | 'info';
+    textForInsert: string;
+  };
+  calculatedAt: string;
+}
+
+// ─────────────────────────────────────────────
 // SOAP DIGITAL WARD NOTEBOOK
 // ─────────────────────────────────────────────
 
@@ -487,3 +510,82 @@ export const DEFAULT_QUICK_LINKS: QuickLink[] = [
   { id: 'antibiotic', label: 'Kháng sinh',      href: '#/pharmacology/tools-tra-cuu-thuoc',                           icon: 'fa-solid fa-pills',      category: 'pharmacology', isPinned: false },
   { id: 'ecg',        label: 'Đọc ECG',          href: '#/skills/can-lam-sang-doc-ecg-co-ban',                              icon: 'fa-solid fa-heart-pulse',category: 'skills',       isPinned: false },
 ];
+
+// ─────────────────────────────────────────────
+// AI INSIGHTS & PRACTICE ANALYTICS (Cluster 5)
+// ─────────────────────────────────────────────
+
+export interface DiagnosisStatItem {
+  name: string;
+  count: number;
+  percentage: number;
+  icd10?: string;
+  color: string;
+}
+
+export interface ContextDistributionItem {
+  context: CaseContext | string;
+  label: string;
+  count: number;
+  percentage: number;
+  icon: string;
+  color: string;
+}
+
+export interface ActivityDayLog {
+  date: string;
+  dayName: string;
+  soapCount: number;
+  sbarCount: number;
+  caseCount: number;
+  hasDuty: boolean;
+  totalActivities: number;
+}
+
+export interface BurnoutEvaluation {
+  level: 'low' | 'moderate' | 'high';
+  score: number; // 0 - 100
+  title: string;
+  badgeClass: string;
+  color: string;
+  reasons: string[];
+  recommendations: string[];
+  metrics: {
+    shiftsThisWeek: number;
+    soapsThisWeek: number;
+    avgSoapWordCount: number;
+    criticalPatientsCount: number;
+  };
+}
+
+export interface PracticeAnalyticsData {
+  totalEncounters: number;
+  totalSoaps: number;
+  totalSbars: number;
+  totalCases: number;
+  totalShifts: number;
+  sbarRatio: number; // Percentage
+  topDiagnoses: DiagnosisStatItem[];
+  contextDistribution: ContextDistributionItem[];
+  activityLogs7Days: ActivityDayLog[];
+  weeklyDutyStreak: number;
+  burnout: BurnoutEvaluation;
+}
+
+export interface WeeklySummaryRecord {
+  id: string;
+  doctorId: string;
+  weekRange: string; // VD: "08/08 - 14/08/2026"
+  createdAt: string;
+  summaryText: string;
+  burnoutScore: number;
+  burnoutLevel: 'low' | 'moderate' | 'high';
+  highlights: string[];
+  metricsSnapshot: {
+    shiftsCount: number;
+    soapsCount: number;
+    casesCount: number;
+    sbarsCount: number;
+    topDiagnosesNames: string[];
+  };
+}

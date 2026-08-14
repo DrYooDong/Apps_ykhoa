@@ -26,6 +26,7 @@
 
 
   <script src="./js/core/category-mapper.js" defer></script>
+  <script src="./js/data/clinical-cheatsheets-data.js" defer></script>
   <script src="./js/main.js" defer></script>
   <script src="./components/footer.js" defer></script>
   <script src="./js/core/pulse.js" defer></script>
@@ -34,14 +35,40 @@
   <script src="./data/search-index-bundle.js" defer></script>
   <script src="./js/components/clinical-heatmap.js" defer></script>
   <script src="./js/tools/good-day-calculator.js" defer></script>
-  <script type="module" crossorigin src="./assets/main-CytA4oZi.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-KaTOl0A8.css">
+  <script src="./js/effects/premium-interactions.js" defer></script>
+
+  <!-- Schema.org MedicalWebPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "CliniPortal - Hệ sinh thái Công cụ & Hỗ trợ Quyết định Lâm sàng",
+    "description": "Hệ thống hỗ trợ quyết định lâm sàng (CDSS) tĩnh cho bác sĩ: Máy tính y học, Phác đồ cấp cứu, Y học chứng cứ và Dược lý.",
+    "url": "https://cliniportal.org",
+    "inLanguage": "vi",
+    "audience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Clinician"
+    },
+    "medicalSpecialty": [
+      "EmergencyMedicine",
+      "InternalMedicine",
+      "Cardiology",
+      "IntensiveCare"
+    ]
+  }
+  </script>
+  <script type="module" crossorigin src="./assets/main-DNajjzn9.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-BiNJhQNj.css">
 </head>
 
 <body>
   <!-- ===================== HEADER ===================== -->
   <header class="global-header">
     <div class="header-left">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mở menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
       <a href="#/" class="logo-brand"
         style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -52,24 +79,7 @@
       </a>
     </div>
 
-    <div class="search-bar-container">
-      <div class="search-container">
-        <svg viewBox="0 0 24 24" class="search__icon" aria-hidden="true">
-          <g>
-            <path
-              d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z" />
-          </g>
-        </svg>
-        <input class="input" type="search" placeholder="Tìm ứng dụng, phác đồ, công cụ…" aria-label="Tìm kiếm hệ sinh thái">
-        <kbd class="search-kbd-hint" id="searchKbdHint" title="Bấm phím Ctrl K hoặc / để tìm kiếm">Ctrl K</kbd>
-        <button class="voice-search-btn" id="voiceSearchBtn" title="Tìm kiếm bằng giọng nói y khoa (Click để nói)" aria-label="Voice Search">
-          <i class="fa-solid fa-microphone"></i>
-        </button>
-      </div>
-      <div class="search-results-dropdown" id="searchResultsDropdown"></div>
-    </div>
-
-    <div class="header-nav-modules">
+    <nav class="header-nav-modules" aria-label="Phân hệ y khoa">
       <a href="src/content/skills/ky-nang.html" class="header-module-btn" data-route="src/content/skills/ky-nang.html" title="Kỹ năng Lâm sàng">
         <i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i>
         <span>Kỹ năng</span>
@@ -121,10 +131,34 @@
         <i class="fa-solid fa-id-badge" style="color: var(--color-primary);"></i>
         <span>DocSpace</span>
       </a>
-    </div>
+    </nav>
 
-    <div class="header-actions">
-      <button id="sync-settings-btn" class="header-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">⚙️</button>
+    <div class="header-right">
+      <div class="search-bar-container">
+        <div class="search-container">
+          <svg viewBox="0 0 24 24" class="search__icon" aria-hidden="true">
+            <g>
+              <path
+                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z" />
+            </g>
+          </svg>
+          <input class="input" type="search" placeholder="Tìm ứng dụng, phác đồ, công cụ…" aria-label="Tìm kiếm hệ sinh thái">
+          <kbd class="search-kbd-hint" id="searchKbdHint" title="Bấm phím Ctrl K hoặc / để tìm kiếm">Ctrl K</kbd>
+          <button class="voice-search-btn" id="voiceSearchBtn" title="Tìm kiếm bằng giọng nói y khoa (Click để nói)" aria-label="Voice Search">
+            <i class="fa-solid fa-microphone"></i>
+          </button>
+        </div>
+        <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+      </div>
+
+      <div class="header-actions">
+        <button id="header-cheatsheets-btn" class="header-settings-btn open-cheatsheet-btn" title="Tra Cứu Siêu Tốc (Clinical Cheatsheets)" aria-label="Tra cứu siêu tốc">
+          <i class="fa-solid fa-bolt" style="color: var(--color-primary);"></i>
+        </button>
+        <button id="sync-settings-btn" class="header-settings-btn" title="Cài đặt & Đồng bộ" aria-label="Settings and Sync">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -183,41 +217,9 @@
             <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
             <div class="hero-pattern" aria-hidden="true"></div>
           </section>
-
-          <!-- Emergency Fast-Action -->
-          <section class="bento-cell bento-emergency" id="emergency-section" aria-labelledby="emergency-title">
-            <div class="bento-cell-header">
-              <h2 class="bento-cell-title" id="emergency-title">
-                <i class="fa-solid fa-truck-medical"></i> Cấp cứu khẩn
-              </h2>
-              <span class="emergency-badge-pulse">Fast Action</span>
-            </div>
-            <div class="bento-emergency-list">
-              <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="bento-emergency-item">
-                <div class="bento-emg-icon"><i class="fa-solid fa-mosquito"></i></div>
-                <span>SXHD nặng</span>
-                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-              </a>
-              <a href="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" class="bento-emergency-item">
-                <div class="bento-emg-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-                <span>Đau ngực & ACS</span>
-                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-              </a>
-              <a href="src/content/calculators/renal/dg-abg-studio.html" class="bento-emergency-item">
-                <div class="bento-emg-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
-                <span>Toan kiềm & SHH</span>
-                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-              </a>
-              <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="bento-emergency-item">
-                <div class="bento-emg-icon"><i class="fa-solid fa-capsules"></i></div>
-                <span>Sốc nhiễm khuẩn</span>
-                <i class="fa-solid fa-arrow-right bento-emg-arrow"></i>
-              </a>
-            </div>
-          </section>
         </div>
 
-        <!-- ── ROW 2: 8 PHÂN HỆ Y KHOA NAV STRIP ────────────── -->
+        <!-- ── ROW 2: 8 PHÂN HỆ Y KHOA NAV STRIP (MASTER INDEX) ────────────── -->
         <div class="bento-modules-row" aria-label="8 Phân hệ kiến thức y khoa">
           <a href="src/content/skills/ky-nang.html" class="bento-cell bento-module bento-mod-skills">
             <div class="bento-mod-top-box">
@@ -670,6 +672,27 @@
 
   <!-- ========== GLOBAL UI OVERLAYS ========== -->
 
+  <!-- Floating Action Dock -->
+  <nav class="floating-action-dock" aria-label="Cấp cứu khẩn">
+    <div class="dock-container">
+      <a href="src/content/calculators/emergency/acls-resus-studio.html" class="dock-item" data-tooltip="ACLS Ngừng tim" style="--dock-color: #ef4444;">
+        <div class="dock-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+      </a>
+      <a href="src/content/calculators/emergency/stroke-pro-studio.html" class="dock-item" data-tooltip="Cấp cứu Đột quỵ" style="--dock-color: #0284c7;">
+        <div class="dock-icon"><i class="fa-solid fa-brain"></i></div>
+      </a>
+      <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="dock-item" data-tooltip="SXHD nặng" style="--dock-color: #f59e0b;">
+        <div class="dock-icon"><i class="fa-solid fa-mosquito"></i></div>
+      </a>
+      <a href="src/content/calculators/renal/dg-abg-studio.html" class="dock-item" data-tooltip="Toan kiềm & SHH" style="--dock-color: #10b981;">
+        <div class="dock-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
+      </a>
+      <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="dock-item" data-tooltip="Sốc nhiễm khuẩn" style="--dock-color: #ec4899;">
+        <div class="dock-icon"><i class="fa-solid fa-capsules"></i></div>
+      </a>
+    </div>
+  </nav>
+
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
 
@@ -746,6 +769,38 @@
           <div class="hotkey-keys">
             <kbd class="hotkey-kbd">Esc</kbd>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tra Cứu Siêu Tốc Modal Overlay -->
+  <div class="cheatsheets-modal-overlay" id="cheatsheetsModalOverlay" role="dialog" aria-modal="true" aria-labelledby="cheatsheets-modal-title" style="display: none;">
+    <div class="cheatsheets-modal-container">
+      <div class="cheatsheets-modal-header">
+        <h2 class="cheatsheets-modal-title" id="cheatsheets-modal-title">
+          <i class="fa-solid fa-bolt"></i> Tra Cứu Siêu Tốc (Clinical Cheatsheets)
+        </h2>
+        <button class="cheatsheets-modal-close" id="closeCheatsheetModalBtn" aria-label="Đóng bảng tra cứu">&times;</button>
+      </div>
+
+      <div class="cheatsheets-modal-toolbar">
+        <div class="cheatsheets-controls" id="cheatsheetsFilterControls">
+          <button class="cheatsheet-filter-btn active" data-filter="all">Tất cả</button>
+          <button class="cheatsheet-filter-btn" data-filter="emergency">🚨 Cấp cứu khẩn</button>
+          <button class="cheatsheet-filter-btn" data-filter="cardiac">❤️ Tim mạch</button>
+          <button class="cheatsheet-filter-btn" data-filter="formula">🧪 Công thức / Thận</button>
+          <button class="cheatsheet-filter-btn" data-filter="score">📊 Thang điểm</button>
+        </div>
+        <div class="cheatsheet-search-wrapper">
+          <i class="fa-solid fa-magnifying-glass cheatsheet-search-icon"></i>
+          <input type="text" id="cheatsheetSearchInput" class="cheatsheet-search-input" placeholder="Tìm phác đồ, thuốc, thang điểm..." autocomplete="off">
+        </div>
+      </div>
+
+      <div class="cheatsheets-modal-body">
+        <div class="cheatsheets-grid" id="cheatsheetsGridContainer">
+          <!-- Render động từ clinical-cheatsheets-data.js -->
         </div>
       </div>
     </div>

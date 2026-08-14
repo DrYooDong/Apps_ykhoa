@@ -1,68 +1,84 @@
 import { GRAPH_NODES, DependencyNode, RiskLevel, DomainCategory } from '../data/graphify-dependency-data';
+import { getActiveProfile } from '../storage';
+import { renderSidebar, renderDocSpaceHeader, escapeHtml } from '../docspace-view';
 
 export async function renderDependencyMapView(profileId: string): Promise<string> {
+  const profile = getActiveProfile();
+  if (!profile) return '';
+
   return `
-    <div class="dsp-dep-map-container fade-in">
-      <div class="dsp-dep-map-header">
-        <div class="dsp-header-title">
-          <h2><i class="fa-solid fa-diagram-project"></i> Bản đồ Phụ thuộc (Core & Content)</h2>
-          <p>Phân tích rủi ro & định vị kiểm thử (Graphify Risk Assessment)</p>
-        </div>
-        <div class="dsp-header-actions">
-          <button class="dsp-btn dsp-btn-outline" id="depMapModeNet"><i class="fa-solid fa-circle-nodes"></i> Mạng lưới</button>
-          <button class="dsp-btn dsp-btn-outline" id="depMapModeMatrix"><i class="fa-solid fa-table-cells-large"></i> Ma trận Rủi ro</button>
-          <button class="dsp-btn dsp-btn-outline" id="depMapModeChecklist"><i class="fa-solid fa-list-check"></i> Checklist Kiểm thử</button>
-        </div>
-      </div>
+    <div class="dsp-layout" id="dspLayout">
+      ${renderSidebar(profile, 'dependency-map')}
+      <main class="dsp-main" id="dspMain">
+        ${renderDocSpaceHeader(profile, 'dependency-map')}
 
-      <div class="dsp-dep-map-controls">
-        <div class="dsp-search-box">
-          <i class="fa-solid fa-search"></i>
-          <input type="text" id="depMapSearch" placeholder="Tìm kiếm module, file, hoặc function..." />
-        </div>
-        
-        <div class="dsp-filter-group">
-          <label>Chuyên khoa (Domain):</label>
-          <select id="depMapDomainFilter" class="dsp-input">
-            <option value="ALL">Tất cả</option>
-            <option value="Bệnh lý">Bệnh lý</option>
-            <option value="Triệu chứng">Triệu chứng</option>
-            <option value="Công cụ">Công cụ</option>
-            <option value="Kỹ năng">Kỹ năng</option>
-            <option value="Sinh lý">Sinh lý</option>
-            <option value="Dược lý">Dược lý</option>
-            <option value="Guidelines">Guidelines</option>
-            <option value="DocSpace">DocSpace</option>
-            <option value="Core">Core Engine</option>
-          </select>
-        </div>
+        <div class="dsp-page-content">
 
-        <div class="dsp-filter-group">
-          <label>Mức độ Rủi ro:</label>
-          <select id="depMapRiskFilter" class="dsp-input">
-            <option value="ALL">Tất cả</option>
-            <option value="CRITICAL HUB">Critical Hub (>15)</option>
-            <option value="HIGH RISK">High Risk (>5)</option>
-            <option value="MEDIUM RISK">Medium Risk (>0)</option>
-            <option value="LOW">Low</option>
-          </select>
-        </div>
-      </div>
+          <div class="dsp-dep-map-container fade-in">
+            <div class="dsp-dep-map-header" style="margin-bottom:1.5rem;">
+              <div class="dsp-header-title">
+                <h1 class="dsp-page-title" style="margin:0;"><i class="fa-solid fa-diagram-project" style="color:var(--dsp-sky);"></i> Bản đồ Phụ thuộc (Core &amp; Content Architecture)</h1>
+                <p class="dsp-page-subtitle" style="margin:0;">Phân tích rủi ro &amp; định vị kiểm thử hệ thống (Graphify Risk Assessment &amp; Quality Shield)</p>
+              </div>
+              <div class="dsp-header-actions" style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                <button class="dsp-btn dsp-btn-outline dsp-btn-sm" id="depMapModeNet"><i class="fa-solid fa-circle-nodes"></i> Mạng lưới</button>
+                <button class="dsp-btn dsp-btn-outline dsp-btn-sm" id="depMapModeMatrix"><i class="fa-solid fa-table-cells-large"></i> Ma trận Rủi ro</button>
+                <button class="dsp-btn dsp-btn-outline dsp-btn-sm" id="depMapModeChecklist"><i class="fa-solid fa-list-check"></i> Checklist Kiểm thử</button>
+              </div>
+            </div>
 
-      <div class="dsp-dep-map-content" id="depMapContent">
-        <!-- Content injected via JS based on mode -->
-      </div>
-      
-      <!-- Detail Drawer -->
-      <div class="dsp-dep-drawer" id="depDrawer">
-        <div class="dsp-drawer-header">
-          <h3 id="depDrawerTitle">Module Detail</h3>
-          <button class="dsp-btn-ghost" id="depDrawerClose"><i class="fa-solid fa-times"></i></button>
+            <div class="dsp-dep-map-controls">
+              <div class="dsp-search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="depMapSearch" class="dsp-input" placeholder="Tìm kiếm module, file, hoặc function..." />
+              </div>
+              
+              <div class="dsp-filter-group">
+                <label class="dsp-label" style="margin:0; font-size:0.8rem;">Chuyên khoa (Domain):</label>
+                <select id="depMapDomainFilter" class="dsp-input">
+                  <option value="ALL">Tất cả</option>
+                  <option value="Bệnh lý">Bệnh lý</option>
+                  <option value="Triệu chứng">Triệu chứng</option>
+                  <option value="Công cụ">Công cụ</option>
+                  <option value="Kỹ năng">Kỹ năng</option>
+                  <option value="Sinh lý">Sinh lý</option>
+                  <option value="Dược lý">Dược lý</option>
+                  <option value="Guidelines">Guidelines</option>
+                  <option value="DocSpace">DocSpace</option>
+                  <option value="Core">Core Engine</option>
+                </select>
+              </div>
+
+              <div class="dsp-filter-group">
+                <label class="dsp-label" style="margin:0; font-size:0.8rem;">Mức độ Rủi ro:</label>
+                <select id="depMapRiskFilter" class="dsp-input">
+                  <option value="ALL">Tất cả</option>
+                  <option value="CRITICAL HUB">Critical Hub (>15)</option>
+                  <option value="HIGH RISK">High Risk (>5)</option>
+                  <option value="MEDIUM RISK">Medium Risk (>0)</option>
+                  <option value="LOW">Low</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="dsp-dep-map-content" id="depMapContent">
+              <!-- Content injected via JS based on mode -->
+            </div>
+            
+            <!-- Detail Drawer -->
+            <div class="dsp-dep-drawer" id="depDrawer">
+              <div class="dsp-drawer-header">
+                <h3 id="depDrawerTitle">Module Detail</h3>
+                <button class="dsp-btn-ghost" id="depDrawerClose"><i class="fa-solid fa-times"></i></button>
+              </div>
+              <div class="dsp-drawer-body" id="depDrawerBody">
+                <!-- Details injected here -->
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="dsp-drawer-body" id="depDrawerBody">
-          <!-- Details injected here -->
-        </div>
-      </div>
+      </main>
     </div>
   `;
 }

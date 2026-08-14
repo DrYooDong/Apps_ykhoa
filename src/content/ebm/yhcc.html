@@ -25,10 +25,15 @@
   <script src="../../../components/footer.js" defer></script>
   <script src="js/ebm-format-loader.js"></script>
   <script src="js/ebm-premium-system.js" defer></script>
+  <script src="js/ebm-bedside-copilot.js" defer></script>
   <script src="js/yhcc-hub.js" defer></script>
+  <script src="js/pubmed-gemini-service.js" defer></script>
+  <script type="module" src="./index.ts"></script>
 
   <link rel="stylesheet" href="css/ebm-premium-system.css">
+  <link rel="stylesheet" href="css/ebm-bedside-copilot.css">
   <link rel="stylesheet" href="css/yhcc-hub.css">
+  <link rel="stylesheet" href="css/pubmed-guidelines-board.css">
 </head>
 
 <body>
@@ -114,264 +119,105 @@
             </div>
           </div>
 
-          <!-- COMMAND SEARCH BAR (CTRL + K) -->
-          <div class="hub-command-search-wrapper">
-            <div class="hub-command-search">
-              <input type="text" id="ebm-global-search" placeholder="Tìm kiếm Guideline, Thống kê, Cập nhật mới..."
-                aria-label="Tìm kiếm Y Học Chứng Cứ" autocomplete="off">
-              <span class="hub-hotkey-badge" title="Nhấn Ctrl + K để tìm kiếm nhanh">Ctrl K</span>
-              <button aria-label="Nút tìm kiếm">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-              </button>
-            </div>
-
-            <!-- SEARCH TAG SUGGESTIONS -->
-            <div class="hub-search-tags">
-              <span style="font-size: 0.73rem; color: rgba(255,255,255,0.6); font-weight: 600;">Gợi ý:</span>
-              <span class="hub-search-tag-chip" onclick="quickSearch('#TimMạch')">#TimMạch</span>
-              <span class="hub-search-tag-chip" onclick="quickSearch('#TiểuĐường')">#TiểuĐường</span>
-              <span class="hub-search-tag-chip" onclick="quickSearch('#ESC2024')">#ESC2024</span>
-              <span class="hub-search-tag-chip" onclick="quickSearch('#BộYTế')">#BộYTế</span>
-              <span class="hub-search-tag-chip" onclick="quickSearch('#HôHấp')">#HôHấp</span>
-            </div>
-
-            <!-- SEARCH RESULTS MODAL / DROPDOWN -->
-            <div id="ebm-search-results"
-              style="display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; background: var(--hub-surface, #fff); border: 1px solid var(--hub-border); border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.25); z-index: 300; max-height: 380px; overflow-y: auto; padding: 0.85rem;">
-            </div>
-          </div>
-
         </div>
       </section>
 
       <!-- TWO COLUMN MAIN LAYOUT GRID -->
       <div class="ebm-layout-grid">
 
-        <!-- LEFT COLUMN: BENTO MODULES & SPECIALTY LOOKUP -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%; min-width: 0;">
+        <!-- LEFT COLUMN: MAIN CONTENT & TOOLS -->
+        <div style="display: flex; flex-direction: column; gap: 1.25rem; width: 100%; min-width: 0;">
 
-          <!-- 1. BENTO GRID 4 CORE MODULES CARDS -->
-          <div>
-            <h2 class="hub-section-title">📦 Các Mô-đun Chính</h2>
+          <!-- QUICK ACCESS MODULE PILLS NAV BAR (ROW ABOVE BOARD) -->
+          <div class="ebm-module-nav-grid">
+            <!-- Pill 1: Thống Kê Y Học -->
+            <a href="medical-statistics/thongkeyhoc.html" class="ebm-nav-pill-btn stat" id="card-thongke" title="Vào phân hệ Thống Kê Y Học & Nghiên Cứu">
+              <span class="ebm-nav-pill-icon">📊</span>
+              <div class="ebm-nav-pill-text">
+                <span class="ebm-nav-pill-title">Thống Kê Y Học</span>
+                <span class="ebm-nav-pill-desc">RCT, Meta-analysis</span>
+              </div>
+              <i class="fa-solid fa-arrow-right ebm-nav-pill-arrow"></i>
+            </a>
 
-            <div class="bento-modules-grid">
+            <!-- Pill 2: Guidelines -->
+            <a href="guidelines/guidelines.html" class="ebm-nav-pill-btn guide" id="card-guidelines" title="Vào Kho Guidelines & Khuyến Cáo">
+              <span class="ebm-nav-pill-icon">📋</span>
+              <div class="ebm-nav-pill-text">
+                <span class="ebm-nav-pill-title">Kho Guidelines</span>
+                <span class="ebm-nav-pill-desc">Bộ Y Tế, ESC, ADA</span>
+              </div>
+              <i class="fa-solid fa-arrow-right ebm-nav-pill-arrow"></i>
+            </a>
 
-              <!-- Module Card 1: Thống Kê Y Học -->
-              <a href="medical-statistics/thongkeyhoc.html" class="bento-card stat" id="card-thongke">
-                <div class="bento-card-bg-circle"></div>
-                <div>
-                  <div class="bento-card-header">
-                    <div class="bento-card-icon">📊</div>
-                    <span class="bento-card-badge">Mô-đun 1</span>
-                  </div>
-                  <div class="bento-card-body">
-                    <h3>Thống Kê Y Học & Nghiên Cứu</h3>
-                    <p>Tư duy thống kê y học, các phương pháp thiết kế nghiên cứu khoa học, đọc hiểu RCT và Meta-analysis.</p>
-                    <div class="bento-card-bullets">
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bài 1: Ý nghĩa thống kê & ý nghĩa lâm sàng</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bài 2: Đánh giá giá trị xét nghiệm chẩn đoán</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bài 3: Thiết kế nghiên cứu y học (Cohort/RCT)</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bài 4: Đọc hiểu và phân tích Meta-analysis</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bento-card-footer">
-                  <span class="bento-card-btn">
-                    Vào học ngay <i class="fa-solid fa-arrow-right"></i>
-                  </span>
-                </div>
-              </a>
+            <!-- Pill 3: Guideline Radar -->
+            <a href="guideline-radar/radar.html" class="ebm-nav-pill-btn radar" id="card-radar" title="Vào Guideline Radar Diff View">
+              <span class="ebm-nav-pill-icon">📡</span>
+              <div class="ebm-nav-pill-text">
+                <span class="ebm-nav-pill-title">Guideline Radar</span>
+                <span class="ebm-nav-pill-desc">Diff View Trước/Sau</span>
+              </div>
+              <i class="fa-solid fa-arrow-right ebm-nav-pill-arrow"></i>
+            </a>
 
-              <!-- Module Card 2: Guidelines -->
-              <a href="guidelines/guidelines.html" class="bento-card guide" id="card-guidelines">
-                <div class="bento-card-bg-circle"></div>
-                <div>
-                  <div class="bento-card-header">
-                    <div class="bento-card-icon">📋</div>
-                    <span class="bento-card-badge">Mô-đun 2</span>
-                  </div>
-                  <div class="bento-card-body">
-                    <h3>Guidelines & Khuyến Cáo</h3>
-                    <p>Hướng dẫn điều trị chuẩn hóa từ Bộ Y tế Việt Nam, ESC, ADA, GINA, GOLD và các hiệp hội quốc tế.</p>
-                    <div class="bento-card-bullets">
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Tài liệu Bộ Y Tế Việt Nam & Hội chuyên khoa</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Khuyến cáo quốc tế ESC, ADA, ACC/AHA</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bộ lọc đa chiều theo chuyên khoa & nguồn</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Thang điểm và lưu đồ chẩn đoán tích hợp</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bento-card-footer">
-                  <span class="bento-card-btn">
-                    Khám phá ngay <i class="fa-solid fa-arrow-right"></i>
-                  </span>
-                </div>
-              </a>
-
-              <!-- Module Card 3: Guideline Radar -->
-              <a href="guideline-radar/radar.html" class="bento-card radar" id="card-radar">
-                <div class="bento-card-bg-circle"></div>
-                <div>
-                  <div class="bento-card-header">
-                    <div class="bento-card-icon">📡</div>
-                    <span class="bento-card-badge">Cập nhật</span>
-                  </div>
-                  <div class="bento-card-body">
-                    <h3>Guideline Radar</h3>
-                    <p>Trạm radar theo dõi các cập nhật y học mới nhất và những thay đổi ảnh hưởng đến thực hành lâm sàng.</p>
-                    <div class="bento-card-bullets">
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Giao diện Diff View "Trước & Sau" độc đáo</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Huy hiệu Practice-Changing vs Informative</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Điểm tin nhanh ESC, ADA, GINA, GOLD & BYT</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bento-card-footer">
-                  <span class="bento-card-btn">
-                    Xem diff view <i class="fa-solid fa-arrow-right"></i>
-                  </span>
-                </div>
-              </a>
-
-              <!-- Module Card 4: EBM Practice Lab -->
-              <a href="ebm-lab/ebm-lab.html" class="bento-card lab" id="card-ebm-lab">
-                <div class="bento-card-bg-circle"></div>
-                <div>
-                  <div class="bento-card-header">
-                    <div class="bento-card-icon">🧪</div>
-                    <span class="bento-card-badge">Thực Hành</span>
-                  </div>
-                  <div class="bento-card-body">
-                    <h3>EBM Practice Lab</h3>
-                    <p>Phòng thực hành tương tác giúp cấu trúc PICO, thẩm định sai số nghiên cứu và tính toán NNT/ARR.</p>
-                    <div class="bento-card-bullets">
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>PICO Builder & PubMed Search String Generator</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>NNT/ARR Calculator & Biểu đồ 100 Bệnh Nhân</div>
-                      <div class="bento-card-bullet"><span class="bento-bullet-dot"></span>Bảng kiểm thẩm định phê bình nghiên cứu CASP</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="bento-card-footer">
-                  <span class="bento-card-btn">
-                    Vào thực hành <i class="fa-solid fa-arrow-right"></i>
-                  </span>
-                </div>
-              </a>
-
-            </div>
+            <!-- Pill 4: EBM Practice Lab -->
+            <a href="ebm-lab/ebm-lab.html" class="ebm-nav-pill-btn lab" id="card-ebm-lab" title="Vào EBM Practice Lab">
+              <span class="ebm-nav-pill-icon">🧪</span>
+              <div class="ebm-nav-pill-text">
+                <span class="ebm-nav-pill-title">EBM Practice Lab</span>
+                <span class="ebm-nav-pill-desc">PICO, CASP & NNT</span>
+              </div>
+              <i class="fa-solid fa-arrow-right ebm-nav-pill-arrow"></i>
+            </a>
           </div>
 
-          <!-- 2. BEDSIDE QUICK EBM TOOLS (PICO BUILDER & NNT CALCULATOR) -->
-          <section class="quick-ebm-tools-card" aria-labelledby="quick-tools-title">
-            <h2 class="hub-section-title" id="quick-tools-title" style="margin-bottom: 0;">⚡ Công Cụ EBM Nhanh Tại Giường Bệnh</h2>
-            <p style="font-size: 0.83rem; color: var(--hub-text-muted); margin-top: 0.35rem; margin-bottom: 1rem;">
-              Tính toán chỉ số y học chứng cứ và tạo từ khóa tìm kiếm nhanh PubMed ngay lập tức.
-            </p>
+          <!-- BEDSIDE EBM COPILOT WIDGET CONTAINER (NEW) -->
+          <div id="bedside-copilot-container"></div>
 
-            <div class="quick-tools-grid">
-              <!-- Tool 1: PICO Quick Builder -->
-              <div class="quick-tool-box">
-                <h4><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--hub-purple);"></i> PICO Builder & Search String</h4>
-                <div class="quick-tool-inputs">
-                  <input type="text" id="pico-p" placeholder="P (Bệnh nhân/Tuổi)...">
-                  <input type="text" id="pico-i" placeholder="I (Can thiệp/Thuốc)...">
-                  <input type="text" id="pico-c" placeholder="C (So sánh/Giả dược)...">
-                  <input type="text" id="pico-o" placeholder="O (Kết cục)...">
+          <!-- 1. PUBMED GUIDELINES NOTIFICATION BOARD (DAILY UPDATES + GEMINI AI) -->
+          <section class="pubmed-board-section" id="pubmed-board-container" aria-labelledby="pubmed-board-title">
+            <div class="pubmed-board-header">
+              <div class="pubmed-board-title-group">
+                <div class="pubmed-board-icon">
+                  <i class="fa-solid fa-newspaper"></i>
                 </div>
-                <div class="quick-tool-result-box" id="pico-output">
-                  <span style="color: var(--hub-text-muted);">Nhập thông tin PICO để tự động sinh từ khóa tìm kiếm PubMed.</span>
+                <div>
+                  <h2 class="pubmed-board-title" id="pubmed-board-title">
+                    Bảng Tin Guidelines PubMed Mới Nhất
+                    <span id="pubmed-status-badge" class="pubmed-board-badge badge-pubmed-direct">
+                      <i class="fa-solid fa-globe"></i> PubMed Direct
+                    </span>
+                  </h2>
+                  <div style="font-size: 0.74rem; color: var(--hub-text-muted); margin-top: 2px;">
+                    Tổng hợp tự động khuyến cáo quốc tế mới xuất bản & phân loại chuyên khoa bởi Gemini AI
+                  </div>
                 </div>
               </div>
 
-              <!-- Tool 2: NNT / ARR Quick Calculator -->
-              <div class="quick-tool-box">
-                <h4><i class="fa-solid fa-calculator" style="color: var(--hub-blue);"></i> Máy Tính NNT / ARR Nhanh</h4>
-                <div class="quick-tool-inputs">
-                  <div>
-                    <label style="font-size: 0.72rem; font-weight: 600; color: var(--hub-text-muted);">Tỷ lệ nhóm chứng (CER %)</label>
-                    <input type="number" id="nnt-cer" placeholder="Ví dụ: 12.5" step="0.1">
-                  </div>
-                  <div>
-                    <label style="font-size: 0.72rem; font-weight: 600; color: var(--hub-text-muted);">Tỷ lệ can thiệp (EER %)</label>
-                    <input type="number" id="nnt-eer" placeholder="Ví dụ: 7.2" step="0.1">
-                  </div>
-                </div>
-                <div class="quick-tool-result-box" id="nnt-output">
-                  <span style="color: var(--hub-text-muted);">Nhập CER (%) và EER (%) để tính Giảm nguy cơ tuyệt đối (ARR) & NNT.</span>
-                </div>
+              <div class="pubmed-board-controls">
+                <button type="button" class="btn-pubmed-action" id="btn-toggle-pubmed-board" onclick="togglePubmedBoard()" title="Thu gọn / Mở rộng Bảng tin PubMed">
+                  <span id="pubmed-toggle-label">Thu gọn</span>
+                  <span id="pubmed-toggle-icon">▲</span>
+                </button>
+                <button type="button" class="btn-pubmed-action" id="btn-gemini-config" title="Cài đặt Gemini API Key cá nhân">
+                  <i class="fa-solid fa-key" style="color: #7c3aed;"></i>
+                  <span>Cấu hình AI</span>
+                </button>
+                <button type="button" class="btn-pubmed-action btn-pubmed-primary" id="btn-pubmed-sync" title="Tải lại dữ liệu mới nhất từ PubMed">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                  <span>Cập nhật ngay</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Guidelines items list populated by pubmed-gemini-service.js -->
+            <div class="pubmed-guidelines-list" id="pubmed-guidelines-list">
+              <div class="pubmed-loading-skeleton">
+                <div class="pubmed-spinner"></div>
+                <div>Đang kết nối cơ sở dữ liệu PubMed E-utilities...</div>
               </div>
             </div>
           </section>
-
-          <!-- 3. SPECIALTY LOOKUP MATRIX -->
-          <div>
-            <h2 class="hub-section-title">🏥 Tra Cứu Theo Chuyên Khoa</h2>
-
-            <div class="hub-spec-lookup-grid">
-              <!-- Tim Mạch -->
-              <a href="guidelines/kho-guidelines/index.html?spec=cardiology" class="hub-spec-lookup-card" style="--spec-color: #ef4444; --spec-bg: rgba(239, 68, 68, 0.12);">
-                <div class="hub-spec-icon-wrapper">🫀</div>
-                <div class="hub-spec-info">
-                  <h4>Tim Mạch</h4>
-                  <p>Tăng huyết áp, ĐMV, Suy tim, Rung nhĩ</p>
-                </div>
-                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-              </a>
-
-              <!-- Nội Tiết -->
-              <a href="guidelines/kho-guidelines/index.html?spec=endocrinology" class="hub-spec-lookup-card" style="--spec-color: #f59e0b; --spec-bg: rgba(245, 158, 11, 0.12);">
-                <div class="hub-spec-icon-wrapper">🩺</div>
-                <div class="hub-spec-info">
-                  <h4>Nội Tiết & ĐTĐ</h4>
-                  <p>Đái tháo đường T2, Tuyến giáp, Đột quỵ</p>
-                </div>
-                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-              </a>
-
-              <!-- Hô Hấp -->
-              <a href="guidelines/kho-guidelines/index.html?spec=pulmonology" class="hub-spec-lookup-card" style="--spec-color: #06b6d4; --spec-bg: rgba(6, 182, 212, 0.12);">
-                <div class="hub-spec-icon-wrapper">🫁</div>
-                <div class="hub-spec-info">
-                  <h4>Hô Hấp</h4>
-                  <p>COPD, Hen phế quản, Viêm phổi</p>
-                </div>
-                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-              </a>
-
-              <!-- Tiêu Hóa -->
-              <a href="guidelines/kho-guidelines/index.html?spec=gastroenterology" class="hub-spec-lookup-card" style="--spec-color: #10b981; --spec-bg: rgba(16, 185, 129, 0.12);">
-                <div class="hub-spec-icon-wrapper">🩺</div>
-                <div class="hub-spec-info">
-                  <h4>Tiêu Hóa - Gan Mật</h4>
-                  <p>Xơ gan, Xuất huyết tiêu hóa, GERD</p>
-                </div>
-                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-              </a>
-
-              <!-- Cấp Cứu - Hồi Sức -->
-              <a href="guidelines/kho-guidelines/index.html?spec=icu" class="hub-spec-lookup-card" style="--spec-color: #7c3aed; --spec-bg: rgba(124, 58, 237, 0.12);">
-                <div class="hub-spec-icon-wrapper">⚡</div>
-                <div class="hub-spec-info">
-                  <h4>Cấp Cứu - ICU</h4>
-                  <p>Nhiễm trùng huyết, ARDS, Sốc nhiễm khuẩn</p>
-                </div>
-                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-              </a>
-
-              <!-- Nhi Khoa -->
-              <a href="guidelines/kho-guidelines/index.html?spec=pediatrics" class="hub-spec-lookup-card" style="--spec-color: #ec4899; --spec-bg: rgba(236, 72, 153, 0.12);">
-                <div class="hub-spec-icon-wrapper">👶</div>
-                <div class="hub-spec-info">
-                  <h4>Nhi Khoa</h4>
-                  <p>Sốt cao co giật, Tiêu chảy cấp, Viêm tiểu phế quản</p>
-                </div>
-                <div class="hub-spec-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-              </a>
-            </div>
-          </div>
 
           <!-- 4. RECENT PRACTICE-CHANGING UPDATES WIDGET -->
           <div>
@@ -810,7 +656,31 @@
         }
       };
 
-      // Restore collapsed state
+      // Toggle PubMed Guidelines Notification Board
+      window.togglePubmedBoard = function() {
+        const listEl = document.getElementById('pubmed-guidelines-list');
+        const labelEl = document.getElementById('pubmed-toggle-label');
+        const iconEl = document.getElementById('pubmed-toggle-icon');
+        const sectionEl = document.getElementById('pubmed-board-container');
+        if (!listEl) return;
+
+        const isHidden = listEl.style.display === 'none';
+        if (isHidden) {
+          listEl.style.display = 'block';
+          if (labelEl) labelEl.textContent = 'Thu gọn';
+          if (iconEl) iconEl.textContent = '▲';
+          if (sectionEl) sectionEl.classList.remove('collapsed');
+          localStorage.setItem('clini_pubmed_board_collapsed', 'false');
+        } else {
+          listEl.style.display = 'none';
+          if (labelEl) labelEl.textContent = 'Mở rộng';
+          if (iconEl) iconEl.textContent = '▼';
+          if (sectionEl) sectionEl.classList.add('collapsed');
+          localStorage.setItem('clini_pubmed_board_collapsed', 'true');
+        }
+      };
+
+      // Restore collapsed states
       if (localStorage.getItem('yhcc_updates_collapsed') === 'true') {
         const contentEl = document.getElementById('yhcc-updates-content');
         const labelEl = document.getElementById('yhcc-updates-toggle-label');
@@ -819,6 +689,19 @@
           contentEl.style.display = 'none';
           if (labelEl) labelEl.textContent = 'Mở rộng';
           if (iconEl) iconEl.textContent = '▼';
+        }
+      }
+
+      if (localStorage.getItem('clini_pubmed_board_collapsed') === 'true') {
+        const listEl = document.getElementById('pubmed-guidelines-list');
+        const labelEl = document.getElementById('pubmed-toggle-label');
+        const iconEl = document.getElementById('pubmed-toggle-icon');
+        const sectionEl = document.getElementById('pubmed-board-container');
+        if (listEl) {
+          listEl.style.display = 'none';
+          if (labelEl) labelEl.textContent = 'Mở rộng';
+          if (iconEl) iconEl.textContent = '▼';
+          if (sectionEl) sectionEl.classList.add('collapsed');
         }
       }
 
@@ -889,93 +772,55 @@
         });
       }
 
-      // --- 4. BEDSIDE PICO BUILDER & NNT CALCULATOR REALTIME INTERACTION ---
-      const picoP = document.getElementById('pico-p');
-      const picoI = document.getElementById('pico-i');
-      const picoC = document.getElementById('pico-c');
-      const picoO = document.getElementById('pico-o');
-      const picoOut = document.getElementById('pico-output');
-
-      function updatePicoString() {
-        if (!picoOut) return;
-        const p = picoP ? picoP.value.trim() : '';
-        const i = picoI ? picoI.value.trim() : '';
-        const c = picoC ? picoC.value.trim() : '';
-        const o = picoO ? picoO.value.trim() : '';
-
-        if (!p && !i && !c && !o) {
-          picoOut.innerHTML = `<span style="color: var(--hub-text-muted);">Nhập thông tin PICO để tự động sinh từ khóa tìm kiếm PubMed.</span>`;
-          return;
-        }
-
-        let terms = [];
-        if (p) terms.push(`("${p}"[Title/Abstract])`);
-        if (i) terms.push(`("${i}"[Title/Abstract])`);
-        if (c) terms.push(`("${c}"[Title/Abstract])`);
-        if (o) terms.push(`("${o}"[Title/Abstract])`);
-
-        const queryStr = terms.join(' AND ');
-        const pubmedUrl = `https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(queryStr)}`;
-
-        picoOut.innerHTML = `
-          <div style="font-weight: 700; font-family: monospace; font-size: 0.78rem; color: var(--hub-purple); word-break: break-all; margin-bottom: 0.4rem;">${queryStr}</div>
-          <a href="${pubmedUrl}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 700; color: #fff; background: var(--hub-purple); padding: 3px 10px; border-radius: 6px; text-decoration: none;">
-            🔍 Tra cứu PubMed <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-        `;
-      }
-
-      [picoP, picoI, picoC, picoO].forEach(el => {
-        if (el) el.addEventListener('input', updatePicoString);
-      });
-
-      // NNT Calculator
-      const nntCer = document.getElementById('nnt-cer');
-      const nntEer = document.getElementById('nnt-eer');
-      const nntOut = document.getElementById('nnt-output');
-
-      function updateNntCalc() {
-        if (!nntOut) return;
-        const cer = parseFloat(nntCer ? nntCer.value : NaN);
-        const eer = parseFloat(nntEer ? nntEer.value : NaN);
-
-        if (isNaN(cer) || isNaN(eer)) {
-          nntOut.innerHTML = `<span style="color: var(--hub-text-muted);">Nhập CER (%) và EER (%) để tính Giảm nguy cơ tuyệt đối (ARR) & NNT.</span>`;
-          return;
-        }
-
-        const arr = (cer - eer) / 100;
-        if (arr === 0) {
-          nntOut.innerHTML = `<span style="color: var(--hub-text-muted);">CER và EER bằng nhau (ARR = 0%), không có sự khác biệt điều trị.</span>`;
-          return;
-        }
-
-        const nnt = Math.ceil(1 / Math.abs(arr));
-        const isHarm = arr < 0;
-        const labelText = isHarm ? 'NNH (Cần điều trị để gây hại 1 bệnh nhân)' : 'NNT (Cần điều trị để ngừa 1 biến cố)';
-        const arrPct = (Math.abs(arr) * 100).toFixed(2);
-        const themeColor = isHarm ? '#ef4444' : '#10b981';
-
-        nntOut.innerHTML = `
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
-            <div>
-              <div style="font-size: 0.73rem; color: var(--hub-text-muted);">${labelText}</div>
-              <div style="font-size: 1.25rem; font-weight: 800; color: ${themeColor};">${nnt} người</div>
-            </div>
-            <div style="text-align: right;">
-              <div style="font-size: 0.73rem; color: var(--hub-text-muted);">Giảm nguy cơ tuyệt đối (ARR)</div>
-              <div style="font-size: 1rem; font-weight: 700; color: var(--hub-text);">${arrPct}%</div>
-            </div>
-          </div>
-        `;
-      }
-
-      [nntCer, nntEer].forEach(el => {
-        if (el) el.addEventListener('input', updateNntCalc);
-      });
-
+      // Global search & other hub listeners initialized
     });
   </script>
+
+  <!-- GEMINI API KEY CONFIG MODAL -->
+  <div class="gemini-modal-backdrop" id="gemini-key-modal" role="dialog" aria-modal="true" aria-labelledby="gemini-modal-title">
+    <div class="gemini-modal-box">
+      <div class="gemini-modal-header">
+        <h3 class="gemini-modal-title" id="gemini-modal-title">
+          <i class="fa-solid fa-wand-magic-sparkles" style="color: #7c3aed;"></i> Cấu Hình Gemini API Key
+        </h3>
+        <button type="button" class="gemini-modal-close" id="btn-gemini-key-cancel" aria-label="Đóng modal">&times;</button>
+      </div>
+
+      <div class="gemini-modal-input-group">
+        <label class="gemini-modal-label" for="gemini-api-key-input">Google Gemini API Key (Cá nhân):</label>
+        <div style="position: relative; display: flex; align-items: center;">
+          <input type="password" id="gemini-api-key-input" class="gemini-modal-input" placeholder="AIzaSy..." autocomplete="off" style="padding-right: 42px;">
+          <button type="button" id="btn-toggle-key-visibility" title="Xem/Ẩn API Key" style="position: absolute; right: 8px; background: transparent; border: none; color: var(--hub-text-muted); cursor: pointer; padding: 4px 6px; font-size: 0.95rem;">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+        <div class="gemini-modal-desc">
+          Key được lưu trực tiếp tại trình duyệt (<code>localStorage</code>) theo <strong>Phương án A</strong>. Không qua máy chủ trung gian, bảo mật và miễn phí 100%.
+          <div style="margin-top: 4px;">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color: var(--hub-blue); font-weight: 700; text-decoration: underline; font-size: 0.75rem;">
+              👉 Nhấp vào đây để lấy Gemini API Key miễn phí tại Google AI Studio <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.68rem;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="gemini-key-status-text" style="font-size: 0.78rem; line-height: 1.45; margin-bottom: 0.85rem; padding: 0.6rem 0.8rem; border-radius: 8px; background: var(--hub-surface-2); border: 1px solid var(--hub-border);"></div>
+
+      <div class="gemini-modal-actions" style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <button type="button" class="btn-pubmed-action" id="btn-gemini-key-clear" style="color: #ef4444;" title="Xóa API Key khỏi máy">
+          <i class="fa-solid fa-trash-can"></i> Xóa Key
+        </button>
+        <div style="display: flex; gap: 0.5rem;">
+          <button type="button" class="btn-pubmed-action" id="btn-gemini-key-test" title="Kiểm tra kết nối với Google Gemini">
+            <i class="fa-solid fa-vial"></i> Kiểm tra Key
+          </button>
+          <button type="button" class="btn-pubmed-action btn-pubmed-primary" id="btn-gemini-key-save">
+            <i class="fa-solid fa-check"></i> Lưu & Kích hoạt AI
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

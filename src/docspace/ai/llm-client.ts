@@ -1,5 +1,6 @@
-import { AISettings, SBARRecord, LivingProtocol } from '../types';
+import { AISettings, SBARRecord, LivingProtocol, PersonalProtocol, ProtocolStep } from '../types';
 import { RAGChunk } from './rag-engine';
+import { redactMedicalContext, redactSoapRecord } from './phi-redactor';
 
 async function sendRequestToEndpoint(
   endpoint: string,
@@ -707,3 +708,101 @@ export async function testConnection(endpoint: string, model: string, apiKey?: s
   ];
   return sendRequestToEndpoint(endpoint, model, apiKey, provider, testMessages, 0.1);
 }
+
+export interface ExtractedProtocolData {
+  title: string;
+  specialty?: string;
+  steps: ProtocolStep[];
+  warnings?: string[];
+  references?: string[];
+}
+
+/**
+ * Trích xuất bản thảo Phác đồ Điều trị Cá nhân (Personal Protocol) từ Ca bệnh SOAP bằng AI
+ */
+export async function extractProtocolFromSOAP(
+  soapData: {
+    diagnosis: string;
+    sNotes?: string;
+    oNotes?: string;
+    aAssessment?: string;
+    pPlan?: string;
+    prescriptions?: any[];
+  },
+  settings: AISettings
+): Promise<ExtractedProtocolData> {
+  if (!settings.enabled || !settings.endpoint) {
+    throw new Error("AI chưa được cấu hình hoặc chưa bật. Vui lòng vào Cài đặt AI.");
+  }
+
+  // Bảo vệ PHI trước khi gửi AI
+  const cleanData = redactMedicalContext(soapData);
+
+  const rxList = (cleanData.prescriptions || []).map((rx: any) => 
+    `- ${rx.name} ${rx.dosage || ''} (${rx.route || 'Uống'}) ${rx.frequency || ''}`
+  ).join('\n');
+
+  const prompt = `Bạn là một Chuyên gia Cố vấn Y khoa cấp cao (Senior Clinical Consultant & EBM Expert).
+Nhiệm vụ của bạn là phân tích ca bệnh lâm sàng SOAP thực tế dưới đây và TRÍCH XUẤT/CHUẨN HÓA thành một PHÁC ĐỒ ĐIỀU TRỊ CÁ NHÂN (Personal Clinical Protocol) có cấu trúc mạch lạc, chuẩn y khoa:
+
+[THÔNG TIN CA BỆNH SOAP ĐÃ ẨN DANH]:
+- Chẩn đoán chính: ${cleanData.diagnosis || 'Chưa rõ'}
+- S (Hỏi bệnh & Triệu chứng): ${cleanData.sNotes || '—'}
+- O (Khám & Cận lâm sàng): ${cleanData.oNotes || '—'}
+- A (Đánh giá & Vấn đề chính): ${cleanData.aAssessment || '—'}
+- P (Kế hoạch xử trí & Y lệnh): ${cleanData.pPlan || '—'}
+${rxList ? `\n[ĐƠN THUỐC ĐÃ KÊ]:\n${rxList}` : ''}
+
+YÊU CẦU TRẢ VỀ:
+Chỉ trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm markdown \`\`\`json ở ngoài) với cấu trúc sau:
+{
+  "title": "Tên phác đồ súc tích và chuẩn y khoa (VD: Phác đồ Xử trí Cơn hen phế quản cấp trung bình - nặng)",
+  "specialty": "Tên chuyên khoa tương ứng (VD: Hô hấp, Cấp cứu, Tim mạch, Hồi sức, Nhi khoa...)",
+  "steps": [
+    { "order": 1, "text": "Bước 1: Đánh giá dấu hiệu nguy kịch, đảm bảo thông khí & thở oxy...", "isAlert": true },
+    { "order": 2, "text": "Bước 2: Phun khí dung thuốc giãn phế quản liều...", "isAlert": false },
+    { "order": 3, "text": "Bước 3: Sử dụng Corticosteroid toàn thân sớm...", "isAlert": false }
+  ],
+  "warnings": [
+    "Lưu ý chống chỉ định hoặc dấu hiệu cờ đỏ cần can thiệp đặt NKQ",
+    "Theo dõi sát nhịp tim và khí máu động mạch sau 30-60 phút"
+  ],
+  "references": [
+    "GINA 2024 / Hướng dẫn Bộ Y tế về Xử trí Hen",
+    "Surviving Sepsis Campaign / Hội Hồi sức Cấp cứu"
+  ]
+}`;
+
+  const messages = [
+    { role: 'system', content: 'You are an expert clinical medical consultant. You ONLY output raw, valid JSON object matching the requested schema.' },
+    { role: 'user', content: prompt }
+  ];
+
+  try {
+    const raw = await fetchOpenAI(messages, settings, 0.1);
+    const cleanJson = raw.replace(/```json/g, '').replace(/```/g, '').trim();
+    const parsed = JSON.parse(cleanJson);
+
+    // Validate structure
+    return {
+      title: parsed.title || `Phác đồ xử trí ${cleanData.diagnosis || 'Lâm sàng'}`,
+      specialty: parsed.specialty || 'Nội khoa',
+      steps: Array.isArray(parsed.steps) && parsed.steps.length > 0 
+        ? parsed.steps.map((s: any, idx: number) => ({
+            order: s.order || idx + 1,
+            text: String(s.text || ''),
+            isAlert: Boolean(s.isAlert)
+          }))
+        : [
+            { order: 1, text: 'Đánh giá sinh hiệu và tình trạng toàn thân (ABC)', isAlert: true },
+            { order: 2, text: `Xử trí theo kế hoạch: ${cleanData.pPlan || 'Theo dõi lâm sàng'}`, isAlert: false }
+          ],
+      warnings: Array.isArray(parsed.warnings) ? parsed.warnings.map(String) : [],
+      references: Array.isArray(parsed.references) ? parsed.references.map(String) : []
+    };
+  } catch (err: any) {
+    console.error('extractProtocolFromSOAP Error:', err);
+    throw new Error('Không thể trích xuất phác đồ từ ca SOAP: ' + err.message);
+  }
+}
+

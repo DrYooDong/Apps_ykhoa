@@ -1,0 +1,390 @@
+/* pubmed-guidelines-board.css - Styles for Daily PubMed Guidelines Board & Gemini AI Integration */
+
+.pubmed-board-section {
+  background: var(--hub-surface, #ffffff);
+  border: 1px solid var(--hub-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.1rem 1.35rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.pubmed-board-section.collapsed .pubmed-board-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+[data-theme="dark"] .pubmed-board-section {
+  background: var(--hub-surface, #1e293b);
+  border-color: var(--hub-border, #334155);
+}
+
+.pubmed-board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--hub-border, #e2e8f0);
+}
+
+.pubmed-board-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pubmed-board-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+  flex-shrink: 0;
+}
+
+.pubmed-board-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--hub-text, #0f172a);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.pubmed-board-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-gemini-active {
+  background: rgba(124, 58, 237, 0.12);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.badge-pubmed-direct {
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.3);
+}
+
+.pubmed-board-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-pubmed-action {
+  background: var(--hub-surface-2, #f8fafc);
+  border: 1px solid var(--hub-border, #e2e8f0);
+  color: var(--hub-text, #0f172a);
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.btn-pubmed-action:hover {
+  background: var(--hub-border, #e2e8f0);
+  transform: translateY(-1px);
+}
+
+.btn-pubmed-primary {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+}
+
+.btn-pubmed-primary:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+  color: #ffffff;
+}
+
+/* Guidelines Table / List */
+.pubmed-guidelines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.pubmed-guideline-card {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 0.95rem;
+  background: var(--hub-surface-2, #f8fafc);
+  border: 1px solid var(--hub-border, #e2e8f0);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+[data-theme="dark"] .pubmed-guideline-card {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(51, 65, 85, 0.8);
+}
+
+.pubmed-guideline-card:hover {
+  border-color: var(--hub-blue, #0284c7);
+  background: var(--hub-surface, #ffffff);
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.guideline-main-col {
+  min-width: 0;
+}
+
+.guideline-title-text {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--hub-text, #0f172a);
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.guideline-meta-sub {
+  font-size: 0.73rem;
+  color: var(--hub-text-muted, #64748b);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+/* Specialty Pill Badge */
+.guideline-spec-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.guideline-org-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--hub-blue, #0284c7);
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.71rem;
+  white-space: nowrap;
+}
+
+.guideline-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  color: var(--hub-text-muted, #64748b);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.guideline-action-btn {
+  color: var(--hub-blue, #0284c7);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  padding: 4px 7px;
+  border-radius: 6px;
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.pubmed-guideline-card:hover .guideline-action-btn {
+  background: rgba(2, 132, 199, 0.12);
+}
+
+/* Loading & Empty states */
+.pubmed-loading-skeleton {
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--hub-text-muted, #64748b);
+  font-size: 0.82rem;
+}
+
+.pubmed-spinner {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(2, 132, 199, 0.2);
+  border-top-color: var(--hub-blue, #0284c7);
+  border-radius: 50%;
+  animation: pubmedSpin 0.8s linear infinite;
+  margin-bottom: 0.4rem;
+}
+
+@keyframes pubmedSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Gemini Key Config Modal */
+.gemini-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+}
+
+.gemini-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.gemini-modal-box {
+  background: var(--hub-surface, #ffffff);
+  border: 1px solid var(--hub-border, #e2e8f0);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(20px);
+  transition: transform 0.25s ease;
+}
+
+.gemini-modal-backdrop.active .gemini-modal-box {
+  transform: translateY(0);
+}
+
+.gemini-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--hub-border, #e2e8f0);
+}
+
+.gemini-modal-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--hub-text, #0f172a);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gemini-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--hub-text-muted, #64748b);
+  cursor: pointer;
+}
+
+.gemini-modal-input-group {
+  margin-bottom: 1rem;
+}
+
+.gemini-modal-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--hub-text, #0f172a);
+  margin-bottom: 0.35rem;
+}
+
+.gemini-modal-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--hub-border, #e2e8f0);
+  background: var(--hub-surface-2, #f8fafc);
+  color: var(--hub-text, #0f172a);
+  font-size: 0.85rem;
+  font-family: monospace;
+  transition: border-color 0.2s ease;
+}
+
+.gemini-modal-input:focus {
+  outline: none;
+  border-color: var(--hub-blue, #0284c7);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.gemini-modal-desc {
+  font-size: 0.75rem;
+  color: var(--hub-text-muted, #64748b);
+  line-height: 1.45;
+  margin-top: 0.35rem;
+}
+
+.gemini-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+/* Responsive adjustment */
+@media (max-width: 640px) {
+  .pubmed-guideline-card {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  
+  .guideline-meta-sub {
+    justify-content: flex-start;
+  }
+  
+  .guideline-action-btn {
+    align-self: flex-start;
+    padding: 0;
+  }
+}
