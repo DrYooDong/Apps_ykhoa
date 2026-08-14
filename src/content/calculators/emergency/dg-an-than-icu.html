@@ -21,8 +21,8 @@
   <link rel="stylesheet" href="../../../../css/components/footer.css">
 
   <script src="../../../../js/main.js" defer></script>
-  <script src="../../../../components/header.js" defer></script>
-  <script src="../../../../components/footer.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
 
   <style>
     .assessment-grid {
@@ -419,122 +419,8 @@
   </div>
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
-
-  <script>
-    function calculateICU() {
-      // 1. RASS
-      const rass = parseInt(document.getElementById('rass-select').value);
-      const rassBadge = document.getElementById('res-rass-badge');
-      rassBadge.innerText = (rass > 0 ? '+' : '') + rass;
-      if (rass >= 2 || rass <= -4) {
-        rassBadge.className = 'score-badge badge-severe';
-      } else if (rass === 1 || rass === -3) {
-        rassBadge.className = 'score-badge badge-warn';
-      } else {
-        rassBadge.className = 'score-badge badge-normal';
-      }
-
-      // 2. CPOT
-      const cpotFace = parseInt(document.getElementById('cpot-face').value);
-      const cpotBody = parseInt(document.getElementById('cpot-body').value);
-      const cpotVent = parseInt(document.getElementById('cpot-vent').value);
-      const cpotTen = parseInt(document.getElementById('cpot-tension').value);
-      const cpotTotal = cpotFace + cpotBody + cpotVent + cpotTen;
-
-      const cpotBadge = document.getElementById('res-cpot-badge');
-      cpotBadge.innerText = cpotTotal + ' / 8';
-      if (cpotTotal >= 3) {
-        cpotBadge.className = 'score-badge badge-severe';
-      } else if (cpotTotal > 0) {
-        cpotBadge.className = 'score-badge badge-warn';
-      } else {
-        cpotBadge.className = 'score-badge badge-normal';
-      }
-
-      // 3. CAM-ICU
-      const f1 = document.getElementById('cam-f1').checked;
-      const f2 = document.getElementById('cam-f2').checked;
-      const f3 = document.getElementById('cam-f3').checked;
-      const f4 = document.getElementById('cam-f4').checked || (rass !== 0);
-
-      const isDelirium = (f1 && f2) && (f3 || f4);
-      const camBadge = document.getElementById('res-cam-badge');
-      if (isDelirium) {
-        camBadge.innerText = 'DƯƠNG TÍNH';
-        camBadge.className = 'score-badge badge-severe';
-      } else {
-        camBadge.innerText = 'Âm tính';
-        camBadge.className = 'score-badge badge-normal';
-      }
-
-      // 4. Bơm tiêm điện
-      const weight = parseFloat(document.getElementById('weight').value) || 60;
-      const drug = document.getElementById('drug-select').value;
-      const dose = parseFloat(document.getElementById('drug-dose-input').value) || 0;
-
-      let pumpRate = 0;
-      const drugRange = document.getElementById('drug-range-info');
-      const doseUnitLabel = document.getElementById('dose-unit-label');
-
-      if (drug === 'propofol') {
-        drugRange.innerText = 'Khuyến cáo: 5 – 50 mcg/kg/phút';
-        doseUnitLabel.innerText = 'mcg/kg/phút';
-        pumpRate = (dose * weight * 60) / 10000;
-      } else if (drug === 'midazolam') {
-        drugRange.innerText = 'Khuyến cáo: 0.02 – 0.2 mg/kg/giờ';
-        doseUnitLabel.innerText = 'mg/kg/giờ';
-        pumpRate = (dose * weight) / 1.0;
-      } else if (drug === 'fentanyl') {
-        drugRange.innerText = 'Khuyến cáo: 0.7 – 10 mcg/kg/giờ';
-        doseUnitLabel.innerText = 'mcg/kg/giờ';
-        pumpRate = (dose * weight) / 10.0;
-      } else if (drug === 'dexmed') {
-        drugRange.innerText = 'Khuyến cáo: 0.2 – 1.4 mcg/kg/giờ';
-        doseUnitLabel.innerText = 'mcg/kg/giờ';
-        pumpRate = (dose * weight) / 4.0;
-      }
-
-      document.getElementById('pump-rate-result').innerText = pumpRate.toFixed(1);
-
-      // 5. Khuyến cáo Can thiệp
-      const diagTitle = document.getElementById('diag-title');
-      const diagDesc = document.getElementById('diag-desc');
-      const diagBox = document.getElementById('diag-box');
-
-      let advice = [];
-      if (cpotTotal >= 3) advice.push('⚠️ <strong>CPOT ≥ 3:</strong> Ưu tiên tăng liều Giảm đau (Fentanyl) trước khi tăng an thần.');
-      if (rass > 0) advice.push('⚠️ <strong>RASS > 0:</strong> Kiểm tra cựa quậy/chống máy, cân nhắc tăng nhẹ an thần nếu đã đủ giảm đau.');
-      else if (rass < -3) advice.push('🚨 <strong>RASS ≤ -4:</strong> An thần quá sâu! Giảm 25-50% liều hoặc tạm ngưng an thần (SAT).');
-      if (isDelirium) advice.push('🧠 <strong>CAM-ICU (+):</strong> Ưu tiên Dexmedetomidine, hạn chế Benzodiazepine.');
-
-      if (advice.length === 0) {
-        diagTitle.innerText = '🎯 Hướng xử trí lâm sàng:';
-        diagDesc.innerHTML = 'Đạt mục tiêu an thần nông (RASS -2 đến 0) & không bị đau. Tiếp tục ngưng an thần hàng ngày (SAT) đánh giá cai máy.';
-        diagBox.style.borderLeftColor = 'var(--color-primary)';
-      } else {
-        diagTitle.innerText = '⚠️ Khuyến cáo can thiệp ICU:';
-        diagDesc.innerHTML = advice.join('<br/>');
-        diagBox.style.borderLeftColor = 'var(--color-rose, #e11d48)';
-      }
-    }
-
-    function resetAll() {
-      document.getElementById('rass-select').value = '0';
-      document.getElementById('cpot-face').value = '0';
-      document.getElementById('cpot-body').value = '0';
-      document.getElementById('cpot-vent').value = '0';
-      document.getElementById('cpot-tension').value = '0';
-      document.getElementById('cam-f1').checked = false;
-      document.getElementById('cam-f2').checked = false;
-      document.getElementById('cam-f3').checked = false;
-      document.getElementById('cam-f4').checked = false;
-      document.getElementById('weight').value = '60';
-      document.getElementById('drug-select').value = 'propofol';
-      document.getElementById('drug-dose-input').value = '20';
-      calculateICU();
-    }
-
-    document.addEventListener('DOMContentLoaded', calculateICU);
-  </script>
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script type="module" src="./dg-an-than-icu.ts"></script>
 </body>
 </html>

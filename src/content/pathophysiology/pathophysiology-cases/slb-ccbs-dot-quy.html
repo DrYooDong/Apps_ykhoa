@@ -28,8 +28,8 @@
     <link rel="stylesheet" href="../../../../css/components/toc.css">
 
     <!-- Scripts điều hướng hệ thống -->
-    <script src="../../../../components/header.js" defer></script>
-    <script src="../../../../components/footer.js" defer></script>
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
     <script src="../../../../js/main.js" defer></script>
     <script type="module" src="../physio-shared.ts"></script>
     <script src="../../../../js/toc.js" defer></script>
@@ -783,58 +783,7 @@
                         </div>
                     </div>
 
-                    <!-- Interactive Spetzler-Martin Calculator -->
-                    <div class="calc-box">
-                        <div class="calc-header">
-                            <div class="stroke-icon purple"><i class="fa-solid fa-layer-group"></i></div>
-                            <h3>Công cụ Tương tác: Thang điểm Phân loại Spetzler - Martin Đánh giá Độ khó & Nguy cơ AVM</h3>
-                        </div>
-
-                        <div class="calc-form-grid">
-                            <div class="calc-field">
-                                <label for="sm-size">1. Kích thước Búi Dị dạng (Nidus Size):</label>
-                                <select id="sm-size" onchange="calculateSpetzlerMartin()">
-                                    <option value="1">Nhỏ &lt; 3 cm (1 điểm)</option>
-                                    <option value="2">Trung bình 3 - 6 cm (2 điểm)</option>
-                                    <option value="3">Lớn &gt; 6 cm (3 điểm)</option>
-                                </select>
-                            </div>
-
-                            <div class="calc-field">
-                                <label for="sm-eloquence">2. Vùng Brain Chức năng (Eloquence):</label>
-                                <select id="sm-eloquence" onchange="calculateSpetzlerMartin()">
-                                    <option value="0">Không thuộc vùng chức năng (0 điểm)</option>
-                                    <option value="1">Thuộc vùng chức năng: Vận động, cảm giác, ngôn ngữ, thị giác, đồi thị, thân não... (1 điểm)</option>
-                                </select>
-                            </div>
-
-                            <div class="calc-field">
-                                <label for="sm-drainage">3. Dẫn lưu Tĩnh mạch (Venous Drainage):</label>
-                                <select id="sm-drainage" onchange="calculateSpetzlerMartin()">
-                                    <option value="0">Chỉ dẫn lưu tĩnh mạch nông (0 điểm)</option>
-                                    <option value="1">Có dẫn lưu tĩnh mạch sâu (1 điểm)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="calc-result-box">
-                            <div>
-                                <span style="font-size: 0.85rem; color: var(--color-text-muted); display: block;">SPETZLER-MARTIN GRADE</span>
-                                <div class="calc-score-val" id="sm-grade-display">Grade I</div>
-                            </div>
-                            <div>
-                                <span style="font-size: 0.85rem; color: var(--color-text-muted); display: block;">ĐỊNH HƯỚNG ĐIỀU TRỊ PHẪU THUẬT</span>
-                                <div style="font-size: 0.95rem; font-weight: 600; color: var(--color-text);" id="sm-desc-display">Nguy cơ phẫu thuật rất thấp, ưu tiên phẫu thuật cắt bỏ.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PHẦN VII: THUYÊN TẮC NGHỊCH LÝ QUA PFO -->
-                    <h2 id="pfo-esud-paradoxical" class="section-title">
-                        <span>Phần VII: Cơ chế Thuyên tắc Nghịch lý qua PFO & Đột quỵ Ẩn danh (ESUS)</span>
-                    </h2>
-
-                    <p>
+                    <!-- Interactive Spet                    <p>
                         Trong nhóm Đột quỵ thuyên tắc không rõ nguồn gốc (Embolic Stroke of Undetermined Source - ESUS), hai cơ chế huyết động quan trọng thường được phát hiện là luồng thông tim và mảng xơ vữa trên tim.
                     </p>
 
@@ -845,7 +794,7 @@
                                 <div class="stroke-title">Thuyên tắc Nghịch lý qua Lỗ Bầu Dục (PFO)</div>
                             </div>
                             <div class="stroke-desc">
-                                Huyết khối tĩnh mạch sâu (DVT) ở chân di chuyển về tim phải. Khi có sự tăng áp lực nhĩ phải (nghiệm pháp Valsalva, ho), cục huyết khối băng qua luồng thông Phải-Trái tại lỗ bầu dục (PFO) sang nhĩ trái, đi vào hệ động mạch brain.<br>
+                                Huyết khối tĩnh mạch sâu (DVT) ở chân di chuyển về tim phải. Khi có sự tăng áp lực nhĩ phải (nghiệm pháp Valsalva, ho), cục huyết khối băng qua luồng thông Phải-Trái tại lỗ bầu dục (PFO) sang nhĩ trái, đi vào hệ động mạch não.<br>
                                 <em>Đặc điểm:</em> Đây là <strong>huyết khối đỏ (red thrombus)</strong> giàu Fibrin và hồng cầu, cực kỳ nhạy cảm với Thuốc chống đông đường uống (OACs) hơn là thuốc kháng tiểu cầu.
                             </div>
                         </div>
@@ -867,7 +816,7 @@
                     </h2>
 
                     <p>
-                        Sa sút trí tuệ do nguyên nhân mạch máu (Vascular Dementia - VaD) là thể sa sút trí tuệ phổ biến thứ hai sau Alzheimer, xảy ra do tình trạng sụt giảm lưu lượng máu brain kéo dài hoặc các tổn thương nhồi máu rải rác hủy hoại mạng lưới thần kinh nhận thức.
+                        Sa sút trí tuệ do nguyên nhân mạch máu (Vascular Dementia - VaD) là thể sa sút trí tuệ phổ biến thứ hai sau Alzheimer, xảy ra do tình trạng sụt giảm lưu lượng máu não kéo dài hoặc các tổn thương nhồi máu rải rác hủy hoại mạng lưới thần kinh nhận thức.
                     </p>
 
                     <div class="stroke-grid">
@@ -877,7 +826,7 @@
                                 <div class="stroke-title">1. Nhồi máu Đa ổ & Ổ khuyết (Multi-infarct Dementia)</div>
                             </div>
                             <div class="stroke-desc">
-                                Tổn thương tích lũy qua nhiều biến cố nhồi máu brain nhỏ hoặc chảy máu vi thể. Sự tổn thương cộng dồn mạng lưới dải sợi trục và nhu mô brain vượt quá ngưỡng bù trừ dẫn đến suy giảm nhận thức bậc cao.
+                                Tổn thương tích lũy qua nhiều biến cố nhồi máu não nhỏ hoặc chảy máu vi thể. Sự tổn thương cộng dồn mạng lưới dải sợi trục và nhu mô não vượt quá ngưỡng bù trừ dẫn đến suy giảm nhận thức bậc cao.
                             </div>
                         </div>
 
@@ -887,7 +836,7 @@
                                 <div class="stroke-title">2. Nhồi máu Vị trí Chiến lược (Strategic Infarct)</div>
                             </div>
                             <div class="stroke-desc">
-                                Sa sút trí tuệ khởi phát đột ngột chỉ sau một tổn thương nhồi máu đơn độc nhưng xảy ra tại vùng brain chức năng cốt lõi cho trí nhớ và điều hành như: <strong>Đồi thị (Thalamus)</strong>, hồi góc (Angular gyrus), hoặc caudate nucleus.
+                                Sa sút trí tuệ khởi phát đột ngột chỉ sau một tổn thương nhồi máu đơn độc nhưng xảy ra tại vùng não chức năng cốt lõi cho trí nhớ và điều hành như: <strong>Đồi thị (Thalamus)</strong>, hồi góc (Angular gyrus), hoặc caudate nucleus.
                             </div>
                         </div>
 
@@ -904,7 +853,7 @@
                         <div class="stroke-card">
                             <div class="stroke-card-header">
                                 <div class="stroke-icon emerald"><i class="fa-solid fa-gauge-low"></i></div>
-                                <div class="stroke-title">4. Giảm Tưới Máu Brain Mạn tính (Chronic Hypoperfusion)</div>
+                                <div class="stroke-title">4. Giảm Tưới Máu Não Mạn tính (Chronic Hypoperfusion)</div>
                             </div>
                             <div class="stroke-desc">
                                 Sự sụt giảm kéo dài lưu lượng CBF do suy tim, hẹp mạch cảnh 2 bên mạn tính làm nơ-ron luôn trong tình trạng đói năng lượng, gây chết tế bào từ từ và kích hoạt tổng hợp bất thường các protein gây thoái hóa thần kinh.
@@ -916,7 +865,7 @@
                     <div class="ref-section">
                         <h3>📚 Tài liệu Tham khảo Chính (Standard AMA Citations)</h3>
                         <ul class="ref-list">
-                            <li><span>1. Ministry of Health Vietnam.</span> <em>Hướng dẫn chẩn đoán và điều trị đột quỵ brain</em> (Decision 3312/QĐ-BYT). QD-3312.pdf.</li>
+                            <li><span>1. Ministry of Health Vietnam.</span> <em>Hướng dẫn chẩn đoán và điều trị đột quỵ não</em> (Decision 3312/QĐ-BYT). QD-3312.pdf.</li>
                             <li><span>2. Neuroprotective agents in acute ischemic stroke.</span> 100437.pdf.</li>
                             <li><span>3. Comprehensive management of ischemic stroke with traditional Chinese medicine: a new exploration.</span> <em>Front Med.</em> fmed-13-1765941.pdf.</li>
                             <li><span>4. AHA/ASA Guidelines.</span> <em>2022 Guideline for the Management of Patients With Spontaneous Intracerebral Hemorrhage.</em> 2022-Guideline-for-the-Management-of-Patients-With-Spontaneous-ICH-Clinical-Update-Slides.pdf.</li>
@@ -933,77 +882,6 @@
     </div>
 
     <!-- SCRIPT TƯƠNG TÁC TÍNH TOÁN & CHUYỂN TAB -->
-    <script>
-        // Interactive Tabs Switcher
-        function switchTab(event, tabId) {
-            const tabs = document.querySelectorAll('.interactive-tabs .tab-btn');
-            const contents = document.querySelectorAll('.tab-content');
-
-            tabs.forEach(tab => tab.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
-
-            event.currentTarget.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
-
-        // PHASES Score Calculator
-        function calculatePHASES() {
-            const p = parseInt(document.getElementById('phases-p').value);
-            const h = parseInt(document.getElementById('phases-h').value);
-            const a = parseInt(document.getElementById('phases-a').value);
-            const s1 = parseInt(document.getElementById('phases-s1').value);
-            const e = parseInt(document.getElementById('phases-e').value);
-            const s2 = parseInt(document.getElementById('phases-s2').value);
-
-            const score = p + h + a + s1 + e + s2;
-            document.getElementById('phases-score-display').innerText = score + ' Điểm';
-
-            // Risk mapping
-            let risk = '0.4%';
-            let badgeText = 'Nguy cơ thấp';
-            let badgeClass = 'low';
-
-            if (score <= 2) { risk = '0.4%'; badgeText = 'Nguy cơ rất thấp'; badgeClass = 'low'; }
-            else if (score <= 4) { risk = '0.7%'; badgeText = 'Nguy cơ thấp'; badgeClass = 'low'; }
-            else if (score <= 5) { risk = '1.0%'; badgeText = 'Nguy cơ trung bình'; badgeClass = 'medium'; }
-            else if (score <= 6) { risk = '1.4%'; badgeText = 'Nguy cơ trung bình'; badgeClass = 'medium'; }
-            else if (score <= 7) { risk = '2.4%'; badgeText = 'Nguy cơ trung bình-cao'; badgeClass = 'medium'; }
-            else if (score <= 8) { risk = '3.2%'; badgeText = 'Nguy cơ cao'; badgeClass = 'high'; }
-            else if (score <= 9) { risk = '4.3%'; badgeText = 'Nguy cơ cao'; badgeClass = 'high'; }
-            else if (score <= 11) { risk = '7.2%'; badgeText = 'Nguy cơ rất cao'; badgeClass = 'high'; }
-            else { risk = '≥ 10.0%'; badgeText = 'Nguy cơ cực kỳ cao'; badgeClass = 'high'; }
-
-            document.getElementById('phases-risk-display').innerText = risk;
-
-            const badgeEl = document.getElementById('phases-badge');
-            badgeEl.className = 'calc-risk-badge ' + badgeClass;
-            badgeEl.innerText = badgeText;
-        }
-
-        // Spetzler-Martin Grade Calculator
-        function calculateSpetzlerMartin() {
-            const size = parseInt(document.getElementById('sm-size').value);
-            const elo = parseInt(document.getElementById('sm-eloquence').value);
-            const drain = parseInt(document.getElementById('sm-drainage').value);
-
-            const gradeNum = size + elo + drain;
-            const grades = ['Grade I', 'Grade II', 'Grade III', 'Grade IV', 'Grade V'];
-            const gradeStr = grades[gradeNum - 1] || 'Grade V';
-
-            document.getElementById('sm-grade-display').innerText = gradeStr;
-
-            let desc = '';
-            if (gradeNum === 1 || gradeNum === 2) {
-                desc = 'Nguy cơ phẫu thuật thấp ( Grade ' + gradeNum + '). Ưu tiên phẫu thuật vi phẫu cắt bỏ thành công cao.';
-            } else if (gradeNum === 3) {
-                desc = 'Độ phức tạp trung bình (Grade III). Cần phối hợp nút mạch tiền phẫu, xạ phẫu (Gamma Knife) hoặc phẫu thuật kết hợp.';
-            } else {
-                desc = 'Nguy cơ phẫu thuật cực kỳ cao (Grade ' + gradeNum + '). Nguy cơ di chứng thần kinh nặng, thường bảo tồn hoặc xạ phẫu gia tăng.';
-            }
-
-            document.getElementById('sm-desc-display').innerText = desc;
-        }
-    </script>
+    <script type="module" src="./slb-ccbs-dot-quy.ts"></script>
 </body>
-
 </html>

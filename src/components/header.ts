@@ -1,74 +1,89 @@
 /**
- * Reusable Header UI Component
- * Tạo và hiển thị Header của CliniPortal, bao gồm nút Dark Mode, Tìm kiếm nhanh và điều hướng.
+ * Header Dynamic Loader & Component (header.ts)
+ * Path: src/components/header.ts
+ * CliniPortal Framework
  */
 
-export interface HeaderConfig {
-  title?: string;
-  showSearch?: boolean;
-  onSearch?: (query: string) => void;
-  onToggleTheme?: (theme: 'light' | 'dark') => void;
+export function goBack(): void {
+  if (window.history.length > 1 && document.referrer && !document.referrer.includes(window.location.pathname)) {
+    window.history.back();
+  } else {
+    const holder = document.getElementById('header-placeholder');
+    const headerPath = holder ? holder.dataset.headerPath : '';
+    if (headerPath) {
+      const depth = (headerPath.match(/\.\.\//g) || []).length;
+      window.location.href = '../'.repeat(depth) + 'index.html';
+    } else {
+      window.location.href = 'index.html';
+    }
+  }
 }
 
-export class CliniHeader {
-  private element: HTMLElement | null = null;
-  private config: HeaderConfig;
-
-  constructor(config: HeaderConfig = {}) {
-    this.config = {
-      title: 'CliniPortal',
-      showSearch: true,
-      ...config,
-    };
+export function getProjectRootPrefix(headerPath?: string): string {
+  if (!headerPath) return '';
+  const idx = headerPath.lastIndexOf('components/');
+  if (idx !== -1) {
+    return headerPath.substring(0, idx);
   }
+  const depth = (headerPath.match(/\.\.\//g) || []).length;
+  return '../'.repeat(depth);
+}
 
-  /**
-   * Render Header vào một container hoặc mount tự động vào <header id="header">
-   */
-  public mount(targetSelector: string = '#header'): void {
-    const target = document.querySelector(targetSelector);
-    if (!target) {
-      console.warn(`[CliniHeader] Container ${targetSelector} not found.`);
+export function fixHeaderLinks(holder: HTMLElement, projectRoot: string): void {
+  if (!holder) return;
+  const links = holder.querySelectorAll<HTMLAnchorElement>('a');
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('javascript:')) return;
+
+    if (href.startsWith('#')) {
+      const root = projectRoot || './';
+      link.setAttribute('href', root + 'index.html' + href);
+    } else {
+      const cleanHref = href.replace(/^(\.\.\/|\.\/|\/)+/, '');
+      link.setAttribute('href', projectRoot + cleanHref);
+    }
+  });
+}
+
+export async function loadHeader(): Promise<void> {
+  try {
+    if (typeof window !== 'undefined' && (window.self !== window.top || window.location.search.includes('embedded=1'))) {
+      document.documentElement.classList.add('in-iframe');
+      document.documentElement.setAttribute('data-embedded', 'true');
       return;
     }
-
-    target.innerHTML = `
-      <div class="clini-header-container">
-        <div class="clini-header-logo">
-          <a href="./index.html">🏥 ${this.config.title}</a>
-        </div>
-        ${this.config.showSearch ? `
-          <div class="clini-header-search">
-            <input type="text" id="clini-quick-search-input" placeholder="Tìm kiếm công cụ, bài viết, triệu chứng... (< 5ms)" />
-          </div>
-        ` : ''}
-        <div class="clini-header-actions">
-          <button id="clini-theme-toggle" class="btn-theme" title="Chuyển đổi giao diện Sáng/Tối">🌓</button>
-        </div>
-      </div>
-    `;
-
-    this.bindEvents(target as HTMLElement);
+  } catch (e) {
+    document.documentElement.classList.add('in-iframe');
+    return;
   }
 
-  private bindEvents(target: HTMLElement): void {
-    const themeBtn = target.querySelector('#clini-theme-toggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        if (this.config.onToggleTheme) {
-          this.config.onToggleTheme(currentTheme);
-        }
-      });
-    }
+  const holder = document.getElementById('header-placeholder');
+  if (!holder) return;
 
-    const searchInput = target.querySelector('#clini-quick-search-input') as HTMLInputElement;
-    if (searchInput && this.config.onSearch) {
-      searchInput.addEventListener('input', (e) => {
-        const val = (e.target as HTMLInputElement).value;
-        this.config.onSearch!(val);
-      });
-    }
+  const headerPath = holder.dataset.headerPath;
+  if (!headerPath) return;
+
+  try {
+    const res = await fetch(headerPath);
+    if (!res.ok) throw new Error(`Cannot load header: ${res.status}`);
+    const html = await res.text();
+    holder.innerHTML = html;
+    const projectRoot = getProjectRootPrefix(headerPath);
+    fixHeaderLinks(holder, projectRoot);
+  } catch (err) {
+    console.error('[header.ts]', err);
   }
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadHeader);
+  } else {
+    loadHeader();
+  }
+}
+
+if (typeof window !== 'undefined') {
+  (window as any).goBack = goBack;
 }

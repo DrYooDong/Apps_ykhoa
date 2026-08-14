@@ -21,8 +21,8 @@
   <link rel="stylesheet" href="../../../../css/components/footer.css">
 
   <script src="../../../../js/main.js" defer></script>
-  <script src="../../../../components/header.js" defer></script>
-  <script src="../../../../components/footer.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
 
   <style>
     .assessment-grid {
@@ -300,115 +300,8 @@
   </div>
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
-
-  <script>
-    function calculateAnemia() {
-      const gender = document.getElementById('gender').value;
-      const hb = parseFloat(document.getElementById('hb').value) || 12;
-      const hct = parseFloat(document.getElementById('hct').value) || 36;
-      const mcv = parseFloat(document.getElementById('mcv').value) || 85;
-      const mch = parseFloat(document.getElementById('mch').value) || 28;
-      const retic = parseFloat(document.getElementById('retic').value) || 1.0;
-      const jaundice = document.getElementById('jaundice').value;
-
-      // 1. Severity
-      const normalHb = gender === 'male' ? 13.0 : 12.0;
-      const sevBadge = document.getElementById('res-severity-badge');
-
-      if (hb >= normalHb) {
-        sevBadge.innerText = 'Không thiếu máu';
-        sevBadge.className = 'score-badge badge-normal';
-      } else if (hb >= 11.0) {
-        sevBadge.innerText = 'Nhẹ (≥11)';
-        sevBadge.className = 'score-badge badge-info';
-      } else if (hb >= 8.0) {
-        sevBadge.innerText = 'TRUNG BÌNH (8-10.9)';
-        sevBadge.className = 'score-badge badge-warn';
-      } else if (hb >= 6.5) {
-        sevBadge.innerText = 'NẶNG (6.5-7.9)';
-        sevBadge.className = 'score-badge badge-severe';
-      } else {
-        sevBadge.innerText = 'RẤT NẶNG (<6.5)';
-        sevBadge.className = 'score-badge badge-severe';
-      }
-
-      // 2. Morphology
-      const morphBadge = document.getElementById('res-morph-badge');
-      let morphType = 'normocytic';
-
-      if (mcv < 80) {
-        morphType = 'microcytic';
-        morphBadge.innerText = mch < 27 ? 'Nhỏ Nhược sắc' : 'Nhỏ Đẳng sắc';
-        morphBadge.className = 'score-badge badge-warn';
-      } else if (mcv > 100) {
-        morphType = 'macrocytic';
-        morphBadge.innerText = 'Hồng cầu TO';
-        morphBadge.className = 'score-badge badge-info';
-      } else {
-        morphType = 'normocytic';
-        morphBadge.innerText = 'Đẳng sắc Đẳng bào';
-        morphBadge.className = 'score-badge badge-normal';
-      }
-
-      // 3. RPI Calculation
-      const targetHct = gender === 'male' ? 45.0 : 40.0;
-      let matFactor = 1.0;
-      if (hct < 15) matFactor = 2.5;
-      else if (hct < 25) matFactor = 2.0;
-      else if (hct < 35) matFactor = 1.5;
-      else matFactor = 1.0;
-
-      const correctedRetic = retic * (hct / targetHct);
-      const rpi = correctedRetic / matFactor;
-
-      const rpiBadge = document.getElementById('res-rpi-badge');
-      rpiBadge.innerText = `${rpi.toFixed(2)} (${rpi >= 2 ? '≥ 2' : '< 2'})`;
-      rpiBadge.className = rpi >= 2 ? 'score-badge badge-severe' : 'score-badge badge-info';
-
-      // 4. Recommendations
-      const diagTitle = document.getElementById('diag-title');
-      const diagDesc = document.getElementById('diag-desc');
-      const diagBox = document.getElementById('diag-box');
-
-      let tests = [];
-
-      if (morphType === 'microcytic') {
-        diagTitle.innerText = '🔬 Hướng tiếp cận Thiếu máu Hồng cầu Nhỏ:';
-        tests.push('1. <strong>Bộ chỉ số Sắt:</strong> Ferritin, Sắt huyết thanh, TIBC, TSAT. Ferritin &lt; 30 ng/mL → <strong>Thiếu máu Thiếu Sắt (IDA)</strong>.');
-        tests.push('2. <strong>Điện di Hemoglobin:</strong> Tìm <strong>Thalassemia</strong> (Mentzer Index MCV/RBC &lt; 13).');
-      } else if (morphType === 'macrocytic') {
-        diagTitle.innerText = '🔬 Hướng tiếp cận Thiếu máu Hồng cầu To:';
-        tests.push('1. Định lượng <strong>Vitamin B12 &amp; Acid Folic</strong>.');
-        tests.push('2. Kiểm tra Chức năng Giáp (TSH, FT4), Chức năng Gan &amp; Tiền sử rượu.');
-      } else {
-        if (rpi >= 2 || jaundice === 'yes') {
-          diagTitle.innerText = '🚨 Thiếu máu Tán huyết / Mất máu (RPI ≥ 2):';
-          tests.push('1. <strong>Test Coombs trực tiếp &amp; gián tiếp</strong> (AIHA).');
-          tests.push('2. Bilirubin gián tiếp, LDH, Haptoglobin &amp; Phết máu ngoại vi tìm Schistocytes.');
-        } else {
-          diagTitle.innerText = '🔬 Giảm sản xuất tại tủy (RPI < 2):';
-          tests.push('1. Đánh giá Thận: Creatinine, eGFR, Erythropoietin (EPO).');
-          tests.push('2. Nếu giảm 2-3 dòng tế bào máu → <strong>Tủy đồ &amp; Sinh thiết tủy</strong>.');
-        }
-      }
-
-      diagDesc.innerHTML = tests.join('<br/>');
-      diagBox.style.borderLeftColor = rpi >= 2 ? 'var(--color-rose, #e11d48)' : 'var(--color-primary)';
-    }
-
-    function resetForm() {
-      document.getElementById('gender').value = 'male';
-      document.getElementById('hb').value = '8.5';
-      document.getElementById('hct').value = '26';
-      document.getElementById('mcv').value = '72';
-      document.getElementById('mch').value = '23';
-      document.getElementById('retic').value = '1.2';
-      document.getElementById('bleeding-history').value = 'none';
-      document.getElementById('jaundice').value = 'none';
-      calculateAnemia();
-    }
-
-    document.addEventListener('DOMContentLoaded', calculateAnemia);
-  </script>
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script type="module" src="./dg-thieu-mau.ts"></script>
 </body>
 </html>

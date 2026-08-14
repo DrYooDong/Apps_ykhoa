@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi" data-theme="light">
 
 <head>
@@ -507,37 +507,9 @@
 
   <!-- JS Core -->
   <script src="../../../../../../js/main.js" defer></script>
-  <script src="../../../../../../components/header.js" defer></script>
-  <script src="../../../../../../components/footer.js" defer></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const quizBtns = document.querySelectorAll('.quiz-opt-btn');
-      const explanation = document.getElementById('quizExplanation');
-
-      quizBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const isCorrect = btn.getAttribute('data-correct') === 'true';
-          quizBtns.forEach(b => {
-            b.style.pointerEvents = 'none';
-            if (b.getAttribute('data-correct') === 'true') {
-              b.style.background = 'rgba(16,185,129,0.2)';
-              b.style.borderColor = 'var(--color-success)';
-            }
-          });
-
-          if (isCorrect) {
-            btn.style.background = 'rgba(16,185,129,0.3)';
-          } else {
-            btn.style.background = 'rgba(225,29,72,0.2)';
-            btn.style.borderColor = 'var(--color-danger)';
-          }
-
-          if (explanation) explanation.style.display = 'block';
-        });
-      });
-    });
-  </script>
+  <script type="module" src="../../../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../../../components/footer.ts" defer></script>
+  <script type="module" src="./tc-sot.ts"></script>
   <script type="module" src="../../../approaches-shared.ts"></script>
 </body>
 

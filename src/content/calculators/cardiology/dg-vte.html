@@ -21,8 +21,8 @@
   <link rel="stylesheet" href="../../../../css/components/footer.css">
 
   <script src="../../../../js/main.js" defer></script>
-  <script src="../../../../components/header.js" defer></script>
-  <script src="../../../../components/footer.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
 
   <style>
     .assessment-grid {
@@ -333,92 +333,8 @@
   </div>
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
-
-  <script>
-    let activeTab = 'dvt';
-
-    function switchTab(tab) {
-      activeTab = tab;
-      document.getElementById('tab-dvt').classList.toggle('active', tab === 'dvt');
-      document.getElementById('tab-pe').classList.toggle('active', tab === 'pe');
-
-      document.getElementById('panel-dvt').style.display = tab === 'dvt' ? 'block' : 'none';
-      document.getElementById('panel-pe').style.display = tab === 'pe' ? 'block' : 'none';
-
-      document.getElementById('score-name-lbl').innerText = tab === 'dvt' ? 'Wells DVT Score:' : 'Wells PE Score:';
-      calculateVTE();
-    }
-
-    function calculateVTE() {
-      let score = 0;
-
-      if (activeTab === 'dvt') {
-        document.querySelectorAll('.chk-dvt:checked').forEach(cb => {
-          score += parseFloat(cb.getAttribute('data-score'));
-        });
-
-        const scoreBadge = document.getElementById('vte-score-badge');
-        scoreBadge.innerText = `${score} điểm`;
-
-        const probBadge = document.getElementById('vte-prob-badge');
-        const diagTitle = document.getElementById('diag-title');
-        const diagDesc = document.getElementById('diag-desc');
-        const diagBox = document.getElementById('diag-box');
-
-        if (score <= 0) {
-          probBadge.innerText = 'THẤP (≤5%)';
-          probBadge.className = 'score-badge badge-normal';
-          diagTitle.innerText = '🟢 Xác suất Thấp (Low Prob):';
-          diagDesc.innerHTML = 'Chỉ định <strong>D-Dimer định lượng</strong>. Nếu D-Dimer âm tính (&lt; 500 ng/mL) → <strong>LOẠI TRỪ DVT</strong> an toàn. Nếu dương tính → Siêu âm Doppler.';
-          diagBox.style.borderLeftColor = 'var(--color-success, #16a34a)';
-        } else if (score === 1 || score === 2) {
-          probBadge.innerText = 'TRUNG BÌNH (17%)';
-          probBadge.className = 'score-badge badge-warn';
-          diagTitle.innerText = '🟡 Xác suất Trung bình (Mod Prob):';
-          diagDesc.innerHTML = 'Làm <strong>D-Dimer định lượng</strong> hoặc Siêu âm Doppler. D-Dimer âm tính → Loại trừ DVT. D-Dimer dương tính → Siêu âm ngay.';
-          diagBox.style.borderLeftColor = 'var(--color-amber, #d97706)';
-        } else {
-          probBadge.innerText = 'CAO (≥53%)';
-          probBadge.className = 'score-badge badge-severe';
-          diagTitle.innerText = '🚨 Xác suất CAO (High Prob):';
-          diagDesc.innerHTML = 'Chỉ định <strong>SIÊU ÂM DOPPLER TĨNH MẠCH CẮNG ĐÙI KHẨN</strong>. Nếu siêu âm dương tính: Khởi động kháng đông ngay (LMWH/DOACs).';
-          diagBox.style.borderLeftColor = 'var(--color-rose, #e11d48)';
-        }
-      } else {
-        document.querySelectorAll('.chk-pe:checked').forEach(cb => {
-          score += parseFloat(cb.getAttribute('data-score'));
-        });
-
-        const scoreBadge = document.getElementById('vte-score-badge');
-        scoreBadge.innerText = `${score.toFixed(1)} điểm`;
-
-        const probBadge = document.getElementById('vte-prob-badge');
-        const diagTitle = document.getElementById('diag-title');
-        const diagDesc = document.getElementById('diag-desc');
-        const diagBox = document.getElementById('diag-box');
-
-        if (score <= 4.0) {
-          probBadge.innerText = 'Ít khả năng PE (≤4)';
-          probBadge.className = 'score-badge badge-normal';
-          diagTitle.innerText = '🟢 PE Không khả năng (PE Unlikely):';
-          diagDesc.innerHTML = 'Làm <strong>D-Dimer định lượng High-sensitivity</strong>. D-Dimer âm tính (theo tuổi: Tuổi x 10 với tuổi &gt;50) → LOẠI TRỪ PE. Nếu dương tính → Chụp CTPA.';
-          diagBox.style.borderLeftColor = 'var(--color-success, #16a34a)';
-        } else {
-          probBadge.innerText = 'Nhiều khả năng PE (>4)';
-          probBadge.className = 'score-badge badge-severe';
-          diagTitle.innerText = '🚨 PE Rất khả năng (PE Likely):';
-          diagDesc.innerHTML = '<strong>CHỤP CT CẮT LỚP VI TÍNH ĐỘNG MẠCH PHỔI (CTPA) KHẨN CẤP</strong>. Cân nhắc tiêm LMWH Enoxaparin 1mg/kg x 2 lần/ngày trong lúc chờ CTPA.';
-          diagBox.style.borderLeftColor = 'var(--color-rose, #e11d48)';
-        }
-      }
-    }
-
-    function resetForm() {
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-      calculateVTE();
-    }
-
-    document.addEventListener('DOMContentLoaded', calculateVTE);
-  </script>
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script type="module" src="./dg-vte.ts"></script>
 </body>
 </html>

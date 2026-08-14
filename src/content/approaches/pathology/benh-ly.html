@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CliniPortal – He thong tiep can chan doan, dieu tri va luu do benh ly y khoa chuyen nghiep">
+  <meta name="description" content="CliniPortal – Hệ thống tiếp cận chẩn đoán, điều trị và lưu đồ bệnh lý y khoa chuyên nghiệp">
   <title>Pathology Matrix – CliniPortal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
   <script src="../../../../js/main.js" defer></script>
   <script src="../../../../js/core/mui-port.js" defer></script>
   <link rel="stylesheet" href="../../../../css/components/header.css">
-  <script src="../../../../components/header.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
 </head>
 
 <body class="pathology-workspace-body">
@@ -39,7 +39,7 @@
           <div class="pm-stat-icon blue"><i class="fa-solid fa-book-medical"></i></div>
           <div class="pm-stat-body">
             <span class="pm-stat-value" id="totalDiseasesCount">0</span>
-            <span class="pm-stat-label">Benh ly</span>
+            <span class="pm-stat-label">Bệnh lý</span>
           </div>
         </div>
         <div class="pm-stat-sep"></div>
@@ -47,7 +47,7 @@
           <div class="pm-stat-icon green"><i class="fa-solid fa-diagram-project"></i></div>
           <div class="pm-stat-body">
             <span class="pm-stat-value" id="flowchartsCount">0</span>
-            <span class="pm-stat-label">Co luu do</span>
+            <span class="pm-stat-label">Có lưu đồ</span>
           </div>
         </div>
         <div class="pm-stat-sep"></div>
@@ -55,14 +55,12 @@
           <div class="pm-stat-icon amber"><i class="fa-solid fa-star"></i></div>
           <div class="pm-stat-body">
             <span class="pm-stat-value" id="savedDiseasesCount">0</span>
-            <span class="pm-stat-label">Da luu</span>
+            <span class="pm-stat-label">Đã lưu</span>
           </div>
         </div>
       </div>
 
-      <!-- ══════════════════════════════════════════════════════
-           QUICK ACCESS — TIÊU CHUẨN CHẨN ĐOÁN
-      ══════════════════════════════════════════════════════ -->
+      <!-- QUICK ACCESS — TIÊU CHUẨN CHẨN ĐOÁN -->
       <div style="
         display: flex;
         align-items: center;
@@ -117,41 +115,41 @@
         <div class="pm-filter-left">
           <div class="pm-seg-control">
             <button class="pm-seg-btn active" id="filter-all" onclick="applyFilter('all','all')">
-              <i class="fa-solid fa-border-all"></i> Tat ca
+              <i class="fa-solid fa-border-all"></i> Tất cả
             </button>
             <button class="pm-seg-btn" id="filter-chan-doan" onclick="applyFilter('cat','chan-doan')">
-              <i class="fa-solid fa-stethoscope"></i> Chan doan
+              <i class="fa-solid fa-stethoscope"></i> Chẩn đoán
             </button>
             <button class="pm-seg-btn" id="filter-dieu-tri" onclick="applyFilter('cat','dieu-tri')">
-              <i class="fa-solid fa-pills"></i> Dieu tri
+              <i class="fa-solid fa-pills"></i> Điều trị
             </button>
             <div class="pm-seg-divider"></div>
             <button class="pm-seg-btn" id="filter-saved" onclick="applyFilter('saved','')">
-              <i class="fa-solid fa-bookmark"></i> Da luu
+              <i class="fa-solid fa-bookmark"></i> Đã lưu
             </button>
             <button class="pm-seg-btn" id="filter-has-flow" onclick="applyFilter('has-flow','')">
-              <i class="fa-solid fa-network-wired"></i> Co luu do
+              <i class="fa-solid fa-network-wired"></i> Có lưu đồ
             </button>
           </div>
         </div>
         <div class="pm-filter-right">
           <div class="pm-sort-wrap">
-            <button class="pm-control-btn" id="btn-sort" onclick="toggleSortMenu()" title="Sap xep">
+            <button class="pm-control-btn" id="btn-sort" onclick="toggleSortMenu()" title="Sắp xếp">
               <i class="fa-solid fa-arrow-up-wide-short"></i>
-              <span id="sort-label">Moi nhat</span>
+              <span id="sort-label">Mới nhất</span>
               <i class="fa-solid fa-chevron-down pm-chevron"></i>
             </button>
             <div class="pm-sort-menu" id="sortMenu">
-              <button class="pm-sort-item active" id="sort-newest" onclick="handleSort('newest')"><i class="fa-regular fa-clock"></i> Moi nhat</button>
-              <button class="pm-sort-item" id="sort-name-az" onclick="handleSort('name-az')"><i class="fa-solid fa-arrow-down-a-z"></i> Ten A-Z</button>
-              <button class="pm-sort-item" id="sort-specialty" onclick="handleSort('specialty')"><i class="fa-solid fa-layer-group"></i> Theo chuyen khoa</button>
+              <button class="pm-sort-item active" id="sort-newest" onclick="handleSort('newest')"><i class="fa-regular fa-clock"></i> Mới nhất</button>
+              <button class="pm-sort-item" id="sort-name-az" onclick="handleSort('name-az')"><i class="fa-solid fa-arrow-down-a-z"></i> Tên A-Z</button>
+              <button class="pm-sort-item" id="sort-specialty" onclick="handleSort('specialty')"><i class="fa-solid fa-layer-group"></i> Theo chuyên khoa</button>
             </div>
           </div>
           <div class="pm-view-toggle">
-            <button class="pm-view-btn active" id="view-grid" onclick="setViewMode('grid')" title="Dang luoi">
+            <button class="pm-view-btn active" id="view-grid" onclick="setViewMode('grid')" title="Dạng lưới">
               <i class="fa-solid fa-grid-2"></i>
             </button>
-            <button class="pm-view-btn" id="view-list" onclick="setViewMode('list')" title="Dang danh sach">
+            <button class="pm-view-btn" id="view-list" onclick="setViewMode('list')" title="Dạng danh sách">
               <i class="fa-solid fa-list"></i>
             </button>
           </div>
@@ -169,10 +167,10 @@
       <!-- EMPTY STATE -->
       <div class="pm-empty-state" id="empty-state" style="display:none;">
         <div class="pm-empty-icon">&#x1F5C2;&#xFE0F;</div>
-        <h3>Khong tim thay benh ly phu hop</h3>
-        <p id="empty-state-message">Chua co du lieu. Hay them moi hoac nhap du lieu JSON.</p>
+        <h3>Không tìm thấy bệnh lý phù hợp</h3>
+        <p id="empty-state-message">Chưa có dữ liệu. Hãy thêm mới hoặc nạp dữ liệu mẫu.</p>
         <button class="pm-btn-primary" onclick="openDiseaseModal(null)" style="margin-top:16px;">
-          <i class="fa-solid fa-plus"></i> Them Benh Ly Dau Tien
+          <i class="fa-solid fa-plus"></i> Thêm Bệnh Lý Đầu Tiên
         </button>
       </div>
 
@@ -183,165 +181,151 @@
   <div class="studio-fullscreen-overlay" id="studioOverlay">
     <div class="studio-overlay-topbar">
       <div class="topbar-left">
-        <button class="btn-close-studio" onclick="closeStudio()"><i class="fa-solid fa-arrow-left"></i> Tro ve Dashboard</button>
+        <button class="btn-close-studio" onclick="closeStudio()"><i class="fa-solid fa-arrow-left"></i> Trở về Dashboard</button>
         <div class="studio-title-block">
-          <h2 id="studio-disease-title">Soc Phan Ve</h2>
+          <h2 id="studio-disease-title">Sốc Phản Vệ</h2>
           <span class="badge-icd" id="studio-disease-icd">T78.2</span>
-          <span class="badge-spec" id="studio-disease-spec">Cap cuu</span>
+          <span class="badge-spec" id="studio-disease-spec">Cấp cứu</span>
         </div>
       </div>
       <div class="topbar-right">
-        <button class="studio-action-btn outline" id="btnExportSVG"><i class="fa-solid fa-code"></i> Xuat SVG</button>
-        <button class="studio-action-btn outline" id="btnExportPNG"><i class="fa-solid fa-image"></i> Xuat PNG</button>
-        <button class="studio-action-btn outline" id="btnExportJSON"><i class="fa-solid fa-download"></i> Tai JSON</button>
-        <button class="studio-action-btn save" onclick="saveCurrentDisease()"><i class="fa-solid fa-floppy-disk"></i> Luu Luu Do</button>
+        <button class="studio-action-btn outline" id="btnExportSVG"><i class="fa-solid fa-code"></i> Xuất SVG</button>
+        <button class="studio-action-btn outline" id="btnExportPNG"><i class="fa-solid fa-image"></i> Xuất PNG</button>
+        <button class="studio-action-btn outline" id="btnExportJSON"><i class="fa-solid fa-download"></i> Tải JSON</button>
+        <button class="studio-action-btn save" onclick="saveCurrentDisease()"><i class="fa-solid fa-floppy-disk"></i> Lưu Lưu Đồ</button>
       </div>
     </div>
     <div class="med-studio-container integrated-overlay-studio">
       <div class="med-studio-toolbar">
         <div class="med-toolbar-group">
-          <button class="med-btn-tool primary" id="btnAddNode"><i class="fa-solid fa-plus"></i> Them Node</button>
-          <button class="med-btn-tool" id="btnAddEdge"><i class="fa-solid fa-link"></i> Noi Mui ten</button>
-          <button class="med-btn-tool danger" id="btnDeleteSelected"><i class="fa-solid fa-trash"></i> Xoa Chon</button>
+          <button class="med-btn-tool primary" id="btnAddNode"><i class="fa-solid fa-plus"></i> Thêm Node</button>
+          <button class="med-btn-tool" id="btnAddEdge"><i class="fa-solid fa-link"></i> Nối Mũi tên</button>
+          <button class="med-btn-tool danger" id="btnDeleteSelected"><i class="fa-solid fa-trash"></i> Xóa Chọn</button>
           <div style="width:1px; height:20px; background:var(--color-border); margin:0 4px;"></div>
-          <button class="med-btn-tool outline" id="studioBtnAutoLayout"><i class="fa-solid fa-wand-magic-sparkles"></i> Can Chinh</button>
-          <button class="med-btn-tool outline" id="studioBtnAiGenerate"><i class="fa-solid fa-robot"></i> AI Sinh So Do</button>
-          <button class="med-btn-tool outline" id="studioBtnEmbedCode"><i class="fa-solid fa-code"></i> Ma Nhung</button>
+          <button class="med-btn-tool outline" id="studioBtnAutoLayout"><i class="fa-solid fa-wand-magic-sparkles"></i> Căn Chỉnh</button>
+          <button class="med-btn-tool outline" id="studioBtnAiGenerate"><i class="fa-solid fa-robot"></i> AI Sinh Sơ Đồ</button>
+          <button class="med-btn-tool outline" id="studioBtnEmbedCode"><i class="fa-solid fa-code"></i> Mã Nhúng</button>
         </div>
         <div class="med-toolbar-group">
-          <button class="med-btn-tool outline" id="btnUndo" title="Lui lai (Ctrl+Z)"><i class="fa-solid fa-rotate-left"></i> Lui</button>
-          <button class="med-btn-tool outline" id="btnRedo" title="Lam lai (Ctrl+Y)"><i class="fa-solid fa-rotate-right"></i> Tien</button>
-          <button class="med-btn-tool outline" id="btnCopy" title="Sao chep Node (Ctrl+C)"><i class="fa-solid fa-copy"></i> Copy</button>
-          <button class="med-btn-tool outline" id="btnPaste" title="Dan Node (Ctrl+V)"><i class="fa-solid fa-paste"></i> Dan</button>
+          <button class="med-btn-tool outline" id="btnUndo" title="Lùi lại (Ctrl+Z)"><i class="fa-solid fa-rotate-left"></i> Lùi</button>
+          <button class="med-btn-tool outline" id="btnRedo" title="Làm lại (Ctrl+Y)"><i class="fa-solid fa-rotate-right"></i> Tiến</button>
+          <button class="med-btn-tool outline" id="btnCopy" title="Sao chép Node (Ctrl+C)"><i class="fa-solid fa-copy"></i> Copy</button>
+          <button class="med-btn-tool outline" id="btnPaste" title="Dán Node (Ctrl+V)"><i class="fa-solid fa-paste"></i> Dán</button>
         </div>
       </div>
       <div class="med-studio-workspace">
         <aside class="med-palette-sidebar">
-          <div class="med-sidebar-title">Thu vien Node</div>
-          <div class="med-palette-item" data-type="start"><span class="med-palette-badge start"></span><div><div style="font-size:13px; font-weight:700;">Khoi dau</div></div></div>
-          <div class="med-palette-item" data-type="question"><span class="med-palette-badge question"></span><div><div style="font-size:13px; font-weight:700;">Danh gia / Cau hoi</div></div></div>
-          <div class="med-palette-item" data-type="action"><span class="med-palette-badge action"></span><div><div style="font-size:13px; font-weight:700;">Xu tri / Dieu tri</div></div></div>
-          <div class="med-palette-item" data-type="danger"><span class="med-palette-badge danger"></span><div><div style="font-size:13px; font-weight:700;">Canh bao / Cap cuu</div></div></div>
-          <div class="med-palette-item" data-type="success"><span class="med-palette-badge success"></span><div><div style="font-size:13px; font-weight:700;">On dinh</div></div></div>
-          <div class="med-palette-item" data-type="dose"><span class="med-palette-badge dose"></span><div><div style="font-size:13px; font-weight:700;">Lieu dung</div></div></div>
-          <div class="med-palette-item" data-type="alert"><span class="med-palette-badge alert"></span><div><div style="font-size:13px; font-weight:700; color:#e11d48;">Khoi Cap Cuu</div></div></div>
-          <div class="med-palette-item" data-type="comparison"><span class="med-palette-badge comparison"></span><div><div style="font-size:13px; font-weight:700; color:#0d9488;">Bang So Sanh</div></div></div>
-          <div class="med-palette-item" data-type="dose-table"><span class="med-palette-badge dose-table"></span><div><div style="font-size:13px; font-weight:700; color:#4f46e5;">Bang Thuoc</div></div></div>
-          <div class="med-palette-item" data-type="pipeline"><span class="med-palette-badge pipeline"></span><div><div style="font-size:13px; font-weight:700; color: var(--color-primary);">Chuoi Quy Trinh</div></div></div>
+          <div class="med-sidebar-title">Thư viện Node</div>
+          <div class="med-palette-item" data-type="start"><span class="med-palette-badge start"></span><div><div style="font-size:13px; font-weight:700;">Khởi đầu</div></div></div>
+          <div class="med-palette-item" data-type="question"><span class="med-palette-badge question"></span><div><div style="font-size:13px; font-weight:700;">Đánh giá / Câu hỏi</div></div></div>
+          <div class="med-palette-item" data-type="action"><span class="med-palette-badge action"></span><div><div style="font-size:13px; font-weight:700;">Xử trí / Điều trị</div></div></div>
+          <div class="med-palette-item" data-type="danger"><span class="med-palette-badge danger"></span><div><div style="font-size:13px; font-weight:700;">Cảnh báo / Cấp cứu</div></div></div>
+          <div class="med-palette-item" data-type="success"><span class="med-palette-badge success"></span><div><div style="font-size:13px; font-weight:700;">Ổn định</div></div></div>
+          <div class="med-palette-item" data-type="dose"><span class="med-palette-badge dose"></span><div><div style="font-size:13px; font-weight:700;">Liều dùng</div></div></div>
+          <div class="med-palette-item" data-type="alert"><span class="med-palette-badge alert"></span><div><div style="font-size:13px; font-weight:700; color:#e11d48;">Khối Cấp Cứu</div></div></div>
+          <div class="med-palette-item" data-type="comparison"><span class="med-palette-badge comparison"></span><div><div style="font-size:13px; font-weight:700; color:#0d9488;">Bảng So Sánh</div></div></div>
+          <div class="med-palette-item" data-type="dose-table"><span class="med-palette-badge dose-table"></span><div><div style="font-size:13px; font-weight:700; color:#4f46e5;">Bảng Thuốc</div></div></div>
+          <div class="med-palette-item" data-type="pipeline"><span class="med-palette-badge pipeline"></span><div><div style="font-size:13px; font-weight:700; color: var(--color-primary);">Chuỗi Quy Trình</div></div></div>
         </aside>
         <main class="med-draw-viewport" id="drawEngineViewport"></main>
         <div class="med-floating-controls">
-          <button class="med-btn-tool" id="btnZoomOut" title="Thu nho"><i class="fa-solid fa-minus"></i></button>
-          <button class="med-btn-tool" id="btnZoomReset" title="Ve ban dau"><i class="fa-solid fa-expand"></i></button>
-          <button class="med-btn-tool" id="btnZoomIn" title="Phong to"><i class="fa-solid fa-plus"></i></button>
+          <button class="med-btn-tool" id="btnZoomOut" title="Thu nhỏ"><i class="fa-solid fa-minus"></i></button>
+          <button class="med-btn-tool" id="btnZoomReset" title="Về ban đầu"><i class="fa-solid fa-expand"></i></button>
+          <button class="med-btn-tool" id="btnZoomIn" title="Phóng to"><i class="fa-solid fa-plus"></i></button>
         </div>
         <aside class="med-property-sidebar" id="propertySidebar">
-          <div class="med-sidebar-title">Thuoc tinh Doi tuong</div>
-          <div id="noSelectionMessage" style="font-size:12px; color:var(--color-text-muted); font-style:italic;">Bam chon mot Node hoac Duong noi de chinh sua.</div>
+          <div class="med-sidebar-title">Thuộc tính Đối tượng</div>
+          <div id="noSelectionMessage" style="font-size:12px; color:var(--color-text-muted); font-style:italic;">Bấm chọn một Node hoặc Đường nối để chỉnh sửa.</div>
           <div id="nodeInspectorForm" style="display:none;" class="med-prop-group">
             <div class="med-prop-group">
-              <label class="med-prop-label">Loai Node:</label>
+              <label class="med-prop-label">Loại Node:</label>
               <select id="propNodeType" class="med-prop-select">
-                <option value="start">Khoi dau (Start)</option>
-                <option value="question">Cau hoi (Question)</option>
-                <option value="action">Xu tri (Action)</option>
-                <option value="danger">Nguy hiem (Danger)</option>
-                <option value="success">On dinh (Success)</option>
-                <option value="dose">Canh bao lieu (Dose Warning)</option>
-                <option value="alert">Khoi Cap cuu Khan (Alert Banner)</option>
-                <option value="comparison">Bang So sanh 2 cot (Comparison Card)</option>
-                <option value="dose-table">Bang Thuoc Chi tiet (Dose Table)</option>
-                <option value="pipeline">Chuoi Quy trinh (Process Pipeline)</option>
+                <option value="start">Khởi đầu (Start)</option>
+                <option value="question">Câu hỏi (Question)</option>
+                <option value="action">Xử trí (Action)</option>
+                <option value="danger">Nguy hiểm (Danger)</option>
+                <option value="success">Ổn định (Success)</option>
+                <option value="dose">Cảnh báo liều (Dose Warning)</option>
+                <option value="alert">Khối Cấp cứu Khẩn (Alert Banner)</option>
+                <option value="comparison">Bảng So sánh 2 cột (Comparison Card)</option>
+                <option value="dose-table">Bảng Thuốc Chi tiết (Dose Table)</option>
+                <option value="pipeline">Chuỗi Quy trình (Process Pipeline)</option>
               </select>
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Hinh Khoi Node (Shape):</label>
+              <label class="med-prop-label">Hình Khối Node (Shape):</label>
               <select id="propNodeShape" class="med-prop-select">
-                <option value="rectangle">Chu nhat bo goc (Mac dinh)</option>
-                <option value="diamond">Hinh thoi (Cau hoi re nhanh)</option>
-                <option value="pill">Hinh O-van (Huy hieu)</option>
-                <option value="octagon">Bat giac (Canh bao dung)</option>
+                <option value="rectangle">Chữ nhật bo góc (Mặc định)</option>
+                <option value="diamond">Hình thoi (Câu hỏi rẽ nhánh)</option>
+                <option value="pill">Hình O-van (Huy hiệu)</option>
+                <option value="octagon">Bát giác (Cảnh báo dừng)</option>
               </select>
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Bieu Tuong Y Khoa (Icon):</label>
+              <label class="med-prop-label">Biểu Tượng Y Khoa (Icon):</label>
               <select id="propNodeIcon" class="med-prop-select">
-                <option value="">Khong dung icon</option>
-                <option value="fa-stethoscope">Ong nghe (Kham lam sang)</option>
-                <option value="fa-heart-pulse">Tim mach / Mach</option>
-                <option value="fa-brain">Than kinh / Nao</option>
-                <option value="fa-lungs">Ho hap / Phoi</option>
-                <option value="fa-pills">Thuoc / Duoc pham</option>
-                <option value="fa-syringe">Tiem bap / Truyen dich</option>
-                <option value="fa-truck-medical">Xe Cap cuu / Hoi suc</option>
-                <option value="fa-triangle-exclamation">Canh bao khan</option>
-                <option value="fa-vial">Xet nghiem / D-dimer</option>
-                <option value="fa-calculator">May tinh lam sang</option>
-                <option value="fa-user-doctor">Bac si chi dinh</option>
-                <option value="fa-shield-halved">Bao ve / Tien luong</option>
+                <option value="">Không dùng icon</option>
+                <option value="fa-stethoscope">Ống nghe (Khám lâm sàng)</option>
+                <option value="fa-heart-pulse">Tim mạch / Mạch</option>
+                <option value="fa-brain">Thần kinh / Não</option>
+                <option value="fa-lungs">Hô hấp / Phổi</option>
+                <option value="fa-pills">Thuốc / Dược phẩm</option>
+                <option value="fa-syringe">Tiêm bắp / Truyền dịch</option>
+                <option value="fa-truck-medical">Xe Cấp cứu / Hồi sức</option>
+                <option value="fa-triangle-exclamation">Cảnh báo khẩn</option>
+                <option value="fa-vial">Xét nghiệm / D-dimer</option>
+                <option value="fa-calculator">Máy tính lâm sàng</option>
+                <option value="fa-user-doctor">Bác sĩ chỉ định</option>
+                <option value="fa-shield-halved">Bảo vệ / Tiên lượng</option>
               </select>
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Nhung Cong Cu Lam Sang CliniPortal:</label>
-              <select id="propNodeToolUrl" class="med-prop-select">
-                <option value="">-- Khong nhung cong cu --</option>
-                <option value="../../Cong cu/Truyen Nhiem/SL_Nhiem-khuan.html">Sang loc Nhiem Khuan (SOFA/qSOFA/NEWS2)</option>
-                <option value="../../Cong cu/Truyen Nhiem/Chinhlieu_khangsinh.html">Chinh lieu khang sinh theo eGFR</option>
-                <option value="../../Cong cu/Chung/QuyDoi_LieuTuongDuong.html">Quy doi Lieu thuoc tuong duong</option>
-                <option value="../../Cong cu/Cap cuu va hoi suc/QL_Vanmach.html">Quan ly Van mach va Tro tim BPTD</option>
-                <option value="../../Cong cu/Cap cuu va hoi suc/QL_Budich.html">Quan ly va Tinh lieu Bu dich</option>
-                <option value="../../Cong cu/Than va Dien giai - toan kiem/PT_Khimau.html">Phan tich Khi mau dong mach (ABG)</option>
-                <option value="../../Cong cu/Than va Dien giai - toan kiem/Danhgia_Chucnangthan.html">Danh gia Chuc nang than (CKD-EPI)</option>
-                <option value="../../Cong cu/Tim mach va huyet khoi/Danhgia_Nguyco_VTE.html">Danh gia Nguy co Huyet khoi VTE / Wells</option>
-              </select>
-            </div>
-            <div class="med-prop-group">
-              <label class="med-prop-label">Tieu de Node:</label>
+              <label class="med-prop-label">Tiêu đề Node:</label>
               <input type="text" id="propNodeTitle" class="med-prop-input">
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Phu de / Ghi chu:</label>
+              <label class="med-prop-label">Phụ đề / Ghi chú:</label>
               <input type="text" id="propNodeSubtitle" class="med-prop-input">
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Huy hieu (Badge):</label>
+              <label class="med-prop-label">Huy hiệu (Badge):</label>
               <input type="text" id="propNodeBadge" class="med-prop-input">
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Chieu rong o (px):</label>
+              <label class="med-prop-label">Chiều rộng ô (px):</label>
               <input type="number" id="propNodeWidth" class="med-prop-input" min="180" max="600" step="10" placeholder="240">
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Chi tiet (HTML/Text):</label>
+              <label class="med-prop-label">Chi tiết (HTML/Text):</label>
               <textarea id="propNodeDetails" class="med-prop-textarea"></textarea>
             </div>
           </div>
           <div id="edgeInspectorForm" style="display:none;" class="med-prop-group">
             <div class="med-prop-group">
-              <label class="med-prop-label">Nhan Mui ten:</label>
+              <label class="med-prop-label">Nhãn Mũi tên:</label>
               <input type="text" id="propEdgeLabel" class="med-prop-input">
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Node Nguon (Source):</label>
+              <label class="med-prop-label">Node Nguồn (Source):</label>
               <select id="propEdgeSource" class="med-prop-select"></select>
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Node Dich (Target):</label>
+              <label class="med-prop-label">Node Đích (Target):</label>
               <select id="propEdgeTarget" class="med-prop-select"></select>
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Loai Mui ten:</label>
+              <label class="med-prop-label">Loại Mũi tên:</label>
               <select id="propEdgeType" class="med-prop-select">
-                <option value="normal">Chuan (Xam)</option>
-                <option value="danger">Nguy co (Do)</option>
-                <option value="success">Khuyen dung (Xanh la)</option>
+                <option value="normal">Chuẩn (Xám)</option>
+                <option value="danger">Nguy cơ (Đỏ)</option>
+                <option value="success">Khuyên dùng (Xanh lá)</option>
               </select>
             </div>
             <div class="med-prop-group">
-              <label class="med-prop-label">Dinh tuyen (Routing):</label>
+              <label class="med-prop-label">Định tuyến (Routing):</label>
               <select id="propEdgeStyle" class="med-prop-select">
-                <option value="orthogonal">Vuong goc</option>
-                <option value="curved">Uon cong</option>
+                <option value="orthogonal">Vuông góc</option>
+                <option value="curved">Uốn cong</option>
               </select>
             </div>
           </div>
@@ -354,41 +338,41 @@
   <div class="modal-overlay" id="disease-meta-modal">
     <div class="modal" style="max-width: 500px;">
       <div class="modal-header">
-        <h3 id="disease-modal-title">Them Thong tin Benh Ly</h3>
+        <h3 id="disease-modal-title">Thêm Thông tin Bệnh Lý</h3>
         <button class="modal-close" onclick="closeDiseaseModal()">&times;</button>
       </div>
       <div class="modal-body">
         <form id="disease-form" onsubmit="handleDiseaseSubmit(event)">
           <input type="hidden" id="disease-id">
           <div class="form-group">
-            <label for="disease-name">Ten Benh Ly *</label>
-            <input type="text" id="disease-name" required placeholder="Vi du: Soc Phan Ve">
+            <label for="disease-name">Tên Bệnh Lý *</label>
+            <input type="text" id="disease-name" required placeholder="Ví dụ: Sốc Phản Vệ">
           </div>
           <div style="display:flex; gap:12px;">
             <div class="form-group" style="flex:1;">
-              <label for="disease-icd">Ma ICD-10</label>
-              <input type="text" id="disease-icd" placeholder="Vi du: T78.2">
+              <label for="disease-icd">Mã ICD-10</label>
+              <input type="text" id="disease-icd" placeholder="Ví dụ: T78.2">
             </div>
             <div class="form-group" style="flex:1;">
-              <label for="disease-specialty">Chuyen khoa *</label>
+              <label for="disease-specialty">Chuyên khoa *</label>
               <select id="disease-specialty" required></select>
             </div>
           </div>
           <div class="form-group">
-            <label for="disease-category">Phan loai tiep can *</label>
+            <label for="disease-category">Phân loại tiếp cận *</label>
             <select id="disease-category" required>
-              <option value="ca-hai">Chan doan &amp; Dieu tri (Ca hai)</option>
-              <option value="chan-doan">Tiep can Chan doan</option>
-              <option value="dieu-tri">Phac do Dieu tri</option>
+              <option value="ca-hai">Chẩn đoán &amp; Điều trị (Cả hai)</option>
+              <option value="chan-doan">Tiếp cận Chẩn đoán</option>
+              <option value="dieu-tri">Phác đồ Điều trị</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="disease-desc">Mo ta ngan / Dinh nghia</label>
-            <textarea id="disease-desc" rows="3" placeholder="Tom tat dinh nghia, dac diem benh ly..."></textarea>
+            <label for="disease-desc">Mô tả ngắn / Định nghĩa</label>
+            <textarea id="disease-desc" rows="3" placeholder="Tóm tắt định nghĩa, đặc điểm bệnh lý..."></textarea>
           </div>
           <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1.5rem;">
-            <button type="button" class="path-btn outline" onclick="closeDiseaseModal()">Huy</button>
-            <button type="submit" class="path-btn primary">Luu &amp; Mo Flowchart Studio</button>
+            <button type="button" class="path-btn outline" onclick="closeDiseaseModal()">Hủy</button>
+            <button type="submit" class="path-btn primary">Lưu &amp; Mở Flowchart Studio</button>
           </div>
         </form>
       </div>
@@ -398,11 +382,11 @@
   <div class="modal-overlay" id="supabase-modal">
     <div class="modal" style="max-width: 500px;">
       <div class="modal-header">
-        <h3>Cau hinh Supabase Cloud</h3>
+        <h3>Cấu hình Supabase Cloud</h3>
         <button class="modal-close" onclick="closeSupabaseModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size:0.85rem; color:var(--color-text-muted); margin-bottom:1rem;">Tu dong dong bo du lieu benh ly len Supabase. Bang: <b>clinical_pathology</b></p>
+        <p style="font-size:0.85rem; color:var(--color-text-muted); margin-bottom:1rem;">Tự động đồng bộ dữ liệu bệnh lý lên Supabase. Bảng: <b>clinical_pathology</b></p>
         <form id="supabase-form" onsubmit="saveSupabaseConfig(event)">
           <div class="form-group">
             <label for="sb-url">Supabase Project URL</label>
@@ -412,23 +396,10 @@
             <label for="sb-key">Supabase Anon Key</label>
             <input type="password" id="sb-key" required>
           </div>
-          <details style="margin-top:1rem; border:1px solid var(--color-border); border-radius:8px; padding:0.5rem;">
-            <summary style="font-size:0.8rem; font-weight:700; color:var(--color-primary); cursor:pointer;">SQL tao bang tren Supabase</summary>
-            <pre style="font-size:0.72rem; background:var(--color-surface); padding:0.5rem; border-radius:6px; overflow-x:auto; margin-top:0.5rem; color:var(--color-text-muted); font-family:monospace;">create table clinical_pathology (
-  id text primary key,
-  name text not null,
-  icd text,
-  specialty text,
-  description text,
-  bookmarked boolean default false,
-  flowchart jsonb,
-  "createdAt" timestamp with time zone default timezone('utc'::text, now())
-);</pre>
-          </details>
           <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1.5rem;">
-            <button type="button" class="path-btn danger-text" onclick="clearSupabaseConfig()">Xoa cau hinh</button>
-            <button type="button" class="path-btn outline" onclick="closeSupabaseModal()">Huy</button>
-            <button type="submit" class="path-btn primary">Luu &amp; Dong bo</button>
+            <button type="button" class="path-btn danger-text" onclick="clearSupabaseConfig()">Xóa cấu hình</button>
+            <button type="button" class="path-btn outline" onclick="closeSupabaseModal()">Hủy</button>
+            <button type="submit" class="path-btn primary">Lưu &amp; Đồng bộ</button>
           </div>
         </form>
       </div>
@@ -438,17 +409,17 @@
   <div class="modal-overlay" id="import-modal">
     <div class="modal" style="max-width: 500px;">
       <div class="modal-header">
-        <h3>Nhap Du Lieu Benh Ly JSON</h3>
+        <h3>Nhập Dữ Liệu Bệnh Lý JSON</h3>
         <button class="modal-close" onclick="closeImportModal()">&times;</button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label>Dan noi dung chuoi JSON:</label>
+          <label>Dán nội dung chuỗi JSON:</label>
           <textarea id="json-import-text" rows="8" placeholder='[{"id":"...","name":"...","flowchart":{...}}]' style="font-family:monospace; font-size:12px;"></textarea>
         </div>
         <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1.5rem;">
-          <button type="button" class="path-btn outline" onclick="closeImportModal()">Huy</button>
-          <button type="button" class="path-btn primary" onclick="importDiseaseJSON()">Nhap du lieu</button>
+          <button type="button" class="path-btn outline" onclick="closeImportModal()">Hủy</button>
+          <button type="button" class="path-btn primary" onclick="importDiseaseJSON()">Nhập dữ liệu</button>
         </div>
       </div>
     </div>
@@ -457,17 +428,17 @@
   <div class="modal-overlay" id="ai-gen-modal">
     <div class="modal" style="max-width: 550px;">
       <div class="modal-header">
-        <h3>AI Sinh Luu Do Tu Phac Do Y Khoa</h3>
+        <h3>AI Sinh Lưu Đồ Từ Phác Đồ Y Khoa</h3>
         <button class="modal-close" onclick="closeAiModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size:12px; color:var(--color-text-muted);">Dan van ban cac buoc xu tri lam sang. AI se tu dong phan loai o va noi mui ten.</p>
+        <p style="font-size:12px; color:var(--color-text-muted);">Dán văn bản các bước xử trí lâm sàng. AI sẽ tự động phân loại ô và nối mũi tên.</p>
         <div class="form-group">
-          <textarea id="ai-gen-text" rows="7" placeholder="Vi du:&#10;Nghi ngo Soc Phan Ve&#10;Tiem Adrenalin bap 0.5mg&#10;Neu HA tut -> Bu dich Ringer Lactate 1000ml..." style="font-size:13px;"></textarea>
+          <textarea id="ai-gen-text" rows="7" placeholder="Ví dụ:&#10;Nghi ngờ Sốc Phản Vệ&#10;Tiêm Adrenalin bắp 0.5mg&#10;Nếu HA tụt -> Bù dịch Ringer Lactate 1000ml..." style="font-size:13px;"></textarea>
         </div>
         <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1rem;">
-          <button type="button" class="path-btn outline" onclick="closeAiModal()">Huy</button>
-          <button type="button" class="path-btn primary" onclick="generateAiDiagram()"><i class="fa-solid fa-wand-magic-sparkles"></i> Tao Luu Do</button>
+          <button type="button" class="path-btn outline" onclick="closeAiModal()">Hủy</button>
+          <button type="button" class="path-btn primary" onclick="generateAiDiagram()"><i class="fa-solid fa-wand-magic-sparkles"></i> Tạo Lưu Đồ</button>
         </div>
       </div>
     </div>
@@ -476,17 +447,17 @@
   <div class="modal-overlay" id="embed-modal">
     <div class="modal" style="max-width: 550px;">
       <div class="modal-header">
-        <h3>Ma Nhung Flowchart Embed Code</h3>
+        <h3>Mã Nhúng Flowchart Embed Code</h3>
         <button class="modal-close" onclick="closeEmbedModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size:12px; color:var(--color-text-muted);">Sao chep doan ma iframe de nhung so do tuong tac vao website:</p>
+        <p style="font-size:12px; color:var(--color-text-muted);">Sao chép đoạn mã iframe để nhúng sơ đồ tương tác vào website:</p>
         <div class="form-group">
           <textarea id="embed-code-text" rows="4" readonly style="font-family:monospace; font-size:12px;"></textarea>
         </div>
         <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1rem;">
-          <button type="button" class="path-btn outline" onclick="closeEmbedModal()">Huy</button>
-          <button type="button" class="path-btn primary" onclick="copyEmbedCode()"><i class="fa-solid fa-copy"></i> Sao Chep Ma</button>
+          <button type="button" class="path-btn outline" onclick="closeEmbedModal()">Hủy</button>
+          <button type="button" class="path-btn primary" onclick="copyEmbedCode()"><i class="fa-solid fa-copy"></i> Sao Chép Mã</button>
         </div>
       </div>
     </div>
@@ -496,19 +467,19 @@
   <div class="studio-fullscreen-overlay" id="posterOverlay" style="background:var(--color-bg); overflow-y:auto;">
     <div class="studio-overlay-topbar">
       <div class="topbar-left">
-        <button class="btn-close-studio" onclick="closePosterOverlay()"><i class="fa-solid fa-arrow-left"></i> Tro ve Dashboard</button>
+        <button class="btn-close-studio" onclick="closePosterOverlay()"><i class="fa-solid fa-arrow-left"></i> Trở về Dashboard</button>
         <div class="studio-title-block">
           <h2 id="poster-disease-title">Infographic Poster Board</h2>
           <span class="badge-spec" style="background:rgba(2,132,199,0.1); color:var(--color-primary);">Poster View</span>
         </div>
       </div>
       <div class="topbar-right">
-        <button class="studio-action-btn primary" onclick="launchCurrentSimulation()"><i class="fa-solid fa-gamepad"></i> Mo Phong Ca Benh</button>
-        <button class="studio-action-btn outline" onclick="viewCurrentCSV()"><i class="fa-solid fa-table"></i> Ma Tran CSV</button>
+        <button class="studio-action-btn primary" onclick="launchCurrentSimulation()"><i class="fa-solid fa-gamepad"></i> Mô Phỏng Ca Bệnh</button>
+        <button class="studio-action-btn outline" onclick="viewCurrentCSV()"><i class="fa-solid fa-table"></i> Ma Trận CSV</button>
         <button class="studio-action-btn outline" onclick="viewCurrentMarkdown()"><i class="fa-solid fa-file-lines"></i> Guideline YHC (.md)</button>
-        <button class="studio-action-btn outline" onclick="togglePocketCardMode()"><i class="fa-solid fa-box-archive"></i> The Bo Tui</button>
+        <button class="studio-action-btn outline" onclick="togglePocketCardMode()"><i class="fa-solid fa-box-archive"></i> Thẻ Bỏ Túi</button>
         <button class="studio-action-btn outline" onclick="printPoster()"><i class="fa-solid fa-print"></i> In Poster</button>
-        <button class="studio-action-btn outline" onclick="switchToStudioFromPoster()"><i class="fa-solid fa-diagram-project"></i> Mo Studio</button>
+        <button class="studio-action-btn outline" onclick="switchToStudioFromPoster()"><i class="fa-solid fa-diagram-project"></i> Mở Studio</button>
       </div>
     </div>
     <div style="padding:1.5rem; overflow-y:auto; height:calc(100vh - 60px);">
@@ -520,29 +491,29 @@
   <div class="modal-overlay" id="preset-library-modal">
     <div class="modal" style="max-width: 650px;">
       <div class="modal-header">
-        <h3>Thu Vien Phac Do Mau YHC Chuan 2026</h3>
+        <h3>Thư Viện Phác Đồ Mẫu YHC Chuẩn 2026</h3>
         <button class="modal-close" onclick="closePresetLibraryModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <p style="font-size:0.85rem; color:var(--color-text-muted); margin-bottom:1rem;">Chon phac do mau de nap truc tiep vao he thong.</p>
+        <p style="font-size:0.85rem; color:var(--color-text-muted); margin-bottom:1rem;">Chọn phác đồ mẫu để nạp trực tiếp vào hệ thống.</p>
         <div class="preset-cards-list">
           <div class="preset-item-card" onclick="loadPresetFile('data/dvt-pathway.json')">
             <div class="preset-icon red"><i class="fa-solid fa-vial-circle-check"></i></div>
             <div class="preset-info">
-              <h4>Huyet Khoi Tinh Mach Sau Chi Duoi (DVT)</h4>
-              <p>NICE NG158 / CHEST 2021 — Wells score, D-dimer, Doppler CUS &amp; Phac do chong dong DOACs</p>
+              <h4>Huyết Khối Tĩnh Mạch Sâu Chi Dưới (DVT)</h4>
+              <p>NICE NG158 / CHEST 2021 — Wells score, D-dimer, Doppler CUS &amp; Phác đồ chống đông DOACs</p>
               <div class="preset-tags"><span>.JSON Preset</span><span>.CSV Matrix</span><span>.MD Guideline</span><span>Simulator</span></div>
             </div>
-            <button class="path-btn primary sm"><i class="fa-solid fa-download"></i> Nap Phac Do</button>
+            <button class="path-btn primary sm"><i class="fa-solid fa-download"></i> Nạp Phác Đồ</button>
           </div>
           <div class="preset-item-card" onclick="loadPresetFile('data/stemi-pathway.json')">
             <div class="preset-icon blue"><i class="fa-solid fa-heart-pulse"></i></div>
             <div class="preset-info">
-              <h4>Nhoi Mau Co Tim Cap ST Chenh Len (STEMI)</h4>
-              <p>ESC 2023 / AHA 2025 — STEMI Code, Cua-Bong Primary PCI &amp; Tieu soi huyet</p>
+              <h4>Nhồi Máu Cơ Tim Cấp ST Chênh Lên (STEMI)</h4>
+              <p>ESC 2023 / AHA 2025 — STEMI Code, Cửa-Bóng Primary PCI &amp; Tiêu sợi huyết</p>
               <div class="preset-tags"><span>.JSON Preset</span><span>.MD Guideline</span><span>Simulator</span></div>
             </div>
-            <button class="path-btn primary sm"><i class="fa-solid fa-download"></i> Nap Phac Do</button>
+            <button class="path-btn primary sm"><i class="fa-solid fa-download"></i> Nạp Phác Đồ</button>
           </div>
         </div>
       </div>
@@ -552,14 +523,14 @@
   <div class="modal-overlay" id="csv-view-modal">
     <div class="modal" style="max-width: 850px;">
       <div class="modal-header">
-        <h3>Ma Tran Bang Tra Cuu Du Lieu (.CSV)</h3>
+        <h3>Ma Trận Bảng Tra Cứu Dữ Liệu (.CSV)</h3>
         <button class="modal-close" onclick="closeCSVModal()">&times;</button>
       </div>
       <div class="modal-body">
         <div id="csv-modal-content"></div>
         <div style="display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1.5rem;">
-          <button type="button" class="path-btn secondary" onclick="exportCurrentCSVFile()"><i class="fa-solid fa-file-csv"></i> Tai File CSV</button>
-          <button type="button" class="path-btn outline" onclick="closeCSVModal()">Dong</button>
+          <button type="button" class="path-btn secondary" onclick="exportCurrentCSVFile()"><i class="fa-solid fa-file-csv"></i> Tải File CSV</button>
+          <button type="button" class="path-btn outline" onclick="closeCSVModal()">Đóng</button>
         </div>
       </div>
     </div>
@@ -568,7 +539,7 @@
   <div class="modal-overlay" id="markdown-view-modal">
     <div class="modal" style="max-width: 800px;">
       <div class="modal-header">
-        <h3 id="md-modal-title">Tai Lieu Y Hoc Chung Cu (.MD)</h3>
+        <h3 id="md-modal-title">Tài Liệu Y Học Chứng Cứ (.MD)</h3>
         <button class="modal-close" onclick="PathologyMarkdownViewer.closeModal()">&times;</button>
       </div>
       <div class="modal-body" id="md-modal-body" style="max-height:70vh; overflow-y:auto;"></div>
@@ -577,13 +548,7 @@
 
   <div class="modal-overlay" id="simulator-modal"></div>
 
-  <script src="../../../../js/tools/medical-draw-engine.js"></script>
-  <script src="../../../../js/tools/clinical-infographic-renderer.js"></script>
-  <script src="benh-ly-csv-engine.js"></script>
-  <script src="benh-ly-markdown.js"></script>
-  <script src="benh-ly-simulator.js"></script>
-  <script src="benh-ly.js"></script>
-
+  <script type="module" src="./benh-ly.ts"></script>
   <script type="module" src="./pathology-engine.ts"></script>
 </body>
 </html>

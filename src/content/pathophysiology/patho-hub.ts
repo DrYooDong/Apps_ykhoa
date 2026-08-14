@@ -152,8 +152,22 @@ export function initSearchFilter(): void {
   });
 }
 
+export function initHotkeyShortcut(): void {
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      const searchInput = document.getElementById('lesson-search') as HTMLInputElement | null;
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.select();
+      }
+    }
+  });
+}
+
 export function initPathoHub(): void {
   initSearchFilter();
+  initHotkeyShortcut();
   initProgressTracker();
   initQuizEngine();
 }
@@ -165,3 +179,4 @@ if (typeof document !== 'undefined') {
     initPathoHub();
   }
 }
+

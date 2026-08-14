@@ -19,22 +19,11 @@
   <link rel="stylesheet" href="../../../../css/components/footer.css">
   <link rel="stylesheet" href="../../../../css/components/formula-vault.css">
 
-  <!-- MathJax for rendering LaTeX formulas -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true
-      }
-    };
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
-
   <script src="../../../../js/main.js" defer></script>
-  <script src="../../../../components/header.js" defer></script>
-  <script src="../../../../components/footer.js" defer></script>
-  <script src="js/physio-formula-engine.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script type="module" src="./formula-vault.ts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
 </head>
 
 <body>
@@ -82,14 +71,5 @@
   </div>
 
   <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.PhysioFormulaEngine) {
-        PhysioFormulaEngine.init('formula-container', 'data/formula-vault.json');
-      }
-    });
-  </script>
 </body>
-
 </html>

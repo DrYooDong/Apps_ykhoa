@@ -34,14 +34,14 @@
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
 
     <!-- Scripts hệ thống -->
-    <script src="../../../components/header.js" defer></script>
-    <script src="../../../components/footer.js" defer></script>
+    <script type="module" src="../../../components/header.ts" defer></script>
+    <script type="module" src="../../../components/footer.ts" defer></script>
     <script src="../../../js/main.js" defer></script>
     <script type="module" src="./physio-shared.ts"></script>
 
     <!-- Engines phi HTML -->
-    <script src="js/physio-md-engine.js"></script>
-    <script src="js/physio-pathway-viewer.js"></script>
+    <script type="module" src="js/physio-md-engine.ts"></script>
+    <script type="module" src="js/physio-pathway-viewer.ts"></script>
 </head>
 
 <body>
@@ -86,61 +86,6 @@
 
     <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', async function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            let articlePath = urlParams.get('article') || 'content/sinhly/phan1/SL_TB_Diensinhly.md';
-
-            // Load Article via MDEngine
-            const result = await PhysioMDEngine.loadArticle(articlePath);
-            const meta = result.metadata || {};
-
-            // Render Title & Subtitle
-            document.title = `${meta.title || 'Bài Học Sinh Lý'} – CliniPortal`;
-            document.getElementById('article-title').innerText = meta.title || 'Bài Học Sinh Lý';
-            document.getElementById('article-subtitle').innerText = meta.category || 'Tài liệu Sinh lý học chuyên sâu';
-
-            // Render Metadata badges
-            let metaHtml = '';
-            if (meta.difficulty) metaHtml += `<span class="quiz-badge">${meta.difficulty}</span>`;
-            if (meta.read_time) metaHtml += `<span class="quiz-badge" style="background:rgba(16,185,129,0.1); color:var(--color-success);"><i class="far fa-clock"></i> ${meta.read_time}</span>`;
-            if (meta.tags && Array.isArray(meta.tags)) {
-                meta.tags.forEach(tag => {
-                    metaHtml += `<span style="font-size:0.75rem; background:rgba(2,132,199,0.1); color:var(--color-primary); padding:2px 8px; border-radius:12px;">#${tag}</span>`;
-                });
-            }
-            document.getElementById('article-meta').innerHTML = metaHtml;
-
-            // Render Body
-            document.getElementById('article-body').innerHTML = PhysioMDEngine.renderMarkdown(result.body);
-
-            // Render Interactive SVG Diagram if flagged
-            if (meta.has_interactive_diagram) {
-                const svgContainer = document.getElementById('interactive-diagram-container');
-                const svgHost = document.getElementById('svg-host');
-                svgContainer.style.display = 'block';
-                try {
-                    const svgResp = await fetch('diagrams/action-potential.svg');
-                    const svgText = await svgResp.text();
-                    svgHost.innerHTML = svgText;
-                } catch (e) {
-                    console.error('Error fetching SVG diagram:', e);
-                }
-            }
-
-            // Render Interactive Pathway if flagged
-            if (meta.has_pathway) {
-                const pathwayContainer = document.getElementById('interactive-pathway-container');
-                pathwayContainer.style.display = 'block';
-                PhysioPathwayViewer.init('interactive-pathway-container', 'acs_pathway');
-            }
-
-            // Trigger MathJax typeset
-            if (window.MathJax && window.MathJax.typesetPromise) {
-                window.MathJax.typesetPromise();
-            }
-        });
-    </script>
+    <script type="module" src="./js/reader-controller.ts"></script>
 </body>
-
 </html>

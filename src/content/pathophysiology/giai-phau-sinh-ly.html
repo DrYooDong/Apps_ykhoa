@@ -19,9 +19,14 @@
     <link rel="stylesheet" href="../../../css/components/header.css">
     <link rel="stylesheet" href="../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../css/components/dashboard/dashboard-hub.css">
+    <link rel="stylesheet" href="../../../css/components/dashboard/dashboard-widgets.css">
+    <link rel="stylesheet" href="../../../css/components/dashboard/dashboard-specialty.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="./css/physio-shared.css">
 
-    <script src="../../../components/header.js" defer></script>
-    <script src="../../../components/footer.js" defer></script>
+    <script type="module" src="../../../components/header.ts" defer></script>
+    <script type="module" src="../../../components/footer.ts" defer></script>
     <script src="../../../js/main.js" defer></script>
     <script type="module" src="./patho-hub.ts"></script>
 
@@ -29,6 +34,54 @@
         /* ============================================================
            VIPPRO 2000$ COMMAND CENTER OVERRIDE — GIẢI PHẪU & SINH LÝ
         ============================================================ */
+        body {
+            padding-top: 64px !important;
+            background-color: var(--color-bg, #f8fafc) !important;
+        }
+
+        .main-wrapper {
+            max-width: 1440px !important;
+            margin: 0 auto !important;
+            padding: 1.5rem 1.25rem 3rem 1.25rem !important;
+            width: 100% !important;
+        }
+
+        .dashboard-layout {
+            display: flex !important;
+            gap: 1.75rem !important;
+            align-items: flex-start !important;
+            width: 100% !important;
+        }
+
+        .layout-nav-sidebar {
+            width: 280px !important;
+            flex-shrink: 0 !important;
+            position: sticky !important;
+            top: 80px !important;
+        }
+
+        .layout-content-area {
+            flex: 1 !important;
+            min-width: 0 !important;
+            width: 100% !important;
+        }
+
+        .specialty-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+            gap: 1.25rem !important;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-layout {
+                flex-direction: column !important;
+            }
+            .layout-nav-sidebar {
+                width: 100% !important;
+                position: static !important;
+            }
+        }
+
         :root {
             --hub-emerald: #059669;
             --hub-emerald-dark: #047857;
@@ -1335,19 +1388,6 @@
 
     <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
 
-    <!-- HOTKEY SHORTCUT SCRIPT -->
-    <script>
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                e.preventDefault();
-                const searchInput = document.getElementById('lesson-search');
-                if (searchInput) {
-                    searchInput.focus();
-                    searchInput.select();
-                }
-            }
-        });
-    </script>
+    <script type="module" src="./patho-hub.ts"></script>
 </body>
-
 </html>

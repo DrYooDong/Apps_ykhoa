@@ -22,8 +22,8 @@
 
     <!-- JS Core -->
     <script src="../../../../js/main.js" defer></script>
-    <script src="../../../../components/header.js" defer></script>
-    <script src="../../../../components/footer.js" defer></script>
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
 
     <link rel="stylesheet" href="../../../../css/components/flowchart.css">
 </head>
@@ -667,66 +667,8 @@
     <!-- Nạp Footer -->
     <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
     <script src="../../../../js/approach/flowchart.js"></script>
-    <script>
-        function calcR() {
-            const alt = parseFloat(document.getElementById('alt-val').value);
-            const altUln = parseFloat(document.getElementById('alt-uln').value);
-            const alp = parseFloat(document.getElementById('alp-val').value);
-            const alpUln = parseFloat(document.getElementById('alp-uln').value);
-            const box = document.getElementById('r-result');
-
-            if (!alt || !alp || !altUln || !alpUln) {
-                box.style.display = 'block';
-                box.style.background = '#fef2f2';
-                box.style.borderLeftColor = '#dc2626';
-                box.innerHTML = '<strong>⚠️ Vui lòng nhập đủ 4 chỉ số.</strong>';
-                return;
-            }
-
-            const r = (alt / altUln) / (alp / alpUln);
-            let bg, border, label, icon, pane, info;
-
-            if (r > 5) {
-                bg = '#fef2f2'; border = '#dc2626';
-                label = 'TỔN THƯƠNG HỦY TẾ BÀO GAN (Hepatocellular)';
-                icon = '🔴'; pane = 'hepa';
-                info = 'Chuyển sang <strong>Sơ đồ 1</strong> – AST/ALT';
-            } else if (r < 2) {
-                bg = '#fffbeb'; border = '#d97706';
-                label = 'TỔN THƯƠNG Ứ MẬT (Cholestatic)';
-                icon = '🟡'; pane = 'chole';
-                info = 'Chuyển sang <strong>Sơ đồ 2</strong> – ALP/GGT';
-            } else {
-                bg = '#f0f9ff'; border = '#0284c7';
-                label = 'KIỂU HỖN HỢP (Mixed Pattern) – 2 ≤ R ≤ 5';
-                icon = '🔵'; pane = 'hepa';
-                info = 'Đánh giá <strong>cả 2 nhánh</strong>. Ưu tiên soi Transaminase trước.';
-            }
-
-            box.style.display = 'block';
-            box.style.background = bg;
-            box.style.borderLeftColor = border;
-            box.innerHTML = `
-                <div class="r-value-big" style="color:${border}">${icon} R = ${r.toFixed(2)}</div>
-                <div style="font-weight:700; color:${border}; margin-bottom:6px;">${label}</div>
-                <div style="font-size:13px; color:#475569; margin-bottom:10px;">${info}</div>
-                <button class="r-goto-btn" style="background:${border}" onclick="switchPane('${pane}'); this.closest('#r-result').scrollIntoView({behavior:'smooth', block:'end'});">
-                    Mở sơ đồ tương ứng ➔
-                </button>
-            `;
-            box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        function resetR() {
-            document.getElementById('alt-val').value = '';
-            document.getElementById('alp-val').value = '';
-            const box = document.getElementById('r-result');
-            box.style.display = 'none';
-            box.innerHTML = '';
-        }
-
-    </script>
-  <script type="module" src="../approaches-shared.ts"></script>
+    <script type="module" src="./tc-sinhhoagan.ts"></script>
+    <script type="module" src="../approaches-shared.ts"></script>
 </body>
 
 </html>

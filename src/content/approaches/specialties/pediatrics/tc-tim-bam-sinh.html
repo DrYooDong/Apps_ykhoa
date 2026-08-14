@@ -1001,79 +1001,10 @@
 
   <!-- SCRIPTS -->
   <script src="../../../../../js/main.js" defer></script>
-  <script src="../../../../../components/header.js" defer></script>
-  <script src="../../../../../components/footer.js" defer></script>
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../../components/footer.ts" defer></script>
   <script src="../../../../../js/approach/approach-symptom.js" defer></script>
-
-  <!-- INTERACTIVE LOGIC SCRIPT FOR PEDIATRIC CARDIOLOGY -->
-  <script>
-    // Tab switching functionality
-    function switchCardioTab(tabId) {
-      document.querySelectorAll('.cardio-tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-content-panel').forEach(panel => {
-        panel.classList.remove('active');
-      });
-
-      const activeBtn = Array.from(document.querySelectorAll('.cardio-tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
-      if (activeBtn) activeBtn.classList.add('active');
-
-      const targetPanel = document.getElementById(tabId);
-      if (targetPanel) targetPanel.classList.add('active');
-    }
-
-    // Interactive 5T Step Selector
-    function select5TStep(stepNum) {
-      document.querySelectorAll('.step-5t-btn-card').forEach(card => {
-        card.classList.remove('active');
-      });
-      document.querySelectorAll('[id^="detail-step-"]').forEach(detailBox => {
-        detailBox.style.display = 'none';
-      });
-
-      const activeCard = document.getElementById(`btn-step-${stepNum}`);
-      if (activeCard) activeCard.classList.add('active');
-
-      const activeDetail = document.getElementById(`detail-step-${stepNum}`);
-      if (activeDetail) activeDetail.style.display = 'block';
-    }
-
-    // AAP SpO2 Calculator logic
-    function calculateSpO2AAP() {
-      const hand = parseFloat(document.getElementById('spo2Hand').value);
-      const foot = parseFloat(document.getElementById('spo2Foot').value);
-      const badge = document.getElementById('spo2Badge');
-      const advice = document.getElementById('spo2Advice');
-
-      if (isNaN(hand) || isNaN(foot)) {
-        badge.className = "result-badge repeat";
-        badge.innerText = "CHỜ NHẬP SỐ";
-        advice.innerText = "Vui lòng nhập giá trị SpO2 của cả Tay Phải và Bàn Chân.";
-        return;
-      }
-
-      const diff = Math.abs(hand - foot);
-
-      if (hand <= 89 || foot <= 89) {
-        badge.className = "result-badge fail";
-        badge.innerText = "KHÔNG ĐẠT (FAIL)";
-        advice.innerHTML = "<strong style='color:#dc2626;'>SpO2 &le; 89%:</strong> CẦN ĐÁNH GIÁ LÂM SÀNG KHẨN VÀ SIÊU ÂM TIM NGAY! Không lặp lại tầm soát.";
-      } else if ((hand >= 90 && hand <= 94) || (foot >= 90 && foot <= 94) || diff >= 4) {
-        badge.className = "result-badge repeat";
-        badge.innerText = "ĐO LẠI (REPEAT)";
-        advice.innerHTML = "SpO2 từ 90 - 94% HOẶC chênh lệch &ge; 4%. <strong>Đo lại sau 1 giờ</strong> (Tối đa 3 lần). Nếu sau 3 lần vẫn nằm trong khoảng này &rarr; FAIL (Khám ngay).";
-      } else if (hand >= 95 && foot >= 95 && diff <= 3) {
-        badge.className = "result-badge pass";
-        badge.innerText = "ĐẠT (PASS)";
-        advice.innerHTML = "SpO2 &ge; 95% ở cả 2 vị trí và chênh lệch &le; 3%. <strong>Đạt yêu cầu sàng lọc</strong>, chuyển chăm sóc sơ sinh bình thường.";
-      } else {
-        badge.className = "result-badge repeat";
-        badge.innerText = "ĐO LẠI (REPEAT)";
-        advice.innerText = "Vui lòng kiểm tra lại vị trí dán đầu dò và đo lại.";
-      }
-    }
-  </script>
+  <script type="module" src="./tc-tim-bam-sinh.ts"></script>
   <script type="module" src="../../approaches-shared.ts"></script>
 </body>
 

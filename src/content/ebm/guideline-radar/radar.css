@@ -1,16 +1,26 @@
 /* radar.css - Guideline Radar Styling */
 
 :root {
-      --radar-primary: #10b981;
-      --radar-bg: #ecfdf5;
-      --radar-accent: #059669;
-      --diff-old-bg: #fef2f2;
-      --diff-old-border: #fca5a5;
-      --diff-old-text: #991b1b;
-      --diff-new-bg: #f0fdf4;
-      --diff-new-border: #86efac;
-      --diff-new-text: #166534;
-    }
+  --radar-primary: #10b981;
+  --radar-bg: #ecfdf5;
+  --radar-accent: #059669;
+  --diff-old-bg: #fef2f2;
+  --diff-old-border: #fca5a5;
+  --diff-old-text: #991b1b;
+  --diff-new-bg: #f0fdf4;
+  --diff-new-border: #86efac;
+  --diff-new-text: #166534;
+}
+
+[data-theme="dark"] {
+  --radar-bg: #064e3b;
+  --diff-old-bg: rgba(239, 68, 68, 0.15);
+  --diff-old-border: rgba(239, 68, 68, 0.4);
+  --diff-old-text: #fca5a5;
+  --diff-new-bg: rgba(16, 185, 129, 0.15);
+  --diff-new-border: rgba(16, 185, 129, 0.4);
+  --diff-new-text: #86efac;
+}
     
     .radar-hero {
       background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);

@@ -292,14 +292,15 @@ export function initCalculatorsHub(): void {
     });
   }
 
-  // Calculation History Modal
-  const openHistoryBtn = document.getElementById('btn-open-calc-history');
-  if (openHistoryBtn) {
-    openHistoryBtn.addEventListener('click', () => {
-      const win = window as any;
-      if (win.CalculationHistoryModal && typeof win.CalculationHistoryModal.open === 'function') {
-        win.CalculationHistoryModal.open();
+  // Hotkey Ctrl+K / Cmd+K Search
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.select();
       }
-    });
-  }
+    }
+  });
 }
+

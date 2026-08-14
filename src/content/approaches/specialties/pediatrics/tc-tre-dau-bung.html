@@ -509,8 +509,8 @@
 
   <!-- JS Core (5 levels up) -->
   <script src="../../../../../js/main.js" defer></script>
-  <script src="../../../../../components/header.js" defer></script>
-  <script src="../../../../../components/footer.js" defer></script>
+  <script type="module" src="../../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../../components/footer.ts" defer></script>
   <script src="../../../../../js/approach/approach-symptom.js" defer></script>
 </head>
 
@@ -1167,97 +1167,8 @@
   <!-- Footer Placeholder -->
   <div id="footer-placeholder" data-footer-path="../../../../../components/footer.html"></div>
 
-  <!-- INLINE CDSS JAVASCRIPT LOGIC -->
-  <script>
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        // Update active quick-nav button
-        document.querySelectorAll('.quick-nav-btn').forEach(btn => btn.classList.remove('active'));
-        const activeBtn = Array.from(document.querySelectorAll('.quick-nav-btn')).find(b => b.getAttribute('onclick').includes(id));
-        if (activeBtn) activeBtn.classList.add('active');
-      }
-    }
-
-    function runCdssEvaluation() {
-      const age = document.getElementById('simAgeGroup').value;
-      const duration = document.getElementById('simDuration').value;
-      const rebound = document.getElementById('chkRebound').checked;
-      const bilious = document.getElementById('chkBiliousVomiting').checked;
-      const melena = document.getElementById('chkMelena').checked;
-      const mass = document.getElementById('chkMass').checked;
-      const carnett = document.getElementById('chkCarnettPos').checked;
-      const nightPain = document.getElementById('chkNightPain').checked;
-
-      const resultStatus = document.getElementById('simResultStatus');
-      const resultDetails = document.getElementById('simResultDetails');
-
-      // Check Red Flag Surgical Abdomen
-      if (rebound || bilious || melena || mass) {
-        resultStatus.className = 'sim-result-status red';
-        resultStatus.innerHTML = '🔴 NGUY CƠ RẤT CAO - NGHĨ NHIỀU BỤNG CẤP NGOẠI KHOA!';
-        
-        let reasons = [];
-        if (rebound) reasons.push('Cảm ứng phúc mạc / Đề kháng thành bụng');
-        if (bilious) reasons.push('Nôn dịch mật/máu');
-        if (melena) reasons.push('Tiêu phân máu/sô-cô-la');
-        if (mass) reasons.push('Khối lồng/U bụng');
-
-        resultDetails.innerHTML = `
-          <strong>Phát hiện Cờ đỏ Bụng cấp:</strong> ${reasons.join(', ')}.<br>
-          👉 <strong>Xử trí ngay:</strong>
-          <ul style="margin: 6px 0 0 0; padding-left: 18px;">
-            <li>Hội chẩn Ngoại khoa khẩn cấp!</li>
-            <li>Cho trẻ nhịn ăn uống hoàn toàn (NPO).</li>
-            <li>Lập đường truyền tĩnh mạch bù dịch.</li>
-            <li>Chỉ định Siêu âm bụng / X-quang bụng không sửa soạn khẩn.</li>
-          </ul>
-        `;
-        return;
-      }
-
-      // Check Carnett (+) Abdominal Wall pain
-      if (carnett) {
-        resultStatus.className = 'sim-result-status yellow';
-        resultStatus.innerHTML = '🟡 CARNETT TEST (+) - ĐAU THÀNH BỤNG';
-        resultDetails.innerHTML = `
-          Đau tăng lên khi căng cơ bụng (Carnett test positive).<br>
-          Gợi ý nguyên nhân đau xuất phát từ <strong>thành bụng</strong> (chấn thương cơ, nếp bụng, dây thần kinh thành bụng), thường không phải cấp cứu tạng nội tạng. Khám loại trừ khối thoát vị.
-        `;
-        return;
-      }
-
-      // Check Chronic / Red Flag Night Pain
-      if (nightPain || duration === 'chronic') {
-        resultStatus.className = 'sim-result-status yellow';
-        resultStatus.innerHTML = '🟡 ĐAU BỤNG MẠN / CÓ DẤU HIỆU THỰC THỂ';
-        resultDetails.innerHTML = `
-          Đau bụng kéo dài hoặc có dấu hiệu gợi ý thực thể (thức giấc ban đêm, sốt, sụt cân).<br>
-          👉 <strong>Xử trí:</strong> Chỉ định xét nghiệm tầm soát thực thể (Công thức máu, VS/CRP, Siêu âm, Máu ẩn trong phân). Nếu âm tính, đánh giá tiêu chuẩn Rome IV.
-        `;
-        return;
-      }
-
-      // Neonatal special alert
-      if (age === 'neonatal') {
-        resultStatus.className = 'sim-result-status yellow';
-        resultStatus.innerHTML = '🟡 SƠ SINH ĐAU BỤNG / THỦNG / NEC';
-        resultDetails.innerHTML = `
-          Trẻ sơ sinh có biểu hiện đau bụng / chướng bụng cần được loại trừ Viêm ruột hoại tử (NEC) và Xoắn ruột xoay bất toàn. Theo dõi sát tại bệnh viện.
-        `;
-        return;
-      }
-
-      // Low Risk
-      resultStatus.className = 'sim-result-status green';
-      resultStatus.innerHTML = '🟢 NGUY CƠ THẤP - THEO DÕI NGUYÊN NHÂN NỘI KHOA';
-      resultDetails.innerHTML = `
-        Chưa thấy dấu hiệu bụng cấp ngoại khoa hay cờ đỏ nguy hiểm.<br>
-        Theo dõi các nguyên nhân thường gặp: Viêm dạ dày ruột, Nhiễm trùng tiểu, Táo bón. Dặn dò gia đình tái khám ngay nếu xuất hiện nôn ói mật, tiêu máu hoặc đau bụng tăng dần.
-      `;
-    }
-  </script>
+  <!-- JS Scripts -->
+  <script type="module" src="./tc-tre-dau-bung.ts"></script>
   <script type="module" src="../../approaches-shared.ts"></script>
 </body>
 

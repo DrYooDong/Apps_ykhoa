@@ -23,8 +23,8 @@
   <link rel="stylesheet" href="../../../css/components/mui-port.css">
 
   <script src="../../../js/main.js" defer></script>
-  <script src="../../../components/header.js" defer></script>
-  <script src="../../../components/footer.js" defer></script>
+  <script type="module" src="../../../components/header.ts" defer></script>
+  <script type="module" src="../../../components/footer.ts" defer></script>
   <script src="../../../js/core/mui-port.js" defer></script>
 
   <link rel="manifest" href="app.webmanifest">
@@ -786,20 +786,6 @@
   <script src="../../../js/components/calculation-history-modal.js" defer></script>
   <script src="../../../js/dashboard/module-dashboard.js" defer></script>
   <script type="module" src="./index.ts"></script>
-
-  <!-- HOTKEY SHORTCUT SCRIPT -->
-  <script>
-    document.addEventListener('keydown', function(e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        const searchInput = document.getElementById('lesson-search');
-        if (searchInput) {
-          searchInput.focus();
-          searchInput.select();
-        }
-      }
-    });
-  </script>
 </body>
 
 </html>
