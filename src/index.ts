@@ -30,6 +30,7 @@ import { router, CliniRouter } from './core/router';
 import { searchEngine, CliniSearchEngine } from './core/search-engine';
 import { contentLoaderEngine, ContentLoaderEngine } from './core/content-loader';
 import * as components from './components';
+import { initHeaderModals } from './components/header-modals';
 import { initDocSpaceRoutes } from './content/docspace/index';
 
 export interface CliniPortalCore {
@@ -840,6 +841,7 @@ function initCliniPortal(): void {
   router.init();
   setupGlobalQuickSearch();
   syncSidebarActiveState();
+  initHeaderModals();
 
   // Nạp chỉ mục tìm kiếm offline cho 7 phân hệ y khoa
   searchEngine.initAllIndexes().then(() => {

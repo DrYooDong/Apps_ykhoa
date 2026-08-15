@@ -9,6 +9,8 @@
  * - Standardized EBM SOAP Note clipboard exporter & clean medical PDF printing
  */
 
+import { CliniPortalThemeManager } from '../../../main';
+
 export function renderGuidelineReader(slug: string): string {
   // Normalize slug
   const cleanSlug = slug.endsWith('.html') ? slug : `${slug}.html`;
@@ -42,47 +44,88 @@ export function renderGuidelineReader(slug: string): string {
           <span style="color: var(--color-text, #0f172a); font-weight: 800;" id="reader-breadcrumb-title">${baseSlugName}</span>
         </div>
 
-        <!-- Pro Reader Controls (Width, Font size, Fullscreen, EBM Note, Print) -->
-        <div class="reader-toolbar-actions" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <!-- Pro Reader Settings Dropdown (Dark Mode, Font size, Width, Fullscreen, EBM Note, Print) -->
+        <div class="reader-toolbar-actions" style="display: flex; align-items: center; gap: 0.5rem; position: relative;">
           
-          <!-- Font Size Scaler -->
-          <div class="reader-btn-group" style="display: inline-flex; align-items: center; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; overflow: hidden;">
-            <button class="reader-icon-btn" onclick="adjustReaderFontSize(-1)" title="Giảm cỡ chữ (A-)" style="padding: 0.35rem 0.6rem; border: none; background: none; color: var(--color-text, #334155); font-size: 0.78rem; font-weight: 800; cursor: pointer; border-right: 1px solid var(--color-border, #cbd5e1);">
-              A-
+          <div class="reader-settings-dropdown-wrapper" id="reader-settings-dropdown-wrapper" style="position: relative;">
+            <button class="btn btn-outline reader-settings-btn" id="reader-settings-toggle-btn" onclick="toggleReaderSettingsMenu(event)" aria-expanded="false" title="Cài đặt & Tiện ích đọc" style="padding: 0.45rem 0.95rem; border-radius: 8px; border: 1.5px solid var(--color-primary, #0284c7); font-size: 0.82rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; background: rgba(2,132,199,0.08); color: var(--color-primary, #0284c7); box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: all 0.2s ease;">
+              <i class="fa-solid fa-gear" style="font-size: 0.95rem;"></i>
+              <span>Cài đặt</span>
+              <i class="fa-solid fa-chevron-down" style="font-size: 0.68rem; opacity: 0.7;"></i>
             </button>
-            <span id="reader-font-size-display" style="padding: 0 0.5rem; font-size: 0.75rem; font-weight: 700; font-family: monospace; color: var(--color-primary, #0284c7);">
-              ${savedFontSize}px
-            </span>
-            <button class="reader-icon-btn" onclick="adjustReaderFontSize(1)" title="Tăng cỡ chữ (A+)" style="padding: 0.35rem 0.6rem; border: none; background: none; color: var(--color-text, #334155); font-size: 0.78rem; font-weight: 800; cursor: pointer; border-left: 1px solid var(--color-border, #cbd5e1);">
-              A+
-            </button>
+
+            <!-- Dropdown Menu -->
+            <div class="reader-settings-menu" id="reader-settings-menu" style="display: none; position: absolute; right: 0; top: calc(100% + 8px); z-index: 220; min-width: 290px; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-radius: 14px; box-shadow: 0 12px 36px rgba(0,0,0,0.15); padding: 0.65rem; backdrop-filter: blur(12px);">
+              
+              <div style="padding: 0.4rem 0.6rem 0.5rem; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted, #64748b); border-bottom: 1px solid var(--color-border, #e2e8f0); margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between;">
+                <span>⚙️ Tùy chọn bài đọc</span>
+                <span style="font-size: 0.7rem; font-weight: 600; opacity: 0.75;">CliniPortal</span>
+              </div>
+
+              <!-- 1. Dark Mode Toggle -->
+              <button class="reader-menu-item" onclick="toggleReaderTheme(event)" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
+                <span style="display: flex; align-items: center; gap: 9px;">
+                  <i class="fa-solid fa-moon" id="reader-menu-theme-icon" style="width: 18px; color: #8b5cf6; font-size: 0.95rem;"></i>
+                  <span id="reader-menu-theme-text">Chế độ Tối</span>
+                </span>
+                <span class="rx-tag" id="reader-menu-theme-tag" style="font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; font-weight: 700;">Theme</span>
+              </button>
+
+              <!-- 2. Font Size Adjustment -->
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600;">
+                <span style="display: flex; align-items: center; gap: 9px;">
+                  <i class="fa-solid fa-font" style="width: 18px; color: var(--color-primary, #0284c7); font-size: 0.95rem;"></i>
+                  <span>Cỡ chữ đọc</span>
+                </span>
+                <div class="reader-btn-group" style="display: inline-flex; align-items: center; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-radius: 6px; overflow: hidden;">
+                  <button class="reader-icon-btn" onclick="adjustReaderFontSize(-1); event.stopPropagation();" title="Giảm cỡ chữ (A-)" style="padding: 0.28rem 0.55rem; border: none; background: none; color: var(--color-text, #334155); font-size: 0.75rem; font-weight: 800; cursor: pointer; border-right: 1px solid var(--color-border, #cbd5e1);">
+                    A-
+                  </button>
+                  <span id="reader-font-size-display" style="padding: 0 0.5rem; font-size: 0.74rem; font-weight: 700; font-family: monospace; color: var(--color-primary, #0284c7);">
+                    ${savedFontSize}px
+                  </span>
+                  <button class="reader-icon-btn" onclick="adjustReaderFontSize(1); event.stopPropagation();" title="Tăng cỡ chữ (A+)" style="padding: 0.28rem 0.55rem; border: none; background: none; color: var(--color-text, #334155); font-size: 0.75rem; font-weight: 800; cursor: pointer; border-left: 1px solid var(--color-border, #cbd5e1);">
+                    A+
+                  </button>
+                </div>
+              </div>
+
+              <!-- 3. Width Mode Toggle -->
+              <button class="reader-menu-item" onclick="toggleReaderWidthMode(); closeReaderSettingsMenu();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
+                <span style="display: flex; align-items: center; gap: 9px;">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center" style="width: 18px; color: #059669; font-size: 0.95rem;"></i>
+                  <span id="reader-menu-width-text">${savedWidthMode === 'wide' ? 'Khung Chuẩn (1080px)' : 'Mở Rộng Tối Đa (Ultra-Wide)'}</span>
+                </span>
+              </button>
+
+              <!-- 4. Fullscreen Mode -->
+              <button class="reader-menu-item" onclick="toggleBrowserFullscreen(); closeReaderSettingsMenu();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
+                <span style="display: flex; align-items: center; gap: 9px;">
+                  <i class="fa-solid fa-expand" style="width: 18px; color: #d97706; font-size: 0.95rem;"></i>
+                  <span>Toàn màn hình (F11 / Zen)</span>
+                </span>
+              </button>
+
+              <div style="height: 1px; background: var(--color-border, #e2e8f0); margin: 0.35rem 0;"></div>
+
+              <!-- 5. Copy EBM Note -->
+              <button class="reader-menu-item" id="btn-copy-ebm-note" onclick="copyGuidelineSoapNote();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
+                <span style="display: flex; align-items: center; gap: 9px;">
+                  <i class="fa-solid fa-clipboard-list" style="width: 18px; color: var(--color-primary, #0284c7); font-size: 0.95rem;"></i>
+                  <span>Sao chép EBM Note (EMR)</span>
+                </span>
+              </button>
+
+              <!-- 6. Print / PDF -->
+              <button class="reader-menu-item" onclick="window.print(); closeReaderSettingsMenu();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
+                <span style="display: flex; align-items: center; gap: 9px;">
+                  <i class="fa-solid fa-print" style="width: 18px; color: #64748b; font-size: 0.95rem;"></i>
+                  <span>In / Lưu PDF tài liệu</span>
+                </span>
+              </button>
+            </div>
           </div>
 
-          <!-- Ultra-Wide / Standard View Toggle -->
-          <button class="btn btn-outline" id="btn-toggle-wide-mode" onclick="toggleReaderWidthMode()" title="Chuyển đổi giao diện Mở Rộng Toàn Màn Hình / Khung Chuẩn" style="padding: 0.35rem 0.75rem; border-radius: 8px; border: 1.5px solid var(--color-primary, #0284c7); font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; background: rgba(2,132,199,0.08); color: var(--color-primary, #0284c7);">
-            <i class="fa-solid fa-up-right-and-down-left-from-center" id="wide-mode-icon"></i> 
-            <span id="wide-mode-text">${savedWidthMode === 'wide' ? 'Khung Chuẩn' : 'Mở Rộng Tối Đa'}</span>
-          </button>
-
-          <!-- Fullscreen Mode -->
-          <button class="btn btn-outline" onclick="toggleBrowserFullscreen()" title="Toàn màn hình (F11 / Zen Mode)" style="padding: 0.35rem 0.7rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1); font-size: 0.78rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; background: var(--color-surface, #fff); color: var(--color-text, #334155);">
-            <i class="fa-solid fa-expand"></i> <span>Fullscreen</span>
-          </button>
-
-          <!-- Copy EBM Note -->
-          <button class="btn btn-outline" id="btn-copy-ebm-note" onclick="copyGuidelineSoapNote()" title="Sao chép tóm tắt EBM dán vào Bệnh án điện tử (EMR)" style="padding: 0.35rem 0.75rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1); font-size: 0.78rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; background: var(--color-surface, #fff); color: var(--color-text, #334155);">
-            <i class="fa-solid fa-clipboard-list" style="color: var(--color-primary, #0284c7);"></i> <span>Copy EBM Note</span>
-          </button>
-
-          <!-- Print / PDF -->
-          <button class="btn btn-outline" onclick="window.print()" title="In hoặc lưu PDF tài liệu" style="padding: 0.35rem 0.7rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1); font-size: 0.78rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; background: var(--color-surface, #fff); color: var(--color-text, #334155);">
-            <i class="fa-solid fa-print"></i> <span>In / PDF</span>
-          </button>
-
-          <!-- Back to Kho Button -->
-          <a href="#/ebm/kho-guidelines" class="btn btn-primary" style="padding: 0.35rem 0.9rem; border-radius: 8px; font-size: 0.78rem; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; background: var(--color-primary, #0284c7); color: #ffffff; box-shadow: 0 2px 6px rgba(2,132,199,0.25);">
-            <i class="fa-solid fa-arrow-left"></i> <span>Kho Guidelines</span>
-          </a>
         </div>
       </header>
 
@@ -403,9 +446,95 @@ ${points.join('\n')}
   });
 }
 
+/**
+ * Toggle Reader Settings Dropdown Menu
+ */
+export function toggleReaderSettingsMenu(event?: Event): void {
+  if (event) event.stopPropagation();
+  const menu = document.getElementById('reader-settings-menu');
+  const btn = document.getElementById('reader-settings-toggle-btn');
+  if (!menu) return;
+
+  const isVisible = menu.style.display === 'block';
+  if (isVisible) {
+    closeReaderSettingsMenu();
+  } else {
+    syncReaderThemeUI();
+    menu.style.display = 'block';
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+/**
+ * Close Reader Settings Dropdown Menu
+ */
+export function closeReaderSettingsMenu(): void {
+  const menu = document.getElementById('reader-settings-menu');
+  const btn = document.getElementById('reader-settings-toggle-btn');
+  if (menu) menu.style.display = 'none';
+  if (btn) btn.setAttribute('aria-expanded', 'false');
+}
+
+/**
+ * Toggle Theme directly from Reader Settings Dropdown
+ */
+export function toggleReaderTheme(event?: Event): void {
+  if (event) event.stopPropagation();
+  CliniPortalThemeManager.toggleTheme();
+  syncReaderThemeUI();
+}
+
+/**
+ * Synchronize Reader Theme text and icon with current data-theme state
+ */
+export function syncReaderThemeUI(): void {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  const icon = document.getElementById('reader-menu-theme-icon');
+  const text = document.getElementById('reader-menu-theme-text');
+  const tag = document.getElementById('reader-menu-theme-tag');
+
+  if (currentTheme === 'dark') {
+    if (icon) {
+      icon.className = 'fa-solid fa-sun';
+      icon.style.color = '#f59e0b';
+    }
+    if (text) text.textContent = 'Chế độ Sáng (Light)';
+    if (tag) {
+      tag.textContent = 'Dark On';
+      tag.style.background = 'rgba(245, 158, 11, 0.15)';
+      tag.style.color = '#f59e0b';
+    }
+  } else {
+    if (icon) {
+      icon.className = 'fa-solid fa-moon';
+      icon.style.color = '#8b5cf6';
+    }
+    if (text) text.textContent = 'Chế độ Tối (Dark)';
+    if (tag) {
+      tag.textContent = 'Light On';
+      tag.style.background = 'rgba(139, 92, 246, 0.12)';
+      tag.style.color = '#8b5cf6';
+    }
+  }
+}
+
+// Global click outside listener to close settings menu
+if (typeof document !== 'undefined') {
+  document.addEventListener('click', (e) => {
+    const wrapper = document.getElementById('reader-settings-dropdown-wrapper');
+    if (wrapper && !wrapper.contains(e.target as Node)) {
+      closeReaderSettingsMenu();
+    }
+  });
+}
+
 // Expose actions to window for direct event handler execution
 if (typeof window !== 'undefined') {
   const win = window as any;
+  win.toggleReaderSettingsMenu = toggleReaderSettingsMenu;
+  win.closeReaderSettingsMenu = closeReaderSettingsMenu;
+  win.toggleReaderTheme = toggleReaderTheme;
+  win.syncReaderThemeUI = syncReaderThemeUI;
   win.toggleReaderWidthMode = toggleReaderWidthMode;
   win.adjustReaderFontSize = adjustReaderFontSize;
   win.toggleBrowserFullscreen = toggleBrowserFullscreen;
