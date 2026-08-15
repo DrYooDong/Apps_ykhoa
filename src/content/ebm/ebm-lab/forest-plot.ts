@@ -151,7 +151,7 @@ export function initForestPlotBuilder(): void {
   loadDataset(currentActiveTrial);
 
   const tableBody = document.getElementById("studies-table-body");
-  const svgCanvas = document.getElementById("forest-svg") as SVGSVGElement | null;
+  const svgCanvas = document.getElementById("forest-svg") as unknown as SVGSVGElement | null;
 
   const recalculatePooled = () => {
     if (!studiesData.length) return;

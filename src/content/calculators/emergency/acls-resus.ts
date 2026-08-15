@@ -108,7 +108,7 @@ export class ACLSStudioEngine {
     const aclsStatusPill = document.getElementById('aclsStatusPill');
     const beatIndicator = document.getElementById('beatIndicator');
     const cprTimerVal = document.getElementById('cprTimerVal');
-    const timerProgress = document.getElementById('timerProgress') as SVGCircleElement | null;
+    const timerProgress = document.getElementById('timerProgress') as unknown as SVGCircleElement | null;
 
     if (btnStartCPR) btnStartCPR.style.display = 'none';
     if (btnPauseCPR) btnPauseCPR.style.display = 'inline-flex';
@@ -167,7 +167,7 @@ export class ACLSStudioEngine {
     this.cycleCount = 1;
 
     const cprTimerVal = document.getElementById('cprTimerVal');
-    const timerProgress = document.getElementById('timerProgress') as SVGCircleElement | null;
+    const timerProgress = document.getElementById('timerProgress') as unknown as SVGCircleElement | null;
     const cycleBadge = document.getElementById('cprCycleBadge');
 
     if (cprTimerVal) cprTimerVal.textContent = '02:00';

@@ -4,7 +4,6 @@
  */
 
 import { HERBS_DATA } from '../data';
-import { openHerbModal } from '../renderer';
 
 export function renderHerbsFormulasView(): string {
   const herbsList = Object.entries(HERBS_DATA).map(([id, data]) => ({ id, ...data }));

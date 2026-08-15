@@ -72,7 +72,7 @@ export function initFunnelPlotBuilder(): void {
   let studiesData: FunnelStudyItem[] = JSON.parse(JSON.stringify(activePreset.studies));
 
   const tableBody = document.getElementById("fn-table-body");
-  const svgCanvas = document.getElementById("fn-svg-canvas") as SVGSVGElement | null;
+  const svgCanvas = document.getElementById("fn-svg-canvas") as unknown as SVGSVGElement | null;
   const presetSelect = document.getElementById("fn-preset-select") as HTMLSelectElement | null;
   const btnAddRow = document.getElementById("fn-btn-add-row");
 

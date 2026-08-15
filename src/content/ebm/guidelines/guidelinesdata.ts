@@ -9,10 +9,11 @@ import {
   DESIGNS,
   IMPACTS,
   CLINICAL_CONDITIONS,
-  JOURNAL_METRICS_DATABASE,
-  SAMPLE_STUDIES
+  JOURNAL_METRICS_DATABASE
 } from '../data';
 import { getJournalMetrics } from '../renderer';
+
+export const SAMPLE_STUDIES: any[] = [];
 
 export {
   SPECIALTIES,
@@ -21,7 +22,6 @@ export {
   IMPACTS,
   CLINICAL_CONDITIONS,
   JOURNAL_METRICS_DATABASE,
-  SAMPLE_STUDIES,
   getJournalMetrics
 };
 

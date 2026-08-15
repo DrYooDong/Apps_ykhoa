@@ -38,15 +38,6 @@ export * from './symptoms/symptoms-view';
 
 // Pediatrics (Nhi khoa) Specialization Modules
 export * from './specialties/pediatrics/nhi-khoa-view';
-export * from './specialties/pediatrics/tc-nuoi-duong-tre-em';
-export * from './specialties/pediatrics/tc-tim-bam-sinh';
-export * from './specialties/pediatrics/tc-tre-dau-bung';
-export * from './specialties/pediatrics/tc-tre-ho';
-export * from './specialties/pediatrics/tc-tre-kho-khe';
-export * from './specialties/pediatrics/tc-tre-roi-loan-tri-giac';
-export * from './specialties/pediatrics/tc-tre-sot';
-export * from './specialties/pediatrics/tc-tre-thieu-mau';
-export * from './specialties/pediatrics/tc-tre-tim';
 
 import { initApproachesHub } from './renderer';
 

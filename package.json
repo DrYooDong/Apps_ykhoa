@@ -5,7 +5,8 @@
   "main": "desktop/main-electron.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/copy-dist.js",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build && node scripts/copy-dist.js",
     "deploy": "npm run build && git subtree push --prefix dist origin gh-pages",
     "preview": "vite preview",
     "start": "electron desktop/main-electron.js",

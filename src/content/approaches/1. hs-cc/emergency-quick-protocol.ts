@@ -145,6 +145,63 @@ export function initCPRTimer(): void {
   });
 }
 
+let cprInterval: any = null;
+let cprSeconds = 120;
+let cprCycle = 1;
+let cprRunning = false;
+
+export function updateCprDisplay(): void {
+  const display = document.getElementById('cprTimerDisplay');
+  const badge = document.getElementById('cprCycleBadge');
+  if (display) {
+    const mins = Math.floor(cprSeconds / 60).toString().padStart(2, '0');
+    const secs = (cprSeconds % 60).toString().padStart(2, '0');
+    display.textContent = `${mins}:${secs}`;
+  }
+  if (badge) {
+    badge.textContent = `Chu kỳ ${cprCycle}`;
+  }
+}
+
+export function startCprTimer(): void {
+  if (cprRunning) return;
+  cprRunning = true;
+  cprInterval = setInterval(() => {
+    if (cprSeconds > 0) {
+      cprSeconds--;
+      updateCprDisplay();
+    } else {
+      cprSeconds = 120;
+      cprCycle++;
+      updateCprDisplay();
+      if (typeof window !== 'undefined') {
+        alert(`🚨 HẾT CHU KỲ ${cprCycle - 1} (2 PHÚT CPR): ĐÁNH GIÁ NHỊP & ĐỔI NGƯỜI ÉP TIM!`);
+      }
+    }
+  }, 1000);
+}
+
+export function stopCprTimer(): void {
+  if (cprInterval) {
+    clearInterval(cprInterval);
+    cprInterval = null;
+  }
+  cprRunning = false;
+}
+
+export function resetCprTimer(): void {
+  stopCprTimer();
+  cprSeconds = 120;
+  cprCycle = 1;
+  updateCprDisplay();
+}
+
+if (typeof window !== 'undefined') {
+  (window as any).startCprTimer = startCprTimer;
+  (window as any).stopCprTimer = stopCprTimer;
+  (window as any).resetCprTimer = resetCprTimer;
+}
+
 export function initEmergencyProtocols(): void {
   const tabs = document.querySelectorAll('.protocol-tab-btn');
   tabs.forEach(tab => {
@@ -157,7 +214,6 @@ export function initEmergencyProtocols(): void {
   });
 
   renderProtocol('cpr');
-  initCPRTimer();
 }
 
 if (typeof document !== 'undefined') {
@@ -167,3 +223,4 @@ if (typeof document !== 'undefined') {
     initEmergencyProtocols();
   }
 }
+

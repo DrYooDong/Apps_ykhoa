@@ -10,7 +10,7 @@ export function initVirtualICDList(
   items: any[],
   renderFn: (item: any, index: number) => HTMLElement | string
 ): VirtualList {
-  return new VirtualList({
+  return new (VirtualList as any)({
     containerEl: containerEl,
     items: items,
     itemHeight: 64,

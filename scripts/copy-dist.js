@@ -32,4 +32,30 @@ if (fs.existsSync(srcComponentsPath)) {
   console.log('[Post-Build] Copied src/components -> dist/src/components');
 }
 
+// Copy specific root files (.nojekyll, manifest.json, sw.js)
+const rootFilesToCopy = ['.nojekyll', 'manifest.json', 'sw.js'];
+rootFilesToCopy.forEach(file => {
+  const srcFile = path.join(rootDir, file);
+  const destFile = path.join(distDir, file);
+  if (fs.existsSync(srcFile)) {
+    fs.copyFileSync(srcFile, destFile);
+    console.log(`[Post-Build] Copied ${file} -> dist/${file}`);
+  }
+});
+
+// Ensure .nojekyll exists in dist/ for GitHub Pages
+const distNoJekyll = path.join(distDir, '.nojekyll');
+if (!fs.existsSync(distNoJekyll)) {
+  fs.writeFileSync(distNoJekyll, '');
+  console.log('[Post-Build] Created dist/.nojekyll');
+}
+
+// Create 404.html fallback for GitHub Pages SPA routing
+const distIndex = path.join(distDir, 'index.html');
+const dist404 = path.join(distDir, '404.html');
+if (fs.existsSync(distIndex)) {
+  fs.copyFileSync(distIndex, dist404);
+  console.log('[Post-Build] Created dist/404.html (SPA Fallback for GitHub Pages)');
+}
+
 console.log('[Post-Build] All static assets copied to dist/ successfully!');

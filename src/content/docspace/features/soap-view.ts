@@ -16,6 +16,7 @@ import { icdPicker } from './icd-picker';
 import { ebmBridge } from './ebm-bridge-view';
 import { drugPicker } from './drug-picker';
 import { resourcePicker } from './resource-picker';
+import { calculatorPicker } from './calculator-picker';
 import { openScorePickerModal } from '../tools/score-modal';
 import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
 
@@ -1435,15 +1436,7 @@ export function mountSoapController(profileId: string): void {
   });
 
   document.getElementById('btnIcdSoap')?.addEventListener('click', () => {
-    icdPicker.open((icd) => {
-      const aEl = document.getElementById('esAAssessment') as HTMLTextAreaElement;
-      if (aEl) {
-        const cur = aEl.value.trim();
-        const icdText = `${icd.code} - ${icd.name}`;
-        aEl.value = cur ? `${cur}\n• Chẩn đoán ICD-10: ${icdText}` : `• Chẩn đoán ICD-10: ${icdText}`;
-        aEl.focus();
-      }
-    });
+    icdPicker.open('esAAssessment');
   });
 
   document.getElementById('btnSearchEBM')?.addEventListener('click', () => {
@@ -1453,26 +1446,17 @@ export function mountSoapController(profileId: string): void {
   });
 
   document.getElementById('btnPrescribeSoap')?.addEventListener('click', () => {
-    drugPicker.open(undefined, (drug) => {
-      const pEl = document.getElementById('esPPlan') as HTMLTextAreaElement;
-      if (pEl) {
-        const cur = pEl.value.trim();
-        const drugText = `• ${drug.name}: ${drug.dosage?.standardAdult || ''} (${drug.brandNames?.join(', ') || ''})`;
-        pEl.value = cur ? `${cur}\n${drugText}` : drugText;
-        pEl.focus();
-      }
-    });
+    drugPicker.open('esPPlan');
   });
 
   document.getElementById('btnSkillSoap')?.addEventListener('click', () => {
-    resourcePicker.open((res) => {
-      const pEl = document.getElementById('esPPlan') as HTMLTextAreaElement;
-      if (pEl) {
-        const cur = pEl.value.trim();
-        const resText = `• Kỹ thuật / Thủ thuật: ${res.title}`;
-        pEl.value = cur ? `${cur}\n${resText}` : resText;
-        pEl.focus();
-      }
+    resourcePicker.open({
+      title: 'Kho Kỹ năng & Thủ thuật',
+      icon: 'fa-solid fa-hand-holding-medical',
+      jsonUrl: 'content/skills/index.json',
+      mode: 'insertText',
+      targetInputId: 'esPPlan',
+      prefixText: '- Chỉ định thực hiện: '
     });
   });
 

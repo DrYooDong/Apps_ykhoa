@@ -90,7 +90,7 @@ export function renderMeridianAcupointsView(): string {
 
             <div style="border-top: 1px dashed #e2e8f0; padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
               <span style="font-size: 0.75rem; color: #dc2626; font-weight: 600;">
-                ${pt.contra ? '⚠️ ' + pt.contra : 'Day bấm 1-3 phút'}
+                ${(pt as any).contra ? '⚠️ ' + (pt as any).contra : 'Day bấm 1-3 phút'}
               </span>
               <button onclick="alert('Đang xem đồ họa 3D huyệt vị: ${pt.name}')" style="background: #0d9488; color: #fff; border: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer;">
                 Chi tiết <i class="fa-solid fa-arrow-right"></i>

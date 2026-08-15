@@ -62,7 +62,7 @@ export function initRocCurveBuilder(): void {
   let rocData: RocDataPoint[] = JSON.parse(JSON.stringify(activePreset.points));
 
   const tableBody = document.getElementById("roc-table-body");
-  const svgCanvas = document.getElementById("roc-svg-canvas") as SVGSVGElement | null;
+  const svgCanvas = document.getElementById("roc-svg-canvas") as unknown as SVGSVGElement | null;
   const presetSelect = document.getElementById("roc-preset-select") as HTMLSelectElement | null;
   const btnAddRow = document.getElementById("roc-btn-add-row");
 

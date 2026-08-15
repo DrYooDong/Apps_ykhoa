@@ -88,7 +88,7 @@ export function initKaplanMeierBuilder(): void {
   let kmData: KMDataPoint[] = JSON.parse(JSON.stringify(activePreset.points));
 
   const tableBody = document.getElementById("km-table-body");
-  const svgCanvas = document.getElementById("km-svg-canvas") as SVGSVGElement | null;
+  const svgCanvas = document.getElementById("km-svg-canvas") as unknown as SVGSVGElement | null;
   const presetSelect = document.getElementById("km-preset-select") as HTMLSelectElement | null;
   const btnAddRow = document.getElementById("km-btn-add-row");
 
