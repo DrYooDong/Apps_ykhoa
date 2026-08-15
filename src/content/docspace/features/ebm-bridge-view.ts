@@ -173,42 +173,11 @@ export class EbmBridge {
   }
 
   public async loadEbmData(): Promise<void> {
-    if (typeof (window as any).SAMPLE_STUDIES !== 'undefined' && Array.isArray((window as any).SAMPLE_STUDIES)) {
+    if (typeof (window as any).studies !== 'undefined' && Array.isArray((window as any).studies) && (window as any).studies.length > 0) {
       return;
     }
-
-    const candidatePaths = [
-      'src/content/ebm/guidelines/guidelinesdata.js',
-      '/src/content/ebm/guidelines/guidelinesdata.js',
-      './src/content/ebm/guidelines/guidelinesdata.js',
-      '../src/content/ebm/guidelines/guidelinesdata.js',
-      'content/ebm/guidelines/guidelinesdata.js',
-      '/content/ebm/guidelines/guidelinesdata.js',
-    ];
-
-    for (const path of candidatePaths) {
-      try {
-        await new Promise<void>((resolve, reject) => {
-          const script = document.createElement('script');
-          script.src = path;
-          script.onload = () => {
-            if (typeof (window as any).SAMPLE_STUDIES !== 'undefined' && Array.isArray((window as any).SAMPLE_STUDIES)) {
-              resolve();
-            } else {
-              script.remove();
-              reject(new Error('Loaded script but SAMPLE_STUDIES invalid'));
-            }
-          };
-          script.onerror = () => {
-            script.remove();
-            reject(new Error(`Failed to load ${path}`));
-          };
-          document.head.appendChild(script);
-        });
-        return;
-      } catch {
-        // Try next path
-      }
+    if (typeof (window as any).loadStudies === 'function') {
+      (window as any).loadStudies();
     }
   }
 

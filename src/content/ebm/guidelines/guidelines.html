@@ -904,6 +904,7 @@ create policy "Allow anon delete" on clinical_guidelines for delete using (true)
           
           <div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.25rem; flex-wrap: wrap;">
             <button type="button" class="btn" onclick="testSupabaseConnection()" style="color: var(--accent); border-color: var(--accent-light);">🔍 Test kết nối</button>
+            <button type="button" class="btn" onclick="syncAllLocalToSupabase()" style="color: #0284c7; border-color: #38bdf8;" title="Đẩy toàn bộ nghiên cứu/hướng dẫn trên máy lên Supabase Cloud"><i class="fa-solid fa-cloud-arrow-up"></i> Đẩy toàn bộ lên Cloud</button>
             <button type="button" class="btn" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" onclick="clearSupabaseConfig()"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>
             <button type="button" class="btn" onclick="closeSupabaseModal()">Hủy</button>
             <button type="submit" class="btn btn-primary">💾 Lưu & Kết nối</button>
@@ -1330,24 +1331,10 @@ create policy "Allow anon delete" on clinical_guidelines for delete using (true)
   <script src="../js/ebm-format-loader.js"></script>
   <!-- Load ICD-10 Data -->
   <script src="../../../../js/data/icd10-data.js"></script>
-  <script src="guidelinesdata.js"></script>
-  <script src="data/predatory-blacklist.js"></script>
-  <script src="js/openalex-service.js"></script>
-  <script src="js/journal-trust-scorer.js"></script>
   <!-- Supabase JS Client Library -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/guideline-sync.js"></script>
-  <script src="js/guideline-charts-engine.js"></script>
-  <script src="js/guideline-table.js"></script>
-  <script src="js/guideline-modals.js"></script>
-  <script src="js/drug-linker.js"></script>
-  <script src="js/guideline-visualizations.js"></script>
-  <script src="js/guideline-evidence-analytics.js"></script>
-  <script src="js/guideline-cmd-palette.js"></script>
-  <script src="js/guideline-cdss.js"></script>
-  <script src="js/guideline-compare-matrix.js"></script>
-  <script src="js/guideline-tools.js"></script>
-  <script src="guidelines.js"></script>
+  <!-- Main Guidelines TypeScript Entry -->
+  <script type="module" src="./guidelines.ts"></script>
 </body>
 </html>
 
