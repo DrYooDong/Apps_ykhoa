@@ -18,7 +18,7 @@ updated: "2026-08-11"
 
 > Trung tâm điều hành lâm sàng hỗ trợ tra cứu nhanh trong 30s với phím tắt `Ctrl + K` trên giao diện Web.
 
-- **🚨 Cấp cứu khẩn:** [[2. Hồi sức/MOC - Hồi sức Cấp cứu|Sốc phản vệ (Adrenaline)], [[2. Hồi sức/MOC - Hồi sức Cấp cứu|ACLS Ngừng tuần hoàn]]
+- **🚨 Cấp cứu khẩn:** [[2. Hồi sức/MOC - Hồi sức Cấp cứu|Sốc phản vệ (Adrenaline)], [[MOC - Hồi sức Cấp cứu|ACLS Ngừng tuần hoàn]]
 - **❤️ Tim mạch:** [[3. Nội tổng quát/MOC - Nội khoa|Phác đồ MONA ACS]], [[3. Nội tổng quát/MOC - Nội khoa|Hội chứng Mạch vành cấp]]
 - **🧪 Thận & Điện giải:** [[3. Nội tổng quát/MOC - Nội khoa|Công thức Na+ hiệu chỉnh]], [[3. Nội tổng quát/MOC - Nội khoa|Chỉnh liều thuốc suy thận eGFR]]
 - **📊 Thang điểm:** [[0. Kỹ năng/MOC - Kỹ năng Lâm sàng|Thang điểm Glasgow (GCS)]], [[9. Nhi khoa/MOC - Nhi khoa|Chỉ số APGAR sơ sinh]]
