@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CliniPortal - Phân hệ Hóa Sinh Y Học Toàn Diện (Biochemistry Hub) — 7 Khối Chuyên đề, 31 Bài học & Điểm ngọc Lâm sàng">
+    <title>Hóa Sinh Y Học – CliniPortal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../css/components/biochemistry-hub.css">
+
+    <script type="module" src="../../../components/header.ts" defer></script>
+    <script type="module" src="../../../components/footer.ts" defer></script>
+    <script src="../../../js/main.js" defer></script>
+    <script type="module" src="./biochemistry-hub.ts"></script>
+
+    <style>
+        body {
+            padding-top: 64px !important;
+            background-color: var(--color-bg, #f8fafc) !important;
+        }
+
+        .main-wrapper {
+            max-width: 1440px !important;
+            margin: 0 auto !important;
+            padding: 1.5rem 1.25rem 3rem 1.25rem !important;
+            width: 100% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Global Dynamic Injection -->
+    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+
+    <main class="main-wrapper">
+        <!-- 1. HERO MASTHEAD -->
+        <section class="biochem-hero">
+            <div class="hero-top-badge">
+                <i class="fa-solid fa-flask-vial"></i> Phân Hệ Y Học Cơ Sở • CliniPortal 2026
+            </div>
+            <h1 class="biochem-hero-title">Hóa Sinh Y Học & Chuyển Hóa Phân Tử</h1>
+            <p class="biochem-hero-desc">
+                Cầu nối toàn diện giữa <strong>Cơ chế Hóa sinh Phân tử</strong> (Harper's, Pratt) và <strong>Biện luận Lâm sàng tại Giường bệnh</strong> (ĐHYD 2024, Illustrated Clinical Biochemistry). Hệ thống hóa 7 Khối nền tảng, 31 Chuyên đề chi tiết và hơn 100+ Điểm ngọc Y học chứng cứ.
+            </p>
+
+            <!-- 2. QUICK STATS BENTO -->
+            <div class="biochem-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon-box" style="background: rgba(2, 132, 199, 0.12); color: #0284c7;">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <div class="stat-num">7</div>
+                        <div class="stat-label">Khối Kiến Thức</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon-box" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6;">
+                        <i class="fa-solid fa-book-medical"></i>
+                    </div>
+                    <div>
+                        <div class="stat-num">31</div>
+                        <div class="stat-label">Chuyên Đề Bài Học</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon-box" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <div>
+                        <div class="stat-num">112+</div>
+                        <div class="stat-label">Điểm Ngọc Lâm Sàng</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon-box" style="background: rgba(16, 185, 129, 0.12); color: #10b981;">
+                        <i class="fa-solid fa-arrows-spin"></i>
+                    </div>
+                    <div>
+                        <div class="stat-num">48</div>
+                        <div class="stat-label">Chu Trình Phản Ứng</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. METABOLIC PATHWAYS QUICK SWITCHER STRIP -->
+        <section class="pathways-strip-section">
+            <div class="section-header-flex">
+                <h2 class="section-title">
+                    <i class="fa-solid fa-diagram-project" style="color: var(--color-primary);"></i> Chu Trình Chuyển Hóa Trung Tâm (Quick Navigator)
+                </h2>
+            </div>
+
+            <div class="pathways-grid">
+                <!-- Krebs -->
+                <div class="pathway-card" style="--pathway-color: #f59e0b;" onclick="window.BiochemHub.selectPathway('pathway-krebs')">
+                    <div class="pathway-card-top">
+                        <div class="pathway-card-icon" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;">
+                            <i class="fa-solid fa-circle-notch"></i>
+                        </div>
+                        <div>
+                            <h3 class="pathway-card-name">Chu Trình Krebs (TCA Cycle)</h3>
+                            <span class="topic-code-badge" style="font-size: 0.7rem;">Ty thể • 8 Phản ứng</span>
+                        </div>
+                    </div>
+                    <p class="pathway-card-desc">Vòng oxy hóa chung của Glucid, Lipid, Protid tạo NADH, FADH2 và tiền chất sinh học.</p>
+                    <div class="pathway-card-footer">
+                        <span>Enzym chìa khóa</span>
+                        <span class="pathway-enzymes-tag">Citrate Synthase, IDH</span>
+                    </div>
+                </div>
+
+                <!-- Đường phân -->
+                <div class="pathway-card" style="--pathway-color: #10b981;" onclick="window.BiochemHub.selectPathway('pathway-glycolysis')">
+                    <div class="pathway-card-top">
+                        <div class="pathway-card-icon" style="background: rgba(16, 185, 129, 0.12); color: #10b981;">
+                            <i class="fa-solid fa-cubes"></i>
+                        </div>
+                        <div>
+                            <h3 class="pathway-card-name">Đường Phân (Glycolysis)</h3>
+                            <span class="topic-code-badge" style="font-size: 0.7rem;">Bào tương • 10 Phản ứng</span>
+                        </div>
+                    </div>
+                    <p class="pathway-card-desc">Thoái hóa Glucose thành Pyruvate (hiếu khí) hoặc Lactate (kỵ khí) sinh năng lượng nhanh.</p>
+                    <div class="pathway-card-footer">
+                        <span>Điểm khóa then chốt</span>
+                        <span class="pathway-enzymes-tag">PFK-1, Hexokinase</span>
+                    </div>
+                </div>
+
+                <!-- Beta Oxy hoa -->
+                <div class="pathway-card" style="--pathway-color: #ef4444;" onclick="window.BiochemHub.selectPathway('pathway-beta-ox')">
+                    <div class="pathway-card-top">
+                        <div class="pathway-card-icon" style="background: rgba(239, 68, 68, 0.12); color: #ef4444;">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <div>
+                            <h3 class="pathway-card-name">β-Oxy Hóa Acid Béo</h3>
+                            <span class="topic-code-badge" style="font-size: 0.7rem;">Ty thể • Vòng xoắn 4 bước</span>
+                        </div>
+                    </div>
+                    <p class="pathway-card-desc">Phân giải chuỗi carbon béo giải phóng Acetyl-CoA và Thể Ceton trong trạng thái đói / DKA.</p>
+                    <div class="pathway-card-footer">
+                        <span>Vận chuyển qua màng</span>
+                        <span class="pathway-enzymes-tag">CPT-1 Carnitine</span>
+                    </div>
+                </div>
+
+                <!-- Chu trinh Ure -->
+                <div class="pathway-card" style="--pathway-color: #8b5cf6;" onclick="window.BiochemHub.selectPathway('pathway-urea')">
+                    <div class="pathway-card-top">
+                        <div class="pathway-card-icon" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6;">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </div>
+                        <div>
+                            <h3 class="pathway-card-name">Chu Trình Ure (Urea Cycle)</h3>
+                            <span class="topic-code-badge" style="font-size: 0.7rem;">Gan • 5 Phản ứng</span>
+                        </div>
+                    </div>
+                    <p class="pathway-card-desc">Khử độc Amoniac (NH3) tế bào thành Ure hòa tan bài xuất qua thận; phòng ngừa hôn mê gan.</p>
+                    <div class="pathway-card-footer">
+                        <span>Khởi đầu tại ty thể</span>
+                        <span class="pathway-enzymes-tag">CPS-I, OTC</span>
+                    </div>
+                </div>
+
+                <!-- Bilirubin -->
+                <div class="pathway-card" style="--pathway-color: #eab308;" onclick="window.BiochemHub.selectPathway('pathway-bilirubin')">
+                    <div class="pathway-card-top">
+                        <div class="pathway-card-icon" style="background: rgba(234, 179, 8, 0.12); color: #eab308;">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <div>
+                            <h3 class="pathway-card-name">Chuyển Hóa Heme & Bilirubin</h3>
+                            <span class="topic-code-badge" style="font-size: 0.7rem;">Gan - Mật - Ruột</span>
+                        </div>
+                    </div>
+                    <p class="pathway-card-desc">Thoái hóa Hemoglobin hồng cầu già, liên hợp UGT1A1 và phân định 3 nhóm Vàng da lâm sàng.</p>
+                    <div class="pathway-card-footer">
+                        <span>Liên hợp tại gan</span>
+                        <span class="pathway-enzymes-tag">UGT1A1 Glucuronid</span>
+                    </div>
+                </div>
+
+                <!-- Purine / Uric acid -->
+                <div class="pathway-card" style="--pathway-color: #ec4899;" onclick="window.BiochemHub.selectPathway('pathway-purine')">
+                    <div class="pathway-card-top">
+                        <div class="pathway-card-icon" style="background: rgba(236, 72, 153, 0.12); color: #ec4899;">
+                            <i class="fa-solid fa-dna"></i>
+                        </div>
+                        <div>
+                            <h3 class="pathway-card-name">Thoái Hóa Purin & Acid Uric</h3>
+                            <span class="topic-code-badge" style="font-size: 0.7rem;">Cơ chế Bệnh Gout</span>
+                        </div>
+                    </div>
+                    <p class="pathway-card-desc">Chuyển hóa Adenin/Guanin tạo Acid Uric; Cơ chế tác dụng thuốc hạ urat máu Allopurinol / Febuxostat.</p>
+                    <div class="pathway-card-footer">
+                        <span>Đích tác dụng thuốc</span>
+                        <span class="pathway-enzymes-tag">Xanthine Oxidase</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CONTROLS BAR: SEARCH & FILTER -->
+        <section class="biochem-controls-bar">
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="biochem-search-input" id="biochemSearchInput" placeholder="Tìm theo tên bài học, enzym (PFK-1, AST, ALT...), xét nghiệm (Troponin, eGFR, Bilirubin) hoặc bệnh lý (Gout, DKA, PKU, G6PD)..." aria-label="Tìm kiếm chuyên đề hóa sinh">
+            </div>
+
+            <!-- Block Pills Navigation Filter -->
+            <nav class="blocks-filter-nav" id="biochemFilterNav" aria-label="Bộ lọc khối chuyên đề">
+                <!-- Sẽ được render tự động qua JS -->
+            </nav>
+        </section>
+
+        <!-- 5. TOPICS DIRECTORY BY BLOCKS -->
+        <div class="blocks-container" id="biochemBlocksContainer">
+            <!-- Sẽ được render động qua JS từ BIOCHEMISTRY_DATA -->
+        </div>
+    </main>
+
+    <!-- 6. QUICK PREVIEW MODAL / DRAWER -->
+    <div class="biochem-modal-backdrop" id="biochemModalBackdrop">
+        <div class="biochem-modal" id="biochemModalContainer" role="dialog" aria-modal="true">
+            <!-- Render động khi click bài học -->
+        </div>
+    </div>
+
+    <!-- Footer Global Dynamic Injection -->
+    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+</body>
+
+</html>

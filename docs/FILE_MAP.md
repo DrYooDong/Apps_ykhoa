@@ -401,8 +401,11 @@
 | File | Vai trò | Cấp thư mục |
 |------|---------|------------|
 | `src/content/pathophysiology/giai-phau-sinh-ly.html` | Web con 1: Hub Giải phẫu & Sinh lý (Phần 1 - Phần 7) | Cấp 2 |
+| `src/content/pathophysiology/co-che-benh-sinh.html` | Web con 2: Hub Cơ chế bệnh sinh & Sinh lý bệnh (Chuyên khoa) | Cấp 2 |
+| `src/content/pathophysiology/hoa-sinh.html` | **[MỚI]** Web con 3: Hub Hóa sinh Y Học Toàn Diện (7 Khối, 31 Chuyên đề, Harper & Clinical Biochemistry) | Cấp 2 |
+| `src/content/pathophysiology/biochemistry/**` | **[MỚI]** Kho Bài Viết Hóa Sinh Y Học (7 Khối, 31 Chuyên đề Markdown) | Cấp 3 |
+| `knowledge-vault/0. Hóa sinh y học/**` | **[MỚI]** Kho Obsidian Knowledge Vault Hóa Sinh Y Học | — |
 | `src/content/pathophysiology/sinh-ly-hoc.html` | Trang chuyển hướng tương thích (Redirect sang giai-phau-sinh-ly.html) | Cấp 2 |
-| `Sinh lý .../co-che-benh-sinh.html` | Web con 2: Hub Cơ chế bệnh sinh & Sinh lý bệnh (Chuyên khoa) | Cấp 2 |
 | `Sinh lý .../Sinhly-sinhlybenh.html` | Trang tổng hợp & Chuyển hướng tự động | Cấp 2 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_THA.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tăng huyết áp | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_ST.html` | Sinh lý bệnh & Cơ chế bệnh sinh Suy tim | Cấp 3 |

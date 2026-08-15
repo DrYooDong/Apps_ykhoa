@@ -1,0 +1,637 @@
+/**
+ * CLINI_PORTAL — BIOCHEMISTRY HUB STYLES
+ * Style chuyên biệt cho phân hệ Hóa Sinh Y Học (Module Cơ sở)
+ * Chuẩn Design Tokens, Bento Grid & Dark Mode
+ */
+
+/* ============================================================
+   1. HERO SECTION & MASTHEAD
+   ============================================================ */
+.biochem-hero {
+  position: relative;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(139, 92, 246, 0.12) 50%, rgba(16, 185, 129, 0.08) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl, 16px);
+  padding: 2.25rem 2rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .biochem-hero {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.18) 0%, rgba(139, 92, 246, 0.18) 50%, rgba(16, 185, 129, 0.1) 100%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
+}
+
+.biochem-hero::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.biochem-hero-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.biochem-hero-desc {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 850px;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+/* ============================================================
+   2. QUICK STATS BENTO
+   ============================================================ */
+.biochem-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.25rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary);
+}
+
+.stat-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin-top: 0.2rem;
+}
+
+/* ============================================================
+   3. METABOLIC PATHWAYS QUICK SWITCHER
+   ============================================================ */
+.pathways-strip-section {
+  margin-bottom: 2.25rem;
+}
+
+.section-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pathways-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.pathway-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.15rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pathway-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--pathway-color, var(--color-primary));
+  box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.1);
+}
+
+.pathway-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.pathway-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.pathway-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.35;
+}
+
+.pathway-card-desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 0.85rem;
+  flex-grow: 1;
+}
+
+.pathway-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed var(--color-border);
+  padding-top: 0.65rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.pathway-enzymes-tag {
+  background: var(--color-bg);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--pathway-color, var(--color-primary));
+}
+
+/* ============================================================
+   4. SEARCH & FILTER CONTROLS
+   ============================================================ */
+.biochem-controls-bar {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-input-wrapper i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.biochem-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.biochem-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.blocks-filter-nav {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: thin;
+}
+
+.block-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.block-filter-btn:hover {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: var(--color-primary);
+}
+
+.block-filter-btn.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* ============================================================
+   5. TOPICS DIRECTORY / BENTO LIST
+   ============================================================ */
+.blocks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.block-section {
+  scroll-margin-top: 80px;
+}
+
+.block-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 5px solid var(--block-color, var(--color-primary));
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.15rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.block-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.block-badge-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.block-header-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.block-header-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+.topic-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.topic-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.09);
+  border-color: var(--color-primary);
+}
+
+.topic-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.topic-code-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.topic-category-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.topic-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+}
+
+.topic-overview {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.topic-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+
+.topic-tag {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.topic-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.85rem;
+  margin-top: auto;
+}
+
+.btn-quick-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(2, 132, 199, 0.08);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-quick-preview:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.pearl-counter {
+  font-size: 0.78rem;
+  color: #f59e0b;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ============================================================
+   6. QUICK VIEW MODAL / DRAWER
+   ============================================================ */
+.biochem-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.biochem-modal-backdrop.open {
+  display: flex;
+}
+
+.biochem-modal {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl, 16px);
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  animation: modalPopIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPopIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-bg);
+}
+
+.modal-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.modal-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--color-text);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-section-box {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  padding: 1.15rem;
+}
+
+.modal-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.pearl-list, .reaction-list, .lab-list {
+  padding-left: 1.25rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.pearl-list li {
+  color: #b45309;
+}
+
+[data-theme="dark"] .pearl-list li {
+  color: #fbbf24;
+}
+
+.reaction-list code {
+  background: var(--color-surface);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   7. RESPONSIVE OPTIMIZATION
+   ============================================================ */
+@media (max-width: 768px) {
+  .biochem-hero {
+    padding: 1.5rem 1.15rem;
+  }
+  
+  .biochem-hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .biochem-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .pathways-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .topics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .block-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
