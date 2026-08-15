@@ -244,7 +244,7 @@
               </div>
 
               <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 0.75rem; padding-top: 0.6rem; border-top: 1px solid var(--border-light);">
-                ${item.study.file ? `<a href="${item.study.file}" target="_blank" class="btn btn-small btn-primary" style="font-size:0.75rem;">📝 Đọc Tóm Tắt Chi Tiết</a>` : ''}
+                ${item.study.file ? `<a href="${window.resolveStudyFile ? window.resolveStudyFile(item.study.file) : item.study.file}" class="btn btn-small btn-primary" style="font-size:0.75rem;">📝 Đọc Tóm Tắt Chi Tiết</a>` : ''}
                 <button class="btn btn-small" onclick="window.filterByStudyId && window.filterByStudyId('${item.study.id}'); closeCaseModal();" style="font-size:0.75rem;">📌 Nhảy tới bài này</button>
                 <button class="btn btn-small" onclick="window.addToCompare && window.addToCompare('${item.study.id}')" style="font-size:0.75rem;">🔄 Thêm vào So sánh</button>
                 <button class="btn btn-small" onclick="copyEbmClinicalNote(${idx})" style="font-size:0.75rem; color:var(--accent);">📋 Copy EBM Note</button>

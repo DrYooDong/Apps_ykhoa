@@ -13,6 +13,7 @@ export * from './guidelines/guidelines-view';
 export * from './guidelines/journal-quality-view';
 export * from './guidelines/guidelinesdata';
 export * from './guidelines/guideline-controller';
+export * from './guidelines/guideline-reader-view';
 export * from './guideline-radar/radar-view';
 export * from './ebm-lab/ebm-lab-view';
 export * from './ebm-lab/chart-views';

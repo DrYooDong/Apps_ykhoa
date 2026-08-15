@@ -60,7 +60,15 @@
 
   function resolveStudyFile(filePath) {
     if (!filePath) return '';
-    return filePath.replace(/^Kho Guidelines\//i, 'kho-guidelines/');
+    const normalized = filePath.replace(/^Kho Guidelines\//i, 'kho-guidelines/');
+    const cleanSlug = normalized.replace(/^kho-guidelines\//i, '').replace(/\.html$/i, '');
+    
+    // Nếu đang chạy trong môi trường SPA router (Vite/SPA hash)
+    if (typeof window !== 'undefined' && window.location && (window.location.hash.startsWith('#/') || !window.location.pathname.endsWith('.html'))) {
+      return `#/ebm/kho-guidelines/${cleanSlug}`;
+    }
+    
+    return normalized.startsWith('kho-guidelines/') ? normalized : `kho-guidelines/${normalized}`;
   }
 
   function getIcd10Name(code) {

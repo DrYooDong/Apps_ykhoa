@@ -22,8 +22,35 @@ export class CliniRouter {
 
   constructor() {
     if (typeof window !== 'undefined') {
+      // Check if URL pathname contains kho-guidelines direct path and auto-recover to SPA route
+      if (window.location.pathname && window.location.pathname.includes('kho-guidelines/')) {
+        const match = window.location.pathname.match(/kho-guidelines\/([^/]+?)(?:\.html)?$/i);
+        if (match && match[1] && match[1] !== 'index') {
+          window.location.replace(`/#/ebm/kho-guidelines/${match[1]}`);
+          return;
+        }
+      }
+
       window.addEventListener('hashchange', () => this.handleHashChange());
       window.addEventListener('DOMContentLoaded', () => this.handleHashChange());
+
+      // Global Link Interceptor for Guidelines and SPA routes
+      document.addEventListener('click', (e) => {
+        const target = (e.target as HTMLElement)?.closest('a');
+        if (!target) return;
+        const href = target.getAttribute('href');
+        if (!href) return;
+
+        // Catch static relative guideline links
+        if ((href.includes('kho-guidelines/') || href.endsWith('.html')) && !href.startsWith('http') && !href.startsWith('#')) {
+          const slugMatch = href.match(/(?:kho-guidelines\/)?([^/]+?)\.html$/i);
+          if (slugMatch && slugMatch[1] && slugMatch[1] !== 'index') {
+            e.preventDefault();
+            e.stopPropagation();
+            this.navigate(`/ebm/kho-guidelines/${slugMatch[1]}`);
+          }
+        }
+      }, true);
     }
   }
 

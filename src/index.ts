@@ -161,7 +161,8 @@ import {
   renderFunnelPlotView,
   renderKaplanMeierView,
   renderRocCurveView,
-  renderStatisticsHubView
+  renderStatisticsHubView,
+  renderGuidelineReader
 } from './content/ebm';
 import { 
   renderSkillsView, 
@@ -250,6 +251,14 @@ function initializeRoutes(): void {
     document.title = 'Kho Guidelines & Nghiên Cứu Lâm Sàng – CliniPortal';
     mountToApp(renderGuidelinesView());
     initGuidelinesHub();
+  });
+  router.register('/ebm/kho-guidelines/:slug', 'Chi Tiết Guideline Lâm Sàng', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderGuidelineReader(slug));
+  });
+  router.register('/ebm/guidelines/reader/:slug', 'Chi Tiết Guideline Lâm Sàng', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderGuidelineReader(slug));
   });
   router.register('/ebm/journal-quality', 'Đánh Giá Chất Lượng Tạp Chí', () => {
     document.title = 'Đánh Giá Tạp Chí Y Khoa (Journal QA) – CliniPortal';

@@ -19,6 +19,24 @@ export default defineConfig({
     }
   },
 
+  plugins: [
+    {
+      name: 'guidelines-spa-redirect',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url && (req.url.startsWith('/kho-guidelines/') || req.url.includes('/kho-guidelines/'))) {
+            const slug = req.url.split('/kho-guidelines/')[1].replace(/\.html.*$/, '');
+            if (slug && slug !== 'index') {
+              res.writeHead(302, { Location: `/#/ebm/kho-guidelines/${slug}` });
+              return res.end();
+            }
+          }
+          next();
+        });
+      }
+    }
+  ],
+
   server: {
     port: 3000,
     open: true,

@@ -650,7 +650,7 @@
           <td class="col-actions" onclick="event.stopPropagation()">
             <div style="display:flex; gap:4px; align-items:center; justify-content:center;">
               <button class="btn btn-small" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh">⚖️</button>
-              ${study.file ? `<a href="${window.resolveStudyFile ? window.resolveStudyFile(study.file) : study.file}" target="_blank" class="btn btn-small btn-primary" title="Đọc bài tóm tắt">📖</a>` : ''}
+              ${study.file ? `<a href="${window.resolveStudyFile ? window.resolveStudyFile(study.file) : study.file}" class="btn btn-small btn-primary" title="Đọc bài tóm tắt">📖</a>` : ''}
               <button class="btn btn-small" onclick="openEditModal('${study.id}')" title="Chỉnh sửa">✏️</button>
               <button class="btn btn-small btn-danger" onclick="deleteStudy('${study.id}')" title="Xóa nghiên cứu này">🗑️</button>
             </div>

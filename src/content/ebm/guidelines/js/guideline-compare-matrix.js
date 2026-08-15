@@ -162,7 +162,7 @@
               <td style="font-weight: 700; background: var(--surface-2); border: 1px solid var(--border-light); padding: 10px;">📝 Bài Tóm Tắt Chi Tiết</td>
               ${selectedStudies.map(s => `
                 <td style="border: 1px solid var(--border-light); padding: 10px;">
-                  ${s.file ? `<a href="${s.file}" target="_blank" class="btn btn-small btn-primary" style="font-size:0.72rem;">📖 Xem Trang Chi Tiết</a>` : '<span style="color:var(--text-muted);">Không có bài riêng</span>'}
+                  ${s.file ? `<a href="${window.resolveStudyFile ? window.resolveStudyFile(s.file) : s.file}" class="btn btn-small btn-primary" style="font-size:0.72rem;">📖 Xem Trang Chi Tiết</a>` : '<span style="color:var(--text-muted);">Không có bài riêng</span>'}
                 </td>
               `).join('')}
             </tr>
