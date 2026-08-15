@@ -270,12 +270,14 @@ window.getPathDepthPrefix = function() {
             item.appendChild(chevron);
           }
 
-          let physioUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|co-che-benh-sinh\.html/, 'giai-phau-sinh-ly.html');
-          let pathoUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html/, 'co-che-benh-sinh.html');
+          let physioUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|co-che-benh-sinh\.html|hoa-sinh\.html/, 'giai-phau-sinh-ly.html');
+          let pathoUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html|hoa-sinh\.html/, 'co-che-benh-sinh.html');
+          let biochemUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html|co-che-benh-sinh\.html/, 'hoa-sinh.html');
           if (!physioUrl.includes('giai-phau-sinh-ly.html')) {
             const baseDir = href.includes('/') ? href.substring(0, href.lastIndexOf('/') + 1) : '';
             physioUrl = baseDir + 'giai-phau-sinh-ly.html';
             pathoUrl = baseDir + 'co-che-benh-sinh.html';
+            biochemUrl = baseDir + 'hoa-sinh.html';
           }
 
           const menu = document.createElement('div');
@@ -288,6 +290,10 @@ window.getPathDepthPrefix = function() {
             <a href="${pathoUrl}" class="nav-dropdown-item">
               <span class="dropdown-item-icon">🔬</span>
               <span>CCBS - SBL</span>
+            </a>
+            <a href="${biochemUrl}" class="nav-dropdown-item">
+              <span class="dropdown-item-icon">🧪</span>
+              <span>Hóa Sinh</span>
             </a>
           `;
           wrapper.appendChild(menu);

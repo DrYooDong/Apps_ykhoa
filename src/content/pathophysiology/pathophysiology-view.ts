@@ -9,7 +9,7 @@ import '../../../css/components/module-dashboard.css';
 import '../../../css/components/physio-content.css';
 import '../../../css/components/formula-vault.css';
 
-export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' = 'all'): string {
+export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' | 'biochem' = 'all'): string {
   return `
     <div class="main-wrapper" id="mainContent" style="width: 100%; max-width: 1520px; margin: 0 auto; padding-bottom: 3rem;">
 
@@ -74,15 +74,19 @@ export function renderPathophysiologyView(activeTab: 'all' | 'sinhly' | 'ccbs' =
 
       <!-- HUB TABS -->
       <div class="hub-tabs-container" style="margin-bottom: 1.5rem;">
-        <div class="hub-tabs" style="display: flex; gap: 8px; border-bottom: 2px solid var(--color-border, #e2e8f0); padding-bottom: 8px;">
-          <button class="hub-tab-btn ${activeTab !== 'ccbs' ? 'active' : ''}" data-tab="physio-tab-content" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; font-weight: 700; border: none; background: transparent; cursor: pointer; border-radius: 8px; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <div class="hub-tabs" style="display: flex; gap: 8px; border-bottom: 2px solid var(--color-border, #e2e8f0); padding-bottom: 8px; overflow-x: auto;">
+          <button class="hub-tab-btn ${activeTab !== 'ccbs' && activeTab !== 'biochem' ? 'active' : ''}" data-tab="physio-tab-content" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; font-weight: 700; border: none; background: transparent; cursor: pointer; border-radius: 8px; display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap;">
             <i class="fa-solid fa-dna" style="color: var(--color-primary, #0284c7);"></i>
             <span>1. Sinh Lý Học (9 Hệ Cơ Quan)</span>
           </button>
-          <button class="hub-tab-btn ${activeTab === 'ccbs' ? 'active' : ''}" data-tab="patho-tab-content" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; font-weight: 700; border: none; background: transparent; cursor: pointer; border-radius: 8px; display: inline-flex; align-items: center; gap: 0.5rem;">
+          <button class="hub-tab-btn ${activeTab === 'ccbs' ? 'active' : ''}" data-tab="patho-tab-content" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; font-weight: 700; border: none; background: transparent; cursor: pointer; border-radius: 8px; display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap;">
             <i class="fa-solid fa-house-medical" style="color: #059669;"></i>
-            <span>2. Cơ Chế Bệnh Sinh & Sinh Lý Bệnh (16 Chuyên Khoa)</span>
+            <span>2. Cơ Chế Bệnh Sinh (16 Chuyên Khoa)</span>
           </button>
+          <a href="#/pathophysiology/hoa-sinh" class="hub-tab-btn" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; font-weight: 700; border: none; background: transparent; cursor: pointer; border-radius: 8px; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit; white-space: nowrap;">
+            <i class="fa-solid fa-flask-vial" style="color: #8b5cf6;"></i>
+            <span>3. Hóa Sinh Y Học (7 Khối, 31 Bài)</span>
+          </a>
         </div>
       </div>
 

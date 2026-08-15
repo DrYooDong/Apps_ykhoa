@@ -213,6 +213,8 @@ import {
   initPathophysiologyHub,
   renderGiaiPhauSinhLyView,
   renderCoCheBenhSinhView,
+  renderBiochemistryView,
+  initBiochemistryView,
   renderFormulaVaultView,
   renderPhysioReader,
   renderPhysioHtmlReader
@@ -644,6 +646,24 @@ function initializeRoutes(): void {
     initPathophysiologyHub();
   });
 
+  router.register('/pathophysiology/hoa-sinh', 'Hóa sinh Y học & Chuyển hóa', () => {
+    document.title = 'Hóa sinh Y học – CliniPortal';
+    mountToApp(renderBiochemistryView());
+    initBiochemistryView();
+  });
+
+  router.register('/pathophysiology/biochemistry', 'Hóa sinh Y học & Chuyển hóa', () => {
+    document.title = 'Hóa sinh Y học – CliniPortal';
+    mountToApp(renderBiochemistryView());
+    initBiochemistryView();
+  });
+
+  router.register('/biochemistry', 'Hóa sinh Y học & Chuyển hóa', () => {
+    document.title = 'Hóa sinh Y học – CliniPortal';
+    mountToApp(renderBiochemistryView());
+    initBiochemistryView();
+  });
+
   router.register('/pathophysiology/formula-vault', 'Kho Công thức Sinh lý', () => {
     document.title = 'Kho Công thức Sinh lý – CliniPortal';
     mountToApp(renderFormulaVaultView());
@@ -664,6 +684,12 @@ function initializeRoutes(): void {
     const part = params.part || 'part1';
     const slug = params.slug || '';
     mountToApp(renderPhysioHtmlReader(part, slug));
+  });
+
+  router.register('/pathophysiology/biochemistry/:block/:slug', 'Bài Giảng Hóa Sinh Y Học', (params) => {
+    const block = params.block || 'block1-biomolecules';
+    const slug = params.slug || '';
+    mountToApp(renderPhysioHtmlReader(block, slug));
   });
 
   router.register('/pathophysiology/cases/:slug', 'Cơ Chế Bệnh Sinh Lâm Sàng', (params) => {

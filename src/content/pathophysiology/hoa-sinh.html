@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CliniPortal - Phân hệ Hóa Sinh Y Học Toàn Diện (Biochemistry Hub) — 7 Khối Chuyên đề, 31 Bài học & Điểm ngọc Lâm sàng">
+    <meta name="description" content="CliniPortal - Module Hóa Sinh Y Học & Chuyển Hóa Phân Tử Lâm Sàng (7 Khối - 31 Chuyên Đề)">
     <title>Hóa Sinh Y Học – CliniPortal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,12 +17,16 @@
     <link rel="stylesheet" href="../../../css/components/header.css">
     <link rel="stylesheet" href="../../../css/components/sidebar.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../css/components/dashboard/dashboard-hub.css">
+    <link rel="stylesheet" href="../../../css/components/dashboard/dashboard-widgets.css">
+    <link rel="stylesheet" href="../../../css/components/dashboard/dashboard-specialty.css">
+    <link rel="stylesheet" href="../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="./css/physio-shared.css">
     <link rel="stylesheet" href="../../../css/components/biochemistry-hub.css">
 
     <script type="module" src="../../../components/header.ts" defer></script>
     <script type="module" src="../../../components/footer.ts" defer></script>
     <script src="../../../js/main.js" defer></script>
-    <script type="module" src="./biochemistry-hub.ts"></script>
 
     <style>
         body {
@@ -36,215 +40,1054 @@
             padding: 1.5rem 1.25rem 3rem 1.25rem !important;
             width: 100% !important;
         }
+
+        .dashboard-layout {
+            display: flex !important;
+            gap: 1.75rem !important;
+            align-items: flex-start !important;
+            width: 100% !important;
+        }
+
+        .layout-nav-sidebar {
+            width: 280px !important;
+            flex-shrink: 0 !important;
+            position: sticky !important;
+            top: 80px !important;
+        }
+
+        .layout-content-area {
+            flex: 1 !important;
+            min-width: 0 !important;
+        }
+
+        .specialty-card {
+            text-decoration: none;
+            color: inherit;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Header Global Dynamic Injection -->
-    <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+    <div id="siteHeaderContainer"></div>
 
-    <main class="main-wrapper">
-        <!-- 1. HERO MASTHEAD -->
-        <section class="biochem-hero">
-            <div class="hero-top-badge">
-                <i class="fa-solid fa-flask-vial"></i> Phân Hệ Y Học Cơ Sở • CliniPortal 2026
-            </div>
-            <h1 class="biochem-hero-title">Hóa Sinh Y Học & Chuyển Hóa Phân Tử</h1>
-            <p class="biochem-hero-desc">
-                Cầu nối toàn diện giữa <strong>Cơ chế Hóa sinh Phân tử</strong> (Harper's, Pratt) và <strong>Biện luận Lâm sàng tại Giường bệnh</strong> (ĐHYD 2024, Illustrated Clinical Biochemistry). Hệ thống hóa 7 Khối nền tảng, 31 Chuyên đề chi tiết và hơn 100+ Điểm ngọc Y học chứng cứ.
-            </p>
+    <div class="main-wrapper" id="mainContent">
 
-            <!-- 2. QUICK STATS BENTO -->
-            <div class="biochem-stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon-box" style="background: rgba(2, 132, 199, 0.12); color: #0284c7;">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
-                    <div>
-                        <div class="stat-num">7</div>
-                        <div class="stat-label">Khối Kiến Thức</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon-box" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6;">
-                        <i class="fa-solid fa-book-medical"></i>
-                    </div>
-                    <div>
-                        <div class="stat-num">31</div>
-                        <div class="stat-label">Chuyên Đề Bài Học</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon-box" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <div>
-                        <div class="stat-num">112+</div>
-                        <div class="stat-label">Điểm Ngọc Lâm Sàng</div>
-                    </div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-icon-box" style="background: rgba(16, 185, 129, 0.12); color: #10b981;">
-                        <i class="fa-solid fa-arrows-spin"></i>
-                    </div>
-                    <div>
-                        <div class="stat-num">48</div>
-                        <div class="stat-label">Chu Trình Phản Ứng</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. METABOLIC PATHWAYS QUICK SWITCHER STRIP -->
-        <section class="pathways-strip-section">
-            <div class="section-header-flex">
-                <h2 class="section-title">
-                    <i class="fa-solid fa-diagram-project" style="color: var(--color-primary);"></i> Chu Trình Chuyển Hóa Trung Tâm (Quick Navigator)
-                </h2>
-            </div>
-
-            <div class="pathways-grid">
-                <!-- Krebs -->
-                <div class="pathway-card" style="--pathway-color: #f59e0b;" onclick="window.BiochemHub.selectPathway('pathway-krebs')">
-                    <div class="pathway-card-top">
-                        <div class="pathway-card-icon" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;">
-                            <i class="fa-solid fa-circle-notch"></i>
-                        </div>
-                        <div>
-                            <h3 class="pathway-card-name">Chu Trình Krebs (TCA Cycle)</h3>
-                            <span class="topic-code-badge" style="font-size: 0.7rem;">Ty thể • 8 Phản ứng</span>
-                        </div>
-                    </div>
-                    <p class="pathway-card-desc">Vòng oxy hóa chung của Glucid, Lipid, Protid tạo NADH, FADH2 và tiền chất sinh học.</p>
-                    <div class="pathway-card-footer">
-                        <span>Enzym chìa khóa</span>
-                        <span class="pathway-enzymes-tag">Citrate Synthase, IDH</span>
-                    </div>
-                </div>
-
-                <!-- Đường phân -->
-                <div class="pathway-card" style="--pathway-color: #10b981;" onclick="window.BiochemHub.selectPathway('pathway-glycolysis')">
-                    <div class="pathway-card-top">
-                        <div class="pathway-card-icon" style="background: rgba(16, 185, 129, 0.12); color: #10b981;">
-                            <i class="fa-solid fa-cubes"></i>
-                        </div>
-                        <div>
-                            <h3 class="pathway-card-name">Đường Phân (Glycolysis)</h3>
-                            <span class="topic-code-badge" style="font-size: 0.7rem;">Bào tương • 10 Phản ứng</span>
-                        </div>
-                    </div>
-                    <p class="pathway-card-desc">Thoái hóa Glucose thành Pyruvate (hiếu khí) hoặc Lactate (kỵ khí) sinh năng lượng nhanh.</p>
-                    <div class="pathway-card-footer">
-                        <span>Điểm khóa then chốt</span>
-                        <span class="pathway-enzymes-tag">PFK-1, Hexokinase</span>
-                    </div>
-                </div>
-
-                <!-- Beta Oxy hoa -->
-                <div class="pathway-card" style="--pathway-color: #ef4444;" onclick="window.BiochemHub.selectPathway('pathway-beta-ox')">
-                    <div class="pathway-card-top">
-                        <div class="pathway-card-icon" style="background: rgba(239, 68, 68, 0.12); color: #ef4444;">
-                            <i class="fa-solid fa-fire"></i>
-                        </div>
-                        <div>
-                            <h3 class="pathway-card-name">β-Oxy Hóa Acid Béo</h3>
-                            <span class="topic-code-badge" style="font-size: 0.7rem;">Ty thể • Vòng xoắn 4 bước</span>
-                        </div>
-                    </div>
-                    <p class="pathway-card-desc">Phân giải chuỗi carbon béo giải phóng Acetyl-CoA và Thể Ceton trong trạng thái đói / DKA.</p>
-                    <div class="pathway-card-footer">
-                        <span>Vận chuyển qua màng</span>
-                        <span class="pathway-enzymes-tag">CPT-1 Carnitine</span>
-                    </div>
-                </div>
-
-                <!-- Chu trinh Ure -->
-                <div class="pathway-card" style="--pathway-color: #8b5cf6;" onclick="window.BiochemHub.selectPathway('pathway-urea')">
-                    <div class="pathway-card-top">
-                        <div class="pathway-card-icon" style="background: rgba(139, 92, 246, 0.12); color: #8b5cf6;">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                        </div>
-                        <div>
-                            <h3 class="pathway-card-name">Chu Trình Ure (Urea Cycle)</h3>
-                            <span class="topic-code-badge" style="font-size: 0.7rem;">Gan • 5 Phản ứng</span>
-                        </div>
-                    </div>
-                    <p class="pathway-card-desc">Khử độc Amoniac (NH3) tế bào thành Ure hòa tan bài xuất qua thận; phòng ngừa hôn mê gan.</p>
-                    <div class="pathway-card-footer">
-                        <span>Khởi đầu tại ty thể</span>
-                        <span class="pathway-enzymes-tag">CPS-I, OTC</span>
-                    </div>
-                </div>
-
-                <!-- Bilirubin -->
-                <div class="pathway-card" style="--pathway-color: #eab308;" onclick="window.BiochemHub.selectPathway('pathway-bilirubin')">
-                    <div class="pathway-card-top">
-                        <div class="pathway-card-icon" style="background: rgba(234, 179, 8, 0.12); color: #eab308;">
-                            <i class="fa-solid fa-droplet"></i>
-                        </div>
-                        <div>
-                            <h3 class="pathway-card-name">Chuyển Hóa Heme & Bilirubin</h3>
-                            <span class="topic-code-badge" style="font-size: 0.7rem;">Gan - Mật - Ruột</span>
-                        </div>
-                    </div>
-                    <p class="pathway-card-desc">Thoái hóa Hemoglobin hồng cầu già, liên hợp UGT1A1 và phân định 3 nhóm Vàng da lâm sàng.</p>
-                    <div class="pathway-card-footer">
-                        <span>Liên hợp tại gan</span>
-                        <span class="pathway-enzymes-tag">UGT1A1 Glucuronid</span>
-                    </div>
-                </div>
-
-                <!-- Purine / Uric acid -->
-                <div class="pathway-card" style="--pathway-color: #ec4899;" onclick="window.BiochemHub.selectPathway('pathway-purine')">
-                    <div class="pathway-card-top">
-                        <div class="pathway-card-icon" style="background: rgba(236, 72, 153, 0.12); color: #ec4899;">
-                            <i class="fa-solid fa-dna"></i>
-                        </div>
-                        <div>
-                            <h3 class="pathway-card-name">Thoái Hóa Purin & Acid Uric</h3>
-                            <span class="topic-code-badge" style="font-size: 0.7rem;">Cơ chế Bệnh Gout</span>
-                        </div>
-                    </div>
-                    <p class="pathway-card-desc">Chuyển hóa Adenin/Guanin tạo Acid Uric; Cơ chế tác dụng thuốc hạ urat máu Allopurinol / Febuxostat.</p>
-                    <div class="pathway-card-footer">
-                        <span>Đích tác dụng thuốc</span>
-                        <span class="pathway-enzymes-tag">Xanthine Oxidase</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. CONTROLS BAR: SEARCH & FILTER -->
-        <section class="biochem-controls-bar">
-            <div class="search-input-wrapper">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" class="biochem-search-input" id="biochemSearchInput" placeholder="Tìm theo tên bài học, enzym (PFK-1, AST, ALT...), xét nghiệm (Troponin, eGFR, Bilirubin) hoặc bệnh lý (Gout, DKA, PKU, G6PD)..." aria-label="Tìm kiếm chuyên đề hóa sinh">
-            </div>
-
-            <!-- Block Pills Navigation Filter -->
-            <nav class="blocks-filter-nav" id="biochemFilterNav" aria-label="Bộ lọc khối chuyên đề">
-                <!-- Sẽ được render tự động qua JS -->
-            </nav>
-        </section>
-
-        <!-- 5. TOPICS DIRECTORY BY BLOCKS -->
-        <div class="blocks-container" id="biochemBlocksContainer">
-            <!-- Sẽ được render động qua JS từ BIOCHEMISTRY_DATA -->
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
+            <a href="../../../#/index.html" style="color: inherit; text-decoration: none;">🏠 Trang chủ</a> &nbsp;/&nbsp;
+            <a href="./giai-phau-sinh-ly.html" style="color: inherit; text-decoration: none;">Cơ Sở Y Khoa</a> &nbsp;/&nbsp;
+            <span style="color: var(--color-primary, #0284c7); font-weight: 600;">Hóa Sinh Y Học & Chuyển Hóa (HS - CH)</span>
         </div>
-    </main>
 
-    <!-- 6. QUICK PREVIEW MODAL / DRAWER -->
-    <div class="biochem-modal-backdrop" id="biochemModalBackdrop">
-        <div class="biochem-modal" id="biochemModalContainer" role="dialog" aria-modal="true">
-            <!-- Render động khi click bài học -->
+        <!-- HERO SECTION -->
+        <section class="hero-dashboard hero-physio" aria-labelledby="hero-title" style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0284c7 100%); margin-bottom: 1.5rem;">
+            <div class="tcm-hero-content">
+                <div class="hero-intro">
+                    <h1 id="hero-title" style="color: #fff;">🧪 HÓA SINH Y HỌC & CHUYỂN HÓA</h1>
+                    <p style="color: rgba(255,255,255,0.92);">Hệ thống hóa cấu trúc phân tử sinh học, động học enzym, năng lượng sinh học ty thể, chuyển hóa 4 đại phân tử và biện luận xét nghiệm lâm sàng tại giường bệnh (EBM & Clinical Biochemistry).</p>
+                </div>
+                <div class="tcm-hero-decor">
+                    <!-- Molecular Rings & Flask SVG Decor -->
+                    <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="38" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.6"/>
+                        <polygon points="50,22 72,35 72,61 50,74 28,61 28,35" stroke="#ffffff" stroke-width="3.5" fill="rgba(56,189,248,0.15)" stroke-linejoin="round"/>
+                        <circle cx="50" cy="48" r="14" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4 3"/>
+                        <circle cx="50" cy="22" r="5" fill="#38bdf8"/>
+                        <circle cx="72" cy="35" r="5" fill="#ffffff"/>
+                        <circle cx="72" cy="61" r="5" fill="#38bdf8"/>
+                        <circle cx="50" cy="74" r="5" fill="#ffffff"/>
+                        <circle cx="28" cy="61" r="5" fill="#38bdf8"/>
+                        <circle cx="28" cy="35" r="5" fill="#ffffff"/>
+                        <line x1="72" y1="35" x2="88" y2="25" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="88" cy="25" r="4.5" fill="#fbbf24"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="hero-pattern"></div>
+        </section>
+
+        <!-- FEATURE BANNER -->
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
+            <div class="physio-step-card" style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
+                <div style="font-size: 2.2rem; background: rgba(2,132,199,0.1); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0;">🔬</div>
+                <div>
+                    <span style="font-size: 0.75rem; font-weight: 700; background: rgba(2,132,199,0.15); color: var(--color-primary, #0284c7); padding: 0.15rem 0.5rem; border-radius: 4px;">Chuẩn Y Khoa Toàn Diện</span>
+                    <h4 style="margin: 0.2rem 0; color: var(--color-text, #0f172a); font-size: 1.05rem; font-weight: 700;">7 Khối Chuyên Đề & 31 Bài Học</h4>
+                    <p style="margin: 0; font-size: 0.825rem; color: var(--color-text-muted, #64748b);">Tổng hòa 4 giáo trình: Hóa Sinh Y Học ĐHYD 2024, Harper 32nd, Clinical Biochemistry 7th & Pratt.</p>
+                </div>
+            </div>
+
+            <div class="physio-step-card" style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
+                <div style="font-size: 2.2rem; background: rgba(245,158,11,0.1); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0;">💡</div>
+                <div>
+                    <span style="font-size: 0.75rem; font-weight: 700; background: rgba(245,158,11,0.15); color: #d97706; padding: 0.15rem 0.5rem; border-radius: 4px;">EBM & Clinical Pearls</span>
+                    <h4 style="margin: 0.2rem 0; color: var(--color-text, #0f172a); font-size: 1.05rem; font-weight: 700;">112+ Điểm Ngọc & Biện Luận Xét Nghiệm</h4>
+                    <p style="margin: 0; font-size: 0.825rem; color: var(--color-text-muted, #64748b);">Gắn liền cơ chế enzym với bệnh lý lâm sàng (DKA, Gout, Suy gan, Hội chứng thận hư, Troponin HS).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTROL BAR / TOOLBAR -->
+        <div class="dashboard-controls" style="margin-bottom: 1.5rem;">
+            <div class="search-box-container">
+                <span class="search-icon-svg">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+                <input type="text" id="lesson-search" placeholder="Tìm kiếm chuyên đề hóa sinh (Krebs, Đường phân, Enzym, PFK-1, Bilirubin, Acid Uric, Troponin...)..." aria-label="Tìm kiếm chuyên đề hóa sinh">
+                <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm" style="display: none;">&times;</button>
+            </div>
+            <div class="view-toggle-container">
+                <span class="toggle-label">Chế độ xem:</span>
+                <div class="toggle-buttons">
+                    <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </button>
+                    <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách" aria-label="Xem dạng danh sách">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
+
+        <!-- DASHBOARD LAYOUT -->
+        <div class="dashboard-layout">
+            <!-- Navigation Sidebar (Sticky) -->
+            <aside class="layout-nav-sidebar" aria-label="Danh mục khối hóa sinh">
+                <div class="nav-sidebar-sticky" id="physio-nav">
+                    <h4 class="nav-sidebar-title">Khối Kiến Thức</h4>
+                    <ul class="part-nav-list">
+                        
+                            <li>
+                                <a href="#block-1-section" class="part-nav-item p1 active" data-target="block-1-section">
+                                    <span class="part-icon"><i class="fa-solid fa-cubes-stacked"></i></span>
+                                    <span class="part-text">B1. Nền tảng & Cấu trúc Phân tử Sinh học</span>
+                                    <span class="part-count-badge">6</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="#block-2-section" class="part-nav-item p2 " data-target="block-2-section">
+                                    <span class="part-icon"><i class="fa-solid fa-bolt-lightning"></i></span>
+                                    <span class="part-text">B2. Động học Xúc tác, Màng & Truyền tín hiệu</span>
+                                    <span class="part-count-badge">4</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="#block-3-section" class="part-nav-item p3 " data-target="block-3-section">
+                                    <span class="part-icon"><i class="fa-solid fa-fire-flame-curved"></i></span>
+                                    <span class="part-text">B3. Năng lượng Sinh học & Chuyển hóa Trung gian</span>
+                                    <span class="part-count-badge">3</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="#block-4-section" class="part-nav-item p4 " data-target="block-4-section">
+                                    <span class="part-icon"><i class="fa-solid fa-arrows-spin"></i></span>
+                                    <span class="part-text">B4. Chuyển hóa Chuyên biệt 4 Đại phân tử</span>
+                                    <span class="part-count-badge">5</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="#block-5-section" class="part-nav-item p5 " data-target="block-5-section">
+                                    <span class="part-icon"><i class="fa-solid fa-dna"></i></span>
+                                    <span class="part-text">B5. Sinh học Phân tử Y học & Kỹ thuật Gen</span>
+                                    <span class="part-count-badge">4</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="#block-6-section" class="part-nav-item p6 " data-target="block-6-section">
+                                    <span class="part-icon"><i class="fa-solid fa-network-wired"></i></span>
+                                    <span class="part-text">B6. Hóa sinh Cơ quan & Tích hợp Chuyển hóa</span>
+                                    <span class="part-count-badge">3</span>
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a href="#block-7-section" class="part-nav-item p7 " data-target="block-7-section">
+                                    <span class="part-icon"><i class="fa-solid fa-flask-vial"></i></span>
+                                    <span class="part-text">B7. Hóa sinh Lâm sàng, Dịch Sinh học & Biện luận</span>
+                                    <span class="part-count-badge">6</span>
+                                </a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="layout-content-area" id="lessons-container">
+                <!-- Empty Search State -->
+                <div id="empty-search-state" class="empty-search-state" style="display: none;">
+                    <div class="empty-search-icon">🔍</div>
+                    <h3>Không tìm thấy chuyên đề hóa sinh nào</h3>
+                    <p>Vui lòng thử từ khóa khác (ví dụ: Krebs, Đường phân, Troponin, Ure, Acid Uric, Bilirubin...).</p>
+                </div>
+
+                <!-- 7 BLOCKS SECTIONS -->
+                
+                        <section id="block-1-section" aria-labelledby="block-1-heading" style="margin-bottom: 2rem;">
+                            <div class="physio-group-container">
+                                <div class="physio-group-header">
+                                    <span class="physio-group-icon" style="color: #0284c7; background: rgba(2, 132, 199, 0.1);">
+                                        <i class="fa-solid fa-cubes-stacked"></i>
+                                    </span>
+                                    <div>
+                                        <h3 id="block-1-heading">B1. Nền tảng & Cấu trúc Phân tử Sinh học</h3>
+                                        <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">Nước, pH, hệ đệm và cấu trúc hóa sinh nền tảng của 4 đại phân tử: Glucid, Lipid, Protid và Acid Nucleic.</p>
+                                    </div>
+                                </div>
+
+                                <div class="specialty-grid">
+                                    
+                                        <a href="./biochemistry/block1-biomolecules/nuoc-ph-he-dem.html" class="specialty-card" data-topic-id="topic-01">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">
+                                                    <i class="fa-solid fa-cubes-stacked"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CHEM-01</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hóa học Nước, pH & Cân bằng Điện giải Nền tảng</h3>
+                                                    <p>Bản chất lưỡng cực của nước, liên kết Hydro, hiệu ứng kỵ nước, cơ chế đệm Bicarbonat, Phosphat và Proteinat trong duy trì pH sinh lý 7.35 - 7.45.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Nước</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#pH</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Hệ đệm</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block1-biomolecules/hoa-hoc-glucid.html" class="specialty-card" data-topic-id="topic-02">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">
+                                                    <i class="fa-solid fa-cubes-stacked"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CHEM-02</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hóa học Glucid (Carbohydrates)</h3>
+                                                    <p>Cấu tạo, đồng phân D/L, anomer α/β, dạng vòng Pyranose/Furanose của Monosacarid; Cấu trúc Disacarid và Polysacarid (Glycogen, Tinh bột, GAGs).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Glucid</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Monosacarid</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Haworth</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block1-biomolecules/hoa-hoc-lipid.html" class="specialty-card" data-topic-id="topic-03">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">
+                                                    <i class="fa-solid fa-cubes-stacked"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CHEM-03</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hóa học Lipid & Lipoprotein Màng</h3>
+                                                    <p>Phân loại Lipid thuần/tạp; Cấu tạo Acid béo bão hòa, chưa bão hòa (PUFA, Omega-3/6); Cấu trúc Phospholipid màng, Cholesterol và Khung Steroid sinh học.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Lipid</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Acid béo</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Phospholipid</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block1-biomolecules/hoa-hoc-protid.html" class="specialty-card" data-topic-id="topic-04">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">
+                                                    <i class="fa-solid fa-cubes-stacked"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CHEM-04</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hóa học Protid (Acid Amin, Peptid & Protein)</h3>
+                                                    <p>20 acid amin tiêu chuẩn, tính chất ion lưỡng tính, điểm đẳng điện (pI); Cấu trúc 4 bậc của Protein, các liên kết duy trì và hiện tượng biến tính.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Acid amin</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Protein</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Điện di</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block1-biomolecules/hoa-hoc-hemoglobin.html" class="specialty-card" data-topic-id="topic-05">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">
+                                                    <i class="fa-solid fa-cubes-stacked"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CHEM-05</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hóa học Hemoglobin, Myoglobin & Sắc tố Hô hấp</h3>
+                                                    <p>Cấu trúc Heme (Fe2+ + Protoporphyrin IX), Globin tetramer (α2β2), cơ chế kết hợp oxy có tính hợp tác (Allosteric), hiệu ứng Bohr và chất điều hòa 2,3-BPG.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Hemoglobin</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Heme</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Hiệu ứng Bohr</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block1-biomolecules/hoa-hoc-acid-nucleic.html" class="specialty-card" data-topic-id="topic-06">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(2, 132, 199, 0.1); color: #0284c7;">
+                                                    <i class="fa-solid fa-cubes-stacked"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CHEM-06</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hóa học Nucleotid & Acid Nucleic (DNA / RNA)</h3>
+                                                    <p>Cấu tạo Base Nitơ, Ribose/Deoxyribose, liên kết Phosphodiester; Cấu trúc chuỗi xoắn kép DNA, nhiệt độ nóng chảy (Tm); Các loại RNA chức năng.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#DNA</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#RNA</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Nucleotid</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section id="block-2-section" aria-labelledby="block-2-heading" style="margin-bottom: 2rem;">
+                            <div class="physio-group-container">
+                                <div class="physio-group-header">
+                                    <span class="physio-group-icon" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);">
+                                        <i class="fa-solid fa-bolt-lightning"></i>
+                                    </span>
+                                    <div>
+                                        <h3 id="block-2-heading">B2. Động học Xúc tác, Màng & Truyền tín hiệu</h3>
+                                        <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">Vitamin & Coenzym, Động học enzym Michaelis-Menten, cấu trúc màng sinh học và các con đường truyền tin tế bào (GPCR, RTK).</p>
+                                    </div>
+                                </div>
+
+                                <div class="specialty-grid">
+                                    
+                                        <a href="./biochemistry/block2-catalysis-signaling/vitamin-coenzym.html" class="specialty-card" data-topic-id="topic-07">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                                                    <i class="fa-solid fa-bolt-lightning"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CAT-01</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Vitamin & Coenzym Học</h3>
+                                                    <p>Phân loại, cấu trúc và vai trò coenzym của các Vitamin tan trong nước (B1-TPP, B2-FAD, B3-NAD, B6-PLP, B9-THF, B12) và Vitamin tan trong dầu (A, D, E, K).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Vitamin B</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Vitamin tan trong dầu</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Coenzym</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block2-catalysis-signaling/enzym-dong-hoc.html" class="specialty-card" data-topic-id="topic-08">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                                                    <i class="fa-solid fa-bolt-lightning"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CAT-02</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Enzym & Động học Enzym Học</h3>
+                                                    <p>Bản chất protein của enzym, trung tâm hoạt động, 6 lớp enzym (EC 1-6); Phương trình Michaelis-Menten, đồ thị Lineweaver-Burk; Ức chế cạnh tranh/không cạnh tranh; Isoenzym lâm sàng.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Enzym</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Michaelis-Menten</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Km</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block2-catalysis-signaling/mang-te-bao-van-chuyen.html" class="specialty-card" data-topic-id="topic-09">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                                                    <i class="fa-solid fa-bolt-lightning"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CAT-03</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Màng Sinh Học & Vận Chuyển Qua Màng</h3>
+                                                    <p>Mô hình khảm động, tính lỏng màng; Cơ chế khuếch tán đơn thuần, khuếch tán được hỗ trợ (Kênh ion, GLUT); Vận chuyển chủ động nguyên phát (Na+/K+-ATPase) và thứ phát (SGLT1).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Màng tế bào</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Bơm Na/K</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Aquaporin</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block2-catalysis-signaling/hormon-truyen-tin.html" class="specialty-card" data-topic-id="topic-10">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                                                    <i class="fa-solid fa-bolt-lightning"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">CAT-04</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hormon & Các Con Đường Truyền Tín Hiệu Tế Bào</h3>
+                                                    <p>Phân loại hormon; Cơ chế thụ thể màng gắn protein G (GPCR con đường cAMP-PKA, IP3/DAG-PKC); Thụ thể enzym Tyrosine Kinase (Insulin, GF); Thụ thể nhân gắn Steroid và T3/T4.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#GPCR</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#cAMP</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#IP3/DAG</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section id="block-3-section" aria-labelledby="block-3-heading" style="margin-bottom: 2rem;">
+                            <div class="physio-group-container">
+                                <div class="physio-group-header">
+                                    <span class="physio-group-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);">
+                                        <i class="fa-solid fa-fire-flame-curved"></i>
+                                    </span>
+                                    <div>
+                                        <h3 id="block-3-heading">B3. Năng lượng Sinh học & Chuyển hóa Trung gian</h3>
+                                        <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">Năng lượng tự do sinh học, chu trình Acid Citric (Krebs), chuỗi hô hấp tế bào ty thể và cơ chế phosphoryl hóa oxy hóa.</p>
+                                    </div>
+                                </div>
+
+                                <div class="specialty-grid">
+                                    
+                                        <a href="./biochemistry/block3-bioenergetics/nang-luong-sinh-hoc.html" class="specialty-card" data-topic-id="topic-11">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                                                    <i class="fa-solid fa-fire-flame-curved"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">ENG-01</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Đại Cương Chuyển Hóa & Năng Lượng Tự Do (ΔG)</h3>
+                                                    <p>Nguyên lý nhiệt động học sinh học, khái niệm năng lượng tự do Gibbs (ΔG°'), các dạng liên kết cao năng (~P: Phosphoenolpyruvate, Creatine phosphate, ATP); Cặp ghép phản ứng sinh học.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Năng lượng tự do</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#ΔG</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#ATP</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block3-bioenergetics/chu-trinh-krebs.html" class="specialty-card" data-topic-id="topic-12">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                                                    <i class="fa-solid fa-fire-flame-curved"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">ENG-02</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Phức Hợp Pyruvat Dehydrogenase & Chu Trình Acid Citric (Krebs)</h3>
+                                                    <p>Cơ chế 3 enzym & 5 coenzym của phức hợp PDH; 8 phản ứng của chu trình Krebs; Năng lượng tạo thành (3 NADH, 1 FADH2, 1 GTP); Tính chất lưỡng tính (Amphibolic) và phản ứng bổ sung cơ chất.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Chu trình Krebs</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Pyruvate Dehydrogenase</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Acetyl-CoA</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block3-bioenergetics/chuoi-ho-hap-etc.html" class="specialty-card" data-topic-id="topic-13">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                                                    <i class="fa-solid fa-fire-flame-curved"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">ENG-03</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Chuỗi Hô Hấp Tế Bào Ty Thể & Phosphoryl Hóa Oxy Hóa</h3>
+                                                    <p>4 phức hợp màng trong ty thể (Complex I - IV), Coenzyme Q, Cytochrome c; Thuyết hóa thẩm Mitchell tạo gradient proton; Hoạt động của FoF1-ATP Synthase; Chất ức chế và chất phá ghép; Gốc tự do ROS.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#ETC</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Ty thể</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#ATP Synthase</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section id="block-4-section" aria-labelledby="block-4-heading" style="margin-bottom: 2rem;">
+                            <div class="physio-group-container">
+                                <div class="physio-group-header">
+                                    <span class="physio-group-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.1);">
+                                        <i class="fa-solid fa-arrows-spin"></i>
+                                    </span>
+                                    <div>
+                                        <h3 id="block-4-heading">B4. Chuyển hóa Chuyên biệt 4 Đại phân tử</h3>
+                                        <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">Chuyển hóa chi tiết Glucid (Đường phân, Tân tạo, HMP), Lipid (β-oxy hóa, FAS, Cholesterol), Protid (Ure), Hemoglobin & Purin/Gout.</p>
+                                    </div>
+                                </div>
+
+                                <div class="specialty-grid">
+                                    
+                                        <a href="./biochemistry/block4-intermediary-metabolism/chuyen-hoa-glucid.html" class="specialty-card" data-topic-id="topic-14">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                                    <i class="fa-solid fa-arrows-spin"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MET-01</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Chuyển Hóa Glucid Toàn Diện</h3>
+                                                    <p>Đường phân (10 phản ứng, enzym PFK-1); Tân tạo Glucose từ Lactate/Glycerol/Acid amin; Thoái hóa & Tổng hợp Glycogen; Nhánh HMP Shunt tạo NADPH; Chuyển hóa Fructose & Galactose.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Đường phân</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Tân tạo đường</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Glycogen</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block4-intermediary-metabolism/chuyen-hoa-lipid.html" class="specialty-card" data-topic-id="topic-15">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                                    <i class="fa-solid fa-arrows-spin"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MET-02</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Chuyển Hóa Lipid & Rối Loạn Lipoprotein Máu</h3>
+                                                    <p>Vận chuyển qua con thoi Carnitine & 4 phản ứng vòng xoắn β-oxy hóa; Sinh tổng hợp & thoái hóa Thể Ceton (DKA); Tổng hợp Acid béo qua FAS; Sinh tổng hợp Cholesterol; Chuyển hóa Chylomicron, VLDL, LDL, HDL.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#β-oxy hóa</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Thể Ceton</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Cholesterol</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block4-intermediary-metabolism/chuyen-hoa-protid.html" class="specialty-card" data-topic-id="topic-16">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                                    <i class="fa-solid fa-arrows-spin"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MET-03</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Chuyển Hóa Protid, Acid Amin & Chu Trình Ure</h3>
+                                                    <p>Thoái hóa chung acid amin (Chuyển amin qua AST/ALT, Khử amin oxy hóa qua GDH); Vận chuyển NH3 dạng Glutamin; 5 phản ứng chu trình Ure ở gan; Chuyển hóa chuyên biệt (Phenylalanin, Tyrosin, Tryptophan, Histidin).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Chu trình Ure</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Amoniac</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#AST/ALT</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block4-intermediary-metabolism/chuyen-hoa-hemoglobin-bilirubin.html" class="specialty-card" data-topic-id="topic-17">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                                    <i class="fa-solid fa-arrows-spin"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MET-04</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Chuyển Hóa Hemoglobin, Sắc Tố Mật & Vàng Da</h3>
+                                                    <p>Sinh tổng hợp Heme (ALA Synthase); Thoái hóa Hb tại hệ võng nội mô tạo Bilirubin tự do (gián tiếp); Liên hợp với acid glucuronic tại gan (UGT1A1); Bài tiết qua mật và tạo Urobilinogen / Stercobilin.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Hemoglobin</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Heme</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Bilirubin</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block4-intermediary-metabolism/chuyen-hoa-nucleotid-gout.html" class="specialty-card" data-topic-id="topic-18">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                                    <i class="fa-solid fa-arrows-spin"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MET-05</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Chuyển Hóa Nucleotid, Acid Uric & Bệnh Gout</h3>
+                                                    <p>Thoái hóa base Purin (Adenin/Guanin) thành Acid Uric nhờ enzym Xanthine Oxidase; Thoái hóa Pyrimidin; Sinh tổng hợp Purin/Pyrimidin theo con đường De novo và Tái sử dụng (Salvage pathway qua HGPRT).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Acid Uric</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Purin</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Bệnh Gout</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section id="block-5-section" aria-labelledby="block-5-heading" style="margin-bottom: 2rem;">
+                            <div class="physio-group-container">
+                                <div class="physio-group-header">
+                                    <span class="physio-group-icon" style="color: #ec4899; background: rgba(236, 72, 153, 0.1);">
+                                        <i class="fa-solid fa-dna"></i>
+                                    </span>
+                                    <div>
+                                        <h3 id="block-5-heading">B5. Sinh học Phân tử Y học & Kỹ thuật Gen</h3>
+                                        <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">Tái bản & Sửa sai DNA, Phiên mã & Xử lý RNA, Mã di truyền & Dịch mã, Kỹ thuật PCR, Real-time qPCR và Giải trình tự NGS.</p>
+                                    </div>
+                                </div>
+
+                                <div class="specialty-grid">
+                                    
+                                        <a href="./biochemistry/block5-molecular-genetics/tai-ban-sua-sai-dna.html" class="specialty-card" data-topic-id="topic-19">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                                                    <i class="fa-solid fa-dna"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MOL-01</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Tái Bản DNA & Các Cơ Chế Sửa Sai</h3>
+                                                    <p>Cơ chế bán bảo tồn của quá trình tái bản DNA; Chạc tái bản, đoạn Okazaki; Hoạt tính đọc sửa exonuclease 3'→5'; Các hệ thống sửa sai (BER, NER, Mismatch Repair MMR, Sửa đứt gãy sợi đôi NHEJ/HR).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Nhân đôi DNA</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Helicase</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#DNA Polymerase</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block5-molecular-genetics/phien-ma-bieu-hien-gen.html" class="specialty-card" data-topic-id="topic-20">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                                                    <i class="fa-solid fa-dna"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MOL-02</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Phiên Mã & Xử Lý Sau Phiên Mã</h3>
+                                                    <p>Quá trình phiên mã tạo RNA bởi RNA Polymerase; Cấu trúc Promoter, Enhancer; Xử lý tiền mRNA (Gắn mũ 5' Cap, Đuôi Poly-A 3', Cắt nối Intron Splicing); Điều hòa biểu hiện gen & Di truyền biểu sinh.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Phiên mã</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#RNA Polymerase</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Cắt nối Splicing</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block5-molecular-genetics/dich-ma-dot-bien-gen.html" class="specialty-card" data-topic-id="topic-21">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                                                    <i class="fa-solid fa-dna"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MOL-03</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Mã Di Truyền, Dịch Mã & Các Loại Đột Biến Gen</h3>
+                                                    <p>Bộ ba mã di truyền (Codon), tính thoái hóa; Cấu trúc và hoạt hóa tRNA; 3 giai đoạn dịch mã tại Ribosome (Khởi đầu, Kéo dài, Kết thúc); Phân loại đột biến gen (Missense, Nonsense, Frameshift).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Dịch mã</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Ribosome</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Mã di truyền</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block5-molecular-genetics/ky-thuat-pcr-ngs.html" class="specialty-card" data-topic-id="topic-22">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;">
+                                                    <i class="fa-solid fa-dna"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">MOL-04</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Kỹ Thuật Sinh Học Phân Tử Y Học (PCR, Real-time qPCR, NGS)</h3>
+                                                    <p>Nguyên lý phản ứng PCR cổ điển (Biến tính, Bắt cặp, Kéo dài); Real-time qPCR đo huỳnh quang (TaqMan probe); Giải trình tự gen Sanger và NGS thế hệ mới; Công nghệ CRISPR-Cas9.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#PCR</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Real-time PCR</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#NGS</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section id="block-6-section" aria-labelledby="block-6-heading" style="margin-bottom: 2rem;">
+                            <div class="physio-group-container">
+                                <div class="physio-group-header">
+                                    <span class="physio-group-icon" style="color: #06b6d4; background: rgba(6, 182, 212, 0.1);">
+                                        <i class="fa-solid fa-network-wired"></i>
+                                    </span>
+                                    <div>
+                                        <h3 id="block-6-heading">B6. Hóa sinh Cơ quan & Tích hợp Chuyển hóa</h3>
+                                        <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">Tích hợp chuyển hóa No - Đói - Đói kéo dài, Hóa sinh Máu & Dòng thác Đông máu, Hóa sinh Gan, Cơ vân, Thận và Khung ngoại bào.</p>
+                                    </div>
+                                </div>
+
+                                <div class="specialty-grid">
+                                    
+                                        <a href="./biochemistry/block6-organ-metabolism/tich-hop-dieu-hoa-chuyen-hoa.html" class="specialty-card" data-topic-id="topic-23">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.1); color: #06b6d4;">
+                                                    <i class="fa-solid fa-network-wired"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">ORG-01</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Tích Hợp & Điều Hòa Chuyển Hóa Toàn Thân</h3>
+                                                    <p>Mối liên kết giữa 3 ngã ba chuyển hóa (G6P, Pyruvate, Acetyl-CoA); Động học chuyển hóa ở trạng thái No (Well-fed), Đói sớm (Fasting), Đói kéo dài (Starvation); Phân công chuyển hóa giữa các cơ quan.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Trạng thái No</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Trạng thái Đói</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Hội chứng chuyển hóa</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block6-organ-metabolism/hoa-sinh-mau-dong-mau.html" class="specialty-card" data-topic-id="topic-24">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.1); color: #06b6d4;">
+                                                    <i class="fa-solid fa-network-wired"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">ORG-02</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hóa Sinh Máu, Huyết Tương & Dòng Thác Đông Máu</h3>
+                                                    <p>Protein huyết tương (Albumin tạo áp suất keo, Globulin miễn dịch); Chuyển hóa đặc thù của Hồng cầu (Thiếu ty thể, hoàn toàn phụ thuộc đường phân kỵ khí); Dòng thác đông máu nội sinh/ngoại sinh và hệ thống tiêu sợi huyết.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Đông máu</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Fibrinogen</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Albumin</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block6-organ-metabolism/hoa-sinh-gan-co-ecm.html" class="specialty-card" data-topic-id="topic-25">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(6, 182, 212, 0.1); color: #06b6d4;">
+                                                    <i class="fa-solid fa-network-wired"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">ORG-03</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Hóa Sinh Gan, Cơ, Thận & Khung Ngoại Bào (ECM)</h3>
+                                                    <p>Chức năng khử độc của Gan qua hệ Cytochrome P450 (Pha 1 oxy hóa, Pha 2 liên hợp); Hóa sinh co cơ actin-myosin và chu trình năng lượng phosphocreatine; Khung ngoại bào ECM (Collagen, Elastin, Laminin); Chuyển hóa khoáng xương (Calci, Phosphat, PTH, Calcitonin).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Khử độc Gan</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Cytochrome P450</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Collagen</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    
+                        <section id="block-7-section" aria-labelledby="block-7-heading" style="margin-bottom: 2rem;">
+                            <div class="physio-group-container">
+                                <div class="physio-group-header">
+                                    <span class="physio-group-icon" style="color: #ef4444; background: rgba(239, 68, 68, 0.1);">
+                                        <i class="fa-solid fa-flask-vial"></i>
+                                    </span>
+                                    <div>
+                                        <h3 id="block-7-heading">B7. Hóa sinh Lâm sàng, Dịch Sinh học & Biện luận</h3>
+                                        <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">Biện luận xét nghiệm chức năng Gan (LFTs), Thận (eGFR, uACR), Tim mạch (Troponin, BNP), Khí máu ABG, Điện giải và Dấu ấn Ung thư.</p>
+                                    </div>
+                                </div>
+
+                                <div class="specialty-grid">
+                                    
+                                        <a href="./biochemistry/block7-clinical-biochemistry/bien-luan-chuc-nang-gan.html" class="specialty-card" data-topic-id="topic-26">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                                                    <i class="fa-solid fa-flask-vial"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">LAB-01</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Biện Luận Xét Nghiệm Chức Năng Gan & Bệnh Lý Gan Mật</h3>
+                                                    <p>Phân tích và biện luận chuyên sâu bộ xét nghiệm LFTs: Nhóm hoại tử tế bào gan (AST, ALT, tỷ số De Ritis), Nhóm ứ mật tắc mật (GGT, ALP, Bilirubin), Nhóm chức năng tổng hợp (Albumin, PT/INR, Cholesterol).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#LFTs</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#AST/ALT</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#GGT</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block7-clinical-biochemistry/bien-luan-chuc-nang-than.html" class="specialty-card" data-topic-id="topic-27">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                                                    <i class="fa-solid fa-flask-vial"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">LAB-02</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Thăm Dò Chức Năng Thận & Tổng Phân Tích Nước Tiểu</h3>
+                                                    <p>Động học Creatinine huyết thanh, công thức ước tính độ lọc cầu thận eGFR (CKD-EPI 2021, Cockcroft-Gault); Giá trị của Cystatin C; Phân loại AKI (KDIGO) vs CKD; Tổng phân tích nước tiểu 10 thông số và tỷ lệ uACR.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#eGFR</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Creatinine</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#uACR</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block7-clinical-biochemistry/dau-an-tim-mach-troponin-bnp.html" class="specialty-card" data-topic-id="topic-28">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                                                    <i class="fa-solid fa-flask-vial"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">LAB-03</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Dấu Ấn Sinh Học Tim Mạch (Troponin hs, BNP & Lipid Tim Mạch)</h3>
+                                                    <p>Động học giải phóng Troponin tim siêu nhạy (hs-cTnT / hs-cTnI) trong nhồi máu cơ tim cấp theo phác đồ ESC 0/1h hoặc 0/2h; Peptid lợi niệu BNP / NT-proBNP trong chẩn đoán suy tim; Đánh giá nguy cơ xơ vữa qua Non-HDL-C và ApoB.</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Troponin hs</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#NT-proBNP</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Nhồi máu cơ tim</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block7-clinical-biochemistry/dien-giai-toan-kiem-abg.html" class="specialty-card" data-topic-id="topic-29">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                                                    <i class="fa-solid fa-flask-vial"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">LAB-04</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Rối Loạn Điện Giải & Toan Kiềm Lâm Sàng (ABG Studio)</h3>
+                                                    <p>Tiếp cận hạ/tăng Natri máu theo áp lực thẩm thấu; Xử trí cấp cứu tăng Kali máu; Biện luận khí máu động mạch (ABG) 6 bước: Đánh giá toan/kiềm, hô hấp/chuyển hóa, Anion Gap huyết tương và Delta Gap (Δ/Δ).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#ABG</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Hạ Natri máu</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Tăng Kali máu</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block7-clinical-biochemistry/tham-do-noi-tiet-tsh-cortisol.html" class="specialty-card" data-topic-id="topic-30">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                                                    <i class="fa-solid fa-flask-vial"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">LAB-05</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Thăm Dò Chức Năng Nội Tiết (Trục Giáp, Thượng Thận & Tuyến Yên)</h3>
+                                                    <p>Đánh giá trục Tuyến yên - Giáp (TSH, FT4, FT3) trong Cường giáp / Suy giáp; Đánh giá trục Thượng thận (Cortisol sáng, ACTH, Nghiệm pháp ức chế Dexamethasone liều thấp/cao); Chẩn đoán và theo dõi Đái tháo đường (HbA1c, OGTT, C-peptide).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#TSH</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#FT4</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Cortisol</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                        <a href="./biochemistry/block7-clinical-biochemistry/dau-an-ung-thu-dich-sinh-hoc.html" class="specialty-card" data-topic-id="topic-31">
+                                            <div class="specialty-card-top">
+                                                <div class="specialty-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;">
+                                                    <i class="fa-solid fa-flask-vial"></i>
+                                                </div>
+                                                <div class="specialty-info">
+                                                    <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.25rem;">
+                                                        <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: var(--color-primary, #0284c7); padding: 0.1rem 0.4rem; border-radius: 4px;">LAB-06</span>
+                                                        <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-star" style="color: #f59e0b; font-size: 0.65rem;"></i> 2 Pearls</span>
+                                                    </div>
+                                                    <h3>Dấu Ấn Ung Thư (Tumor Markers) & Phân Tích Dịch Sinh Học</h3>
+                                                    <p>Chỉ định & giá trị theo dõi của các Dấu ấn Ung thư (CEA, AFP, CA 19-9, CA 125, PSA); Tiêu chuẩn Light phân biệt dịch thấm - dịch tiết màng phổi; Phân tích độ chênh Albumin huyết thanh - dịch báng (SAAG); Hóa sinh Dịch não tủy (CSF).</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                                                        <span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#Tumor Marker</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#CEA</span><span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#AFP</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="specialty-card-action">
+                                                <span>Xem bài</span>
+                                                <i class="fa-solid fa-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    
+            </main>
+        </div>
+
     </div>
 
-    <!-- Footer Global Dynamic Injection -->
-    <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+    <div id="siteFooterContainer"></div>
 </body>
 
 </html>

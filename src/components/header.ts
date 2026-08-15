@@ -69,6 +69,13 @@ export function renderHeaderHtml(projectRoot = './'): string {
                 <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
               </div>
             </a>
+            <a href="${root}#/pathophysiology/hoa-sinh" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🧪</span>
+              <div class="dropdown-item-text">
+                <strong>Hóa Sinh</strong>
+                <span>Hóa sinh Y học & Chuyển hóa</span>
+              </div>
+            </a>
           </div>
         </div>
         <a href="${root}#/ebm" class="header-module-btn" data-route="#/ebm" title="Y học chứng cứ">

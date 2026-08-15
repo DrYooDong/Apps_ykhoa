@@ -14,6 +14,7 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
   const baseSlugName = cleanSlug.replace(/\.html$/i, '');
   const cleanPart = part.toLowerCase();
   const isCaseStudy = cleanPart === 'cases' || cleanPart === 'co-che-benh-sinh' || cleanPart === 'pathophysiology-cases';
+  const isBiochem = cleanPart.startsWith('block') || cleanPart.startsWith('biochem');
 
   // Retrieve saved preferences from localStorage
   const savedWidthMode = typeof localStorage !== 'undefined' ? (localStorage.getItem('cp_reader_width') || 'wide') : 'wide';
@@ -31,19 +32,36 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
     part8: 'Phần 8: Sản Phụ Khoa',
     part9: 'Phần 9: Nhi Khoa',
     cases: 'Cơ Chế Bệnh Sinh & Bệnh Học',
-    'co-che-benh-sinh': 'Cơ Chế Bệnh Sinh & Bệnh Học'
+    'co-che-benh-sinh': 'Cơ Chế Bệnh Sinh & Bệnh Học',
+    'block1-biomolecules': 'Khối 1: Cấu Trúc Phân Tử',
+    'block2-catalysis-signaling': 'Khối 2: Động Học Xúc Tác & Tín Hiệu',
+    'block3-bioenergetics': 'Khối 3: Năng Lượng Sinh Học & ETC',
+    'block4-intermediary-metabolism': 'Khối 4: Chuyển Hóa 4 Đại Phân Tử',
+    'block5-molecular-genetics': 'Khối 5: Sinh Học Phân Tử & Gen',
+    'block6-organ-metabolism': 'Khối 6: Hóa Sinh Cơ Quan & Tích Hợp',
+    'block7-clinical-biochemistry': 'Khối 7: Hóa Sinh Lâm Sàng'
   };
 
-  const partName = partTitles[cleanPart] || `Phần ${cleanPart.replace('part', '')}`;
+  const partName = partTitles[cleanPart] || (isBiochem ? `Khối Hóa Sinh` : `Phần ${cleanPart.replace('part', '')}`);
 
   // Trigger async fetch after container mounts to DOM
   setTimeout(() => {
-    fetchAndHydratePhysioArticle(cleanPart, cleanSlug, baseSlugName, partName, isCaseStudy);
+    fetchAndHydratePhysioArticle(cleanPart, cleanSlug, baseSlugName, partName, isCaseStudy, isBiochem);
   }, 30);
 
-  const parentModuleUrl = isCaseStudy ? '#/pathophysiology/co-che-benh-sinh' : '#/pathophysiology/giai-phau-sinh-ly';
-  const parentModuleName = isCaseStudy ? 'CCBS - SBL' : 'GP - SL';
-  const partUrl = isCaseStudy ? '#/pathophysiology/co-che-benh-sinh' : `#/pathophysiology/giai-phau-sinh-ly#${cleanPart}-section`;
+  let parentModuleUrl = '#/pathophysiology/giai-phau-sinh-ly';
+  let parentModuleName = 'GP - SL';
+  let partUrl = `#/pathophysiology/giai-phau-sinh-ly#${cleanPart}-section`;
+
+  if (isCaseStudy) {
+    parentModuleUrl = '#/pathophysiology/co-che-benh-sinh';
+    parentModuleName = 'CCBS - SBL';
+    partUrl = '#/pathophysiology/co-che-benh-sinh';
+  } else if (isBiochem) {
+    parentModuleUrl = '#/pathophysiology/hoa-sinh';
+    parentModuleName = 'Hóa Sinh';
+    partUrl = `#/pathophysiology/hoa-sinh#${cleanPart}-section`;
+  }
 
   return `
     <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="physio-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding-bottom: 3.5rem; transition: all 0.25s ease;">
@@ -159,7 +177,7 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
 /**
  * Fetch, parse, and inject physiology or pathophysiology cases HTML content
  */
-async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, baseSlugName: string, partName: string, isCaseStudy: boolean): Promise<void> {
+async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, baseSlugName: string, partName: string, isCaseStudy: boolean, isBiochem = false): Promise<void> {
   const mountEl = document.getElementById('physio-article-mount');
   if (!mountEl) return;
 
@@ -175,6 +193,15 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
       `dist/src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
       `pages/Sinh lý - Sinh lý bệnh/SLB_CCBS/${cleanSlug}`,
       `/pages/Sinh lý - Sinh lý bệnh/SLB_CCBS/${cleanSlug}`
+    ];
+  } else if (isBiochem) {
+    candidatePaths = [
+      `/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
+      `src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
+      `./src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
+      `../src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
+      `/dist/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
+      `dist/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`
     ];
   } else {
     candidatePaths = [
@@ -204,15 +231,23 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
   }
 
   if (!htmlText) {
-    const returnUrl = isCaseStudy ? '#/pathophysiology/co-che-benh-sinh' : '#/pathophysiology/giai-phau-sinh-ly';
-    const returnText = isCaseStudy ? 'Cơ Chế Bệnh Sinh (CCBS)' : 'Giải Phẫu & Sinh Lý (GP-SL)';
+    let returnUrl = '#/pathophysiology/giai-phau-sinh-ly';
+    let returnText = 'Giải Phẫu & Sinh Lý (GP-SL)';
+
+    if (isCaseStudy) {
+      returnUrl = '#/pathophysiology/co-che-benh-sinh';
+      returnText = 'Cơ Chế Bệnh Sinh (CCBS)';
+    } else if (isBiochem) {
+      returnUrl = '#/pathophysiology/hoa-sinh';
+      returnText = 'Hóa Sinh Y Học (HS-CH)';
+    }
 
     mountEl.innerHTML = `
       <div style="max-width: 680px; margin: 4rem auto; text-align: center; padding: 3rem 2rem; background: var(--color-surface, #fff); border-radius: 16px; border: 1px solid #fca5a5; box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
         <i class="fa-solid fa-triangle-exclamation" style="font-size: 3.2rem; color: #dc2626; margin-bottom: 1.25rem;"></i>
         <h3 style="font-size: 1.3rem; font-weight: 800; color: #991b1b; margin-bottom: 0.75rem;">Không tìm thấy bài giảng</h3>
         <p style="color: #64748b; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem;">
-          Không thể tải tệp <code>${isCaseStudy ? 'pathophysiology-cases/' : part + '/'}${cleanSlug}</code>. Vui lòng kiểm tra lại đường dẫn hoặc quay lại danh mục.
+          Không thể tải tệp <code>${isCaseStudy ? 'pathophysiology-cases/' : (isBiochem ? 'biochemistry/' + part + '/' : part + '/')}${cleanSlug}</code>. Vui lòng kiểm tra lại đường dẫn hoặc quay lại danh mục.
         </p>
         <a href="${returnUrl}" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 0.65rem 1.35rem; background: var(--color-primary, #0284c7); color: #fff; border-radius: 8px; text-decoration: none; font-weight: 800;">
           <i class="fa-solid fa-arrow-left"></i> Quay lại ${returnText}
