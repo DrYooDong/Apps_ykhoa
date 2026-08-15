@@ -6,6 +6,22 @@
 import './styles/main.css';
 import './content/docspace/styles/docspace.css';
 
+// Core Subsystems & UI Modules
+import './main';
+import './core/category-mapper';
+import './data/clinical-cheatsheets-data';
+import './components/footer';
+import './core/pulse';
+import './knowledge/evidence-bridge';
+import './simulators/smart-recommender';
+import './components/clinical-heatmap';
+import './tools/good-day-calculator';
+import './effects/premium-interactions';
+import './dashboard/homepage-widgets';
+import './dashboard/homepage-effects';
+import './core/toc';
+import './core/mui-port';
+
 import { storageCore } from './core/storage';
 import { markdownCoreEngine } from './core/markdown-engine';
 import { clinicalCoreEngine } from './core/clinical-engine';
@@ -794,16 +810,27 @@ window.CliniPortalCore = {
 };
 
 // Bootup SPA Routes & Indexes
-// IMPORTANT: DocSpace specific routes must be registered BEFORE wildcard routes (/:category, /:category/:slug)
-initDocSpaceRoutes();
-initializeRoutes();
-router.init();
-setupGlobalQuickSearch();
+function initCliniPortal(): void {
+  // IMPORTANT: DocSpace specific routes must be registered BEFORE wildcard routes (/:category, /:category/:slug)
+  initDocSpaceRoutes();
+  initializeRoutes();
+  router.init();
+  setupGlobalQuickSearch();
+  syncSidebarActiveState();
 
-// Nạp chỉ mục tìm kiếm offline cho 7 phân hệ y khoa
-searchEngine.initAllIndexes().then(() => {
-  console.log('✅ CliniPortal 2.0 SPA Content Index Ready.');
-});
+  // Nạp chỉ mục tìm kiếm offline cho 7 phân hệ y khoa
+  searchEngine.initAllIndexes().then(() => {
+    console.log('✅ CliniPortal 2.0 SPA Content Index Ready.');
+  });
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCliniPortal);
+  } else {
+    initCliniPortal();
+  }
+}
 
 export {
   storageCore as storage,
