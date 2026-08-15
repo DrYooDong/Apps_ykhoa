@@ -93,6 +93,7 @@ function mountToApp(html: string): void {
     if (mainContent) mainContent.style.display = '';
     if (dock) dock.style.display = '';
     document.body.classList.remove('dsp-active');
+    document.body.classList.remove('guidelines-active');
     if (appContainer) {
       appContainer.style.display = 'none';
       appContainer.innerHTML = '';
@@ -104,6 +105,12 @@ function mountToApp(html: string): void {
       document.body.classList.add('dsp-active');
     } else {
       document.body.classList.remove('dsp-active');
+    }
+
+    if (cleanHash.startsWith('/ebm/guidelines') || cleanHash.startsWith('/ebm/kho-guidelines') || cleanHash.startsWith('ebm/guidelines') || cleanHash.startsWith('ebm/kho-guidelines')) {
+      document.body.classList.add('guidelines-active');
+    } else {
+      document.body.classList.remove('guidelines-active');
     }
     if (appContainer) {
       appContainer.style.display = 'block';

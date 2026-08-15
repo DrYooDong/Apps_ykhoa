@@ -81,6 +81,28 @@
 
 html { scroll-behavior: smooth; }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   HIDE GLOBAL SPA HEADER & FOOTER ON GUIDELINES FULL-SCREEN VIEW
+   ══════════════════════════════════════════════════════════════════════════ */
+body:has(#app .app-shell) .global-header,
+body:has(#app .app-shell) .global-footer,
+body:has(#app .app-shell) .floating-action-dock,
+body:has(#app .app-shell) #appSidebar,
+body.guidelines-active .global-header,
+body.guidelines-active .global-footer,
+body.guidelines-active .floating-action-dock,
+body.guidelines-active #appSidebar {
+  display: none !important;
+}
+
+body:has(#app .app-shell) #app,
+body.guidelines-active #app {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   font-size: 15px;
