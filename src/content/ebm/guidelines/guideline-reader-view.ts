@@ -320,10 +320,56 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
   hydrateGuidelineScripts(doc, mountEl);
 }
 
-/**
- * Execute embedded script logic to revive calculators & interactive features
- */
 function hydrateGuidelineScripts(doc: Document, mountEl: HTMLElement): void {
+  // 1. Direct Accordion Support for Guideline System Cards & Sections
+  mountEl.querySelectorAll('.sys-card-header, .accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const card = header.closest('.sys-card, .accordion-item');
+      if (card) {
+        card.classList.toggle('open');
+      }
+    });
+  });
+
+  // 2. Direct Filter Tabs Support
+  const filterBtns = mountEl.querySelectorAll('.sys-filter-btn');
+  const sysCards = mountEl.querySelectorAll('.sys-card');
+  if (filterBtns.length > 0 && sysCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        sysCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            (card as HTMLElement).style.display = 'block';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // 3. Direct Search Bar Support
+  const searchInput = mountEl.querySelector('#sysSearchInput') as HTMLInputElement | null;
+  if (searchInput && sysCards.length > 0) {
+    searchInput.addEventListener('input', (e) => {
+      const q = (e.target as HTMLInputElement).value.toLowerCase().trim();
+      sysCards.forEach(card => {
+        const text = card.textContent?.toLowerCase() || '';
+        if (!q || text.includes(q)) {
+          (card as HTMLElement).style.display = 'block';
+          if (q) card.classList.add('open');
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // 4. Safely Execute Embedded Script Logic
   const scripts = doc.querySelectorAll('script');
   scripts.forEach(script => {
     const code = script.textContent || '';
@@ -337,7 +383,7 @@ function hydrateGuidelineScripts(doc: Document, mountEl: HTMLElement): void {
     }
   });
 
-  // Ensure QuickNav smooth scrolling works inside SPA
+  // 5. Ensure QuickNav Smooth Scrolling
   mountEl.querySelectorAll('.quicknav-link, .pillar-tab').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');

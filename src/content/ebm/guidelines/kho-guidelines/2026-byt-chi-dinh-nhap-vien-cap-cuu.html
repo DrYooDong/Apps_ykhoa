@@ -1359,18 +1359,21 @@
   <script>
     // THEME TOGGLE
     const themeToggleBtn = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('cp_theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
+    if (themeToggleBtn) {
+      const currentTheme = localStorage.getItem('cp_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      updateThemeIcon(currentTheme);
 
-    themeToggleBtn.addEventListener('click', () => {
-      const activeTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', activeTheme);
-      localStorage.setItem('cp_theme', activeTheme);
-      updateThemeIcon(activeTheme);
-    });
+      themeToggleBtn.addEventListener('click', () => {
+        const activeTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', activeTheme);
+        localStorage.setItem('cp_theme', activeTheme);
+        updateThemeIcon(activeTheme);
+      });
+    }
 
     function updateThemeIcon(theme) {
+      if (!themeToggleBtn) return;
       themeToggleBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun" style="color:#f59e0b;"></i>' : '<i class="fa-solid fa-moon"></i>';
     }
 
@@ -1378,7 +1381,7 @@
     document.querySelectorAll('.sys-card-header').forEach(header => {
       header.addEventListener('click', () => {
         const card = header.closest('.sys-card');
-        card.classList.toggle('open');
+        if (card) card.classList.toggle('open');
       });
     });
 
@@ -1404,18 +1407,20 @@
 
     // SEARCH SYSTEMS
     const searchInput = document.getElementById('sysSearchInput');
-    searchInput.addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase().trim();
-      sysCards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        if (!q || text.includes(q)) {
-          card.style.display = 'block';
-          if (q) card.classList.add('open');
-        } else {
-          card.style.display = 'none';
-        }
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        sysCards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          if (!q || text.includes(q)) {
+            card.style.display = 'block';
+            if (q) card.classList.add('open');
+          } else {
+            card.style.display = 'none';
+          }
+        });
       });
-    });
+    }
 
     // PTS CALCULATOR LOGIC
     const ptsOptions = document.querySelectorAll('.calc-options .calc-btn');
