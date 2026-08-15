@@ -25,6 +25,7 @@ function loadFavorites(): string[] {
 
 function resolveToolLink(rawLink: string): string {
   if (!rawLink) return '#';
+  if (rawLink.startsWith('#')) return rawLink;
   const path = window.location.pathname.replace(/\\/g, '/');
   if (path.includes('/calculators/general/')) {
     return '../' + rawLink;

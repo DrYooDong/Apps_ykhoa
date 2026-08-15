@@ -85,7 +85,7 @@ export const SYMPTOM_MATRIX_DATA: Record<string, SymptomMatrixItem> = {
       "Sốt rét ác tính thể não (nếu có yếu tố dịch tễ)"
     ],
     actionText: "Mở lưu đồ tiếp cận Sốt",
-    actionUrl: "symptoms/systemic-symptoms/fever/tc-sot.html"
+    actionUrl: "#/approaches/trieu-chung"
   },
   daubung: {
     redFlags: [
@@ -102,7 +102,7 @@ export const SYMPTOM_MATRIX_DATA: Record<string, SymptomMatrixItem> = {
       "Thai ngoài tử cung vỡ (ở nữ độ tuổi sinh sản)"
     ],
     actionText: "Mở lưu đồ tiếp cận Đau bụng",
-    actionUrl: "symptoms/gastro-symptoms/abdominal-pain/tc-daubung.html"
+    actionUrl: "#/approaches/trieu-chung"
   },
   khotho: {
     redFlags: [
@@ -119,7 +119,7 @@ export const SYMPTOM_MATRIX_DATA: Record<string, SymptomMatrixItem> = {
       "Dị vật đường thở lớn hoặc phản vệ mức độ nặng"
     ],
     actionText: "Mở lưu đồ tiếp cận Khó thở",
-    actionUrl: "symptoms/than-phien-ho-hap-tim-mach/tc-khotho.html"
+    actionUrl: "#/approaches/trieu-chung"
   },
   daunguc: {
     redFlags: [
@@ -136,7 +136,7 @@ export const SYMPTOM_MATRIX_DATA: Record<string, SymptomMatrixItem> = {
       "Tràn khí màng phổi áp lực gây chèn ép tim cấp"
     ],
     actionText: "Mở lưu đồ tiếp cận Đau ngực",
-    actionUrl: "symptoms/than-phien-ho-hap-tim-mach/tc-daunguc.html"
+    actionUrl: "#/approaches/trieu-chung"
   },
   vangda: {
     redFlags: [
@@ -153,7 +153,7 @@ export const SYMPTOM_MATRIX_DATA: Record<string, SymptomMatrixItem> = {
       "Xơ gan mất bù giai đoạn cuối"
     ],
     actionText: "Mở lưu đồ tiếp cận Vàng da",
-    actionUrl: "symptoms/systemic-symptoms/tc-vangda.html"
+    actionUrl: "#/approaches/can-lam-sang"
   },
   phu: {
     redFlags: [
@@ -169,6 +169,6 @@ export const SYMPTOM_MATRIX_DATA: Record<string, SymptomMatrixItem> = {
       "Hội chứng thận hư cấp hoặc đợt cấp suy thận mạn"
     ],
     actionText: "Mở lưu đồ tiếp cận Phù",
-    actionUrl: "symptoms/systemic-symptoms/tc-phu.html"
+    actionUrl: "#/approaches/trieu-chung"
   }
 };

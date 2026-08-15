@@ -3,7 +3,7 @@
  * Đăng ký routes #/docspace/* vào CliniRouter và boot toàn bộ module
  */
 
-import { router } from '../core/router';
+import { router } from '../../core/router';
 import {
   getActiveProfile, getAllProfiles, createProfile, setActiveProfile,
   exportProfile, importProfile, exportProfileToFHIR, importProfileFromFHIR,

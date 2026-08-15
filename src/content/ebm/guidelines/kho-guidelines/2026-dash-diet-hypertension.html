@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Guideline Chế độ ăn DASH (Dietary Approaches to Stop Hypertension): Cơ chế sinh lý học mạch máu - thận, bảng khẩu phần khuyến nghị, bằng chứng DASH & DASH-Sodium, so sánh với Địa Trung Hải, bệnh lý đồng mắc và mô hình liên chuyên khoa.">
+  <title>Chế Độ Ăn DASH Trong Kiểm Soát Tăng Huyết Áp – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --lime: #65a30d; --lime-bg: #f7fee7; --lime-light: #d9f99d;
+      --accent: #0f6fb4;
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+      --border: #475569; --border-light: #334155;
+      --text: #f8fafc; --text-muted: #cbd5e1; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.15); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.15); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.15); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.15); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.15); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.15); --purple-light: rgba(221, 214, 254, 0.3);
+      --lime-bg: rgba(101, 163, 13, 0.15); --lime-light: rgba(217, 249, 157, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .btn-row { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(15, 23, 42, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .topnav-theme-toggle { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.1rem; padding: 0.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; transition: background var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--accent); }
+
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .badge-lime { background: var(--lime-bg); color: #3f6212; border: 1px solid var(--lime-light); }
+    .badge-orange { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    .badge-purple { background: var(--purple-bg); color: #5b21b6; border: 1px solid var(--purple-light); }
+
+    /* COR / LOE BADGES */
+    .ebm-badge-group { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; margin-right: 0.4rem; vertical-align: middle; }
+    .cor-badge, .loe-badge { padding: 0.2rem 0.55rem; border-radius: 8px; font-size: 0.72rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .cor-class-1 { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .cor-class-2a { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+    .loe-grade-a { background: rgba(16,185,129,0.12); color: #047857; border: 1px solid rgba(16,185,129,0.35); }
+    .loe-grade-b { background: rgba(59,130,246,0.12); color: #1d4ed8; border: 1px solid rgba(59,130,246,0.35); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #14532d 0%, #0f766e 40%, #0369a1 100%); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(74,222,128,0.2) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(56,189,248,0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; color: #a7f3d0; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 0.85rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #a7f3d0, #7dd3fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.96rem; opacity: 0.9; max-width: 800px; margin-bottom: 1.75rem; line-height: 1.65; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; font-size: 0.8rem; opacity: 0.85; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--lime); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--green); }
+
+    /* STATS HIGHLIGHT STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.25rem; text-align: center; transition: transform var(--tr); }
+    .stat-card:hover { transform: translateY(-2px); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+    .stat-lbl { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; margin-top: 0.35rem; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 960px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 110px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; gap: 0.75rem; }
+    .sec-hdr-icon { font-size: 1.25rem; color: var(--accent); }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .sec-body { padding: 1.6rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); margin: 1.5rem 0 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.5rem; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.86rem; line-height: 1.65; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox-title, .infobox > div > strong:first-child { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+
+    /* EBM RECOMMENDATION CARDS */
+    .ebm-rec-card { background: var(--surface-2); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1rem; }
+    .ebm-rec-card.class-1 { border-left-color: var(--green); }
+    .ebm-rec-card.class-2a { border-left-color: var(--blue); }
+    .ebm-rec-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.92rem; color: var(--text); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .ebm-rec-card-body { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* BENTO & MATRIX GRIDS */
+    .matrix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1.1rem; margin-bottom: 1.25rem; }
+    .matrix-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: all var(--tr); }
+    .matrix-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); border-color: var(--border); }
+    .matrix-card-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .matrix-card-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
+    .matrix-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); }
+    .matrix-card-servings { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--accent); margin-bottom: 0.5rem; }
+    .matrix-card-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* TABLE DESIGN */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0 1.25rem; border: 1px solid var(--border-light); border-radius: 12px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; text-align: left; }
+    .data-table th { background: var(--surface-2); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); }
+    .data-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.6; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: var(--surface-2); }
+    .rx-tag { display: inline-block; background: var(--surface); color: var(--text-muted); font-size: 0.74rem; font-family: 'JetBrains Mono', monospace; padding: 0.18rem 0.55rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.2rem 0.15rem 0; font-weight: 600; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .rx-tag.warning { background: var(--orange-bg); color: #92400e; border: 1px solid var(--orange-light); }
+    .rx-tag.info { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+
+    /* INTERACTIVE FLOWCHART & PATHWAYS */
+    .flow-container { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.5rem; margin: 1.25rem 0; }
+    .flow-step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .flow-step-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.1rem; border-top: 4px solid var(--accent); position: relative; }
+    .flow-step-card.c-kali { border-top-color: #eab308; }
+    .flow-step-card.c-magie { border-top-color: #10b981; }
+    .flow-step-card.c-canxi { border-top-color: #3b82f6; }
+    .flow-step-card.c-natri { border-top-color: #ef4444; }
+    .flow-step-card.c-lipid { border-top-color: #8b5cf6; }
+    .flow-step-num { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--text-faint); margin-bottom: 0.35rem; }
+    .flow-step-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 0.4rem; }
+    .flow-step-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .flow-step-impact { margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-light); font-size: 0.75rem; font-weight: 700; color: var(--green); display: flex; align-items: center; gap: 0.35rem; }
+
+    /* INTERPROFESSIONAL TEAM GRID */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .team-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.15rem; display: flex; flex-direction: column; gap: 0.5rem; transition: transform var(--tr); }
+    .team-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .team-header { display: flex; align-items: center; gap: 0.6rem; }
+    .team-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; background: var(--surface); border: 1px solid var(--border-light); }
+    .team-role { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); }
+    .team-role span { display: block; font-size: 0.72rem; font-weight: 500; color: var(--text-muted); }
+    .team-tasks { list-style: none; padding: 0; margin-top: 0.35rem; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.8rem; color: var(--text-muted); }
+    .team-tasks li { display: flex; align-items: flex-start; gap: 0.45rem; line-height: 1.45; }
+    .team-tasks li i { color: var(--accent); font-size: 0.75rem; margin-top: 0.25rem; flex-shrink: 0; }
+
+    /* CITATION & ACTION BUTTONS */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.84rem; color: var(--text-muted); line-height: 1.75; }
+    .citation-box strong { color: var(--text); }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { background: #0c568c; color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1.1rem; }
+      .matrix-grid, .flow-step-grid, .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <i class="fa-solid fa-arrow-left"></i>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Chế Độ Ăn DASH (Dietary Approaches to Stop Hypertension)</div>
+    <div class="topnav-badges">
+      <span class="badge badge-lime">Dinh dưỡng</span>
+      <span class="badge badge-blue">Tim mạch</span>
+      <button class="topnav-theme-toggle" id="themeToggle" title="Chuyển đổi giao diện Sáng/Tối">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <i class="fa-solid fa-apple-whole"></i> Hướng Dẫn Y Học Chứng Cứ — StatPearls 2026 / ACC/AHA 2025
+      </div>
+      <h1 class="hero-title">
+        <span>Dietary Approaches to Stop Hypertension (DASH Diet)</span>
+        Chế Độ Ăn DASH Trong Kiểm Soát Tăng Huyết Áp & Bệnh Lý Tim Mạch - Chuyển Hóa
+      </h1>
+      <p class="hero-subtitle">
+        Tổng quan sinh lý học mạch máu - thận, bảng khuyến nghị khẩu phần chuẩn hóa, bằng chứng từ các thử nghiệm bản lề DASH và DASH-Sodium, phân tích đối đầu với chế độ ăn Địa Trung Hải, ứng dụng trên các bệnh lý đồng mắc và mô hình liên chuyên khoa.
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><i class="fa-solid fa-user-doctor"></i> Tác giả: Sharon F. Daley, Elsa S. Vadakekut (StatPearls)</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-calendar-check"></i> Cập nhật: 2026 / Đồng thuận ACC/AHA & ADA</div>
+        <div class="hero-meta-item"><i class="fa-solid fa-book-bookmark"></i> PMID: 29494120</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-overview" class="pillar-tab p-1"><i class="fa-solid fa-heart-pulse"></i> 1. Tổng quan & Sinh lý</a>
+      <a href="#sec-servings" class="pillar-tab p-2"><i class="fa-solid fa-table-cells"></i> 2. Khẩu phần (Table 1)</a>
+      <a href="#sec-trials" class="pillar-tab p-3"><i class="fa-solid fa-diagram-project"></i> 3. Cơ chế & Thử nghiệm (Fig 1)</a>
+      <a href="#sec-compare" class="pillar-tab p-4"><i class="fa-solid fa-scale-balanced"></i> 4. DASH vs. Địa Trung Hải (Table 2)</a>
+      <a href="#sec-comorbidities" class="pillar-tab p-5"><i class="fa-solid fa-dna"></i> 5. Bệnh đồng mắc & Hiểu lầm</a>
+      <a href="#sec-interprofessional" class="pillar-tab p-6"><i class="fa-solid fa-users-viewfinder"></i> 6. Nhóm Liên Chuyên Khoa (Fig 2)</a>
+    </div>
+  </div>
+
+  <!-- STATS HIGHLIGHT STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">≥ 130/80</div>
+        <div class="stat-lbl">Mốc chẩn đoán Tăng huyết áp (mm Hg)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">1 – 13 mm Hg</div>
+        <div class="stat-lbl">Mức giảm Huyết áp Tâm thu qua thử nghiệm DASH</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">1,500 – 2,300</div>
+        <div class="stat-lbl">Mục tiêu Natri hàng ngày (mg/ngày)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">28%</div>
+        <div class="stat-lbl">Tỷ lệ đạt mục tiêu &lt; 1,500 mg sau 6 tháng (PREMIER)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: TỔNG QUAN & CƠ CHẾ SINH LÝ HỌC -->
+    <section class="sec-card" id="sec-overview">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-heart-pulse sec-hdr-icon"></i>
+        <div class="sec-title">1. Tổng Quan Dịch Tễ & Nguồn Gốc Thử Nghiệm Bản Lề DASH</div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="ebm-rec-card class-1">
+          <div class="ebm-rec-card-title">
+            <span class="ebm-badge-group">
+              <span class="cor-badge cor-class-1">COR Class I</span>
+              <span class="loe-badge loe-grade-a">LOE Grade A</span>
+            </span>
+            Khuyến cáo Thay đổi Lối sống & Dinh dưỡng Cốt lõi (ACC/AHA 2025)
+          </div>
+          <div class="ebm-rec-card-body">
+            Chế độ ăn DASH được khuyến nghị hàng đầu trong dự phòng và kiểm soát Tăng huyết áp ở mọi giai đoạn, giúp hạ huyết áp độc lập với việc giảm cân và hiệp đồng hiệu quả với điều trị nội khoa.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-globe"></i> Định Nghĩa, Dịch Tễ Học & Gánh Nặng Tăng Huyết Áp</div>
+        <p style="margin-bottom: 1rem;">
+          Tăng huyết áp được định nghĩa lâm sàng là mức huyết áp từ <strong>≥ 130/80 mm Hg</strong>. Đây là một vấn đề sức khỏe cộng đồng toàn cầu nghiêm trọng, ảnh hưởng đến <strong>hơn 1 tỷ người lớn trên toàn thế giới</strong> với tỷ lệ lưu hành dao động từ <strong>30% đến 45%</strong>.
+        </p>
+        <p style="margin-bottom: 1rem;">
+          Tăng huyết áp là yếu tố nguy cơ hàng đầu có thể thay đổi được đối với bệnh tim mạch, đột quỵ, bệnh thận mạn (CKD) và tử vong sớm, làm gia tăng đáng kể tỷ lệ tàn tật cũng như chi phí y tế. Tại Hoa Kỳ, gần một nửa số người trưởng thành mắc bệnh lý này, trong đó nhiều trường hợp chưa được chẩn đoán hoặc điều trị đầy đủ. Tình trạng này thường đồng mắc với béo phì và đái tháo đường, khuếch đại nguy cơ biến cố bất lợi.
+        </p>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-flask-vial"></i> Nguồn Gốc & Thiết Kế Thử Nghiệm Bản Lề DASH</div>
+        <p style="margin-bottom: 1rem;">
+          Chế độ ăn Tiếp cận Dinh dưỡng để Ngăn chặn Tăng huyết áp (<strong>Dietary Approaches to Stop Hypertension - DASH</strong>) bắt nguồn từ một thử nghiệm lâm sàng ngẫu nhiên, đa trung tâm được tiến hành vào <strong>đầu những năm 1990</strong> nhằm đánh giá tác động của mô hình ăn uống toàn diện lên huyết áp:
+        </p>
+        <div class="infobox success">
+          <i class="fa-solid fa-circle-check infobox-icon" style="color: var(--green);"></i>
+          <div>
+            <strong>Thử nghiệm can thiệp 8 tuần:</strong>
+            Những người tham gia tuân thủ kế hoạch ăn uống DASH (tập trung tăng cường trái cây, rau, ngũ cốc nguyên hạt, protein nạc, sữa ít béo; hạn chế natri, đường bổ sung và chất béo bão hòa) trong <strong>8 tuần</strong> đã đạt được mức giảm huyết áp lớn hơn đáng kể so với nhóm áp dụng chế độ ăn đối chứng.
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-microscope"></i> Cơ Chế Sinh Lý Học Tác Động Lên Hệ Mạch Máu</div>
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--lime-bg); color: var(--lime);">
+                <i class="fa-solid fa-wheat-awn"></i>
+              </div>
+              <div class="matrix-card-title">Carbohydrate Phức Hợp</div>
+            </div>
+            <div class="matrix-card-body">
+              Nguồn từ ngũ cốc nguyên hạt, trái cây chỉ số đường huyết thấp, rau lá xanh và các loại đậu giúp cung cấp năng lượng ổn định, bổ sung chất xơ hòa tan/không hòa tan và vi chất thiết yếu.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--blue-bg); color: var(--blue);">
+                <i class="fa-solid fa-droplet"></i>
+              </div>
+              <div class="matrix-card-title">Chất Béo Lành Mạnh</div>
+            </div>
+            <div class="matrix-card-body">
+              Axit béo chưa bão hòa (dầu ô liu, dầu hạt cải, bơ, quả hạch, hạt lanh, cá béo) giúp giảm viêm hệ thống, tăng HDL-C và giảm LDL-C, ngăn ngừa hình thành mảng xơ vữa.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--teal-bg); color: var(--teal);">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div class="matrix-card-title">Bộ Ba Khoáng Chất (K, Mg, Ca)</div>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Kali (K):</strong> Tăng đào thải Natri niệu, giảm co thắt cơ trơn.<br>
+              <strong>Magie (Mg):</strong> Chẹn kênh canxi tự nhiên, giãn mạch & cải thiện nội mô.<br>
+              <strong>Canxi (Ca):</strong> Duy trì phản ứng thành mạch & thư giãn cơ trơn.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--red-bg); color: var(--red);">
+                <i class="fa-solid fa-ban"></i>
+              </div>
+              <div class="matrix-card-title">Hạn Chế Natri & Nitrat</div>
+            </div>
+            <div class="matrix-card-body">
+              Giảm lượng Natri nạp vào giúp giảm thể tích dịch ngoại bào và giảm sức cản ngoại biên. Cắt giảm thịt chế biến sẵn giúp loại bỏ nitrat độc hại với nội mô.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: BẢNG KHUYẾN NGHỊ KHẨU PHẦN CỐT LÕI (TABLE 1) -->
+    <section class="sec-card" id="sec-servings">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-table-cells sec-hdr-icon"></i>
+        <div class="sec-title">2. Nguyên Tắc Cốt Lõi & Khuyến Nghị Khẩu Phần Ăn Hằng Ngày (Table 1)</div>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 0.85rem;">
+          Hiệu quả hạ huyết áp của chế độ ăn DASH không đến từ một chất dinh dưỡng đơn lẻ mà nhờ <strong>tác động hiệp đồng</strong> của mô hình ăn uống toàn diện, giàu chất xơ, kali, magie, canxi và hạn chế chất béo bão hòa cùng natri.
+        </p>
+
+        <div class="infobox info">
+          <i class="fa-solid fa-circle-info infobox-icon" style="color: var(--blue);"></i>
+          <div>
+            <strong>Table 1. Core Principles and Daily Serving Recommendations of the DASH Diet</strong>
+            <em>Nguồn: The DASH Diet: A Guide to Managing Hypertension Through Nutrition (Sharon F. Daley, Elsa S. Vadakekut — StatPearls, 2026)</em>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Nhóm thực phẩm (Food Group)</th>
+                <th style="width: 32%;">Khẩu phần hằng ngày (Daily Servings)</th>
+                <th style="width: 40%;">Vai trò dinh dưỡng chính (Key Nutritional Role)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Trái cây & Rau quả</strong><br>
+                  <span class="rx-tag preferred">Fruits & Vegetables</span>
+                </td>
+                <td>
+                  <strong>4 – 5 servings</strong> trái cây &<br>
+                  <strong>4 – 5 servings</strong> rau quả
+                </td>
+                <td>Cung cấp lượng lớn <strong>Kali, Magie</strong>, chất xơ hòa tan/không hòa tan và các chất chống oxy hóa dồi dào.</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Ngũ cốc nguyên hạt</strong><br>
+                  <span class="rx-tag preferred">Whole Grains</span>
+                </td>
+                <td><strong>6 – 8 servings</strong></td>
+                <td>Ngũ cốc ít tinh chế (gạo lứt, yến mạch, bánh mì nguyên cám), giàu chất xơ giúp no lâu, ổn định đường huyết và cung cấp vitamin nhóm B.</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Sữa ít béo hoặc không béo</strong><br>
+                  <span class="rx-tag preferred">Low-fat / Fat-free Dairy</span>
+                </td>
+                <td><strong>2 – 3 servings</strong></td>
+                <td>Cung cấp <strong>Canxi sinh khả dụng cao</strong> và protein chất lượng cao mà không làm tăng lượng chất béo bão hòa.</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Protein nạc & Hạt đậu</strong><br>
+                  <span class="rx-tag preferred">Lean Protein & Legumes</span>
+                </td>
+                <td><strong>2 – 3 servings</strong></td>
+                <td>Cá (cá béo giàu Omega-3), gia cầm bỏ da, trứng, các loại đậu và quả hạch. Ưu tiên đạm nạc, thay thế hoàn toàn thịt đỏ và thịt chế biến sẵn.</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Chất béo và Dầu lành mạnh</strong><br>
+                  <span class="rx-tag preferred">Fats & Oils</span>
+                </td>
+                <td><strong>2 – 3 servings</strong></td>
+                <td>Dầu thực vật (dầu ô liu, dầu hạt cải), bơ hạt. Thay thế chất béo bão hòa bằng chất béo không bão hòa đơn (MUFA) và đa (PUFA).</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Natri (Sodium)</strong><br>
+                  <span class="rx-tag warning">Sodium Restriction</span>
+                </td>
+                <td><strong>1,500 mg đến 2,300 mg</strong> / ngày</td>
+                <td>Giảm gánh nặng thể tích dịch ngoại bào, giảm hồi lưu tĩnh mạch và giảm sức cản thành mạch. Mức 1,500 mg tối ưu cho người tăng huyết áp.</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Đồ ngọt & Đường bổ sung</strong><br>
+                  <span class="rx-tag warning">Sweets & Added Sugars</span>
+                </td>
+                <td><strong>≤ 5 servings</strong> mỗi tuần</td>
+                <td>Hạn chế tối đa nước ngọt có gas, bánh kẹo, siro ngô giàu fructose để ngăn ngừa đề kháng insulin và viêm mạch máu.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THỬ NGHIỆM BẢN LỀ & SƠ ĐỒ CƠ CHẾ (FIGURE 1) -->
+    <section class="sec-card" id="sec-trials">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-diagram-project sec-hdr-icon"></i>
+        <div class="sec-title">3. Bằng Chứng Thử Nghiệm Bản Lề & Sơ Đồ Cơ Chế Sinh Lý Mạch - Thận (Figure 1)</div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-chart-line"></i> Hiệu Quả Hạ Huyết Áp Qua Thử Nghiệm DASH & DASH-Sodium</div>
+        <p style="margin-bottom: 1rem;">
+          Các bằng chứng từ các thử nghiệm lâm sàng mang tính bước ngoặt cho thấy DASH giúp giảm nhanh huyết áp tâm thu và tâm trương chỉ trong vòng vài tuần sau khi bắt đầu áp dụng:
+        </p>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--blue-bg); color: var(--blue);">
+                <i class="fa-solid fa-square-poll-vertical"></i>
+              </div>
+              <div class="matrix-card-title">Thử Nghiệm DASH Gốc</div>
+            </div>
+            <div class="matrix-card-body">
+              Ghi nhận mức giảm trung bình <strong>1 đến 13 mm Hg đối với HATT</strong> và <strong>1 đến 10 mm Hg đối với HATTr</strong>. Hiệu quả thể hiện rõ rệt ở cả bệnh nhân có tăng huyết áp thực sự và tiền tăng huyết áp.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--green-bg); color: var(--green);">
+                <i class="fa-solid fa-cubes-stacked"></i>
+              </div>
+              <div class="matrix-card-title">Thử Nghiệm DASH-Sodium</div>
+            </div>
+            <div class="matrix-card-body">
+              Xác lập 2 ngưỡng Natri chuẩn:<br>
+              • <em>Mức thông thường (2,300 mg/ngày)</em>: Chuẩn cho cộng đồng.<br>
+              • <em>Mức thấp (1,500 mg/ngày)</em>: Giảm thêm <strong>2 đến 7 mm Hg HATT</strong> so với mức 2,300 mg/ngày ở người có tăng huyết áp.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-route"></i> Sơ Đồ Cơ Chế: Con Đường Điều Hòa Huyết Áp Mạch Máu & Thận (Figure 1)</div>
+        
+        <div class="flow-container">
+          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.5rem;">
+            Figure 1. Vascular and Renal Physiological Mechanisms of the DASH Diet
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+            Mô hình phối hợp các con đường sinh lý học của vi chất và dưỡng chất đa lượng trong chế độ ăn DASH tác động hiệp đồng lên huyết áp:
+          </div>
+
+          <div class="flow-step-grid">
+            <div class="flow-step-card c-kali">
+              <div class="flow-step-num">PATHWAY 01 • KALI</div>
+              <div class="flow-step-title">Tăng Nạp Kali (K⁺)</div>
+              <div class="flow-step-desc">
+                Nguồn từ chuối, cam, rau chân vịt, khoai lang ➔ <strong>Thúc đẩy bài tiết Natri qua ống thận</strong> & Giảm co thắt tế bào cơ trơn mạch máu.
+              </div>
+              <div class="flow-step-impact">
+                <i class="fa-solid fa-arrow-trend-down"></i> Giảm sức cản ngoại biên & thể tích
+              </div>
+            </div>
+
+            <div class="flow-step-card c-magie">
+              <div class="flow-step-num">PATHWAY 02 • MAGIE</div>
+              <div class="flow-step-title">Tăng Nạp Magie (Mg²⁺)</div>
+              <div class="flow-step-desc">
+                Nguồn từ ngũ cốc nguyên hạt, quả hạch, hạt ➔ <strong>Hoạt động như chất chẹn kênh Canxi tự nhiên</strong>, thúc đẩy tổng hợp NO, giãn mạch và cải thiện chức năng nội mô.
+              </div>
+              <div class="flow-step-impact">
+                <i class="fa-solid fa-arrow-trend-down"></i> Giãn mạch trực tiếp & hạ áp
+              </div>
+            </div>
+
+            <div class="flow-step-card c-canxi">
+              <div class="flow-step-num">PATHWAY 03 • CANXI</div>
+              <div class="flow-step-title">Tăng Nạp Canxi (Ca²⁺)</div>
+              <div class="flow-step-desc">
+                Nguồn từ sữa ít béo, đậu nành tăng cường, rau xanh ➔ Hỗ trợ tính đáp ứng mạch máu ổn định, điều hòa trương lực giao cảm và thư giãn cơ trơn.
+              </div>
+              <div class="flow-step-impact">
+                <i class="fa-solid fa-shield-halved"></i> Ổn định đáp ứng co giãn mạch
+              </div>
+            </div>
+
+            <div class="flow-step-card c-natri">
+              <div class="flow-step-num">PATHWAY 04 • GIẢM NATRI</div>
+              <div class="flow-step-title">Giảm Natri (1500–2300 mg)</div>
+              <div class="flow-step-desc">
+                Cắt giảm muối ăn và thực phẩm chế biến sẵn ➔ <strong>Giảm giữ nước và giảm thể tích dịch ngoại bào</strong>, giảm cung lượng tim và sức cản mao mạch.
+              </div>
+              <div class="flow-step-impact">
+                <i class="fa-solid fa-arrow-trend-down"></i> Giảm áp lực dịch tuần hoàn
+              </div>
+            </div>
+
+            <div class="flow-step-card c-lipid">
+              <div class="flow-step-num">PATHWAY 05 • LIPID & CHỐNG VIÊM</div>
+              <div class="flow-step-title">Chất Béo Chưa Bão Hòa</div>
+              <div class="flow-step-desc">
+                Giảm chất béo bão hòa, tăng MUFA/PUFA & chất xơ ➔ <strong>Giảm CRP, giảm stress oxy hóa, tăng HDL-C / giảm LDL-C</strong>, bảo vệ lớp glycocalyx nội mô.
+              </div>
+              <div class="flow-step-impact">
+                <i class="fa-solid fa-shield-heart"></i> Bảo tồn tính toàn vẹn nội mô
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem; padding: 0.85rem 1.1rem; background: var(--surface); border: 1.5px solid var(--green-light); border-radius: 10px; text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--green);">
+            <i class="fa-solid fa-circle-check"></i> KẾT CỤC HIỆP ĐỒNG: GIẢM SỨC CẢN NGOẠI BIÊN + GIẢM THỂ TÍCH TUẦN HOÀN ➔ HẠ HUYẾT ÁP TÂM THU & TÂM TRƯƠNG BỀN VỮNG
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: SO SÁNH ĐỐI ĐẦU DASH VS. ĐỊA TRUNG HẢI (TABLE 2) -->
+    <section class="sec-card" id="sec-compare">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-scale-balanced sec-hdr-icon"></i>
+        <div class="sec-title">4. So Sánh Đối Chiếu Lâm Sàng: Chế Độ Ăn DASH vs. Địa Trung Hải (Table 2)</div>
+      </div>
+      <div class="sec-body">
+        <p style="margin-bottom: 0.85rem;">
+          Mặc dù cả hai chế độ ăn đều có nền tảng hướng tới thực vật (plant-forward), thúc đẩy ngũ cốc nguyên hạt và các loại hạt, chúng có những điểm khác biệt cốt lõi về mục tiêu điều trị và cấu trúc dinh dưỡng:
+        </p>
+
+        <div class="infobox info">
+          <i class="fa-solid fa-circle-info infobox-icon" style="color: var(--blue);"></i>
+          <div>
+            <strong>Table 2. Clinical and Nutritional Comparison: DASH Diet vs. Mediterranean Diet</strong>
+            <em>Nguồn: Sharon F. Daley, Elsa S. Vadakekut — StatPearls, 2026</em>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Tiêu chí so sánh</th>
+                <th style="width: 37.5%; background: var(--lime-bg); color: #365314;">Chế độ ăn DASH (DASH Diet)</th>
+                <th style="width: 37.5%; background: var(--blue-bg); color: #1e3a8a;">Chế độ ăn Địa Trung Hải (Mediterranean Diet)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Mục tiêu lâm sàng chính</strong></td>
+                <td><span class="rx-tag preferred">Đặc hiệu hạ huyết áp</span> Hạ huyết áp tâm thu và tâm trương; phòng ngừa và kiểm soát Tăng huyết áp.</td>
+                <td><span class="rx-tag info">Bảo vệ tim mạch tổng thể</span> Giảm nguy cơ nhồi máu cơ tim, đột quỵ và cải thiện chuyển hóa nói chung.</td>
+              </tr>
+              <tr>
+                <td><strong>Kiểm soát Natri</strong></td>
+                <td><strong>Cực kỳ nghiêm ngặt:</strong> Thiết lập 2 mốc định lượng rõ ràng (1,500 mg hoặc 2,300 mg/ngày).</td>
+                <td><strong>Không khắt khe:</strong> Không quy định giới hạn natri cụ thể; dựa vào việc ăn thực phẩm tươi tự nhiên.</td>
+              </tr>
+              <tr>
+                <td><strong>Sản phẩm từ Sữa</strong></td>
+                <td><strong>Khuyến nghị mạnh (2–3 servings/ngày):</strong> Ưu tiên tuyệt đối sữa ít béo hoặc tách béo để bổ sung Canxi/Protein.</td>
+                <td><strong>Cho phép vừa phải:</strong> Chú trọng phô mai và sữa chua lên men truyền thống, ít dùng sữa tươi tách béo.</td>
+              </tr>
+              <tr>
+                <td><strong>Nguồn Chất béo chính</strong></td>
+                <td><strong>Kiểm soát vừa phải (2–3 servings/ngày):</strong> Hạn chế chất béo bão hòa, bổ sung vừa đủ dầu thực vật/hạt.</td>
+                <td><strong>Cho phép lượng cao hơn:</strong> Dầu ô liu nguyên chất (Extra Virgin) là trung tâm năng lượng chính, cùng với cá béo.</td>
+              </tr>
+              <tr>
+                <td><strong>Đồ uống có cồn</strong></td>
+                <td><strong>Hạn chế tối đa:</strong> Khuyến nghị không uống hoặc chỉ uống ở mức tối thiểu vì cồn làm tăng huyết áp.</td>
+                <td><strong>Cho phép có chọn lọc:</strong> Có thể uống rượu vang đỏ ở mức độ vừa phải trong bữa ăn chính (tùy chọn).</td>
+              </tr>
+              <tr>
+                <td><strong>Mức độ chi tiết hướng dẫn</strong></td>
+                <td><strong>Rất chi tiết và định lượng:</strong> Quy định rõ ràng số lượng serving mỗi ngày cho từng nhóm thực phẩm.</td>
+                <td><strong>Mô hình lối sống linh hoạt:</strong> Định hướng cấu trúc bữa ăn, ít khắt khe về việc cân đo đong đếm khẩu phần.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: BỆNH ĐỒNG MẮC & HIỂU LẦM LÂM SÀNG -->
+    <section class="sec-card" id="sec-comorbidities">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-dna sec-hdr-icon"></i>
+        <div class="sec-title">5. Ý Nghĩa Trên Các Bệnh Lý Đồng Mắc & Xóa Bỏ Hiểu Lầm Lâm Sàng</div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-circle-exclamation"></i> 3 Hiểu Lầm Phổ Biến Cần Giải Thích Cho Bệnh Nhân</div>
+        
+        <div class="infobox warning">
+          <i class="fa-solid fa-triangle-exclamation infobox-icon" style="color: var(--orange);"></i>
+          <div>
+            <strong>Hiểu lầm 1: "DASH chỉ đơn thuần là chế độ ăn giảm muối (low-salt diet)"</strong>
+            <p style="margin-top: 0.25rem;">
+              <em>Thực tế:</em> Hiệu quả vượt trội của DASH đến từ <strong>tác động hiệp đồng</strong> của trái cây, rau, ngũ cốc nguyên hạt, sữa ít béo, hạt và khoáng chất (K, Mg, Ca) cùng với việc cắt giảm chất béo bão hòa và đường. Giảm natri đơn độc không thể tái lập toàn bộ lợi ích chuyển hóa của DASH.
+            </p>
+          </div>
+        </div>
+
+        <div class="infobox info">
+          <i class="fa-solid fa-circle-question infobox-icon" style="color: var(--blue);"></i>
+          <div>
+            <strong>Hiểu lầm 2: "Áp dụng DASH quá tốn kém và phức tạp"</strong>
+            <p style="margin-top: 0.25rem;">
+              <em>Thực tế:</em> DASH dựa trên thực phẩm thông thường. Bệnh nhân hoàn toàn có thể dùng <strong>rau quả đông lạnh hoặc đóng hộp ít muối/không muối</strong> để tiết kiệm chi phí mà vẫn giữ nguyên giá trị vi chất. Không bắt buộc phải mua thực phẩm nhập khẩu đắt tiền.
+            </p>
+          </div>
+        </div>
+
+        <div class="infobox success">
+          <i class="fa-solid fa-shield-heart infobox-icon" style="color: var(--green);"></i>
+          <div>
+            <strong>Hiểu lầm 3: "DASH chỉ dành riêng cho người đã mắc Tăng huyết áp"</strong>
+            <p style="margin-top: 0.25rem;">
+              <em>Thực tế:</em> DASH là mô hình dinh dưỡng cân bằng tối ưu cho <strong>mọi người trưởng thành</strong> để dự phòng tiên phát bệnh tim mạch, hội chứng chuyển hóa, đái tháo đường và đột quỵ.
+            </p>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-layer-group"></i> Lợi Ích Mở Rộng Trên Các Bệnh Lý Mạn Tính Đồng Mắc</div>
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--purple-bg); color: var(--purple);">
+                <i class="fa-solid fa-syringe"></i>
+              </div>
+              <div class="matrix-card-title">Đái Tháo Đường T2D & HC Chuyển Hóa</div>
+            </div>
+            <div class="matrix-card-body">
+              <strong>Hiệp hội Đái tháo đường Hoa Kỳ (ADA)</strong> chính thức khuyến nghị DASH. Giúp cải thiện kiểm soát HbA1c, giảm đề kháng insulin, hạ triglyceride và LDL-C.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--red-bg); color: var(--red);">
+                <i class="fa-solid fa-heart-circle-bolt"></i>
+              </div>
+              <div class="matrix-card-title">Suy Tim & Bệnh Thận Mạn (CKD)</div>
+            </div>
+            <div class="matrix-card-body">
+              Ở bệnh nhân suy tim, DASH giúp giảm gánh nặng thể tích, giảm tỷ lệ nhập viện và tử vong. Ở CKD giai đoạn sớm, kiểm soát HA tốt giúp làm chậm suy giảm GFR.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--lime-bg); color: var(--lime);">
+                <i class="fa-solid fa-liver"></i>
+              </div>
+              <div class="matrix-card-title">Gan Nhiễm Mỡ MASLD / NAFLD</div>
+            </div>
+            <div class="matrix-card-body">
+              Các bằng chứng lâm sàng mới ghi nhận DASH giúp cải thiện men gan (ALT/AST), giảm tích tụ mỡ tế bào gan và cải thiện chỉ số nhân trắc học.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--teal-bg); color: var(--teal);">
+                <i class="fa-solid fa-dna"></i>
+              </div>
+              <div class="matrix-card-title">Giảm Viêm & Ung Thư Đại Trực Tràng</div>
+            </div>
+            <div class="matrix-card-body">
+              Giảm nồng độ CRP và các gốc oxy hóa tự do (ROS). Giảm nguy cơ ung thư đại trực tràng, bệnh túi thừa (diverticular disease), bệnh celiac và giảm tử vong do mọi nguyên nhân.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: RÀO CẢN THỰC TẾ & MÔ HÌNH LIÊN CHUYÊN KHOA (FIGURE 2) -->
+    <section class="sec-card" id="sec-interprofessional">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-users-viewfinder sec-hdr-icon"></i>
+        <div class="sec-title">6. Rào Cản Triển Khai Thực Tế & Mô Hình Nhóm Liên Chuyên Khoa (Figure 2)</div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle"><i class="fa-solid fa-triangle-exclamation"></i> Các Rào Cản Khi Triển Khai Trong Thực Tế Lâm Sàng</div>
+        <p style="margin-bottom: 1rem;">
+          Mặc dù hiệu quả đã được chứng minh vững chắc, việc duy trì DASH lâu dài đối mặt với nhiều trở ngại lớn:
+        </p>
+
+        <div class="matrix-grid">
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--orange-bg); color: var(--orange);">
+                <i class="fa-solid fa-basket-shopping"></i>
+              </div>
+              <div class="matrix-card-title">Rào Cản Từ Phía Bệnh Nhân</div>
+            </div>
+            <div class="matrix-card-body">
+              • <strong>Chi phí & Sa mạc thực phẩm (Food deserts):</strong> Khó tiếp cận nguồn rau quả tươi sống giá rẻ.<br>
+              • <strong>Thói quen ăn mặn:</strong> Thực phẩm chế biến sẵn và thức ăn nhà hàng là nguồn natri chính.<br>
+              • <strong>Thử nghiệm PREMIER:</strong> Chỉ có <strong>28% bệnh nhân đạt mục tiêu natri &lt; 1,500 mg sau 6 tháng</strong>, trong khi mục tiêu &lt; 2,300 mg có tính khả thi cao hơn nhiều.
+            </div>
+          </div>
+
+          <div class="matrix-card">
+            <div class="matrix-card-top">
+              <div class="matrix-card-icon" style="background: var(--red-bg); color: var(--red);">
+                <i class="fa-solid fa-user-clock"></i>
+              </div>
+              <div class="matrix-card-title">Thách Thức Đối Với Bác Sĩ</div>
+            </div>
+            <div class="matrix-card-body">
+              • <strong>Thời gian tư vấn hạn hẹp:</strong> Không đủ thời gian hướng dẫn chi tiết từng nhóm thực phẩm.<br>
+              • <strong>Thiếu đào tạo dinh dưỡng chuyên sâu:</strong> Cần sự hỗ trợ từ chuyên gia dinh dưỡng (Registered Dietitian).<br>
+              • <strong>Rào cản văn hóa ẩm thực:</strong> Cần điều chỉnh thực đơn phù hợp với tập quán ăn uống truyền thống của địa phương.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle"><i class="fa-solid fa-hospital-user"></i> Mô Hình Nhóm Liên Chuyên Khoa Phối Hợp (Figure 2)</div>
+        <p style="margin-bottom: 1rem;">
+          Figure 2. Interprofessional Healthcare Team Model for DASH Diet Implementation (StatPearls 2026):
+        </p>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-header">
+              <div class="team-icon" style="color: var(--accent);"><i class="fa-solid fa-user-doctor"></i></div>
+              <div class="team-role">Bác Sĩ Lâm Sàng <span>Physicians / APPs</span></div>
+            </div>
+            <ul class="team-tasks">
+              <li><i class="fa-solid fa-check"></i> Đánh giá toàn diện nguy cơ tim mạch - chuyển hóa.</li>
+              <li><i class="fa-solid fa-check"></i> Chỉ định chế độ ăn DASH phù hợp và theo dõi huyết áp định kỳ.</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <div class="team-header">
+              <div class="team-icon" style="color: var(--green);"><i class="fa-solid fa-utensils"></i></div>
+              <div class="team-role">Chuyên Gia Dinh Dưỡng <span>Registered Dietitians</span></div>
+            </div>
+            <ul class="team-tasks">
+              <li><i class="fa-solid fa-check"></i> Tư vấn cá thể hóa, thiết kế thực đơn phù hợp điều kiện kinh tế.</li>
+              <li><i class="fa-solid fa-check"></i> Hướng dẫn thay thế nguyên liệu theo bản sắc văn hóa ẩm thực.</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <div class="team-header">
+              <div class="team-icon" style="color: var(--teal);"><i class="fa-solid fa-user-nurse"></i></div>
+              <div class="team-role">Điều Dưỡng Lâm Sàng <span>Clinical Nurses</span></div>
+            </div>
+            <ul class="team-tasks">
+              <li><i class="fa-solid fa-check"></i> Giáo dục người chăm sóc và gia đình bệnh nhân.</li>
+              <li><i class="fa-solid fa-check"></i> Đánh giá mức độ tuân thủ và củng cố động lực trong các lần tái khám.</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <div class="team-header">
+              <div class="team-icon" style="color: var(--purple);"><i class="fa-solid fa-prescription-bottle-medical"></i></div>
+              <div class="team-role">Dược Sĩ <span>Pharmacists</span></div>
+            </div>
+            <ul class="team-tasks">
+              <li><i class="fa-solid fa-check"></i> Đánh giá tương tác giữa thuốc và chất dinh dưỡng (K-sparing, ACEi).</li>
+              <li><i class="fa-solid fa-check"></i> Nhận diện Natri ẩn trong tá dược và hướng dẫn đọc nhãn thực phẩm.</li>
+            </ul>
+          </div>
+
+          <div class="team-card">
+            <div class="team-header">
+              <div class="team-icon" style="color: var(--orange);"><i class="fa-solid fa-hands-holding-child"></i></div>
+              <div class="team-role">Nhân Viên CTXH <span>Social Workers</span></div>
+            </div>
+            <ul class="team-tasks">
+              <li><i class="fa-solid fa-check"></i> Giải quyết rào cản kinh tế - xã hội và sa mạc thực phẩm.</li>
+              <li><i class="fa-solid fa-check"></i> Kết nối nguồn lực cộng đồng hỗ trợ tiếp cận thực phẩm tươi sống.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="infobox success" style="margin-top: 1.25rem;">
+          <i class="fa-solid fa-circle-nodes infobox-icon" style="color: var(--green);"></i>
+          <div>
+            <strong>Mục tiêu cốt lõi của mô hình liên chuyên khoa:</strong>
+            Đảm bảo tính đồng nhất trong tư vấn giáo dục sức khỏe, giúp bệnh nhân vượt qua các rào cản tài chính - văn hóa, đạt được sự <strong>tuân thủ DASH bền vững</strong> và giảm thiểu tối đa biến cố tim mạch cùng tỷ lệ tử vong.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 7: TRÍCH DẪN & THAM KHẢO Y VĂN -->
+    <section class="sec-card" id="sec-citations">
+      <div class="sec-hdr">
+        <i class="fa-solid fa-book-bookmark sec-hdr-icon"></i>
+        <div class="sec-title">7. Trích Dẫn Y Văn & Tài Liệu Tham Khảo Chuẩn AMA</div>
+      </div>
+      <div class="sec-body">
+        
+        <div class="citation-box">
+          <strong>Trích dẫn tài liệu gốc (AMA Style):</strong><br>
+          1. Daley SF, Vadakekut ES. The DASH Diet: A Guide to Managing Hypertension Through Nutrition. In: <em>StatPearls [Internet]</em>. Treasure Island (FL): StatPearls Publishing; 2026 Jan-. Bookshelf ID: NBK482514. PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/29494120/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 700; text-decoration: underline;">29494120</a>.<br><br>
+          <strong>Các khuyến cáo & thử nghiệm liên quan:</strong><br>
+          2. Appel LJ, Moore TJ, Obarzanek E, et al. A clinical trial of the effects of dietary patterns on blood pressure. DASH Collaborative Research Group. <em>N Engl J Med</em>. 1997;336(16):1117-1124.<br>
+          3. Sacks FM, Svetkey LP, Vollmer WM, et al. Effects on blood pressure of reduced dietary sodium and the Dietary Approaches to Stop Hypertension (DASH) diet. DASH-Sodium Collaborative Research Group. <em>N Engl J Med</em>. 2001;344(1):3-10.<br>
+          4. Whelton PK, Carey RM, Aronow WS, et al. 2017/2025 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. <em>Circulation</em>. 2018;138(17):e484-e594.<br>
+          5. American Diabetes Association Professional Practice Committee. Standards of Care in Diabetes—2026. <em>Diabetes Care</em>. 2026;49(Suppl. 1):S1-S320.
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại Kho Guidelines
+          </a>
+          <button class="btn" onclick="window.print()">
+            <i class="fa-solid fa-print"></i> In / Xuất PDF Hướng Dẫn
+          </button>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/29494120/" target="_blank" rel="noopener noreferrer" class="btn">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem PubMed (PMID: 29494120)
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('clini_theme', theme);
+      if (themeBtn) {
+        themeBtn.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('clini_theme') || 'light';
+    applyTheme(savedTheme);
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const currentTheme = htmlEl.getAttribute('data-theme');
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+    }
+  </script>
+</body>
+</html>

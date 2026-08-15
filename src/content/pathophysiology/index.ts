@@ -6,6 +6,13 @@ import { initPathophysiologyHub } from './renderer';
 export * from './types';
 export * from './data';
 export * from './renderer';
+export * from './pathophysiology-view';
+
+// Subsystems Native SPA Views
+export * from './giai-phau-sinh-ly-view';
+export * from './co-che-benh-sinh-view';
+export * from './formula-vault-view';
+export * from './physio-reader-view';
 
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {

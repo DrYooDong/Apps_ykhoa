@@ -10,7 +10,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Mẫu bệnh án nội khoa",
     description: "Hướng dẫn viết bệnh án nội khoa chuẩn hóa",
     icon: "📝",
-    link: "general/benh-an-noi-khoa.html",
+    link: "#/calculators/benh-an-noi-khoa",
     part: "part1-section",
     tags: ["chung", "bệnh án", "hành chính", "mẫu"]
   },
@@ -19,7 +19,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Tra cứu mã ICD10 hưởng BHYT",
     description: "Tra cứu mã ICD10 hưởng Bảo hiểm y tế nhanh chóng",
     icon: "📝",
-    link: "general/tracuu-ma-icd10.html",
+    link: "#/calculators/tra-cuu-icd10",
     part: "part1-section",
     tags: ["chung", "icd10", "bhyt", "bảo hiểm", "tra cứu"]
   },
@@ -28,7 +28,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Tính toán cỡ mẫu trong nghiên cứu",
     description: "Hướng dẫn tính toán cỡ mẫu trong nghiên cứu khoa học",
     icon: "🧮",
-    link: "general/nckh-tinh-co-mau.html",
+    link: "#/calculators/tinh-co-mau",
     part: "part1-section",
     tags: ["chung", "nghiên cứu khoa học", "nckh", "cỡ mẫu", "thống kê"]
   },
@@ -37,7 +37,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Bộ Quy Đổi Liều Thuốc Tương Đương",
     description: "Quy đổi liều Corticoid, Opioid (OME), Statin, PPI, DOACs, Benzodiazepines chính xác",
     icon: "⚖️",
-    link: "general/quy-doi-lieu-tuong-duong.html",
+    link: "#/calculators/quy-doi-lieu",
     part: "part1-section",
     tags: ["chung", "quy đổi", "liều lượng", "tương đương", "corticoid", "statin"]
   },
@@ -46,7 +46,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Kho Công Thức Sinh Lý Định Lượng",
     description: "Cơ sở dữ liệu công thức sinh lý (Nernst, GHK, Fick, Starling, HH, PAO2, eGFR) kèm máy tính tức thì",
     icon: "📐",
-    link: "general/formula-vault.html",
+    link: "#/calculators/kho-cong-thuc-sinh-ly",
     part: "part1-section",
     tags: ["chung", "sinh lý", "công thức", "nernst", "ghk", "fick", "starling", "mathjax", "định lượng"]
   },
@@ -57,7 +57,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Sepsis Pro Studio — Sàng Lọc & Phân Tầng Nhiễm Khuẩn",
     description: "Workstation sàng lọc nhiễm khuẩn toàn diện 6 thang điểm (NEWS2, SOFA, SIRS, qSOFA, MEDS, Shock Index) & Sepsis-3 1-Hour Bundle",
     icon: "🦠",
-    link: "infectious/sepsis-studio.html",
+    link: "#/calculators/sepsis-studio",
     part: "part2-section",
     tags: ["truyền nhiễm", "nhiễm khuẩn", "sepsis", "sofa", "qsofa", "news2", "meds", "shock index", "studio"]
   },
@@ -66,7 +66,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Chỉnh liều kháng sinh",
     description: "Tra cứu kháng sinh đồ và chỉnh liều dựa trên chức năng thận",
     icon: "🦠",
-    link: "infectious/chinh-lieu-khang-sinh.html",
+    link: "#/calculators/chinh-lieu-khang-sinh",
     part: "part2-section",
     tags: ["truyền nhiễm", "kháng sinh", "chỉnh liều", "chức năng thận", "egfr"]
   },
@@ -75,7 +75,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Quản lý sử dụng Vancomycin",
     description: "Khởi liều, theo dõi MRSA, Vancomycin",
     icon: "🦠",
-    link: "infectious/ql-vancomycin.html",
+    link: "#/calculators/ql-vancomycin",
     part: "part2-section",
     tags: ["truyền nhiễm", "vancomycin", "mrsa", "kháng sinh", "trough"]
   },
@@ -84,7 +84,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Microbiology Pro Studio (Vi sinh lâm sàng)",
     description: "Giả lập kính hiển vi ảo, đĩa cấy, cây nhận diện vi khuẩn & Antibiogram S/I/R",
     icon: "🔬",
-    link: "infectious/microbiology-studio.html",
+    link: "#/calculators/microbiology-studio",
     part: "part2-section",
     tags: ["truyền nhiễm", "vi sinh", "nhuộm gram", "kháng sinh đồ", "antibiogram", "vi khuẩn", "studio"]
   },
@@ -95,7 +95,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Fluid Resuscitation Pro Studio",
     description: "Workstation quản lý lượng dịch, tốc độ truyền và y lệnh theo 7 bệnh cảnh lâm sàng cấp cứu",
     icon: "💧",
-    link: "emergency/ql-bu-dich-studio.html",
+    link: "#/calculators/bu-dich",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "bù dịch", "bolus", "sốc", "fluid", "studio"]
   },
@@ -104,7 +104,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Vasoactive & Hemodynamic Pro Studio",
     description: "Workstation vận mạch & động lực học huyết động: Quản lý 4 bơm tiêm điện song song, điểm VIS, radar thể sốc & phác đồ can thiệp thủ thuật CVC/A-Line/PLR/ECMO",
     icon: "⚡",
-    link: "emergency/ql-van-mach-studio.html",
+    link: "#/calculators/van-mach-tro-tim",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "vận mạch", "trợ tim", "noradrenaline", "adrenaline", "studio", "can thiệp", "vis"]
   },
@@ -113,7 +113,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Ventilator Pro Studio — Giả Lập & Xử Trí Máy Thở ICU",
     description: "Workstation giả lập máy thở ICU 3 kênh sóng thở động, 5 chế độ thở (VCV, PCV, PSV, SIMV, CPAP), Bệnh nhân ảo & Quiz chẩn đoán",
     icon: "💨",
-    link: "emergency/ql-may-tho.html",
+    link: "#/calculators/quan-ly-may-tho",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "máy thở", "thở máy", "cai thở máy", "icu", "ventilator", "studio", "sóng thở", "ards", "copd"]
   },
@@ -122,7 +122,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Toxicology Pro Studio (Hồi Sức Chống Độc & Giải Độc)",
     description: "Workstation nhận diện Toxidrome, máy tính liều giải độc đặc hiệu (NAC, Atropine, Naloxone, DigiFab...), PSS & kế hoạch khử độc",
     icon: "🧪",
-    link: "emergency/toxicology-studio.html",
+    link: "#/calculators/toxicology-studio",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "chống độc", "toxidrome", "giải độc", "nac", "atropine", "naloxone", "studio", "gcs", "pss"]
   },
@@ -131,7 +131,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Polytrauma & MTP Pro Studio (Đa Chấn Thương & Truyền Máu Khối Lượng Lớn)",
     description: "Workstation cấp cứu đa chấn thương: Dự đoán điểm TASH, ABC Score, Shock Index, điều phối chế phẩm máu tỷ lệ 1:1:1 và sơ đồ chấn thương SVG",
     icon: "🚑",
-    link: "emergency/polytrauma-mtp-studio.html",
+    link: "#/calculators/polytrauma-mtp-studio",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "đa chấn thương", "truyền máu", "mtp", "tash", "abc score", "shock index", "txa", "studio"]
   },
@@ -140,7 +140,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "An thần & Giảm đau ICU",
     description: "RASS, CPOT, CAM-ICU & Máy tính bơm tiêm điện an thần ICU",
     icon: "💊",
-    link: "emergency/dg-an-than-icu.html",
+    link: "#/calculators/an-than-icu",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "an thần", "rass", "cpot", "cam-icu", "bơm tiêm điện"]
   },
@@ -149,7 +149,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "ECG Pro Studio 12 Chuyển Đạo",
     description: "Giải lập sóng ECG 12 chuyển đạo tương tác, thước đo Calipers ảo & Quiz chẩn đoán cấp cứu",
     icon: "⚡",
-    link: "emergency/ecg-studio.html",
+    link: "#/calculators/ecg-studio",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "ecg", "điện tâm đồ", "tim mạch", "stemi", "caliper", "studio"]
   },
@@ -158,16 +158,16 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "ACLS Resuscitation Pro Studio — Cấp Cứu Ngừng Tuần Hoàn",
     description: "Workstation cấp cứu ngừng tim: Đồng hồ CPR 2 phút SVG, Visual/Audio Metronome 110bpm, Đếm lùi tiêm Adrenaline 3-5m, Cây thuật toán VF/pVT vs Asystole/PEA, 5H5T checklist & ROSC protocol",
     icon: "🫀",
-    link: "emergency/acls-resus-studio.html",
+    link: "#/calculators/acls-resus-studio",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "ngừng tim", "cpr", "acls", "adrenaline", "shock", "metronome", "5h5t", "rosc", "studio"]
   },
   {
     id: "dg-dot-quy",
-    title: "Stroke Pro Studio — Workstation Cấp Cứu Đột Quỵ Nào Cấp",
+    title: "Stroke Pro Studio — Workstation Cấp Cứu Đột Quỵ Não Cấp",
     description: "Workstation đột quỵ khẩn cấp: Thanh cửa sổ thời gian (rtPA ≤ 4.5h / EVT ≤ 24h), NIHSS 11 mục Visual, CT ASPECTS Score 10 vùng, RACE Score LVO, Liều rtPA & HA Nicardipine",
     icon: "🧠",
-    link: "emergency/stroke-pro-studio.html",
+    link: "#/calculators/dg-dot-quy",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "thần kinh", "đột quỵ", "nihss", "aspects", "race", "rtpa", "alteplase", "nicardipine", "evt", "dawn", "ich", "studio"]
   },
@@ -176,7 +176,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Resuscitative Metabolic & AEIOU Dialysis Studio",
     description: "Workstation cấp cứu rối loạn điện giải đe dọa tính mạng (Hyperkalemia EKG Rescue, Bolus NaCl 3% Hạ Natri co giật), ABG Stewart & Chỉ định Lọc máu cấp cứu AEIOU",
     icon: "🩸",
-    link: "emergency/metabolic-crisis-studio.html",
+    link: "#/calculators/metabolic-crisis-studio",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "điện giải", "lọc máu", "crrt", "aeiou", "hyperkalemia", "hyponatremia", "abg", "bicar-icu", "studio"]
   },
@@ -185,7 +185,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "eFAST POCUS & Emergency Procedures Studio",
     description: "Workstation Siêu âm Cấp cứu eFAST 7 cửa sổ, RUSH Protocol Phân loại Sốc (Pump-Tank-Pipes) & Hướng dẫn Bảng kiểm Thủ thuật Cấp cứu tại giường",
     icon: "🩺",
-    link: "emergency/pocus-efast-studio.html",
+    link: "#/calculators/pocus-efast-studio",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "siêu âm", "pocus", "efast", "rush", "thủ thuật", "chest tube", "pericardiocentesis", "cvc", "studio"]
   },
@@ -194,7 +194,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Cardiogenic Shock & ACS Interventional Pro Studio",
     description: "Workstation Cấp cứu Sốc tim & Can thiệp Mạch vành: SCAI Shock Stage (Stage A-E), TIMI STEMI, Liều Bơm tiêm điện Vận mạch & Chỉ định Hỗ trợ tuần hoàn MCS (IABP/Impella/VA-ECMO)",
     icon: "🫀",
-    link: "emergency/cardiogenic-shock-studio.html",
+    link: "#/calculators/cardiogenic-shock-studio",
     part: "part3-section",
     tags: ["cấp cứu", "hồi sức", "sốc tim", "cardiogenic", "scai", "timi", "stemi", "vận mạch", "dobutamine", "norepinephrine", "iabp", "ecmo", "pci", "studio"]
   },
@@ -205,7 +205,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Pneumonia Studio",
     description: "CURB-65, PSI, IDSA/ATS, MDR Risk, SARI",
     icon: "🫁",
-    link: "respiratory/pneumonia-studio.html",
+    link: "#/calculators/pneumonia-studio",
     part: "part4-section",
     tags: ["hô hấp", "viêm phổi", "curb-65", "psi", "idsa", "sari"]
   },
@@ -214,7 +214,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "CXR Pro Studio",
     description: "Đọc phim X-quang ngực cấp cứu 12 bước, CTR ảo & 20+ bất thường",
     icon: "🫁",
-    link: "respiratory/cxr-studio.html",
+    link: "#/calculators/cxr-studio",
     part: "part4-section",
     tags: ["hô hấp", "lao", "cxr", "x-quang", "phổi", "studio", "ctr"]
   },
@@ -223,7 +223,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Pleural Effusion Pro Studio",
     description: "Thuật toán chẩn đoán dịch màng phổi 5 tầng, Tiêu chuẩn Light, SEAG & phân tầng mủ màng phổi",
     icon: "🫁",
-    link: "respiratory/pleural-effusion-studio.html",
+    link: "#/calculators/pleural-effusion-studio",
     part: "part4-section",
     tags: ["hô hấp", "dịch màng phổi", "light", "seag", "mủ màng phổi", "ada", "studio", "exudate", "transudate"]
   },
@@ -234,7 +234,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Ascites Pro Studio",
     description: "Phân tích dịch màng bụng 5 tầng, SAAG Tăng áp cửa, SBP & phác đồ truyền Albumin IV",
     icon: "🫄",
-    link: "gastroenterology/ascites-studio.html",
+    link: "#/calculators/ascites-studio",
     part: "part5-section",
     tags: ["tiêu hóa", "dịch màng bụng", "báng bụng", "saag", "sbp", "viêm phúc mạc", "albumin", "studio", "xơ gan"]
   },
@@ -243,7 +243,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Đánh giá Dinh dưỡng nội viện",
     description: "Nhu cầu năng lượng, Đạm (Protein), Dịch, Carbohydrate, Lipid",
     icon: "🍽️",
-    link: "gastroenterology/dg-dinh-duong-noi-tru.html",
+    link: "#/calculators/dg-dinh-duong",
     part: "part5-section",
     tags: ["tiêu hóa", "dinh dưỡng", "nội viện", "calo", "protein", "năng lượng"]
   },
@@ -252,7 +252,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Cirrhosis Studio – Đánh Giá Xơ Gan & MELD-Na",
     description: "Child-Pugh, MELD 3.0, FIB-4, APRI, ALBI Grade & Red Flags Mất bù",
     icon: "🫗",
-    link: "gastroenterology/dg-xo-gan-studio.html",
+    link: "#/calculators/dg-xo-gan-studio",
     part: "part5-section",
     tags: ["tiêu hóa", "xơ gan", "child-pugh", "meld-na", "meld 3.0", "fib-4", "albi", "gan", "studio"]
   },
@@ -261,7 +261,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Phân tầng nguy cơ HCC",
     description: "Phân tầng nguy cơ mắc ung thư biểu mô tế bào gan (HCC) theo guideline AGA 2026",
     icon: "🫗",
-    link: "gastroenterology/dg-ptnc-hcc.html",
+    link: "#/calculators/ptnc-hcc",
     part: "part5-section",
     tags: ["tiêu hóa", "xơ gan", "hcc", "ung thư gan", "aga"]
   },
@@ -270,7 +270,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Xuất huyết Tiêu hóa cấp (UGIB & LGIB)",
     description: "Glasgow-Blatchford (GBS), Oakland Score & Phác đồ truyền máu, PPI",
     icon: "🫀",
-    link: "gastroenterology/dg-xhth.html",
+    link: "#/calculators/xuat-huyet-tieu-hoa",
     part: "part5-section",
     tags: ["tiêu hóa", "xuất huyết", "gbs", "blatchford", "oakland", "truyền máu"]
   },
@@ -281,7 +281,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Chức năng thận",
     description: "Cockcroft-Gault, CKD-EPI 2021, KDIGO, KDIGO AKI",
     icon: "🔬",
-    link: "renal/renal-function.html",
+    link: "#/calculators/chuc-nang-than",
     part: "part6-section",
     tags: ["thận", "điện giải", "egfr", "ckd", "aki", "cockcroft-gault"]
   },
@@ -290,7 +290,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Phân tích khí máu động mạch",
     description: "Henderson-Hasselbalch, Winters, Anion Gap, Delta Ratio",
     icon: "🔬",
-    link: "renal/dg-abg-studio.html",
+    link: "#/calculators/khi-mau-dong-mach",
     part: "part6-section",
     tags: ["thận", "điện giải", "khí máu", "abg", "toan kiềm", "anion gap"]
   },
@@ -299,7 +299,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Electrolyte Pro Studio (Điện giải & Dịch truyền)",
     description: "Giả lập & Xử trí Rối loạn Điện giải (Na, K, Ca, Mg), Adrogue-Madias & ODS Risk",
     icon: "🧪",
-    link: "renal/electrolyte-studio.html",
+    link: "#/calculators/electrolyte-studio",
     part: "part6-section",
     tags: ["thận", "điện giải", "natri", "kali", "canxi", "magie", "dịch", "studio"]
   },
@@ -308,7 +308,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Đánh giá Nguyên nhân AKI",
     description: "Phân loại tổn thương thận cấp (Trước thận, Tại thận, Sau thận) dựa trên bệnh sử và xét nghiệm",
     icon: "🔬",
-    link: "renal/dg-nguyen-nhan-aki.html",
+    link: "#/calculators/danh-gia-nguyen-nhan-aki",
     part: "part6-section",
     tags: ["thận", "điện giải", "aki", "tổn thương thận cấp", "nguyên nhân", "trước thận", "tại thận", "sau thận"]
   },
@@ -319,7 +319,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Phân loại Rối loạn nhịp tim & ECG Arrhythmia Studio",
     description: "6 trục phân loại rối loạn nhịp, Thuật toán Brugada 4 bước, QTc đa công thức & Phân tầng nguy cơ Xoắn đỉnh",
     icon: "🫀",
-    link: "cardiology/phan-loai-roi-loan-nhip-studio.html",
+    link: "#/calculators/phan-loai-roi-loan-nhip",
     part: "part7-section",
     tags: ["tim mạch", "rối loạn nhịp", "ecg", "qtc", "brugada", "wpw", "xoắn đỉnh", "arvc", "arrhythmia"]
   },
@@ -328,7 +328,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Phân tầng nguy cơ tim mạch toàn bộ",
     description: "SCORE2, SCORE2-OP, SCORE2-Diabetes, PREVENT",
     icon: "📊",
-    link: "cardiology/ptnc-tim-mach.html",
+    link: "#/calculators/ptnc-tim-mach",
     part: "part7-section",
     tags: ["tim mạch", "huyết khối", "score2", "nguy cơ tim mạch", "prevent"]
   },
@@ -337,7 +337,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Đánh giá mục tiêu LDL-c",
     description: "Xác định mục tiêu LDL-c theo phân tầng nguy cơ tim mạch ESC/VNHA và so sánh thực tế.",
     icon: "🩸",
-    link: "cardiology/dg-ldl-c.html",
+    link: "#/calculators/dg-ldlc",
     part: "part7-section",
     tags: ["tim mạch", "huyết khối", "mỡ máu", "ldl-c", "esc", "statin"]
   },
@@ -346,7 +346,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Đánh giá & Phân loại Suy tim",
     description: "Phân tầng nguy cơ toàn diện – Áp dụng trực tiếp cho thực hành lâm sàng tại Việt Nam.",
     icon: "❤️",
-    link: "cardiology/dg-suy-tim.html",
+    link: "#/calculators/dg-suy-tim",
     part: "part7-section",
     tags: ["tim mạch", "suy tim", "hfref", "hfpef", "phân độ suy tim"]
   },
@@ -355,7 +355,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "VTE Toolkit: DVT & Thuyên tắc Phổi",
     description: "Wells DVT, Wells PE, sPESI, D-Dimer & CTPA Algorithm",
     icon: "🩸",
-    link: "cardiology/dg-vte.html",
+    link: "#/calculators/vte-toolkit",
     part: "part7-section",
     tags: ["tim mạch", "huyết khối", "vte", "dvt", "pe", "wells", "d-dimer"]
   },
@@ -366,7 +366,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Diabetes & Insulin Pro Studio",
     description: "Phác đồ Thuốc uống (OADs/GLP-1 RA), Basal-Bolus & Bơm tiêm điện ICU",
     icon: "💉",
-    link: "endocrinology/insulin-studio.html",
+    link: "#/calculators/insulin-studio",
     part: "part8-section",
     tags: ["nội tiết", "chuyển hóa", "tiểu đường", "đái tháo đường", "insulin", "oad", "studio"]
   },
@@ -377,7 +377,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Lab Pro Studio — Giả Lập & Phân Tích Xét Nghiệm Máu",
     description: "Trình giả lập kết quả xét nghiệm máu tương tác PACS-style (CBC, Gan, Thận, Lipid, Đông máu), gauge bars, gợi ý chẩn đoán phân biệt & Quiz",
     icon: "🧪",
-    link: "hematology/lab-studio.html",
+    link: "#/calculators/lab-pro-studio",
     part: "part10-section",
     tags: ["huyết học", "xét nghiệm", "lab", "cbc", "sinh hóa", "đông máu", "studio", "pacs"]
   },
@@ -386,7 +386,7 @@ export const CLINICAL_TOOLS_DATA: ClinicalTool[] = [
     title: "Phân tầng Thiếu máu & Thuật toán chẩn đoán",
     description: "CRI/RPI, MCV/MCH, Iron Panel & Thalassemia Guidance",
     icon: "🔴",
-    link: "hematology/dg-thieu-mau.html",
+    link: "#/calculators/phan-tang-thieu-mau",
     part: "part10-section",
     tags: ["huyết học", "thiếu máu", "anemia", "mcv", "mch", "rpi", "ferritin"]
   }

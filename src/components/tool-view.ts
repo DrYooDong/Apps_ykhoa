@@ -7,13 +7,16 @@ import { LoadedContent } from '../core/content-loader';
 import { categoryCoreMapper } from '../core/category-mapper';
 
 export function renderHtmlToolView(content: LoadedContent): string {
-  const categoryName = categoryCoreMapper.getDisplayName(content.category) || content.category.toUpperCase();
+  const catInfo = categoryCoreMapper.getCategory(content.category);
+  const categoryName = catInfo.name || content.category.toUpperCase();
+  const catIcon = catInfo.icon || 'fa-folder-open';
   const title = content.metadata.title || content.slug.replace(/-/g, ' ').toUpperCase();
   const description = content.metadata.description || 'Công cụ tính toán và phác đồ tiếp cận lâm sàng tương tác.';
 
+  const isInternalHash = content.path.startsWith('#/');
   const [pathPart, hashPart] = content.path.split('#');
   const separator = pathPart.includes('?') ? '&' : '?';
-  const embedPath = `${pathPart}${separator}embedded=1${hashPart ? '#' + hashPart : ''}`;
+  const embedPath = isInternalHash ? content.path : `${pathPart}${separator}embedded=1${hashPart ? '#' + hashPart : ''}`;
 
   return `
     <div class="tool-view-wrapper" style="width: 100%; display: flex; flex-direction: column; gap: 1rem; padding-bottom: 2rem;">
@@ -28,18 +31,20 @@ export function renderHtmlToolView(content: LoadedContent): string {
             <span style="color: var(--color-primary, #0284c7); font-weight: 600;">${title}</span>
           </div>
           <h1 style="font-size: 1.5rem; font-weight: 700; color: var(--color-text, #0f172a); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-calculator" style="color: var(--color-primary, #0284c7);"></i> ${title}
+            <i class="fa-solid ${catIcon}" style="color: ${catInfo.color || 'var(--color-primary, #0284c7)'};"></i> ${title}
           </h1>
           ${description ? `<p style="font-size: 0.875rem; color: var(--color-text-muted, #64748b); margin: 0;">${description}</p>` : ''}
         </div>
 
         <div class="tool-header-actions" style="display: flex; align-items: center; gap: 0.75rem;">
           <a href="#/${content.category}" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; font-size: 0.875rem; border-radius: 0.5rem; text-decoration: none; border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #0f172a); background: var(--color-surface, #fff);">
-            <i class="fa-solid fa-arrow-left"></i> Danh sách ${categoryName}
+            <i class="fa-solid fa-arrow-left"></i> ${categoryName}
           </a>
+          ${!isInternalHash ? `
           <a href="${content.path}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.85rem; font-size: 0.875rem; border-radius: 0.5rem; text-decoration: none; border: 1px solid var(--color-primary, #0284c7); color: var(--color-primary, #0284c7);" title="Mở trong cửa sổ mới">
             <i class="fa-solid fa-up-right-from-square"></i> Mở tab mới
           </a>
+          ` : ''}
         </div>
 
       </header>

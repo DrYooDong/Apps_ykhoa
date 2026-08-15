@@ -1,10 +1,95 @@
 /**
  * Footer Dynamic Loader & Component (footer.ts)
  * Location: components/footer.ts
- * CliniPortal Framework
+ * CliniPortal Framework — 100% Native TypeScript Component
  */
 
-export async function loadFooter(): Promise<void> {
+export function renderFooterHtml(projectRoot = './'): string {
+  const root = projectRoot.endsWith('/') ? projectRoot : projectRoot + '/';
+  const currentYear = new Date().getFullYear();
+
+  return `
+    <footer class="global-footer">
+      <div class="footer-main-content">
+        <!-- Cột 1: Thông tin thương hiệu -->
+        <div class="footer-section footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">🩺</span>
+            <span class="logo-text">CliniPortal</span>
+          </div>
+          <p class="footer-tagline">Hệ sinh thái công cụ hỗ trợ lâm sàng dành cho bác sĩ nội khoa</p>
+          <div class="footer-social-links">
+            <a href="#" class="social-link" aria-label="Facebook" title="Theo dõi trên Facebook">📘</a>
+            <a href="#" class="social-link" aria-label="Zalo" title="Nhóm Zalo">💬</a>
+            <a href="#" class="social-link" aria-label="Email" title="Liên hệ qua Email">📧</a>
+          </div>
+        </div>
+
+        <!-- Cột 2: Liên kết nhanh -->
+        <div class="footer-section footer-links">
+          <h4 class="footer-heading">Liên kết nhanh</h4>
+          <ul class="footer-nav-list">
+            <li><a href="${root}#/">🏠 Trang chủ</a></li>
+            <li><a href="${root}#/calculators">⚙️ Công cụ lâm sàng</a></li>
+            <li><a href="${root}#/ebm">📄 Y học chứng cứ</a></li>
+            <li><a href="${root}#/tcm">☯️ Y học cổ truyền</a></li>
+            <li><a href="${root}#/pharmacology">💊 Dược lý lâm sàng</a></li>
+            <li><a href="${root}#/approaches">🤒 Tiếp cận lâm sàng</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Nhóm công cụ nổi bật -->
+        <div class="footer-section footer-links">
+          <h4 class="footer-heading">Công cụ nổi bật</h4>
+          <ul class="footer-nav-list">
+            <li><a href="${root}#/calculators/sepsis-studio">🦠 Sàng lọc Nhiễm khuẩn & Sepsis</a></li>
+            <li><a href="${root}#/calculators/pneumonia-studio">🫁 Đánh giá Viêm phổi</a></li>
+            <li><a href="${root}#/calculators/renal-function">🫘 Chức năng thận</a></li>
+            <li><a href="${root}#/calculators/dg-abg-studio">🔬 Khí máu động mạch</a></li>
+            <li><a href="${root}#/docspace/soap">📋 Sổ tay SOAP Digital</a></li>
+          </ul>
+        </div>
+
+        <!-- Cột 4: Thông tin liên hệ & Hỗ trợ -->
+        <div class="footer-section footer-contact">
+          <h4 class="footer-heading">Hỗ trợ &amp; Liên hệ</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <span class="contact-icon">📍</span>
+              <span>Việt Nam</span>
+            </li>
+            <li>
+              <span class="contact-icon">📧</span>
+              <a href="mailto:support@cliniportal.vn">support@cliniportal.vn</a>
+            </li>
+            <li>
+              <span class="contact-icon">🕒</span>
+              <span>Cập nhật 24/7</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="footer-divider"></div>
+
+      <!-- Footer bottom: Copyright và thông tin pháp lý -->
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          <p>CliniPortal &copy; <span id="currentYear">${currentYear}</span> · Hệ sinh thái công cụ lâm sàng</p>
+          <p class="disclaimer">⚠️ Chỉ mang tính hỗ trợ, không thay thế phán xét y khoa</p>
+        </div>
+        <div class="footer-legal">
+          <a href="#" class="legal-link">Điều khoản sử dụng</a>
+          <a href="#" class="legal-link">Chính sách bảo mật</a>
+          <a href="#" class="legal-link">Hướng dẫn sử dụng</a>
+        </div>
+      </div>
+    </footer>
+  `;
+}
+
+export function loadFooter(): void {
   try {
     if (typeof window !== 'undefined' && (window.self !== window.top || window.location.search.includes('embedded=1'))) {
       document.documentElement.classList.add('in-iframe');
@@ -19,60 +104,11 @@ export async function loadFooter(): Promise<void> {
   const holder = document.getElementById('footer-placeholder');
   if (!holder) return;
 
-  const footerPath = holder.dataset.footerPath;
-  if (!footerPath) return;
+  const footerPath = holder.dataset.footerPath || '';
+  const depth = (footerPath.match(/\.\.\//g) || []).length;
+  const projectRoot = depth > 0 ? '../'.repeat(depth) : './';
 
-  try {
-    const res = await fetch(footerPath);
-    if (!res.ok) throw new Error(`Cannot load footer: ${res.status}`);
-    const html = await res.text();
-    holder.innerHTML = html;
-    fixFooterLinks(holder, footerPath);
-    initFooter();
-  } catch (err) {
-    console.error('[footer.ts]', err);
-  }
-}
-
-export function fixFooterLinks(holder: HTMLElement, footerPath: string): void {
-  let projectRoot = '';
-  if (footerPath) {
-    const idx = footerPath.lastIndexOf('components/');
-    if (idx !== -1) {
-      projectRoot = footerPath.substring(0, idx);
-    } else {
-      const depth = (footerPath.match(/\.\.\//g) || []).length;
-      projectRoot = '../'.repeat(depth);
-    }
-  }
-
-  const links = holder.querySelectorAll<HTMLAnchorElement>('a');
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
-      const cleanHref = href.replace(/^(\.\.\/|\.\/|\/)+/, '');
-      link.setAttribute('href', projectRoot + cleanHref);
-    }
-  });
-}
-
-export function initFooter(): void {
-  const yearElement = document.getElementById('currentYear');
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear().toString();
-  }
-
-  const footerLinks = document.querySelectorAll<HTMLAnchorElement>('.footer-nav-list a, .legal-link');
-  footerLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        target?.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
+  holder.innerHTML = renderFooterHtml(projectRoot);
 }
 
 if (typeof document !== 'undefined') {

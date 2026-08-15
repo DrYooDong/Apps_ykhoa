@@ -3,6 +3,8 @@
  * Path: src/dashboard/homepage-effects.ts
  */
 
+import { updateDayScoreBadge } from '../tools/good-day-calculator';
+
 export function initHeroClock(): void {
   const timeEl = document.getElementById('heroClockTime');
   const dateEl = document.getElementById('heroClockDate');
@@ -26,6 +28,7 @@ export function initHeroClock(): void {
   }
 
   update();
+  updateDayScoreBadge();
   setInterval(update, 1000);
 }
 

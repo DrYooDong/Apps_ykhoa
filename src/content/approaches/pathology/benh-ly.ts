@@ -229,7 +229,7 @@ export function loadDiseases(): void {
               subtitle: 'TÍNH WELLS DVT 2 MỨC',
               icon: 'fa-vial',
               shape: 'rectangle',
-              toolUrl: '../../Công cụ/Tim mạch & huyết khối/Danhgia_Nguyco_VTE.html',
+              toolUrl: '#/calculators/wells-dvt',
               toolTitle: 'Tính Thang Điểm Wells DVT',
               badge: 'BƯỚC 1',
               x: 260,

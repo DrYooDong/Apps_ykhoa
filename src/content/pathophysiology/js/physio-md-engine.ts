@@ -139,6 +139,9 @@ export class PhysioMDEngine {
       return m.startsWith('<') ? m : `<p>${m}</p>`;
     });
 
+    return text;
+  }
+
   public static async loadArticle(articlePath: string): Promise<ParsedFrontmatter> {
     try {
       const resp = await fetch(articlePath);

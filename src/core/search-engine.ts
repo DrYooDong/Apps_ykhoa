@@ -36,7 +36,7 @@ export class CliniSearchEngine {
   /**
    * Tự động nạp toàn bộ danh mục từ 7 phân hệ y khoa qua contentLoaderEngine
    */
-  public async initAllIndexes(categories: string[] = ['calculators', 'pharmacology', 'pathophysiology', 'skills', 'approaches', 'ebm', 'tcm']): Promise<void> {
+  public async initAllIndexes(categories: string[] = ['calculators', 'pharmacology', 'pathophysiology', 'skills', 'approaches', 'ebm', 'tcm', 'docspace']): Promise<void> {
     for (const category of categories) {
       try {
         const items = await contentLoaderEngine.loadCategoryIndex(category);
@@ -45,13 +45,15 @@ export class CliniSearchEngine {
             .replace(/\.(html|md)$/i, '')
             .replace(/_/g, ' ');
 
+          const itemUrl = item.path && item.path.startsWith('#/') ? item.path : `#/${item.category}/${item.id}`;
+
           this.addDocument({
             id: `${item.category}/${item.id}`,
             title: cleanTitle,
             category: item.category,
             keywords: [item.id, item.subcategory || '', item.category, ...(item.tags || [])],
             contentSnippet: [item.category, item.subcategory || '', item.description || '', cleanTitle].filter(Boolean).join(' - '),
-            url: `#/${item.category}/${item.id}`
+            url: itemUrl
           });
         });
       } catch (err) {

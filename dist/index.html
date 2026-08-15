@@ -25,17 +25,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192x192-Ds0UNcjT.png">
 
 
-  <script src="./js/core/category-mapper.js" defer></script>
-  <script src="./js/data/clinical-cheatsheets-data.js" defer></script>
-  <script src="./js/main.js" defer></script>
-  <script src="./components/footer.js" defer></script>
-  <script src="./js/core/pulse.js" defer></script>
-  <script src="./js/knowledge/evidence-bridge.js" defer></script>
-  <script src="./js/simulators/smart-recommender.js" defer></script>
-  <script src="./data/search-index-bundle.js" defer></script>
-  <script src="./js/components/clinical-heatmap.js" defer></script>
-  <script src="./js/tools/good-day-calculator.js" defer></script>
-  <script src="./js/effects/premium-interactions.js" defer></script>
+  <!-- Core TypeScript Modules -->
 
   <!-- Schema.org MedicalWebPage Structured Data -->
   <script type="application/ld+json">
@@ -58,8 +48,8 @@
     ]
   }
   </script>
-  <script type="module" crossorigin src="./assets/main-DNajjzn9.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-BiNJhQNj.css">
+  <script type="module" crossorigin src="./assets/main-Dv4LpAWH.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-BXpkK_yX.css">
 </head>
 
 <body>
@@ -80,19 +70,19 @@
     </div>
 
     <nav class="header-nav-modules" aria-label="Phân hệ y khoa">
-      <a href="src/content/skills/ky-nang.html" class="header-module-btn" data-route="src/content/skills/ky-nang.html" title="Kỹ năng Lâm sàng">
+      <a href="#/skills" class="header-module-btn" data-route="#/skills" title="Kỹ năng Lâm sàng">
         <i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i>
         <span>Kỹ năng</span>
       </a>
-      <a href="src/content/approaches/tiep-can.html" class="header-module-btn" data-route="src/content/approaches/tiep-can.html" title="Tiếp cận Lâm sàng">
+      <a href="#/approaches" class="header-module-btn" data-route="#/approaches" title="Tiếp cận Lâm sàng">
         <i class="fa-solid fa-sitemap" style="color: #10b981;"></i>
         <span>Tiếp cận</span>
       </a>
-      <a href="src/content/calculators/cong-cu.html" class="header-module-btn" data-route="src/content/calculators/cong-cu.html" title="Công cụ Lâm sàng">
+      <a href="#/calculators" class="header-module-btn" data-route="#/calculators" title="Công cụ Lâm sàng">
         <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
         <span>Công cụ</span>
       </a>
-      <a href="src/content/pharmacology/duoc-ly.html" class="header-module-btn" data-route="src/content/pharmacology/duoc-ly.html" title="Dược lý Lâm sàng">
+      <a href="#/pharmacology" class="header-module-btn" data-route="#/pharmacology" title="Dược lý Lâm sàng">
         <i class="fa-solid fa-pills" style="color: #ec4899;"></i>
         <span>Dược lý</span>
       </a>
@@ -103,14 +93,14 @@
           <i class="fa-solid fa-chevron-down dropdown-arrow" style="font-size: 0.65rem; margin-left: 2px; opacity: 0.7;"></i>
         </button>
         <div class="header-dropdown-menu">
-          <a href="src/content/pathophysiology/giai-phau-sinh-ly.html" class="header-dropdown-item">
+          <a href="#/pathophysiology/giai-phau-sinh-ly" class="header-dropdown-item">
             <span class="dropdown-item-icon">🧬</span>
             <div class="dropdown-item-text">
               <strong>GP - SL</strong>
               <span>Giải phẫu & Sinh lý</span>
             </div>
           </a>
-          <a href="src/content/pathophysiology/co-che-benh-sinh.html" class="header-dropdown-item">
+          <a href="#/pathophysiology/co-che-benh-sinh" class="header-dropdown-item">
             <span class="dropdown-item-icon">🔬</span>
             <div class="dropdown-item-text">
               <strong>CCBS - SBL</strong>
@@ -119,11 +109,11 @@
           </a>
         </div>
       </div>
-      <a href="src/content/ebm/yhcc.html" class="header-module-btn" data-route="src/content/ebm/yhcc.html" title="Y học chứng cứ">
+      <a href="#/ebm" class="header-module-btn" data-route="#/ebm" title="Y học chứng cứ">
         <i class="fa-solid fa-flask" style="color: #06b6d4;"></i>
         <span>Chứng cứ</span>
       </a>
-      <a href="src/content/tcm/y-hoc-co-truyen.html" class="header-module-btn" data-route="src/content/tcm/y-hoc-co-truyen.html" title="Y học cổ truyền">
+      <a href="#/tcm" class="header-module-btn" data-route="#/tcm" title="Y học cổ truyền">
         <i class="fa-solid fa-yin-yang" style="color: #14b8a6;"></i>
         <span>Đông y</span>
       </a>
@@ -221,7 +211,7 @@
 
         <!-- ── ROW 2: 8 PHÂN HỆ Y KHOA NAV STRIP (MASTER INDEX) ────────────── -->
         <div class="bento-modules-row" aria-label="8 Phân hệ kiến thức y khoa">
-          <a href="src/content/skills/ky-nang.html" class="bento-cell bento-module bento-mod-skills">
+          <a href="#/skills" class="bento-cell bento-module bento-mod-skills">
             <div class="bento-mod-top-box">
               <span class="bento-mod-badge"><span class="bento-status-dot"></span>Active</span>
               <div class="bento-mod-icon-wrap"><i class="fa-solid fa-stethoscope"></i></div>
@@ -236,7 +226,7 @@
             </div>
           </a>
 
-          <a href="src/content/approaches/tiep-can.html" class="bento-cell bento-module bento-mod-approach">
+          <a href="#/approaches" class="bento-cell bento-module bento-mod-approach">
             <div class="bento-mod-top-box">
               <span class="bento-mod-badge"><span class="bento-status-dot"></span>Active</span>
               <div class="bento-mod-icon-wrap"><i class="fa-solid fa-sitemap"></i></div>
@@ -251,7 +241,7 @@
             </div>
           </a>
 
-          <a href="src/content/calculators/cong-cu.html" class="bento-cell bento-module bento-mod-tools">
+          <a href="#/calculators" class="bento-cell bento-module bento-mod-tools">
             <div class="bento-mod-top-box">
               <span class="bento-mod-badge bento-badge-new">120+ Thang điểm</span>
               <div class="bento-mod-icon-wrap"><i class="fa-solid fa-calculator"></i></div>
@@ -266,7 +256,7 @@
             </div>
           </a>
 
-          <a href="src/content/pharmacology/duoc-ly.html" class="bento-cell bento-module bento-mod-pharma">
+          <a href="#/pharmacology" class="bento-cell bento-module bento-mod-pharma">
             <div class="bento-mod-top-box">
               <span class="bento-mod-badge"><span class="bento-status-dot"></span>Tra cứu</span>
               <div class="bento-mod-icon-wrap"><i class="fa-solid fa-pills"></i></div>
@@ -296,14 +286,14 @@
             </div>
             <!-- Menu xổ xuống 02 lựa chọn -->
             <div class="bento-card-dropdown-menu">
-              <a href="src/content/pathophysiology/giai-phau-sinh-ly.html" class="bento-card-dropdown-item">
+              <a href="#/pathophysiology/giai-phau-sinh-ly" class="bento-card-dropdown-item">
                 <span class="dropdown-icon">🧬</span>
                 <div class="dropdown-label">
                   <strong>GP - SL</strong>
                   <small>Giải phẫu & Sinh lý học</small>
                 </div>
               </a>
-              <a href="src/content/pathophysiology/co-che-benh-sinh.html" class="bento-card-dropdown-item">
+              <a href="#/pathophysiology/co-che-benh-sinh" class="bento-card-dropdown-item">
                 <span class="dropdown-icon">🔬</span>
                 <div class="dropdown-label">
                   <strong>CCBS - SBL</strong>
@@ -313,7 +303,7 @@
             </div>
           </div>
 
-          <a href="src/content/ebm/yhcc.html" class="bento-cell bento-module bento-mod-ebm">
+          <a href="#/ebm" class="bento-cell bento-module bento-mod-ebm">
             <div class="bento-mod-top-box">
               <span class="bento-mod-badge bento-badge-new">Guidelines 2026</span>
               <div class="bento-mod-icon-wrap"><i class="fa-solid fa-flask"></i></div>
@@ -328,7 +318,7 @@
             </div>
           </a>
 
-          <a href="src/content/tcm/y-hoc-co-truyen.html" class="bento-cell bento-module bento-mod-tcm">
+          <a href="#/tcm" class="bento-cell bento-module bento-mod-tcm">
             <div class="bento-mod-top-box">
               <span class="bento-mod-badge"><span class="bento-status-dot"></span>YHCT</span>
               <div class="bento-mod-icon-wrap"><i class="fa-solid fa-yin-yang"></i></div>
@@ -373,33 +363,33 @@
                 </h2>
               </div>
               <div class="bento-quick-grid">
-                <a href="src/content/calculators/general/tracuu-ma-icd10.html" class="bento-quick-item" style="--qi-color: var(--color-primary-rgb)">
-                  <button class="pin-btn" data-url="src/content/calculators/general/tracuu-ma-icd10.html" data-title="Tra cứu mã ICD-10" data-category="Công cụ" data-icon="🔍" title="Ghim ứng dụng">☆</button>
+                <a href="#/calculators/tracuu-ma-icd10" class="bento-quick-item" style="--qi-color: var(--color-primary-rgb)">
+                  <button class="pin-btn" data-url="#/calculators/tracuu-ma-icd10" data-title="Tra cứu mã ICD-10" data-category="Công cụ" data-icon="🔍" title="Ghim ứng dụng">☆</button>
                   <div class="bqi-icon">🔍</div>
                   <div class="bqi-info"><strong>Tra cứu ICD-10</strong><span>Mã bệnh quốc tế</span></div>
                 </a>
-                <a href="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" class="bento-quick-item" style="--qi-color: var(--color-rose-rgb)">
-                  <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-ecg-co-ban.html" data-title="Đọc Điện tâm đồ ECG" data-category="Kỹ năng" data-icon="📈" title="Ghim ứng dụng">☆</button>
+                <a href="#/skills/doc-ecg-co-ban" class="bento-quick-item" style="--qi-color: var(--color-rose-rgb)">
+                  <button class="pin-btn" data-url="#/skills/doc-ecg-co-ban" data-title="Đọc Điện tâm đồ ECG" data-category="Kỹ năng" data-icon="📈" title="Ghim ứng dụng">☆</button>
                   <div class="bqi-icon">📈</div>
                   <div class="bqi-info"><strong>Đọc ECG cơ bản</strong><span>Điện tâm đồ</span></div>
                 </a>
-                <a href="src/content/skills/can-lam-sang/doc-tpttb-mau.html" class="bento-quick-item" style="--qi-color: var(--color-rose-rgb)">
-                  <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-tpttb-mau.html" data-title="Phân tích tế bào máu" data-category="Kỹ năng" data-icon="🩸" title="Ghim ứng dụng">☆</button>
+                <a href="#/skills/doc-tpttb-mau" class="bento-quick-item" style="--qi-color: var(--color-rose-rgb)">
+                  <button class="pin-btn" data-url="#/skills/doc-tpttb-mau" data-title="Phân tích tế bào máu" data-category="Kỹ năng" data-icon="🩸" title="Ghim ứng dụng">☆</button>
                   <div class="bqi-icon">🩸</div>
                   <div class="bqi-info"><strong>Phân tích CBC</strong><span>Tế bào máu</span></div>
                 </a>
-                <a href="src/content/skills/can-lam-sang/doc-sh-than.html" class="bento-quick-item" style="--qi-color: var(--color-teal-rgb)">
-                  <button class="pin-btn" data-url="src/content/skills/can-lam-sang/doc-sh-than.html" data-title="Sinh hóa chức năng Thận" data-category="Kỹ năng" data-icon="🧪" title="Ghim ứng dụng">☆</button>
+                <a href="#/skills/doc-sh-than" class="bento-quick-item" style="--qi-color: var(--color-teal-rgb)">
+                  <button class="pin-btn" data-url="#/skills/doc-sh-than" data-title="Sinh hóa chức năng Thận" data-category="Kỹ năng" data-icon="🧪" title="Ghim ứng dụng">☆</button>
                   <div class="bqi-icon">🧪</div>
                   <div class="bqi-info"><strong>SH Chức năng Thận</strong><span>eGFR / Ure / Creatinin</span></div>
                 </a>
-                <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="bento-quick-item" style="--qi-color: var(--color-warning-rgb)">
-                  <button class="pin-btn" data-url="src/content/calculators/emergency/ql-bu-dich-studio.html" data-title="Xử trí SXH Dengue" data-category="Tiếp cận" data-icon="🦟" title="Ghim ứng dụng">☆</button>
+                <a href="#/calculators/ql-bu-dich-studio" class="bento-quick-item" style="--qi-color: var(--color-warning-rgb)">
+                  <button class="pin-btn" data-url="#/calculators/ql-bu-dich-studio" data-title="Xử trí SXH Dengue" data-category="Tiếp cận" data-icon="🦟" title="Ghim ứng dụng">☆</button>
                   <div class="bqi-icon">🦟</div>
                   <div class="bqi-info"><strong>Xử trí SXHD</strong><span>Bù dịch Dengue</span></div>
                 </a>
-                <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="bento-quick-item" style="--qi-color: var(--color-purple-rgb)">
-                  <button class="pin-btn" data-url="src/content/skills/treatment-management/luachon-khangsinh.html" data-title="Kháng sinh kinh nghiệm" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
+                <a href="#/skills/luachon-khangsinh" class="bento-quick-item" style="--qi-color: var(--color-purple-rgb)">
+                  <button class="pin-btn" data-url="#/skills/luachon-khangsinh" data-title="Kháng sinh kinh nghiệm" data-category="Dược lý" data-icon="💊" title="Ghim ứng dụng">☆</button>
                   <div class="bqi-icon">💊</div>
                   <div class="bqi-info"><strong>Kháng sinh KN</strong><span>Empiric therapy</span></div>
                 </a>
@@ -479,27 +469,27 @@
                 </h3>
               </div>
               <div class="pulse-actions-grid">
-                <a href="src/content/ebm/ebm-lab/pico-nnt-lab.html" class="pulse-action-card">
+                <a href="#/ebm/pico-nnt-lab" class="pulse-action-card">
                   <div class="pulse-action-icon" style="color: var(--color-primary);">🧪</div>
                   <div class="pulse-action-title">PICO & NNT Lab</div>
                   <div class="pulse-action-sub">Thực hành EBM tương tác</div>
                 </a>
-                <a href="src/content/ebm/medical-statistics/forest-plot-builder.html" class="pulse-action-card">
+                <a href="#/ebm/forest-plot-builder" class="pulse-action-card">
                   <div class="pulse-action-icon" style="color: #7c3aed;">📊</div>
                   <div class="pulse-action-title">Forest Plot Builder</div>
                   <div class="pulse-action-sub">Vẽ SVG Meta-analysis</div>
                 </a>
-                <a href="src/content/ebm/guideline-radar/guideline-diff-viewer.html" class="pulse-action-card">
+                <a href="#/ebm/guideline-diff-viewer" class="pulse-action-card">
                   <div class="pulse-action-icon" style="color: #10b981;">📡</div>
                   <div class="pulse-action-title">Guideline Diff Viewer</div>
                   <div class="pulse-action-sub">So sánh Trước & Sau</div>
                 </a>
-                <a href="src/content/ebm/yhcc.html" class="pulse-action-card">
+                <a href="#/ebm" class="pulse-action-card">
                   <div class="pulse-action-icon" style="color: #f59e0b;">🧠</div>
                   <div class="pulse-action-title">Quiz Engine (SM-2)</div>
                   <div class="pulse-action-sub">Ôn tập Spaced Repetition</div>
                 </a>
-                <a href="src/content/ebm/guidelines/kho-guidelines.html" class="pulse-action-card">
+                <a href="#/ebm/kho-guidelines" class="pulse-action-card">
                   <div class="pulse-action-icon" style="color: #ec4899;">🔍</div>
                   <div class="pulse-action-title">Kho Guidelines</div>
                   <div class="pulse-action-sub">Tra cứu Bộ Y tế & Quốc tế</div>
@@ -675,19 +665,19 @@
   <!-- Floating Action Dock -->
   <nav class="floating-action-dock" aria-label="Cấp cứu khẩn">
     <div class="dock-container">
-      <a href="src/content/calculators/emergency/acls-resus-studio.html" class="dock-item" data-tooltip="ACLS Ngừng tim" style="--dock-color: #ef4444;">
+      <a href="#/calculators/acls-resus-studio" class="dock-item" data-tooltip="ACLS Ngừng tim" style="--dock-color: #ef4444;">
         <div class="dock-icon"><i class="fa-solid fa-heart-pulse"></i></div>
       </a>
-      <a href="src/content/calculators/emergency/stroke-pro-studio.html" class="dock-item" data-tooltip="Cấp cứu Đột quỵ" style="--dock-color: #0284c7;">
+      <a href="#/calculators/stroke-pro-studio" class="dock-item" data-tooltip="Cấp cứu Đột quỵ" style="--dock-color: #0284c7;">
         <div class="dock-icon"><i class="fa-solid fa-brain"></i></div>
       </a>
-      <a href="src/content/calculators/emergency/ql-bu-dich-studio.html" class="dock-item" data-tooltip="SXHD nặng" style="--dock-color: #f59e0b;">
+      <a href="#/calculators/ql-bu-dich-studio" class="dock-item" data-tooltip="SXHD nặng" style="--dock-color: #f59e0b;">
         <div class="dock-icon"><i class="fa-solid fa-mosquito"></i></div>
       </a>
-      <a href="src/content/calculators/renal/dg-abg-studio.html" class="dock-item" data-tooltip="Toan kiềm & SHH" style="--dock-color: #10b981;">
+      <a href="#/calculators/dg-abg-studio" class="dock-item" data-tooltip="Toan kiềm & SHH" style="--dock-color: #10b981;">
         <div class="dock-icon"><i class="fa-solid fa-mask-ventilator"></i></div>
       </a>
-      <a href="src/content/skills/treatment-management/luachon-khangsinh.html" class="dock-item" data-tooltip="Sốc nhiễm khuẩn" style="--dock-color: #ec4899;">
+      <a href="#/skills/luachon-khangsinh" class="dock-item" data-tooltip="Sốc nhiễm khuẩn" style="--dock-color: #ec4899;">
         <div class="dock-icon"><i class="fa-solid fa-capsules"></i></div>
       </a>
     </div>
@@ -806,11 +796,7 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="./js/dashboard/homepage-widgets.js" defer></script>
-  <script src="./js/dashboard/homepage-effects.js" defer></script>
-  <script src="./js/toc.js" defer></script>
-  <script src="./js/core/mui-port.js" defer></script>
+  <!-- Dashboard & Feature TypeScript Modules -->
 </body>
 
 </html>

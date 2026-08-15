@@ -30,16 +30,19 @@ export function initApproachesShared(): void {
     }
   }, { passive: true });
 
-  // 2. Smooth Scroll for internal hash links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // 2. Smooth Scroll for internal hash links (ignoring SPA routes starting with #/)
+  document.querySelectorAll('a[href^="#"]:not([href^="#/"])').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const targetId = anchor.getAttribute('href');
-      if (!targetId || targetId === '#') return;
-      const targetEl = document.querySelector(targetId);
-      if (targetEl) {
-        e.preventDefault();
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        window.history.pushState(null, '', targetId);
+      if (!targetId || targetId === '#' || targetId.startsWith('#/')) return;
+      try {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } catch (err) {
+        // Ignore invalid CSS selector
       }
     });
   });

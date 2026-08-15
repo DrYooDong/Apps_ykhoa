@@ -4,7 +4,7 @@
  */
 
 import './styles/main.css';
-import './docspace/styles/docspace.css';
+import './content/docspace/styles/docspace.css';
 
 import { storageCore } from './core/storage';
 import { markdownCoreEngine } from './core/markdown-engine';
@@ -14,7 +14,7 @@ import { router, CliniRouter } from './core/router';
 import { searchEngine, CliniSearchEngine } from './core/search-engine';
 import { contentLoaderEngine, ContentLoaderEngine } from './core/content-loader';
 import * as components from './components';
-import { initDocSpaceRoutes } from './docspace/index';
+import { initDocSpaceRoutes } from './content/docspace/index';
 
 export interface CliniPortalCore {
   version: string;
@@ -126,6 +126,80 @@ function setupCategoryFilter(): void {
   });
 }
 
+import { 
+  renderEbmView, 
+  initEbmHub,
+  renderGuidelinesView,
+  renderJournalQualityView,
+  renderRadarView,
+  renderEbmLabView,
+  renderForestPlotView,
+  renderFunnelPlotView,
+  renderKaplanMeierView,
+  renderRocCurveView,
+  renderStatisticsHubView
+} from './content/ebm';
+import { 
+  renderSkillsView, 
+  initSkillsHub,
+  renderOsceRandomizerView,
+  renderVirtualPatientView,
+  renderEcgStudioView,
+  renderAuscultationView,
+  renderSkillsNavigatorView,
+  renderSkillReaderView
+} from './content/skills';
+import { 
+  renderCalculatorsView, 
+  initCalculatorsHub,
+  renderGeneralToolsView,
+  renderCardiologyToolsView,
+  renderEmergencyToolsView,
+  renderGastroToolsView,
+  renderRenalToolsView,
+  renderRespiratoryToolsView,
+  renderInfectiousToolsView,
+  renderEndocrinologyToolsView,
+  renderHematologyToolsView,
+  renderNeurologyToolsView
+} from './content/calculators';
+import { 
+  renderPharmacologyView, 
+  initPharmacologyHub,
+  renderDrugSearchView,
+  renderInteractionMatrixView,
+  renderDoseOptimizerView,
+  renderPkSimulatorView,
+  renderSymptomPharmaView
+} from './content/pharmacology';
+import { 
+  renderApproachesView, 
+  initApproachesHub, 
+  renderPediatricsView,
+  renderCapCuuView,
+  renderParaclinicalView,
+  renderSymptomsView,
+  renderBenhLyView,
+  renderPharmacologyApproachesView
+} from './content/approaches';
+import { 
+  renderPathophysiologyView, 
+  initPathophysiologyHub,
+  renderGiaiPhauSinhLyView,
+  renderCoCheBenhSinhView,
+  renderFormulaVaultView,
+  renderPhysioReader
+} from './content/pathophysiology';
+import { 
+  renderTcmView, 
+  initTcmHub,
+  renderMeridianAcupointsView,
+  renderHerbsFormulasView,
+  renderTcmDiagnosticsView,
+  renderNguHanhStudioView,
+  renderIntegrativeBridgeView
+} from './content/tcm';
+
 /**
  * Đăng ký các SPA Routes chính
  */
@@ -135,7 +209,446 @@ function initializeRoutes(): void {
     mountToApp(components.renderHomeView());
   });
 
-  // 2. Route Hub Danh Mục (#/:category)
+  // 2. Native SPA Routes cho 7 Phân Hệ Y Khoa Cốt Lõi (100% Native Components, No Iframe)
+  router.register('/ebm', 'Y học Chứng cứ (EBM)', () => {
+    document.title = 'Y học Chứng cứ (EBM) – CliniPortal';
+    mountToApp(renderEbmView());
+    initEbmHub();
+  });
+
+  // === EBM SUB-ROUTES (Native SPA Components) ===
+  router.register('/ebm/kho-guidelines', 'Kho Guidelines & Nghiên Cứu', () => {
+    document.title = 'Kho Guidelines & Nghiên Cứu Lâm Sàng – CliniPortal';
+    mountToApp(renderGuidelinesView());
+  });
+  router.register('/ebm/journal-quality', 'Đánh Giá Chất Lượng Tạp Chí', () => {
+    document.title = 'Đánh Giá Tạp Chí Y Khoa (Journal QA) – CliniPortal';
+    mountToApp(renderJournalQualityView());
+  });
+  router.register('/ebm/guideline-radar', 'Guideline Radar Diff Viewer', () => {
+    document.title = 'Guideline Radar Diff Viewer – CliniPortal';
+    mountToApp(renderRadarView());
+  });
+  router.register('/ebm/ebm-lab', 'EBM Practice Lab', () => {
+    document.title = 'EBM Practice Lab – CliniPortal';
+    mountToApp(renderEbmLabView());
+  });
+  router.register('/ebm/forest-plot', 'Forest Plot Visualizer', () => {
+    document.title = 'Forest Plot Visualizer – CliniPortal';
+    mountToApp(renderForestPlotView());
+  });
+  router.register('/ebm/funnel-plot', 'Funnel Plot Visualizer', () => {
+    document.title = 'Funnel Plot Visualizer – CliniPortal';
+    mountToApp(renderFunnelPlotView());
+  });
+  router.register('/ebm/kaplan-meier', 'Kaplan-Meier Survival Curve', () => {
+    document.title = 'Kaplan-Meier Survival Curve – CliniPortal';
+    mountToApp(renderKaplanMeierView());
+  });
+  router.register('/ebm/roc-curve', 'ROC Curve & AUC Analyzer', () => {
+    document.title = 'ROC Curve & AUC Analyzer – CliniPortal';
+    mountToApp(renderRocCurveView());
+  });
+  router.register('/ebm/thong-ke-y-hoc', 'Thống Kê Y Học & NCKH', () => {
+    document.title = 'Thống Kê Y Học & Thiết Kế NCKH – CliniPortal';
+    mountToApp(renderStatisticsHubView());
+  });
+
+  router.register('/skills', 'Kỹ năng Lâm sàng & OSCE', () => {
+    document.title = 'Kỹ năng Lâm sàng & OSCE – CliniPortal';
+    mountToApp(renderSkillsView());
+    initSkillsHub();
+  });
+
+  router.register('/skills/osce-randomizer', 'OSCE Randomizer', () => {
+    document.title = 'OSCE Station Randomizer – CliniPortal';
+    mountToApp(renderOsceRandomizerView());
+  });
+
+  router.register('/skills/benh-nhan-ao', 'Bệnh Nhân Ảo & ICU Simulator', () => {
+    document.title = 'Bệnh Nhân Ảo & ICU Simulator – CliniPortal';
+    mountToApp(renderVirtualPatientView());
+  });
+
+  router.register('/skills/ecg-studio', 'Đọc ECG Tương Tác', () => {
+    document.title = 'Interactive ECG Studio – CliniPortal';
+    mountToApp(renderEcgStudioView());
+  });
+
+  router.register('/skills/auscultation', 'Thính Chẩn Tim - Phổi', () => {
+    document.title = 'Thính Chẩn Tim - Phổi – CliniPortal';
+    mountToApp(renderAuscultationView());
+  });
+
+  router.register('/skills/kham-lam-sang', 'Khám Lâm Sàng Hệ Cơ Quan', () => {
+    document.title = 'Khám Lâm Sàng Hệ Cơ Quan – CliniPortal';
+    mountToApp(renderSkillsNavigatorView('kham-lam-sang'));
+  });
+
+  router.register('/skills/hoi-suc', 'Hồi Sức Cấp Cứu', () => {
+    document.title = 'Kỹ Năng Hồi Sức Cấp Cứu – CliniPortal';
+    mountToApp(renderSkillsNavigatorView('hoi-suc'));
+  });
+
+  router.register('/skills/thu-thuat', 'Thủ Thuật Lâm Sàng', () => {
+    document.title = 'Thủ Thuật Lâm Sàng Xâm Lấn – CliniPortal';
+    mountToApp(renderSkillsNavigatorView('thu-thuat'));
+  });
+
+  router.register('/skills/can-lam-sang', 'Đọc Kết Quả Cận Lâm Sàng', () => {
+    document.title = 'Đọc Kết Quả Cận Lâm Sàng – CliniPortal';
+    mountToApp(renderSkillsNavigatorView('can-lam-sang'));
+  });
+
+  router.register('/skills/benh-an', 'Làm Bệnh Án & Giao Tiếp', () => {
+    document.title = 'Làm Bệnh Án & Giao Tiếp SBAR – CliniPortal';
+    mountToApp(renderSkillsNavigatorView('benh-an'));
+  });
+
+  router.register('/skills/reader/:slug', 'Quy Trình Kỹ Năng', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderSkillReaderView(slug));
+  });
+
+  router.register('/skills/reader/:sub/:slug', 'Quy Trình Kỹ Năng', (params) => {
+    const sub = params.sub || '';
+    const slug = params.slug || '';
+    mountToApp(renderSkillReaderView(`${sub}/${slug}`));
+  });
+
+  router.register('/skills/reader/:sub/:folder/:slug', 'Quy Trình Kỹ Năng', (params) => {
+    const sub = params.sub || '';
+    const folder = params.folder || '';
+    const slug = params.slug || '';
+    mountToApp(renderSkillReaderView(`${sub}/${folder}/${slug}`));
+  });
+
+  router.register('/calculators', 'Công cụ & Thang điểm', () => {
+    document.title = 'Công cụ Lâm sàng & Thang điểm – CliniPortal';
+    mountToApp(renderCalculatorsView());
+    initCalculatorsHub();
+  });
+
+  // === CALCULATORS SUB-ROUTES (Native SPA Components) ===
+  // General
+  router.register('/calculators/benh-an-noi-khoa', 'Mẫu Bệnh Án Nội Khoa', () => {
+    document.title = 'Mẫu Bệnh Án Nội Khoa – CliniPortal';
+    mountToApp(renderGeneralToolsView('benh-an'));
+  });
+  router.register('/calculators/tra-cuu-icd10', 'Tra Cứu Mã ICD-10 & BHYT', () => {
+    document.title = 'Tra Cứu ICD-10 – CliniPortal';
+    mountToApp(renderGeneralToolsView('icd10'));
+  });
+  router.register('/calculators/tinh-co-mau', 'Tính Cỡ Mẫu Nghiên Cứu', () => {
+    document.title = 'Tính Cỡ Mẫu NCKH – CliniPortal';
+    mountToApp(renderGeneralToolsView('tinh-co-mau'));
+  });
+  router.register('/calculators/quy-doi-lieu', 'Quy Đổi Liều Tương Đương', () => {
+    document.title = 'Quy Đổi Liều Thuốc – CliniPortal';
+    mountToApp(renderGeneralToolsView('quy-doi-lieu'));
+  });
+  router.register('/calculators/kho-cong-thuc-sinh-ly', 'Kho Công Thức Sinh Lý', () => {
+    document.title = 'Kho Công Thức Sinh Lý – CliniPortal';
+    mountToApp(renderGeneralToolsView('formula-vault'));
+  });
+
+  // Cardiology
+  router.register('/calculators/ptnc-tim-mach', 'Phân Tầng Nguy Cơ Tim Mạch SCORE2', () => {
+    document.title = 'Phân Tầng Tim Mạch (SCORE2) – CliniPortal';
+    mountToApp(renderCardiologyToolsView('ptnc-tim-mach'));
+  });
+  router.register('/calculators/dg-ldlc', 'Mục Tiêu LDL-C (ESC/VNHA)', () => {
+    document.title = 'Đánh Giá Mục Tiêu LDL-C – CliniPortal';
+    mountToApp(renderCardiologyToolsView('dg-ldlc'));
+  });
+  router.register('/calculators/dg-suy-tim', 'Đánh Giá & Phân Loại Suy Tim', () => {
+    document.title = 'Đánh Giá Suy Tim – CliniPortal';
+    mountToApp(renderCardiologyToolsView('dg-suy-tim'));
+  });
+  router.register('/calculators/vte-toolkit', 'VTE Toolkit (Wells DVT & PE)', () => {
+    document.title = 'VTE Toolkit – CliniPortal';
+    mountToApp(renderCardiologyToolsView('vte-toolkit'));
+  });
+  router.register('/calculators/phan-loai-roi-loan-nhip', 'Arrhythmia Pro Studio', () => {
+    document.title = 'Arrhythmia Pro Studio – CliniPortal';
+    mountToApp(renderCardiologyToolsView('phan-loai-roi-loan-nhip'));
+  });
+
+  // Emergency & ICU
+  router.register('/calculators/an-than-icu', 'An Thần ICU (RASS / CPOT)', () => {
+    document.title = 'An Thần ICU – CliniPortal';
+    mountToApp(renderEmergencyToolsView('an-than-icu'));
+  });
+  router.register('/calculators/van-mach-tro-tim', 'Vận Mạch & Huyết Động Cấp Cứu', () => {
+    document.title = 'Quản Lý Vận Mạch – CliniPortal';
+    mountToApp(renderEmergencyToolsView('van-mach'));
+  });
+  router.register('/calculators/bu-dich', 'Fluid Resuscitation Studio', () => {
+    document.title = 'Bù Dịch Hồi Sức – CliniPortal';
+    mountToApp(renderEmergencyToolsView('bu-dich'));
+  });
+  router.register('/calculators/quan-ly-may-tho', 'Ventilator Pro Studio', () => {
+    document.title = 'Máy Thở ICU – CliniPortal';
+    mountToApp(renderEmergencyToolsView('may-tho'));
+  });
+  router.register('/calculators/acls-resus-studio', 'ACLS Resuscitation Pro Studio', () => {
+    document.title = 'ACLS Cấp Cứu Ngừng Tim – CliniPortal';
+    mountToApp(renderEmergencyToolsView('acls'));
+  });
+  router.register('/calculators/dg-dot-quy', 'Stroke Pro Studio', () => {
+    document.title = 'Stroke Pro Studio – CliniPortal';
+    mountToApp(renderEmergencyToolsView('stroke'));
+  });
+  router.register('/calculators/toxicology-studio', 'Toxicology Pro Studio', () => {
+    document.title = 'Hồi Sức Chống Độc – CliniPortal';
+    mountToApp(renderEmergencyToolsView('toxicology'));
+  });
+  router.register('/calculators/polytrauma-mtp-studio', 'Polytrauma & MTP Pro Studio', () => {
+    document.title = 'Đa Chấn Thương & MTP – CliniPortal';
+    mountToApp(renderEmergencyToolsView('polytrauma'));
+  });
+  router.register('/calculators/ecg-studio', 'ECG Pro Studio', () => {
+    document.title = 'ECG Pro Studio – CliniPortal';
+    mountToApp(renderCardiologyToolsView('phan-loai-roi-loan-nhip'));
+  });
+  router.register('/calculators/metabolic-crisis-studio', 'Resuscitative Metabolic Studio', () => {
+    document.title = 'Metabolic Crisis Studio – CliniPortal';
+    mountToApp(renderRenalToolsView('electrolyte'));
+  });
+  router.register('/calculators/pocus-efast-studio', 'POCUS & eFAST Studio', () => {
+    document.title = 'POCUS eFAST – CliniPortal';
+    mountToApp(renderEmergencyToolsView('an-than-icu'));
+  });
+  router.register('/calculators/cardiogenic-shock-studio', 'Cardiogenic Shock Studio', () => {
+    document.title = 'Cardiogenic Shock – CliniPortal';
+    mountToApp(renderEmergencyToolsView('van-mach'));
+  });
+
+  // Gastroenterology & Nutrition
+  router.register('/calculators/dg-xo-gan-studio', 'Cirrhosis Studio (Child-Pugh / MELD)', () => {
+    document.title = 'Đánh Giá Xơ Gan – CliniPortal';
+    mountToApp(renderGastroToolsView('xo-gan'));
+  });
+  router.register('/calculators/dg-dinh-duong', 'Đánh Giá Dinh Dưỡng Nội Viện', () => {
+    document.title = 'Dinh Dưỡng Nội Viện – CliniPortal';
+    mountToApp(renderGastroToolsView('dinh-duong'));
+  });
+  router.register('/calculators/ascites-studio', 'Ascites Pro Studio (SAAG)', () => {
+    document.title = 'Phân Tích Dịch Báng – CliniPortal';
+    mountToApp(renderGastroToolsView('ascites'));
+  });
+  router.register('/calculators/xuat-huyet-tieu-hoa', 'Xuất Huyết Tiêu Hóa (GBS)', () => {
+    document.title = 'Xuất Huyết Tiêu Hóa – CliniPortal';
+    mountToApp(renderGastroToolsView('xhth'));
+  });
+  router.register('/calculators/ptnc-hcc', 'Phân Tầng Nguy Cơ HCC', () => {
+    document.title = 'Phân Tầng HCC – CliniPortal';
+    mountToApp(renderGastroToolsView('ptnc-hcc'));
+  });
+
+  // Renal & Electrolytes
+  router.register('/calculators/chuc-nang-than', 'Chức Năng Thận (CKD-EPI / Cockcroft-Gault)', () => {
+    document.title = 'Chức Năng Thận (eGFR) – CliniPortal';
+    mountToApp(renderRenalToolsView('chuc-nang-than'));
+  });
+  router.register('/calculators/khi-mau-dong-mach', 'Khí Máu Động Mạch (ABG Studio)', () => {
+    document.title = 'Khí Máu Động Mạch – CliniPortal';
+    mountToApp(renderRenalToolsView('khi-mau'));
+  });
+  router.register('/calculators/electrolyte-studio', 'Electrolyte Pro Studio', () => {
+    document.title = 'Rối Loạn Điện Giải – CliniPortal';
+    mountToApp(renderRenalToolsView('electrolyte'));
+  });
+  router.register('/calculators/danh-gia-nguyen-nhan-aki', 'Đánh Giá Nguyên Nhân AKI', () => {
+    document.title = 'Nguyên Nhân AKI – CliniPortal';
+    mountToApp(renderRenalToolsView('aki-cause'));
+  });
+
+  // Respiratory
+  router.register('/calculators/pneumonia-studio', 'Pneumonia Studio (CURB-65 / PSI)', () => {
+    document.title = 'Viêm Phổi (CURB-65) – CliniPortal';
+    mountToApp(renderRespiratoryToolsView('pneumonia'));
+  });
+  router.register('/calculators/cxr-studio', 'CXR Pro Studio & CTR', () => {
+    document.title = 'X-quang Ngực (CXR) – CliniPortal';
+    mountToApp(renderRespiratoryToolsView('cxr'));
+  });
+  router.register('/calculators/pleural-effusion-studio', 'Dịch Màng Phổi (Tiêu Chuẩn Light)', () => {
+    document.title = 'Dịch Màng Phổi – CliniPortal';
+    mountToApp(renderRespiratoryToolsView('pleural'));
+  });
+
+  // Infectious Diseases
+  router.register('/calculators/sepsis-studio', 'Sepsis Pro Studio (qSOFA / SOFA)', () => {
+    document.title = 'Sepsis Pro Studio – CliniPortal';
+    mountToApp(renderInfectiousToolsView('sepsis'));
+  });
+  router.register('/calculators/chinh-lieu-khang-sinh', 'Chỉnh Liều Kháng Sinh', () => {
+    document.title = 'Chỉnh Liều Kháng Sinh – CliniPortal';
+    mountToApp(renderInfectiousToolsView('chinh-lieu'));
+  });
+  router.register('/calculators/ql-vancomycin', 'Quản Lý Vancomycin (AUC/MIC)', () => {
+    document.title = 'Quản Lý Vancomycin – CliniPortal';
+    mountToApp(renderInfectiousToolsView('vancomycin'));
+  });
+  router.register('/calculators/microbiology-studio', 'Microbiology Pro Studio', () => {
+    document.title = 'Microbiology Studio – CliniPortal';
+    mountToApp(renderInfectiousToolsView('microbiology'));
+  });
+
+  // Endocrinology
+  router.register('/calculators/insulin-studio', 'Diabetes & Insulin Pro Studio', () => {
+    document.title = 'Insulin Pro Studio – CliniPortal';
+    mountToApp(renderEndocrinologyToolsView());
+  });
+
+  // Hematology
+  router.register('/calculators/phan-tang-thieu-mau', 'Phân Tầng Thiếu Máu (MCV / RPI)', () => {
+    document.title = 'Phân Tầng Thiếu Máu – CliniPortal';
+    mountToApp(renderHematologyToolsView('thieu-mau'));
+  });
+  router.register('/calculators/lab-pro-studio', 'Lab Pro Studio PACS', () => {
+    document.title = 'Lab Pro Studio – CliniPortal';
+    mountToApp(renderHematologyToolsView('lab-studio'));
+  });
+
+  router.register('/pharmacology', 'Dược lý Lâm sàng', () => {
+    document.title = 'Dược lý Lâm sàng – CliniPortal';
+    mountToApp(renderPharmacologyView());
+    initPharmacologyHub();
+  });
+
+  router.register('/pharmacology/tra-cuu-thuoc', 'Tra Cứu Dược Thư', () => {
+    document.title = 'Tra Cứu Dược Thư & Drug Passport – CliniPortal';
+    mountToApp(renderDrugSearchView());
+  });
+
+  router.register('/pharmacology/ma-tran-tuong-tac', 'Ma Trận Tương Tác Thuốc', () => {
+    document.title = 'Ma Trận Tương Tác Thuốc 2D – CliniPortal';
+    mountToApp(renderInteractionMatrixView());
+  });
+
+  router.register('/pharmacology/dose-optimizer', 'Tối Ưu Hóa Liều Thuốc', () => {
+    document.title = 'Tối Ưu Hóa Liều Thuốc (CrCl) – CliniPortal';
+    mountToApp(renderDoseOptimizerView());
+  });
+
+  router.register('/pharmacology/pk-simulator', 'Giả Lập Dược Động Học PK', () => {
+    document.title = 'Giả Lập Dược Động Học PK/PD – CliniPortal';
+    mountToApp(renderPkSimulatorView());
+  });
+
+  router.register('/pharmacology/trieu-chung', 'Dược Trị Liệu Theo Triệu Chứng', () => {
+    document.title = 'Dược Trị Liệu Theo Triệu Chứng – CliniPortal';
+    mountToApp(renderSymptomPharmaView('all'));
+  });
+
+  router.register('/pharmacology/trieu-chung/:symptom', 'Dược Trị Liệu Theo Triệu Chứng', (params) => {
+    const symptom = (params.symptom || 'all') as any;
+    document.title = 'Dược Trị Liệu Theo Triệu Chứng – CliniPortal';
+    mountToApp(renderSymptomPharmaView(symptom));
+  });
+
+  router.register('/approaches', 'Tiếp cận Lâm sàng & CDSS', () => {
+    document.title = 'Tiếp cận Lâm sàng – CliniPortal';
+    mountToApp(renderApproachesView());
+    initApproachesHub();
+  });
+
+  router.register('/approaches/cap-cuu', 'Cấp Cứu & Hồi Sức (HS-CC)', () => {
+    document.title = 'Hồi Sức Cấp Cứu – CliniPortal';
+    mountToApp(renderCapCuuView());
+  });
+
+  router.register('/approaches/can-lam-sang', 'Tiếp cận Cận Lâm Sàng', () => {
+    document.title = 'Tiếp cận Cận Lâm Sàng – CliniPortal';
+    mountToApp(renderParaclinicalView());
+  });
+
+  router.register('/approaches/trieu-chung', 'Tiếp cận Triệu Chứng Lâm Sàng', () => {
+    document.title = 'Tiếp cận Triệu Chứng – CliniPortal';
+    mountToApp(renderSymptomsView());
+  });
+
+  router.register('/approaches/benh-ly', 'Tiếp cận Bệnh Lý & Phác Đồ', () => {
+    document.title = 'Tiếp cận Bệnh Lý – CliniPortal';
+    mountToApp(renderBenhLyView());
+  });
+
+  router.register('/approaches/pharmacology', 'Dược Lý Theo Tạng', () => {
+    document.title = 'Dược Lý Theo Tạng – CliniPortal';
+    mountToApp(renderPharmacologyApproachesView());
+  });
+
+  router.register('/approaches/nhi-khoa', 'Tiếp cận Chuyên khoa Nhi', () => {
+    document.title = 'Tiếp cận Nhi khoa – CliniPortal';
+    mountToApp(renderPediatricsView());
+  });
+
+  router.register('/pathophysiology', 'Cơ sở Y khoa (GP - SL - CCBS)', () => {
+    document.title = 'Cơ sở Y khoa – CliniPortal';
+    mountToApp(renderPathophysiologyView('all'));
+    initPathophysiologyHub();
+  });
+
+  router.register('/pathophysiology/giai-phau-sinh-ly', 'Giải phẫu & Sinh lý học', () => {
+    document.title = 'Giải phẫu & Sinh lý – CliniPortal';
+    mountToApp(renderGiaiPhauSinhLyView());
+  });
+
+  router.register('/pathophysiology/co-che-benh-sinh', 'Cơ chế bệnh sinh & Sinh lý bệnh', () => {
+    document.title = 'Cơ chế bệnh sinh – CliniPortal';
+    mountToApp(renderCoCheBenhSinhView());
+  });
+
+  router.register('/pathophysiology/formula-vault', 'Kho Công thức Sinh lý', () => {
+    document.title = 'Kho Công thức Sinh lý – CliniPortal';
+    mountToApp(renderFormulaVaultView());
+  });
+
+  router.register('/pathophysiology/reader/:slug', 'Bài Giảng Sinh Lý Học', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderPhysioReader(slug));
+  });
+
+  router.register('/pathophysiology/reader/:part/:slug', 'Bài Giảng Sinh Lý Học', (params) => {
+    const part = params.part || '';
+    const slug = params.slug || '';
+    mountToApp(renderPhysioReader(`${part}/${slug}`));
+  });
+
+  router.register('/tcm', 'Y học Cổ truyền', () => {
+    document.title = 'Y học Cổ truyền & Đông Tây Y – CliniPortal';
+    mountToApp(renderTcmView());
+    initTcmHub();
+  });
+
+  router.register('/tcm/huyet-vi', 'Bản Đồ Kinh Lạc & Huyệt Vị', () => {
+    document.title = 'Bản Đồ Kinh Lạc & Huyệt Vị – CliniPortal';
+    mountToApp(renderMeridianAcupointsView());
+  });
+
+  router.register('/tcm/duoc-lieu', 'Dược Liệu & Phương Tễ', () => {
+    document.title = 'Dược Liệu & Phương Tễ YHCT – CliniPortal';
+    mountToApp(renderHerbsFormulasView());
+  });
+
+  router.register('/tcm/chan-doan', 'Tứ Chẩn YHCT', () => {
+    document.title = 'Tứ Chẩn YHCT (Thiệt Chẩn & Mạch Chẩn) – CliniPortal';
+    mountToApp(renderTcmDiagnosticsView());
+  });
+
+  router.register('/tcm/ngu-hanh', 'Ngũ Hành Studio', () => {
+    document.title = 'Studio Ngũ Hành Tương Sinh Tương Khắc – CliniPortal';
+    mountToApp(renderNguHanhStudioView());
+  });
+
+  router.register('/tcm/dong-tay-y-bridge', 'Đông Tây Y Kết Hợp', () => {
+    document.title = 'Cầu Nối Đông - Tây Y Kết Hợp – CliniPortal';
+    mountToApp(renderIntegrativeBridgeView());
+  });
+
+  // 3. Route Hub Danh Mục Phụ / Fallback (#/:category)
   router.register('/:category', 'Phân Hệ Y Khoa', async (params) => {
     const category = params.category || '';
     const html = await components.renderCategoryView(category);

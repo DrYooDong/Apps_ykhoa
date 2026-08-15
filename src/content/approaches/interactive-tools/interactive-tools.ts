@@ -14,34 +14,34 @@ export const BODY_REGIONS_DATA: Record<string, BodyRegion> = {
     id: "head",
     name: "Đầu - Mặt - Cổ",
     symptoms: [
-      { name: "Đau đầu cấp & mạn tính", url: "../symptoms/systemic-symptoms/fever/tc-sot-daudau.html", redFlags: "Đau đầu sét đánh, cứng gáy, dấu thần kinh khu trú" },
-      { name: "Chóng mặt & Mất thăng bằng", url: "../../pharmacology/symptoms/dl-chongmat.html", redFlags: "Nystagmus đa hướng, thất điều, liệt nửa người" }
+      { name: "Đau đầu cấp & mạn tính", url: "#/approaches/trieu-chung", redFlags: "Đau đầu sét đánh, cứng gáy, dấu thần kinh khu trú" },
+      { name: "Chóng mặt & Mất thăng bằng", url: "#/approaches/trieu-chung", redFlags: "Nystagmus đa hướng, thất điều, liệt nửa người" }
     ]
   },
   chest: {
     id: "chest",
     name: "Lồng ngực (Tim & Phổi)",
     symptoms: [
-      { name: "Đau ngực cấp", url: "../symptoms/than-phien-ho-hap-tim-mach/tc-daunguc.html", redFlags: "Đau sau xương ức lan vai trái, tụt HA, khó thở dữ dội" },
-      { name: "Khó thở cấp", url: "../symptoms/than-phien-ho-hap-tim-mach/tc-khotho.html", redFlags: "SpO2 < 90%, co kéo cơ hô hấp phụ, thở rít thanh quản" },
-      { name: "Ngất & Tiền ngất", url: "../symptoms/than-phien-ho-hap-tim-mach/tc-ngat.html", redFlags: "Ngất khi gắng sức, ECG bất thường, tiền sử đột tử gia đình" }
+      { name: "Đau ngực cấp", url: "#/approaches/trieu-chung", redFlags: "Đau sau xương ức lan vai trái, tụt HA, khó thở dữ dội" },
+      { name: "Khó thở cấp", url: "#/approaches/trieu-chung", redFlags: "SpO2 < 90%, co kéo cơ hô hấp phụ, thở rít thanh quản" },
+      { name: "Ngất & Tiền ngất", url: "#/approaches/trieu-chung", redFlags: "Ngất khi gắng sức, ECG bất thường, tiền sử đột tử gia đình" }
     ]
   },
   abdomen: {
     id: "abdomen",
     name: "Bụng & Tiêu Hóa",
     symptoms: [
-      { name: "Đau bụng cấp vùng thượng vị", url: "../symptoms/gastro-symptoms/abdominal-pain/tc-daubung-cap-thuongvi.html", redFlags: "Bụng gồng cứng như gỗ, sốc tụt HA, nôn ra máu" },
-      { name: "Đau bụng cấp hố chậu phải", url: "../symptoms/gastro-symptoms/abdominal-pain/tc-daubung-cap-hcp.html", redFlags: "Phản ứng dội McBurney (+), đề kháng thành bụng, sốt cao" },
-      { name: "Vàng da ứ mật / Tán huyết", url: "../symptoms/systemic-symptoms/tc-vangda.html", redFlags: "Tam chứng Charcot (Đau - Sốt - Vàng da), hôn mê gan" }
+      { name: "Đau bụng cấp vùng thượng vị", url: "#/approaches/trieu-chung", redFlags: "Bụng gồng cứng như gỗ, sốc tụt HA, nôn ra máu" },
+      { name: "Đau bụng cấp hố chậu phải", url: "#/approaches/trieu-chung", redFlags: "Phản ứng dội McBurney (+), đề kháng thành bụng, sốt cao" },
+      { name: "Vàng da ứ mật / Tán huyết", url: "#/approaches/can-lam-sang", redFlags: "Tam chứng Charcot (Đau - Sốt - Vàng da), hôn mê gan" }
     ]
   },
   systemic: {
     id: "systemic",
     name: "Toàn Thân & Chuyển Hóa",
     symptoms: [
-      { name: "Hội chứng Sốt cấp tính", url: "../symptoms/systemic-symptoms/fever/tc-sot.html", redFlags: "Sốc nhiễm khuẩn, ban xuất huyết hoại tử, tri giác lơ mơ" },
-      { name: "Phù toàn thân & Phù chi", url: "../symptoms/systemic-symptoms/tc-phu.html", redFlags: "Phù phổi cấp, thiểu niệu vô niệu, suy tim ứ huyết nặng" }
+      { name: "Hội chứng Sốt cấp tính", url: "#/approaches/trieu-chung", redFlags: "Sốc nhiễm khuẩn, ban xuất huyết hoại tử, tri giác lơ mơ" },
+      { name: "Phù toàn thân & Phù chi", url: "#/approaches/trieu-chung", redFlags: "Phù phổi cấp, thiểu niệu vô niệu, suy tim ứ huyết nặng" }
     ]
   }
 };
