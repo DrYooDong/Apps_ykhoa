@@ -9,9 +9,8 @@ export function initSymptomMatrixWidget(): void {
   const redFlagsList = document.getElementById('redFlagsList');
   const diffDiagList = document.getElementById('diffDiagList');
   const actionBtn = document.getElementById('symptomActionBtn') as HTMLAnchorElement | null;
-  const actionText = document.getElementById('symptomActionText');
 
-  if (!selectEl || !redFlagsList || !diffDiagList || !actionBtn || !actionText) return;
+  if (!selectEl || !redFlagsList || !diffDiagList) return;
 
   function updateSymptom(key: string) {
     const data = SYMPTOM_MATRIX_DATA[key];
@@ -19,15 +18,8 @@ export function initSymptomMatrixWidget(): void {
 
     redFlagsList!.innerHTML = data.redFlags.map(flag => `<li>${flag}</li>`).join('');
     diffDiagList!.innerHTML = data.diffDiags.map(diag => `<li>${diag}</li>`).join('');
-    actionText!.innerText = data.actionText;
-    actionBtn!.setAttribute('href', data.actionUrl);
-
-    if (data.actionUrl === '#') {
-      actionBtn!.style.opacity = '0.6';
-      actionBtn!.style.pointerEvents = 'none';
-    } else {
-      actionBtn!.style.opacity = '1';
-      actionBtn!.style.pointerEvents = 'auto';
+    if (actionBtn) {
+      actionBtn.setAttribute('href', data.actionUrl || '#');
     }
   }
 
@@ -38,156 +30,100 @@ export function initSymptomMatrixWidget(): void {
   updateSymptom('sot');
 }
 
-export function initDailyFlashcardWidget(): void {
-  const toggleBtn = document.getElementById('flashcardToggleBtn');
-  const answerEl = document.getElementById('flashcardAnswer');
-  const listEl = document.getElementById('flashcardRedFlagsList');
+export function initApproachesControls(): void {
+  const searchInput = document.getElementById('lesson-search') as HTMLInputElement | null;
+  const clearBtn = document.getElementById('clear-search') as HTMLElement | null;
+  const emptyState = document.getElementById('empty-search-state') as HTMLElement | null;
+  const viewGridBtn = document.getElementById('view-grid-btn') as HTMLElement | null;
+  const viewListBtn = document.getElementById('view-list-btn') as HTMLElement | null;
+  const container = document.getElementById('lessons-container') as HTMLElement | null;
+  const tagBtns = document.querySelectorAll<HTMLElement>('.tag-filter-btn');
 
-  if (!toggleBtn || !answerEl || !listEl) return;
+  let activeTag = 'all';
 
-  const feverFlags = SYMPTOM_MATRIX_DATA['sot']?.redFlags || [];
-  listEl.innerHTML = feverFlags.map(f => `<li>${f}</li>`).join('');
+  function applyFilter() {
+    const query = searchInput?.value.toLowerCase().trim() || '';
+    if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
 
-  let isShown = false;
-  toggleBtn.addEventListener('click', () => {
-    isShown = !isShown;
-    answerEl.style.display = isShown ? 'block' : 'none';
-    toggleBtn.innerHTML = isShown
-      ? '<i class="fa-solid fa-eye-slash"></i> Ẩn Đáp Án'
-      : '<i class="fa-solid fa-rotate"></i> Lật Thẻ Xem Đáp Án';
+    const cards = document.querySelectorAll<HTMLElement>('.specialty-card');
+    const sections = document.querySelectorAll<HTMLElement>('#lessons-container > section');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const title = card.querySelector('h3')?.textContent?.toLowerCase() || '';
+      const tags = card.getAttribute('data-tags') || '';
+      const matchesSearch = !query || title.includes(query) || tags.includes(query);
+      const matchesTag = activeTag === 'all' || tags.includes(activeTag);
+
+      const isVisible = matchesSearch && matchesTag;
+      card.style.display = isVisible ? 'block' : 'none';
+      if (isVisible) visibleCount++;
+    });
+
+    sections.forEach(section => {
+      if (section.id === 'favorites-section') return;
+      const visibleInSec = section.querySelectorAll('.specialty-card:not([style*="display: none"])');
+      section.style.display = visibleInSec.length > 0 ? 'block' : 'none';
+    });
+
+    if (emptyState) {
+      emptyState.style.display = (visibleCount === 0) ? 'block' : 'none';
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilter);
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        applyFilter();
+        searchInput.focus();
+      });
+    }
+  }
+
+  tagBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = btn.getAttribute('data-tag');
+      if (!tag) return;
+      tagBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTag = tag;
+      applyFilter();
+    });
   });
-}
 
-export function initFlashcardEngine(): void {
-  const modal = document.getElementById('flashcard-modal');
-  const openBtn = document.getElementById('flashcard-btn');
-  const closeBtn = document.getElementById('close-flashcard');
-  const cardEl = document.getElementById('approach-flashcard');
+  if (viewGridBtn && viewListBtn && container) {
+    viewGridBtn.addEventListener('click', () => {
+      viewGridBtn.classList.add('active');
+      viewListBtn.classList.remove('active');
+      container.classList.remove('view-list-mode');
+    });
 
-  const selectEl = document.getElementById('fc-category-select') as HTMLSelectElement | null;
-  const shuffleBtn = document.getElementById('fc-shuffle');
-  const progressFill = document.getElementById('fc-progress-fill');
-  const topicBadge = document.getElementById('fc-topic-badge');
-  const questionEl = document.getElementById('fc-question');
-  const answerEl = document.getElementById('fc-answer');
-  const explanationEl = document.getElementById('fc-explanation');
-  const prevBtn = document.getElementById('fc-prev') as HTMLButtonElement | null;
-  const nextBtn = document.getElementById('fc-next') as HTMLButtonElement | null;
-  const counterEl = document.getElementById('fc-counter');
-  const toggleKnownBtn = document.getElementById('fc-toggle-known');
-  const knownTextEl = document.getElementById('fc-known-text');
+    viewListBtn.addEventListener('click', () => {
+      viewListBtn.classList.add('active');
+      viewGridBtn.classList.remove('active');
+      container.classList.add('view-list-mode');
+    });
+  }
 
-  if (!modal || !openBtn || !cardEl) return;
-
-  let activeCards: RedFlagCard[] = [...RED_FLAGS_CARDS];
-  let currentIndex = 0;
-  const knownCards = new Set<string>();
-
-  function renderCard() {
-    if (!activeCards || activeCards.length === 0) return;
-    if (currentIndex < 0) currentIndex = 0;
-    if (currentIndex >= activeCards.length) currentIndex = activeCards.length - 1;
-
-    const card = activeCards[currentIndex];
-    if (!card) return;
-
-    if (cardEl) cardEl.classList.remove('flipped');
-    if (topicBadge) topicBadge.textContent = card.topicName;
-    if (questionEl) questionEl.innerHTML = card.question;
-    if (answerEl) answerEl.innerHTML = card.answer;
-    if (explanationEl) explanationEl.innerHTML = card.explanation;
-
-    if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${activeCards.length}`;
-    if (progressFill) {
-      progressFill.style.width = `${Math.round(((currentIndex + 1) / activeCards.length) * 100)}%`;
-    }
-
-    if (prevBtn) prevBtn.disabled = currentIndex === 0;
-    if (nextBtn) nextBtn.disabled = currentIndex === activeCards.length - 1;
-
-    const isKnown = knownCards.has(card.id);
-    if (toggleKnownBtn && knownTextEl) {
-      const icon = toggleKnownBtn.querySelector('i');
-      if (isKnown) {
-        toggleKnownBtn.classList.add('active');
-        if (icon) icon.className = 'fa-solid fa-circle-check';
-        knownTextEl.textContent = 'Đã thuộc';
-      } else {
-        toggleKnownBtn.classList.remove('active');
-        if (icon) icon.className = 'fa-regular fa-circle-check';
-        knownTextEl.textContent = 'Chưa thuộc';
+  const navItems = document.querySelectorAll<HTMLElement>('.part-nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = item.getAttribute('data-target');
+      if (!targetId) return;
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
       }
-    }
-  }
-
-  function openModal() {
-    if (!modal) return;
-    modal.classList.add('active');
-    currentIndex = 0;
-    renderCard();
-    document.addEventListener('keydown', handleKeyDown);
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove('active');
-    if (cardEl) cardEl.classList.remove('flipped');
-    document.removeEventListener('keydown', handleKeyDown);
-  }
-
-  function handleKeyDown(e: KeyboardEvent) {
-    if (!modal?.classList.contains('active')) return;
-    if (e.key === 'Escape') closeModal();
-    else if (e.key === 'ArrowLeft' && currentIndex > 0) { currentIndex--; renderCard(); }
-    else if (e.key === 'ArrowRight' && currentIndex < activeCards.length - 1) { currentIndex++; renderCard(); }
-    else if (e.key === ' ' || e.code === 'Space') { e.preventDefault(); if (cardEl) cardEl.classList.toggle('flipped'); }
-  }
-
-  openBtn.addEventListener('click', openModal);
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-  cardEl.addEventListener('click', () => cardEl.classList.toggle('flipped'));
-  if (prevBtn) prevBtn.addEventListener('click', () => { if (currentIndex > 0) { currentIndex--; renderCard(); } });
-  if (nextBtn) nextBtn.addEventListener('click', () => { if (currentIndex < activeCards.length - 1) { currentIndex++; renderCard(); } });
-
-  if (selectEl) {
-    selectEl.addEventListener('change', (e) => {
-      const val = (e.target as HTMLSelectElement).value;
-      if (val === 'all') activeCards = [...RED_FLAGS_CARDS];
-      else activeCards = RED_FLAGS_CARDS.filter(c => c.category === val);
-      currentIndex = 0;
-      renderCard();
     });
-  }
-
-  if (shuffleBtn) {
-    shuffleBtn.addEventListener('click', () => {
-      for (let i = activeCards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        const temp = activeCards[i]!;
-        activeCards[i] = activeCards[j]!;
-        activeCards[j] = temp;
-      }
-      currentIndex = 0;
-      renderCard();
-    });
-  }
-
-  if (toggleKnownBtn) {
-    toggleKnownBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const card = activeCards[currentIndex];
-      if (!card) return;
-      if (knownCards.has(card.id)) knownCards.delete(card.id);
-      else knownCards.add(card.id);
-      renderCard();
-    });
-  }
+  });
 }
 
 export function initApproachesHub(): void {
   initSymptomMatrixWidget();
-  initDailyFlashcardWidget();
-  initFlashcardEngine();
+  initApproachesControls();
 }

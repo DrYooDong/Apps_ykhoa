@@ -4,7 +4,7 @@ const path = require('path');
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.join(rootDir, 'dist');
 
-const foldersToCopy = ['css', 'js', 'components', 'data', 'pages', 'content', 'assets', 'templates'];
+const foldersToCopy = ['css', 'js', 'components', 'data', 'pages', 'content', 'assets', 'templates', 'images'];
 
 foldersToCopy.forEach(folder => {
   const srcPath = path.join(rootDir, folder);

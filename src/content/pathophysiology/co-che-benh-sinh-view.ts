@@ -1,188 +1,521 @@
 /**
- * CliniPortal — Pathophysiology & Disease Mechanisms SPA View (TypeScript)
+ * CliniPortal — Pathophysiology & Disease Mechanisms (Cơ Chế Bệnh Sinh & Sinh Lý Bệnh) SPA View
  * Path: src/content/pathophysiology/co-che-benh-sinh-view.ts
+ * Giao diện kinh điển đầy đủ (Classic Hero Microscope SVG, Sticky Navigation, Live Search, Đầy đủ 28+ bài ca bệnh lý CCBS)
+ * Toàn bộ liên kết dẫn trực tiếp vào SPA HTML Reader: #/pathophysiology/cases/:slug
  */
 
+import '../../../css/components/module-dashboard.css';
+import '../../../css/components/physio-content.css';
+
 export function renderCoCheBenhSinhView(): string {
-  const cases = [
-    { slug: 'slb-ccbs-acs', title: 'Hội Chứng Vành Cấp (ACS & STEMI/NSTEMI)', spec: 'cardio', desc: 'Nứt vỡ mảng xơ vữa, hình thành huyết khối tiểu cầu và hoại tử tế bào cơ tim.' },
-    { slug: 'slb-ccbs-st', title: 'Suy Tim Phân Suất Tống Máu Giảm (HFrEF)', spec: 'cardio', desc: 'Tái cấu trúc thất trái, hoạt hóa quá mức hệ giao cảm & RAAS và stress oxy hóa.' },
-    { slug: 'slb-ccbs-tha', title: 'Tăng Huyết Áp Nguyên Phát (Essential HTN)', spec: 'cardio', desc: 'Tăng sức cản mạch máu ngoại vi, tái hấp thu muối natri và rối loạn nội mô.' },
-    { slug: 'slb-ccbs-ccs', title: 'Hội Chứng Mạch Vành Mạn (CCS)', spec: 'cardio', desc: 'Mảng xơ vữa ổn định gây mất cân bằng cung - cầu oxy cơ tim khi gắng sức.' },
-    
-    { slug: 'slb-ccbs-suy-ho-hap', title: 'Suy Hô Hấp Cấp & ARDS (Berlin 2012)', spec: 'pulmo', desc: 'Tổn thương màng phế nang mao mạch lan tỏa, phù phổi không do tim và shunt nội phổi.' },
-    { slug: 'slb-ccbs-copd', title: 'Bệnh Phổi Tắc Nghẽn Mạn Tính (COPD)', spec: 'pulmo', desc: 'Viêm đường thở mạn tính, khí phế thũng phá hủy vách phế nang và bẫy khí.' },
-    { slug: 'slb-ccbs-henpq', title: 'Hen Phế Quản (Asthma Type 2 & Non-Type 2)', spec: 'pulmo', desc: 'Tăng phản ứng phế quản, co thắt cơ trơn phế quản qua trung gian IgE và Eosinophils.' },
-    { slug: 'slb-ccbs-vp', title: 'Viêm Phổi Mắc Phải Cộng Đồng (CAP)', spec: 'pulmo', desc: 'Xâm nhập phế nang của vi khuẩn, phản ứng viêm đông đặc và suy giảm trao đổi khí.' },
-    { slug: 'slb-ccbs-vtpq', title: 'Viêm Tiểu Phế Quản Cấp (RSV)', spec: 'pulmo', desc: 'Hoại tử biểu mô đường thở nhỏ, phù nề tắc nghẽn ở trẻ nhũ nhi.' },
-
-    { slug: 'slb-ccbs-sepsis', title: 'Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn (Sepsis-3)', spec: 'icu', desc: 'Đáp ứng viêm toàn thân mất kiểm soát, rối loạn chức năng nội mô, giãn mạch và suy đa tạng.' },
-    { slug: 'slb-ccbs-soc', title: 'Sinh Lý Bệnh Các Thể Sốc (Shock States)', spec: 'icu', desc: 'Giảm tưới máu mô toàn thân, toan lactic và suy sụp chuyển hóa tế bào.' },
-
-    { slug: 'slb-ccbs-aki', title: 'Tổn Thương Thận Cấp (AKI)', spec: 'renal', desc: 'Thiếu máu cục bộ vi mạch thận, hoại tử ống thận cấp (ATN) và tắc nghẽn ống thận.' },
-    { slug: 'slb-ccbs-ckd', title: 'Bệnh Thận Mạn (CKD Progression)', spec: 'renal', desc: 'Xơ hóa cầu thận tiến triển, quá tải lọc ở nephron còn lại và hội chứng ure máu cao.' },
-
-    { slug: 'slb-ccbs-dot-quy', title: 'Đột Quỵ Não Thiếu Máu Cục Bộ Cấp', spec: 'neuro', desc: 'Vùng thiếu máu trung tâm, vùng tranh tối tranh sáng (Penumbra) và nhiễm độc kích thích Glutamate.' },
-
-    { slug: 'slb-ccbs-dtd', title: 'Đái Tháo Đường Típ 2 & Đề Kháng Insulin', spec: 'endo', desc: 'Suy giảm chức năng tế bào beta tụy, đề kháng insulin mô đích và biến chứng mạch máu.' },
-
-    { slug: 'slb-ccbs-xhth-tren', title: 'Xuất Huyết Tiêu Hóa Trên (UGIB)', spec: 'gi', desc: 'Vỡ giãn tĩnh mạch thực quản do tăng áp lực tĩnh mạch cửa & Loét dạ dày tá tràng.' },
-    { slug: 'slb-ccbs-xhth-duoi', title: 'Xuất Huyết Tiêu Hóa Dưới (LGIB)', spec: 'gi', desc: 'Chảy máu túi thừa đại tràng, loạn sản mạch máu và viêm đại tràng thiếu máu cục bộ.' },
-    { slug: 'slb-ccbs-xg', title: 'Xơ Gan & Tăng Áp Lực Tĩnh Mạch Cửa', spec: 'gi', desc: 'Hoạt hóa tế bào hình sao (Stellate Cells), xơ hóa khoảng Disse và tuần hoàn bàng hệ.' },
-    { slug: 'slb-ccbs-vtc', title: 'Viêm Tụy Cấp (Acute Pancreatitis)', spec: 'gi', desc: 'Tự tiêu hủy mô tụy do hoạt hóa sớm men Trypsinogen, SIRS và biến chứng hoại tử tụy.' },
-    { slug: 'slb-ccbs-gerd', title: 'Trào Ngược Dạ Dày Thực Quản (GERD)', spec: 'gi', desc: 'Giãn thoáng qua cơ thắt thực quản dưới (TLESR) và tổn thương biểu mô do acid/pepsin.' },
-    { slug: 'slb-ccbs-ibd', title: 'Bệnh Viêm Ruột Mạn Tính (IBD - Crohn / UC)', spec: 'gi', desc: 'Rối loạn đáp ứng miễn dịch niêm mạc ruột với hệ vi sinh vật trên cơ địa di truyền.' },
-    { slug: 'slb-ccbs-ibs', title: 'Hội Chứng Ruột Kích Thích (IBS)', spec: 'gi', desc: 'Rối loạn tương tác trục Não - Ruột (Gut-Brain Axis) và tăng nhạy cảm nội tạng.' },
-
-    { slug: 'slb-ccbs-sxhd', title: 'Sốt Xuất Huyết Dengue (DHF / DSS)', spec: 'infect', desc: 'Thoát huyết tương ồ ạt do tăng tính thấm thành mạch qua trung gian Cytokine và NS1.' },
-    { slug: 'slb-ccbs-sot-ret', title: 'Sốt Rét Ác Tính (Severe Malaria)', spec: 'infect', desc: 'Kết dính hồng cầu nhiễm KST sốt rét vào nội mô vi mạch (Cytoadherence) và tắc vi tuần hoàn.' },
-    { slug: 'slb-ccbs-lao', title: 'Sinh Lý Bệnh Bệnh Lao (Mycobacterium tuberculosis)', spec: 'infect', desc: 'Hình thành u hạt (Granuloma), hoại tử bã đậu và đáp ứng miễn dịch qua trung gian tế bào.' },
-    { slug: 'slb-ccbs-bach-hau', title: 'Bạch Hầu (Diphtheria Toxin Pathology)', spec: 'infect', desc: 'Ngoại độc tố ức chế tổng hợp protein tế bào, hình thành màng giả và biến chứng viêm cơ tim.' },
-
-    { slug: 'slb-ccbs-hemophilia', title: 'Bệnh Ưa Chảy Máu (Hemophilia A/B)', spec: 'hema', desc: 'Thiếu hụt yếu tố đông máu VIII/IX làm suy sụp dòng thác đông máu nội sinh.' },
-    { slug: 'slb-ccbs-tsg', title: 'Tiền Sản Giật (Preeclampsia)', spec: 'obgyn', desc: 'Tái tạo động mạch xoắn tử cung khiếm khuyết, giải phóng yếu tố kháng sinh mạch sFlt-1.' }
-  ];
-
-  const specNames: Record<string, string> = {
-    cardio: 'Tim Mạch',
-    pulmo: 'Hô Hấp',
-    icu: 'Hồi Sức Cấp Cứu',
-    renal: 'Thận Học',
-    neuro: 'Thần Kinh',
-    endo: 'Nội Tiết',
-    gi: 'Tiêu Hóa',
-    infect: 'Truyền Nhiễm',
-    hema: 'Huyết Học',
-    obgyn: 'Sản Phụ Khoa'
-  };
-
   return `
-    <div class="ccbs-spa-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1.5rem 1rem;">
-      <!-- Breadcrumb & Header -->
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <div style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 0.25rem;">
-            <a href="#/pathophysiology" style="color: var(--color-primary, #0284c7); text-decoration: none;"><i class="fa-solid fa-chevron-left"></i> Cơ Sở Y Khoa</a> / Cơ Chế Bệnh Sinh (CCBS)
-          </div>
-          <h1 style="font-size: 2rem; font-weight: 800; color: #059669; margin: 0; display: flex; align-items: center; gap: 0.75rem;">
-            <i class="fa-solid fa-microscope"></i> Cơ Chế Bệnh Sinh & Sinh Lý Bệnh Lâm Sàng
-          </h1>
-          <p style="font-size: 0.95rem; color: var(--color-text-muted, #64748b); margin: 0.25rem 0 0 0;">
-            Kho 29 ca phân tích cơ chế bệnh sinh phân tử, chuỗi bệnh lý căn nguyên và các đích can thiệp điều trị đích thực tế.
-          </p>
-        </div>
-        
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <a href="#/pathophysiology/giai-phau-sinh-ly" class="btn btn-outline" style="padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #334155); text-decoration: none; font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-dna" style="color: #7c3aed;"></i> Giải Phẫu & Sinh Lý
-          </a>
-          <a href="#/pathophysiology/formula-vault" class="btn btn-outline" style="padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #334155); text-decoration: none; font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-calculator" style="color: #0284c7;"></i> Formula Vault
-          </a>
-        </div>
+    <div class="main-wrapper" id="mainContent" style="width: 100%; max-width: 1520px; margin: 0 auto; padding-bottom: 3rem;">
+
+      <!-- BREADCRUMB -->
+      <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
+        <a href="#/" style="color: inherit; text-decoration: none;">🏠 Trang chủ</a> &nbsp;/&nbsp; 
+        <a href="#/pathophysiology" style="color: inherit; text-decoration: none;">Cơ Sở Y Khoa</a> &nbsp;/&nbsp; 
+        <span style="color: #059669; font-weight: 600;">Cơ Chế Bệnh Sinh & Sinh Lý Bệnh (CCBS - SBL)</span>
       </div>
 
-      <!-- Quick Filter -->
-      <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
-        <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 1rem; align-items: center;">
-          <div style="position: relative;">
-            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
-            <input type="text" id="ccbs-search-input" placeholder="Tìm kiếm bệnh lý cơ chế bệnh sinh (VD: Suy tim, ARDS, AKI, Sepsis, Đột quỵ...)..." style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; font-size: 0.95rem;" oninput="window.filterCcbsList()" />
+      <!-- HERO SECTION -->
+      <section class="hero-dashboard hero-physio" style="background: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%); margin-bottom: 1.5rem;" aria-labelledby="hero-title">
+        <div class="tcm-hero-content">
+          <div class="hero-intro">
+            <h1 id="hero-title" style="color: #fff;">🔬 CƠ CHẾ BỆNH SINH & SINH LÝ BỆNH</h1>
+            <p style="color: rgba(255,255,255,0.9);">Hệ thống hóa cơ chế bệnh sinh phân tử, rối loạn chức năng cơ quan và chuỗi bệnh lý căn nguyên qua các chuyên khoa lâm sàng.</p>
           </div>
-
-          <div>
-            <select id="ccbs-spec-filter" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--color-border, #cbd5e1); border-radius: 8px; font-size: 0.9rem;" onchange="window.filterCcbsList()">
-              <option value="all">Tất cả chuyên khoa</option>
-              <option value="cardio">Tim Mạch</option>
-              <option value="pulmo">Hô Hấp</option>
-              <option value="icu">Hồi Sức Cấp Cứu</option>
-              <option value="renal">Thận Học</option>
-              <option value="neuro">Thần Kinh</option>
-              <option value="endo">Nội Tiết</option>
-              <option value="gi">Tiêu Hóa</option>
-              <option value="infect">Truyền Nhiễm</option>
-              <option value="hema">Huyết Học</option>
-              <option value="obgyn">Sản Phụ Khoa</option>
-            </select>
+          <div class="tcm-hero-decor">
+            <!-- Microscope SVG -->
+            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="38" stroke="#ffffff" stroke-width="3" stroke-dasharray="6 4" opacity="0.6"/>
+              <path d="M35 75 L65 75 M50 75 L50 45 M40 30 L60 30 M50 20 L50 35 M45 45 L55 45" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="50" cy="55" r="8" fill="#34d399" />
+              <circle cx="70" cy="30" r="6" fill="#ffffff" />
+            </svg>
           </div>
+        </div>
+        <div class="hero-pattern"></div>
+      </section>
 
-          <div>
-            <button onclick="window.resetCcbsFilters()" style="padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 600; border: none; background: #f1f5f9; color: #475569; cursor: pointer;">
-              <i class="fa-solid fa-rotate-left"></i> Đặt lại
+      <!-- CONTROL BAR / TOOLBAR -->
+      <div class="dashboard-controls" style="margin-bottom: 1.5rem;">
+        <div class="search-box-container">
+          <span class="search-icon-svg">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
+              fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="text" id="lesson-search" placeholder="Tìm kiếm cơ chế bệnh sinh (Suy tim, ARDS, AKI, Sepsis, Đột quỵ, ĐTĐ, Lao, Sốt rét...)..."
+            aria-label="Tìm kiếm cơ chế bệnh sinh">
+          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
+            style="display: none;">&times;</button>
+        </div>
+        <div class="view-toggle-container">
+          <span class="toggle-label">Chế độ xem:</span>
+          <div class="toggle-buttons">
+            <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </button>
+            <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách" aria-label="Xem dạng danh sách">
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- 29 Cases Grid -->
-      <div id="ccbs-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.25rem;">
-        ${cases.map(c => `
-          <div class="ccbs-card" data-spec="${c.spec}" style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: all 0.2s;">
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.75rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 0.2rem 0.5rem; border-radius: 4px; text-transform: uppercase;">
-                  ${specNames[c.spec] || c.spec}
-                </span>
-                <span style="font-size: 0.75rem; color: #94a3b8;"><i class="fa-solid fa-dna"></i> Cơ chế bệnh sinh</span>
-              </div>
-
-              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--color-text, #0f172a); margin: 0 0 0.5rem 0; line-height: 1.4;">
-                ${c.title}
-              </h3>
-
-              <p style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); line-height: 1.5; margin: 0 0 1rem 0;">
-                ${c.desc}
-              </p>
-            </div>
-
-            <div style="border-top: 1px solid var(--color-border, #f1f5f9); padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.75rem; color: #64748b;">Sơ đồ chuỗi & Đích điều trị</span>
-              <a href="#/pathophysiology/reader/${c.slug}" style="padding: 0.35rem 0.75rem; background: #059669; color: #fff; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 600;">
-                Xem chi tiết <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
+      <!-- DASHBOARD LAYOUT -->
+      <div class="dashboard-layout">
+        <!-- Navigation Sidebar (Sticky) -->
+        <aside class="layout-nav-sidebar" aria-label="Danh mục chuyên khoa">
+          <div class="nav-sidebar-sticky" id="patho-nav">
+            <h4 class="nav-sidebar-title">Chuyên Khoa Bệnh Học</h4>
+            <ul class="part-nav-list">
+              <li>
+                <a href="#patho-timmach-section" class="part-nav-item p4 active" data-target="patho-timmach-section">
+                  <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                  <span class="part-text">Tim mạch</span>
+                  <span class="part-count-badge">4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#patho-hohap-section" class="part-nav-item p1" data-target="patho-hohap-section">
+                  <span class="part-icon"><i class="fa-solid fa-wind"></i></span>
+                  <span class="part-text">Hô hấp</span>
+                  <span class="part-count-badge">5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#patho-tieuhoa-section" class="part-nav-item p5" data-target="patho-tieuhoa-section">
+                  <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
+                  <span class="part-text">Tiêu hóa</span>
+                  <span class="part-count-badge">7</span>
+                </a>
+              </li>
+              <li>
+                <a href="#patho-thannieu-section" class="part-nav-item p6" data-target="patho-thannieu-section">
+                  <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
+                  <span class="part-text">Thận niệu</span>
+                  <span class="part-count-badge">2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#patho-noitiet-section" class="part-nav-item p7" data-target="patho-noitiet-section">
+                  <span class="part-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                  <span class="part-text">Nội tiết</span>
+                  <span class="part-count-badge">2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#patho-truyen-nhiem-section" class="part-nav-item p3" data-target="patho-truyen-nhiem-section">
+                  <span class="part-icon"><i class="fa-solid fa-virus-covid"></i></span>
+                  <span class="part-text">Truyền nhiễm & CC</span>
+                  <span class="part-count-badge">6</span>
+                </a>
+              </li>
+              <li>
+                <a href="#patho-tktt-section" class="part-nav-item p2" data-target="patho-tktt-section">
+                  <span class="part-icon"><i class="fa-solid fa-brain"></i></span>
+                  <span class="part-text">Thần kinh - Huyết học</span>
+                  <span class="part-count-badge">2</span>
+                </a>
+              </li>
+            </ul>
           </div>
-        `).join('')}
-      </div>
-    </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="layout-content-area" id="lessons-container">
+          <!-- Empty Search State -->
+          <div id="empty-search-state" class="empty-search-state" style="display: none;">
+            <div class="empty-search-icon">🔍</div>
+            <h3>Không tìm thấy bài học cơ chế bệnh sinh nào</h3>
+            <p>Vui lòng thử từ khóa khác.</p>
+          </div>
+
+          <!-- 1. TIM MẠCH -->
+          <section id="patho-timmach-section" aria-labelledby="patho-timmach-heading" style="margin-bottom: 2rem;">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                <h3 id="patho-timmach-heading">Tim Mạch</h3>
+              </div>
+              <div class="specialty-grid">
+                <a href="#/pathophysiology/cases/slb-ccbs-acs" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-heart-crack"></i></div>
+                    <div class="specialty-info">
+                      <h3>Hội Chứng Vành Cấp (ACS & STEMI/NSTEMI)</h3>
+                      <p>Nứt vỡ mảng xơ vữa không ổn định, kết tập tiểu cầu, hình thành huyết khối gây tắc nghẽn động mạch vành cấp.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-st" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <div class="specialty-info">
+                      <h3>Suy Tim Phân Suất Tống Máu Giảm (HFrEF)</h3>
+                      <p>Tái cấu trúc thất trái, hoạt hóa quá mức hệ giao cảm & RAAS kéo dài, stress oxy hóa và chết tế bào cơ tim theo chương trình.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-tha" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    <div class="specialty-info">
+                      <h3>Tăng Huyết Áp Nguyên Phát (Essential HTN)</h3>
+                      <p>Tăng sức cản mạch máu ngoại vi, tái hấp thu muối natri ở thận, rối loạn chức năng nội mô và phì đại đồng tâm thất trái.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-ccs" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                    <div class="specialty-info">
+                      <h3>Hội Chứng Mạch Vành Mạn (CCS)</h3>
+                      <p>Mảng xơ vữa ổn định làm hẹp lòng mạch vành, gây mất cân bằng cung - cầu oxy cơ tim khi gắng sức.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. HÔ HẤP -->
+          <section id="patho-hohap-section" aria-labelledby="patho-hohap-heading" style="margin-bottom: 2rem;">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-wind"></i></span>
+                <h3 id="patho-hohap-heading">Hô Hấp</h3>
+              </div>
+              <div class="specialty-grid">
+                <a href="#/pathophysiology/cases/slb-ccbs-suy-ho-hap" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-lungs"></i></div>
+                    <div class="specialty-info">
+                      <h3>Suy Hô Hấp Cấp & ARDS (Hội Chứng Nguy Kịch Hô Hấp)</h3>
+                      <p>Tổn thương màng phế nang mao mạch lan tỏa, tăng tính thấm, phù phổi không do tim và shunt nội phổi nặng.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-copd" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-lungs-virus"></i></div>
+                    <div class="specialty-info">
+                      <h3>Bệnh Phổi Tắc Nghẽn Mạn Tính (COPD)</h3>
+                      <p>Viêm đường thở mạn tính, khí phế thũng phá hủy vách phế nang, bẫy khí và tăng kháng lực đường thở không hồi phục hoàn toàn.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-henpq" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-wind"></i></div>
+                    <div class="specialty-info">
+                      <h3>Hen Phế Quản (Asthma Type 2 & Non-Type 2)</h3>
+                      <p>Tăng phản ứng phế quản, co thắt cơ trơn phế quản qua trung gian IgE, Eosinophils và tái cấu trúc đường thở.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-vp" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-virus"></i></div>
+                    <div class="specialty-info">
+                      <h3>Viêm Phổi Mắc Phải Cộng Đồng (CAP)</h3>
+                      <p>Xâm nhập phế nang của vi khuẩn, phản ứng viêm đông đặc rỉ dịch xuất tiết và suy giảm trao đổi khí.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-vtpq" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-child"></i></div>
+                    <div class="specialty-info">
+                      <h3>Viêm Tiểu Phế Quản ở Trẻ Em (Bronchiolitis)</h3>
+                      <p>Tổn thương biểu mô tiểu phế quản do virus RSV, phù nề, tăng tiết đờm nhầy gây tắc nghẽn đường thở nhỏ và bẫy khí ở trẻ nhi.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. TIÊU HÓA -->
+          <section id="patho-tieuhoa-section" aria-labelledby="patho-tieuhoa-heading" style="margin-bottom: 2rem;">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-bowl-food"></i></span>
+                <h3 id="patho-tieuhoa-heading">Tiêu Hóa</h3>
+              </div>
+              <div class="specialty-grid">
+                <a href="#/pathophysiology/cases/slb-ccbs-xg" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-disease"></i></div>
+                    <div class="specialty-info">
+                      <h3>Xơ Gan & Tăng Áp Lực Tĩnh Mạch Cửa</h3>
+                      <p>Hoạt hóa tế bào Kupffer và tế bào hình sao (HSCs), sinh bệnh học báng bụng, tuần hoàn tăng động giãn tạng và suy giảm chuyển hóa.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-xhth-tren" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="specialty-info">
+                      <h3>Xuất Huyết Tiêu Hóa Trên (UGIB)</h3>
+                      <p>Vỡ giãn tĩnh mạch thực quản do tăng áp cửa & loét dạ dày tá tràng bào mòn mạch máu dưới niêm mạc.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-xhth-duoi" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="specialty-info">
+                      <h3>Xuất Huyết Tiêu Hóa Dưới (LGIB)</h3>
+                      <p>Cơ chế chảy máu do túi thừa đại tràng, loạn sản mạch máu (Angiodysplasia), viêm đại tràng thiếu máu cục bộ và trĩ nội.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-vtc" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-fire"></i></div>
+                    <div class="specialty-info">
+                      <h3>Viêm Tụy Cấp (Acute Pancreatitis)</h3>
+                      <p>Tự tiêu hủy mô tụy do hoạt hóa sớm men Trypsinogen nội bào, phóng thích Cytokines gây phản ứng viêm hệ thống SIRS.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-gerd" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-arrows-up-down"></i></div>
+                    <div class="specialty-info">
+                      <h3>Trào Ngược Dạ Dày Thực Quản (GERD)</h3>
+                      <p>Giãn thoáng qua cơ thắt thực quản dưới (TLESR) và tổn thương biểu mô vảy do acid/pepsin dịch vị.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-ibd" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="specialty-info">
+                      <h3>Bệnh Viêm Ruột Mạn Tính (IBD - Crohn & Viêm Loét Đại Tràng)</h3>
+                      <p>Rối loạn đáp ứng miễn dịch niêm mạc ruột với hệ vi sinh vật trên cơ địa di truyền mẫn cảm.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-ibs" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-brain"></i></div>
+                    <div class="specialty-info">
+                      <h3>Hội Chứng Ruột Kích Thích (IBS)</h3>
+                      <p>Rối loạn tương tác trục Não - Ruột (Gut-Brain Axis), tăng nhạy cảm nội tạng và rối loạn vận động ống tiêu hóa.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. THẬN NIỆU -->
+          <section id="patho-thannieu-section" aria-labelledby="patho-thannieu-heading" style="margin-bottom: 2rem;">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-filter"></i></span>
+                <h3 id="patho-thannieu-heading">Thận Niệu</h3>
+              </div>
+              <div class="specialty-grid">
+                <a href="#/pathophysiology/cases/slb-ccbs-aki" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-filter"></i></div>
+                    <div class="specialty-info">
+                      <h3>Tổn Thương Thận Cấp (AKI)</h3>
+                      <p>Giảm tưới máu trước thận, sung huyết trong hội chứng tim thận, hoại tử ống thận cấp (ATN) và rối loạn ty thể.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-ckd" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-calculator"></i></div>
+                    <div class="specialty-info">
+                      <h3>Bệnh Thận Mạn (CKD Progression)</h3>
+                      <p>Thích ứng tăng lọc cầu thận và sụp đổ nội môi, xơ hóa cầu thận tiến triển, loãng xương do thận và giảm tiết EPO.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5. NỘI TIẾT & SẢN KHOA -->
+          <section id="patho-noitiet-section" aria-labelledby="patho-noitiet-heading" style="margin-bottom: 2rem;">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                <h3 id="patho-noitiet-heading">Nội Tiết & Sản Khoa</h3>
+              </div>
+              <div class="specialty-grid">
+                <a href="#/pathophysiology/cases/slb-ccbs-dtd" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="specialty-info">
+                      <h3>Đái Tháo Đường (ĐTĐ Típ 1, Típ 2 & Biến Chứng DKA/HHS)</h3>
+                      <p>Kháng Insulin mô đích, suy tế bào Beta tụy, nhiễm toan Ceton, tăng áp lực thẩm thấu và biến chứng mạch máu.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-tsg" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-person-pregnant"></i></div>
+                    <div class="specialty-info">
+                      <h3>Tiền Sản Giật & Hội Chứng HELLP</h3>
+                      <p>Khiếm khuyết xâm lấn nguyên bào nuôi, mất cân bằng sFlt-1/PlGF, co thắt mạch toàn thân và tổn thương nội mô đa cơ quan.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 6. TRUYỀN NHIỄM & HỒI SỨC CẤP CỨU -->
+          <section id="patho-truyen-nhiem-section" aria-labelledby="patho-truyen-nhiem-heading" style="margin-bottom: 2rem;">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-virus-covid"></i></span>
+                <h3 id="patho-truyen-nhiem-heading">Truyền Nhiễm & Cấp Cứu</h3>
+              </div>
+              <div class="specialty-grid">
+                <a href="#/pathophysiology/cases/slb-ccbs-sepsis" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-bacteria"></i></div>
+                    <div class="specialty-info">
+                      <h3>Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn (Sepsis-3)</h3>
+                      <p>Cơn bão Cytokines, giãn mạch mất trương lực, rối loạn đông máu nội quản rải rác (DIC) và suy đa tạng.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-soc" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="specialty-info">
+                      <h3>Sinh Lý Bệnh Các Thể Sốc (Shock States)</h3>
+                      <p>Sốc giảm thể tích, sốc tim, sốc phân bố, sốc tắc nghẽn: Cơ chế suy giảm tưới máu mô và toan lactic.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-sxhd" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-mosquito"></i></div>
+                    <div class="specialty-info">
+                      <h3>Sốt Xuất Huyết Dengue (DHF / DSS)</h3>
+                      <p>Hiện tượng ADE, tăng tính thấm thành mạch thoát huyết tương ồ ạt và xuất huyết do giảm tiểu cầu.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-lao" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                    <div class="specialty-info">
+                      <h3>Bệnh Lao & Phản Ứng Tạo U Hạt (Tuberculosis)</h3>
+                      <p>Sinh bệnh học vi khuẩn lao Mycobacterium tuberculosis, đáp ứng miễn dịch tế bào qua Lympho T, tạo nang lao bã đậu và hang lao.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-sot-ret" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                    <div class="specialty-info">
+                      <h3>Sốt Rét Ác Tính & Ký Sinh Trùng Plasmodium</h3>
+                      <p>Chu kỳ hồng cầu của P. falciparum, hiện tượng kết dính hoa hồng, tắc nghẽn vi mạch não gây sốt rét thể não và suy thận cấp.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-bach-hau" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
+                    <div class="specialty-info">
+                      <h3>Bạch Hầu & Cơ Chế Độc Tố Vi Khuẩn (Diphtheria)</h3>
+                      <p>Ngoại độc tố Diphtheria toxin ức chế tổng hợp protein tế bào qua ADP-ribosyl hóa EF-2, giả mạc thanh quản và viêm cơ tim nhiễm độc.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7. THẦN KINH & HUYẾT HỌC -->
+          <section id="patho-tktt-section" aria-labelledby="patho-tktt-heading" style="margin-bottom: 2rem;">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon"><i class="fa-solid fa-brain"></i></span>
+                <h3 id="patho-tktt-heading">Thần Kinh & Huyết Học</h3>
+              </div>
+              <div class="specialty-grid">
+                <a href="#/pathophysiology/cases/slb-ccbs-dot-quy" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-brain"></i></div>
+                    <div class="specialty-info">
+                      <h3>Đột Quỵ Não Thiếu Máu Cục Bộ Cấp</h3>
+                      <p>Vùng thiếu máu trung tâm, vùng tranh tối tranh sáng (Penumbra), thác nhiễm độc glutamate và phù não.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-hemophilia" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-vial"></i></div>
+                    <div class="specialty-info">
+                      <h3>Bệnh Ưa Chảy Máu (Hemophilia A/B)</h3>
+                      <p>Thiếu hụt yếu tố đông máu VIII/IX di truyền lặn liên kết NST X làm suy sụp dòng thác đông máu nội sinh.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div><!-- end dashboard-layout -->
+    </div><!-- end main-wrapper -->
   `;
-}
-
-// Global Window Bindings
-declare global {
-  interface Window {
-    filterCcbsList: () => void;
-    resetCcbsFilters: () => void;
-  }
-}
-
-if (typeof window !== 'undefined') {
-  window.filterCcbsList = () => {
-    const q = (document.getElementById('ccbs-search-input') as HTMLInputElement)?.value.toLowerCase().trim() || '';
-    const spec = (document.getElementById('ccbs-spec-filter') as HTMLSelectElement)?.value || 'all';
-
-    document.querySelectorAll('.ccbs-card').forEach(card => {
-      const text = card.textContent?.toLowerCase() || '';
-      const cardSpec = (card as HTMLElement).dataset.spec || 'all';
-
-      const matchQ = !q || text.includes(q);
-      const matchSpec = (spec === 'all' || cardSpec === spec);
-
-      if (matchQ && matchSpec) {
-        (card as HTMLElement).style.display = 'flex';
-      } else {
-        (card as HTMLElement).style.display = 'none';
-      }
-    });
-  };
-
-  window.resetCcbsFilters = () => {
-    const searchInput = document.getElementById('ccbs-search-input') as HTMLInputElement;
-    const specFilter = document.getElementById('ccbs-spec-filter') as HTMLSelectElement;
-
-    if (searchInput) searchInput.value = '';
-    if (specFilter) specFilter.value = 'all';
-
-    window.filterCcbsList();
-  };
 }

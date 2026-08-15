@@ -2,7 +2,7 @@
  * CliniPortal — Pathophysiology Hub TypeScript Renderer & Controller
  */
 import { PHYSIO_FLASHCARDS_DATA, PHYSIO_FORMULAS_DATA } from './data';
-import { PhysioFlashcard, PhysioFormula } from './types';
+import { PhysioFlashcard } from './types';
 
 export function initPhysioFlashcardEngine(): void {
   const modal = document.getElementById('flashcard-modal');
@@ -65,22 +65,91 @@ export function calculateFormula(formulaId: string, inputs: Record<string, numbe
 }
 
 export function initPathophysiologyHub(): void {
+  // 1. Hub Tabs Switcher
+  const tabBtns = document.querySelectorAll<HTMLElement>('.hub-tab-btn');
+  const tabContents = document.querySelectorAll<HTMLElement>('.tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-tab');
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetContent = document.getElementById(targetId || '');
+      if (targetContent) targetContent.classList.add('active');
+    });
+  });
+
+  // 2. Search & Controls
   const searchInput = document.getElementById('lesson-search') as HTMLInputElement | null;
+  const clearBtn = document.getElementById('clear-search') as HTMLElement | null;
+  const emptyState = document.getElementById('empty-search-state') as HTMLElement | null;
+  const viewGridBtn = document.getElementById('view-grid-btn') as HTMLElement | null;
+  const viewListBtn = document.getElementById('view-list-btn') as HTMLElement | null;
+  const container = document.getElementById('lessons-container') as HTMLElement | null;
+
   if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.specialty-card');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
+
+      const cards = document.querySelectorAll<HTMLElement>('.specialty-card');
+      let visibleCount = 0;
+
       cards.forEach(card => {
         const title = card.querySelector('h3')?.textContent?.toLowerCase() || '';
         const desc = card.querySelector('p')?.textContent?.toLowerCase() || '';
-        if (title.includes(query) || desc.includes(query)) {
-          (card as HTMLElement).style.display = 'flex';
-        } else {
-          (card as HTMLElement).style.display = 'none';
-        }
+        const isMatch = !query || title.includes(query) || desc.includes(query);
+
+        card.style.display = isMatch ? 'flex' : 'none';
+        if (isMatch) visibleCount++;
       });
+
+      if (emptyState) {
+        emptyState.style.display = (visibleCount === 0 && query !== '') ? 'block' : 'none';
+      }
+    });
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchInput.dispatchEvent(new Event('input'));
+        searchInput.focus();
+      });
+    }
+  }
+
+  // 3. Grid / List toggle
+  if (viewGridBtn && viewListBtn && container) {
+    viewGridBtn.addEventListener('click', () => {
+      viewGridBtn.classList.add('active');
+      viewListBtn.classList.remove('active');
+      container.classList.remove('view-list-mode');
+    });
+
+    viewListBtn.addEventListener('click', () => {
+      viewListBtn.classList.add('active');
+      viewGridBtn.classList.remove('active');
+      container.classList.add('view-list-mode');
     });
   }
+
+  // 4. Sticky Nav Click Scroll
+  const navItems = document.querySelectorAll<HTMLElement>('.part-nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = item.getAttribute('data-target');
+      if (!targetId) return;
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
+      }
+    });
+  });
 
   initPhysioFlashcardEngine();
 }

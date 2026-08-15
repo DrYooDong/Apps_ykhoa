@@ -214,7 +214,8 @@ import {
   renderGiaiPhauSinhLyView,
   renderCoCheBenhSinhView,
   renderFormulaVaultView,
-  renderPhysioReader
+  renderPhysioReader,
+  renderPhysioHtmlReader
 } from './content/pathophysiology';
 import { 
   renderTcmView, 
@@ -634,11 +635,13 @@ function initializeRoutes(): void {
   router.register('/pathophysiology/giai-phau-sinh-ly', 'Giải phẫu & Sinh lý học', () => {
     document.title = 'Giải phẫu & Sinh lý – CliniPortal';
     mountToApp(renderGiaiPhauSinhLyView());
+    initPathophysiologyHub();
   });
 
   router.register('/pathophysiology/co-che-benh-sinh', 'Cơ chế bệnh sinh & Sinh lý bệnh', () => {
     document.title = 'Cơ chế bệnh sinh – CliniPortal';
     mountToApp(renderCoCheBenhSinhView());
+    initPathophysiologyHub();
   });
 
   router.register('/pathophysiology/formula-vault', 'Kho Công thức Sinh lý', () => {
@@ -655,6 +658,22 @@ function initializeRoutes(): void {
     const part = params.part || '';
     const slug = params.slug || '';
     mountToApp(renderPhysioReader(`${part}/${slug}`));
+  });
+
+  router.register('/pathophysiology/physiology/:part/:slug', 'Bài Giảng Giải Phẫu & Sinh Lý', (params) => {
+    const part = params.part || 'part1';
+    const slug = params.slug || '';
+    mountToApp(renderPhysioHtmlReader(part, slug));
+  });
+
+  router.register('/pathophysiology/cases/:slug', 'Cơ Chế Bệnh Sinh Lâm Sàng', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderPhysioHtmlReader('cases', slug));
+  });
+
+  router.register('/pathophysiology/co-che-benh-sinh/:slug', 'Cơ Chế Bệnh Sinh Lâm Sàng', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderPhysioHtmlReader('cases', slug));
   });
 
   router.register('/tcm', 'Y học Cổ truyền', () => {
