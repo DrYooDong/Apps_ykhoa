@@ -165,11 +165,11 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     inlineStyles += s.textContent || '';
   });
 
-  // Extract Structural Elements
-  const heroEl = doc.querySelector('.hero');
-  const quicknavEl = doc.querySelector('.quicknav, .pillars-nav');
-  const pillarsEl = doc.querySelector('.pillars');
-  const pageContentEl = doc.querySelector('.page-content, .main-container, main, body');
+  // Remove legacy placeholders, duplicate headers, and external stylesheet links
+  doc.querySelectorAll('#header-placeholder, #footer-placeholder, .topnav, link[rel="stylesheet"]').forEach(el => el.remove());
+
+  // Extract clean article body content
+  const articleHtml = doc.body ? doc.body.innerHTML : htmlText;
 
   // Build Injected HTML with Expanded Full-Width Layout Rules
   mountEl.innerHTML = `
@@ -269,10 +269,7 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     </style>
 
     <div class="guideline-injected-article" id="guideline-injected-article">
-      ${heroEl ? heroEl.outerHTML : ''}
-      ${quicknavEl ? quicknavEl.outerHTML : ''}
-      ${pillarsEl ? pillarsEl.outerHTML : ''}
-      ${pageContentEl ? pageContentEl.outerHTML : htmlText}
+      ${articleHtml}
     </div>
   `;
 

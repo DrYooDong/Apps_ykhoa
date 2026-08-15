@@ -17,7 +17,8 @@ description: >
    - `caution-moderate` / Màu Cam: Thận trọng (thai kỳ, suy gan/thận).
    - `caution-low` / Màu Xanh dương: Theo dõi cận lâm sàng định kỳ.
 3. **Quy Tắc Đặt Tên File Dược Lý**: File mới trong `symptoms/` phải bắt đầu bằng `dl-<triuchung>.html` (ví dụ: `dl-daudau.html`), file trong `tools/` dùng kebab-case.
-4. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi sửa/tạo trang dược lý.
+4. **Trực Quan Hóa So Sánh Thuốc Bằng Pure SVG Radar Chart & Layer Stack**: Khi so sánh các nhóm thuốc đối đầu hoặc phác đồ nhiều bước, BẮT BUỘC sử dụng biểu đồ Radar SVG thuần (không dùng Chart.js) hoặc Chồng tầng bậc thang (Layer Stack) theo chuẩn skill `medical-editorial-diagram`.
+5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi sửa/tạo trang dược lý.
 
 ---
 

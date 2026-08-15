@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bộ sưu tập SVG Medical Diagram Templates chuẩn phong cách Editorial cho CliniPortal">
+    <title>SVG Medical Diagram Templates – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/sidebar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <style>
+        .diagram-studio-page {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 4rem;
+        }
+
+        .studio-header {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .studio-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-teal), var(--color-purple));
+        }
+
+        .studio-title-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            background: var(--color-primary-hl);
+            color: var(--color-primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .studio-header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.02em;
+        }
+
+        .studio-header p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            max-width: 900px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .diagram-nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--color-surface-offset);
+            padding: 0.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+        }
+
+        .diagram-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.15rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--color-text-muted);
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .diagram-nav-btn:hover {
+            color: var(--color-text);
+            background: var(--color-surface);
+        }
+
+        .diagram-nav-btn.active {
+            background: var(--color-surface);
+            color: var(--color-primary);
+            border-color: var(--color-border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .diagram-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .diagram-card-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--color-divider);
+            background: var(--color-surface-2);
+        }
+
+        .diagram-info h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 0.25rem 0;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .diagram-info p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
+        .diagram-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            color: var(--color-text);
+            transition: all 0.15s ease;
+        }
+
+        .btn-action:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .diagram-preview-area {
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--color-bg);
+            overflow-x: auto;
+        }
+
+        .svg-container {
+            width: 100%;
+            max-width: 1050px;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.04));
+        }
+
+        .code-drawer {
+            display: none;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1rem 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            max-height: 320px;
+            overflow-y: auto;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .code-drawer pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        /* SVG Medical Diagram Internal Styles */
+        .med-svg text {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .med-svg .txt-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .toast-notify {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--color-surface);
+            border: 1px solid var(--color-success);
+            color: var(--color-text);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+        }
+
+        .toast-notify.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+
+    <script src="../components/header.js" defer></script>
+    <script src="../components/footer.js" defer></script>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <main class="main-wrapper diagram-studio-page">
+            
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+                    <li class="breadcrumb-item"><a href="../templates/flowchart-template.html" class="breadcrumb-link">Templates</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">SVG Medical Templates</li>
+                </ol>
+            </nav>
+
+            <!-- Studio Header -->
+            <header class="studio-header">
+                <div class="studio-title-badge"><i class="fa-solid fa-shapes"></i> Editorial Medical SVG Studio</div>
+                <h1>BỘ MẪU SƠ ĐỒ SVG Y KHOA ĐỘC LẬP</h1>
+                <p>Tổng hợp 6 mẫu sơ đồ chuẩn mực y khoa lấy cảm hứng từ triết lý thiết kế Editorial Diagram (Tối giản, trực giao, tương thích Dark Mode 100%, không cần thư viện ngoài, không vỡ layout).</p>
+            </header>
+
+            <!-- Tab Switcher -->
+            <div class="diagram-nav-tabs" role="tablist">
+                <button class="diagram-nav-btn active" onclick="scrollToTemplate('template-swimlane')">
+                    <i class="fa-solid fa-bars-staggered"></i> 1. Swimlane Cấp cứu
+                </button>
+                <button class="diagram-nav-btn" onclick="scrollToTemplate('template-quadrant')">
+                    <i class="fa-solid fa-table-cells-large"></i> 2. Ma trận 2×2 Phân tầng
+                </button>
+                <button class="diagram-nav-btn" onclick="scrollToTemplate('template-layer')">
+                    <i class="fa-solid fa-layer-group"></i> 3. Chồng tầng Bậc thang
+                </button>
+                <button class="diagram-nav-btn" onclick="scrollToTemplate('template-radar')">
+                    <i class="fa-solid fa-chart-pie"></i> 4. Radar So sánh Thuốc
+                </button>
+                <button class="diagram-nav-btn" onclick="scrollToTemplate('template-pyramid')">
+                    <i class="fa-solid fa-mountain"></i> 5. Kim tự tháp Bằng chứng EBM
+                </button>
+                <button class="diagram-nav-btn" onclick="scrollToTemplate('template-loop')">
+                    <i class="fa-solid fa-arrows-spin"></i> 6. Vòng lặp Hồi sức
+                </button>
+            </div>
+
+            <!-- ==========================================
+                 TEMPLATE 1: SWIMLANE CẤP CỨU (FAST-TRACK)
+                 ========================================== -->
+            <article class="diagram-card" id="template-swimlane">
+                <div class="diagram-card-head">
+                    <div class="diagram-info">
+                        <h3><i class="fa-solid fa-truck-medical text-primary"></i> 1. Swimlane — Quy trình Báo động Đột quỵ (Code Stroke Fast-track)</h3>
+                        <p>Sơ đồ làn bơi thể hiện sự phối hợp đa tác nhân theo dòng thời gian (EMS $\rightarrow$ Khoa Cấp cứu $\rightarrow$ Chẩn đoán hình ảnh $\rightarrow$ Kíp Can thiệp).</p>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="btn-action" onclick="toggleCode('code-swimlane')"><i class="fa-solid fa-code"></i> Xem SVG Code</button>
+                        <button class="btn-action" onclick="copySVG('svg-swimlane')"><i class="fa-regular fa-copy"></i> Copy SVG</button>
+                    </div>
+                </div>
+                <div class="diagram-preview-area">
+                    <div class="svg-container">
+                        <svg id="svg-swimlane" class="med-svg" viewBox="0 0 960 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Canvas -->
+                            <rect width="960" height="480" fill="var(--color-surface)" rx="12" stroke="var(--color-border)" stroke-width="1"/>
+
+                            <!-- Swimlane Headers / Tracks -->
+                            <!-- Lane 1: Cấp cứu 115 (EMS) -->
+                            <rect x="20" y="30" width="160" height="95" fill="var(--color-surface-2)" stroke="var(--color-divider)" stroke-width="1" rx="8"/>
+                            <text x="100" y="70" font-size="13" font-weight="700" fill="var(--color-text)" text-anchor="middle">🚑 KÍP CẤP CỨU 115</text>
+                            <text x="100" y="90" font-size="10" fill="var(--color-text-muted)" text-anchor="middle" class="txt-mono">Trước viện / EMS</text>
+
+                            <!-- Lane 2: Khoa Cấp Cứu (ED) -->
+                            <rect x="20" y="140" width="160" height="95" fill="var(--color-surface-2)" stroke="var(--color-divider)" stroke-width="1" rx="8"/>
+                            <text x="100" y="180" font-size="13" font-weight="700" fill="var(--color-text)" text-anchor="middle">🏥 KHOA CẤP CỨU</text>
+                            <text x="100" y="200" font-size="10" fill="var(--color-text-muted)" text-anchor="middle" class="txt-mono">Triage & Resuscitation</text>
+
+                            <!-- Lane 3: Khoa CĐHA (CT/MRI) -->
+                            <rect x="20" y="250" width="160" height="95" fill="var(--color-surface-2)" stroke="var(--color-divider)" stroke-width="1" rx="8"/>
+                            <text x="100" y="290" font-size="13" font-weight="700" fill="var(--color-text)" text-anchor="middle">🩻 CHẨN ĐOÁN HÌNH ẢNH</text>
+                            <text x="100" y="310" font-size="10" fill="var(--color-text-muted)" text-anchor="middle" class="txt-mono">CT Không cản quang / CTA</text>
+
+                            <!-- Lane 4: Kíp Can Thiệp Não -->
+                            <rect x="20" y="360" width="160" height="95" fill="var(--color-surface-2)" stroke="var(--color-divider)" stroke-width="1" rx="8"/>
+                            <text x="100" y="400" font-size="13" font-weight="700" fill="var(--color-text)" text-anchor="middle">🧠 KÍP CAN THIỆP MẠCH</text>
+                            <text x="100" y="420" font-size="10" fill="var(--color-text-muted)" text-anchor="middle" class="txt-mono">Thrombolysis & EVT</text>
+
+                            <!-- Lane Horizontal Dividers -->
+                            <line x1="190" y1="130" x2="940" y2="130" stroke="var(--color-divider)" stroke-width="1" stroke-dasharray="4,4"/>
+                            <line x1="190" y1="240" x2="940" y2="240" stroke="var(--color-divider)" stroke-width="1" stroke-dasharray="4,4"/>
+                            <line x1="190" y1="350" x2="940" y2="350" stroke="var(--color-divider)" stroke-width="1" stroke-dasharray="4,4"/>
+
+                            <!-- Connectors (Orthogonal lines with rounded turns) -->
+                            <!-- Node 1 -> Node 2 -->
+                            <path d="M 330 77.5 L 365 77.5 L 365 187.5 L 390 187.5" fill="none" stroke="var(--color-text-faint)" stroke-width="1.5"/>
+                            <polygon points="390,187.5 383,184 383,191" fill="var(--color-text-faint)"/>
+
+                            <!-- Node 2 -> Node 3 -->
+                            <path d="M 530 187.5 L 555 187.5 L 555 297.5 L 575 297.5" fill="none" stroke="var(--color-text-faint)" stroke-width="1.5"/>
+                            <polygon points="575,297.5 568,294 568,301" fill="var(--color-text-faint)"/>
+
+                            <!-- Node 3 -> Node 4 (Branch rTPA) -->
+                            <path d="M 715 297.5 L 750 297.5 L 750 187.5 L 775 187.5" fill="none" stroke="var(--color-primary)" stroke-width="1.5"/>
+                            <polygon points="775,187.5 768,184 768,191" fill="var(--color-primary)"/>
+
+                            <!-- Node 3 -> Node 5 (Branch EVT) -->
+                            <path d="M 715 297.5 L 750 297.5 L 750 407.5 L 775 407.5" fill="none" stroke="var(--color-rose)" stroke-width="1.5"/>
+                            <polygon points="775,407.5 768,404 768,411" fill="var(--color-rose)"/>
+
+                            <!-- Action Nodes -->
+                            <!-- Node 1 (EMS) -->
+                            <g>
+                                <rect x="200" y="45" width="130" height="65" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.5"/>
+                                <text x="210" y="65" font-size="10" font-weight="700" fill="var(--color-warning)" class="txt-mono">PHÁT HIỆN FAST</text>
+                                <text x="210" y="82" font-size="11" font-weight="600" fill="var(--color-text)">Kích hoạt Báo động</text>
+                                <text x="210" y="98" font-size="9" fill="var(--color-text-muted)">Gọi trước đến BV</text>
+                            </g>
+
+                            <!-- Node 2 (ED) -->
+                            <g>
+                                <rect x="390" y="155" width="140" height="65" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.5"/>
+                                <text x="400" y="175" font-size="10" font-weight="700" fill="var(--color-primary)" class="txt-mono">TIẾP NHẬN TRIAGE</text>
+                                <text x="400" y="192" font-size="11" font-weight="600" fill="var(--color-text)">Đo NIHSS & Đường máu</text>
+                                <text x="400" y="208" font-size="9" fill="var(--color-text-muted)">Thời gian cửa &lt; 10 ph</text>
+                            </g>
+
+                            <!-- Node 3 (CT/MRI) -->
+                            <g>
+                                <rect x="575" y="265" width="140" height="65" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.5"/>
+                                <text x="585" y="285" font-size="10" font-weight="700" fill="var(--color-teal)" class="txt-mono">CHỤP CT SỌ NÃO</text>
+                                <text x="585" y="302" font-size="11" font-weight="600" fill="var(--color-text)">Loại trừ Xuất huyết</text>
+                                <text x="585" y="318" font-size="9" fill="var(--color-text-muted)">ASPECTS + CTA mạch</text>
+                            </g>
+
+                            <!-- Node 4 (Thrombolysis - Focal Node 1) -->
+                            <g>
+                                <rect x="775" y="155" width="160" height="65" rx="6" fill="var(--color-primary-hl)" stroke="var(--color-primary)" stroke-width="2"/>
+                                <text x="785" y="175" font-size="10" font-weight="700" fill="var(--color-primary)" class="txt-mono">TIÊU SỢI HUYẾT (rTPA)</text>
+                                <text x="785" y="192" font-size="11" font-weight="700" fill="var(--color-text)">Cửa sổ &lt; 4.5 giờ</text>
+                                <text x="785" y="208" font-size="9" fill="var(--color-text-muted)">Alteplase 0.9 mg/kg</text>
+                            </g>
+
+                            <!-- Node 5 (EVT - Focal Node 2) -->
+                            <g>
+                                <rect x="775" y="375" width="160" height="65" rx="6" fill="var(--color-rose-hl)" stroke="var(--color-rose)" stroke-width="2"/>
+                                <text x="785" y="395" font-size="10" font-weight="700" fill="var(--color-rose)" class="txt-mono">LẤY HUYẾT KHỐI (EVT)</text>
+                                <text x="785" y="412" font-size="11" font-weight="700" fill="var(--color-text)">Tắc mạch lớn (LVO)</text>
+                                <text x="785" y="428" font-size="9" fill="var(--color-text-muted)">Cửa sổ 6–24 giờ</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="code-drawer" id="code-swimlane">
+                    <pre><code>&lt;!-- Code mẫu Swimlane SVG được đóng gói hoàn toàn --&gt;</code></pre>
+                </div>
+            </article>
+
+            <!-- ==========================================
+                 TEMPLATE 2: QUADRANT 2x2 MA TRẬN PHÂN TẦNG
+                 ========================================== -->
+            <article class="diagram-card" id="template-quadrant">
+                <div class="diagram-card-head">
+                    <div class="diagram-info">
+                        <h3><i class="fa-solid fa-table-cells-large text-teal"></i> 2. Quadrant — Ma trận Phân tầng Nguy cơ Lâm sàng 2×2</h3>
+                        <p>Trực quan hóa quyết định y khoa dựa trên 2 trục: Mức độ nghiêm trọng (Severity) vs Xác suất tiền nghiệm (Probability).</p>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="btn-action" onclick="toggleCode('code-quadrant')"><i class="fa-solid fa-code"></i> Xem SVG Code</button>
+                        <button class="btn-action" onclick="copySVG('svg-quadrant')"><i class="fa-regular fa-copy"></i> Copy SVG</button>
+                    </div>
+                </div>
+                <div class="diagram-preview-area">
+                    <div class="svg-container">
+                        <svg id="svg-quadrant" class="med-svg" viewBox="0 0 800 520" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Canvas -->
+                            <rect width="800" height="520" fill="var(--color-surface)" rx="12" stroke="var(--color-border)" stroke-width="1"/>
+
+                            <!-- Quadrant Grid Backdrops -->
+                            <!-- Top-Left: Nguy kịch cao / Xác suất thấp (Cần tầm soát khẩn) -->
+                            <rect x="70" y="50" width="340" height="200" fill="var(--color-warning-hl)" fill-opacity="0.25" rx="8" stroke="var(--color-divider)" stroke-width="1"/>
+                            <!-- Top-Right: Nguy kịch cao / Xác suất cao (CẤP CỨU TỐI KHẨN) -->
+                            <rect x="430" y="50" width="340" height="200" fill="var(--color-danger-hl)" fill-opacity="0.35" rx="8" stroke="var(--color-danger)" stroke-width="1.5"/>
+                            <!-- Bottom-Left: Nguy kịch thấp / Xác suất thấp (AN TOÀN NGOẠI TRÚ) -->
+                            <rect x="70" y="270" width="340" height="200" fill="var(--color-success-hl)" fill-opacity="0.3" rx="8" stroke="var(--color-divider)" stroke-width="1"/>
+                            <!-- Bottom-Right: Nguy kịch thấp / Xác suất cao (ĐIỀU TRỊ CHUẨN ĐOÁN XÁC ĐỊNH) -->
+                            <rect x="430" y="270" width="340" height="200" fill="var(--color-primary-hl)" fill-opacity="0.3" rx="8" stroke="var(--color-divider)" stroke-width="1"/>
+
+                            <!-- Center Axes -->
+                            <line x1="70" y1="260" x2="770" y2="260" stroke="var(--color-border)" stroke-width="2"/>
+                            <line x1="420" y1="50" x2="420" y2="470" stroke="var(--color-border)" stroke-width="2"/>
+
+                            <!-- Axis Labels -->
+                            <!-- X Axis: Xác suất tiền nghiệm -->
+                            <text x="420" y="500" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle">XÁC SUẤT TIỀN NGHIỆM (PRETEST PROBABILITY) ➔</text>
+                            <text x="100" y="500" font-size="10" fill="var(--color-text-muted)" text-anchor="start">Thấp (Low)</text>
+                            <text x="740" y="500" font-size="10" fill="var(--color-text-muted)" text-anchor="end">Cao (High)</text>
+
+                            <!-- Y Axis: Mức độ nghiêm trọng -->
+                            <text x="35" y="260" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle" transform="rotate(-90 35 260)">MỨC ĐỘ NGUY KỊCH (SEVERITY) ➔</text>
+
+                            <!-- Top-Left Content -->
+                            <text x="90" y="80" font-size="13" font-weight="700" fill="var(--color-warning)">⚠️ NGUY CƠ CAO ẨN KHUẤT</text>
+                            <text x="90" y="105" font-size="11" font-weight="600" fill="var(--color-text)">Loại trừ chẩn đoán đe dọa tính mạng</text>
+                            <text x="90" y="125" font-size="10" fill="var(--color-text-muted)">• Làm xét nghiệm độ nhạy cao (D-Dimer, Troponin HS)</text>
+                            <text x="90" y="145" font-size="10" fill="var(--color-text-muted)">• Theo dõi monitor & tái đánh giá sau 1-3 giờ</text>
+
+                            <!-- Top-Right Content (Focal) -->
+                            <text x="450" y="80" font-size="14" font-weight="800" fill="var(--color-danger)">🚨 CẤP CỨU TỐI KHẨN (RED ALERT)</text>
+                            <text x="450" y="105" font-size="11" font-weight="700" fill="var(--color-text)">Can thiệp khẩn cấp ngay không chờ xét nghiệm</text>
+                            <text x="450" y="125" font-size="10" fill="var(--color-text)">• Đặt NKQ / Hồi sức dịch / Vận mạch</text>
+                            <text x="450" y="145" font-size="10" fill="var(--color-text)">• Kích hoạt phòng Can thiệp Mạch / Mổ khẩn</text>
+
+                            <!-- Bottom-Left Content -->
+                            <text x="90" y="300" font-size="13" font-weight="700" fill="var(--color-success)">✅ XUẤT VIỆN AN TOÀN</text>
+                            <text x="90" y="325" font-size="11" font-weight="600" fill="var(--color-text)">Chăm sóc ban đầu & theo dõi ngoại trú</text>
+                            <text x="90" y="345" font-size="10" fill="var(--color-text-muted)">• Tư vấn dấu hiệu tái khám khẩn cấp</text>
+                            <text x="90" y="365" font-size="10" fill="var(--color-text-muted)">• Kê đơn điều trị triệu chứng cơ bản</text>
+
+                            <!-- Bottom-Right Content -->
+                            <text x="450" y="300" font-size="13" font-weight="700" fill="var(--color-primary)">📋 ĐIỀU TRỊ THEO PHÁC ĐỒ CHUẨN</text>
+                            <text x="450" y="325" font-size="11" font-weight="600" fill="var(--color-text)">Bệnh mạn tính / Bệnh cấp tính mức độ nhẹ-vừa</text>
+                            <text x="450" y="345" font-size="10" fill="var(--color-text-muted)">• Bắt đầu điều trị đặc hiệu theo Guideline</text>
+                            <text x="450" y="365" font-size="10" fill="var(--color-text-muted)">• Hẹn tái khám định kỳ đánh giá đáp ứng</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="code-drawer" id="code-quadrant">
+                    <pre><code>&lt;!-- Code mẫu Quadrant SVG được đóng gói hoàn toàn --&gt;</code></pre>
+                </div>
+            </article>
+
+            <!-- ==========================================
+                 TEMPLATE 3: LAYER STACK (BẬC THANG ĐIỀU TRỊ)
+                 ========================================== -->
+            <article class="diagram-card" id="template-layer">
+                <div class="diagram-card-head">
+                    <div class="diagram-info">
+                        <h3><i class="fa-solid fa-layer-group text-purple"></i> 3. Layer Stack — Thang bậc Điều trị Giảm đau WHO 3 Bước</h3>
+                        <p>Trực quan hóa các bậc thang điều trị theo tầng (Tầng 1 $\rightarrow$ Tầng 2 $\rightarrow$ Tầng 3) kèm nhóm thuốc và chỉ định.</p>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="btn-action" onclick="toggleCode('code-layer')"><i class="fa-solid fa-code"></i> Xem SVG Code</button>
+                        <button class="btn-action" onclick="copySVG('svg-layer')"><i class="fa-regular fa-copy"></i> Copy SVG</button>
+                    </div>
+                </div>
+                <div class="diagram-preview-area">
+                    <div class="svg-container">
+                        <svg id="svg-layer" class="med-svg" viewBox="0 0 850 420" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Canvas -->
+                            <rect width="850" height="420" fill="var(--color-surface)" rx="12" stroke="var(--color-border)" stroke-width="1"/>
+
+                            <!-- Step 3: Đau nặng (Focal Top Tier) -->
+                            <g>
+                                <rect x="50" y="40" width="750" height="95" rx="8" fill="var(--color-rose-hl)" stroke="var(--color-rose)" stroke-width="2"/>
+                                <rect x="65" y="55" width="100" height="28" rx="4" fill="var(--color-rose)"/>
+                                <text x="115" y="74" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">BẬC 3 (ĐAU NẶNG)</text>
+                                <text x="180" y="74" font-size="15" font-weight="700" fill="var(--color-text)">Opioid Mạnh ± Không-opioid ± Thuốc hỗ trợ</text>
+                                <text x="65" y="112" font-size="12" fill="var(--color-text-muted)">• <strong>Thuốc chính:</strong> Morphine, Fentanyl, Oxycodone, Hydromorphone</text>
+                                <text x="480" y="112" font-size="12" fill="var(--color-text-muted)">• <strong>Thang điểm đau NRS:</strong> 7 – 10 điểm</text>
+                            </g>
+
+                            <!-- Step 2: Đau vừa -->
+                            <g>
+                                <rect x="50" y="155" width="750" height="95" rx="8" fill="var(--color-warning-hl)" fill-opacity="0.3" stroke="var(--color-warning)" stroke-width="1.5"/>
+                                <rect x="65" y="170" width="100" height="28" rx="4" fill="var(--color-warning)"/>
+                                <text x="115" y="189" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">BẬC 2 (ĐAU VỪA)</text>
+                                <text x="180" y="189" font-size="15" font-weight="700" fill="var(--color-text)">Opioid Yếu ± Không-opioid ± Thuốc hỗ trợ</text>
+                                <text x="65" y="227" font-size="12" fill="var(--color-text-muted)">• <strong>Thuốc chính:</strong> Codeine, Tramadol, Dihydrocodeine</text>
+                                <text x="480" y="227" font-size="12" fill="var(--color-text-muted)">• <strong>Thang điểm đau NRS:</strong> 4 – 6 điểm</text>
+                            </g>
+
+                            <!-- Step 1: Đau nhẹ -->
+                            <g>
+                                <rect x="50" y="270" width="750" height="95" rx="8" fill="var(--color-surface-2)" stroke="var(--color-divider)" stroke-width="1.5"/>
+                                <rect x="65" y="285" width="100" height="28" rx="4" fill="var(--color-teal)"/>
+                                <text x="115" y="304" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">BẬC 1 (ĐAU NHẸ)</text>
+                                <text x="180" y="304" font-size="15" font-weight="700" fill="var(--color-text)">Thuốc Không-opioid ± Thuốc hỗ trợ (Adjuvant)</text>
+                                <text x="65" y="342" font-size="12" fill="var(--color-text-muted)">• <strong>Thuốc chính:</strong> Paracetamol (Acetaminophen), NSAIDs (Ibuprofen, Celecoxib)</text>
+                                <text x="480" y="342" font-size="12" fill="var(--color-text-muted)">• <strong>Thang điểm đau NRS:</strong> 1 – 3 điểm</text>
+                            </g>
+
+                            <!-- Footer note -->
+                            <text x="425" y="395" font-size="11" fill="var(--color-text-faint)" text-anchor="middle" font-style="italic">
+                                * Thuốc hỗ trợ (Adjuvants) gồm: Gabapentin, Pregabalin, Corticosteroid, Thuốc chống trầm cảm 3 vòng (TCA) cho đau thần kinh.
+                            </text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="code-drawer" id="code-layer">
+                    <pre><code>&lt;!-- Code mẫu Layer Stack SVG được đóng gói hoàn toàn --&gt;</code></pre>
+                </div>
+            </article>
+
+            <!-- ==========================================
+                 TEMPLATE 4: RADAR CHART (SO SÁNH THUỐC ĐA TIÊU CHÍ)
+                 ========================================== -->
+            <article class="diagram-card" id="template-radar">
+                <div class="diagram-card-head">
+                    <div class="diagram-info">
+                        <h3><i class="fa-solid fa-chart-pie text-warning"></i> 4. Radar Chart — So sánh Đa Tiêu chí Nhóm Thuốc Đái Tháo Đường</h3>
+                        <p>Biểu đồ radar đa trục SVG thuần so sánh SGLT2-i vs GLP-1 RA trên 6 khía cạnh lâm sàng (HbA1c, Giảm cân, Tim mạch, Thận, Hạ đường huyết, Chi phí).</p>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="btn-action" onclick="toggleCode('code-radar')"><i class="fa-solid fa-code"></i> Xem SVG Code</button>
+                        <button class="btn-action" onclick="copySVG('svg-radar')"><i class="fa-regular fa-copy"></i> Copy SVG</button>
+                    </div>
+                </div>
+                <div class="diagram-preview-area">
+                    <div class="svg-container">
+                        <svg id="svg-radar" class="med-svg" viewBox="0 0 800 500" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Canvas -->
+                            <rect width="800" height="500" fill="var(--color-surface)" rx="12" stroke="var(--color-border)" stroke-width="1"/>
+
+                            <!-- Center: (400, 250), Radius: 160 -->
+                            <!-- Concentric Grid Polygons -->
+                            <!-- Level 1 (25%) -->
+                            <polygon points="400,210 435,230 435,270 400,290 365,270 365,230" fill="none" stroke="var(--color-divider)" stroke-width="1" stroke-dasharray="2,2"/>
+                            <!-- Level 2 (50%) -->
+                            <polygon points="400,170 470,210 470,290 400,330 330,290 330,210" fill="none" stroke="var(--color-divider)" stroke-width="1" stroke-dasharray="2,2"/>
+                            <!-- Level 3 (75%) -->
+                            <polygon points="400,130 505,190 505,310 400,370 295,310 295,190" fill="none" stroke="var(--color-divider)" stroke-width="1" stroke-dasharray="2,2"/>
+                            <!-- Level 4 (100% Outer) -->
+                            <polygon points="400,90 538,170 538,330 400,410 262,330 262,170" fill="none" stroke="var(--color-border)" stroke-width="1.5"/>
+
+                            <!-- Radial Axis Lines -->
+                            <line x1="400" y1="250" x2="400" y2="90" stroke="var(--color-divider)" stroke-width="1.5"/>
+                            <line x1="400" y1="250" x2="538" y2="170" stroke="var(--color-divider)" stroke-width="1.5"/>
+                            <line x1="400" y1="250" x2="538" y2="330" stroke="var(--color-divider)" stroke-width="1.5"/>
+                            <line x1="400" y1="250" x2="400" y2="410" stroke="var(--color-divider)" stroke-width="1.5"/>
+                            <line x1="400" y1="250" x2="262" y2="330" stroke="var(--color-divider)" stroke-width="1.5"/>
+                            <line x1="400" y1="250" x2="262" y2="170" stroke="var(--color-divider)" stroke-width="1.5"/>
+
+                            <!-- Axis 1: Giảm HbA1c (Top: 400, 70) -->
+                            <text x="400" y="70" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle">📉 Giảm HbA1c</text>
+                            <!-- Axis 2: Giảm Cân Nặng (Top-Right: 560, 165) -->
+                            <text x="555" y="165" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="start">⚖️ Giảm Cân Nặng</text>
+                            <!-- Axis 3: Lợi ích Tim Mạch (Bottom-Right: 560, 340) -->
+                            <text x="555" y="340" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="start">❤️ Lợi ích Tim mạch (ASCVD/HF)</text>
+                            <!-- Axis 4: Bảo vệ Thận (Bottom: 400, 435) -->
+                            <text x="400" y="435" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle">🛡️ Bảo vệ Thận (CKD)</text>
+                            <!-- Axis 5: An toàn Hạ Đường Huyết (Bottom-Left: 245, 340) -->
+                            <text x="245" y="340" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="end">🍬 Ít Nguy cơ Hạ ĐH</text>
+                            <!-- Axis 6: Hợp lý Chi phí (Top-Left: 245, 165) -->
+                            <text x="245" y="165" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="end">💰 Chi phí Hợp lý</text>
+
+                            <!-- Drug 1: SGLT2-i (Blue Polygon) -->
+                            <polygon points="400,140 495,195 530,325 400,400 270,325 350,220" 
+                                     fill="var(--color-primary)" fill-opacity="0.25" stroke="var(--color-primary)" stroke-width="2.5"/>
+
+                            <!-- Drug 2: GLP-1 RA (Rose/Purple Polygon) -->
+                            <polygon points="400,105 530,175 515,315 350,310 270,325 330,205" 
+                                     fill="var(--color-rose)" fill-opacity="0.2" stroke="var(--color-rose)" stroke-width="2" stroke-dasharray="4,4"/>
+
+                            <!-- Legend Box -->
+                            <g transform="translate(40, 40)">
+                                <rect width="180" height="70" rx="6" fill="var(--color-surface-2)" stroke="var(--color-divider)" stroke-width="1"/>
+                                <!-- SGLT2-i -->
+                                <circle cx="20" cy="25" r="5" fill="var(--color-primary)"/>
+                                <text x="35" y="29" font-size="11" font-weight="700" fill="var(--color-primary)">Ức chế SGLT2 (SGLT2i)</text>
+                                <!-- GLP-1 RA -->
+                                <circle cx="20" cy="50" r="5" fill="var(--color-rose)"/>
+                                <text x="35" y="54" font-size="11" font-weight="700" fill="var(--color-rose)">Đồng vận GLP-1 (GLP-1 RA)</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="code-drawer" id="code-radar">
+                    <pre><code>&lt;!-- Code mẫu Radar SVG được đóng gói hoàn toàn --&gt;</code></pre>
+                </div>
+            </article>
+
+            <!-- ==========================================
+                 TEMPLATE 5: PYRAMID EBM (KIM TỰ THÁP BẰNG CHỨNG)
+                 ========================================== -->
+            <article class="diagram-card" id="template-pyramid">
+                <div class="diagram-card-head">
+                    <div class="diagram-info">
+                        <h3><i class="fa-solid fa-mountain text-success"></i> 5. Evidence Pyramid — Kim tự tháp Y học Chứng cứ (EBM)</h3>
+                        <p>Phân cấp thứ bậc bằng chứng từ Nghiên cứu Tổng quan Hệ thống (Systematic Review/Meta-analysis) đến Ý kiến Chuyên gia.</p>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="btn-action" onclick="toggleCode('code-pyramid')"><i class="fa-solid fa-code"></i> Xem SVG Code</button>
+                        <button class="btn-action" onclick="copySVG('svg-pyramid')"><i class="fa-regular fa-copy"></i> Copy SVG</button>
+                    </div>
+                </div>
+                <div class="diagram-preview-area">
+                    <div class="svg-container">
+                        <svg id="svg-pyramid" class="med-svg" viewBox="0 0 850 440" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Canvas -->
+                            <rect width="850" height="440" fill="var(--color-surface)" rx="12" stroke="var(--color-border)" stroke-width="1"/>
+
+                            <!-- Pyramid Tiers (Top to Bottom) -->
+                            <!-- Tier 1: Systematic Review / Meta-analysis (Focal Pinnacle) -->
+                            <polygon points="425,40 345,105 505,105" fill="var(--color-primary)" stroke="var(--color-primary-hover)" stroke-width="1.5"/>
+                            <text x="425" y="80" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Tổng quan Hệ thống / Meta-Analysis</text>
+
+                            <!-- Tier 2: Randomized Controlled Trials (RCTs) -->
+                            <polygon points="345,110 505,110 575,175 275,175" fill="var(--color-teal)" fill-opacity="0.9" stroke="var(--color-teal)" stroke-width="1.5"/>
+                            <text x="425" y="148" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Thử nghiệm Lâm sàng Ngẫu nhiên có Đối chứng (RCTs)</text>
+
+                            <!-- Tier 3: Cohort & Case-Control Studies -->
+                            <polygon points="275,180 575,180 645,245 205,245" fill="var(--color-warning)" fill-opacity="0.85" stroke="var(--color-warning)" stroke-width="1.5"/>
+                            <text x="425" y="218" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Nghiên cứu Đoàn hệ (Cohort) & Bệnh - Chứng (Case-Control)</text>
+
+                            <!-- Tier 4: Case Series & Case Reports -->
+                            <polygon points="205,250 645,250 715,315 135,315" fill="var(--color-surface-offset)" stroke="var(--color-border)" stroke-width="1.5"/>
+                            <text x="425" y="288" font-size="12" font-weight="600" fill="var(--color-text)" text-anchor="middle">Báo cáo Loạt ca (Case Series) & Báo cáo Ca bệnh (Case Reports)</text>
+
+                            <!-- Tier 5: Expert Opinion & In Vitro / Animal -->
+                            <polygon points="135,320 715,320 785,385 65,385" fill="var(--color-surface-2)" stroke="var(--color-border)" stroke-width="1.5"/>
+                            <text x="425" y="358" font-size="12" font-weight="600" fill="var(--color-text-muted)" text-anchor="middle">Ý kiến Chuyên gia & Nghiên cứu In Vitro / Động vật</text>
+
+                            <!-- Side Indicator: Chất lượng chứng cứ -->
+                            <path d="M 805 385 L 805 45" fill="none" stroke="var(--color-primary)" stroke-width="2"/>
+                            <polygon points="805,40 800,52 810,52" fill="var(--color-primary)"/>
+                            <text x="820" y="215" font-size="11" font-weight="700" fill="var(--color-primary)" transform="rotate(90 820 215)" text-anchor="middle">ĐỘ TIN CẬY CHỨNG CỨ TĂNG DẦN ➔</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="code-drawer" id="code-pyramid">
+                    <pre><code>&lt;!-- Code mẫu Pyramid SVG được đóng gói hoàn toàn --&gt;</code></pre>
+                </div>
+            </article>
+
+            <!-- ==========================================
+                 TEMPLATE 6: CLINICAL LOOP (VÒNG LẶP HỒI SỨC)
+                 ========================================== -->
+            <article class="diagram-card" id="template-loop">
+                <div class="diagram-card-head">
+                    <div class="diagram-info">
+                        <h3><i class="fa-solid fa-arrows-spin text-rose"></i> 6. Loop / Flywheel — Chu trình Tái đánh giá Hồi sức Sepsis Bundle</h3>
+                        <p>Vòng lặp tái đánh giá liên tục (Đánh giá ban đầu $\rightarrow$ Bù dịch/Kháng sinh $\rightarrow$ Theo dõi sinh hiệu $\rightarrow$ Chuẩn độ vận mạch $\rightarrow$ Trung tâm Dữ liệu).</p>
+                    </div>
+                    <div class="diagram-actions">
+                        <button class="btn-action" onclick="toggleCode('code-loop')"><i class="fa-solid fa-code"></i> Xem SVG Code</button>
+                        <button class="btn-action" onclick="copySVG('svg-loop')"><i class="fa-regular fa-copy"></i> Copy SVG</button>
+                    </div>
+                </div>
+                <div class="diagram-preview-area">
+                    <div class="svg-container">
+                        <svg id="svg-loop" class="med-svg" viewBox="0 0 850 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Canvas -->
+                            <rect width="850" height="480" fill="var(--color-surface)" rx="12" stroke="var(--color-border)" stroke-width="1"/>
+
+                            <!-- Central Memory Hub (Focal Core) -->
+                            <circle cx="425" cy="240" r="70" fill="var(--color-primary-hl)" stroke="var(--color-primary)" stroke-width="2"/>
+                            <text x="425" y="230" font-size="11" font-weight="700" fill="var(--color-primary)" text-anchor="middle" class="txt-mono">SEPSIS PROTOCOL</text>
+                            <text x="425" y="248" font-size="13" font-weight="800" fill="var(--color-text)" text-anchor="middle">MỤC TIÊU HỒI SỨC</text>
+                            <text x="425" y="265" font-size="9.5" fill="var(--color-text-muted)" text-anchor="middle">MAP ≥ 65 · Lactate &lt; 2</text>
+
+                            <!-- Circular Connecting Loop Track -->
+                            <circle cx="425" cy="240" r="160" fill="none" stroke="var(--color-divider)" stroke-width="2" stroke-dasharray="6,6"/>
+
+                            <!-- Station 1: Tiếp nhận & Cấy máu (Top: 425, 80) -->
+                            <g transform="translate(335, 45)">
+                                <rect width="180" height="65" rx="8" fill="var(--color-surface-2)" stroke="var(--color-border)" stroke-width="1.5"/>
+                                <text x="90" y="25" font-size="10" font-weight="700" fill="var(--color-warning)" text-anchor="middle" class="txt-mono">BƯỚC 1: GIỜ ĐẦU TIÊN</text>
+                                <text x="90" y="42" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle">Đo Lactate & Cấy Máu</text>
+                                <text x="90" y="56" font-size="9.5" fill="var(--color-text-muted)" text-anchor="middle">Trước khi dùng kháng sinh</text>
+                            </g>
+
+                            <!-- Station 2: Can thiệp khẩn (Right: 585, 240) -->
+                            <g transform="translate(585, 205)">
+                                <rect width="190" height="65" rx="8" fill="var(--color-surface-2)" stroke="var(--color-border)" stroke-width="1.5"/>
+                                <text x="95" y="25" font-size="10" font-weight="700" fill="var(--color-primary)" text-anchor="middle" class="txt-mono">BƯỚC 2: KHÁNG SINH + DỊCH</text>
+                                <text x="95" y="42" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle">Kháng sinh Phổ rộng</text>
+                                <text x="95" y="56" font-size="9.5" fill="var(--color-text-muted)" text-anchor="middle">Tinh thể 30ml/kg nếu tụt HA</text>
+                            </g>
+
+                            <!-- Station 3: Vận mạch (Bottom: 425, 400) -->
+                            <g transform="translate(335, 365)">
+                                <rect width="180" height="65" rx="8" fill="var(--color-surface-2)" stroke="var(--color-rose)" stroke-width="1.5"/>
+                                <text x="90" y="25" font-size="10" font-weight="700" fill="var(--color-rose)" text-anchor="middle" class="txt-mono">BƯỚC 3: NÂNG HUYẾT ÁP</text>
+                                <text x="90" y="42" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle">Noradrenaline First-line</text>
+                                <text x="90" y="56" font-size="9.5" fill="var(--color-text-muted)" text-anchor="middle">Duy trì MAP ≥ 65 mmHg</text>
+                            </g>
+
+                            <!-- Station 4: Tái đánh giá (Left: 75, 240) -->
+                            <g transform="translate(75, 205)">
+                                <rect width="180" height="65" rx="8" fill="var(--color-surface-2)" stroke="var(--color-teal)" stroke-width="1.5"/>
+                                <text x="90" y="25" font-size="10" font-weight="700" fill="var(--color-teal)" text-anchor="middle" class="txt-mono">BƯỚC 4: TÁI ĐÁNH GIÁ</text>
+                                <text x="90" y="42" font-size="12" font-weight="700" fill="var(--color-text)" text-anchor="middle">Đo lại Lactate sau 2-4h</text>
+                                <text x="90" y="56" font-size="9.5" fill="var(--color-text-muted)" text-anchor="middle">Đánh giá tưới máu mô & ScvO₂</text>
+                            </g>
+
+                            <!-- Directional Flow Arrows on Loop -->
+                            <!-- Top-Right Curve Arrow -->
+                            <polygon points="560,140 548,135 554,148" fill="var(--color-text-faint)"/>
+                            <!-- Bottom-Right Curve Arrow -->
+                            <polygon points="560,340 554,328 548,340" fill="var(--color-text-faint)"/>
+                            <!-- Bottom-Left Curve Arrow -->
+                            <polygon points="290,340 302,345 296,332" fill="var(--color-text-faint)"/>
+                            <!-- Top-Left Curve Arrow -->
+                            <polygon points="290,140 296,152 302,140" fill="var(--color-text-faint)"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="code-drawer" id="code-loop">
+                    <pre><code>&lt;!-- Code mẫu Loop SVG được đóng gói hoàn toàn --&gt;</code></pre>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notify" id="toastNotify">
+        <i class="fa-solid fa-circle-check text-success"></i>
+        <span id="toastMsg">Đã sao chép mã SVG vào Clipboard!</span>
+    </div>
+
+    <script>
+        function scrollToTemplate(id) {
+            document.querySelectorAll('.diagram-nav-btn').forEach(btn => btn.classList.remove('active'));
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function toggleCode(drawerId) {
+            const drawer = document.getElementById(drawerId);
+            if (!drawer) return;
+            const isVisible = drawer.style.display === 'block';
+            
+            // Populate code if empty
+            if (!isVisible && drawer.querySelector('code').textContent.includes('được đóng gói hoàn toàn')) {
+                const card = drawer.closest('.diagram-card');
+                const svg = card.querySelector('svg');
+                if (svg) {
+                    drawer.querySelector('code').textContent = svg.outerHTML;
+                }
+            }
+            
+            drawer.style.display = isVisible ? 'none' : 'block';
+        }
+
+        function copySVG(svgId) {
+            const svg = document.getElementById(svgId);
+            if (!svg) return;
+            
+            const svgCode = svg.outerHTML;
+            navigator.clipboard.writeText(svgCode).then(() => {
+                showToast("Đã copy toàn bộ mã SVG độc lập vào Clipboard!");
+            }).catch(err => {
+                showToast("Lỗi khi copy mã SVG");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotify');
+            const msgEl = document.getElementById('toastMsg');
+            if (!toast || !msgEl) return;
+            msgEl.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
