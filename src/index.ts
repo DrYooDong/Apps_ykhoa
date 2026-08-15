@@ -146,6 +146,7 @@ import {
   renderEbmView, 
   initEbmHub,
   renderGuidelinesView,
+  initGuidelinesHub,
   renderJournalQualityView,
   renderRadarView,
   renderEbmLabView,
@@ -236,6 +237,12 @@ function initializeRoutes(): void {
   router.register('/ebm/kho-guidelines', 'Kho Guidelines & Nghiên Cứu', () => {
     document.title = 'Kho Guidelines & Nghiên Cứu Lâm Sàng – CliniPortal';
     mountToApp(renderGuidelinesView());
+    initGuidelinesHub();
+  });
+  router.register('/ebm/guidelines', 'Kho Guidelines & Nghiên Cứu', () => {
+    document.title = 'Kho Guidelines & Nghiên Cứu Lâm Sàng – CliniPortal';
+    mountToApp(renderGuidelinesView());
+    initGuidelinesHub();
   });
   router.register('/ebm/journal-quality', 'Đánh Giá Chất Lượng Tạp Chí', () => {
     document.title = 'Đánh Giá Tạp Chí Y Khoa (Journal QA) – CliniPortal';

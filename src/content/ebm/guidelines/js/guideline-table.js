@@ -249,6 +249,11 @@
     const panelAnalytics = document.getElementById('panel-analytics');
     const panelTimeline = document.getElementById('panel-timeline');
     const pageTitle = document.getElementById('page-panel-title');
+    const updatesSec = document.getElementById('section-recent-updates');
+
+    if (updatesSec) {
+      updatesSec.style.display = (tabName === 'list') ? '' : 'none';
+    }
 
     [panelStudies, panelCompare, panelAnalytics, panelTimeline]
       .filter(Boolean)

@@ -156,34 +156,40 @@
   }
 
   // ════════════════════════════════════════════════════════════════
-  // 3. RECENT UPDATES & TIMELINE RENDERERS
+  // 3. RECENT UPDATES RENDERER
   // ════════════════════════════════════════════════════════════════
 
   function renderUpdates() {
     const container = document.getElementById('updates-list') || document.getElementById('recent-updates-container');
     if (!container) return;
-    const studies = window.studies || [];
-    const recent = studies.slice(0, 2);
 
-    if (recent.length === 0) {
+    const studies = window.studies || [];
+    const latestStudies = [...studies].sort((a, b) => (b.year || 0) - (a.year || 0)).slice(0, 4);
+
+    if (latestStudies.length === 0) {
       container.innerHTML = `<div style="font-size:0.8rem; color:var(--text-muted); padding:0.5rem;">Chưa có cập nhật mới nào.</div>`;
       return;
     }
 
-    let html = recent.map(s => {
-      const specObj = window.SPECIALTIES && window.SPECIALTIES[s.specialty] ? window.SPECIALTIES[s.specialty] : { name: s.specialty || 'N/A' };
+    let html = latestStudies.map(s => {
+      const specObj = window.SPECIALTIES && window.SPECIALTIES[s.specialty] ? window.SPECIALTIES[s.specialty] : { name: s.specialty || 'N/A', color: '#0284c7', bg: '#f0f9ff' };
       return `
-        <div class="update-card" onclick="window.filterByStudyId && window.filterByStudyId('${s.id}')">
-          <div class="update-card-header">
-            <div style="font-size:0.75rem; font-weight:800; color:var(--accent);">${s.year || '2026'} • ${escapeHtml(specObj.name)}</div>
+        <div class="update-card" style="cursor: pointer;" onclick="window.filterByStudyId && window.filterByStudyId('${s.id}')">
+          <div class="update-card-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.7rem; font-weight: 800; padding: 1px 6px; border-radius: 4px; background: ${specObj.bg}; color: ${specObj.color};">${specObj.name}</span>
+            <span style="font-size: 0.7rem; font-weight: 800; color: var(--text-muted);">${s.year || '2026'}</span>
           </div>
-          <div class="update-card-title">${escapeHtml(s.title)}</div>
-          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">💊 ${escapeHtml(s.drug || s.intervention || 'Khuyến cáo')}</div>
+          <div class="update-card-title" style="margin: 4px 0; font-weight: 700; line-height: 1.35;">${escapeHtml(s.title)}</div>
+          <div style="font-size: 0.72rem; color: var(--text-muted);">💊 ${escapeHtml(s.drug || s.intervention || 'Khuyến cáo')}</div>
         </div>
       `;
     }).join('');
 
-    container.innerHTML = html;
+    container.innerHTML = `
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; width: 100%;">
+        ${html}
+      </div>
+    `;
   }
 
   function toggleRecentUpdatesSec() {

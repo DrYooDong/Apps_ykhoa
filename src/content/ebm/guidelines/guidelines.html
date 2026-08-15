@@ -203,23 +203,6 @@
     <!-- MAIN CONTENT -->
     <div class="main-content">
 
-      <!-- ══ CÓ GÌ MỚI ══ -->
-      <section class="updates-section" id="section-recent-updates">
-        <div class="updates-header" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer;" onclick="toggleRecentUpdatesSec()">
-          <div>
-            <h2>🆕 Có Gì Mới</h2>
-            <p>Cập nhật hướng dẫn lâm sàng và nghiên cứu mới nhất</p>
-          </div>
-          <button id="btn-toggle-recent-updates" style="background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light, #e2e8f0); border-radius: 20px; padding: 0.3rem 0.8rem; font-size: 0.76rem; font-weight: 700; color: var(--text-muted, #475569); cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.2s;" aria-label="Thu gọn hoặc mở rộng phần Có Gì Mới">
-            <span id="recent-updates-toggle-label">Thu gọn</span>
-            <span id="recent-updates-toggle-icon">▲</span>
-          </button>
-        </div>
-        <div class="updates-list" id="updates-list">
-          <!-- Dynamic content -->
-        </div>
-      </section>
-
       <!-- TABS NAVIGATION ROW -->
       <div class="tabs-header-row">
         <div class="tabs-header-left">
@@ -248,6 +231,23 @@
       <!-- ══ PANEL: DANH SÁCH / ĐÃ LƯU ══ -->
       <section class="content-panel active" id="panel-studies">
         
+        <!-- ══ CÓ GÌ MỚI (CHỈ HIỆN Ở GIAO DIỆN DANH SÁCH) ══ -->
+        <section class="updates-section" id="section-recent-updates">
+          <div class="updates-header" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer;" onclick="toggleRecentUpdatesSec()">
+            <div>
+              <h2>🆕 Có Gì Mới</h2>
+              <p>Cập nhật hướng dẫn lâm sàng và nghiên cứu mới nhất</p>
+            </div>
+            <button id="btn-toggle-recent-updates" style="background: var(--surface-2, #f8fafc); border: 1px solid var(--border-light, #e2e8f0); border-radius: 20px; padding: 0.3rem 0.8rem; font-size: 0.76rem; font-weight: 700; color: var(--text-muted, #475569); cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.2s;" aria-label="Thu gọn hoặc mở rộng phần Có Gì Mới">
+              <span id="recent-updates-toggle-label">Thu gọn</span>
+              <span id="recent-updates-toggle-icon">▲</span>
+            </button>
+          </div>
+          <div class="updates-list" id="updates-list">
+            <!-- Dynamic content -->
+          </div>
+        </section>
+
         <!-- Controls & Filters Card -->
         <div class="controls-card">
           <!-- Row 1: Search & Layout Settings -->
