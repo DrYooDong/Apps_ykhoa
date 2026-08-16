@@ -179,33 +179,91 @@ h3.subsection-title,
 }
 
 /* Concept Cards and Grid layout */
-.concept-grid {
+.concept-grid,
+.physio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
   margin: 1.75rem 0;
 }
 
-.concept-card {
+.concept-card,
+.physio-grid-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 1.25rem;
   transition: all var(--tr);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.concept-card:hover {
+.physio-grid-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-primary);
+  transition: width 0.2s ease;
+}
+
+.concept-card:hover,
+.physio-grid-card:hover {
   border-color: var(--color-primary);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
-.concept-card p {
-  font-size: var(--text-xs);
+.physio-grid-card:hover::before {
+  width: 6px;
+}
+
+.physio-grid-card.card-danger::before { background: var(--color-danger); }
+.physio-grid-card.card-danger:hover { border-color: var(--color-danger); box-shadow: 0 8px 20px -4px rgba(239, 68, 68, 0.18); }
+
+.physio-grid-card.card-warning::before { background: var(--color-warning); }
+.physio-grid-card.card-warning:hover { border-color: var(--color-warning); box-shadow: 0 8px 20px -4px rgba(217, 119, 6, 0.18); }
+
+.physio-grid-card.card-success::before { background: var(--color-success); }
+.physio-grid-card.card-success:hover { border-color: var(--color-success); box-shadow: 0 8px 20px -4px rgba(5, 150, 105, 0.18); }
+
+.physio-grid-card.card-info::before { background: var(--color-info); }
+.physio-grid-card.card-info:hover { border-color: var(--color-info); box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.18); }
+
+.physio-grid-card.card-purple::before { background: var(--color-purple); }
+.physio-grid-card.card-purple:hover { border-color: var(--color-purple); box-shadow: 0 8px 20px -4px rgba(124, 58, 237, 0.18); }
+
+.physio-grid-card.card-rose::before { background: var(--color-rose); }
+.physio-grid-card.card-rose:hover { border-color: var(--color-rose); box-shadow: 0 8px 20px -4px rgba(225, 29, 72, 0.18); }
+
+.physio-grid-title,
+.grid-card-title {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.025rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.concept-card p,
+.physio-grid-card p {
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: 1.6;
   margin: 0;
+  text-align: left;
 }
+
 
 /* Clinical Callout and Warning Boxes */
 .clinical-note-box {
