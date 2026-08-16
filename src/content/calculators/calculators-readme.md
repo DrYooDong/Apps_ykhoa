@@ -1,87 +1,83 @@
-# ⚙️ Phân hệ Công cụ Lâm sàng (Clinical Calculators & Tools)
+# ⚙️ Phân hệ Công cụ Lâm sàng (Clinical Calculators & Tools — TypeScript Native SPA)
 
-Tài liệu này mô tả định hướng phát triển dài hạn, cấu trúc thư mục và quy chuẩn phát triển phần mềm cho phân hệ **Công cụ Lâm sàng** thuộc hệ sinh thái **CliniPortal**. Tài liệu này đóng vai trò làm kim chỉ nam để các tác nhân AI (Agent) và lập trình viên duy trì, mở rộng các công cụ tính toán lâm sàng một cách chính xác và nhất quán.
-
----
-
-## 🚀 1. Định hướng Phát triển Dài hạn
-
-Phân hệ này tập trung **thuần vào các công cụ hỗ trợ bác sĩ** trong việc thực hành lâm sàng hàng ngày tại giường bệnh (bedside). Các công cụ bao gồm máy tính chỉ số y học (Calculators), thang điểm đánh giá (Medical Scores), sơ đồ phân tầng nguy cơ (Risk Stratifications), công cụ lập kế hoạch điều trị động (Interactive Treatment Planners), và bộ thẩm định mã hóa y tế / quy tắc BHYT.
-
-### 🎯 4 Nguyên lý Thiết kế Cốt lõi của Công cụ:
-1.  **Tính toán & Thẩm định Động (Reactive Calculations & Audits)**: 
-    *   Mọi dữ liệu nhập vào (Form Inputs, tìm kiếm, hoặc thêm ca bệnh) phải kích hoạt tính toán/thẩm định tự động tức thời ngay khi người dùng thay đổi giá trị. Hạn chế bắt buộc người dùng bấm nút thủ công.
-    *   Tự động validate giá trị nhập và cảnh báo xung đột mã hóa BHYT (ví dụ: mã bệnh chính không được thanh toán BHYT, cảnh báo giới tính, hoặc thiếu mã ICD bắt buộc cho cận lâm sàng).
-2.  **Phân tầng Nguy cơ & Trạng thái Trực quan (Visual Risk & Status Stratification)**:
-    *   Kết quả trả về đi kèm phân tầng mức độ rõ ràng (Nguy cơ Thấp - Xanh lục, Nguy cơ Trung bình - Vàng/Hổ phách, Nguy cơ Cao - Đỏ).
-    *   Sử dụng màu sắc trực quan dựa trên hệ thống Design Tokens của CliniPortal.
-3.  **Khuyến cáo Xử trí Lâm sàng, Can thiệp & BHYT (Actionable Clinical & Interventional Guidance)**:
-    *   Dựa trên kết quả tính toán và phân tầng nguy cơ, hệ thống hiển thị khuyến cáo xử trí tương ứng (liều lượng thuốc, thời điểm cần nhập viện ICU, chỉ định thủ thuật xâm lấn CVC/A-Line, test PLR, chỉ định VA-ECMO/IABP...) dựa theo Guidelines y học chứng cứ uy tín (AHA, ESC, KDIGO, GINA, SSC 2021, TT06/2026/TT-BYT...).
-4.  **Kiến trúc Workstation Tương tác Dạng Studio (Clinical Studio Tools)**:
-    *   Định hướng phát triển các công cụ dạng Studio (tham chiếu chi tiết tại `y-tuong-studio-tools.md` & `huong-dan-thiet-ke.md` Style 4) với bàn làm việc 4 cột, quản lý đa bơm tiêm điện song song, tính điểm tải VIS, radar vector ma trận thể sốc, và trung tâm xử trí thủ thuật can thiệp lâm sàng.
-5.  **Bối cảnh Y khoa & Dữ liệu Chuẩn hóa Offline (Offline Standards)**:
-    *   Mỗi trang công cụ tích hợp cơ sở dữ liệu tĩnh offline (dạng `.js` và `.csv` độc lập), đảm bảo phần mềm hoạt động 100% không phụ thuộc API bên ngoài.
+Tài liệu này mô tả cấu trúc thư mục, kiến trúc và quy chuẩn phát triển phần mềm cho phân hệ **Công cụ Lâm sàng & Studio Workbenches** thuộc hệ sinh thái **CliniPortal**.
 
 ---
 
-## 📁 2. Cấu trúc Thư mục & Danh mục Công cụ Hiện tại
+## 🚀 1. Định hướng Phát triển & Kiến Trúc TypeScript Native
 
+Phân hệ tập trung **thuần vào các công cụ hỗ trợ bác sĩ** trong việc thực hành lâm sàng hàng ngày tại giường bệnh (bedside). Toàn bộ hệ thống chạy trên nền tảng **TypeScript Native SPA** không dùng file HTML phân mảnh:
+
+1. **Reactive Calculations & Real-time Audits**: Mọi thay đổi input kích hoạt tính toán và phân tầng nguy cơ tức thời.
+2. **Visual Risk Stratification**: Phân tầng nguy cơ trực quan (Xanh lục / Vàng hổ phách / Đỏ / Tím nguy kịch) tuân thủ Design Tokens của CliniPortal.
+3. **Actionable Clinical Guidance**: Hiển thị khuyến cáo xử trí, chỉ định can thiệp thủ thuật và phác đồ thuốc chuẩn EBM (ESC, AHA, KDIGO, GINA, SSC 2026).
+4. **Clinical Studio Workbenches**: Bàn làm việc chuyên sâu 4 cột tích hợp mô phỏng Canvas/SVG, đa bơm tiêm điện, phác đồ can thiệp và xuất y lệnh HIS.
+5. **Offline-First**: 100% dữ liệu và thuật toán hoạt động không phụ thuộc API bên ngoài.
+
+---
+
+## 📁 2. Cấu trúc Thư mục TypeScript Hiện tại (`src/content/calculators/`)
+
+```text
+src/content/calculators/
+├── index.ts                      # Module Entry Point & Re-exports
+├── types.ts                      # Type definitions chung
+├── data.ts                       # Database danh mục 45+ công cụ & lab values
+├── renderer.ts                   # Hub UI Controller & Favorites Manager
+├── calculators-view.ts           # Master Hub SPA View (Hero Gears, Sticky Sidebar, Bento Grid)
+├── studio-models.ts              # Studio Workbenches Type Models
+├── studio-registry.ts            # Manifest Catalog 18+ Clinical Studios
+├── studio-view.ts                # Studio Hub Bento & 4-Panel Workbench Runner
+├── cardiology/                   # Tim Mạch & Huyết Khối
+│   ├── cardiology-views.ts       # SPA View (SCORE2, LDL-C, Suy tim, Wells DVT/PE, Arrhythmia)
+│   ├── ptnc-tim-mach.ts          # Score2 engine
+│   ├── dg-ldl-c.ts               # Mục tiêu LDL-C ESC/VNHA engine
+│   ├── dg-suy-tim.ts             # Suy tim engine
+│   ├── dg-vte.ts                 # Wells DVT/PE engine
+│   └── phan-loai-roi-loan-nhip.ts# Arrhythmia Pro Studio engine
+├── emergency/                    # Cấp Cứu, Hồi Sức Tích Cực & Chống Độc
+│   ├── emergency-views.ts        # SPA View (An thần, Vận mạch, Bù dịch, Máy thở, ACLS, Stroke...)
+│   ├── ql-may-tho.ts             # Giả lập máy thở ICU 3 kênh sóng thở
+│   ├── ql-bu-dich.ts             # Bù dịch 7 bệnh cảnh lâm sàng
+│   ├── ql-van-mach.ts            # Vận mạch đa bơm tiêm điện & điểm VIS
+│   ├── acls-resus.ts             # ACLS CPR Metronome & Protocol
+│   ├── toxicology-studio.ts      # Chống độc & Toxidrome
+│   ├── polytrauma-mtp.ts         # Đa chấn thương & MTP 1:1:1
+│   └── dg-an-than-icu.ts         # RASS / CPOT / CAM-ICU
+├── endocrinology/                # Nội Tiết & Chuyển Hóa
+│   └── endocrinology-views.ts    # Diabetes & Insulin Pro Studio (Basal-Bolus & Bơm tiêm điện)
+├── gastroenterology/             # Tiêu Hóa & Dinh Dưỡng
+│   ├── gastro-views.ts           # SPA View (Child-Pugh, MELD, Dinh dưỡng, SAAG, GBS, HCC)
+│   ├── dg-dinh-duong.ts          # Dinh dưỡng nội trú
+│   ├── dg-ptnc-hcc.ts            # Nguy cơ HCC theo AGA
+│   └── dg-xhth.ts                # Glasgow-Blatchford xuất huyết tiêu hóa
+├── general/                      # Công Cụ Chung & NCKH
+│   ├── general-views.ts          # SPA View (Quy đổi liều, Cỡ mẫu, Công thức sinh lý, ICD-10, Bệnh án)
+│   ├── quy-doi-lieu-tuong-duong.ts # Database & quy đổi Corticoid, Opioid, Statin, PPI, DOACs
+│   ├── nckh-tinh-co-mau.ts       # Tính cỡ mẫu 5 thiết kế nghiên cứu
+│   ├── formula-vault.ts          # Kho công thức sinh lý định lượng
+│   └── tracuu-ma-icd10.ts        # Tra cứu 15.844 mã ICD-10 & thẩm định BHYT
+├── hematology/                   # Huyết Học & Xét Nghiệm
+│   ├── hematology-views.ts       # SPA View (Thiếu máu MCV/RPI & Lab Pro Studio)
+│   └── dg-thieu-mau.ts           # Phân tầng thiếu máu
+├── infectious/                   # Truyền Nhiễm & Kháng Sinh
+│   ├── infectious-views.ts       # SPA View (Sepsis Studio, Chỉnh liều kháng sinh, Vancomycin, Vi sinh)
+│   ├── ql-vancomycin.ts          # AUC/MIC 24h & Cmin Vancomycin
+│   └── sepsis-studio.ts          # Sepsis-3 1-Hour Bundle & qSOFA/SOFA
+├── neurology/                    # Thần Kinh & Đột Quỵ
+│   └── neurology-views.ts        # Stroke Pro Studio (rtPA, EVT, ASPECTS, Nicardipine)
+└── renal/                        # Thận, Điện Giải & Toan Kiềm
+    ├── renal-views.ts            # SPA View (eGFR CKD-EPI, ABG Studio, Điện giải, AKI)
+    ├── renal-function.ts         # eGFR CKD-EPI 2021 & Cockcroft-Gault
+    ├── dg-nguyen-nhan-aki.ts     # Phân loại nguyên nhân AKI
+    └── dg-abg-studio.ts          # Phân tích khí máu 6 bước
 ```
-Công cụ/
-├── Cấp cứu & hồi sức/         # Công cụ tính dịch truyền, hồi sức cấp cứu
-│   └── QL_Budich.html         # Công cụ quản lý và lập kế hoạch bù dịch hồi sức động
-├── Hô hấp & Lao/              # Đánh giá mức độ nặng viêm phổi, hen phế quản...
-│   └── DG_Viem-phoi.html      # Tính thang điểm PSI và CURB-65 đánh giá viêm phổi
-├── Nội tiết & Chuyển hóa/     # Quản lý đường huyết, insulin...
-│   └── DG_Insulin-DTD.html    # Hướng dẫn chỉnh liều insulin động trong ĐTĐ nội trú
-├── Thần kinh/                 # Đột quỵ và đánh giá tổn thương thần kinh
-│   └── DG_Dotquy.html         # Thang điểm NIHSS và tính liều tPA tiêu sợi huyết
-├── Thận & Điện giải - toan kiềm/ # Rối loạn toan kiềm, điện giải, suy chức năng thận
-│   ├── DG_ABG.html            # Phân tích khí máu động mạch (6 bước chẩn đoán rối loạn)
-│   ├── Electrolyte_Studio.html # Electrolyte Pro Studio: Xử trí cấp cứu điện giải (Na, K, Ca, Mg) & Động học dịch truyền
-│   └── renal-function.html    # Tính toán chức năng thận: eGFR (CKD-EPI), Cockcroft-Gault
-├── Tim mạch & huyết khối/     # Thang điểm tim mạch, nguy cơ tắc mạch/chảy máu
-│   └── ptnctimmach.html       # Đánh giá ASVCD, CHA2DS2-VASc, HAS-BLED trong rung nhĩ
-├── Tiêu hóa & Dinh dưỡng/     # Suy gan, dinh dưỡng lâm sàng
-│   ├── DG_Dinhduongnoitru.html # Tính nhu cầu năng lượng và lập thực đơn dinh dưỡng nội trú
-│   ├── DG_Xogan.html          # Thang điểm Child-Pugh, MELD đánh giá xơ gan
-│   ├── DG_ptncHCC.html        # Tính điểm phân tầng nguy cơ ung thư gan (HCC)
-│   └── thangdiemHCC.md        # Tóm tắt tài liệu các thang điểm nguy cơ ung thư biểu mô tế bào gan
-├── Truyền Nhiễm/              # Công cụ phân tầng nhiễm trùng/sepsis, điều trị kháng sinh
-│   ├── SL_Nhiem-khuan.html    # Tính điểm qSOFA/SOFA và phác đồ Hour-1 Bundle xử trí sepsis
-│   ├── Microbiology_Studio.html # Microbiology Pro Studio: Giả lập vi sinh, kính hiển vi ảo & Antibiogram
-│   ├── QL_Vancomycin.html     # Phần mềm tính toán, quản lý liều và theo dõi nồng độ Vancomycin
-│   ├── QL Vancomycin.md       # Tài liệu lâm sàng về dược động học và giám sát trị liệu Vancomycin (TDM)
-│   ├── Chỉnh liều Vancomycin.md # Hướng dẫn điều chỉnh liều Vancomycin dựa trên AUC/MIC và Cmin
-│   ├── Chinhlieu_khangsinh.html # Phần mềm tính toán, chỉnh liều các nhóm kháng sinh chính ở bệnh nhân suy thận
-│   ├── Chinhlieu_khangsinh.md # Tài liệu tham khảo hướng dẫn chỉnh liều kháng sinh
-│   └── Dược PK_PD.md          # Tài liệu lý thuyết về Dược lực học/Dược động học (PK/PD) kháng sinh
-├── Chung/                     # Tài liệu & công cụ chung lâm sàng
-│   ├── Bệnh án/               # Hướng dẫn làm bệnh án nội khoa chuyên nghiệp
-│   │   └── benh-an-noi-khoa.html # Bản điện tử tương tác hỗ trợ điền bệnh án chuẩn
-│   ├── QuyDoi_LieuTuongDuong.html # Bộ quy đổi liều thuốc tương đương (Corticoids, Opioids, Statins, PPIs, DOACs, Benzo)
-│   ├── NCKH/                  # Công cụ nghiên cứu khoa học
-│   │   └── NCKH_Tinhcomau.html # Tính cỡ mẫu nghiên cứu khoa học
-│   └── Tra cứu mã ICD10/       # Phân hệ tra cứu mã bệnh ICD-10 & Thẩm định BHYT
-│       └── Tracuu_maICD10.html # Tra cứu 15.844 mã ICD-10, thẩm định BHYT, sao chép chuẩn HIS, nạp ca mẫu Presets
-└── cong-cu.html               # Trang Hub điều hướng trung tâm của phân hệ Công cụ
-```
 
 ---
 
-## 🛠️ 3. Hướng dẫn Kỹ thuật phát triển Công cụ mới
+## 🛠️ 3. Quy Chuẩn Kỹ Thuật (TypeScript SPA)
 
-Khi xây dựng một công cụ hỗ trợ tính toán hoặc tra cứu mới, lập trình viên hoặc AI Agent phải tuân thủ quy chuẩn hệ thống:
-
-1.  **Sử dụng Vanilla JavaScript Pure & Core Data Files**:
-    *   Toàn bộ logic tính toán và xử lý DOM viết bằng ES6+ thuần.
-    *   Tách riêng phần dữ liệu tĩnh (.js / .csv trong `js/data/`) và logic tương tác (`js/[tên-công-cụ].js`).
-    *   Tách riêng stylesheet giao diện vào `css/components/[tên-công-cụ].css`.
-
-2.  **Kế thừa Design Tokens & Responsive Layout**:
-    *   Thiết kế form nhập liệu gồm các thẻ `<input>`, `<select>`, `<radio>` hoặc thẻ kết quả dạng Grid layout thân thiện với cả thiết bị di động (Mobile-first).
-    *   Kết quả đầu ra hiển thị trong khung nổi bật (`.result-panel` hoặc `.sidebar-card`) sử dụng các màu cảnh báo dựa trên Design Tokens trong `../../css/main.css`.
-
-3.  **Tích hợp SEO & Nhãn ID**:
-    *   Mỗi input element phải có thẻ `<label>` tương ứng với thuộc tính `for` rõ ràng.
-    *   Tất cả các phần tử tương tác (nút bấm, ô nhập) bắt buộc phải có thuộc tính `id` duy nhất và mang tính mô tả để phục vụ kiểm thử giao diện.
+1. **100% TypeScript (`.ts`)**: Mọi logic tính toán, render template chuỗi HTML và tương tác DOM được viết trong module `.ts`.
+2. **Router Navigation**: Điều hướng qua hash SPA `#/calculators/...` đăng ký tập trung tại `src/index.ts`.
+3. **Window Event Handlers**: Các hàm xử lý tính toán phản ứng (reactive functions) được gắn vào `window` thông qua `declare global { interface Window { ... } }`.
+4. **Design Tokens**: Sử dụng biến màu CSS `var(--color-primary)`, `var(--color-surface)`, `var(--color-border)` đồng bộ cho cả Light Mode & Dark Mode.

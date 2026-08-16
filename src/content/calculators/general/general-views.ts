@@ -5,6 +5,14 @@
 
 import { EQUIV_DATABASE } from './quy-doi-lieu-tuong-duong';
 
+import { render_quy_doi_lieu_tuong_duong_View } from './quy-doi-lieu-tuong-duong-view';
+import { render_nckh_tinh_co_mau_View } from './nckh-tinh-co-mau-view';
+import { render_formula_vault_View } from './formula-vault-view';
+import { render_tracuu_ma_icd10_View } from './tracuu-ma-icd10-view';
+import { render_benh_an_noi_khoa_View } from './benh-an-noi-khoa-view';
+import { initSampleSizeCalculator } from './nckh-tinh-co-mau';
+import { initVirtualICDList } from './tracuu-ma-icd10';
+
 export function getDrugNames(category: string): string[] {
   const cat = EQUIV_DATABASE[category];
   return cat ? cat.drugs.map(d => d.name) : [];
@@ -35,8 +43,12 @@ export function calcEquiv(catKey: string, srcName: string, dose: number, targetN
 export type GeneralToolTab = 'quy-doi-lieu' | 'tinh-co-mau' | 'icd10' | 'benh-an' | 'formula-vault';
 
 export function renderGeneralToolsView(activeTab: GeneralToolTab = 'quy-doi-lieu'): string {
+  setTimeout(() => {
+    if (activeTab === 'tinh-co-mau') initSampleSizeCalculator();
+  }, 50);
+
   return `
-    <div class="general-tools-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
+    <div class="general-tools-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1rem;">
       <!-- Breadcrumb & Header -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -85,17 +97,17 @@ export function renderGeneralToolsView(activeTab: GeneralToolTab = 'quy-doi-lieu
 function renderActiveGeneralTab(tab: GeneralToolTab): string {
   switch (tab) {
     case 'quy-doi-lieu':
-      return renderQuyDoiLieuContent();
+      return render_quy_doi_lieu_tuong_duong_View();
     case 'tinh-co-mau':
-      return renderTinhCoMauContent();
+      return render_nckh_tinh_co_mau_View();
     case 'formula-vault':
-      return renderFormulaVaultContent();
+      return render_formula_vault_View();
     case 'icd10':
-      return renderIcd10Content();
+      return render_tracuu_ma_icd10_View();
     case 'benh-an':
-      return renderBenhAnContent();
+      return render_benh_an_noi_khoa_View();
     default:
-      return renderQuyDoiLieuContent();
+      return render_quy_doi_lieu_tuong_duong_View();
   }
 }
 

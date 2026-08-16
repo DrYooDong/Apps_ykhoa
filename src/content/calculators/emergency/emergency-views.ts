@@ -1,7 +1,19 @@
-/**
- * CliniPortal — Emergency & ICU Workstation Calculators SPA Views (TypeScript)
- * Path: src/content/calculators/emergency/emergency-views.ts
- */
+import { render_dg_an_than_icu_View } from './dg-an-than-icu-view';
+import { render_ql_van_mach_studio_View } from './ql-van-mach-studio-view';
+import { render_ql_bu_dich_studio_View } from './ql-bu-dich-studio-view';
+import { render_ql_may_tho_View } from './ql-may-tho-view';
+import { render_acls_resus_studio_View } from './acls-resus-studio-view';
+import { render_stroke_pro_studio_View } from './stroke-pro-studio-view';
+import { render_toxicology_studio_View } from './toxicology-studio-view';
+import { render_polytrauma_mtp_studio_View } from './polytrauma-mtp-studio-view';
+import { render_ecg_studio_View } from './ecg-studio-view';
+import { render_metabolic_crisis_studio_View } from './metabolic-crisis-studio-view';
+import { render_pocus_efast_studio_View } from './pocus-efast-studio-view';
+import { render_cardiogenic_shock_studio_View } from './cardiogenic-shock-studio-view';
+
+import { initCanvases, startWaveformLoop } from './ql-may-tho';
+import { initFluidStudio } from './ql-bu-dich';
+import { initVasopressorStudio } from './ql-van-mach';
 
 export type EmergencyToolTab = 
   | 'an-than-icu' 
@@ -18,8 +30,26 @@ export type EmergencyToolTab =
   | 'cardiogenic-shock';
 
 export function renderEmergencyToolsView(activeTab: EmergencyToolTab = 'an-than-icu'): string {
+  setTimeout(() => {
+    const w = typeof window !== 'undefined' ? (window as any) : {};
+    if (activeTab === 'may-tho') {
+      initCanvases();
+      startWaveformLoop();
+    } else if (activeTab === 'bu-dich') {
+      initFluidStudio();
+    } else if (activeTab === 'van-mach') {
+      initVasopressorStudio();
+    } else if (activeTab === 'acls' && w.aclsStudio?.init) {
+      w.aclsStudio.init();
+    } else if (activeTab === 'toxicology' && w.initToxicologyStudio) {
+      w.initToxicologyStudio();
+    } else if (activeTab === 'polytrauma' && w.initPolytraumaStudio) {
+      w.initPolytraumaStudio();
+    }
+  }, 50);
+
   return `
-    <div class="emergency-tools-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
+    <div class="emergency-tools-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1rem;">
       <!-- Breadcrumb & Header -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -77,23 +107,31 @@ export function renderEmergencyToolsView(activeTab: EmergencyToolTab = 'an-than-
 function renderActiveEmTab(tab: EmergencyToolTab): string {
   switch (tab) {
     case 'an-than-icu':
-      return renderAnThanIcuContent();
+      return render_dg_an_than_icu_View();
     case 'van-mach':
-      return renderVanMachContent();
+      return render_ql_van_mach_studio_View();
     case 'bu-dich':
-      return renderBuDichContent();
+      return render_ql_bu_dich_studio_View();
     case 'may-tho':
-      return renderMayThoContent();
+      return render_ql_may_tho_View();
     case 'acls':
-      return renderAclsContent();
+      return render_acls_resus_studio_View();
     case 'stroke':
-      return renderStrokeContent();
+      return render_stroke_pro_studio_View();
     case 'toxicology':
-      return renderToxicologyContent();
+      return render_toxicology_studio_View();
     case 'polytrauma':
-      return renderPolytraumaContent();
+      return render_polytrauma_mtp_studio_View();
+    case 'ecg':
+      return render_ecg_studio_View();
+    case 'metabolic':
+      return render_metabolic_crisis_studio_View();
+    case 'pocus':
+      return render_pocus_efast_studio_View();
+    case 'cardiogenic-shock':
+      return render_cardiogenic_shock_studio_View();
     default:
-      return renderAnThanIcuContent();
+      return render_dg_an_than_icu_View();
   }
 }
 

@@ -11,11 +11,11 @@ export interface SearchIndexItem {
 }
 
 export const HOMEPAGE_SEARCH_INDEX: SearchIndexItem[] = [
-  { title: "Tra cứu mã ICD-10 nhanh", category: "Công cụ", url: "src/content/calculators/general/tracuu-ma-icd10.html", keywords: "icd10, icd 10, ma benh, tra cuu" },
-  { title: "Sốc nhiễm khuẩn (Sepsis) & Phác đồ kháng sinh", category: "Cấp cứu", url: "src/content/skills/treatment-management/luachon-khangsinh.html", keywords: "sot cao, tut huyet ap, soc nhiem khuan, sepsis" },
-  { title: "Đọc Điện tâm đồ ECG cơ bản & Nâng cao", category: "Kỹ năng", url: "src/content/skills/can-lam-sang/doc-ecg-co-ban.html", keywords: "ecg, dien tam do, tim, nhip tim" },
-  { title: "Khí máu động mạch (ABG) & Toan kiềm", category: "Công cụ", url: "src/content/calculators/renal/dg-abg-studio.html", keywords: "khi mau dong mach, toan kiem, ph, abg" },
-  { title: "Y học chứng cứ & PICO / NNT Lab", category: "Chứng cứ", url: "src/content/ebm/yhcc.html", keywords: "ebm, pico, nnt, forest plot" }
+  { title: "Tra cứu mã ICD-10 nhanh", category: "Công cụ", url: "#/calculators/tra-cuu-icd10", keywords: "icd10, icd 10, ma benh, tra cuu" },
+  { title: "Sốc nhiễm khuẩn (Sepsis) & Phác đồ kháng sinh", category: "Cấp cứu", url: "#/calculators/sepsis-studio", keywords: "sot cao, tut huyet ap, soc nhiem khuan, sepsis" },
+  { title: "Đọc Điện tâm đồ ECG cơ bản & Nâng cao", category: "Kỹ năng", url: "#/skills/ecg-studio", keywords: "ecg, dien tam do, tim, nhip tim" },
+  { title: "Khí máu động mạch (ABG) & Toan kiềm", category: "Công cụ", url: "#/calculators/khi-mau-dong-mach", keywords: "khi mau dong mach, toan kiem, ph, abg" },
+  { title: "Y học chứng cứ & PICO / NNT Lab", category: "Chứng cứ", url: "#/ebm", keywords: "ebm, pico, nnt, forest plot" }
 ];
 
 export function initHomepageWidgets(): void {

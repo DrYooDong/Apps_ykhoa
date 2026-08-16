@@ -1,16 +1,26 @@
-/**
- * CliniPortal — Cardiology Calculators & Arrhythmia SPA Views (TypeScript)
- * Path: src/content/calculators/cardiology/cardiology-views.ts
- */
-
+import { render_ptnc_tim_mach_View } from './ptnc-tim-mach-view';
+import { render_dg_ldl_c_View } from './dg-ldl-c-view';
+import { render_dg_suy_tim_View } from './dg-suy-tim-view';
+import { render_dg_vte_View } from './dg-vte-view';
+import { render_phan_loai_roi_loan_nhip_studio_View } from './phan-loai-roi-loan-nhip-studio-view';
 import { calculateScore2Engine } from './ptnc-tim-mach';
-import { ArrhythmiaEngineController } from './phan-loai-roi-loan-nhip';
 
 export type CardioToolTab = 'ptnc-tim-mach' | 'phan-loai-roi-loan-nhip' | 'dg-ldlc' | 'dg-suy-tim' | 'vte-toolkit';
 
 export function renderCardiologyToolsView(activeTab: CardioToolTab = 'ptnc-tim-mach'): string {
+  setTimeout(() => {
+    const w = typeof window !== 'undefined' ? (window as any) : {};
+    if (activeTab === 'ptnc-tim-mach' && w.recalcScore2) w.recalcScore2();
+    if (activeTab === 'dg-ldlc' && w.recalcLdlc) w.recalcLdlc();
+    if (activeTab === 'dg-suy-tim' && w.recalcSuyTim) w.recalcSuyTim();
+    if (activeTab === 'vte-toolkit' && w.recalcWellsDvt) {
+      w.recalcWellsDvt();
+      if (w.recalcWellsPe) w.recalcWellsPe();
+    }
+  }, 50);
+
   return `
-    <div class="cardio-tools-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
+    <div class="cardio-tools-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1rem;">
       <!-- Breadcrumb & Header -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -59,17 +69,17 @@ export function renderCardiologyToolsView(activeTab: CardioToolTab = 'ptnc-tim-m
 function renderActiveCardioTab(tab: CardioToolTab): string {
   switch (tab) {
     case 'ptnc-tim-mach':
-      return renderScore2Content();
+      return render_ptnc_tim_mach_View();
     case 'dg-ldlc':
-      return renderLdlcContent();
+      return render_dg_ldl_c_View();
     case 'dg-suy-tim':
-      return renderSuyTimContent();
+      return render_dg_suy_tim_View();
     case 'vte-toolkit':
-      return renderVteToolkitContent();
+      return render_dg_vte_View();
     case 'phan-loai-roi-loan-nhip':
-      return renderArrhythmiaStudioContent();
+      return render_phan_loai_roi_loan_nhip_studio_View();
     default:
-      return renderScore2Content();
+      return render_ptnc_tim_mach_View();
   }
 }
 

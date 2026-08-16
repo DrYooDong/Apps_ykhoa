@@ -1,13 +1,18 @@
-/**
- * CliniPortal — Respiratory Calculators & Pneumonia SPA Views (TypeScript)
- * Path: src/content/calculators/respiratory/respiratory-views.ts
- */
+import { render_pneumonia_studio_View } from './pneumonia-studio-view';
+import { render_cxr_studio_View } from './cxr-studio-view';
+import { render_pleural_effusion_studio_View } from './pleural-effusion-studio-view';
 
 export type RespToolTab = 'pneumonia' | 'cxr' | 'pleural';
 
 export function renderRespiratoryToolsView(activeTab: RespToolTab = 'pneumonia'): string {
+  setTimeout(() => {
+    const w = typeof window !== 'undefined' ? (window as any) : {};
+    if (activeTab === 'pneumonia' && w.recalcCurb65) w.recalcCurb65();
+    if (activeTab === 'pleural' && w.recalcPleural) w.recalcPleural();
+  }, 50);
+
   return `
-    <div class="resp-tools-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
+    <div class="resp-tools-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1rem;">
       <!-- Breadcrumb & Header -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -50,13 +55,13 @@ export function renderRespiratoryToolsView(activeTab: RespToolTab = 'pneumonia')
 function renderActiveRespTab(tab: RespToolTab): string {
   switch (tab) {
     case 'pneumonia':
-      return renderPneumoniaContent();
+      return render_pneumonia_studio_View();
     case 'cxr':
-      return renderCxrContent();
+      return render_cxr_studio_View();
     case 'pleural':
-      return renderPleuralContent();
+      return render_pleural_effusion_studio_View();
     default:
-      return renderPneumoniaContent();
+      return render_pneumonia_studio_View();
   }
 }
 

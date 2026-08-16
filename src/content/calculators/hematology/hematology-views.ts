@@ -1,13 +1,15 @@
-/**
- * CliniPortal — Hematology Calculators & Anemia SPA Views (TypeScript)
- * Path: src/content/calculators/hematology/hematology-views.ts
- */
+import { render_dg_thieu_mau_View } from './dg-thieu-mau-view';
+import { render_lab_studio_View } from './lab-studio-view';
 
 export type HematoToolTab = 'thieu-mau' | 'lab-studio';
 
 export function renderHematologyToolsView(activeTab: HematoToolTab = 'thieu-mau'): string {
+  setTimeout(() => {
+    if (activeTab === 'thieu-mau' && window.recalcAnemia) window.recalcAnemia();
+  }, 50);
+
   return `
-    <div class="hemato-tools-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
+    <div class="hemato-tools-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1rem;">
       <!-- Breadcrumb & Header -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -47,11 +49,11 @@ export function renderHematologyToolsView(activeTab: HematoToolTab = 'thieu-mau'
 function renderActiveHematoTab(tab: HematoToolTab): string {
   switch (tab) {
     case 'thieu-mau':
-      return renderThieuMauContent();
+      return render_dg_thieu_mau_View();
     case 'lab-studio':
-      return renderLabStudioContent();
+      return render_lab_studio_View();
     default:
-      return renderThieuMauContent();
+      return render_dg_thieu_mau_View();
   }
 }
 

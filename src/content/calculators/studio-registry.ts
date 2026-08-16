@@ -25,7 +25,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['Surviving Sepsis Campaign (SSC 2021/2026)', 'AHA/ACC Shock Consensus'],
     features: ['Multi-Pump Matrix', 'Vector Radar Shock Classification', 'VIS Score Calculation', '1-Click HIS Order'],
     route: '/calculators/van-mach-tro-tim',
-    legacyHtmlFile: 'src/content/calculators/emergency/ql-van-mach-studio.html',
     presets: [
       {
         id: 'septic-shock-std',
@@ -72,7 +71,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['SSC 2021 Guidelines', 'Parkland Formula', 'ADA DKA Protocol'],
     features: ['7 Clinical Scenarios', 'Dynamic Fluid Responsiveness', 'Overload Safety Guard', 'Electrolyte Osmolarity Calc'],
     route: '/calculators/bu-dich',
-    legacyHtmlFile: 'src/content/calculators/emergency/ql-bu-dich-studio.html',
     presets: [
       {
         id: 'sepsis-30ml',
@@ -119,7 +117,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['ARDSNet Protocol', 'Berlin ARDS Definition', 'ATS/ESICM Mechanical Ventilation'],
     features: ['IBW Lung-protective Vt (4-8 mL/kg)', 'Driving Pressure Monitoring (Target < 14 cmH2O)', 'PEEP-FiO2 Titration Matrix', 'RSBI Weaning Calculator'],
     route: '/calculators/quan-ly-may-tho',
-    legacyHtmlFile: 'src/content/calculators/emergency/ql-may-tho.html',
     presets: [
       {
         id: 'severe-ards',
@@ -159,7 +156,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['AHA ACLS 2025/2026 Guidelines', 'ERC Resuscitation Standards'],
     features: ['2-Min CPR Cycle Countdown', 'Shock / Rhythm Check Prompt', '5H & 5T Interactive Differential', 'ROSC Care Checklist'],
     route: '/calculators/acls-resus-studio',
-    legacyHtmlFile: 'src/content/calculators/emergency/acls-resus-studio.html',
     presets: [
       {
         id: 'shockable-vf',
@@ -199,7 +195,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['WHO/IPCS Poisoning Severity Score', 'Rumack-Matthew Nomogram', 'Extrip Dialysis in Poisoning'],
     features: ['Toxidrome Vector Matcher', 'Rumack-Matthew Nomogram Calculator', 'Antidote Dosing Workstation', 'ILE Lipid Resuscitation'],
     route: '/calculators/toxicology-studio',
-    legacyHtmlFile: 'src/content/calculators/emergency/toxicology-studio.html',
     presets: [
       {
         id: 'op-sludge',
@@ -246,7 +241,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['ATLS 10th Edition', 'European Trauma Hemorrhage Guidelines 2023'],
     features: ['ABC Score Calculator', '1:1:1 Blood Component Manager', 'TXA Tranexamic Acid Timing Guard', 'Hypothermia / Acidosis / Coagulopathy Lethal Triad Shield'],
     route: '/calculators/polytrauma-mtp-studio',
-    legacyHtmlFile: 'src/content/calculators/emergency/polytrauma-mtp-studio.html',
     presets: [
       {
         id: 'abc-positive',
@@ -286,7 +280,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['AHA/ASA Ischemic Stroke Guidelines 2026', 'ESO Guidelines'],
     features: ['11-Item NIHSS Interactive Calculator', 'rtPA Dose Calculator (0.9mg/kg)', 'BP Control Target Matrix', 'DAWN / DEFUSE-3 Criteria'],
     route: '/calculators/dg-dot-quy',
-    legacyHtmlFile: 'src/content/calculators/emergency/stroke-pro-studio.html',
     presets: [
       {
         id: 'stroke-golden-hour',
@@ -330,7 +323,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['ESC Arrhythmia Guidelines', 'AHA/ACC Tachycardia / Bradycardia Algorithm'],
     features: ['Canvas 2D Waveform Engine', 'Narrow vs Wide QRS Decision Tree', 'Adenosine Bolus Guide', 'Cardioversion Energy Calculator'],
     route: '/calculators/phan-loai-roi-loan-nhip',
-    legacyHtmlFile: 'src/content/calculators/cardiology/phan-loai-roi-loan-nhip-studio.html',
     presets: [
       {
         id: 'svt-stable',
@@ -374,7 +366,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['Boston Acid-Base Approach', 'Stewart Physicochemical Approach'],
     features: ['Albumin-Corrected Anion Gap', 'Delta-Delta Mixed Disorder Matrix', 'Winter Formula PCO2 Target', 'Bicarbonate Deficit Calculator'],
     route: '/calculators/khi-mau-dong-mach',
-    legacyHtmlFile: 'src/content/calculators/renal/dg-abg-studio.html',
     presets: [
       {
         id: 'dka-hagma',
@@ -414,7 +405,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['European Hyponatremia Guidelines', 'KDIGO Electrolytes Consensus'],
     features: ['Adrogué-Madias Infusion Planner', 'NaCl 3% Hypertonic Rate Guard', 'Hyperkalemia Cardiac Membrane Stabilization', 'Osmolal Gap Calculator'],
     route: '/calculators/electrolyte-studio',
-    legacyHtmlFile: 'src/content/calculators/renal/electrolyte-studio.html',
     presets: [
       {
         id: 'acute-hyponatremia-seizure',
@@ -458,7 +448,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['ATS/IDSA CAP Guidelines', 'BTS Pneumonia Guidelines'],
     features: ['CURB-65 & PSI Multi-Score Engine', 'Site-of-Care Decision Support', 'Empiric Antibiotic Regimen Recommender', 'MRSA / P. aeruginosa Risk Matrix'],
     route: '/calculators/pneumonia-studio',
-    legacyHtmlFile: 'src/content/calculators/respiratory/pneumonia-studio.html',
     presets: [
       {
         id: 'curb-high-risk',
@@ -498,7 +487,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['Standardized Radiology Reporting Protocol', 'ACR Appropriateness Criteria'],
     features: ['Interactive Canvas CTR Caliper Tool', 'ABCDEF Systematic Reading Checklist', 'Pneumothorax Size Estimation', 'Quality Assessment (Inspiration/Rotation)'],
     route: '/calculators/cxr-studio',
-    legacyHtmlFile: 'src/content/calculators/respiratory/cxr-studio.html',
     presets: [
       {
         id: 'ctr-cardiomegaly',
@@ -545,7 +533,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['Surviving Sepsis Campaign (SSC 2021/2026)', 'Sepsis-3 Consensus Definitions'],
     features: ['6-in-1 Multi-Score Screening Engine', '1-Hour Bundle Countdown Timer', 'Dynamic Lactate Clearance Calculator', 'Organ Failure Alert'],
     route: '/calculators/sepsis-studio',
-    legacyHtmlFile: 'src/content/calculators/infectious/sepsis-studio.html',
     presets: [
       {
         id: 'sepsis-sofa-high',
@@ -587,7 +574,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['CLSI M100 Performance Standards', 'EUCAST Clinical Breakpoints 2026'],
     features: ['Interactive Gram Stain Decision Tree', 'Antibiogram S/I/R Matrix', 'MDRO Mechanism Identification', 'De-escalation Recommender'],
     route: '/calculators/microbiology-studio',
-    legacyHtmlFile: 'src/content/calculators/infectious/microbiology-studio.html',
     presets: [
       {
         id: 'gram-neg-esbl',
@@ -631,7 +617,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['AASLD Cirrhosis Guidelines 2026', 'EASL Clinical Practice Guidelines'],
     features: ['Child-Pugh Multi-Parameter Grade (A/B/C)', 'MELD-Na & MELD 3.0 Dynamic Engine', '3-Month Mortality Probability Curve', 'Complication Management Protocols'],
     route: '/calculators/dg-xo-gan-studio',
-    legacyHtmlFile: 'src/content/calculators/gastroenterology/dg-xo-gan-studio.html',
     presets: [
       {
         id: 'decompensated-cirrhosis',
@@ -671,7 +656,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['AASLD Ascites Guidance', 'EASL Ascites Consensus'],
     features: ['SAAG Gradient Calculator', 'Protein Dịch Báng Differential (Transudate vs Exudate)', 'Spironolactone : Furosemide (100mg : 40mg) Titration Engine', 'Large Volume Paracentesis (LVP) Albumin Guard'],
     route: '/calculators/ascites-studio',
-    legacyHtmlFile: 'src/content/calculators/gastroenterology/ascites-studio.html',
     presets: [
       {
         id: 'portal-htn-ascites',
@@ -715,7 +699,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['ADA Standards of Care in Hospital 2026', 'KDIGO Diabetes Management 2024'],
     features: ['Total Daily Dose (TDD) Auto-Splitter', 'Basal-Bolus 50/50 Ratio Manager', 'ICU Insulin Infusion Rate Dynamic Protocol', 'Hypoglycemia Alert & Rescue Protocol (Rule of 15)'],
     route: '/calculators/insulin-studio',
-    legacyHtmlFile: 'src/content/calculators/endocrinology/insulin-studio.html',
     presets: [
       {
         id: 'inpatient-non-icu',
@@ -759,7 +742,6 @@ export const CLINICAL_STUDIOS_REGISTRY: ClinicalStudioManifest[] = [
     ebmGuidelines: ['CLSI Reference Intervals', 'ISTH Coagulation Standards'],
     features: ['Dynamic Laboratory Reference Values', 'Interactive Coagulation Pathway Visualizer', 'Delta Check Warning System', 'Hematology Index Auto-Calculator'],
     route: '/calculators/lab-pro-studio',
-    legacyHtmlFile: 'src/content/calculators/hematology/lab-studio.html',
     presets: [
       {
         id: 'dic-profile',

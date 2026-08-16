@@ -62,7 +62,6 @@ export interface ClinicalStudioManifest {
   ebmGuidelines: string[];
   features: string[];
   route: string;
-  legacyHtmlFile?: string;
   presets: StudioCasePreset[];
   protocols: StudioInterventionProtocol[];
   hisOrderTemplate?: string;

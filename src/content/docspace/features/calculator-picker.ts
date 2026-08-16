@@ -700,7 +700,14 @@ export class CalculatorPicker {
       el.addEventListener('click', () => {
         const id = el.getAttribute('data-id');
         const calc = this.legacyCalculators.find(c => c.id === id);
-        if (calc) this.showClassicIframeView(calc);
+        if (calc) {
+          if (calc.route) {
+            this.close();
+            window.location.hash = calc.route;
+          } else {
+            this.showClassicIframeView(calc);
+          }
+        }
       });
     });
   }

@@ -1,13 +1,22 @@
-/**
- * CliniPortal — Gastroenterology & Nutrition Calculators SPA Views (TypeScript)
- * Path: src/content/calculators/gastroenterology/gastro-views.ts
- */
+import { render_dg_xo_gan_studio_View } from './dg-xo-gan-studio-view';
+import { render_dg_dinh_duong_noi_tru_View } from './dg-dinh-duong-noi-tru-view';
+import { render_ascites_studio_View } from './ascites-studio-view';
+import { render_dg_xhth_View } from './dg-xhth-view';
+import { render_dg_ptnc_hcc_View } from './dg-ptnc-hcc-view';
 
 export type GastroToolTab = 'xo-gan' | 'dinh-duong' | 'ascites' | 'ptnc-hcc' | 'xhth';
 
 export function renderGastroToolsView(activeTab: GastroToolTab = 'xo-gan'): string {
+  setTimeout(() => {
+    const w = typeof window !== 'undefined' ? (window as any) : {};
+    if (activeTab === 'xo-gan' && w.recalcCirrhosis) w.recalcCirrhosis();
+    if (activeTab === 'dinh-duong' && (w.recalcNutrition || w.recalcNutri)) (w.recalcNutrition || w.recalcNutri)();
+    if (activeTab === 'ascites' && w.recalcAscites) w.recalcAscites();
+    if (activeTab === 'xhth' && w.recalcGbs) w.recalcGbs();
+  }, 50);
+
   return `
-    <div class="gastro-tools-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
+    <div class="gastro-tools-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1rem;">
       <!-- Breadcrumb & Header -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -56,17 +65,17 @@ export function renderGastroToolsView(activeTab: GastroToolTab = 'xo-gan'): stri
 function renderActiveGastroTab(tab: GastroToolTab): string {
   switch (tab) {
     case 'xo-gan':
-      return renderXoGanContent();
+      return render_dg_xo_gan_studio_View();
     case 'dinh-duong':
-      return renderDinhDuongContent();
+      return render_dg_dinh_duong_noi_tru_View();
     case 'ascites':
-      return renderAscitesContent();
+      return render_ascites_studio_View();
     case 'xhth':
-      return renderXhthContent();
+      return render_dg_xhth_View();
     case 'ptnc-hcc':
-      return renderHccContent();
+      return render_dg_ptnc_hcc_View();
     default:
-      return renderXoGanContent();
+      return render_dg_xo_gan_studio_View();
   }
 }
 

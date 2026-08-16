@@ -1,13 +1,21 @@
-/**
- * CliniPortal — Infectious Disease & Sepsis Calculators SPA Views (TypeScript)
- * Path: src/content/calculators/infectious/infectious-views.ts
- */
+import { render_sepsis_studio_View } from './sepsis-studio-view';
+import { render_chinh_lieu_khang_sinh_View } from './chinh-lieu-khang-sinh-view';
+import { render_ql_vancomycin_View } from './ql-vancomycin-view';
+import { render_microbiology_studio_View } from './microbiology-studio-view';
+
+import { initSepsisStudio } from './sepsis-studio';
+import { initVancomycinStudio } from './ql-vancomycin';
 
 export type InfectToolTab = 'sepsis' | 'chinh-lieu' | 'vancomycin' | 'microbiology';
 
 export function renderInfectiousToolsView(activeTab: InfectToolTab = 'sepsis'): string {
+  setTimeout(() => {
+    if (activeTab === 'sepsis') initSepsisStudio();
+    if (activeTab === 'vancomycin') initVancomycinStudio();
+  }, 50);
+
   return `
-    <div class="infect-tools-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
+    <div class="infect-tools-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1rem;">
       <!-- Breadcrumb & Header -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -53,15 +61,15 @@ export function renderInfectiousToolsView(activeTab: InfectToolTab = 'sepsis'): 
 function renderActiveInfectTab(tab: InfectToolTab): string {
   switch (tab) {
     case 'sepsis':
-      return renderSepsisContent();
+      return render_sepsis_studio_View();
     case 'chinh-lieu':
-      return renderChinhLieuContent();
+      return render_chinh_lieu_khang_sinh_View();
     case 'vancomycin':
-      return renderVancomycinContent();
+      return render_ql_vancomycin_View();
     case 'microbiology':
-      return renderMicrobiologyContent();
+      return render_microbiology_studio_View();
     default:
-      return renderSepsisContent();
+      return render_sepsis_studio_View();
   }
 }
 

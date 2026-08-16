@@ -1,13 +1,23 @@
-/**
- * CliniPortal — Renal & Electrolyte Calculators SPA Views (TypeScript)
- * Path: src/content/calculators/renal/renal-views.ts
- */
+import { render_renal_function_View } from './renal-function-view';
+import { render_dg_abg_studio_View } from './dg-abg-studio-view';
+import { render_electrolyte_studio_View } from './electrolyte-studio-view';
+import { render_dg_nguyen_nhan_aki_View } from './dg-nguyen-nhan-aki-view';
+
+import { initRenalStudio } from './renal-function';
 
 export type RenalToolTab = 'chuc-nang-than' | 'khi-mau' | 'electrolyte' | 'aki-cause';
 
 export function renderRenalToolsView(activeTab: RenalToolTab = 'chuc-nang-than'): string {
+  setTimeout(() => {
+    const w = typeof window !== 'undefined' ? (window as any) : {};
+    if (activeTab === 'chuc-nang-than') initRenalStudio();
+    if (activeTab === 'khi-mau' && (w.recalcAbg || w.calcAg)) (w.recalcAbg || w.calcAg)();
+    if (activeTab === 'electrolyte' && w.recalcElectrolyte) w.recalcElectrolyte();
+    if (activeTab === 'aki-cause' && w.recalcAki) w.recalcAki();
+  }, 50);
+
   return `
-    <div class="renal-tools-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
+    <div class="renal-tools-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1rem;">
       <!-- Breadcrumb & Header -->
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div>
@@ -53,15 +63,15 @@ export function renderRenalToolsView(activeTab: RenalToolTab = 'chuc-nang-than')
 function renderActiveRenalTab(tab: RenalToolTab): string {
   switch (tab) {
     case 'chuc-nang-than':
-      return renderChucNangThanContent();
+      return render_renal_function_View();
     case 'khi-mau':
-      return renderKhiMauContent();
+      return render_dg_abg_studio_View();
     case 'electrolyte':
-      return renderElectrolyteContent();
+      return render_electrolyte_studio_View();
     case 'aki-cause':
-      return renderAkiCauseContent();
+      return render_dg_nguyen_nhan_aki_View();
     default:
-      return renderChucNangThanContent();
+      return render_renal_function_View();
   }
 }
 
