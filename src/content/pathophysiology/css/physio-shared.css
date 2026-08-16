@@ -45,6 +45,42 @@
 }
 
 /* 1.5 CLINICAL & MEDICAL HEADINGS SYSTEM (H1, H2, H3, H4) */
+.chapter-header,
+.biochem-article-header,
+.physio-article-header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+  color: #ffffff;
+  padding: 2.25rem 2rem;
+  border-radius: 16px;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .chapter-header,
+[data-theme="dark"] .biochem-article-header,
+[data-theme="dark"] .physio-article-header {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+}
+
+.physio-badge,
+.biochem-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
 h1.article-title,
 .chapter-header h1,
 .biochem-article-header h1,
@@ -59,9 +95,21 @@ h1.article-title,
   margin: 0.5rem 0 1rem 0;
 }
 
+.chapter-header h1,
 .biochem-article-header h1,
-.chapter-header.gradient-header h1 {
+.chapter-header.gradient-header h1,
+.physio-article-header h1 {
   color: #ffffff !important;
+}
+
+.chapter-header p,
+.biochem-article-header p,
+.physio-article-header p {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 960px;
 }
 
 /* H2 Section Titles */

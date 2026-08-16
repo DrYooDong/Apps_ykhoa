@@ -64,10 +64,10 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
   }
 
   return `
-    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="physio-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding-bottom: 3.5rem; transition: all 0.25s ease;">
+    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="physio-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding-top: 84px; padding-bottom: 3.5rem; transition: all 0.25s ease;">
       
-      <!-- TOP CONTROL & BREADCRUMB PRO TOOLBAR -->
-      <header class="guideline-reader-toolbar" style="position: sticky; top: 0; z-index: 185; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border, #e2e8f0); padding: 0.65rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04);">
+      <!-- TOP CONTROL & BREADCRUMB PRO TOOLBAR (KHÔNG ĐÓNG BĂNG KHI CUỘN) -->
+      <header class="guideline-reader-toolbar" style="position: relative; z-index: 10; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border, #e2e8f0); padding: 0.65rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 1.25rem; border-radius: 12px;">
         
         <!-- Breadcrumb & Document Info -->
         <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--color-text-muted, #64748b); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 240px;">
@@ -275,28 +275,133 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
     inlineStyles += s.textContent || '';
   });
 
-  // Remove legacy placeholders, duplicate headers, and external stylesheet links
-  doc.querySelectorAll('#header-placeholder, #footer-placeholder, .topnav, link[rel="stylesheet"], clini-header, clini-footer').forEach(el => el.remove());
+  // Remove legacy placeholders, sidebars, breadcrumbs, and external stylesheet links
+  doc.querySelectorAll(
+    '#header-placeholder, #footer-placeholder, .topnav, link[rel="stylesheet"], clini-header, clini-footer, .sidebar-overlay, .app-sidebar, clini-breadcrumb, .chapter-navigation, .toc-sidebar, #tocContainer, .toc-card, .toc-box'
+  ).forEach(el => el.remove());
+
+  // Unwrap legacy wrappers (.app-container, .main-wrapper, .visual-container)
+  const legacyWrappers = doc.querySelectorAll('.app-container, .main-wrapper, .visual-container');
+  legacyWrappers.forEach(wrap => {
+    if (wrap.parentNode) {
+      while (wrap.firstChild) {
+        wrap.parentNode.insertBefore(wrap.firstChild, wrap);
+      }
+      wrap.remove();
+    }
+  });
+
+  // Ensure content is wrapped in .physio-article-container
+  let container = doc.querySelector('.physio-article-container');
+  if (!container && doc.body) {
+    const newContainer = doc.createElement('div');
+    newContainer.className = 'physio-article-container';
+    while (doc.body.firstChild) {
+      newContainer.appendChild(doc.body.firstChild);
+    }
+    doc.body.appendChild(newContainer);
+    container = newContainer;
+  }
+
+  // Modernize Chapter Header Card
+  const chapterHeader = doc.querySelector('.chapter-header, .biochem-article-header, .physio-article-header');
+  if (chapterHeader) {
+    chapterHeader.classList.add('chapter-header', 'gradient-header');
+    if (!chapterHeader.querySelector('.physio-badge, .biochem-badge')) {
+      const badge = doc.createElement('span');
+      badge.className = 'physio-badge';
+      badge.innerHTML = `<i class="fa-solid fa-heart-pulse"></i> ${isCaseStudy ? 'Cơ Chế Bệnh Sinh' : (isBiochem ? 'Hóa Sinh Y Học' : partName)}`;
+      const h1 = chapterHeader.querySelector('h1');
+      if (h1) {
+        chapterHeader.insertBefore(badge, h1);
+      } else {
+        chapterHeader.prepend(badge);
+      }
+    }
+  }
+
+  // Icon palette for section headers
+  const icons = [
+    'fa-layer-group', 'fa-heart-pulse', 'fa-flask-vial', 'fa-shapes',
+    'fa-border-all', 'fa-circle-nodes', 'fa-route', 'fa-stethoscope',
+    'fa-vials', 'fa-dna', 'fa-book-medical', 'fa-shield-halved'
+  ];
+
+  // Modernize all H2 elements with section-title class, IDs, and icons
+  const h2Elements = Array.from(doc.querySelectorAll('h2'));
+  h2Elements.forEach((h2, idx) => {
+    h2.classList.add('section-title');
+    let secId = h2.getAttribute('id');
+    if (!secId) {
+      secId = `sec-${idx + 1}`;
+      h2.setAttribute('id', secId);
+    }
+    const parentSec = h2.closest('.article-section, .physio-content');
+    if (parentSec && !parentSec.getAttribute('id')) {
+      parentSec.setAttribute('id', secId);
+    }
+
+    if (!h2.querySelector('i')) {
+      const iconEl = doc.createElement('i');
+      iconEl.className = `fa-solid ${icons[idx % icons.length]}`;
+      h2.prepend(iconEl);
+    }
+  });
+
+  // Build Sticky Pillars Nav Strip if missing and multiple H2 sections exist
+  if (!doc.querySelector('.pillars-nav, .quicknav') && h2Elements.length >= 2) {
+    const navEl = doc.createElement('nav');
+    navEl.className = 'pillars-nav';
+    navEl.setAttribute('aria-label', 'Mục lục bài học nhanh');
+    const navInner = doc.createElement('div');
+    navInner.className = 'pillars-nav-inner';
+
+    h2Elements.forEach((h2, idx) => {
+      const secId = h2.getAttribute('id') || `sec-${idx + 1}`;
+      const rawText = h2.textContent?.trim() || `Phần ${idx + 1}`;
+      const shortText = rawText.replace(/^[0-9IVXLCDM\.\-\s]+/, '').slice(0, 26).trim();
+      const tabLink = doc.createElement('a');
+      tabLink.href = `#${secId}`;
+      tabLink.className = `pillar-tab p-${(idx % 8) + 1}`;
+      const iconClass = icons[idx % icons.length];
+      tabLink.innerHTML = `<i class="fa-solid ${iconClass}"></i> ${idx + 1}. ${shortText || rawText}`;
+      navInner.appendChild(tabLink);
+    });
+
+    navEl.appendChild(navInner);
+
+    if (chapterHeader && chapterHeader.parentNode) {
+      chapterHeader.parentNode.insertBefore(navEl, chapterHeader.nextSibling);
+    } else if (container) {
+      container.insertBefore(navEl, container.firstChild);
+    }
+  }
 
   // Rewrite image sources to valid paths in SPA
   doc.querySelectorAll('img').forEach(img => {
     const src = img.getAttribute('src') || '';
     if (!src) return;
 
+    let targetSrc = src;
     if (src.includes('images/')) {
       const cleanImg = src.replace(/^(\.\.\/)+images\//i, '').replace(/^images\//i, '');
-      img.setAttribute('src', `/src/content/pathophysiology/images/${cleanImg}`);
+      targetSrc = `/src/content/pathophysiology/images/${cleanImg}`;
     } else if (src.startsWith('./') || (!src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:'))) {
       const cleanImg = src.replace(/^\.\//, '');
       if (isCaseStudy) {
-        img.setAttribute('src', `/src/content/pathophysiology/pathophysiology-cases/${cleanImg}`);
+        targetSrc = `/src/content/pathophysiology/pathophysiology-cases/${cleanImg}`;
       } else {
-        img.setAttribute('src', `/src/content/pathophysiology/physiology/${part}/${cleanImg}`);
+        targetSrc = `/src/content/pathophysiology/physiology/${part}/${cleanImg}`;
       }
     }
 
-    // Add fallback onerror handler
-    img.setAttribute('onerror', "if(!this.dataset.tried){this.dataset.tried='1';if(this.src.includes('Phan')){this.src=this.src.replace(/Phan(\\\\d+)/i,'part$1');}else if(this.src.includes('part')){this.src=this.src.replace(/part(\\\\d+)/i,'Phan$1');}else if(this.src.startsWith('/src/')){this.src=this.src.replace('/src/content/pathophysiology/','/');}}");
+    img.setAttribute('src', targetSrc);
+
+    // Add robust fallback handler
+    img.setAttribute(
+      'onerror',
+      `if(!this.dataset.tried){this.dataset.tried='1';const s=this.getAttribute('src')||'';if(s.includes('Phan')){this.src=s.replace(/Phan(\\d+)/i,'part$1');}else if(s.includes('part')){this.src=s.replace(/part(\\d+)/i,'Phan$1');}else{this.style.display='none';const c=this.closest('.image-placeholder-card, .physio-figure, .image-drop-area');if(c){const fb=c.querySelector('.fallback-placeholder');if(fb)fb.style.display='block';}}}`
+    );
   });
 
   // Extract clean article body content
@@ -311,38 +416,383 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
       #physio-article-mount {
         color: var(--color-text, #0f172a);
         line-height: 1.7;
+        font-family: var(--font-body, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
       }
       #physio-article-mount .main-wrapper,
       #physio-article-mount .container,
-      #physio-article-mount .content-area {
+      #physio-article-mount .content-area,
+      #physio-article-mount .visual-container {
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
       }
-      #physio-article-mount h1 {
-        font-size: 1.85rem;
+
+      /* Centered Elegant Card Container */
+      #physio-article-mount .physio-article-container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 2.25rem 2.5rem;
+        background: var(--color-surface, #ffffff);
+        border-radius: 20px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--color-border, #e2e8f0);
+        box-sizing: border-box;
+      }
+
+      [data-theme="dark"] #physio-article-mount .physio-article-container {
+        background: var(--color-surface, #1e293b);
+        border-color: var(--color-border, #334155);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+      }
+
+      @media (max-width: 768px) {
+        #physio-article-mount .physio-article-container {
+          padding: 1.25rem 1rem;
+          border-radius: 12px;
+        }
+      }
+
+      /* Hero Header Gradient Card */
+      #physio-article-mount .chapter-header,
+      #physio-article-mount .biochem-article-header,
+      #physio-article-mount .physio-article-header {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+        color: #ffffff;
+        padding: 2.25rem 2rem;
+        border-radius: 16px;
+        margin-bottom: 1.75rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      #physio-article-mount .chapter-header h1,
+      #physio-article-mount .biochem-article-header h1,
+      #physio-article-mount .physio-article-header h1 {
+        color: #ffffff !important;
+        font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+        font-weight: 800;
+        margin: 0.25rem 0 0.75rem 0;
+        line-height: 1.3;
+      }
+
+      #physio-article-mount .chapter-header p,
+      #physio-article-mount .biochem-article-header p,
+      #physio-article-mount .physio-article-header p {
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+        max-width: 960px;
+      }
+
+      #physio-article-mount .physio-badge,
+      #physio-article-mount .biochem-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(8px);
+        padding: 0.35rem 0.85rem;
+        border-radius: 999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        margin-bottom: 0.85rem;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        text-transform: uppercase;
+        color: #ffffff;
+      }
+
+      /* Sticky Pillars Navigation with Safe Top Offset */
+      #physio-article-mount .pillars-nav,
+      #physio-article-mount .quicknav {
+        position: sticky !important;
+        top: 80px !important;
+        z-index: 150 !important;
+        background: var(--color-surface, #ffffff);
+        border: 1px solid var(--color-border, #e2e8f0);
+        border-radius: 14px;
+        padding: 0.75rem 1rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      }
+
+      @media (max-width: 767px) {
+        #physio-article-mount .pillars-nav,
+        #physio-article-mount .quicknav {
+          top: 60px !important;
+          border-radius: 10px !important;
+          padding: 0.5rem 0.75rem !important;
+          margin-bottom: 1.25rem !important;
+        }
+      }
+
+      #physio-article-mount .pillars-nav-inner {
+        display: flex;
+        gap: 0.6rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #physio-article-mount .pillars-nav-inner::-webkit-scrollbar,
+      #physio-article-mount .quicknav::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      #physio-article-mount .pillars-nav-inner::-webkit-scrollbar-thumb,
+      #physio-article-mount .quicknav::-webkit-scrollbar-thumb {
+        background: var(--color-border, #cbd5e1);
+        border-radius: 4px;
+      }
+
+      #physio-article-mount .pillar-tab,
+      #physio-article-mount .quicknav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.45rem 0.85rem;
+        border-radius: 10px;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--color-text-muted, #64748b);
+        border: 1px solid var(--color-border, #e2e8f0);
+        background: var(--color-bg, #f8fafc);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+
+      #physio-article-mount .pillar-tab:hover,
+      #physio-article-mount .pillar-tab.active,
+      #physio-article-mount .quicknav-link:hover,
+      #physio-article-mount .quicknav-link.active {
+        border-color: var(--color-primary, #0284c7);
+        color: var(--color-primary, #0284c7);
+        background: rgba(2, 132, 199, 0.08);
+        transform: translateY(-1px);
+      }
+
+      #physio-article-mount .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+      #physio-article-mount .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+      #physio-article-mount .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+      #physio-article-mount .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+      #physio-article-mount .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+      #physio-article-mount .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+      #physio-article-mount .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+      #physio-article-mount .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+      /* Medical Image & Illustration Cards */
+      #physio-article-mount .image-placeholder-card,
+      #physio-article-mount .physio-figure {
+        background: var(--color-surface, #ffffff);
+        border: 1px solid var(--color-border, #e2e8f0);
+        border-radius: 14px;
+        padding: 1.25rem;
+        margin: 1.75rem 0;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      }
+
+      #physio-article-mount .image-title {
+        font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--color-primary, #0284c7);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      #physio-article-mount .image-drop-area {
+        background: var(--color-bg, #f8fafc);
+        border: 1.5px dashed rgba(2, 132, 199, 0.3);
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 180px;
+      }
+
+      #physio-article-mount .image-description {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        color: var(--color-text-muted, #64748b);
+        background: rgba(2, 132, 199, 0.04);
+        border-left: 3px solid var(--color-primary, #0284c7);
+        padding: 0.6rem 0.85rem;
+        border-radius: 0 6px 6px 0;
+      }
+
+      #physio-article-mount .fallback-placeholder {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      [data-theme="dark"] #physio-article-mount .image-placeholder-card,
+      [data-theme="dark"] #physio-article-mount .physio-figure {
+        background: var(--color-surface, #1e293b);
+        border-color: var(--color-border, #334155);
+      }
+
+      [data-theme="dark"] #physio-article-mount .image-drop-area {
+        background: var(--color-surface-2, #0f172a);
+        border-color: rgba(56, 189, 248, 0.3);
+      }
+
+      [data-theme="dark"] #physio-article-mount .image-title {
+        color: #38bdf8;
+      }
+
+      /* Section & Headings */
+      #physio-article-mount .article-section,
+      #physio-article-mount .physio-content {
+        scroll-margin-top: 80px;
+        margin-bottom: 2.25rem;
+      }
+
+      #physio-article-mount h2,
+      #physio-article-mount .section-title {
+        font-family: var(--font-display, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif);
+        font-size: 1.35rem;
         font-weight: 800;
         color: var(--color-primary, #0284c7);
-        margin-top: 0.5rem;
-        margin-bottom: 1rem;
+        border-bottom: 2px solid rgba(var(--color-primary-rgb, 2, 132, 199), 0.2);
+        padding-bottom: 0.5rem;
+        margin-top: 2.25rem;
+        margin-bottom: 1.15rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        scroll-margin-top: 80px;
       }
-      #physio-article-mount h2 {
-        font-size: 1.4rem;
+      #physio-article-mount h2 i,
+      #physio-article-mount .section-title i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+        background: rgba(var(--color-primary-rgb, 2, 132, 199), 0.12);
+        color: var(--color-primary, #0284c7);
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      #physio-article-mount h3,
+      #physio-article-mount .subsection-title {
+        font-family: var(--font-display, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif);
+        font-size: 1.12rem;
         font-weight: 700;
-        color: var(--color-text, #0f172a);
-        border-bottom: 2px solid var(--color-border, #e2e8f0);
-        padding-bottom: 0.4rem;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
+        color: var(--color-primary, #0284c7);
+        margin-top: 1.65rem;
+        margin-bottom: 0.85rem;
+        padding: 0.45rem 0.85rem;
+        border-left: 4px solid var(--color-primary, #0284c7);
+        background: linear-gradient(90deg, rgba(var(--color-primary-rgb, 2, 132, 199), 0.08) 0%, transparent 100%);
+        border-radius: 0 8px 8px 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
       }
-      #physio-article-mount h3 {
-        font-size: 1.15rem;
+      #physio-article-mount h4 {
+        font-size: 1rem;
         font-weight: 700;
-        color: var(--color-text, #1e293b);
-        margin-top: 1.5rem;
-        margin-bottom: 0.75rem;
+        color: var(--color-primary, #0284c7);
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
       }
+
+      /* Core Boxes & Cards */
+      #physio-article-mount .key-concept {
+        background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 100%);
+        border-left: 4px solid var(--color-primary, #0284c7);
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 12px 12px 0;
+        margin: 1.5rem 0;
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+
+      #physio-article-mount .reaction-box {
+        background: rgba(139, 92, 246, 0.08);
+        border-left: 4px solid #8b5cf6;
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 12px 12px 0;
+        margin: 1.5rem 0;
+      }
+
+      #physio-article-mount .pearl-box {
+        background: rgba(245, 158, 11, 0.08);
+        border-left: 4px solid #f59e0b;
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 12px 12px 0;
+        margin: 1.5rem 0;
+      }
+
+      #physio-article-mount .danger-box {
+        background: rgba(239, 68, 68, 0.08);
+        border-left: 4px solid #ef4444;
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 12px 12px 0;
+        margin: 1.5rem 0;
+      }
+
+      #physio-article-mount .info-box {
+        background: rgba(2, 132, 199, 0.08);
+        border-left: 4px solid #0284c7;
+        padding: 1.25rem 1.5rem;
+        border-radius: 0 12px 12px 0;
+        margin: 1.5rem 0;
+      }
+
+      #physio-article-mount .concept-grid,
+      #physio-article-mount .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+        margin: 1.5rem 0;
+      }
+
+      #physio-article-mount .concept-card,
+      #physio-article-mount .feature-card {
+        background: var(--color-surface, #ffffff);
+        border: 1px solid var(--color-border, #e2e8f0);
+        border-radius: 12px;
+        padding: 1.25rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        transition: all 0.2s ease;
+      }
+
+      #physio-article-mount .concept-card:hover,
+      #physio-article-mount .feature-card:hover {
+        border-color: var(--color-primary, #0284c7);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(2, 132, 199, 0.08);
+      }
+
+      #physio-article-mount .term-hl {
+        color: var(--color-primary, #0284c7);
+        background: rgba(2, 132, 199, 0.08);
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 700;
+      }
+
+      #physio-article-mount .term-hl-secondary {
+        color: #8b5cf6;
+        background: rgba(139, 92, 246, 0.08);
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 700;
+      }
+
       #physio-article-mount table {
         width: 100%;
         border-collapse: collapse;
@@ -351,6 +801,7 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
         border-radius: 8px;
         overflow: hidden;
         border: 1px solid var(--color-border, #e2e8f0);
+        font-size: 0.92rem;
       }
       #physio-article-mount th,
       #physio-article-mount td {
@@ -362,26 +813,99 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
         font-weight: 700;
         color: var(--color-text, #0f172a);
       }
-      #physio-article-mount .clinical-callout,
-      #physio-article-mount .note-box,
-      #physio-article-mount .alert {
-        background: var(--color-surface-offset, #f8fafc);
-        border-left: 4px solid var(--color-primary, #0284c7);
-        padding: 1rem 1.25rem;
-        border-radius: 6px;
-        margin: 1.5rem 0;
+
+      /* Dark Mode Adaptations */
+      [data-theme="dark"] #physio-article-mount .chapter-header,
+      [data-theme="dark"] #physio-article-mount .biochem-article-header,
+      [data-theme="dark"] #physio-article-mount .physio-article-header {
+        background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
       }
-      #physio-article-mount img,
-      #physio-article-mount svg {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
+
+      [data-theme="dark"] #physio-article-mount .pillars-nav,
+      [data-theme="dark"] #physio-article-mount .quicknav {
+        background: var(--color-surface, #1e293b);
+        border-color: var(--color-border, #334155);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      }
+
+      [data-theme="dark"] #physio-article-mount .pillar-tab,
+      [data-theme="dark"] #physio-article-mount .quicknav-link {
+        background: var(--color-surface-2, #0f172a);
+        border-color: var(--color-border, #334155);
+        color: var(--color-text-muted, #94a3b8);
+      }
+
+      [data-theme="dark"] #physio-article-mount .pillar-tab:hover,
+      [data-theme="dark"] #physio-article-mount .pillar-tab.active,
+      [data-theme="dark"] #physio-article-mount .quicknav-link:hover,
+      [data-theme="dark"] #physio-article-mount .quicknav-link.active {
+        border-color: #38bdf8;
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.12);
+      }
+
+      [data-theme="dark"] #physio-article-mount h2,
+      [data-theme="dark"] #physio-article-mount .section-title,
+      [data-theme="dark"] #physio-article-mount h3,
+      [data-theme="dark"] #physio-article-mount .subsection-title {
+        color: #38bdf8;
+      }
+
+      [data-theme="dark"] #physio-article-mount h2 i,
+      [data-theme="dark"] #physio-article-mount .section-title i {
+        background: rgba(56, 189, 248, 0.15);
+        color: #38bdf8;
+      }
+
+      [data-theme="dark"] #physio-article-mount h3,
+      [data-theme="dark"] #physio-article-mount .subsection-title {
+        border-left-color: #38bdf8;
+        background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+      }
+
+      [data-theme="dark"] #physio-article-mount .concept-card,
+      [data-theme="dark"] #physio-article-mount .feature-card {
+        background: var(--color-surface, #1e293b);
+        border-color: var(--color-border, #334155);
+      }
+
+      [data-theme="dark"] #physio-article-mount table {
+        background: var(--color-surface, #1e293b);
+        border-color: var(--color-border, #334155);
+      }
+
+      [data-theme="dark"] #physio-article-mount th {
+        background: var(--color-surface-2, #0f172a);
+        color: var(--color-text, #f8fafc);
+        border-color: var(--color-border, #334155);
+      }
+
+      [data-theme="dark"] #physio-article-mount td {
+        border-color: var(--color-border, #334155);
       }
     </style>
     <div class="physio-injected-content">
       ${articleHtml}
     </div>
   `;
+
+  // 5. Ensure In-Page Anchors & QuickNav Smooth Scrolling without breaking SPA Router
+  mountEl.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#') && href.length > 1 && !href.startsWith('#/')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetId = href.replace(/^#/, '');
+        const targetEl = document.getElementById(targetId) || mountEl.querySelector(href);
+        if (targetEl) {
+          mountEl.querySelectorAll('.quicknav-link, .quickmenu-item, .pillar-tab, .toc-item').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
 
   // Hydrate Scripts if any
   const scripts = doc.querySelectorAll('script');

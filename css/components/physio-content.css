@@ -2,6 +2,101 @@
    PHYSIOLOGY KNOWLEDGE CONTENT TYPOGRAPHY & LAYOUT (physio-content.css)
    ============================================================ */
 
+/* Headings Typography */
+h1.physio-article-title,
+.physio-article-container h1,
+.physio-content h1 {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  color: var(--color-primary, #0284c7);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+h2.section-title,
+.section-title,
+.article-section h2,
+.physio-content h2,
+.visual-container h2 {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--color-primary, #0284c7);
+  margin: 2.25rem 0 1.25rem 0;
+  padding-bottom: 0.65rem;
+  border-bottom: 2px solid rgba(var(--color-primary-rgb, 2, 132, 199), 0.2);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  position: relative;
+}
+
+h2.section-title i,
+.section-title i,
+.article-section h2 i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 1.05rem;
+  background: rgba(var(--color-primary-rgb, 2, 132, 199), 0.12);
+  color: var(--color-primary, #0284c7);
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+h3.subsection-title,
+.subsection-title,
+.article-section h3,
+.physio-content h3,
+.visual-container h3 {
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--color-primary, #0284c7);
+  margin: 1.85rem 0 1rem 0;
+  padding: 0.5rem 0.95rem;
+  border-left: 4px solid var(--color-primary, #0284c7);
+  background: linear-gradient(90deg, rgba(var(--color-primary-rgb, 2, 132, 199), 0.08) 0%, transparent 100%);
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] h2.section-title,
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .article-section h2,
+[data-theme="dark"] h3.subsection-title,
+[data-theme="dark"] .subsection-title,
+[data-theme="dark"] .article-section h3 {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] h2.section-title i,
+[data-theme="dark"] .section-title i,
+[data-theme="dark"] .article-section h2 i {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+[data-theme="dark"] h3.subsection-title,
+[data-theme="dark"] .subsection-title,
+[data-theme="dark"] .article-section h3 {
+  border-left-color: #38bdf8;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+}
+
 /* Content block spacing */
 .physio-content {
   margin-bottom: 2rem;
@@ -523,6 +618,91 @@
   background: #dc2626;
 }
 
+/* ============================================================
+   PILLARS STICKY NAV STRIP (MỤC LỤC ĐỒNG BỘ KHO GUIDELINES)
+   ============================================================ */
+.pillars-nav,
+.quicknav {
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 150 !important;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
 
+@media (max-width: 767px) {
+  .pillars-nav,
+  .quicknav {
+    top: 60px !important;
+    border-radius: 10px !important;
+    padding: 0.5rem 0.75rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+}
 
+.pillars-nav-inner {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
+.pillars-nav-inner::-webkit-scrollbar {
+  height: 4px;
+}
+
+.pillars-nav-inner::-webkit-scrollbar-thumb {
+  background: var(--color-border, #cbd5e1);
+  border-radius: 4px;
+}
+
+.pillar-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 10px;
+  font-family: var(--font-display, 'Plus Jakarta Sans', -apple-system, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #64748b);
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-bg, #f8fafc);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.pillar-tab:hover,
+.pillar-tab.active {
+  border-color: var(--color-primary, #0284c7);
+  color: var(--color-primary, #0284c7);
+  background: rgba(2, 132, 199, 0.08);
+  transform: translateY(-1px);
+}
+
+.pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+.pillar-tab.p-2 { border-left: 4px solid #10b981; }
+.pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+.pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+.pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+.pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+.pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+.pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+[data-theme="dark"] .pillars-nav,
+[data-theme="dark"] .quicknav {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .pillar-tab {
+  background: var(--color-surface-2, #0f172a);
+  border-color: var(--color-border, #334155);
+  color: #94a3b8;
+}

@@ -26,10 +26,10 @@ export function renderGuidelineReader(slug: string): string {
   }, 30);
 
   return `
-    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="guideline-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding-bottom: 3.5rem; transition: all 0.25s ease;">
+    <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="guideline-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding-top: 84px; padding-bottom: 3.5rem; transition: all 0.25s ease;">
       
-      <!-- TOP CONTROL & BREADCRUMB PRO TOOLBAR -->
-      <header class="guideline-reader-toolbar" style="position: sticky; top: 0; z-index: 185; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border, #e2e8f0); padding: 0.65rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04);">
+      <!-- TOP CONTROL & BREADCRUMB PRO TOOLBAR (KHÔNG ĐÓNG BĂNG KHI CUỘN) -->
+      <header class="guideline-reader-toolbar" style="position: relative; z-index: 10; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border, #e2e8f0); padding: 0.65rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 1.25rem; border-radius: 12px;">
         
         <!-- Breadcrumb & Document Info -->
         <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--color-text-muted, #64748b); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 240px;">
@@ -260,9 +260,17 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
       }
       .guideline-injected-article .quicknav,
       .guideline-injected-article .pillars-nav {
-        top: 54px !important;
+        position: sticky !important;
+        top: 80px !important;
+        z-index: 150 !important;
         background: var(--color-surface, #ffffff);
         box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      }
+      @media (max-width: 767px) {
+        .guideline-injected-article .quicknav,
+        .guideline-injected-article .pillars-nav {
+          top: 60px !important;
+        }
       }
       .guideline-injected-article .sec-card {
         margin-bottom: 2rem;
@@ -383,14 +391,18 @@ function hydrateGuidelineScripts(doc: Document, mountEl: HTMLElement): void {
     }
   });
 
-  // 5. Ensure QuickNav Smooth Scrolling
-  mountEl.querySelectorAll('.quicknav-link, .pillar-tab').forEach(link => {
+  // 5. Ensure In-Page Anchors & QuickNav Smooth Scrolling without breaking SPA Router
+  mountEl.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      if (href && href.startsWith('#sec-')) {
+      if (href && href.startsWith('#') && href.length > 1 && !href.startsWith('#/')) {
         e.preventDefault();
-        const targetEl = document.querySelector(href);
+        e.stopPropagation();
+        const targetId = href.replace(/^#/, '');
+        const targetEl = document.getElementById(targetId) || mountEl.querySelector(href);
         if (targetEl) {
+          mountEl.querySelectorAll('.quicknav-link, .quickmenu-item, .pillar-tab, .toc-item').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
           targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }

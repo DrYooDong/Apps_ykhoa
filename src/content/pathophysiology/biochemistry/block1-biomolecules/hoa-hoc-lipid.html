@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHEM-03: Hóa học Lipid, Lipoprotein Màng & Vận Chuyển Chuyển Hóa – Hóa Sinh Y Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../../css/reset.css">
     <link rel="stylesheet" href="../../../../css/main.css">
     <link rel="stylesheet" href="../../../../css/components/physio-content.css">
@@ -61,56 +65,167 @@
             letter-spacing: 0.5px;
         }
 
-        .toc-box {
+        /* PILLARS STICKY NAV STRIP (MỤC LỤC ĐỒNG BỘ KHO GUIDELINES) */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
             background: var(--color-surface, #ffffff);
             border: 1px solid var(--color-border, #e2e8f0);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
         }
 
-        .toc-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--color-primary, #0284c7);
-            margin-bottom: 1rem;
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 0.75rem;
-        }
-
-        .toc-link {
-            display: flex;
-            align-items: center;
             gap: 0.6rem;
-            padding: 0.6rem 0.85rem;
-            background: var(--color-bg, #f8fafc);
-            border-radius: 8px;
-            color: var(--color-text, #1e293b);
-            text-decoration: none;
-            font-size: 0.925rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
-        .toc-link:hover {
-            background: var(--color-surface, #ffffff);
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
             border-color: var(--color-primary, #0284c7);
             color: var(--color-primary, #0284c7);
-            transform: translateX(4px);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
         }
 
-        .toc-link i {
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+        }
+
+        /* HEADINGS TYPOGRAPHY CÓ MÀU CHUẨN KHO GUIDELINES / CƠ SỞ */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
             color: var(--color-primary, #0284c7);
-            font-size: 0.9rem;
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
         }
 
         .reaction-box {
@@ -269,18 +384,17 @@
             </p>
         </header>
 
-        <!-- TABLE OF CONTENTS -->
-        <nav class="toc-box" aria-label="Mục lục bài học">
-            <div class="toc-title"><i class="fa-solid fa-list-ul"></i> Mục Lục Bài Học</div>
-            <div class="toc-grid">
-                <a href="#sec-1" class="toc-link"><i class="fa-solid fa-circle-chevron-right"></i> 1. Đại Cương & Phân Loại Lipid</a>
-                <a href="#sec-2" class="toc-link"><i class="fa-solid fa-circle-chevron-right"></i> 2. Hóa Học Acid Béo & Glycerid</a>
-                <a href="#sec-3" class="toc-link"><i class="fa-solid fa-circle-chevron-right"></i> 3. Phospholipid, Sphingolipid & Cholesterol</a>
-                <a href="#sec-4" class="toc-link"><i class="fa-solid fa-circle-chevron-right"></i> 4. Màng Sinh Học & Mô Hình Khảm Động</a>
-                <a href="#sec-5" class="toc-link"><i class="fa-solid fa-circle-chevron-right"></i> 5. Hệ Thống Lipoprotein Huyết Tương</a>
-                <a href="#sec-6" class="toc-link"><i class="fa-solid fa-circle-chevron-right"></i> 6. Con Đường Chuyển Hóa & SREBP/PCSK9</a>
-                <a href="#sec-7" class="toc-link"><i class="fa-solid fa-circle-chevron-right"></i> 7. Rối Loạn Lipoprotein & Bệnh Lý Lâm Sàng</a>
-                <a href="#sec-8" class="toc-link"><i class="fa-solid fa-circle-chevron-right"></i> 8. Chỉ Số Cận Lâm Sàng & Biện Luận</a>
+        <!-- PILLARS STICKY NAV STRIP (MỤC LỤC ĐỒNG BỘ KHO GUIDELINES) -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-layer-group"></i> 1. Đại Cương &amp; Phân Loại</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-flask-vial"></i> 2. Acid Béo &amp; Glycerid</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-shapes"></i> 3. Phospholipid &amp; Cholesterol</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-border-all"></i> 4. Màng Sinh Học Khảm Động</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-circle-nodes"></i> 5. Lipoprotein Huyết Tương</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-route"></i> 6. Con Đường Chuyển Hóa</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-stethoscope"></i> 7. Rối Loạn Lipoprotein</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vials"></i> 8. Cận Lâm Sàng &amp; Biện Luận</a>
             </div>
         </nav>
 
