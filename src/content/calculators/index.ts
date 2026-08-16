@@ -7,6 +7,9 @@ export * from './types';
 export * from './data';
 export * from './renderer';
 export * from './calculators-view';
+export * from './studio-models';
+export * from './studio-registry';
+export * from './studio-view';
 
 // Subspecialty Native SPA Views
 export * from './general/general-views';

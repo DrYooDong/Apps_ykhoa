@@ -964,104 +964,55 @@ export function deleteSoapPatient(profileId: string, id: string): void {
 // SUPABASE SYNC FOR SOAP DIGITAL
 // ─────────────────────────────────────────────
 
+export {
+  getSoapSupabaseConfig,
+  saveSoapSupabaseConfig,
+  testSoapSupabaseConnection,
+  pushSoapPatient,
+  batchPushSoapPatients,
+  pullSoapPatients,
+  deleteSoapPatientRemote,
+  syncSoapBidirectional,
+  type SoapSupabaseConfig,
+  type SyncResult
+} from './storage/supabase-soap';
+
 export interface SupabaseConfig {
   url: string;
   key: string;
 }
 
-export function getSoapSupabaseConfig(): SupabaseConfig {
-  return {
-    url: safeStorageGet('dsp_supabase_url', ''),
-    key: unmaskSecret(safeStorageGet('dsp_supabase_key', ''))
-  };
-}
-
-export function saveSoapSupabaseConfig(url: string, key: string): void {
-  safeStorageSet('dsp_supabase_url', url.trim());
-  safeStorageSet('dsp_supabase_key', maskSecret(key.trim()));
-}
-
 export async function syncSoapToSupabase(patient: SoapPatientRecord): Promise<{ success: boolean; error?: string }> {
-  const config = getSoapSupabaseConfig();
-  if (!config.url || !config.key) return { success: false, error: 'Chưa cấu hình Supabase' };
-
-  try {
-    // Tự động ẩn danh PHI trước khi gửi ra ngoài
-    const redactedPatient = redactSoapRecord(patient);
-
-    const endpoint = `${config.url.replace(/\/$/, '')}/rest/v1/soap_patients`;
-    const body = [{
-      id: redactedPatient.id,
-      doctor_id: getActiveProfileId() || 'default',
-      patient_code: redactedPatient.patientCode,
-      full_name: redactedPatient.fullName,
-      data: redactedPatient,
-      updated_at: new Date().toISOString()
-    }];
-
-    const res = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': config.key,
-        'Authorization': `Bearer ${config.key}`,
-        'Prefer': 'resolution=merge-duplicates'
-      },
-      body: JSON.stringify(body)
-    });
-
-    if (!res.ok) {
-      const errText = await res.text();
-      throw new Error(`HTTP ${res.status}: ${errText}`);
-    }
-    return { success: true };
-  } catch (err: any) {
-    console.warn('[Supabase Sync Error]', err);
-    return { success: false, error: err.message };
-  }
+  const doctorId = getActiveProfileId() || 'default';
+  const { pushSoapPatient } = await import('./storage/supabase-soap');
+  return pushSoapPatient(patient, doctorId);
 }
 
 export async function fetchAllSoapFromSupabase(profileId: string): Promise<{ success: boolean; count?: number; error?: string }> {
-  const config = getSoapSupabaseConfig();
-  if (!config.url || !config.key) return { success: false, error: 'Chưa kết nối Supabase' };
-
-  try {
-    const endpoint = `${config.url.replace(/\/$/, '')}/rest/v1/soap_patients?select=*&order=updated_at.desc`;
-    const res = await fetch(endpoint, {
-      method: 'GET',
-      headers: {
-        'apikey': config.key,
-        'Authorization': `Bearer ${config.key}`
+  const { pullSoapPatients } = await import('./storage/supabase-soap');
+  const res = await pullSoapPatients(profileId);
+  if (!res.success || !res.data) {
+    return { success: false, error: res.error };
+  }
+  
+  const remotePatients = res.data;
+  if (remotePatients.length > 0) {
+    const localPatients = load<SoapPatientRecord>(profileId, 'soaps');
+    const mergedMap = new Map<string, SoapPatientRecord>();
+    
+    localPatients.forEach(p => mergedMap.set(p.id, p));
+    remotePatients.forEach(p => {
+      const local = mergedMap.get(p.id);
+      if (!local || new Date(p.updatedAt).getTime() > new Date(local.updatedAt).getTime()) {
+        mergedMap.set(p.id, p);
       }
     });
 
-    if (!res.ok) {
-      const errText = await res.text();
-      throw new Error(`HTTP ${res.status}: ${errText}`);
-    }
-    const rows = await res.json();
-    const remotePatients: SoapPatientRecord[] = rows.map((r: any) => r.data).filter(Boolean);
-
-    if (remotePatients.length > 0) {
-      const localPatients = load<SoapPatientRecord>(profileId, 'soaps');
-      const mergedMap = new Map<string, SoapPatientRecord>();
-      
-      localPatients.forEach(p => mergedMap.set(p.id, p));
-      remotePatients.forEach(p => {
-        const local = mergedMap.get(p.id);
-        if (!local || new Date(p.updatedAt).getTime() > new Date(local.updatedAt).getTime()) {
-          mergedMap.set(p.id, p);
-        }
-      });
-
-      const mergedList = Array.from(mergedMap.values());
-      save(profileId, 'soaps', mergedList);
-      return { success: true, count: remotePatients.length };
-    }
-    return { success: true, count: 0 };
-  } catch (err: any) {
-    return { success: false, error: err.message };
+    const mergedList = Array.from(mergedMap.values());
+    save(profileId, 'soaps', mergedList);
+    return { success: true, count: remotePatients.length };
   }
+  return { success: true, count: 0 };
 }
 
 // ─────────────────────────────────────────────

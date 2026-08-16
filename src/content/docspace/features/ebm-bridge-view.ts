@@ -1,9 +1,3 @@
-/**
- * DocSpace — EBM Bridge 2.0 (Cluster 5 - E3)
- * Kết nối tra cứu Y học chứng cứ hai chiều (Bidirectional Contextual Evidence Pull).
- * Hỗ trợ gợi ý guideline thời gian thực khi viết SOAP và chèn khuyến cáo trực tiếp vào bệnh án.
- */
-
 import { saveProtocol, getActiveProfile } from '../storage';
 
 export interface EbmSearchOptions {
@@ -112,12 +106,13 @@ export class EbmBridge {
         <div id="ebmBridgeContent" style="padding:20px; overflow-y:auto; flex:1;">
           <div style="text-align:center; padding:40px; color:var(--color-text-muted);">
             <i class="fa-solid fa-spinner fa-spin" style="font-size:24px; margin-bottom:8px;"></i>
-            <div>Đang tải dữ liệu EBM Guidelines...</div>
+            <div>Đang nạp dữ liệu từ Kho Guidelines...</div>
           </div>
         </div>
 
       </div>
     `;
+
     this.modalEl.style.display = 'flex';
 
     document.getElementById('btnCloseEbmBridge')?.addEventListener('click', () => this.close());
@@ -132,7 +127,6 @@ export class EbmBridge {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
         const val = searchInput.value.trim();
-        // Xóa trạng thái active của các chip khi gõ tay
         this.modalEl.querySelectorAll('.js-ebm-chip').forEach(c => c.classList.remove('active'));
         this.performSearch(val);
       }, 180);
@@ -172,12 +166,60 @@ export class EbmBridge {
     this.modalEl.innerHTML = '';
   }
 
+  public getStudiesList(): any[] {
+    const customLocal = (() => {
+      try {
+        const s = localStorage.getItem('cliniportal_custom_studies');
+        return s ? JSON.parse(s) : [];
+      } catch { return []; }
+    })();
+    const windowStudies = (window as any).studies || [];
+    const combined = [...customLocal, ...windowStudies];
+    const seen = new Set<string>();
+    const list: any[] = [];
+    combined.forEach(s => {
+      if (s && s.id && !seen.has(s.id)) {
+        seen.add(s.id);
+        list.push(s);
+      }
+    });
+    return list;
+  }
+
   public async loadEbmData(): Promise<void> {
-    if (typeof (window as any).studies !== 'undefined' && Array.isArray((window as any).studies) && (window as any).studies.length > 0) {
-      return;
+    let studies = this.getStudiesList();
+
+    // Nếu localStorage chưa có, tự động kéo từ Supabase nếu đã có config
+    if (studies.length === 0) {
+      const sbUrl = localStorage.getItem('supabaseUrl') || localStorage.getItem('dsp_soap_supabase_url') || localStorage.getItem('dsp_supabase_url');
+      const sbKey = localStorage.getItem('supabaseKey') || localStorage.getItem('dsp_soap_supabase_key') || localStorage.getItem('dsp_supabase_key');
+      
+      if (sbUrl && sbKey) {
+        try {
+          const endpoint = `${sbUrl.replace(/\/+$/, '')}/rest/v1/clinical_guidelines?select=*`;
+          const res = await fetch(endpoint, {
+            headers: { 'apikey': sbKey, 'Authorization': `Bearer ${sbKey}` }
+          });
+          if (res.ok) {
+            const remote = await res.json();
+            if (Array.isArray(remote) && remote.length > 0) {
+              studies = remote;
+              if (typeof window !== 'undefined') {
+                (window as any).studies = studies;
+              }
+              try {
+                localStorage.setItem('cliniportal_custom_studies', JSON.stringify(studies));
+              } catch {}
+            }
+          }
+        } catch (e) {
+          console.warn('[EBM Bridge] Không thể kết nối Supabase:', e);
+        }
+      }
     }
-    if (typeof (window as any).loadStudies === 'function') {
-      (window as any).loadStudies();
+
+    if (typeof window !== 'undefined') {
+      (window as any).studies = studies;
     }
   }
 
@@ -186,7 +228,7 @@ export class EbmBridge {
    */
   public async getSmartSuggestions(query: string, icd10Codes: string[] = []): Promise<any[]> {
     await this.loadEbmData();
-    const studies = (window as any).CliniPortalSync ? (window as any).CliniPortalSync.getStudies() : ((window as any).SAMPLE_STUDIES || []);
+    const studies = this.getStudiesList();
     if (!studies.length || !query) return [];
 
     const icdRegex = /[A-Z][0-9]{2}(?:\.[0-9]+)?/gi;
@@ -236,12 +278,12 @@ export class EbmBridge {
     const contentEl = document.getElementById('ebmBridgeContent');
     if (!contentEl) return;
 
-    const studies = (window as any).CliniPortalSync ? (window as any).CliniPortalSync.getStudies() : ((window as any).SAMPLE_STUDIES || []);
+    const studies = this.getStudiesList();
     
     const SPECIALTY_KEYWORD_MAP: Record<string, string[]> = {
       'cardio': ['tim mạch', 'tim', 'rung nhĩ', 'suy tim', 'tăng huyết áp', 'đột quỵ', 'ngất', 'mạch vành', 'af', 'hypertension', 'syncope'],
       'pulmo': ['hô hấp', 'phổi', 'viêm phổi', 'copd', 'hen', 'asthma', 'mô kẽ', 'ards', 'shh', 'suy hô hấp'],
-      'icu': ['hồi sức', 'cấp cứu', 'sepsis', 'sốc', 'nhiễm khuẩn huyết', 'sốc tim', 'ards', 'thở máy', 'tăng áp', 'icu'],
+      'icu': ['hồi sức', 'cấp cứu', 'sepsis', 'sốc', 'nhiễm khuẩn huyết', 'sốc tim', 'ards', 'thở máy', 'tăng áp', 'icu', 'nặng'],
       'endo': ['nội tiết', 'đái tháo đường', 'tiểu đường', 'diabetes', 'bão giáp', 'tuyến giáp', 'bàn chân', 'hba1c'],
       'renal': ['thận', 'suy thận', 'ckd', 'aki', 'kdigo', 'tiết niệu', 'creatinine', 'lọc máu'],
       'infect': ['truyền nhiễm', 'nhiễm khuẩn', 'viêm gan', 'sốt rét', 'sốt xuất huyết', 'dengue', 'cúm', 'sởi', 'covid', 'lao', 'kháng sinh', 'amr', 'vi nấm'],
@@ -251,86 +293,138 @@ export class EbmBridge {
 
     let results: any[] = [];
 
-    if (query === 'practice-changing') {
+    if (!query || query.trim() === '') {
+      results = [...studies];
+    } else if (query === 'practice-changing') {
       results = studies.filter((s: any) => s.impact === 'practice-changing');
     } else {
-      const lowerQuery = query.toLowerCase().replace(/icd-10|icd|mã|bệnh|khám|chẩn đoán/gi, ' ').trim();
-      const keywords = lowerQuery.split(/[\s,\.\-]+/).filter(k => k.length >= 2);
+      const lowerQuery = query.toLowerCase()
+        .replace(/icd-10|icd|mã|bệnh|khám|chẩn đoán|biện luận|mức độ|đáp ứng|điều trị|theo dõi/gi, ' ')
+        .trim();
 
       // 1. Trích xuất tất cả các mã ICD-10 từ đoạn văn bản
       const icdRegex = /[A-Z][0-9]{2}(?:\.[0-9]+)?/gi;
       const foundCodes = Array.from(new Set((query.match(icdRegex) || []).map(c => c.toUpperCase())));
 
-      const seenIds = new Set<string>();
+      // 2. Trích xuất các cụm từ chẩn đoán y khoa tiêu biểu
+      const KEY_MEDICAL_PHRASES = [
+        'viêm phổi', 'suy hô hấp', 'copd', 'hen phế quản', 'ards',
+        'sepsis', 'sốc nhiễm khuẩn', 'sốc tim', 'kháng sinh',
+        'rung nhĩ', 'suy tim', 'tăng huyết áp', 'ngất', 'đột quỵ',
+        'hạ kali', 'tăng kali', 'rối loạn điện giải', 'suy thận', 'bệnh thận mạn', 'ckd', 'aki',
+        'đái tháo đường', 'bão giáp', 'hạ đường huyết',
+        'viêm gan b', 'viêm gan c', 'sốt xuất huyết', 'sốt rét', 'lao phổi', 'viêm màng não',
+        'u xơ tử cung', 'nhập viện cấp cứu'
+      ];
 
-      // A. Match ICD-10
-      if (foundCodes.length > 0) {
-        foundCodes.forEach(code => {
-          const rootCode = code.split('.')[0]!;
-          studies.forEach((s: any) => {
-            if (s.icd10Codes && s.icd10Codes.some((c: string) => c.toUpperCase().startsWith(rootCode)) && !seenIds.has(s.id)) {
-              seenIds.add(s.id);
-              if (!s._matchedCodes) s._matchedCodes = [];
-              if (!s._matchedCodes.includes(code)) s._matchedCodes.push(code);
-              results.push(s);
-            }
-          });
-        });
-      }
+      const matchedPhrases = KEY_MEDICAL_PHRASES.filter(p => lowerQuery.includes(p));
 
-      // B. Match Specialty keywords
-      Object.entries(SPECIALTY_KEYWORD_MAP).forEach(([specKey, syns]) => {
-        if (syns.some(syn => lowerQuery.includes(syn))) {
-          studies.forEach((s: any) => {
-            if (s.specialty === specKey && !seenIds.has(s.id)) {
-              seenIds.add(s.id);
-              results.push(s);
+      // 3. Tách các từ đơn có nghĩa (loại bỏ từ nối ngắn)
+      const stopWords = new Set(['và', 'hoặc', 'của', 'với', 'trong', 'khi', 'cho', 'này', 'các', 'được', 'tốt', 'nhẹ', 'nặng', 'n1', 'n2', 'n3', 'n4', 'dt', 'bn', 'người']);
+      const tokens = lowerQuery.split(/[\s,\.\-()/:;]+/).filter(k => k.length >= 2 && !stopWords.has(k));
+
+      // Scoring Engine cho từng nghiên cứu
+      const scoredList: { study: any; score: number; matchedTags: string[] }[] = [];
+
+      studies.forEach((s: any) => {
+        let score = 0;
+        const matchedTags: string[] = [];
+        const studyText = [
+          s.title,
+          s.drug,
+          s.summary,
+          s.detailedConclusion,
+          s.intervention,
+          s.population,
+          s.organization,
+          (s.icd10Codes || []).join(' ')
+        ].join(' ').toLowerCase();
+
+        // A. Match ICD-10 (+150 điểm)
+        if (foundCodes.length > 0) {
+          foundCodes.forEach(code => {
+            const rootCode = code.split('.')[0]!;
+            if (s.icd10Codes && s.icd10Codes.some((c: string) => c.toUpperCase().startsWith(rootCode))) {
+              score += 150;
+              matchedTags.push(code);
             }
           });
         }
-      });
 
-      // C. Match Text Keywords across rich fields
-      if (keywords.length > 0) {
-        studies.forEach((s: any) => {
-          if (seenIds.has(s.id)) return;
-          const fullText = [
-            s.title,
-            s.drug,
-            s.summary,
-            s.detailedConclusion,
-            s.intervention,
-            s.population,
-            s.organization,
-            (s.icd10Codes || []).join(' ')
-          ].join(' ').toLowerCase();
-
-          if (keywords.some(kw => fullText.includes(kw))) {
-            seenIds.add(s.id);
-            results.push(s);
+        // B. Match cụm từ y khoa chính xác (+100 điểm cho Tiêu đề, +50 điểm cho Nội dung)
+        matchedPhrases.forEach(phrase => {
+          if (s.title && s.title.toLowerCase().includes(phrase)) {
+            score += 100;
+            matchedTags.push(phrase);
+          } else if (studyText.includes(phrase)) {
+            score += 50;
+            matchedTags.push(phrase);
           }
         });
-      }
 
-      // Nếu không nhập gì, hiển thị tất cả
-      if (keywords.length === 0 && foundCodes.length === 0) {
-        results = [...studies];
-      }
+        // C. Match Chuyên khoa (+30 điểm)
+        Object.entries(SPECIALTY_KEYWORD_MAP).forEach(([specKey, syns]) => {
+          if (s.specialty === specKey && syns.some(syn => lowerQuery.includes(syn))) {
+            score += 30;
+          }
+        });
+
+        // D. Match Tokens (+15 điểm cho Tiêu đề/Thuốc, +5 điểm cho tóm tắt)
+        tokens.forEach(tok => {
+          if (s.title && s.title.toLowerCase().includes(tok)) {
+            score += 15;
+          } else if (studyText.includes(tok)) {
+            score += 5;
+          }
+        });
+
+        // Bonus điểm nếu là Practice-Changing (+20)
+        if (score > 0 && s.impact === 'practice-changing') {
+          score += 20;
+        }
+
+        if (score > 0) {
+          const cloned = { ...s };
+          if (matchedTags.length > 0) {
+            cloned._matchedCodes = Array.from(new Set(matchedTags));
+          }
+          scoredList.push({ study: cloned, score, matchedTags });
+        }
+      });
+
+      scoredList.sort((a, b) => b.score - a.score);
+      results = scoredList.map(item => item.study);
     }
 
-    // Đưa các nghiên cứu Practice-Changing / Nổi bật lên đầu
-    results.sort((a, b) => {
-      const aImpact = a.impact === 'practice-changing' ? 1 : 0;
-      const bImpact = b.impact === 'practice-changing' ? 1 : 0;
-      return bImpact - aImpact;
-    });
+    if (studies.length === 0) {
+      contentEl.innerHTML = `
+        <div style="text-align:center; padding:50px 20px;">
+          <div style="font-size:48px; margin-bottom:12px; opacity:0.8;">📚</div>
+          <h3 style="color:var(--color-text); margin:0 0 8px 0; font-size:18px; font-weight:800;">Kho Guidelines Chưa Có Dữ Liệu Nghiên Cứu</h3>
+          <p style="font-size:13.5px; color:var(--color-text-muted); margin:0 0 20px 0; max-width:550px; margin-left:auto; margin-right:auto; line-height:1.6;">
+            Dữ liệu EBM trong SOAP được kết nối <strong>trực tiếp và đồng bộ động 100%</strong> với phân hệ <strong>Kho Guidelines</strong> của bạn. Bất kỳ nghiên cứu mới nào được nạp, tạo mới hoặc đồng bộ qua Supabase trong phân hệ Guidelines sẽ tự động hiển thị tại đây.
+          </p>
+          <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+            <a href="#/ebm/guidelines" class="dsp-btn dsp-btn-primary" onclick="document.getElementById('modalEbmBridge').style.display='none';">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở Kho Guidelines (EBM) để thêm nghiên cứu
+            </a>
+          </div>
+        </div>
+      `;
+      return;
+    }
 
     if (results.length === 0) {
       contentEl.innerHTML = `
-        <div style="text-align:center; padding:40px;">
-          <i class="fa-solid fa-folder-open" style="font-size:48px; color:var(--color-border); margin-bottom:16px;"></i>
-          <h3 style="color:var(--color-text-muted); margin:0 0 6px 0;">Không tìm thấy Guideline phù hợp</h3>
-          <p style="font-size:14px; color:var(--color-text-muted); margin:0;">Không có nghiên cứu EBM nào khớp với từ khóa "${escapeHtml(query)}". Thử chọn các chủ đề nhanh ở trên hoặc nhập mã ICD-10.</p>
+        <div style="text-align:center; padding:40px 20px;">
+          <div style="font-size:40px; margin-bottom:10px; color:var(--color-text-muted);">📁</div>
+          <h3 style="color:var(--color-text); margin:0 0 6px 0; font-size:16px; font-weight:800;">Không Tìm Thấy Guideline Khớp Từ Khóa</h3>
+          <p style="font-size:13px; color:var(--color-text-muted); margin:0 0 16px 0; max-width:550px; margin-left:auto; margin-right:auto;">
+            Không có nghiên cứu nào trong Kho Guidelines khớp với từ khóa <em>"${escapeHtml(query)}"</em>. Bạn có thể thử tìm theo mã ICD-10, tên hoạt chất hoặc chọn tất cả để duyệt.
+          </p>
+          <button type="button" class="dsp-btn dsp-btn-outline dsp-btn-sm" onclick="document.getElementById('ebmBridgeSearchInput').value=''; document.getElementById('btnEbmBridgeDoSearch').click();">
+            <i class="fa-solid fa-list"></i> Xem tất cả ${studies.length} nghiên cứu hiện có
+          </button>
         </div>
       `;
       return;
@@ -343,7 +437,7 @@ export class EbmBridge {
     contentEl.innerHTML = `
       <div style="margin-bottom:16px; font-size:13px; color:var(--color-text); background:rgba(2,132,199,0.08); border-left:4px solid var(--color-primary); padding:10px 14px; border-radius:6px; display:flex; justify-content:space-between; align-items:center;">
         <div><i class="fa-solid fa-brain" style="color:var(--color-primary); margin-right:8px;"></i> ${headerText}</div>
-        <span style="font-size:11px; color:var(--color-text-muted); font-weight:600;">EBM Bridge 2.0 Active</span>
+        <span style="font-size:11px; color:var(--color-text-muted); font-weight:600;">EBM Bridge 2.0 (${studies.length} Guidelines Sẵn Sàng)</span>
       </div>
       <div style="display:flex; flex-direction:column; gap:16px;">
         ${results.map((r: any) => this.renderStudyCard(r)).join('')}

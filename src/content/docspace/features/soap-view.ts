@@ -17,7 +17,6 @@ import { ebmBridge } from './ebm-bridge-view';
 import { drugPicker } from './drug-picker';
 import { resourcePicker } from './resource-picker';
 import { calculatorPicker } from './calculator-picker';
-import { openScorePickerModal } from '../tools/score-modal';
 import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
 
 const ALERT_KEYWORDS = [
@@ -1430,36 +1429,6 @@ export function mountSoapController(profileId: string): void {
     window.location.hash = '#/docspace/cases';
   });
 
-  // Modal Toolbar Buttons (+ Thang điểm, + ICD-10, Tra cứu EBM, + Thuốc, + Kỹ năng)
-  document.getElementById('btnScoreSoap')?.addEventListener('click', () => {
-    openScorePickerModal({ targetFieldId: 'esAAssessment' });
-  });
-
-  document.getElementById('btnIcdSoap')?.addEventListener('click', () => {
-    icdPicker.open('esAAssessment');
-  });
-
-  document.getElementById('btnSearchEBM')?.addEventListener('click', () => {
-    const aText = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value || '';
-    const diag = (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value || '';
-    ebmBridge.openSearch(aText || diag);
-  });
-
-  document.getElementById('btnPrescribeSoap')?.addEventListener('click', () => {
-    drugPicker.open('esPPlan');
-  });
-
-  document.getElementById('btnSkillSoap')?.addEventListener('click', () => {
-    resourcePicker.open({
-      title: 'Kho Kỹ năng & Thủ thuật',
-      icon: 'fa-solid fa-hand-holding-medical',
-      jsonUrl: 'content/skills/index.json',
-      mode: 'insertText',
-      targetInputId: 'esPPlan',
-      prefixText: '- Chỉ định thực hiện: '
-    });
-  });
-
   // AI Co-Pilot Suggestion Handlers in Edit SOAP Modal
   let activeAiTargetField: 'esSNotes' | 'esONotes' | 'esAAssessment' | 'esPPlan' = 'esAAssessment';
 
@@ -1718,13 +1687,22 @@ export function mountSoapController(profileId: string): void {
     });
   });
 
-  // Tra cứu EBM
+  // Tra cứu EBM (Smart Extraction Query)
   document.getElementById('btnSearchEBM')?.addEventListener('click', () => {
     const aText = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value.trim() || '';
     const sText = (document.getElementById('esSNotes') as HTMLTextAreaElement)?.value.trim() || '';
     const oText = (document.getElementById('esONotes') as HTMLTextAreaElement)?.value.trim() || '';
-    const query = aText || `${sText} ${oText}`.trim();
-    ebmBridge.openSearch(query, { targetFieldId: 'esAAssessment' });
+    const diagInput = (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value.trim() || '';
+    const currDiagInput = (document.getElementById('esCurrentDiagnosis') as HTMLInputElement)?.value.trim() || '';
+
+    let query = currDiagInput || diagInput;
+    if (!query && aText) {
+      const firstLine = aText.split('\n')[0].split('.')[0].replace(/\(.*?\)/g, '').trim();
+      query = firstLine || aText;
+    } else if (!query) {
+      query = `${sText} ${oText}`.trim();
+    }
+    ebmBridge.openSearch(query || 'practice-changing', { targetFieldId: 'esAAssessment' });
   });
 
   // Kê đơn

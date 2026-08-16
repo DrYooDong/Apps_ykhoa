@@ -187,7 +187,12 @@ import {
   renderInfectiousToolsView,
   renderEndocrinologyToolsView,
   renderHematologyToolsView,
-  renderNeurologyToolsView
+  renderNeurologyToolsView,
+  renderStudioHubView,
+  initStudioHub,
+  renderStudioRunnerView,
+  initStudioRunner,
+  getStudioById
 } from './content/calculators';
 import { 
   renderPharmacologyView, 
@@ -370,6 +375,25 @@ function initializeRoutes(): void {
     document.title = 'Công cụ Lâm sàng & Thang điểm – CliniPortal';
     mountToApp(renderCalculatorsView());
     initCalculatorsHub();
+  });
+
+  router.register('/calculators/studios', 'Studio Workbenches Hub', () => {
+    document.title = 'Studio Lâm Sàng Workbenches – CliniPortal';
+    mountToApp(renderStudioHubView('all'));
+    initStudioHub();
+  });
+
+  router.register('/calculators/studio/:id', 'Clinical Studio Runner', (params) => {
+    const studioId = params.id || '';
+    const studio = getStudioById(studioId);
+    if (studio) {
+      document.title = `${studio.shortTitle} – CliniPortal`;
+      mountToApp(renderStudioRunnerView(studio));
+      initStudioRunner();
+    } else {
+      mountToApp(renderStudioHubView('all'));
+      initStudioHub();
+    }
   });
 
   // === CALCULATORS SUB-ROUTES (Native SPA Components) ===

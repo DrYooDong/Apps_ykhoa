@@ -215,6 +215,10 @@ export function getJournalMetrics(journalName?: string, studyObj?: any): any {
   return partialKey ? JOURNAL_METRICS_DATABASE[partialKey] : null;
 }
 
+import { Study } from './guidelines-types';
+
+export const SAMPLE_STUDIES: Study[] = [];
+
 if (typeof window !== 'undefined') {
   window.JOURNAL_METRICS_DATABASE = JOURNAL_METRICS_DATABASE;
   window.getJournalMetrics = getJournalMetrics;
