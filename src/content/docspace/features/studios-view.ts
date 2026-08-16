@@ -67,14 +67,14 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
             <!-- 1. ABG STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioAbg" style="display:${initialTab === 'abg' ? 'block' : 'none'};">
               <!-- Quick Case Presets Bar -->
-              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
-                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
-                  <i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> Ca Bệnh Mẫu Thực Tế (Quick Case Presets — 1-Click Load):
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1.25rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> Ca Bệnh Mẫu Điển Hình (Quick Presets — 1-Click Load):
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                   ${ABG_PRESETS.map(p => `
-                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-abg-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
-                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-abg-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:5px 14px; background:var(--color-bg); border-color:var(--color-border);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:5px;"></span>
                       <strong>${escapeHtml(p.name)}</strong>
                     </button>
                   `).join('')}
@@ -85,65 +85,169 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                 <div class="dsp-col-main">
                   <div class="dsp-card">
                     <div class="dsp-card-header">
-                      <h2 class="dsp-card-title"><i class="fa-solid fa-droplet" style="color:#ef4444;"></i> Nhập Thông Số Khí Máu & Sinh Hóa</h2>
+                      <h2 class="dsp-card-title"><i class="fa-solid fa-droplet" style="color:#ef4444;"></i> Bảng Nhập Thông Số Khí Máu & Sinh Hóa</h2>
                     </div>
                     <div style="padding:1.25rem;">
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                            <label class="dsp-label" style="margin:0;">pH Máu <span class="dsp-required">*</span></label>
-                            <span id="abgPhDisplay" style="font-size:11px; font-weight:800; color:var(--color-primary);">7.25</span>
+                      
+                      <!-- Row 1: Core Triad -->
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <!-- pH Tile -->
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-vial" style="color:#ef4444;"></i> pH Máu <span class="dsp-required">*</span></span>
+                            <span class="dsp-spec-unit-badge">pH</span>
                           </div>
-                          <input class="dsp-input js-abg-input" type="number" id="abgPh" value="7.25" step="0.01" min="6.8" max="7.9" />
-                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgPh" min="6.80" max="7.80" step="0.01" value="7.25" style="width:100%; margin-top:4px;" />
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgPh" data-step="-0.01">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgPh" value="7.25" step="0.01" min="6.8" max="7.9" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgPh" data-step="0.01">+</button>
+                          </div>
+                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgPh" min="6.80" max="7.80" step="0.01" value="7.25" />
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn sinh lý:</span>
+                            <span class="dsp-spec-ref">7.35 – 7.45</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                            <label class="dsp-label" style="margin:0;">PaCO2 (mmHg) <span class="dsp-required">*</span></label>
-                            <span id="abgPaco2Display" style="font-size:11px; font-weight:800; color:var(--color-primary);">60</span>
+
+                        <!-- PaCO2 Tile -->
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-wind" style="color:#0284c7;"></i> PaCO2 <span class="dsp-required">*</span></span>
+                            <span class="dsp-spec-unit-badge">mmHg</span>
                           </div>
-                          <input class="dsp-input js-abg-input" type="number" id="abgPaco2" value="60" step="1" min="10" max="150" />
-                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgPaco2" min="15" max="100" step="1" value="60" style="width:100%; margin-top:4px;" />
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgPaco2" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgPaco2" value="60" step="1" min="10" max="150" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgPaco2" data-step="1">+</button>
+                          </div>
+                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgPaco2" min="15" max="100" step="1" value="60" />
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn sinh lý:</span>
+                            <span class="dsp-spec-ref">35 – 45</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                            <label class="dsp-label" style="margin:0;">HCO3- (mmol/L) <span class="dsp-required">*</span></label>
-                            <span id="abgHco3Display" style="font-size:11px; font-weight:800; color:var(--color-primary);">26</span>
+
+                        <!-- HCO3 Tile -->
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-flask" style="color:#10b981;"></i> HCO3- <span class="dsp-required">*</span></span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
                           </div>
-                          <input class="dsp-input js-abg-input" type="number" id="abgHco3" value="26" step="0.5" min="2" max="60" />
-                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgHco3" min="5" max="50" step="0.5" value="26" style="width:100%; margin-top:4px;" />
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgHco3" data-step="-0.5">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgHco3" value="26" step="0.5" min="2" max="60" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgHco3" data-step="0.5">+</button>
+                          </div>
+                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgHco3" min="5" max="50" step="0.5" value="26" />
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn sinh lý:</span>
+                            <span class="dsp-spec-ref">22 – 26</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">PaO2 (mmHg)</label>
-                          <input class="dsp-input js-abg-input" type="number" id="abgPao2" value="75" step="1" min="20" max="600" />
+                      <!-- Row 2: Oxygenation & Lactate -->
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">PaO2</span>
+                            <span class="dsp-spec-unit-badge">mmHg</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgPao2" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgPao2" value="75" step="1" min="20" max="600" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgPao2" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn khí trời:</span>
+                            <span class="dsp-spec-ref">80 – 100</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">FiO2 (%)</label>
-                          <input class="dsp-input js-abg-input" type="number" id="abgFio2" value="21" step="1" min="21" max="100" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">FiO2 (Oxy khí thở)</span>
+                            <span class="dsp-spec-unit-badge">%</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgFio2" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgFio2" value="21" step="1" min="21" max="100" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgFio2" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Khí trời tự nhiên:</span>
+                            <span class="dsp-spec-ref">21%</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Lactate (mmol/L)</label>
-                          <input class="dsp-input js-abg-input" type="number" id="abgLactate" value="1.8" step="0.1" min="0" max="30" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Lactate Máu</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgLactate" data-step="-0.2">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgLactate" value="1.8" step="0.1" min="0" max="30" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgLactate" data-step="0.2">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Bình thường:</span>
+                            <span class="dsp-spec-ref">&lt; 2.0</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Natri Na+ (mmol/L)</label>
-                          <input class="dsp-input js-abg-input" type="number" id="abgNa" value="140" step="1" min="100" max="180" />
+                      <!-- Row 3: Electrolytes & Albumin for AG -->
+                      <div class="dsp-spec-grid">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Natri (Na+)</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgNa" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgNa" value="140" step="1" min="100" max="180" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgNa" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn sinh lý:</span>
+                            <span class="dsp-spec-ref">135 – 145</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Clo Cl- (mmol/L)</label>
-                          <input class="dsp-input js-abg-input" type="number" id="abgCl" value="100" step="1" min="60" max="140" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Clo (Cl-)</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgCl" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgCl" value="100" step="1" min="60" max="140" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgCl" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn sinh lý:</span>
+                            <span class="dsp-spec-ref">96 – 106</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Albumin (g/dL)</label>
-                          <input class="dsp-input js-abg-input" type="number" id="abgAlbumin" value="4.0" step="0.1" min="1" max="6" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Albumin Máu</span>
+                            <span class="dsp-spec-unit-badge">g/dL</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgAlbumin" data-step="-0.1">−</button>
+                            <input class="dsp-spec-input js-abg-input" type="number" id="abgAlbumin" value="4.0" step="0.1" min="1" max="6" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="abgAlbumin" data-step="0.1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn sinh lý:</span>
+                            <span class="dsp-spec-ref">3.5 – 5.0</span>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
 
@@ -170,14 +274,14 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
             <!-- 2. ECG STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioEcg" style="display:${initialTab === 'ecg' ? 'block' : 'none'};">
               <!-- Quick Case Presets Bar -->
-              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
-                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
-                  <i class="fa-solid fa-bolt" style="color:#dc2626;"></i> Ca ECG Mẫu Điển Hình (Quick Case Presets):
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1.25rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#dc2626;"></i> Ca ECG Mẫu Điển Hình (Quick Presets):
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                   ${ECG_PRESETS.map(p => `
-                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-ecg-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
-                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-ecg-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:5px 14px; background:var(--color-bg); border-color:var(--color-border);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:5px;"></span>
                       <strong>${escapeHtml(p.name)}</strong>
                     </button>
                   `).join('')}
@@ -191,68 +295,161 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                       <h2 class="dsp-card-title"><i class="fa-solid fa-heart-pulse" style="color:#dc2626;"></i> Thông Số 12 Chuyển Đạo & Trục Điện Tim</h2>
                     </div>
                     <div style="padding:1.25rem;">
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Tần số tim (l/p)</label>
-                          <input class="dsp-input js-ecg-input" type="number" id="ecgHr" value="80" min="20" max="300" />
+                      
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-heart-pulse" style="color:#dc2626;"></i> Tần Số Tim</span>
+                            <span class="dsp-spec-unit-badge">lần/phút</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgHr" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-ecg-input" type="number" id="ecgHr" value="80" min="20" max="300" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgHr" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn sinh lý:</span>
+                            <span class="dsp-spec-ref">60 – 100</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Dạng nhịp cơ bản</label>
-                          <select class="dsp-select js-ecg-input" id="ecgRhythm">
-                            <option value="sinus">Nhịp xoang (Sinus Rhythm)</option>
-                            <option value="afib">Rung nhĩ (Atrial Fibrillation)</option>
-                            <option value="aflutter">Cuồng nhĩ (Atrial Flutter)</option>
-                            <option value="svt">Nhịp nhanh trên thất (SVT)</option>
-                            <option value="vt">Nhịp nhanh thất (VT)</option>
-                            <option value="pacing">Nhịp máy tạo nhịp (Paced)</option>
-                          </select>
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Dạng Nhịp Cơ Bản</span>
+                            <span class="dsp-spec-unit-badge">Rhythm</span>
+                          </div>
+                          <div style="padding:0.25rem 0;">
+                            <select class="dsp-select js-ecg-input" id="ecgRhythm" style="font-weight:700;">
+                              <option value="sinus">Nhịp xoang (Sinus Rhythm)</option>
+                              <option value="afib">Rung nhĩ (Atrial Fibrillation)</option>
+                              <option value="aflutter">Cuồng nhĩ (Atrial Flutter)</option>
+                              <option value="svt">Nhịp nhanh trên thất (SVT)</option>
+                              <option value="vt">Nhịp nhanh thất (VT)</option>
+                              <option value="pacing">Nhịp máy tạo nhịp (Paced)</option>
+                            </select>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Sóng P &amp; RR:</span>
+                            <span class="dsp-spec-ref">Đều đặn</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Khoảng QT đo được (ms)</label>
-                          <input class="dsp-input js-ecg-input" type="number" id="ecgQt" value="400" min="200" max="800" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Khoảng QT Đo Được</span>
+                            <span class="dsp-spec-unit-badge">ms</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgQt" data-step="-10">−</button>
+                            <input class="dsp-spec-input js-ecg-input" type="number" id="ecgQt" value="400" min="200" max="800" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgQt" data-step="10">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>QTc an toàn:</span>
+                            <span class="dsp-spec-ref">&lt; 440 – 460</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--2">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Biên độ QRS tại Chuyển đạo DI (mm = R - S)</label>
-                          <input class="dsp-input js-ecg-input" type="number" id="ecgLead1" value="6" step="0.5" />
+                      <!-- Vector Leads Net -->
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Biên độ Chuyển đạo DI (R − S)</span>
+                            <span class="dsp-spec-unit-badge">mm</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgLead1" data-step="-0.5">−</button>
+                            <input class="dsp-spec-input js-ecg-input" type="number" id="ecgLead1" value="6" step="0.5" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgLead1" data-step="0.5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Góc 0° trục hoành:</span>
+                            <span class="dsp-spec-ref">DI &gt; 0: Trục hướng trái</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Biên độ QRS tại Chuyển đạo aVF (mm = R - S)</label>
-                          <input class="dsp-input js-ecg-input" type="number" id="ecgAvf" value="-5" step="0.5" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Biên độ Chuyển đạo aVF (R − S)</span>
+                            <span class="dsp-spec-unit-badge">mm</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgAvf" data-step="-0.5">−</button>
+                            <input class="dsp-spec-input js-ecg-input" type="number" id="ecgAvf" value="-5" step="0.5" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgAvf" data-step="0.5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Góc +90° trục tung:</span>
+                            <span class="dsp-spec-ref">aVF &gt; 0: Trục hướng dưới</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Khoảng PR (ms)</label>
-                          <input class="dsp-input js-ecg-input" type="number" id="ecgPr" value="160" min="60" max="400" />
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Khoảng PR</span>
+                            <span class="dsp-spec-unit-badge">ms</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgPr" data-step="-10">−</button>
+                            <input class="dsp-spec-input js-ecg-input" type="number" id="ecgPr" value="160" min="60" max="400" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgPr" data-step="10">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Chuẩn sinh lý:</span>
+                            <span class="dsp-spec-ref">120 – 200 ms</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Độ rộng QRS (ms)</label>
-                          <input class="dsp-input js-ecg-input" type="number" id="ecgQrs" value="90" min="40" max="250" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Độ rộng QRS</span>
+                            <span class="dsp-spec-unit-badge">ms</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgQrs" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-ecg-input" type="number" id="ecgQrs" value="90" min="40" max="250" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgQrs" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Bình thường:</span>
+                            <span class="dsp-spec-ref">&lt; 120 ms</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">RaVL (mm)</label>
-                          <input class="dsp-input js-ecg-input" type="number" id="ecgRaVL" value="8" min="0" max="40" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Sóng RaVL</span>
+                            <span class="dsp-spec-unit-badge">mm</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgRaVL" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-ecg-input" type="number" id="ecgRaVL" value="8" min="0" max="40" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="ecgRaVL" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Dày thất trái:</span>
+                            <span class="dsp-spec-ref">&gt; 11 mm</span>
+                          </div>
                         </div>
                       </div>
 
                       <!-- Sgarbossa Checkbox Section -->
-                      <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:1rem; margin-top:0.5rem;">
+                      <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; padding:1rem; margin-top:0.5rem;">
                         <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
-                          <input type="checkbox" id="ecgHasLbbb" class="js-ecg-input" />
-                          <label for="ecgHasLbbb" style="font-weight:700; cursor:pointer;">Bệnh nhân có Block Nhánh Trái (LBBB) hoặc Nhịp tạo nhịp</label>
+                          <input type="checkbox" id="ecgHasLbbb" class="js-ecg-input" style="width:16px; height:16px;" />
+                          <label for="ecgHasLbbb" style="font-weight:800; cursor:pointer; color:var(--color-text);">Bệnh nhân có Block Nhánh Trái (LBBB) hoặc Nhịp máy tạo nhịp</label>
                         </div>
-                        <div id="ecgSgarbossaWrap" style="display:none; padding-left:1.5rem; flex-direction:column; gap:0.35rem;">
-                          <label style="font-size:12px; display:flex; align-items:center; gap:6px; cursor:pointer;">
-                            <input type="checkbox" id="sg1" class="js-ecg-input" /> ST chênh lên ≥ 1mm cùng hướng QRS (5 điểm)
+                        <div id="ecgSgarbossaWrap" style="display:none; padding-left:1.5rem; flex-direction:column; gap:0.45rem;">
+                          <label style="font-size:12px; font-weight:600; display:flex; align-items:center; gap:8px; cursor:pointer;">
+                            <input type="checkbox" id="sg1" class="js-ecg-input" /> ST chênh lên ≥ 1mm cùng hướng QRS (5 điểm — Độ đặc hiệu 98%)
                           </label>
-                          <label style="font-size:12px; display:flex; align-items:center; gap:6px; cursor:pointer;">
+                          <label style="font-size:12px; font-weight:600; display:flex; align-items:center; gap:8px; cursor:pointer;">
                             <input type="checkbox" id="sg2" class="js-ecg-input" /> ST chênh xuống ≥ 1mm ở V1, V2 hoặc V3 (3 điểm)
                           </label>
-                          <label style="font-size:12px; display:flex; align-items:center; gap:6px; cursor:pointer;">
+                          <label style="font-size:12px; font-weight:600; display:flex; align-items:center; gap:8px; cursor:pointer;">
                             <input type="checkbox" id="sg3" class="js-ecg-input" /> ST chênh lên ≥ 5mm ngược hướng QRS (2 điểm)
                           </label>
                         </div>
@@ -283,14 +480,14 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
             <!-- 3. ELECTROLYTE STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioElectrolyte" style="display:${initialTab === 'electrolyte' ? 'block' : 'none'};">
               <!-- Quick Case Presets Bar -->
-              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
-                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
-                  <i class="fa-solid fa-bolt" style="color:#0284c7;"></i> Ca Rối Loạn Điện Giải Mẫu (Quick Case Presets):
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1.25rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#0284c7;"></i> Ca Rối Loạn Điện Giải Mẫu (Quick Presets):
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                   ${ELYTE_PRESETS.map(p => `
-                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-elyte-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
-                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-elyte-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:5px 14px; background:var(--color-bg); border-color:var(--color-border);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:5px;"></span>
                       <strong>${escapeHtml(p.name)}</strong>
                     </button>
                   `).join('')}
@@ -301,55 +498,120 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                 <div class="dsp-col-main">
                   <div class="dsp-card">
                     <div class="dsp-card-header">
-                      <h2 class="dsp-card-title"><i class="fa-solid fa-flask" style="color:#0284c7;"></i> Tính Toán Điện Giải & Nước Cơ Thể</h2>
+                      <h2 class="dsp-card-title"><i class="fa-solid fa-flask" style="color:#0284c7;"></i> Bảng Tính Toán Điện Giải &amp; Nước Cơ Thể</h2>
                     </div>
                     <div style="padding:1.25rem;">
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Rối loạn cần tính</label>
-                          <select class="dsp-select js-elyte-input" id="elyteMode">
-                            <option value="hyponatremia">Hạ Natri máu (Hyponatremia)</option>
-                            <option value="hypernatremia">Tăng Natri máu (Hypernatremia - FWD)</option>
-                            <option value="hypokalemia">Hạ Kali máu (Hypokalemia)</option>
-                          </select>
+                      
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Rối Loạn Cần Tính</span>
+                            <span class="dsp-spec-unit-badge">Mode</span>
+                          </div>
+                          <div style="padding:0.25rem 0;">
+                            <select class="dsp-select js-elyte-input" id="elyteMode" style="font-weight:700;">
+                              <option value="hyponatremia">Hạ Natri máu (Hyponatremia)</option>
+                              <option value="hypernatremia">Tăng Natri máu (Hypernatremia - FWD)</option>
+                              <option value="hypokalemia">Hạ Kali máu (Hypokalemia)</option>
+                            </select>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Công thức:</span>
+                            <span class="dsp-spec-ref">Adrogué-Madias</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Cân nặng (kg) <span class="dsp-required">*</span></label>
-                          <input class="dsp-input js-elyte-input" type="number" id="elyteWeight" value="60" min="20" max="250" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Cân Nặng Bệnh Nhân</span>
+                            <span class="dsp-spec-unit-badge">kg</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="elyteWeight" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-elyte-input" type="number" id="elyteWeight" value="60" min="20" max="250" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="elyteWeight" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>TBW ước tính:</span>
+                            <span class="dsp-spec-ref">50 – 60% thể trọng</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Giới tính</label>
-                          <select class="dsp-select js-elyte-input" id="elyteGender">
-                            <option value="male">Nam</option>
-                            <option value="female">Nữ</option>
-                          </select>
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Giới Tính</span>
+                            <span class="dsp-spec-unit-badge">Gender</span>
+                          </div>
+                          <div style="padding:0.25rem 0;">
+                            <select class="dsp-select js-elyte-input" id="elyteGender" style="font-weight:700;">
+                              <option value="male">Nam giới</option>
+                              <option value="female">Nữ giới</option>
+                            </select>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Hệ số nước TBW:</span>
+                            <span class="dsp-spec-ref">0.6 (Nam) / 0.5 (Nữ)</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Natri Na+ máu (mmol/L)</label>
-                          <input class="dsp-input js-elyte-input" type="number" id="elyteNa" value="118" min="90" max="190" />
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-droplet" style="color:#0284c7;"></i> Natri (Na+) Máu</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="elyteNa" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-elyte-input" type="number" id="elyteNa" value="118" min="90" max="190" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="elyteNa" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Bình thường:</span>
+                            <span class="dsp-spec-ref">135 – 145 mmol/L</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Đường huyết (mmol/L)</label>
-                          <input class="dsp-input js-elyte-input" type="number" id="elyteGlucose" value="5.6" min="1" max="60" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Đường Huyết (Glucose)</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="elyteGlucose" data-step="-0.5">−</button>
+                            <input class="dsp-spec-input js-elyte-input" type="number" id="elyteGlucose" value="5.6" min="1" max="60" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="elyteGlucose" data-step="0.5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Hiệu chỉnh Katz:</span>
+                            <span class="dsp-spec-ref">+1.6 mỗi 5.6 mmol/L đường</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Dung dịch bù dự kiến</label>
-                          <select class="dsp-select js-elyte-input" id="elyteInfusate">
-                            <option value="nacl_3">Natri Clorid 3% (513 mEq/L)</option>
-                            <option value="nacl_09">Natri Clorid 0.9% (154 mEq/L)</option>
-                            <option value="ringer">Ringer Lactate (130 mEq/L)</option>
-                            <option value="d5w">Glucose 5% (0 mEq/L)</option>
-                          </select>
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Dung Dịch Bù Dự Kiến</span>
+                            <span class="dsp-spec-unit-badge">Infusate</span>
+                          </div>
+                          <div style="padding:0.25rem 0;">
+                            <select class="dsp-select js-elyte-input" id="elyteInfusate" style="font-weight:700;">
+                              <option value="nacl_3">Natri Clorid 3% (513 mEq/L)</option>
+                              <option value="nacl_09">Natri Clorid 0.9% (154 mEq/L)</option>
+                              <option value="ringer">Ringer Lactate (130 mEq/L)</option>
+                              <option value="d5w">Glucose 5% (0 mEq/L)</option>
+                            </select>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Ưu tiên cấp cứu:</span>
+                            <span class="dsp-spec-ref">NaCl 3%</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div style="display:flex; align-items:center; gap:0.5rem; margin-top:0.5rem;">
-                        <input type="checkbox" id="elyteSevere" class="js-elyte-input" />
-                        <label for="elyteSevere" style="font-weight:700; color:#ef4444; cursor:pointer;">
-                          <i class="fa-solid fa-triangle-exclamation"></i> Có triệu chứng thần kinh cấp (Co giật, hôn mê, lơ mơ)
+                      <div style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.25); border-radius:10px; padding:0.85rem 1rem; display:flex; align-items:center; gap:0.6rem;">
+                        <input type="checkbox" id="elyteSevere" class="js-elyte-input" style="width:16px; height:16px;" />
+                        <label for="elyteSevere" style="font-weight:800; color:#dc2626; cursor:pointer; font-size:12.5px;">
+                          <i class="fa-solid fa-triangle-exclamation"></i> Có triệu chứng thần kinh cấp nguy hiểm (Co giật, hôn mê, lơ mơ do phù não)
                         </label>
                       </div>
                     </div>
@@ -378,14 +640,14 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
             <!-- 4. RENAL & DOSING STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioRenal" style="display:${initialTab === 'renal' ? 'block' : 'none'};">
               <!-- Quick Case Presets Bar -->
-              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
-                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
-                  <i class="fa-solid fa-bolt" style="color:#7c3aed;"></i> Ca Bệnh Thận Mẫu (Quick Case Presets):
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1.25rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#7c3aed;"></i> Ca Bệnh Thận Mẫu (Quick Presets):
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                   ${RENAL_PRESETS.map(p => `
-                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-renal-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
-                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-renal-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:5px 14px; background:var(--color-bg); border-color:var(--color-border);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:5px;"></span>
                       <strong>${escapeHtml(p.name)}</strong>
                     </button>
                   `).join('')}
@@ -396,30 +658,77 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                 <div class="dsp-col-main">
                   <div class="dsp-card">
                     <div class="dsp-card-header">
-                      <h2 class="dsp-card-title"><i class="fa-solid fa-dna" style="color:#7c3aed;"></i> Chức Năng Thận & Bảng Hiệu Chỉnh Liều Thuốc</h2>
+                      <h2 class="dsp-card-title"><i class="fa-solid fa-dna" style="color:#7c3aed;"></i> Bảng Nhập Chức Năng Thận &amp; Thể Trọng</h2>
                     </div>
                     <div style="padding:1.25rem;">
-                      <div class="dsp-form-row dsp-form-row--4">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Tuổi</label>
-                          <input class="dsp-input js-renal-input" type="number" id="renalAge" value="65" min="18" max="110" />
+                      
+                      <div class="dsp-spec-grid">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Tuổi Bệnh Nhân</span>
+                            <span class="dsp-spec-unit-badge">tuổi</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="renalAge" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-renal-input" type="number" id="renalAge" value="65" min="18" max="110" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="renalAge" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>CKD-EPI 2021:</span>
+                            <span class="dsp-spec-ref">Chuẩn hóa theo tuổi</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Giới tính</label>
-                          <select class="dsp-select js-renal-input" id="renalGender">
-                            <option value="male">Nam</option>
-                            <option value="female">Nữ</option>
-                          </select>
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Giới Tính</span>
+                            <span class="dsp-spec-unit-badge">Gender</span>
+                          </div>
+                          <div style="padding:0.25rem 0;">
+                            <select class="dsp-select js-renal-input" id="renalGender" style="font-weight:700;">
+                              <option value="male">Nam</option>
+                              <option value="female">Nữ</option>
+                            </select>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Hệ số nữ:</span>
+                            <span class="dsp-spec-ref">x 1.012 (CKD-EPI)</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Cân nặng (kg)</label>
-                          <input class="dsp-input js-renal-input" type="number" id="renalWeight" value="60" min="25" max="250" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Cân Nặng</span>
+                            <span class="dsp-spec-unit-badge">kg</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="renalWeight" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-renal-input" type="number" id="renalWeight" value="60" min="25" max="250" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="renalWeight" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Cockcroft-Gault:</span>
+                            <span class="dsp-spec-ref">Tính CrCl thực tế</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Creatinine (umol/L)</label>
-                          <input class="dsp-input js-renal-input" type="number" id="renalCreatinine" value="180" min="30" max="1500" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-vial" style="color:#7c3aed;"></i> Creatinine Huyết Thanh</span>
+                            <span class="dsp-spec-unit-badge">umol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="renalCreatinine" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-renal-input" type="number" id="renalCreatinine" value="180" min="30" max="1500" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="renalCreatinine" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Bình thường:</span>
+                            <span class="dsp-spec-ref">60 – 110 umol/L</span>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
 
@@ -446,14 +755,14 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
             <!-- 5. CARDIO RISK STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioCardio" style="display:${initialTab === 'cardio' ? 'block' : 'none'};">
               <!-- Quick Case Presets Bar -->
-              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
-                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
-                  <i class="fa-solid fa-bolt" style="color:#ca8a04;"></i> Ca Tim Mạch & Lipid Mẫu (Quick Case Presets):
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1.25rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#ca8a04;"></i> Ca Tim Mạch &amp; Lipid Mẫu (Quick Presets):
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                   ${CARDIO_PRESETS.map(p => `
-                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cardio-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
-                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cardio-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:5px 14px; background:var(--color-bg); border-color:var(--color-border);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:5px;"></span>
                       <strong>${escapeHtml(p.name)}</strong>
                     </button>
                   `).join('')}
@@ -464,54 +773,123 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                 <div class="dsp-col-main">
                   <div class="dsp-card">
                     <div class="dsp-card-header">
-                      <h2 class="dsp-card-title"><i class="fa-solid fa-chart-pie" style="color:#ca8a04;"></i> Đánh Giá Nguy Cơ Tim Mạch 10 Năm & Mục Tiêu LDL-C</h2>
+                      <h2 class="dsp-card-title"><i class="fa-solid fa-chart-pie" style="color:#ca8a04;"></i> Bảng Nhập Nguy Cơ Tim Mạch &amp; Bilan Lipid</h2>
                     </div>
                     <div style="padding:1.25rem;">
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Tuổi</label>
-                          <input class="dsp-input js-cardio-input" type="number" id="crAge" value="58" min="20" max="90" />
+                      
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Tuổi</span>
+                            <span class="dsp-spec-unit-badge">tuổi</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crAge" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-cardio-input" type="number" id="crAge" value="58" min="20" max="90" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crAge" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Thang SCORE2:</span>
+                            <span class="dsp-spec-ref">40 – 89 tuổi</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Giới tính</label>
-                          <select class="dsp-select js-cardio-input" id="crGender">
-                            <option value="male">Nam</option>
-                            <option value="female">Nữ</option>
-                          </select>
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Giới Tính</span>
+                            <span class="dsp-spec-unit-badge">Gender</span>
+                          </div>
+                          <div style="padding:0.25rem 0;">
+                            <select class="dsp-select js-cardio-input" id="crGender" style="font-weight:700;">
+                              <option value="male">Nam</option>
+                              <option value="female">Nữ</option>
+                            </select>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Nguy cơ giới:</span>
+                            <span class="dsp-spec-ref">Nam &gt; Nữ</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Huyết áp tâm thu (mmHg)</label>
-                          <input class="dsp-input js-cardio-input" type="number" id="crSbp" value="145" min="80" max="240" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-gauge-high" style="color:#dc2626;"></i> Huyết Áp Tâm Thu</span>
+                            <span class="dsp-spec-unit-badge">mmHg</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crSbp" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-cardio-input" type="number" id="crSbp" value="145" min="80" max="240" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crSbp" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Mục tiêu HA:</span>
+                            <span class="dsp-spec-ref">&lt; 130 mmHg</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Cholesterol toàn phần (mmol/L)</label>
-                          <input class="dsp-input js-cardio-input" type="number" id="crChol" value="5.8" step="0.1" />
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Cholesterol Toàn Phần</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crChol" data-step="-0.1">−</button>
+                            <input class="dsp-spec-input js-cardio-input" type="number" id="crChol" value="5.8" step="0.1" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crChol" data-step="0.1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Mục tiêu:</span>
+                            <span class="dsp-spec-ref">&lt; 5.2 mmol/L</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">HDL-C (mmol/L)</label>
-                          <input class="dsp-input js-cardio-input" type="number" id="crHdl" value="1.1" step="0.1" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">HDL-C (Mỡ Tốt)</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crHdl" data-step="-0.1">−</button>
+                            <input class="dsp-spec-input js-cardio-input" type="number" id="crHdl" value="1.1" step="0.1" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crHdl" data-step="0.1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Bảo vệ tim:</span>
+                            <span class="dsp-spec-ref">&gt; 1.0 (Nam) / &gt; 1.2 (Nữ)</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">LDL-C hiện tại (mmol/L)</label>
-                          <input class="dsp-input js-cardio-input" type="number" id="crLdl" value="3.6" step="0.1" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-bullseye" style="color:#ca8a04;"></i> LDL-C Hiện Tại</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crLdl" data-step="-0.1">−</button>
+                            <input class="dsp-spec-input js-cardio-input" type="number" id="crLdl" value="3.6" step="0.1" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="crLdl" data-step="0.1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Đích theo phân tầng:</span>
+                            <span class="dsp-spec-ref">&lt; 1.4 – 2.6</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.5rem; margin-top:0.5rem; background:var(--color-bg); padding:0.75rem; border-radius:8px;">
-                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                          <input type="checkbox" id="crSmoker" class="js-cardio-input" checked /> Đang hút thuốc lá
+                      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:0.5rem; background:var(--color-bg); padding:0.85rem; border-radius:10px; border:1px solid var(--color-border);">
+                        <label style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; cursor:pointer;">
+                          <input type="checkbox" id="crSmoker" class="js-cardio-input" checked style="width:16px; height:16px;" /> Đang hút thuốc lá
                         </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                          <input type="checkbox" id="crDiabetes" class="js-cardio-input" /> Đái tháo đường
+                        <label style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; cursor:pointer;">
+                          <input type="checkbox" id="crDiabetes" class="js-cardio-input" style="width:16px; height:16px;" /> Đái tháo đường
                         </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                          <input type="checkbox" id="crCvd" class="js-cardio-input" /> Tiền sử NMCT/Đột quỵ (ASCVD)
+                        <label style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; cursor:pointer;">
+                          <input type="checkbox" id="crCvd" class="js-cardio-input" style="width:16px; height:16px;" /> Tiền sử NMCT/Đột quỵ (ASCVD)
                         </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                          <input type="checkbox" id="crCkd" class="js-cardio-input" /> Bệnh thận mạn (CKD)
+                        <label style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; cursor:pointer;">
+                          <input type="checkbox" id="crCkd" class="js-cardio-input" style="width:16px; height:16px;" /> Bệnh thận mạn (CKD)
                         </label>
                       </div>
                     </div>
@@ -530,14 +908,14 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
             <!-- 6. SEPSIS & PNEUMONIA STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioSepsis" style="display:${initialTab === 'sepsis' ? 'block' : 'none'};">
               <!-- Quick Case Presets Bar -->
-              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
-                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
-                  <i class="fa-solid fa-bolt" style="color:#e11d48;"></i> Ca Nhiễm Khuẩn & Viêm Phổi Mẫu (Quick Case Presets):
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1.25rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#e11d48;"></i> Ca Nhiễm Khuẩn &amp; Viêm Phổi Mẫu (Quick Presets):
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                   ${SEPSIS_PRESETS.map(p => `
-                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-sepsis-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
-                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-sepsis-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:5px 14px; background:var(--color-bg); border-color:var(--color-border);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:5px;"></span>
                       <strong>${escapeHtml(p.name)}</strong>
                     </button>
                   `).join('')}
@@ -548,67 +926,169 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                 <div class="dsp-col-main">
                   <div class="dsp-card">
                     <div class="dsp-card-header">
-                      <h2 class="dsp-card-title"><i class="fa-solid fa-lungs-virus" style="color:#e11d48;"></i> Đánh Giá Sốc Nhiễm Khuẩn & Viêm Phổi Nặng</h2>
+                      <h2 class="dsp-card-title"><i class="fa-solid fa-lungs-virus" style="color:#e11d48;"></i> Bảng Nhập Thông Số Sốc Nhiễm Khuẩn &amp; Viêm Phổi</h2>
                     </div>
                     <div style="padding:1.25rem;">
-                      <div class="dsp-form-row dsp-form-row--4">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Tuổi</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepAge" value="62" min="18" max="110" />
+                      
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-wind" style="color:#0284c7;"></i> Nhịp Thở</span>
+                            <span class="dsp-spec-unit-badge">lần/phút</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepRr" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepRr" value="28" min="8" max="60" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepRr" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>qSOFA ≥ 22 / CURB ≥ 30:</span>
+                            <span class="dsp-spec-ref">Chuẩn: 12 – 20</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Nhịp thở (l/p)</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepRr" value="28" min="8" max="60" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-heart-crack" style="color:#dc2626;"></i> HA Tâm Thu / Trương</span>
+                            <span class="dsp-spec-unit-badge">mmHg</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepSbp" value="82" min="40" max="250" placeholder="Tâm thu" />
+                            <span style="font-weight:800; color:var(--color-text-muted);">/</span>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepDbp" value="45" min="20" max="140" placeholder="Tâm trương" />
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Tụt HA Sốc:</span>
+                            <span class="dsp-spec-ref">SBP ≤ 100 / MAP &lt; 65</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Huyết áp Tâm thu</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepSbp" value="82" min="40" max="250" />
-                        </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Huyết áp Tâm trương</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepDbp" value="45" min="20" max="140" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-brain" style="color:#8b5cf6;"></i> Tri Giác (Glasgow GCS)</span>
+                            <span class="dsp-spec-unit-badge">điểm</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepGcs" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepGcs" value="13" min="3" max="15" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepGcs" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Bình thường:</span>
+                            <span class="dsp-spec-ref">15 điểm</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--4">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Glasgow (GCS)</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepGcs" value="13" min="3" max="15" />
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Chỉ Số P/F (PaO2/FiO2)</span>
+                            <span class="dsp-spec-unit-badge">mmHg</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepPf" data-step="-10">−</button>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepPf" value="220" min="40" max="600" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepPf" data-step="10">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>ARDS / Suy hô hấp:</span>
+                            <span class="dsp-spec-ref">Chuẩn &gt; 300</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">PaO2/FiO2 (mmHg)</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepPf" value="220" min="40" max="600" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Tiểu Cầu (Platelets)</span>
+                            <span class="dsp-spec-unit-badge">G/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepPlt" data-step="-10">−</button>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepPlt" value="85" min="5" max="800" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepPlt" data-step="10">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Giảm tiểu cầu SOFA:</span>
+                            <span class="dsp-spec-ref">Chuẩn: 150 – 400</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Tiểu cầu (G/L)</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepPlt" value="85" min="5" max="800" />
-                        </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Lactate (mmol/L)</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepLactate" value="4.8" step="0.1" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-triangle-exclamation" style="color:#ef4444;"></i> Lactate Máu</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepLactate" data-step="-0.5">−</button>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepLactate" value="4.8" step="0.1" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepLactate" data-step="0.5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Sốc nhiễm khuẩn:</span>
+                            <span class="dsp-spec-ref">&gt; 2.0 – 4.0 mmol/L</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--2">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Bilirubin (umol/L)</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepBili" value="38" min="2" max="600" />
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Bilirubin Toàn Phần</span>
+                            <span class="dsp-spec-unit-badge">umol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepBili" data-step="-2">−</button>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepBili" value="38" min="2" max="600" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepBili" data-step="2">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Bình thường:</span>
+                            <span class="dsp-spec-ref">&lt; 20 umol/L</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Creatinine (umol/L)</label>
-                          <input class="dsp-input js-sepsis-input" type="number" id="sepCreat" value="240" min="30" max="1200" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Creatinine Máu</span>
+                            <span class="dsp-spec-unit-badge">umol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepCreat" data-step="-10">−</button>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepCreat" value="240" min="30" max="1200" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepCreat" data-step="10">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Bình thường:</span>
+                            <span class="dsp-spec-ref">60 – 110 umol/L</span>
+                          </div>
+                        </div>
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Tuổi</span>
+                            <span class="dsp-spec-unit-badge">tuổi</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepAge" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-sepsis-input" type="number" id="sepAge" value="62" min="18" max="110" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="sepAge" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>CURB-65 / SMART-COP:</span>
+                            <span class="dsp-spec-ref">≥ 65 tuổi</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.5rem; margin-top:0.5rem; background:var(--color-bg); padding:0.75rem; border-radius:8px;">
-                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                          <input type="checkbox" id="sepVasopressor" class="js-sepsis-input" checked /> Cần thuốc vận mạch (Noradrenaline)
+                      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.5rem; background:var(--color-bg); padding:0.85rem; border-radius:10px; border:1px solid var(--color-border);">
+                        <label style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; cursor:pointer;">
+                          <input type="checkbox" id="sepVasopressor" class="js-sepsis-input" checked style="width:16px; height:16px;" /> Cần thuốc vận mạch (Noradrenaline)
                         </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                          <input type="checkbox" id="sepPseudomonas" class="js-sepsis-input" checked /> Nguy cơ Trực khuẩn mủ xanh (Pseudomonas)
+                        <label style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; cursor:pointer;">
+                          <input type="checkbox" id="sepPseudomonas" class="js-sepsis-input" checked style="width:16px; height:16px;" /> Nguy cơ Trực khuẩn mủ xanh (Pseudomonas)
                         </label>
-                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
-                          <input type="checkbox" id="sepMrsa" class="js-sepsis-input" /> Nguy cơ Tụ cầu vàng kháng Methicillin (MRSA)
+                        <label style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; cursor:pointer;">
+                          <input type="checkbox" id="sepMrsa" class="js-sepsis-input" style="width:16px; height:16px;" /> Nguy cơ Tụ cầu vàng kháng Methicillin (MRSA)
                         </label>
                       </div>
                     </div>
@@ -627,14 +1107,14 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
             <!-- 7. CIRRHOSIS & LIVER STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioCirrhosis" style="display:${initialTab === 'cirrhosis' ? 'block' : 'none'};">
               <!-- Quick Case Presets Bar -->
-              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
-                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
-                  <i class="fa-solid fa-bolt" style="color:#b45309;"></i> Ca Gan Mật & Xơ Gan Mẫu (Quick Case Presets):
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1.25rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.6rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#b45309;"></i> Ca Gan Mật &amp; Xơ Gan Mẫu (Quick Presets):
                 </div>
                 <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                   ${CIRRHOSIS_PRESETS.map(p => `
-                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cirrhosis-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
-                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cirrhosis-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:5px 14px; background:var(--color-bg); border-color:var(--color-border);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:5px;"></span>
                       <strong>${escapeHtml(p.name)}</strong>
                     </button>
                   `).join('')}
@@ -645,72 +1125,198 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                 <div class="dsp-col-main">
                   <div class="dsp-card">
                     <div class="dsp-card-header">
-                      <h2 class="dsp-card-title"><i class="fa-solid fa-disease" style="color:#b45309;"></i> Đánh Giá Xơ Gan: Child-Pugh, MELD-Na, FIB-4 & ALBI</h2>
+                      <h2 class="dsp-card-title"><i class="fa-solid fa-disease" style="color:#b45309;"></i> Bảng Nhập Đánh Giá Xơ Gan: Child-Pugh, MELD-Na, FIB-4 &amp; ALBI</h2>
                     </div>
                     <div style="padding:1.25rem;">
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Bilirubin toàn phần (umol/L)</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrBili" value="85" min="2" max="800" />
+                      
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label"><i class="fa-solid fa-droplet" style="color:#f59e0b;"></i> Bilirubin Toàn Phần</span>
+                            <span class="dsp-spec-unit-badge">umol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrBili" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrBili" value="85" min="2" max="800" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrBili" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Child-Pugh:</span>
+                            <span class="dsp-spec-ref">&lt; 34 / 34-51 / &gt; 51</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Albumin (g/L)</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrAlb" value="24" min="10" max="60" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Albumin Máu</span>
+                            <span class="dsp-spec-unit-badge">g/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrAlb" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrAlb" value="24" min="10" max="60" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrAlb" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Child-Pugh:</span>
+                            <span class="dsp-spec-ref">&gt; 35 / 28-35 / &lt; 28</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">INR Đông máu</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrInr" value="2.1" step="0.1" min="0.8" max="10" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">INR Đông Máu</span>
+                            <span class="dsp-spec-unit-badge">INR</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrInr" data-step="-0.1">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrInr" value="2.1" step="0.1" min="0.8" max="10" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrInr" data-step="0.1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Child-Pugh:</span>
+                            <span class="dsp-spec-ref">&lt; 1.7 / 1.7-2.2 / &gt; 2.2</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Creatinine (umol/L)</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrCreat" value="180" min="30" max="1200" />
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Creatinine Máu</span>
+                            <span class="dsp-spec-unit-badge">umol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrCreat" data-step="-10">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrCreat" value="180" min="30" max="1200" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrCreat" data-step="10">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>MELD-Na 2016:</span>
+                            <span class="dsp-spec-ref">Hội chứng Gan Thận HRS</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Natri Na+ (mmol/L)</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrNa" value="124" min="100" max="170" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Natri (Na+) Máu</span>
+                            <span class="dsp-spec-unit-badge">mmol/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrNa" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrNa" value="124" min="100" max="170" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrNa" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Hạ Na máu xơ gan:</span>
+                            <span class="dsp-spec-ref">Tăng điểm MELD-Na</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Tiểu cầu (G/L)</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrPlt" value="65" min="5" max="800" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Tiểu Cầu (FIB-4)</span>
+                            <span class="dsp-spec-unit-badge">G/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrPlt" data-step="-10">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrPlt" value="65" min="5" max="800" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrPlt" data-step="10">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Lách to tăng áp cửa:</span>
+                            <span class="dsp-spec-ref">Tiểu cầu &lt; 100 G/L</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--3">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">AST / GOT (U/L)</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrAst" value="95" min="5" max="1000" />
+                      <div class="dsp-spec-grid" style="margin-bottom:0.85rem;">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">AST / GOT</span>
+                            <span class="dsp-spec-unit-badge">U/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrAst" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrAst" value="95" min="5" max="1000" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrAst" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>FIB-4 Index:</span>
+                            <span class="dsp-spec-ref">Tỷ số AST/ALT</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">ALT / GPT (U/L)</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrAlt" value="60" min="5" max="1000" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">ALT / GPT</span>
+                            <span class="dsp-spec-unit-badge">U/L</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrAlt" data-step="-5">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrAlt" value="60" min="5" max="1000" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrAlt" data-step="5">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Men gan ALT:</span>
+                            <span class="dsp-spec-ref">Chuẩn: &lt; 35 U/L</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Tuổi</label>
-                          <input class="dsp-input js-cirr-input" type="number" id="cirrAge" value="56" min="18" max="100" />
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Tuổi</span>
+                            <span class="dsp-spec-unit-badge">tuổi</span>
+                          </div>
+                          <div class="dsp-spec-input-wrap">
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrAge" data-step="-1">−</button>
+                            <input class="dsp-spec-input js-cirr-input" type="number" id="cirrAge" value="56" min="18" max="100" />
+                            <button type="button" class="dsp-spec-step-btn js-step-btn" data-target="cirrAge" data-step="1">+</button>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>FIB-4 Index:</span>
+                            <span class="dsp-spec-ref">Hệ số tuổi</span>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="dsp-form-row dsp-form-row--2">
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Mức độ Cổ trướng (Báng bụng)</label>
-                          <select class="dsp-select js-cirr-input" id="cirrAscites">
-                            <option value="none">Không có cổ trướng (1 điểm)</option>
-                            <option value="mild">Cổ trướng nhẹ / lượng ít (2 điểm)</option>
-                            <option value="moderate_severe" selected>Cổ trướng vừa đến nhiều / căng (3 điểm)</option>
-                          </select>
+                      <div class="dsp-spec-grid">
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Mức Độ Cổ Trướng (Báng Bụng)</span>
+                            <span class="dsp-spec-unit-badge">Ascites</span>
+                          </div>
+                          <div style="padding:0.25rem 0;">
+                            <select class="dsp-select js-cirr-input" id="cirrAscites" style="font-weight:700;">
+                              <option value="none">Không có cổ trướng (1 điểm)</option>
+                              <option value="mild">Cổ trướng nhẹ / lượng ít (2 điểm)</option>
+                              <option value="moderate_severe" selected>Cổ trướng vừa đến nhiều / căng (3 điểm)</option>
+                            </select>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Thăm khám / Siêu âm:</span>
+                            <span class="dsp-spec-ref">Child-Pugh</span>
+                          </div>
                         </div>
-                        <div class="dsp-form-group">
-                          <label class="dsp-label">Bệnh Não Gan (Hôn mê gan)</label>
-                          <select class="dsp-select js-cirr-input" id="cirrEnceph">
-                            <option value="none">Không có bệnh não gan (1 điểm)</option>
-                            <option value="grade_1_2" selected>Độ 1 - 2: Rối loạn giấc ngủ, lơ mơ nhẹ (2 điểm)</option>
-                            <option value="grade_3_4">Độ 3 - 4: Lú lẫn nặng, hôn mê (3 điểm)</option>
-                          </select>
+
+                        <div class="dsp-spec-tile">
+                          <div class="dsp-spec-header">
+                            <span class="dsp-spec-label">Bệnh Não Gan (Hôn Mê Gan)</span>
+                            <span class="dsp-spec-unit-badge">Encephalopathy</span>
+                          </div>
+                          <div style="padding:0.25rem 0;">
+                            <select class="dsp-select js-cirr-input" id="cirrEnceph" style="font-weight:700;">
+                              <option value="none">Không có bệnh não gan (1 điểm)</option>
+                              <option value="grade_1_2" selected>Độ 1 - 2: Rối loạn giấc ngủ, lơ mơ nhẹ (2 điểm)</option>
+                              <option value="grade_3_4">Độ 3 - 4: Lú lẫn nặng, hôn mê (3 điểm)</option>
+                            </select>
+                          </div>
+                          <div class="dsp-spec-range">
+                            <span>Tiêu chuẩn West Haven:</span>
+                            <span class="dsp-spec-ref">Child-Pugh</span>
+                          </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -774,6 +1380,36 @@ export function mountStudiosController(profileId: string): void {
         if (p) p.style.display = 'block';
         recalcCirrhosis();
       }
+    });
+  });
+
+  // 1.1 Stepper buttons [-] / [+] handler
+  document.querySelectorAll<HTMLButtonElement>('.js-step-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = btn.getAttribute('data-target');
+      const stepVal = parseFloat(btn.getAttribute('data-step') || '0');
+      if (!targetId || isNaN(stepVal)) return;
+
+      const input = document.getElementById(targetId) as HTMLInputElement;
+      if (!input) return;
+
+      let currentVal = parseFloat(input.value) || 0;
+      let min = input.min !== '' ? parseFloat(input.min) : -Infinity;
+      let max = input.max !== '' ? parseFloat(input.max) : Infinity;
+
+      let newVal = currentVal + stepVal;
+      if (newVal < min) newVal = min;
+      if (newVal > max) newVal = max;
+
+      // Giữ số chữ số thập phân phù hợp
+      if (Math.abs(stepVal) < 1) {
+        input.value = (Math.round(newVal * 100) / 100).toFixed(stepVal.toString().split('.')[1]?.length || 2);
+      } else {
+        input.value = Math.round(newVal).toString();
+      }
+
+      input.dispatchEvent(new Event('input', { bubbles: true }));
     });
   });
 

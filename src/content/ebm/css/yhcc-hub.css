@@ -1093,6 +1093,9 @@
         gap: 0.75rem !important;
         margin-top: 1.25rem !important;
       }
+      .ebm-bento-main-grid {
+        grid-template-columns: 1fr !important;
+      }
       .ebm-module-nav-grid {
         grid-template-columns: 1fr !important;
         gap: 0.65rem !important;
@@ -1121,3 +1124,345 @@
         grid-template-columns: 1fr !important;
       }
     }
+
+    /* ============================================================
+       EBM PRO SUITE $2000 SPECIFIC COMPONENTS & INTERACTIVE STYLES
+    ============================================================ */
+
+    /* EBM BENTO MAIN 4 MODULES GRID */
+    .ebm-bento-main-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.15rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .ebm-bento-card-pro {
+      position: relative;
+      border-radius: 16px;
+      padding: 1.35rem 1.5rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid var(--hub-border);
+      background: var(--hub-surface);
+      color: var(--hub-text);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+    }
+
+    .ebm-bento-card-pro::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      background: radial-gradient(circle at 90% 10%, var(--card-glow, rgba(2, 132, 199, 0.15)), transparent 60%);
+    }
+
+    .ebm-bento-card-pro:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+      border-color: var(--card-accent, var(--hub-blue));
+    }
+
+    .ebm-bento-card-pro:hover::before {
+      opacity: 1;
+    }
+
+    .ebm-bento-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+
+    .ebm-bento-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      background: var(--card-icon-bg, rgba(2, 132, 199, 0.1));
+      color: var(--card-accent, var(--hub-blue));
+      transition: transform 0.3s ease;
+    }
+
+    .ebm-bento-card-pro:hover .ebm-bento-icon-box {
+      transform: scale(1.1) rotate(-4deg);
+    }
+
+    .ebm-bento-badge-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: var(--card-icon-bg, rgba(2, 132, 199, 0.1));
+      color: var(--card-accent, var(--hub-blue));
+    }
+
+    .ebm-bento-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 0 0 0.4rem 0;
+      color: var(--hub-text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ebm-bento-desc {
+      font-size: 0.82rem;
+      color: var(--hub-text-muted);
+      line-height: 1.5;
+      margin: 0 0 1rem 0;
+    }
+
+    .ebm-bento-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .ebm-bento-tag-item {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: var(--hub-surface-2);
+      border: 1px solid var(--hub-border);
+      color: var(--hub-text-muted);
+    }
+
+    .ebm-bento-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--card-accent, var(--hub-blue));
+      transition: gap 0.2s ease;
+    }
+
+    .ebm-bento-card-pro:hover .ebm-bento-action-btn {
+      gap: 0.75rem;
+    }
+
+    /* 3D PYRAMID 6S STYLES */
+    .ebm-pyramid-tier-btn {
+      width: 100%;
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+      outline: none;
+    }
+
+    .ebm-pyramid-tier-bar {
+      margin: 0 auto;
+      border-radius: 8px;
+      padding: 0.6rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.76rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ebm-pyramid-tier-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .ebm-pyramid-tier-btn:hover .ebm-pyramid-tier-bar::after,
+    .ebm-pyramid-tier-btn.is-active .ebm-pyramid-tier-bar::after {
+      left: 100%;
+    }
+
+    .ebm-pyramid-tier-btn:hover .ebm-pyramid-tier-bar,
+    .ebm-pyramid-tier-btn.is-active .ebm-pyramid-tier-bar {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      filter: brightness(1.12);
+    }
+
+    .ebm-pyramid-tier-btn.is-active .ebm-pyramid-tier-bar {
+      border: 2px solid #ffffff;
+    }
+
+    /* EVIDENCE INSPECTOR BOX */
+    .ebm-inspector-card {
+      background: var(--hub-surface-2);
+      border: 1px solid var(--hub-border);
+      border-radius: 12px;
+      padding: 1rem 1.15rem;
+      margin-top: 1rem;
+      animation: dspFadeIn 0.3s ease;
+    }
+
+    .ebm-inspector-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .ebm-inspector-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--hub-text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .ebm-inspector-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: var(--hub-blue-light);
+      color: var(--hub-blue);
+    }
+
+    .ebm-inspector-body {
+      font-size: 0.78rem;
+      color: var(--hub-text-muted);
+      line-height: 1.5;
+    }
+
+    /* SPECIALTY FILTER CHIPS */
+    .ebm-spec-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .ebm-spec-chip {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      border: 1px solid var(--hub-border);
+      background: var(--hub-surface);
+      color: var(--hub-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .ebm-spec-chip:hover {
+      background: var(--hub-surface-2);
+      color: var(--hub-text);
+      border-color: var(--hub-blue);
+    }
+
+    .ebm-spec-chip.is-active {
+      background: var(--hub-blue);
+      color: #ffffff;
+      border-color: var(--hub-blue);
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+
+    /* BEDSIDE QUICK EBM CALCULATOR BOX */
+    .ebm-quick-calc-box {
+      background: var(--hub-surface);
+      border: 1px solid var(--hub-border);
+      border-radius: 14px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .ebm-quick-calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .ebm-calc-input-group label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--hub-text-muted);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .ebm-calc-input-group input {
+      width: 100%;
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 0.4rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--hub-border);
+      background: var(--hub-surface-2);
+      color: var(--hub-text);
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .ebm-calc-input-group input:focus {
+      border-color: var(--hub-blue);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+    }
+
+    .ebm-calc-result-tile {
+      background: rgba(2, 132, 199, 0.06);
+      border: 1px dashed rgba(2, 132, 199, 0.3);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .ebm-calc-val-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ebm-calc-val-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--hub-blue);
+    }
+
+    .ebm-calc-val-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--hub-text-muted);
+      text-transform: uppercase;
+    }
+
+    @keyframes dspFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
