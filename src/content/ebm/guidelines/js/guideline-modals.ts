@@ -430,6 +430,9 @@ export function processJSONImport(rawText?: string): void {
     checkedBatch.forEach(b => {
       const study = b.item;
       if (study && study.title) {
+        if (!study.createdAt && !(study as any).created_at) {
+          study.createdAt = new Date().toISOString();
+        }
         window.studies.unshift(study);
         if (window.dbSaveStudy) window.dbSaveStudy(study);
         count++;
@@ -648,7 +651,8 @@ export function executeDuplicateImport(): void {
     } else {
       const newStudy = {
         ...newItem,
-        id: (matched && matched.id === newItem.id) ? (window.generateId ? window.generateId() : 'study_' + Date.now() + Math.random().toString(36).substr(2, 5)) : (newItem.id || (window.generateId ? window.generateId() : 'study_' + Date.now()))
+        id: (matched && matched.id === newItem.id) ? (window.generateId ? window.generateId() : 'study_' + Date.now() + Math.random().toString(36).substr(2, 5)) : (newItem.id || (window.generateId ? window.generateId() : 'study_' + Date.now())),
+        createdAt: newItem.createdAt || (newItem as any).created_at || new Date().toISOString()
       };
       window.studies.unshift(newStudy);
       if (window.dbSaveStudy) window.dbSaveStudy(newStudy);

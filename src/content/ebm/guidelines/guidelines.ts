@@ -163,17 +163,44 @@ export function calculateNNT(): void {
   resEl.textContent = `${nnt} (ARR: ${(arr * 100).toFixed(1)}%)`;
 }
 
+function getStudyRecencyTimestamp(s: any): number {
+  const rawTime = s.createdAt || s.created_at;
+  if (rawTime) {
+    const parsed = new Date(rawTime).getTime();
+    if (!isNaN(parsed) && parsed > 0) return parsed;
+  }
+  if (typeof s.id === 'string') {
+    const match = s.id.match(/study_(\d{10,13})/);
+    if (match && match[1]) {
+      const idTime = parseInt(match[1], 10);
+      if (!isNaN(idTime) && idTime > 1000000000000) return idTime;
+    }
+  }
+  const y = Number(s.year) || 2020;
+  return new Date(y, 0, 1).getTime();
+}
+
 export function renderUpdates(): void {
   const container = document.getElementById('updates-list') || document.getElementById('recent-updates-container');
   if (!container) return;
 
   const studies = window.studies || [];
-  const latestStudies = [...studies].sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0)).slice(0, 4);
-
-  if (latestStudies.length === 0) {
-    container.innerHTML = `<div style="font-size:0.8rem; color:var(--text-muted); padding:0.5rem;">Chưa có cập nhật mới nào.</div>`;
+  if (studies.length === 0) {
+    container.innerHTML = `<div style="font-size:0.8rem; color:var(--text-muted); padding:0.5rem 1rem;">Chưa có cập nhật mới nào.</div>`;
     return;
   }
+
+  // Sắp xếp ưu tiên:
+  // 1. Bài mới nạp gần đây nhất vào hệ sinh thái (theo createdAt / created_at / ID timestamp)
+  // 2. Nếu cùng thời gian: xếp theo năm công bố (year) mới nhất
+  const latestStudies = [...studies].sort((a, b) => {
+    const timeB = getStudyRecencyTimestamp(b);
+    const timeA = getStudyRecencyTimestamp(a);
+    if (timeB !== timeA) {
+      return timeB - timeA;
+    }
+    return (Number(b.year) || 0) - (Number(a.year) || 0);
+  }).slice(0, 4);
 
   const html = latestStudies.map(s => {
     const specObj = window.SPECIALTIES && window.SPECIALTIES[s.specialty] ? window.SPECIALTIES[s.specialty] : { name: s.specialty || 'N/A', color: '#0284c7', bg: '#f0f9ff' };
@@ -190,7 +217,7 @@ export function renderUpdates(): void {
   }).join('');
 
   container.innerHTML = `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; width: 100%;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; width: 100%; padding: 0.75rem 1rem;">
       ${html}
     </div>
   `;
