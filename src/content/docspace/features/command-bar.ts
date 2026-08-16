@@ -200,6 +200,19 @@ export class ClinicalCommandBar {
     // 5. DocSpace Core Features
     commands.push(
       {
+        id: 'feat_chronic_care',
+        title: 'Quản Lý Bệnh Mạn Tính & Ngoại Trú (Chronic Care)',
+        category: 'feature',
+        categoryLabel: 'Tính năng DocSpace',
+        icon: 'fa-solid fa-heart-pulse',
+        description: 'Theo dõi đường cong HbA1c, Huyết áp, eGFR, ACR & Cảnh báo tầm soát biến chứng định kỳ',
+        badge: 'Mạn tính',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/chronic-care';
+        }
+      },
+      {
         id: 'feat_soap',
         title: 'Sổ Tay Bệnh Án SOAP Digital',
         category: 'feature',
@@ -236,6 +249,84 @@ export class ClinicalCommandBar {
         action: () => {
           this.close();
           window.location.hash = '#/docspace/oncall';
+        }
+      },
+      {
+        id: 'feat_protocol',
+        title: 'Kho Phác Đồ Điều Trị Lâm Sàng Toàn Năng',
+        category: 'feature',
+        categoryLabel: 'Tính năng DocSpace',
+        icon: 'fa-solid fa-book-medical',
+        description: 'Tra cứu & nhân bản 16+ phác đồ cấp cứu & nội khoa chuẩn Bộ Y tế, EBM',
+        badge: 'Phác đồ',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/protocol';
+        }
+      },
+      {
+        id: 'studio_abg',
+        title: 'ABG Pro Studio — Khí Máu Động Mạch & Toan Kiềm',
+        category: 'score',
+        categoryLabel: 'Clinical Studio',
+        icon: 'fa-solid fa-droplet',
+        description: 'Phân tích toan kiềm 6 bước, Anion Gap hiệu chỉnh, P/F ratio, biểu đồ Davenport SVG',
+        badge: 'Studio',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/studios?tab=abg';
+        }
+      },
+      {
+        id: 'studio_ecg',
+        title: 'ECG Pro Studio — 12 Chuyển Đạo & Trục Điện Tim Vector',
+        category: 'score',
+        categoryLabel: 'Clinical Studio',
+        icon: 'fa-solid fa-heart-pulse',
+        description: 'Tính góc trục điện tim α 360°, QTc Bazett/Fridericia, Sgarbossa LBBB, Dày thất',
+        badge: 'Studio',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/studios?tab=ecg';
+        }
+      },
+      {
+        id: 'studio_electrolyte',
+        title: 'Electrolyte & Fluid Studio — Bù Natri & Kali An Toàn',
+        category: 'score',
+        categoryLabel: 'Clinical Studio',
+        icon: 'fa-solid fa-flask',
+        description: 'Tính Na hiệu chỉnh, FWD, tốc độ truyền NaCl 3% & Cảnh báo phòng tránh hủy myelin CPM',
+        badge: 'Studio',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/studios?tab=electrolyte';
+        }
+      },
+      {
+        id: 'studio_renal',
+        title: 'Renal & Drug Dosing Studio — Thận & Hiệu Chỉnh Liều Thuốc',
+        category: 'score',
+        categoryLabel: 'Clinical Studio',
+        icon: 'fa-solid fa-dna',
+        description: 'CKD-EPI 2021, Cockcroft-Gault & Bảng tự động chỉnh liều 15+ kháng sinh và thuốc độc thận',
+        badge: 'Studio',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/studios?tab=renal';
+        }
+      },
+      {
+        id: 'studio_cardio',
+        title: 'Cardio Risk & Lipid Studio — Nguy Cơ Tim Mạch & Đích LDL-C',
+        category: 'score',
+        categoryLabel: 'Clinical Studio',
+        icon: 'fa-solid fa-chart-pie',
+        description: 'Phân tầng nguy cơ SCORE2 / ASCVD 10 năm & Mục tiêu hạ LDL-C theo ESC/AHA',
+        badge: 'Studio',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/studios?tab=cardio';
         }
       }
     );

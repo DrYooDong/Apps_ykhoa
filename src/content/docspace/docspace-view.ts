@@ -24,7 +24,8 @@ export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
     title: 'Tri thức & Phác đồ',
     icon: 'fa-solid fa-book-medical',
     items: [
-      { id: 'protocol', label: 'Phác đồ Điều trị',     href: '#/docspace/protocol', icon: 'fa-solid fa-clipboard-list', phase: 1 },
+      { id: 'studios',  label: 'Clinical Studios',     href: '#/docspace/studios',  icon: 'fa-solid fa-flask-vial',     phase: 1, badgeText: 'Pro' },
+      { id: 'protocol', label: 'Kho Phác đồ Điều trị', href: '#/docspace/protocol', icon: 'fa-solid fa-book-medical',   phase: 1 },
       { id: 'notes',    label: 'Ghi chú Lâm sàng',     href: '#/docspace/notes',    icon: 'fa-solid fa-note-sticky',    phase: 1 },
       { id: 'links',    label: 'Liên kết Nhanh',       href: '#/docspace/links',    icon: 'fa-solid fa-link',           phase: 1 },
     ],
@@ -198,6 +199,13 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
 
           <!-- Stats Bento Grid -->
           <div class="dsp-stats-grid">
+            <a href="#/docspace/chronic-care" class="dsp-stat-card dsp-stat-chronic" style="border-left: 3px solid #ef4444;">
+              <div class="dsp-stat-icon" style="color:#ef4444;"><i class="fa-solid fa-heart-pulse"></i></div>
+              <div class="dsp-stat-body">
+                <div class="dsp-stat-value">${stats.chronicCount || 0}</div>
+                <div class="dsp-stat-label">Bệnh mạn tính</div>
+              </div>
+            </a>
             <a href="#/docspace/soap" class="dsp-stat-card dsp-stat-soap">
               <div class="dsp-stat-icon"><i class="fa-solid fa-notes-medical"></i></div>
               <div class="dsp-stat-body">
@@ -227,10 +235,10 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
               </div>
             </a>
             <a href="#/docspace/protocol" class="dsp-stat-card dsp-stat-protocol">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+              <div class="dsp-stat-icon"><i class="fa-solid fa-book-medical"></i></div>
               <div class="dsp-stat-body">
                 <div class="dsp-stat-value">${stats.protocolCount}</div>
-                <div class="dsp-stat-label">Phác đồ cá nhân</div>
+                <div class="dsp-stat-label">Kho Phác đồ</div>
               </div>
             </a>
           </div>

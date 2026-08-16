@@ -40,6 +40,14 @@ export async function renderPatientDemographicsView(profileId: string): Promise<
                 ${p.allergies.map(a => `<span class="dsp-badge" style="background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca;"><i class="fa-solid fa-triangle-exclamation"></i> Dị ứng: ${escapeHtml(a.allergen)}</span>`).join(' ')}
               </div>
             ` : ''}
+            <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
+              <a href="#/docspace/chronic-care" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size: 0.72rem; padding: 2px 6px; color: #ef4444;" title="Theo dõi diễn tiến ĐTĐ, THA, CKD">
+                <i class="fa-solid fa-heart-pulse"></i> Hồ sơ Mạn tính
+              </a>
+              <a href="#/docspace/soap" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size: 0.72rem; padding: 2px 6px; color: var(--color-primary);" title="Mở sổ tay SOAP">
+                <i class="fa-solid fa-notes-medical"></i> Sổ tay SOAP
+              </a>
+            </div>
           </div>
         </div>
       `).join('')

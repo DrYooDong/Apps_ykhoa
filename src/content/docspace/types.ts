@@ -188,9 +188,13 @@ export interface PersonalProtocol {
   doctorId: string;
   title: string;
   specialty?: string;
+  specialtyKey?: string;   // 'emergency' | 'cardio' | 'pulmo' | 'gi' | 'endo' | 'neuro' | 'infect' | 'renal'
+  summary?: string;        // Tóm tắt ngắn chỉ định
+  icdCodes?: string[];     // Mã ICD-10 liên quan (VD: ['R57.2', 'A41.9'])
   steps: ProtocolStep[];
   warnings?: string[];
   references?: string[];
+  isSystemMaster?: boolean;// Đánh dấu nếu là phác đồ chuẩn từ Kho Mẫu
   createdAt: string;
   updatedAt: string;
   deletedAt?: string;
@@ -198,8 +202,10 @@ export interface PersonalProtocol {
 
 export interface ProtocolStep {
   order: number;
-  text: string;
+  title?: string;          // Tiêu đề bước (VD: "Bước 1: Bù dịch tinh thể")
+  text: string;            // Nội dung chi tiết & liều thuốc
   isAlert?: boolean;
+  timeframe?: string;      // Khung thời gian (VD: "Trong 15-30 phút đầu", "Giờ thứ 1")
 }
 
 export type ProtocolNodeType = 'lookup' | 'branch' | 'result' | 'action';

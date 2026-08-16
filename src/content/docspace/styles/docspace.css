@@ -3415,3 +3415,167 @@ body.dsp-active .floating-action-dock,
 
 .dsp-text-success { color: #10b981 !important; }
 .dsp-text-danger { color: #ef4444 !important; }
+
+/* ── MASTER CLINICAL PROTOCOL VAULT ────────────────────────────── */
+.dsp-proto-tab-switcher {
+  display: flex;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 4px;
+  border-radius: 10px;
+  gap: 4px;
+}
+
+.dsp-proto-tab-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.dsp-proto-tab-btn:hover {
+  color: var(--color-text);
+  background: rgba(2, 132, 199, 0.06);
+}
+
+.dsp-proto-tab-btn.is-active {
+  background: var(--color-primary);
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+}
+
+.dsp-master-filter-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.dsp-specialty-pills {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.dsp-specialty-pill {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.dsp-specialty-pill:hover {
+  border-color: var(--color-primary);
+  background: rgba(2, 132, 199, 0.05);
+}
+
+.dsp-specialty-pill.is-active {
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+.dsp-master-search-bar {
+  display: flex;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0 12px;
+  gap: 8px;
+}
+
+.dsp-master-search-bar i {
+  color: var(--color-text-muted);
+}
+
+.dsp-master-search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  outline: none;
+}
+
+.dsp-master-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.dsp-master-proto-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dsp-master-proto-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+.dsp-master-proto-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.dsp-master-proto-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0 0 0.5rem;
+  line-height: 1.35;
+}
+
+.dsp-master-proto-summary {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  flex: 1;
+}
+
+.dsp-master-proto-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding: 0.75rem 0;
+  border-top: 1px dashed var(--color-border);
+  border-bottom: 1px dashed var(--color-border);
+  margin-bottom: 1rem;
+}
+
+.dsp-master-proto-actions {
+  display: flex;
+  gap: 0.5rem;
+}

@@ -33,6 +33,7 @@ import { signRecord, verifyRecordIntegrity } from './features/audit-shield';
 import { FhirAdapter } from './data/fhir-adapter';
 import { redactSoapRecord } from './ai/phi-redactor';
 import { PouchSyncAdapter } from './storage/pouch-adapter';
+import { MASTER_CLINICAL_PROTOCOLS, PROTOCOL_SPECIALTIES } from './data/master-protocols-data';
 
 // ─────────────────────────────────────────────
 // SAFE STORAGE & SECURITY HELPERS
@@ -691,6 +692,30 @@ export function deleteProtocol(profileId: string, id: string): void {
   }
 }
 
+export function getMasterProtocols(): PersonalProtocol[] {
+  return MASTER_CLINICAL_PROTOCOLS;
+}
+
+export function getMasterProtocolById(id: string): PersonalProtocol | null {
+  return MASTER_CLINICAL_PROTOCOLS.find(p => p.id === id) || null;
+}
+
+export function cloneMasterProtocol(profileId: string, masterId: string): PersonalProtocol | null {
+  const master = getMasterProtocolById(masterId);
+  if (!master) return null;
+
+  return saveProtocol(profileId, {
+    title: `${master.title} (Bản sao cá nhân)`,
+    specialty: master.specialty,
+    specialtyKey: master.specialtyKey,
+    summary: master.summary,
+    icdCodes: master.icdCodes ? [...master.icdCodes] : [],
+    steps: master.steps.map(s => ({ ...s })),
+    warnings: master.warnings ? [...master.warnings] : [],
+    references: master.references ? [...master.references] : [],
+  });
+}
+
 // ─────────────────────────────────────────────
 // SOAP DIGITAL WARD NOTEBOOK
 // ─────────────────────────────────────────────
@@ -1287,6 +1312,7 @@ export interface DocSpaceStats {
   drugCount: number;
   protocolCount: number;
   soapCount: number;
+  chronicCount?: number;
   lastBackupDays: number | null;
 }
 
@@ -1306,6 +1332,7 @@ export async function getStats(profileId: string): Promise<DocSpaceStats> {
     drugCount: getAllDrugEntries(profileId).length,
     protocolCount: getAllProtocols(profileId).length,
     soapCount: getAllSoapPatients(profileId).length,
+    chronicCount: getAllChronicPatients(profileId).length,
     lastBackupDays: daysSince,
   };
 }

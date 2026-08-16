@@ -23,6 +23,7 @@ import { renderChronicCareView, mountChronicCareController } from './features/ch
 import { renderNotepadView, mountNotepadController } from './features/notepad-view';
 import { renderProtocolView, mountProtocolController } from './features/protocol-view';
 import { renderLivingProtocolView, mountLivingProtocolController } from './features/living-protocol-view';
+import { renderStudiosView, mountStudiosController } from './features/studios-view';
 import { renderSimulationView, mountSimulationController } from './features/simulation-view';
 import { renderSyncModal, mountSyncController } from './features/p2p-sync-view';
 import { renderDependencyMapView, mountDependencyMapController } from './features/dependency-map-view';
@@ -292,8 +293,18 @@ export function initDocSpaceRoutes(): void {
     });
   });
 
-  // Phase 2: Personal Protocol
-  router.register('/docspace/protocol', 'DocSpace — Phác Đồ Cá Nhân', () => {
+  // Phase 1: Clinical Studios Lab (100% Pure TypeScript)
+  router.register('/docspace/studios', 'DocSpace — Clinical Studios Lab (ABG, ECG, Electrolyte, Renal, Cardio)', () => {
+    requireProfile(async (pid) => {
+      const tabParam = (new URLSearchParams(window.location.hash.split('?')[1] || '').get('tab') || 'abg') as any;
+      await mountDocSpace(await renderStudiosView(pid, tabParam));
+      mountStudiosController(pid);
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // Phase 2: Kho Phác Đồ Điều Trị Toàn Năng (Master Protocol Vault)
+  router.register('/docspace/protocol', 'DocSpace — Kho Phác Đồ Điều Trị Lâm Sàng Toàn Năng', () => {
     requireProfile(async (pid) => {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
       await mountDocSpace(await renderProtocolView(pid, editId));

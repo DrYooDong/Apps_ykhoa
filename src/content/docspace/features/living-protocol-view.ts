@@ -33,7 +33,7 @@ export function renderLivingProtocolView(profileId: string, protocolId?: string)
         </div>
         <div style="display:flex; align-items:center; gap:0.5rem;">
           <a href="#/docspace/protocol" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-weight:600;">
-            <i class="fa-solid fa-clipboard-list"></i> Phác đồ Cá nhân
+            <i class="fa-solid fa-book-medical"></i> Kho Phác Đồ Lâm Sàng
           </a>
           <a href="#/docspace/living-protocols" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight:700;">
             <i class="fa-solid fa-network-wired" style="color:#fff;"></i> Phác đồ Động (AI Lab)

@@ -7,6 +7,7 @@ import {
   getAllSoapPatients, getSoapPatientById, saveSoapPatient, updateSoapPatient, deleteSoapPatient,
   getSoapSupabaseConfig, saveSoapSupabaseConfig, fetchAllSoapFromSupabase,
   addSoapDailyLog, switchSoapPatientDate, getProfile, getActiveProfile, saveSBAR, saveCase, getAllPatients,
+  getChronicPatientById,
   safeStorageGet, safeStorageSet
 } from '../storage';
 import { SoapPatientRecord, SoapPrescriptionItem } from '../types';
@@ -408,6 +409,10 @@ export async function renderSoapView(profileId: string, activePatientId?: string
                 <i class="fa-solid fa-cloud" style="color:${isSbConnected ? '#10b981' : '#94a3b8'};"></i>
                 <span>${isSbConnected ? 'Đã sync' : 'Sync'}</span>
               </button>
+
+              <a href="#/docspace/chronic-care" class="dsp-btn dsp-btn-sm dsp-btn-ghost" title="Mở Bảng Điều Khiển Bệnh Mạn Tính & Ngoại Trú" style="font-size:11px; padding:4px 8px; color:#ef4444;">
+                <i class="fa-solid fa-heart-pulse"></i> <span>Bệnh Mạn Tính</span>
+              </a>
 
               <button class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnExistingPatient" title="Lấy bệnh nhân từ danh sách nội trú" style="font-size:11px; padding:4px 8px;">
                 <i class="fa-solid fa-bed-pulse"></i> <span>Nội trú</span>
@@ -1850,4 +1855,61 @@ export function mountSoapController(profileId: string): void {
 
   // Khởi tạo các sự kiện AI & Protocol Bridge (SOAP ↔ Protocol)
   initSoapAiBridgeEvents(profileId);
+
+  // Tự động nạp dữ liệu từ phân hệ Bệnh Mạn Tính (Bidirectional Bridge)
+  const urlParams = new URLSearchParams(window.location.hash.split('?')[1] || '');
+  const fromChronicId = urlParams.get('from_chronic');
+  if (fromChronicId) {
+    const cp = getChronicPatientById(profileId, fromChronicId);
+    if (cp) {
+      const allSoap = getAllSoapPatients(profileId);
+      let targetSoap = allSoap.find(s => s.patientCode === cp.patientCode || s.fullName === cp.fullName);
+
+      const lastEnc = cp.encounters[cp.encounters.length - 1];
+      const sNotes = `[Tái khám Bệnh Mạn Tính]\n- Bệnh nhân ${cp.fullName} (${cp.age}t) đến khám định kỳ.\n- Mức độ tuân thủ thuốc: ${lastEnc?.adherenceLevel === 'good' ? 'Tốt' : lastEnc?.adherenceLevel === 'moderate' ? 'Trung bình' : 'Kém'}.\n- Triệu chứng: Không đau ngực, không khó thở khi nghỉ.`;
+      
+      const oParts: string[] = [];
+      if (lastEnc?.systolicBp) oParts.push(`Huyết áp: ${lastEnc.systolicBp}/${lastEnc.diastolicBp} mmHg | Mạch: ${lastEnc.heartRate || 75} l/p | Cân nặng: ${lastEnc.weightKg || '—'} kg`);
+      if (lastEnc?.hba1c) oParts.push(`HbA1c: ${lastEnc.hba1c}% | Đường huyết đói: ${lastEnc.fastingGlucose || '—'} mmol/L`);
+      if (lastEnc?.egfr) oParts.push(`eGFR: ${lastEnc.egfr} mL/p/1.73m² | Creatinine: ${lastEnc.creatinine || '—'} umol/L | ACR niệu: ${lastEnc.urineAcr || '—'} mg/g`);
+      if (lastEnc?.ldlC) oParts.push(`LDL-C: ${lastEnc.ldlC} mmol/L | Triglycerides: ${lastEnc.triglycerides || '—'} mmol/L`);
+      const oNotes = oParts.join('\n');
+
+      const aAssessment = `[Chẩn đoán]: ${cp.diagnosesLabels.join(', ')}\n[Đánh giá]: ${lastEnc?.hba1c && lastEnc.hba1c <= (cp.targetGoals.targetHba1c || 7.0) ? 'Đạt mục tiêu HbA1c' : 'Chưa đạt mục tiêu HbA1c'}. ${lastEnc?.systolicBp && lastEnc.systolicBp <= (cp.targetGoals.targetSystolicBp || 130) ? 'Huyết áp kiểm soát tốt' : 'Huyết áp chưa kiểm soát'}.`;
+      const pPlan = `[Toa thuốc duy trì]:\n${lastEnc?.currentMedications || 'Tiếp tục phác đồ cũ'}\n\n[Kế hoạch]: Tái khám định kỳ sau 1-3 tháng. Cần hoàn tất các xét nghiệm tầm soát biến chứng quá hạn.`;
+
+      if (!targetSoap) {
+        targetSoap = saveSoapPatient(profileId, {
+          patientCode: cp.patientCode,
+          bedNumber: 'PK-NgoạiTrú',
+          fullName: cp.fullName,
+          age: cp.age,
+          gender: cp.gender === 'male' ? 'nam' : 'nu',
+          medicalRecordNo: cp.patientCode,
+          admissionDiagnosis: cp.diagnosesLabels.join(', '),
+          currentDiagnosis: cp.diagnosesLabels.join(', '),
+          isEmrEntered: false,
+          soapStatus: 'da_lam',
+          dayOfIllness: 1,
+          sNotes,
+          oNotes,
+          aAssessment,
+          pPlan,
+          clsOrders: [],
+          clsResults: [],
+        });
+      } else {
+        updateSoapPatient(profileId, targetSoap.id, {
+          sNotes,
+          oNotes,
+          aAssessment,
+          pPlan,
+          soapStatus: 'da_lam',
+        });
+      }
+
+      // Mở ngay modal chỉnh sửa SOAP cho ca này
+      window.location.hash = `#/docspace/soap?edit=${targetSoap.id}`;
+    }
+  }
 }

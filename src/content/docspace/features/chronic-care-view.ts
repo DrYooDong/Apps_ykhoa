@@ -500,11 +500,17 @@ export async function renderChronicCareView(profileId: string, selectedPatientId
               </div>
             </div>
             <div class="dsp-chronic-hero-actions">
+              <button class="dsp-btn dsp-btn-primary dsp-btn-sm" id="btnCreateSoapFromChronic" data-patient-id="${activePatient.id}" style="background:linear-gradient(135deg, #0284c7, #2563eb); font-weight:700;">
+                <i class="fa-solid fa-notes-medical"></i> ⚡ Tạo SOAP Từ Ca Này
+              </button>
+              <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="btnCreateSbarFromChronic" data-patient-id="${activePatient.id}" title="Tạo tóm tắt SBAR để hội chẩn hoặc bàn giao">
+                <i class="fa-solid fa-file-waveform" style="color:var(--dsp-sky);"></i> Tạo SBAR
+              </button>
               <button class="dsp-btn dsp-btn-primary dsp-btn-sm" id="btnOpenAddEncounterModal" data-patient-id="${activePatient.id}">
-                <i class="fa-solid fa-plus"></i> Ghi nhận Lần khám mới
+                <i class="fa-solid fa-plus"></i> Lần khám mới
               </button>
               <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="btnOpenScreeningModal" data-patient-id="${activePatient.id}">
-                <i class="fa-solid fa-calendar-days"></i> Cập nhật Tầm soát
+                <i class="fa-solid fa-calendar-days"></i> Tầm soát
               </button>
             </div>
           </div>
@@ -1183,5 +1189,21 @@ export function mountChronicCareController(profileId: string): void {
 
     if (newPatModal) newPatModal.style.display = 'none';
     window.location.hash = `#/docspace/chronic-care?patient=${newPat.id}`;
+  });
+
+  // 6. Nút Tạo Bệnh án SOAP từ Ca Mạn tính (Chuyển tiếp 2 chiều sang SOAP)
+  document.getElementById('btnCreateSoapFromChronic')?.addEventListener('click', () => {
+    const pId = document.getElementById('btnCreateSoapFromChronic')?.getAttribute('data-patient-id');
+    if (pId) {
+      window.location.hash = `#/docspace/soap?from_chronic=${pId}`;
+    }
+  });
+
+  // 7. Nút Tạo SBAR từ Ca Mạn tính (Chuyển tiếp 2 chiều sang SBAR)
+  document.getElementById('btnCreateSbarFromChronic')?.addEventListener('click', () => {
+    const pId = document.getElementById('btnCreateSbarFromChronic')?.getAttribute('data-patient-id');
+    if (pId) {
+      window.location.hash = `#/docspace/sbar?from_chronic=${pId}`;
+    }
   });
 }
