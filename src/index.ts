@@ -177,7 +177,13 @@ import {
   initBiochemistryView,
   renderFormulaVaultView,
   renderPhysioReader,
-  renderPhysioHtmlReader
+  renderPhysioHtmlReader,
+  renderPhysiologySimulatorsView,
+  initPhysiologySimulators,
+  renderMetabolicNavigatorView,
+  initMetabolicNavigator,
+  renderPathoQuizView,
+  initPathoQuizView
 } from './content/pathophysiology';
 
 /**
@@ -301,6 +307,24 @@ function initializeRoutes(): void {
   router.register('/pathophysiology/formula-vault', 'Kho Công thức Sinh lý', () => {
     document.title = 'Kho Công thức Sinh lý – CliniPortal';
     mountToApp(renderFormulaVaultView());
+  });
+
+  router.register('/pathophysiology/simulators', 'Mô Phỏng Sinh Lý Tương Tác', () => {
+    document.title = 'Phòng Thí Nghiệm Mô Phỏng Sinh Lý – CliniPortal';
+    mountToApp(renderPhysiologySimulatorsView('nernst'));
+    initPhysiologySimulators();
+  });
+
+  router.register('/pathophysiology/metabolic-map', 'Bản Đồ Chuyển Hóa Tương Tác', () => {
+    document.title = 'Bản Đồ Chuyển Hóa & Hóa Sinh – CliniPortal';
+    mountToApp(renderMetabolicNavigatorView('glycolysis'));
+    initMetabolicNavigator();
+  });
+
+  router.register('/pathophysiology/quiz', 'Luyện Tập Ca Lâm Sàng & Flashcards Cơ Chế', () => {
+    document.title = 'Luyện Tập Cơ Chế Bệnh Sinh & Flashcards – CliniPortal';
+    mountToApp(renderPathoQuizView('cases'));
+    initPathoQuizView();
   });
 
   router.register('/pathophysiology/reader/:slug', 'Bài Giảng Sinh Lý Học', (params) => {

@@ -9,108 +9,144 @@ import '../../../css/components/module-dashboard.css';
 import '../../../css/components/physio-content.css';
 import '../../../css/components/formula-vault.css';
 import '../../../css/components/biochemistry-hub.css';
+import '../../../css/components/physio-promax-hub.css';
 import { BIOCHEMISTRY_DATA } from './data/biochemistry-data';
 import { BiochemistryBlock, BiochemistryTopic } from './types/biochemistry.types';
 
 export function renderBiochemistryView(): string {
   return `
-    <div class="main-wrapper" id="mainContent" style="width: 100%; max-width: 1520px; margin: 0 auto; padding-bottom: 3rem;">
+    <div class="promax-wrapper" id="mainContent">
 
       <!-- BREADCRUMB -->
       <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
         <a href="#/" style="color: inherit; text-decoration: none;">🏠 Trang chủ</a> &nbsp;/&nbsp; 
         <a href="#/pathophysiology" style="color: inherit; text-decoration: none;">Cơ Sở Y Khoa</a> &nbsp;/&nbsp; 
-        <span style="color: var(--color-primary, #0284c7); font-weight: 600;">Hóa Sinh Y Học & Chuyển Hóa (HS - CH)</span>
+        <span style="color: #8b5cf6; font-weight: 600;">Hóa Sinh Y Học & Chuyển Hóa (HS - CH)</span>
       </div>
 
-      <!-- HERO SECTION -->
-      <section class="hero-dashboard hero-physio" aria-labelledby="hero-title" style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0284c7 100%); margin-bottom: 1.5rem;">
-        <div class="tcm-hero-content">
-          <div class="hero-intro">
-            <h1 id="hero-title" style="color: #fff;">🧪 HÓA SINH Y HỌC & CHUYỂN HÓA</h1>
-            <p style="color: rgba(255,255,255,0.92);">Hệ thống hóa cấu trúc phân tử sinh học, động học enzym, năng lượng sinh học ty thể, chuyển hóa 4 đại phân tử và biện luận xét nghiệm lâm sàng tại giường bệnh (EBM & Clinical Biochemistry).</p>
+      <!-- PROMAX LUXURY HERO SECTION -->
+      <section class="promax-hero hero-biochem-theme" aria-labelledby="hero-title">
+        <div class="promax-hero-grid">
+          <div>
+            <div class="promax-badge-pulse">
+              <span class="pulse-dot"></span>
+              <span>Molecular Biochemistry & Clinical Diagnostics • Harper & Tietz Standards</span>
+            </div>
+            <h1 id="hero-title" class="promax-hero-title">
+              🧪 HÓA SINH Y HỌC & CHUYỂN HÓA
+            </h1>
+            <p class="promax-hero-desc">
+              Hệ thống hóa cấu trúc phân tử sinh học, động học enzym, năng lượng sinh học ti thể, chuyển hóa 4 đại phân tử và biện luận xét nghiệm lâm sàng tại giường bệnh (EBM & Clinical Biochemistry).
+            </p>
+
+            <!-- KPI Metric Bar -->
+            <div class="promax-kpi-bar">
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-cubes-stacked" style="font-size: 1.1rem; color: #c084fc;"></i>
+                <div>
+                  <div class="promax-kpi-num">7</div>
+                  <div class="promax-kpi-lbl">Khối Chuyên Đề</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-flask-vial" style="font-size: 1.1rem; color: #38bdf8;"></i>
+                <div>
+                  <div class="promax-kpi-num">31</div>
+                  <div class="promax-kpi-lbl">Bài Học Chi Tiết</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-lightbulb" style="font-size: 1.1rem; color: #fbbf24;"></i>
+                <div>
+                  <div class="promax-kpi-num">112+</div>
+                  <div class="promax-kpi-lbl">Clinical Pearls</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-diagram-project" style="font-size: 1.1rem; color: #34d399;"></i>
+                <div>
+                  <div class="promax-kpi-num">5 Maps</div>
+                  <div class="promax-kpi-lbl">Bản Đồ Chuyển Hóa</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="tcm-hero-decor">
-            <!-- Molecular Rings & Flask SVG Decor -->
-            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Hero Vector Artwork -->
+          <div class="tcm-hero-decor" style="display: flex; align-items: center; justify-content: center;">
+            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 140px; height: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">
               <circle cx="50" cy="50" r="38" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.6"/>
-              <!-- Hexagon Benzene Ring -->
-              <polygon points="50,22 72,35 72,61 50,74 28,61 28,35" stroke="#ffffff" stroke-width="3.5" fill="rgba(56,189,248,0.15)" stroke-linejoin="round"/>
-              <circle cx="50" cy="48" r="14" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4 3"/>
-              <!-- Atoms -->
-              <circle cx="50" cy="22" r="5" fill="#38bdf8"/>
-              <circle cx="72" cy="35" r="5" fill="#ffffff"/>
-              <circle cx="72" cy="61" r="5" fill="#38bdf8"/>
-              <circle cx="50" cy="74" r="5" fill="#ffffff"/>
-              <circle cx="28" cy="61" r="5" fill="#38bdf8"/>
-              <circle cx="28" cy="35" r="5" fill="#ffffff"/>
-              <!-- Chemical bond line -->
+              <polygon points="50,22 72,35 72,61 50,74 28,61 28,35" stroke="#ffffff" stroke-width="3.5" fill="rgba(255,255,255,0.15)" stroke-linejoin="round"/>
+              <circle cx="50" cy="48" r="14" stroke="#c084fc" stroke-width="2.5" stroke-dasharray="4 3"/>
+              <circle cx="50" cy="22" r="5.5" fill="#38bdf8"/>
+              <circle cx="72" cy="35" r="5.5" fill="#ffffff"/>
+              <circle cx="72" cy="61" r="5.5" fill="#38bdf8"/>
+              <circle cx="50" cy="74" r="5.5" fill="#ffffff"/>
+              <circle cx="28" cy="61" r="5.5" fill="#38bdf8"/>
+              <circle cx="28" cy="35" r="5.5" fill="#ffffff"/>
               <line x1="72" y1="35" x2="88" y2="25" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="88" cy="25" r="4.5" fill="#fbbf24"/>
+              <circle cx="88" cy="25" r="5" fill="#fbbf24"/>
             </svg>
-          </div>
-        </div>
-        <div class="hero-pattern"></div>
-      </section>
-
-      <!-- FEATURE BANNER -->
-      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
-        <div class="physio-step-card" style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
-          <div style="font-size: 2.2rem; background: rgba(2,132,199,0.1); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0;">🔬</div>
-          <div>
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(2,132,199,0.15); color: var(--color-primary, #0284c7); padding: 0.15rem 0.5rem; border-radius: 4px;">Chuẩn Y Khoa Toàn Diện</span>
-            <h4 style="margin: 0.2rem 0; color: var(--color-text, #0f172a); font-size: 1.05rem; font-weight: 700;">7 Khối Chuyên Đề & 31 Bài Học</h4>
-            <p style="margin: 0; font-size: 0.825rem; color: var(--color-text-muted, #64748b);">Tổng hòa 4 giáo trình: Hóa Sinh Y Học ĐHYD 2024, Harper 32nd, Clinical Biochemistry 7th & Pratt.</p>
-          </div>
-        </div>
-
-        <div class="physio-step-card" style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
-          <div style="font-size: 2.2rem; background: rgba(245,158,11,0.1); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0;">💡</div>
-          <div>
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(245,158,11,0.15); color: #d97706; padding: 0.15rem 0.5rem; border-radius: 4px;">EBM & Clinical Pearls</span>
-            <h4 style="margin: 0.2rem 0; color: var(--color-text, #0f172a); font-size: 1.05rem; font-weight: 700;">112+ Điểm Ngọc & Biện Luận Xét Nghiệm</h4>
-            <p style="margin: 0; font-size: 0.825rem; color: var(--color-text-muted, #64748b);">Gắn liền cơ chế enzym với bệnh lý lâm sàng (DKA, Gout, Suy gan, Hội chứng thận hư, Troponin HS).</p>
           </div>
         </div>
       </section>
 
-      <!-- CONTROL BAR / TOOLBAR -->
-      <div class="dashboard-controls" style="margin-bottom: 1.5rem;">
-        <div class="search-box-container">
-          <span class="search-icon-svg">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
-              fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
-          <input type="text" id="lesson-search" placeholder="Tìm kiếm bài học hóa sinh (Krebs, Đường phân, Enzym, PFK-1, Bilirubin, Acid Uric, Troponin, PCR...)..."
-            aria-label="Tìm kiếm chuyên đề hóa sinh">
-          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
-            style="display: none;">&times;</button>
+      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ TƯƠNG TÁC CAO CẤP) -->
+      <section class="promax-bento-grid">
+        <a href="#/pathophysiology/metabolic-map" class="promax-bento-card" style="--bento-color: #8b5cf6; --bento-bg: rgba(139,92,246,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <span class="promax-bento-tag">Metabolic Studio</span>
+            <h4 class="promax-bento-title">Bản Đồ Chuyển Hóa Phân Tử</h4>
+            <p class="promax-bento-desc">Khám phá tương tác 5 chu trình năng lượng, tra cứu enzyme, vitamin & đích thuốc.</p>
+          </div>
+        </a>
+
+        <a href="#/pathophysiology/quiz" class="promax-bento-card" style="--bento-color: #10b981; --bento-bg: rgba(16,185,129,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <span class="promax-bento-tag">Cascade Reasoning</span>
+            <h4 class="promax-bento-title">Thử Thách Ca Bệnh & Flashcards</h4>
+            <p class="promax-bento-desc">Luyện tập chuỗi cơ chế chuyển hóa, rối loạn di truyền & Spaced Repetition.</p>
+          </div>
+        </a>
+
+        <a href="#/pathophysiology/simulators" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <span class="promax-bento-tag">Real-Time Canvas</span>
+            <h4 class="promax-bento-title">Mô Phỏng Sinh Lý Động</h4>
+            <p class="promax-bento-desc">Thí nghiệm Nernst, Starling, Frank-Starling & Toan kiềm trực quan.</p>
+          </div>
+        </a>
+
+        <a href="#/pathophysiology/formula-vault" class="promax-bento-card" style="--bento-color: #f59e0b; --bento-bg: rgba(245,158,11,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-calculator"></i></div>
+          <div>
+            <span class="promax-bento-tag">JSON Vault</span>
+            <h4 class="promax-bento-title">Kho Công Thức Định Lượng</h4>
+            <p class="promax-bento-desc">Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính.</p>
+          </div>
+        </a>
+      </section>
+
+      <!-- PROMAX TOOLBAR & SEARCH -->
+      <div class="promax-toolbar">
+        <div class="promax-search-wrap">
+          <i class="fa-solid fa-magnifying-glass promax-search-icon"></i>
+          <input type="text" id="lesson-search" class="promax-search-input" placeholder="Tìm kiếm bài học hóa sinh (Krebs, Đường phân, Enzym, PFK-1, Bilirubin, Acid Uric, Troponin...)..." aria-label="Tìm kiếm chuyên đề hóa sinh">
+          <span class="promax-shortcut-pill">Ctrl + K</span>
+          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm" style="display: none; position: absolute; right: 4.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--color-text-muted);">&times;</button>
         </div>
-        <div class="view-toggle-container">
-          <span class="toggle-label">Chế độ xem:</span>
+
+        <div class="view-toggle-container" style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="toggle-label" style="font-size: 0.825rem; font-weight: 600; color: var(--color-text-muted);">Hiển thị:</span>
           <div class="toggle-buttons">
             <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
-              </svg>
+              <i class="fa-solid fa-grip"></i>
             </button>
             <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách" aria-label="Xem dạng danh sách">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="8" y1="6" x2="21" y2="6"></line>
-                <line x1="8" y1="12" x2="21" y2="12"></line>
-                <line x1="8" y1="18" x2="21" y2="18"></line>
-                <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                <line x1="3" y1="18" x2="3.01" y2="18"></line>
-              </svg>
+              <i class="fa-solid fa-list-ul"></i>
             </button>
           </div>
         </div>

@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Pathophysiology Quiz & Flashcards CSS — CliniPortal 2.0
+   Case-Based Mechanism Challenges & Interactive Spaced Repetition Cards
+   ========================================================================== */
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.quiz-mode-nav {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--color-border, #e2e8f0);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-mode-btn {
+  padding: 0.65rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #1e293b);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.quiz-mode-btn:hover {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.quiz-mode-btn.active {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* Case Challenge Card Layout */
+.quiz-case-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+  margin-bottom: 1.25rem;
+}
+
+.quiz-case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-vignette {
+  background: rgba(2, 132, 199, 0.05);
+  border-left: 4px solid var(--color-primary, #0284c7);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  font-size: 0.925rem;
+  line-height: 1.6;
+  color: var(--color-text, #1e293b);
+}
+
+/* Option Choices */
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-option-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #1e293b);
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  transition: all 0.15s ease;
+}
+
+.quiz-option-btn:hover {
+  background: rgba(2, 132, 199, 0.05);
+  border-color: var(--color-primary, #0284c7);
+}
+
+.quiz-option-btn.correct {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: #10b981;
+  color: #065f46;
+  font-weight: 600;
+}
+
+.quiz-option-btn.incorrect {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.quiz-option-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-border, #e2e8f0);
+  color: var(--color-text, #334155);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Mechanism Explanation Box */
+.quiz-explanation-box {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+  display: none;
+}
+
+.quiz-explanation-box.show {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Flashcard 3D Flip Interface */
+.flashcard-wrapper {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 650px;
+  height: 380px;
+  margin: 0 auto 1.5rem;
+  cursor: pointer;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard-wrapper.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--color-border, #e2e8f0);
+}
+
+.flashcard-front {
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+}
+
+.flashcard-back {
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  transform: rotateY(180deg);
+  border-color: #10b981;
+}
+
+/* Flashcard Rating Buttons */
+.flashcard-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.flashcard-rate-btn {
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 0.15s ease;
+}
+
+.flashcard-rate-btn:hover {
+  transform: scale(1.05);
+}
+
+.rate-hard { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+.rate-good { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.rate-easy { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] .quiz-case-card,
+[data-theme="dark"] .quiz-option-btn,
+[data-theme="dark"] .flashcard-front,
+[data-theme="dark"] .flashcard-back {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .quiz-vignette {
+  background: rgba(2, 132, 199, 0.1);
+}

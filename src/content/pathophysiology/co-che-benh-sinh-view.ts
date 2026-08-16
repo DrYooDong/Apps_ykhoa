@@ -7,10 +7,11 @@
 
 import '../../../css/components/module-dashboard.css';
 import '../../../css/components/physio-content.css';
+import '../../../css/components/physio-promax-hub.css';
 
 export function renderCoCheBenhSinhView(): string {
   return `
-    <div class="main-wrapper" id="mainContent" style="width: 100%; max-width: 1520px; margin: 0 auto; padding-bottom: 3rem;">
+    <div class="promax-wrapper" id="mainContent">
 
       <!-- BREADCRUMB -->
       <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
@@ -19,63 +20,122 @@ export function renderCoCheBenhSinhView(): string {
         <span style="color: #059669; font-weight: 600;">Cơ Chế Bệnh Sinh & Sinh Lý Bệnh (CCBS - SBL)</span>
       </div>
 
-      <!-- HERO SECTION -->
-      <section class="hero-dashboard hero-physio" style="background: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%); margin-bottom: 1.5rem;" aria-labelledby="hero-title">
-        <div class="tcm-hero-content">
-          <div class="hero-intro">
-            <h1 id="hero-title" style="color: #fff;">🔬 CƠ CHẾ BỆNH SINH & SINH LÝ BỆNH</h1>
-            <p style="color: rgba(255,255,255,0.9);">Hệ thống hóa cơ chế bệnh sinh phân tử, rối loạn chức năng cơ quan và chuỗi bệnh lý căn nguyên qua các chuyên khoa lâm sàng.</p>
+      <!-- PROMAX LUXURY HERO SECTION -->
+      <section class="promax-hero hero-patho-theme" aria-labelledby="hero-title">
+        <div class="promax-hero-grid">
+          <div>
+            <div class="promax-badge-pulse">
+              <span class="pulse-dot"></span>
+              <span>Clinical Pathophysiology Engine • Evidence-Based Medicine</span>
+            </div>
+            <h1 id="hero-title" class="promax-hero-title">
+              🔬 CƠ CHẾ BỆNH SINH & SINH LÝ BỆNH
+            </h1>
+            <p class="promax-hero-desc">
+              Hệ thống hóa chuỗi biến đổi bệnh sinh phân tử, rối loạn chức năng cơ quan và căn nguyên phát sinh bệnh lý qua 16 chuyên khoa lâm sàng. Tái hiện mối liên hệ tương hỗ giữa tổn thương cơ sở và biểu hiện triệu chứng tại giường bệnh.
+            </p>
+
+            <!-- KPI Metric Bar -->
+            <div class="promax-kpi-bar">
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-hospital" style="font-size: 1.1rem; color: #34d399;"></i>
+                <div>
+                  <div class="promax-kpi-num">16</div>
+                  <div class="promax-kpi-lbl">Chuyên Khoa</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-microscope" style="font-size: 1.1rem; color: #a78bfa;"></i>
+                <div>
+                  <div class="promax-kpi-num">28+</div>
+                  <div class="promax-kpi-lbl">Ca Bệnh Bệnh Sinh</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-code-merge" style="font-size: 1.1rem; color: #38bdf8;"></i>
+                <div>
+                  <div class="promax-kpi-num">Cascade</div>
+                  <div class="promax-kpi-lbl">Chuỗi Suy Luận</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-certificate" style="font-size: 1.1rem; color: #fbbf24;"></i>
+                <div>
+                  <div class="promax-kpi-num">EBM 1A</div>
+                  <div class="promax-kpi-lbl">Y Văn Quốc Tế</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="tcm-hero-decor">
-            <!-- Microscope SVG -->
-            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="38" stroke="#ffffff" stroke-width="3" stroke-dasharray="6 4" opacity="0.6"/>
-              <path d="M35 75 L65 75 M50 75 L50 45 M40 30 L60 30 M50 20 L50 35 M45 45 L55 45" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-              <circle cx="50" cy="55" r="8" fill="#34d399" />
-              <circle cx="70" cy="30" r="6" fill="#ffffff" />
+
+          <!-- Hero Vector Artwork -->
+          <div class="tcm-hero-decor" style="display: flex; align-items: center; justify-content: center;">
+            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 140px; height: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">
+              <circle cx="50" cy="50" r="38" stroke="#ffffff" stroke-width="3.5" stroke-dasharray="6 4" opacity="0.7"/>
+              <path d="M35 75 L65 75 M50 75 L50 45 M40 30 L60 30 M50 20 L50 35 M45 45 L55 45" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+              <circle cx="50" cy="55" r="9" fill="#34d399" />
+              <circle cx="70" cy="30" r="7" fill="#ffffff" />
             </svg>
           </div>
         </div>
-        <div class="hero-pattern"></div>
       </section>
 
-      <!-- CONTROL BAR / TOOLBAR -->
-      <div class="dashboard-controls" style="margin-bottom: 1.5rem;">
-        <div class="search-box-container">
-          <span class="search-icon-svg">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
-              fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
-          <input type="text" id="lesson-search" placeholder="Tìm kiếm cơ chế bệnh sinh (Suy tim, ARDS, AKI, Sepsis, Đột quỵ, ĐTĐ, Lao, Sốt rét...)..."
-            aria-label="Tìm kiếm cơ chế bệnh sinh">
-          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
-            style="display: none;">&times;</button>
+      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ TƯƠNG TÁC CAO CẤP) -->
+      <section class="promax-bento-grid">
+        <a href="#/pathophysiology/quiz" class="promax-bento-card" style="--bento-color: #10b981; --bento-bg: rgba(16,185,129,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <span class="promax-bento-tag">Cascade Reasoning</span>
+            <h4 class="promax-bento-title">Thử Thách Ca Bệnh & Flashcards</h4>
+            <p class="promax-bento-desc">Luyện tập chuỗi cơ chế bệnh sinh nhiều bước và thẻ ôn tập Spaced Repetition.</p>
+          </div>
+        </a>
+
+        <a href="#/pathophysiology/simulators" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <span class="promax-bento-tag">Real-Time Canvas</span>
+            <h4 class="promax-bento-title">Mô Phỏng Sinh Lý Động</h4>
+            <p class="promax-bento-desc">Nernst/GHK, Lực Starling phù, Frank-Starling & Thăng bằng toan kiềm.</p>
+          </div>
+        </a>
+
+        <a href="#/pathophysiology/metabolic-map" class="promax-bento-card" style="--bento-color: #8b5cf6; --bento-bg: rgba(139,92,246,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div>
+            <span class="promax-bento-tag">Metabolic Studio</span>
+            <h4 class="promax-bento-title">Bản Đồ Chuyển Hóa Phân Tử</h4>
+            <p class="promax-bento-desc">Tra cứu trực quan 5 chu trình năng lượng, enzyme, vitamin & bệnh di truyền.</p>
+          </div>
+        </a>
+
+        <a href="#/pathophysiology/formula-vault" class="promax-bento-card" style="--bento-color: #f59e0b; --bento-bg: rgba(245,158,11,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-calculator"></i></div>
+          <div>
+            <span class="promax-bento-tag">JSON Vault</span>
+            <h4 class="promax-bento-title">Kho Công Thức Định Lượng</h4>
+            <p class="promax-bento-desc">Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính.</p>
+          </div>
+        </a>
+      </section>
+
+      <!-- PROMAX TOOLBAR & SEARCH -->
+      <div class="promax-toolbar">
+        <div class="promax-search-wrap">
+          <i class="fa-solid fa-magnifying-glass promax-search-icon"></i>
+          <input type="text" id="lesson-search" class="promax-search-input" placeholder="Tìm kiếm cơ chế bệnh sinh (Suy tim, ARDS, AKI, Sepsis, Đột quỵ, ĐTĐ, Lao, Sốt rét...)..." aria-label="Tìm kiếm cơ chế bệnh sinh">
+          <span class="promax-shortcut-pill">Ctrl + K</span>
+          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm" style="display: none; position: absolute; right: 4.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--color-text-muted);">&times;</button>
         </div>
-        <div class="view-toggle-container">
-          <span class="toggle-label">Chế độ xem:</span>
+
+        <div class="view-toggle-container" style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="toggle-label" style="font-size: 0.825rem; font-weight: 600; color: var(--color-text-muted);">Hiển thị:</span>
           <div class="toggle-buttons">
             <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
-              </svg>
+              <i class="fa-solid fa-grip"></i>
             </button>
             <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách" aria-label="Xem dạng danh sách">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="8" y1="6" x2="21" y2="6"></line>
-                <line x1="8" y1="12" x2="21" y2="12"></line>
-                <line x1="8" y1="18" x2="21" y2="18"></line>
-                <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                <line x1="3" y1="18" x2="3.01" y2="18"></line>
-              </svg>
+              <i class="fa-solid fa-list-ul"></i>
             </button>
           </div>
         </div>

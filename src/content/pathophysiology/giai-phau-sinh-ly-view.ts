@@ -8,10 +8,11 @@
 import '../../../css/components/module-dashboard.css';
 import '../../../css/components/physio-content.css';
 import '../../../css/components/formula-vault.css';
+import '../../../css/components/physio-promax-hub.css';
 
 export function renderGiaiPhauSinhLyView(): string {
   return `
-    <div class="main-wrapper" id="mainContent" style="width: 100%; max-width: 1520px; margin: 0 auto; padding-bottom: 3rem;">
+    <div class="promax-wrapper" id="mainContent">
 
       <!-- BREADCRUMB -->
       <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
@@ -20,96 +21,128 @@ export function renderGiaiPhauSinhLyView(): string {
         <span style="color: var(--color-primary, #0284c7); font-weight: 600;">Giải Phẫu & Sinh Lý Học (GP - SL)</span>
       </div>
 
-      <!-- HERO SECTION -->
-      <section class="hero-dashboard hero-physio" aria-labelledby="hero-title" style="margin-bottom: 1.5rem;">
-        <div class="tcm-hero-content">
-          <div class="hero-intro">
-            <h1 id="hero-title">🧬 GIẢI PHẪU & SINH LÝ HỌC</h1>
-            <p>Hệ thống hóa kiến thức Giải phẫu học và Sinh lý học cơ thể người, cung cấp nền tảng vững chắc để hiểu rõ chức năng bình thường của các tế bào, mô và 9 hệ cơ quan (bao gồm Nhi khoa & Sản khoa).</p>
+      <!-- PROMAX LUXURY HERO SECTION -->
+      <section class="promax-hero hero-physio-theme" aria-labelledby="hero-title">
+        <div class="promax-hero-grid">
+          <div>
+            <div class="promax-badge-pulse">
+              <span class="pulse-dot"></span>
+              <span>Hệ Thống Tri Thức Chuẩn EBM 2026 • Multi-Scale Engine</span>
+            </div>
+            <h1 id="hero-title" class="promax-hero-title">
+              🧬 GIẢI PHẪU & SINH LÝ HỌC
+            </h1>
+            <p class="promax-hero-desc">
+              Kiến trúc chuẩn hóa chức năng cơ thể người từ mức độ phân tử, tế bào, mô đến 9 hệ cơ quan hoàn chỉnh. Tích hợp giải phẫu ứng dụng lâm sàng, sinh lý thai kỳ sản khoa và sinh lý phát triển nhi khoa.
+            </p>
+
+            <!-- KPI Metric Bar -->
+            <div class="promax-kpi-bar">
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-layer-group" style="font-size: 1.1rem; color: #38bdf8;"></i>
+                <div>
+                  <div class="promax-kpi-num">9</div>
+                  <div class="promax-kpi-lbl">Hệ Cơ Quan</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-book-medical" style="font-size: 1.1rem; color: #a78bfa;"></i>
+                <div>
+                  <div class="promax-kpi-num">45+</div>
+                  <div class="promax-kpi-lbl">Chuyên Đề Chuẩn</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-baby" style="font-size: 1.1rem; color: #ec4899;"></i>
+                <div>
+                  <div class="promax-kpi-num">Nhi & Sản</div>
+                  <div class="promax-kpi-lbl">Phân Hệ Mở Rộng</div>
+                </div>
+              </div>
+              <div class="promax-kpi-pill">
+                <i class="fa-solid fa-bolt" style="font-size: 1.1rem; color: #fbbf24;"></i>
+                <div>
+                  <div class="promax-kpi-num">100%</div>
+                  <div class="promax-kpi-lbl">Mô Phỏng Vector</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="tcm-hero-decor">
-            <!-- DNA Helix SVG -->
-            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 20 Q 35 50, 50 50 T 80 80" stroke="#ffffff" stroke-width="4"
-                stroke-linecap="round" fill="none" />
-              <path d="M20 80 Q 35 50, 50 50 T 80 20" stroke="#38bdf8" stroke-width="4"
-                stroke-linecap="round" fill="none" opacity="0.8" />
-              <line x1="26" y1="31" x2="26" y2="69" stroke="#ffffff" stroke-width="2"
-                stroke-linecap="round" opacity="0.6" />
-              <line x1="38" y1="44" x2="38" y2="56" stroke="#ffffff" stroke-width="2"
-                stroke-linecap="round" opacity="0.6" />
-              <line x1="62" y1="56" x2="62" y2="44" stroke="#ffffff" stroke-width="2"
-                stroke-linecap="round" opacity="0.6" />
-              <line x1="74" y1="69" x2="74" y2="31" stroke="#ffffff" stroke-width="2"
-                stroke-linecap="round" opacity="0.6" />
-              <circle cx="20" cy="20" r="5" fill="#ffffff" />
-              <circle cx="80" cy="80" r="5" fill="#ffffff" />
-              <circle cx="20" cy="80" r="5" fill="#38bdf8" />
-              <circle cx="80" cy="20" r="5" fill="#38bdf8" />
+
+          <!-- Hero Vector Artwork -->
+          <div class="tcm-hero-decor" style="display: flex; align-items: center; justify-content: center;">
+            <svg class="dna-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 140px; height: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">
+              <path d="M20 20 Q 35 50, 50 50 T 80 80" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" fill="none" />
+              <path d="M20 80 Q 35 50, 50 50 T 80 20" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" fill="none" opacity="0.85" />
+              <line x1="26" y1="31" x2="26" y2="69" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+              <line x1="38" y1="44" x2="38" y2="56" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+              <line x1="62" y1="56" x2="62" y2="44" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+              <line x1="74" y1="69" x2="74" y2="31" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.7" />
+              <circle cx="20" cy="20" r="6" fill="#ffffff" />
+              <circle cx="80" cy="80" r="6" fill="#ffffff" />
+              <circle cx="20" cy="80" r="6" fill="#38bdf8" />
+              <circle cx="80" cy="20" r="6" fill="#38bdf8" />
             </svg>
           </div>
         </div>
-        <div class="hero-pattern"></div>
       </section>
 
-      <!-- FEATURE BANNER -->
-      <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
-        <a href="#/pathophysiology/reader/phan1/SL_TB_Diensinhly.md" class="physio-step-card" style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; text-decoration: none; transition: transform 0.2s; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
-          <div style="font-size: 2.2rem; background: rgba(2,132,199,0.1); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0;">⚡</div>
+      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ TƯƠNG TÁC CAO CẤP) -->
+      <section class="promax-bento-grid">
+        <a href="#/pathophysiology/simulators" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-bolt"></i></div>
           <div>
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(2,132,199,0.15); color: var(--color-primary, #0284c7); padding: 0.15rem 0.5rem; border-radius: 4px;">Format Mới: Markdown + SVG</span>
-            <h4 style="margin: 0.2rem 0; color: var(--color-text, #0f172a); font-size: 1.05rem; font-weight: 700;">Trình Đọc Markdown & Visual Diagram</h4>
-            <p style="margin: 0; font-size: 0.825rem; color: var(--color-text-muted, #64748b);">Bài viết sinh lý chuẩn hóa có YAML metadata, công thức TeX và sơ đồ vector SVG tương tác.</p>
+            <span class="promax-bento-tag">Real-Time Canvas</span>
+            <h4 class="promax-bento-title">Mô Phỏng Sinh Lý Động</h4>
+            <p class="promax-bento-desc">Phòng thí nghiệm Nernst/GHK, Lực Starling, Frank-Starling & Toan kiềm.</p>
           </div>
         </a>
 
-        <a href="#/pathophysiology/formula-vault" class="physio-step-card" style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; text-decoration: none; transition: transform 0.2s; box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));">
-          <div style="font-size: 2.2rem; background: rgba(16,185,129,0.1); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0;">📐</div>
+        <a href="#/pathophysiology/metabolic-map" class="promax-bento-card" style="--bento-color: #8b5cf6; --bento-bg: rgba(139,92,246,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-diagram-project"></i></div>
           <div>
-            <span style="font-size: 0.75rem; font-weight: 700; background: rgba(16,185,129,0.15); color: var(--color-success, #10b981); padding: 0.15rem 0.5rem; border-radius: 4px;">Format Mới: JSON Vault</span>
-            <h4 style="margin: 0.2rem 0; color: var(--color-text, #0f172a); font-size: 1.05rem; font-weight: 700;">Kho Công Thức Sinh Lý Định Lượng</h4>
-            <p style="margin: 0; font-size: 0.825rem; color: var(--color-text-muted, #64748b);">Cơ sở dữ liệu công thức Nernst, Fick, Starling, GHK kèm máy tính tính toán tức thì.</p>
+            <span class="promax-bento-tag">Metabolic Studio</span>
+            <h4 class="promax-bento-title">Bản Đồ Chuyển Hóa Phân Tử</h4>
+            <p class="promax-bento-desc">Khám phá 5 chu trình năng lượng, tra cứu enzyme, vitamin & đích thuốc.</p>
+          </div>
+        </a>
+
+        <a href="#/pathophysiology/quiz" class="promax-bento-card" style="--bento-color: #10b981; --bento-bg: rgba(16,185,129,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <span class="promax-bento-tag">Cascade Reasoning</span>
+            <h4 class="promax-bento-title">Thử Thách Ca Bệnh & Flashcards</h4>
+            <p class="promax-bento-desc">Luyện tập chuỗi cơ chế bệnh sinh và Spaced Repetition 3D thẻ lật.</p>
+          </div>
+        </a>
+
+        <a href="#/pathophysiology/formula-vault" class="promax-bento-card" style="--bento-color: #f59e0b; --bento-bg: rgba(245,158,11,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-calculator"></i></div>
+          <div>
+            <span class="promax-bento-tag">JSON Vault</span>
+            <h4 class="promax-bento-title">Kho Công Thức Định Lượng</h4>
+            <p class="promax-bento-desc">Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính.</p>
           </div>
         </a>
       </section>
 
-      <!-- CONTROL BAR / TOOLBAR -->
-      <div class="dashboard-controls" style="margin-bottom: 1.5rem;">
-        <div class="search-box-container">
-          <span class="search-icon-svg">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2"
-              fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </span>
-          <input type="text" id="lesson-search" placeholder="Tìm kiếm bài giảng giải phẫu, sinh lý học (Nhi khoa, Sản khoa, Tim mạch...)..."
-            aria-label="Tìm kiếm bài học">
-          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm"
-            style="display: none;">&times;</button>
+      <!-- PROMAX TOOLBAR & SEARCH -->
+      <div class="promax-toolbar">
+        <div class="promax-search-wrap">
+          <i class="fa-solid fa-magnifying-glass promax-search-icon"></i>
+          <input type="text" id="lesson-search" class="promax-search-input" placeholder="Tìm kiếm bài giảng (Tim mạch, Hô hấp, Nhi khoa, Sản khoa, Thần kinh...)..." aria-label="Tìm kiếm bài học">
+          <span class="promax-shortcut-pill">Ctrl + K</span>
+          <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm" style="display: none; position: absolute; right: 4.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--color-text-muted);">&times;</button>
         </div>
-        <div class="view-toggle-container">
-          <span class="toggle-label">Chế độ xem:</span>
+
+        <div class="view-toggle-container" style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="toggle-label" style="font-size: 0.825rem; font-weight: 600; color: var(--color-text-muted);">Hiển thị:</span>
           <div class="toggle-buttons">
             <button id="view-grid-btn" class="toggle-btn active" title="Dạng lưới" aria-label="Xem dạng lưới">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="7"></rect>
-                <rect x="14" y="3" width="7" height="7"></rect>
-                <rect x="14" y="14" width="7" height="7"></rect>
-                <rect x="3" y="14" width="7" height="7"></rect>
-              </svg>
+              <i class="fa-solid fa-grip"></i>
             </button>
             <button id="view-list-btn" class="toggle-btn" title="Dạng danh sách" aria-label="Xem dạng danh sách">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="8" y1="6" x2="21" y2="6"></line>
-                <line x1="8" y1="12" x2="21" y2="12"></line>
-                <line x1="8" y1="18" x2="21" y2="18"></line>
-                <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                <line x1="3" y1="18" x2="3.01" y2="18"></line>
-              </svg>
+              <i class="fa-solid fa-list-ul"></i>
             </button>
           </div>
         </div>

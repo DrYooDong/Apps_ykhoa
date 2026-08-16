@@ -16,6 +16,14 @@ export * from './formula-vault-view';
 export * from './physio-reader-view';
 export * from './physio-html-reader-view';
 
+// Dynamic Interactive Modules
+export * from './simulators/physiology-simulators-view';
+export * from './simulators/physiology-simulators-engine';
+export * from './biochemistry/metabolic-navigator-view';
+export * from './biochemistry/metabolic-data';
+export * from './quiz/patho-quiz-view';
+export * from './quiz/patho-quiz-data';
+
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => initPathophysiologyHub());

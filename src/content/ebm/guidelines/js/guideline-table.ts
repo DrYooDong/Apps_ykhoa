@@ -682,6 +682,7 @@ export function renderTable(): void {
         <td class="col-actions" onclick="event.stopPropagation()">
           <div style="display:flex; gap:4px; align-items:center; justify-content:center;">
             <button class="btn btn-small" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh">⚖️</button>
+            <button class="btn btn-small" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('citation', window.studies.find(s=>s.id==='${study.id}'))" title="Trích dẫn &amp; Thẩm định khoa học">🔬</button>
             ${study.file ? `<a href="${window.resolveStudyFile ? window.resolveStudyFile(study.file) : study.file}" class="btn btn-small btn-primary" title="Đọc bài tóm tắt">📖</a>` : ''}
             <button class="btn btn-small" onclick="window.openEditModal ? window.openEditModal('${study.id}') : null" title="Chỉnh sửa">✏️</button>
             <button class="btn btn-small btn-danger" onclick="deleteStudy('${study.id}')" title="Xóa nghiên cứu này">🗑️</button>
@@ -698,6 +699,17 @@ export function renderTable(): void {
             <div style="display:flex; flex-direction:column; gap:0.75rem; font-size:0.85rem; line-height:1.6; color:var(--text);">
               <div><strong>💡 Tóm tắt chi tiết:</strong> ${escapeHtml(study.detailedConclusion || study.summary || 'Chưa có thông tin')}</div>
               ${subgroupChart ? `<div><strong>🧬 Phân tích Phân nhóm (Subgroups):</strong>${subgroupChart}</div>` : ''}
+              <div style="display:flex; gap:8px; margin-top:4px; flex-wrap:wrap;">
+                <button class="btn btn-small btn-primary" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('pico', window.studies.find(s=>s.id==='${study.id}'))">
+                  🎯 Mô hình PICO &amp; MeSH Search
+                </button>
+                <button class="btn btn-small" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('rob2', window.studies.find(s=>s.id==='${study.id}'))">
+                  🛡️ Thẩm định RoB 2.0 / NOS
+                </button>
+                <button class="btn btn-small" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('citation', window.studies.find(s=>s.id==='${study.id}'))">
+                  📑 Xuất Trích Dẫn Học Thuật (RIS / BibTeX / Vancouver)
+                </button>
+              </div>
             </div>
           </td>
         </tr>
