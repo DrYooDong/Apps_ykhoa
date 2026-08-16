@@ -363,14 +363,26 @@ export function renderDocSpaceHeader(profile: DoctorProfile, activeId: string): 
       </div>
 
       <div class="dsp-header-center">
-        <div class="dsp-header-search">
+        <div class="dsp-header-search" id="dspHeaderSearchBox" style="cursor:pointer;" title="Mở Clinical Command Bar (Ctrl + K)">
           <i class="fa-solid fa-magnifying-glass dsp-search-icon"></i>
-          <input type="text" id="dspHeaderSearchInput" class="dsp-header-search-input" placeholder="Tìm nhanh bệnh nhân, ca bệnh, SBAR, ghi chú..." />
+          <input type="text" id="dspHeaderSearchInput" class="dsp-header-search-input" placeholder="Tìm nhanh công cụ, thuốc, ca bệnh, tính điểm... (Ctrl + K)" readonly style="cursor:pointer;" />
           <kbd class="dsp-search-shortcut">Ctrl K</kbd>
         </div>
       </div>
 
       <div class="dsp-header-right">
+        <button type="button" class="dsp-header-icon-btn" id="dspHeaderQuickRefBtn" title="Tra cứu Siêu tốc: Công thức, ECG/ABG & ACLS" style="color:var(--color-primary, #0284c7);">
+          <i class="fa-solid fa-bolt"></i>
+        </button>
+
+        <button type="button" class="dsp-header-icon-btn" id="dspHeaderDrugIntelBtn" title="Drug Intelligence — Dược thư & Tương tác thuốc" style="color:#db2777;">
+          <i class="fa-solid fa-pills"></i>
+        </button>
+
+        <button type="button" class="dsp-header-icon-btn" id="dspHeaderToolsBtn" title="Kho Thang điểm & Công cụ Tính toán" style="color:#f59e0b;">
+          <i class="fa-solid fa-calculator"></i>
+        </button>
+
         <div class="dsp-cloud-status" title="Dữ liệu lưu trữ nội bộ an toàn (Local First)">
           <span class="dsp-status-dot"></span>
           <span class="dsp-status-text">Client Sync</span>
@@ -385,8 +397,8 @@ export function renderDocSpaceHeader(profile: DoctorProfile, activeId: string): 
           <span class="dsp-header-profile-name">${escapeHtml(profile.displayName)}</span>
         </div>
 
-        <a href="#/" class="dsp-header-btn-home" title="Trở về Portal Cốt lõi CliniPortal">
-          <i class="fa-solid fa-house"></i> <span>Trang chủ Portal</span>
+        <a href="#/" class="dsp-header-btn-home" title="Trở về Trang chủ CliniPortal">
+          <i class="fa-solid fa-house"></i> <span>Trang chủ</span>
         </a>
       </div>
     </header>

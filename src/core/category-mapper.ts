@@ -76,15 +76,6 @@ export class CategoryCoreMapper {
       color: '#06b6d4',
       description: 'Khuyến cáo thực hành lâm sàng và phân tích EBM Lab'
     },
-    'tcm': {
-      id: 'tcm',
-      slug: 'tcm',
-      name: 'Y học Cổ truyền',
-      shortName: 'Đông y',
-      icon: 'fa-yin-yang',
-      color: '#14b8a6',
-      description: 'Lý luận đông y, bát cương, tạng phủ và phương thang'
-    },
     'docspace': {
       id: 'docspace',
       slug: 'docspace',

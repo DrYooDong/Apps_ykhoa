@@ -15,6 +15,11 @@ import { abgCalculator } from './scores/abg';
 import { wellsPeCalculator } from './scores/wells-pe';
 import { childPughCalculator } from './scores/child-pugh';
 import { nihssCalculator } from './scores/nihss';
+import { electrolytesCalculator } from './scores/electrolytes';
+import { antibioticDosingCalculator } from './scores/antibiotic-dosing';
+import { doseEquivalenceCalculator } from './scores/dose-equivalence';
+import { insulinSlidingScaleCalculator } from './scores/insulin-sliding-scale';
+import { creatinineClearanceCalculator } from './scores/creatinine-clearance';
 
 class ToolRegistry {
   private calculators = new Map<string, BaseCalculator>();
@@ -28,10 +33,15 @@ class ToolRegistry {
       cha2ds2VascCalculator,
       hasBledCalculator,
       ckdEpiCalculator,
+      creatinineClearanceCalculator,
       abgCalculator,
+      electrolytesCalculator,
       wellsPeCalculator,
       childPughCalculator,
-      nihssCalculator
+      nihssCalculator,
+      antibioticDosingCalculator,
+      doseEquivalenceCalculator,
+      insulinSlidingScaleCalculator
     ]);
   }
 

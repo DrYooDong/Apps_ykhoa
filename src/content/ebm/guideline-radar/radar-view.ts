@@ -40,7 +40,7 @@ export function renderRadarView(): string {
             <span style="font-size: 0.8rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 0.25rem 0.6rem; border-radius: 6px;">🔥 Practice-Changing</span>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem;">
             <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1rem;">
               <div style="font-size: 0.8rem; font-weight: 700; color: #dc2626; margin-bottom: 0.5rem;">❌ Khuyến Cáo Cũ (Trước đây)</div>
               <p style="font-size: 0.875rem; color: #334155; margin: 0; line-height: 1.5;">
@@ -67,7 +67,7 @@ export function renderRadarView(): string {
             <span style="font-size: 0.8rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 0.25rem 0.6rem; border-radius: 6px;">🔥 Practice-Changing</span>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem;">
             <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1rem;">
               <div style="font-size: 0.8rem; font-weight: 700; color: #dc2626; margin-bottom: 0.5rem;">❌ Khuyến Cáo Cũ (Phân loại ABCD)</div>
               <p style="font-size: 0.875rem; color: #334155; margin: 0; line-height: 1.5;">
@@ -94,7 +94,7 @@ export function renderRadarView(): string {
             <span style="font-size: 0.8rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 0.25rem 0.6rem; border-radius: 6px;">🔥 Practice-Changing</span>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem;">
             <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1rem;">
               <div style="font-size: 0.8rem; font-weight: 700; color: #dc2626; margin-bottom: 0.5rem;">❌ Khuyến Cáo Cũ (JNC-8)</div>
               <p style="font-size: 0.875rem; color: #334155; margin: 0; line-height: 1.5;">

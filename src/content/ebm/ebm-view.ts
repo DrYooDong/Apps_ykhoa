@@ -48,7 +48,7 @@ export function renderEbmView(): string {
           </p>
 
           <!-- REALTIME KPI METRICS GRID -->
-          <div class="hub-kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+          <div class="hub-kpi-grid">
             <div class="hub-kpi-card">
               <div class="hub-kpi-top">
                 <span class="hub-kpi-label">Tổng Guidelines</span>
@@ -90,13 +90,13 @@ export function renderEbmView(): string {
       </section>
 
       <!-- TWO COLUMN MAIN LAYOUT GRID -->
-      <div class="ebm-layout-grid" style="display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; align-items: start;">
+      <div class="ebm-layout-grid">
 
         <!-- LEFT COLUMN: MAIN CONTENT & TOOLS -->
         <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%; min-width: 0;">
 
           <!-- QUICK ACCESS MODULE PILLS NAV BAR -->
-          <div class="ebm-module-nav-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+          <div class="ebm-module-nav-grid">
             <!-- Pill 1: Thống Kê Y Học -->
             <a href="#/ebm/thong-ke-y-hoc" class="ebm-nav-pill-btn stat" id="card-thongke" title="Vào phân hệ Thống Kê Y Học & Nghiên Cứu">
               <span class="ebm-nav-pill-icon">📊</span>
@@ -201,7 +201,7 @@ export function renderEbmView(): string {
               <h2 class="hub-section-title" style="margin: 0; font-size: 1.25rem; font-weight: 700;">📡 Cập Nhật Mới Nhất (Radar Feed)</h2>
             </div>
 
-            <div id="yhcc-updates-content" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+            <div id="yhcc-updates-content" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 1rem;">
               <div class="update-card" style="padding: 1.25rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 0.75rem;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                   <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: #dc2626; background: #fee2e2; padding: 0.15rem 0.45rem; border-radius: 0.25rem;">Practice Changing</span>
@@ -224,7 +224,7 @@ export function renderEbmView(): string {
         </div>
 
         <!-- RIGHT COLUMN: DUAL STUDIO WIDGET (6S PYRAMID & 5AS WHEEL) -->
-        <aside class="layout-widget-sidebar" style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <aside class="layout-widget-sidebar">
           
           <section class="widget-card" aria-labelledby="ebm-studio-title" style="padding: 1.25rem; background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 0.75rem;">
             <h3 id="ebm-studio-title" style="font-size: 1rem; font-weight: 700; margin: 0 0 1rem 0; color: var(--color-text, #0f172a); display: flex; align-items: center; gap: 0.5rem;">
@@ -232,12 +232,12 @@ export function renderEbmView(): string {
             </h3>
             
             <div class="pyramid-levels" style="display: flex; flex-direction: column; gap: 0.4rem;">
-              <div style="padding: 0.45rem 0.75rem; background: #fee2e2; color: #991b1b; font-size: 0.75rem; font-weight: 700; border-radius: 0.35rem; text-align: center;">Systems (Hệ thống CDSS vi tính hóa)</div>
-              <div style="padding: 0.45rem 0.75rem; background: #fed7aa; color: #9a3412; font-size: 0.75rem; font-weight: 700; border-radius: 0.35rem; text-align: center;">Summaries (Khuyến cáo & Guidelines)</div>
-              <div style="padding: 0.45rem 0.75rem; background: #fef08a; color: #854d0e; font-size: 0.75rem; font-weight: 700; border-radius: 0.35rem; text-align: center;">Synopses of Syntheses (Tóm tắt Meta)</div>
-              <div style="padding: 0.45rem 0.75rem; background: #dcfce7; color: #166534; font-size: 0.75rem; font-weight: 700; border-radius: 0.35rem; text-align: center;">Syntheses (Tổng quan hệ thống)</div>
-              <div style="padding: 0.45rem 0.75rem; background: #e0e7ff; color: #3730a3; font-size: 0.75rem; font-weight: 700; border-radius: 0.35rem; text-align: center;">Synopses of Studies (Tóm tắt RCT đơn)</div>
-              <div style="padding: 0.45rem 0.75rem; background: #f1f5f9; color: #475569; font-size: 0.75rem; font-weight: 700; border-radius: 0.35rem; text-align: center;">Studies (Nghiên cứu gốc gốc lẻ)</div>
+              <div class="pyramid-level-pill pyramid-pill-l6">Systems (Hệ thống CDSS vi tính hóa)</div>
+              <div class="pyramid-level-pill pyramid-pill-l5">Summaries (Khuyến cáo & Guidelines)</div>
+              <div class="pyramid-level-pill pyramid-pill-l4">Synopses of Syntheses (Tóm tắt Meta)</div>
+              <div class="pyramid-level-pill pyramid-pill-l3">Syntheses (Tổng quan hệ thống)</div>
+              <div class="pyramid-level-pill pyramid-pill-l2">Synopses of Studies (Tóm tắt RCT đơn)</div>
+              <div class="pyramid-level-pill pyramid-pill-l1">Studies (Nghiên cứu gốc gốc lẻ)</div>
             </div>
           </section>
 

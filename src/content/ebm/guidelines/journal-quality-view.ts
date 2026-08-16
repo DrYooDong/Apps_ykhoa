@@ -32,7 +32,7 @@ export function renderJournalQualityView(): string {
       </div>
 
       <!-- Main Search & Analyzer Form -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.5rem;">
         <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem;">
           <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text, #0f172a); margin-bottom: 1rem;">
             <i class="fa-solid fa-magnifying-glass" style="color: #ca8a04;"></i> Tra Cứu Tên Tạp Chí Y Khoa

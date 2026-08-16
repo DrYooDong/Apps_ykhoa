@@ -15,6 +15,9 @@ import { generateSOAPSuggestion, generateDischargeSummary } from '../ai/llm-clie
 import { icdPicker } from './icd-picker';
 import { ebmBridge } from './ebm-bridge-view';
 import { drugPicker } from './drug-picker';
+import { drugIntelligencePanel } from './drug-intelligence-panel';
+import { clinicalReasoningPanel } from './clinical-reasoning-panel';
+import { quickReferenceDrawer } from './quick-reference-drawer';
 import { resourcePicker } from './resource-picker';
 import { calculatorPicker } from './calculator-picker';
 import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
@@ -737,6 +740,9 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="assessment" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
                 </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnReasoningCoachSoap" style="color:var(--color-success, #10b981); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Ma Trận Chẩn Đoán Phân Biệt & Tiếp Cận">
+                  <i class="fa-solid fa-sitemap"></i> Tiếp cận chẩn đoán
+                </button>
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-list-ul"></i> + ICD-10
                 </button>
@@ -784,11 +790,14 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="plan" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
-                  <i class="fa-solid fa-capsules"></i> + Chèn text thuốc
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnDrugIntelSoap" style="color:#db2777; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Dược thư & Tương tác thuốc">
+                  <i class="fa-solid fa-pills"></i> Drug Intelligence
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnSkillSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
-                  <i class="fa-solid fa-hand-holding-medical"></i> + Kỹ năng
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
+                  <i class="fa-solid fa-capsules"></i> + Kê đơn
+                </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnQuickRefSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Tra cứu nhanh công thức & hướng dẫn">
+                  <i class="fa-solid fa-bolt"></i> Tra cứu nhanh
                 </button>
               </div>
             </div>
@@ -1705,7 +1714,28 @@ export function mountSoapController(profileId: string): void {
     ebmBridge.openSearch(query || 'practice-changing', { targetFieldId: 'esAAssessment' });
   });
 
-  // Kê đơn
+  // Tiếp cận chẩn đoán (Reasoning Coach)
+  document.getElementById('btnReasoningCoachSoap')?.addEventListener('click', () => {
+    const sText = (document.getElementById('esSNotes') as HTMLTextAreaElement)?.value || '';
+    const diag = (document.getElementById('esCurrentDiagnosis') as HTMLInputElement)?.value || '';
+    const query = `${diag} ${sText}`.toLowerCase();
+
+    let defaultKey = 'dau_nguc';
+    if (query.includes('thở') || query.includes('phổi') || query.includes('copd') || query.includes('hen')) defaultKey = 'kho_tho';
+    else if (query.includes('sốt') || query.includes('nhiễm') || query.includes('sepsis')) defaultKey = 'sot_chua_ro_nguyen_nhan';
+
+    const id = (document.getElementById('esPatientId') as HTMLInputElement)?.value;
+    const p = id ? getSoapPatientById(profileId, id) : null;
+    clinicalReasoningPanel.open('esAAssessment', p, defaultKey);
+  });
+
+  // Drug Intelligence & Kê đơn
+  document.getElementById('btnDrugIntelSoap')?.addEventListener('click', () => {
+    const id = (document.getElementById('esPatientId') as HTMLInputElement)?.value;
+    const p = id ? getSoapPatientById(profileId, id) : null;
+    drugIntelligencePanel.open('esPPlan', p);
+  });
+
   document.getElementById('btnPrescribeSoap')?.addEventListener('click', () => {
     drugPicker.open('esPPlan');
   });
@@ -1722,16 +1752,9 @@ export function mountSoapController(profileId: string): void {
     calculatorPicker.open('esAAssessment', p);
   });
 
-  // Kỹ năng
-  document.getElementById('btnSkillSoap')?.addEventListener('click', () => {
-    resourcePicker.open({
-      title: 'Kho Kỹ năng & Thủ thuật',
-      icon: 'fa-solid fa-hand-holding-medical',
-      jsonUrl: 'content/skills/index.json',
-      mode: 'insertText',
-      targetInputId: 'esPPlan',
-      prefixText: '- Chỉ định thực hiện: '
-    });
+  // Quick Reference Drawer
+  document.getElementById('btnQuickRefSoap')?.addEventListener('click', () => {
+    quickReferenceDrawer.open('formulas');
   });
 
   // Drag and Drop Engine cho Thẻ Cận Lâm Sàng

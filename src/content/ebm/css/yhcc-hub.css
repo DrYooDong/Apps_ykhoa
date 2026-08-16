@@ -386,15 +386,17 @@
     ============================================================ */
     .ebm-layout-grid {
       display: grid;
-      grid-template-columns: 2.2fr 1fr;
+      grid-template-columns: minmax(0, 1fr) 340px;
       gap: 1.75rem;
       align-items: start;
       margin-top: 1rem;
+      width: 100%;
     }
 
     @media (max-width: 992px) {
       .ebm-layout-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem;
       }
     }
 
@@ -877,6 +879,22 @@
       max-height: calc(100vh - 120px);
       overflow-y: auto;
       scrollbar-width: thin;
+      width: 340px;
+      max-width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 992px) {
+      .layout-widget-sidebar {
+        width: 100% !important;
+        position: static !important;
+        max-height: none !important;
+        overflow-y: visible !important;
+        margin-top: 1rem;
+      }
     }
 
     .widget-card {
@@ -1010,4 +1028,96 @@
       padding: 1rem;
       margin-top: 0.75rem;
       transition: all var(--hub-tr);
+    }
+
+    /* ============================================================
+       PYRAMID LEVEL PILLS (LIGHT & DARK MODE COMPATIBLE)
+    ============================================================ */
+    .pyramid-level-pill {
+      padding: 0.45rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 0.35rem;
+      text-align: center;
+      transition: transform 0.2s, filter 0.2s;
+    }
+    .pyramid-level-pill:hover {
+      transform: scale(1.02);
+    }
+    .pyramid-pill-l6 { background: #fee2e2; color: #991b1b; }
+    .pyramid-pill-l5 { background: #fed7aa; color: #9a3412; }
+    .pyramid-pill-l4 { background: #fef08a; color: #854d0e; }
+    .pyramid-pill-l3 { background: #dcfce7; color: #166534; }
+    .pyramid-pill-l2 { background: #e0e7ff; color: #3730a3; }
+    .pyramid-pill-l1 { background: #f1f5f9; color: #475569; }
+
+    [data-theme="dark"] .pyramid-pill-l6 { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+    [data-theme="dark"] .pyramid-pill-l5 { background: rgba(249, 115, 22, 0.2); color: #fdba74; }
+    [data-theme="dark"] .pyramid-pill-l4 { background: rgba(234, 179, 8, 0.2); color: #fde047; }
+    [data-theme="dark"] .pyramid-pill-l3 { background: rgba(34, 197, 94, 0.2); color: #86efac; }
+    [data-theme="dark"] .pyramid-pill-l2 { background: rgba(99, 102, 241, 0.2); color: #c7d2fe; }
+    [data-theme="dark"] .pyramid-pill-l1 { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; }
+
+    /* ============================================================
+       RESPONSIVE MOBILE FIRST OVERRIDES (< 768px & < 480px)
+    ============================================================ */
+    @media (max-width: 768px) {
+      .ebm-hub-page-wrapper {
+        padding: 0 0.5rem 2rem 0.5rem;
+      }
+      .hub-hero-vippro {
+        padding: 1.5rem 1.15rem !important;
+        border-radius: 16px !important;
+        margin-bottom: 1.25rem !important;
+      }
+      .hub-hero-title-main {
+        font-size: 1.45rem !important;
+        line-height: 1.25 !important;
+      }
+      .hub-hero-desc {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+      }
+      .hub-hero-header-row {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+      }
+      .hub-hero-btn-kho {
+        width: 100%;
+        justify-content: center;
+      }
+      .hub-kpi-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+        margin-top: 1.25rem !important;
+      }
+      .ebm-module-nav-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.65rem !important;
+      }
+      .pubmed-board-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+      }
+      .pubmed-board-controls {
+        width: 100%;
+        justify-content: flex-end;
+      }
+      .pubmed-board-section {
+        padding: 1rem 0.85rem !important;
+        border-radius: 12px !important;
+      }
+      .widget-card {
+        padding: 1rem !important;
+        border-radius: 12px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hub-kpi-grid {
+        grid-template-columns: 1fr !important;
+      }
     }

@@ -30,11 +30,11 @@ export function renderFooterHtml(projectRoot = './'): string {
           <h4 class="footer-heading">Liên kết nhanh</h4>
           <ul class="footer-nav-list">
             <li><a href="${root}#/">🏠 Trang chủ</a></li>
-            <li><a href="${root}#/calculators">⚙️ Công cụ lâm sàng</a></li>
+            <li><a href="${root}#/docspace">🩺 DocSpace Pro</a></li>
+            <li><a href="${root}#/pathophysiology/giai-phau-sinh-ly">🧬 Cơ sở Y khoa</a></li>
             <li><a href="${root}#/ebm">📄 Y học chứng cứ</a></li>
-            <li><a href="${root}#/tcm">☯️ Y học cổ truyền</a></li>
-            <li><a href="${root}#/pharmacology">💊 Dược lý lâm sàng</a></li>
-            <li><a href="${root}#/approaches">🤒 Tiếp cận lâm sàng</a></li>
+            <li><a href="${root}#/ebm/kho-guidelines">📚 Kho Guidelines 2026</a></li>
+            <li><a href="${root}#/docspace/soap">📋 Sổ tay SOAP Digital</a></li>
           </ul>
         </div>
 
@@ -42,11 +42,11 @@ export function renderFooterHtml(projectRoot = './'): string {
         <div class="footer-section footer-links">
           <h4 class="footer-heading">Công cụ nổi bật</h4>
           <ul class="footer-nav-list">
-            <li><a href="${root}#/calculators/sepsis-studio">🦠 Sàng lọc Nhiễm khuẩn & Sepsis</a></li>
-            <li><a href="${root}#/calculators/pneumonia-studio">🫁 Đánh giá Viêm phổi</a></li>
-            <li><a href="${root}#/calculators/renal-function">🫘 Chức năng thận</a></li>
-            <li><a href="${root}#/calculators/dg-abg-studio">🔬 Khí máu động mạch</a></li>
-            <li><a href="${root}#/docspace/soap">📋 Sổ tay SOAP Digital</a></li>
+            <li><a href="${root}#/docspace">⚡ Command Bar (Ctrl + K)</a></li>
+            <li><a href="${root}#/docspace">🧮 Thang điểm Smart Tools</a></li>
+            <li><a href="${root}#/docspace">💊 Dược thư &amp; Tương tác thuốc</a></li>
+            <li><a href="${root}#/docspace">🔬 Phân tích Khí máu ABG</a></li>
+            <li><a href="${root}#/docspace/sbar">📑 Báo cáo SBAR &amp; Giao ca</a></li>
           </ul>
         </div>
 

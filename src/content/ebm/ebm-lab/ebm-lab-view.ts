@@ -71,7 +71,7 @@ function renderActiveLabTab(tab: EbmLabTab): string {
 // 1. NNT CALCULATOR
 function renderNntCalculator(): string {
   return `
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.5rem;">
       <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem;">
         <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text, #0f172a); margin-bottom: 1rem;">
           <i class="fa-solid fa-calculator" style="color: #059669;"></i> Nhập Dữ Liệu Biến Cố Lâm Sàng
@@ -79,28 +79,28 @@ function renderNntCalculator(): string {
 
         <div style="margin-bottom: 1.25rem;">
           <h4 style="font-size: 0.9rem; font-weight: 700; color: #0284c7; margin: 0 0 0.5rem 0;">1. Nhóm Can Thiệp (Intervention / Experimental):</h4>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 0.75rem;">
             <div>
               <label style="font-size: 0.8rem; color: #475569;">Số biến cố (Events - a):</label>
-              <input type="number" id="nnt-event-exp" value="82" min="0" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px;" oninput="window.recalcNnt()" />
+              <input type="number" id="nnt-event-exp" value="82" min="0" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;" oninput="window.recalcNnt()" />
             </div>
             <div>
               <label style="font-size: 0.8rem; color: #475569;">Tổng cỡ mẫu nhóm can thiệp (n1):</label>
-              <input type="number" id="nnt-total-exp" value="2373" min="1" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px;" oninput="window.recalcNnt()" />
+              <input type="number" id="nnt-total-exp" value="2373" min="1" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;" oninput="window.recalcNnt()" />
             </div>
           </div>
         </div>
 
         <div>
           <h4 style="font-size: 0.9rem; font-weight: 700; color: #64748b; margin: 0 0 0.5rem 0;">2. Nhóm Chứng (Control / Placebo):</h4>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 0.75rem;">
             <div>
               <label style="font-size: 0.8rem; color: #475569;">Số biến cố (Events - c):</label>
-              <input type="number" id="nnt-event-ctrl" value="137" min="0" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px;" oninput="window.recalcNnt()" />
+              <input type="number" id="nnt-event-ctrl" value="137" min="0" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;" oninput="window.recalcNnt()" />
             </div>
             <div>
               <label style="font-size: 0.8rem; color: #475569;">Tổng cỡ mẫu nhóm chứng (n2):</label>
-              <input type="number" id="nnt-total-ctrl" value="2371" min="1" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px;" oninput="window.recalcNnt()" />
+              <input type="number" id="nnt-total-ctrl" value="2371" min="1" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;" oninput="window.recalcNnt()" />
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@ function renderNntCalculator(): string {
             <div id="nnt-summary-text" style="font-size: 0.9rem; font-weight: 600; color: var(--color-text, #334155); margin-top: 0.25rem;">Cần điều trị 43 bệnh nhân để phòng ngừa 1 biến cố có hại.</div>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; text-align: center;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(90px, 100%), 1fr)); gap: 0.75rem; text-align: center;">
             <div style="background: #f8fafc; border-radius: 8px; padding: 0.75rem;">
               <div style="font-size: 0.75rem; color: #64748b;">CER (Chứng):</div>
               <div id="nnt-cer-val" style="font-size: 1.15rem; font-weight: 700; color: #334155;">5.78%</div>
@@ -148,7 +148,7 @@ function renderPicoBuilder(): string {
       <h3 style="font-size: 1.25rem; font-weight: 700; color: #059669; margin-bottom: 1rem;">
         <i class="fa-solid fa-crosshairs"></i> Khung Xây Dựng Câu Hỏi Lâm Sàng Chuẩn PICO
       </h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1rem;">
         <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem;">
           <h4 style="color: #16a34a; margin: 0 0 0.5rem 0;">P — Population / Patient</h4>
           <p style="font-size: 0.85rem; color: #334155; margin: 0;">Bệnh nhân hoặc quần thể nghiên cứu mục tiêu (Đặc điểm, tuổi, giai đoạn bệnh).</p>
@@ -177,7 +177,7 @@ function renderCriticalAppraisal(): string {
       <h3 style="font-size: 1.25rem; font-weight: 700; color: #059669; margin-bottom: 1rem;">
         <i class="fa-solid fa-clipboard-check"></i> Bộ Tiêu Chuẩn Thẩm Định Nghiên Cứu (CASP & RoB 2)
       </h3>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem;">
         <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;">
           <h4 style="color: #0284c7; margin: 0 0 0.5rem 0;">1. Đánh giá Tính Hợp Lệ Nội Tại (Internal Validity):</h4>
           <ul style="font-size: 0.85rem; color: #334155; margin: 0; padding-left: 1.25rem; line-height: 1.6;">
@@ -192,8 +192,6 @@ function renderCriticalAppraisal(): string {
             <li>Quần thể nghiên cứu có tương đồng với bệnh nhân thực tế của bạn không?</li>
             <li>Lợi ích mang lại có vượt trội hơn nguy cơ tác dụng phụ và chi phí không?</li>
           </ul>
-        </div>
-      </div>
     </div>
   `;
 }

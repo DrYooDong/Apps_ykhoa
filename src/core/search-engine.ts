@@ -36,7 +36,7 @@ export class CliniSearchEngine {
   /**
    * Tự động nạp toàn bộ danh mục từ 7 phân hệ y khoa qua contentLoaderEngine
    */
-  public async initAllIndexes(categories: string[] = ['calculators', 'pharmacology', 'pathophysiology', 'skills', 'approaches', 'ebm', 'tcm', 'docspace']): Promise<void> {
+  public async initAllIndexes(categories: string[] = ['pathophysiology', 'ebm', 'docspace']): Promise<void> {
     for (const category of categories) {
       try {
         const items = await contentLoaderEngine.loadCategoryIndex(category);

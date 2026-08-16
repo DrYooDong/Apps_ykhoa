@@ -32,6 +32,10 @@ import { renderAISettingsView, mountAISettingsController } from './features/ai-s
 import { renderSyncSettingsView, mountSyncSettingsController } from './features/sync-settings-view';
 import { renderInsightsView, mountInsightsController } from './features/insights-view';
 import { loadRAGIndex } from './ai/rag-engine';
+import { clinicalCommandBar } from './features/command-bar';
+import { quickReferenceDrawer } from './features/quick-reference-drawer';
+import { drugIntelligencePanel } from './features/drug-intelligence-panel';
+import { calculatorPicker } from './features/calculator-picker';
 
 // ─── Mount helper ─────────────────────────────────────────────────
 
@@ -53,7 +57,38 @@ async function mountDocSpace(html: string): Promise<void> {
     await new Promise<void>(resolve => {
       requestAnimationFrame(() => resolve());
     });
+    mountGlobalDocSpaceControls();
   }
+}
+
+function mountGlobalDocSpaceControls(): void {
+  // Command Bar Triggers
+  document.getElementById('dspHeaderSearchBox')?.addEventListener('click', () => {
+    clinicalCommandBar.open();
+  });
+  document.getElementById('dspHeaderSearchInput')?.addEventListener('click', () => {
+    clinicalCommandBar.open();
+  });
+
+  // Quick Reference Drawer
+  document.getElementById('dspHeaderQuickRefBtn')?.addEventListener('click', () => {
+    quickReferenceDrawer.open();
+  });
+
+  // Drug Intelligence Panel
+  document.getElementById('dspHeaderDrugIntelBtn')?.addEventListener('click', () => {
+    drugIntelligencePanel.open();
+  });
+
+  // Tools Calculator Picker
+  document.getElementById('dspHeaderToolsBtn')?.addEventListener('click', () => {
+    calculatorPicker.open();
+  });
+
+  // Mobile sidebar
+  document.getElementById('dspMobileSidebarBtn')?.addEventListener('click', () => {
+    document.getElementById('dspSidebar')?.classList.toggle('dsp-sidebar--mobile-open');
+  });
 }
 
 // ─── Guard: Require profile ───────────────────────────────────────

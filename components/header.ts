@@ -32,24 +32,8 @@ export function renderHeaderHtml(projectRoot = './'): string {
       </div>
 
       <nav class="header-nav-modules" aria-label="Phân hệ y khoa">
-        <a href="${root}#/skills" class="header-module-btn" data-route="#/skills" title="Kỹ năng Lâm sàng">
-          <i class="fa-solid fa-stethoscope" style="color: var(--color-primary, #0284c7);"></i>
-          <span>Kỹ năng</span>
-        </a>
-        <a href="${root}#/approaches" class="header-module-btn" data-route="#/approaches" title="Tiếp cận Lâm sàng">
-          <i class="fa-solid fa-sitemap" style="color: #10b981;"></i>
-          <span>Tiếp cận</span>
-        </a>
-        <a href="${root}#/calculators" class="header-module-btn" data-route="#/calculators" title="Công cụ Lâm sàng">
-          <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
-          <span>Công cụ</span>
-        </a>
-        <a href="${root}#/pharmacology" class="header-module-btn" data-route="#/pharmacology" title="Dược lý Lâm sàng">
-          <i class="fa-solid fa-pills" style="color: #ec4899;"></i>
-          <span>Dược lý</span>
-        </a>
         <div class="header-module-dropdown-wrapper">
-          <button type="button" class="header-module-btn header-dropdown-trigger" title="Cơ sở Y khoa (Giải phẫu, Sinh lý & Sinh lý bệnh)">
+          <button type="button" class="header-module-btn header-dropdown-trigger" title="Cơ sở Y khoa (Giải phẫu, Sinh lý, Cơ chế bệnh sinh & Hóa sinh)">
             <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
             <span>Cơ sở</span>
             <i class="fa-solid fa-chevron-down dropdown-arrow" style="font-size: 0.65rem; margin-left: 2px; opacity: 0.7;"></i>
@@ -78,17 +62,13 @@ export function renderHeaderHtml(projectRoot = './'): string {
             </a>
           </div>
         </div>
-        <a href="${root}#/ebm" class="header-module-btn" data-route="#/ebm" title="Y học chứng cứ">
+        <a href="${root}#/ebm" class="header-module-btn" data-route="#/ebm" title="Y học chứng cứ & Kho Guidelines">
           <i class="fa-solid fa-flask" style="color: #06b6d4;"></i>
           <span>Chứng cứ</span>
         </a>
-        <a href="${root}#/tcm" class="header-module-btn" data-route="#/tcm" title="Y học cổ truyền">
-          <i class="fa-solid fa-yin-yang" style="color: #14b8a6;"></i>
-          <span>Đông y</span>
-        </a>
-        <a href="${root}#/docspace" class="header-module-btn bento-badge-docspace" id="docspaceHeaderBtn" title="DocSpace — Không gian Riêng">
+        <a href="${root}#/docspace" class="header-module-btn bento-badge-docspace" id="docspaceHeaderBtn" title="DocSpace — Không gian Lâm sàng Tích hợp & Command Bar (Ctrl+K)">
           <i class="fa-solid fa-id-badge" style="color: var(--color-primary, #0284c7);"></i>
-          <span>DocSpace</span>
+          <span>DocSpace Pro</span>
         </a>
       </nav>
 

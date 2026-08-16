@@ -32,33 +32,45 @@ function renderHeaderHtml(projectRoot = './') {
       </div>
 
       <nav class="header-nav-modules" aria-label="Phân hệ y khoa">
-        <a href="${root}index.html#/skills" class="header-module-btn" data-route="#/skills" title="Kỹ năng Lâm sàng">
-          <i class="fa-solid fa-stethoscope" style="color: var(--color-primary, #0284c7);"></i>
-          <span>Kỹ năng</span>
+        <div class="header-module-dropdown-wrapper">
+          <button type="button" class="header-module-btn header-dropdown-trigger" title="Cơ sở Y khoa (Giải phẫu, Sinh lý, Cơ chế bệnh sinh & Hóa sinh)">
+            <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
+            <span>Cơ sở</span>
+            <i class="fa-solid fa-chevron-down dropdown-arrow" style="font-size: 0.65rem; margin-left: 2px; opacity: 0.7;"></i>
+          </button>
+          <div class="header-dropdown-menu">
+            <a href="${root}index.html#/pathophysiology/giai-phau-sinh-ly" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🧬</span>
+              <div class="dropdown-item-text">
+                <strong>GP - SL</strong>
+                <span>Giải phẫu & Sinh lý</span>
+              </div>
+            </a>
+            <a href="${root}index.html#/pathophysiology/co-che-benh-sinh" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🔬</span>
+              <div class="dropdown-item-text">
+                <strong>CCBS - SBL</strong>
+                <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
+              </div>
+            </a>
+            <a href="${root}index.html#/pathophysiology/hoa-sinh" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🧪</span>
+              <div class="dropdown-item-text">
+                <strong>Hóa Sinh</strong>
+                <span>Hóa sinh Y học & Chuyển hóa</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="${root}index.html#/ebm" class="header-module-btn" data-route="#/ebm" title="Y học chứng cứ & Kho Guidelines">
+          <i class="fa-solid fa-flask" style="color: #06b6d4;"></i>
+          <span>Chứng cứ</span>
         </a>
-        <a href="${root}index.html#/approaches" class="header-module-btn" data-route="#/approaches" title="Tiếp cận Lâm sàng">
-          <i class="fa-solid fa-sitemap" style="color: #10b981;"></i>
-          <span>Tiếp cận</span>
-        </a>
-        <a href="${root}index.html#/calculators" class="header-module-btn" data-route="#/calculators" title="Công cụ Tính toán">
-          <i class="fa-solid fa-calculator" style="color: #f59e0b;"></i>
-          <span>Công cụ</span>
-        </a>
-        <a href="${root}index.html#/pharmacology" class="header-module-btn" data-route="#/pharmacology" title="Dược lý Lâm sàng">
-          <i class="fa-solid fa-pills" style="color: #ef4444;"></i>
-          <span>Dược lý</span>
-        </a>
-        <a href="${root}index.html#/pathophysiology" class="header-module-btn" data-route="#/pathophysiology" title="Sinh lý - Bệnh học">
-          <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
-          <span>Sinh lý - SLB</span>
-        </a>
-        <a href="${root}index.html#/ebm" class="header-module-btn" data-route="#/ebm" title="Y học Chứng cứ & Guidelines">
-          <i class="fa-solid fa-book-medical" style="color: #06b6d4;"></i>
-          <span>Y học chứng cứ</span>
-        </a>
-        <a href="${root}index.html#/tcm" class="header-module-btn" data-route="#/tcm" title="Y học Cổ truyền">
-          <i class="fa-solid fa-yin-yang" style="color: #ec4899;"></i>
-          <span>YHCT</span>
+
+        <a href="${root}index.html#/docspace" class="header-module-btn bento-badge-docspace" id="docspaceHeaderBtn" title="DocSpace — Không gian Lâm sàng Tích hợp & Command Bar (Ctrl+K)">
+          <i class="fa-solid fa-id-badge" style="color: var(--color-primary, #0284c7);"></i>
+          <span>DocSpace Pro</span>
         </a>
       </nav>
 

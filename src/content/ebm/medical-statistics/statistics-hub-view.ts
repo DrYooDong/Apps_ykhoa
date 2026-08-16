@@ -43,7 +43,7 @@ export function renderStatisticsHubView(): string {
       </div>
 
       <!-- 12 Lessons Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 1.25rem;">
         ${lessons.map(item => `
           <div class="lesson-card" data-lesson-id="${item.id}" style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s, box-shadow 0.2s;">
             <div>

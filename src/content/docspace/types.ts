@@ -349,6 +349,8 @@ export interface SoapPatientRecord {
   medicalRecordNo: string;
   admissionDiagnosis: string;
   currentDiagnosis?: string;
+  weight?: number;          // Cân nặng (kg)
+  height?: number;          // Chiều cao (cm)
   
   // Daily logs history (Diễn tiến theo ngày)
   activeDate?: string;      // YYYY-MM-DD đang xem

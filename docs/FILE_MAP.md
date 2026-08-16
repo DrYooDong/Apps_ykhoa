@@ -579,9 +579,24 @@
 
 ---
 
-## 🚀 src/docspace/ — Phân hệ Không gian Riêng & Kiến trúc SPA
+## 🚀 src/content/docspace/ — Phân hệ Không Gian Lâm Sàng Tích Hợp (DocSpace Pro 2.0)
 
 | File | Vai trò |
 |------|---------|
-| `src/docspace/features/dependency-map-view.ts` | **[MỚI]** Giao diện & Controller của tính năng Bản đồ phụ thuộc Core (Dependency Map, SVG Network, Risk Matrix & Regression Checklist) |
-| `src/docspace/data/graphify-dependency-data.ts` | **[MỚI]** Dữ liệu phân tích tĩnh được trích xuất từ Graphify Risk Assessment phục vụ vẽ mạng lưới phụ thuộc |
+| `src/content/docspace/docspace-view.ts` | Giao diện Dashboard tổng quan, Sidebar & Header Bar (Ctrl+K, Quick Ref, Tools) |
+| `src/content/docspace/features/command-bar.ts` | **[MỚI]** Spotlight Command Palette (`Ctrl + K` / `Cmd + K`) tìm kiếm toàn hệ thống & inline math |
+| `src/content/docspace/features/quick-reference-drawer.ts` | **[MỚI]** Ngăn kéo tra cứu siêu tốc: Formula Vault, ECG/ABG Guide, ACLS & Bedside Checklist |
+| `src/content/docspace/features/clinical-reasoning-panel.ts` | **[MỚI]** Clinical Reasoning Coach: Ma trận chẩn đoán phân biệt & Sơ đồ tiếp cận SVG Native |
+| `src/content/docspace/features/drug-intelligence-panel.ts` | **[MỚI]** Drug Intelligence: Dược thư bệnh viện thiết yếu, kiểm tra tương tác thuốc đa thành phần & 1-Click insert |
+| `src/content/docspace/features/calculator-picker.ts` | Dual-panel picker tích hợp 16+ thang điểm & công cụ tính toán native |
+| `src/content/docspace/tools/scores/electrolytes.ts` | **[MỚI]** Máy tính rối loạn điện giải & toan kiềm (Hillier/Katz, Free water deficit, Anion Gap, Payne Calci) |
+| `src/content/docspace/tools/scores/antibiotic-dosing.ts` | **[MỚI]** Tối ưu hóa liều kháng sinh (Vancomycin AUC24/MIC, Aminoglycosides IBW/AdjBW, Beta-lactam Clcr) |
+| `src/content/docspace/tools/scores/dose-equivalence.ts` | **[MỚI]** Quy đổi liều Corticoid & Quy đổi Opioid sang Morphine đường uống (OME/MEDD) |
+| `src/content/docspace/tools/scores/insulin-sliding-scale.ts` | **[MỚI]** Phác đồ tiêm Insulin Basal-Bolus & Thang trượt theo dõi đường huyết mao mạch |
+| `src/content/docspace/tools/scores/creatinine-clearance.ts` | **[MỚI]** Độ thanh thải Creatinine Cockcroft-Gault & Diện tích da BSA |
+| `src/content/docspace/features/soap-view.ts` | Sổ tay bệnh án điện tử SOAP tích hợp phân tích cận lâm sàng, kê đơn, EBM & Reasoning Coach |
+| `src/content/docspace/features/case-logger-view.ts` | Nhật ký ghi nhận ca bệnh lâm sàng ẩn danh, phân tích AI & kết nối Kho lưu đồ tiếp cận |
+| `src/content/docspace/features/sbar-view.ts` | Báo cáo giao ban & hội chẩn lâm sàng theo chuẩn SBAR |
+| `src/content/docspace/features/oncall-checklist-view.ts` | Bảng kiểm nhắc việc ca trực (OnCall Checklist) phân tầng ưu tiên |
+| `src/content/docspace/features/dependency-map-view.ts` | Bản đồ phụ thuộc Core (Dependency Map, SVG Network, Risk Matrix & Regression Checklist) |
+| `src/content/docspace/data/graphify-dependency-data.ts` | Dữ liệu phân tích tĩnh được trích xuất từ Graphify Risk Assessment |

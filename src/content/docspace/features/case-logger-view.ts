@@ -16,6 +16,8 @@ import { resourcePicker } from './resource-picker';
 import { icdPicker } from './icd-picker';
 import { calculatorPicker } from './calculator-picker';
 import { abgPicker } from './abg-picker';
+import { clinicalReasoningPanel } from './clinical-reasoning-panel';
+import { drugIntelligencePanel } from './drug-intelligence-panel';
 
 const CONTEXT_OPTIONS: { value: CaseContext; label: string; icon: string }[] = [
   { value: 'duty',    label: 'Ca trực',      icon: 'fa-solid fa-moon' },
@@ -142,8 +144,11 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
 
                   <div class="dsp-form-group">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
-                      <label class="dsp-label" for="dspCaseDiagnosis" style="margin:0;">Chẩn đoán xác định</label>
+                      <label class="dsp-label" for="dspCaseDiagnosis" style="margin:0;">Chẩn đoán xác định & Tiếp cận</label>
                       <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnClinicalReasoningCoach" style="color:var(--color-success, #10b981); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px; border:1px solid rgba(16,185,129,0.3);" title="Mở Ma trận Chẩn đoán phân biệt & Sơ đồ Tiếp cận">
+                          <i class="fa-solid fa-sitemap"></i> Tư Duy Chẩn Đoán (Coach)
+                        </button>
                         <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdCase" style="color:var(--color-primary); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;">
                           <i class="fa-solid fa-list-ul"></i> + ICD-10
                         </button>
@@ -161,10 +166,15 @@ export async function renderCaseLoggerView(profileId: string): Promise<string> {
 
                   <div class="dsp-form-group">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
-                      <label class="dsp-label" for="dspCaseMgmt" style="margin:0;">Xử trí đã làm <span class="dsp-required">*</span></label>
-                      <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeCase" style="color:var(--color-primary); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;">
-                        <i class="fa-solid fa-capsules"></i> + Kê đơn
-                      </button>
+                      <label class="dsp-label" for="dspCaseMgmt" style="margin:0;">Xử trí đã làm & Kê đơn <span class="dsp-required">*</span></label>
+                      <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnDrugIntelligenceCase" style="color:#db2777; padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px; border:1px solid rgba(219,39,119,0.3);" title="Tra cứu dược thư & Kiểm tra tương tác thuốc">
+                          <i class="fa-solid fa-pills"></i> Drug Intelligence
+                        </button>
+                        <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeCase" style="color:var(--color-primary); padding:0.4rem 0.85rem; font-size:0.85rem; min-height:38px;">
+                          <i class="fa-solid fa-capsules"></i> + Kê đơn
+                        </button>
+                      </div>
                     </div>
                     <textarea class="dsp-textarea" id="dspCaseMgmt"
                       placeholder="Kháng sinh, hồi sức, thủ thuật, y lệnh..." rows="3" required></textarea>
@@ -287,6 +297,14 @@ export function mountCaseLoggerController(profileId: string): void {
   });
 
   // Picker Tools
+  document.getElementById('btnClinicalReasoningCoach')?.addEventListener('click', () => {
+    const complaint = (document.getElementById('dspCaseComplaint') as HTMLInputElement)?.value.toLowerCase() || '';
+    let defaultKey = 'dau_nguc';
+    if (complaint.includes('thở') || complaint.includes('phổi') || complaint.includes('ho')) defaultKey = 'kho_tho';
+    else if (complaint.includes('sốt') || complaint.includes('nhiễm')) defaultKey = 'sot_chua_ro_nguyen_nhan';
+    clinicalReasoningPanel.open('dspCaseDiagnosis', null, defaultKey);
+  });
+
   document.getElementById('btnIcdCase')?.addEventListener('click', () => {
     icdPicker.open('dspCaseDiagnosis');
   });
@@ -295,7 +313,11 @@ export function mountCaseLoggerController(profileId: string): void {
     calculatorPicker.open('dspCaseDiagnosis');
   });
 
-  // Kê đơn
+  // Kê đơn & Dược lý thông minh
+  document.getElementById('btnDrugIntelligenceCase')?.addEventListener('click', () => {
+    drugIntelligencePanel.open('dspCaseMgmt');
+  });
+
   document.getElementById('btnPrescribeCase')?.addEventListener('click', () => {
     drugPicker.open('dspCaseMgmt');
   });
