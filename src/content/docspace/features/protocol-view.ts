@@ -72,8 +72,20 @@ export function renderProtocolView(profileId: string, editId?: string): string {
         <div class="dsp-page-content">
 
           <div class="dsp-page-header">
-            <h1 class="dsp-page-title"><i class="fa-solid fa-clipboard-list"></i> Phác Đồ Cá Nhân</h1>
-            <p class="dsp-page-subtitle">Thiết lập và lưu trữ quy trình xử trí điều trị chuẩn hóa theo phong cách lâm sàng của bạn.</p>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+              <div>
+                <h1 class="dsp-page-title"><i class="fa-solid fa-clipboard-list"></i> Phác Đồ Điều Trị</h1>
+                <p class="dsp-page-subtitle">Thiết lập và lưu trữ quy trình xử trí điều trị chuẩn hóa theo phong cách lâm sàng của bạn.</p>
+              </div>
+              <div style="display:flex; gap:0.5rem;">
+                <a href="#/docspace/protocol" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight:700;">
+                  <i class="fa-solid fa-clipboard-list"></i> Phác đồ Cá nhân
+                </a>
+                <a href="#/docspace/living-protocols" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-weight:600;">
+                  <i class="fa-solid fa-network-wired" style="color:var(--dsp-violet, #8b5cf6);"></i> Phác đồ Động (AI Lab)
+                </a>
+              </div>
+            </div>
           </div>
 
           <div class="dsp-two-col">

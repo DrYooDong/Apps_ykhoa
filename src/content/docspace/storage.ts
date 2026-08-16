@@ -25,6 +25,9 @@ import {
   SoapPatientRecord,
   WeeklySummaryRecord,
   CalculatorSession,
+  ChronicPatient,
+  ChronicEncounterRecord,
+  ComplicationScreeningDates,
 } from './types';
 import { signRecord, verifyRecordIntegrity } from './features/audit-shield';
 import { FhirAdapter } from './data/fhir-adapter';
@@ -1386,4 +1389,302 @@ export function saveCalculatorSession(
   }
   save(profileId, 'calc_sessions', list);
   return record;
+}
+
+// ─────────────────────────────────────────────
+// CHRONIC DISEASE & OUTPATIENT CARE (Module 9)
+// ─────────────────────────────────────────────
+
+export function getAllChronicPatients(profileId: string): ChronicPatient[] {
+  let list = load<ChronicPatient>(profileId, 'chronic_patients');
+  if (!list || list.length === 0) {
+    list = seedSampleChronicPatients(profileId);
+    save(profileId, 'chronic_patients', list);
+  }
+  return list.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+}
+
+export function getChronicPatientById(profileId: string, id: string): ChronicPatient | null {
+  const list = getAllChronicPatients(profileId);
+  return list.find(p => p.id === id) || null;
+}
+
+export function saveChronicPatient(
+  profileId: string,
+  data: Omit<ChronicPatient, 'id' | 'doctorId' | 'createdAt' | 'updatedAt' | 'encounters'> & {
+    initialEncounter?: Omit<ChronicEncounterRecord, 'id' | 'createdAt'>;
+  }
+): ChronicPatient {
+  const list = load<ChronicPatient>(profileId, 'chronic_patients');
+  const patientId = uuid();
+  const timestamp = now();
+  
+  const encounters: ChronicEncounterRecord[] = [];
+  if (data.initialEncounter) {
+    encounters.push({
+      ...data.initialEncounter,
+      id: uuid(),
+      createdAt: timestamp,
+    });
+  }
+
+  const newPatient: ChronicPatient = {
+    id: patientId,
+    doctorId: profileId,
+    patientCode: data.patientCode || `BN-${new Date().getFullYear()}-${Math.floor(100 + Math.random() * 900)}`,
+    fullName: data.fullName,
+    age: data.age,
+    gender: data.gender,
+    phoneNumber: data.phoneNumber || '',
+    diagnoses: data.diagnoses || [],
+    diagnosesLabels: data.diagnosesLabels || [],
+    targetGoals: data.targetGoals || { targetHba1c: 7.0, targetSystolicBp: 130, targetDiastolicBp: 80, targetLdlC: 1.8 },
+    screeningDates: data.screeningDates || {},
+    encounters,
+    createdAt: timestamp,
+    updatedAt: timestamp,
+  };
+
+  list.unshift(newPatient);
+  save(profileId, 'chronic_patients', list);
+  return newPatient;
+}
+
+export function updateChronicPatient(profileId: string, patient: ChronicPatient): void {
+  const list = load<ChronicPatient>(profileId, 'chronic_patients');
+  const idx = list.findIndex(p => p.id === patient.id);
+  if (idx !== -1) {
+    list[idx] = {
+      ...patient,
+      updatedAt: now(),
+    };
+    save(profileId, 'chronic_patients', list);
+  }
+}
+
+export function deleteChronicPatient(profileId: string, id: string): void {
+  const list = load<ChronicPatient>(profileId, 'chronic_patients');
+  const filtered = list.filter(p => p.id !== id);
+  save(profileId, 'chronic_patients', filtered);
+}
+
+export function addChronicEncounter(
+  profileId: string,
+  patientId: string,
+  encounter: Omit<ChronicEncounterRecord, 'id' | 'createdAt'>
+): ChronicEncounterRecord | null {
+  const list = load<ChronicPatient>(profileId, 'chronic_patients');
+  const patient = list.find(p => p.id === patientId);
+  if (!patient) return null;
+
+  const newEncounter: ChronicEncounterRecord = {
+    ...encounter,
+    id: uuid(),
+    createdAt: now(),
+  };
+
+  patient.encounters.push(newEncounter);
+  // Sắp xếp theo ngày khám tăng dần để vẽ biểu đồ diễn tiến mượt mà
+  patient.encounters.sort((a, b) => new Date(a.encounterDate).getTime() - new Date(b.encounterDate).getTime());
+  patient.updatedAt = now();
+
+  save(profileId, 'chronic_patients', list);
+  return newEncounter;
+}
+
+export function updateScreeningDates(
+  profileId: string,
+  patientId: string,
+  dates: Partial<ComplicationScreeningDates>
+): void {
+  const list = load<ChronicPatient>(profileId, 'chronic_patients');
+  const patient = list.find(p => p.id === patientId);
+  if (!patient) return;
+
+  patient.screeningDates = {
+    ...patient.screeningDates,
+    ...dates,
+  };
+  patient.updatedAt = now();
+  save(profileId, 'chronic_patients', list);
+}
+
+// Seed data mẫu để Bác sĩ trải nghiệm ngay lập tức
+function seedSampleChronicPatients(profileId: string): ChronicPatient[] {
+  return [
+    {
+      id: 'seed-patient-001',
+      doctorId: profileId,
+      patientCode: 'BN-2026-001',
+      fullName: 'Trần Văn Đức',
+      age: 58,
+      gender: 'male',
+      phoneNumber: '0912345678',
+      diagnoses: ['t2d', 'htn', 'ckd', 'dyslipidemia'],
+      diagnosesLabels: ['Đái tháo đường Type 2', 'Tăng huyết áp độ 2', 'Bệnh thận mạn G3a (eGFR 52)', 'Rối loạn lipid máu'],
+      targetGoals: {
+        targetHba1c: 7.0,
+        targetSystolicBp: 130,
+        targetDiastolicBp: 80,
+        targetLdlC: 1.4,
+        targetEgfr: 50,
+        customNotes: 'Cần kiểm soát chặt chẽ microalbumin niệu, ưu tiên thuốc ức chế SGLT2i + ACEi/ARB.',
+      },
+      screeningDates: {
+        retinopathyScreenedAt: '2025-02-15', // > 12 tháng -> Báo động đỏ
+        nephropathyScreenedAt: '2025-05-10', // > 12 tháng -> Báo động đỏ
+        diabeticFootScreenedAt: '2026-04-20', // ~ 4 tháng -> Xanh
+        ecgAt: '2026-06-15',
+        lipidProfileAt: '2026-06-15',
+      },
+      encounters: [
+        {
+          id: 'enc-001',
+          encounterDate: '2025-08-10',
+          systolicBp: 148,
+          diastolicBp: 92,
+          heartRate: 78,
+          weightKg: 74,
+          bmi: 26.2,
+          hba1c: 8.8,
+          fastingGlucose: 9.4,
+          creatinine: 115,
+          egfr: 58,
+          urineAcr: 85,
+          ldlC: 3.4,
+          triglycerides: 2.8,
+          currentMedications: 'Metformin 850mg x 2, Amlodipine 5mg x 1, Atorvastatin 20mg x 1',
+          adherenceLevel: 'moderate',
+          clinicalNotes: 'Chưa đạt mục tiêu đường huyết & HA. Thêm Telmisartan 40mg.',
+          nextAppointmentDate: '2025-11-10',
+          createdAt: '2025-08-10T09:00:00Z',
+        },
+        {
+          id: 'enc-002',
+          encounterDate: '2025-11-15',
+          systolicBp: 138,
+          diastolicBp: 85,
+          heartRate: 74,
+          weightKg: 72.5,
+          bmi: 25.7,
+          hba1c: 7.9,
+          fastingGlucose: 7.8,
+          creatinine: 118,
+          egfr: 56,
+          urineAcr: 60,
+          ldlC: 2.6,
+          triglycerides: 2.2,
+          currentMedications: 'Metformin 850mg x 2, Telmisartan 40mg x 1, Empagliflozin 10mg x 1, Atorvastatin 20mg x 1',
+          adherenceLevel: 'good',
+          clinicalNotes: 'Có tiến triển tốt sau khi thêm SGLT2i. Tiếp tục phác đồ.',
+          nextAppointmentDate: '2026-02-15',
+          createdAt: '2025-11-15T09:30:00Z',
+        },
+        {
+          id: 'enc-003',
+          encounterDate: '2026-03-02',
+          systolicBp: 132,
+          diastolicBp: 82,
+          heartRate: 72,
+          weightKg: 71,
+          bmi: 25.1,
+          hba1c: 7.3,
+          fastingGlucose: 6.9,
+          creatinine: 122,
+          egfr: 54,
+          urineAcr: 42,
+          ldlC: 1.9,
+          triglycerides: 1.8,
+          currentMedications: 'Metformin 850mg x 2, Telmisartan 40mg x 1, Empagliflozin 10mg x 1, Atorvastatin 20mg x 1',
+          adherenceLevel: 'good',
+          clinicalNotes: 'HbA1c tiệm cận mục tiêu. Cần nhắc bệnh nhân đi soi đáy mắt và làm lại Microalbumin niệu.',
+          nextAppointmentDate: '2026-06-15',
+          createdAt: '2026-03-02T08:45:00Z',
+        },
+        {
+          id: 'enc-004',
+          encounterDate: '2026-06-20',
+          systolicBp: 128,
+          diastolicBp: 78,
+          heartRate: 70,
+          weightKg: 70,
+          bmi: 24.8,
+          hba1c: 6.9,
+          fastingGlucose: 6.2,
+          creatinine: 124,
+          egfr: 53,
+          urineAcr: 35,
+          ldlC: 1.5,
+          triglycerides: 1.5,
+          currentMedications: 'Metformin 850mg x 2, Telmisartan 40mg x 1, Empagliflozin 10mg x 1, Rosuvastatin 20mg x 1',
+          adherenceLevel: 'good',
+          clinicalNotes: 'Đạt toàn bộ mục tiêu HbA1c (< 7.0%) và Huyết áp (< 130/80). Duy trì lối sống.',
+          nextAppointmentDate: '2026-09-20',
+          createdAt: '2026-06-20T10:00:00Z',
+        },
+      ],
+      createdAt: '2025-08-10T08:30:00Z',
+      updatedAt: '2026-06-20T10:00:00Z',
+    },
+    {
+      id: 'seed-patient-002',
+      doctorId: profileId,
+      patientCode: 'BN-2026-002',
+      fullName: 'Nguyễn Thị Mai',
+      age: 65,
+      gender: 'female',
+      phoneNumber: '0987654321',
+      diagnoses: ['htn', 'heart_failure'],
+      diagnosesLabels: ['Tăng huyết áp vô căn', 'Suy tim phân suất tống máu giảm nhẹ (HFmrEF EF 45%)'],
+      targetGoals: {
+        targetSystolicBp: 125,
+        targetDiastolicBp: 75,
+        targetLdlC: 1.8,
+        customNotes: 'Trụ cột 4 thuốc suy tim: ARNI/ACEi + Beta blocker + MRA + SGLT2i.',
+      },
+      screeningDates: {
+        echocardiogramAt: '2025-04-10', // > 12 tháng -> Cảnh báo
+        ecgAt: '2026-05-10',
+        lipidProfileAt: '2026-05-10',
+      },
+      encounters: [
+        {
+          id: 'enc-005',
+          encounterDate: '2026-01-10',
+          systolicBp: 142,
+          diastolicBp: 88,
+          heartRate: 84,
+          weightKg: 58,
+          bmi: 24.1,
+          creatinine: 88,
+          egfr: 62,
+          potassium: 4.3,
+          currentMedications: 'Sacubitril/Valsartan 50mg x 2, Bisoprolol 2.5mg x 1, Spironolactone 25mg x 1, Dapagliflozin 10mg x 1',
+          adherenceLevel: 'good',
+          clinicalNotes: 'Khó thở NYHA II khi đi bộ nhanh. Tăng liều ARNI lên 100mg.',
+          nextAppointmentDate: '2026-04-10',
+          createdAt: '2026-01-10T09:00:00Z',
+        },
+        {
+          id: 'enc-006',
+          encounterDate: '2026-05-12',
+          systolicBp: 122,
+          diastolicBp: 76,
+          heartRate: 68,
+          weightKg: 56.5,
+          bmi: 23.5,
+          creatinine: 92,
+          egfr: 59,
+          potassium: 4.6,
+          currentMedications: 'Sacubitril/Valsartan 100mg x 2, Bisoprolol 5mg x 1, Spironolactone 25mg x 1, Dapagliflozin 10mg x 1',
+          adherenceLevel: 'good',
+          clinicalNotes: 'Huyết áp ổn định, hết phù, NYHA I. Đề nghị làm lại siêu âm tim đánh giá EF sau 12 tháng.',
+          nextAppointmentDate: '2026-08-12',
+          createdAt: '2026-05-12T09:15:00Z',
+        },
+      ],
+      createdAt: '2026-01-10T08:45:00Z',
+      updatedAt: '2026-05-12T09:15:00Z',
+    },
+  ];
 }

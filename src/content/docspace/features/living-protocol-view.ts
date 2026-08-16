@@ -31,9 +31,17 @@ export function renderLivingProtocolView(profileId: string, protocolId?: string)
             Tính toán &amp; nội suy quy trình lâm sàng động, tự động phân nhánh quyết định điều trị.
           </p>
         </div>
-        <button type="button" class="dsp-btn dsp-btn-primary" id="btnCreateAiProtocol">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ Tạo Phác đồ Mới bằng AI
-        </button>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <a href="#/docspace/protocol" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-weight:600;">
+            <i class="fa-solid fa-clipboard-list"></i> Phác đồ Cá nhân
+          </a>
+          <a href="#/docspace/living-protocols" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight:700;">
+            <i class="fa-solid fa-network-wired" style="color:#fff;"></i> Phác đồ Động (AI Lab)
+          </a>
+          <button type="button" class="dsp-btn dsp-btn-primary dsp-btn-sm" id="btnCreateAiProtocol" style="background:linear-gradient(135deg, #0284c7, #8b5cf6);">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> ✨ Tạo bằng AI
+          </button>
+        </div>
       </div>
 
       <div class="dsp-preset-grid" id="lpProtocolGrid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;">
@@ -56,7 +64,7 @@ export function renderLivingProtocolView(profileId: string, protocolId?: string)
 
   return `
     <div class="dsp-layout" id="dspLayout">
-      ${renderSidebar(profile, 'living-protocols')}
+      ${renderSidebar(profile, 'protocol')}
       <main class="dsp-main" id="dspMain">
         ${renderDocSpaceHeader(profile, 'living-protocols')}
         <div class="dsp-page-content">

@@ -500,6 +500,14 @@ export interface DocSpaceNavItem {
   icon: string;
   badge?: number;        // Số lượng items (VD: 3 SBARs)
   phase?: 1 | 2 | 3;
+  badgeText?: string;
+}
+
+export interface DocSpaceNavSection {
+  id: string;
+  title: string;
+  icon?: string;
+  items: DocSpaceNavItem[];
 }
 
 export const DOCSPACE_VERSION = '1.0';
@@ -590,4 +598,71 @@ export interface WeeklySummaryRecord {
     sbarsCount: number;
     topDiagnosesNames: string[];
   };
+}
+
+// ─────────────────────────────────────────────
+// CHRONIC DISEASE & OUTPATIENT CARE (Module 9)
+// ─────────────────────────────────────────────
+
+export type ChronicConditionKey = 't2d' | 'htn' | 'ckd' | 'dyslipidemia' | 'heart_failure' | 'cad' | 'copd_asthma';
+
+export interface ChronicTargetGoals {
+  targetHba1c?: number;       // % (VD: 7.0 hoặc 7.5)
+  targetSystolicBp?: number;   // mmHg (VD: 130)
+  targetDiastolicBp?: number;  // mmHg (VD: 80)
+  targetLdlC?: number;         // mmol/L (VD: 1.4 hoặc 1.8)
+  targetEgfr?: number;         // mL/min/1.73m2 (VD: > 60)
+  customNotes?: string;
+}
+
+export interface ComplicationScreeningDates {
+  retinopathyScreenedAt?: string;    // Soi đáy mắt (YYYY-MM-DD)
+  nephropathyScreenedAt?: string;    // Microalbumin niệu / ACR (YYYY-MM-DD)
+  diabeticFootScreenedAt?: string;   // Khám bàn chân cảm giác (YYYY-MM-DD)
+  echocardiogramAt?: string;         // Siêu âm tim (YYYY-MM-DD)
+  ecgAt?: string;                    // Điện tâm đồ (YYYY-MM-DD)
+  lipidProfileAt?: string;           // Xét nghiệm mỡ máu (YYYY-MM-DD)
+  liverFunctionAt?: string;          // Men gan GOT/GPT (YYYY-MM-DD)
+}
+
+export interface ChronicEncounterRecord {
+  id: string;
+  encounterDate: string; // YYYY-MM-DD
+  systolicBp?: number;   // mmHg
+  diastolicBp?: number;  // mmHg
+  heartRate?: number;    // bpm
+  weightKg?: number;     // kg
+  heightCm?: number;     // cm
+  bmi?: number;
+  hba1c?: number;        // %
+  fastingGlucose?: number;// mmol/L
+  creatinine?: number;   // umol/L
+  egfr?: number;         // mL/min/1.73m2
+  urineAcr?: number;     // mg/g hoặc mg/mmol (Microalbumin niệu)
+  ldlC?: number;         // mmol/L
+  triglycerides?: number;// mmol/L
+  hdlC?: number;          // mmol/L
+  potassium?: number;    // mmol/L (K+)
+  currentMedications?: string; // Tóm tắt thuốc đang dùng
+  adherenceLevel: 'good' | 'moderate' | 'poor'; // Tuân thủ điều trị
+  clinicalNotes?: string;
+  nextAppointmentDate?: string;
+  createdAt: string;
+}
+
+export interface ChronicPatient {
+  id: string;
+  doctorId: string;
+  patientCode: string;   // Mã bệnh nhân (VD: BN-2026-089)
+  fullName: string;
+  age: number;
+  gender: 'male' | 'female' | 'other';
+  phoneNumber?: string;
+  diagnoses: ChronicConditionKey[];
+  diagnosesLabels: string[]; // VD: ["Đái tháo đường Type 2", "Tăng huyết áp vô căn"]
+  targetGoals: ChronicTargetGoals;
+  screeningDates: ComplicationScreeningDates;
+  encounters: ChronicEncounterRecord[];
+  createdAt: string;
+  updatedAt: string;
 }

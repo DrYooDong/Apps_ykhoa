@@ -4,24 +4,45 @@
  */
 
 import { getActiveProfile, getAllProfiles, createProfile, setActiveProfile, exportProfile, getStats } from './storage';
-import { DoctorProfile, DocSpaceNavItem } from './types';
+import { DoctorProfile, DocSpaceNavItem, DocSpaceNavSection } from './types';
 
-export const DSP_NAV_ITEMS: DocSpaceNavItem[] = [
-  { id: 'dashboard',        label: 'Tổng quan',           href: '#/docspace',                  icon: 'fa-solid fa-house-medical',   phase: 1 },
-  { id: 'patients',         label: 'Bệnh nhân',           href: '#/docspace/patients',          icon: 'fa-solid fa-users',           phase: 1 },
-  { id: 'soap',             label: 'Sổ Tay SOAP',         href: '#/docspace/soap',              icon: 'fa-solid fa-notes-medical',  phase: 1 },
-  { id: 'sbar',             label: 'SBAR',                href: '#/docspace/sbar',              icon: 'fa-solid fa-file-waveform',   phase: 1 },
-  { id: 'oncall',           label: 'Checklist công việc', href: '#/docspace/oncall',            icon: 'fa-solid fa-list-check',     phase: 1 },
-  { id: 'notes',            label: 'Ghi chú',             href: '#/docspace/notes',             icon: 'fa-solid fa-note-sticky',     phase: 1 },
-  { id: 'protocol',         label: 'Phác đồ Riêng',       href: '#/docspace/protocol',          icon: 'fa-solid fa-clipboard-list',  phase: 1 },
-  { id: 'insights',         label: 'AI Insights & Sức Khỏe', href: '#/docspace/insights',      icon: 'fa-solid fa-brain',           phase: 1 },
-  { id: 'living-protocols', label: 'Phác đồ Động',        href: '#/docspace/living-protocols',  icon: 'fa-solid fa-network-wired',   phase: 3 },
-  { id: 'sandbox',          label: 'Sandbox Mô phỏng',    href: '#/docspace/sandbox',           icon: 'fa-solid fa-flask',           phase: 3 },
-  { id: 'links',            label: 'Liên kết nhanh',      href: '#/docspace/links',             icon: 'fa-solid fa-link',            phase: 1 },
-  { id: 'sync-settings',    label: 'Đồng bộ Đa thiết bị', href: '#/docspace/sync-settings',     icon: 'fa-solid fa-cloud-arrow-up',  phase: 1 },
-  { id: 'ai-settings',      label: 'Cấu hình AI',         href: '#/docspace/ai-settings',       icon: 'fa-solid fa-microchip',       phase: 1 },
-  { id: 'dependency-map',   label: 'Bản đồ Phụ thuộc',    href: '#/docspace/dependency-map',    icon: 'fa-solid fa-diagram-project', phase: 1 },
+export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
+  {
+    id: 'clinical',
+    title: 'Lâm sàng & Ca bệnh',
+    icon: 'fa-solid fa-hospital-user',
+    items: [
+      { id: 'dashboard',    label: 'Tổng quan',           href: '#/docspace',              icon: 'fa-solid fa-house-medical',  phase: 1 },
+      { id: 'patients',     label: 'Quản lý Bệnh nhân',   href: '#/docspace/patients',     icon: 'fa-solid fa-users',          phase: 1 },
+      { id: 'chronic-care', label: 'Bệnh Mạn Tính',       href: '#/docspace/chronic-care', icon: 'fa-solid fa-heart-pulse',   phase: 1 },
+      { id: 'soap',         label: 'Sổ Tay SOAP',         href: '#/docspace/soap',         icon: 'fa-solid fa-notes-medical',  phase: 1 },
+      { id: 'sbar',         label: 'Bàn giao SBAR',       href: '#/docspace/sbar',         icon: 'fa-solid fa-file-waveform',  phase: 1 },
+    ],
+  },
+  {
+    id: 'knowledge',
+    title: 'Tri thức & Phác đồ',
+    icon: 'fa-solid fa-book-medical',
+    items: [
+      { id: 'protocol', label: 'Phác đồ Điều trị',     href: '#/docspace/protocol', icon: 'fa-solid fa-clipboard-list', phase: 1 },
+      { id: 'notes',    label: 'Ghi chú Lâm sàng',     href: '#/docspace/notes',    icon: 'fa-solid fa-note-sticky',    phase: 1 },
+      { id: 'links',    label: 'Liên kết Nhanh',       href: '#/docspace/links',    icon: 'fa-solid fa-link',           phase: 1 },
+    ],
+  },
+  {
+    id: 'practice',
+    title: 'Tua trực & Hiệu suất',
+    icon: 'fa-solid fa-user-clock',
+    items: [
+      { id: 'oncall',   label: 'Checklist Tua trực',   href: '#/docspace/oncall',   icon: 'fa-solid fa-list-check',     phase: 1 },
+      { id: 'insights', label: 'AI Insights & Sức khỏe', href: '#/docspace/insights', icon: 'fa-solid fa-brain',        phase: 1 },
+      { id: 'sandbox',  label: 'Sandbox Mô phỏng',     href: '#/docspace/sandbox',  icon: 'fa-solid fa-flask',          phase: 3, badgeText: 'AI Lab' },
+    ],
+  },
 ];
+
+// Mảng phẳng để tương thích ngược 100% với các hàm tra cứu cũ
+export const DSP_NAV_ITEMS: DocSpaceNavItem[] = DSP_NAV_SECTIONS.flatMap(s => s.items);
 
 // ─── Profile Selector Screen ─────────────────────────────────────
 
@@ -392,21 +413,44 @@ export function renderDocSpaceHeader(profile: DoctorProfile, activeId: string): 
 // ─── Sidebar ─────────────────────────────────────────────────────
 
 export function renderSidebar(profile: DoctorProfile, activeId: string): string {
-  const navItems = DSP_NAV_ITEMS.map(item => {
-    const isActive = item.id === activeId;
-    const isPhase2 = item.phase === 2;
-    const isPhase3 = item.phase === 3;
-    const badgeHtml = isPhase2 ? '<span class="dsp-soon-badge">Soon</span>' : isPhase3 ? '<span class="dsp-soon-badge" style="background:var(--dsp-violet);color:#fff;border:none;">AI Lab</span>' : '';
-    
+  const sectionsHtml = DSP_NAV_SECTIONS.map(section => {
+    const itemsHtml = section.items.map(item => {
+      const isActive = item.id === activeId;
+      const isPhase2 = item.phase === 2;
+      const isPhase3 = item.phase === 3;
+      let badgeHtml = '';
+      if (item.badgeText) {
+        badgeHtml = `<span class="dsp-soon-badge" style="background:var(--dsp-violet, #8b5cf6);color:#fff;border:none;">${escapeHtml(item.badgeText)}</span>`;
+      } else if (item.badge && item.badge > 0) {
+        badgeHtml = `<span class="dsp-nav-counter">${item.badge}</span>`;
+      } else if (isPhase2) {
+        badgeHtml = `<span class="dsp-soon-badge">Soon</span>`;
+      } else if (isPhase3) {
+        badgeHtml = `<span class="dsp-soon-badge" style="background:var(--dsp-violet, #8b5cf6);color:#fff;border:none;">AI Lab</span>`;
+      }
+      
+      return `
+        <a href="${item.href}"
+           class="dsp-nav-item${isActive ? ' dsp-nav-item--active' : ''}${(isPhase2 || isPhase3) ? ' dsp-nav-item--soon' : ''}"
+           id="dspNav-${item.id}"
+           ${(isPhase2 || isPhase3) ? 'title="Tính năng Nâng cao AI"' : ''}>
+          <i class="${item.icon}"></i>
+          <span>${item.label}</span>
+          ${badgeHtml}
+        </a>
+      `;
+    }).join('');
+
     return `
-      <a href="${item.href}"
-         class="dsp-nav-item${isActive ? ' dsp-nav-item--active' : ''}${(isPhase2 || isPhase3) ? ' dsp-nav-item--soon' : ''}"
-         id="dspNav-${item.id}"
-         ${(isPhase2 || isPhase3) ? 'title="Tính năng Nâng cao AI"' : ''}>
-        <i class="${item.icon}"></i>
-        <span>${item.label}</span>
-        ${badgeHtml}
-      </a>
+      <div class="dsp-nav-section" id="dspNavSection-${section.id}">
+        <div class="dsp-nav-section-title">
+          ${section.icon ? `<i class="${section.icon}"></i>` : ''}
+          <span>${section.title}</span>
+        </div>
+        <div class="dsp-nav-section-items">
+          ${itemsHtml}
+        </div>
+      </div>
     `;
   }).join('');
 
@@ -436,26 +480,30 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
       </div>
 
       <nav class="dsp-nav">
-        ${navItems}
+        ${sectionsHtml}
       </nav>
 
       <div class="dsp-sidebar-footer">
+        <div class="dsp-sidebar-footer-title">
+          <i class="fa-solid fa-vault"></i>
+          <span>Hệ thống & Dữ liệu</span>
+        </div>
         <a href="#/docspace/ai-settings" class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarAI">
-          <i class="fa-solid fa-microchip" style="color:var(--dsp-violet);"></i>
+          <i class="fa-solid fa-microchip" style="color:var(--dsp-violet, #8b5cf6);"></i>
           <span>Cấu hình AI Co-Pilot</span>
+        </a>
+        <a href="#/docspace/sync-settings" class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSync">
+          <i class="fa-solid fa-rotate" style="color:var(--dsp-sky, #0ea5e9);"></i>
+          <span>Đồng bộ Đa thiết bị</span>
         </a>
         <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarExport">
           <i class="fa-solid fa-file-export"></i>
           <span>Xuất dữ liệu JSON</span>
         </button>
         <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarExportFhir">
-          <i class="fa-solid fa-file-medical"></i>
-          <span>Xuất chuẩn FHIR</span>
+          <i class="fa-solid fa-file-medical" style="color:#10b981;"></i>
+          <span>Xuất chuẩn FHIR R4</span>
         </button>
-        <a href="#/docspace/sync-settings" class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSync">
-          <i class="fa-solid fa-rotate"></i>
-          <span>Cấu hình Đồng bộ</span>
-        </a>
         <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSwitch">
           <i class="fa-solid fa-repeat"></i>
           <span>Đổi Hồ sơ Bác sĩ</span>

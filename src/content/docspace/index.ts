@@ -18,6 +18,7 @@ import { renderSoapView, mountSoapController } from './features/soap-view';
 import { renderOnCallView, mountOnCallController } from './features/oncall-view';
 import { renderQuickLinksView, mountQuickLinksController } from './features/quick-links-view';
 import { renderPatientDemographicsView, bindPatientDemographicsEvents } from './features/patient-demographics-view';
+import { renderChronicCareView, mountChronicCareController } from './features/chronic-care-view';
 
 import { renderNotepadView, mountNotepadController } from './features/notepad-view';
 import { renderProtocolView, mountProtocolController } from './features/protocol-view';
@@ -228,6 +229,16 @@ export function initDocSpaceRoutes(): void {
     requireProfile(async (pid) => {
       await mountDocSpace(await renderPatientDemographicsView(pid));
       bindPatientDemographicsEvents();
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // Chronic Disease & Outpatient Care
+  router.register('/docspace/chronic-care', 'DocSpace — Quản lý Bệnh Mạn Tính & Ngoại Trú', () => {
+    requireProfile(async (pid) => {
+      const selectedPatientId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('patient') || undefined;
+      await mountDocSpace(await renderChronicCareView(pid, selectedPatientId));
+      mountChronicCareController(pid);
       mountSidebarFooterControls(pid);
     });
   });
