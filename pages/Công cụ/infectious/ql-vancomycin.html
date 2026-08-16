@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Công cụ tính toán liều ban đầu và hiệu chỉnh liều Vancomycin dựa trên AUC/MIC, dược động học cá thể hóa theo hướng dẫn ASHP/IDSA/SIDP 2020 – CliniPortal.">
+    <title>Quản lý &amp; Chỉnh liều Vancomycin – CliniPortal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../css/components/footer.css">
+    <script type="module" src="../../../components/header.ts"></script>
+    <style>
+        :root {
+            --van-blue:#0284c7;--van-blue-h:#f0f9ff;--van-blue-b:#bae6fd;
+            --van-green:#059669;--van-green-h:#ecfdf5;--van-green-b:#a7f3d0;
+            --van-amber:#d97706;--van-amber-h:#fffbeb;--van-amber-b:#fde68a;
+            --van-red:#dc2626;--van-red-h:#fef2f2;--van-red-b:#fecaca;
+            --van-purple:#7c3aed;--van-purple-h:#f5f3ff;--van-purple-b:#ddd6fe;
+            --van-teal:#0d9488;--van-teal-h:#f0fdfa;--van-teal-b:#99f6e4;
+        }
+        [data-theme="dark"]{
+            --van-blue:#38bdf8;--van-blue-h:#0a2030;--van-blue-b:#0c4a6e;
+            --van-green:#34d399;--van-green-h:#022c22;--van-green-b:#065f46;
+            --van-amber:#fbbf24;--van-amber-h:#1c1200;--van-amber-b:#78350f;
+            --van-red:#f87171;--van-red-h:#1f0808;--van-red-b:#7f1d1d;
+            --van-purple:#a78bfa;--van-purple-h:#160e30;--van-purple-b:#4c1d95;
+            --van-teal:#2dd4bf;--van-teal-h:#022820;--van-teal-b:#115e59;
+        }
+        .van-hero{background:linear-gradient(135deg,#0c4a6e 0%,#0284c7 55%,#0891b2 100%);border-radius:20px;padding:28px 32px;margin-bottom:18px;position:relative;overflow:hidden;box-shadow:0 12px 32px rgba(2,132,199,.22)}
+        .van-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
+        .van-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04)}
+        .van-hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.18);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);color:#fff;padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}
+        .van-hero h1{margin:0 0 8px;font-size:clamp(1.2rem,3vw,1.65rem);font-weight:800;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;line-height:1.2}
+        .van-hero p{margin:0;font-size:.84rem;color:rgba(255,255,255,.88);line-height:1.6;max-width:680px}
+        .van-hero-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+        .van-hero-pill{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.95);padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600}
+        .van-tabs{display:flex;flex-wrap:wrap;gap:6px;background:var(--color-surface);border:1px solid var(--color-divider);border-radius:16px;padding:8px;margin-bottom:14px;box-shadow:var(--shadow-sm)}
+        .van-tab-btn{display:flex;align-items:center;gap:8px;padding:10px 18px;border:none;border-radius:12px;background:transparent;color:var(--color-text-muted);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap}
+        .van-tab-btn:hover{background:var(--color-surface-offset);color:var(--color-text)}
+        .van-tab-btn.active{background:linear-gradient(135deg,#0284c7,#0891b2);color:#fff;box-shadow:0 4px 12px rgba(2,132,199,.35)}
+        .tab-num{display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.25);font-size:10px;font-weight:800}
+        .van-tab-btn:not(.active) .tab-num{background:var(--color-surface-offset);color:var(--color-text-muted)}
+        .van-subtabs{display:none;flex-wrap:wrap;gap:4px;background:var(--color-surface-offset);border:1px dashed var(--color-divider);border-radius:12px;padding:8px;margin-bottom:14px}
+        .van-subtabs.visible{display:flex}
+        .van-subtabs-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--color-text-muted);padding:4px 8px;align-self:center}
+        .van-subtab-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--color-divider);border-radius:8px;background:var(--color-surface);color:var(--color-text-muted);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .18s;font-family:'Plus Jakarta Sans',sans-serif}
+        .van-subtab-btn:hover{color:var(--color-text);border-color:var(--van-blue)}
+        .van-subtab-btn.active{background:var(--van-blue-h);border-color:var(--van-blue);color:var(--van-blue)}
+        .van-layout{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
+        @media(min-width:1024px){.van-layout{grid-template-columns:3fr 2fr}}
+        .van-card{background:var(--color-surface);border:1px solid var(--color-divider);border-radius:16px;padding:20px;box-shadow:var(--shadow-sm);margin-bottom:14px}
+        .van-card:last-child{margin-bottom:0}
+        .van-card-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--color-divider)}
+        .van-card-head-icon{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:var(--van-blue-h);color:var(--van-blue);font-size:1rem;flex-shrink:0}
+        .van-card-head-icon.green{background:var(--van-green-h);color:var(--van-green)}
+        .van-card-head-icon.amber{background:var(--van-amber-h);color:var(--van-amber)}
+        .van-card-head-icon.red{background:var(--van-red-h);color:var(--van-red)}
+        .van-card-head-icon.purple{background:var(--van-purple-h);color:var(--van-purple)}
+        .van-card-head-icon.teal{background:var(--van-teal-h);color:var(--van-teal)}
+        .van-card-head h3{font-size:.92rem;font-weight:800;color:var(--color-text);margin:0;font-family:'Plus Jakarta Sans',sans-serif}
+        .van-card-head p{font-size:.73rem;color:var(--color-text-muted);margin:2px 0 0}
+        .fg{display:flex;flex-direction:column;gap:5px;margin-bottom:11px}
+        .fg:last-child{margin-bottom:0}
+        .fg label{font-size:.78rem;font-weight:700;color:var(--color-text);display:flex;align-items:center;gap:5px}
+        .fg label i{color:var(--color-text-muted);font-size:.74rem}
+        .input-wrap{position:relative;display:flex;align-items:center}
+        .input-wrap .i-left{position:absolute;left:11px;color:var(--color-text-muted);font-size:.8rem;pointer-events:none;z-index:1}
+        .input-wrap input,.input-wrap select{width:100%;padding:9px 12px 9px 34px;border:1.5px solid var(--color-border);border-radius:8px;background:var(--color-surface);color:var(--color-text);font-size:.84rem;font-family:inherit;transition:border-color .18s,box-shadow .18s}
+        .input-wrap select{appearance:none}
+        .input-wrap input:focus,.input-wrap select:focus{outline:none;border-color:var(--van-blue);box-shadow:0 0 0 3px var(--van-blue-h)}
+        .input-unit{position:absolute;right:10px;font-size:10px;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;pointer-events:none}
+        .input-wrap input{padding-right:44px}
+        .input-wrap select{padding-right:24px}
+        .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+        @media(max-width:520px){.form-grid{grid-template-columns:1fr}}
+        .check-toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--color-surface-offset);border:1px dashed var(--color-border);border-radius:8px;cursor:pointer;margin-bottom:10px}
+        .check-toggle input[type="checkbox"]{width:16px;height:16px;cursor:pointer;accent-color:var(--van-blue);flex-shrink:0}
+        .check-toggle label{font-size:.77rem;font-weight:700;color:var(--van-blue);cursor:pointer;display:flex;align-items:center;gap:5px;margin:0}
+        .metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--color-divider)}
+        .metric-item{background:var(--color-surface-offset);border-radius:8px;padding:8px 10px;border:1px solid var(--color-divider)}
+        .metric-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-muted)}
+        .metric-val{font-size:1.05rem;font-weight:800;color:var(--van-blue);font-family:'Plus Jakarta Sans',sans-serif;margin-top:2px}
+        .metric-unit{font-size:10px;font-weight:600;color:var(--color-text-muted)}
+        .van-result-panel{position:sticky;top:20px}
+        .van-result-card{background:var(--color-surface);border:1px solid var(--color-divider);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+        .vrc-header{background:linear-gradient(135deg,#0284c7,#0891b2);padding:16px 20px;display:flex;align-items:center;gap:10px}
+        .vrc-header-icon{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem}
+        .vrc-header-title{font-size:.84rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.5px;font-family:'Plus Jakarta Sans',sans-serif}
+        .vrc-header-subtitle{font-size:.72rem;color:rgba(255,255,255,.78);margin-top:2px}
+        .vrc-body{padding:18px}
+        .vrc-main-result{text-align:center;padding:18px 14px;background:var(--color-surface-offset);border-radius:12px;margin-bottom:12px;border:1px solid var(--color-divider);min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        .vrc-placeholder{color:var(--color-text-muted);font-size:.8rem;display:flex;flex-direction:column;align-items:center;gap:8px}
+        .vrc-placeholder i{font-size:1.8rem;opacity:.35}
+        .vrc-dose-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--color-text-muted);margin-bottom:4px}
+        .vrc-dose-val{font-size:2rem;font-weight:800;color:var(--van-blue);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.1}
+        .vrc-dose-sub{font-size:.77rem;color:var(--color-text-muted);margin-top:4px;font-weight:500;line-height:1.5}
+        .vrc-status{display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border-radius:10px;font-size:.77rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px;margin-bottom:12px;border:1px solid var(--color-divider);background:var(--color-surface-offset);color:var(--color-text-muted)}
+        .vrc-status.s-ok{background:var(--van-green-h);border-color:var(--van-green-b);color:var(--van-green)}
+        .vrc-status.s-warn{background:var(--van-amber-h);border-color:var(--van-amber-b);color:var(--van-amber)}
+        .vrc-status.s-danger{background:var(--van-red-h);border-color:var(--van-red-b);color:var(--van-red)}
+        .vrc-status.s-info{background:var(--van-blue-h);border-color:var(--van-blue-b);color:var(--van-blue)}
+        .vrc-status.s-purple{background:var(--van-purple-h);border-color:var(--van-purple-b);color:var(--van-purple)}
+        .pk-report{display:none;background:var(--color-surface-offset);border:1px solid var(--color-divider);border-radius:10px;padding:12px;margin-bottom:12px}
+        .pk-report-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--van-blue);margin-bottom:8px;display:flex;align-items:center;gap:5px}
+        .pk-report-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+        .pk-item{background:var(--color-surface);border-radius:7px;padding:7px 9px;border:1px solid var(--color-divider)}
+        .pk-item-label{font-size:10px;color:var(--color-text-muted);font-weight:600}
+        .pk-item-val{font-size:.88rem;font-weight:800;color:var(--color-text);font-family:'Plus Jakarta Sans',sans-serif}
+        .van-alert{display:flex;gap:10px;padding:11px 13px;border-radius:10px;margin-bottom:10px;font-size:.79rem;line-height:1.5;border:1px solid;animation:fadeSlideIn .22s ease-out}
+        @keyframes fadeSlideIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+        .van-alert.a-info{background:var(--van-blue-h);border-color:var(--van-blue-b);color:var(--van-blue)}
+        .van-alert.a-warn{background:var(--van-amber-h);border-color:var(--van-amber-b);color:var(--van-amber)}
+        .van-alert.a-danger{background:var(--van-red-h);border-color:var(--van-red-b);color:var(--van-red)}
+        .van-alert.a-ok{background:var(--van-green-h);border-color:var(--van-green-b);color:var(--van-green)}
+        .van-alert-icon{font-size:1.1rem;margin-top:1px;flex-shrink:0}
+        .van-alert-content h4{font-size:.79rem;font-weight:800;margin:0 0 3px}
+        .van-alert-content p{font-size:.74rem;margin:0;opacity:.9}
+        .regimen-table-wrap{display:none;margin-bottom:12px;border-radius:10px;overflow:hidden;border:1px solid var(--color-divider)}
+        .regimen-table-title{background:var(--color-surface-offset);padding:8px 12px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text);border-bottom:1px solid var(--color-divider)}
+        .regimen-table{width:100%;border-collapse:collapse;font-size:.74rem}
+        .regimen-table th{background:var(--color-surface-offset);padding:7px 10px;text-align:left;font-weight:700;color:var(--color-text-muted);font-size:.69rem;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid var(--color-divider)}
+        .regimen-table td{padding:7px 10px;border-bottom:1px solid var(--color-divider);color:var(--color-text);font-weight:500}
+        .regimen-table tr:last-child td{border-bottom:none}
+        .regimen-table tr:hover td{background:var(--color-surface-offset)}
+        .r-badge{display:inline-flex;align-items:center;padding:2px 7px;border-radius:99px;font-size:10px;font-weight:800}
+        .r-badge.ok{background:var(--van-green-h);color:var(--van-green);border:1px solid var(--van-green-b)}
+        .r-badge.warn{background:var(--van-amber-h);color:var(--van-amber);border:1px solid var(--van-amber-b)}
+        .r-badge.danger{background:var(--van-red-h);color:var(--van-red);border:1px solid var(--van-red-b)}
+        .van-guide{background:linear-gradient(135deg,var(--van-blue-h),var(--color-surface-offset));border-left:4px solid var(--van-blue);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+        .van-guide h4{font-size:.8rem;font-weight:800;color:var(--color-text);margin:0 0 8px;display:flex;align-items:center;gap:6px}
+        .van-guide ul{margin:0;padding-left:16px;display:grid;gap:5px}
+        .van-guide li{font-size:.74rem;color:var(--color-text-muted);line-height:1.55}
+        .tab-content{display:none}
+        .tab-content.active{display:block}
+        .method-switch{display:flex;gap:6px;margin-bottom:12px}
+        .method-btn{flex:1;padding:9px 10px;border:1.5px solid var(--color-border);border-radius:8px;background:var(--color-surface);color:var(--color-text-muted);font-size:.76rem;font-weight:700;cursor:pointer;transition:all .18s;text-align:center;font-family:'Plus Jakarta Sans',sans-serif}
+        .method-btn:hover{border-color:var(--van-blue);color:var(--color-text)}
+        .method-btn.active{border-color:var(--van-blue);background:var(--van-blue-h);color:var(--van-blue)}
+        .section-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--van-blue);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+        .section-label::after{content:'';flex:1;height:1px;background:var(--color-divider)}
+        .input-readonly{background:var(--color-surface-offset)!important;font-weight:800!important;color:var(--van-blue)!important;cursor:default}
+        .scenario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+        @media(max-width:480px){.scenario-grid{grid-template-columns:1fr}}
+        .sc-btn{padding:12px 14px;border:2px solid var(--color-border);border-radius:12px;background:var(--color-surface);cursor:pointer;text-align:left;transition:all .18s;display:flex;flex-direction:column;gap:3px}
+        .sc-btn-icon{font-size:1.2rem;margin-bottom:2px}
+        .sc-btn-name{font-size:.79rem;font-weight:800;color:var(--color-text);font-family:'Plus Jakarta Sans',sans-serif}
+        .sc-btn-desc{font-size:.69rem;color:var(--color-text-muted);line-height:1.4}
+        .sc-btn:hover{border-color:var(--van-blue);transform:translateY(-1px)}
+        .sc-btn.active{border-color:var(--van-blue);background:var(--van-blue-h)}
+        .sc-btn.active .sc-btn-name{color:var(--van-blue)}
+        .sc-btn.sc-amber:hover{border-color:var(--van-amber)}
+        .sc-btn.sc-amber.active{border-color:var(--van-amber);background:var(--van-amber-h)}
+        .sc-btn.sc-amber.active .sc-btn-name{color:var(--van-amber)}
+        .sc-btn.sc-purple:hover{border-color:var(--van-purple)}
+        .sc-btn.sc-purple.active{border-color:var(--van-purple);background:var(--van-purple-h)}
+        .sc-btn.sc-purple.active .sc-btn-name{color:var(--van-purple)}
+        .sc-btn.sc-teal:hover{border-color:var(--van-teal)}
+        .sc-btn.sc-teal.active{border-color:var(--van-teal);background:var(--van-teal-h)}
+        .sc-btn.sc-teal.active .sc-btn-name{color:var(--van-teal)}
+        .auc-gauge{display:none;margin-bottom:12px}
+        .auc-gauge-bar{position:relative;height:9px;background:var(--color-surface-offset);border-radius:99px;overflow:visible;border:1px solid var(--color-divider)}
+        .auc-zone{position:absolute;top:0;height:100%}
+        .auc-zone.low{background:var(--van-amber-b);left:0;width:40%;border-radius:99px 0 0 99px}
+        .auc-zone.ok{background:var(--van-green-b);left:40%;width:20%}
+        .auc-zone.high{background:var(--van-red-b);left:60%;width:40%;border-radius:0 99px 99px 0}
+        .auc-pointer{position:absolute;top:-4px;width:17px;height:17px;border-radius:50%;background:var(--van-blue);border:2.5px solid var(--color-surface);box-shadow:0 2px 6px rgba(0,0,0,.18);transform:translateX(-50%);transition:left .4s ease,background .3s}
+        .auc-gauge-labels{display:flex;justify-content:space-between;margin-top:6px;font-size:10px;color:var(--color-text-muted);font-weight:600}
+        .auc-gauge-val{text-align:center;font-size:.75rem;margin-top:6px;font-weight:600}
+        .btn-print{width:100%;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,#0284c7,#0891b2);color:#fff;font-size:.82rem;font-weight:800;cursor:pointer;display:none;align-items:center;justify-content:center;gap:8px;margin-top:12px;transition:opacity .2s;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:.3px}
+        .btn-print:hover{opacity:.88}
+        .crcl-ok{color:var(--van-green)!important}
+        .crcl-mod{color:var(--van-amber)!important}
+        .crcl-severe{color:var(--van-red)!important}
+        @media print{.app-sidebar,#header-placeholder,.sidebar-overlay,.van-tabs,.van-subtabs,.breadcrumb-container,.btn-print{display:none!important}.main-wrapper{margin:0!important;padding:0!important;width:100%!important}.van-layout{grid-template-columns:1fr!important}}
+    </style>
+</head>
+<body>
+<div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="app-container">
+    <main class="main-wrapper">
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Công cụ", "url": "../cong-cu.html"}, {"label": "Truyền Nhiễm", "url": "javascript:void(0)"}, {"label": "Quản lý & Chỉnh liều Vancomycin"}]'></clini-breadcrumb>
+
+        <!-- HERO -->
+        <div class="van-hero">
+            <div class="van-hero-badge"><i class="fa-solid fa-flask-vial"></i> Dược Lâm Sàng — Kháng Sinh Glycopeptide</div>
+            <h1>Quản lý &amp; Chỉnh liều Vancomycin</h1>
+            <p>Tính toán liều nạp, liều duy trì ban đầu và tối ưu hóa liều dùng cá thể hóa dựa trên đích <strong style="color:rgba(255,255,255,.95)">AUC/MIC 400-600 mg·h/L</strong> (ASHP/IDSA/SIDP 2020). Hỗ trợ nhiều bối cảnh lâm sàng: truyền ngắt quãng, truyền liên tục, lọc máu ngắt quãng và điều trị ngoại trú.</p>
+            <div class="van-hero-pills">
+                <span class="van-hero-pill"><i class="fa-solid fa-bullseye"></i> Đích AUC/MIC 400-600</span>
+                <span class="van-hero-pill"><i class="fa-solid fa-flask"></i> PK Sawchuk-Zaske</span>
+                <span class="van-hero-pill"><i class="fa-solid fa-kidney"></i> Hiệu chỉnh CrCl</span>
+                <span class="van-hero-pill"><i class="fa-solid fa-chart-line"></i> So sánh phác đồ</span>
+            </div>
+        </div>
+
+        <!-- MAIN TABS -->
+        <div class="van-tabs" role="tablist">
+            <button class="van-tab-btn active" onclick="switchMainTab('empiric',this)" role="tab" aria-selected="true">
+                <span class="tab-num">1</span><i class="fa-solid fa-calculator"></i> Liều ban đầu (Empiric)
+            </button>
+            <button class="van-tab-btn" onclick="switchMainTab('adjustment',this)" role="tab" aria-selected="false">
+                <span class="tab-num">2</span><i class="fa-solid fa-sliders"></i> Hiệu chỉnh liều (Adjustment)
+            </button>
+        </div>
+
+        <!-- SUB-TABS -->
+        <div class="van-subtabs" id="vanSubtabs">
+            <span class="van-subtabs-label">Chọn bối cảnh lâm sàng:</span>
+            <button class="van-subtab-btn active" onclick="switchSubTab('intermittent',this)"><i class="fa-solid fa-chart-line"></i> Ngắt quãng (AUC)</button>
+            <button class="van-subtab-btn" onclick="switchSubTab('civ',this)"><i class="fa-solid fa-arrows-spin"></i> Liên tục (CIV)</button>
+            <button class="van-subtab-btn" onclick="switchSubTab('ihd',this)"><i class="fa-solid fa-filter-circle-xmark"></i> Lọc máu (IHD)</button>
+            <button class="van-subtab-btn" onclick="switchSubTab('opat',this)"><i class="fa-solid fa-house-medical"></i> Ngoại trú (OPAT)</button>
+        </div>
+
+        <div class="van-layout">
+            <!-- LEFT COLUMN -->
+            <div>
+                <!-- PATIENT CARD -->
+                <div class="van-card">
+                    <div class="van-card-head">
+                        <div class="van-card-head-icon"><i class="fa-solid fa-clipboard-user"></i></div>
+                        <div><h3>Hồ sơ bệnh nhân (Patient Profile)</h3><p>Thông tin cơ bản để tính toán dược động học cá thể hóa</p></div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="fg">
+                            <label for="prof-age"><i class="fa-solid fa-calendar-days"></i> Tuổi</label>
+                            <div class="input-wrap"><i class="fa-solid fa-calendar-days i-left"></i><input type="number" id="prof-age" value="65" min="1" max="120" oninput="onPatientChange()"><span class="input-unit">tuổi</span></div>
+                        </div>
+                        <div class="fg">
+                            <label for="prof-gender"><i class="fa-solid fa-venus-mars"></i> Giới tính</label>
+                            <div class="input-wrap"><i class="fa-solid fa-venus-mars i-left"></i>
+                                <select id="prof-gender" onchange="onPatientChange()"><option value="male" selected>Nam (Male)</option><option value="female">Nữ (Female)</option></select>
+                            </div>
+                        </div>
+                        <div class="fg">
+                            <label for="prof-weight"><i class="fa-solid fa-weight-scale"></i> Cân nặng thực (TBW)</label>
+                            <div class="input-wrap"><i class="fa-solid fa-weight-scale i-left"></i><input type="number" id="prof-weight" value="60" min="2" max="300" oninput="onPatientChange()"><span class="input-unit">kg</span></div>
+                        </div>
+                        <div class="fg">
+                            <label for="prof-scr"><i class="fa-solid fa-vial"></i> Creatinin huyết thanh</label>
+                            <div class="input-wrap" style="gap:4px">
+                                <i class="fa-solid fa-vial i-left" style="z-index:2"></i>
+                                <input type="number" id="prof-scr" value="1.0" min="0.1" max="15" step="0.01" style="flex:2;padding-left:34px" oninput="onPatientChange()">
+                                <select id="prof-scr-unit" onchange="onPatientChange()" style="flex:1.2;padding-left:8px;padding-right:16px;font-size:.77rem;min-width:0">
+                                    <option value="mgdl" selected>mg/dL</option><option value="umoll">umol/L</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="check-toggle"><input type="checkbox" id="prof-obese" onchange="toggleObese()"><label for="prof-obese"><i class="fa-solid fa-person-circle-check" style="color:var(--van-blue)"></i> Bệnh nhân béo phì — nhập chiều cao để tính IBW &amp; AdjBW</label></div>
+                    <div id="height-row" style="display:none;margin-bottom:10px">
+                        <div class="fg" style="margin-bottom:0">
+                            <label for="prof-height"><i class="fa-solid fa-ruler-vertical"></i> Chiều cao</label>
+                            <div class="input-wrap"><i class="fa-solid fa-ruler-vertical i-left"></i><input type="number" id="prof-height" value="165" min="50" max="250" oninput="onPatientChange()"><span class="input-unit">cm</span></div>
+                        </div>
+                    </div>
+                    <div class="fg" style="margin-bottom:0">
+                        <label><i class="fa-solid fa-gauge-high"></i> Độ thanh thải Creatinin (CrCl — Cockcroft-Gault)</label>
+                        <div class="input-wrap"><i class="fa-solid fa-gauge-high i-left"></i><input type="text" id="crcl-display" class="input-readonly" readonly value="—"><span class="input-unit">mL/min</span></div>
+                    </div>
+                    <div id="metrics-panel" style="display:none">
+                        <div class="metrics-grid">
+                            <div class="metric-item"><div class="metric-label">IBW (Devine)</div><div class="metric-val" id="m-ibw">—</div><div class="metric-unit">kg</div></div>
+                            <div class="metric-item"><div class="metric-label">AdjBW (40%)</div><div class="metric-val" id="m-adjbw">—</div><div class="metric-unit">kg</div></div>
+                            <div class="metric-item"><div class="metric-label">BSA (Mosteller)</div><div class="metric-val" id="m-bsa">—</div><div class="metric-unit">m2</div></div>
+                            <div class="metric-item"><div class="metric-label">Thể trạng</div><div class="metric-val" id="m-status" style="font-size:.77rem">—</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 1: EMPIRIC -->
+                <div id="tc-empiric" class="tab-content active">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon green"><i class="fa-solid fa-person-circle-check"></i></div><div><h3>Chọn đối tượng lâm sàng</h3><p>Phác đồ liều nạp và duy trì theo nhóm bệnh nhân</p></div></div>
+                        <div class="scenario-grid">
+                            <button class="sc-btn active" id="sc-adult" onclick="selectScenario('adult',this)">
+                                <div class="sc-btn-icon">🧑</div><div class="sc-btn-name">Người lớn (Chuẩn)</div><div class="sc-btn-desc">Cân nặng bình thường, không béo phì, thận không suy</div>
+                            </button>
+                            <button class="sc-btn sc-amber" id="sc-obese" onclick="selectScenario('obese',this)">
+                                <div class="sc-btn-icon">⚖️</div><div class="sc-btn-name">Béo phì</div><div class="sc-btn-desc">BMI &gt;=30 hoặc TBW &gt; 120% IBW — Hiệu chỉnh AdjBW</div>
+                            </button>
+                            <button class="sc-btn sc-purple" id="sc-child" onclick="selectScenario('child',this)">
+                                <div class="sc-btn-icon">👶</div><div class="sc-btn-name">Nhi khoa</div><div class="sc-btn-desc">3 tháng – &lt; 12 tuổi, chức năng thận bình thường</div>
+                            </button>
+                            <button class="sc-btn sc-teal" id="sc-civ" onclick="selectScenario('civ',this)">
+                                <div class="sc-btn-icon">💉</div><div class="sc-btn-name">Truyền liên tục (CIV)</div><div class="sc-btn-desc">Loading dose + tốc độ CIV 24h ban đầu</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2a: INTERMITTENT -->
+                <div id="tc-intermittent" class="tab-content">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon"><i class="fa-solid fa-chart-bar"></i></div><div><h3>Phác đồ &amp; Nồng độ đo được</h3><p>Truyền ngắt quãng — tối ưu theo AUC 24h</p></div></div>
+                        <div class="section-label">Phác đồ đang dùng</div>
+                        <div class="form-grid">
+                            <div class="fg"><label for="int-dose"><i class="fa-solid fa-pills"></i> Liều mỗi lần</label><div class="input-wrap"><i class="fa-solid fa-pills i-left"></i><input type="number" id="int-dose" value="1000" min="100" max="3000" step="50" oninput="runIntermittent()"><span class="input-unit">mg</span></div></div>
+                            <div class="fg"><label for="int-interval"><i class="fa-solid fa-clock"></i> Khoảng cách liều</label><div class="input-wrap"><i class="fa-solid fa-clock i-left"></i><select id="int-interval" onchange="runIntermittent()"><option value="6">Q6H</option><option value="8">Q8H</option><option value="12" selected>Q12H</option><option value="24">Q24H</option><option value="48">Q48H</option></select></div></div>
+                        </div>
+                        <div class="fg"><label for="int-auc-target"><i class="fa-solid fa-bullseye"></i> AUC 24h đích mong muốn</label><div class="input-wrap"><i class="fa-solid fa-bullseye i-left"></i><input type="number" id="int-auc-target" value="500" min="400" max="600" oninput="runIntermittent()"><span class="input-unit">mg.h/L</span></div></div>
+                        <div class="section-label" style="margin-top:6px">Phương thức xác định AUC hiện tại</div>
+                        <div class="method-switch">
+                            <button class="method-btn active" onclick="setMethod('pk',this)"><i class="fa-solid fa-chart-line"></i> Đo Đỉnh &amp; Đáy (PK)</button>
+                            <button class="method-btn" onclick="setMethod('direct',this)"><i class="fa-solid fa-keyboard"></i> Nhập trực tiếp AUC</button>
+                        </div>
+                        <div id="fields-direct" style="display:none">
+                            <div class="fg"><label for="int-auc-calc"><i class="fa-solid fa-square-poll-vertical"></i> AUC 24h đo được / tính toán</label><div class="input-wrap"><i class="fa-solid fa-square-poll-vertical i-left"></i><input type="number" id="int-auc-calc" value="720" min="50" max="2000" oninput="runIntermittent()"><span class="input-unit">mg.h/L</span></div></div>
+                        </div>
+                        <div id="fields-pk">
+                            <div class="section-label">Nồng độ đo ở trạng thái ổn định (Steady-state)</div>
+                            <div class="form-grid">
+                                <div class="fg"><label for="int-cpeak"><i class="fa-solid fa-arrow-trend-up"></i> C-peak đo được <span title="Lấy mẫu ít nhất 1 giờ sau khi kết thúc truyền" style="cursor:help;color:var(--van-blue)"><i class="fa-solid fa-circle-info"></i></span></label><div class="input-wrap"><i class="fa-solid fa-arrow-trend-up i-left"></i><input type="number" id="int-cpeak" value="35.5" min="5" max="100" step="0.1" oninput="runIntermittent()"><span class="input-unit">mg/L</span></div></div>
+                                <div class="fg"><label for="int-t-peak"><i class="fa-solid fa-hourglass-start"></i> TG lấy mẫu Đỉnh</label><div class="input-wrap"><i class="fa-solid fa-hourglass-start i-left"></i><input type="number" id="int-t-peak" value="1.0" min="0" max="4" step="0.1" oninput="runIntermittent()"><span class="input-unit">gio</span></div></div>
+                                <div class="fg"><label for="int-ctrough"><i class="fa-solid fa-arrow-trend-down"></i> C-trough đo được <span title="Lấy mẫu 30 phút trước liều kế tiếp" style="cursor:help;color:var(--van-blue)"><i class="fa-solid fa-circle-info"></i></span></label><div class="input-wrap"><i class="fa-solid fa-arrow-trend-down i-left"></i><input type="number" id="int-ctrough" value="14.2" min="1" max="50" step="0.1" oninput="runIntermittent()"><span class="input-unit">mg/L</span></div></div>
+                                <div class="fg"><label for="int-t-trough"><i class="fa-solid fa-hourglass-end"></i> TG lấy mẫu Đáy</label><div class="input-wrap"><i class="fa-solid fa-hourglass-end i-left"></i><input type="number" id="int-t-trough" value="0.0" min="0" max="4" step="0.1" oninput="runIntermittent()"><span class="input-unit">gio</span></div></div>
+                                <div class="fg"><label for="int-tinf"><i class="fa-solid fa-stopwatch"></i> TG truyền (t-inf)</label><div class="input-wrap"><i class="fa-solid fa-stopwatch i-left"></i><input type="number" id="int-tinf" value="1.0" min="0.5" max="4" step="0.1" oninput="runIntermittent()"><span class="input-unit">gio</span></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2b: CIV -->
+                <div id="tc-civ" class="tab-content">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon teal"><i class="fa-solid fa-arrows-spin"></i></div><div><h3>Thông số Truyền liên tục (CIV)</h3><p>Hiệu chỉnh tốc độ truyền dựa trên Css đo được</p></div></div>
+                        <div class="form-grid">
+                            <div class="fg"><label for="civ-tdd"><i class="fa-solid fa-calculator"></i> Tổng liều 24h hiện tại</label><div class="input-wrap"><i class="fa-solid fa-calculator i-left"></i><input type="number" id="civ-tdd" value="2000" min="500" max="6000" step="250" oninput="runCIV()"><span class="input-unit">mg/24h</span></div></div>
+                            <div class="fg"><label for="civ-css"><i class="fa-solid fa-vial-virus"></i> Css đo được (ngẫu nhiên)</label><div class="input-wrap"><i class="fa-solid fa-vial-virus i-left"></i><input type="number" id="civ-css" value="15.0" min="1" max="100" step="0.1" oninput="runCIV()"><span class="input-unit">mg/L</span></div></div>
+                            <div class="fg" style="grid-column:1/-1"><label for="civ-target"><i class="fa-solid fa-bullseye"></i> Css đích mong muốn</label><div class="input-wrap"><i class="fa-solid fa-bullseye i-left"></i><input type="number" id="civ-target" value="20" min="15" max="30" oninput="runCIV()"><span class="input-unit">mg/L</span></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2c: IHD -->
+                <div id="tc-ihd" class="tab-content">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon red"><i class="fa-solid fa-filter-circle-xmark"></i></div><div><h3>Nồng độ trước lọc máu (Pre-HD)</h3><p>Tính liều bù (supplementary dose) sau mỗi chu kỳ lọc</p></div></div>
+                        <div class="fg"><label for="ihd-pre"><i class="fa-solid fa-vials"></i> Nồng độ Vancomycin trước lọc máu</label><div class="input-wrap"><i class="fa-solid fa-vials i-left"></i><input type="number" id="ihd-pre" value="12.0" min="1" max="60" step="0.1" oninput="runIHD()"><span class="input-unit">mg/L</span></div></div>
+                        <div class="fg"><label for="ihd-target"><i class="fa-solid fa-bullseye"></i> Nồng độ đích sau lọc máu</label><div class="input-wrap"><i class="fa-solid fa-bullseye i-left"></i><input type="number" id="ihd-target" value="15.0" min="10" max="25" step="0.5" oninput="runIHD()"><span class="input-unit">mg/L</span></div></div>
+                        <div class="van-alert a-info" style="margin-top:8px"><i class="fa-solid fa-circle-info van-alert-icon"></i><div class="van-alert-content"><h4>Lưu ý lâm sàng</h4><p>Màng lọc thông lượng cao (High-flux) loại bỏ 30-40% Vancomycin trong mỗi chu kỳ lọc. Liều bù tính theo TBW. Cho thuốc ngay sau khi kết thúc chu kỳ IHD.</p></div></div>
+                    </div>
+                </div>
+
+                <!-- TAB 2d: OPAT -->
+                <div id="tc-opat" class="tab-content">
+                    <div class="van-card">
+                        <div class="van-card-head"><div class="van-card-head-icon purple"><i class="fa-solid fa-house-medical"></i></div><div><h3>Quy đổi đích theo dõi ngoại trú (OPAT)</h3><p>Ước tính khoảng đáy tương đương với đích AUC nội viện</p></div></div>
+                        <div class="form-grid">
+                            <div class="fg"><label for="opat-trough"><i class="fa-solid fa-arrow-trend-down"></i> C-trough nội viện đã đạt</label><div class="input-wrap"><i class="fa-solid fa-arrow-trend-down i-left"></i><input type="number" id="opat-trough" value="15.0" min="2" max="40" step="0.1" oninput="runOPAT()"><span class="input-unit">mg/L</span></div></div>
+                            <div class="fg"><label for="opat-auc"><i class="fa-solid fa-square-poll-vertical"></i> AUC 24h nội viện tương ứng</label><div class="input-wrap"><i class="fa-solid fa-square-poll-vertical i-left"></i><input type="number" id="opat-auc" value="500" min="100" max="1000" oninput="runOPAT()"><span class="input-unit">mg.h/L</span></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end left col -->
+
+            <!-- RIGHT COLUMN: RESULTS -->
+            <div class="van-result-panel">
+                <div class="van-result-card">
+                    <div class="vrc-header">
+                        <div class="vrc-header-icon"><i class="fa-solid fa-flask-vial"></i></div>
+                        <div><div class="vrc-header-title" id="rcTitle">Kết quả Liều ban đầu</div><div class="vrc-header-subtitle" id="rcSubtitle">Empiric Dosing — Vancomycin</div></div>
+                    </div>
+                    <div class="vrc-body">
+                        <div class="auc-gauge" id="aucGauge">
+                            <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--color-text-muted);margin-bottom:6px">AUC 24h hiện tại — Đích 400-600 mg.h/L</div>
+                            <div class="auc-gauge-bar"><div class="auc-zone low"></div><div class="auc-zone ok"></div><div class="auc-zone high"></div><div class="auc-pointer" id="aucPointer"></div></div>
+                            <div class="auc-gauge-labels"><span>0</span><span>400</span><span>600</span><span>1000</span></div>
+                            <div class="auc-gauge-val" id="aucGaugeVal">—</div>
+                        </div>
+                        <div class="vrc-main-result" id="mainResult">
+                            <div class="vrc-placeholder"><i class="fa-solid fa-calculator"></i><span>Nhập thông tin bệnh nhân<br>để bắt đầu tính toán</span></div>
+                        </div>
+                        <div class="vrc-status" id="rcStatus"><i class="fa-solid fa-circle-dot"></i> Đang chờ dữ liệu...</div>
+                        <div class="pk-report" id="pkReport">
+                            <div class="pk-report-title"><i class="fa-solid fa-dna"></i> Báo cáo thông số Dược động học (PK Parameters)</div>
+                            <div class="pk-report-grid">
+                                <div class="pk-item"><div class="pk-item-label">ke (Hằng số thải trừ)</div><div class="pk-item-val"><span id="pk-ke">—</span> h-1</div></div>
+                                <div class="pk-item"><div class="pk-item-label">t-half (Bán thải)</div><div class="pk-item-val"><span id="pk-thalf">—</span> gio</div></div>
+                                <div class="pk-item"><div class="pk-item-label">Vd (Phân bố)</div><div class="pk-item-val"><span id="pk-vd">—</span> L (<span id="pk-vd-kg">—</span> L/kg)</div></div>
+                                <div class="pk-item"><div class="pk-item-label">Cl-vanc (Thanh thải)</div><div class="pk-item-val"><span id="pk-cl">—</span> L/h (<span id="pk-cl-ml">—</span> mL/min)</div></div>
+                                <div class="pk-item" style="grid-column:1/-1"><div class="pk-item-label">AUC 24h (MIC=1)</div><div class="pk-item-val"><span id="pk-auc">—</span> mg.h/L | AUC/MIC = <span id="pk-auc-mic">—</span></div></div>
+                            </div>
+                        </div>
+                        <div class="regimen-table-wrap" id="regimenBox">
+                            <div class="regimen-table-title"><i class="fa-solid fa-table-columns"></i> So sánh phác đồ thay thế (MIC = 1 mg/L)</div>
+                            <table class="regimen-table">
+                                <thead><tr><th>Phác đồ</th><th>AUC24</th><th>C-trough</th><th>Đánh giá</th></tr></thead>
+                                <tbody id="regimenBody"></tbody>
+                            </table>
+                        </div>
+                        <div id="alertsArea"></div>
+                        <div class="van-guide" id="clinicalGuide">
+                            <h4><i class="fa-solid fa-lightbulb" style="color:var(--van-amber)"></i> Hướng dẫn lâm sàng</h4>
+                            <ul id="guideList">
+                                <li>Đích tối ưu: AUC/MIC = 400-600 mg.h/L để tối đa hiệu quả diệt khuẩn, giảm nguy cơ AKI.</li>
+                                <li>Giả định MIC = 1 mg/L nếu chưa có kết quả kháng sinh đồ (MRSA, Enterococcus).</li>
+                                <li>Không dùng nồng độ đáy đơn thuần làm đích chính (hãy đẩy AUC &gt; 600).</li>
+                            </ul>
+                        </div>
+                        <button class="btn-print" id="btnPrint" onclick="window.print()"><i class="fa-solid fa-print"></i> In phiếu tư vấn dược lâm sàng</button>
+                    </div>
+                </div>
+            </div><!-- end right col -->
+        </div><!-- end van-layout -->
+    </main>
+</div>
+<div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+<script src="../../../js/main.js" defer></script>
+<script type="module" src="../../../components/footer.ts" defer></script>
+<script type="module" src="./ql-vancomycin.ts"></script>
+</body>
+</html>

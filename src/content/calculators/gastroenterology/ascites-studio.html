@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Ascites Diagnostic & Paracentesis Studio — Thuật toán phân tích dịch màng bụng, tự động tính SAAG (Serum-Ascites Albumin Gradient), kiểm tra Viêm phúc mạc vi trùng tự phát (SBP), Tiêu chuẩn Runyon và Phác đồ bù Albumin IV – CliniPortal." />
+  <title>Ascites Studio – Phân Tích Dịch Màng Bụng & SBP – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core & Component Modules -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/ascites-studio.css">
+
+  <!-- JS Core & Studio Modules -->
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script src="../../../../js/ascites-studio/ascites-engine.js" defer></script>
+  <script src="../../../../js/ascites-studio/ascites-scenarios.js" defer></script>
+  <script src="../../../../js/ascites-studio/ascites-ui.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="app-main">
+      <div class="ascites-studio-container">
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../cong-cu.html"}, {"label": "Ascites Studio"}]'></clini-breadcrumb>
+
+        <!-- HERO HEADER CARD -->
+        <div class="ascites-hero-card">
+          <div class="ascites-hero-header">
+            <div class="ascites-hero-title-group">
+              <span class="badge badge-info"><i class="fa-solid fa-stomach"></i> Tiêu Hóa & Cấp Cứu</span>
+              <h1 class="ascites-hero-title">Paracentesis & Ascites Diagnostic Studio</h1>
+              <p class="ascites-hero-subtitle">
+                Hệ thống hỗ trợ quyết định chẩn đoán dịch màng bụng toàn diện. Tự động tính chỉ số SAAG (Serum-Ascites Albumin Gradient) phân loại Tăng áp cửa, tính Bạch cầu ANC chẩn đoán Viêm phúc mạc vi trùng tự phát (SBP/CNNA), Tiêu chuẩn Runyon & Phác đồ Bù Albumin IV ngày 1-3.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại
+              </button>
+            </div>
+          </div>
+
+          <!-- Scenario Quick Presets -->
+          <div class="ascites-preset-section">
+            <div class="ascites-preset-title"><i class="fa-solid fa-bolt"></i> Ca Lâm Sàng Mẫu Giả Lập</div>
+            <div class="scenario-grid" id="scenarioPresetContainer">
+              <!-- Rendered via ascites-ui.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN 2-COLUMN WORKSPACE GRID -->
+        <div class="ascites-grid-layout">
+
+          <!-- LEFT COLUMN: INPUT PANEL -->
+          <div class="ascites-panel-card">
+            <h2 class="ascites-panel-title">
+              <i class="fa-solid fa-vial text-primary"></i> Thông Số Sinh Hóa & Cận Lâm Sàng
+            </h2>
+
+            <!-- Card 1: SAAG Inputs -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title"><i class="fa-solid fa-calculator text-primary"></i> 1. Albumin & SAAG (Tăng Áp Cửa)</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="ascites-input-group">
+                  <div class="ascites-label-row">
+                    <label class="ascites-calc-label" for="serumAlbumin">Albumin Huyết Thanh</label>
+                  </div>
+                  <div class="ascites-input-row">
+                    <input type="number" id="serumAlbumin" class="ascites-calc-input" placeholder="Ví dụ: 3.2" step="0.1" min="0">
+                    <select id="albuminUnit" class="ascites-calc-select ascites-select-unit">
+                      <option value="g/dL" selected>g/dL</option>
+                      <option value="g/L">g/L</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="ascites-input-group">
+                  <div class="ascites-label-row">
+                    <label class="ascites-calc-label" for="ascitesAlbumin">Albumin Dịch Báng</label>
+                  </div>
+                  <input type="number" id="ascitesAlbumin" class="ascites-calc-input" placeholder="Ví dụ: 1.1" step="0.1" min="0">
+                </div>
+              </div>
+
+              <div class="ascites-input-group">
+                <div class="ascites-label-row">
+                  <label class="ascites-calc-label" for="ascitesProtein">Total Protein Dịch Báng</label>
+                  <span style="font-size: 0.75rem; color: var(--color-text-muted);">Ngưỡng 2.5 g/dL</span>
+                </div>
+                <div class="ascites-input-row">
+                  <input type="number" id="ascitesProtein" class="ascites-calc-input" placeholder="Ví dụ: 1.5" step="0.1" min="0">
+                  <select id="proteinUnit" class="ascites-calc-select ascites-select-unit">
+                    <option value="g/dL" selected>g/dL</option>
+                    <option value="g/L">g/L</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: SBP & ANC Screening -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-danger);"><i class="fa-solid fa-shield-virus"></i> 2. Sàng Lọc SBP (Bạch Cầu ANC)</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="ascites-input-group">
+                  <div class="ascites-label-row">
+                    <label class="ascites-calc-label" for="wbc">Tổng Bạch Cầu (WBC/μL)</label>
+                  </div>
+                  <input type="number" id="wbc" class="ascites-calc-input" placeholder="Ví dụ: 1800" min="0">
+                </div>
+
+                <div class="ascites-input-group">
+                  <div class="ascites-label-row">
+                    <label class="ascites-calc-label" for="neutrophilPct">Tỷ Lệ Neutro (%)</label>
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">&ge; 250 / μL</span>
+                  </div>
+                  <input type="number" id="neutrophilPct" class="ascites-calc-input" placeholder="Ví dụ: 75" min="0" max="100">
+                </div>
+              </div>
+
+              <div class="ascites-input-group">
+                <label class="ascites-calc-label" for="culture">Kết Quả Cấy Dịch Báng (Culture)</label>
+                <select id="culture" class="ascites-calc-select">
+                  <option value="negative" selected>Âm tính (-)</option>
+                  <option value="monomicrobial">Dương tính - Đơn loài</option>
+                  <option value="polymicrobial">Dương tính - Nhiều loài (Polymicrobial)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Card 3: Runyon Criteria & Biomarkers -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-warning);"><i class="fa-solid fa-list-check"></i> 3. Runyon Criteria & Biomarkers</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="ascites-input-group">
+                  <div class="ascites-label-row">
+                    <label class="ascites-calc-label" for="glucose">Glucose Dịch Báng</label>
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">&lt; 50 mg/dL</span>
+                  </div>
+                  <div class="ascites-input-row">
+                    <input type="number" id="glucose" class="ascites-calc-input" placeholder="Ví dụ: 85" step="0.1">
+                    <select id="glucoseUnit" class="ascites-calc-select ascites-select-unit">
+                      <option value="mg/dL" selected>mg/dL</option>
+                      <option value="mmol/L">mmol/L</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="ascites-input-group">
+                  <div class="ascites-label-row">
+                    <label class="ascites-calc-label" for="ldh">LDH Dịch Báng</label>
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">&gt; ULN</span>
+                  </div>
+                  <div class="ascites-input-row">
+                    <input type="number" id="ldh" class="ascites-calc-input" placeholder="LDH DB">
+                    <input type="number" id="serumLdhUln" class="ascites-calc-input" style="width: 85px;" placeholder="ULN 200" value="200" title="ULN LDH Huyết thanh">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="ascites-input-group">
+                  <div class="ascites-label-row">
+                    <label class="ascites-calc-label" for="ada">ADA Dịch Báng</label>
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">&ge; 30 U/L</span>
+                  </div>
+                  <input type="number" id="ada" class="ascites-calc-input" placeholder="Lao (≥ 30)" step="0.1">
+                </div>
+
+                <div class="ascites-input-group">
+                  <div class="ascites-label-row">
+                    <label class="ascites-calc-label" for="amylase">Amylase DB</label>
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">&gt; 1000 U/L</span>
+                  </div>
+                  <input type="number" id="amylase" class="ascites-calc-input" placeholder="Tụy (> 1000)">
+                </div>
+              </div>
+
+              <div class="ascites-input-group">
+                <label class="ascites-calc-label" for="cytology">Tế Bào Học (Cytology)</label>
+                <select id="cytology" class="ascites-calc-select">
+                  <option value="negative" selected>Âm tính (-)</option>
+                  <option value="positive">Dương tính với Tế bào Ác tính (+)</option>
+                  <option value="atypical">Tế bào biến đổi không điển hình</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Card 4: Weight & LVP -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: #8b5cf6;"><i class="fa-solid fa-bottle-water"></i> 4. Cân Nặng & Chọc Tháo LVP</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="ascites-input-group">
+                  <label class="ascites-calc-label" for="bodyWeight">Cân Nặng (kg)</label>
+                  <input type="number" id="bodyWeight" class="ascites-calc-input" value="60" min="30" max="150" placeholder="kg">
+                </div>
+
+                <div class="ascites-input-group">
+                  <label class="ascites-calc-label" for="paracentesisVolume">Dịch Chọc Tháo (Lít)</label>
+                  <input type="number" id="paracentesisVolume" class="ascites-calc-input" placeholder="LVP (> 5 Lít)" step="0.5" min="0">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: RESULTS & ANALYTICS DASHBOARD -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+            <!-- Main Diagnostic Banner -->
+            <div class="ascites-panel-card">
+              <div class="ascites-hero-banner" id="resHeroBanner">
+                <span class="badge badge-info" id="resHeroBadge">KẾT QUẢ CHẨN ĐOÁN</span>
+                <div class="ascites-hero-banner-title" id="resHeroTitle">Dịch Báng Chưa Phân Loại</div>
+                <div class="ascites-hero-banner-summary" id="resHeroSummary">
+                  Vui lòng nhập đầy đủ Albumin Huyết thanh và Albumin Dịch báng để bắt đầu phân tích.
+                </div>
+              </div>
+
+              <!-- Metrics Grid -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-calculator text-primary"></i> Chỉ Số Phân Tầng SAAG, ANC & Runyon
+              </h3>
+              <div class="ascites-metrics-grid">
+                <div class="ascites-metric-card">
+                  <div class="ascites-metric-label">SAAG (Albumin HT - DB)</div>
+                  <div class="ascites-metric-val">
+                    <span id="valSaag">—</span>
+                    <span class="badge badge-neutral" id="badgeSaag">Chưa nhập</span>
+                  </div>
+                </div>
+
+                <div class="ascites-metric-card">
+                  <div class="ascites-metric-label">Bạch Cầu ANC (WBC * Neutro%)</div>
+                  <div class="ascites-metric-val">
+                    <span id="valAnc">—</span>
+                    <span class="badge badge-neutral" id="badgeAnc">Chưa nhập</span>
+                  </div>
+                </div>
+
+                <div class="ascites-metric-card">
+                  <div class="ascites-metric-label">Tiêu Chuẩn Runyon (Secondary SBP)</div>
+                  <div class="ascites-metric-val">
+                    <span id="valRunyon">—</span>
+                    <span class="badge badge-neutral" id="badgeRunyon">Chưa nhập</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Albumin IV Dosing Card -->
+              <div id="containerAlbuminDosing"></div>
+
+              <!-- Clinical Findings -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-triangle-exclamation text-warning"></i> Dấu Hiệu Bất Thường Phát Hiện
+              </h3>
+              <div id="containerFindings">
+                <div class="ascites-empty-state">Chưa phát hiện bất thường đặc hiệu.</div>
+              </div>
+
+              <!-- Etiology Probabilities -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-top: 1.25rem; margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-chart-pie text-success"></i> Khả Năng Nguyên Nhân Bệnh Lý
+              </h3>
+              <div id="containerEtiologies">
+                <div class="ascites-empty-state">Chưa đủ dữ liệu để xếp loại nguyên nhân.</div>
+              </div>
+
+              <!-- Clinical Recommendations -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-top: 1.25rem; margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-user-doctor text-primary"></i> Khuyên Dùng Xử Trí & Thủ Thuật Lâm Sàng
+              </h3>
+              <div id="containerRecommendations">
+                <div class="ab ab-info">ℹ️ Hoàn thiện thông số để nhận hướng dẫn lâm sàng.</div>
+              </div>
+
+            </div>
+
+            <!-- Interactive Flowchart Visualizer -->
+            <div class="ascites-flowchart-wrapper">
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-diagram-project text-primary"></i> Sơ Đồ Thuật Toán Chẩn Đoán Tương Tác
+              </h3>
+
+              <div class="ascites-fc-nodes-container">
+                <div class="ascites-fc-node active-node" data-node-id="node-start">
+                  <div class="ascites-fc-title">1. Chọc dò Dịch màng bụng (Paracentesis)</div>
+                  <div class="ascites-fc-desc">Đo Albumin HT & DB, Protein DB, WBC, Neutro%, Glucose, LDH, ADA, Cytology & Cấy</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-saag">
+                  <div class="ascites-fc-title">2. Tính SAAG = Albumin Huyết thanh - Albumin Dịch báng</div>
+                  <div class="ascites-fc-desc">Phân loại Tăng áp lực tĩnh mạch cửa (SAAG &ge; 1.1 g/dL)</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-saag-high">
+                  <div class="ascites-fc-title">🔴 SAAG &ge; 1.1 g/dL → TĂNG ÁP LỰC TĨNH MẠCH CỬA</div>
+                  <div class="ascites-fc-desc">Đánh giá thêm Total Protein dịch báng (&lt; 2.5 g/dL vs &ge; 2.5 g/dL)</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-cirrhosis">
+                  <div class="ascites-fc-title">⚠️ Protein DB &lt; 2.5 g/dL → XƠ GAN (Cirrhosis)</div>
+                  <div class="ascites-fc-desc">Nguy cơ SBP cao nếu Protein &lt; 1.5 g/dL. Cân nhắc dự phòng Norfloxacin.</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-heart-failure">
+                  <div class="ascites-fc-title">🟡 Protein DB &ge; 2.5 g/dL → SUY TIM SUNG HUYẾT / BUDD-CHIARI</div>
+                  <div class="ascites-fc-desc">Tăng áp cửa do nguyên nhân sau gan hoặc tại gan bảo tồn tổng hợp protein.</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-saag-low">
+                  <div class="ascites-fc-title">🔵 SAAG &lt; 1.1 g/dL → KHÔNG DO TĂNG ÁP CỬA</div>
+                  <div class="ascites-fc-desc">Tổn thương màng bụng (Ung thư, Lao, Viêm tụy, Thận hư)</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-carcinomatosis">
+                  <div class="ascites-fc-title">🧬 Ung Thư Màng Bụng (Carcinomatosis)</div>
+                  <div class="ascites-fc-desc">Cytology (+) hoặc Protein cao $\rightarrow$ Tầm soát khối u buồng trứng/tiêu hóa</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-tb-peritonitis">
+                  <div class="ascites-fc-title">🔬 Lao Màng Bụng (TB Peritonitis)</div>
+                  <div class="ascites-fc-desc">ADA &ge; 30 U/L + Lymphocyte cao $\rightarrow$ AFB, PCR TB & Sinh thiết màng bụng</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-anc-high">
+                  <div class="ascites-fc-title">🚨 ANC Neutrophil &ge; 250 / μL → NHIỄM TRÙNG DỊCH BÁNG</div>
+                  <div class="ascites-fc-desc">Cần phân biệt SBP tự phát vs Viêm phúc mạc thứ phát bằng Tiêu chuẩn Runyon</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-sbp-treatment">
+                  <div class="ascites-fc-title">💊 SBP / CNNA → ĐIỀU TRỊ KHÁNG SINH IV + TRUYỀN ALBUMIN IV</div>
+                  <div class="ascites-fc-desc">Cefotaxime/Ceftriaxone IV + Truyền Albumin Ngày 1 (1.5g/kg) & Ngày 3 (1.0g/kg)</div>
+                </div>
+
+                <div class="ascites-fc-node" data-node-id="node-secondary">
+                  <div class="ascites-fc-title">⚡ VIÊM PHÚC MẠC THỨ PHÁT (Thủng tạng rỗng / Áp xe)</div>
+                  <div class="ascites-fc-desc">Runyon &ge; 2 (Protein &gt; 1.0, Glu &lt; 50, LDH &gt; ULN) $\rightarrow$ CT Bụng & Hội chẩn Ngoại</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

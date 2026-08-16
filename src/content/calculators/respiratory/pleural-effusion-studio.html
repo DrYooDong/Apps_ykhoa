@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Pleural Effusion Diagnostic & Analysis Studio — Thuật toán phân tích dịch màng phổi theo Tiêu chuẩn Light, tính SEAG (Serum-to-Pleural Fluid Albumin Gradient) sửa lỗi Pseudo-exudate, phân tầng mủ màng phổi và ADA lao màng phổi – CliniPortal." />
+  <title>Pleural Effusion Studio – Thuật Toán Chẩn Đoán Dịch Màng Phổi – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core & Component Modules -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/pleural-studio.css">
+
+  <!-- JS Core & Studio Modules -->
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script src="../../../../js/pleural-studio/pleural-engine.js" defer></script>
+  <script src="../../../../js/pleural-studio/pleural-scenarios.js" defer></script>
+  <script src="../../../../js/pleural-studio/pleural-ui.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="app-main">
+      <div class="pleural-studio-container">
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../cong-cu.html"}, {"label": "Pleural Effusion Studio"}]'></clini-breadcrumb>
+
+        <!-- HERO HEADER CARD -->
+        <div class="pleural-hero-card">
+          <div class="pleural-hero-header">
+            <div class="pleural-hero-title-group">
+              <span class="badge badge-info"><i class="fa-solid fa-lungs"></i> Hô Hấp & Cấp Cứu</span>
+              <h1 class="pleural-hero-title">Pleural Effusion Diagnostic & Analysis Studio</h1>
+              <p class="pleural-hero-subtitle">
+                Hệ thống phân tích dịch màng phổi 5 tầng chuẩn y khoa. Tích hợp Tiêu chuẩn Light, chỉ số SEAG (Serum-to-Pleural Fluid Albumin Gradient) khắc phục cạm bẫy lợi tiểu (Pseudo-exudate), phân tầng nguy cơ tràn dịch viêm phổi mủ, ADA lao màng phổi & lưu đồ thuật toán tương tác.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại
+              </button>
+            </div>
+          </div>
+
+          <!-- Scenario Quick Presets -->
+          <div class="pleural-preset-section">
+            <div class="pleural-preset-title"><i class="fa-solid fa-bolt"></i> Ca Lâm Sàng Mẫu Giả Lập</div>
+            <div class="scenario-grid" id="scenarioPresetContainer">
+              <!-- Rendered via pleural-ui.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN 2-COLUMN WORKSPACE GRID -->
+        <div class="pleural-grid-layout">
+
+          <!-- LEFT COLUMN: INPUT PANEL -->
+          <div class="pleural-panel-card">
+            <h2 class="pleural-panel-title">
+              <i class="fa-solid fa-vial text-primary"></i> Thông Số Sinh Hóa & Tế Bào
+            </h2>
+
+            <!-- Card 1: Light Criteria -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title"><i class="fa-solid fa-list-check text-primary"></i> 1. Tiêu Chuẩn Light (Protein & LDH)</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfProtein">Protein Dịch MP</label>
+                  </div>
+                  <div class="pleural-input-row">
+                    <input type="number" id="pfProtein" class="pleural-calc-input" placeholder="Ví dụ: 4.2" step="0.1" min="0">
+                    <select id="proteinUnit" class="pleural-calc-select pleural-select-unit">
+                      <option value="g/dL" selected>g/dL</option>
+                      <option value="g/L">g/L</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="serumProtein">Protein Huyết Thanh</label>
+                  </div>
+                  <input type="number" id="serumProtein" class="pleural-calc-input" placeholder="Ví dụ: 6.8" step="0.1" min="0">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfLdh">LDH Dịch MP (U/L)</label>
+                  </div>
+                  <input type="number" id="pfLdh" class="pleural-calc-input" placeholder="Ví dụ: 450" min="0">
+                </div>
+
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="serumLdh">LDH Huyết Thanh</label>
+                  </div>
+                  <div class="pleural-input-row">
+                    <input type="number" id="serumLdh" class="pleural-calc-input" placeholder="Ví dụ: 220" min="0">
+                    <input type="number" id="serumLdhUln" class="pleural-calc-input" style="width: 85px;" placeholder="ULN 200" value="200" title="ULN LDH Huyết thanh">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Albumin & Diuretic -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title"><i class="fa-solid fa-prescription-bottle text-warning"></i> 2. Albumin & Hiệu Chỉnh Lợi Tiểu (SEAG)</span>
+              </div>
+              <div class="pleural-checkbox-group">
+                <input type="checkbox" id="isDiureticOrChf" class="pleural-checkbox">
+                <label for="isDiureticOrChf" style="font-size: 0.85rem; font-weight: 600; cursor: pointer; color: var(--color-text);">
+                  Bệnh nhân đang dùng Lợi Tiểu / Tiền sử Suy Tim, Xơ Gan
+                </label>
+              </div>
+              <div class="form-grid-2">
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="serumAlbumin">Albumin Huyết Thanh</label>
+                  </div>
+                  <div class="pleural-input-row">
+                    <input type="number" id="serumAlbumin" class="pleural-calc-input" placeholder="Ví dụ: 3.8" step="0.1" min="0">
+                    <select id="albuminUnit" class="pleural-calc-select pleural-select-unit">
+                      <option value="g/dL" selected>g/dL</option>
+                      <option value="g/L">g/L</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfAlbumin">Albumin Dịch MP</label>
+                  </div>
+                  <input type="number" id="pfAlbumin" class="pleural-calc-input" placeholder="Ví dụ: 2.1" step="0.1" min="0">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Biomarkers & Special Tests -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: #8b5cf6;"><i class="fa-solid fa-microscope"></i> 3. Biomarkers & pH / Glucose</span>
+              </div>
+              <div class="form-grid-2">
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfAda">ADA MP (U/L)</label>
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">&ge; 40 U/L</span>
+                  </div>
+                  <input type="number" id="pfAda" class="pleural-calc-input" placeholder="Lao (≥ 40)" step="0.1">
+                </div>
+
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfPh">pH Dịch MP</label>
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted);">&lt; 7.20</span>
+                  </div>
+                  <input type="number" id="pfPh" class="pleural-calc-input" placeholder="Ví dụ: 7.35" step="0.01" min="6.0" max="8.0">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfGlucose">Glucose Dịch MP</label>
+                  </div>
+                  <div class="pleural-input-row">
+                    <input type="number" id="pfGlucose" class="pleural-calc-input" placeholder="Ví dụ: 75" step="0.1">
+                    <select id="glucoseUnit" class="pleural-calc-select pleural-select-unit">
+                      <option value="mg/dL" selected>mg/dL</option>
+                      <option value="mmol/L">mmol/L</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfTriglycerides">Triglyceride MP</label>
+                  </div>
+                  <div class="pleural-input-row">
+                    <input type="number" id="pfTriglycerides" class="pleural-calc-input" placeholder="> 110 mg/dL">
+                    <select id="triglycerideUnit" class="pleural-calc-select pleural-select-unit">
+                      <option value="mg/dL" selected>mg/dL</option>
+                      <option value="mmol/L">mmol/L</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfCholesterol">Cholesterol MP</label>
+                  </div>
+                  <div class="pleural-input-row">
+                    <input type="number" id="pfCholesterol" class="pleural-calc-input" placeholder="≥ 200 mg/dL">
+                    <select id="cholesterolUnit" class="pleural-calc-select pleural-select-unit">
+                      <option value="mg/dL" selected>mg/dL</option>
+                      <option value="mmol/L">mmol/L</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pleural-input-group">
+                  <div class="pleural-label-row">
+                    <label class="pleural-calc-label" for="pfAmylase">Amylase MP / Serum</label>
+                  </div>
+                  <div class="pleural-input-row">
+                    <input type="number" id="pfAmylase" class="pleural-calc-input" placeholder="Amylase MP">
+                    <input type="number" id="serumAmylase" class="pleural-calc-input" placeholder="Serum">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Cell Differential & Cytology -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-success);"><i class="fa-solid fa-dna"></i> 4. Công Thức Tế Bào & Cấy</span>
+              </div>
+              <div class="form-grid-3">
+                <div>
+                  <label class="pleural-calc-label" for="neutrophilPct">Neutro (%)</label>
+                  <input type="number" id="neutrophilPct" class="pleural-calc-input" placeholder="%" min="0" max="100">
+                </div>
+                <div>
+                  <label class="pleural-calc-label" for="lymphocytePct">Lympho (%)</label>
+                  <input type="number" id="lymphocytePct" class="pleural-calc-input" placeholder="%" min="0" max="100">
+                </div>
+                <div>
+                  <label class="pleural-calc-label" for="eosinophilPct">Eosino (%)</label>
+                  <input type="number" id="eosinophilPct" class="pleural-calc-input" placeholder="%" min="0" max="100">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="pleural-input-group">
+                  <label class="pleural-calc-label" for="rbc">Hồng cầu (RBC / μL)</label>
+                  <input type="number" id="rbc" class="pleural-calc-input" placeholder="≥ 100,000 uL">
+                </div>
+
+                <div class="pleural-input-group">
+                  <label class="pleural-calc-label" for="grossAppearance">Màu Sắc & Đại Thể</label>
+                  <select id="grossAppearance" class="pleural-calc-select">
+                    <option value="clear" selected>Trong / Vàng chanh</option>
+                    <option value="turbid">Đục mờ (Turbid)</option>
+                    <option value="purulent">Dịch mủ đục thối</option>
+                    <option value="hemorrhagic">Đỏ máu (Hemorrhagic)</option>
+                    <option value="milky">Trắng đục như sữa</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="pleural-input-group">
+                  <label class="pleural-calc-label" for="cytology">Tế Bào Học (Cytology)</label>
+                  <select id="cytology" class="pleural-calc-select">
+                    <option value="negative" selected>Âm tính (-)</option>
+                    <option value="positive">Ác tính (+)</option>
+                    <option value="atypical">Tế bào biến đổi</option>
+                  </select>
+                </div>
+
+                <div class="pleural-input-group">
+                  <label class="pleural-calc-label" for="gramAfb">Nhuộm Gram & AFB</label>
+                  <select id="gramAfb" class="pleural-calc-select">
+                    <option value="negative" selected>Âm tính (-)</option>
+                    <option value="gram_positive">Gram Dương (+)</option>
+                    <option value="gram_negative">Gram Âm (+)</option>
+                    <option value="afb_positive">AFB Lao (+)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: RESULTS & ANALYTICS DASHBOARD -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+            <!-- Main Diagnostic Result Card -->
+            <div class="pleural-panel-card">
+              <div class="pleural-hero-banner" id="resHeroBanner">
+                <span class="badge badge-info" id="resHeroBadge">DỊCH THẤM</span>
+                <div class="pleural-hero-banner-title" id="resHeroTitle">Dịch thấm (Transudate)</div>
+                <div class="pleural-hero-banner-summary" id="resHeroSummary">
+                  Dịch thấm xuất hiện do tăng áp suất thủy tĩnh hoặc giảm áp suất keo (Suy tim, Xơ gan, Thận hư).
+                </div>
+              </div>
+
+              <!-- Light Criteria Metrics Table -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-list-check text-primary"></i> Đánh Giá Tiêu Chuẩn Light & SEAG
+              </h3>
+              <div class="pleural-metrics-grid">
+                <div class="pleural-metric-card">
+                  <div class="pleural-metric-label">Protein MP / Huyết thanh (> 0.5)</div>
+                  <div class="pleural-metric-val">
+                    <span id="valProtRatio">—</span>
+                    <span class="badge badge-neutral" id="badgeProtRatio">Chưa nhập</span>
+                  </div>
+                </div>
+
+                <div class="pleural-metric-card">
+                  <div class="pleural-metric-label">LDH MP / Huyết thanh (> 0.6)</div>
+                  <div class="pleural-metric-val">
+                    <span id="valLdhRatio">—</span>
+                    <span class="badge badge-neutral" id="badgeLdhRatio">Chưa nhập</span>
+                  </div>
+                </div>
+
+                <div class="pleural-metric-card">
+                  <div class="pleural-metric-label">LDH MP / ULN (> 67% ULN)</div>
+                  <div class="pleural-metric-val">
+                    <span id="valLdhUln">—</span>
+                    <span class="badge badge-neutral" id="badgeLdhUln">Chưa nhập</span>
+                  </div>
+                </div>
+
+                <div class="pleural-metric-card">
+                  <div class="pleural-metric-label">SEAG (Albumin HT - Albumin MP)</div>
+                  <div class="pleural-metric-val">
+                    <span id="valSeag">—</span>
+                    <span class="badge badge-neutral" id="badgeSeag">Chưa nhập</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Clinical Findings -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-triangle-exclamation text-warning"></i> Bất Thường Sinh Hóa & Tế Bào Phát Hiện
+              </h3>
+              <div id="containerFindings">
+                <div class="pleural-empty-state">Chưa phát hiện bất thường đặc hiệu.</div>
+              </div>
+
+              <!-- Etiology Probabilities -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-top: 1.25rem; margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-chart-pie text-success"></i> Định Hướng Khả Năng Nguyên Nhân Bệnh Lý
+              </h3>
+              <div id="containerEtiologies">
+                <div class="pleural-empty-state">Chưa đủ dữ liệu để đánh giá khả năng nguyên nhân.</div>
+              </div>
+
+              <!-- Clinical Recommendations -->
+              <h3 style="font-size: 1rem; font-weight: 700; color: var(--color-text); margin-top: 1.25rem; margin-bottom: 0.85rem;">
+                <i class="fa-solid fa-user-doctor text-primary"></i> Khuyên Dùng Xử Trí & Thủ Thuật Lâm Sàng
+              </h3>
+              <div id="containerRecommendations">
+                <div class="ab ab-info">ℹ️ Hoàn thiện thông số để nhận hướng dẫn lâm sàng.</div>
+              </div>
+
+            </div>
+
+            <!-- Flowchart Studio Node Highlights Visualizer -->
+            <div class="pleural-flowchart-wrapper">
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-text); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-diagram-project text-primary"></i> Sơ Đồ Thuật Toán Chẩn Đoán Tương Tác
+              </h3>
+
+              <div class="pleural-fc-nodes-container">
+                <div class="pleural-fc-node active-node" data-node-id="node-start">
+                  <div class="pleural-fc-title">1. Chọc dò Màng phổi (Thoracentesis)</div>
+                  <div class="pleural-fc-desc">Xét nghiệm Protein, LDH, Albumin, Glucose, pH, ADA, Tế bào học & Cấy vi khuẩn</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-lights">
+                  <div class="pleural-fc-title">2. Đánh giá Tiêu chuẩn Light Standard</div>
+                  <div class="pleural-fc-desc">Protein MP/HT > 0.5 OR LDH MP/HT > 0.6 OR LDH MP > 2/3 ULN</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-lights-transudate">
+                  <div class="pleural-fc-title">🟢 Không thỏa tiêu chuẩn nào → DỊCH THẤM (Transudate)</div>
+                  <div class="pleural-fc-desc">Suy tim sung huyết, Xơ gan, Hội chứng Thận hư, Giảm Albumin máu</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-lights-exudate">
+                  <div class="pleural-fc-title">🔴 Thỏa ≥ 1 tiêu chuẩn → Nghi DỊCH TIẾT (Exudate)</div>
+                  <div class="pleural-fc-desc">Cần kiểm tra yếu tố dùng Lợi tiểu hoặc tiền sử Suy tim/Xơ gan</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-seag-check">
+                  <div class="pleural-fc-title">🟡 Kiểm tra Gradient Albumin (SEAG = Albumin HT - MP)</div>
+                  <div class="pleural-fc-desc">SEAG > 1.2 g/dL giúp xác nhận Dịch Thấm bị cô đặc do dùng Lợi Tiểu</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-pseudo-exudate">
+                  <div class="pleural-fc-title">⚠️ DỊCH THẤM GIẢ DIỆN DỊCH TIẾT (Pseudo-Exudate)</div>
+                  <div class="pleural-fc-desc">Điều trị nguyên nhân gốc Suy tim/Xơ gan. Tránh sinh thiết màng phổi thừa.</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-biomarkers">
+                  <div class="pleural-fc-title">🔵 Phân tích Biomarkers Đặc Hiệu</div>
+                  <div class="pleural-fc-desc">Đánh giá pH, Glucose, ADA, Triglyceride, Amylase, Cytology & Vi khuẩn</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-drainage">
+                  <div class="pleural-fc-title">🚨 Mủ Màng Phổi / Tràn Dịch Viêm Phổi Phức Tạp</div>
+                  <div class="pleural-fc-desc">pH &lt; 7.20 hoặc Glucose &lt; 60 mg/dL hoặc Dịch mủ → DẪN LƯU MÀNG PHỔI KHẨN</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-tb">
+                  <div class="pleural-fc-title">🔬 Nghi ngờ Lao Màng Phổi</div>
+                  <div class="pleural-fc-desc">ADA ≥ 40 U/L + Lympho ≥ 50% → AFB, PCR TB, Sinh thiết màng phổi</div>
+                </div>
+
+                <div class="pleural-fc-node" data-node-id="node-malignancy">
+                  <div class="pleural-fc-title">🧬 Tràn Dịch Màng Phổi Ung Thư</div>
+                  <div class="pleural-fc-desc">Cytology (+) hoặc Dịch máu → Tối ưu hóa điều trị Ung bướu & Dẫn lưu giải áp</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

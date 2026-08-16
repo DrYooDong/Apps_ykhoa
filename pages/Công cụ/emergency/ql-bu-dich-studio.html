@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Fluid Resuscitation Pro Studio – Workstation tính toán lượng dịch, tốc độ truyền và y lệnh chi tiết theo 7 bệnh cảnh lâm sàng cấp cứu." />
+  <title>Fluid Resuscitation Pro Studio – Bù Dịch Lâm Sàng – CliniPortal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  
+  <!-- Studio Component CSS -->
+  <link rel="stylesheet" href="../../../css/components/fluid-studio.css">
+
+  <script type="module" src="../../../components/header.ts"></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <!-- MAIN -->
+    <main class="app-main" id="mainContent">
+      <div class="fluid-studio-wrap">
+        
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../index.html"}, {"label": "Công cụ", "url": "../cong-cu.html"}, {"label": "Cấp cứu & Hồi sức", "url": "#"}, {"label": "Fluid Resuscitation Studio"}]'></clini-breadcrumb>
+
+        <!-- ── HERO HEADER ── -->
+        <div class="fluid-hero">
+          <div class="fluid-hero-top">
+            <div>
+              <div class="fluid-hero-badge"><i class="fa-solid fa-droplet"></i> Hồi Sức Cấp Cứu</div>
+              <h1>Fluid Resuscitation Pro Studio</h1>
+              <p class="fluid-hero-sub">
+                Workstation hỗ trợ bù dịch lâm sàng. Tính toán lượng dịch, tốc độ truyền và y lệnh chi tiết 
+                theo 7 bệnh cảnh cấp cứu: Tiêu chảy, SXHD, Sốc Nhiễm Khuẩn, DKA/HHS, Sốc Bỏng & Sốc Tim.
+              </p>
+              <div class="fluid-hero-tags">
+                <span class="fluid-gl-tag"><i class="fa-solid fa-book-medical"></i> SSC 2021</span>
+                <span class="fluid-gl-tag"><i class="fa-solid fa-book-medical"></i> ADA 2024</span>
+                <span class="fluid-gl-tag"><i class="fa-solid fa-book-medical"></i> ABA 2023</span>
+                <span class="fluid-gl-tag"><i class="fa-solid fa-book-medical"></i> BYT Dengue 2019</span>
+              </div>
+            </div>
+            <button class="fluid-reset-btn" onclick="resetForm()"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+          </div>
+        </div>
+
+        <!-- ── WORKSPACE ── -->
+        <div class="fluid-workspace">
+          
+          <!-- LEFT COLUMN (INPUT) -->
+          <div class="fluid-left">
+            
+            <!-- SCENARIO PICKER -->
+            <div class="fluid-sc-panel">
+              <div class="fluid-sc-label"><i class="fa-solid fa-list-check"></i> 1. Chọn Bệnh Cảnh (Scenario)</div>
+              <div class="fluid-sc-grid">
+                <button class="fluid-sc-btn sc-blue" id="sc-diarrhea" onclick="setScenario('DIARRHEA')">
+                  <i class="fa-solid fa-poop sc-icon" style="color:var(--bd-blue)"></i>
+                  <div><div class="sc-name">Tiêu chảy cấp</div><span class="sc-sub-name">Đánh giá độ mất nước</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-amber" id="sc-dhf-warn" onclick="setScenario('DHF_WARN')">
+                  <i class="fa-solid fa-mosquito sc-icon" style="color:var(--bd-amber)"></i>
+                  <div><div class="sc-name">SXHD Có DHCB</div><span class="sc-sub-name">Theo dõi HCT</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-danger" id="sc-dhf-severe" onclick="setScenario('DHF_SEVERE')">
+                  <i class="fa-solid fa-virus sc-icon" style="color:var(--bd-red)"></i>
+                  <div><div class="sc-name">Sốc Dengue</div><span class="sc-sub-name">Bù/mất bù</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-danger" id="sc-sepsis" onclick="setScenario('SEPSIS')">
+                  <i class="fa-solid fa-biohazard sc-icon" style="color:var(--bd-red)"></i>
+                  <div><div class="sc-name">Sốc Nhiễm Khuẩn</div><span class="sc-sub-name">Lactate &amp; MAP</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-purple" id="sc-dka" onclick="setScenario('DKA')">
+                  <i class="fa-solid fa-vial-circle-check sc-icon" style="color:var(--bd-purple)"></i>
+                  <div><div class="sc-name">DKA / HHS</div><span class="sc-sub-name">Cấp cứu nội tiết</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-orange" id="sc-burn" onclick="setScenario('BURN')">
+                  <i class="fa-solid fa-fire sc-icon" style="color:var(--bd-orange)"></i>
+                  <div><div class="sc-name">Sốc Bỏng</div><span class="sc-sub-name">%TBSA</span></div>
+                </button>
+                <button class="fluid-sc-btn sc-teal" id="sc-cardio" style="grid-column: span 2" onclick="setScenario('CARDIO')">
+                  <i class="fa-solid fa-heart-crack sc-icon" style="color:var(--bd-teal)"></i>
+                  <div><div class="sc-name">Sốc Tim</div><span class="sc-sub-name">Thận trọng bù dịch, PLR</span></div>
+                </button>
+              </div>
+            </div>
+
+            <!-- INPUT PANEL -->
+            <div class="fluid-input-panel">
+              <div class="fluid-input-title"><i class="fa-solid fa-sliders text-primary"></i> 2. Nhập Thông Số</div>
+              
+              <!-- Basic Params -->
+              <div class="fsg2">
+                <div class="fluid-ig">
+                  <label for="pt-weight">Cân nặng (kg)</label>
+                  <input type="number" id="pt-weight" value="60" min="3" step="1" oninput="calculate()">
+                </div>
+                <div class="fluid-ig" id="group-age" style="display:none;">
+                  <label for="pt-age">Tuổi (năm)</label>
+                  <input type="number" id="pt-age" value="30" min="0" step="1" oninput="calculate()">
+                </div>
+              </div>
+
+              <!-- Specific Params Container -->
+              <div id="specific-params">
+                <!-- Diarrhea -->
+                <div class="fluid-ig" id="group-diarrhea-grade" style="display:none; margin-bottom: 0.65rem;">
+                  <label for="diarrhea-grade">Mức độ mất nước</label>
+                  <select id="diarrhea-grade" onchange="calculate()">
+                    <option value="mild">Nhẹ (&lt; 5%) – Tỉnh, uống được</option>
+                    <option value="moderate" selected>Vừa (5–10%) – Mắt trũng, khô môi</option>
+                    <option value="severe">Nặng (&gt; 10%) – Vật vã, mạch nhanh</option>
+                  </select>
+                </div>
+                
+                <!-- SXHD -->
+                <div class="fsg2" id="group-hct-wrapper" style="display:none;">
+                  <div class="fluid-ig" id="group-hct">
+                    <label for="pt-hct">HCT hiện tại (%)</label>
+                    <input type="number" id="pt-hct" value="45" min="20" max="70" step="0.5" oninput="calculate()">
+                  </div>
+                  <div class="fluid-ig" id="group-dhf-age">
+                    <label for="dhf-age-group">Nhóm tuổi</label>
+                    <select id="dhf-age-group" onchange="calculate()">
+                      <option value="child">Trẻ em (&lt; 13 tuổi)</option>
+                      <option value="adolescent">Thiếu niên (13–16 tuổi)</option>
+                      <option value="adult" selected>Người lớn (≥ 16 tuổi)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="fluid-ig" id="group-dhf-type" style="display:none; margin-bottom: 0.65rem;">
+                  <label for="dhf-type">Phân loại sốc Dengue</label>
+                  <select id="dhf-type" onchange="calculate()">
+                    <option value="compensated">Sốc bù được (Có mạch, HA còn)</option>
+                    <option value="decompensated">Sốc mất bù (Mạch=0, HA=0)</option>
+                  </select>
+                </div>
+
+                <!-- Sepsis -->
+                <div class="fsg2" id="group-sepsis-wrapper" style="display:none;">
+                  <div class="fluid-ig" id="group-map">
+                    <label for="pt-map">MAP hiện tại (mmHg)</label>
+                    <input type="number" id="pt-map" value="55" min="20" max="120" oninput="calculate()">
+                  </div>
+                  <div class="fluid-ig" id="group-lactate">
+                    <label for="pt-lactate">Lactate (mmol/L)</label>
+                    <input type="number" id="pt-lactate" value="3.5" min="0" max="20" step="0.1" oninput="calculate()">
+                  </div>
+                </div>
+
+                <!-- DKA/HHS -->
+                <div class="fsg2" id="group-dka-wrapper1" style="display:none;">
+                  <div class="fluid-ig" id="group-dka-type">
+                    <label for="dka-type">Loại biến chứng</label>
+                    <select id="dka-type" onchange="calculate()">
+                      <option value="dka" selected>DKA</option>
+                      <option value="hhs">HHS</option>
+                      <option value="euglycemic">Euglycemic DKA</option>
+                    </select>
+                  </div>
+                  <div class="fluid-ig" id="group-glucose">
+                    <label for="pt-glucose">Đường huyết (mg/dL)</label>
+                    <input type="number" id="pt-glucose" value="450" min="30" max="2000" step="1" oninput="calculate()">
+                  </div>
+                </div>
+                <div class="fluid-ig" id="group-dka-comorbid" style="display:none; margin-bottom: 0.65rem;">
+                  <label for="dka-comorbid">Bệnh nền đặc biệt</label>
+                  <select id="dka-comorbid" onchange="calculate()">
+                    <option value="none" selected>Không có</option>
+                    <option value="heart-renal">Suy tim / Suy thận</option>
+                    <option value="frail">Người cao tuổi yếu</option>
+                  </select>
+                </div>
+
+                <!-- Burn -->
+                <div class="fsg2" id="group-burn-wrapper" style="display:none;">
+                  <div class="fluid-ig" id="group-tbsa">
+                    <label for="pt-tbsa">% TBSA (Diện tích bỏng)</label>
+                    <input type="number" id="pt-tbsa" value="30" min="20" max="100" step="1" oninput="calculate()">
+                  </div>
+                  <div class="fluid-ig" id="group-burn-delay">
+                    <label for="burn-delay">Giờ từ lúc bỏng</label>
+                    <input type="number" id="burn-delay" value="1" min="0" max="8" step="0.5" oninput="calculate()">
+                  </div>
+                </div>
+
+                <!-- Cardiogenic -->
+                <div class="fsg3" id="group-cardio-wrapper" style="display:none;">
+                  <div class="fluid-ig" id="group-cardio-map">
+                    <label for="cardio-map">MAP (mmHg)</label>
+                    <input type="number" id="cardio-map" value="55" min="20" max="120" oninput="calculate()">
+                  </div>
+                  <div class="fluid-ig" id="group-congestion">
+                    <label for="cardio-congestion">Sung huyết</label>
+                    <select id="cardio-congestion" onchange="calculate()">
+                      <option value="no" selected>Không</option>
+                      <option value="yes">Có</option>
+                    </select>
+                  </div>
+                  <div class="fluid-ig" id="group-plr">
+                    <label for="cardio-plr">PLR</label>
+                    <select id="cardio-plr" onchange="calculate()">
+                      <option value="pending">Chưa làm</option>
+                      <option value="positive" selected>Dương (+)</option>
+                      <option value="negative">Âm (-)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Realtime Settings -->
+              <div class="fluid-rt-row">
+                <label for="use-realtime">
+                  <input type="checkbox" id="use-realtime" onchange="toggleRealtime()">
+                  🕐 Lập lịch theo thời gian thực
+                </label>
+                <div id="datetime-group" style="display:none; align-items:center; gap: 8px;">
+                  <input type="datetime-local" id="start-datetime" onchange="calculate()">
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+          <!-- RIGHT COLUMN (RESULTS) -->
+          <div class="fluid-right">
+            <div class="fluid-result-panel" id="result-panel">
+              <div class="fluid-result-empty" id="result-empty">
+                <i class="fa-solid fa-truck-medical empty-icon"></i>
+                <div class="empty-title">Chưa chọn bệnh cảnh lâm sàng</div>
+                <div class="empty-sub">Hãy chọn một tình huống cấp cứu ở panel bên trái để bắt đầu lập y lệnh bù dịch.</div>
+              </div>
+              <div id="result-content" style="display:none;">
+                <div class="fluid-result-title" id="result-title"></div>
+                <div id="result-body"></div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- /.fluid-workspace -->
+      </div>
+    </main>
+  </div>
+
+  <footer class="global-footer">
+    <div class="footer-copyright">
+      <p>CliniPortal © 2026 · Hỗ trợ tham khảo lâm sàng, không thay thế phán xét của bác sĩ.</p>
+    </div>
+  </footer>
+  
+  <script type="module" src="../../../components/footer.ts" defer></script>
+  <script src="../../../js/main.js" defer></script>
+  <script type="module" src="./ql-bu-dich.ts"></script>
+</body>
+</html>

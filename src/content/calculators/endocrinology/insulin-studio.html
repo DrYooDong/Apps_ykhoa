@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Diabetes & Insulin Pro Studio — Giả lập & tính toán phác đồ Đái tháo đường, Insulin nội viện (Basal-Bolus, IV Infusion) và Thuốc uống (OADs/GLP-1 RA) chuẩn ADA 2026 & KDIGO." />
+  <title>Diabetes & Insulin Pro Studio – Phác Đồ Đái Tháo Đường & Insulin – CliniPortal</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/studio-system.css">
+
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script src="../../../../js/calculators/insulin-calculator.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT -->
+    <main class="app-main">
+      <div class="studio-container">
+
+        <!-- Studio Header Card -->
+        <div class="studio-card">
+          <div class="studio-header-bar">
+            <div>
+              <span class="studio-risk-badge" data-risk="mid" style="margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-syringe"></i> Endocrinology Studio Workbench
+              </span>
+              <h1 class="studio-title">Diabetes & Insulin Pro Studio — Quản Lý Đái Tháo Đường & Phác Đồ Insulin</h1>
+              <p class="studio-subtitle">
+                Công cụ hỗ trợ ra quyết định lâm sàng: Tự động cá thể hóa phác đồ Thuốc uống (OADs/GLP-1 RA), Insulin Basal-Bolus tiêm dưới da (Non-ICU) và Bơm tiêm điện Insulin tĩnh mạch (ICU) dựa trên khuyến cáo ADA 2026 & KDIGO.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại Mặc Định
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../cong-cu.html"}, {"label": "Diabetes & Insulin Pro Studio"}]'></clini-breadcrumb>
+
+        <!-- 3-COLUMN STUDIO MAIN GRID -->
+        <div class="studio-main-grid">
+
+          <!-- CỘT TRÁI: TABBED CONTROL PANEL -->
+          <div class="studio-card">
+            
+            <div class="sidebar-tabs-header">
+              <button class="sidebar-tab-btn active" data-tab="tab_patient">
+                <i class="fa-solid fa-user-doctor"></i> Bệnh Nhân
+              </button>
+              <button class="sidebar-tab-btn" data-tab="tab_presets">
+                <i class="fa-solid fa-folder-open"></i> Ca Bệnh Mẫu
+              </button>
+            </div>
+
+            <!-- TAB 1: THÔNG SỐ BỆNH NHÂN -->
+            <div class="sidebar-tab-content" id="tab_patient" style="display: block;">
+              
+              <!-- Setting Select -->
+              <div class="studio-form-group">
+                <label class="studio-label" for="clinicalSetting">
+                  <i class="fa-solid fa-hospital"></i> Bối Cảnh Lâm Sàng:
+                </label>
+                <select id="clinicalSetting" class="studio-select">
+                  <option value="outpatient">Ngoại trú — Ưu tiên Thuốc uống (OADs) & GLP-1 RA</option>
+                  <option value="non_icu" selected>Bệnh phòng (Non-ICU) — Tiêm Dưới Da</option>
+                  <option value="icu">Hồi sức tích cực (ICU) — Truyền Tĩnh Mạch (CII)</option>
+                </select>
+              </div>
+
+              <!-- Regimen Type Select (Non-ICU) -->
+              <div class="studio-form-group" id="nonIcuRegimenGroup">
+                <label class="studio-label" for="nonIcuRegimen">
+                  <i class="fa-solid fa-vial-circle-check"></i> Kiểu Phác Đồ Tiêm Nội Viện:
+                </label>
+                <select id="nonIcuRegimen" class="studio-select">
+                  <option value="basal_bolus" selected>Nền - Phóng (Basal-Bolus 4 mũi — Ưu tiên ADA)</option>
+                  <option value="premix_2">Insulin Trộn / Hỗn Hợp (Premixed 70/30 — 2 Mũi Sáng/Tối)</option>
+                  <option value="premix_3">Insulin Trộn Analogue (Premixed — 3 Mũi/Ngày)</option>
+                </select>
+              </div>
+
+              <!-- Weight & eGFR Sliders / Inputs -->
+              <div class="studio-form-group">
+                <div class="studio-slider-header">
+                  <span class="studio-label" style="margin: 0;"><i class="fa-solid fa-weight-scale"></i> Cân nặng (kg):</span>
+                  <span id="valWeight" style="font-weight: 800; color: var(--color-primary);">60 kg</span>
+                </div>
+                <input type="range" class="studio-slider" id="patientWeight" min="30" max="150" value="60">
+              </div>
+
+              <div class="studio-form-group">
+                <div class="studio-slider-header">
+                  <span class="studio-label" style="margin: 0;"><i class="fa-solid fa-droplet"></i> Đường huyết (mg/dL):</span>
+                  <span id="valCurrentBG" style="font-weight: 800; color: var(--color-primary);">240 mg/dL</span>
+                </div>
+                <input type="range" class="studio-slider" id="currentBG" min="40" max="500" value="240">
+              </div>
+
+              <div class="studio-form-group">
+                <div class="studio-slider-header">
+                  <span class="studio-label" style="margin: 0;"><i class="fa-solid fa-kidneys"></i> eGFR (mL/phút/1.73m²):</span>
+                  <span id="valEGFR" style="font-weight: 800; color: var(--color-primary);">60</span>
+                </div>
+                <input type="range" class="studio-slider" id="patientEGFR" min="5" max="120" value="60">
+              </div>
+
+              <div class="studio-form-group">
+                <div class="studio-slider-header">
+                  <span class="studio-label" style="margin: 0;"><i class="fa-solid fa-vial"></i> HbA1c (%):</span>
+                  <span id="valHbA1c" style="font-weight: 800; color: var(--color-primary);">8.5%</span>
+                </div>
+                <input type="range" class="studio-slider" id="patientHbA1c" min="5.0" max="15.0" step="0.1" value="8.5">
+              </div>
+
+              <!-- Nutrition Status -->
+              <div class="studio-form-group" id="nutritionGroup">
+                <label class="studio-label" for="nutritionStatus">
+                  <i class="fa-solid fa-utensils"></i> Tình Trạng Dinh Dưỡng:
+                </label>
+                <select id="nutritionStatus" class="studio-select">
+                  <option value="eating" selected>Ăn uống bình thường / Đủ 3 bữa</option>
+                  <option value="npo">Nhịn ăn (NPO) / Chuẩn bị phẫu thuật</option>
+                  <option value="enteral">Nuôi ăn qua sonde liên tục (Enteral Feed)</option>
+                </select>
+              </div>
+
+              <!-- Risk Factors -->
+              <div class="studio-form-group">
+                <label class="studio-label"><i class="fa-solid fa-triangle-exclamation"></i> Đắc tính bệnh nhân & Nguy cơ:</label>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.4rem;">
+                  <label class="sc-card" style="display: flex; align-items: center; gap: 0.6rem; margin: 0; padding: 0.6rem;">
+                    <input type="checkbox" id="riskHypo">
+                    <span style="font-size: 0.82rem; font-weight: 600;">Suy thận nặng / Cao tuổi / Tiền sử Hạ ĐH</span>
+                  </label>
+                  <label class="sc-card" style="display: flex; align-items: center; gap: 0.6rem; margin: 0; padding: 0.6rem;">
+                    <input type="checkbox" id="riskResist">
+                    <span style="font-size: 0.82rem; font-weight: 600;">Đề kháng Insulin cao / Dùng Corticoid / Béo phì</span>
+                  </label>
+                  <label class="sc-card" style="display: flex; align-items: center; gap: 0.6rem; margin: 0; padding: 0.6rem;">
+                    <input type="checkbox" id="riskCVD">
+                    <span style="font-size: 0.82rem; font-weight: 600;">Bệnh tim mạch xơ vữa (ASCVD) / Suy tim (HF)</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- TAB 2: CA BỆNH MẪU -->
+            <div class="sidebar-tab-content" id="tab_presets" style="display: none;">
+              <h3 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-text);">
+                📂 Chọn Ca Lâm Sàng Điển Hình:
+              </h3>
+              <div class="studio-scenario-selector">
+                <button class="sc-btn" data-preset="outpatient_t2d">
+                  <div style="font-weight: 700; color: var(--color-primary);">1. Ngoại Trú ĐTĐ Tuýp 2</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">HbA1c 8.8%, eGFR 55, Kiểm soát thuốc uống</div>
+                </button>
+                <button class="sc-btn" data-preset="inpatient_ward">
+                  <div style="font-weight: 700; color: var(--color-primary);">2. Bệnh Phòng Nội Khoa</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">ĐH 260 mg/dL, Ăn uống bình thường, Basal-Bolus</div>
+                </button>
+                <button class="sc-btn" data-preset="inpatient_npo">
+                  <div style="font-weight: 700; color: var(--color-primary);">3. Bệnh Nhân Nhịn Ăn (NPO)</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">Chuẩn bị phẫu thuật, Chỉnh nền & ngừng Bolus</div>
+                </button>
+                <button class="sc-btn" data-preset="icu_dka">
+                  <div style="font-weight: 700; color: var(--color-rose);">4. Hồi Sức Tích Cực (ICU)</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">ĐH 380 mg/dL, Bơm tiêm điện Insulin liên tục</div>
+                </button>
+                <button class="sc-btn" data-preset="ckd_dm">
+                  <div style="font-weight: 700; color: var(--color-warning);">5. ĐTĐ kèm Suy Thận Mạn</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">eGFR 22 mL/phút, Chống chỉ định Metformin/SGLT2i</div>
+                </button>
+                <button class="sc-btn" data-preset="inpatient_premix">
+                  <div style="font-weight: 700; color: var(--color-primary);">6. Insulin Trộn Premix (2 Mũi)</div>
+                  <div style="font-size: 0.75rem; color: var(--color-text-muted);">ĐH 240 mg/dL, Ăn uống 2 bữa chính (Sáng 2/3 - Tối 1/3)</div>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- CỘT GIỮA: VISUALIZER & DYNAMIC RESULTS -->
+          <div class="studio-card">
+            
+            <!-- Summary Header Readout Card -->
+            <div class="studio-readout" style="margin-bottom: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                <span class="readout-label" id="summaryModeTag">BỆNH PHÒNG NON-ICU — TIÊM DƯỚI DA</span>
+                <span class="studio-risk-badge" id="riskBadgeStatus" data-risk="low">MỤC TIÊU ĐH: 140 - 180 mg/dL</span>
+              </div>
+              <div style="margin-top: 0.5rem; display: flex; align-items: baseline; justify-content: center; gap: 0.5rem;">
+                <span class="readout-value" id="mainMetricVal">--</span>
+                <span class="readout-unit" id="mainMetricUnit">Đơn vị / ngày</span>
+              </div>
+              <p style="font-size: 0.82rem; color: var(--color-text-muted); margin-top: 0.35rem;" id="mainMetricDesc">
+                Tổng liều Insulin dự kiến (TDD) tính trên cân nặng 60 kg
+              </p>
+            </div>
+
+            <!-- RESULTS SECTION 1: OUTPATIENT OADs MATRIX -->
+            <div id="sectionOutpatient" style="display: none;">
+              <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.75rem;">
+                💊 Ma Trận Đánh Giá Thuốc Viên & GLP-1 RA Ngoại Trú (ADA/KDIGO)
+              </h3>
+
+              <div id="oadMatrixGrid" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- RESULTS SECTION 2: NON-ICU PRESCRIPTIONS (BASAL-BOLUS OR PREMIX) -->
+            <div id="sectionNonICU" style="display: block;">
+              <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.75rem;" id="nonIcuTitle">
+                💉 Phác Đồ Tiêm Dưới Da
+              </h3>
+
+              <div id="nonIcuPrescriptionGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem;">
+                <!-- Dynamic cards injected via JS -->
+              </div>
+
+              <!-- Sliding Scale / Correction Dose Table Card -->
+              <div class="patient-card" style="background: var(--color-surface); border-color: var(--color-divider);">
+                <h4 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-primary);">
+                  🎯 Thang Điểm Hiệu Chỉnh Đường Huyết (Correction Sliding Scale)
+                </h4>
+                <div style="overflow-x: auto;">
+                  <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: center;">
+                    <thead>
+                      <tr style="border-bottom: 1.5px solid var(--color-divider); background: var(--color-surface-offset);">
+                        <th style="padding: 0.4rem;">Đường Huyết (mg/dL)</th>
+                        <th style="padding: 0.4rem;">Mức Nhạy</th>
+                        <th style="padding: 0.4rem;">Mức Trung Bình</th>
+                        <th style="padding: 0.4rem;">Mức Đề Kháng</th>
+                      </tr>
+                    </thead>
+                    <tbody id="slidingScaleBody">
+                      <!-- Injected via JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- RESULTS SECTION 3: ICU IV INFUSION PUMP -->
+            <div id="sectionICU" style="display: none;">
+              <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-rose); margin-bottom: 0.75rem;">
+                💧 Phác Đồ Truyền Tĩnh Mạch Bơm Tiêm Điện (ICU Protocol)
+              </h3>
+
+              <div class="studio-alert-banner alert-info" style="margin-bottom: 1rem;">
+                <i class="fa-solid fa-flask" style="font-size: 1.2rem; margin-top: 0.1rem;"></i>
+                <div>
+                  <strong>CÁCH PHA CHUẨN BƠM TIÊM ĐIỆN:</strong><br>
+                  Pha <span style="font-weight: 800; color: var(--color-primary);">50 Đơn vị Insulin Regular (Actrapid) + 50 mL NaCl 0.9%</span> (Nồng độ 1 ĐV / 1 mL).
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;">
+                <div class="studio-readout" style="background: var(--color-surface); border-color: var(--color-rose);">
+                  <div class="readout-label">TỐC ĐỘ BƠM TIÊM ĐIỆN KHỞI ĐẦU</div>
+                  <div class="readout-value" id="pumpRateIVVal" style="color: var(--color-rose);">6.0</div>
+                  <div class="readout-unit">mL / giờ</div>
+                </div>
+                <div class="studio-readout" style="background: var(--color-surface);">
+                  <div class="readout-label">HỆ SỐ KHỞI ĐẦU</div>
+                  <div class="readout-value" id="pumpRateIVMult" style="font-size: 1.8rem;">0.10</div>
+                  <div class="readout-unit">ĐV / kg / giờ</div>
+                </div>
+              </div>
+
+              <div class="patient-card" style="background: var(--color-rose-hl, rgba(244, 63, 94, 0.05)); border-color: var(--color-rose);">
+                <h4 style="font-size: 0.88rem; font-weight: 700; color: var(--color-rose); margin-bottom: 0.4rem;">
+                  ⏱️ Quy Trình Theo Dõi & Điều Chỉnh Tốc Độ:
+                </h4>
+                <ul style="font-size: 0.8rem; line-height: 1.5; color: var(--color-text); padding-left: 1.1rem; margin: 0;">
+                  <li>Thử đường huyết mao mạch <strong>mỗi 1 giờ/lần</strong> cho tới khi đường huyết ổn định (140-180 mg/dL) trong 3 giờ liên tiếp, sau đó thử mỗi 2 giờ.</li>
+                  <li>Mục tiêu tốc độ giảm đường huyết: <strong>50 - 75 mg/dL mỗi giờ</strong>.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Dynamic NPO / Safety Warning Banner -->
+            <div id="npoSafetyBanner" class="studio-alert-banner alert-warning" style="display: none; margin-top: 1rem;">
+              <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.3rem;"></i>
+              <div>
+                <strong>CẢNH BÁO BỆNH NHÂN NHỊN ĂN (NPO):</strong><br>
+                - Giữ nguyên hoặc giảm 20-30% liều Insulin Nền (Basal).<br>
+                - <strong>NGỪNG hoàn toàn Insulin bữa ăn (Bolus)</strong>. Chỉ dùng liều hiệu chỉnh Correction khi ĐH &gt; 180 mg/dL.
+              </div>
+            </div>
+
+          </div>
+
+          <!-- CỘT PHẢI: INFO PANEL, PROTOCOLS & CLINICAL DIRECTIVES -->
+          <div class="studio-card">
+            
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.85rem;">
+              📋 Hướng Dẫn & Phác Đồ Xử Trí Khẩn Cấp
+            </h3>
+
+            <!-- Directive 1: Emergency Hypoglycemia Protocol -->
+            <div class="directive-box directive-priority-1">
+              <div style="font-weight: 800; color: var(--color-rose); font-size: 0.88rem; margin-bottom: 0.3rem;">
+                🚨 Xử Trí Hạ Đường Huyết (ĐH &lt; 70 mg/dL):
+              </div>
+              <div style="font-size: 0.8rem; line-height: 1.5; color: var(--color-text);">
+                <strong>Quy tắc 15-15 (Tỉnh táo):</strong> Uống 15g carbonhydrat nhanh (150mL nước ngọt/nước trái cây), thử lại sau 15 phút.<br>
+                <strong>Hạ ĐH Nặng / Hôn mê (ICU):</strong> Tĩnh mạch 25-50 mL Glucose 30% hoặc 100 mL Glucose 10% bolus cấp cứu.
+              </div>
+            </div>
+
+            <!-- Directive 2: Target & Guidelines -->
+            <div class="directive-box directive-priority-2">
+              <div style="font-weight: 800; color: var(--color-warning-dark); font-size: 0.88rem; margin-bottom: 0.3rem;">
+                🎯 Mục Tiêu Đường Huyết Khuyến Cáo (ADA 2026):
+              </div>
+              <div style="font-size: 0.8rem; line-height: 1.5; color: var(--color-text);">
+                • <strong>Nội viện (ICU & Non-ICU):</strong> 140 - 180 mg/dL (7.8 - 10.0 mmol/L).<br>
+                • <strong>Ngoại trú ĐTĐ Tuýp 2:</strong> HbA1c &lt; 7.0% (ĐH đói 80-130 mg/dL, sau ăn &lt; 180 mg/dL).<br>
+                • <strong>Thận trọng:</strong> Tránh dùng đơn độc phác đồ Sliding Scale (SSI).
+              </div>
+            </div>
+
+            <!-- Directive 3: Perioperative Strategy -->
+            <div class="directive-box">
+              <div style="font-weight: 800; color: var(--color-primary); font-size: 0.88rem; margin-bottom: 0.3rem;">
+                🔪 Quản Lý Chu Phẫu Thuốc ĐTĐ:
+              </div>
+              <div style="font-size: 0.8rem; line-height: 1.5; color: var(--color-text);">
+                • <strong>SGLT2i (Empagliflozin/Dapagliflozin):</strong> Ngưng 3-4 ngày trước phẫu thuật (Phòng Ketoacidosis ĐH bình thường).<br>
+                • <strong>Metformin:</strong> Ngưng vào ngày phẫu thuật / thủ thuật có cản quang.<br>
+                • <strong>GLP-1 RA:</strong> Tạm ngưng vào sáng ngày phẫu thuật do chậm làm rỗng dạ dày.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- TÀI LIỆU LIÊN QUAN -->
+        <section class="related-links-section" style="max-width: 1480px; margin: 2rem auto 0 auto; width: 100%; box-sizing: border-box;">
+          <h4 class="related-links-title">
+            <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+          </h4>
+          <div class="related-links-grid">
+            <a href="../renal/dg-abg-studio.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge sinh-ly">Studio</span>
+                <h5>Blood Gas Pro Studio</h5>
+                <p>Phân tích Khí máu động mạch, Toan Ketoacidosis (DKA) và khoảng bù Anion Gap.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+            <a href="../emergency/ql-budich.html" class="related-link-card">
+              <div class="related-card-content">
+                <span class="related-card-badge ky-nang">Cấp cứu</span>
+                <h5>Phác Đồ Bù Dịch Cấp Cứu</h5>
+                <p>Tính toán bù dịch trong DKA / HHS và hồi sức sốc giảm thể tích.</p>
+              </div>
+              <i class="fas fa-chevron-right related-card-arrow"></i>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

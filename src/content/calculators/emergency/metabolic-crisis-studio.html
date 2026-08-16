@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Resuscitative Metabolic, Electrolyte & AEIOU Dialysis Crisis Studio — Workstation Cấp Cứu Rối Loạn Điện Giải, Toan Kiềm Cực Nặng & Chỉ Định Lọc Máu Cấp Cứu tại Giường (ICU & Resuscitation Bay) – CliniPortal." />
+  <title>Resuscitative Metabolic & Dialysis Crisis Studio – Cấp Cứu Điện Giải & Lọc Máu – CliniPortal</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core & Component Modules -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/metabolic-studio.css">
+
+  <!-- JS Core & Studio Modules -->
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script src="../../../../js/metabolic-studio/metabolic-engine.js" defer></script>
+  <script src="../../../../js/metabolic-studio/metabolic-scenarios.js" defer></script>
+  <script src="../../../../js/metabolic-studio/metabolic-ui.js" defer></script>
+</head>
+
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- APP CONTAINER -->
+  <div class="app-container">
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="app-main">
+      <div class="metabolic-studio-container">
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "⚙️ Công cụ", "url": "../cong-cu.html"}, {"label": "Metabolic Crisis Studio"}]'></clini-breadcrumb>
+
+        <!-- HERO HEADER CARD -->
+        <div class="metabolic-hero-card">
+          <div class="metabolic-hero-header">
+            <div class="metabolic-hero-title-group">
+              <span class="badge badge-danger"><i class="fa-solid fa-flask-vial"></i> Cấp Cứu & Hồi Sức Chuyển Hóa (Metabolic & ICU Resuscitation)</span>
+              <h1 class="metabolic-hero-title">Resuscitative Metabolic, Electrolyte & AEIOU Dialysis Crisis Studio</h1>
+              <p class="metabolic-hero-subtitle">
+                Workstation xử trí khẩn cấp Cơn Bão Điện Giải Đe dọa Tính mạng, Toan Kiềm Cực Nặng, Phác đồ Bolus NaCl 3% Cấp cứu, Hyperkalemia EKG Rescue, BICAR-ICU & Ma trận Kích hoạt Lọc Máu Cấp Cứu (AEIOU Criteria) tại giường bệnh.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+              <button type="button" class="btn-proc btn-proc-primary" id="btnCopyEmrReport">
+                <i class="fa-solid fa-copy"></i> Sao Chép Báo Cáo EMR
+              </button>
+              <button type="button" class="btn-proc btn-proc-secondary" id="btnResetStudio">
+                <i class="fa-solid fa-rotate-left"></i> Đặt Lại
+              </button>
+            </div>
+          </div>
+
+          <!-- Scenario Quick Presets -->
+          <div class="metabolic-preset-section">
+            <div style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 0.75rem;"><i class="fa-solid fa-bolt"></i> Ca Cấp Cứu Mẫu Giả Lập</div>
+            <div class="scenario-grid" id="scenarioPresetContainer">
+              <!-- Rendered via metabolic-ui.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- MAIN 2-COLUMN WORKSPACE GRID -->
+        <div class="metabolic-grid-layout">
+
+          <!-- LEFT COLUMN: INPUT PANEL -->
+          <div class="metabolic-panel-card">
+            <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-sliders text-danger"></i> Thông Số Cấp Cứu & Khí Máu Động Mạch
+            </h2>
+
+            <!-- Card 1: ABG & Blood Chemistry -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title"><i class="fa-solid fa-vial text-primary"></i> 1. Kết Quả Khí Máu (ABG) & Sinh Hóa</span>
+              </div>
+              <div class="form-grid-3">
+                <div>
+                  <label class="metabolic-calc-label" for="ph">pH Máu</label>
+                  <input type="number" id="ph" class="metabolic-calc-input" value="7.10" step="0.01" min="6.5" max="7.8">
+                </div>
+                <div>
+                  <label class="metabolic-calc-label" for="paco2">PaCO2 (mmHg)</label>
+                  <input type="number" id="paco2" class="metabolic-calc-input" value="24" min="10" max="120">
+                </div>
+                <div>
+                  <label class="metabolic-calc-label" for="hco3">HCO3 (mEq/L)</label>
+                  <input type="number" id="hco3" class="metabolic-calc-input" value="8" min="2" max="60">
+                </div>
+              </div>
+
+              <div class="form-grid-3">
+                <div>
+                  <label class="metabolic-calc-label" for="na">Natri Na+ (mmol/L)</label>
+                  <input type="number" id="na" class="metabolic-calc-input" value="136" min="90" max="180">
+                </div>
+                <div>
+                  <label class="metabolic-calc-label" for="cl">Clo Cl- (mmol/L)</label>
+                  <input type="number" id="cl" class="metabolic-calc-input" value="98" min="60" max="140">
+                </div>
+                <div>
+                  <label class="metabolic-calc-label" for="albumin">Albumin (g/dL)</label>
+                  <input type="number" id="albumin" class="metabolic-calc-input" value="4.0" step="0.1">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div>
+                  <label class="metabolic-calc-label" for="lactate">Lactate (mmol/L)</label>
+                  <input type="number" id="lactate" class="metabolic-calc-input" value="2.1" step="0.1">
+                </div>
+                <div>
+                  <label class="metabolic-calc-label" for="weight">Cân Nặng (kg)</label>
+                  <input type="number" id="weight" class="metabolic-calc-input" value="65">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Hyperkalemia & EKG Pattern -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-danger);"><i class="fa-solid fa-heart-pulse"></i> 2. Đánh Giá Kali Máu & Biến Đổi EKG</span>
+              </div>
+              <div class="form-grid-2">
+                <div>
+                  <label class="metabolic-calc-label" for="k">Kali K+ (mmol/L)</label>
+                  <input type="number" id="k" class="metabolic-calc-input" value="6.8" step="0.1" min="1.5" max="10.0">
+                </div>
+                <div>
+                  <label class="metabolic-calc-label" for="ekgPattern">Dạng Biến Đổi Điện Tâm Đồ (EKG)</label>
+                  <select id="ekgPattern" class="metabolic-calc-select">
+                    <option value="normal">Bình thường (Chưa có biến đổi EKG)</option>
+                    <option value="peaked_t" selected>🔴 Sóng T nhọn cao đối xứng</option>
+                    <option value="pr_long">🔴 PR kéo dài & Mất sóng P</option>
+                    <option value="qrs_wide">🚨 QRS giãn rộng (Dọa tử vong)</option>
+                    <option value="sine_wave">🚨 Sóng hình sin Sine-Wave (Dọa Ngừng tim)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasCvc" class="metabolic-checkbox" checked> Đã có đường truyền tĩnh mạch trung tâm (CVC) - Tiêm CaCl2 10%
+                </label>
+              </div>
+            </div>
+
+            <!-- Card 3: Acute Hyponatremia Symptom Checklist -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: #8b5cf6;"><i class="fa-solid fa-brain"></i> 3. Triệu Chứng Hạ Natri Máu Cấp Tính</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasSeizures" class="metabolic-checkbox"> Đang Co giật toàn thể hoặc Cơn co giật vừa dứt
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasComa" class="metabolic-checkbox"> Biến đổi ý thức sâu / Hôn mê (GCS &le; 8)
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasIcpSign" class="metabolic-checkbox"> Dấu hiệu Tăng áp lực nội sọ / Thoát vị não đe dọa
+                </label>
+              </div>
+            </div>
+
+            <!-- Card 4: AEIOU Emergency Dialysis Criteria Checklist -->
+            <div class="input-section-card">
+              <div class="input-section-header">
+                <span class="input-section-title" style="color: var(--color-danger);"><i class="fa-solid fa-hospital"></i> 4. Bảng Kiểm Kích Hoạt Lọc Máu Cấp Cứu (AEIOU Criteria)</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="aeiou_a" class="metabolic-checkbox" checked> <strong>A - Acidosis:</strong> Toan chuyển hóa nặng pH &lt; 7.15 kháng trị nội khoa
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="aeiou_e" class="metabolic-checkbox" checked> <strong>E - Electrolytes:</strong> Tăng Kali K+ &gt; 6.5 mmol/L có EKG biến đổi / trơ
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="aeiou_i" class="metabolic-checkbox"> <strong>I - Ingestion:</strong> Ngộ độc độc chất lọc được (Methanol, Aspirin, Lithium)
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="aeiou_o" class="metabolic-checkbox"> <strong>O - Overload:</strong> Phù phổi cấp quá tải dịch trơ với lợi tiểu quai
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="aeiou_u" class="metabolic-checkbox"> <strong>U - Uremia:</strong> Viêm màng ngoài tim / Bệnh não do Ure máu cao
+                </label>
+              </div>
+
+              <div style="display: flex; gap: 1rem; margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px dashed var(--color-border);">
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="hasAki" class="metabolic-checkbox" checked> Bệnh nhân có Suy thận cấp (AKI KDIGO 2-3)
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="isKetoacidosis" class="metabolic-checkbox" checked> Nghi ngờ Toan Ceton (DKA / AKA)
+                </label>
+                <label style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                  <input type="checkbox" id="isHemodynamicallyUnstable" class="metabolic-checkbox"> Bệnh nhân Tụt HA / Không ổn định huyết động (Chỉ định CRRT)
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: DIAGNOSTIC & WORKSTATION OUTPUT PANEL -->
+          <div class="metabolic-panel-card" style="display: flex; flex-direction: column; gap: 1.25rem;">
+            
+            <!-- Hero Diagnostic Result Banner -->
+            <div class="metabolic-hero-card" style="padding: 1.25rem; margin: 0; background: var(--color-surface-offset);">
+              <span id="resHeroBadge" class="badge badge-danger">ĐANG PHÂN TÍCH...</span>
+              <h3 id="resHeroTitle" style="font-size: 1.2rem; font-weight: 800; color: var(--color-text); margin-top: 0.4rem; margin-bottom: 0.3rem;">
+                Rối Loạn Toan Kiềm
+              </h3>
+              <p id="resHeroSummary" style="font-size: 0.88rem; color: var(--color-text-muted); margin: 0;">
+                Tóm tắt chỉ số khí máu cấp cứu.
+              </p>
+            </div>
+
+            <!-- 3-KPI Clinical Scores Grid -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.65rem;">
+              <div class="metabolic-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="metabolic-stat-label">Chẩn Đoán ABG</span>
+                <span id="valAbgPrimary" class="metabolic-stat-val" style="color: var(--color-danger); font-size: 1.1rem;">Toan CH</span>
+              </div>
+              <div class="metabolic-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="metabolic-stat-label">Anion Gap H.Chỉnh</span>
+                <span id="valAgAdj" class="metabolic-stat-val" style="color: var(--color-purple, #8b5cf6); font-size: 1.3rem;">18.0</span>
+              </div>
+              <div class="metabolic-stat-box" style="padding: 0.75rem; text-align: center;">
+                <span class="metabolic-stat-label">Delta Ratio</span>
+                <span id="valDeltaRatio" class="metabolic-stat-val" style="color: var(--color-warning); font-size: 1.3rem;">0.85</span>
+              </div>
+            </div>
+
+            <!-- AEIOU Dialysis Criteria Visualizer Badges -->
+            <div style="background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border); border-radius: 12px; padding: 0.85rem;">
+              <strong style="font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase;"><i class="fa-solid fa-list-check"></i> Trạng Thái 5 Tiêu Chuẩn AEIOU Lọc Máu Cấp Cứu</strong>
+              <div class="aeiou-grid">
+                <div class="aeiou-card" id="aeiouCardA">
+                  <span class="aeiou-letter">A</span>
+                  <span class="aeiou-name">Acidosis</span>
+                </div>
+                <div class="aeiou-card" id="aeiouCardE">
+                  <span class="aeiou-letter">E</span>
+                  <span class="aeiou-name">Electrolytes</span>
+                </div>
+                <div class="aeiou-card" id="aeiouCardI">
+                  <span class="aeiou-letter">I</span>
+                  <span class="aeiou-name">Ingestion</span>
+                </div>
+                <div class="aeiou-card" id="aeiouCardO">
+                  <span class="aeiou-letter">O</span>
+                  <span class="aeiou-name">Overload</span>
+                </div>
+                <div class="aeiou-card" id="aeiouCardU">
+                  <span class="aeiou-letter">U</span>
+                  <span class="aeiou-name">Uremia</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hyperkalemia Rescue Protocol Container -->
+            <div id="containerHyperkalemia"></div>
+
+            <!-- Hyponatremia Bolus NaCl 3% Container -->
+            <div id="containerHyponatremia"></div>
+
+            <!-- BICAR-ICU Protocol Container -->
+            <div id="containerBicarIcu"></div>
+
+            <!-- AEIOU Emergency Dialysis Container -->
+            <div id="containerAeiouDialysis"></div>
+
+            <!-- GOLD MARK Differential Diagnostics Container -->
+            <div id="containerGoldmark"></div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

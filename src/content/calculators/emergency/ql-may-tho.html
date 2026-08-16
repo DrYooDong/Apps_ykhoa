@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Ventilator Pro Studio — Workstation giả lập máy thở ICU 3 kênh sóng thở động, 5 chế độ thở (VCV, PCV, PSV, SIMV, CPAP), phân tích khí máu động mạch, cai máy và Quiz chẩn đoán – CliniPortal." />
+  <title>Ventilator Pro Studio – Giả Lập &amp; Xử Trí Máy Thở ICU – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&display=swap"
+    rel="stylesheet" />
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/ventilator-studio.css">
+  <link rel="stylesheet" href="../../../../css/components/markdown-rendered.css">
+
+  <script src="../../../../js/utils/markdown-renderer.js" defer></script>
+
+  <style>
+    /* Inline helper adjustments for legacy compat */
+    :root {
+      --vt-blue: #0284c7;
+      --vt-blue-h: #f0f9ff;
+      --vt-blue-b: #bae6fd;
+      --vt-red: #dc2626;
+      --vt-red-h: #fef2f2;
+      --vt-amber: #d97706;
+      --vt-amber-h: #fffbeb;
+      --vt-green: #16a34a;
+      --vt-green-h: #f0fdf4;
+    }
+
+    /* Tabs Bar */
+    .vt-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--color-divider);
+      padding-bottom: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .vt-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      padding: 10px 18px;
+      border: none;
+      background: none;
+      color: var(--color-text-muted);
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn:hover {
+      background-color: var(--color-surface-offset);
+      color: var(--color-text);
+    }
+
+    .tab-btn.active {
+      background-color: var(--vt-blue-h);
+      color: var(--vt-blue);
+      box-shadow: 0 0 0 1px var(--vt-blue-b);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .tab-content.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Grid layouts */
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (min-width: 1024px) {
+      .calc-layout { grid-template-columns: 3fr 2fr; }
+    }
+
+    .panel-card {
+      background-color: var(--color-surface);
+      border: 1.5px solid var(--color-divider);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+    }
+
+    .panel-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--color-divider);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 640px) {
+      .form-grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .form-grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .form-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-weight: 600;
+      font-size: 12.5px;
+      color: var(--color-text);
+    }
+
+    .input-unit-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-unit-wrapper input,
+    .input-unit-wrapper select {
+      width: 100%;
+      padding: 8px 12px;
+      padding-right: 48px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 8px;
+      background-color: var(--color-surface-offset);
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .input-unit-wrapper input:focus,
+    .input-unit-wrapper select:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      background-color: var(--color-surface);
+      box-shadow: 0 0 0 3px var(--color-primary-hl);
+    }
+    .input-unit-text {
+      position: absolute;
+      right: 12px;
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    /* Gender Toggle */
+    .gender-toggle {
+      display: flex;
+      background-color: var(--color-surface-offset);
+      border: 1.5px solid var(--color-border);
+      border-radius: 8px;
+      padding: 3px;
+    }
+    .gender-option { flex: 1; text-align: center; }
+    .gender-option input { display: none; }
+    .gender-option label {
+      display: block;
+      padding: 6px 12px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      color: var(--color-text-muted);
+      transition: all 0.2s;
+    }
+    .gender-option input:checked + label {
+      background-color: var(--color-surface);
+      color: var(--vt-blue);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Sticky Sidebar & Results */
+    .sticky-sidebar {
+      position: sticky;
+      top: calc(var(--header-height, 60px) + 20px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .results-card {
+      background-color: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+    }
+    .results-header {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--color-divider);
+    }
+    .result-row:last-child { border-bottom: none; }
+    .result-label { font-size: 13px; font-weight: 600; color: var(--color-text); }
+    .result-value { font-size: 14px; font-weight: 700; color: var(--color-text); text-align: right; }
+
+    /* Progress bar */
+    .vt-progress-container {
+      margin-top: 12px;
+      background-color: var(--color-surface-offset);
+      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid var(--color-divider);
+    }
+    .vt-progress-bar {
+      height: 10px;
+      background-color: var(--color-divider);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      margin: 6px 0;
+    }
+    .vt-progress-fill {
+      height: 100%;
+      width: 50%;
+      background-color: var(--vt-blue);
+      transition: width 0.3s, background-color 0.3s;
+    }
+    .vt-progress-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    /* Advisory Banners */
+    .ab {
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      border-left: 5px solid;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .ab-info { background-color: var(--vt-blue-h); border-color: var(--vt-blue); color: var(--color-text); }
+    .ab-danger { background-color: var(--vt-red-h); border-color: var(--vt-red); color: var(--color-text); }
+    .ab-warn { background-color: var(--vt-amber-h); border-color: var(--vt-amber); color: var(--color-text); }
+    .ab-ok { background-color: var(--vt-green-h); border-color: var(--vt-green); color: var(--color-text); }
+    .ab-title { font-weight: 700; font-size: 13.5px; display: flex; align-items: center; gap: 6px; }
+
+    /* Checklist & Accordion */
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-divider);
+      cursor: pointer;
+    }
+    .checklist-item input[type="checkbox"] { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--vt-blue); }
+    .checklist-text { font-size: 13px; color: var(--color-text); line-height: 1.4; }
+    .checklist-subtext { font-size: 11px; color: var(--color-text-muted); display: block; margin-top: 2px; }
+
+    .acc-item { border: 1px solid var(--color-border); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+    .acc-header {
+      background-color: var(--color-surface-offset);
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--color-text);
+    }
+    .acc-content { padding: 14px 16px; background-color: var(--color-surface); display: none; font-size: 13px; line-height: 1.5; }
+    .acc-item.open .acc-content { display: block; }
+    .acc-item.open .acc-icon { transform: rotate(180deg); }
+
+    .peep-table { width: 100%; border-collapse: collapse; font-size: 11.5px; margin-top: 8px; text-align: center; }
+    .peep-table th, .peep-table td { border: 1px solid var(--color-border); padding: 6px; }
+    .peep-table th { background-color: var(--color-surface-offset); font-weight: 700; }
+
+    .reset-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--color-surface-offset);
+      border: 1.5px solid var(--color-border);
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--color-text);
+    }
+    .reset-btn:hover { background-color: var(--color-divider); border-color: var(--color-primary); }
+
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    .badge-blue { background-color: var(--vt-blue-h); color: var(--vt-blue); }
+    .badge-red { background-color: var(--vt-red-h); color: var(--vt-red); }
+    .badge-amber { background-color: var(--vt-amber-h); color: var(--vt-amber); }
+    .badge-green { background-color: var(--vt-green-h); color: var(--vt-green); }
+  </style>
+
+  <!-- Scripts Navigation -->
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <!-- Legacy sidebar.js replaced by main.js -->
+  <script src="../../../../js/main.js" defer></script>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper" id="mainContent">
+      <div class="ventilator-studio-container">
+
+        <!-- BREADCRUMB -->
+        <clini-breadcrumb items='[{"label": "🏠 Trang chủ", "url": "../../../../index.html"}, {"label": "Công cụ", "url": "../cong-cu.html"}, {"label": "Cấp cứu & Hồi sức", "url": "javascript:void(0)"}, {"label": "Ventilator Pro Studio"}]'></clini-breadcrumb>
+
+        <!-- HERO STUDIO BANNER -->
+        <section class="vent-hero">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <div class="vent-hero-badge"><i class="fa-solid fa-microchip"></i> Unified Master ICU Workstation</div>
+              <h1>VENTILATOR PRO STUDIO — HỆ THỐNG GIẢ LẬP MÁY THỞ ICU ĐỒNG BỘ</h1>
+              <p>Trải nghiệm đồng bộ liên kết 3-trong-1: Màn hình sóng thở Workstation real-time, Tối ưu thông số cài đặt &amp; ABG, phối hợp Bệnh nhân ảo &amp; Quiz chẩn đoán lâm sàng.</p>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button class="reset-btn" style="width: auto; padding: 8px 16px; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color:#fff;" onclick="resetAllStudio()">
+                <i class="fa-solid fa-rotate-left"></i> Reset Defaults
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- UNIFIED STUDIO TABS CONTROL -->
+        <div class="vt-tabs">
+          <button class="tab-btn active" onclick="switchTab('tab-master-studio', this)">
+            <i class="fa-solid fa-desktop"></i> Master Studio Simulator (Tích Hợp Đồng Bộ 3-trong-1)
+          </button>
+          <button class="tab-btn" onclick="switchTab('tab-wean', this)">
+            <i class="fa-solid fa-unlock-keyhole"></i> Cai Máy &amp; RSBI Gauge
+          </button>
+          <button class="tab-btn" onclick="switchTab('tab-trouble', this)">
+            <i class="fa-solid fa-triangle-exclamation"></i> Báo Động &amp; Gói VAP
+          </button>
+          <button class="tab-btn" id="btnTabGuideline" onclick="switchTab('tab-guideline-md', this)">
+            <i class="fa-solid fa-file-lines"></i> Hướng Dẫn Lâm Sàng (.md)
+          </button>
+        </div>
+
+
+        <!-- ════════════════════════════════════════════════════════════════ -->
+        <!-- UNIFIED MASTER TAB 1: WORKSTATION + CONTROLS + VIRTUAL PATIENTS -->
+        <!-- ════════════════════════════════════════════════════════════════ -->
+        <div id="tab-master-studio" class="tab-content active">
+
+          <!-- 1. HEADER: VIRTUAL PATIENT SELECTOR BAR -->
+          <div class="case-sim-card" style="margin-bottom: 20px;">
+            <div class="panel-title" style="margin-bottom:10px;">
+              <i class="fa-solid fa-user-doctor"></i> <span>1. Chọn Bệnh Nhân Ảo (Tự Động Đồng Bộ Màn Hình &amp; Thông Số)</span>
+            </div>
+            <p style="font-size:12.5px; color:var(--color-text-muted); margin-bottom:12px;">
+              Click chọn bất kỳ ca lâm sàng dưới đây để nạp tự động thông số, kích hoạt sóng thở sinh lý &amp; mở câu hỏi Quiz tương ứng:
+            </p>
+
+            <div class="case-grid">
+              <div class="case-card-btn active" id="case-btn-1" onclick="loadCaseStudy(1)">
+                <div class="case-title">Ca 1: ARDS Nặng do Viêm Phổi</div>
+                <div class="case-meta">Nam 65T | PBW 60kg | PaO2/FiO2 120</div>
+                <div class="case-desc">Giảm Cstat (18 mL/cmH2O), PIP cao, cần thở bảo vệ phổi nghiêm ngặt.</div>
+              </div>
+
+              <div class="case-card-btn" id="case-btn-2" onclick="loadCaseStudy(2)">
+                <div class="case-title">Ca 2: Cơn COPD Cấp Bẫy Khí</div>
+                <div class="case-meta">Nữ 58T | PBW 50kg | Auto-PEEP 8</div>
+                <div class="case-desc">Sức cản Raw cao (18 cmH2O/L/s), bẫy khí nặng, sóng thở ra không về 0.</div>
+              </div>
+
+              <div class="case-card-btn" id="case-btn-3" onclick="loadCaseStudy(3)">
+                <div class="case-title">Ca 3: Tràn Khí Màng Phổi Cấp</div>
+                <div class="case-meta">Nam 30T | PIP vọt lên 42 cmH2O</div>
+                <div class="case-desc">Áp lực đường thở tăng đột ngột, tụt SpO2 và tụt Huyết áp khẩn cấp.</div>
+              </div>
+
+              <div class="case-card-btn" id="case-btn-4" onclick="loadCaseStudy(4)">
+                <div class="case-title">Ca 4: Phù Phổi Cấp Tim (CPAP/NIV)</div>
+                <div class="case-meta">Nữ 72T | SpO2 78% | Tim bọt hồng</div>
+                <div class="case-desc">Huy động phế nang ngập dịch, giảm tiền tải &amp; hậu tải tim bằng CPAP.</div>
+              </div>
+
+              <div class="case-card-btn" id="case-btn-5" onclick="loadCaseStudy(5)">
+                <div class="case-title">Ca 5: Cơn Hen Cấp Nặng (Câm Phổi)</div>
+                <div class="case-meta">Nam 24T | Raw 25 | PaCO2 68 mmHg</div>
+                <div class="case-desc">Co thắt phế quản nặng, cần RR thấp &amp; I:E kéo dài 1:4.5 chống bẫy khí.</div>
+              </div>
+
+              <div class="case-card-btn" id="case-btn-6" onclick="loadCaseStudy(6)">
+                <div class="case-title">Ca 6: Nhược Cơ Cấp (Phổi Bình Thường)</div>
+                <div class="case-meta">Nữ 35T | Phổi lành | Liệt cơ thở</div>
+                <div class="case-desc">Cstat bình thường (55 mL/cmH2O), thông khí VCV tiêu chuẩn 7-8 mL/kg.</div>
+              </div>
+
+              <div class="case-card-btn" id="case-btn-7" onclick="loadCaseStudy(7)">
+                <div class="case-title">Ca 7: Cai Máy Hậu Phẫu Tim</div>
+                <div class="case-meta">Nam 55T | RSBI 42 | Cuff leak 320mL</div>
+                <div class="case-desc">Đạt tiêu chuẩn cai máy, tri giác tỉnh, sẵn sàng rút ống nội khí quản.</div>
+              </div>
+
+              <div class="case-card-btn" id="case-btn-8" onclick="loadCaseStudy(8)">
+                <div class="case-title">Ca 8: Nguy Cơ Chấn Thương Thể Tích</div>
+                <div class="case-meta">Nam 70T | Béo phì | VT 10mL/kg thực</div>
+                <div class="case-desc">Sai lầm cài VT theo cân nặng thực tế thay vì PBW, Pplat nguy hiểm 35.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. MAIN WORKSTATION MONITOR + LIVE CONTROLS & SIDEBAR RESULTS -->
+          <div class="calc-layout">
+
+            <!-- LEFT COLUMN: WORKSTATION CANVAS & CONTROLS -->
+            <div class="calc-inputs">
+
+              <!-- ICU Monitor Viewport -->
+              <div class="vent-monitor-screen" id="monitor-main-frame" style="margin-bottom: 20px;">
+                <!-- Top Monitor Status Bar -->
+                <div class="vent-monitor-bar">
+                  <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="font-weight:800; color:#38bdf8; font-size:14px;"><i class="fa-solid fa-hospital"></i> ICU BED #04</span>
+                    <span class="vent-status-tag tag-vcv" id="tag-current-mode">VCV — Volume Control</span>
+                    <span style="font-size:11.5px; color: var(--color-text-muted);" id="tag-patient-summary">Nam, 165cm | PBW: 60.5 kg</span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:14px;">
+                    <span id="alarm-banner-status" style="color:#34d399; font-weight:700; font-size:12px;">
+                      <i class="fa-solid fa-circle-check"></i> NORMAL VENTILATION
+                    </span>
+                    <button type="button" style="background:#1e293b; border:1px solid #334155; color:#e2e8f0; padding:4px 10px; border-radius:6px; font-size:12px; cursor:pointer;" id="btn-toggle-pause" onclick="toggleWaveformPause()">
+                      <i class="fa-solid fa-pause" id="icon-pause"></i> <span id="text-pause">Tạm Dừng</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Waveforms Viewport -->
+                <div class="vent-canvas-viewport">
+                  <!-- Lane 1: Pressure Waveform -->
+                  <div class="waveform-lane">
+                    <div class="lane-header lane-pressure">
+                      <i class="fa-solid fa-gauge"></i> PRESSURE (Paw - cmH2O)
+                    </div>
+                    <div class="lane-value-current val-green" id="val-cur-p">--</div>
+                    <canvas id="canvas-pressure" class="waveform-canvas"></canvas>
+                  </div>
+
+                  <!-- Lane 2: Flow Waveform -->
+                  <div class="waveform-lane">
+                    <div class="lane-header lane-flow">
+                      <i class="fa-solid fa-wind"></i> FLOW (L/min)
+                    </div>
+                    <div class="lane-value-current val-amber" id="val-cur-q">--</div>
+                    <canvas id="canvas-flow" class="waveform-canvas"></canvas>
+                  </div>
+
+                  <!-- Lane 3: Volume Waveform -->
+                  <div class="waveform-lane">
+                    <div class="lane-header lane-volume">
+                      <i class="fa-solid fa-chart-area"></i> VOLUME (mL)
+                    </div>
+                    <div class="lane-value-current val-cyan" id="val-cur-v">--</div>
+                    <canvas id="canvas-volume" class="waveform-canvas"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Parameter Adjustment Panel 1: Bệnh nhân -->
+              <div class="panel-card">
+                <div class="panel-title">
+                  <i class="fa-solid fa-user-injured"></i> <span>2. Nhân Khẩu Học &amp; Trọng Lượng Lý Tưởng (PBW)</span>
+                </div>
+                <div class="form-grid form-grid-3">
+                  <div class="form-group">
+                    <label>Giới tính sinh học</label>
+                    <div class="gender-toggle">
+                      <div class="gender-option">
+                        <input type="radio" id="gender-m" name="gender" value="male" checked onchange="calculateAll()" />
+                        <label for="gender-m">Nam</label>
+                      </div>
+                      <div class="gender-option">
+                        <input type="radio" id="gender-f" name="gender" value="female" onchange="calculateAll()" />
+                        <label for="gender-f">Nữ</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-height">Chiều cao</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-height" value="165" min="100" max="250" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">cm</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-weight">Cân nặng thực tế</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-weight" value="60" min="30" max="200" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">kg</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Parameter Adjustment Panel 2: Thông số Máy thở -->
+              <div class="panel-card">
+                <div class="panel-title">
+                  <i class="fa-solid fa-sliders"></i> <span>3. Cài Đặt Thông Số Thở (Thay Đổi Trực Tiếp Sóng &amp; Cảnh Báo)</span>
+                </div>
+                <div class="form-grid form-grid-3">
+                  <div class="form-group">
+                    <label for="inp-mode">Chế độ thở (Mode)</label>
+                    <div class="input-unit-wrapper">
+                      <select id="inp-mode" onchange="toggleModeInputs()">
+                        <option value="VCV">VCV (Volume Control)</option>
+                        <option value="PCV">PCV (Pressure Control)</option>
+                        <option value="PSV">PSV (Pressure Support)</option>
+                        <option value="SIMV">SIMV (Synchronized Intermittent)</option>
+                        <option value="CPAP">CPAP / NIV</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="group-vt">
+                    <label for="inp-vt">Thể tích khí lưu thông (V<sub>T</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-vt" value="420" min="100" max="1000" step="10" oninput="calculateAll()" />
+                      <span class="input-unit-text">mL</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="group-pinsp" style="display:none;">
+                    <label for="inp-pinsp">Áp lực trên PEEP (P<sub>insp</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-pinsp" value="12" min="2" max="40" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">cmH2O</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="group-ipap" style="display:none;">
+                    <label for="inp-ipap">Áp lực thở vào (IPAP)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-ipap" value="12" min="5" max="30" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">cmH2O</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-rr">Tần số thở (RR)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-rr" value="16" min="4" max="45" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">/phút</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="group-peep">
+                    <label for="inp-peep">PEEP</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-peep" value="5" min="0" max="24" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">cmH2O</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="group-epap" style="display:none;">
+                    <label for="inp-epap">PEEP / EPAP</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-epap" value="5" min="2" max="20" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">cmH2O</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-fio2">Nồng độ oxy (FiO<sub>2</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-fio2" value="40" min="21" max="100" step="5" oninput="calculateAll()" />
+                      <span class="input-unit-text">%</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="group-pplat">
+                    <label for="inp-pplat">Áp lực cao nguyên (P<sub>plateau</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-pplat" value="22" min="5" max="50" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">cmH2O</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group" id="group-ie">
+                    <label for="inp-ie">Tỷ lệ I:E</label>
+                    <div class="input-unit-wrapper">
+                      <select id="inp-ie" onchange="calculateAll()">
+                        <option value="1:2" selected>1:2 (Thông thường)</option>
+                        <option value="1:3">1:3 (COPD nhẹ)</option>
+                        <option value="1:4">1:4 (COPD nặng/Hen)</option>
+                        <option value="1:1.5">1:1.5</option>
+                        <option value="1:1">1:1</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Parameter Adjustment Panel 3: Cơ học Phổi & ABG -->
+              <div class="panel-card">
+                <div class="panel-title">
+                  <i class="fa-solid fa-vial"></i> <span>4. Khí Máu Động Mạch (ABG) &amp; Cơ Học Phổi Bệnh Lý</span>
+                </div>
+                <div class="form-grid form-grid-3">
+                  <div class="form-group">
+                    <label for="inp-ph">pH máu</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-ph" value="7.40" min="6.80" max="7.80" step="0.01" oninput="calculateAll()" />
+                      <span class="input-unit-text">pH</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-paco2">Phần áp lực CO<sub>2</sub> (PaCO<sub>2</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-paco2" value="40" min="10" max="150" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">mmHg</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-spo2">Độ bão hòa Oxy (SpO<sub>2</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-spo2" value="96" min="50" max="100" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">%</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-raw">Sức cản đường thở (R<sub>aw</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-raw" value="5" min="1" max="40" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">cmH2O/L/s</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-cstat">Độ giãn nở (C<sub>stat</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-cstat" value="35" min="5" max="100" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">mL/cmH2O</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inp-autopeep">Auto-PEEP (Bẫy khí)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="inp-autopeep" value="0" min="0" max="20" step="1" oninput="calculateAll()" />
+                      <span class="input-unit-text">cmH2O</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: STICKY MONITOR NUMERICS & DYNAMIC CLINICAL ALERTS -->
+            <div class="sticky-sidebar">
+
+              <!-- Monitor Digital Tiles Grid -->
+              <div class="results-card">
+                <div class="results-header">
+                  <span><i class="fa-solid fa-chart-line"></i> Monitor Digital Readouts</span>
+                  <span class="badge badge-blue" id="res-scenario-badge">Phổi lành</span>
+                </div>
+
+                <div class="vent-monitor-numerics" style="margin-bottom: 15px;">
+                  <!-- Tile 1: PIP -->
+                  <div class="num-tile" id="tile-pip">
+                    <div class="num-label">P<sub>peak</sub> <span class="num-unit">cmH2O</span></div>
+                    <div class="num-val val-green" id="num-pip">25</div>
+                    <div class="num-sub">Max &le; 35</div>
+                  </div>
+
+                  <!-- Tile 2: Pplat -->
+                  <div class="num-tile" id="tile-pplat">
+                    <div class="num-label">P<sub>plat</sub> <span class="num-unit">cmH2O</span></div>
+                    <div class="num-val val-green" id="num-pplat">22</div>
+                    <div class="num-sub">Max &le; 30</div>
+                  </div>
+
+                  <!-- Tile 3: PEEP -->
+                  <div class="num-tile">
+                    <div class="num-label">PEEP <span class="num-unit">cmH2O</span></div>
+                    <div class="num-val val-cyan" id="num-peep">5</div>
+                    <div class="num-sub" id="num-autopeep-sub">Auto: 0</div>
+                  </div>
+
+                  <!-- Tile 4: Driving Pressure -->
+                  <div class="num-tile" id="tile-dp">
+                    <div class="num-label">ΔP <span class="num-unit">cmH2O</span></div>
+                    <div class="num-val val-green" id="num-dp">17</div>
+                    <div class="num-sub">Đích &le; 15</div>
+                  </div>
+
+                  <!-- Tile 5: VT -->
+                  <div class="num-tile" id="tile-vt">
+                    <div class="num-label">V<sub>T</sub> <span class="num-unit">mL</span></div>
+                    <div class="num-val val-cyan" id="num-vt">420</div>
+                    <div class="num-sub" id="num-vt-pbw-sub">6.9 mL/kg</div>
+                  </div>
+
+                  <!-- Tile 6: MV -->
+                  <div class="num-tile">
+                    <div class="num-label">MV <span class="num-unit">L/min</span></div>
+                    <div class="num-val val-cyan" id="num-mv">6.7</div>
+                    <div class="num-sub">VT &times; RR</div>
+                  </div>
+                </div>
+
+                <div class="result-row">
+                  <span class="result-label">Cân nặng lý tưởng (PBW):</span>
+                  <span class="result-value" id="res-pbw">60.5 kg</span>
+                </div>
+
+                <div class="result-row" id="row-vt-pbw">
+                  <span class="result-label">V<sub>T</sub> thực tế / PBW:</span>
+                  <span class="result-value"><span id="res-vt-pbw">6.9</span> <span style="font-size:11px; font-weight:600; color:var(--color-text-muted)">mL/kg</span></span>
+                </div>
+
+                <div class="result-row">
+                  <span class="result-label">Mục tiêu V<sub>T</sub> khuyến cáo:</span>
+                  <span class="result-value" id="res-vt-target">363 - 484 mL</span>
+                </div>
+
+                <!-- Visual VT bar -->
+                <div class="vt-progress-container" id="vt-indicator-box">
+                  <div class="vt-progress-labels">
+                    <span id="prog-lbl-min">363 mL (6 mL/kg)</span>
+                    <span id="prog-lbl-max">484 mL (8 mL/kg)</span>
+                  </div>
+                  <div class="vt-progress-bar">
+                    <div class="vt-progress-fill" id="vt-progress-fill"></div>
+                  </div>
+                  <div style="font-size:10.5px; text-align:center; margin-top:4px; font-weight:600;" id="vt-indicator-desc">
+                    Đạt mục tiêu bảo vệ phổi
+                  </div>
+                </div>
+
+                <div class="result-row" id="row-driving-p">
+                  <span class="result-label">Áp lực đẩy (ΔP):</span>
+                  <span class="result-value" id="res-driving-p">17 cmH2O</span>
+                </div>
+
+                <div class="result-row" id="row-plat-p">
+                  <span class="result-label">Áp lực cao nguyên (P<sub>plat</sub>):</span>
+                  <span class="result-value" id="res-plat-p">22 cmH2O</span>
+                </div>
+
+                <div style="margin-top: 15px;">
+                  <button type="button" class="reset-btn" onclick="resetCalculator()"><i class="fa-solid fa-rotate-left"></i> Khởi tạo lại</button>
+                </div>
+              </div>
+
+              <!-- Dynamic Clinical Alerts Box -->
+              <div id="clinical-alerts">
+                <!-- Injected via JavaScript -->
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- 3. BOTTOM SECTION: QUIZ ARENA LINKED TO ACTIVE VIRTUAL PATIENT -->
+          <div class="quiz-arena" id="quiz-container" style="margin-top: 20px;">
+            <div class="quiz-q-title" id="quiz-title">
+              <i class="fa-solid fa-circle-question"></i> Câu Hỏi Lâm Sàng (Ca 1):
+            </div>
+            <div style="font-size:13.5px; margin-bottom:14px; line-height:1.5;" id="quiz-question">
+              Bệnh nhân ARDS này đang cài đặt VT 480 mL (8 mL/kg PBW) với Pplat là 34 cmH2O. Xử trí lâm sàng ưu tiên tiếp theo là gì?
+            </div>
+
+            <div id="quiz-options-box">
+              <!-- Injected via JS -->
+            </div>
+
+            <div class="quiz-explanation" id="quiz-explanation">
+              <!-- Explanation text -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ════════════════════════════════════════════════════════════════ -->
+        <!-- TAB 2: WEANING & RSBI GAUGE -->
+        <!-- ════════════════════════════════════════════════════════════════ -->
+        <div id="tab-wean" class="tab-content">
+          <div class="calc-layout">
+            <div class="calc-inputs">
+              <!-- Checklist Sẵn sàng cai máy -->
+              <div class="panel-card">
+                <div class="panel-title">
+                  <i class="fa-solid fa-list-check"></i> <span>1. Tiêu Chí Sẵn Sàng Cai Máy Thở (Daily Screening)</span>
+                </div>
+                <p style="font-size:12.5px; color:var(--color-text-muted); margin-bottom:12px; line-height:1.4;">
+                  Kiểm tra hàng ngày. Khi bệnh nhân đạt cả 5 tiêu chí dưới đây, tiến hành Thử nghiệm Thở tự nhiên (SBT).
+                </p>
+                <div class="checklist-group">
+                  <label class="checklist-item">
+                    <input type="checkbox" id="wean-chk-1" onchange="evaluateWeaning()" />
+                    <span class="checklist-text">
+                      <strong>1. Nguyên nhân suy hô hấp cấp đã cải thiện / ổn định</strong>
+                      <span class="checklist-subtext">Đã kiểm soát nhiễm trùng, suy tim ổn định, giải quyết co thắt...</span>
+                    </span>
+                  </label>
+                  <label class="checklist-item">
+                    <input type="checkbox" id="wean-chk-2" onchange="evaluateWeaning()" />
+                    <span class="checklist-text">
+                      <strong>2. Trao đổi khí ổn định ở thông số máy thấp</strong>
+                      <span class="checklist-subtext">PaO2 &ge; 60 mmHg (hoặc SpO2 &ge; 90%) với FiO2 &le; 40-50% và PEEP &le; 5-8 cmH2O.</span>
+                    </span>
+                  </label>
+                  <label class="checklist-item">
+                    <input type="checkbox" id="wean-chk-3" onchange="evaluateWeaning()" />
+                    <span class="checklist-text">
+                      <strong>3. Huyết động ổn định</strong>
+                      <span class="checklist-subtext">Huyết áp ổn định không cần vận mạch hoặc chỉ dùng liều rất thấp.</span>
+                    </span>
+                  </label>
+                  <label class="checklist-item">
+                    <input type="checkbox" id="wean-chk-4" onchange="evaluateWeaning()" />
+                    <span class="checklist-text">
+                      <strong>4. Có nhịp tự thở tốt &amp; lực cơ hô hấp tốt</strong>
+                      <span class="checklist-subtext">Có nỗ lực hít vào tự nhiên đều đặn, không mệt cơ hô hấp.</span>
+                    </span>
+                  </label>
+                  <label class="checklist-item">
+                    <input type="checkbox" id="wean-chk-5" onchange="evaluateWeaning()" />
+                    <span class="checklist-text">
+                      <strong>5. Tri giác tỉnh táo hoặc ổn định (RASS 0 đến -1)</strong>
+                      <span class="checklist-subtext">Đã ngừng an thần, bệnh nhân đáp ứng y lệnh đơn giản.</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- RSBI Calculator Panel -->
+              <div class="panel-card">
+                <div class="panel-title">
+                  <i class="fa-solid fa-gauge"></i> <span>2. Chỉ Số Thở Nhanh Nông (RSBI - Yang &amp; Tobin)</span>
+                </div>
+                <div class="form-grid form-grid-2" style="margin-bottom:14px;">
+                  <div class="form-group">
+                    <label for="rsbi-rr">Tần số thở tự nhiên (f)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="rsbi-rr" value="22" min="5" max="60" oninput="calculateRSBI()" />
+                      <span class="input-unit-text">lần/phút</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="rsbi-vt">Thể tích khí lưu thông tự thở (V<sub>T</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="rsbi-vt" value="0.38" min="0.1" max="1.5" step="0.01" oninput="calculateRSBI()" />
+                      <span class="input-unit-text">Lít</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="rsbi-result-box" class="ab ab-ok">
+                  <div class="ab-title"><i class="fa-solid fa-circle-check"></i> RSBI = 58 (Đạt tiêu chuẩn cai máy)</div>
+                  <div>RSBI &le; 105 lần/phút/L: Tiên đoán khả năng thành công cao khi rút ống nội khí quản.</div>
+                </div>
+              </div>
+
+              <!-- Cuff Leak Test Panel -->
+              <div class="panel-card">
+                <div class="panel-title">
+                  <i class="fa-solid fa-wind"></i> <span>3. Cuff Leak Test (Đo Rò Rỉ Bóng Chèn Thanh Quản)</span>
+                </div>
+                <div class="form-grid form-grid-2" style="margin-bottom:14px;">
+                  <div class="form-group">
+                    <label for="clt-vti">Thể tích hít vào (V<sub>Ti</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="clt-vti" value="500" min="100" max="1000" oninput="calculateCuffLeak()" />
+                      <span class="input-unit-text">mL</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="clt-vte">Thể tích thở ra khi xả Cuff (V<sub>Te</sub>)</label>
+                    <div class="input-unit-wrapper">
+                      <input type="number" id="clt-vte" value="450" min="50" max="1000" oninput="calculateCuffLeak()" />
+                      <span class="input-unit-text">mL</span>
+                    </div>
+                  </div>
+                </div>
+                <div id="cuff-leak-alert">
+                  <!-- JS Injected result -->
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT: WEANING DECISION -->
+            <div class="sticky-sidebar">
+              <div class="results-card">
+                <div class="results-header">
+                  <span><i class="fa-solid fa-clipboard-user"></i> Trạng Thái Cai Máy</span>
+                </div>
+
+                <div id="wean-readiness-status" class="ab ab-warn">
+                  <div class="ab-title"><i class="fa-solid fa-triangle-exclamation"></i> Chưa sẵn sàng cai máy</div>
+                  Hãy tích chọn đầy đủ 5 tiêu chí lâm sàng ở cột trái.
+                </div>
+
+                <div class="result-row">
+                  <span class="result-label">Chỉ số RSBI (f/V<sub>T</sub>):</span>
+                  <span class="result-value" id="res-rsbi-val">58 lần/min/L</span>
+                </div>
+
+                <div class="result-row">
+                  <span class="result-label">Lượng rò rỉ Cuff Leak:</span>
+                  <span class="result-value" id="res-cuff-leak">50 mL</span>
+                </div>
+
+                <div class="result-row" style="flex-direction:column; align-items:flex-start; gap:8px;">
+                  <span class="result-label">Yếu tố nguy cơ cao thất bại sau rút:</span>
+                  <div class="checklist-group" style="width:100%;">
+                    <label class="checklist-item">
+                      <input type="checkbox" id="risk-copd" onchange="evaluateExtubationO2()" />
+                      <span class="checklist-text">Bệnh COPD / Tăng PaCO2 mạn</span>
+                    </label>
+                    <label class="checklist-item">
+                      <input type="checkbox" id="risk-co2" onchange="evaluateExtubationO2()" />
+                      <span class="checklist-text">Tăng PaCO2 khi tiến hành SBT</span>
+                    </label>
+                    <label class="checklist-item">
+                      <input type="checkbox" id="risk-age" onchange="evaluateExtubationO2()" />
+                      <span class="checklist-text">Tuổi cao (&gt; 65 tuổi)</span>
+                    </label>
+                    <label class="checklist-item">
+                      <input type="checkbox" id="risk-heart" onchange="evaluateExtubationO2()" />
+                      <span class="checklist-text">Bệnh lý tim mạch kèm theo / Suy tim</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div id="extubation-o2-alert">
+                  <!-- JS Injected recommendation -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════════════════════════ -->
+        <!-- TAB 3: ALARMS & PREVENTION BUNDLES -->
+        <!-- ════════════════════════════════════════════════════════════════ -->
+        <div id="tab-trouble" class="tab-content">
+          <div class="calc-layout">
+            <div class="calc-inputs">
+              <div class="panel-card">
+                <div class="panel-title">
+                  <i class="fa-solid fa-bell"></i> <span>Xử Trí Sự Cố &amp; Báo Động Máy Thở</span>
+                </div>
+                <div class="ab ab-danger" style="margin-bottom: 20px;">
+                  <div class="ab-title"><i class="fa-solid fa-triangle-exclamation"></i> NGUYÊN TẮC VÀNG KHI BÁO ĐỘNG</div>
+                  Khi máy thở báo động, **hành động đầu tiên luôn là ĐÁNH GIÁ BỆNH NHÂN** (di động lồng ngực, SpO2, Mạch, HA). Nếu nghi ngờ máy hỏng hoặc bệnh nhân suy hô hấp nặng, **tháo máy &amp; bóp bóng qua nội khí quản với Oxy 100%** ngay lập tức!
+                </div>
+
+                <div class="troubleshoot-accordion">
+                  <div class="acc-item open">
+                    <div class="acc-header" onclick="toggleAccordion(this)">
+                      <span>🚨 1. Báo động Áp lực cao (High-Pressure Alarm)</span>
+                      <i class="fa-solid fa-chevron-down acc-icon"></i>
+                    </div>
+                    <div class="acc-content">
+                      <p>Xảy ra do **Tăng sức cản đường thở (Raw)** hoặc **Giảm độ giãn nở phổi (Cstat)** đột ngột.</p>
+                      <table class="peep-table">
+                        <thead>
+                          <tr><th>Nguyên nhân</th><th>Hành động xử trí khuyến cáo</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td><strong>Tắc đờm dãi</strong></td><td>Nghe phổi có ran ẩm/ngáy. Tiến hành hút đờm đường thở.</td></tr>
+                          <tr><td><strong>Cắn ống nội khí quản</strong></td><td>Đặt canul Mayo/Guedel ngáng miệng hoặc tăng an thần nhẹ.</td></tr>
+                          <tr><td><strong>Co thắt phế quản cấp</strong></td><td>Khí dung thuốc giãn phế quản (Salbutamol/Ipratropium) qua máy thở.</td></tr>
+                          <tr><td><strong>Tràn khí màng phổi áp lực</strong></td><td>Phổi xẹp 1 bên, lệch khí quản, tụt HA. Chọc hút kim giải áp khẩn cấp!</td></tr>
+                          <tr><td><strong>Ống vào quá sâu (phế quản gốc)</strong></td><td>Nghe phổi lệch, chụp X-quang và rút nhẹ ống nội khí quản.</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="acc-item">
+                    <div class="acc-header" onclick="toggleAccordion(this)">
+                      <span>⚠️ 2. Báo động Áp lực thấp / Tuột dây (Low-Pressure Alarm)</span>
+                      <i class="fa-solid fa-chevron-down acc-icon"></i>
+                    </div>
+                    <div class="acc-content">
+                      <p>Chỉ ra tình trạng **rò rỉ khí** hoặc **tuột ống máy thở**.</p>
+                      <table class="peep-table">
+                        <thead>
+                          <tr><th>Nguyên nhân</th><th>Hành động xử trí khuyến cáo</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td><strong>Tuột khớp nối dây thở</strong></td><td>Kiểm tra dọc hệ thống dây từ máy đến NKQ và cắm chặt lại.</td></tr>
+                          <tr><td><strong>Vỡ hoặc xẹp bóng chèn (Cuff)</strong></td><td>Nghe tiếng rò vùng cổ. Kiểm tra áp lực bóng chèn (20-30 cmH2O). Bơm lại bóng hoặc thay ống NKQ nếu vỡ.</td></tr>
+                          <tr><td><strong>Hở nắp bình làm ẩm</strong></td><td>Vặn chặt lại nắp bình làm ẩm gia nhiệt.</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="acc-item">
+                    <div class="acc-header" onclick="toggleAccordion(this)">
+                      <span>💤 3. Báo động Ngưng thở (Apnea Alarm)</span>
+                      <i class="fa-solid fa-chevron-down acc-icon"></i>
+                    </div>
+                    <div class="acc-content">
+                      <p>Máy không phát hiện nỗ lực tự thở trong 20 giây ở các chế độ hỗ trợ (PSV/CPAP).</p>
+                      <table class="peep-table">
+                        <thead>
+                          <tr><th>Nguyên nhân</th><th>Hành động xử trí khuyến cáo</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td><strong>Quá liều an thần</strong></td><td>Giảm liều an thần (SAT). Chuyển tạm sang mode VCV/PCV.</td></tr>
+                          <tr><td><strong>Bệnh nhân kiệt sức cơ hô hấp</strong></td><td>Chuyển sang thở kiểm soát hoàn toàn để cơ hô hấp nghỉ ngơi.</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sticky-sidebar">
+              <!-- VAP Prevention Bundle -->
+              <div class="results-card">
+                <div class="results-header">
+                  <span><i class="fa-solid fa-shield-halved"></i> Gói Phòng Ngừa VAP / VAE</span>
+                </div>
+                <div class="checklist-group">
+                  <label class="checklist-item">
+                    <input type="checkbox" checked />
+                    <span class="checklist-text"><strong>1. Đầu cao 30 - 45 độ</strong> (Trừ khi chống chỉ định cột sống/HA).</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input type="checkbox" checked />
+                    <span class="checklist-text"><strong>2. Vệ sinh răng miệng bằng bàn chải</strong> định kỳ hàng ngày.</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input type="checkbox" checked />
+                    <span class="checklist-text"><strong>3. Hút dịch dưới thanh môn</strong> liên tục/ngắt quãng.</span>
+                  </label>
+                  <label class="checklist-item">
+                    <input type="checkbox" checked />
+                    <span class="checklist-text"><strong>4. Duy trì áp lực bóng chèn 20-30 cmH2O</strong> bằng áp kế.</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: CLINICAL GUIDELINE MARKDOWN RENDERER -->
+        <div id="tab-guideline-md" class="tab-content">
+          <div class="panel-card" style="background: var(--color-surface); padding: 24px;">
+            <div class="panel-title" style="margin-bottom: 16px;">
+              <i class="fa-solid fa-book-medical"></i> <span>Tài Liệu Hướng Dẫn Cài Đặt Máy Thở ICU (.md)</span>
+            </div>
+            <div id="guideline-md-container">
+              <div class="md-loading"><i class="fa-solid fa-spinner fa-spin"></i> Đang nạp file Quản lý máy thở.md...</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- SCRIPTS -->
+  <script type="module" src="./ql-may-tho.ts"></script>
+</body>
+
+</html>

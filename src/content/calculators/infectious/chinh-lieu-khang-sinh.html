@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Công cụ tính toán liều kháng sinh dựa trên chức năng thận và tra cứu kháng sinh đồ lâm sàng chuẩn hóa.">
+  <title>Tính Liều Kháng Sinh – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- CSS core CliniPortal -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <!-- CSS component Chỉnh liều kháng sinh -->
+  <link rel="stylesheet" href="../../../../css/components/chinh-lieu-khang-sinh.css">
+
+  <!-- JS core CliniPortal -->
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <!-- JS engine Chỉnh liều kháng sinh -->
+  <script src="../../../../js/calculators/chinh-lieu-khang-sinh.js" defer></script>
+</head>
+
+<body>
+
+  <button id="ksd-float-btn" onclick="openKsdLookup()">📊 Tra cứu</button>
+
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <!-- MAIN WRAPPER -->
+    <main class="main-wrapper">
+      <!-- BREADCRUMB -->
+      <clini-breadcrumb items="[{&quot;label&quot;: &quot;🏠 Home&quot;, &quot;url&quot;: &quot;../../../../index.html&quot;}, {&quot;label&quot;: &quot;Công cụ&quot;, &quot;url&quot;: &quot;../cong-cu.html&quot;}, {&quot;label&quot;: &quot;Truyền Nhiễm&quot;, &quot;url&quot;: &quot;javascript:void(0)&quot;}, {&quot;label&quot;: &quot;Tính liều kháng sinh&quot;}]"></clini-breadcrumb>
+
+      <!-- HERO BANNER -->
+      <div class="flow-hero"
+        style="background: var(--gradient-accent); color: white; padding: 1.75rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem;">
+        <div>
+          <div class="hero-badge"
+            style="background: rgba(255,255,255,0.2); display: inline-block; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; margin-bottom: 0.5rem;">
+            🧮 CÔNG CỤ DƯỢC LÂM SÀNG</div>
+          <h1 style="margin: 0; font-size: var(--text-xl); font-weight: 800;">CHỈNH LIỀU KHÁNG SINH</h1>
+          <p style="margin: 0.5rem 0 0; font-size: var(--text-sm); opacity: 0.9;">Tính toán liều kháng sinh theo chức
+            năng thận (Cockcroft-Gault) và PK/PD.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0">
+          <button class="reset-btn" onclick="resetAll()" title="Xóa tất cả (Space)"
+            style="background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.4); color: #fff; border-radius: 8px; width: 36px; height: 36px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s; line-height: 1;">↺</button>
+          <span style="font-size:0.50rem;opacity:0.60;color:#fff;white-space:nowrap;letter-spacing:0.1px">SPACE =
+            Reset</span>
+        </div>
+      </div>
+
+      <div class="main">
+        <!-- LEFT PANEL -->
+        <div class="left-panel">
+          <div class="section-title">💊 Kháng sinh cần dùng</div>
+
+          <div class="form-group">
+            <label>Tên kháng sinh</label>
+            <div class="autocomplete-wrap">
+              <input type="text" id="antibiotic-input" placeholder="Gõ tên để tìm kiếm..." autocomplete="off">
+              <button class="clear-btn" id="clear-btn" onclick="clearAntibiotic()">✕</button>
+              <div class="suggestions" id="suggestions" style="display:none"></div>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid var(--border); margin: 16px 0 14px;"></div>
+          <div class="section-title">📋 Thông tin bệnh nhân</div>
+
+          <div class="form-group">
+            <label>Creatinine huyết thanh <span class="unit">(µmol/L)</span></label>
+            <input type="number" id="scr" placeholder="VD: 90" min="1" max="2000" step="1">
+          </div>
+
+          <div class="form-group">
+            <label>Tuổi <span class="unit">(năm)</span></label>
+            <input type="number" id="age" placeholder="VD: 65" min="1" max="120">
+          </div>
+
+          <div class="form-group">
+            <label>Giới tính</label>
+            <div class="radio-row">
+              <label><input type="radio" name="gender" value="male" checked> ♂ Nam</label>
+              <label><input type="radio" name="gender" value="female"> ♀ Nữ</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Cân nặng <span class="unit">(kg)</span></label>
+            <input type="number" id="weight" value="50" min="1" max="300" step="0.5" style="color:var(--muted)"
+              onfocus="if(this.value==='50'){this.value='';this.style.color='var(--text)'}"
+              onblur="if(this.value===''){this.value='50';this.style.color='var(--muted)'}else{this.style.color='var(--text)'}"
+              oninput="this.style.color='var(--text)'">
+          </div>
+
+          <div class="form-group">
+            <label>Albumin huyết thanh <span class="unit">(g/dL)</span></label>
+            <input type="number" id="albumin" value="4.0" min="0.5" max="7.0" step="0.1" style="color:var(--muted)"
+              onfocus="if(this.value==='4.0'){this.value='';this.style.color='var(--text)'}"
+              onblur="if(this.value===''){this.value='4.0';this.style.color='var(--muted)'}else{this.style.color='var(--text)'}"
+              oninput="this.style.color='var(--text)'">
+          </div>
+
+          <div style="border-top:1px solid var(--border); margin: 16px 0 14px;"></div>
+          <div class="section-title">🩺 Bệnh lý & Mức độ</div>
+
+          <div class="form-group">
+            <label>Bệnh lý</label>
+            <div class="checkbox-grid" id="disease-grid">
+              <div class="checkbox-item" onclick="toggleDisease(this,'viem_phoi')">
+                <input type="checkbox" value="viem_phoi"> 🫁 Viêm phổi
+              </div>
+              <div class="checkbox-item" onclick="toggleDisease(this,'nhiem_trung_tieu_hoa')">
+                <input type="checkbox" value="nhiem_trung_tieu_hoa"> 🦠 NK tiêu hóa
+              </div>
+              <div class="checkbox-item" onclick="toggleDisease(this,'nhiem_trung_tktw')">
+                <input type="checkbox" value="nhiem_trung_tktw"> 🧠 NK thần kinh TW
+              </div>
+              <div class="checkbox-item" onclick="toggleDisease(this,'nhiem_trung_duong_tieu')">
+                <input type="checkbox" value="nhiem_trung_duong_tieu"> 💧 NK đường tiểu
+              </div>
+              <div class="checkbox-item" onclick="toggleDisease(this,'nhiem_trung_da_mo_mem')">
+                <input type="checkbox" value="nhiem_trung_da_mo_mem"> 🩹 NK da & mô mềm
+              </div>
+              <div class="checkbox-item" onclick="toggleDisease(this,'nhiem_trung_khac')">
+                <input type="checkbox" value="nhiem_trung_khac"> ➕ NK khác
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Mức độ</label>
+            <select id="severity">
+              <option value="nang" selected>⚠️ Nặng</option>
+              <option value="du_phong">🛡 Dự phòng</option>
+              <option value="trung_binh">🟡 Trung bình</option>
+              <option value="nguy_kich">🔴 Nguy kịch / Đa kháng</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div class="toggle-row" id="dialysis-toggle" onclick="toggleDialysis()">
+              <input type="checkbox" id="dialysis-cb">
+              <label for="dialysis-cb">Bệnh nhân đang lọc máu (CRRT/HD)</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="right-panel" id="right-panel">
+          <div id="history-section">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <div class="section-title" style="margin:0;border:none;padding:0">⏱ Lịch sử tra cứu</div>
+              <span class="hist-clear" onclick="clearHistory()">Xóa lịch sử</span>
+            </div>
+            <div id="history-panel" style="margin-bottom:14px">
+              <div style="color:var(--muted);font-size:0.8rem;text-align:center;padding:6px">Chưa có lịch sử</div>
+            </div>
+          </div>
+          <div class="empty-state" id="empty-state">
+            <div class="icon">🧪</div>
+            <p>Nhập thông tin bệnh nhân và chọn kháng sinh<br>để tính liều gợi ý theo chức năng thận</p>
+          </div>
+          <div id="result-area" style="display:none"></div>
+        </div>
+      </div>
+
+      <!-- TÀI LIỆU LIÊN QUAN -->
+      <section class="related-links-section" style="margin-top: 2.5rem; width: 100%; box-sizing: border-box;">
+        <h4 class="related-links-title">
+          <i class="fas fa-link"></i> Xem thêm các nội dung liên quan
+        </h4>
+        <div class="related-links-grid">
+          <a href="../../pharmacology/tools/dose-optimizer.html" class="related-link-card">
+            <div class="related-card-content">
+              <span class="related-card-badge duoc-ly">Dược lý</span>
+              <h5>Dược Lý Lâm Sàng Kháng Sinh</h5>
+              <p>Khảo sát toàn diện cơ chế tác dụng, phổ kháng khuẩn và tương tác lâm sàng của các họ kháng sinh chính.</p>
+            </div>
+            <i class="fas fa-chevron-right related-card-arrow"></i>
+          </a>
+          <a href="../../skills/treatment-management/luachon-khangsinh.html" class="related-link-card">
+            <div class="related-card-content">
+              <span class="related-card-badge ky-nang">Kỹ năng lâm sàng</span>
+              <h5>Nguyên Tắc Lựa Chọn Kháng Sinh</h5>
+              <p>Cách tiếp cận lựa chọn kháng sinh theo kinh nghiệm (Empiric Therapy) và xuống thang điều trị kháng sinh đồ.</p>
+            </div>
+            <i class="fas fa-chevron-right related-card-arrow"></i>
+          </a>
+          <a href="../../ebm/guidelines/kho-guidelines/2026-icu-khang-sinh-cho-bn-nang.html" class="related-link-card">
+            <div class="related-card-content">
+              <span class="related-card-badge y-hoc-chung-cu">Guidelines</span>
+              <h5>Kháng Sinh Cho Bệnh Nhân Nặng</h5>
+              <p>Tóm tắt đồng thuận điều trị kháng sinh trên bệnh nhân hồi sức tích cực (Critical Care) - Cập nhật 2026.</p>
+            </div>
+            <i class="fas fa-chevron-right related-card-arrow"></i>
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="toast-error" id="toast-error"></div>
+
+  <!-- ─── KSĐ LOOKUP MODAL ─────────────────────────────────────── -->
+  <div id="ksd-modal-overlay" onclick="handleKsdOverlayClick(event)">
+    <div id="ksd-modal-box">
+      <div id="ksd-modal-header">
+        <div class="title-block">
+          <h2>📊 Dữ liệu vi sinh lâm sàng</h2>
+          <p>Lưu hành nội bộ &nbsp;·&nbsp; n = 542 mẫu · Cập nhật 6/2026</p>
+        </div>
+        <button id="ksd-modal-close" onclick="closeKsdLookup()">✕</button>
+      </div>
+      <div id="ksd-modal-body">
+        <!-- Left: search + chips -->
+        <div id="ksd-left-panel">
+          <div id="ksd-search-wrap">
+            <input type="text" id="ksd-search-input" placeholder="🔍 Tìm kháng sinh..." oninput="ksdOnInput(this.value)"
+              onkeydown="ksdSearchKey(event)" autocomplete="off" spellcheck="false">
+            <button id="ksd-search-clear" onclick="ksdClearSearch()">✕</button>
+            <div id="ksd-suggestions"></div>
+          </div>
+          <div id="ksd-chips-wrap">
+            <div class="ksd-chips-label">Tra cứu nhiều nhất</div>
+            <div id="ksd-chips-list"></div>
+          </div>
+        </div>
+        <!-- Right: content -->
+        <div id="ksd-right-panel">
+          <!-- Default: legend -->
+          <div id="ksd-legend-wrap" style="padding:20px 24px">
+            <div
+              style="font-size:0.88rem;font-weight:800;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;gap:8px">
+              <span>📖</span> Chú thích tầng hiệu quả
+            </div>
+            <div class="ksd-legend-box" id="ksd-legend-content"></div>
+            <div
+              style="margin-top:20px;padding:14px 16px;background:var(--color-surface-offset);border-radius:10px;border:1px solid var(--border);font-size:0.80rem;color:var(--muted);line-height:1.6">
+              <strong style="color:var(--primary);display:block;margin-bottom:5px">📌 Cách sử dụng</strong>
+              Chọn kháng sinh ở danh sách bên trái để xem dữ liệu kháng sinh đồ chi tiết. Danh sách được sắp xếp theo
+              tần suất tra cứu nhiều nhất.
+            </div>
+          </div>
+          <!-- Drug detail (hidden until drug selected) -->
+          <div id="ksd-detail-wrap" style="padding:20px 24px">
+            <div class="ksd-detail-header">
+              <div class="ksd-detail-name" id="ksd-det-name" style="color:var(--primary)"></div>
+              <div class="ksd-detail-group" id="ksd-det-group"></div>
+              <div class="ksd-detail-tier" id="ksd-det-tier"></div>
+            </div>
+            <table class="ksd-sir-table">
+              <thead>
+                <tr>
+                  <th style="width:38%">Vi khuẩn</th>
+                  <th class="s-col">Nhạy (S)</th>
+                  <th class="i-col">Trung gian (I)</th>
+                  <th class="r-col">Kháng (R)</th>
+                </tr>
+              </thead>
+              <tbody id="ksd-det-tbody"></tbody>
+            </table>
+            <div id="ksd-det-notes"></div>
+            <div style="font-size:0.70rem;color:var(--muted);text-align:right;margin-top:14px;font-style:italic">
+              Dữ liệu vi sinh lâm sàng nội bộ · n=542 mẫu · 6/2026
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+
+</html>

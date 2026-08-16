@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vasoactive & Hemodynamic Pro Studio – Workstation tương tác hồi sức cấp cứu: Quản lý 4 bơm tiêm điện song song, điểm VIS, radar phân loại sốc, máy tính ngược BTĐ, phác đồ can thiệp CVC/A-Line/PLR/ECMO." />
+  <title>Vasoactive &amp; Hemodynamic Pro Studio – Workstation Vận Mạch &amp; Can Thiệp Cấp Cứu – CliniPortal</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- CSS Core -->
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+  <style>
+    /* ── DESIGN TOKENS & STUDIO DESIGN SYSTEM ── */
+    :root {
+      --vm-red: #dc2626;
+      --vm-red-h: #fef2f2;
+      --vm-red-b: #fecaca;
+      --vm-amber: #d97706;
+      --vm-amber-h: #fffbeb;
+      --vm-amber-b: #fde68a;
+      --vm-blue: #0284c7;
+      --vm-blue-h: #f0f9ff;
+      --vm-blue-b: #bae6fd;
+      --vm-teal: #0d9488;
+      --vm-teal-h: #f0fdfa;
+      --vm-teal-b: #99f6e4;
+      --vm-purple: #7c3aed;
+      --vm-purple-h: #f5f3ff;
+      --vm-purple-b: #ddd6fe;
+      --vm-ok: #16a34a;
+      --vm-ok-h: #f0fdf4;
+      --vm-ok-b: #bbf7d0;
+      
+      --studio-radius: 14px;
+      --studio-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="dark"] {
+      --vm-red: #f87171;
+      --vm-red-h: rgba(220, 38, 38, 0.15);
+      --vm-red-b: #7f1d1d;
+      --vm-amber: #fbbf24;
+      --vm-amber-h: rgba(217, 119, 6, 0.15);
+      --vm-amber-b: #78350f;
+      --vm-blue: #38bdf8;
+      --vm-blue-h: rgba(2, 132, 199, 0.15);
+      --vm-blue-b: #0c4a6e;
+      --vm-teal: #2dd4bf;
+      --vm-teal-h: rgba(13, 148, 136, 0.15);
+      --vm-teal-b: #115e59;
+      --vm-purple: #a78bfa;
+      --vm-purple-h: rgba(124, 58, 237, 0.15);
+      --vm-purple-b: #4c1d95;
+      --vm-ok: #4ade80;
+      --vm-ok-h: rgba(22, 163, 74, 0.15);
+      --vm-ok-b: #14532d;
+
+      --studio-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .studio-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 1rem 2.5rem;
+    }
+
+    /* ── HERO BANNER ── */
+    .hero-studio {
+      background: linear-gradient(135deg, #1e1b4b 0%, #31121d 40%, #7f1d1d 100%);
+      border-radius: var(--studio-radius);
+      padding: 22px 26px;
+      margin-bottom: 18px;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(127, 29, 29, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-studio::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .hero-studio h1 {
+      font-size: clamp(19px, 2.2vw, 25px);
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-studio p {
+      font-size: 13px;
+      opacity: 0.88;
+      margin: 0;
+      max-width: 860px;
+      line-height: 1.5;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 100px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* ── UNIFIED CONTROL BAR (DEMOGRAPHICS & PRESETS) ── */
+    .control-bar {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--studio-radius);
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      box-shadow: var(--studio-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .preset-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .preset-pill {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .preset-pill:hover {
+      border-color: var(--vm-red);
+      background: var(--vm-red-h);
+      color: var(--vm-red);
+      transform: translateY(-1px);
+    }
+
+    .patient-inputs {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .patient-input-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    .patient-input-item input,
+    .patient-input-item select {
+      padding: 5px 9px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 7px;
+      font-size: 12.5px;
+      font-weight: 600;
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      width: 75px;
+    }
+
+    .patient-input-item select {
+      width: 80px;
+    }
+
+    /* ── MAIN STUDIO GRID ── */
+    .studio-main-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .studio-main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-panel {
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--studio-radius);
+      padding: 18px 20px;
+      box-shadow: var(--studio-shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--color-divider);
+    }
+
+    .panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+    }
+
+    /* ── PUMP ARRAY (LEFT PANEL) ── */
+    .pump-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .pump-card {
+      background: var(--color-surface-2);
+      border: 1.5px solid var(--color-border);
+      border-radius: 11px;
+      padding: 12px 14px;
+      transition: all 0.2s ease;
+    }
+
+    .pump-card.active {
+      border-color: var(--vm-red);
+      background: var(--color-surface);
+      box-shadow: 0 4px 14px rgba(220, 38, 38, 0.08);
+    }
+
+    .pump-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .pump-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .pump-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-text-muted);
+    }
+
+    .pump-card.active .pump-dot {
+      background: var(--vm-red);
+      box-shadow: 0 0 8px var(--vm-red);
+    }
+
+    .pump-switch {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+    }
+
+    .pump-switch input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: var(--vm-red);
+      cursor: pointer;
+    }
+
+    .pump-grid-controls {
+      display: grid;
+      grid-template-columns: 1.1fr 1.3fr 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @media (max-width: 600px) {
+      .pump-grid-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pump-select {
+      padding: 6px 8px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--color-surface);
+      color: var(--color-text);
+      width: 100%;
+    }
+
+    .pump-slider-box {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .pump-slider-box label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .pump-slider-box input[type="range"] {
+      accent-color: var(--vm-red);
+      cursor: pointer;
+      height: 5px;
+      width: 100%;
+    }
+
+    .pump-rate-badge {
+      background: var(--vm-red-h);
+      border: 1px solid var(--vm-red-b);
+      border-radius: 8px;
+      padding: 6px 10px;
+      text-align: right;
+    }
+
+    .pump-rate-num {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--vm-red);
+      line-height: 1;
+    }
+
+    .pump-rate-unit {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #7f1d1d;
+    }
+    [data-theme="dark"] .pump-rate-unit { color: #f87171; }
+
+    /* ── VIS KPI BANNER ── */
+    .vis-kpi-banner {
+      background: linear-gradient(135deg, var(--vm-purple-h), var(--color-surface));
+      border: 1.5px solid var(--vm-purple-b);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .vis-kpi-val {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--vm-purple);
+      line-height: 1;
+    }
+
+    .vis-status-badge {
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── HEMODYNAMIC & RADAR (RIGHT PANEL) ── */
+    .hemo-inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 580px) {
+      .hemo-inputs-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .hemo-field {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .hemo-field label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    .hemo-field input,
+    .hemo-field select {
+      padding: 6px 8px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      width: 100%;
+    }
+
+    .hemo-metrics-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .metric-card {
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: center;
+      border: 1px solid;
+    }
+
+    .metric-card.blue {
+      background: var(--vm-blue-h);
+      border-color: var(--vm-blue-b);
+      color: var(--vm-blue);
+    }
+
+    .metric-card.amber {
+      background: var(--vm-amber-h);
+      border-color: var(--vm-amber-b);
+      color: var(--vm-amber);
+    }
+
+    .metric-card-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 2px 0;
+    }
+
+    .metric-card-lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* ── SVG VECTOR RADAR CANVAS ── */
+    .radar-canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: #0f172a;
+      border: 1.5px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .radar-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .radar-grid-line {
+      stroke: #334155;
+      stroke-width: 1;
+      stroke-dasharray: 4;
+    }
+
+    .radar-quad-text {
+      font-size: 10px;
+      font-weight: 700;
+      fill: #94a3b8;
+    }
+
+    /* ── INTERVENTIONAL HUB (5 TABS) ── */
+    .interv-tab-bar {
+      display: flex;
+      gap: 6px;
+      border-bottom: 2px solid var(--color-border);
+      margin-bottom: 14px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .interv-btn {
+      padding: 8px 14px;
+      border-radius: 8px 8px 0 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .interv-btn.active {
+      color: var(--vm-red);
+      background: var(--vm-red-h);
+      border-bottom: 3px solid var(--vm-red);
+      font-weight: 700;
+    }
+
+    .interv-panel {
+      display: none;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .interv-panel.active {
+      display: block;
+    }
+
+    .studio-alert {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-left: 4px solid var(--vm-red);
+      border-radius: 10px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+
+    .studio-alert-title {
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── UTILITY BUTTONS & HIS PANEL ── */
+    .btn-copy {
+      background: var(--vm-red);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy:hover {
+      background: #b91c1c;
+      box-shadow: 0 4px 12px rgba(185, 28, 28, 0.2);
+    }
+
+    .btn-calc {
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-calc:hover {
+      border-color: var(--vm-teal);
+      color: var(--vm-teal);
+    }
+
+    .his-order-box {
+      background: var(--color-surface-2);
+      border: 1.5px dashed var(--color-border);
+      border-radius: 10px;
+      padding: 14px;
+      font-family: monospace;
+      font-size: 12.5px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      color: var(--color-text);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Placeholder -->
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- App Container -->
+  <div class="app-container">
+    <main class="main-wrapper studio-wrap" id="mainContent">
+      
+      <!-- HERO BANNER -->
+      <section class="hero-studio">
+        <div class="hero-header-top">
+          <h1><i class="fa-solid fa-heart-pulse" style="color: #f87171;"></i> Vasoactive &amp; Hemodynamic Pro Studio</h1>
+          <div class="hero-badges">
+            <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> SSC 2021</span>
+            <span class="hero-badge"><i class="fa-solid fa-square-poll-vertical"></i> VIS Score</span>
+            <span class="hero-badge"><i class="fa-solid fa-syringes"></i> Multi-Pump</span>
+          </div>
+        </div>
+        <p>Workstation tương tác quản lý đa bơm tiêm điện vận mạch, định vị thể sốc trên đồ thị vector, và lập phác đồ xử trí thủ thuật can thiệp lâm sàng tại giường bệnh.</p>
+      </section>
+
+      <!-- Breadcrumbs -->
+      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Công cụ", "url": "../cong-cu.html"}, {"label": "Cấp cứu & hồi sức", "url": "#"}, {"label": "Vasoactive Pro Studio"}]'></clini-breadcrumb>
+
+      <!-- UNIFIED CONTROL BAR (PRESETS & PATIENT DEMOGRAPHICS) -->
+      <div class="control-bar">
+        <div class="control-row">
+          <div style="font-size: 11.5px; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-bolt" style="color: var(--vm-amber);"></i> 1-Click Kịch Bản Cấp Cứu:
+          </div>
+          <div class="preset-pills">
+            <button class="preset-pill" onclick="loadPreset('septic')">
+              <i class="fa-solid fa-bug" style="color: #dc2626;"></i> Sốc Nhiễm Khuẩn
+            </button>
+            <button class="preset-pill" onclick="loadPreset('cardio')">
+              <i class="fa-solid fa-heart-crack" style="color: #d97706;"></i> Sốc Tim
+            </button>
+            <button class="preset-pill" onclick="loadPreset('anaphylaxis')">
+              <i class="fa-solid fa-hand-dots" style="color: #0284c7;"></i> Sốc Phản Vệ
+            </button>
+            <button class="preset-pill" onclick="loadPreset('refractory')">
+              <i class="fa-solid fa-skull-crossbones" style="color: #7c3aed;"></i> Sốc Kháng Trị
+            </button>
+            <button class="preset-pill" onclick="loadPreset('brady')">
+              <i class="fa-solid fa-wave-square" style="color: #0d9488;"></i> Sốc Nhịp Chậm
+            </button>
+          </div>
+        </div>
+
+        <div class="control-row" style="padding-top: 8px; border-top: 1px stroke var(--color-divider);">
+          <div class="patient-inputs">
+            <div class="patient-input-item">
+              <label for="p-weight">Cân nặng (kg):</label>
+              <input type="number" id="p-weight" value="65" min="20" max="250" step="1" oninput="updateStudio()">
+            </div>
+            <div class="patient-input-item">
+              <label for="p-height">Chiều cao (cm):</label>
+              <input type="number" id="p-height" value="165" min="100" max="220" step="1" oninput="updateStudio()">
+            </div>
+            <div class="patient-input-item">
+              <label for="p-gender">Giới tính:</label>
+              <select id="p-gender" onchange="updateStudio()">
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+              </select>
+            </div>
+          </div>
+          <div id="ibw-chip" style="font-size: 11.5px; font-weight: 700; color: var(--vm-blue); background: var(--vm-blue-h); border: 1px solid var(--vm-blue-b); padding: 4px 10px; border-radius: 100px;">
+            IBW: 61.3 kg | Cân nặng tính toán: 61.3 kg
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN STUDIO WORKBENCH GRID -->
+      <div class="studio-main-grid">
+
+        <!-- LEFT PANEL: MULTI-PUMP ARRAY & VIS SCORE -->
+        <div class="card-panel">
+          <div class="card-panel-head">
+            <h3 class="panel-title"><i class="fa-solid fa-syringes" style="color: var(--vm-red);"></i> Bảng Quản Lý Đa Bơm Tiêm Điện</h3>
+            <span style="font-size: 11px; font-weight: 600; color: var(--color-text-muted);">4 Bơm Tiêm Điện Song Song</span>
+          </div>
+
+          <div class="pump-list">
+            <!-- PUMP 1: NOREPINEPHRINE -->
+            <div class="pump-card active" id="pump-card-ne">
+              <div class="pump-header-row">
+                <div class="pump-title-wrap">
+                  <span class="pump-dot"></span> Norepinephrine (NE)
+                </div>
+                <label class="pump-switch">
+                  <input type="checkbox" id="chk-ne" checked onchange="updateStudio()"> Bật Bơm
+                </label>
+              </div>
+              <div class="pump-grid-controls">
+                <select id="conc-ne" class="pump-select" onchange="updateStudio()">
+                  <option value="80">4mg/50mL (80 mcg/mL)</option>
+                  <option value="160">8mg/50mL (160 mcg/mL)</option>
+                  <option value="320">16mg/50mL (320 mcg/mL)</option>
+                </select>
+                <div class="pump-slider-box">
+                  <label><span>Liều cài đặt</span><strong id="lbl-dose-ne">0.10 mcg/kg/min</strong></label>
+                  <input type="range" id="sld-ne" min="0" max="1.5" step="0.01" value="0.10" oninput="syncDoseInput('ne')">
+                </div>
+                <div class="pump-rate-badge">
+                  <div class="pump-rate-num" id="rate-ne">4.6</div>
+                  <div class="pump-rate-unit">mL/giờ</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PUMP 2: VASOPRESSIN -->
+            <div class="pump-card" id="pump-card-vaso">
+              <div class="pump-header-row">
+                <div class="pump-title-wrap">
+                  <span class="pump-dot"></span> Vasopressin (Sốc Kháng Trị)
+                </div>
+                <label class="pump-switch">
+                  <input type="checkbox" id="chk-vaso" onchange="updateStudio()"> Bật Bơm
+                </label>
+              </div>
+              <div class="pump-grid-controls">
+                <select id="conc-vaso" class="pump-select" disabled>
+                  <option value="0.4">20 UI/50mL (0.4 UI/mL)</option>
+                </select>
+                <div class="pump-slider-box">
+                  <label><span>Liều cố định</span><strong>0.03 UI/min</strong></label>
+                  <input type="range" id="sld-vaso" min="0.01" max="0.04" step="0.01" value="0.03" disabled>
+                </div>
+                <div class="pump-rate-badge">
+                  <div class="pump-rate-num" id="rate-vaso">4.5</div>
+                  <div class="pump-rate-unit">mL/giờ</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PUMP 3: EPINEPHRINE -->
+            <div class="pump-card" id="pump-card-epi">
+              <div class="pump-header-row">
+                <div class="pump-title-wrap">
+                  <span class="pump-dot"></span> Epinephrine (Epi)
+                </div>
+                <label class="pump-switch">
+                  <input type="checkbox" id="chk-epi" onchange="updateStudio()"> Bật Bơm
+                </label>
+              </div>
+              <div class="pump-grid-controls">
+                <select id="conc-epi" class="pump-select" onchange="updateStudio()">
+                  <option value="80">4mg/50mL (80 mcg/mL)</option>
+                  <option value="160">8mg/50mL (160 mcg/mL)</option>
+                </select>
+                <div class="pump-slider-box">
+                  <label><span>Liều cài đặt</span><strong id="lbl-dose-epi">0.05 mcg/kg/min</strong></label>
+                  <input type="range" id="sld-epi" min="0" max="1.0" step="0.01" value="0.05" oninput="syncDoseInput('epi')">
+                </div>
+                <div class="pump-rate-badge">
+                  <div class="pump-rate-num" id="rate-epi">2.3</div>
+                  <div class="pump-rate-unit">mL/giờ</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PUMP 4: DOBUTAMINE / INOTROPE -->
+            <div class="pump-card" id="pump-card-ino">
+              <div class="pump-header-row">
+                <div class="pump-title-wrap">
+                  <span class="pump-dot"></span>
+                  <select id="sel-ino-drug" class="pump-select" onchange="updateStudio()" style="font-weight: 700;">
+                    <option value="DOBU">Dobutamine (Trợ tim)</option>
+                    <option value="DOPA">Dopamine</option>
+                    <option value="PHE">Phenylephrine</option>
+                  </select>
+                </div>
+                <label class="pump-switch">
+                  <input type="checkbox" id="chk-ino" onchange="updateStudio()"> Bật Bơm
+                </label>
+              </div>
+              <div class="pump-grid-controls">
+                <select id="conc-ino" class="pump-select" onchange="updateStudio()">
+                  <option value="5000">Dobu 250mg/50mL (5000 mcg/mL)</option>
+                  <option value="4000">Dopa 200mg/50mL (4000 mcg/mL)</option>
+                </select>
+                <div class="pump-slider-box">
+                  <label><span>Liều cài đặt</span><strong id="lbl-dose-ino">5.0 mcg/kg/min</strong></label>
+                  <input type="range" id="sld-ino" min="0" max="20" step="0.5" value="5.0" oninput="syncDoseInput('ino')">
+                </div>
+                <div class="pump-rate-badge">
+                  <div class="pump-rate-num" id="rate-ino">3.7</div>
+                  <div class="pump-rate-unit">mL/giờ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIS SCORE SUMMARY KPI -->
+          <div class="vis-kpi-banner">
+            <div>
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted);">Tổng Tải Vận Mạch &amp; Trợ Tim (VIS Score)</div>
+              <div style="font-size: 12px; font-weight: 600; margin-top: 2px; color: var(--color-text);" id="vis-desc">Tải nhẹ - Tiên lượng tốt</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="vis-kpi-val" id="vis-score">10.0</div>
+              <span class="vis-status-badge" id="vis-badge" style="background: var(--vm-ok-h); color: var(--vm-ok); border: 1px solid var(--vm-ok-b);">Nguy cơ thấp</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL: HEMODYNAMIC RADAR & SHOCK MATRIX -->
+        <div class="card-panel">
+          <div class="card-panel-head">
+            <h3 class="panel-title"><i class="fa-solid fa-chart-line" style="color: var(--vm-blue);"></i> Radar Sinh Hiệu &amp; Định Vị Thể Sốc</h3>
+            <span style="font-size: 11px; font-weight: 600; color: var(--color-text-muted);">Vector Shock Matrix</span>
+          </div>
+
+          <div class="hemo-inputs-grid">
+            <div class="hemo-field">
+              <label for="h-sbp">Tâm Thu SBP (mmHg)</label>
+              <input type="number" id="h-sbp" value="85" min="40" max="240" step="1" oninput="updateStudio()">
+            </div>
+            <div class="hemo-field">
+              <label for="h-dbp">Tâm Trương DBP (mmHg)</label>
+              <input type="number" id="h-dbp" value="50" min="20" max="140" step="1" oninput="updateStudio()">
+            </div>
+            <div class="hemo-field">
+              <label for="h-hr">Nhịp Tim HR (bpm)</label>
+              <input type="number" id="h-hr" value="115" min="30" max="220" step="1" oninput="updateStudio()">
+            </div>
+            <div class="hemo-field">
+              <label for="h-lactate">Lactate (mmol/L)</label>
+              <input type="number" id="h-lactate" value="3.5" min="0.5" max="20" step="0.1" oninput="updateStudio()">
+            </div>
+            <div class="hemo-field">
+              <label for="h-scvo2">ScvO2 (%)</label>
+              <input type="number" id="h-scvo2" value="62" min="30" max="95" step="1" oninput="updateStudio()">
+            </div>
+            <div class="hemo-field">
+              <label for="h-cvp">Siêu âm IVC</label>
+              <select id="h-cvp" onchange="updateStudio()">
+                <option value="low">IVC xẹp &gt; 50% (Thiếu dịch)</option>
+                <option value="normal">IVC bình thường</option>
+                <option value="high">IVC căng cứng (Quá tải)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- METRICS ROW -->
+          <div class="hemo-metrics-row">
+            <div class="metric-card blue">
+              <div class="metric-card-lbl">MAP (Huyết áp Trung bình)</div>
+              <div class="metric-card-val" id="val-map">61.7</div>
+              <div style="font-size: 10px; font-weight: 700;" id="lbl-map-status">Mục tiêu ≥ 65 mmHg</div>
+            </div>
+            <div class="metric-card amber">
+              <div class="metric-card-lbl">SHOCK INDEX (HR / SBP)</div>
+              <div class="metric-card-val" id="val-si">1.35</div>
+              <div style="font-size: 10px; font-weight: 700;" id="lbl-si-status">Tăng cao (> 1.0)</div>
+            </div>
+          </div>
+
+          <!-- VECTOR CANVAS -->
+          <div class="radar-canvas-wrap">
+            <svg class="radar-svg" viewBox="0 0 380 220" id="shock-matrix-svg">
+              <line x1="190" y1="15" x2="190" y2="205" class="radar-grid-line" />
+              <line x1="15" y1="110" x2="365" y2="110" class="radar-grid-line" />
+              
+              <text x="25" y="35" class="radar-quad-text">SỐC GIÃN MẠCH (Septic)</text>
+              <text x="205" y="35" class="radar-quad-text">SỐC TIM (Cardiogenic)</text>
+              <text x="25" y="195" class="radar-quad-text">SỐC GIẢM THỂ TÍCH (Hypovolemic)</text>
+              <text x="205" y="195" class="radar-quad-text">SỐC PHỐI HỢP / KHÁNG TRỊ</text>
+
+              <circle id="radar-dot" cx="110" cy="75" r="9" fill="#f87171" opacity="0.85">
+                <animate attributeName="r" values="7;11;7" dur="1.5s" repeatCount="indefinite" />
+              </circle>
+              <circle id="radar-dot-inner" cx="110" cy="75" r="3.5" fill="#ffffff" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ADVANCED INTERVENTIONAL MANAGEMENT PANEL (5 TABS) -->
+      <div class="card-panel" style="margin-bottom: 18px;">
+        <div class="card-panel-head">
+          <h3 class="panel-title"><i class="fa-solid fa-user-gear" style="color: var(--vm-red);"></i> Trung Tâm Xử Trí Can Thiệp &amp; Thủ Thuật Hồi Sức Lâm Sàng</h3>
+          <span style="font-size: 11px; font-weight: 600; color: var(--color-text-muted);">EBM Action Protocols</span>
+        </div>
+
+        <div class="interv-tab-bar">
+          <button class="interv-btn active" onclick="switchTab(0)"><i class="fa-solid fa-syringe"></i> 1. Đường Truyền &amp; A-Line</button>
+          <button class="interv-btn" onclick="switchTab(1)"><i class="fa-solid fa-lungs"></i> 2. RSI &amp; Thông Khí An Toàn</button>
+          <button class="interv-btn" onclick="switchTab(2)"><i class="fa-solid fa-water"></i> 3. Test PLR &amp; POCUS</button>
+          <button class="interv-btn" onclick="switchTab(3)"><i class="fa-solid fa-heart-circle-bolt"></i> 4. Trigger VA-ECMO / IABP</button>
+          <button class="interv-btn" onclick="switchTab(4)"><i class="fa-solid fa-vial-circle-check"></i> 5. Liệu Pháp Giải Độc</button>
+        </div>
+
+        <!-- TAB 1: LINE SAFETY & EXTRAVASATION -->
+        <div class="interv-panel active" id="tab-0">
+          <div class="studio-alert" style="border-left-color: var(--vm-red);">
+            <div class="studio-alert-title" style="color: var(--vm-red);"><i class="fa-solid fa-triangle-exclamation"></i> Chỉ định Đặt CVC &amp; Huyết Áp Động Mạch Xâm Lấn (A-Line)</div>
+            <ul style="margin: 4px 0 0 16px; line-height: 1.6;">
+              <li><strong>Bắt buộc đặt Catheter Tĩnh Mạch Trung Tâm (CVC):</strong> Khi dùng Norepinephrine &ge; 0.1 mcg/kg/min hoặc phối hợp &ge; 2 thuốc vận mạch. Phòng ngừa nguy cơ hoại tử da.</li>
+              <li><strong>Chỉ định Động Mạch Xâm Lấn (A-Line):</strong> Bắt buộc khi dùng vận mạch liều cao để đo liên tục từng nhịp tim và lấy máu ABG/ScvO2 chính xác.</li>
+            </ul>
+          </div>
+
+          <div class="studio-alert" style="border-left-color: var(--vm-amber);">
+            <div class="studio-alert-title" style="color: var(--vm-amber);"><i class="fa-solid fa-kit-medical"></i> Quy Trình Cấp Cứu Khi Thoát Mạch Thuốc Vận Mạch (Extravasation Rescue)</div>
+            <ol style="margin: 4px 0 0 16px; line-height: 1.6;">
+              <li><strong>Dừng ngay bơm tiêm điện:</strong> Giữ nguyên kim tiêm để hút ngược 3–5 mL máu kèm thuốc thoát.</li>
+              <li><strong>Tiêm giải độc Phentolamine:</strong> Tiêm quanh vùng thoát mạch 5–10 mg Phentolamine pha trong 10 mL NaCl 0.9% bằng kim 25G.</li>
+              <li><strong>Thay thế (Nitroglycerin paste):</strong> Bôi mỏng 1–2 cm Nitroglycerin 2% ointment tại vùng thiếu máu da nếu không có Phentolamine.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- TAB 2: RSI HEMODYNAMIC SAFETY -->
+        <div class="interv-panel" id="tab-1">
+          <div class="studio-alert" style="border-left-color: var(--vm-blue);">
+            <div class="studio-alert-title" style="color: var(--vm-blue);"><i class="fa-solid fa-mask-ventilator"></i> Chiến Lược "Pre-Load &amp; Push Vasoactive" Dự Phòng Tụt HA Khi Đặt NKQ</div>
+            <p style="margin: 4px 0 6px;">Dự phòng thảm họa tụt HA hoặc ngừng tim ngay sau bơm thuốc khởi mê RSI do mất trương lực giao cảm và tăng áp lực đường thở.</p>
+            <ul style="margin: 0 0 0 16px; line-height: 1.6;">
+              <li><strong>Xả dịch nền &amp; Đẩy liều bolus NE:</strong> Chuẩn bị sẵn xói Bolus Norepinephrine 10–20 mcg (1–2 mL dung dịch pha loãng 10mcg/mL) trước tiêm thuốc mê.</li>
+              <li><strong>Thuốc khởi mê an toàn:</strong> Ưu tiên <strong>Etomidate 0.3 mg/kg</strong> hoặc <strong>Ketamine 1.5 mg/kg</strong>. Tránh tuyệt đối Propofol ở bệnh nhân đang tụt MAP.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TAB 3: PLR TEST & POCUS -->
+        <div class="interv-panel" id="tab-2">
+          <div class="studio-alert" style="border-left-color: var(--vm-teal);">
+            <div class="studio-alert-title" style="color: var(--vm-teal);"><i class="fa-solid fa-person-boating"></i> Giả Lập Test Nâng Chân Thụ Động (PLR Test Simulator)</div>
+            <p style="margin: 4px 0 8px;">Đánh giá đáp ứng bù dịch tĩnh mà không gây nguy cơ quá tải thể tích vĩnh viễn.</p>
+            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap;">
+              <div>
+                <label style="font-size: 11px; font-weight: 600;">PP ban đầu (mmHg)</label>
+                <input type="number" id="plr-pp1" value="30" style="width: 110px; padding: 5px; border: 1.5px solid var(--color-border); border-radius: 6px;">
+              </div>
+              <div>
+                <label style="font-size: 11px; font-weight: 600;">PP sau Nâng chân (mmHg)</label>
+                <input type="number" id="plr-pp2" value="36" style="width: 110px; padding: 5px; border: 1.5px solid var(--color-border); border-radius: 6px;">
+              </div>
+              <button class="btn-calc" onclick="calcPLR()">Tính % Phản Ứng</button>
+            </div>
+            <div id="plr-result-box" style="font-weight: 700; color: var(--vm-teal); margin-top: 8px;"></div>
+          </div>
+        </div>
+
+        <!-- TAB 4: VA-ECMO / IABP TRIGGER -->
+        <div class="interv-panel" id="tab-3">
+          <div class="studio-alert" style="border-left-color: var(--vm-purple);">
+            <div class="studio-alert-title" style="color: var(--vm-purple);"><i class="fa-solid fa-heart-pulse"></i> Tiêu Chí Hội Chẩn Kích Hoạt VA-ECMO &amp; Bóng Đối Xung IABP</div>
+            <ul style="margin: 4px 0 0 16px; line-height: 1.6;">
+              <li><strong>Chỉ số VIS &ge; 30 kéo dài:</strong> Bệnh nhân cần liều vận mạch cực cao mà MAP vẫn &lt; 65 mmHg.</li>
+              <li><strong>Tưới máu mô thất bại:</strong> $ScvO_2 &lt; 50\%$ hoặc Lactate máu tăng liên tục $&gt; 4\,mmol/L$ dù đã dùng Norepinephrine + Dobutamine tối đa.</li>
+              <li><strong>Hội chẩn khẩn cấp team ECMO/Tim mạch:</strong> Đánh giá đặt VA-ECMO hỗ trợ tuần hoàn cơ học cứu sống bệnh nhân.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TAB 5: TOXICOLOGICAL RESCUE -->
+        <div class="interv-panel" id="tab-4">
+          <div class="studio-alert" style="border-left-color: var(--vm-red);">
+            <div class="studio-alert-title" style="color: var(--vm-red);"><i class="fa-solid fa-flask-vial"></i> Liệu Pháp Lipid Tĩnh Mạch (ILE 20%) &amp; HIET Protocol</div>
+            <ul style="margin: 4px 0 0 16px; line-height: 1.6;">
+              <li><strong>Ngộ độc Thuốc tê / Chẹn Beta / Chẹn Canxi:</strong> Tiêm Bolus <strong>Lipid 20% 1.5 mL/kg</strong> trong 1–2 phút, sau đó duy trì truyền 0.25 mL/kg/phút.</li>
+              <li><strong>Liệu pháp High-Dose Insulin (HIET):</strong> Insulin Regular 1 UI/kg bolus IV + Dextrose 20–50%, duy trì 0.5–1 UI/kg/h để hỗ trợ chuyển hóa cơ tim trong sốc chẹn canxi.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- UTILITY ROW (REVERSE PUMP CALCULATOR & HIS ORDER GENERATOR) -->
+      <div class="studio-main-grid" style="margin-bottom: 0;">
+        
+        <!-- REVERSE CALCULATOR -->
+        <div class="card-panel">
+          <div class="card-panel-head">
+            <h3 class="panel-title"><i class="fa-solid fa-calculator" style="color: var(--vm-teal);"></i> Tính Ngược Tốc Độ BTĐ (mL/h &rarr; mcg/kg/min)</h3>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px;">
+            <div class="hemo-field">
+              <label for="rev-rate">Tốc độ BTĐ (mL/h)</label>
+              <input type="number" id="rev-rate" value="7.5" min="0.1" step="0.1" oninput="calcReverse()">
+            </div>
+            <div class="hemo-field">
+              <label for="rev-drug">Thuốc &amp; Nồng độ</label>
+              <select id="rev-drug" onchange="calcReverse()">
+                <option value="80">NE 4mg/50mL (80 mcg/mL)</option>
+                <option value="160">NE 8mg/50mL (160 mcg/mL)</option>
+                <option value="320">NE 16mg/50mL (320 mcg/mL)</option>
+                <option value="5000">Dobu 250mg/50mL (5000 mcg/mL)</option>
+                <option value="4000">Dopa 200mg/50mL (4000 mcg/mL)</option>
+              </select>
+            </div>
+            <div class="hemo-field">
+              <label for="rev-weight">Cân nặng (kg)</label>
+              <input type="number" id="rev-weight" value="65" min="20" step="1" oninput="calcReverse()">
+            </div>
+          </div>
+          <div style="background: var(--vm-teal-h); border: 1px solid var(--vm-teal-b); border-radius: 9px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--vm-teal);">Liều bệnh nhân đang nhận:</div>
+            <div style="font-size: 1.4rem; font-weight: 800; color: var(--vm-teal);" id="rev-result-val">0.15 mcg/kg/phút</div>
+          </div>
+        </div>
+
+        <!-- EMR / HIS ORDER COPY BOX -->
+        <div class="card-panel">
+          <div class="card-panel-head">
+            <h3 class="panel-title"><i class="fa-solid fa-file-signature" style="color: var(--vm-purple);"></i> Xuất Y Lệnh Bệnh Án &amp; HIS 1-Click</h3>
+            <button class="btn-copy" onclick="copyHISOrder()"><i class="fa-solid fa-copy"></i> Copy Y Lệnh</button>
+          </div>
+          <div class="his-order-box" id="his-order-text">
+-- Đang sinh y lệnh --
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+
+  <!-- JS Core & Modules -->
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script src="../../../../js/core/clinical-bridge.js" defer></script>
+  <script type="module" src="./ql-van-mach.ts"></script>
+</body>
+</html>

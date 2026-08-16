@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kho Công Thức Sinh Lý Định Lượng & Máy Tính Tương Tác - CliniPortal Công cụ Lâm sàng">
+  <title>Kho Công Thức Sinh Lý Định Lượng – CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../../css/reset.css">
+  <link rel="stylesheet" href="../../../../css/main.css">
+  <link rel="stylesheet" href="../../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../../css/components/formula-vault.css">
+
+  <script src="../../../../js/main.js" defer></script>
+  <script type="module" src="../../../../components/header.ts" defer></script>
+  <script type="module" src="../../../../components/footer.ts" defer></script>
+  <script type="module" src="./formula-vault.ts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper" id="mainContent">
+      <!-- BREADCRUMB -->
+      <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Công cụ lâm sàng", "url": "../cong-cu.html"}, {"label": "Kho Công thức Sinh lý"}]'></clini-breadcrumb>
+
+      <main class="visual-container" style="padding: 1.5rem;">
+        <div class="chapter-header" style="margin-top: 0;">
+          <h1>📐 Kho Công Thức Sinh Lý Định Lượng & Máy Tính Dynamic</h1>
+          <p>Cơ sở dữ liệu các định luật vật lý, phương trình sinh lý và công thức tính toán lâm sàng chuẩn hóa, hỗ trợ máy tính tính toán kết quả tức thì và hiển thị công thức TeX mượt mà.</p>
+        </div>
+
+        <!-- Filter & Search Controls Bar -->
+        <div class="vault-control-bar">
+          <div class="vault-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="formula-search" class="vault-search-input" placeholder="Tìm kiếm công thức (Nernst, GHK, Fick, Starling, GFR...)..." aria-label="Tìm kiếm công thức sinh lý">
+          </div>
+          <div class="vault-filter-chips">
+            <button class="filter-chip active" data-category="all">Tất cả</button>
+            <button class="filter-chip" data-category="Điện sinh lý">Điện sinh lý</button>
+            <button class="filter-chip" data-category="Hô hấp">Hô hấp</button>
+            <button class="filter-chip" data-category="Tim mạch">Tim mạch</button>
+            <button class="filter-chip" data-category="Toan kiềm">Toan kiềm</button>
+            <button class="filter-chip" data-category="Thận">Thận</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Container for Formula Cards -->
+        <div id="formula-container" class="formula-vault-grid">
+          <div style="text-align: center; padding: 2rem; color: var(--color-text-muted); grid-column: 1 / -1;">
+            <i class="fas fa-spinner fa-spin fa-2x"></i>
+            <p style="margin-top: 1rem;">Đang tải dữ liệu công thức từ <code>data/formula-vault.json</code>...</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../../components/footer.html"></div>
+</body>
+</html>

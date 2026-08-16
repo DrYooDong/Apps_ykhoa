@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Bộ Quy Đổi Liều Thuốc Tương Đương Lâm Sàng — Quy đổi liều Corticoid, Opioid (OME), Statin, PPI, DOACs, Benzodiazepines chính xác, chuẩn hóa y học chứng cứ.">
+  <title>Bộ Quy Đổi Liều Thuốc Tương Đương Lâm Sàng — CliniPortal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../css/reset.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="../../../css/components/header.css">
+  <link rel="stylesheet" href="../../../css/components/sidebar.css">
+  <link rel="stylesheet" href="../../../css/components/footer.css">
+  <link rel="stylesheet" href="../../../css/components/pharmacology-tools.css">
+
+  <style>
+    /* Hero Tool Styling */
+    .hero-tool {
+      background: linear-gradient(135deg, #0f172a 0%, #0284c7 60%, #3b82f6 100%);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(2, 132, 199, 0.2);
+    }
+
+    .hero-tool::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    .hero-tool h1 {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .hero-tool p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin: 0;
+      line-height: 1.5;
+      max-width: 900px;
+      color: #f1f5f9;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder" data-header-path="../../../components/header.html"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-container">
+    <main class="main-wrapper" id="mainContent">
+
+      <clini-breadcrumb items='[{"label": "Trang chủ", "url": "../../../index.html"}, {"label": "Công cụ lâm sàng", "url": "../cong-cu.html"}, {"label": "Bộ Quy Đổi Liều Thuốc Tương Đương"}]'></clini-breadcrumb>
+
+      <div class="hero-tool">
+        <div class="hero-badge"><i class="fa-solid fa-calculator"></i> Dược Lý Lâm Sàng · Equianalgesic & Dose Converter</div>
+        <h1>Bộ Quy Đổi Liều Thuốc Tương Đương Lâm Sàng</h1>
+        <p>Quy đổi liều dùng chuẩn hóa giữa các thuốc trong cùng phân nhóm dược lý (Corticosteroids, Opioids OME, Statins, PPIs, DOACs, Benzodiazepines) hỗ trợ chuyển đổi điều trị an toàn.</p>
+      </div>
+
+      <div class="pharma-tool-card" style="padding: 1.75rem;">
+        
+        <div class="converter-tabs" style="gap: 0.75rem; overflow-x: auto; padding-bottom: 0.75rem;">
+          <button class="converter-tab-btn active" data-cat="corticoid"><i class="fa-solid fa-capsules"></i> 1. Corticosteroids</button>
+          <button class="converter-tab-btn" data-cat="opioid"><i class="fa-solid fa-syringe"></i> 2. Opioids (OME)</button>
+          <button class="converter-tab-btn" data-cat="statin"><i class="fa-solid fa-heart-pulse"></i> 3. Statins (Hạ Lipid)</button>
+          <button class="converter-tab-btn" data-cat="ppi"><i class="fa-solid fa-vial"></i> 4. PPIs (Dạ dày)</button>
+          <button class="converter-tab-btn" data-cat="doac"><i class="fa-solid fa-droplet"></i> 5. DOACs (Chống đông)</button>
+          <button class="converter-tab-btn" data-cat="benzo"><i class="fa-solid fa-brain"></i> 6. Benzodiazepines</button>
+        </div>
+
+        <div id="cat-banner" style="background: var(--color-primary-hl); border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h4 id="cat-title" style="margin: 0; color: var(--color-primary); font-size: 1rem; font-weight: 700;">1. Corticosteroids (Thuốc Kháng Viêm Steroid)</h4>
+            <p id="cat-desc" style="margin: 0.2rem 0 0 0; font-size: 0.8rem; color: var(--color-text-muted);">Quy đổi liều tương đương kháng viêm & giữ muối giữa các Glucocorticoid dạng uống/tiêm truyền.</p>
+          </div>
+          <span id="cat-badge" class="pharma-tool-badge">Equianalgesic</span>
+        </div>
+
+        <div class="calibrator-inputs" style="margin-bottom: 1.5rem;">
+          <div class="input-field-group">
+            <label for="input-dose-val"><i class="fa-solid fa-pen"></i> Liều nhập vào:</label>
+            <input type="number" id="input-dose-val" value="40" min="0.01" step="any" placeholder="Nhập liều...">
+          </div>
+
+          <div class="input-field-group">
+            <label for="input-dose-unit"><i class="fa-solid fa-weight-scale"></i> Đơn vị:</label>
+            <select id="input-dose-unit" disabled>
+              <option value="mg" selected>mg</option>
+              <option value="mcg_h">mcg/giờ</option>
+            </select>
+          </div>
+
+          <div class="input-field-group">
+            <label for="input-base-drug"><i class="fa-solid fa-pills"></i> Thuốc gốc đang dùng:</label>
+            <select id="input-base-drug">
+            </select>
+          </div>
+        </div>
+
+        <div class="conversion-table-wrapper" id="converter-results-container">
+        </div>
+
+        <div id="clinical-pearl-box" class="interaction-alert moderate" style="margin-top: 1.25rem; margin-bottom: 0;">
+          <div class="interaction-alert-header">
+            <span class="interaction-drugs-title"><i class="fa-solid fa-triangle-exclamation"></i> Nguyên Tắc Chuyển Đổi Lâm Sàng Quan Trọng</span>
+          </div>
+          <p id="clinical-pearl-text" class="interaction-desc">
+            Khi chuyển đổi giữa các thuốc, cần lưu ý đặc tính dược động học (t1/2, khả năng gắn protein huyết tương) và nguy cơ dung nạp chéo không hoàn toàn (Incomplete Cross-Tolerance).
+          </p>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <div id="footer-placeholder" data-footer-path="../../../components/footer.html"></div>
+
+  <script src="../../../js/main.js" defer></script>
+  <script type="module" src="../../../components/header.ts" defer></script>
+  <script type="module" src="../../../components/footer.ts" defer></script>
+  <script type="module" src="./quy-doi-lieu-tuong-duong.ts"></script>
+</body>
+</html>
