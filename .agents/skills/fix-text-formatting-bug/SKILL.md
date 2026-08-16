@@ -52,4 +52,5 @@ Tài liệu này định nghĩa quy trình chẩn đoán, nguyên nhân cốt l�
 
 1. Quét cú pháp JS: `node -c path/to/file.js`
 2. Quét thẻ HTML: `node scratch/check_tags.js path/to/file.html`
-3. Chạy master audit: `node scratch/master_project_audit.js`
+3. Quét lỗi định dạng $ & #: `node scratch/check_format_bugs.js path/to/file.html`
+4. Chạy master audit: `node scratch/master_project_audit.js`

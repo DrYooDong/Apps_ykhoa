@@ -46,12 +46,15 @@ src/content/pathophysiology/biochemistry/
    - **Tuyệt đối không** nhân bản 2 khối mục lục (không dùng song song thẻ `.toc-card` trùng lặp).
 4. **Chuẩn đồ họa SVG thuần (Pure Inline SVG)**:
    - Sơ đồ chuyển hóa, màng tế bào, cắt ngang lipoprotein dùng Pure Inline SVG với `viewBox` co giãn linh hoạt và sử dụng token `var(--color-...)` để tự động đổi màu khi sang Dark Mode.
-5. **Kiểm tra HTML Integrity**:
+5. **Kiểm tra HTML Integrity & Định Dạng Ký Tự ($ / #)**:
    - Sau khi tạo hoặc chỉnh sửa tệp HTML, bắt buộc chạy:
      ```bash
      node scratch/check_tags.js src/content/pathophysiology/biochemistry/blockX/.../ten-bai.html
+     node scratch/check_format_bugs.js src/content/pathophysiology/biochemistry/blockX/.../ten-bai.html
      npm run build
      ```
+   - **Tuyệt đối không để sót ký tự `$` (LaTeX thô)**: Mọi công thức/ký hiệu toán học phải chuyển sang HTML entities, Unicode (`α, β, Δ, →, ₂, ⁺, ⁻`) hoặc thẻ semantic (`<sup>`, `<sub>`, `<em>`, `<code>`).
+   - **Tuyệt đối không để sót ký tự `#` (Markdown thô)**: Mọi tiêu đề Markdown (`#`, `##`, `#tag`) phải chuyển đổi hoàn toàn sang các thẻ HTML (`<h1>`, `<h2>`, `<h3>`, `.badge`).
 
 ---
 
@@ -367,4 +370,5 @@ src/content/pathophysiology/biochemistry/
 - [ ] Mọi `.article-section` có `id="sec-X"` và `scroll-margin-top: 80px`.
 - [ ] Bảng biểu xét nghiệm `.lab-table` và các hộp callout có đủ 4 màu ngữ nghĩa.
 - [ ] Chạy `node scratch/check_tags.js <file.html>` đạt **PASSED**.
+- [ ] Chạy `node scratch/check_format_bugs.js <file.html>` đạt **0 lỗi $ và 0 lỗi #**.
 - [ ] Chạy `npm run build` không phát sinh lỗi TypeScript.

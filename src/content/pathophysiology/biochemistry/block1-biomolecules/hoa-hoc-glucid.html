@@ -4,29 +4,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHEM-02: Hóa học Glucid (Carbohydrates) – Hóa Sinh Y Học – CliniPortal</title>
+    <title>CHEM-02: Hóa học Glucid (Carbohydrates) – Cấu Trúc, Đồng Phân & Phức Hợp Đường Sinh Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../../../css/reset.css">
     <link rel="stylesheet" href="../../../../css/main.css">
     <link rel="stylesheet" href="../../../../css/components/physio-content.css">
     <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script type="module" src="../../physio-shared.ts"></script>
+
     <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #0369a1 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0c4a6e 50%, #0284c7 100%);
+        }
+
         .biochem-article-header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0284c7 100%);
-            color: #fff;
-            padding: 2.25rem 2rem;
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
             border-radius: 16px;
             margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
         .biochem-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.825rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* HEADINGS TYPOGRAPHY */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .h4-title,
+        .article-section h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--color-text, #1e293b);
+            margin: 1.25rem 0 0.5rem 0;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        [data-theme="dark"] .h4-title,
+        [data-theme="dark"] .article-section h4 {
+            color: #f1f5f9;
+        }
+
+        /* Callout Boxes */
         .reaction-box {
             background: rgba(139, 92, 246, 0.08);
             border-left: 4px solid #8b5cf6;
@@ -34,6 +254,7 @@
             border-radius: 0 12px 12px 0;
             margin: 1.5rem 0;
         }
+
         .pearl-box {
             background: rgba(245, 158, 11, 0.08);
             border-left: 4px solid #f59e0b;
@@ -41,100 +262,978 @@
             border-radius: 0 12px 12px 0;
             margin: 1.5rem 0;
         }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
         .lab-table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
+            font-size: 0.92rem;
         }
-        .lab-table th, .lab-table td {
+
+        .lab-table th,
+        .lab-table td {
             border: 1px solid var(--color-border, #e2e8f0);
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1rem;
             text-align: left;
+            vertical-align: top;
         }
+
         .lab-table th {
             background: var(--color-bg, #f8fafc);
             font-weight: 700;
+            color: var(--color-text, #0f172a);
         }
+
+        .lab-table tbody tr:nth-child(even) {
+            background: var(--color-bg, #f8fafc);
+        }
+
+        [data-theme="dark"] .lab-table th {
+            background: var(--color-surface-2, #1e293b);
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .lab-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="dark"] .feature-card {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        .chem-diagram-container {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+
+        [data-theme="dark"] .chem-diagram-container {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+        }
+
+        .chem-diagram-caption {
+            font-size: 0.875rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .code-pill {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(2, 132, 199, 0.1);
+            color: var(--color-primary, #0284c7);
+            padding: 0.15rem 0.45rem;
+            border-radius: 6px;
+            font-size: 0.88em;
+        }
+
+        [data-theme="dark"] .code-pill {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        .chem-table-subtext {
+            font-size: 0.82rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.35rem;
+            line-height: 1.4;
+        }
+
+        .concept-chip {
+            display: inline-block;
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-right: 0.35rem;
+            margin-bottom: 0.35rem;
+        }
+        .chip-blue { background: rgba(2, 132, 199, 0.12); color: #0284c7; }
+        .chip-green { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+        .chip-amber { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+        .chip-purple { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; }
+        .chip-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+
+        [data-theme="dark"] .chip-blue { color: #38bdf8; }
+        [data-theme="dark"] .chip-green { color: #34d399; }
+        [data-theme="dark"] .chip-amber { color: #fbbf24; }
+        [data-theme="dark"] .chip-purple { color: #a78bfa; }
+        [data-theme="dark"] .chip-red { color: #f87171; }
     </style>
 </head>
 
 <body class="physio-article-body">
     <div class="physio-article-container">
-        
-        <!-- ARTICLE HEADER -->
+
+        <!-- HEADER -->
         <header class="biochem-article-header">
-            <span class="biochem-badge">CHEM-02 • Khối 1: Cấu Trúc Phân Tử Sinh Học</span>
-            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 1.85rem; font-weight: 800; color: #fff;">Hóa học Glucid (Carbohydrates)</h1>
-            <p style="margin: 0; font-size: 1rem; opacity: 0.92; line-height: 1.6;">Cấu tạo, đồng phân D/L, anomer α/β, dạng vòng Pyranose/Furanose của Monosacarid; Cấu trúc Disacarid và Polysacarid (Glycogen, Tinh bột, GAGs).</p>
+            <span class="biochem-badge"><i class="fa-solid fa-dna"></i> CHEM-02 • Khối 1: Cấu Trúc Đại Phân Tử Sinh Học</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 800; color: #ffffff; line-height: 1.25;">
+                Hóa Học Glucid (Carbohydrates) &amp; Phức Hợp Đường Sinh Học
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 920px;">
+                Tổng hợp toàn diện cấu trúc lập thể (Enantiomer D/L, Epimer, Anomer α/β, Cấu dạng ghế Chair Form), dẫn xuất hoạt tính cao, động học tạo liên kết Glycosid, siêu cấu trúc Polysaccharid thuần/tạp (Glycogen, Cellulose, GAGs, Peptidoglycan màng vi khuẩn) và vai trò phân tử trong nhận diện miễn dịch ABO.
+            </p>
         </header>
 
-        <!-- SECTION 1: TỔNG QUAN CƠ CHẾ -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> 1. Mục Tiêu & Cơ Chế Phân Tử</h2>
-            <p class="section-text">Cấu tạo, đồng phân D/L, anomer α/β, dạng vòng Pyranose/Furanose của Monosacarid; Cấu trúc Disacarid và Polysacarid (Glycogen, Tinh bột, GAGs).</p>
-        </section>
-
-        <!-- SECTION 2: PHẢN ỨNG & ĐIỂM CHỐT ENZYM -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-flask"></i> 2. Phản Ứng & Điểm Chốt Cơ Chế</h2>
-            <div class="reaction-box">
-                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                    <li><code>Phản ứng khử ion Cu2+ (Thuốc thử Fehling/Benedict) tạo kết tủa đỏ gạch Cu2O.</code></li>
-<li><code>Liên kết O-glycosid giữa các phân tử đường.</code></li>
-                </ul>
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-layer-group"></i> 1. Đại Cương &amp; Phân Loại</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-circle-nodes"></i> 2. Hóa Học Monosaccharid</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-flask-vial"></i> 3. Dẫn Xuất Hoạt Tính Cao</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-link"></i> 4. Hóa Học Disaccharid</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-cubes-stacked"></i> 5. Polysaccharid Thuần</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-shield-virus"></i> 6. Polysaccharid Tạp &amp; Màng</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-stethoscope"></i> 7. Bệnh Học Phân Tử</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vials"></i> 8. Bilan Xét Nghiệm</a>
             </div>
-        </section>
+        </nav>
 
-        <!-- SECTION 3: ĐIỂM NGỌC LÂM SÀNG -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> 3. Điểm Ngọc Lâm Sàng (Clinical Pearls)</h2>
-            <div class="pearl-box">
-                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;">
-                    <li><strong>Đường đơn chứa nhóm carbonyl tự do có tính khử, là cơ sở của que thử đường niệu cổ điển.</strong></li>
-<li><strong>Kháng nguyên nhóm máu hệ ABO trên bề mặt hồng cầu bản chất là các chuỗi oligosacarid gắn trên sphingolipid và protein.</strong></li>
-                </ul>
+        <!-- ========================================== -->
+        <!-- SECTION 1: ĐẠI CƯƠNG & PHÂN LOẠI GLUCID -->
+        <!-- ========================================== -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> 1. Đại Cương Về Glucid (Carbohydrates)</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-atom"></i> 1.1. Định Nghĩa &amp; Danh Pháp Hóa Học</h3>
+            <p>
+                <strong>Glucid</strong> (carbohydrate, saccharid hay đơn giản là đường) là những hợp chất hữu cơ phong phú nhất trên sinh quyển, cấu tạo chủ yếu từ ba nguyên tố <strong>Carbon (C), Hydro (H) và Oxy (O)</strong>. Về mặt hóa học hữu cơ hiện đại:
+            </p>
+            <div class="info-box">
+                <strong><i class="fa-solid fa-quote-left"></i> Định nghĩa Chuẩn EBM:</strong>
+                Glucid được định nghĩa là các <strong>dẫn xuất polyhydroxy aldehyde</strong> (aldose) hoặc <strong>polyhydroxy ketone</strong> (ketose) của các alcohol đa chức (polyhydric alcohols), hoặc là những chất phức tạp khi bị thủy phân hoàn toàn hay không hoàn toàn cho ra các dẫn xuất này.
             </div>
+            <p>
+                Đa số các monosaccharid đơn giản có công thức thực nghiệm chung là <strong>(CH<sub>2</sub>O)<sub>n</sub></strong> (với n &ge; 3). Danh pháp quốc tế của các carbohydrate thường mang tiếp vĩ ngữ <strong>-ose</strong> (như glucose, fructose, galactose, ribose).
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-sitemap"></i> 1.2. Hệ Thống Phân Loại 4 Nhóm Glucid</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <span class="concept-chip chip-blue">Nhóm 1</span>
+                    <h4 style="margin: 0.5rem 0; color: var(--color-primary, #0284c7); font-weight: 700;">Monosaccharid (Đường Đơn)</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.5; color: var(--color-text-muted, #64748b); margin: 0;">
+                        Là các đơn vị carbohydrate đơn giản nhất, không thể bị thủy phân thành phân tử đường nhỏ hơn. Gồm từ 3 đến 7 carbon: Triose (Glyceraldehyde), Pentose (Ribose), Hexose (Glucose, Fructose, Galactose).
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-green">Nhóm 2</span>
+                    <h4 style="margin: 0.5rem 0; color: #10b981; font-weight: 700;">Disaccharid (Đường Đôi)</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.5; color: var(--color-text-muted, #64748b); margin: 0;">
+                        Sản phẩm ngưng tụ của <strong>2 phân tử monosaccharid</strong> liên kết với nhau bằng cầu nối O-glycosid và loại đi 1 phân tử nước. Đại diện: Maltose (đường mạch nha), Lactose (đường sữa), Sucrose (đường mía).
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-amber">Nhóm 3</span>
+                    <h4 style="margin: 0.5rem 0; color: #d97706; font-weight: 700;">Oligosaccharid</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.5; color: var(--color-text-muted, #64748b); margin: 0;">
+                        Chuỗi ngắn chứa từ <strong>3 đến 10 đơn vị monosaccharid</strong>. Thường không bị tiêu hóa bởi enzym người, đóng vai trò tạo phức Glycoconjugat (Glycoprotein, Glycolipid) định vị trên màng tế bào nhận diện miễn dịch.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-purple">Nhóm 4</span>
+                    <h4 style="margin: 0.5rem 0; color: #8b5cf6; font-weight: 700;">Polysaccharid (Đa Đường)</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.5; color: var(--color-text-muted, #64748b); margin: 0;">
+                        Polymer đại phân tử chứa <strong>hơn 10 đến hàng vạn đơn vị monosaccharid</strong>. Chia làm: <em>Homoglycan</em> (tinh bột, glycogen, cellulose) và <em>Heteroglycan</em> (GAGs, Peptidoglycan, chất nền ngoại bào).
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-heart-pulse"></i> 1.3. Năm Vai Trò Sinh Học Trọng Yếu Của Glucid</h3>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Cung cấp năng lượng chủ lực:</strong> Glucid cung cấp khoảng <strong>60% tổng nhu cầu năng lượng</strong> hàng ngày của cơ thể người. Thoái hóa 1g glucid giải phóng 4.1 kcal (17 kJ), là nguồn nhiên liệu bắt buộc cho tế bào thần kinh não bộ và hồng cầu.</li>
+                <li><strong>Cấu trúc mô &amp; Màng tế bào:</strong> Tham gia cấu tạo màng sinh học dưới dạng Glycolipid, Glycoprotein; chất nền ngoại bào dưới dạng Proteoglycan và Glycosaminoglycan (sụn khớp, giác mạc, thành mạch).</li>
+                <li><strong>Vật liệu di truyền hạt nhân:</strong> Các pentose gồm <strong>D-ribose</strong> và <strong>2-deoxy-D-ribose</strong> là thành phần cốt lõi xây dựng nên bộ khung phosphat-đường của RNA và DNA.</li>
+                <li><strong>Dạng hoạt hóa trung gian chuyển hóa:</strong> Các este phosphat như G-6P, F-1,6-BP, UDP-glucose là những dạng hoạt hóa bắt buộc của mọi chu trình chuyển hóa đường nội bào.</li>
+                <li><strong>Khử độc sinh học tại gan:</strong> <strong>Acid D-glucuronic</strong> tham gia phản ứng liên hợp xúc tác bởi UDP-glucuronosyltransferase để biến bilirubin gián tiếp, thuốc và độc chất kỵ nước thành dạng tan đào thải qua mật/nước tiểu.</li>
+            </ul>
         </section>
 
-        <!-- SECTION 4: THĂM DÒ & XÉT NGHIỆM LIÊN QUAN -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-vial" style="color: #10b981;"></i> 4. Chỉ Số Xét Nghiệm & Biện Luận Cận Lâm Sàng</h2>
+        <!-- ========================================== -->
+        <!-- SECTION 2: HÓA HỌC MONOSACCHARID -->
+        <!-- ========================================== -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-circle-nodes"></i> 2. Hóa Học Monosaccharid (Đường Đơn)</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-table-cells"></i> 2.1. Phân Loại Aldose &amp; Ketose</h3>
+            <p>
+                Monosaccharid được phân loại đồng thời dựa trên <strong>nhóm chức carbonyl</strong> (Aldose mang chức aldehyde <span class="code-pill">-CH=O</span> ở C1; Ketose mang chức ketone <span class="code-pill">&gt;C=O</span> ở C2) và <strong>số lượng nguyên tử Carbon</strong> trong bộ khung phân tử:
+            </p>
+
             <table class="lab-table">
                 <thead>
                     <tr>
-                        <th style="width: 80px;">STT</th>
-                        <th>Chỉ số xét nghiệm</th>
-                        <th>Ý nghĩa & Ứng dụng lâm sàng</th>
+                        <th style="width: 15%;">Số Carbon</th>
+                        <th style="width: 20%;">Tên Phân Nhóm</th>
+                        <th style="width: 32%;">Aldose (-CHO ở C1)</th>
+                        <th style="width: 33%;">Ketose (&gt;C=O ở C2)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                        <tr>
-                            <td><strong>1</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Glucose máu đói</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
-                        <tr>
-                            <td><strong>2</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Đường niệu</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
-                        <tr>
-                            <td><strong>3</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">HbA1c</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
+                    <tr>
+                        <td><strong>3C</strong></td>
+                        <td>Triose</td>
+                        <td><strong>Glyceraldehyde</strong> (Chất chuẩn đồng phân D/L)</td>
+                        <td><strong>Dihydroxyacetone</strong> (Không có C bất đối xứng)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4C</strong></td>
+                        <td>Tetrose</td>
+                        <td><strong>D-Erythrose</strong>, D-Threose</td>
+                        <td><strong>D-Erythrulose</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>5C</strong></td>
+                        <td>Pentose</td>
+                        <td><strong>D-Ribose</strong> (RNA), <strong>D-Deoxyribose</strong> (DNA), D-Xylose</td>
+                        <td><strong>D-Ribulose</strong>, <strong>D-Xylulose</strong> (Chu trình HMP)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6C</strong></td>
+                        <td>Hexose</td>
+                        <td><strong>D-Glucose</strong> (Đường huyết), <strong>D-Galactose</strong>, <strong>D-Mannose</strong></td>
+                        <td><strong>D-Fructose</strong> (Đường quả / Tinh dịch)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7C</strong></td>
+                        <td>Heptose</td>
+                        <td>-</td>
+                        <td><strong>D-Sedoheptulose</strong> (Trung gian HMP shunt)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-arrows-split-up-and-left"></i> 2.2. Hệ Thống Đồng Phân Phong Phú Của Monosaccharid</h3>
+            <p>
+                Sự hiện diện của các nguyên tử carbon bất đối xứng (chiral carbon - ký hiệu <span class="code-pill">C*</span>, gắn 4 nhóm thế khác nhau) tạo cho monosaccharid khả năng tạo thành số lượng đồng phân lập thể tối đa là <strong>2<sup>n</sup></strong> (với n là số lượng C*).
+            </p>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4 style="color: var(--color-primary, #0284c7); margin: 0 0 0.5rem 0;"><i class="fa-solid fa-compass"></i> a. Đồng Phân Enantiomer (Họ D và L)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Dựa trên cấu hình tương đối với <strong>D-glyceraldehyde</strong> tại vị trí C* xa nhóm carbonyl nhất (C5 ở aldohexose).
+                        <br>&bull; <strong>Họ D:</strong> Nhóm -OH ở C* này nằm bên <strong>PHẢI</strong> trên công thức Fischer.
+                        <br>&bull; <strong>Họ L:</strong> Nhóm -OH nằm bên <strong>TRÁI</strong>.
+                        <br><em>Lưu ý:</em> Đa số monosaccharid trong cơ thể sống và được enzym người nhận diện đều thuộc <strong>họ D</strong>.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color: #10b981; margin: 0 0 0.5rem 0;"><i class="fa-solid fa-rotate"></i> b. Đồng Phân Quang Học (Hữu tuyền &amp; Tả tuyền)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Khả năng làm quay mặt phẳng ánh sáng phân cực sang phải (<strong>dextrorotatory, ký hiệu (+) hoặc d</strong>) hay sang trái (<strong>levorotatory, ký hiệu (-) hoặc l</strong>).
+                        <br>&bull; D-Glucose trong nước có tính hữu tuyền &rarr; tên lâm sàng là <strong>Dextrose</strong> (D(+)-glucose).
+                        <br>&bull; D-Fructose có tính tả tuyền mạnh &rarr; tên gọi <strong>Levulose</strong> (D(-)-fructose).
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color: #8b5cf6; margin: 0 0 0.5rem 0;"><i class="fa-solid fa-code-compare"></i> c. Đồng Phân Epimer</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Epimer là hai monosaccharid chỉ khác biệt nhau về cấu hình không gian tại <strong>duy nhất MỘT nguyên tử carbon bất đối</strong>:
+                        <br>&bull; <strong>D-Mannose:</strong> Là <strong>C2-epimer</strong> của D-glucose.
+                        <br>&bull; <strong>D-Galactose:</strong> Là <strong>C4-epimer</strong> của D-glucose.
+                        <br><em>(Mannose và Galactose khác nhau ở cả C2 và C4 nên không phải là epimer của nhau).</em>
+                    </p>
+                </div>
+            </div>
+
+            <!-- INLINE SVG: FISCHER PROJECTION EPIMERS -->
+            <div class="chem-diagram-container">
+                <svg viewBox="0 0 780 230" style="width: 100%; max-width: 760px; height: auto;" aria-label="Sơ đồ đối chiếu Epimer của D-Glucose">
+                    <!-- Box Mannose -->
+                    <rect x="20" y="15" width="220" height="195" rx="10" fill="rgba(139, 92, 246, 0.05)" stroke="#8b5cf6" stroke-width="1.5" />
+                    <text x="130" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="#8b5cf6">D-Mannose (C2-Epimer)</text>
+                    <text x="130" y="65" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">CHO (C1)</text>
+                    <rect x="50" y="74" width="160" height="20" rx="4" fill="rgba(239, 68, 68, 0.15)" />
+                    <text x="130" y="88" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="12" fill="#ef4444">HO — C2* — H (Khác biệt)</text>
+                    <text x="130" y="110" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">HO — C3* — H</text>
+                    <text x="130" y="132" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">H — C4* — OH</text>
+                    <text x="130" y="154" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">H — C5* — OH</text>
+                    <text x="130" y="176" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">CH₂OH (C6)</text>
+
+                    <!-- Box Glucose (Standard) -->
+                    <rect x="280" y="10" width="220" height="205" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2.5" />
+                    <text x="390" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14" fill="#0284c7">D-Glucose (Chuẩn)</text>
+                    <text x="390" y="65" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">CHO (C1)</text>
+                    <text x="390" y="88" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">H — C2* — OH</text>
+                    <text x="390" y="110" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">HO — C3* — H</text>
+                    <text x="390" y="132" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">H — C4* — OH</text>
+                    <text x="390" y="154" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">H — C5* — OH</text>
+                    <text x="390" y="176" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">CH₂OH (C6)</text>
+
+                    <!-- Box Galactose -->
+                    <rect x="540" y="15" width="220" height="195" rx="10" fill="rgba(16, 185, 129, 0.05)" stroke="#10b981" stroke-width="1.5" />
+                    <text x="650" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="#10b981">D-Galactose (C4-Epimer)</text>
+                    <text x="650" y="65" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">CHO (C1)</text>
+                    <text x="650" y="88" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">H — C2* — OH</text>
+                    <text x="650" y="110" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">HO — C3* — H</text>
+                    <rect x="570" y="120" width="160" height="20" rx="4" fill="rgba(239, 68, 68, 0.15)" />
+                    <text x="650" y="134" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="12" fill="#ef4444">HO — C4* — H (Khác biệt)</text>
+                    <text x="650" y="154" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">H — C5* — OH</text>
+                    <text x="650" y="176" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--color-text, #334155)">CH₂OH (C6)</text>
+                </svg>
+                <div class="chem-diagram-caption">Hình 2.1: Công thức chiếu Fischer so sánh cấu hình của D-Glucose với hai epimer sinh học chính là D-Mannose (C2) và D-Galactose (C4).</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-notch"></i> 2.3. Sự Đóng Vòng &amp; Cặp Đồng Phân Anomer (α và β)</h3>
+            <p>
+                Trong môi trường nước, nhóm aldehyde (-CHO ở C1) hoặc ketone (&gt;C=O ở C2) sẽ phản ứng cộng nucleophil nội phân tử với nhóm alcohol -OH ở C5 để hình thành <strong>vòng bán acetal (hemiacetal)</strong> hoặc <strong>vòng bán cetal (hemiketal)</strong>.
+            </p>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Carbon Anomer:</strong> Quá trình đóng vòng biến nguyên tử Carbon carbonyl phẳng ban đầu (không bất đối) thành một trung tâm bất đối xứng mới gọi là <strong>Carbon Anomer</strong> (C1 ở aldohexose, C2 ở ketohexose).</li>
+                <li><strong>Đồng phân α-anomer:</strong> Nhóm -OH bán acetal ở C1 nằm ở phía <strong>DƯỚI</strong> mặt phẳng vòng Haworth (khác phía so với nhóm -CH<sub>2</sub>OH ở C6).</li>
+                <li><strong>Đồng phân β-anomer:</strong> Nhóm -OH bán acetal ở C1 nằm ở phía <strong>TRÊN</strong> mặt phẳng vòng Haworth (cùng phía so với nhóm -CH<sub>2</sub>OH ở C6).</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-arrows-spin"></i> 2.4. Hiện Tượng Chuyển Quay Quang Học (Mutarotation)</h3>
+            <p>
+                Khi hòa tan tinh thể α-D-glucose nguyên chất (+112.2&deg;) hoặc β-D-glucose nguyên chất (+18.7&deg;) vào nước, góc quay cực sẽ tự động biến đổi dần theo thời gian cho tới khi đạt giá trị cân bằng cố định <strong>+52.7&deg;</strong>. Hiện tượng này gọi là <strong>chuyển quay quang học (mutarotation)</strong> do sự đóng - mở vòng thuận nghịch giữa hai dạng anomer qua dạng trung gian mạch thẳng:
+            </p>
+
+            <div class="reaction-box" style="text-align: center;">
+                <div style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary, #0284c7); margin-bottom: 0.5rem;">
+                    Trạng Thái Cân Bằng Động Của D-Glucose Trong Dung Dịch Nước (25&deg;C)
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;">
+                    <span style="background: rgba(2, 132, 199, 0.1); padding: 0.4rem 0.8rem; border-radius: 8px;"><strong>α-D-Glucopyranose</strong><br>(~36%) [Góc quay +112.2&deg;]</span>
+                    <span style="font-size: 1.3rem; color: #8b5cf6;">&harr;</span>
+                    <span style="background: rgba(245, 158, 11, 0.1); padding: 0.4rem 0.8rem; border-radius: 8px;"><strong>D-Glucose Mạch Thẳng</strong><br>(&lt; 0.1%)</span>
+                    <span style="font-size: 1.3rem; color: #8b5cf6;">&harr;</span>
+                    <span style="background: rgba(16, 185, 129, 0.1); padding: 0.4rem 0.8rem; border-radius: 8px;"><strong>β-D-Glucopyranose</strong><br>(~64%) [Góc quay +18.7&deg;]</span>
+                </div>
+                <div style="margin-top: 0.75rem; font-size: 0.88rem; color: var(--color-text-muted, #64748b);">
+                    &rArr; Góc quay cân bằng chung đạt <strong>+52.7&deg;</strong>. Dạng β-anomer chiếm ưu thế vượt trội (64%) do có năng lượng tự do thấp nhất và độ bền nhiệt động học cao nhất.
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-chair"></i> 2.5. Cấu Dạng Ghế (Chair Conformation) Ưu Việt Của β-D-Glucopyranose</h3>
+            <p>
+                Để giải phóng sức căng vòng và tương tác đẩy lập thể, vòng pyranose 6 cạnh tồn tại ở cấu dạng gấp nếp <strong>hình chiếc ghế (chair form)</strong>. Các liên kết được chia làm hai loại:
+            </p>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Liên kết trục (Axial - hướng thẳng đứng lên/xuống):</strong> Gây cản trở không gian lớn do tương tác 1,3-diaxial.</li>
+                <li><strong>Liên kết xích đạo (Equatorial - choãi ra xung quanh mặt phẳng rìa vòng):</strong> Rất bền, tối thiểu hóa cản trở lập thể.</li>
+            </ul>
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-lightbulb"></i> Điểm Ngọc Sinh Hóa Phân Tử (Biochem Pearl):</strong>
+                Phân tử <strong>β-D-glucopyranose</strong> là monosaccharid duy nhất trong tự nhiên có <strong>TẤT CẢ các nhóm thế cồng kềnh (-OH tại C1, C2, C3, C4 và -CH<sub>2</sub>OH tại C5) đều nằm ở vị trí xích đạo (equatorial)</strong>. Điều này mang lại cho phân tử glucose độ bền cơ học và ổn định nhiệt động học tối thượng, giải thích lý do vì sao glucose trở thành dạng đường đơn phổ biến và dồi dào nhất trong toàn bộ sinh giới!
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 3: DẪN XUẤT CỦA MONOSACCHARID -->
+        <!-- ========================================== -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-flask-vial"></i> 3. Các Dẫn Xuất Hoạt Tính Sinh Học Cao Của Monosaccharid</h2>
+            <p>
+                Các monosaccharid dễ dàng bị biến đổi hóa học tại nhóm carbonyl hoặc các nhóm hydroxyl để tạo thành những dẫn xuất phân tử đóng vai trò chuyển hóa thiết yếu:
+            </p>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4 style="color: var(--color-primary, #0284c7); margin: 0 0 0.5rem 0;">1. Este Phosphat (Sugar Phosphates)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Gắn gốc phosphat vào C6 hoặc C1 (G-6P, F-1,6-BP). Gốc phosphat mang điện tích âm lớn đóng vai trò <strong>"bẫy" giữ chặt phân tử đường bên trong tế bào</strong> (không qua được màng lipid kép) và hoạt hóa phân tử cho các enzym đường phân.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color: #10b981; margin: 0 0 0.5rem 0;">2. Deoxy Sugar (Đường Khử Oxy)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Mất một nhóm -OH thay bằng -H. Đại diện tối quan trọng: <strong>β-D-2-deoxyribose</strong> (mất oxy tại C2, cấu tạo DNA) và <strong>L-fucose</strong> (6-deoxy-L-galactose, thành phần kháng nguyên nhóm máu ABO màng hồng cầu).
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color: #8b5cf6; margin: 0 0 0.5rem 0;">3. Amino Sugar (Đường Amin / Osamin)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Nhóm -OH tại C2 được thay thế bằng nhóm amin (-NH<sub>2</sub>) và thường bị acetyl hóa: <strong>N-acetyl-D-glucosamine (GlcNAc)</strong> và <strong>N-acetyl-D-galactosamine (GalNAc)</strong>. Là vật liệu xây dựng GAGs, chitin và màng tế bào vi khuẩn.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color: #f59e0b; margin: 0 0 0.5rem 0;">4. Acid Uronic (Sugar Acids)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Oxy hóa nhóm alcohol bậc nhất ở C6 thành nhóm carboxyl (-COOH). <strong>Acid D-glucuronic</strong> tham gia liên hợp khử độc tại gan và cùng với <strong>Acid L-iduronic</strong> tạo bộ khung polyanion trong mô sụn, dịch khớp.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color: #ec4899; margin: 0 0 0.5rem 0;">5. Acid Sialic (NeuAc - 9C)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Dẫn xuất 9 carbon hình thành từ D-mannosamine và acid pyruvic. Nằm ở đầu tận của các chuỗi oligosaccharid màng, mang điện tích âm mạnh bảo vệ hồng cầu khỏi thực bào và làm thụ thể nhận diện virus cúm.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color: #ef4444; margin: 0 0 0.5rem 0;">6. Polyalcohol (Đa Rượu / Rượu Đường)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Khử nhóm carbonyl thành -OH. <strong>Sorbitol</strong> (từ glucose) và <strong>Xylitol</strong> (từ xylose). Sự tích tụ Sorbitol qua con đường Polyol khi tăng đường huyết kéo dài gây đục thủy tinh thể và biến chứng thần kinh đái tháo đường.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 4: HÓA HỌC DISACCHARID -->
+        <!-- ========================================== -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-link"></i> 4. Hóa Học Disaccharid (Đường Đôi)</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-bolt"></i> 4.1. Sự Hình Thành Liên Kết O-Glycosid &amp; Cơ Chế Tính Khử</h3>
+            <p>
+                <strong>Liên kết O-glycosid</strong> được hình thành do sự ngưng tụ giữa nhóm -OH bán acetal/cetal hoạt động sinh học của monosaccharid thứ nhất với một nhóm -OH khác của monosaccharid thứ hai, loại đi 1 phân tử nước:
+            </p>
+            <div class="reaction-box">
+                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.65rem; line-height: 1.6;">
+                    <li><strong>Đường có tính khử (Maltose, Lactose, Cellobiose):</strong> Liên kết hình thành giữa -OH bán acetal của phân tử 1 với một -OH alcohol thường (như C4) của phân tử 2. Phân tử 2 <em>vẫn còn giữ nhóm -OH bán acetal tự do ở C1</em> &rarr; Có khả năng mở vòng tạo lại nhóm -CHO tự do để khử ion kim loại nặng (Cu<sup>2+</sup> &rarr; Cu<sub>2</sub>O kết tủa đỏ gạch trong thuốc thử Fehling/Benedict).</li>
+                    <li><strong>Đường không có tính khử (Sucrose, Trehalose):</strong> Liên kết hình thành giữa <em>hai nhóm -OH bán acetal/cetal của CẢ HAI phân tử đường</em> (liên kết kiểu đầu - đầu như α1 &rarr; 2β hoặc α1 &rarr; 1α). Cả hai carbon anomer đều bị khóa cứng &rarr; Không còn khả năng mở vòng &rarr; Mất hoàn toàn tính khử.</li>
+                </ul>
+            </div>
+
+            <!-- INLINE SVG: DISACCHARIDES STRUCTURES -->
+            <div class="chem-diagram-container">
+                <svg viewBox="0 0 800 240" style="width: 100%; max-width: 780px; height: auto;" aria-label="So sánh cấu trúc liên kết glycosid của Maltose, Lactose và Sucrose">
+                    <!-- Maltose Box -->
+                    <rect x="15" y="15" width="240" height="210" rx="10" fill="var(--color-bg, #f8fafc)" stroke="#0284c7" stroke-width="1.5" />
+                    <text x="135" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#0284c7">Maltose (Đường mạch nha)</text>
+                    <text x="135" y="65" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="var(--color-text-muted, #64748b)">α-D-Glc-(1→4)-α-D-Glc</text>
+                    <circle cx="85" cy="115" r="28" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="1.5" />
+                    <text x="85" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">Glc (C1)</text>
+                    <line x1="113" y1="115" x2="157" y2="115" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="2,2" />
+                    <text x="135" y="108" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7">α(1→4)</text>
+                    <circle cx="185" cy="115" r="28" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" stroke-width="1.5" />
+                    <text x="185" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#10b981">Glc (C4)</text>
+                    <rect x="40" y="165" width="190" height="42" rx="6" fill="rgba(16, 185, 129, 0.15)" />
+                    <text x="135" y="182" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#10b981">✓ CÒN TÍNH KHỬ</text>
+                    <text x="135" y="198" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">C1 vòng phải còn -OH tự do</text>
+
+                    <!-- Lactose Box -->
+                    <rect x="280" y="15" width="240" height="210" rx="10" fill="var(--color-bg, #f8fafc)" stroke="#10b981" stroke-width="1.5" />
+                    <text x="400" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#10b981">Lactose (Đường sữa)</text>
+                    <text x="400" y="65" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="var(--color-text-muted, #64748b)">β-D-Gal-(1→4)-D-Glc</text>
+                    <circle cx="350" cy="115" r="28" fill="rgba(139, 92, 246, 0.12)" stroke="#8b5cf6" stroke-width="1.5" />
+                    <text x="350" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#8b5cf6">Gal (C1)</text>
+                    <line x1="378" y1="115" x2="422" y2="115" stroke="#10b981" stroke-width="2.5" />
+                    <text x="400" y="108" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">β(1→4)</text>
+                    <circle cx="450" cy="115" r="28" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="1.5" />
+                    <text x="450" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">Glc (C4)</text>
+                    <rect x="305" y="165" width="190" height="42" rx="6" fill="rgba(16, 185, 129, 0.15)" />
+                    <text x="400" y="182" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#10b981">✓ CÒN TÍNH KHỬ</text>
+                    <text x="400" y="198" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">Bị cắt bởi enzym Lactase</text>
+
+                    <!-- Sucrose Box -->
+                    <rect x="545" y="15" width="240" height="210" rx="10" fill="var(--color-bg, #f8fafc)" stroke="#ef4444" stroke-width="1.5" />
+                    <text x="665" y="40" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14" fill="#ef4444">Sucrose (Đường mía)</text>
+                    <text x="665" y="65" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="var(--color-text-muted, #64748b)">α-D-Glc-(1→2)-β-D-Fru</text>
+                    <circle cx="615" cy="115" r="28" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="1.5" />
+                    <text x="615" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#0284c7">Glc (C1)</text>
+                    <line x1="643" y1="115" x2="687" y2="115" stroke="#ef4444" stroke-width="2.5" />
+                    <text x="665" y="108" text-anchor="middle" font-size="10" font-weight="700" fill="#ef4444">α1→2β</text>
+                    <circle cx="715" cy="115" r="28" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-width="1.5" />
+                    <text x="715" y="120" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#f59e0b">Fru (C2)</text>
+                    <rect x="570" y="165" width="190" height="42" rx="6" fill="rgba(239, 68, 68, 0.15)" />
+                    <text x="665" y="182" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" fill="#ef4444">✗ KHÔNG CÒN TÍNH KHỬ</text>
+                    <text x="665" y="198" text-anchor="middle" font-size="10" fill="var(--color-text-muted, #64748b)">Khóa cả 2 carbon anomer</text>
+                </svg>
+                <div class="chem-diagram-caption">Hình 4.1: So sánh sơ đồ liên kết O-glycosid và cơ chế xác định tính khử của ba disaccharid sinh học phổ biến nhất.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-list-check"></i> 4.2. Bảng Đối Chiếu Chi Tiết 5 Disaccharid Quan Trọng</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 14%;">Disaccharid</th>
+                        <th style="width: 25%;">Cấu Tạo Đơn Vị</th>
+                        <th style="width: 18%;">Liên Kết Glycosid</th>
+                        <th style="width: 13%;">Tính Khử</th>
+                        <th style="width: 30%;">Nguồn Gốc &amp; Ý Nghĩa Y Học</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Maltose</strong></td>
+                        <td>α-D-Glucose + α-D-Glucose</td>
+                        <td><strong>α(1 &rarr; 4)</strong></td>
+                        <td><span style="color: #10b981; font-weight: 700;">Có</span></td>
+                        <td>Sản phẩm thủy phân tinh bột bởi amylase đường tiêu hóa hoặc hạt nảy mầm.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lactose</strong></td>
+                        <td>β-D-Galactose + D-Glucose</td>
+                        <td><strong>β(1 &rarr; 4)</strong></td>
+                        <td><span style="color: #10b981; font-weight: 700;">Có</span></td>
+                        <td>Đường trong sữa mẹ và động vật có vú. Thiếu hụt lactase niêm mạc ruột gây <em>Hội chứng bất dung nạp lactose</em> (tiêu chảy thẩm thấu, đầy hơi).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sucrose</strong></td>
+                        <td>α-D-Glucose + β-D-Fructose</td>
+                        <td><strong>α(1 &rarr; 2)β</strong></td>
+                        <td><span style="color: #ef4444; font-weight: 700;">Không</span></td>
+                        <td>Đường mía, củ cải đường. Bị thủy phân tạo hỗn hợp <em>đường nghịch đảo (invert sugar)</em> do đổi góc quay cực từ (+66.5&deg;) sang tả tuyền của Fructose (-92.4&deg;).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cellobiose</strong></td>
+                        <td>β-D-Glucose + β-D-Glucose</td>
+                        <td><strong>β(1 &rarr; 4)</strong></td>
+                        <td><span style="color: #10b981; font-weight: 700;">Có</span></td>
+                        <td>Đơn vị cấu tạo lặp lại của cellulose vách thực vật. Người không có enzym β-glucosidase nên không tiêu hóa được.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trehalose</strong></td>
+                        <td>α-D-Glucose + α-D-Glucose</td>
+                        <td><strong>α(1 &rarr; 1)α</strong></td>
+                        <td><span style="color: #ef4444; font-weight: 700;">Không</span></td>
+                        <td>Đường chính trong dịch tuần hoàn của côn trùng và nấm men; bảo vệ màng sinh học chống lại sự mất nước và đông băng cực hàn.</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
-        <footer style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.85rem;">
-            <em>Tài liệu tham khảo: Hóa Sinh Y Học ĐHYD 2024, Harper's Illustrated Biochemistry 32nd, Clinical Biochemistry 7th.</em>
+        <!-- ========================================== -->
+        <!-- SECTION 5: POLYSACCHARID THUẦN -->
+        <!-- ========================================== -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-cubes-stacked"></i> 5. Hóa Học Polysaccharid Thuần (Homoglycan)</h2>
+            <p>
+                Homoglycan là các polymer đại phân tử cấu tạo hoàn toàn từ <strong>một loại đơn vị monosaccharid duy nhất</strong> (chủ yếu là D-glucose). Sự khác biệt về loại liên kết glycosid và mật độ phân nhánh quyết định đặc tính sinh học của chúng:
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-wheat-awn"></i> 5.1. Tinh Bột (Starch) — Amylose &amp; Amylopectin</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4 style="color: var(--color-primary, #0284c7); margin: 0 0 0.5rem 0;">Amylose (Chiếm 15 – 20%)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        &bull; <strong>Cấu trúc:</strong> Mạch thẳng hoàn toàn không phân nhánh.<br>
+                        &bull; <strong>Liên kết:</strong> Các gốc α-D-glucose nối nhau bằng liên kết <strong>α(1 &rarr; 4)-glucosid</strong>.<br>
+                        &bull; <strong>Cấu dạng:</strong> Xoắn ốc hình trụ tròn (helix) gồm 6 gốc glucose mỗi vòng. Phân tử iod chui vào lòng ống xoắn tạo <strong>phức hợp màu xanh tím đặc trưng</strong>.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color: #10b981; margin: 0 0 0.5rem 0;">Amylopectin (Chiếm 80 – 85%)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        &bull; <strong>Cấu trúc:</strong> Phân nhánh mạnh.<br>
+                        &bull; <strong>Liên kết:</strong> Mạch thẳng chứa liên kết <strong>α(1 &rarr; 4)</strong>; cứ sau mỗi <strong>24 đến 30 gốc glucose</strong> lại xuất hiện 1 điểm nhánh nối bằng liên kết <strong>α(1 &rarr; 6)-glucosid</strong>.<br>
+                        &bull; <strong>Tính chất:</strong> Tạo độ nhớt cao, tạo hồ tinh bột khi đun sôi trong nước.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-dna"></i> 5.2. Glycogen (Tinh Bột Động Vật) &amp; Cơ Chế Mồi Glycogenin</h3>
+            <p>
+                Glycogen là dạng dự trữ năng lượng ngắn hạn chính ở động vật, tập trung đậm đặc nhất ở <strong>gan (2.5 – 5% khối lượng tươi, lúc no tới 10%)</strong> và <strong>cơ xương (1 – 3%)</strong>:
+            </p>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Cấu trúc siêu phân nhánh:</strong> Tương tự amylopectin nhưng phân nhánh dày đặc gấp 3 lần: Cứ sau mỗi <strong>8 đến 12 gốc glucose</strong> lại có một điểm nhánh <strong>α(1 &rarr; 6)</strong>. Phân tử có cấu trúc phân lớp dendritic hình cầu gồm tới 50.000–60.000 gốc glucose. Tác dụng với iod cho màu <strong>đỏ nâu</strong>.</li>
+                <li><strong>Ý nghĩa sinh lý của hàng nghìn đầu không khử:</strong> Cấu trúc nhánh dày đặc tạo ra hàng ngàn đầu mút không khử trên bề mặt hạt glycogen, cho phép <em>Glycogen phosphorylase</em> đồng thời cắt giải phóng ồ ạt Glucose-1-phosphate khi cơ thể cần năng lượng khẩn cấp (stress, hạ đường huyết, vận động cơ bắp).</li>
+                <li><strong>Protein mồi Glycogenin (De novo Synthesis):</strong> Enzym Glycogen synthase không thể tự khởi đầu ghép hai gốc glucose tự do. Quá trình bắt buộc phải có protein mồi <strong>Glycogenin</strong> ở trung tâm:
+                    <br>1. Glycogenin tự xúc tác gắn gốc glucose đầu tiên từ <strong>UDP-glucose</strong> vào nhóm -OH của gốc <strong>Tyrosine</strong> trên chính nó.
+                    <br>2. Tự nối dài thành chuỗi mồi ngắn <strong>4 – 8 gốc glucose</strong> bằng liên kết α(1 &rarr; 4).
+                    <br>3. Lúc này <strong>Glycogen synthase</strong> và <strong>Enzym tạo nhánh (amylo-1,4 &rarr; 1,6-transglucosidase)</strong> mới tiếp quản để xây dựng hạt glycogen khổng lồ.
+                </li>
+            </ul>
+
+            <!-- INLINE SVG: GLYCOGEN STRUCTURE & BRANCHING -->
+            <div class="chem-diagram-container">
+                <svg viewBox="0 0 780 200" style="width: 100%; max-width: 760px; height: auto;" aria-label="Sơ đồ cấu trúc phân nhánh của Glycogen và Amylopectin">
+                    <!-- Main linear chain -->
+                    <line x1="50" y1="120" x2="730" y2="120" stroke="#0284c7" stroke-width="4" />
+                    <!-- Glucose nodes on main chain -->
+                    <circle cx="80" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="130" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="180" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="230" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="280" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="330" cy="120" r="12" fill="#ef4444" />
+                    <text x="330" y="155" text-anchor="middle" font-size="11" font-weight="700" fill="#ef4444">Điểm nhánh α(1→6)</text>
+                    <circle cx="380" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="430" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="480" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="530" cy="120" r="12" fill="#ef4444" />
+                    <text x="530" y="155" text-anchor="middle" font-size="11" font-weight="700" fill="#ef4444">Điểm nhánh α(1→6)</text>
+                    <circle cx="580" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="630" cy="120" r="12" fill="#0284c7" />
+                    <circle cx="680" cy="120" r="12" fill="#0284c7" />
+
+                    <!-- Branch 1 -->
+                    <line x1="330" y1="120" x2="330" y2="40" stroke="#ef4444" stroke-width="3" stroke-dasharray="3,3" />
+                    <line x1="330" y1="40" x2="480" y2="40" stroke="#10b981" stroke-width="3" />
+                    <circle cx="330" cy="40" r="10" fill="#10b981" />
+                    <circle cx="380" cy="40" r="10" fill="#10b981" />
+                    <circle cx="430" cy="40" r="10" fill="#10b981" />
+                    <circle cx="480" cy="40" r="10" fill="#10b981" />
+                    <text x="540" y="44" font-size="11" font-weight="700" fill="#10b981">Đầu không khử (Mạch bên)</text>
+
+                    <!-- Branch 2 -->
+                    <line x1="530" y1="120" x2="530" y2="55" stroke="#ef4444" stroke-width="3" stroke-dasharray="3,3" />
+                    <line x1="530" y1="55" x2="650" y2="55" stroke="#8b5cf6" stroke-width="3" />
+                    <circle cx="530" cy="55" r="10" fill="#8b5cf6" />
+                    <circle cx="580" cy="55" r="10" fill="#8b5cf6" />
+                    <circle cx="630" cy="55" r="10" fill="#8b5cf6" />
+                    <text x="670" y="59" font-size="11" font-weight="700" fill="#8b5cf6">Đầu không khử</text>
+
+                    <text x="60" y="100" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#0284c7">Liên kết mạch thẳng α(1→4)</text>
+                    <text x="400" y="185" text-anchor="middle" font-size="12" fill="var(--color-text-muted, #64748b)">Glycogen phân nhánh dày đặc: <strong>Mỗi 8 - 12 gốc glucose</strong> (so với 24 - 30 gốc ở Amylopectin thực vật)</text>
+                </svg>
+                <div class="chem-diagram-caption">Hình 5.1: Sơ đồ kiến trúc phân nhánh của Glycogen với các điểm nối α(1→6) tạo ra mạng lưới hình cầu giàu đầu tận không khử.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-tree"></i> 5.3. Cellulose &amp; Các Homoglycan Khác (Chitin, Inulin, Dextran)</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Polysaccharid</th>
+                        <th style="width: 25%;">Đơn Vị &amp; Liên Kết</th>
+                        <th style="width: 25%;">Đặc Tính Cấu Trúc</th>
+                        <th style="width: 35%;">Ý Nghĩa Sinh Học &amp; Ứng Dụng Y Học</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cellulose</strong></td>
+                        <td>β-D-Glucose nối bằng <strong>β(1 &rarr; 4)</strong></td>
+                        <td>Chuỗi thẳng tắp, các gốc xoay 180&deg; tạo mạng liên kết hydro siêu bền (microfibrils).</td>
+                        <td>Con người không tiêu hóa được do thiếu enzym cellulase; đóng vai trò <strong>chất xơ thô</strong> giữ nước, tăng khối lượng phân, kích thích nhu động ruột chống táo bón.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chitin</strong></td>
+                        <td>N-acetyl-D-glucosamine (GlcNAc) nối <strong>β(1 &rarr; 4)</strong></td>
+                        <td>Mạch thẳng, bền cơ học cao tương tự cellulose.</td>
+                        <td>Thành phần cấu tạo bộ xương ngoài của động vật giáp xác (tôm, cua), côn trùng và vách tế bào nấm.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inulin</strong></td>
+                        <td>D-Fructose nối <strong>β(2 &rarr; 1)</strong> (Fructosan)</td>
+                        <td>Mạch thẳng, tan trong nước ấm.</td>
+                        <td>Lọc tự do qua cầu thận, không bị tái hấp thu hay bài tiết ở ống thận &rarr; <strong>Tiêu chuẩn vàng đo mức lọc cầu thận (GFR)</strong> trong thăm dò chức năng thận.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dextran</strong></td>
+                        <td>α-D-Glucose nối <strong>α(1 &rarr; 6)</strong> (nhánh α-1,3 và α-1,4)</td>
+                        <td>Polymer phân nhánh phức tạp do vi khuẩn tổng hợp.</td>
+                        <td>Tạo áp suất keo cao, không lọt qua mao mạch &rarr; Dùng làm <strong>dịch truyền thay thế huyết tương (plasma expander)</strong> chống sốc giảm thể tích.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 6: POLYSACCHARID TẠP & GLYCOCONJUGAT -->
+        <!-- ========================================== -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-shield-virus"></i> 6. Polysaccharid Tạp &amp; Carbohydrate Liên Hợp (Glycoconjugat)</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-bone"></i> 6.1. Glycosaminoglycan (GAG) &amp; Proteoglycan Đệm Sụn</h3>
+            <p>
+                <strong>Glycosaminoglycan (GAG)</strong> là các chuỗi heteroglycan thẳng dài không phân nhánh cấu tạo bởi các <strong>đơn vị disaccharid lặp lại</strong> gồm:
+                <br>1. Một <strong>đường amin</strong> (GlcNAc hoặc GalNAc, thường được sulfat hóa).
+                <br>2. Một <strong>acid uronic</strong> (Acid D-glucuronic hoặc Acid L-iduronic; riêng Keratan sulfat dùng D-galactose).
+            </p>
+            <div class="info-box">
+                <strong><i class="fa-solid fa-droplet"></i> Cơ Chế Đệm Chống Sốc (Viscoelasticity):</strong>
+                Do chứa dày đặc các nhóm mang điện âm (-COO<sup>-</sup> và -OSO<sub>3</sub><sup>-</sup>), chuỗi GAG mang điện âm cực mạnh, đẩy nhau duỗi thẳng cứng trong không gian. Chúng hút mạnh các cation Na<sup>+</sup> và kéo theo lượng nước khổng lồ vào chất nền ngoại bào. Khi khớp chịu lực nén cơ học, nước bị ép thoát ra; khi giải tỏa lực nén, nước lập tức bị hút trở lại. Điều này giúp sụn khớp hoạt động như một <strong>"lớp đệm giảm xóc thủy lực"</strong> hoàn hảo.
+            </div>
+
+            <h4 class="h4-title">Bảng Đối Chiếu 7 Glycosaminoglycan (GAG) Chính Trong Cơ Thể:</h4>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Tên GAG</th>
+                        <th>Đường Amin</th>
+                        <th>Acid Uronic / Hexose</th>
+                        <th>Sulfat Hóa</th>
+                        <th>Phân Bố Chính</th>
+                        <th>Vai Trò Sinh Học &amp; Lâm Sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Acid Hyaluronic</strong></td>
+                        <td>GlcNAc</td>
+                        <td>GlcUA</td>
+                        <td><span style="color: #ef4444; font-weight: 700;">Không</span></td>
+                        <td>Dịch khớp, thủy tinh dịch mắt, mô liên kết lỏng lẻo</td>
+                        <td>Chất bôi trơn khớp hoàn hảo; tồn tại tự do dạng polyme khổng lồ không liên kết protein lõi.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chondroitin Sulfat</strong></td>
+                        <td>GalNAc-4/6-SO<sub>4</sub></td>
+                        <td>GlcUA</td>
+                        <td>Có</td>
+                        <td>Sụn khớp, xương, van tim, thành động mạch</td>
+                        <td>GAG phong phú nhất trong sụn, chịu lực nén cơ học (nối qua cầu Gal-Gal-Xyl-Ser).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dermatan Sulfat</strong></td>
+                        <td>GalNAc-4-SO<sub>4</sub></td>
+                        <td>IdUA (chính) + GlcUA</td>
+                        <td>Có</td>
+                        <td>Da, gân, mạch máu, van tim</td>
+                        <td>Duy trì độ đàn hồi dẻo dai của da và mô liên kết.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Heparin</strong></td>
+                        <td>GlcN (N-SO<sub>4</sub>, 6-O-SO<sub>4</sub>)</td>
+                        <td>IdUA (90%) + GlcUA</td>
+                        <td><strong style="color: #0284c7;">Cao nhất</strong></td>
+                        <td>Hạt bài tiết của dưỡng bào (mast cells), phổi, gan</td>
+                        <td><strong>Chất chống đông máu nội sinh mạnh nhất</strong> (hoạt hóa Antithrombin III) và giải phóng LPL.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Heparan Sulfat</strong></td>
+                        <td>GlcNAc / GlcN-SO<sub>4</sub></td>
+                        <td>GlcUA + IdUA</td>
+                        <td>Trung bình</td>
+                        <td>Bề mặt màng tế bào, màng đáy cầu thận</td>
+                        <td>Tạo điện tích âm màng lọc cầu thận chống thất thoát albumin qua nước tiểu.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keratan Sulfat I</strong></td>
+                        <td>GlcNAc-6-SO<sub>4</sub></td>
+                        <td><strong>D-Galactose</strong> (không có acid)</td>
+                        <td>Có</td>
+                        <td>Giác mạc mắt (nối N-glycosid qua Asn)</td>
+                        <td>Duy trì độ trong suốt quang học tuyệt đối của giác mạc.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keratan Sulfat II</strong></td>
+                        <td>GlcNAc-6-SO<sub>4</sub></td>
+                        <td><strong>D-Galactose</strong></td>
+                        <td>Có</td>
+                        <td>Sụn, xương, đĩa đệm cột sống (nối O-glycosid)</td>
+                        <td>Tham gia cấu trúc proteoglycan nâng đỡ sụn xương.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- INLINE SVG: PROTEOGLYCAN LINKAGE -->
+            <div class="chem-diagram-container">
+                <svg viewBox="0 0 780 160" style="width: 100%; max-width: 760px; height: auto;" aria-label="Sơ đồ cầu nối trisaccharid Gal-Gal-Xyl mồi trong Proteoglycan">
+                    <rect x="20" y="50" width="130" height="60" rx="8" fill="rgba(2, 132, 199, 0.15)" stroke="#0284c7" stroke-width="2" />
+                    <text x="85" y="75" text-anchor="middle" font-weight="700" font-size="12" fill="#0284c7">Core Protein</text>
+                    <text x="85" y="95" text-anchor="middle" font-size="11" fill="var(--color-text, #334155)">Gốc Serine (-OH)</text>
+
+                    <line x1="150" y1="80" x2="200" y2="80" stroke="#0284c7" stroke-width="2.5" />
+                    
+                    <circle cx="230" cy="80" r="22" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="2" />
+                    <text x="230" y="84" text-anchor="middle" font-weight="700" font-size="11" fill="#f59e0b">Xylose</text>
+
+                    <line x1="252" y1="80" x2="300" y2="80" stroke="#f59e0b" stroke-width="2.5" />
+                    <text x="276" y="72" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">β(1→4)</text>
+
+                    <circle cx="330" cy="80" r="22" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="2" />
+                    <text x="330" y="84" text-anchor="middle" font-weight="700" font-size="11" fill="#10b981">Gal I</text>
+
+                    <line x1="352" y1="80" x2="400" y2="80" stroke="#10b981" stroke-width="2.5" />
+                    <text x="376" y="72" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">β(1→3)</text>
+
+                    <circle cx="430" cy="80" r="22" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="2" />
+                    <text x="430" y="84" text-anchor="middle" font-weight="700" font-size="11" fill="#10b981">Gal II</text>
+
+                    <line x1="452" y1="80" x2="510" y2="80" stroke="#8b5cf6" stroke-width="2.5" />
+                    <text x="481" y="72" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">β(1→3)</text>
+
+                    <rect x="510" y="50" width="240" height="60" rx="8" fill="rgba(139, 92, 246, 0.15)" stroke="#8b5cf6" stroke-width="2" />
+                    <text x="630" y="75" text-anchor="middle" font-weight="700" font-size="12" fill="#8b5cf6">Chuỗi Polymer GAG Kéo Dài</text>
+                    <text x="630" y="95" text-anchor="middle" font-size="11" fill="var(--color-text, #334155)">[Đường Amin - Acid Uronic]ₙ (Chondroitin/Heparin)</text>
+                </svg>
+                <div class="chem-diagram-caption">Hình 6.1: Trình tự cầu nối trisaccharid mồi đặc hiệu Gal-Gal-Xyl-Serine liên kết chuỗi GAG vào Protein lõi (Core Protein) tại bộ máy Golgi.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-bacterium"></i> 6.2. Peptidoglycan (Murein) — Vách Vi Khuẩn &amp; Đích Tác Dụng Kháng Sinh</h3>
+            <p>
+                Peptidoglycan là khung xương đại phân tử vững chắc bọc ngoài màng tế bào vi khuẩn:
+            </p>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Bộ khung carbohydrate:</strong> Chuỗi dị polymer thẳng gồm hai đường amin xen kẽ liên kết qua cầu nối <strong>β(1 &rarr; 4)-glycosid</strong>: <em>N-acetylglucosamine (GlcNAc)</em> và <em>N-acetylmuramic acid (MurNAc)</em> (chứa gốc D-lactate ở C3).</li>
+                <li><strong>Chuỗi tetrapeptide nối chéo:</strong> Gốc lactyl của MurNAc gắn chuỗi tetrapeptide (<em>L-Ala &ndash; D-Isoglu &ndash; L-Lys &ndash; D-Ala</em>). Các chuỗi song song được nối chéo nhau qua cầu nối <strong>Pentaglycine (5 gốc Gly)</strong>.</li>
+                <li><strong>Điểm tác dụng của Penicillin:</strong> Kháng sinh Penicillin (vòng β-lactam) ức chế không thuận nghịch enzym <strong>Transpeptidase</strong> (giả cấu trúc D-Ala-D-Ala), làm vi khuẩn không tạo được liên kết chéo peptide &rarr; vỡ tế bào do áp suất thẩm thấu.</li>
+                <li><strong>Điểm cắt của Lysozyme:</strong> Enzym Lysozyme tự nhiên trong nước mắt, nước bọt thủy phân chọn lọc <strong>liên kết β(1 &rarr; 4)</strong> giữa MurNAc và GlcNAc &rarr; phá hủy hoàn toàn bộ khung polysaccharid của vi khuẩn.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-shapes"></i> 6.3. Glycoprotein &amp; Kháng Nguyên Nhóm Máu Hệ ABO</h3>
+            <p>
+                Khác với Proteoglycan (GAG chiếm tới 95% khối lượng), <strong>Glycoprotein</strong> có chuỗi carbohydrate phân nhánh ngắn hơn (chiếm 1 – 60% khối lượng) gồm 3 loại liên kết chính:
+            </p>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>N-linked:</strong> Gắn vào gốc <strong>Asparagine (Asn)</strong> trong trình tự <em>Asn-X-Ser/Thr</em>. Khởi đầu tổng hợp tại lưới nội chất trên chất mang lipid <strong>Dolichol-P-P</strong> (bị ức chế bởi <em>Tunicamycin</em>). Mang chung nhân pentasaccharid cốt lõi <strong>Man<sub>3</sub>GlcNAc<sub>2</sub></strong>.</li>
+                <li><strong>O-linked:</strong> Gắn nhóm GalNAc trực tiếp vào nhóm -OH của <strong>Serine / Threonine</strong> tại bộ máy Golgi (ví dụ: Mucin chất nhầy đường tiêu hóa).</li>
+                <li><strong>GPI-anchored:</strong> Neo protein vào lớp ngoài màng qua cầu nối Phosphatidylinositol (như Acetylcholinesterase màng hồng cầu).</li>
+            </ul>
+
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-droplet"></i> Cơ Sở Hóa Sinh Của Kháng Nguyên Nhóm Máu ABO:</strong>
+                Tính đặc hiệu kháng nguyên nhóm máu trên màng tế bào hồng cầu được quyết định bởi đường đơn tận cùng gắn trên chuỗi oligosaccharid nền:
+                <br>&bull; <strong>Kháng nguyên H (Gốc nền nhóm O):</strong> Chuỗi tận cùng có gốc <strong>L-Fucose</strong> [Fuc α(1&rarr;2) Gal β(1&rarr;4) GlcNAc-R].
+                <br>&bull; <strong>Nhóm máu A:</strong> Gắn thêm 1 gốc <strong>N-acetylgalactosamine (GalNAc)</strong> qua liên kết α(1&rarr;3) nhờ enzym <em>GalNAc transferase</em>.
+                <br>&bull; <strong>Nhóm máu B:</strong> Gắn thêm 1 gốc <strong>D-Galactose</strong> qua liên kết α(1&rarr;3) nhờ enzym <em>Galactosyltransferase</em>.
+                <br>&bull; <strong>Nhóm máu AB:</strong> Có cả 2 loại enzym &rarr; biểu hiện đồng thời chuỗi carbohydrate nhóm A và B.
+                <br>&bull; <strong>Nhóm máu O:</strong> Đột biến mất hoạt tính cả 2 enzym &rarr; chỉ mang kháng nguyên H nguyên bản.
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 7: BỆNH HỌC PHÂN TỬ -->
+        <!-- ========================================== -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-stethoscope"></i> 7. Bệnh Học Phân Tử &amp; Khiếm Khuyết Chuyển Hóa Di Truyền</h2>
+            
+            <div class="card-grid">
+                <div class="feature-card">
+                    <span class="concept-chip chip-red">Bệnh 1</span>
+                    <h4 style="color: #ef4444; margin: 0.5rem 0;">Bệnh Tích Tụ Mucopolysaccharid (MPS)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Khiếm khuyết di truyền các enzym lysosome thủy phân GAG (như thiếu α-L-iduronidase trong <strong>Hội chứng Hurler</strong>, hoặc Iduronate sulfatase trong <strong>Hội chứng Hunter</strong>). Dẫn đến tích tụ GAGs dở dang trong tiêu thể tế bào &rarr; Biến dạng xương khớp gù vẹo, đục giác mạc, chậm phát triển trí tuệ nặng, gan lách to và suy tim tử vong sớm.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-amber">Bệnh 2</span>
+                    <h4 style="color: #d97706; margin: 0.5rem 0;">Hội Chứng Bất Dung Nạp Lactose</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Suy giảm biểu hiện enzym Lactase (β-galactosidase) tại riềm bàn chải niêm mạc ruột non. Lactose không tiêu hóa chuyển xuống đại tràng, bị vi khuẩn lên men sinh khí H<sub>2</sub>, CO<sub>2</sub> và acid lactic &rarr; Hút nước gây tiêu chảy thẩm thấu, sôi bụng, trướng bụng dữ dội sau khi uống sữa.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-purple">Bệnh 3</span>
+                    <h4 style="color: #8b5cf6; margin: 0.5rem 0;">Bệnh Dự Trữ Glycogen (GSD - Von Gierke, Pompe...)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Thiếu hụt các enzym chuyển hóa glycogen: Type I (Von Gierke - thiếu Glucose-6-phosphatase) gây hạ đường huyết nghiêm trọng lúc đói, gan to ứ đọng glycogen; Type II (Pompe - thiếu α-1,4-glucosidase tiêu thể) gây bệnh cơ tim phì đại tử vong sớm.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-blue">Bệnh 4</span>
+                    <h4 style="color: #0284c7; margin: 0.5rem 0;">Tích Tụ Sorbitol Gây Biến Chứng Đái Tháo Đường</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Khi nồng độ Glucose máu tăng vọt kéo dài, enzym <em>Aldose reductase</em> chuyển glucose thành <strong>Sorbitol</strong> trong tế bào thần kinh ngoại biên, võng mạc và thủy tinh thể. Sorbitol không khuếch tán ra ngoài được gây tăng áp suất thẩm thấu hút nước nội bào &rarr; Đục thủy tinh thể (Cataract) và bệnh lý đa dây thần kinh đái tháo đường.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 8: BILAN XÉT NGHIỆM LÂM SÀNG -->
+        <!-- ========================================== -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-vials"></i> 8. Chỉ Số Xét Nghiệm &amp; Biện Luận Bilan Lâm Sàng</h2>
+            <p>
+                Các thông số hóa sinh cận lâm sàng liên quan trực tiếp đến hóa học và chuyển hóa glucid trong thực hành lâm sàng:
+            </p>
+
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 22%;">Chỉ Số Xét Nghiệm</th>
+                        <th style="width: 20%;">Khoảng Tham Chiếu Chuẩn</th>
+                        <th style="width: 58%;">Ý Nghĩa Cơ Chế &amp; Biện Luận Lâm Sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Glucose Huyết Tương Lúc Đói (FPG)</strong></td>
+                        <td><strong>3.9 – 5.6 mmol/L</strong><br><span class="chem-table-subtext">(70 – 100 mg/dL)</span></td>
+                        <td>Tiêu chuẩn vàng chẩn đoán: ĐTĐ khi FPG &ge; 7.0 mmol/L (126 mg/dL) trong 2 lần thử độc lập. Phản ánh khả năng điều hòa tân tạo đường và phân giải glycogen gan dưới tác dụng của Insulin/Glucagon.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nghiệm Pháp Dung Nạp Glucose Đường Uống (OGTT)</strong></td>
+                        <td><strong>&lt; 7.8 mmol/L</strong><br><span class="chem-table-subtext">(Sau 2h uống 75g Glucose)</span></td>
+                        <td>Đánh giá độ nhạy cảm và dự trữ tiết insulin của tế bào đảo tụy. Chẩn đoán ĐTĐ khi Glucose 2h &ge; 11.1 mmol/L (200 mg/dL); Tiền ĐTĐ (Rối loạn dung nạp) khi 7.8 – 11.0 mmol/L.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HbA1c (Hemoglobin Glycosyl Hóa)</strong></td>
+                        <td><strong>4.0 – 5.6%</strong><br><span class="chem-table-subtext">(&lt; 39 mmol/mol)</span></td>
+                        <td>Sản phẩm gắn kết không thuận nghịch giữa glucose tự do với nhóm amin N-tận chuỗi β-globin của Hb. Phản ánh mức đường huyết trung bình trong <strong>8 – 12 tuần trước đó</strong> (đời sống hồng cầu 120 ngày). Chẩn đoán ĐTĐ khi HbA1c &ge; 6.5%.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fructosamine Huyết Thanh</strong></td>
+                        <td><strong>200 – 285 &mu;mol/L</strong></td>
+                        <td>Glycosyl hóa protein huyết tương (chủ yếu là Albumin). Phản ánh mức kiểm soát đường huyết ngắn hạn trong <strong>2 – 3 tuần gần nhất</strong>; chỉ định thay thế HbA1c ở bệnh nhân thiếu máu tán huyết hoặc bệnh huyết sắc tố (HbS, HbE).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Đường Niệu (Glucosuria)</strong></td>
+                        <td><strong>Âm tính (0 mmol/L)</strong><br><span class="chem-table-subtext">(Ngưỡng thận: 9.9 – 10.0 mmol/L)</span></td>
+                        <td>Phát hiện đường trong nước tiểu khi glucose máu vượt quá ngưỡng tái hấp thu của ống lượn gần (&gt; 180 mg/dL). Que thử hiện đại dùng phản ứng đặc hiệu Glucose Oxidase / Peroxidase (không bị dương tính giả bởi các đường khử khác).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Định Lượng Heparin &amp; aPTT</strong></td>
+                        <td>aPTT chứng: <strong>25 – 35 giây</strong><br><span class="chem-table-subtext">(aPTT điều trị: 1.5 – 2.5 lần chứng)</span></td>
+                        <td>Theo dõi liệu pháp chống đông Heparin không phân đoạn (UFH) qua hoạt hóa Antithrombin III ức chế Thrombin (IIa) và Yếu tố Xa; Định lượng Anti-Xa dùng theo dõi LMWH.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Độ Thanh Thải Inulin (Inulin GFR)</strong></td>
+                        <td><strong>90 – 125 mL/phút/1.73m²</strong></td>
+                        <td>Polysaccharid inulin lọc tự do hoàn toàn qua màng lọc cầu thận, không tái hấp thu, không bài tiết. Tiêu chuẩn vàng tuyệt đối (Gold Standard) nghiên cứu đo lường mức lọc cầu thận.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GAG Niệu (Urinary Glycosaminoglycans)</strong></td>
+                        <td>Tùy độ tuổi<br><span class="chem-table-subtext">(&lt; 15 mg GAG/g Creatinine)</span></td>
+                        <td>Xét nghiệm sàng lọc ban đầu phát hiện các bệnh lý tích trữ tiêu thể Mucopolysaccharidoses (MPS Type I đến VII); định tính phân nhóm bằng điện di GAG niệu.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.7;">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--color-text, #334155); font-size: 0.95rem;">Tài Liệu Tham Khảo Chuẩn AMA (References):</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Trần Thanh Hương, Nguyễn Văn Đồng, Vũ Khắc Huy, eds. <em>Hóa Sinh Y Học</em>. Hà Nội, Việt Nam: Nhà xuất bản Y học; 2024:7-24.</li>
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA, eds. <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill Education; 2023:228-242, 605-618.</li>
+                <li>Baynes JW, Dominiczak MH. <em>Medical Biochemistry</em>. 5th ed. London, England: Elsevier; 2019:25-36, 245-258.</li>
+                <li>Pratt CW, Cornely K. <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:215-248.</li>
+                <li>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD. <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson; 2012:225-256.</li>
+                <li>Murphy M, Srivastava R, Deans K. <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. Edinburgh, Scotland: Elsevier; 2019:64-78.</li>
+            </ol>
         </footer>
 
     </div>
 </body>
+
 </html>

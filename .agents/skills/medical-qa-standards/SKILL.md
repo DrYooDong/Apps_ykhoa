@@ -40,24 +40,32 @@ node scratch/check_tags.js <path_to_html_file>
 - Mỗi trang chỉ chứa duy nhất 1 thẻ `<h1>`.
 - Không trùng lặp thuộc tính `id=""` trên cùng một trang.
 
-### Bước 3: Kiểm Tra Tương Thích Dark Mode
+### Bước 3: Kiểm Tra Lỗi Ký Tự $ & # (LaTeX & Markdown Escaping Audit)
+Chạy script tự động kiểm tra ký tự $ và #:
+```bash
+node scratch/check_format_bugs.js <path_to_html_file>
+```
+- **Ký tự `$`**: Tuyệt đối không để sót ký tự `$` hoặc công thức LaTeX thô. Phải chuyển đổi thành HTML Entities, ký tự Unicode (`α, β, Δ, →, ₂, ⁺, ⁻`), hoặc thẻ semantic (`<sup>`, `<sub>`, `<em>`, `<code>`).
+- **Ký tự `#`**: Tuyệt đối không để sót tiêu đề Markdown (`# Heading`) hoặc hashtag chưa xử lý trong văn bản bài viết.
+
+### Bước 4: Kiểm Tra Tương Thích Dark Mode
 - Bật `data-theme="dark"` trên thẻ `<html>`.
 - Đảm bảo màu chữ hiển thị rõ ràng trên nền tối (`var(--color-text)`, `var(--color-bg)`).
 - Không có phần tử bị "cháy màu" hoặc lộ nền trắng cứng (Hardcoded white `#ffffff`).
 
-### Bước 4: Kiểm Tra Tác Động Dây Chuyền (Graphify Risk Audit)
+### Bước 5: Kiểm Tra Tác Động Dây Chuyền (Graphify Risk Audit)
 Nếu thay đổi có đụng chạm đến file JS/CSS cốt lõi:
 ```bash
 node scratch/query_graph.js <filename>
 ```
 - Đánh giá chỉ số Fan-in và kiểm tra side-effects trên các Hub liên quan (`main.js`, `guidelines.js`, `benh-ly.js`).
 
-### Bước 5: Kiểm Tra Trích Dẫn Y Văn & Văn Phong (Medical Quality Audit)
+### Bước 6: Kiểm Tra Trích Dẫn Y Văn & Văn Phong (Medical Quality Audit)
 - Nội dung y khoa có trích dẫn nguồn uy tín (ACC/AHA, ESC, NICE, KDIGO, BYT...) + năm xuất bản.
 - Có phân loại khuyến cáo Class/LoE chuẩn xác.
 - Đã loại bỏ các câu từ AI rườm rà (Medical Humanizer pass).
 
-### Bước 6: Đồng Bộ Registry Hệ Thống
+### Bước 7: Đồng Bộ Registry Hệ Thống
 - File mới đã được bổ sung vào `docs/FILE_MAP.md`.
 - Guideline mới đã đăng ký trong `guidelinesdata.js`.
 - Bệnh lý mới đã đăng ký trong `benh-ly.js`.

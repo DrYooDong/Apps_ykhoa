@@ -5,130 +5,967 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MET-02: Chuyển Hóa Lipid & Rối Loạn Lipoprotein Máu – Hóa Sinh Y Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../../../css/reset.css">
     <link rel="stylesheet" href="../../../../css/main.css">
     <link rel="stylesheet" href="../../../../css/components/physio-content.css">
     <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script type="module" src="../../physio-shared.ts"></script>
+
     <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+
         .biochem-article-header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0284c7 100%);
-            color: #fff;
-            padding: 2.25rem 2rem;
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
             border-radius: 16px;
             margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
         .biochem-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.825rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 2.75rem;
+        }
+
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.3vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .article-section h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            margin: 1.35rem 0 0.5rem 0;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        [data-theme="dark"] .article-section h4 {
+            color: #f1f5f9;
+        }
+
+        /* Callout Boxes */
         .reaction-box {
             background: rgba(139, 92, 246, 0.08);
             border-left: 4px solid #8b5cf6;
             padding: 1.25rem 1.5rem;
             border-radius: 0 12px 12px 0;
             margin: 1.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
+
         .pearl-box {
             background: rgba(245, 158, 11, 0.08);
             border-left: 4px solid #f59e0b;
             padding: 1.25rem 1.5rem;
             border-radius: 0 12px 12px 0;
             margin: 1.5rem 0;
+            line-height: 1.65;
         }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            line-height: 1.65;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            line-height: 1.65;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            line-height: 1.65;
+        }
+
+        /* SVG Sơ đồ Card */
+        .diagram-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+
+        .diagram-caption {
+            font-size: 0.85rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        /* Tables */
         .lab-table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
+            font-size: 0.9rem;
+            line-height: 1.55;
         }
-        .lab-table th, .lab-table td {
+
+        .lab-table th,
+        .lab-table td {
             border: 1px solid var(--color-border, #e2e8f0);
-            padding: 0.75rem 1rem;
+            padding: 0.85rem 1rem;
             text-align: left;
+            vertical-align: top;
         }
+
         .lab-table th {
-            background: var(--color-bg, #f8fafc);
+            background: var(--color-surface-offset, #f8fafc);
             font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        [data-theme="dark"] .lab-table th {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+
+        .step-list {
+            padding-left: 1.25rem;
+            margin: 0.75rem 0 1.25rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .step-list li {
+            line-height: 1.65;
+        }
+
+        .formula-inline {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(2, 132, 199, 0.08);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            color: var(--color-primary, #0284c7);
+            font-size: 0.88em;
+        }
+
+        [data-theme="dark"] .formula-inline {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
         }
     </style>
 </head>
 
 <body class="physio-article-body">
     <div class="physio-article-container">
-        
+
         <!-- ARTICLE HEADER -->
         <header class="biochem-article-header">
-            <span class="biochem-badge">MET-02 • Khối 4: Chuyển Hóa Chuyên Biệt 4 Đại Phân Tử</span>
-            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 1.85rem; font-weight: 800; color: #fff;">Chuyển Hóa Lipid & Rối Loạn Lipoprotein Máu</h1>
-            <p style="margin: 0; font-size: 1rem; opacity: 0.92; line-height: 1.6;">Vận chuyển qua con thoi Carnitine & 4 phản ứng vòng xoắn β-oxy hóa; Sinh tổng hợp & thoái hóa Thể Ceton (DKA); Tổng hợp Acid béo qua FAS; Sinh tổng hợp Cholesterol; Chuyển hóa Chylomicron, VLDL, LDL, HDL.</p>
+            <span class="biochem-badge"><i class="fa-solid fa-flask-vial"></i> MET-02 • Khối 4: Chuyển Hóa Trung Gian</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 2.1rem; font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Chuyển Hóa Lipid & Rối Loạn Lipoprotein Máu
+            </h1>
+            <p style="margin: 0; font-size: 1.02rem; opacity: 0.95; line-height: 1.6; max-width: 920px;">
+                Tiêu hóa & hấp thu lipid; Con thoi Carnitine & 4 phản ứng vòng xoắn β-oxy hóa; Sinh tổng hợp & thoái hóa Thể Ceton (DKA); Phức hợp đa enzym FAS & sinh tổng hợp acid béo/triacylglycerol; Sinh tổng hợp Cholesterol & trục SREBP-2; Chuyển hóa Acid mật & Chu trình Gan - Ruột; Sinh bệnh học Xơ vữa động mạch & Phân loại Fredrickson.
+            </p>
         </header>
 
-        <!-- SECTION 1: TỔNG QUAN CƠ CHẾ -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> 1. Mục Tiêu & Cơ Chế Phân Tử</h2>
-            <p class="section-text">Vận chuyển qua con thoi Carnitine & 4 phản ứng vòng xoắn β-oxy hóa; Sinh tổng hợp & thoái hóa Thể Ceton (DKA); Tổng hợp Acid béo qua FAS; Sinh tổng hợp Cholesterol; Chuyển hóa Chylomicron, VLDL, LDL, HDL.</p>
-        </section>
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-utensils"></i> 1. Tiêu Hóa & Hấp Thu</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-fire-flame-curved"></i> 2. β-Oxy Hóa Acid Béo</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-cubes-stacked"></i> 3. Chuyển Hóa Thể Ceton</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-dna"></i> 4. Tổng Hợp Acid Béo & TG</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-capsules"></i> 5. Cholesterol & Acid Mật</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-layer-group"></i> 6. Phospho & Sphingolipid</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-heart-pulse"></i> 7. Bệnh Sinh Xơ Vữa</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vials"></i> 8. Phân Loại Fredrickson & Lab</a>
+            </div>
+        </nav>
 
-        <!-- SECTION 2: PHẢN ỨNG & ĐIỂM CHỐT ENZYM -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-flask"></i> 2. Phản Ứng & Điểm Chốt Cơ Chế</h2>
-            <div class="reaction-box">
-                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                    <li><code>Palmitate (16C) qua 7 vòng β-oxy hóa tạo 8 Acetyl-CoA + 7 NADH + 7 FADH2 = 106 ATP.</code></li>
-<li><code>HMG-CoA --(HMG-CoA Reductase)--> Mevalonate.</code></li>
+        <!-- ========================================== -->
+        <!-- SECTION 1: TIÊU HÓA & HẤP THU LIPID -->
+        <!-- ========================================== -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-utensils"></i> 1. Tiêu Hóa và Hấp Thu Lipid ở Đường Tiêu Hóa</h2>
+            
+            <p class="section-text">
+                Lipid trong khẩu phần thức ăn chủ yếu gồm <strong>Triacylglycerol (TG, chiếm ~90%)</strong>, Phospholipid và Cholesterol ester. Do có tính kỵ nước cao, lipid không thể tự hòa tan trong dịch tiêu hóa phân cực mà bắt buộc phải trải qua quá trình nhũ tương hóa nhờ hệ thống mật tụy trước khi được các enzym thủy phân tiếp cận.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-droplet"></i> 1.1. Sự nhũ tương hóa và thủy phân enzym tại ruột non</h3>
+            <ul class="step-list">
+                <li>
+                    <strong>Sự nhũ tương hóa (Emulsification)</strong>: Tại tá tràng, <strong>muối mật</strong> (glycocholat, taurocholat – dẫn xuất lưỡng cực từ cholesterol) làm giảm sức căng bề mặt giữa pha dầu và nước, phân chia các khối mỡ lớn thành các hạt <strong>micelle cực nhỏ (đường kính vài nanomet)</strong>, làm tăng diện tích tiếp xúc hóa học lên hàng ngàn lần.
+                </li>
+                <li>
+                    <strong>Thủy phân Triacylglycerol (TG)</strong>: Tuyến tụy bài tiết <strong>Lipase tụy</strong> cùng protein hỗ trợ <strong>Colipase</strong> (giúp neo lipase vào bề mặt hạt micelle có muối mật). Lipase tụy cắt chọn lọc liên kết este ở vị trí C-1 và C-3 của glycerol, giải phóng <strong>2 phân tử Acid béo tự do (FFA)</strong> và <strong>2-Monoacylglycerol (2-MAG)</strong>. Một phần 2-MAG được enzym <em>isomerase</em> chuyển vị sang 1-MAG để lipase thủy phân tiếp thành glycerol tự do.
+                </li>
+                <li>
+                    <strong>Thủy phân Phospholipid</strong>: Enzym <strong>Phospholipase A₂ (PLA₂)</strong> tụy (tiết dạng proenzym hoạt hóa bởi trypsin) cắt liên kết este ở vị trí C-2, tạo thành <em>lysophospholipid</em> và acid béo tự do.
+                </li>
+                <li>
+                    <strong>Thủy phân Cholesterol ester</strong>: Enzym <strong>Cholesterol esterase</strong> (cholesteryl ester hydrolase) cắt liên kết este giải phóng cholesterol tự do và acid béo.
+                </li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-arrow-right-to-bracket"></i> 1.2. Hấp thu và đóng gói Chylomicron tại tế bào niêm mạc ruột</h3>
+            <div class="info-box">
+                <strong><i class="fa-solid fa-circle-info"></i> Phân biệt 2 con đường hấp thu theo chiều dài chuỗi carbon:</strong>
+                <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+                    <li><strong>Acid béo mạch ngắn & trung bình (&lt; 10-12 Carbon) + Glycerol</strong>: Có độ tan tốt trong nước, khuếch tán trực tiếp qua niêm mạc vào máu tĩnh mạch cửa để đến thẳng tế bào gan.</li>
+                    <li><strong>Acid béo mạch dài (≥ 12 Carbon), 2-MAG, Cholesterol, Lysophospholipid</strong>: Tạo micelle hỗn hợp với muối mật tiến sát bờ bàn chải ruột, khuếch tán thụ động vào bào tương. Tại lưới nội chất trơn (SER), chúng được tái este hóa thành TG (con đường monoacylglycerol) rồi đóng gói cùng phospholipid, cholesterol và <strong>Apolipoprotein B-48</strong> tạo thành <strong>Chylomicron</strong>. Do kích thước lớn (100–500 nm), Chylomicron xuất bào vào hệ mạch bạch huyết trung tâm (lacteals), đi qua ống ngực đổ vào tuần hoàn máu tĩnh mạch.</li>
                 </ul>
+            </div>
+
+            <!-- SVG SƠ ĐỒ TIÊU HÓA HẤP THU LIPID -->
+            <div class="diagram-card">
+                <svg viewBox="0 0 850 260" width="100%" height="auto" style="max-height: 280px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <!-- Nền Lòng ruột -->
+                    <rect x="10" y="10" width="260" height="240" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4 2"/>
+                    <text x="140" y="35" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)">[ LÒNG RUỘT NON ]</text>
+                    <rect x="25" y="55" width="230" height="40" rx="6" fill="var(--color-surface, #fff)" stroke="var(--color-border, #cbd5e1)"/>
+                    <text x="140" y="75" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text, #0f172a)">Triacylglycerol, PL, Chol-ester</text>
+                    <text x="140" y="88" text-anchor="middle" font-size="9.5" fill="var(--color-text-muted, #64748b)">+ Muối mật tạo Micelle</text>
+
+                    <path d="M 140 95 L 140 120" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                    <text x="145" y="112" font-size="9" fill="#0284c7" font-weight="600">Lipase, Colipase, PLA₂</text>
+
+                    <rect x="25" y="125" width="230" height="55" rx="6" fill="var(--color-surface, #fff)" stroke="var(--color-border, #cbd5e1)"/>
+                    <text x="140" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#10b981">2-MAG + FFA + Glycerol</text>
+                    <text x="140" y="160" text-anchor="middle" font-size="9.5" fill="var(--color-text-muted, #64748b)">+ Cholesterol tự do</text>
+
+                    <!-- Mũi tên qua màng tế bào niêm mạc ruột -->
+                    <path d="M 255 140 L 305 140" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+                    <text x="280" y="130" text-anchor="middle" font-size="9.5" font-weight="700" fill="#10b981">Hấp thu</text>
+
+                    <!-- Tế bào niêm mạc ruột -->
+                    <rect x="310" y="10" width="260" height="240" rx="10" fill="rgba(16, 185, 129, 0.06)" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="440" y="35" text-anchor="middle" font-size="13" font-weight="700" fill="#10b981">[ BIỂU MÔ NIÊM MẠC RUỘT ]</text>
+                    
+                    <rect x="325" y="55" width="230" height="42" rx="6" fill="var(--color-surface, #fff)" stroke="var(--color-border, #cbd5e1)"/>
+                    <text x="440" y="73" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--color-text, #0f172a)">FFA mạch ngắn/trung bình (&lt;12C)</text>
+                    <text x="440" y="87" text-anchor="middle" font-size="9" fill="#0284c7">Không cần micelle / Không este hóa</text>
+
+                    <rect x="325" y="115" width="230" height="60" rx="6" fill="var(--color-surface, #fff)" stroke="var(--color-border, #cbd5e1)"/>
+                    <text x="440" y="133" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--color-text, #0f172a)">FFA chuỗi dài + 2-MAG</text>
+                    <text x="440" y="148" text-anchor="middle" font-size="9.5" fill="#8b5cf6">Tái tổng hợp Triacylglycerol (SER)</text>
+                    <text x="440" y="163" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">+ Apo B-48, PL, Chol-ester</text>
+
+                    <rect x="345" y="190" width="190" height="45" rx="6" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6"/>
+                    <text x="440" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="#8b5cf6">CHYLOMICRON (Sơ sinh)</text>
+                    <text x="440" y="224" text-anchor="middle" font-size="9" fill="var(--color-text, #0f172a)">Kích thước 100-500 nm</text>
+
+                    <!-- Mũi tên đổ vào máu và bạch huyết -->
+                    <path d="M 555 76 L 615 76" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                    <path d="M 535 212 L 615 212" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow-purple)"/>
+
+                    <!-- Đích đến -->
+                    <rect x="620" y="10" width="220" height="240" rx="10" fill="rgba(139, 92, 246, 0.06)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <text x="730" y="35" text-anchor="middle" font-size="13" font-weight="700" fill="#8b5cf6">[ TUẦN HOÀN CƠ THỂ ]</text>
+                    
+                    <rect x="635" y="55" width="190" height="45" rx="6" fill="var(--color-surface, #fff)" stroke="#0284c7"/>
+                    <text x="730" y="75" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">TĨNH MẠCH CỬA</text>
+                    <text x="730" y="90" text-anchor="middle" font-size="9.5" fill="var(--color-text-muted, #64748b)">Vận chuyển thẳng về Gan</text>
+
+                    <rect x="635" y="190" width="190" height="45" rx="6" fill="var(--color-surface, #fff)" stroke="#8b5cf6"/>
+                    <text x="730" y="208" text-anchor="middle" font-size="11" font-weight="700" fill="#8b5cf6">MẠCH BẠCH HUYẾT (Lacteals)</text>
+                    <text x="730" y="223" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Qua Ống ngực ──► Máu tĩnh mạch</text>
+
+                    <!-- Markers -->
+                    <defs>
+                        <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7"/>
+                        </marker>
+                        <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+                        </marker>
+                        <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b5cf6"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="diagram-caption">Hình 1.1: Sơ đồ dòng chảy tiêu hóa, hấp thu và phân loại vận chuyển lipid tại ruột non.</div>
             </div>
         </section>
 
-        <!-- SECTION 3: ĐIỂM NGỌC LÂM SÀNG -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> 3. Điểm Ngọc Lâm Sàng (Clinical Pearls)</h2>
+        <!-- ========================================== -->
+        <!-- SECTION 2: THOÁI HÓA ACID BÉO (BETA-OXY HÓA) -->
+        <!-- ========================================== -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-fire-flame-curved"></i> 2. Sự Thoái Hóa Acid Béo (Oxy Hóa β) & Hiệu Suất Năng Lượng</h2>
+            
+            <p class="section-text">
+                Thoái hóa acid béo là nguồn cung cấp năng lượng hiếu khí chính yếu cho cơ tim, cơ xương và gan khi cơ thể ở trạng thái đói hoặc vận động kéo dài. Quá trình gồm 3 giai đoạn chặt chẽ:
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-bolt"></i> 2.1. Giai đoạn 1 & 2: Hoạt hóa ở bào tương & Con thoi Carnitine</h3>
+            <ul class="step-list">
+                <li>
+                    <strong>Hoạt hóa acid béo (Bào tương/Màng ngoài ty thể)</strong>: Xúc tác bởi <strong>Acyl-CoA synthetase (thiokinase)</strong> tiêu tốn <strong>2 liên kết phosphat giàu năng lượng (tương đương 2 ATP)</strong> do ATP bị cắt thành AMP và Pyrophosphat (PP<sub>i</sub>). Sự thủy phân ngay sau đó của PP<sub>i</sub> bởi enzym <em>pyrophosphatase vô cơ</em> (ΔG°′ = -19.2 kJ/mol) đẩy phản ứng diễn ra một chiều hoàn toàn:
+                    <div class="reaction-box" style="margin: 0.5rem 0;">
+                        <code>Acid béo + CoA-SH + ATP ──(Acyl-CoA Synthetase)──► Acyl-CoA + AMP + PPi (Tiêu tốn 2 ATP)</code>
+                    </div>
+                </li>
+                <li>
+                    <strong>Con thoi Carnitine (Vận chuyển vào chất nền ty thể)</strong>: Màng trong ty thể không thấm với Acyl-CoA. Hệ thống con thoi gồm 3 thành phần:
+                    <ol style="margin-left: 1.25rem; margin-top: 0.35rem;">
+                        <li><strong>CPT-I (Carnitine palmitoyltransferase I)</strong> ở màng ngoài: Chuyển gốc acyl từ Acyl-CoA sang Carnitine tạo thành <strong>Acyl-carnitine</strong>.</li>
+                        <li><strong>Carnitine-acylcarnitine translocase</strong> ở màng trong: Đưa Acyl-carnitine vào chất nền ty thể và đẩy carnitine tự do ra ngoài.</li>
+                        <li><strong>CPT-II</strong> ở mặt trong màng trong: Chuyển gốc acyl từ Acyl-carnitine sang CoA ty thể tái tạo <strong>Acyl-CoA</strong> và giải phóng Carnitine tự do.</li>
+                    </ol>
+                </li>
+            </ul>
+
             <div class="pearl-box">
-                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;">
-                    <li><strong>Nhiễm toan Ceton đái tháo đường (DKA): Thiếu hụt Insulin tuyệt đối kích hoạt ly giải mô mỡ quá mức, gan chuyển lượng lớn acid béo thành Thể Ceton (Acetoacetate, β-hydroxybutyrate) gây toan chuyển hóa Anion Gap cao.</strong></li>
-<li><strong>Thuốc hạ mỡ máu Statin ức chế cạnh tranh men HMG-CoA Reductase, giảm tổng hợp cholesterol nội sinh và kích thích tăng biểu hiện thụ thể LDL receptor ở màng tế bào gan.</strong></li>
+                <strong><i class="fa-solid fa-lightbulb"></i> Điểm Chốt Điều Hòa Cực Quan Trọng:</strong>
+                Enzym <strong>CPT-I</strong> bị ức chế dị lập thể mạnh bởi <strong>Malonyl-CoA</strong> (chất trung gian đầu tiên của con đường sinh tổng hợp acid béo mới ở bào tương). Cơ chế này ngăn chặn tuyệt đối tình trạng "vòng lặp vô ích" (futile cycle): khi tế bào đang tích cực tổng hợp lipid thì quá trình thoái hóa acid béo vào ty thể bị khóa lại!
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-repeat"></i> 2.2. Giai đoạn 3: Chu trình 4 phản ứng β-oxy hóa tại ma trận ty thể</h3>
+            <p class="section-text">
+                Mỗi vòng lặp chu trình gồm 4 phản ứng liên hoàn tấn công vào carbon β (C-3) để cắt dần từng mẩu Acetyl-CoA (2 carbon):
+            </p>
+            <div class="reaction-box">
+                <ol style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.45rem;">
+                    <li><strong>Oxy hóa lần 1 (Khử hydro)</strong>: Acyl-CoA ──(Acyl-CoA Dehydrogenase, nhận bởi FAD)──► trans-Δ²-Enoyl-CoA + <strong>FADH₂ (tạo 1.5 ATP)</strong>.</li>
+                    <li><strong>Hydrat hóa (Cộng H₂O)</strong>: trans-Δ²-Enoyl-CoA ──(Enoyl-CoA Hydratase, + H₂O)──► L-3-Hydroxyacyl-CoA.</li>
+                    <li><strong>Oxy hóa lần 2 (Khử hydro)</strong>: L-3-Hydroxyacyl-CoA ──(L-3-Hydroxyacyl-CoA Dehydrogenase, nhận bởi NAD⁺)──► 3-Ketoacyl-CoA + <strong>NADH + H⁺ (tạo 2.5 ATP)</strong>.</li>
+                    <li><strong>Phân cắt Thiolase</strong>: 3-Ketoacyl-CoA ──(Thiolase, + CoA-SH)──► <strong>Acetyl-CoA</strong> + <strong>Acyl-CoA (ngắn đi 2 carbon)</strong>.</li>
+                </ol>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-calculator"></i> 2.3. Hiệu suất năng lượng tạo ATP của Acid béo bão hòa</h3>
+            <p class="section-text">
+                Với phân tử acid béo bão hòa mạch chẵn gồm <em>n</em> nguyên tử carbon (C<sub>n</sub>):
+            </p>
+            <ul class="step-list">
+                <li>Số vòng β-oxy hóa cần thiết: <code>V = (n / 2) - 1</code>. Mỗi vòng sinh 1 FADH₂ (1.5 ATP) + 1 NADH (2.5 ATP) = <strong>4 ATP</strong>.</li>
+                <li>Số phân tử Acetyl-CoA tạo ra: <code>A = n / 2</code>. Mỗi Acetyl-CoA đi vào chu trình TCA tạo ra <strong>10 ATP</strong>.</li>
+                <li>Năng lượng tiêu tốn cho hoạt hóa ban đầu: <strong>-2 ATP</strong>.</li>
+            </ul>
+            <div class="reaction-box" style="background: rgba(16, 185, 129, 0.08); border-left-color: #10b981; color: var(--color-text, #0f172a);">
+                <strong>Công thức Net ATP tổng quát:</strong><br>
+                <code>Net ATP = [4 × (n/2 - 1) + 10 × (n/2)] - 2 = 14 × (n/2) - 6</code><br><br>
+                • <strong>Acid Palmitic (16:0)</strong>: n = 16 ──► 7 vòng (28 ATP) + 8 Acetyl-CoA (80 ATP) - 2 ATP = <strong>106 ATP</strong>.<br>
+                • <strong>Acid Stearic (18:0)</strong>: n = 18 ──► 8 vòng (32 ATP) + 9 Acetyl-CoA (90 ATP) - 2 ATP = <strong>120 ATP</strong>.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-code-branch"></i> 2.4. Các trường hợp thoái hóa đặc biệt</h3>
+            <ul class="step-list">
+                <li>
+                    <strong>Acid béo có số carbon lẻ</strong>: Vòng cuối cùng tạo 1 Acetyl-CoA và 1 <strong>Propionyl-CoA (3C)</strong>. Propionyl-CoA được carboxyl hóa thành methylmalonyl-CoA (cần Biotin/B7) rồi đồng phân hóa thành <strong>Succinyl-CoA</strong> nhờ enzym <em>methylmalonyl-CoA mutase</em> (cần coenzym <strong>Vitamin B₁₂</strong>) để đi vào chu trình TCA. Do Succinyl-CoA có thể biến đổi thành oxaloacetate để tạo glucose nên acid béo mạch lẻ có đặc tính <strong>tạo đường (glucogenic)</strong>.
+                </li>
+                <li>
+                    <strong>Acid béo chưa bão hòa (có liên kết đôi)</strong>: Cần thêm enzym <em>Enoyl-CoA isomerase</em> (chuyển liên kết đôi từ dạng <em>cis</em>-Δ³ sang <em>trans</em>-Δ²) và <em>2,4-dienoyl-CoA reductase</em> (dùng NADPH). Hiệu suất ATP luôn thấp hơn acid béo no cùng số carbon.
+                </li>
+                <li>
+                    <strong>Oxy hóa tại Peroxisome</strong>: Dành riêng cho acid béo chuỗi cực dài (VLCFA ≥ 22C). Bước oxy hóa 1 truyền điện tử trực tiếp sang O₂ tạo H₂O₂ (bị catalase phân hủy) không tạo ATP. Sau khi rút ngắn còn 8–12C, mạch acyl được chuyển sang ty thể để thoái hóa tiếp.
+                </li>
+            </ul>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 3: CHUYỂN HÓA THỂ CETON -->
+        <!-- ========================================== -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-cubes-stacked"></i> 3. Chuyển Hóa Thể Ceton (Ketogenesis & Ketolysis)</h2>
+            
+            <p class="section-text">
+                Khi cơ thể nhịn đói kéo dài, ăn kiêng low-carb hoặc đái tháo đường mất kiểm soát, tốc độ thoái hóa lipid tại gan tăng vọt giải phóng lượng Acetyl-CoA khổng lồ. Đồng thời, do gan cạn kiệt <strong>Oxaloacetate</strong> (được huy động tối đa cho con đường tân tạo Glucose), Acetyl-CoA không thể đi vào chu trình TCA. Để giải phóng CoA-SH tự do duy trì β-oxy hóa, gan ngưng tụ Acetyl-CoA tạo thành <strong>3 thể ceton</strong> hòa tan trong nước: <strong>Acetoacetate</strong>, <strong>β-hydroxybutyrate</strong> (chiếm hàm lượng cao nhất) và <strong>Acetone</strong> (chất bay hơi đào thải qua hơi thở).
+            </p>
+
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Vị Trí Chuyển Hóa Độc Quyền & "Nghịch Lý Gan":</strong><br>
+                Thể ceton được tổng hợp <strong>độc quyền tại chất nền ty thể tế bào Gan</strong>. Tuy nhiên, tế bào gan <strong>hoàn toàn KHÔNG THỂ sử dụng</strong> thể ceton làm năng lượng vì thiếu enzym <em>Thiophorase (succinyl-CoA:acetoacetate CoA transferase)</em>. Gan tổng hợp thể ceton để vận chuyển qua máu nuôi dưỡng các mô ngoài gan (não, cơ tim, cơ xương, vỏ thận) trong trường hợp khẩn cấp!
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-plus"></i> 3.1. Con đường sinh tổng hợp thể Ceton ở Gan (Ketogenesis)</h3>
+            <div class="reaction-box">
+                <ol style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.45rem;">
+                    <li><strong>Ngưng tụ 2 Acetyl-CoA</strong>: 2 Acetyl-CoA ──(Thiolase, giải phóng CoA-SH)──► Acetoacetyl-CoA.</li>
+                    <li><strong>Tạo HMG-CoA (Bước giới hạn tốc độ)</strong>: Acetoacetyl-CoA + Acetyl-CoA ──(HMG-CoA Synthase ty thể)──► <strong>3-Hydroxy-3-methylglutaryl-CoA (HMG-CoA)</strong>.</li>
+                    <li><strong>Phân cắt giải phóng Acetoacetate</strong>: HMG-CoA ──(HMG-CoA Lyase, giải phóng Acetyl-CoA)──► <strong>Acetoacetate</strong>.</li>
+                    <li><strong>Biến đổi tiếp theo</strong>:
+                        <ul style="margin-top: 0.25rem; margin-left: 1rem;">
+                            <li>Acetoacetate + NADH + H⁺ ──(β-hydroxybutyrate Dehydrogenase)──► <strong>β-hydroxybutyrate</strong> + NAD⁺.</li>
+                            <li>Acetoacetate ──(Khử carboxyl tự phát không enzym)──► <strong>Acetone</strong> + CO₂↑.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-fire"></i> 3.2. Con đường thoái hóa thể Ceton ở mô ngoài gan (Ketolysis)</h3>
+            <ul class="step-list">
+                <li>β-hydroxybutyrate được oxy hóa ngược lại thành Acetoacetate sinh ra 1 NADH (2.5 ATP).</li>
+                <li>Acetoacetate được hoạt hóa thành Acetoacetyl-CoA nhờ nhận gốc CoA từ Succinyl-CoA, xúc tác bởi <strong>Succinyl-CoA:acetoacetate CoA transferase (Thiophorase)</strong>.</li>
+                <li>Acetoacetyl-CoA bị phân cắt bởi <em>Thiolase</em> (+ CoA-SH) tạo ra <strong>2 phân tử Acetyl-CoA</strong> đi thẳng vào chu trình Krebs sinh năng lượng dồi dào.</li>
+            </ul>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 4: SINH TỔNG HỢP ACID BÉO & TRIACYLGLYCEROL -->
+        <!-- ========================================== -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-dna"></i> 4. Sinh Tổng Hợp Acid Béo (Lipogenesis) & Chuyển Hóa Triacylglycerol</h2>
+
+            <p class="section-text">
+                Quá trình sinh tổng hợp acid béo mới (<em>de novo lipogenesis</em>) diễn ra tại <strong>bào tương</strong> của tế bào gan, mô mỡ và tuyến sữa khi cơ thể dư thừa năng lượng carbohydrat.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-truck-ramp-box"></i> 4.1. Con thoi Citrate & Phản ứng tạo Malonyl-CoA (Bước quyết định tốc độ)</h3>
+            <ul class="step-list">
+                <li>
+                    <strong>Con thoi Citrate</strong>: Acetyl-CoA tạo ra trong ty thể không xuyên qua được màng trong. Nó ngưng tụ với Oxaloacetate tạo Citrate, Citrate ra bào tương rồi bị enzym <strong>ATP-citrate lyase</strong> phân cắt trở lại thành Acetyl-CoA và Oxaloacetate (tiêu tốn 1 ATP). Oxaloacetate được khử thành Malate, Malate decarboxyl oxy hóa tạo Pyruvat nhờ <strong>Enzym Malic</strong> sinh ra <strong>NADPH</strong> quý giá cho tổng hợp lipid.
+                </li>
+                <li>
+                    <strong>Tạo Malonyl-CoA (Rate-limiting step)</strong>: Xúc tác bởi phức hợp <strong>Acetyl-CoA Carboxylase (ACC)</strong> cần coenzym <strong>Biotin (Vitamin B₇)</strong>, HCO₃⁻ và ATP:
+                    <div class="reaction-box" style="margin: 0.5rem 0;">
+                        <code>Acetyl-CoA + HCO3- + ATP ──(ACC, Biotin, Mn2+)──► Malonyl-CoA + ADP + Pi</code>
+                    </div>
+                    <em>Điều hòa ACC</em>: Được hoạt hóa bởi <strong>Citrate</strong> (dạng polymer) và <strong>Insulin</strong> (khử phosphoryl). Bị ức chế mạnh bởi <strong>Acyl-CoA chuỗi dài</strong>, <strong>Glucagon/Epinephrine</strong> và <strong>AMPK</strong> (phosphoryl hóa khi thiếu năng lượng).
+                </li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-cubes"></i> 4.2. Phức hợp đa enzym Fatty Acid Synthase (FAS)</h3>
+            <p class="section-text">
+                Ở động vật có vú, <strong>Fatty Acid Synthase (FAS)</strong> là một <strong>homodimer</strong> gồm 2 chuỗi polypeptide sắp xếp <strong>đối đầu-đuôi (head-to-tail)</strong>. Mỗi monomer chứa đầy đủ <strong>7 hoạt tính enzym chuyên biệt</strong> và một miền <strong>ACP (Acyl Carrier Protein)</strong> chứa nhóm ngoại <em>4'-phosphopantetheine</em> (dẫn xuất Vitamin B₅) mang nhóm -SH hoạt động.
+            </p>
+            <div class="reaction-box">
+                <strong>4 Phản ứng lặp lại kéo dài chuỗi (+ 2C mỗi chu kỳ):</strong><br>
+                1. <strong>Ngưng tụ (KS)</strong>: Gốc Acyl gắn Cys-SH ngưng tụ với Malonyl gắn ACP-SH, loại bỏ CO₂.<br>
+                2. <strong>Khử lần 1 (KR)</strong>: Khử nhóm β-keto thành hydroxyl, tiêu tốn <strong>1 NADPH</strong>.<br>
+                3. <strong>Khử nước (DH)</strong>: Loại H₂O tạo liên kết đôi trans-Δ².<br>
+                4. <strong>Khử lần 2 (ER)</strong>: Khử liên kết đôi tạo chuỗi bão hòa, tiêu tốn <strong>1 NADPH</strong>.<br>
+                ──► Chu kỳ lặp lại 7 lần. Khi đạt 16C, enzym <strong>Thioesterase (TE)</strong> thủy phân giải phóng <strong>Palmitate tự do (16:0)</strong>.
+            </div>
+
+            <div class="info-box">
+                <strong>Phương trình tổng quát tổng hợp Palmitate:</strong><br>
+                <span class="formula-inline">8 Acetyl-CoA + 7 ATP + 14 NADPH + 14 H⁺ ──► Palmitate + 8 CoA-SH + 7 ADP + 7 Pi + 14 NADP⁺ + 6 H₂O</span><br>
+                <em>Nguồn cung NADPH</em>: 60% từ <strong>Con đường Pentose Phosphate (HMP shunt)</strong>, phần còn lại từ <strong>Enzym Malic</strong>.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-arrows-rotate"></i> 4.3. Chuyển hóa Triacylglycerol (Lipolysis & Lipogenesis)</h3>
+            <ul class="step-list">
+                <li>
+                    <strong>Thủy phân TG (Lipolysis) ở mô mỡ</strong>: Tín hiệu Adrenalin/Glucagon kích hoạt thụ thể gắn G-protein ──► tăng cAMP ──► hoạt hóa PKA ──► phosphoryl hóa kích hoạt <strong>Hormone-Sensitive Lipase (HSL)</strong>. Thủy phân diễn ra 3 bước: <strong>ATGL</strong> (cắt TG ──► DAG) ──► <strong>HSL</strong> (cắt DAG ──► MAG) ──► <strong>MAGL</strong> (cắt MAG ──► Glycerol + 3 FFA).
+                    <br>• FFA ra máu gắn <strong>Albumin</strong> đến các mô để β-oxy hóa.<br>• Glycerol về gan được phosphoryl hóa nhờ <strong>Glycerol kinase</strong> để tân tạo glucose (mô mỡ không có enzym này).
+                </li>
+                <li>
+                    <strong>Sinh tổng hợp Triacylglycerol</strong>: Este hóa Glycerol-3-phosphate với 2 Acyl-CoA tạo <em>Phosphatidate</em> ──► bị enzym <em>Phosphatidate phosphatase (PAP/Lipin)</em> khử phosphat tạo <em>1,2-Diacylglycerol (DAG)</em> ──► este hóa với Acyl-CoA thứ 3 nhờ <strong>DGAT (diacylglycerol acyltransferase)</strong> tạo thành Triacylglycerol hoàn chỉnh.
+                </li>
+            </ul>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 5: CHUYỂN HÓA CHOLESTEROL & ACID MẬT -->
+        <!-- ========================================== -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-capsules"></i> 5. Sinh Tổng Hợp Cholesterol, Trục Điều Hòa SREBP & Acid Mật</h2>
+
+            <p class="section-text">
+                Cholesterol là lipid cấu trúc cốt lõi của màng tế bào động vật và là tiền chất duy nhất để tổng hợp hormon steroid, vitamin D và acid mật. Tất cả <strong>27 nguyên tử carbon</strong> của cholesterol đều có nguồn gốc từ <strong>Acetyl-CoA</strong>.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-sitemap"></i> 5.1. Năm giai đoạn sinh tổng hợp Cholesterol de novo</h3>
+            <ol class="step-list">
+                <li>
+                    <strong>Tạo Mevalonate (Giai đoạn quyết định)</strong>: 2 Acetyl-CoA ngưng tụ thành Acetoacetyl-CoA ──► ngưng tụ phân tử Acetyl-CoA thứ 3 tạo HMG-CoA (nhờ <em>HMG-CoA synthase bào tương</em>) ──► enzym màng lưới nội chất <strong>HMG-CoA reductase (HMGR)</strong> dùng 2 NADPH khử HMG-CoA thành <strong>Mevalonate (6C)</strong>. <strong>HMGR là enzym giới hạn tốc độ</strong> của toàn bộ quá trình!
+                </li>
+                <li><strong>Tạo Isoprenoid hoạt hóa (5C)</strong>: Mevalonate được phosphoryl hóa rồi khử carboxyl tạo <strong>Isopentenyl diphosphate (IPP)</strong> và <strong>Dimethylallyl diphosphate (DMAPP)</strong>.</li>
+                <li><strong>Ngưng tụ tạo Squalene (30C)</strong>: IPP (5C) + DMAPP (5C) ──► Geranyl-PP (10C) ──► Farnesyl-PP (15C). Hai phân tử Farnesyl-PP ngưng tụ đầu-đầu nhờ <em>Squalene synthase</em> tạo thành <strong>Squalene (chuỗi thẳng 30C)</strong>.</li>
+                <li><strong>Đóng vòng tạo Lanosterol (30C)</strong>: Squalene được epoxyd hóa rồi đóng vòng nhờ <em>Oxidosqualene:lanosterol cyclase</em> tạo <strong>Lanosterol (nhân steroid đầu tiên)</strong>.</li>
+                <li><strong>Hoàn thiện cấu trúc Cholesterol (27C)</strong>: Lanosterol trải qua ~20 phản ứng tại ER, loại bỏ 3 nhóm methyl, dịch chuyển liên kết đôi tạo <strong>Cholesterol hoàn chỉnh</strong>.</li>
+            </ol>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-sliders"></i> 5.2. Ba cơ chế điều hòa Cholesterol & Cơ chế tác dụng của Statin</h3>
+            <ul class="step-list">
+                <li>
+                    <strong>Kiểm soát phiên mã qua trục SREBP-2/SCAP/Insig</strong>: Khi nồng độ cholesterol tế bào thấp, phức hợp SCAP/SREBP tách khỏi Insig-1 tại ER, di chuyển sang Golgi để protease cắt giải phóng đầu N hòa tan của <strong>SREBP-2</strong> đi vào nhân gắn vùng <strong>SRE</strong>, tăng phiên mã gen <em>HMGR</em> và <em>LDL Receptor</em>. Khi cholesterol dồi dào, sterol gắn vào SCAP khóa chặt phức hợp tại ER.
+                </li>
+                <li><strong>Điều hòa phân hủy enzym</strong>: Nồng độ oxysterol cao thúc đẩy HMGR gắn Insig màng ER, kích hoạt gắn Ubiquitin đưa HMGR đi phân hủy nhanh tại proteasome.</li>
+                <li><strong>Biến đổi đồng hóa trị (Phosphoryl hóa)</strong>: HMGR hoạt động ở dạng <em>khử phosphoryl</em> (kích hoạt bởi <strong>Insulin</strong>) và bị <em>bất hoạt</em> khi bị phosphoryl hóa bởi <strong>AMPK</strong> (khi ATP giảm) hoặc <strong>Glucagon</strong>.</li>
+            </ul>
+
+            <div class="success-box">
+                <strong><i class="fa-solid fa-pills"></i> Ứng Dụng Dược Lý Lâm Sàng: Nhóm Thuốc STATIN (Atorvastatin, Rosuvastatin...):</strong><br>
+                Statin là chất ức chế cạnh tranh với cơ chất HMG-CoA tại enzym HMGR. Sự ức chế này làm giảm nồng độ cholesterol nội bào tại tế bào gan ──► kích hoạt trục SREBP-2 chuyển sang Golgi đi vào nhân ──► tế bào gan <strong>tăng biểu hiện mạnh mẽ thụ thể LDL (LDL-R)</strong> trên màng ──► bắt giữ và thanh thải ồ ạt các hạt LDL từ dòng máu tuần hoàn ──► hạ mạnh LDL-C huyết tương.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-recycle"></i> 5.3. Thoái hóa tạo Acid Mật & Chu trình Gan - Ruột (Enterohepatic Circulation)</h3>
+            <ul class="step-list">
+                <li>
+                    <strong>Tổng hợp Acid mật nguyên phát</strong>: Tế bào không thể phân cắt nhân steroid của cholesterol. Con đường đào thải duy nhất là qua mật. Phản ứng giới hạn tốc độ được xúc tác bởi <strong>Cholesterol 7α-hydroxylase (CYP7A1)</strong> (thuộc hệ CYP450, cần <strong>Vitamin C</strong> và NADPH) tạo <strong>Cholic acid</strong> và <strong>Chenodeoxycholic acid</strong>.
+                </li>
+                <li>
+                    <strong>Tạo Muối mật</strong>: Liên hợp với <strong>Glycine</strong> hoặc <strong>Taurine</strong> (tỷ lệ 3:1) tại gan tạo các muối mật phân cực mạnh làm chất diện hoạt nhũ tương hóa lipid ruột.
+                </li>
+                <li>
+                    <strong>Tạo Acid mật thứ phát tại ruột</strong>: Vi khuẩn ruột khử liên hợp và khử nhóm 7α-OH: Cholic acid ──► <strong>Deoxycholic acid</strong>; Chenodeoxycholic acid ──► <strong>Lithocholic acid</strong> (kém tan, đào thải ra phân).
+                </li>
+                <li>
+                    <strong>Chu trình Gan - Ruột</strong>: <strong>98% – 99%</strong> muối mật được tái hấp thu chủ động tại đoạn cuối hồi tràng theo tĩnh mạch cửa về gan. Điều hòa ngược qua thụ thể nhân <strong>FXR (Farnesoid X Receptor)</strong>: acid mật về gan kích hoạt FXR ức chế phiên mã gen <em>CYP7A1</em>.
+                </li>
+            </ul>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 6: CHUYỂN HÓA PHOSPHOLIPID & SPHINGOLIPID -->
+        <!-- ========================================== -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> 6. Chuyển Hóa Phospholipid, Sphingolipid & Bệnh Ứ Đọng Lysosome</h2>
+
+            <p class="section-text">
+                Phospholipid và Sphingolipid là các lipid phức tạp cấu tạo màng sinh học tế bào, lớp bao myelin thần kinh và tham gia dẫn truyền tín hiệu nội bào.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-nodes"></i> 6.1. Glycerophospholipid: Con đường De Novo & Con đường Tái cấu trúc</h3>
+            <ul class="step-list">
+                <li>
+                    <strong>Con đường De Novo</strong>: Phosphatidic Acid (PA) bị khử phosphat tạo 1,2-DAG ──► phản ứng với nucleotide hoạt hóa <strong>CDP-choline</strong> hoặc <strong>CDP-ethanolamine</strong> tạo ra <strong>Phosphatidylcholine (PC - Lecithin)</strong> và <strong>Phosphatidylethanolamine (PE)</strong>. Tại gan, PE có thể chuyển đổi thành PC nhờ methyl hóa sử dụng 3 phân tử <strong>S-adenosylmethionine (SAM)</strong>. PA cũng phản ứng với CTP tạo CDP-DAG để tổng hợp <strong>Phosphatidylinositol (PI)</strong> và <strong>Cardiolipin</strong> (lipid đặc trưng màng trong ty thể).
+                </li>
+                <li>
+                    <strong>Con đường Tái cấu trúc (Remodeling pathway)</strong>: Enzym <strong>Phospholipase A₂ (PLA₂)</strong> cắt acid béo ở vị trí sn-2 tạo <em>lysophospholipid</em> ──► enzym <em>Lysophospholipid acyltransferase (LPLAT)</em> gắn acid béo chưa bão hòa đa (như Arachidonate) vào sn-2 để hoàn thiện độ linh động của màng tế bào.
+                </li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-brain"></i> 6.2. Sphingolipid & Rối loạn di truyền thoái hóa (Sphingolipidoses)</h3>
+            <p class="section-text">
+                Tất cả sphingolipid đều có khung xương là <strong>Ceramide</strong> (tổng hợp từ <strong>Serine</strong> + <strong>Palmitoyl-CoA</strong> cần coenzym <strong>Pyridoxal Phosphate / Vit B₆</strong>). Tại Golgi, Ceramide được gắn phosphocholine tạo <strong>Sphingomyelin</strong> (bao myelin thần kinh), hoặc gắn gốc đường tạo <strong>Cerebrosides</strong> và <strong>Gangliosides</strong> (chứa acid sialic / <strong>NeuAc</strong> tích điện âm).
+            </p>
+
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-biohazard"></i> Các Bệnh Ứ Đọng Lipid Lysosome Di Truyền Nổi Bật:</strong>
+                <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+                    <li><strong>Bệnh Gaucher (Phổ biến nhất)</strong>: Đột biến thiếu enzym <strong>β-glucosidase (glucocerebrosidase)</strong> làm tích tụ glucosylceramide khổng lồ trong đại thực bào (tế bào Gaucher), gây gan lách to cực độ, đau hủy xương, thiếu máu.</li>
+                    <li><strong>Bệnh Tay-Sachs</strong>: Đột biến thiếu enzym <strong>Hexosaminidase A</strong> gây ứ đọng <strong>GM2 ganglioside</strong> trong lysosome tế bào thần kinh, gây thoái hóa thần kinh nặng, điểm đỏ anh đào ở võng mạc (cherry-red spot), tử vong sớm trước 4 tuổi.</li>
+                    <li><strong>Bệnh Niemann-Pick</strong>: Thiếu hụt <strong>Sphingomyelinase</strong> làm tích tụ sphingomyelin trong gan, lách và hệ thần kinh trung ương.</li>
                 </ul>
             </div>
         </section>
 
-        <!-- SECTION 4: THĂM DÒ & XÉT NGHIỆM LIÊN QUAN -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-vial" style="color: #10b981;"></i> 4. Chỉ Số Xét Nghiệm & Biện Luận Cận Lâm Sàng</h2>
+        <!-- ========================================== -->
+        <!-- SECTION 7: CƠ CHẾ BỆNH SINH XƠ VỮA ĐỘNG MẠCH -->
+        <!-- ========================================== -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-heart-pulse"></i> 7. Cơ Chế Bệnh Sinh Phân Tử Của Xơ Vữa Động Mạch (Atherogenesis)</h2>
+
+            <p class="section-text">
+                Xơ vữa động mạch không phải là sự lắng đọng mỡ thụ động mà là một <strong>tiến trình viêm mạn tính hệ thống</strong> tại lớp nội mạc mạch máu trước các kích thích tổn thương.
+            </p>
+
+            <!-- SVG TIẾN TRÌNH XƠ VỮA ĐỘNG MẠCH -->
+            <div class="diagram-card">
+                <svg viewBox="0 0 900 240" width="100%" height="auto" style="max-height: 270px; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <!-- Step 1 -->
+                    <rect x="10" y="20" width="160" height="200" rx="10" fill="var(--color-surface, #fff)" stroke="#0284c7" stroke-width="1.5"/>
+                    <rect x="10" y="20" width="160" height="36" rx="10 10 0 0" fill="#0284c7"/>
+                    <text x="90" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">1. TỔN THƯƠNG NỘI MẠC</text>
+                    <text x="90" y="80" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">THA, Thuốc lá, ĐTĐ</text>
+                    <text x="90" y="100" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Giảm sản xuất NO</text>
+                    <text x="90" y="120" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Tăng hoạt hóa NF-κB</text>
+                    <text x="90" y="150" text-anchor="middle" font-size="9" fill="#ef4444" font-weight="600">Tăng tính thấm thành mạch</text>
+
+                    <path d="M 175 120 L 190 120" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+                    <!-- Step 2 -->
+                    <rect x="190" y="20" width="160" height="200" rx="10" fill="var(--color-surface, #fff)" stroke="#f59e0b" stroke-width="1.5"/>
+                    <rect x="190" y="20" width="160" height="36" rx="10 10 0 0" fill="#f59e0b"/>
+                    <text x="270" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">2. THÂM NHẬP & oxLDL</text>
+                    <text x="270" y="80" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">LDL chui vào Intima</text>
+                    <text x="270" y="100" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Gắn Proteoglycan</text>
+                    <text x="270" y="120" text-anchor="middle" font-size="9" fill="#ef4444">ROS oxy hóa thành oxLDL</text>
+                    <text x="270" y="150" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Kích ứng viêm nội mạc</text>
+
+                    <path d="M 355 120 L 370 120" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber)"/>
+
+                    <!-- Step 3 -->
+                    <rect x="370" y="20" width="160" height="200" rx="10" fill="var(--color-surface, #fff)" stroke="#10b981" stroke-width="1.5"/>
+                    <rect x="370" y="20" width="160" height="36" rx="10 10 0 0" fill="#10b981"/>
+                    <text x="450" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">3. TẾ BÀO BỌT (FOAM)</text>
+                    <text x="450" y="80" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">VCAM-1 & MCP-1</text>
+                    <text x="450" y="100" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Monocytes ──► ĐTB</text>
+                    <text x="450" y="120" text-anchor="middle" font-size="9" fill="#10b981" font-weight="700">Thụ thể Scavenger CD36</text>
+                    <text x="450" y="140" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Nuốt vô hạn oxLDL</text>
+                    <text x="450" y="165" text-anchor="middle" font-size="9.5" font-weight="700" fill="#f59e0b">Tạo VỆT MỠ (Fatty streak)</text>
+
+                    <path d="M 535 120 L 550 120" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+                    <!-- Step 4 -->
+                    <rect x="550" y="20" width="160" height="200" rx="10" fill="var(--color-surface, #fff)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <rect x="550" y="20" width="160" height="36" rx="10 10 0 0" fill="#8b5cf6"/>
+                    <text x="630" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">4. TẠO VỎ SỢI (CAP)</text>
+                    <text x="630" y="80" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--color-text, #0f172a)">Tế bào bọt hoại tử</text>
+                    <text x="630" y="100" text-anchor="middle" font-size="9" fill="#ef4444">Tạo Lõi Hoại Tử Lipid</text>
+                    <text x="630" y="120" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">PDGF, TGF-β kích thích</text>
+                    <text x="630" y="140" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">VSMC di cư lên intima</text>
+                    <text x="630" y="165" text-anchor="middle" font-size="9.5" font-weight="700" fill="#8b5cf6">Tạo Vỏ Sợi Collagen</text>
+
+                    <path d="M 715 120 L 730 120" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow-purple)"/>
+
+                    <!-- Step 5 -->
+                    <rect x="730" y="20" width="160" height="200" rx="10" fill="var(--color-surface, #fff)" stroke="#ef4444" stroke-width="2"/>
+                    <rect x="730" y="20" width="160" height="36" rx="10 10 0 0" fill="#ef4444"/>
+                    <text x="810" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">5. NỨT VỠ & TẮC MẠCH</text>
+                    <text x="810" y="80" text-anchor="middle" font-size="9.5" font-weight="600" fill="#ef4444">MMPs (MMP-9) bào mòn</text>
+                    <text x="810" y="100" text-anchor="middle" font-size="9" fill="var(--color-text, #0f172a)">Vỏ sợi mỏng bị rách vỡ</text>
+                    <text x="810" y="125" text-anchor="middle" font-size="9" font-weight="700" fill="#ef4444">Lộ Yếu Tố Mô (Tissue Factor)</text>
+                    <text x="810" y="150" text-anchor="middle" font-size="9" fill="var(--color-text, #0f172a)">Kết tập tiểu cầu cấp</text>
+                    <text x="810" y="175" text-anchor="middle" font-size="9.5" font-weight="800" fill="#ef4444">HUYẾT KHỐI TẮC MẠCH</text>
+
+                    <!-- Markers -->
+                    <defs>
+                        <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                            <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="diagram-caption">Hình 7.1: Tiến trình 5 bước sinh bệnh học phân tử của mảng xơ vữa và biến cố tắc mạch cấp.</div>
+            </div>
+
+            <ol class="step-list">
+                <li><strong>Tổn thương nội mạc</strong>: Các yếu tố nguy cơ (tăng LDL, thuốc lá, tăng huyết áp, tăng đường huyết) gây giảm tiết NO, kích hoạt yếu tố phiên mã tiền viêm <strong>NF-κB</strong>.</li>
+                <li><strong>Thâm nhập & oxy hóa LDL</strong>: Hạt LDL chui qua khe nội mạc lọt vào lớp dưới nội mạc (intima), bị giữ lại bởi proteoglycan và bị các gốc tự do ROS oxy hóa thành <strong>oxLDL</strong> có độc tính cao.</li>
+                <li><strong>Hình thành tế bào bọt (Foam cells)</strong>: Tế bào nội mạc tiết <em>VCAM-1</em> và <em>MCP-1</em> thu hút monocytes vào intima biệt hóa thành đại thực bào. Đại thực bào sử dụng <strong>thụ thể dọn rác Scavenger (CD36, SR-A)</strong> nuốt vô hạn oxLDL vì <strong>thụ thể này KHÔNG có cơ chế điều hòa ngược âm tính</strong> ──► trương phồng tạo thành <strong>tế bào bọt</strong> tập hợp thành các <strong>vệt mỡ (fatty streaks)</strong>.</li>
+                <li><strong>Hình thành lớp vỏ sợi (Fibrous cap)</strong>: Tế bào bọt chết hoại tử giải phóng tinh thể cholesterol tạo <em>lõi lipid hoại tử</em>. Các cytokine (PDGF, TGF-β) kích thích tế bào cơ trơn (VSMC) từ lớp trung mạc (media) di cư lên intima tăng sinh và tiết collagen tạo nên <em>vỏ sợi</em> bao bọc mảng xơ vữa.</li>
+                <li><strong>Nứt vỡ mảng xơ vữa & huyết khối cấp</strong>: Đại thực bào ở rìa mảng tiết <strong>MMP-9</strong> bào mòn vỏ sợi. Khi vỏ sợi nứt vỡ, <strong>Yếu tố mô (Tissue Factor)</strong> và lõi hoại tử lộ ra kích hoạt đông máu cấp tính, tạo cục <strong>huyết khối bít kín lòng mạch</strong> (nhồi máu cơ tim, đột quỵ thiếu máu não).</li>
+            </ol>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 8: PHÂN LOẠI FREDRICKSON & XÉT NGHIỆM LAB -->
+        <!-- ========================================== -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-vials"></i> 8. Phân Loại Rối Loạn Lipoprotein Máu (Fredrickson) & Biện Luận Xét Nghiệm</h2>
+
+            <p class="section-text">
+                Hệ thống phân loại Fredrickson (được WHO công nhận) phân loại các rối loạn lipoprotein máu thành 5 nhóm kiểu hình chính dựa trên điện di lipoprotein và thành phần lipid tăng cao ưu thế:
+            </p>
+
             <table class="lab-table">
                 <thead>
                     <tr>
-                        <th style="width: 80px;">STT</th>
-                        <th>Chỉ số xét nghiệm</th>
-                        <th>Ý nghĩa & Ứng dụng lâm sàng</th>
+                        <th style="width: 70px;">Kiểu hình</th>
+                        <th>Lipoprotein tăng</th>
+                        <th>Lipid tăng ưu thế</th>
+                        <th>Khiếm khuyết di truyền phân tử</th>
+                        <th>Biểu hiện lâm sàng & Nguy cơ tim mạch</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                        <tr>
-                            <td><strong>1</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Bilan Lipid (TC, TG, LDL-C, HDL-C, Non-HDL-C)</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
-                        <tr>
-                            <td><strong>2</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Thể Ceton máu (β-hydroxybutyrate) & nước tiểu</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
+                    <tr>
+                        <td><strong style="color: #0284c7;">Typ I</strong></td>
+                        <td><strong>Chylomicron</strong></td>
+                        <td>Triglycerides tăng cực độ (&gt; 10 g/L)</td>
+                        <td>Đột biến mất chức năng gen <strong>Lipoprotein lipase (LPL)</strong> hoặc <strong>Apo C-II</strong>.</td>
+                        <td>Huyết thanh để 4°C có lớp váng mỡ kem nổi bên trên, lớp dưới trong. U vàng phát ban (eruptive xanthomas), <strong>viêm tụy cấp tái diễn</strong>. <em>Không tăng nguy cơ bệnh mạch vành (CHD)</em> do Chylomicron quá lớn.</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #ef4444;">Typ IIa</strong></td>
+                        <td><strong>LDL</strong></td>
+                        <td><strong>LDL-Cholesterol</strong> tăng rất cao (TG bình thường)</td>
+                        <td>Đột biến trội gen <strong>Thụ thể LDL (LDL-R)</strong> hoặc đột biến <strong>Apo B-100</strong> (Familial Hypercholesterolemia - FH).</td>
+                        <td>U vàng gân gót/gân duỗi (tendon xanthomas), ban vàng mí mắt (xanthelasma), vòng rìa giác mạc (arcus senilis). <strong>Nguy cơ nhồi máu cơ tim & bệnh mạch vành cực kỳ cao ở tuổi trẻ</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #ef4444;">Typ IIb</strong></td>
+                        <td><strong>LDL + VLDL</strong></td>
+                        <td>Tăng đồng thời cả <strong>Cholesterol & TG</strong></td>
+                        <td>Tăng sản xuất Apo B-100 và VLDL quá mức ở gan. Rất phổ biến.</td>
+                        <td>Xơ vữa động mạch và bệnh mạch vành tiến triển rất nhanh trong cộng đồng.</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #8b5cf6;">Typ III</strong></td>
+                        <td><strong>IDL + Remnants</strong> (β-VLDL)</td>
+                        <td>Tăng mạnh cả <strong>Cholesterol & TG</strong></td>
+                        <td>Đồng hợp tử <strong>Apo E2/E2</strong> làm mất khả năng liên kết thụ thể LDL và LRP ở gan, ứ đọng tàn dư lipoprotein.</td>
+                        <td><strong>U vàng nếp gấp lòng bàn tay (palmar xanthomas)</strong>, u vàng dạng củ ở khuỷu tay/gối. Tăng cao xơ vữa mạch vành và <em>bệnh mạch máu ngoại biên</em>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #f59e0b;">Typ IV</strong></td>
+                        <td><strong>VLDL</strong></td>
+                        <td><strong>Triglycerides</strong> tăng cao (Cholesterol bình thường/tăng nhẹ)</td>
+                        <td>Tăng tổng hợp VLDL tại gan hoặc giảm nhẹ LPL ngoại vi, liên quan <strong>đề kháng insulin</strong>.</td>
+                        <td>Rất phổ biến, gắn liền với béo phì trung tâm, đái tháo đường typ 2, hội chứng chuyển hóa. Tăng nguy cơ xơ vữa mạn tính.</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #ec4899;">Typ V</strong></td>
+                        <td><strong>Chylomicron + VLDL</strong></td>
+                        <td>Tăng cực cao cả <strong>TG và Cholesterol</strong></td>
+                        <td>Phối hợp tăng sản xuất VLDL ở gan và suy giảm thanh thải LPL.</td>
+                        <td>Huyết thanh để 4°C có lớp váng mỡ kem nổi bên trên và lớp dưới vẫn đục như sữa. Nguy cơ viêm tụy cấp rất cao.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-stethoscope"></i> 8.2. Chỉ số Bilan Lipid chuẩn & Đánh giá lâm sàng</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Chỉ số xét nghiệm</th>
+                        <th>Khoảng tham chiếu chuẩn</th>
+                        <th>Ý nghĩa & Đích điều trị lâm sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cholesterol toàn phần (TC)</strong></td>
+                        <td>&lt; 5.2 mmol/L (&lt; 200 mg/dL)</td>
+                        <td>Đánh giá tổng thể nồng độ cholesterol huyết thanh. Tăng trong tăng cholesterol máu gia đình, suy giáp, hội chứng thận hư.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Triglycerides (TG)</strong></td>
+                        <td>&lt; 1.7 mmol/L (&lt; 150 mg/dL)</td>
+                        <td>TG &gt; 5.6 mmol/L (&gt; 500 mg/dL) làm tăng nguy cơ <strong>viêm tụy cấp</strong> cần can thiệp hạ TG khẩn cấp.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LDL-Cholesterol (LDL-C)</strong></td>
+                        <td>&lt; 2.6 mmol/L (&lt; 100 mg/dL)</td>
+                        <td><strong>Mục tiêu điều trị hàng đầu</strong> để giảm nguy cơ biến cố tim mạch xơ vữa (ASCVD). Tính theo công thức Friedewald khi TG &lt; 4.5 mmol/L: <span class="formula-inline">LDL-C = TC - HDL-C - (TG / 2.2)</span> (mmol/L).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HDL-Cholesterol (HDL-C)</strong></td>
+                        <td>&gt; 1.0 mmol/L (nam), &gt; 1.3 mmol/L (nữ)</td>
+                        <td>"Cholesterol tốt" tham gia vận chuyển cholesterol ngược từ mô ngoại vi về gan nhờ Apo A-I và LCAT. HDL-C thấp là yếu tố nguy cơ tim mạch độc lập.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Non-HDL Cholesterol</strong></td>
+                        <td>TC - HDL-C (&lt; 3.4 mmol/L)</td>
+                        <td>Đại diện cho toàn bộ các lipoprotein có khả năng gây xơ vữa (LDL, VLDL, IDL, Lp(a)), là mục tiêu phụ hữu ích ở bệnh nhân tăng triglycerid.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thể Ceton máu (β-hydroxybutyrate)</strong></td>
+                        <td>&lt; 0.5 mmol/L</td>
+                        <td>Xét nghiệm định lượng vàng chẩn đoán và theo dõi <strong>Nhiễm toan ceton đái tháo đường (DKA)</strong>. Giá trị &gt; 3.0 mmol/L chỉ điểm DKA nặng cần cấp cứu.</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
-        <footer style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.85rem;">
-            <em>Tài liệu tham khảo: Hóa Sinh Y Học ĐHYD 2024, Harper's Illustrated Biochemistry 32nd, Clinical Biochemistry 7th.</em>
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.7;">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--color-text, #334155); font-size: 0.95rem;">Tài Liệu Tham Khảo Chuẩn Y Khoa AMA:</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Bộ Môn Hóa Sinh – Đại Học Y Dược TP. Hồ Chí Minh. <em>Hóa Sinh Y Học</em>. TP. Hồ Chí Minh: NXB Y Học; 2024.</li>
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA, eds. <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw-Hill Education; 2023.</li>
+                <li>Baynes JW, Dominiczak MH. <em>Medical Biochemistry</em>. 5th ed. London, England: Elsevier; 2019.</li>
+                <li>Pratt CW, Cornely K. <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley & Sons; 2021.</li>
+                <li>Mach F, Baigent C, Catapano AL, et al. 2019 ESC/EAS Guidelines for the management of dyslipidaemias: lipid modification to reduce cardiovascular risk. <em>Eur Heart J</em>. 2020;41(1):111-188.</li>
+            </ol>
         </footer>
 
     </div>
 </body>
+
 </html>
