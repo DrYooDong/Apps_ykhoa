@@ -186,6 +186,212 @@ export const CLINICAL_APPROACH_DATABASE: Record<string, DiagnosticApproachData> 
       { title: 'Surviving Sepsis Campaign (SSC 2021) Guidelines', url: '#/ebm' },
       { title: 'Hướng dẫn chẩn đoán và điều trị Nhiễm khuẩn huyết - Bộ Y tế', url: '#/ebm' }
     ]
+  },
+
+  'dau_bung_cap': {
+    symptomKey: 'dau_bung_cap',
+    symptomName: 'Đau Bụng Cấp & Bụng Ngoại Khoa (Acute Abdomen)',
+    icon: 'fa-solid fa-hand-holding-medical',
+    redFlags: [
+      'Đề kháng thành bụng, co cứng như gỗ, cảm ứng phúc mạc (Viêm phúc mạc toàn thể)',
+      'Tụt huyết áp, mạch nhanh nhỏ, da lạnh ẩm (Sốc mất máu do vỡ thai ngoài tử cung / vỡ phình ĐMC bụng)',
+      'Đau bụng dữ dội đột ngột như dao đâm vùng thượng vị kèm liềm hơi dưới hoành (Thủng tạng rỗng)',
+      'Bí trung đại tiện, nôn ói nhiều, quai ruột nổi, dấu rắn bò (Tắc ruột cơ học)'
+    ],
+    differentials: [
+      { diagnosis: 'Viêm ruột thừa cấp (Alvarado score)', probability: 'high', mustNotMiss: true, keyFeatures: 'Đau chuyển từ quanh rốn xuống hố chậu phải, điểm McBurney (+), sốt nhẹ, BC tăng', goldStandard: 'Siêu âm / CT bụng có cản quang' },
+      { diagnosis: 'Viêm tụy cấp (Tiêu chuẩn Atlanta 2012: ≥ 2/3 tiêu chuẩn)', probability: 'high', keyFeatures: 'Đau thượng vị lan ra sau lưng, Amylase/Lipase máu tăng > 3 lần giới hạn trên, hình ảnh CT viêm tụy', goldStandard: 'Lipase máu & CT bụng có cản quang sau 72h' },
+      { diagnosis: 'Viêm túi mật cấp (Tokyo Guidelines TG18)', probability: 'moderate', keyFeatures: 'Đau hạ sườn phải lan lên vai phải, dấu Murphy (+), sốt, thành túi mật dày > 4mm trên siêu âm', goldStandard: 'Siêu âm ổ bụng / MRI mật tụy (MRCP)' },
+      { diagnosis: 'Thủng dạ dày - tá tràng', probability: 'low', mustNotMiss: true, keyFeatures: 'Đau dữ dội thượng vị đột ngột, bụng cứng như gỗ, liềm hơi dưới hoành trên X-quang bụng đứng', goldStandard: 'X-quang bụng đứng / CT bụng' }
+    ],
+    algorithmSteps: [
+      { step: 1, title: 'Loại trừ Tình trạng Cấp cứu Ngoại khoa Khẩn', action: 'Khám tìm dấu viêm phúc mạc (đề kháng, co cứng), siêu âm FAST tại giường tìm dịch ổ bụng tự do.', pearl: 'Không cho thuốc giảm đau Opioid liều cao trước khi bác sĩ ngoại khoa thăm khám đánh giá triệu chứng.' },
+      { step: 2, title: 'Chẩn đoán Hình ảnh & Xét nghiệm', action: 'Làm X-quang bụng không chuẩn bị đứng, Siêu âm bụng tổng quát, Amylase/Lipase, CTM, Beta-hCG (nữ tuổi sinh đẻ).', pearl: 'Phụ nữ độ tuổi sinh sản đau bụng dưới cấp luôn phải thử Beta-hCG để loại trừ thai ngoài tử cung vỡ.' }
+    ],
+    svgFlowchart: `
+      <svg viewBox="0 0 700 200" style="width:100%; height:auto; font-family:inherit;" aria-label="Sơ đồ Đau bụng cấp">
+        <rect width="700" height="200" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #e2e8f0)" />
+        <rect x="20" y="70" width="140" height="50" rx="8" fill="#0284c7" />
+        <text x="90" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Đau Bụng Cấp</text>
+        <text x="90" y="108" fill="#e0f2fe" font-size="9.5" text-anchor="middle">Khám Bụng + FAST</text>
+        <path d="M 160 95 L 230 95" stroke="#0284c7" stroke-width="2" fill="none" />
+        <rect x="230" y="70" width="180" height="50" rx="8" fill="#f59e0b" />
+        <text x="320" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Phân Khu Vực Đau</text>
+        <text x="320" y="108" fill="#fef3c7" font-size="9" text-anchor="middle">HCP / Thượng vị / HSP / HCF</text>
+        <path d="M 410 95 L 470 95" stroke="#f59e0b" stroke-width="2" fill="none" />
+        <rect x="470" y="70" width="200" height="50" rx="8" fill="var(--color-surface, #fff)" stroke="#0284c7" stroke-width="1.5" />
+        <text x="570" y="92" fill="var(--color-text, #0f172a)" font-size="11" font-weight="700" text-anchor="middle">CT Scanner Ổ Bụng</text>
+        <text x="570" y="108" fill="var(--color-text-muted, #64748b)" font-size="9" text-anchor="middle">Hội chẩn Ngoại / Nội trú tiêu hóa</text>
+      </svg>
+    `,
+    guidelineLinks: [
+      { title: 'Tokyo Guidelines (TG18) for Acute Cholangitis and Cholecystitis', url: '#/ebm' },
+      { title: 'Revised Atlanta Classification of Acute Pancreatitis 2012', url: '#/ebm' }
+    ]
+  },
+
+  'suy_than_cap_kdigo': {
+    symptomKey: 'suy_than_cap_kdigo',
+    symptomName: 'Tổn Thương Thận Cấp (KDIGO AKI Criteria)',
+    icon: 'fa-solid fa-kidneys',
+    redFlags: [
+      'Vô niệu hoàn toàn (< 100ml/24h) hoặc Thiểu niệu kéo dài (< 0.5 ml/kg/h > 12h)',
+      'Tăng Kali máu nặng (K+ > 6.5 mmol/L) có biến đổi sóng T nhọn trên ECG',
+      'Toan chuyển hóa nặng khó bù (pH < 7.15, HCO3- < 10 mmol/L)',
+      'Phù phổi cấp kháng trị với lợi tiểu quai, Quá tải thể tích tuần hoàn đe dọa'
+    ],
+    differentials: [
+      { diagnosis: 'Tổn thương thận cấp trước thận (Prerenal AKI)', probability: 'high', keyFeatures: 'Mất nước, suy tim, tụt HA, Tỷ lệ BUN/Cre > 20:1, FeNa < 1%, hồi phục sau bù dịch', goldStandard: 'Đáp ứng bù dịch đẳng trương' },
+      { diagnosis: 'Hoại tử ống thận cấp (ATN - Acute Tubular Necrosis)', probability: 'high', keyFeatures: 'Sau sốc kéo dài, nhiễm độc thận (Aminoglycoside, thuốc cản quang), FeNa > 2%', goldStandard: 'Trụ hạt nâu bùn nước tiểu & Sinh thiết' },
+      { diagnosis: 'Tổn thương thận cấp sau thận (Postrenal AKI)', probability: 'moderate', keyFeatures: 'Bí tiểu, cầu bàng quang (+), sỏi niệu quản 2 bên, u chèn ép, siêu âm thấy thận ứ nước', goldStandard: 'Siêu âm hệ tiết niệu & Đặt sonde tiểu' }
+    ],
+    algorithmSteps: [
+      { step: 1, title: 'Phân Tầng Giai Đoạn KDIGO AKI', action: 'Stage 1: Cre tăng ≥ 26.5 umol/L trong 48h hoặc tăng 1.5-1.9 lần | Stage 2: Cre tăng 2.0-2.9 lần | Stage 3: Cre tăng ≥ 3 lần hoặc Cre ≥ 353 umol/L hoặc bắt đầu RRT.', pearl: 'Theo dõi lượng nước tiểu mỗi giờ (Urine output) là dấu hiệu sớm nhạy cảm hơn Creatinine máu.' },
+      { step: 2, title: 'Đánh Giá Chỉ Định Lọc Máu Cấp Cứu (AEIOU)', action: 'A (Acidosis pH < 7.15), E (Electrolyte K > 6.5), I (Intoxication ngộ độc), O (Overload phù phổi cấp), U (Uremia viêm màng ngoài tim, hôn mê do ure cao).', pearl: 'Không trì hoãn lọc máu khi có 1 trong 5 chỉ định AEIOU tối khẩn.' }
+    ],
+    svgFlowchart: `
+      <svg viewBox="0 0 700 200" style="width:100%; height:auto; font-family:inherit;" aria-label="Sơ đồ KDIGO AKI">
+        <rect width="700" height="200" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #e2e8f0)" />
+        <rect x="20" y="70" width="140" height="50" rx="8" fill="#d97706" />
+        <text x="90" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Creatinine Tăng / Thiểu niệu</text>
+        <text x="90" y="108" fill="#fef3c7" font-size="9" text-anchor="middle">Tiêu chuẩn KDIGO 2024</text>
+        <path d="M 160 95 L 230 95" stroke="#d97706" stroke-width="2" fill="none" />
+        <rect x="230" y="70" width="180" height="50" rx="8" fill="#b45309" />
+        <text x="320" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Kiểm Tra AEIOU Cấp Cứu</text>
+        <text x="320" y="108" fill="#fef3c7" font-size="9" text-anchor="middle">Toan / K+ cao / Phù phổi / Ure</text>
+        <path d="M 410 95 L 470 95" stroke="#b45309" stroke-width="2" fill="none" />
+        <rect x="470" y="70" width="200" height="50" rx="8" fill="var(--color-surface, #fff)" stroke="#d97706" stroke-width="1.5" />
+        <text x="570" y="92" fill="var(--color-text, #0f172a)" font-size="11" font-weight="700" text-anchor="middle">Xử Trí Nguyên Nhân &amp; RRT</text>
+        <text x="570" y="108" fill="var(--color-text-muted, #64748b)" font-size="9" text-anchor="middle">Dừng thuốc độc thận + Bù dịch/Lọc máu</text>
+      </svg>
+    `,
+    guidelineLinks: [
+      { title: 'KDIGO Clinical Practice Guideline for Acute Kidney Injury', url: '#/ebm' }
+    ]
+  },
+
+  'viem_noi_tam_mac_duke': {
+    symptomKey: 'viem_noi_tam_mac_duke',
+    symptomName: 'Viêm Nội Tâm Mạc Nhiễm Khuẩn (Modified Duke Criteria 2023)',
+    icon: 'fa-solid fa-heart-circle-exclamation',
+    redFlags: [
+      'Tiếng thổi tim mới xuất hiện hoặc thay đổi tính chất kèm sốt kéo dài không rõ nguyên nhân',
+      'Đột quỵ tắc mạch não hoặc tắc mạch tạng (Lách, Thận, Chi)',
+      'Tổn thương da/kết mạc: Nốt Osler (đau ở ngón tay/chân), Tổn thương Janeway (không đau ở lòng bàn tay/chân), Đốm Roth ở đáy mắt',
+      'Bệnh nhân có van tim nhân tạo hoặc thiết bị trong tim (CIED) sốt tái diễn'
+    ],
+    differentials: [
+      { diagnosis: 'Viêm nội tâm mạc nhiễm khuẩn xác định (Definite IE: 2 tiêu chuẩn chính HOẶC 1 chính + 3 phụ HOẶC 5 phụ)', probability: 'high', mustNotMiss: true, keyFeatures: 'Cấy máu (+) với vi khuẩn điển hình (S. viridans, S. aureus, Enterococcus) + Siêu âm tim có Sùi (Vegetation) / Áp xe quanh van / Hở van mới', goldStandard: 'Cấy máu 3 bộ & Siêu âm tim qua thực quản (TEE)' },
+      { diagnosis: 'Sốt chưa rõ nguyên nhân (FUO) / Nhiễm trùng huyết vãng khuẩn', probability: 'moderate', keyFeatures: 'Cấy máu dương tính nhưng siêu âm TEE không có sùi, không có tổn thương mạch máu', goldStandard: 'Theo dõi cấy máu lặp lại & TEE sau 7 ngày' },
+      { diagnosis: 'Lupus ban đỏ hệ thống (Viêm nội tâm mạc vô khuẩn Libman-Sacks)', probability: 'low', keyFeatures: 'Cấy máu âm tính, kháng thể ANA/anti-dsDNA (+), tổn thương van hai lá vô khuẩn', goldStandard: 'Kháng thể tự miễn & Cấy máu âm tính' }
+    ],
+    algorithmSteps: [
+      { step: 1, title: 'Cấy Máu Trước Khi Dùng Kháng Sinh', action: 'Lấy 3 bộ cấy máu (mỗi bộ gồm 1 chai ái khí + 1 chai kỵ khí) từ các vị trí tĩnh mạch riêng biệt, cách nhau ít nhất 30 phút.', pearl: 'Dùng kháng sinh trước khi cấy máu làm giảm 50% độ nhạy của cấy máu trong chẩn đoán IE.' },
+      { step: 2, title: 'Siêu Âm Tim Qua Thành Ngực (TTE) & Qua Thực Quản (TEE)', action: 'TTE làm trước. Nếu TTE âm tính nhưng nghi ngờ lâm sàng cao hoặc bệnh nhân mang van cơ học ➔ Bắt buộc làm TEE.', pearl: 'TEE có độ nhạy 90-100% trong phát hiện sùi và áp xe gốc van so với 50-60% của TTE.' }
+    ],
+    svgFlowchart: `
+      <svg viewBox="0 0 700 200" style="width:100%; height:auto; font-family:inherit;" aria-label="Sơ đồ Duke Criteria">
+        <rect width="700" height="200" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #e2e8f0)" />
+        <rect x="20" y="70" width="140" height="50" rx="8" fill="#dc2626" />
+        <text x="90" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Sốt + Tiếng Thổi Tim</text>
+        <text x="90" y="108" fill="#fee2e2" font-size="9" text-anchor="middle">Nghi ngờ VNTMNK</text>
+        <path d="M 160 95 L 230 95" stroke="#dc2626" stroke-width="2" fill="none" />
+        <rect x="230" y="70" width="180" height="50" rx="8" fill="#b91c1c" />
+        <text x="320" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">3 Bộ Cấy Máu + TTE/TEE</text>
+        <text x="320" y="108" fill="#fee2e2" font-size="9" text-anchor="middle">Tìm Sùi / Hở Van Mới</text>
+        <path d="M 410 95 L 470 95" stroke="#b91c1c" stroke-width="2" fill="none" />
+        <rect x="470" y="70" width="200" height="50" rx="8" fill="var(--color-surface, #fff)" stroke="#dc2626" stroke-width="1.5" />
+        <text x="570" y="92" fill="var(--color-text, #0f172a)" font-size="11" font-weight="700" text-anchor="middle">Kháng Sinh IV Kéo Dài</text>
+        <text x="570" y="108" fill="var(--color-text-muted, #64748b)" font-size="9" text-anchor="middle">4-6 tuần theo KSĐ / Phẫu thuật van</text>
+      </svg>
+    `,
+    guidelineLinks: [
+      { title: 'ESC 2023 Guidelines for the management of endocarditis', url: '#/ebm' },
+      { title: 'The 2023 Duke-ISCVID Criteria for Infective Endocarditis', url: '#/ebm' }
+    ]
+  },
+
+  'ards_berlin': {
+    symptomKey: 'ards_berlin',
+    symptomName: 'Hội Chứng Suy Hô Hấp Cấp Tiến Triển (Berlin ARDS Definition)',
+    icon: 'fa-solid fa-lungs-virus',
+    redFlags: [
+      'PaO2 / FiO2 ≤ 100 mmHg kèm PEEP ≥ 5 cmH2O (ARDS mức độ NẶNG - Tỷ lệ tử vong 45%)',
+      'Thâm nhiễm phế nang lan tỏa 2 bên phổi xuất hiện trong vòng 1 tuần sau biến cố khởi phát',
+      'Thiếu oxy máu trơ không đáp ứng với thở oxy thông thường',
+      'Đã loại trừ nguyên nhân phù phổi do suy tim hoặc quá tải dịch (bằng Siêu âm tim / Áp lực mao mạch phổi bít PAWP ≤ 18 mmHg)'
+    ],
+    differentials: [
+      { diagnosis: 'ARDS Nhẹ (Mild): 200 < PaO2/FiO2 ≤ 300 mmHg với PEEP/CPAP ≥ 5', probability: 'high', keyFeatures: 'Thâm nhiễm 2 bên, P/F 200-300, áp dụng thở máy bảo vệ phổi (Vt = 6 ml/kg IBW)', goldStandard: 'Khí máu động mạch & X-quang/CT ngực' },
+      { diagnosis: 'ARDS Vừa (Moderate): 100 < PaO2/FiO2 ≤ 200 mmHg với PEEP ≥ 5', probability: 'high', keyFeatures: 'Cần PEEP cao hơn, xem xét phong bế thần kinh cơ sớm nếu chống máy', goldStandard: 'ABG & P/F ratio' },
+      { diagnosis: 'ARDS Nặng (Severe): PaO2/FiO2 ≤ 100 mmHg với PEEP ≥ 5', probability: 'high', mustNotMiss: true, keyFeatures: 'Thiếu oxy cực nặng ➔ Chỉ định Thông khí nằm sấp (Prone Positioning ≥ 16h/ngày) & Cân nhắc ECMO (VV-ECMO)', goldStandard: 'ABG + Tiêu chuẩn Berlin' },
+      { diagnosis: 'Phù phổi cấp huyết động do Tim (Cardiogenic Pulmonary Edema)', probability: 'moderate', keyFeatures: 'BN có tiền sử bệnh tim, NT-proBNP tăng cao, EF giảm, áp lực đổ đầy thất trái tăng', goldStandard: 'Siêu âm tim Doppler' }
+    ],
+    algorithmSteps: [
+      { step: 1, title: 'Thông Khí Bảo Vệ Phổi (Lung-Protective Ventilation)', action: 'Cài đặt thể tích khí lưu thông thấp Vt = 4 - 8 ml/kg trọng lượng lý tưởng (IBW). Giữ Áp lực cao nguyên (Plateau Pressure) Pplat ≤ 30 cmH2O.', pearl: 'Công thức cân nặng lý tưởng (IBW): Nam = 50 + 0.91 x (Chiều cao cm - 152.4); Nữ = 45.5 + 0.91 x (Chiều cao cm - 152.4).' },
+      { step: 2, title: 'Thông Khí Nằm Sấp (Prone Positioning)', action: 'Bắt buộc chỉ định nằm sấp ít nhất 16 giờ liên tục mỗi ngày khi PaO2/FiO2 < 150 mmHg.', pearl: 'Nằm sấp giúp cải thiện đáng kể tỷ lệ sống còn trong ARDS nặng (Thử nghiệm PROSEVA).' }
+    ],
+    svgFlowchart: `
+      <svg viewBox="0 0 700 200" style="width:100%; height:auto; font-family:inherit;" aria-label="Sơ đồ ARDS">
+        <rect width="700" height="200" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #e2e8f0)" />
+        <rect x="20" y="70" width="140" height="50" rx="8" fill="#0284c7" />
+        <text x="90" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Thiếu Oxy Cấp + Thâm Nhiễm 2 Bên</text>
+        <text x="90" y="108" fill="#e0f2fe" font-size="9" text-anchor="middle">Trong ≤ 7 ngày</text>
+        <path d="M 160 95 L 230 95" stroke="#0284c7" stroke-width="2" fill="none" />
+        <rect x="230" y="70" width="180" height="50" rx="8" fill="#0369a1" />
+        <text x="320" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Tính PaO2 / FiO2</text>
+        <text x="320" y="108" fill="#e0f2fe" font-size="9" text-anchor="middle">Phân tầng: Nhẹ / Vừa / Nặng</text>
+        <path d="M 410 95 L 470 95" stroke="#0369a1" stroke-width="2" fill="none" />
+        <rect x="470" y="70" width="200" height="50" rx="8" fill="var(--color-surface, #fff)" stroke="#0284c7" stroke-width="1.5" />
+        <text x="570" y="92" fill="var(--color-text, #0f172a)" font-size="11" font-weight="700" text-anchor="middle">Chiến Lược ARDSnet</text>
+        <text x="570" y="108" fill="var(--color-text-muted, #64748b)" font-size="9" text-anchor="middle">Vt 6ml/kg + Nằm sấp + PEEP cao</text>
+      </svg>
+    `,
+    guidelineLinks: [
+      { title: 'The Berlin Definition of ARDS. JAMA. 2012', url: '#/ebm' },
+      { title: 'An Official ATS/ESICM/SCCM Clinical Practice Guideline: Mechanical Ventilation in ARDS', url: '#/ebm' }
+    ]
+  },
+
+  'rome_iv_ibs': {
+    symptomKey: 'rome_iv_ibs',
+    symptomName: 'Hội Chứng Ruột Kích Thích (Rome IV Criteria for IBS)',
+    icon: 'fa-solid fa-bacteria',
+    redFlags: [
+      'Xuất huyết tiêu hóa (Đi cầu ra máu tươi hoặc phân đen)',
+      'Sụt cân không chủ đích, sốt kéo dài, thiếu máu thiếu sắt chưa rõ nguyên nhân',
+      'Triệu chứng khởi phát lần đầu ở bệnh nhân > 50 tuổi',
+      'Tiền sử gia đình có người bị ung thư đại trực tràng hoặc bệnh viêm ruột mạn tính (IBD)'
+    ],
+    differentials: [
+      { diagnosis: 'Hội chứng ruột kích thích (IBS) thể táo bón (IBS-C) / thể tiêu chảy (IBS-D) / thể hỗn hợp (IBS-M)', probability: 'high', keyFeatures: 'Đau bụng tái diễn ít nhất 1 ngày/tuần trong 3 tháng qua, kèm ≥ 2/3 tiêu chuẩn liên quan đi tiêu, thay đổi tần suất hoặc khuôn phân', goldStandard: 'Tiêu chuẩn lâm sàng Rome IV sau khi loại trừ cờ đỏ' },
+      { diagnosis: 'Bệnh Viêm ruột mạn tính (IBD: Crohn / Viêm loét đại trực tràng chảy máu)', probability: 'low', mustNotMiss: true, keyFeatures: 'Tiêu chảy nhầy máu ban đêm, Calprotectin phân tăng cao > 200 µg/g, loét niêm mạc trên nội soi', goldStandard: 'Nội soi đại trực tràng toàn bộ + Sinh thiết' },
+      { diagnosis: 'Bệnh Celiac (Không dung nạp Gluten)', probability: 'low', keyFeatures: 'Tiêu chảy mạn, chướng bụng, thiếu máu thiếu sắt, kháng thể Anti-tTG IgA (+)', goldStandard: 'Kháng thể Anti-tTG & Sinh thiết tá tràng' }
+    ],
+    algorithmSteps: [
+      { step: 1, title: 'Đánh Giá Tiêu Chuẩn Rome IV', action: 'Đau bụng tái diễn trung bình ≥ 1 ngày/tuần trong 3 tháng qua, bắt đầu ít nhất 6 tháng trước, liên quan ≥ 2 tiêu chuẩn: 1. Liên quan đại tiện; 2. Thay đổi số lần đi tiêu; 3. Thay đổi hình dạng phân (Thang Bristol).', pearl: 'Không làm các xét nghiệm xâm lấn đắt tiền (nội soi) nếu bệnh nhân trẻ (< 50 tuổi) không có bất kỳ dấu hiệu cờ đỏ nào.' },
+      { step: 2, title: 'Chiến Lược Điều Trị Đa Mô Thức', action: 'Tư vấn chế độ ăn giảm FODMAPs, dùng thuốc chống co thắt (Mebeverine, Trimebutine), men vi sinh Probiotics hoặc thuốc chống trầm cảm liều thấp (TCA/SSRI).', pearl: 'Trục Não - Ruột (Gut-Brain Axis) đóng vai trò then chốt trong bệnh sinh IBS.' }
+    ],
+    svgFlowchart: `
+      <svg viewBox="0 0 700 200" style="width:100%; height:auto; font-family:inherit;" aria-label="Sơ đồ Rome IV">
+        <rect width="700" height="200" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #e2e8f0)" />
+        <rect x="20" y="70" width="140" height="50" rx="8" fill="#10b981" />
+        <text x="90" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Đau Bụng + Rối Loạn Đi Tiêu</text>
+        <text x="90" y="108" fill="#d1fae5" font-size="9" text-anchor="middle">≥ 1 lần/tuần x 3 tháng</text>
+        <path d="M 160 95 L 230 95" stroke="#10b981" stroke-width="2" fill="none" />
+        <rect x="230" y="70" width="180" height="50" rx="8" fill="#059669" />
+        <text x="320" y="92" fill="#fff" font-size="11" font-weight="700" text-anchor="middle">Sàng Lọc Cờ Đỏ</text>
+        <text x="320" y="108" fill="#d1fae5" font-size="9" text-anchor="middle">Máu / Sụt cân / Tuổi > 50</text>
+        <path d="M 410 95 L 470 95" stroke="#059669" stroke-width="2" fill="none" />
+        <rect x="470" y="70" width="200" height="50" rx="8" fill="var(--color-surface, #fff)" stroke="#10b981" stroke-width="1.5" />
+        <text x="570" y="92" fill="var(--color-text, #0f172a)" font-size="11" font-weight="700" text-anchor="middle">Phân Loại Phân Bristol</text>
+        <text x="570" y="108" fill="var(--color-text-muted, #64748b)" font-size="9" text-anchor="middle">IBS-C / IBS-D / IBS-M ➔ Phác đồ FODMAP</text>
+      </svg>
+    `,
+    guidelineLinks: [
+      { title: 'Rome IV Diagnostic Criteria for Functional Gastrointestinal Disorders', url: '#/ebm' },
+      { title: 'ACG Clinical Guideline: Management of Irritable Bowel Syndrome', url: '#/ebm' }
+    ]
   }
 };
 

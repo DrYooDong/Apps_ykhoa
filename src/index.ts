@@ -163,7 +163,9 @@ import {
   renderKaplanMeierView,
   renderRocCurveView,
   renderStatisticsHubView,
-  renderGuidelineReader
+  renderGuidelineReader,
+  renderStudyAnalyzerView,
+  initStudyAnalyzerController
 } from './content/ebm';
 
 import { 
@@ -216,6 +218,11 @@ function initializeRoutes(): void {
   router.register('/ebm/journal-quality', 'Đánh Giá Chất Lượng Tạp Chí', () => {
     document.title = 'Đánh Giá Tạp Chí Y Khoa (Journal QA) – CliniPortal';
     mountToApp(renderJournalQualityView());
+  });
+  router.register('/ebm/study-analyzer', 'Phân Tích Nghiên Cứu EBM', () => {
+    document.title = 'EBM Study Deep Analyzer & Appraisal Suite – CliniPortal';
+    mountToApp(renderStudyAnalyzerView());
+    initStudyAnalyzerController();
   });
   router.register('/ebm/guideline-radar', 'Guideline Radar Diff Viewer', () => {
     document.title = 'Guideline Radar Diff Viewer – CliniPortal';

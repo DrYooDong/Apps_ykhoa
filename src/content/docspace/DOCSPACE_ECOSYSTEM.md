@@ -25,9 +25,7 @@ graph TD
         SOAP[SOAP Digital<br/>Sổ tay Bệnh phòng]:::feature
         SBAR[SBAR<br/>Báo cáo & Bàn giao]:::feature
         OnCall[Checklist<br/>Quản lý Trực]:::feature
-        Cases[Case Logger<br/>Lưu trữ Ca bệnh]:::feature
         Notes[Notepad<br/>Ghi chú cá nhân]:::feature
-        Drugs[Drug Journal<br/>Nhật ký Thuốc]:::feature
         Protocol[Personal Protocol<br/>Phác đồ Cá nhân]:::feature
         Links[Quick Links<br/>Danh bạ / Liên kết]:::feature
     end
@@ -53,9 +51,7 @@ graph TD
     Dash --> SOAP
     Dash --> SBAR
     Dash --> OnCall
-    Dash --> Cases
     Dash --> Notes
-    Dash --> Drugs
     Dash --> Protocol
     Dash --> Links
     Dash --> AISettings
@@ -66,9 +62,7 @@ graph TD
     SOAP <--> Storage
     SBAR <--> Storage
     OnCall <--> Storage
-    Cases <--> Storage
     Notes <--> Storage
-    Drugs <--> Storage
     Protocol <--> Storage
     Links <--> Storage
     AISettings <--> Storage
@@ -82,7 +76,6 @@ graph TD
     LivingProtocol -. "Gọi local AI" .-> AIEngine
     Sandbox -. "Chạy giả lập" .-> AIEngine
     SBAR -. "RAG Hỗ trợ" .-> AIEngine
-    Cases -. "Vector tìm kiếm" .-> AIEngine
     
     LivingProtocol <--> Storage
     Sandbox <--> Storage
@@ -92,18 +85,16 @@ graph TD
 
 ### 2.1. User & Access Layer
 - **Profile Selector (`storage.ts`, `docspace-view.ts`)**: Mọi dữ liệu được phân lập (isolate) theo từng Hồ sơ Bác sĩ (Profile ID). Nếu chưa chọn hồ sơ, người dùng bắt buộc phải tạo/đăng nhập.
-- **Dashboard (`docspace-view.ts`)**: Trung tâm điều khiển (Hub) chứa thống kê tổng quan (số ca bệnh đã lưu, số SBAR đang hoạt động) và điều hướng (routing).
+- **Dashboard (`docspace-view.ts`)**: Trung tâm điều khiển (Hub) chứa thống kê tổng quan (số bệnh án SOAP, số SBAR đang hoạt động) và điều hướng (routing).
 
 ### 2.2. Core Features Layer (Các tính năng lâm sàng)
 Tất cả các tính năng đều nằm trong thư mục `src/docspace/features/`:
 1. **SOAP Digital**: Quản lý bệnh án hằng ngày theo cấu trúc Subjective - Objective - Assessment - Plan.
 2. **SBAR**: Ghi chú hội chẩn, báo cáo ca bệnh (Situation - Background - Assessment - Recommendation).
 3. **OnCall**: Checklist các công việc trong tua trực (nhắc nhở sinh hiệu, thuốc, xét nghiệm).
-4. **Case Logger**: Sổ tay lưu trữ các ca bệnh hay, có thể đánh tag và tìm kiếm lại.
-5. **Personal Notepad**: Ghi chú tự do bằng Markdown.
-6. **Drug Journal**: Sổ tay ghi chép kinh nghiệm tương tác thuốc, liều lượng cá nhân.
-7. **Personal Protocol**: Nơi bác sĩ tự xây dựng phác đồ cá nhân.
-8. **Quick Links**: Danh sách các liên kết, danh bạ nội bộ hay dùng.
+4. **Personal Notepad**: Ghi chú tự do bằng Markdown.
+5. **Personal Protocol**: Nơi bác sĩ tự xây dựng phác đồ cá nhân.
+6. **Quick Links**: Danh sách các liên kết, danh bạ nội bộ hay dùng.
 
 ### 2.3. Experimental & AI Layer (Phân hệ AI)
 Thư mục `src/docspace/ai/` xử lý kết nối với Local LLM / Cloud API Miễn phí:

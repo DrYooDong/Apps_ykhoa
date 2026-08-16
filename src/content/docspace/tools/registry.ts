@@ -20,6 +20,10 @@ import { antibioticDosingCalculator } from './scores/antibiotic-dosing';
 import { doseEquivalenceCalculator } from './scores/dose-equivalence';
 import { insulinSlidingScaleCalculator } from './scores/insulin-sliding-scale';
 import { creatinineClearanceCalculator } from './scores/creatinine-clearance';
+import { glasgowBlatchfordCalculator } from './scores/glasgow-blatchford';
+import { wellsDvtCalculator } from './scores/wells-dvt';
+import { meldNaCalculator } from './scores/meld-na';
+import { centorMcisaacCalculator } from './scores/centor-mcisaac';
 
 class ToolRegistry {
   private calculators = new Map<string, BaseCalculator>();
@@ -37,7 +41,11 @@ class ToolRegistry {
       abgCalculator,
       electrolytesCalculator,
       wellsPeCalculator,
+      wellsDvtCalculator,
       childPughCalculator,
+      meldNaCalculator,
+      glasgowBlatchfordCalculator,
+      centorMcisaacCalculator,
       nihssCalculator,
       antibioticDosingCalculator,
       doseEquivalenceCalculator,

@@ -18,8 +18,8 @@ import { drugPicker } from './drug-picker';
 import { drugIntelligencePanel } from './drug-intelligence-panel';
 import { clinicalReasoningPanel } from './clinical-reasoning-panel';
 import { quickReferenceDrawer } from './quick-reference-drawer';
-import { resourcePicker } from './resource-picker';
 import { calculatorPicker } from './calculator-picker';
+import { labDiagnosticsHub } from './lab-diagnostics-hub';
 import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
 
 const ALERT_KEYWORDS = [
@@ -720,9 +720,14 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                     <span style="background:#0ea5e9; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">O</span>
                     <span>Thăm khám / CLS</span>
                   </label>
-                  <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="objective" style="color:var(--color-primary); padding:1px 6px; font-size:10px; height:auto; min-height:0;">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI
-                  </button>
+                  <div style="display:flex; gap:4px; align-items:center;">
+                    <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnOpenLabFromO" style="color:var(--color-primary); padding:1px 6px; font-size:10px; height:auto; min-height:0;" title="Mở Kho Cận Lâm Sàng &amp; Tra cứu Khoảng tham chiếu, ECG, X-quang">
+                      <i class="fa-solid fa-flask-vial"></i> Tra cứu CLS
+                    </button>
+                    <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="objective" style="color:var(--color-primary); padding:1px 6px; font-size:10px; height:auto; min-height:0;">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i> AI
+                    </button>
+                  </div>
                 </div>
                 <textarea id="esONotes" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; resize:vertical; border:none; background:transparent; padding:0;" placeholder="Khám thực thể hoặc thả thẻ CLS...">${p.oNotes || ''}</textarea>
               </div>
@@ -740,13 +745,13 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="assessment" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnReasoningCoachSoap" style="color:var(--color-success, #10b981); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Ma Trận Chẩn Đoán Phân Biệt & Tiếp Cận">
-                  <i class="fa-solid fa-sitemap"></i> Tiếp cận chẩn đoán
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnReasoningCoachSoap" style="color:#059669; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Ma trận Chẩn đoán phân biệt &amp; Sơ đồ tiếp cận theo triệu chứng">
+                  <i class="fa-solid fa-diagram-project"></i> Tiếp cận chẩn đoán
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
-                  <i class="fa-solid fa-list-ul"></i> + ICD-10
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:#0284c7; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Tra cứu mã ICD-10 &amp; Phác đồ điều trị chuẩn">
+                  <i class="fa-solid fa-list-ol"></i> + ICD-10
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreSoap" style="color:#d97706; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Kho Thang điểm Lâm sàng (SOFA, CURB65, CHA2DS2-VASc...)">
                   <i class="fa-solid fa-calculator"></i> + Thang điểm
                 </button>
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBM" style="padding:2px 8px; font-size:10px; height:auto; min-height:0;">
@@ -756,7 +761,7 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
             </div>
 
             <div style="padding:12px 14px;">
-              <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Ghi nhận đánh giá lâm sàng hoặc chẩn đoán (Ví dụ: Suy tim (I50.0), Rung nhĩ (I48), Viêm phổi)...">${p.aAssessment || ''}</textarea>
+              <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Biện luận lâm sàng, chẩn đoán xác định và phân tầng nguy cơ...">${p.aAssessment || ''}</textarea>
             </div>
           </div>
 
@@ -780,7 +785,7 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
 
           <!-- P — Y lệnh khác -->
           <div style="background:var(--color-bg); border:1px solid rgba(16,185,129,0.3); border-radius:10px; overflow:hidden;">
-            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(16,185,129,0.07),rgba(52,211,153,0.02)); border-bottom:1px solid rgba(16,185,129,0.2); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(52,211,153,0.02)); border-bottom:1px solid rgba(16,185,129,0.2); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
               <div style="display:flex; align-items:center; gap:6px;">
                 <span style="background:#10b981; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">P</span>
                 <span style="font-size:11px; font-weight:800; color:#065f46; text-transform:uppercase; letter-spacing:0.06em;">Y lệnh khác (Chăm sóc, Dinh dưỡng...)</span>
@@ -790,13 +795,13 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="plan" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnDrugIntelSoap" style="color:#db2777; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Dược thư & Tương tác thuốc">
-                  <i class="fa-solid fa-pills"></i> Drug Intelligence
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnDrugIntelSoap" style="color:#e11d48; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Drug Intelligence Panel (Tra cứu Dược thư &amp; Kiểm tra tương tác thuốc)">
+                  <i class="fa-solid fa-capsules"></i> Drug Intelligence
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
-                  <i class="fa-solid fa-capsules"></i> + Kê đơn
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:#0284c7; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Kê đơn thuốc nhanh vào ô P">
+                  <i class="fa-solid fa-plus"></i> + Kê đơn
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnQuickRefSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Tra cứu nhanh công thức & hướng dẫn">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnQuickRefSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Tra cứu nhanh công thức &amp; hướng dẫn">
                   <i class="fa-solid fa-bolt"></i> Tra cứu nhanh
                 </button>
               </div>
@@ -822,25 +827,34 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
             </div>
           </div>
 
-          <!-- CLS Chỉ định & Kết quả nhanh -->
+          <!-- CLS Chỉ định & Kết quả nhanh (Tích hợp Lab Diagnostics Hub) -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
             <div style="background:var(--color-bg); border:1px solid rgba(14,165,233,0.25); border-radius:10px; overflow:hidden;">
-              <div style="padding:7px 14px; background:linear-gradient(135deg,rgba(14,165,233,0.07),transparent); border-bottom:1px solid rgba(14,165,233,0.15); display:flex; align-items:center; gap:5px;">
-                <i class="fa-solid fa-flask-vial" style="color:#0369a1; font-size:11px;"></i>
-                <span style="font-size:11px; font-weight:800; color:#0369a1; text-transform:uppercase; letter-spacing:0.04em;">Chỉ định CLS</span>
-                <span style="font-size:10px; color:var(--color-text-muted); font-weight:400; text-transform:none;">(Mỗi dòng 1 chỉ định)</span>
+              <div style="padding:7px 14px; background:linear-gradient(135deg,rgba(14,165,233,0.07),transparent); border-bottom:1px solid rgba(14,165,233,0.15); display:flex; align-items:center; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:5px;">
+                  <i class="fa-solid fa-flask-vial" style="color:#0369a1; font-size:11px;"></i>
+                  <span style="font-size:11px; font-weight:800; color:#0369a1; text-transform:uppercase; letter-spacing:0.04em;">Chỉ định CLS</span>
+                </div>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnOpenLabOrderSets" style="color:#0284c7; padding:1px 6px; font-size:10px; height:auto; min-height:0;" title="Mở danh mục Gói Chỉ Định Xét Nghiệm (Cấp cứu, Sepsis, ACS, Viêm phổi...)">
+                  <i class="fa-solid fa-list-check"></i> + Gói Chỉ Định CLS
+                </button>
               </div>
               <div style="padding:10px 14px;">
-                <textarea id="esClsOrders" rows="3" placeholder="VD: CTM, Sinh hóa máu, XQ Ngực..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;">${(p.clsOrders || []).map(o => o.name).join('\n')}</textarea>
+                <textarea id="esClsOrders" rows="3" placeholder="VD: CTM, Sinh hóa máu, XQ Ngực thẳng..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;">${(p.clsOrders || []).map(o => o.name).join('\n')}</textarea>
               </div>
             </div>
             <div style="background:var(--color-bg); border:1px solid rgba(16,185,129,0.25); border-radius:10px; overflow:hidden;">
-              <div style="padding:7px 14px; background:linear-gradient(135deg,rgba(16,185,129,0.07),transparent); border-bottom:1px solid rgba(16,185,129,0.15); display:flex; align-items:center; gap:5px;">
-                <i class="fa-solid fa-chart-line" style="color:#047857; font-size:11px;"></i>
-                <span style="font-size:11px; font-weight:800; color:#047857; text-transform:uppercase; letter-spacing:0.04em;">Kết quả CLS dán nhanh</span>
+              <div style="padding:7px 14px; background:linear-gradient(135deg,rgba(16,185,129,0.07),transparent); border-bottom:1px solid rgba(16,185,129,0.15); display:flex; align-items:center; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:5px;">
+                  <i class="fa-solid fa-chart-line" style="color:#047857; font-size:11px;"></i>
+                  <span style="font-size:11px; font-weight:800; color:#047857; text-transform:uppercase; letter-spacing:0.04em;">Kết quả CLS dán nhanh</span>
+                </div>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnOpenLabParser" style="background:#059669; border-color:#059669; color:#fff; padding:1px 7px; font-size:10px; height:auto; min-height:0;" title="Tự động nhận diện chỉ số tăng/giảm và bắt cờ đỏ nguy kịch">
+                  <i class="fa-solid fa-bolt"></i> ⚡ Phân tích &amp; Bắt cờ đỏ
+                </button>
               </div>
               <div style="padding:10px 14px;">
-                <textarea id="esClsQuickPaste" rows="3" placeholder="Dán kết quả CLS mới vào đây..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;"></textarea>
+                <textarea id="esClsQuickPaste" rows="3" placeholder="Dán kết quả CLS mới vào đây (VD: WBC 18.5, K+ 6.2, TropT 95)..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;"></textarea>
               </div>
             </div>
           </div>
@@ -855,8 +869,8 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
               <button type="button" id="btnCreateSbarFromSoap" data-id="${p.id}" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid var(--color-border); background:var(--color-bg); color:var(--color-text); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
                 <i class="fa-solid fa-file-waveform"></i> Tạo SBAR
               </button>
-              <button type="button" id="btnCreateCaseFromSoap" data-id="${p.id}" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid var(--color-border); background:var(--color-bg); color:var(--color-text); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
-                <i class="fa-solid fa-stethoscope"></i> Lưu Ca Bệnh
+              <button type="button" id="btnOpenLabHubFooter" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid rgba(16,185,129,0.3); background:rgba(16,185,129,0.05); color:#059669; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
+                <i class="fa-solid fa-flask-vial"></i> Kho Cận Lâm Sàng
               </button>
             </div>
 
@@ -1755,6 +1769,31 @@ export function mountSoapController(profileId: string): void {
   // Quick Reference Drawer
   document.getElementById('btnQuickRefSoap')?.addEventListener('click', () => {
     quickReferenceDrawer.open('formulas');
+  });
+
+  // Lab Diagnostics Hub Events
+  document.getElementById('btnOpenLabFromO')?.addEventListener('click', () => {
+    labDiagnosticsHub.open('dictionary', 'esONotes');
+  });
+
+  document.getElementById('btnOpenLabOrderSets')?.addEventListener('click', () => {
+    labDiagnosticsHub.open('ordersets', 'esClsOrders');
+  });
+
+  document.getElementById('btnOpenLabParser')?.addEventListener('click', () => {
+    const rawVal = (document.getElementById('esClsQuickPaste') as HTMLTextAreaElement)?.value || '';
+    labDiagnosticsHub.open('parser', 'esClsQuickPaste');
+    if (rawVal.trim()) {
+      const inputEl = document.getElementById('txtLabRawInput') as HTMLTextAreaElement;
+      if (inputEl) {
+        inputEl.value = rawVal;
+        document.getElementById('btnDoParseLab')?.click();
+      }
+    }
+  });
+
+  document.getElementById('btnOpenLabHubFooter')?.addEventListener('click', () => {
+    labDiagnosticsHub.open('parser');
   });
 
   // Drag and Drop Engine cho Thẻ Cận Lâm Sàng

@@ -226,19 +226,6 @@ export class ClinicalCommandBar {
         }
       },
       {
-        id: 'feat_cases',
-        title: 'Case Logger — Nhật Ký Ca Bệnh Hay',
-        category: 'feature',
-        categoryLabel: 'Tính năng DocSpace',
-        icon: 'fa-solid fa-stethoscope',
-        description: 'Lưu trữ ca bệnh ẩn danh, đính kèm cận lâm sàng và bài học rút ra',
-        badge: 'Ca bệnh',
-        action: () => {
-          this.close();
-          window.location.hash = '#/docspace/cases';
-        }
-      },
-      {
         id: 'feat_oncall',
         title: 'Checklist Tua Trực & Nhắc Việc (OnCall)',
         category: 'feature',
@@ -249,19 +236,6 @@ export class ClinicalCommandBar {
         action: () => {
           this.close();
           window.location.hash = '#/docspace/oncall';
-        }
-      },
-      {
-        id: 'feat_drugs',
-        title: 'Nhật Ký Thuốc & Tra Cứu Dược Thư',
-        category: 'feature',
-        categoryLabel: 'Tính năng DocSpace',
-        icon: 'fa-solid fa-capsules',
-        description: 'Mở Drug Intelligence Panel để tra cứu liều và kiểm tra tương tác thuốc',
-        badge: 'Dược lý',
-        action: () => {
-          this.close();
-          drugIntelligencePanel.open();
         }
       }
     );

@@ -16,12 +16,10 @@ import {
 import { renderSBARView, mountSBARController } from './features/sbar-view';
 import { renderSoapView, mountSoapController } from './features/soap-view';
 import { renderOnCallView, mountOnCallController } from './features/oncall-view';
-import { renderCaseLoggerView, mountCaseLoggerController } from './features/case-logger-view';
 import { renderQuickLinksView, mountQuickLinksController } from './features/quick-links-view';
 import { renderPatientDemographicsView, bindPatientDemographicsEvents } from './features/patient-demographics-view';
 
 import { renderNotepadView, mountNotepadController } from './features/notepad-view';
-import { renderDrugJournalView, mountDrugJournalController } from './features/drug-journal-view';
 import { renderProtocolView, mountProtocolController } from './features/protocol-view';
 import { renderLivingProtocolView, mountLivingProtocolController } from './features/living-protocol-view';
 import { renderSimulationView, mountSimulationController } from './features/simulation-view';
@@ -264,16 +262,6 @@ export function initDocSpaceRoutes(): void {
     });
   });
 
-  // Case Logger
-  router.register('/docspace/cases', 'DocSpace — Ca Bệnh', () => {
-    requireProfile(async (pid) => {
-      await mountDocSpace(await renderCaseLoggerView(pid));
-      mountCaseLoggerController(pid);
-      mountSidebarFooterControls(pid);
-      loadRAGIndex(); // Load index in background
-    });
-  });
-
   // Quick Links
   router.register('/docspace/links', 'DocSpace — Liên kết Nhanh', () => {
     requireProfile(async (pid) => {
@@ -289,16 +277,6 @@ export function initDocSpaceRoutes(): void {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
       await mountDocSpace(await renderNotepadView(pid, editId));
       mountNotepadController(pid);
-      mountSidebarFooterControls(pid);
-    });
-  });
-
-  // Phase 2: Drug Interaction Journal
-  router.register('/docspace/drugs', 'DocSpace — Nhật Ký Thuốc', () => {
-    requireProfile(async (pid) => {
-      const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
-      await mountDocSpace(await renderDrugJournalView(pid, editId));
-      mountDrugJournalController(pid);
       mountSidebarFooterControls(pid);
     });
   });

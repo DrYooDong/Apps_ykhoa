@@ -11,6 +11,8 @@ export * from './ebm-view';
 // Subsystems Native SPA Views
 export * from './guidelines/guidelines-view';
 export * from './guidelines/journal-quality-view';
+export * from './guidelines/study-analyzer-view';
+export * from './guidelines/js/study-analyzer-suite';
 export * from './guidelines/guideline-controller';
 export * from './guidelines/guideline-reader-view';
 export * from './guideline-radar/radar-view';

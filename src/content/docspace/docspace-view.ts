@@ -12,9 +12,7 @@ export const DSP_NAV_ITEMS: DocSpaceNavItem[] = [
   { id: 'soap',             label: 'Sổ Tay SOAP',         href: '#/docspace/soap',              icon: 'fa-solid fa-notes-medical',  phase: 1 },
   { id: 'sbar',             label: 'SBAR',                href: '#/docspace/sbar',              icon: 'fa-solid fa-file-waveform',   phase: 1 },
   { id: 'oncall',           label: 'Checklist công việc', href: '#/docspace/oncall',            icon: 'fa-solid fa-list-check',     phase: 1 },
-  { id: 'cases',            label: 'Ca Bệnh',             href: '#/docspace/cases',             icon: 'fa-solid fa-stethoscope',     phase: 1 },
   { id: 'notes',            label: 'Ghi chú',             href: '#/docspace/notes',             icon: 'fa-solid fa-note-sticky',     phase: 1 },
-  { id: 'drugs',            label: 'Nhật ký Thuốc',       href: '#/docspace/drugs',             icon: 'fa-solid fa-pills',           phase: 1 },
   { id: 'protocol',         label: 'Phác đồ Riêng',       href: '#/docspace/protocol',          icon: 'fa-solid fa-clipboard-list',  phase: 1 },
   { id: 'insights',         label: 'AI Insights & Sức Khỏe', href: '#/docspace/insights',      icon: 'fa-solid fa-brain',           phase: 1 },
   { id: 'living-protocols', label: 'Phác đồ Động',        href: '#/docspace/living-protocols',  icon: 'fa-solid fa-network-wired',   phase: 3 },
@@ -179,6 +177,13 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
 
           <!-- Stats Bento Grid -->
           <div class="dsp-stats-grid">
+            <a href="#/docspace/soap" class="dsp-stat-card dsp-stat-soap">
+              <div class="dsp-stat-icon"><i class="fa-solid fa-notes-medical"></i></div>
+              <div class="dsp-stat-body">
+                <div class="dsp-stat-value">${stats.soapCount}</div>
+                <div class="dsp-stat-label">Bệnh án SOAP</div>
+              </div>
+            </a>
             <a href="#/docspace/sbar" class="dsp-stat-card dsp-stat-sbar">
               <div class="dsp-stat-icon"><i class="fa-solid fa-file-waveform"></i></div>
               <div class="dsp-stat-body">
@@ -193,25 +198,11 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
                 <div class="dsp-stat-label">Checklist Trực</div>
               </div>
             </a>
-            <a href="#/docspace/cases" class="dsp-stat-card dsp-stat-case">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-stethoscope"></i></div>
-              <div class="dsp-stat-body">
-                <div class="dsp-stat-value">${stats.caseCount}</div>
-                <div class="dsp-stat-label">Ca bệnh Logged</div>
-              </div>
-            </a>
             <a href="#/docspace/notes" class="dsp-stat-card dsp-stat-notes">
               <div class="dsp-stat-icon"><i class="fa-solid fa-note-sticky"></i></div>
               <div class="dsp-stat-body">
                 <div class="dsp-stat-value">${stats.noteCount}</div>
                 <div class="dsp-stat-label">Ghi chú cá nhân</div>
-              </div>
-            </a>
-            <a href="#/docspace/drugs" class="dsp-stat-card dsp-stat-drugs">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-pills"></i></div>
-              <div class="dsp-stat-body">
-                <div class="dsp-stat-value">${stats.drugCount}</div>
-                <div class="dsp-stat-label">Nhật ký Thuốc</div>
               </div>
             </a>
             <a href="#/docspace/protocol" class="dsp-stat-card dsp-stat-protocol">
@@ -270,6 +261,13 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
                 <span class="dsp-section-badge">Tạo mới &amp; Khởi chạy</span>
               </div>
               <div class="dsp-quick-actions">
+                <a href="#/docspace/soap" class="dsp-action-card" id="qa-new-soap">
+                  <div class="dsp-action-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                  <div class="dsp-action-info">
+                    <span class="dsp-action-title">Soạn Bệnh án SOAP</span>
+                    <span class="dsp-action-desc">Sổ tay lâm sàng số</span>
+                  </div>
+                </a>
                 <a href="#/docspace/sbar" class="dsp-action-card" id="qa-new-sbar">
                   <div class="dsp-action-icon"><i class="fa-solid fa-file-waveform"></i></div>
                   <div class="dsp-action-info">
@@ -284,25 +282,11 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
                     <span class="dsp-action-desc">Ca trực &amp; Nhiệm vụ</span>
                   </div>
                 </a>
-                <a href="#/docspace/cases" class="dsp-action-card" id="qa-new-case">
-                  <div class="dsp-action-icon"><i class="fa-solid fa-stethoscope"></i></div>
-                  <div class="dsp-action-info">
-                    <span class="dsp-action-title">Ghi Ca bệnh</span>
-                    <span class="dsp-action-desc">Sổ tay ca lâm sàng</span>
-                  </div>
-                </a>
                 <a href="#/docspace/notes" class="dsp-action-card" id="qa-new-note">
                   <div class="dsp-action-icon"><i class="fa-solid fa-note-sticky"></i></div>
                   <div class="dsp-action-info">
                     <span class="dsp-action-title">Tạo Ghi chú</span>
                     <span class="dsp-action-desc">Ghi chép tự do</span>
-                  </div>
-                </a>
-                <a href="#/docspace/drugs" class="dsp-action-card" id="qa-new-drug">
-                  <div class="dsp-action-icon"><i class="fa-solid fa-pills"></i></div>
-                  <div class="dsp-action-info">
-                    <span class="dsp-action-title">Nhật ký Thuốc</span>
-                    <span class="dsp-action-desc">Phác đồ &amp; Liều lượng</span>
                   </div>
                 </a>
                 <a href="#/docspace/protocol" class="dsp-action-card" id="qa-new-protocol">

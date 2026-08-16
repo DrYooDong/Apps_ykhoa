@@ -53,10 +53,11 @@ Phân hệ hỗ trợ bác sĩ lâm sàng và nghiên cứu viên trong việc:
 *   **Bước 2**: Chuyển sang Tab **`So Sánh`** trên thanh công cụ chính (hoặc bấm vào huy hiệu số lượng tài liệu đang chọn ở góc phải).
 *   **Bước 3**: Giao diện dạng cột sẽ hiển thị song song các tiêu chí của các tài liệu được chọn như *Can thiệp/Đối chứng*, *Tiêu chí chính*, *Kết quả chính*, *Cỡ mẫu*, và *Kết luận cốt lõi* giúp dễ dàng nhận diện điểm khác biệt.
 
-### 3. Tùy Biến Bảng Hiển Thị (Display Customization)
-*   Để tối ưu hóa không gian hiển thị trên các màn hình nhỏ (iPad/Mobile) hoặc khi cần tập trung phân tích chuyên sâu:
-    - Bấm vào nút **`📊 Cột hiển thị`** ở góc trên bảng.
-    - Bật/Tắt các cột dữ liệu theo nhu cầu. Bảng và các tiêu đề cột sẽ co giãn đồng bộ một cách thông minh.
+### 4. 🔬 Phân Tích Nghiên Cứu Chuyên Sâu (EBM Deep Analyzer & Appraisal Suite)
+*   **Hiệu quả lâm sàng & Thống kê EBM**: Tự động tính toán các chỉ số *ARR, RRR, RR, OR, NNT/NNH* kèm khoảng tin cậy 95% CI từ bảng 2x2.
+*   **Đánh giá Nguy cơ Sai lệch (Cochrane RoB 2)**: Đánh giá 5 miền sai lệch chuẩn quốc tế cho thử nghiệm ngẫu nhiên có đối chứng (RCT) với hệ thống Traffic-light plot.
+*   **Phân tầng Chất lượng Bằng chứng (GRADE Profiler)**: Đánh giá mức độ tin cậy của bằng chứng y học (*Rất cao, Trung bình, Thấp, Rất thấp*) theo chuẩn GRADE quốc tế.
+*   **Báo cáo Phê bình EBM Tổng Hợp (1-Click Appraisal Report Export)**: Xuất bản và sao chép báo cáo phê bình nghiên cứu chuẩn cấu trúc EBM để lưu trữ hoặc chèn vào bệnh án / bài báo cáo.
 
 ---
 
