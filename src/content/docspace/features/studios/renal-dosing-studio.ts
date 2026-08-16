@@ -1,14 +1,23 @@
 /**
  * DocSpace — Renal Function & Drug Dosing Studio (TypeScript)
- * Đa Công Thức CKD-EPI 2021 / Cockcroft-Gault & Bảng Hiệu Chỉnh Liều Thuốc Tự Động
+ * CKD-EPI 2021, Cockcroft-Gault, Đồng Hồ Bán Nguyệt KDIGO Gauge SVG & Bảng Hiệu Chỉnh Liều Kháng Sinh
  */
+
+export interface RenalPreset {
+  id: string;
+  name: string;
+  badge: string;
+  badgeColor: string;
+  description: string;
+  values: RenalInputs;
+}
 
 export interface RenalInputs {
   age: number;
   gender: 'male' | 'female';
   weightKg: number;
   heightCm?: number;
-  serumCreatinineUmol: number; // umol/L (chuẩn 60 - 110)
+  serumCreatinineUmol: number;
 }
 
 export interface DrugDosingRecommendation {
@@ -29,6 +38,41 @@ export interface RenalAnalysisResult {
   drugAdjustments: DrugDosingRecommendation[];
   clinicalSummary: string;
 }
+
+export const RENAL_PRESETS: RenalPreset[] = [
+  {
+    id: 'young_normal',
+    name: 'Người Trẻ Chức Năng Thận Bình Thường',
+    badge: 'KDIGO G1 (eGFR ≥ 90)',
+    badgeColor: '#10b981',
+    description: 'Nam 28 tuổi, 65kg, Creatinine 75 umol/L. Dùng đủ liều kháng sinh tiêu chuẩn.',
+    values: { age: 28, gender: 'male', weightKg: 65, serumCreatinineUmol: 75 },
+  },
+  {
+    id: 'elderly_ckd3b',
+    name: 'Bệnh Nhân ĐTĐ Lớn Tuổi (CKD G3b)',
+    badge: 'KDIGO G3b (eGFR 30-44)',
+    badgeColor: '#f59e0b',
+    description: 'Nữ 68 tuổi, 52kg, Creatinine 150 umol/L. Cần giảm liều Metformin và chỉnh khoảng cách Meropenem.',
+    values: { age: 68, gender: 'female', weightKg: 52, serumCreatinineUmol: 150 },
+  },
+  {
+    id: 'severe_ckd4',
+    name: 'Suy Thận Nặng (CKD G4)',
+    badge: 'KDIGO G4 (eGFR 15-29)',
+    badgeColor: '#ef4444',
+    description: 'Nam 72 tuổi, 58kg, Creatinine 260 umol/L. Giảm 50% liều Enoxaparin, chống chỉ định Metformin.',
+    values: { age: 72, gender: 'male', weightKg: 58, serumCreatinineUmol: 260 },
+  },
+  {
+    id: 'esrd_dialysis',
+    name: 'Suy Thận Giai Đoạn Cuối (ESRD G5)',
+    badge: 'KDIGO G5 (eGFR < 15)',
+    badgeColor: '#dc2626',
+    description: 'Bệnh nhân lọc máu chu kỳ, Creatinine 650 umol/L. Chống chỉ định Enoxaparin/Metformin, bổ sung liều sau lọc máu.',
+    values: { age: 60, gender: 'male', weightKg: 60, serumCreatinineUmol: 650 },
+  },
+];
 
 export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
   const { age, gender, weightKg, serumCreatinineUmol } = inputs;
@@ -86,7 +130,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
     kdigoDescription = 'Suy thận giai đoạn cuối / Cần lọc máu (eGFR < 15 mL/p/1.73m²)';
   }
 
-  // 4. Bảng Hiệu Chỉnh Liều Thuốc Dựa trên eGFR / CrCl
+  // 4. Bảng Hiệu Chỉnh Liều Thuốc
   const drugAdjustments: DrugDosingRecommendation[] = [];
 
   // Meropenem
@@ -95,7 +139,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
       drugName: 'Meropenem',
       category: 'Kháng sinh Carbapenem',
       standardDose: '1g IV mỗi 8h (hoặc 2g IV mỗi 8h trong Viêm màng não)',
-      adjustedDose: 'Không cần chỉnh liều (1g IV mỗi 8h)',
+      adjustedDose: 'Không cần chỉnh liều: 1g IV mỗi 8h',
       monitoringWarning: 'Truyền kéo dài 3 giờ để tối ưu PK/PD Time > MIC.',
     });
   } else if (crCl >= 26) {
@@ -104,7 +148,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
       category: 'Kháng sinh Carbapenem',
       standardDose: '1g IV mỗi 8h',
       adjustedDose: '1g IV mỗi 12 giờ',
-      monitoringWarning: 'Giảm tần suất dùng thuốc theo CrCl 26 - 50 mL/p.',
+      monitoringWarning: 'Kéo dài khoảng cách dùng thuốc theo CrCl 26 - 50 mL/p.',
     });
   } else if (crCl >= 10) {
     drugAdjustments.push({
@@ -130,7 +174,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
       drugName: 'Enoxaparin (Lovenox)',
       category: 'Thuốc chống đông LMWH',
       standardDose: '1 mg/kg SC mỗi 12h (hoặc 1.5 mg/kg mỗi 24h)',
-      adjustedDose: 'Liều chuẩn không cần giảm',
+      adjustedDose: `Liều chuẩn: ${(weightKg * 1).toFixed(0)} mg SC mỗi 12h`,
       monitoringWarning: 'Theo dõi dấu hiệu xuất huyết.',
     });
   } else if (crCl >= 15) {
@@ -138,7 +182,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
       drugName: 'Enoxaparin (Lovenox)',
       category: 'Thuốc chống đông LMWH',
       standardDose: '1 mg/kg SC mỗi 12h',
-      adjustedDose: 'Giảm liều còn 1 mg/kg SC MỖI 24 GIỜ (1 lần/ngày)',
+      adjustedDose: `Giảm liều còn ${(weightKg * 1).toFixed(0)} mg SC MỖI 24 GIỜ (1 lần/ngày)`,
       monitoringWarning: 'Chỉnh liều bắt buộc do thuốc thải trừ qua thận; cân nhắc đổi sang Heparin không phân đoạn UFH.',
     });
   } else {
@@ -158,7 +202,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
       drugName: 'Metformin',
       category: 'Thuốc hạ đường huyết Biguanide',
       standardDose: '1000 - 2000 mg/ngày chia 2 lần',
-      adjustedDose: 'Dùng liều tối đa thông thường (tối đa 2000-2550 mg/ngày)',
+      adjustedDose: 'Dùng liều thông thường (tối đa 2000-2550 mg/ngày)',
       monitoringWarning: 'Theo dõi chức năng thận định kỳ hàng năm.',
     });
   } else if (ckdEpi >= 45) {
@@ -189,12 +233,13 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
   }
 
   // Vancomycin
+  const vancoDoseMg = Math.round(weightKg * 17.5);
   if (crCl >= 50) {
     drugAdjustments.push({
       drugName: 'Vancomycin',
       category: 'Kháng sinh Glycopeptide',
       standardDose: '15 - 20 mg/kg IV mỗi 8 - 12h',
-      adjustedDose: '15 - 20 mg/kg IV mỗi 12 giờ',
+      adjustedDose: `${vancoDoseMg} mg (${Math.round(weightKg * 15)} - ${Math.round(weightKg * 20)}mg) IV mỗi 12 giờ`,
       monitoringWarning: 'Đo nồng độ đáy Trough trước liều thứ 4 (đích 15 - 20 mcg/mL hoặc AUC/MIC 400 - 600).',
     });
   } else if (crCl >= 20) {
@@ -202,7 +247,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
       drugName: 'Vancomycin',
       category: 'Kháng sinh Glycopeptide',
       standardDose: '15 - 20 mg/kg IV mỗi 12h',
-      adjustedDose: '15 mg/kg IV mỗi 24 - 48 giờ',
+      adjustedDose: `${vancoDoseMg} mg IV mỗi 24 - 48 giờ`,
       monitoringWarning: 'Bắt buộc theo dõi nồng độ thuốc TDM trước mỗi liều.',
     });
   } else {
@@ -210,7 +255,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
       drugName: 'Vancomycin',
       category: 'Kháng sinh Glycopeptide',
       standardDose: '15 - 20 mg/kg IV mỗi 12h',
-      adjustedDose: 'Liều nạp 15 - 25 mg/kg, sau đó chỉ dùng liều tiếp theo khi nồng độ đáy < 15 mcg/mL',
+      adjustedDose: `Liều nạp ${Math.round(weightKg * 20)}mg, sau đó chỉ dùng liều tiếp khi nồng độ đáy < 15 mcg/mL`,
       monitoringWarning: 'Độc tính cao trên thận và tai.',
     });
   }
@@ -222,7 +267,7 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
       category: 'Thuốc ức chế SGLT2 (Bảo vệ thận & tim)',
       standardDose: '10 mg uống mỗi ngày 1 lần',
       adjustedDose: '10 mg uống mỗi ngày 1 lần (Không cần chỉnh liều)',
-      monitoringWarning: 'Hiệu quả hạ đường huyết giảm khi eGFR < 45, nhưng LỢI ÍCH BẢO VỆ TIM & THẬN VẪN DUY TRÌ đến eGFR ≥ 20.',
+      monitoringWarning: 'LỢI ÍCH BẢO VỆ TIM & THẬN VẪN DUY TRÌ đến eGFR ≥ 20 mL/p.',
     });
   } else {
     drugAdjustments.push({
@@ -249,4 +294,66 @@ export function analyzeRenalFunction(inputs: RenalInputs): RenalAnalysisResult {
     drugAdjustments,
     clinicalSummary: summary,
   };
+}
+
+/**
+ * Render Đồng Hồ Bán Nguyệt KDIGO Gauge SVG
+ */
+export function renderKdigoGaugeSvg(egfr: number): string {
+  const w = 360;
+  const h = 200;
+  const cx = w / 2;
+  const cy = 160;
+  const r = 120;
+
+  // Tính góc kim từ eGFR (0 -> 120) tương ứng 180° đến 0°
+  const clampedEgfr = Math.max(0, Math.min(120, egfr));
+  const angleDeg = 180 - (clampedEgfr / 120) * 180;
+  const rad = (angleDeg * Math.PI) / 180;
+
+  const needleX = cx + (r - 20) * Math.cos(rad);
+  const needleY = cy - (r - 20) * Math.sin(rad);
+
+  const getPt = (val: number, radius: number) => {
+    const a = (180 - (Math.max(0, Math.min(120, val)) / 120) * 180) * (Math.PI / 180);
+    return { x: cx + radius * Math.cos(a), y: cy - radius * Math.sin(a) };
+  };
+
+  return `
+    <svg class="dsp-svg-chart" viewBox="0 0 ${w} ${h}" width="100%" height="${h}">
+      <defs>
+        <radialGradient id="kdigoGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#0284c7" stop-opacity="0.4" />
+          <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+
+      <!-- KDIGO Arcs -->
+      <!-- G5 (0-15) Red -->
+      <path d="M ${getPt(0, r).x} ${getPt(0, r).y} A ${r} ${r} 0 0 1 ${getPt(15, r).x} ${getPt(15, r).y} L ${getPt(15, r - 25).x} ${getPt(15, r - 25).y} A ${r - 25} ${r - 25} 0 0 0 ${getPt(0, r - 25).x} ${getPt(0, r - 25).y} Z" fill="#dc2626" opacity="0.85" />
+      
+      <!-- G4 (15-30) Orange-Red -->
+      <path d="M ${getPt(15, r).x} ${getPt(15, r).y} A ${r} ${r} 0 0 1 ${getPt(30, r).x} ${getPt(30, r).y} L ${getPt(30, r - 25).x} ${getPt(30, r - 25).y} A ${r - 25} ${r - 25} 0 0 0 ${getPt(15, r - 25).x} ${getPt(15, r - 25).y} Z" fill="#ef4444" opacity="0.85" />
+
+      <!-- G3b/G3a (30-60) Yellow -->
+      <path d="M ${getPt(30, r).x} ${getPt(30, r).y} A ${r} ${r} 0 0 1 ${getPt(60, r).x} ${getPt(60, r).y} L ${getPt(60, r - 25).x} ${getPt(60, r - 25).y} A ${r - 25} ${r - 25} 0 0 0 ${getPt(30, r - 25).x} ${getPt(30, r - 25).y} Z" fill="#f59e0b" opacity="0.85" />
+
+      <!-- G2/G1 (60-120) Green -->
+      <path d="M ${getPt(60, r).x} ${getPt(60, r).y} A ${r} ${r} 0 0 1 ${getPt(120, r).x} ${getPt(120, r).y} L ${getPt(120, r - 25).x} ${getPt(120, r - 25).y} A ${r - 25} ${r - 25} 0 0 0 ${getPt(60, r - 25).x} ${getPt(60, r - 25).y} Z" fill="#10b981" opacity="0.85" />
+
+      <!-- Stage Labels -->
+      <text x="${getPt(7.5, r - 35).x}" y="${getPt(7.5, r - 35).y}" fill="#dc2626" font-size="8.5" font-weight="800" text-anchor="middle">G5</text>
+      <text x="${getPt(22.5, r - 35).x}" y="${getPt(22.5, r - 35).y}" fill="#ef4444" font-size="8.5" font-weight="800" text-anchor="middle">G4</text>
+      <text x="${getPt(45, r - 35).x}" y="${getPt(45, r - 35).y}" fill="#f59e0b" font-size="8.5" font-weight="800" text-anchor="middle">G3</text>
+      <text x="${getPt(90, r - 35).x}" y="${getPt(90, r - 35).y}" fill="#10b981" font-size="8.5" font-weight="800" text-anchor="middle">G1-G2</text>
+
+      <!-- Gauge Needle -->
+      <line x1="${cx}" y1="${cy}" x2="${needleX}" y2="${needleY}" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round" />
+      <circle cx="${cx}" cy="${cy}" r="12" fill="url(#kdigoGlow)" />
+      <circle cx="${cx}" cy="${cy}" r="6" fill="#0f172a" stroke="#ffffff" stroke-width="2" />
+
+      <!-- Display Value in Center -->
+      <text x="${cx}" y="${cy + 25}" fill="var(--color-text)" font-size="14" font-weight="900" text-anchor="middle">${egfr} <tspan font-size="9" fill="var(--color-text-muted)">mL/p</tspan></text>
+    </svg>
+  `;
 }

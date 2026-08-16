@@ -1,8 +1,16 @@
 /**
  * DocSpace — ABG Pro Studio (TypeScript)
- * Khí Máu Động Mạch & Phân Tích Rối Loạn Toan Kiềm Toàn Diện (6 Bước)
- * Vẽ đồ thị Davenport tương tác bằng Inline SVG thuần
+ * Khí Máu Động Mạch & Phân Tích Rối Loạn Toan Kiềm Toàn Diện (6 Bước & 6 Vùng Màu Davenport)
  */
+
+export interface AbgPreset {
+  id: string;
+  name: string;
+  badge: string;
+  badgeColor: string;
+  description: string;
+  values: AbgInputs;
+}
 
 export interface AbgInputs {
   ph: number;
@@ -27,8 +35,51 @@ export interface AbgAnalysisResult {
   oxygenationStatus: string | null;
   clinicalSummary: string;
   recommendations: string[];
-  davenportCoords: { x: number; y: number }; // x: pH, y: HCO3
+  davenportCoords: { x: number; y: number };
 }
+
+export const ABG_PRESETS: AbgPreset[] = [
+  {
+    id: 'dka',
+    name: 'Toan Ceton ĐTĐ (DKA)',
+    badge: 'Toan Chuyển Hóa Tăng AG',
+    badgeColor: '#ef4444',
+    description: 'Bệnh nhân ĐTĐ Type 1 bỏ thuốc, thở nhanh sâu Kussmaul, hơi thở mùi táo chín.',
+    values: { ph: 7.15, paco2: 22, hco3: 8, pao2: 95, fio2: 21, na: 135, cl: 98, albumin: 4.0, lactate: 1.5 },
+  },
+  {
+    id: 'copd_acute',
+    name: 'Đợt Cấp COPD Mất Bù',
+    badge: 'Toan Hô Hấp Cấp/Mạn',
+    badgeColor: '#dc2626',
+    description: 'Bệnh nhân COPD sốt đờm đục, ứ trệ CO2 máu nặng kèm toan hô hấp cấp trên nền mạn.',
+    values: { ph: 7.24, paco2: 75, hco3: 32, pao2: 52, fio2: 24, na: 140, cl: 95, albumin: 3.8, lactate: 2.1 },
+  },
+  {
+    id: 'salicylate',
+    name: 'Ngộ Độc Aspirin (Salicylate)',
+    badge: 'Toan AG + Kiềm Hô Hấp',
+    badgeColor: '#8b5cf6',
+    description: 'Kích thích trung tâm hô hấp gây thở nhanh (Kiềm HH) kèm acid hữu cơ gây Toan chuyển hóa.',
+    values: { ph: 7.46, paco2: 20, hco3: 14, pao2: 98, fio2: 21, na: 142, cl: 102, albumin: 4.0, lactate: 2.8 },
+  },
+  {
+    id: 'severe_vomiting',
+    name: 'Hẹp Môn Vị / Nôn Ói Nặng',
+    badge: 'Kiềm Chuyển Hóa',
+    badgeColor: '#0284c7',
+    description: 'Mất dịch dạ dày chứa HCl và Kali gây kiềm chuyển hóa giảm clo, giảm kali.',
+    values: { ph: 7.55, paco2: 48, hco3: 40, pao2: 85, fio2: 21, na: 138, cl: 86, albumin: 4.2, lactate: 1.2 },
+  },
+  {
+    id: 'ards_severe',
+    name: 'ARDS Nặng / Viêm Phổi Sốc',
+    badge: 'Toan Máu & Giảm Oxy Nặng',
+    badgeColor: '#dc2626',
+    description: 'Tổn thương màng phế nang mao mạch lan tỏa, P/F ratio tụt thấp nghiêm trọng.',
+    values: { ph: 7.28, paco2: 48, hco3: 22, pao2: 60, fio2: 80, na: 138, cl: 101, albumin: 2.8, lactate: 4.2 },
+  },
+];
 
 export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
   const { ph, paco2, hco3, pao2, fio2 = 21, na, cl, albumin = 4.0, lactate } = inputs;
@@ -37,23 +88,22 @@ export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
   let compensationStatus = '';
   const recommendations: string[] = [];
 
-  // 1. Phân tích Rối loạn Nguyên phát
   const isAcidemia = ph < 7.35;
   const isAlkalemia = ph > 7.45;
-  const isNormalPh = ph >= 7.35 && ph <= 7.45;
 
   if (isAcidemia) {
     if (paco2 > 45 && hco3 < 22) {
       primaryDisorder = 'Toan Hỗn Hợp (Toan Hô Hấp + Toan Chuyển Hóa)';
+      compensationStatus = 'Cả hai hệ đệm hô hấp và chuyển hóa đều suy giảm nặng';
+      recommendations.push('Tối khẩn: Cần hỗ trợ thông khí nhân tạo bảo vệ phổi và hồi sức thể tích/chuyển hóa đồng thời.');
     } else if (paco2 > 45) {
-      primaryDisorder = 'Toan Hô Hấp';
-      // Đánh giá bù trừ cấp vs mạn
+      primaryDisorder = 'Toan Hô Hấp (Respiratory Acidosis)';
       const deltaPaco2 = paco2 - 40;
       const expectedAcuteHco3 = 24 + 0.1 * deltaPaco2;
       const expectedChronicHco3 = 24 + 0.35 * deltaPaco2;
-      if (Math.abs(hco3 - expectedAcuteHco3) < 2) {
+      if (Math.abs(hco3 - expectedAcuteHco3) < 2.5) {
         compensationStatus = `Toan hô hấp CẤP (HCO3- kỳ vọng: ${expectedAcuteHco3.toFixed(1)} mmol/L)`;
-      } else if (Math.abs(hco3 - expectedChronicHco3) < 3) {
+      } else if (Math.abs(hco3 - expectedChronicHco3) < 3.5) {
         compensationStatus = `Toan hô hấp MẠN (HCO3- kỳ vọng: ${expectedChronicHco3.toFixed(1)} mmol/L)`;
       } else if (hco3 > expectedChronicHco3) {
         compensationStatus = 'Toan hô hấp kèm Kiềm chuyển hóa đồng thời';
@@ -61,13 +111,12 @@ export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
         compensationStatus = 'Toan hô hấp kèm Toan chuyển hóa đồng thời';
       }
     } else if (hco3 < 22) {
-      primaryDisorder = 'Toan Chuyển Hóa';
-      // Winter's Formula: Expected PaCO2 = 1.5 * HCO3 + 8 ± 2
+      primaryDisorder = 'Toan Chuyển Hóa (Metabolic Acidosis)';
       const expectedPaco2 = 1.5 * hco3 + 8;
       const paco2Min = expectedPaco2 - 2;
       const paco2Max = expectedPaco2 + 2;
       if (paco2 >= paco2Min && paco2 <= paco2Max) {
-        compensationStatus = `Toan chuyển hóa bù trừ hô hấp thích hợp (PaCO2 kỳ vọng: ${expectedPaco2.toFixed(1)} ± 2 mmHg)`;
+        compensationStatus = `Toan chuyển hóa bù trừ hô hấp phù hợp (PaCO2 kỳ vọng: ${expectedPaco2.toFixed(1)} ± 2 mmHg)`;
       } else if (paco2 > paco2Max) {
         compensationStatus = `Toan chuyển hóa kèm Toan hô hấp đồng thời (Ứ CO2, PaCO2 thực tế ${paco2} > kỳ vọng ${expectedPaco2.toFixed(1)})`;
       } else {
@@ -80,7 +129,7 @@ export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
     if (paco2 < 35 && hco3 > 26) {
       primaryDisorder = 'Kiềm Hỗn Hợp (Kiềm Hô Hấp + Kiềm Chuyển Hóa)';
     } else if (paco2 < 35) {
-      primaryDisorder = 'Kiềm Hô Hấp';
+      primaryDisorder = 'Kiềm Hô Hấp (Respiratory Alkalosis)';
       const deltaPaco2 = 40 - paco2;
       const expectedAcuteHco3 = 24 - 0.2 * deltaPaco2;
       const expectedChronicHco3 = 24 - 0.5 * deltaPaco2;
@@ -92,10 +141,9 @@ export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
         compensationStatus = 'Kiềm hô hấp bù trừ không hoàn toàn';
       }
     } else if (hco3 > 26) {
-      primaryDisorder = 'Kiềm Chuyển Hóa';
-      // Expected PaCO2 = 40 + 0.7 * (HCO3 - 24) ± 2
+      primaryDisorder = 'Kiềm Chuyển Hóa (Metabolic Alkalosis)';
       const expectedPaco2 = 40 + 0.7 * (hco3 - 24);
-      if (Math.abs(paco2 - expectedPaco2) <= 2) {
+      if (Math.abs(paco2 - expectedPaco2) <= 2.5) {
         compensationStatus = `Kiềm chuyển hóa bù trừ hô hấp phù hợp (PaCO2 kỳ vọng: ${expectedPaco2.toFixed(1)} mmHg)`;
       } else if (paco2 > expectedPaco2 + 2) {
         compensationStatus = 'Kiềm chuyển hóa kèm Toan hô hấp';
@@ -104,7 +152,6 @@ export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
       }
     }
   } else {
-    // Normal pH
     if (paco2 !== 40 || hco3 !== 24) {
       primaryDisorder = 'Rối loạn toan kiềm hỗn hợp bù trừ hoàn toàn / Trạng thái bình thường';
       compensationStatus = `pH trong giới hạn bình thường (${ph}), nhưng PaCO2 (${paco2}) hoặc HCO3- (${hco3}) có biến đổi`;
@@ -130,16 +177,16 @@ export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
 
     const effectiveAg = anionGapCorrected !== null ? anionGapCorrected : anionGap;
     if (effectiveAg > 12) {
-      recommendations.push(`Có Tăng Anion Gap (${effectiveAg.toFixed(1)} mmol/L) ➔ Tìm các nguyên nhân GOLD MARK: Glycols, Oxoproline, L-Lactate, D-Lactate, Methanol, Aspirin, Renal failure (Ure), Ketoacidosis.`);
+      recommendations.push(`Có TĂNG ANION GAP (${effectiveAg.toFixed(1)} mmol/L) ➔ Tìm nguyên nhân GOLD MARK: Glycols, Oxoproline, L-Lactate, D-Lactate, Methanol, Aspirin, Renal failure (Ure), Ketoacidosis.`);
       if (hco3 < 24) {
         const deltaAg = effectiveAg - 12;
         const deltaHco3 = 24 - hco3;
         if (deltaHco3 > 0) {
           deltaRatio = deltaAg / deltaHco3;
           if (deltaRatio < 0.4) {
-            deltaRatioInterpretation = 'Toan chuyển hóa Anion Gap bình thường (Tăng Cl máu) chiếm ưu thế (Delta Ratio < 0.4)';
+            deltaRatioInterpretation = 'Toan chuyển hóa Anion Gap bình thường (Tăng Clo) chiếm ưu thế (Delta Ratio < 0.4)';
           } else if (deltaRatio >= 0.4 && deltaRatio < 0.8) {
-            deltaRatioInterpretation = 'Toan chuyển hóa Hỗn hợp (Tăng AG + Tăng Cl máu) (Delta Ratio 0.4 - 0.8)';
+            deltaRatioInterpretation = 'Toan chuyển hóa Hỗn hợp (Tăng AG + Tăng Clo) (Delta Ratio 0.4 - 0.8)';
           } else if (deltaRatio >= 0.8 && deltaRatio <= 2.0) {
             deltaRatioInterpretation = 'Toan chuyển hóa Tăng Anion Gap đơn thuần điển hình (Delta Ratio 0.8 - 2.0)';
           } else {
@@ -173,9 +220,9 @@ export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
   }
 
   // 4. Clinical Summary
-  let summary = `[ABG Report]\n• Kết luận: ${primaryDisorder}\n• Bù trừ: ${compensationStatus}`;
+  let summary = `[ABG Pro Studio Report]\n• Kết luận: ${primaryDisorder}\n• Bù trừ: ${compensationStatus}`;
   if (anionGapCorrected !== null) {
-    summary += `\n• Anion Gap (hiệu chỉnh): ${anionGapCorrected.toFixed(1)} mmol/L (Bình thường: 8 - 12)`;
+    summary += `\n• Anion Gap (hiệu chỉnh Albumin): ${anionGapCorrected.toFixed(1)} mmol/L (Bình thường: 8 - 12)`;
   }
   if (deltaRatioInterpretation) {
     summary += `\n• Delta Ratio (${deltaRatio?.toFixed(2)}): ${deltaRatioInterpretation}`;
@@ -203,15 +250,15 @@ export function analyzeAbg(inputs: AbgInputs): AbgAnalysisResult {
 }
 
 /**
- * Render đồ thị Davenport toan kiềm SVG thuần (Pure SVG Davenport Diagram)
+ * Render đồ thị Davenport toan kiềm SVG thuần 6 Vùng Màu Đồ Họa Xuất Bản
  */
 export function renderDavenportSvg(ph: number, hco3: number): string {
-  const w = 440;
-  const h = 260;
-  const padL = 40;
-  const padR = 25;
-  const padT = 20;
-  const padB = 35;
+  const w = 520;
+  const h = 320;
+  const padL = 45;
+  const padR = 30;
+  const padT = 25;
+  const padB = 40;
   const innerW = w - padL - padR;
   const innerH = h - padT - padB;
 
@@ -223,23 +270,15 @@ export function renderDavenportSvg(ph: number, hco3: number): string {
   const getX = (valPh: number) => padL + ((valPh - minPh) / (maxPh - minPh)) * innerW;
   const getY = (valHco3: number) => padT + innerH - ((valHco3 - minHco3) / (maxHco3 - minHco3)) * innerH;
 
-  // Tọa độ vùng bình thường (pH 7.35 - 7.45, HCO3 22 - 26)
-  const normX1 = getX(7.35);
-  const normX2 = getX(7.45);
-  const normY1 = getY(26);
-  const normY2 = getY(22);
-
-  // Tọa độ điểm bệnh nhân
   const ptPh = Math.max(minPh, Math.min(maxPh, ph));
   const ptHco3 = Math.max(minHco3, Math.min(maxHco3, hco3));
   const ptX = getX(ptPh);
   const ptY = getY(ptHco3);
 
-  // Vẽ các đường đẳng áp PaCO2 (Isobar lines: 20, 40, 80 mmHg)
-  // Công thức: Henderson-Hasselbalch -> HCO3 = 0.03 * PaCO2 * 10^(pH - 6.1)
+  // Helper vẽ Isobar PaCO2
   const drawIsobar = (pco2Val: number, strokeColor: string) => {
     const pts: string[] = [];
-    for (let p = 7.0; p <= 7.8; p += 0.05) {
+    for (let p = 7.0; p <= 7.8; p += 0.04) {
       const calcHco3 = 0.03 * pco2Val * Math.pow(10, p - 6.1);
       if (calcHco3 >= minHco3 && calcHco3 <= maxHco3) {
         pts.push(`${getX(p)},${getY(calcHco3)}`);
@@ -257,38 +296,60 @@ export function renderDavenportSvg(ph: number, hco3: number): string {
         </radialGradient>
       </defs>
 
-      <!-- Vùng bình thường (Normal Zone) -->
-      <rect x="${normX1}" y="${normY1}" width="${normX2 - normX1}" height="${normY2 - normY1}" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="1" rx="4" />
-      <text x="${(normX1 + normX2) / 2}" y="${(normY1 + normY2) / 2 + 3}" fill="#10b981" font-size="8" font-weight="700" text-anchor="middle">CHUẨN</text>
+      <!-- 6 VÙNG TOAN KIỀM LÂM SÀNG (6 CLINICAL ZONES) -->
+      <!-- 1. Vùng Toan Chuyển Hóa (Metabolic Acidosis: pH < 7.35, HCO3 < 22) -->
+      <polygon points="${getX(7.0)},${getY(5)} ${getX(7.35)},${getY(5)} ${getX(7.35)},${getY(22)} ${getX(7.0)},${getY(15)}" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-width="0.5" stroke-dasharray="2,2" />
+      <text x="${getX(7.15)}" y="${getY(11)}" fill="#f59e0b" font-size="9" font-weight="700" text-anchor="middle">Toan Chuyển Hóa</text>
 
-      <!-- Isobars PaCO2 -->
+      <!-- 2. Vùng Kiềm Chuyển Hóa (Metabolic Alkalosis: pH > 7.45, HCO3 > 26) -->
+      <polygon points="${getX(7.45)},${getY(26)} ${getX(7.8)},${getY(35)} ${getX(7.8)},${getY(50)} ${getX(7.45)},${getY(50)}" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="0.5" stroke-dasharray="2,2" />
+      <text x="${getX(7.62)}" y="${getY(42)}" fill="#0284c7" font-size="9" font-weight="700" text-anchor="middle">Kiềm Chuyển Hóa</text>
+
+      <!-- 3. Vùng Toan Hô Hấp Cấp (Acute Resp Acidosis: pH < 7.35, HCO3 24-30) -->
+      <polygon points="${getX(7.05)},${getY(24)} ${getX(7.35)},${getY(24)} ${getX(7.35)},${getY(30)} ${getX(7.05)},${getY(34)}" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" stroke-width="0.5" stroke-dasharray="2,2" />
+      <text x="${getX(7.16)}" y="${getY(28)}" fill="#ef4444" font-size="8.5" font-weight="700" text-anchor="middle">Toan HH Cấp</text>
+
+      <!-- 4. Vùng Toan Hô Hấp Mạn (Chronic Resp Acidosis: pH 7.30 - 7.38, HCO3 30 - 45) -->
+      <polygon points="${getX(7.28)},${getY(30)} ${getX(7.38)},${getY(30)} ${getX(7.38)},${getY(45)} ${getX(7.28)},${getY(45)}" fill="rgba(220, 38, 38, 0.2)" stroke="#dc2626" stroke-width="0.5" stroke-dasharray="2,2" />
+      <text x="${getX(7.33)}" y="${getY(38)}" fill="#dc2626" font-size="8.5" font-weight="700" text-anchor="middle">Toan HH Mạn</text>
+
+      <!-- 5. Vùng Kiềm Hô Hấp (Resp Alkalosis: pH > 7.45, HCO3 15 - 24) -->
+      <polygon points="${getX(7.45)},${getY(15)} ${getX(7.8)},${getY(15)} ${getX(7.8)},${getY(24)} ${getX(7.45)},${getY(24)}" fill="rgba(139, 92, 246, 0.12)" stroke="#8b5cf6" stroke-width="0.5" stroke-dasharray="2,2" />
+      <text x="${getX(7.62)}" y="${getY(19)}" fill="#8b5cf6" font-size="9" font-weight="700" text-anchor="middle">Kiềm Hô Hấp</text>
+
+      <!-- 6. Vùng Bình Thường (Normal Zone: pH 7.35 - 7.45, HCO3 22 - 26) -->
+      <rect x="${getX(7.35)}" y="${getY(26)}" width="${getX(7.45) - getX(7.35)}" height="${getY(22) - getY(26)}" fill="rgba(16, 185, 129, 0.25)" stroke="#10b981" stroke-width="1.5" rx="3" />
+      <text x="${(getX(7.35) + getX(7.45)) / 2}" y="${(getY(26) + getY(22)) / 2 + 3}" fill="#10b981" font-size="8.5" font-weight="800" text-anchor="middle">CHUẨN</text>
+
+      <!-- Isobars PaCO2 (20, 40, 80 mmHg) -->
       ${drawIsobar(20, '#0284c7')}
       ${drawIsobar(40, '#10b981')}
       ${drawIsobar(80, '#ef4444')}
-      <text x="${getX(7.6)}" y="${getY(16)}" fill="#0284c7" font-size="8" font-weight="600">PaCO2 20</text>
-      <text x="${getX(7.5)}" y="${getY(28)}" fill="#10b981" font-size="8" font-weight="600">PaCO2 40</text>
-      <text x="${getX(7.3)}" y="${getY(42)}" fill="#ef4444" font-size="8" font-weight="600">PaCO2 80</text>
+      <text x="${getX(7.68)}" y="${getY(16)}" fill="#0284c7" font-size="8" font-weight="700">PaCO2 20</text>
+      <text x="${getX(7.55)}" y="${getY(28)}" fill="#10b981" font-size="8" font-weight="700">PaCO2 40</text>
+      <text x="${getX(7.28)}" y="${getY(48)}" fill="#ef4444" font-size="8" font-weight="700">PaCO2 80</text>
 
       <!-- Axes -->
       <line x1="${padL}" y1="${padT + innerH}" x2="${w - padR}" y2="${padT + innerH}" stroke="var(--color-border)" stroke-width="1.5" />
       <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT + innerH}" stroke="var(--color-border)" stroke-width="1.5" />
 
       <!-- X Ticks (pH) -->
-      ${[7.0, 7.2, 7.35, 7.4, 7.45, 7.6, 7.8].map(p => `
-        <text x="${getX(p)}" y="${h - 10}" fill="var(--color-text-muted)" font-size="8" text-anchor="middle">${p}</text>
+      ${[7.0, 7.1, 7.2, 7.35, 7.4, 7.45, 7.6, 7.7, 7.8].map(p => `
+        <text x="${getX(p)}" y="${h - 14}" fill="var(--color-text-muted)" font-size="8" text-anchor="middle">${p}</text>
       `).join('')}
-      <text x="${w / 2}" y="${h - 2}" fill="var(--color-text)" font-size="9" font-weight="700" text-anchor="middle">pH Máu Động Mạch</text>
+      <text x="${w / 2}" y="${h - 2}" fill="var(--color-text)" font-size="10" font-weight="700" text-anchor="middle">pH Máu Động Mạch</text>
 
       <!-- Y Ticks (HCO3) -->
       ${[10, 20, 24, 30, 40, 50].map(v => `
         <text x="${padL - 6}" y="${getY(v) + 3}" fill="var(--color-text-muted)" font-size="8" text-anchor="end">${v}</text>
       `).join('')}
-      <text x="12" y="${padT + innerH / 2}" fill="var(--color-text)" font-size="9" font-weight="700" text-anchor="middle" transform="rotate(-90 12 ${padT + innerH / 2})">HCO3- (mmol/L)</text>
+      <text x="14" y="${padT + innerH / 2}" fill="var(--color-text)" font-size="10" font-weight="700" text-anchor="middle" transform="rotate(-90 14 ${padT + innerH / 2})">HCO3- (mmol/L)</text>
 
-      <!-- Patient Point -->
-      <circle cx="${ptX}" cy="${ptY}" r="14" fill="url(#patientGlow)" />
-      <circle cx="${ptX}" cy="${ptY}" r="6" fill="#ef4444" stroke="#ffffff" stroke-width="2" />
-      <text x="${ptX}" y="${ptY - 9}" fill="#ef4444" font-size="10" font-weight="800" text-anchor="middle">BN (${ph} / ${hco3})</text>
+      <!-- Patient Coordinate Point -->
+      <circle cx="${ptX}" cy="${ptY}" r="16" fill="url(#patientGlow)" />
+      <circle cx="${ptX}" cy="${ptY}" r="6.5" fill="#ef4444" stroke="#ffffff" stroke-width="2" />
+      <rect x="${ptX - 40}" y="${ptY - 26}" width="80" height="18" rx="4" fill="rgba(15, 23, 42, 0.85)" stroke="#ef4444" stroke-width="1" />
+      <text x="${ptX}" y="${ptY - 14}" fill="#ffffff" font-size="9" font-weight="800" text-anchor="middle">BN (${ph} / ${hco3})</text>
     </svg>
   `;
 }

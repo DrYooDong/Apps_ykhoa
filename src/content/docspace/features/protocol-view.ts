@@ -270,7 +270,8 @@ export function renderProtocolView(profileId: string, editId?: string, activeTab
     </div>
 
     <!-- MODAL XEM CHI TIẾT & IN PHÁC ĐỒ (PRINTABLE POCKET GUIDE) -->
-    <div class="dsp-modal-backdrop" id="dspProtocolPreviewModal" style="display:none;">
+    <div class="dsp-modal" id="dspProtocolPreviewModal" style="display:none;">
+      <div class="dsp-modal-backdrop" id="dspProtocolModalBackdrop"></div>
       <div class="dsp-modal-box dsp-modal-box--lg" style="max-width:850px;">
         <div class="dsp-modal-header" style="border-bottom:1px solid var(--color-border); padding-bottom:1rem;">
           <h2 class="dsp-modal-title" id="dspProtocolModalTitle">
@@ -624,6 +625,10 @@ export function mountProtocolController(profileId: string): void {
   });
 
   // Modal events
+  const previewModal = document.getElementById('dspProtocolPreviewModal');
+  previewModal?.addEventListener('mousedown', (e) => {
+    if (e.target === previewModal) closeProtocolPreviewModal();
+  });
   document.getElementById('dspProtocolModalBackdrop')?.addEventListener('click', closeProtocolPreviewModal);
   document.getElementById('dspCloseProtocolPreview')?.addEventListener('click', closeProtocolPreviewModal);
   document.getElementById('dspPrintProtocolBtn')?.addEventListener('click', () => window.print());

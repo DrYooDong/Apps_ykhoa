@@ -1,17 +1,19 @@
 /**
- * DocSpace — Clinical Studios Main View & Interactive Controller
- * Phòng Lab Công Cụ Lâm Sàng Tương Tác Chuyên Sâu (100% Pure TypeScript & Pure SVG)
+ * DocSpace — Clinical Studios Pro Suite View & Interactive Controller
+ * Phòng Lab 7 Công Cụ Lâm Sàng Tương Tác Chuyên Sâu, Quick Presets & Pure SVG Visualizations (100% Pure TypeScript)
  */
 
 import { renderSidebar, renderDocSpaceHeader, escapeHtml } from '../docspace-view';
 import { getActiveProfile } from '../storage';
-import { analyzeAbg, renderDavenportSvg } from './studios/abg-studio';
-import { analyzeEcg, renderEcgAxisSvg } from './studios/ecg-studio';
-import { analyzeElectrolyte } from './studios/electrolyte-studio';
-import { analyzeRenalFunction } from './studios/renal-dosing-studio';
-import { analyzeCardioRisk } from './studios/cardio-risk-studio';
+import { analyzeAbg, renderDavenportSvg, ABG_PRESETS } from './studios/abg-studio';
+import { analyzeEcg, renderEcgAxisSvg, ECG_PRESETS } from './studios/ecg-studio';
+import { analyzeElectrolyte, renderFluidTimelineSvg, ELYTE_PRESETS } from './studios/electrolyte-studio';
+import { analyzeRenalFunction, renderKdigoGaugeSvg, RENAL_PRESETS } from './studios/renal-dosing-studio';
+import { analyzeCardioRisk, renderScore2GaugeSvg, CARDIO_PRESETS } from './studios/cardio-risk-studio';
+import { analyzeSepsis, SEPSIS_PRESETS } from './studios/sepsis-studio';
+import { analyzeCirrhosis, CIRRHOSIS_PRESETS } from './studios/cirrhosis-studio';
 
-export type StudioTabKey = 'abg' | 'ecg' | 'electrolyte' | 'renal' | 'cardio';
+export type StudioTabKey = 'abg' | 'ecg' | 'electrolyte' | 'renal' | 'cardio' | 'sepsis' | 'cirrhosis';
 
 export async function renderStudiosView(profileId: string, initialTab: StudioTabKey = 'abg'): Promise<string> {
   const profile = getActiveProfile();
@@ -24,16 +26,16 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
         ${renderDocSpaceHeader(profile, 'studios')}
         <div class="dsp-page-content">
 
-          <!-- Page Header & Studio Tab Bar -->
+          <!-- Page Header & 7 Studio Selector Tabs -->
           <div class="dsp-page-header">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
               <div>
-                <h1 class="dsp-page-title"><i class="fa-solid fa-flask-vial" style="color:var(--color-primary);"></i> Clinical Studios Lab</h1>
-                <p class="dsp-page-subtitle">Phòng Lab công cụ tính toán lâm sàng chuyên sâu, trực quan hóa đồ họa SVG & phân tích thời gian thực.</p>
+                <h1 class="dsp-page-title"><i class="fa-solid fa-flask-vial" style="color:var(--color-primary);"></i> Clinical Studios Pro Suite</h1>
+                <p class="dsp-page-subtitle">Phòng Lab Quyết định & Mô phỏng Lâm sàng Đồ họa Cao cấp (100% TypeScript & Pure SVG).</p>
               </div>
 
-              <!-- 5 Studio Selector Tabs -->
-              <div class="dsp-proto-tab-switcher" style="flex-wrap:wrap;">
+              <!-- 7 Studio Selector Tabs -->
+              <div class="dsp-proto-tab-switcher" style="flex-wrap:wrap; gap:0.35rem;">
                 <button type="button" class="dsp-proto-tab-btn ${initialTab === 'abg' ? 'is-active' : ''}" data-studio-tab="abg">
                   <i class="fa-solid fa-droplet" style="color:#ef4444;"></i> ABG Studio
                 </button>
@@ -41,7 +43,7 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                   <i class="fa-solid fa-heart-pulse" style="color:#dc2626;"></i> ECG Pro Studio
                 </button>
                 <button type="button" class="dsp-proto-tab-btn ${initialTab === 'electrolyte' ? 'is-active' : ''}" data-studio-tab="electrolyte">
-                  <i class="fa-solid fa-flask" style="color:#0284c7;"></i> Electrolyte Studio
+                  <i class="fa-solid fa-flask" style="color:#0284c7;"></i> Electrolyte & Fluid
                 </button>
                 <button type="button" class="dsp-proto-tab-btn ${initialTab === 'renal' ? 'is-active' : ''}" data-studio-tab="renal">
                   <i class="fa-solid fa-dna" style="color:#7c3aed;"></i> Renal & Dosing
@@ -49,15 +51,36 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                 <button type="button" class="dsp-proto-tab-btn ${initialTab === 'cardio' ? 'is-active' : ''}" data-studio-tab="cardio">
                   <i class="fa-solid fa-chart-pie" style="color:#ca8a04;"></i> Cardio Risk
                 </button>
+                <button type="button" class="dsp-proto-tab-btn ${initialTab === 'sepsis' ? 'is-active' : ''}" data-studio-tab="sepsis">
+                  <i class="fa-solid fa-lungs-virus" style="color:#e11d48;"></i> Sepsis & Pneumonia
+                </button>
+                <button type="button" class="dsp-proto-tab-btn ${initialTab === 'cirrhosis' ? 'is-active' : ''}" data-studio-tab="cirrhosis">
+                  <i class="fa-solid fa-disease" style="color:#b45309;"></i> Cirrhosis & Liver
+                </button>
               </div>
             </div>
           </div>
 
-          <!-- CONTAINER CHO 5 STUDIOS -->
+          <!-- CONTAINER CHO 7 STUDIOS -->
           <div id="studioPanelsWrap">
 
             <!-- 1. ABG STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioAbg" style="display:${initialTab === 'abg' ? 'block' : 'none'};">
+              <!-- Quick Case Presets Bar -->
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> Ca Bệnh Mẫu Thực Tế (Quick Case Presets — 1-Click Load):
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                  ${ABG_PRESETS.map(p => `
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-abg-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                      <strong>${escapeHtml(p.name)}</strong>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
               <div class="dsp-two-col">
                 <div class="dsp-col-main">
                   <div class="dsp-card">
@@ -67,16 +90,28 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                     <div style="padding:1.25rem;">
                       <div class="dsp-form-row dsp-form-row--3">
                         <div class="dsp-form-group">
-                          <label class="dsp-label">pH Máu <span class="dsp-required">*</span></label>
+                          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                            <label class="dsp-label" style="margin:0;">pH Máu <span class="dsp-required">*</span></label>
+                            <span id="abgPhDisplay" style="font-size:11px; font-weight:800; color:var(--color-primary);">7.25</span>
+                          </div>
                           <input class="dsp-input js-abg-input" type="number" id="abgPh" value="7.25" step="0.01" min="6.8" max="7.9" />
+                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgPh" min="6.80" max="7.80" step="0.01" value="7.25" style="width:100%; margin-top:4px;" />
                         </div>
                         <div class="dsp-form-group">
-                          <label class="dsp-label">PaCO2 (mmHg) <span class="dsp-required">*</span></label>
+                          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                            <label class="dsp-label" style="margin:0;">PaCO2 (mmHg) <span class="dsp-required">*</span></label>
+                            <span id="abgPaco2Display" style="font-size:11px; font-weight:800; color:var(--color-primary);">60</span>
+                          </div>
                           <input class="dsp-input js-abg-input" type="number" id="abgPaco2" value="60" step="1" min="10" max="150" />
+                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgPaco2" min="15" max="100" step="1" value="60" style="width:100%; margin-top:4px;" />
                         </div>
                         <div class="dsp-form-group">
-                          <label class="dsp-label">HCO3- (mmol/L) <span class="dsp-required">*</span></label>
+                          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                            <label class="dsp-label" style="margin:0;">HCO3- (mmol/L) <span class="dsp-required">*</span></label>
+                            <span id="abgHco3Display" style="font-size:11px; font-weight:800; color:var(--color-primary);">26</span>
+                          </div>
                           <input class="dsp-input js-abg-input" type="number" id="abgHco3" value="26" step="0.5" min="2" max="60" />
+                          <input class="dsp-range-slider js-abg-slider" type="range" id="sliderAbgHco3" min="5" max="50" step="0.5" value="26" style="width:100%; margin-top:4px;" />
                         </div>
                       </div>
 
@@ -115,7 +150,7 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                   <!-- Davenport Graphic -->
                   <div class="dsp-card" style="margin-top:1.25rem;">
                     <div class="dsp-card-header">
-                      <h3 class="dsp-card-title"><i class="fa-solid fa-chart-line" style="color:var(--color-primary);"></i> Biểu Đồ Toan Kiềm Davenport SVG</h3>
+                      <h3 class="dsp-card-title"><i class="fa-solid fa-chart-line" style="color:var(--color-primary);"></i> Biểu Đồ Toan Kiềm Davenport SVG (6 Vùng Màu Lâm Sàng)</h3>
                     </div>
                     <div id="abgDavenportContainer" style="padding:1rem;">
                       ${renderDavenportSvg(7.25, 26)}
@@ -134,6 +169,21 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
 
             <!-- 2. ECG STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioEcg" style="display:${initialTab === 'ecg' ? 'block' : 'none'};">
+              <!-- Quick Case Presets Bar -->
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#dc2626;"></i> Ca ECG Mẫu Điển Hình (Quick Case Presets):
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                  ${ECG_PRESETS.map(p => `
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-ecg-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                      <strong>${escapeHtml(p.name)}</strong>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
               <div class="dsp-two-col">
                 <div class="dsp-col-main">
                   <div class="dsp-card">
@@ -232,6 +282,21 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
 
             <!-- 3. ELECTROLYTE STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioElectrolyte" style="display:${initialTab === 'electrolyte' ? 'block' : 'none'};">
+              <!-- Quick Case Presets Bar -->
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#0284c7;"></i> Ca Rối Loạn Điện Giải Mẫu (Quick Case Presets):
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                  ${ELYTE_PRESETS.map(p => `
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-elyte-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                      <strong>${escapeHtml(p.name)}</strong>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
               <div class="dsp-two-col">
                 <div class="dsp-col-main">
                   <div class="dsp-card">
@@ -289,6 +354,16 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
                       </div>
                     </div>
                   </div>
+
+                  <!-- Timeline Fluid Chart -->
+                  <div class="dsp-card" style="margin-top:1.25rem;">
+                    <div class="dsp-card-header">
+                      <h3 class="dsp-card-title"><i class="fa-solid fa-clock-rotate-left" style="color:#0284c7;"></i> Lộ Trình Bù Dịch An Toàn (Fluid Timeline 0h - 48h SVG)</h3>
+                    </div>
+                    <div id="elyteTimelineContainer" style="padding:1rem;">
+                      ${renderFluidTimelineSvg(118, 130, 42)}
+                    </div>
+                  </div>
                 </div>
 
                 <!-- Electrolyte Results Column -->
@@ -302,6 +377,21 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
 
             <!-- 4. RENAL & DOSING STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioRenal" style="display:${initialTab === 'renal' ? 'block' : 'none'};">
+              <!-- Quick Case Presets Bar -->
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#7c3aed;"></i> Ca Bệnh Thận Mẫu (Quick Case Presets):
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                  ${RENAL_PRESETS.map(p => `
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-renal-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                      <strong>${escapeHtml(p.name)}</strong>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
               <div class="dsp-two-col">
                 <div class="dsp-col-main">
                   <div class="dsp-card">
@@ -355,6 +445,21 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
 
             <!-- 5. CARDIO RISK STUDIO PANEL -->
             <div class="js-studio-panel" id="panelStudioCardio" style="display:${initialTab === 'cardio' ? 'block' : 'none'};">
+              <!-- Quick Case Presets Bar -->
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#ca8a04;"></i> Ca Tim Mạch & Lipid Mẫu (Quick Case Presets):
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                  ${CARDIO_PRESETS.map(p => `
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cardio-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                      <strong>${escapeHtml(p.name)}</strong>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
               <div class="dsp-two-col">
                 <div class="dsp-col-main">
                   <div class="dsp-card">
@@ -422,6 +527,203 @@ export async function renderStudiosView(profileId: string, initialTab: StudioTab
               </div>
             </div>
 
+            <!-- 6. SEPSIS & PNEUMONIA STUDIO PANEL -->
+            <div class="js-studio-panel" id="panelStudioSepsis" style="display:${initialTab === 'sepsis' ? 'block' : 'none'};">
+              <!-- Quick Case Presets Bar -->
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#e11d48;"></i> Ca Nhiễm Khuẩn & Viêm Phổi Mẫu (Quick Case Presets):
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                  ${SEPSIS_PRESETS.map(p => `
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-sepsis-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                      <strong>${escapeHtml(p.name)}</strong>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="dsp-two-col">
+                <div class="dsp-col-main">
+                  <div class="dsp-card">
+                    <div class="dsp-card-header">
+                      <h2 class="dsp-card-title"><i class="fa-solid fa-lungs-virus" style="color:#e11d48;"></i> Đánh Giá Sốc Nhiễm Khuẩn & Viêm Phổi Nặng</h2>
+                    </div>
+                    <div style="padding:1.25rem;">
+                      <div class="dsp-form-row dsp-form-row--4">
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Tuổi</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepAge" value="62" min="18" max="110" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Nhịp thở (l/p)</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepRr" value="28" min="8" max="60" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Huyết áp Tâm thu</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepSbp" value="82" min="40" max="250" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Huyết áp Tâm trương</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepDbp" value="45" min="20" max="140" />
+                        </div>
+                      </div>
+
+                      <div class="dsp-form-row dsp-form-row--4">
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Glasgow (GCS)</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepGcs" value="13" min="3" max="15" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">PaO2/FiO2 (mmHg)</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepPf" value="220" min="40" max="600" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Tiểu cầu (G/L)</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepPlt" value="85" min="5" max="800" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Lactate (mmol/L)</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepLactate" value="4.8" step="0.1" />
+                        </div>
+                      </div>
+
+                      <div class="dsp-form-row dsp-form-row--2">
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Bilirubin (umol/L)</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepBili" value="38" min="2" max="600" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Creatinine (umol/L)</label>
+                          <input class="dsp-input js-sepsis-input" type="number" id="sepCreat" value="240" min="30" max="1200" />
+                        </div>
+                      </div>
+
+                      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.5rem; margin-top:0.5rem; background:var(--color-bg); padding:0.75rem; border-radius:8px;">
+                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
+                          <input type="checkbox" id="sepVasopressor" class="js-sepsis-input" checked /> Cần thuốc vận mạch (Noradrenaline)
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
+                          <input type="checkbox" id="sepPseudomonas" class="js-sepsis-input" checked /> Nguy cơ Trực khuẩn mủ xanh (Pseudomonas)
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer;">
+                          <input type="checkbox" id="sepMrsa" class="js-sepsis-input" /> Nguy cơ Tụ cầu vàng kháng Methicillin (MRSA)
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sepsis Results Column -->
+                <div class="dsp-col-side">
+                  <div class="dsp-card" id="sepsisResultCard">
+                    <!-- Rendered dynamic via JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. CIRRHOSIS & LIVER STUDIO PANEL -->
+            <div class="js-studio-panel" id="panelStudioCirrhosis" style="display:${initialTab === 'cirrhosis' ? 'block' : 'none'};">
+              <!-- Quick Case Presets Bar -->
+              <div class="dsp-card" style="margin-bottom:1.25rem; padding:0.85rem 1rem;">
+                <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i class="fa-solid fa-bolt" style="color:#b45309;"></i> Ca Gan Mật & Xơ Gan Mẫu (Quick Case Presets):
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                  ${CIRRHOSIS_PRESETS.map(p => `
+                    <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cirrhosis-preset-btn" data-preset-id="${p.id}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg);">
+                      <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; margin-right:4px;"></span>
+                      <strong>${escapeHtml(p.name)}</strong>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="dsp-two-col">
+                <div class="dsp-col-main">
+                  <div class="dsp-card">
+                    <div class="dsp-card-header">
+                      <h2 class="dsp-card-title"><i class="fa-solid fa-disease" style="color:#b45309;"></i> Đánh Giá Xơ Gan: Child-Pugh, MELD-Na, FIB-4 & ALBI</h2>
+                    </div>
+                    <div style="padding:1.25rem;">
+                      <div class="dsp-form-row dsp-form-row--3">
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Bilirubin toàn phần (umol/L)</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrBili" value="85" min="2" max="800" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Albumin (g/L)</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrAlb" value="24" min="10" max="60" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">INR Đông máu</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrInr" value="2.1" step="0.1" min="0.8" max="10" />
+                        </div>
+                      </div>
+
+                      <div class="dsp-form-row dsp-form-row--3">
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Creatinine (umol/L)</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrCreat" value="180" min="30" max="1200" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Natri Na+ (mmol/L)</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrNa" value="124" min="100" max="170" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Tiểu cầu (G/L)</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrPlt" value="65" min="5" max="800" />
+                        </div>
+                      </div>
+
+                      <div class="dsp-form-row dsp-form-row--3">
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">AST / GOT (U/L)</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrAst" value="95" min="5" max="1000" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">ALT / GPT (U/L)</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrAlt" value="60" min="5" max="1000" />
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Tuổi</label>
+                          <input class="dsp-input js-cirr-input" type="number" id="cirrAge" value="56" min="18" max="100" />
+                        </div>
+                      </div>
+
+                      <div class="dsp-form-row dsp-form-row--2">
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Mức độ Cổ trướng (Báng bụng)</label>
+                          <select class="dsp-select js-cirr-input" id="cirrAscites">
+                            <option value="none">Không có cổ trướng (1 điểm)</option>
+                            <option value="mild">Cổ trướng nhẹ / lượng ít (2 điểm)</option>
+                            <option value="moderate_severe" selected>Cổ trướng vừa đến nhiều / căng (3 điểm)</option>
+                          </select>
+                        </div>
+                        <div class="dsp-form-group">
+                          <label class="dsp-label">Bệnh Não Gan (Hôn mê gan)</label>
+                          <select class="dsp-select js-cirr-input" id="cirrEnceph">
+                            <option value="none">Không có bệnh não gan (1 điểm)</option>
+                            <option value="grade_1_2" selected>Độ 1 - 2: Rối loạn giấc ngủ, lơ mơ nhẹ (2 điểm)</option>
+                            <option value="grade_3_4">Độ 3 - 4: Lú lẫn nặng, hôn mê (3 điểm)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cirrhosis Results Column -->
+                <div class="dsp-col-side">
+                  <div class="dsp-card" id="cirrhosisResultCard">
+                    <!-- Rendered dynamic via JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -463,15 +765,56 @@ export function mountStudiosController(profileId: string): void {
         const p = document.getElementById('panelStudioCardio');
         if (p) p.style.display = 'block';
         recalcCardio();
+      } else if (targetTab === 'sepsis') {
+        const p = document.getElementById('panelStudioSepsis');
+        if (p) p.style.display = 'block';
+        recalcSepsis();
+      } else if (targetTab === 'cirrhosis') {
+        const p = document.getElementById('panelStudioCirrhosis');
+        if (p) p.style.display = 'block';
+        recalcCirrhosis();
       }
     });
   });
 
-  // 2. ABG Controller
+  // 2. ABG Controller & Sliders Sync & Presets
+  const abgPhInput = document.getElementById('abgPh') as HTMLInputElement;
+  const abgPaco2Input = document.getElementById('abgPaco2') as HTMLInputElement;
+  const abgHco3Input = document.getElementById('abgHco3') as HTMLInputElement;
+  const sliderAbgPh = document.getElementById('sliderAbgPh') as HTMLInputElement;
+  const sliderAbgPaco2 = document.getElementById('sliderAbgPaco2') as HTMLInputElement;
+  const sliderAbgHco3 = document.getElementById('sliderAbgHco3') as HTMLInputElement;
+
+  sliderAbgPh?.addEventListener('input', () => { if (abgPhInput) abgPhInput.value = sliderAbgPh.value; recalcAbg(); });
+  sliderAbgPaco2?.addEventListener('input', () => { if (abgPaco2Input) abgPaco2Input.value = sliderAbgPaco2.value; recalcAbg(); });
+  sliderAbgHco3?.addEventListener('input', () => { if (abgHco3Input) abgHco3Input.value = sliderAbgHco3.value; recalcAbg(); });
+
+  document.querySelectorAll<HTMLElement>('.js-abg-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-preset-id');
+      const preset = ABG_PRESETS.find(p => p.id === id);
+      if (preset) {
+        if (abgPhInput) abgPhInput.value = String(preset.values.ph);
+        if (sliderAbgPh) sliderAbgPh.value = String(preset.values.ph);
+        if (abgPaco2Input) abgPaco2Input.value = String(preset.values.paco2);
+        if (sliderAbgPaco2) sliderAbgPaco2.value = String(preset.values.paco2);
+        if (abgHco3Input) abgHco3Input.value = String(preset.values.hco3);
+        if (sliderAbgHco3) sliderAbgHco3.value = String(preset.values.hco3);
+        (document.getElementById('abgPao2') as HTMLInputElement).value = String(preset.values.pao2 || 80);
+        (document.getElementById('abgFio2') as HTMLInputElement).value = String(preset.values.fio2 || 21);
+        (document.getElementById('abgNa') as HTMLInputElement).value = String(preset.values.na || 140);
+        (document.getElementById('abgCl') as HTMLInputElement).value = String(preset.values.cl || 100);
+        (document.getElementById('abgAlbumin') as HTMLInputElement).value = String(preset.values.albumin || 4.0);
+        (document.getElementById('abgLactate') as HTMLInputElement).value = String(preset.values.lactate || 1.5);
+        recalcAbg();
+      }
+    });
+  });
+
   const recalcAbg = () => {
-    const ph = parseFloat((document.getElementById('abgPh') as HTMLInputElement)?.value) || 7.25;
-    const paco2 = parseFloat((document.getElementById('abgPaco2') as HTMLInputElement)?.value) || 60;
-    const hco3 = parseFloat((document.getElementById('abgHco3') as HTMLInputElement)?.value) || 26;
+    const ph = parseFloat(abgPhInput?.value) || 7.25;
+    const paco2 = parseFloat(abgPaco2Input?.value) || 60;
+    const hco3 = parseFloat(abgHco3Input?.value) || 26;
     const pao2 = parseFloat((document.getElementById('abgPao2') as HTMLInputElement)?.value) || undefined;
     const fio2 = parseFloat((document.getElementById('abgFio2') as HTMLInputElement)?.value) || 21;
     const lactate = parseFloat((document.getElementById('abgLactate') as HTMLInputElement)?.value) || undefined;
@@ -481,11 +824,13 @@ export function mountStudiosController(profileId: string): void {
 
     const res = analyzeAbg({ ph, paco2, hco3, pao2, fio2, lactate, na, cl, albumin });
 
-    // Update Davenport SVG
+    const dPh = document.getElementById('abgPhDisplay'); if (dPh) dPh.textContent = ph.toFixed(2);
+    const dCo2 = document.getElementById('abgPaco2Display'); if (dCo2) dCo2.textContent = String(paco2);
+    const dHco3 = document.getElementById('abgHco3Display'); if (dHco3) dHco3.textContent = String(hco3);
+
     const svgContainer = document.getElementById('abgDavenportContainer');
     if (svgContainer) svgContainer.innerHTML = renderDavenportSvg(ph, hco3);
 
-    // Update Result Box
     const resultCard = document.getElementById('abgResultCard');
     if (resultCard) {
       resultCard.innerHTML = `
@@ -542,7 +887,29 @@ export function mountStudiosController(profileId: string): void {
 
   document.querySelectorAll('.js-abg-input').forEach(i => i.addEventListener('input', recalcAbg));
 
-  // 3. ECG Controller
+  // 3. ECG Controller & Presets
+  document.querySelectorAll<HTMLElement>('.js-ecg-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-preset-id');
+      const preset = ECG_PRESETS.find(p => p.id === id);
+      if (preset) {
+        (document.getElementById('ecgHr') as HTMLInputElement).value = String(preset.values.heartRate);
+        (document.getElementById('ecgRhythm') as HTMLSelectElement).value = preset.values.rhythmType;
+        (document.getElementById('ecgLead1') as HTMLInputElement).value = String(preset.values.lead1Net);
+        (document.getElementById('ecgAvf') as HTMLInputElement).value = String(preset.values.avfNet);
+        (document.getElementById('ecgPr') as HTMLInputElement).value = String(preset.values.prInterval || 160);
+        (document.getElementById('ecgQrs') as HTMLInputElement).value = String(preset.values.qrsDuration || 90);
+        (document.getElementById('ecgQt') as HTMLInputElement).value = String(preset.values.qtInterval || 400);
+        (document.getElementById('ecgRaVL') as HTMLInputElement).value = String(preset.values.raVL || 8);
+        (document.getElementById('ecgHasLbbb') as HTMLInputElement).checked = !!preset.values.hasLbbb;
+        (document.getElementById('sg1') as HTMLInputElement).checked = !!preset.values.sgarbossaConcordantStElevation;
+        (document.getElementById('sg2') as HTMLInputElement).checked = !!preset.values.sgarbossaConcordantStDepressionV1V3;
+        (document.getElementById('sg3') as HTMLInputElement).checked = !!preset.values.sgarbossaExcessiveDiscordant;
+        recalcEcg();
+      }
+    });
+  });
+
   const recalcEcg = () => {
     const heartRate = parseFloat((document.getElementById('ecgHr') as HTMLInputElement)?.value) || 80;
     const rhythmType = ((document.getElementById('ecgRhythm') as HTMLSelectElement)?.value || 'sinus') as any;
@@ -562,15 +929,12 @@ export function mountStudiosController(profileId: string): void {
       hasLbbb, sgarbossaConcordantStElevation, sgarbossaConcordantStDepressionV1V3, sgarbossaExcessiveDiscordant
     });
 
-    // Update Axis Compass
     const svgContainer = document.getElementById('ecgAxisSvgContainer');
     if (svgContainer) svgContainer.innerHTML = renderEcgAxisSvg(res.axisAngleDegree);
 
-    // Update Sgarbossa wrap visibility
     const sgWrap = document.getElementById('ecgSgarbossaWrap');
     if (sgWrap) sgWrap.style.display = hasLbbb ? 'flex' : 'none';
 
-    // Update Result Box
     const resultCard = document.getElementById('ecgResultCard');
     if (resultCard) {
       resultCard.innerHTML = `
@@ -616,7 +980,24 @@ export function mountStudiosController(profileId: string): void {
 
   document.querySelectorAll('.js-ecg-input').forEach(i => i.addEventListener('input', recalcEcg));
 
-  // 4. Electrolyte Controller
+  // 4. Electrolyte Controller & Presets
+  document.querySelectorAll<HTMLElement>('.js-elyte-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-preset-id');
+      const preset = ELYTE_PRESETS.find(p => p.id === id);
+      if (preset) {
+        (document.getElementById('elyteMode') as HTMLSelectElement).value = preset.values.mode;
+        (document.getElementById('elyteWeight') as HTMLInputElement).value = String(preset.values.weightKg);
+        (document.getElementById('elyteGender') as HTMLSelectElement).value = preset.values.gender;
+        (document.getElementById('elyteNa') as HTMLInputElement).value = String(preset.values.serumNa);
+        (document.getElementById('elyteGlucose') as HTMLInputElement).value = String(preset.values.glucoseMmol || 5.6);
+        if (preset.values.selectedInfusate) (document.getElementById('elyteInfusate') as HTMLSelectElement).value = preset.values.selectedInfusate;
+        (document.getElementById('elyteSevere') as HTMLInputElement).checked = !!preset.values.hasSevereSymptoms;
+        recalcElectrolyte();
+      }
+    });
+  });
+
   const recalcElectrolyte = () => {
     const mode = ((document.getElementById('elyteMode') as HTMLSelectElement)?.value || 'hyponatremia') as any;
     const weightKg = parseFloat((document.getElementById('elyteWeight') as HTMLInputElement)?.value) || 60;
@@ -628,11 +1009,14 @@ export function mountStudiosController(profileId: string): void {
 
     const res = analyzeElectrolyte({ mode, weightKg, gender, serumNa, glucoseMmol, selectedInfusate, hasSevereSymptoms });
 
+    const timelineContainer = document.getElementById('elyteTimelineContainer');
+    if (timelineContainer) timelineContainer.innerHTML = renderFluidTimelineSvg(serumNa, 130, res.infusionRateMlPerHour || 42);
+
     const resultCard = document.getElementById('elyteResultCard');
     if (resultCard) {
       resultCard.innerHTML = `
         <div class="dsp-card-header" style="border-bottom:1px solid var(--color-border); padding-bottom:0.75rem;">
-          <h3 class="dsp-card-title"><i class="fa-solid fa-flask" style="color:#0284c7;"></i> Kết Quả Tính Điện Giải & Bù Dịch</h3>
+          <h3 class="dsp-card-title"><i class="fa-solid fa-flask" style="color:#0284c7;"></i> Kết Quả Bù Điện Giải & Dịch</h3>
         </div>
         <div style="padding:1.25rem;">
           <div style="background:rgba(2,132,199,0.1); border-left:4px solid var(--color-primary); padding:1rem; border-radius:6px; margin-bottom:1rem;">
@@ -673,7 +1057,21 @@ export function mountStudiosController(profileId: string): void {
 
   document.querySelectorAll('.js-elyte-input').forEach(i => i.addEventListener('input', recalcElectrolyte));
 
-  // 5. Renal Controller
+  // 5. Renal Controller & Presets
+  document.querySelectorAll<HTMLElement>('.js-renal-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-preset-id');
+      const preset = RENAL_PRESETS.find(p => p.id === id);
+      if (preset) {
+        (document.getElementById('renalAge') as HTMLInputElement).value = String(preset.values.age);
+        (document.getElementById('renalGender') as HTMLSelectElement).value = preset.values.gender;
+        (document.getElementById('renalWeight') as HTMLInputElement).value = String(preset.values.weightKg);
+        (document.getElementById('renalCreatinine') as HTMLInputElement).value = String(preset.values.serumCreatinineUmol);
+        recalcRenal();
+      }
+    });
+  });
+
   const recalcRenal = () => {
     const age = parseFloat((document.getElementById('renalAge') as HTMLInputElement)?.value) || 65;
     const gender = ((document.getElementById('renalGender') as HTMLSelectElement)?.value || 'male') as any;
@@ -682,7 +1080,6 @@ export function mountStudiosController(profileId: string): void {
 
     const res = analyzeRenalFunction({ age, gender, weightKg, serumCreatinineUmol });
 
-    // Render Table
     const tableContainer = document.getElementById('renalDrugTableContainer');
     if (tableContainer) {
       tableContainer.innerHTML = `
@@ -716,7 +1113,6 @@ export function mountStudiosController(profileId: string): void {
       `;
     }
 
-    // Render Side Card
     const resultCard = document.getElementById('renalResultCard');
     if (resultCard) {
       resultCard.innerHTML = `
@@ -724,15 +1120,19 @@ export function mountStudiosController(profileId: string): void {
           <h3 class="dsp-card-title"><i class="fa-solid fa-dna" style="color:#7c3aed;"></i> Chức Năng Thận</h3>
         </div>
         <div style="padding:1.25rem;">
-          <div style="background:rgba(124,58,237,0.1); border-left:4px solid ${res.kdigoStageColor}; padding:1rem; border-radius:6px; margin-bottom:1rem;">
-            <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase;">eGFR (CKD-EPI 2021):</div>
-            <div style="font-size:1.3rem; font-weight:800; color:${res.kdigoStageColor}; margin-top:0.25rem;">
-              ${res.ckdEpi2021} mL/p/1.73m²
-            </div>
-            <div style="font-size:0.85rem; font-weight:700; color:var(--color-text); margin-top:0.25rem;">Giai đoạn ${res.kdigoStage} (${escapeHtml(res.kdigoDescription)})</div>
+          <div style="display:flex; justify-content:center; margin-bottom:0.5rem;">
+            ${renderKdigoGaugeSvg(res.ckdEpi2021)}
           </div>
 
-          <div style="font-size:0.9rem; margin-bottom:0.75rem;">
+          <div style="background:rgba(124,58,237,0.08); border-left:4px solid ${res.kdigoStageColor}; padding:0.85rem; border-radius:6px; margin-bottom:1rem;">
+            <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase;">eGFR (CKD-EPI 2021):</div>
+            <div style="font-size:1.2rem; font-weight:800; color:${res.kdigoStageColor}; margin-top:0.25rem;">
+              ${res.ckdEpi2021} mL/p/1.73m² (Giai đoạn ${res.kdigoStage})
+            </div>
+            <div style="font-size:0.8rem; color:var(--color-text); margin-top:0.25rem;">${escapeHtml(res.kdigoDescription)}</div>
+          </div>
+
+          <div style="font-size:0.88rem; margin-bottom:0.75rem;">
             <strong>Cockcroft-Gault CrCl:</strong> <span class="dsp-badge dsp-badge--info">${res.cockcroftGault} mL/phút</span>
           </div>
 
@@ -752,7 +1152,27 @@ export function mountStudiosController(profileId: string): void {
 
   document.querySelectorAll('.js-renal-input').forEach(i => i.addEventListener('input', recalcRenal));
 
-  // 6. Cardio Risk Controller
+  // 6. Cardio Risk Controller & Presets
+  document.querySelectorAll<HTMLElement>('.js-cardio-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-preset-id');
+      const preset = CARDIO_PRESETS.find(p => p.id === id);
+      if (preset) {
+        (document.getElementById('crAge') as HTMLInputElement).value = String(preset.values.age);
+        (document.getElementById('crGender') as HTMLSelectElement).value = preset.values.gender;
+        (document.getElementById('crSbp') as HTMLInputElement).value = String(preset.values.systolicBp);
+        (document.getElementById('crChol') as HTMLInputElement).value = String(preset.values.totalCholesterolMmol);
+        (document.getElementById('crHdl') as HTMLInputElement).value = String(preset.values.hdlCholesterolMmol);
+        (document.getElementById('crLdl') as HTMLInputElement).value = String(preset.values.ldlCholesterolMmol);
+        (document.getElementById('crSmoker') as HTMLInputElement).checked = !!preset.values.isSmoker;
+        (document.getElementById('crDiabetes') as HTMLInputElement).checked = !!preset.values.hasDiabetes;
+        (document.getElementById('crCvd') as HTMLInputElement).checked = !!preset.values.hasCvdHistory;
+        (document.getElementById('crCkd') as HTMLInputElement).checked = !!preset.values.hasCkd;
+        recalcCardio();
+      }
+    });
+  });
+
   const recalcCardio = () => {
     const age = parseFloat((document.getElementById('crAge') as HTMLInputElement)?.value) || 58;
     const gender = ((document.getElementById('crGender') as HTMLSelectElement)?.value || 'male') as any;
@@ -774,12 +1194,16 @@ export function mountStudiosController(profileId: string): void {
     if (resultCard) {
       resultCard.innerHTML = `
         <div class="dsp-card-header" style="border-bottom:1px solid var(--color-border); padding-bottom:0.75rem;">
-          <h3 class="dsp-card-title"><i class="fa-solid fa-chart-pie" style="color:#ca8a04;"></i> Phân Tầng Nguy Cơ Tim Mạch</h3>
+          <h3 class="dsp-card-title"><i class="fa-solid fa-chart-pie" style="color:#ca8a04;"></i> Nguy Cơ Tim Mạch</h3>
         </div>
         <div style="padding:1.25rem;">
-          <div style="background:rgba(202,138,4,0.1); border-left:4px solid ${res.riskColor}; padding:1rem; border-radius:6px; margin-bottom:1rem;">
+          <div style="display:flex; justify-content:center; margin-bottom:0.5rem;">
+            ${renderScore2GaugeSvg(res.score2Percentage)}
+          </div>
+
+          <div style="background:rgba(202,138,4,0.08); border-left:4px solid ${res.riskColor}; padding:0.85rem; border-radius:6px; margin-bottom:1rem;">
             <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase;">Phân tầng nguy cơ 10 năm:</div>
-            <div style="font-size:1.15rem; font-weight:800; color:${res.riskColor}; margin-top:0.25rem;">${escapeHtml(res.riskCategoryLabel)}</div>
+            <div style="font-size:1.05rem; font-weight:800; color:${res.riskColor}; margin-top:0.25rem;">${escapeHtml(res.riskCategoryLabel)}</div>
           </div>
 
           <div style="background:var(--color-bg); padding:0.75rem; border-radius:6px; margin-bottom:1rem;">
@@ -788,13 +1212,13 @@ export function mountStudiosController(profileId: string): void {
               < ${res.targetLdlMmol} mmol/L (< ${res.targetLdlMgDl} mg/dL)
             </div>
             <div style="font-size:0.82rem; color:var(--color-text-muted); margin-top:0.25rem;">
-              ${res.currentLdlGapMmol > 0 ? `⚠️ Cần hạ thêm <strong>${res.currentLdlGapMmol} mmol/L</strong> so với hiện tại` : '✅ Đã đạt mục tiêu LDL-C'}
+              ${res.currentLdlGapMmol > 0 ? `⚠️ Cần hạ thêm <strong>${res.currentLdlGapMmol} mmol/L</strong>` : '✅ ĐÃ ĐẠT MỤC TIÊU'}
             </div>
           </div>
 
-          <div style="font-size:0.85rem; margin-bottom:1rem;">
-            <strong>Phác đồ Statin khuyến nghị:</strong>
-            <div style="font-size:0.82rem; color:var(--color-text); margin-top:0.25rem;">${escapeHtml(res.statinRegimenRecommendation)}</div>
+          <div style="font-size:0.82rem; margin-bottom:1rem;">
+            <strong>Phác đồ Statin:</strong>
+            <div style="color:var(--color-text); margin-top:0.25rem;">${escapeHtml(res.statinRegimenRecommendation)}</div>
           </div>
 
           <div style="display:flex; gap:0.5rem;">
@@ -813,7 +1237,203 @@ export function mountStudiosController(profileId: string): void {
 
   document.querySelectorAll('.js-cardio-input').forEach(i => i.addEventListener('input', recalcCardio));
 
-  // Helper gán sự kiện cho các nút Chèn vào SOAP và Sao chép
+  // 7. Sepsis Controller & Presets
+  document.querySelectorAll<HTMLElement>('.js-sepsis-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-preset-id');
+      const preset = SEPSIS_PRESETS.find(p => p.id === id);
+      if (preset) {
+        (document.getElementById('sepAge') as HTMLInputElement).value = String(preset.values.age);
+        (document.getElementById('sepRr') as HTMLInputElement).value = String(preset.values.respiratoryRate);
+        (document.getElementById('sepSbp') as HTMLInputElement).value = String(preset.values.systolicBp);
+        (document.getElementById('sepDbp') as HTMLInputElement).value = String(preset.values.diastolicBp);
+        (document.getElementById('sepGcs') as HTMLInputElement).value = String(preset.values.gcs);
+        (document.getElementById('sepPf') as HTMLInputElement).value = String(preset.values.pao2Fio2Ratio);
+        (document.getElementById('sepPlt') as HTMLInputElement).value = String(preset.values.plateletsK);
+        (document.getElementById('sepLactate') as HTMLInputElement).value = String(preset.values.serumLactateMmol);
+        (document.getElementById('sepBili') as HTMLInputElement).value = String(preset.values.bilirubinUmol);
+        (document.getElementById('sepCreat') as HTMLInputElement).value = String(preset.values.serumCreatinineUmol);
+        (document.getElementById('sepVasopressor') as HTMLInputElement).checked = !!preset.values.vasopressorNeed;
+        (document.getElementById('sepPseudomonas') as HTMLInputElement).checked = !!preset.values.isPseudomonasRisk;
+        (document.getElementById('sepMrsa') as HTMLInputElement).checked = !!preset.values.isMrsaRisk;
+        recalcSepsis();
+      }
+    });
+  });
+
+  const recalcSepsis = () => {
+    const age = parseFloat((document.getElementById('sepAge') as HTMLInputElement)?.value) || 62;
+    const respiratoryRate = parseFloat((document.getElementById('sepRr') as HTMLInputElement)?.value) || 28;
+    const systolicBp = parseFloat((document.getElementById('sepSbp') as HTMLInputElement)?.value) || 82;
+    const diastolicBp = parseFloat((document.getElementById('sepDbp') as HTMLInputElement)?.value) || 45;
+    const gcs = parseFloat((document.getElementById('sepGcs') as HTMLInputElement)?.value) || 13;
+    const pao2Fio2Ratio = parseFloat((document.getElementById('sepPf') as HTMLInputElement)?.value) || 220;
+    const plateletsK = parseFloat((document.getElementById('sepPlt') as HTMLInputElement)?.value) || 85;
+    const serumLactateMmol = parseFloat((document.getElementById('sepLactate') as HTMLInputElement)?.value) || 4.8;
+    const bilirubinUmol = parseFloat((document.getElementById('sepBili') as HTMLInputElement)?.value) || 38;
+    const serumCreatinineUmol = parseFloat((document.getElementById('sepCreat') as HTMLInputElement)?.value) || 240;
+    const vasopressorNeed = (document.getElementById('sepVasopressor') as HTMLInputElement)?.checked;
+    const isPseudomonasRisk = (document.getElementById('sepPseudomonas') as HTMLInputElement)?.checked;
+    const isMrsaRisk = (document.getElementById('sepMrsa') as HTMLInputElement)?.checked;
+
+    const res = analyzeSepsis({
+      age, respiratoryRate, systolicBp, diastolicBp, gcs, pao2Fio2Ratio,
+      plateletsK, bilirubinUmol, serumCreatinineUmol, serumLactateMmol,
+      vasopressorNeed, isPseudomonasRisk, isMrsaRisk
+    });
+
+    const resultCard = document.getElementById('sepsisResultCard');
+    if (resultCard) {
+      resultCard.innerHTML = `
+        <div class="dsp-card-header" style="border-bottom:1px solid var(--color-border); padding-bottom:0.75rem;">
+          <h3 class="dsp-card-title"><i class="fa-solid fa-lungs-virus" style="color:#e11d48;"></i> Kết Quả Sepsis & Viêm Phổi</h3>
+        </div>
+        <div style="padding:1.25rem;">
+          <div style="background:rgba(225,29,72,0.08); border-left:4px solid ${res.sepsisColor}; padding:1rem; border-radius:6px; margin-bottom:1rem;">
+            <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase;">Phân loại:</div>
+            <div style="font-size:1.1rem; font-weight:800; color:${res.sepsisColor}; margin-top:0.25rem;">${escapeHtml(res.sepsisClassification)}</div>
+            <div style="font-size:0.82rem; font-weight:700; color:var(--color-text); margin-top:0.35rem;">${escapeHtml(res.icuCareRecommendation)}</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:1rem;">
+            <div style="background:var(--color-bg); padding:0.65rem; border-radius:6px; text-align:center;">
+              <div style="font-size:10.5px; color:var(--color-text-muted);">SOFA Score</div>
+              <div style="font-size:1.2rem; font-weight:900; color:var(--color-primary);">${res.sofaScore} đ</div>
+            </div>
+            <div style="background:var(--color-bg); padding:0.65rem; border-radius:6px; text-align:center;">
+              <div style="font-size:10.5px; color:var(--color-text-muted);">qSOFA Score</div>
+              <div style="font-size:1.2rem; font-weight:900; color:${res.qsofaScore >= 2 ? '#ef4444' : 'var(--color-primary)'};">${res.qsofaScore} đ</div>
+            </div>
+            <div style="background:var(--color-bg); padding:0.65rem; border-radius:6px; text-align:center;">
+              <div style="font-size:10.5px; color:var(--color-text-muted);">CURB-65</div>
+              <div style="font-size:1.2rem; font-weight:900; color:var(--color-text);">${res.curb65Score} đ</div>
+            </div>
+            <div style="background:var(--color-bg); padding:0.65rem; border-radius:6px; text-align:center;">
+              <div style="font-size:10.5px; color:var(--color-text-muted);">SMART-COP</div>
+              <div style="font-size:1.2rem; font-weight:900; color:var(--color-text);">${res.smartCopScore} đ</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(2,132,199,0.08); padding:0.75rem; border-radius:6px; margin-bottom:1rem; font-size:0.82rem;">
+            <strong style="color:var(--color-primary);"><i class="fa-solid fa-pills"></i> Kháng sinh kinh nghiệm:</strong>
+            <div style="margin-top:0.25rem; line-height:1.4;">${escapeHtml(res.antibioticRegimen)}</div>
+          </div>
+
+          ${res.treatmentChecklist.length > 0 ? `
+            <div style="background:rgba(245,158,11,0.08); padding:0.75rem; border-radius:6px; font-size:0.8rem; margin-bottom:1rem;">
+              <strong style="color:#f59e0b;"><i class="fa-solid fa-list-check"></i> Gói Sống Còn Giờ Đầu (Hour-1):</strong>
+              <ul style="margin:0.25rem 0 0; padding-left:1rem;">
+                ${res.treatmentChecklist.map(c => `<li>${escapeHtml(c)}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+
+          <div style="display:flex; gap:0.5rem;">
+            <button class="dsp-btn dsp-btn-primary dsp-btn-sm js-apply-studio-soap" data-text="${escapeHtml(res.clinicalSummary)}" style="flex:1;">
+              <i class="fa-solid fa-notes-medical"></i> Chèn vào SOAP
+            </button>
+            <button class="dsp-btn dsp-btn-ghost dsp-btn-sm js-copy-studio-text" data-text="${escapeHtml(res.clinicalSummary)}">
+              <i class="fa-regular fa-copy"></i> Sao chép
+            </button>
+          </div>
+        </div>
+      `;
+      bindActionBtns(resultCard);
+    }
+  };
+
+  document.querySelectorAll('.js-sepsis-input').forEach(i => i.addEventListener('input', recalcSepsis));
+
+  // 8. Cirrhosis Controller & Presets
+  document.querySelectorAll<HTMLElement>('.js-cirrhosis-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-preset-id');
+      const preset = CIRRHOSIS_PRESETS.find(p => p.id === id);
+      if (preset) {
+        (document.getElementById('cirrBili') as HTMLInputElement).value = String(preset.values.bilirubinUmol);
+        (document.getElementById('cirrAlb') as HTMLInputElement).value = String(preset.values.albuminGPerL);
+        (document.getElementById('cirrInr') as HTMLInputElement).value = String(preset.values.inr);
+        (document.getElementById('cirrCreat') as HTMLInputElement).value = String(preset.values.serumCreatinineUmol);
+        (document.getElementById('cirrNa') as HTMLInputElement).value = String(preset.values.serumNaMmol);
+        (document.getElementById('cirrPlt') as HTMLInputElement).value = String(preset.values.plateletsK);
+        (document.getElementById('cirrAst') as HTMLInputElement).value = String(preset.values.astUPerL);
+        (document.getElementById('cirrAlt') as HTMLInputElement).value = String(preset.values.altUPerL);
+        (document.getElementById('cirrAge') as HTMLInputElement).value = String(preset.values.age);
+        (document.getElementById('cirrAscites') as HTMLSelectElement).value = preset.values.ascites;
+        (document.getElementById('cirrEnceph') as HTMLSelectElement).value = preset.values.encephalopathy;
+        recalcCirrhosis();
+      }
+    });
+  });
+
+  const recalcCirrhosis = () => {
+    const bilirubinUmol = parseFloat((document.getElementById('cirrBili') as HTMLInputElement)?.value) || 85;
+    const albuminGPerL = parseFloat((document.getElementById('cirrAlb') as HTMLInputElement)?.value) || 24;
+    const inr = parseFloat((document.getElementById('cirrInr') as HTMLInputElement)?.value) || 2.1;
+    const serumCreatinineUmol = parseFloat((document.getElementById('cirrCreat') as HTMLInputElement)?.value) || 180;
+    const serumNaMmol = parseFloat((document.getElementById('cirrNa') as HTMLInputElement)?.value) || 124;
+    const plateletsK = parseFloat((document.getElementById('cirrPlt') as HTMLInputElement)?.value) || 65;
+    const astUPerL = parseFloat((document.getElementById('cirrAst') as HTMLInputElement)?.value) || 95;
+    const altUPerL = parseFloat((document.getElementById('cirrAlt') as HTMLInputElement)?.value) || 60;
+    const age = parseFloat((document.getElementById('cirrAge') as HTMLInputElement)?.value) || 56;
+    const ascites = ((document.getElementById('cirrAscites') as HTMLSelectElement)?.value || 'moderate_severe') as any;
+    const encephalopathy = ((document.getElementById('cirrEnceph') as HTMLSelectElement)?.value || 'grade_1_2') as any;
+
+    const res = analyzeCirrhosis({
+      age, bilirubinUmol, albuminGPerL, inr, serumCreatinineUmol, serumNaMmol,
+      astUPerL, altUPerL, plateletsK, ascites, encephalopathy, isDialysisTwiceLastWeek: false
+    });
+
+    const resultCard = document.getElementById('cirrhosisResultCard');
+    if (resultCard) {
+      resultCard.innerHTML = `
+        <div class="dsp-card-header" style="border-bottom:1px solid var(--color-border); padding-bottom:0.75rem;">
+          <h3 class="dsp-card-title"><i class="fa-solid fa-disease" style="color:#b45309;"></i> Kết Quả Đánh Giá Gan Mật</h3>
+        </div>
+        <div style="padding:1.25rem;">
+          <div style="background:rgba(180,83,9,0.08); border-left:4px solid ${res.childPughColor}; padding:1rem; border-radius:6px; margin-bottom:1rem;">
+            <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase;">Phân loại Child-Pugh:</div>
+            <div style="font-size:1.15rem; font-weight:800; color:${res.childPughColor}; margin-top:0.25rem;">
+              ${escapeHtml(res.childPughClassLabel)}
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-bottom:1rem;">
+            <div style="background:var(--color-bg); padding:0.65rem; border-radius:6px; text-align:center;">
+              <div style="font-size:10.5px; color:var(--color-text-muted);">MELD-Na 2016</div>
+              <div style="font-size:1.3rem; font-weight:900; color:#dc2626;">${res.meldNaScore} đ</div>
+            </div>
+            <div style="background:var(--color-bg); padding:0.65rem; border-radius:6px; text-align:center;">
+              <div style="font-size:10.5px; color:var(--color-text-muted);">FIB-4 Index</div>
+              <div style="font-size:1.3rem; font-weight:900; color:var(--color-primary);">${res.fib4Score}</div>
+            </div>
+          </div>
+
+          <div style="font-size:0.82rem; color:var(--color-text-muted); margin-bottom:0.75rem; background:var(--color-bg); padding:0.6rem; border-radius:6px;">
+            <strong>Tiên lượng 3 tháng:</strong> ${escapeHtml(res.meldMortality3Month)}
+          </div>
+
+          <div style="font-size:0.82rem; color:var(--color-text-muted); margin-bottom:1rem;">
+            <strong>ALBI Score:</strong> ${escapeHtml(res.albiGrade)}
+          </div>
+
+          <div style="display:flex; gap:0.5rem;">
+            <button class="dsp-btn dsp-btn-primary dsp-btn-sm js-apply-studio-soap" data-text="${escapeHtml(res.clinicalSummary)}" style="flex:1;">
+              <i class="fa-solid fa-notes-medical"></i> Chèn vào SOAP
+            </button>
+            <button class="dsp-btn dsp-btn-ghost dsp-btn-sm js-copy-studio-text" data-text="${escapeHtml(res.clinicalSummary)}">
+              <i class="fa-regular fa-copy"></i> Sao chép
+            </button>
+          </div>
+        </div>
+      `;
+      bindActionBtns(resultCard);
+    }
+  };
+
+  document.querySelectorAll('.js-cirr-input').forEach(i => i.addEventListener('input', recalcCirrhosis));
+
+  // Helper bind actions
   function bindActionBtns(container: HTMLElement) {
     container.querySelectorAll('.js-apply-studio-soap').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -842,4 +1462,6 @@ export function mountStudiosController(profileId: string): void {
   recalcElectrolyte();
   recalcRenal();
   recalcCardio();
+  recalcSepsis();
+  recalcCirrhosis();
 }

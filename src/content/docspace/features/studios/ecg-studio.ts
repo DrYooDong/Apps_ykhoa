@@ -1,24 +1,33 @@
 /**
  * DocSpace — ECG Pro Studio (TypeScript)
- * Phân Tích 12 Chuyển Đạo, Tính Trục Điện Tim Vector & Đánh Giá QTc / Sgarbossa
+ * Phân Tích 12 Chuyển Đạo, Trục Điện Tim Vector 360°, QTc Bazett/Fridericia & Tiêu Chuẩn Sgarbossa
  */
 
+export interface EcgPreset {
+  id: string;
+  name: string;
+  badge: string;
+  badgeColor: string;
+  description: string;
+  values: EcgInputs;
+}
+
 export interface EcgInputs {
-  heartRate: number; // l/p
+  heartRate: number;
   rhythmType: 'sinus' | 'afib' | 'aflutter' | 'svt' | 'vt' | 'pacing' | 'other';
   lead1Net: number; // mm (R - S ở DI)
   avfNet: number;   // mm (R - S ở aVF)
-  prInterval?: number; // ms (chuẩn 120 - 200)
-  qrsDuration?: number; // ms (chuẩn < 120)
+  prInterval?: number; // ms
+  qrsDuration?: number; // ms
   qtInterval?: number; // ms
-  sv1?: number; // mm
-  rv5?: number; // mm
-  raVL?: number; // mm
-  sv3?: number; // mm
+  sv1?: number;
+  rv5?: number;
+  raVL?: number;
+  sv3?: number;
   hasLbbb?: boolean;
-  sgarbossaConcordantStElevation?: boolean; // ≥1mm ST chênh lên cùng hướng QRS (5đ)
-  sgarbossaConcordantStDepressionV1V3?: boolean; // ≥1mm ST chênh xuống ở V1-V3 (3đ)
-  sgarbossaExcessiveDiscordant?: boolean; // ≥5mm ST chênh ngược hướng QRS (2đ)
+  sgarbossaConcordantStElevation?: boolean;
+  sgarbossaConcordantStDepressionV1V3?: boolean;
+  sgarbossaExcessiveDiscordant?: boolean;
 }
 
 export interface EcgAnalysisResult {
@@ -35,6 +44,57 @@ export interface EcgAnalysisResult {
   clinicalSummary: string;
   recommendations: string[];
 }
+
+export const ECG_PRESETS: EcgPreset[] = [
+  {
+    id: 'stemi_anterior',
+    name: 'STEMI Thành Trước Rộng',
+    badge: 'Cấp Cứu Mạch Vành',
+    badgeColor: '#dc2626',
+    description: 'Đau ngực sau xương ức cấp, ST chênh lên vòm từ V1-V6, DI, aVL kèm soi gương DII, DIII, aVF.',
+    values: { heartRate: 105, rhythmType: 'sinus', lead1Net: 10, avfNet: -6, prInterval: 140, qrsDuration: 95, qtInterval: 380, sv1: 5, rv5: 12, raVL: 10, sv3: 8 },
+  },
+  {
+    id: 'stemi_inferior_rv',
+    name: 'STEMI Thành Dưới + Thất Phải',
+    badge: 'ST Chênh DII, DIII, aVF',
+    badgeColor: '#ef4444',
+    description: 'ST chênh lên DIII > DII, ST chênh xuống soi gương DI, aVL. Tránh dùng Nitrate/Morphine.',
+    values: { heartRate: 52, rhythmType: 'sinus', lead1Net: -4, avfNet: 12, prInterval: 210, qrsDuration: 90, qtInterval: 420, sv1: 6, rv5: 10, raVL: -4, sv3: 6 },
+  },
+  {
+    id: 'afib_rvr',
+    name: 'Rung Nhĩ Đáp Ứng Thất Nhanh',
+    badge: 'Loạn Nhịp Nhanh',
+    badgeColor: '#f59e0b',
+    description: 'Mất sóng P, thay bằng sóng lăn tăn f, khoảng RR hoàn toàn không đều, tần số thất > 130 l/p.',
+    values: { heartRate: 145, rhythmType: 'afib', lead1Net: 8, avfNet: 6, prInterval: 0, qrsDuration: 85, qtInterval: 320, sv1: 4, rv5: 14, raVL: 6, sv3: 5 },
+  },
+  {
+    id: 'lbbb_sgarbossa',
+    name: 'LBBB Kèm Sgarbossa (+)',
+    badge: 'NMCT Cấp Trên Nền LBBB',
+    badgeColor: '#dc2626',
+    description: 'Block nhánh trái hoàn toàn (QRS 145ms) kèm ST chênh lên cùng hướng QRS ở V5 (5 điểm Sgarbossa).',
+    values: { heartRate: 88, rhythmType: 'sinus', lead1Net: 12, avfNet: -8, prInterval: 180, qrsDuration: 145, qtInterval: 460, sv1: 15, rv5: 22, raVL: 14, sv3: 16, hasLbbb: true, sgarbossaConcordantStElevation: true },
+  },
+  {
+    id: 'long_qt_torsades',
+    name: 'Hội Chứng QT Dài / Nguy Cơ Xoắn Đỉnh',
+    badge: 'Báo Động Đỏ QTc > 550ms',
+    badgeColor: '#8b5cf6',
+    description: 'Khoảng QT kéo dài nguy kịch do dùng thuốc chống loạn nhịp kết hợp hạ Kali/Magie máu.',
+    values: { heartRate: 64, rhythmType: 'sinus', lead1Net: 7, avfNet: 5, prInterval: 160, qrsDuration: 95, qtInterval: 540, sv1: 8, rv5: 16, raVL: 6, sv3: 9 },
+  },
+  {
+    id: 'lvh_strain',
+    name: 'Dày Thất Trái Tăng Gánh (LVH Strain)',
+    badge: 'Tăng Huyết Áp Mạn Tính',
+    badgeColor: '#0284c7',
+    description: 'Sokolow-Lyon (SV1 + RV5) = 44mm ≥ 35mm, ST chênh xuống và T âm không đối xứng ở V5, V6.',
+    values: { heartRate: 78, rhythmType: 'sinus', lead1Net: 14, avfNet: -4, prInterval: 170, qrsDuration: 105, qtInterval: 410, sv1: 20, rv5: 24, raVL: 15, sv3: 18 },
+  },
+];
 
 export function analyzeEcg(inputs: EcgInputs): EcgAnalysisResult {
   const {
@@ -64,7 +124,6 @@ export function analyzeEcg(inputs: EcgInputs): EcgAnalysisResult {
   else heartRateCategory = 'Tần số bình thường (60 - 100 l/p)';
 
   // 2. Tính Trục Điện Tim (Hexaxial Reference System)
-  // Góc alpha = atan2(aVF, DI)
   const rad = Math.atan2(avfNet, lead1Net);
   let deg = Math.round(rad * (180 / Math.PI));
 
@@ -77,7 +136,7 @@ export function analyzeEcg(inputs: EcgInputs): EcgAnalysisResult {
   } else if (deg < -30 && deg >= -90) {
     axisClassification = 'Trục Lệch Trái (Left Axis Deviation - LAD)';
     axisColor = '#f59e0b';
-    recommendations.push('Trục lệch trái: Tìm nguyên nhân Block phân nhánh trái trước (LAFB), Dày thất trái (LVH), Nhồi máu cơ tim thành dưới.');
+    recommendations.push('Trục lệch trái: Tìm nguyên nhân Block phân nhánh trái trước (LAFB), Dày thất trái (LVH), Nhồi máu cơ tim cũ thành dưới.');
   } else if (deg > 90 && deg <= 180) {
     axisClassification = 'Trục Lệch Phải (Right Axis Deviation - RAD)';
     axisColor = '#ef4444';
@@ -99,7 +158,7 @@ export function analyzeEcg(inputs: EcgInputs): EcgAnalysisResult {
     qtcFridericia = Math.round(qtInterval / Math.cbrt(rrSec));
 
     if (qtcBazett > 500) {
-      qtcInterpretation = `⚠️ QTc KÉO DÀI NẶNG (${qtcBazett} ms) ➔ Nguy cơ cao Xoắn đỉnh (Torsades de Pointes)! Ngừng ngay các thuốc kéo dài QT.`;
+      qtcInterpretation = `🚨 QTc KÉO DÀI NẶNG (${qtcBazett} ms) ➔ Nguy cơ cao Xoắn đỉnh (Torsades de Pointes)! Ngừng ngay các thuốc kéo dài QT.`;
       recommendations.push('Kiểm tra ngay điện giải đồ (K+, Mg2+, Ca2+) và tránh phối hợp thuốc chống loạn nhịp nhóm III / Macrolide / Quinolone.');
     } else if (qtcBazett > 460) {
       qtcInterpretation = `QTc Kéo dài nhẹ/trung bình (${qtcBazett} ms)`;
@@ -116,16 +175,16 @@ export function analyzeEcg(inputs: EcgInputs): EcgAnalysisResult {
   const cornell = raVL + sv3;
 
   if (sokolowLyon >= 35) {
-    lvhStatus = `Dày thất trái (Tiêu chuẩn Sokolow-Lyon: SV1 + RV5 = ${sokolowLyon} mm ≥ 35mm)`;
+    lvhStatus = `Dày thất trái (Sokolow-Lyon: SV1 + RV5 = ${sokolowLyon} mm ≥ 35mm)`;
   } else if (cornell >= 28) {
-    lvhStatus = `Dày thất trái (Tiêu chuẩn Cornell: RaVL + SV3 = ${cornell} mm ≥ 28mm ở nam / ≥ 20mm ở nữ)`;
+    lvhStatus = `Dày thất trái (Cornell: RaVL + SV3 = ${cornell} mm ≥ 28mm ở nam / ≥ 20mm ở nữ)`;
   } else if (raVL > 11) {
     lvhStatus = `Dày thất trái (RaVL = ${raVL} mm > 11mm)`;
   } else {
     lvhStatus = 'Chưa đủ tiêu chuẩn điện thế dày thất trái';
   }
 
-  // 5. Tiêu Chuẩn Sgarbossa (trong LBBB hoặc Nhịp máy tạo nhịp)
+  // 5. Tiêu Chuẩn Sgarbossa
   let sgarbossaScore: number | null = null;
   let sgarbossaInterpretation: string | null = null;
 
@@ -173,11 +232,10 @@ export function analyzeEcg(inputs: EcgInputs): EcgAnalysisResult {
  * Render Vòng Tròn Trục Điện Tim Vector 360 độ SVG (Hexaxial Vector Compass)
  */
 export function renderEcgAxisSvg(deg: number): string {
-  const size = 300;
+  const size = 320;
   const center = size / 2;
-  const r = 105;
+  const r = 115;
 
-  // Tính tọa độ vector mũi tên
   const rad = (deg * Math.PI) / 180;
   const arrowX = center + r * Math.cos(rad);
   const arrowY = center + r * Math.sin(rad);
@@ -193,20 +251,24 @@ export function renderEcgAxisSvg(deg: number): string {
         <marker id="axisArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M 0 1 L 10 5 L 0 9 z" fill="#ef4444" />
         </marker>
+        <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ef4444" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#ef4444" stop-opacity="0" />
+        </radialGradient>
       </defs>
 
       <!-- Vùng màu Trục (Sectors) -->
       <!-- Normal Axis (-30 đến 90) -->
-      <path d="M ${center} ${center} L ${getPt(-30, r).x} ${getPt(-30, r).y} A ${r} ${r} 0 0 1 ${getPt(90, r).x} ${getPt(90, r).y} Z" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="0.5" />
+      <path d="M ${center} ${center} L ${getPt(-30, r).x} ${getPt(-30, r).y} A ${r} ${r} 0 0 1 ${getPt(90, r).x} ${getPt(90, r).y} Z" fill="rgba(16, 185, 129, 0.16)" stroke="#10b981" stroke-width="0.8" />
 
       <!-- Left Axis (-30 đến -90) -->
-      <path d="M ${center} ${center} L ${getPt(-90, r).x} ${getPt(-90, r).y} A ${r} ${r} 0 0 1 ${getPt(-30, r).x} ${getPt(-30, r).y} Z" fill="rgba(245, 158, 11, 0.15)" stroke="#f59e0b" stroke-width="0.5" />
+      <path d="M ${center} ${center} L ${getPt(-90, r).x} ${getPt(-90, r).y} A ${r} ${r} 0 0 1 ${getPt(-30, r).x} ${getPt(-30, r).y} Z" fill="rgba(245, 158, 11, 0.16)" stroke="#f59e0b" stroke-width="0.8" />
 
       <!-- Right Axis (90 đến 180) -->
-      <path d="M ${center} ${center} L ${getPt(90, r).x} ${getPt(90, r).y} A ${r} ${r} 0 0 1 ${getPt(180, r).x} ${getPt(180, r).y} Z" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" stroke-width="0.5" />
+      <path d="M ${center} ${center} L ${getPt(90, r).x} ${getPt(90, r).y} A ${r} ${r} 0 0 1 ${getPt(180, r).x} ${getPt(180, r).y} Z" fill="rgba(239, 68, 68, 0.16)" stroke="#ef4444" stroke-width="0.8" />
 
       <!-- Northwest Axis (-90 đến -180) -->
-      <path d="M ${center} ${center} L ${getPt(180, r).x} ${getPt(180, r).y} A ${r} ${r} 0 0 1 ${getPt(-90, r).x} ${getPt(-90, r).y} Z" fill="rgba(139, 92, 246, 0.12)" stroke="#8b5cf6" stroke-width="0.5" />
+      <path d="M ${center} ${center} L ${getPt(180, r).x} ${getPt(180, r).y} A ${r} ${r} 0 0 1 ${getPt(-90, r).x} ${getPt(-90, r).y} Z" fill="rgba(139, 92, 246, 0.14)" stroke="#8b5cf6" stroke-width="0.8" />
 
       <!-- Vòng tròn ngoài & Trục tọa độ -->
       <circle cx="${center}" cy="${center}" r="${r}" fill="none" stroke="var(--color-border)" stroke-width="1.5" />
@@ -214,28 +276,29 @@ export function renderEcgAxisSvg(deg: number): string {
       <line x1="${center}" y1="${center - r - 15}" x2="${center}" y2="${center + r + 15}" stroke="var(--color-border)" stroke-width="1" />
 
       <!-- Lead Labels -->
-      <text x="${center + r + 18}" y="${center + 4}" fill="var(--color-text)" font-size="9" font-weight="700">DI (0°)</text>
-      <text x="${center - r - 20}" y="${center + 4}" fill="var(--color-text-muted)" font-size="8" text-anchor="end">±180°</text>
-      <text x="${center}" y="${center + r + 18}" fill="var(--color-text)" font-size="9" font-weight="700" text-anchor="middle">aVF (+90°)</text>
-      <text x="${center}" y="${center - r - 8}" fill="var(--color-text-muted)" font-size="8" text-anchor="middle">-90° (aVR)</text>
+      <text x="${center + r + 18}" y="${center + 4}" fill="var(--color-text)" font-size="9.5" font-weight="800">DI (0°)</text>
+      <text x="${center - r - 22}" y="${center + 4}" fill="var(--color-text-muted)" font-size="8.5" text-anchor="end">±180°</text>
+      <text x="${center}" y="${center + r + 18}" fill="var(--color-text)" font-size="9.5" font-weight="800" text-anchor="middle">aVF (+90°)</text>
+      <text x="${center}" y="${center - r - 8}" fill="var(--color-text-muted)" font-size="8.5" text-anchor="middle">-90° (aVR)</text>
 
-      <!-- Oblique Lead Lines (DII 60, DIII 120, aVL -30) -->
+      <!-- Oblique Lead Lines -->
       <line x1="${center}" y1="${center}" x2="${getPt(60, r).x}" y2="${getPt(60, r).y}" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="2,2" />
-      <text x="${getPt(60, r + 12).x}" y="${getPt(60, r + 12).y}" fill="var(--color-text-muted)" font-size="8">DII (+60°)</text>
+      <text x="${getPt(60, r + 12).x}" y="${getPt(60, r + 12).y}" fill="var(--color-text-muted)" font-size="8.5">DII (+60°)</text>
 
       <line x1="${center}" y1="${center}" x2="${getPt(-30, r).x}" y2="${getPt(-30, r).y}" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="2,2" />
-      <text x="${getPt(-30, r + 14).x}" y="${getPt(-30, r + 14).y}" fill="var(--color-text-muted)" font-size="8">aVL (-30°)</text>
+      <text x="${getPt(-30, r + 14).x}" y="${getPt(-30, r + 14).y}" fill="var(--color-text-muted)" font-size="8.5">aVL (-30°)</text>
 
       <line x1="${center}" y1="${center}" x2="${getPt(120, r).x}" y2="${getPt(120, r).y}" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="2,2" />
-      <text x="${getPt(120, r + 14).x}" y="${getPt(120, r + 14).y}" fill="var(--color-text-muted)" font-size="8">DIII (+120°)</text>
+      <text x="${getPt(120, r + 14).x}" y="${getPt(120, r + 14).y}" fill="var(--color-text-muted)" font-size="8.5">DIII (+120°)</text>
 
       <!-- Vector Mũi Tên Bệnh Nhân -->
-      <line x1="${center}" y1="${center}" x2="${arrowX}" y2="${arrowY}" stroke="#ef4444" stroke-width="3" marker-end="url(#axisArrow)" />
-      <circle cx="${center}" cy="${center}" r="4" fill="#ef4444" />
+      <line x1="${center}" y1="${center}" x2="${arrowX}" y2="${arrowY}" stroke="#ef4444" stroke-width="3.5" marker-end="url(#axisArrow)" />
+      <circle cx="${center}" cy="${center}" r="12" fill="url(#centerGlow)" />
+      <circle cx="${center}" cy="${center}" r="4.5" fill="#ef4444" stroke="#ffffff" stroke-width="1.5" />
 
       <!-- Góc hiển thị trung tâm -->
-      <rect x="${center - 32}" y="${center - 35}" width="64" height="20" rx="4" fill="var(--color-surface)" stroke="#ef4444" stroke-width="1.5" />
-      <text x="${center}" y="${center - 21}" fill="#ef4444" font-size="11" font-weight="800" text-anchor="middle">${deg > 0 ? `+${deg}` : deg}°</text>
+      <rect x="${center - 36}" y="${center - 40}" width="72" height="22" rx="5" fill="var(--color-surface)" stroke="#ef4444" stroke-width="1.5" />
+      <text x="${center}" y="${center - 25}" fill="#ef4444" font-size="11.5" font-weight="800" text-anchor="middle">${deg > 0 ? `+${deg}` : deg}°</text>
     </svg>
   `;
 }

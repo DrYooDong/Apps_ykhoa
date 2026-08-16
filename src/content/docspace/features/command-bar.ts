@@ -328,6 +328,32 @@ export class ClinicalCommandBar {
           this.close();
           window.location.hash = '#/docspace/studios?tab=cardio';
         }
+      },
+      {
+        id: 'studio_sepsis',
+        title: 'Sepsis & Pneumonia Studio — Sốc Nhiễm Khuẩn & Viêm Phổi Nặng',
+        category: 'score',
+        categoryLabel: 'Clinical Studio',
+        icon: 'fa-solid fa-lungs-virus',
+        description: 'Đánh giá qSOFA, SOFA, CURB-65, SMART-COP & Gợi ý phác đồ kháng sinh kinh nghiệm ICU',
+        badge: 'Studio',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/studios?tab=sepsis';
+        }
+      },
+      {
+        id: 'studio_cirrhosis',
+        title: 'Cirrhosis & Liver Studio — Xơ Gan, Child-Pugh, MELD-Na & SBP',
+        category: 'score',
+        categoryLabel: 'Clinical Studio',
+        icon: 'fa-solid fa-disease',
+        description: 'Tính Child-Pugh, MELD-Na 2016, FIB-4, ALBI & Phác đồ xuất huyết vỡ giãn TMTQ Baveno VII',
+        badge: 'Studio',
+        action: () => {
+          this.close();
+          window.location.hash = '#/docspace/studios?tab=cirrhosis';
+        }
       }
     );
 

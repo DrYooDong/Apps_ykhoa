@@ -3579,3 +3579,135 @@ body.dsp-active .floating-action-dock,
   display: flex;
   gap: 0.5rem;
 }
+
+/* ── DOCSPACE UNIVERSAL MODAL SYSTEM ────────────────────────────── */
+.dsp-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1080 !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+}
+
+.dsp-modal-backdrop {
+  position: absolute !important;
+  inset: 0 !important;
+  background: transparent !important;
+  z-index: 1 !important;
+}
+
+.dsp-modal-box {
+  position: relative !important;
+  z-index: 2 !important;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: dspModalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.dsp-modal-box--sm { max-width: 440px; }
+.dsp-modal-box--md { max-width: 640px; }
+.dsp-modal-box--lg { max-width: 880px; }
+.dsp-modal-box--xl { max-width: 1100px; }
+
+.dsp-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.dsp-modal-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dsp-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.dsp-modal-close:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.dsp-modal-body {
+  padding: 1.25rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+@keyframes dspModalPop {
+  0% { transform: scale(0.95) translateY(10px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* ── CLINICAL STUDIOS ADVANCED STYLES ───────────────────────────── */
+.dsp-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-border);
+  outline: none;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.dsp-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.dsp-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.dsp-range-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+
