@@ -114,34 +114,44 @@ body {
   flex-direction: column;
 }
 
-/* ── TOPNAV ── */
+/* ── TOPNAV (PRO SUITE $5000) ── */
 .topnav {
   position: sticky; top: 0; z-index: 200;
-  background: rgba(255,255,255,0.92);
+  background: var(--surface);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-light);
   display: flex; align-items: center; gap: 1rem;
-  padding: 0 1.5rem; height: 54px;
+  padding: 0 1.5rem; height: 56px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 .topnav-back {
-  display: inline-flex; align-items: center; gap: 0.4rem;
+  display: inline-flex; align-items: center; gap: 0.45rem;
   color: var(--accent); text-decoration: none;
-  font-size: 0.82rem; font-weight: 600;
-  padding: 0.35rem 0.75rem; border-radius: 8px;
-  transition: background var(--tr);
+  font-size: 0.84rem; font-weight: 700;
+  padding: 0.4rem 0.85rem; border-radius: 10px;
+  background: var(--accent-light);
+  transition: all var(--tr);
 }
-.topnav-back:hover { background: var(--accent-light); }
-.topnav-divider { width: 1px; height: 20px; background: var(--border-light); }
+.topnav-back:hover { 
+  background: var(--accent);
+  color: #ffffff;
+  transform: translateX(-2px);
+}
+.topnav-divider { width: 1px; height: 22px; background: var(--border-light); }
 .topnav-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 700; font-size: 0.9rem; color: var(--text);
+  font-weight: 800; font-size: 0.95rem; color: var(--text);
+  display: flex; align-items: center; gap: 0.5rem;
 }
 .topnav-right { margin-left: auto; display: flex; align-items: center; gap: 0.75rem; }
 .topnav-pill {
-  padding: 0.2rem 0.65rem; border-radius: 20px;
+  padding: 0.25rem 0.75rem; border-radius: 20px;
   background: var(--accent-light); color: var(--accent);
-  font-size: 0.7rem; font-weight: 700;
+  font-size: 0.72rem; font-weight: 800;
+  letter-spacing: 0.02em;
 }
+
 
 /* ── SETTINGS DROPDOWN MENU ── */
 .settings-dropdown-wrapper {

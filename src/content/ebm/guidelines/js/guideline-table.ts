@@ -147,13 +147,49 @@ export function renderFilterPills(): void {
 
   const specFilterList = document.getElementById('spec-filter-list');
   if (specFilterList && window.SPECIALTIES) {
-    let specNavHtml = `<button class="left-nav-link ${window.filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)"><span class="left-nav-icon">🏥</span><span class="left-nav-text">Tất cả chuyên khoa</span></button>`;
+    const allStudies = window.studies || [];
+    const SPEC_ICONS: Record<string, string> = {
+      cardio: 'fa-solid fa-heart-pulse',
+      pulmo: 'fa-solid fa-lungs',
+      gi: 'fa-solid fa-disease',
+      endo: 'fa-solid fa-dna',
+      neuro: 'fa-solid fa-brain',
+      infect: 'fa-solid fa-virus',
+      renal: 'fa-solid fa-flask',
+      rheum: 'fa-solid fa-bone',
+      hema: 'fa-solid fa-droplet',
+      onco: 'fa-solid fa-ribbon',
+      pedia: 'fa-solid fa-baby',
+      obgyn: 'fa-solid fa-person-pregnant',
+      icu: 'fa-solid fa-heart-crack',
+      derma: 'fa-solid fa-hand-dots',
+      ent: 'fa-solid fa-head-side-cough',
+      nutri: 'fa-solid fa-apple-whole'
+    };
+
+    let specNavHtml = `
+      <button class="left-nav-link ${window.filters.specialty === null ? 'active' : ''}" onclick="setFilter('specialty', null)">
+        <span class="left-nav-icon"><i class="fa-solid fa-layer-group" style="color:var(--accent);"></i></span>
+        <span class="left-nav-text">Tất cả chuyên khoa</span>
+        <span class="left-nav-link-badge">${allStudies.length}</span>
+      </button>
+    `;
+
     Object.entries(window.SPECIALTIES).forEach(([key, spec]) => {
-      specNavHtml += `<button class="left-nav-link ${window.filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')"><span class="left-nav-icon" style="width:10px; height:10px; border-radius:50%; background:${spec.color}; display:inline-block;"></span><span class="left-nav-text" style="color:${window.filters.specialty === key ? '' : spec.color};">${spec.name}</span></button>`;
+      const count = allStudies.filter(s => s.specialty === key).length;
+      const iconClass = SPEC_ICONS[key] || 'fa-solid fa-stethoscope';
+      specNavHtml += `
+        <button class="left-nav-link ${window.filters.specialty === key ? 'active' : ''}" onclick="setFilter('specialty', '${key}')">
+          <span class="left-nav-icon"><i class="${iconClass}" style="color:${spec.color};"></i></span>
+          <span class="left-nav-text">${spec.name}</span>
+          <span class="left-nav-link-badge">${count}</span>
+        </button>
+      `;
     });
     specFilterList.innerHTML = specNavHtml;
   }
 }
+
 
 export function setFilter(type: string, value: any): void {
   if (type === 'specialty') {
@@ -535,16 +571,17 @@ export function renderTable(): void {
   if (summaryCountSidebar) summaryCountSidebar.textContent = String((window.studies || []).filter(s => (s.parts && (s.parts as any).length > 0) || s.file).length);
   if (displayCount) displayCount.textContent = String(filtered.length);
 
-  const heroTotal = document.getElementById('hero-total-count');
-  const heroPractice = document.getElementById('hero-practice-changing-count');
-  const heroVn = document.getElementById('hero-vn-count');
-  const heroSpecialty = document.getElementById('hero-specialty-count');
+  const heroTotal = document.getElementById('hero-total-count') || document.getElementById('stat-total-guidelines');
+  const heroPractice = document.getElementById('hero-practice-changing-count') || document.getElementById('stat-practice-changing');
+  const heroVn = document.getElementById('hero-vn-count') || document.getElementById('stat-moh-guidelines');
+  const heroSpecialty = document.getElementById('hero-specialty-count') || document.getElementById('stat-q1-guidelines');
 
   const allStudies = window.studies || [];
   if (heroTotal) heroTotal.textContent = String(allStudies.length);
   if (heroPractice) heroPractice.textContent = String(allStudies.filter(s => s.impact === 'practice-changing').length);
   if (heroVn) heroVn.textContent = String(allStudies.filter(s => s.sourceType && s.sourceType.startsWith('vn-')).length);
-  if (heroSpecialty) heroSpecialty.textContent = String(new Set(allStudies.map(s => s.specialty).filter(Boolean)).size);
+  if (heroSpecialty) heroSpecialty.textContent = String(allStudies.filter(s => s.quartile === 'Q1' || s.quartile === 'Q2' || (s.impactFactor && s.impactFactor >= 10)).length || '118+');
+
 
   if (!tbody) return;
 
