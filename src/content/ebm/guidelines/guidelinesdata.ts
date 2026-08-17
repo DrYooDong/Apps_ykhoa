@@ -134,7 +134,10 @@ export const CLINICAL_CONDITIONS: Record<string, ClinicalConditionMeta> = {
   'osteoporosis': { id: 'osteoporosis', name: 'Loãng xương', icd10: ['M81', 'M80'], color: '#71717a', bg: '#f4f4f5' },
   'lupus-sle': { id: 'lupus-sle', name: 'Lupus ban đỏ hệ thống (SLE)', icd10: ['M32'], color: '#be185d', bg: '#fce7f3' },
   'solid-cancers': { id: 'solid-cancers', name: 'Ung thư các tạng (Phổi, Gan, Vú, Đại trực tràng)', icd10: ['C34', 'C22', 'C50', 'C18'], color: '#be123c', bg: '#fff1f2' },
-  'vte-pe': { id: 'vte-pe', name: 'Huyết khối tĩnh mạch & Thuyên tắc phổi (VTE/PE)', icd10: ['I82', 'I26'], color: '#9f1239', bg: '#fff1f2' }
+  'vte-pe': { id: 'vte-pe', name: 'Huyết khối tĩnh mạch & Thuyên tắc phổi (VTE/PE)', icd10: ['I82', 'I26'], color: '#9f1239', bg: '#fff1f2' },
+  'malaria': { id: 'malaria', name: 'Sốt rét (Malaria)', icd10: ['B50', 'B51', 'B52', 'B53', 'B54'], color: '#d97706', bg: '#fffbeb' },
+  'meningitis': { id: 'meningitis', name: 'Viêm màng não (Meningitis)', icd10: ['G00', 'G01', 'G02', 'G03'], color: '#7c3aed', bg: '#faf5ff' },
+  'uterine-fibroids': { id: 'uterine-fibroids', name: 'U xơ tử cung & Sản phụ khoa', icd10: ['D25', 'N80', 'N92', 'O14', 'O72'], color: '#e11d48', bg: '#fff1f2' }
 };
 
 export const JOURNAL_METRICS_DATABASE: Record<string, JournalMetricsItem> = {

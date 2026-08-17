@@ -758,6 +758,7 @@ export function openConditionEditModal(key?: string): void {
   const icdInput = document.getElementById('cond-form-icd10') as HTMLInputElement | null;
   const colorInput = document.getElementById('cond-form-color') as HTMLInputElement | null;
   const bgInput = document.getElementById('cond-form-bg') as HTMLInputElement | null;
+  const specSelect = document.getElementById('cond-form-specialty') as HTMLSelectElement | null;
 
   if (key && window.CLINICAL_CONDITIONS && window.CLINICAL_CONDITIONS[key]) {
     const cond = window.CLINICAL_CONDITIONS[key];
@@ -767,6 +768,10 @@ export function openConditionEditModal(key?: string): void {
     if (icdInput) icdInput.value = Array.isArray(cond.icd10) ? cond.icd10.join(', ') : (cond.icd10 || '');
     if (colorInput) colorInput.value = cond.color || '#dc2626';
     if (bgInput) bgInput.value = cond.bg || '#fef2f2';
+    if (specSelect) {
+      const mapped = window.CONDITION_SPECIALTY_MAP ? window.CONDITION_SPECIALTY_MAP[key] : null;
+      specSelect.value = cond.specialty || (mapped && mapped[0]) || '';
+    }
   } else {
     if (titleEl) titleEl.textContent = '➕ Thêm Vấn Đề / Bệnh Mới';
     if (keyInput) keyInput.value = '';
@@ -774,6 +779,7 @@ export function openConditionEditModal(key?: string): void {
     if (icdInput) icdInput.value = '';
     if (colorInput) colorInput.value = '#dc2626';
     if (bgInput) bgInput.value = '#fef2f2';
+    if (specSelect) specSelect.value = '';
   }
 
   modal.classList.add('active');
@@ -792,6 +798,7 @@ export function handleSaveConditionForm(event?: Event): void {
   const icdRaw = (document.getElementById('cond-form-icd10') as HTMLInputElement | null)?.value.trim();
   const color = (document.getElementById('cond-form-color') as HTMLInputElement | null)?.value || '#dc2626';
   const bg = (document.getElementById('cond-form-bg') as HTMLInputElement | null)?.value || '#fef2f2';
+  const specialty = (document.getElementById('cond-form-specialty') as HTMLSelectElement | null)?.value || undefined;
 
   if (!name || !icdRaw) {
     alert('⚠️ Vui lòng nhập Tên bệnh và ít nhất 1 mã ICD-10!');
@@ -807,8 +814,14 @@ export function handleSaveConditionForm(event?: Event): void {
     name: name,
     icd10: icdList,
     color: color,
-    bg: bg
+    bg: bg,
+    specialty: specialty
   };
+
+  if (specialty) {
+    window.CONDITION_SPECIALTY_MAP = window.CONDITION_SPECIALTY_MAP || {};
+    window.CONDITION_SPECIALTY_MAP[condKey] = [specialty];
+  }
 
   try {
     localStorage.setItem('cliniportal_custom_conditions', JSON.stringify(window.CLINICAL_CONDITIONS));

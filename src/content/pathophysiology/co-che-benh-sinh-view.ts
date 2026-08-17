@@ -222,7 +222,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-heart-crack"></i></div>
                     <div class="specialty-info">
-                      <h3>Hội Chứng Vành Cấp (ACS & STEMI/NSTEMI)</h3>
+                      <h3>Hội Chứng Vành Cấp (ACS)</h3>
                       <p>Nứt vỡ mảng xơ vữa không ổn định, kết tập tiểu cầu, hình thành huyết khối gây tắc nghẽn động mạch vành cấp.</p>
                     </div>
                   </div>
@@ -232,7 +232,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-heart-pulse"></i></div>
                     <div class="specialty-info">
-                      <h3>Suy Tim Phân Suất Tống Máu Giảm (HFrEF)</h3>
+                      <h3>Suy Tim</h3>
                       <p>Tái cấu trúc thất trái, hoạt hóa quá mức hệ giao cảm & RAAS kéo dài, stress oxy hóa và chết tế bào cơ tim theo chương trình.</p>
                     </div>
                   </div>
@@ -242,7 +242,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-gauge-high"></i></div>
                     <div class="specialty-info">
-                      <h3>Tăng Huyết Áp Nguyên Phát (Essential HTN)</h3>
+                      <h3>Tăng Huyết Áp</h3>
                       <p>Tăng sức cản mạch máu ngoại vi, tái hấp thu muối natri ở thận, rối loạn chức năng nội mô và phì đại đồng tâm thất trái.</p>
                     </div>
                   </div>
@@ -252,7 +252,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-shield-heart"></i></div>
                     <div class="specialty-info">
-                      <h3>Hội Chứng Mạch Vành Mạn (CCS)</h3>
+                      <h3>Hội Chứng Vành Mạn (CCS)</h3>
                       <p>Mảng xơ vữa ổn định làm hẹp lòng mạch vành, gây mất cân bằng cung - cầu oxy cơ tim khi gắng sức.</p>
                     </div>
                   </div>
@@ -274,7 +274,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-lungs"></i></div>
                     <div class="specialty-info">
-                      <h3>Suy Hô Hấp Cấp & ARDS (Hội Chứng Nguy Kịch Hô Hấp)</h3>
+                      <h3>Suy Hô Hấp Cấp</h3>
                       <p>Tổn thương màng phế nang mao mạch lan tỏa, tăng tính thấm, phù phổi không do tim và shunt nội phổi nặng.</p>
                     </div>
                   </div>
@@ -294,7 +294,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-wind"></i></div>
                     <div class="specialty-info">
-                      <h3>Hen Phế Quản (Asthma Type 2 & Non-Type 2)</h3>
+                      <h3>Hen Phế Quản</h3>
                       <p>Tăng phản ứng phế quản, co thắt cơ trơn phế quản qua trung gian IgE, Eosinophils và tái cấu trúc đường thở.</p>
                     </div>
                   </div>
@@ -304,7 +304,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-virus"></i></div>
                     <div class="specialty-info">
-                      <h3>Viêm Phổi Mắc Phải Cộng Đồng (CAP)</h3>
+                      <h3>Viêm Phổi</h3>
                       <p>Xâm nhập phế nang của vi khuẩn, phản ứng viêm đông đặc rỉ dịch xuất tiết và suy giảm trao đổi khí.</p>
                     </div>
                   </div>
@@ -314,7 +314,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-child"></i></div>
                     <div class="specialty-info">
-                      <h3>Viêm Tiểu Phế Quản ở Trẻ Em (Bronchiolitis)</h3>
+                      <h3>Viêm Tiểu Phế Quản</h3>
                       <p>Tổn thương biểu mô tiểu phế quản do virus RSV, phù nề, tăng tiết đờm nhầy gây tắc nghẽn đường thở nhỏ và bẫy khí ở trẻ nhi.</p>
                     </div>
                   </div>
@@ -336,7 +336,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-disease"></i></div>
                     <div class="specialty-info">
-                      <h3>Xơ Gan & Tăng Áp Lực Tĩnh Mạch Cửa</h3>
+                      <h3>Xơ Gan</h3>
                       <p>Hoạt hóa tế bào Kupffer và tế bào hình sao (HSCs), sinh bệnh học báng bụng, tuần hoàn tăng động giãn tạng và suy giảm chuyển hóa.</p>
                     </div>
                   </div>
@@ -366,7 +366,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-fire"></i></div>
                     <div class="specialty-info">
-                      <h3>Viêm Tụy Cấp (Acute Pancreatitis)</h3>
+                      <h3>Viêm Tụy Cấp</h3>
                       <p>Tự tiêu hủy mô tụy do hoạt hóa sớm men Trypsinogen nội bào, phóng thích Cytokines gây phản ứng viêm hệ thống SIRS.</p>
                     </div>
                   </div>
@@ -386,7 +386,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <div class="specialty-info">
-                      <h3>Bệnh Viêm Ruột Mạn Tính (IBD - Crohn & Viêm Loét Đại Tràng)</h3>
+                      <h3>Bệnh Viêm Ruột Mạn Tính (IBD)</h3>
                       <p>Rối loạn đáp ứng miễn dịch niêm mạc ruột với hệ vi sinh vật trên cơ địa di truyền mẫn cảm.</p>
                     </div>
                   </div>
@@ -428,7 +428,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-calculator"></i></div>
                     <div class="specialty-info">
-                      <h3>Bệnh Thận Mạn (CKD Progression)</h3>
+                      <h3>Bệnh Thận Mạn (CKD)</h3>
                       <p>Thích ứng tăng lọc cầu thận và sụp đổ nội môi, xơ hóa cầu thận tiến triển, loãng xương do thận và giảm tiết EPO.</p>
                     </div>
                   </div>
@@ -450,7 +450,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-droplet"></i></div>
                     <div class="specialty-info">
-                      <h3>Đái Tháo Đường (ĐTĐ Típ 1, Típ 2 & Biến Chứng DKA/HHS)</h3>
+                      <h3>Đái Tháo Đường</h3>
                       <p>Kháng Insulin mô đích, suy tế bào Beta tụy, nhiễm toan Ceton, tăng áp lực thẩm thấu và biến chứng mạch máu.</p>
                     </div>
                   </div>
@@ -460,7 +460,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-person-pregnant"></i></div>
                     <div class="specialty-info">
-                      <h3>Tiền Sản Giật & Hội Chứng HELLP</h3>
+                      <h3>Tiền Sản Giật</h3>
                       <p>Khiếm khuyết xâm lấn nguyên bào nuôi, mất cân bằng sFlt-1/PlGF, co thắt mạch toàn thân và tổn thương nội mô đa cơ quan.</p>
                     </div>
                   </div>
@@ -482,7 +482,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-bacteria"></i></div>
                     <div class="specialty-info">
-                      <h3>Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn (Sepsis-3)</h3>
+                      <h3>Nhiễm Khuẩn Huyết & Sốc Nhiễm Khuẩn</h3>
                       <p>Cơn bão Cytokines, giãn mạch mất trương lực, rối loạn đông máu nội quản rải rác (DIC) và suy đa tạng.</p>
                     </div>
                   </div>
@@ -492,7 +492,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-bolt"></i></div>
                     <div class="specialty-info">
-                      <h3>Sinh Lý Bệnh Các Thể Sốc (Shock States)</h3>
+                      <h3>Sốc (Shock)</h3>
                       <p>Sốc giảm thể tích, sốc tim, sốc phân bố, sốc tắc nghẽn: Cơ chế suy giảm tưới máu mô và toan lactic.</p>
                     </div>
                   </div>
@@ -502,7 +502,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-mosquito"></i></div>
                     <div class="specialty-info">
-                      <h3>Sốt Xuất Huyết Dengue (DHF / DSS)</h3>
+                      <h3>Sốt Xuất Huyết Dengue</h3>
                       <p>Hiện tượng ADE, tăng tính thấm thành mạch thoát huyết tương ồ ạt và xuất huyết do giảm tiểu cầu.</p>
                     </div>
                   </div>
@@ -512,7 +512,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-shield-virus"></i></div>
                     <div class="specialty-info">
-                      <h3>Bệnh Lao & Phản Ứng Tạo U Hạt (Tuberculosis)</h3>
+                      <h3>Bệnh Lao</h3>
                       <p>Sinh bệnh học vi khuẩn lao Mycobacterium tuberculosis, đáp ứng miễn dịch tế bào qua Lympho T, tạo nang lao bã đậu và hang lao.</p>
                     </div>
                   </div>
@@ -522,7 +522,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
                     <div class="specialty-info">
-                      <h3>Sốt Rét Ác Tính & Ký Sinh Trùng Plasmodium</h3>
+                      <h3>Bệnh Sốt Rét</h3>
                       <p>Chu kỳ hồng cầu của P. falciparum, hiện tượng kết dính hoa hồng, tắc nghẽn vi mạch não gây sốt rét thể não và suy thận cấp.</p>
                     </div>
                   </div>
@@ -532,7 +532,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
                     <div class="specialty-info">
-                      <h3>Bạch Hầu & Cơ Chế Độc Tố Vi Khuẩn (Diphtheria)</h3>
+                      <h3>Bệnh Bạch Hầu</h3>
                       <p>Ngoại độc tố Diphtheria toxin ức chế tổng hợp protein tế bào qua ADP-ribosyl hóa EF-2, giả mạc thanh quản và viêm cơ tim nhiễm độc.</p>
                     </div>
                   </div>
@@ -554,7 +554,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-brain"></i></div>
                     <div class="specialty-info">
-                      <h3>Đột Quỵ Não Thiếu Máu Cục Bộ Cấp</h3>
+                      <h3>Đột Quỵ Não</h3>
                       <p>Vùng thiếu máu trung tâm, vùng tranh tối tranh sáng (Penumbra), thác nhiễm độc glutamate và phù não.</p>
                     </div>
                   </div>
@@ -564,7 +564,7 @@ export function renderCoCheBenhSinhView(): string {
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-vial"></i></div>
                     <div class="specialty-info">
-                      <h3>Bệnh Ưa Chảy Máu (Hemophilia A/B)</h3>
+                      <h3>Bệnh Hemophilia</h3>
                       <p>Thiếu hụt yếu tố đông máu VIII/IX di truyền lặn liên kết NST X làm suy sụp dòng thác đông máu nội sinh.</p>
                     </div>
                   </div>

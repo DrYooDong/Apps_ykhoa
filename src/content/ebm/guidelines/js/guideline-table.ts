@@ -29,67 +29,76 @@ export const CONDITION_SPECIALTY_MAP: Record<string, string[]> = {
   'bph-luts': ['renal'],
   'uti': ['renal'],
   'icu': ['icu', 'infect'],
-  'hepatitis-b': ['infect', 'gastro'],
-  'hepatitis-c': ['infect', 'gastro'],
+  'hepatitis-b': ['infect', 'gi'],
+  'hepatitis-c': ['infect', 'gi'],
   'flu': ['infect', 'pulmo'],
   'covid19': ['infect', 'pulmo'],
   'hemorrhagic-fever': ['infect'],
-  'measles': ['infect', 'peds'],
+  'measles': ['infect', 'pedia'],
   'invasive-fungal': ['infect', 'pulmo', 'icu'],
-  'hfmd': ['infect', 'peds'],
-  'cirrhosis': ['gastro'],
-  'masld-mash': ['gastro', 'endo'],
-  'gerd-peptic': ['gastro'],
-  'ibd': ['gastro'],
+  'hfmd': ['infect', 'pedia'],
+  'cirrhosis': ['gi'],
+  'masld-mash': ['gi', 'endo'],
+  'gerd-peptic': ['gi'],
+  'ibd': ['gi'],
   'stroke': ['neuro', 'cardio'],
   'epilepsy': ['neuro'],
   'headache-migraine': ['neuro'],
-  'gout': ['rheuma', 'endo'],
-  'ra': ['rheuma'],
-  'osteoporosis': ['rheuma', 'endo'],
-  'lupus-sle': ['rheuma'],
+  'gout': ['rheum', 'endo'],
+  'ra': ['rheum'],
+  'osteoporosis': ['rheum', 'endo'],
+  'lupus-sle': ['rheum'],
   'solid-cancers': ['onco'],
-  'vte-pe': ['hematology', 'cardio', 'icu']
+  'vte-pe': ['hema', 'cardio', 'icu'],
+  'malaria': ['infect'],
+  'meningitis': ['infect', 'neuro'],
+  'uterine-fibroids': ['obgyn']
 };
 
 export function renderFilterPills(): void {
   const filterRowCond = document.getElementById('filter-row-condition');
   const condContainer = document.getElementById('condition-pills');
 
-  if (filterRowCond) {
+  if (filterRowCond && condContainer && window.CLINICAL_CONDITIONS) {
+    filterRowCond.style.display = 'flex';
+    const labelEl = filterRowCond.querySelector('.filter-row-label');
+
     if (!window.filters.specialty) {
-      filterRowCond.style.display = 'none';
-      window.filters.condition = null;
+      if (labelEl) labelEl.textContent = 'Vấn đề / Bệnh';
+      const allKeys = Object.keys(window.CLINICAL_CONDITIONS);
+      let condHtml = `<button class="filter-pill ${window.filters.condition === null ? 'active' : ''}" onclick="setFilter('condition', null)">Tất cả Bệnh</button>`;
+      allKeys.forEach(key => {
+        const cond = window.CLINICAL_CONDITIONS[key];
+        const icdStr = Array.isArray(cond.icd10) ? cond.icd10.join(', ') : (cond.icd10 || '');
+        condHtml += `<button class="filter-pill ${window.filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Mã ICD-10: ${icdStr}">${cond.name}</button>`;
+      });
+      condContainer.innerHTML = condHtml;
     } else {
-      filterRowCond.style.display = 'flex';
-      
       const specName = (window.SPECIALTIES && window.SPECIALTIES[window.filters.specialty]) ? window.SPECIALTIES[window.filters.specialty].name : 'Chuyên khoa';
-      const labelEl = filterRowCond.querySelector('.filter-row-label');
       if (labelEl) labelEl.textContent = `Vấn đề / Bệnh (${specName})`;
+      
+      const activeSpec = window.filters.specialty;
+      const matchingKeys = Object.keys(window.CLINICAL_CONDITIONS).filter(key => {
+        const mappedSpecs = CONDITION_SPECIALTY_MAP[key];
+        if (Array.isArray(mappedSpecs)) return mappedSpecs.includes(activeSpec);
+        if (typeof mappedSpecs === 'string') return mappedSpecs === activeSpec;
+        const cond = window.CLINICAL_CONDITIONS[key];
+        return cond && cond.specialty === activeSpec;
+      });
 
-      if (condContainer && window.CLINICAL_CONDITIONS) {
-        const activeSpec = window.filters.specialty;
-        const matchingKeys = Object.keys(window.CLINICAL_CONDITIONS).filter(key => {
-          const mappedSpecs = CONDITION_SPECIALTY_MAP[key];
-          if (Array.isArray(mappedSpecs)) return mappedSpecs.includes(activeSpec);
-          if (typeof mappedSpecs === 'string') return mappedSpecs === activeSpec;
+      let condHtml = `<button class="filter-pill ${window.filters.condition === null ? 'active' : ''}" onclick="setFilter('condition', null)">Tất cả Bệnh (${specName})</button>`;
+      
+      if (matchingKeys.length === 0) {
+        condHtml += `<span style="font-size:0.78rem; color:var(--text-muted); padding:4px 8px;">Chưa có bệnh mẫu nào cho chuyên khoa này.</span>`;
+      } else {
+        matchingKeys.forEach(key => {
           const cond = window.CLINICAL_CONDITIONS[key];
-          return cond && cond.specialty === activeSpec;
+          const icdStr = Array.isArray(cond.icd10) ? cond.icd10.join(', ') : (cond.icd10 || '');
+          condHtml += `<button class="filter-pill ${window.filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Mã ICD-10: ${icdStr}">${cond.name}</button>`;
         });
-
-        let condHtml = `<button class="filter-pill ${window.filters.condition === null ? 'active' : ''}" onclick="setFilter('condition', null)">Tất cả Bệnh (${specName})</button>`;
-        
-        if (matchingKeys.length === 0) {
-          condHtml += `<span style="font-size:0.78rem; color:var(--text-muted); padding:4px 8px;">Chưa có bệnh mẫu nào cho chuyên khoa này.</span>`;
-        } else {
-          matchingKeys.forEach(key => {
-            const cond = window.CLINICAL_CONDITIONS[key];
-            condHtml += `<button class="filter-pill ${window.filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Mã ICD-10: ${cond.icd10.join(', ')}">${cond.name}</button>`;
-          });
-        }
-
-        condContainer.innerHTML = condHtml;
       }
+
+      condContainer.innerHTML = condHtml;
     }
   }
 
@@ -518,9 +527,16 @@ export function getFilteredStudies(): Study[] {
     if (window.filters.condition && window.CLINICAL_CONDITIONS) {
       const condObj = window.CLINICAL_CONDITIONS[window.filters.condition];
       if (condObj && condObj.icd10) {
-        const studyIcds = Array.isArray(study.icd10) ? study.icd10 : [study.icd10];
-        const hasMatch = studyIcds.some(c => c && condObj.icd10.some((target: string) => String(c).toUpperCase().startsWith(target.toUpperCase())));
+        const studyIcds = Array.isArray(study.icd10) ? study.icd10 : (study.icd10 ? [study.icd10] : []);
+        const condIcds = Array.isArray(condObj.icd10) ? condObj.icd10 : [condObj.icd10];
+        const hasMatch = studyIcds.some(c => c && condIcds.some((target: string) => {
+          const cUpper = String(c).trim().toUpperCase();
+          const tUpper = String(target).trim().toUpperCase();
+          return cUpper.startsWith(tUpper) || tUpper.startsWith(cUpper);
+        }));
         if (!hasMatch && study.conditionKey !== window.filters.condition) return false;
+      } else if (study.conditionKey !== window.filters.condition) {
+        return false;
       }
     }
 
