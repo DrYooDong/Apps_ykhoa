@@ -554,17 +554,60 @@ export function getFilteredStudies(): Study[] {
     if (window.filters.hasSubgroup && (!study.subgroups || typeof study.subgroups !== 'object' || Object.keys(study.subgroups).length === 0)) return false;
 
     if (window.filters.condition && window.CLINICAL_CONDITIONS) {
-      const condObj = window.CLINICAL_CONDITIONS[window.filters.condition];
-      if (condObj && condObj.icd10) {
-        const studyIcds = Array.isArray(study.icd10) ? study.icd10 : (study.icd10 ? [study.icd10] : []);
+      const condKey = window.filters.condition;
+      const condObj = window.CLINICAL_CONDITIONS[condKey];
+      
+      // 1. Direct conditionKey match
+      if (study.conditionKey && study.conditionKey.trim().toLowerCase() === condKey.toLowerCase()) {
+        // Matched directly
+      } else if (condObj && condObj.icd10) {
+        // 2. Extract & clean all ICD-10 codes from study
+        let studyIcds: string[] = [];
+        if (Array.isArray(study.icd10)) {
+          study.icd10.forEach((item: any) => {
+            if (typeof item === 'string') {
+              const trimmed = item.trim();
+              if (trimmed.startsWith('[')) {
+                try {
+                  let p = JSON.parse(trimmed);
+                  while (typeof p === 'string' && p.trim().startsWith('[')) p = JSON.parse(p);
+                  if (Array.isArray(p)) studyIcds.push(...p.map(x => String(x).trim()));
+                  else if (p) studyIcds.push(String(p).trim());
+                } catch(e) {
+                  studyIcds.push(trimmed.replace(/[\[\]"']/g, '').trim());
+                }
+              } else {
+                studyIcds.push(trimmed.replace(/[\[\]"']/g, '').trim());
+              }
+            } else if (item) {
+              studyIcds.push(String(item).trim());
+            }
+          });
+        } else if (typeof study.icd10 === 'string' && (study.icd10 as string).trim()) {
+          const str = (study.icd10 as string).trim();
+          if (str.startsWith('[')) {
+            try {
+              let p = JSON.parse(str);
+              while (typeof p === 'string' && p.trim().startsWith('[')) p = JSON.parse(p);
+              if (Array.isArray(p)) studyIcds = p.map(x => String(x).trim());
+            } catch(e) {
+              studyIcds = str.replace(/[\[\]"']/g, '').split(/[,;\s]+/).map(x => x.trim()).filter(Boolean);
+            }
+          }
+          if (studyIcds.length === 0) {
+            studyIcds = str.replace(/[\[\]"']/g, '').split(/[,;\s]+/).map(x => x.trim()).filter(Boolean);
+          }
+        }
+
         const condIcds = Array.isArray(condObj.icd10) ? condObj.icd10 : [condObj.icd10];
         const hasMatch = studyIcds.some(c => c && condIcds.some((target: string) => {
-          const cUpper = String(c).trim().toUpperCase();
-          const tUpper = String(target).trim().toUpperCase();
+          const cUpper = String(c).replace(/[\[\]"'\s]/g, '').toUpperCase();
+          const tUpper = String(target).replace(/[\[\]"'\s]/g, '').toUpperCase();
           return cUpper.startsWith(tUpper) || tUpper.startsWith(cUpper);
         }));
-        if (!hasMatch && study.conditionKey !== window.filters.condition) return false;
-      } else if (study.conditionKey !== window.filters.condition) {
+
+        if (!hasMatch) return false;
+      } else {
         return false;
       }
     }

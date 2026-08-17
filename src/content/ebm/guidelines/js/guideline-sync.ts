@@ -732,6 +732,43 @@ export function processStudyFields(s: any): Study {
       }
       return undefined;
     })(),
+    icd10: (() => {
+      if (Array.isArray(s.icd10)) {
+        const flat: string[] = [];
+        s.icd10.forEach((item: any) => {
+          if (typeof item === 'string') {
+            const trimmed = item.trim();
+            if (trimmed.startsWith('[')) {
+              try {
+                let p = JSON.parse(trimmed);
+                while (typeof p === 'string' && p.trim().startsWith('[')) p = JSON.parse(p);
+                if (Array.isArray(p)) flat.push(...p.map(x => String(x).trim()));
+                else if (p) flat.push(String(p).trim());
+              } catch(e) {
+                flat.push(trimmed.replace(/[\[\]"']/g, '').trim());
+              }
+            } else {
+              flat.push(trimmed.replace(/[\[\]"']/g, '').trim());
+            }
+          } else if (item) {
+            flat.push(String(item).trim());
+          }
+        });
+        return flat.filter(Boolean);
+      }
+      if (typeof s.icd10 === 'string' && s.icd10.trim()) {
+        const trimmed = s.icd10.trim();
+        if (trimmed.startsWith('[')) {
+          try {
+            let p = JSON.parse(trimmed);
+            while (typeof p === 'string' && p.trim().startsWith('[')) p = JSON.parse(p);
+            if (Array.isArray(p)) return p.map((x: any) => String(x).trim()).filter(Boolean);
+          } catch(e) {}
+        }
+        return trimmed.replace(/[\[\]"']/g, '').split(/[,;\s]+/).map(x => x.trim()).filter(Boolean);
+      }
+      return [];
+    })(),
     createdAt: s.createdAt || s.created_at || (typeof s.id === 'string' && s.id.startsWith('study_') ? (() => {
       const m = s.id.match(/study_(\d{10,13})/);
       return m ? new Date(parseInt(m[1], 10)).toISOString() : undefined;
