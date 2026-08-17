@@ -60,21 +60,16 @@ export function renderFilterPills(): void {
   const condContainer = document.getElementById('condition-pills');
 
   if (filterRowCond && condContainer && window.CLINICAL_CONDITIONS) {
-    filterRowCond.style.display = 'flex';
-    const labelEl = filterRowCond.querySelector('.filter-row-label');
-
     if (!window.filters.specialty) {
-      if (labelEl) labelEl.textContent = 'Vấn đề / Bệnh';
-      const allKeys = Object.keys(window.CLINICAL_CONDITIONS);
-      let condHtml = `<button class="filter-pill ${window.filters.condition === null ? 'active' : ''}" onclick="setFilter('condition', null)">Tất cả Bệnh</button>`;
-      allKeys.forEach(key => {
-        const cond = window.CLINICAL_CONDITIONS[key];
-        const icdStr = Array.isArray(cond.icd10) ? cond.icd10.join(', ') : (cond.icd10 || '');
-        condHtml += `<button class="filter-pill ${window.filters.condition === key ? 'active' : ''}" onclick="setFilter('condition', '${key}')" title="Mã ICD-10: ${icdStr}">${cond.name}</button>`;
-      });
-      condContainer.innerHTML = condHtml;
+      // Khi chọn "Tất cả chuyên khoa", ẩn hoàn toàn hàng Vấn đề / Bệnh
+      filterRowCond.style.display = 'none';
+      condContainer.innerHTML = '';
+      window.filters.condition = null;
     } else {
+      // Khi chọn 1 chuyên khoa cụ thể, hiển thị hàng Vấn đề / Bệnh của chuyên khoa đó
+      filterRowCond.style.display = 'flex';
       const specName = (window.SPECIALTIES && window.SPECIALTIES[window.filters.specialty]) ? window.SPECIALTIES[window.filters.specialty].name : 'Chuyên khoa';
+      const labelEl = filterRowCond.querySelector('.filter-row-label');
       if (labelEl) labelEl.textContent = `Vấn đề / Bệnh (${specName})`;
       
       const activeSpec = window.filters.specialty;
@@ -469,9 +464,20 @@ export function toggleSummaryPartsMenu(menuId: string, event?: Event): void {
   const menu = document.getElementById(menuId);
   if (!menu) return;
   const isAlreadyActive = menu.classList.contains('active');
-  document.querySelectorAll('.summary-parts-menu.active').forEach(m => m.classList.remove('active'));
+
+  // Close all open summary menus and remove elevation classes
+  document.querySelectorAll('.summary-parts-menu.active').forEach(m => {
+    m.classList.remove('active');
+    m.closest('.summary-parts-dropdown')?.classList.remove('active');
+    m.closest('tr')?.classList.remove('has-active-dropdown');
+    m.closest('td')?.classList.remove('has-active-dropdown');
+  });
+
   if (!isAlreadyActive) {
     menu.classList.add('active');
+    menu.closest('.summary-parts-dropdown')?.classList.add('active');
+    menu.closest('tr')?.classList.add('has-active-dropdown');
+    menu.closest('td')?.classList.add('has-active-dropdown');
   }
 }
 
@@ -480,7 +486,12 @@ if (typeof document !== 'undefined') {
   document.addEventListener('click', (e: MouseEvent) => {
     const target = e.target as HTMLElement | null;
     if (!target || !target.closest('.summary-parts-dropdown')) {
-      document.querySelectorAll('.summary-parts-menu.active').forEach(m => m.classList.remove('active'));
+      document.querySelectorAll('.summary-parts-menu.active').forEach(m => {
+        m.classList.remove('active');
+        m.closest('.summary-parts-dropdown')?.classList.remove('active');
+        m.closest('tr')?.classList.remove('has-active-dropdown');
+        m.closest('td')?.classList.remove('has-active-dropdown');
+      });
     }
   });
 }
@@ -503,16 +514,34 @@ export function getFilteredStudies(): Study[] {
 
   return list.filter(study => {
     if (window.filters.search) {
-      const query = window.filters.search.toLowerCase();
-      const title = (study.title || '').toLowerCase();
-      const drug = (study.drug || '').toLowerCase();
-      const summary = (study.summary || '').toLowerCase();
-      const keyResults = (study.keyResults || '').toLowerCase();
-      const population = (study.population || '').toLowerCase();
-      const icdStr = Array.isArray(study.icd10) ? study.icd10.join(' ').toLowerCase() : (study.icd10 || '').toLowerCase();
+      const rawQuery = window.filters.search.trim().toLowerCase();
+      if (rawQuery) {
+        // Build comprehensive searchable text
+        const title = (study.title || '').toLowerCase();
+        const drug = (study.drug || '').toLowerCase();
+        const summary = (study.summary || '').toLowerCase();
+        const detailedConclusion = (study.detailedConclusion || '').toLowerCase();
+        const keyResults = (study.keyResults || '').toLowerCase();
+        const population = (study.population || '').toLowerCase();
+        const intervention = (study.intervention || '').toLowerCase();
+        const org = (study.organization || study.journal || '').toLowerCase();
+        const author = (study.author || '').toLowerCase();
+        const year = String(study.year || '').toLowerCase();
+        const primaryEndpoint = (study.primaryEndpoint || '').toLowerCase();
+        const icdStr = Array.isArray(study.icd10) ? study.icd10.join(' ').toLowerCase() : (study.icd10 || '').toLowerCase();
+        const specName = (window.SPECIALTIES && window.SPECIALTIES[study.specialty]?.name) ? window.SPECIALTIES[study.specialty].name.toLowerCase() : (study.specialty || '').toLowerCase();
+        const condObj = (window.CLINICAL_CONDITIONS && study.conditionKey && window.CLINICAL_CONDITIONS[study.conditionKey]) ? window.CLINICAL_CONDITIONS[study.conditionKey] : null;
+        const condName = (condObj?.name || study.conditionKey || '').toLowerCase();
+        const partsStr = Array.isArray(study.parts) ? study.parts.map((p: any) => (p.title || p.label || '')).join(' ').toLowerCase() : '';
 
-      if (!title.includes(query) && !drug.includes(query) && !summary.includes(query) && !keyResults.includes(query) && !population.includes(query) && !icdStr.includes(query)) {
-        return false;
+        const fullSearchable = `${title} ${drug} ${summary} ${detailedConclusion} ${keyResults} ${population} ${intervention} ${org} ${author} ${year} ${primaryEndpoint} ${icdStr} ${specName} ${condName} ${partsStr}`;
+
+        // Support multiple search words: all words must be found
+        const queryTerms = rawQuery.split(/\s+/).filter(t => t.length > 0);
+        const matchesAll = queryTerms.every(term => fullSearchable.includes(term));
+        if (!matchesAll) {
+          return false;
+        }
       }
     }
 

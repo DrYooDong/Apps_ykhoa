@@ -112,8 +112,8 @@ export function filterByStudyId(id: string): void {
   if (typeof window.renderTable === 'function') window.renderTable();
 }
 
-function handleSearch(e: any): void {
-  const val = e.target.value;
+export function handleSearch(e: any): void {
+  const val = (e && e.target) ? e.target.value : (typeof e === 'string' ? e : '');
   if (window.filters) window.filters.search = val;
   if (window.renderTable) window.renderTable();
 }
@@ -252,7 +252,7 @@ if (typeof window !== 'undefined') {
     }
   });
 
-  document.addEventListener('DOMContentLoaded', async function() {
+  const initApp = async () => {
     initSidebarState();
 
     if (window.initSupabase) {
@@ -322,7 +322,13 @@ if (typeof window !== 'undefined') {
         toggleSidebar();
       }
     });
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
 
   window.toggleSidebar = toggleSidebar;
   window.closeMobileSidebar = closeMobileSidebar;
@@ -331,6 +337,7 @@ if (typeof window !== 'undefined') {
   window.toggleSettingsMenu = toggleSettingsMenu;
   window.closeSettingsMenu = closeSettingsMenu;
   window.filterByStudyId = filterByStudyId;
+  window.handleSearch = handleSearch;
   window.calculateNNT = calculateNNT;
   window.renderUpdates = renderUpdates;
   window.toggleRecentUpdatesSec = toggleRecentUpdatesSec;

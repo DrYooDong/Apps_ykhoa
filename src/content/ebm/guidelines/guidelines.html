@@ -250,7 +250,7 @@
           <!-- Row 1: Search & Layout Settings -->
           <div class="controls-row-1">
             <div class="search-box">
-              <input type="text" id="search-input" placeholder="Tìm kiếm nghiên cứu, thuốc, chuyên khoa, đối tượng..." aria-label="Tìm kiếm">
+              <input type="text" id="search-input" placeholder="Tìm kiếm nghiên cứu, thuốc, chuyên khoa, đối tượng..." aria-label="Tìm kiếm" oninput="if(window.handleSearch) window.handleSearch(event)">
             </div>
             
             <button class="btn" id="filter-icd-btn" onclick="openIcdFilterModal()" title="Lọc theo mã bệnh ICD-10" style="margin-right: auto;">
@@ -312,7 +312,7 @@
           </div>
 
           <!-- Row 1.8: Clinical Condition Filters (ICD-10 Mapped) -->
-          <div class="filter-group-row" id="filter-row-condition" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-light);">
+          <div class="filter-group-row" id="filter-row-condition" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border-light);">
             <span class="filter-row-label">Vấn đề / Bệnh</span>
             <div class="filter-pills" id="condition-pills">
               <!-- Rendered via JS -->

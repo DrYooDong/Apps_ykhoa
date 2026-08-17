@@ -303,6 +303,7 @@ declare global {
     calculateNNT?: () => void;
 
     setFilter?: (type: string, value: any) => void;
+    handleSearch?: (e: any) => void;
     filterByHasSummary?: () => void;
     filterBySubgroupData?: () => void;
     filterByAsianData?: () => void;

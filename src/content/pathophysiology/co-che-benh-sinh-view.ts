@@ -32,7 +32,7 @@ export function renderCoCheBenhSinhView(): string {
               🔬 CƠ CHẾ BỆNH SINH & SINH LÝ BỆNH
             </h1>
             <p class="promax-hero-desc">
-              Hệ thống hóa chuỗi biến đổi bệnh sinh phân tử, rối loạn chức năng cơ quan và căn nguyên phát sinh bệnh lý qua 16 chuyên khoa lâm sàng. Tái hiện mối liên hệ tương hỗ giữa tổn thương cơ sở và biểu hiện triệu chứng tại giường bệnh.
+              <strong>Sinh lý bệnh = Bệnh nguyên (etiology) + Cơ chế bệnh sinh (pathogenesis) + Hậu quả chức năng.</strong> Hệ thống hóa chuỗi biến đổi bệnh sinh phân tử, rối loạn chức năng cơ quan và căn nguyên phát sinh bệnh lý qua các chuyên khoa lâm sàng. Tái hiện mối liên hệ tương hỗ giữa tổn thương cơ sở và biểu hiện triệu chứng tại giường bệnh.
             </p>
 
             <!-- KPI Metric Bar -->

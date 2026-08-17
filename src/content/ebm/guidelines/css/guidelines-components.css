@@ -441,6 +441,17 @@
 .summary-parts-dropdown {
   position: relative;
   display: inline-block;
+  z-index: 2;
+}
+
+.summary-parts-dropdown.active,
+.summary-parts-dropdown:has(.summary-parts-menu.active),
+tr.has-active-dropdown,
+tr:has(.summary-parts-menu.active),
+td.has-active-dropdown,
+td:has(.summary-parts-menu.active) {
+  position: relative !important;
+  z-index: 1500 !important;
 }
 
 .summary-parts-menu {
@@ -453,11 +464,11 @@
   background: var(--surface, #ffffff);
   border: 1px solid var(--border, #e2e8f0);
   border-radius: 10px;
-  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.22), 0 4px 12px -2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 35px -2px rgba(0, 0, 0, 0.28), 0 6px 16px -2px rgba(0, 0, 0, 0.15);
   padding: 6px;
-  z-index: 1200;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999 !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   animation: summaryMenuSlide 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: left;
 }
