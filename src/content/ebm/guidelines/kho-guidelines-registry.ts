@@ -841,6 +841,46 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     summary: 'Phác đồ điều trị viêm gan C đơn giản hóa không cần xác định kiểu gen (Genotype) cho hầu hết các trường hợp, điều trị an toàn trên cả bệnh nhân suy thận.',
     detailedConclusion: 'Uống đủ liệu trình DAA 8-12 tuần đạt tỷ lệ khỏi bệnh gần như tuyệt đối (> 97%).'
   },
+  {
+    id: '2018-tg18-viem-tui-mat',
+    title: 'Tokyo Guidelines 2018 (TG18): Chẩn đoán, Phân độ nặng và Xử trí Viêm túi mật cấp',
+    titleEn: 'Tokyo Guidelines 2018: Diagnostic criteria, severity grading, and management of acute cholecystitis',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2018,
+    organization: 'Hội Gan Mật Tụy Nhật Bản (JSHBPS) & Ủy ban TG18',
+    journal: 'J Hepatobiliary Pancreat Sci',
+    file: '2018-tg18-viem-tui-mat.html',
+    conditionKey: 'gerd-peptic',
+    icd10: ['K80.0', 'K81.0', 'K80.1'],
+    intervention: 'Phẫu thuật cắt túi mật nội soi sớm (< 72h), Dẫn lưu túi mật qua da (PTGBD) / EUS-GBD LAMS cho bệnh nhân nguy cơ cao, Kháng sinh phân tầng theo độ nặng và dừng sau 24h sau mổ độ I/II',
+    primaryEndpoint: 'Giảm tỷ lệ tử vong, tỷ lệ biến chứng quanh phẫu thuật, thời gian nằm viện và chi phí điều trị',
+    keyResults: 'Lap-C sớm < 72h an toàn; Siêu âm nhạy 82% đặc hiệu 81%; PTGBD giải áp hiệu quả; Dừng KS ≤ 24h sau mổ Độ I/II kiểm soát tốt nhiễm trùng.',
+    summary: 'Hướng dẫn kim chỉ nam quốc tế về viêm túi mật cấp: Tiêu chuẩn chẩn đoán TG18/TG13, phân tầng 3 mức độ nặng (Grade I-III), lưu đồ mổ nội soi sớm vs dẫn lưu túi mật cấp cứu, và phác đồ kháng sinh tối ưu.',
+    detailedConclusion: 'Cắt túi mật nội soi sớm là lựa chọn hàng đầu cho Độ I và Độ II ở bệnh nhân nguy cơ mổ thấp; PTGBD là can thiệp đầu tay cho Độ III hoặc nguy cơ mổ cao không đáp ứng nội khoa.'
+  },
+  {
+    id: '2018-tg18-viem-duong-mat',
+    title: 'Tokyo Guidelines 2018 (TG18): Chẩn đoán, Phân độ nặng và Dẫn lưu Viêm đường mật cấp',
+    titleEn: 'Tokyo Guidelines 2018: Diagnostic criteria, severity grading, and management bundles for acute cholangitis',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2018,
+    organization: 'Hội Gan Mật Tụy Nhật Bản (JSHBPS) & Ủy ban TG18',
+    journal: 'J Hepatobiliary Pancreat Sci',
+    file: '2018-tg18-viem-duong-mat.html',
+    conditionKey: 'gerd-peptic',
+    icd10: ['K83.0', 'K80.3', 'K80.4'],
+    intervention: 'Nội soi mật tụy ngược dòng (ERCP) dẫn lưu giải áp sớm/cấp cứu (< 24-48h), PTBD cứu vãn, EUS-BD, gói quản lý 9 bước (Bundles), kháng sinh phổ rộng kỵ khí / Pseudomonas / Enterococcus và dừng sau 4-7 ngày sau dẫn lưu',
+    primaryEndpoint: 'Giảm tỷ lệ tử vong 30 ngày từ 3.7% xuống 2.0% ở Độ II, ngăn ngừa sốc nhiễm khuẩn và suy đa tạng',
+    keyResults: 'ERCP là can thiệp đầu tay (Grade 1 Level B); EBS và ENBD hiệu quả tương đương (Grade 1 Level A); Dẫn lưu sớm trong 24-48h cứu sống bệnh nhân; Dừng KS sau 4-7 ngày dẫn lưu thành công.',
+    summary: 'Hướng dẫn kim chỉ nam quốc tế về viêm đường mật cấp: Tiêu chuẩn chẩn đoán TG18/TG13, phân tầng 3 mức độ nặng, lưu đồ dẫn lưu đường mật khẩn cấp (ERCP/PTBD/EUS-BD), gói quản lý bundles và phác đồ kháng sinh.',
+    detailedConclusion: 'Dẫn lưu đường mật giải áp khẩn cấp (ERCP đầu tay) kết hợp hồi sức tạng và kháng sinh là chìa khóa sống còn; chỉ thực hiện lấy sỏi triệt để khi tình trạng viêm cấp đã ổn định.'
+  },
 
   // --- SẢN PHỤ KHOA (OBSTETRICS & GYNECOLOGY) ---
   {
