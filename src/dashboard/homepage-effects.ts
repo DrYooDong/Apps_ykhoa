@@ -3,7 +3,7 @@
  * Path: src/dashboard/homepage-effects.ts
  */
 
-import { updateDayScoreBadge } from '../tools/good-day-calculator';
+import { updateDayScoreBadge, updateHeroEnergyBadge } from '../tools/good-day-calculator';
 
 export function initHeroClock(): void {
   const timeEl = document.getElementById('heroClockTime');
@@ -29,6 +29,7 @@ export function initHeroClock(): void {
 
   update();
   updateDayScoreBadge();
+  updateHeroEnergyBadge();
   setInterval(update, 1000);
 }
 
