@@ -981,6 +981,26 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     summary: 'Hướng dẫn chuẩn GRADE toàn diện của ACG: 25 câu hỏi lâm sàng (9 chẩn đoán + 16 điều trị), tiêu chuẩn Rome IV, thang điểm Bristol, phác đồ dược lý đích cho từng phân nhóm IBS-C/D/M và can thiệp điều hòa trục não - ruột.',
     detailedConclusion: 'Chẩn đoán tự tin dựa trên tiêu chuẩn Rome IV và xét nghiệm định hướng tối thiểu; cá thể hóa trị liệu theo phân nhóm Bristol; ưu tiên secretagogues cho IBS-C và Rifaximin/TCAs cho IBS-D.'
   },
+  {
+    id: '2025-bsg-ibd',
+    title: 'BSG 2025: Hướng Dẫn Lâm Sàng Quản Lý & Điều Trị Bệnh Viêm Ruột (IBD) Ở Người Lớn',
+    titleEn: 'British Society of Gastroenterology guidelines on inflammatory bowel disease in adults: 2025',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2025,
+    organization: 'British Society of Gastroenterology (BSG)',
+    journal: 'Gut',
+    file: '2025-bsg-ibd.html',
+    conditionKey: 'ibd',
+    icd10: ['K50', 'K51', 'K50.9', 'K51.9'],
+    intervention: 'Phân loại Montreal/Paris, Quy trình sinh thiết >= 2 mẫu/vị trí, Treat-to-Target (FC, Endoscopic Healing, Transmural Healing), Sàng lọc TB/EBV/VZV, Dự phòng VTE bằng LMWH 100% khi nhập viện, TDM Thiopurine (6-TGN 235-450) & Kháng TNF, 5-ASA & Upadacitinib/Infliximab/Vedolizumab, Lưu đồ cấp cứu ASUC ngày 3-7, Infliximab cho CD quanh hậu môn, Tiếp tục Biologics/Anti-TNF suốt thai kỳ, CẤM tạo túi IPAA khi dùng steroid.',
+    primaryEndpoint: 'Đạt thuyên giảm lâm sàng, chữa lành niêm mạc nội soi, bình thường hóa Calprotectin phân, phòng ngừa biến chứng xơ hẹp và giảm tỷ lệ cắt đoạn ruột.',
+    keyResults: 'HBAR: Sinh thiết chuẩn: >=2 mẫu/vị trí | VTE Dự phòng: Bắt buộc 100% nhập viện | ASUC Kháng Steroid N3: Rescue Infliximab/Ciclosporin | 6-TGN Đơn trị: 235-450 pmol/8x10^8 RBC | Anti-TNF Thai kỳ: Tiếp tục suốt thai kỳ',
+    summary: 'Bản cập nhật hướng dẫn thực hành lâm sàng toàn diện của Hội Tiêu hóa Anh quốc (BSG) về IBD: Chẩn đoán theo Montreal/Paris, Treat-to-Target, sàng lọc an toàn trước thuốc sinh học, giám sát nồng độ thuốc TDM, phác đồ điều trị UC/CD, thuật toán xử trí ASUC tại bệnh viện, quản lý thai kỳ và ngoại khoa chu phẫu.',
+    detailedConclusion: 'Áp dụng tiếp cận cá thể hóa Treat-to-Target; sàng lọc an toàn hệ thống trước liệu pháp nâng cao; kiểm soát chặt chẽ cấp cứu ASUC theo mốc ngày 3 và ngày 7; duy trì thuốc sinh học suốt thai kỳ an toàn.'
+  },
 
   // --- SẢN PHỤ KHOA (OBSTETRICS & GYNECOLOGY) ---
   {

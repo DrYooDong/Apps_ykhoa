@@ -4,137 +4,970 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHEM-01: Hóa học Nước, pH & Cân bằng Điện giải Nền tảng – Hóa Sinh Y Học – CliniPortal</title>
+    <title>CHEM-01: Hóa Học Nước, pH & Cân Bằng Điện Giải Nền Tảng – Hóa Sinh Y Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../../../css/reset.css">
     <link rel="stylesheet" href="../../../../css/main.css">
     <link rel="stylesheet" href="../../../../css/components/physio-content.css">
     <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script type="module" src="../../physio-shared.ts"></script>
+
     <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+
         .biochem-article-header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0284c7 100%);
-            color: #fff;
-            padding: 2.25rem 2rem;
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
             border-radius: 16px;
             margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
         .biochem-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.825rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .reaction-box {
-            background: rgba(139, 92, 246, 0.08);
-            border-left: 4px solid #8b5cf6;
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 12px 12px 0;
-            margin: 1.5rem 0;
-        }
-        .pearl-box {
-            background: rgba(245, 158, 11, 0.08);
-            border-left: 4px solid #f59e0b;
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 12px 12px 0;
-            margin: 1.5rem 0;
-        }
-        .lab-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        .lab-table th, .lab-table td {
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
             border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
             padding: 0.75rem 1rem;
-            text-align: left;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
         }
-        .lab-table th {
-            background: var(--color-bg, #f8fafc);
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
             font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
         }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* HEADINGS TYPOGRAPHY */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        /* Medical Callout Boxes */
+        .reaction-box { background: rgba(139, 92, 246, 0.08); border-left: 4px solid #8b5cf6; padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+        .pearl-box { background: rgba(245, 158, 11, 0.08); border-left: 4px solid #f59e0b; padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+        .danger-box { background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+        .info-box { background: rgba(2, 132, 199, 0.08); border-left: 4px solid #0284c7; padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+
+        .lab-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+        .lab-table th, .lab-table td { border: 1px solid var(--color-border, #e2e8f0); padding: 0.85rem 1rem; text-align: left; vertical-align: top; line-height: 1.55; }
+        .lab-table th { background: var(--color-surface-offset, #f8fafc); font-weight: 700; color: var(--color-text, #0f172a); }
+        [data-theme="dark"] .lab-table th { background: #1e293b; color: #f8fafc; }
+
+        /* Flowchart Container */
+        .flowchart-container {
+            background: var(--color-surface-2, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        [data-theme="dark"] .flowchart-container {
+            background: #0f172a;
+            border-color: #334155;
+        }
+        .flowchart-caption {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        .rx-tag {
+            display: inline-block;
+            background: rgba(2, 132, 199, 0.1);
+            color: var(--color-primary, #0284c7);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            margin: 0.15rem 0.2rem;
+            border: 1px solid rgba(2, 132, 199, 0.25);
+        }
+
+        .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 1.25rem 0; }
+        .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
     </style>
 </head>
 
 <body class="physio-article-body">
     <div class="physio-article-container">
-        
+
         <!-- ARTICLE HEADER -->
         <header class="biochem-article-header">
-            <span class="biochem-badge">CHEM-01 • Khối 1: Cấu Trúc Phân Tử Sinh Học</span>
-            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 1.85rem; font-weight: 800; color: #fff;">Hóa học Nước, pH & Cân bằng Điện giải Nền tảng</h1>
-            <p style="margin: 0; font-size: 1rem; opacity: 0.92; line-height: 1.6;">Bản chất lưỡng cực của nước, liên kết Hydro, hiệu ứng kỵ nước, cơ chế đệm Bicarbonat, Phosphat và Proteinat trong duy trì pH sinh lý 7.35 - 7.45.</p>
+            <span class="biochem-badge"><i class="fa-solid fa-dna"></i> CHEM-01 • Khối 1: Cấu Trúc Phân Tử Sinh Học</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; color: #ffffff; line-height: 1.25;">
+                Hóa Học Nước, pH &amp; Cân Bằng Điện Giải Nền Tảng
+            </h1>
+            <p style="margin: 0; font-size: 1.02rem; opacity: 0.95; line-height: 1.65; max-width: 920px;">
+                Chuyên khảo toàn diện về cấu trúc lưỡng cực của nước, động học mạng lưới liên kết Hydro, nhiệt động lực học của hiệu ứng kỵ nước, phương trình Henderson-Hasselbalch, các hệ đệm sinh học, phân bố dịch cơ thể, bơm Na<sup>+</sup>/K<sup>+</sup>-ATPase, cùng sinh lý bệnh và biện luận cận lâm sàng rối loạn Natri, Kali và thăng bằng Acid-Base.
+            </p>
         </header>
 
-        <!-- SECTION 1: TỔNG QUAN CƠ CHẾ -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> 1. Mục Tiêu & Cơ Chế Phân Tử</h2>
-            <p class="section-text">Bản chất lưỡng cực của nước, liên kết Hydro, hiệu ứng kỵ nước, cơ chế đệm Bicarbonat, Phosphat và Proteinat trong duy trì pH sinh lý 7.35 - 7.45.</p>
-        </section>
-
-        <!-- SECTION 2: PHẢN ỨNG & ĐIỂM CHỐT ENZYM -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-flask"></i> 2. Phản Ứng & Điểm Chốt Cơ Chế</h2>
-            <div class="reaction-box">
-                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                    <li><code>H2O + CO2 ⇌ H2CO3 ⇌ H+ + HCO3-</code></li>
-<li><code>pH = pKa + log([A-]/[HA])</code></li>
-                </ul>
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-droplet"></i> 1. Cấu Trúc Nước &amp; LK Hydro</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-shield-halved"></i> 2. Hiệu Ứng Kỵ Nước &amp; LK Yếu</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-flask-vial"></i> 3. Hóa Học Acid-Base &amp; pH</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-scale-balanced"></i> 4. Phương Trình H-H &amp; Hệ Đệm</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-chart-pie"></i> 5. Phân Bố Dịch &amp; Na+/K+ Bơm</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-heart-pulse"></i> 6. Rối Loạn Nước &amp; Natri Máu</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-bolt"></i> 7. Sinh Lý Bệnh &amp; Kali Máu</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vials"></i> 8. Rối Loạn Acid-Base Lâm Sàng</a>
             </div>
-        </section>
+        </nav>
 
-        <!-- SECTION 3: ĐIỂM NGỌC LÂM SÀNG -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> 3. Điểm Ngọc Lâm Sàng (Clinical Pearls)</h2>
+        <!-- ========================================================================= -->
+        <!-- PHẦN 1: CẤU TRÚC LÝ HÓA CỦA NƯỚC & LIÊN KẾT HYDRO -->
+        <!-- ========================================================================= -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-droplet"></i> 1. Cấu Trúc Lý Hóa Của Nước &amp; Khả Năng Tạo Liên Kết Hydro</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-atom"></i> Cấu trúc lưỡng cực (Dipole) &amp; Hình học phân tử nước</h3>
+            <p class="section-text">
+                Phân tử nước (H<sub>2</sub>O) có cấu trúc hình học tứ diện lệch với góc liên kết H–O–H bằng <strong>105&deg;</strong>. Do nguyên tử oxy có độ âm điện lớn hơn nhiều so với hydro, nó kéo lệch các electron dùng chung về phía hạt nhân của mình, khiến hai hạt nhân hydro bị lộ ra ngoài và mang điện tích dương một phần (&delta;<sup>+</sup>). Ngược lại, hai cặp electron tự do chưa liên kết của oxy tạo thành vùng điện tích âm cục bộ (2&delta;<sup>-</sup>).
+            </p>
+            <p class="section-text">
+                Sự phân bố điện tích không đối xứng này biến phân tử nước thành một <strong>lưỡng cực điện (electric dipole) vĩnh cửu</strong> rất mạnh.
+            </p>
+
+            <div class="info-box">
+                <strong><i class="fa-solid fa-circle-info"></i> Hằng số điện môi cực lớn (&epsilon; = 78.5 ở 25&deg;C):</strong>
+                Theo định luật Coulomb, lực tương tác tĩnh điện giữa hai ion trái dấu tỷ lệ nghịch với hằng số điện môi &epsilon; của môi trường: <code>F &prop; 1/&epsilon;</code>. Hằng số điện môi của nước lỏng ở 25&deg;C đạt tới <strong>78.5</strong> (so với chân không là 1, hexane là 1.9, ethanol là 24.3). Nhờ đó, nước làm suy giảm lực hút tĩnh điện giữa các anion và cation trong tinh thể muối khoáng (như NaCl) tới gần <strong>80 lần</strong>, cho phép các phân tử nước xen vào hydrat hóa (solvate hóa) và hòa tan lượng lớn muối trong cơ thể.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-link"></i> Động học mạng lưới Liên kết Hydro</h3>
+            <p class="section-text">
+                Một liên kết hydro được hình thành khi hạt nhân hydro phân cực dương (&delta;<sup>+</sup>) của một phân tử nước bị hút tĩnh điện bởi cặp electron tự do (2&delta;<sup>-</sup>) trên nguyên tử oxy của phân tử nước kề bên.
+            </p>
+            <ul>
+                <li><strong>Mạng lưới động học linh hoạt:</strong> Trong nước lỏng, mỗi phân tử nước tạo trung bình <strong>3.5 liên kết hydro</strong> với các phân tử xung quanh. Các liên kết này có thời gian bán hủy (half-life) cực ngắn, chỉ khoảng <strong>1 microgiây (1 &mu;s)</strong>, liên tục đứt gãy và tái tạo.</li>
+                <li><strong>Năng lượng liên kết:</strong> Năng lượng bẻ gãy một liên kết hydro trong nước lỏng vào khoảng <strong>4.5 kcal/mol (khoảng 20 kJ/mol)</strong>, chỉ chiếm chưa đầy <strong>5%</strong> năng lượng của liên kết cộng hóa trị O–H (110 kcal/mol). Tuy nhiên, tổng năng lượng tích lũy của hàng tỷ liên kết hydro tạo nên độ bền cấu trúc kỳ diệu cho dịch sinh học.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-temperature-arrow-up"></i> Ảnh hưởng của Liên kết Hydro lên các Đặc tính Sinh - Lý</h3>
+            <div class="grid-2col">
+                <div class="info-box">
+                    <strong>1. Sức căng bề mặt &amp; Điểm sôi cao:</strong> Lực cố kết (cohesiveness) giữa các phân tử nước tạo ra sức căng bề mặt rất lớn. Nước duy trì thể lỏng ở nhiệt độ phòng và có điểm sôi cao (100&deg;C), khác biệt hoàn toàn với các hợp chất có kích thước tương tự như CH<sub>4</sub> hay H<sub>2</sub>S (thể khí ở điều kiện thường).
+                </div>
+                <div class="info-box">
+                    <strong>2. Hiện tượng Băng đá nổi:</strong> Khi đông đặc, liên kết hydro định hướng không gian nghiêm ngặt tạo thành mạng tinh thể lục giác có khoảng cách phân tử lớn hơn thể lỏng. Thể tích nước đá tăng lên và khối lượng riêng giảm đi, giúp băng nổi lên trên bề mặt, bảo vệ sự sống thủy sinh bên dưới vào mùa đông.
+                </div>
+            </div>
+
             <div class="pearl-box">
-                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;">
-                    <li><strong>Hệ đệm Bicarbonat là hệ đệm mở quan trọng nhất dịch ngoại bào do phổi kiểm soát PaCO2 và thận kiểm soát HCO3-.</strong></li>
-<li><strong>Toan hô hấp cấp bù trừ chậm qua thận (2-3 ngày) trong khi toan chuyển hóa bù trừ nhanh qua tăng thông khí phổi (vài phút).</strong></li>
-                </ul>
+                <strong><i class="fa-solid fa-lightbulb"></i> Cơ chế Điều nhiệt &amp; Bay hơi Mồ hôi (Clinical Pearl):</strong>
+                Nhiệt hóa hơi của nước rất cao: khoảng <strong>2.5 kJ</strong> nhiệt lượng nội sinh của cơ thể được đào thải cho mỗi gram (hoặc mL) mồ hôi bay hơi qua da. Mồ hôi người chứa khoảng <strong>50 mmol/L Na<sup>+</sup></strong>, <strong>5 mmol/L K<sup>+</sup></strong> và <strong>45 mmol/L Cl<sup>-</sup></strong>. Hoạt động thể lực cường độ cao trong môi trường nóng ẩm làm mất lượng lớn nước và điện giải qua mồ hôi, dễ dẫn đến kiệt sức và co rút cơ do nhiệt nếu không bù dịch điện giải kịp thời.
+            </div>
+
+            <!-- SVG SƠ ĐỒ 1: CẤU TRÚC PHÂN TỬ NƯỚC & LIÊN KẾT HYDRO -->
+            <div class="flowchart-container">
+                <svg viewBox="0 0 780 230" width="100%" height="230" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="transparent"/>
+                    <!-- Phân tử Nước Trung tâm -->
+                    <circle cx="260" cy="115" r="42" fill="#0284c7" opacity="0.85"/>
+                    <text x="260" y="112" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="18" font-weight="800" fill="#ffffff">O</text>
+                    <text x="260" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#e0f2fe">2&delta;&minus;</text>
+
+                    <!-- Hydro 1 -->
+                    <circle cx="180" cy="65" r="24" fill="#38bdf8" opacity="0.9"/>
+                    <text x="180" y="69" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="800" fill="#0c4a6e">H</text>
+                    <text x="180" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0c4a6e">&delta;&plus;</text>
+                    <line x1="230" y1="98" x2="198" y2="78" stroke="#0284c7" stroke-width="4"/>
+
+                    <!-- Hydro 2 -->
+                    <circle cx="340" cy="65" r="24" fill="#38bdf8" opacity="0.9"/>
+                    <text x="340" y="69" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="800" fill="#0c4a6e">H</text>
+                    <text x="340" y="82" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#0c4a6e">&delta;&plus;</text>
+                    <line x1="290" y1="98" x2="322" y2="78" stroke="#0284c7" stroke-width="4"/>
+
+                    <!-- Góc liên kết -->
+                    <path d="M 220 90 A 45 45 0 0 1 300 90" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3,3"/>
+                    <text x="260" y="78" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700" fill="#d97706">105&deg;</text>
+
+                    <!-- Phân tử nước lân cận & Liên kết Hydro -->
+                    <line x1="180" y1="41" x2="135" y2="20" stroke="#ef4444" stroke-width="3" stroke-dasharray="5,5"/>
+                    <circle cx="110" cy="10" r="20" fill="#0284c7" opacity="0.5"/>
+                    <text x="110" y="15" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="700" fill="#ffffff">O</text>
+
+                    <line x1="340" y1="41" x2="385" y2="20" stroke="#ef4444" stroke-width="3" stroke-dasharray="5,5"/>
+                    <circle cx="410" cy="10" r="20" fill="#0284c7" opacity="0.5"/>
+                    <text x="410" y="15" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="700" fill="#ffffff">O</text>
+
+                    <!-- Hộp Chú thích bên phải -->
+                    <rect x="490" y="25" width="265" height="175" rx="10" fill="#f0fdf4" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="505" y="52" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="800" fill="#065f46">ĐẶC TÍNH LÝ HÓA CỐT LÕI</text>
+                    <text x="505" y="77" font-family="Inter, sans-serif" font-size="11.5" fill="#047857">&bull; Góc liên kết tứ diện lệch: 105&deg;</text>
+                    <text x="505" y="100" font-family="Inter, sans-serif" font-size="11.5" fill="#047857">&bull; Lưỡng cực điện phân cực mạnh</text>
+                    <text x="505" y="123" font-family="Inter, sans-serif" font-size="11.5" fill="#047857">&bull; Hằng số điện môi &epsilon; = 78.5 (25&deg;C)</text>
+                    <text x="505" y="146" font-family="Inter, sans-serif" font-size="11.5" fill="#047857">&bull; Mạng lưới: 3.5 LK Hydro/phân tử</text>
+                    <text x="505" y="169" font-family="Inter, sans-serif" font-size="11.5" fill="#047857">&bull; Năng lượng LK: ~4.5 kcal/mol</text>
+                </svg>
+                <div class="flowchart-caption">Sơ đồ 1: Cấu trúc tứ diện lệch, lưỡng cực phân cực và mạng lưới liên kết hydro của phân tử nước</div>
             </div>
         </section>
 
-        <!-- SECTION 4: THĂM DÒ & XÉT NGHIỆM LIÊN QUAN -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-vial" style="color: #10b981;"></i> 4. Chỉ Số Xét Nghiệm & Biện Luận Cận Lâm Sàng</h2>
+        <!-- ========================================================================= -->
+        <!-- PHẦN 2: HIỆU ỨNG KỴ NƯỚC & TƯƠNG TÁC PHI CỘNG HÓA TRỊ YẾU -->
+        <!-- ========================================================================= -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-shield-halved"></i> 2. Hiệu Ứng Kỵ Nước &amp; Các Tương Tác Phi Cộng Hóa Trị Yếu</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-fire-flame-curved"></i> Hiệu ứng kỵ nước (Hydrophobic Effect) dưới góc độ Nhiệt động lực học</h3>
+            <p class="section-text">
+                Các nhóm phân tử không phân cực (như chuỗi hydrocarbon &minus;CH<sub>2</sub>&minus;) không có khả năng tạo liên kết hydro với nước. Khi hòa vào nước, các phân tử nước xung quanh bề mặt kỵ nước bị hạn chế bậc tự do quay và định hướng để tối đa hóa liên kết hydro với nhau, tạo thành cấu trúc "lồng bọc có trật tự cao" (clathrate-like cage).
+            </p>
+            <p class="section-text">
+                Trạng thái trật tự hóa này làm <strong>sụt giảm mạnh entropy (độ hỗn loạn)</strong> của dung môi nước (&Delta;S<sub>solvent</sub> &lt; 0).
+            </p>
+
+            <div class="reaction-box">
+                <strong>Động lực tự tụ hợp kỵ nước (Entropy Driven):</strong>
+                Theo nguyên lý nhiệt động lực học: <code>&Delta;G = &Delta;H &minus; T&Delta;S</code>. Để đưa hệ về trạng thái entropy tối đa, các phân tử kỵ nước buộc phải tự động tụ họp lại với nhau thành các khối lớn, làm giảm diện tích tiếp xúc với nước. Quá trình này <strong>giải phóng các phân tử nước bị giam giữ</strong> trở lại trạng thái chuyển động tự do vô trật tự (&Delta;S &gt; 0 &rArr; &Delta;G &lt; 0). Do đó, hiệu ứng kỵ nước được dẫn dắt bởi <em>sự gia tăng entropy của dung môi nước</em> chứ không phải do lực hút trực tiếp giữa các phân tử kỵ nước.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-cubes"></i> Các lực liên kết yếu phi cộng hóa trị khác trong đại phân tử</h3>
+            <div class="grid-3col">
+                <div class="info-box">
+                    <strong>1. Cầu muối (Salt Bridges):</strong>
+                    Lực hút tĩnh điện giữa các nhóm chức tích điện trái dấu, điển hình là carboxylate (&minus;COO<sup>&minus;</sup>) của Glutamate/Aspartate với ammonium (&minus;NH<sub>3</sub><sup>&plus;</sup>) của Lysine/Arginine.
+                </div>
+                <div class="info-box">
+                    <strong>2. Lực Van der Waals:</strong>
+                    Lực hút tĩnh điện cực yếu xuất hiện khi hai nguyên tử ở khoảng cách rất gần nhau do biến động tức thời của đám mây electron tạo lưỡng cực cảm ứng tạm thời (&Delta;G &approx; &minus;0.5 đến &minus;1 kcal/mol).
+                </div>
+                <div class="info-box">
+                    <strong>3. Tính cộng dồn sinh học:</strong>
+                    Dù mỗi liên kết yếu riêng lẻ có năng lượng tự do thấp, sự hiện diện của hàng nghìn liên kết đồng thời giúp ổn định cấu trúc không gian 3D của enzyme, kháng thể và chuỗi xoắn kép DNA.
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- PHẦN 3: HÓA HỌC ACID-BASE & THANG PH -->
+        <!-- ========================================================================= -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-flask-vial"></i> 3. Hóa Học Acid-Base &amp; Thang pH</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-arrows-split-up-and-left"></i> Sự tự ion hóa của Nước, Tích số ion Kw &amp; Cơ chế Nhảy Proton</h3>
+            <p class="section-text">
+                Nước tự ion hóa ở mức độ cực kỳ nhỏ tạo thành hydronium (H<sub>3</sub>O<sup>+</sup>) và hydroxide (OH<sup>&minus;</sup>): <code>2 H<sub>2</sub>O &rlarr; H<sub>3</sub>O<sup>+</sup> + OH<sup>&minus;</sup></code> (viết gọn: <code>H<sub>2</sub>O &rlarr; H<sup>+</sup> + OH<sup>&minus;</sup></code>).
+            </p>
+            <p class="section-text">
+                <strong>Cơ chế nhảy Proton (Proton Jumping / Grotthuss Mechanism):</strong> Proton (H<sup>+</sup>) không di chuyển đơn độc mà truyền liên tục qua mạng lưới liên kết hydro giữa các phân tử nước lân cận (tạo thành H<sub>5</sub>O<sub>2</sub><sup>+</sup>, H<sub>7</sub>O<sub>3</sub><sup>+</sup>). Hiện tượng này giúp ion H<sup>+</sup> có tốc độ di chuyển và độ linh động điện tích vượt trội so với mọi cation khác trong dịch sinh học.
+            </p>
+
+            <div class="info-box">
+                <strong>Tích số ion của nước (K<sub>w</sub>) &amp; Sự phụ thuộc nhiệt độ:</strong>
+                <code>K<sub>w</sub> = [H<sup>+</sup>][OH<sup>&minus;</sup>] = 1.0 &times; 10<sup>&minus;14</sup> M<sup>2</sup> (ở 25&deg;C)</code> &rArr; pH trung tính = 7.00.
+                <br>Tuy nhiên, K<sub>w</sub> thay đổi theo nhiệt độ:
+                <ul>
+                    <li>Ở <strong>30&deg;C</strong>: K<sub>w</sub> = 1.47 &times; 10<sup>&minus;14</sup> &rArr; pH trung tính = <strong>6.92</strong>.</li>
+                    <li>Ở <strong>0&deg;C</strong>: K<sub>w</sub> = 1.14 &times; 10<sup>&minus;15</sup> &rArr; pH trung tính = <strong>7.47</strong>.</li>
+                </ul>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-table-list"></i> Thang pH và Trị số pH Sinh lý của các Dịch Thể</h3>
             <table class="lab-table">
                 <thead>
                     <tr>
-                        <th style="width: 80px;">STT</th>
-                        <th>Chỉ số xét nghiệm</th>
-                        <th>Ý nghĩa & Ứng dụng lâm sàng</th>
+                        <th style="width: 25%;">Dịch Sinh Học</th>
+                        <th style="width: 20%;">Khoảng pH Sinh Lý</th>
+                        <th style="width: 55%;">Đặc Điểm Sinh Hóa &amp; Ý Nghĩa Lâm Sàng</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                        <tr>
-                            <td><strong>1</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Khí máu động mạch (ABG)</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
-                        <tr>
-                            <td><strong>2</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Điện giải đồ (Na, K, Cl)</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
-                        <tr>
-                            <td><strong>3</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Áp lực thẩm thấu máu</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
+                    <tr>
+                        <td><strong>Dịch vị (Gastric Juice)</strong></td>
+                        <td><span class="rx-tag danger">1.5 &ndash; 3.0</span></td>
+                        <td>Chứa HCl do tế bào viền dạ dày bài tiết tích cực nhờ bơm H<sup>+</sup>/K<sup>+</sup>-ATPase để hoạt hóa pepsinogen và diệt khuẩn.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nước tiểu (Urine)</strong></td>
+                        <td><span class="rx-tag warning">5.0 &ndash; 8.0</span></td>
+                        <td>Biến thiên rộng phản ánh mức độ bài tiết acid cố định (H<sup>+</sup> dưới dạng NH<sub>4</sub><sup>+</sup>, H<sub>2</sub>PO<sub>4</sub><sup>&minus;</sup>) của thận để duy trì cân bằng nội môi.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nước bọt (Saliva)</strong></td>
+                        <td><span class="rx-tag">6.4 &ndash; 7.0</span></td>
+                        <td>Môi trường acid nhẹ đến trung tính, tối ưu cho enzyme &alpha;-amylase nước bọt hoạt động.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Máu Động Mạch (Blood)</strong></td>
+                        <td><span class="rx-tag preferred">7.35 &ndash; 7.45</span></td>
+                        <td><strong>Được kiểm soát nghiêm ngặt quanh mốc 7.40</strong>; dao động ngoài khoảng 6.8 &ndash; 7.8 đe dọa tử vong ngay lập tức.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dịch tụy (Pancreatic Juice)</strong></td>
+                        <td><span class="rx-tag preferred">7.8 &ndash; 8.0</span></td>
+                        <td>Giàu ion kiềm HCO<sub>3</sub><sup>&minus;</sup> giúp trung hòa acid dịch vị khi vị trấp xuống tá tràng, tạo pH tối ưu cho các men tụy.</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
-        <footer style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.85rem;">
-            <em>Tài liệu tham khảo: Hóa Sinh Y Học ĐHYD 2024, Harper's Illustrated Biochemistry 32nd, Clinical Biochemistry 7th.</em>
+        <!-- ========================================================================= -->
+        <!-- PHẦN 4: PHƯƠNG TRÌNH HENDERSON-HASSELBALCH & HỆ ĐỆM -->
+        <!-- ========================================================================= -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-scale-balanced"></i> 4. Phương Trình Henderson-Hasselbalch &amp; Cơ Chế Hệ Đệm</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-square-root-variable"></i> Phương trình Henderson-Hasselbalch &amp; Điểm Bán Phân Ly</h3>
+            <p class="section-text">
+                Cho một acid yếu phân ly thuận nghịch: <code>HA &rlarr; H<sup>+</sup> + A<sup>&minus;</sup></code>. Phương trình Henderson-Hasselbalch mô tả mối quan hệ định lượng giữa pH và tỷ lệ dạng phân ly (base liên hợp A<sup>&minus;</sup>) trên dạng không phân ly (acid HA):
+            </p>
+            <div class="reaction-box">
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 700; color: #7c3aed; margin: 0;">
+                    pH = pK<sub>a</sub> + log([A<sup>&minus;</sup>] / [HA]) = pK<sub>a</sub> + log([Chất nhận proton] / [Chất cho proton])
+                </p>
+            </div>
+            <ul>
+                <li><strong>Trạng thái Bán phân ly (Half-neutralization):</strong> Khi [A<sup>&minus;</sup>] = [HA] &rArr; [A<sup>&minus;</sup>]/[HA] = 1 &rArr; log(1) = 0 &rArr; <strong>pH = pK<sub>a</sub></strong>. Do đó, pK<sub>a</sub> chính là trị số pH mà tại đó phân tử acid bị phân ly chính xác <strong>50%</strong>.</li>
+                <li>Khi pH &lt; pK<sub>a</sub>: Phân tử tồn tại chủ yếu ở dạng proton hóa (HA).</li>
+                <li>Khi pH &gt; pK<sub>a</sub>: Phân tử tồn tại chủ yếu ở dạng khử proton (A<sup>&minus;</sup>).</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-shield-virus"></i> Cơ Chế Đệm &amp; Công Suất Đệm (Buffer Capacity)</h3>
+            <p class="section-text">
+                Dung dịch đệm gồm một acid yếu và base liên hợp của nó, có khả năng chống lại sự biến đổi pH đột ngột khi thêm một lượng acid mạnh hoặc base mạnh:
+            </p>
+            <ul>
+                <li><strong>Khi thêm acid mạnh (tăng H<sup>+</sup>):</strong> <code>H<sup>+</sup> + A<sup>&minus;</sup> &rarr; HA</code> (H<sup>+</sup> tự do bị bắt giữ thành acid yếu, pH ít đổi).</li>
+                <li><strong>Khi thêm base mạnh (tăng OH<sup>&minus;</sup>):</strong> <code>OH<sup>&minus;</sup> + HA &rarr; A<sup>&minus;</sup> + H<sub>2</sub>O</code> (OH<sup>&minus;</sup> bị trung hòa bởi HA, pH ổn định).</li>
+                <li><strong>Vùng đệm hiệu quả:</strong> Khả năng đệm đạt cực đại khi pH = pK<sub>a</sub> và hoạt động hiệu quả trong dải <strong>pK<sub>a</sub> &plusmn; 1 đơn vị pH</strong>.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-dna"></i> Bảng Trị Số pKa Của Các Hệ Đệm Sinh Học &amp; Nghiên Cứu</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Hệ Đệm Sinh Học / Hóa Sinh</th>
+                        <th>Cặp Acid / Base Liên Hợp</th>
+                        <th>Trị Số pK<sub>a</sub></th>
+                        <th>Vai Trò &amp; Vị Trí Hoạt Động Chính</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hệ đệm Carbonic Acid &ndash; Bicarbonate</strong></td>
+                        <td><code>H<sub>2</sub>CO<sub>3</sub> &rlarr; HCO<sub>3</sub><sup>&minus;</sup> + H<sup>+</sup></code></td>
+                        <td><span class="rx-tag preferred">6.10</span></td>
+                        <td>Hệ đệm ngoại bào (ECF) quan trọng nhất; dù pK<sub>a</sub> = 6.1 lệch khỏi pH 7.4 nhưng hoạt động cực kỳ mạnh mẽ nhờ phổi đào thải CO<sub>2</sub> và thận giữ HCO<sub>3</sub><sup>&minus;</sup> liên tục.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hệ đệm Di-hydrogen Phosphate</strong></td>
+                        <td><code>H<sub>2</sub>PO<sub>4</sub><sup>&minus;</sup> &rlarr; HPO<sub>4</sub><sup>2&minus;</sup> + H<sup>+</sup></code></td>
+                        <td><span class="rx-tag preferred">6.82</span></td>
+                        <td>Hệ đệm vô cơ nội bào (ICF) chủ lực, có pK<sub>a</sub> rất gần pH sinh lý 7.4.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gốc Imidazole của Histidine</strong></td>
+                        <td><code>Imidazolium &rlarr; Imidazole + H<sup>+</sup></code></td>
+                        <td><span class="rx-tag preferred">6.80 &ndash; 7.00</span></td>
+                        <td>Hệ đệm protein nội bào chính; cấu thành công suất đệm khổng lồ của phân tử Hemoglobin trong hồng cầu và Albumin huyết tương.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Đệm MES</strong></td>
+                        <td>MES dạng acid / base</td>
+                        <td><span class="rx-tag">6.10</span></td>
+                        <td>Đệm sinh học phòng thí nghiệm dải pH acid nhẹ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Đệm HEPES</strong></td>
+                        <td>HEPES dạng acid / base</td>
+                        <td><span class="rx-tag">6.80</span></td>
+                        <td>Đệm tối ưu trong nuôi cấy tế bào và nghiên cứu động học enzyme.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Đệm TRIS</strong></td>
+                        <td>Tris dạng acid / base</td>
+                        <td><span class="rx-tag">8.06</span></td>
+                        <td>Đệm tiêu chuẩn trong điện di DNA/Protein và kỹ thuật sinh học phân tử.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- PHẦN 5: CÂN BẰNG ĐIỆN GIẢI, CÁC KHOANG DỊCH & BƠM NA+/K+-ATPASE -->
+        <!-- ========================================================================= -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-chart-pie"></i> 5. Cân Bằng Điện Giải, Các Khoang Dịch &amp; Bơm Na+/K+-ATPase</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-layer-group"></i> Thể Tích &amp; Sự Phân Bố Các Khoang Dịch Thể (Body Fluid Compartments)</h3>
+            <p class="section-text">
+                Ở người trưởng thành khỏe mạnh 70 kg, tổng lượng nước cơ thể (Total Body Water &ndash; TBW) chiếm khoảng <strong>60% trọng lượng cơ thể</strong>, tương đương <strong>42 Lít</strong>, phân bố thành 2 khoang chính ngăn cách bởi màng tế bào:
+            </p>
+            <div class="grid-2col">
+                <div class="info-box">
+                    <strong>1. Khoang Dịch Nội Bào (ICF):</strong>
+                    Chiếm <strong>2/3 TBW</strong> (khoảng <strong>28 Lít</strong> hoặc 40% trọng lượng cơ thể). Là môi trường diễn ra toàn bộ chuyển hóa tế bào.
+                </div>
+                <div class="info-box">
+                    <strong>2. Khoang Dịch Ngoại Bào (ECF):</strong>
+                    Chiếm <strong>1/3 TBW</strong> (khoảng <strong>14 Lít</strong> hoặc 20% trọng lượng cơ thể), chia thành:
+                    <ul>
+                        <li><strong>Dịch kẽ (Interstitial Fluid):</strong> Chiếm 75% ECF (~10.5 Lít).</li>
+                        <li><strong>Huyết tương (Plasma):</strong> Chiếm 25% ECF (~3.5 Lít).</li>
+                        <li><strong>Dịch xuyên bào (Transcellular):</strong> Dịch não tủy, dịch khớp, dịch tiêu hóa.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-table-cells"></i> Bảng Phân Bố Nồng Độ Ion Đặc Trưng Giữa ICF và ECF</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Loại Ion</th>
+                        <th>Khoang Ngoại Bào (ECF / Huyết Tương)</th>
+                        <th>Khoang Nội Bào (ICF)</th>
+                        <th>Cơ Chế Duy Trì &amp; Ý Nghĩa Sinh Lý</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cation Chính</strong></td>
+                        <td><strong>Na<sup>+</sup>:</strong> <span class="rx-tag preferred">135 &ndash; 145 mmol/L</span></td>
+                        <td><strong>K<sup>+</sup>:</strong> <span class="rx-tag preferred">110 &ndash; 140 mmol/L</span></td>
+                        <td>Duy trì bởi hoạt động liên tục của bơm Na<sup>+</sup>/K<sup>+</sup>-ATPase tiêu tốn ATP.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anion Chính</strong></td>
+                        <td>
+                            <strong>Cl<sup>&minus;</sup>:</strong> <span class="rx-tag">~100 mmol/L</span><br>
+                            <strong>HCO<sub>3</sub><sup>&minus;</sup>:</strong> <span class="rx-tag">~24 &ndash; 28 mmol/L</span>
+                        </td>
+                        <td>
+                            <strong>Phosphate hữu cơ (P<sub>i</sub>):</strong> Rất cao<br>
+                            <strong>Proteinat nội bào:</strong> Rất cao
+                        </td>
+                        <td>Protein nội bào tích điện âm mạnh ở pH 7.4 cân bằng điện tích với K<sup>+</sup> nội bào.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ion Nhị Giá</strong></td>
+                        <td>
+                            <strong>Ca<sup>2+</sup>:</strong> ~2.2 &ndash; 2.6 mmol/L (tự do ~1.1 &ndash; 1.3)<br>
+                            <strong>Mg<sup>2+</sup>:</strong> ~0.75 &ndash; 1.0 mmol/L
+                        </td>
+                        <td>
+                            <strong>Mg<sup>2+</sup>:</strong> Rất cao (~20 mmol/L)<br>
+                            <strong>Ca<sup>2+</sup>:</strong> Cực thấp ở bào tương (~0.1 &mu;mol/L)
+                        </td>
+                        <td>Mg<sup>2+</sup> nội bào là đồng yếu tố (cofactor) bắt buộc cho mọi phản ứng sử dụng hoặc tổng hợp ATP.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-gear"></i> Bơm Na+/K+-ATPase &amp; Chu Trình Albers-Post</h3>
+            <p class="section-text">
+                Bơm Na<sup>+</sup>/K<sup>+</sup>-ATPase là protein xuyên màng vận chuyển chủ động nguyên phát, sử dụng năng lượng từ thủy phân 1 phân tử ATP để bơm <strong>3 ion Na<sup>+</sup> ra ngoài ECF</strong> và đưa <strong>2 ion K<sup>+</sup> vào trong ICF</strong> ngược gradient nồng độ:
+            </p>
+            <ul>
+                <li><strong>Trạng thái E<sub>1</sub>:</strong> Hướng vào bào tương, có ái lực cực cao với Na<sup>+</sup> và ATP. Gắn 3 Na<sup>+</sup> và 1 ATP &rArr; tự phosphoryl hóa gốc Aspartate tạo thành phức hợp giàu năng lượng <code>E<sub>1</sub>-P</code> và giải phóng ADP.</li>
+                <li><strong>Trạng thái E<sub>2</sub>-P:</strong> Biến đổi cấu hình quay mặt ra ECF, giảm ái lực với Na<sup>+</sup> để tống 3 Na<sup>+</sup> ra ngoài; đồng thời tăng ái lực với K<sup>+</sup> để gắn 2 K<sup>+</sup> từ ECF.</li>
+                <li><strong>Khử Phosphoryl &amp; Hoàn tất chu kỳ:</strong> Gắn K<sup>+</sup> kích hoạt tự khử phosphate biến E<sub>2</sub>-P về E<sub>1</sub>, đưa 2 K<sup>+</sup> vào bào tương.</li>
+            </ul>
+            <div class="info-box">
+                <strong>Ý nghĩa chuyển hóa:</strong> Bơm tiêu tốn tới <strong>30% năng lượng ATP cơ bản</strong> của tế bào, tạo hiệu điện thế màng nghỉ (~ &minus;70 mV), kiểm soát thể tích nước tế bào và cung cấp gradient Na<sup>+</sup> thứ phát cho đồng vận chuyển glucose (SGLT) và acid amin tại ruột non và ống lượn gần.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-calculator"></i> Áp Suất Thẩm Thấu &amp; Khoảng Trống Anion (Anion Gap)</h3>
+            <div class="grid-2col">
+                <div class="reaction-box">
+                    <strong>Công thức Tính Áp Suất Thẩm Thấu Huyết Thanh (Osmolality):</strong>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 700; color: #0284c7; margin: 0.5rem 0;">
+                        Osmolality (mmol/kg) = 2 &times; [Na<sup>+</sup>] + [Glucose] + [Urea]
+                    </p>
+                    <em>Bình thường: 275 &ndash; 295 mOsm/kg. Na<sup>+</sup> là yếu tố quyết định chính cho áp suất thẩm thấu ngoại bào. Khi Glucose tăng vọt trong đái tháo đường, nó kéo nước từ ICF ra ECF gây mất nước tế bào nghiêm trọng.</em>
+                </div>
+
+                <div class="reaction-box">
+                    <strong>Công thức Tính Khoảng Trống Anion (Anion Gap &ndash; AG):</strong>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 700; color: #7c3aed; margin: 0.5rem 0;">
+                        AG (mmol/L) = [Na<sup>+</sup>] &minus; ([Cl<sup>&minus;</sup>] + [HCO<sub>3</sub><sup>&minus;</sup>])
+                    </p>
+                    <em>Bình thường: <strong>10 &ndash; 12 mmol/L</strong> (đại diện cho các anion không đo được: albumin, phosphate, sulfate, acid hữu cơ). Tăng cao trong toan ceton, toan lactic, suy thận và ngộ độc methanol/ethylene glycol.</em>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- PHẦN 6: RỐI LOẠN CÂN BẰNG NƯỚC & NATRI MÁU -->
+        <!-- ========================================================================= -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-heart-pulse"></i> 6. Rối Loạn Cân Bằng Nước &amp; Natri Máu (Hyponatremia &amp; Hypernatremia)</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-arrow-trend-down"></i> Sinh Lý Bệnh Hạ Natri Máu (Na+ &lt; 135 mmol/L)</h3>
+            <p class="section-text">
+                Hạ natri máu là rối loạn điện giải thường gặp nhất trong lâm sàng, phản ánh sự mất cân bằng giữa lượng ion natri (mmol) và thể tích nước (Lít).
+            </p>
+            <ul>
+                <li><strong>Mất Natri Nguyên Phát (Sodium Depletion):</strong> Mất muối nhiều hơn mất nước qua thận (dùng lợi tiểu, suy thượng thận Addison) hoặc ngoài thận (nôn, tiêu chảy) làm giảm thể tích ECF.</li>
+                <li><strong>Giữ Nước Nguyên Phát (Water Retention):</strong> Là nguyên nhân phổ biến nhất, làm pha loãng dịch ngoại bào.</li>
+                <li><strong>Kích hoạt ADH phi thẩm thấu:</strong> Khi thể tích tuần hoàn hữu dụng sụt giảm, thụ thể áp lực (baroreceptors) kích thích giải phóng AVP/ADH phi thẩm thấu, lấn át cơ chế thẩm thấu thông thường, buộc ống góp tái hấp thu nước tự do làm natri máu hạ nặng hơn.</li>
+            </ul>
+
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Hiện Tượng Hạ Natri Máu Giả (Pseudohyponatremia):</strong>
+                Huyết tương gồm <strong>pha nước (95%)</strong> và <strong>pha không tan (5% gồm lipid và protein)</strong>. Trong bệnh lý tăng lipid máu nặng hoặc đa u tủy xương (protein máu tăng cực cao), pha không tan tăng lên chiếm tới 20%, khiến pha nước giảm còn 80%.
+                <br>&bull; Nồng độ Na<sup>+</sup> trong pha nước và áp suất thẩm thấu đo trực tiếp hoàn toàn <strong>bình thường</strong>.
+                <br>&bull; Tuy nhiên, máy phân tích điện giải gián tiếp (indirect ISE) pha loãng mẫu và mặc định pha nước 95%, dẫn đến báo cáo kết quả Na<sup>+</sup> thấp giả tạo (ví dụ 110 mmol/L).
+                <br>&bull; <em>Chẩn đoán phân biệt:</em> Bệnh nhân không có triệu chứng thần kinh, Osmolality đo trực tiếp bình thường, khoảng trống thẩm thấu (Osmolal Gap) tăng cao.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-stethoscope"></i> Phân Loại &amp; Xử Trí Hạ Natri Máu Theo Thể Tích Dịch Ngoại Bào (ECF)</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Thể Lâm Sàng</th>
+                        <th>Đặc Điểm Thể Tích &amp; Dấu Hiệu</th>
+                        <th>Na<sup>+</sup> Niệu (mmol/L)</th>
+                        <th>Nguyên Nhân Điển Hình</th>
+                        <th>Nguyên Tắc Điều Trị</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Giảm Thể Tích (Hypovolemic)</strong></td>
+                        <td>Giảm thể tích ECF: Tụt HA tư thế, mạch nhanh, da khô, véo da (+).</td>
+                        <td>
+                            &lt; 20 (mất ngoài thận)<br>
+                            &gt; 20 (mất qua thận)
+                        </td>
+                        <td>Tiêu chảy, nôn mửa, dùng lợi tiểu, suy vỏ thượng thận Addison.</td>
+                        <td>Bù thể tích bằng truyền tĩnh mạch <strong>NaCl 0.9%</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Đẳng Thể Tích (Euvolemic)</strong></td>
+                        <td>Không phù, huyết áp bình thường, thể tích dịch bình thường.</td>
+                        <td>&gt; 20 mmol/L</td>
+                        <td><strong>Hội chứng SIADH</strong>, suy giáp nặng, suy tuyến yên.</td>
+                        <td><strong>Hạn chế nước tự do</strong> (&lt; 800 &ndash; 1000 mL/ngày); đồng vận V2 antagonists (Vaptans).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tăng Thể Tích (Hypervolemic)</strong></td>
+                        <td>Quá tải dịch toàn thể: Phù mềm ấn lõm, cổ trướng, ran ẩm phổi.</td>
+                        <td>&lt; 20 mmol/L</td>
+                        <td>Suy tim ứ huyết, xơ gan mất bù, hội chứng thận hư.</td>
+                        <td><strong>Lợi tiểu quai (Furosemide)</strong> kết hợp hạn chế nước và natri.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-skull-crossbones"></i> Cảnh Báo Nguy Hiểm: Hội Chứng Hủy Myelin Cầu Não (Central Pontine Myelinolysis - CPM):</strong>
+                Trong hạ natri máu mạn tính, tế bào não tự thích nghi bằng cách bơm các chất thẩm thấu hữu cơ ra ngoài để tránh phù não. Nếu điều trị nâng natri máu quá nhanh (<strong>&gt; 10 &ndash; 12 mmol/L trong 24 giờ</strong> hoặc &gt; 18 mmol/L trong 48 giờ), môi trường ngoại bào ưu trương đột ngột kéo nước ra khỏi tế bào não, gây teo sợi trục thần kinh và hủy myelin không hồi phục ở vùng cầu não, dẫn đến liệt tứ chi, hội chứng khóa trong (locked-in syndrome) và tử vong.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-arrow-trend-up"></i> Tăng Natri Máu (Hypernatremia &gt; 146 mmol/L)</h3>
+            <p class="section-text">
+                Luôn phản ánh tình trạng thiếu nước tuyệt đối so với lượng natri của cơ thể (tăng áp suất thẩm thấu ngoại bào):
+            </p>
+            <ul>
+                <li><strong>Mất nước đơn thuần (Pure water loss):</strong> Gặp ở người già hôn mê mất cảm giác khát, hoặc <strong>Đái tháo nhạt (Diabetes Insipidus)</strong> do thiếu ADH trung ương hoặc thận kháng ADH (thể tích nước tiểu 8 &ndash; 15 L/ngày, Osmolality niệu &lt; 100 mOsm/kg).</li>
+                <li><strong>Mất nước &gt; Mất natri:</strong> Lợi niệu thẩm thấu trong đái tháo đường không kiểm soát, sốt cao đổ mồ hôi nhiều.</li>
+                <li><strong>Quá tải Natri:</strong> Truyền quá nhiều NaHCO<sub>3</sub> ưu trương hoặc Hội chứng Conn (cường aldosterone nguyên phát).</li>
+            </ul>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- PHẦN 7: SINH LÝ BỆNH & RỐI LOẠN KALI MÁU -->
+        <!-- ========================================================================= -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-bolt"></i> 7. Sinh Lý Bệnh &amp; Cân Bằng Kali Máu (Hyperkalaemia &amp; Hypokalaemia)</h2>
+            
+            <p class="section-text">
+                Kali là cation nội bào chính ([K<sup>+</sup>]<sub>ICF</sub> = 110 &ndash; 140 mmol/L) trong khi nồng độ ngoại bào cực thấp ([K<sup>+</sup>]<sub>ECF</sub> = 3.5 &ndash; 5.0 mmol/L). Tỷ lệ [K<sup>+</sup>]<sub>ICF</sub>/[K<sup>+</sup>]<sub>ECF</sub> quyết định trực tiếp điện thế màng nghỉ của cơ tim và thần kinh theo phương trình Nernst. Bất kỳ biến động nhỏ nào của kali máu cũng có thể gây rối loạn nhịp tim tử vong.
+            </p>
+
+            <div class="grid-2col">
+                <!-- TĂNG KALI MÁU -->
+                <div class="danger-box">
+                    <strong style="color: #dc2626; font-size: 1.05rem;"><i class="fa-solid fa-circle-radiation"></i> TĂNG KALI MÁU (K<sup>+</sup> &gt; 5.0 mmol/L)</strong>
+                    <p style="margin-top: 0.5rem;">Cấp cứu khẩn khi K<sup>+</sup> &gt; 6.0 mmol/L; nguy cơ ngừng tim thì tâm trương khi K<sup>+</sup> &gt; 7.0 mmol/L.</p>
+                    <ul>
+                        <li><strong>Suy giảm đào thải tại thận:</strong> Suy thận cấp (AKI), suy thận mạn (CKD giai đoạn 4&ndash;5), suy thượng thận, thuốc ức chế RAAS (ACEi, ARB, Spironolactone).</li>
+                        <li><strong>Dịch chuyển ra ngoài tế bào:</strong> Toan chuyển hóa (H<sup>+</sup> vào tế bào đẩy K<sup>+</sup> ra), hủy hoại cơ vân (Rhabdomyolysis), hội chứng ly giải khối u (Tumour lysis).</li>
+                        <li><strong>Tăng Kali Máu Giả (Pseudohyperkalaemia):</strong> Vỡ hồng cầu do kỹ thuật lấy máu (tan máu in-vitro), chậm ly tâm tách huyết thanh, bảo quản mẫu máu trong tủ lạnh.</li>
+                        <li><strong>Biến đổi Điện tâm đồ (ECG):</strong> Sóng T cao nhọn đối xứng, PR kéo dài, QRS giãn rộng &rarr; sóng hình sin &rarr; rung thất / vô tâm thu.</li>
+                    </ul>
+                </div>
+
+                <!-- HẠ KALI MÁU -->
+                <div class="pearl-box">
+                    <strong style="color: #d97706; font-size: 1.05rem;"><i class="fa-solid fa-battery-quarter"></i> HẠ KALI MÁU (K<sup>+</sup> &lt; 3.5 mmol/L)</strong>
+                    <p style="margin-top: 0.5rem;">Cấp cứu nguy hiểm khi K<sup>+</sup> &lt; 2.5 mmol/L (nguy cơ xoắn đỉnh và liệt cơ hô hấp).</p>
+                    <ul>
+                        <li><strong>Mất qua tiêu hóa:</strong> Nôn mửa kéo dài, hút dịch dạ dày, tiêu chảy nặng (dịch phân chứa 30 &ndash; 70 mmol/L K<sup>+</sup>).</li>
+                        <li><strong>Mất qua thận:</strong> Dùng lợi tiểu quai/thiazide không bù kali; cường aldosterone (Hội chứng Conn, Cushing).</li>
+                        <li><strong>Dịch chuyển vào trong tế bào:</strong> Kiềm chuyển hóa, điều trị insulin liều cao, thuốc cường &beta;<sub>2</sub>-adrenergic.</li>
+                        <li><strong>Liên quan cốt lõi với Magnesi (Mg<sup>2+</sup>):</strong> Hạ Mg<sup>2+</sup> làm mất ức chế kênh ROMK tại ống lượn xa khiến thận thải kali ồ ạt. Bắt buộc <strong>bù Magnesi trước</strong> thì bù Kali mới có hiệu quả.</li>
+                        <li><strong>Biến đổi Điện tâm đồ (ECG):</strong> Sóng T dẹt/âm, ST chênh xuống, <strong>xuất hiện sóng U nổi bật</strong>, khoảng QT kéo dài giả tạo.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SVG SƠ ĐỒ 2: BIẾN ĐỔI ECG TRONG RỐI LOẠN KALI MÁU -->
+            <div class="flowchart-container">
+                <svg viewBox="0 0 800 200" width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="transparent"/>
+                    <!-- Trục ECG Bình Thường -->
+                    <g transform="translate(30, 20)">
+                        <rect x="0" y="0" width="220" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+                        <text x="110" y="24" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="800" fill="#0f172a">ECG BÌNH THƯỜNG</text>
+                        <!-- Đường Đẳng điện -->
+                        <path d="M 15 100 L 45 100 Q 55 90 65 100 L 80 100 L 85 110 L 95 40 L 105 115 L 110 100 L 135 100 Q 155 75 175 100 L 205 100" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                        <text x="60" y="85" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#64748b">P</text>
+                        <text x="95" y="32" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#64748b">QRS</text>
+                        <text x="155" y="70" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#64748b">T</text>
+                    </g>
+
+                    <!-- Trục ECG Tăng Kali Máu -->
+                    <g transform="translate(290, 20)">
+                        <rect x="0" y="0" width="220" height="150" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+                        <text x="110" y="24" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="800" fill="#991b1b">TĂNG KALI MÁU (K+ &gt; 6.0)</text>
+                        <!-- Sóng T cao nhọn, QRS giãn -->
+                        <path d="M 15 100 L 45 100 Q 55 95 65 100 L 75 100 L 82 115 L 95 45 L 112 120 L 120 100 L 135 100 L 155 35 L 175 100 L 205 100" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+                        <text x="155" y="28" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="800" fill="#dc2626">SÓNG T CAO NHỌN</text>
+                        <text x="110" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#b91c1c">QRS giãn rộng, P dẹt</text>
+                    </g>
+
+                    <!-- Trục ECG Hạ Kali Máu -->
+                    <g transform="translate(550, 20)">
+                        <rect x="0" y="0" width="220" height="150" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+                        <text x="110" y="24" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="800" fill="#92400e">HẠ KALI MÁU (K+ &lt; 3.0)</text>
+                        <!-- Sóng T dẹt + Sóng U nổi bật -->
+                        <path d="M 15 100 L 45 100 Q 55 90 65 100 L 80 100 L 85 110 L 95 50 L 105 110 L 110 100 L 125 105 Q 140 102 150 100 Q 165 80 180 100 L 205 100" fill="none" stroke="#d97706" stroke-width="2.5"/>
+                        <text x="135" y="120" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#b45309">T dẹt / ST &darr;</text>
+                        <text x="168" y="75" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="800" fill="#d97706">SÓNG U</text>
+                        <text x="110" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#b45309">Xuất hiện sóng U nổi bật</text>
+                    </g>
+                </svg>
+                <div class="flowchart-caption">Sơ đồ 2: So sánh hình thái điện tâm đồ (ECG) chuẩn giữa trạng thái bình thường, tăng kali máu (sóng T nhọn) và hạ kali máu (sóng U)</div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- PHẦN 8: RỐI LOẠN THĂNG BẰNG ACID-BASE LÂM SÀNG -->
+        <!-- ========================================================================= -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-vials"></i> 8. Rối Loạn Thăng Bằng Acid-Base Lâm Sàng &amp; Biện Luận Khí Máu</h2>
+            
+            <p class="section-text">
+                Phương trình Henderson biểu thị nồng độ proton tự do thông qua tỷ lệ giữa thành phần hô hấp (pCO<sub>2</sub> do phổi điều hòa) và thành phần chuyển hóa (HCO<sub>3</sub><sup>&minus;</sup> do thận điều hòa):
+            </p>
+            <div class="reaction-box">
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 700; color: #0284c7; margin: 0;">
+                    [H<sup>+</sup>] = 178 &times; (pCO<sub>2</sub> / [HCO<sub>3</sub><sup>&minus;</sup>])  (với pCO<sub>2</sub> tính bằng kPa)
+                </p>
+            </div>
+
+            <div class="grid-2col">
+                <!-- TOAN CHUYỂN HÓA -->
+                <div class="danger-box">
+                    <strong style="color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> 1. TOAN CHUYỂN HÓA (Metabolic Acidosis)</strong>
+                    <p style="margin-top: 0.35rem;">Giảm nguyên phát [HCO<sub>3</sub><sup>&minus;</sup>] &lt; 22 mmol/L, pH &lt; 7.35. Bù trừ nhanh bằng <strong>tăng thông khí phổi (thở nhanh sâu kiểu Kussmaul)</strong> để giảm pCO<sub>2</sub>.</p>
+                    <ul>
+                        <li><strong>Tăng Khoảng Trống Anion (High AG &gt; 12):</strong> Tích tụ acid không đo được: Toan Ceton (đái tháo đường T1, nhịn đói), Toan Lactic (sốc, thiếu oxy mô), Suy thận tiến triển (tích tụ phosphate, sulfate), Ngộ độc Salicylate, Methanol, Ethylene glycol.</li>
+                        <li><strong>Khoảng Trống Anion Bình Thường (Normal AG / Tăng Clo máu):</strong> Mất trực tiếp HCO<sub>3</sub><sup>&minus;</sup>: Tiêu chảy mất dịch kiềm, rò dịch tụy, Toan hóa ống thận (RTA).</li>
+                    </ul>
+                </div>
+
+                <!-- KIỀM CHUYỂN HÓA -->
+                <div class="pearl-box">
+                    <strong style="color: #d97706;"><i class="fa-solid fa-circle-check"></i> 2. KIỀM CHUYỂN HÓA (Metabolic Alkalosis)</strong>
+                    <p style="margin-top: 0.35rem;">Tăng nguyên phát [HCO<sub>3</sub><sup>&minus;</sup>] &gt; 28 mmol/L, pH &gt; 7.45. Bù trừ bằng giảm thông khí phổi để giữ CO<sub>2</sub> (giới hạn bởi phản xạ thiếu oxy).</p>
+                    <ul>
+                        <li><strong>Mất acid dịch vị (Nhạy Clo):</strong> Nôn mửa kéo dài, hút dịch dạ dày gây mất HCl &rarr; bài tiết nước tiểu acid nghịch thường (paradoxical aciduria). Đáp ứng tốt với truyền <strong>NaCl 0.9%</strong>.</li>
+                        <li><strong>Cường Mineralocorticoid (Kháng Clo):</strong> Hội chứng Conn, dùng cam thảo quá mức gây tăng giữ Na<sup>+</sup> và thải H<sup>+</sup> tại ống lượn xa.</li>
+                    </ul>
+                </div>
+
+                <!-- TOAN HÔ HẤP -->
+                <div class="info-box">
+                    <strong style="color: #0284c7;"><i class="fa-solid fa-lungs"></i> 3. TOAN HÔ HẤP (Respiratory Acidosis)</strong>
+                    <p style="margin-top: 0.35rem;">Tăng nguyên phát pCO<sub>2</sub> &gt; 45 mmHg (5.6 kPa), pH &lt; 7.35 do giảm thông khí phổi. Thận bù trừ chậm (2 &ndash; 4 ngày) bằng cách tăng tái hấp thu và tạo mới HCO<sub>3</sub><sup>&minus;</sup>.</p>
+                    <ul>
+                        <li><strong>Cấp tính:</strong> Tắc nghẽn đường thở cấp, ngộ độc thuốc ức chế hô hấp (Opioids, Sedatives), liệt cơ hô hấp (Guillain-Barré).</li>
+                        <li><strong>Mạn tính:</strong> Bệnh phổi tắc nghẽn mạn tính (COPD), xơ phổi, béo phì giảm thông khí (Pickwickian). Thận thường bù trừ hoàn toàn giữ pH gần bình thường.</li>
+                    </ul>
+                </div>
+
+                <!-- KIỀM HÔ HẤP -->
+                <div class="info-box" style="border-left-color: #10b981; background: rgba(16, 185, 129, 0.08);">
+                    <strong style="color: #059669;"><i class="fa-solid fa-wind"></i> 4. KIỀM HÔ HẤP (Respiratory Alkalosis)</strong>
+                    <p style="margin-top: 0.35rem;">Giảm nguyên phát pCO<sub>2</sub> &lt; 35 mmHg (4.4 kPa), pH &gt; 7.45 do tăng thông khí phổi quá mức. Thận bù trừ bằng cách tăng thải HCO<sub>3</sub><sup>&minus;</sup>.</p>
+                    <ul>
+                        <li><strong>Nguyên nhân:</strong> Cơn lo âu kích động (hyperventilation), thở máy quá mức, sốt cao, tổn thương thần kinh trung ương, ngộ độc Salicylate giai đoạn sớm.</li>
+                        <li><strong>Lâm sàng:</strong> Giảm Ca<sup>2+</sup> ion hóa do tăng gắn albumin ở pH kiềm, gây dị cảm đầu chi và co cứng cơ kiểu tetany.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-clipboard-check"></i> Bảng Tổng Hợp Thông Số Khí Máu Động Mạch &amp; Đáp Ứng Bù Trừ</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Rối Loạn Acid-Base</th>
+                        <th>pH Máu</th>
+                        <th>pCO<sub>2</sub> Động Mạch</th>
+                        <th>[HCO<sub>3</sub><sup>&minus;</sup>] Huyết Tương</th>
+                        <th>Cơ Chế &amp; Thời Gian Bù Trừ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Toan Chuyển Hóa (Metabolic Acidosis)</strong></td>
+                        <td><span class="rx-tag danger">Giảm (&lt; 7.35)</span></td>
+                        <td><span class="rx-tag">Giảm bù trừ (&darr;)</span></td>
+                        <td><span class="rx-tag danger">Giảm nguyên phát (&lt; 22)</span></td>
+                        <td>Phổi tăng thông khí đào thải CO<sub>2</sub> (Bù trừ nhanh trong vài phút đến vài giờ).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kiềm Chuyển Hóa (Metabolic Alkalosis)</strong></td>
+                        <td><span class="rx-tag preferred">Tăng (&gt; 7.45)</span></td>
+                        <td><span class="rx-tag">Tăng bù trừ (&uarr;)</span></td>
+                        <td><span class="rx-tag preferred">Tăng nguyên phát (&gt; 28)</span></td>
+                        <td>Phổi giảm thông khí giữ CO<sub>2</sub> (Bù trừ bị giới hạn bởi phản xạ thiếu oxy).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Toan Hô Hấp (Respiratory Acidosis)</strong></td>
+                        <td><span class="rx-tag danger">Giảm (&lt; 7.35)</span></td>
+                        <td><span class="rx-tag danger">Tăng nguyên phát (&gt; 45)</span></td>
+                        <td><span class="rx-tag">Tăng bù trừ (&uarr;)</span></td>
+                        <td>Thận tăng giữ và tạo mới HCO<sub>3</sub><sup>&minus;</sup> (Bù trừ chậm cần <strong>2 &ndash; 4 ngày</strong>).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kiềm Hô Hấp (Respiratory Alkalosis)</strong></td>
+                        <td><span class="rx-tag preferred">Tăng (&gt; 7.45)</span></td>
+                        <td><span class="rx-tag preferred">Giảm nguyên phát (&lt; 35)</span></td>
+                        <td><span class="rx-tag">Giảm bù trừ (&darr;)</span></td>
+                        <td>Thận tăng đào thải HCO<sub>3</sub><sup>&minus;</sup> qua nước tiểu (Cần 2 &ndash; 3 ngày để bù trừ tối đa).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Rối Loạn Acid-Base Hỗn Hợp Nguy Kịch (Mixed Acid-Base Disorders):</strong>
+                <ul>
+                    <li><strong>Ngừng tim phổi (Cardiorespiratory arrest):</strong> Ngừng thở gây toan hô hấp cấp (ứ CO<sub>2</sub>) kết hợp ngừng tuần hoàn gây toan lactic nặng (toan chuyển hóa tăng AG). pH máu tụt dốc thảm khốc đe dọa tử vong tức thì.</li>
+                    <li><strong>Ngộ độc Aspirin (Salicylate toxicity):</strong> Kích thích trực tiếp trung tâm hô hấp gây kiềm hô hấp, đồng thời Salicylate ức chế chu trình Krebs gây toan lactic/ceton (toan chuyển hóa tăng AG hỗn hợp).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.7;">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--color-text, #334155); font-size: 0.95rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;">Tài Liệu Tham Khảo Chuẩn Y Khoa (AMA Citation):</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Murphy MJ, Srivastava R, Deans K. <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. Edinburgh: Elsevier; 2018:14-27, 34-39, 42-53, 164-169.</li>
+                <li>Bộ Môn Hóa Sinh (Đại học Y Dược TPHCM). Chương V &amp; XVI. Trong: <em>Hóa Sinh Y Học 2024</em>. TP. Hồ Chí Minh: NXB Y Học; 2024.</li>
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw-Hill; 2023:6-15, 348-359.</li>
+                <li>Baynes JW, Dominiczak MH. <em>Medical Biochemistry</em>. 5th ed. Philadelphia, PA: Elsevier; 2019:204-209, 523-549.</li>
+                <li>Pratt CW, Cornely K. <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:35-50.</li>
+                <li>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD. <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson; 2012:31-54.</li>
+            </ol>
         </footer>
 
     </div>
 </body>
+
 </html>

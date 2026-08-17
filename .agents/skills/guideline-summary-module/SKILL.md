@@ -27,6 +27,7 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
 8. **BẮT BUỘC KIỂM TRA & LÀM SẠCH LỖI $ (Math LaTeX Formatting Cleanup)**: Trước khi hoàn tất bất kỳ trang Guideline HTML nào, **BẮT BUỘC** kiểm tra và làm sạch 100% ký tự `$` math LaTeX (`$BMI \ge 25$` $\rightarrow$ `BMI ≥ 25`, `$\ge 150\text{ mg/dL}$` $\rightarrow$ `≥ 150 mg/dL`, `$\ge 20\%$` $\rightarrow$ `≥ 20%`). Tuyệt đối không để sót ký tự `$` thô hiển thị trên giao diện web.
 9. **Bảo Vệ Hub `guidelines.js`**: Chạy `node scratch/query_graph.js guidelines.js` nếu tác động vào engine xử lý chung của Kho Guidelines (chỉ số fan-in 570).
 10. **Tự Động Dọn Dẹp File Tạm**: Tự động xóa tất cả các file `.md` trung gian / hợp nhất được tạo ra trong `scratch/` ngay sau khi hoàn tất việc sinh file `.html` và đăng ký registry.
+11. **TUYỆT ĐỐI CẤM THẺ HTML TRONG SVG `<text>` (SVG Text Formatting Rule)**: Tuyệt đối **KHÔNG ĐƯỢC** sử dụng các thẻ HTML (`<strong>`, `<b>`, `<span>`, `<br>`, `<em>`, `<code>`) bên trong `<text>` của SVG. Để in đậm trong SVG, bắt buộc dùng `<tspan font-weight="700">` hoặc thuộc tính `font-weight="700"`. Để xuống dòng, dùng nhiều thẻ `<text>` hoặc `<tspan x="..." dy="...">`. ViewBox SVG phải luôn đủ rộng/cao để không cắt cụt các node.
 
 ---
 

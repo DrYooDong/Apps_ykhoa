@@ -44,8 +44,9 @@ src/content/pathophysiology/biochemistry/
 3. **Thanh Mục lục chuẩn Kho Guidelines (`.pillars-nav`)**:
    - Sử dụng thanh dải sticky nav `.pillars-nav` với các tab `.pillar-tab.p-1` &rarr; `.p-X`.
    - **Tuyệt đối không** nhân bản 2 khối mục lục (không dùng song song thẻ `.toc-card` trùng lặp).
-4. **Chuẩn đồ họa SVG thuần (Pure Inline SVG)**:
+4. **Chuẩn đồ họa SVG thuần (Pure Inline SVG) & Cấm thẻ HTML trong SVG `<text>`**:
    - Sơ đồ chuyển hóa, màng tế bào, cắt ngang lipoprotein dùng Pure Inline SVG với `viewBox` co giãn linh hoạt và sử dụng token `var(--color-...)` để tự động đổi màu khi sang Dark Mode.
+   - **TUYỆT ĐỐI CẤM** dùng các thẻ HTML (`<strong>`, `<b>`, `<span>`, `<br>`, `<em>`, `<code>`) bên trong `<text>` của SVG. Để in đậm trong SVG, bắt buộc dùng `<tspan font-weight="700">` hoặc thuộc tính `font-weight="700"`. Để xuống dòng, dùng các thẻ `<text y="...">` độc lập hoặc `<tspan x="..." dy="...">`. ViewBox phải có kích thước đủ rộng/cao để không cắt cụt các node.
 5. **Kiểm tra HTML Integrity & Định Dạng Ký Tự ($ / #)**:
    - Sau khi tạo hoặc chỉnh sửa tệp HTML, bắt buộc chạy:
      ```bash

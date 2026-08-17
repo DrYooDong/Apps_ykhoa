@@ -18,6 +18,7 @@ description: >
 3. **Quy Tắc Đặt Tên File Sinh Lý**: File trong `PhanX/` dùng định dạng `SL_[MÃ_PHẦN]_[TenRutGon].html` (ASCII, ví dụ: `SL_TB_Mangtebao.html`).
 4. **Chuẩn Render Công Thức & Minh Họa**: Dùng định dạng toán $...$ hoặc `$ ... $` cho các biến số sinh lý (áp suất, nồng độ ion), dùng `<figure class="physio-figure">` cho ảnh có Lightbox tự động.
 5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` sau khi tạo/sửa.
+6. **Chuẩn Sơ Đồ Cơ Chế / Lưu Đồ SVG (Editorial SVG Standard)**: Khi vẽ sơ đồ phản hồi sinh lý (Feedback loop), cơ chế bệnh sinh hoặc lưu đồ chẩn đoán bằng SVG thuần: Tuyệt đối **CẤM** dùng các thẻ HTML (`<strong>`, `<span>`, `<br>`, `<b>`) bên trong thẻ `<text>` của SVG. Để in đậm trong SVG, bắt buộc dùng `<tspan font-weight="700">` hoặc `font-weight="700"`. Dùng `var(--color-...)` hoặc CSS tokens để tự động tương thích 100% với Dark Mode. ViewBox SVG phải luôn có đủ chiều rộng và chiều cao để tránh tràn node.
 
 ---
 

@@ -20,6 +20,7 @@ Skill này quy định chuẩn kiến trúc, quy tắc bố cục trực giao (O
 4. **Mặt nạ Nhãn Chữ (Label Masking Rect)**: Mọi nhãn chữ trên mũi tên (Có/Không, Dương tính/Âm tính) phải có hộp nền `<rect fill="var(--color-surface)">` để đường kẻ không bao giờ đâm xuyên qua thân chữ.
 5. **Không Dùng Drop-Shadow (Shadows are OUT, Borders are IN)**: Dùng đường viền sắc nét (`1px solid var(--color-border)`) và bo góc nhẹ (`rx="6-8px"`).
 6. **Tuân thủ 100% Design Tokens & Dark Mode**: Bắt buộc dùng `var(--color-...)` cho toàn bộ thuộc tính `fill`, `stroke`, `color`.
+7. **TUYỆT ĐỐI CẤM THẺ HTML TRONG SVG `<text>` (No HTML in SVG Text)**: Tuyệt đối **KHÔNG ĐƯỢC** dùng các thẻ HTML (`<strong>`, `<b>`, `<span>`, `<br>`, `<em>`, `<code>`) bên trong `<text>` hoặc `<svg>`. Trình duyệt sẽ parse lỗi khiến văn bản bị vỡ và rớt ra ngoài khung SVG. Để in đậm trong SVG, **BẮT BUỘC** dùng `<tspan font-weight="700">Chữ in đậm</tspan>` hoặc gán trực tiếp `font-weight="700"` trên thẻ `<text>`. Để xuống dòng, dùng các thẻ `<text y="...">` riêng biệt hoặc `<tspan x="..." dy="...">`.
 
 ---
 
