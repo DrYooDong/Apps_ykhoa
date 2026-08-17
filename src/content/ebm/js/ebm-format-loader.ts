@@ -1,5 +1,6 @@
 /**
  * EBM Format Loader & Multi-Format Parsing Engine (ebm-format-loader.ts)
+ * Path: src/content/ebm/js/ebm-format-loader.ts
  * Phân hệ Y học chứng cứ (EBM) | CliniPortal
  * Supports: JSON Schemas, Markdown (.md), CSV Data, BibTeX/RIS Citations, SVG Diagrams
  */
@@ -74,7 +75,7 @@ export class EBMFormatLoader {
       }
     }
 
-    let html = content
+    const html = content
       .replace(/^### (.*$)/gim, '<h3>$1</h3>')
       .replace(/^## (.*$)/gim, '<h2>$1</h2>')
       .replace(/^# (.*$)/gim, '<h1>$1</h1>')
@@ -98,16 +99,20 @@ export class EBMFormatLoader {
 
     for (let i = 1; i < lines.length; i++) {
       const values = lines[i].split(',').map(v => v.trim().replace(/^"|"$/g, ''));
-      const obj: Record<string, string> = {};
-      headers.forEach((h, idx) => {
-        obj[h] = values[idx] || '';
-      });
-      rows.push(obj);
+      if (values.length === headers.length) {
+        const row: Record<string, string> = {};
+        headers.forEach((h, idx) => {
+          row[h] = values[idx];
+        });
+        rows.push(row);
+      }
     }
+
     return rows;
   }
 }
 
+// Global window exposure for legacy scripts
 if (typeof window !== 'undefined') {
   (window as any).EBMFormatLoader = EBMFormatLoader;
 }

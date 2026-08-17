@@ -38,6 +38,16 @@ export function initHealthScore(): void {
   }
 }
 
+export function initHubFAB(): void {
+  if (typeof (window as any).setupFAB === 'function') {
+    (window as any).setupFAB([
+      { icon: '<i class="fa-solid fa-chart-line"></i>', label: 'Thống kê Y Học', href: 'medical-statistics/thongkeyhoc.html' },
+      { icon: '<i class="fa-solid fa-book-medical"></i>', label: 'Kho Guidelines', href: 'guidelines/guidelines.html' },
+      { icon: '<i class="fa-solid fa-flask"></i>', label: 'Thực Hành EBM', href: 'ebm-lab/ebm-lab.html' }
+    ]);
+  }
+}
+
 export function initFuzzySearch(): void {
   const searchInput = document.getElementById('ebm-global-search') as HTMLInputElement | null;
   const resultsContainer = document.getElementById('ebm-search-results');
@@ -50,15 +60,15 @@ export function initFuzzySearch(): void {
       return;
     }
 
-    const cards = document.querySelectorAll('.ebm-feature-card, .guideline-row, .study-card');
+    const cards = document.querySelectorAll('.ebm-feature-card, .guideline-row, .study-card, .ebm-bento-card-compact');
     let matched = 0;
     let html = '';
 
     cards.forEach(card => {
-      const title = card.querySelector('h3, h4, .title')?.textContent || '';
+      const title = card.querySelector('h2, h3, h4, .title')?.textContent || '';
       if (title.toLowerCase().includes(query) && matched < 6) {
         matched++;
-        html += `<a href="#" style="display:block; padding:8px 12px; border-bottom:1px solid var(--color-divider); color:var(--color-text); text-decoration:none;">${title}</a>`;
+        html += `<a href="#" style="display:block; padding:8px 12px; border-bottom:1px solid var(--hub-border, #e2e8f0); color:var(--hub-text, #0f172a); text-decoration:none;">${title}</a>`;
       }
     });
 
@@ -69,14 +79,41 @@ export function initFuzzySearch(): void {
       resultsContainer.style.display = 'none';
     }
   });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      resultsContainer.style.display = 'none';
+    }
+  });
 }
 
 export function initYhccHub(): void {
   initHealthScore();
   initFuzzySearch();
+  initHubFAB();
+
+  // Listen to guidelines update event for animated counters
+  window.addEventListener('cliniportal:guidelines-updated', () => {
+    const syncObj = (window as any).CliniPortalSync;
+    if (!syncObj || !syncObj.getSummaryStats) return;
+    const stats = syncObj.getSummaryStats();
+    
+    const totalEl = document.getElementById('stat-total-guidelines');
+    const practiceEl = document.getElementById('stat-practice-changing');
+    const mohEl = document.getElementById('stat-moh-guidelines');
+    const intlEl = document.getElementById('stat-intl-guidelines');
+    
+    if (totalEl && stats.total) animateValue(totalEl, 0, stats.total, 1000);
+    if (practiceEl && stats.practiceChangingCount) animateValue(practiceEl, 0, stats.practiceChangingCount, 1200);
+    if (mohEl) animateValue(mohEl, 0, (stats.mohCount || 0) + (stats.associationCount || 0), 1400);
+    if (intlEl && stats.intlCount) animateValue(intlEl, 0, stats.intlCount, 1600);
+  });
 }
 
-if (typeof document !== 'undefined') {
+if (typeof window !== 'undefined') {
+  (window as any).initYhccHub = initYhccHub;
+  (window as any).animateValue = animateValue;
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initYhccHub);
   } else {

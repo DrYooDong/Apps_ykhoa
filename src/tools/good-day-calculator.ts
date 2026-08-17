@@ -1285,6 +1285,11 @@ export function openDayScoreModal(
   const monthData = getMonthEvaluation(currentYear, currentMonth, doc);
   const bestSurgeryDays = findBestClinicalDays('surgery', 30, doc);
 
+  const firstDayOfMonth = new Date(currentYear, currentMonth - 1, 1).getDay();
+  // Trong JS getDay(): 0 = CN, 1 = T2, 2 = T3, 3 = T4, 4 = T5, 5 = T6, 6 = T7
+  // Grid xếp theo: T2 (0), T3 (1), T4 (2), T5 (3), T6 (4), T7 (5), CN (6)
+  const firstDayOffset = (firstDayOfMonth + 6) % 7;
+
   const existing = document.getElementById('dayScoreModalOverlay');
   if (existing) existing.remove();
 
@@ -1584,6 +1589,9 @@ export function openDayScoreModal(
           <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.35rem;">
             ${['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map(w => `
               <div style="font-size: 0.72rem; font-weight: 800; color: var(--color-text-muted, #64748b); text-align: center; padding: 0.2rem 0;">${w}</div>
+            `).join('')}
+            ${Array.from({ length: firstDayOffset }).map(() => `
+              <div style="padding: 0.4rem 0.2rem; border-radius: 0.4rem; opacity: 0; pointer-events: none;" aria-hidden="true"></div>
             `).join('')}
             ${monthData.map(d => {
               const dayNum = d.dateObj.getDate();
