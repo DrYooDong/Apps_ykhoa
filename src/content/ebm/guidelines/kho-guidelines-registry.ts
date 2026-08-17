@@ -941,6 +941,46 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     summary: 'Bản cập nhật hướng dẫn điều trị toàn diện 18 miền lâm sàng lớn nhất trong 10 năm qua của Hiệp hội Tụy học Quốc tế (IAP): Chuẩn hóa chẩn đoán, truyền dịch LR vừa phải, dinh dưỡng sớm, chỉ định ERCP và chiến lược Step-Up.',
     detailedConclusion: 'Chiến lược truyền dịch vừa phải bằng LR kết hợp dinh dưỡng sớm và can thiệp Step-Up xâm lấn tối thiểu sau 4 tuần là nền tảng quản lý hiện đại giúp giảm tỷ lệ tử vong và biến chứng trong viêm tụy cấp.'
   },
+  {
+    id: '2022-acg-gerd',
+    title: 'ACG 2022: Hướng Dẫn Lâm Sàng Chẩn Đoán & Điều Trị Bệnh Trào Ngược Dạ Dày - Thực Quản (GERD)',
+    titleEn: 'ACG Clinical Guideline for the Diagnosis and Management of Gastroesophageal Reflux Disease',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2022,
+    organization: 'American College of Gastroenterology (ACG)',
+    journal: 'Am J Gastroenterol',
+    file: '2022-acg-gerd.html',
+    conditionKey: 'gerd-peptic',
+    icd10: ['K21', 'K21.0', 'K21.9', 'K20'],
+    intervention: 'Thử nghiệm PPI 8 tuần 1 lần/ngày trước ăn 30-60p, EGD sau ngưng PPI 2-4 tuần, đo trào ngược Off PPI khi EGD bình thường/LA A, PPI BID cho triệu chứng ngoài thực quản hỗn hợp, PPI duy trì vô thời hạn cho LA C/D, can thiệp (Nissen, MSA, TIF, RYGB)',
+    primaryEndpoint: 'Kiểm soát triệu chứng ợ nóng/trớ, làm lành viêm thực quản bào mòn, phòng ngừa biến chứng loét, hẹp và thực quản Barrett',
+    keyResults: 'PPI vượt trội H2RA trong làm lành và duy trì; Uống PPI trước ăn 30-60p tối ưu hiệu quả; Duy trì PPI vô thời hạn cho LA C/D; RCT Moayyedi trên 17.598 BN chứng minh PPI dài hạn an toàn không tăng nguy cơ tim mạch/thận/xương (nguy cơ duy nhất có ý nghĩa là nhiễm trùng ruột OR 1.33).',
+    summary: 'Hướng dẫn thực hành lâm sàng toàn diện của ACG: Định nghĩa khách quan GERD, lưu đồ phân nhánh EGD và đo theo dõi trào ngược, 11 biện pháp thay đổi lối sống (Table 3), tiếp cận triệu chứng ngoài thực quản, quản lý kháng trị và bằng chứng an toàn dài hạn của PPI.',
+    detailedConclusion: 'Thử PPI 8 tuần trước ăn là bước đầu tay cho triệu chứng điển hình; chỉ đo trào ngược Off PPI khi EGD không có tổn thương khách quan; bệnh nhân viêm thực quản độ C/D bắt buộc duy trì PPI dài hạn.'
+  },
+  {
+    id: '2021-acg-ibs',
+    title: 'ACG 2021: Hướng Dẫn Lâm Sàng Quản Lý Hội Chứng Ruột Kích Thích (IBS)',
+    titleEn: 'ACG Clinical Guideline: Management of Irritable Bowel Syndrome',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2021,
+    organization: 'American College of Gastroenterology (ACG)',
+    journal: 'Am J Gastroenterol',
+    file: '2021-acg-ibs.html',
+    conditionKey: 'gerd-peptic',
+    icd10: ['K58', 'K58.0', 'K58.1', 'K58.2', 'K58.8'],
+    intervention: 'Chiến lược chẩn đoán chủ động (Rome IV + BSFS 2 tuần), loại trừ Celiac (tTG-IgA) & IBD (Calprotectin phân/CRP), Low-FODMAP 3 giai đoạn, Chất xơ hòa tan (Psyllium), Linaclotide/Plecanatide/Lubiprostone cho IBS-C, Rifaximin/Eluxadoline/Alosetron cho IBS-D, TCAs liều thấp, Tâm lý ruột (CBT-GI/GDH)',
+    primaryEndpoint: 'Giảm triệu chứng đau bụng tái phát, bình thường hóa tần suất và hình thái phân, cải thiện chất lượng sống',
+    keyResults: 'Chẩn đoán chủ động giảm 40% chi phí y tế; Psyllium hiệu quả (NNT=7); Linaclotide (NNT=6); Rifaximin 14 ngày (NNT=9); TCAs liều thấp (NNT=4.5); Tâm lý GDPs (NNT=4); Chống chỉ định FMT và Eluxadoline ở người đã cắt túi mật.',
+    summary: 'Hướng dẫn chuẩn GRADE toàn diện của ACG: 25 câu hỏi lâm sàng (9 chẩn đoán + 16 điều trị), tiêu chuẩn Rome IV, thang điểm Bristol, phác đồ dược lý đích cho từng phân nhóm IBS-C/D/M và can thiệp điều hòa trục não - ruột.',
+    detailedConclusion: 'Chẩn đoán tự tin dựa trên tiêu chuẩn Rome IV và xét nghiệm định hướng tối thiểu; cá thể hóa trị liệu theo phân nhóm Bristol; ưu tiên secretagogues cho IBS-C và Rifaximin/TCAs cho IBS-D.'
+  },
 
   // --- SẢN PHỤ KHOA (OBSTETRICS & GYNECOLOGY) ---
   {

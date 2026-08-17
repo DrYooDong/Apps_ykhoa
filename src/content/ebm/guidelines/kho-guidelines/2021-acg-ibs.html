@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Hướng dẫn Lâm sàng ACG 2021 về Hội chứng Ruột Kích thích (IBS): Tiêu chuẩn Rome IV, Thang điểm Bristol, Chiến lược Chẩn đoán Chủ động, Loại trừ Celiac/IBD, Phác đồ Low-FODMAP, Thuốc secretagogues cho IBS-C (Linaclotide, Lubiprostone), Rifaximin/Eluxadoline cho IBS-D, Thuốc chống trầm cảm ba vòng TCAs và Liệu pháp tâm lý đường ruột.">
+  <title>ACG 2021: Hướng Dẫn Chẩn Đoán & Điều Trị Hội Chứng Ruột Kích Thích (IBS) – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --amber: #b45309; --amber-bg: #fffbeb; --amber-light: #fef08a;
+      --accent: #0284c7;
+      --accent-gradient: linear-gradient(135deg, #0369a1 0%, #0284c7 45%, #0d9488 100%);
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0c121e; --surface: #172033; --surface-2: #1e2c45;
+      --border: #334768; --border-light: #24354f;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.18); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.18); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.18); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.18); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.18); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.18); --purple-light: rgba(221, 214, 254, 0.3);
+      --amber-bg: rgba(180, 83, 9, 0.18); --amber-light: rgba(254, 240, 138, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .btn-row { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(12, 18, 30, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-blue { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    [data-theme="dark"] .badge-blue { color: #93c5fd; }
+    .badge-teal { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-light); }
+    [data-theme="dark"] .badge-teal { color: #99f6e4; }
+    .badge-amber { background: var(--amber-bg); color: #92400e; border: 1px solid var(--amber-light); }
+    [data-theme="dark"] .badge-amber { color: #fef08a; }
+
+    .topnav-theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 0.35rem 0.6rem; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; transition: all var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+
+    /* HERO */
+    .hero { background: var(--accent-gradient); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 60%, rgba(56,189,248,0.25) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(16,185,129,0.2) 0%, transparent 50%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #bae6fd; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.92; max-width: 780px; margin-bottom: 1.8rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.8rem; font-size: 0.8rem; opacity: 0.88; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.55rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--amber); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-7 { border-left: 4px solid #0284c7; }
+
+    /* KPI STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--accent); line-height: 1.2; text-align: center; }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; line-height: 1.45; text-align: center; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.25rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-badge { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 12px; background: var(--blue-bg); color: var(--accent); border: 1px solid var(--blue-light); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* GRID LAYOUTS */
+    .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.25rem; }
+    .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+    .grid-4col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 1rem; }
+
+    /* BENTO & CLINICAL CARDS */
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .clin-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .clin-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .accent-green { background: var(--green); }
+    .accent-orange { background: var(--orange); }
+    .accent-red { background: var(--red); }
+    .accent-blue { background: var(--blue); }
+    .accent-teal { background: var(--teal); }
+    .accent-purple { background: var(--purple); }
+    .accent-amber { background: var(--amber); }
+
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text); margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: space-between; }
+    .clin-card-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+    .clin-card-list { list-style: none; margin-top: 0.5rem; padding-left: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .clin-card-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      display: block;
+    }
+    .clin-card-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox-title { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 800; margin-bottom: 0.35rem; color: var(--text); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* EBM RECOMMENDATION CARDS */
+    .ebm-rec-card { background: var(--surface); border: 1px solid var(--border-light); border-left: 4px solid var(--accent); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 0.85rem; transition: transform var(--tr); }
+    .ebm-rec-card:hover { transform: translateX(2px); }
+    .ebm-rec-card.rec-strong { border-left-color: var(--green); }
+    .ebm-rec-card.rec-cond { border-left-color: var(--blue); }
+    .ebm-rec-card.rec-against { border-left-color: var(--red); }
+    .ebm-rec-card.rec-consensus { border-left-color: var(--purple); }
+    .ebm-rec-header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .ebm-rec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.88rem; color: var(--text); }
+    .ebm-rec-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* BADGES */
+    .badge-group { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
+    .cor-badge, .loe-badge { padding: 0.2rem 0.55rem; border-radius: 8px; font-size: 0.72rem; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; display: inline-flex; align-items: center; gap: 0.3rem; }
+    .cor-strong { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    .cor-cond { background: var(--blue-bg); color: #1e40af; border: 1px solid var(--blue-light); }
+    .cor-against { background: var(--red-bg); color: #991b1b; border: 1px solid var(--red-light); }
+    .cor-consensus { background: var(--purple-bg); color: #6b21a8; border: 1px solid var(--purple-light); }
+    .loe-high { background: rgba(5, 150, 105, 0.12); color: #047857; border: 1px solid rgba(5, 150, 105, 0.35); }
+    .loe-mod { background: rgba(37, 99, 235, 0.12); color: #1d4ed8; border: 1px solid rgba(37, 99, 235, 0.35); }
+    .loe-low { background: rgba(217, 119, 6, 0.12); color: #b45309; border: 1px solid rgba(217, 119, 6, 0.35); }
+    .loe-verylow { background: rgba(148, 163, 184, 0.18); color: #475569; border: 1px solid rgba(148, 163, 184, 0.4); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border-light); border-radius: 12px; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 680px; }
+    .data-table thead th { background: var(--surface-2); padding: 0.75rem 1rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); border-bottom: 2px solid var(--border-light); text-align: left; }
+    .data-table td { padding: 0.85rem 1rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; color: var(--text-muted); }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: var(--surface-2); }
+    .data-table strong { color: var(--text); font-weight: 700; }
+
+    .rx-tag { display: inline-block; background: var(--surface-2); color: var(--text); font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 6px; border: 1px solid var(--border-light); margin: 0.15rem 0.2rem 0.15rem 0; }
+    .rx-tag.preferred { background: var(--green-bg); color: #065f46; border-color: var(--green-light); font-weight: 700; }
+    .rx-tag.warning { background: var(--orange-bg); color: #92400e; border-color: var(--orange-light); }
+    .rx-tag.danger { background: var(--red-bg); color: #991b1b; border-color: var(--red-light); }
+
+    /* SVG FLOWCHART STUDIO CONTAINER */
+    .flowchart-container {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .flowchart-caption {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+    .flowchart-svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; font-style: italic; }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.55rem 1.1rem; border-radius: 10px; border: 1.5px solid var(--border-light); background: var(--surface); color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all var(--tr); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { background: #0369a1; color: #fff; }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .grid-2col, .grid-3col, .grid-4col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">ACG 2021: Hướng Dẫn Lâm Sàng Quản Lý Hội Chứng Ruột Kích Thích (IBS)</div>
+    <div class="topnav-badges">
+      <span class="badge badge-blue">ACG 2021</span>
+      <span class="badge badge-teal">Tiêu hóa</span>
+      <button class="topnav-theme-toggle" id="theme-btn" title="Chuyển đổi giao diện Sáng/Tối" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge-strip">
+        <div class="hero-badge">🔬 American College of Gastroenterology (ACG)</div>
+        <div class="hero-badge">📑 Am J Gastroenterol 2021</div>
+        <div class="hero-badge">⭐ GRADE Practice-Changing Guideline</div>
+      </div>
+      <h1 class="hero-title">
+        <span>ACG Clinical Guideline: Management of IBS</span>
+        Chẩn Đoán & Quản Lý Hội Chứng Ruột Kích Thích (IBS) Toàn Diện
+      </h1>
+      <p class="hero-subtitle">
+        Hướng dẫn thực hành lâm sàng chuẩn EBM đầu tiên ứng dụng phương pháp luận GRADE từ ACG: Tiêu chuẩn Rome IV, phân loại thang điểm Bristol, chiến lược chẩn đoán chủ động (Positive Strategy), xét nghiệm loại trừ Celiac/IBD, phác đồ 3 giai đoạn Low-FODMAP, thuốc kích thích bài tiết cho IBS-C (Linaclotide, Lubiprostone, Plecanatide), Rifaximin/Eluxadoline cho IBS-D, thuốc điều hòa thần kinh TCAs và liệu pháp tâm lý nhắm vào trục não - ruột (GDPs).
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📅 <strong>Năm công bố:</strong> 2021</div>
+        <div class="hero-meta-item">🏛️ <strong>Tổ chức:</strong> ACG (American College of Gastroenterology)</div>
+        <div class="hero-meta-item">📖 <strong>Tạp chí:</strong> Am J Gastroenterol 2021;116(1):17–44</div>
+        <div class="hero-meta-item">🎯 <strong>Đối tượng:</strong> Bác sĩ Tiêu hóa, Nội tổng quát, Bác sĩ Gia đình, Chuyên gia Dinh dưỡng</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <nav class="pillars-nav" aria-label="Mục lục hướng dẫn">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Rome IV & Bristol</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Chiến Lược Chẩn Đoán</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Dinh Dưỡng & FODMAP</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Phác Đồ IBS-C</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Phác Đồ IBS-D</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. TCAs & Tâm Lý GDPs</a>
+      <a href="#sec-7" class="pillar-tab p-7">7. Checklist & Y Văn</a>
+    </div>
+  </nav>
+
+  <!-- KPI STATS STRIP -->
+  <section class="stats-strip" aria-label="Các chỉ số mốc then chốt">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">Rome IV</div>
+        <div class="stat-lbl">Đau bụng ≥ 1 ngày/tuần trong 3 tháng + kèm ≥ 2 tiêu chuẩn đại tiện</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">Giảm 40% Chi Phí</div>
+        <div class="stat-lbl">Hiệu quả của Chiến lược Chẩn đoán Chủ động thay vì lạm dụng chẩn đoán loại trừ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">NNT = 6 – 9</div>
+        <div class="stat-lbl">Hiệu lực vượt trội của Linaclotide (NNT=6), Rifaximin (NNT=9), TCAs (NNT=4.5)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">&lt; 45 Tuổi</div>
+        <div class="stat-lbl">Không nội soi đại tràng thường quy nếu không có cờ đỏ cảnh báo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN PAGE CONTENT -->
+  <main class="page-content">
+
+    <!-- SECTION 1: TIÊU CHUẨN ROME IV & THANG ĐIỂM BRISTOL -->
+    <section id="sec-1" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">📊</span>
+          <h2 class="sec-title">1. Tiêu Chuẩn Lâm Sàng Rome IV & Phân Nhóm Thang Điểm Bristol</h2>
+        </div>
+        <span class="sec-badge">Clinical Criteria</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox info">
+          <div class="infobox-icon">💡</div>
+          <div>
+            <span class="infobox-title">Bản Chất Bệnh Học Của Hội Chứng Ruột Kích Thích (IBS)</span>
+            IBS là một <strong>rối loạn tương tác giữa não và ruột (Disorders of Gut-Brain Interaction - DGBI)</strong> đặc trưng bởi đau bụng tái phát kết hợp với rối loạn thói quen đại tiện (táo bón, tiêu chảy hoặc xen kẽ). IBS không còn là một chẩn đoán loại trừ đơn thuần mà là một thực thể lâm sàng có thể chẩn đoán xác định tự tin dựa trên tiêu chuẩn Rome IV.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">Tiêu Chuẩn Chẩn Đoán Rome IV (Table 1)</div>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>Triệu chứng Cốt lõi & Thời gian</span>
+              <span>⏱️</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Đau bụng tái phát:</strong> Trung bình ít nhất <strong>1 ngày mỗi tuần</strong> trong vòng <strong>3 tháng</strong> gần nhất.</li>
+                <li><strong>Thời gian khởi phát:</strong> Triệu chứng phải bắt đầu ít nhất <strong>6 tháng</strong> trước khi thiết lập chẩn đoán xác định.</li>
+                <li><em>(Lưu ý: Cảm giác đầy bụng hoặc khó chịu đơn thuần không kèm đau bụng không đủ tiêu chuẩn chẩn đoán IBS).</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">
+              <span>3 Tiêu chí Đi kèm (Thỏa mãn ≥ 2/3)</span>
+              <span>✅</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>1. Liên quan đến đại tiện:</strong> Đau bụng tăng lên hoặc thuyên giảm sau khi đi tiêu.</li>
+                <li><strong>2. Thay đổi tần suất đi tiêu:</strong> Tăng số lần đi tiêu (&gt; 3 lần/ngày) hoặc giảm số lần (&lt; 3 lần/tuần).</li>
+                <li><strong>3. Thay đổi hình thái phân:</strong> Phân trở nên lỏng hơn hoặc cứng chắc hơn theo thang điểm Bristol.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- BRISTOL STOOL FORM SCALE VISUAL -->
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Thang Điểm Hình Thái Phân Bristol (BSFS) & 4 Phân Nhóm Lâm Sàng (Figure 1)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 14%;">Loại Phân</th>
+                <th style="width: 22%;">Hình Thái Mô Tả</th>
+                <th style="width: 32%;">Ý Nghĩa Vận Chuyển Ruột</th>
+                <th style="width: 32%;">Tiêu Chuẩn Phân Nhóm Rome IV</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="rx-tag danger">Type 1</span></td>
+                <td>Các cục cứng, rời rạc như hạt dẻ, khó rặn tống xuất</td>
+                <td rowspan="2"><strong>Thời gian vận chuyển ruột chậm</strong><br>(Táo bón / Phân ứ đọng)</td>
+                <td rowspan="2"><strong>IBS Thể Táo Bón (IBS-C):</strong><br>&gt; 25% số lần đi tiêu là Type 1 hoặc 2;<br>và &lt; 25% số lần đi tiêu là Type 6 hoặc 7.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag danger">Type 2</span></td>
+                <td>Hình xúc xích nhưng lổn nhổn, kết khối cứng</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag preferred">Type 3</span></td>
+                <td>Hình xúc xích nhưng có các vết nứt trên bề mặt</td>
+                <td rowspan="2"><strong>Thời gian vận chuyển ruột bình thường</strong><br>(Phân lý tưởng)</td>
+                <td rowspan="2"><strong>IBS Thể Hỗn Hợp (IBS-M):</strong><br>&gt; 25% số lần đi tiêu là Type 1/2;<br><strong>VÀ đồng thời</strong> &gt; 25% số lần đi tiêu là Type 6/7.</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag preferred">Type 4</span></td>
+                <td>Hình xúc xích hoặc con rắn, trơn láng và mềm</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag warning">Type 5</span></td>
+                <td>Các cục mềm, bờ viền rõ ràng, dễ tống xuất</td>
+                <td rowspan="3"><strong>Thời gian vận chuyển ruột nhanh</strong><br>(Tiêu chảy / Kém hấp thu dịch)</td>
+                <td rowspan="3"><strong>IBS Thể Tiêu Chảy (IBS-D):</strong><br>&gt; 25% số lần đi tiêu là Type 6 hoặc 7;<br>và &lt; 25% số lần đi tiêu là Type 1 hoặc 2.<br><br><em>(IBS-U: Thể không phân loại nếu không đủ tiêu chí)</em></td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag warning">Type 6</span></td>
+                <td>Các mẩu phân xốp, rìa rách nát, phân nát lỏng</td>
+              </tr>
+              <tr>
+                <td><span class="rx-tag warning">Type 7</span></td>
+                <td>Toàn bộ là nước, hoàn toàn lỏng, không có mẩu rắn</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="infobox teal" style="margin-top: 1rem;">
+          <div class="infobox-icon">📝</div>
+          <div>
+            <span class="infobox-title">Khuyến Cáo Thực Hành: Nhật Ký Phân 2 Tuần</span>
+            Để phân nhóm IBS chính xác nhất, ACG khuyến nghị bệnh nhân <strong>ghi nhật ký phân hàng ngày trong vòng 2 tuần liên tục</strong> (trong giai đoạn không sử dụng thuốc ảnh hưởng đến nhu động ruột). Việc xác định đúng phân nhóm quyết định 100% sự thành bại của phác đồ điều trị đích.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: CHIẾN LƯỢC CHẨN ĐOÁN CHỦ ĐỘNG (REC 1–9) -->
+    <section id="sec-2" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🎯</span>
+          <h2 class="sec-title">2. Chiến Lược Chẩn Đoán Chủ Động & Các Xét Nghiệm Loại Trừ (Khuyến Cáo 1–9)</h2>
+        </div>
+        <span class="sec-badge">Positive Strategy</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Chuyển Đổi Mô Thức: Chẩn Đoán Chủ Động Thay Vì Chẩn Đoán Loại Trừ</div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Áp dụng Chiến lược Chẩn đoán Chủ động để Tối ưu hóa Hiệu quả Chi phí & Rút ngắn Thời gian Điều trị</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-high">Bằng chứng Cao</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            ACG khuyến cáo mạnh mẽ áp dụng <strong>Chiến lược Chẩn đoán Chủ động (Positive Diagnostic Strategy)</strong> dựa trên việc hỏi bệnh sử cẩn thận, khám lâm sàng tỉ mỉ, đối chiếu tiêu chuẩn Rome IV và chỉ làm các xét nghiệm sàng lọc tối thiểu có định hướng. Chiến lược này giúp <strong>giảm tới 40% chi phí y tế</strong> ($3,160 so với $5,075 mỗi bệnh nhân) mà không làm tăng nguy cơ bỏ sót bệnh lý ác tính hay giảm mức độ hài lòng của người bệnh.
+          </div>
+        </div>
+
+        <div class="grid-2col" style="margin-top: 1rem;">
+          <div class="ebm-rec-card rec-strong">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">1. Sàng lọc Bệnh Celiac ở IBS Thể Tiêu Chảy</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+                <span class="loe-badge loe-mod">Bằng chứng TB</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              Khuyến cáo xét nghiệm huyết thanh học <strong>tTG-IgA phối hợp định lượng IgA toàn phần</strong> ở bệnh nhân nghi ngờ IBS-D để loại trừ bệnh Celiac (tỷ lệ mắc Celiac ở nhóm IBS-D lên tới 5.7%). Nếu có nội soi tiêu hóa trên, cần bấm tối thiểu <strong>6 mẫu sinh thiết tá tràng</strong>.
+            </div>
+          </div>
+
+          <div class="ebm-rec-card rec-strong">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">2. Calprotectin Phân / CRP Loại Trừ Bệnh Viêm Ruột</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+                <span class="loe-badge loe-mod">Bằng chứng TB</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              Khuyến cáo đo <strong>Calprotectin phân (fCal)</strong> kết hợp <strong>CRP máu</strong> ở bệnh nhân IBS-D không có dấu hiệu báo động để loại trừ IBD. Nồng độ <strong>CRP ≤ 0.5 mg/dL</strong> giúp giảm xác suất mắc IBD xuống dưới 1%; Calprotectin phân đạt độ nhạy 93% và độ đặc hiệu 96%.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2col" style="margin-top: 0.5rem;">
+          <div class="ebm-rec-card rec-against">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">3. Không Xét Nghiệm Vi Sinh Phân Thường Quy</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-against">Không khuyến cáo</span>
+                <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              Không khuyến cáo xét nghiệm cấy phân hay soi ký sinh trùng đại trà cho mọi bệnh nhân IBS. Chỉ làm xét nghiệm tìm ký sinh trùng <strong>Giardia</strong> khi bệnh nhân có yếu tố dịch tễ (nhà trẻ, uống nước suối/giếng, đi du lịch vùng ô nhiễm).
+            </div>
+          </div>
+
+          <div class="ebm-rec-card rec-against">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">4. Không Nội Soi Đại Tràng Thường Quy Người &lt; 45 Tuổi</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-against">Không khuyến cáo</span>
+                <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              Không khuyến cáo nội soi đại tràng thường quy ở bệnh nhân IBS dưới 45 tuổi không kèm triệu chứng báo động. Tỷ lệ phát hiện polyp ở nhóm này thậm chí thấp hơn dân số chung (7.7% vs 26.1%). Chỉ nội soi khi có dấu hiệu cờ đỏ.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2col" style="margin-top: 0.5rem;">
+          <div class="ebm-rec-card rec-against">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">8. Không Xét Nghiệm Dị Ứng / Kháng Thể IgG Thức Ăn</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-consensus">Đồng thuận</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              Không khuyến cáo làm test lẩy da hay xét nghiệm panel IgG thức ăn đại trà. Các phản ứng với thực phẩm trong IBS chủ yếu là không dung nạp (Food intolerance do lên men FODMAP), không phải dị ứng qua trung gian miễn dịch IgE.
+            </div>
+          </div>
+
+          <div class="ebm-rec-card rec-consensus">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">9. Thăm Dò Sàn Chậu & Rối Loạn Đồng Vận Đại Tiện</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-consensus">Đồng thuận</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              Ở bệnh nhân IBS-C kháng trị, bắt buộc thực hiện <strong>khám trực tràng bằng tay (DRE)</strong> và gửi đi đo <strong>áp lực hậu môn trực tràng (ARM) + nghiệm pháp tống bóng (BET)</strong> để phát hiện rối loạn đồng vận đại tiện (Dyssynergic Defecation - DD). Can thiệp bằng <strong>Biofeedback</strong> giúp cải thiện vượt trội.
+            </div>
+          </div>
+        </div>
+
+        <!-- EDITORIAL SVG FLOWCHART: POSITIVE DIAGNOSTIC ALGORITHM -->
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Sơ Đồ Vector: Lưu Đồ Chẩn Đoán Chủ Động & Phân Nhóm Điều Trị IBS (ACG 2021)</div>
+        <div class="flowchart-container">
+          <svg class="flowchart-svg" viewBox="0 0 880 500" width="100%" height="500" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gIbsBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0284c7"/>
+                <stop offset="100%" stop-color="#0369a1"/>
+              </linearGradient>
+              <linearGradient id="gIbsGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#059669"/>
+                <stop offset="100%" stop-color="#047857"/>
+              </linearGradient>
+              <linearGradient id="gIbsAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#d97706"/>
+                <stop offset="100%" stop-color="#b45309"/>
+              </linearGradient>
+              <linearGradient id="gIbsRed" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#dc2626"/>
+                <stop offset="100%" stop-color="#b91c1c"/>
+              </linearGradient>
+              <linearGradient id="gIbsPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7c3aed"/>
+                <stop offset="100%" stop-color="#6d28d9"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Box 1: Lâm sàng nghi ngờ IBS -->
+            <rect x="220" y="15" width="440" height="52" rx="10" fill="url(#gIbsBlue)" filter="url(#shadow)"/>
+            <text x="440" y="38" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">Bệnh Nhân Nghi Ngờ IBS (Đau bụng + Rối loạn đại tiện &gt; 6 tháng)</text>
+            <text x="440" y="55" fill="#bae6fd" font-family="'Inter', sans-serif" font-size="11" text-anchor="middle">Đánh giá theo Tiêu chuẩn Rome IV (Đau ≥ 1 ngày/tuần trong 3 tháng gần nhất)</text>
+
+            <!-- Line Down to Alarm Screen -->
+            <line x1="440" y1="67" x2="440" y2="92" stroke="#0284c7" stroke-width="2"/>
+            <polygon points="436,92 440,99 444,92" fill="#0284c7"/>
+
+            <!-- Box 2: Rà soát cờ đỏ -->
+            <rect x="180" y="99" width="520" height="42" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="440" y="117" fill="#0f172a" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Rà Soát Dấu Hiệu Cảnh Báo Nguy Hiểm (Alarm Features)</text>
+            <text x="440" y="132" fill="#64748b" font-family="'Inter', sans-serif" font-size="10.5" text-anchor="middle">Tiêu máu, Sụt cân không rõ căn nguyên, Thiếu máu, Tuổi &gt; 45–50, Tiền sử gia đình IBD/CRC</text>
+
+            <!-- Alarm Split -->
+            <path d="M 440 141 L 440 165 L 750 165 L 750 185" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <polygon points="746,185 750,192 754,185" fill="#dc2626"/>
+
+            <path d="M 440 141 L 440 165 L 360 165 L 360 185" fill="none" stroke="#059669" stroke-width="2"/>
+            <polygon points="356,185 360,192 364,185" fill="#059669"/>
+
+            <!-- Alarm Box (Right) -->
+            <rect x="660" y="192" width="180" height="54" rx="8" fill="url(#gIbsRed)"/>
+            <text x="750" y="212" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Có Cờ Đỏ Cảnh Báo</text>
+            <text x="750" y="228" fill="#fecaca" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Nội soi Đại tràng (Colonoscopy)</text>
+            <text x="750" y="240" fill="#ffffff" font-family="'Inter', sans-serif" font-size="9" font-weight="700" text-anchor="middle">➔ Khảo sát bệnh lý thực thể</text>
+
+            <!-- No Alarm (Left) -->
+            <rect x="180" y="192" width="360" height="54" rx="8" fill="url(#gIbsGreen)"/>
+            <text x="360" y="212" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Không Có Cờ Đỏ: Chẩn Đoán Chủ Động</text>
+            <text x="360" y="228" fill="#dcfce7" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Xét nghiệm tối thiểu: CBC, CRP, Calprotectin phân, tTG-IgA</text>
+            <text x="360" y="240" fill="#ffffff" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" text-anchor="middle">➔ XÁC NHẬN CHẨN ĐOÁN IBS THEO ROME IV</text>
+
+            <!-- Line down from Confirmed IBS to Subtyping -->
+            <line x1="360" y1="246" x2="360" y2="280" stroke="#059669" stroke-width="2"/>
+            <polygon points="356,280 360,287 364,280" fill="#059669"/>
+
+            <rect x="200" y="287" width="320" height="42" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+            <text x="360" y="305" fill="#7c3aed" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">Phân Nhóm Theo Thang Điểm Bristol (2 Tuần)</text>
+            <text x="360" y="320" fill="#475569" font-family="'Inter', sans-serif" font-size="10" text-anchor="middle">Ghi nhật ký phân đánh giá thời gian vận chuyển đại tràng</text>
+
+            <!-- 3 Branch Routing -->
+            <path d="M 360 329 L 360 350 L 140 350 L 140 375" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="137,375 140,381 143,375" fill="#64748b"/>
+
+            <path d="M 360 329 L 360 375" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="357,375 360,381 363,375" fill="#64748b"/>
+
+            <path d="M 360 329 L 360 350 L 580 350 L 580 375" fill="none" stroke="#64748b" stroke-width="1.5"/>
+            <polygon points="577,375 580,381 583,375" fill="#64748b"/>
+
+            <!-- IBS-C Column -->
+            <rect x="40" y="381" width="200" height="96" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.5"/>
+            <text x="140" y="401" fill="#b45309" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">IBS-C (Thể Táo bón)</text>
+            <text x="140" y="416" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• Chất xơ hòa tan (Psyllium)</text>
+            <text x="140" y="430" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• <strong>Linaclotide / Plecanatide</strong></text>
+            <text x="140" y="444" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• <strong>Lubiprostone / Tegaserod</strong></text>
+            <text x="140" y="458" fill="#64748b" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">• Biofeedback nếu có rối loạn DD</text>
+
+            <!-- IBS-M / IBS-U Column -->
+            <rect x="260" y="381" width="200" height="96" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+            <text x="360" y="401" fill="#6d28d9" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">IBS-M / IBS-U (Hỗn hợp)</text>
+            <text x="360" y="416" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• Thử chế độ ăn <strong>Low-FODMAP</strong></text>
+            <text x="360" y="430" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• <strong>Tinh dầu bạc hà</strong> (Peppermint)</text>
+            <text x="360" y="444" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• <strong>TCAs liều thấp</strong> (Amitriptyline)</text>
+            <text x="360" y="458" fill="#64748b" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">• <strong>Tâm lý nhắm vào ruột (GDPs)</strong></text>
+
+            <!-- IBS-D Column -->
+            <rect x="480" y="381" width="200" height="96" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/>
+            <text x="580" y="401" fill="#0369a1" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">IBS-D (Thể Tiêu chảy)</text>
+            <text x="580" y="416" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• <strong>Rifaximin 550mg x 14 ngày</strong></text>
+            <text x="580" y="430" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• <strong>TCAs liều thấp</strong> (trước ngủ)</text>
+            <text x="580" y="444" fill="#0f172a" font-family="'Inter', sans-serif" font-size="9.5" text-anchor="middle">• <strong>Eluxadoline</strong> (còn túi mật)</text>
+            <text x="580" y="458" fill="#64748b" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">• <strong>Alosetron</strong> (nữ nặng kháng trị)</text>
+          </svg>
+          <div class="flowchart-caption">Hình 1. Lưu đồ Chiến lược Chẩn đoán Chủ động & Định tuyến điều trị phân nhóm IBS theo ACG 2021.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: CAN THIỆP DINH DƯỠNG & CHẤT XƠ -->
+    <section id="sec-3" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🥗</span>
+          <h2 class="sec-title">3. Can Thiệp Dinh Dưỡng: Chế Độ Ăn Low-FODMAP & Chất Xơ Hòa Tan</h2>
+        </div>
+        <span class="sec-badge">Dietary Interventions</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="grid-2col">
+          <div class="ebm-rec-card rec-cond">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">Khuyến Cáo 10: Chế Độ Ăn Ít FODMAP (Low-FODMAP Diet)</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-cond">Có điều kiện</span>
+                <span class="loe-badge loe-verylow">Bằng chứng Rất thấp</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              ACG gợi ý một đợt thử nghiệm chế độ ăn ít FODMAP có giới hạn thời gian để cải thiện triệu chứng toàn thân (RR = 0.69). Các carbohydrate chuỗi ngắn hấp thu kém làm tăng áp lực thẩm thấu hút nước vào lòng ruột và sinh khí nhanh tại đại tràng gây trướng bụng và đau rặn.
+            </div>
+          </div>
+
+          <div class="ebm-rec-card rec-strong">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">Khuyến Cáo 11: Ưu Tiên Chất Xơ Hòa Tan (Soluble Fiber)</span>
+              <div class="badge-group">
+                <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+                <span class="loe-badge loe-mod">Bằng chứng TB</span>
+              </div>
+            </div>
+            <div class="ebm-rec-body">
+              Khuyến cáo sử dụng <strong>chất xơ hòa tan (Psyllium / Vỏ hạt mã đề Ispaghula husk)</strong> với <strong>NNT = 7</strong>. <strong>CHỐNG LẠI việc dùng chất xơ không hòa tan (cám lúa mì - wheat bran)</strong> vì chất xơ không hòa tan lên men sinh khí nhiều và làm nặng thêm tình trạng trướng bụng, đầy hơi.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.25rem;">Quy Trình 3 Giai Đoạn Chuẩn Hóa Của Chế Độ Ăn Low-FODMAP</div>
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-amber"></div>
+            <div class="clin-card-title"><span>Giai đoạn 1: Kiêng Hạn Chế</span><span>⏳</span></div>
+            <div class="clin-card-body">
+              Loại bỏ hoàn toàn các thực phẩm giàu FODMAP trong <strong>2 đến 6 tuần</strong> dưới sự giám sát của chuyên gia dinh dưỡng. Nếu bệnh nhân không đáp ứng sau 6 tuần, ngừng ngay phác đồ này.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title"><span>Giai đoạn 2: Tái Giới Thiệu</span><span>🔄</span></div>
+            <div class="clin-card-body">
+              Từng bước đưa từng nhóm FODMAP trở lại khẩu phần ăn (mỗi nhóm thử trong 3 ngày) để xác định chính xác người bệnh nhạy cảm với loại phân tử carbohydrate nào (fructose, lactose hay fructan).
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title"><span>Giai đoạn 3: Cá Thể Hóa</span><span>🥗</span></div>
+            <div class="clin-card-body">
+              Xây dựng thực đơn dinh dưỡng dài hạn chỉ kiêng nhóm thực phẩm thực sự gây triệu chứng, đưa các thực phẩm an toàn trở lại để bảo vệ tính đa dạng sinh thái của hệ vi sinh đường ruột.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.25rem;">Liệu Pháp Trị Liệu Triệu Chứng Đau Bụng & Đầy Hơi (Khuyến Cáo 12–14)</div>
+        <div class="grid-3col">
+          <div class="ebm-rec-card rec-cond">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">Tinh Dầu Bạc Hà (Peppermint Oil)</span>
+              <span class="cor-badge cor-cond">Có điều kiện (Thấp)</span>
+            </div>
+            <div class="ebm-rec-body">
+              Hoạt chất L-menthol chẹn kênh canxi làm giãn cơ trơn ruột, giảm đau bụng với <strong>NNT = 3–4</strong>. Ưu tiên dạng viên bao tan trong ruột để tránh gây ợ nóng.
+            </div>
+          </div>
+
+          <div class="ebm-rec-card rec-against">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">Thuốc Chống Co Thắt (Antispasmodics)</span>
+              <span class="cor-badge cor-against">Không khuyến cáo</span>
+            </div>
+            <div class="ebm-rec-body">
+              Chống lại việc dùng thường quy các thuốc chống co thắt tại Mỹ (Dicyclomine, Hyoscyamine) do thiếu dữ liệu RCT chuẩn và nhiều tác dụng phụ kháng cholinergic (khô miệng, bí tiểu, nhìn mờ).
+            </div>
+          </div>
+
+          <div class="ebm-rec-card rec-against">
+            <div class="ebm-rec-header">
+              <span class="ebm-rec-title">Men Vi Sinh (Probiotics)</span>
+              <span class="cor-badge cor-against">Không khuyến cáo</span>
+            </div>
+            <div class="ebm-rec-body">
+              Chống lại việc chỉ định Probiotics thường quy cho triệu chứng toàn thân do bằng chứng phân tán, chế phẩm không đồng nhất và một số chủng lợi khuẩn có thể làm tăng sinh khí đại tràng.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: PHÁC ĐỒ ĐIỀU TRỊ IBS-C -->
+    <section id="sec-4" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">💊</span>
+          <h2 class="sec-title">4. Phác Đồ Dược Lý Đích Cho IBS Thể Táo Bón (IBS-C)</h2>
+        </div>
+        <span class="sec-badge">IBS-C Regimens</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="infobox warning">
+          <div class="infobox-icon">⚠️</div>
+          <div>
+            <span class="infobox-title">Khuyến Cáo 15: Chống Lại Dùng Polyethylene Glycol (PEG) Đơn Trị Liệu Cho Triệu Chứng Toàn Thân</span>
+            PEG là thuốc nhuận tràng thẩm thấu tốt để làm mềm phân và tăng số lần đi tiêu, nhưng các thử nghiệm lâm sàng ngẫu nhiên chứng minh <strong>PEG KHÔNG làm giảm đau bụng hay triệu chứng toàn thân của IBS-C</strong>. Do đó, không dùng PEG đơn độc để điều trị toàn diện hội chứng IBS-C.
+          </div>
+        </div>
+
+        <div class="sec-subtitle">3 Nhóm Thuốc Kích Thích Bài Tiết & Điều Hòa Nhu Động Chuẩn ACG Cho IBS-C</div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Khuyến Cáo 17: Thuốc Kích Hoạt Guanylate Cyclase-C (Linaclotide & Plecanatide)</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-high">Bằng chứng Cao</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Kích hoạt thụ thể GC-C làm tăng cGMP nội bào, tăng tiết dịch Cl⁻/HCO₃⁻ vào lòng ruột và <strong>ức chế sợi thần kinh cảm giác hướng tâm làm giảm đau nội tạng</strong>.
+            <ul style="margin-top: 0.4rem; padding-left: 1.2rem;">
+              <li><strong>Linaclotide:</strong> Liều chuẩn <span class="rx-tag preferred">290 µg/ngày</span> uống trước bữa ăn sáng ít nhất 30 phút. Hiệu quả vượt trội với <strong>NNT = 6</strong>. Tác dụng phụ chính là tiêu chảy (~20%).</li>
+              <li><strong>Plecanatide:</strong> Liều chuẩn <span class="rx-tag preferred">3 mg/ngày</span> uống không phụ thuộc bữa ăn. Hiệu quả tốt với <strong>NNT = 10</strong>, tỷ lệ tiêu chảy thấp hơn (~4.3%).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Khuyến Cáo 16: Thuốc Kích Hoạt Kênh Chloride (Lubiprostone)</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-mod">Bằng chứng TB</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Kích hoạt kênh ClC-2 tại màng đỉnh biểu mô ruột làm tăng bài tiết dịch giàu clorua vào lòng ruột. Chỉ định cho <strong>phụ nữ trưởng thành (≥ 18 tuổi) mắc IBS-C</strong> với liều <span class="rx-tag preferred">8 µg x 2 lần/ngày</span>. Hiệu quả đạt <strong>NNT = 12.5</strong>. <em>(Lưu ý: Uống cùng thức ăn để giảm tác dụng phụ buồn nôn)</em>.
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-cond">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Khuyến Cáo 18: Thuốc Đồng Vận 5-HT4 (Tegaserod)</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-cond">Có điều kiện</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Chỉ định cho <strong>phụ nữ &lt; 65 tuổi có ≤ 1 yếu tố nguy cơ tim mạch</strong> kháng trị với các thuốc kích thích bài tiết. Liều dùng <span class="rx-tag">6 mg x 2 lần/ngày</span> uống trước ăn 30 phút. Kích thích nhu động toàn ruột và giảm tăng nhạy cảm nội tạng.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: PHÁC ĐỒ ĐIỀU TRỊ IBS-D -->
+    <section id="sec-5" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🧪</span>
+          <h2 class="sec-title">5. Phác Đồ Dược Lý Đích Cho IBS Thể Tiêu Chảy (IBS-D)</h2>
+        </div>
+        <span class="sec-badge">IBS-D Regimens</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">3 Lựa Chọn Dược Lý Hàng Đầu Cho IBS-D</div>
+
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Khuyến Cáo 20: Kháng Sinh Hấp Thu Kém Rifaximin</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-mod">Bằng chứng TB</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Kháng sinh tác dụng tại chỗ không hấp thu vào máu, điều biến vi sinh vật ruột và giảm độc tố vi khuẩn.
+            <ul style="margin-top: 0.4rem; padding-left: 1.2rem;">
+              <li><strong>Phác đồ:</strong> <span class="rx-tag preferred">550 mg x 3 lần/ngày trong 14 ngày</span>.</li>
+              <li><strong>Hiệu lực:</strong> Cải thiện đồng thời cả đau bụng và độ đặc của phân với <strong>NNT = 9</strong>.</li>
+              <li><strong>Điều trị lặp lại (Retreatment):</strong> Khi triệu chứng tái phát, có thể lặp lại đợt điều trị 14 ngày (tối đa 2 đợt lặp lại) vẫn đạt hiệu quả cao và an toàn tuyệt đối.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-cond">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Khuyến Cáo 22: Thuốc Đồng Vận/Đối Vận Opioid Hỗn Hợp (Eluxadoline)</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-cond">Có điều kiện</span>
+              <span class="loe-badge loe-mod">Bằng chứng TB</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Đồng vận thụ thể mu- và kappa-opioid kết hợp đối kháng delta-opioid ngoại vi giúp làm chậm nhu động ruột và giảm đau nội tạng với <strong>NNT = 9–14</strong>. Liều dùng <span class="rx-tag">75–100 mg x 2 lần/ngày</span> uống cùng thức ăn.
+            <div class="infobox danger" style="margin-top: 0.5rem; margin-bottom: 0;">
+              <div class="infobox-icon">🚫</div>
+              <div>
+                <strong>CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI Ở BỆNH NHÂN ĐÃ CẮT TÚI MẬT:</strong> Do nguy cơ gây co thắt cơ vòng Oddi dẫn đến viêm tụy cấp hoặc đau bụng dữ dội. Chống chỉ định thêm ở người nghiện rượu (&gt; 3 đơn vị/ngày), tiền sử viêm tụy hoặc suy gan nặng.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ebm-rec-card rec-cond">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Khuyến Cáo 21: Chất Đối Kháng Thụ Thể 5-HT3 (Alosetron)</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-cond">Có điều kiện</span>
+              <span class="loe-badge loe-low">Bằng chứng Thấp</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            Chỉ định cho <strong>phụ nữ mắc IBS-D nghiêm trọng đã thất bại với các liệu pháp điều trị thông thường</strong> dưới chương trình giám sát REMS. Liều khởi đầu <span class="rx-tag">0.5 mg x 2 lần/ngày</span> (có thể tăng lên 1 mg x 2 lần/ngày). Hiệu quả giảm đau và cầm tiêu chảy đạt <strong>NNT = 7.5</strong>.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: ĐIỀU HÒA THẦN KINH TCAs & TÂM LÝ GDPs -->
+    <section id="sec-6" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🧠</span>
+          <h2 class="sec-title">6. Thuốc Điều Hòa Thần Kinh TCAs & Liệu Pháp Tâm Lý Đường Ruột (GDPs)</h2>
+        </div>
+        <span class="sec-badge">Neuromodulators & Psychology</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Thuốc Chống Trầm Cảm Ba Vòng (TCAs) Trong Điều Trị Đau Nội Tạng (Khuyến Cáo 23)</div>
+        
+        <div class="ebm-rec-card rec-strong">
+          <div class="ebm-rec-header">
+            <span class="ebm-rec-title">Khuyến Cáo 23: Thuốc Chống Trầm Cảm Ba Vòng (TCAs)</span>
+            <div class="badge-group">
+              <span class="cor-badge cor-strong">Khuyến cáo MẠNH</span>
+              <span class="loe-badge loe-mod">Bằng chứng TB</span>
+            </div>
+          </div>
+          <div class="ebm-rec-body">
+            TCAs ở liều thấp hoạt động như chất điều hòa thần kinh trung ương và ngoại vi, ức chế tái hấp thu Serotonin và Norepinephrine giúp nâng ngưỡng chịu đau nội tạng độc lập với tác dụng chống trầm cảm. Hiệu quả cải thiện triệu chứng toàn thân đạt mức cao nhất với <strong>NNT = 4.5</strong>. Rất có lợi cho IBS-D nhờ tác dụng làm chậm thời gian lưu chuyển đại tràng.
+          </div>
+        </div>
+
+        <div class="table-wrapper" style="margin-top: 1rem;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hoạt Chất (TCA)</th>
+                <th>Phân Loại Hóa Học</th>
+                <th>Liều Khởi Đầu & Duy Trì</th>
+                <th>Đặc Điểm & Tác Dụng Phụ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Amitriptyline</strong></td>
+                <td>Amin bậc ba <em>(Tertiary amine)</em></td>
+                <td><span class="rx-tag preferred">10–25 mg</span> tối trước ngủ (tăng dần đến 50–75 mg)</td>
+                <td>Tác dụng an thần và kháng cholinergic mạnh nhất; cực kỳ hiệu quả cho bệnh nhân IBS-D kèm mất ngủ và đau rát ban đêm.</td>
+              </tr>
+              <tr>
+                <td><strong>Desipramine</strong></td>
+                <td>Amin bậc hai <em>(Secondary amine)</em></td>
+                <td><span class="rx-tag">25 mg</span> trước khi ngủ (tăng dần đến 50–100 mg)</td>
+                <td>Ít gây buồn ngủ và ít gây táo bón hơn amin bậc ba; phù hợp cho bệnh nhân IBS-M hoặc người lo ngại tăng cân.</td>
+              </tr>
+              <tr>
+                <td><strong>Nortriptyline</strong></td>
+                <td>Amin bậc hai <em>(Secondary amine)</em></td>
+                <td><span class="rx-tag">10–25 mg</span> trước khi ngủ (tăng dần đến 50–75 mg)</td>
+                <td>Chất chuyển hóa của Amitriptyline; dung nạp tốt hơn, ít tác dụng phụ hạ huyết áp tư thế.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Liệu Pháp Tâm Lý Nhắm Vào Ruột (Gut-Directed Psychotherapies - GDPs & Khuyến Cáo 24–25)</div>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title"><span>Khuyến Cáo 24: Liệu Pháp Tâm Lý (GDPs)</span><span class="cor-badge cor-cond">Có điều kiện</span></div>
+            <div class="clin-card-body">
+              Bao gồm <strong>Liệu pháp Nhận thức - Hành vi tiêu hóa (CBT-GI)</strong> và <strong>Thôi miên nhắm vào ruột (GDH)</strong>. Tác động trực tiếp điều chỉnh trục não - ruột, giảm hiện tượng thảm kịch hóa cơn đau (pain catastrophizing) với <strong>NNT = 4</strong>. Hiệu quả không phụ thuộc phân nhóm, rất hữu ích cho IBS-M và IBS-U.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title"><span>Khuyến Cáo 25: Chống Lại Cấy Ghép Vi Sinh Phân (FMT)</span><span class="cor-badge cor-against">Mạnh (Rất thấp)</span></div>
+            <div class="clin-card-body">
+              ACG <strong>khuyến nghị chống lại việc sử dụng FMT</strong> để điều trị IBS. Dữ liệu thử nghiệm lâm sàng ngẫu nhiên cho thấy không có sự khác biệt có ý nghĩa thống kê so với giả dược (RR = 0.93), đồng thời tiềm ẩn nguy cơ lây truyền mầm bệnh kháng thuốc.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 7: BẢNG KIỂM LÂM SÀNG & TRÍCH DẪN AMA -->
+    <section id="sec-7" class="sec-card">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">📚</span>
+          <h2 class="sec-title">7. Bảng Kiểm Thực Hành Lâm Sàng & Trích Dẫn Y Văn Chuẩn AMA</h2>
+        </div>
+        <span class="sec-badge">Checklist & Reference</span>
+      </div>
+      <div class="sec-body">
+        
+        <div class="sec-subtitle">Bảng Kiểm 6 Bước Quản Lý IBS Chuẩn Hóa Theo Khuyến Cáo ACG 2021</div>
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title"><span>Bước 1: Khẳng Định Rome IV</span><span>📋</span></div>
+            <div class="clin-card-body">Đau bụng ≥ 1 ngày/tuần trong 3 tháng kèm ≥ 2/3 tiêu chí đại tiện. Khởi phát triệu chứng &gt; 6 tháng.</div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title"><span>Bước 2: Rà Soát Cờ Đỏ</span><span>🚩</span></div>
+            <div class="clin-card-body">Loại trừ cờ đỏ. Chỉ định nội soi đại tràng nếu có tiêu máu, sụt cân, thiếu máu hoặc tuổi &gt; 45–50.</div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title"><span>Bước 3: Loại Trừ Celiac/IBD</span><span>🧪</span></div>
+            <div class="clin-card-body">Ở thể tiêu chảy (IBS-D): Đo tTG-IgA, CRP máu và Calprotectin phân. Tự tin chẩn đoán chủ động IBS.</div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-amber"></div>
+            <div class="clin-card-title"><span>Bước 4: Phân Nhóm Bristol</span><span>📊</span></div>
+            <div class="clin-card-body">Ghi nhật ký phân 2 tuần để xác định chính xác phân nhóm IBS-C, IBS-D, IBS-M hoặc IBS-U.</div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title"><span>Bước 5: Trị Liệu Dược Lý Đích</span><span>💊</span></div>
+            <div class="clin-card-body">IBS-C: Linaclotide/Plecanatide/Lubiprostone. IBS-D: Rifaximin 14 ngày / TCAs / Eluxadoline.</div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title"><span>Bước 6: Tâm Lý & Sàn Chậu</span><span>🧠</span></div>
+            <div class="clin-card-body">Gửi chuyên gia CBT-GI/Thôi miên ruột nếu kháng trị; khám DRE + ARM/Biofeedback nếu nghi ngờ loạn đồng vận sàn chậu.</div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle" style="margin-top: 1.5rem;">Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA</div>
+        <div class="citation-box">
+          Lacy BE, Pimentel M, Brenner DM, Chey WD, Keefer LA, Long MD, Moshiree B. ACG Clinical Guideline: Management of Irritable Bowel Syndrome. <em>Am J Gastroenterol</em>. 2021;116(1):17-44. doi:10.14309/ajg.0000000000001036
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            Quay lại Kho Guidelines
+          </a>
+          <button class="btn" onclick="window.print()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            In bản hướng dẫn (PDF)
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Theme Toggle Handler
+    (function() {
+      const themeBtn = document.getElementById('theme-btn');
+      const htmlEl = document.documentElement;
+      
+      const savedTheme = localStorage.getItem('clini_theme') || 'light';
+      htmlEl.setAttribute('data-theme', savedTheme);
+      updateBtnIcon(savedTheme);
+
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function() {
+          const currentTheme = htmlEl.getAttribute('data-theme');
+          const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          htmlEl.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('clini_theme', nextTheme);
+          updateBtnIcon(nextTheme);
+        });
+      }
+
+      function updateBtnIcon(theme) {
+        if (themeBtn) {
+          themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
