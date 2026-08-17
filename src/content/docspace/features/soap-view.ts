@@ -15,6 +15,8 @@ import { renderSidebar, renderDocSpaceHeader, escapeHtml } from '../docspace-vie
 import { generateSOAPSuggestion, generateDischargeSummary } from '../ai/llm-client';
 import { icdPicker } from './icd-picker';
 import { ebmBridge } from './ebm-bridge-view';
+import { KHO_GUIDELINES_STATIC } from '../../ebm/guidelines/kho-guidelines-registry';
+import { CLINICAL_CASES } from '../../pathophysiology/quiz/patho-quiz-data';
 import { drugPicker } from './drug-picker';
 import { drugIntelligencePanel } from './drug-intelligence-panel';
 import { clinicalReasoningPanel } from './clinical-reasoning-panel';
@@ -767,6 +769,8 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
 
             <div style="padding:12px 14px;">
               <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Biện luận lâm sàng, chẩn đoán xác định và phân tầng nguy cơ...">${p.aAssessment || ''}</textarea>
+              <!-- Real-time Contextual EBM Suggestion Bar -->
+              <div id="soapEbmContextBar" style="display:none;"></div>
             </div>
           </div>
 
@@ -1719,7 +1723,6 @@ export function mountSoapController(profileId: string): void {
   document.getElementById('btnSearchEBM')?.addEventListener('click', () => {
     const aText = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value.trim() || '';
     const sText = (document.getElementById('esSNotes') as HTMLTextAreaElement)?.value.trim() || '';
-    const oText = (document.getElementById('esONotes') as HTMLTextAreaElement)?.value.trim() || '';
     const diagInput = (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value.trim() || '';
     const currDiagInput = (document.getElementById('esCurrentDiagnosis') as HTMLInputElement)?.value.trim() || '';
 
@@ -1727,11 +1730,42 @@ export function mountSoapController(profileId: string): void {
     if (!query && aText) {
       const firstLine = aText.split('\n')[0].split('.')[0].replace(/\(.*?\)/g, '').trim();
       query = firstLine || aText;
-    } else if (!query) {
-      query = `${sText} ${oText}`.trim();
+    } else if (!query && sText) {
+      const firstLineS = sText.split('\n')[0].trim();
+      query = firstLineS.length > 50 ? firstLineS.substring(0, 50) : firstLineS;
     }
-    ebmBridge.openSearch(query || 'practice-changing', { targetFieldId: 'esAAssessment' });
+    ebmBridge.openSearch(query || '', { targetFieldId: 'esAAssessment' });
   });
+
+  // Real-time Contextual EBM Suggestion Bar Updater
+  const ebmContextBar = document.getElementById('soapEbmContextBar');
+  const updateEbmContextSuggestions = () => {
+    if (!ebmContextBar) return;
+    const diag = (document.getElementById('esCurrentDiagnosis') as HTMLInputElement)?.value.trim() || (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value.trim() || '';
+    const aVal = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value.trim() || '';
+    const icdRegex = /[A-Z][0-9]{2}(?:\.[0-9]+)?/gi;
+    const icdCodes = Array.from(new Set([...(diag.match(icdRegex) || []), ...(aVal.match(icdRegex) || [])]));
+    const q = diag || (aVal.split('\n')[0]?.substring(0, 40) || '');
+    if (q.length >= 2 || icdCodes.length > 0) {
+      ebmBridge.renderContextualBar(ebmContextBar, q, icdCodes);
+    } else {
+      ebmContextBar.innerHTML = '';
+      ebmContextBar.style.display = 'none';
+    }
+  };
+
+  let ebmDebounceTimer: any = null;
+  const triggerEbmDebounce = () => {
+    clearTimeout(ebmDebounceTimer);
+    ebmDebounceTimer = setTimeout(updateEbmContextSuggestions, 280);
+  };
+
+  document.getElementById('esCurrentDiagnosis')?.addEventListener('input', triggerEbmDebounce);
+  document.getElementById('esAdmissionDiagnosis')?.addEventListener('input', triggerEbmDebounce);
+  document.getElementById('esAAssessment')?.addEventListener('input', triggerEbmDebounce);
+
+  // Initial trigger if diagnostic text exists
+  setTimeout(updateEbmContextSuggestions, 350);
 
   // Tiếp cận chẩn đoán (Reasoning Coach)
   document.getElementById('btnReasoningCoachSoap')?.addEventListener('click', () => {
@@ -1909,6 +1943,96 @@ export function mountSoapController(profileId: string): void {
       }
 
       // Mở ngay modal chỉnh sửa SOAP cho ca này
+      window.location.hash = `#/docspace/soap?edit=${targetSoap.id}`;
+    }
+  }
+
+  // Tự động nạp dữ liệu từ phân hệ Y Học Chứng Cứ EBM (1-Click Guideline to SOAP)
+  const fromGuidelineSlug = urlParams.get('from_guideline') || urlParams.get('from_ebm');
+  if (fromGuidelineSlug) {
+    const cleanSlug = fromGuidelineSlug.replace(/\.html$/i, '').toLowerCase();
+    const staticList = KHO_GUIDELINES_STATIC || [];
+    const study = staticList.find(s => 
+      (s.file && s.file.replace(/\.html$/i, '').toLowerCase() === cleanSlug) ||
+      (s.id && s.id.toLowerCase() === cleanSlug)
+    );
+
+    if (study) {
+      const allSoap = getAllSoapPatients(profileId);
+      let targetSoap = allSoap.find(s => s.admissionDiagnosis === study.title || s.currentDiagnosis === study.title);
+
+      const conclusion = study.detailedConclusion || study.keyResults || study.summary;
+      const drugLine = study.drug ? `\n• Thuốc / Phác đồ: ${study.drug}` : '';
+      const interventionLine = study.intervention ? `\n• Can thiệp: ${study.intervention}` : '';
+
+      const aAssessment = `[Chẩn đoán & Đánh giá theo EBM]:\n• Hướng dẫn: ${study.title}\n• Phân tầng & Khuyến cáo then chốt: ${conclusion}`;
+      const pPlan = `[Kế hoạch & Y lệnh điều trị chuẩn]:${drugLine}${interventionLine}\n• Hướng dẫn thực hành: ${conclusion}`;
+
+      if (!targetSoap) {
+        const patientCode = `EBM-${Date.now().toString().slice(-4)}`;
+        const fullName = `Ca bệnh ${study.conditionKey ? study.conditionKey.toUpperCase() : 'Lâm sàng'}`;
+        targetSoap = saveSoapPatient(profileId, {
+          patientCode,
+          bedNumber: 'PK-NgoạiTrú',
+          fullName,
+          age: 60,
+          gender: 'nam',
+          medicalRecordNo: patientCode,
+          admissionDiagnosis: study.title,
+          currentDiagnosis: study.title,
+          isEmrEntered: false,
+          soapStatus: 'da_lam',
+          dayOfIllness: 1,
+          sNotes: `[Bệnh sử / Lý do vào viện]: Khám và áp dụng điều trị theo khuyến cáo ${study.organization || 'EBM Quốc tế'}.`,
+          oNotes: `Sinh hiệu: Mạch 78 l/p, Huyết áp 125/80 mmHg, SpO2 98%.\nKhám lâm sàng: Bệnh nhân tỉnh, tiếp xúc tốt.`,
+          aAssessment,
+          pPlan,
+          clsOrders: [],
+          clsResults: [],
+        });
+      }
+
+      // Mở ngay modal chỉnh sửa SOAP cho ca EBM này
+      window.location.hash = `#/docspace/soap?edit=${targetSoap.id}`;
+    }
+  }
+
+  // Tự động nạp dữ liệu từ phân hệ Cơ Sở Y Khoa (Pathophysiology Case to SOAP)
+  const fromPathoCaseId = urlParams.get('from_patho_case');
+  if (fromPathoCaseId) {
+    const pCase = CLINICAL_CASES.find(c => c.id === fromPathoCaseId || c.id.toLowerCase() === fromPathoCaseId.toLowerCase());
+    if (pCase) {
+      const allSoap = getAllSoapPatients(profileId);
+      let targetSoap = allSoap.find(s => s.admissionDiagnosis === pCase.title || s.currentDiagnosis === pCase.title);
+
+      const aAssessment = `[Chẩn đoán & Biện luận Cơ Chế Bệnh Sinh]:\n• Chẩn đoán: ${pCase.title} (${pCase.specialty})\n• Cơ chế sinh lý bệnh: ${pCase.cascadeExplanation}\n• Điểm lâm sàng then chốt (Pearls): ${pCase.clinicalPearls}`;
+      const pPlan = `[Kế hoạch Xử trí & Can thiệp Theo Cơ Chế]:\n• Hướng điều trị dựa trên chuỗi biến đổi sinh lý bệnh.\n• Theo dõi đáp ứng lâm sàng và xét nghiệm đánh giá.`;
+
+      if (!targetSoap) {
+        const patientCode = `PATHO-${Date.now().toString().slice(-4)}`;
+        const fullName = `Ca Thực Hành: ${pCase.title.length > 30 ? pCase.title.substring(0, 30) + '...' : pCase.title}`;
+        targetSoap = saveSoapPatient(profileId, {
+          patientCode,
+          bedNumber: 'Giường 01',
+          fullName,
+          age: 65,
+          gender: 'nam',
+          medicalRecordNo: patientCode,
+          admissionDiagnosis: pCase.title,
+          currentDiagnosis: pCase.title,
+          isEmrEntered: false,
+          soapStatus: 'chua_lam',
+          dayOfIllness: 1,
+          sNotes: `[Tình huống ca bệnh lâm sàng]:\n${pCase.vignette}\n\n[Câu hỏi định hướng]: ${pCase.question}`,
+          oNotes: `[Khám lâm sàng & Dấu hiệu ghi nhận]:\n- Ghi nhận từ ca bệnh cơ chế ${pCase.specialty}.\n- Cần thăm khám toàn diện cơ quan liên quan.`,
+          aAssessment,
+          pPlan,
+          clsOrders: [],
+          clsResults: [],
+        });
+      }
+
+      // Mở ngay modal chỉnh sửa SOAP cho ca thực hành cơ chế này
       window.location.hash = `#/docspace/soap?edit=${targetSoap.id}`;
     }
   }

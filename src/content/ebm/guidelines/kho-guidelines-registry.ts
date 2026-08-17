@@ -1042,6 +1042,26 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     primaryEndpoint: 'Tối ưu hiệu quả diệt khuẩn và làm chậm sự phát triển của vi khuẩn đa kháng',
     summary: 'Cẩm nang tra cứu phổ kháng khuẩn của các nhóm kháng sinh chính: Penicillin, Cephalosporin thế hệ 1-5, Carbapenem, Aminoglycoside, Macrolide, Fluoroquinolone.',
     detailedConclusion: 'Áp dụng nguyên tắc 5R trong sử dụng kháng sinh: Đúng bệnh, đúng thuốc, đúng liều, đúng đường dùng, và đúng thời gian.'
+  },
+  {
+    id: '2026-nature-reviews-mrsa',
+    title: 'Nature Reviews 2026: Tụ Cầu Vàng Kháng Methicillin (MRSA) — Dịch Tễ, Cơ Chế, Động Học Cư Trú & Phác Đồ',
+    titleEn: 'Methicillin-resistant Staphylococcus aureus (Nature Reviews Disease Primers 2026)',
+    sourceType: 'intl-study',
+    specialty: 'infect',
+    design: 'review',
+    impact: 'practice-changing',
+    year: 2026,
+    organization: 'Nature Reviews Disease Primers',
+    journal: 'Nat Med',
+    file: '2026-nature-reviews-mrsa.html',
+    conditionKey: 'icu',
+    icd10: ['A41.02', 'B95.62', 'Z16.24'],
+    intervention: 'TDM Vancomycin (AUC/MIC 400-600), Daptomycin (8-10 mg/kg, chống chỉ định viêm phổi), Linezolid (ưu tiên viêm phổi hoại tử), Ceftaroline/Ceftobiprole (gắn PBP2a), Rạch dẫn lưu áp-xe, Khử trùng Mupirocin + Chlorhexidine',
+    primaryEndpoint: 'Diệt khuẩn làm sạch cấy máu, giảm tỷ lệ tử vong do sốc nhiễm khuẩn/viêm phổi hoại tử, ngăn ngừa biến chứng viêm nội tâm mạc và kiểm soát lây truyền bệnh viện',
+    keyResults: 'HBAR: Tử vong toàn cầu: >130.000 ca/năm | Giảm BSI Mỹ: 74% (2005-2016) | Đích Vanco: AUC/MIC 400-600 | Rút ngắn PCR: 1.7 ngày | Kháng Daptomycin BSI: 39% nếu không kiểm soát nguồn | Giảm lây REDUCE-MRSA: HR 0.63',
+    summary: 'Bài tổng quan đỉnh cao của Nature Reviews Disease Primers 2026 về MRSA: Dịch tễ học toàn cầu, cơ chế đề kháng PBP2a và các biến thể BORSA/MOD-SA/OS-MRSA, động học cư trú tại hốc mũi và ruột, cơ chế né tránh miễn dịch Trojan Horse trong bạch cầu, phác đồ điều trị kháng sinh tối ưu và chiến lược kiểm soát nhiễm khuẩn.',
+    detailedConclusion: 'Chẩn đoán nhanh bằng Real-time PCR và đĩa Cefoxitin; cá thể hóa kháng sinh theo hội chứng (ưu tiên Linezolid cho viêm phổi, Daptomycin cho nhiễm khuẩn huyết, Vancomycin TDM AUC/MIC 400-600); bắt buộc rạch dẫn lưu áp-xe và rút bỏ catheter nhiễm trùng.'
   }
 ];
 

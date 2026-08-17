@@ -139,8 +139,13 @@ function renderCasesMode(container: HTMLElement): void {
             <p style="font-size: 0.875rem; line-height: 1.6; color: var(--color-text, #1e293b); margin: 0 0 0.75rem;">
               ${c.cascadeExplanation}
             </p>
-            <div style="padding: 0.75rem 1rem; border-radius: 8px; background: rgba(2,132,199,0.08); border-left: 3px solid #0284c7; font-size: 0.85rem; color: var(--color-text, #1e293b);">
+            <div style="padding: 0.75rem 1rem; border-radius: 8px; background: rgba(2,132,199,0.08); border-left: 3px solid #0284c7; font-size: 0.85rem; color: var(--color-text, #1e293b); margin-bottom: 0.75rem;">
               <strong style="color: #0284c7;">💡 Clinical Pearl:</strong> ${c.clinicalPearls}
+            </div>
+            <div style="display: flex; justify-content: flex-end;">
+              <a href="#/docspace/soap?from_patho_case=${c.id}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 0.825rem; font-weight: 700; color: #fff; background: var(--color-primary, #0284c7); border-radius: 6px; text-decoration: none; box-shadow: 0 2px 4px rgba(2,132,199,0.25);">
+                <i class="fa-solid fa-notes-medical"></i> Luyện tập Soạn Bệnh Án SOAP cho ca này
+              </a>
             </div>
           </div>
         </div>

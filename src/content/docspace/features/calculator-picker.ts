@@ -95,16 +95,25 @@ export class CalculatorPicker {
             </div>
           </div>
 
-          <!-- Tabs Switcher & Close -->
-          <div style="display:flex; align-items:center; gap:12px;">
+          <!-- Tabs Switcher & Cross-Module Links & Close -->
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
             <div style="display:flex; background:var(--color-border, #e2e8f0); padding:3px; border-radius:8px; gap:2px;">
-              <button id="cpTabNative" style="background:${this.currentTab === 'native' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'native' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'native' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-                <i class="fa-solid fa-bolt"></i> Thang điểm Native (Mới)
+              <button id="cpTabNative" style="background:${this.currentTab === 'native' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'native' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'native' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
+                <i class="fa-solid fa-bolt"></i> Thang điểm Native
               </button>
-              <button id="cpTabClassic" style="background:${this.currentTab === 'classic' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'classic' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'classic' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
+              <button id="cpTabClassic" style="background:${this.currentTab === 'classic' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'classic' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'classic' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
                 <i class="fa-solid fa-folder-open"></i> Kho Mở Rộng 70+
               </button>
             </div>
+
+            <!-- Pathophysiology Links -->
+            <a href="#/pathophysiology/formula-vault" class="dsp-btn dsp-btn-sm" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#0284c7; border:1px solid rgba(2,132,199,0.3); background:rgba(2,132,199,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Xem Kho Công Thức Sinh Lý Học">
+              <i class="fa-solid fa-square-root-variable"></i> Công thức Sinh lý
+            </a>
+            <a href="#/pathophysiology/simulators" class="dsp-btn dsp-btn-sm" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); background:rgba(139,92,246,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Mở Máy Mô Phỏng Sinh Lý Tương Tác">
+              <i class="fa-solid fa-bolt"></i> Mô phỏng Sinh lý
+            </a>
+
             <button id="btnCloseCalculatorPicker" style="background:none; border:none; width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; color:var(--color-text-muted, #64748b); transition:all 0.2s;" title="Đóng (Esc)">&times;</button>
           </div>
         </div>

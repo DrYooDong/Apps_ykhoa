@@ -104,6 +104,8 @@
 | `components/chinh-lieu-khang-sinh.css` | Styling giao diện Chỉnh liều kháng sinh & Tra cứu KSĐ | `pages/Công cụ/Truyền Nhiễm/chinh-lieu-khang-sinh.html` |
 | `components/studio-system.css` | Studio Design System CSS chuẩn cho tất cả công cụ Studio | `pages/Công cụ/**` |
 | `components/bento-components.css` | Styling Bento Component System y khoa (KPI Card, Safety Gauge, Node Status, Comparison Matrix) | `pages/Công cụ/**`, `index.html` |
+| `components/physiology-simulators.css` | Styling Phòng thí nghiệm Mô phỏng Sinh lý định lượng 6 models | `src/content/pathophysiology/simulators/**` |
+| `components/metabolic-navigator.css` | Styling Bản đồ Chuyển hóa Phân tử 8 chu trình & Metabolic Studio | `src/content/pathophysiology/biochemistry/**` |
 
 
 ---

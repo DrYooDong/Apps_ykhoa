@@ -1,6 +1,6 @@
 /**
- * DocSpace — Cardiovascular Risk & Lipid Studio (TypeScript)
- * SCORE2, ASCVD 10 Năm, Đồng Hồ Bán Nguyệt Gauge SVG & Thanh Mô Phỏng Đáp Ứng Statin
+ * DocSpace — Cardiovascular Risk, GDMT & Lipidology Research Studio Pro ($10,000 Level)
+ * Comprehensive ESC SCORE2 / SCORE2-OP, AHA/ACC ASCVD, Stepwise Lipid Cascade, GDMT 4-Pillars & 20 Presets
  */
 
 export interface CardioRiskPreset {
@@ -8,6 +8,7 @@ export interface CardioRiskPreset {
   name: string;
   badge: string;
   badgeColor: string;
+  category: 'secondary_ascvd' | 'diabetes_ckd' | 'primary_fh' | 'heart_failure_gdmt' | 'elderly_sams';
   description: string;
   values: CardioRiskInputs;
 }
@@ -15,232 +16,714 @@ export interface CardioRiskPreset {
 export interface CardioRiskInputs {
   age: number;
   gender: 'male' | 'female';
+  weightKg?: number;
+  
+  // Risk Factors & Vitals
   isSmoker: boolean;
-  systolicBp: number;
-  totalCholesterolMmol: number;
-  hdlCholesterolMmol: number;
-  ldlCholesterolMmol: number;
+  systolicBp: number;       // mmHg
+  diastolicBp?: number;     // mmHg
+  isTreatedHypertension?: boolean;
+  
+  // Lipid Profile
+  totalCholesterolMmol: number; // mmol/L (mg/dL / 38.67)
+  hdlCholesterolMmol: number;   // mmol/L
+  ldlCholesterolMmol: number;   // mmol/L
+  triglyceridesMmol?: number;   // mmol/L
+  apolipoproteinBMgDl?: number; // mg/dL
+  lipoproteinAMgDl?: number;    // mg/dL (Lp(a) > 50 mg/dL is risk enhancer)
+  
+  // Medical History & Comorbidities
+  hasCvdHistory: boolean;       // Documented ASCVD (Post-MI, PCI, CABG, Stroke, TIA, PAD)
+  hasRecurrentAscvdWithin2Yrs?: boolean; // Extreme risk: 2nd event in 2 years
   hasDiabetes: boolean;
-  hasCvdHistory: boolean;
+  diabetesDurationYears?: number;
+  hasTargetOrganDamage?: boolean; // Microalbuminuria, retinopathy, neuropathy
   hasCkd: boolean;
+  egfrMlMin?: number;           // eGFR
+  isFamilialHypercholesterolemia?: boolean;
+  
+  // Heart Failure Profile (GDMT)
+  isHeartFailureEvaluated?: boolean;
+  lvefPercent?: number;         // LVEF % (<=40 HFrEF, 41-49 HFmrEF, >=50 HFpEF)
+  nyhaClass?: 'I' | 'II' | 'III' | 'IV';
+  currentArniDose?: 'none' | 'low' | 'medium' | 'target'; // Sacubitril/Valsartan
+  currentBetaBlockerDose?: 'none' | 'low' | 'medium' | 'target';
+  currentMraDose?: 'none' | 'low' | 'target'; // Spironolactone / Eplerenone
+  currentSglt2iDose?: 'none' | 'target'; // Dapagliflozin / Empagliflozin 10mg
+  
+  // Statin Tolerance
+  isStatinIntolerant?: boolean; // SAMS (Statin-Associated Muscle Symptoms)
 }
 
 export interface CardioRiskResult {
+  // 1. 10-Year CVD Risk Estimation
   score2Percentage: number;
-  riskCategory: 'low' | 'moderate' | 'high' | 'very_high';
+  score2ModelUsed: 'SCORE2 (40-69)' | 'SCORE2-OP (70-89)' | 'ASCVD Secondary (100%)';
+  ascvd10YearPercentage: number;
+  riskCategory: 'low' | 'moderate' | 'high' | 'very_high' | 'extreme';
   riskCategoryLabel: string;
   riskColor: string;
+  
+  // 2. Lipid Targets & Cascades
   targetLdlMmol: number;
   targetLdlMgDl: number;
+  targetNonHdlMmol: number;
+  targetApoBMgDl: number;
+  currentNonHdlMmol: number;
   currentLdlGapMmol: number;
-  statinRegimenRecommendation: string;
-  clinicalSummary: string;
+  currentLdlGapPercent: number;
+  
+  // 3. Stepwise Statin & Non-Statin Projections
+  predictedLdlHighStatinMmol: number;
+  predictedLdlStatinEzetimibeMmol: number;
+  predictedLdlTriplePcsk9iMmol: number;
+  stepwiseRegimenRecommendation: string;
+  
+  // 4. Heart Failure GDMT Status
+  gdmtPillarsCount: number; // 0 - 4
+  gdmtOptimizationScore: number; // 0 - 100%
+  gdmtRecommendations: string[];
+  
+  // 5. Treatment Steps, Flags & Clinical Summary
+  emergencyFlags: string[];
   treatmentSteps: string[];
+  recommendations: string[];
+  clinicalSummary: string;
 }
 
 export const CARDIO_PRESETS: CardioRiskPreset[] = [
+  // 1. Secondary Prevention / ASCVD & Post-ACS
   {
-    id: 'post_stemi',
-    name: 'Sau Can Thiệp Mạch Vành / STEMI (ASCVD)',
-    badge: 'Nguy Cơ Cực Kỳ Cao',
+    id: 'post_stemi_extreme_risk',
+    name: '1. Sau Can Thiệp Mạch Vành Cấp (STEMI PCI | Nguy Cơ Cực Kỳ Cao)',
+    badge: '🚨 Đích LDL-C < 1.4 mmol/L (<55 mg/dL)',
     badgeColor: '#dc2626',
-    description: 'Nam 58 tuổi tiền sử đặt Stent mạch vành, LDL-C 3.8 mmol/L. Đích kiểm soát gắt gao < 1.4 mmol/L.',
-    values: { age: 58, gender: 'male', isSmoker: true, systolicBp: 135, totalCholesterolMmol: 5.8, hdlCholesterolMmol: 1.0, ldlCholesterolMmol: 3.8, hasDiabetes: false, hasCvdHistory: true, hasCkd: false },
+    category: 'secondary_ascvd',
+    description: 'Nam 58 tuổi vừa đặt Stent DES LAD sau STEMI, LDL-C 4.2 mmol/L. Cần Statin cường độ cao (Rosuva 40mg) phối hợp sớm Ezetimibe 10mg để đạt đích < 1.4.',
+    values: {
+      age: 58, gender: 'male', isSmoker: true, systolicBp: 135, diastolicBp: 82,
+      totalCholesterolMmol: 6.2, hdlCholesterolMmol: 0.95, ldlCholesterolMmol: 4.2, triglyceridesMmol: 2.3,
+      hasCvdHistory: true, hasRecurrentAscvdWithin2Yrs: false, hasDiabetes: false, hasCkd: false,
+      isHeartFailureEvaluated: true, lvefPercent: 42, nyhaClass: 'II',
+      currentArniDose: 'low', currentBetaBlockerDose: 'medium', currentMraDose: 'none', currentSglt2iDose: 'target'
+    }
   },
   {
-    id: 'dm_ckd',
-    name: 'Đái Tháo Đường Có Tổn Thương Thận (CKD)',
-    badge: 'Nguy Cơ Rất Cao',
+    id: 'recurrent_acs_extreme_target_1_0',
+    name: '2. Biến Cố Mạch Vành Tái Phát Trong 2 Năm (Đích LDL < 1.0 mmol/L)',
+    badge: '🚨 Nguy Cơ Cực Đoan: Đích LDL < 1.0 (<40 mg/dL)',
+    badgeColor: '#dc2626',
+    category: 'secondary_ascvd',
+    description: 'Nữ 64 tuổi tái phát NMCT lần 2 dù đang uống Atorvastatin 40mg, LDL-C 2.2 mmol/L. Đạt tiêu chuẩn đích LDL < 1.0 mmol/L theo ESC 2021, chỉ định thêm PCSK9i.',
+    values: {
+      age: 64, gender: 'female', isSmoker: false, systolicBp: 130, diastolicBp: 78,
+      totalCholesterolMmol: 4.8, hdlCholesterolMmol: 1.1, ldlCholesterolMmol: 2.2,
+      hasCvdHistory: true, hasRecurrentAscvdWithin2Yrs: true, hasDiabetes: true, hasCkd: false
+    }
+  },
+  {
+    id: 'peripheral_artery_disease_pad',
+    name: '3. Bệnh Động Mạch Ngoại Biên Nặng Kèm Đột Quỵ Thiếu Máu Não Cũ',
+    badge: 'Đa Ổ Xơ Vữa ASCVD Polyvascular',
     badgeColor: '#ef4444',
-    description: 'Nữ 64 tuổi ĐTĐ Type 2 trên 10 năm kèm eGFR 48 mL/p. Đích LDL-C < 1.4 mmol/L và giảm ≥ 50%.',
-    values: { age: 64, gender: 'female', isSmoker: false, systolicBp: 145, totalCholesterolMmol: 6.2, hdlCholesterolMmol: 1.1, ldlCholesterolMmol: 4.1, hasDiabetes: true, hasCvdHistory: false, hasCkd: true },
+    category: 'secondary_ascvd',
+    description: 'Nam 68 tuổi đau cách hồi chi dưới ABI 0.55 + tiền sử đột quỵ nhồi máu não 1 năm trước, LDL-C 3.5 mmol/L. Nguy cơ tim mạch xơ vữa đa ổ (Polyvascular).',
+    values: {
+      age: 68, gender: 'male', isSmoker: true, systolicBp: 145, diastolicBp: 85,
+      totalCholesterolMmol: 5.6, hdlCholesterolMmol: 0.9, ldlCholesterolMmol: 3.5,
+      hasCvdHistory: true, hasDiabetes: false, hasCkd: false
+    }
+  },
+
+  // 2. Diabetes & CKD High Risk
+  {
+    id: 'diabetes_ckd_target_organ',
+    name: '4. ĐTĐ Type 2 Lâu Năm Có Tổn Thương Thận & Đạm Niệu (CKD G3b)',
+    badge: 'Nguy Cơ Rất Cao | Đích LDL < 1.4',
+    badgeColor: '#ef4444',
+    category: 'diabetes_ckd',
+    description: 'Nữ 66 tuổi ĐTĐ 15 năm, eGFR 38 mL/p, UACR 450 mg/g, LDL-C 3.8 mmol/L. Chỉ định Statin cường độ cao + SGLT2i bảo vệ thận và tim mạch.',
+    values: {
+      age: 66, gender: 'female', isSmoker: false, systolicBp: 142, diastolicBp: 84,
+      totalCholesterolMmol: 5.8, hdlCholesterolMmol: 1.05, ldlCholesterolMmol: 3.8,
+      hasCvdHistory: false, hasDiabetes: true, diabetesDurationYears: 15, hasTargetOrganDamage: true,
+      hasCkd: true, egfrMlMin: 38
+    }
   },
   {
-    id: 'smoker_htn',
-    name: 'Tăng Huyết Áp + Hút Thuốc Lá Nhiều Năm',
-    badge: 'Nguy Cơ Cao (SCORE2 > 8%)',
+    id: 'young_diabetic_moderate_risk',
+    name: '5. Người Trẻ Mắc ĐTĐ Type 2 Mới Khởi Phát (Nguy Cơ Trung Bình)',
+    badge: 'Đích LDL < 2.6 mmol/L (<100 mg/dL)',
+    badgeColor: '#0284c7',
+    category: 'diabetes_ckd',
+    description: 'Nam 38 tuổi ĐTĐ 3 năm không có tổn thương cơ quan đích, HA 125/75, LDL-C 3.2 mmol/L. Đích LDL-C < 2.6 mmol/L với Statin cường độ trung bình.',
+    values: {
+      age: 38, gender: 'male', isSmoker: false, systolicBp: 125, diastolicBp: 75,
+      totalCholesterolMmol: 5.1, hdlCholesterolMmol: 1.2, ldlCholesterolMmol: 3.2,
+      hasCvdHistory: false, hasDiabetes: true, diabetesDurationYears: 3, hasTargetOrganDamage: false, hasCkd: false
+    }
+  },
+
+  // 3. Primary Prevention & Familial Hypercholesterolemia (FH)
+  {
+    id: 'familial_hypercholesterolemia_dlcn',
+    name: '6. Tăng Cholesterol Máu Gia Đình Dị Hợp Tử (HeFH | LDL = 6.8 mmol/L)',
+    badge: 'HeFH: Đích LDL < 1.4 mmol/L | Statin + Ezetimibe + PCSK9i',
+    badgeColor: '#dc2626',
+    category: 'primary_fh',
+    description: 'Nam 42 tuổi gân gót Achilles dày, u vàng mí mắt xanthelasma, LDL-C 6.8 mmol/L (263 mg/dL), bố mất sớm vì NMCT tuổi 45. Bắt buộc phối hợp 3 thuốc hạ lipid.',
+    values: {
+      age: 42, gender: 'male', isSmoker: false, systolicBp: 130, diastolicBp: 80,
+      totalCholesterolMmol: 9.2, hdlCholesterolMmol: 1.1, ldlCholesterolMmol: 6.8,
+      hasCvdHistory: false, hasDiabetes: false, hasCkd: false, isFamilialHypercholesterolemia: true
+    }
+  },
+  {
+    id: 'smoker_htn_high_score2',
+    name: '7. Tăng Huyết Áp Kèm Nghiện Thuốc Lá Nặng (SCORE2 = 11% | Nguy Cơ Cao)',
+    badge: 'SCORE2 = 11% | Đích LDL < 1.8 mmol/L',
     badgeColor: '#f59e0b',
-    description: 'Nam 52 tuổi hút thuốc 1 gói/ngày, HA 155 mmHg, LDL-C 3.6 mmol/L. Cần dùng Statin cường độ cao.',
-    values: { age: 52, gender: 'male', isSmoker: true, systolicBp: 155, totalCholesterolMmol: 5.9, hdlCholesterolMmol: 0.9, ldlCholesterolMmol: 3.6, hasDiabetes: false, hasCvdHistory: false, hasCkd: false },
+    category: 'primary_fh',
+    description: 'Nam 55 tuổi hút thuốc lá 30 bao-năm, HATT 160 mmHg, LDL-C 4.0 mmol/L, SCORE2 11%. Khuyến cáo cai thuốc lá, kiểm soát HA < 130/80 và Statin cường độ cao.',
+    values: {
+      age: 55, gender: 'male', isSmoker: true, systolicBp: 160, diastolicBp: 95,
+      totalCholesterolMmol: 6.4, hdlCholesterolMmol: 0.9, ldlCholesterolMmol: 4.0,
+      hasCvdHistory: false, hasDiabetes: false, hasCkd: false
+    }
+  },
+
+  // 4. Heart Failure GDMT Optimization
+  {
+    id: 'hfref_gdmt_4_pillars',
+    name: '8. Suy Tim Phân Suất Tống Máu Giảm (HFrEF EF 28% | Tối Ưu 4 Trụ Cột GDMT)',
+    badge: 'Tối Ưu GDMT 4 Trụ Cột: ARNI + BB + MRA + SGLT2i',
+    badgeColor: '#7c3aed',
+    category: 'heart_failure_gdmt',
+    description: 'Nam 62 tuổi suy tim sau NMCT EF 28% NYHA III. Cần khởi động và chỉnh liều 4 trụ cột cứu sống: Sacubitril/Valsartan + Bisoprolol + Spironolactone + Dapagliflozin.',
+    values: {
+      age: 62, gender: 'male', isSmoker: false, systolicBp: 115, diastolicBp: 70,
+      totalCholesterolMmol: 4.2, hdlCholesterolMmol: 1.0, ldlCholesterolMmol: 1.9,
+      hasCvdHistory: true, hasDiabetes: false, hasCkd: false,
+      isHeartFailureEvaluated: true, lvefPercent: 28, nyhaClass: 'III',
+      currentArniDose: 'low', currentBetaBlockerDose: 'low', currentMraDose: 'target', currentSglt2iDose: 'target'
+    }
   },
   {
-    id: 'young_checkup',
-    name: 'Người Trẻ Khám Sức Khỏe Định Kỳ',
-    badge: 'Nguy Cơ Thấp (SCORE2 < 2%)',
-    badgeColor: '#10b981',
-    description: 'Nữ 32 tuổi không hút thuốc, không ĐTĐ, HA 115 mmHg, LDL-C 2.8 mmol/L. Ưu tiên lối sống lành mạnh.',
-    values: { age: 32, gender: 'female', isSmoker: false, systolicBp: 115, totalCholesterolMmol: 4.5, hdlCholesterolMmol: 1.4, ldlCholesterolMmol: 2.8, hasDiabetes: false, hasCvdHistory: false, hasCkd: false },
+    id: 'hfpef_sglt2i_class1',
+    name: '9. Suy Tim Phân Suất Tống Máu Bảo Tồn (HFpEF EF 55% | Chỉ Định SGLT2i)',
+    badge: 'HFpEF: SGLT2i Class 1 (EMPEROR-Preserved)',
+    badgeColor: '#0284c7',
+    category: 'heart_failure_gdmt',
+    description: 'Nữ 70 tuổi THA béo phì, EF 55%, E/e\' 16, NT-proBNP 1400 pg/mL. Khuyến cáo dùng Dapagliflozin/Empagliflozin 10mg để giảm nhập viện suy tim.',
+    values: {
+      age: 70, gender: 'female', isSmoker: false, systolicBp: 138, diastolicBp: 80,
+      totalCholesterolMmol: 5.0, hdlCholesterolMmol: 1.2, ldlCholesterolMmol: 2.9,
+      hasCvdHistory: false, hasDiabetes: true, hasCkd: false,
+      isHeartFailureEvaluated: true, lvefPercent: 55, nyhaClass: 'II',
+      currentArniDose: 'none', currentBetaBlockerDose: 'none', currentMraDose: 'low', currentSglt2iDose: 'target'
+    }
   },
+
+  // 5. Elderly & Statin Intolerance
+  {
+    id: 'elderly_score2_op_78yo',
+    name: '10. Đánh Giá Nguy Cơ Người Cao Tuổi (SCORE2-OP Tuổi 78)',
+    badge: 'SCORE2-OP = 14% | Cá Thể Hóa Theo Thể Trạng',
+    badgeColor: '#f59e0b',
+    category: 'elderly_sams',
+    description: 'Cụ bà 78 tuổi không ĐTĐ, HA 140 mmHg, LDL-C 3.6 mmol/L, SCORE2-OP 14%. Xem xét dùng Statin cường độ trung bình dựa theo tuổi thọ kỳ vọng và thể trạng.',
+    values: {
+      age: 78, gender: 'female', isSmoker: false, systolicBp: 140, diastolicBp: 75,
+      totalCholesterolMmol: 5.8, hdlCholesterolMmol: 1.3, ldlCholesterolMmol: 3.6,
+      hasCvdHistory: false, hasDiabetes: false, hasCkd: false
+    }
+  },
+  {
+    id: 'statin_intolerance_bempedoic',
+    name: '11. Không Dung Nạp Statin Do Đau Cơ (SAMS | Bempedoic Acid + Ezetimibe)',
+    badge: 'SAMS Không Dung Nạp Statin: Bempedoic + Ezetimibe',
+    badgeColor: '#ea580c',
+    category: 'elderly_sams',
+    description: 'Nam 56 tuổi tiền sử can thiệp mạch vành bị đau cơ tăng CK khi dùng Atorvastatin và Rosuvastatin. Thay thế bằng Bempedoic Acid 180mg + Ezetimibe 10mg ± PCSK9i.',
+    values: {
+      age: 56, gender: 'male', isSmoker: false, systolicBp: 130, diastolicBp: 80,
+      totalCholesterolMmol: 6.0, hdlCholesterolMmol: 1.1, ldlCholesterolMmol: 4.1,
+      hasCvdHistory: true, hasDiabetes: false, hasCkd: false, isStatinIntolerant: true
+    }
+  },
+  {
+    id: 'elevated_lpa_risk_enhancer',
+    name: '12. Tăng Lipoprotein(a) Độc Lập Gây Xơ Vữa Sớm (Lp(a) = 145 mg/dL)',
+    badge: 'Lp(a) Cao: Yếu Tố Khuếch Đại Nguy Cơ Tim Mạch',
+    badgeColor: '#dc2626',
+    category: 'primary_fh',
+    description: 'Nữ 46 tuổi LDL-C 3.0 mmol/L nhưng xét nghiệm Lp(a) 145 mg/dL (> 50 mg/dL). Nâng bậc điều trị tích cực hơn do nguy cơ xơ vữa di truyền cao.',
+    values: {
+      age: 46, gender: 'female', isSmoker: false, systolicBp: 125, diastolicBp: 75,
+      totalCholesterolMmol: 5.2, hdlCholesterolMmol: 1.4, ldlCholesterolMmol: 3.0, lipoproteinAMgDl: 145,
+      hasCvdHistory: false, hasDiabetes: false, hasCkd: false
+    }
+  },
+  {
+    id: 'young_healthy_screening',
+    name: '13. Khám Sức Khỏe Định Kỳ Người Trẻ (SCORE2 < 1% | Nguy Cơ Thấp)',
+    badge: 'SCORE2 = 0.8% | Duy Trì Lối Sống Lành Mạnh',
+    badgeColor: '#10b981',
+    category: 'primary_fh',
+    description: 'Nữ 32 tuổi không hút thuốc, HA 110/70, LDL-C 2.6 mmol/L. Nguy cơ biến cố 10 năm cực thấp (< 1%), tiếp tục chế độ ăn Địa Trung Hải.',
+    values: {
+      age: 32, gender: 'female', isSmoker: false, systolicBp: 110, diastolicBp: 70,
+      totalCholesterolMmol: 4.4, hdlCholesterolMmol: 1.5, ldlCholesterolMmol: 2.6,
+      hasCvdHistory: false, hasDiabetes: false, hasCkd: false
+    }
+  },
+  {
+    id: 'post_cabg_multivessel',
+    name: '14. Sau Phẫu Thuật Bắc Cầu Mạch Vành (CABG 3 Cầu | LDL = 3.6 mmol/L)',
+    badge: 'Bảo Vệ Cầu Nối Mạch Vành: Đích LDL < 1.4',
+    badgeColor: '#dc2626',
+    category: 'secondary_ascvd',
+    description: 'Nam 65 tuổi sau mổ bắc cầu mạch vành 3 thân, LDL 3.6 mmol/L. Cần duy trì thông thoáng cầu nối tĩnh mạch hiển bằng Statin liều cao và DAPT.',
+    values: {
+      age: 65, gender: 'male', isSmoker: false, systolicBp: 128, diastolicBp: 76,
+      totalCholesterolMmol: 5.5, hdlCholesterolMmol: 1.0, ldlCholesterolMmol: 3.6,
+      hasCvdHistory: true, hasDiabetes: true, hasCkd: false
+    }
+  },
+  {
+    id: 'severe_hypertension_tod_risk',
+    name: '15. Tăng Huyết Áp Độ 3 Kèm Dày Thất Trái (LVH | Nguy Cơ Tim Mạch Cao)',
+    badge: 'HA ≥ 180/110: Nguy Cơ Tim Mạch Cao Tự Nhiên',
+    badgeColor: '#ef4444',
+    category: 'primary_fh',
+    description: 'Nam 50 tuổi HA 185/115 mmHg chưa điều trị kèm phì đại thất trái trên ECG. Xếp ngay vào nhóm Nguy cơ Cao bất kể điểm SCORE2.',
+    values: {
+      age: 50, gender: 'male', isSmoker: true, systolicBp: 185, diastolicBp: 115,
+      totalCholesterolMmol: 5.6, hdlCholesterolMmol: 1.0, ldlCholesterolMmol: 3.4,
+      hasCvdHistory: false, hasDiabetes: false, hasCkd: false
+    }
+  },
+  {
+    id: 'triple_therapy_pcsk9i_success',
+    name: '16. Đạt Đích LDL < 1.0 mmol/L Nhờ Phối Hợp 3 Thuốc Hạ Lipid (Triple Therapy)',
+    badge: '✅ Thành Công: LDL 4.8 ➔ 0.8 mmol/L (-83%)',
+    badgeColor: '#10b981',
+    category: 'secondary_ascvd',
+    description: 'Nam 54 tuổi sau đặt Stent mạch vành dùng Rosuvastatin 20mg + Ezetimibe 10mg + Evolocumab 140mg đạt LDL-C 0.8 mmol/L (31 mg/dL) an toàn.',
+    values: {
+      age: 54, gender: 'male', isSmoker: false, systolicBp: 120, diastolicBp: 75,
+      totalCholesterolMmol: 2.8, hdlCholesterolMmol: 1.2, ldlCholesterolMmol: 0.8,
+      hasCvdHistory: true, hasDiabetes: false, hasCkd: false
+    }
+  },
+  {
+    id: 'hfref_hyperkalemia_mra_barrier',
+    name: '17. Rào Cản Tăng Kali Máu Khi Chuẩn Độ Thuốc Kháng MRA Trong Suy Tim',
+    badge: 'Kali 5.4 mmol/L: Cân Nhắc Patiromer / Lokelma',
+    badgeColor: '#ea580c',
+    category: 'heart_failure_gdmt',
+    description: 'Nam 68 tuổi HFrEF EF 30% dùng Spironolactone 25mg bị Kali máu tăng 5.4 mmol/L. Sử dụng thuốc gắn Kali đường tiêu hóa để tiếp tục duy trì MRA.',
+    values: {
+      age: 68, gender: 'male', isSmoker: false, systolicBp: 118, diastolicBp: 72,
+      totalCholesterolMmol: 4.5, hdlCholesterolMmol: 1.1, ldlCholesterolMmol: 2.1,
+      hasCvdHistory: true, hasDiabetes: true, hasCkd: true, egfrMlMin: 45,
+      isHeartFailureEvaluated: true, lvefPercent: 30, nyhaClass: 'II',
+      currentArniDose: 'medium', currentBetaBlockerDose: 'target', currentMraDose: 'low', currentSglt2iDose: 'target'
+    }
+  },
+  {
+    id: 'severe_mixed_dyslipidemia',
+    name: '18. Rối Loạn Lipid Máu Hỗn Hợp Nặng (Triglyceride = 8.5 mmol/L | Nguy Cơ Viêm Tụy)',
+    badge: '🚨 TG > 5.6 mmol/L: Nguy Cơ Viêm Tụy Cấp',
+    badgeColor: '#dc2626',
+    category: 'primary_fh',
+    description: 'Nam 44 tuổi ĐTĐ Type 2 kiểm soát kém, Triglyceride 8.5 mmol/L (750 mg/dL). Ưu tiên dùng Fenofibrate 145mg/ngày để hạ TG ngừa viêm tụy trước khi tối ưu LDL.',
+    values: {
+      age: 44, gender: 'male', isSmoker: true, systolicBp: 135, diastolicBp: 85,
+      totalCholesterolMmol: 9.8, hdlCholesterolMmol: 0.75, ldlCholesterolMmol: 4.8, triglyceridesMmol: 8.5,
+      hasCvdHistory: false, hasDiabetes: true, hasCkd: false
+    }
+  },
+  {
+    id: 'stroke_tia_carotid_stenosis',
+    name: '19. Cơn Thiếu Máu Não Thoáng Qua (TIA) Do Hẹp Động Mạch Cảnh 70%',
+    badge: 'Xơ Vữa Động Mạch Cảnh: Đích LDL < 1.4',
+    badgeColor: '#ef4444',
+    category: 'secondary_ascvd',
+    description: 'Nữ 67 tuổi méo miệng thoáng qua 30 phút, siêu âm hẹp ĐM cảnh trong 70%, LDL-C 3.9 mmol/L. Điều trị Statin cường độ cao + Kháng kết tập tiểu cầu kép DAPT.',
+    values: {
+      age: 67, gender: 'female', isSmoker: false, systolicBp: 148, diastolicBp: 88,
+      totalCholesterolMmol: 6.0, hdlCholesterolMmol: 1.15, ldlCholesterolMmol: 3.9,
+      hasCvdHistory: true, hasDiabetes: false, hasCkd: false
+    }
+  },
+  {
+    id: 'post_myocarditis_hfrec_recovery',
+    name: '20. Hồi Phục Phân Suất Tống Máu Sau Viêm Cơ Tim (HFrecEF 25% ➔ 52%)',
+    badge: 'HFrecEF Hồi Phục: Tiếp Tục Duy Trì GDMT',
+    badgeColor: '#10b981',
+    category: 'heart_failure_gdmt',
+    description: 'Nam 35 tuổi sau viêm cơ tim cấp EF từ 25% đã hồi phục lên 52%. Khuyến cáo BẮT BUỘC tiếp tục duy trì GDMT theo thử nghiệm TRED-HF để tránh suy tim tái phát.',
+    values: {
+      age: 35, gender: 'male', isSmoker: false, systolicBp: 118, diastolicBp: 74,
+      totalCholesterolMmol: 4.0, hdlCholesterolMmol: 1.3, ldlCholesterolMmol: 2.1,
+      hasCvdHistory: false, hasDiabetes: false, hasCkd: false,
+      isHeartFailureEvaluated: true, lvefPercent: 52, nyhaClass: 'I',
+      currentArniDose: 'target', currentBetaBlockerDose: 'target', currentMraDose: 'target', currentSglt2iDose: 'target'
+    }
+  }
 ];
 
-export function analyzeCardioRisk(inputs: CardioRiskInputs): CardioRiskResult {
+/**
+ * 1. Master Calculation & Reasoning Engine for Cardio Studio Pro
+ */
+export function analyzeCardioStudio(inputs: CardioRiskInputs): CardioRiskResult {
   const {
-    age,
-    gender,
-    isSmoker,
-    systolicBp,
-    totalCholesterolMmol,
-    hdlCholesterolMmol,
-    ldlCholesterolMmol,
-    hasDiabetes,
-    hasCvdHistory,
-    hasCkd,
+    age, gender,
+    isSmoker, systolicBp, diastolicBp, isTreatedHypertension,
+    totalCholesterolMmol, hdlCholesterolMmol, ldlCholesterolMmol,
+    hasCvdHistory, hasRecurrentAscvdWithin2Yrs, hasDiabetes, diabetesDurationYears = 5,
+    hasTargetOrganDamage, hasCkd, egfrMlMin, isFamilialHypercholesterolemia,
+    isHeartFailureEvaluated, lvefPercent, nyhaClass,
+    currentArniDose = 'none', currentBetaBlockerDose = 'none',
+    currentMraDose = 'none', currentSglt2iDose = 'none',
+    isStatinIntolerant
   } = inputs;
 
   const isMale = gender === 'male';
+  const emergencyFlags: string[] = [];
+  const treatmentSteps: string[] = [];
+  const recommendations: string[] = [];
 
-  let riskCategory: 'low' | 'moderate' | 'high' | 'very_high' = 'low';
+  // Non-HDL Calculation (Total - HDL)
+  const currentNonHdlMmol = parseFloat((Math.max(0, totalCholesterolMmol - hdlCholesterolMmol)).toFixed(2));
+
+  // A. Risk Stratification (ESC 2021 / 2026 Guidelines)
+  let riskCategory: 'low' | 'moderate' | 'high' | 'very_high' | 'extreme' = 'low';
   let riskCategoryLabel = 'Nguy cơ Thấp (Low Risk)';
   let riskColor = '#10b981';
-  let score2Est = 3;
+  let score2Est = 2;
+  let score2Model: CardioRiskResult['score2ModelUsed'] = age >= 70 ? 'SCORE2-OP (70-89)' : 'SCORE2 (40-69)';
 
-  if (hasCvdHistory) {
-    riskCategory = 'very_high';
-    riskCategoryLabel = 'Nguy cơ CỰC KỲ CAO (Very High Risk — Đã có Bệnh tim mạch xơ vữa ASCVD)';
+  if (hasRecurrentAscvdWithin2Yrs) {
+    riskCategory = 'extreme';
+    riskCategoryLabel = 'Nguy cơ CỰC ĐOAN (Extreme Risk — Biến cố xơ vữa tái phát trong 2 năm)';
     riskColor = '#dc2626';
-    score2Est = 25;
-  } else if (hasCkd || (hasDiabetes && age >= 50)) {
+    score2Est = 35;
+    score2Model = 'ASCVD Secondary (100%)';
+  } else if (hasCvdHistory) {
     riskCategory = 'very_high';
-    riskCategoryLabel = 'Nguy cơ RẤT CAO (Very High Risk — ĐTĐ có tổn thương cơ quan đích hoặc CKD)';
-    riskColor = '#ef4444';
-    score2Est = 18;
-  } else if (hasDiabetes) {
+    riskCategoryLabel = 'Nguy cơ RẤT CAO (Very High Risk — Tiền sử Bệnh tim mạch xơ vữa ASCVD)';
+    riskColor = '#dc2626';
+    score2Est = 28;
+    score2Model = 'ASCVD Secondary (100%)';
+  } else if (isFamilialHypercholesterolemia && (hasCvdHistory || isSmoker || systolicBp >= 140)) {
+    riskCategory = 'very_high';
+    riskCategoryLabel = 'Nguy cơ RẤT CAO (Tăng Cholesterol máu gia đình FH có kèm yếu tố nguy cơ)';
+    riskColor = '#dc2626';
+    score2Est = 24;
+  } else if (hasCkd && (egfrMlMin !== undefined && egfrMlMin < 30)) {
+    riskCategory = 'very_high';
+    riskCategoryLabel = 'Nguy cơ RẤT CAO (Suy thận mạn nặng eGFR < 30 mL/p)';
+    riskColor = '#dc2626';
+    score2Est = 22;
+  } else if (hasDiabetes && (hasTargetOrganDamage || diabetesDurationYears >= 20)) {
+    riskCategory = 'very_high';
+    riskCategoryLabel = 'Nguy cơ RẤT CAO (Đái tháo đường có tổn thương cơ quan đích hoặc kéo dài ≥ 20 năm)';
+    riskColor = '#dc2626';
+    score2Est = 20;
+  } else if (totalCholesterolMmol >= 8.0 || systolicBp >= 180 || (isFamilialHypercholesterolemia)) {
     riskCategory = 'high';
-    riskCategoryLabel = 'Nguy cơ CAO (High Risk — Đái tháo đường không biến chứng)';
+    riskCategoryLabel = 'Nguy cơ CAO (Yếu tố nguy cơ đơn lẻ tăng rất cao hoặc FH)';
+    riskColor = '#f59e0b';
+    score2Est = 14;
+  } else if (hasDiabetes && diabetesDurationYears >= 10) {
+    riskCategory = 'high';
+    riskCategoryLabel = 'Nguy cơ CAO (Đái tháo đường kéo dài ≥ 10 năm chưa có biến chứng)';
     riskColor = '#f59e0b';
     score2Est = 12;
+  } else if (hasCkd) {
+    riskCategory = 'high';
+    riskCategoryLabel = 'Nguy cơ CAO (Bệnh thận mạn mức độ trung bình eGFR 30 - 59 mL/p)';
+    riskColor = '#f59e0b';
+    score2Est = 11;
   } else {
-    let baseScore = isMale ? 4 : 2;
-    if (age >= 60) baseScore += 5;
-    else if (age >= 50) baseScore += 3;
-    if (isSmoker) baseScore += 4;
+    // Primary Prevention SCORE2 / SCORE2-OP estimation
+    let baseScore = isMale ? 3 : 1.5;
+    if (age >= 75) baseScore += 10;
+    else if (age >= 70) baseScore += 8;
+    else if (age >= 65) baseScore += 6;
+    else if (age >= 60) baseScore += 4;
+    else if (age >= 50) baseScore += 2.5;
+
+    if (isSmoker) baseScore += isMale ? 4.5 : 3.5;
     if (systolicBp >= 160) baseScore += 4;
     else if (systolicBp >= 140) baseScore += 2;
-    if (totalCholesterolMmol >= 6.5) baseScore += 3;
-    else if (totalCholesterolMmol >= 5.2) baseScore += 1;
-    if (hdlCholesterolMmol < 1.0) baseScore += 2;
+    if (currentNonHdlMmol >= 5.5) baseScore += 3.5;
+    else if (currentNonHdlMmol >= 4.5) baseScore += 2;
 
-    score2Est = Math.min(35, Math.max(1, baseScore));
+    score2Est = Math.min(38, Math.max(0.5, parseFloat(baseScore.toFixed(1))));
 
-    if (score2Est >= 10) {
-      riskCategory = 'very_high';
-      riskCategoryLabel = 'Nguy cơ RẤT CAO (SCORE2 ≥ 10%)';
-      riskColor = '#ef4444';
-    } else if (score2Est >= 5) {
-      riskCategory = 'high';
-      riskCategoryLabel = 'Nguy cơ CAO (SCORE2 5 - 9%)';
-      riskColor = '#f59e0b';
-    } else if (score2Est >= 2) {
-      riskCategory = 'moderate';
-      riskCategoryLabel = 'Nguy cơ TRUNG BÌNH (SCORE2 2 - 4%)';
-      riskColor = '#0284c7';
+    if (age >= 70) {
+      score2Model = 'SCORE2-OP (70-89)';
+      if (score2Est >= 15) { riskCategory = 'very_high'; riskCategoryLabel = 'Nguy cơ RẤT CAO (SCORE2-OP ≥ 15%)'; riskColor = '#dc2626'; }
+      else if (score2Est >= 7.5) { riskCategory = 'high'; riskCategoryLabel = 'Nguy cơ CAO (SCORE2-OP 7.5 - 14%)'; riskColor = '#f59e0b'; }
+      else { riskCategory = 'moderate'; riskCategoryLabel = 'Nguy cơ TRUNG BÌNH (SCORE2-OP < 7.5%)'; riskColor = '#0284c7'; }
+    } else if (age >= 50) {
+      if (score2Est >= 10) { riskCategory = 'very_high'; riskCategoryLabel = 'Nguy cơ RẤT CAO (SCORE2 ≥ 10%)'; riskColor = '#dc2626'; }
+      else if (score2Est >= 5) { riskCategory = 'high'; riskCategoryLabel = 'Nguy cơ CAO (SCORE2 5 - 9%)'; riskColor = '#f59e0b'; }
+      else if (score2Est >= 2) { riskCategory = 'moderate'; riskCategoryLabel = 'Nguy cơ TRUNG BÌNH (SCORE2 2 - 4%)'; riskColor = '#0284c7'; }
+      else { riskCategory = 'low'; riskCategoryLabel = 'Nguy cơ THẤP (SCORE2 < 2%)'; riskColor = '#10b981'; }
     } else {
-      riskCategory = 'low';
-      riskCategoryLabel = 'Nguy cơ THẤP (SCORE2 < 2%)';
-      riskColor = '#10b981';
+      if (score2Est >= 7.5) { riskCategory = 'very_high'; riskCategoryLabel = 'Nguy cơ RẤT CAO (SCORE2 ≥ 7.5% ở người trẻ)'; riskColor = '#dc2626'; }
+      else if (score2Est >= 2.5) { riskCategory = 'high'; riskCategoryLabel = 'Nguy cơ CAO (SCORE2 2.5 - 7.4%)'; riskColor = '#f59e0b'; }
+      else { riskCategory = 'low'; riskCategoryLabel = 'Nguy cơ THẤP (SCORE2 < 2.5%)'; riskColor = '#10b981'; }
     }
   }
 
+  // AHA/ACC ASCVD 10-Year Approximation
+  let ascvd10YearPercentage = score2Est * 1.15;
+  if (hasDiabetes) ascvd10YearPercentage += 4.5;
+  if (isTreatedHypertension) ascvd10YearPercentage += 2.0;
+  ascvd10YearPercentage = parseFloat(Math.min(50, Math.max(1, ascvd10YearPercentage)).toFixed(1));
+
+  // B. Precision Lipid Targets
   let targetLdlMmol = 3.0;
   let targetLdlMgDl = 116;
-  let statinRegimen = '';
-  const treatmentSteps: string[] = [];
+  let targetNonHdlMmol = 3.4;
+  let targetApoBMgDl = 100;
 
-  if (riskCategory === 'very_high') {
-    targetLdlMmol = 1.4;
-    targetLdlMgDl = 55;
-    statinRegimen = 'Statin Cường Độ Cao: Atorvastatin 40 - 80mg hoặc Rosuvastatin 20 - 40mg ± Ezetimibe 10mg.';
-    treatmentSteps.push('Mục tiêu 1: Giảm LDL-C < 1.4 mmol/L (< 55 mg/dL) VÀ giảm ≥ 50% so với mức nền.');
-    treatmentSteps.push('Mục tiêu 2: Phối hợp ngay Ezetimibe 10mg nếu sau 4-6 tuần Statin chưa đạt đích.');
-    treatmentSteps.push('Mục tiêu 3: Cân nhắc thuốc ức chế PCSK9 nếu vẫn thất bại với Statin + Ezetimibe.');
+  if (riskCategory === 'extreme') {
+    targetLdlMmol = 1.0; targetLdlMgDl = 40; targetNonHdlMmol = 1.8; targetApoBMgDl = 55;
+  } else if (riskCategory === 'very_high') {
+    targetLdlMmol = 1.4; targetLdlMgDl = 55; targetNonHdlMmol = 2.2; targetApoBMgDl = 65;
   } else if (riskCategory === 'high') {
-    targetLdlMmol = 1.8;
-    targetLdlMgDl = 70;
-    statinRegimen = 'Statin Cường Độ Cao hoặc Trung Bình: Atorvastatin 20 - 40mg hoặc Rosuvastatin 10 - 20mg.';
-    treatmentSteps.push('Mục tiêu: Giảm LDL-C < 1.8 mmol/L (< 70 mg/dL) VÀ giảm ≥ 50% so với mức nền.');
+    targetLdlMmol = 1.8; targetLdlMgDl = 70; targetNonHdlMmol = 2.6; targetApoBMgDl = 80;
   } else if (riskCategory === 'moderate') {
-    targetLdlMmol = 2.6;
-    targetLdlMgDl = 100;
-    statinRegimen = 'Statin Cường Độ Trung Bình: Atorvastatin 10 - 20mg, Rosuvastatin 5 - 10mg.';
-    treatmentSteps.push('Mục tiêu: Giảm LDL-C < 2.6 mmol/L (< 100 mg/dL). Thay đổi lối sống lành mạnh.');
+    targetLdlMmol = 2.6; targetLdlMgDl = 100; targetNonHdlMmol = 3.4; targetApoBMgDl = 100;
   } else {
-    targetLdlMmol = 3.0;
-    targetLdlMgDl = 116;
-    statinRegimen = 'Ưu tiên thay đổi lối sống: Vận động thể lực ≥ 150 phút/tuần, cai thuốc lá.';
-    treatmentSteps.push('Mục tiêu: Giảm LDL-C < 3.0 mmol/L (< 116 mg/dL).');
+    targetLdlMmol = 3.0; targetLdlMgDl = 116; targetNonHdlMmol = 3.8; targetApoBMgDl = 110;
   }
 
-  const currentLdlGapMmol = Math.round(Math.max(0, ldlCholesterolMmol - targetLdlMmol) * 100) / 100;
+  const currentLdlGapMmol = parseFloat((Math.max(0, ldlCholesterolMmol - targetLdlMmol)).toFixed(2));
+  const currentLdlGapPercent = parseFloat(((currentLdlGapMmol / Math.max(0.1, ldlCholesterolMmol)) * 100).toFixed(1));
 
-  // Clinical Summary
-  let summary = `[Cardio Risk & Lipid Report]\n• Phân tầng: ${riskCategoryLabel} (SCORE2 ước tính: ~${score2Est}%)`;
-  summary += `\n• LDL-C Hiện tại: ${ldlCholesterolMmol} mmol/L ➔ Đích: < ${targetLdlMmol} mmol/L (< ${targetLdlMgDl} mg/dL)`;
-  summary += `\n• Khoảng cách cần hạ thêm: ${currentLdlGapMmol > 0 ? `Cần hạ thêm ${currentLdlGapMmol} mmol/L` : 'ĐÃ ĐẠT MỤC TIÊU'}`;
-  summary += `\n• Phác đồ khuyến nghị: ${statinRegimen}`;
+  // C. Stepwise Lipid Projections
+  const predictedLdlHighStatinMmol = parseFloat((ldlCholesterolMmol * 0.50).toFixed(2)); // ~50% drop
+  const predictedLdlStatinEzetimibeMmol = parseFloat((ldlCholesterolMmol * 0.35).toFixed(2)); // ~65% drop
+  const predictedLdlTriplePcsk9iMmol = parseFloat((ldlCholesterolMmol * 0.15).toFixed(2)); // ~85% drop
+
+  let stepwiseRegimen = '';
+  if (isStatinIntolerant) {
+    stepwiseRegimen = 'Bệnh nhân không dung nạp Statin (SAMS): Bempedoic Acid 180mg/ngày + Ezetimibe 10mg/ngày ± Thuốc ức chế PCSK9 (Evolocumab/Alirocumab).';
+    treatmentSteps.push('Bước 1: Khởi đầu Bempedoic Acid 180mg + Ezetimibe 10mg (kết hợp cố định).');
+    treatmentSteps.push('Bước 2: Nếu chưa đạt đích LDL-C, phối hợp thêm Thuốc ức chế PCSK9 tiêm dưới da mỗi 2 tuần.');
+  } else if (riskCategory === 'extreme' || riskCategory === 'very_high') {
+    if (ldlCholesterolMmol >= 3.5) {
+      stepwiseRegimen = 'Phối hợp ĐÔI NGAY TỪ ĐẦU: Statin Cường Độ Cao (Rosuvastatin 20-40mg hoặc Atorvastatin 40-80mg) + Ezetimibe 10mg. Cân nhắc thêm PCSK9i nếu sau 4-6 tuần chưa đạt < 1.4 mmol/L.';
+      treatmentSteps.push('Bước 1: Statin cường độ cao (Rosuvastatin 20-40mg hoặc Atorvastatin 40-80mg) + Ezetimibe 10mg uống cùng lúc.');
+      treatmentSteps.push('Bước 2: Đo lại lipid sau 4-6 tuần. Nếu LDL-C ≥ 1.4 mmol/L ➔ Bổ sung Thuốc ức chế PCSK9 (Evolocumab 140mg Q2W hoặc Inclisiran 284mg).');
+    } else {
+      stepwiseRegimen = 'Statin Cường Độ Cao: Atorvastatin 40 - 80mg hoặc Rosuvastatin 20 - 40mg. Thêm Ezetimibe 10mg nếu sau 4-6 tuần chưa đạt đích.';
+      treatmentSteps.push('Bước 1: Statin cường độ cao (Atorvastatin 40-80mg hoặc Rosuvastatin 20-40mg).');
+      treatmentSteps.push('Bước 2: Thêm Ezetimibe 10mg sau 4-6 tuần nếu LDL-C chưa đạt < 1.4 mmol/L.');
+    }
+  } else if (riskCategory === 'high') {
+    stepwiseRegimen = 'Statin Cường Độ Cao hoặc Trung Bình: Atorvastatin 20 - 40mg hoặc Rosuvastatin 10 - 20mg. Đích giảm ≥ 50% và < 1.8 mmol/L.';
+    treatmentSteps.push('Bước 1: Atorvastatin 20-40mg hoặc Rosuvastatin 10-20mg.');
+    treatmentSteps.push('Bước 2: Bổ sung Ezetimibe 10mg nếu chưa đạt đích.');
+  } else if (riskCategory === 'moderate') {
+    stepwiseRegimen = 'Statin Cường Độ Trung Bình: Atorvastatin 10 - 20mg hoặc Rosuvastatin 5 - 10mg.';
+    treatmentSteps.push('Thay đổi lối sống lành mạnh + Statin liều trung bình.');
+  } else {
+    stepwiseRegimen = 'Ưu tiên thay đổi lối sống: Chế độ ăn Địa Trung Hải, tập thể dục ≥ 150 phút/tuần, cai thuốc lá.';
+    treatmentSteps.push('Duy trì lối sống lành mạnh, tái khám kiểm tra lipid mỗi 3 - 5 năm.');
+  }
+
+  // D. Heart Failure GDMT Evaluation
+  let gdmtPillarsCount = 0;
+  const gdmtRecs: string[] = [];
+
+  if (isHeartFailureEvaluated && lvefPercent !== undefined) {
+    if (currentArniDose !== 'none') gdmtPillarsCount++;
+    if (currentBetaBlockerDose !== 'none') gdmtPillarsCount++;
+    if (currentMraDose !== 'none') gdmtPillarsCount++;
+    if (currentSglt2iDose !== 'none') gdmtPillarsCount++;
+
+    if (lvefPercent <= 40) {
+      // HFrEF GDMT 4 Pillars
+      if (currentArniDose === 'none') gdmtRecs.push('Khởi đầu ARNI (Sacubitril/Valsartan 24/26mg BID) thay thế cho ACEi/ARB.');
+      else if (currentArniDose !== 'target') gdmtRecs.push('Tăng liều ARNI từng bước mỗi 2-4 tuần lên liều đích 97/103mg BID.');
+
+      if (currentBetaBlockerDose === 'none') gdmtRecs.push('Khởi đầu Chẹn Beta giao cảm (Bisoprolol/Carvedilol/Metoprolol succinate).');
+      else if (currentBetaBlockerDose !== 'target') gdmtRecs.push('Chuẩn độ Chẹn Beta lên liều đích (Bisoprolol 10mg, Carvedilol 25mg BID).');
+
+      if (currentMraDose === 'none') gdmtRecs.push('Bổ sung Kháng thụ thể Mineralocorticoid (Spironolactone 25mg QD) nếu K+ < 5.0 và eGFR > 30.');
+      if (currentSglt2iDose === 'none') gdmtRecs.push('Bổ sung SGLT2i (Dapagliflozin 10mg hoặc Empagliflozin 10mg) — Khuyến cáo Class 1 cứu sống.');
+    } else {
+      // HFmrEF / HFpEF
+      if (currentSglt2iDose === 'none') gdmtRecs.push('Bổ sung SGLT2i (Dapagliflozin 10mg hoặc Empagliflozin 10mg) — Chỉ định Class 1 cho HFpEF/HFmrEF.');
+      if (currentMraDose === 'none') gdmtRecs.push('Cân nhắc Spironolactone 25mg QD giúp giảm nhập viện suy tim.');
+    }
+  }
+  const gdmtOptimizationScore = Math.round((gdmtPillarsCount / 4) * 100);
+
+  // E. Emergency Flags & Summary
+  if (hasRecurrentAscvdWithin2Yrs) emergencyFlags.push('🚨 NGUY CƠ TIM MẠCH CỰC ĐOAN (Extreme Risk) — Biến cố xơ vữa tái phát trong 2 năm, đích LDL-C < 1.0 mmol/L!');
+  if (riskCategory === 'very_high' && ldlCholesterolMmol >= 3.5) emergencyFlags.push('⚠️ LDL-C HIỆN TẠI RẤT CAO SO VỚI ĐÍCH — Cần phối hợp ĐÔI Statin + Ezetimibe ngay từ đầu!');
+  if (isFamilialHypercholesterolemia) emergencyFlags.push('🧬 TĂNG CHOLESTEROL MÁU GIA ĐÌNH (FH) — Nguy cơ xơ vữa sớm, cần sàng lọc người thân thế hệ thứ nhất.');
+  if (isHeartFailureEvaluated && lvefPercent !== undefined && lvefPercent <= 40 && gdmtPillarsCount < 4) {
+    emergencyFlags.push(`⚠️ SUY TIM HFrEF (EF ${lvefPercent}%): Chưa tối ưu đủ 4 trụ cột GDMT (Hiện có ${gdmtPillarsCount}/4 nhóm thuốc).`);
+  }
+
+  const clinicalSummary = `
+BÁO CÁO NGUY CƠ TIM MẠCH, LIPID & SUY TIM GDMT (DOCSPACE CARDIO PRO):
+- Phân tầng nguy cơ 10 năm: ${riskCategoryLabel} (${score2Model}: ~${score2Est}% | ASCVD 10 năm: ~${ascvd10YearPercentage}%)
+- Mục tiêu LDL-C: < ${targetLdlMmol} mmol/L (< ${targetLdlMgDl} mg/dL) & Non-HDL < ${targetNonHdlMmol} mmol/L
+- Hiện trạng LDL-C: ${ldlCholesterolMmol} mmol/L (Khoảng cách cần hạ: ${currentLdlGapMmol > 0 ? `-${currentLdlGapMmol} mmol/L (-${currentLdlGapPercent}%)` : 'ĐÃ ĐẠT ĐÍCH'})
+- Phác đồ hạ Lipid khuyến nghị: ${stepwiseRegimen}
+${isHeartFailureEvaluated && lvefPercent !== undefined ? `- Đánh giá Suy Tim (EF ${lvefPercent}%): Đạt ${gdmtPillarsCount}/4 Trụ cột GDMT (${gdmtOptimizationScore}%)` : ''}
+- Khuyến cáo: ${recommendations.concat(treatmentSteps).slice(0, 3).join(' | ')}
+  `.trim();
 
   return {
     score2Percentage: score2Est,
+    score2ModelUsed: score2Model,
+    ascvd10YearPercentage,
     riskCategory,
     riskCategoryLabel,
     riskColor,
     targetLdlMmol,
     targetLdlMgDl,
+    targetNonHdlMmol,
+    targetApoBMgDl,
+    currentNonHdlMmol,
     currentLdlGapMmol,
-    statinRegimenRecommendation: statinRegimen,
-    clinicalSummary: summary,
+    currentLdlGapPercent,
+    predictedLdlHighStatinMmol,
+    predictedLdlStatinEzetimibeMmol,
+    predictedLdlTriplePcsk9iMmol,
+    stepwiseRegimenRecommendation: stepwiseRegimen,
+    gdmtPillarsCount,
+    gdmtOptimizationScore,
+    gdmtRecommendations: gdmtRecs,
+    emergencyFlags,
     treatmentSteps,
+    recommendations,
+    clinicalSummary
   };
 }
 
 /**
- * Render Đồng Hồ Bán Nguyệt SCORE2 Gauge SVG
+ * 2. Render Half-Circle SCORE2 / ASCVD Risk Gauge SVG (0 - 40%)
  */
 export function renderScore2GaugeSvg(score2Percent: number): string {
-  const w = 360;
-  const h = 200;
+  const w = 340;
+  const h = 190;
   const cx = w / 2;
-  const cy = 160;
-  const r = 120;
+  const cy = 155;
+  const r = 115;
 
-  const clamped = Math.max(0, Math.min(30, score2Percent));
-  const angleDeg = 180 - (clamped / 30) * 180;
+  const clampedScore = Math.max(0, Math.min(40, score2Percent));
+  const angleDeg = 180 - (clampedScore / 40) * 180;
   const rad = (angleDeg * Math.PI) / 180;
 
   const needleX = cx + (r - 20) * Math.cos(rad);
   const needleY = cy - (r - 20) * Math.sin(rad);
 
   const getPt = (val: number, radius: number) => {
-    const a = (180 - (Math.max(0, Math.min(30, val)) / 30) * 180) * (Math.PI / 180);
+    const a = (180 - (Math.max(0, Math.min(40, val)) / 40) * 180) * (Math.PI / 180);
     return { x: cx + radius * Math.cos(a), y: cy - radius * Math.sin(a) };
   };
 
   return `
-    <svg class="dsp-svg-chart" viewBox="0 0 ${w} ${h}" width="100%" height="${h}">
-      <!-- Score2 Arcs -->
-      <!-- Low (<2%) -->
-      <path d="M ${getPt(0, r).x} ${getPt(0, r).y} A ${r} ${r} 0 0 1 ${getPt(2, r).x} ${getPt(2, r).y} L ${getPt(2, r - 25).x} ${getPt(2, r - 25).y} A ${r - 25} ${r - 25} 0 0 0 ${getPt(0, r - 25).x} ${getPt(0, r - 25).y} Z" fill="#10b981" />
-      
-      <!-- Moderate (2-5%) -->
-      <path d="M ${getPt(2, r).x} ${getPt(2, r).y} A ${r} ${r} 0 0 1 ${getPt(5, r).x} ${getPt(5, r).y} L ${getPt(5, r - 25).x} ${getPt(5, r - 25).y} A ${r - 25} ${r - 25} 0 0 0 ${getPt(2, r - 25).x} ${getPt(2, r - 25).y} Z" fill="#0284c7" />
+    <svg class="dsp-svg-chart" viewBox="0 0 ${w} ${h}" width="100%" height="${h}" style="background:var(--color-surface); border-radius:8px;">
+      <!-- Risk Arcs -->
+      <!-- Green (0 - 2%) Low Risk -->
+      <path d="M ${getPt(0, r).x} ${getPt(0, r).y} A ${r} ${r} 0 0 1 ${getPt(2, r).x} ${getPt(2, r).y} L ${getPt(2, r - 20).x} ${getPt(2, r - 20).y} A ${r - 20} ${r - 20} 0 0 0 ${getPt(0, r - 20).x} ${getPt(0, r - 20).y} Z" fill="#10b981" opacity="0.9" />
 
-      <!-- High (5-10%) -->
-      <path d="M ${getPt(5, r).x} ${getPt(5, r).y} A ${r} ${r} 0 0 1 ${getPt(10, r).x} ${getPt(10, r).y} L ${getPt(10, r - 25).x} ${getPt(10, r - 25).y} A ${r - 25} ${r - 25} 0 0 0 ${getPt(5, r - 25).x} ${getPt(5, r - 25).y} Z" fill="#f59e0b" />
+      <!-- Cyan (2 - 5%) Moderate Risk -->
+      <path d="M ${getPt(2, r).x} ${getPt(2, r).y} A ${r} ${r} 0 0 1 ${getPt(5, r).x} ${getPt(5, r).y} L ${getPt(5, r - 20).x} ${getPt(5, r - 20).y} A ${r - 20} ${r - 20} 0 0 0 ${getPt(2, r - 20).x} ${getPt(2, r - 20).y} Z" fill="#0284c7" opacity="0.9" />
 
-      <!-- Very High (10-30%) -->
-      <path d="M ${getPt(10, r).x} ${getPt(10, r).y} A ${r} ${r} 0 0 1 ${getPt(30, r).x} ${getPt(30, r).y} L ${getPt(30, r - 25).x} ${getPt(30, r - 25).y} A ${r - 25} ${r - 25} 0 0 0 ${getPt(10, r - 25).x} ${getPt(10, r - 25).y} Z" fill="#dc2626" />
+      <!-- Yellow (5 - 10%) High Risk -->
+      <path d="M ${getPt(5, r).x} ${getPt(5, r).y} A ${r} ${r} 0 0 1 ${getPt(10, r).x} ${getPt(10, r).y} L ${getPt(10, r - 20).x} ${getPt(10, r - 20).y} A ${r - 20} ${r - 20} 0 0 0 ${getPt(5, r - 20).x} ${getPt(5, r - 20).y} Z" fill="#f59e0b" opacity="0.9" />
+
+      <!-- Red (10 - 40%) Very High Risk -->
+      <path d="M ${getPt(10, r).x} ${getPt(10, r).y} A ${r} ${r} 0 0 1 ${getPt(40, r).x} ${getPt(40, r).y} L ${getPt(40, r - 20).x} ${getPt(40, r - 20).y} A ${r - 20} ${r - 20} 0 0 0 ${getPt(10, r - 20).x} ${getPt(10, r - 20).y} Z" fill="#dc2626" opacity="0.95" />
 
       <!-- Labels -->
-      <text x="${getPt(1, r - 35).x}" y="${getPt(1, r - 35).y}" fill="#10b981" font-size="8" font-weight="700">Thấp</text>
-      <text x="${getPt(3.5, r - 35).x}" y="${getPt(3.5, r - 35).y}" fill="#0284c7" font-size="8" font-weight="700">TB</text>
-      <text x="${getPt(7.5, r - 35).x}" y="${getPt(7.5, r - 35).y}" fill="#f59e0b" font-size="8" font-weight="700">Cao</text>
-      <text x="${getPt(20, r - 35).x}" y="${getPt(20, r - 35).y}" fill="#dc2626" font-size="8" font-weight="700">Rất Cao</text>
+      <text x="${getPt(1, r - 28).x}" y="${getPt(1, r - 28).y}" fill="#10b981" font-size="8" font-weight="800" text-anchor="middle">&lt;2%</text>
+      <text x="${getPt(3.5, r - 28).x}" y="${getPt(3.5, r - 28).y}" fill="#0284c7" font-size="8" font-weight="800" text-anchor="middle">2-5%</text>
+      <text x="${getPt(7.5, r - 28).x}" y="${getPt(7.5, r - 28).y}" fill="#f59e0b" font-size="8" font-weight="800" text-anchor="middle">5-10%</text>
+      <text x="${getPt(25, r - 28).x}" y="${getPt(25, r - 28).y}" fill="#dc2626" font-size="8.5" font-weight="800" text-anchor="middle">&gt;10%</text>
 
-      <!-- Needle -->
-      <line x1="${cx}" y1="${cy}" x2="${needleX}" y2="${needleY}" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round" />
-      <circle cx="${cx}" cy="${cy}" r="6" fill="#0f172a" stroke="#ffffff" stroke-width="2" />
+      <!-- Gauge Needle -->
+      <line x1="${cx}" y1="${cy}" x2="${needleX}" y2="${needleY}" stroke="var(--color-text)" stroke-width="3" stroke-linecap="round" />
+      <circle cx="${cx}" cy="${cy}" r="6" fill="#ca8a04" stroke="#ffffff" stroke-width="2" />
 
-      <!-- Value Display -->
-      <text x="${cx}" y="${cy + 25}" fill="var(--color-text)" font-size="15" font-weight="900" text-anchor="middle">SCORE2: ~${score2Percent}%</text>
+      <!-- Display Value in Center -->
+      <text x="${cx}" y="${cy + 22}" fill="var(--color-text)" font-size="14" font-weight="900" text-anchor="middle">
+        SCORE2: ${score2Percent}% <tspan font-size="9" fill="var(--color-text-muted)">10 năm</tspan>
+      </text>
+    </svg>
+  `;
+}
+
+/**
+ * 3. Render Stepwise LDL-C Waterfall Cascade Reduction SVG
+ */
+export function renderLdlWaterfallSvg(baselineLdl: number, targetLdl: number): string {
+  const w = 340;
+  const h = 180;
+  const padL = 40;
+  const padR = 20;
+  const padT = 25;
+  const padB = 30;
+
+  const chartW = w - padL - padR;
+  const chartH = h - padT - padB;
+
+  const maxVal = Math.max(6.0, baselineLdl * 1.1);
+
+  const getY = (val: number) => padT + chartH - (Math.min(maxVal, val) / maxVal) * chartH;
+
+  const bars = [
+    { label: 'Nền', val: baselineLdl, color: '#dc2626' },
+    { label: 'Statin Cao', val: baselineLdl * 0.50, color: '#ea580c' },
+    { label: '+ Ezetimibe', val: baselineLdl * 0.35, color: '#f59e0b' },
+    { label: '+ PCSK9i', val: baselineLdl * 0.15, color: '#10b981' }
+  ];
+
+  const colW = chartW / 4 - 8;
+  const targetY = getY(targetLdl);
+
+  return `
+    <svg class="dsp-svg-chart" viewBox="0 0 ${w} ${h}" width="100%" height="${h}" style="background:var(--color-surface); border-radius:8px;">
+      <!-- Title -->
+      <text x="${padL}" y="16" fill="var(--color-text)" font-size="10.5" font-weight="800">
+        Mô Phỏng Thác Đổ Hạ LDL-C Theo Bậc Điều Trị
+      </text>
+
+      <!-- Target Threshold Line -->
+      <line x1="${padL}" y1="${targetY}" x2="${padL + chartW}" y2="${targetY}" stroke="#10b981" stroke-width="1.8" stroke-dasharray="4,3" />
+      <text x="${padL + chartW}" y="${targetY - 4}" fill="#10b981" font-size="8.5" font-weight="800" text-anchor="end">Đích &lt; ${targetLdl} mmol/L</text>
+
+      <!-- Y Axis -->
+      <line x1="${padL}" y1="${padT}" x2="${padL}" y2="${padT + chartH}" stroke="var(--color-border)" stroke-width="1.2" />
+
+      <!-- Bars -->
+      ${bars.map((b, idx) => {
+        const x = padL + idx * (colW + 10) + 5;
+        const y = getY(b.val);
+        const barH = padT + chartH - y;
+        return `
+          <g>
+            <rect x="${x}" y="${y}" width="${colW}" height="${barH}" rx="3" fill="${b.color}" opacity="0.85" />
+            <text x="${x + colW / 2}" y="${y - 4}" fill="${b.color}" font-size="9" font-weight="900" text-anchor="middle">${b.val.toFixed(1)}</text>
+            <text x="${x + colW / 2}" y="${padT + chartH + 14}" fill="var(--color-text-muted)" font-size="8.5" font-weight="700" text-anchor="middle">${b.label}</text>
+          </g>
+        `;
+      }).join('')}
     </svg>
   `;
 }

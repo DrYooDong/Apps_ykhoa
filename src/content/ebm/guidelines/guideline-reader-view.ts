@@ -108,7 +108,25 @@ export function renderGuidelineReader(slug: string): string {
 
               <div style="height: 1px; background: var(--color-border, #e2e8f0); margin: 0.35rem 0;"></div>
 
-              <!-- 5. Copy EBM Note -->
+              <!-- 5. Create SOAP in DocSpace -->
+              <button class="reader-menu-item" id="btn-create-soap-from-guideline" onclick="createSoapFromCurrentGuideline(); closeReaderSettingsMenu();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: #0284c7; font-weight: 700; text-align: left; transition: background 0.15s;">
+                <span style="display: flex; align-items: center; gap: 9px;">
+                  <i class="fa-solid fa-notes-medical" style="width: 18px; color: #0284c7; font-size: 0.95rem;"></i>
+                  <span>Tạo Bệnh án SOAP từ bài này</span>
+                </span>
+                <span class="rx-tag" style="font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; font-weight: 700; background: rgba(2,132,199,0.1); color: #0284c7;">DocSpace</span>
+              </button>
+
+              <!-- 6. View Pathophysiology Mechanism -->
+              <button class="reader-menu-item" id="btn-view-guideline-pathophysiology" onclick="openPathophysiologyForCurrentGuideline(); closeReaderSettingsMenu();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: #7c3aed; font-weight: 700; text-align: left; transition: background 0.15s;">
+                <span style="display: flex; align-items: center; gap: 9px;">
+                  <i class="fa-solid fa-microscope" style="width: 18px; color: #7c3aed; font-size: 0.95rem;"></i>
+                  <span>Xem Cơ Chế Bệnh Sinh &amp; Sinh Lý Bệnh</span>
+                </span>
+                <span class="rx-tag" style="font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; font-weight: 700; background: rgba(139,92,246,0.1); color: #7c3aed;">Cơ Sở</span>
+              </button>
+
+              <!-- 7. Copy EBM Note -->
               <button class="reader-menu-item" id="btn-copy-ebm-note" onclick="copyGuidelineSoapNote();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
                 <span style="display: flex; align-items: center; gap: 9px;">
                   <i class="fa-solid fa-clipboard-list" style="width: 18px; color: var(--color-primary, #0284c7); font-size: 0.95rem;"></i>
@@ -116,7 +134,7 @@ export function renderGuidelineReader(slug: string): string {
                 </span>
               </button>
 
-              <!-- 6. Print / PDF -->
+              <!-- 8. Print / PDF -->
               <button class="reader-menu-item" onclick="window.print(); closeReaderSettingsMenu();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
                 <span style="display: flex; align-items: center; gap: 9px;">
                   <i class="fa-solid fa-print" style="width: 18px; color: #64748b; font-size: 0.95rem;"></i>
@@ -576,6 +594,24 @@ export function syncReaderThemeUI(): void {
   }
 }
 
+/**
+ * Chuyển tiếp nhanh sang DocSpace SOAP và tự động khởi tạo ca bệnh với Guideline hiện tại
+ */
+export function createSoapFromCurrentGuideline(): void {
+  const breadcrumbTitle = document.getElementById('reader-breadcrumb-title')?.textContent || '';
+  const hash = window.location.hash || '';
+  const match = hash.match(/kho-guidelines\/([^\/?#]+)/i) || hash.match(/reader\/([^\/?#]+)/i);
+  const slug = match ? match[1] : breadcrumbTitle;
+  window.location.hash = `#/docspace/soap?from_guideline=${encodeURIComponent(slug)}`;
+}
+
+/**
+ * Mở giao diện Cơ Chế Bệnh Sinh & Sinh Lý Bệnh tương ứng trong phân hệ Pathophysiology
+ */
+export function openPathophysiologyForCurrentGuideline(): void {
+  window.location.hash = '#/pathophysiology/co-che-benh-sinh';
+}
+
 // Global click outside listener to close settings menu
 if (typeof document !== 'undefined') {
   document.addEventListener('click', (e) => {
@@ -597,4 +633,6 @@ if (typeof window !== 'undefined') {
   win.adjustReaderFontSize = adjustReaderFontSize;
   win.toggleBrowserFullscreen = toggleBrowserFullscreen;
   win.copyGuidelineSoapNote = copyGuidelineSoapNote;
+  win.createSoapFromCurrentGuideline = createSoapFromCurrentGuideline;
+  win.openPathophysiologyForCurrentGuideline = openPathophysiologyForCurrentGuideline;
 }

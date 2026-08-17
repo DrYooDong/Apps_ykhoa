@@ -26,6 +26,9 @@ export function renderFormulaVaultView(): string {
           <a href="#/pathophysiology" class="btn btn-outline" style="padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #334155); text-decoration: none; font-size: 0.875rem; font-weight: 600;">
             <i class="fa-solid fa-arrow-left"></i> Cơ Sở Y Khoa Hub
           </a>
+          <a href="#/docspace/tools" class="btn btn-outline" style="padding: 0.5rem 1rem; border-radius: 8px; border: 1.5px solid var(--color-primary, #0284c7); color: var(--color-primary, #0284c7); background: rgba(2,132,199,0.08); text-decoration: none; font-size: 0.875rem; font-weight: 700;">
+            <i class="fa-solid fa-stethoscope"></i> Kho Thang Điểm Lâm Sàng DocSpace
+          </a>
         </div>
       </div>
 

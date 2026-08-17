@@ -1,5 +1,6 @@
 import { saveProtocol, getActiveProfile } from '../storage';
 import { KHO_GUIDELINES_STATIC } from '../../ebm/guidelines/kho-guidelines-registry';
+import { calculatorPicker } from './calculator-picker';
 
 export interface EbmSearchOptions {
   targetFieldId?: string;
@@ -31,13 +32,24 @@ export class EbmBridge {
     });
   }
 
-  public async openSearch(query: string, options?: EbmSearchOptions) {
+  public async openSearch(query: string = '', options?: EbmSearchOptions) {
     this.currentOptions = options;
-    this.currentQuery = query;
-    this.currentDesignFilter = 'all';
+    
+    // Xử lý sạch query: Nếu là từ khóa cờ 'practice-changing' hoặc rỗng thì mở chế độ lọc tương ứng
+    let cleanQuery = (query || '').trim();
+    if (cleanQuery.toLowerCase() === 'practice-changing') {
+      this.currentDesignFilter = 'practice-changing';
+      cleanQuery = '';
+    } else {
+      this.currentDesignFilter = 'all';
+    }
+
+    // Nếu query quá dài (do bóc tách cả đoạn S/O), rút trích ngắn gọn
+    cleanQuery = this.sanitizeQuery(cleanQuery);
+    this.currentQuery = cleanQuery;
 
     // Tạo Smart Context Chips động theo query
-    const dynamicChips = this.generateContextChips(query);
+    const dynamicChips = this.generateContextChips(cleanQuery);
 
     this.modalEl.innerHTML = `
       <div style="background:var(--color-surface, #fff); width:100%; max-width:1050px; max-height:92vh; border-radius:14px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.35); border: 1px solid var(--color-border);">
@@ -65,7 +77,7 @@ export class EbmBridge {
           <div style="display:flex; gap:10px; align-items:center;">
             <div style="position:relative; flex:1;">
               <i class="fa-solid fa-magnifying-glass" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--color-text-muted); font-size:13px;"></i>
-              <input type="text" id="ebmBridgeSearchInput" class="dsp-input" value="${query.replace(/"/g, '&quot;')}" placeholder="Tìm theo tên bệnh, mã ICD-10 (VD: J18, I50, E11), hoạt chất hoặc phác đồ..." style="padding-left:34px; font-size:13px;" />
+              <input type="text" id="ebmBridgeSearchInput" class="dsp-input" value="${cleanQuery.replace(/"/g, '&quot;')}" placeholder="Tìm theo tên bệnh, mã ICD-10 (VD: J18, I50, E11, I48), hoạt chất hoặc phác đồ..." style="padding-left:34px; font-size:13px;" />
             </div>
             <button type="button" id="btnEbmBridgeDoSearch" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight:700;">
               <i class="fa-solid fa-filter"></i> Tìm kiếm
@@ -77,22 +89,22 @@ export class EbmBridge {
             <span style="font-size:11px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; white-space:nowrap; margin-right:4px;">
               <i class="fa-solid fa-layer-group"></i> Loại nghiên cứu:
             </span>
-            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm active" data-design="all" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
+            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm ${this.currentDesignFilter === 'all' ? 'active' : ''}" data-design="all" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
               Tất cả
             </button>
-            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm" data-design="guideline" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
+            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm ${this.currentDesignFilter === 'guideline' ? 'active' : ''}" data-design="guideline" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
               <i class="fa-solid fa-file-shield" style="color:#0d9488;"></i> Guidelines &amp; BYT
             </button>
-            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm" data-design="rct" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
+            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm ${this.currentDesignFilter === 'rct' ? 'active' : ''}" data-design="rct" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
               <i class="fa-solid fa-flask-vial" style="color:#dc2626;"></i> Thử nghiệm RCT
             </button>
-            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm" data-design="meta" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
+            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm ${this.currentDesignFilter === 'meta' ? 'active' : ''}" data-design="meta" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
               <i class="fa-solid fa-chart-pie" style="color:#2563eb;"></i> Meta-Analysis
             </button>
-            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm" data-design="review" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
+            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm ${this.currentDesignFilter === 'review' ? 'active' : ''}" data-design="review" style="font-size:11px; padding:2px 8px; border-radius:12px; height:auto;">
               <i class="fa-solid fa-book-open" style="color:#7c3aed;"></i> Bài Tổng quan Review
             </button>
-            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm" data-design="practice-changing" style="background:rgba(16,185,129,0.12); color:#059669; border:1px solid rgba(16,185,129,0.3); font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px; height:auto;">
+            <button type="button" class="js-design-filter dsp-btn dsp-btn-sm ${this.currentDesignFilter === 'practice-changing' ? 'active' : ''}" data-design="practice-changing" style="background:rgba(16,185,129,0.12); color:#059669; border:1px solid rgba(16,185,129,0.3); font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px; height:auto;">
               <i class="fa-solid fa-star"></i> Practice-Changing
             </button>
           </div>
@@ -177,12 +189,34 @@ export class EbmBridge {
     });
 
     await this.loadEbmData();
-    this.performSearch(query);
+    this.performSearch(cleanQuery);
   }
 
   public close() {
     this.modalEl.style.display = 'none';
     this.modalEl.innerHTML = '';
+  }
+
+  /**
+   * Rút gọn và làm sạch chuỗi query lâm sàng
+   */
+  private sanitizeQuery(raw: string): string {
+    if (!raw) return '';
+    let q = raw.trim();
+    // Nếu query có dấu xuống dòng, lấy dòng đầu tiên
+    if (q.includes('\n')) {
+      q = q.split('\n')[0].trim();
+    }
+    // Tìm mã ICD-10 trước nếu có
+    const icdMatch = q.match(/[A-Z][0-9]{2}(?:\.[0-9]+)?/i);
+    if (icdMatch && q.length > 50) {
+      return icdMatch[0].toUpperCase();
+    }
+    // Cắt bớt nếu quá dài
+    if (q.length > 60) {
+      q = q.substring(0, 60).split(/[,;.-]/)[0].trim();
+    }
+    return q;
   }
 
   /**
@@ -273,6 +307,12 @@ export class EbmBridge {
   }
 
   public getStudiesList(): any[] {
+    // 1. Nguồn static chuẩn hóa (luôn giữ độ ưu tiên và độ tin cậy cao nhất)
+    const staticList = KHO_GUIDELINES_STATIC || [];
+    const seen = new Set<string>(staticList.map(s => s.id));
+    const list: any[] = [...staticList];
+
+    // 2. Bổ sung các custom studies hoặc remote nếu có
     const customLocal = (() => {
       try {
         const s = localStorage.getItem('cliniportal_custom_studies');
@@ -281,16 +321,7 @@ export class EbmBridge {
     })();
 
     const windowStudies = (window as any).studies || [];
-    
-    // Nguồn static chuẩn hóa 45 tài liệu lâm sàng
-    const staticList = KHO_GUIDELINES_STATIC || [];
-
-    // Hợp nhất và loại bỏ trùng lặp theo ID
-    const combined = [...customLocal, ...windowStudies, ...staticList];
-    const seen = new Set<string>();
-    const list: any[] = [];
-
-    combined.forEach(s => {
+    [...windowStudies, ...customLocal].forEach(s => {
       if (s && s.id && !seen.has(s.id)) {
         seen.add(s.id);
         list.push(s);
@@ -303,7 +334,7 @@ export class EbmBridge {
   public async loadEbmData(): Promise<void> {
     let studies = this.getStudiesList();
 
-    // Nếu chỉ có static, tự động kéo thêm từ Supabase nếu đã có config
+    // Kéo thêm từ Supabase nếu có cấu hình
     const sbUrl = localStorage.getItem('supabaseUrl') || localStorage.getItem('dsp_soap_supabase_url') || localStorage.getItem('dsp_supabase_url');
     const sbKey = localStorage.getItem('supabaseKey') || localStorage.getItem('dsp_soap_supabase_key') || localStorage.getItem('dsp_supabase_key');
     
@@ -317,18 +348,22 @@ export class EbmBridge {
           const remote = await res.json();
           if (Array.isArray(remote) && remote.length > 0) {
             const seen = new Set<string>(studies.map(s => s.id));
+            const newRemoteStudies: any[] = [];
             remote.forEach((r: any) => {
               if (r && r.id && !seen.has(r.id)) {
                 seen.add(r.id);
                 studies.push(r);
+                newRemoteStudies.push(r);
               }
             });
             if (typeof window !== 'undefined') {
               (window as any).studies = studies;
             }
-            try {
-              localStorage.setItem('cliniportal_custom_studies', JSON.stringify(studies));
-            } catch {}
+            if (newRemoteStudies.length > 0) {
+              try {
+                localStorage.setItem('cliniportal_custom_studies', JSON.stringify(newRemoteStudies));
+              } catch {}
+            }
           }
         }
       } catch (e) {
@@ -347,10 +382,10 @@ export class EbmBridge {
   public async getSmartSuggestions(query: string, icd10Codes: string[] = []): Promise<any[]> {
     await this.loadEbmData();
     const studies = this.getStudiesList();
-    if (!studies.length || !query) return [];
+    if (!studies.length || (!query && (!icd10Codes || icd10Codes.length === 0))) return [];
 
     const icdRegex = /[A-Z][0-9]{2}(?:\.[0-9]+)?/gi;
-    const foundCodes = Array.from(new Set([...(query.match(icdRegex) || []), ...icd10Codes])).map(c => c.toUpperCase());
+    const foundCodes = Array.from(new Set([...(query ? (query.match(icdRegex) || []) : []), ...icd10Codes])).map(c => c.toUpperCase());
 
     const results: any[] = [];
     const seenIds = new Set<string>();
@@ -369,18 +404,20 @@ export class EbmBridge {
     }
 
     // Keyword fallback
-    const lower = query.toLowerCase().replace(/icd-10|icd|mã|bệnh|soạn|khám/gi, '').trim();
-    const keywords = lower.split(/[\s,\.\-]+/).filter(k => k.length > 2);
+    if (query) {
+      const lower = query.toLowerCase().replace(/icd-10|icd|mã|bệnh|soạn|khám/gi, '').trim();
+      const keywords = lower.split(/[\s,\.\-]+/).filter(k => k.length > 2);
 
-    if (keywords.length > 0) {
-      studies.forEach((s: any) => {
-        if (seenIds.has(s.id)) return;
-        const text = [s.title, s.intervention, s.population, s.summary, s.drug].join(' ').toLowerCase();
-        if (keywords.some(kw => text.includes(kw))) {
-          seenIds.add(s.id);
-          results.push(s);
-        }
-      });
+      if (keywords.length > 0) {
+        studies.forEach((s: any) => {
+          if (seenIds.has(s.id)) return;
+          const text = [s.title, s.intervention, s.population, s.summary, s.drug].join(' ').toLowerCase();
+          if (keywords.some(kw => text.includes(kw))) {
+            seenIds.add(s.id);
+            results.push(s);
+          }
+        });
+      }
     }
 
     // Ưu tiên: Guideline & RCT & Practice-Changing lên trước
@@ -560,7 +597,7 @@ export class EbmBridge {
           <div style="font-size:40px; margin-bottom:10px; color:var(--color-text-muted);">📁</div>
           <h3 style="color:var(--color-text); margin:0 0 6px 0; font-size:16px; font-weight:800;">Không Tìm Thấy Nghiên Cứu Phù Hợp</h3>
           <p style="font-size:13px; color:var(--color-text-muted); margin:0 0 16px 0; max-width:550px; margin-left:auto; margin-right:auto;">
-            Không có nghiên cứu nào trong Kho EBM khớp với từ khóa <em>"${escapeHtml(query)}"</em> trong bộ lọc hiện tại. Bạn có thể chọn loại nghiên cứu <strong>Tất cả</strong> hoặc tìm theo mã ICD-10.
+            Không có nghiên cứu nào trong Kho EBM khớp với từ khóa <em>"${escapeHtml(query)}"</em> trong bộ lọc hiện tại. Bạn có thể chọn loại nghiên cứu <strong>Tất cả</strong> hoặc xem toàn bộ danh mục.
           </p>
           <button type="button" class="dsp-btn dsp-btn-outline dsp-btn-sm" id="btnEbmResetAll">
             <i class="fa-solid fa-list"></i> Xem tất cả nghiên cứu (${this.getStudiesList().length} tài liệu)
@@ -600,6 +637,38 @@ export class EbmBridge {
     this.bindCardActions(results);
   }
 
+  /**
+   * Xác định công cụ tính điểm lâm sàng tương ứng với nghiên cứu
+   */
+  private getMatchingCalculator(s: any): { id: string; label: string } | null {
+    const text = `${s.conditionKey || ''} ${s.title || ''} ${s.intervention || ''}`.toLowerCase();
+    if (text.includes('viêm phổi') || text.includes('pneumonia') || text.includes('cap')) {
+      return { id: 'curb65', label: 'CURB-65' };
+    }
+    if (text.includes('rung nhĩ') || text.includes('atrial fibrillation') || text.includes('af')) {
+      return { id: 'cha2ds2vasc', label: 'CHA₂DS₂-VASc' };
+    }
+    if (text.includes('sepsis') || text.includes('nhiễm khuẩn huyết') || text.includes('sốc nhiễm')) {
+      return { id: 'qsofa', label: 'qSOFA' };
+    }
+    if (text.includes('thận') || text.includes('ckd') || text.includes('egfr') || text.includes('kdigo')) {
+      return { id: 'ckd-epi', label: 'CKD-EPI' };
+    }
+    if (text.includes('xơ gan') || text.includes('gan') || text.includes('cirrhosis')) {
+      return { id: 'child-pugh', label: 'Child-Pugh' };
+    }
+    if (text.includes('đột quỵ') || text.includes('stroke') || text.includes('thiếu máu não')) {
+      return { id: 'nihss', label: 'NIHSS' };
+    }
+    if (text.includes('thuyên tắc phổi') || text.includes('huyết khối') || text.includes('wells')) {
+      return { id: 'wells-pe', label: 'Wells PE' };
+    }
+    if (text.includes('kháng sinh') || text.includes('vancomycin') || text.includes('mrsa')) {
+      return { id: 'antibiotic-dosing', label: 'Chỉnh liều KS' };
+    }
+    return null;
+  }
+
   private renderStudyCard(s: any): string {
     const isPracticeChanging = s.impact === 'practice-changing';
     const isMOH = s.sourceType === 'vn-moh' || (s.organization && s.organization.includes('Bộ Y tế'));
@@ -625,8 +694,12 @@ export class EbmBridge {
       impactBadge = `<span style="background:rgba(220,38,38,0.12); color:#dc2626; font-size:10.5px; font-weight:800; padding:2px 7px; border-radius:4px; border:1px solid rgba(220,38,38,0.25);"><i class="fa-solid fa-landmark"></i> BỘ Y TẾ VN</span>`;
     }
 
-    // Xác định đường dẫn file HTML tương đối
-    const filePath = s.file ? (s.file.startsWith('http') ? s.file : `src/content/ebm/guidelines/kho-guidelines/${s.file.replace(/^.*\//, '')}`) : null;
+    // Chuẩn hóa đường dẫn đọc theo SPA Reader Route
+    const cleanSlug = s.file ? s.file.replace(/\.html$/i, '') : s.id;
+    const readerRoute = `#/ebm/kho-guidelines/${cleanSlug}`;
+
+    // Công cụ tính điểm liên quan nếu có
+    const matchingCalc = this.getMatchingCalculator(s);
 
     return `
       <div class="dsp-card dsp-p-4" style="border:1px solid ${isPracticeChanging ? '#10b981' : 'var(--color-border)'}; background:${isPracticeChanging ? 'rgba(16, 185, 129, 0.025)' : 'var(--color-surface)'}; border-radius:10px; box-shadow:${isPracticeChanging ? '0 3px 10px rgba(16,185,129,0.1)' : '0 2px 5px rgba(0,0,0,0.03)'};">
@@ -657,12 +730,16 @@ export class EbmBridge {
 
           <!-- Action Buttons -->
           <div style="display:flex; gap:6px; flex-shrink:0; flex-wrap:wrap; justify-content:flex-end;">
-            ${filePath ? `
-              <a href="${filePath}" target="_blank" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size:11px; padding:4px 8px; color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:4px; border:1px solid var(--color-border); border-radius:6px;" title="Mở trang Infographic & Guideline đầy đủ trong tab mới">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Đọc tài liệu
-              </a>
-            ` : ''}
+            <a href="${readerRoute}" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size:11px; padding:4px 8px; color:var(--color-primary); text-decoration:none; display:inline-flex; align-items:center; gap:4px; border:1px solid var(--color-border); border-radius:6px;" title="Mở trang Infographic & Guideline đầy đủ trong CliniPortal Reader">
+              <i class="fa-solid fa-book-open-reader"></i> Đọc tài liệu
+            </a>
             
+            ${matchingCalc ? `
+              <button type="button" class="dsp-btn dsp-btn-sm js-btn-open-calculator" data-calc-id="${matchingCalc.id}" style="font-size:11px; font-weight:600; padding:4px 8px; background:rgba(217,119,6,0.08); color:#d97706; border:1px solid rgba(217,119,6,0.3); border-radius:6px; display:inline-flex; align-items:center; gap:4px;" title="Mở công cụ tính điểm ${matchingCalc.label}">
+                <i class="fa-solid fa-calculator"></i> ${matchingCalc.label}
+              </button>
+            ` : ''}
+
             <!-- Button chèn vào ô A (Đánh giá) -->
             <button type="button" class="dsp-btn dsp-btn-sm js-btn-insert-a" data-study-id="${s.id}" style="font-size:11px; font-weight:700; padding:4px 9px; background:rgba(2,132,199,0.08); color:var(--color-primary); border:1px solid var(--color-primary); border-radius:6px; display:inline-flex; align-items:center; gap:4px;" title="Chèn khuyến cáo và phân tầng nguy cơ vào ô Đánh giá (A)">
               <i class="fa-solid fa-stethoscope"></i> + Ô A (Đánh giá)
@@ -707,12 +784,14 @@ export class EbmBridge {
   }
 
   private bindCardActions(studies: any[]) {
-    // Helper chèn nội dung vào textarea
+    // Helper chèn nội dung vào textarea và kích hoạt auto-save
     const insertIntoTextarea = (targetEl: HTMLTextAreaElement | null, text: string, successMsg: string) => {
       if (targetEl) {
         const currentVal = targetEl.value.trim();
         const prefix = currentVal ? '\n\n' : '';
         targetEl.value = currentVal + prefix + text;
+        targetEl.dispatchEvent(new Event('input', { bubbles: true }));
+        targetEl.dispatchEvent(new Event('change', { bubbles: true }));
         targetEl.focus();
         alert(successMsg);
         this.close();
@@ -773,7 +852,18 @@ export class EbmBridge {
       });
     });
 
-    // 2. Save Protocol
+    // 2. Mở máy tính điểm lâm sàng
+    document.querySelectorAll('.js-btn-open-calculator').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const calcId = btn.getAttribute('data-calc-id');
+        if (calcId) {
+          this.close();
+          calculatorPicker.open(this.currentOptions?.targetFieldId || 'esAAssessment', null, calcId);
+        }
+      });
+    });
+
+    // 3. Save Protocol
     document.querySelectorAll('.js-btn-save-protocol').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-study-id');
@@ -800,6 +890,111 @@ export class EbmBridge {
         });
 
         alert(`✅ Đã lưu "${study.title}" vào Phác Đồ Cá Nhân thành công!`);
+      });
+    });
+  }
+
+  /**
+   * Render thanh gợi ý EBM trực tiếp dưới ô Chẩn đoán / Đánh giá trong SOAP
+   */
+  public async renderContextualBar(containerEl: HTMLElement, query: string, icd10Codes: string[] = [], onInsert?: (text: string, field: 'assessment' | 'plan') => void): Promise<void> {
+    if (!containerEl) return;
+    const suggestions = await this.getSmartSuggestions(query, icd10Codes);
+    if (!suggestions || suggestions.length === 0) {
+      containerEl.innerHTML = '';
+      containerEl.style.display = 'none';
+      return;
+    }
+
+    containerEl.style.display = 'block';
+    containerEl.innerHTML = `
+      <div style="background:rgba(2,132,199,0.05); border:1px dashed rgba(2,132,199,0.25); border-radius:8px; padding:7px 10px; margin-top:8px; display:flex; flex-direction:column; gap:6px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:11px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:5px;">
+            <i class="fa-solid fa-lightbulb"></i> Khuyến cáo EBM liên quan ngữ cảnh (${suggestions.length}):
+          </span>
+          <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-btn-open-full-ebm" style="font-size:10.5px; padding:1px 6px; color:var(--color-primary); height:auto; min-height:0;">
+            <i class="fa-solid fa-magnifying-glass"></i> Mở rộng EBM Bridge
+          </button>
+        </div>
+        <div style="display:flex; gap:6px; overflow-x:auto; padding-bottom:2px; scrollbar-width:thin;">
+          ${suggestions.map(s => {
+            const cleanSlug = s.file ? s.file.replace(/\.html$/i, '') : s.id;
+            return `
+              <div class="dsp-card" style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:6px; padding:6px 8px; min-width:260px; max-width:320px; flex-shrink:0; font-size:11.5px; display:flex; flex-direction:column; justify-content:space-between; gap:4px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:4px;">
+                  <strong style="color:var(--color-primary); font-size:11.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${escapeHtml(s.title)}">
+                    ${escapeHtml(s.title)}
+                  </strong>
+                  ${s.impact === 'practice-changing' ? `<span style="background:#10b981; color:#fff; font-size:9px; font-weight:800; padding:1px 4px; border-radius:3px; flex-shrink:0;">EBM ★</span>` : ''}
+                </div>
+                <div style="font-size:11px; color:var(--color-text-muted); line-height:1.35; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                  ${escapeHtml(s.detailedConclusion || s.summary || s.intervention)}
+                </div>
+                <div style="display:flex; gap:4px; align-items:center; justify-content:flex-end; margin-top:2px;">
+                  <a href="#/ebm/kho-guidelines/${cleanSlug}" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size:10px; padding:2px 5px; color:var(--color-text-muted); height:auto; min-height:0;" title="Đọc toàn văn tài liệu">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Đọc
+                  </a>
+                  <button type="button" class="dsp-btn dsp-btn-outline dsp-btn-sm js-ctx-insert-a" data-study-id="${s.id}" style="font-size:10px; padding:2px 6px; height:auto; min-height:0; color:var(--color-primary); border-color:var(--color-primary);" title="Chèn vào ô Đánh giá (A)">
+                    + Ô A
+                  </button>
+                  <button type="button" class="dsp-btn dsp-btn-primary dsp-btn-sm js-ctx-insert-p" data-study-id="${s.id}" style="font-size:10px; padding:2px 6px; height:auto; min-height:0;" title="Chèn phác đồ vào ô Kế hoạch (P)">
+                    + Ô P
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+
+    // Bind events
+    containerEl.querySelector('.js-btn-open-full-ebm')?.addEventListener('click', () => {
+      this.openSearch(query, { targetFieldId: 'esAAssessment' });
+    });
+
+    containerEl.querySelectorAll('.js-ctx-insert-a').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-study-id');
+        const study = suggestions.find(s => s.id === id);
+        if (!study) return;
+        const conclusion = study.detailedConclusion || study.keyResults || study.summary;
+        const textToInsert = `[EBM Đánh giá — ${study.title}]:\n• Khuyến cáo: ${conclusion}`;
+        if (onInsert) {
+          onInsert(textToInsert, 'assessment');
+        } else {
+          const target = document.getElementById('esAAssessment') as HTMLTextAreaElement;
+          if (target) {
+            target.value = target.value.trim() ? `${target.value.trim()}\n\n${textToInsert}` : textToInsert;
+            target.dispatchEvent(new Event('input', { bubbles: true }));
+            target.dispatchEvent(new Event('change', { bubbles: true }));
+            target.focus();
+          }
+        }
+      });
+    });
+
+    containerEl.querySelectorAll('.js-ctx-insert-p').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-study-id');
+        const study = suggestions.find(s => s.id === id);
+        if (!study) return;
+        const drugLine = study.drug ? `\n• Thuốc: ${study.drug}` : '';
+        const interventionLine = study.intervention ? `\n• Can thiệp: ${study.intervention}` : '';
+        const conclusion = study.detailedConclusion || study.keyResults || study.summary;
+        const textToInsert = `[EBM Phác đồ — ${study.title}]:${drugLine}${interventionLine}\n• Hướng dẫn: ${conclusion}`;
+        if (onInsert) {
+          onInsert(textToInsert, 'plan');
+        } else {
+          const target = document.getElementById('esPPlan') as HTMLTextAreaElement;
+          if (target) {
+            target.value = target.value.trim() ? `${target.value.trim()}\n\n${textToInsert}` : textToInsert;
+            target.dispatchEvent(new Event('input', { bubbles: true }));
+            target.dispatchEvent(new Event('change', { bubbles: true }));
+            target.focus();
+          }
+        }
       });
     });
   }

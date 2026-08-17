@@ -36,7 +36,12 @@ const SUGGESTED_LINKS: QuickLink[] = [
   // EBM
   { id: 'sepsis-ebm', label: 'Phác đồ Sốc Nhiễm Khuẩn (SSC)',href: '#/ebm/guidelines-kho-guidelines-phac-do-soc-nhiem-khuan-sepsis3', icon: 'fa-solid fa-book-bookmark', category: 'ebm',       isPinned: false },
   // Pathophysiology
-  { id: 'physio-cell',label: 'Sinh lý Điện Tế bào',         href: '#/pathophysiology/content-sinhly-phan1-sl-tb-diensinhly', icon: 'fa-solid fa-dna',           category: 'pathophysiology',isPinned: false },
+  { id: 'physio-metabolic', label: 'Bản Đồ Chuyển Hóa Phân Tử',  href: '#/pathophysiology/metabolic-map',       icon: 'fa-solid fa-diagram-project', category: 'pathophysiology', isPinned: false },
+  { id: 'physio-sim',       label: 'Phòng Mô Phỏng Sinh Lý',     href: '#/pathophysiology/simulators',          icon: 'fa-solid fa-bolt',            category: 'pathophysiology', isPinned: false },
+  { id: 'physio-formulas',  label: 'Kho Công Thức Sinh Lý',      href: '#/pathophysiology/formula-vault',       icon: 'fa-solid fa-square-root-variable', category: 'pathophysiology', isPinned: false },
+  { id: 'physio-cases',     label: 'Luyện Ca Bệnh Cơ Chế & Flashcards', href: '#/pathophysiology/quiz',        icon: 'fa-solid fa-brain',           category: 'pathophysiology', isPinned: false },
+  { id: 'physio-ccbs',      label: 'Cơ Chế Bệnh Sinh Chi Tiết',  href: '#/pathophysiology/co-che-benh-sinh',    icon: 'fa-solid fa-dna',             category: 'pathophysiology', isPinned: false },
+  { id: 'physio-biochem',   label: '31 Bài Hóa Sinh Y Học',      href: '#/pathophysiology/hoa-sinh',            icon: 'fa-solid fa-flask-vial',      category: 'pathophysiology', isPinned: false },
 ];
 
 const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {

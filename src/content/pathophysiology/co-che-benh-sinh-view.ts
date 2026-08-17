@@ -117,6 +117,15 @@ export function renderCoCheBenhSinhView(): string {
             <p class="promax-bento-desc">Cơ sở dữ liệu phương trình Nernst, Fick, Starling, GHK kèm máy tính.</p>
           </div>
         </a>
+
+        <a href="#/ebm" class="promax-bento-card" style="--bento-color: #0284c7; --bento-bg: rgba(2,132,199,0.1);">
+          <div class="promax-bento-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+          <div>
+            <span class="promax-bento-tag">Evidence-Based Medicine</span>
+            <h4 class="promax-bento-title">Kho Guidelines &amp; RCTs EBM</h4>
+            <p class="promax-bento-desc">Đối chiếu 45+ khuyến cáo lâm sàng quốc tế (ESC, GOLD, GINA, ADA, SSC).</p>
+          </div>
+        </a>
       </section>
 
       <!-- PROMAX TOOLBAR & SEARCH -->
@@ -226,7 +235,13 @@ export function renderCoCheBenhSinhView(): string {
                       <p>Nứt vỡ mảng xơ vữa không ổn định, kết tập tiểu cầu, hình thành huyết khối gây tắc nghẽn động mạch vành cấp.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-book-bookmark"></i> ESC 2023 ACS
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-st" class="specialty-card">
                   <div class="specialty-card-top">
@@ -236,7 +251,13 @@ export function renderCoCheBenhSinhView(): string {
                       <p>Tái cấu trúc thất trái, hoạt hóa quá mức hệ giao cảm & RAAS kéo dài, stress oxy hóa và chết tế bào cơ tim theo chương trình.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-book-bookmark"></i> ESC HF 2023
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-tha" class="specialty-card">
                   <div class="specialty-card-top">
@@ -246,7 +267,13 @@ export function renderCoCheBenhSinhView(): string {
                       <p>Tăng sức cản mạch máu ngoại vi, tái hấp thu muối natri ở thận, rối loạn chức năng nội mô và phì đại đồng tâm thất trái.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-book-bookmark"></i> ISH 2024
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-ccs" class="specialty-card">
                   <div class="specialty-card-top">
@@ -288,7 +315,13 @@ export function renderCoCheBenhSinhView(): string {
                       <p>Viêm đường thở mạn tính, khí phế thũng phá hủy vách phế nang, bẫy khí và tăng kháng lực đường thở không hồi phục hoàn toàn.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-book-bookmark"></i> GOLD 2025 / BYT
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-henpq" class="specialty-card">
                   <div class="specialty-card-top">
@@ -298,7 +331,13 @@ export function renderCoCheBenhSinhView(): string {
                       <p>Tăng phản ứng phế quản, co thắt cơ trơn phế quản qua trung gian IgE, Eosinophils và tái cấu trúc đường thở.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-book-bookmark"></i> GINA 2024
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-vp" class="specialty-card">
                   <div class="specialty-card-top">
@@ -454,7 +493,13 @@ export function renderCoCheBenhSinhView(): string {
                       <p>Kháng Insulin mô đích, suy tế bào Beta tụy, nhiễm toan Ceton, tăng áp lực thẩm thấu và biến chứng mạch máu.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-book-bookmark"></i> ADA 2024
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-tsg" class="specialty-card">
                   <div class="specialty-card-top">
@@ -486,7 +531,13 @@ export function renderCoCheBenhSinhView(): string {
                       <p>Cơn bão Cytokines, giãn mạch mất trương lực, rối loạn đông máu nội quản rải rác (DIC) và suy đa tạng.</p>
                     </div>
                   </div>
-                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-book-bookmark"></i> SSC Sepsis 3
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-soc" class="specialty-card">
                   <div class="specialty-card-top">

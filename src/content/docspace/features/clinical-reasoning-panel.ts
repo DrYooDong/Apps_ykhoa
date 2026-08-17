@@ -586,15 +586,33 @@ export class ClinicalReasoningPanel {
               </div>
             </div>
 
-            <!-- Guideline Links -->
-            <div style="border-top:1px solid var(--color-border, #e2e8f0); padding-top:14px;">
-              <div style="font-size:12px; font-weight:700; color:var(--color-text-muted, #64748b); margin-bottom:6px;">EBM EVIDENCE & GUIDELINES LIÊN QUAN:</div>
-              <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                ${approach.guidelineLinks.map(g => `
-                  <a href="${g.url}" class="dsp-badge" style="background:#f1f5f9; color:#0369a1; text-decoration:none; padding:6px 10px; font-size:11.5px; border:1px solid #cbd5e1;">
-                    <i class="fa-solid fa-book-bookmark"></i> ${escapeHtml(g.title)}
+            <!-- Pathophysiology & Guideline Links -->
+            <div style="border-top:1px solid var(--color-border, #e2e8f0); padding-top:14px; display:flex; flex-direction:column; gap:10px;">
+              <div>
+                <div style="font-size:12px; font-weight:700; color:var(--color-text-muted, #64748b); margin-bottom:6px;">
+                  <i class="fa-solid fa-microscope" style="color:#8b5cf6;"></i> CƠ SỞ BỆNH SINH &amp; SINH LÝ BỆNH:
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                  <a href="#/pathophysiology/co-che-benh-sinh" class="dsp-badge" style="background:rgba(139,92,246,0.08); color:#7c3aed; text-decoration:none; padding:6px 12px; font-size:11.5px; border:1px solid rgba(139,92,246,0.25); border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:5px;">
+                    <i class="fa-solid fa-dna"></i> Cơ Chế Bệnh Sinh (${escapeHtml(approach.symptomName)})
                   </a>
-                `).join('')}
+                  <a href="#/pathophysiology/simulators" class="dsp-badge" style="background:rgba(2,132,199,0.08); color:#0284c7; text-decoration:none; padding:6px 12px; font-size:11.5px; border:1px solid rgba(2,132,199,0.25); border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:5px;">
+                    <i class="fa-solid fa-bolt"></i> Mô Phỏng Sinh Lý Tương Tác
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-size:12px; font-weight:700; color:var(--color-text-muted, #64748b); margin-bottom:6px;">
+                  <i class="fa-solid fa-book-medical" style="color:var(--color-primary);"></i> EBM EVIDENCE &amp; GUIDELINES LIÊN QUAN:
+                </div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                  ${approach.guidelineLinks.map(g => `
+                    <a href="${g.url}" class="dsp-badge" style="background:#f1f5f9; color:#0369a1; text-decoration:none; padding:6px 10px; font-size:11.5px; border:1px solid #cbd5e1; border-radius:6px;">
+                      <i class="fa-solid fa-book-bookmark"></i> ${escapeHtml(g.title)}
+                    </a>
+                  `).join('')}
+                </div>
               </div>
             </div>
 

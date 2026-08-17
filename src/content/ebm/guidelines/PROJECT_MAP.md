@@ -1,12 +1,12 @@
 # 🗺️ PROJECT MAP — Kho Guidelines & Nghiên Cứu Lâm Sàng CliniPortal
 
-> **Tài liệu Bản đồ Kiến trúc (Architecture Map)** dành cho Kỹ thuật viên và AI Agent khi làm việc, bảo trì, hoặc phát triển mở rộng phân hệ Kho Guidelines Y học chứng cứ.
+> **Tài liệu Bản đồ Kiến trúc (Architecture Map)**: Dành cho Kỹ thuật viên và AI Agent khi làm việc, bảo trì hoặc mở rộng phân hệ Kho Guidelines Y học chứng cứ.
 
 ---
 
 ## 🏛️ 1. Tổng Quan Kiến Trúc Dự Án
 
-Kho Guidelines CliniPortal được phát triển theo tiêu chuẩn **Pure HTML5 + Vanilla CSS3 + ES6+ JavaScript (KHÔNG framework ngoài)**, bảo đảm khả năng chạy mượt mà trên thiết bị y tế bệnh viện offline hoặc local server.
+Kho Guidelines CliniPortal được phát triển theo tiêu chuẩn **Pure HTML5 + Vanilla CSS3 + Modular TypeScript (KHÔNG framework ngoài)**, bảo đảm khả năng chạy mượt mà trên thiết bị y tế bệnh viện offline hoặc local server.
 
 ```text
 src/content/ebm/guidelines/
@@ -15,7 +15,7 @@ src/content/ebm/guidelines/
 ├── guidelines.ts                            # Main Application Controller (TypeScript)
 ├── guidelinesdata.ts                        # Data Registry & Types (60+ EBM Guidelines & RCTs)
 ├── guidelines-types.ts                      # Core Type Definitions & Unified Global Window Interface
-├── guidelines-view.ts                       # SPA View Native Integration
+├── guidelines-view.ts                       # SPA View Native Integration cho CliniPortal Core
 │
 ├── css/                                     # Phân hệ Mô-đun CSS nhỏ
 │   ├── guidelines-base.css                  # Design Tokens, Reset, Topnav, Sidebar & App Shell
@@ -57,6 +57,7 @@ src/content/ebm/guidelines/
 | `guidelines.ts` | TS | Entry Controller điều phối `DOMContentLoaded` & Resize listener | `window.toggleSidebar`, `window.calculateNNT` |
 | `guidelinesdata.ts` | TS | Kho dữ liệu chuẩn quốc tế & Bộ Y Tế Việt Nam | `window.studies`, `window.CLINICAL_CONDITIONS` |
 | `guidelines-types.ts` | TS | Hệ thống Interface & Type Definitions trung tâm | `Study`, `FilterState`, `SupabaseConfig` |
+| `guidelines-view.ts` | TS | SPA View Component tích hợp vào Router của CliniPortal | `GuidelinesView` |
 | `js/guideline-sync.ts` | TS | Đồng bộ dữ liệu 2 chiều với LocalStorage & Supabase DB | `window.initSupabase`, `window.dbSaveStudy`, `window.loadStudies` |
 | `js/guideline-table.ts` | TS | Lọc và Render Bảng bài báo, Thẻ Compact, Tabs Switcher | `window.renderTable`, `window.setFilter`, `window.switchTab` |
 | `js/guideline-modals.ts` | TS | Xử lý Modal Thêm/Sửa, Nhập JSON & Cấu hình ICD-10 Registry | `window.openAddModal`, `window.openConditionSettingsModal` |
@@ -68,6 +69,7 @@ src/content/ebm/guidelines/
 | `js/guideline-tools.ts` | TS | Unified Namespace Export Bridge cho hệ thống công cụ | `window.GuidelineTools` |
 | `js/openalex-service.ts` | TS | Tra cứu dữ liệu OpenAlex API cho chỉ số tạp chí live | `window.searchOpenAlexJournals` |
 | `js/journal-trust-scorer.ts` | TS | Đánh giá Trust Score theo trọng số (0-100) | `window.calculateJournalTrustScore` |
+| `js/journal-quality-analyzer.ts` | TS | Modal so sánh và phân tích chuyên sâu chất lượng tạp chí | `window.openJournalQualityModal` |
 | `data/predatory-blacklist.ts` | TS | Danh sách đen Beall's list & kiểm toán rủi ro tạp chí | `window.auditPredatoryRisk` |
 
 ---
@@ -76,17 +78,19 @@ src/content/ebm/guidelines/
 
 ```mermaid
 graph TD
-    A["guidelinesdata.js (Static Data)"] --> B["guideline-sync.js (Sync Engine)"]
+    A["guidelinesdata.ts (Static Data)"] --> B["guideline-sync.ts (Sync Engine)"]
     C["Supabase Cloud DB / LocalStorage"] --> B
     B --> D["window.studies Data Store"]
-    D --> E["guideline-table.js (Filter & Table Engine)"]
-    D --> F["guideline-cdss.js (CDSS Matcher)"]
-    D --> G["guideline-compare-matrix.js (3D Matrix)"]
-    D --> H["guideline-visualizations.js (Bento Grid & SVG Charts)"]
+    D --> E["guideline-table.ts (Filter & Table Engine)"]
+    D --> F["guideline-cdss.ts (CDSS Matcher)"]
+    D --> G["guideline-compare-matrix.ts (3D Matrix)"]
+    D --> H["guideline-visualizations.ts (Bento Grid & SVG Charts)"]
+    D --> K["openalex-service.ts + journal-trust-scorer.ts"]
     E --> I["guidelines.html DOM Viewport"]
     F --> I
     G --> I
     H --> I
+    K --> I
 ```
 
 ---
@@ -95,10 +99,9 @@ graph TD
 
 1. **Khi muốn sửa Giao diện CSS**:
    - Thay vì sửa `guidelines.css`, hãy mở đúng mô-đun trong `css/` (Ví dụ: sửa Bảng mở `guidelines-table.css`, sửa Modal mở `guidelines-modals.css`).
-2. **Khi muốn thêm Tính năng JS mới**:
-   - Tạo file JS mới trong thư mục `js/` theo tên `guideline-[tên_chức_năng].js`.
-   - Đăng ký file mới vào `guidelines.html` ngay trước `guidelines.js`.
-   - Gắn các hàm gọi từ HTML inline (`onclick="..."`) vào đối tượng `window.*`.
+2. **Khi muốn thêm Tính năng TypeScript mới**:
+   - Tạo file `.ts` mới trong thư mục `js/` theo tiền tố `guideline-[tên_chức_năng].ts`.
+   - Gắn các hàm gọi từ HTML inline (`onclick="..."`) vào đối tượng `window.*` hoặc export qua `guideline-tools.ts`.
 3. **Khi thêm Bài tóm tắt Hướng dẫn mới**:
-   - Thêm bản ghi mới vào file `guidelinesdata.js`.
+   - Thêm bản ghi mới vào mảng `SAMPLE_STUDIES` trong `guidelinesdata.ts`.
    - Đặt bài viết tóm tắt HTML vào thư mục `kho-guidelines/` theo chuẩn cấp thư mục level 4 (`../../../../`).

@@ -1,327 +1,120 @@
-# 🛠️ OPERATIONS.md — Hướng Dẫn Vận Hành Phân Hệ Guidelines
+# 🛠️ OPERATIONS.md — Hướng Dẫn Vận Hành Phân Hệ Guidelines & EBM
 
-> Tài liệu kỹ thuật nội bộ dành cho việc phát triển, bảo trì và mở rộng phân hệ **Hướng Dẫn & Nghiên Cứu Lâm Sàng** (`Guidelines.html`).
-> **Cập nhật lần cuối**: 2026-07-24
-
----
-
-## 📁 Cấu Trúc File
-
-```
-pages/Y học chứng cứ/Guidelines/
-├── Guidelines.html        ← Trang giao diện chính (HTML shell, không chứa logic)
-├── Guidelines.css         ← Toàn bộ style của phân hệ (~2000 dòng)
-├── Guidelines.js          ← Toàn bộ logic nghiệp vụ (~2340 dòng)
-├── GuidelinesData.js      ← Config hằng số + dữ liệu mẫu mặc định
-├── README.md              ← Hướng dẫn người dùng cuối
-├── OPERATIONS.md          ← Tài liệu kỹ thuật này
-└── Kho Guidelines/        ← Thư mục các bài viết tóm tắt chi tiết (.html)
-    ├── index.html
-    ├── 2026-icu-khang-sinh-cho-bn-nang.html
-    └── ...
-```
+> **Tài liệu Kỹ thuật & Vận hành Nội bộ**: Dành cho Kỹ thuật viên và AI Agent khi phát triển, tối ưu hóa và mở rộng phân hệ **Kho Guidelines & Nghiên Cứu Lâm Sàng** trong CliniPortal.
+> **Kiến trúc**: TypeScript Modular, Vanilla CSS3, Zero Frameworks.
 
 ---
 
-## 🔌 Kiến Trúc Vận Hành
+## 📁 1. Cấu Trúc Mã Nguồn Phân Hệ
 
-### Luồng dữ liệu (Data Flow)
-
+```text
+src/content/ebm/guidelines/
+├── guidelines.html                          # UI Layout Shell chính (Bento Grid, Tables, Modals)
+├── guidelines.css                           # Master CSS Entry Point (@import architecture)
+├── guidelines.ts                            # Main Application Controller (TypeScript)
+├── guidelinesdata.ts                        # Dữ liệu chuẩn quốc tế & BYT (60+ EBM Guidelines & RCTs)
+├── guidelines-types.ts                      # Hệ thống Interface & Type Definitions trung tâm
+├── guidelines-view.ts                       # SPA View Native Integration cho CliniPortal Core
+│
+├── css/                                     # Các mô-đun CSS chuyên biệt
+│   ├── guidelines-base.css                  # Reset, Tokens, Topnav, Sidebar & App Shell
+│   ├── guidelines-components.css            # Filter Pills, Search Bar, Badges, Journal Quality
+│   ├── guidelines-table.css                 # Data Tables, Compact Cards, Timeline & Forest Plot SVGs
+│   └── guidelines-modals.css                # Modal Thêm/Sửa, Case CDSS, Multi-Compare Matrix
+│
+├── js/                                      # Các mô-đun TypeScript nghiệp vụ
+│   ├── guideline-sync.ts                    # LocalStorage & Supabase Realtime Sync Engine (2 chiều)
+│   ├── guideline-table.ts                   # Lọc và Render Bảng bài báo, Thẻ Compact, Tabs Switcher
+│   ├── guideline-modals.ts                  # Xử lý Modal Thêm/Sửa, Nhập JSON & Cấu hình ICD-10 Registry
+│   ├── guideline-visualizations.ts          # Bento Grid, Đồng hồ Gauge SVG & Bubble Evidence Map
+│   ├── guideline-evidence-analytics.ts      # Evidence Analytics & NNT Calculator Engine
+│   ├── guideline-cmd-palette.ts             # Command Palette (Ctrl+K) tra cứu nhanh Snippet
+│   ├── guideline-cdss.ts                    # CDSS Dosing Matcher & Export EBM Note Clipboard
+│   ├── guideline-compare-matrix.ts          # Multi-Guideline 3D Compare Matrix & Floating Bar
+│   ├── guideline-tools.ts                   # Unified Bridge Export Hub
+│   ├── guideline-charts-engine.ts           # SVG Forest Plot, Column, H-Bar, Donut chart generators
+│   ├── guideline-journal-badge.ts           # Journal quality badge injection & click handlers
+│   ├── openalex-service.ts                  # OpenAlex API live journal metadata lookup
+│   ├── journal-trust-scorer.ts              # Weighted Trust Score calculation (0-100)
+│   ├── journal-quality-analyzer.ts          # Modal so sánh và phân tích chất lượng tạp chí
+│   └── drug-linker.ts                       # Auto-Linking Thuốc vào Kho Dược lý
+│
+├── data/
+│   └── predatory-blacklist.ts               # Beall's list & cơ sở dữ liệu kiểm toán rủi ro tạp chí
+│
+└── kho-guidelines/                          # Thư mục lưu 50+ bài viết tóm tắt HTML chi tiết
 ```
-GuidelinesData.js          Guidelines.js              LocalStorage / Supabase
-  SAMPLE_STUDIES    ──►    initData()          ──►    Lưu trữ dữ liệu
-  SPECIALTIES              studies[] (RAM)     ◄──    Đọc dữ liệu
-  SOURCE_TYPES             renderTable()       
-  DESIGNS                  filterStudies()     
-  IMPACTS                  ↓ HTML string       
-                           tbody.innerHTML     ──►    DOM (Giao diện)
-```
-
-### Scope biến toàn cục (Global State)
-Tất cả biến trạng thái được khai báo ở **top-level** của `Guidelines.js` (không IIFE, không module):
-
-| Biến | Kiểu | Mục đích |
-|------|------|----------|
-| `studies` | `Array<Object>` | Mảng chính chứa toàn bộ nghiên cứu đang hiển thị |
-| `selectedIds` | `Set<string>` | ID các nghiên cứu đang được tick chọn |
-| `expandedIds` | `Set<string>` | ID các hàng đang xổ ra chi tiết |
-| `filters` | `Object` | Trạng thái bộ lọc hiện tại (search, specialty, design...) |
-| `viewMode` | `'compact' / 'full'` | Chế độ hiển thị bảng |
-| `currentTab` | `'list' / 'saved' / 'compare'` | Tab đang active |
-| `supabaseClient` | `Object / null` | SDK client Supabase |
-| `columnVisibility` | `Object` | Map cột hiển thị/ẩn |
 
 ---
 
-## 📐 Schema Dữ Liệu Nghiên Cứu
+## 🔌 2. Luồng Vận Hành Dữ Liệu (Data Flow)
 
-Mỗi object trong mảng `studies[]` có cấu trúc:
+```mermaid
+graph TD
+    A["guidelinesdata.ts (SAMPLE_STUDIES)"] --> B["guideline-sync.ts (Sync Engine)"]
+    C["Supabase Cloud / LocalStorage"] --> B
+    B --> D["window.studies (Store Trung Tâm)"]
+    D --> E["guideline-table.ts (Render Bảng & Filter)"]
+    D --> F["guideline-visualizations.ts (Bento Grid & SVG Charts)"]
+    D --> G["guideline-cdss.ts (CDSS Matcher)"]
+    D --> H["guideline-compare-matrix.ts (Multi-Compare)"]
+    D --> I["openalex-service.ts + journal-trust-scorer.ts"]
+    
+    E --> J["DOM Viewport (guidelines.html)"]
+    F --> J
+    G --> J
+    H --> J
+    I --> J
+```
 
-```js
-{
-  id: "study_empa_reg",          // ID duy nhất (string, slug)
-  title: "EMPA-REG OUTCOME",     // Tên nghiên cứu (BẮT BUỘC)
-  drug: "Empagliflozin 10mg QD", // Hoạt chất / can thiệp
-  sourceType: "intl-study",      // "intl-study" | "intl-guideline" | "vn-moh" | "vn-doh" | "vn-association"
-  specialty: "cardio",           // "cardio" | "pulmo" | "gi" | "endo" | "neuro" | "infect" | "renal" | "rheum" | "hema" | "onco" | "pedia" | "obgyn" | "icu"
-  design: "rct",                 // "rct" | "meta" | "cohort" | "guideline" | "review" | "other"
-  intervention: "...",           // Can thiệp vs đối chứng
-  primaryEndpoint: "...",        // Tiêu chí đánh giá chính
-  keyResults: "HR 0.86 (95% CI 0.74-0.99, p=0.04)",  // Kết quả chính — xem phần Forest Plot
-  impact: "practice-changing",   // "practice-changing" | "informative" | "early-signal" | "negative" | "regulatory"
-  year: 2015,                    // Năm công bố
-  organization: "NEJM / Boehringer Ingelheim",
-  phase: "(N/A)",                // Giai đoạn nghiên cứu
-  sampleSize: 7020,              // Cỡ mẫu (số nguyên)
-  population: "Bệnh nhân ĐTĐ típ 2...",
-  summary: "Kết luận cốt lõi",  // (BẮT BUỘC)
-  detailedConclusion: "Chi tiết bổ sung",
-  fdaStatus: "FDA Approved 2016",
-  sourceUrl: "https://...",      // Link PubMed / nguồn gốc
-  file: "Kho Guidelines/2015-nejm-empa-reg.html",  // Đường dẫn tương đối tới bài tóm tắt
-  asianData: true,               // boolean: có dữ liệu bệnh nhân Châu Á
-  bookmarked: false,             // boolean: đã đánh dấu sao
-  subgroups: {                   // Object phân tích subgroup — xem phần Subgroup
-    "Có Đái tháo đường": "HR 0.64 (95% CI 0.52-0.79, p<0.001)",
-    "Không Đái tháo đường": "HR 0.50 (95% CI 0.35-0.72, p<0.001)",
-    "Châu Á": "HR 0.60 (95% CI 0.43-0.82, p=0.002)"
-  },
-  matrixEndpoints: {}            // (tùy chọn) cho bảng so sánh matrix
+---
+
+## 📐 3. Mô-Đun Thẩm Định Tạp Chí & Y Văn (Journal Quality Engine)
+
+Phân hệ tích hợp hệ thống kiểm định tạp chí 3 tầng:
+
+1. **Live OpenAlex API Lookup (`openalex-service.ts`)**:
+   - Truy vấn thông tin thời gian thực về ISSN, Nhà xuất bản, Số trích dẫn trung bình (CiteScore), H-index và tỷ lệ bài báo Open Access.
+2. **Journal Trust Scorer (`journal-trust-scorer.ts`)**:
+   - Tính toán điểm số từ 0 - 100 dựa trên trọng số chuẩn EBM:
+     $$\text{Score} = w_{\text{pub}} \times S_{\text{pub}} + w_{\text{peer}} \times S_{\text{peer}} + w_{\text{cite}} \times S_{\text{cite}} + w_{\text{index}} \times S_{\text{index}}$$
+   - Phân loại: 🟢 **Rất cao ($\ge 85$)**, 🔵 **Cao ($70 - 84$)**, 🟡 **Trung bình ($50 - 69$)**, 🔴 **Rủi ro ($< 50$)**.
+3. **Predatory Blacklist Audit (`data/predatory-blacklist.ts`)**:
+   - Tự động đối chiếu tên nhà xuất bản và tên tạp chí với danh sách Beall's List. Nếu phát hiện trùng khớp, hệ thống tự động gắn cờ cảnh báo đỏ (`⚠️ Nguy cơ Tạp chí Săn mồi`).
+
+---
+
+## 🌲 4. Động Cơ Forest Plot & Biểu Đồ SVG Thuần
+
+### `parseForestData(keyResults)`
+Trích xuất chuỗi kết quả lâm sàng dạng văn bản hoặc JSON thành cấu trúc toán học:
+```typescript
+interface ForestData {
+  label: string;      // "HR", "OR", "RR", "aOR", "ARR"
+  estimate: number;   // Điểm ước lượng (Point Estimate, vd: 0.86)
+  lower: number;      // Giới hạn dưới 95% CI (vd: 0.74)
+  upper: number;      // Giới hạn trên 95% CI (vd: 0.99)
+  pValue?: string;    // "0.04"
+  isSig?: boolean;    // true nếu không chứa 1.0 (cho ratio) hoặc 0.0 (cho difference)
 }
 ```
 
----
-
-## 🗃️ Lưu Trữ Dữ Liệu (Storage Layer)
-
-### Chế độ Local (mặc định)
-- Dùng **`localStorage`** với key `clinicalGuidelines`
-- Serialize/Deserialize bằng `JSON.stringify / JSON.parse`
-- Giới hạn ~5MB — đủ cho vài trăm nghiên cứu
-
-### Chế độ Supabase (cloud)
-- Kết nối qua SDK `@supabase/supabase-js v2` (CDN)
-- Bảng: `clinical_guidelines` (xem SQL schema trong README.md)
-- Tự động seed dữ liệu mẫu khi bảng cloud còn trống
-- Cấu hình URL/key lưu trong `localStorage` key `supabaseConfig`
-
-### Hàm lưu/đọc chính
-
-| Hàm | Mô tả |
-|-----|-------|
-| `initData()` | Đọc từ Supabase → fallback localStorage → fallback SAMPLE_STUDIES |
-| `saveToLocalStorage()` | Ghi `studies[]` vào localStorage |
-| `syncToSupabase()` | Upsert toàn bộ `studies[]` lên Supabase |
-| `loadFromSupabase()` | Fetch toàn bộ dữ liệu từ Supabase về |
+### `renderForestPlotSVG(fd)`
+Vẽ trực tiếp mã SVG inline (không thư viện Chart.js hay D3):
+- Đường trục tham chiếu $1.0$ (Đường vô hiệu - Null Effect Line).
+- Thanh ngang biểu diễn khoảng tin cậy $95\%\text{ CI}$ ($lower \rightarrow upper$).
+- Hình thoi / hình tròn tại điểm ước lượng $estimate$.
+- Tự động gán màu thích ứng:
+  - 🟢 Xanh lá: $estimate < 1.0$ và $upper < 1.0$ (Giảm nguy cơ có ý nghĩa).
+  - 🔴 Đỏ: $estimate > 1.0$ và $lower > 1.0$ (Tăng nguy cơ có ý nghĩa).
+  - ⚪ Xám: Khoảng tin cậy cắt qua $1.0$ ($lower < 1.0 < upper$ - Chưa đủ ý nghĩa thống kê).
 
 ---
 
-## 🌲 Forest Plot Mini — Cách Hoạt Động
+## 📋 5. Quy Trình Thêm Nghiên Cứu / Guideline Mới
 
-### `parseForestData(keyResults)` — Trích xuất chỉ số
-
-Hàm nhận chuỗi `keyResults` hoặc JSON object, trả về:
-```js
-{ label: "HR", estimate: 0.86, lower: 0.74, upper: 0.99, pValue: "0.04", isSig: true }
-```
-
-**Hỗ trợ 2 định dạng đầu vào:**
-
-1. **JSON Object** (khuyên dùng):
-```json
-{ "label": "HR", "estimate": 0.86, "lower": 0.74, "upper": 0.99, "p": "0.04" }
-```
-
-2. **Chuỗi văn bản** (tự động parse):
-```
-HR 0.86 (95% CI 0.74-0.99, p=0.04)
-OR 0.75 (95% CI 0.65-0.86)
-RR 0.91; 95% CI 0.84-0.99
-```
-
-**Các chỉ số được hỗ trợ**: `OR`, `RR`, `HR`, `aOR`, `aHR`, `RD`, `ARR`, `NNT`, `NNH`, `RRR`, `SMD`, `MD`, `WMD`, `IRR`, `PR`, `ORR`, `CR`
-
-### `renderForestPlotSVG(fd)` — Render SVG
-
-Vẽ inline SVG với đường trục, vạch 1.0, thanh CI và kim cương estimate. Màu tự động:
-- 🟢 Xanh lá: estimate < 1.0 (lợi ích)
-- 🔴 Đỏ: estimate > 1.0 (nguy cơ)
-- ⚪ Xám: estimate ≈ 1.0 (trung tính)
-
----
-
-## 🧬 Phân Tích Subgroup — Cách Hoạt Động
-
-### Cấu trúc dữ liệu subgroups
-
-```js
-study.subgroups = {
-  "Tên phân nhóm 1": "HR 0.64 (95% CI 0.52-0.79, p<0.001)",        // dạng chuỗi
-  "Tên phân nhóm 2": { "label": "OR", "estimate": 0.88, "lower": 0.72, "upper": 1.07, "p": "0.19" },  // dạng JSON
-  "Châu Á": "HR 0.60 (95% CI 0.43-0.82, p=0.002)"   // Key có "Châu Á" → tự gắn badge 🌏
-}
-```
-
-### Cách thêm dữ liệu Subgroup vào JSON khi import
-
-```json
-{
-  "id": "study_xxx",
-  "title": "Tên nghiên cứu",
-  "keyResults": "HR 0.86 (95% CI 0.74-0.99, p=0.04)",
-  "subgroups": {
-    "Phân nhóm A": "HR 0.72 (95% CI 0.60-0.86, p<0.001)",
-    "Phân nhóm B (Châu Á)": "OR 0.61 (95% CI 0.48-0.78, p<0.001)"
-  }
-}
-```
-
-### UI Subgroup
-
-| Element | Vị trí | Hành động |
-|---------|--------|-----------|
-| Badge `🧬 Subgroup (N)` | Cùng hàng tiêu đề trong bảng | Click → mở modal |
-| Nút `🧬 Subgroup (N)` | Trong dòng actions khi xổ chi tiết | Click → mở modal |
-| Modal `#subgroup-modal` | Overlay toàn màn hình | Hiển thị Grid Cards |
-
-### Hàm liên quan
-
-| Hàm | Mô tả |
-|-----|-------|
-| `renderSubgroupPanel(study)` | Tạo HTML Grid Cards từ `study.subgroups` |
-| `renderSubgroupForestRow(fd, overall)` | Vẽ SVG Forest Plot mini cho từng card |
-| `openSubgroupModal(id, event)` | Mở modal, render nội dung subgroup |
-| `closeSubgroupModal()` | Đóng modal (xóa class `active`) |
-
----
-
-## 🔲 Tính Năng Giao Diện Chính
-
-### Bộ lọc & Tìm kiếm
-
-| Filter | Trường `filters` | Mô tả |
-|--------|-----------------|-------|
-| Tìm kiếm tự do | `filters.search` | So khớp title, drug, summary, primaryEndpoint, population |
-| Chuyên khoa | `filters.specialty` | Dropdown SPECIALTIES |
-| Thiết kế | `filters.design` | Dropdown DESIGNS |
-| Loại ảnh hưởng | `filters.impact` | Dropdown IMPACTS |
-| Khoảng thời gian | `filters.yearFrom / yearTo` | Năm công bố |
-| Loại nguồn | `filters.sourceType` | Dropdown SOURCE_TYPES |
-| Đã đánh dấu | `filters.bookmarkedOnly` | boolean |
-| Có Subgroup | `filters.hasSubgroup` | boolean — từ sidebar nhanh |
-| Có bài tóm tắt | `filters.hasSummary` | boolean |
-| Dữ liệu Châu Á | `filters.asianOnly` | boolean |
-
-### Luồng render bảng
-
-```
-filterStudies() → sort → build HTML string → tbody.innerHTML
-```
-
-`renderTable()` được gọi khi: load trang, thay đổi bộ lọc, thêm/sửa/xóa nghiên cứu.
-
----
-
-## 🧩 Import / Export JSON
-
-### Format JSON chuẩn
-
-```json
-[
-  {
-    "id": "study_unique_id",
-    "title": "Tên nghiên cứu (BẮT BUỘC)",
-    "summary": "Kết luận ngắn (BẮT BUỘC)",
-    "drug": "Hoạt chất",
-    "sourceType": "intl-study",
-    "specialty": "cardio",
-    "design": "rct",
-    "year": 2023,
-    "organization": "NEJM",
-    "keyResults": "HR 0.86 (95% CI 0.74-0.99, p=0.04)",
-    "impact": "practice-changing",
-    "sampleSize": 7020,
-    "subgroups": {
-      "Phân nhóm 1": "HR 0.72 (95% CI 0.60-0.86, p<0.001)"
-    }
-  }
-]
-```
-
----
-
-## 🎨 CSS Architecture
-
-### Không hardcode màu hex!
-Luôn dùng CSS variables:
-```css
-/* ✅ ĐÚNG */
-color: var(--color-primary);
-background: var(--color-surface);
-
-/* ❌ SAI */
-color: #0284c7;
-```
-
-### Các CSS Block chính
-
-| Class | Dòng (~) | Mô tả |
-|-------|----------|-------|
-| `.study-table` | 514 | Bảng dữ liệu chính |
-| `.badge-summary-inline` | 676 | Badge nút Tóm tắt (xanh lá) |
-| `.badge-subgroup-inline` | 693 | Badge nút Subgroup (xanh ngọc) |
-| `.modal-overlay` | 884 | Overlay modal popup |
-| `.compare-grid` | 842 | Layout so sánh |
-| `.forest-plot-inline` | ~1470 | Wrapper Forest Plot |
-| `.sg-grid-container` | ~1495 | Grid Cards Subgroup |
-| `.sg-card` | ~1510 | Card phân nhóm |
-
----
-
-## ⚠️ Những Lỗi Thường Gặp
-
-| Lỗi | Nguyên nhân | Cách fix |
-|-----|-------------|----------|
-| Button không hoạt động | CSS class bị thiếu | Kiểm tra class trong Guidelines.css |
-| Modal không mở | Class `active` không được thêm đúng | Kiểm tra `classList.add('active')` |
-| Forest Plot không hiển thị | `keyResults` không match regex | Dùng JSON object format |
-| Subgroup badge không hiện | `study.subgroups` null hoặc array | Phải là `typeof === 'object'` |
-| Dữ liệu mất sau import | `subgroups` bị strip | Kiểm tra `importData()` giữ lại `subgroups` |
-| CSS không apply | Cache browser | Hard refresh Ctrl+F5 |
-
----
-
-## 📋 Các Hàm Quan Trọng — Index Nhanh
-
-| Hàm | Dòng (~) | Mục đích |
-|-----|----------|----------|
-| `initData()` | 130 | Khởi tạo dữ liệu khi load |
-| `filterStudies()` | 460 | Lọc studies[] theo filters |
-| `renderTable()` | 680 | Render toàn bộ bảng HTML |
-| `toggleExpandRow(id)` | 1038 | Xổ/đóng hàng chi tiết |
-| `openEditModal(id)` | 1269 | Mở form sửa nghiên cứu |
-| `saveStudy()` | 1190 | Lưu nghiên cứu mới/sửa |
-| `importData()` | 1375 | Import JSON |
-| `parseForestData(str)` | 1486 | Parse chuỗi chỉ số thành object |
-| `renderForestPlotSVG(fd)` | 1570 | Vẽ SVG Forest Plot chính |
-| `renderSubgroupPanel(study)` | 2063 | Render Grid Cards subgroup |
-| `renderSubgroupForestRow(fd)` | 2141 | Vẽ SVG Forest Plot mini cho card |
-| `openSubgroupModal(id)` | 2167 | Mở modal phân tích subgroup |
-| `closeSubgroupModal()` | 2182 | Đóng modal subgroup |
-| `filterBySubgroupData()` | 2187 | Lọc nghiên cứu có subgroup |
-| `updateSubgroupSidebarCount()` | 2208 | Cập nhật số đếm sidebar |
-
----
-
-## 🔧 Thêm Tính Năng Mới — Checklist
-
-- [ ] **Trường dữ liệu mới**: Thêm vào schema `SAMPLE_STUDIES` (GuidelinesData.js) + form HTML + save/load (Guidelines.js)
-- [ ] **Cột mới trong bảng**: Thêm vào `columnVisibility`, header `<th>`, và `renderTable()`
-- [ ] **Bộ lọc mới**: Thêm vào `filters` object + UI button/input + `filterStudies()`
-- [ ] **Modal mới**: Thêm HTML vào Guidelines.html + `openXxxModal()` / `closeXxxModal()` + Escape key listener
-- [ ] **CSS mới**: Thêm vào Guidelines.css, dùng CSS variables
-- [ ] **Cập nhật OPERATIONS.md** để phản ánh thay đổi
-
----
-
-*Cập nhật lần cuối: 2026-07-24 | Phân hệ: Guidelines & Nghiên Cứu Lâm Sàng | CliniPortal v2026*
+Khi có khuyến cáo hoặc nghiên cứu mới cần bổ sung:
+1. **Bước 1**: Mở tệp `src/content/ebm/guidelines/guidelinesdata.ts`.
+2. **Bước 2**: Thêm một bản ghi mới vào mảng `SAMPLE_STUDIES` tuân thủ đầy đủ schema `Study`.
+3. **Bước 3** (Nếu có bài viết HTML chuyên sâu): Tạo tệp tóm tắt `.html` trong `src/content/ebm/guidelines/kho-guidelines/<slug>.html`.
+4. **Bước 4**: Kiểm tra hiển thị trên bảng, kiểm tra Forest Plot SVG và chạy thử bộ lọc.

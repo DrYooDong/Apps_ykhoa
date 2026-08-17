@@ -1,10 +1,11 @@
 # Sơ đồ Vận hành Hệ sinh thái DocSpace
 
-DocSpace là "Không gian riêng" của bác sĩ trên nền tảng CliniPortal. Đây là phân hệ chạy hoàn toàn trên trình duyệt (client-side), lưu trữ dữ liệu nội bộ bằng Local Storage / IndexedDB và có thể hoạt động offline 100%.
+> **DocSpace Architecture & Operational Blueprint**: Không gian làm việc cá nhân hóa, trợ lý lâm sàng AI và sổ tay bệnh phòng kỹ thuật số dành cho Bác sĩ trên nền tảng **CliniPortal**.
+> **Môi trường hoạt động**: Client-Side 100% Offline-First, LocalStorage & IndexedDB, hỗ trợ kết nối Multi-Provider LLM API.
 
-Dưới đây là sơ đồ vận hành tổng thể của hệ sinh thái DocSpace:
+---
 
-## 1. Flowchart Tổng thể (Mermaid)
+## 1. Flowchart Tổng thể (Architecture Flowchart)
 
 ```mermaid
 graph TD
@@ -18,29 +19,29 @@ graph TD
     subgraph "1. User & Access Layer (Truy cập)"
         U([👤 Bác sĩ / Người dùng])
         Login[Profile Selector<br/>Đăng nhập / Tạo hồ sơ]:::core
-        Dash[Dashboard<br/>Màn hình Hub]:::core
+        Dash[Dashboard Hub<br/>Bento Grid DocSpace]:::core
     end
 
-    subgraph "2. Core Features Layer (Tính năng Cốt lõi)"
+    subgraph "2. Core Features Layer (Tính năng Lâm sàng)"
         SOAP[SOAP Digital<br/>Sổ tay Bệnh phòng]:::feature
         SBAR[SBAR<br/>Báo cáo & Bàn giao]:::feature
-        OnCall[Checklist<br/>Quản lý Trực]:::feature
-        Notes[Notepad<br/>Ghi chú cá nhân]:::feature
+        OnCall[Checklist OnCall<br/>Quản lý Tua trực]:::feature
+        Notes[Personal Notepad<br/>Ghi chú Markdown]:::feature
         Protocol[Personal Protocol<br/>Phác đồ Cá nhân]:::feature
         Links[Quick Links<br/>Danh bạ / Liên kết]:::feature
     end
 
-    subgraph "3. Experimental & AI Layer (Lab Mode)"
-        AIEngine[AI RAG Engine<br/>rag-engine.ts]:::ai
-        LivingProtocol[Living Protocols<br/>Phác đồ Động]:::ai
-        Sandbox[Sandbox<br/>Mô phỏng Ca bệnh]:::ai
-        AISettings[AI Settings<br/>Cấu hình Local LLM]:::ai
+    subgraph "3. AI & Clinical Lab Layer (Trợ lý AI)"
+        AIEngine[Multi-Provider Engine<br/>rag-engine.ts & ai-hub.ts]:::ai
+        LivingProtocol[Living Protocols<br/>Phác đồ Động thích ứng]:::ai
+        Sandbox[Sandbox<br/>Giả lập Ca bệnh OSCE]:::ai
+        AISettings[AI Settings<br/>Cấu hình LLM Presets]:::ai
     end
 
     subgraph "4. Data & Storage Layer (Lưu trữ Client-Side)"
         Storage[(Local Storage / IndexedDB<br/>storage.ts)]:::storage
-        FHIRAdapter[FHIR R4 Adapter<br/>Chuyển đổi chuẩn hóa]:::data
-        JSONExport[File Export/Import<br/>.json & FHIR JSON]:::data
+        FHIRAdapter[FHIR R4 Adapter<br/>Chuẩn hóa HL7 FHIR]:::data
+        JSONExport[File Backup / Export<br/>.json & FHIR JSON]:::data
     end
 
     %% Interactions - Access
@@ -72,51 +73,60 @@ graph TD
     Storage <--> JSONExport
 
     %% Interactions - AI
-    AISettings -. "Bật/Tắt tính năng Lab" .-> AIEngine
-    LivingProtocol -. "Gọi local AI" .-> AIEngine
-    Sandbox -. "Chạy giả lập" .-> AIEngine
-    SBAR -. "RAG Hỗ trợ" .-> AIEngine
+    AISettings -. "Bật/Tắt & Cấu hình LLM" .-> AIEngine
+    LivingProtocol -. "Truy vấn hướng dẫn" .-> AIEngine
+    Sandbox -. "Chạy giả lập tình huống" .-> AIEngine
+    SBAR -. "RAG Hỗ trợ tóm tắt" .-> AIEngine
     
     LivingProtocol <--> Storage
     Sandbox <--> Storage
 ```
 
+---
+
 ## 2. Các Lớp Kiến trúc (Architecture Layers)
 
 ### 2.1. User & Access Layer
-- **Profile Selector (`storage.ts`, `docspace-view.ts`)**: Mọi dữ liệu được phân lập (isolate) theo từng Hồ sơ Bác sĩ (Profile ID). Nếu chưa chọn hồ sơ, người dùng bắt buộc phải tạo/đăng nhập.
-- **Dashboard (`docspace-view.ts`)**: Trung tâm điều khiển (Hub) chứa thống kê tổng quan (số bệnh án SOAP, số SBAR đang hoạt động) và điều hướng (routing).
+- **Profile Selector (`src/content/docspace/core/storage.ts`, `src/content/docspace/docspace-view.ts`)**: Mọi dữ liệu lâm sàng được phân lập an toàn theo từng Hồ sơ Bác sĩ (`dsp_active_profile`). Người dùng có thể tạo nhiều hồ sơ tương ứng các khoa/bệnh viện khác nhau.
+- **Dashboard Hub**: Màn hình Bento Grid hiển thị số lượng hồ sơ SOAP, ca trực OnCall đang chạy, phác đồ thường dùng và thanh điều hướng nhanh.
 
 ### 2.2. Core Features Layer (Các tính năng lâm sàng)
-Tất cả các tính năng đều nằm trong thư mục `src/docspace/features/`:
-1. **SOAP Digital**: Quản lý bệnh án hằng ngày theo cấu trúc Subjective - Objective - Assessment - Plan.
-2. **SBAR**: Ghi chú hội chẩn, báo cáo ca bệnh (Situation - Background - Assessment - Recommendation).
-3. **OnCall**: Checklist các công việc trong tua trực (nhắc nhở sinh hiệu, thuốc, xét nghiệm).
-4. **Personal Notepad**: Ghi chú tự do bằng Markdown.
-5. **Personal Protocol**: Nơi bác sĩ tự xây dựng phác đồ cá nhân.
-6. **Quick Links**: Danh sách các liên kết, danh bạ nội bộ hay dùng.
+Tất cả các tính năng cốt lõi nằm tại `src/content/docspace/features/`:
+1. **SOAP Digital (`soap-view.ts`)**: Ghi chép diễn tiến bệnh phòng theo chuẩn y khoa quốc tế:
+   - **S (Subjective)**: Bệnh sử, triệu chứng cơ năng.
+   - **O (Objective)**: Khám lâm sàng, sinh hiệu, kết quả cận lâm sàng.
+   - **A (Assessment)**: Chẩn đoán sơ bộ, phân tầng nguy cơ, chẩn đoán phân biệt.
+   - **P (Plan)**: Kế hoạch điều trị thuốc, chỉ định xét nghiệm, dặn dò dinh dưỡng/chăm sóc.
+2. **SBAR (`sbar-view.ts`)**: Chuẩn hóa thông tin bàn giao ca trực và hội chẩn (Situation - Background - Assessment - Recommendation), giảm thiểu sai sót y khoa.
+3. **OnCall Checklist (`oncall-view.ts`)**: Bảng kiểm công việc trong tua trực (theo dõi sinh hiệu bệnh nặng, kiểm tra đường huyết mao mạch, giờ tiêm kháng sinh, đọc kết quả xét nghiệm cấp).
+4. **Personal Notepad (`notepad-view.ts`)**: Sổ tay ghi chép cá nhân với trình soạn thảo Markdown trực quan.
+5. **Personal Protocol (`protocol-view.ts`)**: Nơi bác sĩ tùy biến và lưu trữ phác đồ điều trị theo kinh nghiệm và phân tuyến bệnh viện.
+6. **Quick Links (`links-view.ts`)**: Danh mục đường dẫn tra cứu nhanh (Dược thư quốc gia, UpToDate, PubMed, Cổng BYT...).
 
-### 2.3. Experimental & AI Layer (Phân hệ AI)
-Thư mục `src/docspace/ai/` xử lý kết nối với Local LLM / Cloud API Miễn phí:
-- **AI Settings & Multi-Provider Engine**: Giao diện cấu hình 1-Click Presets hỗ trợ các nhà cung cấp LLM API miễn phí vĩnh viễn (Groq, Google Gemini 1M Context, OpenRouter, SambaNova) và Local LLM (Ollama/LM Studio/9ROUTER). Tích hợp **Multi-Provider Fallback Engine** tự động chuyển tiếp Provider phụ khi rớt mạng hoặc hết quota (HTTP 429).
-- **RAG Engine**: Hệ thống nhúng (Embeddings) và lưu trữ vector nội bộ để hỗ trợ tìm kiếm ngữ nghĩa trong Case Logger và SBAR.
-- **Living Protocols**: Tạo phác đồ xử trí có khả năng điều chỉnh linh hoạt dựa trên dữ kiện bệnh nhân đầu vào qua AI.
-- **Sandbox Mô phỏng**: Môi trường giả lập tình huống lâm sàng (như thi OSCE) để bác sĩ luyện tập.
+### 2.3. AI & Clinical Lab Layer (Trợ lý AI Lâm sàng)
+Mô-đun `src/content/docspace/ai/` xử lý kết nối linh hoạt:
+- **Multi-Provider LLM Engine**: Hỗ trợ 1-Click kết nối các dịch vụ AI miễn phí/chuyên dụng:
+  - **Google Gemini API** (Context lớn, xử lý y văn sâu).
+  - **Groq API** (Tốc độ phản hồi cực nhanh, $\approx 500\text{ tokens/s}$).
+  - **OpenRouter & SambaNova API** (Hỗ trợ đa dạng mô hình Llama 3, DeepSeek, Mistral).
+  - **Local LLM** (Ollama, LM Studio) chạy nội bộ không gửi dữ liệu ra ngoài Internet, đảm bảo 100% quyền riêng tư bệnh nhân.
+- **Multi-Provider Fallback Engine**: Tự động chuyển đổi provider dự phòng khi gặp sự cố mạng hoặc hết quota (HTTP 429).
+- **Living Protocols (`src/content/docspace/data/living-protocol-templates/`)**: Phác đồ điều trị có khả năng tự động đối chiếu thông tin bệnh nhân đầu vào để gợi ý liều dùng tối ưu.
+- **Clinical Sandbox**: Môi trường diễn tập ca bệnh mô phỏng hỗ trợ bác sĩ trẻ và sinh viên luyện kỹ năng hỏi bệnh và biện luận.
 
 ### 2.4. Data & Storage Layer
-Tất cả xử lý lưu trữ tập trung tại `src/docspace/storage.ts`:
-- **Local Storage / IndexedDB**: Không dùng backend server. Dữ liệu lưu hoàn toàn trên trình duyệt người dùng.
-- **Auto-Save Hook (`quick-save.ts`)**: Cơ chế tự động lưu khi bác sĩ gõ phím.
-- **FHIR R4 Interoperability (`fhir-adapter.ts`)**: Bộ chuyển đổi (Adapter) cho phép ánh xạ dữ liệu SOAP/SBAR/Case sang định dạng chuẩn HL7 FHIR R4 (như *Practitioner, ClinicalImpression, Composition, Bundle*).
-- **Export / Import**: Quản lý việc sao lưu thành file `.json` thông thường, hoặc trích xuất/nạp dữ liệu y khoa chuẩn hóa qua định dạng `.json` của FHIR để đồng bộ với các hệ thống HIS/EMR của bệnh viện. 
+Tập trung tại `src/content/docspace/core/storage.ts`:
+- **Local Storage / IndexedDB**: Không yêu cầu máy chủ backend. Dữ liệu bảo mật 100% trên thiết bị cá nhân.
+- **Auto-Save Engine (`quick-save.ts`)**: Tự động lưu tức thì sau mỗi thao tác nhập liệu của bác sĩ.
+- **FHIR R4 Interoperability (`fhir-adapter.ts`)**: Bộ chuyển đổi tương thích tiêu chuẩn y tế quốc tế HL7 FHIR R4 (Practitioner, Encounter, Condition, ClinicalImpression, Bundle), cho phép xuất dữ liệu đồng bộ với hệ thống HIS/EMR của bệnh viện.
+- **Export & Import**: Sao lưu toàn diện dưới dạng `.json` hoặc file FHIR Bundle chuẩn hóa.
 
-## 3. Quy trình Vận hành Tiêu chuẩn (Standard Operating Procedure)
+---
 
-1. **Khởi động**: Người dùng vào `#/docspace`. Trình duyệt kiểm tra LocalStorage xem có `dsp_active_profile` chưa.
-2. **Xác thực**: Nếu chưa, render màn hình **Profile Selector**. Người dùng tạo hoặc chọn Profile.
-3. **Điều hướng**: Sau khi có Profile, hệ thống render **Dashboard** và **Sidebar**. Sidebar được sử dụng để chuyển đổi nhanh giữa các công cụ.
-4. **Làm việc (VD: Tạo SOAP mới)**: 
-   - Controller (`soap-view.ts`) lấy `profileId`.
-   - Render form. Bác sĩ điền nội dung.
-   - Khi có thay đổi (input event), hook `quick-save` sẽ tự động trigger `saveDocSpaceData()`.
-5. **Sao lưu**: Bác sĩ định kỳ click "Export" ở Sidebar để tải file `.json` về máy.
+## 3. Quy Trình Vận Hành Tiêu Chuẩn (SOP)
+
+1. **Khởi động**: Truy cập route `#/docspace`. Hệ thống kiểm tra hồ sơ `dsp_active_profile`.
+2. **Xác thực**: Nếu chưa có hồ sơ, hiển thị màn hình **Profile Selector** để tạo hoặc chọn bác sĩ phụ trách.
+3. **Điều hướng**: Màn hình Bento Hub tải dữ liệu tổng quan, mở thanh công cụ bên trái.
+4. **Tác nghiệp lâm sàng**: Bác sĩ tạo hồ sơ SOAP hoặc SBAR. Khi nhập liệu, `quick-save` lưu dữ liệu thời gian thực.
+5. **Sao lưu định kỳ**: Bác sĩ bấm nút **Export Backup** để tải tệp mã hóa JSON về máy tính cá nhân.
