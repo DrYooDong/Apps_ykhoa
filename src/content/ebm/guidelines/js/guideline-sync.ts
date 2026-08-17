@@ -725,6 +725,13 @@ export function processStudyFields(s: any): Study {
     year: typeof s.year === 'number' ? s.year : (parseInt(s.year, 10) || new Date().getFullYear()),
     asianData: parseBool(s.asianData),
     bookmarked: parseBool(s.bookmarked),
+    parts: (() => {
+      if (Array.isArray(s.parts)) return s.parts;
+      if (typeof s.parts === 'string' && s.parts.trim().startsWith('[')) {
+        try { return JSON.parse(s.parts); } catch(e) {}
+      }
+      return undefined;
+    })(),
     createdAt: s.createdAt || s.created_at || (typeof s.id === 'string' && s.id.startsWith('study_') ? (() => {
       const m = s.id.match(/study_(\d{10,13})/);
       return m ? new Date(parseInt(m[1], 10)).toISOString() : undefined;

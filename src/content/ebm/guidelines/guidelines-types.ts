@@ -293,7 +293,7 @@ declare global {
     handleAsianFilterChange?: () => void;
     setCompareMode?: (mode: string) => void;
     clearComparison?: () => void;
-    addSummaryPartRow?: () => void;
+    addSummaryPartRow?: (title?: string, file?: string) => void;
     closePocketModal?: () => void;
     closeCitationModal?: () => void;
     closeDecisionModal?: () => void;
@@ -315,6 +315,7 @@ declare global {
     toggleColumnsDropdown?: (event?: Event) => void;
     toggleColumnVisibility?: (colName: string, isVisible: boolean) => void;
     renderSummaryButton?: (study: Study, variant?: string) => string;
+    renderSummaryActionButton?: (study: Study) => string;
     toggleSummaryPartsMenu?: (menuId: string, event?: Event) => void;
     getFilteredStudies?: () => Study[];
     toggleSelectStudy?: (id: string, isChecked: boolean) => void;

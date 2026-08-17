@@ -354,11 +354,21 @@ export function toggleColumnVisibility(colName: string, isVisible: boolean): voi
 }
 
 export function renderSummaryButton(study: Study, variant = 'badge'): string {
-  const parts = (study.parts && Array.isArray(study.parts) && study.parts.length > 0)
-    ? study.parts
-    : (study.file ? [{ title: 'Tóm tắt', file: study.file }] : []);
+  let parts: any[] = [];
+  if (Array.isArray(study.parts) && study.parts.length > 0) {
+    parts = study.parts;
+  } else if (typeof study.parts === 'string') {
+    try {
+      const parsed = JSON.parse(study.parts);
+      if (Array.isArray(parsed) && parsed.length > 0) parts = parsed;
+    } catch(e) {}
+  }
+  
+  if (parts.length === 0 && study.file) {
+    parts = [{ title: 'Tóm tắt', file: study.file }];
+  }
 
-  if (!parts || parts.length === 0) return '';
+  if (parts.length === 0) return '';
   const isMulti = parts.length > 1;
 
   if (!isMulti) {
@@ -377,7 +387,7 @@ export function renderSummaryButton(study: Study, variant = 'badge'): string {
   const menuId = 'summary-parts-menu-' + study.id + '-' + variant + '-' + Math.floor(Math.random() * 10000);
   const itemsHtml = parts.map((p: any, idx: number) => `
     <a href="${window.resolveStudyFile ? window.resolveStudyFile(p.file) : p.file}" class="summary-parts-item" onclick="event.stopPropagation()">
-      <i class="fa-solid fa-file-lines" style="color: var(--accent); margin-right: 6px;"></i>
+      <i class="fa-solid fa-file-lines" style="color: var(--color-primary, #0284c7); margin-right: 6px;"></i>
       <span>${escapeHtml(p.title || p.label || ('Phần ' + (idx + 1)))}</span>
     </a>
   `).join('');
@@ -394,10 +404,51 @@ export function renderSummaryButton(study: Study, variant = 'badge'): string {
 
   return `
     <div class="summary-parts-dropdown" style="position:relative; display:inline-block;">
-      <button type="button" class="${btnClass}" style="${btnStyle}" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Chọn phần tóm tắt">
+      <button type="button" class="${btnClass}" style="${btnStyle}" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Xem ${parts.length} phần tóm tắt">
         📝 Tóm tắt (${parts.length} Phần) <span style="font-size:9px; margin-left:3px;">▼</span>
       </button>
       <div id="${menuId}" class="summary-parts-menu" onclick="event.stopPropagation()">
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); padding: 4px 8px 6px; border-bottom: 1px solid var(--border-light); margin-bottom: 4px;">
+          📚 Danh sách bài tóm tắt (${parts.length} phần):
+        </div>
+        ${itemsHtml}
+      </div>
+    </div>
+  `;
+}
+
+export function renderSummaryActionButton(study: Study): string {
+  let parts: any[] = [];
+  if (Array.isArray(study.parts) && study.parts.length > 0) {
+    parts = study.parts;
+  } else if (typeof study.parts === 'string') {
+    try {
+      const parsed = JSON.parse(study.parts);
+      if (Array.isArray(parsed) && parsed.length > 0) parts = parsed;
+    } catch(e) {}
+  }
+  if (parts.length === 0 && study.file) {
+    parts = [{ title: 'Tóm tắt', file: study.file }];
+  }
+  if (parts.length === 0) return '';
+  if (parts.length === 1) {
+    const fileUrl = window.resolveStudyFile ? window.resolveStudyFile((parts[0] as any).file) : (parts[0] as any).file;
+    return `<a href="${fileUrl}" class="btn btn-small btn-primary" title="Đọc bài tóm tắt" onclick="event.stopPropagation()">📖</a>`;
+  }
+  const menuId = 'summary-parts-act-' + study.id + '-' + Math.floor(Math.random() * 10000);
+  const itemsHtml = parts.map((p: any, idx: number) => `
+    <a href="${window.resolveStudyFile ? window.resolveStudyFile(p.file) : p.file}" class="summary-parts-item" onclick="event.stopPropagation()">
+      <i class="fa-solid fa-file-lines" style="color: var(--color-primary, #0284c7); margin-right: 6px;"></i>
+      <span>${escapeHtml(p.title || p.label || ('Phần ' + (idx + 1)))}</span>
+    </a>
+  `).join('');
+  return `
+    <div class="summary-parts-dropdown" style="position:relative; display:inline-block;">
+      <button type="button" class="btn btn-small btn-primary" onclick="event.stopPropagation(); toggleSummaryPartsMenu('${menuId}', event)" title="Đọc bài tóm tắt (${parts.length} phần)">📖 <span style="font-size:8px;">▼</span></button>
+      <div id="${menuId}" class="summary-parts-menu" style="right:0; left:auto;" onclick="event.stopPropagation()">
+        <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); padding: 4px 8px 6px; border-bottom: 1px solid var(--border-light); margin-bottom: 4px;">
+          📚 Danh sách bài tóm tắt (${parts.length} phần):
+        </div>
         ${itemsHtml}
       </div>
     </div>
@@ -413,6 +464,16 @@ export function toggleSummaryPartsMenu(menuId: string, event?: Event): void {
   if (!isAlreadyActive) {
     menu.classList.add('active');
   }
+}
+
+// Global click listener to close summary menus when clicking outside
+if (typeof document !== 'undefined') {
+  document.addEventListener('click', (e: MouseEvent) => {
+    const target = e.target as HTMLElement | null;
+    if (!target || !target.closest('.summary-parts-dropdown')) {
+      document.querySelectorAll('.summary-parts-menu.active').forEach(m => m.classList.remove('active'));
+    }
+  });
 }
 
 function escapeHtml(str?: string): string {
@@ -683,7 +744,7 @@ export function renderTable(): void {
           <div style="display:flex; gap:4px; align-items:center; justify-content:center;">
             <button class="btn btn-small" onclick="window.GuidelineTools && window.GuidelineTools.addToCompare('${study.id}')" title="Thêm vào đối sánh">⚖️</button>
             <button class="btn btn-small" onclick="window.openResearchToolkitModal && window.openResearchToolkitModal('citation', window.studies.find(s=>s.id==='${study.id}'))" title="Trích dẫn &amp; Thẩm định khoa học">🔬</button>
-            ${study.file ? `<a href="${window.resolveStudyFile ? window.resolveStudyFile(study.file) : study.file}" class="btn btn-small btn-primary" title="Đọc bài tóm tắt">📖</a>` : ''}
+            ${renderSummaryActionButton(study)}
             <button class="btn btn-small" onclick="window.openEditModal ? window.openEditModal('${study.id}') : null" title="Chỉnh sửa">✏️</button>
             <button class="btn btn-small btn-danger" onclick="deleteStudy('${study.id}')" title="Xóa nghiên cứu này">🗑️</button>
           </div>
@@ -821,6 +882,7 @@ if (typeof window !== 'undefined') {
   window.toggleColumnsDropdown = toggleColumnsDropdown;
   window.toggleColumnVisibility = toggleColumnVisibility;
   window.renderSummaryButton = renderSummaryButton;
+  window.renderSummaryActionButton = renderSummaryActionButton;
   window.toggleSummaryPartsMenu = toggleSummaryPartsMenu;
   window.getFilteredStudies = getFilteredStudies;
   window.renderTable = renderTable;

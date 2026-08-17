@@ -50,6 +50,9 @@ export function openAddModal(): void {
   const form = (document.getElementById('add-form') || document.getElementById('study-form')) as HTMLFormElement | null;
   if (form) form.reset();
   
+  const partsContainer = document.getElementById('summary-parts-container');
+  if (partsContainer) partsContainer.innerHTML = '';
+
   const titleEl = document.getElementById('modal-form-title') || document.getElementById('study-modal-title');
   if (titleEl) titleEl.textContent = '➕ Thêm Hướng Dẫn / Nghiên Cứu Lâm Sàng Mới';
 
@@ -276,8 +279,27 @@ export function openEditModal(id: string): void {
   setValueToIds(study.summary, 'study-summary', 'form-summary');
   setValueToIds(study.detailedConclusion, 'study-detailed-conclusion', 'form-detailedConclusion');
   setValueToIds(study.file, 'study-file', 'form-file');
+  setValueToIds(study.sourceUrl, 'study-source-url', 'form-sourceUrl');
   setValueToIds(Array.isArray(study.icd10) ? study.icd10.join(', ') : (study.icd10 || ''), 'study-icd10');
   setCheckboxToIds(study.asianData, 'study-asian-data', 'form-asianData');
+
+  const partsContainer = document.getElementById('summary-parts-container');
+  if (partsContainer) {
+    partsContainer.innerHTML = '';
+    let studyParts: any[] = [];
+    if (Array.isArray(study.parts)) {
+      studyParts = study.parts;
+    } else if (typeof study.parts === 'string') {
+      try { studyParts = JSON.parse(study.parts); } catch(e) {}
+    }
+    if (studyParts && studyParts.length > 0) {
+      studyParts.forEach(p => {
+        if (typeof window.addSummaryPartRow === 'function') {
+          window.addSummaryPartRow(p.title || p.label || '', p.file || '');
+        }
+      });
+    }
+  }
 
   const modal = document.getElementById('add-modal') || document.getElementById('study-modal');
   if (modal) modal.classList.add('active');
@@ -306,6 +328,25 @@ export function handleFormSubmit(event?: Event): void {
   const snipVal = parseFloat(getValueFromIds('study-snip'));
   const hIndexVal = parseInt(getValueFromIds('study-hindex'), 10);
 
+  // Thu thập danh sách các phần tóm tắt (Parts)
+  const partRows = document.querySelectorAll('#summary-parts-container .summary-part-row');
+  const partsList: any[] = [];
+  partRows.forEach(row => {
+    const titleInput = row.querySelector('.summary-part-title') as HTMLInputElement | null;
+    const fileInput = row.querySelector('.summary-part-file') as HTMLInputElement | null;
+    const pTitle = titleInput?.value?.trim() || '';
+    const pFile = fileInput?.value?.trim() || '';
+    if (pFile || pTitle) {
+      partsList.push({
+        title: pTitle || 'Tóm tắt',
+        file: pFile
+      });
+    }
+  });
+
+  const mainFile = getValueFromIds('study-file', 'form-file');
+  const finalFile = mainFile || (partsList.length > 0 ? partsList[0].file : undefined);
+
   const studyData: Study = {
     id: editingStudyId || (window.generateId ? window.generateId() : 'study_' + Date.now()),
     title: title,
@@ -330,7 +371,9 @@ export function handleFormSubmit(event?: Event): void {
     population: getValueFromIds('study-population', 'form-population') || 'N/A',
     summary: getValueFromIds('study-summary', 'form-summary') || 'Không có kết luận',
     detailedConclusion: getValueFromIds('study-detailed-conclusion', 'form-detailedConclusion'),
-    file: getValueFromIds('study-file', 'form-file'),
+    sourceUrl: getValueFromIds('study-source-url', 'form-sourceUrl'),
+    file: finalFile,
+    parts: partsList.length > 0 ? partsList : undefined,
     icd10: icdList,
     asianData: getCheckboxFromIds('study-asian-data', 'form-asianData'),
     bookmarked: false,

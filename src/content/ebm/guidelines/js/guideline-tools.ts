@@ -95,16 +95,21 @@ export function clearComparison(): void {
   if (emptyState) emptyState.style.display = 'block';
 }
 
-export function addSummaryPartRow(): void {
+function escapeStr(str?: string): string {
+  if (!str) return '';
+  return String(str).replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+export function addSummaryPartRow(title = '', file = ''): void {
   const container = document.getElementById('summary-parts-container');
   if (!container) return;
   const row = document.createElement('div');
   row.className = 'summary-part-row';
   row.style.cssText = 'display:flex; gap:8px; margin-bottom:8px; align-items:center;';
   row.innerHTML = `
-    <input type="text" placeholder="Tên phần (VD: Phần 1: Đại cương)" class="summary-part-title" style="flex:1; padding:0.4rem; border:1px solid var(--border-light); border-radius:6px; background:var(--surface);">
-    <input type="text" placeholder="File HTML (VD: 2024-byt-lao-p1.html)" class="summary-part-file" style="flex:1; padding:0.4rem; border:1px solid var(--border-light); border-radius:6px; background:var(--surface);">
-    <button type="button" class="btn btn-small btn-danger" onclick="this.parentElement.remove()" style="padding:0.4rem 0.6rem;">🗑️</button>
+    <input type="text" placeholder="Tên phần (VD: Phần 1: Viêm đường mật cấp)" class="summary-part-title" value="${escapeStr(title)}" style="flex:1; padding:0.45rem 0.6rem; border:1px solid var(--border-light); border-radius:6px; background:var(--surface); color:var(--text); font-size:0.85rem;">
+    <input type="text" placeholder="File HTML (VD: kho-guidelines/2018-tg18-viem-duong-mat.html)" class="summary-part-file" value="${escapeStr(file)}" style="flex:1; padding:0.45rem 0.6rem; border:1px solid var(--border-light); border-radius:6px; background:var(--surface); color:var(--text); font-size:0.85rem;">
+    <button type="button" class="btn btn-small btn-danger" onclick="this.parentElement.remove()" style="padding:0.45rem 0.7rem; color:#ef4444; border-color:rgba(239,68,68,0.3);" title="Xóa phần này">🗑️</button>
   `;
   container.appendChild(row);
 }
