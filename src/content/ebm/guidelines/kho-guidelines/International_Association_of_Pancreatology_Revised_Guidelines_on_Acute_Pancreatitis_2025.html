@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hướng dẫn Đồng thuận Quốc tế IAP 2025 về Quản lý Viêm tụy cấp (Pancreatology 2025) — Bản cập nhật 18 miền lâm sàng: Chẩn đoán 2/3, Lactated Ringer's vừa phải 1.5 ml/kg/h (WATERFALL), cấm kháng sinh dự phòng, ăn đặc ít béo sớm, can thiệp Step-Up hoại tử tụy và hội chứng DPDS.">
+  <meta name="journal" content="Pancreatology">
+  <title>IAP 2025: Hướng Dẫn Đồng Thuận Quốc Tế về Viêm Tụy Cấp – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --indigo: #4f46e5; --indigo-bg: #eef2ff;
+      --accent: #0284c7;
+      --accent-gradient: linear-gradient(135deg, #0c4a6e 0%, #0369a1 45%, #0d9488 100%);
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1329; --surface: #131f37; --surface-2: #1a2a4a;
+      --border: #2c3e60; --border-light: #1f304d;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.18); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.18); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.18); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.18); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.18); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.18); --purple-light: rgba(221, 214, 254, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .page-footer, .btn-row, #calc-reset { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(19, 31, 55, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-blue { background: var(--blue-bg); color: #0284c7; border: 1px solid var(--blue-light); }
+    [data-theme="dark"] .badge-blue { color: #7dd3fc; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    [data-theme="dark"] .badge-green { color: #6ee7b7; }
+    .badge-purple { background: var(--purple-bg); color: #6b21a8; border: 1px solid var(--purple-light); }
+    [data-theme="dark"] .badge-purple { color: #d8b4fe; }
+
+    .topnav-theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 0.35rem 0.6rem; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; transition: all var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+
+    /* HERO */
+    .hero { background: var(--accent-gradient); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(13, 148, 136, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.92; max-width: 820px; margin-bottom: 1.8rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.8rem; font-size: 0.8rem; opacity: 0.88; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.55rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--red); }
+
+    /* KPI STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.1rem 1.25rem; text-align: center; transition: transform var(--tr); }
+    .stat-card:hover { transform: translateY(-2px); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--accent); line-height: 1.2; }
+    .stat-val.green { color: var(--green); }
+    .stat-val.red { color: var(--red); }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top: 0.3rem; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.25rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-badge { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 12px; background: var(--blue-bg); color: var(--accent); border: 1px solid var(--blue-light); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* GRID LAYOUTS */
+    .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.25rem; }
+    .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+
+    /* CLINICAL CARDS */
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .clin-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .clin-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .accent-green { background: var(--green); }
+    .accent-orange { background: var(--orange); }
+    .accent-red { background: var(--red); }
+    .accent-blue { background: var(--blue); }
+    .accent-teal { background: var(--teal); }
+    .accent-purple { background: var(--purple); }
+
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text); margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: space-between; }
+    .clin-card-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+    .clin-card-list { list-style: none; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.45rem; }
+    .clin-card-list li { display: flex; align-items: flex-start; gap: 0.45rem; font-size: 0.83rem; }
+    .clin-card-list li::before { content: '•'; color: var(--accent); font-weight: 800; }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; border-radius: 12px; border: 1px solid var(--border-light); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; }
+    .data-table thead th { padding: 0.75rem 0.95rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--surface-2); color: var(--text); border-bottom: 1px solid var(--border-light); text-align: left; }
+    .data-table td { padding: 0.85rem 0.95rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: var(--surface-2); }
+
+    /* SVG DIAGRAM CONTAINER */
+    .svg-diagram-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.25rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* CLINICAL CALCULATOR & CDSS WIDGET */
+    .widget-box { background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); border: 2px solid var(--blue-light); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    .widget-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+    .widget-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 0.5rem; }
+    .widget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+    .calc-section { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1rem 1.15rem; }
+    .calc-section-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+    .calc-field { margin-bottom: 0.75rem; }
+    .calc-field label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .calc-field input, .calc-field select { width: 100%; padding: 0.45rem 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+    .calc-checkbox-label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.82rem; margin-bottom: 0.55rem; cursor: pointer; line-height: 1.45; }
+    .calc-checkbox-label:last-child { margin-bottom: 0; }
+    .calc-checkbox-label input { margin-top: 0.2rem; cursor: pointer; accent-color: var(--accent); }
+    
+    .calc-result-box { background: var(--surface); border: 2px solid var(--border); border-radius: 14px; padding: 1.25rem; }
+    .calc-result-header { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .calc-result-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.1rem; font-weight: 800; padding: 0.45rem 1rem; border-radius: 10px; margin-bottom: 0.75rem; }
+    .res-mild { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .res-mod { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .res-severe { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    [data-theme="dark"] .res-mild { background: rgba(22, 163, 74, 0.25); color: #86efac; }
+    [data-theme="dark"] .res-mod { background: rgba(217, 119, 6, 0.25); color: #fde68a; }
+    [data-theme="dark"] .res-severe { background: rgba(220, 38, 38, 0.3); color: #fca5a5; }
+
+    .calc-result-advice { font-size: 0.85rem; line-height: 1.6; color: var(--text); margin-top: 0.5rem; }
+    .btn-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.5rem 1rem; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all var(--tr); border: 1px solid var(--border-light); background: var(--surface); color: var(--text-muted); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { opacity: 0.92; background: var(--accent); color: #fff; }
+
+    /* AMA CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+    .citation-item { margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px dashed var(--border-light); }
+    .citation-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .citation-num { font-weight: 700; color: var(--accent); margin-right: 0.35rem; }
+
+    /* FOOTER */
+    .page-footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); background: var(--surface); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .hero { padding: 2.5rem 1rem 3.5rem; }
+      .hero-title { font-size: 1.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">IAP 2025: Hướng Dẫn Đồng Thuận Quốc Tế về Viêm Tụy Cấp</div>
+    <div class="topnav-badges">
+      <span class="badge badge-blue">IAP 2025 Revised</span>
+      <span class="badge badge-green">Consensus Guideline</span>
+      <span class="badge badge-purple">Gan Mật & Tụy</span>
+      <button class="topnav-theme-toggle" id="theme-toggle" title="Đổi giao diện Sáng/Tối" aria-label="Toggle Theme">🌓</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge-strip">
+        <div class="hero-badge">🏛️ IAP / APA / EPC / IPC / JPS Đồng Thuận Quốc Tế</div>
+        <div class="hero-badge">📄 Pancreatology 2025; 25(6):770-814</div>
+      </div>
+      <h1 class="hero-title">
+        <span>International Association of Pancreatology Revised Guidelines 2025</span>
+        Hướng Dẫn Đồng Thuận Quốc Tế IAP 2025: Quản Lý Toàn Diện Viêm Tụy Cấp (18 Miền Lâm Sàng)
+      </h1>
+      <p class="hero-subtitle">
+        Bản cập nhật hướng dẫn điều trị lớn nhất trong 10 năm qua từ Hiệp hội Tụy học Quốc tế (IAP): Chuẩn hóa chẩn đoán 2/3, hồi sức dịch vừa phải 1.5 ml/kg/h bằng Lactated Ringer's (thử nghiệm WATERFALL), cấm kháng sinh dự phòng thường quy, cho ăn thức ăn đặc ít béo sớm, chỉ định ERCP chuẩn xác, chiến lược Step-Up can thiệp hoại tử tụy (PCD/ETD LAMS/VARD), quản lý các biến chứng cấp & lâu dài (tiểu đường mới mắc 23%, suy tụy PEI 27-35%) và Hội chứng đứt đoạn ống tụy (DPDS).
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">🏛️ <strong>Tổ chức:</strong> IAP, APA, EPC, IPC, JPS Working Group</div>
+        <div class="hero-meta-item">📅 <strong>Năm:</strong> 2025 | <strong>Tạp chí:</strong> Pancreatology (Q1)</div>
+        <div class="hero-meta-item">🎯 <strong>Mức độ tác động:</strong> Practice-Changing (Kim chỉ nam toàn cầu)</div>
+        <div class="hero-meta-item">🔬 <strong>Quy mô:</strong> 18 Miền lâm sàng (Từ tiếp nhận cấp cứu đến theo dõi mạn tính)</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <nav class="pillars-nav" aria-label="Mục lục hướng dẫn">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. Chẩn Đoán & Tiên Lượng</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Truyền Dịch LR & Dinh Dưỡng</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Kháng Sinh & Đường Mật</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Can Thiệp Step-Up Hoại Tử</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Biến Chứng & Thể Đặc Biệt</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Xuất Viện, PEI & Hội Chứng DPDS</a>
+      <a href="#sec-7" class="pillar-tab p-6">7. Bedside IAP Calculator</a>
+    </div>
+  </nav>
+
+  <!-- KPI STATS STRIP -->
+  <section class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val green">1.5 ml/kg/h LR</div>
+        <div class="stat-lbl">Chiến lược truyền dịch vừa phải (WATERFALL: Tránh quá tải dịch 21%)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val red">CẤM Kháng Sinh</div>
+        <div class="stat-lbl">Không dùng kháng sinh dự phòng hoặc men vi sinh Probiotics thường quy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val green">Ăn Đặc Ít Béo Sớm</div>
+        <div class="stat-lbl">Bắt đầu ngay khi có cảm giác thèm ăn (rút ngắn nằm viện hơn ăn lỏng)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">Step-Up &gt; 4 Tuần</div>
+        <div class="stat-lbl">Trì hoãn can thiệp đến khi tạo WON: Kháng sinh → PCD/ETD → VARD</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="page-content">
+
+    <!-- SECTION 1: CHẨN ĐOÁN & TIÊN LƯỢNG (MIỀN I - III) -->
+    <section class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🔬</span>
+          <h2 class="sec-title">I. Chẩn Đoán, Xác Định Nguyên Nhân, Tiên Lượng & Chẩn Đoán Hình Ảnh (Miền I - III)</h2>
+        </div>
+        <span class="sec-badge">Miền I - III</span>
+      </div>
+      <div class="sec-body">
+        
+        <!-- CHẨN ĐOÁN 2/3 -->
+        <h3 class="sec-subtitle">1. Tiêu Chuẩn Chẩn Đoán Viêm Tụy Cấp (Thỏa ≥ 2 trong 3 tiêu chí)</h3>
+        <div class="grid-3col" style="margin-bottom: 1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>1. Lâm Sàng Điển Hình</span>
+              <span class="badge badge-blue">Đau Thượng Vị</span>
+            </div>
+            <div class="clin-card-body">
+              Đau bụng thượng vị cấp tính, khởi phát dữ dội, liên tục, thường lan xiên ra sau lưng.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>2. Men Tụy Tăng Cao</span>
+              <span class="badge badge-teal">Lipase / Amylase ≥ 3x ULN</span>
+            </div>
+            <div class="clin-card-body">
+              Lipase hoặc Amylase huyết thanh tăng cao <strong>gấp 3 lần giới hạn trên bình thường (ULN)</strong> trở lên. <em>Không khuyến cáo theo dõi men tụy hàng ngày vì không tương quan độ nặng.</em>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>3. Hình Ảnh Học Điển Hình</span>
+              <span class="badge badge-purple">Siêu Âm / CECT / MRI</span>
+            </div>
+            <div class="clin-card-body">
+              Đặc điểm viêm tụy cấp (phù nề nhu mô hoặc hoại tử tụy/quanh tụy) trên siêu âm hoặc CT/MRI.
+            </div>
+          </div>
+        </div>
+
+        <!-- NGUYÊN NHÂN & QUY TRÌNH VÔ CĂN -->
+        <h3 class="sec-subtitle">2. Xác Định Nguyên Nhân & Quy Trình Khảo Sát Viêm Tụy Vô Căn</h3>
+        <div class="infobox info">
+          <span class="infobox-icon">🔍</span>
+          <div>
+            • <strong>Sỏi mật (42%):</strong> Men ALT &gt; 150 U/L trong vòng 48h có giá trị dự báo dương tính PPV &gt; 85% do sỏi mật.<br>
+            • <strong>Rượu (25 - 40%):</strong> Khai thác kỹ tiền sử uống rượu.<br>
+            • <strong>Viêm tụy vô căn (20%):</strong> Sau xuất viện, thực hiện theo trình tự: <strong>(1) Siêu âm bụng lại → (2) Siêu âm nội soi (EUS) → (3) MRI dựng hình MRCP → (4) Xét nghiệm di truyền (Genetics)</strong> ở người trẻ.<br>
+            • <strong>Cảnh báo Ung thư tụy:</strong> Bệnh nhân &gt; 50 tuổi bị viêm tụy vô căn bắt buộc phải chụp CECT/MRI và EUS để loại trừ u tụy ẩn giấu.
+          </div>
+        </div>
+
+        <!-- TIÊN LƯỢNG & CHẨN ĐOÁN HÌNH ẢNH CECT -->
+        <h3 class="sec-subtitle">3. Tiên Lượng Độ Nặng & Thời Điểm Chụp CECT Tối Ưu</h3>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Dự Báo Độ Nặng & Tử Vong</span>
+              <span class="badge" style="background:#fee2e2; color:#b91c1c;">Suy Cơ Quan &gt; 48h</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>SIRS lúc nhập viện & SIRS kéo dài ≥ 48h:</strong> Dự báo viêm tụy cấp nặng.</li>
+                <li><strong>IL-6 &gt; 50 pg/mL:</strong> Độ nhạy 87%, đặc hiệu 88%. (IL-6 &gt; 160 pg/mL tăng PPV lên 85%).</li>
+                <li><strong>CRP &gt; 150 mg/L:</strong> Độ nhạy 53%, đặc hiệu 82%.</li>
+                <li><strong>Suy cơ quan kéo dài (&gt; 48 giờ):</strong> Yếu tố quyết định 39-42% tử vong.</li>
+                <li>Chuyển viện trung tâm lớn (≥ 118 ca/năm giúp giảm 25% tử vong).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">
+              <span>Thời Điểm Vàng Chụp CECT</span>
+              <span class="badge" style="background:#fef3c7; color:#b45309;">72 - 96 Giờ Sau Khởi Phát</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Thời điểm chụp CECT tối ưu:</strong> <strong>Ít nhất 72 – 96 giờ</strong> sau khởi phát triệu chứng để đánh giá chính xác hoại tử.</li>
+                <li><strong>Cảnh báo:</strong> Tránh chụp CT sớm &lt; 48 giờ vì hoại tử chưa biểu hiện rõ và không thay đổi xử trí ban đầu.</li>
+                <li><strong>Tiêu chuẩn hoại tử tụy trên CECT:</strong> Vùng không ngấm thuốc <strong>&gt; 1 cm²</strong> có tỷ trọng <strong>CT &lt; 30-50 HU</strong> hoặc tăng &lt; 15 HU sau tiêm.</li>
+                <li>MRI T2W ưu việt hơn CT trong phân biệt nang giả tụy vs hoại tử đóng kén (WON).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: HỒI SỨC TRUYỀN DỊCH & DINH DƯỠNG (MIỀN IV, V, VIII) -->
+    <section class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">💧</span>
+          <h2 class="sec-title">II. Liệu Pháp Hồi Sức Dịch Lactated Ringer's, Giảm Đau & Dinh Dưỡng Sớm (Miền IV, V, VIII)</h2>
+        </div>
+        <span class="sec-badge">Miền IV, V, VIII</span>
+      </div>
+      <div class="sec-body">
+        
+        <!-- WATERFALL TRIAL SECTION -->
+        <h3 class="sec-subtitle">1. Chiến Lược Truyền Dịch Vừa Phải Bằng Lactated Ringer's (Bằng Chứng WATERFALL)</h3>
+        <div class="infobox success">
+          <span class="infobox-icon">🌟</span>
+          <div>
+            <strong>Khuyến cáo IAP 2025 về dịch truyền:</strong><br>
+            • <strong>Loại dịch:</strong> <strong>Dung dịch Lactated Ringer's (LR)</strong> là lựa chọn số 1 (giảm viêm hệ thống, giảm tỷ lệ vào ICU so với NaCl 0.9%).<br>
+            • <strong>Tốc độ truyền:</strong> Áp dụng <strong>chiến lược truyền dịch vừa phải với tốc độ 1.5 ml/kg/giờ</strong>. Chỉ truyền nhanh (fluid bolus) khi bệnh nhân có hạ huyết áp hoặc giảm thể tích rõ rệt lúc vào viện.<br>
+            • <strong>Cảnh báo Thử nghiệm WATERFALL:</strong> Truyền dịch tích cực (aggressive hydration) không làm giảm hoại tử hay suy tạng mà làm <strong>tăng vọt tỷ lệ quá tải dịch lên tới 21%</strong> (so với 6% ở nhóm truyền vừa phải, P &lt; 0.01).<br>
+            • <strong>Mục tiêu hồi sức:</strong> MAP 65-85 mmHg, Nước tiểu ≥ 0.5 ml/kg/h, BUN &lt; 20 mg/dL (ure &lt; 40 mg/dL), Hct &lt; 44%.
+          </div>
+        </div>
+
+        <!-- DINH DƯỠNG SỚM VỚI THỨC ĂN ĐẶC ÍT BÉO -->
+        <h3 class="sec-subtitle">2. Hỗ Trợ Dinh Dưỡng Sớm — Thức Ăn Đặc Thông Thường Ít Béo</h3>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">
+              <span>Thể Nhẹ Đến Trung Bình: Ăn Đặc Sớm</span>
+              <span class="badge badge-green">Solid Low-Fat Diet</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li>Bắt đầu ăn đường miệng <strong>càng sớm càng tốt</strong> ngay khi bệnh nhân có cảm giác thèm ăn và không bị nôn.</li>
+                <li>Bắt đầu ngay với <strong>chế độ ăn đặc thông thường, ít béo</strong> (an toàn và rút ngắn nằm viện hơn chế độ ăn lỏng clear liquid diet).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Thể Nặng / Hoại Tử: Nuôi Ăn Qua Sonde</span>
+              <span class="badge badge-teal">Trong Vòng 72 Giờ</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li>Nuôi ăn qua sonde ruột sớm <strong>trong vòng 72 giờ</strong> nếu không dung nạp đường miệng.</li>
+                <li><strong>Sonde mũi-dạ dày (NG)</strong> dễ thực hiện và hiệu quả tương đương mũi-hỗng tràng (NJ). Chuyển sang NJ nếu nôn nhiều.</li>
+                <li>Dùng công thức dạng trùng hợp (polymeric). TPN chỉ dùng khi ruột liệt/thất bại hoàn toàn.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- GIẢM ĐAU -->
+        <h3 class="sec-subtitle" style="margin-top: 1.25rem;">3. Kiểm Soát Đau Bằng Opioid & NSAID</h3>
+        <div class="infobox info">
+          <span class="infobox-icon">💊</span>
+          <div>
+            Đánh giá mức độ đau định kỳ bằng thang điểm VAS/NRS. Lựa chọn <strong>Opioid</strong> hoặc <strong>NSAID</strong>; đối với đau dữ dội, Opioid mang lại hiệu quả vượt trội. Tránh dùng Opioid khi có suy hô hấp, rối loạn tri giác hoặc liệt ruột nặng.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: KHÁNG SINH & ĐƯỜNG MẬT (MIỀN VII, IX) -->
+    <section class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🛡️</span>
+          <h2 class="sec-title">III. Sử Dụng Kháng Sinh Hợp Lý & Quản Lý Đường Mật / ERCP (Miền VII, IX)</h2>
+        </div>
+        <span class="sec-badge">Miền VII, IX</span>
+      </div>
+      <div class="sec-body">
+        
+        <!-- KHÁNG SINH CẤM DỰ PHÒNG -->
+        <h3 class="sec-subtitle">1. Nguyên Tắc Sử Dụng Kháng Sinh — Tuyệt Đối Cấm Kháng Sinh Dự Phòng Thường Quy</h3>
+        <div class="grid-2col" style="margin-bottom: 1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>CẤM Kháng Sinh & Men Vi Sinh Dự Phòng</span>
+              <span class="badge" style="background:#fee2e2; color:#b91c1c;">Bằng Chứng Mức Cao</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong style="color:var(--red);">Không sử dụng kháng sinh dự phòng hệ thống</strong> cho viêm tụy cấp, bất kể mức độ nặng hay thể hoại tử.</li>
+                <li><strong style="color:var(--red);">Không sử dụng men vi sinh Probiotics</strong> (tăng tỷ lệ tử vong do biến chứng thiếu máu cục bộ ruột).</li>
+                <li>Không dùng kháng sinh chỉ dựa vào tăng đơn độc CRP, WBC hoặc Procalcitonin vô khuẩn.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">
+              <span>Chỉ Định Kháng Sinh Điều Trị Xác Đáng</span>
+              <span class="badge badge-green">Tỷ Lệ Hợp Lý 20-40%</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li>Chỉ dùng khi có <strong>nhiễm trùng ngoài tụy rõ ràng</strong> (viêm phổi, viêm đường mật, sepsis) HOẶC <strong>nghi ngờ rất mạnh hoại tử nhiễm trùng INP</strong>.</li>
+                <li>Tiêu chuẩn bắt đầu KS: <strong>Cấy vi sinh dương tính</strong> HOẶC <strong>xuất hiện bong bóng khí trên CT</strong>.</li>
+                <li>Ưu tiên kháng sinh thấm tốt mô tụy: Carbapenems, Cephalosporin 3/4, Quinolones.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUẢN LÝ ĐƯỜNG MẬT & ERCP -->
+        <h3 class="sec-subtitle">2. Chỉ Định & Thời Điểm Chụp ERCP / Cắt Cơ Vòng (ES)</h3>
+        <div class="infobox warning">
+          <span class="infobox-icon">⚠️</span>
+          <div>
+            <strong>Quy tắc chỉ định ERCP trong viêm tụy cấp do sỏi mật:</strong><br>
+            • <strong>KHÔNG KHUYẾN CÁO ERCP sớm trong vòng 72 giờ</strong> nếu viêm tụy do sỏi <strong>KHÔNG kèm theo viêm đường mật cấp</strong> (bất kể thể nhẹ hay nặng).<br>
+            • <strong>KHUYẾN CÁO MẠNH MẼ ERCP sớm</strong> khi viêm tụy do sỏi <strong>CÓ KÈM THEO VIÊM ĐƯỜNG MẬT CẤP</strong>.<br>
+            • <strong>ERCP chương trình:</strong> Chỉ thực hiện khi phát hiện sỏi ống mật chủ rõ ràng trên EUS hoặc MRCP.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CAN THIỆP STEP-UP HOẠI TỬ TỤY (MIỀN X, XI) -->
+    <section class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🪜</span>
+          <h2 class="sec-title">IV. Chiến Lược "Step-Up" Từng Bước Trong Viêm Tụy Hoại Tử (Miền X, XI)</h2>
+        </div>
+        <span class="sec-badge">Miền X, XI</span>
+      </div>
+      <div class="sec-body">
+        
+        <!-- STEP-UP TIMELINE -->
+        <div class="grid-3col" style="margin-bottom: 1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>Bước 1: Conservative First</span>
+              <span class="badge badge-blue">Y Khoa Bảo Tồn</span>
+            </div>
+            <div class="clin-card-body">
+              Kháng sinh phổ rộng nhạy cảm + Dinh dưỡng tối ưu. Trì hoãn can thiệp xâm lấn cho đến khi ổ hoại tử đóng kén hoàn toàn (WON) sau <strong>3–4 tuần</strong>.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Bước 2: Dẫn Lưu PCD / ETD</span>
+              <span class="badge badge-teal">Dẫn Lưu Xâm Lấn Tối Thiểu</span>
+            </div>
+            <div class="clin-card-body">
+              Dẫn lưu qua ngã nội soi xuyên thành (ETD) ưu tiên cho WON sát dạ dày/tá tràng (dùng <strong>Stent kim loại LAMS</strong> nếu hoại tử đặc &gt; 30%). Dẫn lưu qua da (PCD) cho vùng hông lưng/tiểu khung.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>Bước 3: Lấy Mô Hoại Tử (VARD/PEN)</span>
+              <span class="badge badge-purple">Minimally Invasive</span>
+            </div>
+            <div class="clin-card-body">
+              Lấy mô hoại tử sau phúc mạc qua đường hầm dẫn lưu (VARD/PEN) hoặc lấy qua đường miệng (PEN). Mổ mở cực kỳ hiếm gặp (chỉ khi thủng ruột/chảy máu không cầm).
+            </div>
+          </div>
+        </div>
+
+        <!-- SVG STEP-UP FLOWCHART -->
+        <h3 class="sec-subtitle">Sơ Đồ 2: Lưu Đồ Can Thiệp Step-Up Từng Bước Trong Viêm Tụy Hoại Tử Nhiễm Trùng</h3>
+        <div class="svg-diagram-card">
+          <svg viewBox="0 0 900 300" width="100%" height="100%" style="min-width: 760px; font-family: 'Plus Jakarta Sans', sans-serif;" xmlns="http://www.w3.org/2000/svg">
+            <!-- Node 1 -->
+            <rect x="20" y="20" width="240" height="70" fill="var(--surface)" stroke="var(--blue)" stroke-width="1.5" rx="8"/>
+            <text x="140" y="45" fill="var(--blue)" font-size="11.5" font-weight="800" text-anchor="middle">BƯỚC 1: ĐIỀU TRỊ BẢO TỒN</text>
+            <text x="140" y="68" fill="var(--text)" font-size="10.5" text-anchor="middle">Kháng sinh phổ rộng + Dinh dưỡng</text>
+
+            <line x1="260" y1="55" x2="300" y2="55" stroke="var(--border)" stroke-width="2"/>
+
+            <!-- Node 2: Trì hoãn 4 tuần -->
+            <rect x="300" y="20" width="260" height="70" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.5" rx="8"/>
+            <text x="430" y="45" fill="#15803d" font-size="11.5" font-weight="800" text-anchor="middle">TRÌ HOÃN ĐẾN KHI TẠO WON</text>
+            <text x="430" y="68" fill="var(--text)" font-size="10.5" text-anchor="middle">Trì hoãn &gt; 4 tuần (Vỏ bao hóa lỏng tốt)</text>
+
+            <line x1="560" y1="55" x2="600" y2="55" stroke="var(--border)" stroke-width="2"/>
+
+            <!-- Node 3 -->
+            <rect x="600" y="20" width="280" height="70" fill="var(--surface)" stroke="var(--teal)" stroke-width="1.5" rx="8"/>
+            <text x="740" y="45" fill="var(--teal)" font-size="11.5" font-weight="800" text-anchor="middle">BƯỚC 2: DẪN LƯU PCD / ETD</text>
+            <text x="740" y="68" fill="var(--text)" font-size="10.5" text-anchor="middle">• ETD (Stent LAMS) sát dạ dày / • PCD hông lưng</text>
+
+            <!-- Down arrow from step 2 to step 3 -->
+            <line x1="740" y1="90" x2="740" y2="140" stroke="var(--red)" stroke-width="2" stroke-dasharray="4,4"/>
+            <text x="745" y="120" fill="#b91c1c" font-size="10" font-weight="700">Nếu Sepsis / Sốt kéo dài</text>
+
+            <!-- Node 4: Necrosectomy -->
+            <rect x="520" y="140" width="360" height="75" fill="var(--purple-bg)" stroke="var(--purple)" stroke-width="1.5" rx="8"/>
+            <text x="700" y="165" fill="#6b21a8" font-size="11.5" font-weight="800" text-anchor="middle">BƯỚC 3: LẤY MÔ HOẠI TỬ XÂM LẤN TỐI THIỂU</text>
+            <text x="700" y="188" fill="var(--text)" font-size="10.5" text-anchor="middle">• VARD (Qua đường hầm dẫn lưu sau phúc mạc)</text>
+            <text x="700" y="205" fill="var(--text)" font-size="10.5" text-anchor="middle">• Lấy mô hoại tử nội soi qua đường miệng (PEN)</text>
+
+            <!-- Bottom note -->
+            <rect x="20" y="235" width="860" height="50" fill="var(--surface)" stroke="var(--border-light)" rx="8"/>
+            <text x="450" y="256" fill="var(--text)" font-size="11" font-weight="700" text-anchor="middle">NGUYÊN TẮC: Mổ mở bóc tách hoại tử cực kỳ hiếm gặp (chỉ dùng cho thủng ruột hoặc xuất huyết ồ ạt không can thiệp được).</text>
+            <text x="450" y="274" fill="var(--text-muted)" font-size="10" text-anchor="middle">FNA chọc hút thường quy KHÔNG được khuyến cáo do tỷ lệ âm tính giả cao (20-29%).</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: BIẾN CHỨNG & CÁC THỂ ĐẶC BIỆT (MIỀN XII, XIII) -->
+    <section class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">⚠️</span>
+          <h2 class="sec-title">V. Xử Trí Biến Chứng Cấp & Quản Lý Các Thể Viêm Tụy Đặc Biệt (Miền XII, XIII)</h2>
+        </div>
+        <span class="sec-badge">Miền XII, XIII</span>
+      </div>
+      <div class="sec-body">
+        
+        <!-- BIẾN CHỨNG CẤP -->
+        <h3 class="sec-subtitle">1. Bốn Biến Chứng Cấp Tính Không Nhiễm Trùng Quan Trọng</h3>
+        <div class="grid-2col" style="margin-bottom: 1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">
+              <span>Tăng Áp Lực Ổ Bụng (IAH / ACS)</span>
+              <span class="badge" style="background:#fef3c7; color:#b45309;">IAP &gt; 12 / &gt; 20 mmHg</span>
+            </div>
+            <div class="clin-card-body">
+              Đo áp lực bàng quang định kỳ. Xử trí: dẫn lưu báng qua da PCD, giải áp tiêu hóa, tránh thừa dịch; mở bụng giải áp là lựa chọn cuối cùng khi suy tạng tiến triển.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Chảy Máu Do Giả Phình Mạch</span>
+              <span class="badge" style="background:#fee2e2; color:#b91c1c;">Nút Mạch Coils Đầu Tay</span>
+            </div>
+            <div class="clin-card-body">
+              60% chảy máu ĐM là do giả phình mạch (ĐM lách 35-50%, ĐM vị tá tràng 20-25%). Chụp CT 3 thì; Can thiệp nút mạch (Angioembolization bằng Coils) là phương pháp số 1.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Huyết Khối Tĩnh Mạch Tạng (SVT)</span>
+              <span class="badge badge-teal">Chỉ Định Kháng Đông Chọn Lọc</span>
+            </div>
+            <div class="clin-card-body">
+              Tĩnh mạch lách đơn độc không cần kháng đông. Dùng kháng đông nếu huyết khối lan vào thân chung tĩnh mạch cửa hoặc tĩnh mạch mạc treo tràng trên.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>Rò Ruột Trong Viêm Tụy Hoại Tử</span>
+              <span class="badge badge-purple">10 - 15% Ca Hoại Tử</span>
+            </div>
+            <div class="clin-card-body">
+              Đại tràng 40%, tá tràng 35%, dạ dày 14%, ruột non 11%. Rò trên tự đóng; rò đại tràng phẫu thuật nếu có sepsis nặng hoặc viêm phúc mạc phân.
+            </div>
+          </div>
+        </div>
+
+        <!-- CÁC THỂ ĐẶC BIỆT -->
+        <h3 class="sec-subtitle">2. Quản Lý Các Thể Viêm Tụy Cấp Đặc Biệt</h3>
+        <div class="grid-3col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">
+              <span>Do Cường Cận Giáp (HyperCa)</span>
+              <span class="badge" style="background:#fee2e2; color:#b91c1c;">CẤM DÙNG LR</span>
+            </div>
+            <div class="clin-card-body">
+              Canxi &gt; 14 mg/dL → Hồi sức bằng <strong>NaCl 0.9%</strong>. <strong style="color:var(--red);">TUYỆT ĐỐI CHỐNG CHỈ ĐỊNH LACTATED RINGER'S</strong> (do chứa canxi).
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">
+              <span>Do Tăng Triglyceride (HTGP)</span>
+              <span class="badge badge-blue">Insulin IV + Nhịn Ăn</span>
+            </div>
+            <div class="clin-card-body">
+              Insulin IV truyền liên tục hạ TG, phối hợp LMWH &lt; 3 ngày. Thay huyết tương khi suy tạng + TG cực cao + suy thận. Nhịn ăn 48h đầu; đích sau ra viện TG &lt; 500 mg/dL.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">
+              <span>Dự Phòng Sau ERCP (PEP)</span>
+              <span class="badge badge-green">NSAID Đạn Trực Tràng</span>
+            </div>
+            <div class="clin-card-body">
+              Bù dịch LR chu phẫu + <strong>NSAID đạn trực tràng</strong> (Indomethacin/Diclofenac 100mg) cho mọi ca ERCP + Stent ống tụy cho nguy cơ cao.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: XUẤT VIỆN, BIẾN CHỨNG LÂU DÀI & DPDS (MIỀN XIV - XVIII) -->
+    <section class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🔄</span>
+          <h2 class="sec-title">VI. Tiêu Chuẩn Xuất Viện (SNAPP), Biến Chứng Lâu Dài & Hội Chứng Đứt Đoạn Ống Tụy (DPDS) (Miền XIV - XVIII)</h2>
+        </div>
+        <span class="sec-badge">Miền XIV - XVIII</span>
+      </div>
+      <div class="sec-body">
+        
+        <!-- MÔ HÌNH SNAPP -->
+        <h3 class="sec-subtitle">1. Tiêu Chuẩn Xuất Viện An Toàn — Mô Hình SNAPP</h3>
+        <div class="infobox info">
+          <span class="infobox-icon">📋</span>
+          <div>
+            <strong>Mô hình SNAPP đánh giá điều kiện xuất viện (tiên lượng nguy cơ tái nhập viện 30 ngày):</strong><br>
+            • <strong>S (Symptoms):</strong> Hết buồn nôn, nôn, tiêu chảy.<br>
+            • <strong>N (Nutrition):</strong> Dung nạp tốt chế độ ăn đặc thông thường ít béo.<br>
+            • <strong>A (Antibiotics):</strong> Đã ngưng hoặc kiểm soát tốt liệu trình kháng sinh.<br>
+            • <strong>P (Pancreatic necrosis):</strong> Tình trạng hoại tử ổn định, không có nhiễm trùng tiến triển.<br>
+            • <strong>P (Pain):</strong> Hết đau hoặc kiểm soát tốt bằng thuốc giảm đau không phải opioid.
+          </div>
+        </div>
+
+        <!-- BIẾN CHỨNG LÂU DÀI & DPDS -->
+        <h3 class="sec-subtitle">2. Biến Chứng Lâu Dài & Hội Chứng Đứt Đoạn Ống Tụy (DPDS)</h3>
+        <div class="grid-2col">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">
+              <span>Đái Tháo Đường & Suy Tụy Ngoại Tiết</span>
+              <span class="badge badge-purple">Theo Dõi Định Kỳ</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li><strong>Đái tháo đường mới khởi phát (23%):</strong> Tầm soát đường huyết đói và HbA1c mỗi 12 tháng bắt đầu từ 3-6 tháng sau hồi phục.</li>
+                <li><strong>Suy tụy ngoại tiết PEI (27 - 35%):</strong> Khám khi có tiêu chảy mỡ, sụt cân; xét nghiệm Elastase phân &lt; 100 mcg/g → Bổ sung men tụy <strong>PERT</strong>.</li>
+                <li><strong>Phòng tái phát:</strong> Cắt túi mật trong đợt nằm viện đầu cho thể nhẹ.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">
+              <span>Hội Chứng Đứt Đoạn Ống Tụy (DPDS)</span>
+              <span class="badge badge-teal">Disconnected Duct</span>
+            </div>
+            <div class="clin-card-body">
+              <ul class="clin-card-list">
+                <li>Hoại tử thân tụy làm đứt đoạn hoàn toàn ống tụy chính, cô lập đuôi tụy vẫn đang bài tiết dịch.</li>
+                <li>Chẩn đoán xác định bằng <strong>MRCP</strong>.</li>
+                <li>Chỉ can thiệp khi có triệu chứng/rò dịch: <strong>Đặt Stent nhựa kép xuyên thành dạ dày lưu lâu dài</strong> hoặc phẫu thuật cắt thân đuôi tụy / nối Roux-en-Y.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: BEDSIDE IAP 2025 CALCULATOR -->
+    <section class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🧮</span>
+          <h2 class="sec-title">VII. Bảng Kiểm Lâm Sàng & Bộ Tính Toán IAP 2025 (Bedside CDSS Tool)</h2>
+        </div>
+        <span class="sec-badge">Bedside CDSS Tool</span>
+      </div>
+      <div class="sec-body">
+        <div class="widget-box">
+          <div class="widget-header">
+            <div class="widget-title">
+              <span>⚡</span> Bộ Tính Toán Phân Tầng Độ Nặng, Tốc Độ Truyền Dịch LR & Bảng Kiểm SNAPP
+            </div>
+            <button class="btn" id="calc-reset">🔄 Đặt lại công cụ</button>
+          </div>
+
+          <div class="widget-grid">
+            <!-- 1. DIAGNOSIS 2/3 -->
+            <div class="calc-section">
+              <div class="calc-section-title" style="color:var(--accent);">🔵 1. Tiêu Chuẩn Chẩn Đoán (Cần ≥ 2 mục)</div>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-diag" value="pain" checked>
+                <span>Đau bụng thượng vị cấp tính lan ra sau lưng</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-diag" value="enz" checked>
+                <span>Lipase / Amylase huyết thanh ≥ 3 lần ULN</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" class="chk-diag" value="img">
+                <span>Hình ảnh điển hình trên Siêu âm / CT / MRI</span>
+              </label>
+            </div>
+
+            <!-- 2. FLUID RATE -->
+            <div class="calc-section">
+              <div class="calc-section-title" style="color:var(--green);">🟢 2. Tính Tốc Độ Truyền Dịch LR (1.5 ml/kg/h)</div>
+              <div class="calc-field">
+                <label for="input-weight">Cân nặng bệnh nhân (kg):</label>
+                <input type="number" id="input-weight" value="60" min="30" max="150" step="1">
+              </div>
+              <div class="calc-field">
+                <label for="select-etiology-iap">Căn nguyên viêm tụy:</label>
+                <select id="select-etiology-iap">
+                  <option value="gallstone">Sỏi mật (Gallstone)</option>
+                  <option value="alcohol">Rượu (Alcohol)</option>
+                  <option value="tg">Tăng Triglyceride (HTGP)</option>
+                  <option value="hyperca">Cường cận giáp (Tăng Canxi)</option>
+                  <option value="idiopathic">Vô căn (Idiopathic)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 3. SEVERITY CRITERIA -->
+            <div class="calc-section">
+              <div class="calc-section-title" style="color:#dc2626;">🔴 3. Dấu Hiệu Tiên Lượng Độ Nặng</div>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-sirs" checked>
+                <span>Có SIRS kéo dài ≥ 48 giờ</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-organ-failure">
+                <span>Suy cơ quan kéo dài &gt; 48 giờ (Marshall ≥ 2)</span>
+              </label>
+              <label class="calc-checkbox-label">
+                <input type="checkbox" id="chk-infected-necrosis">
+                <span>Nghi ngờ hoại tử nhiễm trùng (Bong bóng khí CT)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- KẾT QUẢ TRIAGE -->
+          <div class="calc-result-box" id="calc-result">
+            <div class="calc-result-header">KẾT QUẢ ĐÁNH GIÁ VÀ HƯỚNG DẪN XỬ TRÍ THEO IAP 2025:</div>
+            <div class="calc-result-badge res-mod" id="res-badge">🟡 TIÊN LƯỢNG NẶNG (CÓ SIRS KÉO DÀI)</div>
+            <div class="calc-result-advice" id="res-advice">
+              <strong>Phác đồ khuyến nghị theo IAP 2025:</strong><br>
+              • <strong>Hồi sức dịch:</strong> Truyền Lactated Ringer's vừa phải với tốc độ <strong>90 ml/giờ</strong> (1.5 ml/kg/h cho 60 kg). Theo dõi sát MAP ≥ 65, nước tiểu ≥ 0.5 ml/kg/h, BUN &lt; 20 và Hct &lt; 44%. Tránh bolus quá mức (WATERFALL).<br>
+              • <strong>Dinh dưỡng:</strong> Nếu không nôn, bắt đầu ngay chế độ ăn đặc thông thường ít béo. Nếu không dung nạp, đặt sonde nuôi ăn ruột trong vòng 72 giờ.<br>
+              • <strong>Kháng sinh:</strong> <strong style="color:var(--red);">TUYỆT ĐỐI KHÔNG DÙNG KHÁNG SINH DỰ PHÒNG</strong> nếu không có bằng chứng cấy dương tính hoặc bong bóng khí trên CT.<br>
+              • <strong>Chụp CECT:</strong> Nếu tình trạng không cải thiện, chỉ định CECT bụng cản quang sau <strong>72–96 giờ</strong> kể từ khi khởi phát.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: TRÍCH DẪN AMA -->
+    <section class="sec-card" id="sec-8">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">📚</span>
+          <h2 class="sec-title">VIII. Tài Liệu Tham Khảo Chuẩn AMA</h2>
+        </div>
+        <span class="sec-badge">Primary Reference</span>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          <div class="citation-item">
+            <span class="citation-num">1.</span>
+            IAP/APA/EPC/IPC/JPS Working Group. International Association of Pancreatology Revised Guidelines on Acute Pancreatitis 2025: Supported and Endorsed by the American Pancreatic Association, European Pancreatic Club, Indian Pancreas Club, and Japan Pancreas Society. <em>Pancreatology</em>. 2025;25(6):770-814. doi:10.1016/j.pan.2025.04.020.
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <a href="../guidelines.html" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            Quay lại Kho Guidelines
+          </a>
+          <button class="btn" onclick="window.print()">
+            🖨️ In / Xuất PDF Tóm Tắt
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <p>CliniPortal EBM Guideline Hub &copy; 2026 — Dữ liệu Y học chứng cứ Đồng thuận Quốc tế IAP 2025 về Viêm tụy cấp phục vụ tra cứu thực hành lâm sàng.</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // Theme Toggle Logic
+    const themeBtn = document.getElementById('theme-toggle');
+    function initTheme() {
+      const saved = localStorage.getItem('cliniportal-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('cliniportal-theme', next);
+      });
+    }
+    initTheme();
+
+    // Bedside Calculator Logic
+    const chkDiag = document.querySelectorAll('.chk-diag');
+    const inputWeight = document.getElementById('input-weight');
+    const selectEtiology = document.getElementById('select-etiology-iap');
+    const chkSirs = document.getElementById('chk-sirs');
+    const chkOrganFailure = document.getElementById('chk-organ-failure');
+    const chkInfectedNecrosis = document.getElementById('chk-infected-necrosis');
+    const resBadge = document.getElementById('res-badge');
+    const resAdvice = document.getElementById('res-advice');
+    const btnReset = document.getElementById('calc-reset');
+
+    function calculateIAP() {
+      let diagCount = 0;
+      chkDiag.forEach(c => { if (c.checked) diagCount++; });
+
+      const weight = parseFloat(inputWeight.value) || 60;
+      const etiology = selectEtiology.value;
+      const hasSirs = chkSirs.checked;
+      const hasOF = chkOrganFailure.checked;
+      const hasINP = chkInfectedNecrosis.checked;
+
+      const fluidRate = Math.round(weight * 1.5);
+
+      if (diagCount < 2) {
+        resBadge.className = 'calc-result-badge res-mod';
+        resBadge.textContent = '🟡 CHƯA ĐỦ TIÊU CHUẨN CHẨN ĐOÁN (Cần ≥ 2 trong 3 tiêu chí)';
+        resAdvice.innerHTML = `Bệnh nhân mới thỏa mãn ${diagCount}/3 tiêu chuẩn (Đau bụng điển hình, Men tụy ≥ 3x ULN, Hình ảnh điển hình). Cần làm thêm xét nghiệm hoặc siêu âm/CT để xác chẩn.`;
+        return;
+      }
+
+      if (hasOF) {
+        resBadge.className = 'calc-result-badge res-severe';
+        resBadge.textContent = '🔴 VIÊM TỤY CẤP NẶNG (CÓ SUY CƠ QUAN KÉO DÀI > 48H)';
+        resAdvice.innerHTML = `<strong>Chiến lược xử trí cấp cứu:</strong><br>
+        • <strong>Chỉ định nhập ICU khẩn cấp</strong> để hỗ trợ đa cơ quan (duy trì MAP ≥ 65 mmHg, thở máy, lọc máu nếu cần). Cân nhắc chuyển tuyến trung tâm lớn (≥ 118 ca/năm).<br>
+        • <strong>Hồi sức dịch:</strong> ${etiology === 'hyperca' ? '<strong style="color:var(--red);">DÙNG NaCl 0.9% (CHỐNG CHỈ ĐỊNH DÙNG LR DO TĂNG CANXI)</strong>' : `Lactated Ringer's vừa phải <strong>${fluidRate} ml/giờ</strong> (1.5 ml/kg/h)`}.<br>
+        • <strong>Kháng sinh:</strong> Chỉ dùng khi có cấy vi sinh dương tính hoặc bong bóng khí trên CT. CẤM dùng kháng sinh dự phòng thường quy.<br>
+        • <strong>Chụp CECT:</strong> Thực hiện sau <strong>72–96 giờ</strong> để khảo sát diện tích hoại tử.`;
+      } else if (hasINP) {
+        resBadge.className = 'calc-result-badge res-severe';
+        resBadge.textContent = '🔴 HOẠI TỬ NHIỄM TRÙNG (INP) — ÁP DỤNG CHIẾN LƯỢC STEP-UP';
+        resAdvice.innerHTML = `<strong>Quy trình can thiệp Step-Up IAP 2025:</strong><br>
+        • <strong>Bước 1:</strong> Bắt đầu ngay kháng sinh phổ rộng ngấm mô tụy (Carbapenems, Cepha 3/4) + dinh dưỡng tối ưu.<br>
+        • <strong>Bước 2:</strong> Trì hoãn can thiệp đến khi tạo WON (&gt; 4 tuần). Tiến hành dẫn lưu nội soi ETD (Stent LAMS) nếu sát dạ dày, hoặc dẫn lưu qua da PCD nếu ở hông lưng.<br>
+        • <strong>Bước 3:</strong> Chỉ lấy mô hoại tử xâm lấn tối thiểu (VARD/PEN) nếu sốt/sepsis kéo dài dù đã dẫn lưu tối đa.`;
+      } else if (hasSirs) {
+        resBadge.className = 'calc-result-badge res-mod';
+        resBadge.textContent = '🟡 VIÊM TỤY CẤP NGUY CƠ TIẾN TRIỂN NẶNG (CÓ SIRS KÉO DÀI)';
+        resAdvice.innerHTML = `<strong>Phác đồ điều trị:</strong><br>
+        • <strong>Hồi sức dịch:</strong> ${etiology === 'hyperca' ? '<strong style="color:var(--red);">DÙNG NaCl 0.9% (CẤM LR)</strong>' : `Lactated Ringer's tốc độ vừa phải <strong>${fluidRate} ml/giờ</strong>`}. Đích nước tiểu ≥ 0.5 ml/kg/h, BUN &lt; 20 mg/dL.<br>
+        • <strong>Dinh dưỡng:</strong> Ăn đặc ít béo sớm nếu dung nạp; đặt sonde ruột trong 72h nếu không ăn được.<br>
+        • <strong>Kháng sinh:</strong> Không dùng kháng sinh dự phòng. Theo dõi sát chức năng tạng Marshall cải tiến.`;
+      } else {
+        resBadge.className = 'calc-result-badge res-mild';
+        resBadge.textContent = '🟢 VIÊM TỤY CẤP THỂ NHẸ (TIÊN LƯỢNG TỐT)';
+        resAdvice.innerHTML = `<strong>Phác đồ điều trị:</strong><br>
+        • <strong>Hồi sức dịch:</strong> ${etiology === 'hyperca' ? 'NaCl 0.9%' : `Lactated Ringer's`} <strong>${fluidRate} ml/giờ</strong>.<br>
+        • <strong>Dinh dưỡng:</strong> Cho ăn ngay bằng đường miệng với <strong>thức ăn đặc thông thường ít béo</strong> khi có cảm giác thèm ăn.<br>
+        • <strong>Giảm đau:</strong> NSAID hoặc Opioid ngắn hạn.<br>
+        • <strong>Kế hoạch:</strong> Nếu do sỏi mật, phẫu thuật cắt túi mật ngay trong đợt nằm viện đầu tiên để phòng tái phát.`;
+      }
+    }
+
+    [...chkDiag, inputWeight, selectEtiology, chkSirs, chkOrganFailure, chkInfectedNecrosis].forEach(el => {
+      if (el) el.addEventListener('change', calculateIAP);
+      if (el && el.tagName === 'INPUT' && el.type === 'number') el.addEventListener('input', calculateIAP);
+    });
+
+    if (btnReset) {
+      btnReset.addEventListener('click', () => {
+        chkDiag.forEach(c => c.checked = true);
+        inputWeight.value = 60;
+        selectEtiology.value = 'gallstone';
+        chkSirs.checked = true;
+        chkOrganFailure.checked = false;
+        chkInfectedNecrosis.checked = false;
+        calculateIAP();
+      });
+    }
+
+    calculateIAP();
+  </script>
+</body>
+</html>
