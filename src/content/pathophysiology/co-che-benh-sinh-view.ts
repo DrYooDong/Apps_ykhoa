@@ -47,7 +47,7 @@ export function renderCoCheBenhSinhView(): string {
               <div class="promax-kpi-pill">
                 <i class="fa-solid fa-microscope" style="font-size: 1.1rem; color: #a78bfa;"></i>
                 <div>
-                  <div class="promax-kpi-num">28+</div>
+                  <div class="promax-kpi-num">32+</div>
                   <div class="promax-kpi-lbl">Ca Bệnh Bệnh Sinh</div>
                 </div>
               </div>
@@ -181,8 +181,8 @@ export function renderCoCheBenhSinhView(): string {
               <li>
                 <a href="#patho-thannieu-section" class="part-nav-item p6" data-target="patho-thannieu-section">
                   <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
-                  <span class="part-text">Thận niệu</span>
-                  <span class="part-count-badge">2</span>
+                  <span class="part-text">Thận - Điện giải</span>
+                  <span class="part-count-badge">6</span>
                 </a>
               </li>
               <li>
@@ -445,30 +445,70 @@ export function renderCoCheBenhSinhView(): string {
             </div>
           </section>
 
-          <!-- 4. THẬN NIỆU -->
+          <!-- 4. THẬN - ĐIỆN GIẢI - TOAN KIỀM -->
           <section id="patho-thannieu-section" aria-labelledby="patho-thannieu-heading" style="margin-bottom: 2rem;">
             <div class="physio-group-container">
               <div class="physio-group-header">
                 <span class="physio-group-icon"><i class="fa-solid fa-filter"></i></span>
-                <h3 id="patho-thannieu-heading">Thận Niệu</h3>
+                <h3 id="patho-thannieu-heading">Thận – Điện Giải – Toan Kiềm</h3>
               </div>
               <div class="specialty-grid">
                 <a href="#/pathophysiology/cases/slb-ccbs-aki" class="specialty-card">
                   <div class="specialty-card-top">
-                    <div class="specialty-icon"><i class="fa-solid fa-filter"></i></div>
+                    <div class="specialty-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
                     <div class="specialty-info">
                       <h3>Tổn Thương Thận Cấp (AKI)</h3>
-                      <p>Giảm tưới máu trước thận, sung huyết trong hội chứng tim thận, hoại tử ống thận cấp (ATN) và rối loạn ty thể.</p>
+                      <p>Giảm tưới máu trước thận, hoại tử ống thận cấp (ATN) do thiếu máu/độc chất và rối loạn ty thể.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-ckd" class="specialty-card">
                   <div class="specialty-card-top">
-                    <div class="specialty-icon"><i class="fa-solid fa-calculator"></i></div>
+                    <div class="specialty-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
                     <div class="specialty-info">
                       <h3>Bệnh Thận Mạn (CKD)</h3>
                       <p>Thích ứng tăng lọc cầu thận và sụp đổ nội môi, xơ hóa cầu thận tiến triển, loãng xương do thận và giảm tiết EPO.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-rl-kali" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+                    <div class="specialty-info">
+                      <h3>Rối Loạn Kali Máu (Hypo/Hyperkalemia)</h3>
+                      <p>Phân bố khoang dịch, vai trò Magne, cơ chế hạ/tăng K+, biến đổi ECG tuần tự (sóng hình sin), hội chứng BRASH và 3 trục cấp cứu.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-rl-natri" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="specialty-info">
+                      <h3>Rối Loạn Natri Máu (Hypo/Hypernatremia)</h3>
+                      <p>Áp lực thẩm thấu &amp; trương lực, trục AVP/Aquaporin-2, thích nghi tế bào não, hội chứng ODS, SIADH vs CSW, Đái tháo nhạt và bù an toàn.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-rl-canxi" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-bone"></i></div>
+                    <div class="specialty-info">
+                      <h3>Rối Loạn Canxi Máu (Hypo/Hypercalcemia)</h3>
+                      <p>Canxi ion hóa vs Albumin, thụ thể CaSR, trục PTH &ndash; Calcitriol, u tuyến cận giáp PHPT, FHH, dấu Chvostek &amp; Trousseau, biến đổi QT trên ECG.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-rl-phosphat" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="specialty-info">
+                      <h3>Rối Loạn Phosphat Máu (Hypo/Hyperphosphatemia)</h3>
+                      <p>Trục PTH &ndash; FGF-23, kênh NaPi, hội chứng nuôi ăn lại Refeeding, thiếu ATP cơ hoành thất bại cai máy thở, tích số Ca &times; P &ge; 55 &amp; vôi hóa mạch máu.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>

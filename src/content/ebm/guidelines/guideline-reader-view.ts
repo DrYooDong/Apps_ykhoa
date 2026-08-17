@@ -229,6 +229,30 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
   // Remove legacy placeholders, duplicate headers, and external stylesheet links
   doc.querySelectorAll('#header-placeholder, #footer-placeholder, .topnav, link[rel="stylesheet"]').forEach(el => el.remove());
 
+  // Rewrite image sources to valid paths in SPA
+  doc.querySelectorAll('img').forEach(img => {
+    const src = img.getAttribute('src') || '';
+    if (!src) return;
+
+    let targetSrc = src;
+    if (src.includes('images/')) {
+      const cleanImg = src.replace(/^(\.\/|\.\.\/)*images\//i, '');
+      targetSrc = `/src/content/ebm/guidelines/kho-guidelines/images/${cleanImg}`;
+    } else if (src.startsWith('./') || (!src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:'))) {
+      const cleanImg = src.replace(/^\.\//, '');
+      targetSrc = `/src/content/ebm/guidelines/kho-guidelines/${cleanImg}`;
+    }
+
+    img.setAttribute('src', targetSrc);
+
+    // Add robust fallback handler for different server environments (dist/root/local)
+    const rawFileName = (src || '').split('/').pop() || '';
+    img.setAttribute(
+      'onerror',
+      `if(!this.dataset.tried){this.dataset.tried='1';this.src='./src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}';}else if(this.dataset.tried==='1'){this.dataset.tried='2';this.src='src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}';}else if(this.dataset.tried==='2'){this.dataset.tried='3';this.src='../src/content/ebm/guidelines/kho-guidelines/images/${rawFileName}';}else if(this.dataset.tried==='3'){this.dataset.tried='4';this.src='./images/${rawFileName}';}`
+    );
+  });
+
   // Extract clean article body content
   const articleHtml = doc.body ? doc.body.innerHTML : htmlText;
 
