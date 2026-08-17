@@ -163,6 +163,7 @@ import {
   renderKaplanMeierView,
   renderRocCurveView,
   renderStatisticsHubView,
+  renderStatisticsReader,
   renderGuidelineReader,
   renderStudyAnalyzerView,
   initStudyAnalyzerController
@@ -257,6 +258,18 @@ function initializeRoutes(): void {
   router.register('/ebm/thong-ke-y-hoc', 'Thống Kê Y Học & NCKH', () => {
     document.title = 'Thống Kê Y Học & Thiết Kế NCKH – CliniPortal';
     mountToApp(renderStatisticsHubView());
+  });
+  router.register('/ebm/medical-statistics', 'Thống Kê Y Học & NCKH', () => {
+    document.title = 'Thống Kê Y Học & Thiết Kế NCKH – CliniPortal';
+    mountToApp(renderStatisticsHubView());
+  });
+  router.register('/ebm/thong-ke-y-hoc/:slug', 'Bài Học Thống Kê Y Học', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderStatisticsReader(slug));
+  });
+  router.register('/ebm/medical-statistics/:slug', 'Bài Học Thống Kê Y Học', (params) => {
+    const slug = params.slug || '';
+    mountToApp(renderStatisticsReader(slug));
   });
 
   // === CONSOLIDATED DOCSPACE REDIRECTS (Kỹ năng, Tiếp cận, Công cụ, Dược lý -> DocSpace) ===

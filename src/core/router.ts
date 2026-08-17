@@ -41,13 +41,25 @@ export class CliniRouter {
         const href = target.getAttribute('href');
         if (!href) return;
 
-        // Catch static relative guideline links
-        if ((href.includes('kho-guidelines/') || href.endsWith('.html')) && !href.startsWith('http') && !href.startsWith('#')) {
-          const slugMatch = href.match(/(?:kho-guidelines\/)?([^/]+?)\.html$/i);
-          if (slugMatch && slugMatch[1] && slugMatch[1] !== 'index') {
-            e.preventDefault();
-            e.stopPropagation();
-            this.navigate(`/ebm/kho-guidelines/${slugMatch[1]}`);
+        // Catch static relative guideline & medical-statistics links
+        if (href.endsWith('.html') && !href.startsWith('http') && !href.startsWith('#')) {
+          if (href.includes('medical-statistics/')) {
+            const statMatch = href.match(/medical-statistics\/([^/]+?)(?:\.html)?$/i);
+            if (statMatch && statMatch[1] && statMatch[1] !== 'thongkeyhoc' && statMatch[1] !== 'index') {
+              e.preventDefault();
+              e.stopPropagation();
+              this.navigate(`/ebm/medical-statistics/${statMatch[1]}`);
+              return;
+            }
+          }
+          if (href.includes('kho-guidelines/')) {
+            const slugMatch = href.match(/kho-guidelines\/([^/]+?)(?:\.html)?$/i);
+            if (slugMatch && slugMatch[1] && slugMatch[1] !== 'index') {
+              e.preventDefault();
+              e.stopPropagation();
+              this.navigate(`/ebm/kho-guidelines/${slugMatch[1]}`);
+              return;
+            }
           }
         }
       }, true);

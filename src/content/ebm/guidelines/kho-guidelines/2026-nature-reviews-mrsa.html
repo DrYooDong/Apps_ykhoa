@@ -187,6 +187,48 @@
     .dosing-drug { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--accent); margin-bottom: 0.45rem; display: flex; justify-content: space-between; align-items: center; }
     .dosing-detail { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text); line-height: 1.55; background: var(--surface); padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-light); }
 
+    /* SCIENTIFIC FIGURE CARDS */
+    .fig-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .fig-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .fig-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border-light);
+      background: #ffffff;
+      padding: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+      display: block;
+      margin: 0 auto;
+    }
+    [data-theme="dark"] .fig-img {
+      background: #f8fafc;
+      border-color: #334155;
+    }
+    .fig-caption {
+      margin-top: 0.95rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      text-align: left;
+      border-top: 1px dashed var(--border-light);
+      padding-top: 0.8rem;
+    }
+    .fig-caption strong {
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
     @media (max-width: 768px) {
       .page-content { padding: 1.25rem 1rem; }
       .sec-body { padding: 1rem; }
@@ -561,6 +603,17 @@
             </div>
           </div>
         </div>
+
+        <!-- FIGURE 3: ĐỘNG HỌC CƯ TRÚ VÀ CẠNH TRANH SINH HỌC -->
+        <figure class="fig-card">
+          <img class="fig-img" src="./images/2026-nature-reviews-mrsa-fig3.png" alt="Fig. 3: Các ổ chứa giải phẫu và cơ chế phân tử của sự cư trú Staphylococcus aureus" loading="lazy">
+          <figcaption class="fig-caption">
+            <strong>Hình 3 (Nature Reviews Disease Primers 2026):</strong> <em>Anatomical reservoirs and mechanisms of Staphylococcus aureus colonization</em>.<br>
+            <strong>a. Các ổ chứa giải phẫu chính:</strong> Hốc mũi trước (Anterior nares - vị trí khảo sát thường quy), hầu họng (Pharynx), nách (Axilla), đường tiêu hóa (Intestines - ổ chứa quan trọng nội sinh), âm đạo (Vagina) và bẹn (Groin).<br>
+            <strong>b. Cơ chế bám dính phân tử:</strong> Họ adhesin MSCRAMMs gắn đặc hiệu với các phân tử nền ngoại bào (Fibronectin, Fibrinogen, Collagen); Axit teichoic thành tế bào (WTA) liên kết với thụ thể scavenger SREC1 trên biểu mô mũi.<br>
+            <strong>c. Cạnh tranh sinh học và đối kháng vi sinh vật cộng sinh:</strong> Vi khuẩn cộng sinh (<em>S. lugdunensis</em> tiết Lugdunin, <em>S. epidermidis</em> tiết Esp) ức chế và phá hủy biofilm tụ cầu; đồng thời <em>S. aureus</em> và <em>S. epidermidis</em> kích thích tế bào biểu mô vật chủ tiết peptide kháng khuẩn (AMPs) để đối kháng các chủng vi sinh vật khác.
+          </figcaption>
+        </figure>
       </div>
     </div>
 
@@ -577,6 +630,7 @@
         <span class="badge badge-red">Sinh lý bệnh sâu</span>
       </div>
       <div class="sec-body">
+        <div class="sec-subtitle">A. Nhiễm Khuẩn Huyết (BSI) &amp; Nhiễm Trùng Da Mô Mềm (SSTI)</div>
         <div class="grid-2col">
           <!-- BSI -->
           <div class="clin-card">
@@ -605,7 +659,34 @@
               </ul>
             </div>
           </div>
+        </div>
 
+        <!-- FIGURES 4a & 4b -->
+        <div class="grid-2col" style="margin: 1.25rem 0;">
+          <figure class="fig-card" style="margin: 0;">
+            <img class="fig-img" src="./images/2026-nature-reviews-mrsa-fig4a-bsi.png" alt="Fig. 4a: Sinh lý bệnh học MRSA trong dòng máu (BSI)" loading="lazy">
+            <figcaption class="fig-caption">
+              <strong>Hình 4a:</strong> <em>Bloodstream infection (BSI)</em>.<br>
+              • <strong>Giai đoạn đầu (agr tắt):</strong> ClfA/B, FnBPA/B bám dính nội mạc; Protein A gắn Fc của IgG; Efb và SCIN ức chế con đường bổ thể.<br>
+              • <strong>Kén Fibrin:</strong> Coagulase/vWbp kích hoạt đông máu bọc fibrin bảo vệ vi khuẩn.<br>
+              • <strong>Phát tán (agr bật):</strong> Tiết độc tố tạo lỗ &alpha;-toxin, PSMs, PVL.<br>
+              • <strong>Ngựa Trojan:</strong> Sống sót trong đại thực bào nhờ Catalase, SOD và Staphyloxanthin trung hòa các gốc tự do ROS.
+            </figcaption>
+          </figure>
+
+          <figure class="fig-card" style="margin: 0;">
+            <img class="fig-img" src="./images/2026-nature-reviews-mrsa-fig4b-ssti.png" alt="Fig. 4b: Sinh lý bệnh nhiễm trùng da, mô mềm (SSTI) và tiến trình tạo ổ áp-xe" loading="lazy">
+            <figcaption class="fig-caption">
+              <strong>Hình 4b:</strong> <em>Skin and soft tissue infection &amp; Abscess formation</em>.<br>
+              • <strong>Nhiễm trùng ban đầu:</strong> MRSA vào lớp trung bì gặp tế bào đuôi gai, NK cell, đại thực bào.<br>
+              • <strong>Ổ áp-xe sớm:</strong> Tiết CHIPS và Eap ức chế ICAM1 ngăn huy động bạch cầu; &alpha;-toxin và PVL ly giải tế bào.<br>
+              • <strong>Ổ áp-xe hoàn chỉnh:</strong> Vỏ fibrin bọc lõi bạch cầu hoại tử; môi trường pH thấp và ATP thấp làm vi khuẩn dung nạp thuốc và ngăn kháng sinh khuếch tán &rarr; Bắt buộc rạch dẫn lưu.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="sec-subtitle">B. Viêm Phổi Hoại Tử &amp; Viêm Xương Tủy / Biofilm Khớp Nhân Tạo</div>
+        <div class="grid-2col">
           <!-- PNA -->
           <div class="clin-card">
             <div class="clin-card-accent" style="background: var(--blue);"></div>
@@ -632,6 +713,16 @@
             </div>
           </div>
         </div>
+
+        <!-- FIGURE 4c & 4d -->
+        <figure class="fig-card">
+          <img class="fig-img" src="./images/2026-nature-reviews-mrsa-fig4cd-lung-bone.png" alt="Fig. 4c,d: Sinh lý bệnh viêm phổi hoại tử và nhiễm trùng khớp nhân tạo" loading="lazy">
+          <figcaption class="fig-caption">
+            <strong>Hình 4c,d (Nature Reviews Disease Primers 2026):</strong> <em>Pathophysiology of pulmonary and bone/orthopaedic implant MRSA infections</em>.<br>
+            <strong>c. Sinh lý bệnh viêm phổi (Pulmonary):</strong> Giảm thanh thải nhầy-lông chuyển do đặt nội khí quản hoặc nhiễm vi rút cúm (Influenza); vi rút cúm phá hủy biểu mô và kích hoạt tăng biểu hiện thụ thể gắn adhesin của MRSA; &alpha;-toxin và PVL gây viêm phổi hoại tử (Necrotizing pneumonia) và tràn mủ màng phổi (Empyema).<br>
+            <strong>d. Nhiễm trùng khớp nhân tạo &amp; xương (Bone and orthopaedic implant):</strong> Màng sinh học (Biofilm) trên bề mặt implant bảo vệ vi khuẩn khỏi thực bào và kháng sinh; phân tử MSCRAMMs (Eap, ClfA/B, FnBPA/B, Bbp, Coa, vWbp) bám tế bào xương (Osteocyte); Protein A ức chế và làm chết nguyên bào xương (Osteoblast death), đồng thời kích thích hủy cốt bào (Osteoclast) qua RANKL gây tiêu xương; vi khuẩn xâm nhập sống sót dai dẳng nội bào (Intracellular persistence).
+          </figcaption>
+        </figure>
       </div>
     </div>
 
