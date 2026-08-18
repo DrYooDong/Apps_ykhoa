@@ -8,6 +8,7 @@
 import '../../../css/components/module-dashboard.css';
 import '../../../css/components/physio-content.css';
 import '../../../css/components/physio-promax-hub.css';
+import './css/physio-shared.css';
 
 export function renderCoCheBenhSinhView(): string {
   return `
@@ -85,9 +86,9 @@ export function renderCoCheBenhSinhView(): string {
         <a href="#/pathophysiology/quiz" class="promax-bento-card" style="--bento-color: #10b981; --bento-bg: rgba(16,185,129,0.1);">
           <div class="promax-bento-icon"><i class="fa-solid fa-brain"></i></div>
           <div>
-            <span class="promax-bento-tag">Cascade Reasoning</span>
-            <h4 class="promax-bento-title">Thử Thách Ca Bệnh & Flashcards</h4>
-            <p class="promax-bento-desc">Luyện tập chuỗi cơ chế bệnh sinh nhiều bước và thẻ ôn tập Spaced Repetition.</p>
+            <span class="promax-bento-tag">Mechanism Reasoning Hub</span>
+            <h4 class="promax-bento-title">Thử Thách Ca Bệnh, Flashcards & Cascade</h4>
+            <p class="promax-bento-desc">18+ Ca lâm sàng cơ chế đa chuyên khoa, 24 thẻ Spaced Repetition & Lắp ráp chuỗi logic.</p>
           </div>
         </a>
 

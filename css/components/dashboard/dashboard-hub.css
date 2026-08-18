@@ -272,6 +272,17 @@
     overflow: hidden;
 }
 
+.specialty-card.specialty-dropdown-card {
+    overflow: visible !important;
+    z-index: 50 !important;
+}
+
+.specialty-card.specialty-dropdown-card:hover,
+.specialty-card.specialty-dropdown-card.open,
+.specialty-card.specialty-dropdown-card:focus-within {
+    z-index: 100000 !important;
+}
+
 .specialty-card:not(.disabled):hover {
     transform: translateY(-4px);
     border-color: var(--part-color);

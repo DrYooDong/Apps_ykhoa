@@ -1,3 +1,10 @@
+/* Import Module Component Styles */
+@import url('physio-quiz.css');
+@import url('physio-progress.css');
+@import url('physio-mirror.css');
+@import url('physio-bridge.css');
+@import url('physio-glossary.css');
+
 /* ============================================================
    PHYSIOLOGY & PATHOPHYSIOLOGY SHARED CONTENT STYLE (physio-shared.css)
    ============================================================ */
@@ -1131,12 +1138,7 @@ h4,
   line-height: 1.6;
 }
 
-/* Import Module Component Styles */
-@import url('physio-quiz.css');
-@import url('physio-progress.css');
-@import url('physio-mirror.css');
-@import url('physio-bridge.css');
-@import url('physio-glossary.css');
+
 
 /* ============================================================
    WEB COMPONENTS STYLING (physio-components)
@@ -1804,6 +1806,13 @@ physio-mirror-button, physio-figure, clini-breadcrumb {
   overflow: visible !important;
   cursor: pointer;
   user-select: none;
+  z-index: 50 !important;
+}
+
+.specialty-dropdown-card:hover,
+.specialty-dropdown-card.open,
+.specialty-dropdown-card:focus-within {
+  z-index: 100000 !important;
 }
 
 .specialty-dropdown-card .specialty-card-top {
@@ -1930,42 +1939,42 @@ physio-mirror-button, physio-figure, clini-breadcrumb {
 
 /* Dropdown Menu styling matching header Cơ sở */
 .specialty-dropdown-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  width: 100%;
-  min-width: 320px;
-  background: var(--color-surface, #ffffff);
-  border: 1px solid var(--color-border, #e2e8f0);
-  border-radius: var(--radius-lg, 14px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px) scale(0.98);
-  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease;
-  z-index: 9999;
-  pointer-events: none;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  width: 100% !important;
+  min-width: 320px !important;
+  background: var(--color-surface, #ffffff) !important;
+  border: 1px solid var(--color-border, #cbd5e1) !important;
+  border-radius: var(--radius-lg, 14px) !important;
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.28), 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  padding: 0.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.35rem !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(10px) scale(0.98) !important;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s ease !important;
+  z-index: 100001 !important;
+  pointer-events: none !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
 }
 
 [data-theme="dark"] .specialty-dropdown-menu {
-  background: var(--color-surface, #1e293b);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: var(--color-surface, #1e293b) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4) !important;
 }
 
 .specialty-dropdown-card:hover .specialty-dropdown-menu,
 .specialty-dropdown-card.open .specialty-dropdown-menu,
-.specialty-dropdown-menu.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
+.specialty-dropdown-card:focus-within .specialty-dropdown-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
+  pointer-events: auto !important;
 }
 
 .specialty-dropdown-item {

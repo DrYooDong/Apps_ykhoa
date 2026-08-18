@@ -4,137 +4,887 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MET-04: Chuyển Hóa Hemoglobin, Sắc Tố Mật & Vàng Da – Hóa Sinh Y Học – CliniPortal</title>
+    <title>MET-04: Chuyển Hóa Hemoglobin, Sắc Tố Mật & Cơ Chế Bệnh Học Vàng Da – Hóa Sinh Y Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../../../../css/reset.css">
     <link rel="stylesheet" href="../../../../css/main.css">
     <link rel="stylesheet" href="../../../../css/components/physio-content.css">
     <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script type="module" src="../../physio-shared.ts"></script>
+
     <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+
         .biochem-article-header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0284c7 100%);
-            color: #fff;
-            padding: 2.25rem 2rem;
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
             border-radius: 16px;
             margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
         .biochem-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.825rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .reaction-box {
-            background: rgba(139, 92, 246, 0.08);
-            border-left: 4px solid #8b5cf6;
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 12px 12px 0;
-            margin: 1.5rem 0;
-        }
-        .pearl-box {
-            background: rgba(245, 158, 11, 0.08);
-            border-left: 4px solid #f59e0b;
-            padding: 1.25rem 1.5rem;
-            border-radius: 0 12px 12px 0;
-            margin: 1.5rem 0;
-        }
-        .lab-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        .lab-table th, .lab-table td {
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
             border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
             padding: 0.75rem 1rem;
-            text-align: left;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
         }
-        .lab-table th {
-            background: var(--color-bg, #f8fafc);
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.76rem;
             font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover, .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #dc2626; }
+        .pillar-tab.p-2 { border-left: 4px solid #ea580c; }
+        .pillar-tab.p-3 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-4 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-5 { border-left: 4px solid #d97706; }
+        .pillar-tab.p-6 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-7 { border-left: 4px solid #db2777; }
+        .pillar-tab.p-8 { border-left: 4px solid #059669; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        .article-section {
+            scroll-margin-top: 90px;
+            margin-bottom: 2.75rem;
+        }
+
+        /* HEADINGS TYPOGRAPHY */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.3vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        /* Medical Callout Boxes */
+        .reaction-box { background: rgba(139, 92, 246, 0.08); border-left: 4px solid #8b5cf6; padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+        .pearl-box { background: rgba(245, 158, 11, 0.08); border-left: 4px solid #f59e0b; padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+        .danger-box { background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+        .info-box { background: rgba(2, 132, 199, 0.08); border-left: 4px solid #0284c7; padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+
+        .lab-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
+        .lab-table th, .lab-table td { border: 1px solid var(--color-border, #e2e8f0); padding: 0.85rem 1rem; text-align: left; vertical-align: top; }
+        .lab-table th { background: var(--color-surface-offset, #f8fafc); font-weight: 700; color: var(--color-text, #0f172a); }
+
+        [data-theme="dark"] .lab-table th { background: var(--color-surface-2, #0f172a); color: #f8fafc; border-color: #334155; }
+        [data-theme="dark"] .lab-table td { border-color: #334155; }
+
+        .svg-container {
+            width: 100%;
+            background: var(--color-surface-2, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.75rem 0;
+            overflow-x: auto;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        [data-theme="dark"] .svg-container {
+            background: var(--color-surface-2, #0b1329);
+            border-color: var(--color-border, #1e293b);
+        }
+
+        .step-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .step-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        [data-theme="dark"] .step-card {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
         }
     </style>
 </head>
 
 <body class="physio-article-body">
     <div class="physio-article-container">
-        
-        <!-- ARTICLE HEADER -->
+
+        <!-- HEADER -->
         <header class="biochem-article-header">
-            <span class="biochem-badge">MET-04 • Khối 4: Chuyển Hóa Chuyên Biệt 4 Đại Phân Tử</span>
-            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 1.85rem; font-weight: 800; color: #fff;">Chuyển Hóa Hemoglobin, Sắc Tố Mật & Vàng Da</h1>
-            <p style="margin: 0; font-size: 1rem; opacity: 0.92; line-height: 1.6;">Sinh tổng hợp Heme (ALA Synthase); Thoái hóa Hb tại hệ võng nội mô tạo Bilirubin tự do (gián tiếp); Liên hợp với acid glucuronic tại gan (UGT1A1); Bài tiết qua mật và tạo Urobilinogen / Stercobilin.</p>
+            <span class="biochem-badge"><i class="fa-solid fa-dna"></i> MET-04 • Khối 4: Chuyển Hóa Trung Gian 4 Đại Phân Tử</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Chuyển Hóa Hemoglobin, Sắc Tố Mật &amp; Cơ Chế Bệnh Học Vàng Da
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 960px;">
+                Con đường sinh tổng hợp Hem 8 bước xen kẽ ty thể – bào tương, cơ chế điều hòa ngược ALAS1/ALAS2, con đường thoái hóa tạo Bilirubin tự do &amp; liên hợp tại gan, chu kỳ gan-ruột, biện luận phân tử các hội chứng Vàng da, Bệnh lý Hemoglobinopathy (HbS, HbC, HbM), Thalassemia và Ứ đọng Porphyria.
+            </p>
         </header>
 
-        <!-- SECTION 1: TỔNG QUAN CƠ CHẾ -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> 1. Mục Tiêu & Cơ Chế Phân Tử</h2>
-            <p class="section-text">Sinh tổng hợp Heme (ALA Synthase); Thoái hóa Hb tại hệ võng nội mô tạo Bilirubin tự do (gián tiếp); Liên hợp với acid glucuronic tại gan (UGT1A1); Bài tiết qua mật và tạo Urobilinogen / Stercobilin.</p>
-        </section>
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-route"></i> 1. Sinh Tổng Hợp Hem (8 Bước)</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-sliders"></i> 2. Điều Hòa ALAS1 &amp; ALAS2</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-recycle"></i> 3. Thoái Hóa Hb &amp; Bilirubin</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vial-circle-check"></i> 4. Liên Hợp Gan &amp; Chu Kỳ Gan-Ruột</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-disease"></i> 5. Các Hội Chứng Vàng Da</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-dna"></i> 6. Bệnh Hemoglobin &amp; Thalassemia</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-sun"></i> 7. Bệnh Lý Ứ Đọng Porphyria</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-table-list"></i> 8. Bilan Cận Lâm Sàng &amp; Phân Biệt</a>
+            </div>
+        </nav>
 
-        <!-- SECTION 2: PHẢN ỨNG & ĐIỂM CHỐT ENZYM -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-flask"></i> 2. Phản Ứng & Điểm Chốt Cơ Chế</h2>
-            <div class="reaction-box">
-                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
-                    <li><code>Succinyl-CoA + Glycine --(ALA Synthase)--> δ-Aminolevulinic acid (ALA)</code></li>
-<li><code>Bilirubin + 2 UDP-Glucuronic acid --(UGT1A1)--> Bilirubin Diglucuronide</code></li>
-                </ul>
+        <!-- SECTION 1 -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-route"></i> 1. Quá Trình Sinh Tổng Hợp Hem (Heme Biosynthesis)</h2>
+            <p class="section-text">
+                Hồng cầu là tế bào hình đĩa lõm hai mặt (đường kính ~7 μm) không nhân, không ty thể, chứa khoảng <strong>750 g hemoglobin (Hb)</strong> ở người trưởng thành 70 kg. Đời sống sinh lý của hồng cầu là <strong>120 ngày</strong>. Mỗi ngày có 1–2% hồng cầu già bị tiêu hủy (90% tại đại thực bào lách/gan/tủy và 10% tan máu nội mạch). Glycoprotein <strong>Haptoglobin (Hp)</strong> gắn với Hb tự do dimer (65 kDa) tạo phức hợp <strong>Hb-Hp (155 kDa)</strong> ngăn ngừa lọc qua cầu thận gây hoại tử ống thận cấp, đồng thời rút ngắn thời gian bán thải từ 5 ngày xuống còn <strong>90 phút</strong> nhờ thanh thải qua thụ thể CD163 tại gan.
+            </p>
+            <p class="section-text">
+                Sinh tổng hợp Hem diễn ra tại <strong>85% ở các tế bào tiền thân hồng cầu tại tủy xương</strong> và <strong>15% tại tế bào nhu mô gan</strong>, trải qua <strong>8 bước phản ứng enzym</strong> định vị xen kẽ giữa chất nền ty thể và bào tương:
+            </p>
+
+            <!-- SVG SƠ ĐỒ 8 BƯỚC TỔNG HỢP HEM -->
+            <div class="svg-container">
+                <svg viewBox="0 0 960 480" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="mitoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(220, 38, 38, 0.12)"/>
+                            <stop offset="100%" stop-color="rgba(220, 38, 38, 0.03)"/>
+                        </linearGradient>
+                        <linearGradient id="cytoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(2, 132, 199, 0.12)"/>
+                            <stop offset="100%" stop-color="rgba(2, 132, 199, 0.03)"/>
+                        </linearGradient>
+                        <marker id="arrowMito" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+                        </marker>
+                        <marker id="arrowCyto" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
+                        </marker>
+                    </defs>
+
+                    <!-- Khung Khoang Ty Thể -->
+                    <rect x="20" y="20" width="440" height="440" rx="16" fill="url(#mitoGrad)" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>
+                    <text x="40" y="52" fill="#dc2626" font-size="14" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">TY THỂ (MITOCHONDRION)</text>
+
+                    <!-- Khung Khoang Bào Tương -->
+                    <rect x="500" y="20" width="440" height="440" rx="16" fill="url(#cytoGrad)" stroke="#0284c7" stroke-width="2"/>
+                    <text x="520" y="52" fill="#0284c7" font-size="14" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">BÀO TƯƠNG (CYTOSOL)</text>
+
+                    <!-- Node 1 Ty Thể: Glycine + Succinyl-CoA -->
+                    <rect x="50" y="80" width="380" height="44" rx="8" fill="var(--color-surface)" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="65" y="107" fill="var(--color-text)" font-size="13" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">Glycine + Succinyl-CoA</text>
+
+                    <line x1="240" y1="124" x2="240" y2="155" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowMito)"/>
+                    <text x="248" y="144" fill="#dc2626" font-size="11" font-weight="700">1. ALA Synthase (ALAS + B6)</text>
+
+                    <!-- Node 2 Ty Thể: ALA -->
+                    <rect x="50" y="160" width="380" height="44" rx="8" fill="var(--color-surface)" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="65" y="187" fill="var(--color-text)" font-size="13" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">Acid δ-Aminolevulinic (δ-ALA)</text>
+
+                    <!-- Mũi tên Ty thể sang Bào tương -->
+                    <path d="M 430 182 L 480 182 L 480 102 L 520 102" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrowCyto)"/>
+
+                    <!-- Node 3 Bào Tương: PBG -->
+                    <rect x="530" y="80" width="380" height="44" rx="8" fill="var(--color-surface)" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="545" y="107" fill="var(--color-text)" font-size="13" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">Porphobilinogen (PBG)</text>
+                    <text x="545" y="120" fill="#64748b" font-size="10">2. ALA Dehydratase (Zn2+ - Chì Pb2+ ức chế)</text>
+
+                    <line x1="720" y1="124" x2="720" y2="155" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowCyto)"/>
+                    <text x="728" y="144" fill="#0284c7" font-size="11" font-weight="700">3. HMB Synthase (PBG Deaminase)</text>
+
+                    <!-- Node 4 Bào Tương: HMB -->
+                    <rect x="530" y="160" width="380" height="44" rx="8" fill="var(--color-surface)" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="545" y="187" fill="var(--color-text)" font-size="13" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">Hydroxymethylbilane (HMB - mạch thẳng)</text>
+
+                    <line x1="720" y1="204" x2="720" y2="235" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowCyto)"/>
+                    <text x="728" y="224" fill="#0284c7" font-size="11" font-weight="700">4. Uroporphyrinogen III Synthase</text>
+
+                    <!-- Node 5 Bào Tương: Uroporphyrinogen III -->
+                    <rect x="530" y="240" width="380" height="44" rx="8" fill="var(--color-surface)" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="545" y="267" fill="var(--color-text)" font-size="13" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">Uroporphyrinogen III (Đóng vòng bất đối xứng)</text>
+
+                    <line x1="720" y1="284" x2="720" y2="315" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowCyto)"/>
+                    <text x="728" y="304" fill="#0284c7" font-size="11" font-weight="700">5. Uroporphyrinogen Decarboxylase</text>
+
+                    <!-- Node 6 Bào Tương: Coproporphyrinogen III -->
+                    <rect x="530" y="320" width="380" height="44" rx="8" fill="var(--color-surface)" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="545" y="347" fill="var(--color-text)" font-size="13" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">Coproporphyrinogen III</text>
+
+                    <!-- Mũi tên Bào tương quay lại Ty thể -->
+                    <path d="M 530 342 L 480 342 L 480 262 L 440 262" fill="none" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowMito)"/>
+
+                    <!-- Node 7 Ty Thể: Protoporphyrinogen IX -->
+                    <rect x="50" y="240" width="380" height="44" rx="8" fill="var(--color-surface)" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="65" y="267" fill="var(--color-text)" font-size="13" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">Protoporphyrinogen IX</text>
+                    <text x="65" y="280" fill="#64748b" font-size="10">6. Coproporphyrinogen Oxidase (O2)</text>
+
+                    <line x1="240" y1="284" x2="240" y2="315" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowMito)"/>
+                    <text x="248" y="304" fill="#dc2626" font-size="11" font-weight="700">7. Protoporphyrinogen Oxidase</text>
+
+                    <!-- Node 8 Ty Thể: Protoporphyrin IX -->
+                    <rect x="50" y="320" width="380" height="44" rx="8" fill="var(--color-surface)" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="65" y="347" fill="var(--color-text)" font-size="13" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">Protoporphyrin IX (Đỏ sậm - Băng Soret 400nm)</text>
+
+                    <line x1="240" y1="364" x2="240" y2="395" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowMito)"/>
+                    <text x="248" y="384" fill="#dc2626" font-size="11" font-weight="700">8. Ferrochelatase (+ Fe2+ / Chì Pb2+ ức chế)</text>
+
+                    <!-- Node Đích: HEM -->
+                    <rect x="50" y="400" width="380" height="48" rx="10" fill="#dc2626" stroke="#991b1b" stroke-width="2"/>
+                    <text x="180" y="431" fill="#ffffff" font-size="16" font-weight="800" font-family="'Plus Jakarta Sans', sans-serif">★ NHÂN HEM (HEME)</text>
+                </svg>
+            </div>
+
+            <div class="step-card-grid">
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #dc2626; font-size: 0.95rem;">Giai Đoạn 1: Tạo δ-ALA Trong Ty Thể (Bước 1)</h4>
+                    <p style="margin: 0; font-size: 0.88rem; line-height: 1.55; color: var(--color-text);">
+                        Ngưng tụ <strong>Glycine</strong> và <strong>Succinyl-CoA</strong> (từ chu trình Krebs) nhờ enzyme <strong>ALA Synthase (ALAS)</strong> với coenzyme bắt buộc <strong>Pyridoxal Phosphate (PLP - Vitamin B6)</strong> tạo acid δ-aminolevulinic (δ-ALA). Đây là <em>bước giới hạn tốc độ và điều hòa chính</em> của toàn bộ con đường.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #0284c7; font-size: 0.95rem;">Giai Đoạn 2: Tạo Coproporphyrinogen III Ở Bào Tương (Bước 2–5)</h4>
+                    <p style="margin: 0; font-size: 0.88rem; line-height: 1.55; color: var(--color-text);">
+                        δ-ALA ra bào tương, 2 phân tử ngưng tụ đóng vòng pyrrole tạo <strong>Porphobilinogen (PBG)</strong> qua <em>ALA Dehydratase (chứa Zn²⁺, cực kỳ nhạy cảm với ngộ độc chì Pb²⁺)</em>. 4 PBG trùng hợp thành mạch thẳng <strong>Hydroxymethylbilane (HMB)</strong> qua HMB Synthase. HMB đóng vòng bất đối xứng thành <strong>Uroporphyrinogen III</strong> qua Uroporphyrinogen III Synthase (nếu thiếu enzyme, HMB tự đóng vòng đối xứng tạo Uroporphyrinogen I vô dụng). Sau đó khử carboxyl 4 nhóm acetate thành <strong>Coproporphyrinogen III</strong>.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #10b981; font-size: 0.95rem;">Giai Đoạn 3: Tạo Protoporphyrin IX & Gắn Sắt Trong Ty Thể (Bước 6–8)</h4>
+                    <p style="margin: 0; font-size: 0.88rem; line-height: 1.55; color: var(--color-text);">
+                        Coproporphyrinogen III quay lại ty thể, bị oxy hóa khử carboxyl thành <strong>Protoporphyrinogen IX</strong>, sau đó oxy hóa 6 cầu methylene thành cầu methenyl (-CH=) tạo <strong>Protoporphyrin IX</strong> có màu đỏ sậm (hấp thụ cực mạnh bước sóng 400 nm - vùng Soret). Cuối cùng, <strong>Ferrochelatase (Hem Synthase)</strong> gắn ion <strong>Fe²⁺</strong> vào tâm vòng tạo nên phân tử <strong>Hem</strong> hoàn chỉnh. <em>Chì (Pb²⁺) ức chế Ferrochelatase khiến protoporphyrin gắn kẽm tạo Zinc-protoporphyrin (ZPP)</em>.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- SECTION 3: ĐIỂM NGỌC LÂM SÀNG -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> 3. Điểm Ngọc Lâm Sàng (Clinical Pearls)</h2>
+        <!-- SECTION 2 -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-sliders"></i> 2. Sự Điều Hòa Sinh Tổng Hợp Hem Ở Gan (ALAS1) và Tủy Xương (ALAS2)</h2>
+            <div class="info-box">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #0284c7;"><i class="fa-solid fa-gear"></i> Cơ Chế Điều Hòa ALAS1 Tại Nhu Mô Gan</h3>
+                <p style="margin: 0 0 0.75rem 0; font-size: 0.92rem; line-height: 1.6;">
+                    Tại gan, hem chủ yếu dùng làm nhóm ngoại cho hệ enzyme Cytochrome P450 giải độc thuốc. Isoenzyme <strong>ALAS1</strong> chịu sự kiểm soát ngược (negative feedback) nghiêm ngặt bởi nồng độ <strong>Hem tự do</strong> nội bào qua 3 cơ chế:
+                </p>
+                <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem; line-height: 1.65; color: var(--color-text);">
+                    <li><strong>Kìm hãm phiên mã (Repression)</strong>: Hem tự do hoạt động như co-repressor gắn aporepressor (Erg-1) khóa gene mã hóa ALAS1.</li>
+                    <li><strong>Ức chế dịch mã &amp; Translocation</strong>: Hem tự do ngăn cản dịch mã mRNA ALAS1 trong bào tương và cản trở tiền chất ALAS1 vận chuyển vào ty thể.</li>
+                    <li><strong>Ức chế dị lập thể ngược</strong>: Dư thừa hem bị oxy hóa thành <strong>Hematin (Fe³⁺)</strong> liên kết vào trung tâm dị lập thể khóa hoạt tính ALAS1.</li>
+                </ol>
+            </div>
+
             <div class="pearl-box">
-                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;">
-                    <li><strong>Vàng da trước gan (Tán huyết): Tăng chủ yếu Bilirubin gián tiếp, Urobilinogen nước tiểu tăng, phân sẫm màu, nước tiểu không có Bilirubin.</strong></li>
-<li><strong>Vàng da sau gan (Tắc mật): Tăng vọt Bilirubin trực tiếp, nước tiểu vàng sẫm như nước vối (Bilirubin niệu dương tính), phân bạc màu như phân cò.</strong></li>
+                <strong><i class="fa-solid fa-lightbulb"></i> Ý Nghĩa Dược Lý &amp; Lâm Sàng Chốt (Clinical Pearls):</strong>
+                <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; font-size: 0.9rem; line-height: 1.65;">
+                    <li><strong>Tác động của Barbiturate / Thuốc chuyển hóa qua gan</strong>: Kích thích gan tổng hợp CYP450, làm tiêu thụ mạnh pool hem tự do, giải phóng ALAS1 khỏi ức chế ngược → ALAS1 tăng vọt → <em>khởi phát cơn Porphyria cấp tính đe dọa tính mạng</em>.</li>
+                    <li><strong>Liệu pháp Glucose liều cao</strong>: Glucose nội bào ức chế chất đồng kích hoạt phiên mã PGC-1α, khóa phiên mã gene ALAS1 → <em>giải pháp cấp cứu hàng đầu trong cơn Porphyria cấp</em>.</li>
+                    <li><strong>Thuốc kháng lao INH (Isoniazid)</strong>: INH bất hoạt Pyridoxal Phosphate (Vitamin B6), làm suy sụp hoạt tính ALAS1 → gây <strong>thiếu máu nguyên bào sắt (sideroblastic anemia)</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="reaction-box">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #8b5cf6;"><i class="fa-solid fa-dna"></i> Cơ Chế Điều Hòa ALAS2 Tại Tế Bào Tiền Thân Tủy Xương</h3>
+                <p style="margin: 0; font-size: 0.92rem; line-height: 1.6;">
+                    Tại tủy xương, <strong>ALAS2</strong> không chịu sự ức chế ngược bởi Hem. Sự tổng hợp ALAS2 được điều hòa bởi <strong>Tính sẵn có của Sắt (Iron Availability)</strong>: Vùng 5'-UTR của mRNA ALAS2 chứa trình tự <strong>IRE (Iron Responsive Element)</strong>. Khi thiếu sắt, IRP-1 gắn IRE khóa dịch mã; khi đủ sắt, IRP-1 tách ra cho phép dịch mã ồ ạt ALAS2. Ngoài ra, <strong>Erythropoietin (EPO)</strong> kích thích tăng sinh hồng cầu và tăng cường biểu hiện toàn bộ gene tổng hợp globin và hem.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-recycle"></i> 3. Quá Trình Thoái Hóa Hemoglobin &amp; Tạo Bilirubin Tự Do</h2>
+            <p class="section-text">
+                Hồng cầu già bị thực bào tại hệ liên võng nội mô (RES - lách, gan, tủy xương). Phân tử Hemoglobin được tách thành hai phần:
+            </p>
+            <div class="step-card-grid">
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #0284c7;">1. Phần Globin</h4>
+                    <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">
+                        Được thủy phân triệt để bởi các protease của đại thực bào thành các <strong>acid amin tự do</strong>, hòa nhập vào pool acid amin chung của cơ thể để tái tổng hợp protein mới.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #dc2626;">2. Mở Vòng Hem (Heme Oxygenase)</h4>
+                    <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">
+                        Enzyme microsome <strong>Heme Oxygenase (HO)</strong> sử dụng <strong>3 O₂</strong> và <strong>7 electron từ NADPH</strong> cắt cầu nối methenyl α, giải phóng:
+                    </p>
+                    <ul style="margin: 0.4rem 0 0 0; padding-left: 1.25rem; font-size: 0.85rem;">
+                        <li><strong>Khí CO (Carbon Monoxide)</strong>: Phản ứng sinh lý nội sinh duy nhất tạo CO (thải qua phổi).</li>
+                        <li><strong>Ion Sắt (Fe²⁺/Fe³⁺)</strong>: Gắn transferrin tái sử dụng hoặc ferritin dự trữ.</li>
+                        <li><strong>Biliverdin IX</strong>: Chuỗi tetrapyrrole mạch thẳng màu xanh lục.</li>
+                    </ul>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #f59e0b;">3. Khử Biliverdin (Biliverdin Reductase)</h4>
+                    <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">
+                        Enzyme bào tương <strong>Biliverdin Reductase</strong> tiêu tốn 1 NADPH khử cầu methenyl trung tâm thành methylene, biến Biliverdin thành <strong>Bilirubin tự do (Bilirubin gián tiếp / chưa liên hợp)</strong> có màu vàng cam.
+                    </p>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Bản Chất Hóa Lý &amp; Độc Tính Của Bilirubin Tự Do:</strong>
+                <ul style="margin: 0.5rem 0 0 0; padding-left: 1.25rem; font-size: 0.9rem; line-height: 1.65;">
+                    <li><strong>Kỵ nước &amp; Tan mạnh trong Lipid</strong>: Cấu hình 3D tạo liên kết hydro nội phân tử che lấp các nhóm phân cực → không tan trong nước, không lọc qua cầu thận.</li>
+                    <li><strong>Vận chuyển trong máu nhờ Albumin</strong>: 1 phân tử Albumin gắn chặt 25 mg bilirubin tại vị trí ái lực cao. Các thuốc như <em>sulfonamide, salicylate</em> cạnh tranh đẩy bilirubin ra khỏi albumin → tăng nồng độ tự do.</li>
+                    <li><strong>Độc tính thần kinh &amp; Vàng da nhân não (Kernicterus)</strong>: Ở trẻ sơ sinh, hàng rào máu não chưa hoàn thiện, bilirubin tự do ngấm vào nhân xám đáy não (Globus pallidus, Thalamus) gây hoại tử tế bào thần kinh, co giật, liệt cứng và tử vong.</li>
+                    <li><strong>Phản ứng Diazo gián tiếp</strong>: Cần dung môi hữu cơ (Methanol) phá vỡ liên kết hydro nội phân tử để phản ứng với thuốc thử Diazo của van den Bergh.</li>
                 </ul>
             </div>
         </section>
 
-        <!-- SECTION 4: THĂM DÒ & XÉT NGHIỆM LIÊN QUAN -->
-        <section class="article-section">
-            <h2 class="section-title"><i class="fa-solid fa-vial" style="color: #10b981;"></i> 4. Chỉ Số Xét Nghiệm & Biện Luận Cận Lâm Sàng</h2>
+        <!-- SECTION 4 -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-vial-circle-check"></i> 4. Quá Trình Thu Nhận, Liên Hợp Tại Gan &amp; Chu Kỳ Gan - Ruột</h2>
+            <p class="section-text">
+                Tại xoang gan, Bilirubin tự do tách khỏi Albumin và được vận chuyển thuận lợi qua màng xoang vào tế bào gan nhờ các chất vận chuyển họ OATP. Trong bào tương, bilirubin gắn với <strong>Ligandin (Glutathione S-transferase)</strong> và <strong>Protein Y</strong> để giữ hòa tan và chống trào ngược ra máu.
+            </p>
+
+            <div class="reaction-box">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #8b5cf6;"><i class="fa-solid fa-flask"></i> Phản Ứng Liên Hợp Tại Mạng Lưới Nội Chất Trơn (sER)</h3>
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.9rem; line-height: 1.6;">
+                    Chất cho gốc glucuronate là <strong>UDP-Glucuronic acid (UDP-GlcUA)</strong> dưới sự xúc tác của enzyme <strong>Bilirubin UDP-Glucuronosyltransferase (Bilirubin-UGT / UGT1A1)</strong>:
+                </p>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; background: var(--color-surface); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--color-border); line-height: 1.7;">
+                    Bilirubin + UDP-GlcUA --(UGT1A1)--> Bilirubin Monoglucuronide + UDP<br>
+                    Bilirubin Monoglucuronide + UDP-GlcUA --(UGT1A1)--> <strong>Bilirubin Diglucuronide</strong> + UDP
+                </div>
+                <p style="margin: 0.5rem 0 0 0; font-size: 0.88rem; color: var(--color-text-muted);">
+                    <em>Bilirubin Diglucuronide (Bilirubin liên hợp / trực tiếp)</em>: Tan cực mạnh trong nước, không độc, phản ứng Diazo trực tiếp nhanh chóng mà không cần methanol.
+                </p>
+            </div>
+
+            <!-- SVG SƠ ĐỒ CHU KỲ GAN RUỘT -->
+            <div class="svg-container">
+                <svg viewBox="0 0 960 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="liverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(16, 185, 129, 0.12)"/>
+                            <stop offset="100%" stop-color="rgba(16, 185, 129, 0.03)"/>
+                        </linearGradient>
+                        <linearGradient id="gutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(245, 158, 11, 0.12)"/>
+                            <stop offset="100%" stop-color="rgba(245, 158, 11, 0.03)"/>
+                        </linearGradient>
+                        <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+                        </marker>
+                        <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 1 L 10 5 L 0 9 z" fill="#d97706"/>
+                        </marker>
+                    </defs>
+
+                    <!-- Khung Gan -->
+                    <rect x="20" y="20" width="420" height="340" rx="14" fill="url(#liverGrad)" stroke="#10b981" stroke-width="2"/>
+                    <text x="40" y="50" fill="#059669" font-size="14" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">TẾ BÀO GAN &amp; VI QUẢN MẬT</text>
+
+                    <rect x="40" y="75" width="380" height="42" rx="8" fill="var(--color-surface)" stroke="#cbd5e1"/>
+                    <text x="55" y="101" fill="var(--color-text)" font-size="12" font-weight="700">Bilirubin tự do + Albumin (Máu xoang gan)</text>
+
+                    <line x1="230" y1="117" x2="230" y2="145" stroke="#059669" stroke-width="2" marker-end="url(#arrowGreen)"/>
+                    <text x="238" y="135" fill="#059669" font-size="10" font-weight="700">Thu nhận OATP + Ligandin</text>
+
+                    <rect x="40" y="150" width="380" height="42" rx="8" fill="var(--color-surface)" stroke="#cbd5e1"/>
+                    <text x="55" y="176" fill="var(--color-text)" font-size="12" font-weight="700">Liên hợp UGT1A1 (Tạo Diglucuronide)</text>
+
+                    <line x1="230" y1="192" x2="230" y2="220" stroke="#059669" stroke-width="2" marker-end="url(#arrowGreen)"/>
+                    <text x="238" y="210" fill="#059669" font-size="10" font-weight="700">Bơm MRP-2 / MOAT (Bước giới hạn tốc độ)</text>
+
+                    <rect x="40" y="225" width="380" height="42" rx="8" fill="var(--color-surface)" stroke="#cbd5e1"/>
+                    <text x="55" y="251" fill="var(--color-text)" font-size="12" font-weight="700">Bilirubin Liên Hợp vào Ống Dẫn Mật</text>
+
+                    <!-- Khung Ruột & Đào Thải -->
+                    <rect x="480" y="20" width="460" height="340" rx="14" fill="url(#gutGrad)" stroke="#f59e0b" stroke-width="2"/>
+                    <text x="500" y="50" fill="#d97706" font-size="14" font-weight="700" font-family="'Plus Jakarta Sans', sans-serif">LÒNG RUỘT &amp; CHU KỲ GAN - RUỘT</text>
+
+                    <!-- Mật đổ xuống ruột -->
+                    <path d="M 420 246 L 500 246 L 500 100 L 520 100" fill="none" stroke="#d97706" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+
+                    <rect x="520" y="75" width="400" height="46" rx="8" fill="var(--color-surface)" stroke="#cbd5e1"/>
+                    <text x="535" y="98" fill="var(--color-text)" font-size="12" font-weight="700">Ruột: β-glucuronidase vi khuẩn thủy phân</text>
+                    <text x="535" y="113" fill="#64748b" font-size="10">Khử hydro tạo Urobilinogen (Stercobilinogen)</text>
+
+                    <!-- 3 Nhánh Đào Thải -->
+                    <rect x="520" y="145" width="390" height="50" rx="8" fill="#fef3c7" stroke="#f59e0b"/>
+                    <text x="535" y="167" fill="#b45309" font-size="11" font-weight="700">80% Đào Thải Qua Phân: Oxy hóa thành STERCOBILIN</text>
+                    <text x="535" y="183" fill="#78350f" font-size="10">Tạo sắc tố màu nâu vàng đặc trưng của phân bình thường</text>
+
+                    <rect x="520" y="210" width="390" height="50" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
+                    <text x="535" y="232" fill="#0369a1" font-size="11" font-weight="700">20% Tái Hấp Thu Tĩnh Mạch Cửa (Chu Kỳ Gan - Ruột)</text>
+                    <text x="535" y="248" fill="#0c4a6e" font-size="10">99% được tế bào gan thu nhận và tái bài tiết lại vào dịch mật</text>
+
+                    <rect x="520" y="275" width="390" height="50" rx="8" fill="#dcfce7" stroke="#10b981"/>
+                    <text x="535" y="297" fill="#15803d" font-size="11" font-weight="700">1% Thoát Qua Tuần Hoàn Lớn → Đến Thận</text>
+                    <text x="535" y="313" fill="#14532d" font-size="10">Lọc qua cầu thận, oxy hóa thành UROBILIN (vàng nước tiểu)</text>
+
+                    <!-- Mũi tên chu kỳ gan ruột quay về gan -->
+                    <path d="M 520 235 L 460 235 L 460 290 L 230 290 L 230 270" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowGreen)"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-disease"></i> 5. Cơ Chế Bệnh Học Phân Tử Các Hội Chứng Vàng Da (Jaundice)</h2>
+            <p class="section-text">
+                Nồng độ Bilirubin huyết thanh toàn phần bình thường là <strong>&lt; 21 μmol/L (&lt; 1.2 mg/dL)</strong>. Biểu hiện vàng da lâm sàng xuất hiện khi nồng độ vượt quá <strong>34–50 μmol/L (2.0–2.5 mg/dL)</strong>. Dựa vào vị trí rối loạn chuyển hóa phân chia thành 3 nhóm lớn:
+            </p>
+
+            <div class="step-card-grid">
+                <div class="step-card" style="border-left-color: #ef4444;">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #ef4444;">1. Vàng Da Trước Gan (Pre-hepatic / Tan Máu)</h3>
+                    <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; line-height: 1.55;">
+                        Phá hủy hồng cầu ồ ạt vượt quá công suất liên hợp của gan (Hồng cầu hình liềm HbS, Thalassemia, Thiếu men G6PD, Bất đồng nhóm máu ABO/Rh, Sốt rét).
+                    </p>
+                    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.55;">
+                        <li><strong>Máu</strong>: Tăng vọt Bilirubin tự do (gián tiếp).</li>
+                        <li><strong>Nước tiểu</strong>: <em>Acholuric jaundice</em> (không có Bilirubin niệu do Bi tự do kỵ nước); Urobilinogen nước tiểu tăng rất cao.</li>
+                        <li><strong>Phân</strong>: Stercobilinogen tăng cao, phân sẫm màu.</li>
+                    </ul>
+                </div>
+
+                <div class="step-card" style="border-left-color: #f59e0b;">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #f59e0b;">2. Vàng Da Sau Gan (Post-hepatic / Tắc Mật)</h3>
+                    <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; line-height: 1.55;">
+                        Tắc nghẽn cơ học đường mật (Sỏi ống mật chủ, U đầu tụy, Ung thư đường mật) làm Bilirubin liên hợp trào ngược vào xoang gan và máu.
+                    </p>
+                    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.85rem; line-height: 1.55;">
+                        <li><strong>Máu</strong>: Bilirubin liên hợp (trực tiếp) tăng chiếm ưu thế (&gt;50%); Men <strong>ALP &amp; GGT tăng rất cao</strong>.</li>
+                        <li><strong>Nước tiểu</strong>: Sắc tố mật (+) rất mạnh (nước tiểu sẫm như nước vối); Muối mật (+); Urobilinogen niệu = 0 (tắc hoàn toàn).</li>
+                        <li><strong>Phân</strong>: Phân bạc màu như đất sét (Acholic stools).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CÁC HỘI CHỨNG VÀNG DA TẠI GAN DI TRUYỀN -->
+            <h3 class="subsection-title"><i class="fa-solid fa-dna"></i> Các Hội Chứng Di Truyền Chuyển Hóa Bilirubin Tại Gan</h3>
+            
+            <div class="step-card-grid">
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #0284c7;">Hội Chứng Gilbert</h4>
+                    <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                        Đột biến promoter gen <em>UGT1A1</em> giảm ~70% hoạt tính (còn 30% sinh lý). Lành tính, vàng da nhẹ thoáng qua khi nhịn đói, stress, mệt mỏi. Không gây tổn thương thần kinh, AST/ALT bình thường.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #dc2626;">Hội Chứng Crigler-Najjar Type I</h4>
+                    <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                        Đột biến mất hoàn toàn 100% hoạt tính UGT1A1. Bilirubin tự do tăng cực cao (&gt;20 mg/dL = 340 μmol/L) gây <strong>vàng da nhân não (Kernicterus)</strong> tử vong sớm. <em>Không đáp ứng Phenobarbital</em>; điều trị bằng chiếu đèn quang học (Phototherapy tạo Lumirubin) và ghép gan.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #ea580c;">Hội Chứng Crigler-Najjar Type II</h4>
+                    <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                        Đột biến điểm làm giảm nặng nhưng còn bảo tồn một phần nhỏ hoạt tính UGT1A1 (Bi tự do 8–20 mg/dL). Tiên lượng lành tính hơn. <em>Đáp ứng rất tốt với Phenobarbital liều cao</em> (cảm ứng phiên mã sER).
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #8b5cf6;">Hội Chứng Dubin-Johnson</h4>
+                    <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                        Đột biến gen mã hóa bơm <strong>MRP-2 / MOAT</strong> màng vi quản mật. Gan liên hợp bình thường nhưng không bơm được vào mật → Tăng Bilirubin liên hợp (trực tiếp). Đặc trưng: <strong>Gan màu đen</strong> do ứ đọng sắc tố trong lysosome tế bào gan.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #10b981;">Hội Chứng Rotor</h4>
+                    <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                        Bất thường trong khả năng lưu trữ và tái hấp thu bilirubin liên hợp tại tế bào gan. Tăng Bilirubin liên hợp mạn tính lành tính. <strong>Gan có màu sắc bình thường</strong> (không nhiễm sắc tố đen).
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #db2777;">Sắc Tố Delta-Bilirubin (δ-Bilirubin)</h4>
+                    <p style="margin: 0; font-size: 0.86rem; line-height: 1.5;">
+                        Trong tắc mật kéo dài, Bilirubin liên hợp tạo <strong>liên kết cộng hóa trị bền vững với Albumin</strong>. Thời gian bán thải kéo dài tương đương Albumin (~20 ngày so với 4 giờ của Bi trực tiếp tự do). Giải thích hiện tượng <em>vàng da kéo dài thêm nhiều tuần sau khi đã phẫu thuật giải áp tắc mật thành công</em>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-dna"></i> 6. Bệnh Lý Hemoglobin (Hemoglobinopathies) &amp; Thalassemia</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-nodes"></i> Bệnh Lý Huyết Sắc Tố (Đột Biến Chất Lượng Chuỗi Globin)</h3>
+            <div class="step-card-grid">
+                <div class="step-card" style="border-left-color: #dc2626;">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #dc2626;">Hemoglobin S (HbS - Bệnh Hồng Cầu Hình Liềm)</h4>
+                    <p style="margin: 0 0 0.4rem 0; font-size: 0.88rem; line-height: 1.55;">
+                        Đột biến điểm chuyển vị codon số 6 gen β-globin trên NST 11: <strong>GAG (Acid Glutamic) → GUG (Valine)</strong> (β⁶ Glu → Val).
+                    </p>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.5; color: var(--color-text);">
+                        Valine kỵ nước tạo <strong>"vệt dính" (sticky patch)</strong>. Ở trạng thái khử oxy (deoxyHbS - trạng thái T), vệt dính khớp vào hốc bổ khuyết của phân tử HbS lân cận, kích hoạt sự <strong>trùng hợp hóa phi cộng hóa trị</strong> tạo các bó sợi xoắn kép không tan làm biến dạng hồng cầu thành <strong>hình liềm</strong>. Hồng cầu cứng vỡ gây tan máu mạn (đời sống giảm còn 10–20 ngày) và gây <strong>cơn tắc mạch đau đớn (vaso-occlusive crises)</strong>, nhồi máu lách, thận. Yếu tố khởi phát: giảm PO₂, toan máu (hiệu ứng Bohr), tăng 2,3-BPG.
+                    </p>
+                </div>
+
+                <div class="step-card" style="border-left-color: #0284c7;">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #0284c7;">Hemoglobin C (HbC)</h4>
+                    <p style="margin: 0 0 0.4rem 0; font-size: 0.88rem; line-height: 1.55;">
+                        Đột biến điểm codon 6 gen β-globin: <strong>GAG (Glu) → AAG (Lysine)</strong> (β⁶ Glu → Lys).
+                    </p>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.5; color: var(--color-text);">
+                        Lysine kiềm tích điện dương làm giảm độ hòa tan của Hb, gây <strong>kết tinh nội bào</strong> tạo <strong>hồng cầu hình bia (target cells)</strong>. Lâm sàng biểu hiện thiếu máu huyết tán mức độ nhẹ.
+                    </p>
+                </div>
+
+                <div class="step-card" style="border-left-color: #8b5cf6;">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #8b5cf6;">Hemoglobin M (HbM - Methemoglobinemia Di Truyền)</h4>
+                    <p style="margin: 0 0 0.4rem 0; font-size: 0.88rem; line-height: 1.55;">
+                        Đột biến túi gắn Hem làm mất tính ổn định của Fe²⁺, thúc đẩy tự oxy hóa thành <strong>Fe³⁺ (Ferric)</strong> không vận chuyển được O₂ (HbM Boston α⁵⁸ His→Tyr, HbM Saskatoon β⁶³ His→Tyr, HbM Milwaukee β⁶⁷ Val→Glu).
+                    </p>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.5; color: var(--color-text);">
+                        Lâm sàng: <strong>Tím sô-cô-la (Chocolate cyanosis)</strong> không đáp ứng thở oxy. Điều trị hỗ trợ bằng xanh methylen hoặc Vitamin C.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-chart-pie"></i> Bệnh Thalassemia (Suy Giảm Số Lượng Chuỗi Globin)</h3>
+            <div class="step-card-grid">
+                <div class="step-card" style="border-left-color: #10b981;">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #10b981;">Alpha-Thalassemia (4 Gen Trên NST 16)</h4>
+                    <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.86rem; line-height: 1.6;">
+                        <li><strong>Mất 1 gen (-α/αα)</strong>: Thể ẩn thầm lặng (Silent carrier), không triệu chứng.</li>
+                        <li><strong>Mất 2 gen (--/αα hoặc -α/-α)</strong>: Thể nhẹ (Alpha-thal trait), hồng cầu nhỏ nhược sắc.</li>
+                        <li><strong>Mất 3 gen (--/-α) - Bệnh HbH</strong>: Chuỗi β thừa tạo tetramer <strong>β₄ (HbH)</strong>, ái lực O₂ cực cao không nhả cho mô, tạo thể Heinz gây tan máu vừa-nặng.</li>
+                        <li><strong>Mất 4 gen (--/--) - Bệnh Hb Bart's</strong>: Chuỗi γ thừa tạo tetramer <strong>γ₄ (Hb Bart's)</strong>, không nhả O₂ gây <em>Phù thai nhi (Hydrops fetalis)</em>, tử vong trong tử cung.</li>
+                    </ul>
+                </div>
+
+                <div class="step-card" style="border-left-color: #f59e0b;">
+                    <h4 style="margin: 0 0 0.4rem 0; color: #f59e0b;">Beta-Thalassemia (2 Gen Trên NST 11) &amp; Chaperone AHSP</h4>
+                    <p style="margin: 0 0 0.4rem 0; font-size: 0.88rem; line-height: 1.55;">
+                        Chủ yếu do hơn 300 loại đột biến điểm (promoter β⁺, splice sites β⁰, frameshift/nonsense β⁰).
+                    </p>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.5; color: var(--color-text);">
+                        <strong>Vai trò Protein Chaperone AHSP</strong>: Sinh lý bình thường, AHSP gắn giữ chuỗi α tự do hòa tan. Khi thiếu chuỗi β trong β-Thalassemia, lượng chuỗi α tự do vượt quá khả năng đệm của AHSP → chuỗi α tự kết tủa tạo cặn độc phá hủy màng nguyên bào hồng cầu trong tủy xương gây <strong>sinh hồng cầu không hiệu quả (ineffective erythropoiesis)</strong> và tan máu ngoại vi.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7 -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-sun"></i> 7. Bệnh Lý Ứ Đọng Porphyrin (Porphyrias)</h2>
+            <p class="section-text">
+                Porphyrias là nhóm bệnh rối loạn chuyển hóa do thiếu hụt hoạt tính của một trong các enzyme thuộc con đường sinh tổng hợp Hem, dẫn đến tích lũy các tiền chất (ALA, PBG) hoặc các porphyrinogen trong mô, máu và nước tiểu.
+            </p>
+
+            <div class="reaction-box">
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #8b5cf6;"><i class="fa-solid fa-brain"></i> Hai Cơ Chế Bệnh Học Phân Tử Chính</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+                    <div>
+                        <strong style="color: #dc2626;">1. Nhóm Thần Kinh - Tâm Thần &amp; Đau Bụng Cấp</strong>
+                        <p style="margin: 0.25rem 0 0 0; font-size: 0.86rem; line-height: 1.5;">
+                            Tắc nghẽn ở <em>các bước đầu (phản ứng 2, 3)</em> → tích lũy <strong>ALA và PBG</strong>. ALA có cấu trúc tương đồng chất dẫn truyền thần kinh GABA, gây độc trực tiếp hệ thần kinh trung ương và tự chủ: Cơn đau bụng cấp dữ dội mô phỏng bụng ngoại khoa, tăng huyết áp, nhịp tim nhanh, liệt vận động, rối loạn tâm thần.
+                        </p>
+                    </div>
+                    <div>
+                        <strong style="color: #ea580c;">2. Nhóm Mẫn Cảm Ánh Sáng (Photosensitivity)</strong>
+                        <p style="margin: 0.25rem 0 0 0; font-size: 0.86rem; line-height: 1.5;">
+                            Tắc nghẽn ở <em>các bước sau (phản ứng 4–8)</em> → tích lũy <strong>porphyrinogen</strong>. Tại da tiếp xúc ánh sáng, porphyrinogen bị oxy hóa thành porphyrin có nhân hấp thụ cực mạnh <strong>bước sóng 400 nm (băng Soret)</strong>, truyền năng lượng cho oxy tạo <strong>gốc tự do ROS (Singlet oxygen)</strong> phá hủy lysosome tế bào da → bọng nước loét sâu, sẹo co rút, biến dạng chi (nguồn gốc truyền thuyết ma sói).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-card-grid">
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.3rem 0; color: #dc2626;">Acute Intermittent Porphyria (AIP)</h4>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.5;">
+                        Thiếu <strong>HMB Synthase (PBG Deaminase)</strong> (Bước 3). Tích lũy ALA và PBG. Đau bụng cấp, liệt cơ, tâm thần. <strong>Không có mẫn cảm ánh sáng</strong>. Nước tiểu để lâu ngoài không khí sẫm màu đỏ rượu vang (do PBG tự trùng hợp thành porphobilin).
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.3rem 0; color: #ea580c;">Congenital Erythropoietic Porphyria (CEP)</h4>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.5;">
+                        Thiếu <strong>Uroporphyrinogen III Synthase</strong> (Bước 4). HMB tự đóng vòng tạo Uroporphyrinogen I tích tụ khắp cơ thể. Mẫn cảm ánh sáng cực kỳ nghiêm trọng, biến dạng mặt sụn khớp, răng và xương phát huỳnh quang đỏ dưới tia cực tím.
+                    </p>
+                </div>
+                <div class="step-card">
+                    <h4 style="margin: 0 0 0.3rem 0; color: #d97706;">Porphyria Cutanea Tarda (PCT)</h4>
+                    <p style="margin: 0; font-size: 0.85rem; line-height: 1.5;">
+                        Thiếu <strong>Uroporphyrinogen Decarboxylase</strong> (Bước 5). Là <em>thể Porphyria phổ biến nhất trên lâm sàng</em>. Mẫn cảm ánh sáng bọng nước sẹo hóa, thường khởi phát sau tổn thương gan do nghiện rượu, ứ sắt hoặc nhiễm virus viêm gan C. Không có triệu chứng thần kinh.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-capsules"></i> Nguyên Tắc Điều Trị Porphyria Cấp Tính Dựa Trên Cơ Chế Hóa Sinh:</strong>
+                <ol style="margin: 0.4rem 0 0 0; padding-left: 1.25rem; font-size: 0.88rem; line-height: 1.6;">
+                    <li><strong>Truyền Glucose Liều Cao</strong>: Khóa chất đồng hoạt hóa PGC-1α → ức chế mạnh mẽ phiên mã gene ALAS1 tại gan, dập tắt sản sinh tiền chất ALA/PBG.</li>
+                    <li><strong>Truyền Hematin (Heme Hydroxide / Panhematin)</strong>: Bổ sung hem ngoại sinh đóng vai trò co-repressor gây ức chế ngược trực tiếp lên ALAS1.</li>
+                    <li><strong>Ngừng Tuyệt Đối Các Thuốc Cảm Ứng CYP450</strong>: Barbiturate, Sulfonamide, Phenytoin, Rifampicin vì làm tiêu thụ pool hem gan kích thích ALAS1 bùng phát.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-table-list"></i> 8. Bilan Cận Lâm Sàng &amp; Bảng Chẩn Đoán Phân Biệt Hội Chứng Vàng Da</h2>
+            <p class="section-text">
+                Bảng đối sánh toàn diện các chỉ số sinh hóa máu, nước tiểu, phân và enzym gan giúp phân định chính xác căn nguyên hội chứng vàng da trên thực hành lâm sàng:
+            </p>
+
             <table class="lab-table">
                 <thead>
                     <tr>
-                        <th style="width: 80px;">STT</th>
-                        <th>Chỉ số xét nghiệm</th>
-                        <th>Ý nghĩa & Ứng dụng lâm sàng</th>
+                        <th style="width: 20%;">Chỉ Số Xét Nghiệm</th>
+                        <th style="width: 20%;">Sinh Lý Bình Thường</th>
+                        <th style="width: 20%;">Vàng Da Trước Gan (Tan Máu)</th>
+                        <th style="width: 20%;">Vàng Da Tại Gan (Viêm Gan / Xơ Gan)</th>
+                        <th style="width: 20%;">Vàng Da Sau Gan (Tắc Mật Cơ Học)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
-                        <tr>
-                            <td><strong>1</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Bilirubin toàn phần, trực tiếp, gián tiếp</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
-                        <tr>
-                            <td><strong>2</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">Bilirubin & Urobilinogen nước tiểu</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
-                        <tr>
-                            <td><strong>3</strong></td>
-                            <td><strong style="color: var(--color-primary, #0284c7);">ALP, GGT</strong></td>
-                            <td>Đánh giá chẩn đoán, phân tầng nguy cơ và theo dõi đáp ứng điều trị</td>
-                        </tr>
-                    
+                    <tr>
+                        <td><strong>Bilirubin Toàn Phần</strong></td>
+                        <td>5.1 – 17.0 μmol/L (0.3 – 1.0 mg/dL)</td>
+                        <td>Tăng vừa đến rất cao</td>
+                        <td>Tăng cao (Hỗn hợp)</td>
+                        <td>Tăng rất cao (&gt;50% là Bi trực tiếp)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bilirubin Trực Tiếp (Liên hợp)</strong></td>
+                        <td>0 – 5.1 μmol/L (0 – 0.3 mg/dL)</td>
+                        <td>Bình thường hoặc tăng nhẹ</td>
+                        <td>Tăng vừa đến mạnh</td>
+                        <td><strong>Tăng cực kỳ mạnh</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bilirubin Gián Tiếp (Tự do)</strong></td>
+                        <td>5.1 – 12.0 μmol/L (0.2 – 0.8 mg/dL)</td>
+                        <td><strong>Tăng chiếm ưu thế (&gt;80%)</strong></td>
+                        <td>Tăng vừa</td>
+                        <td>Bình thường hoặc tăng nhẹ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bilirubin Nước Tiểu (Sắc tố mật)</strong></td>
+                        <td>Âm tính (-)</td>
+                        <td><strong>Âm tính (-)</strong> (Acholuric)</td>
+                        <td>Dương tính (+)</td>
+                        <td><strong>Dương tính rất mạnh (+++)</strong> (Nước vối)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Urobilinogen Nước Tiểu</strong></td>
+                        <td>0.1 – 1.0 Ehrlich units (1.7 – 17 μmol/L)</td>
+                        <td><strong>Tăng rất cao</strong></td>
+                        <td>Tăng (giảm nếu có ứ mật phụ)</td>
+                        <td><strong>Âm tính (0)</strong> (Tắc mật hoàn toàn)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stercobilin Phân</strong></td>
+                        <td>40 – 280 mg/24h (Màu nâu vàng)</td>
+                        <td><strong>Tăng rất cao</strong> (Phân sẫm màu)</td>
+                        <td>Giảm (Phân nhạt màu)</td>
+                        <td><strong>Biến mất hoàn toàn</strong> (Phân bạc màu như đất sét)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enzym AST / ALT</strong></td>
+                        <td>&lt; 40 U/L</td>
+                        <td>Bình thường</td>
+                        <td><strong>Tăng vọt gấp 10–100 lần</strong> (Hoại tử tế bào gan)</td>
+                        <td>Bình thường hoặc tăng nhẹ thứ phát</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enzym ALP / GGT</strong></td>
+                        <td>ALP: 40–130 U/L; GGT: 10–71 U/L</td>
+                        <td>Bình thường</td>
+                        <td>Tăng nhẹ hoặc vừa</td>
+                        <td><strong>Tăng vọt gấp 3–10 lần</strong> (Kích thích vi quản mật)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Haptoglobin Huyết Tương</strong></td>
+                        <td>0.3 – 2.0 g/L</td>
+                        <td><strong>Giảm mạnh về 0</strong> (Tan máu nội mạch)</td>
+                        <td>Bình thường hoặc tăng (Phản ứng viêm)</td>
+                        <td>Bình thường</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
-        <footer style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.85rem;">
-            <em>Tài liệu tham khảo: Hóa Sinh Y Học ĐHYD 2024, Harper's Illustrated Biochemistry 32nd, Clinical Biochemistry 7th.</em>
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.7;">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--color-text, #334155); font-size: 0.95rem;">Tài Liệu Tham Khảo Chuẩn Y Học Chứng Cứ (AMA):</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill LLC; 2023:51-60, 315-325, 341-351, 634-642.</li>
+                <li>Bộ Môn Hóa Sinh. <em>Hóa Sinh Y Học</em>. TP. Hồ Chí Minh: Nhà Xuất Bản Y Học; 2024:74-90, 110-126, 267-270, 281-285, 353-370.</li>
+                <li>Baynes JW, Dominiczak MH. <em>Medical Biochemistry</em>. 5th ed. London, UK: Elsevier; 2019:51-61, 513-520.</li>
+                <li>Murphy M, Srivastava R, Deans K. <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. London, UK: Elsevier; 2018:56-61, 73-76.</li>
+                <li>Pratt CW, Cornely K. <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley & Sons; 2021:125-133, 194-198, 403-415.</li>
+                <li>Murray RK, Granner DK, Mayes PA, Rodwell VW. <em>Harper's Biochemistry</em>. 26th ed. New York, NY: Lange Medical Books/McGraw-Hill; 2003:270-285.</li>
+            </ol>
         </footer>
 
     </div>
 </body>
+
 </html>

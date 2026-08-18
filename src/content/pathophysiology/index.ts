@@ -23,6 +23,8 @@ export * from './biochemistry/metabolic-navigator-view';
 export * from './biochemistry/metabolic-data';
 export * from './quiz/patho-quiz-view';
 export * from './quiz/patho-quiz-data';
+export * from './quiz/exam-bank-data';
+export * from './quiz/exam-generator-engine';
 
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {

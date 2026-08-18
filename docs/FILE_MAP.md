@@ -429,6 +429,7 @@
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hdv.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi D (HDV, Viroid, Ribozyme, Bulevirtide) | Cấp 4 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hev.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi E (HEV, One Health, Thai kỳ, Thần kinh GBS/NA) | Cấp 4 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-thuy-dau.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Thủy Đậu & Herpes Zoster (VZV, M6PR, Biểu sinh ẩn nấp, Zona, PHN, Shingrix, PEP) | Cấp 4 |
+| `src/content/pathophysiology/biochemistry/block4-intermediary-metabolism/chuyen-hoa-hemoglobin-bilirubin.html` | **[MỚI]** MET-04: Hóa sinh Chuyển hóa Hemoglobin, Sắc tố mật & Cơ chế bệnh học Vàng da (Jaundice, HbS/HbC/HbM, Thalassemia, Porphyrias) | Cấp 4 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_VP.html` | Sinh lý bệnh & Cơ chế bệnh sinh Viêm phổi | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_BACH_HAU.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Bạch hầu | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_SOT_RET.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Sốt rét | Cấp 3 |

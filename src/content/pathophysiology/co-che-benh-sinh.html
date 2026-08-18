@@ -354,6 +354,17 @@
             overflow: hidden !important;
         }
 
+        .specialty-card.specialty-dropdown-card {
+            overflow: visible !important;
+            z-index: 50 !important;
+        }
+
+        .specialty-card.specialty-dropdown-card:hover,
+        .specialty-card.specialty-dropdown-card.open,
+        .specialty-card.specialty-dropdown-card:focus-within {
+            z-index: 100000 !important;
+        }
+
         .specialty-card:hover {
             transform: translateY(-4px) !important;
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;

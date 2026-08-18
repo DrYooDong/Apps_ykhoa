@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Pathophysiology Quiz & Flashcards CSS — CliniPortal 2.0
+   Pathophysiology Quiz, Flashcards & Cascade Builder CSS — CliniPortal 2.0
    Case-Based Mechanism Challenges & Interactive Spaced Repetition Cards
    ========================================================================== */
 
@@ -10,12 +10,14 @@
   width: 100%;
 }
 
+/* Master Mode Navigation */
 .quiz-mode-nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   border-bottom: 2px solid var(--color-border, #e2e8f0);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .quiz-mode-btn {
@@ -46,6 +48,137 @@
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
 }
 
+/* Mastery Stats & KPI Bar */
+.quiz-mastery-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+}
+
+.quiz-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.quiz-stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.quiz-stat-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  line-height: 1.2;
+}
+
+.quiz-stat-lbl {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Filter & Search Bar */
+.quiz-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-search-box {
+  position: relative;
+  width: 100%;
+}
+
+.quiz-search-box input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.6rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.quiz-search-box input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.quiz-search-box i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted, #94a3b8);
+  font-size: 0.9rem;
+}
+
+.quiz-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.quiz-filter-chip {
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #475569);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.quiz-filter-chip:hover {
+  border-color: #10b981;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.quiz-filter-chip.active {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.quiz-chip-count {
+  background: rgba(0,0,0,0.1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+}
+
+.quiz-filter-chip.active .quiz-chip-count {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
 /* Case Challenge Card Layout */
 .quiz-case-card {
   background: var(--color-surface, #ffffff);
@@ -54,15 +187,21 @@
   padding: 1.5rem;
   box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
   margin-bottom: 1.25rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.quiz-case-card:hover {
+  border-color: rgba(16, 185, 129, 0.4);
 }
 
 .quiz-case-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   border-bottom: 1px solid var(--color-border, #e2e8f0);
   padding-bottom: 0.75rem;
   margin-bottom: 1rem;
+  gap: 1rem;
 }
 
 .quiz-vignette {
@@ -98,24 +237,25 @@
   font-size: 0.9rem;
   line-height: 1.5;
   transition: all 0.15s ease;
+  width: 100%;
 }
 
-.quiz-option-btn:hover {
+.quiz-option-btn:hover:not(:disabled) {
   background: rgba(2, 132, 199, 0.05);
   border-color: var(--color-primary, #0284c7);
 }
 
 .quiz-option-btn.correct {
-  background: rgba(16, 185, 129, 0.12);
-  border-color: #10b981;
-  color: #065f46;
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: #10b981 !important;
+  color: #065f46 !important;
   font-weight: 600;
 }
 
 .quiz-option-btn.incorrect {
-  background: rgba(239, 68, 68, 0.12);
-  border-color: #ef4444;
-  color: #991b1b;
+  background: rgba(239, 68, 68, 0.12) !important;
+  border-color: #ef4444 !important;
+  color: #991b1b !important;
 }
 
 .quiz-option-badge {
@@ -152,8 +292,8 @@
 .flashcard-wrapper {
   perspective: 1000px;
   width: 100%;
-  max-width: 650px;
-  height: 380px;
+  max-width: 680px;
+  height: 420px;
   margin: 0 auto 1.5rem;
   cursor: pointer;
 }
@@ -178,13 +318,14 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   border: 2px solid var(--color-border, #e2e8f0);
+  overflow-y: auto;
 }
 
 .flashcard-front {
@@ -205,11 +346,12 @@
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .flashcard-rate-btn {
-  padding: 0.6rem 1.25rem;
-  border-radius: 8px;
+  padding: 0.65rem 1.25rem;
+  border-radius: 10px;
   font-size: 0.85rem;
   font-weight: 700;
   border: none;
@@ -228,6 +370,140 @@
 .rate-good { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
 .rate-easy { background: rgba(16, 185, 129, 0.15); color: #10b981; }
 
+/* ==========================================================================
+   CASCADE BUILDER (CHẾ ĐỘ LẮP RÁP CHUỖI CƠ CHẾ)
+   ========================================================================== */
+
+.cascade-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+  margin-bottom: 1.5rem;
+}
+
+.cascade-slots-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+  position: relative;
+}
+
+.cascade-slot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 12px;
+  border: 2px dashed var(--color-border, #cbd5e1);
+  background: var(--color-bg, #f8fafc);
+  transition: all 0.2s ease;
+  min-height: 60px;
+}
+
+.cascade-slot.filled {
+  border-style: solid;
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.cascade-slot.error {
+  border-style: solid;
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.cascade-slot-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-border, #cbd5e1);
+  color: var(--color-text, #334155);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cascade-slot.filled .cascade-slot-num {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.cascade-slot-content {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text, #1e293b);
+}
+
+.cascade-slot-placeholder {
+  color: var(--color-text-muted, #94a3b8);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.cascade-pool-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border, #e2e8f0);
+}
+
+.cascade-pool-item {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #1e293b);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: all 0.15s ease;
+}
+
+.cascade-pool-item:hover {
+  border-color: #0284c7;
+  background: rgba(2, 132, 199, 0.06);
+  transform: translateX(4px);
+}
+
+.cascade-pool-item.used {
+  opacity: 0.4;
+  pointer-events: none;
+  text-decoration: line-through;
+}
+
+.cascade-step-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(2,132,199,0.1);
+  color: #0284c7;
+  white-space: nowrap;
+}
+
+/* Cascade Success Celebration Banner */
+.cascade-success-banner {
+  background: linear-gradient(135deg, rgba(16,185,129,0.15) 0%, rgba(2,132,199,0.1) 100%);
+  border: 2px solid #10b981;
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+  animation: fadeIn 0.4s ease;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
@@ -237,11 +513,247 @@
 [data-theme="dark"] .quiz-case-card,
 [data-theme="dark"] .quiz-option-btn,
 [data-theme="dark"] .flashcard-front,
-[data-theme="dark"] .flashcard-back {
+[data-theme="dark"] .flashcard-back,
+[data-theme="dark"] .quiz-mastery-card,
+[data-theme="dark"] .quiz-search-box input,
+[data-theme="dark"] .quiz-filter-chip,
+[data-theme="dark"] .cascade-card,
+[data-theme="dark"] .cascade-pool-item,
+[data-theme="dark"] .exam-config-card,
+[data-theme="dark"] .exam-workspace-card,
+[data-theme="dark"] .exam-palette-card,
+[data-theme="dark"] .exam-report-card {
   background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+[data-theme="dark"] .cascade-slot,
+[data-theme="dark"] .exam-config-section {
+  background: var(--color-bg, #0f172a);
   border-color: var(--color-border, #334155);
 }
 
 [data-theme="dark"] .quiz-vignette {
   background: rgba(2, 132, 199, 0.1);
 }
+
+[data-theme="dark"] .quiz-option-btn.correct {
+  color: #34d399 !important;
+}
+
+[data-theme="dark"] .quiz-option-btn.incorrect {
+  color: #f87171 !important;
+}
+
+/* ==========================================================================
+   EXAM GENERATOR STUDIO & WORKSPACE (BỘ TẠO ĐỀ THI & ÔN TẬP TỰ ĐỘNG)
+   ========================================================================== */
+
+.exam-config-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+  margin-bottom: 1.5rem;
+}
+
+.exam-config-section {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.exam-section-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.exam-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.65rem;
+}
+
+.exam-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-surface, #ffffff);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text, #1e293b);
+  transition: all 0.15s ease;
+}
+
+.exam-checkbox-item:hover {
+  border-color: #0284c7;
+  background: rgba(2,132,199,0.05);
+}
+
+.exam-checkbox-item.checked {
+  border-color: #10b981;
+  background: rgba(16,185,129,0.08);
+  color: #065f46;
+}
+
+/* Exam Active Workspace */
+.exam-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .exam-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.exam-workspace-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+}
+
+.exam-palette-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+  position: sticky;
+  top: 80px;
+}
+
+.exam-timer-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  margin-bottom: 1rem;
+}
+
+.exam-timer-val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #dc2626;
+  font-family: monospace;
+}
+
+.exam-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.exam-palette-btn {
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-bg, #f8fafc);
+  color: var(--color-text, #334155);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+.exam-palette-btn.current {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 2px rgba(2,132,199,0.3);
+  font-weight: 800;
+}
+
+.exam-palette-btn.answered {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.exam-palette-btn.flagged::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f59e0b;
+}
+
+/* Exam Score Report */
+.exam-report-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.05));
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.exam-score-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 6px solid #10b981;
+  margin: 1rem 0;
+}
+
+.exam-score-num {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #10b981;
+  line-height: 1;
+}
+
+.exam-topic-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.exam-topic-bar-track {
+  flex: 1;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--color-border, #e2e8f0);
+  overflow: hidden;
+}
+
+.exam-topic-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: #10b981;
+  transition: width 0.5s ease;
+}
+

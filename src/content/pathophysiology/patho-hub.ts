@@ -177,10 +177,12 @@ export function initSpecialtyDropdowns(): void {
       dropdownCards.forEach(c => {
         c.classList.remove('open');
         c.setAttribute('aria-expanded', 'false');
+        c.style.zIndex = '';
       });
       if (!isOpen) {
         card.classList.add('open');
         card.setAttribute('aria-expanded', 'true');
+        card.style.zIndex = '100000';
       }
     });
 
@@ -190,9 +192,11 @@ export function initSpecialtyDropdowns(): void {
         e.preventDefault();
         const isOpen = card.classList.toggle('open');
         card.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        card.style.zIndex = isOpen ? '100000' : '';
       } else if (e.key === 'Escape') {
         card.classList.remove('open');
         card.setAttribute('aria-expanded', 'false');
+        card.style.zIndex = '';
       }
     });
   });
@@ -202,6 +206,7 @@ export function initSpecialtyDropdowns(): void {
       dropdownCards.forEach(c => {
         c.classList.remove('open');
         c.setAttribute('aria-expanded', 'false');
+        c.style.zIndex = '';
       });
     }
   });
