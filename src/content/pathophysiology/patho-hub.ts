@@ -165,11 +165,54 @@ export function initHotkeyShortcut(): void {
   });
 }
 
+export function initSpecialtyDropdowns(): void {
+  const dropdownCards = document.querySelectorAll<HTMLElement>('.specialty-dropdown-card');
+  dropdownCards.forEach(card => {
+    const trigger = card.querySelector('.specialty-dropdown-trigger') || card;
+
+    trigger.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) return;
+      e.stopPropagation();
+      const isOpen = card.classList.contains('open');
+      dropdownCards.forEach(c => {
+        c.classList.remove('open');
+        c.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        card.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if ((e.target as HTMLElement).closest('a')) return;
+        e.preventDefault();
+        const isOpen = card.classList.toggle('open');
+        card.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      } else if (e.key === 'Escape') {
+        card.classList.remove('open');
+        card.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('.specialty-dropdown-card')) {
+      dropdownCards.forEach(c => {
+        c.classList.remove('open');
+        c.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+}
+
 export function initPathoHub(): void {
   initSearchFilter();
   initHotkeyShortcut();
   initProgressTracker();
   initQuizEngine();
+  initSpecialtyDropdowns();
 }
 
 if (typeof document !== 'undefined') {

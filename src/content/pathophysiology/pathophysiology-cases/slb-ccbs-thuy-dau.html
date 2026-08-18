@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Thủy đậu & Zona (Varicella-Zoster Virus - VZV Pathophysiology & Pathogenesis): Phân tích toàn diện cấu trúc vi rút DNA kép, hướng tế bào T CLA+/CCR4+, hướng da và cơ chế phóng thích virus tự do qua M6PR, hợp bào đa nhân syncytia, vận chuyển ngược sợi trục, cơ chế biểu sinh thiết lập ẩn nấp (VLT, IE63), cơ chế tái hoạt Zona, đau thần kinh sau Zona (PHN) qua kênh Nav1.8, và chiến lược vắc-xin/dự phòng PEP.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Thủy Đậu & Herpes Zoster (VZV) – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../js/physio-patho.js" defer></script>
+
+    <style>
+        /* Scoped Custom Styling for VZV Article */
+        .hemo-table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--color-border, #e2e8f0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            background: var(--color-surface, #ffffff);
+        }
+
+        .hemo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: var(--color-surface, #ffffff);
+        }
+
+        .hemo-table th {
+            background: var(--color-surface-2, #f8fafc);
+            color: var(--color-text, #0f172a);
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+        }
+
+        .hemo-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            color: var(--color-text, #334155);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .hemo-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hemo-table tbody tr:hover {
+            background: rgba(139, 92, 246, 0.04);
+        }
+
+        .vzv-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+            padding: 0.25rem 0.65rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .vzv-badge-pill.warning {
+            background: rgba(234, 88, 12, 0.08);
+            border-color: rgba(234, 88, 12, 0.2);
+            color: #ea580c;
+        }
+
+        .vzv-badge-pill.success {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.2);
+            color: #059669;
+        }
+
+        .physio-figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 2rem auto;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            max-width: 100%;
+        }
+
+        .physio-figure img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .physio-figure img:hover {
+            transform: scale(1.01);
+        }
+
+        .physio-figure figcaption {
+            margin-top: 0.85rem;
+            font-size: 0.88rem;
+            color: var(--color-text-muted, #64748b);
+            line-height: 1.5;
+            text-align: center;
+            max-width: 820px;
+        }
+
+        .step-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-left: 4px solid #8b5cf6;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            margin-bottom: 0.35rem;
+        }
+
+        .val-high {
+            color: #059669;
+            font-weight: 700;
+        }
+
+        .val-med {
+            color: #d97706;
+            font-weight: 700;
+        }
+
+        .val-low {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .pep-flow-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .pep-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+        }
+
+        .pep-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            margin-bottom: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li><a href="../../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">Sinh lý & Sinh lý bệnh</span></a></li>
+                    <li><a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+                    <li><a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+                    <li><a href="../../calculators/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+                    <li><a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+                    <li><a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Sinh lý & sinh lý bệnh", "url": "../sinhly-sinhlybenh.html"}, {"label": "Sinh lý bệnh Thủy Đậu & Herpes Zoster (VZV)"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH THỦY ĐẬU & HERPES ZOSTER</h1>
+                    <p>Varicella-Zoster Virus (VZV) Pathophysiology & Pathogenesis — Phân tích toàn diện cấu trúc phân tử DNA kép, động học vi rút huyết hai pha hướng tế bào T (CLA+/CCR4+), tính hướng da & cơ chế phóng thích virus tự do qua thụ thể M6PR, hợp bào đa nhân syncytia, vận chuyển ngược sợi trục, cơ chế biểu sinh thiết lập ẩn nấp suốt đời (VLT/IE63), cơ chế tái hoạt động tạo Zona & viêm hạch hoại tử (Ganglionitis), cơ chế đau thần kinh sau Zona (PHN) qua kênh ion Nav1.8 và các chiến lược miễn dịch dự phòng (Vắc-xin thế hệ mới Shingrix, VZIG, kháng virus đón đầu).</p>
+                </div>
+
+                <!-- LEAD PARAGRAPH -->
+                <p class="physio-lead">
+                    <span class="term-hl">Varicella Zoster Virus (VZV)</span>, hay <i>Human alphaherpesvirus 3</i>, là tác nhân gây bệnh độc quyền trên người có khả năng gây ra hai hội chứng lâm sàng khác biệt: <strong>Thủy đậu (Varicella)</strong> trong đợt nhiễm trùng tiên phát và <strong>Zona (Herpes Zoster)</strong> khi tái hoạt động sau hàng thập kỷ ẩn nấp trong các hạch cảm giác. Cơ chế bệnh sinh của VZV là một kiệt tác thích nghi sinh học: từ việc lợi dụng tế bào T nhớ làm "xe chuyên chở" hướng da, giảm điều hòa thụ thể M6PR để giải phóng virus tự do ở thượng bì, cho đến phong tỏa phiên mã bằng cơ chế biểu sinh (epigenetic silencing) và cô lập protein điều hòa trong tế bào chất để ẩn náu suốt đời trước hệ miễn dịch.
+                </p>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN I: ĐẶC ĐIỂM SINH HỌC & CẤU TRÚC PHÂN TỬ CỦA VZV -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="dac-diem-sinh-hoc-vzv" class="section-title">
+                        <span>Phần I: Đặc Điểm Sinh Học & Cấu Trúc Phân Tử của Varicella Zoster Virus (VZV)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            VZV là virus thuộc phân họ <i>Alphaherpesvirinae</i>, họ <i>Herpesviridae</i>, chi <i>Varicellovirus</i>. Hạt virion trưởng thành có dạng hình cầu với đường kính từ <strong>180 đến 200 nm</strong>, được cấu tạo bởi 4 thành phần phân tử đồng tâm từ trong ra ngoài:
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧬 1. Lõi Bộ Gen & Vỏ Nucleocapsid</div>
+                                <p><strong>Lõi DNA sợi kép (dsDNA):</strong> Phân tử DNA tuyến tính dài khoảng <strong>125.000 bp</strong>, chứa ít nhất <strong>71 khung đọc mở (ORFs)</strong>. Bộ gen ổn định cao, chứa 5 vùng lặp lại ngắn (R1 đến R5) tạo dấu ấn phân lập đặc trưng.</p>
+                                <p><strong>Vỏ Nucleocapsid 20 mặt (Icosahedral):</strong> Đường kính ~100 nm, tạo thành từ <strong>162 capsomere</strong> lục giác và ngũ giác mã hóa bởi các gen <i>orf20, orf21, orf23, orf33, orf40, orf41</i>.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ 2. Lớp Đệm (Tegument) & Vỏ Màng Lipid</div>
+                                <p><strong>Chất đệm protein (Tegument):</strong> Nằm giữa capsid và vỏ ngoài, chứa các yếu tố điều hòa phiên mã cực sớm <strong>IE62 (ORF62/71), IE63 (ORF63/70)</strong>, cụm gen <i>orf9-orf12</i> và 2 kinase thiết yếu <strong>ORF47, ORF66</strong>.</p>
+                                <p><strong>Vỏ màng bọc (Envelope):</strong> Màng lipid nguồn gốc tế bào chủ đính các gai glycoprotein dài 8 nm (<strong>gB, gC, gE, gH, gI, gK, gL</strong>). Điểm độc đáo: <i>VZV không có glycoprotein tương đương gD như HSV</i>.</p>
+                            </div>
+                        </div>
+
+                        <!-- FIGURE 1: VZV STRUCTURE -->
+                        <figure class="physio-figure">
+                            <img src="../images/thuy-dau/vzv-structure.png" alt="Cấu trúc không gian ba chiều của Varicella Zoster Virus" class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 1: Cấu trúc hạt vi rút Varicella Zoster Virus (VZV).</strong> Sơ đồ cắt lớp minh họa lõi DNA sợi kép (Double-stranded DNA), vỏ Nucleocapsid đối xứng 20 mặt, lớp chất đệm Tegument dày đặc chứa các protein điều hòa phiên mã (IE62, IE63, ORF47/66 kinase), và màng bao lipid ngoài cùng đính các gai glycoprotein (gB, gE, gH/gL, gI) trung gian bám dính và hòa màng.
+                            </figcaption>
+                        </figure>
+
+                        <h3 id="co-che-lay-truyen-va-hoa-mang" class="subsection-title">1. Cơ Chế Lây Truyền & Con Đường Xâm Nhập Niêm Mạc Ban Đầu</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Vật chủ tự nhiên độc quyền:</strong> VZV chỉ gây bệnh trên người, hầu như không lây nhiễm hoặc bị giới hạn nghiêm ngặt trên động vật thí nghiệm.</li>
+                            <li><strong>Đường lây truyền khí dung & tiếp xúc:</strong> Virus lây truyền cực mạnh qua <strong>khí dung (aerosols) từ dịch mụn nước</strong> (thủy đậu hoặc zona), <strong>giọt bắn hô hấp</strong>, hoặc tiếp xúc trực tiếp nốt ban.</li>
+                            <li><strong>Thời gian lây truyền:</strong> Khả năng lây cao nhất từ <strong>1 - 2 ngày trước phát ban</strong> cho đến khi <strong>tất cả nốt mụn nước đóng vảy hoàn toàn</strong> (thường 5 - 6 ngày sau phát ban ở người miễn dịch bình thường).</li>
+                            <li><strong>Thụ thể xâm nhập & Phức hợp hòa màng:</strong> Gai glycoprotein bám vào <i>Heparan sulfate proteoglycans</i> và thụ thể <strong>Insulin-degrading enzyme (IDE)</strong> trên bề mặt màng tế bào chủ. Sau đó, phức hợp lõi <strong>gB và gH/gL</strong> (với sự hỗ trợ của gE/gI) trung gian quá trình hòa màng (membrane fusion) giải phóng capsid và tegument vào tế bào chất.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN II: ĐỘNG HỌC VI RÚT HUYẾT VÀ TÍNH HƯỚNG TẾ BÀO T (T-CELL TROPISM) -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="dong-hoc-vi-rut-huyet-t-cell" class="section-title">
+                        <span>Phần II: Động Học Vi Rút Huyết & Tính Hướng Tế Bào T (T-Cell Tropism)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Sau khi xâm nhập qua niêm mạc đường hô hấp trên hoặc kết mạc mắt, quá trình sinh bệnh học của thủy đậu tiến triển qua chuỗi động học hai pha vi rút huyết liên kết chặt chẽ với tế bào T:
+                        </p>
+
+                        <div class="timeline-card">
+                            <div class="timeline-card-header">
+                                <span class="step-pill">1</span>
+                                <span>Nhân lên tại chỗ & Lan tỏa mô lympho hầu họng (Ngày 0 - 4)</span>
+                            </div>
+                            <p style="margin: 0; font-size: 0.92rem; color: var(--color-text-muted);">
+                                VZV nhân lên đầu tiên tại tế bào biểu mô niêm mạc hô hấp trên, sau đó nhanh chóng lan đến hạch lympho vùng và mô bạch huyết hầu họng (<strong>vòng Waldeyer ở amidan</strong>) trong vòng 2 - 4 ngày. Tại hốc amidan, tế bào dendritic (Langerhans, pDC) bị nhiễm sẽ chuyển giao hạt virus sang cho các tế bào T qua tiếp xúc màng.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card">
+                            <div class="timeline-card-header">
+                                <span class="step-pill">2</span>
+                                <span>Nhiễm vi rút huyết tiên phát (Primary Viremia, Ngày 4 - 6)</span>
+                            </div>
+                            <p style="margin: 0; font-size: 0.92rem; color: var(--color-text-muted);">
+                                Sự giải phóng virus từ mô lympho vào tuần hoàn máu tạo nên đợt nhiễm virus huyết tiên phát. Virus theo máu đến các <strong>cơ quan hệ lưới nội mô</strong> (gan, lách, tủy xương) và nhân lên mạnh mẽ tại đây trong khoảng 1 tuần.
+                            </p>
+                        </div>
+
+                        <div class="timeline-card">
+                            <div class="timeline-card-header">
+                                <span class="step-pill">3</span>
+                                <span>Nhiễm vi rút huyết thứ phát (Secondary Viremia, Ngày 10 - 12)</span>
+                            </div>
+                            <p style="margin: 0; font-size: 0.92rem; color: var(--color-text-muted);">
+                                Virus từ các cơ quan nội tạng tái tràn ngập hệ tuần hoàn với số lượng khổng lồ, đưa các tế bào T nhiễm virus đến hệ vi tuần hoàn biểu bì da và các cơ quan đích, khởi phát giai đoạn tiền triệu (sốt, mệt mỏi) và sau đó là phát ban mụn nước thủy đậu toàn thân.
+                            </p>
+                        </div>
+
+                        <!-- FIGURE 2: LIFE CYCLE & REPLICATION -->
+                        <figure class="physio-figure">
+                            <img src="../images/thuy-dau/vzv-life-cycle-replication.png" alt="Sơ đồ vòng đời và cơ chế nhân lên của VZV ở mức độ tế bào" class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 2: Vòng đời tổng thể và cơ chế nhân lên nội bào của VZV.</strong> (a) Vòng đời VZV: Xâm nhập hô hấp &rarr; Amidan (vòng Waldeyer) &rarr; T-cell viremia &rarr; Bệnh cảnh Thủy đậu ở da &rarr; Vận chuyển ngược chiều sợi trục (Retrograde transport) đến hạch cảm giác DRG thiết lập ẩn nấp &rarr; Tái hoạt động vận chuyển xuôi chiều (Anterograde) gây bệnh Zona theo khoanh da. (b) Cơ chế nhân lên: Cởi vỏ màng &rarr; Bơm DNA qua lỗ nhân &rarr; Phiên mã gen IE, E, L &rarr; Lắp ráp capsid trong nhân &rarr; Nảy chồi qua màng nhân &rarr; Đóng gói tạo vỏ thứ cấp tại mạng lưới Trans-Golgi Network (TGN) &rarr; Phóng thích ra ngoài tế bào.
+                            </figcaption>
+                        </figure>
+
+                        <h3 id="dac-tinh-huong-te-bao-t" class="subsection-title">2. Phân Tử Quyết Định Tính Hướng Tế Bào T (T-Cell Tropism)</h3>
+                        <p>Trong máu, VZV hầu như không di chuyển dưới dạng virion tự do mà tồn tại dưới dạng <strong>vi rút huyết liên kết tế bào (cell-associated viremia)</strong>, ẩn náu bên trong các tế bào T CD3+ (cả CD4+ và CD8+):</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧭 Thụ Thể Hướng Da (Skin Homing Markers)</div>
+                                <p>Các tế bào T CD4+ bị lây nhiễm chủ yếu mang kiểu hình <strong>tế bào T nhớ hoạt hóa (CD45RO+)</strong> biểu hiện mạnh mẽ dấu ấn hướng da: <strong>CLA (Cutaneous Leukocyte Antigen)</strong> và <strong>CCR4 (CC-chemokine receptor 4)</strong>. Các dấu ấn này dẫn đường cho tế bào T nhiễm bám dính và thoát mạch trực tiếp vào mạng vi mạch da quanh nang lông.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ Tái Lập Trình Chống Chết Tế Bào (Survival Reprogramming)</div>
+                                <p>VZV kích hoạt con đường <strong>pSTAT3, pZap70, pAkt</strong> làm tăng biểu hiện protein chống chết <strong>survivin</strong>, kéo dài thời gian sống của tế bào T trong máu. Đáng chú ý, virus <i>ức chế hòa màng giữa các tế bào T nhiễm</i>, giúp chúng duy trì dạng đơn lẻ để di chuyển tự do qua lòng vi mạch.</p>
+                            </div>
+                        </div>
+
+                        <!-- FIGURE 3: T CELL TROPISM -->
+                        <figure class="physio-figure">
+                            <img src="../images/thuy-dau/vzv-t-cell-tropism.png" alt="Chi tiết cơ chế hướng tế bào T của VZV" class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 3: Cơ chế phân tử điều hướng tế bào T của VZV.</strong> Tế bào T tiếp xúc và nhiễm VZV tại biểu mô hốc amidan (trái). Glycoprotein gE, gI cùng kinase ORF47/ORF66 tái lập trình tế bào T nhớ CD4+ mang dấu ấn CLA/CCR4, hoạt hóa STAT3/survivin và khóa STAT1 trốn tránh interferon (giữa). Tế bào T nhiễm theo máu đến da, thực hiện di chuyển xuyên mạch (diapedesis) tại mạng vi mạch dồi dào quanh nang lông để gieo rắc virus vào thượng bì da (phải).
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN III: CƠ CHẾ HƯỚNG DA, MỤN NƯỚC & PHÓNG THÍCH VIRUS TỰ DO (M6PR) -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="co-che-huong-da-mun-nuoc" class="section-title">
+                        <span>Phần III: Cơ Chế Hướng Da, Hình Thành Mụn Nước & Cơ Chế Thoát Mạch Virus Tự Do</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Khi tế bào T nhiễm virus xuyên mạch tại các mao mạch quanh nang lông, virus nhanh chóng lây sang các <strong>tế bào sừng (keratinocytes) ở biểu bì</strong> và nguyên bào sợi ở trung bì, khởi đầu phản ứng viêm hoại tử và hình thành tổn thương mụn nước đặc trưng:
+                        </p>
+
+                        <h3 id="hop-bao-va-dieu-hoa-gB" class="subsection-title">1. Tạo Hợp Bào Đa Nhân (Syncytia) & Điều Hòa Bởi Motif ITIM Trên gB</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Hòa màng tế bào - tế bào (Cell-cell fusion):</strong> Tại da, VZV kích hoạt sự hòa màng trực tiếp giữa các tế bào biểu sừng liền kề tạo thành các <strong>tế bào khổng lồ đa nhân (polykaryocytes hay syncytia)</strong> dưới sự điều hòa của phức hợp gB và gH/gL.</li>
+                            <li><strong>Kiểm soát siêu hòa màng bởi motif ITIM:</strong> Đuôi tế bào chất của glycoprotein gB chứa một motif ức chế miễn dịch <strong>ITIM (Immunoreceptor Tyrosine-based Inhibition Motif)</strong>. Quá trình phosphoryl hóa gốc <i>Tyrosine 881 (Tyr881)</i> kiểm soát chặt chẽ tốc độ hòa màng. Nếu sự phosphoryl hóa này bị gián đoạn, hiện tượng <i>siêu hòa màng (hyperfusion)</i> bất thường sẽ phá hủy lớp thượng bì quá nhanh, ngăn cản sự hình thành các hạt virion trưởng thành.</li>
+                            <li><strong>Tiến triển thương tổn lâm sàng:</strong> Phản ứng viêm cấp phóng thích histamine và cytokine gây giãn mạch, tạo chuỗi tiến triển nhanh: <strong>Dát đỏ (Macules) &rarr; Sẩn (Papules) &rarr; Mụn nước (Vesicles) &rarr; Mụn mủ (Pustules) &rarr; Đóng vảy (Crusts)</strong> trong vòng 24 - 48 giờ. Tổn thương điển hình là mụn nước nông chứa dịch trong suốt nằm trên nền hồng ban viền quanh (hình ảnh kinh điển: <i>"giọt sương trên cánh hoa hồng" - dewdrop on a rose petal</i>).</li>
+                        </ul>
+
+                        <div class="key-concept">
+                            🔑 <strong>Cơ Chế Phân Tử Bí Ẩn Của Sự Phóng Thích Vi Rút Tự Do (Cell-Free Virus Egress):</strong><br>
+                            Trong ống nghiệm, VZV liên kết cực chặt với tế bào vì các hạt virion mới lắp ráp bị thụ thể <strong>Mannose-6-Phosphate Receptor (M6PR)</strong> dẫn đường vào endosome muộn/lysosome để tiêu hủy. Tuy nhiên, trong quá trình biệt hóa cuối cùng của tế bào biểu sừng ở lớp nông thượng bì, <strong>thụ thể M6PR bị giảm điều hòa (downregulation) triệt để</strong>. Sự vắng mặt của M6PR bảo vệ hạt virion khỏi sự phân hủy lysosome, cho phép VZV lắp ráp hoàn chỉnh và giải phóng nồng độ khổng lồ <strong>vi rút tự do (cell-free virus)</strong> vào dịch mụn nước sát bề mặt da, tạo khả năng lây truyền khí dung cực mạnh.
+                        </div>
+
+                        <h3 id="giai-phau-benh-da" class="subsection-title">2. Đặc Điểm Giải Phẫu Bệnh (Histopathology)</h3>
+                        <p>Dưới kính hiển vi quang học, vết cạo đáy mụn nước thủy đậu (Tzanck smear) hoặc sinh thiết da biểu hiện tam chứng bệnh học điển hình:</p>
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔬 Thoái Hóa Phồng & Tiêu Gai</div>
+                                <p><strong>Thoái hóa phồng (Ballooning degeneration):</strong> Tế bào biểu sừng phù nề ứ nước, sưng to gấp nhiều lần bình thường.</p>
+                                <p><strong>Hiện tượng tiêu gai (Acantholysis):</strong> Đứt gãy cầu liên bào (desmosomes) làm các tế bào sừng tách rời trôi nổi tự do trong khoang mụn nước thượng bì.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧬 Tế Bào Khổng Lồ & Thể Bao Hàm</div>
+                                <p><strong>Tế bào khổng lồ đa nhân (Multinucleated giant cells):</strong> Chứa hàng chục nhân ép sát nhau với chất nhiễm sắc rìa nhân tích tụ sát màng nhân.</p>
+                                <p><strong>Thể bao hàm ưa acid trong nhân (Cowdry type A intranuclear inclusions):</strong> Thể vùi ưa eosin đặc trưng của herpesvirus.</p>
+                            </div>
+                        </div>
+
+                        <!-- FIGURE 4: SKIN TROPISM & CLINICAL RASH -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                            <figure class="physio-figure" style="margin: 0;">
+                                <img src="../images/thuy-dau/vzv-skin-tropism.png" alt="Sơ đồ tương tác phân tử giữa VZV và tế bào da" class="physio-img lightbox-trigger">
+                                <figcaption>
+                                    <strong>Hình 4A: Hướng da và tương tác phân tử của VZV.</strong> Trái: VZV kích hoạt tạo hợp bào qua gB (kiểm soát bởi ITIM) và dùng ORF61 phân tán thể nhân PML. Phải: Trong tế bào nhiễm, VZV kích hoạt pSTAT3/survivin và chặn IFN-&alpha;; trong tế bào lân cận, hàng rào cytokine bẩm sinh (Innate cytokine barrier) tăng tiết IFN-&alpha;, pSTAT1 và PML để cô lập ổ thương tổn.
+                                </figcaption>
+                            </figure>
+
+                            <figure class="physio-figure" style="margin: 0;">
+                                <img src="../images/thuy-dau/vzv-varicella-rash-clinical.png" alt="Thương tổn phát ban Thủy đậu điển hình nhiều lứa tuổi" class="physio-img lightbox-trigger">
+                                <figcaption>
+                                    <strong>Hình 4B: Hình ảnh lâm sàng phát ban Thủy đậu (Varicella Rash).</strong> Thương tổn đa hình thái xuất hiện đồng thời nhiều lứa tuổi trên cùng một vùng da (dát đỏ, sẩn, mụn nước nông trong suốt "giọt sương trên cánh hoa hồng", mụn mủ và vảy tiết) phản ánh các đợt gieo rắc vi rút huyết ngắt quãng.
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN IV: SỰ DI CHUYỂN SỢI TRỤC & THIẾT LẬP TRẠNG THÁI ẨN NẤP (LATENCY) -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="van-chuyen-soi-truc-an-nap" class="section-title">
+                        <span>Phần IV: Vận Chuyển Ngược Chiều Sợi Trục & Cơ Chế Biểu Sinh Thiết Lập Trạng Thái Ẩn Nấp (Latency)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Trong giai đoạn mụn nước bùng phát ở da, lượng virus tự do dồi dào trong dịch mụn nước tiếp cận trực tiếp với các đầu tận cùng sợi trục thần kinh cảm giác (sensory nerve endings) phân bố ở nhú chân bì và thượng bì:
+                        </p>
+
+                        <h3 id="van-chuyen-nguoc-soi-truc" class="subsection-title">1. Vận Chuyển Ngược Chiều Sợi Trục (Retrograde Axonal Transport)</h3>
+                        <div class="pathway-chain">
+                            <span class="pathway-node">1. Xâm nhập tận cùng sợi trục tại da</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node purple">2. Vận chuyển ngược dọc sợi trục (Retrograde)</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node orange">3. Cập bến nhân Neuron hạch cảm giác (DRG / Dây V)</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node green">4. Tròn hóa Episome & Tắt tiếng biểu sinh</span>
+                        </div>
+
+                        <ul class="physio-list-arrow" style="margin-top: 1rem;">
+                            <li><strong>Vị trí độc quyền trong Neuron:</strong> Khác với quan niệm cũ cho rằng virus ẩn nấp trong tế bào vệ tinh, nghiên cứu vi phẫu laser (LCM-PCR) chứng minh <strong>Neuron là vị trí độc quyền</strong> chứa DNA VZV ẩn nấp (chiếm 4% - 5% tổng số neuron hạch cảm giác).</li>
+                            <li><strong>Tải lượng DNA ẩn nấp:</strong> Dao động thấp từ <strong>5 đến 50 bản sao DNA/neuron nhiễm</strong> (khoảng 283 bản sao / 10<sup>5</sup> tế bào hạch), thấp hơn nhiều so với HSV-1. DNA tồn tại dưới dạng <strong>phân tử episome vòng độc lập</strong> không tích hợp vào hệ gen người.</li>
+                        </ul>
+
+                        <h3 id="co-che-bieu-sinh-va-co-lap-te-bao-chat" class="subsection-title">2. Cơ Chế Biểu Sinh (Epigenetics) & Sự Cô Lập Protein Trong Tế Bào Chất</h3>
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔒 Điều Hòa Biểu Sinh (Epigenetic Silencing)</div>
+                                <p><strong>Heterochromatin đóng với gen Lytic:</strong> Promoters của các gen nhân lên lytic (ORF14, ORF36) bị đóng chặt bởi cấu trúc chất nhiễm sắc không acetyl hóa.</p>
+                                <p><strong>Bản phiên mã antisense VLT:</strong> Bản phiên mã liên quan ẩn nấp <i>VZV Latency-associated Transcript (VLT)</i> chạy ngược chiều với gen lytic cực sớm ORF61, ức chế biểu hiện ORF61 để giữ hệ gen im lặng.</p>
+                                <p><strong>Bản phiên mã ORF63/IE63:</strong> Là bản phiên mã phong phú nhất trong pha ẩn nấp, tổng hợp protein IE63 đóng vai trò <strong>chống chết tế bào thần kinh (anti-apoptotic)</strong> trước sự thiếu hụt yếu tố tăng trưởng NGF.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🚫 Cô Lập Dị Biệt Tế Bào Chất (Cytoplasmic Sequestration)</div>
+                                <p>Trong pha ẩn nấp, các protein điều hòa phiên mã sống còn <strong>IE62, IE63, ORF21, ORF29 bị giữ chặt hoàn toàn trong tế bào chất của neuron</strong>, không thể di chuyển vào nhân.</p>
+                                <p>Protein kinase <strong>ORF66</strong> (được biểu hiện trong pha ẩn nấp) thực hiện phosphoryl hóa IE62 để ngăn chặn sự xâm nhập nhân của IE62, khóa chặt mọi hoạt động khởi động phiên mã của hệ gen virus.</p>
+                            </div>
+                        </div>
+
+                        <!-- FIGURE 5: NEUROTROPISM DRG -->
+                        <figure class="physio-figure">
+                            <img src="../images/thuy-dau/vzv-neurotropism-drg.png" alt="Mô hình hướng thần kinh của VZV trong hạch rễ sau DRG" class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 5: Hướng thần kinh của VZV trong mảnh ghép hạch rễ sau (DRG Xenografts).</strong> Trái (Pha hoạt động Lytic): Phiên mã mạnh mẽ mRNA gB/IE62/IE63, sao chép DNA và hòa màng tạo hợp bào neuron-tế bào vệ tinh. Phải (Pha ẩn nấp Latency): DNA episome im lặng trong nhân neuron, các gen lytic bị khóa hoàn toàn, chỉ duy trì lượng vết VLT/ORF63 và cô lập IE62/ORF29 ngoài tế bào chất. Hộp đen (Nhiễm trùng mạn tính bất thường): Đột biến gE-gI phá vỡ trạng thái ẩn nấp, gây hoại tử hạch kéo dài.
+                            </figcaption>
+                        </figure>
+
+                        <h3 id="kiem-soat-mien-dich-pha-an-nap" class="subsection-title">3. Kiểm Soát Miễn Dịch Trong Pha Ẩn Nấp: Sự Khác Biệt Căn Bản Với HSV-1</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Vắng bóng tế bào T tuần tra tại hạch:</strong> Ở người mang HSV-1 ẩn nấp, tế bào T CD8+ liên tục bao quanh neuron ("vòng corona") để giám sát. Ngược lại, ở người nhiễm VZV ẩn nấp, <strong>hoàn toàn không có sự thâm nhiễm của tế bào T CD8+ xung quanh neuron</strong>.</li>
+                            <li><strong>Neuron "tàng hình" miễn dịch:</strong> Neuron có mức bộc lộ MHC Class I tự nhiên rất thấp, kết hợp với tác dụng của protein ORF66 làm giảm điều hòa MHC Class I, khiến neuron nhiễm VZV trở nên "vô hình" trước tế bào lympho T.</li>
+                            <li><strong>Quyết định bởi Miễn dịch qua trung gian tế bào (CMI) toàn thân:</strong> Sự kiểm soát VZV ẩn nấp phụ thuộc tuyệt đối vào hiệu giá tế bào T đặc hiệu VZV trong tuần hoàn toàn thân, không phụ thuộc vào kháng thể dịch thể.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN V: CƠ CHẾ TÁI HOẠT ĐỘNG (ZONA), VIÊM HẠCH & ĐAU THẦN KINH (PHN) -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="co-che-tai-hoat-zona-phn" class="section-title">
+                        <span>Phần V: Cơ Chế Tái Hoạt Động (Herpes Zoster), Viêm Hạch Hoại Tử & Biến Chứng Thần Kinh (PHN)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Khi hiệu giá miễn dịch qua trung gian tế bào (T-cell CMI) toàn thân suy giảm xuống dưới ngưỡng bảo vệ sinh lý, VZV sẽ thoát khỏi trạng thái kìm hãm biểu sinh để tái hoạt động gây bệnh cảnh <strong>Herpes Zoster (Zona)</strong>:
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚠️ Yếu Tố Thúc Đẩy Tái Hoạt</div>
+                                <p><strong>Lão hóa miễn dịch (Immunosenescence):</strong> Tế bào T đặc hiệu VZV suy giảm tự nhiên từ sau 35 tuổi và giảm sút nghiêm trọng sau 50 - 60 tuổi.</p>
+                                <p><strong>Suy giảm miễn dịch thứ phát:</strong> HIV (tăng nguy cơ Zona &gt;10 lần), ung thư máu, hóa trị, thuốc ức chế miễn dịch (corticosteroids, kháng TNF-&alpha;, JAK inhibitors), ghép tạng.</p>
+                                <p><strong>Stress thể chất/tâm lý & Chấn thương:</strong> Phóng thích glucocorticoid ức chế tạm thời đáp ứng tế bào T.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚡ Viêm Hạch Hoại Tử (Ganglionitis)</div>
+                                <p>Sự tổng hợp bản phiên mã lai <strong>VLT-ORF63</strong> và protein <strong>ORF61</strong> giải phóng IE62/ORF29 từ tế bào chất vào nhân neuron, khởi động phiên mã lytic toàn bộ hệ gen.</p>
+                                <p>VZV kích hoạt <strong>hòa màng trực tiếp giữa neuron và tế bào vệ tinh (satellite cells)</strong> tạo thành hợp bào đa nhân độc nhất, gây phản ứng viêm hoại tử cấp, chết sợi thần kinh cảm giác và xơ hóa mô hạch nặng nề.</p>
+                            </div>
+                        </div>
+
+                        <h3 id="van-chuyen-xuoi-chieu-dermatome" class="subsection-title">1. Vận Chuyển Xuôi Chiều Sợi Trục & Phân Bố Theo Khoanh Da (Dermatome)</h3>
+                        <p>Virion mới lắp ráp được vận chuyển xuôi chiều sợi trục (<strong>Anterograde axonal transport</strong>) hướng về ngoại vi, giải phóng tại các đầu mút thần kinh cảm giác ở da để gây tổn thương mụn nước nhóm lại thành chùm trên nền hồng ban. Đặc điểm kinh điển: <strong>giới hạn nghiêm ngặt theo một khoanh da (dermatome) đơn độc và không bao giờ vượt qua đường giữa cơ thể</strong>.</p>
+
+                        <!-- FIGURE 6: HERPES ZOSTER DERMATOME C5 & AGE INCIDENCE -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                            <figure class="physio-figure" style="margin: 0;">
+                                <img src="../images/thuy-dau/vzv-herpes-zoster-dermatome-c5.png" alt="Hình ảnh lâm sàng Zona theo khoanh da rễ cổ C5 bên phải" class="physio-img lightbox-trigger">
+                                <figcaption>
+                                    <strong>Hình 6A: Phát ban Herpes Zoster theo khoanh da rễ thần kinh cổ 5 (C5) bên phải.</strong> Mụn nước mọc san sát thành chùm trên nền hồng ban giới hạn sắc nét, dừng lại chính xác tại đường giữa cơ thể, phản ánh sự tái hoạt động khu trú bắt nguồn từ duy nhất hạch cảm giác tủy sống cổ tương ứng.
+                                </figcaption>
+                            </figure>
+
+                            <figure class="physio-figure" style="margin: 0;">
+                                <img src="../images/thuy-dau/vzv-zoster-incidence-age.png" alt="Biểu đồ tỷ lệ mắc bệnh Zona theo độ tuổi trên thế giới" class="physio-img lightbox-trigger">
+                                <figcaption>
+                                    <strong>Hình 6B: Tỷ lệ mắc bệnh Herpes Zoster hàng năm theo độ tuổi.</strong> Dữ liệu dịch tễ học toàn cầu chứng minh tỷ lệ mắc bệnh Zona tăng dốc đứng từ sau tuổi 50 và đạt đỉnh ở nhóm &ge;80 tuổi (&gt;10 - 14 ca/1.000 người-năm), tương quan trực tiếp với quá trình lão hóa miễn dịch tế bào T theo thời gian.
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                        <h3 id="co-che-dau-than-kinh-phn" class="subsection-title">2. Cơ Chế Bệnh Sinh Đau Dây Thần Kinh Sau Zona (Postherpetic Neuralgia - PHN)</h3>
+                        <p>
+                            Đau thần kinh sau zona (PHN) là biến chứng mãn tính tàn tật nhất, định nghĩa là <strong>cơn đau thần kinh kéo dài &ge; 3 tháng</strong> sau khi tổn thương da Zona đã lành hoàn toàn. Cơ chế bệnh sinh bao gồm tam giác tổn thương điện - sinh học thần kinh:
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🔥 1. Nhạy Cảm Hóa Ngoại Vi (Peripheral Sensitization)</div>
+                                <p>Viêm hoại tử hạch và thoái hóa sợi trục/khử myelin làm hư hại màng tế bào thần kinh còn sống sót. Các đầu tận mút thần kinh bị <strong>hạ thấp ngưỡng kích hoạt điện thế màng</strong> và tự động phát xung điện tự phát (spontaneous ectopic firing), gây cảm giác đau rát bỏng liên tục (burning pain) và đau nhói như dao đâm (stabbing pain).</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🧠 2. Nhạy Cảm Hóa Trung Ương (Central Sensitization)</div>
+                                <p>Xung động đau dồn dập kéo dài từ ngoại vi vào sừng sau tủy sống gây tái cấu trúc khớp synap thần kinh trung ương. Các kích thích cơ học vô hại nhẹ (quần áo cọ xát, gió thổi) bị khuếch đại thành cảm giác đau dữ dội: hiện tượng <strong>loạn cảm đau (Allodynia)</strong> và <strong>tăng cảm giác đau (Hyperalgesia)</strong>.</p>
+                            </div>
+                        </div>
+
+                        <div class="key-concept">
+                            🔑 <strong>Vai Trò Đột Phá Của Kênh Natri Điện Thế Nav1.8 Trong PHN:</strong><br>
+                            Nghiên cứu điện sinh lý thần kinh chỉ ra rằng các chủng VZV phân lập từ bệnh nhân bị PHN có khả năng kích hoạt làm <strong>tăng vọt mật độ dòng điện Natri (sodium current density) qua kênh Nav1.8</strong> trên màng tế bào thần kinh cảm giác cao hơn rõ rệt so với chủng từ bệnh nhân Zona không bị PHN. Sự gia tăng dòng Natri qua Nav1.8 trực tiếp duy trì tính hưng phấn điện học quá mức của sợi dẫn truyền cảm giác đau.
+                        </div>
+
+                        <h3 id="cac-bien-chung-than-kinh-khac" class="subsection-title">3. Các Biến Chứng Thần Kinh Nguy Hiểm Khác</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Bệnh lý mạch máu do VZV (VZV Vasculopathy) & Đột quỵ (Stroke):</strong> VZV là herpesvirus duy nhất gây đột quỵ. Virus tái hoạt di chuyển theo dây thần kinh vận mạch xâm nhập vào thành các động mạch não lớn và nhỏ, nhân lên trong lớp áo giữa và nội mạc gây viêm mạch (vasculitis), hẹp lòng mạch, huyết khối tại chỗ dẫn đến <strong>nhồi máu não</strong> hoặc phình vỡ mạch gây <strong>xuất huyết dưới nhện/xuất huyết não</strong>.</li>
+                            <li><strong>Hội chứng Ramsay Hunt (Herpes Zoster Oticus):</strong> Tái hoạt tại <strong>hạch gối (geniculate ganglion) của dây thần kinh VII</strong>. Biểu hiện: Liệt mặt ngoại biên một bên kèm mụn nước đau ở ống tai ngoài/màng nhĩ/lưỡi, đi kèm tổn thương dây thần kinh số VIII (ù tai, điếc tiếp nhận, chóng mặt).</li>
+                            <li><strong>Zoster Sine Herpete (ZSH):</strong> Thể lâm sàng hiểm hóc khi VZV tái hoạt gây đau thần kinh dữ dội theo khoanh da hoặc biến chứng mạch máu não nhưng <strong>hoàn toàn không có phát ban mụn nước ngoài da</strong>. Chẩn đoán xác định dựa vào PCR tìm DNA VZV hoặc kháng thể IgG kháng VZV trong dịch não tủy (CSF).</li>
+                            <li><strong>Viêm tủy cắt ngang (Myelitis) & Viêm não - màng não:</strong> Virus lan ngược dòng từ hạch rễ sau vào nhu mô tủy sống gây liệt hai chi dưới và rối loạn cơ vòng.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VI: BẢNG ĐỐI CHIẾU SO SÁNH TOÀN DIỆN VZV VS. HSV-1 -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="bang-doi-chieu-vzv-hsv1" class="section-title">
+                        <span>Phần VI: Bảng Đối Chiếu So Sánh Toàn Diện: Varicella Zoster Virus (VZV) vs. Herpes Simplex Virus 1 (HSV-1)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Mặc dù cùng thuộc phân họ <i>Alphaherpesvirinae</i>, VZV và HSV-1 sở hữu những đặc tính sinh học, động thái ẩn nấp và cơ chế tái hoạt động hoàn toàn dị biệt:
+                        </p>
+
+                        <div class="hemo-table-wrap">
+                            <table class="hemo-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 22%;">Đặc tính Sinh lý Bệnh</th>
+                                        <th style="width: 39%;">Varicella Zoster Virus (VZV)</th>
+                                        <th style="width: 39%;">Herpes Simplex Virus 1 (HSV-1)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Nhiễm trùng tiên phát (Primary infection)</strong></td>
+                                        <td><strong>Lan tỏa toàn thân (Disseminated)</strong> với sốt, nhiễm virus huyết hai pha và phát ban mụn nước khắp cơ thể (Thủy đậu).</td>
+                                        <td><strong>Khu trú tại chỗ (Localized)</strong> như viêm loét niêm mạc miệng, môi (gingivostomatitis) hoặc sinh dục.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Đường xâm nhập vào hạch cảm giác</strong></td>
+                                        <td><strong>Hai con đường:</strong> Qua dòng máu (T-cell viremia) và vận chuyển ngược chiều sợi trục từ tổn thương da.</td>
+                                        <td><strong>Gần như duy nhất:</strong> Vận chuyển ngược chiều sợi trục từ ổ loét niêm mạc tại chỗ.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Phân bố giải phẫu hạch ẩn nấp</strong></td>
+                                        <td><strong>Toàn bộ trục thần kinh (Neuraxis):</strong> Hạch sọ (sinh ba, hạch gối), hạch rễ sau cổ, ngực, thắt lưng, cùng và hạch tự chủ.</td>
+                                        <td><strong>Khu trú vùng đầu cổ:</strong> Giới hạn chủ yếu ở hạch sinh ba (Trigeminal Ganglia - TG).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tần suất tái hoạt động lâm sàng</strong></td>
+                                        <td>Thường <strong>chỉ xảy ra 1 lần duy nhất trong đời</strong> ở người có miễn dịch bình thường.</td>
+                                        <td><strong>Tái phát nhiều lần thường xuyên (Recurrent)</strong> trong suốt cuộc đời.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ảnh hưởng của tuổi tác</strong></td>
+                                        <td>Tần suất <strong>tăng mạnh theo tuổi</strong> do suy thoái miễn dịch tế bào T (Immunosenescence), bùng phát sau 50 - 60 tuổi.</td>
+                                        <td>Tần suất tái phát có xu hướng <strong>giảm dần theo tuổi tác</strong>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tái hoạt động không triệu chứng (Asymptomatic shedding)</strong></td>
+                                        <td><strong>Không xảy ra;</strong> mọi đợt tái hoạt đều đi kèm triệu chứng đau lâm sàng và/hoặc tổn thương da.</td>
+                                        <td><strong>Xảy ra rất thường xuyên</strong> với hiện tượng thải virus qua nước bọt/dịch tiết niêm mạc mà không có vết loét.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Phân bố thương tổn khi tái hoạt</strong></td>
+                                        <td>Phân bố theo dải khoanh da (<strong>Dermatome</strong>) đơn độc, giới hạn sắc nét dừng ở đường giữa.</td>
+                                        <td>Tổn thương khu biệt tại chỗ (<strong>Focal</strong>) tại đầu mút thần kinh cảm giác (ví dụ: mép môi).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Yếu tố kích hoạt tái hoạt</strong></td>
+                                        <td>Suy giảm miễn dịch qua trung gian tế bào (CMI) toàn thân, lão hóa, suy giảm miễn dịch nặng.</td>
+                                        <td>Kích thích vật lý tại chỗ rõ ràng: Ánh sáng tia cực tím (UV), sốt, chấn thương cơ học, kinh nguyệt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Triệu chứng đau lâm sàng</strong></td>
+                                        <td><strong>Đau đớn dữ dội (Severe neuropathic pain)</strong> từ giai đoạn tiền triệu và nguy cơ biến chứng PHN mãn tính.</td>
+                                        <td>Đau nhẹ, cảm giác châm chích ngứa rát tại chỗ (Mild tingling or none).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Biểu hiện gen trong pha ẩn nấp</strong></td>
+                                        <td>Đa dạng: mRNA và protein của <strong>ORFs 4, 21, 29, 62, 63, 66</strong> và bản phiên mã <strong>VLT</strong>.</td>
+                                        <td>Rất hạn chế: <strong>Chỉ bộc lộ duy nhất LAT RNA</strong> (không biểu hiện protein virus trong pha ẩn nấp bình thường).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Giám sát của tế bào T CD8+ tại hạch</strong></td>
+                                        <td><strong>Không có</strong> tế bào T thâm nhiễm bảo vệ xung quanh neuron ẩn nấp; neuron hoàn toàn "tàng hình".</td>
+                                        <td><strong>Có hàng rào tế bào T CD8+ ("corona")</strong> vây quanh neuron nhiễm để giám sát và tiết Granzyme B dập tắt tái hoạt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Hòa màng tế bào trong hạch (Fusion)</strong></td>
+                                        <td><strong>Có xảy ra;</strong> tạo hợp bào đa nhân giữa neuron và tế bào vệ tinh gây hoại tử xơ hóa hạch (Ganglionitis).</td>
+                                        <td><strong>Không xảy ra</strong> hiện tượng hòa màng tế bào trong hạch thần kinh.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VII: CHIẾN LƯỢC VẮC-XIN & DỰ PHÒNG SAU PHƠI NHIỄM (PEP) -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="chien-luoc-vac-xin-pep" class="section-title">
+                        <span>Phần VII: Các Chiến Lược Phòng Ngừa Bằng Vắc-Xin & Dự Phòng Sau Phơi Nhiễm (PEP)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="vac-xin-thuy-dau-tre-em" class="subsection-title">1. Vắc-Xin Thủy Đậu (Varicella Vaccine): Phân Loại & Hiệu Lực Bảo Vệ</h3>
+                        <p>Tất cả các vắc-xin thủy đậu lưu hành hiện nay đều là <strong>vắc-xin sống giảm độc lực chủng Oka</strong> (phân lập bởi Michiaki Takahashi năm 1974):</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">💉 Dạng Đơn Giá vs. Phối Hợp MMRV</div>
+                                <p><strong>Vắc-xin đơn giá:</strong> <i>Varivax</i> (&ge;1.350 PFU) và <i>Varilrix</i> (&ge;2.000 PFU). Dung nạp rất tốt, ít tác dụng phụ.</p>
+                                <p><strong>Vắc-xin phối hợp MMRV:</strong> <i>ProQuad</i> (&ge;9.772 PFU) và <i>Priorix-Tetra</i>. Do hiện tượng nhiễu loạn miễn dịch, hàm lượng kháng nguyên VZV được nâng lên rất cao. <i>Lưu ý:</i> Có sự gia tăng nhẹ nguy cơ co giật do sốt ở liều 1 cho trẻ 12 - 23 tháng tuổi (thêm 1 ca / 2.300 - 2.700 liều tiêm).</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🎯 Phác Đồ 1 Liều vs. Phác Đồ 2 Liều</div>
+                                <p><strong>Phác đồ 1 liều:</strong> Hiệu lực bảo vệ ~80% với mọi thể bệnh, nhưng đạt &ge;95% - 100% với thể trung bình/nặng. Khoảng 9% - 14% gặp thất bại vắc-xin nguyên phát, dẫn đến các đợt <i>thủy đậu bùng phát (breakthrough varicella)</i> thể nhẹ (&lt;50 nốt ban, không biến chứng).</p>
+                                <p><strong>Phác đồ 2 liều (Chuẩn khuyến cáo):</strong> Nâng hiệu lực bảo vệ lên <strong>93% - 98.3%</strong> với mọi thể bệnh và <strong>100% thể nặng</strong>; loại bỏ hoàn toàn các ổ dịch bùng phát sau 7 - 10 năm theo dõi.</p>
+                            </div>
+                        </div>
+
+                        <!-- TABLE ESTIMATES SAGE WHO -->
+                        <div class="hemo-table-wrap" style="margin-top: 1.5rem;">
+                            <table class="hemo-table">
+                                <thead>
+                                    <tr>
+                                        <th>Loại Vắc-xin Đơn Giá</th>
+                                        <th>Phòng ngừa Mọi thể Thủy đậu</th>
+                                        <th>Phòng ngừa Thể Trung bình & Nặng</th>
+                                        <th>Phòng ngừa Thể Nặng (Severe)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Varivax</strong> <i>(Oka/Merck)</i></td>
+                                        <td><span class="val-med">Trung vị 83%</span> (44% - 100%)</td>
+                                        <td><span class="val-high">Trung vị 96.5%</span> (86% - 100%)</td>
+                                        <td><span class="val-high">Trung vị 100%</span> (97% - 100%)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Varilrix</strong> <i>(Oka-RIT)</i></td>
+                                        <td><span class="val-med">Trung vị 76%</span> (20% - 92%)</td>
+                                        <td><span class="val-high">Trung vị 95.0%</span> (80% - 100%)</td>
+                                        <td><span class="val-high">Trung vị 100%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Okavax</strong> <i>(Biken)</i></td>
+                                        <td><span class="val-high">90%</span></td>
+                                        <td><span class="val-high">100%</span></td>
+                                        <td><span class="val-high">100%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Hiện tượng Dịch chuyển Tuổi (Epidemiological Age Shift) & Ngưỡng Bao Phủ 80%:</strong><br>
+                            Theo WHO (2014), việc đưa vắc-xin thủy đậu vào chương trình tiêm chủng mở rộng quốc gia <strong>bắt buộc phải duy trì độ bao phủ bền vững &ge; 80%</strong>. Nếu tỷ lệ tiêm chủng chỉ đạt mức trung bình (20% - 80%), nó sẽ làm giảm sự lưu hành của virus hoang dại nhưng không đủ tạo miễn dịch cộng đồng, dẫn đến <i>sự dịch chuyển tuổi nhiễm bệnh từ trẻ nhỏ sang thanh thiếu niên và người lớn</i>. Ở người lớn, thủy đậu có tỷ lệ biến chứng viêm phổi hoại tử và tử vong cao gấp nhiều lần so với trẻ nhỏ.
+                        </div>
+
+                        <h3 id="so-sanh-zostavax-shingrix" class="subsection-title">2. Vắc-Xin Phòng Ngừa Herpes Zoster: Cuộc Cách Mạng Zostavax vs. Shingrix</h3>
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">💉 Zostavax (Merck) — Vắc-xin Sống Giảm Độc Lực</div>
+                                <p><strong>Cấu trúc:</strong> Virus sống giảm độc lực chủng Oka với <strong>tải lượng virus cao gấp 14 lần</strong> vắc-xin trẻ em <i>Varivax</i> để kích hoạt lại miễn dịch tế bào đã suy thoái.</p>
+                                <p><strong>Hiệu quả bảo vệ:</strong> Giảm <strong>51.3%</strong> tỷ lệ mắc Zona và <strong>66.5%</strong> biến chứng PHN ở người &ge;60 tuổi.</p>
+                                <p><strong>Hạn chế:</strong> Hiệu quả giảm sâu theo tuổi (chỉ còn <strong>18%</strong> ở người &ge;80 tuổi); <strong>chống chỉ định tuyệt đối ở người suy giảm miễn dịch</strong> do nguy cơ nhiễm virus vắc-xin lan tỏa tử vong.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ Shingrix (GSK) — Vắc-xin Tái Tổ Hợp Bổ Trợ</div>
+                                <p><strong>Cấu trúc:</strong> Vắc-xin tiểu đơn vị tái tổ hợp chứa <strong>Glycoprotein E (gE)</strong> kết hợp hệ thống chất bổ trợ đột phá <strong>AS01B</strong>.</p>
+                                <p><strong>Hiệu quả bảo vệ vượt trội:</strong> Giảm tới <strong>97% nguy cơ mắc Zona và PHN</strong> ở cả người khỏe mạnh và người &ge;70 tuổi; hiệu lực không suy giảm theo tuổi tác.</p>
+                                <p><strong>Ưu điểm tuyệt đối:</strong> Không chứa virus sống &rarr; <strong>An toàn tuyệt đối và được chỉ định ưu tiên hàng đầu cho người suy giảm miễn dịch</strong> và người cao tuổi.</p>
+                            </div>
+                        </div>
+
+                        <h3 id="du-phong-sau-phoi-nhiem-pep" class="subsection-title">3. Các Chiến Lược Dự Phòng Sau Phơi Nhiễm (Post-Exposure Prophylaxis - PEP)</h3>
+                        <p>Khi cá thể chưa có miễn dịch tiếp xúc trực tiếp với bệnh nhân thủy đậu hoặc zona, 3 chiến lược can thiệp cần được kích hoạt dựa trên tình trạng miễn dịch và mốc thời gian vàng:</p>
+
+                        <div class="pep-flow-box">
+                            <div class="pep-card">
+                                <div class="pep-card-header" style="color: #059669;">
+                                    <i class="fa-solid fa-syringe"></i>
+                                    <span>1. Vắc-xin Sống (Active PEP)</span>
+                                </div>
+                                <p><strong>Đối tượng:</strong> Người khỏe mạnh &ge;12 tháng tuổi, có đủ đáp ứng miễn dịch và không có chống chỉ định vắc-xin sống.</p>
+                                <p><strong>Thời gian vàng:</strong> Tiêm <strong>trong vòng 3 ngày (72 giờ)</strong> sau phơi nhiễm (hiệu quả tối ưu) hoặc tối đa trong vòng 5 ngày (120 giờ).</p>
+                                <p><strong>Hiệu quả:</strong> Phòng ngừa bệnh lâm sàng &ge;90% hoặc giảm nhẹ đáng kể mức độ nặng.</p>
+                            </div>
+
+                            <div class="pep-card">
+                                <div class="pep-card-header" style="color: #8b5cf6;">
+                                    <i class="fa-solid fa-shield-halved"></i>
+                                    <span>2. Kháng Thể Thụ Động (Passive PEP)</span>
+                                </div>
+                                <p><strong>Đối tượng:</strong> Nhóm nguy cơ cao chống chỉ định vắc-xin sống (Phụ nữ có thai chưa miễn dịch, người suy giảm miễn dịch nặng, trẻ sơ sinh có mẹ mắc thủy đậu 5 ngày trước đến 48 giờ sau sinh, trẻ sinh non nằm viện).</p>
+                                <p><strong>Chế phẩm & Liều:</strong></p>
+                                <ul style="margin: 0.25rem 0 0.5rem 1.25rem; font-size: 0.88rem; color: var(--color-text-muted);">
+                                    <li><strong>VZIG / VariZIG:</strong> 125 U / 10 kg tiêm bắp (tối đa 625 U). Dùng tối ưu trong 96 giờ, hiệu lực lên tới 10 ngày sau phơi nhiễm.</li>
+                                    <li><strong>IVIG (Thay thế khi thiếu VZIG):</strong> 400 - 500 mg/kg truyền tĩnh mạch 1 liều duy nhất.</li>
+                                </ul>
+                            </div>
+
+                            <div class="pep-card">
+                                <div class="pep-card-header" style="color: #ea580c;">
+                                    <i class="fa-solid fa-pills"></i>
+                                    <span>3. Kháng Virus Đón Đầu (Preemptive Antiviral)</span>
+                                </div>
+                                <p><strong>Chỉ định:</strong> Lựa chọn thay thế khi VZIG không có sẵn hoặc đã quá thời gian tiêm vắc-xin.</p>
+                                <p><strong>Nguyên lý thời điểm:</strong> Không dùng ngay sau tiếp xúc (vì tải lượng virus quá thấp). <strong>Bắt đầu dùng từ ngày thứ 7 đến ngày thứ 10 sau phơi nhiễm và kéo dài liên tục 7 ngày</strong> (đánh chặn đợt vi rút huyết thứ cấp).</p>
+                                <p><strong>Phác đồ:</strong></p>
+                                <ul style="margin: 0.25rem 0 0.5rem 1.25rem; font-size: 0.88rem; color: var(--color-text-muted);">
+                                    <li><strong>Acyclovir:</strong> 20 mg/kg/liều uống 4 lần/ngày (tối đa 800 mg/liều). Phụ nữ mang thai: 800 mg uống 4 lần/ngày (ngày 7-14).</li>
+                                    <li><strong>Valacyclovir:</strong> 20 mg/kg/liều uống 3 lần/ngày (tối đa 1.000 mg/liều).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+                <!-- ========================================================================= -->
+                <div class="ref-section">
+                    <h3>📚 Tài liệu Tham khảo Chính (AMA Citation Style)</h3>
+                    <ul class="ref-list">
+                        <li><span>1. Zerboni L, Sen N, Oliver SL, Arvin AM.</span> Molecular mechanisms of varicella zoster virus pathogenesis. <i>Nature Reviews Microbiology</i>. 2014;12(3):197-210.</li>
+                        <li><span>2. Cohen JI.</span> Chapter 38: VZV: molecular basis of persistence (latency and reactivation). In: Arvin A, et al., eds. <i>Human Herpesviruses: Biology, Therapy, and Immunoprophylaxis</i>. Cambridge University Press; 2007.</li>
+                        <li><span>3. World Health Organization.</span> Varicella and herpes zoster vaccines: WHO position paper, 20 June 2014. <i>Weekly Epidemiological Record</i>. 2014;89(25):265-288.</li>
+                        <li><span>4. Kennedy PGE.</span> The Spectrum of Neurological Manifestations of Varicella-Zoster Virus Reactivation. <i>Viruses</i>. 2023;15(8):1663.</li>
+                        <li><span>5. Mallick-Searle T, Snodgrass B, Brant JM.</span> Postherpetic neuralgia: epidemiology, pathophysiology, and pain management pharmacology. <i>Journal of Multidisciplinary Healthcare</i>. 2016;9:447-458.</li>
+                        <li><span>6. Frazer IH, Levin MJ.</span> Modern Vaccines: Vaccines to manage persistent latent infections - Shingles. <i>Current Opinion in Virology</i>. 2011;1(5):372-378.</li>
+                        <li><span>7. SAGE Working Group on Varicella and Herpes Zoster Vaccines.</span> Background Paper on Varicella Vaccine. Geneva, Switzerland: World Health Organization; 2014.</li>
+                        <li><span>8. Royal College of Obstetricians and Gynaecologists.</span> Green-top Guideline No. 13: Chickenpox in Pregnancy. London, UK: RCOG/UKHSA; 2024.</li>
+                        <li><span>9. Chicago Department of Public Health.</span> <i>Clinical Guidelines for Management of Healthcare Personnel Exposed to Varicella</i>. Chicago, IL: CDPH; 2022.</li>
+                        <li><span>10. Iheukwumere IH, et al.</span> Varicella Zoster Virus Infection: Molecular Insights, Clinical Spectrum, and Advances in Prevention and Management. <i>Health Sci Res Int</i>. 2025;1(1):16-24.</li>
+                        <li><span>11. Eshleman E, Shahzad A, Cohrs RJ.</span> Varicella zoster virus latency. <i>Future Virology</i>. 2011;6(3):341-355.</li>
+                        <li><span>12. StatPearls.</span> Varicella-Zoster Virus (Chickenpox). Treasure Island (FL): StatPearls Publishing; 2024.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

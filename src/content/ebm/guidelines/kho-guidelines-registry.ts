@@ -1082,6 +1082,26 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     keyResults: 'HBAR: Độ nhạy GBS=1: 99% | Giảm tử vong truyền máu Hb<7: 44% (p=0.02) | Giảm soi lại do Erythro: OR 0.51 | Cầm máu nhiệt vs Ko can thiệp: RR 0.44 | Epinephrine phối hợp vs Đơn trị: RR 0.34 | Giảm biến chứng TAE vs Mổ hở: OR 0.45',
     summary: 'Hướng dẫn thực hành y học chứng cứ (GRADE) toàn diện của ACG về xử trí xuất huyết tiêu hóa trên cấp tính: Phân tầng nguy cơ cực thấp GBS 0-1, chiến lược truyền máu giới hạn Hb < 7 g/dL, thời điểm nội soi trong 24h, can thiệp cầm máu theo hình thái đáy loét Forrest và tối ưu hóa phác đồ PPI liều cao 72h.',
     detailedConclusion: 'Áp dụng GBS 0-1 để cho xuất viện an toàn; chỉ truyền máu khi Hb < 7 g/dL; truyền Erythromycin 250mg IV trước soi; nội soi can thiệp loét Forrest Ia, Ib, IIa bằng nhiệt/clip (cấm epinephrine đơn trị); duy trì PPI liều cao 72h tiếp nối liều gấp đôi đường uống đến ngày 14; ưu tiên nội soi lần 2 và nút mạch TAE khi tái xuất huyết/thất bại.'
+  },
+  {
+    id: '2020-jsge-pud',
+    title: 'JSGE 2020: Hướng dẫn Lâm sàng Dựa trên Bằng chứng về Bệnh Loét Dạ dày - Tá tràng',
+    titleEn: 'Evidence-based Clinical Practice Guidelines for Peptic Ulcer Disease 2020 (JSGE)',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2021,
+    organization: 'Japanese Society of Gastroenterology (JSGE)',
+    journal: 'J Gastroenterol',
+    file: '2020-jsge-pud.html',
+    conditionKey: 'gerd-peptic',
+    icd10: ['K25', 'K26', 'K27', 'K28', 'K92.0', 'K92.2'],
+    intervention: 'Duy trì Aspirin khi xuất huyết loét nguy cơ cao, PPI liều chuẩn sau cầm máu nội soi, Phác đồ Vonoprazan 3 thuốc bước 1 (VPZ-AC/VPZ-AM), Phác đồ cứu vãn bước 2 PAM (PPI/VPZ + Amox + Metro), Phác đồ bước 3 Sitafloxacin, Celecoxib + PPI dự phòng loét/chảy máu do NSAIDs/LDA, PPI cho loét mỏm cắt sau mổ & điều trị duy trì loét vô căn',
+    primaryEndpoint: 'Tỷ lệ liền sẹo loét dạ dày tá tràng, tỷ lệ tiệt trừ H. pylori, giảm biến cố tái xuất huyết tiêu hóa và giảm tử vong do biến cố tim mạch tắc mạch',
+    keyResults: 'HBAR: Tiệt trừ Bước 1 VPZ vs PPI: OR 0.28 (p<0.00001) | Bước 2 PAM vs PAC: OR 0.14 (p<0.00001) | Giảm XHTH DAPT + PPI: RR 0.26 (p=0.0002) | Liền sẹo NSAID PPI vs H2RA: OR 0.48 (p<0.00001) | Dự phòng thứ phát NSAID: OR 0.14 (p<0.00001) | COX-2 giảm loét DD: RR 0.21 | Ngừa chảy máu LDA PPI vs H2RA: RR 0.28 (p<0.0001)',
+    summary: 'Hướng dẫn thực hành y học chứng cứ (GRADE) toàn diện của Hiệp hội Tiêu hóa Nhật Bản (JSGE) với 28 Câu hỏi lâm sàng (CQ-1 đến CQ-28): Duy trì aspirin ở bệnh nhân nguy cơ huyết khối cao khi xuất huyết, phác đồ tiệt trừ H. pylori bước 1 vượt trội chứa Vonoprazan (P-CAB), phân tầng dự phòng loét và biến chứng chảy máu do NSAIDs / Aspirin liều thấp (LDA), cùng xử trí loét vô căn và loét mỏm cắt dạ dày.',
+    detailedConclusion: 'Tiếp tục duy trì Aspirin khi xuất huyết nếu nguy cơ tắc mạch cao; dùng PPI liều chuẩn sau cầm máu nội soi; ưu tiên phác đồ 3 thuốc chứa Vonoprazan (VPZ 20mg x 2 + Amox + Clari/Metro) bước 1; phác đồ cứu vãn bước 2 PAM; phối hợp Celecoxib + PPI ở bệnh nhân tiền sử loét/chảy máu dùng NSAID/LDA; duy trì PPI kéo dài cho loét vô căn và khởi trị ngay bằng PPI cho loét mỏm cắt.'
   }
 ];
 

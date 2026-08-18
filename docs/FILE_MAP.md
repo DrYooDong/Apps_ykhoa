@@ -426,7 +426,9 @@
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hav.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi A (HAV, eHAV, MAVS-IRF3/7, Tương bào) | Cấp 4 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hbv.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi B (HBV, cccDNA, 4 Pha EASL/BYT, HBx) | Cấp 4 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hcv.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi C (HCV, Steatosis, IRS-1/2, MDA/4-HNE, DAA) | Cấp 4 |
+| `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hdv.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi D (HDV, Viroid, Ribozyme, Bulevirtide) | Cấp 4 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hev.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi E (HEV, One Health, Thai kỳ, Thần kinh GBS/NA) | Cấp 4 |
+| `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-thuy-dau.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Thủy Đậu & Herpes Zoster (VZV, M6PR, Biểu sinh ẩn nấp, Zona, PHN, Shingrix, PEP) | Cấp 4 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_VP.html` | Sinh lý bệnh & Cơ chế bệnh sinh Viêm phổi | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_BACH_HAU.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Bạch hầu | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_SOT_RET.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Sốt rét | Cấp 3 |

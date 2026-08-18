@@ -457,7 +457,7 @@ updated: "2026-08-11"
 
 ### 📁 2. Bệnh lý lâm sàng\2.4. Nhiễm trùng Da, Mô mềm & Cơ xương\Thủy đậu
 - [[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.4. Nhiễm trùng Da, Mô mềm & Cơ xương/Thủy đậu/1. Tổng quan & Dịch tễ học.md|1. Tổng quan & Dịch tễ học]]
-- [[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.4. Nhiễm trùng Da, Mô mềm & Cơ xương/Thủy đậu/2. Cơ chế bệnh sinh.md|2. Cơ chế bệnh sinh]]
+- [[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.4. Nhiễm trùng Da, Mô mềm & Cơ xương/Thủy đậu/2.1. Sinh lý bệnh|2.1]]
 - [[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.4. Nhiễm trùng Da, Mô mềm & Cơ xương/Thủy đậu/3. Lâm sàng.md|3. Lâm sàng]]
 - [[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.4. Nhiễm trùng Da, Mô mềm & Cơ xương/Thủy đậu/4. Cận lâm sàng.md|4. Cận lâm sàng]]
 - [[1. Bệnh truyền nhiễm/2. Bệnh lý lâm sàng/2.4. Nhiễm trùng Da, Mô mềm & Cơ xương/Thủy đậu/5. Chẩn đoán.md|5. Chẩn đoán]]

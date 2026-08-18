@@ -151,5 +151,49 @@ export function initPathophysiologyHub(): void {
     });
   });
 
+  // 5. Specialty Dropdown Cards (Viêm Gan Siêu Vi A-E)
+  const dropdownCards = document.querySelectorAll<HTMLElement>('.specialty-dropdown-card');
+  dropdownCards.forEach(card => {
+    const trigger = card.querySelector('.specialty-dropdown-trigger') || card;
+
+    trigger.addEventListener('click', (e) => {
+      // If user clicked directly on a link/pill, let default navigation proceed
+      if ((e.target as HTMLElement).closest('a')) return;
+      e.stopPropagation();
+      const isOpen = card.classList.contains('open');
+      dropdownCards.forEach(c => {
+        c.classList.remove('open');
+        c.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        card.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Support keyboard Enter / Space / Escape
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        if ((e.target as HTMLElement).closest('a')) return;
+        e.preventDefault();
+        const isOpen = card.classList.toggle('open');
+        card.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      } else if (e.key === 'Escape') {
+        card.classList.remove('open');
+        card.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('.specialty-dropdown-card')) {
+      dropdownCards.forEach(c => {
+        c.classList.remove('open');
+        c.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
   initPhysioFlashcardEngine();
 }

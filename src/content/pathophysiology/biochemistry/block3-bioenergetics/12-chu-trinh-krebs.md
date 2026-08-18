@@ -1,65 +1,77 @@
-# ENG-02: Chu Trình Acid Citric (Krebs Cycle / TCA Cycle) & Điều Hòa Năng Lượng Ty Thể
+# ENG-02: Phức Hợp Pyruvat Dehydrogenase & Chu Trình Acid Citric (Krebs)
 
-> **Phân loại**: Chuyển hóa năng lượng • **Khối**: BLOCK-3 (Năng Lượng Sinh Học & Krebs)  
-> **Tags**: #Krebs #TCA #AcetylCoA #CitrateSynthase #IsocitrateDehydrogenase #NADH #FADH2 #Anaplerosis
+> **Phân loại**: Năng lượng sinh học & Ti thể • **Khối**: BLOCK-3 (Năng Lượng Sinh Học & Chuỗi Hô Hấp Tế Bào)  
+> **Tags**: #PyruvateDehydrogenase #ChuTrìnhKrebs #TCA #AcetylCoA #CitrateSynthase #Aconitase #IDH #Anaplerosis #Oncometabolites #HộiChứngLeigh
 
 ---
 
 ## 🎯 Mục Tiêu Học Tập & Tổng Quan Phân Tử
-Phức hợp Pyruvate Dehydrogenase (PDH - 3 enzyme $E_1, E_2, E_3$ và 5 coenzyme Thiamine TPP, Lipoate, Coenzyme A, FAD, NAD⁺); Vị trí xảy ra trong chất nền ty thể (Mitochondrial Matrix); 8 bước phản ứng của chu trình Acid Citric; Sản lượng năng lượng thu được từ 1 phân tử Acetyl-CoA ($3\text{ NADH}, 1\text{ FADH}_2, 1\text{ GTP} \approx 10\text{ ATP}$); Các điểm kiểm soát enzym giới hạn tốc độ (Citrate Synthase, Isocitrate Dehydrogenase, $\alpha$-Ketoglutarate Dehydrogenase); Bản chất lưỡng chuyển hóa (Amphibolic nature) và các phản ứng bổ sung cơ chất chêm thêm (Anaplerotic reactions).
+1. **Nhập khẩu Pyruvat vào Ti thể:** Tính thấm của màng ngoài (Porin) và màng trong; Cơ chế symport của *Pyruvate Translocase (MPC)* phụ thuộc lực đẩy proton.
+2. **Cấu trúc & Coenzyme của Phức hợp Pyruvat Dehydrogenase (PDC):**
+   - 3 tiểu đơn vị: E1 (Pyruvate decarboxylase - TPP), E2 (Lõi 60-mer - Lipoamide swinging arm 1.4 nm), E3 (Dihydrolipoyl dehydrogenase - FAD/E3BP).
+   - 5 Coenzyme: TPP (B1), Lipoamide, CoA-SH (B5), FAD (B2), NAD⁺ (B3/PP).
+   - Tính tỏa nhiệt không thuận nghịch ($\Delta G^{\circ\prime} \approx -31.4\text{ kJ/mol}$) ngăn chuyển ngược Acetyl-CoA thành Glucose ở động vật.
+3. **Động học & Điều hòa PDC:**
+   - 5 bước xúc tác liên kết qua cánh tay Lipoamide.
+   - Điều hòa dị lập thể: Ức chế bởi Acetyl-CoA, NADH, ATP; Kích hoạt bởi AMP, ADP, NAD⁺, CoA-SH.
+   - Điều hòa đồng hóa trị: PDK (Kinase bất hoạt E1) vs PDP (Phosphatase kích hoạt E1 qua Ca²⁺, Mg²⁺, Insulin).
+4. **Chu trình Acid Citric (Krebs / TCA) & Cân bằng Năng lượng:**
+   - 8 phản ứng enzyme chi tiết tại chất nền ti thể.
+   - Cân bằng năng lượng: $3\text{ NADH } (7.5\text{ ATP}) + 1\text{ FADH}_2/QH_2 (1.5\text{ ATP}) + 1\text{ GTP } (1.0\text{ ATP}) = \mathbf{10\text{ ATP}}$ cho mỗi phân tử Acetyl-CoA ($20\text{ ATP}$ cho 1 phân tử Glucose).
+5. **Mạng lưới Điều hòa & Bản chất Lưỡng hóa (Amphibolic):**
+   - 3 điểm kiểm soát một chiều: Citrate Synthase, Isocitrate Dehydrogenase (IDH - kiểm soát chính bởi ADP, Ca²⁺), $\alpha$-Ketoglutarate Dehydrogenase.
+   - Phản ứng tiêu hao (Cataplerotic) & Phản ứng bù đắp (Anaplerotic): *Pyruvate Carboxylase (PC)* phụ thuộc Biotin (B7) kích hoạt bắt buộc bởi Acetyl-CoA; AST; GDH; Thoái hóa amino acid mạch nhánh tạo Succinyl-CoA.
+6. **Bệnh học Di truyền, Độc chất & Oncometabolites:**
+   - Thiếu hụt Thiamine (B1) gây Beriberi, Wernicke-Korsakoff và toan lactic.
+   - Thiếu hụt PDC di truyền gây Hội chứng Leigh (hoại tử đối xứng thân não/hạch nền).
+   - Độc tính Thạch tín (Arsenite As³⁺) khóa nhóm -SH của Dihydrolipoamide E2; Điều trị bằng BAL.
+   - Cơ chế Oncometabolites trong sinh ung thư: Đột biến SDH & FH tích tụ Succinate/Fumarate gây giả thiếu oxy (Pseudohypoxia / HIF-1$\alpha$); Đột biến điểm IDH1/2 tạo D-2-hydroxyglutarate (2-HG) gây siêu methyl hóa DNA (CIMP) trong u thần kinh đệm não (Glioma) và bạch cầu cấp (AML).
 
 ---
 
 ## 🔬 Phản Ứng, Phương Trình & Cơ Chế Then Chốt
 
-1. **Phản ứng Cầu Nối: Phức hợp Pyruvate Dehydrogenase (PDH Complex)**:
-   $$\text{Pyruvate} + \text{CoA-SH} + \text{NAD}^+ \xrightarrow{\text{PDH Complex}} \text{Acetyl-CoA} + \text{CO}_2 + \text{NADH} + \text{H}^+\quad (\Delta G^{\circ\prime} = -33.4\text{ kJ/mol})$$
-   - $E_1$ (Pyruvate Decarboxylase): Cần Coenzyme **TPP** (Thiamine pyrophosphate / Vitamin B1).
-   - $E_2$ (Dihydrolipoyl Transacetylase): Cần **Lipoic acid** và **Coenzyme A** (Vitamin B5).
-   - $E_3$ (Dihydrolipoyl Dehydrogenase): Cần **FAD** (Vitamin B2) và **NAD⁺** (Vitamin B3).
+1. **Phản Ứng Khử Carboxyl Oxy Hóa của PDC**:
+   $$\text{Pyruvat} + \text{NAD}^+ + \text{CoA-SH} \xrightarrow{\text{PDC}} \text{Acetyl-CoA} + \text{CO}_2 + \text{NADH} + H^+$$
+   *($\Delta G^{\circ\prime} = -31.4\text{ kJ/mol}$, không thuận nghịch sinh lý).*
 
-2. **8 Bước Phản Ứng Của Chu Trình Krebs**:
-   - **Bước 1**: Ngưng tụ $\text{Oxaloacetate (4C)} + \text{Acetyl-CoA (2C)} \xrightarrow{\text{Citrate Synthase}} \text{Citrate (6C)} + \text{CoA-SH}$.
-   - **Bước 2**: Đồng phân hóa $\text{Citrate} \xrightleftharpoons{\text{Aconitase}} \text{Isocitrate (6C)}$.
-   - **Bước 3 (Khử carboxyl oxy hóa lần 1)**: $\text{Isocitrate} + \text{NAD}^+ \xrightarrow{\text{Isocitrate DH}} \alpha\text{-Ketoglutarate (5C)} + \text{CO}_2 + \text{NADH} + \text{H}^+$.
-   - **Bước 4 (Khử carboxyl oxy hóa lần 2)**: $\alpha\text{-Ketoglutarate} + \text{CoA-SH} + \text{NAD}^+ \xrightarrow{\alpha\text{-KGDH}} \text{Succinyl-CoA (4C)} + \text{CO}_2 + \text{NADH} + \text{H}^+$.
-   - **Bước 5 (Tạo năng lượng mức cơ chất)**: $\text{Succinyl-CoA} + \text{GDP} + \text{P}_i \xrightarrow{\text{Succinyl-CoA Synthetase}} \text{Succinate (4C)} + \text{GTP} + \text{CoA-SH}$.
-   - **Bước 6**: $\text{Succinate} + \text{FAD} \xrightarrow{\text{Succinate DH (Complex II)}} \text{Fumarate (4C)} + \text{FADH}_2$.
-   - **Bước 7**: $\text{Fumarate} + \text{H}_2\text{O} \xrightarrow{\text{Fumarase}} \text{L-Malate (4C)}$.
-   - **Bước 8 (Tái tạo Oxaloacetate)**: $\text{L-Malate} + \text{NAD}^+ \xrightarrow{\text{Malate DH}} \text{Oxaloacetate (4C)} + \text{NADH} + \text{H}^+$.
+2. **Phương Trình Tổng Quát Chu Trình Krebs**:
+   $$\text{Acetyl-CoA} + 3\text{NAD}^+ + \text{FAD} + \text{GDP} + P_i + 2\text{H}_2\text{O} \rightarrow \text{CoA-SH} + 2\text{CO}_2 + 3\text{NADH} + \text{FADH}_2 + \text{GTP} + 2\text{H}^+$$
 
-3. **Phương trình Tổng quát của 1 Vòng Krebs**:
-   $$\text{Acetyl-CoA} + 3\text{ NAD}^+ + \text{FAD} + \text{GDP} + \text{P}_i + 2\text{ H}_2\text{O} \rightarrow 2\text{ CO}_2 + 3\text{ NADH} + 3\text{ H}^+ + \text{FADH}_2 + \text{GTP} + \text{CoA-SH}$$
+3. **8 Phản Ứng Enzyme Chi Tiết Của Chu Trình Krebs**:
+   - **Pư 1**: $\text{Oxaloacetat} + \text{Acetyl-CoA} + \text{H}_2\text{O} \xrightarrow{\text{Citrat Synthase}} \text{Citrat} + \text{CoA-SH} + H^+$ ($\Delta G^{\circ\prime} = -32.2\text{ kJ/mol}$).
+   - **Pư 2**: $\text{Citrat} \xrightleftharpoons{\text{Aconitase [4Fe-4S]}} \text{\textit{cis}-Aconitat} + \text{H}_2\text{O} \xrightleftharpoons{} \text{Isocitrat}$.
+   - **Pư 3**: $\text{Isocitrat} + \text{NAD}^+ \xrightarrow{\text{IDH (Mn}^{2+}\text{/Mg}^{2+}\text{)}} \alpha\text{-Ketoglutarate} + \text{CO}_2 + \text{NADH} + H^+$.
+   - **Pư 4**: $\alpha\text{-Ketoglutarate} + \text{NAD}^+ + \text{CoA-SH} \xrightarrow{\alpha\text{-KGDH}} \text{Succinyl-CoA} + \text{CO}_2 + \text{NADH} + H^+$.
+   - **Pư 5**: $\text{Succinyl-CoA} + \text{GDP/ADP} + P_i \xrightleftharpoons{\text{Succinyl-CoA Synthetase}} \text{Succinat} + \text{CoA-SH} + \text{GTP/ATP}$.
+   - **Pư 6**: $\text{Succinat} + \text{Q} \xrightarrow{\text{SDH (Complex II / FAD)}} \text{Fumarate} + \text{QH}_2$ (Bị ức chế cạnh tranh bởi Malonate).
+   - **Pư 7**: $\text{Fumarate} + \text{H}_2\text{O} \xrightleftharpoons{\text{Fumarase}} \text{L-Malate}$ (Đặc hiệu lập thể tạo duy nhất L-Malate).
+   - **Pư 8**: $\text{L-Malate} + \text{NAD}^+ \xrightleftharpoons{\text{MDH}} \text{Oxaloacetat} + \text{NADH} + H^+$ ($\Delta G^{\circ\prime} = +29.7\text{ kJ/mol}$).
 
-4. **Tổng Năng Lượng Sinh Ra Khi Oxy Hóa Hoàn Toàn 1 Phân Tử Glucose**:
-   - Đường phân: $2\text{ ATP} + 2\text{ NADH} \rightarrow 5 - 7\text{ ATP}$.
-   - Chuyển 2 Pyruvate $\rightarrow$ 2 Acetyl-CoA: $2\text{ NADH} \rightarrow 5\text{ ATP}$.
-   - 2 Vòng Krebs: $6\text{ NADH} + 2\text{ FADH}_2 + 2\text{ GTP} \rightarrow 15 + 3 + 2 = 20\text{ ATP}$.
-   - **Tổng cộng**: **$30 - 32\text{ ATP}$** cho mỗi phân tử Glucose.
+4. **Phản Ứng Bù Đắp Anaplerosis Trung Tâm (Pyruvat Carboxylase)**:
+   $$\text{Pyruvat} + \text{HCO}_3^- + \text{ATP} \xrightarrow[\text{Acetyl-CoA (kích hoạt bắt buộc)}]{\text{Pyruvat Carboxylase / Biotin}} \text{Oxaloacetat} + \text{ADP} + P_i$$
 
 ---
 
 ## 💡 Điểm Ngọc Lâm Sàng (Clinical Pearls)
 
-- **Hội chứng Wernicke-Korsakoff & Beriberi do Thiếu Vitamin B1 (Thiamine)**: Thiếu B1 làm bất hoạt enzyme $E_1$ của phức hợp PDH và $\alpha$-Ketoglutarate Dehydrogenase. Tế bào não không thể sử dụng Glucose qua chu trình Krebs, dẫn tới suy sụp năng lượng cấp tính, tổn thương thể vú não (Mammillary bodies), tam chứng cổ điển: Lú lẫn tâm thần, Thất điều dáng đi (Ataxia), Liệt vận nhãn (Ophthalmoplegia).
-- **Quy tắc Vàng Cấp Cứu: Luôn Tiêm Thiamine Trước Khi Truyền Dextrose**: Ở bệnh nhân nghiện rượu hoặc suy kiệt nặng, truyền Glucose trước khi bù Thiamine sẽ kích hoạt đường phân ồ ạt, làm cạn kiệt lượng Thiamine ít ỏi còn lại, đẩy bệnh nhân vào tổn thương não Wernicke cấp tính không thể hồi phục.
-- **Ngộ độc Arsenic (Thạch tín) & Fluoroacetate**:
-  - **Arsenite**: Gắn vào nhóm $-SH$ của Lipoic acid ở $E_2$ của PDH và $\alpha$-KGDH, ức chế hoàn toàn chu trình Krebs, hơi thở có mùi tỏi.
-  - **Fluoroacetate (Thuốc diệt chuột 1080)**: Kết hợp với Oxaloacetate tạo Fluorocitrate, ức chế enzyme Aconitase, gây ngưng trệ chu trình Krebs và co giật tử vong.
+- **Hội Chứng Leigh & Khiếm Khuyết PDC Di Truyền**: Đột biến gen *E1-$\alpha$* gây toan lactic tái diễn, suy sụp năng lượng và hoại tử đối xứng thân não/hạch nền. Điều trị bằng chế độ ăn sinh ceton (Ketogenic diet) và thuốc ức chế PDK là **Dichloroacetate (DCA)**.
+- **Ứng Dụng DCA Trong Ung Thư & Hiệu Ứng Warburg**: Tế bào ung thư khóa PDC bằng cách tăng biểu hiện PDK. DCA ức chế PDK, ép tế bào ung thư khởi động lại hô hấp ti thể, giải phóng cytochrome c và kích hoạt apoptosis.
+- **Oncometabolites & Đột Biến Sinh Ung Thư**:
+  - *Đột biến SDH / FH:* Ứ đọng Succinate / Fumarate ức chế HIF Prolyl Hydroxylase (PHD), ổn định hóa HIF-1$\alpha$ gây giả thiếu oxy (Pseudohypoxia), kích hoạt tân tạo mạch VEGF sinh u tủy thượng thận (Pheochromocytoma) và u cơ trơn/ung thư thận (HLRCC).
+  - *Đột biến IDH1 (R132) & IDH2 (R172):* Tạo Oncometabolite D-2-hydroxyglutarate (2-HG) ức chế TET DNA demethylase gây siêu methyl hóa DNA diện rộng (CIMP) trong u thần kinh đệm (Glioma) và bạch cầu cấp dòng tủy (AML).
 
 ---
 
-## 🧪 Chỉ Số Xét Nghiệm & Biện Luận Cận Lâm Sàng
+## 🧪 Bilan Xét Nghiệm & Chỉ Số Tham Chiếu
 
-| Chỉ Số Xét Nghiệm | Khoảng Tham Chiếu Sinh Lý | Ý Nghĩa Tăng Máu | Ý Nghĩa Giảm Máu |
-| :--- | :--- | :--- | :--- |
-| **Lactate Máu** | $0.5 - 1.6\text{ mmol/L}$ | Ức chế PDH, thiếu B1, sốc, toan lactic ty thể | Đánh giá hồi sức tưới máu thành công |
-| **Pyruvate Máu** | $34 - 102\text{ \mu mol/L}$ ($0.3 - 0.9\text{ mg/dL}$) | Thiếu Vitamin B1, ngộ độc Arsenic, suy gan nặng | Tỷ lệ Lactate/Pyruvate $> 20$ gợi ý thiếu oxy mô |
-| **Thiamine (Vitamin B1) Máu** | $70 - 180\text{ nmol/L}$ ($2.5 - 7.5\text{ \mu g/dL}$) | Bổ sung quá mức vitamin | Thiếu hụt dinh dưỡng, nghiện rượu, hội chứng Beriberi |
-| **Ammoniac ($\text{NH}_3$) Máu** | $11 - 35\text{ \mu mol/L}$ ($18 - 60\text{ \mu g/dL}$) | Suy tế bào gan, bệnh não gan, thiếu hụt enzyme chu trình Ure | Không có ý nghĩa bệnh lý |
-| **Bilirubin Toàn Phần** | $5.1 - 17.0\text{ \mu mol/L}$ ($0.3 - 1.0\text{ mg/dL}$) | Tan máu, viêm gan, tắc mật | Không có ý nghĩa |
-| **Khí Máu: $PaO_2$** | $80 - 100\text{ mmHg}$ | Thở oxy lưu lượng cao | Giảm oxy máu $\rightarrow$ Ngưng trệ chuỗi ETC và chu trình Krebs |
+| Chỉ Số Xét Nghiệm | Khoảng Tham Chiếu Sinh Lý | Ý Nghĩa Biến Động Lâm Sàng |
+| :--- | :--- | :--- |
+| **Lactate Máu Động Mạch** | $0.5 - 2.2\text{ mmol/L}$ | Tăng cao $> 4.0\text{ mmol/L}$ kèm toan chuyển hóa trong thiếu PDC, thiếu B1, hội chứng Leigh, ngộ độc chuỗi hô hấp. |
+| **Pyruvate Máu** | $0.03 - 0.10\text{ mmol/L}$ | Tăng đồng thời trong tắc nghẽn chuyển hóa PDC. |
+| **Tỷ Lệ Lactate / Pyruvate (L/P)** | $10:1 - 20:1$ | L/P bình thường nhưng cả hai cùng tăng: Gợi ý khiếm khuyết PDC; L/P tăng vọt $> 25 - 30$: Gợi ý khiếm khuyết Chuỗi hô hấp ti thể (ETC). |
+| **Đột Biến IDH1 (R132) / IDH2 (R172)** | Âm tính (Wild-type) | Dấu ấn sinh học bắt buộc trong chẩn đoán u não Glioma và bạch cầu cấp AML. |
 
 ---
 
-*Tài liệu tham khảo: Hóa Sinh Y Học ĐHYD 2024, Harper's Illustrated Biochemistry 32nd, Harrison's Principles of Internal Medicine 21st.*
+*Tài liệu tham khảo: Hóa Sinh Y Học ĐHYD 2024, Harper's Illustrated Biochemistry 32nd, Principles of Biochemistry 5th, Medical Biochemistry 5th.*

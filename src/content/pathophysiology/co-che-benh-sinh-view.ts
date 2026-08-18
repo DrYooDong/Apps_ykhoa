@@ -196,7 +196,7 @@ export function renderCoCheBenhSinhView(): string {
                 <a href="#patho-truyen-nhiem-section" class="part-nav-item p3" data-target="patho-truyen-nhiem-section">
                   <span class="part-icon"><i class="fa-solid fa-virus-covid"></i></span>
                   <span class="part-text">Truyền nhiễm & CC</span>
-                  <span class="part-count-badge">6</span>
+                  <span class="part-count-badge">7</span>
                 </a>
               </li>
               <li>
@@ -563,6 +563,75 @@ export function renderCoCheBenhSinhView(): string {
                 <h3 id="patho-truyen-nhiem-heading">Truyền Nhiễm & Cấp Cứu</h3>
               </div>
               <div class="specialty-grid">
+                <!-- VIÊM GAN SIÊU VI (A, B, C, D, E) — DROPDOWN CARD -->
+                <div class="specialty-card specialty-dropdown-card" id="hep-dropdown-card" tabindex="0" aria-haspopup="true" aria-expanded="false">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon" style="background: rgba(220, 38, 38, 0.12); color: #dc2626;"><i class="fa-solid fa-viruses"></i></div>
+                    <div class="specialty-info">
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 2px;">
+                        <h3 style="margin: 0;">Viêm Gan Siêu Vi</h3>
+                        <span class="hepatitis-badge-count">5 thể (A-E)</span>
+                      </div>
+                      <p>Cơ chế bệnh sinh &amp; miễn dịch 5 thể HAV, HBV, HCV, HDV, HEV: cccDNA, quasispecies, ADAR1 ribozyme, bão cytokine thai kỳ và đích điều trị.</p>
+                      <div class="hepatitis-quick-pills">
+                        <a href="#/pathophysiology/cases/slb-ccbs-hav" class="hep-pill pill-a" title="Viêm Gan A (HAV)">A</a>
+                        <a href="#/pathophysiology/cases/slb-ccbs-hbv" class="hep-pill pill-b" title="Viêm Gan B (HBV)">B</a>
+                        <a href="#/pathophysiology/cases/slb-ccbs-hcv" class="hep-pill pill-c" title="Viêm Gan C (HCV)">C</a>
+                        <a href="#/pathophysiology/cases/slb-ccbs-hdv" class="hep-pill pill-d" title="Viêm Gan D (HDV)">D</a>
+                        <a href="#/pathophysiology/cases/slb-ccbs-hev" class="hep-pill pill-e" title="Viêm Gan E (HEV)">E</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action specialty-dropdown-trigger">
+                    <span style="font-weight: 600;">Xem 5 thể bài học (A, B, C, D, E)</span>
+                    <i class="fa-solid fa-chevron-down specialty-dropdown-arrow"></i>
+                  </div>
+
+                  <!-- Dropdown Menu xổ ra như nút Cơ sở -->
+                  <div class="specialty-dropdown-menu" role="menu" aria-label="Danh sách bài học Viêm Gan Siêu Vi">
+                    <a href="#/pathophysiology/cases/slb-ccbs-hav" class="specialty-dropdown-item" role="menuitem">
+                      <span class="specialty-dropdown-item-icon" style="background: rgba(16, 185, 129, 0.15); color: #059669;">🛡️</span>
+                      <div class="specialty-dropdown-item-text">
+                        <strong>Viêm Gan Siêu Vi A (HAV)</strong>
+                        <span>Virion trần &amp; eHAV, apoptosis qua MAVS-IRF3/7, thâm nhiễm tương bào</span>
+                      </div>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                    <a href="#/pathophysiology/cases/slb-ccbs-hbv" class="specialty-dropdown-item" role="menuitem">
+                      <span class="specialty-dropdown-item-icon" style="background: rgba(217, 119, 6, 0.15); color: #d97706;">🧬</span>
+                      <div class="specialty-dropdown-item-text">
+                        <strong>Viêm Gan Siêu Vi B (HBV)</strong>
+                        <span>rcDNA sang cccDNA, miễn dịch APOBEC3A/3B, 4 pha EASL, HBx sinh ung</span>
+                      </div>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                    <a href="#/pathophysiology/cases/slb-ccbs-hcv" class="specialty-dropdown-item" role="menuitem">
+                      <span class="specialty-dropdown-item-icon" style="background: rgba(147, 51, 234, 0.15); color: #9333ea;">🔬</span>
+                      <div class="specialty-dropdown-item-text">
+                        <strong>Viêm Gan Siêu Vi C (HCV)</strong>
+                        <span>(+)ssRNA Quasispecies, thoái hóa mỡ MTP/SREBP-1c, sẹo biểu sinh sau DAA</span>
+                      </div>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                    <a href="#/pathophysiology/cases/slb-ccbs-hdv" class="specialty-dropdown-item" role="menuitem">
+                      <span class="specialty-dropdown-item-icon" style="background: rgba(220, 38, 38, 0.15); color: #dc2626;">⚡</span>
+                      <div class="specialty-dropdown-item-text">
+                        <strong>Viêm Gan Siêu Vi D (HDV - Delta)</strong>
+                        <span>Viroid khiếm khuyết phụ thuộc HBsAg, ribozyme tự cắt, bội nhiễm ác tính</span>
+                      </div>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                    <a href="#/pathophysiology/cases/slb-ccbs-hev" class="specialty-dropdown-item" role="menuitem">
+                      <span class="specialty-dropdown-item-icon" style="background: rgba(234, 88, 12, 0.15); color: #ea580c;">⚠️</span>
+                      <div class="specialty-dropdown-item-text">
+                        <strong>Viêm Gan Siêu Vi E (HEV)</strong>
+                        <span>Quasi-enveloped, One Health 8 genotypes, suy gan cấp thai kỳ &amp; thần kinh</span>
+                      </div>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                  </div>
+                </div>
+
                 <a href="#/pathophysiology/cases/slb-ccbs-sepsis" class="specialty-card">
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-bacteria"></i></div>
@@ -625,6 +694,16 @@ export function renderCoCheBenhSinhView(): string {
                     <div class="specialty-info">
                       <h3>Bệnh Bạch Hầu</h3>
                       <p>Ngoại độc tố Diphtheria toxin ức chế tổng hợp protein tế bào qua ADP-ribosyl hóa EF-2, giả mạc thanh quản và viêm cơ tim nhiễm độc.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-thuy-dau" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-disease"></i></div>
+                    <div class="specialty-info">
+                      <h3>Thủy Đậu &amp; Herpes Zoster (VZV)</h3>
+                      <p>Vi rút huyết 2 pha, hướng tế bào T (CLA+/CCR4+), thoát virus tự do qua M6PR, hợp bào syncytia, biểu sinh ẩn nấp (VLT/IE63), tái hoạt Zona, đau thần kinh PHN (Nav1.8) &amp; vắc-xin Shingrix/PEP.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
