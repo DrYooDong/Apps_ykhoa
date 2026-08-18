@@ -28,6 +28,19 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
 9. **Bảo Vệ Hub `guidelines.js`**: Chạy `node scratch/query_graph.js guidelines.js` nếu tác động vào engine xử lý chung của Kho Guidelines (chỉ số fan-in 570).
 10. **Tự Động Dọn Dẹp File Tạm**: Tự động xóa tất cả các file `.md` trung gian / hợp nhất được tạo ra trong `scratch/` ngay sau khi hoàn tất việc sinh file `.html` và đăng ký registry.
 11. **TUYỆT ĐỐI CẤM THẺ HTML TRONG SVG `<text>` (SVG Text Formatting Rule)**: Tuyệt đối **KHÔNG ĐƯỢC** sử dụng các thẻ HTML (`<strong>`, `<b>`, `<span>`, `<br>`, `<em>`, `<code>`) bên trong `<text>` của SVG. Để in đậm trong SVG, bắt buộc dùng `<tspan font-weight="700">` hoặc thuộc tính `font-weight="700"`. Để xuống dòng, dùng nhiều thẻ `<text>` hoặc `<tspan x="..." dy="...">`. ViewBox SVG phải luôn đủ rộng/cao để không cắt cụt các node.
+12. **BẮT BUỘC XỬ LÝ HÌNH ẢNH ĐÍNH KÈM TỪ FILE .MD (Image Asset Extraction & Embedding Rule)**: Khi file `.md` nguồn có chứa hình ảnh đính kèm (dạng `![[Pasted image ...]]` hoặc `![alt](path)`):
+    - **Bước 1**: Tìm và sao chép file ảnh từ thư mục đính kèm (ví dụ: `knowledge-vault/_resources/attachments/`) vào thư mục `src/content/ebm/guidelines/kho-guidelines/images/` với tên chuẩn kebab-case: `<slug>-fig<X>.<ext>` (ví dụ: `2021-acg-ugib-fig1.png`).
+    - **Bước 2**: Nhúng hình ảnh vào đúng vị trí tương ứng trong trang HTML bằng thẻ `<img>` kết hợp khung card chuẩn:
+      ```html
+      <div class="fig-card">
+        <img src="./images/<slug>-fig<X>.png" alt="[Mô tả hình ảnh]" class="fig-img" loading="lazy">
+        <div class="fig-caption">
+          <div class="fig-title">Figure X. [Tiêu đề hình ảnh]</div>
+          [Mô tả chi tiết giải thích ý nghĩa lâm sàng dưới hình]
+        </div>
+      </div>
+      ```
+    - Tuyệt đối không được bỏ sót hình ảnh minh họa có trong file `.md` nguồn.
 
 ---
 

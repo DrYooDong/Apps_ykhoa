@@ -1062,6 +1062,26 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     keyResults: 'HBAR: Tử vong toàn cầu: >130.000 ca/năm | Giảm BSI Mỹ: 74% (2005-2016) | Đích Vanco: AUC/MIC 400-600 | Rút ngắn PCR: 1.7 ngày | Kháng Daptomycin BSI: 39% nếu không kiểm soát nguồn | Giảm lây REDUCE-MRSA: HR 0.63',
     summary: 'Bài tổng quan đỉnh cao của Nature Reviews Disease Primers 2026 về MRSA: Dịch tễ học toàn cầu, cơ chế đề kháng PBP2a và các biến thể BORSA/MOD-SA/OS-MRSA, động học cư trú tại hốc mũi và ruột, cơ chế né tránh miễn dịch Trojan Horse trong bạch cầu, phác đồ điều trị kháng sinh tối ưu và chiến lược kiểm soát nhiễm khuẩn.',
     detailedConclusion: 'Chẩn đoán nhanh bằng Real-time PCR và đĩa Cefoxitin; cá thể hóa kháng sinh theo hội chứng (ưu tiên Linezolid cho viêm phổi, Daptomycin cho nhiễm khuẩn huyết, Vancomycin TDM AUC/MIC 400-600); bắt buộc rạch dẫn lưu áp-xe và rút bỏ catheter nhiễm trùng.'
+  },
+  {
+    id: '2021-acg-ugib',
+    title: 'ACG 2021: Hướng dẫn Lâm sàng về Xuất huyết Tiêu hóa trên và Loét Dạ dày - Tá tràng',
+    titleEn: 'ACG Clinical Guideline: Upper Gastrointestinal and Ulcer Bleeding (2021)',
+    sourceType: 'intl-guideline',
+    specialty: 'gi',
+    design: 'guideline',
+    impact: 'practice-changing',
+    year: 2021,
+    organization: 'American College of Gastroenterology (ACG)',
+    journal: 'Gastroenterology',
+    file: '2021-acg-ugib.html',
+    conditionKey: 'gerd-peptic',
+    icd10: ['K25', 'K26', 'K27', 'K92.0', 'K92.2'],
+    intervention: 'Thang điểm Glasgow-Blatchford (GBS 0-1 xuất viện ngoại trú), Truyền máu giới hạn Hb < 7 g/dL, Erythromycin 250mg IV trước soi 30-90p, Nội soi trong 24h, Can thiệp cầm máu theo Forrest (Nhiệt/Clip/Cồn, Cấm Epinephrine đơn trị), Phác đồ PPI liều cao 72h + PPI liều gấp đôi đến ngày 14, Ưu tiên soi lần 2 và nút mạch TAE',
+    primaryEndpoint: 'Kiểm soát cầm máu ban đầu, giảm tỷ lệ tái xuất huyết 30 ngày, giảm nhu cầu phẫu thuật cấp cứu và giảm tỷ lệ tử vong',
+    keyResults: 'HBAR: Độ nhạy GBS=1: 99% | Giảm tử vong truyền máu Hb<7: 44% (p=0.02) | Giảm soi lại do Erythro: OR 0.51 | Cầm máu nhiệt vs Ko can thiệp: RR 0.44 | Epinephrine phối hợp vs Đơn trị: RR 0.34 | Giảm biến chứng TAE vs Mổ hở: OR 0.45',
+    summary: 'Hướng dẫn thực hành y học chứng cứ (GRADE) toàn diện của ACG về xử trí xuất huyết tiêu hóa trên cấp tính: Phân tầng nguy cơ cực thấp GBS 0-1, chiến lược truyền máu giới hạn Hb < 7 g/dL, thời điểm nội soi trong 24h, can thiệp cầm máu theo hình thái đáy loét Forrest và tối ưu hóa phác đồ PPI liều cao 72h.',
+    detailedConclusion: 'Áp dụng GBS 0-1 để cho xuất viện an toàn; chỉ truyền máu khi Hb < 7 g/dL; truyền Erythromycin 250mg IV trước soi; nội soi can thiệp loét Forrest Ia, Ib, IIa bằng nhiệt/clip (cấm epinephrine đơn trị); duy trì PPI liều cao 72h tiếp nối liều gấp đôi đường uống đến ngày 14; ưu tiên nội soi lần 2 và nút mạch TAE khi tái xuất huyết/thất bại.'
   }
 ];
 

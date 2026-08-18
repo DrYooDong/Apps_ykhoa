@@ -123,5 +123,3 @@ _Ghi chú_: Biến chứng nặng bao gồm suy hô hấp, nhồi máu cơ tim, 
 1. Laine L, Barkun AN, Saltzman JR, Martel M, Leontiadis GI. ACG Clinical Guideline: Upper Gastrointestinal and Ulcer Bleeding. _Am J Gastroenterol_. 2021;116(5):899-917. doi:10.14309/ajg.0000000000001245.
 
 ---
-
-📋 **Nudge**: Tôi có thể giúp bạn chuyển đổi toàn bộ nội dung hướng dẫn y khoa này sang một **Bài Quiz trắc nghiệm chuẩn hóa** hoặc tạo một **Sơ đồ tư duy (Mind Map)** hệ thống hóa toàn bộ các kỹ thuật nội soi can thiệp cầm máu để hỗ trợ tối đa việc ôn tập lâm sàng của bạn. Bạn có muốn thực hiện không?

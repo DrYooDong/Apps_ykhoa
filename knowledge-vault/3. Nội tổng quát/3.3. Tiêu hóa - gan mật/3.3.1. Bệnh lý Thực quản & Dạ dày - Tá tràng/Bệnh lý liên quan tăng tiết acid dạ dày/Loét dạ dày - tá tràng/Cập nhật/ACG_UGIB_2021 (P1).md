@@ -49,6 +49,7 @@ Mục tiêu chính của việc sử dụng các công cụ phân tầng nguy c�
 #### Bảng mô tả cơ chế 2: Bảng phân tích độ nhạy và độ đặc hiệu của ngưỡng GBS = 1 trên nhóm 250 bệnh nhân giả định
 
 - **Tên hình**: **Figure 1. Two-by-two table to determine sensitivity and specificity for hypothetical population of 250 patients presenting with upper gastrointestinal bleeding using Glasgow-Blatchford score cutoff of 1**
+	![[Pasted image 20260818190656.png]]
 - **Thuộc tài liệu**: **acg_clinical_guideline__upper_gastrointestinal_and14.pdf** trong Notebook.
 - **Mô tả dưới hình**: Sơ đồ 2x2 minh họa cách tính toán độ nhạy và độ đặc hiệu cho nhóm nguy cơ rất thấp dựa trên ngưỡng cắt GBS = 1:
     - **Nhóm cần can thiệp lâm sàng hoặc tử vong (N = 100)**: Có 99 người có điểm GBS > 1 (**Dương tính thật**) và chỉ có 1 người có điểm GBS = 0-1 (**Âm tính giả**). **Độ nhạy (Sensitivity) đạt 99%** (99/100).
@@ -163,5 +164,3 @@ Nội soi sớm giúp chẩn đoán và can thiệp kịp thời, tuy nhiên th�
 1. Laine L, Barkun AN, Saltzman JR, Martel M, Leontiadis GI. ACG Clinical Guideline: Upper Gastrointestinal and Ulcer Bleeding. _Am J Gastroenterol_. 2021;116(5):899-917. doi:10.14309/ajg.0000000000001245.
 
 ---
-
-🩺 **Nudge**: Tôi có thể tiếp tục tóm tắt **Phần 2** của hướng dẫn ACG 2021 này, tập trung chi tiết vào các kỹ thuật can thiệp nội soi cầm máu cụ thể (như đầu dò nhiệt, clip cơ học, keo xịt sinh học TC-325, epinephrine phối hợp) và phác đồ sử dụng PPI liều cao tối ưu sau nội soi. Bạn có muốn tiếp tục không?
