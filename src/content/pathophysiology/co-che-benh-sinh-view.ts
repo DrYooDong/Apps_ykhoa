@@ -196,7 +196,7 @@ export function renderCoCheBenhSinhView(): string {
                 <a href="#patho-truyen-nhiem-section" class="part-nav-item p3" data-target="patho-truyen-nhiem-section">
                   <span class="part-icon"><i class="fa-solid fa-virus-covid"></i></span>
                   <span class="part-text">Truyền nhiễm & CC</span>
-                  <span class="part-count-badge">7</span>
+                  <span class="part-count-badge">8</span>
                 </a>
               </li>
               <li>
