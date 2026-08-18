@@ -591,8 +591,27 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
         border: 1px solid var(--color-border, #e2e8f0);
         border-radius: 14px;
         padding: 1.25rem;
-        margin: 1.75rem 0;
+        margin: 1.75rem auto;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      #physio-article-mount .physio-figure img,
+      #physio-article-mount .physio-img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      #physio-article-mount .physio-figure figcaption {
+        text-align: center;
+        margin-top: 0.75rem;
+        max-width: 800px;
       }
 
       #physio-article-mount .image-title {

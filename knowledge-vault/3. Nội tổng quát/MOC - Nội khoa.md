@@ -300,14 +300,14 @@ updated: "2026-08-11"
 - [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3. Tổng quan & Định hướng Tiêu hóa - Gan mật.md|3.3. Tổng quan & Định hướng Tiêu hóa - Gan mật]]
 
 ### 📁 3.3. Tiêu hóa - [[Gan]] mật\3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng\Bệnh lý liên quan tăng tiết acid dạ dày\Loét dạ dày - tá tràng
-- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/1. Tổng quan & Dịch tễ học.md|1. Tổng quan & Dịch tễ học]]
-- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/2. Cơ chế bệnh sinh.md|2. Cơ chế bệnh sinh]]
-- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/3. Lâm sàng.md|3. Lâm sàng]]
-- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/4. Cận lâm sàng.md|4. Cận lâm sàng]]
-- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/5. Chẩn đoán.md|5. Chẩn đoán]]
-- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/6. Điều trị chung.md|6. Điều trị chung]]
-- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/7. Biến chứng.md|7. Biến chứng]]
-- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/8. Tiên lượng.md|8. Tiên lượng]]
+- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Cơ sở/1. Tổng quan & Dịch tễ học|1]]
+- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Cơ sở/2.1. Sinh lý bệnh|2.1]]
+- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Cơ sở/3. Lâm sàng|3]]
+- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Cơ sở/4. Cận lâm sàng|4]]
+- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Cơ sở/5. Chẩn đoán|5]]
+- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Cơ sở/6. Điều trị chung|6]]
+- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Cơ sở/7. Biến chứng|7]]
+- [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Cơ sở/8. Tiên lượng|8]]
 - [[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng/Bệnh lý liên quan tăng tiết acid dạ dày/Loét dạ dày - tá tràng/Loét dạ dày - tá tràng.md|Loét dạ dày - tá tràng]]
 
 ### 📁 3.3. Tiêu hóa - gan mật\3.3.1. Bệnh lý Thực quản & Dạ dày - Tá tràng\Bệnh lý liên quan tăng tiết acid dạ dày\Trào ngược dạ dày - thực quản (GERD)

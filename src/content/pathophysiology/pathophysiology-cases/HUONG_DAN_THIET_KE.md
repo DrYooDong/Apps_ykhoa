@@ -289,6 +289,20 @@ slb-ccbs-[mã-bệnh-rút-gọn].html
 </div>
 ```
 
+### 4.11 Hình ảnh Minh họa Đính kèm & Lightbox (`.physio-figure`)
+```html
+<!-- Bắt buộc căn giữa hoàn toàn khung hình và ảnh minh họa -->
+<figure class="physio-figure" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin: 1.75rem auto;">
+    <img src="../images/[slug]/[ten-anh].png" 
+         alt="Mô tả hình ảnh y khoa" 
+         class="physio-img lightbox-trigger"
+         style="display: block; margin: 0 auto; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--color-border, #e2e8f0); box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+    <figcaption style="margin-top: 0.75rem; font-size: 0.88rem; color: var(--color-text-muted, #64748b); font-style: italic; text-align: center; max-width: 800px;">
+        <strong>Hình X:</strong> Chú thích nội dung hình ảnh y khoa chi tiết.
+    </figcaption>
+</figure>
+```
+
 ---
 
 ## ⚡ 5. Cơ chế Tự động hóa với `toc.js`

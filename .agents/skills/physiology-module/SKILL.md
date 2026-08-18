@@ -19,6 +19,10 @@ description: >
 4. **Chuẩn Render Công Thức & Minh Họa**: Dùng định dạng toán $...$ hoặc `$ ... $` cho các biến số sinh lý (áp suất, nồng độ ion), dùng `<figure class="physio-figure">` cho ảnh có Lightbox tự động.
 5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` sau khi tạo/sửa.
 6. **Chuẩn Sơ Đồ Cơ Chế / Lưu Đồ SVG (Editorial SVG Standard)**: Khi vẽ sơ đồ phản hồi sinh lý (Feedback loop), cơ chế bệnh sinh hoặc lưu đồ chẩn đoán bằng SVG thuần: Tuyệt đối **CẤM** dùng các thẻ HTML (`<strong>`, `<span>`, `<br>`, `<b>`) bên trong thẻ `<text>` của SVG. Để in đậm trong SVG, bắt buộc dùng `<tspan font-weight="700">` hoặc `font-weight="700"`. Dùng `var(--color-...)` hoặc CSS tokens để tự động tương thích 100% với Dark Mode. ViewBox SVG phải luôn có đủ chiều rộng và chiều cao để tránh tràn node.
+7. **Xử Lý & Bảo Toàn Hình Ảnh Từ Tài Liệu Markdown / Knowledge Vault**: Khi biên soạn bài học từ các tệp `.md` nguồn (trong `knowledge-vault` hoặc các ghi chú), nếu có hình ảnh đính kèm (ví dụ: `![[Pasted image ...]]` hoặc `![alt](path)`), **BẮT BUỘC** phải:
+   - Sao chép tệp ảnh vào đúng thư mục tài nguyên của phân hệ (ví dụ: `src/content/pathophysiology/images/[slug]/` hoặc `images/PhanX/`), đổi tên tệp sang tiếng Anh/Việt không dấu có ý nghĩa rõ ràng (kebab-case, ví dụ: `hp-pathogenesis-nobel.png`, `gastrinoma-triangle.png`).
+   - Đặt hình ảnh vào đúng vị trí tương ứng trong bài học HTML bằng thẻ chuẩn `<figure class="physio-figure">` chứa `<img class="physio-img lightbox-trigger">` và `<figcaption>`.
+   - Tuyệt đối không bỏ sót hình ảnh đính kèm từ tài liệu Markdown nguồn.
 
 ---
 
