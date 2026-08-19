@@ -13,29 +13,110 @@ export function renderCirrhosisPanel(isActive: boolean): string {
   return `
     <div class="js-studio-panel" id="panelStudioCirrhosis" style="display:${isActive ? 'block' : 'none'};">
       
-      <!-- Quick Case Presets Bar (20 Curated Research Presets) -->
-      <div class="dsp-card" style="margin-bottom:1.25rem; padding:1rem 1.25rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
-          <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; display:flex; align-items:center; gap:0.4rem;">
-            <i class="fa-solid fa-disease" style="color:#b45309;"></i> Kho 20 Ca Nghiên Cứu Gan Mật, Xơ Gan Mất Bù &amp; Tăng Áp Lực Tĩnh Mạch Cửa Mẫu:
+      <!-- Quick Case Presets Bar (20 Curated Research Presets - Redesigned Clinical Vault) -->
+      <div class="dsp-case-vault" id="cirrhosisCaseVault">
+        <!-- Vault Header Toolbar -->
+        <div class="dsp-case-vault-header">
+          <div class="dsp-case-vault-title">
+            <i class="fa-solid fa-disease" style="color:#b45309; font-size:1.15rem;"></i>
+            <span>Kho 20 Ca Nghiên Cứu Gan Mật, Xơ Gan Mất Bù &amp; Tăng Áp Lực Tĩnh Mạch Cửa Mẫu</span>
+            <span class="dsp-badge" style="background:rgba(180,83,9,0.12); color:#b45309; border:1px solid rgba(180,83,9,0.25); font-size:11px;">20 Ca Chuẩn EBM</span>
           </div>
-          <!-- Category Filter Pills -->
-          <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
-            <button type="button" class="dsp-btn dsp-btn-sm js-cirrhosis-filter-btn is-active" data-filter="all" style="font-size:11px; padding:3px 10px; border-radius:12px;">Tất cả (20)</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-cirrhosis-filter-btn" data-filter="decompensated_aclf" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#dc2626;">●</span> Mất Bù &amp; ACLF</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-cirrhosis-filter-btn" data-filter="variceal_bleeding" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#ef4444;">●</span> Vỡ Giãn TMTQ (Baveno VII)</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-cirrhosis-filter-btn" data-filter="ascites_sbp_hrs" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#ea580c;">●</span> Báng Bụng, SBP &amp; HRS</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-cirrhosis-filter-btn" data-filter="encephalopathy_metabolic" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#7c3aed;">●</span> Hôn Mê Gan (HE)</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-cirrhosis-filter-btn" data-filter="fibrosis_screening" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#10b981;">●</span> Sàng Lọc FIB-4 &amp; ALBI</button>
+
+          <div class="dsp-case-vault-toolbar">
+            <!-- Quick Search Input -->
+            <div class="dsp-case-search-wrap">
+              <i class="fa-solid fa-magnifying-glass dsp-case-search-icon"></i>
+              <input type="text" id="cirrhosisCaseSearchInput" class="dsp-case-search-input" placeholder="Tìm theo tên ca, MELD, ACLF, Vỡ giãn TMTQ, SBP, Hôn mê gan..." />
+            </div>
+
+            <!-- View Switcher & Collapse -->
+            <div style="display:flex; gap:4px; background:var(--color-bg); padding:2px; border-radius:8px; border:1px solid var(--color-border);">
+              <button type="button" class="dsp-btn dsp-btn-sm js-cirrhosis-view-toggle is-active" data-view="grid" title="Xem dạng lưới thẻ" style="padding:3px 8px; font-size:11px; border-radius:6px; border:none;">
+                <i class="fa-solid fa-table-cells-large"></i> Lưới Thẻ
+              </button>
+              <button type="button" class="dsp-btn dsp-btn-sm js-cirrhosis-view-toggle" data-view="chips" title="Xem dạng thu gọn" style="padding:3px 8px; font-size:11px; border-radius:6px; border:none; background:transparent;">
+                <i class="fa-solid fa-list-ul"></i> Thu Gọn
+              </button>
+            </div>
+
+            <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnToggleCirrhosisVaultCollapse" title="Thu gọn / Mở rộng kho ca" style="padding:4px 8px; font-size:11px;">
+              <i class="fa-solid fa-chevron-up" id="iconCirrhosisVaultCollapse"></i>
+            </button>
           </div>
         </div>
-        <div id="cirrhosisPresetsContainer" style="display:flex; flex-wrap:wrap; gap:0.45rem;">
-          ${CIRRHOSIS_PRESETS.map(p => `
-            <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cirrhosis-preset-btn" data-preset-id="${p.id}" data-category="${p.category}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg); border-color:var(--color-border); display:inline-flex; align-items:center; gap:6px;">
-              <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; flex-shrink:0;"></span>
-              <strong>${escapeHtml(p.name)}</strong>
-            </button>
-          `).join('')}
+
+        <!-- Vault Content Body -->
+        <div id="cirrhosisVaultBody">
+          <!-- Category Filter Pills -->
+          <div class="dsp-case-filters-bar">
+            <button type="button" class="dsp-case-filter-pill js-cirrhosis-filter-btn is-active" data-filter="all">Tất cả (20)</button>
+            <button type="button" class="dsp-case-filter-pill js-cirrhosis-filter-btn" data-filter="decompensated_aclf"><span style="color:#dc2626;">●</span> Mất Bù &amp; ACLF</button>
+            <button type="button" class="dsp-case-filter-pill js-cirrhosis-filter-btn" data-filter="variceal_bleeding"><span style="color:#ef4444;">●</span> Vỡ Giãn TMTQ (Baveno VII)</button>
+            <button type="button" class="dsp-case-filter-pill js-cirrhosis-filter-btn" data-filter="ascites_sbp_hrs"><span style="color:#ea580c;">●</span> Báng Bụng, SBP &amp; HRS</button>
+            <button type="button" class="dsp-case-filter-pill js-cirrhosis-filter-btn" data-filter="encephalopathy_metabolic"><span style="color:#7c3aed;">●</span> Hôn Mê Gan (HE)</button>
+            <button type="button" class="dsp-case-filter-pill js-cirrhosis-filter-btn" data-filter="fibrosis_screening"><span style="color:#10b981;">●</span> Sàng Lọc FIB-4 &amp; ALBI</button>
+          </div>
+
+          <!-- Cards Grid View -->
+          <div id="cirrhosisPresetsGrid" class="dsp-case-grid">
+            ${CIRRHOSIS_PRESETS.map((p, idx) => {
+              const v = p.values;
+              return `
+                <div class="dsp-case-card js-cirrhosis-preset-card js-cirrhosis-preset-btn" data-preset-id="${p.id}" data-category="${p.category}" data-search="${escapeHtml((p.name + ' ' + p.description + ' ' + p.badge).toLowerCase())}">
+                  <div>
+                    <div class="dsp-case-card-header">
+                      <span class="dsp-case-idx">#${String(idx + 1).padStart(2, '0')}</span>
+                      <span class="dsp-case-badge" style="background:${p.badgeColor}18; color:${p.badgeColor}; border:1px solid ${p.badgeColor}40;">
+                        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:${p.badgeColor};"></span>
+                        ${escapeHtml(p.badge)}
+                      </span>
+                    </div>
+
+                    <div class="dsp-case-name">${escapeHtml(p.name)}</div>
+
+                    <div class="dsp-case-metrics">
+                      <span class="dsp-case-metric-tag">
+                        Bilirubin <strong>${v.bilirubinUmol} µmol/L</strong>
+                      </span>
+                      <span class="dsp-case-metric-tag">
+                        INR <strong>${v.inr}</strong>
+                      </span>
+                      <span class="dsp-case-metric-tag">
+                        Creatinine <strong>${v.serumCreatinineUmol}</strong>
+                      </span>
+                      <span class="dsp-case-metric-tag" style="color:#0284c7;">
+                        Na+ <strong>${v.serumNaMmol}</strong>
+                      </span>
+                      ${v.ascites !== 'none' ? `<span class="dsp-case-metric-tag" style="color:#ea580c;">Báng: ${v.ascites === 'moderate_severe' ? 'Nặng' : 'Nhẹ'}</span>` : ''}
+                      ${v.encephalopathy !== 'none' ? `<span class="dsp-case-metric-tag" style="color:#7c3aed;">HE Độ ${v.encephalopathy === 'grade_3_4' ? '3-4' : '1-2'}</span>` : ''}
+                    </div>
+
+                    <div class="dsp-case-desc">${escapeHtml(p.description)}</div>
+                  </div>
+
+                  <div class="dsp-case-card-footer">
+                    <span style="font-size:0.7rem; color:var(--color-text-muted);">
+                      <i class="fa-solid fa-user"></i> ${v.age}t • ${v.gender === 'male' ? 'Nam' : 'Nữ'} • ${v.weightKg}kg
+                    </span>
+                    <button type="button" class="dsp-case-load-btn">
+                      <span>Nạp Ca Này</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Compact Chips View (Hidden by default) -->
+          <div id="cirrhosisPresetsChips" style="display:none; flex-wrap:wrap; gap:0.45rem; padding-top:0.25rem;">
+            ${CIRRHOSIS_PRESETS.map(p => `
+              <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cirrhosis-preset-btn js-cirrhosis-preset-chip" data-preset-id="${p.id}" data-category="${p.category}" data-search="${escapeHtml((p.name + ' ' + p.description).toLowerCase())}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg); border-color:var(--color-border); display:inline-flex; align-items:center; gap:6px;">
+                <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; flex-shrink:0;"></span>
+                <strong>${escapeHtml(p.name)}</strong>
+              </button>
+            `).join('')}
+          </div>
         </div>
       </div>
 
@@ -428,22 +509,84 @@ export function mountCirrhosisController(bindActionBtns: (container: HTMLElement
     });
   });
 
-  // 2. Category filter for 20 Presets
+  // 2. Real-time Search & Category Filter for 20 Presets
+  const cirrhosisSearchInput = document.getElementById('cirrhosisCaseSearchInput') as HTMLInputElement | null;
   const filterBtns = document.querySelectorAll<HTMLElement>('.js-cirrhosis-filter-btn');
+  let currentCirrhosisCatFilter = 'all';
+
+  const applyCirrhosisFiltering = () => {
+    const query = (cirrhosisSearchInput?.value || '').trim().toLowerCase();
+    const presetItems = document.querySelectorAll<HTMLElement>('.js-cirrhosis-preset-btn');
+
+    presetItems.forEach(item => {
+      const cat = item.getAttribute('data-category');
+      const searchStr = item.getAttribute('data-search') || '';
+
+      const matchesCat = currentCirrhosisCatFilter === 'all' || cat === currentCirrhosisCatFilter;
+      const matchesQuery = !query || searchStr.includes(query);
+
+      if (matchesCat && matchesQuery) {
+        if (item.classList.contains('js-cirrhosis-preset-card')) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'inline-flex';
+        }
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  };
+
+  if (cirrhosisSearchInput) {
+    cirrhosisSearchInput.addEventListener('input', applyCirrhosisFiltering);
+  }
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('is-active'));
       btn.classList.add('is-active');
-      const cat = btn.getAttribute('data-filter');
-      const presetBtns = document.querySelectorAll<HTMLElement>('.js-cirrhosis-preset-btn');
-      presetBtns.forEach(pBtn => {
-        if (cat === 'all' || pBtn.getAttribute('data-category') === cat) {
-          pBtn.style.display = 'inline-flex';
-        } else {
-          pBtn.style.display = 'none';
-        }
-      });
+      currentCirrhosisCatFilter = btn.getAttribute('data-filter') || 'all';
+      applyCirrhosisFiltering();
     });
+  });
+
+  // View Switcher (Grid vs Chips)
+  const viewToggleBtns = document.querySelectorAll<HTMLElement>('.js-cirrhosis-view-toggle');
+  const gridView = document.getElementById('cirrhosisPresetsGrid');
+  const chipsView = document.getElementById('cirrhosisPresetsChips');
+
+  viewToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewToggleBtns.forEach(b => {
+        b.classList.remove('is-active');
+        b.style.background = 'transparent';
+      });
+      btn.classList.add('is-active');
+      btn.style.background = 'var(--color-surface)';
+
+      const mode = btn.getAttribute('data-view');
+      if (mode === 'grid') {
+        if (gridView) gridView.style.display = 'grid';
+        if (chipsView) chipsView.style.display = 'none';
+      } else {
+        if (gridView) gridView.style.display = 'none';
+        if (chipsView) chipsView.style.display = 'flex';
+      }
+    });
+  });
+
+  // Collapse / Expand Vault Body
+  const btnToggleCollapse = document.getElementById('btnToggleCirrhosisVaultCollapse');
+  const vaultBody = document.getElementById('cirrhosisVaultBody');
+  const iconCollapse = document.getElementById('iconCirrhosisVaultCollapse');
+
+  btnToggleCollapse?.addEventListener('click', () => {
+    if (!vaultBody) return;
+    const isHidden = vaultBody.style.display === 'none';
+    vaultBody.style.display = isHidden ? 'block' : 'none';
+    if (iconCollapse) {
+      iconCollapse.className = isHidden ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down';
+    }
   });
 
   // 3. Preset Loading Handler
@@ -452,6 +595,14 @@ export function mountCirrhosisController(bindActionBtns: (container: HTMLElement
       const id = btn.getAttribute('data-preset-id');
       const preset = CIRRHOSIS_PRESETS.find(p => p.id === id);
       if (preset) {
+        // Highlight active card
+        document.querySelectorAll<HTMLElement>('.js-cirrhosis-preset-btn').forEach(b => {
+          b.classList.remove('is-active');
+          if (b.getAttribute('data-preset-id') === id) {
+            b.classList.add('is-active');
+          }
+        });
+
         const v = preset.values;
         if (v.age) (document.getElementById('cirrhosisAge') as HTMLInputElement).value = String(v.age);
         if (v.gender) (document.getElementById('cirrhosisGender') as HTMLSelectElement).value = v.gender;

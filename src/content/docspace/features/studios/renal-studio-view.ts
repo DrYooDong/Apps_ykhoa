@@ -13,29 +13,103 @@ export function renderRenalPanel(isActive: boolean): string {
   return `
     <div class="js-studio-panel" id="panelStudioRenal" style="display:${isActive ? 'block' : 'none'};">
       
-      <!-- Quick Case Presets Bar (20 Curated Research Presets) -->
-      <div class="dsp-card" style="margin-bottom:1.25rem; padding:1rem 1.25rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
-          <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; display:flex; align-items:center; gap:0.4rem;">
-            <i class="fa-solid fa-dna" style="color:#7c3aed;"></i> Kho 20 Ca Nghiên Cứu Thận Học &amp; Dược Lý Lâm Sàng Mẫu:
+      <!-- Quick Case Presets Bar (20 Curated Research Presets - Redesigned Clinical Vault) -->
+      <div class="dsp-case-vault" id="renalCaseVault">
+        <!-- Vault Header Toolbar -->
+        <div class="dsp-case-vault-header">
+          <div class="dsp-case-vault-title">
+            <i class="fa-solid fa-dna" style="color:#7c3aed; font-size:1.15rem;"></i>
+            <span>Kho 20 Ca Nghiên Cứu Thận Học &amp; Dược Lý Lâm Sàng Mẫu</span>
+            <span class="dsp-badge" style="background:rgba(124,58,237,0.12); color:#7c3aed; border:1px solid rgba(124,58,237,0.25); font-size:11px;">20 Ca Chuẩn EBM</span>
           </div>
-          <!-- Category Filter Pills -->
-          <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
-            <button type="button" class="dsp-btn dsp-btn-sm js-renal-filter-btn is-active" data-filter="all" style="font-size:11px; padding:3px 10px; border-radius:12px;">Tất cả (20)</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-renal-filter-btn" data-filter="aki" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#dc2626;">●</span> AKI Cấp</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-renal-filter-btn" data-filter="ckd" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#f59e0b;">●</span> CKD Mạn</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-renal-filter-btn" data-filter="arc" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#7c3aed;">●</span> Tăng Thanh Thải ARC⚡</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-renal-filter-btn" data-filter="cardiorenal_hrs" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#0284c7;">●</span> Tim Thận &amp; Gan Thận</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-renal-filter-btn" data-filter="toxic_cin" style="font-size:11px; padding:3px 10px; border-radius:12px;"><span style="color:#ea580c;">●</span> Cản Quang (CIN) &amp; Độc Chất</button>
+
+          <div class="dsp-case-vault-toolbar">
+            <!-- Quick Search Input -->
+            <div class="dsp-case-search-wrap">
+              <i class="fa-solid fa-magnifying-glass dsp-case-search-icon"></i>
+              <input type="text" id="renalCaseSearchInput" class="dsp-case-search-input" placeholder="Tìm theo tên ca, AKI, CKD, ARC, Mehran, Vancomycin, FENa..." />
+            </div>
+
+            <!-- View Switcher & Collapse -->
+            <div style="display:flex; gap:4px; background:var(--color-bg); padding:2px; border-radius:8px; border:1px solid var(--color-border);">
+              <button type="button" class="dsp-btn dsp-btn-sm js-renal-view-toggle is-active" data-view="grid" title="Xem dạng lưới thẻ" style="padding:3px 8px; font-size:11px; border-radius:6px; border:none;">
+                <i class="fa-solid fa-table-cells-large"></i> Lưới Thẻ
+              </button>
+              <button type="button" class="dsp-btn dsp-btn-sm js-renal-view-toggle" data-view="chips" title="Xem dạng thu gọn" style="padding:3px 8px; font-size:11px; border-radius:6px; border:none; background:transparent;">
+                <i class="fa-solid fa-list-ul"></i> Thu Gọn
+              </button>
+            </div>
+
+            <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnToggleRenalVaultCollapse" title="Thu gọn / Mở rộng kho ca" style="padding:4px 8px; font-size:11px;">
+              <i class="fa-solid fa-chevron-up" id="iconRenalVaultCollapse"></i>
+            </button>
           </div>
         </div>
-        <div id="renalPresetsContainer" style="display:flex; flex-wrap:wrap; gap:0.45rem;">
-          ${RENAL_PRESETS.map(p => `
-            <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-renal-preset-btn" data-preset-id="${p.id}" data-category="${p.category}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg); border-color:var(--color-border); display:inline-flex; align-items:center; gap:6px;">
-              <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; flex-shrink:0;"></span>
-              <strong>${escapeHtml(p.name)}</strong>
-            </button>
-          `).join('')}
+
+        <!-- Vault Content Body -->
+        <div id="renalVaultBody">
+          <!-- Category Filter Pills -->
+          <div class="dsp-case-filters-bar">
+            <button type="button" class="dsp-case-filter-pill js-renal-filter-btn is-active" data-filter="all">Tất cả (20)</button>
+            <button type="button" class="dsp-case-filter-pill js-renal-filter-btn" data-filter="aki"><span style="color:#dc2626;">●</span> AKI Cấp</button>
+            <button type="button" class="dsp-case-filter-pill js-renal-filter-btn" data-filter="ckd"><span style="color:#f59e0b;">●</span> CKD Mạn</button>
+            <button type="button" class="dsp-case-filter-pill js-renal-filter-btn" data-filter="arc"><span style="color:#7c3aed;">●</span> Tăng Thanh Thải ARC⚡</button>
+            <button type="button" class="dsp-case-filter-pill js-renal-filter-btn" data-filter="cardiorenal_hrs"><span style="color:#0284c7;">●</span> Tim Thận &amp; Gan Thận</button>
+            <button type="button" class="dsp-case-filter-pill js-renal-filter-btn" data-filter="toxic_cin"><span style="color:#ea580c;">●</span> Cản Quang (CIN) &amp; Độc Chất</button>
+          </div>
+
+          <!-- Cards Grid View -->
+          <div id="renalPresetsGrid" class="dsp-case-grid">
+            ${RENAL_PRESETS.map((p, idx) => {
+              const v = p.values;
+              return `
+                <div class="dsp-case-card js-renal-preset-card js-renal-preset-btn" data-preset-id="${p.id}" data-category="${p.category}" data-search="${escapeHtml((p.name + ' ' + p.description + ' ' + p.badge).toLowerCase())}">
+                  <div>
+                    <div class="dsp-case-card-header">
+                      <span class="dsp-case-idx">#${String(idx + 1).padStart(2, '0')}</span>
+                      <span class="dsp-case-badge" style="background:${p.badgeColor}18; color:${p.badgeColor}; border:1px solid ${p.badgeColor}40;">
+                        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:${p.badgeColor};"></span>
+                        ${escapeHtml(p.badge)}
+                      </span>
+                    </div>
+
+                    <div class="dsp-case-name">${escapeHtml(p.name)}</div>
+
+                    <div class="dsp-case-metrics">
+                      <span class="dsp-case-metric-tag">
+                        Creatinine <strong>${v.serumCreatinineUmol} µmol/L</strong>
+                      </span>
+                      ${v.serumCystatinCMgL ? `<span class="dsp-case-metric-tag">CysC <strong>${v.serumCystatinCMgL}</strong></span>` : ''}
+                      ${v.baselineCreatinineUmol ? `<span class="dsp-case-metric-tag">Nền <strong>${v.baselineCreatinineUmol}</strong></span>` : ''}
+                      ${v.isKineticGfrEnabled ? `<span class="dsp-case-metric-tag" style="color:#dc2626;">Kinetic GFR</span>` : ''}
+                      ${v.isVancoPkEnabled ? `<span class="dsp-case-metric-tag" style="color:#7c3aed;">Vancomycin PK</span>` : ''}
+                    </div>
+
+                    <div class="dsp-case-desc">${escapeHtml(p.description)}</div>
+                  </div>
+
+                  <div class="dsp-case-card-footer">
+                    <span style="font-size:0.7rem; color:var(--color-text-muted);">
+                      <i class="fa-solid fa-user"></i> ${v.age}t • ${v.gender === 'male' ? 'Nam' : 'Nữ'} • ${v.weightKg}kg
+                    </span>
+                    <button type="button" class="dsp-case-load-btn">
+                      <span>Nạp Ca Này</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Compact Chips View (Hidden by default) -->
+          <div id="renalPresetsChips" style="display:none; flex-wrap:wrap; gap:0.45rem; padding-top:0.25rem;">
+            ${RENAL_PRESETS.map(p => `
+              <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-renal-preset-btn js-renal-preset-chip" data-preset-id="${p.id}" data-category="${p.category}" data-search="${escapeHtml((p.name + ' ' + p.description).toLowerCase())}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg); border-color:var(--color-border); display:inline-flex; align-items:center; gap:6px;">
+                <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; flex-shrink:0;"></span>
+                <strong>${escapeHtml(p.name)}</strong>
+              </button>
+            `).join('')}
+          </div>
         </div>
       </div>
 
@@ -466,22 +540,84 @@ export function mountRenalController(bindActionBtns: (container: HTMLElement) =>
     });
   });
 
-  // 2. Category filter for 20 Presets
+  // 2. Real-time Search & Category Filter for 20 Presets
+  const renalSearchInput = document.getElementById('renalCaseSearchInput') as HTMLInputElement | null;
   const filterBtns = document.querySelectorAll<HTMLElement>('.js-renal-filter-btn');
+  let currentRenalCatFilter = 'all';
+
+  const applyRenalFiltering = () => {
+    const query = (renalSearchInput?.value || '').trim().toLowerCase();
+    const presetItems = document.querySelectorAll<HTMLElement>('.js-renal-preset-btn');
+
+    presetItems.forEach(item => {
+      const cat = item.getAttribute('data-category');
+      const searchStr = item.getAttribute('data-search') || '';
+
+      const matchesCat = currentRenalCatFilter === 'all' || cat === currentRenalCatFilter;
+      const matchesQuery = !query || searchStr.includes(query);
+
+      if (matchesCat && matchesQuery) {
+        if (item.classList.contains('js-renal-preset-card')) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'inline-flex';
+        }
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  };
+
+  if (renalSearchInput) {
+    renalSearchInput.addEventListener('input', applyRenalFiltering);
+  }
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('is-active'));
       btn.classList.add('is-active');
-      const cat = btn.getAttribute('data-filter');
-      const presetBtns = document.querySelectorAll<HTMLElement>('.js-renal-preset-btn');
-      presetBtns.forEach(pBtn => {
-        if (cat === 'all' || pBtn.getAttribute('data-category') === cat) {
-          pBtn.style.display = 'inline-flex';
-        } else {
-          pBtn.style.display = 'none';
-        }
-      });
+      currentRenalCatFilter = btn.getAttribute('data-filter') || 'all';
+      applyRenalFiltering();
     });
+  });
+
+  // View Switcher (Grid vs Chips)
+  const viewToggleBtns = document.querySelectorAll<HTMLElement>('.js-renal-view-toggle');
+  const gridView = document.getElementById('renalPresetsGrid');
+  const chipsView = document.getElementById('renalPresetsChips');
+
+  viewToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewToggleBtns.forEach(b => {
+        b.classList.remove('is-active');
+        b.style.background = 'transparent';
+      });
+      btn.classList.add('is-active');
+      btn.style.background = 'var(--color-surface)';
+
+      const mode = btn.getAttribute('data-view');
+      if (mode === 'grid') {
+        if (gridView) gridView.style.display = 'grid';
+        if (chipsView) chipsView.style.display = 'none';
+      } else {
+        if (gridView) gridView.style.display = 'none';
+        if (chipsView) chipsView.style.display = 'flex';
+      }
+    });
+  });
+
+  // Collapse / Expand Vault Body
+  const btnToggleCollapse = document.getElementById('btnToggleRenalVaultCollapse');
+  const vaultBody = document.getElementById('renalVaultBody');
+  const iconCollapse = document.getElementById('iconRenalVaultCollapse');
+
+  btnToggleCollapse?.addEventListener('click', () => {
+    if (!vaultBody) return;
+    const isHidden = vaultBody.style.display === 'none';
+    vaultBody.style.display = isHidden ? 'block' : 'none';
+    if (iconCollapse) {
+      iconCollapse.className = isHidden ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down';
+    }
   });
 
   // 3. Preset Loading Handler
@@ -490,6 +626,14 @@ export function mountRenalController(bindActionBtns: (container: HTMLElement) =>
       const id = btn.getAttribute('data-preset-id');
       const preset = RENAL_PRESETS.find(p => p.id === id);
       if (preset) {
+        // Highlight active card
+        document.querySelectorAll<HTMLElement>('.js-renal-preset-btn').forEach(b => {
+          b.classList.remove('is-active');
+          if (b.getAttribute('data-preset-id') === id) {
+            b.classList.add('is-active');
+          }
+        });
+
         const v = preset.values;
         if (v.age) (document.getElementById('renalAge') as HTMLInputElement).value = String(v.age);
         if (v.gender) (document.getElementById('renalGender') as HTMLSelectElement).value = v.gender;

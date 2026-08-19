@@ -13,29 +13,103 @@ export function renderElectrolytePanel(isActive: boolean): string {
   return `
     <div class="js-studio-panel" id="panelStudioElectrolyte" style="display:${isActive ? 'block' : 'none'};">
       
-      <!-- Quick Case Presets Bar (20 Curated Research Presets) -->
-      <div class="dsp-card" style="margin-bottom:1.25rem; padding:1rem 1.25rem;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
-          <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); text-transform:uppercase; display:flex; align-items:center; gap:0.4rem;">
-            <i class="fa-solid fa-droplet" style="color:#0284c7;"></i> Kho 20 Ca Nghiên Cứu Thăng Bằng Điện Giải &amp; Hồi Sức Dịch Mẫu:
+      <!-- Quick Case Presets Bar (20 Curated Research Presets - Redesigned Clinical Vault) -->
+      <div class="dsp-case-vault" id="elyteCaseVault">
+        <!-- Vault Header Toolbar -->
+        <div class="dsp-case-vault-header">
+          <div class="dsp-case-vault-title">
+            <i class="fa-solid fa-droplet" style="color:#0284c7; font-size:1.15rem;"></i>
+            <span>Kho 20 Ca Nghiên Cứu Thăng Bằng Điện Giải &amp; Hồi Sức Dịch Mẫu</span>
+            <span class="dsp-badge" style="background:rgba(2,132,199,0.12); color:#0284c7; border:1px solid rgba(2,132,199,0.25); font-size:11px;">20 Ca Chuẩn EBM</span>
           </div>
-          <!-- Category Filter Pills -->
-          <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
-            <button type="button" class="dsp-btn dsp-btn-sm js-elyte-filter-btn is-active" data-filter="all" style="font-size:11px; padding:3px 10px; border-radius:12px;">Tất cả (20)</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-elyte-filter-btn" data-filter="hyponatremia" style="font-size:11px; padding:3px 10px; border-radius:12px;">Hạ Natri</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-elyte-filter-btn" data-filter="hypernatremia" style="font-size:11px; padding:3px 10px; border-radius:12px;">Tăng Natri (FWD)</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-elyte-filter-btn" data-filter="potassium" style="font-size:11px; padding:3px 10px; border-radius:12px;">Rối Loạn Kali</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-elyte-filter-btn" data-filter="calcium_mg_p" style="font-size:11px; padding:3px 10px; border-radius:12px;">Canxi / Magie / PO4</button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-elyte-filter-btn" data-filter="critical_resus" style="font-size:11px; padding:3px 10px; border-radius:12px;">Cấp Cứu Khẩn</button>
+
+          <div class="dsp-case-vault-toolbar">
+            <!-- Quick Search Input -->
+            <div class="dsp-case-search-wrap">
+              <i class="fa-solid fa-magnifying-glass dsp-case-search-icon"></i>
+              <input type="text" id="elyteCaseSearchInput" class="dsp-case-search-input" placeholder="Tìm theo tên ca, Hạ Natri, ODS, Tăng Kali, Canxi..." />
+            </div>
+
+            <!-- View Switcher & Collapse -->
+            <div style="display:flex; gap:4px; background:var(--color-bg); padding:2px; border-radius:8px; border:1px solid var(--color-border);">
+              <button type="button" class="dsp-btn dsp-btn-sm js-elyte-view-toggle is-active" data-view="grid" title="Xem dạng lưới thẻ" style="padding:3px 8px; font-size:11px; border-radius:6px; border:none;">
+                <i class="fa-solid fa-table-cells-large"></i> Lưới Thẻ
+              </button>
+              <button type="button" class="dsp-btn dsp-btn-sm js-elyte-view-toggle" data-view="chips" title="Xem dạng thu gọn" style="padding:3px 8px; font-size:11px; border-radius:6px; border:none; background:transparent;">
+                <i class="fa-solid fa-list-ul"></i> Thu Gọn
+              </button>
+            </div>
+
+            <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnToggleElyteVaultCollapse" title="Thu gọn / Mở rộng kho ca" style="padding:4px 8px; font-size:11px;">
+              <i class="fa-solid fa-chevron-up" id="iconElyteVaultCollapse"></i>
+            </button>
           </div>
         </div>
-        <div id="elytePresetsContainer" style="display:flex; flex-wrap:wrap; gap:0.45rem;">
-          ${ELYTE_PRESETS.map(p => `
-            <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-elyte-preset-btn" data-preset-id="${p.id}" data-category="${p.category}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg); border-color:var(--color-border); display:inline-flex; align-items:center; gap:6px;">
-              <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; flex-shrink:0;"></span>
-              <strong>${escapeHtml(p.name)}</strong>
-            </button>
-          `).join('')}
+
+        <!-- Vault Content Body -->
+        <div id="elyteVaultBody">
+          <!-- Category Filter Pills -->
+          <div class="dsp-case-filters-bar">
+            <button type="button" class="dsp-case-filter-pill js-elyte-filter-btn is-active" data-filter="all">Tất cả (20)</button>
+            <button type="button" class="dsp-case-filter-pill js-elyte-filter-btn" data-filter="hyponatremia"><span style="color:#0284c7;">●</span> Hạ Natri</button>
+            <button type="button" class="dsp-case-filter-pill js-elyte-filter-btn" data-filter="hypernatremia"><span style="color:#ea580c;">●</span> Tăng Natri (FWD)</button>
+            <button type="button" class="dsp-case-filter-pill js-elyte-filter-btn" data-filter="potassium"><span style="color:#ef4444;">●</span> Rối Loạn Kali</button>
+            <button type="button" class="dsp-case-filter-pill js-elyte-filter-btn" data-filter="calcium_mg_p"><span style="color:#8b5cf6;">●</span> Canxi / Magie / PO4</button>
+            <button type="button" class="dsp-case-filter-pill js-elyte-filter-btn" data-filter="critical_resus"><span style="color:#dc2626;">●</span> Cấp Cứu Khẩn</button>
+          </div>
+
+          <!-- Cards Grid View -->
+          <div id="elytePresetsGrid" class="dsp-case-grid">
+            ${ELYTE_PRESETS.map((p, idx) => {
+              const v = p.values;
+              return `
+                <div class="dsp-case-card js-elyte-preset-card js-elyte-preset-btn" data-preset-id="${p.id}" data-category="${p.category}" data-search="${escapeHtml((p.name + ' ' + p.description + ' ' + p.badge).toLowerCase())}">
+                  <div>
+                    <div class="dsp-case-card-header">
+                      <span class="dsp-case-idx">#${String(idx + 1).padStart(2, '0')}</span>
+                      <span class="dsp-case-badge" style="background:${p.badgeColor}18; color:${p.badgeColor}; border:1px solid ${p.badgeColor}40;">
+                        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:${p.badgeColor};"></span>
+                        ${escapeHtml(p.badge)}
+                      </span>
+                    </div>
+
+                    <div class="dsp-case-name">${escapeHtml(p.name)}</div>
+
+                    <div class="dsp-case-metrics">
+                      <span class="dsp-case-metric-tag">
+                        Na+ <strong>${v.serumNa}</strong>
+                      </span>
+                      ${v.serumK ? `<span class="dsp-case-metric-tag" style="color:#ef4444;">K+ <strong>${v.serumK}</strong></span>` : ''}
+                      ${v.serumCaTotal ? `<span class="dsp-case-metric-tag" style="color:#8b5cf6;">Ca <strong>${v.serumCaTotal}</strong></span>` : ''}
+                      ${v.serumMg ? `<span class="dsp-case-metric-tag" style="color:#10b981;">Mg <strong>${v.serumMg}</strong></span>` : ''}
+                      ${v.isHighOdsRisk ? `<span class="dsp-case-metric-tag" style="color:#dc2626; border-color:rgba(220,38,38,0.3); background:rgba(220,38,38,0.06);">ODS Nguy Cơ Cao</span>` : ''}
+                    </div>
+
+                    <div class="dsp-case-desc">${escapeHtml(p.description)}</div>
+                  </div>
+
+                  <div class="dsp-case-card-footer">
+                    <span style="font-size:0.7rem; color:var(--color-text-muted);">
+                      <i class="fa-solid fa-weight-scale"></i> ${v.weightKg}kg • ${v.gender === 'male' ? 'Nam' : 'Nữ'}
+                    </span>
+                    <button type="button" class="dsp-case-load-btn">
+                      <span>Nạp Ca Này</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Compact Chips View (Hidden by default) -->
+          <div id="elytePresetsChips" style="display:none; flex-wrap:wrap; gap:0.45rem; padding-top:0.25rem;">
+            ${ELYTE_PRESETS.map(p => `
+              <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-elyte-preset-btn js-elyte-preset-chip" data-preset-id="${p.id}" data-category="${p.category}" data-search="${escapeHtml((p.name + ' ' + p.description).toLowerCase())}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg); border-color:var(--color-border); display:inline-flex; align-items:center; gap:6px;">
+                <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; flex-shrink:0;"></span>
+                <strong>${escapeHtml(p.name)}</strong>
+              </button>
+            `).join('')}
+          </div>
         </div>
       </div>
 
@@ -418,22 +492,84 @@ export function mountElectrolyteController(bindActionBtns: (container: HTMLEleme
     });
   });
 
-  // 2. Category filter for 20 Presets
+  // 2. Real-time Search & Category Filter for 20 Presets
+  const elyteSearchInput = document.getElementById('elyteCaseSearchInput') as HTMLInputElement | null;
   const elyteFilterBtns = document.querySelectorAll<HTMLElement>('.js-elyte-filter-btn');
+  let currentElyteCatFilter = 'all';
+
+  const applyElyteFiltering = () => {
+    const query = (elyteSearchInput?.value || '').trim().toLowerCase();
+    const presetItems = document.querySelectorAll<HTMLElement>('.js-elyte-preset-btn');
+
+    presetItems.forEach(item => {
+      const cat = item.getAttribute('data-category');
+      const searchStr = item.getAttribute('data-search') || '';
+
+      const matchesCat = currentElyteCatFilter === 'all' || cat === currentElyteCatFilter;
+      const matchesQuery = !query || searchStr.includes(query);
+
+      if (matchesCat && matchesQuery) {
+        if (item.classList.contains('js-elyte-preset-card')) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'inline-flex';
+        }
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  };
+
+  if (elyteSearchInput) {
+    elyteSearchInput.addEventListener('input', applyElyteFiltering);
+  }
+
   elyteFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       elyteFilterBtns.forEach(b => b.classList.remove('is-active'));
       btn.classList.add('is-active');
-      const cat = btn.getAttribute('data-filter');
-      const presetBtns = document.querySelectorAll<HTMLElement>('.js-elyte-preset-btn');
-      presetBtns.forEach(pBtn => {
-        if (cat === 'all' || pBtn.getAttribute('data-category') === cat) {
-          pBtn.style.display = 'inline-flex';
-        } else {
-          pBtn.style.display = 'none';
-        }
-      });
+      currentElyteCatFilter = btn.getAttribute('data-filter') || 'all';
+      applyElyteFiltering();
     });
+  });
+
+  // View Switcher (Grid vs Chips)
+  const viewToggleBtns = document.querySelectorAll<HTMLElement>('.js-elyte-view-toggle');
+  const gridView = document.getElementById('elytePresetsGrid');
+  const chipsView = document.getElementById('elytePresetsChips');
+
+  viewToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewToggleBtns.forEach(b => {
+        b.classList.remove('is-active');
+        b.style.background = 'transparent';
+      });
+      btn.classList.add('is-active');
+      btn.style.background = 'var(--color-surface)';
+
+      const mode = btn.getAttribute('data-view');
+      if (mode === 'grid') {
+        if (gridView) gridView.style.display = 'grid';
+        if (chipsView) chipsView.style.display = 'none';
+      } else {
+        if (gridView) gridView.style.display = 'none';
+        if (chipsView) chipsView.style.display = 'flex';
+      }
+    });
+  });
+
+  // Collapse / Expand Vault Body
+  const btnToggleCollapse = document.getElementById('btnToggleElyteVaultCollapse');
+  const vaultBody = document.getElementById('elyteVaultBody');
+  const iconCollapse = document.getElementById('iconElyteVaultCollapse');
+
+  btnToggleCollapse?.addEventListener('click', () => {
+    if (!vaultBody) return;
+    const isHidden = vaultBody.style.display === 'none';
+    vaultBody.style.display = isHidden ? 'block' : 'none';
+    if (iconCollapse) {
+      iconCollapse.className = isHidden ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down';
+    }
   });
 
   // 3. Preset Loading Handler
@@ -442,6 +578,14 @@ export function mountElectrolyteController(bindActionBtns: (container: HTMLEleme
       const id = btn.getAttribute('data-preset-id');
       const preset = ELYTE_PRESETS.find(p => p.id === id);
       if (preset) {
+        // Highlight active card
+        document.querySelectorAll<HTMLElement>('.js-elyte-preset-btn').forEach(b => {
+          b.classList.remove('is-active');
+          if (b.getAttribute('data-preset-id') === id) {
+            b.classList.add('is-active');
+          }
+        });
+
         const v = preset.values;
         if (v.mode) (document.getElementById('elyteMode') as HTMLSelectElement).value = v.mode;
         if (v.weightKg) (document.getElementById('elyteWeight') as HTMLInputElement).value = String(v.weightKg);
