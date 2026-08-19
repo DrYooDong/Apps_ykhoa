@@ -3,6 +3,13 @@
  * Path: src/dashboard/homepage-effects.ts
  */
 
+import {
+  updateDayScoreBadge,
+  updateHeroEnergyBadge,
+  openDayScoreModal,
+  openEnergyModal
+} from '../tools/good-day-calculator';
+
 export function initHeroClock(): void {
   const timeEl = document.getElementById('statusClockTime');
   const dateEl = document.getElementById('statusClockDate');
@@ -65,6 +72,27 @@ export function initHeroClock(): void {
   setInterval(update, 1000);
 }
 
+export function initGoodDayAndEnergyButtons(): void {
+  updateDayScoreBadge();
+  updateHeroEnergyBadge();
+
+  const heroDayBtn = document.getElementById('heroDayScoreBtn');
+  if (heroDayBtn) {
+    heroDayBtn.onclick = (e) => {
+      e.preventDefault();
+      openDayScoreModal(new Date(), 'day');
+    };
+  }
+
+  const heroEnergyBtn = document.getElementById('heroEnergyScoreBtn');
+  if (heroEnergyBtn) {
+    heroEnergyBtn.onclick = (e) => {
+      e.preventDefault();
+      openEnergyModal();
+    };
+  }
+}
+
 export function initBackToTop(): void {
   const btn = document.getElementById('backToTopBtn');
   if (!btn) return;
@@ -97,6 +125,7 @@ export function initScrollProgress(): void {
 
 export function initHomepageEffects(): void {
   initHeroClock();
+  initGoodDayAndEnergyButtons();
   initBackToTop();
   initScrollProgress();
 }
