@@ -17,8 +17,8 @@ import './simulators/smart-recommender';
 import './components/clinical-heatmap';
 import './tools/good-day-calculator';
 import './effects/premium-interactions';
-import './dashboard/homepage-widgets';
-import './dashboard/homepage-effects';
+import { initHomepageWidgets } from './dashboard/homepage-widgets';
+import { initHomepageEffects } from './dashboard/homepage-effects';
 import './core/toc';
 import './core/mui-port';
 
@@ -101,6 +101,8 @@ function mountToApp(html: string): void {
       appContainer.style.display = 'none';
       appContainer.innerHTML = '';
     }
+    initHomepageWidgets();
+    initHomepageEffects();
   } else {
     if (mainContent) mainContent.style.display = 'none';
     if (dock) dock.style.display = 'none';
