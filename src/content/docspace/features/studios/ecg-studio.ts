@@ -1016,149 +1016,488 @@ export function renderCoronaryArterySvg(culprit: 'LAD' | 'LCx' | 'RCA' | 'LMCA' 
   `;
 }
 
-/**
- * Bộ Tổng Hợp Đồ Thị Sóng ECG 12 Chuyển Đạo Chuẩn Milimet SVG (Waveform Synthesizer)
- */
-export function render12LeadGridSvg(inputs: EcgInputs, activeLead: string = 'II', theme: 'paper' | 'neon' | 'dark' = 'paper'): string {
-  const width = 860;
-  const height = 360;
+// ============================================================
+// PAPER SETTINGS INTERFACE
+// ============================================================
+export interface EcgPaperSettings {
+  speedMmPerSec: 12.5 | 25 | 50;   // Tốc độ giấy (mm/s)
+  gainMmPerMv: 5 | 10 | 20;         // Độ khuếch đại (mm/mV)
+  rhythmLead: string;                 // Lead rhythm strip (mặc định II)
+}
 
-  // Cấu hình Theme Màu Sắc
+export const DEFAULT_PAPER_SETTINGS: EcgPaperSettings = {
+  speedMmPerSec: 25,
+  gainMmPerMv: 10,
+  rhythmLead: 'II',
+};
+
+// ============================================================
+// PER-LEAD WAVEFORM GENERATOR (Vector Cardiography Model)
+// ============================================================
+
+/**
+ * Tính biên độ (mm) của từng sóng theo từng chuyển đạo
+ * dựa vào vector tim học (lead1Net / avfNet) và các thông số amplitude đặc biệt.
+ */
+function getLeadAmplitudes(lead: string, inputs: EcgInputs): {
+  pAmp: number;       // Biên độ P (mm), âm = đảo
+  pDur: number;       // Thời gian P (ms)
+  qDepth: number;     // Độ sâu Q (mm)
+  rHeight: number;    // Chiều cao R (mm)
+  sDepth: number;     // Độ sâu S (mm)
+  tAmp: number;       // Biên độ T (mm)
+  stDev: number;      // ST chênh (mm)
+  rPrimed: boolean;   // R' (thỏ hai bướu: RBBB, V1)
+  qrsWide: boolean;   // QRS ≥ 120ms
+} {
+  const { lead1Net = 6, avfNet = 4, rv5 = 14, rv6 = 12, sv1 = 10, sv3 = 8 } = inputs;
+  const qrsWide = (inputs.qrsDuration || 85) >= 120;
+  const hasDelta = inputs.hasDeltaWave;
+  const hasLbbb = inputs.hasLbbb;
+
+  // ST chênh theo từng lead
+  const stKey = `st${lead}` as keyof EcgInputs;
+  const stDev = (inputs[stKey] as number | undefined) || 0;
+
+  // Helper: tính biên độ từ vector DI/aVF
+  const diAmp = lead1Net;
+  const avfAmp = avfNet;
+  const diiAmp = 0.5 * diAmp + 0.866 * avfAmp;
+  const diiiAmp = -0.5 * diAmp + 0.866 * avfAmp;
+  const avrAmp = -(diAmp + avfAmp) / 2;
+  const avlAmp = (diAmp - avfAmp) / 2;
+  const avfCalc = avfAmp;
+
+  switch (lead) {
+    case 'I':
+      return { pAmp: diAmp > 0 ? 1.8 : -0.8, pDur: inputs.pWaveDuration || 90, qDepth: diAmp > 0 ? 1 : 0, rHeight: Math.max(0, diAmp * 1.2), sDepth: Math.max(0, diAmp < 0 ? Math.abs(diAmp) * 1.5 : 2), tAmp: diAmp > 0 ? 2.5 : -1.5, stDev, rPrimed: false, qrsWide };
+    case 'II':
+      return { pAmp: diiAmp > 0 ? 2.2 : -0.8, pDur: inputs.pWaveDuration || 90, qDepth: 0.5, rHeight: Math.max(2, diiAmp * 1.3), sDepth: 1.5, tAmp: diiAmp > 0 ? 3.5 : -1.5, stDev, rPrimed: false, qrsWide };
+    case 'III':
+      return { pAmp: diiiAmp > 0 ? 1.0 : -1.2, pDur: inputs.pWaveDuration || 90, qDepth: diiiAmp < 0 ? 2.5 : 0.5, rHeight: Math.max(0, diiiAmp * 1.1), sDepth: Math.max(0, diiiAmp < 0 ? Math.abs(diiiAmp) * 1.2 : 3), tAmp: diiiAmp > 0 ? 1.5 : -1.5, stDev, rPrimed: false, qrsWide };
+    case 'aVR':
+      return { pAmp: avrAmp < 0 ? -1.5 : 0.5, pDur: inputs.pWaveDuration || 90, qDepth: Math.max(0, -avrAmp * 0.8), rHeight: Math.max(0, avrAmp > 0 ? avrAmp * 1.0 : 0), sDepth: Math.max(0, -avrAmp * 1.2), tAmp: avrAmp < 0 ? -2.0 : 1.5, stDev: -(stDev) * 0.5, rPrimed: false, qrsWide };
+    case 'aVL':
+      return { pAmp: avlAmp > 0 ? 1.2 : -0.6, pDur: inputs.pWaveDuration || 90, qDepth: avlAmp < 0 ? 1.5 : 0.5, rHeight: Math.max(0, avlAmp * 1.4), sDepth: avlAmp < 0 ? 3 : 2, tAmp: avlAmp > 0 ? 2.0 : -1.5, stDev, rPrimed: false, qrsWide };
+    case 'aVF':
+      return { pAmp: avfCalc > 0 ? 1.8 : -0.8, pDur: inputs.pWaveDuration || 90, qDepth: 0.5, rHeight: Math.max(0, avfCalc * 1.3), sDepth: 2, tAmp: avfCalc > 0 ? 2.5 : -1.5, stDev, rPrimed: false, qrsWide };
+    case 'V1': {
+      // V1: rS pattern (r nhỏ, S sâu) — RBBB: rSR'
+      const rH = hasLbbb ? 0.5 : 2;
+      const sD = sv1 || 10;
+      return { pAmp: -0.5, pDur: inputs.pWaveDuration || 90, qDepth: 0, rHeight: rH, sDepth: sD, tAmp: hasLbbb ? 2.5 : -1.5, stDev, rPrimed: !hasLbbb, qrsWide };
+    }
+    case 'V2': {
+      const rH = hasLbbb ? 0.5 : 3;
+      const sD = Math.max(sv1 || 10, (sv3 || 8));
+      return { pAmp: 0.5, pDur: inputs.pWaveDuration || 90, qDepth: 0, rHeight: rH, sDepth: sD, tAmp: hasLbbb ? 3 : (inputs.tWaveType === 'biphasic_wellens' ? 0 : -1), stDev, rPrimed: !hasLbbb, qrsWide };
+    }
+    case 'V3': {
+      const rH = ((sv3 || 8) + (rv5 || 14)) / 3.5;
+      const sD = (sv3 || 8) * 0.7;
+      return { pAmp: 1.0, pDur: inputs.pWaveDuration || 90, qDepth: 0, rHeight: rH, sDepth: sD, tAmp: 1.5, stDev, rPrimed: false, qrsWide };
+    }
+    case 'V4': {
+      const rH = (rv5 || 14) * 0.85;
+      const sD = (sv3 || 8) * 0.4;
+      return { pAmp: 1.2, pDur: inputs.pWaveDuration || 90, qDepth: hasDelta ? 0 : 0.5, rHeight: rH, sDepth: sD, tAmp: 2.5, stDev, rPrimed: false, qrsWide };
+    }
+    case 'V5': {
+      const rH = rv5 || 14;
+      const sD = hasLbbb ? 2 : 1.5;
+      return { pAmp: 1.2, pDur: inputs.pWaveDuration || 90, qDepth: hasDelta ? 0 : 1, rHeight: rH, sDepth: sD, tAmp: 3, stDev, rPrimed: false, qrsWide };
+    }
+    case 'V6': {
+      const rH = (inputs.rv6 || 12);
+      return { pAmp: 1.2, pDur: inputs.pWaveDuration || 90, qDepth: hasDelta ? 0 : 1.2, rHeight: rH, sDepth: 0.5, tAmp: 2.5, stDev, rPrimed: false, qrsWide };
+    }
+    case 'V4R':
+      return { pAmp: -0.5, pDur: inputs.pWaveDuration || 90, qDepth: 0, rHeight: 1.5, sDepth: 3, tAmp: inputs.stV4R && inputs.stV4R > 0.5 ? 1.5 : -1, stDev: inputs.stV4R || 0, rPrimed: false, qrsWide };
+    default:
+      return { pAmp: 1, pDur: 90, qDepth: 0.5, rHeight: 8, sDepth: 2, tAmp: 2.5, stDev: 0, rPrimed: false, qrsWide };
+  }
+}
+
+/**
+ * Tạo SVG path data cho 1 nhịp tim (single beat) của 1 chuyển đạo.
+ * Tọa độ tính trong không gian mm, rồi nhân với pxPerMm để ra pixels.
+ */
+function generateBeatPath(
+  startX: number,
+  baseY: number,
+  rrMs: number,
+  inputs: EcgInputs,
+  lead: string,
+  pxPerMm: number,
+  gainMmPerMv: number
+): string {
+  const amp = getLeadAmplitudes(lead, inputs);
+  const qrsDur = inputs.qrsDuration || 85;
+  const prDur = inputs.prInterval || 160;
+  const qtDur = inputs.qtInterval || 400;
+
+  // px per ms: tại 25mm/s, 1ms = 0.625px/mm
+  const msToX = (ms: number) => ms * 0.025 * pxPerMm * (25 / 25); // normalized to 25mm/s
+  const mmToY = (mm: number) => -mm * gainMmPerMv / 10 * pxPerMm;  // 1mV = gainMmPerMv mm
+
+  const x0 = startX;
+  const pStart = x0 + msToX(20);
+  const pEnd = x0 + msToX(20 + (amp.pDur));
+  const qrsStart = x0 + msToX(prDur);
+  const qEnd = qrsStart + msToX(qrsDur * 0.15);
+  const rPeak = qrsStart + msToX(qrsDur * 0.35);
+  const sPeak = qrsStart + msToX(qrsDur * 0.65);
+  const jPoint = qrsStart + msToX(qrsDur);
+  const tPeak = jPoint + msToX((qtDur - qrsDur) * 0.5);
+  const tEnd = x0 + msToX(qtDur + prDur * 0.8);
+
+  // ST amplitude at J-point
+  const stY = baseY + mmToY(amp.stDev);
+
+  // T-wave amplitude
+  let tAmpCalc = amp.tAmp;
+  const tType = inputs.tWaveType || 'normal';
+  if (tType === 'inverted') tAmpCalc = -Math.abs(tAmpCalc);
+  if (tType === 'peaked' || tType === 'hyperacute') tAmpCalc = Math.abs(tAmpCalc) * 1.8;
+  if (tType === 'flattened') tAmpCalc = Math.abs(tAmpCalc) * 0.15;
+  if (tType === 'de_winter') tAmpCalc = Math.abs(tAmpCalc) * 2.2;
+
+  // Rhythm modifiers
+  const isAfib = inputs.rhythmType === 'afib';
+  const isVt = inputs.rhythmType === 'vt';
+  const isPacing = inputs.rhythmType === 'pacing';
+  const isDelta = inputs.hasDeltaWave;
+
+  let d = `M ${x0},${baseY} `;
+
+  // === Baseline before P ===
+  d += `L ${pStart},${baseY} `;
+
+  // === P wave ===
+  if (!isAfib && (inputs.hyperkalemiaStage || 0) < 3 && !isVt) {
+    const pMid = (pStart + pEnd) / 2;
+    const pTop = baseY + mmToY(amp.pAmp);
+    if (inputs.rhythmType === 'aflutter') {
+      // Sawtooth flutter waves
+      d += `L ${pMid},${baseY + mmToY(2.5)} L ${pEnd},${baseY + mmToY(-1)} L ${pEnd + msToX(50)},${baseY + mmToY(2.5)} L ${pEnd + msToX(100)},${baseY + mmToY(-1)} L ${qrsStart},${baseY} `;
+    } else {
+      d += `C ${pStart + msToX(20)},${pTop} ${pEnd - msToX(20)},${pTop} ${pEnd},${baseY} `;
+    }
+  } else if (isAfib) {
+    // Irregular fine fibrillation baseline
+    const steps = 8;
+    const stepX = (qrsStart - pStart) / steps;
+    for (let i = 0; i < steps; i++) {
+      const noiseY = baseY + mmToY((Math.sin(i * 2.3) * 0.8));
+      d += `L ${pStart + i * stepX},${noiseY} `;
+    }
+  }
+
+  // === PR segment ===
+  d += `L ${qrsStart},${baseY} `;
+
+  // === QRS complex ===
+  if (isPacing) {
+    // Pacing spike + wide QRS
+    d += `L ${qrsStart},${baseY + mmToY(-6)} L ${qrsStart + 2},${baseY + mmToY(-6)} L ${qrsStart + 2},${baseY} `;
+    d += `L ${qEnd},${baseY + mmToY(2)} L ${rPeak},${baseY + mmToY(amp.rHeight * 0.7)} L ${sPeak},${baseY + mmToY(-amp.sDepth * 0.5)} L ${jPoint},${stY} `;
+  } else if (isDelta) {
+    // WPW delta wave — slurred upstroke
+    const deltaEnd = qrsStart + msToX(40);
+    d += `L ${deltaEnd},${baseY + mmToY(amp.rHeight * 0.4)} `;
+    d += `L ${rPeak},${baseY + mmToY(amp.rHeight)} L ${sPeak},${baseY + mmToY(-amp.sDepth)} L ${jPoint},${stY} `;
+  } else if (amp.rPrimed && !inputs.hasLbbb) {
+    // RBBB-like: rSR' in V1 — r small, deep S, R' notch
+    d += `L ${qEnd},${baseY + mmToY(-amp.qDepth)} `;
+    d += `L ${qrsStart + msToX(15)},${baseY + mmToY(amp.rHeight)} `;
+    d += `L ${sPeak},${baseY + mmToY(-amp.sDepth)} `;
+    d += `L ${sPeak + msToX(15)},${baseY + mmToY(amp.rHeight * 0.6)} `;  // R'
+    d += `L ${jPoint},${stY} `;
+  } else {
+    // Normal QRS / LBBB
+    if (amp.qDepth > 0) {
+      d += `L ${qEnd},${baseY + mmToY(-amp.qDepth)} `;
+    }
+    if (amp.rHeight > 0) {
+      d += `L ${rPeak},${baseY + mmToY(amp.rHeight)} `;
+    }
+    if (amp.sDepth > 0) {
+      d += `L ${sPeak},${baseY + mmToY(-amp.sDepth)} `;
+    }
+    d += `L ${jPoint},${stY} `;
+  }
+
+  // === ST segment ===
+  d += `L ${tPeak - msToX(40)},${stY} `;
+
+  // === T wave ===
+  if (tType === 'biphasic_wellens') {
+    // Wellens: short positive hump then deep negative
+    d += `C ${tPeak - msToX(30)},${baseY + mmToY(tAmpCalc * 0.5)} ${tPeak},${baseY + mmToY(tAmpCalc * 0.5)} ${tPeak},${baseY} `;
+    d += `C ${tPeak + msToX(20)},${baseY + mmToY(-tAmpCalc * 1.5)} ${tEnd - msToX(20)},${baseY + mmToY(-tAmpCalc * 1.5)} ${tEnd},${baseY} `;
+  } else if (tType === 'de_winter') {
+    // De Winter: upsloping ST depression into tall peaked T
+    d += `C ${tPeak - msToX(30)},${baseY + mmToY(-2)} ${tPeak},${baseY + mmToY(tAmpCalc)} ${tEnd},${baseY} `;
+  } else {
+    // Normal / inverted / peaked / flat
+    d += `C ${tPeak - msToX(20)},${baseY + mmToY(tAmpCalc * 1.1)} ${tPeak + msToX(20)},${baseY + mmToY(tAmpCalc * 1.1)} ${tEnd},${baseY} `;
+  }
+
+  // === Osborn wave (hypothermia) ===
+  if (inputs.hasOsbornWave) {
+    d += `L ${tEnd + msToX(20)},${baseY + mmToY(5)} L ${tEnd + msToX(50)},${baseY} `;
+  }
+
+  // === U wave (hypokalemia) ===
+  if (inputs.hasUWave) {
+    const uMid = tEnd + msToX(80);
+    d += `C ${tEnd + msToX(40)},${baseY + mmToY(1.2)} ${uMid},${baseY + mmToY(1.5)} ${uMid + msToX(40)},${baseY} `;
+  }
+
+  // Baseline to next beat
+  d += `L ${x0 + msToX(rrMs)},${baseY} `;
+
+  return d;
+}
+
+/**
+ * Render 1 strip của 1 chuyển đạo (nhiều nhịp) trong khung SVG con.
+ * px / ms được tính từ paper settings.
+ */
+function renderLeadStrip(
+  lead: string,
+  inputs: EcgInputs,
+  settings: EcgPaperSettings,
+  stripWidthPx: number,
+  stripHeightPx: number,
+  traceStroke: string,
+  showLabel = true,
+  showCalPulse = true
+): string {
+  const { speedMmPerSec, gainMmPerMv } = settings;
+  // At 25mm/s: 1mm = 1px in our coordinate system baseline
+  // We normalize to 1px = 1mm of paper
+  const pxPerMm = stripWidthPx / (speedMmPerSec * (stripWidthPx / 250)); // stretch proportionally
+  // Actually: strip shows N seconds of ECG
+  // At 25mm/s, stripWidth covers stripWidth/25 seconds
+  const secsVisible = stripWidthPx / (speedMmPerSec * (pxPerMm > 0 ? pxPerMm : 1));
+
+  // Simpler: use fixed px-per-mm derived from width
+  // pxPerMm = stripWidthPx / (speedMmPerSec * visibleSecs)
+  // For 25mm/s, 250px wide → visibleSecs = 250/(25*px/mm) → assume 1px=1mm → 10s strip
+  // Use scale: 1 small box (1mm) = 2.5px at standard (250px / 100 boxes per 10s at 25mm/s)
+  const boxPx = stripWidthPx / (speedMmPerSec * 4); // 4 seconds per strip in standard 3-column layout
+  const pxPerMs = boxPx / 40; // 1 small box = 40ms at 25mm/s; scale with speed
+
+  const hr = inputs.heartRate || 75;
+  const rrMs = (60 / hr) * 1000;
+  const rrPx = rrMs * pxPerMs;
+
+  const baseY = stripHeightPx / 2;
+  const numBeats = Math.ceil(stripWidthPx / rrPx) + 1;
+
+  // Scale gain: standard = 10mm/mV → gainMmPerMv/10 * pxPerMm
+  const mmPx = boxPx; // 1 small box = boxPx pixels = 1mm
+
+  let pathData = `M 0,${baseY} `;
+  let calOffset = showCalPulse ? 30 : 0;
+
+  if (showCalPulse) {
+    // 1mV calibration pulse (10mm tall at current gain)
+    const calH = mmPx * gainMmPerMv;
+    pathData += `L ${5},${baseY} L ${5},${baseY - calH} L ${20},${baseY - calH} L ${20},${baseY} L ${calOffset},${baseY} `;
+  }
+
+  for (let b = 0; b < numBeats; b++) {
+    const startX = calOffset + b * rrPx;
+    if (startX > stripWidthPx + rrPx) break;
+    pathData += generateBeatPath(startX, baseY, rrMs, inputs, lead, mmPx, gainMmPerMv);
+  }
+
+  const labelText = lead.replace('aV', 'a') === 'aVR' ? 'aVR' : lead;
+
+  return `
+    <path d="${pathData}" fill="none" stroke="${traceStroke}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
+    ${showLabel ? `
+    <rect x="4" y="4" width="${labelText.length * 7 + 6}" height="16" rx="3" fill="rgba(0,0,0,0.55)" />
+    <text x="7" y="15.5" fill="#ffffff" font-size="10" font-weight="800" font-family="'Inter', monospace">${labelText}</text>
+    ` : ''}
+  `;
+}
+
+/**
+ * === MAIN FUNCTION: render12LeadEcgPaper ===
+ * 
+ * Renders a full 12-lead ECG in standard Cabrera layout:
+ *   Row 1: I   | aVR | V1 | V4
+ *   Row 2: II  | aVL | V2 | V5
+ *   Row 3: III | aVF | V3 | V6
+ *   Row 4: Rhythm strip (full width, selected lead)
+ * 
+ * With real ECG paper grid (1mm small, 5mm large boxes).
+ */
+export function render12LeadEcgPaper(
+  inputs: EcgInputs,
+  settings: EcgPaperSettings = DEFAULT_PAPER_SETTINGS,
+  theme: 'paper' | 'neon' | 'dark' = 'paper'
+): string {
+  // === RESPONSIVE DIMENSIONS ===
+  // Total canvas: 860px wide (standard) × 520px tall
+  // 4 columns of leads (each 215px wide), 3 rows + 1 rhythm strip
+  const totalW = 860;
+  const colW = totalW / 4;       // 215px per lead column
+  const rowH = 110;               // Height of each lead row (3 lead rows)
+  const rhythmH = 100;            // Rhythm strip height
+  const topPad = 28;             // Header row height
+  const totalH = topPad + rowH * 3 + rhythmH + 8;
+
+  // === THEME COLORS ===
   let bgFill = '#fff5f5';
-  let gridSmallStroke = '#fca5a5';
-  let gridLargeStroke = '#ef4444';
-  let traceStroke = '#0f172a';
+  let gridSmall = 'rgba(252, 165, 165, 0.7)';
+  let gridLarge = 'rgba(239, 68, 68, 0.65)';
+  let traceColor = '#111827';
+  let textColor = '#1e3a5f';
+  let headerBg = 'rgba(239, 68, 68, 0.06)';
+  let dividerColor = 'rgba(239, 68, 68, 0.25)';
 
   if (theme === 'neon') {
     bgFill = '#030712';
-    gridSmallStroke = 'rgba(16, 185, 129, 0.15)';
-    gridLargeStroke = 'rgba(16, 185, 129, 0.4)';
-    traceStroke = '#10b981';
+    gridSmall = 'rgba(16, 185, 129, 0.12)';
+    gridLarge = 'rgba(16, 185, 129, 0.35)';
+    traceColor = '#10b981';
+    textColor = '#34d399';
+    headerBg = 'rgba(16, 185, 129, 0.08)';
+    dividerColor = 'rgba(16, 185, 129, 0.2)';
   } else if (theme === 'dark') {
-    bgFill = 'var(--color-surface)';
-    gridSmallStroke = 'rgba(255, 255, 255, 0.05)';
-    gridLargeStroke = 'rgba(255, 255, 255, 0.12)';
-    traceStroke = '#38bdf8';
+    bgFill = '#0f172a';
+    gridSmall = 'rgba(255,255,255,0.04)';
+    gridLarge = 'rgba(255,255,255,0.10)';
+    traceColor = '#38bdf8';
+    textColor = '#94a3b8';
+    headerBg = 'rgba(56, 189, 248, 0.06)';
+    dividerColor = 'rgba(255,255,255,0.08)';
   }
 
-  // Tạo polyline giả lập cho chuyển đạo đang chọn dựa trên thông số inputs
-  const hr = inputs.heartRate || 75;
-  const rrPixels = Math.max(140, Math.min(300, (60 / hr) * 200)); // 25mm/s tương đương pixels
-  const numBeats = Math.ceil(width / rrPixels) + 1;
+  // === LEAD LAYOUT (Cabrera Standard) ===
+  // Row 0: I, aVR, V1, V4
+  // Row 1: II, aVL, V2, V5
+  // Row 2: III, aVF, V3, V6
+  // Row 3: Rhythm strip
+  const leadRows: string[][] = [
+    ['I', 'aVR', 'V1', 'V4'],
+    ['II', 'aVL', 'V2', 'V5'],
+    ['III', 'aVF', 'V3', 'V6'],
+  ];
+  const rhythmLead = settings.rhythmLead || 'II';
 
-  const stDeviation = (inputs as any)[`st${activeLead}`] || (activeLead === 'II' ? (inputs.stII || 0) : 0);
-  const isWellens = inputs.tWaveType === 'biphasic_wellens' && (activeLead === 'V2' || activeLead === 'V3');
-  const isDeWinter = inputs.tWaveType === 'de_winter';
-  const isPeakedT = inputs.tWaveType === 'peaked' || inputs.hyperkalemiaStage! >= 1;
-  const isOsborn = inputs.hasOsbornWave;
-  const isDelta = inputs.hasDeltaWave;
-  const hasU = inputs.hasUWave;
+  // === GRID PATTERN (1mm = boxPx pixels) ===
+  // At 25mm/s: standard 1 small box = 1mm paper. We use boxPx to scale.
+  const boxPx = colW / (settings.speedMmPerSec * 4 / 5); // 4s strip / 5 boxes-per-second = boxes per strip
+  // For 25mm/s: 4s × 5boxes/s = 20 large boxes = 100 small boxes per strip
+  // boxPx = colW / 100 = ~2.15px per small box
+  // Standard: boxPx ≈ 2.5px at 25mm/s for 215px strip (= 86 small boxes = 3.44s)
+  const smallBox = colW / Math.round(colW / 2.5);  // ≈ 2.5px per 1mm box
+  const largeBox = smallBox * 5;
 
-  // Tính tọa độ Y của các thành phần sóng
-  const baseY = 180;
-  const qrsHeight = inputs.qrsDuration && inputs.qrsDuration >= 120 ? 80 : 95;
-  const rAmp = (inputs.rv5 || 15) * 3;
-  const sAmp = (inputs.sv1 || 8) * 3;
+  // === SVG CONSTRUCTION ===
+  const gId = `ecgG_${Date.now()}`;
 
-  let pathData = `M 0,${baseY} `;
-
-  for (let b = 0; b < numBeats; b++) {
-    const startX = b * rrPixels;
-    
-    // Baseline trước P
-    pathData += `L ${startX + 20},${baseY} `;
-
-    // Sóng P
-    if (inputs.rhythmType !== 'afib' && inputs.hyperkalemiaStage! < 3) {
-      pathData += `C ${startX + 25},${baseY - 8} ${startX + 35},${baseY - 8} ${startX + 40},${baseY} `;
-    } else if (inputs.rhythmType === 'afib') {
-      // Sóng lăn tăn rung nhĩ
-      pathData += `Q ${startX + 25},${baseY - 3} ${startX + 30},${baseY + 3} Q ${startX + 35},${baseY - 3} ${startX + 40},${baseY} `;
-    }
-
-    // Đoạn PR
-    const prEnd = isDelta ? startX + 50 : startX + 60;
-    pathData += `L ${prEnd},${baseY} `;
-
-    // Sóng Delta (WPW)
-    if (isDelta) {
-      pathData += `L ${startX + 62},${baseY - 20} `;
-    }
-
-    // Sóng Q
-    if (inputs.hasPathologicalQ) {
-      pathData += `L ${startX + 65},${baseY + 25} `;
-    } else {
-      pathData += `L ${startX + 65},${baseY + 6} `;
-    }
-
-    // Đỉnh sóng R
-    pathData += `L ${startX + 75},${baseY - rAmp} `;
-
-    // Đáy sóng S
-    pathData += `L ${startX + 85},${baseY + sAmp} `;
-
-    // Sóng Osborn (Hạ thân nhiệt)
-    if (isOsborn) {
-      pathData += `Q ${startX + 90},${baseY - 18} ${startX + 96},${baseY - stDeviation * 4} `;
-    }
-
-    // Điểm J & Đoạn ST
-    const jY = baseY - stDeviation * 4;
-    pathData += `L ${startX + 98},${jY} `;
-    pathData += `L ${startX + 125},${jY} `;
-
-    // Sóng T
-    if (isDeWinter) {
-      pathData += `C ${startX + 130},${jY + 12} ${startX + 145},${baseY - 60} ${startX + 160},${baseY} `;
-    } else if (isWellens) {
-      // Hai pha (+/-)
-      pathData += `C ${startX + 130},${baseY - 20} ${startX + 140},${baseY - 20} ${startX + 145},${baseY} C ${startX + 150},${baseY + 20} ${startX + 160},${baseY + 20} ${startX + 165},${baseY} `;
-    } else if (isPeakedT) {
-      // T nhọn hẹp đối xứng
-      pathData += `C ${startX + 135},${baseY - 55} ${startX + 145},${baseY - 55} ${startX + 155},${baseY} `;
-    } else if (inputs.tWaveType === 'inverted') {
-      // T âm sâu
-      pathData += `C ${startX + 135},${baseY + 30} ${startX + 150},${baseY + 30} ${startX + 160},${baseY} `;
-    } else {
-      // T bình thường
-      pathData += `C ${startX + 135},${baseY - 22} ${startX + 150},${baseY - 22} ${startX + 160},${baseY} `;
-    }
-
-    // Sóng U (Hạ Kali)
-    if (hasU) {
-      pathData += `C ${startX + 165},${baseY - 10} ${startX + 175},${baseY - 10} ${startX + 185},${baseY} `;
-    }
-
-    pathData += `L ${startX + rrPixels},${baseY} `;
-  }
-
-  return `
-    <svg viewBox="0 0 ${width} ${height}" width="100%" height="auto" class="dsp-ecg-canvas-svg" style="border-radius:10px; box-shadow:inset 0 0 10px rgba(0,0,0,0.1);">
+  let svgContent = `
+    <svg viewBox="0 0 ${totalW} ${totalH}" width="100%" height="auto"
+      style="border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.15); display:block; max-width:100%;"
+      class="dsp-ecg-12lead-svg">
       <defs>
-        <pattern id="ecgSmallGrid_${theme}" width="10" height="10" patternUnits="userSpaceOnUse">
-          <path d="M 10 0 L 0 0 0 10" fill="none" stroke="${gridSmallStroke}" stroke-width="0.5" />
+        <!-- Small grid (1mm) -->
+        <pattern id="${gId}_sm" width="${smallBox}" height="${smallBox}" patternUnits="userSpaceOnUse">
+          <path d="M ${smallBox} 0 L 0 0 0 ${smallBox}" fill="none" stroke="${gridSmall}" stroke-width="0.4"/>
         </pattern>
-        <pattern id="ecgLargeGrid_${theme}" width="50" height="50" patternUnits="userSpaceOnUse">
-          <rect width="50" height="50" fill="url(#ecgSmallGrid_${theme})" />
-          <path d="M 50 0 L 0 0 0 50" fill="none" stroke="${gridLargeStroke}" stroke-width="1.2" />
+        <!-- Large grid (5mm) -->
+        <pattern id="${gId}_lg" width="${largeBox}" height="${largeBox}" patternUnits="userSpaceOnUse">
+          <rect width="${largeBox}" height="${largeBox}" fill="url(#${gId}_sm)"/>
+          <path d="M ${largeBox} 0 L 0 0 0 ${largeBox}" fill="none" stroke="${gridLarge}" stroke-width="1.0"/>
         </pattern>
+        <!-- Clip for each lead strip -->
+        ${leadRows.flatMap((row, ri) => row.map((_, ci) =>
+          `<clipPath id="${gId}_c${ri}${ci}"><rect x="${ci*colW}" y="${topPad + ri*rowH}" width="${colW}" height="${rowH}"/></clipPath>`
+        )).join('')}
+        <clipPath id="${gId}_rhythm"><rect x="0" y="${topPad + 3*rowH}" width="${totalW}" height="${rhythmH}"/></clipPath>
       </defs>
 
-      <!-- Background Grid Paper -->
-      <rect width="${width}" height="${height}" fill="${bgFill}" />
-      <rect width="${width}" height="${height}" fill="url(#ecgLargeGrid_${theme})" />
+      <!-- Background -->
+      <rect width="${totalW}" height="${totalH}" fill="${bgFill}" rx="10"/>
+      <!-- Grid -->
+      <rect x="0" y="${topPad}" width="${totalW}" height="${rowH * 3 + rhythmH}" fill="url(#${gId}_lg)"/>
 
-      <!-- Pulse Calibration Mark (10mm = 1mV) -->
-      <path d="M 20,${baseY} L 30,${baseY} L 30,${baseY - 50} L 40,${baseY - 50} L 40,${baseY} L 50,${baseY}" fill="none" stroke="${traceStroke}" stroke-width="2" />
-      <text x="25" y="${baseY - 56}" fill="${traceStroke}" font-size="8.5" font-weight="700">1 mV</text>
+      <!-- Header Bar -->
+      <rect x="0" y="0" width="${totalW}" height="${topPad}" fill="${headerBg}" rx="10"/>
+      <rect x="0" y="16" width="${totalW}" height="${topPad - 16}" fill="${headerBg}"/>
+      <text x="12" y="17" fill="${textColor}" font-size="10.5" font-weight="800" font-family="'Inter', monospace">
+        ECG 12 CHUYỂN ĐẠO CHUẨN — ${settings.speedMmPerSec} mm/s | ${settings.gainMmPerMv} mm/mV | HR ${inputs.heartRate || 75} bpm
+      </text>
+      <text x="${totalW - 12}" y="17" fill="${textColor}" font-size="9.5" font-weight="600" font-family="'Inter', monospace" text-anchor="end">
+        ${inputs.rhythmType?.toUpperCase()} | QRS ${inputs.qrsDuration || 85}ms | QT ${inputs.qtInterval || 400}ms
+      </text>
+  `;
 
-      <!-- ECG Waveform Trace -->
-      <path d="${pathData}" fill="none" stroke="${traceStroke}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+  // === LEAD DIVIDERS (vertical column separators) ===
+  svgContent += `
+      <!-- Column dividers -->
+      ${[1,2,3].map(i => `<line x1="${i*colW}" y1="${topPad}" x2="${i*colW}" y2="${topPad + 3*rowH}" stroke="${dividerColor}" stroke-width="1" stroke-dasharray="3,3"/>`).join('')}
+      <!-- Row dividers -->
+      ${[1,2].map(i => `<line x1="0" y1="${topPad + i*rowH}" x2="${totalW}" y2="${topPad + i*rowH}" stroke="${dividerColor}" stroke-width="0.8" stroke-dasharray="3,3"/>`).join('')}
+      <!-- Rhythm strip separator -->
+      <line x1="0" y1="${topPad + 3*rowH}" x2="${totalW}" y2="${topPad + 3*rowH}" stroke="${gridLarge}" stroke-width="1.2"/>
+  `;
 
-      <!-- Active Lead Label -->
-      <rect x="${width - 130}" y="15" width="115" height="28" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1" />
-      <text x="${width - 72}" y="33" fill="var(--color-text)" font-size="11" font-weight="800" text-anchor="middle">Lead ${activeLead} (25 mm/s)</text>
+  // === RENDER EACH LEAD STRIP ===
+  leadRows.forEach((row, ri) => {
+    row.forEach((lead, ci) => {
+      const ox = ci * colW;
+      const oy = topPad + ri * rowH;
+      svgContent += `
+        <g clip-path="url(#${gId}_c${ri}${ci})" transform="translate(${ox}, ${oy})">
+          ${renderLeadStrip(lead, inputs, settings, colW, rowH, traceColor, true, ci === 0)}
+        </g>
+      `;
+    });
+  });
+
+  // === RHYTHM STRIP (full width) ===
+  const rhythmY = topPad + 3 * rowH;
+  const rhythmSettings = { ...settings, speedMmPerSec: settings.speedMmPerSec as 12.5 | 25 | 50 };
+  svgContent += `
+    <g clip-path="url(#${gId}_rhythm)" transform="translate(0, ${rhythmY})">
+      <!-- Rhythm label background -->
+      <rect x="0" y="0" width="${totalW}" height="${rhythmH}" fill="${theme === 'paper' ? 'rgba(255,245,245,0.3)' : 'rgba(0,0,0,0.2)'}"/>
+      ${renderLeadStrip(rhythmLead, inputs, rhythmSettings, totalW, rhythmH, traceColor, true, true)}
+      <!-- "Rhythm" label suffix -->
+      <text x="${totalW - 10}" y="${rhythmH - 8}" fill="${textColor}" font-size="9.5" font-weight="700" text-anchor="end" font-family="'Inter', monospace">Rhythm Strip</text>
+    </g>
+  `;
+
+  // === SPEED/GAIN WATERMARK AT BOTTOM RIGHT ===
+  svgContent += `
+      <text x="${totalW - 10}" y="${totalH - 3}" fill="${textColor}" font-size="8.5" font-weight="600" text-anchor="end" opacity="0.7" font-family="monospace">
+        CliniPortal ECG Studio Pro | ${settings.speedMmPerSec}mm/s | ${settings.gainMmPerMv}mm/mV
+      </text>
     </svg>
   `;
+
+  return svgContent;
 }
+
+/**
+ * Bộ Tổng Hợp Đồ Thị Sóng ECG 12 Chuyển Đạo Chuẩn Milimet SVG (Waveform Synthesizer)
+ * @deprecated Dùng render12LeadEcgPaper() thay thế cho hiển thị 12-lead đầy đủ.
+ * Giữ lại để tương thích ngược với code cũ.
+ */
+export function render12LeadGridSvg(inputs: EcgInputs, activeLead: string = 'II', theme: 'paper' | 'neon' | 'dark' = 'paper'): string {
+  // Forward to new 12-lead renderer with defaults
+  const settings: EcgPaperSettings = {
+    speedMmPerSec: 25,
+    gainMmPerMv: 10,
+    rhythmLead: activeLead,
+  };
+  return render12LeadEcgPaper(inputs, settings, theme);
+}
+

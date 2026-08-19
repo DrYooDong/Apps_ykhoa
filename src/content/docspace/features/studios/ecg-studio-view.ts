@@ -5,7 +5,8 @@
 
 import { escapeHtml } from './studio-shared';
 import {
-  analyzeEcg, renderEcgAxisSvg, renderCoronaryArterySvg, render12LeadGridSvg,
+  analyzeEcg, renderEcgAxisSvg, renderCoronaryArterySvg,
+  render12LeadEcgPaper, EcgPaperSettings, DEFAULT_PAPER_SETTINGS,
   ECG_PRESETS, EcgInputs
 } from './ecg-studio';
 
@@ -116,60 +117,77 @@ export function renderEcgPanel(isActive: boolean): string {
         </div>
       </div>
 
-      <!-- Top Canvas: Waveform Simulator & Digital Caliper Studio -->
+      <!-- Top Canvas: 12-Lead ECG Paper Studio -->
       <div class="dsp-card" style="margin-bottom:1.25rem;">
         <div class="dsp-card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
           <div>
             <h2 class="dsp-card-title" style="font-size:1.1rem; margin-bottom:0.15rem;">
-              <i class="fa-solid fa-heart-pulse" style="color:#dc2626;"></i> Phòng Giả Lập Sóng ECG &amp; Thước Kẹp Số Hóa (Digital Calipers)
+              <i class="fa-solid fa-heart-pulse" style="color:#dc2626;"></i> Phòng Giả Lập ECG 12 Chuyển Đạo Chuẩn &amp; Thước Kẹp Số Hóa
             </h2>
             <span style="font-size:0.8rem; color:var(--color-text-muted);">
-              Chuẩn định y khoa: 25 mm/s | 10 mm/mV | Tần số lấy mẫu giả lập 500 Hz
+              Layout Cabrera: I·aVR·V1·V4 / II·aVL·V2·V5 / III·aVF·V3·V6 + Rhythm Strip
             </span>
           </div>
 
-          <!-- Theme & Caliper Toolbar -->
+          <!-- Paper Settings & Display Toolbar -->
           <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-            <!-- Lead Switcher -->
+
+            <!-- === SPEED SETTING === -->
             <div style="display:flex; align-items:center; gap:0.3rem;">
-              <span style="font-size:11px; font-weight:700; color:var(--color-text-muted);">Chuyển đạo:</span>
-              <select id="ecgActiveLeadSelect" class="dsp-select" style="padding:4px 8px; font-size:11.5px; font-weight:800; height:32px;">
-                <option value="II" selected>DII (Nhịp kéo dài)</option>
-                <option value="I">DI (Ngoại vi)</option>
-                <option value="III">DIII</option>
-                <option value="aVR">aVR (Thân chung)</option>
-                <option value="aVL">aVL (Thành bên cao)</option>
-                <option value="aVF">aVF (Thành dưới)</option>
-                <option value="V1">V1 (Trước tim)</option>
-                <option value="V2">V2</option>
-                <option value="V3">V3</option>
-                <option value="V4">V4</option>
+              <span style="font-size:10px; font-weight:700; color:var(--color-text-muted); white-space:nowrap;">Tốc độ:</span>
+              <div class="dsp-btn-group" style="display:flex; background:var(--color-bg); border:1px solid var(--color-border); border-radius:6px; overflow:hidden;">
+                <button type="button" class="dsp-paper-speed-btn" data-speed="12.5" style="padding:3px 8px; font-size:10.5px; font-weight:700; border:none; background:transparent; cursor:pointer; color:var(--color-text-muted);">12.5</button>
+                <button type="button" class="dsp-paper-speed-btn is-active" data-speed="25" style="padding:3px 8px; font-size:10.5px; font-weight:700; border:none; background:var(--color-primary); cursor:pointer; color:#fff; border-radius:4px;">25</button>
+                <button type="button" class="dsp-paper-speed-btn" data-speed="50" style="padding:3px 8px; font-size:10.5px; font-weight:700; border:none; background:transparent; cursor:pointer; color:var(--color-text-muted);">50</button>
+              </div>
+              <span style="font-size:9.5px; color:var(--color-text-muted);">mm/s</span>
+            </div>
+
+            <!-- === GAIN SETTING === -->
+            <div style="display:flex; align-items:center; gap:0.3rem;">
+              <span style="font-size:10px; font-weight:700; color:var(--color-text-muted); white-space:nowrap;">Gain:</span>
+              <div class="dsp-btn-group" style="display:flex; background:var(--color-bg); border:1px solid var(--color-border); border-radius:6px; overflow:hidden;">
+                <button type="button" class="dsp-paper-gain-btn" data-gain="5" style="padding:3px 8px; font-size:10.5px; font-weight:700; border:none; background:transparent; cursor:pointer; color:var(--color-text-muted);">5</button>
+                <button type="button" class="dsp-paper-gain-btn is-active" data-gain="10" style="padding:3px 8px; font-size:10.5px; font-weight:700; border:none; background:var(--color-primary); cursor:pointer; color:#fff; border-radius:4px;">10</button>
+                <button type="button" class="dsp-paper-gain-btn" data-gain="20" style="padding:3px 8px; font-size:10.5px; font-weight:700; border:none; background:transparent; cursor:pointer; color:var(--color-text-muted);">20</button>
+              </div>
+              <span style="font-size:9.5px; color:var(--color-text-muted);">mm/mV</span>
+            </div>
+
+            <!-- === RHYTHM LEAD (for rhythm strip) === -->
+            <div style="display:flex; align-items:center; gap:0.3rem;">
+              <span style="font-size:10px; font-weight:700; color:var(--color-text-muted); white-space:nowrap;">Rhythm:</span>
+              <select id="ecgActiveLeadSelect" class="dsp-select" style="padding:3px 7px; font-size:11px; font-weight:800; height:28px;">
+                <option value="II" selected>Lead II</option>
+                <option value="I">Lead I</option>
+                <option value="III">Lead III</option>
+                <option value="aVR">aVR</option>
+                <option value="aVL">aVL</option>
+                <option value="aVF">aVF</option>
+                <option value="V1">V1</option>
                 <option value="V5">V5</option>
-                <option value="V6">V6</option>
-                <option value="V4R">V4R (Thất phải)</option>
               </select>
             </div>
 
-            <!-- Theme Switcher -->
+            <!-- === THEME SWITCHER === -->
             <div style="display:flex; align-items:center; gap:0.3rem;">
-              <span style="font-size:11px; font-weight:700; color:var(--color-text-muted);">Giao diện:</span>
-              <select id="ecgThemeSelect" class="dsp-select" style="padding:4px 8px; font-size:11.5px; font-weight:700; height:32px;">
-                <option value="paper" selected>📜 Giấy in Hồng Đỏ (25mm/s)</option>
-                <option value="neon">⚡ Neon Cathlab Monitor</option>
-                <option value="dark">🌑 Dark Clinical Lab</option>
+              <select id="ecgThemeSelect" class="dsp-select" style="padding:3px 7px; font-size:10.5px; font-weight:700; height:28px;">
+                <option value="paper" selected>📜 Giấy ECG</option>
+                <option value="neon">⚡ Neon Monitor</option>
+                <option value="dark">🌑 Dark Lab</option>
               </select>
             </div>
 
             <!-- Caliper Toggle -->
             <button type="button" id="btnToggleCaliper" class="dsp-btn dsp-btn-sm dsp-btn-ghost" style="border-radius:6px; font-size:11.5px; padding:4px 10px; font-weight:700;">
-              <i class="fa-solid fa-ruler-combined" style="color:var(--color-primary);"></i> <span id="caliperToggleLabel">Mở Thước Kẹp</span>
+              <i class="fa-solid fa-ruler-combined" style="color:var(--color-primary);"></i> <span id="caliperToggleLabel">Thước Kẹp</span>
             </button>
           </div>
         </div>
 
-        <!-- ECG Waveform Canvas SVG -->
+        <!-- ECG 12-Lead Canvas SVG -->
         <div id="ecgGridCanvasWrap" style="padding:0.75rem; overflow-x:auto; background:var(--color-bg); position:relative;">
-          ${render12LeadGridSvg({ heartRate: 80, rhythmType: 'sinus', lead1Net: 6, avfNet: -5, stII: 0 }, 'II', 'paper')}
+          ${render12LeadEcgPaper({ heartRate: 80, rhythmType: 'sinus', lead1Net: 6, avfNet: 4, sv1: 10, rv5: 14, rv6: 12, prInterval: 160, qrsDuration: 85, qtInterval: 400 }, DEFAULT_PAPER_SETTINGS, 'paper')}
         </div>
 
         <!-- Digital Caliper Tool Drawer (Interactive) -->
@@ -800,8 +818,10 @@ export function renderEcgPanel(isActive: boolean): string {
 }
 
 export function mountEcgController(bindActionBtns: (container: HTMLElement) => void): void {
-  let ecgActiveLead = 'II';
+  // === State ===
+  let ecgActiveLead = 'II'; // rhythm strip lead
   let ecgActiveTheme: 'paper' | 'neon' | 'dark' = 'paper';
+  let ecgPaperSettings: EcgPaperSettings = { ...DEFAULT_PAPER_SETTINGS };
 
   // 1. Sub-tab navigation inside ECG Studio
   const ecgSubtabBtns = document.querySelectorAll<HTMLElement>('.js-ecg-subtab-btn');
@@ -910,10 +930,45 @@ export function mountEcgController(bindActionBtns: (container: HTMLElement) => v
     }
   });
 
-  // 3. Lead & Theme Switchers
+  // 3. Paper Settings: Speed buttons
+  document.querySelectorAll<HTMLElement>('.dsp-paper-speed-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll<HTMLElement>('.dsp-paper-speed-btn').forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--color-text-muted)';
+        b.classList.remove('is-active');
+      });
+      btn.style.background = 'var(--color-primary)';
+      btn.style.color = '#fff';
+      btn.classList.add('is-active');
+      const speed = parseFloat(btn.getAttribute('data-speed') || '25');
+      ecgPaperSettings = { ...ecgPaperSettings, speedMmPerSec: speed as 12.5 | 25 | 50 };
+      recalcEcg();
+    });
+  });
+
+  // Paper Settings: Gain buttons
+  document.querySelectorAll<HTMLElement>('.dsp-paper-gain-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll<HTMLElement>('.dsp-paper-gain-btn').forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--color-text-muted)';
+        b.classList.remove('is-active');
+      });
+      btn.style.background = 'var(--color-primary)';
+      btn.style.color = '#fff';
+      btn.classList.add('is-active');
+      const gain = parseInt(btn.getAttribute('data-gain') || '10', 10);
+      ecgPaperSettings = { ...ecgPaperSettings, gainMmPerMv: gain as 5 | 10 | 20 };
+      recalcEcg();
+    });
+  });
+
+  // Lead selector → rhythm strip lead
   const leadSelect = document.getElementById('ecgActiveLeadSelect') as HTMLSelectElement;
   leadSelect?.addEventListener('change', () => {
     ecgActiveLead = leadSelect.value || 'II';
+    ecgPaperSettings = { ...ecgPaperSettings, rhythmLead: ecgActiveLead };
     recalcEcg();
   });
 
@@ -1120,9 +1175,15 @@ export function mountEcgController(bindActionBtns: (container: HTMLElement) => v
 
     const res = analyzeEcg(inputs);
 
-    // Render Waveform Canvas
+    // Render 12-Lead ECG Paper Canvas
     const canvasWrap = document.getElementById('ecgGridCanvasWrap');
-    if (canvasWrap) canvasWrap.innerHTML = render12LeadGridSvg(inputs, ecgActiveLead, ecgActiveTheme);
+    if (canvasWrap) {
+      const settings: EcgPaperSettings = {
+        ...ecgPaperSettings,
+        rhythmLead: ecgActiveLead,
+      };
+      canvasWrap.innerHTML = render12LeadEcgPaper(inputs, settings, ecgActiveTheme);
+    }
 
     // Render Coronary SVG
     const coronaryWrap = document.getElementById('coronaryArterySvgWrap');
