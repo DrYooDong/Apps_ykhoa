@@ -1,0 +1,478 @@
+/**
+ * ════════════════════════════════════════════════════════════════════════════
+ *  CLINICAL FLOW ENGINE STYLES — CLINI-PORTAL
+ *  CSS Tokens & Dark Mode quy chuẩn cho Bộ Render Lưu đồ & Cây Quyết định
+ * ════════════════════════════════════════════════════════════════════════════
+ */
+
+/* Container & Layout */
+.clinical-decision-workspace {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .clinical-decision-workspace {
+        grid-template-columns: 1fr;
+    }
+}
+
+.clinical-flow-viewport {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+/* Toolbar */
+.flow-engine-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.25rem;
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-divider);
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.flow-history-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 2px;
+}
+
+.breadcrumb-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    padding: 0.25rem 0.65rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.breadcrumb-chip.active {
+    background: var(--color-primary-hl);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.breadcrumb-chip .chip-branch {
+    color: var(--color-warning);
+    font-weight: 700;
+}
+
+.flow-actions-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.flow-btn-tool {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border-radius: 6px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.flow-btn-tool:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: var(--color-surface-offset);
+}
+
+/* Canvas Area */
+.flow-svg-canvas-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    padding: 1rem;
+    background: var(--color-bg);
+    overflow-x: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.clinical-flow-svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
+}
+
+/* SVG Elements - Nodes */
+.flow-node-group {
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.flow-node-group:hover .flow-node-box {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+}
+
+.flow-node-box {
+    fill: var(--color-surface);
+    stroke: var(--color-border);
+    stroke-width: 1.5px;
+    transition: stroke 0.2s ease, fill 0.2s ease;
+}
+
+.flow-node-title {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    fill: var(--color-text);
+}
+
+.flow-node-subtitle {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    fill: var(--color-text-muted);
+}
+
+/* Node Badges */
+.flow-node-badge-bg {
+    fill: var(--color-surface-offset);
+}
+
+.flow-node-badge-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 700;
+    fill: var(--color-text-muted);
+}
+
+/* Node Types */
+.node-type-start .flow-node-box {
+    stroke: var(--color-primary);
+    stroke-width: 1.5px;
+}
+.node-type-start .flow-node-badge-bg {
+    fill: var(--color-primary-hl);
+}
+.node-type-start .flow-node-badge-text {
+    fill: var(--color-primary);
+}
+
+.node-type-focal .flow-node-box,
+.node-type-danger .flow-node-box {
+    stroke: var(--color-danger);
+    stroke-width: 2px;
+}
+.node-type-focal .flow-node-badge-bg,
+.node-type-danger .flow-node-badge-bg {
+    fill: var(--color-danger-hl);
+}
+.node-type-focal .flow-node-badge-text,
+.node-type-danger .flow-node-badge-text {
+    fill: var(--color-danger);
+}
+
+.node-type-question .flow-node-box {
+    stroke: var(--color-warning);
+    stroke-width: 1.5px;
+}
+.node-type-question .flow-node-badge-bg {
+    fill: var(--color-warning-hl);
+}
+.node-type-question .flow-node-badge-text {
+    fill: var(--color-warning);
+}
+
+.node-type-success .flow-node-box {
+    stroke: var(--color-success);
+    stroke-width: 1.5px;
+}
+.node-type-success .flow-node-badge-bg {
+    fill: var(--color-success-hl);
+}
+.node-type-success .flow-node-badge-text {
+    fill: var(--color-success);
+}
+
+/* Active & Current Nodes */
+.flow-node-group.active .flow-node-box {
+    fill: var(--color-surface);
+}
+
+.flow-node-group.current .flow-node-box {
+    stroke-width: 2.5px;
+    stroke: var(--color-primary);
+    fill: var(--color-primary-hl);
+    fill-opacity: 0.15;
+}
+
+.flow-node-group.dimmed {
+    opacity: 0.28;
+    filter: grayscale(0.8);
+}
+
+/* SVG Elements - Edges */
+.flow-edge-path {
+    fill: none;
+    stroke: var(--color-border);
+    stroke-width: 1.5px;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
+}
+
+.flow-edge-path.active {
+    stroke: var(--color-primary);
+    stroke-width: 2.2px;
+}
+
+.flow-edge-path.danger.active {
+    stroke: var(--color-danger);
+}
+
+.flow-edge-path.success.active {
+    stroke: var(--color-success);
+}
+
+.flow-edge-path.dimmed {
+    opacity: 0.2;
+    stroke-dasharray: 4,4;
+}
+
+/* SVG Elements - Labels */
+.flow-edge-label-group {
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.3s ease;
+}
+
+.flow-edge-label-group:hover {
+    transform: scale(1.08);
+}
+
+.flow-edge-label-bg {
+    fill: var(--color-surface);
+    stroke: var(--color-divider);
+    stroke-width: 1px;
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.flow-edge-label-bg.danger {
+    stroke: var(--color-danger);
+}
+.flow-edge-label-bg.success {
+    stroke: var(--color-success);
+}
+
+.flow-edge-label-text {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    fill: var(--color-text);
+}
+
+.flow-edge-label-group.active .flow-edge-label-bg {
+    fill: var(--color-primary-hl);
+    stroke: var(--color-primary);
+}
+
+.flow-edge-label-group.active.danger .flow-edge-label-bg {
+    fill: var(--color-danger-hl);
+    stroke: var(--color-danger);
+}
+
+.flow-edge-label-group.dimmed {
+    opacity: 0.25;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SYNCHRONIZED CLINICAL INSPECTOR PANEL
+   ════════════════════════════════════════════════════════════════════════════ */
+.inspector-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 1.5rem;
+}
+
+.inspector-header {
+    padding: 1.25rem 1.25rem 1rem;
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.inspector-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: var(--color-surface-offset);
+    color: var(--color-text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.inspector-badge.badge-start {
+    background: var(--color-primary-hl);
+    color: var(--color-primary);
+}
+.inspector-badge.badge-focal,
+.inspector-badge.badge-danger {
+    background: var(--color-danger-hl);
+    color: var(--color-danger);
+}
+.inspector-badge.badge-question {
+    background: var(--color-warning-hl);
+    color: var(--color-warning);
+}
+.inspector-badge.badge-success {
+    background: var(--color-success-hl);
+    color: var(--color-success);
+}
+
+.inspector-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.35;
+}
+
+.inspector-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.45;
+}
+
+.inspector-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-height: 520px;
+    overflow-y: auto;
+}
+
+.inspector-desc {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    line-height: 1.55;
+}
+
+.inspector-section {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.85rem;
+}
+
+.inspector-section-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Branch Action Buttons */
+.inspector-branch-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn-inspector-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.65rem 0.85rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s ease;
+}
+
+.btn-inspector-branch:hover {
+    border-color: var(--color-primary);
+    background: var(--color-primary-hl);
+}
+
+.btn-inspector-branch.danger:hover {
+    border-color: var(--color-danger);
+    background: var(--color-danger-hl);
+}
+
+.btn-inspector-branch .branch-label {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+
+.btn-inspector-branch.danger .branch-label {
+    color: var(--color-danger);
+}
+
+.btn-inspector-branch .branch-target {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* EBM & Dose Boxes */
+.ebm-box {
+    border-left: 3px solid var(--color-primary);
+}
+
+.ebm-content {
+    font-size: 0.84rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.dose-box {
+    border-left: 3px solid var(--color-purple);
+}
+
+.dose-content {
+    font-size: 0.84rem;
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.redflags-box {
+    border-left: 3px solid var(--color-danger);
+    background: var(--color-danger-hl);
+    background-opacity: 0.2;
+}
+
+.redflags-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.82rem;
+    color: var(--color-danger);
+    font-weight: 600;
+}

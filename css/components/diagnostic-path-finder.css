@@ -1,0 +1,380 @@
+/**
+ * ════════════════════════════════════════════════════════════════════════════
+ *  DIAGNOSTIC PATH FINDER STYLES — CLINI-PORTAL
+ *  CSS Tokens & Dark Mode cho Trực quan hóa Đồ thị & Tối ưu Đường dẫn Y khoa
+ * ════════════════════════════════════════════════════════════════════════════
+ */
+
+/* Workspace Grid */
+.path-finder-workspace {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 1100px) {
+    .path-finder-workspace {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Control Panel */
+.finder-controls-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.finder-section-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Symptom Chip Multi-Select */
+.symptom-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.chip-symptom {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.chip-symptom:hover {
+    border-color: var(--color-warning);
+    background: var(--color-warning-hl);
+}
+
+.chip-symptom.selected {
+    background: var(--color-warning);
+    color: #ffffff;
+    border-color: var(--color-warning);
+    font-weight: 700;
+}
+
+/* Criteria Mode Buttons */
+.criteria-btn-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .criteria-btn-group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.btn-criteria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem 0.5rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: center;
+}
+
+.btn-criteria:hover {
+    border-color: var(--color-primary);
+    background: var(--color-surface);
+}
+
+.btn-criteria.active {
+    background: var(--color-primary-hl);
+    border-color: var(--color-primary);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.criteria-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.2rem;
+}
+
+.btn-criteria.active .criteria-title {
+    color: var(--color-primary);
+}
+
+.criteria-sub {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+}
+
+/* SVG Graph Area */
+.graph-canvas-wrapper {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 1rem;
+    overflow-x: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.med-graph-svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
+}
+
+/* Graph Column Bands */
+.graph-col-band {
+    fill: var(--color-surface-2);
+    fill-opacity: 0.6;
+    stroke: var(--color-divider);
+    stroke-width: 1px;
+}
+
+.graph-col-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    fill: var(--color-text-muted);
+}
+
+/* Graph Edges */
+.graph-edge-line {
+    stroke: var(--color-border);
+    stroke-width: 1.5px;
+    transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.graph-edge-line.active {
+    stroke: var(--color-primary);
+    stroke-width: 3px;
+}
+
+.edge-badge-bg {
+    fill: var(--color-surface);
+    stroke: var(--color-divider);
+    stroke-width: 1px;
+}
+
+.edge-badge-text {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    fill: var(--color-text-muted);
+}
+
+/* Graph Nodes */
+.graph-node-group {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.graph-node-group:hover {
+    transform: scale(1.08);
+}
+
+.graph-node-circle {
+    fill: var(--color-surface);
+    stroke-width: 2px;
+    transition: all 0.2s ease;
+}
+
+.node-symptom .graph-node-circle {
+    stroke: var(--color-warning);
+}
+.node-test .graph-node-circle {
+    stroke: var(--color-teal);
+}
+.node-disease .graph-node-circle {
+    stroke: var(--color-danger);
+}
+
+.graph-node-group.active-node .graph-node-circle {
+    fill: var(--color-primary-hl);
+    stroke: var(--color-primary);
+    stroke-width: 3.5px;
+    filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.4));
+}
+
+.graph-node-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    fill: var(--color-text);
+}
+
+.graph-node-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 600;
+    fill: var(--color-text-muted);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   RESULTS & ANALYSIS PANEL
+   ════════════════════════════════════════════════════════════════════════════ */
+.analysis-panel-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 1.5rem;
+}
+
+.analysis-header {
+    padding: 1.25rem 1.25rem 1rem;
+    background: var(--color-surface-2);
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.analysis-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: var(--color-primary-hl);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+}
+
+.analysis-header h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.analysis-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-height: 540px;
+    overflow-y: auto;
+}
+
+/* Metrics Summary Bar */
+.metrics-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.metric-box {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.6rem;
+    text-align: center;
+}
+
+.metric-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+}
+
+.metric-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+
+/* Steiner Panel Card */
+.steiner-panel-box {
+    background: var(--color-teal-hl);
+    border: 1px solid var(--color-teal);
+    border-radius: 8px;
+    padding: 0.85rem;
+}
+
+.steiner-panel-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.steiner-test-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.steiner-test-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-surface);
+    padding: 0.45rem 0.65rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* Diagnosis Ranking Bars */
+.diagnosis-rank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.rank-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.rank-item-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.rank-bar-bg {
+    height: 8px;
+    background: var(--color-surface-offset);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.rank-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-danger));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}

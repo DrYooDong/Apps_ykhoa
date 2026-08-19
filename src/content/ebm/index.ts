@@ -7,6 +7,7 @@ export * from './types';
 export * from './data';
 export * from './renderer';
 export * from './ebm-view';
+export * from './provenance';
 
 // Subsystems Native SPA Views
 export * from './guidelines/guidelines-view';

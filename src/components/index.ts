@@ -11,4 +11,7 @@ export * from './home-view';
 export * from './article-view';
 export * from './category-view';
 export * from './tool-view';
+export * from './non-intrusive-ux';
+export * from './medical-svg-factory';
+export * from './clinical-flow-engine';
 

@@ -107,6 +107,9 @@
 | `components/non-intrusive-ui.css` | Styling Non-Intrusive Design System (Focus Mode, Slide-over Drawer, Progressive Details, Glance Card, Ambient Toasts) | Mọi trang bài viết & phác đồ |
 | `components/physiology-simulators.css` | Styling Phòng thí nghiệm Mô phỏng Sinh lý định lượng 6 models | `src/content/pathophysiology/simulators/**` |
 | `components/metabolic-navigator.css` | Styling Bản đồ Chuyển hóa Phân tử 8 chu trình & Metabolic Studio | `src/content/pathophysiology/biochemistry/**` |
+| `components/clinical-flow-engine.css` | Styling Hệ thống Render Lưu đồ & Cây Quyết định Y khoa (Clinical Flow Engine) | `pages/clinical-decision-demo.html` |
+| `components/clinical-step-player.css` | Styling Thanh điều khiển Timeline & Mô phỏng Cấp cứu theo Thời gian (Clinical Step Player) | `pages/clinical-player-demo.html` |
+| `components/diagnostic-path-finder.css` | Styling Trực quan hóa Đồ thị & Tối ưu Đường dẫn Y khoa (Diagnostic Path Finder & Steiner Tree) | `pages/diagnostic-path-finder-demo.html` |
 
 
 ---
@@ -218,6 +221,9 @@
 | `core/clinical-engine.js` | Engine CDSS cốt lõi (Strategy, Pipeline, State, Registry) | Phân hệ Công cụ |
 | `core/clinical-bridge.js` | Module Cầu nối & Đồng bộ Dữ liệu Lâm sàng giữa các Công cụ | Phân hệ Công cụ |
 | `calculators/renal-engine.js` | Logic tính toán & CDSS chức năng thận (CrCl, eGFR, BSA, KDIGO CKD/AKI) | `renal-function.html` |
+| `clinical-flow-renderer.js` | Engine Render SVG thuần & State Machine duyệt Cây Quyết định / DAG Lâm sàng | `pages/clinical-decision-demo.html` |
+| `clinical-step-player.js` | Engine Điều khiển Timeline, Mô phỏng Cấp cứu theo thời gian thực & Vòng lặp CPR 2 phút | `pages/clinical-player-demo.html` |
+| `diagnostic-path-finder.js` | Engine Đồ thị Y khoa, Thuật toán Dijkstra SSSP đa tiêu chí, Steiner Tree Panel & Graph Matching | `pages/diagnostic-path-finder-demo.html` |
 
 ---
 
@@ -569,6 +575,9 @@
 | `src/content/tcm/` | **[MỚI]** Phân hệ Y học Cổ truyền & Master Catalog `index.json` (17 items) |
 | `src/components/article-reader.html` | **[MỚI]** Standalone Article Reader Component Engine |
 | `src/components/clinical-flow-studio.html` | **[MỚI]** Standalone Clinical Flow Studio Studio Component Engine |
+| `pages/clinical-decision-demo.html` | **[MỚI]** Demo Hệ thống Trực quan hóa Cây Quyết định Lâm sàng (STEMI/NSTE-ACS & Wells PE) |
+| `pages/clinical-player-demo.html` | **[MỚI]** Demo Trình phát Bước Tiếp Cận Cấp Cứu Theo Thời Gian (ACLS CPR Loop & Sepsis Bundle) |
+| `pages/diagnostic-path-finder-demo.html` | **[MỚI]** Demo Tối Ưu Hóa Đường Dẫn Chẩn Đoán & Gói Xét Nghiệm Bao Phủ (Dijkstra SSSP & Steiner Tree) |
 
 ---
 

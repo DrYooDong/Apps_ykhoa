@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hệ thống Tra Cứu & Tối Ưu Đường Dẫn Chẩn Đoán Y Khoa Ứng Dụng Thuật Toán Đồ Thị Dijkstra & Steiner Tree">
+    <title>Tối Ưu Đường Dẫn Chẩn Đoán – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/sidebar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- CSS Diagnostic Path Finder -->
+    <link rel="stylesheet" href="../css/components/diagnostic-path-finder.css">
+
+    <style>
+        .path-finder-demo-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 4rem;
+        }
+
+        .finder-hero {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .finder-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-warning), var(--color-teal), var(--color-primary));
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            background: var(--color-teal-hl);
+            color: var(--color-teal);
+            font-size: 0.82rem;
+            font-weight: 700;
+            border-radius: 999px;
+            margin-bottom: 0.65rem;
+        }
+
+        .finder-hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin: 0 0 0.4rem 0;
+        }
+
+        .finder-hero p {
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+            max-width: 980px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Preset Switcher */
+        .dataset-selector-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            background: var(--color-surface-offset);
+            padding: 0.4rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            flex-wrap: wrap;
+        }
+
+        .tab-dataset-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.15rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--color-text-muted);
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-dataset-btn:hover {
+            color: var(--color-text);
+            background: var(--color-surface);
+        }
+
+        .tab-dataset-btn.active {
+            background: var(--color-surface);
+            color: var(--color-primary);
+            border-color: var(--color-border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+
+    <script src="../components/header.js" defer></script>
+    <script src="../components/footer.js" defer></script>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <main class="main-wrapper path-finder-demo-page">
+
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+                    <li class="breadcrumb-item"><a href="clinical-decision-demo.html" class="breadcrumb-link">Cây Quyết Định</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tối Ưu Đường Dẫn Chẩn Đoán</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Header -->
+            <header class="finder-hero">
+                <div class="hero-tag"><i class="fa-solid fa-route"></i> Clinical Steiner Tree & Dijkstra Engine v3.0</div>
+                <h1>TỐI ƯU HÓA ĐƯỜNG DẪN CHẨN ĐOÁN & GÓI XÉT NGHIỆM BAO PHỦ</h1>
+                <p>Ứng dụng cấu trúc dữ liệu đồ thị tri thức y khoa: Tự động tìm phác đồ xét nghiệm ngắn nhất theo 4 tiêu chí (Thời gian, Chi phí, Mức độ xâm lấn, Cân bằng), tính toán Gói xét nghiệm bao phủ tối thiểu (Steiner Tree Panel) và xếp hạng chẩn đoán phân biệt.</p>
+            </header>
+
+            <!-- Dataset Tabs -->
+            <div class="dataset-selector-tabs" role="tablist">
+                <button class="tab-dataset-btn active" id="tabJaundice" onclick="switchDataset('jaundice')">
+                    <i class="fa-solid fa-droplet text-warning"></i> Đồ thị 1: Tiếp cận Vàng Da & Tắc Mật (Jaundice Graph)
+                </button>
+                <button class="tab-dataset-btn" id="tabAbdomen" onclick="switchDataset('abdomen')">
+                    <i class="fa-solid fa-burst text-danger"></i> Đồ thị 2: Tiếp cận Đau Bụng Cấp Cứu (Acute Abdominal Pain Graph)
+                </button>
+            </div>
+
+            <!-- Top Controls Card: Symptom Chips & Criteria Buttons -->
+            <div class="finder-controls-card">
+                <div class="finder-section-title"><i class="fa-solid fa-notes-medical text-warning"></i> 1. Chọn Các Triệu Chứng Lâm Sàng Xuất Hiện (Multiselect):</div>
+                <div class="symptom-chip-group" id="symptomChipsContainer">
+                    <!-- Được render tự động -->
+                </div>
+
+                <div class="finder-section-title"><i class="fa-solid fa-sliders text-primary"></i> 2. Tiêu Chí Tối Ưu Hóa Phác Đồ (Dijkstra Criteria):</div>
+                <div class="criteria-btn-group">
+                    <button class="btn-criteria active" data-criteria="balanced" onclick="setCriteria('balanced')">
+                        <span class="criteria-title">⚖️ Cân Bằng Chuẩn</span>
+                        <span class="criteria-sub">Khuyến cáo EBM lâm sàng</span>
+                    </button>
+                    <button class="btn-criteria" data-criteria="fastest" onclick="setCriteria('fastest')">
+                        <span class="criteria-title">⚡ Nhanh Nhất</span>
+                        <span class="criteria-sub">Ưu tiên POCT / Cấp cứu</span>
+                    </button>
+                    <button class="btn-criteria" data-criteria="cheapest" onclick="setCriteria('cheapest')">
+                        <span class="criteria-title">💰 Tiết Kiệm Nhất</span>
+                        <span class="criteria-sub">Giảm gánh nặng chi phí</span>
+                    </button>
+                    <button class="btn-criteria" data-criteria="least-invasive" onclick="setCriteria('least-invasive')">
+                        <span class="criteria-title">🛡️ Ít Xâm Lấn Nhất</span>
+                        <span class="criteria-sub">Tránh thủ thuật nguy cơ</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Workspace: Graph SVG Canvas + Analysis Panel -->
+            <div class="path-finder-workspace">
+                
+                <!-- Left: SVG Knowledge Graph Canvas -->
+                <div class="graph-canvas-wrapper" id="graphSvgContainer">
+                    <!-- Được render tự động bởi DiagnosticPathFinder -->
+                </div>
+
+                <!-- Right: Optimized Path & Steiner Panel Analysis -->
+                <div class="analysis-panel-card" id="analysisPanelContainer">
+                    <!-- Được cập nhật tự động khi chọn triệu chứng hoặc tiêu chí -->
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <div id="footer-placeholder" data-footer-path="../components/footer.html"></div>
+
+    <!-- Scripts -->
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/diagnostic-path-finder.js"></script>
+
+    <script>
+        // 1. DỮ LIỆU ĐỒ THỊ 1: VÀNG DA & BỆNH LÝ GAN MẬT
+        const jaundiceGraphData = {
+            id: "graph-jaundice",
+            title: "Đồ thị Tri thức Tiếp cận Vàng Da",
+            nodes: [
+                // Triệu chứng (Source)
+                { id: "sym_jaundice", label: "Vàng da niêm", type: "symptom" },
+                { id: "sym_ruq_pain", label: "Đau hạ sườn (P)", type: "symptom" },
+                { id: "sym_fever", label: "Sốt lạnh run", type: "symptom" },
+                { id: "sym_pale_stool", label: "Phân bạc màu", type: "symptom" },
+
+                // Cận lâm sàng & Chẩn đoán hình ảnh (Steiner Nodes)
+                { id: "lab_bili", label: "Bilirubin TP/TT", type: "test", cost: 60, timeMinutes: 40, risk: 1 },
+                { id: "lab_ast_alt", label: "Men gan AST/ALT", type: "test", cost: 70, timeMinutes: 40, risk: 1 },
+                { id: "img_us_abd", label: "Siêu âm Bụng", type: "test", cost: 120, timeMinutes: 20, risk: 1 },
+                { id: "img_mrcp", label: "Chụp MRCP Mật", type: "test", cost: 1800, timeMinutes: 90, risk: 1 },
+                { id: "proc_ercp", label: "Nội soi ERCP", type: "test", cost: 3500, timeMinutes: 120, risk: 4 },
+
+                // Chẩn đoán xác định (Target)
+                { id: "dx_choledo", label: "Sỏi Ống Mật Chủ", type: "disease" },
+                { id: "dx_cholangitis", label: "Viêm Đường Mật Cấp", type: "disease" },
+                { id: "dx_periampullary", label: "U Quanh Bóng Vater", type: "disease" },
+                { id: "dx_acute_hep", label: "Viêm Gan Cấp", type: "disease" }
+            ],
+            edges: [
+                { source: "sym_jaundice", target: "lab_bili", condition: "Đánh giá sơ bộ" },
+                { source: "sym_ruq_pain", target: "img_us_abd", condition: "Nghi sỏi mật" },
+                { source: "sym_fever", target: "lab_ast_alt", condition: "Nghi nhiễm trùng" },
+                { source: "sym_pale_stool", target: "lab_bili", condition: "Tắc mật rõ" },
+
+                { source: "lab_bili", target: "img_us_abd", condition: "Bili TT > 50%" },
+                { source: "lab_bili", target: "lab_ast_alt", condition: "Bili TP tăng" },
+                { source: "lab_ast_alt", target: "dx_acute_hep", condition: "AST/ALT > 1000" },
+
+                { source: "img_us_abd", target: "img_mrcp", condition: "Giãn đường mật" },
+                { source: "img_us_abd", target: "proc_ercp", condition: "Thấy sỏi rõ / Kẹt sỏi" },
+                { source: "img_mrcp", target: "dx_choledo", condition: "Hình khuyết sỏi" },
+                { source: "img_mrcp", target: "dx_periampullary", condition: "Chèn ép đoạn cuối" },
+                { source: "proc_ercp", target: "dx_cholangitis", condition: "Mủ đường mật" },
+                { source: "proc_ercp", target: "dx_choledo", condition: "Gắp sỏi thành công" }
+            ]
+        };
+
+        // 2. DỮ LIỆU ĐỒ THỊ 2: TIẾP CẬN ĐAU BỤNG CẤP CỨU
+        const abdomenGraphData = {
+            id: "graph-abdomen",
+            title: "Đồ thị Tri thức Đau Bụng Cấp",
+            nodes: [
+                // Triệu chứng
+                { id: "sym_rlq_pain", label: "Đau hố chậu (P)", type: "symptom" },
+                { id: "sym_epi_pain", label: "Đau thượng vị", type: "symptom" },
+                { id: "sym_guarding", label: "Đề kháng bụng", type: "symptom" },
+                { id: "sym_vomit", label: "Nôn ói dữ dội", type: "symptom" },
+
+                // Cận lâm sàng
+                { id: "lab_cbc", label: "Tổng phân tích CBC", type: "test", cost: 60, timeMinutes: 30, risk: 1 },
+                { id: "lab_lipase", label: "Lipase / Amylase", type: "test", cost: 80, timeMinutes: 40, risk: 1 },
+                { id: "img_xray_abd", label: "X-quang Bụng đứng", type: "test", cost: 80, timeMinutes: 15, risk: 1 },
+                { id: "img_us_abd2", label: "Siêu âm Bụng", type: "test", cost: 120, timeMinutes: 20, risk: 1 },
+                { id: "img_ct_abd", label: "CT Bụng Cản quang", type: "test", cost: 1400, timeMinutes: 45, risk: 2 },
+
+                // Chẩn đoán
+                { id: "dx_appendicitis", label: "Viêm Ruột Thừa Cấp", type: "disease" },
+                { id: "dx_pancreatitis", label: "Viêm Tụy Cấp", type: "disease" },
+                { id: "dx_perforation", label: "Thủng Tạng Rỗng", type: "disease" },
+                { id: "dx_cholecystitis", label: "Viêm Túi Mật Cấp", type: "disease" }
+            ],
+            edges: [
+                { source: "sym_rlq_pain", target: "img_us_abd2", condition: "Nghi ruột thừa" },
+                { source: "sym_rlq_pain", target: "lab_cbc", condition: "Đánh giá viêm" },
+                { source: "sym_epi_pain", target: "lab_lipase", condition: "Nghi tụy" },
+                { source: "sym_guarding", target: "img_xray_abd", condition: "Nghi thủng tạng" },
+                { source: "sym_vomit", target: "lab_lipase", condition: "Nôn liên tục" },
+
+                { source: "lab_cbc", target: "img_ct_abd", condition: "Bạch cầu tăng cao" },
+                { source: "img_xray_abd", target: "dx_perforation", condition: "Liềm hơi dưới hoành" },
+                { source: "img_us_abd2", target: "dx_appendicitis", condition: "ĐK ruột thừa > 6mm" },
+                { source: "img_us_abd2", target: "dx_cholecystitis", condition: "Dày thành túi mật" },
+                { source: "lab_lipase", target: "dx_pancreatitis", condition: "Lipase tăng > 3x" },
+                { source: "img_ct_abd", target: "dx_appendicitis", condition: "Xác nhận ruột thừa" },
+                { source: "img_ct_abd", target: "dx_pancreatitis", condition: "Balthazar độ C/D/E" }
+            ]
+        };
+
+        // KHỞI TẠO STATE
+        let pathFinder = null;
+        let activeGraphData = jaundiceGraphData;
+        let selectedSymptoms = new Set(["sym_jaundice", "sym_ruq_pain"]);
+        let currentCriteria = "balanced";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            pathFinder = new DiagnosticPathFinder({
+                svgContainer: '#graphSvgContainer',
+                width: 920,
+                height: 540,
+                onNodeClick: (node) => {
+                    if (node.type === 'symptom') {
+                        toggleSymptom(node.id);
+                    }
+                }
+            });
+
+            window.currentPathFinder = pathFinder;
+            pathFinder.loadGraph(activeGraphData);
+            renderSymptomChips();
+            updateAnalysis();
+        });
+
+        function switchDataset(type) {
+            document.querySelectorAll('.tab-dataset-btn').forEach(b => b.classList.remove('active'));
+            if (type === 'jaundice') {
+                document.getElementById('tabJaundice').classList.add('active');
+                activeGraphData = jaundiceGraphData;
+                selectedSymptoms = new Set(["sym_jaundice", "sym_ruq_pain"]);
+            } else {
+                document.getElementById('tabAbdomen').classList.add('active');
+                activeGraphData = abdomenGraphData;
+                selectedSymptoms = new Set(["sym_rlq_pain", "sym_guarding"]);
+            }
+
+            pathFinder.loadGraph(activeGraphData);
+            renderSymptomChips();
+            updateAnalysis();
+        }
+
+        function renderSymptomChips() {
+            const container = document.getElementById('symptomChipsContainer');
+            if (!container || !activeGraphData) return;
+
+            const symptoms = activeGraphData.nodes.filter(n => n.type === 'symptom');
+            container.innerHTML = symptoms.map(s => {
+                const isSelected = selectedSymptoms.has(s.id);
+                return `
+                    <div class="chip-symptom ${isSelected ? 'selected' : ''}" onclick="toggleSymptom('${s.id}')">
+                        <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-circle-plus'}"></i> ${s.label}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleSymptom(symptomId) {
+            if (selectedSymptoms.has(symptomId)) {
+                selectedSymptoms.delete(symptomId);
+            } else {
+                selectedSymptoms.add(symptomId);
+            }
+            renderSymptomChips();
+            updateAnalysis();
+        }
+
+        function setCriteria(crit) {
+            currentCriteria = crit;
+            document.querySelectorAll('.btn-criteria').forEach(b => b.classList.remove('active'));
+            const btn = document.querySelector(`.btn-criteria[data-criteria="${crit}"]`);
+            if (btn) btn.classList.add('active');
+            updateAnalysis();
+        }
+
+        function updateAnalysis() {
+            const symptomArr = Array.from(selectedSymptoms);
+            const panelContainer = document.getElementById('analysisPanelContainer');
+            if (!panelContainer) return;
+
+            if (symptomArr.length === 0) {
+                panelContainer.innerHTML = `
+                    <div class="analysis-header">
+                        <span class="analysis-badge"><i class="fa-solid fa-circle-info"></i> CHỜ DỮ LIỆU</span>
+                        <h3>Chưa Chọn Triệu Chứng</h3>
+                    </div>
+                    <div class="analysis-body">
+                        <p style="color: var(--color-text-muted); font-size: 0.88rem;">Vui lòng chọn ít nhất 1 triệu chứng ở thanh trên để thuật toán Dijkstra & Steiner Tree tính toán đường đi tối ưu.</p>
+                    </div>
+                `;
+                pathFinder.renderGraph();
+                return;
+            }
+
+            // 1. Tính toán Steiner Tree Minimum Panel
+            const steinerResult = pathFinder.findSteinerPanel(symptomArr);
+
+            // 2. Xếp hạng chẩn đoán (Graph Matching)
+            const rankedDiagnoses = pathFinder.rankDiagnoses(symptomArr);
+            const topDisease = rankedDiagnoses.length > 0 ? rankedDiagnoses[0].disease : null;
+
+            // 3. Tìm đường đi Dijkstra ngắn nhất từ triệu chứng đầu tiên tới bệnh có xác suất cao nhất
+            let shortestPathResult = null;
+            if (topDisease) {
+                shortestPathResult = pathFinder.findOptimalPath(symptomArr[0], topDisease.id, currentCriteria);
+            }
+
+            // Highlight lên đồ thị SVG
+            const highlightedNodes = shortestPathResult ? shortestPathResult.nodes : [];
+            const highlightedEdges = shortestPathResult ? shortestPathResult.edges : [];
+            pathFinder.renderGraph(highlightedNodes, highlightedEdges);
+
+            // Render khung phân tích bên phải
+            let steinerTestsHtml = (steinerResult.recommendedTests || []).map(t => `
+                <div class="steiner-test-item">
+                    <span><i class="fa-solid fa-flask-vial text-teal"></i> ${t.label}</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.76rem; color: var(--color-text-muted);">${t.cost}k • ${t.timeMinutes}p</span>
+                </div>
+            `).join('');
+
+            let ranksHtml = rankedDiagnoses.slice(0, 3).map(r => `
+                <div class="rank-item">
+                    <div class="rank-item-header">
+                        <span>🔴 ${r.disease.label}</span>
+                        <span style="color: var(--color-primary); font-family: 'JetBrains Mono';">${r.matchPercentage}% Khớp</span>
+                    </div>
+                    <div class="rank-bar-bg">
+                        <div class="rank-bar-fill" style="width: ${r.matchPercentage}%;"></div>
+                    </div>
+                </div>
+            `).join('');
+
+            panelContainer.innerHTML = `
+                <div class="analysis-header">
+                    <span class="analysis-badge"><i class="fa-solid fa-chart-pie"></i> KẾT QUẢ TỐI ƯU HÓA</span>
+                    <h3>Phân Tích Đường Đi Lâm Sàng</h3>
+                </div>
+                <div class="analysis-body">
+                    
+                    <!-- Metrics Summary -->
+                    <div class="metrics-summary-grid">
+                        <div class="metric-box">
+                            <div class="metric-label">TỔNG CHI PHÍ</div>
+                            <div class="metric-val">${shortestPathResult ? shortestPathResult.totalCost : steinerResult.totalCost}k</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">THỜI GIAN CHỜ</div>
+                            <div class="metric-val">${shortestPathResult ? shortestPathResult.totalTimeMinutes : steinerResult.totalTime}p</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">XÂM LẤN (1-5)</div>
+                            <div class="metric-val" style="color: ${shortestPathResult && shortestPathResult.maxRisk > 2 ? 'var(--color-danger)' : 'var(--color-success)'};">
+                                Cấp ${shortestPathResult ? shortestPathResult.maxRisk : 1}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minimum Steiner Panel -->
+                    <div class="steiner-panel-box">
+                        <div class="steiner-panel-title">
+                            <i class="fa-solid fa-layer-group"></i> Gói Cận Lâm Sàng Bao Phủ Tối Thiểu (Steiner Panel):
+                        </div>
+                        <div class="steiner-test-list">
+                            ${steinerTestsHtml}
+                        </div>
+                    </div>
+
+                    <!-- Differential Diagnosis Ranking -->
+                    <div>
+                        <div class="finder-section-title"><i class="fa-solid fa-list-ol text-danger"></i> Xếp Hạng Chẩn Đoán Phân Biệt:</div>
+                        <div class="diagnosis-rank-list">
+                            ${ranksHtml}
+                        </div>
+                    </div>
+
+                </div>
+            `;
+        }
+    </script>
+</body>
+
+</html>

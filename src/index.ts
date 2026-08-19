@@ -30,6 +30,8 @@ import { router, CliniRouter } from './core/router';
 import { searchEngine, CliniSearchEngine } from './core/search-engine';
 import { contentLoaderEngine, ContentLoaderEngine } from './core/content-loader';
 import * as components from './components';
+import { clinicalNonIntrusiveUX } from './components/non-intrusive-ux';
+import { clinicalProvenance } from './content/ebm/provenance';
 import { initHeaderModals } from './components/header-modals';
 import { initDocSpaceRoutes } from './content/docspace/index';
 
@@ -535,6 +537,10 @@ function initCliniPortal(): void {
   setupGlobalQuickSearch();
   syncSidebarActiveState();
   initHeaderModals();
+
+  // Khởi tạo hệ thống Non-Intrusive UX (Focus Mode, Slide Drawer, Toast) và EBM Provenance
+  clinicalNonIntrusiveUX.init();
+  clinicalProvenance.init();
 
   // Nạp chỉ mục tìm kiếm offline cho 7 phân hệ y khoa
   searchEngine.initAllIndexes().then(() => {

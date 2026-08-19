@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trình diễn Hệ thống Trực quan hóa Cây Quyết định & Lưu đồ Lâm sàng Tương tác CliniPortal (Clinical Flow Engine)">
+    <title>Trực quan hóa Cây Quyết định Lâm sàng – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/sidebar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- CSS Clinical Flow Engine -->
+    <link rel="stylesheet" href="../css/components/clinical-flow-engine.css">
+
+    <style>
+        .demo-page-container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 4rem;
+        }
+
+        .demo-hero {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-teal), var(--color-warning));
+        }
+
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            background: var(--color-primary-hl);
+            color: var(--color-primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            border-radius: 999px;
+            margin-bottom: 0.65rem;
+        }
+
+        .demo-hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin: 0 0 0.4rem 0;
+        }
+
+        .demo-hero p {
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+            max-width: 960px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Flow Selection Tabs */
+        .flow-select-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            background: var(--color-surface-offset);
+            padding: 0.4rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            flex-wrap: wrap;
+        }
+
+        .flow-tab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.1rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--color-text-muted);
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .flow-tab-btn:hover {
+            color: var(--color-text);
+            background: var(--color-surface);
+        }
+
+        .flow-tab-btn.active {
+            background: var(--color-surface);
+            color: var(--color-primary);
+            border-color: var(--color-border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+
+    <script src="../components/header.js" defer></script>
+    <script src="../components/footer.js" defer></script>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <main class="main-wrapper demo-page-container">
+            
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+                    <li class="breadcrumb-item"><a href="clinical-flow-studio.html" class="breadcrumb-link">Studio</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Clinical Decision Engine</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Header -->
+            <header class="demo-hero">
+                <div class="demo-badge"><i class="fa-solid fa-code-branch"></i> VisuAlgo Clinical Engine v1.0</div>
+                <h1>HỆ THỐNG TRỰC QUAN HÓA CÂY QUYẾT ĐỊNH LÂM SÀNG</h1>
+                <p>Mô phỏng thuật toán ra quyết định y khoa tương tác từng bước: Hỗ trợ rẽ nhánh thông minh, tự động làm mờ các chẩn đoán đã bị loại trừ, lùi bước (Backtracking) và đồng bộ hóa với Khuyến cáo Y học Chứng cứ (EBM).</p>
+            </header>
+
+            <!-- Flow Selector Tabs -->
+            <div class="flow-select-tabs" role="tablist">
+                <button class="flow-tab-btn active" id="tabAcs" onclick="switchFlow('acs')">
+                    <i class="fa-solid fa-heart-pulse text-danger"></i> Ca 1: Tiếp cận Đau ngực Cấp & STEMI/NSTEMI
+                </button>
+                <button class="flow-tab-btn" id="tabPe" onclick="switchFlow('pe')">
+                    <i class="fa-solid fa-lungs text-primary"></i> Ca 2: Khó thở Cấp & Thuyên tắc Phổi (Wells PE)
+                </button>
+            </div>
+
+            <!-- Workspace: SVG Canvas + Inspector Panel -->
+            <div class="clinical-decision-workspace">
+                
+                <!-- Left Column: Interactive Flowchart Viewport -->
+                <section class="flow-viewport-container" id="flowEngineContainer">
+                    <!-- Được sinh tự động bởi ClinicalFlowEngine -->
+                </section>
+
+                <!-- Right Column: Synchronized Clinical Inspector -->
+                <aside class="inspector-panel-container" id="inspectorPanel">
+                    <!-- Được cập nhật tự động khi chọn node/nhánh -->
+                </aside>
+
+            </div>
+
+        </main>
+    </div>
+
+    <div id="footer-placeholder" data-footer-path="../components/footer.html"></div>
+
+    <!-- Scripts -->
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/clinical-flow-renderer.js"></script>
+
+    <script>
+        // Dữ liệu Sơ đồ 1: Tiếp cận Đau Ngực Cấp (ACS)
+        const acsDiagramData = {
+            id: "flow-acute-coronary",
+            title: "Tiếp cận Đau ngực Cấp tại Khoa Cấp Cứu",
+            width: 960,
+            height: 640,
+            rootId: "node-triage",
+            nodes: [
+                {
+                    id: "node-triage",
+                    type: "start",
+                    badge: "BƯỚC 1: TIẾP NHẬN",
+                    title: "Bệnh nhân Đau Ngực Cấp",
+                    subtitle: "Đo ECG 12 chuyển đạo trong vòng ≤ 10 phút",
+                    details: "Đánh giá ngay sinh hiệu: HA 2 tay, SpO2, Mạch. Mắc monitor theo dõi nhịp tim liên tục.",
+                    redFlags: ["Huyết áp tụt (HAtt < 90 mmHg)", "Khó thở dữ dội, SpO2 < 90%", "Rối loạn tri giác, vã mồ hôi lạnh"],
+                    evidence: "AHA/ESC 2023 Guideline: Thời gian Door-to-ECG bắt buộc ≤ 10 phút."
+                },
+                {
+                    id: "node-stemi",
+                    type: "focal",
+                    badge: "CẤP CỨU TỐI KHẨN",
+                    title: "Nhồi Máu Cơ Tim ST Chênh Lên (STEMI)",
+                    subtitle: "Kích hoạt khẩn cấp Phòng Can Thiệp Mạch Vành (Cath Lab)",
+                    details: "ST chênh lên ≥ 1mm ở ≥ 2 chuyển đạo liên tiếp (hoặc ≥ 2mm ở V2-V3) hoặc Block nhánh trái mới xuất hiện.",
+                    dose: "• Aspirin 300mg nhai ngậm + Ticagrelor 180mg (hoặc Clopidogrel 600mg)<br>• Heparin không phân đoạn (UFH) 60 UI/kg tiêm TM.",
+                    evidence: "Thời gian cửa - bóng (Door-to-Balloon) mục tiêu < 90 phút nếu có sẵn PCI; Tiêu sợi huyết trong 120 phút nếu chuyển viện xa."
+                },
+                {
+                    id: "node-nste-acs",
+                    type: "question",
+                    badge: "BƯỚC 2: PHÂN TẦNG",
+                    title: "ECG Không ST Chênh (NSTE-ACS)",
+                    subtitle: "Xét nghiệm Troponin HS (High-Sensitivity Troponin) 0h/1h",
+                    details: "ECG có thể bình thường, ST chênh xuống, sóng T âm hoặc thay đổi không đặc hiệu. Cần định lượng hs-cTn động học.",
+                    evidence: "Phác đồ ESC 0h/1h hoặc 0h/2h Algorithm có độ nhạy 99% loại trừ hoặc xác định NSTEMI."
+                },
+                {
+                    id: "node-nstemi",
+                    type: "danger",
+                    badge: "NGUY CƠ CAO",
+                    title: "NSTEMI / Đau Thắt Ngực Không Ổn Định",
+                    subtitle: "Troponin HS tăng động học ➔ Chụp mạch vành can thiệp ≤ 24h",
+                    details: "Bệnh nhân có tổn thương hoại tử cơ tim. Nhập viện đơn vị hồi sức tim mạch (CCU/ICU).",
+                    dose: "• Kháng đông: Enoxaparin 1mg/kg TDD mỗi 12 giờ<br>• DAPT: Aspirin + Ticagrelor/Clopidogrel<br>• Statin liều cao: Atorvastatin 80mg.",
+                    evidence: "Can thiệp mạch vành sớm trong vòng 24 giờ giảm biến cố tử vong và tái nhồi máu."
+                },
+                {
+                    id: "node-low-risk",
+                    type: "success",
+                    badge: "XUẤT VIỆN AN TOÀN",
+                    title: "Nguy Cơ Thấp - Loại Trừ ACS",
+                    subtitle: "Troponin HS âm tính + Điểm HEART Score ≤ 3",
+                    details: "Không có biến đổi ECG động học. Bệnh nhân hết đau ngực hoàn toàn, sinh hiệu ổn định.",
+                    evidence: "HEART Score ≤ 3 điểm có tỷ lệ biến cố tim mạch nặng (MACE) trong 6 tuần < 1.7%. Cho phép xuất viện và theo dõi ngoại trú."
+                }
+            ],
+            edges: [
+                { id: "e1", source: "node-triage", target: "node-stemi", label: "ECG: ST Chênh Lên", type: "danger" },
+                { id: "e2", source: "node-triage", target: "node-nste-acs", label: "ECG: Không ST Chênh", type: "normal" },
+                { id: "e3", source: "node-nste-acs", target: "node-nstemi", label: "Troponin HS (+) Động học", type: "danger" },
+                { id: "e4", source: "node-nste-acs", target: "node-low-risk", label: "Troponin HS (-) & HEART ≤ 3", type: "success" }
+            ]
+        };
+
+        // Dữ liệu Sơ đồ 2: Tiếp cận Khó Thở Nghi Thuyên Tắc Phổi (PE)
+        const peDiagramData = {
+            id: "flow-pulmonary-embolism",
+            title: "Tiếp cận Chẩn đoán Thuyên tắc Phổi (Pulmonary Embolism)",
+            width: 960,
+            height: 640,
+            rootId: "node-pe-triage",
+            nodes: [
+                {
+                    id: "node-pe-triage",
+                    type: "start",
+                    badge: "BƯỚC 1: ĐÁNH GIÁ",
+                    title: "Bệnh nhân Khó Thở Cấp Nghi PE",
+                    subtitle: "Đánh giá Huyết động & Tính Thang Điểm Wells PE",
+                    details: "Đau ngực kiểu màng phổi, ho ra máu, nhịp tim nhanh, tiền sử DVT/PE hoặc bất động kéo dài.",
+                    redFlags: ["Sốc tắc nghẽn: HAtt < 90 mmHg kéo dài", "Tụt áp đột ngột không do giảm thể tích", "Dấu hiệu tâm phế cấp trên siêu âm"],
+                    evidence: "ESC 2019 Guideline on Pulmonary Embolism."
+                },
+                {
+                    id: "node-pe-high",
+                    type: "focal",
+                    badge: "XÁC SUẤT CAO / SỐC",
+                    title: "Wells PE > 4 Điểm hoặc Huyết Động Không Ổn",
+                    subtitle: "Chụp CT Động Mạch Phổi (CTPA) Khẩn Cấp",
+                    details: "Nếu có sốc/tụt áp: Siêu âm tim tại giường (POCUS) tìm dấu hiệu dãn thất phải (McConnell's sign).",
+                    dose: "Bắt đầu Heparin không phân đoạn (UFH) ngay lập tức không chờ kết quả nếu không có chống chỉ định.",
+                    evidence: "Khởi động kháng đông sớm giúp giảm tỷ lệ tử vong do tắc mạch tái phát từ 30% xuống dưới 3%."
+                },
+                {
+                    id: "node-pe-low",
+                    type: "question",
+                    badge: "XÁC SUẤT THẤP / VỪA",
+                    title: "Wells PE ≤ 4 Điểm (PE Ít Khả Năng)",
+                    subtitle: "Chỉ định Xét nghiệm D-Dimer Độ Nhạy Cao",
+                    details: "Không có tụt huyết áp. Áp dụng ngưỡng D-Dimer theo tuổi (Tuổi × 10 đối với bệnh nhân > 50 tuổi).",
+                    evidence: "D-Dimer độ nhạy cao có giá trị dự đoán âm (NPV) > 99% để loại trừ PE."
+                },
+                {
+                    id: "node-pe-ddimer-pos",
+                    type: "danger",
+                    badge: "D-DIMER DƯƠNG TÍNH",
+                    title: "D-Dimer ≥ Ngưỡng Hiệu Chỉnh",
+                    subtitle: "Chỉ định Chụp CTPA Cắt Lớp Vi Tính",
+                    details: "Xác nhận chẩn đoán huyết khối trong lòng động mạch phổi bằng hình ảnh khuyết thuốc cản quang.",
+                    evidence: "Độ nhạy và độ đặc hiệu của CTPA đa dãy lần lượt đạt 83% và 96%."
+                },
+                {
+                    id: "node-pe-safe",
+                    type: "success",
+                    badge: "LOẠI TRỪ PE AN TOÀN",
+                    title: "D-Dimer < Ngưỡng (< 500 ng/mL)",
+                    subtitle: "Loại Trừ Thuyên Tắc Phổi An Toàn",
+                    details: "Không cần chụp CT, không dùng thuốc chống đông. Tìm kiếm các nguyên nhân khó thở khác (Hen, COPD, Viêm phổi).",
+                    evidence: "Nguy cơ biến cố thuyên tắc huyết khối trong 3 tháng theo dõi ở nhóm này < 0.3%."
+                }
+            ],
+            edges: [
+                { id: "pe-e1", source: "node-pe-triage", target: "node-pe-high", label: "Wells > 4 đ hoặc Tụt HA", type: "danger" },
+                { id: "pe-e2", source: "node-pe-triage", target: "node-pe-low", label: "Wells ≤ 4 đ (Huyết động ổn)", type: "normal" },
+                { id: "pe-e3", source: "node-pe-low", target: "node-pe-ddimer-pos", label: "D-Dimer (+)", type: "danger" },
+                { id: "pe-e4", source: "node-pe-low", target: "node-pe-safe", label: "D-Dimer (-)", type: "success" }
+            ]
+        };
+
+        // Khởi tạo Engine
+        let currentFlowEngine = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            currentFlowEngine = new ClinicalFlowEngine({
+                container: '#flowEngineContainer',
+                inspector: '#inspectorPanel',
+                width: 960,
+                height: 640
+            });
+
+            window.currentFlowEngine = currentFlowEngine;
+            currentFlowEngine.load(acsDiagramData);
+        });
+
+        function switchFlow(type) {
+            document.querySelectorAll('.flow-tab-btn').forEach(b => b.classList.remove('active'));
+            if (type === 'acs') {
+                document.getElementById('tabAcs').classList.add('active');
+                currentFlowEngine.load(acsDiagramData);
+            } else {
+                document.getElementById('tabPe').classList.add('active');
+                currentFlowEngine.load(peDiagramData);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trình phát Bước Tiếp Cận Lâm Sàng & Mô Phỏng Tiến Trình Cấp Cứu Theo Thời Gian (Clinical Step Player)">
+    <title>Mô Phỏng Cấp Cứu Theo Thời Gian – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/sidebar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+
+    <!-- CSS Flow Engine & Step Player -->
+    <link rel="stylesheet" href="../css/components/clinical-flow-engine.css">
+    <link rel="stylesheet" href="../css/components/clinical-step-player.css">
+
+    <style>
+        .player-demo-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 4rem;
+        }
+
+        .player-hero {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-danger), var(--color-warning), var(--color-teal));
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            background: var(--color-danger-hl);
+            color: var(--color-danger);
+            font-size: 0.82rem;
+            font-weight: 700;
+            border-radius: 999px;
+            margin-bottom: 0.65rem;
+        }
+
+        .player-hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text);
+            margin: 0 0 0.4rem 0;
+        }
+
+        .player-hero p {
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+            max-width: 980px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Preset Switcher */
+        .scenario-selector-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            background: var(--color-surface-offset);
+            padding: 0.4rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            flex-wrap: wrap;
+        }
+
+        .tab-scenario-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.15rem;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--color-text-muted);
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-scenario-btn:hover {
+            color: var(--color-text);
+            background: var(--color-surface);
+        }
+
+        .tab-scenario-btn.active {
+            background: var(--color-surface);
+            color: var(--color-danger);
+            border-color: var(--color-border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 3-Column Studio Layout */
+        .player-studio-grid {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1100px) {
+            .player-studio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="../components/header.js" defer></script>
+    <script src="../components/footer.js" defer></script>
+</head>
+
+<body>
+    <div id="header-placeholder" data-header-path="../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <main class="main-wrapper player-demo-page">
+
+            <!-- Breadcrumb -->
+            <nav aria-label="Breadcrumb" class="breadcrumb-container">
+                <ol class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="../index.html" class="breadcrumb-link"><span class="home-icon">🏠</span> Home</a></li>
+                    <li class="breadcrumb-item"><a href="clinical-decision-demo.html" class="breadcrumb-link">Cây Quyết Định</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Step Player Mô Phỏng</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Header -->
+            <header class="player-hero">
+                <div class="hero-tag"><i class="fa-solid fa-play"></i> VisuAlgo Clinical Step Player v2.0</div>
+                <h1>TRÌNH PHÁT BƯỚC TIẾP CẬN CẤP CỨU THEO THỜI GIAN</h1>
+                <p>Mô phỏng động quá trình xử trí cấp cứu từng giây/phút: Tích hợp đồng hồ đếm ngược chu kỳ CPR 2 phút, thanh trượt thời gian thực tế, cảnh báo lặp lại liều thuốc khẩn cấp và đồng bộ hóa với sơ đồ lưu đồ.</p>
+            </header>
+
+            <!-- Scenario Selection Tabs -->
+            <div class="scenario-selector-tabs" role="tablist">
+                <button class="tab-scenario-btn active" id="tabAcls" onclick="switchScenario('acls')">
+                    <i class="fa-solid fa-heart-crack text-danger"></i> Kịch bản 1: ACLS Ngừng Tuần Hoàn (Rung Thất VF / Nhanh Thất Vô Mạch)
+                </button>
+                <button class="tab-scenario-btn" id="tabSepsis" onclick="switchScenario('sepsis')">
+                    <i class="fa-solid fa-vial-virus text-warning"></i> Kịch bản 2: Gói Cấp Cứu Sốc Nhiễm Khuẩn Giờ Đầu (Hour-1 Bundle)
+                </button>
+            </div>
+
+            <!-- Top: Clinical Step Player Toolbar & Scrubber -->
+            <section id="stepPlayerContainer">
+                <!-- Được render tự động bởi ClinicalStepPlayer -->
+            </section>
+
+            <!-- Studio Grid: SVG Flowchart Viewport + Action Event Log -->
+            <div class="player-studio-grid">
+                
+                <!-- Left: Flowchart Canvas Viewport -->
+                <div class="flow-viewport-column">
+                    <div id="flowEngineContainer"></div>
+                </div>
+
+                <!-- Right: Action Checklist & Medication Alerts -->
+                <div class="action-log-column">
+                    <div id="actionLogContainer"></div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <div id="footer-placeholder" data-footer-path="../components/footer.html"></div>
+
+    <!-- Scripts -->
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/clinical-flow-renderer.js"></script>
+    <script src="../js/clinical-step-player.js"></script>
+
+    <script>
+        // 1. DỮ LIỆU SƠ ĐỒ LƯU ĐỒ ACLS
+        const aclsDiagram = {
+            id: "diagram-acls",
+            title: "Phác đồ ACLS Ngừng Tim 2025/2026",
+            width: 920,
+            height: 580,
+            rootId: "node-cpr-start",
+            nodes: [
+                {
+                    id: "node-cpr-start",
+                    type: "start",
+                    badge: "T+00:00 • KHỞI ĐỘNG",
+                    title: "Bắt đầu Hồi sinh Tim phổi (CPR)",
+                    subtitle: "Ép tim liên tục 100-120 l/p, độ sâu 5-6 cm. Mắc máy phá rung.",
+                    details: "Đảm bảo lồng ngực nở lại hoàn toàn. Hạn chế gián đoạn ép tim dưới 10 giây.",
+                    redFlags: ["Ép tim không đủ độ sâu", "Tăng thông khí quá mức (chỉ bóp bóng 10 l/p)"]
+                },
+                {
+                    id: "node-shock-1",
+                    type: "focal",
+                    badge: "T+00:15 • SỐC ĐIỆN 1",
+                    title: "Rung Thất (VF) ➔ Sốc điện 200J Biphasic",
+                    subtitle: "Phóng điện khẩn cấp ➔ Lập tức tiếp tục ép tim ngay 2 phút",
+                    details: "Không sờ mạch sau sốc điện. Ép tim tiếp tục ngay lập tức để tái lập tưới máu mạch vành.",
+                    dose: "Sốc điện 200J (Hai pha - Biphasic) hoặc 360J (Một pha - Monophasic)."
+                },
+                {
+                    id: "node-cycle-2min",
+                    type: "question",
+                    badge: "T+02:00 • HẾT 2 PHÚT",
+                    title: "Kiểm Tra Nhịp & Đổi Người Ép Tim",
+                    subtitle: "Đánh giá nhịp trên Monitor trong ≤ 5 giây",
+                    details: "Nếu vẫn là nhịp sốc được (VF / pVT) ➔ Sốc điện lần 2 (200J) + Tiêm thuốc Adrenalin.",
+                    evidence: "Đổi người ép tim mỗi 2 phút để tránh kiệt sức làm giảm chất lượng ép tim."
+                },
+                {
+                    id: "node-drug-adrenalin",
+                    type: "danger",
+                    badge: "T+02:15 • DƯỢC LÝ KHẨN",
+                    title: "Tiêm Adrenalin 1mg IV/IO",
+                    subtitle: "Adrenalin 1mg tiêm tĩnh mạch nhanh + 20ml dịch tráng",
+                    details: "Lặp lại mỗi 3-5 phút một lần trong suốt quá trình hồi sức tim phổi.",
+                    dose: "Adrenalin 1mg (1:1000) tiêm tĩnh mạch hoặc tủy xương (IO)."
+                },
+                {
+                    id: "node-shock-3-amiodarone",
+                    type: "focal",
+                    badge: "T+04:00 • SỐC LẦN 3",
+                    title: "Sốc điện Lần 3 + Amiodarone 300mg IV",
+                    subtitle: "VF dai dẳng: Tiêm bolus Amiodarone 300mg (hoặc Lidocaine 1.5mg/kg)",
+                    details: "Xem xét các nguyên nhân có thể đảo ngược (5H & 5T): Giảm oxy, Toan chuyển hóa, Tràn khí màng phổi áp lực...",
+                    dose: "Amiodarone 300mg bolus IV, liều thứ hai 150mg sau chu kỳ tiếp theo."
+                },
+                {
+                    id: "node-rosc",
+                    type: "success",
+                    badge: "T+05:30 • THÀNH CÔNG",
+                    title: "Tái Lập Tuần Hoàn Tự Nhiên (ROSC)",
+                    subtitle: "Bắt được mạch bẹn/cảnh, ETCO2 vọt lên > 40 mmHg",
+                    details: "Chuyển sang phác đồ Chăm sóc sau ngừng tim (Post-Cardiac Arrest Care): Duy trì HA mục tiêu, hạ thân nhiệt chỉ huy.",
+                    evidence: "Chụp mạch vành can thiệp khẩn nếu nghi ngờ nguyên nhân do hội chứng vành cấp."
+                }
+            ],
+            edges: [
+                { id: "e1", source: "node-cpr-start", target: "node-shock-1", label: "Monitor: Rung thất VF", type: "danger" },
+                { id: "e2", source: "node-shock-1", target: "node-cycle-2min", label: "Ép tim đủ 2 phút", type: "normal" },
+                { id: "e3", source: "node-cycle-2min", target: "node-drug-adrenalin", label: "Sốc lần 2 + Thuốc", type: "danger" },
+                { id: "e4", source: "node-drug-adrenalin", target: "node-shock-3-amiodarone", label: "VF dai dẳng (Hết 4p)", type: "danger" },
+                { id: "e5", source: "node-shock-3-amiodarone", target: "node-rosc", label: "Có mạch tự nhiên (ROSC)", type: "success" }
+            ]
+        };
+
+        // 2. KỊCH BẢN THỜI GIAN ACLS
+        const aclsTimelineScenario = {
+            id: "scenario-acls-vf",
+            title: "Cấp Cứu Ngừng Tim Rung Thất (VF / pVT)",
+            totalDurationSeconds: 360,
+            steps: [
+                {
+                    time: 0,
+                    nodeId: "node-cpr-start",
+                    actionTitle: "Xác nhận Ngừng Tim & Khởi động CPR",
+                    actionDesc: "Gọi báo động Code Blue. Bắt đầu ép tim 100-120 l/p, đặt monitor.",
+                    cprStatus: "running",
+                    alert: "Hạn chế gián đoạn ép tim không quá 10 giây!"
+                },
+                {
+                    time: 15,
+                    nodeId: "node-shock-1",
+                    actionTitle: "Phát hiện Rung Thất ➔ SỐC ĐIỆN LẦN 1 (200J)",
+                    actionDesc: "Hô 'Tất cả lùi ra'. Phóng điện 200J Biphasic ➔ Ép tim tiếp tục ngay!",
+                    cprStatus: "shock"
+                },
+                {
+                    time: 60,
+                    nodeId: "node-shock-1",
+                    actionTitle: "Thiết lập Đường truyền & Đặt bóng Mask",
+                    actionDesc: "Lấy 2 đường truyền tĩnh mạch lớn hoặc khoan tủy xương (IO). Chuẩn bị Adrenalin.",
+                    cprStatus: "running"
+                },
+                {
+                    time: 120,
+                    nodeId: "node-cycle-2min",
+                    actionTitle: "HẾT CHU KỲ 2 PHÚT ➔ Đổi người ép tim & Check nhịp",
+                    actionDesc: "Tạm dừng ép tim < 5s: Nhịp vẫn là VF ➔ Nạp máy sốc điện 200J.",
+                    cprStatus: "warning"
+                },
+                {
+                    time: 130,
+                    nodeId: "node-drug-adrenalin",
+                    actionTitle: "Sốc điện Lần 2 & Tiêm Adrenalin 1mg IV",
+                    actionDesc: "Phóng điện 200J lần 2. Tiêm Adrenalin 1mg + 20ml NaCl 0.9% tráng nhanh.",
+                    cprStatus: "drug"
+                },
+                {
+                    time: 180,
+                    nodeId: "node-drug-adrenalin",
+                    actionTitle: "Chuẩn bị Đặt Ống NKQ & Theo dõi ETCO2",
+                    actionDesc: "Đặt NKQ có bóng chèn, theo dõi dạng sóng CO2 cuối thì thở ra (ETCO2).",
+                    cprStatus: "running"
+                },
+                {
+                    time: 240,
+                    nodeId: "node-shock-3-amiodarone",
+                    actionTitle: "HẾT CHU KỲ 4 PHÚT ➔ Sốc điện Lần 3 & Tiêm Amiodarone 300mg",
+                    actionDesc: "VF kháng trị: Phóng điện lần 3 ➔ Bơm bolus Amiodarone 300mg IV.",
+                    cprStatus: "shock"
+                },
+                {
+                    time: 330,
+                    nodeId: "node-rosc",
+                    actionTitle: "TÁI LẬP TUẦN HOÀN TỰ NHIÊN (ROSC)",
+                    actionDesc: "ETCO2 tăng vọt lên 45 mmHg. Bắt được mạch cảnh rõ ràng. Huyết áp 110/70.",
+                    cprStatus: "done"
+                }
+            ]
+        };
+
+        // 3. DỮ LIỆU SƠ ĐỒ SEPSIS HOUR-1 BUNDLE
+        const sepsisDiagram = {
+            id: "diagram-sepsis",
+            title: "Gói Cấp Cứu Sốc Nhiễm Khuẩn Giờ Đầu (Hour-1 Sepsis Bundle)",
+            width: 920,
+            height: 580,
+            rootId: "node-sepsis-triage",
+            nodes: [
+                {
+                    id: "node-sepsis-triage",
+                    type: "start",
+                    badge: "T+00:00 • TIẾP NHẬN",
+                    title: "Nhận Diện Nhiễm Khuẩn Huyết",
+                    subtitle: "Sốt / Hạ thân nhiệt + Thở nhanh + Mạch nhanh + Nghi ngờ ổ nhiễm",
+                    details: "Đo ngay nồng độ Lactate máu tĩnh mạch hoặc khí máu động mạch.",
+                    evidence: "Surviving Sepsis Campaign 2021: Đo Lactate máu trong giờ đầu."
+                },
+                {
+                    id: "node-blood-culture",
+                    type: "question",
+                    badge: "T+00:10 • XÉT NGHIỆM",
+                    title: "Cấy Máu Trước Kháng Sinh",
+                    subtitle: "Lấy 2 bộ cấy máu ở 2 vị trí khác nhau",
+                    details: "Cấy máu trước khi dùng kháng sinh nhưng tuyệt đối không làm chậm trễ kháng sinh > 45 phút.",
+                    evidence: "Cấy máu trước KS tăng tỷ lệ phân lập đúng vi khuẩn lên hơn 50%."
+                },
+                {
+                    id: "node-antibiotics",
+                    type: "focal",
+                    badge: "T+00:25 • KHÁNG SINH KHẨN",
+                    title: "Kháng Sinh Phổ Rộng Tĩnh Mạch",
+                    subtitle: "Bắt đầu kháng sinh kinh nghiệm phổ rộng trong vòng ≤ 1 giờ",
+                    details: "Mỗi 1 giờ chậm trễ kháng sinh làm tăng tỷ lệ tử vong thêm 7.6%.",
+                    dose: "Meropenem 1g IV hoặc Piperacillin/Tazobactam 4.5g IV ± Vancomycin."
+                },
+                {
+                    id: "node-fluid",
+                    type: "danger",
+                    badge: "T+00:40 • BÙ DỊCH NHANH",
+                    title: "Truyền Dịch Tinh Thể 30 ml/kg",
+                    subtitle: "Cho bệnh nhân tụt áp (HAtt < 90 mmHg) hoặc Lactate ≥ 4 mmol/L",
+                    details: "Dùng dung dịch tinh thể cân bằng (Lactate Ringer) trong vòng 3 giờ đầu.",
+                    dose: "Lactate Ringer 30 ml/kg (Ví dụ: BN 60kg truyền nhanh 1800 ml)."
+                },
+                {
+                    id: "node-vasopressor",
+                    type: "success",
+                    badge: "T+00:55 • VẬN MẠCH",
+                    title: "Noradrenaline Duy Trì MAP ≥ 65 mmHg",
+                    subtitle: "Khởi động vận mạch nếu tụt áp trơ với bù dịch",
+                    details: "Noradrenaline là thuốc vận mạch lựa chọn hàng đầu trong sốc nhiễm khuẩn.",
+                    dose: "Bơm tiêm điện Noradrenaline khởi đầu 0.05 - 0.1 mcg/kg/phút, chuẩn độ theo MAP."
+                }
+            ],
+            edges: [
+                { id: "se-1", source: "node-sepsis-triage", target: "node-blood-culture", label: "Đo Lactate & Cấy máu", type: "normal" },
+                { id: "se-2", source: "node-blood-culture", target: "node-antibiotics", label: "Kháng sinh tĩnh mạch", type: "danger" },
+                { id: "se-3", source: "node-antibiotics", target: "node-fluid", label: "Tụt áp / Lactate ≥ 4", type: "danger" },
+                { id: "se-4", source: "node-fluid", target: "node-vasopressor", label: "MAP < 65 mmHg", type: "success" }
+            ]
+        };
+
+        // 4. KỊCH BẢN THỜI GIAN SEPSIS
+        const sepsisTimelineScenario = {
+            id: "scenario-sepsis-hour1",
+            title: "Gói Xử Trí Sốc Nhiễm Khuẩn Giờ Đầu (Hour-1 Bundle)",
+            totalDurationSeconds: 360,
+            steps: [
+                {
+                    time: 0,
+                    nodeId: "node-sepsis-triage",
+                    actionTitle: "Đo Lactate Máu Ngay Khi Tiếp Nhận",
+                    actionDesc: "Lấy khí máu / máu tĩnh mạch đo Lactate ban đầu. Đo lại sau 2-4 giờ nếu Lactate > 2 mmol/L.",
+                    cprStatus: "running"
+                },
+                {
+                    time: 60,
+                    nodeId: "node-blood-culture",
+                    actionTitle: "Lấy 2 Bộ Cấy Máu Kỵ Khí & Hiếu Khí",
+                    actionDesc: "Sát khuẩn da đúng quy trình, lấy máu tại 2 vị trí tĩnh mạch riêng biệt.",
+                    cprStatus: "running"
+                },
+                {
+                    time: 150,
+                    nodeId: "node-antibiotics",
+                    actionTitle: "Tiêm Kháng Sinh Phổ Rộng Đường Tĩnh Mạch",
+                    actionDesc: "Bắt đầu Meropenem 1g IV truyền trong 30 phút. Không chờ kết quả cấy máu.",
+                    cprStatus: "drug",
+                    alert: "Mục tiêu: Hoàn tất liều đầu trong ≤ 60 phút từ khi tiếp nhận!"
+                },
+                {
+                    time: 240,
+                    nodeId: "node-fluid",
+                    actionTitle: "Truyền Dịch Tốc Độ Cao 30 ml/kg Ringer Lactate",
+                    actionDesc: "Huyết áp tụt 80/50 mmHg. Xả nhanh chai Ringer Lactate 1000ml qua 2 đường truyền ngoại biên.",
+                    cprStatus: "running"
+                },
+                {
+                    time: 330,
+                    nodeId: "node-vasopressor",
+                    actionTitle: "Khởi Động Bơm Tiêm Điện Noradrenaline",
+                    actionDesc: "Huyết áp trung bình MAP vẫn < 65 mmHg sau 1000ml dịch ➔ Bắt đầu Noradrenaline 0.1 mcg/kg/phút.",
+                    cprStatus: "done"
+                }
+            ]
+        };
+
+        // KHỞI TẠO HỆ THỐNG
+        let flowEngine = null;
+        let stepPlayer = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            flowEngine = new ClinicalFlowEngine({
+                container: '#flowEngineContainer',
+                width: 920,
+                height: 580
+            });
+
+            stepPlayer = new ClinicalStepPlayer({
+                container: '#stepPlayerContainer',
+                logContainer: '#actionLogContainer',
+                flowEngine: flowEngine
+            });
+
+            window.currentStepPlayer = stepPlayer;
+            window.currentFlowEngine = flowEngine;
+
+            // Load kịch bản mặc định (ACLS)
+            switchScenario('acls');
+        });
+
+        function switchScenario(type) {
+            document.querySelectorAll('.tab-scenario-btn').forEach(b => b.classList.remove('active'));
+            if (type === 'acls') {
+                document.getElementById('tabAcls').classList.add('active');
+                flowEngine.load(aclsDiagram);
+                stepPlayer.loadScenario(aclsTimelineScenario);
+            } else {
+                document.getElementById('tabSepsis').classList.add('active');
+                flowEngine.load(sepsisDiagram);
+                stepPlayer.loadScenario(sepsisTimelineScenario);
+            }
+        }
+    </script>
+</body>
+
+</html>
