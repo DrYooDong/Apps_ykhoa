@@ -920,3 +920,60 @@
   margin-top: 0.75rem;
 }
 
+/* ══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE ENHANCEMENTS (<= 768px & <= 480px)
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .ebm-hero-banner {
+    padding: 2rem 1.25rem !important;
+    border-radius: 16px !important;
+  }
+
+  .study-type-selector {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+  }
+
+  .study-type-pill {
+    flex-shrink: 0;
+  }
+
+  .table-2x2-box {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nomogram-svg-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .casp-summary-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-2x2-grid {
+    grid-template-columns: 75px 1fr 1fr;
+    gap: 0.35rem;
+  }
+
+  .diag-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cell-head {
+    font-size: 0.72rem;
+  }
+
+  .input-sm {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
+}
+

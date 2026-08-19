@@ -40,17 +40,74 @@ window.getPathDepthPrefix = function() {
   return './';
 };
 
-// Auto-load Clinical Tools & Universal Web Components
+// Auto-load Clinical Tools & Universal UX Foundation Components
 (function loadGlobalComponents() {
-      if (!document.querySelector('script[src*="tool-components.js"]')) {
-        const currentScript = document.currentScript || document.querySelector('script[src*="main.js"]');
-        const basePath = currentScript ? currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1) : '../../../js/';
-        const script = document.createElement('script');
-        script.src = basePath + 'components/tool-components.js';
-        script.defer = true;
-        document.head.appendChild(script);
-      }
-    })();
+  const currentScript = document.currentScript || document.querySelector('script[src*="main.js"]');
+  const basePath = currentScript ? currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1) : '../../../js/';
+  const cssBasePath = basePath.replace(/\/js\/$/, '/css/');
+
+  // Helper to safely inject CSS if not already present
+  function injectCss(href) {
+    if (!document.querySelector(`link[href*="${href.split('/').pop()}"]`)) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  }
+
+  // Helper to safely inject JS if not already present
+  function injectJs(src) {
+    if (!document.querySelector(`script[src*="${src.split('/').pop()}"]`)) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  }
+
+  // 1. Tool Web Components
+  injectJs(basePath + 'components/tool-components.js');
+
+  // 2. UX Foundation: Skeleton Loading
+  injectCss(cssBasePath + 'components/skeleton-loading.css');
+  injectJs(basePath + 'components/skeleton-loader.js');
+
+  // 3. UX Foundation: Reading Progress Bar
+  injectCss(cssBasePath + 'components/reading-progress.css');
+  injectJs(basePath + 'components/reading-progress.js');
+
+  // 4. UX Foundation: Bookmarks & Study Tracker
+  injectCss(cssBasePath + 'components/bookmarks.css');
+  injectJs(basePath + 'components/bookmarks.js');
+
+  // 5. Search & Discovery: Global Type-Ahead Search (Command Palette)
+  const dataBasePath = basePath.replace(/\/js\/$/, '/data/');
+  injectJs(dataBasePath + 'quick-search-index.js');
+  injectCss(cssBasePath + 'components/global-search.css');
+  injectJs(basePath + 'components/global-search.js');
+
+  // 6. Search & Discovery: Medical Term Tooltips
+  injectJs(dataBasePath + 'medical-terms.js');
+  injectCss(cssBasePath + 'components/medical-tooltips.css');
+  injectJs(basePath + 'components/medical-tooltips.js');
+
+  // 7. Navigation & Polish: Stripe Follow-Along Mega Menu
+  injectCss(cssBasePath + 'components/mega-menu.css');
+  injectJs(basePath + 'components/mega-menu.js');
+
+  // 8. Navigation & Polish: Slide-In Scroll Animations
+  injectCss(cssBasePath + 'components/scroll-animations.css');
+  injectJs(basePath + 'components/scroll-animations.js');
+
+  // 9. Navigation & Polish: Click & Drag Horizontal Scroll
+  injectCss(cssBasePath + 'components/drag-scroll.css');
+  injectJs(basePath + 'components/drag-scroll.js');
+
+  // 10. Engagement & Gamification: Quiz Timer
+  injectCss(cssBasePath + 'components/quiz-timer.css');
+  injectJs(basePath + 'components/quiz-timer.js');
+})();
 
     (function initThemeAndFontSizeManager() {
       const html = document.documentElement;

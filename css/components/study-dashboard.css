@@ -1,0 +1,281 @@
+/* ============================================================
+   PERSONAL STUDY DASHBOARD (study-dashboard.css)
+   CliniPortal Framework — Vanilla Bento Grid & Gamification
+   ============================================================ */
+
+.dashboard-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Hero Profile Banner */
+.dashboard-hero {
+  background: var(--gradient-hero, linear-gradient(135deg, #0284c7 0%, #6366f1 50%, #8b5cf6 100%));
+  border-radius: var(--radius-xl, 20px);
+  padding: 2rem 2.25rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 12px 32px rgba(2, 132, 199, 0.22);
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+[data-theme="dark"] .dashboard-hero {
+  background: var(--gradient-hero-dark, linear-gradient(135deg, #0c4a6e 0%, #312e81 50%, #4c1d95 100%));
+}
+
+.dashboard-hero-info h1 {
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem);
+  font-weight: 800;
+  margin: 0 0 0.4rem 0;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-hero-info p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.dashboard-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: var(--radius-full, 9999px);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Bento Grid */
+.dashboard-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* KPI Card */
+.dashboard-kpi-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-lg, 14px);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(15, 23, 42, 0.1));
+}
+
+[data-theme="dark"] .dashboard-kpi-card {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+}
+
+.dashboard-kpi-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+
+.dashboard-kpi-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  line-height: 1.1;
+}
+
+.dashboard-kpi-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #64748b);
+  font-weight: 600;
+}
+
+/* Main Section Layout */
+.dashboard-layout-row {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .dashboard-layout-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-panel {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-lg, 14px);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06));
+}
+
+[data-theme="dark"] .dashboard-panel {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+}
+
+.dashboard-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-divider, #e2e8f0);
+  padding-bottom: 0.75rem;
+}
+
+.dashboard-panel-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mastery Progress Bars */
+.module-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.module-progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.module-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text, #0f172a);
+}
+
+.module-progress-track {
+  height: 8px;
+  background: var(--color-surface-offset, #e2e8f0);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .module-progress-track {
+  background: var(--color-surface-offset, #1a2840);
+}
+
+.module-progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Badges Grid */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.85rem;
+}
+
+.badge-item {
+  padding: 1rem 0.75rem;
+  background: var(--color-surface-2, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 10px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.badge-item.unlocked {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: rgba(245, 158, 11, 0.05);
+}
+
+.badge-item.locked {
+  opacity: 0.5;
+  filter: grayscale(0.9);
+}
+
+.badge-item-icon {
+  font-size: 2rem;
+  margin-bottom: 2px;
+}
+
+.badge-item-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+
+/* Actions & Sync */
+.dashboard-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-btn {
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #0f172a);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.dashboard-btn:hover {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  color: var(--color-primary, #0284c7);
+  border-color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .dashboard-btn {
+  background: var(--color-surface-2, #162032);
+  border-color: var(--color-border, #263a57);
+}

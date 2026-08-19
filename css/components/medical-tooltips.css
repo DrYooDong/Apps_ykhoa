@@ -1,0 +1,104 @@
+/* ============================================================
+   MEDICAL TERM TOOLTIPS (medical-tooltips.css)
+   CliniPortal Framework — Vanilla High-Performance UI
+   ============================================================ */
+
+/* Highlighted Term In Content */
+.med-term {
+  border-bottom: 1.5px dotted var(--color-primary, #0284c7);
+  color: inherit;
+  cursor: help;
+  position: relative;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  font-weight: 500;
+}
+
+.med-term:hover {
+  color: var(--color-primary, #0284c7);
+  border-bottom-style: solid;
+}
+
+/* Floating Tooltip Container */
+.med-tooltip-box {
+  position: fixed;
+  z-index: 10010;
+  max-width: 340px;
+  min-width: 240px;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-md, 10px);
+  padding: 0.9rem 1rem;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18), 0 2px 6px rgba(15, 23, 42, 0.06);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--color-text, #0f172a);
+}
+
+.med-tooltip-box.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .med-tooltip-box {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* Tooltip Header */
+.med-tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 0.45rem;
+  border-bottom: 1px solid var(--color-divider, #e2e8f0);
+  padding-bottom: 0.4rem;
+}
+
+.med-tooltip-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-primary, #0284c7);
+}
+
+.med-tooltip-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--color-surface-offset, #f1f5f9);
+  color: var(--color-text-muted, #64748b);
+  white-space: nowrap;
+}
+
+/* Tooltip Body */
+.med-tooltip-def {
+  margin: 0 0 0.5rem 0;
+  color: var(--color-text, #0f172a);
+  font-size: 0.8rem;
+}
+
+/* Clinical Pearl Box */
+.med-tooltip-pearl {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08));
+  border-left: 3px solid var(--color-primary, #0284c7);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.75rem;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.med-tooltip-pearl-icon {
+  color: var(--color-warning, #f59e0b);
+  flex-shrink: 0;
+  margin-top: 1px;
+}

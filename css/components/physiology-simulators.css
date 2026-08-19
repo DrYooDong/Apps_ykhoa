@@ -335,3 +335,72 @@
   background: #1e293b;
   border-color: #334155;
 }
+
+/* ============================================================
+   MOBILE RESPONSIVE SYSTEM (PHYSIOLOGY SIMULATORS)
+   ============================================================ */
+@media (max-width: 900px) {
+  .sim-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sim-card {
+    padding: 1.15rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .sim-nav-pills {
+    gap: 0.4rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .sim-pill-btn {
+    padding: 0.55rem 0.95rem !important;
+    font-size: 0.825rem !important;
+  }
+
+  .sim-preset-group {
+    gap: 0.45rem !important;
+  }
+
+  .sim-preset-btn {
+    padding: 0.45rem 0.8rem !important;
+    font-size: 0.78rem !important;
+    min-height: 38px !important;
+  }
+
+  .sim-readout-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+  }
+
+  .sim-readout-box {
+    padding: 0.75rem !important;
+    border-radius: 10px !important;
+  }
+
+  .sim-readout-val {
+    font-size: 1.15rem !important;
+  }
+
+  .sim-viz-wrapper {
+    min-height: 280px !important;
+    padding: 0.75rem !important;
+    border-radius: 12px !important;
+  }
+
+  .sim-slider {
+    height: 36px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .sim-readout-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+

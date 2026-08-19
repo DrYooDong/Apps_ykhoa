@@ -104,6 +104,7 @@
 | `components/chinh-lieu-khang-sinh.css` | Styling giao diện Chỉnh liều kháng sinh & Tra cứu KSĐ | `pages/Công cụ/Truyền Nhiễm/chinh-lieu-khang-sinh.html` |
 | `components/studio-system.css` | Studio Design System CSS chuẩn cho tất cả công cụ Studio | `pages/Công cụ/**` |
 | `components/bento-components.css` | Styling Bento Component System y khoa (KPI Card, Safety Gauge, Node Status, Comparison Matrix) | `pages/Công cụ/**`, `index.html` |
+| `components/non-intrusive-ui.css` | Styling Non-Intrusive Design System (Focus Mode, Slide-over Drawer, Progressive Details, Glance Card, Ambient Toasts) | Mọi trang bài viết & phác đồ |
 | `components/physiology-simulators.css` | Styling Phòng thí nghiệm Mô phỏng Sinh lý định lượng 6 models | `src/content/pathophysiology/simulators/**` |
 | `components/metabolic-navigator.css` | Styling Bản đồ Chuyển hóa Phân tử 8 chu trình & Metabolic Studio | `src/content/pathophysiology/biochemistry/**` |
 
@@ -115,6 +116,8 @@
 | File / Subfolder | Vai trò | Dùng cho |
 |------|---------|---------|
 | `main.js` | Theme switching, sidebar toggle, keyboard shortcuts (Root Controller) | Mọi trang |
+| `non-intrusive-engine.js` | Non-Intrusive Clinical UX Controller (Focus Mode, Slide-over Drawers, Progressive Disclosure, Ambient Toasts) | Mọi trang bài viết & phác đồ |
+| `provenance-engine.js` | Clinical Provenance & Auditability Engine (5-tier EBM Badges, Audit Bar, Protocol Changelog Timeline) | Mọi trang bài viết & phác đồ |
 | `toc.js` | Engine tự động xây dựng & theo dõi mục lục động bám dính (Sticky TOC) | Mọi trang có bài viết dài |
 | `core/cliniportal-sync.js` | Engine đồng bộ thời gian thực 4 module y khoa & kho Guidelines EBM | Xuyên phân hệ |
 | `core/mui-port.js` | Xử lý tương tác Material UI components (Ripple, Accordion, Animated Tabs, Dialogs) | Demo MUI & các trang tùy chọn |

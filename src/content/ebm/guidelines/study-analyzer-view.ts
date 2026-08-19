@@ -194,7 +194,7 @@ export function initStudyAnalyzerController(): void {
     const s = cachedStats;
 
     return `
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 1.5rem;">
         
         <!-- Left: Input Form -->
         <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem;">
@@ -213,7 +213,7 @@ export function initStudyAnalyzerController(): void {
               <input type="text" id="txtOutcomeName" class="dsp-input" value="${escapeHtml(currentTable.outcomeName)}" style="width: 100%; font-size: 13px;" />
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: rgba(2,132,199,0.04); padding: 12px; border-radius: 8px; border: 1px solid rgba(2,132,199,0.15);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 12px; background: rgba(2,132,199,0.04); padding: 12px; border-radius: 8px; border: 1px solid rgba(2,132,199,0.15);">
               <div>
                 <strong style="color: var(--color-primary); font-size: 13px; display: block; margin-bottom: 8px;"><i class="fa-solid fa-pills"></i> Nhóm Can Thiệp (I)</strong>
                 <label style="font-size: 11.5px; display: block; margin-bottom: 2px;">Số biến cố (E1):</label>
@@ -376,7 +376,7 @@ export function initStudyAnalyzerController(): void {
 
   function renderRobDomainRow(id: string, title: string, help: string, currentScore: string, currentNote: string): string {
     return `
-      <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 12px 16px; display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 14px; align-items: center;">
+      <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 8px; padding: 12px 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px; align-items: center;">
         <div>
           <strong style="font-size: 13px; color: var(--color-text);">${escapeHtml(title)}</strong>
           <div style="font-size: 11px; color: var(--color-text-muted);">${escapeHtml(help)}</div>
@@ -447,7 +447,7 @@ export function initStudyAnalyzerController(): void {
 
     return `
       <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border); border-radius: 12px; padding: 1.5rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); padding-bottom: 10px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); padding-bottom: 10px; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
           <div>
             <h3 style="margin: 0; font-size: 1.2rem; font-weight: 800; color: var(--color-text);">
               <i class="fa-solid fa-award" style="color: #10b981;"></i> Phân Tầng Chất Lượng Bằng Chứng (GRADE Evidence Profiler)
@@ -463,7 +463,7 @@ export function initStudyAnalyzerController(): void {
           </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 14px; margin-bottom: 20px;">
           <div style="background: var(--color-bg); padding: 12px; border-radius: 8px; border: 1px solid var(--color-border);">
             <strong style="font-size: 13px; color: var(--color-text); display: block; margin-bottom: 6px;">Thiết kế nghiên cứu gốc:</strong>
             <select id="selGradeDesign" class="dsp-input" style="width: 100%; font-size: 12.5px;">

@@ -1690,4 +1690,68 @@
     @keyframes dspFadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
-    }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MOBILE RESPONSIVE ENHANCEMENTS FOR YHCC HUB
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .hub-hero-vippro {
+        padding: 2rem 1.25rem !important;
+        border-radius: 18px !important;
+      }
+
+      .hub-command-search-wrapper {
+        margin-top: 1.25rem;
+      }
+
+      .hub-command-search {
+        padding: 0.45rem 0.45rem 0.45rem 1.15rem;
+      }
+
+      .hub-hotkey-badge {
+        display: none;
+      }
+
+      .ebm-quick-calc-box {
+        padding: 1rem;
+        border-radius: 12px;
+      }
+
+      .ebm-quick-calc-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 0.5rem;
+      }
+
+      .ebm-calc-result-tile {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .ebm-spec-pills-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
+      }
+
+      .ebm-spec-chip {
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hub-hero-title-main {
+        font-size: 1.55rem !important;
+      }
+
+      .hub-hero-btn-kho {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .ebm-calc-val-num {
+        font-size: 1.1rem;
+      }
+    }
+

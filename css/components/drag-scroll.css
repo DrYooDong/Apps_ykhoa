@@ -1,0 +1,44 @@
+/* ============================================================
+   HORIZONTAL DRAG SCROLL (drag-scroll.css)
+   CliniPortal Framework — Vanilla High-Performance UI
+   ============================================================ */
+
+.drag-scroll-container,
+[data-drag-scroll="true"] {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border, #cbd5e1) transparent;
+  transition: transform 0.1s ease;
+}
+
+.drag-scroll-container.is-dragging,
+[data-drag-scroll="true"].is-dragging {
+  cursor: grabbing !important;
+  scroll-behavior: auto !important;
+}
+
+.drag-scroll-container.is-dragging * {
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+/* Custom Scrollbar */
+.drag-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.drag-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drag-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-border, #cbd5e1);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .drag-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-border, #263a57);
+}

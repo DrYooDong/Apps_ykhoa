@@ -1009,4 +1009,61 @@
 
     .diff-transition {
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MOBILE RESPONSIVE ENHANCEMENTS FOR RADAR
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .radar-hero {
+        padding: 2rem 1.25rem !important;
+        border-radius: 16px !important;
+      }
+
+      .radar-hero h1 {
+        font-size: 1.6rem !important;
+      }
+
+      .radar-view-modes {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
+      }
+
+      .radar-view-mode-btn {
+        flex-shrink: 0;
+      }
+
+      .radar-controls-card {
+        padding: 1rem !important;
+        border-radius: 14px !important;
+      }
+
+      .radar-card {
+        padding: 1.25rem !important;
+        border-radius: 14px !important;
+      }
+
+      .radar-modal-box {
+        padding: 1.25rem !important;
+        border-radius: 16px !important;
+        max-width: 95vw !important;
+      }
+
+      .alignment-matrix-table-wrap,
+      .matrix-view-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .radar-header-actions {
+        width: 100%;
+      }
+      .radar-diff-body {
+        grid-template-columns: 1fr !important;
+      }
+    }

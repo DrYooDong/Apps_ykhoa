@@ -2538,79 +2538,352 @@ body:has(#app .dsp-layout) .dsp-layout {
 }
 
 /* ═══════════════════════════════════════════════
-   RESPONSIVE — MOBILE
+   SOAP ELECTRONIC PRESCRIPTION (eRx) ROWS
 ═══════════════════════════════════════════════ */
 
-@media (max-width: 768px) {
-  .dsp-layout {
-    flex-direction: column;
+.rx-item-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 32px;
+  gap: 6px;
+  align-items: center;
+  background: var(--color-surface);
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  font-size: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rx-item-row:hover {
+  border-color: var(--color-primary);
+}
+
+.rx-item-row .dsp-input {
+  min-width: 0;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — MOBILE & TABLET (100% MOBILE FIRST)
+═══════════════════════════════════════════════ */
+
+/* Mobile Sidebar Backdrop Overlay */
+.dsp-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1150;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dsp-sidebar-backdrop.is-active {
+  display: block;
+  opacity: 1;
+}
+
+/* P2P Sync Modal Overrides */
+.dsp-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1080 !important;
+  background: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+}
+
+.dsp-modal-content {
+  background: var(--color-surface, #ffffff) !important;
+  border: 1px solid var(--color-border, #e2e8f0) !important;
+  border-radius: 14px !important;
+  width: 100% !important;
+  max-width: 580px !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35) !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 900px) {
+  /* Studios 2-col inline grid fallback to 1-col */
+  .dsp-panels-container div[style*="grid-template-columns:1.5fr 1fr"],
+  .dsp-panels-container div[style*="grid-template-columns: 1.5fr 1fr"],
+  .dsp-panels-container div[style*="grid-template-columns:1.2fr 1fr"],
+  .dsp-panels-container div[style*="grid-template-columns: 1.2fr 1fr"],
+  .dsp-panels-container div[style*="grid-template-columns:1fr 1fr"],
+  .dsp-panels-container div[style*="grid-template-columns: 1fr 1fr"],
+  .dsp-panels-container div[style*="grid-template-columns:1fr 1.2fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 
+  /* AI Insights Dashboard 12-col grid fallback */
+  .dsp-page-content div[style*="grid-template-columns: repeat(12, 1fr)"],
+  .dsp-page-content div[style*="grid-template-columns:repeat(12, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .dsp-page-content div[style*="grid-column: span 12"],
+  .dsp-page-content div[style*="grid-column: span 7"],
+  .dsp-page-content div[style*="grid-column: span 5"],
+  .dsp-page-content div[style*="grid-column:span 12"],
+  .dsp-page-content div[style*="grid-column:span 7"],
+  .dsp-page-content div[style*="grid-column:span 5"] {
+    grid-column: span 1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. Layout & Shell */
+  .dsp-layout {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .dsp-main {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dsp-page-content {
+    padding: 0.85rem 0.75rem 4rem 0.75rem !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 2. Off-Canvas Sidebar Drawer */
   .dsp-sidebar {
-    width: 100% !important;
-    height: auto;
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-    flex-direction: row;
-    align-items: center;
-    overflow: hidden;
-    overflow-x: auto;
-    background: var(--color-surface);
-    z-index: 10;
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 290px !important;
+    max-width: 86vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    z-index: 1200 !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+    box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+    background: var(--color-surface, #0f172a) !important;
+    border-right: 1px solid var(--color-border) !important;
+    border-bottom: none !important;
+  }
+
+  .dsp-sidebar.dsp-sidebar--mobile-open {
+    transform: translateX(0) !important;
+    box-shadow: 12px 0 45px rgba(0, 0, 0, 0.5) !important;
   }
 
   .dsp-sidebar-header,
   .dsp-sidebar-profile,
-  .dsp-sidebar-footer { display: none; }
+  .dsp-sidebar-footer {
+    display: flex !important;
+  }
+
+  .dsp-sidebar-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+    margin-top: auto !important;
+    padding: 0.75rem !important;
+    border-top: 1px solid var(--dsp-glass-border) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+  }
 
   .dsp-nav {
-    display: flex;
-    padding: 0.25rem 0.5rem;
-    flex-direction: row;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.85rem !important;
+    padding: 0.75rem 0.65rem !important;
+    overflow-x: visible !important;
+    white-space: normal !important;
   }
 
   .dsp-nav-item {
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.65rem;
-    border-radius: var(--radius-sm, 0.25rem);
-    min-width: 4.5rem;
-    text-align: center;
+    flex-direction: row !important;
+    gap: 0.75rem !important;
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.88rem !important;
+    border-radius: 10px !important;
+    min-width: 0 !important;
+    min-height: 44px !important;
+    text-align: left !important;
+    width: 100% !important;
   }
 
-  .dsp-nav-item i { font-size: 1.1rem; width: auto; }
-  .dsp-soon-badge { display: none; }
+  .dsp-nav-item i {
+    font-size: 1rem !important;
+    width: 1.25rem !important;
+  }
 
-  /* Mobile Active Indicator Fix */
-  .dsp-nav-item--active::before { display: none; }
+  .dsp-nav-item--active::before {
+    display: block !important;
+  }
+
   .dsp-nav-item--active {
-    background: rgba(2, 132, 199, 0.08);
-    border-bottom: 2px solid var(--color-primary);
-    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    background: linear-gradient(90deg, rgba(14, 165, 233, 0.18), rgba(14, 165, 233, 0.04)) !important;
+    border-color: rgba(14, 165, 233, 0.3) !important;
+    border-bottom: 1px solid transparent !important;
+    border-radius: 10px !important;
   }
 
+  /* 3. Header Bar Mobile */
+  .dsp-header-bar {
+    padding: 0 0.85rem !important;
+    height: 56px !important;
+  }
+
+  .dsp-header-mobile-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    font-size: 1.25rem !important;
+  }
+
+  .dsp-header-page-title {
+    font-size: 0.92rem !important;
+    max-width: 135px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .dsp-header-center {
+    display: none !important;
+  }
+
+  .dsp-header-right {
+    gap: 0.35rem !important;
+  }
+
+  .dsp-cloud-status {
+    display: none !important;
+  }
+
+  .dsp-header-profile-chip .dsp-header-profile-name {
+    display: none !important;
+  }
+
+  .dsp-header-profile-chip {
+    padding: 0.2rem !important;
+    border-radius: 50% !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    justify-content: center !important;
+  }
+
+  .dsp-header-btn-home span {
+    display: none !important;
+  }
+
+  .dsp-header-btn-home {
+    padding: 0.4rem 0.55rem !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    justify-content: center !important;
+  }
+
+  .dsp-header-icon-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+
+  /* 4. Two-Column Layout Priority (Form stays on top) */
   .dsp-two-col, .dsp-two-col--reverse {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 
+  .dsp-two-col .dsp-col-main {
+    order: 0 !important;
+  }
+
+  .dsp-two-col .dsp-col-side,
+  .dsp-two-col--reverse .dsp-col-side {
+    order: 1 !important;
+  }
+
+  /* 5. Stats & Quick Actions Grids */
   .dsp-stats-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
   }
 
-  .dsp-stats-grid .dsp-stat-card:last-child {
-    grid-column: span 2;
+  .dsp-stat-card {
+    padding: 0.75rem 0.85rem !important;
+    min-height: 68px !important;
   }
 
-  .dsp-form-row--2, .dsp-form-row--3 {
-    grid-template-columns: 1fr;
+  .dsp-stat-icon {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    font-size: 0.95rem !important;
   }
 
-  /* One-hand Mobile Sticky Action Bar */
+  .dsp-stat-value {
+    font-size: 1.25rem !important;
+  }
+
+  .dsp-quick-actions {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+  }
+
+  .dsp-action-card {
+    padding: 0.65rem 0.75rem !important;
+  }
+
+  .dsp-action-icon {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  .dsp-greeting {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 1.15rem 1rem !important;
+    gap: 0.85rem !important;
+    border-radius: 1rem !important;
+  }
+
+  .dsp-greeting-left {
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .dsp-greeting-actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
+    gap: 0.4rem !important;
+  }
+
+  .dsp-greeting-actions .dsp-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 0.78rem !important;
+    min-height: 38px !important;
+    padding: 0.4rem 0.5rem !important;
+  }
+
+  /* 6. Form Actions Sticky Bar */
   .dsp-form-actions {
     position: sticky;
     bottom: 0;
@@ -2618,56 +2891,200 @@ body:has(#app .dsp-layout) .dsp-layout {
     right: 0;
     background: var(--color-surface);
     border-top: 1px solid var(--color-border);
-    padding: 0.85rem 1rem;
-    margin: 1.5rem -1.25rem -1.25rem -1.25rem;
-    z-index: 100;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+    padding: 0.75rem 1rem;
+    margin: 1.5rem -0.75rem -0.75rem -0.75rem;
+    z-index: 90;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
     flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .dsp-form-actions .dsp-btn {
-    flex: 1;
-    min-width: 120px;
+    flex: 1 1 auto;
+    min-width: 110px;
+    min-height: 42px;
+    justify-content: center;
   }
 
-  .dsp-page-content { padding: 1rem 0.875rem 4rem 0.875rem; }
-
-  .dsp-modal-box { margin: 0.5rem; max-height: 95vh; }
-
-  /* Hero & Greeting Mobile Fixes */
-  .dsp-greeting { 
-    flex-direction: column; 
-    align-items: flex-start;
-    padding: 1.25rem;
-    gap: 1rem;
-    border-radius: 1rem;
-  }
-  .dsp-hero-header {
-    padding: 1.25rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .dsp-greeting-actions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-  
-  /* Quick Actions Mobile */
-  .dsp-quick-actions {
-    grid-template-columns: 1fr 1fr;
+  .dsp-form-row--2, .dsp-form-row--3 {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
   }
 
-  /* Profile Selector Mobile Fixes */
+  /* 7. SOAP Ward Notebook & eRx Responsive Card */
+  .rx-item-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    position: relative !important;
+  }
+
+  .rx-item-row > div:first-child {
+    grid-column: span 2 !important;
+  }
+
+  .rx-item-row .js-rx-route {
+    grid-column: span 1 !important;
+  }
+
+  .rx-item-row .js-rx-freq {
+    grid-column: span 1 !important;
+  }
+
+  .rx-item-row .js-rx-qty {
+    grid-column: span 1 !important;
+  }
+
+  .rx-item-row .js-rx-instr {
+    grid-column: span 1 !important;
+  }
+
+  .rx-item-row .js-remove-rx {
+    grid-column: span 2 !important;
+    width: 100% !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 6px !important;
+  }
+
+  .dsp-soap-card-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+    padding: 0.75rem !important;
+  }
+
+  .dsp-soap-patient-info {
+    width: 100% !important;
+  }
+
+  .dsp-soap-header-actions {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    gap: 0.4rem !important;
+  }
+
+  .dsp-soap-badges-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    align-items: center !important;
+  }
+
+  .dsp-soap-card-body {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Modal Edit SOAP Form Responsive */
+  #modalEditSoap div[style*="grid-template-columns:1fr 1fr 1fr"],
+  #modalEditSoap div[style*="grid-template-columns: 1fr 1fr 1fr"],
+  #modalEditSoap .dsp-soap-modal-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  #modalEditSoap div[style*="grid-template-columns:1fr 1fr"],
+  #modalEditSoap div[style*="grid-template-columns: 1fr 1fr"],
+  #modalEditSoap .dsp-soap-modal-grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  #modalEditSoap div[style*="border-right:1px solid"] {
+    border-right: none !important;
+    border-bottom: 1px solid var(--color-border) !important;
+  }
+
+  #modalEditSoap div[style*="max-width:900px"] {
+    max-height: 96vh !important;
+    border-radius: 12px !important;
+    margin: 0 !important;
+  }
+
+  /* 8. Dual-Panel Modals & Pickers (Drug, Calculator, Reasoning, Lab Hub, Score) */
+  #modalDrugIntelligencePanel div[style*="max-width:1100px"],
+  #modalCalculatorPicker div[style*="max-width:1150px"],
+  #modalClinicalReasoningPanel div[style*="max-width:1150px"],
+  #modalLabDiagnosticsHub div[style*="max-width:1080px"],
+  #modalEbmBridge div[style*="max-width:1050px"] {
+    max-width: 100% !important;
+    height: 96vh !important;
+    max-height: 96vh !important;
+    border-radius: 12px !important;
+    margin: 0 !important;
+  }
+
+  #dipBody,
+  #dipFormularyView,
+  #cpBodyContainer,
+  #cpNativeContainer,
+  #modalClinicalReasoningPanel div[style*="display:flex; flex:1; overflow:hidden"],
+  #modalScorePickerRoot div[style*="display:flex; flex:1; overflow:hidden"] {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+  }
+
+  #dipFormularyView > div:first-child,
+  #cpNativeContainer > div:first-child,
+  #modalClinicalReasoningPanel div[style*="width:280px"],
+  #scorePickerList {
+    width: 100% !important;
+    max-height: 200px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    flex-shrink: 0 !important;
+    overflow-y: auto !important;
+  }
+
+  #dipDrugDetailPanel,
+  #cpToolDetail,
+  #modalClinicalReasoningPanel div[style*="padding:24px 28px"],
+  #scorePickerActiveForm {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    flex: 1 !important;
+    overflow-y: visible !important;
+  }
+
+  #labHubContentBody div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  #modalClinicalCommandBar {
+    padding-top: 12px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  #modalClinicalCommandBar div[style*="max-height:75vh"] {
+    max-height: 92vh !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+  }
+
+  /* 9. Profile Selector Mobile */
   .dsp-profile-selector-inner {
-    padding: 1.5rem;
-    border-radius: 1rem;
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 1.25rem !important;
   }
 
-  .dsp-sbar-form { padding: 1rem; }
+  .dsp-selector-title {
+    font-size: 1.65rem !important;
+  }
 
-  .dsp-two-col .dsp-col-side,
-  .dsp-two-col--reverse .dsp-col-side {
-    order: -1;
+  .dsp-logo-mark {
+    width: 3.8rem !important;
+    height: 3.8rem !important;
+    font-size: 1.65rem !important;
   }
 }
 

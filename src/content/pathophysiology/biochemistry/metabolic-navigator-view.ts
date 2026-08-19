@@ -75,7 +75,7 @@ export function renderMetabolicNavigatorView(activePathwayId: string = 'glycolys
       </div>
 
       <!-- 2-COLUMN STUDIO: MAP CANVAS & DETAIL DRAWER -->
-      <div style="display: grid; grid-template-columns: 1fr 440px; gap: 1.5rem; align-items: start;" id="metaStudioGrid">
+      <div class="meta-studio-grid" id="metaStudioGrid">
         
         <!-- Interactive Vector Map Board -->
         <div class="meta-canvas-card">

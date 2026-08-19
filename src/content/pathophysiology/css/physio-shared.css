@@ -641,48 +641,69 @@ h4,
    7. TITLE & SUBTITLE HEADER CARD
    ============================================================ */
 .chapter-header {
-  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-2) 100%) !important;
-  border: 1px solid var(--color-divider) !important;
-  border-top: 5px solid var(--color-primary) !important;
-  border-radius: var(--radius-lg) !important;
-  padding: 2.25rem 2.5rem !important;
-  margin: 1.5rem 0 2.5rem 0 !important;
-  box-shadow: var(--shadow-md) !important;
-  text-align: left !important;
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%) !important;
+  color: #ffffff !important;
+  padding: 2.25rem 2rem !important;
+  border-radius: 16px !important;
+  margin: 1.5rem 0 2rem 0 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
-.chapter-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.06) 0%, rgba(var(--color-primary-rgb), 0) 70%);
-  border-radius: 50%;
-  pointer-events: none;
+.chapter-header.hero-pediatric-theme,
+.chapter-header.pediatric-theme {
+  background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 40%, #0284c7 70%, #0ea5e9 100%) !important;
+}
+
+[data-theme="dark"] .chapter-header {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%) !important;
+}
+
+[data-theme="dark"] .chapter-header.hero-pediatric-theme,
+[data-theme="dark"] .chapter-header.pediatric-theme {
+  background: linear-gradient(135deg, #082f49 0%, #0c4a6e 40%, #0369a1 80%, #0284c7 100%) !important;
 }
 
 .chapter-header h1 {
-  font-family: var(--font-display) !important;
-  font-size: var(--text-xl) !important;
+  font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif) !important;
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem) !important;
   font-weight: 800 !important;
-  color: var(--color-primary) !important;
-  margin-bottom: 0.75rem !important;
-  line-height: 1.35 !important;
+  color: #ffffff !important;
+  margin: 0.25rem 0 0.75rem 0 !important;
+  line-height: 1.3 !important;
   border: none !important;
   padding: 0 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
 }
 
 .chapter-header p {
-  color: var(--color-text-muted) !important;
-  font-size: var(--text-base) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 1rem !important;
   line-height: 1.65 !important;
   margin-bottom: 0 !important;
-  max-width: 850px;
+  max-width: 920px;
 }
+
+.chapter-header .module-hero-badge,
+.chapter-header .physio-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  padding: 0.35rem 0.85rem !important;
+  border-radius: 999px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.85rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+}
+
 
 /* ============================================================
    8. TABLE STYLES & RESPONSIVE WRAPPER
@@ -2042,4 +2063,92 @@ physio-mirror-button, physio-figure, clini-breadcrumb {
 .specialty-dropdown-item:hover i.fa-chevron-right {
   transform: translateX(3px);
   color: var(--color-primary, #0284c7);
+}
+
+/* ============================================================
+   RESPONSIVE GRID, TABLES & MOBILE LAYOUT OVERRIDES (physio-shared.css)
+   ============================================================ */
+.physio-grid,
+.concept-grid,
+.card-grid,
+.specialty-grid,
+.grid-2col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.table-responsive,
+.physio-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.25rem 0;
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar,
+.physio-table-wrap::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb,
+.physio-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--color-border, #cbd5e1);
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .physio-grid,
+  .concept-grid,
+  .card-grid,
+  .specialty-grid,
+  .grid-2col,
+  .fodmap-grid,
+  .pk-grid,
+  .hemo-grid,
+  .mech-grid,
+  .flow-grid,
+  .grid-3col,
+  .grid-4col {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+    margin: 1rem 0 !important;
+  }
+
+  .specialty-dropdown-menu {
+    min-width: 0 !important;
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .key-concept,
+  .reaction-box,
+  .pearl-box,
+  .danger-box,
+  .info-box,
+  .callout,
+  .physio-callout {
+    padding: 1rem 1.15rem !important;
+    margin: 1rem 0 !important;
+    font-size: 0.9rem !important;
+  }
+
+  .chapter-header,
+  .biochem-article-header,
+  .physio-article-header {
+    padding: 1.5rem 1.25rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  h2.section-title,
+  .section-title,
+  .article-section h2 {
+    font-size: 1.25rem !important;
+    margin: 1.75rem 0 1rem 0 !important;
+  }
 }

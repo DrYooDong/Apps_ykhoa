@@ -75,6 +75,9 @@ function renderHeaderHtml(projectRoot = './') {
       </nav>
 
       <div class="header-right">
+        <button class="header-bookmark-btn" id="headerBookmarkBtn" onclick="window.CliniPortalBookmarks && window.CliniPortalBookmarks.open()" aria-label="Tủ bài viết đã lưu" title="Tủ bài viết đã lưu">
+          <i class="fa-solid fa-bookmark"></i>
+        </button>
         <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Chuyển đổi giao diện Sáng/Tối" title="Chuyển giao diện Sáng/Tối">
           <i class="fa-solid fa-moon"></i>
         </button>

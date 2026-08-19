@@ -200,6 +200,17 @@ async function fetchAndHydrateStatArticle(cleanSlug: string, baseSlugName: strin
   // Remove legacy placeholders, duplicate headers, and external stylesheet links
   doc.querySelectorAll('#header-placeholder, #footer-placeholder, .topnav, link[rel="stylesheet"]').forEach(el => el.remove());
 
+  // Wrap all table elements with responsive scrolling wrappers to prevent mobile overflow
+  doc.querySelectorAll('table').forEach(tbl => {
+    const parent = tbl.parentElement;
+    if (!parent?.classList.contains('table-responsive') && !parent?.classList.contains('table-container')) {
+      const wrap = doc.createElement('div');
+      wrap.className = 'table-responsive';
+      tbl.parentNode?.insertBefore(wrap, tbl);
+      wrap.appendChild(tbl);
+    }
+  });
+
   // Extract clean article body content
   const articleHtml = doc.body ? doc.body.innerHTML : htmlText;
 
@@ -231,6 +242,14 @@ async function fetchAndHydrateStatArticle(cleanSlug: string, baseSlugName: strin
         margin-right: auto !important;
       }
 
+      .stat-injected-article .table-responsive {
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 1.25rem 0 !important;
+        border-radius: 10px !important;
+      }
+
       .stat-injected-article .content-box {
         background: var(--color-surface, #ffffff);
         border: 1px solid var(--color-border, #cbd5e1);
@@ -238,6 +257,37 @@ async function fetchAndHydrateStatArticle(cleanSlug: string, baseSlugName: strin
         padding: 2.25rem;
         margin-bottom: 2rem;
         box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      }
+
+      @media (max-width: 768px) {
+        .guideline-reader-wrapper {
+          padding-top: 64px !important;
+          padding-bottom: 2.5rem !important;
+        }
+
+        .guideline-reader-toolbar {
+          padding: 0.6rem 0.85rem !important;
+          border-radius: 10px !important;
+          margin-bottom: 1rem !important;
+        }
+
+        .reader-settings-menu {
+          max-width: calc(100vw - 24px) !important;
+          min-width: 0 !important;
+          right: 0 !important;
+        }
+
+        .stat-injected-article .content-box {
+          padding: 1.25rem 1rem !important;
+          border-radius: 12px !important;
+          margin-bottom: 1.25rem !important;
+        }
+
+        .stat-injected-article table th,
+        .stat-injected-article table td {
+          padding: 0.55rem 0.7rem !important;
+          font-size: 0.825rem !important;
+        }
       }
     </style>
 

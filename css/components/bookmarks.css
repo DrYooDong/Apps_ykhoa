@@ -1,0 +1,250 @@
+/* ============================================================
+   BOOKMARKS & STUDY TRACKER (bookmarks.css)
+   CliniPortal Framework — Vanilla High-Performance UI
+   ============================================================ */
+
+/* Floating Bookmark Trigger Button */
+.bookmark-float-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full, 9999px);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-primary, #0284c7);
+  border: 1px solid var(--color-border, #cbd5e1);
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(15, 23, 42, 0.12));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 9990;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.bookmark-float-btn:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-lg, 0 8px 24px rgba(2, 132, 199, 0.2));
+  background: var(--color-surface-offset, #f8fafc);
+}
+
+.bookmark-float-btn.is-bookmarked {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+  border-color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .bookmark-float-btn {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+}
+
+[data-theme="dark"] .bookmark-float-btn.is-bookmarked {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+}
+
+/* Bookmark Count Badge */
+.bookmark-badge-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--color-danger, #ef4444);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  border: 2px solid var(--color-surface, #ffffff);
+}
+
+/* Slide-over Drawer / Modal */
+.bookmark-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 10002;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.bookmark-drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bookmark-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface, #ffffff);
+  box-shadow: -4px 0 24px rgba(15, 23, 42, 0.15);
+  z-index: 10003;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bookmark-drawer.active {
+  transform: translateX(0);
+}
+
+[data-theme="dark"] .bookmark-drawer {
+  background: var(--color-surface, #101828);
+  border-left: 1px solid var(--color-border, #1e2d47);
+}
+
+.bookmark-drawer-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-divider, #e2e8f0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookmark-drawer-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bookmark-drawer-close {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--color-text-muted, #64748b);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm, 6px);
+}
+
+.bookmark-drawer-close:hover {
+  background: var(--color-surface-offset, #f1f5f9);
+  color: var(--color-text, #0f172a);
+}
+
+/* Tabs / Filters */
+.bookmark-filter-bar {
+  display: flex;
+  gap: 6px;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-divider, #e2e8f0);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.bookmark-filter-btn {
+  padding: 5px 12px;
+  border-radius: var(--radius-full, 9999px);
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text-muted, #64748b);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bookmark-filter-btn.active {
+  background: var(--color-primary, #0284c7);
+  color: #ffffff;
+  border-color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .bookmark-filter-btn {
+  background: var(--color-surface-2, #162032);
+  border-color: var(--color-border, #263a57);
+}
+
+/* Bookmark List Container */
+.bookmark-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bookmark-item {
+  padding: 1rem;
+  background: var(--color-surface-2, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-md, 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.bookmark-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary, #0284c7);
+}
+
+[data-theme="dark"] .bookmark-item {
+  background: var(--color-surface-2, #162032);
+  border-color: var(--color-border, #1e2d47);
+}
+
+.bookmark-item-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.bookmark-item-title a {
+  color: var(--color-text, #0f172a);
+  text-decoration: none;
+}
+
+.bookmark-item-title a:hover {
+  color: var(--color-primary, #0284c7);
+}
+
+.bookmark-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #64748b);
+}
+
+.bookmark-remove-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-danger, #ef4444);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+}
+
+/* Empty State */
+.bookmark-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--color-text-muted, #64748b);
+  padding: 2rem;
+}
+
+.bookmark-empty-state i {
+  font-size: 3rem;
+  opacity: 0.4;
+  margin-bottom: 1rem;
+}

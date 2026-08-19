@@ -66,7 +66,7 @@ function renderRxItemsList(items: SoapPrescriptionItem[]): string {
     return `<div class="rx-empty-msg" style="font-size:12px; color:var(--color-text-muted); font-style:italic; padding:6px 0;">Chưa có đơn thuốc có cấu trúc. Bấm <strong>"+ Kê thuốc từ Từ điển"</strong> ở trên để kê đơn.</div>`;
   }
   return items.map((item, idx) => `
-    <div class="rx-item-row" data-id="${item.id || idx}" style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 30px; gap:6px; align-items:center; background:var(--color-surface); padding:6px 8px; border-radius:6px; border:1px solid var(--color-border); font-size:12px;">
+    <div class="rx-item-row" data-id="${item.id || idx}">
       <div>
         <input type="text" class="js-rx-name dsp-input" value="${escapeHtml(item.name)}" style="font-size:11px; padding:2px 4px; font-weight:bold; width:100%;" />
         <input type="text" class="js-rx-dosage dsp-input" value="${escapeHtml(item.dosage || '')}" placeholder="Hàm lượng" style="font-size:10px; padding:2px 4px; color:var(--color-text-muted); width:100%; margin-top:2px;" />
@@ -1402,7 +1402,6 @@ export function mountSoapController(profileId: string): void {
         const div = document.createElement('div');
         div.className = 'rx-item-row';
         div.dataset.id = newItem.id;
-        div.style.cssText = 'display:grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 30px; gap:6px; align-items:center; background:var(--color-surface); padding:6px 8px; border-radius:6px; border:1px solid var(--color-border); font-size:12px;';
         div.innerHTML = `
           <div>
             <input type="text" class="js-rx-name dsp-input" value="${escapeHtml(newItem.name)}" style="font-size:11px; padding:2px 4px; font-weight:bold; width:100%;" />

@@ -757,3 +757,98 @@
   transition: width 0.5s ease;
 }
 
+/* ============================================================
+   MOBILE RESPONSIVE SYSTEM (PATHO-QUIZ & EXAM STUDIO)
+   ============================================================ */
+@media (max-width: 768px) {
+  .quiz-mode-nav {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 0.5rem !important;
+    gap: 0.4rem !important;
+  }
+
+  .quiz-mode-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    padding: 0.55rem 0.95rem !important;
+    font-size: 0.825rem !important;
+  }
+
+  .quiz-mastery-card {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+    border-radius: 14px !important;
+  }
+
+  .quiz-stat-item {
+    gap: 0.6rem !important;
+  }
+
+  .quiz-stat-icon {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+  }
+
+  .quiz-stat-val {
+    font-size: 1.05rem !important;
+  }
+
+  .quiz-search-box input {
+    font-size: 16px !important;
+  }
+
+  .quiz-filter-chips {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex-wrap: nowrap !important;
+    padding-bottom: 4px !important;
+  }
+
+  .quiz-filter-chip {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .exam-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .exam-palette-card {
+    position: static !important;
+    width: 100% !important;
+    padding: 1rem !important;
+    margin-top: 1rem !important;
+  }
+
+  .exam-palette-grid {
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)) !important;
+    gap: 0.5rem !important;
+  }
+
+  .exam-palette-btn {
+    height: 44px !important;
+    min-width: 44px !important;
+    font-size: 0.9rem !important;
+    border-radius: 10px !important;
+  }
+
+  .exam-workspace-card,
+  .quiz-case-card,
+  .exam-report-card {
+    padding: 1.15rem !important;
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .quiz-mastery-card {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+

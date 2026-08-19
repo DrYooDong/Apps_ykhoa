@@ -306,3 +306,86 @@
   border-color: #475569;
   color: #94a3b8;
 }
+
+/* ============================================================
+   RESPONSIVE STUDIO GRID & MOBILE ADAPTATIONS (metabolic-navigator.css)
+   ============================================================ */
+.meta-studio-grid,
+#metaStudioGrid {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .meta-studio-grid,
+  #metaStudioGrid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .meta-drawer {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .meta-canvas-card,
+  .meta-drawer {
+    padding: 1.15rem !important;
+    border-radius: 14px !important;
+  }
+
+  .meta-filter-ribbon {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0.75rem !important;
+    gap: 0.6rem !important;
+  }
+
+  .meta-search-wrap {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .meta-search-input {
+    font-size: 16px !important;
+    height: 42px !important;
+  }
+
+  .meta-svg-board {
+    min-height: 420px !important;
+    border-radius: 10px !important;
+  }
+
+  .meta-category-pills {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex-wrap: nowrap !important;
+    padding-bottom: 4px !important;
+  }
+
+  .meta-cat-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    padding: 0.45rem 0.8rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .meta-pathway-tabs {
+    gap: 0.4rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
+  .meta-tab-btn {
+    padding: 0.55rem 0.95rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .meta-zoom-toolbar {
+    right: 0.75rem !important;
+    bottom: 0.75rem !important;
+  }
+}
+

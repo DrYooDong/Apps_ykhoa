@@ -1,0 +1,60 @@
+/* ============================================================
+   READING PROGRESS BAR (reading-progress.css)
+   CliniPortal Framework — Vanilla High-Performance UI
+   ============================================================ */
+
+.reading-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3.5px;
+  background: transparent;
+  z-index: 10001;
+  pointer-events: none;
+}
+
+.reading-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient-accent, linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #818cf8 100%));
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+  transition: width 80ms ease-out;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* Optional Pill Float Counter at bottom-right or top-right */
+.reading-progress-badge {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text-muted, #475569);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-full, 9999px);
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(15, 23, 42, 0.08));
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.reading-progress-badge.visible {
+  opacity: 0.95;
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .reading-progress-badge {
+  background: var(--color-surface, #101828);
+  border-color: var(--color-border, #263a57);
+  color: var(--color-text-muted, #94a3b8);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}

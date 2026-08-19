@@ -372,8 +372,10 @@
   opacity: 0.4;
 }
 
-/* Header Settings Button */
-.header-settings-btn {
+/* Header Settings & Action Buttons */
+.header-settings-btn,
+.theme-toggle-btn,
+.header-bookmark-btn {
   width: 36px; height: 36px;
   display: flex; align-items: center; justify-content: center;
   border-radius: var(--radius-md, 8px);
@@ -385,11 +387,18 @@
   transition: all 0.2s ease;
   flex-shrink: 0;
 }
-.header-settings-btn:hover {
+
+.header-settings-btn:hover,
+.theme-toggle-btn:hover,
+.header-bookmark-btn:hover {
   background: var(--color-primary-hl);
   border-color: var(--color-primary);
   color: var(--color-primary);
-  transform: scale(1.06) rotate(30deg);
+  transform: scale(1.06);
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.06) rotate(15deg);
 }
 
 /* Settings Modal Setting Buttons */

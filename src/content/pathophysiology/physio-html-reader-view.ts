@@ -307,16 +307,25 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
   const chapterHeader = doc.querySelector('.chapter-header, .biochem-article-header, .physio-article-header');
   if (chapterHeader) {
     chapterHeader.classList.add('chapter-header', 'gradient-header');
-    if (!chapterHeader.querySelector('.physio-badge, .biochem-badge')) {
-      const badge = doc.createElement('span');
-      badge.className = 'physio-badge';
-      badge.innerHTML = `<i class="fa-solid fa-heart-pulse"></i> ${isCaseStudy ? 'Cơ Chế Bệnh Sinh' : (isBiochem ? 'Hóa Sinh Y Học' : partName)}`;
-      const h1 = chapterHeader.querySelector('h1');
-      if (h1) {
-        chapterHeader.insertBefore(badge, h1);
-      } else {
-        chapterHeader.prepend(badge);
-      }
+    
+    // Check if it's pediatric (Part 9 / Nhi khoa)
+    const isPediatric = (part || '').toLowerCase().includes('part9') || (part || '').toLowerCase().includes('nhi') || (cleanSlug || '').toLowerCase().includes('nhi');
+    if (isPediatric) {
+      chapterHeader.classList.add('hero-pediatric-theme');
+    }
+    
+    // Remove existing badges inside chapterHeader to prevent duplicate overlapping badges
+    chapterHeader.querySelectorAll('.module-hero-badge, .physio-badge, .biochem-badge, .hero-badge').forEach(b => b.remove());
+    
+    const badge = doc.createElement('span');
+    badge.className = 'physio-badge';
+    const badgeIcon = isCaseStudy ? 'fa-microscope' : (isBiochem ? 'fa-flask-vial' : (isPediatric ? 'fa-baby' : 'fa-heart-pulse'));
+    badge.innerHTML = `<i class="fa-solid ${badgeIcon}"></i> ${isCaseStudy ? 'Cơ Chế Bệnh Sinh' : (isBiochem ? 'Hóa Sinh Y Học' : partName)}`;
+    const h1 = chapterHeader.querySelector('h1');
+    if (h1) {
+      chapterHeader.insertBefore(badge, h1);
+    } else {
+      chapterHeader.prepend(badge);
     }
   }
 
@@ -404,6 +413,17 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
     );
   });
 
+  // Wrap all table elements with responsive scrolling wrappers to prevent mobile overflow
+  doc.querySelectorAll('table').forEach(tbl => {
+    const parent = tbl.parentElement;
+    if (!parent?.classList.contains('table-responsive') && !parent?.classList.contains('physio-table-wrap')) {
+      const wrap = doc.createElement('div');
+      wrap.className = 'table-responsive';
+      tbl.parentNode?.insertBefore(wrap, tbl);
+      wrap.appendChild(tbl);
+    }
+  });
+
   // Extract clean article body content
   const articleHtml = doc.body ? doc.body.innerHTML : htmlText;
 
@@ -457,51 +477,65 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
       #physio-article-mount .chapter-header,
       #physio-article-mount .biochem-article-header,
       #physio-article-mount .physio-article-header {
-        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
-        color: #ffffff;
-        padding: 2.25rem 2rem;
-        border-radius: 16px;
-        margin-bottom: 1.75rem;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-        position: relative;
-        overflow: hidden;
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%) !important;
+        color: #ffffff !important;
+        padding: 2.25rem 2rem !important;
+        border-radius: 16px !important;
+        margin-bottom: 1.75rem !important;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      }
+
+      #physio-article-mount .chapter-header.hero-pediatric-theme,
+      #physio-article-mount .chapter-header.pediatric-theme {
+        background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 40%, #0284c7 70%, #0ea5e9 100%) !important;
+      }
+
+      [data-theme="dark"] #physio-article-mount .chapter-header.hero-pediatric-theme,
+      [data-theme="dark"] #physio-article-mount .chapter-header.pediatric-theme {
+        background: linear-gradient(135deg, #082f49 0%, #0c4a6e 40%, #0369a1 80%, #0284c7 100%) !important;
       }
 
       #physio-article-mount .chapter-header h1,
       #physio-article-mount .biochem-article-header h1,
       #physio-article-mount .physio-article-header h1 {
         color: #ffffff !important;
-        font-size: clamp(1.5rem, 3.2vw, 2.1rem);
-        font-weight: 800;
-        margin: 0.25rem 0 0.75rem 0;
-        line-height: 1.3;
+        font-size: clamp(1.5rem, 3.2vw, 2.1rem) !important;
+        font-weight: 800 !important;
+        margin: 0.25rem 0 0.75rem 0 !important;
+        line-height: 1.3 !important;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
       }
 
       #physio-article-mount .chapter-header p,
       #physio-article-mount .biochem-article-header p,
       #physio-article-mount .physio-article-header p {
-        color: rgba(255, 255, 255, 0.92);
-        font-size: 1rem;
-        line-height: 1.6;
-        margin: 0;
-        max-width: 960px;
+        color: rgba(255, 255, 255, 0.95) !important;
+        font-size: 1rem !important;
+        line-height: 1.65 !important;
+        margin: 0 !important;
+        max-width: 960px !important;
       }
 
       #physio-article-mount .physio-badge,
-      #physio-article-mount .biochem-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(255, 255, 255, 0.18);
-        backdrop-filter: blur(8px);
-        padding: 0.35rem 0.85rem;
-        border-radius: 999px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        margin-bottom: 0.85rem;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        text-transform: uppercase;
-        color: #ffffff;
+      #physio-article-mount .biochem-badge,
+      #physio-article-mount .module-hero-badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        background: rgba(255, 255, 255, 0.22) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        padding: 0.35rem 0.85rem !important;
+        border-radius: 999px !important;
+        font-size: 0.82rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 0.85rem !important;
+        border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        text-transform: uppercase !important;
+        color: #ffffff !important;
       }
 
       /* Sticky Pillars Navigation with Safe Top Offset */
@@ -901,6 +935,59 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
 
       [data-theme="dark"] #physio-article-mount td {
         border-color: var(--color-border, #334155);
+      }
+
+      /* Mobile Responsive Reader Overrides */
+      #physio-article-mount .table-responsive,
+      #physio-article-mount .physio-table-wrap {
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 1.25rem 0 !important;
+        border-radius: 10px !important;
+      }
+
+      @media (max-width: 768px) {
+        .guideline-reader-wrapper {
+          padding-top: 64px !important;
+          padding-bottom: 2.5rem !important;
+        }
+
+        .guideline-reader-toolbar {
+          padding: 0.6rem 0.85rem !important;
+          border-radius: 10px !important;
+          margin-bottom: 1rem !important;
+        }
+
+        .reader-settings-menu {
+          max-width: calc(100vw - 24px) !important;
+          min-width: 0 !important;
+          right: 0 !important;
+        }
+
+        #physio-article-mount .physio-grid,
+        #physio-article-mount .grid-2col,
+        #physio-article-mount .concept-grid,
+        #physio-article-mount .card-grid {
+          grid-template-columns: 1fr !important;
+          gap: 0.85rem !important;
+        }
+
+        #physio-article-mount table {
+          font-size: 0.825rem !important;
+          margin: 0.85rem 0 !important;
+        }
+
+        #physio-article-mount th,
+        #physio-article-mount td {
+          padding: 0.55rem 0.7rem !important;
+        }
+
+        #physio-article-mount .pillars-nav,
+        #physio-article-mount .quicknav {
+          top: 56px !important;
+          padding: 0.45rem 0.65rem !important;
+        }
       }
     </style>
     <div class="physio-injected-content">

@@ -253,6 +253,17 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     );
   });
 
+  // Wrap all table elements with responsive scrolling wrappers to prevent mobile overflow
+  doc.querySelectorAll('table').forEach(tbl => {
+    const parent = tbl.parentElement;
+    if (!parent?.classList.contains('table-responsive') && !parent?.classList.contains('table-container') && !parent?.classList.contains('hemo-table-wrap')) {
+      const wrap = doc.createElement('div');
+      wrap.className = 'table-responsive';
+      tbl.parentNode?.insertBefore(wrap, tbl);
+      wrap.appendChild(tbl);
+    }
+  });
+
   // Extract clean article body content
   const articleHtml = doc.body ? doc.body.innerHTML : htmlText;
 
@@ -287,6 +298,15 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
         margin-right: auto !important;
       }
 
+      /* Responsive Tables */
+      .guideline-injected-article .table-responsive {
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 1.25rem 0 !important;
+        border-radius: 10px !important;
+      }
+
       /* Enhanced Visual Polish for Reading Clarity */
       .guideline-injected-article .hero {
         padding: 3.5rem 2rem 4.5rem;
@@ -307,12 +327,6 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
         z-index: 150 !important;
         background: var(--color-surface, #ffffff);
         box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      }
-      @media (max-width: 767px) {
-        .guideline-injected-article .quicknav,
-        .guideline-injected-article .pillars-nav {
-          top: 60px !important;
-        }
       }
       .guideline-injected-article .sec-card {
         margin-bottom: 2rem;
@@ -348,6 +362,67 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
       }
       .guideline-injected-article .sys-card-header {
         padding: 1.15rem 1.5rem !important;
+      }
+
+      /* Mobile Overrides (<= 768px) */
+      @media (max-width: 768px) {
+        .guideline-reader-wrapper {
+          padding-top: 64px !important;
+          padding-bottom: 2.5rem !important;
+        }
+
+        .guideline-reader-toolbar {
+          padding: 0.6rem 0.85rem !important;
+          border-radius: 10px !important;
+          margin-bottom: 1rem !important;
+        }
+
+        .reader-settings-menu {
+          max-width: calc(100vw - 24px) !important;
+          min-width: 0 !important;
+          right: 0 !important;
+        }
+
+        .guideline-injected-article .quicknav,
+        .guideline-injected-article .pillars-nav {
+          top: 56px !important;
+          padding: 0.45rem 0.65rem !important;
+          border-radius: 10px !important;
+        }
+
+        .guideline-injected-article .hero {
+          padding: 2.5rem 1.25rem 3rem !important;
+          border-radius: 16px !important;
+        }
+
+        .guideline-injected-article .sec-hdr {
+          padding: 1rem 1.25rem !important;
+        }
+
+        .guideline-injected-article .sec-body {
+          padding: 1.25rem 1rem !important;
+          font-size: 0.9rem !important;
+        }
+
+        .guideline-injected-article .matrix-grid,
+        .guideline-injected-article .grid-2,
+        .guideline-injected-article .grid-3,
+        .guideline-injected-article .grid-2col,
+        .guideline-injected-article .grid-3col,
+        .guideline-injected-article .updates-grid,
+        .guideline-injected-article .card-grid,
+        .guideline-injected-article .figo-grid,
+        .guideline-injected-article .flow-branches,
+        .guideline-injected-article .doppler-grid {
+          grid-template-columns: 1fr !important;
+          gap: 0.85rem !important;
+        }
+
+        .guideline-injected-article .data-table th,
+        .guideline-injected-article .data-table td {
+          padding: 0.6rem 0.75rem !important;
+          font-size: 0.825rem !important;
+        }
       }
 
       /* Dark Mode High Contrast Enhancements */

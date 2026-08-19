@@ -46,12 +46,12 @@ export function renderJournalQualityView(): string {
           <div style="margin-top: 1rem;">
             <label style="font-size: 0.85rem; font-weight: 600; color: var(--color-text, #334155); display: block; margin-bottom: 0.4rem;">Gợi ý phổ biến:</label>
             <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-              <button onclick="window.setJournalQuery('NEJM')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 0.8rem; cursor: pointer;">NEJM</button>
-              <button onclick="window.setJournalQuery('Lancet')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 0.8rem; cursor: pointer;">Lancet</button>
-              <button onclick="window.setJournalQuery('JAMA')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 0.8rem; cursor: pointer;">JAMA</button>
-              <button onclick="window.setJournalQuery('Circulation')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 0.8rem; cursor: pointer;">Circulation</button>
-              <button onclick="window.setJournalQuery('Chest')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 0.8rem; cursor: pointer;">Chest</button>
-              <button onclick="window.setJournalQuery('Intensive Care Med')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid #e2e8f0; background: #f8fafc; font-size: 0.8rem; cursor: pointer;">ICM</button>
+              <button onclick="window.setJournalQuery('NEJM')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface-2, #f8fafc); color: var(--color-text, #0f172a); font-size: 0.8rem; cursor: pointer;">NEJM</button>
+              <button onclick="window.setJournalQuery('Lancet')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface-2, #f8fafc); color: var(--color-text, #0f172a); font-size: 0.8rem; cursor: pointer;">Lancet</button>
+              <button onclick="window.setJournalQuery('JAMA')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface-2, #f8fafc); color: var(--color-text, #0f172a); font-size: 0.8rem; cursor: pointer;">JAMA</button>
+              <button onclick="window.setJournalQuery('Circulation')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface-2, #f8fafc); color: var(--color-text, #0f172a); font-size: 0.8rem; cursor: pointer;">Circulation</button>
+              <button onclick="window.setJournalQuery('Chest')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface-2, #f8fafc); color: var(--color-text, #0f172a); font-size: 0.8rem; cursor: pointer;">Chest</button>
+              <button onclick="window.setJournalQuery('Intensive Care Med')" style="padding: 0.35rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0); background: var(--color-surface-2, #f8fafc); color: var(--color-text, #0f172a); font-size: 0.8rem; cursor: pointer;">ICM</button>
             </div>
           </div>
         </div>
@@ -59,33 +59,33 @@ export function renderJournalQualityView(): string {
         <!-- Result Box -->
         <div id="journal-metric-result" style="background: linear-gradient(135deg, rgba(202,138,4,0.06) 0%, rgba(2,132,199,0.02) 100%), var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-              <span id="res-quartile-badge" style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #16a34a; background: #dcfce7; padding: 0.25rem 0.6rem; border-radius: 6px;">Q1 Journal</span>
-              <span id="res-issn" style="font-size: 0.8rem; color: #64748b;">ISSN: 0028-4793</span>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
+              <span id="res-quartile-badge" style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #16a34a; background: rgba(22, 163, 74, 0.15); padding: 0.25rem 0.6rem; border-radius: 6px;">Q1 Journal</span>
+              <span id="res-issn" style="font-size: 0.8rem; color: var(--color-text-muted, #64748b);">ISSN: 0028-4793</span>
             </div>
 
-            <h2 id="res-journal-name" style="font-size: 1.4rem; font-weight: 800; color: var(--color-text, #0f172a); margin: 0.75rem 0 0.25rem 0;">
+            <h2 id="res-journal-name" style="font-size: 1.4rem; font-weight: 800; color: var(--color-text, #0f172a); margin: 0.75rem 0 0.25rem 0; line-height: 1.3;">
               The New England Journal of Medicine (NEJM)
             </h2>
             <div id="res-publisher" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b);">NXB: Massachusetts Medical Society</div>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.5rem; text-align: center;">
-              <div style="background: #f8fafc; border-radius: 8px; padding: 0.75rem;">
-                <div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Impact Factor</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 90px), 1fr)); gap: 0.75rem; margin-top: 1.5rem; text-align: center;">
+              <div style="background: var(--color-surface-2, #f8fafc); border-radius: 8px; padding: 0.75rem; border: 1px solid var(--color-border, #e2e8f0);">
+                <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b); font-weight: 600;">Impact Factor</div>
                 <div id="res-if-val" style="font-size: 1.75rem; font-weight: 800; color: #ca8a04;">158.5</div>
               </div>
-              <div style="background: #f8fafc; border-radius: 8px; padding: 0.75rem;">
-                <div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">Scimago SJR</div>
+              <div style="background: var(--color-surface-2, #f8fafc); border-radius: 8px; padding: 0.75rem; border: 1px solid var(--color-border, #e2e8f0);">
+                <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b); font-weight: 600;">Scimago SJR</div>
                 <div id="res-sjr-val" style="font-size: 1.75rem; font-weight: 800; color: #0284c7;">14.52</div>
               </div>
-              <div style="background: #f8fafc; border-radius: 8px; padding: 0.75rem;">
-                <div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">H-Index</div>
+              <div style="background: var(--color-surface-2, #f8fafc); border-radius: 8px; padding: 0.75rem; border: 1px solid var(--color-border, #e2e8f0);">
+                <div style="font-size: 0.75rem; color: var(--color-text-muted, #64748b); font-weight: 600;">H-Index</div>
                 <div id="res-hindex-val" style="font-size: 1.75rem; font-weight: 800; color: #7c3aed;">1150</div>
               </div>
             </div>
           </div>
 
-          <div style="background: #f8fafc; border-left: 4px solid #ca8a04; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.825rem; color: var(--color-text, #334155); margin-top: 1rem;">
+          <div style="background: var(--color-surface-2, #f8fafc); border-left: 4px solid #ca8a04; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.825rem; color: var(--color-text, #334155); margin-top: 1rem;">
             💡 <strong>Ý nghĩa chỉ số:</strong> Tạp chí thuộc phân vị Q1 (Top 25% chuyên ngành) có mức độ tin cậy và kiểm duyệt đồng cấp (peer review) nghiêm ngặt nhất.
           </div>
         </div>

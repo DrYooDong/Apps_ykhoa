@@ -1,0 +1,102 @@
+/* ============================================================
+   COUNTDOWN QUIZ TIMER & PROGRESS RING (quiz-timer.css)
+   CliniPortal Framework — Vanilla High-Performance UI
+   ============================================================ */
+
+.quiz-timer-widget {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #cbd5e1);
+  border-radius: var(--radius-full, 9999px);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.08));
+  user-select: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quiz-timer-ring-container {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quiz-timer-svg {
+  transform: rotate(-90deg);
+  width: 32px;
+  height: 32px;
+}
+
+.quiz-timer-circle-bg {
+  fill: none;
+  stroke: var(--color-surface-offset, #e2e8f0);
+  stroke-width: 3;
+}
+
+.quiz-timer-circle-progress {
+  fill: none;
+  stroke: var(--color-primary, #0284c7);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s ease;
+}
+
+.quiz-timer-digits {
+  font-family: var(--font-mono, monospace);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  letter-spacing: -0.02em;
+}
+
+/* Warning State (< 10 seconds) */
+.quiz-timer-widget.is-warning {
+  border-color: var(--color-warning, #f59e0b);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+}
+
+.quiz-timer-widget.is-warning .quiz-timer-circle-progress {
+  stroke: var(--color-warning, #f59e0b);
+}
+
+.quiz-timer-widget.is-warning .quiz-timer-digits {
+  color: var(--color-warning, #d97706);
+}
+
+/* Critical State (< 5 seconds - pulse animation) */
+.quiz-timer-widget.is-critical {
+  border-color: var(--color-danger, #ef4444);
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.35);
+  animation: timer-pulse-critical 1s infinite alternate;
+}
+
+.quiz-timer-widget.is-critical .quiz-timer-circle-progress {
+  stroke: var(--color-danger, #ef4444);
+}
+
+.quiz-timer-widget.is-critical .quiz-timer-digits {
+  color: var(--color-danger, #ef4444);
+}
+
+@keyframes timer-pulse-critical {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+/* Dark Mode Tokens */
+[data-theme="dark"] .quiz-timer-widget {
+  background: var(--color-surface-2, #162032);
+  border-color: var(--color-border, #263a57);
+}
+
+[data-theme="dark"] .quiz-timer-circle-bg {
+  stroke: var(--color-surface-offset, #1a2840);
+}
+
+[data-theme="dark"] .quiz-timer-digits {
+  color: var(--color-text, #e2e8f0);
+}

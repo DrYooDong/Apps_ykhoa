@@ -518,6 +518,7 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
         </button>
       </div>
     </aside>
+    <div class="dsp-sidebar-backdrop" id="dspSidebarBackdrop"></div>
   `;
 }
 
