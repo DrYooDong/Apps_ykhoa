@@ -4597,3 +4597,273 @@ body.dsp-active .floating-action-dock,
   color: var(--color-text-muted);
   font-size: 0.85rem;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   21. MOBILE UI/UX OPTIMIZATIONS & RESPONSIVE COMPONENT RULES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── A. Master Research Studios Tab Bar (.dsp-tabs-nav & .dsp-tab-btn) ── */
+.dsp-tabs-nav {
+  display: flex !important;
+  gap: 0.5rem !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 0.35rem 0.25rem 0.75rem !important;
+  border-bottom: 2px solid var(--color-border, #e2e8f0) !important;
+  margin-bottom: 1.25rem !important;
+  scrollbar-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.dsp-tabs-nav::-webkit-scrollbar {
+  display: none !important;
+}
+
+.dsp-tab-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.55rem 1rem !important;
+  background: var(--color-surface, #ffffff) !important;
+  border: 1px solid var(--color-border, #cbd5e1) !important;
+  border-radius: 24px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  color: var(--color-text-muted, #475569) !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  min-height: 40px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+}
+
+.dsp-tab-btn:hover {
+  background: var(--color-bg, #f8fafc) !important;
+  color: var(--color-primary, #0284c7) !important;
+  border-color: var(--color-primary, #0284c7) !important;
+}
+
+.dsp-tab-btn.is-active {
+  background: rgba(2, 132, 199, 0.12) !important;
+  color: var(--color-primary, #0284c7) !important;
+  border-color: var(--color-primary, #0284c7) !important;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.2) !important;
+}
+
+/* ── B. Top Header Bar Mobile Fixes (No Horizontal Overflow) ── */
+.dsp-header-bar {
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .dsp-header-bar {
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .dsp-header-right {
+    gap: 0.4rem !important;
+  }
+
+  .dsp-cloud-status {
+    display: none !important;
+  }
+
+  .dsp-header-profile-name {
+    display: none !important;
+  }
+
+  .dsp-header-profile-chip {
+    padding: 0.2rem !important;
+    border-radius: 50% !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .dsp-header-icon-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .dsp-header-desktop-only {
+    display: none !important;
+  }
+
+  .dsp-header-btn-home span {
+    display: none !important;
+  }
+
+  .dsp-header-btn-home {
+    padding: 0.4rem 0.6rem !important;
+    min-width: 32px !important;
+    justify-content: center !important;
+  }
+
+  .dsp-header-page-title {
+    font-size: 0.9rem !important;
+    max-width: 130px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+/* ── SOAP Patient Row Collapse State ── */
+.dsp-soap-row.is-collapsed .dsp-soap-card-body {
+  display: none !important;
+}
+
+.dsp-soap-row.is-collapsed {
+  margin-bottom: 0.5rem !important;
+}
+
+.dsp-soap-row.is-collapsed .dsp-soap-card-header {
+  border-bottom: none !important;
+}
+
+/* ── C. Calculator Picker Modal Responsive Rules ── */
+@media (max-width: 768px) {
+  #modalCalculatorPicker {
+    padding: 8px !important;
+  }
+
+  .cp-modal-card {
+    height: 94vh !important;
+    max-height: 94vh !important;
+    border-radius: 12px !important;
+  }
+
+  .cp-modal-header {
+    padding: 10px 12px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .cp-modal-header-left {
+    width: 100% !important;
+  }
+
+  .cp-modal-header-right {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .cp-extra-link {
+    display: none !important;
+  }
+
+  .cp-header-sub {
+    display: none !important;
+  }
+
+  .cp-native-container {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+  }
+
+  .cp-sidebar-panel {
+    width: 100% !important;
+    max-height: 180px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--color-border, #e2e8f0) !important;
+  }
+
+  .cp-detail-panel {
+    padding: 14px 12px !important;
+  }
+
+  .cp-calc-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+}
+
+/* ── D. Drug Intelligence Panel Responsive Rules ── */
+@media (max-width: 768px) {
+  #modalDrugIntelligencePanel {
+    padding: 8px !important;
+  }
+
+  .dip-modal-card {
+    height: 94vh !important;
+    max-height: 94vh !important;
+    border-radius: 12px !important;
+  }
+
+  .dip-modal-header {
+    padding: 10px 12px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .dip-header-left {
+    width: 100% !important;
+  }
+
+  .dip-header-right {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .dip-header-sub {
+    display: none !important;
+  }
+
+  .dip-formulary-view {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+  }
+
+  .dip-list-panel {
+    width: 100% !important;
+    max-height: 160px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--color-border, #e2e8f0) !important;
+  }
+
+  .dip-detail-panel {
+    padding: 14px 12px !important;
+  }
+
+  .dip-dosing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .dip-detail-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .dip-detail-actions {
+    width: 100% !important;
+  }
+
+  .dip-detail-actions button {
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+  }
+}
+
+/* ── E. SBAR AI Assistant & Form Mobile Rules ── */
+@media (max-width: 640px) {
+  .dsp-ai-actions {
+    flex-direction: column !important;
+  }
+
+  .dsp-ai-actions button {
+    width: 100% !important;
+  }
+
+  .dsp-sbar-step {
+    margin-bottom: 1rem !important;
+  }
+}
+

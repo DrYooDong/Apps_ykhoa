@@ -61,7 +61,7 @@ export function renderStudiosView(pidOrTab?: string, maybeTab?: StudioTabKey): s
         </header>
 
         <!-- Studio Hub Outer Navigation Bar -->
-        <nav class="dsp-tabs-nav" aria-label="DocSpace Studios Tabs" style="margin-bottom:1.5rem; border-bottom:2px solid var(--color-border); display:flex; gap:0.5rem; overflow-x:auto; padding-bottom:2px;">
+        <nav class="dsp-tabs-nav" aria-label="DocSpace Studios Tabs">
           <button type="button" class="dsp-tab-btn ${initialTab === 'abg' ? 'is-active' : ''} js-studio-tab-btn" data-tab="abg">
             <i class="fa-solid fa-flask-vial" style="color:var(--color-primary);"></i> 1. Khí Máu &amp; Toan Kiềm (ABG Pro)
           </button>

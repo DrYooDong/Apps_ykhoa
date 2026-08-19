@@ -98,11 +98,11 @@ export async function renderSBARView(profileId: string, editId?: string): Promis
         </div>
         <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 0.5rem;">Dán đoạn ghi chú lộn xộn hoặc ghi âm vào đây, AI sẽ tự động phân loại thành các trường S-B-A-R bên dưới.</p>
         <textarea class="dsp-textarea" id="dspSBAR_RawNotes" rows="3" placeholder="Ví dụ: Bn nam 65t, vô vì đau ngực. Tiền sử THA. Khám thấy tim đều, huyết áp 160/90. Cho làm ECG gấp..."></textarea>
-        <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 0.5rem;">
-          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-outline" id="btnVoiceToSBAR" style="color: #8b5cf6; border-color: #8b5cf6;">
+        <div class="dsp-ai-actions" style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 0.5rem; flex-wrap: wrap;">
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-outline" id="btnVoiceToSBAR" style="color: #8b5cf6; border-color: #8b5cf6; flex: 1 1 auto; justify-content: center;">
             <i class="fa-solid fa-microphone"></i> 🎙️ Ghi âm giọng nói
           </button>
-          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnAIGenerateSBAR" style="background-color: #8b5cf6; border-color: #8b5cf6;">
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnAIGenerateSBAR" style="background-color: #8b5cf6; border-color: #8b5cf6; flex: 1 1 auto; justify-content: center;">
             <i class="fa-solid fa-wand-magic-sparkles"></i> Phân tích AI SBAR
           </button>
         </div>

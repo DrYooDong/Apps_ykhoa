@@ -36,6 +36,7 @@ import { clinicalCommandBar } from './features/command-bar';
 import { quickReferenceDrawer } from './features/quick-reference-drawer';
 import { drugIntelligencePanel } from './features/drug-intelligence-panel';
 import { calculatorPicker } from './features/calculator-picker';
+import { docSpaceSettingsModal } from './features/docspace-settings-modal';
 
 // ─── Mount helper ─────────────────────────────────────────────────
 
@@ -68,6 +69,11 @@ function mountGlobalDocSpaceControls(): void {
   });
   document.getElementById('dspHeaderSearchInput')?.addEventListener('click', () => {
     clinicalCommandBar.open();
+  });
+
+  // Settings & Utilities Modal Trigger
+  document.getElementById('dspHeaderSettingsBtn')?.addEventListener('click', () => {
+    docSpaceSettingsModal.open();
   });
 
   // Quick Reference Drawer
@@ -215,6 +221,10 @@ function mountDashboardController(profileId: string): void {
 // ─── Shared Sidebar Controls ──────────────────────────────────────
 
 function mountSidebarFooterControls(profileId: string): void {
+  document.getElementById('dspSidebarSettingsBtn')?.addEventListener('click', () => {
+    docSpaceSettingsModal.open();
+  });
+
   document.getElementById('dspSidebarExport')?.addEventListener('click', () => exportProfile(profileId));
   document.getElementById('dspSidebarExportFhir')?.addEventListener('click', () => exportProfileToFHIR(profileId));
   document.getElementById('dspSidebarSwitch')?.addEventListener('click', () => {

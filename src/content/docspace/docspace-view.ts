@@ -13,7 +13,6 @@ export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
     icon: 'fa-solid fa-hospital-user',
     items: [
       { id: 'dashboard',    label: 'Tổng quan',           href: '#/docspace',              icon: 'fa-solid fa-house-medical',  phase: 1 },
-      { id: 'patients',     label: 'Quản lý Bệnh nhân',   href: '#/docspace/patients',     icon: 'fa-solid fa-users',          phase: 1 },
       { id: 'chronic-care', label: 'Bệnh Mạn Tính',       href: '#/docspace/chronic-care', icon: 'fa-solid fa-heart-pulse',   phase: 1 },
       { id: 'soap',         label: 'Sổ Tay SOAP',         href: '#/docspace/soap',         icon: 'fa-solid fa-notes-medical',  phase: 1 },
       { id: 'sbar',         label: 'Bàn giao SBAR',       href: '#/docspace/sbar',         icon: 'fa-solid fa-file-waveform',  phase: 1 },
@@ -384,31 +383,26 @@ export function renderDocSpaceHeader(profile: DoctorProfile, activeId: string): 
       </div>
 
       <div class="dsp-header-right">
-        <button type="button" class="dsp-header-icon-btn" id="dspHeaderQuickRefBtn" title="Tra cứu Siêu tốc: Công thức, ECG/ABG & ACLS" style="color:var(--color-primary, #0284c7);">
+        <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderQuickRefBtn" title="Tra cứu Siêu tốc: Công thức, ECG/ABG & ACLS" style="color:var(--color-primary, #0284c7);">
           <i class="fa-solid fa-bolt"></i>
         </button>
 
-        <button type="button" class="dsp-header-icon-btn" id="dspHeaderDrugIntelBtn" title="Drug Intelligence — Dược thư & Tương tác thuốc" style="color:#db2777;">
+        <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderDrugIntelBtn" title="Drug Intelligence — Dược thư & Tương tác thuốc" style="color:#db2777;">
           <i class="fa-solid fa-pills"></i>
         </button>
 
-        <button type="button" class="dsp-header-icon-btn" id="dspHeaderToolsBtn" title="Kho Thang điểm & Công cụ Tính toán" style="color:#f59e0b;">
+        <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderToolsBtn" title="Kho Thang điểm & Công cụ Tính toán" style="color:#f59e0b;">
           <i class="fa-solid fa-calculator"></i>
         </button>
 
-        <div class="dsp-cloud-status" title="Dữ liệu lưu trữ nội bộ an toàn (Local First)">
-          <span class="dsp-status-dot"></span>
-          <span class="dsp-status-text">Client Sync</span>
-        </div>
-
-        <a href="#/docspace/ai-settings" class="dsp-header-icon-btn" title="Cấu hình AI Co-Pilot &amp; Local LLM">
-          <i class="fa-solid fa-microchip"></i>
-        </a>
-
-        <div class="dsp-header-profile-chip" title="Hồ sơ bác sĩ: ${escapeHtml(profile.displayName)}">
+        <div class="dsp-header-profile-chip dsp-header-desktop-only" title="Hồ sơ bác sĩ: ${escapeHtml(profile.displayName)}">
           <div class="dsp-avatar dsp-avatar--xs">${getInitials(profile.displayName)}</div>
           <span class="dsp-header-profile-name">${escapeHtml(profile.displayName)}</span>
         </div>
+
+        <button type="button" class="dsp-header-icon-btn" id="dspHeaderSettingsBtn" title="Cài đặt & Tiện ích DocSpace" style="color:var(--color-text);">
+          <i class="fa-solid fa-gear"></i>
+        </button>
 
         <a href="#/" class="dsp-header-btn-home" title="Trở về Trang chủ CliniPortal">
           <i class="fa-solid fa-house"></i> <span>Trang chủ</span>
@@ -492,30 +486,14 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
       </nav>
 
       <div class="dsp-sidebar-footer">
-        <div class="dsp-sidebar-footer-title">
-          <i class="fa-solid fa-vault"></i>
-          <span>Hệ thống & Dữ liệu</span>
-        </div>
-        <a href="#/docspace/ai-settings" class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarAI">
-          <i class="fa-solid fa-microchip" style="color:var(--dsp-violet, #8b5cf6);"></i>
-          <span>Cấu hình AI Co-Pilot</span>
+        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSettingsBtn" style="font-weight:700; color:var(--color-primary); cursor:pointer;">
+          <i class="fa-solid fa-gear" style="color:var(--color-primary);"></i>
+          <span>Cài đặt &amp; Tiện ích</span>
+        </button>
+        <a href="#/" class="dsp-nav-item dsp-nav-item--footer" title="Trở về Trang chủ CliniPortal">
+          <i class="fa-solid fa-house" style="color:var(--color-text-muted);"></i>
+          <span>Về Trang chủ</span>
         </a>
-        <a href="#/docspace/sync-settings" class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSync">
-          <i class="fa-solid fa-rotate" style="color:var(--dsp-sky, #0ea5e9);"></i>
-          <span>Đồng bộ Đa thiết bị</span>
-        </a>
-        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarExport">
-          <i class="fa-solid fa-file-export"></i>
-          <span>Xuất dữ liệu JSON</span>
-        </button>
-        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarExportFhir">
-          <i class="fa-solid fa-file-medical" style="color:#10b981;"></i>
-          <span>Xuất chuẩn FHIR R4</span>
-        </button>
-        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSwitch">
-          <i class="fa-solid fa-repeat"></i>
-          <span>Đổi Hồ sơ Bác sĩ</span>
-        </button>
       </div>
     </aside>
     <div class="dsp-sidebar-backdrop" id="dspSidebarBackdrop"></div>

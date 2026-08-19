@@ -1157,14 +1157,46 @@ export function mountSoapController(profileId: string): void {
     }
   });
 
-  // Toggle Row Collapse
+  // Toggle Individual Row Collapse
   document.querySelectorAll('.js-toggle-row-collapse').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      const row = (e.currentTarget as HTMLElement).closest('.dsp-soap-row');
+      e.stopPropagation();
+      const button = e.currentTarget as HTMLElement;
+      const row = button.closest('.dsp-soap-row');
       if (row) {
         row.classList.toggle('is-collapsed');
+        const icon = button.querySelector('i');
+        if (icon) {
+          if (row.classList.contains('is-collapsed')) {
+            icon.className = 'fa-solid fa-chevron-down';
+          } else {
+            icon.className = 'fa-solid fa-chevron-up';
+          }
+        }
       }
     });
+  });
+
+  // Toggle All Rows Collapse
+  let allCollapsed = false;
+  document.getElementById('btnToggleCollapseAll')?.addEventListener('click', () => {
+    allCollapsed = !allCollapsed;
+    document.querySelectorAll('.dsp-soap-row').forEach(row => {
+      if (allCollapsed) {
+        row.classList.add('is-collapsed');
+      } else {
+        row.classList.remove('is-collapsed');
+      }
+      const icon = row.querySelector('.js-toggle-row-collapse i');
+      if (icon) {
+        icon.className = allCollapsed ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-up';
+      }
+    });
+
+    const btnText = document.querySelector('#btnToggleCollapseAll span');
+    if (btnText) {
+      btnText.textContent = allCollapsed ? 'Mở rộng' : 'Thu gọn';
+    }
   });
 
   // Switch Date Buttons

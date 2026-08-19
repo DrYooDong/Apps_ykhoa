@@ -78,39 +78,39 @@ export class CalculatorPicker {
       : '';
 
     this.modalEl.innerHTML = `
-      <div style="background:var(--color-surface, #ffffff); width:100%; max-width:1150px; height:88vh; border-radius:14px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.35); border:1px solid var(--color-border, #e2e8f0); position:relative; font-family:inherit;">
+      <div class="cp-modal-card" style="background:var(--color-surface, #ffffff); width:100%; max-width:1150px; height:88vh; border-radius:14px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.35); border:1px solid var(--color-border, #e2e8f0); position:relative; font-family:inherit;">
         
         <!-- Header -->
-        <div style="padding:14px 20px; border-bottom:1px solid var(--color-border, #e2e8f0); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg, #f8fafc); flex-shrink:0;">
-          <div style="display:flex; align-items:center; gap:14px;">
-            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, #0284c7, #0369a1); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 6px -1px rgba(2,132,199,0.3);">
+        <div class="cp-modal-header" style="padding:14px 20px; border-bottom:1px solid var(--color-border, #e2e8f0); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg, #f8fafc); flex-shrink:0;">
+          <div class="cp-modal-header-left" style="display:flex; align-items:center; gap:12px;">
+            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, #0284c7, #0369a1); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 6px -1px rgba(2,132,199,0.3); flex-shrink:0;">
               <i class="fa-solid fa-calculator"></i>
             </div>
             <div>
-              <div style="display:flex; align-items:center; gap:10px;">
-                <h3 style="margin:0; font-size:17px; font-weight:700; color:var(--color-text, #0f172a);">Kho Thang Điểm & Công Cụ Lâm Sàng</h3>
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <h3 style="margin:0; font-size:16px; font-weight:700; color:var(--color-text, #0f172a);">Kho Thang Điểm Lâm Sàng</h3>
                 ${patientBadge}
               </div>
-              <p style="margin:2px 0 0; font-size:12px; color:var(--color-text-muted, #64748b);">Tích hợp tính điểm nhanh, tra cứu khuyến cáo EBM & tự động điền từ bệnh án</p>
+              <p class="cp-header-sub" style="margin:2px 0 0; font-size:11.5px; color:var(--color-text-muted, #64748b);">Tính điểm nhanh, EBM & tự động điền từ bệnh án</p>
             </div>
           </div>
 
           <!-- Tabs Switcher & Cross-Module Links & Close -->
-          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-            <div style="display:flex; background:var(--color-border, #e2e8f0); padding:3px; border-radius:8px; gap:2px;">
+          <div class="cp-modal-header-right" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <div class="cp-tab-group" style="display:flex; background:var(--color-border, #e2e8f0); padding:3px; border-radius:8px; gap:2px;">
               <button id="cpTabNative" style="background:${this.currentTab === 'native' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'native' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'native' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
                 <i class="fa-solid fa-bolt"></i> Thang điểm Native
               </button>
               <button id="cpTabClassic" style="background:${this.currentTab === 'classic' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'classic' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'classic' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-                <i class="fa-solid fa-folder-open"></i> Kho Mở Rộng 70+
+                <i class="fa-solid fa-folder-open"></i> Kho Mở Rộng
               </button>
             </div>
 
             <!-- Pathophysiology Links -->
-            <a href="#/pathophysiology/formula-vault" class="dsp-btn dsp-btn-sm" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#0284c7; border:1px solid rgba(2,132,199,0.3); background:rgba(2,132,199,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Xem Kho Công Thức Sinh Lý Học">
+            <a href="#/pathophysiology/formula-vault" class="dsp-btn dsp-btn-sm cp-extra-link" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#0284c7; border:1px solid rgba(2,132,199,0.3); background:rgba(2,132,199,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Xem Kho Công Thức Sinh Lý Học">
               <i class="fa-solid fa-square-root-variable"></i> Công thức Sinh lý
             </a>
-            <a href="#/pathophysiology/simulators" class="dsp-btn dsp-btn-sm" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); background:rgba(139,92,246,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Mở Máy Mô Phỏng Sinh Lý Tương Tác">
+            <a href="#/pathophysiology/simulators" class="dsp-btn dsp-btn-sm cp-extra-link" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); background:rgba(139,92,246,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Mở Máy Mô Phỏng Sinh Lý Tương Tác">
               <i class="fa-solid fa-bolt"></i> Mô phỏng Sinh lý
             </a>
 
@@ -122,10 +122,10 @@ export class CalculatorPicker {
         <div id="cpBodyContainer" style="display:flex; flex:1; overflow:hidden; position:relative;">
           
           <!-- Native Container (Dual Panel) -->
-          <div id="cpNativeContainer" style="display:${this.currentTab === 'native' ? 'flex' : 'none'}; width:100%; height:100%; overflow:hidden;">
+          <div id="cpNativeContainer" class="cp-native-container" style="display:${this.currentTab === 'native' ? 'flex' : 'none'}; width:100%; height:100%; overflow:hidden;">
             
             <!-- Left Sidebar (Tool Directory) -->
-            <div style="width:340px; border-right:1px solid var(--color-border, #e2e8f0); display:flex; flex-direction:column; background:var(--color-bg, #f8fafc); flex-shrink:0;">
+            <div class="cp-sidebar-panel" style="width:340px; border-right:1px solid var(--color-border, #e2e8f0); display:flex; flex-direction:column; background:var(--color-bg, #f8fafc); flex-shrink:0;">
               <!-- Search & Filter Header -->
               <div style="padding:12px; border-bottom:1px solid var(--color-border, #e2e8f0); display:flex; flex-direction:column; gap:8px;">
                 <div style="position:relative;">
@@ -145,7 +145,7 @@ export class CalculatorPicker {
             </div>
 
             <!-- Right Main Detail Panel (Calculator UI) -->
-            <div id="cpToolDetail" style="flex:1; display:flex; flex-direction:column; overflow-y:auto; background:var(--color-surface, #fff); padding:24px 28px;">
+            <div id="cpToolDetail" class="cp-detail-panel" style="flex:1; display:flex; flex-direction:column; overflow-y:auto; background:var(--color-surface, #fff); padding:24px 28px;">
               <!-- Injected via JS -->
             </div>
 
@@ -384,7 +384,7 @@ export class CalculatorPicker {
       </div>
 
       <!-- Two-column Layout: Left Form Inputs | Right Live Result Card -->
-      <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:24px; align-items:start;">
+      <div class="cp-calc-grid" style="display:grid; grid-template-columns:1.2fr 1fr; gap:20px; align-items:start;">
         
         <!-- Form Inputs Column -->
         <div style="display:flex; flex-direction:column; gap:16px;">

@@ -64,32 +64,32 @@ export class DrugIntelligencePanel {
       : '';
 
     this.modalEl.innerHTML = `
-      <div style="background:var(--color-surface, #ffffff); width:100%; max-width:1100px; height:88vh; border-radius:14px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.35); border:1px solid var(--color-border, #e2e8f0); position:relative; font-family:inherit;">
+      <div class="dip-modal-card" style="background:var(--color-surface, #ffffff); width:100%; max-width:1100px; height:88vh; border-radius:14px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.35); border:1px solid var(--color-border, #e2e8f0); position:relative; font-family:inherit;">
         
         <!-- Header -->
-        <div style="padding:14px 20px; border-bottom:1px solid var(--color-border, #e2e8f0); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg, #f8fafc); flex-shrink:0;">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, #ec4899, #db2777); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 6px -1px rgba(236,72,153,0.3);">
+        <div class="dip-modal-header" style="padding:14px 20px; border-bottom:1px solid var(--color-border, #e2e8f0); display:flex; justify-content:space-between; align-items:center; background:var(--color-bg, #f8fafc); flex-shrink:0;">
+          <div class="dip-header-left" style="display:flex; align-items:center; gap:12px;">
+            <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, #ec4899, #db2777); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; box-shadow:0 4px 6px -1px rgba(236,72,153,0.3); flex-shrink:0;">
               <i class="fa-solid fa-pills"></i>
             </div>
             <div>
-              <div style="display:flex; align-items:center; gap:10px;">
-                <h3 style="margin:0; font-size:17px; font-weight:700; color:var(--color-text, #0f172a);">Drug Intelligence Panel</h3>
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <h3 style="margin:0; font-size:16px; font-weight:700; color:var(--color-text, #0f172a);">Drug Intelligence Panel</h3>
                 <span class="dsp-badge" style="background:#fce7f3; color:#be185d; border:1px solid #fbcfe8; font-size:11px;">Dược lý & Tương tác</span>
                 ${patientBadge}
               </div>
-              <p style="margin:2px 0 0; font-size:12px; color:var(--color-text-muted, #64748b);">Tra cứu dược thư, chỉnh liều suy thận & kiểm tra tương tác thuốc tự động</p>
+              <p class="dip-header-sub" style="margin:2px 0 0; font-size:11.5px; color:var(--color-text-muted, #64748b);">Tra cứu dược thư, chỉnh liều suy thận & kiểm tra tương tác thuốc</p>
             </div>
           </div>
 
           <!-- Tab switchers & Close -->
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div style="display:flex; background:var(--color-border, #e2e8f0); padding:3px; border-radius:8px; gap:2px;">
-              <button id="dipTabFormulary" style="background:${this.currentTab === 'formulary' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'formulary' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'formulary' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-                <i class="fa-solid fa-book-medical"></i> Dược thư Lâm sàng
+          <div class="dip-header-right" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <div class="dip-header-tabs" style="display:flex; background:var(--color-border, #e2e8f0); padding:3px; border-radius:8px; gap:2px;">
+              <button id="dipTabFormulary" style="background:${this.currentTab === 'formulary' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'formulary' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'formulary' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
+                <i class="fa-solid fa-book-medical"></i> Dược thư
               </button>
-              <button id="dipTabInteractions" style="background:${this.currentTab === 'interactions' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'interactions' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'interactions' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-                <i class="fa-solid fa-triangle-exclamation"></i> Kiểm tra Tương tác (${this.selectedDrugsForCheck.length})
+              <button id="dipTabInteractions" style="background:${this.currentTab === 'interactions' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'interactions' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:6px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:${this.currentTab === 'interactions' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
+                <i class="fa-solid fa-triangle-exclamation"></i> Tương tác (${this.selectedDrugsForCheck.length})
               </button>
             </div>
             <button id="btnCloseDrugIntelligence" style="background:none; border:none; width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; color:var(--color-text-muted, #64748b); transition:all 0.2s;" title="Đóng (Esc)">&times;</button>
@@ -100,14 +100,14 @@ export class DrugIntelligencePanel {
         <div id="dipBody" style="display:flex; flex:1; overflow:hidden; position:relative;">
           
           <!-- TAB 1: FORMULARY (DUAL PANEL) -->
-          <div id="dipFormularyView" style="display:${this.currentTab === 'formulary' ? 'flex' : 'none'}; width:100%; height:100%;">
+          <div id="dipFormularyView" class="dip-formulary-view" style="display:${this.currentTab === 'formulary' ? 'flex' : 'none'}; width:100%; height:100%;">
             
             <!-- Left List -->
-            <div style="width:360px; border-right:1px solid var(--color-border, #e2e8f0); display:flex; flex-direction:column; background:var(--color-bg, #f8fafc); flex-shrink:0;">
+            <div class="dip-list-panel" style="width:340px; border-right:1px solid var(--color-border, #e2e8f0); display:flex; flex-direction:column; background:var(--color-bg, #f8fafc); flex-shrink:0;">
               <div style="padding:12px; border-bottom:1px solid var(--color-border, #e2e8f0);">
                 <div style="position:relative;">
                   <i class="fa-solid fa-search" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--color-text-muted, #94a3b8); font-size:13px;"></i>
-                  <input type="text" id="dipSearchInput" class="dsp-input" placeholder="Tìm tên thuốc, biệt dược (VD: Vancomycin, Rocephin)..." style="width:100%; padding:7px 10px 7px 32px; font-size:13px; border-radius:8px; border:1px solid var(--color-border, #cbd5e1); background:var(--color-surface, #fff);" />
+                  <input type="text" id="dipSearchInput" class="dsp-input" placeholder="Tìm tên thuốc, biệt dược..." style="width:100%; padding:7px 10px 7px 32px; font-size:13px; border-radius:8px; border:1px solid var(--color-border, #cbd5e1); background:var(--color-surface, #fff);" />
                 </div>
               </div>
               <div id="dipDrugsList" style="flex:1; overflow-y:auto; padding:8px; display:flex; flex-direction:column; gap:6px;">
@@ -116,7 +116,7 @@ export class DrugIntelligencePanel {
             </div>
 
             <!-- Right Detail -->
-            <div id="dipDrugDetailPanel" style="flex:1; overflow-y:auto; padding:24px 28px; background:var(--color-surface, #ffffff);">
+            <div id="dipDrugDetailPanel" class="dip-detail-panel" style="flex:1; overflow-y:auto; padding:24px 28px; background:var(--color-surface, #ffffff);">
               ${this.renderDrugDetailHtml(this.selectedDrugDetail)}
             </div>
 
@@ -181,23 +181,23 @@ export class DrugIntelligencePanel {
 
     return `
       <div>
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid var(--color-border, #e2e8f0); padding-bottom:14px;">
+        <div class="dip-detail-header" style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid var(--color-border, #e2e8f0); padding-bottom:14px; gap:12px; flex-wrap:wrap;">
           <div>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <h2 style="margin:0; font-size:22px; color:var(--color-text, #0f172a); font-weight:800;">${escapeHtml(drug.name)}</h2>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <h2 style="margin:0; font-size:20px; color:var(--color-text, #0f172a); font-weight:800;">${escapeHtml(drug.name)}</h2>
               <span class="dsp-badge" style="background:#e0f2fe; color:#0369a1;">${escapeHtml(drug.category)}</span>
             </div>
-            <div style="margin-top:4px; font-size:13px; color:var(--color-text-muted, #64748b);">
+            <div style="margin-top:4px; font-size:12.5px; color:var(--color-text-muted, #64748b);">
               <strong>Biệt dược thường gặp:</strong> ${drug.brandNames.join(', ')}
             </div>
           </div>
           
-          <div style="display:flex; gap:8px;">
+          <div class="dip-detail-actions" style="display:flex; gap:8px; flex-wrap:wrap;">
             <button id="btnAddToCheck" data-drug-name="${drug.name}" class="dsp-btn dsp-btn-secondary dsp-btn-sm" style="font-size:12px;">
-              <i class="fa-solid fa-plus"></i> Thêm vào Kiểm tra Tương tác
+              <i class="fa-solid fa-plus"></i> Thêm vào Tương tác
             </button>
             <button id="btnInsertDrugToSoap" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-size:12px;">
-              <i class="fa-solid fa-file-medical"></i> Chèn vào Kế hoạch (Plan)
+              <i class="fa-solid fa-file-medical"></i> Chèn vào Plan
             </button>
           </div>
         </div>
@@ -214,7 +214,7 @@ export class DrugIntelligencePanel {
         ` : ''}
 
         <!-- Dosing Cards -->
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
+        <div class="dip-dosing-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
           
           <div style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:14px;">
             <div style="font-size:13px; font-weight:700; color:var(--color-primary, #0284c7); margin-bottom:6px; display:flex; align-items:center; gap:6px;">
