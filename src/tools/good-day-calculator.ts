@@ -171,6 +171,7 @@ export interface BestClinicalDayResult {
 export interface ShiftEnergyData {
   energyPercent: number;
   statusText: string;
+  statusClass: string;
   icon: string;
   circadianPhase: string;
   peakHours: string;
@@ -1193,18 +1194,23 @@ export function calculateShiftEnergy(dateObj: Date = new Date()): ShiftEnergyDat
   const energyPercent = Math.min(99, Math.max(35, Math.round(circVal + bioMod)));
 
   let statusText = "Sung Sức";
+  let statusClass = "high";
   let icon = "⚡";
   if (energyPercent >= 85) {
     statusText = "Sung Sức";
+    statusClass = "high";
     icon = "⚡";
   } else if (energyPercent >= 70) {
     statusText = "Sẵn Sàng";
+    statusClass = "high";
     icon = "🔋";
   } else if (energyPercent >= 55) {
     statusText = "Vừa Phải";
+    statusClass = "med";
     icon = "☕";
   } else {
     statusText = "Cần Nghỉ";
+    statusClass = "low";
     icon = "🛌";
   }
 
@@ -1218,6 +1224,7 @@ export function calculateShiftEnergy(dateObj: Date = new Date()): ShiftEnergyDat
   return {
     energyPercent,
     statusText,
+    statusClass,
     icon,
     circadianPhase: phase,
     peakHours: peak,
@@ -1255,7 +1262,7 @@ export function updateDayScoreBadge(now: Date = new Date()): void {
   textEl.textContent = evalData.rating;
   if (iconEl) iconEl.textContent = evalData.icon;
 
-  scoreBtn.className = `hero-day-score-badge ${evalData.badgeClass}`;
+  scoreBtn.className = `status-pill hero-day-score-badge ${evalData.badgeClass}`;
   scoreBtn.setAttribute('data-score', String(evalData.total));
 }
 
@@ -1270,6 +1277,8 @@ export function updateHeroEnergyBadge(now: Date = new Date()): void {
   valEl.textContent = `${energy.energyPercent}%`;
   textEl.textContent = energy.statusText;
   if (iconEl) iconEl.textContent = energy.icon;
+
+  energyBtn.className = `status-pill hero-energy-badge ${energy.statusClass}`;
 }
 
 export function openDayScoreModal(

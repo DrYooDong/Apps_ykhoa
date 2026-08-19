@@ -26,7 +26,6 @@ export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
       { id: 'studios',  label: 'Clinical Studios',     href: '#/docspace/studios',  icon: 'fa-solid fa-flask-vial',     phase: 1, badgeText: 'Pro' },
       { id: 'protocol', label: 'Kho Phác đồ Điều trị', href: '#/docspace/protocol', icon: 'fa-solid fa-book-medical',   phase: 1 },
       { id: 'notes',    label: 'Ghi chú Lâm sàng',     href: '#/docspace/notes',    icon: 'fa-solid fa-note-sticky',    phase: 1 },
-      { id: 'links',    label: 'Liên kết Nhanh',       href: '#/docspace/links',    icon: 'fa-solid fa-link',           phase: 1 },
     ],
   },
   {

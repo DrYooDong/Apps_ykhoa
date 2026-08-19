@@ -1,54 +1,65 @@
 /**
- * CliniPortal — EBM Practice Lab SPA View (TypeScript)
+ * CliniPortal — EBM Practice Lab Pro SPA View (TypeScript)
  * Path: src/content/ebm/ebm-lab/ebm-lab-view.ts
+ * Nâng cấp toàn diện: NNT/NNH/ARR/RRR/OR/95% CI + PICO Search Generator + RoB 2 Traffic-Light Matrix
  */
 
-export type EbmLabTab = 'pico' | 'nnt' | 'appraisal' | 'charts';
+export type EbmLabTab = 'nnt' | 'pico' | 'appraisal' | 'charts';
 
 export function renderEbmLabView(activeTab: EbmLabTab = 'nnt'): string {
   return `
-    <div class="ebm-lab-container animate-fade-in" style="max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;">
-      <!-- Breadcrumb & Header -->
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <div style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 0.25rem;">
-            <a href="#/ebm" style="color: var(--color-primary, #0284c7); text-decoration: none;"><i class="fa-solid fa-chevron-left"></i> Y Học Chứng Cứ</a> / EBM Practice Lab
+    <div class="ebm-lab-container animate-fade-in" style="max-width: 1440px; margin: 0 auto; padding: 1.25rem 1rem;">
+      
+      <!-- BREADCRUMB -->
+      <div style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
+        <a href="#/" style="color: inherit; text-decoration: none;">🏠 Trang chủ</a> &nbsp;/&nbsp; 
+        <a href="#/ebm" style="color: inherit; text-decoration: none;">Y Học Chứng Cứ</a> &nbsp;/&nbsp; 
+        <span style="color: #059669; font-weight: 700;">EBM Practice Lab Pro</span>
+      </div>
+
+      <!-- HERO BANNER -->
+      <section style="background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #059669 100%); color: #fff; padding: 2rem 1.5rem; border-radius: 20px; margin-bottom: 1.5rem; box-shadow: 0 10px 25px rgba(5,150,105,0.2);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div style="display:inline-flex; align-items:center; gap:6px; padding:3px 10px; background:rgba(255,255,255,0.18); border-radius:20px; font-size:11px; font-weight:700; color:#a7f3d0; margin-bottom:0.75rem;">
+              <i class="fa-solid fa-flask-vial"></i> EBM EVIDENCE LABORATORY • STATISTICAL WORKSUITE
+            </div>
+            <h1 style="font-size:clamp(1.5rem, 2.5vw, 2.2rem); font-weight:800; margin:0 0 0.5rem 0; line-height:1.25;">
+              EBM Practice Lab Pro — Thực Hành Y Học Chứng Cứ
+            </h1>
+            <p style="margin:0; font-size:0.92rem; opacity:0.95; max-width:800px; line-height:1.55;">
+              Bộ công cụ tương tác cao cấp: Tính toán NNT/NNH/ARR/RRR kèm khoảng tin cậy 95%, máy tạo câu hỏi PICO &amp; lệnh tìm kiếm PubMed tự động, cùng bảng kiểm thẩm định chất lượng nghiên cứu Cochrane RoB 2.
+            </p>
           </div>
-          <h1 style="font-size: 1.85rem; font-weight: 800; color: #059669; margin: 0; display: flex; align-items: center; gap: 0.75rem;">
-            <i class="fa-solid fa-flask-vial"></i> EBM Practice Lab — Phòng Thực Hành Y Học Chứng Cứ
-          </h1>
-          <p style="font-size: 0.95rem; color: var(--color-text-muted, #64748b); margin: 0.25rem 0 0 0;">
-            Bộ công cụ xây dựng câu hỏi PICO, tính toán NNT/NNH/ARR/RRR và thẩm định chất lượng nghiên cứu lâm sàng (Critical Appraisal).
-          </p>
+          <div style="display:flex; gap:0.5rem;">
+            <a href="#/ebm" class="btn" style="background:rgba(255,255,255,0.2); color:#fff; padding:0.5rem 1rem; border-radius:8px; text-decoration:none; font-size:12.5px; font-weight:700; display:inline-flex; align-items:center; gap:6px; border:1px solid rgba(255,255,255,0.3);">
+              <i class="fa-solid fa-arrow-left"></i> EBM Hub
+            </a>
+          </div>
         </div>
-        
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <a href="#/ebm" class="btn btn-outline" style="padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text, #334155); text-decoration: none; font-size: 0.875rem; font-weight: 600;">
-            <i class="fa-solid fa-arrow-left"></i> EBM Command Center
-          </a>
-        </div>
-      </div>
+      </section>
 
-      <!-- Navigation Tabs -->
-      <div style="display: flex; gap: 0.5rem; border-bottom: 2px solid var(--color-border, #e2e8f0); margin-bottom: 1.5rem; overflow-x: auto; padding-bottom: 0.5rem;">
-        <button class="ebm-tab-btn ${activeTab === 'nnt' ? 'active' : ''}" onclick="window.switchEbmLabTab('nnt')" style="padding: 0.6rem 1.2rem; border: none; background: ${activeTab === 'nnt' ? '#059669' : 'transparent'}; color: ${activeTab === 'nnt' ? '#fff' : 'var(--color-text, #334155)'}; border-radius: 8px; font-weight: 700; font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
-          <i class="fa-solid fa-calculator"></i> Máy Tính NNT / NNH / ARR / RRR
+      <!-- RESPONSIVE HORIZONTAL TAB BAR -->
+      <div style="display:flex; gap:8px; border-bottom:2px solid var(--color-border); margin-bottom:1.5rem; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; padding-bottom:6px;">
+        <button class="ebm-lab-nav-tab ${activeTab === 'nnt' ? 'is-active' : ''}" data-tab="nnt" style="padding:0.6rem 1.1rem; border:none; background:${activeTab === 'nnt' ? '#059669' : 'transparent'}; color:${activeTab === 'nnt' ? '#fff' : 'var(--color-text)'}; border-radius:10px; font-weight:700; font-size:12.5px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex-shrink:0;">
+          <i class="fa-solid fa-calculator"></i> 1. Máy Tính NNT / NNH / ARR / RRR
         </button>
-        <button class="ebm-tab-btn ${activeTab === 'pico' ? 'active' : ''}" onclick="window.switchEbmLabTab('pico')" style="padding: 0.6rem 1.2rem; border: none; background: ${activeTab === 'pico' ? '#059669' : 'transparent'}; color: ${activeTab === 'pico' ? '#fff' : 'var(--color-text, #334155)'}; border-radius: 8px; font-weight: 700; font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
-          <i class="fa-solid fa-crosshairs"></i> PICO Question Builder
+        <button class="ebm-lab-nav-tab ${activeTab === 'pico' ? 'is-active' : ''}" data-tab="pico" style="padding:0.6rem 1.1rem; border:none; background:${activeTab === 'pico' ? '#059669' : 'transparent'}; color:${activeTab === 'pico' ? '#fff' : 'var(--color-text)'}; border-radius:10px; font-weight:700; font-size:12.5px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex-shrink:0;">
+          <i class="fa-solid fa-crosshairs"></i> 2. PICO &amp; PubMed Search Builder
         </button>
-        <button class="ebm-tab-btn ${activeTab === 'appraisal' ? 'active' : ''}" onclick="window.switchEbmLabTab('appraisal')" style="padding: 0.6rem 1.2rem; border: none; background: ${activeTab === 'appraisal' ? '#059669' : 'transparent'}; color: ${activeTab === 'appraisal' ? '#fff' : 'var(--color-text, #334155)'}; border-radius: 8px; font-weight: 700; font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
-          <i class="fa-solid fa-clipboard-check"></i> Critical Appraisal (CASP/RoB 2)
+        <button class="ebm-lab-nav-tab ${activeTab === 'appraisal' ? 'is-active' : ''}" data-tab="appraisal" style="padding:0.6rem 1.1rem; border:none; background:${activeTab === 'appraisal' ? '#059669' : 'transparent'}; color:${activeTab === 'appraisal' ? '#fff' : 'var(--color-text)'}; border-radius:10px; font-weight:700; font-size:12.5px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex-shrink:0;">
+          <i class="fa-solid fa-clipboard-check"></i> 3. Thẩm Định Nghiên Cứu (Cochrane RoB 2)
         </button>
-        <button class="ebm-tab-btn ${activeTab === 'charts' ? 'active' : ''}" onclick="window.switchEbmLabTab('charts')" style="padding: 0.6rem 1.2rem; border: none; background: ${activeTab === 'charts' ? '#059669' : 'transparent'}; color: ${activeTab === 'charts' ? '#fff' : 'var(--color-text, #334155)'}; border-radius: 8px; font-weight: 700; font-size: 0.875rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
-          <i class="fa-solid fa-chart-line"></i> Kho Biểu Đồ Y Học (Forest/Funnel/KM/ROC)
+        <button class="ebm-lab-nav-tab ${activeTab === 'charts' ? 'is-active' : ''}" data-tab="charts" style="padding:0.6rem 1.1rem; border:none; background:${activeTab === 'charts' ? '#059669' : 'transparent'}; color:${activeTab === 'charts' ? '#fff' : 'var(--color-text)'}; border-radius:10px; font-weight:700; font-size:12.5px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex-shrink:0;">
+          <i class="fa-solid fa-chart-line"></i> 4. Kho Biểu Đồ &amp; Meta-Analysis
         </button>
       </div>
 
-      <!-- Tab Content Area -->
+      <!-- TAB CONTENT CONTAINER -->
       <div id="ebmLabContentArea">
         ${renderActiveLabTab(activeTab)}
       </div>
+
     </div>
   `;
 }
@@ -56,224 +67,342 @@ export function renderEbmLabView(activeTab: EbmLabTab = 'nnt'): string {
 function renderActiveLabTab(tab: EbmLabTab): string {
   switch (tab) {
     case 'nnt':
-      return renderNntCalculator();
+      return renderNntCalculatorPro();
     case 'pico':
-      return renderPicoBuilder();
+      return renderPicoBuilderPro();
     case 'appraisal':
-      return renderCriticalAppraisal();
+      return renderCriticalAppraisalRoB2();
     case 'charts':
       return renderChartsDirectory();
     default:
-      return renderNntCalculator();
+      return renderNntCalculatorPro();
   }
 }
 
-// 1. NNT CALCULATOR
-function renderNntCalculator(): string {
+// ─────────────────────────────────────────────────────────────
+// 1. NNT / NNH / ARR / RRR / OR / 95% CI CALCULATOR PRO
+// ─────────────────────────────────────────────────────────────
+function renderNntCalculatorPro(): string {
   return `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.5rem;">
-      <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem;">
-        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--color-text, #0f172a); margin-bottom: 1rem;">
-          <i class="fa-solid fa-calculator" style="color: #059669;"></i> Nhập Dữ Liệu Biến Cố Lâm Sàng
-        </h3>
+    <div style="display:flex; flex-direction:column; gap:1.25rem;">
+      
+      <!-- PRESET TRIALS BAR -->
+      <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px; padding:12px 16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span style="font-size:12px; font-weight:700; color:var(--color-text-muted); display:inline-flex; align-items:center; gap:5px;">
+          <i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> Dữ liệu mẫu thử nghiệm Landmark:
+        </span>
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-load-preset-trial" data-trial="dapa-hf" style="font-size:11.5px; padding:3px 8px;">DAPA-HF (Dapagliflozin)</button>
+          <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-load-preset-trial" data-trial="sprint" style="font-size:11.5px; padding:3px 8px;">SPRINT (Hạ Áp Tích Cực)</button>
+          <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-load-preset-trial" data-trial="paradigm" style="font-size:11.5px; padding:3px 8px;">PARADIGM-HF (ARNI)</button>
+          <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-load-preset-trial" data-trial="recovery" style="font-size:11.5px; padding:3px 8px;">RECOVERY (Dexamethasone)</button>
+        </div>
+      </div>
 
-        <div style="margin-bottom: 1.25rem;">
-          <h4 style="font-size: 0.9rem; font-weight: 700; color: #0284c7; margin: 0 0 0.5rem 0;">1. Nhóm Can Thiệp (Intervention / Experimental):</h4>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 0.75rem;">
-            <div>
-              <label style="font-size: 0.8rem; color: #475569;">Số biến cố (Events - a):</label>
-              <input type="number" id="nnt-event-exp" value="82" min="0" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;" oninput="window.recalcNnt()" />
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap:1.25rem;">
+        
+        <!-- INPUT DATA FORM -->
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem;">
+          <h3 style="font-size:1.05rem; font-weight:700; color:var(--color-text); margin:0 0 1rem 0; display:flex; align-items:center; gap:6px;">
+            <i class="fa-solid fa-table-cells" style="color:#059669;"></i> Nhập Bảng Biến Cố 2x2
+          </h3>
+
+          <div style="margin-bottom:1rem; padding:12px; background:rgba(2,132,199,0.05); border:1px solid rgba(2,132,199,0.2); border-radius:10px;">
+            <div style="font-size:12px; font-weight:700; color:var(--color-primary); margin-bottom:6px;">1. Nhóm Can Thiệp (Intervention / Experimental):</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div>
+                <label style="font-size:11px; color:var(--color-text-muted); display:block; margin-bottom:3px;">Số biến cố (Events - a):</label>
+                <input type="number" id="nnt-event-exp" value="82" min="0" class="dsp-input dsp-input--sm" style="width:100%; font-weight:700;" />
+              </div>
+              <div>
+                <label style="font-size:11px; color:var(--color-text-muted); display:block; margin-bottom:3px;">Tổng cỡ mẫu (Total - n1):</label>
+                <input type="number" id="nnt-total-exp" value="2373" min="1" class="dsp-input dsp-input--sm" style="width:100%;" />
+              </div>
             </div>
-            <div>
-              <label style="font-size: 0.8rem; color: #475569;">Tổng cỡ mẫu nhóm can thiệp (n1):</label>
-              <input type="number" id="nnt-total-exp" value="2373" min="1" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;" oninput="window.recalcNnt()" />
+          </div>
+
+          <div style="padding:12px; background:rgba(100,116,139,0.05); border:1px solid var(--color-border); border-radius:10px;">
+            <div style="font-size:12px; font-weight:700; color:var(--color-text); margin-bottom:6px;">2. Nhóm Chứng (Control / Placebo):</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div>
+                <label style="font-size:11px; color:var(--color-text-muted); display:block; margin-bottom:3px;">Số biến cố (Events - c):</label>
+                <input type="number" id="nnt-event-ctrl" value="137" min="0" class="dsp-input dsp-input--sm" style="width:100%; font-weight:700;" />
+              </div>
+              <div>
+                <label style="font-size:11px; color:var(--color-text-muted); display:block; margin-bottom:3px;">Tổng cỡ mẫu (Total - n2):</label>
+                <input type="number" id="nnt-total-ctrl" value="2371" min="1" class="dsp-input dsp-input--sm" style="width:100%;" />
+              </div>
             </div>
           </div>
         </div>
 
+        <!-- STATISTICAL RESULTS CARD -->
+        <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:11px; font-weight:700; text-transform:uppercase; color:#059669; background:rgba(5,150,105,0.1); padding:2px 8px; border-radius:6px;">KẾT QUẢ THỐNG KÊ LÂM SÀNG</span>
+              <span id="nnt-verdict-badge" class="dsp-badge dsp-badge--success" style="font-size:11px;">Bảo vệ lâm sàng</span>
+            </div>
+
+            <div style="text-align:center; padding:1rem 0 0.5rem;">
+              <div style="font-size:12px; color:var(--color-text-muted); font-weight:600;" id="nnt-title-lbl">Number Needed to Treat (NNT):</div>
+              <div id="nnt-result-val" style="font-size:3.5rem; font-weight:800; color:#059669; line-height:1.1;">43</div>
+              <div id="nnt-ci-val" style="font-size:11.5px; color:var(--color-text-muted); font-weight:700; margin-top:2px;">95% CI: [31 - 72]</div>
+              <div id="nnt-summary-text" style="font-size:12.5px; font-weight:600; color:var(--color-text); margin-top:0.4rem; line-height:1.4;">
+                Cần điều trị 43 bệnh nhân để phòng ngừa 1 biến cố có hại.
+              </div>
+            </div>
+
+            <!-- METRIC GRID -->
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; text-align:center; margin-top:0.75rem;">
+              <div style="background:var(--color-bg); border-radius:8px; padding:8px; border:1px solid var(--color-border);">
+                <div style="font-size:10px; color:var(--color-text-muted);">CER (Chứng):</div>
+                <div id="nnt-cer-val" style="font-size:1.05rem; font-weight:800; color:var(--color-text);">5.78%</div>
+              </div>
+              <div style="background:var(--color-bg); border-radius:8px; padding:8px; border:1px solid var(--color-border);">
+                <div style="font-size:10px; color:var(--color-text-muted);">EER (Can thiệp):</div>
+                <div id="nnt-eer-val" style="font-size:1.05rem; font-weight:800; color:var(--color-primary);">3.46%</div>
+              </div>
+              <div style="background:var(--color-bg); border-radius:8px; padding:8px; border:1px solid var(--color-border);">
+                <div style="font-size:10px; color:var(--color-text-muted);">ARR (Giảm Tuyệt Đối):</div>
+                <div id="nnt-arr-val" style="font-size:1.05rem; font-weight:800; color:#059669;">2.32%</div>
+              </div>
+              <div style="background:var(--color-bg); border-radius:8px; padding:8px; border:1px solid var(--color-border);">
+                <div style="font-size:10px; color:var(--color-text-muted);">RR (Nguy Cơ Tương Đối):</div>
+                <div id="nnt-rr-val" style="font-size:1.05rem; font-weight:800; color:var(--color-text);">0.60</div>
+              </div>
+              <div style="background:var(--color-bg); border-radius:8px; padding:8px; border:1px solid var(--color-border);">
+                <div style="font-size:10px; color:var(--color-text-muted);">RRR (Giảm Tương Đối):</div>
+                <div id="nnt-rrr-val" style="font-size:1.05rem; font-weight:800; color:#059669;">40.1%</div>
+              </div>
+              <div style="background:var(--color-bg); border-radius:8px; padding:8px; border:1px solid var(--color-border);">
+                <div style="font-size:10px; color:var(--color-text-muted);">Odds Ratio (OR):</div>
+                <div id="nnt-or-val" style="font-size:1.05rem; font-weight:800; color:var(--color-text);">0.58</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--color-bg); border-left:4px solid #059669; padding:8px 12px; border-radius:0 8px 8px 0; font-size:11.5px; color:var(--color-text); margin-top:10px;">
+            💡 <strong>Nguyên lý EBM:</strong> NNT phản ánh hiệu quả thực tế lâm sàng. Khi áp dụng lên thực tế cần cân nhắc cả nguy cơ tác dụng phụ (NNH) và chi phí kinh tế.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 100-PATIENT CATES ICON ARRAY -->
+      <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:8px;">
+          <h4 style="font-size:0.95rem; font-weight:700; color:var(--color-text); margin:0;">
+            <i class="fa-solid fa-users" style="color:var(--color-primary);"></i> Trực Quan Hóa Trên 100 Bệnh Nhân (Cates 100-Patient Dot Grid)
+          </h4>
+          <div style="display:flex; gap:10px; font-size:11.5px; flex-wrap:wrap;">
+            <span style="color:#059669; font-weight:700;">🟢 <span id="dot-saved-count">2</span> Người hưởng lợi</span>
+            <span style="color:#ef4444; font-weight:700;">🔴 <span id="dot-event-count">3</span> Người vẫn biến cố</span>
+            <span style="color:#94a3b8; font-weight:700;">⚪ <span id="dot-safe-count">95</span> Người không ảnh hưởng</span>
+          </div>
+        </div>
+        <div id="cates-dot-matrix" style="display:grid; grid-template-columns:repeat(20, 1fr); gap:4px; padding:8px 0;">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+    </div>
+  `;
+}
+
+// ─────────────────────────────────────────────────────────────
+// 2. PICO CLINICAL QUESTION & PUBMED SEARCH BUILDER PRO
+// ─────────────────────────────────────────────────────────────
+function renderPicoBuilderPro(): string {
+  return `
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap:1.25rem;">
+      
+      <!-- PICO INPUT FORM -->
+      <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <h3 style="font-size:1.05rem; font-weight:700; color:var(--color-text); margin:0;">
+            <i class="fa-solid fa-crosshairs" style="color:#0284c7;"></i> Thiết Lập 4 Thành Tố PICO
+          </h3>
+          <select id="pico-preset-select" class="dsp-select" style="font-size:11.5px; padding:3px 8px;">
+            <option value="">⚡ Chọn ca mẫu PICO...</option>
+            <option value="sglt2-ckd">SGLT2i trên bệnh thận mạn (CKD)</option>
+            <option value="tnk-stroke">Tenecteplase trong đột quỵ cấp</option>
+            <option value="doac-af">DOAC phòng ngừa đột quỵ rung nhĩ</option>
+          </select>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div>
+            <label style="font-size:11.5px; font-weight:700; color:#16a34a; display:block; margin-bottom:3px;">
+              P — Patient / Population (Quần thể bệnh nhân):
+            </label>
+            <input type="text" id="pico-p" class="dsp-input" placeholder="VD: Type 2 Diabetes AND Chronic Kidney Disease" value="Type 2 Diabetes AND Chronic Kidney Disease" />
+          </div>
+
+          <div>
+            <label style="font-size:11.5px; font-weight:700; color:#2563eb; display:block; margin-bottom:3px;">
+              I — Intervention (Biện pháp can thiệp):
+            </label>
+            <input type="text" id="pico-i" class="dsp-input" placeholder="VD: SGLT2 inhibitors OR Dapagliflozin OR Empagliflozin" value="SGLT2 inhibitors OR Dapagliflozin" />
+          </div>
+
+          <div>
+            <label style="font-size:11.5px; font-weight:700; color:#d97706; display:block; margin-bottom:3px;">
+              C — Comparison (Đối chứng / So sánh):
+            </label>
+            <input type="text" id="pico-c" class="dsp-input" placeholder="VD: Placebo OR Standard Care" value="Placebo OR Standard of care" />
+          </div>
+
+          <div>
+            <label style="font-size:11.5px; font-weight:700; color:#7c3aed; display:block; margin-bottom:3px;">
+              O — Outcome (Kết cục lâm sàng):
+            </label>
+            <input type="text" id="pico-o" class="dsp-input" placeholder="VD: Kidney disease progression OR Cardiovascular mortality" value="Kidney disease progression OR Mortality" />
+          </div>
+        </div>
+      </div>
+
+      <!-- GENERATED QUESTION & PUBMED QUERY -->
+      <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem; display:flex; flex-direction:column; justify-content:space-between;">
         <div>
-          <h4 style="font-size: 0.9rem; font-weight: 700; color: #64748b; margin: 0 0 0.5rem 0;">2. Nhóm Chứng (Control / Placebo):</h4>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 0.75rem;">
-            <div>
-              <label style="font-size: 0.8rem; color: #475569;">Số biến cố (Events - c):</label>
-              <input type="number" id="nnt-event-ctrl" value="137" min="0" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;" oninput="window.recalcNnt()" />
-            </div>
-            <div>
-              <label style="font-size: 0.8rem; color: #475569;">Tổng cỡ mẫu nhóm chứng (n2):</label>
-              <input type="number" id="nnt-total-ctrl" value="2371" min="1" style="width: 100%; padding: 0.6rem; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;" oninput="window.recalcNnt()" />
-            </div>
+          <h3 style="font-size:1.05rem; font-weight:700; color:var(--color-text); margin:0 0 1rem 0;">
+            <i class="fa-solid fa-file-code" style="color:#059669;"></i> Câu Hỏi Lâm Sàng &amp; Chuỗi Tìm Kiếm PubMed
+          </h3>
+
+          <div style="background:rgba(2,132,199,0.06); border:1px solid rgba(2,132,199,0.2); border-radius:10px; padding:12px; margin-bottom:1rem;">
+            <div style="font-size:11px; font-weight:700; color:var(--color-primary); margin-bottom:4px;">CÂU HỎI LÂM SÀNG CHUẨN:</div>
+            <p id="pico-structured-question" style="margin:0; font-size:12.5px; font-weight:600; color:var(--color-text); line-height:1.5;">
+              Ở bệnh nhân ĐTĐ type 2 kèm bệnh thận mạn (P), việc sử dụng SGLT2i (I) so với giả dược / chăm sóc tiêu chuẩn (C) có giúp làm giảm tiến triển bệnh thận và tử vong tim mạch (O) hay không?
+            </p>
           </div>
+
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; padding:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span style="font-size:11px; font-weight:700; color:var(--color-text-muted);">PUBMED BOOLEAN QUERY (MeSH READY):</span>
+              <button class="dsp-btn dsp-btn-sm dsp-btn-ghost js-copy-pubmed-query" style="font-size:11px; padding:2px 8px;">
+                <i class="fa-regular fa-copy"></i> Sao chép lệnh
+              </button>
+            </div>
+            <textarea id="pico-pubmed-query" class="dsp-textarea" rows="3" readonly style="font-family:var(--font-mono, monospace); font-size:11.5px; resize:none;">("Type 2 Diabetes"[Mesh] OR Diabetes) AND ("Chronic Kidney Disease"[Mesh] OR CKD) AND ("SGLT2 inhibitors"[Mesh] OR Dapagliflozin) AND ("Kidney Failure"[Mesh] OR Mortality)</textarea>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <a id="btnOpenPubMedSearch" href="https://pubmed.ncbi.nlm.nih.gov/?term=%28%22Type+2+Diabetes%22%5BMesh%5D+OR+Diabetes%29+AND+%28%22Chronic+Kidney+Disease%22%5BMesh%5D+OR+CKD%29+AND+%28%22SGLT2+inhibitors%22%5BMesh%5D+OR+Dapagliflozin%29" target="_blank" rel="noopener noreferrer" class="dsp-btn dsp-btn-primary" style="width:100%; justify-content:center; padding:10px; font-size:12.5px; font-weight:700;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở Tìm Kiếm Trực Tiếp Trên PubMed NCBI
+          </a>
         </div>
       </div>
 
-      <!-- KẾT QUẢ NNT / ARR -->
-      <div style="background: linear-gradient(135deg, rgba(5,150,105,0.06) 0%, rgba(2,132,199,0.02) 100%), var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+    </div>
+  `;
+}
+
+// ─────────────────────────────────────────────────────────────
+// 3. COCHRANE ROB 2 & CASP CRITICAL APPRAISAL MATRIX
+// ─────────────────────────────────────────────────────────────
+function renderCriticalAppraisalRoB2(): string {
+  const domains = [
+    { id: 'd1', title: 'D1. Quá trình Phân ngẫu nhiên (Randomisation Process)', desc: 'Trình tự tạo ngẫu nhiên và giấu phân bổ (Allocation Concealment) có đầy đủ không?' },
+    { id: 'd2', title: 'D2. Sai lệch do Can thiệp (Deviations from Intended Interventions)', desc: 'Làm mù (Blinding) bệnh nhân, người chăm sóc & mức độ tuân thủ can thiệp.' },
+    { id: 'd3', title: 'D3. Dữ liệu Kết cục bị Mất (Missing Outcome Data)', desc: 'Tỷ lệ mất dấu theo dõi (Loss to follow-up) và phân tích theo ý định điều trị (ITT).' },
+    { id: 'd4', title: 'D4. Đo lường Kết cục Lâm sàng (Measurement of the Outcome)', desc: 'Phương pháp đo lường kết cục có khách quan và người đánh giá có được làm mù?' },
+    { id: 'd5', title: 'D5. Lựa chọn Báo cáo Kết quả (Selection of Reported Result)', desc: 'Kết quả có được báo cáo đầy đủ theo đề cương (ClinicalTrials.gov) đã đăng ký trước?' }
+  ];
+
+  return `
+    <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:8px;">
         <div>
-          <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #059669; background: #dcfce7; padding: 0.25rem 0.6rem; border-radius: 6px;">Chỉ Số Hiệu Quả Lâm Sàng</span>
-          
-          <div style="text-align: center; padding: 1rem 0;">
-            <div style="font-size: 0.9rem; color: var(--color-text-muted, #64748b);">Number Needed to Treat (NNT):</div>
-            <div id="nnt-result-val" style="font-size: 3.5rem; font-weight: 800; color: #059669;">43</div>
-            <div id="nnt-summary-text" style="font-size: 0.9rem; font-weight: 600; color: var(--color-text, #334155); margin-top: 0.25rem;">Cần điều trị 43 bệnh nhân để phòng ngừa 1 biến cố có hại.</div>
-          </div>
-
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(90px, 100%), 1fr)); gap: 0.75rem; text-align: center;">
-            <div style="background: #f8fafc; border-radius: 8px; padding: 0.75rem;">
-              <div style="font-size: 0.75rem; color: #64748b;">CER (Chứng):</div>
-              <div id="nnt-cer-val" style="font-size: 1.15rem; font-weight: 700; color: #334155;">5.78%</div>
-            </div>
-            <div style="background: #f8fafc; border-radius: 8px; padding: 0.75rem;">
-              <div style="font-size: 0.75rem; color: #64748b;">EER (Can thiệp):</div>
-              <div id="nnt-eer-val" style="font-size: 1.15rem; font-weight: 700; color: #0284c7;">3.46%</div>
-            </div>
-            <div style="background: #f8fafc; border-radius: 8px; padding: 0.75rem;">
-              <div style="font-size: 0.75rem; color: #64748b;">ARR (Giảm Tuyệt Đối):</div>
-              <div id="nnt-arr-val" style="font-size: 1.15rem; font-weight: 700; color: #059669;">2.32%</div>
-            </div>
-          </div>
+          <h3 style="font-size:1.1rem; font-weight:700; color:var(--color-text); margin:0;">
+            <i class="fa-solid fa-clipboard-check" style="color:#059669;"></i> Thẩm Định Nguy Cơ Sai Lệch Cochrane RoB 2 (Risk of Bias 2)
+          </h3>
+          <p style="font-size:11.5px; color:var(--color-text-muted); margin:2px 0 0;">Đánh giá 5 miền chuẩn quốc tế cho các thử nghiệm ngẫu nhiên có đối chứng (RCTs).</p>
         </div>
+        <div id="rob2-overall-badge" style="padding:4px 12px; border-radius:20px; font-weight:800; font-size:12px; background:#dcfce7; color:#166534; border:1px solid #86efac;">
+          🟢 Tổng thể: Low Risk of Bias
+        </div>
+      </div>
 
-        <div style="background: #f8fafc; border-left: 4px solid #059669; padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; font-size: 0.825rem; color: var(--color-text, #334155); margin-top: 1rem;">
-          💡 <strong>Quy tắc lâm sàng:</strong> NNT càng nhỏ thì thuốc/can thiệp càng có hiệu quả mạnh mẽ trên thực tế lâm sàng.
+      <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:1.5rem;">
+        ${domains.map(d => `
+          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; padding:10px 14px; flex-wrap:wrap; gap:10px;">
+            <div style="flex:1; min-width:260px;">
+              <h4 style="margin:0; font-size:13px; font-weight:700; color:var(--color-text);">${d.title}</h4>
+              <p style="margin:2px 0 0; font-size:11.5px; color:var(--color-text-muted);">${d.desc}</p>
+            </div>
+            <div class="rob2-selector" data-domain="${d.id}" style="display:flex; gap:6px;">
+              <button type="button" class="dsp-btn dsp-btn-sm js-rob-choice is-selected" data-val="low" style="background:#dcfce7; color:#166534; font-size:11px; font-weight:700; border:1px solid #86efac; padding:3px 8px;">
+                🟢 Low
+              </button>
+              <button type="button" class="dsp-btn dsp-btn-sm js-rob-choice" data-val="some" style="background:var(--color-surface); color:var(--color-text-muted); font-size:11px; font-weight:700; border:1px solid var(--color-border); padding:3px 8px;">
+                🟡 Some Concerns
+              </button>
+              <button type="button" class="dsp-btn dsp-btn-sm js-rob-choice" data-val="high" style="background:var(--color-surface); color:var(--color-text-muted); font-size:11px; font-weight:700; border:1px solid var(--color-border); padding:3px 8px;">
+                🔴 High Risk
+              </button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+      <!-- TRAFFIC LIGHT PLOT PREVIEW -->
+      <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; padding:12px;">
+        <div style="font-size:11px; font-weight:700; color:var(--color-text-muted); margin-bottom:8px;">ROB 2 TRAFFIC LIGHT PLOT:</div>
+        <div style="display:flex; justify-content:space-around; align-items:center; flex-wrap:wrap; gap:10px; font-size:11.5px; font-weight:700;">
+          <span id="tl-d1">D1: 🟢 Low</span>
+          <span id="tl-d2">D2: 🟢 Low</span>
+          <span id="tl-d3">D3: 🟢 Low</span>
+          <span id="tl-d4">D4: 🟢 Low</span>
+          <span id="tl-d5">D5: 🟢 Low</span>
+          <span id="tl-overall" style="color:#059669; font-weight:800; border-left:2px solid var(--color-border); padding-left:10px;">Overall: 🟢 Low</span>
         </div>
       </div>
     </div>
   `;
 }
 
-// 2. PICO BUILDER
-function renderPicoBuilder(): string {
-  return `
-    <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem;">
-      <h3 style="font-size: 1.25rem; font-weight: 700; color: #059669; margin-bottom: 1rem;">
-        <i class="fa-solid fa-crosshairs"></i> Khung Xây Dựng Câu Hỏi Lâm Sàng Chuẩn PICO
-      </h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1rem;">
-        <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1rem;">
-          <h4 style="color: #16a34a; margin: 0 0 0.5rem 0;">P — Population / Patient</h4>
-          <p style="font-size: 0.85rem; color: #334155; margin: 0;">Bệnh nhân hoặc quần thể nghiên cứu mục tiêu (Đặc điểm, tuổi, giai đoạn bệnh).</p>
-        </div>
-        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem;">
-          <h4 style="color: #2563eb; margin: 0 0 0.5rem 0;">I — Intervention</h4>
-          <p style="font-size: 0.85rem; color: #334155; margin: 0;">Biện pháp can thiệp chính (Thuốc mới, phẫu thuật, thủ thuật, xét nghiệm).</p>
-        </div>
-        <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 1rem;">
-          <h4 style="color: #d97706; margin: 0 0 0.5rem 0;">C — Comparison</h4>
-          <p style="font-size: 0.85rem; color: #334155; margin: 0;">Nhóm đối chứng so sánh (Giả dược Placebo, chăm sóc tiêu chuẩn Standard Care).</p>
-        </div>
-        <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 8px; padding: 1rem;">
-          <h4 style="color: #7c3aed; margin: 0 0 0.5rem 0;">O — Outcome</h4>
-          <p style="font-size: 0.85rem; color: #334155; margin: 0;">Kết cục lâm sàng mong đợi (Tử vong do mọi nguyên nhân, nhập viện, tác dụng phụ).</p>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-// 3. CRITICAL APPRAISAL
-function renderCriticalAppraisal(): string {
-  return `
-    <div style="background: var(--color-surface, #fff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 12px; padding: 1.5rem;">
-      <h3 style="font-size: 1.25rem; font-weight: 700; color: #059669; margin-bottom: 1rem;">
-        <i class="fa-solid fa-clipboard-check"></i> Bộ Tiêu Chuẩn Thẩm Định Nghiên Cứu (CASP & RoB 2)
-      </h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem;">
-        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;">
-          <h4 style="color: #0284c7; margin: 0 0 0.5rem 0;">1. Đánh giá Tính Hợp Lệ Nội Tại (Internal Validity):</h4>
-          <ul style="font-size: 0.85rem; color: #334155; margin: 0; padding-left: 1.25rem; line-height: 1.6;">
-            <li>Phân ngẫu nhiên có được làm mù thích hợp (Allocation Concealment) không?</li>
-            <li>Làm mù đôi (Double-blind) cho bệnh nhân, bác sĩ và người đánh giá kết cục?</li>
-            <li>Phân tích theo ý định điều trị (Intention-to-Treat Analysis — ITT)?</li>
-          </ul>
-        </div>
-        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;">
-          <h4 style="color: #7c3aed; margin: 0 0 0.5rem 0;">2. Đánh giá Tính Ứng Dụng Lâm Sàng (External Validity):</h4>
-          <ul style="font-size: 0.85rem; color: #334155; margin: 0; padding-left: 1.25rem; line-height: 1.6;">
-            <li>Quần thể nghiên cứu có tương đồng với bệnh nhân thực tế của bạn không?</li>
-            <li>Lợi ích mang lại có vượt trội hơn nguy cơ tác dụng phụ và chi phí không?</li>
-          </ul>
-    </div>
-  `;
-}
-
-// 4. CHARTS DIRECTORY
+// ─────────────────────────────────────────────────────────────
+// 4. CHARTS DIRECTORY & VISUALIZER SUITE
+// ─────────────────────────────────────────────────────────────
 function renderChartsDirectory(): string {
   return `
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-      <div style="background: var(--color-surface, #fff); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-align: center;">
-        <i class="fa-solid fa-tree" style="font-size: 2rem; color: #0284c7; margin-bottom: 0.75rem;"></i>
-        <h4 style="font-weight: 700; margin: 0 0 0.5rem 0;">Forest Plot Visualizer</h4>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">Trực quan hóa gộp kết quả Meta-analysis & Odds Ratio.</p>
-        <a href="#/ebm/forest-plot" class="btn btn-sm" style="padding: 0.4rem 0.85rem; background: #0284c7; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.825rem;">Mở Forest Plot Studio</a>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap:1.25rem;">
+      <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem; text-align:center; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <i class="fa-solid fa-tree" style="font-size:2.2rem; color:#0284c7; margin-bottom:0.75rem;"></i>
+          <h4 style="font-weight:700; font-size:1rem; margin:0 0 0.4rem; color:var(--color-text);">Forest Plot Visualizer</h4>
+          <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:1rem; line-height:1.45;">Trực quan hóa gộp kết quả Meta-analysis, Odds Ratio (OR) &amp; Trọng số nghiên cứu.</p>
+        </div>
+        <a href="#/ebm/forest-plot" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="justify-content:center; width:100%;">Mở Forest Plot Studio</a>
       </div>
 
-      <div style="background: var(--color-surface, #fff); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-align: center;">
-        <i class="fa-solid fa-filter" style="font-size: 2rem; color: #7c3aed; margin-bottom: 0.75rem;"></i>
-        <h4 style="font-weight: 700; margin: 0 0 0.5rem 0;">Funnel Plot (Publication Bias)</h4>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">Đánh giá sai lệch xuất bản và hiệu ứng nghiên cứu cỡ mẫu nhỏ.</p>
-        <a href="#/ebm/funnel-plot" class="btn btn-sm" style="padding: 0.4rem 0.85rem; background: #7c3aed; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.825rem;">Mở Funnel Plot Studio</a>
+      <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem; text-align:center; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <i class="fa-solid fa-filter" style="font-size:2.2rem; color:#7c3aed; margin-bottom:0.75rem;"></i>
+          <h4 style="font-weight:700; font-size:1rem; margin:0 0 0.4rem; color:var(--color-text);">Funnel Plot (Publication Bias)</h4>
+          <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:1rem; line-height:1.45;">Đánh giá sai lệch xuất bản, hình phễu bất đối xứng &amp; hiệu ứng cỡ mẫu nhỏ.</p>
+        </div>
+        <a href="#/ebm/funnel-plot" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="justify-content:center; width:100%; background:#7c3aed;">Mở Funnel Plot Studio</a>
       </div>
 
-      <div style="background: var(--color-surface, #fff); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-align: center;">
-        <i class="fa-solid fa-chart-area" style="font-size: 2rem; color: #ca8a04; margin-bottom: 0.75rem;"></i>
-        <h4 style="font-weight: 700; margin: 0 0 0.5rem 0;">Kaplan-Meier Survival Curve</h4>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">Đường cong sống còn tích lũy, Log-rank test và Hazard Ratio.</p>
-        <a href="#/ebm/kaplan-meier" class="btn btn-sm" style="padding: 0.4rem 0.85rem; background: #ca8a04; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.825rem;">Mở Kaplan-Meier Studio</a>
+      <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem; text-align:center; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <i class="fa-solid fa-chart-area" style="font-size:2.2rem; color:#d97706; margin-bottom:0.75rem;"></i>
+          <h4 style="font-weight:700; font-size:1rem; margin:0 0 0.4rem; color:var(--color-text);">Kaplan-Meier Survival Curve</h4>
+          <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:1rem; line-height:1.45;">Đường cong sống còn tích lũy theo thời gian, Log-rank test &amp; Hazard Ratio (HR).</p>
+        </div>
+        <a href="#/ebm/kaplan-meier" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="justify-content:center; width:100%; background:#d97706;">Mở Kaplan-Meier Studio</a>
       </div>
 
-      <div style="background: var(--color-surface, #fff); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-align: center;">
-        <i class="fa-solid fa-chart-line" style="font-size: 2rem; color: #dc2626; margin-bottom: 0.75rem;"></i>
-        <h4 style="font-weight: 700; margin: 0 0 0.5rem 0;">ROC Curve & AUC Analyzer</h4>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">Độ nhạy (Sensitivity), Độ đặc hiệu (Specificity) & Điểm cắt Youden.</p>
-        <a href="#/ebm/roc-curve" class="btn btn-sm" style="padding: 0.4rem 0.85rem; background: #dc2626; color: #fff; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.825rem;">Mở ROC Curve Studio</a>
+      <div style="background:var(--color-surface); border:1px solid var(--color-border); border-radius:14px; padding:1.25rem; text-align:center; display:flex; flex-direction:column; justify-content:space-between;">
+        <div>
+          <i class="fa-solid fa-chart-line" style="font-size:2.2rem; color:#dc2626; margin-bottom:0.75rem;"></i>
+          <h4 style="font-weight:700; font-size:1rem; margin:0 0 0.4rem; color:var(--color-text);">ROC Curve &amp; AUC Analyzer</h4>
+          <p style="font-size:12px; color:var(--color-text-muted); margin-bottom:1rem; line-height:1.45;">Độ nhạy (Sensitivity), Độ đặc hiệu (Specificity) &amp; Điểm cắt tối ưu Youden J.</p>
+        </div>
+        <a href="#/ebm/roc-curve" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="justify-content:center; width:100%; background:#dc2626;">Mở ROC Curve Studio</a>
       </div>
     </div>
   `;
-}
-
-// Global Window Bindings
-declare global {
-  interface Window {
-    switchEbmLabTab: (tab: EbmLabTab) => void;
-    recalcNnt: () => void;
-  }
-}
-
-if (typeof window !== 'undefined') {
-  window.switchEbmLabTab = (tab: EbmLabTab) => {
-    const container = document.getElementById('app');
-    if (container) {
-      container.innerHTML = renderEbmLabView(tab);
-    }
-  };
-
-  window.recalcNnt = () => {
-    const a = parseFloat((document.getElementById('nnt-event-exp') as HTMLInputElement)?.value || '82');
-    const n1 = parseFloat((document.getElementById('nnt-total-exp') as HTMLInputElement)?.value || '2373');
-    const c = parseFloat((document.getElementById('nnt-event-ctrl') as HTMLInputElement)?.value || '137');
-    const n2 = parseFloat((document.getElementById('nnt-total-ctrl') as HTMLInputElement)?.value || '2371');
-
-    const eer = n1 > 0 ? a / n1 : 0;
-    const cer = n2 > 0 ? c / n2 : 0;
-    const arr = Math.abs(cer - eer);
-    const nnt = arr > 0 ? Math.round(1 / arr) : 0;
-
-    const eerEl = document.getElementById('nnt-eer-val');
-    const cerEl = document.getElementById('nnt-cer-val');
-    const arrEl = document.getElementById('nnt-arr-val');
-    const nntEl = document.getElementById('nnt-result-val');
-    const summaryEl = document.getElementById('nnt-summary-text');
-
-    if (eerEl) eerEl.textContent = `${(eer * 100).toFixed(2)}%`;
-    if (cerEl) cerEl.textContent = `${(cer * 100).toFixed(2)}%`;
-    if (arrEl) arrEl.textContent = `${(arr * 100).toFixed(2)}%`;
-    if (nntEl) nntEl.textContent = nnt.toString();
-    if (summaryEl) {
-      if (cer >= eer) {
-        summaryEl.textContent = `Cần điều trị ${nnt} bệnh nhân để phòng ngừa 1 biến cố có hại.`;
-      } else {
-        summaryEl.textContent = `(NNH): Cứ ${nnt} bệnh nhân điều trị thì phát sinh 1 tác dụng phụ không mong muốn.`;
-      }
-    }
-  };
 }

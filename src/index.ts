@@ -161,7 +161,9 @@ import {
   initGuidelinesHub,
   renderJournalQualityView,
   renderRadarView,
+  initGuidelineRadar,
   renderEbmLabView,
+  initEbmLabEngine,
   renderForestPlotView,
   renderFunnelPlotView,
   renderKaplanMeierView,
@@ -235,13 +237,25 @@ function initializeRoutes(): void {
     mountToApp(renderStudyAnalyzerView());
     initStudyAnalyzerController();
   });
+  router.register('/ebm/radar', 'Guideline Radar Diff Viewer', () => {
+    document.title = 'Guideline Radar Diff Viewer – CliniPortal';
+    mountToApp(renderRadarView());
+    initGuidelineRadar();
+  });
   router.register('/ebm/guideline-radar', 'Guideline Radar Diff Viewer', () => {
     document.title = 'Guideline Radar Diff Viewer – CliniPortal';
     mountToApp(renderRadarView());
+    initGuidelineRadar();
+  });
+  router.register('/ebm/lab', 'EBM Practice Lab', () => {
+    document.title = 'EBM Practice Lab – CliniPortal';
+    mountToApp(renderEbmLabView('nnt'));
+    initEbmLabEngine('nnt');
   });
   router.register('/ebm/ebm-lab', 'EBM Practice Lab', () => {
     document.title = 'EBM Practice Lab – CliniPortal';
-    mountToApp(renderEbmLabView());
+    mountToApp(renderEbmLabView('nnt'));
+    initEbmLabEngine('nnt');
   });
   router.register('/ebm/forest-plot', 'Forest Plot Visualizer', () => {
     document.title = 'Forest Plot Visualizer – CliniPortal';

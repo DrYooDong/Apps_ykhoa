@@ -23,42 +23,37 @@ export function renderProtocolView(profileId: string, editId?: string, activeTab
   // Nếu đang có editId thì tự động chuyển sang tab personal
   const currentTab = editId ? 'personal' : activeTab;
 
-  // Render Danh sách Phác đồ Mẫu (Master Library Grid)
+  // Render Danh sách Phác đồ Mẫu (Master Library Grid - Tinh gọn)
   const masterListHtml = masterProtocols.map(p => {
     const specInfo = PROTOCOL_SPECIALTIES.find(s => s.key === p.specialtyKey) || PROTOCOL_SPECIALTIES[0]!;
     return `
-      <div class="dsp-master-proto-card" data-specialty="${p.specialtyKey || 'other'}" data-proto-id="${p.id}">
-        <div class="dsp-master-proto-head">
-          <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-            <span class="dsp-badge" style="background:${specInfo.bg}; color:${specInfo.color}; font-weight:700; border:1px solid ${specInfo.color}33;">
+      <div class="dsp-master-proto-card dsp-master-proto-card--compact js-view-master-proto" data-specialty="${p.specialtyKey || 'other'}" data-id="${p.id}" style="cursor:pointer; display:flex; flex-direction:column; justify-content:space-between;">
+        <div class="dsp-master-proto-head" style="margin-bottom:6px;">
+          <div style="display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap;">
+            <span class="dsp-badge" style="background:${specInfo.bg}; color:${specInfo.color}; font-weight:700; border:1px solid ${specInfo.color}33; font-size:11px; padding:2px 7px;">
               <i class="${specInfo.icon}"></i> ${escapeHtml(p.specialty || specInfo.name)}
             </span>
             ${p.icdCodes && p.icdCodes.length > 0 ? `
-              <span class="dsp-badge" style="background:var(--color-bg); color:var(--color-text-muted); font-size:11px;">
-                ICD: ${p.icdCodes.join(', ')}
+              <span class="dsp-badge" style="background:var(--color-bg); color:var(--color-text-muted); font-size:10px; padding:2px 5px;">
+                ${p.icdCodes.join(', ')}
               </span>
             ` : ''}
           </div>
-          <span class="dsp-badge dsp-badge--info" style="font-size:10px; font-weight:700;">CHỨNG CỨ EBM</span>
+          <span class="dsp-badge dsp-badge--info" style="font-size:9.5px; font-weight:700; padding:1px 5px;">EBM</span>
         </div>
 
-        <h3 class="dsp-master-proto-title">${escapeHtml(p.title)}</h3>
-        <p class="dsp-master-proto-summary">${escapeHtml(p.summary || '')}</p>
+        <h3 class="dsp-master-proto-title" style="margin:2px 0 8px; font-size:0.96rem; font-weight:700; line-height:1.35; color:var(--color-text);">${escapeHtml(p.title)}</h3>
 
-        <div class="dsp-master-proto-meta">
-          <span><i class="fa-solid fa-list-ol" style="color:var(--color-primary);"></i> ${p.steps.length} bước xử trí</span>
-          ${p.warnings && p.warnings.length > 0 ? `
-            <span style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> ${p.warnings.length} lưu ý</span>
-          ` : ''}
-        </div>
-
-        <div class="dsp-master-proto-actions">
-          <button type="button" class="dsp-btn dsp-btn-primary dsp-btn-sm js-view-master-proto" data-id="${p.id}" style="flex:1;">
-            <i class="fa-solid fa-eye"></i> Xem & Áp dụng
-          </button>
-          <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-clone-master-proto" data-id="${p.id}" title="Nhân bản phác đồ này về kho cá nhân để tùy biến">
-            <i class="fa-solid fa-copy"></i> Nhân bản
-          </button>
+        <div class="dsp-master-proto-meta" style="margin-top:auto; padding-top:6px; border-top:1px dashed var(--color-border); display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--color-text-muted);">
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span><i class="fa-solid fa-list-ol" style="color:var(--color-primary);"></i> ${p.steps.length} bước</span>
+            ${p.warnings && p.warnings.length > 0 ? `
+              <span style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> ${p.warnings.length} lưu ý</span>
+            ` : ''}
+          </div>
+          <span style="color:var(--color-primary); font-weight:700; display:inline-flex; align-items:center; gap:3px;">
+            Xem <i class="fa-solid fa-chevron-right" style="font-size:9px;"></i>
+          </span>
         </div>
       </div>
     `;
@@ -272,27 +267,27 @@ export function renderProtocolView(profileId: string, editId?: string, activeTab
     <!-- MODAL XEM CHI TIẾT & IN PHÁC ĐỒ (PRINTABLE POCKET GUIDE) -->
     <div class="dsp-modal" id="dspProtocolPreviewModal" style="display:none;">
       <div class="dsp-modal-backdrop" id="dspProtocolModalBackdrop"></div>
-      <div class="dsp-modal-box dsp-modal-box--lg" style="max-width:850px;">
-        <div class="dsp-modal-header" style="border-bottom:1px solid var(--color-border); padding-bottom:1rem;">
-          <h2 class="dsp-modal-title" id="dspProtocolModalTitle">
+      <div class="dsp-modal-box dsp-modal-box--lg" style="max-width:850px; width:95vw; max-height:92vh; border-radius:14px; overflow:hidden; display:flex; flex-direction:column; padding:0;">
+        <div class="dsp-modal-header" style="border-bottom:1px solid var(--color-border); padding:12px 16px; background:var(--color-bg); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <h2 class="dsp-modal-title" id="dspProtocolModalTitle" style="font-size:15px; margin:0; display:flex; align-items:center; gap:6px;">
             <i class="fa-solid fa-book-medical" style="color:var(--color-primary);"></i> Chi tiết Phác Đồ
           </h2>
-          <div style="display:flex; align-items:center; gap:0.5rem;">
-            <button class="dsp-btn dsp-btn-primary dsp-btn-sm" id="dspApplyToSoapBtn" title="Áp dụng các bước điều trị này vào SOAP Plan">
-              <i class="fa-solid fa-notes-medical"></i> Áp dụng vào SOAP
+          <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+            <button class="dsp-btn dsp-btn-primary dsp-btn-sm" id="dspApplyToSoapBtn" title="Áp dụng các bước điều trị này vào SOAP Plan" style="font-size:11.5px; padding:4px 10px;">
+              <i class="fa-solid fa-notes-medical"></i> <span>Áp dụng vào SOAP</span>
             </button>
-            <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspPrintProtocolBtn">
-              <i class="fa-solid fa-print"></i> In thẻ bỏ túi
+            <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspPrintProtocolBtn" style="font-size:11.5px; padding:4px 8px;">
+              <i class="fa-solid fa-print"></i> <span>In thẻ</span>
             </button>
-            <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspCopyProtocolBtn">
-              <i class="fa-regular fa-copy"></i> Sao chép
+            <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspCopyProtocolBtn" style="font-size:11.5px; padding:4px 8px;">
+              <i class="fa-regular fa-copy"></i> <span>Sao chép</span>
             </button>
-            <button class="dsp-modal-close" id="dspCloseProtocolPreview">
+            <button class="dsp-modal-close" id="dspCloseProtocolPreview" style="padding:4px 8px; font-size:16px;">
               <i class="fa-solid fa-xmark"></i>
             </button>
           </div>
         </div>
-        <div class="dsp-modal-body" id="dspProtocolPreviewContent" style="padding: 1.5rem 0; max-height:75vh; overflow-y:auto;">
+        <div class="dsp-modal-body" id="dspProtocolPreviewContent" style="padding:16px 20px; max-height:calc(92vh - 65px); overflow-y:auto; flex:1;">
           <!-- Rendered via JS -->
         </div>
       </div>
@@ -340,19 +335,22 @@ export function renderProtocolPreviewHtml(p: PersonalProtocol): string {
 
   return `
     <div class="dsp-protocol-preview-doc" style="color:var(--color-text); line-height:1.6;">
-      <div style="border-bottom:2px solid var(--color-primary); padding-bottom:1rem; margin-bottom:1.5rem;">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-          <div>
-            <span class="dsp-badge dsp-badge--info" style="margin-bottom:0.5rem;">${escapeHtml(p.specialty || 'Lâm sàng')}</span>
-            <h1 style="font-size:1.4rem; font-weight:800; margin:0.25rem 0 0.5rem; color:var(--color-text);">${escapeHtml(p.title)}</h1>
-            ${p.summary ? `<p style="margin:0; font-size:0.9rem; color:var(--color-text-muted);">${escapeHtml(p.summary)}</p>` : ''}
-          </div>
-          ${p.icdCodes && p.icdCodes.length > 0 ? `
-            <div style="text-align:right;">
-              <span style="font-size:11px; font-weight:700; color:var(--color-text-muted);">MÃ ICD-10:</span>
-              <div style="font-weight:700; color:var(--color-primary); font-size:13px;">${p.icdCodes.join(', ')}</div>
+      <div style="border-bottom:2px solid var(--color-primary); padding-bottom:1rem; margin-bottom:1.25rem;">
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+              <span class="dsp-badge dsp-badge--info" style="font-size:11px; padding:2px 8px;">${escapeHtml(p.specialty || 'Lâm sàng')}</span>
+              <span class="dsp-badge" style="background:rgba(2,132,199,0.1); color:var(--color-primary); font-size:10px; font-weight:700; padding:2px 6px;">CHỨNG CỨ EBM</span>
             </div>
-          ` : ''}
+            ${p.icdCodes && p.icdCodes.length > 0 ? `
+              <div style="display:flex; align-items:center; gap:4px;">
+                <span style="font-size:11px; font-weight:700; color:var(--color-text-muted);">MÃ ICD-10:</span>
+                <span style="font-weight:700; color:var(--color-primary); font-size:12px; background:var(--color-bg); padding:2px 6px; border-radius:4px; border:1px solid var(--color-border);">${p.icdCodes.join(', ')}</span>
+              </div>
+            ` : ''}
+          </div>
+          <h1 style="font-size:1.25rem; font-weight:800; margin:0.2rem 0; color:var(--color-text); line-height:1.35;">${escapeHtml(p.title)}</h1>
+          ${p.summary ? `<p style="margin:0; font-size:0.88rem; color:var(--color-text-muted); line-height:1.45;">${escapeHtml(p.summary)}</p>` : ''}
         </div>
       </div>
 

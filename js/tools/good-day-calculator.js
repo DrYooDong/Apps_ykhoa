@@ -1019,7 +1019,7 @@
     textEl.textContent = evalData.rating;
     if (iconEl) iconEl.textContent = evalData.icon;
 
-    scoreBtn.className = `hero-day-score-badge ${evalData.badgeClass}`;
+    scoreBtn.className = `status-pill hero-day-score-badge ${evalData.badgeClass}`;
     scoreBtn.setAttribute('data-score', String(evalData.total));
   }
 
@@ -1034,6 +1034,7 @@
     valEl.textContent = `${energy.energyPercent}%`;
     textEl.textContent = energy.statusText;
     if (iconEl) iconEl.textContent = energy.icon;
+    energyBtn.className = `status-pill hero-energy-badge ${energy.statusClass}`;
   }
 
   function openDayScoreModal(targetDate = new Date(), activeTab = 'day') {
