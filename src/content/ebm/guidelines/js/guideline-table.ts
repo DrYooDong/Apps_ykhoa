@@ -8,51 +8,226 @@ import { Study } from '../guidelines-types';
 import '../guidelines-types';
 
 export const CONDITION_SPECIALTY_MAP: Record<string, string[]> = {
-  'heart-failure': ['cardio'],
-  'hypertension': ['cardio'],
-  'af': ['cardio'],
-  'cad': ['cardio'],
-  'valvular-heart': ['cardio'],
-  'diabetes-t2d': ['endo'],
-  'diabetes-t1d': ['endo'],
-  'thyroid': ['endo'],
-  'dyslipidemia': ['endo'],
-  'obesity': ['endo'],
-  'copd': ['pulmo'],
-  'asthma': ['pulmo'],
-  'pneumonia': ['pulmo'],
-  'interstitial-lung': ['pulmo'],
-  'tb': ['pulmo'],
-  'ckd': ['renal'],
-  'aki': ['renal'],
-  'nephrotic': ['renal'],
-  'bph-luts': ['renal'],
-  'uti': ['renal'],
-  'icu': ['icu', 'infect'],
-  'hepatitis-b': ['infect', 'gi'],
-  'hepatitis-c': ['infect', 'gi'],
-  'flu': ['infect', 'pulmo'],
-  'covid19': ['infect', 'pulmo'],
-  'hemorrhagic-fever': ['infect'],
-  'measles': ['infect', 'pedia'],
-  'invasive-fungal': ['infect', 'pulmo', 'icu'],
-  'hfmd': ['infect', 'pedia'],
-  'cirrhosis': ['gi'],
-  'masld-mash': ['gi', 'endo'],
-  'gerd-peptic': ['gi'],
-  'ibd': ['gi'],
-  'stroke': ['neuro', 'cardio'],
-  'epilepsy': ['neuro'],
-  'headache-migraine': ['neuro'],
-  'gout': ['rheum', 'endo'],
-  'ra': ['rheum'],
-  'osteoporosis': ['rheum', 'endo'],
-  'lupus-sle': ['rheum'],
-  'solid-cancers': ['onco'],
-  'vte-pe': ['hema', 'cardio', 'icu'],
-  'malaria': ['infect'],
-  'meningitis': ['infect', 'neuro'],
-  'uterine-fibroids': ['obgyn']
+  "heart-failure": [
+    "cardio"
+  ],
+  "hypertension": [
+    "cardio",
+    "obgyn"
+  ],
+  "af": [
+    "cardio"
+  ],
+  "cad": [
+    "cardio"
+  ],
+  "valvular-heart": [
+    "cardio"
+  ],
+  "cardiogenic-shock": [
+    "cardio",
+    "icu"
+  ],
+  "syncope": [
+    "cardio",
+    "neuro"
+  ],
+  "vte-pe": [
+    "cardio",
+    "hema",
+    "icu",
+    "onco"
+  ],
+  "copd": [
+    "pulmo"
+  ],
+  "asthma": [
+    "pulmo",
+    "pedia"
+  ],
+  "pneumonia": [
+    "pulmo",
+    "icu",
+    "infect"
+  ],
+  "interstitial-lung": [
+    "pulmo"
+  ],
+  "tb": [
+    "pulmo",
+    "infect",
+    "obgyn"
+  ],
+  "ards": [
+    "icu",
+    "pulmo"
+  ],
+  "icu": [
+    "icu",
+    "infect"
+  ],
+  "aki": [
+    "renal",
+    "icu"
+  ],
+  "diabetes-t2d": [
+    "endo",
+    "cardio",
+    "renal"
+  ],
+  "diabetes-t1d": [
+    "endo",
+    "pedia"
+  ],
+  "thyroid": [
+    "endo"
+  ],
+  "dyslipidemia": [
+    "endo",
+    "cardio"
+  ],
+  "obesity": [
+    "endo",
+    "cardio",
+    "nutri"
+  ],
+  "clinical-nutrition": [
+    "nutri",
+    "icu",
+    "endo"
+  ],
+  "ckd": [
+    "renal",
+    "endo",
+    "cardio"
+  ],
+  "nephrotic": [
+    "renal"
+  ],
+  "bph-luts": [
+    "renal"
+  ],
+  "uti": [
+    "renal",
+    "infect"
+  ],
+  "cirrhosis": [
+    "gi"
+  ],
+  "masld-mash": [
+    "gi",
+    "endo"
+  ],
+  "gerd-peptic": [
+    "gi"
+  ],
+  "biliary-tract": [
+    "gi"
+  ],
+  "ibd": [
+    "gi"
+  ],
+  "ugib": [
+    "gi",
+    "icu"
+  ],
+  "hepatitis-b": [
+    "infect",
+    "gi"
+  ],
+  "hepatitis-c": [
+    "infect",
+    "gi"
+  ],
+  "flu": [
+    "infect",
+    "pulmo"
+  ],
+  "covid19": [
+    "infect",
+    "pulmo",
+    "icu"
+  ],
+  "hemorrhagic-fever": [
+    "infect"
+  ],
+  "measles": [
+    "infect",
+    "pedia"
+  ],
+  "hfmd": [
+    "infect",
+    "pedia"
+  ],
+  "mpox": [
+    "infect"
+  ],
+  "invasive-fungal": [
+    "infect",
+    "pulmo",
+    "icu"
+  ],
+  "malaria": [
+    "infect"
+  ],
+  "meningitis": [
+    "infect",
+    "neuro",
+    "pedia"
+  ],
+  "diphtheria": [
+    "infect",
+    "pedia"
+  ],
+  "hiv-aids": [
+    "infect"
+  ],
+  "ams-resistance": [
+    "infect",
+    "icu"
+  ],
+  "stroke": [
+    "neuro",
+    "cardio"
+  ],
+  "epilepsy": [
+    "neuro",
+    "pedia"
+  ],
+  "headache-migraine": [
+    "neuro"
+  ],
+  "neuro-emergencies": [
+    "neuro",
+    "icu"
+  ],
+  "gout": [
+    "rheum",
+    "endo"
+  ],
+  "ra": [
+    "rheum"
+  ],
+  "osteoporosis": [
+    "rheum",
+    "endo"
+  ],
+  "lupus-sle": [
+    "rheum",
+    "renal"
+  ],
+  "solid-cancers": [
+    "onco",
+    "gi",
+    "obgyn"
+  ],
+  "hemangioma": [
+    "onco",
+    "pedia"
+  ],
+  "uterine-fibroids": [
+    "obgyn"
+  ]
 };
 
 export function renderFilterPills(): void {
@@ -546,7 +721,15 @@ export function getFilteredStudies(): Study[] {
     }
 
     if (window.filters.sourceType && study.sourceType !== window.filters.sourceType) return false;
-    if (window.filters.specialty && study.specialty !== window.filters.specialty) return false;
+    if (window.filters.specialty) {
+      const activeSpec = window.filters.specialty;
+      const directMatch = (study.specialty === activeSpec);
+      let crossMatch = false;
+      if (study.conditionKey && CONDITION_SPECIALTY_MAP[study.conditionKey]) {
+        crossMatch = CONDITION_SPECIALTY_MAP[study.conditionKey].includes(activeSpec);
+      }
+      if (!directMatch && !crossMatch) return false;
+    }
     if (window.filters.design && study.design !== window.filters.design) return false;
     if (window.filters.impact && study.impact !== window.filters.impact) return false;
     if (window.filters.asianData && !study.asianData) return false;
