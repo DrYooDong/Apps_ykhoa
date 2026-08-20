@@ -427,11 +427,14 @@
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_DTD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Đái tháo đường | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_GERD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Trào ngược dạ dày thực quản | Cấp 3 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-pud.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Loét Dạ dày - Tá tràng (PUD, H. pylori, NSAIDs, ZES, Forrest, GBS) | Cấp 4 |
+| `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hp.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Nhiễm khuẩn Helicobacter pylori (Urease, CagA/T4SS, VacA, DupA, Hang vị vs Thân vị, Correa, Kháng kháng sinh) | Cấp 4 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_COPD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Bệnh phổi tắc nghẽn mạn tính | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_SXHD.html` | Sinh lý bệnh & Cơ chế bệnh sinh Sốt xuất huyết Dengue | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_TSG.html` | Sinh lý bệnh & Cơ chế bệnh sinh Tiền sản giật | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_VTC.html` | Sinh lý bệnh & Cơ chế bệnh sinh Viêm tụy cấp | Cấp 3 |
 | `Sinh lý .../SLB_CCBS/SLB_CCBS_XG.html` | Sinh lý bệnh & Cơ chế bệnh sinh Xơ gan | Cấp 3 |
+| `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-masld.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Gan Nhiễm Mỡ Chuyển Hóa (MASLD, MASH, Lipotoxicity, Kháng insulin đa cơ quan, Lean MASLD, SGLT2i, GLP-1RA, Resmetirom) | Cấp 4 |
+| `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-viem-gan-do-ruou.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Do Rượu (AH, Acetaldehyde, CYP2E1, PAMPs/TLR4, Neutrophil Infiltration, Chicken-wire Fibrosis, AKI/HRS, Aspergillosis) | Cấp 4 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hav.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi A (HAV, eHAV, MAVS-IRF3/7, Tương bào) | Cấp 4 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hbv.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi B (HBV, cccDNA, 4 Pha EASL/BYT, HBx) | Cấp 4 |
 | `src/content/pathophysiology/pathophysiology-cases/slb-ccbs-hcv.html` | **[MỚI]** Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi C (HCV, Steatosis, IRS-1/2, MDA/4-HNE, DAA) | Cấp 4 |

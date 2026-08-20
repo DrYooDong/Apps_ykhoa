@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Viêm Gan Do Rượu (Alcohol-Associated Hepatitis - AH / AAH): Phân tích toàn diện 3 con đường bệnh sinh cốt lõi (Độc tính trực tiếp Acetaldehyde/CYP2E1/ROS, Độc tính lipid Lipotoxicity, Tổn thương trục ruột - gan rò rỉ PAMPs/TLR4), thác miễn dịch tuyển mộ bạch cầu trung tính qua IL-8/ICAM-1, xơ hóa quanh tế bào dạng lưới thép (chicken-wire fibrosis), sinh lý bệnh suy thận cấp AKI/HRS, hội chứng suy giảm miễn dịch do xơ gan và nhiễm nấm Aspergillus xâm lấn.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Viêm Gan Do Rượu (AH) – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script src="../../../../components/header.js" defer></script>
+    <script src="../../../../components/footer.js" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script src="../js/physio-shared.js" defer></script>
+    <script src="../../../../js/toc.js" defer></script>
+    <script src="../../../../js/physio-patho.js" defer></script>
+
+    <style>
+        /* Scoped Custom Styling for Alcohol-Associated Hepatitis Article */
+        .ah-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(220, 38, 38, 0.08);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            color: #dc2626;
+            padding: 0.25rem 0.65rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .hemo-table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--color-border, #e2e8f0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .hemo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: var(--color-surface, #ffffff);
+        }
+
+        .hemo-table th {
+            background: var(--color-surface-2, #f8fafc);
+            color: var(--color-text, #0f172a);
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+        }
+
+        .hemo-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            color: var(--color-text, #334155);
+            vertical-align: top;
+        }
+
+        .hemo-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hemo-table tbody tr:hover {
+            background: rgba(2, 132, 199, 0.03);
+        }
+
+        .physio-figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 2rem auto;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            max-width: 100%;
+        }
+
+        .physio-figure img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .physio-figure img:hover {
+            transform: scale(1.01);
+        }
+
+        .physio-figure figcaption {
+            margin-top: 0.85rem;
+            font-size: 0.88rem;
+            color: var(--color-text-muted, #64748b);
+            line-height: 1.5;
+            text-align: center;
+            max-width: 820px;
+        }
+
+        .svg-diagram-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .svg-diagram-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .svg-diagram-card svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .pathway-step-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+        }
+
+        .pathway-step-card.danger { border-left-color: #dc2626; }
+        .pathway-step-card.warning { border-left-color: #d97706; }
+        .pathway-step-card.purple { border-left-color: #9333ea; }
+        .pathway-step-card.success { border-left-color: #10b981; }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li><a href="../../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../sinhly-sinhlybenh.html" class="nav-item active" title="Sinh lý &amp; Sinh lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">Sinh lý &amp; Sinh lý bệnh</span></a></li>
+                    <li><a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+                    <li><a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+                    <li><a href="../../calculators/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+                    <li><a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+                    <li><a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "🏠 Trang chủ", "url": "../../../../index.html"}, {"label": "Sinh lý & sinh lý bệnh", "url": "../sinhly-sinhlybenh.html"}, {"label": "Tiêu hóa", "url": "../co-che-benh-sinh.html#patho-tieuhoa-section"}, {"label": "Sinh lý bệnh Viêm Gan Do Rượu (AH)"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH VIÊM GAN DO RƯỢU (AH)</h1>
+                    <p>Alcohol-Associated Hepatitis (AH / AAH) Pathophysiology &amp; Pathogenesis — Phân tích chi tiết 3 con đường bệnh sinh cốt lõi: Độc tính trực tiếp của chuyển hóa Ethanol (ADH, CYP2E1, Acetaldehyde, NADH/NAD+, ROS), Độc tính lipid chuyển hóa (Lipotoxicity, ER stress), và Tổn thương trục ruột &ndash; gan (Loạn khuẩn, Ruột rò rỉ, PAMPs/TLR4); Thác miễn dịch tuyển mộ bạch cầu trung tính qua IL-8/ICAM-1; Rối loạn vi tuần hoàn &amp; xơ hóa quanh tế bào dạng "lưới thép" (chicken-wire fibrosis); Sinh lý bệnh suy thận cấp AKI &amp; hội chứng gan thận HRS; Tê liệt miễn dịch và nguy cơ nhiễm nấm Aspergillus xâm lấn.</p>
+                </div>
+
+                <!-- LEAD PARAGRAPH -->
+                <p class="physio-lead">
+                    <span class="term-hl">Viêm gan do rượu (Alcohol-Associated Hepatitis - AH / AAH)</span> là thể lâm sàng cấp tính kịch phát và đe dọa tính mạng nghiêm trọng nhất trong quang phổ của bệnh gan do rượu (ALD). Bệnh cảnh đặc trưng bởi <strong>tình trạng vàng da tiến triển nhanh kèm suy giảm chức năng gan cấp tính</strong> trên nền bệnh nhân lạm dụng rượu mạn tính nặng. Mặc dù 90&ndash;95% người nghiện rượu có nhiễm mỡ gan, chỉ 10&ndash;35% thực sự bùng phát thành viêm gan do rượu, phản ánh một cơ chế sinh bệnh học đa tầng phức tạp do sự giao thoa giữa độc tính phân tử của cồn, phản ứng bão cytokine miễn dịch và biến chứng suy đa cơ quan hệ thống.
+                </p>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN I: KHÁI QUÁT QUANG PHỔ ALD VÀ 3 CON ĐƯỜNG BỆNH SINH CỐT LÕI -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-1-quang-pho-ald-va-3-con-duong" class="section-title">
+                        <span>Phần I: Khái Quát Quang Phổ Bệnh Gan Do Rượu &amp; Ba Con Đường Bệnh Sinh Cốt Lõi</span>
+                    </h2>
+
+                    <p>
+                        Quang phổ của bệnh gan do rượu (Alcohol-Related Liver Disease - ALD) trải dài qua nhiều giai đoạn tiến triển liên tục:
+                    </p>
+
+                    <!-- PATHWAY CHAIN: TIẾN TRÌNH ALD -->
+                    <div class="pathway-chain" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1.5rem 0;">
+                        <span class="pathway-node" style="background: rgba(2, 132, 199, 0.1); border-color: var(--color-primary); color: var(--color-primary);">Gan Bình Thường</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node" style="background: rgba(217, 119, 6, 0.1); border-color: #d97706; color: #d97706;">Gan Nhiễm Mỡ Do Rượu (90&ndash;95%)</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node red" style="font-weight: 800;">Viêm Gan Do Rượu Cấp (AH / AAH 10&ndash;35%)</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node" style="background: rgba(147, 51, 234, 0.1); border-color: #9333ea; color: #9333ea;">Xơ Hóa Lưới Thép &amp; Xơ Gan Mất Bù</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node danger">Ung Thư Tế Bào Gan (HCC)</span>
+                    </div>
+
+                    <!-- 3 CON ĐƯỜNG BỆNH SINH CỐT LÕI -->
+                    <div class="physio-grid">
+                        <div class="physio-grid-card" style="border-top: 4px solid #dc2626;">
+                            <div class="card-icon" style="background: rgba(220, 38, 38, 0.1); color: #dc2626;"><i class="fa-solid fa-skull-crossbones"></i></div>
+                            <h4>1. Độc Tính Tế Bào Trực Tiếp</h4>
+                            <p>
+                                Quá trình oxy hóa ethanol qua ADH và CYP2E1 tạo ra lượng lớn <strong>Acetaldehyde</strong> độc hại, các gốc oxy hóa tự do (ROS), gây mất cân bằng tỷ lệ <strong>NADH/NAD<sup>+</sup></strong> và phá hủy màng tế bào gan, giải phóng các phân tử báo động tổn thương (DAMPs).
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card" style="border-top: 4px solid #d97706;">
+                            <div class="card-icon" style="background: rgba(217, 119, 6, 0.1); color: #d97706;"><i class="fa-solid fa-bacon"></i></div>
+                            <h4>2. Độc Tính Lipid Chuyển Hóa</h4>
+                            <p>
+                                Ức chế oxy hóa beta ty thể kết hợp tăng phân giải mỡ từ mô mỡ ngoại vi và tăng DNL tạo ra bể lipid độc (Ceramides, DAG) gây <strong>Stress mạng lưới nội chất (ER Stress)</strong> và apoptosis tế bào gan.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card" style="border-top: 4px solid #9333ea;">
+                            <div class="card-icon" style="background: rgba(147, 51, 234, 0.1); color: #9333ea;"><i class="fa-solid fa-bacteria"></i></div>
+                            <h4>3. Tổn Thương Trục Ruột &ndash; Gan</h4>
+                            <p>
+                                Loạn khuẩn ruột kết hợp hiện tượng "ruột rò rỉ" (leaky gut) làm các phân tử vi sinh <strong>PAMPs (đặc biệt là Lipopolysaccharide - LPS/endotoxin)</strong> tràn vào tĩnh mạch cửa, kích hoạt thụ thể TLR4 trên tế bào Kupffer phóng bão cytokine.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN II: CON ĐƯỜNG 1 - ĐỘC TÍNH TRỰC TIẾP TỪ CHUYỂN HÓA ETHANOL -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-2-doc-tinh-truc-tiep-chuyen-hoa-ethanol" class="section-title">
+                        <span>Phần II: Con Đường 1 &ndash; Độc Tính Tế Bào Trực Tiếp Từ Quá Trình Chuyển Hóa Ethanol</span>
+                    </h2>
+
+                    <p>
+                        Rượu (ethanol) được hấp thu nhanh chóng tại dạ dày &ndash; ruột non và theo tĩnh mạch cửa về gan. Tại tế bào gan, ethanol được oxy hóa qua hai hệ thống enzyme chủ đạo:
+                    </p>
+
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <h4 style="color: #0284c7;"><i class="fa-solid fa-vial"></i> 1. Hệ Thống Alcohol Dehydrogenase (ADH)</h4>
+                            <p>
+                                Enzyme chính tại bào tương tế bào gan, xúc tác chuyển hóa: 
+                                <br><strong>Ethanol + NAD<sup>+</sup> &xrightarrow{\text{ADH}} Acetaldehyde + NADH + H<sup>+</sup></strong>
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                Phản ứng này làm tiêu thụ lượng lớn NAD<sup>+</sup> và sinh ra NADH dư thừa, làm <strong>đảo lộn tỷ lệ NADH/NAD<sup>+</sup></strong> trong tế bào gan.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <h4 style="color: #dc2626;"><i class="fa-solid fa-fire"></i> 2. Hệ Thống Cytochrome P450 2E1 (CYP2E1 / MEOS)</h4>
+                            <p>
+                                Nằm tại lưới nội chất hạt (microsome), hệ thống này bị <strong>cảm ứng tăng hoạt tính gấp nhiều lần</strong> khi uống rượu nặng mạn tính:
+                                <br><strong>Ethanol + NADPH + H<sup>+</sup> + O<sub>2</sub> &xrightarrow{\text{CYP2E1}} Acetaldehyde + NADP<sup>+</sup> + 2 H<sub>2</sub>O</strong>
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                Quá trình này tiêu tốn oxy và sản sinh ra lượng khổng lồ các <strong>gốc oxy hóa hoạt động (ROS: O<sub>2</sub><sup>&bull;&minus;</sup>, H<sub>2</sub>O<sub>2</sub>, <sup>&bull;</sup>OH)</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 4 HẬU QUẢ TẾ BÀO -->
+                    <h3 id="hau-qua-te-bao-do-chuyen-hoa" class="subsection-title">4 Cơ Chế Hủy Hoại Tế Bào Gan Trực Tiếp</h3>
+                    <div class="pathway-step-card danger">
+                        <h4>1. Tích Tụ Acetaldehyde &amp; Tạo Thành Protein/DNA Adducts</h4>
+                        <p>
+                            Acetaldehyde là chất cực độc. Nó tạo các liên kết cộng hóa trị với các protein nội bào và DNA tạo thành các <strong>Acetaldehyde Adducts</strong>. Các liên hợp này làm gãy đổ khung nâng đỡ tế bào (sợi keratin 8 và 18 bị ngưng tụ thành thể <i>Mallory-Denk</i>), ức chế enzyme sửa chữa DNA, và biến đổi cấu trúc kháng nguyên màng tế bào khiến hệ miễn dịch nhận diện nhầm và tấn công tế bào gan (phản ứng tự miễn thứ phát).
+                        </p>
+                    </div>
+
+                    <div class="pathway-step-card warning">
+                        <h4>2. Mất Cân Bằng Tỷ Lệ NADH/NAD<sup>+</sup> &amp; Tê Liệt Hô Hấp Tế Bào</h4>
+                        <p>
+                            Lượng NADH dư thừa cao bất thường làm ức chế chu trình acid citric (Krebs cycle) và <strong>ức chế enzyme &beta;-hydroxyacyl-CoA dehydrogenase của quá trình oxy hóa beta acid béo trong ty thể</strong>. Acid béo không được đốt cháy sẽ chuyển hướng sang este hóa thành triglyceride, gây nhiễm mỡ gan ồ ạt. Đồng thời, tỷ lệ NADH/NAD<sup>+</sup> cao làm tăng chuyển pyruvate thành lactate, dẫn đến nhiễm toan lactic và giảm thải trừ acid uric qua thận (tăng acid uric máu).
+                        </p>
+                    </div>
+
+                    <div class="pathway-step-card danger">
+                        <h4>3. Bão ROS &amp; Hiện Tượng Peroxide Hóa Màng Tế Bào (Lipid Peroxidation)</h4>
+                        <p>
+                            ROS sinh ra từ CYP2E1 tấn công trực tiếp vào các acid béo không bão hòa của màng ty thể và màng tế bào gan, sinh ra các sản phẩm độc hại như <strong>4-HNE (4-Hydroxynonenal)</strong> và <strong>MDA (Malondialdehyde)</strong>. Hậu quả làm mất điện thế màng ty thể, cạn kiệt ATP nội bào, rò rỉ Cytochrome C và kích hoạt con đường Apoptosis/Hoại tử tế bào gan.
+                        </p>
+                    </div>
+
+                    <div class="pathway-step-card purple">
+                        <h4>4. Phóng Thích Các Phân Tử Báo Động Tổn Thương (DAMPs)</h4>
+                        <p>
+                            Khi tế bào gan bị vỡ và hoại tử, chúng giải phóng các <strong>DAMPs (HMGB1, DNA ty thể, ATP, acid uric)</strong> vào khoảng Disse. DAMPs gắn vào các thụ thể PRRs trên tế bào Kupffer và tế bào nội mô xoang gan (LSECs), khơi mào cho phản ứng viêm nội mô xoang và kích hoạt tế bào hình sao gan (HSC) tăng sinh xơ.
+                        </p>
+                    </div>
+
+                    <!-- HÌNH 1 & HÌNH 2: TỪ JAMA 2026 VÀ WJH 2023 -->
+                    <figure class="physio-figure">
+                        <img src="../images/ah/ah-direct-toxicity-mechanisms.png" alt="Cơ chế độc tính trực tiếp của chuyển hóa ethanol trong bệnh gan do rượu" class="physio-img lightbox-trigger">
+                        <figcaption>
+                            <strong>Hình 1: Cơ chế độc tính trực tiếp của chuyển hóa ethanol tại tế bào gan (Krag et al., <i>JAMA</i>, 2026).</strong><br>
+                            Ethanol chuyển hóa qua ADH và CYP2E1 sinh ra Acetaldehyde, các gốc oxy hóa tự do (ROS), sản phẩm peroxide hóa lipid và làm đảo lộn tỷ lệ NADH/NAD<sup>+</sup>. Tổn thương tế bào gan giải phóng các phân tử DAMPs, kích hoạt tế bào miễn dịch xoang gan và kích thích tế bào hình sao (HSC) tổng hợp collagen gây xơ hóa.
+                        </figcaption>
+                    </figure>
+
+                    <figure class="physio-figure">
+                        <img src="../images/ah/ah-pathophysiology-prognostic-scores.png" alt="Sinh lý bệnh học của viêm gan do rượu và mối tương quan với các thang điểm tiên lượng lâm sàng" class="physio-img lightbox-trigger">
+                        <figcaption>
+                            <strong>Hình 2: Mối tương quan giữa tổn thương tế bào gan do rượu và các chỉ số suy chức năng trên lâm sàng (Mitri et al., <i>World J Hepatol</i>, 2023).</strong><br>
+                            Tổn thương tế bào gan làm suy giảm khả năng bài tiết bilirubin (gây tăng Bilirubin máu &amp; vàng da sẫm), suy giảm tổng hợp protein đông máu (làm kéo dài thời gian Prothrombin / tăng INR) &mdash; hai thông số cốt lõi cấu thành các thang điểm tiên lượng độ nặng kinh điển (Maddrey's DF &ge; 32, MELD &ge; 21, ABIC, Glasgow, Lille model).
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN III: CON ĐƯỜNG 2 - ĐỘC TÍNH LIPID CHUYỂN HÓA (METABOLIC LIPOTOXICITY) -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-3-doc-tinh-lipid-chuyen-hoa" class="section-title">
+                        <span>Phần III: Con Đường 2 &ndash; Rối Loạn Chuyển Hóa Mỡ &amp; Độc Tính Lipid (Metabolic Lipotoxicity)</span>
+                    </h2>
+
+                    <p>
+                        Sự tích tụ mỡ trong viêm gan do rượu không đơn thuần là nhiễm mỡ lành tính mà nhanh chóng tiến triển thành <strong>độc tính lipid (Lipotoxicity)</strong>:
+                    </p>
+
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <h4>1. Huy Động FFA Ngoại Vi &amp; Tăng DNL</h4>
+                            <p>
+                                Ethanol ức chế phân giải acid béo tại gan nhưng lại kích thích <strong>phân giải lipid (lipolysis) tại mô mỡ dưới da và nội tạng</strong>, giải phóng dòng thác acid béo tự do (FFAs) đổ về gan. Đồng thời, ethanol kích hoạt yếu tố phiên mã <strong>SREBP-1c</strong>, thúc đẩy sinh tổng hợp acid béo mới (De Novo Lipogenesis - DNL).
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <h4>2. Stress Lưới Nội Chất (ER Stress) &amp; Trục STING-IRF3</h4>
+                            <p>
+                                Nồng độ cao các acid béo bão hòa và ceramides làm biến dạng màng lưới nội chất, tích tụ protein gập sai. Tình trạng ER stress kéo dài kích hoạt con đường tín hiệu <strong>STING-IRF3</strong>, trực tiếp kích thích caspase-3 và caspase-9 đưa tế bào gan vào con đường tự hủy (Apoptosis).
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <h4>3. Cộng Hưởng Từ Đa Hình Gen (PNPLA3, TM6SF2, MBOAT7)</h4>
+                            <p>
+                                Đa hình gen <strong><i>PNPLA3 I148M</i> (rs738409)</strong> làm enzym Adiponutrin mất hoạt tính phân giải giọt mỡ, khiến lipid bị "bẫy" vĩnh viễn trong tế bào gan. Người mang alen đột biến này khi uống rượu có nguy cơ xơ gan và viêm gan do rượu tăng gấp 2&ndash;3 lần so với người không mang gen.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN IV: CON ĐƯỜNG 3 - TRỤC RUỘT GAN VÀ SỰ DỊCH CHUYỂN PAMPS -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-4-truc-ruot-gan-pamps" class="section-title">
+                        <span>Phần IV: Con Đường 3 &ndash; Tổn Thương Trục Ruột &ndash; Gan &amp; Sự Di Chuyển Của PAMPs</span>
+                    </h2>
+
+                    <p>
+                        Trục ruột &ndash; gan là động cơ khuếch đại biến một tổn thương gan mạn tính thành <strong>cơn bão viêm cấp tính bùng phát dữ dội</strong> đặc trưng của viêm gan do rượu (AH):
+                    </p>
+
+                    <!-- 4 BƯỚC CỦA TRỤC RUỘT GAN -->
+                    <div class="pathway-step-card warning">
+                        <h4>1. Loạn Khuẩn Ruột Nặng Nề (Severe Gut Dysbiosis)</h4>
+                        <p>
+                            Rượu tiêu thụ mạn tính trực tiếp tiêu diệt các lợi khuẩn sản xuất acid béo chuỗi ngắn (như <i>Bifidobacteria</i> và <i>Lactobacillus</i>), tạo điều kiện cho các chủng vi khuẩn Gram âm kỵ khí và <i>Escherichia coli</i> sinh sôi vượt bậc trong lòng ruột non và đại tràng.
+                        </p>
+                    </div>
+
+                    <div class="pathway-step-card danger">
+                        <h4>2. Hiện Tượng "Ruột Rò Rỉ" (Leaky Gut Syndrome)</h4>
+                        <p>
+                            Ethanol và acetaldehyde phá hủy lớp màng nhầy niêm mạc ruột, đồng thời làm phosphoryl hóa và bất hoạt các protein liên kết vòng bịt (<strong>Tight Junctions: Claudin-1, Occludin, ZO-1</strong>) giữa các tế bào biểu mô ruột. Hàng rào ruột bị phá vỡ hoàn toàn tính toàn vẹn.
+                        </p>
+                    </div>
+
+                    <div class="pathway-step-card danger">
+                        <h4>3. Sự Dịch Chuyển Của PAMPs Vào Tĩnh Mạch Cửa (Bacterial Translocation)</h4>
+                        <p>
+                            Các phân tử kháng nguyên vi sinh vật (<strong>Pathogen-Associated Molecular Patterns - PAMPs</strong>) &mdash; đặc biệt là <strong>Lipopolysaccharide (LPS / Endotoxin)</strong> từ vách vi khuẩn Gram âm, peptidoglycan, flagellin và DNA vi khuẩn &mdash; ồ ạt thẩm thấu qua thành ruột vào dòng máu tĩnh mạch cửa đổ thẳng về gan.
+                        </p>
+                    </div>
+
+                    <div class="pathway-step-card purple">
+                        <h4>4. Kích Hoạt Thụ Thể TLR4 Trên Tế Bào Kupffer &amp; Bão Cytokine</h4>
+                        <p>
+                            Tại gan, LPS kết hợp với protein gắn LPS (LBP) và phức hợp đồng thụ thể CD14 liên kết chặt vào <strong>Toll-Like Receptor 4 (TLR4)</strong> trên màng tế bào Kupffer. Sự kích hoạt TLR4 khởi động con đường <strong>MyD88 &ndash; NF-&kappa;B</strong>, giải phóng ồ ạt các cytokine tiền viêm cực mạnh: <strong>TNF-&alpha;, IL-1&beta;, IL-6 và IL-8</strong>.
+                        </p>
+                    </div>
+
+                    <!-- HÌNH 3: JAMA 2026 GUT-LIVER AXIS -->
+                    <figure class="physio-figure">
+                        <img src="../images/ah/ah-gut-liver-axis-pamps.png" alt="Trục ruột gan và cơ chế chuyển vị vi khuẩn trong bệnh gan do rượu" class="physio-img lightbox-trigger">
+                        <figcaption>
+                            <strong>Hình 3: Trục ruột &ndash; gan, sự rò rỉ niêm mạc và dòng thác kích hoạt tế bào Kupffer (Krag et al., <i>JAMA</i>, 2026).</strong><br>
+                            Ethanol gây loạn khuẩn và phá hủy liên kết chặt niêm mạc ruột (Leaky Gut). Các thành phần vi khuẩn (PAMPs / LPS) dịch chuyển qua tĩnh mạch cửa đến gan, kích hoạt tế bào Kupffer qua thụ thể TLR4 phóng thích bão cytokine (TNF-&alpha;, IL-1&beta;, IL-8), lôi kéo bạch cầu trung tính và hoạt hóa tế bào hình sao gan (HSC).
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN V: THÁC MIỄN DỊCH, BẠCH CẦU TRUNG TÍNH & BẤT THƯỜNG TÁI TẠO -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-5-thac-mien-dich-neutrophils" class="section-title">
+                        <span>Phần V: Thác Miễn Dịch Tế Bào, Tuyển Mộ Bạch Cầu Trung Tính &amp; Bất Thường Tái Tạo</span>
+                    </h2>
+
+                    <p>
+                        Khác biệt với viêm gan siêu vi (vốn ưu thế thâm nhiễm tế bào lympho T CD8<sup>+</sup>), <strong>thâm nhiễm bạch cầu đa nhân trung tính (Neutrophils Infiltration) dày đặc</strong> là dấu ấn mô bệnh học đặc trưng số 1 của viêm gan do rượu:
+                    </p>
+
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <h4 style="color: #dc2626;"><i class="fa-solid fa-crosshairs"></i> 1. Trục Hóa Hướng Động IL-8 &amp; Bám Dính ICAM-1</h4>
+                            <p>
+                                Tế bào Kupffer và tế bào gan tổn thương tiết ra lượng lớn <strong>Interleukin-8 (IL-8)</strong> &mdash; cytokine hóa hướng động bạch cầu trung tính mạnh nhất. Đồng thời, các cytokine tiền viêm kích thích tế bào nội mô xoang gan (LSECs) tăng biểu hiện thụ thể bám dính <strong>ICAM-1 (Intercellular Adhesion Molecule 1)</strong> và E-selectin, giúp bạch cầu trung tính bám dính chắc vào thành mạch xoang và xuyên mạch vào nhu mô gan.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <h4 style="color: #d97706;"><i class="fa-solid fa-explosion"></i> 2. Bẫy Ngoại Bào NETs &amp; Độc Tính Protease</h4>
+                            <p>
+                                Khi xâm nhập vào tiểu thùy gan, bạch cầu trung tính giải phóng các hạt enzyme tiêu đạm (Myeloperoxidase, Neutrophil Elastase) và phóng thích <strong>bẫy ngoại bào bạch cầu trung tính (Neutrophil Extracellular Traps - NETs)</strong> bao quanh các tế bào gan thoái hóa bong bóng. Mặc dù NETs nhằm bắt giữ vi khuẩn, chúng lại gây hoại tử tế bào gan hàng loạt và bít tắc các vi xoang gan.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <h4 style="color: #9333ea;"><i class="fa-solid fa-ban"></i> 3. Thất Bại Tái Tạo Nhu Mô Gan (Impaired Regeneration)</h4>
+                            <p>
+                                Mặc dù có sự tăng sinh mạnh mẽ của các <strong>tế bào tiền thân gan (Hepatic Progenitor Cells / CD34<sup>+</sup> stem cells)</strong> nhằm bù đắp lượng tế bào gan đã chết, nhưng vi môi trường viêm dày đặc cytokine TNF-&alpha;/TGF-&beta; đã <strong>ức chế hoàn toàn quá trình biệt hóa của chúng thành tế bào gan trưởng thành chức năng</strong>. Nhu mô gan không thể phục hồi, dẫn đến tình trạng suy gan cấp tiến triển không hồi phục.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VI: VI TUẦN HOÀN GAN & XƠ HÓA "LƯỚI THÉP" (CHICKEN-WIRE FIBROSIS) -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-6-vi-tuan-hoan-chicken-wire" class="section-title">
+                        <span>Phần VI: Biến Đổi Vi Tuần Hoàn Gan &amp; Xơ Hóa Dạng "Lưới Thép" (Chicken-Wire Fibrosis)</span>
+                    </h2>
+
+                    <div class="pathway-step-card warning">
+                        <h4>1. Xơ Hóa Quanh Tế Bào Dạng "Lưới Thép" (Pericellular / Chicken-Wire Fibrosis)</h4>
+                        <p>
+                            Tế bào hình sao gan (HSCs) bị kích hoạt bởi TGF-&beta; và các sản phẩm peroxide hóa lipid sẽ tăng sinh và chuyển thành nguyên bào sợi cơ. Điểm đặc thù của bệnh gan do rượu là collagen type I và III không chỉ lắng đọng ở khoảng cửa mà <strong>lắng đọng dày đặc dọc theo khoảng Disse quanh từng tế bào gan đơn lẻ và quanh tĩnh mạch trung tâm tiểu thùy (Zone 3)</strong>, tạo nên mạng lưới sợi xơ bao bọc như một "lưới chuồng gà" (chicken-wire pattern), bóp nghẹt sự trao đổi chất giữa tế bào gan và dòng máu xoang gan.
+                        </p>
+                    </div>
+
+                    <div class="pathway-step-card danger">
+                        <h4>2. Hoại Tử Hyaline Xơ Hóa (Sclerosing Hyaline Necrosis) &amp; Tăng Áp Cửa Cấp Tính</h4>
+                        <p>
+                            Xơ hóa và viêm tắc quanh tĩnh mạch trung tâm tiểu thùy dẫn đến hiện tượng <strong>hoại tử hyaline xơ hóa</strong>, bít tắc đường thoát máu của tiểu thùy gan. Khi bệnh nhân tiếp xúc với cồn cấp tính, ethanol làm giảm hoạt tính của enzyme <i>eNOS</i> (làm sụt giảm Nitric Oxide nội mô xoang gan), gây co thắt các tế bào hình sao quanh xoang. Kết hợp với sự giãn mạch tạng do cytokine viêm, <strong>áp lực tĩnh mạch cửa (đo qua chênh lệch áp lực tĩnh mạch gan - HVPG) tăng vọt tức thì sau khi uống rượu</strong>, kích hoạt biến cố vỡ giãn tĩnh mạch thực quản xuất huyết ồ ạt.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VII: SINH LÝ BỆNH BIẾN CHỨNG HỆ THỐNG (AKI, HRS & NHIỄM TRÙNG) -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-7-bien-chung-he-thong-aki-hrs" class="section-title">
+                        <span>Phần VII: Sinh Lý Bệnh Của Biến Chứng Suy Thận Cấp (AKI), Hội Chứng Gan Thận &amp; Tê Liệt Miễn Dịch</span>
+                    </h2>
+
+                    <p>
+                        Suy thận cấp (AKI) xuất hiện ở <strong>gần 40% bệnh nhân viêm gan do rượu nặng</strong> (19% có sẵn lúc nhập viện + 21% phát triển mới trong nằm viện) và là <strong>yếu tố dự báo tử vong độc lập mạnh nhất</strong> (tỷ lệ tử vong 90 ngày lên tới 47% ở nhóm có incident AKI):
+                    </p>
+
+                    <!-- 3 CƠ CHẾ AKI TRONG AH -->
+                    <div class="physio-grid">
+                        <div class="physio-grid-card" style="border-top: 4px solid #dc2626;">
+                            <h4 style="color: #dc2626;">1. Giãn Mạch Tạng &amp; Hội Chứng Gan Thận (HRS)</h4>
+                            <p>
+                                Tăng áp cửa và bão cytokine (TNF-&alpha;, NO tạng) làm giãn cực độ giường mao mạch mạc treo &rarr; giảm thể tích tuần hoàn hữu hiệu trong hệ động mạch &rarr; kích hoạt tối đa hệ RAAS, hệ thần kinh giao cảm và tiết Vasopressin &rarr; <strong>co thắt tiểu động mạch đến thận dữ dội</strong> gây thiểu niệu và suy giảm tốc độ lọc cầu thận (Hepatorenal Syndrome - HRS-AKI).
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card" style="border-top: 4px solid #d97706;">
+                            <h4 style="color: #d97706;">2. Hội Chứng SIRS &amp; Hoại Tử Ống Thận Cấp (ATN)</h4>
+                            <p>
+                                Sự tràn ngập của PAMPs (LPS) và DAMPs kích hoạt hội chứng đáp ứng viêm hệ thống (SIRS). Độc tố nội bào, các gốc tự do ROS và bilirubin nồng độ cao lắng đọng trong lòng ống thận (Bile Cast Nephropathy) gây độc trực tiếp và hoại tử biểu mô ống thận.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card" style="border-top: 4px solid #9333ea;">
+                            <h4 style="color: #9333ea;">3. Tác Hại Của Thuốc Chẹn Beta Không Chọn Lọc (NSBBs)</h4>
+                            <p>
+                                Sử dụng NSBBs (Propranolol/Carvedilol) ở bệnh nhân AH nặng làm giảm cung lượng tim và triệt tiêu phản xạ bù trừ huyết động của thận, làm tăng vọt nguy cơ phát triển AKI mới và tử vong.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- DẤU ẤN SINH HỌC & CORTICOSTEROIDS -->
+                    <div class="pathway-step-card purple" style="margin-top: 1rem;">
+                        <h4>Dấu Ấn Sinh Học Dự Báo Sớm AKI &amp; Tác Dụng Bảo Vệ Thận Của Corticosteroids</h4>
+                        <p>
+                            Do Creatinine huyết thanh tăng muộn (sau khi GFR đã giảm nhiều ngày), nghiên cứu thử nghiệm STOPAH đã phát hiện các chỉ dấu sinh học dự báo sớm incident AKI:
+                        </p>
+                        <ul style="font-size: 0.88rem; margin-left: 1.25rem; color: var(--color-text-muted); line-height: 1.6;">
+                            <li><strong>Phối hợp nồng độ IL-8 huyết thanh ban đầu + Bilirubin toàn phần:</strong> Giá trị dự báo AUROC đạt 0.726.</li>
+                            <li><strong>Các micro-RNA tự do trong máu:</strong> <code>miR-6826-5p</code> (AUROC 0.821) và <code>miR-6811-3p</code> (AUROC 0.770).</li>
+                            <li><strong>Hiệu quả của Corticosteroids (Prednisolone 40 mg/ngày):</strong> Giúp giảm 45% nguy cơ xuất hiện AKI mới trong thời gian nằm viện (AOR 0.55; p=0.007) nhờ ức chế phản ứng viêm toàn thân SIRS.</li>
+                        </ul>
+                    </div>
+
+                    <!-- TÊ LIỆT MIỄN DỊCH & NHIỄM TRÙNG -->
+                    <h3 id="te-liet-mien-dich-nhiem-nam" class="subsection-title">Tê Liệt Miễn Dịch (Immunoparalysis) &amp; Biến Chứng Nhiễm Nấm Aspergillus Xâm Lấn</h3>
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <h4 style="color: #dc2626;"><i class="fa-solid fa-shield-slash"></i> Tê Liệt Miễn Dịch Do Xơ Gan (CAID)</h4>
+                            <p>
+                                Tế bào Kupffer tiếp xúc liên tục với nồng độ cao endotoxin sẽ rơi vào trạng thái "trơ miễn dịch" (Endotoxin Tolerance), suy giảm khả năng thực bào và suy yếu phản ứng miễn dịch thích ứng. Bệnh nhân rơi vào tình trạng suy giảm miễn dịch nghiêm trọng, dễ nhiễm khuẩn huyết bởi vi khuẩn Gram âm đa kháng.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <h4 style="color: #ea580c;"><i class="fa-solid fa-disease"></i> Nhiễm Nấm Aspergillus Xâm Lấn (Invasive Aspergillosis - IA)</h4>
+                            <p>
+                                Biến chứng nhiễm nấm cơ hội cực kỳ nguy hiểm ở bệnh nhân AH nặng nằm ICU hoặc có MELD &ge; 24 được điều trị Corticosteroids. Tỷ lệ tử vong gần như tuyệt đối (&gt;80%). Cần tầm soát sớm bằng xét nghiệm kháng nguyên <strong>Galactomannan huyết thanh (ngưỡng cắt &ge; 0.5)</strong> trước và trong khi dùng thuốc ức chế miễn dịch.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VIII: PHỔ GIẢI PHẪU BỆNH & MÔ HỌC VI THỂ -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-8-pho-giai-phau-benh-mo-hoc" class="section-title">
+                        <span>Phần VIII: Phổ Giải Phẫu Bệnh &amp; Mô Học Vi Thể Của Viêm Gan Do Rượu</span>
+                    </h2>
+
+                    <p>
+                        Hình ảnh mô bệnh học vi thể nhu mô gan phản ánh đầy đủ các cơ chế sinh bệnh học phá hủy tế bào:
+                    </p>
+
+                    <!-- HÌNH 4: MÔ BỆNH HỌC TỪ NIHMS -->
+                    <figure class="physio-figure">
+                        <img src="../images/ah/ah-histology-features-chickenwire.png" alt="Đặc điểm mô bệnh học vi thể của viêm gan do rượu" class="physio-img lightbox-trigger">
+                        <figcaption>
+                            <strong>Hình 4: Các đặc điểm mô bệnh học vi thể kinh điển của viêm gan do rượu (Singal et al., <i>Gastroenterology</i>, 2023).</strong><br>
+                            <strong>(a)</strong> Vòng tròn chỉ điểm viêm tiểu thùy tẩm nhuận bạch cầu trung tính (Lobular inflammation) và mũi tên chỉ nhiễm mỡ (Steatosis); 
+                            <strong>(b)</strong> Thoái hóa tế bào gan dạng bong bóng (Ballooning degeneration) phồng to mất khung xương tế bào; 
+                            <strong>(c)</strong> Tình trạng ứ mật (Cholestasis) trong tiểu quản mật và tế bào gan; 
+                            <strong>(d)</strong> Nhiễm mỡ kết hợp các dải xơ; 
+                            <strong>(e)</strong> Xơ hóa quanh tế bào dạng "lưới thép" (Chicken-wire pericellular fibrosis) bóp nghẹt tế bào gan vùng Zone 3; 
+                            <strong>(f)</strong> Cấu trúc xơ gan (Cirrhosis) với các nốt tái tạo nhu mô bị chia cắt hoàn toàn.
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN IX: SƠ ĐỒ VECTOR TỔNG HỢP & TƯƠNG QUAN LÂM SÀNG TOÀN DIỆN -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-9-so-do-tong-hop" class="section-title">
+                        <span>Phần IX: Sơ Đồ Tổng Hợp Sinh Lý Bệnh &amp; Tương Quan Lâm Sàng Toàn Diện</span>
+                    </h2>
+
+                    <!-- INLINE SVG DIAGRAM EDITORIAL STANDARD -->
+                    <div class="svg-diagram-card">
+                        <div class="svg-diagram-title">
+                            <i class="fa-solid fa-diagram-project" style="color: var(--color-primary);"></i>
+                            Sơ Đồ Tổng Hợp Chuỗi Sinh Lý Bệnh Viêm Gan Do Rượu (Alcohol-Associated Hepatitis)
+                        </div>
+                        <svg viewBox="0 0 940 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ tổng hợp sinh lý bệnh viêm gan do rượu">
+                            <defs>
+                                <linearGradient id="ahGradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#0284c7" stop-opacity="0.12" />
+                                    <stop offset="100%" stop-color="#0284c7" stop-opacity="0.04" />
+                                </linearGradient>
+                                <linearGradient id="ahGradRed" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#dc2626" stop-opacity="0.12" />
+                                    <stop offset="100%" stop-color="#dc2626" stop-opacity="0.04" />
+                                </linearGradient>
+                                <linearGradient id="ahGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#d97706" stop-opacity="0.12" />
+                                    <stop offset="100%" stop-color="#d97706" stop-opacity="0.04" />
+                                </linearGradient>
+                                <linearGradient id="ahGradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#9333ea" stop-opacity="0.12" />
+                                    <stop offset="100%" stop-color="#9333ea" stop-opacity="0.04" />
+                                </linearGradient>
+                                <filter id="ahShadow" x="-5%" y="-5%" width="110%" height="110%">
+                                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.06" />
+                                </filter>
+                            </defs>
+
+                            <!-- Background Grid Lines subtle -->
+                            <rect width="940" height="520" fill="var(--color-surface, #ffffff)" rx="12" />
+
+                            <!-- BOX 1: ETHANOL INGESTION & 3 INITIATING PATHWAYS -->
+                            <g filter="url(#ahShadow)">
+                                <rect x="25" y="25" width="270" height="200" rx="10" fill="url(#ahGradBlue)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="160" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#0284c7" text-anchor="middle">
+                                    1. NẠP RƯỢU NẶNG MẠN TÍNH
+                                </text>
+                                <text x="40" y="75" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Chuyển hóa ADH / CYP2E1:</tspan>
+                                </text>
+                                <text x="50" y="93" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Acetaldehyde &bull; Bão ROS &bull; &uarr;NADH
+                                </text>
+                                <text x="40" y="115" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Độc tính Lipid (Lipotoxicity):</tspan>
+                                </text>
+                                <text x="50" y="133" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; &darr;&beta;-oxidation &bull; &uarr;FFA &bull; ER Stress
+                                </text>
+                                <text x="40" y="155" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Trục Ruột &ndash; Gan &amp; Ruột rò rỉ:</tspan>
+                                </text>
+                                <text x="50" y="173" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Rò rỉ PAMPs (LPS) qua tĩnh mạch cửa
+                                </text>
+                                <text x="40" y="195" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Đa hình gen:</tspan> PNPLA3 I148M bẫy lipid
+                                </text>
+                            </g>
+
+                            <!-- ARROW 1 -> 2 -->
+                            <path d="M 295 125 L 345 125" stroke="var(--color-border, #cbd5e1)" stroke-width="2" fill="none" />
+                            <polygon points="345,125 337,120 337,130" fill="#0284c7" />
+
+                            <!-- BOX 2: HEPATIC IMMUNE & INFLAMMATORY CASCADE -->
+                            <g filter="url(#ahShadow)">
+                                <rect x="355" y="25" width="270" height="200" rx="10" fill="url(#ahGradRed)" stroke="#dc2626" stroke-width="1.5" />
+                                <text x="490" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#dc2626" text-anchor="middle">
+                                    2. ĐÁP ỨNG VIÊM &amp; THỦY HOẠI GAN
+                                </text>
+                                <text x="370" y="75" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Tế bào Kupffer (TLR4 &amp; DAMPs):</tspan>
+                                </text>
+                                <text x="380" y="93" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Bão TNF-&alpha;, IL-1&beta;, IL-6, IL-8
+                                </text>
+                                <text x="370" y="115" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Tuyển mộ Bạch cầu Trung tính:</tspan>
+                                </text>
+                                <text x="380" y="133" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Qua IL-8 + ICAM-1 &bull; Bẫy NETs
+                                </text>
+                                <text x="370" y="155" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Tế bào gan thoái hóa bong bóng:</tspan>
+                                </text>
+                                <text x="380" y="173" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Thể Mallory-Denk &bull; Ứ mật tiểu thùy
+                                </text>
+                                <text x="370" y="195" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">HSC hoạt hóa:</tspan> Xơ hóa dạng "lưới thép"
+                                </text>
+                            </g>
+
+                            <!-- ARROWS 2 -> 3A & 3B -->
+                            <path d="M 625 90 L 685 65" stroke="#dc2626" stroke-width="2" fill="none" />
+                            <polygon points="685,65 675,63 680,72" fill="#dc2626" />
+
+                            <path d="M 625 155 L 685 185" stroke="#9333ea" stroke-width="2" fill="none" />
+                            <polygon points="685,185 678,177 684,175" fill="#9333ea" />
+
+                            <!-- BOX 3A: LIVER FAILURE & PORTAL HYPERTENSION -->
+                            <g filter="url(#ahShadow)">
+                                <rect x="695" y="20" width="220" height="130" rx="8" fill="url(#ahGradAmber)" stroke="#d97706" stroke-width="1.5" />
+                                <text x="805" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#d97706" text-anchor="middle">
+                                    SUY GAN CẤP &amp; TĂNG ÁP CỬA
+                                </text>
+                                <text x="705" y="62" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; &uarr; Bilirubin &rarr; Vàng da sẫm
+                                </text>
+                                <text x="705" y="80" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; &darr; Yếu tố đông máu &rarr; &uarr; PT/INR
+                                </text>
+                                <text x="705" y="98" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; &darr; NO xoang gan &rarr; &uarr;&uarr; HVPG
+                                </text>
+                                <text x="705" y="120" font-family="Inter, sans-serif" font-size="11.5" font-weight="700" fill="#dc2626">
+                                    &rArr; VỠ GIÃN TĨNH MẠCH THỰC QUẢN
+                                </text>
+                            </g>
+
+                            <!-- BOX 3B: EXTRAHEPATIC ORGAN FAILURE -->
+                            <g filter="url(#ahShadow)">
+                                <rect x="695" y="165" width="220" height="125" rx="8" fill="url(#ahGradPurple)" stroke="#9333ea" stroke-width="1.5" />
+                                <text x="805" y="185" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#9333ea" text-anchor="middle">
+                                    BIẾN CHỨNG NGOÀI GAN NGUY HIỂM
+                                </text>
+                                <text x="705" y="205" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; Giãn mạch tạng &rarr; Co mạch thận
+                                </text>
+                                <text x="705" y="223" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &bull; SIRS &amp; Trụ mật &rarr; Hoại tử ống thận
+                                </text>
+                                <text x="705" y="243" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#9333ea">
+                                    &rArr; SUY THẬN CẤP (AKI / HRS)
+                                </text>
+                                <text x="705" y="265" font-family="Inter, sans-serif" font-size="11" fill="#dc2626">
+                                    &rArr; Nhiễm nấm Aspergillus (IA)
+                                </text>
+                            </g>
+
+                            <!-- BOTTOM CLINICAL STRIP: SCORES & TREATMENT -->
+                            <g filter="url(#ahShadow)">
+                                <rect x="25" y="305" width="890" height="190" rx="10" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #e2e8f0)" stroke-width="1.5" />
+                                <text x="45" y="330" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="var(--color-primary, #0284c7)">
+                                    TƯƠNG QUAN LÂM SÀNG, ĐIỂM TIÊN LƯỢNG &amp; CHIẾN LƯỢC ĐIỀU TRỊ:
+                                </text>
+
+                                <!-- Panel 1: Prognostic Scores -->
+                                <rect x="45" y="345" width="270" height="135" rx="8" fill="rgba(217,119,6,0.06)" stroke="#d97706" stroke-width="1" />
+                                <text x="180" y="365" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#d97706" text-anchor="middle">
+                                    Thang Điểm Tiên Lượng AH
+                                </text>
+                                <text x="55" y="385" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Maddrey's DF &ge; 32:</tspan> AH Nặng (4.6 &times; [PT-PTc] + Bili)
+                                </text>
+                                <text x="55" y="405" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">MELD &ge; 21 / ABIC / GAHS &ge; 9</tspan>
+                                </text>
+                                <text x="55" y="425" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Lille Model (Ngày 7):</tspan> &ge; 0.45 = Kháng steroid
+                                </text>
+                                <text x="55" y="445" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; Chỉ dấu AKI sớm: IL-8 + miR-6826-5p
+                                </text>
+
+                                <!-- Panel 2: Corticosteroid Therapy -->
+                                <rect x="335" y="345" width="280" height="135" rx="8" fill="rgba(2,132,199,0.06)" stroke="#0284c7" stroke-width="1" />
+                                <text x="475" y="365" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#0284c7" text-anchor="middle">
+                                    Liệu Pháp Corticosteroids
+                                </text>
+                                <text x="345" y="385" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Prednisolone 40 mg/ngày</tspan> (uống 28 ngày)
+                                </text>
+                                <text x="345" y="405" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; Chỉ định: Maddrey DF &ge; 32 hoặc MELD &ge; 21
+                                </text>
+                                <text x="345" y="425" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; Giảm phản ứng SIRS &amp; giảm 45% Incident AKI
+                                </text>
+                                <text x="345" y="445" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; Đánh giá Lille ngày 7 &rarr; ngưng nếu thất bại
+                                </text>
+
+                                <!-- Panel 3: Infection & AKI Precautions -->
+                                <rect x="635" y="345" width="265" height="135" rx="8" fill="rgba(220,38,38,0.06)" stroke="#dc2626" stroke-width="1" />
+                                <text x="767" y="365" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#dc2626" text-anchor="middle">
+                                    Cảnh Báo Lâm Sàng Tối Quan Trọng
+                                </text>
+                                <text x="645" y="385" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Tuyệt đối KHÔNG dùng NSBBs</tspan> trong AH nặng
+                                </text>
+                                <text x="645" y="405" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; Tầm soát nhiễm trùng trước khi dùng steroid
+                                </text>
+                                <text x="645" y="425" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; Tầm soát Galactomannan nấm Aspergillus
+                                </text>
+                                <text x="645" y="445" font-family="Inter, sans-serif" font-size="10.5" fill="var(--color-text, #0f172a)">
+                                    &bull; Bù dịch tinh thể + Albumin phòng ngừa HRS
+                                </text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN X: TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài Liệu Tham Khảo (AMA Citations)</span>
+                    </h2>
+
+                    <ol class="references-list" style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.9rem; color: var(--color-text-muted);">
+                        <li>Krag A, Åberg F, Mellinger J, Lee BP, Israelsen M. Alcohol-Related Liver Disease: A Review. <i>JAMA</i>. 2026. doi:10.1001/jama.2026.12038.</li>
+                        <li>European Association for the Study of the Liver. EASL Clinical Practice Guidelines: Management of alcohol-related liver disease. <i>Journal of Hepatology</i>. 2018;69(1):154-181. doi:10.1016/j.jhep.2018.03.018.</li>
+                        <li>Jophlin LL, Singal AK, Bataller R, et al. ACG Clinical Guideline: Alcohol-Associated Liver Disease. <i>American Journal of Gastroenterology</i>. 2024;119(1):30-54. doi:10.14309/ajg.0000000000002572.</li>
+                        <li>Pavlov CS, Varganova DL, Casazza G, Tsochatzis E, Nikolova D, Gluud C. Glucocorticosteroids for people with alcoholic hepatitis. <i>Cochrane Database of Systematic Reviews</i>. 2019;2019(4):CD001511. doi:10.1002/14651858.CD001511.pub4.</li>
+                        <li>Mitri J, Almeqdadi M, Karagozian R. Prognostic and diagnostic scoring models in acute alcohol-associated hepatitis: A review comparing the performance of different scoring systems. <i>World Journal of Hepatology</i>. 2023;15(8):954-963. doi:10.4254/wjh.v15.i8.954.</li>
+                        <li>Tyson LD, Atkinson S, Hunter RW, et al. In severe alcohol-related hepatitis, acute kidney injury is prevalent, associated with mortality independent of liver disease severity, and can be predicted using IL-8 and micro-RNAs. <i>Alimentary Pharmacology &amp; Therapeutics</i>. 2023;58(12):1217-1229. doi:10.1111/apt.17733.</li>
+                        <li>Penninti P, Adekunle AD, Singal AK. Alcoholic Hepatitis: The Rising Epidemic. <i>Gastroenterology Clinics of North America</i>. 2023;52(3):535-553. doi:10.1016/j.gtc.2023.03.017.</li>
+                        <li>Chi X, Sun X, Cheng D, Liu S, Pan CQ, Xing H. Intestinal microbiome-targeted therapies improve liver function in alcohol-related liver disease by restoring bifidobacteria: a systematic review and meta-analysis. <i>Frontiers in Pharmacology</i>. 2024;14:1274261. doi:10.3389/fphar.2023.1274261.</li>
+                    </ol>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -380,19 +380,44 @@
         .formula-card {
             background: var(--color-bg, #f8fafc);
             border: 1px solid var(--color-border, #e2e8f0);
+            border-left: 4px solid var(--color-primary, #0284c7);
             border-radius: 12px;
-            padding: 1.25rem 1.5rem;
-            margin: 1.25rem 0;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
             text-align: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: var(--color-text, #0f172a);
+            overflow-x: auto;
+        }
+
+        .formula-card .formula-expr {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--color-primary, #0284c7);
+            margin-bottom: 0.35rem;
+            white-space: nowrap;
+        }
+
+        .formula-card .formula-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-muted, #64748b);
+            white-space: nowrap;
         }
 
         [data-theme="dark"] .formula-card {
             background: var(--color-surface-2, #0f172a);
             border-color: var(--color-border, #334155);
+            border-left-color: #38bdf8;
             color: #f8fafc;
+        }
+
+        [data-theme="dark"] .formula-card .formula-expr {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .formula-card .formula-desc {
+            color: #94a3b8;
         }
 
         .formula-highlight {
@@ -586,79 +611,83 @@
                 <h4 style="margin: 0 0 1rem 0; color: var(--color-primary, #0284c7); font-size: 1.05rem;">
                     <i class="fa-solid fa-diagram-project"></i> SƠ ĐỒ CẤU TRÚC MÀNG SINH HỌC &amp; ĐỘNG HỌC TRANSLOCASE (FLIPPASE, FLOPPASE, SCRAMBLASE)
                 </h4>
-                <svg viewBox="0 0 920 380" style="max-width: 100%; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                <svg viewBox="0 0 940 390" style="max-width: 100%; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
                     <!-- Background Layers -->
-                    <rect x="10" y="10" width="900" height="90" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="rgba(2, 132, 199, 0.2)" stroke-dasharray="4 4" />
-                    <text x="30" y="40" fill="var(--color-primary, #0284c7)" font-size="14" font-weight="700">MÔI TRƯỜNG NGOẠI BÀO (EXTRACELLULAR SPACE)</text>
-                    <text x="30" y="65" fill="var(--color-text-muted, #64748b)" font-size="12">Giàu Phosphatidylcholine (PC), Sphingomyelin (SM), Glycolipid (Glycocalyx) | Nồng độ Na⁺ cao (145 mM), K⁺ thấp (4-5 mM)</text>
+                    <rect x="10" y="10" width="920" height="95" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="rgba(2, 132, 199, 0.2)" stroke-dasharray="4 4" />
+                    <text x="30" y="38" fill="var(--color-primary, #0284c7)" font-size="14" font-weight="700">MÔI TRƯỜNG NGOẠI BÀO (EXTRACELLULAR SPACE)</text>
+                    <text x="30" y="58" fill="var(--color-text-muted, #64748b)" font-size="11.5">Giàu Phosphatidylcholine (PC), Sphingomyelin (SM), Glycolipid (Glycocalyx) | Nồng độ Na⁺ cao (145 mM), K⁺ thấp (4-5 mM)</text>
 
                     <!-- Glycocalyx Trees -->
-                    <path d="M 120 110 L 120 70 L 105 50 M 120 70 L 135 50" stroke="#10b981" stroke-width="2.5" fill="none" />
-                    <circle cx="105" cy="50" r="4" fill="#10b981" />
-                    <circle cx="135" cy="50" r="4" fill="#10b981" />
-                    <text x="145" y="60" fill="#10b981" font-size="11" font-weight="700">Glycocalyx (Oligosaccharide)</text>
+                    <path d="M 110 120 L 110 82 L 95 68 M 110 82 L 125 68" stroke="#10b981" stroke-width="2.5" fill="none" />
+                    <circle cx="95" cy="68" r="4" fill="#10b981" />
+                    <circle cx="125" cy="68" r="4" fill="#10b981" />
+                    <text x="135" y="85" fill="#10b981" font-size="11" font-weight="700">Glycocalyx (Oligosaccharide)</text>
 
                     <!-- Outer Leaflet Bilayer -->
-                    <line x1="30" y1="120" x2="890" y2="120" stroke="var(--color-border, #cbd5e1)" stroke-width="1" />
+                    <line x1="30" y1="125" x2="910" y2="125" stroke="var(--color-border, #cbd5e1)" stroke-width="1" />
                     <g fill="#0284c7">
-                        <circle cx="60" cy="120" r="7" /><circle cx="80" cy="120" r="7" /><circle cx="100" cy="120" r="7" /><circle cx="120" cy="120" r="7" />
-                        <circle cx="140" cy="120" r="7" /><circle cx="160" cy="120" r="7" /><circle cx="180" cy="120" r="7" /><circle cx="200" cy="120" r="7" />
-                        <circle cx="340" cy="120" r="7" /><circle cx="360" cy="120" r="7" /><circle cx="380" cy="120" r="7" />
-                        <circle cx="520" cy="120" r="7" /><circle cx="540" cy="120" r="7" /><circle cx="560" cy="120" r="7" />
-                        <circle cx="720" cy="120" r="7" /><circle cx="740" cy="120" r="7" /><circle cx="760" cy="120" r="7" />
+                        <circle cx="50" cy="125" r="7" /><circle cx="70" cy="125" r="7" /><circle cx="90" cy="125" r="7" /><circle cx="110" cy="125" r="7" />
+                        <circle cx="130" cy="125" r="7" /><circle cx="150" cy="125" r="7" /><circle cx="170" cy="125" r="7" /><circle cx="190" cy="125" r="7" />
+                        <circle cx="340" cy="125" r="7" /><circle cx="360" cy="125" r="7" /><circle cx="380" cy="125" r="7" />
+                        <circle cx="530" cy="125" r="7" /><circle cx="550" cy="125" r="7" /><circle cx="570" cy="125" r="7" />
+                        <circle cx="720" cy="125" r="7" /><circle cx="740" cy="125" r="7" /><circle cx="760" cy="125" r="7" /><circle cx="780" cy="125" r="7" />
                     </g>
                     <!-- Tails Outer -->
-                    <path d="M 60 127 v 25 M 80 127 v 25 M 100 127 v 25 M 120 127 v 25 M 140 127 v 25 M 160 127 v 25 M 180 127 v 25 M 200 127 v 25 M 340 127 v 25 M 360 127 v 25 M 380 127 v 25 M 520 127 v 25 M 540 127 v 25 M 560 127 v 25 M 720 127 v 25 M 740 127 v 25 M 760 127 v 25" stroke="var(--color-border, #94a3b8)" stroke-width="2" />
+                    <path d="M 50 132 v 25 M 70 132 v 25 M 90 132 v 25 M 110 132 v 25 M 130 132 v 25 M 150 132 v 25 M 170 132 v 25 M 190 132 v 25 M 340 132 v 25 M 360 132 v 25 M 380 132 v 25 M 530 132 v 25 M 550 132 v 25 M 570 132 v 25 M 720 132 v 25 M 740 132 v 25 M 760 132 v 25 M 780 132 v 25" stroke="var(--color-border, #94a3b8)" stroke-width="2" />
 
                     <!-- Cholesterol wedges -->
-                    <rect x="150" y="132" width="6" height="20" rx="3" fill="#f59e0b" />
-                    <rect x="370" y="132" width="6" height="20" rx="3" fill="#f59e0b" />
-                    <text x="390" y="145" fill="#f59e0b" font-size="10" font-weight="700">Cholesterol</text>
+                    <rect x="150" y="137" width="6" height="20" rx="3" fill="#f59e0b" />
+                    <rect x="360" y="137" width="6" height="20" rx="3" fill="#f59e0b" />
+                    <rect x="550" y="137" width="6" height="20" rx="3" fill="#f59e0b" />
+                    <text x="375" y="152" fill="#f59e0b" font-size="10.5" font-weight="700">Cholesterol</text>
 
                     <!-- Hydrophobic core label -->
-                    <rect x="15" y="145" width="95" height="20" rx="4" fill="rgba(100, 116, 139, 0.15)" />
-                    <text x="20" y="159" fill="var(--color-text-muted, #64748b)" font-size="10" font-weight="700">Lõi Kỵ Nước (~3 nm)</text>
+                    <rect x="15" y="150" width="95" height="20" rx="4" fill="rgba(100, 116, 139, 0.15)" />
+                    <text x="20" y="164" fill="var(--color-text-muted, #64748b)" font-size="10" font-weight="700">Lõi Kỵ Nước (~3 nm)</text>
 
                     <!-- Tails Inner -->
-                    <path d="M 60 185 v -25 M 80 185 v -25 M 100 185 v -25 M 120 185 v -25 M 140 185 v -25 M 160 185 v -25 M 180 185 v -25 M 200 185 v -25 M 340 185 v -25 M 360 185 v -25 M 380 185 v -25 M 520 185 v -25 M 540 185 v -25 M 560 185 v -25 M 720 185 v -25 M 740 185 v -25 M 760 185 v -25" stroke="var(--color-border, #94a3b8)" stroke-width="2" />
+                    <path d="M 50 190 v -25 M 70 190 v -25 M 90 190 v -25 M 110 190 v -25 M 130 190 v -25 M 150 190 v -25 M 170 190 v -25 M 190 190 v -25 M 340 190 v -25 M 360 190 v -25 M 380 190 v -25 M 530 190 v -25 M 550 190 v -25 M 570 190 v -25 M 720 190 v -25 M 740 190 v -25 M 760 190 v -25 M 780 190 v -25" stroke="var(--color-border, #94a3b8)" stroke-width="2" />
                     <!-- Inner Leaflet Bilayer -->
                     <g fill="#ec4899">
-                        <circle cx="60" cy="190" r="7" /><circle cx="80" cy="190" r="7" /><circle cx="100" cy="190" r="7" /><circle cx="120" cy="190" r="7" />
-                        <circle cx="140" cy="190" r="7" /><circle cx="160" cy="190" r="7" /><circle cx="180" cy="190" r="7" /><circle cx="200" cy="190" r="7" />
-                        <circle cx="340" cy="190" r="7" /><circle cx="360" cy="190" r="7" /><circle cx="380" cy="190" r="7" />
-                        <circle cx="520" cy="190" r="7" /><circle cx="540" cy="190" r="7" /><circle cx="560" cy="190" r="7" />
-                        <circle cx="720" cy="190" r="7" /><circle cx="740" cy="190" r="7" /><circle cx="760" cy="190" r="7" />
+                        <circle cx="50" cy="195" r="7" /><circle cx="70" cy="195" r="7" /><circle cx="90" cy="195" r="7" /><circle cx="110" cy="195" r="7" />
+                        <circle cx="130" cy="195" r="7" /><circle cx="150" cy="195" r="7" /><circle cx="170" cy="195" r="7" /><circle cx="190" cy="195" r="7" />
+                        <circle cx="340" cy="195" r="7" /><circle cx="360" cy="195" r="7" /><circle cx="380" cy="195" r="7" />
+                        <circle cx="530" cy="195" r="7" /><circle cx="550" cy="195" r="7" /><circle cx="570" cy="195" r="7" />
+                        <circle cx="720" cy="195" r="7" /><circle cx="740" cy="195" r="7" /><circle cx="760" cy="195" r="7" /><circle cx="780" cy="195" r="7" />
                     </g>
-                    <text x="30" y="210" fill="#ec4899" font-size="11" font-weight="700">Lá trong: Giàu PE &amp; Phosphatidylserine (PS - tích điện âm)</text>
+                    <text x="30" y="218" fill="#ec4899" font-size="11" font-weight="700">Lá trong: Giàu PE &amp; Phosphatidylserine (PS - tích điện âm)</text>
 
                     <!-- Transmembrane Proteins / Translocases -->
                     <!-- Flippase -->
-                    <rect x="230" y="105" width="85" height="100" rx="8" fill="#8b5cf6" opacity="0.85" />
-                    <text x="245" y="145" fill="#ffffff" font-size="12" font-weight="700">FLIPPASE</text>
-                    <path d="M 272 115 L 272 180 M 265 170 L 272 180 L 279 170" stroke="#facc15" stroke-width="3" fill="none" />
-                    <text x="235" y="225" fill="#8b5cf6" font-size="11" font-weight="700">Ngoài → Trong (P-type)</text>
-                    <text x="245" y="240" fill="#ef4444" font-size="10" font-weight="700">Cần ATP → ADP</text>
+                    <rect x="225" y="110" width="85" height="100" rx="8" fill="#8b5cf6" opacity="0.9" />
+                    <text x="240" y="145" fill="#ffffff" font-size="12" font-weight="700">FLIPPASE</text>
+                    <path d="M 267 120 L 267 180 M 260 170 L 267 180 L 274 170" stroke="#facc15" stroke-width="3" fill="none" />
+                    <text x="228" y="232" fill="#8b5cf6" font-size="11" font-weight="700">Ngoài → Trong (P-type)</text>
+                    <text x="238" y="247" fill="#ef4444" font-size="10" font-weight="700">Cần ATP → ADP</text>
 
                     <!-- Floppase -->
-                    <rect x="420" y="105" width="85" height="100" rx="8" fill="#06b6d4" opacity="0.85" />
-                    <text x="430" y="145" fill="#ffffff" font-size="12" font-weight="700">FLOPPASE</text>
-                    <path d="M 462 180 L 462 115 M 455 125 L 462 115 L 469 125" stroke="#facc15" stroke-width="3" fill="none" />
-                    <text x="425" y="225" fill="#06b6d4" font-size="11" font-weight="700">Trong → Ngoài (ABC)</text>
-                    <text x="435" y="240" fill="#ef4444" font-size="10" font-weight="700">Cần ATP → ADP</text>
+                    <rect x="415" y="110" width="85" height="100" rx="8" fill="#06b6d4" opacity="0.9" />
+                    <text x="425" y="145" fill="#ffffff" font-size="12" font-weight="700">FLOPPASE</text>
+                    <path d="M 457 180 L 457 120 M 450 130 L 457 120 L 464 130" stroke="#facc15" stroke-width="3" fill="none" />
+                    <text x="420" y="232" fill="#06b6d4" font-size="11" font-weight="700">Trong → Ngoài (ABC)</text>
+                    <text x="430" y="247" fill="#ef4444" font-size="10" font-weight="700">Cần ATP → ADP</text>
 
                     <!-- Scramblase -->
-                    <rect x="610" y="105" width="95" height="100" rx="8" fill="#f59e0b" opacity="0.85" />
-                    <text x="618" y="145" fill="#ffffff" font-size="12" font-weight="700">SCRAMBLASE</text>
-                    <path d="M 645 120 L 645 175 M 640 165 L 645 175 L 650 165" stroke="#ffffff" stroke-width="2" fill="none" />
-                    <path d="M 670 175 L 670 120 M 665 130 L 670 120 L 675 130" stroke="#ffffff" stroke-width="2" fill="none" />
-                    <text x="615" y="225" fill="#f59e0b" font-size="11" font-weight="700">Đảo 2 chiều cân bằng</text>
-                    <text x="620" y="240" fill="#10b981" font-size="10" font-weight="700">Không ATP (Cần Ca²⁺)</text>
+                    <rect x="605" y="110" width="95" height="100" rx="8" fill="#f59e0b" opacity="0.9" />
+                    <text x="613" y="145" fill="#ffffff" font-size="12" font-weight="700">SCRAMBLASE</text>
+                    <path d="M 640 125 L 640 175 M 635 165 L 640 175 L 645 165" stroke="#ffffff" stroke-width="2" fill="none" />
+                    <path d="M 665 175 L 665 125 M 660 135 L 665 125 L 670 135" stroke="#ffffff" stroke-width="2" fill="none" />
+                    <text x="610" y="232" fill="#f59e0b" font-size="11" font-weight="700">Đảo 2 chiều cân bằng</text>
+                    <text x="615" y="247" fill="#10b981" font-size="10" font-weight="700">Không ATP (Cần Ca²⁺)</text>
 
                     <!-- Cytosol Background Layer -->
-                    <rect x="10" y="260" width="900" height="105" rx="10" fill="rgba(236, 72, 153, 0.05)" stroke="rgba(236, 72, 153, 0.2)" stroke-dasharray="4 4" />
-                    <text x="30" y="285" fill="#ec4899" font-size="14" font-weight="700">BÀO TƯƠNG (CYTOSOL)</text>
-                    <text x="30" y="310" fill="var(--color-text-muted, #64748b)" font-size="12">Nồng độ K⁺ cao (140 mM), Na⁺ thấp (10–12 mM), Ca²⁺ tự do cực thấp (10⁻⁷ M), pH 7.2 | Điện thế nghỉ bên trong âm tính (–70 mV)</text>
-                    <text x="30" y="335" fill="#ef4444" font-size="11" font-weight="700">Ý NGHĨA LÂM SÀNG: Khi Scramblase bị kích hoạt hoặc Flippase mất năng lượng, PS bị lộ ra lá ngoài ➔ Tín hiệu "Eat-Me" kích hoạt đại thực bào thực bào hồng cầu già / tế bào Apoptosis.</text>
+                    <rect x="10" y="265" width="920" height="115" rx="10" fill="rgba(236, 72, 153, 0.05)" stroke="rgba(236, 72, 153, 0.2)" stroke-dasharray="4 4" />
+                    <text x="30" y="290" fill="#ec4899" font-size="14" font-weight="700">BÀO TƯƠNG (CYTOSOL)</text>
+                    <text x="30" y="312" fill="var(--color-text-muted, #64748b)" font-size="11.5">Nồng độ K⁺ cao (140 mM), Na⁺ thấp (10–12 mM), Ca²⁺ tự do cực thấp (10⁻⁷ M), pH 7.2 | Điện thế nghỉ bên trong âm tính (–70 mV)</text>
+                    <text x="30" y="337" fill="#ef4444" font-size="11" font-weight="700">Ý NGHĨA LÂM SÀNG:</text>
+                    <text x="175" y="337" fill="var(--color-text, #334155)" font-size="11">Khi Scramblase bị kích hoạt hoặc Flippase mất năng lượng ➔ Phosphatidylserine (PS) bị lộ ra lá ngoài.</text>
+                    <text x="30" y="358" fill="#ef4444" font-size="11" font-weight="700">➔ Tín hiệu "Eat-Me":</text>
+                    <text x="175" y="358" fill="var(--color-text, #334155)" font-size="11">Kích hoạt đại thực bào nhận diện và thực bào hồng cầu già yếu / tế bào đi vào chu trình Apoptosis.</text>
                 </svg>
                 <div class="diagram-caption">Hình 1: Mô hình cấu trúc màng khảm động bất đối xứng và cơ chế vận chuyển lipid của Flippase (P-type), Floppase (ABC) và Scramblase.</div>
             </div>
@@ -725,7 +754,12 @@
                         Chỉ phụ thuộc gradient nồng độ hóa học từ ngoài (out) vào trong (in):
                     </p>
                     <div class="formula-card">
-                        ΔG<sub>trans</sub> = RT · ln([A]<sub>in</sub> / [A]<sub>out</sub>) = 2.303 RT · log₁₀([A]<sub>in</sub> / [A]<sub>out</sub>)
+                        <div class="formula-expr">
+                            ΔG<sub>trans</sub> = RT · ln([A]<sub>in</sub> / [A]<sub>out</sub>)
+                        </div>
+                        <div class="formula-desc">
+                            = 2.303 · RT · log₁₀([A]<sub>in</sub> / [A]<sub>out</sub>)
+                        </div>
                     </div>
                     <p style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin: 0;">
                         • Nếu [A]<sub>out</sub> &gt; [A]<sub>in</sub> ➔ [A]<sub>in</sub>/[A]<sub>out</sub> &lt; 1 ➔ <strong>ΔG &lt; 0</strong>: Vận chuyển tự phát xuôi dòng nồng độ (Khuếch tán thụ động).<br>
@@ -738,7 +772,12 @@
                         Chịu tác động đồng thời của gradient nồng độ hóa học và gradient điện thế màng (ΔΨ):
                     </p>
                     <div class="formula-card">
-                        ΔG<sub>trans</sub> = RT · ln([X]<sub>in</sub> / [X]<sub>out</sub>) + z · F · ΔΨ
+                        <div class="formula-expr">
+                            ΔG<sub>trans</sub> = RT · ln([X]<sub>in</sub> / [X]<sub>out</sub>) + z · F · ΔΨ
+                        </div>
+                        <div class="formula-desc">
+                            = 2.303 · RT · log₁₀([X]<sub>in</sub> / [X]<sub>out</sub>) + z · F · ΔΨ
+                        </div>
                     </div>
                     <p style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin: 0;">
                         • <em>z</em>: Điện tích ion (+1 cho Na⁺/K⁺, +2 cho Ca²⁺, –1 cho Cl⁻).<br>
