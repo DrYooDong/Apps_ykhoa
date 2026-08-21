@@ -190,15 +190,20 @@ Mỗi khi tạo bài học mới, **bắt buộc phải nạp thẻ bài học (
 
 ---
 
-### ✅ BƯỚC 7: QA CHECKLIST TRƯỚC KHÍ COMMIT
+### ✅ BƯỚC 7: QA CHECKLIST TRƯỚC KHI COMMIT
 
 - [ ] Đường dẫn tương đối chuẩn Cấp 4 (`../../../../css/...`, `../css/physio-shared.css`, `../../../../js/...`).
 - [ ] Thẻ `<html>` chứa `data-theme="light"`.
 - [ ] Thẻ `<meta name="description">` mô tả chuẩn SEO.
 - [ ] Không có thẻ `$` TeX raw hay `**` Markdown thừa.
+- [ ] **Toàn vẹn Sơ đồ SVG**:
+  - Không có bất kỳ thẻ HTML nào (`<em>`, `<strong>`, `<span>`, `<br>`, `<b>`, `<i>`) trong thẻ `<text>` của SVG.
+  - Sử dụng `<tspan font-weight="700">`, `<tspan font-style="italic">`, và `<tspan x="..." dy="...">` cho định dạng và xuống dòng.
+  - Đồng bộ `text-anchor="start"` cho các danh sách bullet point trong card (tránh lệch tọa độ `x`).
+- [ ] Chạy `node scratch/check_tags.js <file.html>` **PASSED** (0 lỗi HTML/SVG).
 - [ ] Các thẻ Heading H2/H3 hiển thị đúng style (có vạch xanh accent, nền gradient nhẹ).
 - [ ] Không hardcode màu sắc (dùng Design Tokens tương thích Dark Mode).
 - [ ] Đã nạp thẻ bài học mới và cập nhật badge đếm số lượng bài trong `co-che-benh-sinh.html`.
+- [ ] Đã đồng bộ với `src/content/pathophysiology/co-che-benh-sinh-view.ts`.
 - [ ] Đã đăng ký vào `src/content/pathophysiology/index.json`.
-- [ ] Cập nhật thông tin file mới vào `docs/FILE_MAP.md`.
 

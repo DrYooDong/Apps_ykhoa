@@ -29,7 +29,29 @@ Skill này hướng dẫn và quy chuẩn hóa việc tạo các sơ đồ trự
 
 ---
 
-## 🎨 2. Bảng Màu Design Tokens Bắt Buộc (CSS Variables)
+## 🛑 2. Quy Tắc Bất Di Bất Dịch Cho Thẻ Chữ & Định Dạng SVG (SVG Text Standards)
+
+1. **TUYỆT ĐỐI CẤM DÙNG THẺ HTML TRONG SVG `<text>`**:
+   - ❌ **CẤM**: `<strong>`, `<b>`, `<em>`, `<i>`, `<span>`, `<br>`, `<sub>`, `<sup>`, `<p>`, `<div>`.
+   - **Hậu quả**: Khiến parser XML của trình duyệt bị đứt quãng, phá hỏng DOM của SVG và làm toàn bộ văn bản sau đó bị văng ra ngoài HTML body thành raw text.
+2. **CHUẨN ĐỊNH DẠNG VĂN BẢN SVG BẰNG `<tspan>`**:
+   - **In đậm**: Dùng `<tspan font-weight="700">Chữ in đậm</tspan>`.
+   - **In nghiêng**: Dùng `<tspan font-style="italic">Chữ in nghiêng</tspan>`.
+   - **Xuống dòng nhiều hàng**:
+     ```html
+     <text x="450" y="235" text-anchor="middle" font-size="10" font-weight="700">
+       <tspan x="450">Dòng 1: Tiêu đề</tspan>
+       <tspan x="450" dy="14">Dòng 2: Nội dung phụ</tspan>
+     </text>
+     ```
+   - **Chỉ số dưới / trên**: Dùng `<tspan baseline-shift="sub" font-size="0.75em">2</tspan>`.
+3. **QUY TẮC CĂN LỀ (`text-anchor`) TRÁNH LỆCH TỌA ĐỘ**:
+   - **Tiêu đề ở tâm box**: Dùng `text-anchor="middle"` với `x` là tâm của box.
+   - **Danh sách gạch đầu dòng (Bullet points)**: Bắt buộc dùng `text-anchor="start"` với `x` là mép trái box (`box_x + 15px`). Tuyệt đối không dùng tọa độ tâm `x` cho các dòng bullet point khi không khai báo `text-anchor="middle"`.
+
+---
+
+## 🎨 3. Bảng Màu Design Tokens Bắt Buộc (CSS Variables)
 
 Tuyệt đối không dùng hardcode mã màu hex cố định. Mọi thuộc tính `fill`, `stroke`, `color` phải sử dụng biến CSS:
 
@@ -59,7 +81,7 @@ var(--color-success-hl) / var(--color-teal-hl) /* Nền sáng an toàn */
 
 ---
 
-## 📊 3. Bảng Chọn Dạng Sơ Đồ Theo Dữ Liệu Lâm Sàng (Routing Matrix)
+## 📊 4. Bảng Chọn Dạng Sơ Đồ Theo Dữ Liệu Lâm Sàng (Routing Matrix)
 
 | Tình huống lâm sàng | Chọn loại Sơ đồ | Cấu trúc SVG đề xuất |
 | :--- | :--- | :--- |
@@ -72,40 +94,13 @@ var(--color-success-hl) / var(--color-teal-hl) /* Nền sáng an toàn */
 
 ---
 
-## 📐 4. Hướng Dẫn Code Mẫu SVG Chuẩn
-
-### A. Template Làn Bơi (Swimlane)
-```html
-<svg viewBox="0 0 960 480" width="100%" class="med-svg" xmlns="http://www.w3.org/2000/svg">
-  <rect width="960" height="480" fill="var(--color-surface)" rx="12" stroke="var(--color-border)" stroke-width="1"/>
-  <!-- Lane Header -->
-  <rect x="20" y="30" width="160" height="95" fill="var(--color-surface-2)" stroke="var(--color-divider)" rx="8"/>
-  <text x="100" y="70" font-size="13" font-weight="700" fill="var(--color-text)" text-anchor="middle">🚑 KÍP CẤP CỨU</text>
-  <!-- Direct Node -->
-  <rect x="200" y="45" width="140" height="65" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.5"/>
-  <text x="210" y="70" font-size="11" font-weight="700" fill="var(--color-primary)">BƯỚC 1: TIẾP NHẬN</text>
-</svg>
-```
-
-### B. Template Ma trận Phân tầng Nguy cơ 2×2 (Quadrant)
-```html
-<svg viewBox="0 0 800 500" width="100%" class="med-svg" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="500" fill="var(--color-surface)" rx="12" stroke="var(--color-border)"/>
-  <!-- Top-Right: Cấp cứu tối khẩn -->
-  <rect x="420" y="40" width="340" height="200" fill="var(--color-danger-hl)" fill-opacity="0.3" rx="8" stroke="var(--color-danger)" stroke-width="1.5"/>
-  <text x="440" y="70" font-size="13" font-weight="800" fill="var(--color-danger)">🚨 CẤP CỨU TỐI KHẨN</text>
-  <!-- Trục phân cách -->
-  <line x1="60" y1="250" x2="760" y2="250" stroke="var(--color-border)" stroke-width="2"/>
-  <line x1="410" y1="40" x2="410" y2="460" stroke="var(--color-border)" stroke-width="2"/>
-</svg>
-```
-
----
-
 ## 🛑 5. Checklist Kiểm Tra Chất Lượng Trước Khi Hoàn Tất
 
 - [ ] Sơ đồ nằm trong thẻ `<svg viewBox="0 0 W H" width="100%">` đảm bảo co giãn 100% trên Mobile.
-- [ ] Không có mã màu hex hardcoded (toàn bộ dùng `var(--color-...)`).
+- [ ] Không chứa bất kỳ thẻ HTML nào (`<em>`, `<strong>`, `<span>`, `<br>`, `<b>`, `<i>`, `<p>`, `<div>`) bên trong `<svg>`.
+- [ ] Toàn bộ định dạng dùng `<tspan>` với `font-weight`, `font-style` và `dy`.
+- [ ] Các dòng gạch đầu dòng trong box được căn lề đồng bộ `text-anchor="start"`.
+- [ ] Không có mã màu hex hardcoded (toàn bộ dùng `var(--color-...)` hoặc CSS tokens).
 - [ ] Đã kiểm tra tính rõ ràng ở cả 2 chế độ Sáng (Light) và Tối (Dark Mode).
 - [ ] Không có đường nối xiên chéo cắt ngang qua nội dung của node khác.
-- [ ] Chạy lệnh `node scratch/check_tags.js <file.html>` để đảm bảo không lỗi thẻ lồng nhau.
+- [ ] Chạy lệnh `node scratch/check_tags.js <file.html>` **PASSED** (0 lỗi HTML và SVG).

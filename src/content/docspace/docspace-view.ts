@@ -46,85 +46,289 @@ export const DSP_NAV_ITEMS: DocSpaceNavItem[] = DSP_NAV_SECTIONS.flatMap(s => s.
 
 // ─── Profile Selector Screen ─────────────────────────────────────
 
+// ─── Profile Selector Screen (Medical OS Login & Onboarding) ──────
+
 export function renderProfileSelector(): string {
   const profiles = getAllProfiles();
-  const profileCards = profiles.length
+  const hasProfiles = profiles.length > 0;
+
+  const profileCardsHtml = hasProfiles
     ? profiles.map(p => `
-        <button class="dsp-profile-card" data-profile-id="${p.id}" id="select-profile-${p.id}">
-          <div class="dsp-avatar">${getInitials(p.displayName)}</div>
-          <div class="dsp-profile-info">
-            <div class="dsp-profile-name">${escapeHtml(p.displayName)}</div>
-            <div class="dsp-profile-meta">${escapeHtml(p.specialty || 'Bác sĩ Lâm sàng')} · <code>${escapeHtml(p.id)}</code></div>
-            <div class="dsp-profile-date"><i class="fa-solid fa-clock-rotate-left"></i> Hoạt động ${formatRelativeDate(p.lastActiveAt)}</div>
-          </div>
-          <i class="fa-solid fa-arrow-right-to-bracket dsp-profile-arrow"></i>
-        </button>
+        <div class="dsp-profile-card-wrapper" id="profile-card-wrap-${p.id}">
+          <button type="button" class="dsp-profile-card" data-profile-id="${escapeHtml(p.id)}" id="select-profile-${escapeHtml(p.id)}">
+            <div class="dsp-avatar dsp-avatar--profile">${getInitials(p.displayName)}</div>
+            <div class="dsp-profile-info">
+              <div class="dsp-profile-name">${escapeHtml(p.displayName)}</div>
+              <div class="dsp-profile-meta">
+                <span class="dsp-spec-badge"><i class="fa-solid fa-user-doctor"></i> ${escapeHtml(p.specialty || 'Bác sĩ Lâm sàng')}</span>
+                <code class="dsp-id-tag"><i class="fa-solid fa-key"></i> ${escapeHtml(p.id)}</code>
+              </div>
+              <div class="dsp-profile-date">
+                <i class="fa-solid fa-clock-rotate-left"></i> Hoạt động: ${formatRelativeDate(p.lastActiveAt)}
+              </div>
+            </div>
+            <div class="dsp-profile-arrow-wrap">
+              <i class="fa-solid fa-arrow-right-to-bracket dsp-profile-arrow" title="Truy cập Workspace"></i>
+            </div>
+          </button>
+          <button type="button" class="dsp-profile-del-btn" data-delete-profile-id="${escapeHtml(p.id)}" data-profile-name="${escapeHtml(p.displayName)}" title="Xóa hồ sơ này khỏi trình duyệt">
+            <i class="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
       `).join('')
-    : `<div class="dsp-empty-profiles">
-         <i class="fa-solid fa-user-doctor"></i>
-         <p>Chưa có hồ sơ bác sĩ nào. Tạo hồ sơ mới để mở Không gian làm việc DocSpace.</p>
-       </div>`;
+    : `
+      <div class="dsp-empty-welcome-card">
+        <div class="dsp-empty-welcome-icon">
+          <i class="fa-solid fa-notes-medical"></i>
+        </div>
+        <h3 class="dsp-empty-welcome-title">Chào mừng Quý Bác sĩ!</h3>
+        <p class="dsp-empty-welcome-desc">Chưa có hồ sơ nào trên trình duyệt này. Hãy khởi tạo hồ sơ cá nhân để mở toàn bộ tính năng của <strong>DocSpace Medical OS</strong>.</p>
+        
+        <div class="dsp-starter-presets-box">
+          <div class="dsp-starter-presets-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Hoặc chọn nhanh mẫu Bác sĩ:</div>
+          <div class="dsp-starter-chips-grid">
+            <button type="button" class="dsp-preset-chip" data-preset-id="BS_NoiKhoa_Demo" data-preset-name="BS. Nội Tổng Quát" data-preset-spec="Nội khoa Tổng quát">
+              <i class="fa-solid fa-stethoscope"></i> BS. Nội khoa
+            </button>
+            <button type="button" class="dsp-preset-chip" data-preset-id="BS_CapCuuICU_Demo" data-preset-name="BS. Cấp Cứu - Hồi Sức" data-preset-spec="Cấp cứu &amp; Hồi sức tích cực (ICU)">
+              <i class="fa-solid fa-truck-medical"></i> BS. Cấp cứu ICU
+            </button>
+            <button type="button" class="dsp-preset-chip" data-preset-id="BS_NhiKhoa_Demo" data-preset-name="BS. Nhi Khoa Lâm Sàng" data-preset-spec="Nhi khoa">
+              <i class="fa-solid fa-baby"></i> BS. Nhi khoa
+            </button>
+            <button type="button" class="dsp-preset-chip" data-preset-id="BS_TimMach_Demo" data-preset-name="BS. Tim Mạch Lâm Sàng" data-preset-spec="Tim mạch Can thiệp">
+              <i class="fa-solid fa-heart-pulse"></i> BS. Tim mạch
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
 
   return `
     <div class="dsp-profile-selector" id="dspProfileSelector">
-      <div class="dsp-profile-selector-inner">
-        <!-- Header -->
-        <div class="dsp-selector-header">
-          <div class="dsp-logo-mark">
-            <i class="fa-solid fa-stethoscope"></i>
-          </div>
-          <h1 class="dsp-selector-title">DocSpace Medical OS</h1>
-          <p class="dsp-selector-subtitle">Hệ sinh thái Bác sĩ Lâm sàng — Chọn hồ sơ để truy cập Workspace</p>
-        </div>
+      <!-- Background Ambient Blobs -->
+      <div class="dsp-ambient-blob dsp-ambient-blob--1"></div>
+      <div class="dsp-ambient-blob dsp-ambient-blob--2"></div>
+      <div class="dsp-ambient-blob dsp-ambient-blob--3"></div>
 
-        <!-- Existing profiles -->
-        ${profiles.length > 0 ? `
-          <div class="dsp-profiles-list">
-            <div class="dsp-section-label"><i class="fa-solid fa-address-card"></i> Hồ sơ cá nhân của bạn</div>
-            ${profileCards}
+      <div class="dsp-selector-container">
+        
+        <!-- LEFT SHOWCASE PANE (Medical OS Highlights) -->
+        <div class="dsp-selector-brand-pane">
+          <div class="dsp-brand-top">
+            <div class="dsp-logo-mark-wrap">
+              <div class="dsp-logo-mark">
+                <i class="fa-solid fa-stethoscope"></i>
+              </div>
+              <span class="dsp-pulse-ring"></span>
+            </div>
+            <div class="dsp-brand-badges">
+              <span class="dsp-badge-pill"><i class="fa-solid fa-shield-halved"></i> 100% Offline-First</span>
+              <span class="dsp-badge-pill dsp-badge-pill--accent"><i class="fa-solid fa-laptop-medical"></i> Clinical OS v2.4</span>
+            </div>
+            <h1 class="dsp-brand-title">DocSpace Medical OS</h1>
+            <p class="dsp-brand-tagline">Hệ điều hành Lâm sàng Toàn diện &amp; Trợ lý Ra Quyết định Y khoa (CDSS)</p>
           </div>
-        ` : profileCards}
 
-        <!-- Create new -->
-        <div class="dsp-create-profile-section">
-          <div class="dsp-section-label"><i class="fa-solid fa-user-plus"></i> ${profiles.length > 0 ? 'Hoặc tạo hồ sơ mới' : 'Tạo hồ sơ mới'}</div>
-          <form class="dsp-create-form" id="dspCreateProfileForm" novalidate>
-            <div class="dsp-form-row">
-              <div class="dsp-form-group">
-                <label class="dsp-label" for="dspNewId">ID Hồ sơ Bác sĩ <span class="dsp-required">*</span></label>
-                <input class="dsp-input" type="text" id="dspNewId" placeholder="VD: BS_NguyenVanA_108"
-                  pattern="[A-Za-z0-9_-]+" maxlength="40" required
-                  title="Chỉ dùng chữ, số, _ hoặc -" />
-                <span class="dsp-hint">Định danh duy nhất dùng lưu trữ LocalStorage / IndexedDB</span>
+          <!-- Clinical Highlights Grid -->
+          <div class="dsp-brand-features">
+            <div class="dsp-brand-feat-card">
+              <div class="dsp-feat-icon" style="background: rgba(14, 165, 233, 0.15); color: #0284c7;">
+                <i class="fa-solid fa-notes-medical"></i>
               </div>
-              <div class="dsp-form-group">
-                <label class="dsp-label" for="dspNewName">Tên hiển thị <span class="dsp-required">*</span></label>
-                <input class="dsp-input" type="text" id="dspNewName" placeholder="VD: BS. CK1. Nguyễn Văn A"
-                  maxlength="60" required />
-              </div>
-              <div class="dsp-form-group">
-                <label class="dsp-label" for="dspNewSpecialty">Chuyên khoa / Khoa phòng</label>
-                <input class="dsp-input" type="text" id="dspNewSpecialty" placeholder="VD: Cấp cứu ICU, Tim mạch, Nhi khoa..." maxlength="50" />
+              <div class="dsp-feat-content">
+                <strong>Bệnh án SOAP &amp; SBAR</strong>
+                <p>Chuẩn hóa hồ sơ lâm sàng, ghi chú ca bệnh và bàn giao tua trực an toàn, khoa học.</p>
               </div>
             </div>
-            <button class="dsp-btn dsp-btn-primary" type="submit" id="dspCreateBtn" style="width:100%; justify-content:center; padding: 0.75rem 1rem; margin-top: 0.5rem; font-size: 0.9rem; font-weight:800;">
-              <i class="fa-solid fa-right-to-bracket"></i> Khởi tạo Hồ sơ &amp; Vào Workspace
-            </button>
-          </form>
+
+            <div class="dsp-brand-feat-card">
+              <div class="dsp-feat-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">
+                <i class="fa-solid fa-calculator"></i>
+              </div>
+              <div class="dsp-feat-content">
+                <strong>40+ Thang điểm &amp; Phác đồ EBM</strong>
+                <p>Khí máu động mạch ABG Studio, eGFR, Thận học, Cấp cứu và Tương tác Thuốc tự động.</p>
+              </div>
+            </div>
+
+            <div class="dsp-brand-feat-card">
+              <div class="dsp-feat-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <div class="dsp-feat-content">
+                <strong>Bảo mật Thiết bị Tuyệt đối</strong>
+                <p>Dữ liệu lưu trữ độc lập trên máy cục bộ, không đẩy lên máy chủ đám mây, bảo mật PHI.</p>
+              </div>
+            </div>
+
+            <div class="dsp-brand-feat-card">
+              <div class="dsp-feat-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">
+                <i class="fa-solid fa-file-medical"></i>
+              </div>
+              <div class="dsp-feat-content">
+                <strong>Chuẩn Y tế HL7 FHIR R4</strong>
+                <p>Dễ dàng sao lưu, nạp và trích xuất dữ liệu chuẩn hóa theo tiêu chuẩn quốc tế.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Trust Indicator -->
+          <div class="dsp-brand-footer">
+            <div class="dsp-status-live">
+              <span class="dsp-status-dot"></span>
+              <span>Hệ thống sẵn sàng • Độc lập mạng Bệnh viện</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Import -->
-        <div class="dsp-import-section">
-          <label class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspImportLabel" for="dspImportFile" style="cursor:pointer;">
-            <i class="fa-solid fa-file-import"></i> Nạp từ file Backup .JSON
-          </label>
-          <input type="file" id="dspImportFile" accept=".json" style="display:none" />
+        <!-- RIGHT ACTION PANE (Login / Profile Management Card) -->
+        <div class="dsp-selector-action-card">
           
-          <label class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspImportFhirLabel" for="dspImportFhirFile" style="cursor:pointer;">
-            <i class="fa-solid fa-file-medical"></i> Nạp chuẩn HL7 FHIR R4
-          </label>
-          <input type="file" id="dspImportFhirFile" accept=".json" style="display:none" />
+          <div class="dsp-action-card-header">
+            <div class="dsp-card-title-group">
+              <h2 class="dsp-card-title">Truy cập Không gian làm việc</h2>
+              <p class="dsp-card-desc">Đăng nhập tài khoản Bác sĩ hoặc khởi tạo hồ sơ lưu trữ mới</p>
+            </div>
+          </div>
+
+          ${hasProfiles ? `
+            <!-- Tab Switcher when profiles exist -->
+            <div class="dsp-auth-tabs">
+              <button type="button" class="dsp-auth-tab active" data-tab-target="tab-profiles" id="btnTabProfiles">
+                <i class="fa-solid fa-user-doctor"></i> Chọn Hồ sơ Bác sĩ <span class="dsp-tab-count">${profiles.length}</span>
+              </button>
+              <button type="button" class="dsp-auth-tab" data-tab-target="tab-create" id="btnTabCreate">
+                <i class="fa-solid fa-user-plus"></i> Tạo Hồ sơ mới
+              </button>
+            </div>
+          ` : ''}
+
+          <!-- TAB 1: Existing Profiles -->
+          <div class="dsp-tab-pane ${hasProfiles ? 'dsp-tab-pane--active' : ''}" id="paneProfiles" style="${hasProfiles ? '' : 'display:none;'}">
+            <div class="dsp-profiles-list">
+              <div class="dsp-list-toolbar">
+                <div class="dsp-section-label"><i class="fa-solid fa-address-card"></i> Danh sách Hồ sơ hiện có (${profiles.length})</div>
+              </div>
+              <div class="dsp-profile-cards-grid">
+                ${profileCardsHtml}
+              </div>
+              <button type="button" class="dsp-btn dsp-btn-outline dsp-btn-sm dsp-btn-switch-to-create" id="btnSwitchToCreate">
+                <i class="fa-solid fa-plus"></i> Thêm tài khoản Bác sĩ mới
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB 2: Create Profile Form -->
+          <div class="dsp-tab-pane ${!hasProfiles ? 'dsp-tab-pane--active' : ''}" id="paneCreateProfile" style="${!hasProfiles ? '' : 'display:none;'}">
+            
+            ${!hasProfiles ? profileCardsHtml : ''}
+
+            <form class="dsp-create-form" id="dspCreateProfileForm" novalidate>
+              <div class="dsp-form-header-badge">
+                <div class="dsp-avatar dsp-avatar--preview" id="dspLiveAvatarPreview">BS</div>
+                <div class="dsp-form-header-text">
+                  <div class="dsp-form-header-title">Thiết lập Hồ sơ Bác sĩ</div>
+                  <div class="dsp-form-header-sub">Hồ sơ sẽ phân vùng riêng biệt dữ liệu ca bệnh, sổ tay SOAP và checklist trực.</div>
+                </div>
+              </div>
+
+              <!-- Form Inputs -->
+              <div class="dsp-form-fields">
+                
+                <!-- Display Name -->
+                <div class="dsp-form-group">
+                  <label class="dsp-label" for="dspNewName">
+                    <i class="fa-solid fa-user-doctor"></i> Họ và Tên Bác sĩ <span class="dsp-required">*</span>
+                  </label>
+                  <div class="dsp-input-wrap">
+                    <input class="dsp-input dsp-input--with-icon" type="text" id="dspNewName"
+                      placeholder="VD: BS. CK1. Nguyễn Văn A" maxlength="60" required autocomplete="off" />
+                  </div>
+                  <span class="dsp-hint">Tên sẽ hiển thị trên tiêu đề bệnh án và phiếu bàn giao SBAR.</span>
+                </div>
+
+                <!-- Profile ID -->
+                <div class="dsp-form-group">
+                  <div class="dsp-label-row">
+                    <label class="dsp-label" for="dspNewId">
+                      <i class="fa-solid fa-id-badge"></i> ID Hồ sơ Bác sĩ <span class="dsp-required">*</span>
+                    </label>
+                    <button type="button" class="dsp-btn-magic-id" id="dspBtnAutoId" title="Tự động sinh ID từ tên hiển thị">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i> Tạo ID tự động
+                    </button>
+                  </div>
+                  <div class="dsp-input-wrap">
+                    <input class="dsp-input dsp-input--with-icon" type="text" id="dspNewId"
+                      placeholder="VD: BS_NguyenVanA_108"
+                      pattern="[A-Za-z0-9_-]+" maxlength="40" required
+                      title="Chỉ dùng chữ không dấu, số, _ hoặc -" autocomplete="off" />
+                  </div>
+                  <span class="dsp-hint">Khóa định danh phân vùng lưu trữ LocalStorage / IndexedDB.</span>
+                </div>
+
+                <!-- Specialty -->
+                <div class="dsp-form-group">
+                  <label class="dsp-label" for="dspNewSpecialty">
+                    <i class="fa-solid fa-hospital-user"></i> Chuyên khoa / Khoa phòng
+                  </label>
+                  <div class="dsp-input-wrap">
+                    <input class="dsp-input dsp-input--with-icon" type="text" id="dspNewSpecialty"
+                      placeholder="VD: Nội tổng quát, Cấp cứu ICU, Tim mạch, Nhi..." maxlength="60" autocomplete="off" />
+                  </div>
+                  
+                  <!-- Specialty Quick Chips -->
+                  <div class="dsp-specialty-chips-wrap">
+                    <span class="dsp-chips-caption">Gợi ý nhanh:</span>
+                    <div class="dsp-specialty-chips">
+                      <button type="button" class="dsp-spec-chip" data-spec-val="Nội Tổng Quát">Nội Tổng Quát</button>
+                      <button type="button" class="dsp-spec-chip" data-spec-val="Cấp cứu &amp; Hồi sức ICU">Cấp cứu - ICU</button>
+                      <button type="button" class="dsp-spec-chip" data-spec-val="Tim Mạch Can Thiệp">Tim Mạch</button>
+                      <button type="button" class="dsp-spec-chip" data-spec-val="Nhi Khoa">Nhi Khoa</button>
+                      <button type="button" class="dsp-spec-chip" data-spec-val="Ngoại Khoa">Ngoại Khoa</button>
+                      <button type="button" class="dsp-spec-chip" data-spec-val="Hồi Sức Tích Cực">HSTC</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Submit Button -->
+              <button class="dsp-btn dsp-btn-primary dsp-btn-submit" type="submit" id="dspCreateBtn">
+                <i class="fa-solid fa-right-to-bracket"></i> Khởi tạo Hồ sơ &amp; Mở Workspace
+              </button>
+            </form>
+          </div>
+
+          <!-- Bottom Backup & Import Tools -->
+          <div class="dsp-import-section">
+            <div class="dsp-import-divider">
+              <span>hoặc nạp dữ liệu có sẵn</span>
+            </div>
+            
+            <div class="dsp-import-buttons">
+              <label class="dsp-import-btn" id="dspImportLabel" for="dspImportFile">
+                <i class="fa-solid fa-file-import"></i>
+                <div class="dsp-import-btn-text">
+                  <strong>Nạp File Backup .JSON</strong>
+                  <small>Khôi phục từ bản xuất trước</small>
+                </div>
+              </label>
+              <input type="file" id="dspImportFile" accept=".json" style="display:none" />
+              
+              <label class="dsp-import-btn" id="dspImportFhirLabel" for="dspImportFhirFile">
+                <i class="fa-solid fa-file-medical"></i>
+                <div class="dsp-import-btn-text">
+                  <strong>Nạp Chuẩn HL7 FHIR R4</strong>
+                  <small>Tương thích Bundle JSON</small>
+                </div>
+              </label>
+              <input type="file" id="dspImportFhirFile" accept=".json" style="display:none" />
+            </div>
+          </div>
+
         </div>
+
       </div>
     </div>
   `;

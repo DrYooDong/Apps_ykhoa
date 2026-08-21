@@ -6,12 +6,13 @@
 import { router } from '../../core/router';
 import {
   getActiveProfile, getAllProfiles, createProfile, setActiveProfile,
+  deleteProfile,
   exportProfile, importProfile, exportProfileToFHIR, importProfileFromFHIR,
   getProfileSnapshot, safeStorageGet, safeStorageRemove
 } from './storage';
 import {
   renderProfileSelector, renderDashboard, renderSidebar,
-  DSP_NAV_ITEMS, renderFeatureUnavailable
+  DSP_NAV_ITEMS, renderFeatureUnavailable, getInitials
 } from './docspace-view';
 import { renderSBARView, mountSBARController } from './features/sbar-view';
 import { renderSoapView, mountSoapController } from './features/soap-view';
@@ -150,28 +151,159 @@ async function requireProfile(cb: (profileId: string) => Promise<void> | void): 
 
 // ─── Profile Selector Controller ─────────────────────────────────
 
+// ─── Profile Selector Controller ─────────────────────────────────
+
 function mountProfileSelectorController(): void {
-  // Select existing profile
-  document.getElementById('dspProfileSelector')?.addEventListener('click', (e) => {
-    const btn = (e.target as HTMLElement).closest('[data-profile-id]') as HTMLElement;
-    if (!btn) return;
-    const id = btn.getAttribute('data-profile-id') || '';
-    setActiveProfile(id);
-    window.location.hash = '#/docspace';
+  const container = document.getElementById('dspProfileSelector');
+  if (!container) return;
+
+  const idInput = document.getElementById('dspNewId') as HTMLInputElement | null;
+  const nameInput = document.getElementById('dspNewName') as HTMLInputElement | null;
+  const specialtyInput = document.getElementById('dspNewSpecialty') as HTMLInputElement | null;
+  const liveAvatar = document.getElementById('dspLiveAvatarPreview') as HTMLElement | null;
+
+  // Helper to generate a clean doctor ID slug from name
+  const generateDoctorSlug = (name: string): string => {
+    if (!name) return '';
+    const noAccents = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const clean = noAccents
+      .replace(/^(BS\.|TS\.|GS\.|PGS\.|ThS\.|BSCK1\.|BSCK2\.|BS\s*CK[12]\.?)\s*/i, '')
+      .trim()
+      .replace(/[^a-zA-Z0-9]/g, '');
+    return clean ? `BS_${clean}` : '';
+  };
+
+  // 1. Tab Switching (when profiles exist)
+  const btnTabProfiles = document.getElementById('btnTabProfiles');
+  const btnTabCreate = document.getElementById('btnTabCreate');
+  const btnSwitchToCreate = document.getElementById('btnSwitchToCreate');
+  const paneProfiles = document.getElementById('paneProfiles');
+  const paneCreate = document.getElementById('paneCreateProfile');
+
+  const switchTab = (tab: 'profiles' | 'create') => {
+    if (tab === 'profiles') {
+      btnTabProfiles?.classList.add('active');
+      btnTabCreate?.classList.remove('active');
+      paneProfiles?.classList.add('dsp-tab-pane--active');
+      if (paneProfiles) paneProfiles.style.display = '';
+      paneCreate?.classList.remove('dsp-tab-pane--active');
+      if (paneCreate) paneCreate.style.display = 'none';
+    } else {
+      btnTabCreate?.classList.add('active');
+      btnTabProfiles?.classList.remove('active');
+      paneCreate?.classList.add('dsp-tab-pane--active');
+      if (paneCreate) paneCreate.style.display = '';
+      paneProfiles?.classList.remove('dsp-tab-pane--active');
+      if (paneProfiles) paneProfiles.style.display = 'none';
+      nameInput?.focus();
+    }
+  };
+
+  btnTabProfiles?.addEventListener('click', () => switchTab('profiles'));
+  btnTabCreate?.addEventListener('click', () => switchTab('create'));
+  btnSwitchToCreate?.addEventListener('click', () => switchTab('create'));
+
+  // 2. Select or Delete existing profile
+  container.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement;
+
+    // Check if delete profile button was clicked
+    const delBtn = target.closest('[data-delete-profile-id]') as HTMLElement | null;
+    if (delBtn) {
+      e.stopPropagation();
+      e.preventDefault();
+      const profileId = delBtn.getAttribute('data-delete-profile-id') || '';
+      const profileName = delBtn.getAttribute('data-profile-name') || profileId;
+
+      const confirmed = window.confirm(`❓ Bạn có chắc chắn muốn xóa hồ sơ "${profileName}" (${profileId}) khỏi trình duyệt?\n\nToàn bộ dữ liệu bệnh án và cài đặt của hồ sơ này sẽ được giải phóng an toàn.`);
+      if (confirmed) {
+        deleteProfile(profileId);
+        // Re-render profile selector
+        await mountDocSpace(renderProfileSelector());
+        mountProfileSelectorController();
+      }
+      return;
+    }
+
+    // Check if profile card was clicked to enter workspace
+    const profileBtn = target.closest('[data-profile-id]') as HTMLElement | null;
+    if (profileBtn) {
+      const id = profileBtn.getAttribute('data-profile-id') || '';
+      setActiveProfile(id);
+      window.location.hash = '#/docspace';
+      return;
+    }
+
+    // Check if starter preset chip was clicked
+    const presetChip = target.closest('[data-preset-id]') as HTMLElement | null;
+    if (presetChip) {
+      const presetId = presetChip.getAttribute('data-preset-id') || '';
+      const presetName = presetChip.getAttribute('data-preset-name') || '';
+      const presetSpec = presetChip.getAttribute('data-preset-spec') || '';
+
+      if (nameInput) nameInput.value = presetName;
+      if (idInput) idInput.value = presetId;
+      if (specialtyInput) specialtyInput.value = presetSpec;
+      if (liveAvatar) liveAvatar.textContent = getInitials(presetName);
+
+      // Scroll to submit button and highlight
+      const submitBtn = document.getElementById('dspCreateBtn');
+      submitBtn?.focus();
+      return;
+    }
+
+    // Check if specialty chip was clicked
+    const specChip = target.closest('[data-spec-val]') as HTMLElement | null;
+    if (specChip) {
+      const specVal = specChip.getAttribute('data-spec-val') || '';
+      if (specialtyInput) {
+        specialtyInput.value = specVal;
+        specialtyInput.focus();
+      }
+      return;
+    }
   });
 
-  // Create new profile form
+  // 3. Realtime Avatar Preview & Auto ID generation on Name input
+  nameInput?.addEventListener('input', () => {
+    const val = nameInput.value.trim();
+    if (liveAvatar) {
+      liveAvatar.textContent = val ? getInitials(val) : 'BS';
+    }
+  });
+
+  // 4. Auto-ID Generator Button
+  document.getElementById('dspBtnAutoId')?.addEventListener('click', () => {
+    const nameVal = nameInput?.value.trim() || '';
+    if (!nameVal) {
+      nameInput?.focus();
+      return;
+    }
+    const autoSlug = generateDoctorSlug(nameVal);
+    if (idInput && autoSlug) {
+      idInput.value = autoSlug;
+      idInput.focus();
+    }
+  });
+
+  // 5. Create new profile form submission
   document.getElementById('dspCreateProfileForm')?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const id = (document.getElementById('dspNewId') as HTMLInputElement).value.trim();
-    const name = (document.getElementById('dspNewName') as HTMLInputElement).value.trim();
-    const specialty = (document.getElementById('dspNewSpecialty') as HTMLInputElement).value.trim();
+    const id = idInput?.value.trim() || '';
+    const name = nameInput?.value.trim() || '';
+    const specialty = specialtyInput?.value.trim() || '';
 
-    if (!id || !name) return;
+    if (!id || !name) {
+      alert('Vui lòng nhập đầy đủ Họ tên và ID hồ sơ Bác sĩ.');
+      if (!name) nameInput?.focus();
+      else if (!id) idInput?.focus();
+      return;
+    }
 
     const existing = getAllProfiles().find(p => p.id === id);
     if (existing) {
-      alert(`ID "${id}" đã tồn tại. Chọn ID khác hoặc đăng nhập vào hồ sơ đó.`);
+      alert(`ID "${id}" đã tồn tại trên trình duyệt này. Vui lòng chọn ID khác hoặc chọn đăng nhập hồ sơ đó.`);
+      idInput?.focus();
       return;
     }
 
@@ -179,29 +311,29 @@ function mountProfileSelectorController(): void {
     window.location.hash = '#/docspace';
   });
 
-  // Import from file
+  // 6. Import from JSON file
   document.getElementById('dspImportFile')?.addEventListener('change', async (e) => {
     const file = (e.target as HTMLInputElement).files?.[0];
     if (!file) return;
     try {
       const profile = await importProfile(file);
-      alert(`✅ Đã nhập hồ sơ: ${profile.displayName}`);
+      alert(`✅ Đã nạp thành công hồ sơ: ${profile.displayName}`);
       window.location.hash = '#/docspace';
     } catch (err: any) {
-      alert(`❌ Lỗi: ${err.message}`);
+      alert(`❌ Lỗi nhập file: ${err.message}`);
     }
   });
 
-  // Import from FHIR file
+  // 7. Import from FHIR file
   document.getElementById('dspImportFhirFile')?.addEventListener('change', async (e) => {
     const file = (e.target as HTMLInputElement).files?.[0];
     if (!file) return;
     try {
       await importProfileFromFHIR(file);
-      alert(`✅ Đã nạp dữ liệu từ file FHIR thành công!`);
+      alert(`✅ Đã nạp dữ liệu chuẩn HL7 FHIR R4 thành công!`);
       window.location.hash = '#/docspace';
     } catch (err: any) {
-      alert(`❌ Lỗi nhập FHIR: ${err.message}`);
+      alert(`❌ Lỗi nhập chuẩn FHIR: ${err.message}`);
     }
   });
 }
