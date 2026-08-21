@@ -41,6 +41,7 @@ src/content/basic-medical/
 ├── css/                             # Stylesheets chuyên biệt của phân hệ
 ├── pathophysiology-cases/           # Kho bài viết Sinh lý bệnh lâm sàng (.html)
 ├── physiology/                      # Các bài học Sinh lý học cơ quan chi tiết (.html)
+├── epidemiology/                    # Kho bài viết Dịch tễ học bệnh lý & Y tế công cộng (.html)
 ├── index.ts                         # Main Barrel Entry Point cho basic-medical
 ├── index.json                       # Chỉ mục nạp động qua ContentLoader
 ├── index.md                         # Cổng thông tin điều hướng chính

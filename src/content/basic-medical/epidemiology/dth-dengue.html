@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dịch tễ học Sốt xuất huyết Dengue (DENV): Phân tích chi tiết tam giác dịch tễ học, véc-tơ muỗi Aedes, chu kỳ lây truyền, cơ chế ADE và tình hình dịch toàn cầu & Việt Nam.">
+    <title>DTH: Sốt Xuất Huyết Dengue (DENV) – Dịch Tễ Học Y Khoa – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../../../css/components/epidemiology-hub.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --epi-accent: #0d9488;
+            --epi-accent-light: #2dd4bf;
+            --epi-gradient: linear-gradient(135deg, #042f2e 0%, #0f172a 50%, #134e4a 100%);
+        }
+
+        [data-theme="dark"] {
+            --epi-gradient: linear-gradient(135deg, #022c22 0%, #090d16 50%, #042f2e 100%);
+        }
+
+        .epi-article-header {
+            background: var(--epi-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(13, 148, 136, 0.3);
+        }
+
+        .epi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(45, 212, 191, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(45, 212, 191, 0.35);
+            color: #2dd4bf;
+            text-transform: uppercase;
+        }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover, .pillar-tab.active {
+            border-color: var(--epi-accent, #0d9488);
+            color: var(--epi-accent, #0d9488);
+            background: rgba(13, 148, 136, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0d9488; }
+        .pillar-tab.p-2 { border-left: 4px solid #3b82f6; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-6 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-7 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-8 { border-left: 4px solid #64748b; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0d9488);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(13, 148, 136, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(13, 148, 136, 0.12);
+            color: var(--color-primary, #0d9488);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        [data-theme="dark"] .section-title {
+            color: #2dd4bf;
+        }
+
+        [data-theme="dark"] .section-title i {
+            background: rgba(45, 212, 191, 0.15);
+            color: #2dd4bf;
+        }
+
+        .subsection-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0d9488);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0d9488);
+            background: linear-gradient(90deg, rgba(13, 148, 136, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        [data-theme="dark"] .subsection-title {
+            border-left-color: #2dd4bf;
+            color: #2dd4bf;
+            background: linear-gradient(90deg, rgba(45, 212, 191, 0.12) 0%, transparent 100%);
+        }
+
+        /* Medical Callout Boxes */
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .vector-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: rgba(13, 148, 136, 0.08);
+            border-left: 4px solid #0d9488;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .epi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+        }
+        .epi-table th, .epi-table td {
+            border: 1px solid var(--color-border, #e2e8f0);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        .epi-table th {
+            background: var(--color-surface-offset, #f8fafc);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        [data-theme="dark"] .epi-table th {
+            background: var(--color-surface-2, #1e293b);
+            color: var(--color-text, #f8fafc);
+        }
+
+        .stat-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-top: 4px solid var(--card-color, #0d9488);
+        }
+
+        [data-theme="dark"] .stat-card {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        .stat-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--card-color, #0d9488);
+            line-height: 1.2;
+            margin: 0.35rem 0;
+        }
+
+        .stat-lbl {
+            font-size: 0.82rem;
+            color: var(--color-text-muted, #64748b);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Figure Styles */
+        .epi-figure {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            text-align: center;
+        }
+        .epi-figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 0.85rem auto;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+        .epi-figcaption {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-text-muted, #64748b);
+            line-height: 1.5;
+            text-align: center;
+        }
+        [data-theme="dark"] .epi-figure {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+        [data-theme="dark"] .epi-figure img {
+            border-color: var(--color-border, #334155);
+        }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- HEADER -->
+        <header class="epi-article-header">
+            <span class="epi-badge"><i class="fa-solid fa-virus-covid"></i> DỊCH TỄ HỌC • TRUYỀN NHIỄM &amp; VI SINH • ICD-10: A90, A91</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 2.1rem; font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Dịch Tễ Học Sốt Xuất Huyết Dengue (DENV)
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 920px;">
+                Tổng quan dịch tễ học toàn diện: Tam giác dịch tễ học tương tác, đặc tính sinh học 4 serotypes DENV, sinh thái véc-tơ muỗi <em>Aedes</em>, động học chu kỳ lây truyền, cơ chế sinh lý bệnh ADE và phân tích dịch tễ toàn cầu &amp; Việt Nam.
+            </p>
+        </header>
+
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-triangle-exclamation"></i> 1. Tam Giác Dịch Tễ</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-dna"></i> 2. Tác Nhân &amp; ADE</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-mosquito"></i> 3. Véc-tơ Truyền Bệnh</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-arrows-spin"></i> 4. Chu Kỳ Lây Truyền</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-users"></i> 5. Vật Chủ &amp; Nguy Cơ</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-cloud-sun-rain"></i> 6. Khí Hậu &amp; Xã Hội</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-earth-americas"></i> 7. Tình Hình Toàn Cầu &amp; VN</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-book-medical"></i> 8. Tài Liệu Tham Khảo</a>
+            </div>
+        </nav>
+
+        <!-- STATS KPI BAR -->
+        <div class="stat-card-grid">
+            <div class="stat-card" style="--card-color: #0d9488;">
+                <div class="stat-lbl">Gánh Nặng Hàng Năm</div>
+                <div class="stat-val">390 Triệu</div>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">Số ca nhiễm vi rút ước tính toàn cầu (96M ca lâm sàng rõ rệt)</p>
+            </div>
+            <div class="stat-card" style="--card-color: #ef4444;">
+                <div class="stat-lbl">Kỷ Lục Dịch 2024 (WHO)</div>
+                <div class="stat-val">14,4 Triệu</div>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">14.434.584 ca mắc và 11.201 ca tử vong toàn cầu</p>
+            </div>
+            <div class="stat-card" style="--card-color: #3b82f6;">
+                <div class="stat-lbl">Thời Kỳ Ủ Bệnh EIP</div>
+                <div class="stat-val">8 – 12 Ngày</div>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">Thời gian ủ bệnh ngoại lai trong tuyến nước bọt muỗi</p>
+            </div>
+            <div class="stat-card" style="--card-color: #8b5cf6;">
+                <div class="stat-lbl">Tâm Dịch Miền Nam (2026)</div>
+                <div class="stat-val">86,6%</div>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">Tỷ trọng ca mắc sốt xuất huyết tại miền Nam Việt Nam</p>
+            </div>
+        </div>
+
+        <!-- TRỤ CỘT 1: TAM GIÁC DỊCH TỄ HỌC -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> 1. Tam Giác Dịch Tễ Học và Hệ Sinh Thái Lây Truyền</h2>
+            
+            <p class="section-text">
+                Sốt xuất huyết Dengue (SXHD) được đặc trưng bởi <strong>tam giác dịch tễ học</strong> tương tác động giữa ba thành tố cốt lõi: <strong>Tác nhân gây bệnh (Vi rút DENV)</strong>, <strong>Vật chủ nhạy cảm (Con người)</strong> và <strong>Môi trường &amp; Trung gian truyền bệnh (Khí hậu, Sinh cảnh, Véc-tơ muỗi <em>Aedes</em>)</strong>.
+            </p>
+
+            <p class="section-text">
+                Dưới góc nhìn sinh thái học y khoa, SXHD là một hợp quần sinh học tương tác động. Bệnh được truyền từ người bệnh sang người lành thông qua muỗi véc-tơ trong một hệ sinh thái nhân văn chịu tác động mạnh mẽ bởi nhiệt độ, lượng mưa, mật độ đô thị hóa và tập quán sinh hoạt của con người.
+            </p>
+
+            <!-- SVG TAM GIÁC DỊCH TỄ HỌC PURE INLINE EDITORIAL GRADE -->
+            <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 18px; padding: 1.75rem 1.5rem; margin: 1.75rem 0; box-shadow: 0 8px 24px -4px rgba(0,0,0,0.06);">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border, #e2e8f0);">
+                    <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--color-primary, #0d9488); display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-draw-polygon"></i> SƠ ĐỒ TAM GIÁC DỊCH TỄ HỌC SỐT XUẤT HUYẾT DENGUE
+                    </h4>
+                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted, #64748b); background: var(--color-bg, #f8fafc); padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0);">
+                        Epidemiological Triad • CDC &amp; WHO Model
+                    </span>
+                </div>
+
+                <div style="width: 100%; max-width: 860px; margin: 0 auto;">
+                    <svg viewBox="0 0 860 520" width="100%" height="auto" style="display: block; font-family: 'Plus Jakarta Sans', sans-serif;">
+                        <defs>
+                            <!-- Linear Gradients for Vertex Cards -->
+                            <linearGradient id="agentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.12"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="hostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="envGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.12"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            
+                            <!-- Arrow Markers -->
+                            <marker id="arrowTeal" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0d9488"/>
+                            </marker>
+                            <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3b82f6"/>
+                            </marker>
+                            <marker id="arrowPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8b5cf6"/>
+                            </marker>
+                        </defs>
+
+                        <!-- Outer Geometric Triangle Connection Lines -->
+                        <polygon points="430,100 170,410 690,410" fill="none" stroke="var(--color-border, #e2e8f0)" stroke-width="2.5" stroke-dasharray="6 6"/>
+                        
+                        <!-- Dynamic Interaction Flow Lines -->
+                        <!-- Path Agent -> Host -->
+                        <path d="M 330,120 Q 210,230 190,340" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowTeal)"/>
+                        <!-- Path Host -> Vector/Env -->
+                        <path d="M 300,435 L 560,435" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowBlue)"/>
+                        <!-- Path Vector/Env -> Agent -->
+                        <path d="M 670,340 Q 650,230 530,120" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowPurple)"/>
+
+                        <!-- CENTER HUB: OUTBREAK INTERSECTION -->
+                        <g transform="translate(430, 280)">
+                            <!-- Pulse Rings -->
+                            <circle cx="0" cy="0" r="68" fill="none" stroke="rgba(239, 68, 68, 0.15)" stroke-width="6"/>
+                            <circle cx="0" cy="0" r="54" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="2.5"/>
+                            <circle cx="0" cy="0" r="44" fill="var(--color-surface, #ffffff)" stroke="rgba(239, 68, 68, 0.3)" stroke-width="1.5"/>
+                            
+                            <!-- Hub Text -->
+                            <text x="0" y="-14" text-anchor="middle" font-size="11" font-weight="700" fill="#ef4444" letter-spacing="1">GIAO THOA</text>
+                            <text x="0" y="4" text-anchor="middle" font-size="13" font-weight="900" fill="#ef4444">BÙNG PHÁT</text>
+                            <text x="0" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#ef4444">DỊCH SXHD</text>
+                            <text x="0" y="34" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Tác nhân + Vật chủ + Véc-tơ</text>
+                        </g>
+
+                        <!-- TOP APEX CARD: TÁC NHÂN (AGENT) -->
+                        <g transform="translate(290, 15)">
+                            <!-- Card Base -->
+                            <rect x="0" y="0" width="280" height="110" rx="14" fill="url(#agentGrad)" stroke="#0d9488" stroke-width="2"/>
+                            <!-- Header Pill -->
+                            <rect x="14" y="-12" width="150" height="26" rx="13" fill="#0d9488"/>
+                            <text x="89" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🧪 TÁC NHÂN (AGENT)</text>
+                            <!-- Card Content -->
+                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Vi rút Dengue (DENV 1, 2, 3, 4)</text>
+                            <text x="16" y="52" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Họ Flaviviridae, sợi đơn (+)ssRNA 11kb</text>
+                            <text x="16" y="70" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Kháng nguyên NS1 &amp; 3 protein cấu trúc</text>
+                            <text x="16" y="88" font-size="11" font-weight="700" fill="#ef4444">• Cơ chế ADE: Tăng nặng khi tái nhiễm</text>
+                        </g>
+
+                        <!-- BOTTOM-LEFT APEX CARD: VẬT CHỦ (HOST) -->
+                        <g transform="translate(30, 360)">
+                            <!-- Card Base -->
+                            <rect x="0" y="0" width="280" height="115" rx="14" fill="url(#hostGrad)" stroke="#3b82f6" stroke-width="2"/>
+                            <!-- Header Pill -->
+                            <rect x="14" y="-12" width="145" height="26" rx="13" fill="#3b82f6"/>
+                            <text x="86" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">👥 VẬT CHỦ (HOST)</text>
+                            <!-- Card Content -->
+                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Con Người &amp; Quần Thể Đích</text>
+                            <text x="16" y="52" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Mọi lứa tuổi chưa có miễn dịch đặc hiệu</text>
+                            <text x="16" y="70" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Dịch chuyển: Tăng cao ở người lớn 20-50t</text>
+                            <text x="16" y="88" font-size="11" font-weight="700" fill="#f59e0b">• Nguy cơ cao: Nhũ nhi, Thai phụ, Bệnh nền</text>
+                        </g>
+
+                        <!-- BOTTOM-RIGHT APEX CARD: MÔI TRƯỜNG & VÉC-TƠ (ENVIRONMENT / VECTOR) -->
+                        <g transform="translate(550, 360)">
+                            <!-- Card Base -->
+                            <rect x="0" y="0" width="280" height="115" rx="14" fill="url(#envGrad)" stroke="#8b5cf6" stroke-width="2"/>
+                            <!-- Header Pill -->
+                            <rect x="14" y="-12" width="185" height="26" rx="13" fill="#8b5cf6"/>
+                            <text x="106" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🦟 MÔI TRƯỜNG &amp; VÉC-TƠ</text>
+                            <!-- Card Content -->
+                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Muỗi Aedes &amp; Hệ Sinh Thái</text>
+                            <text x="16" y="52" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Aedes aegypti (chủ yếu) &amp; Ae. albopictus</text>
+                            <text x="16" y="70" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Khí hậu: 16-30°C, độ ẩm 60-80%, mùa mưa</text>
+                            <text x="16" y="88" font-size="11" font-weight="700" fill="#8b5cf6">• Đô thị hóa, lu vại đọng nước, El Niño</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 2: TÁC NHÂN & CƠ CHẾ ADE -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-dna"></i> 2. Tác Nhân Gây Bệnh (DENV) &amp; Sinh Lý Bệnh ADE</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-microscope"></i> Đặc Điểm Cấu Trúc Di Truyền &amp; Protein Vi Rút</h3>
+            <p class="section-text">
+                Vi rút Dengue (DENV) thuộc họ <em>Flaviviridae</em>, chi <em>Orthoflavivirus</em> (trước đây là chi <em>Flavivirus</em>). Genome vi rút là một <strong>sợi đơn RNA cực dương (+)ssRNA</strong> dài khoảng <strong>11 kb</strong>, mã hóa cho một đa protein duy nhất. Đa protein này được cắt bởi protease của tế bào chủ và vi rút thành:
+            </p>
+            <ul>
+                <li><strong>3 protein cấu trúc:</strong> Capsid (C), màng (prM/M) và protein vỏ liên kết (E). Protein vỏ E đóng vai trò quyết định trong việc hình thành hạt vi rút, trưởng thành và gắn kết với thụ thể của tế bào vật chủ.</li>
+                <li><strong>7 protein phi cấu trúc:</strong> NS1, NS2A, NS2B, NS3, NS4A, NS4B, NS5. Trong đó, <strong>protein NS1</strong> tồn tại dưới dạng nội bào, bám màng và bài tiết ra ngoài huyết thanh. Nồng độ NS1 tăng cao trong máu trong giai đoạn cấp (ngày 1 – 5) là dấu ấn sinh học vàng cho xét nghiệm chẩn đoán sớm.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-layer-group"></i> 4 Typ Huyết Thanh (Serotypes) &amp; Dòng Di Truyền</h3>
+            <p class="section-text">
+                DENV gồm <strong>4 typ huyết thanh riêng biệt</strong> (DEN-1, DEN-2, DEN-3, DEN-4) chia sẻ khoảng 65% genome. Mỗi typ huyết thanh lại phân nhánh thành nhiều dòng di truyền (genotypes) có độc lực và đặc tính dịch tễ khác nhau (ví dụ: DENV-3 gồm các genotype 3I, 3II, 3III, 3V).
+            </p>
+
+            <!-- CALLOUT DANGER: ADE PHENOMENON -->
+            <div class="danger-box">
+                <strong style="color: #ef4444; font-size: 1.05rem; display: block; margin-bottom: 0.5rem;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Cơ Chế Sinh Lý Bệnh Cốt Lõi: Tăng Cường Phụ Thuộc Kháng Thể (ADE)
+                </strong>
+                <p style="margin: 0; line-height: 1.65;">
+                    Nhiễm một typ huyết thanh DENV chỉ tạo <strong>miễn dịch bảo vệ suốt đời đối với chính typ đó</strong>. Đối với 3 typ còn lại, cơ thể chỉ có miễn dịch chéo ngắn hạn (khoảng <strong>8 – 12 tháng</strong>). Khi tái nhiễm thứ phát với một typ huyết thanh khác, các kháng thể không trung hòa chéo gắn kết với vi rút mới nhưng không tiêu diệt được chúng. Ngược lại, phức hợp này tạo thuận lợi cho vi rút gắn vào thụ thể FcγR trên bề mặt đại thực bào, thúc đẩy vi rút xâm nhập và nhân lên ồ ạt. 
+                    <br><br>
+                    Hiện tượng này kích hoạt giải phóng bão cytokine (TNF-α, IL-6, IL-8), gây tổn thương glycocalyx nội mạc mạch máu, dẫn đến <strong>tăng tính thấm thành mạch, thoát huyết tương ồ ạt, cô đặc máu (HCT tăng cao), giảm tiểu cầu nặng và sốc sốt xuất huyết (DSS)</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 3: VÉC-TƠ TRUYỀN BỆNH -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-mosquito"></i> 3. Véc-tơ Truyền Bệnh (Muỗi Aedes aegypti &amp; Aedes albopictus)</h2>
+
+            <p class="section-text">
+                Sốt xuất huyết Dengue truyền sang người do muỗi cái thuộc chi <em>Aedes</em> đốt hút máu. Có 2 loài véc-tơ truyền bệnh chủ yếu với các đặc tính sinh học và sinh thái khác biệt:
+            </p>
+
+            <div class="table-responsive" style="overflow-x: auto; margin: 1.5rem 0;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Đặc Tính Sinh Thái &amp; Sinh Học</th>
+                            <th style="width: 37.5%; color: #0d9488;">Muỗi Sốt Vàng (<em>Aedes aegypti</em>)</th>
+                            <th style="width: 37.5%; color: #8b5cf6;">Muỗi Hổ Châu Á (<em>Aedes albopictus</em>)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Vai trò truyền bệnh</strong></td>
+                            <td><strong style="color: #ef4444;">Véc-tơ truyền bệnh chủ yếu nhất</strong></td>
+                            <td>Véc-tơ phụ / Véc-tơ duy trì tự nhiên (truyền 22 arbovirus)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nguồn gốc &amp; Phân bố</strong></td>
+                            <td>Nguồn gốc châu Phi, thuần dưỡng hoàn hảo gần người (peri-domestic)</td>
+                            <td>Bản địa Đông Nam Á, rừng nhiệt đới thích nghi ngoại ô &amp; ôn đới</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tập tính đốt máu</strong></td>
+                            <td>Chuyên đốt người (anthropophilic), đốt ban ngày (sáng sớm &amp; chiều tối), trú xó tối</td>
+                            <td>Đốt tạp cả người và động vật (zoophagic), đốt ngoài trời</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nơi đẻ trứng</strong></td>
+                            <td>Dụng cụ chứa nước sạch nhân tạo (lu, bồn nước, lọ hoa, lốp xe phế thải)</td>
+                            <td>Hốc cây, kẽ lá, gáo dừa ngoài tự nhiên và vật chứa nhân tạo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sức đề kháng của trứng</strong></td>
+                            <td>Cực cao: <strong>chịu khô hạn lên đến 1 năm</strong>, nở ngay khi gặp nước</td>
+                            <td>Chịu lạnh và khô hạn tốt, qua đông dạng trứng ở vùng ôn đới</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thời gian sống trung bình</strong></td>
+                            <td>Khoảng <strong>30 ngày</strong> (4 tuần)</td>
+                            <td>Khoảng <strong>8 tuần</strong> (dài hơn <em>Ae. aegypti</em>)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="vector-box">
+                <strong style="color: #8b5cf6; font-size: 1rem; display: block; margin-bottom: 0.4rem;">
+                    <i class="fa-solid fa-map-location-dot"></i> Mở Rộng Địa Bàn Của Véc-tơ Do Biến Đổi Khí Hậu:
+                </strong>
+                <p style="margin: 0; line-height: 1.6;">
+                    Khả năng chịu lạnh vượt trội giúp <em>Aedes albopictus</em> mở rộng nhanh chóng lên các vùng vĩ độ cao và ôn đới mát mẻ tại Nam Âu, Bắc Mỹ và Đông Á. Trong khi đó, <em>Aedes aegypti</em> chiếm ưu thế tuyệt đối tại các đô thị nhiệt đới mật độ cao nhờ tập tính bám sát nơi ở của con người.
+                </p>
+            </div>
+
+            <!-- FIGURE 1: HABITAT SUITABILITY MAP -->
+            <figure class="epi-figure">
+                <img src="./images/dengue-habitat-map-aedes.png" alt="Bản đồ Phù hợp sinh cảnh đối với sự phân bố của véc-tơ Aedes aegypti và Aedes albopictus" loading="lazy">
+                <figcaption class="epi-figcaption">
+                    <strong>Hình 1:</strong> Bản đồ phù hợp sinh cảnh đối với sự phân bố toàn cầu của véc-tơ <em>Aedes aegypti</em> (vàng), <em>Aedes albopictus</em> (xanh dương) và vùng đồng lưu hành cả hai loài (đỏ). <em>(Nguồn: Ministry of Health Timor-Leste, 2022)</em>
+                </figcaption>
+            </figure>
+        </section>
+
+        <!-- TRỤ CỘT 4: CHU KỲ LÂY TRUYỀN -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-arrows-spin"></i> 4. Chu Kỳ Lây Truyền &amp; Động Học Ủ Bệnh (Transmission Cycle)</h2>
+
+            <p class="section-text">
+                Chu kỳ lây truyền vi rút Dengue khép kín qua lại giữa người và muỗi tuân theo trục thời gian sinh học nghiêm ngặt:
+            </p>
+
+            <!-- SVG CHU KỲ LÂY TRUYỀN PURE INLINE EDITORIAL GRADE -->
+            <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 18px; padding: 1.75rem 1.5rem; margin: 1.75rem 0; box-shadow: 0 8px 24px -4px rgba(0,0,0,0.06);">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border, #e2e8f0);">
+                    <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--color-primary, #0d9488); display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-timeline"></i> SƠ ĐỒ ĐỘNG HỌC CHU KỲ LÂY TRUYỀN VÀ CÁC THỜI KỲ Ủ BỆNH DENV
+                    </h4>
+                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted, #64748b); background: var(--color-bg, #f8fafc); padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0);">
+                        Transmission Dynamics &amp; Incubation Periods
+                    </span>
+                </div>
+
+                <div style="width: 100%; max-width: 860px; margin: 0 auto;">
+                    <svg viewBox="0 0 860 380" width="100%" height="auto" style="display: block; font-family: 'Plus Jakarta Sans', sans-serif;">
+                        <defs>
+                            <linearGradient id="step1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ef4444" stop-opacity="0.12"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="step2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.12"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="step3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.12"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- STEP 1 CARD: NGƯỜI BỆNH NHIỄM VI RÚT HUYẾT -->
+                        <g transform="translate(30, 40)">
+                            <rect x="0" y="0" width="250" height="135" rx="14" fill="url(#step1Grad)" stroke="#ef4444" stroke-width="2"/>
+                            <!-- Step Badge -->
+                            <rect x="14" y="-12" width="155" height="26" rx="13" fill="#ef4444"/>
+                            <text x="91" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">BƯỚC 1: VIRAEMIA</text>
+                            
+                            <!-- Text Details -->
+                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Nhiễm Vi Rút Huyết</text>
+                            <text x="16" y="52" font-size="11.5" font-weight="700" fill="#ef4444">⏱ -2 ngày đến +5-7 ngày sốt</text>
+                            <text x="16" y="72" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Tải lượng vi rút trong máu cao</text>
+                            <text x="16" y="90" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Muỗi đốt hút máu bị lây nhiễm</text>
+                            <text x="16" y="108" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">• Thời kỳ lây duy nhất cho véc-tơ</text>
+                        </g>
+
+                        <!-- CONNECTOR 1 -> 2 (Muỗi hút máu) -->
+                        <g transform="translate(280, 85)">
+                            <path d="M 10,22 L 80,22" fill="none" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrowTeal)"/>
+                            <rect x="12" y="2" width="70" height="18" rx="4" fill="var(--color-surface, #ffffff)" stroke="#e2e8f0" stroke-width="1"/>
+                            <text x="47" y="15" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0d9488">Muỗi đốt</text>
+                        </g>
+
+                        <!-- STEP 2 CARD: Ủ BỆNH NGOẠI LAI (EIP) TRONG MUỖI -->
+                        <g transform="translate(370, 40)">
+                            <rect x="0" y="0" width="250" height="135" rx="14" fill="url(#step2Grad)" stroke="#8b5cf6" stroke-width="2"/>
+                            <!-- Step Badge -->
+                            <rect x="14" y="-12" width="165" height="26" rx="13" fill="#8b5cf6"/>
+                            <text x="96" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">BƯỚC 2: Ủ BỆNH EIP</text>
+                            
+                            <!-- Text Details -->
+                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Ủ Bệnh Ngoại Lai (Muỗi)</text>
+                            <text x="16" y="52" font-size="11.5" font-weight="700" fill="#8b5cf6">⏱ Kéo dài 8 – 12 ngày</text>
+                            <text x="16" y="72" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Vi rút nhân lên ở ruột giữa muỗi</text>
+                            <text x="16" y="90" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Xâm nhập tuyến nước bọt muỗi</text>
+                            <text x="16" y="108" font-size="10.5" font-weight="700" fill="#8b5cf6">• Muỗi truyền bệnh suốt vòng đời</text>
+                        </g>
+
+                        <!-- CONNECTOR 2 -> 3 (Muỗi đốt người lành) -->
+                        <path d="M 620,107 L 730,107 Q 750,107 750,130 L 750,260 Q 750,280 730,280 L 630,280" fill="none" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+                        <rect x="690" y="180" width="85" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="#8b5cf6" stroke-width="1"/>
+                        <text x="732" y="195" text-anchor="middle" font-size="10" font-weight="700" fill="#8b5cf6">Truyền vi rút</text>
+
+                        <!-- STEP 3 CARD: Ủ BỆNH NỘI TẠI (IIP) Ở NGƯỜI LÀNH -->
+                        <g transform="translate(370, 215)">
+                            <rect x="0" y="0" width="250" height="135" rx="14" fill="url(#step3Grad)" stroke="#0d9488" stroke-width="2"/>
+                            <!-- Step Badge -->
+                            <rect x="14" y="-12" width="165" height="26" rx="13" fill="#0d9488"/>
+                            <text x="96" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">BƯỚC 3: Ủ BỆNH IIP</text>
+                            
+                            <!-- Text Details -->
+                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Ủ Bệnh Nội Tại (Người)</text>
+                            <text x="16" y="52" font-size="11.5" font-weight="700" fill="#0d9488">⏱ 3 – 14 ngày (TB 5 – 7 ngày)</text>
+                            <text x="16" y="72" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Vi rút nhân lên trong đại thực bào</text>
+                            <text x="16" y="90" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Khởi phát sốt cao đột ngột &amp; đau mỏi</text>
+                            <text x="16" y="108" font-size="10.5" font-weight="700" fill="#ef4444">• Trở thành nguồn lây mới (Bước 1)</text>
+                        </g>
+
+                        <!-- CONNECTOR 3 -> 1 (Khép kín chu kỳ hoàn chỉnh) -->
+                        <path d="M 370,280 L 155,280 L 155,185" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arrowTeal)"/>
+                        <rect x="195" y="268" width="145" height="24" rx="6" fill="rgba(239, 68, 68, 0.1)" stroke="#ef4444" stroke-width="1.2"/>
+                        <text x="267" y="284" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ef4444">Chu kỳ lây lan khép kín ↺</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong style="color: #0d9488; font-size: 1rem; display: block; margin-bottom: 0.35rem;">
+                    <i class="fa-solid fa-code-fork"></i> Đường Lây Truyền Dọc (Vertical &amp; Transovarial Transmission):
+                </strong>
+                <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.6;">
+                    <li><strong>Mẹ sang con:</strong> Lây truyền qua nhau thai hoặc quanh thời điểm sinh nở khi người mẹ mắc bệnh giai đoạn cấp gần ngày sinh.</li>
+                    <li><strong>Qua trứng muỗi (Transovarial):</strong> Muỗi cái truyền vi rút sang trứng, giúp vi rút duy trì tồn tại trong quần thể muỗi qua mùa khô hạn kéo dài hàng tháng trước khi mùa mưa kế tiếp bắt đầu.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 5: VẬT CHỦ & NGUY CƠ CAO -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-users"></i> 5. Vật Chủ Nhạy Cảm &amp; Nhóm Nguy Cơ Cao</h2>
+
+            <p class="section-text">
+                Mọi cá thể ở mọi lứa tuổi và giới tính chưa có miễn dịch bảo vệ đều có thể mắc bệnh khi bị muỗi mang vi rút đốt.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-chart-line"></i> Sự Dịch Chuyển Nhóm Tuổi Mắc Bệnh (Paradigm Shift)</h3>
+            <p class="section-text">
+                Trước đây, tại các vùng lưu hành dịch lâu năm (như Đông Nam Á), trẻ em là đối tượng chịu gánh nặng bệnh tật cao nhất do tỷ lệ nhiễm trùng thứ phát lớn. Tuy nhiên, những năm gần đây ghi nhận xu hướng dịch chuyển rõ rệt với <strong>tỷ lệ mắc tăng vọt ở nhóm thanh thiếu niên và người lớn</strong>. Ngược lại, tại các quốc gia không lưu hành dịch tự nhiên (như Trung Quốc), bệnh gặp ở mọi lứa tuổi nhưng tập trung nhiều nhất ở độ tuổi lao động từ <strong>20 đến 50 tuổi</strong>.
+            </p>
+
+            <div class="pearl-box">
+                <strong style="color: #f59e0b; font-size: 1rem; display: block; margin-bottom: 0.4rem;">
+                    <i class="fa-solid fa-user-shield"></i> Đối Tượng Nguy Cơ Cao Diễn Tiến Nặng &amp; Tử Vong:
+                </strong>
+                <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.65;">
+                    <li><strong>Trẻ nhũ nhi (&lt; 12 tháng tuổi):</strong> Do thành mạch mỏng manh và kháng thể truyền từ mẹ suy giảm tạo điều kiện thuận lợi cho cơ chế ADE.</li>
+                    <li><strong>Phụ nữ mang thai:</strong> Tăng nguy cơ sảy thai, sinh non, băng huyết chu phẫu và lây truyền dọc cho thai nhi.</li>
+                    <li><strong>Người cao tuổi (&ge; 60 tuổi):</strong> Dự trữ sinh lý suy giảm, xơ cứng mạch máu và đáp ứng miễn dịch lão hóa.</li>
+                    <li><strong>Người béo phì / Thừa cân:</strong> Thể tích phân bố thay đổi, nguy cơ suy hô hấp do tràn dịch màng phổi/màng bụng nặng nề hơn.</li>
+                    <li><strong>Bệnh mạn tính phối hợp:</strong> Đái tháo đường, tăng huyết áp, bệnh mạch vành, bệnh thận mạn, hen/COPD, loét dạ dày tá tràng (nguy cơ xuất huyết tiêu hóa ồ ạt).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 6: KHÍ HẬU & XÃ HỘI -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-cloud-sun-rain"></i> 6. Động Lực Sinh Thái, Khí Hậu &amp; Yếu Tố Xã Hội</h2>
+
+            <p class="section-text">
+                Sự lây lan và phân bố dịch tễ học SXHD chịu sự chi phối chặt chẽ bởi các yếu tố tự nhiên và xã hội:
+            </p>
+
+            <ul>
+                <li><strong>Nhiệt độ môi trường:</strong> Nhiệt độ tối ưu cho sự phát triển của muỗi <em>Aedes</em> là <strong>16°C đến 30°C</strong> (giới hạn sinh tồn: 14°C – 40°C). Nhiệt độ cao trong mùa hè rút ngắn thời kỳ ủ bệnh ngoại lai (EIP) trong cơ thể muỗi, làm tăng tần suất đốt người và đẩy nhanh tốc độ bùng phát dịch.</li>
+                <li><strong>Lượng mưa &amp; Độ ẩm:</strong> Lượng mưa vừa phải tạo ra hàng triệu vi sinh cảnh nước đọng. Độ ẩm lý tưởng (<strong>60% – 80%</strong>) kéo dài tuổi thọ muỗi trưởng thành.</li>
+                <li><strong>Hiện tượng El Niño &amp; Biến đổi khí hậu:</strong> Khiến các đợt nắng nóng kéo dài xen kẽ mưa lũ cục bộ, mở rộng vùng phân bố của véc-tơ lên các vùng núi cao (như Nepal) và các vùng cận nhiệt đới ôn đới.</li>
+                <li><strong>Đô thị hóa tự phát &amp; Rác thải rắn:</strong> Mật độ dân cư quá tải, thiếu nước máy ổn định dẫn đến tập quán trữ nước trong lu vại không đậy kín, cùng hệ thống rác thải nhựa/lốp xe đọng nước là nguồn sản sinh bọ gậy khổng lồ.</li>
+                <li><strong>Giao thương &amp; Du lịch hàng không:</strong> Cho phép vi rút và véc-tơ phát tán liên lục địa chỉ trong vòng 24 giờ.</li>
+            </ul>
+        </section>
+
+        <!-- TRỤ CỘT 7: TÌNH HÌNH DỊCH TỄ TOÀN CẦU & VIỆT NAM -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-earth-americas"></i> 7. Tình Hình Dịch Tễ Học Toàn Cầu, Việt Nam &amp; Quốc Gia Lân Cận</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-globe"></i> Tình Hình Toàn Cầu — Năm Dịch Lịch Sử 2024</h3>
+            <p class="section-text">
+                Trong hơn hai thập kỷ qua, số ca sốt xuất huyết báo cáo về WHO đã <strong>tăng hơn 8 lần</strong> (từ 505.430 ca năm 2000 lên 5,2 triệu ca năm 2019). 
+                Năm <strong>2024 là năm dịch lịch sử kỷ lục</strong> với <strong>14.434.584 ca mắc và 11.201 ca tử vong</strong> trên cả 6 khu vực của WHO:
+            </p>
+            <ul>
+                <li><strong>Khu vực châu Mỹ:</strong> Gánh chịu hơn 90% số ca toàn cầu với <strong>13.063.434 ca mắc và 8.431 ca tử vong</strong>. Brazil là tâm dịch thảm khốc nhất (hơn 10,2 triệu ca mắc, 6.321 tử vong).</li>
+                <li><strong>Khu vực Đông Nam Á:</strong> Ghi nhận <strong>798.690 ca mắc và 2.400 ca tử vong</strong>. Trong đó Indonesia (257.271 ca, 1.461 tử vong), Ấn Độ (232.425 ca, 233 tử vong) và Thái Lan (104.681 ca, 87 tử vong).</li>
+                <li><strong>Xu hướng năm 2025:</strong> Trong 7 tháng đầu năm 2025 tiếp tục ghi nhận hơn 4 triệu ca mắc tại 97 quốc gia.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-map-pin"></i> Tình Hình Dịch Tễ Học Tại Việt Nam</h3>
+            <p class="section-text">
+                Ca bệnh SXHD đầu tiên được ghi nhận tại Đà Nẵng năm 1958. Bệnh lưu hành quanh năm trên toàn quốc, thường tạo đỉnh dịch lớn vào mùa mưa từ tháng 7 đến tháng 10.
+            </p>
+            <ul>
+                <li><strong>Phân bố vùng miền:</strong> Miền Nam là vùng chịu gánh nặng dịch tễ nặng nề nhất. Thống kê lịch sử cho thấy tỷ lệ mắc/100.000 dân cao nhất tại Đồng bằng sông Cửu Long (213,4 ca) và Đông Nam Bộ (144,7 ca), trong khi vùng Tây Bắc có tỷ lệ thấp nhất (0,1 ca).</li>
+                <li><strong>Dữ liệu 2024 &amp; Đầu 2026:</strong> Năm 2024 cả nước ghi nhận <strong>108.433 ca mắc và 26 ca tử vong</strong>. Tính đến ngày 06/03/2026, cả nước đã ghi nhận <strong>27.365 ca mắc (tăng gấp đôi cùng kỳ 2025)</strong>, trong đó khu vực miền Nam chiếm tới <strong>86,6% tổng số ca mắc</strong>.</li>
+                <li><strong>Động thái Serotypes:</strong> Sự đồng lưu hành của cả 4 typ huyết thanh (DENV-1, 2, 3, 4) tạo nên tình trạng hyperendemic phức tạp và nguy cơ bùng phát ca nặng do ADE.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-chart-column"></i> Đặc Điểm Dịch Tễ Tại Các Quốc Gia Lân Cận</h3>
+            <ul>
+                <li><strong>Trung Quốc (Non-endemic):</strong> Nguồn lây chủ yếu là ca nhập cảnh quanh năm từ Đông Nam Á gây dịch cục bộ vào hè – thu. Đỉnh dịch lịch sử năm 2014 ghi nhận 46.105 ca tại Quảng Đông. Năm 2024 ghi nhận 24.330 ca và năm 2025 ghi nhận 10.007 ca. Đỉnh dịch tập trung vào tháng 10.</li>
+            </ul>
+
+            <!-- FIGURE 2: CHINA DENGUE TREND -->
+            <figure class="epi-figure">
+                <img src="./images/dengue-china-trend-2005-2024.png" alt="Xu hướng ca bệnh Sốt xuất huyết Dengue nội địa và nhập cảnh tại Trung Quốc giai đoạn 2005-2024" loading="lazy">
+                <figcaption class="epi-figcaption">
+                    <strong>Hình 2:</strong> Xu hướng động thái số ca mắc Sốt xuất huyết Dengue nội địa (Indigenous - xanh dương) và nhập cảnh (Imported - cam) tại Trung Quốc giai đoạn 2005–2024 theo thang log10. <em>(Nguồn: He S. et al., Virol Sin 2026)</em>
+                </figcaption>
+            </figure>
+
+            <ul>
+                <li><strong>Bangladesh (Đe dọa khẩn cấp):</strong> Giai đoạn 2000 – 2024 ghi nhận 565.438 ca mắc và 2.587 ca tử vong. Đỉnh dịch thảm họa năm 2023 lên tới 321.179 ca mắc và 1.705 ca tử vong. Về động thái chủng, <strong>DENV-3 chiếm ưu thế áp đảo (57%)</strong>, tiếp theo là DENV-2 (30%), DENV-1 (11%).</li>
+            </ul>
+
+            <!-- FIGURE 3: BANGLADESH SEROTYPES -->
+            <figure class="epi-figure">
+                <img src="./images/dengue-serotypes-bangladesh.png" alt="Phân bố tỷ lệ các typ huyết thanh của vi rút Dengue lưu hành tại Bangladesh qua các giai đoạn" loading="lazy">
+                <figcaption class="epi-figcaption">
+                    <strong>Hình 3:</strong> Phân bố tỷ lệ các typ huyết thanh DENV lưu hành tại Bangladesh: (A) Tỷ lệ gộp toàn giai đoạn với ưu thế DENV-3 (57%); (B) Sự dịch chuyển typ huyết thanh giữa hai thời kỳ 2000–2011 và 2012–2023. <em>(Nguồn: Sharif N. et al., Front Microbiol 2024)</em>
+                </figcaption>
+            </figure>
+        </section>
+
+        <!-- TRỤ CỘT 8: TÀI LIỆU THAM KHẢO -->
+        <footer id="sec-8" style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.75;">
+            <h4 style="margin: 0 0 0.75rem 0; color: var(--color-text, #334155); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-book-medical"></i> Tài Liệu Tham Khảo Chuẩn AMA:
+            </h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán và điều trị sốt xuất huyết Dengue</em>. Quyết định ban hành số 2760/QĐ-BYT ngày 04 tháng 7 năm 2023. Hà Nội: Bộ Y tế; 2023.</li>
+                <li>World Health Organization. Dengue: global situation, surveillance and progress – 2024 update. <em>Wkly Epidemiol Rec</em>. 2025;100(52):665-678.</li>
+                <li>Ministry of Health Timor-Leste. <em>National Guideline for Clinical Management of Dengue 2022</em>. Dili: Ministry of Health; 2022.</li>
+                <li>Sharif N, Opu RR, Saha T, et al. Evolving epidemiology, clinical features, and genotyping of dengue outbreaks in Bangladesh, 2000-2024: a systematic review. <em>Front Microbiol</em>. 2024;15:1481418.</li>
+                <li>He S, et al. Current status of dengue fever epidemics. <em>Virol Sin</em>. 2026;41:1-9.</li>
+                <li>Zhang F, He J, Peng J, et al. Guidelines for the Diagnosis and Treatment of Dengue in China. <em>Infect Dis Immun</em>. 2021;1(3):144-152.</li>
+                <li>Trương QH, Trương UN, Nguyễn VT, et al. <em>Đánh giá các tác động không mong muốn có thể xảy ra khi phóng thả muỗi Aedes aegypti mang Wolbachia nhằm phòng chống Sốt xuất huyết tại Việt Nam</em>. Hà Nội: Dự án Ngăn chặn Sốt xuất huyết tại Việt Nam; 2011.</li>
+            </ol>
+        </footer>
+
+    </div>
+</body>
+
+</html>
