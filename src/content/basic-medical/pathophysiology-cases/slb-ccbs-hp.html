@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Nhiễm khuẩn Helicobacter pylori (H. pylori Pathophysiology & Pathogenesis): Phân tích chi tiết cơ chế thích nghi sinh học men Urease, yếu tố độc lực CagA/T4SS, VacA, DupA, các kiểu hình định cư hang vị vs thân vị, chuỗi chuyển sản - nghịch sản Correa và cơ chế sinh học phân tử đề kháng kháng sinh.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Nhiễm khuẩn Helicobacter pylori – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+    
+
+    <style>
+        /* Scoped Custom Styling for H. pylori Article */
+        .hp-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(217, 119, 6, 0.08);
+            border: 1px solid rgba(217, 119, 6, 0.2);
+            color: #d97706;
+            padding: 0.25rem 0.65rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .hemo-table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--color-border, #e2e8f0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .hemo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: var(--color-surface, #ffffff);
+        }
+
+        .hemo-table th {
+            background: var(--color-surface-2, #f8fafc);
+            color: var(--color-text, #0f172a);
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+        }
+
+        .hemo-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            color: var(--color-text, #334155);
+            vertical-align: top;
+        }
+
+        .hemo-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hemo-table tbody tr:hover {
+            background: rgba(2, 132, 199, 0.03);
+        }
+
+        .physio-figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 2rem auto;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            max-width: 100%;
+        }
+
+        .physio-figure img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .physio-figure img:hover {
+            transform: scale(1.01);
+        }
+
+        .physio-figure figcaption {
+            margin-top: 0.85rem;
+            font-size: 0.88rem;
+            color: var(--color-text-muted, #64748b);
+            line-height: 1.5;
+            text-align: center;
+            max-width: 780px;
+        }
+
+        .svg-diagram-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .svg-diagram-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .svg-diagram-card svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gene-tag {
+            font-family: monospace;
+            background: rgba(2, 132, 199, 0.1);
+            color: var(--color-primary, #0284c7);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .mutation-badge {
+            font-family: monospace;
+            background: rgba(220, 38, 38, 0.1);
+            color: #dc2626;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            display: inline-block;
+            margin: 0.1rem 0.2rem;
+        }
+
+        .pathway-step-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+        }
+
+        .pathway-step-card.danger {
+            border-left-color: #dc2626;
+        }
+
+        .pathway-step-card.warning {
+            border-left-color: #d97706;
+        }
+
+        .pathway-step-card.success {
+            border-left-color: #10b981;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li><a href="../../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../co-che-benh-sinh.html" class="nav-item active" title="Sinh lý &amp; Sinh lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">Sinh lý &amp; Sinh lý bệnh</span></a></li>
+                    <li><a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+                    <li><a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+                    <li><a href="../../calculators/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+                    <li><a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+                    <li><a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "🏠 Trang chủ", "url": "../../../../index.html"}, {"label": "Sinh lý & sinh lý bệnh", "url": "../co-che-benh-sinh.html"}, {"label": "Tiêu hóa", "url": "../co-che-benh-sinh.html#patho-tieuhoa-section"}, {"label": "Sinh lý bệnh Helicobacter pylori"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH NHIỄM KHUẨN HELICOBACTER PYLORI</h1>
+                    <p>Helicobacter pylori Pathophysiology &amp; Pathogenesis — Phân tích chi tiết hệ thống thích nghi sinh học men Urease, các yếu tố độc lực phân tử (CagA/T4SS, VacA, DupA), cơ chế rẽ nhánh bệnh lý theo vị trí định cư (hang vị vs thân vị), chuỗi biến đổi mô học ác tính Correa, và cơ chế đột biến kháng kháng sinh đa thuốc.</p>
+                </div>
+
+                <!-- LEAD PARAGRAPH -->
+                <p class="physio-lead">
+                    <span class="term-hl">Helicobacter pylori (H. pylori)</span> là xoắn khuẩn Gram âm, vi hiếu khí, cư trú chủ yếu tại lớp chất nhầy sát bề mặt biểu mô niêm mạc dạ dày người. Được phát hiện năm 1979 bởi <strong>Robin Warren</strong> và phân lập, nuôi cấy thành công năm 1982 bởi <strong>Barry Marshall</strong> (giải Nobel Y học 2005), phát hiện này đã lật đổ hoàn toàn quan niệm y khoa kinh điển cho rằng dạ dày là môi trường vô trùng. Tổ chức Y tế Thế giới (WHO/IARC) đã phân loại <i>H. pylori</i> là <strong>tác nhân sinh ung thư Nhóm I (Group 1 Carcinogen)</strong> từ năm 1994, đứng đầu căn nguyên gây viêm dạ dày mạn tính, loét dạ dày &ndash; tá tràng, u lympho MALT và ung thư biểu mô tuyến dạ dày.
+                </p>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN I: CƠ CHẾ THÍCH NGHI SINH HỌC VÀ XÂM NHẬP HÀNG RÀO CHẤT NHẦY -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-1-co-che-thich-nghi" class="section-title">
+                        <span>Phần I: Cơ Chế Thích Nghi Sinh Học &amp; Xâm Nhập Hàng Rào Chất Nhầy Dạ Dày</span>
+                    </h2>
+
+                    <p>
+                        Dịch vị dạ dày có nồng độ acid clohydric (HCl) cực cao với pH thường duy trì từ 1.0 đến 2.0 &mdash; một rào cản hóa học khắc nghiệt có thể tiêu diệt hầu hết các vi sinh vật. Tuy nhiên, <i>H. pylori</i> là một <strong>vi khuẩn trung tính chịu acid (acid-tolerant neutrophile)</strong>, phát triển một tổ hợp các cơ chế tinh vi để xâm nhập và định cư lâu dài:
+                    </p>
+
+                    <!-- GRID 3 CƠ CHẾ THÍCH NGHI -->
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <div class="card-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--color-primary);"><i class="fa-solid fa-vial"></i></div>
+                            <h4>1. Men Urease &amp; Đám Mây Kiềm</h4>
+                            <p>
+                                <i>H. pylori</i> sản xuất enzyme <strong>Urease</strong> với số lượng khổng lồ (chiếm tới 10&ndash;15% tổng lượng protein của vi khuẩn). Urease xúc tác thủy phân Urea nội sinh thành Ammonia (NH<sub>3</sub>) và Carbon dioxide (CO<sub>2</sub>). NH<sub>3</sub> thu nhận ion H<sup>+</sup> tự do tạo thành ion NH<sub>4</sub><sup>+</sup>, hình thành một <strong>"đám mây kiềm" vi môi trường</strong> bao quanh màng tế bào vi khuẩn, nâng pH cục bộ lên mức sinh lý trung tính (~7.0).
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <div class="card-icon" style="background: rgba(217, 119, 6, 0.1); color: #d97706;"><i class="fa-solid fa-arrows-spin"></i></div>
+                            <h4>2. Lông Roi (Flagella) &amp; Vận Động</h4>
+                            <p>
+                                Vi khuẩn sở hữu <strong>4 đến 6 lông roi có vỏ bao (sheathed flagella) ở một cực</strong>. Hình thái xoắn ốc kết hợp lực quay cánh quạt của chùm lông roi tạo ra mô-men xoắn cơ học mạnh mẽ, cho phép vi khuẩn "khoan" xuyên qua lớp gel chất nhầy dạ dày có độ nhớt cao để di chuyển nhanh chóng về phía lớp biểu mô có pH trung tính trước khi bị dòng acid cuốn trôi.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: #059669;"><i class="fa-solid fa-magnet"></i></div>
+                            <h4>3. Bám Dính Biểu Mô (Adhesins)</h4>
+                            <p>
+                                Sau khi tiếp cận bề mặt tế bào biểu mô, vi khuẩn liên kết bền vững thông qua các phân tử bám dính bề mặt (Adhesins):
+                                <strong>BabA</strong> (Blood group antigen-binding adhesin) liên kết kháng nguyên Lewis b; 
+                                <strong>SabA</strong> (Sialic acid-binding adhesin) liên kết sialyl-Lewis x; 
+                                <strong>HopQ</strong> gắn kết phân tử CEACAM. Sự bám dính này giúp vi khuẩn kháng lại lực nhu động tống xuất thức ăn.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- HỘP CÔNG THỨC PHẢN ỨNG UREASE -->
+                    <div class="formula-box">
+                        <div class="formula-label">PHƯƠNG TRÌNH THỦY PHÂN UREA CỦA MEN UREASE TRUNG HÒA ACID</div>
+                        <div class="formula-main">
+                            (NH<sub>2</sub>)<sub>2</sub>CO + H<sub>2</sub>O 
+                            <span style="display: inline-block; margin: 0 0.5rem; color: var(--color-primary); font-weight: 700;">&xrightarrow{\text{Urease}}</span> 
+                            2 NH<sub>3</sub> + CO<sub>2</sub>
+                        </div>
+                        <div class="formula-desc">
+                            NH<sub>3</sub> sinh ra lập tức kết hợp ion H<sup>+</sup> tự do trong lòng dạ dày: 
+                            <strong>NH<sub>3</sub> + H<sup>+</sup> &rightleftharpoons; NH<sub>4</sub><sup>+</sup></strong>. Phản ứng này vừa tiêu thụ ion H<sup>+</sup> làm tăng pH dịch vị quanh vi khuẩn, vừa tạo ra ion amoni (NH<sub>4</sub><sup>+</sup>) có độc tính trực tiếp làm tổn thương tế bào biểu mô dạ dày.
+                        </div>
+                    </div>
+
+                    <!-- CLINICAL PEARL: BARRY MARSHALL'S SELF EXPERIMENT -->
+                    <div class="clinical-pearl">
+                        💎 <strong>Cột mốc Lịch sử Y khoa &ndash; Cuộc tự thí nghiệm của Barry Marshall:</strong> Để chứng minh vi khuẩn sống là nguyên nhân gây viêm loét dạ dày (vượt qua định đề Koch kinh điển), Barry Marshall đã dũng cảm tự uống 30 mL dịch nuôi cấy chứa hàng tỷ vi khuẩn <i>H. pylori</i>. Sau vài ngày, ông xuất hiện triệu chứng nôn ói dữ dội, mệt mỏi và kết quả nội soi sinh thiết xác nhận tình trạng viêm dạ dày cấp tính với sự định cư dày đặc của vi khuẩn. Công trình này đã thay đổi toàn bộ phác đồ điều trị bệnh lý dạ dày từ phẫu thuật/thuốc kháng acid đơn thuần sang liệu pháp kháng sinh tiệt trừ vi khuẩn.
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN II: CÁC YẾU TỐ ĐỘC LỰC VÀ CƠ CHẾ SINH BỆNH HỌC PHÂN TỬ -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-2-yeu-to-doc-luc" class="section-title">
+                        <span>Phần II: Các Yếu Tố Độc Lực &amp; Cơ Chế Sinh Bệnh Học Phân Tử Phá Hủy Niêm Mạc</span>
+                    </h2>
+
+                    <p>
+                        Mức độ tổn thương tế bào, độ nặng của viêm loét và nguy cơ ung thư biểu mô tuyến dạ dày tương quan chặt chẽ với các yếu tố độc lực do các chủng <i>H. pylori</i> biểu hiện:
+                    </p>
+
+                    <!-- VIRULENCE FACTORS GRID -->
+                    <div class="physio-grid">
+                        <!-- CAGA & T4SS -->
+                        <div class="physio-grid-card" style="border-top: 4px solid #dc2626;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                                <h4 style="margin: 0; color: #dc2626;"><i class="fa-solid fa-syringe"></i> CagA &amp; Hệ Thống T4SS</h4>
+                                <span class="hp-badge-pill" style="color: #dc2626; background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2);">Độc lực cao (Oncoprotein)</span>
+                            </div>
+                            <p>
+                                <strong>CagA (Cytotoxin-associated gene A)</strong> là protein độc lực tối quan trọng, được mã hóa trên đảo bệnh sinh <i>cag</i> PAI (Pathogenicity Island). Vi khuẩn sử dụng <strong>hệ thống bài tiết tuýp IV (T4SS)</strong> như một "kim tiêm phân tử" cắm xuyên màng tế bào biểu mô dạ dày để bơm trực tiếp protein CagA vào bào tương của tế bào ký chủ.
+                            </p>
+                            <div class="pathway-chain" style="margin: 0.75rem 0;">
+                                <span class="pathway-node">Bơm CagA qua T4SS</span>
+                                <span class="pathway-arrow">&rarr;</span>
+                                <span class="pathway-node red">Phosphoryl hóa bởi Src kinase</span>
+                                <span class="pathway-arrow">&rarr;</span>
+                                <span class="pathway-node red">Kích hoạt SHP-2 phosphatase</span>
+                                <span class="pathway-arrow">&rarr;</span>
+                                <span class="pathway-node danger">Biến dạng "Hummingbird" &amp; Phá vỡ Tight Junctions</span>
+                            </div>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                CagA phosphoryl hóa liên kết và kích hoạt phosphatase SHP-2, gây rối loạn cấu trúc khung tế bào actin, phá hủy các phức hợp liên kết vòng bịt (tight junctions như ZO-1, claudin-1), gây tăng sinh tế bào mất kiểm soát và kích thích chuyển dạng tiền ung thư (Epithelial-Mesenchymal Transition - EMT).
+                            </p>
+                        </div>
+
+                        <!-- VACA -->
+                        <div class="physio-grid-card" style="border-top: 4px solid #9333ea;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                                <h4 style="margin: 0; color: #9333ea;"><i class="fa-solid fa-circle-dot"></i> VacA (Vacuolating Cytotoxin A)</h4>
+                                <span class="hp-badge-pill" style="color: #9333ea; background: rgba(147, 51, 234, 0.08); border-color: rgba(147, 51, 234, 0.2);">Ngoại độc tố Apoptosis</span>
+                            </div>
+                            <p>
+                                <strong>VacA</strong> là ngoại độc tố protein được vi khuẩn tiết ra môi trường xung quanh, tự gắn vào màng tế bào biểu mô và được nhập bào (endocytosis). Bên trong tế bào, VacA tạo các kênh chọn lọc anion clorua trên màng nội bào, làm trương phình endosome và <strong>tạo các không bào (vacuoles) khổng lồ</strong> bên trong bào tương.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                Đồng thời, VacA thâm nhập trực tiếp vào ty thể, làm mở kênh chuyển tiếp tính thấm màng ty thể (mPTP), giải phóng <strong>Cytochrome C</strong> vào bào tương và kích hoạt chuỗi Caspase gây <strong>chết tế bào biểu mô theo chương trình (Apoptosis)</strong>. Ngoài ra, VacA còn ức chế sự tăng sinh và hoạt hóa của tế bào lympho T helper, giúp vi khuẩn trốn thoát đáp ứng miễn dịch của ký chủ.
+                            </p>
+                        </div>
+
+                        <!-- DUPA & OTHERS -->
+                        <div class="physio-grid-card" style="border-top: 4px solid #d97706;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                                <h4 style="margin: 0; color: #d97706;"><i class="fa-solid fa-fire"></i> DupA &amp; Yếu Tố Hướng Động Viêm</h4>
+                                <span class="hp-badge-pill" style="color: #d97706; background: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.2);">Thúc đẩy Loét Tá Tràng</span>
+                            </div>
+                            <p>
+                                <strong>DupA (Duodenal ulcer promoting gene a)</strong> là gene độc lực liên quan trực tiếp đến việc tăng tiết cytokine hướng động mạnh <strong>Interleukin-8 (IL-8)</strong> từ tế bào biểu mô hang vị. IL-8 thu hút và kích hoạt các bạch cầu trung tính (neutrophils) thâm nhiễm ồ ạt, phóng thích gốc tự do oxy hóa (ROS) và protease gây viêm trợt cấp và loét hành tá tràng.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                Các yếu tố khác bao gồm <strong>IceA</strong> (Induced by contact with epithelium), <strong>OipA</strong> (Outer inflammatory protein A) và <strong>Urease</strong> (ngoài vai trò nâng pH còn kích hoạt giải phóng các cytokine tiền viêm IL-1&beta;, TNF-&alpha;, IL-6).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- BẢNG TỔNG HỢP CÁC YẾU TỐ ĐỘC LỰC -->
+                    <h3 id="bang-cac-yeu-to-doc-luc" class="subsection-title">Bảng Tổng Hợp Các Yếu Tố Độc Lực Của Helicobacter pylori</h3>
+                    <div class="hemo-table-wrap">
+                        <table class="hemo-table">
+                            <thead>
+                                <tr>
+                                    <th>Yếu tố độc lực</th>
+                                    <th>Bản chất &amp; Vị trí</th>
+                                    <th>Cơ chế bệnh sinh phân tử</th>
+                                    <th>Kết cục lâm sàng chính</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>CagA / T4SS</strong></td>
+                                    <td>Oncoprotein trên đảo <i>cag</i> PAI, tiết qua hệ thống bài tiết Type IV</td>
+                                    <td>Phosphoryl hóa bởi Src &rarr; hoạt hóa SHP-2 &rarr; biến dạng tế bào kiểu "hummingbird", phá vỡ tight junctions, kích thích tăng sinh</td>
+                                    <td>Viêm dạ dày nặng, Loét dạ dày &ndash; tá tràng, <strong>Ung thư biểu mô tuyến dạ dày</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>VacA</strong></td>
+                                    <td>Ngoại độc tố protein tiết ra ngoài màng vi khuẩn</td>
+                                    <td>Tạo không bào khổng lồ nội bào, đục thủng màng ty thể &rarr; thoát Cytochrome C &rarr; kích hoạt Apoptosis, ức chế tế bào T</td>
+                                    <td>Tổn thương biểu mô, loét niêm mạc, suy giảm miễn dịch tế bào tại chỗ</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DupA</strong></td>
+                                    <td>Gene độc lực trên NST vi khuẩn</td>
+                                    <td>Kích thích tế bào biểu mô hang vị tăng sinh mạnh IL-8 &rarr; hướng động bạch cầu trung tính rầm rộ</td>
+                                    <td>Gia tăng mạnh nguy cơ <strong>Loét tá tràng (Duodenal Ulcer)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Urease</strong></td>
+                                    <td>Enzyme nội bào &amp; bề mặt (10&ndash;15% tổng protein)</td>
+                                    <td>Thủy phân urea tạo NH<sub>3</sub>/NH<sub>4</sub><sup>+</sup> trung hòa acid; ion amoni gây độc trực tiếp ty thể và màng tế bào</td>
+                                    <td>Giúp vi khuẩn sống sót trong dịch vị acid; khởi phát viêm trợt niêm mạc</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>BabA / SabA / HopQ</strong></td>
+                                    <td>Adhesins protein màng ngoài (OMPs)</td>
+                                    <td>Liên kết đặc hiệu kháng nguyên nhóm máu Lewis b, sialyl-Lewis x và phân tử CEACAM của tế bào ký chủ</td>
+                                    <td>Bám dính bền vững, chống nhu động dạ dày, tạo điều kiện cho T4SS tiêm CagA</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Lông roi (Flagella)</strong></td>
+                                    <td>4&ndash;6 lông roi có bao ở một cực</td>
+                                    <td>Tạo lực chuyển động cơ học bơi xoắn ốc qua lớp gel nhầy dạ dày</td>
+                                    <td>Xâm nhập và định cư sâu sát bề mặt biểu mô niêm mạc</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN III: PHẢN ỨNG VIÊM KÝ CHỦ VÀ CON ĐƯỜNG RẼ NHÁNH BỆNH LÝ -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-3-con-duong-re-nhanh" class="section-title">
+                        <span>Phần III: Phản Ứng Viêm Ký Chủ &amp; Sự Rẽ Nhánh Bệnh Lý Theo Vùng Định Cư</span>
+                    </h2>
+
+                    <p>
+                        Sự cư trú của <i>H. pylori</i> kích hoạt đáp ứng miễn dịch bẩm sinh và thích ứng kéo dài tại niêm mạc dạ dày. Tuy nhiên, đáp ứng miễn dịch không thể tiệt trừ được vi khuẩn mà ngược lại trở thành động lực chính thúc đẩy phá hủy mô mạn tính. Đặc điểm phân bố tổn thương loét và nguy cơ ung thư phụ thuộc chặt chẽ vào <strong>vùng dạ dày bị định cư ưu thế</strong>:
+                    </p>
+
+                    <!-- 3 CON ĐƯỜNG RẼ NHÁNH -->
+                    <div class="pathway-step-card danger">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <h4 style="margin: 0; color: #dc2626;"><i class="fa-solid fa-location-crosshairs"></i> 1. Viêm Ưu Thế Vùng Hang Vị (Antral-Predominant Gastritis)</h4>
+                            <span class="hp-badge-pill" style="color: #dc2626; background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2);">&uarr;&uarr; Acid (Tăng toan) &rarr; Loét Tá Tràng</span>
+                        </div>
+                        <p style="margin-top: 0.75rem;">
+                            Khi vi khuẩn khu trú chủ yếu tại vùng hang vị dạ dày:
+                        </p>
+                        <ul style="margin: 0.5rem 0 0 1.25rem; line-height: 1.6;">
+                            <li>Phản ứng viêm mạn tính gây tổn thương chọn lọc các <strong>tế bào D (D-cells)</strong> ở hang vị, làm sụt giảm nghiêm trọng nồng độ <strong>Somatostatin</strong> (hormone ức chế tiết gastrin).</li>
+                            <li>Sự mất ức chế hồi tác này khiến <strong>tế bào G (G-cells)</strong> tăng tiết mạnh <strong>Gastrin</strong> vào máu (Hypergastrinemia).</li>
+                            <li>Gastrin theo tuần hoàn đến kích thích trực tiếp tế bào thành (Parietal cells) và tế bào ECL ở vùng thân vị (nơi niêm mạc còn nguyên vẹn chưa bị viêm) tăng bài tiết acid HCl dữ dội (<strong>Hyperchlorhydria</strong>).</li>
+                            <li>Lượng acid dư thừa tràn xuống hành tá tràng vượt quá dung lượng đệm của bicarbonate dịch tụy, gây xói mòn niêm mạc và kích hoạt hiện tượng <strong>dị sản biểu mô dạ dày tại tá tràng (Gastric metaplasia in duodenum)</strong>.</li>
+                            <li><i>H. pylori</i> xâm nhập và định cư trên các đảo biểu mô dị sản này tại tá tràng, kích hoạt phản ứng viêm tại chỗ và hình thành ổ <strong>Loét tá tràng (Duodenal Ulcer)</strong>. Thể bệnh này có nguy cơ ung thư dạ dày rất thấp.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pathway-step-card warning">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <h4 style="margin: 0; color: #d97706;"><i class="fa-solid fa-shield-virus"></i> 2. Viêm Ưu Thế Vùng Thân Vị Hoặc Viêm Toàn Bộ Dạ Dày (Corpus-Predominant / Pangastritis)</h4>
+                            <span class="hp-badge-pill" style="color: #d97706; background: rgba(217, 119, 6, 0.08); border-color: rgba(217, 119, 6, 0.2);">&darr;&darr; Acid (Giảm toan) &rarr; Loét Dạ Dày &amp; Ung Thư</span>
+                        </div>
+                        <p style="margin-top: 0.75rem;">
+                            Khi vi khuẩn lan tỏa định cư ưu thế ở vùng thân vị hoặc toàn bộ dạ dày:
+                        </p>
+                        <ul style="margin: 0.5rem 0 0 1.25rem; line-height: 1.6;">
+                            <li>Phản ứng viêm mạn tính thâm nhiễm lympho bào và bạch cầu đa nhân phá hủy trực tiếp các tuyến dạ dày và <strong>tế bào thành (Parietal cells)</strong> tại thân vị.</li>
+                            <li>Dẫn đến tình trạng <strong>viêm teo niêm mạc dạ dày (Gastric atrophy)</strong> và suy giảm bài tiết acid mạn tính (<strong>Hypochlorhydria hoặc Achlorhydria</strong>).</li>
+                            <li>Sự sụt giảm acid làm pH dạ dày tăng cao, tạo điều kiện cho các vi khuẩn yếm khí đường ruột phát triển sinh ra các hợp chất sinh ung N-nitroso.</li>
+                            <li>Tình trạng viêm teo niêm mạc mạn tính kết hợp độc tính CagA/VacA là căn nguyên trực tiếp hình thành <strong>Loét dạ dày (Gastric Ulcer)</strong> và khởi động chuỗi biến đổi ác tính tiến triển thành <strong>Ung thư biểu mô tuyến dạ dày (Gastric Adenocarcinoma)</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="pathway-step-card success">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <h4 style="margin: 0; color: #059669;"><i class="fa-solid fa-scale-balanced"></i> 3. Viêm Dạ Dày Hỗn Hợp Mức Độ Nhẹ (Mild-Mixed Gastritis)</h4>
+                            <span class="hp-badge-pill" style="color: #059669; background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2);">Không thay đổi toan / Không loét</span>
+                        </div>
+                        <p style="margin-top: 0.75rem;">
+                            Vi khuẩn phân bố đều khắp dạ dày ở mật độ thấp, không gây biến đổi đáng kể tổng lượng acid bài tiết, có thể tăng nhẹ gastrin máu nhưng không hình thành ổ loét trên lâm sàng (chiếm đa số người nhiễm mang khuẩn không triệu chứng).
+                        </p>
+                    </div>
+
+                    <!-- HÌNH ẢNH MINH HỌA 1: SƠ ĐỒ ĐỊNH CƯ THEO VÙNG GSCARR 2025 -->
+                    <figure class="physio-figure">
+                        <img src="../images/hp/hp-colonization-regions.png" alt="Sơ đồ định cư của H. pylori tại các vùng dạ dày khác nhau dẫn đến các bệnh lý dạ dày tá tràng riêng biệt" class="physio-img lightbox-trigger">
+                        <figcaption>
+                            <strong>Hình 1: Tiến trình định cư của <i>H. pylori</i> tại các vùng dạ dày dẫn đến các bệnh lý tiêu hóa khác nhau.</strong><br>
+                            (Nguồn: Ghonge et al., <i>GSC Adv Res Rev</i>, 2025). Nhiễm khuẩn mạn tính kích hoạt giải phóng các cytokine tiền viêm (IL-1&beta;, COX-2, iNOS) rẽ nhánh thành: (1) <i>Antral predominant gastritis</i> &rarr; tăng tiết acid &rarr; Loét tá tràng; (2) <i>Mild-mixed gastritis</i> &rarr; tăng gastrin máu đơn thuần; (3) <i>Corpus predominant gastritis</i> &rarr; phản ứng viêm niêm mạc tăng mạnh &rarr; phá hủy tế bào thành gây teo niêm mạc &rarr; Loét dạ dày &amp; Ung thư.
+                        </figcaption>
+                    </figure>
+
+                    <!-- HÌNH ẢNH MINH HỌA 2: SƠ ĐỒ NOBEL COMMITTEE 2005 -->
+                    <figure class="physio-figure">
+                        <img src="../images/hp/hp-pathogenesis-nobel.png" alt="Sơ đồ cơ chế bệnh sinh của nhiễm trùng Helicobacter pylori theo Ủy ban Nobel" class="physio-img lightbox-trigger">
+                        <figcaption>
+                            <strong>Hình 2: Sơ đồ cơ chế bệnh sinh của nhiễm trùng <i>Helicobacter pylori</i> (Ủy ban Nobel Y học, 2005).</strong><br>
+                            Ba giai đoạn tiến triển chính: (1) <strong>Infection</strong>: Vi khuẩn xâm nhập và định cư ở phần thấp dạ dày (hang vị); (2) <strong>Inflammation</strong>: Kích hoạt viêm niêm mạc dạ dày (gastritis) âm thầm; (3) <strong>Ulcer</strong>: Phá hủy lớp chất nhầy bảo vệ, acid dịch vị ăn mòn niêm mạc gây loét tá tràng hoặc loét dạ dày kèm các biến chứng đe dọa tính mạng (xuất huyết tiêu hóa, thủng ổ loét).
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN IV: CHUỖI BIẾN ĐỔI MÔ HỌC ÁC TÍNH (CORREA'S CASCADE) & U LYMPHO MALT -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-4-chuoi-correa-malt" class="section-title">
+                        <span>Phần IV: Chuỗi Biến Đổi Mô Học Ác Tính (Correa's Cascade) &amp; U Lympho MALT</span>
+                    </h2>
+
+                    <p>
+                        Dưới tác động của phản ứng viêm kéo dài hàng chục năm do <i>H. pylori</i> phối hợp với các yếu tố môi trường (chế độ ăn mặn, hút thuốc lá, thiếu vi chất), cấu trúc mô học biểu mô dạ dày biến đổi tuần tự qua <strong>chuỗi tiến trình phát sinh ung thư của Pelayo Correa (Correa's Cascade)</strong>:
+                    </p>
+
+                    <!-- CHUỖI CORREA PATHWAY -->
+                    <div class="pathway-chain" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1.5rem 0;">
+                        <span class="pathway-node" style="background: rgba(2, 132, 199, 0.1); border-color: var(--color-primary); color: var(--color-primary);">Niêm mạc Bình Thường</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node" style="background: rgba(217, 119, 6, 0.1); border-color: #d97706; color: #d97706;">Viêm Dạ Dày Nông Mạn Tính</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node" style="background: rgba(234, 88, 12, 0.1); border-color: #ea580c; color: #ea580c;">Viêm Teo Niêm Mạc (Atrophy)</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node" style="background: rgba(147, 51, 234, 0.1); border-color: #9333ea; color: #9333ea;">Dị Sản Ruột (Metaplasia)</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node" style="background: rgba(220, 38, 38, 0.1); border-color: #dc2626; color: #dc2626;">Nghịch Sản (Dysplasia)</span>
+                        <span class="pathway-arrow">&rarr;</span>
+                        <span class="pathway-node red" style="font-weight: 800;">Ung Thư Biểu Mô Tuyến (Carcinoma)</span>
+                    </div>
+
+                    <!-- CHI TIẾT CÁC BƯỚC CORREA VÀ MALT -->
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <h4 style="color: #ea580c;"><i class="fa-solid fa-hourglass-half"></i> 1. Viêm Teo &amp; Dị Sản Ruột (Metaplasia)</h4>
+                            <p>
+                                Viêm mạn tính gây mất các tuyến bình thường của dạ dày (tuyến bài tiết acid và pepsinogen). Cơ thể thích nghi bằng cách thay thế biểu mô dạ dày bằng <strong>biểu mô dạng ruột</strong> có vi nhung mao và tế bào đài tiết chất nhầy (Goblet cells):
+                            </p>
+                            <ul style="font-size: 0.88rem; margin-left: 1.25rem; color: var(--color-text-muted);">
+                                <li><strong>Dị sản ruột hoàn toàn (Type I - Complete):</strong> Biểu mô ruột non hoàn chỉnh với enzyme brush-border (nguy cơ ác tính thấp).</li>
+                                <li><strong>Dị sản ruột không hoàn toàn (Type II/III - Incomplete):</strong> Biểu mô dạng đại tràng tiết sulfomucin (nguy cơ ác tính cao, tổn thương tiền ung thư thực thụ).</li>
+                            </ul>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <h4 style="color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> 2. Nghịch Sản (Dysplasia) &amp; Ung Thư Tuyến</h4>
+                            <p>
+                                Tế bào biểu mô tích tụ các đột biến gene (TP53, CDH1, KRAS, PIK3CA) và bất thường biểu sinh (hypermethylation promoter của các gene đè nén u):
+                            </p>
+                            <ul style="font-size: 0.88rem; margin-left: 1.25rem; color: var(--color-text-muted);">
+                                <li><strong>Nghịch sản độ thấp (Low-grade Dysplasia):</strong> Nhân tế bào to, tăng sắc nhẹ, phân cực còn duy trì.</li>
+                                <li><strong>Nghịch sản độ cao (High-grade Dysplasia):</strong> Rối loạn cấu trúc tuyến nặng nề, mất phân cực, tương đương ung thư biểu mô tại chỗ (Carcinoma in situ).</li>
+                                <li><strong>Adenocarcinoma:</strong> Xâm lấn qua màng đáy vào lớp dưới niêm mạc.</li>
+                            </ul>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <h4 style="color: #9333ea;"><i class="fa-solid fa-dna"></i> 3. U Lympho MALT (MALT Lymphoma)</h4>
+                            <p>
+                                Bình thường niêm mạc dạ dày không có mô lympho. Nhiễm khuẩn <i>H. pylori</i> kích thích phản ứng miễn dịch mạn tính hình thành các <strong>nang lympho thứ phát (Mucosa-Associated Lymphoid Tissue - MALT)</strong> tại lớp đệm niêm mạc.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                Sự kích thích kháng nguyên kéo dài làm tăng sinh đơn dòng các tế bào lympho B vùng biên (Marginal zone B-cells), hình thành tổn thương xâm lấn biểu mô (lymphoepithelial lesions). Ở giai đoạn sớm (chưa có chuyển vị NST t(11;18)), <strong>tiệt trừ thành công <i>H. pylori</i> bằng kháng sinh có thể giúp u lympho MALT thoái lui hoàn toàn ở 70&ndash;80% trường hợp</strong> mà không cần xạ trị hay hóa trị.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- HÌNH ẢNH MINH HỌA 3: LỊCH SỬ TỰ NHIÊN NOBEL HELICOBACTER PDF -->
+                    <figure class="physio-figure">
+                        <img src="../images/hp/hp-natural-history-correa.png" alt="Lịch sử tự nhiên của nhiễm Helicobacter pylori từ viêm dạ dày nông đến Loét, MALT lymphoma và Ung thư" class="physio-img lightbox-trigger">
+                        <figcaption>
+                            <strong>Hình 3: Lịch sử tự nhiên của niêm mạc dạ dày sau nhiễm <i>H. pylori</i> (Ủy ban Nobel Y học).</strong><br>
+                            Tiến trình phân nhánh từ viêm dạ dày nông (Superficial gastritis) và hình thành các nang lympho (Lymphoid follicles): (1) Nhánh phát triển thành viêm loét dạ dày tá tràng (Ulcer); (2) Nhánh thúc đẩy tăng sinh lympho B tiến triển u lympho mô liên kết niêm mạc (MALT lymphoma); (3) Nhánh viêm teo niêm mạc &amp; dị sản ruột (Atrophy, intestinal metaplasia) &rarr; Nghịch sản (Dysplasia) &rarr; Ung thư biểu mô tuyến dạ dày (Carcinoma).
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN V: CƠ CHẾ SINH HỌC PHÂN TỬ ĐỀ KHÁNG KHÁNG SINH -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-5-co-che-khang-khang-sinh" class="section-title">
+                        <span>Phần V: Cơ Chế Sinh Học Phân Tử Của Sự Đề Kháng Kháng Sinh Ở H. pylori</span>
+                    </h2>
+
+                    <p>
+                        Sự thất bại của các phác đồ tiệt trừ <i>H. pylori</i> (đặc biệt là phác đồ 3 thuốc kinh điển PPI &ndash; Clarithromycin &ndash; Amoxicillin) chủ yếu xuất phát từ <strong>tỷ lệ đột biến gene kháng thuốc ngày càng gia tăng</strong> trên toàn cầu. Khác với nhiều vi khuẩn đường ruột khác truyền plasmid kháng thuốc, <i>H. pylori</i> đề kháng kháng sinh chủ yếu thông qua <strong>đột biến điểm (point mutations)</strong> trên nhiễm sắc thể tại các gene đích:
+                    </p>
+
+                    <!-- GRID 5 KHÁNG SINH VÀ CƠ CHẾ ĐỘT BIẾN -->
+                    <div class="physio-grid">
+                        <!-- CLARITHROMYCIN -->
+                        <div class="physio-grid-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <h4 style="color: #dc2626;"><i class="fa-solid fa-capsules"></i> Clarithromycin (Macrolide)</h4>
+                                <span class="gene-tag">gene rrna23S</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                <strong>Cơ chế tác dụng:</strong> Gắn vào tiểu đơn vị 50S ribosome vi khuẩn (vùng peptidyl transferase của 23S rRNA), ức chế tổng hợp chuỗi polypeptide.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                <strong>Đột biến kháng thuốc:</strong> Đột biến điểm tại vùng peptidyl transferase của gene <i>rrna23S</i>:
+                                <span class="mutation-badge">A2142G</span>
+                                <span class="mutation-badge">A2142C</span>
+                                <span class="mutation-badge">A2143G</span>
+                                <span class="mutation-badge">A2144G</span>. 
+                                Đột biến làm biến dạng không gian vị trí gắn, làm mất hoàn toàn ái lực của Clarithromycin. Đột biến A2143G là dạng phổ biến nhất tại Việt Nam và Châu Á.
+                            </p>
+                        </div>
+
+                        <!-- AMOXICILLIN -->
+                        <div class="physio-grid-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <h4 style="color: #0284c7;"><i class="fa-solid fa-capsules"></i> Amoxicillin (&beta;-Lactam)</h4>
+                                <span class="gene-tag">gene pbp1</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                <strong>Cơ chế tác dụng:</strong> Gắn vào các protein liên kết penicillin (PBPs), ức chế enzyme transpeptidase tổng hợp vách peptidoglycan.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                <strong>Đột biến kháng thuốc:</strong> Tích tụ các đột biến sai nghĩa (missense) tại module gắn penicillin của protein PBP-1A (mã hóa bởi gene <i>pbp1</i>), đặc biệt tại vị trí 
+                                <span class="mutation-badge">Asn562Tyr</span>
+                                <span class="mutation-badge">Asn562Lys</span>
+                                <span class="mutation-badge">Phe366</span>
+                                <span class="mutation-badge">Ser414</span>
+                                <span class="mutation-badge">Thr556</span>. 
+                                Làm giảm ái lực liên kết của Amoxicillin với vách tế bào vi khuẩn.
+                            </p>
+                        </div>
+
+                        <!-- METRONIDAZOLE -->
+                        <div class="physio-grid-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <h4 style="color: #d97706;"><i class="fa-solid fa-capsules"></i> Metronidazole (Nitroimidazole)</h4>
+                                <span class="gene-tag">gene rdxA / frxA</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                <strong>Cơ chế tác dụng:</strong> Tiền chất cần được enzyme nitroreductase của vi khuẩn khử hóa thành các gốc tự do nitro hoạt động phá hủy DNA.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                <strong>Đột biến kháng thuốc:</strong> Đột biến vô nghĩa (nonsense), dịch khung (frameshift) hoặc missense làm bất hoạt hoàn toàn enzyme <strong>RdxA</strong> (oxygen-insensitive NADPH nitroreductase) phối hợp với đột biến gene <strong>frxA/frxB</strong>, khiến vi khuẩn mất khả năng kích hoạt thuốc.
+                            </p>
+                        </div>
+
+                        <!-- LEVOFLOXACIN -->
+                        <div class="physio-grid-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <h4 style="color: #9333ea;"><i class="fa-solid fa-capsules"></i> Levofloxacin (Fluoroquinolone)</h4>
+                                <span class="gene-tag">gene gyrA / gyrB</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                <strong>Cơ chế tác dụng:</strong> Ức chế enzyme DNA gyrase (topoisomerase II), ngăn cản quá trình tháo xoắn và nhân đôi DNA vi khuẩn.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                <strong>Đột biến kháng thuốc:</strong> Đột biến điểm tại vùng quyết định kháng quinolone (QRDR) của gene <i>gyrA</i> tại các axit amin 
+                                <span class="mutation-badge">Asn87Lys/Tyr</span>
+                                <span class="mutation-badge">Asp91Gly/Asn/Tyr</span>
+                                và đột biến vùng Glu415&ndash;Ser454 trên <i>gyrB</i>. Làm thay đổi cấu hình vị trí gắn quinolone.
+                            </p>
+                        </div>
+
+                        <!-- TETRACYCLINE -->
+                        <div class="physio-grid-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <h4 style="color: #059669;"><i class="fa-solid fa-capsules"></i> Tetracycline</h4>
+                                <span class="gene-tag">gene rrna16S</span>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                <strong>Cơ chế tác dụng:</strong> Gắn vào tiểu đơn vị 30S ribosome, ngăn chặn aminoacyl-tRNA gắn vào vị trí A.
+                            </p>
+                            <p style="font-size: 0.88rem; color: var(--color-text-muted);">
+                                <strong>Đột biến kháng thuốc:</strong> Đột biến bộ ba nucleotid đặc hiệu 
+                                <span class="mutation-badge">AGA926-928TTC</span>
+                                trên gene <i>rrna16S</i> (16S rRNA). Tỷ lệ kháng Tetracycline hiện tại vẫn ở mức thấp (&lt;5% ở hầu hết các khu vực).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- BẢNG TRA CỨU TIÊU CHUẨN PHÂN TỬ ĐỀ KHÁNG KHÁNG SINH (MIN ET AL., 2024) -->
+                    <h3 id="bang-tieu-chuan-phan-tu-khang-thuoc" class="subsection-title">Bảng Tiêu Chuẩn Phân Loại &amp; Các Vị Trí Đột Biến Kháng Kháng Sinh Của H. pylori</h3>
+                    <div class="hemo-table-wrap">
+                        <table class="hemo-table">
+                            <thead>
+                                <tr>
+                                    <th>Kháng sinh</th>
+                                    <th>Gene đích</th>
+                                    <th>Vị trí đột biến Amino Acid / Nucleotid</th>
+                                    <th>Tiêu chuẩn xác định kháng thuốc trên phân tích phân tử (NGS / PCR)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Amoxicillin</strong></td>
+                                    <td><i>pbp1</i></td>
+                                    <td>Phe366, Gly367, Ala369, Ser414, Val469, Phe473, Thr541, Ser543, Thr556, Thr558, Asn560, Asn562 của protein Pbp1</td>
+                                    <td>Nhận diện tối thiểu một trong các đột biến tại các vị trí axit amin này</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Clarithromycin</strong></td>
+                                    <td><i>HPrrna23S</i></td>
+                                    <td>A2142, A2143, A2144 (vùng 23S rRNA)</td>
+                                    <td>Phát hiện đột biến điểm thay thế tại ít nhất một trong ba nucleotid này</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Metronidazole</strong></td>
+                                    <td><i>rdxA, frxA, frxB</i></td>
+                                    <td>Arg16, His17, Ser18, Lys20, Arg41, Leu42, Ser43, Ser45, Ser46, Tyr47, Asn48, Gln50, Val55, Met56, Asn73, Ile142, Gly145, Met149, Ile160, Gly162, Gly163, Arg200, Ser202, Trp209 của protein RdxA</td>
+                                    <td>Đột biến missense tại các vị trí của RdxA, hoặc đột biến vô nghĩa (nonsense), đột biến dịch khung gây cắt cụt protein của RdxA, FrxA, FrxB</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tetracycline</strong></td>
+                                    <td><i>HPrrna16S</i></td>
+                                    <td>Vùng nucleotid AGA926-928 (16S rRNA)</td>
+                                    <td>Đột biến chuyển đổi thành bộ ba nucleotid TTC</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Levofloxacin</strong></td>
+                                    <td><i>gyrA, gyrB</i></td>
+                                    <td>Vị trí Asn87 và Asp91 trên protein GyrA; Vùng QRDR (Glu415-Ser454) trên protein GyrB</td>
+                                    <td>Xuất hiện đột biến tại các vị trí mô tả ở gene <i>gyrA</i> và/hoặc <i>gyrB</i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VI: SƠ ĐỒ VECTOR TỔNG HỢP & TƯƠNG QUAN LÂM SÀNG CHẨN ĐOÁN -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="phan-6-so-do-tong-hop-lam-sang" class="section-title">
+                        <span>Phần VI: Sơ Đồ Tổng Hợp Sinh Lý Bệnh &amp; Tương Quan Lâm Sàng Chẩn Đoán</span>
+                    </h2>
+
+                    <!-- INLINE SVG DIAGRAM EDITORIAL STANDARD -->
+                    <div class="svg-diagram-card">
+                        <div class="svg-diagram-title">
+                            <i class="fa-solid fa-diagram-project" style="color: var(--color-primary);"></i>
+                            Sơ Đồ Tổng Hợp Chuỗi Sinh Lý Bệnh Nhiễm Khuẩn Helicobacter pylori
+                        </div>
+                        <svg viewBox="0 0 920 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sơ đồ tổng hợp sinh lý bệnh H. pylori">
+                            <defs>
+                                <linearGradient id="hpGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#0284c7" stop-opacity="0.12" />
+                                    <stop offset="100%" stop-color="#0284c7" stop-opacity="0.04" />
+                                </linearGradient>
+                                <linearGradient id="hpGradRed" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#dc2626" stop-opacity="0.12" />
+                                    <stop offset="100%" stop-color="#dc2626" stop-opacity="0.04" />
+                                </linearGradient>
+                                <linearGradient id="hpGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#d97706" stop-opacity="0.12" />
+                                    <stop offset="100%" stop-color="#d97706" stop-opacity="0.04" />
+                                </linearGradient>
+                                <linearGradient id="hpGradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#9333ea" stop-opacity="0.12" />
+                                    <stop offset="100%" stop-color="#9333ea" stop-opacity="0.04" />
+                                </linearGradient>
+                                <filter id="hpShadow" x="-5%" y="-5%" width="110%" height="110%">
+                                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.06" />
+                                </filter>
+                            </defs>
+
+                            <!-- Background Grid Lines subtle -->
+                            <rect width="920" height="460" fill="var(--color-surface, #ffffff)" rx="12" />
+
+                            <!-- BOX 1: INFECTION & ADAPTATION -->
+                            <g filter="url(#hpShadow)">
+                                <rect x="30" y="30" width="240" height="170" rx="10" fill="url(#hpGrad1)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="150" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" fill="#0284c7" text-anchor="middle">
+                                    1. XÂM NHẬP &amp; THÍCH NGHI
+                                </text>
+                                <text x="45" y="80" font-family="Inter, sans-serif" font-size="12" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Urease:</tspan> Thủy phân Urea
+                                </text>
+                                <text x="55" y="98" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Đám mây kiềm NH3/NH4+ (pH ~7)
+                                </text>
+                                <text x="45" y="120" font-family="Inter, sans-serif" font-size="12" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Lông roi (Flagella):</tspan> Bơi qua
+                                </text>
+                                <text x="55" y="138" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    lớp chất nhầy có độ nhớt cao
+                                </text>
+                                <text x="45" y="160" font-family="Inter, sans-serif" font-size="12" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">Adhesins (BabA/SabA):</tspan>
+                                </text>
+                                <text x="55" y="178" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    Bám dính biểu mô dạ dày
+                                </text>
+                            </g>
+
+                            <!-- ARROW 1 -> 2 -->
+                            <path d="M 270 115 L 320 115" stroke="var(--color-border, #cbd5e1)" stroke-width="2" marker-end="url(#arrow)" fill="none" />
+                            <polygon points="320,115 312,110 312,120" fill="#0284c7" />
+
+                            <!-- BOX 2: TOXIN DELIVERY & CELL DAMAGE -->
+                            <g filter="url(#hpShadow)">
+                                <rect x="330" y="30" width="250" height="170" rx="10" fill="url(#hpGradAmber)" stroke="#d97706" stroke-width="1.5" />
+                                <text x="455" y="55" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" fill="#d97706" text-anchor="middle">
+                                    2. ĐỘC LỰC &amp; TỔN THƯƠNG TẾ BÀO
+                                </text>
+                                <text x="345" y="80" font-family="Inter, sans-serif" font-size="12" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">CagA qua T4SS:</tspan> Tiêm vào bào tương
+                                </text>
+                                <text x="355" y="98" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Hoạt hóa SHP-2, phá tight junctions
+                                </text>
+                                <text x="345" y="120" font-family="Inter, sans-serif" font-size="12" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">VacA Cytotoxin:</tspan> Tạo không bào
+                                </text>
+                                <text x="355" y="138" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Thoát Cytochrome C &rarr; Apoptosis
+                                </text>
+                                <text x="345" y="160" font-family="Inter, sans-serif" font-size="12" fill="var(--color-text, #0f172a)">
+                                    &bull; <tspan font-weight="700">DupA &amp; IL-8:</tspan> Thâm nhiễm Neutrophils
+                                </text>
+                                <text x="355" y="178" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &rarr; Giải phóng ROS &amp; Protease
+                                </text>
+                            </g>
+
+                            <!-- ARROWS SPLITTING FROM 2 TO 3A, 3B, 3C -->
+                            <!-- Branch A to Top Right -->
+                            <path d="M 580 90 L 640 60" stroke="#dc2626" stroke-width="2" fill="none" />
+                            <polygon points="640,60 630,58 635,67" fill="#dc2626" />
+
+                            <!-- Branch B to Middle Right -->
+                            <path d="M 580 115 L 640 180" stroke="#ea580c" stroke-width="2" fill="none" />
+                            <polygon points="640,180 632,174 638,170" fill="#ea580c" />
+
+                            <!-- Branch C to Bottom Right -->
+                            <path d="M 580 140 L 640 300" stroke="#9333ea" stroke-width="2" fill="none" />
+                            <polygon points="640,300 634,292 639,298" fill="#9333ea" />
+
+                            <!-- BOX 3A: ANTRAL GASTRITIS -> DUODENAL ULCER -->
+                            <g filter="url(#hpShadow)">
+                                <rect x="650" y="20" width="240" height="90" rx="8" fill="url(#hpGradRed)" stroke="#dc2626" stroke-width="1.5" />
+                                <text x="770" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#dc2626" text-anchor="middle">
+                                    VIÊM ƯU THẾ HANG VỊ
+                                </text>
+                                <text x="660" y="62" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &darr; Somatostatin (Tế bào D) &rarr; &uarr; Gastrin
+                                </text>
+                                <text x="660" y="80" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    &rarr; <tspan font-weight="700" fill="#dc2626">&uarr;&uarr; Tăng toan HCl</tspan> &rarr; Dị sản tá tràng
+                                </text>
+                                <text x="660" y="98" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#dc2626">
+                                    &rArr; LOÉT TÁ TRÀNG (Duodenal Ulcer)
+                                </text>
+                            </g>
+
+                            <!-- BOX 3B: CORPUS GASTRITIS -> GASTRIC ULCER & CORREA -->
+                            <g filter="url(#hpShadow)">
+                                <rect x="650" y="130" width="240" height="120" rx="8" fill="url(#hpGradAmber)" stroke="#ea580c" stroke-width="1.5" />
+                                <text x="770" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#ea580c" text-anchor="middle">
+                                    VIÊM ƯU THẾ THÂN VỊ / TOÀN THỂ
+                                </text>
+                                <text x="660" y="172" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    Phá hủy tế bào thành &rarr; <tspan font-weight="700">&darr;&darr; Giảm toan</tspan>
+                                </text>
+                                <text x="660" y="190" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    Viêm teo &rarr; Dị sản ruột &rarr; Nghịch sản
+                                </text>
+                                <text x="660" y="210" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#ea580c">
+                                    &rArr; LOÉT DẠ DÀY (Gastric Ulcer)
+                                </text>
+                                <text x="660" y="232" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#dc2626">
+                                    &rArr; UNG THƯ DẠ DÀY (Adenocarcinoma)
+                                </text>
+                            </g>
+
+                            <!-- BOX 3C: MALT LYMPHOMA -->
+                            <g filter="url(#hpShadow)">
+                                <rect x="650" y="270" width="240" height="80" rx="8" fill="url(#hpGradPurple)" stroke="#9333ea" stroke-width="1.5" />
+                                <text x="770" y="292" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#9333ea" text-anchor="middle">
+                                    TĂNG SINH LYMPHO MẠN TÍNH
+                                </text>
+                                <text x="660" y="312" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text, #0f172a)">
+                                    Hình thành nang lympho B vùng biên
+                                </text>
+                                <text x="660" y="334" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#9333ea">
+                                    &rArr; U LYMPHO MALT (MALT Lymphoma)
+                                </text>
+                            </g>
+
+                            <!-- BOTTOM SUMMARY BAR: ANTIBIOTIC RESISTANCE & DIAGNOSTIC TRANSLATION -->
+                            <g filter="url(#hpShadow)">
+                                <rect x="30" y="380" width="860" height="60" rx="8" fill="var(--color-surface-2, #f8fafc)" stroke="var(--color-border, #e2e8f0)" stroke-width="1" />
+                                <text x="50" y="405" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="var(--color-primary, #0284c7)">
+                                    ỨNG DỤNG LÂM SÀNG &amp; CHẨN ĐOÁN:
+                                </text>
+                                <text x="50" y="425" font-family="Inter, sans-serif" font-size="11" fill="var(--color-text-muted, #64748b)">
+                                    &bull; Men Urease &rarr; Test thở Urea 13C/14C (UBT) &amp; Test nhanh CLO test &bull; Kháng Clarithromycin (rrna23S A2143G) &bull; Kháng Amox (pbp1) &bull; Kháng Levo (gyrA) &bull; Kháng Metro (rdxA)
+                                </text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- ỨNG DỤNG CHẨN ĐOÁN LÂM SÀNG DỰA TRÊN SINH LÝ BỆNH -->
+                    <h3 id="ung-dung-chan-doan-lam-sang" class="subsection-title">Mối Tương Quan Giữa Sinh Lý Bệnh &amp; Các Phương Pháp Xét Nghiệm Chẩn Đoán</h3>
+                    <div class="physio-grid">
+                        <div class="physio-grid-card">
+                            <div class="card-icon" style="background: rgba(2, 132, 199, 0.1); color: var(--color-primary);"><i class="fa-solid fa-lungs"></i></div>
+                            <h4>1. Test Thở Urea (Urea Breath Test - UBT)</h4>
+                            <p>
+                                <strong>Cơ sở sinh lý:</strong> Khai thác hoạt tính men Urease cực mạnh của vi khuẩn. Bệnh nhân uống dung dịch Urea gắn đồng vị phóng xạ <sup>13</sup>C (không phóng xạ) hoặc <sup>14</sup>C (phóng xạ liều thấp). Men Urease phân cắt Urea giải phóng <sup>13</sup>CO<sub>2</sub> / <sup>14</sup>CO<sub>2</sub> khuếch tán vào máu và đào thải qua hơi thở. Độ nhạy &gt;95%, độ đặc hiệu &gt;95%, là tiêu chuẩn vàng không xâm lấn để chẩn đoán và kiểm tra tiệt trừ sau điều trị.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <div class="card-icon" style="background: rgba(16, 185, 129, 0.1); color: #059669;"><i class="fa-solid fa-vial-circle-check"></i></div>
+                            <h4>2. Test Nhanh Urease Khi Nội Soi (RUT / CLO Test)</h4>
+                            <p>
+                                <strong>Cơ sở sinh lý:</strong> Mảnh sinh thiết niêm mạc hang vị được đặt vào môi trường chứa Urea và chất chỉ thị màu pH (Phenol Red). Hoạt tính Urease của vi khuẩn sinh NH<sub>3</sub> làm kiềm hóa môi trường (pH &gt; 6.8), đổi màu thuốc thử từ màu vàng sang màu hồng cánh sen / đỏ tươi.
+                            </p>
+                        </div>
+
+                        <div class="physio-grid-card">
+                            <div class="card-icon" style="background: rgba(147, 51, 234, 0.1); color: #9333ea;"><i class="fa-solid fa-dna"></i></div>
+                            <h4>3. Khảo Sát Đột Biến Kháng Thuốc (PCR / NGS Panel)</h4>
+                            <p>
+                                <strong>Cơ sở sinh học phân tử:</strong> Khảo sát trực tiếp các đột biến điểm trên mẫu sinh thiết hoặc phân (<i>rrna23S</i> cho Clarithromycin, <i>gyrA</i> cho Levofloxacin, <i>pbp1</i> cho Amoxicillin) giúp bác sĩ cá thể hóa phác đồ điều trị trúng đích theo kháng sinh đồ phân tử, tránh sử dụng mù các thuốc đã bị đề kháng cao.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- WARNING BOX: LƯU Ý TRƯỚC KHI LÀM TEST H. PYLORI -->
+                    <div class="warning-box">
+                        ⚠️ <strong>Lưu ý Lâm sàng Bắt buộc khi Thực hiện Xét nghiệm Tìm H. pylori:</strong><br>
+                        Thuốc ức chế bơm Proton (PPI), Kháng sinh và Hợp chất Bismuth ức chế mạnh mật độ và hoạt tính men Urease của vi khuẩn, gây ra tỷ lệ <strong>âm tính giả (false-negative)</strong> rất cao. Bắt buộc phải ngừng <strong>PPI tối thiểu 2 tuần</strong> và ngừng <strong>Kháng sinh / Bismuth tối thiểu 4 tuần</strong> trước khi thực hiện Test thở UBT, Test nhanh RUT hoặc Test kháng nguyên phân (Stool Antigen Test).
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VII: TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài Liệu Tham Khảo (AMA Citations)</span>
+                    </h2>
+
+                    <ol class="references-list" style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.9rem; color: var(--color-text-muted);">
+                        <li>Pajares JM, Gisbert JP. <i>Helicobacter pylori</i>: its discovery and relevance for medicine. <i>Rev Esp Enferm Dig</i>. 2006;98(10):770-785.</li>
+                        <li>Ghonge PG, Hatwar PR, Shelke PG, Bakal RL, Khandare SS. A comprehensive review on Peptic Ulcer Disease: Types, pathophysiology, diagnosis and treatment. <i>GSC Advanced Research and Reviews</i>. 2025;23(3):26-35. doi:10.30574/gscarr.2025.23.3.0156.</li>
+                        <li>Min B-J, Seo M-E, Bae JH, Kim JW, Kim JH. Development and validation of next-generation sequencing panel for personalized <i>Helicobacter pylori</i> eradication treatment targeting multiple species. <i>Front Cell Infect Microbiol</i>. 2024;14:1379790. doi:10.3389/fcimb.2024.1379790.</li>
+                        <li>Meuler DA. <i>Helicobacter pylori</i> and the Bacterial Theory of Ulcers. <i>National Center for Case Study Teaching in Science</i>. 2011:1-7.</li>
+                        <li>Nguyễn Thanh Hải, Đỗ Xuân Bách, Phạm Chính Nghĩa. Nhiễm <i>Helicobacter pylori</i> và yếu tố liên quan ở bệnh nhân viêm loét dạ dày–tá tràng tại Bệnh viện Hữu nghị Việt Tiệp. <i>Tạp chí Nghiên cứu Y học</i>. 2026;203(6):335-343.</li>
+                        <li>Taufiqqurrachman I, Syam AF, Maulahela H, et al. Comparative efficacy, safety and compliance with dual, triple and quadruple therapy as the first-line treatment regimens for <i>Helicobacter pylori</i> eradication: a systematic review and network meta-analysis. <i>BMJ Open Gastroenterol</i>. 2026;13:e002037. doi:10.1136/bmjgast-2025-002037.</li>
+                        <li>Butler TJ, Costigan C, McNamara D. Treatment of <i>Helicobacter pylori</i> infection. <i>Microb Health Dis</i>. 2025;7:e1442.</li>
+                    </ol>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

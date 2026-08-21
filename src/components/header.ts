@@ -33,31 +33,38 @@ export function renderHeaderHtml(projectRoot = './'): string {
 
       <nav class="header-nav-modules" aria-label="Phân hệ y khoa">
         <div class="header-module-dropdown-wrapper">
-          <button type="button" class="header-module-btn header-dropdown-trigger" title="Cơ sở Y khoa (Giải phẫu, Sinh lý, Cơ chế bệnh sinh & Hóa sinh)">
+          <button type="button" class="header-module-btn header-dropdown-trigger" title="Basic Medical Sciences (Giải phẫu, Sinh lý, Cơ chế bệnh sinh, Hóa sinh & Dịch tễ học)">
             <i class="fa-solid fa-dna" style="color: #8b5cf6;"></i>
-            <span>Cơ sở</span>
+            <span>Basic Sciences</span>
             <i class="fa-solid fa-chevron-down dropdown-arrow" style="font-size: 0.65rem; margin-left: 2px; opacity: 0.7;"></i>
           </button>
           <div class="header-dropdown-menu">
-            <a href="${root}#/pathophysiology/giai-phau-sinh-ly" class="header-dropdown-item">
+            <a href="${root}#/basic-medical/giai-phau-sinh-ly" class="header-dropdown-item">
               <span class="dropdown-item-icon">🧬</span>
               <div class="dropdown-item-text">
                 <strong>GP - SL</strong>
                 <span>Giải phẫu & Sinh lý</span>
               </div>
             </a>
-            <a href="${root}#/pathophysiology/co-che-benh-sinh" class="header-dropdown-item">
+            <a href="${root}#/basic-medical/co-che-benh-sinh" class="header-dropdown-item">
               <span class="dropdown-item-icon">🔬</span>
               <div class="dropdown-item-text">
                 <strong>CCBS - SBL</strong>
                 <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
               </div>
             </a>
-            <a href="${root}#/pathophysiology/hoa-sinh" class="header-dropdown-item">
+            <a href="${root}#/basic-medical/hoa-sinh" class="header-dropdown-item">
               <span class="dropdown-item-icon">🧪</span>
               <div class="dropdown-item-text">
                 <strong>Hóa Sinh</strong>
                 <span>Hóa sinh Y học & Chuyển hóa</span>
+              </div>
+            </a>
+            <a href="${root}#/basic-medical/dich-te-hoc" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🦠</span>
+              <div class="dropdown-item-text">
+                <strong>Dịch Tễ</strong>
+                <span>Dịch tễ học & Y tế công cộng</span>
               </div>
             </a>
           </div>

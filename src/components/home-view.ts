@@ -44,11 +44,11 @@ export function renderHomeView(): string {
             <i class="fa-solid fa-arrow-right module-arrow"></i>
           </a>
 
-          <a href="#/pathophysiology" class="module-card">
+          <a href="#/basic-medical" class="module-card">
             <div class="module-icon bg-rose"><i class="fa-solid fa-dna"></i></div>
             <div class="module-info">
-              <h3>Sinh Lý & Sinh Lý Bệnh</h3>
-              <p>Bài học sinh lý học trực quan, cơ chế bệnh sinh & hình ảnh minh họa.</p>
+              <h3>Basic Medical Sciences</h3>
+              <p>Giải phẫu, Sinh lý học, Cơ chế bệnh sinh, Hóa sinh & Dịch tễ học.</p>
             </div>
             <i class="fa-solid fa-arrow-right module-arrow"></i>
           </a>

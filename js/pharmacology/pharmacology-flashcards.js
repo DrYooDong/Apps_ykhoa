@@ -1,6 +1,6 @@
 /**
  * Pharmacology Flashcard Engine — CliniPortal (Dược lý học)
- * Đồng bộ chuẩn giao diện, lật thẻ 3D, thanh tiến độ, bộ lọc & phím tắt theo sinhly-sinhlybenh.html
+ * Đồng bộ chuẩn giao diện, lật thẻ 3D, thanh tiến độ, bộ lọc & phím tắt theo co-che-benh-sinh.html
  */
 
 (function () {

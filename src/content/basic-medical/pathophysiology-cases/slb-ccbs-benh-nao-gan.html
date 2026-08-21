@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Bệnh Não Gan (Hepatic Encephalopathy Pathophysiology): Phân loại Type A, B, C theo EASL/AASLD, thang West Haven, thuyết nhiễm độc Amoniac (NH3), phù tế bào sao (Astrocyte Swelling), teo cơ (Sarcopenia), tỷ lệ Fischer BCAA/AAA, trục Ruột-Gan-Não và độc tố nội thể LPS, 6 yếu tố thúc đẩy đợt cấp, cơ chế phân tử của Lactulose, Rifaximin, LOLA, BCAA và quy trình chẩn đoán phân biệt.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Bệnh Não Gan (HE) – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .he-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .he-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .he-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .he-card.ammonia {
+            border-left: 4px solid #0284c7;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+        }
+
+        .he-card.astro {
+            border-left: 4px solid #8b5cf6;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, transparent 100%);
+        }
+
+        .he-card.inflam {
+            border-left: 4px solid #ea580c;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, transparent 100%);
+        }
+
+        .he-card.muscle {
+            border-left: 4px solid #10b981;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);
+        }
+
+        .he-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-left: 4px solid var(--color-primary, #0284c7);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .formula-box .formula-label {
+            font-size: 0.75rem;
+            color: var(--color-primary, #0284c7);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .formula-box .formula-main {
+            color: var(--color-text);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .formula-box .formula-note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.1) 0%, rgba(234, 88, 12, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-section h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .ref-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ref-list li {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            padding: 0.45rem 0;
+            border-bottom: 1px dashed var(--color-border);
+            line-height: 1.5;
+        }
+
+        .ref-list li:last-child { border-bottom: none; }
+        .ref-list li strong { color: var(--color-text); }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "&#127968; Trang chủ", "url": "../../../../index.html"}, {"label": "Cơ chế bệnh sinh", "url": "../co-che-benh-sinh.html"}, {"label": "Sinh lý bệnh Bệnh Não Gan (HE)"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <div style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(2,132,199,0.12);color:#0284c7;border:1px solid rgba(2,132,199,0.3);border-radius:20px;padding:0.25rem 0.85rem;font-size:0.78rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.75rem;">
+                        <i class="fa-solid fa-brain"></i> Phân hệ Tiêu hóa &ndash; Gan Mật &ndash; Thần kinh
+                    </div>
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH BỆNH NÃO GAN (HEPATIC ENCEPHALOPATHY)</h1>
+                    <p>Hepatic Encephalopathy Pathophysiology &mdash; Phân loại Type A, B, C theo EASL/AASLD; Thuyết nhiễm độc Amoniac (NH<sub>3</sub>), chuyển hóa Glutamine gây phù tế bào sao (Astrocyte Swelling) &amp; phù não kẽ; Teo cơ (Sarcopenia) làm mất cơ chế giải độc Amoniac ngoại gan; Thuyết chất dẫn truyền thần kinh giả &amp; tỷ lệ Fischer BCAA/AAA; Trục Ruột &ndash; Gan &ndash; Não &amp; hiệp đồng viêm hệ thống (LPS/Endotoxin); 6 yếu tố thúc đẩy đợt cấp; Cơ chế phân tử của Lactulose, Rifaximin, LOLA, BCAA và quy trình chẩn đoán phân biệt.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Bệnh não gan (Hepatic Encephalopathy &ndash; HE)</span> là tình trạng rối loạn chức năng hệ thần kinh trung ương do <strong>suy giảm chức năng gan</strong> và/hoặc <strong>hiện tượng thông nối hệ thống cửa &ndash; chủ (Portosystemic shunting)</strong> gây ra. Đây là một trong những biến chứng nặng nề và mang tính bước ngoặt tiên lượng trong diễn tiến tự nhiên của bệnh lý xơ gan: khoảng <strong>40% bệnh nhân xơ gan sẽ xuất hiện HE</strong> trong cuộc đời, với tỷ lệ tử vong trong vòng 1 năm sau đợt HE rõ rệt đầu tiên lên tới <strong>64%</strong> và tăng lên <strong>85% sau 5 năm</strong>.
+                </p>
+
+                <!-- PHẦN I: ĐỊNH NGHĨA & PHÂN LOẠI TOÀN DIỆN -->
+                <div class="physio-content">
+                    <h2 id="dinh-nghia-phan-loai-easl" class="section-title">
+                        <span>Phần I: Định Nghĩa, Phân Loại Toàn Diện Theo EASL/AASLD &amp; Ý Nghĩa Tiên Lượng</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="phan-loai-4-truc" class="subsection-title">1.1. Hệ thống phân loại 4 trục theo Hướng dẫn Quốc tế EASL &amp; AASLD</h3>
+                        <p>
+                            Bệnh não gan được phân loại khoa học dựa trên 4 trục độc lập để định hướng can thiệp điều trị:
+                        </p>
+
+                        <div class="he-grid">
+                            <div class="he-card ammonia">
+                                <div class="he-card-title" style="color:#0284c7;">
+                                    <i class="fa-solid fa-disease"></i> 1. Theo Bệnh lý Gan Nền (Types)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Type A (Acute):</strong> Xuất hiện trong bệnh cảnh <em>Suy gan cấp (Acute Liver Failure)</em> &rarr; Nguy cơ phù não cấp và thoát vị não tử vong cực cao.<br>
+                                    &bull; <strong>Type B (Bypass):</strong> Xuất hiện do <em>Thông nối cửa &ndash; chủ</em> bẩm sinh hoặc can thiệp shunt TIPS mà không có xơ gan thực thể.<br>
+                                    &bull; <strong>Type C (Cirrhosis):</strong> Xuất hiện trên nền <em>Xơ gan &amp; tăng áp tĩnh mạch cửa</em> (chiếm đa số).
+                                </p>
+                            </div>
+
+                            <div class="he-card astro">
+                                <div class="he-card-title" style="color:#8b5cf6;">
+                                    <i class="fa-solid fa-eye-slash"></i> 2. Theo Mức độ Lâm sàng
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Bệnh não gan thể ẩn (Covert HE):</strong> Gồm Bệnh não gan tối thiểu (Minimal HE &ndash; MHE) và Độ 1 West Haven. Bệnh nhân nhìn bên ngoài bình thường nhưng suy giảm nhận thức cận lâm sàng (chẩn đoán bằng ANT, PHES, EncephalApp Stroop).<br>
+                                    &bull; <strong>Bệnh não gan lâm sàng rõ rệt (Overt HE):</strong> Từ Độ 2 đến Độ 4 West Haven (có run vẩy Asterixis, mất định hướng, lơ mơ, hôn mê).
+                                </p>
+                            </div>
+
+                            <div class="he-card inflam">
+                                <div class="he-card-title" style="color:#ea580c;">
+                                    <i class="fa-solid fa-clock-rotate-left"></i> 3. Theo Diễn tiến Thời gian
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Từng đợt (Episodic HE):</strong> Đợt bùng phát cấp tính, có yếu tố thúc đẩy.<br>
+                                    &bull; <strong>Tái phát (Recurrent HE):</strong> Có <strong>&ge; 2 đợt Overt HE xuất hiện trong vòng 6 tháng</strong>.<br>
+                                    &bull; <strong>Dai dẳng (Persistent HE):</strong> Suy giảm nhận thức liên tục không bao giờ hồi phục hoàn toàn về mức bình thường giữa các đợt.
+                                </p>
+                            </div>
+
+                            <div class="he-card muscle">
+                                <div class="he-card-title" style="color:#10b981;">
+                                    <i class="fa-solid fa-bolt-lightning"></i> 4. Theo Yếu tố Thúc đẩy
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Có yếu tố thúc đẩy (Precipitated):</strong> Chiếm tới 90% số ca Overt HE (xuất huyết tiêu hóa, táo bón, nhiễm trùng, mất nước...). Đảo ngược được khi xử trí đúng nguyên nhân.<br>
+                                    &bull; <strong>Tự phát (Spontaneous):</strong> Không tìm thấy yếu tố kích hoạt rõ ràng, tiên lượng xấu hơn.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="cac-thang-do-lam-sang" class="subsection-title">1.2. Bảng đối chiếu các công cụ đánh giá lâm sàng và trắc nghiệm thần kinh</h3>
+
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Công Cụ Đánh Giá</th>
+                                        <th style="width: 35%;">Mô Tả &amp; Ngưỡng Giá Trị</th>
+                                        <th style="width: 40%;">Ưu Điểm &amp; Nhược Điểm Lâm Sàng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Tiêu chuẩn West Haven / Điểm Conn</strong></td>
+                                        <td>Phân độ từ Độ 0 (bình thường), Độ 1 (thay đổi tính tình, rối loạn giấc ngủ), Độ 2 (run vẩy, lơ mơ), Độ 3 (ngủ gà, mất định hướng sâu), đến Độ 4 (hôn mê).</td>
+                                        <td><strong>Ưu điểm:</strong> Đơn giản, nhanh tại giường bệnh (&lt; 5 phút), phổ biến toàn cầu.<br><strong>Nhược điểm:</strong> Chủ quan, khó phân biệt rõ ràng ở Độ 1 (Covert HE).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Dấu Run Vẩy (Asterixis Severity Scale)</strong></td>
+                                        <td>Dấu hiệu mất trương lực cơ tư thế từng lúc (Flapping tremor) khi bệnh nhân duỗi thẳng cổ tay và ngón tay trong 30 giây. Phân độ 0 đến 4.</td>
+                                        <td><strong>Ưu điểm:</strong> Thực hiện ngay tại giường.<br><strong>Nhược điểm:</strong> Không đặc hiệu riêng cho HE (có thể gặp trong toan hô hấp CO<sub>2</sub>, suy thận ure máu cao).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Test Gọi Tên Động Vật (Animal Naming Test &ndash; ANT)</strong></td>
+                                        <td>Bệnh nhân liệt kê số lượng tên động vật nhiều nhất có thể trong vòng 60 giây.</td>
+                                        <td><strong>Ưu điểm:</strong> Công cụ tầm soát nhanh tại giường tốt nhất cho Covert HE (EASL 2022 khuyến cáo). Đạt dưới 14 &ndash; 18 tên gợi ý Covert HE.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Điểm Số PHES (Psychometric Hepatic Encephalopathy Score)</strong></td>
+                                        <td>Bộ 5 bài test giấy bút (Test nối số A/B, Digit Symbol, Line Tracing, Serial Dotting) đánh giá chú ý và vận động thị giác.</td>
+                                        <td><strong>Tiêu chuẩn vàng</strong> để chẩn đoán Covert HE. Điểm số hiệu chỉnh &lt; -4 hoặc &le; -5 xác nhận có bệnh não gan thể ẩn.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Định Lượng Amoniac Máu (Blood Ammonia)</strong></td>
+                                        <td>Định lượng nồng độ NH<sub>3</sub> máu tĩnh mạch hoặc động mạch (yêu cầu vận chuyển mẫu trên đá lạnh ngay lập tức).</td>
+                                        <td><strong>Giá trị tiên lượng âm tính (NPV) cực cao:</strong> Amoniac bình thường giúp bác bỏ chẩn đoán HE để tìm nguyên nhân ngoài gan. Tương quan kém với dao động lâm sàng.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN II: CƠ CHẾ BỆNH SINH CỐT LÕI -->
+                <div class="physio-content">
+                    <h2 id="co-che-benh-sinh-cot-loi" class="section-title">
+                        <span>Phần II: Cơ Chế Bệnh Sinh Cốt Lõi: Amoniac, Tế Bào Sao, Teo Cơ &amp; Trục Ruột &ndash; Gan &ndash; Não</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="thuyet-amoniac" class="subsection-title">2.1. Thuyết Nhiễm Độc Amoniac (The Ammonia Hypothesis)</h3>
+                        <p>
+                            <strong>Amoniac (NH<sub>3</sub>)</strong> là độc tố thần kinh trung tâm giữ vai trò nền tảng. Trong cơ thể, amoniac được sản sinh chủ yếu từ 4 nguồn:
+                        </p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Quần thể vi khuẩn đại tràng:</strong> Thủy phân protein và urê nội sinh nhờ enzyme <em>urease</em>.</li>
+                            <li><strong>Biểu mô ruột non:</strong> Khử amin của glutamine nhờ enzyme <em>glutaminase</em>.</li>
+                            <li><strong>Thận:</strong> Sản xuất amoniac tại tế bào ống thận (tăng mạnh khi có hạ Kali máu và toan hóa nội bào).</li>
+                            <li><strong>Chuyển hóa protein từ bữa ăn:</strong> Sự hấp thu các hợp chất chứa nitơ.</li>
+                        </ul>
+
+                        <div class="key-concept">
+                            🔑 <strong>Tại sao Amoniac tăng vọt trong Xơ gan?</strong><br>
+                            1. <strong>Suy giảm chu trình Urê tại gan:</strong> Ở người bình thường, tế bào gan quanh tĩnh mạch cửa (periportal hepatocytes) chuyển hóa triệt để NH<sub>3</sub> thành Urê không độc. Xơ gan làm sụt giảm nghiêm trọng khối lượng tế bào gan chức năng.<br>
+                            2. <strong>Thông nối cửa &ndash; chủ (Portosystemic Shunting):</strong> Máu giàu NH<sub>3</sub> từ ruột chảy qua các nhánh bàng hệ cửa-chủ tự phát hoặc giá đỡ TIPS đổ thẳng vào tĩnh mạch chủ dưới mà không hề qua màng lọc tế bào gan.<br>
+                            3. Khí tự do NH<sub>3</sub> không tích điện <strong>dễ dàng khuếch tán qua Hàng rào máu não (BBB)</strong> để xâm nhập trực tiếp vào hệ thần kinh trung ương.
+                        </div>
+
+                        <h3 id="phu-te-bao-sao-nao" class="subsection-title">2.2. Sinh lý bệnh tại Não: Tích lũy Glutamine &amp; Phù Tế Bào Sao (Astrocyte Swelling)</h3>
+                        <p>
+                            Não bộ không có chu trình urê. Trong nhu mô não, <strong>tế bào sao (Astrocytes)</strong> là loại tế bào duy nhất đảm nhiệm vai trò giải độc amoniac nhờ enzyme <strong>Glutamine Synthetase</strong>:
+                        </p>
+
+                        <div class="formula-box">
+                            <div class="formula-label">PHẢN ỨNG GIẢI ĐỘC AMONIAC TẠI TẾ BÀO SAO NÃO BỘ</div>
+                            <div class="formula-main">
+                                NH<sub>3</sub> (từ máu vào) + Glutamate &rarr; GLUTAMINE (nhờ enzyme Glutamine Synthetase)
+                            </div>
+                            <div class="formula-note">
+                                <strong>Hậu quả bệnh lý:</strong> Glutamine tích tụ nội bào tạo ra một <strong>áp lực thẩm thấu nội bào khổng lồ</strong>, kéo nước liên tục từ khoang kẽ vào trong tế bào sao &rarr; Gây <strong>Phù tế bào sao (Astrocyte Swelling)</strong> và hình thành <strong>Phù não kẽ (Low-grade cerebral edema)</strong>.<br>
+                                Trên hình ảnh Cộng hưởng từ phổ (<sup>1</sup>H-MRS): <strong>Glutamine tăng vọt</strong> đi kèm với sự sụt giảm bù trừ của <strong>Myoinositol và Choline</strong> (tế bào sao tự điều hòa thẩm thấu để chống vỡ).
+                            </div>
+                        </div>
+
+                        <h3 id="teo-co-sarcopenia" class="subsection-title">2.3. Vai trò của Teo Cơ (Sarcopenia) &amp; Tỷ Lệ Fischer (BCAA/AAA)</h3>
+
+                        <div class="he-grid">
+                            <div class="he-card muscle">
+                                <div class="he-card-title" style="color:#10b981;">
+                                    <i class="fa-solid fa-dumbbell"></i> 1. Cơ Vân: Trạm Giải Độc Amoniac Ngoại Gan
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Cơ vân sở hữu lượng lớn enzyme Glutamine Synthetase để biến NH<sub>3</sub> thành Glutamine.<br>
+                                    Ở bệnh nhân xơ gan, <strong>Teo cơ (Sarcopenia)</strong> làm mất đi trạm giải độc dự phòng sống còn này, khiến amoniac máu tăng vọt không kiểm soát, trực tiếp kích phát đợt cấp HE.
+                                </p>
+                            </div>
+
+                            <div class="he-card astro">
+                                <div class="he-card-title" style="color:#8b5cf6;">
+                                    <i class="fa-solid fa-shuffle"></i> 2. Thuyết Chất Dẫn Truyền Thần Kinh Giả
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Trong xơ gan, nồng độ <strong>BCAAs (Leucine, Isoleucine, Valine) giảm mạnh</strong> do cơ vân tiêu thụ để khử amoniac, trong khi <strong>AAAs (Tyrosine, Phenylalanine, Tryptophan) tăng cao</strong> do gan không chuyển hóa.<br>
+                                    Sự sụt giảm <strong>tỷ lệ Fischer (BCAA/AAA)</strong> tạo điều kiện cho AAAs tràn qua kênh LAT1 vào não, bị chuyển hóa lệch hướng thành các <strong>chất dẫn truyền thần kinh giả (Octopamine, Phenylethanolamine)</strong> gây ức chế vỏ não.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="truc-ruot-gan-nao-viem" class="subsection-title">2.4. Trục Ruột &ndash; Gan &ndash; Não &amp; Hiệp Đồng Viêm Hệ Thống (Endotoxin / LPS)</h3>
+                        <p>
+                            Các nghiên cứu hiện đại chứng minh amoniac không hoạt động đơn độc mà có sự <strong>hiệp đồng bệnh sinh dữ dội (synergistic toxicity) giữa Amoniac và Phản ứng Viêm hệ thống</strong>:
+                        </p>
+
+                        <!-- SVG DIAGRAM: TRỤC RUỘT GAN NÃO & CHUYỂN HÓA AMONIAC -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 920 400" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="920" height="400" fill="var(--color-surface)" rx="12" />
+
+                                <text x="460" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text)">SƠ ĐỒ TRỤC RUỘT &ndash; GAN &ndash; CƠ VÂN &ndash; NÃO BỘ TRONG SINH LÝ BỆNH BỆNH NÃO GAN</text>
+
+                                <!-- Box 1: GUT -->
+                                <rect x="50" y="65" width="240" height="135" rx="8" fill="rgba(234, 88, 12, 0.08)" stroke="#ea580c" stroke-width="1.5" />
+                                <text x="170" y="90" text-anchor="middle" font-size="12" font-weight="800" fill="#ea580c">1. ĐẠI TRÀNG &amp; RUỘT NON</text>
+                                <text x="170" y="112" text-anchor="middle" font-size="10" fill="var(--color-text)">&bull; Vi khuẩn sinh Urease tạo NH3</text>
+                                <text x="170" y="130" text-anchor="middle" font-size="10" fill="var(--color-text)">&bull; Glutaminase ruột tạo NH3</text>
+                                <text x="170" y="148" text-anchor="middle" font-size="10" fill="var(--color-text)">&bull; Loạn khuẩn &amp; Leaky Gut</text>
+                                <text x="170" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="#ea580c">&rarr; Phóng thích NH3 + LPS (Độc tố)</text>
+
+                                <!-- Arrow Gut to Liver/Shunt -->
+                                <path d="M 290 130 L 350 130" stroke="#0284c7" stroke-width="2" />
+
+                                <!-- Box 2: LIVER & SHUNT -->
+                                <rect x="350" y="65" width="240" height="135" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="470" y="90" text-anchor="middle" font-size="12" font-weight="800" fill="#0284c7">2. GAN XƠ &amp; SHUNT CỬA - CHỦ</text>
+                                <text x="470" y="112" text-anchor="middle" font-size="10" fill="var(--color-text)">&bull; Suy giảm Chu trình Urê</text>
+                                <text x="470" y="130" text-anchor="middle" font-size="10" fill="var(--color-text)">&bull; Thông nối bàng hệ / TIPS</text>
+                                <text x="470" y="148" text-anchor="middle" font-size="10" fill="var(--color-text)">&bull; Mất khả năng lọc độc chất</text>
+                                <text x="470" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7">&rarr; NH3 + LPS tràn vào máu ngoại vi</text>
+
+                                <!-- Arrow Liver to Brain & Muscle -->
+                                <path d="M 590 130 L 650 130" stroke="#8b5cf6" stroke-width="2" />
+
+                                <!-- Box 3: BRAIN -->
+                                <rect x="650" y="65" width="230" height="135" rx="8" fill="rgba(139, 92, 246, 0.08)" stroke="#8b5cf6" stroke-width="2" />
+                                <text x="765" y="90" text-anchor="middle" font-size="12" font-weight="800" fill="#8b5cf6">3. NÃO BỘ (TẾ BÀO SAO)</text>
+                                <text x="765" y="112" text-anchor="middle" font-size="10" fill="var(--color-text)">&bull; NH3 + Glutamate &rarr; Glutamine</text>
+                                <text x="765" y="130" text-anchor="middle" font-size="10" fill="var(--color-text)">&bull; Tăng áp lực thẩm thấu nội bào</text>
+                                <text x="765" y="148" text-anchor="middle" font-size="10" font-weight="700" fill="#8b5cf6">&bull; PHÙ TẾ BÀO SAO &amp; PHÙ NÃO</text>
+                                <text x="765" y="168" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">&rarr; HÔN MÊ GAN (HE)</text>
+
+                                <!-- Lower Box: SKELETAL MUSCLE -->
+                                <rect x="350" y="240" width="240" height="130" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.5" />
+                                <text x="470" y="265" text-anchor="middle" font-size="12" font-weight="800" fill="#10b981">4. CƠ VÂN (SKELETAL MUSCLE)</text>
+                                <text x="470" y="287" text-anchor="middle" font-size="10" fill="var(--color-text)">Glutamine Synthetase giải độc NH3</text>
+                                <text x="470" y="305" text-anchor="middle" font-size="10" fill="var(--color-text)">Tiêu thụ BCAAs làm năng lượng</text>
+                                <text x="470" y="325" text-anchor="middle" font-size="10" font-weight="700" fill="#ea580c">⚠️ TEO CƠ (SARCOPENIA)</text>
+                                <text x="470" y="343" text-anchor="middle" font-size="10" fill="var(--color-text)">Làm mất trạm giải độc ngoại gan!</text>
+
+                                <!-- Connectors -->
+                                <path d="M 470 200 L 470 240" stroke="#10b981" stroke-width="2" />
+                                <path d="M 590 305 L 765 305 L 765 200" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4" />
+
+                                <!-- Lower Left: Systemic Inflammation -->
+                                <rect x="50" y="240" width="240" height="130" rx="8" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.5" />
+                                <text x="170" y="265" text-anchor="middle" font-size="12" font-weight="800" fill="#dc2626">5. HIỆP ĐỒNG VIÊM HỆ THỐNG</text>
+                                <text x="170" y="287" text-anchor="middle" font-size="10" fill="var(--color-text)">LPS kích hoạt đại thực bào</text>
+                                <text x="170" y="305" text-anchor="middle" font-size="10" fill="var(--color-text)">Phóng thích TNF-a, IL-1b, IL-6</text>
+                                <text x="170" y="325" text-anchor="middle" font-size="10" fill="var(--color-text)">Kích hoạt tế bào Microglia nội sọ</text>
+                                <text x="170" y="345" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">&rarr; Tăng nhạy cảm độc tính của NH3</text>
+                            </svg>
+                            <div class="diagram-caption">Hình 1: Sơ đồ tương tác trục Ruột &ndash; Gan &ndash; Cơ vân &ndash; Não bộ. Sự kết hợp giữa giảm thanh thải tại gan xơ, mất trạm giải độc cơ vân (teo cơ), tăng sinh amoniac tại ruột và phản ứng viêm hệ thống (LPS) hiệp đồng gây phù tế bào sao và bệnh não gan.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN III: 6 YẾU TỐ THÚC ĐẨY ĐỢT CẤP -->
+                <div class="physio-content">
+                    <h2 id="sau-yeu-to-thuc-day" class="section-title">
+                        <span>Phần III: Cơ Chế Sinh Lý Bệnh Của 6 Yếu Tố Thúc Đẩy Đợt Cấp (Precipitating Factors)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Khoảng <strong>90% các đợt bùng phát Overt HE</strong> được kích hoạt bởi các yếu tố thúc đẩy cụ thể. Việc phát hiện và xử lý triệt để các yếu tố này là chìa khóa điều trị hàng đầu:
+                        </p>
+
+                        <div class="he-grid">
+                            <div class="he-card ammonia">
+                                <div class="he-card-title" style="color:#0284c7;">
+                                    <i class="fa-solid fa-droplet"></i> 1. Xuất Huyết Tiêu Hóa
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Dòng máu (chủ yếu là <strong>Hemoglobin</strong>) tràn vào ruột là nguồn cung cấp protein khổng lồ cho vi khuẩn phân hủy tạo lượng lớn NH<sub>3</sub>. Kèm theo đó, mất máu làm tụt huyết áp, giảm tưới máu gan và thận.
+                                </p>
+                            </div>
+
+                            <div class="he-card ammonia">
+                                <div class="he-card-title" style="color:#0284c7;">
+                                    <i class="fa-solid fa-toilet"></i> 2. Táo Bón (Constipation)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Ứ đọng phân kéo dài thời gian tiếp xúc của vi khuẩn sinh urease. pH phân tăng kiềm hóa thúc đẩy phản ứng: NH<sub>4</sub><sup>+</sup> &rarr; NH<sub>3</sub> + H<sup>+</sup>, giúp dạng khí NH<sub>3</sub> dễ dàng khuếch tán vào máu.
+                                </p>
+                            </div>
+
+                            <div class="he-card inflam">
+                                <div class="he-card-title" style="color:#ea580c;">
+                                    <i class="fa-solid fa-pills"></i> 3. Mất Nước &amp; Lợi Tiểu Quá Liều
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Suy thận trước thận:</strong> Tích tụ Urê máu khuếch tán vào ruột tạo NH<sub>3</sub>.<br>
+                                    &bull; <strong>Kiềm chuyển hóa hạ Kali máu:</strong> Hạ K<sup>+</sup> kích thích tế bào ống thận tăng tổng hợp NH<sub>3</sub>; pH máu kiềm đẩy ion NH<sub>4</sub><sup>+</sup> thành khí NH<sub>3</sub> vượt qua hàng rào máu não.
+                                </p>
+                            </div>
+
+                            <div class="he-card inflam">
+                                <div class="he-card-title" style="color:#ea580c;">
+                                    <i class="fa-solid fa-virus"></i> 4. Nhiễm Trùng (Infections)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Viêm phúc mạc nhiễm khuẩn nguyên phát (SBP), nhiễm trùng tiểu, viêm phổi... giải phóng bão <strong>cytokine (TNF-&alpha;, IL-1&beta;, IL-6)</strong> làm tăng tính thấm hàng rào máu não và kích hoạt tế bào đệm Microglia gây viêm thần kinh.
+                                </p>
+                            </div>
+
+                            <div class="he-card astro">
+                                <div class="he-card-title" style="color:#8b5cf6;">
+                                    <i class="fa-solid fa-capsules"></i> 5. Thuốc Ức Chế TKTW (An Thần)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Benzodiazepines, thuốc ngủ, opioids làm tăng hoạt tính hệ thống dẫn truyền GABAergic nội sọ, trực tiếp ức chế vỏ não và hiệp đồng với độc tính của amoniac gây suy giảm tri giác sâu sắc.
+                                </p>
+                            </div>
+
+                            <div class="he-card muscle">
+                                <div class="he-card-title" style="color:#10b981;">
+                                    <i class="fa-solid fa-kidneys"></i> 6. Suy Thận Cấp / Mạn (AKI / CKD)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Làm giảm đào thải amoniac trực tiếp qua nước tiểu, đồng thời làm tăng nồng độ urê máu khuếch tán vào lòng đại tràng tạo nguồn cơ chất dồi dào cho vi khuẩn đường ruột sinh amoniac.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN IV: CƠ CHẾ DƯỢC LÝ & CHẨN ĐOÁN PHÂN BIỆT -->
+                <div class="physio-content">
+                    <h2 id="co-che-duoc-ly-chan-doan" class="section-title">
+                        <span>Phần IV: Cơ Chế Dược Lý Của Các Thuốc Điều Trị &amp; Quy Trình Chẩn Đoán Phân Biệt</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="co-che-cac-thuoc-chinh" class="subsection-title">4.1. Cơ chế phân tử của 4 nhóm thuốc điều trị chuẩn mực</h3>
+
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Thuốc / Hoạt Chất</th>
+                                        <th style="width: 40%; color: #0284c7;">Cơ Chế Phân Tử &amp; Vị Trí Tác Động</th>
+                                        <th style="width: 35%;">Hiệu Quả Lâm Sàng (EBM)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Lactulose / Lactitol</strong><br><em>(Disaccharide không hấp thu)</em></td>
+                                        <td>
+                                            1. <strong>Nhuận tràng thẩm thấu:</strong> Lên men thành acid lactic/acetic kéo nước vào lòng ruột, tăng nhu động tống khứ vi khuẩn và NH<sub>3</sub>.<br>
+                                            2. <strong>Bẫy ion Amoniac (Acidification):</strong> Hạ pH đại tràng xuống 5.0 - 5.5, proton hóa NH<sub>3</sub> thành ion NH<sub>4</sub><sup>+</sup> không hấp thu được.<br>
+                                            3. <strong>Đồng hóa Nitơ:</strong> Vi khuẩn tiêu thụ NH<sub>3</sub> làm nguyên liệu tổng hợp protein vi khuẩn.<br>
+                                            4. Ức chế men glutaminase ruột.
+                                        </td>
+                                        <td><strong>Lựa chọn hàng đầu (First-line)</strong> trong điều trị đợt cấp và dự phòng thứ phát HE. Liều chuẩn: chỉnh để đi ngoài 2 &ndash; 3 lần phân mềm/ngày.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Rifaximin</strong><br><em>(Kháng sinh tại chỗ &lt; 0.4% hấp thu)</em></td>
+                                        <td>
+                                            &bull; Gắn đặc hiệu tiểu đơn vị &beta; của RNA Polymerase vi khuẩn, ức chế phiên mã.<br>
+                                            &bull; Giảm hoạt tính men urease của vi khuẩn sinh amoniac.<br>
+                                            &bull; Giảm nồng độ độc tố nội thể LPS và cytokine tiền viêm trong tĩnh mạch cửa.
+                                        </td>
+                                        <td><strong>Phối hợp cùng Lactulose</strong> sau đợt Overt HE thứ 2 để giảm 50% nguy cơ tái phát đợt cấp và giảm đáng kể tỷ lệ nhập viện/tử vong.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>L-Ornithine L-Aspartate (LOLA)</strong></td>
+                                        <td>
+                                            &bull; <strong>Tại Gan:</strong> L-ornithine là cơ chất kích hoạt chu trình Urê tại periportal hepatocytes chuyển NH<sub>3</sub> &rarr; Urê.<br>
+                                            &bull; <strong>Tại Cơ vân:</strong> Cung cấp L-aspartate/glutamate cho Glutamine Synthetase gắn NH<sub>3</sub> &rarr; Glutamine.
+                                        </td>
+                                        <td>Hạ amoniac máu tĩnh mạch nhanh chóng trong đợt cấp và cải thiện điểm số tâm lý thần kinh ở bệnh nhân Covert/Overt HE.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Axit Amin Phân Nhánh (BCAAs: Leu, Ile, Val)</strong></td>
+                                        <td>
+                                            &bull; Cạnh tranh qua kênh LAT1 tại hàng rào máu não, <strong>ngăn chặn AAAs vào não</strong> tổng hợp chất dẫn truyền thần kinh giả.<br>
+                                            &bull; Cung cấp năng lượng và nguồn nitơ cho cơ vân giải độc NH<sub>3</sub>.
+                                        </td>
+                                        <td>Khuyến cáo bổ sung cho bệnh nhân xơ gan có teo cơ, suy dinh dưỡng hoặc không dung nạp protein động vật.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 id="chan-doan-phan-biet-ngoai-gan" class="subsection-title">4.2. Quy trình Chẩn đoán Phân biệt &amp; Loại trừ Nguyên nhân Ngoài Gan</h3>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>Quy tắc chẩn đoán EASL 2022: Khoảng 22% bệnh nhân xơ gan nhập viện vì lú lẫn/hôn mê KHÔNG PHẢI DO BỆNH NÃO GAN!</strong><br>
+                            Chẩn đoán HE là chẩn đoán loại trừ. Bắt buộc phải tầm soát và loại bỏ các bệnh cảnh sau:
+                        </div>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Hạ đường huyết hoặc Hôn mê tăng áp lực thẩm thấu:</strong> Kiểm tra ngay đường huyết mao mạch tại giường.</li>
+                            <li><strong>Chấn thương sọ não &amp; Tụ máu dưới màng cứng:</strong> Bệnh nhân xơ gan có rối loạn đông máu và dễ bị té ngã do Covert HE &rarr; Chỉ định <strong>CT scan sọ não không cản quang</strong> khi có dấu thần kinh định vị hoặc không đáp ứng điều trị hạ NH<sub>3</sub>.</li>
+                            <li><strong>Bệnh Não Wernicke (Wernicke's Encephalopathy):</strong> Do thiếu hụt Vitamin B1 (Thiamine) ở bệnh nhân xơ gan do rượu (Tam chứng: lú lẫn, thất điều, rung giật nhãn cầu). Cần tiêm truyền Thiamine liều cao đường tĩnh mạch trước khi truyền glucose.</li>
+                            <li><strong>Nhiễm trùng thần kinh trung ương:</strong> Viêm màng não, viêm não (xét nghiệm dịch não tủy khi có sốt và cứng gáy).</li>
+                            <li><strong>Đặc điểm trên MRI não:</strong> Tăng tín hiệu đối xứng hai bên tại <strong>nhân bèo (globus pallidus)</strong> trên chuỗi xung T1 (do lắng đọng Mangan); Cộng hưởng từ phổ (<sup>1</sup>H-MRS) thấy giảm Myoinositol/Choline và tăng Glutamine.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="ref-section">
+                    <h3><i class="fa-solid fa-book-medical"></i> Tài Liệu Tham Khảo (References &mdash; AMA Standard)</h3>
+                    <ul class="ref-list">
+                        <li><strong>1.</strong> European Association for the Study of the Liver. EASL Clinical Practice Guidelines on the management of hepatic encephalopathy. <i>J Hepatol</i>. 2022;77(3):807-824. doi:10.1016/j.jhep.2022.06.001.</li>
+                        <li><strong>2.</strong> Vilstrup H, Amodio P, Bajaj J, et al. Hepatic encephalopathy in chronic liver disease: 2014 Practice Guideline by the AASLD and the EASL. <i>Hepatology</i>. 2014;60(2):715-735. doi:10.1002/hep.27210.</li>
+                        <li><strong>3.</strong> Butterworth RF, McPhail MJW. L-Ornithine L-Aspartate (LOLA) for Hepatic Encephalopathy in Cirrhosis: Results of Randomized Controlled Trials and Meta-Analyses. <i>Drugs</i>. 2019;79(Suppl 1):17-21. doi:10.1007/s40265-018-1024-1.</li>
+                        <li><strong>4.</strong> Gluud LL, Vilstrup H, Morgan MY. Non-absorbable disaccharides versus placebo/no intervention and lactulose versus lactitol for the prevention and treatment of hepatic encephalopathy in people with cirrhosis. <i>Cochrane Database Syst Rev</i>. 2016;(5):CD003044. doi:10.1002/14651858.CD003044.pub3.</li>
+                        <li><strong>5.</strong> Morgan MY, et al. Rifaximin for prevention and treatment of hepatic encephalopathy in people with cirrhosis. <i>Cochrane Database Syst Rev</i>. 2023;(3):CD011585. doi:10.1002/14651858.CD011585.pub2.</li>
+                        <li><strong>6.</strong> Yokobori S, Yatabe T, Kondo Y, et al. Intravenous branched-chain amino acid administration for the acute treatment of hepatic encephalopathy: a systematic review and meta-analysis. <i>J Intensive Care</i>. 2025;13:2. doi:10.1186/s40560-024-00771-x.</li>
+                        <li><strong>7.</strong> Jameson JL, Fauci AS, Kasper DL, Hauser SL, Longo DL, Loscalzo J. <i>Harrison's Principles of Internal Medicine</i>. 21st ed. McGraw-Hill Education; 2022. Chapter 337: Cirrhosis and Its Complications.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

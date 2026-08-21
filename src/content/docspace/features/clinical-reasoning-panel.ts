@@ -593,10 +593,10 @@ export class ClinicalReasoningPanel {
                   <i class="fa-solid fa-microscope" style="color:#8b5cf6;"></i> CƠ SỞ BỆNH SINH &amp; SINH LÝ BỆNH:
                 </div>
                 <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                  <a href="#/pathophysiology/co-che-benh-sinh" class="dsp-badge" style="background:rgba(139,92,246,0.08); color:#7c3aed; text-decoration:none; padding:6px 12px; font-size:11.5px; border:1px solid rgba(139,92,246,0.25); border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:5px;">
+                  <a href="#/basic-medical/co-che-benh-sinh" class="dsp-badge" style="background:rgba(139,92,246,0.08); color:#7c3aed; text-decoration:none; padding:6px 12px; font-size:11.5px; border:1px solid rgba(139,92,246,0.25); border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:5px;">
                     <i class="fa-solid fa-dna"></i> Cơ Chế Bệnh Sinh (${escapeHtml(approach.symptomName)})
                   </a>
-                  <a href="#/pathophysiology/simulators" class="dsp-badge" style="background:rgba(2,132,199,0.08); color:#0284c7; text-decoration:none; padding:6px 12px; font-size:11.5px; border:1px solid rgba(2,132,199,0.25); border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:5px;">
+                  <a href="#/basic-medical/simulators" class="dsp-badge" style="background:rgba(2,132,199,0.08); color:#0284c7; text-decoration:none; padding:6px 12px; font-size:11.5px; border:1px solid rgba(2,132,199,0.25); border-radius:6px; font-weight:700; display:inline-flex; align-items:center; gap:5px;">
                     <i class="fa-solid fa-bolt"></i> Mô Phỏng Sinh Lý Tương Tác
                   </a>
                 </div>

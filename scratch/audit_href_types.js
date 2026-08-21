@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(__dirname, '../src/content/pathophysiology/sinhly-sinhlybenh.html');
+const filePath = path.join(__dirname, '../src/content/pathophysiology/co-che-benh-sinh.html');
 const lines = fs.readFileSync(filePath, 'utf8').split('\n');
 
 lines.forEach((line, idx) => {

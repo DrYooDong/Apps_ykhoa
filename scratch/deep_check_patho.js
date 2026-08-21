@@ -5,8 +5,8 @@ const targetDir = 'src/content/pathophysiology';
 
 console.log('=== KIỂM TRA NỘI DUNG CÁC FILE NGHI VẤN ===\n');
 
-// 1. Kiểm tra sinh-ly-hoc.html và sinhly-sinhlybenh.html
-['sinh-ly-hoc.html', 'sinhly-sinhlybenh.html', 'reader.html', 'index.md'].forEach(f => {
+// 1. Kiểm tra giai-phau-sinh-ly.html và co-che-benh-sinh.html
+['giai-phau-sinh-ly.html', 'co-che-benh-sinh.html', 'reader.html', 'index.md'].forEach(f => {
   const p = path.join(targetDir, f);
   if (fs.existsSync(p)) {
     console.log(`--- File: ${f} (${fs.statSync(p).size} bytes) ---`);

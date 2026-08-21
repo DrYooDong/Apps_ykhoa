@@ -304,7 +304,7 @@ window.getPathDepthPrefix = function() {
           const text = item.textContent || '';
           const href = item.getAttribute('href') || '';
 
-          if (!(text.includes('S.lý') || text.includes('G.phẫu') || text.includes('Cơ sở') || href.includes('giai-phau-sinh-ly.html') || href.includes('sinhly-sinhlybenh.html') || href.includes('sinh-ly-hoc.html') || href.includes('co-che-benh-sinh.html'))) return;
+          if (!(text.includes('S.lý') || text.includes('G.phẫu') || text.includes('Cơ sở') || href.includes('giai-phau-sinh-ly.html') || href.includes('co-che-benh-sinh.html') || href.includes('giai-phau-sinh-ly.html') || href.includes('co-che-benh-sinh.html'))) return;
 
           const parentLi = item.parentElement;
           if (!parentLi) return;

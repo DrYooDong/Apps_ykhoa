@@ -1,0 +1,412 @@
+/**
+ * CliniPortal — Epidemiology & Biostatistics Subsystem Stylesheet
+ * Path: css/components/epidemiology-hub.css
+ * Visual Identity: Modern Epidemiological Surveillance & Public Health Matrix
+ * Colors: Deep Slate Teal (#0d9488), Cobalt (#3b82f6), Amber (#f59e0b), Hazard Red (#ef4444)
+ */
+
+/* ==========================================================================
+   1. HERO & THEME EXTENSIONS
+   ========================================================================== */
+.hero-epi-theme {
+  background: linear-gradient(135deg, #042f2e 0%, #0f172a 50%, #134e4a 100%) !important;
+  border-color: rgba(13, 148, 136, 0.3) !important;
+}
+
+[data-theme="dark"] .hero-epi-theme {
+  background: linear-gradient(135deg, #022c22 0%, #090d16 50%, #042f2e 100%) !important;
+  border-color: rgba(13, 148, 136, 0.4) !important;
+}
+
+.epi-badge-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(13, 148, 136, 0.2);
+  border: 1px solid rgba(13, 148, 136, 0.4);
+  border-radius: 9999px;
+  color: #2dd4bf;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+  backdrop-filter: blur(8px);
+}
+
+/* ==========================================================================
+   2. 2x2 CONTINGENCY MATRIX SOLVER STUDIO
+   ========================================================================== */
+.epi-matrix-studio {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+[data-theme="dark"] .epi-matrix-studio {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+.epi-matrix-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+.epi-matrix-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+
+.epi-matrix-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .epi-matrix-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Table 2x2 Input Layout */
+.contingency-table-wrapper {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+[data-theme="dark"] .contingency-table-wrapper {
+  background: var(--color-bg, #0f172a);
+}
+
+.table-2x2 {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
+  font-size: 0.875rem;
+}
+
+.table-2x2 th {
+  padding: 0.4rem 0.6rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-text-muted, #64748b);
+  font-size: 0.775rem;
+  text-transform: uppercase;
+}
+
+.table-2x2 td {
+  padding: 0;
+}
+
+.cell-input-box {
+  background: var(--color-surface, #ffffff);
+  border: 1.5px solid var(--color-border, #cbd5e1);
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+[data-theme="dark"] .cell-input-box {
+  background: var(--color-surface, #1e293b);
+  border-color: #475569;
+}
+
+.cell-input-box:focus-within {
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+}
+
+.cell-input-box label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #64748b);
+  margin-bottom: 0.25rem;
+}
+
+.cell-input-box input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  outline: none;
+}
+
+.cell-total {
+  background: rgba(13, 148, 136, 0.08);
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: #0d9488;
+  font-size: 0.95rem;
+}
+
+/* Live Analytics Result Panel */
+.matrix-results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.results-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+
+.metric-result-card {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 10px;
+  padding: 0.75rem;
+  transition: transform 0.15s, border-color 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .metric-result-card {
+  background: var(--color-bg, #0f172a);
+}
+
+.metric-result-card:hover {
+  transform: translateY(-2px);
+  border-color: #0d9488;
+}
+
+.metric-result-card.highlight {
+  border-color: #0d9488;
+  background: rgba(13, 148, 136, 0.06);
+}
+
+.metric-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text-muted, #64748b);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.2rem;
+}
+
+.metric-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0d9488;
+  line-height: 1.2;
+}
+
+.metric-sub {
+  font-size: 0.7rem;
+  color: var(--color-text-muted, #64748b);
+  margin-top: 0.2rem;
+}
+
+.metric-interpretation-box {
+  background: var(--color-bg, #f8fafc);
+  border-left: 4px solid #0d9488;
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text, #334155);
+}
+
+[data-theme="dark"] .metric-interpretation-box {
+  background: var(--color-bg, #0f172a);
+  color: #cbd5e1;
+}
+
+/* ==========================================================================
+   3. EPICURVE & OUTBREAK SIMULATOR WIDGET
+   ========================================================================== */
+.epicurve-studio-container {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+[data-theme="dark"] .epicurve-studio-container {
+  background: var(--color-surface, #1e293b);
+}
+
+.epicurve-nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.epicurve-tab-btn {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: transparent;
+  color: var(--color-text-muted, #64748b);
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.epicurve-tab-btn.active {
+  background: #0d9488;
+  color: #ffffff;
+  border-color: #0d9488;
+}
+
+.epicurve-canvas-box {
+  background: var(--color-bg, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+[data-theme="dark"] .epicurve-canvas-box {
+  background: var(--color-bg, #0f172a);
+}
+
+/* ==========================================================================
+   4. STUDY DESIGN COMPARISON MATRIX
+   ========================================================================== */
+.study-design-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  margin-bottom: 2rem;
+}
+
+.study-design-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background: var(--color-surface, #ffffff);
+}
+
+[data-theme="dark"] .study-design-table {
+  background: var(--color-surface, #1e293b);
+}
+
+.study-design-table th {
+  background: var(--color-bg, #f1f5f9);
+  color: var(--color-text, #0f172a);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  text-align: left;
+  border-bottom: 2px solid var(--color-border, #cbd5e1);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .study-design-table th {
+  background: #0f172a;
+}
+
+.study-design-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  vertical-align: top;
+}
+
+.design-type-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.badge-analytic { background: rgba(59, 130, 246, 0.15); color: #2563eb; }
+.badge-descriptive { background: rgba(16, 185, 129, 0.15); color: #059669; }
+.badge-experimental { background: rgba(139, 92, 246, 0.15); color: #7c3aed; }
+
+/* ==========================================================================
+   5. BRADFORD HILL CRITERIA GRID
+   ========================================================================== */
+.bradford-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.bradford-card {
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: transform 0.15s, border-color 0.15s;
+  display: flex;
+  gap: 0.85rem;
+}
+
+[data-theme="dark"] .bradford-card {
+  background: var(--color-surface, #1e293b);
+}
+
+.bradford-card:hover {
+  transform: translateY(-2px);
+  border-color: #0d9488;
+}
+
+.bradford-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(13, 148, 136, 0.15);
+  color: #0d9488;
+  font-weight: 800;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bradford-card.required-step .bradford-num {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.bradford-body h4 {
+  margin: 0 0 0.35rem 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+}
+
+.bradford-body p {
+  margin: 0;
+  font-size: 0.825rem;
+  line-height: 1.5;
+  color: var(--color-text-muted, #64748b);
+}

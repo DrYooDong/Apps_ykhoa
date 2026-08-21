@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const baseDir = path.join(__dirname, '../src/content/pathophysiology');
-const htmlFile = path.join(baseDir, 'sinhly-sinhlybenh.html');
+const htmlFile = path.join(baseDir, 'co-che-benh-sinh.html');
 let html = fs.readFileSync(htmlFile, 'utf8');
 
 // Build map of all actual html files in physiology/part1..part7

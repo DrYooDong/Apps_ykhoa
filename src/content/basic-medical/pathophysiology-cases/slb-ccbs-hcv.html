@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Viêm gan Siêu vi C (HCV Pathophysiology & Pathogenesis): Phân tích chi tiết bộ gen (+)ssRNA, hiện tượng Quasispecies, chu kỳ sống Lipo-viro-particle, 5 con đường mỡ hóa gan (Steatosis), cơ chế đề kháng insulin qua IRS-1/2, cơ chế xơ hóa gan qua MDA/4-HNE/TGF-β, suy kiệt tế bào T, và vết sẹo phân tử (Epigenetic Scar) sau điều trị DAA.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi C – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+    
+
+    <style>
+        /* Scoped Custom Styling for HCV Article */
+        .hemo-table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--color-border, #e2e8f0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .hemo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: var(--color-surface, #ffffff);
+        }
+
+        .hemo-table th {
+            background: var(--color-surface-2, #f8fafc);
+            color: var(--color-text, #0f172a);
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+        }
+
+        .hemo-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            color: var(--color-text, #334155);
+            vertical-align: top;
+        }
+
+        .hemo-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hemo-table tbody tr:hover {
+            background: rgba(2, 132, 199, 0.03);
+        }
+
+        .hcv-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(147, 51, 234, 0.08);
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            color: #9333ea;
+            padding: 0.25rem 0.65rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .physio-figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 2rem auto;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            max-width: 100%;
+        }
+
+        .physio-figure img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .physio-figure img:hover {
+            transform: scale(1.01);
+        }
+
+        .physio-figure figcaption {
+            margin-top: 0.85rem;
+            font-size: 0.88rem;
+            color: var(--color-text-muted, #64748b);
+            line-height: 1.5;
+            text-align: center;
+            max-width: 760px;
+        }
+
+        .pathway-step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--color-primary, #0284c7);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 0.4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li><a href="../../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../co-che-benh-sinh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">Sinh lý & Sinh lý bệnh</span></a></li>
+                    <li><a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+                    <li><a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+                    <li><a href="../../calculators/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+                    <li><a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+                    <li><a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Sinh lý & sinh lý bệnh", "url": "../co-che-benh-sinh.html"}, {"label": "Sinh lý bệnh Viêm Gan Siêu Vi C (HCV)"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH VIÊM GAN SIÊU VI C</h1>
+                    <p>Hepatitis C Virus (HCV) Pathophysiology & Pathogenesis — Phân tích phân tử cấu trúc polyprotein, chu kỳ sống hạt Lipo-viro-particle, cơ chế mỡ hóa gan (Viral Steatosis), đề kháng insulin qua IRS-1/2, chuỗi phản ứng oxy hóa lipid sinh xơ hóa gan qua MDA/4-HNE/TGF-β, cạn kiệt tế bào T và vết sẹo phân tử (Epigenetic Scar) sau điều trị DAA.</p>
+                </div>
+
+                <!-- LEAD PARAGRAPH -->
+                <p class="physio-lead">
+                    <span class="term-hl">Viêm gan siêu vi C (Hepatitis C Virus - HCV)</span> là nguyên nhân hàng đầu gây xơ gan mất bù, suy gan và ghép gan trên toàn thế giới. Với đặc tính bộ gen RNA đơn bản dương biến dị cực nhanh tạo các <strong>chủng giả (quasispecies)</strong>, HCV có tỷ lệ chuyển thành nhiễm trùng mạn tính lên tới <strong>70 - 85%</strong>. Khác với HBV, tổn thương gan trong nhiễm HCV là sự kết hợp độc đáo giữa <strong>rối loạn chuyển hóa lipid/glucose (mỡ hóa gan & đề kháng insulin)</strong> và <strong>stress oxy hóa kích hoạt xơ hóa nhu mô gan</strong>.
+                </p>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN I: ĐẶC ĐIỂM VI RÚT HỌC VÀ BẢN ĐỒ POLYPROTEIN HCV -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="dac-diem-vi-rut-hoc-hcv" class="section-title">
+                        <span>Phần I: Đặc Điểm Vi Rút Học & Bản Đồ Polyprotein HCV (Genomics & Viral Proteins)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Vi rút viêm gan C (HCV) là vi rút có màng bọc lipid thuộc họ <i>Flaviviridae</i>, chi <i>Hepacivirus</i>. Bộ gen của HCV là một phân tử <strong>RNA sợi đơn bản dương (positive-sense ssRNA) dài khoảng 9.6 kb</strong>. Ở đầu 5' có cấu trúc <strong>IRES (Internal Ribosome Entry Site)</strong> cho phép dịch mã độc lập với cấu trúc mũ m7G của tế bào chủ.
+                        </p>
+
+                        <h3 id="6-kieu-gen-va-quasispecies" class="subsection-title">1. Sáu Kiểu Gen Chính & Hiện Tượng "Chủng Giả" (Quasispecies)</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Phân bố kiểu gen:</strong> HCV được chia làm <strong>6 kiểu gen chính (Genotypes 1 đến 6)</strong> và hàng chục phân nhóm (subtypes a, b, c...). Tại Việt Nam, <strong>kiểu gen 1 (chủ yếu 1b)</strong> và <strong>kiểu gen 6</strong> chiếm đa số trường hợp lâm sàng.</li>
+                            <li><strong>Hiện tượng Chủng giả (Quasispecies Dynamics):</strong> Enzyme sao chép <i>NS5B RNA-dependent RNA polymerase</i> của HCV hoàn toàn <strong>thiếu hoạt tính sửa sai (lack of proofreading activity)</strong>, dẫn đến tỷ lệ đột biến cực cao (khoảng 10<sup>-4</sup> đến 10<sup>-5</sup> lỗi/nucleotide/chu kỳ sao chép). Mỗi ngày trong cơ thể bệnh nhân sản sinh hàng tỷ biến thể di truyền hơi khác nhau. Điều này giúp HCV liên tục biến đổi epitop kháng nguyên, dễ dàng né tránh hệ miễn dịch và giải thích tại sao chưa thể phát triển thành công vaccine phòng ngừa HCV.</li>
+                        </ul>
+
+                        <h3 id="polyprotein-va-cac-protein-chuc-nang" class="subsection-title" style="margin-top: 2rem;">2. Cấu Trúc Polyprotein & Các Đích Tác Dụng Thuốc Kháng Virus Trực Tiếp (DAAs)</h3>
+                        <p>Toàn bộ bộ gen HCV được dịch mã thành một chuỗi tiền chất <strong>Polyprotein duy nhất dài khoảng 3.000 axit amin</strong>, sau đó được cắt bởi protease tế bào chủ và protease của vi rút thành 10 protein riêng biệt:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ Khối Protein Cấu Trúc (Structural Proteins)</div>
+                                <p><strong>Core (Protein lõi Capsid):</strong> Tự lắp ráp bao bọc bộ gen RNA; định vị trên bề mặt giọt mỡ và màng ty thể, trực tiếp gây mỡ hóa gan và sản sinh gốc oxy hóa (ROS).</p>
+                                <p><strong>E1 & E2 (Glycoprotein vỏ màng):</strong> Tương tác với các thụ thể bề mặt tế bào gan (CD81, SR-BI) để xâm nhập tế bào; vùng siêu biến HVR1 trên E2 là đích tấn công chính của kháng thể trung hòa.</p>
+                                <p><strong>p7 (Kênh ion viroporin):</strong> Cần thiết cho quá trình lắp ráp và bài tiết virion.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">⚙️ Khối Protein Phi Cấu Trúc (Non-Structural / DAAs Targets)</div>
+                                <p><strong>NS3/4A (Serine Protease / Helicase):</strong> Cắt polyprotein và cắt phân tử tiếp hợp TRIF/MAVS để vô hiệu hóa đáp ứng interferon tự nhiên của tế bào chủ. <span class="hcv-badge-pill">Đích DAA: -previr (Glecaprevir, Voxilaprevir)</span></p>
+                                <p><strong>NS4B & NS5A:</strong> Tái cấu trúc màng lưới nội chất tạo "Membranous Web" và điều hòa lắp ráp hạt virion quanh giọt mỡ. <span class="hcv-badge-pill">Đích DAA: -asvir (Velpatasvir, Pibrentasvir)</span></p>
+                                <p><strong>NS5B (RdRp Polymerase):</strong> Enzyme sao chép bộ gen RNA của vi rút. <span class="hcv-badge-pill">Đích DAA: -buvir (Sofosbuvir)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN II: CHU KỲ NHÂN LÊN VÀ HẠT LIPO-VIRO-PARTICLE -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="chu-ky-nhan-len-hcv" class="section-title">
+                        <span>Phần II: Chu Kỳ Nhân Lên của HCV & Hạt Lipo-Viro-Particle (LVP)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="dong-thac-xap-nhap" class="subsection-title">1. Dòng Thác Xâm Nhập Phức Hợp Vào Tế Bào Gan</h3>
+                        <p>Quá trình xâm nhập của HCV là một vũ điệu phân tử đa bước tinh vi có sự tham gia của nhiều thụ thể bề mặt:</p>
+                        
+                        <div class="pathway-chain">
+                            <span class="pathway-node">1. Gắn HSPG / SR-BI</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node orange">2. Nhận diện CD81 & CLDN1</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node orange">3. Tương tác Occludin (OCLN)</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node red">4. Nội thực bào qua Clathrin</span>
+                        </div>
+
+                        <h3 id="membranous-web-va-lvp" class="subsection-title" style="margin-top: 2rem;">2. Mạng Lưới Sao Chép (Membranous Web) & Khái Niệm Hạt Lipo-Viro-Particle (LVP)</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Mạng lưới túi màng (Membranous Web):</strong> Protein NS4B và NS5A kích hoạt sự biến đổi cấu trúc màng lưới nội chất (ER) thành một hệ thống túi màng kín. Sự cách ly này bảo vệ phức hợp sao chép RNA mạch kép trung gian không bị các thụ thể nhận diện mẫu nội bào (như RIG-I, MDA5) phát hiện.</li>
+                            <li><strong>Lắp ráp liên kết giọt mỡ (Lipid Droplets Assembly):</strong> HCV sử dụng giọt mỡ (lipid droplets) trong bào tương làm "bệ phóng lắp ráp". Protein Core tập trung quanh giọt mỡ, thu hút RNA thế hệ mới từ NS5A sang để đóng gói nucleocapsid.</li>
+                            <li><strong>Hạt Lipo-Viro-Particle (LVP):</strong> Virion HCV sau khi bọc vỏ màng sẽ kết hợp chặt chẽ với các apolipoprotein của ký chủ (ApoE, ApoB, ApoC) tạo thành một hạt lai phức hợp lipid - virus gọi là <strong>Lipo-Viro-Particle (LVP)</strong>. Nhờ có "lớp áo ngụy trang" lipoprotein tỷ trọng cực thấp này, HCV không bị kháng thể trung hòa nhận diện và có thể dễ dàng sử dụng các thụ thể lipoprotein của tế bào gan (như LDLR, SR-BI) để tiếp tục lây nhiễm tế bào mới.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN III: CƠ CHẾ BỆNH SINH MỠ HÓA GAN VÀ ĐỀ KHÁNG INSULIN -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="mo-hoa-gan-va-de-khang-insulin" class="section-title">
+                        <span>Phần III: Cơ Chế Bệnh Sinh Mỡ Hóa Gan (Viral Steatosis) & Đề Kháng Insulin</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Tình trạng mỡ hóa gan (Steatosis) xuất hiện ở <strong>trên 55% bệnh nhân viêm gan C mạn tính</strong> (cao gấp 2 - 3 lần so với viêm gan B hoặc cộng đồng thông thường).
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🍔 1. Mỡ Hóa Chuyển Hóa (Metabolic Steatosis)</div>
+                                <p>Gặp phổ biến ở các <strong>Kiểu gen 1, 2, 4, 5, 6</strong>. Mức độ mỡ hóa tương quan chặt chẽ với chỉ số khối cơ thể (BMI), tình trạng béo phì trung tâm và hội chứng chuyển hóa của bệnh nhân. Tình trạng mỡ hóa không biến mất hoàn toàn ngay sau khi sạch virus.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-danger, #dc2626);">⚡ 2. Mỡ Hóa Trực Tiếp Do Vi Rút (Viral Steatosis)</div>
+                                <p>Đặc trưng kinh điển ở <strong>HCV Kiểu gen 3 (Genotype 3a)</strong>. Protein Core kiểu gen 3 có hoạt tính tích lũy triglyceride mạnh gấp nhiều lần các kiểu gen khác. Mức độ mỡ hóa tương quan thuận trực tiếp với nồng độ HCV-RNA và <strong>biến mất hoàn toàn sau khi đạt SVR bằng thuốc DAA</strong>.</p>
+                            </div>
+                        </div>
+
+                        <h3 id="5-con-duong-mo-hoa-gan" class="subsection-title" style="margin-top: 2rem;">3. Năm Con Đường Sinh Bệnh Học Tích Lũy Mỡ Trong Tế Bào Gan</h3>
+                        <p>Sự tích lũy triglyceride xảy ra khi lượng acid béo nạp vào và tổng hợp nội tại vượt quá khả năng tiêu thụ qua beta-oxy hóa tại ty thể hoặc khả năng xuất khẩu dưới dạng VLDL:</p>
+
+                        <ul class="physio-list-arrow">
+                            <li><span class="pathway-step-num">1</span> <strong>Tăng hấp thu acid béo tự do (FFA Input):</strong> Tình trạng đề kháng insulin ngoại vi kích hoạt enzyme hormone-sensitive lipase tại mô mỡ, giải phóng ồ ạt acid béo tự do vào tuần hoàn cửa đổ về gan.</li>
+                            <li><span class="pathway-step-num">2</span> <strong>Tăng đường phân & Tổng hợp lipid mới (De novo lipogenesis):</strong> Trạng thái tăng đường huyết và tăng insulin máu kích hoạt con đường SREBP-1c và ChREBP, thúc đẩy tế bào gan tổng hợp acid béo mới.</li>
+                            <li><span class="pathway-step-num">3</span> <strong>Ức chế xuất khẩu VLDL (Impaired VLDL Secretion):</strong> Protein Core của HCV ức chế trực tiếp enzyme <strong>MTP (Microsomal Triglyceride Transfer Protein)</strong> — enzyme then chốt đóng gói triglyceride với Apolipoprotein B, khiến lipid bị ứ đọng hoàn toàn bên trong bào tương tế bào gan.</li>
+                            <li><span class="pathway-step-num">4</span> <strong>Suy giảm beta-oxy hóa tại ty thể (Impaired Mitochondrial β-Oxidation):</strong> Protein Core bám vào màng ty thể, phá vỡ chuỗi hô hấp tế bào, gây giảm oxy hóa acid béo và sản sinh ồ ạt các gốc tự do ROS.</li>
+                            <li><span class="pathway-step-num">5</span> <strong>Tác động trực tiếp lên giọt mỡ:</strong> Protein Core và NS5A tuyển mộ và ổn định các phân tử mỡ quanh bộ máy sao chép của virus.</li>
+                        </ul>
+
+                        <!-- HÌNH ẢNH 1 ĐÍNH KÈM: STEATOSIS PATHWAYS -->
+                        <figure class="physio-figure">
+                            <img src="../images/hcv/hcv-steatosis-pathways.png" 
+                                 alt="Sơ đồ 5 con đường bệnh sinh mỡ hóa gan trong viêm gan C mạn tính" 
+                                 class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 1 (Fig. 1 - Asselah et al., <i>Gut</i> 2006):</strong> Sơ đồ sinh lý bệnh mỡ hóa gan trong viêm gan C mạn tính: (1) & (2) Tăng nạp acid béo tự do từ mô mỡ do đề kháng insulin ngoại vi; (3) Tăng đường phân và tổng hợp acid béo mới nội bào; (4) Giảm beta-oxy hóa tại ty thể do độc tính protein vi rút; (5) Tắc nghẽn xuất khẩu triglyceride dưới dạng VLDL do Core ức chế MTP.
+                            </figcaption>
+                        </figure>
+
+                        <h3 id="co-che-de-khang-insulin" class="subsection-title">4. Cơ Chế Gây Đề Kháng Insulin Của HCV (Insulin Resistance Mechanism)</h3>
+                        <p>
+                            Nhiễm HCV gây ra tình trạng đề kháng insulin đặc thù ngay cả ở bệnh nhân không béo phì:
+                        </p>
+                        <div class="key-concept">
+                            🧬 <strong>Bất hoạt cơ chất thụ thể Insulin IRS-1 và IRS-2:</strong><br>
+                            Phản ứng viêm do HCV kích thích giải phóng nồng độ cao cytokine tiền viêm <strong>TNF-α</strong> và kích hoạt protein <strong>SOCS-3 (Suppressor of Cytokine Signaling 3)</strong>. Các phân tử này ức chế quá trình phosphoryl hóa tyrosine và thúc đẩy quá trình thoái hóa ubiquitin đối với <strong>IRS-1</strong> và <strong>IRS-2</strong>. Hậu quả là con đường tín hiệu xuôi dòng <strong>PI3K / Akt / GLUT4</strong> bị chặn đứng hoàn toàn, khiến tế bào gan mất khả năng thu nạp glucose, dẫn đến tăng đường huyết, tăng insulin máu bù trừ và đái tháo đường típ 2 thứ phát.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN IV: CƠ CHẾ XƠ HÓA GAN VÀ VIÊM HOẠI TỬ NHU MÔ -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="co-che-xo-hoa-gan-hcv" class="section-title">
+                        <span>Phần IV: Cơ Chế Xơ Hóa Gan (Fibrogenesis) & Viêm Hoại Tử Tiến Triển</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Sự hiện diện của mỡ gan đơn thuần không gây xơ hóa, nhưng <strong>stress oxy hóa và phản ứng viêm hoại tử</strong> là cầu nối then chốt thúc đẩy nhu mô gan tiến triển nhanh chóng đến xơ gan:
+                        </p>
+
+                        <h3 id="oxy-hoa-lipid-mda-hne" class="subsection-title">1. Quá Trình Oxy Hóa Lipid (Lipid Peroxidation) & Độc Tính Của MDA / 4-HNE</h3>
+                        <p>
+                            Lượng gốc oxy hóa hoạt động (ROS) khổng lồ sinh ra từ ty thể bị tổn thương sẽ tấn công các acid béo chưa bão hòa trên màng tế bào gan, gây ra phản ứng dây chuyền <strong>Lipid Peroxidation</strong> giải phóng các aldehyde độc tính cao:
+                        </p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Malondialdehyde (MDA) & 4-Hydroxynonenal (4-HNE):</strong> Là các sản phẩm oxy hóa lipid bền vững, khuếch tán ra khỏi tế bào gan bị tổn thương.</li>
+                            <li><strong>Hóa hướng động viêm:</strong> 4-HNE cùng với <strong>Interleukin-8 (IL-8)</strong> là những chất hóa hướng động bạch cầu cực mạnh, thu hút bạch cầu đa nhân trung tính thâm nhiễm vào tiểu thùy gan gây viêm hoại tử (necroinflammation).</li>
+                        </ul>
+
+                        <h3 id="kich-hoat-te-bao-hsc" class="subsection-title" style="margin-top: 2rem;">2. Dòng Thác Kích Hoạt Tế Bào Hình Sao (Hepatic Stellate Cells - HSCs)</h3>
+                        <p>Xơ hóa gan trong viêm gan C là kết quả của sự kích hoạt đa yếu tố lên các tế bào hình sao gan (HSCs) trong khoang Disse:</p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">💥 Kích Thích Bởi Cytokine & Sản Phẩm Oxy Hóa</div>
+                                <p><strong>TGF-β (Transforming Growth Factor-beta):</strong> Được tiết ra từ tế bào Kupffer và tế bào gan tổn thương, là yếu tố profibrogenic mạnh nhất, thúc đẩy HSCs chuyển dạng thành <strong>Myofibroblasts</strong> sản xuất ồ ạt Collagen type I và III.</p>
+                                <p><strong>MDA & 4-HNE:</strong> Tác động trực tiếp lên màng HSCs làm tăng biểu hiện các gen tổng hợp chất nền ngoại bào (ECM).</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-warning, #d97706);">💉 Tác Động Profibrogenic Trực Tiếp Của Tăng Insulin Máu</div>
+                                <p>Tế bào hình sao gan có biểu hiện thụ thể insulin chức năng trên màng tế bào. Tình trạng tăng insulin máu do đề kháng insulin kích thích trực tiếp HSCs tăng sản xuất <strong>CTGF (Connective Tissue Growth Factor)</strong>, làm tăng gấp bội tốc độ tích tụ mô xơ và xơ hóa gan.</p>
+                            </div>
+                        </div>
+
+                        <!-- HÌNH ẢNH 2 ĐÍNH KÈM: FIBROGENESIS PATHWAYS -->
+                        <figure class="physio-figure">
+                            <img src="../images/hcv/hcv-fibrogenesis-pathways.png" 
+                                 alt="Sơ đồ mạng lưới cơ chế bệnh sinh xơ hóa gan do HCV trong viêm gan C mạn tính" 
+                                 class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 2 (Fig. 2 - Asselah et al., <i>Gut</i> 2006):</strong> Sơ đồ tương tác bệnh sinh đa tầng giữa HCV, mỡ hóa gan, đề kháng insulin, stress oxy hóa và xơ hóa gan: HCV và đề kháng insulin tạo Steatosis &rarr; Sản sinh ROS gây Lipid Peroxidation giải phóng MDA/4-HNE &rarr; Tiết TGF-β, TNF-α, IL-8, FasL &rarr; Kích hoạt tế bào hình sao (HSCs) tổng hợp Collagen &rarr; Xơ hóa gan (Fibrosis) và Viêm hoại tử (Necroinflammation).
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN V: MIỄN DỊCH BỆNH HỌC VÀ VẾT SẸO PHÂN TỬ SAU ĐIỀU TRỊ DAA -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="mien-dich-va-vet-seo-phan-tu" class="section-title">
+                        <span>Phần V: Miễn Dịch Bệnh Học & "Vết Sẹo Phân Tử" Sau Điều Trị DAA</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Giống như HBV, virus viêm gan C là vi rút <strong>không trực tiếp gây độc tế bào (non-cytopathic)</strong>; tổn thương nhu mô gan là hệ quả của phản ứng miễn dịch tế bào CD8+ T.
+                        </p>
+
+                        <h3 id="cap-vs-man-tinh" class="subsection-title">1. Ngã Rẽ Miễn Dịch Giữa Nhiễm Trùng Cấp Tự Giới Hạn vs Mạn Tính</h3>
+                        <div class="hemo-table-wrap">
+                            <table class="hemo-table">
+                                <thead>
+                                    <tr>
+                                        <th>Đặc điểm Miễn dịch</th>
+                                        <th>Nhiễm HCV Cấp Tự Khỏi (20 - 30% bệnh nhân)</th>
+                                        <th>Chuyển Thành Nhiễm HCV Mạn Tính (70 - 80% bệnh nhân)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Tế bào T CD4+ / CD8+</strong></td>
+                                        <td>Đáp ứng miễn dịch tế bào mạnh mẽ, bền bỉ và <strong>nhận diện đa mục tiêu (broad-based)</strong> trên nhiều protein vi rút.</td>
+                                        <td>Tế bào T đặc hiệu đơn mục tiêu, yếu ớt và nhanh chóng bị ức chế hoặc đào thải do đột biến thoát miễn dịch (escape mutations).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cytokine kháng virus</strong></td>
+                                        <td>Sản xuất nồng độ cao <strong>IFN-γ và TNF-α</strong> giúp thanh thải tế bào gan nhiễm vi rút.</td>
+                                        <td>Giảm sản xuất IFN-γ; protein NS3/4A cắt bất hoạt các phân tử MAVS và TRIF, làm tê liệt hệ thống interferon nội tại của tế bào gan.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Trạng thái tế bào T</strong></td>
+                                        <td>Hình thành tế bào T nhớ bảo vệ (Memory T cells).</td>
+                                        <td>Rơi vào trạng thái <strong>suy kiệt miễn dịch (T-cell exhaustion)</strong> do kháng nguyên kích thích liên tục; biểu hiện thụ thể ức chế PD-1, CTLA-4, TIM-3, LAG-3.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 id="vet-seo-bieu-sinh-hau-daa" class="subsection-title" style="margin-top: 2rem;">2. Khái Niệm "Vết Sẹo Phân Tử / Biểu Sinh" (Epigenetic Scar of Exhaustion)</h3>
+                        <div class="warning-box">
+                            ⚠️ <strong>Tại sao bệnh nhân xơ gan đã chữa khỏi HCV bằng DAA vẫn có nguy cơ ung thư gan HCC?</strong><br>
+                            Mặc dù các thuốc kháng vi rút trực tiếp (DAAs: Sofosbuvir, Velpatasvir, Glecaprevir) có thể quét sạch 100% HCV-RNA khỏi cơ thể (đạt đáp ứng virus bền vững SVR12), các nghiên cứu giải trình tự epigenetics hiện đại cho thấy:
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Vết sẹo biểu sinh trên tế bào gan (Hepatic Epigenetic Scar):</strong> Quá trình nhiễm HCV mạn tính đã làm biến đổi vĩnh viễn các dấu ấn methyl hóa DNA và acetyl hóa histone trên bộ gen tế bào gan (tăng biểu hiện các gen sinh ung thư và ức chế các gen sửa chữa DNA). Dấu ấn này không biến mất sau khi khỏi virus, duy trì nguy cơ tiến triển thành ung thư tế bào gan (HCC).</li>
+                                <li><strong>Vết sẹo suy kiệt trên tế bào T (T-Cell Exhaustion Scar):</strong> Các tế bào T CD8+ đặc hiệu vi rút vẫn duy trì cấu trúc chromatin "khóa kín", không thể phục hồi hoàn toàn khả năng miễn dịch nhớ để phòng chống tái nhiễm.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VI: BẢNG ĐỐI SÁNH SINH LÝ BỆNH HBV VS HCV & CLINICAL PEARLS -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-hbv-hcv-va-pearls" class="section-title">
+                        <span>Phần VI: Đối Sánh Toàn Diện Sinh Lý Bệnh HBV vs HCV & Clinical Pearls</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="bang-doi-sanh-hbv-hcv" class="subsection-title">1. Bảng Đối Sánh Sinh Lý Bệnh Giữa Viêm Gan Siêu Vi B (HBV) và Viêm Gan Siêu Vi C (HCV)</h3>
+
+                        <div class="hemo-table-wrap">
+                            <table class="hemo-table">
+                                <thead>
+                                    <tr>
+                                        <th>Đặc tính Sinh lý bệnh</th>
+                                        <th>Viêm Gan Siêu Vi B (HBV)</th>
+                                        <th>Viêm Gan Siêu Vi C (HCV)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Bản chất Bộ gen</strong></td>
+                                        <td>DNA bán kép (rcDNA 3.2 kb); nhân lên qua khuôn phiên mã ngược.</td>
+                                        <td>RNA đơn bản dương ((+)ssRNA 9.6 kb); nhân lên hoàn toàn trong bào tương.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tích hợp vào Bộ gen Người</strong></td>
+                                        <td><strong>Có</strong> (dsLDNA chèn vào DNA tế bào gan gây đột biến chèn).</td>
+                                        <td><strong>Hoàn toàn Không</strong> (HCV không có giai đoạn DNA).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Hồ chứa Bền vững trong Nhân</strong></td>
+                                        <td><strong>cccDNA minichromosome</strong> siêu bền vững trong nhân tế bào gan.</td>
+                                        <td><strong>Không có</strong> (Chỉ tồn tại các phân tử RNA tạm thời trong bào tương).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tỷ lệ Chuyển Mạn Tính (Người lớn)</strong></td>
+                                        <td>Thấp (<strong>5 - 10%</strong> ở người trưởng thành có miễn dịch bình thường).</td>
+                                        <td>Rất cao (<strong>70 - 85%</strong> do hiện tượng đột biến chủng giả quasispecies).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mỡ hóa Gan (Steatosis)</strong></td>
+                                        <td>Không phổ biến, chỉ xuất hiện do yếu tố chuyển hóa đi kèm.</td>
+                                        <td><strong>Rất phổ biến (&gt; 55%)</strong>; trực tiếp do protein Core &amp; NS5A gây ra (nhất là Kiểu gen 3).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cơ chế Sinh Ung Thư Gan (HCC)</strong></td>
+                                        <td>Trực tiếp qua <strong>Oncoprotein HBx &amp; Tích hợp DNA</strong> (có thể sinh ung trên nền gan <strong>chưa xơ hóa</strong>).</td>
+                                        <td>Gián tiếp qua <strong>Viêm mạn tính &rarr; Xơ gan</strong> (hiếm khi sinh ung nếu gan chưa xơ hóa &ge; F3/F4).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Khả năng Điều Trị Khỏi Hoàn Toàn</strong></td>
+                                        <td>Chỉ đạt "Chữa khỏi chức năng" (Functional Cure); khó tiệt căn cccDNA.</td>
+                                        <td><strong>Chữa khỏi tiệt căn hoàn toàn (Virological Cure / SVR12 &gt; 98%)</strong> bằng phác đồ thuốc DAA 8 - 12 tuần.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="clinical-pearl" style="margin-top: 2rem;">
+                            💎 <strong>Clinical Pearls — Bài Học Sinh Lý Bệnh Ứng Dụng Trong Thực Hành Lâm Sàng:</strong>
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Thời gian điều trị DAA ngắn ngày nhờ không có cccDNA:</strong> Do chu kỳ sống của HCV diễn ra hoàn toàn trong bào tương và không có hồ chứa cccDNA trong nhân như HBV, các phác đồ DAA hiện đại (Sofosbuvir/Velpatasvir hoặc Glecaprevir/Pibrentasvir) chỉ cần điều trị trong 8 - 12 tuần là có thể quét sạch hoàn toàn vi rút ra khỏi cơ thể với tỷ lệ khỏi bệnh &gt; 98%.</li>
+                                <li><strong>Chữa khỏi virus (SVR) &ne; Miễn dịch bảo vệ trọn đời:</strong> Do kháng thể anti-HCV không phải là kháng thể trung hòa bảo vệ bền vững và tế bào T mang "vết sẹo phân tử", bệnh nhân đã điều trị khỏi HCV hoàn toàn vẫn có thể bị tái nhiễm HCV nếu tiếp tục có hành vi nguy cơ (tiêm chích ma túy, quan hệ tình dục không an toàn).</li>
+                                <li><strong>Bắt buộc tiếp tục tầm soát HCC ở bệnh nhân xơ hóa F3 - F4 sau khi đạt SVR:</strong> Bệnh nhân đã có xơ hóa tiến triển (F3) hoặc xơ gan (F4) trước khi điều trị DAA vẫn mang "vết sẹo biểu sinh" và cấu trúc tiểu thùy gan đã biến đổi, do đó <strong>bắt buộc phải duy trì siêu âm gan và AFP định kỳ mỗi 6 tháng suốt đời</strong> để phát hiện sớm ung thư gan.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+                <!-- ========================================================================= -->
+                <div class="ref-section">
+                    <h3>📚 Tài liệu Tham khảo Chính (AMA Format)</h3>
+                    <ul class="ref-list">
+                        <li><span>1. Asselah T, Rubbia-Brandt L, Marcellin P, Negro F.</span> Steatosis in chronic hepatitis C: why does it really matter? <i>Gut</i>. 2006;55(1):123-130. doi:10.1136/gut.2005.069757.</li>
+                        <li><span>2. Bộ Y tế Việt Nam.</span> <i>Hướng dẫn chẩn đoán và điều trị bệnh viêm gan vi rút C</i> (Ban hành kèm theo Quyết định số 2855/QĐ-BYT ngày 25/09/2024 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2024.</li>
+                        <li><span>3. Krishnan T, Puri MS.</span> Systematic review of hepatitis C virus (HCV). <i>Paripex Indian J Res</i>. 2026;15(5):31-33. doi:10.36106/paripex.</li>
+                        <li><span>4. European Association for the Study of the Liver (EASL).</span> EASL recommendations on treatment of hepatitis C: Final update of the series. <i>J Hepatol</i>. 2020;73(5):1170-1218.</li>
+                        <li><span>5. Urban S, Neumann-Haefelin C, Lampertico P.</span> Hepatitis delta virus: insights into a peculiar pathogen and novel treatment options. <i>Gut</i>. 2021;70(9):1782-1794. doi:10.1136/gutjnl-2020-323888.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

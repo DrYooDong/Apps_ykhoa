@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENG-01: Đại Cương Chuyển Hóa & Năng Lượng Tự Do (ΔG) – Hóa Sinh Y Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="../../js/physio-shared.ts"></script>
+
+    <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #0369a1 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0c4a6e 50%, #0369a1 100%);
+        }
+
+        .biochem-article-header {
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .biochem-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 3rem;
+        }
+
+        /* HEADINGS TYPOGRAPHY */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        .reaction-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.925rem;
+        }
+
+        .lab-table th,
+        .lab-table td {
+            border: 1px solid var(--color-border, #e2e8f0);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .lab-table th {
+            background: var(--color-bg, #f8fafc);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        .lab-table tbody tr:nth-child(even) {
+            background: var(--color-bg, #f8fafc);
+        }
+
+        [data-theme="dark"] .lab-table th {
+            background: var(--color-surface-2, #0f172a);
+            color: #f8fafc;
+        }
+
+        [data-theme="dark"] .lab-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+            border-color: var(--color-primary, #0284c7);
+        }
+
+        .feature-card h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.05rem;
+            color: var(--color-primary, #0284c7);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        [data-theme="dark"] .feature-card {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        [data-theme="dark"] .feature-card h4 {
+            color: #38bdf8;
+        }
+
+        .diagram-container {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        [data-theme="dark"] .diagram-container {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        .diagram-caption {
+            font-size: 0.875rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.85rem;
+            font-style: italic;
+        }
+
+        .code-pill {
+            background: var(--color-bg, #f1f5f9);
+            color: var(--color-primary, #0284c7);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            font-weight: 600;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        [data-theme="dark"] .code-pill {
+            background: var(--color-surface-2, #0f172a);
+            color: #38bdf8;
+            border-color: var(--color-border, #334155);
+        }
+
+        .formula-card {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.25rem 0;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            color: var(--color-text, #0f172a);
+        }
+
+        [data-theme="dark"] .formula-card {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- ARTICLE HEADER -->
+        <header class="biochem-article-header">
+            <span class="biochem-badge"><i class="fa-solid fa-bolt-lightning"></i> ENG-01 • Khối 3: Năng Lượng Sinh Học &amp; Chuỗi Hô Hấp</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 2.1rem; font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Đại Cương Chuyển Hóa, Năng Lượng Tự Do (&Delta;G), ATP &amp; Thế Khử Redox
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 900px;">
+                Mối liên hệ năng lượng giữa Dị hóa (Catabolism) &amp; Đồng hóa (Anabolism); Các định luật nhiệt động lực học trong hệ mở tế bào sống; Biến thiên năng lượng tự do Gibbs (&Delta;G = &Delta;H – T&Delta;S); Trạng thái chuẩn hóa sinh (&Delta;G°') &amp; Phương trình liên hệ Hằng số cân bằng K<sub>eq</sub>; Nguyên lý Ghép cặp phản ứng (Coupled Reactions) &amp; Tính cộng được của &Delta;G; Bản chất hóa học đặc biệt của ATP (giải tỏa lực đẩy tĩnh điện, ổn định cộng hưởng P<sub>i</sub>, solvat hóa); Thang đo Tiềm năng chuyển nhóm Phosphate; Năng lượng liên kết Thioester (Acetyl-CoA); và Nhiệt động lực học phản ứng Oxy hóa khử sinh học (&Delta;G°' = –nF&Delta;E°').
+            </p>
+        </header>
+
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-recycle"></i> 1. Dị Hóa vs Đồng Hóa</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-fire"></i> 2. Định Luật Nhiệt Động Học &amp; Entropy</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-chart-line"></i> 3. Năng Lượng Tự Do Gibbs (&Delta;G)</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-scale-balanced"></i> 4. &Delta;G°' vs &Delta;G Tế Bào &amp; K<sub>eq</sub></a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-link"></i> 5. Ghép Cặp Phản Ứng (Hexokinase)</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-battery-three-quarters"></i> 6. ATP - "Đồng Tiền Năng Lượng"</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-arrow-down-up-across-line"></i> 7. Thang Phosphate &amp; Thioester</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-plug-circle-bolt"></i> 8. Điện Hóa Học Redox &amp; Bilan Lâm Sàng</a>
+            </div>
+        </nav>
+
+        <!-- SECTION 1: DỊ HÓA VS ĐỒNG HÓA -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-recycle"></i> 1. Tổng Quan Về Chuyển Hóa: Dị Hóa (Catabolism) &amp; Đồng Hóa (Anabolism)</h2>
+            
+            <p class="section-text">
+                <strong>Chuyển hóa các chất (Metabolism)</strong> là toàn bộ mạng lưới phản ứng sinh hóa phối hợp diễn ra liên tục bên trong tế bào sống nhằm khai thác năng lượng, dự trữ và tổng hợp các cấu trúc phân tử cần thiết cho sự sống. Mạng lưới này bao gồm hai quá trình đối lập nhưng gắn kết chặt chẽ:
+            </p>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-fire-flame-curved"></i> Dị Hóa (Catabolism)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        • <strong>Bản chất</strong>: Quá trình phân giải phân tử dinh dưỡng phức tạp (Carbohydrate, Lipid, Protein) thành phân tử đơn giản (CO₂, H₂O, NH₃, Urea, Lactate).<br>
+                        • <strong>Đặc điểm hóa học</strong>: Là <strong>quá trình oxy hóa</strong>, giải phóng điện tử giàu năng lượng nạp vào các coenzyme nhận e⁻: <strong>NAD⁺ ➔ NADH, FAD ➔ FADH₂</strong>.<br>
+                        • <strong>Năng lượng</strong>: Là quá trình <strong>phát năng (exergonic)</strong>. Khoảng <strong>40% năng lượng</strong> giải phóng được tế bào nạp vào phân tử <strong>ATP</strong>, <strong>60% còn lại</strong> tỏa ra dưới dạng nhiệt năng duy trì thân nhiệt.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-cubes-stacked"></i> Đồng Hóa (Anabolism)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        • <strong>Bản chất</strong>: Sinh tổng hợp các đại phân tử phức tạp (Glycogen, Protein, Acid Nucleic, Triacylglycerol, Phospholipid màng) từ các tiền chất đơn giản.<br>
+                        • <strong>Đặc điểm hóa học</strong>: Là <strong>quá trình khử</strong>, đòi hỏi cung cấp nguyên tử hydro và điện tử giàu năng lượng thông qua coenzyme khử <strong>NADPH</strong>.<br>
+                        • <strong>Năng lượng</strong>: Là quá trình <strong>thu năng (endergonic)</strong>, bắt buộc phải tiêu thụ năng lượng tự do từ sự thủy phân ATP do dị hóa cung cấp.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SVG DIAGRAM 1: DÒNG CHUYỂN DỊCH NĂNG LƯỢNG GIỮA DỊ HÓA VÀ ĐỒNG HÓA -->
+            <div class="diagram-container">
+                <h4 style="margin: 0 0 1rem 0; color: var(--color-primary, #0284c7); font-size: 1.05rem;">
+                    <i class="fa-solid fa-arrows-spin"></i> SƠ ĐỒ DÒNG NĂNG LƯỢNG HAI CHIỀU GIỮA DỊ HÓA VÀ ĐỒNG HÓA TRONG TẾ BÀO
+                </h4>
+                <svg viewBox="0 0 880 280" style="max-width: 100%; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <!-- Catabolism Box (Left) -->
+                    <rect x="30" y="30" width="260" height="220" rx="12" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="2" />
+                    <text x="45" y="60" fill="#ef4444" font-size="14" font-weight="800">DỊ HÓA (CATABOLISM)</text>
+                    <text x="45" y="85" fill="var(--color-text, #334155)" font-size="11" font-weight="700">• Chất dinh dưỡng giàu năng lượng:</text>
+                    <text x="55" y="105" fill="var(--color-text-muted, #64748b)" font-size="10">Glucid, Lipid, Protein, Acid amin</text>
+                    <text x="45" y="135" fill="#ef4444" font-size="11" font-weight="700">➔ Oxy hóa giải phóng năng lượng</text>
+                    <text x="45" y="165" fill="var(--color-text, #334155)" font-size="11" font-weight="700">• Sản phẩm nghèo năng lượng:</text>
+                    <text x="55" y="185" fill="var(--color-text-muted, #64748b)" font-size="10">CO₂, H₂O, Urea, Acid Lactic</text>
+                    <text x="45" y="215" fill="#f59e0b" font-size="11" font-weight="700">• 60% Tỏa nhiệt duy trì thân nhiệt (Heat)</text>
+
+                    <!-- Central Energy Transducers -->
+                    <rect x="340" y="30" width="200" height="100" rx="10" fill="rgba(2, 132, 199, 0.12)" stroke="#0284c7" stroke-width="2" />
+                    <text x="360" y="60" fill="#0284c7" font-size="13" font-weight="800">ATP &amp; NADPH</text>
+                    <text x="360" y="85" fill="var(--color-text, #334155)" font-size="11">Hóa năng &amp; Đương lượng khử</text>
+                    <text x="360" y="105" fill="#0284c7" font-size="10" font-weight="700">~P giàu năng lượng</text>
+
+                    <rect x="340" y="150" width="200" height="100" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #cbd5e1)" />
+                    <text x="360" y="180" fill="var(--color-text-muted, #64748b)" font-size="13" font-weight="800">ADP + Pᵢ &amp; NADP⁺</text>
+                    <text x="360" y="205" fill="var(--color-text-muted, #64748b)" font-size="11">Chất nhận năng lượng nghèo</text>
+                    <text x="360" y="225" fill="#10b981" font-size="10" font-weight="700">Tái sinh qua chu trình oxy hóa</text>
+
+                    <!-- Energy Flow Arrows -->
+                    <path d="M 290 80 L 340 80 M 330 73 L 340 80 L 330 87" stroke="#0284c7" stroke-width="2.5" fill="none" />
+                    <path d="M 340 200 L 290 200 M 300 193 L 290 200 L 300 207" stroke="#64748b" stroke-width="2" fill="none" />
+
+                    <path d="M 540 80 L 590 80 M 580 73 L 590 80 L 580 87" stroke="#0284c7" stroke-width="2.5" fill="none" />
+                    <path d="M 590 200 L 540 200 M 550 193 L 540 200 L 550 207" stroke="#64748b" stroke-width="2" fill="none" />
+
+                    <!-- Anabolism Box (Right) -->
+                    <rect x="590" y="30" width="260" height="220" rx="12" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="2" />
+                    <text x="605" y="60" fill="#10b981" font-size="14" font-weight="800">ĐỒNG HÓA (ANABOLISM)</text>
+                    <text x="605" y="85" fill="var(--color-text, #334155)" font-size="11" font-weight="700">• Tiền chất đơn giản:</text>
+                    <text x="615" y="105" fill="var(--color-text-muted, #64748b)" font-size="10">Acid amin, Đường đơn, Acid béo, Base</text>
+                    <text x="605" y="135" fill="#10b981" font-size="11" font-weight="700">➔ Tiêu thụ ATP tổng hợp đại phân tử</text>
+                    <text x="605" y="165" fill="var(--color-text, #334155)" font-size="11" font-weight="700">• Đại phân tử phức tạp của tế bào:</text>
+                    <text x="615" y="185" fill="var(--color-text-muted, #64748b)" font-size="10">Protein, Glycogen, DNA, RNA, Lipid</text>
+                    <text x="605" y="215" fill="#0284c7" font-size="11" font-weight="700">• Thực hiện công thẩm thấu &amp; cơ học</text>
+                </svg>
+                <div class="diagram-caption">Hình 1: Dòng năng lượng trung chuyển qua ATP/NADPH: Dị hóa oxy hóa tỏa năng lượng nạp vào ATP, cung cấp cho Đồng hóa khử thu năng lượng.</div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ĐỊNH LUẬT NHIỆT ĐỘNG HỌC & ENTROPY -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-fire"></i> 2. Các Định Luật Nhiệt Động Lực Học Trong Sinh Học &amp; Nghịch Lý Entropy</h2>
+            
+            <div class="reaction-box">
+                <strong><i class="fa-solid fa-cube"></i> Tế Bào Sống Là Một "Hệ Mở" (Open System):</strong>
+                <p style="margin: 0.5rem 0 0 0; line-height: 1.6;">
+                    Tế bào và sinh vật sống liên tục trao đổi cả <strong>vật chất</strong> (hấp thụ chất dinh dưỡng, O₂; đào thải CO₂, urea) và <strong>năng lượng</strong> (tiêu thụ hóa năng, tỏa nhiệt chuyển hóa) với môi trường xung quanh. Tế bào <strong>không bao giờ ở trạng thái cân bằng kín</strong>; trạng thái cân bằng tuyệt đối của tế bào đồng nghĩa với <em>cái chết sinh học</em>.
+                </p>
+            </div>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-shield-halved"></i> Định Luật 1: Bảo Toàn Năng Lượng</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        <em>Tổng năng lượng của vũ trụ (hệ thống + môi trường) là một hằng số.</em> Năng lượng không tự sinh ra, không tự mất đi mà chỉ biến đổi dạng: Hóa năng trong thức ăn ➔ Cơ năng (co cơ), Điện năng (dẫn truyền xung thần kinh), Thế năng điện hóa (bơm ion Na⁺/K⁺) và Nhiệt năng.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-shuffle"></i> Định Luật 2 &amp; Nghịch Lý Entropy (S)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        <em>Mọi quá trình tự phát trong vũ trụ đều làm tăng tổng Entropy (&Delta;S<sub>vũ trụ</sub> &gt; 0) – mức độ hỗn loạn của hệ thống.</em><br>
+                        • <strong>Nghịch lý sự sống</strong>: Tế bào sống duy trì cấu trúc cực kỳ trật tự (Entropy rất thấp) bằng cách liên tục tiêu tốn năng lượng từ thức ăn và <strong>thải nhiệt + phân tử nhỏ (CO₂, H₂O) phân tán ra môi trường ngoài</strong> làm tăng mạnh Entropy của môi trường xung quanh!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: NĂNG LƯỢNG TỰ DO GIBBS (ΔG) -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> 3. Năng Lượng Tự Do Gibbs (&Delta;G) &amp; Tiêu Chuẩn Chiều Hướng Phản Ứng</h2>
+            
+            <p class="section-text">
+                Được đề xuất bởi <strong>Josiah Willard Gibbs</strong> (1878), năng lượng tự do Gibbs (<strong>G</strong>) là phần năng lượng của một hệ thống có khả năng thực hiện công hữu ích ở điều kiện nhiệt độ (T) và áp suất (P) không đổi.
+            </p>
+
+            <div class="formula-card">
+                <strong>PHƯƠNG TRÌNH NĂNG LƯỢNG TỰ DO GIBBS:</strong><br>
+                <span style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary, #0284c7);">&Delta;G = &Delta;H – T&Delta;S</span><br>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted, #64748b);">Trong đó: &Delta;H là biến thiên Enthalpy (hàm nhiệt), T là nhiệt độ tuyệt đối (Kelvin = °C + 273.15), &Delta;S là biến thiên Entropy.</span>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="lab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Giá Trị &Delta;G</th>
+                            <th style="width: 25%;">Bản Chất Nhiệt Động Học</th>
+                            <th style="width: 25%;">Chiều Hướng Tự Phát</th>
+                            <th style="width: 30%;">Khả Năng Thực Hiện Công Hữu Ích</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: #ef4444;">&Delta;G &lt; 0 (Âm)</strong></td>
+                            <td><strong>Phản ứng Phát năng (Exergonic)</strong></td>
+                            <td>Tự phát diễn ra theo chiều thuận (từ cơ chất sang sản phẩm).</td>
+                            <td>Giải phóng năng lượng tự do có thể dùng để sinh công cơ học, thẩm thấu hoặc hoạt hóa.</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #0284c7;">&Delta;G &gt; 0 (Dương)</strong></td>
+                            <td><strong>Phản ứng Thu năng (Endergonic)</strong></td>
+                            <td><strong>Không thể tự phát</strong> theo chiều thuận.</td>
+                            <td>Đòi hỏi phải cung cấp năng lượng tự do từ bên ngoài (thường qua ghép cặp ATP).</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #10b981;">&Delta;G = 0</strong></td>
+                            <td><strong>Trạng Thái Cân Bằng (Equilibrium)</strong></td>
+                            <td>Tốc độ phản ứng thuận = nghịch.</td>
+                            <td>Hệ thống không còn khả năng sinh công ròng.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-gauge-high"></i> 3.1. Phân Biệt Nhiệt Động Học (&Delta;G) vs Động Học Tốc Độ (E<sub>a</sub>)</h3>
+            
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Điểm Nhấn Cốt Lõi:</strong><br>
+                • <strong>Nhiệt động học (&Delta;G)</strong>: Chỉ quyết định <em>chiều hướng tự phát và giới hạn cân bằng</em> của phản ứng, <strong>hoàn toàn không quyết định tốc độ phản ứng nhanh hay chậm</strong>.<br>
+                • <strong>Động học (Tốc độ)</strong>: Quyết định bởi <strong>Năng lượng hoạt hóa (E<sub>a</sub> hay &Delta;G<sup>‡</sup>)</strong> – rào cản năng lượng cần vượt qua để đạt tới trạng thái chuyển tiếp (transition state).<br>
+                • <strong>Vai trò của Enzyme</strong>: Enzyme làm tăng tốc độ phản ứng lên hàng triệu lần bằng cách <strong>hạ thấp năng lượng hoạt hóa (E<sub>a</sub>)</strong>, nhưng <strong>tuyệt đối không làm thay đổi &Delta;G và hằng số cân bằng K<sub>eq</sub></strong> của phản ứng!
+            </div>
+
+            <!-- SVG DIAGRAM 2: TỌA ĐỘ NĂNG LƯỢNG VÀ ENZYME -->
+            <div class="diagram-container">
+                <h4 style="margin: 0 0 1rem 0; color: var(--color-primary, #0284c7); font-size: 1.05rem;">
+                    <i class="fa-solid fa-chart-area"></i> TỌA ĐỘ PHẢN ỨNG: SO SÁNH PHẢN ỨNG PHÁT NĂNG, THU NĂNG VÀ VAI TRÒ HẠ THẤP Eₐ CỦA ENZYME
+                </h4>
+                <svg viewBox="0 0 880 280" style="max-width: 100%; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <!-- LEFT: Exergonic Reaction with/without Enzyme -->
+                    <rect x="30" y="20" width="400" height="240" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #cbd5e1)" />
+                    <text x="45" y="45" fill="#ef4444" font-size="12" font-weight="800">1. PHẢN ỨNG PHÁT NĂNG (ΔG &lt; 0) &amp; ENZYME</text>
+                    
+                    <!-- Axes -->
+                    <line x1="60" y1="230" x2="400" y2="230" stroke="var(--color-text, #334155)" stroke-width="2" />
+                    <line x1="60" y1="230" x2="60" y2="55" stroke="var(--color-text, #334155)" stroke-width="2" />
+                    <text x="180" y="250" fill="var(--color-text, #334155)" font-size="10">Tiến trình phản ứng</text>
+                    <text x="25" y="60" fill="var(--color-text, #334155)" font-size="10">G</text>
+
+                    <!-- Reactant Level -->
+                    <line x1="60" y1="130" x2="110" y2="130" stroke="#0284c7" stroke-width="3" />
+                    <text x="65" y="120" fill="#0284c7" font-size="11" font-weight="800">Cơ chất (S)</text>
+
+                    <!-- Uncatalyzed Peak (High Ea) -->
+                    <path d="M 110 130 Q 180 50 250 190 L 380 190" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3 3" fill="none" />
+                    <text x="180" y="65" fill="#94a3b8" font-size="9">Eₐ không xúc tác (Rất cao)</text>
+
+                    <!-- Catalyzed Peak (Low Ea with Enzyme) -->
+                    <path d="M 110 130 Q 180 90 250 190 L 380 190" stroke="#10b981" stroke-width="2.5" fill="none" />
+                    <text x="185" y="105" fill="#10b981" font-size="10" font-weight="700">Eₐ có Enzyme (Hạ thấp)</text>
+
+                    <!-- Product Level -->
+                    <line x1="250" y1="190" x2="380" y2="190" stroke="#ef4444" stroke-width="3" />
+                    <text x="290" y="210" fill="#ef4444" font-size="11" font-weight="800">Sản phẩm (P)</text>
+
+                    <!-- Delta G Dimension -->
+                    <line x1="370" y1="130" x2="370" y2="190" stroke="#ef4444" stroke-width="2" />
+                    <text x="315" y="160" fill="#ef4444" font-size="11" font-weight="800">&Delta;G &lt; 0</text>
+
+                    <!-- RIGHT: Endergonic Reaction -->
+                    <rect x="450" y="20" width="400" height="240" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #cbd5e1)" />
+                    <text x="465" y="45" fill="#0284c7" font-size="12" font-weight="800">2. PHẢN ỨNG THU NĂNG (ΔG &gt; 0)</text>
+
+                    <!-- Axes -->
+                    <line x1="480" y1="230" x2="820" y2="230" stroke="var(--color-text, #334155)" stroke-width="2" />
+                    <line x1="480" y1="230" x2="480" y2="55" stroke="var(--color-text, #334155)" stroke-width="2" />
+                    <text x="600" y="250" fill="var(--color-text, #334155)" font-size="10">Tiến trình phản ứng</text>
+                    <text x="445" y="60" fill="var(--color-text, #334155)" font-size="10">G</text>
+
+                    <!-- Reactant Level (Low) -->
+                    <line x1="480" y1="190" x2="540" y2="190" stroke="#0284c7" stroke-width="3" />
+                    <text x="485" y="180" fill="#0284c7" font-size="11" font-weight="800">Cơ chất (S)</text>
+
+                    <!-- Reaction Curve Upwards -->
+                    <path d="M 540 190 Q 640 60 720 110 L 810 110" stroke="#0284c7" stroke-width="2.5" fill="none" />
+
+                    <!-- Product Level (High) -->
+                    <line x1="720" y1="110" x2="810" y2="110" stroke="#ef4444" stroke-width="3" />
+                    <text x="730" y="100" fill="#ef4444" font-size="11" font-weight="800">Sản phẩm (P)</text>
+
+                    <!-- Delta G Dimension -->
+                    <line x1="790" y1="190" x2="790" y2="110" stroke="#0284c7" stroke-width="2" />
+                    <text x="735" y="155" fill="#0284c7" font-size="11" font-weight="800">&Delta;G &gt; 0</text>
+                </svg>
+                <div class="diagram-caption">Hình 2: Phản ứng phát năng (sản phẩm thấp năng hơn cơ chất) vs Thu năng; Enzyme tăng tốc phản ứng bằng cách hạ thấp đỉnh năng lượng hoạt hóa Eₐ.</div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ΔG°' VS ΔG TẾ BÀO & Keq -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-scale-balanced"></i> 4. Biến Thiên Năng Lượng Tự Do Chuẩn Hóa Sinh (&Delta;G°') &amp; Hằng Số Cân Bằng (K<sub>eq</sub>)</h2>
+            
+            <p class="section-text">
+                Trong hóa sinh, điều kiện chuẩn hóa học thông thường ([H⁺] = 1.0 M tương đương pH = 0) sẽ tiêu diệt mọi sự sống. Do đó, các nhà sinh hóa quy ước <strong>Trạng thái chuẩn hóa sinh (&Delta;G°')</strong> với các thông số:
+            </p>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-vial-circle-check"></i> Quy Ước Chuẩn Hóa Sinh (&Delta;G°')</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        • <strong>Nhiệt độ (T)</strong>: 25°C = 298.15 K<br>
+                        • <strong>Áp suất (P)</strong>: 1 atm = 101.3 kPa<br>
+                        • <strong>Nồng độ chất tan</strong>: 1.0 M (trừ H⁺ và H₂O)<br>
+                        • <strong>Nồng độ ion [H⁺]</strong>: <strong>10⁻⁷ M (pH = 7.0)</strong><br>
+                        • <strong>Nồng độ nước [H₂O]</strong>: <strong>55.5 M</strong> (hoạt độ = 1)<br>
+                        • <strong>Nồng độ ion Mg²⁺</strong>: <strong>1.0 mM</strong> (cố định tạo phức Mg-ATP).
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-calculator"></i> Mối Liên Hệ Toán Học Giữa &Delta;G°' &amp; K<sub>eq</sub></h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        Ở trạng thái cân bằng (&Delta;G = 0):<br>
+                        <span class="code-pill">&Delta;G°' = –RT · ln(K<sub>eq</sub>) = –2.303 · RT · log₁₀(K<sub>eq</sub>)</span><br>
+                        • Tại 25°C: <em>RT &approx; 2.478 kJ/mol; 2.303 RT &approx; 5.706 kJ/mol</em>.<br>
+                        • <strong>K<sub>eq</sub> &gt; 1</strong> ➔ &Delta;G°' &lt; 0 (Sản phẩm chiếm ưu thế).<br>
+                        • <strong>K<sub>eq</sub> &lt; 1</strong> ➔ &Delta;G°' &gt; 0 (Cơ chất chiếm ưu thế).<br>
+                        • <em>Quy luật số mũ</em>: Một thay đổi nhỏ của &Delta;G°' dẫn đến sự thay đổi cực lớn của K<sub>eq</sub>!
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-code-compare"></i> 4.1. &Delta;G Thực Tế Trong Tế Bào Khác Biệt &Delta;G°' Chuẩn Như Thế Nào?</h3>
+            <p class="section-text">
+                Trong cơ thể sống, nồng độ các chất chuyển hóa không bao giờ ở mức 1.0 M. Giá trị &Delta;G thực tế tức thời được tính qua <strong>Tỷ số tác dụng khối (Mass action ratio Q)</strong>:
+            </p>
+
+            <div class="formula-card">
+                <span style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary, #0284c7);">&Delta;G = &Delta;G°' + RT · ln(Q) = &Delta;G°' + 2.303 RT · log₁₀(Q)</span><br>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted, #64748b);">Với phản ứng: A + B ⇌ C + D thì Q = ([C]·[D]) / ([A]·[B]).</span>
+            </div>
+
+            <div class="info-box">
+                <strong><i class="fa-solid fa-lightbulb"></i> Ý Nghĩa Sinh Học Kỳ Diệu:</strong><br>
+                Một phản ứng có biến thiên chuẩn <strong>&Delta;G°' dương lớn</strong> (không thể tự phát trong ống nghiệm) <strong>vẫn hoàn toàn tự phát diễn ra (&Delta;G &lt; 0) bên trong tế bào</strong>! Điều này đạt được nhờ tế bào liên tục dọn sạch sản phẩm C và D (làm cơ chất cho phản ứng kế tiếp) hoặc tích lũy nồng độ cơ chất A và B thật cao ➔ Tỷ số Q cực kỳ nhỏ ➔ Số hạng <em>RT · ln(Q)</em> mang giá trị âm rất lớn, kéo &Delta;G ròng của phản ứng xuống dưới 0!
+            </div>
+        </section>
+
+        <!-- SECTION 5: GHÉP CẶP PHẢN ỨNG (HEXOKINASE) -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-link"></i> 5. Nguyên Lý Ghép Cặp Phản Ứng (Coupled Reactions) &amp; Tính Cộng Được Của &Delta;G</h2>
+            
+            <p class="section-text">
+                Hầu hết các phản ứng sinh tổng hợp đại phân tử và vận chuyển tích cực qua màng đều là phản ứng thu năng (&Delta;G &gt; 0). Để vượt qua rào cản nhiệt động lực học này, tế bào sử dụng <strong>Nguyên lý Ghép cặp phản ứng (Coupled Reactions)</strong> dựa trên tính cộng được của hàm trạng thái Gibbs.
+            </p>
+
+            <div class="reaction-box">
+                <strong><i class="fa-solid fa-gears"></i> Ví Dụ Kinh Điển: Sự Hoạt Hóa Glucose Bởi Enzyme Hexokinase</strong>
+                <p style="margin: 0.5rem 0; line-height: 1.6;">
+                    <strong>1. Phản ứng riêng rẽ thu năng (Không thể tự phát):</strong><br>
+                    <code>Glucose + Pᵢ ⇌ Glucose-6-phosphate + H₂O &nbsp;&nbsp;&Delta;G°'₁ = +13.8 kJ/mol (K_eq &approx; 3.9 &times; 10⁻³ M⁻¹)</code><br><br>
+                    <strong>2. Phản ứng thủy phân ATP phát năng mạnh:</strong><br>
+                    <code>ATP + H₂O ⇌ ADP + Pᵢ &nbsp;&nbsp;&Delta;G°'₂ = –30.5 kJ/mol</code><br><br>
+                    <strong>3. Phản ứng ghép cặp ròng trong trung tâm hoạt động của Hexokinase:</strong><br>
+                    <code>Glucose + ATP ⇌ Glucose-6-phosphate + ADP &nbsp;&nbsp;&Delta;G°'ᵣₒₙ_g = +13.8 + (–30.5) = –16.7 kJ/mol</code>
+                </p>
+                <div style="font-size: 0.9rem; color: #10b981; font-weight: 700;">
+                    ➔ Phản ứng ghép cặp có &Delta;G°' âm lớn (–16.7 kJ/mol), hằng số cân bằng mới K<sub>eq</sub> tăng vọt lên &approx; 8 &times; 10² (gấp hơn 200,000 lần!), kéo phản ứng tiến triển mạnh mẽ theo chiều thuận một chiều!
+                </div>
+            </div>
+
+            <!-- SVG DIAGRAM 3: ĐỒ THỊ GHÉP CẶP NĂNG LƯỢNG HEXOKINASE -->
+            <div class="diagram-container">
+                <h4 style="margin: 0 0 1rem 0; color: var(--color-primary, #0284c7); font-size: 1.05rem;">
+                    <i class="fa-solid fa-chart-simple"></i> ĐỒ THỊ NĂNG LƯỢNG TỰ DO CỦA SỰ GHÉP CẶP PHẢN ỨNG THỦY PHÂN ATP KÉO SẢN XUẤT GLUCOSE-6-PHOSPHATE
+                </h4>
+                <svg viewBox="0 0 860 260" style="max-width: 100%; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <!-- Background Grid Panel -->
+                    <rect x="30" y="20" width="800" height="220" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #cbd5e1)" />
+                    
+                    <!-- Axes -->
+                    <line x1="70" y1="210" x2="780" y2="210" stroke="var(--color-text, #334155)" stroke-width="2" />
+                    <line x1="70" y1="210" x2="70" y2="40" stroke="var(--color-text, #334155)" stroke-width="2" />
+                    <text x="400" y="230" fill="var(--color-text, #334155)" font-size="11" font-weight="700">Tọa độ phản ứng</text>
+                    <text x="35" y="45" fill="var(--color-text, #334155)" font-size="11" font-weight="700">G</text>
+
+                    <!-- Reactants Start Level: Glucose + ATP -->
+                    <line x1="80" y1="90" x2="220" y2="90" stroke="#0284c7" stroke-width="3.5" />
+                    <text x="85" y="80" fill="#0284c7" font-size="12" font-weight="800">Glucose + ATP (Mức năng lượng cao)</text>
+
+                    <!-- Uncoupled Unfavorable path: Glucose + Pi -> G6P (Goes UP) -->
+                    <path d="M 220 90 Q 280 40 340 50" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3" fill="none" />
+                    <text x="280" y="40" fill="#ef4444" font-size="10">Glucose + Pᵢ ➔ G6P (+13.8 kJ/mol)</text>
+
+                    <!-- Coupled Reaction Path (Goes DOWN significantly) -->
+                    <path d="M 220 90 Q 380 60 540 160 L 760 160" stroke="#10b981" stroke-width="3.5" fill="none" />
+
+                    <!-- Product Level: G6P + ADP -->
+                    <line x1="540" y1="160" x2="760" y2="160" stroke="#10b981" stroke-width="3.5" />
+                    <text x="560" y="185" fill="#10b981" font-size="12" font-weight="800">Glucose-6-phosphate + ADP (Bền vững)</text>
+
+                    <!-- Net Delta G Dimension -->
+                    <line x1="740" y1="90" x2="740" y2="160" stroke="#ef4444" stroke-width="2.5" />
+                    <text x="750" y="130" fill="#ef4444" font-size="12" font-weight="800">&Delta;G°' = –16.7 kJ/mol</text>
+                    <text x="260" y="140" fill="var(--color-text, #334155)" font-size="11" font-weight="700">Enzyme Hexokinase chuyển trực tiếp nhóm ~P từ ATP sang Glucose</text>
+                </svg>
+                <div class="diagram-caption">Hình 3: Năng lượng phát ra từ sự thủy phân ATP kéo phản ứng thu năng tạo Glucose-6-phosphate sụt dốc thành công (&Delta;G°' ròng = –16.7 kJ/mol).</div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: ATP - ĐỒNG TIỀN NĂNG LƯỢNG -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-battery-three-quarters"></i> 6. Adenosine Triphosphate (ATP) – Cấu Trúc Phân Tử &amp; Bản Chất Hóa Học</h2>
+            
+            <p class="section-text">
+                ATP là một ribonucleotide gồm <strong>Adenine</strong> gắn với <strong>Ribose</strong> qua liên kết glycosid, và chuỗi 3 gốc phosphate (&alpha;, &beta;, &gamma;) tại C-5'. Trong đó:
+            </p>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-minus"></i> 1 Liên Kết Phosphoester (&alpha;)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        Nối phosphate &alpha; với đường ribose. Là liên kết <strong>nghèo năng lượng</strong> (&Delta;G°' thủy phân &approx; –14.2 kJ/mol).
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-bolt"></i> 2 Liên Kết Phosphoanhydride (&beta; và &gamma;)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        Nối giữa &alpha;–&beta; và &beta;–&gamma; (ký hiệu dấu ngã ~ do Fritz Lipmann đưa ra năm 1941). Là <strong>liên kết giàu năng lượng</strong> (&Delta;G°' thủy phân &le; –30.5 kJ/mol).
+                    </p>
+                </div>
+            </div>
+
+            <!-- SVG DIAGRAM 4: CẤU TRÚC ATP VÀ CƠ CHẾ NĂNG LƯỢNG CAO -->
+            <div class="diagram-container">
+                <h4 style="margin: 0 0 1rem 0; color: var(--color-primary, #0284c7); font-size: 1.05rem;">
+                    <i class="fa-solid fa-atom"></i> CẤU TRÚC PHÂN TỬ ATP VÀ 3 NGUYÊN NHÂN LÝ HÓA TẠO NÊN NĂNG LƯỢNG THỦY PHÂN CAO
+                </h4>
+                <svg viewBox="0 0 880 300" style="max-width: 100%; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <!-- ATP Structure Drawing -->
+                    <rect x="30" y="25" width="820" height="130" rx="10" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #cbd5e1)" />
+                    
+                    <!-- Adenine Box -->
+                    <rect x="50" y="45" width="100" height="50" rx="6" fill="#8b5cf6" /><text x="75" y="75" fill="#fff" font-size="12" font-weight="800">Adenine</text>
+                    <line x1="150" y1="70" x2="190" y2="70" stroke="var(--color-text, #334155)" stroke-width="2" />
+
+                    <!-- Ribose Box -->
+                    <rect x="190" y="45" width="90" height="50" rx="6" fill="#0284c7" /><text x="215" y="75" fill="#fff" font-size="12" font-weight="800">Ribose</text>
+                    <line x1="280" y1="70" x2="320" y2="70" stroke="var(--color-text, #334155)" stroke-width="2" />
+                    <text x="285" y="60" fill="var(--color-text-muted, #64748b)" font-size="9">Ester</text>
+
+                    <!-- Alpha Phosphate -->
+                    <circle cx="350" cy="70" r="22" fill="#f59e0b" /><text x="345" y="75" fill="#fff" font-size="12" font-weight="800">&alpha;</text>
+                    <text x="345" y="105" fill="#ef4444" font-size="11" font-weight="800">O⁻</text>
+                    <line x1="372" y1="70" x2="410" y2="70" stroke="#ef4444" stroke-width="3" />
+                    <text x="380" y="60" fill="#ef4444" font-size="14" font-weight="800">~</text>
+
+                    <!-- Beta Phosphate -->
+                    <circle cx="435" cy="70" r="22" fill="#ef4444" /><text x="430" y="75" fill="#fff" font-size="12" font-weight="800">&beta;</text>
+                    <text x="430" y="105" fill="#ef4444" font-size="11" font-weight="800">O⁻</text>
+                    <line x1="457" y1="70" x2="495" y2="70" stroke="#ef4444" stroke-width="3" />
+                    <text x="465" y="60" fill="#ef4444" font-size="14" font-weight="800">~</text>
+
+                    <!-- Gamma Phosphate -->
+                    <circle cx="520" cy="70" r="22" fill="#ef4444" /><text x="515" y="75" fill="#fff" font-size="12" font-weight="800">&gamma;</text>
+                    <text x="510" y="105" fill="#ef4444" font-size="11" font-weight="800">2O⁻</text>
+
+                    <!-- Mg2+ Chelate Bridge -->
+                    <rect x="600" y="45" width="220" height="85" rx="8" fill="rgba(16, 185, 129, 0.12)" stroke="#10b981" />
+                    <text x="615" y="70" fill="#10b981" font-size="11" font-weight="800">PHỨC HỢP Mg²⁺–ATP</text>
+                    <text x="615" y="90" fill="var(--color-text, #334155)" font-size="10">Ion Mg²⁺ tạo cầu chelate</text>
+                    <text x="615" y="110" fill="var(--color-text, #334155)" font-size="10">giảm bớt lực đẩy &amp; kích hoạt enzyme</text>
+
+                    <!-- Bottom: 3 Physical Causes -->
+                    <rect x="30" y="170" width="260" height="110" rx="8" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #cbd5e1)" />
+                    <text x="40" y="195" fill="#ef4444" font-size="11" font-weight="800">1. GIẢI TỎA LỰC ĐẨY TĨNH ĐIỆN</text>
+                    <text x="40" y="218" fill="var(--color-text, #334155)" font-size="10">Ở pH 7.4, ATP mang 4 điện tích âm</text>
+                    <text x="40" y="238" fill="var(--color-text, #334155)" font-size="10">cạnh nhau ➔ Thủy phân tách Pᵢ</text>
+                    <text x="40" y="258" fill="#ef4444" font-size="10" font-weight="700">giúp giải tỏa sức căng nội tại.</text>
+
+                    <rect x="310" y="170" width="260" height="110" rx="8" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #cbd5e1)" />
+                    <text x="320" y="195" fill="#10b981" font-size="11" font-weight="800">2. ỔN ĐỊNH HÓA CỘNG HƯỞNG</text>
+                    <text x="320" y="218" fill="var(--color-text, #334155)" font-size="10">Phosphate tự do (Pᵢ) có cấu trúc lai</text>
+                    <text x="320" y="238" fill="var(--color-text, #334155)" font-size="10">cộng hưởng đối xứng 4 oxy cực bền,</text>
+                    <text x="320" y="258" fill="#10b981" font-size="10" font-weight="700">bền hơn nhiều so với khi nằm ở ATP.</text>
+
+                    <rect x="590" y="170" width="260" height="110" rx="8" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #cbd5e1)" />
+                    <text x="600" y="195" fill="#0284c7" font-size="11" font-weight="800">3. VỎ BỌC SOLVAT HÓA NƯỚC</text>
+                    <text x="600" y="218" fill="var(--color-text, #334155)" font-size="10">Sản phẩm ADP³⁻ và Pᵢ²⁻ kích thước nhỏ</text>
+                    <text x="600" y="238" fill="var(--color-text, #334155)" font-size="10">được các phân tử nước hydrat hóa tốt,</text>
+                    <text x="600" y="258" fill="#0284c7" font-size="10" font-weight="700">giải phóng nhiệt hydrat hóa lớn.</text>
+                </svg>
+                <div class="diagram-caption">Hình 4: Cấu trúc phân tử ATP và 3 cơ chế vật lý hóa học khiến sự thủy phân liên kết phosphoanhydride giải phóng năng lượng tự do lớn.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-code-branch"></i> 6.1. Hai Con Đường Thủy Phân Của ATP</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-arrow-right"></i> 1. Thủy Phân Giải Phóng Orthophosphate (Pᵢ)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        <code>ATP + H₂O ⇌ ADP + Pᵢ + H⁺ &nbsp;&nbsp;&Delta;G°' = –30.5 kJ/mol</code><br>
+                        Phổ biến trong co cơ actin-myosin, bơm ion Na⁺/K⁺-ATPase và hoạt hóa kinase.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-angles-right"></i> 2. Thủy Phân Giải Phóng Pyrophosphate (PPᵢ)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        <code>ATP + H₂O ⇌ AMP + PPᵢ + H⁺ &nbsp;&nbsp;&Delta;G°' = –45.6 kJ/mol</code><br>
+                        <code>PPᵢ + H₂O ➔ 2 Pᵢ (Pyrophosphatase) &nbsp;&nbsp;&Delta;G°' = –19.2 kJ/mol</code><br>
+                        <strong>Tổng &Delta;G°' = –64.8 kJ/mol</strong> (tương đương <strong>2 ATP equivalents</strong>) kéo các phản ứng tổng hợp acid béo (Acyl-CoA), aminoacyl-tRNA diễn ra hoàn toàn không thuận nghịch!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: THANG PHOSPHATE & THIOESTER -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-arrow-down-up-across-line"></i> 7. Thang Tiềm Năng Chuyển Nhóm Phosphate &amp; Năng Lượng Thioester (Acetyl-CoA)</h2>
+            
+            <p class="section-text">
+                <strong>Tiềm năng chuyển nhóm phosphate (Phosphoryl Group Transfer Potential)</strong> phản ánh xu hướng nhiệt động học của một hợp chất trong việc hiến nhóm phosphate cho nước hoặc phân tử nhận khác.
+            </p>
+
+            <div style="overflow-x: auto;">
+                <table class="lab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Tên Hợp Chất Hóa Sinh</th>
+                            <th style="width: 25%;">Loại Liên Kết Năng Lượng</th>
+                            <th style="width: 20%;">&Delta;G°' (kJ/mol)</th>
+                            <th style="width: 25%;">Phân Nhóm Tiềm Năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(239, 68, 68, 0.06);">
+                            <td><strong>Phosphoenolpyruvate (PEP)</strong></td>
+                            <td>Enol-phosphate</td>
+                            <td><strong style="color: #ef4444;">–61.9</strong></td>
+                            <td><strong>Siêu năng lượng</strong></td>
+                        </tr>
+                        <tr style="background: rgba(239, 68, 68, 0.06);">
+                            <td><strong>Carbamoyl phosphate</strong></td>
+                            <td>Anhydride hỗn hợp</td>
+                            <td><strong style="color: #ef4444;">–51.4</strong></td>
+                            <td><strong>Siêu năng lượng</strong></td>
+                        </tr>
+                        <tr style="background: rgba(239, 68, 68, 0.06);">
+                            <td><strong>1,3-Bisphosphoglycerate (1,3-BPG)</strong></td>
+                            <td>Acyl-phosphate (Anhydride)</td>
+                            <td><strong style="color: #ef4444;">–49.4</strong></td>
+                            <td><strong>Siêu năng lượng</strong></td>
+                        </tr>
+                        <tr style="background: rgba(239, 68, 68, 0.06);">
+                            <td><strong>Phosphocreatine (Creatine-P)</strong></td>
+                            <td>Phosphoguanidine (Phosphoamide)</td>
+                            <td><strong style="color: #ef4444;">–43.1</strong></td>
+                            <td><strong>Kho Phosphagen cơ &amp; não</strong></td>
+                        </tr>
+                        <tr style="background: rgba(139, 92, 246, 0.06);">
+                            <td><strong>Acetyl-CoA (Thủy phân Thioester)</strong></td>
+                            <td>Thioester (–C(=O)–S–)</td>
+                            <td><strong style="color: #8b5cf6;">–31.5</strong></td>
+                            <td><strong>Giàu năng lượng (Không phosphate)</strong></td>
+                        </tr>
+                        <tr style="background: rgba(2, 132, 199, 0.12); font-weight: 800;">
+                            <td><strong style="color: #0284c7;">ATP ➔ ADP + Pᵢ</strong></td>
+                            <td>Phosphoanhydride</td>
+                            <td><strong style="color: #0284c7;">–30.5</strong></td>
+                            <td><strong style="color: #0284c7;">VỊ TRÍ TRUNG GIAN HOÀN HẢO</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Glucose-1-phosphate</strong></td>
+                            <td>Hemiacetal ester</td>
+                            <td>–20.9</td>
+                            <td>Nghèo năng lượng</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Glucose-6-phosphate</strong></td>
+                            <td>Phosphoester</td>
+                            <td>–13.8</td>
+                            <td>Nghèo năng lượng</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Glycerol-3-phosphate</strong></td>
+                            <td>Phosphoester</td>
+                            <td>–9.2</td>
+                            <td>Nghèo năng lượng</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-arrows-split-up-and-left"></i> Vị Trí Trung Gian Của ATP</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        • <strong>Nhận phosphate</strong> từ các chất siêu năng lượng đứng trên nó (PEP, 1,3-BPG) để nạp tạo thành ATP (<em>Phosphoryl hóa mức cơ chất</em>).<br>
+                        • <strong>Cho phosphate</strong> xuống các chất nghèo năng lượng đứng dưới nó (Glucose, Glycerol) để hoạt hóa chúng đi vào con đường thoái hóa.<br>
+                        • <strong>Bền vững động học (Kinetic Stability)</strong>: Không tự thủy phân bừa bãi khi không có enzyme kinase xúc tác.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-person-running"></i> Bể Dự Trữ Phosphocreatine &amp; Creatine Kinase (CK)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; line-height: 1.6;">
+                        Tế bào cơ vân và não chứa <strong>Phosphocreatine gấp 5 lần ATP</strong>. Khi co cơ đột ngột (chạy nước rút), <strong>Creatine Kinase (CK)</strong> lập tức chuyển nhóm ~P từ Phosphocreatine sang ADP để phục hồi ATP ngay lập tức trong <strong>3–5 giây đầu tiên</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-cubes"></i> 7.1. Tại Sao Thủy Phân Liên Kết Thioester (Acetyl-CoA) Giải Phóng Năng Lượng Cao?</h3>
+            <p class="section-text">
+                Trong <strong>Acetyl-CoA</strong>, nhóm acetyl liên kết với nguyên tử Lưu huỳnh (S) qua liên kết <strong>Thioester (–C(=O)–S–)</strong>.
+            </p>
+            <div class="reaction-box">
+                <strong><i class="fa-solid fa-atom"></i> Cơ Chế Lệch Orbital Giữa S (Chu Kỳ 3) và C (Chu Kỳ 2):</strong>
+                <p style="margin: 0.5rem 0; line-height: 1.6;">
+                    • <strong>Trong Oxy-ester thông thường</strong>: Nguyên tử O (chu kỳ 2) có kích thước tương đồng với C, cho phép xen phủ orbital 2p–2p hiệu quả ➔ <em>Cộng hưởng delocalization rất tốt</em> ➔ Chất phản ứng oxy-ester có năng lượng ban đầu thấp, bền vững.<br>
+                    • <strong>Trong Thioester (Acetyl-CoA)</strong>: Nguyên tử S (chu kỳ 3) kích thước lớn hơn nhiều, orbital 3p của S không thể xen phủ khít với 2p của C ➔ <em>Cộng hưởng kém hiệu quả</em> ➔ Phân tử Acetyl-CoA ở trạng thái năng lượng rất cao (kém bền).<br>
+                    • <strong>Hệ quả</strong>: Khi thủy phân tạo phân tử Carboxylate tự do (cộng hưởng đối xứng bền vững), khoảng chênh lệch năng lượng tự do <strong>&Delta;G°' = –31.5 kJ/mol</strong> – lớn ngang ngửa với sự thủy phân ATP!
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 8: ĐIỆN HÓA HỌC REDOX & BILAN LÂM SÀNG -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-plug-circle-bolt"></i> 8. Nhiệt Động Lực Học Phản Ứng Oxy Hóa Khử Sinh Học (Redox) &amp; Bilan Lâm Sàng</h2>
+            
+            <p class="section-text">
+                Phần lớn năng lượng tự do duy trì sự sống được khai thác từ dòng chuyển dịch điện tử (electron transfer) trong các phản ứng oxy hóa khử tế bào.
+            </p>
+
+            <div class="formula-card">
+                <strong>PHƯƠNG TRÌNH LIÊN HỆ THẾ KHỬ VÀ NĂNG LƯỢNG GIBBS:</strong><br>
+                <span style="font-size: 1.3rem; font-weight: 800; color: var(--color-primary, #0284c7);">&Delta;G°' = –nF&Delta;E°'</span><br>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted, #64748b);">Trong đó: n là số electron trao đổi, F là hằng số Faraday (96.485 kJ·V⁻¹·mol⁻¹), &Delta;E°' = E°'(chất nhận) – E°'(chất cho).</span>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="lab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">Nửa Phản Ứng Khử Chuẩn (pH 7.0, 25°C)</th>
+                            <th style="width: 15%;">Số e⁻ (n)</th>
+                            <th style="width: 20%;">E°' (Volt)</th>
+                            <th style="width: 25%;">Xu Hướng Sinh Học</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(16, 185, 129, 0.08);">
+                            <td><strong>½ O₂ + 2H⁺ + 2e⁻ ⇌ H₂O</strong></td>
+                            <td>2</td>
+                            <td><strong style="color: #10b981;">+0.815 V (+0.82 V)</strong></td>
+                            <td><strong>Chất nhận e⁻ cuối cùng</strong> (Ái lực e⁻ mạnh nhất)</td>
+                        </tr>
+                        <tr>
+                            <td>Cytochrome c (Fe³⁺) + e⁻ ⇌ Cytochrome c (Fe²⁺)</td>
+                            <td>1</td>
+                            <td>+0.235 V</td>
+                            <td>Chất mang e⁻ gian màng ti thể</td>
+                        </tr>
+                        <tr>
+                            <td>Ubiquinone (Q) + 2H⁺ + 2e⁻ ⇌ Ubiquinol (QH₂)</td>
+                            <td>2</td>
+                            <td>+0.045 V</td>
+                            <td>Chất mang e⁻ kỵ nước trong màng</td>
+                        </tr>
+                        <tr>
+                            <td>Fumarate + 2H⁺ + 2e⁻ ⇌ Succinate</td>
+                            <td>2</td>
+                            <td>+0.031 V</td>
+                            <td>Phức hợp II (Succinate DH)</td>
+                        </tr>
+                        <tr>
+                            <td>Pyruvate + 2H⁺ + 2e⁻ ⇌ Lactate</td>
+                            <td>2</td>
+                            <td>–0.185 V</td>
+                            <td>Đường phân yếm khí (LDH)</td>
+                        </tr>
+                        <tr style="background: rgba(239, 68, 68, 0.08);">
+                            <td><strong>NAD⁺ + H⁺ + 2e⁻ ⇌ NADH</strong></td>
+                            <td>2</td>
+                            <td><strong style="color: #ef4444;">–0.315 V (–0.32 V)</strong></td>
+                            <td><strong>Chất cho e⁻ mạnh</strong> trong chuỗi hô hấp</td>
+                        </tr>
+                        <tr style="background: rgba(239, 68, 68, 0.08);">
+                            <td><strong>NADP⁺ + H⁺ + 2e⁻ ⇌ NADPH</strong></td>
+                            <td>2</td>
+                            <td><strong style="color: #ef4444;">–0.320 V</strong></td>
+                            <td>Chất cho e⁻ cho phản ứng đồng hóa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-calculator"></i> 8.1. Tính Năng Lượng Giải Phóng Khi Oxy Hóa 1 mol NADH Trong Ti Thể</h3>
+            
+            <div class="reaction-box">
+                <strong><i class="fa-solid fa-bolt"></i> Dòng Điện Tử Tự Phát Từ NADH (–0.32V) ➔ O₂ (+0.82V):</strong>
+                <p style="margin: 0.5rem 0; line-height: 1.6;">
+                    • <strong>Biến thiên thế khử chuẩn</strong>: &Delta;E°' = +0.82 V – (–0.32 V) = <strong>+1.14 V</strong>.<br>
+                    • <strong>Biến thiên năng lượng tự do Gibbs</strong>:<br>
+                    <code>&Delta;G°' = –nF&Delta;E°' = –2 &times; 96.485 kJ/(V·mol) &times; 1.14 V &approx; –220 kJ/mol!</code>
+                </p>
+                <div style="font-size: 0.9rem; color: #0284c7; font-weight: 700;">
+                    ➔ Năng lượng khổng lồ này (–220 kJ/mol) dẫn động các Phức hợp I, III, IV bơm 10 H⁺ ra khoảng gian màng tạo gradient thế điện hóa (Proton Motive Force), sau đó chảy qua rotor F₀F₁-ATP Synthase tổng hợp nên khoảng 2.5 ATP!
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-stethoscope"></i> 8.2. Bilan Xét Nghiệm &amp; Ứng Dụng Lâm Sàng</h3>
+
+            <div style="overflow-x: auto;">
+                <table class="lab-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Chỉ Số / Bệnh Cảnh</th>
+                            <th style="width: 30%;">Cơ Chế Hóa Sinh Năng Lượng</th>
+                            <th style="width: 45%;">Ứng Dụng Lâm Sàng &amp; Chẩn Đoán</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Creatine Kinase (CK-MB, CK-MM)</strong></td>
+                            <td>Enzyme chuyển ~P từ Phosphocreatine sang ADP. Thoát vào máu khi màng tế bào cơ bị hoại tử.</td>
+                            <td>• <strong>CK-MB</strong>: Dấu ấn hoại tử cơ tim trong Nhồi máu cơ tim cấp.<br>• <strong>CK toàn phần</strong>: Tăng vọt hàng trăm lần trong Tiêu cơ vân cấp (Rhabdomyolysis).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Lactate Máu &amp; Khí Máu Động Mạch</strong></td>
+                            <td>Khi thiếu O₂ hoặc ức chế chuỗi hô hấp tế bào, NADH không thể tái oxy hóa ➔ Pyruvate bị khử thành Lactate để tái sinh NAD⁺.</td>
+                            <td>Chẩn đoán <strong>Toan Lactic (Lactic Acidosis)</strong> trong Sốc giảm thể tích, Sốc nhiễm khuẩn hoặc Ngộ độc ức chế ti thể.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Ngộ Độc Xyanua (Cyanide) &amp; CO</strong></td>
+                            <td>Khóa trung tâm Fe³⁺/Cu<sub>B</sub> của Phức hợp IV (Cytochrome c Oxidase), chặn đứng sự truyền e⁻ cho O₂.</td>
+                            <td>Làm tê liệt chuỗi hô hấp tế bào ti thể, &Delta;G oxy hóa bằng 0, cạn kiệt ATP tức thì gây tử vong nhanh chóng dù phân áp O₂ máu bình thường (Ngạt tế bào).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Độc Chất Mất Ngẫu Lực (Uncouplers: DNP, Thermogenin)</strong></td>
+                            <td>Khuếch tán H⁺ qua màng trong ti thể phá hủy gradient proton mà không qua ATP Synthase.</td>
+                            <td>Toàn bộ &Delta;G giải phóng bị chuyển hóa 100% thành <strong>Nhiệt năng</strong> ➔ Gây sốt ác tính cực cao (Ngộ độc 2,4-Dinitrophenol) hoặc cơ chế sinh nhiệt chống lạnh ở mô mỡ nâu của trẻ sơ sinh (UCP-1 Thermogenin).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.7;">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--color-text, #334155); font-size: 0.95rem;">Tài Liệu Tham Khảo Chuẩn Y Khoa (AMA Style):</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill LLC; 2023:100-123.</li>
+                <li>Baynes JW, Dominiczak MH. <em>Medical Biochemistry</em>. 5th ed. London, UK: Elsevier; 2019:120-133, 151-161.</li>
+                <li>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD. <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson Education, Inc.; 2012:11-15, 305-325, 421-426.</li>
+                <li>Bộ môn Hóa sinh. <em>Hóa sinh Y học</em>. Thành phố Hồ Chí Minh: Nhà xuất bản Y học; 2024:204-219, 467.</li>
+                <li>Pratt CW, Cornely K. <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:1-10, 353-371, 460-466.</li>
+            </ol>
+        </footer>
+
+    </div>
+</body>
+
+</html>

@@ -35,23 +35,25 @@ const SUGGESTED_LINKS: QuickLink[] = [
   { id: 'anaphylaxis',label: 'Xử trí Phản vệ Cấp cứu',      href: '#/skills/resuscitation-kn-phanve',                 icon: 'fa-solid fa-shield-halved',        category: 'skills',         isPinned: false },
   // EBM
   { id: 'sepsis-ebm', label: 'Phác đồ Sốc Nhiễm Khuẩn (SSC)',href: '#/ebm/guidelines-kho-guidelines-phac-do-soc-nhiem-khuan-sepsis3', icon: 'fa-solid fa-book-bookmark', category: 'ebm',       isPinned: false },
-  // Pathophysiology
-  { id: 'physio-metabolic', label: 'Bản Đồ Chuyển Hóa Phân Tử',  href: '#/pathophysiology/metabolic-map',       icon: 'fa-solid fa-diagram-project', category: 'pathophysiology', isPinned: false },
-  { id: 'physio-sim',       label: 'Phòng Mô Phỏng Sinh Lý',     href: '#/pathophysiology/simulators',          icon: 'fa-solid fa-bolt',            category: 'pathophysiology', isPinned: false },
-  { id: 'physio-formulas',  label: 'Kho Công Thức Sinh Lý',      href: '#/pathophysiology/formula-vault',       icon: 'fa-solid fa-square-root-variable', category: 'pathophysiology', isPinned: false },
-  { id: 'physio-cases',     label: 'Luyện Ca Bệnh Cơ Chế & Flashcards', href: '#/pathophysiology/quiz',        icon: 'fa-solid fa-brain',           category: 'pathophysiology', isPinned: false },
-  { id: 'physio-ccbs',      label: 'Cơ Chế Bệnh Sinh Chi Tiết',  href: '#/pathophysiology/co-che-benh-sinh',    icon: 'fa-solid fa-dna',             category: 'pathophysiology', isPinned: false },
-  { id: 'physio-biochem',   label: '31 Bài Hóa Sinh Y Học',      href: '#/pathophysiology/hoa-sinh',            icon: 'fa-solid fa-flask-vial',      category: 'pathophysiology', isPinned: false },
+  // Basic Medical Sciences
+  { id: 'physio-surveillance',label: 'Dịch Tễ Học & 2x2 Matrix Solver', href: '#/basic-medical/dich-te-hoc',       icon: 'fa-solid fa-virus-covid',          category: 'basic-medical', isPinned: false },
+  { id: 'physio-metabolic', label: 'Bản Đồ Chuyển Hóa Phân Tử',  href: '#/basic-medical/metabolic-map',       icon: 'fa-solid fa-diagram-project', category: 'basic-medical', isPinned: false },
+  { id: 'physio-sim',       label: 'Phòng Mô Phỏng Sinh Lý',     href: '#/basic-medical/simulators',          icon: 'fa-solid fa-bolt',            category: 'basic-medical', isPinned: false },
+  { id: 'physio-formulas',  label: 'Kho Công Thức Sinh Lý',      href: '#/basic-medical/formula-vault',       icon: 'fa-solid fa-square-root-variable', category: 'basic-medical', isPinned: false },
+  { id: 'physio-cases',     label: 'Luyện Ca Bệnh Cơ Chế & Flashcards', href: '#/basic-medical/quiz',        icon: 'fa-solid fa-brain',           category: 'basic-medical', isPinned: false },
+  { id: 'physio-ccbs',      label: 'Cơ Chế Bệnh Sinh Chi Tiết',  href: '#/basic-medical/co-che-benh-sinh',    icon: 'fa-solid fa-dna',             category: 'basic-medical', isPinned: false },
+  { id: 'physio-biochem',   label: '31 Bài Hóa Sinh Y Học',      href: '#/basic-medical/hoa-sinh',            icon: 'fa-solid fa-flask-vial',      category: 'basic-medical', isPinned: false },
 ];
 
 const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
-  calculators:    { label: 'Công cụ',     color: 'var(--color-info)' },
-  approaches:     { label: 'Tiếp cận',    color: 'var(--color-danger)' },
-  pharmacology:   { label: 'Dược lý',     color: 'var(--color-success)' },
-  skills:         { label: 'Kỹ năng',     color: 'var(--color-warning)' },
-  ebm:            { label: 'EBM',         color: 'var(--color-primary)' },
-  pathophysiology:{ label: 'Sinh lý',     color: 'var(--color-text-muted)' },
-  custom:         { label: 'Tuỳ chỉnh',   color: 'var(--color-primary)' },
+  calculators:    { label: 'Công cụ',         color: 'var(--color-info)' },
+  approaches:     { label: 'Tiếp cận',        color: 'var(--color-danger)' },
+  pharmacology:   { label: 'Dược lý',         color: 'var(--color-success)' },
+  skills:         { label: 'Kỹ năng',         color: 'var(--color-warning)' },
+  ebm:            { label: 'EBM',             color: 'var(--color-primary)' },
+  'basic-medical':{ label: 'Basic Sciences',  color: '#8b5cf6' },
+  pathophysiology:{ label: 'Basic Sciences',  color: '#8b5cf6' },
+  custom:         { label: 'Tuỳ chỉnh',       color: 'var(--color-primary)' },
 };
 
 export function renderQuickLinksView(profileId: string): string {

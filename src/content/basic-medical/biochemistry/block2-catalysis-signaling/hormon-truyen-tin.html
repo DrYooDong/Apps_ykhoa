@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAT-04: Hormon, Thụ Thể & Các Con Đường Dẫn Truyền Tín Hiệu Tế Bào – Hóa Sinh Y Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="../../js/physio-shared.ts"></script>
+
+    <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+
+        .biochem-article-header {
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .biochem-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 3rem;
+        }
+
+        /* HEADINGS TYPOGRAPHY */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            font-size: 1.1rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.18rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .h4-title,
+        .article-section h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-text, #1e293b);
+            margin: 1.35rem 0 0.6rem 0;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        [data-theme="dark"] .h4-title,
+        [data-theme="dark"] .article-section h4 {
+            color: #f1f5f9;
+        }
+
+        /* Callout Boxes */
+        .reaction-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+        }
+
+        .lab-table th,
+        .lab-table td {
+            border: 1px solid var(--color-border, #e2e8f0);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .lab-table th {
+            background: var(--color-bg, #f8fafc);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        .lab-table tbody tr:nth-child(even) {
+            background: var(--color-bg, #f8fafc);
+        }
+
+        [data-theme="dark"] .lab-table th {
+            background: var(--color-surface-2, #1e293b);
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .lab-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="dark"] .feature-card {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        .biochem-svg-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+
+        [data-theme="dark"] .biochem-svg-card {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        .biochem-svg-card svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .svg-caption {
+            font-size: 0.85rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.75rem;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .math-display {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 8px;
+            padding: 0.85rem 1.25rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            text-align: center;
+            color: var(--color-primary, #0284c7);
+            overflow-x: auto;
+        }
+
+        [data-theme="dark"] .math-display {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: #38bdf8;
+        }
+
+        .equation-inline {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(2, 132, 199, 0.08);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--color-primary, #0284c7);
+        }
+
+        [data-theme="dark"] .equation-inline {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+        }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- ARTICLE HEADER -->
+        <header class="biochem-article-header">
+            <span class="biochem-badge"><i class="fa-solid fa-tower-broadcast"></i> CAT-04 • Khối 2: Xúc Tác, Màng & Dẫn Truyền Tín Hiệu</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: clamp(1.6rem, 3.2vw, 2.25rem); font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Hóa Học Hormon, Thụ Thể &amp; Các Con Đường Dẫn Truyền Tín Hiệu Tế Bào
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.65; max-width: 960px;">
+                Phân loại hormon toàn diện (Nhóm I kỵ nước &amp; Nhóm II ái nước); Cơ chế thụ thể nội bào (hsp90, Corepressor, HREs); Thụ thể bắt cặp Protein G (GPCRs, chu kỳ dị tam phân, con đường cAMP-PKA và PLC-IP3/DAG-Ca<sup>2+</sup>); Thụ thể xúc tác Tyrosine Kinase (RTK Insulin &amp; Ras-MAPK); Con đường JAK-STAT và Guanylyl Cyclase / Khí Nitric Oxide (NO); Giàn giáo AKAP, dập tắt tín hiệu và Bilan thăm dò nội tiết lâm sàng.
+            </p>
+        </header>
+
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-dna"></i> 1. Đại Cương &amp; Phân Loại Hormon</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-layer-group"></i> 2. Cơ Chế Hormon Nhóm I</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-circle-nodes"></i> 3. GPCRs &amp; Con Đường cAMP</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-diagram-project"></i> 4. Con Đường Phosphoinositide</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-cubes-stacked"></i> 5. Thụ Thể Tyrosine Kinase (RTK)</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-wind"></i> 6. JAK-STAT &amp; Khí Nitric Oxide (NO)</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vials"></i> 7. Dập Tắt Tín Hiệu &amp; Bilan Nội Tiết</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-book-medical"></i> 8. Điểm Ngọc &amp; Y Văn AMA</a>
+            </div>
+        </nav>
+
+        <!-- SECTION 1 -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-dna"></i> 1. Đại Cương Về Hormon, Phân Loại Toàn Diện &amp; Trục Nội Tiết</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-tower-broadcast"></i> 1.1. Định Nghĩa &amp; Phân Biệt Các Chất Mang Thông Tin Hóa Học</h3>
+            <p><strong>Hormon</strong> là những chất truyền tin hóa học được tổng hợp bởi các tế bào chuyên biệt (thường liên kết thành tuyến nội tiết), được phóng thích trực tiếp vào máu để di chuyển đến tác động tại các cơ quan đích ở xa nhằm điều hòa chuyển hóa và cân bằng nội môi.</p>
+            
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4 class="h4-title"><i class="fa-solid fa-route" style="color: #0284c7;"></i> Nội Tiết (Endocrine)</h4>
+                    <p style="font-size: 0.92rem; margin: 0;">Hormon đi vào dòng tuần hoàn máu để tác động lên các tế bào đích ở xa trong cơ thể (ví dụ: Insulin từ tụy tác động lên cơ/mỡ; TSH từ tuyến yên kích thích tuyến giáp).</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="h4-title"><i class="fa-solid fa-people-arrows" style="color: #10b981;"></i> Cận Tiết (Paracrine)</h4>
+                    <p style="font-size: 0.92rem; margin: 0;">Khuếch tán trong dịch kẽ ngoại bào để tác động lên các tế bào lân cận trong cùng một mô mà không cần qua máu (ví dụ: Somatostatin ức chế tiết insulin tại đảo tụy; Histamin; Nitric Oxide).</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="h4-title"><i class="fa-solid fa-rotate-left" style="color: #8b5cf6;"></i> Tự Tiết (Autocrine)</h4>
+                    <p style="font-size: 0.92rem; margin: 0;">Hormon hoặc cytokine tác động ngược lại chính các thụ thể trên bề mặt tế bào vừa bài tiết ra nó (ví dụ: Interleukin-2 tự kích thích tế bào lympho T tăng sinh biệt hóa).</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="h4-title"><i class="fa-solid fa-network-wired" style="color: #f59e0b;"></i> Thần Kinh Nội Tiết (Neuroendocrine)</h4>
+                    <p style="font-size: 0.92rem; margin: 0;">Các neuron thần kinh bài tiết hormon vào máu (ví dụ: ADH và Oxytocin từ vùng dưới đồi truyền qua thùy sau tuyến yên vào máu tác động tại ống thận và tử cung).</p>
+                </div>
+            </div>
+
+            <!-- SVG DIAGRAM 1: SIGNALING PATHWAYS & AXIS -->
+            <div class="biochem-svg-card">
+                <svg viewBox="0 0 840 380" width="100%" height="auto" aria-label="Sơ đồ các con đường truyền tín hiệu hóa học và trục điều hòa Vùng dưới đồi - Tuyến yên - Tuyến đích">
+                    <rect x="0" y="0" width="840" height="380" fill="var(--color-bg, #f8fafc)" rx="12" />
+                    
+                    <!-- Left Panel: Pathways -->
+                    <g transform="translate(30, 20)">
+                        <rect x="0" y="0" width="370" height="340" fill="var(--color-surface, #ffffff)" rx="10" stroke="var(--color-border, #e2e8f0)" />
+                        <text x="185" y="30" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">CÁC HÌNH THỨC TRUYỀN TÍN HIỆU HÓA HỌC</text>
+                        
+                        <!-- Endocrine -->
+                        <rect x="20" y="55" width="80" height="40" fill="#e0f2fe" rx="6" stroke="#0284c7" />
+                        <text x="60" y="80" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Tế bào tiết</text>
+                        
+                        <line x1="100" y1="75" x2="160" y2="75" stroke="#ef4444" stroke-width="2" />
+                        <rect x="160" y="65" width="80" height="20" fill="#fee2e2" rx="4" stroke="#ef4444" />
+                        <text x="200" y="79" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" text-anchor="middle">Mạch máu</text>
+                        
+                        <line x1="240" y1="75" x2="270" y2="75" stroke="#ef4444" stroke-width="2" />
+                        <rect x="270" y="55" width="80" height="40" fill="#dcfce7" rx="6" stroke="#10b981" />
+                        <text x="310" y="80" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Tế bào đích xa</text>
+                        <text x="185" y="110" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" text-anchor="middle">Nội tiết (Endocrine): Vận chuyển qua tuần hoàn máu</text>
+
+                        <!-- Paracrine -->
+                        <rect x="40" y="135" width="90" height="40" fill="#e0f2fe" rx="6" stroke="#0284c7" />
+                        <text x="85" y="160" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Tế bào tiết</text>
+                        
+                        <line x1="130" y1="155" x2="230" y2="155" stroke="#10b981" stroke-width="2" stroke-dasharray="4,3" />
+                        <polygon points="230,155 220,150 220,160" fill="#10b981" />
+                        
+                        <rect x="240" y="135" width="90" height="40" fill="#dcfce7" rx="6" stroke="#10b981" />
+                        <text x="285" y="160" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Tế bào lân cận</text>
+                        <text x="185" y="190" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" text-anchor="middle">Cận tiết (Paracrine): Khuếch tán cục bộ cự ly ngắn</text>
+
+                        <!-- Autocrine -->
+                        <rect x="135" y="215" width="100" height="45" fill="#f3e8ff" rx="6" stroke="#8b5cf6" />
+                        <text x="185" y="242" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Tự tiết (Autocrine)</text>
+                        <path d="M 135 240 C 95 240, 95 210, 150 215" fill="none" stroke="#8b5cf6" stroke-width="2" />
+                        <polygon points="150,215 140,210 144,220" fill="#8b5cf6" />
+                        <text x="185" y="280" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" text-anchor="middle">Tự gắn lên thụ thể của chính mình</text>
+                    </g>
+
+                    <!-- Right Panel: Hypothalamic-Pituitary Axis -->
+                    <g transform="translate(440, 20)">
+                        <rect x="0" y="0" width="370" height="340" fill="var(--color-surface, #ffffff)" rx="10" stroke="var(--color-border, #e2e8f0)" />
+                        <text x="185" y="30" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">TRỤC ĐIỀU HÒA DƯỚI ĐỒI - TUYẾN YÊN - TUYẾN ĐÍCH</text>
+                        
+                        <!-- Hypothalamus -->
+                        <rect x="85" y="55" width="200" height="45" fill="#e0f2fe" rx="8" stroke="#0284c7" stroke-width="1.5" />
+                        <text x="185" y="75" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">VÙNG DƯỚI ĐỒI (HYPOTHALAMUS)</text>
+                        <text x="185" y="90" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">Tiết Liberin (TRH, CRH, GnRH, GHRH)</text>
+
+                        <!-- Down Arrow 1 -->
+                        <line x1="185" y1="100" x2="185" y2="135" stroke="#0284c7" stroke-width="2" />
+                        <polygon points="185,135 180,125 190,125" fill="#0284c7" />
+
+                        <!-- Pituitary -->
+                        <rect x="85" y="135" width="200" height="45" fill="#fef3c7" rx="8" stroke="#f59e0b" stroke-width="1.5" />
+                        <text x="185" y="155" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">TUYẾN YÊN TRƯỚC (PITUITARY)</text>
+                        <text x="185" y="170" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">Tiết Tropin (TSH, ACTH, LH, FSH, GH)</text>
+
+                        <!-- Down Arrow 2 -->
+                        <line x1="185" y1="180" x2="185" y2="215" stroke="#f59e0b" stroke-width="2" />
+                        <polygon points="185,215 180,205 190,205" fill="#f59e0b" />
+
+                        <!-- Target Gland -->
+                        <rect x="85" y="215" width="200" height="45" fill="#dcfce7" rx="8" stroke="#10b981" stroke-width="1.5" />
+                        <text x="185" y="235" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">TUYẾN NGOẠI VI (GIÁP, THƯỢNG THẬN...)</text>
+                        <text x="185" y="250" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">Tiết Hormon (T3/T4, Cortisol, Steroid...)</text>
+
+                        <!-- Negative Feedback Loops (Red Dashed) -->
+                        <path d="M 85 240 C 30 240, 30 75, 80 75" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3" />
+                        <polygon points="80,75 70,70 70,80" fill="#ef4444" />
+                        <text x="25" y="160" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" transform="rotate(-90 25 160)" text-anchor="middle">Feedback âm tính (-)</text>
+
+                        <path d="M 85 235 C 50 235, 50 155, 80 155" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,3" />
+                        <polygon points="80,155 72,151 72,159" fill="#ef4444" />
+                    </g>
+                </svg>
+                <div class="svg-caption">Hình 1.1: Các phương thức truyền thông tin hóa học và Trục chỉ đạo nội tiết 3 tầng Vùng dưới đồi - Tuyến yên - Tuyến đích cùng cơ chế Feedback âm tính duy trì cân bằng nội môi.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-scale-balanced"></i> 1.2. Bảng Phân Loại Hormon Nhóm I &amp; Nhóm II (Mô Hình Harper)</h3>
+            <p>Hóa sinh lâm sàng phân loại toàn bộ hệ thống hormon thành 2 nhóm lớn dựa trên tính hòa tan, protein vận chuyển, thời gian bán hủy và vị trí thụ thể:</p>
+
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 200px;">Đặc Tính Lý Hóa &amp; Sinh Học</th>
+                        <th style="width: 320px;">Hormon Nhóm I (Group I)</th>
+                        <th>Hormon Nhóm II (Group II)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bản chất hóa học</strong></td>
+                        <td>Steroid (Cortisol, Aldosterone, Estrogen, Testosterone), Hormon giáp (T<sub>3</sub>, T<sub>4</sub>), Calcitriol (1,25-(OH)<sub>2</sub>-D<sub>3</sub>), Acid Retinoic.</td>
+                        <td>Polypeptide, Protein, Glycoprotein (Insulin, Glucagon, TSH, ACTH, GH, PTH), Catecholamin (Epinephrine, Norepinephrine).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tính hòa tan</strong></td>
+                        <td><strong>Kỵ nước (Lipophilic / Hydrophobic)</strong>, tan mạnh trong lipid.</td>
+                        <td><strong>Ái nước (Hydrophilic)</strong>, tan trong nước.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Protein vận chuyển máu</strong></td>
+                        <td><strong>Bắt buộc cần</strong> protein vận chuyển đặc hiệu (TBG, CBG, SHBG, Albumin) để lưu thông trong máu.</td>
+                        <td><strong>Lưu thông tự do</strong> dưới dạng hòa tan (ngoại trừ GH và IGF có protein gắn kết).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thời gian bán hủy (t<sub>1/2</sub>)</strong></td>
+                        <td><strong>Dài</strong> (vài giờ đến vài ngày) do được bảo vệ khỏi thoái giáng bởi protein vận chuyển.</td>
+                        <td><strong>Ngắn</strong> (vài phút) do dễ bị enzym huyết tương và thận giáng hóa đào thải nhanh.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vị trí thụ thể (Receptors)</strong></td>
+                        <td><strong>Nội bào</strong> (trong bào tương hoặc trực tiếp trong nhân tế bào đích).</td>
+                        <td><strong>Xuyên màng tế bào</strong> (trên màng sinh chất của tế bào đích).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cơ chế truyền tín hiệu</strong></td>
+                        <td>Phức hợp Hormon - Thụ thể bám trực tiếp vào DNA tại <strong>Vùng đáp ứng hormon (HRE)</strong> để điều hòa phiên mã gen.</td>
+                        <td>Gắn thụ thể màng, kích hoạt các <strong>chất truyền tin thứ hai (Second messengers)</strong> và dòng thác Kinase/Phosphatase.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Chất truyền tin trung gian</strong></td>
+                        <td>Chính phức hợp [Hormon - Thụ thể] hoạt động như yếu tố phiên mã.</td>
+                        <td><strong>cAMP, cGMP, IP<sub>3</sub>, DAG, Ca<sup>2+</sup>, PIP<sub>3</sub></strong>.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> 2. Cơ Chế Hoạt Động Của Hormon Nhóm I (Hormon Tan Trong Lipid)</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-shield-cat"></i> 2.1. Tháo Gỡ Chaperone hsp90 &amp; Tách Corepressor</h3>
+            <p>Do có tính kỵ nước, các hormon nhóm I dễ dàng khuếch tán thụ động qua lớp kép phospholipid của màng tế bào:</p>
+            <ul>
+                <li><strong>Mô hình Steroid / Glucocorticoid (Tháo gỡ hsp90):</strong> Ở trạng thái nghỉ không có hormon, Thụ thể Glucocorticoid (GR) khu trú trong bào tương, bị khóa bất hoạt bởi protein chaperone <strong>hsp90 (heat shock protein 90)</strong>. Khi Cortisol gắn vào, GR đổi cấu hình, giải phóng hsp90, bộc lộ tín hiệu định vị nhân (NLS) và dimer hóa (homodimer) rồi di chuyển vào nhân.</li>
+                <li><strong>Mô hình Hormon Giáp T3 &amp; Retinoid (Tách Corepressor):</strong> Thụ thể T3 (TR) định vị sẵn trong nhân tế bào, bám trực tiếp lên DNA dưới dạng heterodimer bắt cặp với <strong>RXR (Retinoid X Receptor)</strong>. Ở trạng thái nghỉ, phức hợp liên kết chặt với <em>Corepressor</em> đóng xoắn chromatin. Khi T3 gắn vào, Corepressor tách ra, phức hợp chiêu mộ <em>Coactivator (CBP/p300)</em> có hoạt tính Histone Acetyltransferase (HAT) làm mở xoắn DNA cho RNA Polymerase II phiên mã.</li>
+            </ul>
+
+            <!-- SVG DIAGRAM 2: GROUP I MECHANISM -->
+            <div class="biochem-svg-card">
+                <svg viewBox="0 0 840 380" width="100%" height="auto" aria-label="Cơ chế hoạt động của hormon nhóm I qua thụ thể nhân và bào tương">
+                    <rect x="0" y="0" width="840" height="380" fill="var(--color-bg, #f8fafc)" rx="12" />
+                    
+                    <!-- Panel 1: Steroid / Cortisol -->
+                    <g transform="translate(30, 20)">
+                        <rect x="0" y="0" width="370" height="340" fill="var(--color-surface, #ffffff)" rx="10" stroke="var(--color-border, #e2e8f0)" />
+                        <text x="185" y="28" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">MÔ HÌNH STEROID / CORTISOL (THÁO hsp90)</text>
+                        
+                        <!-- Cell Membrane -->
+                        <line x1="20" y1="50" x2="350" y2="50" stroke="#0284c7" stroke-width="2.5" />
+                        <text x="350" y="45" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="end">Màng tế bào</text>
+
+                        <!-- Cortisol Entry -->
+                        <polygon points="185,55 180,68 190,68" fill="#f59e0b" />
+                        <text x="185" y="45" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Cortisol</text>
+
+                        <!-- Inactive GR-hsp90 -->
+                        <rect x="50" y="80" width="110" height="40" fill="#e0f2fe" rx="6" stroke="#0284c7" />
+                        <text x="105" y="105" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Thụ thể GR</text>
+                        <circle cx="175" cy="100" r="14" fill="#fee2e2" stroke="#ef4444" />
+                        <text x="175" y="104" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" text-anchor="middle">hsp90</text>
+
+                        <!-- Activation Arrow -->
+                        <path d="M 185 125 L 185 160" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="240" y="145" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Tách bỏ hsp90</text>
+
+                        <!-- Nuclear Membrane -->
+                        <line x1="20" y1="180" x2="350" y2="180" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6,3" />
+                        <text x="350" y="175" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="end">Màng nhân</text>
+
+                        <!-- Homodimer on DNA -->
+                        <rect x="90" y="210" width="85" height="35" fill="#dcfce7" rx="5" stroke="#10b981" />
+                        <rect x="180" y="210" width="85" height="35" fill="#dcfce7" rx="5" stroke="#10b981" />
+                        <text x="177" y="232" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">GR - GR Homodimer</text>
+
+                        <!-- DNA String -->
+                        <line x1="30" y1="270" x2="340" y2="270" stroke="#334155" stroke-width="3" />
+                        <rect x="110" y="260" width="140" height="20" fill="#fef3c7" stroke="#f59e0b" />
+                        <text x="180" y="274" fill="#d97706" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">GRE (Palindrome)</text>
+
+                        <text x="185" y="315" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">&rarr; PHIÊN MÃ mRNA ĐÁP ỨNG</text>
+                    </g>
+
+                    <!-- Panel 2: Thyroid / T3 -->
+                    <g transform="translate(440, 20)">
+                        <rect x="0" y="0" width="370" height="340" fill="var(--color-surface, #ffffff)" rx="10" stroke="var(--color-border, #e2e8f0)" />
+                        <text x="185" y="28" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">MÔ HÌNH HORMON GIÁP T3 (TÁCH COREPRESSOR)</text>
+                        
+                        <!-- T3 Entry -->
+                        <polygon points="185,55 180,68 190,68" fill="#0284c7" />
+                        <text x="185" y="45" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">T3 / Acid Retinoic</text>
+
+                        <!-- Nuclear Membrane -->
+                        <line x1="20" y1="90" x2="350" y2="90" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6,3" />
+                        <text x="350" y="85" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="end">Màng nhân</text>
+
+                        <!-- Inactive State with Corepressor -->
+                        <rect x="80" y="115" width="80" height="35" fill="#e0f2fe" rx="5" stroke="#0284c7" />
+                        <text x="120" y="137" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">TR</text>
+                        
+                        <rect x="165" y="115" width="80" height="35" fill="#f3e8ff" rx="5" stroke="#8b5cf6" />
+                        <text x="205" y="137" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">RXR</text>
+
+                        <circle cx="270" cy="132" r="14" fill="#fee2e2" stroke="#ef4444" />
+                        <text x="270" y="136" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" text-anchor="middle">Co-Rep</text>
+
+                        <!-- Transition Arrow -->
+                        <line x1="185" y1="160" x2="185" y2="195" stroke="#10b981" stroke-width="2" />
+                        <text x="270" y="180" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">+ T3 &rarr; Tách Corepressor</text>
+
+                        <!-- Active Heterodimer with Coactivator -->
+                        <rect x="80" y="210" width="80" height="35" fill="#dcfce7" rx="5" stroke="#10b981" />
+                        <text x="120" y="232" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">T3 - TR</text>
+                        
+                        <rect x="165" y="210" width="80" height="35" fill="#dcfce7" rx="5" stroke="#10b981" />
+                        <text x="205" y="232" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">RXR</text>
+
+                        <circle cx="270" cy="227" r="14" fill="#fef3c7" stroke="#f59e0b" />
+                        <text x="270" y="231" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" text-anchor="middle">Co-Act</text>
+
+                        <!-- DNA Direct Repeat -->
+                        <line x1="30" y1="270" x2="340" y2="270" stroke="#334155" stroke-width="3" />
+                        <rect x="100" y="260" width="150" height="20" fill="#fef3c7" stroke="#f59e0b" />
+                        <text x="175" y="274" fill="#d97706" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">TRE (DR4: Lặp trực tiếp)</text>
+
+                        <text x="185" y="315" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">&rarr; PHIÊN MÃ GEN CHUYỂN HÓA CƠ SỞ</text>
+                    </g>
+                </svg>
+                <div class="svg-caption">Hình 2.1: Đối chiếu cơ chế phân tử của Hormon Nhóm I: Thụ thể Glucocorticoid (GR) giải phóng hsp90 ở bào tương bám GRE đối xứng (Homodimer) vs Thụ thể Hormon Giáp (TR) tách Corepressor tại nhân bám TRE lặp trực tiếp DR4 (Heterodimer với RXR).</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-dna"></i> 2.2. Cấu Trúc Vùng Đáp Ứng Hormon (HREs) &amp; Quy Luật DR3/DR4/DR5</h3>
+            <p>Phức hợp Hormon - Thụ thể nhận diện các trình tự nucleotide đặc hiệu trên DNA gọi là <strong>HRE (Hormone Response Elements)</strong>:</p>
+            <ul>
+                <li><strong>Trình tự Palindrome đảo ngược (Inverted Repeats):</strong> Dành cho thụ thể Steroid cổ điển (GRE, PRE, MRE, ARE, ERE) liên kết dưới dạng <strong>Homodimer</strong>.</li>
+                <li><strong>Trình tự lặp lại trực tiếp (Direct Repeats - DR):</strong> Dành cho thụ thể liên kết <strong>Heterodimer với RXR</strong>, tính đặc hiệu được mã hóa bởi <strong>khoảng cách số nucleotide (spacing)</strong> giữa 2 đoạn lặp:
+                    <ul>
+                        <li><strong>DR3 (cách 3 base):</strong> Vùng đáp ứng Vitamin D3 (VDRE: <span class="equation-inline">AGGTCA NNN AGGTCA</span>).</li>
+                        <li><strong>DR4 (cách 4 base):</strong> Vùng đáp ứng Hormon giáp (TRE: <span class="equation-inline">AGGTCA NNNN AGGTCA</span>).</li>
+                        <li><strong>DR5 (cách 5 base):</strong> Vùng đáp ứng Acid Retinoic (RARE: <span class="equation-inline">AGGTCA NNNNN AGGTCA</span>).</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-circle-nodes"></i> 3. Thụ Thể Bắt Cặp Protein G (GPCRs) &amp; Con Đường cAMP - PKA</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-cubes"></i> 3.1. Cấu Trúc 7TM Của GPCR &amp; Chu Kỳ Công Tắc Protein G</h3>
+            <p><strong>Thụ thể bắt cặp Protein G (GPCRs / 7TM Receptors)</strong> là họ thụ thể màng lớn nhất, gồm 7 chuỗi xoắn alpha kỵ nước xuyên màng. Protein G dị tam phân gồm 3 bán đơn vị: <span class="equation-inline">&alpha;, &beta;, &gamma;</span>.</p>
+            <ul>
+                <li><strong>Trạng thái nghỉ:</strong> Bán đơn vị &alpha; gắn <strong>GDP</strong> và liên kết chặt với dimer &beta;&gamma; (<span class="equation-inline">G<sub>&alpha;&beta;&gamma;</sub>-GDP</span>).</li>
+                <li><strong>Khi hormon gắn vào GPCR:</strong> GPCR đổi cấu hình đóng vai trò như một GEF (Guanine nucleotide Exchange Factor), đẩy GDP ra và thế chỗ bằng <strong>GTP</strong>.</li>
+                <li><strong>Kích hoạt Effector:</strong> Bán đơn vị <span class="equation-inline">G<sub>&alpha;</sub>-GTP</span> tách rời khỏi dimer &beta;&gamma;, di chuyển dọc màng để hoạt hóa hoặc ức chế enzyme đích (Adenylate Cyclase, Phospholipase C).</li>
+                <li><strong>Tự dập tắt (GTPase clock):</strong> Bán đơn vị &alpha; sở hữu hoạt tính enzyme <strong>GTPase nội tại</strong> tự thủy phân GTP thành GDP sau vài giây, tái tổ hợp với &beta;&gamma; trở về trạng thái nghỉ.</li>
+            </ul>
+
+            <!-- SVG DIAGRAM 3: G-PROTEIN CYCLE & cAMP -->
+            <div class="biochem-svg-card">
+                <svg viewBox="0 0 840 380" width="100%" height="auto" aria-label="Chu kỳ hoạt hóa của G-Protein và dòng thác khuếch đại cAMP-PKA">
+                    <rect x="0" y="0" width="840" height="380" fill="var(--color-bg, #f8fafc)" rx="12" />
+                    
+                    <g transform="translate(30, 20)">
+                        <text x="390" y="25" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" text-anchor="middle">CHU KỲ G-PROTEIN DỊ TAM PHÂN &amp; DÒNG THÁC KHUẾCH ĐẠI cAMP - PKA</text>
+                        
+                        <!-- GPCR Membrane -->
+                        <line x1="20" y1="90" x2="760" y2="90" stroke="#0284c7" stroke-width="3" />
+                        <text x="760" y="85" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" text-anchor="end">Màng tế bào</text>
+
+                        <!-- Hormon Ligand -->
+                        <circle cx="80" cy="55" r="14" fill="#ef4444" />
+                        <text x="80" y="59" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" text-anchor="middle">Glucagon</text>
+
+                        <!-- GPCR 7TM -->
+                        <path d="M 60 90 Q 65 65, 70 90 Q 75 65, 80 90 Q 85 65, 90 90 Q 95 65, 100 90" fill="none" stroke="#0284c7" stroke-width="4" />
+                        <text x="80" y="115" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">GPCR (7TM)</text>
+
+                        <!-- Arrow to Gs -->
+                        <line x1="110" y1="105" x2="160" y2="105" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3,3" />
+
+                        <!-- Gs Alpha Active -->
+                        <rect x="170" y="95" width="90" height="40" fill="#dcfce7" rx="8" stroke="#10b981" stroke-width="2" />
+                        <text x="215" y="115" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" text-anchor="middle">Gαs - GTP</text>
+                        <text x="215" y="128" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" text-anchor="middle">(Hoạt hóa)</text>
+
+                        <!-- Arrow to Adenylate Cyclase -->
+                        <line x1="260" y1="115" x2="310" y2="115" stroke="#10b981" stroke-width="2" />
+                        <polygon points="310,115 300,110 300,120" fill="#10b981" />
+
+                        <!-- Adenylate Cyclase Enzyme -->
+                        <rect x="320" y="80" width="130" height="65" fill="#e0f2fe" rx="10" stroke="#0284c7" stroke-width="2.5" />
+                        <text x="385" y="110" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">ADENYLATE</text>
+                        <text x="385" y="125" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">CYCLASE (AC)</text>
+
+                        <!-- Reaction ATP to cAMP -->
+                        <path d="M 385 145 L 385 190" stroke="#0284c7" stroke-width="2" />
+                        <polygon points="385,190 380,180 390,180" fill="#0284c7" />
+                        <text x="310" y="170" fill="#d97706" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">ATP &rarr; cAMP + PPi</text>
+
+                        <!-- cAMP Box -->
+                        <rect x="320" y="195" width="130" height="40" fill="#fef3c7" rx="8" stroke="#f59e0b" stroke-width="2" />
+                        <text x="385" y="220" fill="#d97706" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" text-anchor="middle">cAMP (x1000)</text>
+
+                        <!-- Arrow to PKA -->
+                        <line x1="450" y1="215" x2="510" y2="215" stroke="#f59e0b" stroke-width="2" />
+                        <polygon points="510,215 500,210 500,220" fill="#f59e0b" />
+
+                        <!-- PKA Activation -->
+                        <rect x="520" y="185" width="220" height="60" fill="#f3e8ff" rx="10" stroke="#8b5cf6" stroke-width="2" />
+                        <text x="630" y="210" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">PROTEIN KINASE A (PKA)</text>
+                        <text x="630" y="230" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" text-anchor="middle">Gắn 4 cAMP &rarr; Giải phóng 2 C hoạt động</text>
+
+                        <!-- Targets of PKA -->
+                        <line x1="630" y1="245" x2="630" y2="280" stroke="#8b5cf6" stroke-width="2" />
+                        <polygon points="630,280 625,270 635,270" fill="#8b5cf6" />
+
+                        <rect x="490" y="285" width="280" height="50" fill="var(--color-surface, #ffffff)" rx="8" stroke="#10b981" stroke-width="1.5" />
+                        <text x="630" y="305" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">1. Hoạt hóa Phân giải Glycogen (Cơ/Gan)</text>
+                        <text x="630" y="322" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" text-anchor="middle">2. Phosphoryl hóa yếu tố nhân CREB &rarr; Phiên mã</text>
+
+                        <!-- PDE Inactivation -->
+                        <path d="M 320 220 L 220 220 L 220 285" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,3" />
+                        <polygon points="220,285 215,275 225,275" fill="#ef4444" />
+                        <rect x="150" y="290" width="140" height="40" fill="#fee2e2" rx="6" stroke="#ef4444" />
+                        <text x="220" y="310" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">PDE: cAMP &rarr; 5'-AMP</text>
+                        <text x="220" y="322" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" text-anchor="middle">(Bị ức chế bởi Caffeine/Theophylline)</text>
+                    </g>
+                </svg>
+                <div class="svg-caption">Hình 3.1: Chu kỳ hoạt hóa của G-Protein và Dòng thác khuếch đại phân tử qua Adenylate Cyclase, chất truyền tin thứ hai cAMP và Protein Kinase A (PKA).</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-bolt"></i> 3.2. Cơ Chế Hoạt Hóa Protein Kinase A (PKA) &amp; CREB</h3>
+            <p>Ở trạng thái nghỉ, PKA là một tetramer gồm 4 bán đơn vị <span class="equation-inline">R<sub>2</sub>C<sub>2</sub></span> (2 bán đơn vị điều hòa R khóa 2 bán đơn vị xúc tác C). Khi <strong>4 phân tử cAMP</strong> gắn có tính hợp tác vào R, hai bán đơn vị C tự do được giải phóng:</p>
+            <div class="math-display">
+                R<sub>2</sub>C<sub>2</sub> (Bất hoạt) + 4 cAMP &hArr; R<sub>2</sub>-(cAMP)<sub>4</sub> + 2 C (Hoạt động)
+            </div>
+            <ul>
+                <li>Bán đơn vị C xúc tác phosphoryl hóa các enzyme chuyển hóa (hoạt hóa <em>Phosphorylase kinase</em>, bất hoạt <em>Glycogen synthase</em>).</li>
+                <li>Bán đơn vị C di chuyển vào nhân, phosphoryl hóa gốc Ser133 của yếu tố phiên mã <strong>CREB</strong>. CREB dimer hóa bám vào trình tự <strong>CRE (<span class="equation-inline">TGACGTCA</span>)</strong> trên DNA, chiêu mộ coactivator CBP/p300 để kích hoạt phiên mã các gen chuyển hóa.</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i> 4. Con Đường Truyền Tín Hiệu Phosphoinositide (Gq / PLC / IP3 / DAG / Ca<sup>2+</sup>)</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-scissors"></i> 4.1. Thủy Phân PIP2 Tạo Bộ Đôi IP3 &amp; DAG</h3>
+            <p>Con đường Phosphoinositide được kích hoạt bởi các hormon gắn thụ thể bắt cặp protein <strong>G<sub>q</sub></strong> (như <em>Angiotensin II, Vasopressin V<sub>1</sub>, Norepinephrine qua thụ thể &alpha;<sub>1</sub>, Oxytocin, TRH</em>):</p>
+            <ul>
+                <li>Bán đơn vị <span class="equation-inline">G<sub>&alpha;q</sub>-GTP</span> hoạt hóa enzyme <strong>Phospholipase C-&beta; (PLC&beta;)</strong> trên màng tế bào.</li>
+                <li>PLC&beta; thủy phân phospholipid màng <strong>PIP<sub>2</sub> (Phosphatidylinositol 4,5-bisphosphate)</strong> tạo ra 2 chất truyền tin thứ hai:
+                    <div class="math-display">PIP<sub>2</sub> + H<sub>2</sub>O &rarr; Inositol 1,4,5-trisphosphate (IP<sub>3</sub>) + 1,2-Diacylglycerol (DAG)</div>
+                </li>
+            </ul>
+
+            <!-- SVG DIAGRAM 4: PHOSPHOINOSITIDE PATHWAY -->
+            <div class="biochem-svg-card">
+                <svg viewBox="0 0 840 380" width="100%" height="auto" aria-label="Con đường truyền tín hiệu Phosphoinositide Gq - PLC - IP3 - DAG - Ca2+ - PKC">
+                    <rect x="0" y="0" width="840" height="380" fill="var(--color-bg, #f8fafc)" rx="12" />
+                    
+                    <g transform="translate(30, 20)">
+                        <text x="390" y="25" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" text-anchor="middle">CON ĐƯỜNG TRUYỀN TÍN HIỆU PHOSPHOINOSITIDE (Gq / PLC / IP3 / DAG / Ca2+)</text>
+                        
+                        <!-- Membrane -->
+                        <line x1="20" y1="80" x2="760" y2="80" stroke="#0284c7" stroke-width="3" />
+
+                        <!-- Gq and PLC -->
+                        <rect x="50" y="65" width="110" height="40" fill="#e0f2fe" rx="6" stroke="#0284c7" />
+                        <text x="105" y="90" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Gαq - GTP</text>
+
+                        <line x1="160" y1="85" x2="210" y2="85" stroke="#0284c7" stroke-width="2" />
+                        <polygon points="210,85 200,80 200,90" fill="#0284c7" />
+
+                        <rect x="220" y="60" width="140" height="50" fill="#fef3c7" rx="8" stroke="#f59e0b" stroke-width="2" />
+                        <text x="290" y="90" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">Phospholipase C</text>
+
+                        <!-- PIP2 Cleavage -->
+                        <path d="M 290 110 L 290 145" stroke="#f59e0b" stroke-width="2" />
+                        <text x="300" y="135" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Thủy phân PIP2</text>
+
+                        <!-- Split Branch: DAG (Left Membrane) and IP3 (Right Cytosol) -->
+                        <!-- DAG Branch -->
+                        <path d="M 290 145 L 140 145 L 140 190" fill="none" stroke="#10b981" stroke-width="2" />
+                        <polygon points="140,190 135,180 145,180" fill="#10b981" />
+                        <rect x="70" y="190" width="140" height="45" fill="#dcfce7" rx="8" stroke="#10b981" stroke-width="2" />
+                        <text x="140" y="212" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">DAG (Ở lại màng)</text>
+                        <text x="140" y="226" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">Diacylglycerol</text>
+
+                        <!-- IP3 Branch -->
+                        <path d="M 290 145 L 480 145 L 480 190" fill="none" stroke="#8b5cf6" stroke-width="2" />
+                        <polygon points="480,190 475,180 485,180" fill="#8b5cf6" />
+                        <rect x="400" y="190" width="160" height="45" fill="#f3e8ff" rx="8" stroke="#8b5cf6" stroke-width="2" />
+                        <text x="480" y="212" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">IP3 (Tan trong nước)</text>
+                        <text x="480" y="226" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">Inositol 1,4,5-P3</text>
+
+                        <!-- IP3 to ER -->
+                        <line x1="480" y1="235" x2="480" y2="270" stroke="#8b5cf6" stroke-width="2" />
+                        <polygon points="480,270 475,260 485,260" fill="#8b5cf6" />
+
+                        <!-- Endoplasmic Reticulum Ca2+ -->
+                        <rect x="390" y="270" width="180" height="60" fill="#fee2e2" rx="10" stroke="#ef4444" stroke-width="2" />
+                        <text x="480" y="295" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">MẠNG LƯỚI NỘI CHẤT (ER)</text>
+                        <text x="480" y="315" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">MỞ KÊNH PHÓNG THÍCH Ca2+</text>
+
+                        <!-- Ca2+ activates PKC with DAG -->
+                        <path d="M 390 300 L 250 300 L 250 280" fill="none" stroke="#ef4444" stroke-width="2" />
+                        <polygon points="250,280 245,290 255,290" fill="#ef4444" />
+                        <text x="320" y="295" fill="#ef4444" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">Ca2+ &gt; 10 μM</text>
+
+                        <!-- PKC Box -->
+                        <line x1="140" y1="235" x2="140" y2="270" stroke="#10b981" stroke-width="2" />
+                        <polygon points="140,270 135,260 145,260" fill="#10b981" />
+                        <rect x="70" y="270" width="160" height="60" fill="#dcfce7" rx="10" stroke="#10b981" stroke-width="2" />
+                        <text x="150" y="295" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">PROTEIN KINASE C</text>
+                        <text x="150" y="315" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">(PKC HOẠT HÓA)</text>
+
+                        <!-- Calmodulin Branch -->
+                        <path d="M 570 300 L 640 300" stroke="#ef4444" stroke-width="2" />
+                        <polygon points="640,300 630,295 630,305" fill="#ef4444" />
+                        <rect x="645" y="275" width="140" height="50" fill="#fef3c7" rx="8" stroke="#f59e0b" stroke-width="1.5" />
+                        <text x="715" y="297" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Phức Ca2+-Calmodulin</text>
+                        <text x="715" y="313" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">&rarr; Co cơ trơn mạch máu</text>
+                    </g>
+                </svg>
+                <div class="svg-caption">Hình 4.1: Con đường Phosphoinositide: Phân cắt PIP<sub>2</sub> thành IP<sub>3</sub> hòa tan (mở kênh Ca<sup>2+</sup> tại mạng nội chất) và DAG gắn màng (hoạt hóa Protein Kinase C cùng với Ca<sup>2+</sup>).</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-droplet"></i> 4.2. Vai Trò Của IP3, DAG &amp; Phức Hợp Ca<sup>2+</sup> - Calmodulin</h3>
+            <ul>
+                <li><strong>IP<sub>3</sub> (Chất truyền tin hòa tan):</strong> Khuếch tán nhanh trong bào tương, gắn vào thụ thể IP<sub>3</sub>R trên màng <strong>Mạng lưới nội chất (ER)</strong>, mở kênh giải phóng ion Ca<sup>2+</sup> vào bào tương (nồng độ Ca<sup>2+</sup> tự do tăng từ 0.1 &mu;M lên &gt; 10 &mu;M).</li>
+                <li><strong>DAG (Chất truyền tin kỵ nước màng):</strong> Ở lại trên màng kép, cùng với Ca<sup>2+</sup> giải phóng chuỗi giả cơ chất (pseudosubstrate) để <strong>hoạt hóa Protein Kinase C (PKC)</strong>.</li>
+                <li><strong>Calmodulin (CaM):</strong> Một phân tử Calmodulin liên kết có tính hợp tác với <strong>4 ion Ca<sup>2+</sup></strong> tạo phức hợp <span class="equation-inline">Ca<sup>2+</sup>-Calmodulin</span>, kích hoạt các <em>CaM-Kinases</em> và <em>Myosin Light Chain Kinase (MLCK)</em> điều hòa co cơ trơn mạch máu và phế quản.</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-cubes-stacked"></i> 5. Thụ Thể Tyrosine Kinase (RTK) &amp; Tín Hiệu Của Insulin</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-microchip"></i> 5.1. Cấu Trúc Dị Tứ Phân &alpha;<sub>2</sub>&beta;<sub>2</sub> &amp; Tự Phosphoryl Hóa Chéo</h3>
+            <p><strong>Thụ thể Tyrosine Kinase (RTK)</strong> là các glycoprotein xuyên màng đơn chuỗi chứa hoạt tính enzyme Tyrosine Kinase ở miền nội bào. <strong>Thụ thể Insulin (IR)</strong> là trường hợp đặc biệt tồn tại sẵn dưới dạng dị tứ phân <span class="equation-inline">&alpha;<sub>2</sub>&beta;<sub>2</sub></span> nối nhau bằng cầu disulfide:</p>
+            <ul>
+                <li><strong>2 Chuỗi &alpha; (Ngoại bào):</strong> Chứa vị trí nhận diện và liên kết đặc hiệu với Insulin.</li>
+                <li><strong>2 Chuỗi &beta; (Xuyên màng):</strong> Miền nội bào chứa trung tâm hoạt động Tyrosine Kinase.</li>
+                <li><strong>Cơ chế tự phosphoryl hóa chéo (Transphosphorylation):</strong> Khi Insulin gắn vào chuỗi &alpha;, hai chuỗi &beta; bị kéo sát lại gần nhau, tiến hành phosphoryl hóa chéo <strong>3 gốc Tyrosine trên Vòng hoạt hóa (Activation Loop)</strong>. Vòng hoạt hóa xoay ra ngoài, mở toang trung tâm hoạt động xúc tác để phosphoryl hóa các cơ chất nội bào họ <strong>IRS (Insulin Receptor Substrates 1-4)</strong>.</li>
+            </ul>
+
+            <!-- SVG DIAGRAM 5: INSULIN DUAL PATHWAYS -->
+            <div class="biochem-svg-card">
+                <svg viewBox="0 0 840 420" width="100%" height="auto" aria-label="Hai con đường truyền tín hiệu hạ nguồn của Insulin: Nhánh chuyển hóa PI3K-Akt và Nhánh phân bào Ras-MAPK">
+                    <rect x="0" y="0" width="840" height="420" fill="var(--color-bg, #f8fafc)" rx="12" />
+                    
+                    <g transform="translate(30, 20)">
+                        <text x="390" y="25" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" text-anchor="middle">HAI CON ĐƯỜNG TÍN HIỆU CỦA INSULIN: NHÁNH CHUYỂN HÓA &amp; NHÁNH PHÂN BÀO</text>
+                        
+                        <!-- Insulin Receptor -->
+                        <rect x="290" y="50" width="200" height="50" fill="#e0f2fe" rx="10" stroke="#0284c7" stroke-width="2.5" />
+                        <text x="390" y="72" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">THỤ THỂ INSULIN (α2β2)</text>
+                        <text x="390" y="88" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Tự phosphoryl hóa Tyr trên chuỗi β</text>
+
+                        <!-- IRS Node -->
+                        <rect x="315" y="125" width="150" height="40" fill="#dcfce7" rx="8" stroke="#10b981" stroke-width="2" />
+                        <text x="390" y="150" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">Protein IRS (1 - 4)</text>
+
+                        <line x1="390" y1="100" x2="390" y2="125" stroke="#0284c7" stroke-width="2" />
+
+                        <!-- Split Branches: Left = Metabolic (PI3K-Akt); Right = Mitogenic (Ras-MAPK) -->
+                        <!-- LEFT BRANCH: PI3K - Akt -->
+                        <path d="M 315 145 L 180 145 L 180 190" fill="none" stroke="#0284c7" stroke-width="2.5" />
+                        <polygon points="180,190 175,180 185,180" fill="#0284c7" />
+                        <text x="210" y="165" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Miền SH2</text>
+
+                        <rect x="90" y="190" width="180" height="45" fill="#e0f2fe" rx="8" stroke="#0284c7" stroke-width="2" />
+                        <text x="180" y="210" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">PI3-Kinase (PI3K)</text>
+                        <text x="180" y="225" fill="#d97706" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">PIP2 &rarr; PIP3 (Lipid màng)</text>
+
+                        <line x1="180" y1="235" x2="180" y2="265" stroke="#0284c7" stroke-width="2" />
+                        <polygon points="180,265 175,255 185,255" fill="#0284c7" />
+
+                        <rect x="80" y="265" width="200" height="45" fill="#fef3c7" rx="8" stroke="#f59e0b" stroke-width="2" />
+                        <text x="180" y="292" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" text-anchor="middle">Akt / Protein Kinase B</text>
+
+                        <!-- Akt Downstream Actions -->
+                        <rect x="20" y="335" width="320" height="70" fill="var(--color-surface, #ffffff)" rx="8" stroke="#10b981" stroke-width="1.5" />
+                        <text x="180" y="355" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">&bull; Bất hoạt GSK-3 &rarr; TĂNG TỔNG HỢP GLYCOGEN</text>
+                        <text x="180" y="372" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" text-anchor="middle">&bull; Cắm GLUT4 ra màng &rarr; TĂNG HẤP THU GLUCOSE</text>
+                        <text x="180" y="390" fill="#ef4444" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" text-anchor="middle">&bull; Bất hoạt FOXO1 &rarr; ỨC CHẾ TÂN TẠO ĐƯỜNG</text>
+                        <line x1="180" y1="310" x2="180" y2="335" stroke="#f59e0b" stroke-width="2" />
+
+                        <!-- RIGHT BRANCH: Ras - MAPK -->
+                        <path d="M 465 145 L 600 145 L 600 190" fill="none" stroke="#8b5cf6" stroke-width="2.5" />
+                        <polygon points="600,190 595,180 605,180" fill="#8b5cf6" />
+                        <text x="560" y="165" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700">Grb2 - SOS</text>
+
+                        <rect x="510" y="190" width="180" height="45" fill="#f3e8ff" rx="8" stroke="#8b5cf6" stroke-width="2" />
+                        <text x="600" y="210" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Ras-GTP (G-protein nhỏ)</text>
+                        <text x="600" y="225" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">Kích hoạt bởi SOS (GEF)</text>
+
+                        <line x1="600" y1="235" x2="600" y2="265" stroke="#8b5cf6" stroke-width="2" />
+                        <polygon points="600,265 595,255 605,255" fill="#8b5cf6" />
+
+                        <rect x="500" y="265" width="200" height="45" fill="#f3e8ff" rx="8" stroke="#8b5cf6" stroke-width="2" />
+                        <text x="600" y="285" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Raf &rarr; MEK &rarr; ERK1/2 (MAPK)</text>
+                        <text x="600" y="300" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">Dòng thác MAP Kinase</text>
+
+                        <!-- MAPK Downstream Actions -->
+                        <rect x="460" y="335" width="280" height="70" fill="var(--color-surface, #ffffff)" rx="8" stroke="#8b5cf6" stroke-width="1.5" />
+                        <text x="600" y="358" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">&bull; ERK di chuyển vào nhân tế bào</text>
+                        <text x="600" y="375" fill="#8b5cf6" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" text-anchor="middle">&bull; Hoạt hóa c-Fos, c-Jun, c-Myc (AP-1)</text>
+                        <text x="600" y="392" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">&bull; THÚC ĐẨY PHÂN BÀO &amp; SINH TRƯỞNG</text>
+                        <line x1="600" y1="310" x2="600" y2="335" stroke="#8b5cf6" stroke-width="2" />
+                    </g>
+                </svg>
+                <div class="svg-caption">Hình 5.1: Hai con đường phân nhánh của Thụ thể Insulin: Nhánh Chuyển hóa (IRS &rarr; PI3K &rarr; PIP3 &rarr; Akt điều hòa tổng hợp glycogen và cắm GLUT4) và Nhánh Phân bào (Grb2 &rarr; SOS &rarr; Ras &rarr; Raf &rarr; MEK &rarr; ERK1/2 thúc đẩy sinh trưởng tế bào).</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-route"></i> 5.2. Nhánh Chuyển Hóa (PI3K-Akt) vs Nhánh Phân Bào (Ras-MAPK)</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4 class="h4-title"><i class="fa-solid fa-wheat-awn" style="color: #10b981;"></i> Nhánh Chuyển Hóa (IRS - PI3K - Akt)</h4>
+                    <ul>
+                        <li><strong>Tạo PIP<sub>3</sub>:</strong> PI3K gắn vào phosphotyrosine trên IRS qua miền SH2, xúc tác tạo <span class="equation-inline">PIP<sub>2</sub> &rarr; PIP<sub>3</sub></span> trên màng.</li>
+                        <li><strong>Hoạt hóa Akt (PKB):</strong> PIP<sub>3</sub> chiêu mộ PDK1 và Akt ra màng. PDK1 và mTORC2 phosphoryl hóa hoạt hóa Akt.</li>
+                        <li><strong>Hạ đường huyết:</strong> Akt bất hoạt GSK-3 (giải phóng <em>Glycogen synthase</em> tổng hợp glycogen), bất hoạt yếu tố nhân FOXO1 (chặn đứng tân tạo đường <em>PEPCK</em>), và kích thích bóng chứa <strong>GLUT4</strong> hòa nhập màng cơ/mỡ.</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4 class="h4-title"><i class="fa-solid fa-dna" style="color: #8b5cf6;"></i> Nhánh Phân Bào &amp; Tăng Trưởng (Ras - MAPK)</h4>
+                    <ul>
+                        <li><strong>Phức hợp Grb2 - SOS:</strong> Grb2 bám vào phosphotyrosine qua miền SH2, liên kết với protein GEF là SOS.</li>
+                        <li><strong>Hoạt hóa Ras:</strong> SOS kích thích protein G nhỏ monomeric <strong>Ras</strong> nhả GDP và gắn GTP (<span class="equation-inline">Ras-GTP</span>).</li>
+                        <li><strong>Dòng thác Kinase:</strong> Ras-GTP hoạt hóa <strong>Raf (MAPKKK)</strong> &rarr; Phosphoryl hóa <strong>MEK (MAPKK)</strong> &rarr; MEK phosphoryl hóa kép Thr/Tyr trên <strong>ERK1/2 (MAPK)</strong>.</li>
+                        <li>ERK1/2 vào nhân phosphoryl hóa <strong>c-Fos, c-Jun, c-Myc</strong> kích hoạt chu kỳ tế bào và phân bào.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-wind"></i> 6. Con Đường JAK-STAT &amp; Guanylyl Cyclase / Khí Nitric Oxide (NO)</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-syringe"></i> 6.1. Thụ Thể Không Có Kinase Nội Tại: Con Đường JAK-STAT</h3>
+            <p>Hormon sinh trưởng (GH), Prolactin, Erythropoietin (EPO) và các Interleukin/Interferon sử dụng <strong>họ thụ thể Hematopoietin</strong>. Các thụ thể này không có hoạt tính enzyme tyrosine kinase nội tại, mà tuyển dụng các Tyrosine Kinase hòa tan nội bào thuộc họ <strong>Janus Kinase (JAK gồm JAK1, JAK2, JAK3, TYK2)</strong>:</p>
+            <ul>
+                <li>Ligand gắn ngoại bào làm <strong>dimer hóa thụ thể</strong>, kéo 2 phân tử JAK nội bào lại gần nhau.</li>
+                <li>JAK tự phosphoryl hóa chéo hoạt hóa lẫn nhau &rarr; Phosphoryl hóa các gốc Tyrosine trên đuôi bào tương của thụ thể.</li>
+                <li>Gốc phosphotyrosine thu hút yếu tố phiên mã <strong>STAT (Signal Transducers and Activators of Transcription)</strong> qua miền SH2.</li>
+                <li>JAK phosphoryl hóa STAT &rarr; STAT tách khỏi thụ thể, <strong>dimer hóa đối song song</strong> qua miền SH2 của nhau &rarr; Di chuyển vào nhân bám vào trình tự <strong>GAS / IRE</strong> trên DNA để điều hòa phiên mã gen tăng trưởng (ví dụ: GH kích thích gan tổng hợp <em>IGF-1</em>).</li>
+            </ul>
+
+            <!-- SVG DIAGRAM 6: JAK-STAT & NO-cGMP -->
+            <div class="biochem-svg-card">
+                <svg viewBox="0 0 840 400" width="100%" height="auto" aria-label="Con đường JAK-STAT và cơ chế giãn mạch của Nitric Oxide qua cGMP-PKG">
+                    <rect x="0" y="0" width="840" height="400" fill="var(--color-bg, #f8fafc)" rx="12" />
+                    
+                    <!-- Panel 1: JAK-STAT -->
+                    <g transform="translate(30, 20)">
+                        <rect x="0" y="0" width="370" height="360" fill="var(--color-surface, #ffffff)" rx="10" stroke="var(--color-border, #e2e8f0)" />
+                        <text x="185" y="28" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">CON ĐƯỜNG JAK - STAT (GH, EPO, CYTOKINE)</text>
+                        
+                        <!-- Dimerized Receptors -->
+                        <rect x="110" y="55" width="65" height="35" fill="#e0f2fe" rx="6" stroke="#0284c7" />
+                        <rect x="195" y="55" width="65" height="35" fill="#e0f2fe" rx="6" stroke="#0284c7" />
+                        <text x="185" y="77" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">GH / EPO bám Dimer</text>
+
+                        <!-- Attached JAKs -->
+                        <circle cx="142" cy="115" r="16" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" />
+                        <text x="142" y="119" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" text-anchor="middle">JAK</text>
+                        <circle cx="228" cy="115" r="16" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" />
+                        <text x="228" y="119" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" text-anchor="middle">JAK</text>
+                        <text x="185" y="145" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" text-anchor="middle">Tự phosphoryl hóa chéo hoạt hóa</text>
+
+                        <!-- STAT Recruitment & Phosphorylation -->
+                        <path d="M 185 155 L 185 185" stroke="#0284c7" stroke-width="2" />
+                        <polygon points="185,185 180,175 190,175" fill="#0284c7" />
+
+                        <rect x="100" y="190" width="170" height="40" fill="#dcfce7" rx="8" stroke="#10b981" stroke-width="2" />
+                        <text x="185" y="215" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">STAT-P Dimer hóa (SH2)</text>
+
+                        <!-- STAT translocation to nucleus -->
+                        <line x1="185" y1="230" x2="185" y2="265" stroke="#10b981" stroke-width="2" />
+                        <polygon points="185,265 180,255 190,255" fill="#10b981" />
+
+                        <!-- Nuclear DNA -->
+                        <line x1="30" y1="290" x2="340" y2="290" stroke="#334155" stroke-width="3" />
+                        <rect x="105" y="280" width="160" height="20" fill="#fef3c7" stroke="#f59e0b" />
+                        <text x="185" y="294" fill="#d97706" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">GAS / IRE trên DNA</text>
+
+                        <text x="185" y="335" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">&rarr; TĂNG TỔNG HỢP IGF-1 / TẠO MÁU</text>
+                    </g>
+
+                    <!-- Panel 2: NO - cGMP - PKG -->
+                    <g transform="translate(440, 20)">
+                        <rect x="0" y="0" width="370" height="360" fill="var(--color-surface, #ffffff)" rx="10" stroke="var(--color-border, #e2e8f0)" />
+                        <text x="185" y="28" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">CƠ CHẾ GIÃN MẠCH QUA KHÍ NO &amp; cGMP</text>
+                        
+                        <!-- Endothelial eNOS -->
+                        <rect x="30" y="55" width="310" height="40" fill="#e0f2fe" rx="6" stroke="#0284c7" />
+                        <text x="185" y="75" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle">Tế bào Nội mô: L-Arginine &rarr; (eNOS) &rarr; Khí NO (•NO)</text>
+                        <text x="185" y="88" fill="#64748b" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" text-anchor="middle">Coenzyme: NADPH, FAD, FMN, Heme, BH4</text>
+
+                        <!-- Diffusion to Smooth Muscle -->
+                        <path d="M 185 95 L 185 130" stroke="#10b981" stroke-width="2" stroke-dasharray="4,3" />
+                        <polygon points="185,130 180,120 190,120" fill="#10b981" />
+                        <text x="260" y="115" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700">Khuếch tán tự do</text>
+
+                        <!-- Smooth Muscle Cell: sGC Activation -->
+                        <rect x="45" y="135" width="280" height="50" fill="#fef3c7" rx="8" stroke="#f59e0b" stroke-width="2" />
+                        <text x="185" y="157" fill="#d97706" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" text-anchor="middle">sGC (Guanylyl Cyclase hòa tan chứa Heme)</text>
+                        <text x="185" y="173" fill="#d97706" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">NO gắn Heme-Fe2+ &rarr; GTP &rarr; cGMP</text>
+
+                        <!-- cGMP to PKG -->
+                        <line x1="185" y1="185" x2="185" y2="215" stroke="#f59e0b" stroke-width="2" />
+                        <polygon points="185,215 180,205 190,205" fill="#f59e0b" />
+
+                        <rect x="70" y="215" width="230" height="45" fill="#dcfce7" rx="8" stroke="#10b981" stroke-width="2" />
+                        <text x="185" y="242" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle">PROTEIN KINASE G (PKG)</text>
+
+                        <!-- MLCP and Vasodilation -->
+                        <line x1="185" y1="260" x2="185" y2="290" stroke="#10b981" stroke-width="2" />
+                        <polygon points="185,290 180,280 190,280" fill="#10b981" />
+
+                        <rect x="25" y="290" width="320" height="55" fill="var(--color-surface, #ffffff)" rx="8" stroke="#10b981" stroke-width="1.5" />
+                        <text x="185" y="312" fill="#10b981" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" text-anchor="middle">&bull; Kích hoạt MLCP (Khử phospho chuỗi nhẹ Myosin)</text>
+                        <text x="185" y="332" fill="#0284c7" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" text-anchor="middle">&bull; GIÃN CƠ TRƠN MẠCH MÁU &rarr; HẠ HUYẾT ÁP</text>
+                    </g>
+                </svg>
+                <div class="svg-caption">Hình 6.1: So sánh con đường JAK-STAT (Tuyển dụng Janus Kinase phosphoryl hóa STAT dimer hóa chuyển nhân) và Cơ chế giãn cơ trơn mạch máu qua trung gian khí Nitric Oxide (NO gắn sGC Heme tạo cGMP kích hoạt PKG và MLCP).</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-heart-circle-bolt"></i> 6.2. Guanylyl Cyclase (GC) &amp; Khí Nitric Oxide (NO) Giãn Mạch</h3>
+            <ul>
+                <li><strong>Guanylyl Cyclase màng:</strong> Hoạt hóa bởi các peptide bài niệu <strong>ANP và BNP</strong> từ tim khi quá tải tuần hoàn, làm tăng cGMP gây thải natri và hạ áp.</li>
+                <li><strong>Guanylyl Cyclase hòa tan (sGC) chứa Heme:</strong> Hoạt hóa bởi chất truyền tin dạng khí <strong>Nitric Oxide (&bull;NO)</strong>. NO được tổng hợp từ <strong>L-Arginine</strong> bởi enzyme <strong>Nitric Oxide Synthase (NOS)</strong> với sự tham gia của <em>NADPH, FAD, FMN, Heme và Tetrahydrobiopterin (BH<sub>4</sub>)</em>.</li>
+                <li><strong>Cơ chế giãn mạch:</strong> NO từ tế bào nội mô khuếch tán sang tế bào cơ trơn mạch máu, gắn vào Heme của sGC &rarr; Tạo <strong>cGMP</strong> &rarr; Kích hoạt <strong>Protein Kinase G (PKG)</strong> &rarr; Hoạt hóa <em>Myosin Light Chain Phosphatase (MLCP)</em> cắt bỏ phosphate khỏi chuỗi nhẹ myosin &rarr; Giãn cơ trơn mạch máu tức thì.</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 7 -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-vials"></i> 7. Giàn Giáo AKAP, Cơ Chế Dập Tắt Tín Hiệu &amp; Bilan Nội Tiết Lâm Sàng</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-toolbox"></i> 7.1. Giàn Giáo Protein AKAP &amp; Cơ Chế Dập Tắt Tín Hiệu</h3>
+            <ul>
+                <li><strong>Giàn giáo AKAP (A-Kinase Anchoring Proteins):</strong> Neo giữ PKA, PDE và Phosphatase tại các vi khoang cấu trúc xác định (màng nhân, ty thể), đảm bảo tính đặc hiệu không gian của tín hiệu cAMP.</li>
+                <li><strong>Các cơ chế dập tắt tín hiệu sinh học:</strong>
+                    <ul>
+                        <li><strong>Thủy phân GTP:</strong> Hoạt tính GTPase nội tại của protein G lớn và protein G nhỏ Ras (được tăng tốc bởi protein <strong>GAP</strong>).</li>
+                        <li><strong>Khử Phosphoryl hóa:</strong> Enzyme <strong>PTEN</strong> khử phosphate của PIP<sub>3</sub> thành PIP<sub>2</sub> (đột biến mất PTEN gây tích tụ PIP<sub>3</sub> dẫn đến ung thư); <strong>PTP1B</strong> khử phosphotyrosine trên thụ thể insulin.</li>
+                        <li><strong>Tháo mẫn cảm thụ thể (Desensitization):</strong> Enzyme <strong>GRK</strong> phosphoryl hóa đuôi nội bào của GPCR, chiêu mộ protein <strong>Arrestin</strong> bám chặt ngăn cản G-protein và kích hoạt hiện tượng nội thực bào thụ thể qua túi clathrin.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-table-list"></i> 7.2. Bảng Đối Chiếu 5 Con Đường Truyền Tin Nhóm II</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Con Đường Truyền Tin</th>
+                        <th>Hormon / Phối Tử Điển Hình</th>
+                        <th>Thụ Thể &amp; G-Protein</th>
+                        <th>Chất Truyền Tin Thứ 2</th>
+                        <th>Protein Kinase &amp; Đích Tác Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>cAMP - PKA</strong></td>
+                        <td>Glucagon, ACTH, TSH, FSH, LH, PTH, Epinephrine (&beta;).</td>
+                        <td>GPCR (7TM) + G<sub>s</sub> (kích thích) / G<sub>i</sub> (ức chế).</td>
+                        <td><strong>cAMP</strong> (tổng hợp bởi Adenylate Cyclase).</td>
+                        <td><strong>PKA</strong> &rarr; Phosphorylase kinase, Lipase nhạy hormone, Yếu tố nhân CREB.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PLC - IP<sub>3</sub>/DAG - Ca<sup>2+</sup></strong></td>
+                        <td>Angiotensin II, Vasopressin (V<sub>1</sub>), Epinephrine (&alpha;<sub>1</sub>), Oxytocin, TRH.</td>
+                        <td>GPCR (7TM) + G<sub>q</sub>.</td>
+                        <td><strong>IP<sub>3</sub></strong> (mở kênh Ca<sup>2+</sup> ER) và <strong>DAG</strong> (gắn màng).</td>
+                        <td><strong>PKC</strong> và phức hợp <span class="equation-inline">Ca<sup>2+</sup>-Calmodulin</span> &rarr; Co cơ trơn, phân giải glycogen.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RTK (Insulin / Yếu Tố Tăng Trưởng)</strong></td>
+                        <td>Insulin, IGF-1, EGF, PDGF, FGF.</td>
+                        <td>RTK (Tự phosphoryl hóa Tyrosine nội tại).</td>
+                        <td><strong>PIP<sub>3</sub></strong> (nhánh chuyển hóa do PI3K xúc tác).</td>
+                        <td><strong>Akt (PKB)</strong> điều hòa chuyển hóa; <strong>Ras-Raf-MEK-ERK</strong> điều hòa phân bào.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>JAK - STAT</strong></td>
+                        <td>Growth Hormone (GH), Prolactin, Erythropoietin (EPO), Interferon.</td>
+                        <td>Thụ thể Hematopoietin (Dimer hóa, không có kinase nội tại).</td>
+                        <td>Không có chất truyền tin thứ 2 cổ điển.</td>
+                        <td><strong>Janus Kinase (JAK)</strong> phosphoryl hóa <strong>STAT</strong> dimer hóa chuyển nhân.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>cGMP - PKG &amp; NO</strong></td>
+                        <td>ANP, BNP (qua GC màng); Khí Nitric Oxide (&bull;NO qua sGC Heme).</td>
+                        <td>Thụ thể màng GC hoặc enzyme sGC hòa tan bào tương.</td>
+                        <td><strong>cGMP</strong> (tổng hợp bởi Guanylyl Cyclase).</td>
+                        <td><strong>PKG</strong> &rarr; Hoạt hóa MLCP khử phosphoryl myosin gây giãn mạch.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-chart-pie"></i> 7.3. Bilan Xét Nghiệm Thăm Dò Nội Tiết Lâm Sàng</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 150px;">Chỉ Số Xét Nghiệm</th>
+                        <th style="width: 170px;">Khoảng Tham Chiếu Sinh Lý</th>
+                        <th>Ý Nghĩa Chẩn Đoán &amp; Biện Luận Cận Lâm Sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Glucose Máu Lúc Đói (FPG)</strong></td>
+                        <td>3.9 - 5.6 mmol/L<br>(70 - 99 mg/dL)</td>
+                        <td>Tiêu chuẩn vàng chẩn đoán Đái tháo đường khi <span class="equation-inline">FPG &ge; 7.0 mmol/L</span> (&ge; 126 mg/dL) đo 2 lần độc lập.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HbA1c (Glycated Hemoglobin)</strong></td>
+                        <td>4.0 - 5.6% (&lt; 39 mmol/mol)</td>
+                        <td>Phản ánh nồng độ đường huyết trung bình trong 3 tháng qua. Ngưỡng chẩn đoán ĐTĐ khi <span class="equation-inline">HbA1c &ge; 6.5%</span>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insulin Máu Lúc Đói</strong></td>
+                        <td>2.6 - 24.9 &mu;U/mL</td>
+                        <td>Tăng cao trong U tế bào beta đảo tụy (Insulinoma), Hội chứng kháng insulin; Giảm nặng trong Đái tháo đường tuýp 1.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C-Peptid Huyết Thanh</strong></td>
+                        <td>0.9 - 4.3 ng/mL<br>(0.3 - 1.4 nmol/L)</td>
+                        <td>Được giải phóng từ Proinsulin theo tỷ lệ phân tử 1:1 với Insulin nhưng không bị gan bắt giữ. Tiêu chuẩn vàng đánh giá chức năng tế bào beta còn lại: C-peptid rất thấp khẳng định ĐTĐ tuýp 1.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TSH (Thyroid Stimulating Hormone)</strong></td>
+                        <td>0.4 - 4.0 mIU/L</td>
+                        <td>Xét nghiệm đầu tay nhạy cảm nhất đánh giá chức năng tuyến giáp. Tăng trong suy giáp nguyên phát; Giảm &lt; 0.1 mIU/L trong cường giáp Basedow.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FT4 (Free Thyroxine)</strong></td>
+                        <td>12 - 22 pmol/L<br>(0.9 - 1.7 ng/dL)</td>
+                        <td>Dạng hormon giáp tự do có hoạt tính sinh học không phụ thuộc protein gắn kết TBG. Phối hợp cùng TSH để định danh suy giáp/cường giáp lâm sàng hoặc dưới lâm sàng.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cortisol Máu (8h Sáng)</strong></td>
+                        <td>138 - 690 nmol/L<br>(5 - 25 &mu;g/dL)</td>
+                        <td>Đánh giá chức năng vỏ thượng thận, có nhịp bài tiết ngày đêm (đạt đỉnh lúc 8h sáng, thấp nhất lúc 23h đêm). Tăng trong Hội chứng Cushing; Giảm trong Suy thượng thận (Addison).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ACTH Huyết Tương (8h Sáng)</strong></td>
+                        <td>10 - 60 pg/mL<br>(2.2 - 13.2 pmol/L)</td>
+                        <td>Phân biệt nguyên nhân tại tuyến thượng thận vs tại tuyến yên (Cushing do u tuyến yên: ACTH tăng; Cushing do u vỏ thượng thận: ACTH bị ức chế giảm).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-book-medical"></i> 8. Điểm Ngọc Lâm Sàng &amp; Tài Liệu Tham Khảo Chuẩn AMA</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-star"></i> 8.1. Bảng Điểm Ngọc Lâm Sàng Cốt Lõi (High-Yield Pearls)</h3>
+            <div class="pearl-box">
+                <ol style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;">
+                    <li><strong>Cơ chế gây tiêu chảy mất nước của Độc Tố Tả (Cholera Toxin):</strong> Độc tố tả ADP-ribosyl hóa tiểu đơn vị G<sub>&alpha;s</sub>, làm mất hoạt tính GTPase, khóa chặt Adenylate Cyclase ở trạng thái mở liên tục &rarr; cAMP tăng vọt &rarr; Mở liên tục kênh <em>CFTR</em> ở niêm mạc ruột non bài tiết ồ ạt Cl<sup>-</sup>, Na<sup>+</sup> và nước gây tiêu chảy xối xả 10 - 20 lít/ngày.</li>
+                    <li><strong>Cơ chế ho gà của Độc Tố Ho Gà (Pertussis Toxin):</strong> Độc tố ho gà ADP-ribosyl hóa tiểu đơn vị G<sub>&alpha;i</sub>, khóa G<sub>&alpha;i</sub> ở trạng thái bất hoạt &rarr; Mất khả năng ức chế Adenylate Cyclase &rarr; cAMP tăng cao gây ức chế hóa ứng động bạch cầu và tăng tiết chất nhầy đường thở.</li>
+                    <li><strong>Dược lý ứng dụng ức chế Phosphodiesterase-5 (PDE5):</strong> <em>Sildenafil (Viagra), Tadalafil</em> ức chế chọn lọc men PDE5, ngăn thủy phân cGMP tại cơ trơn mạch máu thể hang và động mạch phổi &rarr; Duy trì nồng độ cGMP cao, kéo dài giãn mạch điều trị hiệu quả rối loạn cương dương và tăng áp động mạch phổi.</li>
+                    <li><strong>Cơ chế cắt cơn đau thắt ngực của Nitroglycerin:</strong> Nitroglycerin được enzyme ty thể ALDH2 khử thành khí <strong>Nitric Oxide (&bull;NO)</strong> tự do &rarr; Hoạt hóa sGC tạo cGMP &rarr; Kích hoạt PKG và MLCP làm giãn nhanh mạch vành, cứu sống vùng cơ tim thiếu máu cục bộ.</li>
+                    <li><strong>Kháng Insulin trong ĐTĐ Tuýp 2:</strong> Acid béo tự do (FFA) và các cytokine viêm (TNF-&alpha;) kích hoạt Serine Kinase phosphoryl hóa sai lệch gốc <strong>Serine/Threonine trên IRS-1</strong> (thay vì Tyrosine), cắt đứt dòng thác gắn kết PI3K-Akt của insulin.</li>
+                    <li><strong>Cơ chế tác dụng của thuốc ức chế JAK (Tofacitinib):</strong> Tofacitinib phong tỏa chọn lọc vị trí gắn ATP của enzyme JAK1 và JAK3, cắt đứt dòng thác truyền tin của các Interleukin tiền viêm, được ứng dụng điều trị Viêm khớp dạng thấp và Viêm loét đại tràng tự miễn.</li>
+                    <li><strong>Đột biến mất chức năng gen đè nén u PTEN:</strong> Lipid phosphatase PTEN thực hiện khử phosphate của PIP<sub>3</sub> về PIP<sub>2</sub>. Mất gen PTEN khiến PIP<sub>3</sub> tích tụ quá mức, kích hoạt liên tục Akt thúc đẩy tăng sinh tế bào ác tính và ung thư.</li>
+                    <li><strong>Phân biệt ĐTĐ Tuýp 1 vs Tuýp 2 bằng C-Peptide:</strong> C-peptide được bài tiết cùng insulin theo tỷ lệ 1:1 nhưng không bị thoái giáng qua gan lần đầu. Nồng độ C-peptide máu &lt; 0.2 nmol/L khẳng định sự phá hủy gần như hoàn toàn tế bào beta trong ĐTĐ tuýp 1.</li>
+                </ol>
+            </div>
+
+            <!-- FOOTER & AMA REFERENCES -->
+            <footer style="margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.9rem; line-height: 1.75;">
+                <h4 style="margin: 0 0 0.75rem 0; color: var(--color-text, #334155); font-size: 1rem; font-weight: 700;">
+                    <i class="fa-solid fa-book-bookmark" style="color: var(--color-primary, #0284c7);"></i> Danh Mục Tài Liệu Tham Khảo Chuẩn AMA:
+                </h4>
+                <ol style="margin: 0; padding-left: 1.35rem; display: flex; flex-direction: column; gap: 0.45rem;">
+                    <li>Bộ môn Hóa sinh (Đại học Y Dược TPHCM). Chương VIII: Hormon. Trong: <em>Hóa sinh y học 2024</em>. TP. Hồ Chí Minh: NXB Y Học; 2024:178-202.</li>
+                    <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. Chapter 41: Regulation of Gene Expression by Hormones. In: <em>Harper’s Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill; 2023:510-534.</li>
+                    <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. Chapter 42: Hormone Action &amp; Signal Transduction. In: <em>Harper’s Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill; 2023:535-549.</li>
+                    <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. Chapter 49: Muscle &amp; the Cytoskeleton (Section: Nitric Oxide). In: <em>Harper’s Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill; 2023:560-575.</li>
+                    <li>Baynes JW, Dominiczak MH. Chapter 25: Membrane Receptors and Signal Transduction. In: <em>Medical Biochemistry</em>. 5th ed. Philadelphia, PA: Elsevier; 2019:339-348.</li>
+                    <li>Baynes JW, Dominiczak MH. Chapter 31: Insulin Action, Diabetes Mellitus, and Lipotoxicity. In: <em>Medical Biochemistry</em>. 5th ed. Philadelphia, PA: Elsevier; 2019:435-450.</li>
+                    <li>Pratt CW, Cornely K. Chapter 10: Signal Transduction. In: <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:270-295.</li>
+                    <li>Melmed S, Auchus RJ, Goldfine AB, Koenig RJ, Rosen CJ. <em>Williams Textbook of Endocrinology</em>. 14th ed. Philadelphia, PA: Elsevier; 2020:1-45, 1375-1412.</li>
+                    <li>Murphy MJ, Srivastava R, Deans K. Chapter 27: Biochemical Endocrinology. In: <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. Edinburgh: Elsevier; 2018:369-373.</li>
+                </ol>
+            </footer>
+
+        </section>
+
+    </div>
+</body>
+
+</html>

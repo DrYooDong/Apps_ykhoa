@@ -38,14 +38,19 @@ export class ContentLoaderEngine {
    */
   public async loadCategoryIndex(category: string): Promise<ContentIndexItem[]> {
     if (!category) return [];
-    if (this.indexCache.has(category)) {
-      return this.indexCache.get(category)!;
+    const catKey = category.toLowerCase().trim();
+    if (this.indexCache.has(catKey)) {
+      return this.indexCache.get(catKey)!;
     }
 
+    const mappedCategory = catKey === 'pathophysiology' ? 'basic-medical' : catKey;
+
     const candidateIndexPaths = [
-      `./src/content/${category}/index.json`,
-      `./content/${category}/index.json`,
-      `./knowledge-vault/${category}/index.json`
+      `./src/content/${mappedCategory}/index.json`,
+      `./content/${mappedCategory}/index.json`,
+      `./src/content/${catKey}/index.json`,
+      `./content/${catKey}/index.json`,
+      `./knowledge-vault/${mappedCategory}/index.json`
     ];
 
     for (const indexPath of candidateIndexPaths) {
@@ -78,17 +83,21 @@ export class ContentLoaderEngine {
    */
   private getCandidatePaths(category: string, slug: string): string[] {
     const paths: string[] = [];
+    const cat = category.toLowerCase().trim();
+    const mapped = cat === 'pathophysiology' ? 'basic-medical' : cat;
 
     if (category && slug) {
-      paths.push(`./src/content/${category}/${slug}.md`);
-      paths.push(`./src/content/${category}/${slug}.html`);
-      paths.push(`./content/${category}/${slug}.md`);
-      paths.push(`./content/${category}/${slug}.html`);
-      paths.push(`./knowledge-vault/${category}/${slug}.md`);
-      paths.push(`./src/content/${category}/${slug}.json`);
+      paths.push(`./src/content/${mapped}/${slug}.md`);
+      paths.push(`./src/content/${mapped}/${slug}.html`);
+      paths.push(`./src/content/${cat}/${slug}.md`);
+      paths.push(`./src/content/${cat}/${slug}.html`);
+      paths.push(`./content/${mapped}/${slug}.md`);
+      paths.push(`./content/${mapped}/${slug}.html`);
+      paths.push(`./knowledge-vault/${mapped}/${slug}.md`);
+      paths.push(`./src/content/${mapped}/${slug}.json`);
     } else if (category && !slug) {
-      paths.push(`./src/content/${category}/index.md`);
-      paths.push(`./content/${category}/index.md`);
+      paths.push(`./src/content/${mapped}/index.md`);
+      paths.push(`./content/${mapped}/index.md`);
     }
 
     return paths;

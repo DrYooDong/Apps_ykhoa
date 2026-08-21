@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENG-02: Phức Hợp Pyruvat Dehydrogenase &amp; Chu Trình Acid Citric (Krebs) – Hóa Sinh Y Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="../../js/physio-shared.ts"></script>
+
+    <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+
+        .biochem-article-header {
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .biochem-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.8rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 2.75rem;
+        }
+
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.3vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .article-section h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            margin: 1.35rem 0 0.5rem 0;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        [data-theme="dark"] .article-section h4 {
+            color: #f1f5f9;
+        }
+
+        /* Callout Boxes */
+        .reaction-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            line-height: 1.65;
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            line-height: 1.65;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            line-height: 1.65;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+            line-height: 1.65;
+        }
+
+        /* SVG Sơ đồ Card */
+        .diagram-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+
+        .diagram-caption {
+            font-size: 0.85rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        /* Tables */
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .lab-table th,
+        .lab-table td {
+            border: 1px solid var(--color-border, #e2e8f0);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .lab-table th {
+            background: var(--color-surface-offset, #f8fafc);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        [data-theme="dark"] .lab-table th {
+            background: #1e293b;
+            color: #f1f5f9;
+        }
+
+        .step-list {
+            padding-left: 1.25rem;
+            margin: 0.75rem 0 1.25rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .step-list li {
+            line-height: 1.65;
+        }
+
+        .formula-inline {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(2, 132, 199, 0.08);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            color: var(--color-primary, #0284c7);
+            font-size: 0.88em;
+        }
+
+        [data-theme="dark"] .formula-inline {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        /* 8 PHẢN ỨNG CHU TRÌNH KREBS (.krebs-reaction-list) */
+        .krebs-reaction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.25rem 0 2rem 0;
+        }
+
+        .krebs-reaction-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-left: 4px solid var(--step-accent, var(--color-primary, #0284c7));
+            border-radius: 12px;
+            padding: 1.15rem 1.35rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .krebs-reaction-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="dark"] .krebs-reaction-card {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        .krebs-reaction-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid var(--color-border, #f1f5f9);
+        }
+
+        [data-theme="dark"] .krebs-reaction-header {
+            border-bottom-color: var(--color-border, #334155);
+        }
+
+        .krebs-reaction-title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--step-accent, var(--color-primary, #0284c7));
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .krebs-reaction-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--step-accent, #0284c7);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .krebs-reaction-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            background: var(--badge-bg, rgba(2, 132, 199, 0.1));
+            color: var(--badge-color, #0284c7);
+            border: 1px solid var(--badge-border, rgba(2, 132, 199, 0.2));
+        }
+
+        [data-theme="dark"] .krebs-reaction-badge {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .krebs-reaction-body {
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: var(--color-text, #334155);
+            margin: 0;
+        }
+
+        [data-theme="dark"] .krebs-reaction-body {
+            color: #cbd5e1;
+        }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- ARTICLE HEADER -->
+        <header class="biochem-article-header">
+            <span class="biochem-badge"><i class="fa-solid fa-bolt"></i> ENG-02 • Khối 3: Năng Lượng Sinh Học &amp; Ti Thể</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 2.1rem; font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Phức Hợp Pyruvat Dehydrogenase &amp; Chu Trình Acid Citric (Krebs)
+            </h1>
+            <p style="margin: 0; font-size: 1.02rem; opacity: 0.95; line-height: 1.6; max-width: 920px;">
+                Nhập khẩu Pyruvat vào ti thể; Cấu trúc siêu phân tử E1–E2–E3 &amp; 5 Coenzyme của Phức hợp Pyruvat Dehydrogenase (PDC); 5 bước xúc tác cánh tay Lipoamide &amp; điều hòa đồng hóa trị PDK/PDP; 8 phản ứng enzyme Chu trình Krebs &amp; Cân bằng năng lượng (10 ATP); Bản chất Lưỡng hóa (Amphibolic) &amp; Phản ứng bù đắp (Anaplerosis); Cơ chế bệnh học Oncometabolites (SDH, FH, IDH1/2) trong sinh ung thư &amp; Bilan lâm sàng.
+            </p>
+        </header>
+
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-door-open"></i> 1. Nhập Khẩu Pyruvat</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-cubes"></i> 2. Cấu Trúc PDC &amp; 5 Coenzyme</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-sliders"></i> 3. Động Học &amp; Điều Hòa PDC</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-circle-notch"></i> 4. Tổng Quan &amp; Năng Lượng Krebs</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-arrows-spin"></i> 5. Chi Tiết 8 Phản Ứng</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-network-wired"></i> 6. Mạng Lưới Điều Hòa</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-shuffle"></i> 7. Lưỡng Hóa &amp; Bù Đắp Anaplerosis</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-dna"></i> 8. Oncometabolites &amp; Bilan</a>
+            </div>
+        </nav>
+
+        <!-- SECTION 1: NHẬP KHẨU PYRUVAT VÀO TI THỂ -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-door-open"></i> 1. Sự Vận Chuyển Pyruvat Vào Ti Thể</h2>
+            <p class="section-text">
+                Pyruvat là sản phẩm kết thúc của con đường đường phân kỵ khí xảy ra tại bào tương. Tuy nhiên, để tiếp tục thoái hóa hoàn toàn theo con đường hiếu khí và khai thác tối đa năng lượng hóa học, pyruvat bắt buộc phải được vận chuyển vào trong <strong>chất nền ti thể (mitochondrial matrix)</strong> – nơi định vị toàn bộ hệ enzyme của Phức hợp Pyruvat Dehydrogenase, Chu trình Krebs và Chuỗi truyền điện tử.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-shield-halved"></i> 1.1. Tính Thấm Khác Biệt Của Màng Kép Ti Thể</h3>
+            <ul class="step-list">
+                <li><strong>Màng ngoài ti thể (Outer Mitochondrial Membrane - OMM):</strong> Chứa các kênh protein xuyên màng lớn gọi là <em>porin</em> (VDAC), cho phép mọi phân tử hữu cơ tích điện có khối lượng phân tử &lt; 10,000 Da (bao gồm pyruvat) khuếch tán tự do qua khoảng gian màng.</li>
+                <li><strong>Màng trong ti thể (Inner Mitochondrial Membrane - IMM):</strong> Cực kỳ nghiêm ngặt và không thấm đối với các ion và phân tử phân cực. Pyruvat không thể tự do khuếch tán qua màng trong.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-truck-fast"></i> 1.2. Cơ Chế Đồng Vận Chuyển Của Pyruvat Translocase</h3>
+            <p class="section-text">
+                Quá trình đưa pyruvat từ khoảng gian màng vào chất nền ti thể được thực hiện bởi protein vận chuyển đặc hiệu <strong>Pyruvat Translocase (Pyruvate Carrier - MPC1/MPC2)</strong>:
+            </p>
+            <div class="info-box">
+                <strong><i class="fa-solid fa-bolt"></i> Cơ chế Symport phụ thuộc Lực đẩy Proton (Proton Motive Force):</strong>
+                <p style="margin: 0.35rem 0 0 0; line-height: 1.65;">
+                    Pyruvate Translocase vận chuyển phân tử Pyruvat⁻ đồng thời cùng với <strong>1 ion H⁺</strong> (Proton-dependent symport) đi vào chất nền ti thể. Năng lượng thúc đẩy quá trình này được cung cấp trực tiếp từ gradient điện hóa proton (ΔpH và ΔΨ) do Chuỗi hô hấp ti thể liên tục bơm H⁺ từ chất nền ra khoảng gian màng tạo nên.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CẤU TRÚC PDC & 5 COENZYME -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-cubes"></i> 2. Phức Hợp Pyruvat Dehydrogenase (PDC) &amp; Hệ Thống 5 Coenzyme</h2>
+            <p class="section-text">
+                Sau khi vào chất nền ti thể, pyruvat lập tức trải qua phản ứng <strong>khử carboxyl oxy hóa (oxidative decarboxylation)</strong> không thuận nghịch để tạo thành <strong>Acetyl-CoA</strong> dưới sự xúc tác của một cỗ máy đa enzyme siêu phân tử khổng lồ: <strong>Phức hợp Pyruvat Dehydrogenase (PDC)</strong>.
+            </p>
+
+            <div class="reaction-box">
+                <div style="margin-bottom: 0.4rem;"><strong>Phương trình phản ứng tổng quát của PDC:</strong></div>
+                <code>Pyruvat + NAD⁺ + CoA-SH ──(PDC)──&gt; Acetyl-CoA + CO₂ + NADH + H⁺</code>
+                <div style="margin-top: 0.4rem; font-size: 0.84rem; color: #10b981;">
+                    ΔG°' ≈ -31.4 kJ/mol • ΔE°' ≈ +0.16 V (Tỏa nhiệt mạnh &amp; Hoàn toàn không thuận nghịch)
+                </div>
+            </div>
+
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-lightbulb"></i> Ý Nghĩa Nhiệt Động Học Then Chốt:</strong>
+                <p style="margin: 0.35rem 0 0 0; line-height: 1.65;">
+                    Vì phản ứng có biến thiên năng lượng tự do âm rất lớn (ΔG°' = -31.4 kJ/mol), ở tế bào động vật <strong>Acetyl-CoA tuyệt đối không thể chuyển ngược lại thành Pyruvate</strong>. Điều này giải thích tại sao động vật không thể sử dụng Acetyl-CoA từ sự thoái hóa acid béo để tân tạo đường Glucose (không có con đường tổng hợp tịnh glucose từ lipid).
+                </p>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-sitemap"></i> 2.1. Cấu Trúc Siêu Phân Tử 3 Tiểu Đơn Vị Enzyme (E1, E2, E3)</h3>
+            <ul class="step-list">
+                <li><strong>Pyruvat Dehydrogenase / Decarboxylase (E1):</strong> Heterotetramer cấu trúc α₂β₂, liên kết chặt chẽ với coenzyme <strong>Thiamine Pyrophosphate (TPP)</strong>. Ở người, có khoảng 42–48 bản sao E1 định vị ở lớp vỏ ngoài, xúc tác phản ứng khử carboxyl giải phóng CO₂.</li>
+                <li><strong>Dihydrolipoyl Transacetylase (E2):</strong> Đóng vai trò là bộ khung cốt lõi cấu trúc trung tâm. Ở sinh vật nhân thực, lõi E2 gồm <strong>60 tiểu đơn vị</strong> sắp xếp đối xứng thành hình khối 12 mặt đều (pentagonal dodecahedron). Mỗi tiểu đơn vị E2 chứa gốc <strong>Lipoamide</strong> tạo thành <em>"cánh tay quay linh hoạt" (swinging arm)</em> dài 1.4 nm liên kết với Lysine.</li>
+                <li><strong>Dihydrolipoyl Dehydrogenase (E3):</strong> Dimer đồng nhất α₂, chứa coenzyme <strong>FAD</strong> liên kết chặt chẽ và được neo vào lõi E2 qua protein kết nối <em>E3BP (E3-binding protein)</em>. Xúc tác tái oxy hóa lipoamide khử.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-flask-vial"></i> 2.2. Hệ Thống 5 Coenzyme Phối Hợp Trong PDC</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Coenzyme</th>
+                        <th style="width: 22%;">Nguồn Gốc Vitamin</th>
+                        <th style="width: 20%;">Vị Trí Định Vị</th>
+                        <th>Vai Trò Hóa Học Xúc Tác Cụ Thể</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Thiamine Pyrophosphate (TPP)</strong></td>
+                        <td>Vitamin B1 (Thiamine)</td>
+                        <td>Gắn chặt vào <strong>E1</strong></td>
+                        <td>Tấn công ái nhân vào carbonyl của pyruvate, bẻ gãy liên kết C–C giải phóng <strong>CO₂</strong> và mang nhóm hydroxyethyl trung gian.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acid Lipoic (Lipoamide)</strong></td>
+                        <td>Cơ thể tự tổng hợp</td>
+                        <td>Cộng hóa trị Lysine trên <strong>E2</strong></td>
+                        <td>Tạo "cánh tay quay" 1.4 nm vận chuyển nhóm acetyl từ E1 sang CoA-SH, đồng thời chuyển 2 electron sang cho E3.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coenzyme A (CoA-SH)</strong></td>
+                        <td>Vitamin B5 (Acid Pantothenic)</td>
+                        <td>Đồng cơ chất hòa tan</td>
+                        <td>Nhận nhóm acetyl hoạt hóa từ acetyl-dihydrolipoamide để tạo thành sản phẩm tự do <strong>Acetyl-CoA</strong> giàu năng lượng.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Flavin Adenine Dinucleotide (FAD)</strong></td>
+                        <td>Vitamin B2 (Riboflavin)</td>
+                        <td>Gắn chặt vào <strong>E3</strong></td>
+                        <td>Nhận 2 proton và 2 electron từ dihydrolipoamide khử của E2 để chuyển thành <strong>FADH₂</strong>, phục hồi cầu disulfide cho lipoamide.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nicotinamide Dinucleotide (NAD⁺)</strong></td>
+                        <td>Vitamin B3 (Niacin / PP)</td>
+                        <td>Đồng cơ chất hòa tan</td>
+                        <td>Nhận tương đương khử từ FADH₂ của E3 để tạo thành <strong>NADH + H⁺</strong> đi vào Chuỗi hô hấp ti thể sản sinh ATP.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 3: ĐỘNG HỌC & ĐIỀU HÒA PDC -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-sliders"></i> 3. Động Học 5 Bước Xúc Tác &amp; Điều Hòa Đa Tầng Của PDC</h2>
+
+            <!-- SVG 1: 5 BƯỚC XÚC TÁC PDC -->
+            <div class="diagram-card">
+                <svg viewBox="0 0 880 370" style="width: 100%; max-width: 860px; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <defs>
+                        <linearGradient id="e1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="#0284c7" stop-opacity="0.03"/>
+                        </linearGradient>
+                        <linearGradient id="e2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="#10b981" stop-opacity="0.03"/>
+                        </linearGradient>
+                        <linearGradient id="e3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03"/>
+                        </linearGradient>
+                        <marker id="arrPdc" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                            <path d="M0,1 L7,4 L0,7 Z" fill="#0284c7"/>
+                        </marker>
+                        <marker id="arrGreenPdc" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                            <path d="M0,1 L7,4 L0,7 Z" fill="#10b981"/>
+                        </marker>
+                    </defs>
+
+                    <text x="440" y="24" text-anchor="middle" font-size="15" font-weight="800" fill="#0284c7">CƠ CHẾ 5 BƯỚC DẪN KÊNH TRUNG GIAN QUA CÁNH TAY LIPOAMIDE TRONG PHỨC HỢP PDC</text>
+
+                    <!-- E1 Box -->
+                    <rect x="25" y="50" width="260" height="290" rx="12" fill="url(#e1Grad)" stroke="#0284c7" stroke-width="1.5"/>
+                    <text x="155" y="75" text-anchor="middle" font-size="13" font-weight="800" fill="#0284c7">TIỂU ĐƠN VỊ E1 (TPP)</text>
+                    <text x="155" y="93" text-anchor="middle" font-size="10" fill="#64748b">Pyruvat Dehydrogenase</text>
+
+                    <rect x="45" y="110" width="220" height="55" rx="6" fill="#ffffff" stroke="#0284c7"/>
+                    <text x="155" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">Bước 1: Khử Carboxyl</text>
+                    <text x="155" y="148" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Pyruvat + TPP ──&gt; HETDP + <tspan font-weight="700" fill="#ef4444">CO₂ ↑</tspan></text>
+
+                    <rect x="45" y="180" width="220" height="65" rx="6" fill="#ffffff" stroke="#0284c7"/>
+                    <text x="155" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">Bước 2: Oxy Hóa &amp; Nạp Acetyl</text>
+                    <text x="155" y="218" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">HETDP + Lipoamide(ox)</text>
+                    <text x="155" y="234" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">──&gt; Acetyl-dihydrolipoamide</text>
+
+                    <path d="M155,165 L155,180" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+
+                    <!-- E2 Box (Center) -->
+                    <rect x="310" y="50" width="260" height="290" rx="12" fill="url(#e2Grad)" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="440" y="75" text-anchor="middle" font-size="13" font-weight="800" fill="#10b981">TIỂU ĐƠN VỊ E2 (Lõi Trung Tâm)</text>
+                    <text x="440" y="93" text-anchor="middle" font-size="10" fill="#64748b">Dihydrolipoyl Transacetylase</text>
+
+                    <rect x="330" y="120" width="220" height="90" rx="8" fill="#ffffff" stroke="#10b981"/>
+                    <text x="440" y="142" text-anchor="middle" font-size="11" font-weight="800" fill="#10b981">Bước 3: Tạo Acetyl-CoA</text>
+                    <text x="440" y="162" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Acetyl-Lipoamide + CoA-SH</text>
+                    <text x="440" y="180" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">──&gt; ACETYL-CoA (Ra ngoài)</text>
+                    <text x="440" y="198" text-anchor="middle" font-size="10" fill="#64748b">+ Dihydrolipoamide (-SH, -SH)</text>
+
+                    <!-- E3 Box -->
+                    <rect x="595" y="50" width="260" height="290" rx="12" fill="url(#e3Grad)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <text x="725" y="75" text-anchor="middle" font-size="13" font-weight="800" fill="#8b5cf6">TIỂU ĐƠN VỊ E3 (FAD)</text>
+                    <text x="725" y="93" text-anchor="middle" font-size="10" fill="#64748b">Dihydrolipoyl Dehydrogenase</text>
+
+                    <rect x="615" y="110" width="220" height="60" rx="6" fill="#ffffff" stroke="#8b5cf6"/>
+                    <text x="725" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#8b5cf6">Bước 4: Tái Oxy Hóa Lipoamide</text>
+                    <text x="725" y="148" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Dihydrolipoamide + FAD</text>
+                    <text x="725" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#8b5cf6">──&gt; Lipoamide(ox) + FADH₂</text>
+
+                    <rect x="615" y="190" width="220" height="60" rx="6" fill="#ffffff" stroke="#8b5cf6"/>
+                    <text x="725" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="#8b5cf6">Bước 5: Tạo NADH</text>
+                    <text x="725" y="228" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">FADH₂ + NAD⁺</text>
+                    <text x="725" y="244" text-anchor="middle" font-size="11" font-weight="800" fill="#10b981">──&gt; FAD + NADH + H⁺</text>
+
+                    <path d="M725,170 L725,190" fill="none" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrPdc)"/>
+
+                    <!-- Swinging Arm Connectors -->
+                    <path d="M265,215 L330,165" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrGreenPdc)"/>
+                    <text x="290" y="180" font-size="9" font-weight="700" fill="#10b981">Cánh tay 1.4nm</text>
+
+                    <path d="M550,165 L615,140" fill="none" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#arrPdc)"/>
+                    <text x="560" y="145" font-size="9" font-weight="700" fill="#8b5cf6">Quay sang E3</text>
+
+                    <path d="M615,160 L440,290 L200,290 L200,245" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrGreenPdc)"/>
+                    <text x="360" y="305" font-size="10" font-weight="700" fill="#10b981">Lipoamide(ox) quay trở lại E1 nạp chu kỳ mới</text>
+                </svg>
+                <div class="diagram-caption">Hình 1: Động học phân tử 5 bước phản ứng chuyển giao cơ chất qua cánh tay Lipoamide swinging arm của Phức hợp PDC.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-code-fork"></i> 3.1. Cơ Chế Điều Hòa Hai Tầng Của PDC</h3>
+            
+            <!-- SVG 2: ĐIỀU HÒA PDK / PDP -->
+            <div class="diagram-card">
+                <svg viewBox="0 0 880 300" style="width: 100%; max-width: 860px; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <defs>
+                        <marker id="arrRedPdc" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                            <path d="M0,1 L7,4 L0,7 Z" fill="#ef4444"/>
+                        </marker>
+                    </defs>
+
+                    <text x="440" y="24" text-anchor="middle" font-size="15" font-weight="800" fill="#0284c7">CƠ CHẾ ĐIỀU HÒA ĐỒNG HÓA TRỊ THUẬN NGHỊCH CỦA PDC QUA TRỤC PDK / PDP</text>
+
+                    <!-- Active Form Box -->
+                    <rect x="50" y="90" width="250" height="120" rx="14" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+                    <text x="175" y="125" text-anchor="middle" font-size="13" font-weight="800" fill="#15803d">PDC DẠNG HOẠT ĐỘNG</text>
+                    <text x="175" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#15803d">(E1 Khử Phosphate - Tự do)</text>
+                    <text x="175" y="175" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Chuyển Pyruvate → Acetyl-CoA cực mạnh</text>
+
+                    <!-- Inactive Form Box -->
+                    <rect x="580" y="90" width="250" height="120" rx="14" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+                    <text x="705" y="125" text-anchor="middle" font-size="13" font-weight="800" fill="#b91c1c">PDC DẠNG BẤT HOẠT</text>
+                    <text x="705" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#b91c1c">(E1 Gắn Gốc Phosphate - P)</text>
+                    <text x="705" y="175" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Khóa hoàn toàn con đường ti thể</text>
+
+                    <!-- Top Curve: PDK (Inactivation) -->
+                    <path d="M300,120 Q440,50 580,120" fill="none" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrRedPdc)"/>
+                    <rect x="360" y="45" width="160" height="40" rx="6" fill="#ffffff" stroke="#ef4444"/>
+                    <text x="440" y="62" text-anchor="middle" font-size="11" font-weight="800" fill="#ef4444">PDK (Kinase) + ATP</text>
+                    <text x="440" y="78" text-anchor="middle" font-size="9" fill="#64748b">Kích hoạt: NADH, Acetyl-CoA, ATP</text>
+
+                    <!-- Bottom Curve: PDP (Activation) -->
+                    <path d="M580,180 Q440,250 300,180" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrGreenPdc)"/>
+                    <rect x="360" y="215" width="160" height="40" rx="6" fill="#ffffff" stroke="#10b981"/>
+                    <text x="440" y="232" text-anchor="middle" font-size="11" font-weight="800" fill="#15803d">PDP (Phosphatase) + H₂O</text>
+                    <text x="440" y="248" text-anchor="middle" font-size="9" fill="#64748b">Kích hoạt: Ca²⁺, Mg²⁺, Insulin</text>
+                </svg>
+                <div class="diagram-caption">Hình 2: Trục điều hòa đồng hóa trị thuận nghịch của PDC – Pyruvat Dehydrogenase Kinase (PDK) và Phosphatase (PDP).</div>
+            </div>
+
+            <ul class="step-list">
+                <li><strong>Điều hòa dị lập thể:</strong>
+                    <ul>
+                        <li><em>Ức chế cạnh tranh bởi sản phẩm:</em> <strong>Acetyl-CoA</strong> ức chế trực tiếp E2, <strong>NADH</strong> ức chế trực tiếp E3. Tế bào giàu ATP và acid béo mạch dài cũng ức chế PDC để tiết kiệm glucose.</li>
+                        <li><em>Kích hoạt:</em> Tích lũy <strong>ADP, AMP, NAD⁺ và CoA-SH</strong> (trạng thái cạn kiệt năng lượng) kích hoạt mạnh mẽ PDC.</li>
+                    </ul>
+                </li>
+                <li><strong>Điều hòa biến đổi đồng hóa trị:</strong>
+                    <ul>
+                        <li><strong>PDK (Kinase):</strong> Gắn phosphate vào gốc Serine của E1 làm <strong>bất hoạt hoàn toàn PDC</strong>. PDK được hoạt hóa bởi NADH, Acetyl-CoA và ATP; bị ức chế bởi Pyruvate, ADP và thuốc <strong>Dichloroacetate (DCA)</strong>.</li>
+                        <li><strong>PDP (Phosphatase):</strong> Thủy phân gốc phosphate giúp <strong>tái hoạt hóa PDC</strong>. PDP được kích hoạt mạnh mẽ bởi <strong>Ca²⁺</strong> (tín hiệu co cơ giải phóng năng lượng tức thời) và <strong>Insulin</strong> (ở mô mỡ chuyển glucose thành acetyl-CoA để tích mỡ).</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- SECTION 4: TỔNG QUAN & NĂNG LƯỢNG KREBS -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-circle-notch"></i> 4. Tổng Quan Chu Trình Krebs &amp; Cân Bằng Năng Lượng (10 ATP)</h2>
+            <p class="section-text">
+                Chu trình Acid Citric (Tricarboxylic Acid Cycle - TCA / Chu trình Krebs) là trung tâm giao thoa chuyển hóa hiếu khí của toàn bộ sinh giới, diễn ra hoàn toàn bên trong <strong>chất nền ti thể</strong>.
+            </p>
+
+            <div class="reaction-box">
+                <div style="margin-bottom: 0.4rem;"><strong>Phương trình tổng quát của 1 vòng Chu trình Krebs:</strong></div>
+                <code>Acetyl-CoA + 3 NAD⁺ + FAD + GDP + Pᵢ + 2 H₂O ──&gt; CoA-SH + 2 CO₂ + 3 NADH + FADH₂ + GTP + 2 H⁺</code>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-calculator"></i> 4.1. Bảng Cân Bằng Năng Lượng Hóa Học (10 ATP / 1 Acetyl-CoA)</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Sản Phẩm Khử / Năng Lượng</th>
+                        <th style="width: 35%;">Phản Ứng Phát Sinh</th>
+                        <th>Năng Lượng ATP Tương Đương (P/O ratio)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>3 phân tử NADH</strong></td>
+                        <td>Isocitrat DH (Pư 3), α-KGDH (Pư 4), Malat DH (Pư 8)</td>
+                        <td>3 × 2.5 ATP = <strong>7.5 ATP</strong> (Chuỗi hô hấp Complex I → IV)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1 phân tử FADH₂ (QH₂)</strong></td>
+                        <td>Succinat DH (Phản ứng 6 / Complex II)</td>
+                        <td>1 × 1.5 ATP = <strong>1.5 ATP</strong> (Chuỗi hô hấp Complex II → IV)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1 phân tử GTP (hoặc ATP)</strong></td>
+                        <td>Succinyl-CoA Synthetase (Phản ứng 5)</td>
+                        <td>Phosphoryl hóa mức cơ chất trực tiếp = <strong>1.0 ATP</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong style="color: var(--color-primary, #0284c7); font-size: 1.05rem;">TỔNG CỘNG NĂNG LƯỢNG CHO 1 VÒNG KREBS:</strong></td>
+                        <td><strong style="color: #10b981; font-size: 1.15rem;">10.0 ATP</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="section-text">
+                <em>*Lưu ý: Khi tính toán thoái hóa hiếu khí hoàn toàn 1 phân tử Glucose (tạo 2 Pyruvate → 2 Acetyl-CoA), 2 vòng quay chu trình Krebs cung cấp trực tiếp <strong>20 ATP</strong> năng lượng sinh học.</em>
+            </p>
+        </section>
+
+        <!-- SECTION 5: CHI TIẾT 8 PHẢN ỨNG -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-arrows-spin"></i> 5. Chi Tiết 8 Phản Ứng Enzyme Của Chu Trình Krebs</h2>
+
+            <!-- SVG 3: VÒNG TRÒN 8 PHẢN ỨNG KREBS -->
+            <div class="diagram-card">
+                <svg viewBox="0 0 880 540" style="width: 100%; max-width: 860px; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <defs>
+                        <linearGradient id="krebsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.08"/>
+                            <stop offset="100%" stop-color="#10b981" stop-opacity="0.08"/>
+                        </linearGradient>
+                    </defs>
+
+                    <text x="440" y="24" text-anchor="middle" font-size="15" font-weight="800" fill="#0284c7">SƠ ĐỒ 8 PHẢN ỨNG PHÂN TỬ VÀ DÒNG NĂNG LƯỢNG CỦA CHU TRÌNH ACID CITRIC</text>
+
+                    <!-- Center Info Circle -->
+                    <circle cx="440" cy="275" r="110" fill="url(#krebsBg)" stroke="#0284c7" stroke-width="2"/>
+                    <text x="440" y="255" text-anchor="middle" font-size="14" font-weight="800" fill="#0284c7">CHU TRÌNH KREBS</text>
+                    <text x="440" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">1 Vòng = 10 ATP</text>
+                    <text x="440" y="295" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">2 CO₂ • 3 NADH • 1 FADH₂ • 1 GTP</text>
+                    <text x="440" y="312" text-anchor="middle" font-size="10" fill="#64748b">(Chất nền Ti thể)</text>
+
+                    <!-- Pư 1: Citrate Synthase (Top Right) -->
+                    <rect x="520" y="55" width="220" height="60" rx="8" fill="#ffffff" stroke="#0284c7"/>
+                    <text x="630" y="75" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">1. Citrat Synthase</text>
+                    <text x="630" y="92" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">OAA (4C) + Acetyl-CoA (2C)</text>
+                    <text x="630" y="106" text-anchor="middle" font-size="10" font-weight="700" fill="#10b981">──&gt; Citrat (6C)  [ΔG°' = -32.2]</text>
+
+                    <!-- Pư 2: Aconitase (Right) -->
+                    <rect x="640" y="160" width="215" height="55" rx="8" fill="#ffffff" stroke="#0284c7"/>
+                    <text x="747" y="180" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">2. Aconitase ([4Fe-4S])</text>
+                    <text x="747" y="198" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Citrat ⇄ cis-Aconitat ⇄ Isocitrat</text>
+
+                    <!-- Pư 3: IDH (Bottom Right) -->
+                    <rect x="560" y="260" width="225" height="65" rx="8" fill="#dbeafe" stroke="#0284c7" stroke-width="2"/>
+                    <text x="672" y="280" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">3. Isocitrat Dehydrogenase</text>
+                    <text x="672" y="298" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Isocitrat ──&gt; α-Ketoglutarate (5C)</text>
+                    <text x="672" y="314" text-anchor="middle" font-size="10" font-weight="800" fill="#dc2626">+ CO₂ ↑ + NADH (2.5 ATP)</text>
+
+                    <!-- Pư 4: alpha-KGDH (Bottom Center) -->
+                    <rect x="460" y="440" width="230" height="65" rx="8" fill="#dbeafe" stroke="#0284c7" stroke-width="2"/>
+                    <text x="575" y="460" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">4. α-Ketoglutarate DH (TPP/Lip)</text>
+                    <text x="575" y="478" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">α-KG + CoA ──&gt; Succinyl-CoA (4C)</text>
+                    <text x="575" y="494" text-anchor="middle" font-size="10" font-weight="800" fill="#dc2626">+ CO₂ ↑ + NADH (2.5 ATP)</text>
+
+                    <!-- Pư 5: Succinyl-CoA Synthetase (Bottom Left) -->
+                    <rect x="180" y="440" width="230" height="65" rx="8" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+                    <text x="295" y="460" text-anchor="middle" font-size="11" font-weight="800" fill="#15803d">5. Succinyl-CoA Synthetase</text>
+                    <text x="295" y="478" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Succinyl-CoA ⇄ Succinat (4C)</text>
+                    <text x="295" y="494" text-anchor="middle" font-size="10" font-weight="800" fill="#15803d">+ GTP/ATP (1.0 ATP trực tiếp)</text>
+
+                    <!-- Pư 6: SDH / Complex II (Left) -->
+                    <rect x="70" y="260" width="225" height="65" rx="8" fill="#ffffff" stroke="#0284c7"/>
+                    <text x="182" y="280" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">6. Succinat DH (Complex II)</text>
+                    <text x="182" y="298" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Succinat ⇄ Fumarate (trans)</text>
+                    <text x="182" y="314" text-anchor="middle" font-size="10" font-weight="800" fill="#8b5cf6">+ FADH₂ / QH₂ (1.5 ATP)</text>
+
+                    <!-- Pư 7: Fumarase (Top Left) -->
+                    <rect x="90" y="160" width="200" height="55" rx="8" fill="#ffffff" stroke="#0284c7"/>
+                    <text x="190" y="180" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">7. Fumarase (Cộng nước trans)</text>
+                    <text x="190" y="198" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Fumarate + H₂O ⇄ L-Malate</text>
+
+                    <!-- Pư 8: MDH (Top Center) -->
+                    <rect x="230" y="55" width="220" height="60" rx="8" fill="#ffffff" stroke="#0284c7"/>
+                    <text x="340" y="75" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">8. Malat Dehydrogenase</text>
+                    <text x="340" y="92" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">L-Malate + NAD⁺ ⇄ Oxaloacetat</text>
+                    <text x="340" y="106" text-anchor="middle" font-size="10" font-weight="800" fill="#0284c7">+ NADH (2.5 ATP) [ΔG°'=+29.7]</text>
+
+                    <!-- Connecting arrows clockwise -->
+                    <path d="M450,85 L520,85" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+                    <path d="M680,115 L720,160" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+                    <path d="M720,215 L680,260" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+                    <path d="M630,325 L600,440" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+                    <path d="M460,470 L410,470" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+                    <path d="M240,440 L210,325" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+                    <path d="M180,260 L180,215" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+                    <path d="M220,160 L270,115" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrPdc)"/>
+                </svg>
+                <div class="diagram-caption">Hình 3: Sơ đồ toàn cảnh 8 phản ứng enzyme của Chu trình Acid Citric (Krebs) tại chất nền ti thể.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-list-check"></i> 5.1. Cơ Chế Xúc Tác Chi Tiết Từng Phản Ứng</h3>
+            <div class="krebs-reaction-list">
+                <!-- Reaction 1 -->
+                <div class="krebs-reaction-card" style="--step-accent: #0284c7; --badge-bg: rgba(2, 132, 199, 0.1); --badge-color: #0284c7; --badge-border: rgba(2, 132, 199, 0.25);">
+                    <div class="krebs-reaction-header">
+                        <div class="krebs-reaction-title">
+                            <span class="krebs-reaction-num">1</span>
+                            Ngưng Tụ Tạo Citrat (Citrat Synthase)
+                        </div>
+                        <span class="krebs-reaction-badge"><i class="fa-solid fa-arrow-right"></i> Một chiều • ΔG°' = -32.2 kJ/mol (Kéo chu trình)</span>
+                    </div>
+                    <p class="krebs-reaction-body">
+                        Cơ chế <em>Induced Fit</em> tuần tự bắt buộc: Oxaloacetat gắn trước làm thay đổi cấu hình mở vị trí cho Acetyl-CoA. Phản ứng tạo chất trung gian enolate và <em>Citryl-CoA</em>, sau đó thủy phân giải phóng <strong>Citrat (6C)</strong> và <strong>CoA-SH</strong>. Năng lượng giải phóng từ liên kết thioester kéo toàn bộ chu trình Krebs vận hành liên tục.
+                    </p>
+                </div>
+
+                <!-- Reaction 2 -->
+                <div class="krebs-reaction-card" style="--step-accent: #06b6d4; --badge-bg: rgba(6, 182, 212, 0.1); --badge-color: #06b6d4; --badge-border: rgba(6, 182, 212, 0.25);">
+                    <div class="krebs-reaction-header">
+                        <div class="krebs-reaction-title">
+                            <span class="krebs-reaction-num" style="background: #06b6d4;">2</span>
+                            Đồng Phân Hóa Thành Isocitrat (Aconitase)
+                        </div>
+                        <span class="krebs-reaction-badge"><i class="fa-solid fa-arrows-rotate"></i> Thuận nghịch • Trung gian cis-Aconitat • Cụm [4Fe-4S]</span>
+                    </div>
+                    <p class="krebs-reaction-body">
+                        Khử nước tạo trung gian liên kết đôi <em>cis-Aconitat</em> rồi tái hydrat hóa lập thể để chuyển nhóm –OH sang vị trí C-2 tạo <strong>Isocitrat</strong>. Thuyết 3 điểm Ogston giải thích tính lập thể phân biệt 2 nhánh đối xứng của Citrate. Enzyme chứa cụm [4Fe-4S]; khi tế bào thiếu sắt, enzyme mất Fe chuyển thành <em>apo-aconitase (IRP-1)</em> để điều hòa biểu hiện thụ thể Transferrin và Ferritin.
+                    </p>
+                </div>
+
+                <!-- Reaction 3 -->
+                <div class="krebs-reaction-card" style="--step-accent: #ef4444; --badge-bg: rgba(239, 68, 68, 0.1); --badge-color: #ef4444; --badge-border: rgba(239, 68, 68, 0.25);">
+                    <div class="krebs-reaction-header">
+                        <div class="krebs-reaction-title">
+                            <span class="krebs-reaction-num" style="background: #ef4444;">3</span>
+                            Khử Carboxyl Lần 1 (Isocitrat Dehydrogenase - IDH)
+                        </div>
+                        <span class="krebs-reaction-badge"><i class="fa-solid fa-gauge-high"></i> Điểm kiểm soát tốc độ chính • Tạo CO₂ ↑ &amp; 1 NADH (2.5 ATP)</span>
+                    </div>
+                    <p class="krebs-reaction-body">
+                        Oxy hóa khử hydro Isocitrat tạo trung gian <em>Oxalosuccinate</em>, sau đó khử carboxyl giải phóng phân tử <strong>CO₂ đầu tiên</strong> và <strong>1 NADH</strong>, tạo thành <strong>α-Ketoglutarate (5C)</strong>. Phụ thuộc ion Mn²⁺ hoặc Mg²⁺. <strong>Đây là enzyme kiểm soát tốc độ chốt chính</strong> của toàn bộ chu trình Krebs.
+                    </p>
+                </div>
+
+                <!-- Reaction 4 -->
+                <div class="krebs-reaction-card" style="--step-accent: #f59e0b; --badge-bg: rgba(245, 158, 11, 0.1); --badge-color: #d97706; --badge-border: rgba(245, 158, 11, 0.25);">
+                    <div class="krebs-reaction-header">
+                        <div class="krebs-reaction-title">
+                            <span class="krebs-reaction-num" style="background: #f59e0b;">4</span>
+                            Khử Carboxyl Lần 2 (Phức Hợp α-Ketoglutarate Dehydrogenase)
+                        </div>
+                        <span class="krebs-reaction-badge"><i class="fa-solid fa-bolt"></i> Một chiều • Tạo CO₂ ↑ + 1 NADH + Succinyl-CoA (ΔG°' = -33.5 kJ/mol)</span>
+                    </div>
+                    <p class="krebs-reaction-body">
+                        Cấu trúc đa enzyme tương đồng phức hợp PDC, gồm E1 (TPP), E2 (Lipoamide) và E3 (FAD, dùng chung gen với PDC). Khử carboxyl giải phóng phân tử <strong>CO₂ thứ hai</strong>, <strong>1 NADH</strong> và gắn đồng cơ chất CoA-SH để tạo liên kết thioester giàu năng lượng <strong>Succinyl-CoA (4C)</strong>.
+                    </p>
+                </div>
+
+                <!-- Reaction 5 -->
+                <div class="krebs-reaction-card" style="--step-accent: #10b981; --badge-bg: rgba(16, 185, 129, 0.1); --badge-color: #059669; --badge-border: rgba(16, 185, 129, 0.25);">
+                    <div class="krebs-reaction-header">
+                        <div class="krebs-reaction-title">
+                            <span class="krebs-reaction-num" style="background: #10b981;">5</span>
+                            Phosphoryl Hóa Mức Cơ Chất (Succinyl-CoA Synthetase)
+                        </div>
+                        <span class="krebs-reaction-badge"><i class="fa-solid fa-coins"></i> Phosphoryl hóa mức cơ chất • Tạo 1 GTP / ATP trực tiếp</span>
+                    </div>
+                    <p class="krebs-reaction-body">
+                        Pi vô cơ tấn công vào liên kết thioester tạo trung gian <em>Succinyl phosphate</em>, chuyển nhóm phosphat giàu năng lượng sang gốc <strong>His 246</strong> tạo Phospho-histidine trên enzyme, sau đó nạp cho GDP (ở gan/thận) tạo <strong>GTP</strong> hoặc ADP (ở não/cơ) tạo <strong>ATP</strong>, giải phóng <strong>Succinat (4C)</strong>.
+                    </p>
+                </div>
+
+                <!-- Reaction 6 -->
+                <div class="krebs-reaction-card" style="--step-accent: #8b5cf6; --badge-bg: rgba(139, 92, 246, 0.1); --badge-color: #7c3aed; --badge-border: rgba(139, 92, 246, 0.25);">
+                    <div class="krebs-reaction-header">
+                        <div class="krebs-reaction-title">
+                            <span class="krebs-reaction-num" style="background: #8b5cf6;">6</span>
+                            Oxy Hóa Succinat (Succinat Dehydrogenase - SDH / Complex II)
+                        </div>
+                        <span class="krebs-reaction-badge"><i class="fa-solid fa-link"></i> Gắn màng trong ti thể (IMM) • Tạo 1 FADH₂ / QH₂ (1.5 ATP)</span>
+                    </div>
+                    <p class="krebs-reaction-body">
+                        Enzyme duy nhất gắn chặt vào màng trong ti thể (IMM), đồng thời là Phức hợp II của Chuỗi hô hấp tế bào. Tách 2 nguyên tử hydro tạo liên kết đôi dạng <em>trans</em> trong <strong>Fumarate</strong>, truyền electron qua nhóm prosthetic FAD cộng hóa trị và 3 cụm Fe-S sang Ubiquinone (Q &rarr; QH₂). Bị <strong>ức chế cạnh tranh kinh điển bởi Malonate</strong>.
+                    </p>
+                </div>
+
+                <!-- Reaction 7 -->
+                <div class="krebs-reaction-card" style="--step-accent: #0284c7; --badge-bg: rgba(2, 132, 199, 0.1); --badge-color: #0284c7; --badge-border: rgba(2, 132, 199, 0.25);">
+                    <div class="krebs-reaction-header">
+                        <div class="krebs-reaction-title">
+                            <span class="krebs-reaction-num">7</span>
+                            Hydrat Hóa Tạo L-Malate (Fumarase)
+                        </div>
+                        <span class="krebs-reaction-badge"><i class="fa-solid fa-droplet"></i> Thuận nghịch • Cộng nước trans lập thể đặc hiệu tuyệt đối</span>
+                    </div>
+                    <p class="krebs-reaction-body">
+                        Phản ứng cộng nước qua liên kết đôi trans của Fumarate diễn ra với tính đặc hiệu lập thể tuyệt đối: ion OH⁻ tấn công vào một phía và H⁺ tấn công từ phía đối diện, chỉ tạo ra duy nhất đồng phân dạng <strong>L-Malate</strong> (không tạo dạng D-malate và không tác dụng lên maleate dạng cis).
+                    </p>
+                </div>
+
+                <!-- Reaction 8 -->
+                <div class="krebs-reaction-card" style="--step-accent: #3b82f6; --badge-bg: rgba(59, 130, 246, 0.1); --badge-color: #2563eb; --badge-border: rgba(59, 130, 246, 0.25);">
+                    <div class="krebs-reaction-header">
+                        <div class="krebs-reaction-title">
+                            <span class="krebs-reaction-num" style="background: #3b82f6;">8</span>
+                            Tái Tạo Oxaloacetat (Malat Dehydrogenase - MDH)
+                        </div>
+                        <span class="krebs-reaction-badge"><i class="fa-solid fa-repeat"></i> Thuận nghịch • Tạo 1 NADH (2.5 ATP) • ΔG°' = +29.7 kJ/mol</span>
+                    </div>
+                    <p class="krebs-reaction-body">
+                        Oxy hóa nhóm rượu bậc hai của L-Malate thành nhóm carbonyl, tái tạo phân tử mồi <strong>Oxaloacetat (4C)</strong> và tạo phân tử <strong>NADH thứ ba</strong>. Dù có biến thiên năng lượng tự do chuẩn dương rất lớn (ΔG°' = +29.7 kJ/mol), phản ứng vẫn diễn ra thuận lợi in vivo nhờ <strong>sức kéo của Phản ứng 1</strong> (liên tục tiêu thụ Oxaloacetat xuống nồng độ cực thấp &lt; 10⁻⁶ M) và <strong>sức đẩy của Chuỗi hô hấp</strong> (liên tục tái oxy hóa NADH).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: MẠNG LƯỚI ĐIỀU HÒA -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-network-wired"></i> 6. Mạng Lưới Điều Hòa Tích Hợp Chu Trình Krebs</h2>
+            <p class="section-text">
+                Chu trình Krebs được điều hòa ở 2 mức độ nhằm đồng bộ hóa tốc độ dị hóa carbon với nhu cầu ATP thực tế:
+            </p>
+
+            <ul class="step-list">
+                <li><strong>1. Sự sẵn có của Coenzyme oxy hóa (NAD⁺ &amp; Q):</strong> Là yếu tố kiểm soát cơ bản nhất. Khi tế bào thiếu oxy, tỷ lệ [NADH]/[NAD⁺] và [QH₂]/[Q] tăng vọt làm tê liệt tức thì 4 phản ứng khử hydro của chu trình.</li>
+                <li><strong>2. Kiểm soát tại 3 điểm phản ứng một chiều tỏa nhiệt (ΔG &lt;&lt; 0):</strong></li>
+            </ul>
+
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 28%;">Enzyme Điểm Chốt</th>
+                        <th style="width: 32%;">Chất Kích Hoạt Dị Lập Thể (+)</th>
+                        <th>Chất Ức Chế Dị Lập Thể (-) &amp; Phản Hồi Âm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Citrat Synthase</strong> (Phản ứng 1)</td>
+                        <td>Acetyl-CoA, Oxaloacetat (Nồng độ cơ chất)</td>
+                        <td><strong>ATP, NADH, Succinyl-CoA, Citrat</strong> (Ức chế cạnh tranh &amp; phản hồi âm)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Isocitrat Dehydrogenase (IDH)</strong> (Phản ứng 3 - Chốt chính)</td>
+                        <td><strong>ADP</strong> (Tín hiệu thiếu năng lượng), <strong>Ca²⁺</strong> (Tín hiệu co cơ)</td>
+                        <td><strong>ATP, NADH</strong> (Khi ức chế IDH, Citrate ứ đọng tràn ra bào tương tổng hợp mỡ và ức chế PFK-1)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>α-Ketoglutarate Dehydrogenase</strong> (Phản ứng 4)</td>
+                        <td><strong>Ca²⁺</strong> (Gắn vào E1 làm giảm Km)</td>
+                        <td><strong>Succinyl-CoA, NADH, GTP</strong> (Không chịu điều hòa bằng phosphoryl hóa)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 7: LƯỠNG HÓA & BÙ ĐẮP ANAPLEROSIS -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-shuffle"></i> 7. Bản Chất Lưỡng Hóa (Amphibolic) &amp; Các Phản Ứng Bù Đắp (Anaplerosis)</h2>
+            <p class="section-text">
+                Chu trình Krebs là một con đường <strong>lưỡng hóa (amphibolic)</strong> hoàn hảo, vừa oxy hóa carbon lấy năng lượng (dị hóa), vừa cung cấp các khung carbon làm tiền chất cho các con đường sinh tổng hợp lớn (đồng hóa):
+            </p>
+
+            <!-- SVG 4: ANAPLEROTIC & CATAPLEROTIC NETWORK -->
+            <div class="diagram-card">
+                <svg viewBox="0 0 880 430" style="width: 100%; max-width: 860px; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <defs>
+                        <marker id="arrCat" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                            <path d="M0,1 L7,4 L0,7 Z" fill="#ef4444"/>
+                        </marker>
+                        <marker id="arrAna" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                            <path d="M0,1 L7,4 L0,7 Z" fill="#10b981"/>
+                        </marker>
+                    </defs>
+
+                    <text x="440" y="24" text-anchor="middle" font-size="15" font-weight="800" fill="#0284c7">MẠNG LƯỚI LƯỠNG HÓA: PHẢN ỨNG TIÊU HAO (CATAPLEROTIC) &amp; BÙ ĐẮP (ANAPLEROTIC)</text>
+
+                    <!-- Central TCA Circle -->
+                    <circle cx="440" cy="225" r="85" fill="#f0fdf4" stroke="#0284c7" stroke-width="2"/>
+                    <text x="440" y="220" text-anchor="middle" font-size="13" font-weight="800" fill="#0284c7">VÒNG QUAY</text>
+                    <text x="440" y="240" text-anchor="middle" font-size="13" font-weight="800" fill="#0284c7">KREBS (TCA)</text>
+
+                    <!-- Top: Gluconeogenesis & Aspartate -->
+                    <rect x="330" y="45" width="220" height="40" rx="6" fill="#fee2e2" stroke="#ef4444"/>
+                    <text x="440" y="70" text-anchor="middle" font-size="11" font-weight="800" fill="#b91c1c">TÂN TẠO ĐƯỜNG (Glucose)</text>
+                    <path d="M440,140 L440,85" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrCat)"/>
+                    <text x="450" y="115" font-size="10" fill="#ef4444">Oxaloacetat (PEPCK)</text>
+
+                    <!-- Right Top: Fatty Acids & Cholesterol -->
+                    <rect x="650" y="100" width="210" height="45" rx="6" fill="#fee2e2" stroke="#ef4444"/>
+                    <text x="755" y="127" text-anchor="middle" font-size="11" font-weight="800" fill="#b91c1c">ACID BÉO &amp; CHOLESTEROL</text>
+                    <path d="M505,175 L650,130" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrCat)"/>
+                    <text x="565" y="145" font-size="10" fill="#ef4444">Citrat (ATP-Citrate Lyase)</text>
+
+                    <!-- Right Bottom: Glutamate & Amino Acids -->
+                    <rect x="650" y="270" width="210" height="45" rx="6" fill="#fee2e2" stroke="#ef4444"/>
+                    <text x="755" y="297" text-anchor="middle" font-size="11" font-weight="800" fill="#b91c1c">GLUTAMATE, GABA, PURINES</text>
+                    <path d="M505,275 L650,290" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrCat)"/>
+                    <text x="560" y="275" font-size="10" fill="#ef4444">α-Ketoglutarate</text>
+
+                    <!-- Bottom: Porphyrin (Heme) -->
+                    <rect x="330" y="360" width="220" height="45" rx="6" fill="#fee2e2" stroke="#ef4444"/>
+                    <text x="440" y="387" text-anchor="middle" font-size="11" font-weight="800" fill="#b91c1c">PORPHYRIN (Nhân Heme - Hb)</text>
+                    <path d="M440,310 L440,360" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrCat)"/>
+                    <text x="450" y="340" font-size="10" fill="#ef4444">Succinyl-CoA (ALA Synthase)</text>
+
+                    <!-- Left Top: Pyruvate Carboxylase (Anaplerotic 1) -->
+                    <rect x="25" y="70" width="245" height="55" rx="6" fill="#dcfce7" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="147" y="92" text-anchor="middle" font-size="11" font-weight="800" fill="#15803d">★ Pyruvat Carboxylase (Biotin/B7)</text>
+                    <text x="147" y="112" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Pyruvat + CO₂ + ATP ──&gt; Oxaloacetat</text>
+                    <path d="M270,105 L375,175" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrAna)"/>
+
+                    <!-- Left Center: Amino acid branch (Anaplerotic 2) -->
+                    <rect x="25" y="200" width="245" height="55" rx="6" fill="#dcfce7" stroke="#10b981"/>
+                    <text x="147" y="222" text-anchor="middle" font-size="11" font-weight="800" fill="#15803d">Thoái Hóa Acid Amin Chuỗi Nhánh</text>
+                    <text x="147" y="240" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Val, Ile, Met, Thr ──(B12)──&gt; Succinyl-CoA</text>
+                    <path d="M270,240 L375,275" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrAna)"/>
+
+                    <!-- Left Bottom: GDH / Transamination (Anaplerotic 3) -->
+                    <rect x="25" y="325" width="245" height="55" rx="6" fill="#dcfce7" stroke="#10b981"/>
+                    <text x="147" y="347" text-anchor="middle" font-size="11" font-weight="800" fill="#15803d">Glutamat Dehydrogenase / AST</text>
+                    <text x="147" y="365" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">Glutamat ⇄ α-KG • Aspartat ⇄ OAA</text>
+                    <path d="M270,345 L385,300" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrAna)"/>
+                </svg>
+                <div class="diagram-caption">Hình 4: Bản đồ tích hợp các con đường tiêu hao (mũi tên đỏ) và con đường bù đắp Anaplerosis (mũi tên xanh) duy trì chu trình.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-plus"></i> 7.1. Phản Ứng Bù Đắp Anaplerotic Trung Tâm: Pyruvat Carboxylase</h3>
+            <div class="reaction-box">
+                <code>Pyruvat + HCO₃⁻ + ATP ──(Pyruvat Carboxylase / Biotin / Acetyl-CoA)──&gt; Oxaloacetat + ADP + Pᵢ</code>
+            </div>
+            <p class="section-text">
+                Enzyme <strong>Pyruvate Carboxylase (PC)</strong> phụ thuộc coenzyme <strong>Biotin (Vitamin B7)</strong> là phản ứng bù đắp quan trọng nhất ở động vật có vú. Enzyme này <strong>bắt buộc phải có chất kích hoạt dị lập thể dương tính là Acetyl-CoA</strong>. Khi tế bào tích lũy nhiều Acetyl-CoA (do thoái hóa acid béo mạnh hoặc do thiếu Oxaloacetate để ngưng tụ), Acetyl-CoA sẽ khóa PDC và kích hoạt cực mạnh Pyruvate Carboxylase để biến pyruvat thành oxaloacetat, tái thiết lập tốc độ tối đa cho chu trình Krebs.
+            </p>
+        </section>
+
+        <!-- SECTION 8: ONCOMETABOLITES & BILAN -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-dna"></i> 8. Bệnh Học Phân Tử Oncometabolites, Độc Chất &amp; Bilan Lâm Sàng</h2>
+
+            <!-- SVG 5: ONCOMETABOLITES VÀ UNG THƯ -->
+            <div class="diagram-card">
+                <svg viewBox="0 0 880 340" style="width: 100%; max-width: 860px; height: auto; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    <defs>
+                        <linearGradient id="oncoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ef4444" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="#ef4444" stop-opacity="0.03"/>
+                        </linearGradient>
+                        <linearGradient id="oncoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.03"/>
+                        </linearGradient>
+                    </defs>
+
+                    <text x="440" y="24" text-anchor="middle" font-size="15" font-weight="800" fill="#0284c7">CƠ CHẾ PHÂN TỬ ONCOMETABOLITES GÂY UNG THƯ TỪ CÁC ĐỘT BIẾN CHU TRÌNH KREBS</text>
+
+                    <!-- Pathway 1: SDH / FH Mutation -->
+                    <rect x="25" y="45" width="395" height="275" rx="12" fill="url(#oncoGrad1)" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="222" y="70" text-anchor="middle" font-size="12" font-weight="800" fill="#ef4444">1. ĐỘT BIẾN SDH &amp; FUMARASE (FH)</text>
+                    <text x="222" y="90" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text, #0f172a)">Tích tụ SUCCINATE &amp; FUMARATE</text>
+
+                    <rect x="45" y="105" width="355" height="48" rx="6" fill="#ffffff" stroke="#ef4444"/>
+                    <text x="222" y="125" text-anchor="middle" font-size="10" font-weight="700" fill="#ef4444">Ức chế cạnh tranh HIF Prolyl Hydroxylase (PHD)</text>
+                    <text x="222" y="142" text-anchor="middle" font-size="10" fill="#64748b">(PHD không thể hydroxyl hóa HIF-1α)</text>
+
+                    <rect x="45" y="165" width="355" height="50" rx="6" fill="#fee2e2" stroke="#ef4444"/>
+                    <text x="222" y="185" text-anchor="middle" font-size="11" font-weight="800" fill="#b91c1c">Ổn định hóa bền vững Yếu tố HIF-1α</text>
+                    <text x="222" y="202" text-anchor="middle" font-size="10" fill="#b91c1c">Phản ứng Giả Thiếu Oxy (Pseudohypoxia)</text>
+
+                    <rect x="45" y="225" width="355" height="80" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+                    <text x="222" y="245" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">Kích hoạt VEGF (tăng sinh mạch) + GLUT1 (đường phân)</text>
+                    <text x="222" y="265" text-anchor="middle" font-size="11" font-weight="800" fill="#ef4444">──&gt; U TỦY THƯỢNG THẬN (Pheochromocytoma)</text>
+                    <text x="222" y="285" text-anchor="middle" font-size="11" font-weight="800" fill="#ef4444">──&gt; HỘI CHỨNG HLRCC (U cơ trơn &amp; Ung thư thận)</text>
+
+                    <!-- Pathway 2: IDH1 / IDH2 Mutation -->
+                    <rect x="460" y="45" width="395" height="275" rx="12" fill="url(#oncoGrad2)" stroke="#8b5cf6" stroke-width="1.5"/>
+                    <text x="657" y="70" text-anchor="middle" font-size="12" font-weight="800" fill="#8b5cf6">2. ĐỘT BIẾN ĐIỂM IDH1 (R132) &amp; IDH2 (R172)</text>
+                    <text x="657" y="90" text-anchor="middle" font-size="11" font-weight="700" fill="#8b5cf6">Chức năng mới (Gain-of-Function): Tiêu tốn NADPH</text>
+
+                    <rect x="480" y="105" width="355" height="48" rx="6" fill="#ffffff" stroke="#8b5cf6"/>
+                    <text x="657" y="125" text-anchor="middle" font-size="11" font-weight="800" fill="#8b5cf6">Sinh Oncometabolite: D-2-Hydroxyglutarate (2-HG)</text>
+                    <text x="657" y="142" text-anchor="middle" font-size="10" fill="#64748b">α-Ketoglutarate + NADPH ──(IDH đột biến)──&gt; 2-HG</text>
+
+                    <rect x="480" y="165" width="355" height="50" rx="6" fill="#f3e8ff" stroke="#8b5cf6"/>
+                    <text x="657" y="185" text-anchor="middle" font-size="11" font-weight="800" fill="#6b21a8">Ức chế TET DNA Demethylase &amp; Jmjd</text>
+                    <text x="657" y="202" text-anchor="middle" font-size="10" fill="#6b21a8">Siêu methyl hóa DNA diện rộng (CIMP)</text>
+
+                    <rect x="480" y="225" width="355" height="80" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+                    <text x="657" y="245" text-anchor="middle" font-size="10" font-weight="700" fill="var(--color-text, #0f172a)">Khóa tế bào ở trạng thái tiền thân chưa biệt hóa</text>
+                    <text x="657" y="265" text-anchor="middle" font-size="11" font-weight="800" fill="#8b5cf6">──&gt; U THẦN KINH ĐỆM NÃO (Glioma / Glioblastoma &gt; 70%)</text>
+                    <text x="657" y="285" text-anchor="middle" font-size="11" font-weight="800" fill="#8b5cf6">──&gt; BẠCH CẦU CẤP DÒNG TỦY (AML)</text>
+                </svg>
+                <div class="diagram-caption">Hình 5: Cơ chế phân tử của các Oncometabolite sinh ra từ đột biến gen chu trình Krebs gây biến đổi biểu sinh và phát sinh ung thư.</div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-stethoscope"></i> 8.1. Các Hội Chứng Lâm Sàng Điển Hình</h3>
+
+            <div class="danger-box">
+                <strong>1. Thiếu Hụt Thiamine (Vitamin B1) &amp; Bệnh Beriberi / Wernicke-Korsakoff:</strong>
+                <p style="margin: 0.25rem 0 0.5rem 0; line-height: 1.65;">
+                    - <em>Cơ chế:</em> Thiếu TPP làm tê liệt đồng thời PDC và α-KGDH, chặn đứng thoái hóa hiếu khí carbohydrate. Pyruvat ứ đọng bị đẩy sang phản ứng khử tạo <strong>Lactate gây toan lactic nặng</strong>.<br>
+                    - <em>Biểu hiện:</em> <strong>Beriberi thể khô</strong> (tổn thương nơ-ron đối xứng, yếu liệt chi), <strong>Beriberi thể ướt</strong> (giãn mạch, suy tim cung lượng cao, phù), và <strong>Hội chứng Wernicke-Korsakoff</strong> ở người nghiện rượu (tam chứng: lú lẫn, mất phối hợp vận động, liệt cơ vận nhãn).
+                </p>
+            </div>
+
+            <div class="danger-box">
+                <strong>2. Thiếu Hụt PDC Bẩm Sinh &amp; Hội Chứng Leigh (Hoại Tử Thần Kinh Bán Cấp):</strong>
+                <p style="margin: 0.25rem 0 0.5rem 0; line-height: 1.65;">
+                    - <em>Cơ chế:</em> Đột biến gen <em>E1-α</em> (liên kết NST X) hoặc tiểu đơn vị <em>E3</em> (dùng chung cho PDC, α-KGDH, BCKAD).<br>
+                    - <em>Biểu hiện:</em> Trẻ sơ sinh toan lactic nặng tái diễn, chậm phát triển trí tuệ, co giật. Hình ảnh MRI sọ não cho thấy <strong>tổn thương hoại tử dạng bọt biển đối xứng ở thân não và hạch nền</strong>. Tiên lượng tử vong sớm.<br>
+                    - <em>Điều trị:</em> Chế độ ăn sinh ceton (Ketogenic diet - giàu chất béo để cung cấp acetyl-CoA bỏ qua PDC) kết hợp thuốc ức chế PDK là <strong>Dichloroacetate (DCA)</strong>.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <strong>3. Độc Tính Thạch Tín (Arsenite As³⁺):</strong>
+                <p style="margin: 0.25rem 0 0.5rem 0; line-height: 1.65;">
+                    Arsenite tạo phức chelate bidentate bền vững với 2 nhóm -SH của <strong>Dihydrolipoamide trên E2</strong>, khóa vĩnh viễn PDC và α-KGDH, ngưng trệ hoàn toàn chu trình Krebs gây cạn kiệt ATP và tử vong cấp tính. Điều trị bằng chất tạo phức chelate cứu hộ: <strong>BAL (Dimercaprol)</strong>.
+                </p>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-vials"></i> 8.2. Bảng Bilan Xét Nghiệm Chẩn Đoán &amp; Theo Dõi</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 22%;">Chỉ Số Xét Nghiệm</th>
+                        <th style="width: 25%;">Khoảng Tham Chiếu</th>
+                        <th>Ý Nghĩa Biến Động &amp; Biện Luận Lâm Sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Lactate Máu Động Mạch</strong></td>
+                        <td>0.5 – 2.2 mmol/L</td>
+                        <td>Tăng vọt &gt; 4.0 – 5.0 mmol/L kèm toan chuyển hóa Anion Gap cao trong thiếu hụt PDC, thiếu Thiamine (B1), hội chứng Leigh, sốc nhiễm khuẩn và ngộ độc ức chế chuỗi hô hấp.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pyruvate Máu</strong></td>
+                        <td>0.03 – 0.10 mmol/L</td>
+                        <td>Tăng cao đồng thời trong tắc nghẽn chuyển hóa PDC.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tỷ Lệ Lactate / Pyruvate</strong></td>
+                        <td>Bình thường: 10:1 – 20:1</td>
+                        <td><strong>L/P bình thường (~10–20) nhưng cả 2 cùng tăng cao:</strong> Đặc trưng cho khiếm khuyết Phức hợp PDC; <strong>L/P tăng vọt &gt; 25–30:</strong> Chỉ điểm khiếm khuyết Chuỗi hô hấp ti thể (ETC / Complex I-IV) hoặc thiếu oxy mô nặng.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Khí Máu Động Mạch (ABG)</strong></td>
+                        <td>pH: 7.35 – 7.45<br>HCO₃⁻: 22 – 26 mmol/L</td>
+                        <td>Đánh giá mức độ nhiễm toan chuyển hóa và bù trừ hô hấp.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gen IDH1 (R132) &amp; IDH2 (R172)</strong></td>
+                        <td>Âm tính (Wild-type)</td>
+                        <td>Xét nghiệm đột biến mô bệnh học thường quy trong u não (Glioma) và bạch cầu cấp (AML) giúp phân tầng tiên lượng và điều trị nhắm trúng đích bằng thuốc ức chế IDH (Ivosidenib, Enasidenib).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.7;">
+            <h4 style="margin: 0 0 0.75rem 0; color: var(--color-text, #334155); font-size: 0.95rem; font-weight: 700;">Tài Liệu Tham Khảo Chuẩn AMA (American Medical Association):</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD. Chapter 13: Citric Acid Cycle. In: <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson Education, Inc.; 2012:387-415.</li>
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. Chapter 16: The Citric Acid Cycle: The Catabolism of Acetyl-CoA. In: <em>Harper’s Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill LLC; 2023:156-165.</li>
+                <li>Baynes JW, Dominiczak MH. Chapter 10: The Tricarboxylic Acid Cycle. In: <em>Medical Biochemistry</em>. 5th ed. London, UK: Elsevier; 2019:125-138.</li>
+                <li>Pratt CW, Cornely K. Chapter 14: The Citric Acid Cycle. In: <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:403-420.</li>
+                <li>Bộ môn Hóa sinh (ĐHYD TPHCM). Chương XI: Hóa sinh năng lượng &amp; Chu trình Krebs. Trong: <em>Hóa sinh Y học</em>. TP. Hồ Chí Minh: NXB Y học; 2024:229-245.</li>
+                <li>Murphy M, Srivastava R, Deans K. Chapter 16: Acid-Base Disorders and Lactic Acidosis. In: <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. London, UK: Elsevier; 2018:73-76.</li>
+            </ol>
+        </footer>
+
+    </div>
+</body>
+
+</html>

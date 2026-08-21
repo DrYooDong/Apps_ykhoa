@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHEM-03: Hóa học Lipid, Lipoprotein Màng & Vận Chuyển Chuyển Hóa – Hóa Sinh Y Học – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="../../js/physio-shared.ts"></script>
+    <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+
+        .biochem-article-header {
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .biochem-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* PILLARS STICKY NAV STRIP (MỤC LỤC ĐỒNG BỘ KHO GUIDELINES) */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+        }
+
+        /* HEADINGS TYPOGRAPHY CÓ MÀU CHUẨN KHO GUIDELINES / CƠ SỞ */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        .reaction-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.925rem;
+        }
+
+        .lab-table th,
+        .lab-table td {
+            border: 1px solid var(--color-border, #e2e8f0);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .lab-table th {
+            background: var(--color-bg, #f8fafc);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        .lab-table tbody tr:nth-child(even) {
+            background: var(--color-bg, #f8fafc);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+            border-color: var(--color-primary, #0284c7);
+        }
+
+        .feature-card h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.05rem;
+            color: var(--color-primary, #0284c7);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .diagram-container {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.875rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.85rem;
+            font-style: italic;
+        }
+
+        .code-pill {
+            background: var(--color-bg, #f1f5f9);
+            color: var(--color-primary, #0284c7);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            font-weight: 600;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .flow-step-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--color-bg, #f8fafc);
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--color-primary, #0284c7);
+        }
+
+        .flow-step-num {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 32px;
+            background: var(--color-primary, #0284c7);
+            color: #ffffff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- ARTICLE HEADER -->
+        <header class="biochem-article-header">
+            <span class="biochem-badge"><i class="fa-solid fa-dna"></i> CHEM-03 • Khối 1: Cấu Trúc Phân Tử Sinh Học</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 2.1rem; font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Hóa Học Lipid, Lipoprotein Màng & Vận Chuyển Chuyển Hóa
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 900px;">
+                Đại cương Lipid thuần/tạp; Hóa học Acid béo (PUFA, Omega-3/6/9); Cấu trúc Phospholipid màng, Sphingolipid & Cholesterol; Mô hình Khảm động; Động học 5 nhóm Lipoprotein huyết tương (CM, VLDL, IDL, LDL, HDL), Cơ chế SREBP/Insig/PCSK9 và Bệnh học Rối loạn Lipid máu lâm sàng.
+            </p>
+        </header>
+
+        <!-- PILLARS STICKY NAV STRIP (MỤC LỤC ĐỒNG BỘ KHO GUIDELINES) -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-layer-group"></i> 1. Đại Cương &amp; Phân Loại</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-flask-vial"></i> 2. Acid Béo &amp; Glycerid</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-shapes"></i> 3. Phospholipid &amp; Cholesterol</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-border-all"></i> 4. Màng Sinh Học Khảm Động</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-circle-nodes"></i> 5. Lipoprotein Huyết Tương</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-route"></i> 6. Con Đường Chuyển Hóa</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-stethoscope"></i> 7. Rối Loạn Lipoprotein</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vials"></i> 8. Cận Lâm Sàng &amp; Biện Luận</a>
+            </div>
+        </nav>
+
+        <!-- SECTION 1: ĐẠI CƯƠNG VỀ LIPID -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> 1. Đại Cương Về Lipid & Ý Nghĩa Sinh Học</h2>
+            
+            <h3 class="subsection-title">1.1. Định Nghĩa & Đặc Tính Lý Hóa Chung</h3>
+            <p class="section-text">
+                <strong>Lipid</strong> (bắt nguồn từ tiếng Hy Lạp <em>“lipos”</em> nghĩa là mỡ) là một nhóm các hợp chất hữu cơ dị thể rất phổ biến trong cơ thể sinh vật. Chúng được xếp chung nhóm dựa trên <strong>đặc tính hòa tan vật lý</strong> hơn là cấu trúc hóa học:
+            </p>
+            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                <li><strong>Không tan hoặc rất ít tan trong nước</strong> (dung môi phân cực).</li>
+                <li><strong>Dễ tan trong các dung môi hữu cơ không phân cực</strong> như ether, chloroform, benzen, aceton nóng, ethanol nóng.</li>
+                <li>Chất béo nguyên chất không màu, không mùi, không vị, nhẹ hơn nước và có xu hướng tạo dạng <strong>nhũ tương</strong> khi phân tán trong môi trường nước có chất hoạt động bề mặt (chất nhũ hóa như muối mật).</li>
+            </ul>
+
+            <h3 class="subsection-title">1.2. Năm Vai Trò Sinh Học Cốt Lõi Của Lipid</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-shield-halved"></i> 1. Cấu Trúc Màng Sinh Học</h4>
+                    <p style="margin: 0; font-size: 0.925rem; line-height: 1.55;">Là thành phần chính xây dựng lớp đôi màng tế bào và màng bào quan (phospholipid, sphingolipid, cholesterol), giúp màng có tính thấm chọn lọc và cách điện cao.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-bolt"></i> 2. Dự Trữ & Cung Cấp Năng Lượng</h4>
+                    <p style="margin: 0; font-size: 0.925rem; line-height: 1.55;">Dạng dự trữ năng lượng cô đặc nhất (triglycerid mô mỡ). Thoái hóa 1g lipid giải phóng <strong>9,1 kcal</strong> (~37 kJ/g), cao hơn gấp 2 lần glucid hay protid (4 kcal/g).</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-capsules"></i> 3. Dung Môi Hòa Tan Vitamin Dầu</h4>
+                    <p style="margin: 0; font-size: 0.925rem; line-height: 1.55;">Dung môi bắt buộc để hòa tan và hấp thu các <strong>vitamin A, D, E, K</strong> ở ống tiêu hóa. Thiếu lipid hoặc tắc mật gây hội chứng thiếu hụt vitamin tan trong dầu.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-temperature-arrow-up"></i> 4. Đệm Cơ Học & Giữ Nhiệt</h4>
+                    <p style="margin: 0; font-size: 0.925rem; line-height: 1.55;">Lớp mỡ dưới da và mỡ quanh các tạng (thận, tim) hoạt động như tấm đệm chống va đập cơ học và lớp cách nhiệt chống mất nhiệt cơ thể.</p>
+                </div>
+                <div class="feature-card" style="grid-column: 1 / -1;">
+                    <h4><i class="fa-solid fa-vial-circle-check"></i> 5. Tiền Chất Các Phân Tử Hoạt Tính Sinh Học Cao</h4>
+                    <p style="margin: 0; font-size: 0.925rem; line-height: 1.55;">Cholesterol là tiền chất tổng hợp <strong>hormon steroid</strong> (cortisol, aldosterone, testosterone, estradiol), <strong>acid mật / muối mật</strong>, <strong>vitamin D3</strong>; Acid arachidonic là tiền chất tổng hợp các <strong>eicosanoid</strong> (prostaglandin, thromboxan, leukotrien).</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">1.3. Phân Loại Lipid Hệ Thống</h3>
+            <p class="section-text">Dựa vào cấu tạo hóa học và khả năng thủy phân xà phòng hóa:</p>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 22%;">Nhóm Lớn</th>
+                        <th style="width: 28%;">Phân Loại Nhỏ</th>
+                        <th>Đặc Điểm Cấu Tạo & Ví Dụ Đại Diện</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2"><strong>1. Lipid thủy phân được</strong><br><span style="font-size: 0.85rem; color: var(--color-text-muted);">(Chứa liên kết este / amid)</span></td>
+                        <td><strong>Lipid thuần (Đơn giản)</strong><br><span class="code-pill">Chỉ chứa C, H, O</span></td>
+                        <td>
+                            • <strong>Glycerid (Acylglycerol)</strong>: Este của glycerol và acid béo (mỡ động vật, dầu thực vật).<br>
+                            • <strong>Cerid (Sáp thật)</strong>: Este của alcol đơn chức mạch dài (16–30C) và acid béo (14–36C) (sáp ong, ráy tai).<br>
+                            • <strong>Sterid</strong>: Este của sterol và acid béo (cholesteryl este).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lipid tạp (Phức tạp)</strong><br><span class="code-pill">Chứa C, H, O + P, N, S hoặc Glucid</span></td>
+                        <td>
+                            • <strong>Phosphatid (Glycerophospholipid)</strong>: Khung glycerol + 2 acid béo + phosphat + base nitơ/polyol.<br>
+                            • <strong>Sphingolipid</strong>: Khung aminoalcol sphingosine (18C) + acid béo + nhóm phân cực.<br>
+                            • <strong>Glycolipid (Glycosphingolipid)</strong>: Ceramide liên kết chuỗi carbohydrate (Cerebrosid, Gangliosid).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Lipid không thủy phân</strong><br><span style="font-size: 0.85rem; color: var(--color-text-muted);">(Lipoid / Không xà phòng hóa)</span></td>
+                        <td><strong>Acid béo tự do, Steroid, Isoprenoid</strong></td>
+                        <td>
+                            • <strong>Acid béo tự do</strong> (FFA - liên kết albumin).<br>
+                            • <strong>Sterol & Dẫn xuất Steroid</strong>: Cholesterol tự do, Acid mật, Hormon sinh dục & vỏ thượng thận.<br>
+                            • <strong>Isoprenoid / Terpen</strong>: Carotenoid, Vitamin A, E, K, Coenzym Q (Ubiquinone).
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 2: HÓA HỌC ACID BÉO & GLYCERID -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-flask-vial"></i> 2. Hóa Học Acid Béo & Glycerid (Acylglycerol)</h2>
+
+            <h3 class="subsection-title">2.1. Cấu Trúc Tổng Quát & Danh Pháp Acid Béo</h3>
+            <p class="section-text">
+                Acid béo là acid monocarboxylic có chuỗi hydrocarbon mạch thẳng không phân nhánh (<span class="code-pill">R-COOH</span>). Trong tự nhiên, hầu hết acid béo có <strong>số carbon chẵn</strong> (từ 14 đến 22C, phổ biến nhất 16C và 18C) do được sinh tổng hợp từ các đơn vị 2C (Acetyl-CoA). Ở pH sinh lý (~7.4), nhóm carboxyl bị ion hóa thành dạng <span class="code-pill">-COO⁻</span> mang điện tích âm.
+            </p>
+
+            <div class="info-box">
+                <strong>Hệ thống danh pháp acid béo:</strong><br>
+                1. <strong>Tên thông thường</strong>: Theo nguồn gốc tự nhiên (ví dụ: Acid palmitic từ dầu cọ, Acid oleic từ dầu ô-liu).<br>
+                2. <strong>Tên hệ thống IUPAC</strong>: Tên hydrocarbon no/chưa no + đuôi <em>“-anoic”</em> (no) hoặc <em>“-enoic”</em> (chưa no). Ví dụ: Acid stearic là acid octadecanoic.<br>
+                3. <strong>Ký hiệu Delta (Δ)</strong>: <span class="code-pill">C:N (Δ<sup>vị trí</sup>)</span> — Đánh số C1 từ nhóm -COOH. Ví dụ: Acid oleic là <span class="code-pill">18:1 (Δ<sup>9</sup>)</span>.<br>
+                4. <strong>Ký hiệu Omega (ω hoặc n)</strong>: <span class="code-pill">C:N (ω-z)</span> — Đánh số từ carbon methyl (-CH<sub>3</sub>) tận cùng ngược lại. 4 họ chính: ω-3, ω-6, ω-7, ω-9.
+            </div>
+
+            <h3 class="subsection-title">2.2. Bảng Tra Cứu Các Acid Béo Sinh Học Quan Trọng</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Tên Acid Béo</th>
+                        <th>Ký Hiệu</th>
+                        <th>Công Thức Hóa Học</th>
+                        <th>Điểm Nóng Chảy (T<sub>m</sub>)</th>
+                        <th>Nguồn Gốc & Vai Trò</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Acid Palmitic</strong></td>
+                        <td><span class="code-pill">16:0</span></td>
+                        <td>CH<sub>3</sub>(CH<sub>2</sub>)<sub>14</sub>COOH</td>
+                        <td>+63 °C (Rắn)</td>
+                        <td>Phổ biến nhất trong mỡ động vật & dầu cọ (44%).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acid Stearic</strong></td>
+                        <td><span class="code-pill">18:0</span></td>
+                        <td>CH<sub>3</sub>(CH<sub>2</sub>)<sub>16</sub>COOH</td>
+                        <td>+70 °C (Rắn)</td>
+                        <td>Có nhiều trong mỡ bò, bơ cacao.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acid Oleic</strong></td>
+                        <td><span class="code-pill">18:1 (Δ<sup>9</sup>, ω-9)</span></td>
+                        <td>CH<sub>3</sub>(CH<sub>2</sub>)<sub>7</sub>CH=CH(CH<sub>2</sub>)<sub>7</sub>COOH</td>
+                        <td>+13 °C (Lỏng)</td>
+                        <td>Acid béo chưa no phổ biến nhất trong tự nhiên (dầu ô-liu).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acid Linoleic</strong> ⭐</td>
+                        <td><span class="code-pill">18:2 (Δ<sup>9,12</sup>, ω-6)</span></td>
+                        <td>CH<sub>3</sub>(CH<sub>2</sub>)<sub>4</sub>(CH=CHCH<sub>2</sub>)<sub>2</sub>(CH<sub>2</sub>)<sub>6</sub>COOH</td>
+                        <td>-5 °C (Lỏng)</td>
+                        <td><strong>Acid béo thiết yếu (EFA)</strong> trong dầu ngô, dầu hướng dương.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acid α-Linolenic</strong> ⭐</td>
+                        <td><span class="code-pill">18:3 (Δ<sup>9,12,15</sup>, ω-3)</span></td>
+                        <td>CH<sub>3</sub>CH<sub>2</sub>(CH=CHCH<sub>2</sub>)<sub>3</sub>(CH<sub>2</sub>)<sub>6</sub>COOH</td>
+                        <td>-11 °C (Lỏng)</td>
+                        <td><strong>Acid béo thiết yếu (EFA)</strong> trong dầu hạt lanh, hạt chia.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acid Arachidonic</strong></td>
+                        <td><span class="code-pill">20:4 (Δ<sup>5,8,11,14</sup>, ω-6)</span></td>
+                        <td>CH<sub>3</sub>(CH<sub>2</sub>)<sub>4</sub>(CH=CHCH<sub>2</sub>)<sub>4</sub>(CH<sub>2</sub>)<sub>2</sub>COOH</td>
+                        <td>-50 °C (Lỏng)</td>
+                        <td>Cấu trúc màng tế bào, tiền chất sinh tổng hợp Eicosanoid.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EPA / DHA</strong></td>
+                        <td><span class="code-pill">20:5 (ω-3) / 22:6 (ω-3)</span></td>
+                        <td>Chuỗi dài đa nối đôi ω-3</td>
+                        <td>Rất thấp (&lt; -50 °C)</td>
+                        <td>Mỡ cá biển sâu (cá hồi, cá thu), phát triển não bộ & võng mạc.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-lightbulb"></i> Cơ Sở Lý Học Của Điểm Nóng Chảy & Tính Lỏng:</strong><br>
+                • <strong>Acid béo no</strong>: Chuỗi carbon thẳng tắp, quay tự do xung quanh liên kết C-C, xếp khít sát nhau và tạo tương tác Van der Waals tối đa &rarr; Điểm nóng chảy cao, ở <strong>thể rắn</strong> tại nhiệt độ phòng.<br>
+                • <strong>Acid béo chưa no tự nhiên</strong>: Có liên kết đôi ở dạng đồng phân <strong><em>cis</em></strong> tạo ra <strong>vết gấp khúc cố định 120°</strong>. Vết gập này ngăn cản các chuỗi xếp khít, làm giảm lực liên kết Van der Waals &rarr; Điểm nóng chảy giảm mạnh, ở <strong>thể lỏng</strong> ở nhiệt độ phòng. Động vật biến nhiệt tăng tỷ lệ nối đôi <em>cis</em> để màng không bị đông kết khi trời lạnh.
+            </div>
+
+            <h3 class="subsection-title">2.3. Tính Chất Hóa Học Của Acid Béo & Glycerid</h3>
+            <div class="reaction-box">
+                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                    <li><strong>Phản ứng xà phòng hóa</strong>: Thủy phân triglycerid bằng kiềm nóng (KOH / NaOH) tạo glycerol và muối của acid béo (xà phòng):<br>
+                        <code>Triglycerid + 3 KOH &rarr; Glycerol + 3 R-COOK (Xà phòng)</code><br>
+                        <em>Chỉ số xà phòng hóa</em> (số mg KOH xà phòng hóa 1g chất béo) tỷ lệ nghịch với phân tử lượng acid béo.
+                    </li>
+                    <li><strong>Phản ứng hydro hóa (Khử nối đôi)</strong>: Cộng H<sub>2</sub> vào nối đôi dưới xúc tác Ni/Pt biến dầu thực vật lỏng thành bơ thực vật rắn (magarin). Quá trình này có thể sinh ra <em>trans-fat</em> có hại cho tim mạch.</li>
+                    <li><strong>Phản ứng oxy hóa nối đôi (Lipoperoxidation)</strong>: Gốc tự do (ROS) tấn công nối đôi của PUFA trên màng tế bào tạo lipid hydroperoxide gây vỡ màng, đứt gãy DNA và lão hóa mô.</li>
+                    <li><strong>Phản ứng halogen hóa (Chỉ số Iod)</strong>: Cộng I<sub>2</sub> vào nối đôi. Chỉ số iod biểu thị mức độ chưa bão hòa của mẫu dầu mỡ.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PHOSPHOLIPID, SPHINGOLIPID & CHOLESTEROL -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-shapes"></i> 3. Phospholipid, Sphingolipid & Cholesterol</h2>
+
+            <h3 class="subsection-title">3.1. Glycerophospholipid (Phosphatid)</h3>
+            <p class="section-text">
+                Là nhóm lipid phức tạp chiếm tỷ lệ cao nhất trong màng tế bào. Cấu tạo từ khung glycerol este hóa với <strong>2 acid béo</strong> (sn-1 là acid béo no, sn-2 là acid béo chưa no) và <strong>1 nhóm phosphat</strong> ở vị trí C3 (tạo thành acid phosphatidic). Nhóm phosphat tiếp tục liên kết với base hữu cơ:
+            </p>
+            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                <li><strong>Phosphatidylcholine (Lecithin)</strong>: Gắn Choline. Chiếm tỷ lệ lớn nhất ở màng tế bào. <em>Dipalmitoyl lecithin</em> là chất hoạt diện phế nang (surfactant) giúp phổi không bị xẹp; thiếu hụt ở trẻ sinh non gây <strong>Hội chứng suy hô hấp cấp sơ sinh (RDS)</strong>.</li>
+                <li><strong>Phosphatidylethanolamine (Cephalin)</strong>: Gắn Ethanolamine. Phong phú trong mô não và thần kinh.</li>
+                <li><strong>Phosphatidylserine</strong>: Gắn Serine. Khu trú chọn lọc ở lá trong màng tế bào; khi tế bào chết theo chương trình (apoptosis), nó bị lật ra lá ngoài làm tín hiệu để đại thực bào đến thực bào.</li>
+                <li><strong>Phosphatidylinositol (PIP<sub>2</sub>)</strong>: Gắn Inositol. Là tiền chất tạo chất truyền tin nội bào thứ hai (IP<sub>3</sub> và DAG) khi bị enzym Phospholipase C phân cắt.</li>
+            </ul>
+
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Vị Trí Cắt Của Các Phospholipase & Độc Tính Nọc Rắn:</strong><br>
+                • <strong>Phospholipase A<sub>1</sub></strong>: Cắt liên kết este ở C1.<br>
+                • <strong>Phospholipase A<sub>2</sub></strong>: Cắt liên kết este ở C2, giải phóng acid arachidonic và <strong>Lysolecithin</strong>. Nọc rắn độc, nọc ong chứa hàm lượng cực cao PLA<sub>2</sub>, khi vào máu sẽ thủy phân hàng loạt màng hồng cầu tạo lysolecithin gây <strong>tan máu dữ dội và trụy tim mạch</strong>.<br>
+                • <strong>Phospholipase C</strong>: Cắt liên kết este giữa glycerol và phosphat, tạo DAG.<br>
+                • <strong>Phospholipase D</strong>: Cắt liên kết giữa phosphat và nhóm base nitơ ưa nước.
+            </div>
+
+            <h3 class="subsection-title">3.2. Sphingolipid (Lipid Màng Khung Sphingosine)</h3>
+            <p class="section-text">
+                Xây dựng trên khung aminoalcol 18C là <strong>sphingosine</strong>. Khi acid béo liên kết với nhóm -NH<sub>2</sub> ở C2 qua <strong>liên kết amid bền vững</strong>, ta được <strong>Ceramide</strong> (đơn vị cơ bản của mọi sphingolipid):
+            </p>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-brain"></i> Sphingomyelin</h4>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">Nhóm -OH ở C1 gắn với phosphocholine hoặc phosphoethanolamine. Chiếm tỷ lệ khổng lồ trong <strong>bao myelin</strong> thần kinh, đảm bảo cách điện cho dẫn truyền xung thần kinh nhảy cóc qua eo Ranvier.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-cube"></i> Cerebrosid</h4>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">C1 gắn 1 gốc đường đơn (Galactose &rarr; GalCer ở chất trắng não; Glucose &rarr; GlcCer). Bệnh <strong>Gaucher</strong> do thiếu hụt β-glucosidase làm ứ đọng GlcCer trong đại thực bào gan, lách, tủy xương.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-network-wired"></i> Gangliosid</h4>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">Glycolipid phức tạp nhất, chứa chuỗi oligosaccharide có ít nhất 1 gốc <strong>Acid Sialic (NeuAc)</strong> tích điện âm. Tập trung cao ở cúc tận cùng synap não; là thụ thể gắn đặc hiệu của <strong>độc tố vi khuẩn tả (GM1 ganglioside)</strong>.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">3.3. Cholesterol & Khung Nhân Steroid</h3>
+            <p class="section-text">
+                Cholesterol là sterol động vật quan trọng nhất, cấu tạo gồm <strong>nhân steran</strong> (cyclopentanoperhydrophenanthren gồm 4 vòng A, B, C, D phẳng), nhóm -OH phân cực ở C3, một nối đôi C5-C6 và nhánh 8C ở C17. Chiếm 20–25% khối lượng lipid màng tế bào (vắng mặt ở màng trong ty thể).
+            </p>
+        </section>
+
+        <!-- SECTION 4: MÔ HÌNH KHẢM ĐỘNG -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-border-all"></i> 4. Màng Sinh Học & Mô Hình Khảm Động (Fluid Mosaic Model)</h2>
+
+            <div class="diagram-container">
+                <!-- SVG MÔ HÌNH MÀNG TẾ BÀO KHẢM ĐỘNG -->
+                <svg viewBox="0 0 800 280" style="width: 100%; max-width: 780px; height: auto;" aria-label="Mô hình Khảm Động Màng Tế Bào">
+                    <!-- Background Exterior / Interior -->
+                    <rect x="0" y="0" width="800" height="280" fill="transparent"/>
+                    <text x="30" y="30" fill="var(--color-primary, #0284c7)" font-weight="700" font-size="14">MÔI TRƯỜNG NGOẠI BÀO (EXTRACELLULAR)</text>
+                    <text x="30" y="265" fill="var(--color-text-muted, #64748b)" font-weight="700" font-size="14">BÀO TƯƠNG (CYTOSOL - MẶT TRONG TÍCH ĐIỆN ÂM)</text>
+
+                    <!-- Outer Leaflet Heads -->
+                    <g fill="#38bdf8" stroke="#0284c7" stroke-width="1.5">
+                        <circle cx="50" cy="80" r="10"/><circle cx="75" cy="80" r="10"/><circle cx="100" cy="80" r="10"/>
+                        <circle cx="125" cy="80" r="10"/><circle cx="150" cy="80" r="10"/><circle cx="175" cy="80" r="10"/>
+                        <circle cx="200" cy="80" r="10"/><circle cx="225" cy="80" r="10"/><circle cx="250" cy="80" r="10"/>
+                        <circle cx="370" cy="80" r="10"/><circle cx="395" cy="80" r="10"/><circle cx="420" cy="80" r="10"/>
+                        <circle cx="540" cy="80" r="10"/><circle cx="565" cy="80" r="10"/><circle cx="590" cy="80" r="10"/>
+                        <circle cx="615" cy="80" r="10"/><circle cx="640" cy="80" r="10"/><circle cx="665" cy="80" r="10"/>
+                        <circle cx="690" cy="80" r="10"/><circle cx="715" cy="80" r="10"/><circle cx="740" cy="80" r="10"/>
+                    </g>
+                    <!-- Outer Tails -->
+                    <path d="M50 90 v35 M53 90 v35 M75 90 v35 M78 90 v35 M100 90 v35 M103 90 v35 M125 90 v35 M128 90 v35 M150 90 v35 M153 90 v35 M175 90 v35 M178 90 v35 M200 90 v35 M203 90 v35 M225 90 v35 M228 90 v35 M250 90 v35 M253 90 v35 M370 90 v35 M373 90 v35 M395 90 v35 M398 90 v35 M420 90 v35 M423 90 v35 M540 90 v35 M543 90 v35 M565 90 v35 M568 90 v35 M590 90 v35 M593 90 v35 M615 90 v35 M618 90 v35 M640 90 v35 M643 90 v35 M665 90 v35 M668 90 v35 M690 90 v35 M693 90 v35 M715 90 v35 M718 90 v35 M740 90 v35 M743 90 v35" stroke="#94a3b8" stroke-width="2"/>
+
+                    <!-- Inner Leaflet Heads -->
+                    <g fill="#0ea5e9" stroke="#0369a1" stroke-width="1.5">
+                        <circle cx="50" cy="180" r="10"/><circle cx="75" cy="180" r="10"/><circle cx="100" cy="180" r="10"/>
+                        <circle cx="125" cy="180" r="10"/><circle cx="150" cy="180" r="10"/><circle cx="175" cy="180" r="10"/>
+                        <circle cx="200" cy="180" r="10"/><circle cx="225" cy="180" r="10"/><circle cx="250" cy="180" r="10"/>
+                        <circle cx="370" cy="180" r="10"/><circle cx="395" cy="180" r="10"/><circle cx="420" cy="180" r="10"/>
+                        <circle cx="540" cy="180" r="10"/><circle cx="565" cy="180" r="10"/><circle cx="590" cy="180" r="10"/>
+                        <circle cx="615" cy="180" r="10"/><circle cx="640" cy="180" r="10"/><circle cx="665" cy="180" r="10"/>
+                        <circle cx="690" cy="180" r="10"/><circle cx="715" cy="180" r="10"/><circle cx="740" cy="180" r="10"/>
+                    </g>
+                    <!-- Inner Tails -->
+                    <path d="M50 170 v-35 M53 170 v-35 M75 170 v-35 M78 170 v-35 M100 170 v-35 M103 170 v-35 M125 170 v-35 M128 170 v-35 M150 170 v-35 M153 170 v-35 M175 170 v-35 M178 170 v-35 M200 170 v-35 M203 170 v-35 M225 170 v-35 M228 170 v-35 M250 170 v-35 M253 170 v-35 M370 170 v-35 M373 170 v-35 M395 170 v-35 M398 170 v-35 M420 170 v-35 M423 170 v-35 M540 170 v-35 M543 170 v-35 M565 170 v-35 M568 170 v-35 M590 170 v-35 M593 170 v-35 M615 170 v-35 M618 170 v-35 M640 170 v-35 M643 170 v-35 M665 170 v-35 M668 170 v-35 M690 170 v-35 M693 170 v-35 M715 170 v-35 M718 170 v-35 M740 170 v-35 M743 170 v-35" stroke="#94a3b8" stroke-width="2"/>
+
+                    <!-- Integral Protein (Transmembrane) -->
+                    <path d="M280 65 Q 310 50 340 65 L 330 195 Q 305 210 285 195 Z" fill="#6366f1" stroke="#4338ca" stroke-width="2"/>
+                    <text x="310" y="135" fill="#ffffff" font-weight="700" font-size="11" text-anchor="middle">Protein</text>
+                    <text x="310" y="150" fill="#ffffff" font-weight="700" font-size="11" text-anchor="middle">Xuyên màng</text>
+
+                    <!-- Cholesterol molecules (Yellow) -->
+                    <rect x="113" y="100" width="8" height="22" rx="3" fill="#f59e0b" stroke="#d97706"/>
+                    <rect x="238" y="135" width="8" height="22" rx="3" fill="#f59e0b" stroke="#d97706"/>
+                    <rect x="578" y="102" width="8" height="22" rx="3" fill="#f59e0b" stroke="#d97706"/>
+                    <rect x="653" y="136" width="8" height="22" rx="3" fill="#f59e0b" stroke="#d97706"/>
+
+                    <!-- Peripheral Protein -->
+                    <ellipse cx="480" cy="205" rx="35" ry="18" fill="#10b981" stroke="#059669" stroke-width="2"/>
+                    <text x="480" y="210" fill="#ffffff" font-weight="700" font-size="11" text-anchor="middle">Protein Ngoại Vi</text>
+
+                    <!-- Glycoprotein / Glycolipid branches (Sugar chains) -->
+                    <path d="M310 55 L 295 30 M295 30 L 280 20 M295 30 L 310 15 M310 55 L 330 35 M330 35 L 345 25" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="280" cy="20" r="4" fill="#fbbf24"/><circle cx="310" cy="15" r="4" fill="#fbbf24"/><circle cx="345" cy="25" r="4" fill="#fbbf24"/>
+                    <text x="360" y="30" fill="#d97706" font-weight="700" font-size="11">Glycocalyx (Carbohydrate)</text>
+                </svg>
+                <div class="diagram-caption">Hình 4.1: Cấu trúc lớp đôi Lipid màng tế bào theo Mô hình Khảm Động (Singer & Nicolson)</div>
+            </div>
+
+            <h3 class="subsection-title">4.1. Đặc Tính Cơ Học & Tính Không Đối Xứng Của Màng</h3>
+            <ul style="padding-left: 1.5rem; line-height: 1.8;">
+                <li><strong>Lực định hình</strong>: Quá trình tự lắp ráp lớp đôi màng hoàn toàn tự phát nhờ <strong>hiệu ứng kỵ nước</strong> (làm tăng entropy của dung môi nước khi đuôi lipid giấu mình khỏi nước).</li>
+                <li><strong>Tính không đối xứng ngang</strong>:
+                    <br>• <em>Lá ngoài</em>: Giàu <strong>Phosphatidylcholine</strong>, <strong>Sphingomyelin</strong> và toàn bộ <strong>Glycolipid / Glycoprotein</strong> (hướng chuỗi đường ra ngoài tạo lớp áo tế bào Glycocalyx).
+                    <br>• <em>Lá trong (bào tương)</em>: Giàu <strong>Phosphatidylethanolamine</strong> và <strong>Phosphatidylserine</strong> (tích điện âm).
+                </li>
+                <li><strong>Động học di chuyển</strong>: Khuếch tán ngang (lateral) cực nhanh (10<sup>7</sup> lần/giây); Khuếch tán lật mặt (flip-flop) cực chậm, cần enzym đặc hiệu (<span class="code-pill">Flippase</span>, <span class="code-pill">Floppase</span>, <span class="code-pill">Scramblase</span>).</li>
+                <li><strong>Vai trò chất đệm của Cholesterol</strong>: Ở nhiệt độ cao, nhân steroid cứng cản trở chuyển động quay của đuôi acyl, ngăn màng quá lỏng; Ở nhiệt độ thấp, nó ngăn các acid béo kết tinh đông cứng.</li>
+                <li><strong>Vi miền Bè lipid (Lipid Raft)</strong>: Những cụm màng giàu cholesterol, sphingolipid và protein neo GPI, tạo nền tảng chuyên biệt điều hòa tiếp nhận và truyền tín hiệu nội bào.</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 5: HỆ THỐNG LIPOPROTEIN HUYẾT TƯƠNG -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-circle-nodes"></i> 5. Hệ Thống Lipoprotein Huyết Tương & Apolipoprotein</h2>
+
+            <h3 class="subsection-title">5.1. Nguyên Lý Cấu Trúc Hạt Lipoprotein Hình Cầu</h3>
+            <p class="section-text">
+                Do triglycerid và cholesteryl este hoàn toàn kỵ nước, cơ thể đóng gói chúng thành các hạt <strong>Lipoprotein hình cầu</strong> hòa tan trong máu:
+                <br>• <strong>Lõi kỵ nước trung tâm</strong>: Chứa Triglycerid (TG) và Cholesteryl este (CE).
+                <br>• <strong>Lớp vỏ đơn cực bề mặt (Monolayer)</strong>: Chứa Phospholipid (chủ yếu Lecithin) và Cholesterol tự do (FC) hướng đầu ưa nước ra ngoài, cùng các phân tử <strong>Apolipoprotein</strong>.
+            </p>
+
+            <div class="diagram-container">
+                <!-- SVG LIPOPROTEIN CROSS-SECTION -->
+                <svg viewBox="0 0 600 240" style="width: 100%; max-width: 580px; height: auto;" aria-label="Cấu trúc cắt ngang hạt Lipoprotein">
+                    <circle cx="300" cy="120" r="95" fill="#fef3c7" stroke="#f59e0b" stroke-width="4"/>
+                    <!-- Core labels -->
+                    <text x="300" y="105" fill="#b45309" font-weight="800" font-size="14" text-anchor="middle">LÕI KỴ NƯỚC</text>
+                    <text x="300" y="125" fill="#78350f" font-size="12" text-anchor="middle">• Triglycerid (TG)</text>
+                    <text x="300" y="142" fill="#78350f" font-size="12" text-anchor="middle">• Cholesteryl Este (CE)</text>
+                    
+                    <!-- Outer Shell -->
+                    <circle cx="300" cy="120" r="102" fill="none" stroke="#0284c7" stroke-width="6" stroke-dasharray="8 4"/>
+                    
+                    <!-- Apolipoproteins on surface -->
+                    <rect x="220" y="16" width="70" height="20" rx="8" fill="#6366f1" stroke="#4338ca" stroke-width="1.5"/>
+                    <text x="255" y="30" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">Apo B-100</text>
+
+                    <rect x="340" y="200" width="60" height="18" rx="8" fill="#10b981" stroke="#059669" stroke-width="1.5"/>
+                    <text x="370" y="213" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">Apo C-II</text>
+
+                    <rect x="180" y="130" width="50" height="18" rx="8" fill="#ec4899" stroke="#db2777" stroke-width="1.5"/>
+                    <text x="205" y="143" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">Apo E</text>
+
+                    <!-- Indicators -->
+                    <text x="80" y="60" fill="var(--color-primary, #0284c7)" font-size="12" font-weight="700">VỎ ĐƠN PHÂN CỰC:</text>
+                    <text x="80" y="80" fill="var(--color-text-muted, #64748b)" font-size="11">• Phospholipid (Lecithin)</text>
+                    <text x="80" y="98" fill="var(--color-text-muted, #64748b)" font-size="11">• Cholesterol tự do</text>
+                    <text x="80" y="116" fill="var(--color-text-muted, #64748b)" font-size="11">• Apolipoproteins</text>
+                </svg>
+                <div class="diagram-caption">Hình 5.1: Cấu trúc cắt lớp của một siêu đại phân tử Lipoprotein huyết tương</div>
+            </div>
+
+            <h3 class="subsection-title">5.2. Bảng Phân Tách & Đặc Tính 5 Nhóm Lipoprotein</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lipoprotein</th>
+                        <th>Đường Kính / Tỷ Trọng</th>
+                        <th>Thành Phần Chính</th>
+                        <th>Apolipoprotein</th>
+                        <th>Điện Di & Chức Năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Chylomicron (CM)</strong></td>
+                        <td>90–1000 nm<br><span class="code-pill">&lt; 0.95 g/mL</span></td>
+                        <td><strong>85–90% TG ngoại sinh</strong> (từ thức ăn), 1–2% protein.</td>
+                        <td>B-48, A-I, C-II, C-III, E</td>
+                        <td>Ở vạch xuất phát. Vận chuyển lipid thức ăn từ ruột non về mô mỡ/cơ và tàn dư về gan.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VLDL</strong> (Rất thấp)</td>
+                        <td>30–80 nm<br><span class="code-pill">0.95–1.006 g/mL</span></td>
+                        <td><strong>50–65% TG nội sinh</strong> (từ gan), 15–25% Chol.</td>
+                        <td>B-100, C-I, C-II, C-III, E</td>
+                        <td>Vùng Pre-β. Vận chuyển triglyceride do gan tổng hợp đến các mô ngoại biên.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IDL</strong> (Trung gian)</td>
+                        <td>25–35 nm<br><span class="code-pill">1.006–1.019 g/mL</span></td>
+                        <td>20–30% TG, 40–45% Chol (Tàn dư của VLDL).</td>
+                        <td>B-100, E</td>
+                        <td>Tiền chất tạo LDL hoặc được gan thu nhận trực tiếp qua Apo E.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LDL</strong> (Tỷ trọng thấp)</td>
+                        <td>18–25 nm<br><span class="code-pill">1.019–1.063 g/mL</span></td>
+                        <td><strong>45–50% Cholesterol</strong> (CE + FC), 25% protein.</td>
+                        <td><strong>B-100</strong> (duy nhất)</td>
+                        <td>Vùng β. Vận chuyển cholesterol chính đến gan (80%) và mô ngoại biên (20%). Gây xơ vữa.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HDL</strong> (Tỷ trọng cao)</td>
+                        <td>5–12 nm<br><span class="code-pill">1.063–1.210 g/mL</span></td>
+                        <td><strong>40–55% Protein</strong>, 15–20% Chol, ít TG.</td>
+                        <td>A-I, A-II, C, E</td>
+                        <td>Vùng α (nhanh nhất). Vận chuyển cholesterol ngược từ mô và thành mạch về gan. Bảo vệ tim mạch.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">5.3. Hệ Thống Apolipoprotein & Các Enzym Chuyển Hóa Khóa</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-key"></i> Apo B-100 vs Apo B-48</h4>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        • <strong>Apo B-100</strong> (Gan, 4536 aa): Có domain gắn Thụ thể LDL.<br>
+                        • <strong>Apo B-48</strong> (Ruột, 2152 aa): Tạo ra nhờ cơ chế <em>RNA editing</em> biến codon CAA &rarr; UAA (kết thúc sớm). Không có thụ thể LDL binding domain.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-toggle-on"></i> Apo C-II vs Apo C-III</h4>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        • <strong>Apo C-II</strong>: <strong>Chất hoạt hóa bắt buộc của Lipoprotein Lipase (LPL)</strong>.<br>
+                        • <strong>Apo C-III</strong>: Ức chế tự nhiên của LPL.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-dna"></i> Apo E & Đa Hình Di Truyền</h4>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Ligand gắn Thụ thể LDL & LRP-1.<br>
+                        • <strong>E2/E2</strong>: Giảm gắn thụ thể gây Type III Hyperlipidemia.<br>
+                        • <strong>E4</strong>: Tăng nguy cơ mắc <strong>Bệnh Alzheimer khởi phát muộn</strong>.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-scissors"></i> Lipoprotein Lipase (LPL)</h4>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        Gắn ở nội mạc mao mạch mô mỡ và cơ qua heparan sulfate. Thủy phân TG giải phóng acid béo. K<sub>m</sub> ở cơ tim thấp hơn mô mỡ 10 lần (ưu tiên năng lượng cho tim khi đói). Giải phóng vào máu sau tiêm Heparin.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fa-solid fa-arrows-rotate"></i> LCAT & CETP</h4>
+                    <p style="margin: 0; font-size: 0.9rem; line-height: 1.55;">
+                        • <strong>LCAT</strong> (hoạt hóa bởi Apo A-I): Chuyển acid béo sn-2 của Lecithin sang Cholesterol tự do tạo Cholesteryl Este lõi HDL.<br>
+                        • <strong>CETP</strong>: Chuyển CE từ HDL sang VLDL/LDL đổi lấy TG.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CHUYỂN HÓA LIPOPROTEIN & ĐIỀU HÒA CHOLESTEROL -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-route"></i> 6. Ba Con Đường Chuyển Hóa & Cơ Chế SREBP / PCSK9</h2>
+
+            <div class="flow-step-box">
+                <div class="flow-step-num">1</div>
+                <div>
+                    <strong>Con đường Ngoại sinh (Chylomicron)</strong>: Ruột non đóng gói TG ăn + Apo B-48 &rarr; Chylomicron sơ khởi &rarr; vào máu nhận Apo C-II & Apo E từ HDL &rarr; LPL mao mạch mô mỡ/cơ thủy phân rút 90% TG &rarr; Chylomicron Remnant (chứa CE, Apo E, B-48) &rarr; Gan thu nhận nhanh chóng qua Thụ thể LDL / LRP-1 nhờ Apo E (&lt; 1 giờ).
+                </div>
+            </div>
+
+            <div class="flow-step-box">
+                <div class="flow-step-num">2</div>
+                <div>
+                    <strong>Con đường Nội sinh (VLDL &rarr; IDL &rarr; LDL)</strong>: Gan tổng hợp TG nội sinh + Apo B-100 nhờ protein MTP tạo VLDL &rarr; vào máu nhận C-II & E &rarr; LPL thủy phân TG tạo IDL &rarr; một phần IDL về gan, phần còn lại bị Hepatic Lipase (HL) thủy phân nốt TG và mất Apo E tạo thành <strong>LDL</strong> (chỉ còn Apo B-100 & CE) &rarr; 80% về gan qua Thụ thể LDL, 20% cung cấp cholesterol cho mô ngoại biên.
+                </div>
+            </div>
+
+            <div class="flow-step-box">
+                <div class="flow-step-num">3</div>
+                <div>
+                    <strong>Vận chuyển Cholesterol Ngược (Reverse Cholesterol Transport - RCT)</strong>: Gan/ruột bài tiết Apo A-I & HDL sơ khởi dạng đĩa &rarr; bơm <strong>ABCA1</strong> chuyển cholesterol từ đại thực bào thành mạch sang HDL &rarr; <strong>LCAT</strong> ester hóa tạo hạt cầu HDL3 &rarr; nhận thêm cholesterol qua ABCG1 và trao đổi lipid qua <strong>CETP</strong> tạo HDL2 &rarr; Đào thải về gan qua thụ thể quét <strong>SR-BI</strong> hoặc gián tiếp qua LDL &rarr; Gan bài tiết vào mật và chuyển thành Acid mật (con đường duy nhất cơ thể đào thải khung sterol).
+                </div>
+            </div>
+
+            <h3 class="subsection-title">6.1. Điều Hòa Cholesterol Nội Bào: Hệ Thống SREBP / SCAP / Insig & PCSK9</h3>
+            <p class="section-text">
+                Khi cholesterol tự do trong tế bào tăng cao, tế bào kích hoạt 3 phản ứng tự vệ:
+                <br>1. <strong>Ức chế HMG-CoA Reductase</strong> (ngừng tổng hợp nội sinh).
+                <br>2. <strong>Giảm biểu hiện Thụ thể LDL</strong> (ngừng thu nhận từ máu).
+                <br>3. <strong>Kích hoạt enzym ACAT</strong> để ester hóa cholesterol tự do thành giọt mỡ CE dự trữ an toàn.
+            </p>
+
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-microscope"></i> Cơ Chế Phân Tử SREBP/SCAP/Insig:</strong><br>
+                • <strong>Khi Cholesterol thấp</strong>: SCAP/SREBP tách khỏi Insig ở màng lưới nội chất (ER), chuyển đến bộ máy Golgi. Tại đây protease cắt giải phóng domain N-tận vào nhân, gắn vào vùng <strong>SRE</strong> kích hoạt phiên mã gen HMG-CoA Reductase và Thụ thể LDL.<br>
+                • <strong>Khi Cholesterol cao</strong>: Cholesterol gắn vào SCAP làm nó gắn chặt với <strong>Insig-1</strong> khóa phức hợp lại ER &rarr; tắt hoàn toàn phiên mã tổng hợp cholesterol.<br>
+                • <strong>Vai trò PCSK9</strong>: Serine protease gắn thụ thể LDL, dẫn thụ thể vào lysosome tiêu hủy (ngăn tái chế). <strong>Thuốc ức chế PCSK9</strong> (Evolocumab, Alirocumab) giúp bảo tồn thụ thể LDL, hạ LDL-C máu đến 50–60%.
+            </div>
+        </section>
+
+        <!-- SECTION 7: RỐI LOẠN LIPOPROTEIN LÂM SÀNG -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-stethoscope"></i> 7. Rối Loạn Lipoprotein Huyết Tương & Bệnh Lý Lâm Sàng</h2>
+            
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Bệnh Lý / Kiểu Fredrickson</th>
+                        <th>Khiếm Khuyết Di Truyền</th>
+                        <th>Lipoprotein & Lipid Tăng</th>
+                        <th>Biểu Hiện Lâm Sàng Đặc Trưng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tăng Chylomicron gia đình</strong><br>(Kiểu I)</td>
+                        <td>Đột biến gen <strong>LPL</strong> hoặc gen <strong>Apo C-II</strong></td>
+                        <td>Chylomicron &#8679;&#8679;&#8679; (tăng rất cao)<br>TG &gt; 1000 mg/dL</td>
+                        <td><strong>Viêm tụy cấp tái diễn</strong>, gan lách to, ban vàng sẩn (eruptive xanthomas), huyết tương đục như sữa.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tăng Cholesterol máu gia đình (FH)</strong><br>(Kiểu IIa)</td>
+                        <td>Đột biến gen <strong>Thụ thể LDL</strong> (hoặc Apo B-100 / FDB)</td>
+                        <td>LDL &#8679;&#8679;&#8679; (tăng rất cao)<br>Cholesterol 300–1000 mg/dL</td>
+                        <td><strong>Xơ vữa động mạch sớm cực nặng</strong>, nhồi máu cơ tim trước 30 tuổi, <strong>u vàng gân gót (tendon xanthomas)</strong>, ban vàng mi mắt (xanthelasma).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tăng lipid máu hỗn hợp gia đình</strong><br>(Kiểu IIb)</td>
+                        <td>Tăng sản xuất Apo B-100 ở gan</td>
+                        <td>VLDL & LDL &uarr;<br>Tăng cả Chol & TG</td>
+                        <td>Nguy cơ bệnh tim mạch vành và đột quỵ rất cao.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rối loạn Beta huyết tương gia đình</strong><br>(Kiểu III)</td>
+                        <td>Đồng hợp tử đột biến <strong>Apo E2/E2</strong></td>
+                        <td>Chylomicron remnant & IDL &uarr;<br>Tăng cả Chol & TG</td>
+                        <td><strong>U vàng lòng bàn tay (palmar xanthomas)</strong>, xơ vữa động mạch vành và ngoại biên sớm.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tăng Triglyceride gia đình</strong><br>(Kiểu IV)</td>
+                        <td>Tăng tiết VLDL ở gan</td>
+                        <td>VLDL &uarr;<br>TG &uarr;, HDL &darr;</td>
+                        <td>Liên quan chặt chẽ với béo phì bụng, đề kháng insulin, đái tháo đường type 2.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Abetalipoproteinemia</strong><br>(Không phân loại)</td>
+                        <td>Đột biến gen <strong>MTP</strong> (không đóng gói được Apo B)</td>
+                        <td><strong>Hoàn toàn không có CM, VLDL, LDL</strong></td>
+                        <td>Hội chứng kém hấp thu mỡ, gan thoái hóa mỡ, hồng cầu gai (acanthocytosis), thất điều thần kinh, thiếu vitamin E nặng.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bệnh Tangier</strong><br>(Không phân loại)</td>
+                        <td>Đột biến gen vận chuyển <strong>ABCA1</strong></td>
+                        <td><strong>HDL biến mất hoàn toàn</strong><br>Cholesterol máu cực thấp</td>
+                        <td><strong>Amidan to màu vàng cam đặc trưng</strong> (do ứ cholesteryl este trong đại thực bào), gan lách to, bệnh thần kinh ngoại biên.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bệnh Mắt Cá (Fish-Eye)</strong><br>(Không phân loại)</td>
+                        <td>Đột biến gen <strong>LCAT</strong></td>
+                        <td>HDL dẹt sơ khởi &uarr;<br>HDL-C và CE &darr;&darr;</td>
+                        <td>Đục giác mạc tiến triển dày đặc (nhìn như mắt cá luộc), suy thận, thiếu máu tán máu nhẹ.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 8: CẬN LÂM SÀNG & BIỆN LUẬN -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-vials"></i> 8. Chỉ Số Xét Nghiệm & Biện Luận Cận Lâm Sàng</h2>
+            
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Chỉ Số Xét Nghiệm</th>
+                        <th style="width: 25%;">Khoảng Tham Chiếu Chuẩn</th>
+                        <th>Ý Nghĩa Sinh Học & Ứng Dụng Lâm Sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cholesterol toàn phần (TC)</strong></td>
+                        <td>&lt; 200 mg/dL (&lt; 5.2 mmol/L)</td>
+                        <td>Tổng lượng cholesterol trong mọi lipoprotein. Tăng trong tăng lipid máu gia đình, suy giáp, hội chứng thận hư, tắc mật.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Triglycerid (TG)</strong></td>
+                        <td>&lt; 150 mg/dL (&lt; 1.7 mmol/L)</td>
+                        <td>Phản ánh lipid từ CM và VLDL. TG &gt; 500 mg/dL làm tăng nguy cơ viêm tụy cấp; TG &gt; 1000 mg/dL là chỉ định điều trị hạ TG khẩn cấp.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LDL-Cholesterol (LDL-C)</strong></td>
+                        <td>&lt; 100 mg/dL (&lt; 2.6 mmol/L)<br><span style="font-size: 0.8rem; color: var(--color-primary);">&lt; 55–70 mg/dL ở nhóm nguy cơ rất cao</span></td>
+                        <td><strong>Mục tiêu điều trị hạ lipid chính</strong> trong phòng ngừa biến cố tim mạch xơ vữa. Tính theo công thức Friedewald: <span class="code-pill">LDL-C = TC - HDL-C - (TG/5)</span> (với TG &lt; 400 mg/dL).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HDL-Cholesterol (HDL-C)</strong></td>
+                        <td>&gt; 40 mg/dL (nam), &gt; 50 mg/dL (nữ)</td>
+                        <td>Yếu tố bảo vệ chống xơ vữa. HDL-C thấp là yếu tố nguy cơ tim mạch độc lập.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Non-HDL Cholesterol</strong></td>
+                        <td>&lt; 130 mg/dL (<span class="code-pill">TC - HDL-C</span>)</td>
+                        <td>Đại diện cho toàn bộ các hạt gây xơ vữa chứa Apo B (VLDL + IDL + LDL). Rất giá trị khi bệnh nhân có tăng triglyceride máu.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Apolipoprotein B (Apo B)</strong></td>
+                        <td>&lt; 90 mg/dL (&lt; 65 mg/dL ở nhóm nguy cơ cao)</td>
+                        <td>Đo trực tiếp <strong>tổng số lượng hạt gây xơ vữa</strong> trong máu (mỗi hạt chỉ có 1 Apo B). Đánh giá nguy cơ chính xác hơn LDL-C đơn thuần khi có rối loạn lipid máu xơ vữa.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lipoprotein(a) [Lp(a)]</strong></td>
+                        <td>&lt; 30 mg/dL (&lt; 50 nmol/L)</td>
+                        <td>Hạt LDL gắn thêm apolipoprotein(a) qua cầu disulfid. Yếu tố nguy cơ xơ vữa và hẹp van động mạch chủ mang tính di truyền độc lập.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.7;">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--color-text, #334155); font-size: 0.95rem;">Tài Liệu Tham Khảo Chuẩn AMA:</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Bộ Môn Hóa Sinh (ĐHYD TPHCM). <em>Hóa Sinh Y Học</em>. TP. Hồ Chí Minh: NXB Y Học; 2024.</li>
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. <em>Harper's Illustrated Biochemistry</em>. 32nd ed. McGraw-Hill; 2023.</li>
+                <li>Pratt CW, Cornely K. <em>Essential Biochemistry</em>. 5th ed. John Wiley & Sons; 2021.</li>
+                <li>Baynes JW, Dominiczak MH. <em>Medical Biochemistry</em>. 5th ed. Elsevier; 2019.</li>
+                <li>Murphy M, Srivastava R, Deans K. <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. Churchill Livingstone; 2018.</li>
+                <li>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD. <em>Principles of Biochemistry</em>. 5th ed. Pearson; 2012.</li>
+            </ol>
+        </footer>
+
+    </div>
+</body>
+
+</html>

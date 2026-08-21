@@ -59,5 +59,5 @@ function auditFile(htmlFile) {
   console.log(`Audited ${count} total links in ${path.basename(htmlFile)}. Broken links found: ${broken}`);
 }
 
-auditFile(path.join(__dirname, '../src/content/pathophysiology/sinhly-sinhlybenh.html'));
+auditFile(path.join(__dirname, '../src/content/pathophysiology/co-che-benh-sinh.html'));
 auditFile(path.join(__dirname, '../www/pages/Sinh lý - Sinh lý bệnh/Sinhly-sinhlybenh.html'));

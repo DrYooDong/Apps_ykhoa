@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Rối loạn Phosphat máu (Hypophosphatemia & Hyperphosphatemia Pathophysiology): Phân tích phân bố dịch, trục PTH - FGF-23 - Calcitriol (kênh NaPi), hội chứng nuôi ăn lại Refeeding, kiềm hô hấp kích hoạt PFK, thiếu ATP cơ hoành thất bại cai máy thở, giảm 2,3-DPG thiếu oxy mô, tăng phosphat CKD-MBD (tích số Ca x P >= 55) và vôi hóa áo giữa mạch máu.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Rối loạn Phosphat máu – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .p-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .p-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .p-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .p-card.hypo {
+            border-left: 4px solid #0284c7;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+        }
+
+        .p-card.hyper {
+            border-left: 4px solid #ea580c;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, transparent 100%);
+        }
+
+        .p-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .p-card-title.hypo { color: #0284c7; }
+        .p-card-title.hyper { color: #ea580c; }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-left: 4px solid var(--color-primary, #0284c7);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .formula-box .formula-label {
+            font-size: 0.75rem;
+            color: var(--color-primary, #0284c7);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .formula-box .formula-main {
+            color: var(--color-text);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .formula-box .formula-note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        .vicious-cycle {
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.06) 0%, rgba(234, 88, 12, 0.02) 100%);
+            border: 1px solid rgba(234, 88, 12, 0.25);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .vicious-cycle-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ea580c;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cycle-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .cycle-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .cycle-step-num {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: #ea580c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .cycle-step-text {
+            font-size: 0.875rem;
+            padding-top: 0.15rem;
+            line-height: 1.5;
+            color: var(--color-text);
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.1) 0%, rgba(234, 88, 12, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-section h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .ref-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ref-list li {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            padding: 0.45rem 0;
+            border-bottom: 1px dashed var(--color-border);
+            line-height: 1.5;
+        }
+
+        .ref-list li:last-child { border-bottom: none; }
+        .ref-list li strong { color: var(--color-text); }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "&#127968; Trang chủ", "url": "../../../../index.html"}, {"label": "Cơ chế bệnh sinh", "url": "../co-che-benh-sinh.html"}, {"label": "Sinh lý bệnh Rối loạn Phosphat máu"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <div style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(2,132,199,0.12);color:#0284c7;border:1px solid rgba(2,132,199,0.3);border-radius:20px;padding:0.25rem 0.85rem;font-size:0.78rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.75rem;">
+                        <i class="fa-solid fa-filter"></i> Phân hệ Thận &ndash; Điện giải &ndash; Toan kiềm
+                    </div>
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH RỐI LOẠN PHOSPHAT MÁU</h1>
+                    <p>Phosphate Homeostasis, Bioenergetics &amp; Mineral-Vascular Calcification &mdash; Phân tích sinh lý phân bố khoang, hệ thống hormone điều hòa (PTH, FGF-23, Calcitriol qua các kênh đồng vận NaPi), cơ chế hạ phosphat máu (Hội chứng nuôi ăn lại Refeeding, kiềm hô hấp kích hoạt PFK, thiếu ATP cơ hoành gây thất bại cai máy thở, giảm 2,3-DPG thiếu oxy mô), tăng phosphat máu trong CKD-MBD (tích số Ca &times; P &ge; 55) và chuyển dạng tế bào cơ trơn thành vôi hóa áo giữa mạch máu.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Phosphat (PO<sub>4</sub><sup>3-</sup> / Pi)</span> là anion nội bào dồi dào nhất, giữ vai trò sống còn trong chu trình chuyển hóa năng lượng tế bào (tổng hợp <strong>ATP</strong> và Creatine Phosphate), cấu trúc màng phospholipid, acid nucleic (DNA/RNA) và khả năng nhả oxy của hồng cầu (qua <strong>2,3-DPG</strong>). Sự mất cân bằng phosphat huyết thanh gây ra những biến chứng hồi sức cấp tính nguy kịch (suy hô hấp do liệt cơ hoành, suy tim cấp, tán huyết) hoặc các tổn thương vi mạch xơ vôi hóa mạn tính ở bệnh nhân suy thận mạn.
+                </p>
+
+                <!-- PHẦN I: PHÂN BỐ VÀ ĐIỀU HÒA NỘI MÔI PHOSPHAT -->
+                <div class="physio-content">
+                    <h2 id="phan-bo-dieu-hoa-phosphat" class="section-title">
+                        <span>Phần I: Phân Bố và Điều Hòa Nội Môi Phosphat Sinh Lý</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="phan-bo-khoang-phosphat" class="subsection-title">1.1. Phân bố phosphat trong các khoang cơ thể</h3>
+                        <p>
+                            Tổng lượng phosphat trong cơ thể người trưởng thành khoảng <strong>600g (tương đương 20 mol)</strong>, phân bố thành 3 khu vực chính:
+                        </p>
+
+                        <div class="p-grid">
+                            <div class="p-card">
+                                <div class="p-card-title" style="color: #d97706;">🦴 1. Khoang Xương (&asymp; 85%)</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Khoảng <strong>500 &ndash; 550g</strong> phosphat tồn tại dưới dạng liên kết với Canxi trong tinh thể <strong>hydroxyapatite</strong> [Ca<sub>10</sub>(PO<sub>4</sub>)<sub>6</sub>(OH)<sub>2</sub>], đóng vai trò là khung khoáng hóa chịu lực.
+                                </p>
+                            </div>
+
+                            <div class="p-card">
+                                <div class="p-card-title" style="color: #6366f1;">⚡ 2. Khoang Nội Bào Mô Mềm (&asymp; 14 &ndash; 15%)</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Thành phần cấu tạo cốt lõi của các hợp chất cao năng (<strong>ATP, GTP, Creatine Phosphate</strong>), 2,3-DPG hồng cầu, acid nucleic (DNA/RNA), phospholipids màng và các enzyme phosphoryl hóa.
+                                </p>
+                            </div>
+
+                            <div class="p-card">
+                                <div class="p-card-title" style="color: #0284c7;">🩸 3. Khoang Ngoại Bào (&lt; 1%)</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Chỉ chứa khoảng <strong>600 mg</strong> phosphat. Nồng độ huyết thanh bình thường: <strong>2.5 &ndash; 4.5 mg/dL (0.81 &ndash; 1.45 mmol/L)</strong>. 90% tồn tại dưới dạng phosphat vô cơ hòa tan (HPO<sub>4</sub><sup>2-</sup> và H<sub>2</sub>PO<sub>4</sub><sup>-</sup>), 10% gắn protein.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="he-thong-hormone-dieu-hoa" class="subsection-title">1.2. Hệ thống 3 Hormone điều hòa: PTH, FGF-23 và Calcitriol</h3>
+                        <p>
+                            Cân bằng phosphat được kiểm soát bởi mạng lưới tương tác giữa Ruột, Xương và Thận thông qua các kênh đồng vận chuyển Natri-Phosphat (NaPi):
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: #0284c7;">💧 1. Hormone Cận Giáp (PTH &mdash; Phosphaturic)</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Gắn vào thụ thể PTH1R tại màng đáy-bên tế bào ống lượn gần &rarr; kích hoạt cAMP/PKA gây <strong>nội hóa và tiêu hủy các kênh NaPi-IIa và NaPi-IIc ở màng đỉnh</strong> &rarr; ức chế mạnh tái hấp thu, tăng bài tiết phosphat qua nước tiểu.
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: #ea580c;">🦴 2. Fibroblast Growth Factor 23 (FGF-23)</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Do tế bào xương (osteocyte) tiết ra khi phosphat máu tăng. FGF-23 gắn vào phức hợp <strong>FGFR1-Klotho</strong> tại thận &rarr; bất hoạt kênh NaPi-IIa/IIc (thải phosphat) đồng thời ức chế men 1-alpha-hydroxylase &rarr; giảm tạo Calcitriol.
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: #059669;">☀️ 3. Calcitriol [1,25(OH)<sub>2</sub>D]</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Kích thích sự biểu hiện của kênh <strong>NaPi-IIb</strong> ở biểu mô ruột non &rarr; thúc đẩy hấp thu chủ động phosphat từ thức ăn vào máu.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- SVG DIAGRAM: HỆ THỐNG ĐIỀU HÒA PHOSPHAT -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 880 260" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="880" height="260" fill="var(--color-surface)" rx="12" />
+                                
+                                <!-- Center: Extracellular Phosphate -->
+                                <rect x="340" y="90" width="200" height="80" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2" />
+                                <text x="440" y="125" text-anchor="middle" font-size="13" font-weight="700" fill="#0284c7">PHOSPHAT HUYẾT THANH</text>
+                                <text x="440" y="145" text-anchor="middle" font-size="11" fill="var(--color-text-muted)">2.5 – 4.5 mg/dL (0.81 – 1.45 mmol/L)</text>
+
+                                <!-- Left: Gut absorption -->
+                                <rect x="30" y="90" width="230" height="80" rx="8" fill="var(--color-surface)" stroke="#059669" />
+                                <text x="145" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#059669">RUỘT NON (NaPi-IIb)</text>
+                                <text x="145" y="136" text-anchor="middle" font-size="10" fill="var(--color-text)">Calcitriol [1,25(OH)₂D] kích hoạt</text>
+                                <text x="145" y="152" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Tăng hấp thu Pi từ thức ăn</text>
+                                <path d="M 260 130 L 340 130" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)" />
+
+                                <!-- Right: Kidney Excretion -->
+                                <rect x="620" y="90" width="230" height="80" rx="8" fill="var(--color-surface)" stroke="#ea580c" />
+                                <text x="735" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="#ea580c">THẬN (NaPi-IIa / NaPi-IIc)</text>
+                                <text x="735" y="136" text-anchor="middle" font-size="10" fill="var(--color-text)">PTH &amp; FGF-23/Klotho ức chế</text>
+                                <text x="735" y="152" text-anchor="middle" font-size="10" fill="#dc2626">&rarr; Đào thải Pi ra nước tiểu</text>
+                                <path d="M 540 130 L 620 130" stroke="#ea580c" stroke-width="2" />
+
+                                <!-- Top: Bone -->
+                                <rect x="340" y="15" width="200" height="50" rx="8" fill="var(--color-surface)" stroke="#d97706" />
+                                <text x="440" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">XƯƠNG (Osteocytes)</text>
+                                <text x="440" y="52" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Tiết FGF-23 khi Pi tăng &bull; Dự trữ 85%</text>
+                                <path d="M 440 65 L 440 90" stroke="#d97706" stroke-width="2" stroke-dasharray="3" />
+                            </svg>
+                            <div class="diagram-caption">Sơ đồ tương tác 3 trục Ruột (NaPi-IIb) &ndash; Xương (FGF-23) &ndash; Thận (NaPi-IIa/IIc) trong điều hòa nội môi Phosphat.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: SINH LÝ BỆNH HẠ PHOSPHAT MÁU -->
+                <div class="physio-content">
+                    <h2 id="sinh-ly-benh-ha-phosphat-mau" class="section-title">
+                        <span>Phần II: Sinh Lý Bệnh Học Hạ Phosphat Máu (Hypophosphatemia)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Hạ phosphat máu được xác định khi nồng độ phosphat huyết thanh <strong>&lt; 2.5 mg/dL (&lt; 0.8 mmol/L)</strong>. Mức độ nặng nguy kịch khi <strong>&lt; 1.0 &ndash; 1.5 mg/dL (&lt; 0.32 mmol/L)</strong>.
+                        </p>
+
+                        <h3 id="co-che-ha-phosphat" class="subsection-title">2.1. Các nhóm nguyên nhân và cơ chế bệnh sinh trọng yếu</h3>
+
+                        <div class="p-grid">
+                            <!-- Shift -->
+                            <div class="p-card hypo">
+                                <div class="p-card-title hypo">🔄 1. Dịch Chuyển Vào Nội Bào (Transcellular Shift)</div>
+                                <p style="font-size:0.83rem;line-height:1.5;">
+                                    &bull; <strong>Hội chứng Nuôi ăn lại (Refeeding Syndrome):</strong> Ở bệnh nhân suy dinh dưỡng nặng, đói ăn kéo dài hoặc nghiện rượu, dự trữ phosphat nội bào đã cạn kiệt. Khi nạp carbohydrate đột ngột &rarr; kích thích tiết <strong>Insulin ồ ạt</strong> &rarr; kéo glucose, K<sup>+</sup>, Mg<sup>2+</sup> và <strong>bắt buộc phosphat đi kèm để phosphoryl hóa glucose (tạo G6P) và tổng hợp ATP</strong> &rarr; phosphat ngoại bào sụt giảm thảm hại.<br>
+                                    &bull; <strong>Kiềm hóa máu (Alkalemia / Kiềm hô hấp):</strong> Thở nhanh tăng thông khí làm H<sup>+</sup> đi ra ngoài &rarr; kiềm nội bào kích hoạt mạnh mẽ enzyme <strong>Phosphofructokinase (PFK)</strong> &rarr; tăng vọt đường phân hút phosphat vào tế bào.<br>
+                                    &bull; <strong>Thuốc cường &beta;<sub>2</sub>-adrenergic / Catecholamines:</strong> Kích thích đường phân nội bào.
+                                </p>
+                            </div>
+
+                            <!-- GI Loss & Renal Loss -->
+                            <div class="p-card hypo">
+                                <div class="p-card-title hypo">📉 2. Giảm Hấp Thu Tiêu Hóa &amp; Mất Qua Thận</div>
+                                <p style="font-size:0.83rem;line-height:1.5;">
+                                    &bull; <strong>Thuốc gắn Phosphat (Phosphate Binders):</strong> Sử dụng thuốc kháng acid chứa Nhôm hydroxide hoặc Canxi acetate liên kết phosphat trong lòng ruột tạo muối không tan.<br>
+                                    &bull; <strong>Kém hấp thu &amp; Thiếu hụt Vitamin D:</strong> Giảm biểu hiện kênh NaPi-IIb.<br>
+                                    &bull; <strong>Cường cận giáp (PHPT/SHPT):</strong> PTH cao liên tục thải phosphat qua nước tiểu.<br>
+                                    &bull; <strong>Hội chứng Fanconi:</strong> Tổn thương ống lượn gần mất khả năng tái hấp thu.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="doc-tinh-he-co-quan-ha-phosphat" class="subsection-title">2.2. Độc tính hệ cơ quan: Suy kiệt ATP và Giảm 2,3-DPG hồng cầu</h3>
+                        <div class="physio-grid">
+                            <div class="physio-grid-card" style="border-left: 4px solid #dc2626;">
+                                <div class="physio-grid-title" style="color: #dc2626;">🫁 1. Hệ Hô Hấp: Liệt Cơ Hoành &amp; Thất Bại Cai Máy Thở</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Thiếu hụt phosphat ngoại bào làm sụt giảm nguồn năng lượng <strong>ATP trong tế bào cơ hoành và cơ liên sườn</strong> &rarr; Suy giảm sức co bóp cơ hô hấp &rarr; <strong>Nguyên nhân hàng đầu gây thất bại khi cai máy thở (Weaning Failure) ở bệnh nhân ICU</strong> và dẫn đến suy hô hấp cấp tái phát.
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card" style="border-left: 4px solid #ea580c;">
+                                <div class="physio-grid-title" style="color: #ea580c;">🩸 2. Hệ Huyết Học: Tán Huyết &amp; Thiếu Oxy Mô Sâu</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Tán huyết cấp:</strong> Thiếu ATP làm màng hồng cầu mất tính đàn hồi, biến dạng và tự vỡ.<br>
+                                    &bull; <strong>Giảm 2,3-DPG hồng cầu:</strong> Làm đường cong phân ly Oxy-Hemoglobin <strong>dịch chuyển sang trái</strong> (tăng ái lực Hb với O<sub>2</sub>) &rarr; Hồng cầu giữ chặt oxy không giải phóng cho mô kẽ &rarr; <strong>Thiếu oxy tế bào mô nghiêm trọng</strong>.
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card" style="border-left: 4px solid #9333ea;">
+                                <div class="physio-grid-title" style="color: #9333ea;">🫀 3. Hệ Cơ Tim &amp; Cơ Xương</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Giảm co bóp cơ tim dẫn đến suy tim cấp tính hoặc sốc tim trơ với thuốc vận mạch; hoại tử tế bào cơ vân gây <strong>Tiêu cơ vân cấp (Rhabdomyolysis)</strong>.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Pearl lâm sàng &mdash; Bù Phosphat ở bệnh nhân ICU thất bại cai máy thở:</strong><br>
+                            Ở bệnh nhân hồi sức kéo dài không thể cai máy thở, kiểm tra phosphat máu là bắt buộc. Nếu [PO<sub>4</sub><sup>3-</sup>] &lt; 1.5 mg/dL (&lt; 0.5 mmol/L), chỉ định truyền tĩnh mạch <strong>Sodium Phosphate hoặc Potassium Phosphate</strong> (liều 0.08 &ndash; 0.24 mmol/kg pha trong NaCl 0.9% truyền chậm trong 4 &ndash; 6 giờ). Khôi phục nồng độ phosphat máu sẽ nhanh chóng cải thiện sức cơ hoành trong vòng 12 &ndash; 24 giờ.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: SINH LÝ BỆNH TĂNG PHOSPHAT MÁU -->
+                <div class="physio-content">
+                    <h2 id="sinh-ly-benh-tang-phosphat-mau" class="section-title">
+                        <span>Phần III: Sinh Lý Bệnh Học Tăng Phosphat Máu (Hyperphosphatemia)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Tăng phosphat máu được xác định khi nồng độ phosphat huyết thanh <strong>&gt; 5.0 mg/dL (&gt; 1.6 mmol/L)</strong>. Tác hại biểu hiện rõ khi nồng độ &gt; 6.0 mg/dL.
+                        </p>
+
+                        <h3 id="co-che-tang-phosphat" class="subsection-title">3.1. Các nhóm nguyên nhân chính</h3>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Suy giảm đào thải qua thận (&gt; 90% các ca lâm sàng):</strong> Trong Bệnh thận mạn (CKD) tiến triển khi GFR &lt; 30 mL/phút, khả năng bù trừ của PTH và FGF-23 bị cạn kiệt &rarr; tích tụ phosphat liên tục trong máu.</li>
+                            <li><strong>Phá hủy tế bào ồ ạt:</strong> Hội chứng ly giải u (Tumor Lysis Syndrome - TLS) sau hóa trị, Tiêu cơ vân cấp giải phóng lượng phosphat nội bào khổng lồ vào máu.</li>
+                            <li><strong>Suy cận giáp (Hypoparathyroidism):</strong> Thiếu PTH làm mất tác dụng ức chế kênh NaPi-IIa &rarr; tăng tái hấp thu phosphat tại ống lượn gần.</li>
+                            <li><strong>Thực phẩm giàu phụ gia phosphat:</strong> Các hợp chất phosphat vô cơ trong thức ăn nhanh có độ hấp thu tại ruột gần 100%.</li>
+                        </ul>
+
+                        <h3 id="doc-tinh-ckd-mbd-voi-hoa-mach" class="subsection-title">3.2. Độc tính mạn tính: Lắng đọng ngoại vị &amp; Vôi hóa áo giữa mạch máu</h3>
+
+                        <!-- CÔNG THỨC TÍCH SỐ CA X P -->
+                        <div class="formula-box">
+                            <div class="formula-label">Ngưỡng Nguy Cơ Lắng Đọng Tinh Thể Ngoại Vị &mdash; Tích Số Canxi &times; Phosphat</div>
+                            <div class="formula-main">
+                                Tích số [Ca &times; P] = Canxi toàn phần (mg/dL) &times; Phosphat (mg/dL) &nbsp;&ge;&nbsp; 55 mg<sup>2</sup>/dL<sup>2</sup>
+                            </div>
+                            <div class="formula-note">
+                                Khi [Ca &times; P] &ge; 55, tích số tan bị vượt ngưỡng &rarr; Canxi liên kết Phosphat kết tủa thành tinh thể vô định hình <strong>lắng đọng ngoại vị (Metastatic Calcification)</strong> tại mô mềm, khớp, nhu mô phổi, cơ tim và màng mạch mắt.
+                            </div>
+                        </div>
+
+                        <!-- VÒNG XOẮN VÔI HÓA MẠCH MÁU -->
+                        <div class="vicious-cycle">
+                            <div class="vicious-cycle-title">
+                                <i class="fa-solid fa-heart-crack"></i> CƠ CHẾ PHÂN TỬ: CHUYỂN DẠNG KIỂU HÌNH TẾ BÀO CƠ TRƠN VÀ VÔI HÓA ÁO GIỮA MẠCH MÁU
+                            </div>
+                            <div class="cycle-steps">
+                                <div class="cycle-step">
+                                    <div class="cycle-step-num">1</div>
+                                    <div class="cycle-step-text"><strong>Thấm nhập Phosphat:</strong> Phosphat máu cao đi vào tế bào cơ trơn mạch máu (VSMC) thông qua kênh đồng vận chuyển Pit-1.</div>
+                                </div>
+                                <div class="cycle-step">
+                                    <div class="cycle-step-num">2</div>
+                                    <div class="cycle-step-text"><strong>Chuyển dạng kiểu hình (Phenotypic Transdifferentiation):</strong> Phosphat nội bào kích hoạt các yếu tố phiên mã sinh xương <strong>Runx2 / Cbfa1</strong> và <strong>Osterix</strong>, biến đổi tế bào cơ trơn thành <em>tế bào có đặc tính giống nguyên bào xương (Osteoblast-like cells)</em>.</div>
+                                </div>
+                                <div class="cycle-step">
+                                    <div class="cycle-step-num">3</div>
+                                    <div class="cycle-step-text"><strong>Vôi hóa lớp áo giữa động mạch (Medial Vascular Calcification):</strong> Tế bào tiết ra các túi nền (matrix vesicles) chứa tinh thể canxi-phosphat lắng đọng vào lớp sợi chun của thành mạch.</div>
+                                </div>
+                                <div class="cycle-step">
+                                    <div class="cycle-step-num">4</div>
+                                    <div class="cycle-step-text"><strong>Hậu quả lâm sàng:</strong> Thành mạch xơ cứng, tăng vận tốc sóng mạch (PWV), phì đại thất trái nặng nề &rarr; <strong>Tăng vọt nguy cơ tử vong do đột quỵ và nhồi máu cơ tim ở bệnh nhân suy thận mạn</strong>.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: BẢNG TỔNG HỢP VÀ TÀI LIỆU THAM KHẢO -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-ha-tang-phosphat" class="section-title">
+                        <span>Phần IV: Bảng Tổng Hợp Đối Chiếu Hạ vs Tăng Phosphat Máu</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th>Đặc điểm lâm sàng</th>
+                                        <th>Hạ Phosphat Máu (Hypophosphatemia)</th>
+                                        <th>Tăng Phosphat Máu (Hyperphosphatemia)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Ngưỡng sinh hóa</strong></td>
+                                        <td>&lt; 2.5 mg/dL (&lt; 0.81 mmol/L)</td>
+                                        <td>&gt; 5.0 mg/dL (&gt; 1.62 mmol/L)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Bối cảnh lâm sàng điển hình</strong></td>
+                                        <td>Hội chứng nuôi ăn lại (Refeeding), nghiện rượu, kiềm hô hấp cấp, ICU.</td>
+                                        <td>Bệnh thận mạn CKD tiến triển (GFR &lt; 30), Tiêu cơ vân, Hội chứng ly giải u.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cơ chế phân tử cốt lõi</strong></td>
+                                        <td><strong>Suy kiệt ATP nội bào</strong> và sụt giảm 2,3-DPG hồng cầu (lệch trái $Hb\text{-}O_2$).</td>
+                                        <td><strong>Tích số [Ca &times; P] &ge; 55</strong> và chuyển dạng tế bào cơ trơn mạch máu (Runx2).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Biểu hiện nguy kịch</strong></td>
+                                        <td><strong>Liệt cơ hoành (thất bại cai máy thở)</strong>, suy tim cấp, tán huyết, tiêu cơ vân.</td>
+                                        <td>Hạ canxi máu thứ phát gây tetany; Vôi hóa động mạch áo giữa, xơ cứng mạch máu.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chiến lược điều trị</strong></td>
+                                        <td>Bù Phosphat IV (Sodium/Potassium Phosphate) hoặc đường uống.</td>
+                                        <td>Thuốc gắn phosphat tại ruột (Sevelamer, Lanthanum, Canxi), Lọc máu thận nhân tạo.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="ref-section">
+                    <h3><i class="fa-solid fa-book-medical"></i> TÀI LIỆU THAM KHẢO (REFERENCES)</h3>
+                    <ul class="ref-list">
+                        <li><span>[1]</span> da Silva JSV, Seres DS, Sabino K, et al. <strong>ASPEN Consensus Recommendations for Refeeding Syndrome.</strong> <em>Nutr Clin Pract</em>. 2020;35(2):178-195. doi:10.1002/ncp.10475.</li>
+                        <li><span>[2]</span> Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. <strong>KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease.</strong> <em>Kidney Int</em>. 2024;105(4S):S117-S314.</li>
+                        <li><span>[3]</span> Jono S, McKee MD, Murry CE, et al. <strong>Phosphate regulation of vascular smooth muscle cell calcification.</strong> <em>Circ Res</em>. 2000;87(10):E10-E17. doi:10.1161/01.res.87.10.e10.</li>
+                        <li><span>[4]</span> Bilezikian JP, Khan AA, Silverberg SJ, et al. <strong>Evaluation and Management of Primary Hyperparathyroidism.</strong> <em>J Bone Miner Res</em>. 2022;37(11):2293-2314.</li>
+                        <li><span>[5]</span> Barletta JF, et al. <strong>Fluids, Electrolytes, Acid-Base Disorders, and Nutrition Support.</strong> <em>ACCP Updates in Therapeutics</em>. 2015:1-51.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

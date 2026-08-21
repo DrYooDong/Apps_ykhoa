@@ -58,14 +58,23 @@ export class CategoryCoreMapper {
       color: '#ec4899',
       description: 'Dược thư, tra cứu tương tác thuốc và tối ưu liều'
     },
-    'pathophysiology': {
-      id: 'pathophysiology',
-      slug: 'pathophysiology',
-      name: 'Cơ sở Y khoa',
-      shortName: 'Cơ sở',
+    'basic-medical': {
+      id: 'basic-medical',
+      slug: 'basic-medical',
+      name: 'Basic Medical Sciences',
+      shortName: 'Basic Sciences',
       icon: 'fa-dna',
       color: '#8b5cf6',
-      description: 'Giải phẫu, sinh lý học và cơ chế bệnh sinh tương tác'
+      description: 'Giải phẫu, sinh lý học, cơ chế bệnh sinh, hóa sinh và dịch tễ học'
+    },
+    'pathophysiology': {
+      id: 'basic-medical',
+      slug: 'basic-medical',
+      name: 'Basic Medical Sciences',
+      shortName: 'Basic Sciences',
+      icon: 'fa-dna',
+      color: '#8b5cf6',
+      description: 'Giải phẫu, sinh lý học, cơ chế bệnh sinh, hóa sinh và dịch tễ học'
     },
     'ebm': {
       id: 'ebm',

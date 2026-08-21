@@ -1,6 +1,6 @@
 /**
  * Spaced Repetition Flashcard Engine — CliniPortal (Kỹ năng Lâm sàng)
- * Đồng bộ chuẩn giao diện, lật thẻ 3D, thanh tiến độ, bộ lọc & phím tắt theo sinhly-sinhlybenh.html
+ * Đồng bộ chuẩn giao diện, lật thẻ 3D, thanh tiến độ, bộ lọc & phím tắt theo co-che-benh-sinh.html
  */
 
 (function () {

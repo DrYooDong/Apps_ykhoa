@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const paths = [
     'd:/Apps_ykhoa/src/content/pathophysiology/co-che-benh-sinh.html',
-    'd:/Apps_ykhoa/src/content/pathophysiology/sinhly-sinhlybenh.html'
+    'd:/Apps_ykhoa/src/content/pathophysiology/co-che-benh-sinh.html'
 ];
 
 const card = `

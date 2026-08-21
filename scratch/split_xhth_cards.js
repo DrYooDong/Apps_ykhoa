@@ -66,18 +66,18 @@ if (hub.includes(oldCard)) {
 }
 
 // =========================================================
-// 2. Cập nhật sinhly-sinhlybenh.html: tách 1 card thành 2
+// 2. Cập nhật co-che-benh-sinh.html: tách 1 card thành 2
 // =========================================================
-const hubPath2 = 'd:/Apps_ykhoa/src/content/pathophysiology/sinhly-sinhlybenh.html';
+const hubPath2 = 'd:/Apps_ykhoa/src/content/pathophysiology/co-che-benh-sinh.html';
 let hub2 = fs.readFileSync(hubPath2, 'utf8');
 
 if (hub2.includes('slb-ccbs-xhth.html') && !hub2.includes('tab=ugib')) {
-    // Tìm và thay thế pattern trong sinhly-sinhlybenh.html (indent khác)
+    // Tìm và thay thế pattern trong co-che-benh-sinh.html (indent khác)
     const idx2 = hub2.indexOf('slb-ccbs-xhth.html');
     const blockStart = hub2.lastIndexOf('<a ', idx2);
     const blockEnd = hub2.indexOf('</a>', idx2) + 4;
     const oldBlock = hub2.substring(blockStart, blockEnd);
-    console.log('\nOld block in sinhly-sinhlybenh.html:');
+    console.log('\nOld block in co-che-benh-sinh.html:');
     console.log(oldBlock);
 
     const indent = '                                    ';
@@ -110,9 +110,9 @@ ${indent}</a>`;
 
     hub2 = hub2.substring(0, blockStart) + newCards2 + hub2.substring(blockEnd);
     fs.writeFileSync(hubPath2, hub2, 'utf8');
-    console.log('✅ sinhly-sinhlybenh.html updated (2 cards)');
+    console.log('✅ co-che-benh-sinh.html updated (2 cards)');
 } else if (hub2.includes('tab=ugib')) {
-    console.log('ℹ️  sinhly-sinhlybenh.html already has tab links');
+    console.log('ℹ️  co-che-benh-sinh.html already has tab links');
 } else {
-    console.log('⚠️  sinhly-sinhlybenh.html - xhth card not found');
+    console.log('⚠️  co-che-benh-sinh.html - xhth card not found');
 }

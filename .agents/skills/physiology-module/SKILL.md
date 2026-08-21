@@ -31,9 +31,9 @@ description: >
 ```
 src/content/pathophysiology/
 ├── giai-phau-sinh-ly.html               # [Web con 1] Hub Giải phẫu & Sinh lý
-├── sinh-ly-hoc.html                    # Trang chuyển hướng tương thích sang giai-phau-sinh-ly.html
+├── giai-phau-sinh-ly.html                    # Trang chuyển hướng tương thích sang giai-phau-sinh-ly.html
 ├── co-che-benh-sinh.html               # [Web con 2] Hub Cơ chế bệnh sinh - Sinh lý bệnh
-├── sinhly-sinhlybenh.html              # Trang tổng hợp & Chuyển hướng tự động
+├── co-che-benh-sinh.html              # Trang tổng hợp & Chuyển hướng tự động
 ├── readme.md                           # Giới thiệu phân hệ
 ├── pathophysiology-cases/              # ⭐ Phân hệ các bài Sinh lý bệnh & Cơ chế bệnh sinh (18+ trang)
 │   ├── HUONG_DAN_THIET_KE.md          # ⭐ Design guide chi tiết cho pathophysiology-cases

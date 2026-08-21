@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Trạng thái Tăng Áp Lực Thẩm Thấu do Đái tháo đường (Hyperglycemic Hyperosmolar State - HHS Pathophysiology): Phân tích nồng độ insulin tồn dư tối thiểu đủ ức chế Lipolysis nhưng bất lực trước tăng đường huyết, cơ chế lợi niệu thẩm thấu mất 12-15% nước cơ thể, vòng xoắn suy thận chức năng, áp lực thẩm thấu hiệu dụng > 300 mOsm/kg, nghịch lý bảo tồn huyết động, trạng thái tăng đông tắc mạch, tiêu cơ vân cấp và tiêu chuẩn chẩn đoán cập nhật Consensus 2024 / ADA 2026.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Tăng Áp Lực Thẩm Thấu do ĐTĐ (HHS) – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .hhs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .hhs-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hhs-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .hhs-card.hyper {
+            border-left: 4px solid #ea580c;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, transparent 100%);
+        }
+
+        .hhs-card.fluid {
+            border-left: 4px solid #0284c7;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+        }
+
+        .hhs-card.thromb {
+            border-left: 4px solid #dc2626;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, transparent 100%);
+        }
+
+        .hhs-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-left: 4px solid var(--color-primary, #0284c7);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .formula-box .formula-label {
+            font-size: 0.75rem;
+            color: var(--color-primary, #0284c7);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .formula-box .formula-main {
+            color: var(--color-text);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .formula-box .formula-note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.1) 0%, rgba(234, 88, 12, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-section h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .ref-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ref-list li {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            padding: 0.45rem 0;
+            border-bottom: 1px dashed var(--color-border);
+            line-height: 1.5;
+        }
+
+        .ref-list li:last-child { border-bottom: none; }
+        .ref-list li strong { color: var(--color-text); }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "&#127968; Trang chủ", "url": "../../../../index.html"}, {"label": "Cơ chế bệnh sinh", "url": "../co-che-benh-sinh.html"}, {"label": "Sinh lý bệnh Tăng Áp Lực Thẩm Thấu do ĐTĐ (HHS)"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <div style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(245,158,11,0.12);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:0.25rem 0.85rem;font-size:0.78rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.75rem;">
+                        <i class="fa-solid fa-venus-mars"></i> Phân hệ Nội tiết &ndash; Chuyển hóa &ndash; Cấp cứu
+                    </div>
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH TRẠNG THÁI TĂNG ÁP LỰC THẨM THẤU DO ĐÁI THÁO ĐƯỜNG (HHS)</h1>
+                    <p>Hyperglycemic Hyperosmolar State Pathophysiology &mdash; Phân tích sinh lý học nồng độ insulin tồn dư tối thiểu đủ ức chế Lipolysis nhưng bất lực trước tăng đường huyết, cơ chế lợi niệu thẩm thấu dữ dội gây mất 12 &ndash; 15% tổng lượng nước cơ thể, áp lực thẩm thấu hiệu dụng &gt; 300 mOsm/kg vs toàn phần &gt; 320 mOsm/kg, nghịch lý bảo tồn huyết động nhờ kéo nước nội bào, trạng thái tăng đông tắc mạch huyết khối, tiêu cơ vân cấp và tiêu chuẩn chẩn đoán cập nhật Consensus 2024 / ADA 2026.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Trạng thái Tăng Áp Lực Thẩm Thấu do Đái Tháo Đường (Hyperglycemic Hyperosmolar State &ndash; HHS)</span> là biến chứng cấp tính có tỷ lệ tử vong cao nhất (từ 10% đến 20%) trong các khủng hoảng tăng đường huyết ở người lớn tuổi mắc đái tháo đường típ 2. Khác với Toan Ceton (DKA), HHS tiến triển âm thầm qua nhiều ngày đến nhiều tuần, đặc trưng bởi tình trạng <strong>tăng glucose máu cực độ (&ge; 600 mg/dL)</strong>, <strong>tăng áp lực thẩm thấu huyết thanh dữ dội (&gt; 300 &ndash; 320 mOsm/kg)</strong> và <strong>mất nước nội &ndash; ngoại bào sâu sắc</strong> nhưng <em>không có tình trạng nhiễm toan ceton nặng</em>.
+                </p>
+
+                <!-- PHẦN I: SỰ KHÁC BIỆT CỐT LÕI GIỮA HHS VÀ DKA -->
+                <div class="physio-content">
+                    <h2 id="khac-biet-cot-loi-hhs-dka" class="section-title">
+                        <span>Phần I: Điểm Khác Biệt Quyết Định Giữa HHS và DKA: Vai Trò Của Insulin Tồn Dư</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="muc-do-thieu-hut-insulin" class="subsection-title">1.1. Mức độ thiếu hụt Insulin: Tuyệt đối trong DKA vs Tương đối trong HHS</h3>
+                        <p>
+                            Điểm khác biệt then chốt quyết định hai ngã rẽ bệnh sinh hoàn toàn khác nhau giữa HHS và DKA nằm ở <strong>nồng độ insulin tồn dư trong tuần hoàn tĩnh mạch cửa</strong>:
+                        </p>
+
+                        <div class="hhs-grid">
+                            <div class="hhs-card fluid">
+                                <div class="hhs-card-title" style="color:#0284c7;">
+                                    <i class="fa-solid fa-shield-halved"></i> 1. Ngưỡng Ức Chế Phân Giải Mỡ (Lipolysis Threshold)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Nồng độ insulin cần thiết để <strong>ức chế enzyme Lipase nhạy cảm hormone (HSL)</strong> tại mô mỡ chỉ bằng khoảng <strong>1/10 nồng độ insulin cần thiết để kích hoạt vận chuyển glucose</strong> vào cơ vân.<br>
+                                    Trong HHS, tế bào &beta; tụy vẫn duy trì được một <strong>lượng insulin nội sinh tối thiểu</strong> &rarr; Đủ để dập tắt quá trình phân giải triglycerid, không giải phóng ồ ạt acid béo tự do (FFA) và không khởi phát Ketogenesis tại gan.
+                                </p>
+                            </div>
+                            <div class="hhs-card hyper">
+                                <div class="hhs-card-title" style="color:#ea580c;">
+                                    <i class="fa-solid fa-arrow-trend-up"></i> 2. Bất Lực Trong Kiểm Soát Tăng Glucose Máu
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Tuy nhiên, lượng insulin tồn dư này hoàn toàn <strong>bất lực trước tình trạng đề kháng insulin nặng</strong> ở cơ và gan. Kết hợp với sự tăng vọt của các hormone đối kháng, gan tăng tốc tân tạo đường và các mô ngoại vi giảm sử dụng glucose, đẩy nồng độ đường máu tăng vọt không kiểm soát (&ge; 600 &ndash; 1200 mg/dL).
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="hormone-doi-khang-hhs" class="subsection-title">1.2. Vai trò của các Hormone Đối Kháng (Counterregulatory Hormones)</h3>
+                        <p>
+                            Sự bùng phát HHS thường được châm ngòi bởi một bệnh lý cấp tính hoặc biến cố stress sinh lý nặng (viêm phổi, nhiễm trùng đường tiết niệu, đột quỵ não, nhồi máu cơ tim, chấn thương, hoặc sử dụng thuốc gây tăng đường huyết như Corticosteroids, Lợi tiểu thiazide, Thuốc chống loạn thần không điển hình).
+                        </p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Glucagon và Cortisol:</strong> Kích hoạt tối đa hai con đường sản xuất glucose tại gan: <strong>Phân giải glycogen (Glycogenolysis)</strong> và <strong>Tân tạo glucose (Gluconeogenesis)</strong> từ lactate và amino acid.</li>
+                            <li><strong>Catecholamines (Epinephrine/Norepinephrine):</strong> Làm trầm trọng thêm tình trạng đề kháng insulin ở mô ngoại biên và ức chế thêm sự bài tiết insulin còn sót lại từ tuyến tụy.</li>
+                        </ul>
+
+                        <!-- SVG DIAGRAM: CON ĐƯỜNG PHÂN NHÁNH DKA vs HHS -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 920 380" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="920" height="380" fill="var(--color-surface)" rx="12" />
+
+                                <text x="460" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text)">SƠ ĐỒ PHÂN NHÁNH CƠ CHẾ BỆNH SINH: DKA vs HHS</text>
+
+                                <!-- Top Node -->
+                                <rect x="300" y="55" width="320" height="40" rx="8" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-width="2" />
+                                <text x="460" y="80" text-anchor="middle" font-size="12" font-weight="800" fill="#d97706">BIẾN CỐ KÍCH HOẠT: Stress / Nhiễm trùng / Bỏ thuốc</text>
+
+                                <!-- Left Branch: DKA -->
+                                <path d="M 370 95 L 200 135" stroke="#dc2626" stroke-width="2" />
+                                <rect x="50" y="135" width="300" height="90" rx="8" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.5" />
+                                <text x="200" y="158" text-anchor="middle" font-size="11" font-weight="800" fill="#dc2626">THIẾU INSULIN TUYỆT ĐỐI (DKA)</text>
+                                <text x="200" y="178" text-anchor="middle" font-size="10" fill="var(--color-text)">Mất ức chế Lipase &rarr; Phân giải mỡ bùng nổ</text>
+                                <text x="200" y="196" text-anchor="middle" font-size="10" fill="var(--color-text)">CPT-1 tạo Ceton &rarr; BOHB &ge; 3.0 mmol/L</text>
+                                <text x="200" y="214" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">&rarr; TOAN CHUYỂN HÓA NẶNG (pH &lt; 7.3)</text>
+
+                                <!-- Right Branch: HHS -->
+                                <path d="M 550 95 L 720 135" stroke="#0284c7" stroke-width="2" />
+                                <rect x="570" y="135" width="300" height="90" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="720" y="158" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">CÒN INSULIN TỒN DƯ TỐI THIỂU (HHS)</text>
+                                <text x="720" y="178" text-anchor="middle" font-size="10" fill="var(--color-text)">Đủ ức chế Lipolysis &amp; Ketogenesis</text>
+                                <text x="720" y="196" text-anchor="middle" font-size="10" fill="var(--color-text)">Không có toan ceton nặng (BOHB &lt; 3.0)</text>
+                                <text x="720" y="214" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7">&rarr; TÂN TẠO GLUCOSE KHÔNG KIỂM SOÁT</text>
+
+                                <!-- Downstream HHS -->
+                                <path d="M 720 225 L 720 255" stroke="#0284c7" stroke-width="2" />
+                                <rect x="570" y="255" width="300" height="100" rx="8" fill="rgba(234, 88, 12, 0.08)" stroke="#ea580c" stroke-width="2" />
+                                <text x="720" y="278" text-anchor="middle" font-size="11" font-weight="800" fill="#ea580c">TRẠNG THÁI TĂNG ÁP LỰC THẨM THẤU (HHS)</text>
+                                <text x="720" y="298" text-anchor="middle" font-size="10" fill="var(--color-text)">Glucose máu cực độ &ge; 600 mg/dL</text>
+                                <text x="720" y="316" text-anchor="middle" font-size="10" fill="var(--color-text)">Bài niệu thẩm thấu dữ dội &bull; Mất 12-15% nước</text>
+                                <text x="720" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#ea580c">Áp lực thẩm thấu hiệu dụng &gt; 300 mOsm/kg</text>
+
+                                <!-- Downstream DKA -->
+                                <path d="M 200 225 L 200 280" stroke="#dc2626" stroke-width="2" />
+                                <rect x="50" y="280" width="300" height="75" rx="8" fill="rgba(220, 38, 38, 0.08)" stroke="#dc2626" stroke-width="2" />
+                                <text x="200" y="303" text-anchor="middle" font-size="11" font-weight="800" fill="#dc2626">TOAN CETON DO ĐTĐ (DKA)</text>
+                                <text x="200" y="323" text-anchor="middle" font-size="10" fill="var(--color-text)">Khởi phát nhanh trong vài giờ &ndash; vài ngày</text>
+                                <text x="200" y="341" text-anchor="middle" font-size="10" fill="var(--color-text)">Mất nước 5 &ndash; 7% trọng lượng cơ thể</text>
+                            </svg>
+                            <div class="diagram-caption">Hình 1: Sơ đồ đối chiếu ngã rẽ bệnh sinh giữa DKA và HHS. Nồng độ insulin tồn dư trong HHS ngăn chặn quá trình tạo ceton gây toan máu, nhưng thúc đẩy tăng đường huyết cực độ kéo dài nhiều tuần dẫn đến mất nước tế bào và tăng áp lực thẩm thấu dữ dội.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN II: LỢI NIỆU THẨM THẤU & VÒNG XOẮN SUY THẬN -->
+                <div class="physio-content">
+                    <h2 id="loi-nieu-tham-thau-suy-than" class="section-title">
+                        <span>Phần II: Sinh Lý Bệnh Lợi Niệu Thẩm Thấu, Mất Nước Sâu Sắc &amp; Vòng Xoắn Suy Thận</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="co-che-loi-nieu-tham-thau" class="subsection-title">2.1. Lợi niệu thẩm thấu dữ dội và Mất nước 12 &ndash; 15% trọng lượng cơ thể</h3>
+                        <p>
+                            Khi nồng độ glucose máu vượt ngưỡng tái hấp thu của ống thận (khoảng <strong>180 mg/dL hay 10 mmol/L</strong>), glucose tràn vào lòng ống thận hoạt động như một chất hoạt hóa thẩm thấu mạnh, ngăn cản sự tái hấp thu nước và kéo theo một lượng nước khổng lồ ra nước tiểu:
+                        </p>
+
+                        <div class="formula-box">
+                            <div class="formula-label">QUY MÔ MẤT NƯỚC VÀ THÂM HỤT THỂ TÍCH TRONG HHS</div>
+                            <div class="formula-main">
+                                Thâm hụt nước: 12% &ndash; 15% trọng lượng cơ thể (Tương đương 100 &ndash; 220 mL/kg nước hay 8 &ndash; 12 LÍT DỊCH)
+                            </div>
+                            <div class="formula-note">
+                                Vì HHS diễn tiến âm thầm kéo dài qua nhiều ngày đến nhiều tuần ở bệnh nhân lớn tuổi (thường có phản xạ khát bị suy giảm hoặc không tự tiếp cận được nguồn nước), lượng nước mất trong HHS <strong>gấp 2 &ndash; 3 lần lượng nước mất trong DKA</strong>.
+                            </div>
+                        </div>
+
+                        <h3 id="vong-xoan-suy-than-chuc-nang" class="subsection-title">2.2. Vòng xoắn bệnh lý Suy Thận Chức Năng (Pre-renal AKI)</h3>
+                        <p>
+                            Tình trạng mất nước ngoại bào ồ ạt kích hoạt một vòng xoắn bệnh lý nguy hiểm:
+                        </p>
+
+                        <div class="pathway-chain">
+                            <span class="pathway-node red">Lợi niệu thẩm thấu</span>
+                            <span class="pathway-arrow">&rarr;</span>
+                            <span class="pathway-node red">Mất nước &amp; Giảm thể tích tuần hoàn</span>
+                            <span class="pathway-arrow">&rarr;</span>
+                            <span class="pathway-node red">Giảm tưới máu thận &amp; Sụt giảm eGFR</span>
+                            <span class="pathway-arrow">&rarr;</span>
+                            <span class="pathway-node red">Mất khả năng thải Glucose qua thận</span>
+                            <span class="pathway-arrow">&rarr;</span>
+                            <span class="pathway-node red">Glucose máu tăng vọt &ge; 1000 mg/dL</span>
+                        </div>
+
+                        <h3 id="nghich-ly-bao-ton-huyet-dong" class="subsection-title">2.3. Nghịch lý Bảo tồn Huyết động (Hemodynamic Paradox)</h3>
+
+                        <div class="key-concept">
+                            🔑 <strong>Tại sao bệnh nhân mất 10 lít nước nhưng ban đầu vẫn không tụt huyết áp rõ rệt?</strong><br>
+                            Khi nồng độ glucose máu tăng lên mức cực độ (&ge; 600 &ndash; 1000 mg/dL), nó tạo ra một áp lực thẩm thấu ưu trương khổng lồ trong lòng mạch. Theo định luật thẩm thấu, nước sẽ bị <strong>liên tục kéo từ khoang nội bào (trong tế bào) ra khoang ngoại bào (lòng mạch)</strong>.<br>
+                            Hiện tượng này đóng vai trò như một cơ chế bù trừ tự nhiên giúp tạm thời duy trì thể tích tuần hoàn hiệu dụng và giữ huyết áp ổn định. Tuy nhiên, cái giá phải trả là tình trạng <strong>mất nước và teo nhỏ tế bào nghiêm trọng (Severe Intracellular Dehydration)</strong>, đặc biệt là tế bào thần kinh não bộ.
+                        </div>
+
+                        <h3 id="tham-hut-dien-giai" class="subsection-title">2.4. Thâm hụt Điện Giải Toàn Thể Nặng Nề</h3>
+                        <p>
+                            Quá trình bài niệu thẩm thấu kéo dài không chỉ kéo nước mà còn làm thất thoát một lượng khổng lồ các ion điện giải quan trọng:
+                        </p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>Natri (Na<sup>+</sup> thâm hụt 5 &ndash; 13 mmol/kg):</strong> Thất thoát qua nước tiểu. Nồng độ Natri đo được ban đầu thường thấp giả tạo do hiệu ứng pha loãng thẩm thấu của Glucose (xem công thức hiệu chỉnh).</li>
+                            <li><strong>Kali (K<sup>+</sup> thâm hụt 4 &ndash; 6 mmol/kg):</strong> Mất qua nước tiểu do dòng chảy ống thận cao và cường Aldosterone thứ phát do giảm thể tích máu. Tương tự DKA, Kali máu có thể bình thường do dịch chuyển ngoại bào nhưng tổng lượng dự trữ toàn thân cạn kiệt sâu sắc.</li>
+                            <li><strong>Phosphat và Magie:</strong> Thất thoát nặng qua nước tiểu, làm suy giảm năng lượng ATP và tăng nguy cơ yếu cơ hoành, tiêu cơ vân cấp.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PHẦN III: THẦN KINH, TĂNG ĐÔNG & TIÊU CƠ VÂN -->
+                <div class="physio-content">
+                    <h2 id="than-kinh-tang-dong-tieu-co-van" class="section-title">
+                        <span>Phần III: Rối Loạn Thần Kinh Trung Ương, Trạng Thái Tăng Đông &amp; Tiêu Cơ Vân Cấp</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="co-che-suy-giam-than-kinh" class="subsection-title">3.1. Cơ chế Suy Giảm Ý Thức &amp; Tương quan Áp Lực Thẩm Thấu</h3>
+                        <p>
+                            Mức độ suy giảm tri giác (lơ mơ, sững sờ, co giật cục bộ hoặc hôn mê sâu) ở bệnh nhân HHS tương quan tuyến tính trực tiếp với <strong>Áp lực Thẩm thấu Hiệu dụng (Effective Serum Osmolality)</strong>:
+                        </p>
+
+                        <div class="formula-box">
+                            <div class="formula-label">CÔNG THỨC TÍNH ÁP LỰC THẨM THẤU VÀ NATRI HIỆU CHỈNH</div>
+                            <div class="formula-main">
+                                1. Áp lực thẩm thấu hiệu dụng (mOsm/kg) = 2 &times; Na<sup>+</sup> (mmol/L) + Glucose (mmol/L)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;[hoặc 2 &times; Na<sup>+</sup> (mEq/L) + Glucose (mg/dL) / 18]<br><br>
+                                2. Áp lực thẩm thấu toàn phần (mOsm/kg) = 2 &times; Na<sup>+</sup> + Glucose + Urea (đơn vị mmol/L)<br><br>
+                                3. Natri hiệu chỉnh theo Katz = Na<sup>+</sup> đo được + 0.016 &times; (Glucose [mg/dL] &minus; 100)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;[hoặc Natri hiệu chỉnh = Na<sup>+</sup> đo được + 1.6 &times; (Glucose [mmol/L] &minus; 5.5) / 5.5]
+                            </div>
+                            <div class="formula-note">
+                                <strong>Ngưỡng tổn thương thần kinh:</strong> Khi áp lực thẩm thấu hiệu dụng <strong>&gt; 320 mOsm/kg</strong>, nước bị rút kiệt khỏi tế bào não gây co rút nơ-ron và ức chế dẫn truyền synap.<br>
+                                ⚠️ <strong>Cảnh báo ODS &amp; Phù não:</strong> Tốc độ giảm áp lực thẩm thấu trong quá trình điều trị không được vượt quá <strong>3 &ndash; 8 mOsm/kg/giờ</strong> để phòng ngừa biến chứng phù não dội ngược hoặc Hội chứng hủy myelin cầu não (Osmotic Demyelination Syndrome &ndash; ODS).
+                            </div>
+                        </div>
+
+                        <h3 id="trang-thai-tang-dong" class="subsection-title">3.2. Trạng thái Tăng Đông Nặng &amp; Biến chứng Tắc Mạch (Thrombosis)</h3>
+                        <p>
+                            Bệnh nhân HHS có nguy cơ hình thành huyết khối tắc mạch cao gấp nhiều lần so với DKA do sự hội tụ của "tam giác Virchow" bệnh lý:
+                        </p>
+
+                        <div class="hhs-grid">
+                            <div class="hhs-card thromb">
+                                <div class="hhs-card-title" style="color:#dc2626;">
+                                    <i class="fa-solid fa-heart-crack"></i> 1. Độ Nhớt Máu Tăng Cực Cao (Hyperviscosity)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Sự cô đặc máu nặng nề do mất 8 &ndash; 12 lít nước làm tăng độ nhớt của dòng máu, làm chậm dòng chảy tuần hoàn vi mạch.
+                                </p>
+                            </div>
+                            <div class="hhs-card thromb">
+                                <div class="hhs-card-title" style="color:#dc2626;">
+                                    <i class="fa-solid fa-burst"></i> 2. Tổn Thương Nội Mô Do Glucose Toxicity
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Đường huyết cao và các gốc oxy hóa tự do (ROS) làm tổn thương lớp glycocalyx nội mô, kích hoạt bộc lộ yếu tố mô (Tissue Factor) và kết tập tiểu cầu.
+                                </p>
+                            </div>
+                            <div class="hhs-card thromb">
+                                <div class="hhs-card-title" style="color:#dc2626;">
+                                    <i class="fa-solid fa-bed-pulse"></i> 3. Nguy Cơ Biến Chứng Tắc Mạch Tử Vong
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Dẫn đến huyết khối tĩnh mạch sâu (DVT), thuyên tắc động mạch phổi (PE), nhồi máu cơ tim cấp, tắc mạch mạc treo và đột quỵ nhồi máu não.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="tieu-co-van-cap" class="subsection-title">3.3. Biến chứng Tiêu Cơ Vân Cấp (Rhabdomyolysis)</h3>
+                        <p>
+                            Tình trạng mất nước nội bào nặng nề kết hợp với thiếu hụt nồng độ Phosphat và Magie trong tế bào cơ làm tê liệt quá trình tái tạo ATP, phá vỡ tính toàn vẹn của màng tế bào myocyte &rarr; <strong>Tiêu cơ vân cấp</strong> giải phóng lượng lớn men CK (Creatine Kinase) và <strong>Myoglobin</strong> vào máu, gây tắc nghẽn và độc trực tiếp lên ống thận, khởi phát suy thận cấp hoại tử ống thận cấp (ATN).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- PHẦN IV: TIÊU CHUẨN CHẨN ĐOÁN CẬP NHẬT & CHIẾN LƯỢC HỒI SỨC -->
+                <div class="physio-content">
+                    <h2 id="tieu-chuan-chan-doan-hoi-suc" class="section-title">
+                        <span>Phần IV: Tiêu Chuẩn Chẩn Đoán Cập Nhật (Consensus 2024 / ADA 2026) &amp; Chiến Lược Hồi Sức</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="tieu-chuan-chan-doan-hhs-2024" class="subsection-title">4.1. Bảng Tiêu Chuẩn Chẩn Đoán HHS Đồng Thuận Quốc Tế 2024 &amp; ADA 2026</h3>
+
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Chỉ Số Xét Nghiệm</th>
+                                        <th style="width: 30%; color: #0284c7;">Ngưỡng Giá Trị Chẩn Đoán</th>
+                                        <th style="width: 45%;">Ý Nghĩa Sinh Lý Học &amp; Điểm Thay Đổi Mới</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Glucose Huyết Tương</strong></td>
+                                        <td><strong>&ge; 600 mg/dL (&ge; 33.3 mmol/L)</strong></td>
+                                        <td>Thể hiện tình trạng tăng glucose máu cực độ do thâm hụt insulin tương đối kéo dài kết hợp suy thận chức năng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Áp Lực Thẩm Thấu Huyết Thanh</strong></td>
+                                        <td><strong>Hiệu dụng &gt; 300 mOsm/kg</strong><br>hoặc <strong>Toàn phần &gt; 320 mOsm/kg</strong></td>
+                                        <td><strong>Cập nhật mới 2024:</strong> Đưa áp lực thẩm thấu toàn phần vào tiêu chuẩn để phản ánh chính xác mức độ mất nước sâu sắc (khi urê máu tăng cao do suy thận chức năng).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tình Trạng Ketone Máu / Niệu</strong></td>
+                                        <td><strong>BOHB máu &lt; 3.0 mmol/L</strong><br>(hoặc ketone nước tiểu &lt; 2+)</td>
+                                        <td>Khẳng định sự vắng mặt của tình trạng toan ceton nặng (nồng độ insulin tồn dư vẫn đủ ức chế Ketogenesis). BOHB máu là tiêu chuẩn vàng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chỉ Số Toan &ndash; Kiềm</strong></td>
+                                        <td><strong>pH tĩnh mạch &ge; 7.30</strong><br>và <strong>Bicarbonate &ge; 15 mmol/L</strong></td>
+                                        <td><strong>Cập nhật mới 2024:</strong> Hạ ngưỡng Bicarbonate từ 18 xuống <strong>15 mmol/L</strong> để cho phép một mức độ toan hóa nhẹ do giảm tưới máu mô (toan lactic) hoặc insulinopenia nhẹ.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Trạng Thái Tâm Thần</strong></td>
+                                        <td><strong>Đã loại bỏ</strong> khỏi tiêu chí bắt buộc</td>
+                                        <td>Nhiều bệnh nhân HHS có thể trạng rất mệt mỏi nhưng nhận thức vẫn tỉnh táo, do đó không bắt buộc phải có hôn mê/lơ mơ mới chẩn đoán được.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 id="chien-luoc-hoi-suc-hhs" class="subsection-title">4.2. Chiến lược Hồi Sức Dịch Thể &amp; Liệu Pháp Insulin An Toàn</h3>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>Quy tắc vàng trong cấp cứu HHS: BỒI PHỤ DỊCH THỂ LÀ ƯU TIÊN SỐ 1 &mdash; KHÔNG TRUYỀN INSULIN BOLUS LIỀU CAO BAN ĐẦU!</strong><br>
+                            Nếu truyền insulin liều cao ngay từ đầu khi chưa bù đủ dịch, glucose máu sẽ tụt nhanh làm sụt giảm áp lực thẩm thấu lòng mạch, khiến nước bị hút ngược vào tế bào &rarr; <strong>gây trụy mạch, sốc giảm thể tích và tử vong</strong>.
+                        </div>
+
+                        <div class="hhs-grid">
+                            <div class="hhs-card fluid">
+                                <div class="hhs-card-title" style="color:#0284c7;">
+                                    <i class="fa-solid fa-bottle-water"></i> 1. Hồi Sức Dịch Thể Từng Bước
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Giờ 1 &ndash; 2:</strong> Truyền dung dịch tinh thể đẳng trương (NaCl 0.9% hoặc dung dịch tinh thể cân bằng) <strong>1000 &ndash; 1500 mL/giờ</strong> để khôi phục thể tích tuần hoàn và tưới máu thận.<br>
+                                    &bull; <strong>Sau đó:</strong> Đánh giá <strong>Natri hiệu chỉnh</strong>:<br>
+                                    - Nếu Natri hiệu chỉnh bình thường hoặc cao &rarr; Chuyển sang <strong>NaCl 0.45% (nhược trương)</strong> tốc độ 250 &ndash; 500 mL/giờ để bù nước tự do cho khoang nội bào.<br>
+                                    - Nếu Natri hiệu chỉnh thấp &rarr; Tiếp tục dùng NaCl 0.9%.<br>
+                                    &bull; Thêm Dextrose 5% khi glucose máu giảm xuống <strong>&lt; 300 mg/dL</strong> để giữ đường huyết ở mức 200 &ndash; 300 mg/dL cho đến khi áp lực thẩm thấu hồi phục an toàn.
+                                </p>
+                            </div>
+
+                            <div class="hhs-card hyper">
+                                <div class="hhs-card-title" style="color:#ea580c;">
+                                    <i class="fa-solid fa-syringe"></i> 2. Liệu Pháp Insulin &amp; Kiểm Soát Điện Giải
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; Bắt đầu truyền insulin tĩnh mạch liên tục liều thấp <strong>0.05 &ndash; 0.1 units/kg/giờ</strong> CHỈ SAU KHI đã bù dịch ban đầu và xác nhận <strong>Kali &ge; 3.5 mmol/L</strong>.<br>
+                                    &bull; Mục tiêu giảm glucose máu an toàn: <strong>50 &ndash; 75 mg/dL/giờ</strong>.<br>
+                                    &bull; Bù Kali liên tục để duy trì nồng độ Kali máu từ <strong>4.0 &ndash; 5.0 mmol/L</strong>.<br>
+                                    &bull; <strong>Dự phòng huyết khối:</strong> Bắt buộc sử dụng Heparin trọng lượng phân tử thấp (LMWH) dự phòng tắc mạch cho mọi bệnh nhân HHS nếu không có chống chỉ định xuất huyết.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="ref-section">
+                    <h3><i class="fa-solid fa-book-medical"></i> Tài Liệu Tham Khảo (References &mdash; AMA Standard)</h3>
+                    <ul class="ref-list">
+                        <li><strong>1.</strong> Umpierrez GE, Davis GM, ElSayed NA, et al. Hyperglycemic crises in adults with diabetes: A consensus report. <i>Diabetes Care</i>. 2024;47(8):1257-1275. doi:10.2337/dci24-0032.</li>
+                        <li><strong>2.</strong> Rodriguez Alvarez M, colleagues. Hyperglycemic crises in adults: A look at the 2024 consensus report. <i>Cleve Clin J Med</i>. 2025;92(3):152-156. doi:10.3949/ccjm.92a.24089.</li>
+                        <li><strong>3.</strong> American Diabetes Association Professional Practice Committee. 16. Diabetes care in the hospital: Standards of Care in Diabetes—2026. <i>Diabetes Care</i>. 2026;49(Suppl. 1):S339–S355. doi:10.2337/dc26-S016.</li>
+                        <li><strong>4.</strong> Glaser N, Department of Pediatrics, University of California, Davis School of Medicine. ISPAD Clinical Practice Consensus Guidelines 2022: Diabetic ketoacidosis and hyperglycemic hyperosmolar state in children and adolescents. <i>Pediatr Diabetes</i>. 2022;23:835-856. doi:10.1111/pedi.13406.</li>
+                        <li><strong>5.</strong> Pasquel FJ, Umpierrez GE. Hyperosmolar hyperglycemic state: a historic review of the clinical presentation, diagnosis, and treatment. <i>Diabetes Care</i>. 2014;37(11):3124-3131. doi:10.2337/dc14-0984.</li>
+                        <li><strong>6.</strong> Jameson JL, Fauci AS, Kasper DL, Hauser SL, Longo DL, Loscalzo J. <i>Harrison's Principles of Internal Medicine</i>. 21st ed. McGraw-Hill Education; 2022. Chapter 396: Diabetes Mellitus: Complications.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

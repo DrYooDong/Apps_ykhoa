@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHEM-14: Chuyển Hóa Glucid Toàn Diện – Đường Phân, Krebs, HMP, Glycogen &amp; Tân Tạo Đường – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="../../js/physio-shared.ts"></script>
+
+    <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+
+        .biochem-article-header {
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .biochem-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* HEADINGS TYPOGRAPHY */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .h4-title,
+        .article-section h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--color-text, #1e293b);
+            margin: 1.25rem 0 0.5rem 0;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        [data-theme="dark"] .h4-title,
+        [data-theme="dark"] .article-section h4 {
+            color: #f1f5f9;
+        }
+
+        /* Callout Boxes */
+        .reaction-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-left: 4px solid #10b981;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+        }
+
+        .lab-table th,
+        .lab-table td {
+            border: 1px solid var(--color-border, #e2e8f0);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .lab-table th {
+            background: var(--color-bg, #f8fafc);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        .lab-table tbody tr:nth-child(even) {
+            background: var(--color-bg, #f8fafc);
+        }
+
+        [data-theme="dark"] .lab-table th {
+            background: var(--color-surface-2, #1e293b);
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .lab-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="dark"] .feature-card {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        .chem-diagram-container {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+
+        [data-theme="dark"] .chem-diagram-container {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+        }
+
+        .chem-diagram-caption {
+            font-size: 0.875rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .code-pill {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(2, 132, 199, 0.1);
+            color: var(--color-primary, #0284c7);
+            padding: 0.15rem 0.45rem;
+            border-radius: 6px;
+            font-size: 0.88em;
+        }
+
+        [data-theme="dark"] .code-pill {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        .chem-table-subtext {
+            font-size: 0.82rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.35rem;
+            line-height: 1.4;
+        }
+
+        .concept-chip {
+            display: inline-block;
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-right: 0.35rem;
+            margin-bottom: 0.35rem;
+        }
+        .chip-blue { background: rgba(2, 132, 199, 0.12); color: #0284c7; }
+        .chip-green { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+        .chip-amber { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+        .chip-purple { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; }
+        .chip-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+
+        [data-theme="dark"] .chip-blue { color: #38bdf8; }
+        [data-theme="dark"] .chip-green { color: #34d399; }
+        [data-theme="dark"] .chip-amber { color: #fbbf24; }
+        [data-theme="dark"] .chip-purple { color: #a78bfa; }
+        [data-theme="dark"] .chip-red { color: #f87171; }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- HEADER -->
+        <header class="biochem-article-header">
+            <span class="biochem-badge"><i class="fa-solid fa-fire-flame-curved"></i> CHEM-14 • Khối 4: Chuyển Hóa Trung Gian</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 800; color: #ffffff; line-height: 1.25;">
+                Chuyển Hóa Glucid Toàn Diện
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 920px;">
+                Hệ thống hóa toàn bộ các con đường chuyển hóa Carbohydrate trong cơ thể: Hấp thu (SGLT-1, GLUT), Đường phân HDP (10 bước, kỵ khí vs hiếu khí), Chu trình Krebs (8 phản ứng, 30–32 ATP), Con đường HMP Shunt (NADPH &amp; Thiếu G6PD Favism), Chuyển hóa Glycogen (Glycogenin, Phosphorylase), Tân tạo đường (4 enzyme bypass), Chuyển hóa Fructose/Galactose và 8 Bệnh ứ dự trữ Glycogen (GSD).
+            </p>
+        </header>
+
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-utensils"></i> 1. Tiêu Hóa &amp; Hấp Thu</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-bolt"></i> 2. Đường Phân (Glycolysis)</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-arrows-spin"></i> 3. Chu Trình Krebs (TCA)</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-shield-virus"></i> 4. Con Đường HMP &amp; G6PD</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-cubes-stacked"></i> 5. Chuyển Hóa Glycogen</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-arrow-up-right-dots"></i> 6. Con Đường Tân Tạo Đường</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-triangle-exclamation"></i> 7. Rối Loạn &amp; Bệnh Học GSD</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vials"></i> 8. Bilan Cận Lâm Sàng</a>
+            </div>
+        </nav>
+
+        <!-- ========================================== -->
+        <!-- SECTION 1: TIÊU HÓA & HẤP THU -->
+        <!-- ========================================== -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-utensils"></i> 1. Tổng Quan &amp; Tiêu Hóa, Hấp Thu Glucid</h2>
+            
+            <h3 class="subsection-title"><i class="fa-solid fa-wheat-awn"></i> 1.1. Tiêu Hóa Glucid Ở Ống Tiêu Hóa</h3>
+            <p>
+                Glucid thức ăn (tinh bột, glycogen, disaccharid) được thủy phân tuần tự nhờ hệ thống enzym tiêu hóa:
+            </p>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Miệng:</strong> <strong>&alpha;-Amylase nước bọt</strong> thủy phân liên kết &alpha;-1,4-glucosid tạo dextrin và maltose (bị bất hoạt tại dạ dày do acid dịch vị).</li>
+                <li><strong>Ruột non:</strong> <strong>&alpha;-Amylase tụy</strong> tiếp tục thủy phân triệt để thành oligosaccharid và disaccharid. Các enzym tại vi nhung mao niêm mạc ruột hoàn tất quá trình:
+                    <br>&bull; <em>Maltase:</em> Maltose &rarr; 2 Glucose.
+                    <br>&bull; <em>Lactase:</em> Lactose &rarr; Glucose + Galactose.
+                    <br>&bull; <em>Sacarase:</em> Sacarose &rarr; Glucose + Fructose.
+                </li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-arrow-right-to-bracket"></i> 1.2. Cơ Chế Vận Chuyển Qua Màng Niêm Mạc Ruột (SGLT &amp; GLUT)</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <span class="concept-chip chip-blue">Màng Đỉnh Vi Nhung Mao</span>
+                    <h4 style="margin: 0.5rem 0; color: var(--color-primary, #0284c7);">SGLT-1 &amp; GLUT-5</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        &bull; <strong>Glucose &amp; Galactose:</strong> Vận chuyển tích cực thứ cấp qua <strong>SGLT-1</strong> (đồng vận chuyển cùng 2 Na<sup>+</sup>, phụ thuộc bơm Na<sup>+</sup>/K<sup>+</sup>-ATPase).
+                        <br>&bull; <strong>Fructose:</strong> Khuếch tán thuận lợi không phụ thuộc Na<sup>+</sup> qua <strong>GLUT-5</strong>.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-green">Màng Đáy - Bên</span>
+                    <h4 style="margin: 0.5rem 0; color: #10b981;">GLUT-2 Ra Tĩnh Mạch Cửa</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Cả 3 monosaccharid (Glucose, Galactose, Fructose) được xuất khẩu vào dịch kẽ và mao mạch tĩnh mạch cửa về gan nhờ <strong>GLUT-2</strong> (khuếch tán thuận lợi có sức chứa cao).
+                        <br><em>Tốc độ hấp thu:</em> Galactose &gt; Glucose &gt; Fructose &gt; Pentose.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 2: ĐƯỜNG PHÂN (GLYCOLYSIS) -->
+        <!-- ========================================== -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-bolt"></i> 2. Thoái Hóa Glucose Theo Con Đường Đường Phân (Glycolysis / HDP)</h2>
+            <p>
+                Xảy ra hoàn toàn trong <strong>bào tương</strong> của mọi tế bào, biến đổi 1 Glucose (6C) &rarr; 2 Pyruvate (3C), sinh ra ATP và NADH.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-list-ol"></i> 2.1. Diễn Biến 10 Phản Ứng &amp; Ba Điểm Chốt Không Thuận Nghịch</h3>
+            <div class="reaction-box">
+                <ol style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.45rem; line-height: 1.55;">
+                    <li><strong>[Phản ứng 1] Glucose + ATP &rarr; Glucose-6-phosphate (G6P) + ADP:</strong> Xúc tác bởi <em>Hexokinase</em> (mô ngoài gan, Km thấp &approx; 0.1 mM, bị ức chế bởi G6P) hoặc <em>Glucokinase</em> (gan/tụy, Km cao &approx; 10 mM, không bị ức chế bởi G6P). <strong style="color: #ef4444;">[Điểm chốt 1 - Một chiều]</strong></li>
+                    <li><strong>[Phản ứng 2] G6P &harr; Fructose-6-phosphate (F6P):</strong> Xúc tác bởi <em>Phosphoglucose Isomerase</em>.</li>
+                    <li><strong>[Phản ứng 3] F6P + ATP &rarr; Fructose-1,6-bisphosphate (F1,6BP) + ADP:</strong> Xúc tác bởi <em>Phosphofructokinase-1 (PFK-1)</em>. <strong style="color: #ef4444;">[Điểm chốt 2 - Giới hạn tốc độ then chốt]</strong> (Hoạt hóa bởi AMP, F-2,6-BP; ức chế bởi ATP, Citrate).</li>
+                    <li><strong>[Phản ứng 4] F1,6BP &harr; DHAP + Glyceraldehyde-3-phosphate (GAP):</strong> Cắt đôi mạch bởi <em>Aldolase</em>.</li>
+                    <li><strong>[Phản ứng 5] DHAP &harr; GAP:</strong> Xúc tác bởi <em>Triose Phosphate Isomerase (TPI)</em> (từ đây hệ số &times;2).</li>
+                    <li><strong>[Phản ứng 6] GAP + NAD⁺ + Pi &harr; 1,3-Bisphosphoglycerate (1,3-BPG) + NADH + H⁺:</strong> Oxy hóa khử bởi <em>GAPDH</em>.</li>
+                    <li><strong>[Phản ứng 7] 1,3-BPG + ADP &harr; 3-Phosphoglycerate (3-PG) + ATP:</strong> Phosphoryl hóa mức cơ chất 1 bởi <em>Phosphoglycerate Kinase</em> (+2 ATP).</li>
+                    <li><strong>[Phản ứng 8] 3-PG &harr; 2-Phosphoglycerate (2-PG):</strong> Chuyển vị trí phosphat bởi <em>Phosphoglycerate Mutase</em>.</li>
+                    <li><strong>[Phản ứng 9] 2-PG &harr; Phosphoenolpyruvate (PEP) + H₂O:</strong> Khử nước bởi <em>Enolase</em>. (Bị ức chế cạnh tranh bởi ion <strong>Fluoride / NaF</strong> dùng bảo quản mẫu đường huyết).</li>
+                    <li><strong>[Phản ứng 10] PEP + ADP &rarr; Pyruvate + ATP:</strong> Phosphoryl hóa mức cơ chất 2 bởi <em>Pyruvate Kinase (PK)</em>. <strong style="color: #ef4444;">[Điểm chốt 3 - Một chiều]</strong> (+2 ATP).</li>
+                </ol>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-code-fork"></i> 2.2. Đường Phân Kỵ Khí (Lactate) vs Hiếu Khí (Phức Hợp PDH)</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <span class="concept-chip chip-amber">Kỵ Khí (Thiếu Oxy / Hồng Cầu)</span>
+                    <h4 style="margin: 0.5rem 0; color: #d97706;">Tạo L-Lactate &amp; Chu Trình Cori</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Pyruvate + NADH + H<sup>+</sup> &harr; <strong>L-Lactate + NAD<sup>+</sup></strong> (nhờ <em>Lactate Dehydrogenase - LDH</em>). Tái sinh NAD<sup>+</sup> để duy trì bước GAPDH sinh ATP sinh tồn.
+                        <br>&bull; <strong>Chu trình Cori:</strong> Lactate từ cơ vân/hồng cầu về gan &rarr; tái tạo Pyruvate &rarr; tân tạo Glucose đổ lại máu.
+                        <br>&bull; <strong>Năng lượng:</strong> Thu hồi thuần <strong>2 ATP</strong> per Glucose.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-blue">Hiếu Khí (Có Oxy &amp; Ty Thể)</span>
+                    <h4 style="margin: 0.5rem 0; color: var(--color-primary, #0284c7);">Phức Hợp PDH (Ty Thể)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Pyruvate + NAD<sup>+</sup> + CoA-SH &rarr; <strong>Acetyl-CoA + CO<sub>2</sub> + NADH</strong>.
+                        <br>Siêu phức hợp 3 enzyme (E1, E2, E3) cần <strong>5 Coenzyme</strong>: TPP (B1), Lipoamide, CoA-SH (B5), FAD (B2), NAD<sup>+</sup> (B3).
+                        <br>&bull; <strong>Lâm sàng:</strong> Thiếu Vitamin B1 (Beri-beri, Wernicke-Korsakoff) làm liệt PDH &rarr; ứ đọng pyruvate chuyển thành lactate gây <strong>toan lactic nặng</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 3: CHU TRÌNH KREBS (TCA) -->
+        <!-- ========================================== -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-arrows-spin"></i> 3. Chu Trình Acid Citric (Chu Trình Krebs / TCA)</h2>
+            <p>
+                Xảy ra trong <strong>chất nền ty thể</strong>, là ngã ba chuyển hóa trung tâm oxy hóa hoàn toàn gốc Acetyl (2C) thành CO<sub>2</sub>.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-notch"></i> 3.1. Diễn Biến 8 Phản Ứng Của Chu Trình Krebs</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 8%;">Bước</th>
+                        <th style="width: 32%;">Phản Ứng Biến Đổi</th>
+                        <th style="width: 30%;">Enzyme Xúc Tác</th>
+                        <th style="width: 30%;">Sản Phẩm Năng Lượng / Ý Nghĩa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>Acetyl-CoA (2C) + Oxaloacetate (4C) + H₂O &rarr; Citrate (6C)</td>
+                        <td><strong>Citrate Synthase</strong></td>
+                        <td>Một chiều, kéo toàn bộ chu trình vận hành.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>Citrate &harr; Isocitrate</td>
+                        <td><strong>Aconitase</strong></td>
+                        <td>Bị ức chế tự sát bởi chất độc <strong>Fluorocitrate</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>Isocitrate + NAD⁺ &rarr; &alpha;-Ketoglutarate (5C) + CO₂</td>
+                        <td><strong>Isocitrate DH (ICDH)</strong></td>
+                        <td><strong>+1 NADH + 1 CO₂</strong> (Điều hòa chính).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>&alpha;-KG + NAD⁺ + CoA-SH &rarr; Succinyl-CoA (4C) + CO₂</td>
+                        <td><strong>&alpha;-KG DH Phức Hợp</strong></td>
+                        <td><strong>+1 NADH + 1 CO₂</strong> (Cần 5 coenzym tương tự PDH).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>Succinyl-CoA + GDP/ADP + Pi &harr; Succinate + GTP/ATP</td>
+                        <td><strong>Succinyl-CoA Synthetase</strong></td>
+                        <td><strong>+1 GTP / ATP</strong> (Phosphoryl hóa mức cơ chất).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6</strong></td>
+                        <td>Succinate + Q &harr; Fumarate + QH₂ (FADH₂)</td>
+                        <td><strong>Succinate DH (Phức hợp II)</strong></td>
+                        <td><strong>+1 FADH₂</strong> (Gắn màng trong ty thể).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7</strong></td>
+                        <td>Fumarate + H₂O &harr; L-Malate</td>
+                        <td><strong>Fumarase</strong></td>
+                        <td>Cộng nước lập thể đặc hiệu dạng L.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8</strong></td>
+                        <td>L-Malate + NAD⁺ &harr; Oxaloacetate</td>
+                        <td><strong>Malate DH</strong></td>
+                        <td><strong>+1 NADH</strong> (Tái tạo OAA hoàn thành chu trình).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-calculator"></i> 3.2. Tổng Năng Lượng Oxy Hóa Hoàn Toàn 1 Phân Tử Glucose</h3>
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-bolt"></i> Cân Bằng Năng Lượng ATP Hiện Đại:</strong>
+                <br>&bull; <strong>Đường phân:</strong> +2 ATP trực tiếp + 2 NADH bào tương (qua thoi Malate-Aspartate = +5 ATP, hoặc thoi Glycerol-3-P = +3 ATP).
+                <br>&bull; <strong>Phản ứng PDH:</strong> 2 Pyruvate &rarr; 2 Acetyl-CoA sinh 2 NADH (&times;2.5) = <strong>+5 ATP</strong>.
+                <br>&bull; <strong>Chu trình Krebs (2 vòng):</strong> 6 NADH (&times;2.5 = 15 ATP) + 2 FADH₂ (&times;1.5 = 3 ATP) + 2 GTP (= 2 ATP) = <strong>+20 ATP</strong>.
+                <br>&rArr; <strong>TỔNG CỘNG: 30 đến 32 ATP per Glucose</strong> <em>(theo hệ số cũ là 36–38 ATP)</em>.
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 4: CON ĐƯỜNG PENTOSE PHOSPHATE -->
+        <!-- ========================================== -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-shield-virus"></i> 4. Con Đường Pentose Phosphate (HMP Shunt) &amp; Thiếu G6PD</h2>
+            <p>
+                Xảy ra trong bào tương, <strong>không tạo ATP</strong>, cung cấp 2 sản phẩm thiết yếu: <strong>NADPH</strong> (khử độc, tổng hợp lipid) và <strong>Ribose-5-phosphate</strong> (tổng hợp acid nucleic).
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-vial-virus"></i> 4.1. Hai Giai Đoạn Của Con Đường HMP</h3>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Giai đoạn oxy hóa không thuận nghịch (Sinh NADPH):</strong>
+                    <br>G6P + 2 NADP<sup>+</sup> + H<sub>2</sub>O &rarr; <strong>Ribulose-5-P + 2 NADPH + CO<sub>2</sub></strong> (Enzym chốt: <strong>G6PD</strong> và 6-Phosphogluconate DH).
+                </li>
+                <li><strong>Giai đoạn không oxy hóa thuận nghịch (Biến đổi carbon):</strong>
+                    <br>Tái tổ hợp các đường pentose thành Fructose-6-P và GAP đi lại vào đường phân nhờ <strong>Transketolase</strong> (cần Coenzyme TPP - Vitamin B1) và <strong>Transaldolase</strong>.
+                </li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-droplet"></i> 4.2. Bệnh Thiếu Hụt Enzyme G6PD (Favism) &amp; Huyết Tán Cấp</h3>
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Cơ chế bệnh sinh Thiếu G6PD (Di truyền lặn NST X):</strong>
+                Hồng cầu không có ty thể, hoàn toàn phụ thuộc vào G6PD để tạo NADPH. NADPH là coenzyme bắt buộc của <em>Glutathione Reductase</em> để tái tạo <strong>Glutathione khử (GSH)</strong>. GSH bảo vệ màng hồng cầu khỏi các gốc oxy hóa tự do (H<sub>2</sub>O<sub>2</sub>).
+                <br>&bull; <strong>Khi tiếp xúc tác nhân oxy hóa</strong> (Thuốc sốt rét Primaquine, Kháng sinh Sulfonamide, Nhiễm trùng cấp, hoặc ăn <strong>Đậu tằm - Fava beans</strong>): Hồng cầu thiếu GSH bị oxy hóa hemoglobin tạo <strong>thể Heinz</strong> bám màng và peroxide hóa lipid màng &rarr; Đại thực bào lách bắt giữ tạo tế bào bị cắn (<em>Bite cells</em>) &rarr; <strong>Tan máu cấp tính dữ dội</strong> (thiếu máu, vàng da, tiểu huyết sắc tố đen).
+                <br>&bull; <em>Ưu thế tiến hóa:</em> Người mang gen đột biến G6PD đề kháng tự nhiên với ký sinh trùng sốt rét ác tính <em>P. falciparum</em>.
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 5: CHUYỂN HÓA GLYCOGEN -->
+        <!-- ========================================== -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-cubes-stacked"></i> 5. Chuyển Hóa Glycogen (Tổng Hợp &amp; Phân Giải)</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-plus"></i> 5.1. Quá Trình Tổng Hợp Glycogen (Glycogenesis)</h3>
+            <p>
+                G6P &harr; G1P + UTP &rarr; <strong>UDP-Glucose</strong> + PP<sub>i</sub> (nhờ <em>UDP-Glc Pyrophosphorylase</em>).
+            </p>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Protein mồi Glycogenin:</strong> Tự xúc tác gắn glucose đầu tiên từ UDP-Glc vào gốc Tyrosine của chính nó, kéo dài 8 gốc glucose tạo mồi.</li>
+                <li><strong>Glycogen Synthase (GS):</strong> Kéo dài mạch thẳng bằng liên kết <strong>&alpha;-1,4-glucosid</strong>.</li>
+                <li><strong>Branching Enzyme:</strong> Cắt đoạn 5–8 glucose chuyển vị tạo nhánh mới bằng liên kết <strong>&alpha;-1,6-glucosid</strong> khi chuỗi dài &ge; 11 gốc.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-scissors"></i> 5.2. Quá Trình Phân Giải Glycogen (Glycogenolysis)</h3>
+            <div class="reaction-box">
+                <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; line-height: 1.55;">
+                    <li><strong>Glycogen Phosphorylase (cần PLP - Vitamin B6):</strong> Cắt liên kết &alpha;-1,4 bằng Pi giải phóng <strong>Glucose-1-phosphate (G1P)</strong>. Dừng lại khi cách điểm nhánh 4 gốc (dextrin giới hạn).</li>
+                    <li><strong>Debranching Enzyme (Enzym cắt nhánh lưỡng chức năng):</strong>
+                        <br>&bull; <em>Glucan Transferase:</em> Chuyển 3 gốc ngoài cùng sang chuỗi thẳng kế bên.
+                        <br>&bull; <em>Amylo-&alpha;-1,6-glucosidase:</em> Thủy phân trực tiếp gốc glucose ở điểm nhánh &alpha;-1,6 giải phóng <strong>Glucose tự do</strong>.
+                    </li>
+                    <li>&rArr; <strong>Tỷ lệ sản phẩm giải phóng: 9/10 Glucose-1-P và 1/10 Glucose tự do.</strong></li>
+                </ul>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-code-compare"></i> 5.3. Sự Khác Biệt Giữa Gan Và Cơ Vân</h3>
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-lightbulb"></i> Vì sao Glycogen Cơ vân không trực tiếp điều hòa đường huyết?</strong>
+                Tế bào Gan có enzyme <strong>Glucose-6-phosphatase (G6Pase)</strong> màng lưới nội chất giúp thủy phân G6P thành Glucose tự do xuất khẩu vào máu duy trì đường huyết lúc đói. Tế bào Cơ vân <strong>hoàn toàn thiếu vắng G6Pase</strong>, do đó G6P sinh ra từ phân giải glycogen cơ bắt buộc phải đi thẳng vào đường phân nội bào để sinh ATP co cơ!
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 6: CON ĐƯỜNG TÂN TẠO ĐƯỜNG -->
+        <!-- ========================================== -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-arrow-up-right-dots"></i> 6. Con Đường Tân Tạo Đường (Gluconeogenesis)</h2>
+            <p>
+                Tổng hợp Glucose từ các tiền chất không phải carbohydrate (<strong>Lactate, Alanine/Acid amin sinh đường, Glycerol</strong>), xảy ra chủ yếu ở <strong>Gan (90%)</strong> và <strong>Vỏ Thận (10%)</strong> để duy trì đường huyết khi nhịn đói sau 12–18 giờ.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-route"></i> 6.1. Bốn Enzyme Vượt Qua 3 Phản Ứng Một Chiều Của Đường Phân</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Chặng Vượt Qua (Bypass)</th>
+                        <th style="width: 35%;">Enzyme Tân Tạo Đường Đặc Hiệu</th>
+                        <th style="width: 40%;">Vị Trí &amp; Cơ Chế Phân Tử</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bypass 1:<br>Pyruvate &rarr; PEP</strong></td>
+                        <td><strong>1. Pyruvate Carboxylase (PC)</strong><br><strong>2. PEPCK</strong> (PEP Carboxykinase)</td>
+                        <td>&bull; <em>PC (Ty thể, cần Biotin, ATP, CO₂):</em> Tạo Oxaloacetate (OAA). OAA khử thành Malate ra bào tương rồi oxy hóa lại.
+                        <br>&bull; <em>PEPCK (Bào tương, cần GTP):</em> Khử carboxyl OAA thành PEP.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bypass 2:<br>F1,6BP &rarr; F6P</strong></td>
+                        <td><strong>3. Fructose-1,6-bisphosphatase-1 (FBPase-1)</strong></td>
+                        <td>Bào tương. Thủy phân C1-phosphate. Bị ức chế mạnh bởi <strong>Fructose-2,6-bisphosphate (F-2,6-BP)</strong> và AMP; kích hoạt bởi Citrate.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bypass 3:<br>G6P &rarr; Glucose tự do</strong></td>
+                        <td><strong>4. Glucose-6-phosphatase (G6Pase)</strong></td>
+                        <td>Màng lưới nội chất trơn (chỉ có ở Gan, Thận, Ruột). Thủy phân G6P giải phóng Glucose tự do ra máu.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-sliders"></i> 6.2. Điều Hòa Tương Tác Giữa Đường Phân &amp; Tân Tạo Đường</h3>
+            <p>
+                <strong>Fructose-2,6-bisphosphate (F-2,6-BP)</strong> là phân tử tín hiệu trung tâm điều hòa nghịch chiều:
+            </p>
+            <ul style="line-height: 1.7; padding-left: 1.25rem;">
+                <li><strong>Trạng thái no (Insulin cao):</strong> Dephosphoryl hóa enzym lưỡng chức năng &rarr; tăng F-2,6-BP &rarr; <strong>kích hoạt PFK-1 (tăng đường phân)</strong> và ức chế FBPase-1.</li>
+                <li><strong>Trạng thái đói (Glucagon cao / cAMP / PKA):</strong> Phosphoryl hóa enzym lưỡng chức năng &rarr; giảm F-2,6-BP &rarr; <strong>kích hoạt FBPase-1 (thúc đẩy tân tạo đường)</strong> và bất hoạt Pyruvate Kinase.</li>
+            </ul>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 7: RỐI LOẠN & BỆNH HỌC GSD -->
+        <!-- ========================================== -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> 7. Rối Loạn Chuyển Hóa Hexose &amp; Nhóm Bệnh Ứ Dự Trữ Glycogen (GSD)</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-dna"></i> 7.1. Bảng 8 Loại Bệnh Ứ Dự Trữ Glycogen (Glycogen Storage Diseases - GSDs)</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 12%;">Loại (Type)</th>
+                        <th style="width: 18%;">Tên Lâm Sàng</th>
+                        <th style="width: 25%;">Enzyme Khiếm Khuyết</th>
+                        <th style="width: 15%;">Mô Tổn Thương</th>
+                        <th style="width: 30%;">Biểu Hiện Lâm Sàng &amp; Cơ Chế</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GSD 0</strong></td>
+                        <td>Type 0</td>
+                        <td><strong>Glycogen Synthase</strong></td>
+                        <td>Gan</td>
+                        <td>Hạ đường huyết nặng khi đói, tăng thể ceton máu, chậm phát triển.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GSD I</strong></td>
+                        <td><strong>Bệnh Von Gierke</strong></td>
+                        <td><strong>Glucose-6-phosphatase</strong> (Ia) hoặc Translocase (Ib)</td>
+                        <td>Gan, Thận</td>
+                        <td><strong>Hạ đường huyết đói cực nặng</strong>, gan thận to ứ glycogen, <strong>toan lactic</strong>, tăng lipid máu và <strong>tăng acid uric gây Gout</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GSD II</strong></td>
+                        <td><strong>Bệnh Pompe</strong></td>
+                        <td><strong>Acid Maltase</strong> (Lysosomal &alpha;-1,4 &amp; &alpha;-1,6 glucosidase)</td>
+                        <td>Toàn thân (Tim, Cơ)</td>
+                        <td>Tích tụ glycogen trong tiêu thể; <strong>suy tim sung huyết nặng, bệnh cơ tim phì đại</strong> tử vong ở tuổi nhỏ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GSD III</strong></td>
+                        <td><strong>Bệnh Cori / Forbes</strong></td>
+                        <td><strong>Debranching Enzyme</strong> (Amylo-&alpha;-1,6-glucosidase)</td>
+                        <td>Gan, Cơ, Tim</td>
+                        <td>Tích tụ glycogen bất thường dạng <strong>dextrin giới hạn</strong> (nhánh cực ngắn); hạ đường huyết nhẹ kèm bệnh cơ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GSD IV</strong></td>
+                        <td><strong>Bệnh Andersen</strong></td>
+                        <td><strong>Branching Enzyme</strong></td>
+                        <td>Gan, Tim</td>
+                        <td>Tích tụ glycogen mạch dài ít nhánh giống amylose; hệ miễn dịch đào thải gây <strong>xơ gan tiến triển nhanh</strong> tử vong sớm.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GSD V</strong></td>
+                        <td><strong>Bệnh McArdle</strong></td>
+                        <td><strong>Phosphorylase cơ vân</strong></td>
+                        <td>Cơ vân</td>
+                        <td><strong>Chuột rút đau cơ dữ dội khi vận động</strong>, myoglobin niệu; <em>không hạ đường huyết</em> (phosphorylase gan bình thường).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GSD VI</strong></td>
+                        <td><strong>Bệnh Hers</strong></td>
+                        <td><strong>Phosphorylase gan</strong></td>
+                        <td>Gan</td>
+                        <td>Gan to ứ glycogen, hạ đường huyết nhẹ lúc đói.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GSD VII</strong></td>
+                        <td><strong>Bệnh Tarui</strong></td>
+                        <td><strong>Phosphofructokinase-1</strong> (Cơ &amp; Hồng cầu)</td>
+                        <td>Cơ, Hồng cầu</td>
+                        <td>Chuột rút khi gắng sức tương tự McArdle nhưng kèm <strong>thiếu máu tán huyết</strong> do hồng cầu thiếu PFK-1.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-lemon"></i> 7.2. Rối Loạn Chuyển Hóa Fructose &amp; Galactose</h3>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <span class="concept-chip chip-red">Fructose</span>
+                    <h4 style="color: #ef4444; margin: 0.5rem 0;">Bất Dung Nạp Fructose Di Truyền (HFI)</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Do thiếu hụt <strong>Aldolase B</strong> tại gan. Fructose-1-P tích tụ bắt giữ phosphate tự do (cạn kiệt Pi), ức chế mạnh cả Glycogen Phosphorylase và FBPase-1 &rarr; <strong>Hạ đường huyết nghiêm trọng sau ăn đường/trái cây</strong>, nôn mửa, suy gan cấp và xơ gan.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <span class="concept-chip chip-amber">Galactose</span>
+                    <h4 style="color: #d97706; margin: 0.5rem 0;">Bệnh Galactose Huyết Bẩm Sinh</h4>
+                    <p style="font-size: 0.88rem; line-height: 1.5; color: var(--color-text, #334155); margin: 0;">
+                        Thiếu hụt <strong>GALT (Galactose-1-phosphate uridyltransferase)</strong>. Galactose và Gal-1-P tích tụ; enzym Aldose Reductase tại mắt chuyển galactose thành <strong>Galactitol</strong> gây tăng áp suất thẩm thấu hút nước &rarr; <strong>Đục thủy tinh thể sớm (Cataract)</strong> ở trẻ sơ sinh bú sữa mẹ kèm tổn thương não gan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 8: BILAN CẬN LÂM SÀNG -->
+        <!-- ========================================== -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-vials"></i> 8. Chỉ Số Xét Nghiệm &amp; Biện Luận Bilan Lâm Sàng</h2>
+            <p>
+                Các xét nghiệm hóa sinh cận lâm sàng cốt lõi trong chẩn đoán và theo dõi rối loạn chuyển hóa glucid:
+            </p>
+
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 22%;">Chỉ Số Xét Nghiệm</th>
+                        <th style="width: 20%;">Khoảng Tham Chiếu</th>
+                        <th style="width: 58%;">Ý Nghĩa Cơ Chế &amp; Biện Luận Lâm Sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Glucose Huyết Tương Lúc Đói (FPG)</strong></td>
+                        <td><strong>3.9 – 5.6 mmol/L</strong><br><span class="chem-table-subtext">(70 – 100 mg/dL)</span></td>
+                        <td>Ống chứa chất bảo quản Natri Florua (NaF) ức chế Enolase hồng cầu. Chẩn đoán ĐTĐ khi FPG &ge; 7.0 mmol/L (126 mg/dL) trong 2 lần độc lập.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HbA1c (Hemoglobin Glycosyl Hóa)</strong></td>
+                        <td><strong>4.0 – 5.6%</strong><br><span class="chem-table-subtext">(&lt; 39 mmol/mol)</span></td>
+                        <td>Sản phẩm ngưng tụ Amadori không enzym giữa glucose và valin chuỗi &beta;-globin. Đánh giá kiểm soát đường huyết trung bình trong <strong>8 – 12 tuần</strong>. ĐTĐ khi HbA1c &ge; 6.5%. Tăng giả khi có HbF; giảm giả trong thiếu máu tán huyết.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lactate Máu &amp; Khoảng Trống Anion</strong></td>
+                        <td><strong>0.5 – 2.2 mmol/L</strong><br><span class="chem-table-subtext">(Toan Lactic: &gt; 4.0 – 5.0)</span></td>
+                        <td>Đánh giá tình trạng thiếu oxy mô, sốc giảm tưới máu hoặc ngộ độc ức chế ty thể (Metformin, thiếu Vitamin B1). Khoảng trống anion (Anion Gap) tăng cao trong toan lactic và toan ceton.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thể Ceton Máu (&beta;-hydroxybutyrate) &amp; Niệu</strong></td>
+                        <td>&beta;-HB: <strong>&lt; 0.5 mmol/L</strong><br><span class="chem-table-subtext">(Toan ceton DKA: &gt; 3.0)</span></td>
+                        <td>Phản ánh sự thoái hóa lipid ồ ạt do thiếu glucose nội bào (Đái tháo đường Típ 1 mất bù hoặc nhịn đói kéo dài). Định lượng &beta;-hydroxybutyrate máu nhạy và chính xác hơn que thử Acetoacetate niệu.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hoạt Độ Enzyme G6PD Hồng Cầu</strong></td>
+                        <td><strong>7.0 – 20.5 U/g Hb</strong></td>
+                        <td>Chẩn đoán xác định thiếu hụt G6PD ở bệnh nhân nghi ngờ Favism hoặc huyết tán sau dùng thuốc oxy hóa (chú ý đo sau giai đoạn huyết tán cấp để tránh âm tính giả do quần thể hồng cầu non có hoạt độ enzyme cao).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.7;">
+            <h4 style="margin: 0 0 0.5rem 0; color: var(--color-text, #334155); font-size: 0.95rem;">Tài Liệu Tham Khảo Chuẩn AMA (References):</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Trường Đại học Y Dược TP. Hồ Chí Minh, Bộ môn Hóa sinh. <em>Hóa sinh Y học</em>. TP.HCM: Nhà xuất bản Y học; 2024:chương XI, XII, XIII.</li>
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA, eds. <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill; 2023:chap 16-20, 53.</li>
+                <li>Baynes JW, Dominiczak MH. <em>Medical Biochemistry</em>. 5th ed. London: Elsevier; 2019:chap 9-12, 17.</li>
+                <li>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD. <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson; 2012:chap 11-13.</li>
+                <li>Pratt CW, Cornely K. <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley &amp; Sons; 2021:chap 13-16.</li>
+                <li>Murphy M, Srivastava R, Deans K. <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. Edinburgh: Elsevier; 2019:chap 6.</li>
+            </ol>
+        </footer>
+
+    </div>
+</body>
+
+</html>

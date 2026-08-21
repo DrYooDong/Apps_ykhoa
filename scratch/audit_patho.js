@@ -56,7 +56,7 @@ subDirs.forEach(d => {
 // 4. Kiểm tra các file nghi ngờ rác/dư thừa:
 // - File rỗng (0 bytes)
 // - File backup (.bak, .old, .temp, copy...)
-// - File redirect đơn giản (ví dụ sinh-ly-hoc.html chỉ có redirect)
+// - File redirect đơn giản (ví dụ giai-phau-sinh-ly.html chỉ có redirect)
 // - File trùng lặp
 console.log('\n--- CÁC FILE NGHI VẤN DƯ THỪA / CẦN XEM XÉT ---');
 allFiles.forEach(f => {

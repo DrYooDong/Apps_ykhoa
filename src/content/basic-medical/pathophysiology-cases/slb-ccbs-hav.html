@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh và Cơ chế bệnh sinh Viêm gan Siêu vi A (HAV Pathophysiology & Pathogenesis): Phân tích chi tiết cấu trúc hạt virion trần và bán vỏ màng (eHAV), con đường chết chương trình nội bào qua MAVS-IRF3/7, miễn dịch thích ứng CTLs CD8+, 6 đặc điểm mô bệnh học kinh điển ở người (thâm nhiễm tương bào, hoại tử mảnh, ứ mật, rosette), bệnh học so sánh trên tinh tinh, khỉ đêm và chuột knockout Ifnar1-/-, cùng bảng đối sánh HAV vs HBV vs HCV.">
+    <title>Sinh lý bệnh & Cơ chế bệnh sinh Viêm Gan Siêu Vi A – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+    
+
+    <style>
+        /* Scoped Custom Styling for HAV Article */
+        .hemo-table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--color-border, #e2e8f0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .hemo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            background: var(--color-surface, #ffffff);
+        }
+
+        .hemo-table th {
+            background: var(--color-surface-2, #f8fafc);
+            color: var(--color-text, #0f172a);
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+        }
+
+        .hemo-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            color: var(--color-text, #334155);
+            vertical-align: top;
+        }
+
+        .hemo-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hemo-table tbody tr:hover {
+            background: rgba(2, 132, 199, 0.03);
+        }
+
+        .hav-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #059669;
+            padding: 0.25rem 0.65rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .physio-figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 2rem auto;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            max-width: 100%;
+        }
+
+        .physio-figure img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .physio-figure img:hover {
+            transform: scale(1.01);
+        }
+
+        .physio-figure figcaption {
+            margin-top: 0.85rem;
+            font-size: 0.88rem;
+            color: var(--color-text-muted, #64748b);
+            line-height: 1.5;
+            text-align: center;
+            max-width: 780px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar">
+            <button id="sidebar-toggle-arrow" class="sidebar-toggle-arrow" aria-label="Thu gọn/Mở rộng Sidebar">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" class="toggle-arrow-svg">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <nav class="sidebar-nav" aria-label="Điều hướng chính">
+                <ul class="nav-list" role="list">
+                    <li><a href="../../../../index.html" class="nav-item" title="Trang chủ"><span class="nav-icon">🏠</span><span class="nav-text">Trang chủ</span></a></li>
+                    <li><a href="../co-che-benh-sinh.html" class="nav-item active" title="Sinh lý & Sinh lý bệnh"><span class="nav-icon">🧬</span><span class="nav-text">Sinh lý & Sinh lý bệnh</span></a></li>
+                    <li><a href="../../skills/ky-nang.html" class="nav-item" title="Kỹ năng"><span class="nav-icon">🩺</span><span class="nav-text">Kỹ năng</span></a></li>
+                    <li><a href="../../approaches/tiep-can.html" class="nav-item" title="Tiếp cận"><span class="nav-icon">🤒</span><span class="nav-text">Tiếp cận</span></a></li>
+                    <li><a href="../../calculators/cong-cu.html" class="nav-item" title="Công cụ"><span class="nav-icon">⚙️</span><span class="nav-text">Công cụ</span></a></li>
+                    <li><a href="../../pharmacology/duoc-ly.html" class="nav-item" title="Dược lý"><span class="nav-icon">💊</span><span class="nav-text">Dược lý</span></a></li>
+                    <li><a href="../../ebm/yhcc.html" class="nav-item" title="Y học chứng cứ"><span class="nav-icon">📄</span><span class="nav-text">Y học chứng cứ</span></a></li>
+                    <li><a href="../../tcm/y-hoc-co-truyen.html" class="nav-item" title="Y học cổ truyền"><span class="nav-icon">☯️</span><span class="nav-text">Y học cổ truyền</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "🏠 Home", "url": "../../../../index.html"}, {"label": "Sinh lý & sinh lý bệnh", "url": "../co-che-benh-sinh.html"}, {"label": "Sinh lý bệnh Viêm Gan Siêu Vi A (HAV)"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH VIÊM GAN SIÊU VI A</h1>
+                    <p>Hepatitis A Virus (HAV) Pathophysiology & Pathogenesis — Phân tích phân tử cấu trúc virion trần và bán màng bọc (eHAV), con đường chết chương trình nội bào qua trục cảm biến MAVS-IRF3/7, đáp ứng miễn dịch tế bào CD8+ T, 6 đặc điểm mô bệnh học kinh điển ở người (thâm nhiễm tương bào, hoại tử mảnh, ứ mật vi quản, hoa hồng rosette), và bệnh học so sánh trên mô hình linh trưởng & chuột knockout Ifnar1-/-.</p>
+                </div>
+
+                <!-- LEAD PARAGRAPH -->
+                <p class="physio-lead">
+                    <span class="term-hl">Viêm gan siêu vi A (Hepatitis A Virus - HAV)</span> là nguyên nhân hàng đầu gây viêm gan vi rút cấp tính lây truyền qua đường phân - miệng trên thế giới. Tương tự như HBV và HCV, HAV là một virus <strong>không trực tiếp gây độc tế bào gan (non-cytopathic)</strong>. Điểm độc đáo trong sinh lý bệnh của HAV là cơ chế gây tổn thương nhu mô gan kết hợp giữa <strong>con đường chết chương trình nội bào bẩm sinh (Cell-intrinsic Apoptosis qua trục MAVS)</strong> và <strong>phản ứng hủy tế bào của miễn dịch thích ứng (CTLs CD8+)</strong>, tạo nên hình ảnh mô bệnh học đặc trưng bởi sự thâm nhiễm phong phú của các <strong>tương bào (plasma cells)</strong> và hội chứng ứ mật tiểu thùy.
+                </p>
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN I: ĐẶC ĐIỂM VI RÚT HỌC VÀ CẤU TRÚC KHÁNG NGUYÊN HAV -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="dac-diem-vi-rut-hoc-hav" class="section-title">
+                        <span>Phần I: Đặc Điểm Vi Rút Học & Cấu Trúc Kháng Nguyên HAV (Virology & Genotypes)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Vi rút viêm gan A (HAV) thuộc chi <i>Hepatovirus</i>, họ <i>Picornaviridae</i>. Bộ gen của HAV là một phân tử <strong>RNA sợi đơn bản dương ((+)ssRNA) dài khoảng 7.5 kb</strong>, mã hóa cho một polyprotein tiền chất được xử lý thành các protein cấu trúc capsid (VP1, VP2, VP3, VP4) và protein phi cấu trúc (2B, 2C, 3A, 3B, 3C protease, 3D polymerase).
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🛡️ 1. Hạt Virion Trần (Naked Capsid) Trong Phân</div>
+                                <p>Hạt capsid hình khối 20 mặt (icosahedral) đường kính 27 nm không có vỏ bọc lipid ngoài. Cấu trúc này <strong>siêu bền vững với môi trường toan dạ dày (pH &lt; 3.0)</strong>, dung môi hữu cơ ether, clo nồng độ thấp và nhiệt độ môi trường, giúp virus tồn tại hàng tháng ngoài môi trường và lây truyền hiệu quả qua đường phân - miệng (thực phẩm và nguồn nước ô nhiễm).</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title">🩸 2. Hạt Virion Bán Màng Bọc (eHAV) Trong Máu</div>
+                                <p>Trong tuần hoàn máu của bệnh nhân, hạt virion HAV được bao bọc bởi một lớp màng lipid kép có nguồn gốc từ màng nội bào (multivesicular bodies) gọi là <strong>quasi-enveloped HAV (eHAV)</strong>. Lớp màng này giúp virus <strong>né tránh sự nhận diện của kháng thể trung hòa trong máu</strong>. Khi theo dịch mật đổ vào ruột non, muối mật sẽ hòa tan lớp màng lipid này, đưa virus trở lại dạng virion trần bền vững.</p>
+                            </div>
+                        </div>
+
+                        <h3 id="phan-loai-genotype-hav" class="subsection-title" style="margin-top: 2rem;">3. Phân Loại Kiểu Gen & Tính Bảo Tồn Kháng Nguyên</h3>
+                        <p>
+                            Mặc dù được chia thành <strong>7 genotypes</strong> (I, II, III, VII có nguồn gốc từ người; IV, V, VI có nguồn gốc từ động vật linh trưởng), HAV chỉ có <strong>duy nhất 1 Serotype kháng nguyên trên toàn cầu</strong>. Tính bảo tồn kháng nguyên tuyệt đối này là cơ sở giúp một mũi tiêm vaccine HAV có thể tạo miễn dịch bảo vệ chéo bền vững trọn đời trước tất cả các chủng virus.
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN II: CHU KỲ SINH HỌC VÀ BẢN CHẤT KHÔNG GÂY ĐỘC TẾ BÀO -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="chu-ky-sinh-hoc-hav" class="section-title">
+                        <span>Phần II: Chu Kỳ Sinh Học & Bản Chất Miễn Dịch Không Gây Độc Tế Bào</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            <span class="term-hl">Bản chất Không Gây Độc Tế Bào (Non-cytopathic Nature):</span> Tương tự như HBV và HCV, HAV có thể nhân lên với tải lượng cực lớn trong tế bào gan nuôi cấy và trong cơ thể người mà không trực tiếp phá hủy màng tế bào hay gây ly giải tế bào gan.
+                        </p>
+
+                        <div class="pathway-chain">
+                            <span class="pathway-node">Giai đoạn ủ bệnh (2 - 6 tuần)</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node orange">Virus nhân lên ồ ạt trong gan</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node orange">Bài tiết đỉnh cao ra phân & máu</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node red">Miễn dịch ký chủ bùng phát</span>
+                            <span class="pathway-arrow">➔</span>
+                            <span class="pathway-node red">Viêm hoại tử gan & Tăng ALT</span>
+                        </div>
+
+                        <ul class="physio-list-arrow" style="margin-top: 1.5rem;">
+                            <li><strong>Giai đoạn ủ bệnh yên lặng (Silent Incubation Period):</strong> Trong 2 đến 6 tuần đầu sau nhiễm trùng, virus nhân lên mạnh mẽ và bài tiết ra phân đạt nồng độ tối đa (giai đoạn có tính lây truyền cao nhất). Tuy nhiên, tế bào gan hoàn toàn nguyên vẹn, men gan ALT bình thường và bệnh nhân không hề có triệu chứng lâm sàng.</li>
+                            <li><strong>Thời điểm bùng phát bệnh:</strong> Tổn thương hoại tử nhu mô gan, tăng men gan ALT/AST và các triệu chứng lâm sàng (vàng da, mệt mỏi, sốt, nước tiểu sẫm màu) chỉ xuất hiện khi <strong>hệ thống miễn dịch ký chủ được kích hoạt mạnh mẽ</strong> nhằm tiêu diệt và dọn sạch các tế bào gan nhiễm virus. Khi triệu chứng vàng da xuất hiện, nồng độ virus trong phân và máu đã giảm đi đáng kể.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN III: CƠ CHẾ MIỄN DỊCH BỆNH HỌC GÂY TỔN THƯƠNG GAN -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="co-che-mien-dich-benh-hoc" class="section-title">
+                        <span>Phần III: Cơ Chế Miễn Dịch Bệnh Học Gây Tổn Thương Gan (Immunopathology)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Tổn thương tế bào gan trong viêm gan A cấp là kết quả của sự phối hợp giữa hai con đường bệnh sinh độc đáo:
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-warning, #d97706);">🧬 1. Chết Chương Trình Nội Bào Bẩm Sinh (Cell-Intrinsic Apoptosis)</div>
+                                <p><strong>Cơ chế phân tử:</strong> Khi HAV nhân lên trong bào tương, RNA sợi đôi trung gian của virus được các thụ thể nội bào nhận diện, truyền tín hiệu kích hoạt phân tử tiếp hợp ty thể <strong>MAVS (Mitochondrial Antiviral Signaling Protein)</strong> và các yếu tố điều hòa phiên mã <strong>IRF3 / IRF7</strong>.</p>
+                                <p><strong>Hậu quả:</strong> Trục MAVS-IRF3/7 cảm ứng biểu hiện các gen <strong>proapoptotic ISGs (Interferon-Stimulated Genes)</strong>, thúc đẩy tế bào gan nhiễm virus <strong>tự kích hoạt chu trình chết theo chương trình (Apoptosis)</strong>. Cơ chế này diễn ra độc lập, không cần sự tham gia của tế bào T hay kháng thể.</p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="physio-grid-title" style="color: var(--color-danger, #dc2626);">💥 2. Phản Ứng Hủy Tế Bào Của Tế Bào T Thích Ứng (CTLs CD8+)</div>
+                                <p><strong>Cơ chế phân tử:</strong> Các tế bào T CD8+ gây độc (Cytotoxic T Lymphocytes) và tế bào T CD4+ đặc hiệu HAV thâm nhiễm ồ ạt vào nhu mô gan, nhận diện các peptide kháng nguyên virus trình diện qua phân tử MHC lớp I trên màng tế bào gan.</p>
+                                <p><strong>Hậu quả:</strong> Tế bào CTLs phóng thích <strong>Perforin, Granzyme B</strong> và kích hoạt thụ thể tử vong <strong>Fas / FasL</strong>, gây hoại tử tế bào gan cấp tính diện rộng, giải phóng ồ ạt enzyme nội bào (AST, ALT) vào máu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN IV: ĐẶC ĐIỂM MÔ BỆNH HỌC ĐẶC HIỆU Ở GAN NGƯỜI -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="mo-benh-hoc-gan-nguoi" class="section-title">
+                        <span>Phần IV: Đặc Điểm Mô Bệnh Học Đặc Hiệu Của Viêm Gan A Cấp Ở Người (Histopathology)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Dưới kính hiển vi quang học tiêu bản nhuộm H&E, viêm gan A cấp tính thể hiện 6 tổn thương mô học kinh điển:
+                        </p>
+
+                        <ul class="physio-list-arrow">
+                            <li><strong>1. Phình to tế bào gan (Hepatocellular Ballooning) & Lộn xộn tiểu thùy (Lobular Disarray):</strong> Tế bào gan trương phồng tích tụ dịch nội bào, bào tương có dạng ren (lacy appearance), phá vỡ cấu trúc bè gan song song bình thường.</li>
+                            <li><strong>2. Thâm nhiễm phong phú Tương bào (Plasma Cells):</strong> Đây là <strong>dấu ấn mô học độc đáo nhất của viêm gan A</strong> so với các viêm gan virus khác. Sự hiện diện dày đặc của tương bào trong khoảng cửa tạo ra hình ảnh mô học rất giống với <strong>Viêm gan tự miễn (Autoimmune Hepatitis - AIH)</strong>, cần đối chiếu huyết thanh học để phân biệt.</li>
+                            <li><strong>3. Tổn thương quanh khoảng cửa & Hoại tử mảnh (Piecemeal Necrosis):</strong> Đám tế bào viêm thâm nhiễm dày đặc phá vỡ màng giới hạn (limiting plate) của khoảng cửa, tấn công các tế bào gan rìa (periportal hepatocytes) tạo hình ảnh hoại tử mối gặm.</li>
+                            <li><strong>4. Thể ưa acid / Thể Councilman (Acidophilic Apoptotic Bodies):</strong> Các tế bào gan bị chết chương trình co cụm lại, bào tương bắt màu hồng sẫm (deeply eosinophilic) và nhân đông ngưng tụ, kế cận các tế bào Kupffer phì đại chứa sắc tố hemosiderin.</li>
+                            <li><strong>5. Hội chứng ứ mật vi quản (Cholestasis & Rosettes Formation):</strong> Sự hình thành các <strong>nút mật đặc (bile plugs)</strong> trong các vi quản mật bị giãn rộng ở vùng trung tâm tiểu thùy. Các tế bào gan có thể tự sắp xếp lại thành cấu trúc <strong>hình hoa hồng (pseudorosettes)</strong> bao quanh vi quản mật.</li>
+                            <li><strong>6. Phản ứng ống mật (Ductular Reaction) & Không có xơ hóa tiến triển:</strong> Tăng sinh các tiểu quản mật nhỏ quanh khoảng cửa để bù đắp tái tạo nhu mô. Do bệnh tự giới hạn hoàn toàn trong 6 tháng, <strong>sự hình thành dải xơ mạn tính (fibrosis) không bao giờ xảy ra trong nhiễm HAV</strong>.</li>
+                        </ul>
+
+                        <!-- HÌNH ẢNH 1 ĐÍNH KÈM: HUMAN PATHOLOGY H&E -->
+                        <figure class="physio-figure">
+                            <img src="../images/hav/hav-human-pathology-he.png" 
+                                 alt="Tiêu bản cắt ngang mô học gan người nhiễm HAV cấp nhuộm H&E" 
+                                 class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 1 (Fig. 1 - Cullen & Lemon, <i>CSH Perspect Med</i> 2019):</strong> Mô bệnh học gan người viêm gan A cấp nhuộm H&E: <strong>(A)</strong> Hiện tượng lộn xộn tiểu thùy (Lobular disarray) do tế bào gan trương phồng tích dịch (a) và thâm nhiễm nhiều tương bào (plasma cells - b); <strong>(B)</strong> Viêm khoảng cửa phá vỡ màng giới hạn, tấn công tế bào gan rìa (c) tạo hoại tử mảnh (Piecemeal necrosis); <strong>(C)</strong> Chi tiết hoại tử mảnh (c) kế cận các mảnh vỡ tế bào gan apoptotic (d) cạnh ống mật (bd), tĩnh mạch cửa (pv) và động mạch gan (art).
+                            </figcaption>
+                        </figure>
+
+                        <!-- HÌNH ẢNH 2 ĐÍNH KÈM: CHOLESTASIS & MACROPHAGES -->
+                        <figure class="physio-figure">
+                            <img src="../images/hav/hav-cholestasis-macrophages.png" 
+                                 alt="Tiêu bản mô học gan mô tả hiện tượng ứ mật và đại thực bào chứa hemosiderin" 
+                                 class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 2 (Fig. 2 - Cullen & Lemon, <i>CSH Perspect Med</i> 2019):</strong> Biến đổi thứ phát trong viêm gan A cấp ở người: <strong>(A)</strong> Các đám đại thực bào lớn sẫm màu chứa đầy sắc tố hemosiderin (a) do dọn dẹp tế bào gan vỡ; <strong>(B)</strong> Nút mật đặc (Bile plug - b) bít kín lòng vi quản mật trung tâm tiểu thùy; <strong>(C)</strong> Tế bào gan sắp xếp thành cấu trúc hình hoa hồng (Rosette formation - ro) vây quanh vi quản mật bị giãn do tắc mật nặng.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN V: BỆNH HỌC SO SÁNH TRÊN CÁC MÔ HÌNH THỰC NGHIỆM -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="benh-hoc-so-sanh-mo-hinh" class="section-title">
+                        <span>Phần V: Bệnh Học So Sánh Trên Các Mô Hình Thực Nghiệm (Comparative Pathology)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>
+                            Nghiên cứu bệnh học so sánh trên các mô hình linh trưởng và chuột chuyển gen đã giúp làm sáng tỏ toàn bộ động học tiến triển và cơ chế bệnh sinh của HAV:
+                        </p>
+
+                        <h3 id="mo-hinh-tinh-tinh-dong-hoc-alt" class="subsection-title">1. Động Học Mô Học & Men Gan Trên Mô Hình Tinh Tinh (Chimpanzee)</h3>
+                        <p>Sinh thiết gan tuần tự chứng minh mối tương quan chặt chẽ giữa men gan ALT và tổn thương mô học:</p>
+
+                        <!-- HÌNH ẢNH 3 ĐÍNH KÈM: CHIMPANZEE BIOPSIES -->
+                        <figure class="physio-figure">
+                            <img src="../images/hav/hav-chimpanzee-sequential-biopsies.png" 
+                                 alt="Tiêu bản sinh thiết gan tuần tự theo thời gian trên mô hình Tinh tinh" 
+                                 class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 3 (Fig. 3 - Cullen & Lemon, <i>CSH Perspect Med</i> 2019):</strong> Sinh thiết gan tuần tự trên Tinh tinh nhiễm HAV chủng HM175: <strong>(A) Trước nhiễm (ALT = 25 U/L):</strong> Nhu mô gan bình thường; <strong>(B) Tuần 3 (ALT = 319 U/L):</strong> Viêm khoảng cửa tăng vọt tạo hoại tử mảnh (b) và tế bào gan apoptotic; <strong>(C) Tuần 4 - Đỉnh viêm (ALT = 392 U/L):</strong> Hoại tử nhu mô lan rộng, tế bào gan phồng to toàn bộ và lộn xộn tiểu thùy dữ dội; <strong>(D) Tuần 10 (ALT = 35 U/L):</strong> Phản ứng viêm thoái lui hoàn toàn, cấu trúc bè gan hồi phục nguyên vẹn.
+                            </figcaption>
+                        </figure>
+
+                        <h3 id="mo-hinh-khi-dem-va-chuot-ifnar1" class="subsection-title" style="margin-top: 2rem;">2. Mô Hình Khỉ Đêm (Owl Monkey) & Chuột Knockout Ifnar1-/-</h3>
+
+                        <!-- HÌNH ẢNH 4 ĐÍNH KÈM: OWL MONKEY -->
+                        <figure class="physio-figure">
+                            <img src="../images/hav/hav-owl-monkey-pathology.png" 
+                                 alt="Tiêu bản mô học gan viêm gan A cấp ở khỉ đêm Owl monkey" 
+                                 class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 4 (Fig. 4 - Cullen & Lemon, <i>CSH Perspect Med</i> 2019):</strong> Viêm gan A cấp ở khỉ đêm (<i>Aotus trivirgatus</i>): <strong>(A)</strong> Thâm nhiễm lympho khoảng cửa không có hoại tử mảnh; <strong>(B)</strong> Viêm nhu mô với lympho rải rác (a) và sưng phồng tế bào gan (b); <strong>(C)</strong> Chi tiết thoái hóa sưng phồng xuất hiện rất sớm; <strong>(D)</strong> Tăng sinh tế bào Kupffer phản ứng (c) dọn dẹp xác tế bào ở giai đoạn thoái lui.
+                            </figcaption>
+                        </figure>
+
+                        <!-- HÌNH ẢNH 5 ĐÍNH KÈM: IFNAR1-/- MICE -->
+                        <figure class="physio-figure">
+                            <img src="../images/hav/hav-ifnar1-knockout-mice.png" 
+                                 alt="Tiêu bản mô học gan viêm gan A ở chuột knockout Ifnar1-/-" 
+                                 class="physio-img lightbox-trigger">
+                            <figcaption>
+                                <strong>Hình 5 (Fig. 5 - Cullen & Lemon, <i>CSH Perspect Med</i> 2019):</strong> Mô hình chuột knockout thụ thể Interferon type I (<i>Ifnar1<sup>-/-</sup></i>): Khi thiếu hụt tín hiệu IFN-I, HAV vẫn kích hoạt con đường tự chết chương trình nội bào (Cell-intrinsic Apoptosis), thu hút tế bào viêm bao quanh các tế bào gan hoại tử apoptotic (a, b) rải rác nhu mô mà hoàn toàn không gây viêm khoảng cửa như ở người.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- ========================================================================= -->
+                <!-- PHẦN VI: BẢNG ĐỐI SÁNH HAV VS HBV VS HCV & CLINICAL PEARLS -->
+                <!-- ========================================================================= -->
+                <div class="physio-content">
+                    <h2 id="so-sanh-hav-hbv-hcv" class="section-title">
+                        <span>Phần VI: Đối Sánh Toàn Diện HAV vs HBV vs HCV & Clinical Pearls</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="bang-doi-sanh-3-sieu-vi" class="subsection-title">1. Bảng Đối Sánh Toàn Diện Sinh Lý Bệnh 3 Loại Siêu Vi Viêm Gan Phổ Biến</h3>
+
+                        <div class="hemo-table-wrap">
+                            <table class="hemo-table">
+                                <thead>
+                                    <tr>
+                                        <th>Đặc tính So sánh</th>
+                                        <th>Viêm Gan Siêu Vi A (HAV)</th>
+                                        <th>Viêm Gan Siêu Vi B (HBV)</th>
+                                        <th>Viêm Gan Siêu Vi C (HCV)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Đường Lây Truyền Chính</strong></td>
+                                        <td><strong>Phân - Miệng</strong> (Nước & Thức ăn ô nhiễm)</td>
+                                        <td>Đường máu, tình dục, mẹ truyền sang con</td>
+                                        <td>Đường máu (tiêm chích ma túy, truyền máu)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cấu trúc & Màng bọc</strong></td>
+                                        <td>Virion trần (phân) / Bán màng bọc eHAV (máu)</td>
+                                        <td>Virion có màng bọc lipid (Hạt Dane)</td>
+                                        <td>Hạt lai phức hợp Lipo-Viro-Particle (LVP)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Bản chất Bộ gen</strong></td>
+                                        <td>(+)ssRNA 7.5 kb (1 Serotype duy nhất)</td>
+                                        <td>DNA bán kép (rcDNA 3.2 kb)</td>
+                                        <td>(+)ssRNA 9.6 kb (Đa dạng 6 genotypes)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tiến triển Mạn tính</strong></td>
+                                        <td><strong>Hoàn toàn KHÔNG (0%)</strong></td>
+                                        <td>5 - 10% (Người lớn), &gt; 90% (Trẻ sơ sinh)</td>
+                                        <td><strong>70 - 85%</strong> (Rất cao)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Dấu ấn Mô học Đặc trưng</strong></td>
+                                        <td><strong>Thâm nhiễm dày đặc Tương bào (Plasma cells)</strong>, ứ mật, nút mật &amp; hoa hồng rosette</td>
+                                        <td>Tế bào gan kính mờ (Ground-glass hepatocytes do tích tụ HBsAg)</td>
+                                        <td>Mỡ hóa gan (Steatosis), tích tụ lipid quanh tế bào, nang lympho khoảng cửa</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Nguy cơ Ung thư Gan (HCC)</strong></td>
+                                        <td><strong>Không có nguy cơ</strong></td>
+                                        <td>Cao (trực tiếp qua Oncoprotein HBx &amp; Tích hợp DNA)</td>
+                                        <td>Cao (gián tiếp qua Xơ gan tiến triển)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Dấu ấn Huyết thanh Chẩn đoán</strong></td>
+                                        <td><strong>Anti-HAV IgM</strong> (Cấp tính) / <strong>Anti-HAV IgG</strong> (Miễn dịch)</td>
+                                        <td>HBsAg, Anti-HBs, HBeAg, Anti-HBc, HBV-DNA</td>
+                                        <td>Anti-HCV, HCV-RNA định lượng PCR</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Dự phòng bằng Vaccine</strong></td>
+                                        <td><strong>Có vaccine hiệu quả cao trọn đời</strong></td>
+                                        <td><strong>Có vaccine hiệu quả cao</strong></td>
+                                        <td><strong>Chưa có vaccine</strong> (do biến dị Quasispecies)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="clinical-pearl" style="margin-top: 2rem;">
+                            💎 <strong>Clinical Pearls — Bài Học Sinh Lý Bệnh Ứng Dụng Trong Thực Hành Lâm Sàng:</strong>
+                            <ul class="physio-list-arrow" style="margin-top: 0.5rem; margin-bottom: 0;">
+                                <li><strong>Chẩn đoán phân biệt với Viêm gan tự miễn (AIH):</strong> Do viêm gan A kích thích thâm nhiễm lượng lớn tương bào (plasma cells) và có thể gây tăng IgG huyết thanh tạm thời, tiêu bản sinh thiết gan có thể gây nhầm lẫn nghiêm trọng với AIH. Luôn luôn kiểm tra <strong>Anti-HAV IgM</strong> trước khi quyết định điều trị ức chế miễn dịch/corticoid cho bệnh nhân nghi ngờ AIH khởi phát cấp tính.</li>
+                                <li><strong>Hội chứng ứ mật kéo dài (Prolonged Cholestatic Hepatitis A):</strong> Khoảng 5% bệnh nhân viêm gan A có diễn tiến vàng da ứ mật nặng nề (Bilirubin huyết thanh có thể &gt; 15 - 20 mg/dL kéo dài suốt 12 - 18 tuần kèm ngứa dữ dội). Mặc dù xét nghiệm mô học thấy nút mật đặc và rosette, tiên lượng bệnh vẫn hoàn toàn lành tính và tự hồi phục, không để lại di chứng xơ hóa.</li>
+                                <li><strong>Thể viêm gan A tái phát (Relapsing Hepatitis A):</strong> Khoảng 3 - 20% bệnh nhân có thể xuất hiện đợt bùng phát men gan và vàng da thứ hai sau khi đợt viêm cấp đầu tiên đã thoái lui 1 - 3 tháng. Đây là hiện tượng đáp ứng miễn dịch hai pha, không phải do tái nhiễm chủng mới và bệnh vẫn sẽ tự khỏi hoàn toàn.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+                <!-- ========================================================================= -->
+                <div class="ref-section">
+                    <h3>📚 Tài liệu Tham khảo Chính (AMA Format)</h3>
+                    <ul class="ref-list">
+                        <li><span>1. Cullen JM, Lemon SM.</span> Comparative Pathology of Hepatitis A Virus and Hepatitis E Virus Infection. <i>Cold Spring Harb Perspect Med</i>. 2019;9(9):a033456. doi:10.1101/cshperspect.a033456.</li>
+                        <li><span>2. Shin EC, Jeong SK.</span> Natural history, clinical manifestations, and pathogenesis of hepatitis A. <i>Cold Spring Harb Perspect Med</i>. 2018;8(9):a031708. doi:10.1101/cshperspect.a031708.</li>
+                        <li><span>3. Feng Z, Hensley L, McKnight KL, et al.</span> A pathogenic picornavirus acquires an envelope by hijacking cellular membranes. <i>Nature</i>. 2013;496(7445):367-371. doi:10.1038/nature12029.</li>
+                        <li><span>4. European Association for the Study of the Liver (EASL).</span> EASL Clinical Practice Guidelines: Management of acute (fulminant) liver failure. <i>J Hepatol</i>. 2017;66(5):1047-1081.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

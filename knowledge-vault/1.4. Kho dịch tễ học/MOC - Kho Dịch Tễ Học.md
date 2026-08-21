@@ -213,7 +213,7 @@ updated: "2026-08-21"
 - [[DTH_Cơ sở & chẩn đoán vi sinh_P2.md|DTH_Cơ sở & chẩn đoán vi sinh_P2]]
 - [[DTH_Cơ sở & chẩn đoán vi sinh_P3.md|DTH_Cơ sở & chẩn đoán vi sinh_P3]]
 - [[DTH_Cơ sở & chẩn đoán vi sinh_P4.md|DTH_Cơ sở & chẩn đoán vi sinh_P4]]
-- [[DTH_Dengue virus (DENV)_P1.md|DTH_Dengue virus (DENV)_P1]]
+- [[DTH_Dengue virus (DENV)|DTH_Dengue virus (DENV)_P1]]
 - [[DTH_EBV (Epstein-Barr virus)_P1.md|DTH_EBV (Epstein-Barr virus)_P1]]
 - [[DTH_Ebola_P1.md|DTH_Ebola_P1]]
 - [[DTH_Entamoeba histolytica (amip)_P1.md|DTH_Entamoeba histolytica (amip)_P1]]

@@ -1002,10 +1002,10 @@ PCT: 3.8" style="font-family:monospace; font-size:12.5px; line-height:1.5; resiz
 
         <!-- Cross-Module Pathophysiology & Biochemistry Links -->
         <div style="display:flex; justify-content:flex-end; gap:6px; margin-top:8px; flex-wrap:wrap; border-top:1px dashed var(--color-border); padding-top:6px;">
-          <a href="#/pathophysiology/metabolic-map" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size:11px; padding:3px 8px; color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Xem cơ chế và sơ đồ chuyển hóa phân tử liên quan">
+          <a href="#/basic-medical/metabolic-map" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size:11px; padding:3px 8px; color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Xem cơ chế và sơ đồ chuyển hóa phân tử liên quan">
             <i class="fa-solid fa-dna"></i> Sơ đồ chuyển hóa
           </a>
-          <a href="#/pathophysiology/hoa-sinh" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size:11px; padding:3px 8px; color:var(--color-primary); border:1px solid var(--color-border); border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Đọc bài giảng Hóa sinh Y học">
+          <a href="#/basic-medical/hoa-sinh" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size:11px; padding:3px 8px; color:var(--color-primary); border:1px solid var(--color-border); border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Đọc bài giảng Hóa sinh Y học">
             <i class="fa-solid fa-flask-vial"></i> Hóa sinh Y học
           </a>
         </div>

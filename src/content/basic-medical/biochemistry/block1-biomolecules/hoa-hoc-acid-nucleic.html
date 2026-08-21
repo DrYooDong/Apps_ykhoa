@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHEM-06: Hóa học Nucleotid & Acid Nucleic (DNA / RNA) – Cấu Trúc Siêu Phân Tử, Động Học Phân Tử & Ứng Dụng Lâm Sàng – CliniPortal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../css/physio-shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="../../js/physio-shared.ts"></script>
+
+    <style>
+        :root {
+            --biochem-accent: #0284c7;
+            --biochem-accent-rgb: 2, 132, 199;
+            --biochem-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+        }
+
+        [data-theme="dark"] {
+            --biochem-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
+        }
+
+        .biochem-article-header {
+            background: var(--biochem-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .biochem-article-header::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .biochem-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky !important;
+            top: 80px !important;
+            z-index: 150 !important;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767px) {
+            .pillars-nav {
+                top: 60px !important;
+                border-radius: 10px;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar-thumb {
+            background: var(--color-border, #cbd5e1);
+            border-radius: 4px;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab.active {
+            border-color: var(--color-primary, #0284c7);
+            color: var(--color-primary, #0284c7);
+            background: rgba(2, 132, 199, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .pillar-tab.p-1 { border-left: 4px solid #0284c7; }
+        .pillar-tab.p-2 { border-left: 4px solid #10b981; }
+        .pillar-tab.p-3 { border-left: 4px solid #8b5cf6; }
+        .pillar-tab.p-4 { border-left: 4px solid #f59e0b; }
+        .pillar-tab.p-5 { border-left: 4px solid #06b6d4; }
+        .pillar-tab.p-6 { border-left: 4px solid #ec4899; }
+        .pillar-tab.p-7 { border-left: 4px solid #ef4444; }
+        .pillar-tab.p-8 { border-left: 4px solid #3b82f6; }
+
+        [data-theme="dark"] .pillars-nav {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+            color: var(--color-text-muted, #94a3b8);
+        }
+
+        [data-theme="dark"] .pillar-tab:hover,
+        [data-theme="dark"] .pillar-tab.active {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.12);
+        }
+
+        .article-section {
+            scroll-margin-top: 80px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* HEADINGS TYPOGRAPHY */
+        .section-title,
+        .article-section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+            font-weight: 800;
+            line-height: 1.35;
+            color: var(--color-primary, #0284c7);
+            margin: 2.25rem 0 1.25rem 0;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .section-title i,
+        .article-section h2 i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            font-size: 1.05rem;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .subsection-title,
+        .article-section h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--color-primary, #0284c7);
+            margin: 1.85rem 0 1rem 0;
+            padding: 0.5rem 0.95rem;
+            border-left: 4px solid var(--color-primary, #0284c7);
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.08) 0%, transparent 100%);
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .article-section h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            margin: 1.35rem 0 0.65rem 0;
+        }
+
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .article-section h2,
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .section-title i,
+        [data-theme="dark"] .article-section h2 i {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title,
+        [data-theme="dark"] .article-section h3 {
+            border-left-color: #38bdf8;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.12) 0%, transparent 100%);
+        }
+
+        /* MEDICAL CALLOUT BOXES */
+        .reaction-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 4px solid #8b5cf6;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+        }
+
+        .lab-table th,
+        .lab-table td {
+            border: 1px solid var(--color-border, #e2e8f0);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .lab-table th {
+            background: var(--color-surface-offset, #f8fafc);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        [data-theme="dark"] .lab-table th {
+            background: var(--color-surface-2, #1e293b);
+            color: var(--color-text, #f1f5f9);
+        }
+
+        /* SVG DIAGRAM CARDS */
+        .diagram-container {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+
+        [data-theme="dark"] .diagram-container {
+            background: var(--color-surface-2, #0f172a);
+            border-color: var(--color-border, #334155);
+        }
+
+        .diagram-caption {
+            font-size: 0.85rem;
+            color: var(--color-text-muted, #64748b);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .card-panel {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        [data-theme="dark"] .card-panel {
+            background: var(--color-surface, #1e293b);
+            border-color: var(--color-border, #334155);
+        }
+
+        .param-badge {
+            display: inline-block;
+            background: rgba(2, 132, 199, 0.12);
+            color: var(--color-primary, #0284c7);
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        [data-theme="dark"] .param-badge {
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+        }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- ARTICLE HEADER -->
+        <header class="biochem-article-header">
+            <span class="biochem-badge"><i class="fa-solid fa-dna"></i> CHEM-06 • Khối 1: Cấu Trúc Đại Phân Tử Sinh Học</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: clamp(1.6rem, 3.5vw, 2.25rem); font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Hóa Học Nucleotid & Acid Nucleic (DNA / RNA)
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 960px;">
+                Cấu tạo Base Nitơ (Purin & Pyrimidin), Pentose (Ribose vs Deoxyribose), liên kết 3',5'-Phosphodiester. Mô hình xoắn kép DNA Watson-Crick, nguyên tắc bổ sung Chargaff, 4 lực ổn định. Cấu trúc siêu phân tử Chromatin & Nucleosome (5 cấp độ nén 10.000 lần), hệ thống RNA đa chức năng (mRNA, tRNA lá chẻ ba, rRNA). Động học biến tính (Tm, hiệu ứng tăng sắc), kỹ thuật PCR/qPCR TaqMan, giải trình tự Sanger/NGS và các thuốc tương tự nucleotide trong hóa trị ung thư/kháng virus.
+            </p>
+        </header>
+
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab p-1" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-layer-group"></i> 1. Cấu Tạo Nucleotid</a>
+                <a href="#sec-2" class="pillar-tab p-2" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-bolt"></i> 2. Polynucleotid & Thuốc Y Học</a>
+                <a href="#sec-3" class="pillar-tab p-3" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-dna"></i> 3. Cấu Trúc DNA Watson-Crick</a>
+                <a href="#sec-4" class="pillar-tab p-4" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-boxes-stacked"></i> 4. Đóng Gói Chromatin & Nucleosome</a>
+                <a href="#sec-5" class="pillar-tab p-5" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-code-branch"></i> 5. Hệ Thống RNA (mRNA, tRNA, rRNA)</a>
+                <a href="#sec-6" class="pillar-tab p-6" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-chart-line"></i> 6. Động Học Biến Tính & Tm</a>
+                <a href="#sec-7" class="pillar-tab p-7" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-microscope"></i> 7. Công Nghệ PCR & Sequencing</a>
+                <a href="#sec-8" class="pillar-tab p-8" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-vials"></i> 8. Bilan Cận Lâm Sàng Phân Tử</a>
+            </div>
+        </nav>
+
+        <!-- ==================== SECTION 1 ==================== -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> 1. Cấu Tạo Hóa Học Của Nucleotid (Phosphat, Pentose & Base Nitơ)</h2>
+
+            <p class="section-text">
+                Acid nucleic được phát hiện lần đầu tiên vào năm 1869 bởi <strong>Friedrich Miescher</strong> từ nhân tế bào bạch cầu mủ vết thương (đặt tên là <em>Nuclein</em>). Acid nucleic chiếm <strong>5 &ndash; 15% trọng lượng khô</strong> của tế bào, đóng vai trò bảo tồn, truyền đạt thông tin di truyền và xúc tác sinh học.
+            </p>
+
+            <div class="info-box">
+                <strong><i class="fa-solid fa-circle-info"></i> 3 Thành Phần Cơ Bản Của Nucleotide:</strong>
+                <ul style="margin: 0.5rem 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                    <li><strong>Acid Phosphoric (H₃PO₄):</strong> Acid vô cơ tạo điện tích âm mạnh ở pH sinh lý, mang lại tính acid cho toàn bộ phân tử acid nucleic.</li>
+                    <li><strong>Đường Pentose (đường 5 carbon):</strong> &beta;-D-Ribose trong RNA và &beta;-2'-Deoxy-D-ribose trong DNA (khuyết nhóm -OH tại C2').</li>
+                    <li><strong>Base có Nitơ (Heterocyclic Nitrogenous Bases):</strong> Nhóm Purin (Adenin, Guanin) và nhóm Pyrimidin (Cytosin, Thymin, Uracil).</li>
+                </ul>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 1.1. Ý Nghĩa Sinh Học Tuyệt Vời Của Nhóm -OH Tại Vị Trí C2'</h3>
+            <div class="grid-2col">
+                <div class="card-panel">
+                    <h4 style="color: #ef4444; margin-top: 0;"><i class="fa-solid fa-flask"></i> RNA (Có nhóm 2'-OH):</h4>
+                    <p style="margin: 0; font-size: 0.92rem; line-height: 1.65;">
+                        Trong môi trường kiềm, nhóm 2'-OH bị khử proton tạo thành alkoxide nucleophile (C2'-O<sup>-</sup>) tấn công nội phân tử vào nguyên tử Phosphor của liên kết 3',5'-phosphodiester lân cận. Phản ứng tạo chất trung gian <em>vòng 2',3'-cyclic mononucleotide</em> và <strong>thủy phân hoàn toàn RNA</strong> thành các mononucleotide riêng rẽ.
+                    </p>
+                </div>
+                <div class="card-panel">
+                    <h4 style="color: #10b981; margin-top: 0;"><i class="fa-solid fa-shield-halved"></i> DNA (Khuyết nhóm 2'-OH):</h4>
+                    <p style="margin: 0; font-size: 0.92rem; line-height: 1.65;">
+                        Do không có nhóm nucleophile tại C2', <strong>DNA hoàn toàn trơ trước sự thủy phân của dung dịch kiềm</strong>. Trong môi trường kiềm mạnh, sợi đôi DNA chỉ bị biến tính tháo xoắn tách thành 2 sợi đơn tự do mà mạch liên kết phosphodiester cộng hóa trị vẫn được bảo tồn nguyên vẹn 100%.
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 1.2. Phân Loại & Đồng Phân Hỗ Biến (Tautomerism) Của Base Nitơ</h3>
+            <ul style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Nhóm Purin (2 vòng ngưng tụ 6 + 5 cạnh, N tại 1, 3, 7, 9):</strong>
+                    <ul style="margin-top: 0.35rem;">
+                        <li><strong>Adenin (A):</strong> 6-aminopurine.</li>
+                        <li><strong>Guanin (G):</strong> 2-amino-6-oxopurine.</li>
+                        <li><em>Dẫn xuất thực vật methyl hóa có hoạt tính kích thích thần kinh:</em> Cafein (1,3,7-trimethylxanthine), Theophyllin (1,3-dimethylxanthine trong lá trà), Theobromin (3,7-dimethylxanthine trong ca-cao).</li>
+                    </ul>
+                </li>
+                <li><strong>Nhóm Pyrimidin (vòng đơn 6 cạnh, N tại 1, 3):</strong>
+                    <ul style="margin-top: 0.35rem;">
+                        <li><strong>Cytosin (C):</strong> 2-oxo-4-aminopyrimidine (có ở cả DNA và RNA).</li>
+                        <li><strong>Thymin (T):</strong> 2,4-dioxo-5-methylpyrimidine (5-methyluracil, độc quyền trong DNA).</li>
+                        <li><strong>Uracil (U):</strong> 2,4-dioxopyrimidine (độc quyền trong RNA).</li>
+                    </ul>
+                </li>
+                <li><strong>Đồng phân hỗ biến (Tautomerism):</strong>
+                    <div class="reaction-box" style="margin: 0.5rem 0;">
+                        <code>Dạng Amino (-NH₂) ⇌ Dạng Imino (=NH)</code> &bull; <code>Dạng Lactam (Keto, C=O) ⇌ Dạng Lactim (Enol, C-OH)</code>
+                    </div>
+                    Tại pH sinh lý trung hòa (~7,0), <strong>dạng Amino và dạng Lactam (Keto) chiếm ưu thế tuyệt đối (&gt;99,9%)</strong>, đảm bảo tính chính xác cho các liên kết hydro bổ sung A=T và G&equiv;C.
+                </li>
+            </ul>
+
+            <!-- SVG DIAGRAM 1: PURINE & PYRIMIDINE STRUCTURES -->
+            <div class="diagram-container">
+                <svg viewBox="0 0 760 220" style="max-width: 100%; height: auto;" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="10" width="350" height="200" rx="12" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #e2e8f0)" stroke-width="1.5"/>
+                    <rect x="395" y="10" width="350" height="200" rx="12" fill="var(--color-bg, #f8fafc)" stroke="var(--color-border, #e2e8f0)" stroke-width="1.5"/>
+                    
+                    <text x="190" y="35" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="var(--color-primary, #0284c7)">NHÂN PURIN (Vòng Kép 9 Nguyên Tử)</text>
+                    <text x="570" y="35" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="13" fill="#10b981">NHÂN PYRIMIDIN (Vòng Đơn 6 Nguyên Tử)</text>
+                    
+                    <!-- Purine diagram -->
+                    <g transform="translate(190, 115)">
+                        <!-- 6-membered ring -->
+                        <polygon points="-45,-30 0,-50 45,-30 45,20 0,40 -45,20" fill="rgba(2, 132, 199, 0.08)" stroke="var(--color-text, #0f172a)" stroke-width="2"/>
+                        <!-- 5-membered ring attached -->
+                        <polygon points="45,-30 85,-10 85,25 45,20" fill="rgba(2, 132, 199, 0.12)" stroke="var(--color-text, #0f172a)" stroke-width="2"/>
+                        <!-- Nitrogen labels -->
+                        <circle cx="-45" cy="-5" r="9" fill="#0284c7"/>
+                        <text x="-45" y="-1" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">N1</text>
+                        
+                        <circle cx="0" cy="40" r="9" fill="#0284c7"/>
+                        <text x="0" y="44" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">N3</text>
+                        
+                        <circle cx="85" cy="-10" r="9" fill="#8b5cf6"/>
+                        <text x="85" y="-6" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">N7</text>
+                        
+                        <circle cx="45" cy="20" r="9" fill="#8b5cf6"/>
+                        <text x="45" y="24" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">N9</text>
+                        <text x="45" y="45" font-size="9" font-weight="700" fill="#ef4444" text-anchor="middle">Liên kết Glycosid</text>
+                    </g>
+                    <text x="190" y="195" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">Adenin (6-NH₂) • Guanin (2-NH₂, 6=O)</text>
+
+                    <!-- Pyrimidine diagram -->
+                    <g transform="translate(570, 115)">
+                        <polygon points="0,-45 40,-20 40,30 0,50 -40,30 -40,-20" fill="rgba(16, 185, 129, 0.08)" stroke="var(--color-text, #0f172a)" stroke-width="2"/>
+                        <!-- N1 bottom-center -->
+                        <circle cx="0" cy="50" r="9" fill="#10b981"/>
+                        <text x="0" y="54" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">N1</text>
+                        <text x="0" y="70" font-size="9" font-weight="700" fill="#ef4444" text-anchor="middle">Liên kết Glycosid</text>
+                        
+                        <!-- N3 top-right -->
+                        <circle cx="40" cy="-20" r="9" fill="#10b981"/>
+                        <text x="40" y="-16" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">N3</text>
+                    </g>
+                    <text x="570" y="195" text-anchor="middle" font-size="11" fill="var(--color-text-muted, #64748b)">Cytosin (2=O, 4-NH₂) • Thymin (2,4=O, 5-CH₃) • Uracil (2,4=O)</text>
+                </svg>
+                <div class="diagram-caption">Sơ đồ 1: Cấu trúc nhân Purin (vòng kép) và Pyrimidin (vòng đơn) cùng vị trí Nitơ tham gia liên kết &beta;-N-glycosid (N9 ở purin, N1 ở pyrimidin).</div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 2 ==================== -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-bolt"></i> 2. Khóa Năng Lượng Phosphoanhydrid, Polynucleotid & Thuốc Y Học</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 2.1. Liên Kết &beta;-N-Glycosid, Cấu Hình Syn / Anti & Vai Trò Của Adenosin</h3>
+            <ul style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Liên kết &beta;-N-Glycosid:</strong> Nối carbon C1' của đường pentose với N9 của purin hoặc N1 của pyrimidin.</li>
+                <li><strong>Cấu hình Syn vs Anti:</strong> Trong cấu trúc acid nucleic tự nhiên, <strong>cấu hình Anti chiếm ưu thế tuyệt đối</strong> (vòng base nitơ quay hướng ra xa vòng đường pentose) để tránh lực cản không gian khi tạo liên kết hydro bổ sung.</li>
+                <li><strong>Vai trò lâm sàng của Adenosin tự do:</strong> Hoạt động như một autacoid gây giãn mạch vành, hạ nhịp tim. Thuốc <strong>Adenosin tiêm tĩnh mạch nhanh (Adenocard®)</strong> là thuốc cấp cứu đầu tay để cắt cơn nhịp nhanh kịch phát trên thất (PSVT). Cafein tạo sự tỉnh táo do đối kháng cạnh tranh trực tiếp tại thụ thể adenosin ở não bộ.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 2.2. Trục Xương Sống 3',5'-Phosphodiester & Thế Năng Năng Lượng</h3>
+            <p class="section-text">
+                Polynucleotide được nối dài nhờ liên kết <strong>3',5'-Phosphodiester</strong> giữa nhóm 3'-OH của nucleotide trước với nhóm 5'-OH của nucleotide sau.
+            </p>
+            <ul style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Tính phân cực 5' &rarr; 3':</strong> Đầu 5' mang nhóm phosphat tự do; Đầu 3' mang nhóm -OH tự do. Quy ước quốc tế luôn viết trình tự theo chiều từ 5' sang 3'.</li>
+                <li><strong>Thế năng phosphoanhydrid cao:</strong> Thủy phân liên kết phosphoanhydrid (&alpha;-&beta; hoặc &beta;-&gamma;) trong ATP/GTP giải phóng năng lượng tự do rất lớn <span class="param-badge">&Delta;G&deg;' &approx; -30,5 kJ/mol (-7,3 kcal/mol)</span>, cung cấp động lực cho mọi hoạt động sống.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-pills"></i> 2.3. Các Dẫn Xuất Tương Tự Nucleotide Trong Hóa Trị Ung Thư & Kháng Virus</h3>
+            <p class="section-text">
+                Các chất tương tự nucleotide (Nucleotide analogs) được thiết kế nhân tạo để ức chế chọn lọc các tế bào phân chia nhanh (tế bào ác tính, virus, vi khuẩn):
+            </p>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Tên Thuốc</th>
+                        <th>Bản Chất Hóa Học</th>
+                        <th>Cơ Chế Phân Tử</th>
+                        <th>Ứng Dụng Lâm Sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Allopurinol</strong></td>
+                        <td>Đồng phân Hypoxanthine</td>
+                        <td>Ức chế cạnh tranh enzyme <strong>Xanthine Oxidase</strong>, giảm tạo Acid Uric</td>
+                        <td>Điều trị hạ acid uric máu trong bệnh Gout (thống phong)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Azathioprin / 6-MP</strong></td>
+                        <td>Chất tương tự Purin</td>
+                        <td>Chuyển thành 6-Mercaptopurine ức chế tổng hợp purin de novo</td>
+                        <td>Ức chế miễn dịch, chống thải ghép cơ quan, bệnh tự miễn</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zidovudin (AZT)</strong></td>
+                        <td>3'-Azido-deoxythymidine</td>
+                        <td>Khuyết nhóm 3'-OH &rarr; ức chế enzyme <strong>Reverse Transcriptase</strong> gây dừng chuỗi DNA</td>
+                        <td>Thuốc kháng virus điều trị nhiễm HIV/AIDS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cytarabin (Ara-C)</strong></td>
+                        <td>Arabinosylcytosine</td>
+                        <td>Chứa đường Arabinose thay cho Ribose, ức chế DNA Polymerase</td>
+                        <td>Hóa trị liệu bệnh bạch cầu cấp (Leukemia), ung thư máu</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5-Fluorouracil (5-FU)</strong></td>
+                        <td>Tương tự Pyrimidin (Uracil)</td>
+                        <td>Ức chế enzyme <strong>Thymidylate Synthase</strong>, chặn tổng hợp dTMP</td>
+                        <td>Hóa trị ung thư đại trực tràng, ung thư vú, ung thư dạ dày</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ==================== SECTION 3 ==================== -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-dna"></i> 3. Cấu Trúc DNA Watson-Crick, Nguyên Tắc Bổ Sung & Lực Ổn Định</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 3.1. Mô Hình Xoắn Kép Watson-Crick (B-DNA Kinh Điển 1953)</h3>
+            <p class="section-text">
+                Tháng 4/1953, James Watson và Francis Crick công bố mô hình chuỗi xoắn kép B-DNA dựa trên quy luật Chargaff và ảnh nhiễu xạ tia X của Rosalind Franklin & Maurice Wilkins:
+            </p>
+            <div class="grid-2col">
+                <div class="card-panel">
+                    <h4 style="color: var(--color-primary, #0284c7); margin-top: 0;"><i class="fa-solid fa-ruler-combined"></i> Kích Thước Hình Học Chuẩn:</h4>
+                    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.65;">
+                        <li><strong>Đường kính phân tử:</strong> <span class="param-badge">2,0 nm (20 &Aring;)</span>.</li>
+                        <li><strong>Chiều dài 1 chu kỳ xoắn:</strong> <span class="param-badge">3,4 nm (34 &Aring;)</span> gồm đúng <strong>10 cặp base (bp)</strong>.</li>
+                        <li><strong>Khoảng cách giữa 2 cặp base (Rise):</strong> <span class="param-badge">0,34 nm (3,4 &Aring;)</span>.</li>
+                        <li><strong>Chiều xoắn:</strong> Xoắn theo chiều <strong>phải (xoắn thuận chiều kim đồng hồ)</strong>.</li>
+                    </ul>
+                </div>
+                <div class="card-panel">
+                    <h4 style="color: #8b5cf6; margin-top: 0;"><i class="fa-solid fa-arrows-left-right"></i> Định Hướng Không Gian:</h4>
+                    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.65;">
+                        <li><strong>Cặp mạch đối song (Antiparallel):</strong> Một sợi chạy 5' &rarr; 3', sợi đối diện chạy 3' &rarr; 5'.</li>
+                        <li><strong>Phía ngoài:</strong> Xương sống đường-phosphat tích điện âm, ưa nước tiếp xúc môi trường.</li>
+                        <li><strong>Phía trong:</strong> Các cặp base nitơ kỵ nước xếp vuông góc trục xoắn.</li>
+                        <li><strong>Rãnh lớn (Major groove) & Rãnh nhỏ (Minor groove):</strong> Nơi các yếu tố phiên mã nhận diện trình tự.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 3.2. Nguyên Tắc Bổ Sung & Quy Luật Chargaff</h3>
+            <div class="reaction-box">
+                <strong><i class="fa-solid fa-link"></i> Quy luật bắt cặp bổ sung:</strong>
+                <p style="margin: 0.35rem 0 0 0;">
+                    &bull; <code>Adenin (A) liên kết với Thymin (T) bằng 2 liên kết Hydro (A = T)</code>
+                    <br>&bull; <code>Guanin (G) liên kết với Cytosin (C) bằng 3 liên kết Hydro (G ≡ C)</code>
+                </p>
+            </div>
+            <p class="section-text">
+                <strong>Quy luật Chargaff:</strong> Trong phân tử DNA sợi kép, tổng lượng base Purin luôn bằng tổng lượng base Pyrimidin: <strong>A + G = C + T</strong>; đồng thời <strong>%A = %T</strong> và <strong>%G = %C</strong>.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 3.3. 4 Lực Tương Tác Ổn Định Chuỗi Xoắn Kép</h3>
+            <ol style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Tương tác xếp chồng base (Base-stacking &ndash; Lực cốt lõi nhất):</strong> Lực hút van der Waals và tương tác electron &pi; liên hợp giữa các vòng thơm phẳng xếp chồng song song dọc trục (3,4 &Aring;). Năng lượng xếp chồng của cặp <strong>G-C lớn hơn nhiều so với A-T</strong>.</li>
+                <li><strong>Liên kết hydro:</strong> Hàng triệu liên kết H bổ sung tạo độ bền cơ học tổng thể khổng lồ.</li>
+                <li><strong>Hiệu ứng kỵ nước (Hydrophobic effect):</strong> Đẩy các base kỵ nước vào lõi và phơi bày nhóm phosphat tích điện âm ra ngoài.</li>
+                <li><strong>Trung hòa lực đẩy tĩnh điện:</strong> Cation kim loại Mg<sup>2+</sup> và protein histone tích điện dương bao bọc trung hòa lực đẩy giữa các nhóm phosphat mang điện tích âm.</li>
+            </ol>
+        </section>
+
+        <!-- ==================== SECTION 4 ==================== -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-boxes-stacked"></i> 4. Đóng Gói Siêu Phân Tử Chromatin & Nucleosome (5 Cấp Độ Nén 10.000 Lần)</h2>
+
+            <p class="section-text">
+                Nhân tế bào người chứa <strong>6,4 &times; 10⁹ cặp base DNA</strong> (ở tế bào lưỡng bội), kéo thẳng dài tới <strong>2 mét</strong>. Để nằm trọn trong nhân tế bào chỉ có đường kính 5 &ndash; 10 &mu;m, DNA phải được đóng gói siêu co xoắn với tỷ lệ nén lên đến <strong>10.000 lần</strong> nhờ hệ thống protein <strong>Histone</strong> kiềm tính (giàu Lysine và Arginine &gt;20%).
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 4.1. Cấu Trúc Nucleosome & Điều Hòa Biểu Hiện Gen</h3>
+            <ul style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Bát phân Histone lõi (Histone Octamer):</strong> Gồm phức hợp đĩa phẳng <code>[(H3-H4)₂ - (H2A-H2B)₂]</code>.</li>
+                <li><strong>Vòng quấn DNA:</strong> Có đúng <strong>146 cặp base DNA</strong> quấn <strong>1,75 vòng xoắn trái</strong> quanh bát phân histone lõi.</li>
+                <li><strong>DNA liên kết (Linker DNA):</strong> Dài 30 &ndash; 54 bp, gắn với <strong>Histone H1</strong> để khóa giữ cấu trúc.</li>
+                <li><strong>Điều hòa biểu hiện gen biểu di truyền (Epigenetics):</strong>
+                    <ul style="margin-top: 0.35rem;">
+                        <li><em>Acetyl hóa bởi HAT (Histone Acetyltransferase):</em> Trung hòa điện tích dương của Lysine &rarr; giãn xoắn tạo <strong>Euchromatin (hoạt động phiên mã)</strong>.</li>
+                        <li><em>Khử acetyl bởi HDAC (Histone Deacetylase):</em> Khôi phục điện tích dương &rarr; nén chặt tạo <strong>Heterochromatin (bất hoạt phiên mã)</strong>.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-layer-group"></i> 4.2. 5 Cấp Độ Đóng Gói Nhiễm Sắc Thể</h3>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Cấp Độ</th>
+                        <th>Tên Cấu Trúc Đóng Gói</th>
+                        <th>Đường Kính</th>
+                        <th>Tỷ Lệ Nén</th>
+                        <th>Đặc Điểm Cấu Trúc & Vai Trò</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cấp 1</strong></td>
+                        <td>Sợi đôi DNA trần (Naked dsDNA)</td>
+                        <td><span class="param-badge">2 nm (20 &Aring;)</span></td>
+                        <td>1,0</td>
+                        <td>Chuỗi xoắn kép Watson-Crick trần</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cấp 2</strong></td>
+                        <td>Sợi Nucleosome ("Chuỗi hạt")</td>
+                        <td><span class="param-badge">10 nm</span></td>
+                        <td>7 &ndash; 10 lần</td>
+                        <td>DNA quấn 1,75 vòng quanh đĩa bát phân histone lõi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cấp 3</strong></td>
+                        <td>Sợi Solenoid (Sợi Chromatin 30nm)</td>
+                        <td><span class="param-badge">30 nm</span></td>
+                        <td>40 &ndash; 60 lần</td>
+                        <td>Co xoắn lò xo dạng ống với 6 nucleosome/vòng, ổn định nhờ Histone H1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cấp 4</strong></td>
+                        <td>Vùng vòng lặp (Looped Domains)</td>
+                        <td><span class="param-badge">300 &ndash; 700 nm</span></td>
+                        <td>~1.000 lần</td>
+                        <td>Các quai DNA (20&ndash;100 kb) neo vào khung xương protein Scaffold (Nuclear Matrix)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cấp 5</strong></td>
+                        <td>Nhiễm sắc thể kỳ giữa (Metaphase)</td>
+                        <td><span class="param-badge">1.400 nm (1,4 &mu;m)</span></td>
+                        <td><strong>8.000 &ndash; 10.000 lần</strong></td>
+                        <td>Trạng thái nén xoắn cực hạn chuẩn bị cho sự phân ly đồng đều trong phân bào</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ==================== SECTION 5 ==================== -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-code-branch"></i> 5. Hệ Thống Các Loại RNA (mRNA, tRNA, rRNA & Non-Coding RNA)</h2>
+
+            <p class="section-text">
+                RNA chủ yếu tồn tại dưới dạng <strong>mạch đơn tự do</strong>, chứa đường Ribose và base Uracil (U). Nhờ tính mềm dẻo, RNA có thể tự cuộn gập nội phân tử tạo các cấu trúc vòng kẹp tóc (hairpin) hoặc hoạt động như một enzyme xúc tác sinh học (<strong>Ribozyme</strong>).
+            </p>
+
+            <div class="grid-2col">
+                <div class="card-panel">
+                    <h4 style="color: #0284c7; margin-top: 0;"><i class="fa-solid fa-envelope-open-text"></i> mRNA (3 &ndash; 5% RNA, kém bền):</h4>
+                    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.65;">
+                        <li><strong>Mũ 5' (5'-Cap):</strong> 7-methylguanosine gắn qua liên kết 5'-5' triphosphate, giúp ribosome nhận diện và chống 5'&rarr;3' exonuclease.</li>
+                        <li><strong>Đuôi Poly(A) 3':</strong> 20 &ndash; 250 gốc Adenylate bảo vệ khỏi 3'&rarr;5' exonuclease.</li>
+                        <li><strong>Splicing (Cắt nối):</strong> Loại bỏ Intron, nối Exon nhờ phức hợp Spliceosome (snRNP U1, U2, U4, U5, U6).</li>
+                    </ul>
+                </div>
+                <div class="card-panel">
+                    <h4 style="color: #10b981; margin-top: 0;"><i class="fa-solid fa-microchip"></i> rRNA (~80% RNA, cực kỳ bền):</h4>
+                    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.65;">
+                        <li>Cấu tạo nên hai tiểu đơn vị của Ribosome.</li>
+                        <li><strong>Eukaryote (80S):</strong> Gồm tiểu đơn vị lớn 60S (rRNA 28S, 5.8S, 5S) và tiểu đơn vị nhỏ 40S (rRNA 18S).</li>
+                        <li><strong>Hoạt tính Ribozyme:</strong> rRNA 28S trực tiếp xúc tác hình thành liên kết peptid (Peptidyl Transferase).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-clover"></i> tRNA &ndash; Cấu Trúc Bậc II (Lá Chẻ Ba) & Bậc III (Chữ L)</h3>
+            <p class="section-text">
+                tRNA (chiếm ~15% RNA, 74 &ndash; 95 nt) đóng vai trò là phân tử "chuyển mã adaptor", chứa nhiều base hiếm (&psi;, DHU, Inosin):
+            </p>
+            <ul style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Đầu tiếp nhận (Acceptor Stem):</strong> Tận cùng 3' luôn có trình tự <strong>5'-CCA-3'</strong> tự do. Nhóm carboxyl của acid amin hoạt hóa liên kết este với nhóm <strong>3'-OH của gốc Adenosine</strong> tận cùng này.</li>
+                <li><strong>Nhánh đối mã (Anticodon Arm):</strong> Mang bộ ba đối mã khớp bổ sung đối song song với Codon trên mRNA.</li>
+                <li><strong>Nhánh D (chứa Dihydrouridine):</strong> Nhận diện enzyme Aminoacyl-tRNA Synthetase đặc hiệu.</li>
+                <li><strong>Nhánh T&psi;C (chứa Pseudouridine):</strong> Gắn và cố định tRNA vào bề mặt ribosome.</li>
+                <li><strong>Cấu trúc chữ L bậc III:</strong> Đầu gắn acid amin và đầu anticodon nằm ở hai cực xa nhau nhất (~75 &Aring;).</li>
+            </ul>
+        </section>
+
+        <!-- ==================== SECTION 6 ==================== -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> 6. Động Học Lý Hóa: Biến Tính, Điểm Nóng Chảy (Tm), Tăng Sắc & Hồi Tính</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-dot"></i> 6.1. Hiệu Ứng Tăng Sắc (Hyperchromicity)</h3>
+            <p class="section-text">
+                Các base purin và pyrimidin hấp thụ cực đại tia tử ngoại (UV) ở bước sóng <strong>260 nm</strong>.
+            </p>
+            <ul style="padding-left: 1.25rem; line-height: 1.7;">
+                <li>Trong chuỗi xoắn kép nguyên vẹn, các base bị che lấp do xếp chồng kỵ nước &rarr; độ hấp thụ quang học thấp.</li>
+                <li>Khi DNA bị biến tính tháo xoắn thành hai sợi đơn, các base phơi bày hoàn toàn ra môi trường &rarr; <strong>độ hấp thụ UV ở 260 nm tăng vọt từ 12% đến 40% (Hiệu ứng tăng sắc &ndash; Hyperchromic effect)</strong>, đồng thời độ nhớt dung dịch giảm mạnh.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-temperature-arrow-up"></i> 6.2. Điểm Nóng Chảy (Tm &ndash; Melting Temperature) & Các Yếu Tố Chi Phối</h3>
+            <p class="section-text">
+                <strong>Tm</strong> là nhiệt độ tại đó chính xác <strong>50% phân tử DNA bị biến tính thành sợi đơn</strong> (theo đường cong Sigmoid hiệp đồng):
+            </p>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Yếu Tố Chi Phối</th>
+                        <th>Ảnh Hưởng Lên Trị Số Tm</th>
+                        <th>Cơ Chế Phân Tử Chi Phối</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hàm lượng % G-C</strong></td>
+                        <td><strong>Tỷ lệ G-C càng cao &rarr; Tm càng lớn</strong></td>
+                        <td>Cặp G-C có 3 liên kết hydro và <strong>năng lượng xếp chồng base kỵ nước (stacking energy) lớn hơn nhiều</strong> so với cặp A-T. Cứ giảm 1% G-C thì Tm giảm 0,4&deg;C.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nồng độ cation muối (Na⁺, K⁺)</strong></td>
+                        <td><strong>Tăng muối &rarr; Tăng mạnh Tm</strong></td>
+                        <td>Cation kim loại bao bọc trung hòa điện tích âm của phosphat, làm giảm lực đẩy tĩnh điện giữa 2 sợi đơn. Tăng [Na⁺] 10 lần làm <strong>Tm tăng thêm 16,6&deg;C</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tác nhân phá liên kết H (Formamide, Urea)</strong></td>
+                        <td><strong>Giảm mạnh Tm</strong></td>
+                        <td>Cạnh tranh liên kết hydro với base nitơ, giúp tháo xoắn DNA ở nhiệt độ thấp trong phòng xét nghiệm để tránh đứt gãy nhiệt.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-arrows-to-circle"></i> 6.3. Tính Chất Hồi Tính (Annealing) & Lai Phân Tử (Southern / Northern Blotting)</h3>
+            <ul style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Hồi tính:</strong> Khi hạ nhiệt độ từ từ xuống <span class="param-badge">Tm &ndash; (20 đến 25&deg;C)</span>, hai sợi đơn bổ sung tự tìm thấy nhau và tái tạo xoắn kép nguyên vẹn. Nếu làm lạnh đột ngột trên đá, DNA sẽ bị "đóng băng" thành các búi cuộn vô định hình sai hỏng.</li>
+                <li><strong>Kỹ thuật Blots kinh điển:</strong>
+                    <ul style="margin-top: 0.35rem;">
+                        <li><strong>Southern Blotting:</strong> Dùng đầu dò đánh dấu lai đặc hiệu với phân tử <strong>DNA</strong> đích trên màng lai.</li>
+                        <li><strong>Northern Blotting:</strong> Dùng đầu dò đánh dấu lai đặc hiệu với phân tử <strong>RNA</strong> đích (đo mức biểu hiện gen).</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ==================== SECTION 7 ==================== -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-microscope"></i> 7. Công Nghệ Sinh Học Phân Tử (PCR, qPCR TaqMan, Sanger & NGS)</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-circle-notch"></i> 7.1. Kỹ Thuật PCR & Chu Kỳ Nhiệt 3 Bước (Kary Mullis 1983)</h3>
+            <p class="section-text">
+                Khuếch đại hàng triệu đến hàng tỷ bản sao đoạn DNA đích trong ống nghiệm theo cấp số nhân <strong>2ⁿ</strong> qua 30 &ndash; 40 chu kỳ nhiệt:
+            </p>
+            <ol style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Bước 1 &ndash; Biến tính (Denaturation):</strong> <span class="param-badge">94 &ndash; 96&deg;C</span> (30 giây) &rarr; Đứt liên kết hydro, tách sợi đôi thành 2 sợi khuôn.</li>
+                <li><strong>Bước 2 &ndash; Bắt cặp mồi (Annealing):</strong> <span class="param-badge">55 &ndash; 65&deg;C</span> (Ta = Tm mồi &minus; 5&deg;C) &rarr; Cặp mồi đặc hiệu (18&ndash;22 nt) gắn bổ sung vào 2 đầu vùng đích.</li>
+                <li><strong>Bước 3 &ndash; Kéo dài (Extension):</strong> <span class="param-badge">72&deg;C</span> &rarr; Enzyme chịu nhiệt <strong>Taq DNA Polymerase</strong> tổng hợp chuỗi mới theo chiều 5' &rarr; 3'.</li>
+            </ol>
+            <div class="pearl-box">
+                <strong><i class="fa-solid fa-shield-virus"></i> Kiểm soát ngoại nhiễm (Contamination Control):</strong> Sử dụng hệ thống <strong>dUTP + enzyme Uracil N-Glycosylase (UNG)</strong>. UNG phân hủy các sản phẩm amplicon tồn đọng từ các mẻ chạy trước ở 40&deg;C trước khi khởi động chu kỳ PCR mới, triệt tiêu nguy cơ dương tính giả.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-chart-line"></i> 7.2. Real-Time PCR (qPCR) & Đầu Dò TaqMan FRET</h3>
+            <p class="section-text">
+                Định lượng số lượng bản sao virus hoặc biểu hiện gen theo thời gian thực:
+            </p>
+            <ul style="padding-left: 1.25rem; line-height: 1.7;">
+                <li><strong>Đầu dò TaqMan:</strong> Đoạn oligonucleotide gắn <strong>Reporter (chất phát huỳnh quang ở đầu 5')</strong> và <strong>Quencher (chất dập tắt ở đầu 3')</strong> theo cơ chế FRET.</li>
+                <li>Khi Taq Polymerase di chuyển dọc sợi khuôn, hoạt tính <strong>5'&rarr;3' exonuclease</strong> của nó thủy phân cắt đứt đầu dò &rarr; giải phóng Reporter ra xa Quencher &rarr; phát tín hiệu huỳnh quang tỷ lệ thuận trực tiếp với số lượng bản sao DNA tạo ra.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-list-ol"></i> 7.3. Giải Trình Tự DNA: Phương Pháp Sanger vs NGS</h3>
+            <div class="grid-2col">
+                <div class="card-panel">
+                    <h4 style="color: var(--color-primary, #0284c7); margin-top: 0;">Phương Pháp Sanger (Dideoxy Chain Termination):</h4>
+                    <p style="margin: 0; font-size: 0.92rem; line-height: 1.65;">
+                        Sử dụng các <strong>ddNTP (dideoxynucleoside triphosphate khuyết cả 2'-OH và 3'-OH)</strong> gắn màu huỳnh quang. Khi ddNTP gắn vào chuỗi, phản ứng kéo dài bị dừng lại ngay lập tức. Điện di mao quản đọc các vạch kết thúc để giải mã từng nucleotide.
+                    </p>
+                </div>
+                <div class="card-panel">
+                    <h4 style="color: #8b5cf6; margin-top: 0;">Giải Trình Tự Thế Hệ Mới (NGS - Next Generation Sequencing):</h4>
+                    <p style="margin: 0; font-size: 0.92rem; line-height: 1.65;">
+                        Khuếch đại bắc cầu song song hàng triệu cụm DNA đồng thời trên chip kính, đọc tín hiệu huỳnh quang thời gian thực theo từng chu kỳ gắn base, giải mã toàn bộ hệ gen người chỉ trong vài giờ.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SECTION 8 ==================== -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-vials"></i> 8. Bilan Cận Lâm Sàng Sinh Học Phân Tử & Bệnh Lý Di Truyền</h2>
+
+            <p class="section-text">
+                Ứng dụng acid nucleic trong chẩn đoán xác định, phân tầng nguy cơ và điều trị đích y học cá thể hóa:
+            </p>
+
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Tên Xét Nghiệm Phân Tử</th>
+                        <th>Kỹ Thuật Thực Hiện</th>
+                        <th>Ý Nghĩa Chẩn Đoán & Biện Luận Lâm Sàng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Định lượng tải lượng Virus (HBV, HCV, HIV)</strong></td>
+                        <td>Real-Time RT-PCR / TaqMan</td>
+                        <td>Đo lường chính xác số lượng bản sao virus (copies/mL hoặc IU/mL) trong huyết tương, đánh giá hiệu quả đáp ứng thuốc kháng virus (DAA, ARV).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kháng thể Anti-dsDNA</strong></td>
+                        <td>CLIA / ELISA / Miễn dịch huỳnh quang</td>
+                        <td>Dấu ấn miễn dịch đặc hiệu hàng đầu trong chẩn đoán và theo dõi đợt bùng phát tổn thương thận của bệnh <strong>Lupus ban đỏ hệ thống (SLE)</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Đột biến Gen Điều Trị Đích (EGFR, KRAS, BRAF)</strong></td>
+                        <td>PCR / Giải trình tự Sanger / NGS</td>
+                        <td>
+                            &bull; <strong>Đột biến EGFR (Exon 19 del, L858R):</strong> Chỉ định thuốc ức chế Tyrosine Kinase (TKI: Osimertinib) trong ung thư phổi không tế bào nhỏ.<br>
+                            &bull; <strong>Đột biến KRAS:</strong> Kháng thuốc kháng thể đơn dòng kháng EGFR (Cetuximab) trong ung thư đại trực tràng.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xét nghiệm Sàng lọc Trước sinh Không xâm lấn (NIPT)</strong></td>
+                        <td>NGS phân tích cell-free fetal DNA (cffDNA)</td>
+                        <td>Sàng lọc sớm các hội chứng lệch bội nhiễm sắc thể (Down T21, Edwards T18, Patau T13) từ tuần thai thứ 9 qua máu tĩnh mạch mẹ.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Định Lượng Acid Uric Máu & Nước Tiểu</strong></td>
+                        <td>Hóa sinh so màu Enzymatic (Uricase)</td>
+                        <td>Đánh giá tình trạng tăng dị hóa acid nucleic, phân hủy tế bào hàng loạt sau hóa trị ung thư (Hội chứng ly giải u &ndash; Tumor Lysis Syndrome) hoặc bệnh Gout.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="danger-box">
+                <strong><i class="fa-solid fa-triangle-exclamation"></i> Cảnh Báo Lâm Sàng & Phân Tầng Nguy Cơ:</strong>
+                <ul style="margin: 0.5rem 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                    <li><strong>Hội chứng Ly giải U Cấp (Tumor Lysis Syndrome):</strong> Bệnh nhân ung thư máu sau hóa trị ồ ạt phân giải acid nucleic &rarr; tăng vọt Acid Uric, Kali và Phosphat máu &rarr; suy thận cấp và rối loạn nhịp tim tử vong &rarr; dự phòng khẩn cấp bằng <strong>Rasburicase (Urate Oxidase tái tổ hợp)</strong> hoặc Allopurinol kèm truyền dịch kiềm hóa nước tiểu.</li>
+                    <li><strong>Chống chỉ định dùng thuốc 5-FU ở người thiếu hụt DPYD:</strong> Enzyme Dihydropyrimidine Dehydrogenase chuyển hóa 80% lượng 5-FU; bệnh nhân mang đột biến bất hoạt gen DPYD khi dùng 5-FU liều thông thường sẽ bị ngộ độc chết người &rarr; bắt buộc tầm soát kiểu gen DPYD trước khi bắt đầu hóa trị.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FOOTER & REFERENCES -->
+        <footer style="margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.75;">
+            <h4 style="margin: 0 0 0.65rem 0; color: var(--color-text, #334155); font-size: 0.95rem; font-weight: 700;">Tài Liệu Tham Khảo Chuẩn AMA (American Medical Association):</h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Bộ Môn Hóa Sinh (Đại học Y Dược TP. Hồ Chí Minh). Chương V: Hóa học Nucleotid và Acid Nucleic & Chương XV, XVI, XVII. Trong: <em>Hóa Sinh Y Học</em>. TP. Hồ Chí Minh: NXB Y Học; 2024:95-120, 373-463.</li>
+                <li>Kennelly PJ, Botham KM, McGuinness OP, Rodwell VW, Weil PA. Section V: Biochemistry of Extracellular & Intracellular Communication: Nucleic Acids Structure & Function. In: <em>Harper's Illustrated Biochemistry</em>. 32nd ed. New York, NY: McGraw Hill; 2023:329-359, 384-419.</li>
+                <li>Baynes JW, Dominiczak MH. Chapter 20 & 21: Nucleic Acids, Gene Expression and Protein Synthesis. In: <em>Medical Biochemistry</em>. 5th ed. Philadelphia, PA: Elsevier; 2019:204-209, 271-290, 440-455.</li>
+                <li>Pratt CW, Cornely K. Chapter 3 & 4: Nucleotides and Nucleic Acids. In: <em>Essential Biochemistry</em>. 5th ed. Hoboken, NJ: John Wiley & Sons; 2021:57-66, 122-135, 590-635.</li>
+                <li>Horton HR, Moran LA, Scrimgeour KG, Perry MD, Rawn JD. <em>Principles of Biochemistry</em>. 5th ed. Boston, MA: Pearson; 2012:551-555, 573-595, 665-680.</li>
+                <li>Murphy MJ, Srivastava R, Deans K. <em>Clinical Biochemistry: An Illustrated Colour Text</em>. 6th ed. Edinburgh: Elsevier; 2018:64-65, 148-151.</li>
+            </ol>
+        </footer>
+
+    </div>
+</body>
+
+</html>

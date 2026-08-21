@@ -182,6 +182,8 @@ import {
   renderCoCheBenhSinhView,
   renderBiochemistryView,
   initBiochemistryView,
+  renderEpidemiologyView,
+  initEpidemiologyView,
   renderFormulaVaultView,
   renderPhysioReader,
   renderPhysioHtmlReader,
@@ -191,7 +193,7 @@ import {
   initMetabolicNavigator,
   renderPathoQuizView,
   initPathoQuizView
-} from './content/pathophysiology';
+} from './content/basic-medical';
 
 /**
  * Đăng ký các SPA Routes chính
@@ -299,35 +301,109 @@ function initializeRoutes(): void {
   });
 
 
-  router.register('/pathophysiology', 'Cơ sở Y khoa (GP - SL - CCBS)', () => {
-    document.title = 'Cơ sở Y khoa – CliniPortal';
-    mountToApp(renderPathophysiologyView('all'));
-    initPathophysiologyHub();
-  });
+  // === BASIC MEDICAL SCIENCES ROUTES (Primary & Backwards Compatible Aliases) ===
+  const registerBasicMedicalRoutes = (prefix: string) => {
+    router.register(`/${prefix}`, 'Basic Medical Sciences (GP - SL - CCBS - HS - DT)', () => {
+      document.title = 'Basic Medical Sciences – CliniPortal';
+      mountToApp(renderPathophysiologyView('all'));
+      initPathophysiologyHub();
+    });
 
-  router.register('/pathophysiology/giai-phau-sinh-ly', 'Giải phẫu & Sinh lý học', () => {
-    document.title = 'Giải phẫu & Sinh lý – CliniPortal';
-    mountToApp(renderGiaiPhauSinhLyView());
-    initPathophysiologyHub();
-  });
+    router.register(`/${prefix}/giai-phau-sinh-ly`, 'Giải phẫu & Sinh lý học', () => {
+      document.title = 'Giải phẫu & Sinh lý – CliniPortal';
+      mountToApp(renderGiaiPhauSinhLyView());
+      initPathophysiologyHub();
+    });
 
-  router.register('/pathophysiology/co-che-benh-sinh', 'Cơ chế bệnh sinh & Sinh lý bệnh', () => {
-    document.title = 'Cơ chế bệnh sinh – CliniPortal';
-    mountToApp(renderCoCheBenhSinhView());
-    initPathophysiologyHub();
-  });
+    router.register(`/${prefix}/co-che-benh-sinh`, 'Cơ chế bệnh sinh & Sinh lý bệnh', () => {
+      document.title = 'Cơ chế bệnh sinh – CliniPortal';
+      mountToApp(renderCoCheBenhSinhView());
+      initPathophysiologyHub();
+    });
 
-  router.register('/pathophysiology/hoa-sinh', 'Hóa sinh Y học & Chuyển hóa', () => {
-    document.title = 'Hóa sinh Y học – CliniPortal';
-    mountToApp(renderBiochemistryView());
-    initBiochemistryView();
-  });
+    router.register(`/${prefix}/hoa-sinh`, 'Hóa sinh Y học & Chuyển hóa', () => {
+      document.title = 'Hóa sinh Y học – CliniPortal';
+      mountToApp(renderBiochemistryView());
+      initBiochemistryView();
+    });
 
-  router.register('/pathophysiology/biochemistry', 'Hóa sinh Y học & Chuyển hóa', () => {
-    document.title = 'Hóa sinh Y học – CliniPortal';
-    mountToApp(renderBiochemistryView());
-    initBiochemistryView();
-  });
+    router.register(`/${prefix}/biochemistry`, 'Hóa sinh Y học & Chuyển hóa', () => {
+      document.title = 'Hóa sinh Y học – CliniPortal';
+      mountToApp(renderBiochemistryView());
+      initBiochemistryView();
+    });
+
+    router.register(`/${prefix}/dich-te-hoc`, 'Dịch Tễ Học & Y Tế Công Cộng', () => {
+      document.title = 'Dịch Tễ Học Y Khoa – CliniPortal';
+      mountToApp(renderEpidemiologyView());
+      initEpidemiologyView();
+    });
+
+    router.register(`/${prefix}/epidemiology`, 'Dịch Tễ Học & Y Tế Công Cộng', () => {
+      document.title = 'Dịch Tễ Học Y Khoa – CliniPortal';
+      mountToApp(renderEpidemiologyView());
+      initEpidemiologyView();
+    });
+
+    router.register(`/${prefix}/formula-vault`, 'Kho Công thức Sinh lý', () => {
+      document.title = 'Kho Công thức Sinh lý – CliniPortal';
+      mountToApp(renderFormulaVaultView());
+    });
+
+    router.register(`/${prefix}/simulators`, 'Mô Phỏng Sinh Lý Tương Tác', () => {
+      document.title = 'Phòng Thí Nghiệm Mô Phỏng Sinh Lý – CliniPortal';
+      mountToApp(renderPhysiologySimulatorsView('nernst'));
+      initPhysiologySimulators();
+    });
+
+    router.register(`/${prefix}/metabolic-map`, 'Bản Đồ Chuyển Hóa Tương Tác', () => {
+      document.title = 'Bản Đồ Chuyển Hóa & Hóa Sinh – CliniPortal';
+      mountToApp(renderMetabolicNavigatorView('glycolysis'));
+      initMetabolicNavigator();
+    });
+
+    router.register(`/${prefix}/quiz`, 'Luyện Tập Ca Lâm Sàng & Flashcards Cơ Chế', () => {
+      document.title = 'Luyện Tập Cơ Chế Bệnh Sinh & Flashcards – CliniPortal';
+      mountToApp(renderPathoQuizView('cases'));
+      initPathoQuizView();
+    });
+
+    router.register(`/${prefix}/reader/:slug`, 'Bài Giảng Sinh Lý Học', (params) => {
+      const slug = params.slug || '';
+      mountToApp(renderPhysioReader(slug));
+    });
+
+    router.register(`/${prefix}/reader/:part/:slug`, 'Bài Giảng Sinh Lý Học', (params) => {
+      const part = params.part || '';
+      const slug = params.slug || '';
+      mountToApp(renderPhysioReader(`${part}/${slug}`));
+    });
+
+    router.register(`/${prefix}/physiology/:part/:slug`, 'Bài Giảng Giải Phẫu & Sinh Lý', (params) => {
+      const part = params.part || 'part1';
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader(part, slug));
+    });
+
+    router.register(`/${prefix}/biochemistry/:block/:slug`, 'Bài Giảng Hóa Sinh Y Học', (params) => {
+      const block = params.block || 'block1-biomolecules';
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader(block, slug));
+    });
+
+    router.register(`/${prefix}/cases/:slug`, 'Cơ Chế Bệnh Sinh Lâm Sàng', (params) => {
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader('cases', slug));
+    });
+
+    router.register(`/${prefix}/co-che-benh-sinh/:slug`, 'Cơ Chế Bệnh Sinh Lâm Sàng', (params) => {
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader('cases', slug));
+    });
+  };
+
+  registerBasicMedicalRoutes('basic-medical');
+  registerBasicMedicalRoutes('pathophysiology');
 
   router.register('/biochemistry', 'Hóa sinh Y học & Chuyển hóa', () => {
     document.title = 'Hóa sinh Y học – CliniPortal';
@@ -335,60 +411,16 @@ function initializeRoutes(): void {
     initBiochemistryView();
   });
 
-  router.register('/pathophysiology/formula-vault', 'Kho Công thức Sinh lý', () => {
-    document.title = 'Kho Công thức Sinh lý – CliniPortal';
-    mountToApp(renderFormulaVaultView());
+  router.register('/epidemiology', 'Dịch Tễ Học & Y Tế Công Cộng', () => {
+    document.title = 'Dịch Tễ Học Y Khoa – CliniPortal';
+    mountToApp(renderEpidemiologyView());
+    initEpidemiologyView();
   });
 
-  router.register('/pathophysiology/simulators', 'Mô Phỏng Sinh Lý Tương Tác', () => {
-    document.title = 'Phòng Thí Nghiệm Mô Phỏng Sinh Lý – CliniPortal';
-    mountToApp(renderPhysiologySimulatorsView('nernst'));
-    initPhysiologySimulators();
-  });
-
-  router.register('/pathophysiology/metabolic-map', 'Bản Đồ Chuyển Hóa Tương Tác', () => {
-    document.title = 'Bản Đồ Chuyển Hóa & Hóa Sinh – CliniPortal';
-    mountToApp(renderMetabolicNavigatorView('glycolysis'));
-    initMetabolicNavigator();
-  });
-
-  router.register('/pathophysiology/quiz', 'Luyện Tập Ca Lâm Sàng & Flashcards Cơ Chế', () => {
-    document.title = 'Luyện Tập Cơ Chế Bệnh Sinh & Flashcards – CliniPortal';
-    mountToApp(renderPathoQuizView('cases'));
-    initPathoQuizView();
-  });
-
-  router.register('/pathophysiology/reader/:slug', 'Bài Giảng Sinh Lý Học', (params) => {
-    const slug = params.slug || '';
-    mountToApp(renderPhysioReader(slug));
-  });
-
-  router.register('/pathophysiology/reader/:part/:slug', 'Bài Giảng Sinh Lý Học', (params) => {
-    const part = params.part || '';
-    const slug = params.slug || '';
-    mountToApp(renderPhysioReader(`${part}/${slug}`));
-  });
-
-  router.register('/pathophysiology/physiology/:part/:slug', 'Bài Giảng Giải Phẫu & Sinh Lý', (params) => {
-    const part = params.part || 'part1';
-    const slug = params.slug || '';
-    mountToApp(renderPhysioHtmlReader(part, slug));
-  });
-
-  router.register('/pathophysiology/biochemistry/:block/:slug', 'Bài Giảng Hóa Sinh Y Học', (params) => {
-    const block = params.block || 'block1-biomolecules';
-    const slug = params.slug || '';
-    mountToApp(renderPhysioHtmlReader(block, slug));
-  });
-
-  router.register('/pathophysiology/cases/:slug', 'Cơ Chế Bệnh Sinh Lâm Sàng', (params) => {
-    const slug = params.slug || '';
-    mountToApp(renderPhysioHtmlReader('cases', slug));
-  });
-
-  router.register('/pathophysiology/co-che-benh-sinh/:slug', 'Cơ Chế Bệnh Sinh Lâm Sàng', (params) => {
-    const slug = params.slug || '';
-    mountToApp(renderPhysioHtmlReader('cases', slug));
+  router.register('/dich-te-hoc', 'Dịch Tễ Học & Y Tế Công Cộng', () => {
+    document.title = 'Dịch Tễ Học Y Khoa – CliniPortal';
+    mountToApp(renderEpidemiologyView());
+    initEpidemiologyView();
   });
 
   // 2.3. Tự động chuyển hướng các phân hệ cũ (TCM, Calculators, Pharmacology...) về DocSpace

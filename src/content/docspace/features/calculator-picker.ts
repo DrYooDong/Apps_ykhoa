@@ -107,10 +107,10 @@ export class CalculatorPicker {
             </div>
 
             <!-- Pathophysiology Links -->
-            <a href="#/pathophysiology/formula-vault" class="dsp-btn dsp-btn-sm cp-extra-link" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#0284c7; border:1px solid rgba(2,132,199,0.3); background:rgba(2,132,199,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Xem Kho Công Thức Sinh Lý Học">
+            <a href="#/basic-medical/formula-vault" class="dsp-btn dsp-btn-sm cp-extra-link" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#0284c7; border:1px solid rgba(2,132,199,0.3); background:rgba(2,132,199,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Xem Kho Công Thức Sinh Lý Học">
               <i class="fa-solid fa-square-root-variable"></i> Công thức Sinh lý
             </a>
-            <a href="#/pathophysiology/simulators" class="dsp-btn dsp-btn-sm cp-extra-link" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); background:rgba(139,92,246,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Mở Máy Mô Phỏng Sinh Lý Tương Tác">
+            <a href="#/basic-medical/simulators" class="dsp-btn dsp-btn-sm cp-extra-link" style="text-decoration:none; font-size:11px; padding:5px 8px; border-radius:6px; color:#8b5cf6; border:1px solid rgba(139,92,246,0.3); background:rgba(139,92,246,0.06); font-weight:700; display:inline-flex; align-items:center; gap:4px;" title="Mở Máy Mô Phỏng Sinh Lý Tương Tác">
               <i class="fa-solid fa-bolt"></i> Mô phỏng Sinh lý
             </a>
 
