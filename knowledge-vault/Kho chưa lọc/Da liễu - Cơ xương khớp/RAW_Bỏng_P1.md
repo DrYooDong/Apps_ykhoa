@@ -3,23 +3,9 @@ title: "Bỏng"
 part: "P1"
 aliases:
   - "Bỏng"
-  - "Burn Injury"
-  - "Bỏng nhiệt"
-  - "Bỏng hóa chất"
-  - "Bỏng điện"
 keywords:
   - "bỏng"
   - "da liễu - cơ xương khớp"
-  - "cong thuc parkland"
-  - "dien tich bong"
-  - "do sau bong"
-  - "bu dich ringer lactate"
-  - "chong soc"
-  - "kiem soat nhiem trung"
-icd10:
-  - "T20"
-  - "T30"
-  - "T31"
 specialty: "Da liễu - Cơ xương khớp"
 kho: "Kho chưa lọc"
 tags:

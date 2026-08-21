@@ -3,21 +3,10 @@ title: "Viêm ruột thừa"
 part: "P1"
 aliases:
   - "Viêm ruột thừa"
-  - "Appendicitis"
-  - "VRT"
-  - "Đau ruột thừa"
 keywords:
   - "viêm ruột thừa"
   - "tiêu hóa - gan mật"
   - "ngoại khoa"
-  - "alvarado score"
-  - "diem mcburney"
-  - "sieu am ho chau phai"
-  - "ct bung"
-  - "phau thuat noi soi"
-icd10:
-  - "K35"
-  - "K35.8"
 specialty: "Tiêu hóa - Gan mật"
 kho: "Kho chưa lọc"
 tags:

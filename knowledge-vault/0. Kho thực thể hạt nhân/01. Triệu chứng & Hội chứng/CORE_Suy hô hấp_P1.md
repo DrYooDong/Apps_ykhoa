@@ -3,22 +3,10 @@ title: "Suy hô hấp"
 part: "P1"
 aliases:
   - "Suy hô hấp"
-  - "ARDS"
-  - "Acute Respiratory Distress Syndrome"
-  - "Suy hô hấp cấp"
 keywords:
   - "suy hô hấp"
   - "hô hấp"
   - "01. triệu chứng & hội chứng"
-  - "tieu chuan berlin"
-  - "pao2/fio2"
-  - "peep"
-  - "tho may bao ve phoi"
-  - "prone position"
-  - "ecmo"
-icd10:
-  - "J80"
-  - "R09.2"
 specialty: "Hô hấp"
 kho: "0. Kho thực thể hạt nhân"
 tags:

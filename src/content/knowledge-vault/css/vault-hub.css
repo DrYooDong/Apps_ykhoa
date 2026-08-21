@@ -308,13 +308,18 @@
 
 .vault-drawer-panel {
   width: 100%;
-  max-width: 860px;
+  max-width: 980px;
   height: 100%;
   background: var(--vault-surface);
   display: flex;
   flex-direction: column;
   box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
   animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: max-width 0.3s ease;
+}
+
+.vault-drawer-panel.fullscreen-mode {
+  max-width: 100vw;
 }
 
 @keyframes slideInRight {
@@ -323,32 +328,267 @@
 }
 
 .vault-drawer-header {
-  padding: 1.25rem 1.5rem;
+  padding: 1.1rem 1.5rem;
   border-bottom: 1px solid var(--vault-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: var(--vault-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .vault-drawer-body {
   flex: 1;
   overflow-y: auto;
+  padding: 1.5rem 2rem;
+  line-height: 1.75;
+  background: var(--vault-bg);
+}
+
+/* Clinical Pathway Ribbon */
+.vault-pathway-container {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.vault-pathway-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--vault-text);
+}
+
+.vault-pathway-count {
+  font-size: 0.75rem;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--vault-primary);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.vault-pathway-ribbon {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.vault-pathway-pill {
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-surface);
+  color: var(--vault-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.vault-pathway-pill:hover:not(.disabled) {
+  border-color: var(--pill-color, var(--vault-primary));
+  color: var(--pill-color, var(--vault-primary));
+  background: rgba(2, 132, 199, 0.05);
+  transform: translateY(-1px);
+}
+
+.vault-pathway-pill.active {
+  background: var(--pill-color, var(--vault-primary));
+  color: #ffffff;
+  border-color: var(--pill-color, var(--vault-primary));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Reading Toolbar */
+.vault-reader-toolbar {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.vault-reader-toolbar-left,
+.vault-reader-toolbar-right {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.vault-tool-btn {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  color: var(--vault-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.vault-tool-btn:hover {
+  border-color: var(--vault-primary);
+  color: var(--vault-primary);
+}
+
+/* 2-Column Reader Pro Grid */
+.vault-reader-pro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.vault-article-content {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
   padding: 2rem;
-  line-height: 1.7;
-}
-
-.vault-drawer-body h1, .vault-drawer-body h2, .vault-drawer-body h3 {
-  color: var(--vault-text);
-  margin-top: 1.5rem;
-}
-
-.vault-drawer-body p, .vault-drawer-body li {
   font-size: 1rem;
+  line-height: 1.8;
   color: var(--vault-text);
 }
 
-@media (max-width: 768px) {
-  .vault-header { padding: 1.25rem; }
-  .vault-header-stats { width: 100%; justify-content: space-between; }
-  .vault-drawer-panel { max-width: 100%; }
+.vault-article-content h1, .vault-article-content h2, .vault-article-content h3, .vault-article-content h4 {
+  color: var(--vault-text);
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  scroll-margin-top: 20px;
+}
+
+.vault-article-content h2 {
+  font-size: 1.35rem;
+  border-bottom: 1px solid var(--vault-border);
+  padding-bottom: 0.4rem;
+}
+
+.vault-article-content h3 {
+  font-size: 1.15rem;
+  color: var(--vault-primary);
+}
+
+/* Sticky TOC Sidebar */
+.vault-toc-sidebar {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.vault-toc-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--vault-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.vault-toc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.vault-toc-link {
+  font-size: 0.85rem;
+  color: var(--vault-muted);
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.vault-toc-link.vault-toc-level-3 {
+  padding-left: 1.2rem;
+  font-size: 0.8rem;
+}
+
+.vault-toc-link:hover {
+  color: var(--vault-primary);
+  background: rgba(2, 132, 199, 0.05);
+}
+
+.vault-toc-link.active {
+  color: var(--vault-primary);
+  font-weight: 600;
+  background: rgba(2, 132, 199, 0.08);
+  border-left-color: var(--vault-primary);
+}
+
+/* Tables in Reader */
+.vault-table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+}
+
+.vault-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--vault-surface);
+}
+
+.vault-data-table th {
+  background: var(--vault-bg);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1px solid var(--vault-border);
+}
+
+.vault-data-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--vault-border);
+}
+
+.vault-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 900px) {
+  .vault-reader-pro-grid {
+    grid-template-columns: 1fr;
+  }
+  .vault-toc-sidebar {
+    display: none;
+  }
+  .vault-drawer-panel {
+    max-width: 100%;
+  }
+  .vault-drawer-body {
+    padding: 1rem;
+  }
 }

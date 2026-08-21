@@ -3,22 +3,9 @@ title: "2025_Viêm tụy cấp (P1)"
 part: "P1"
 aliases:
   - "2025_Viêm tụy cấp (P1)"
-  - "Acute Pancreatitis"
-  - "AP"
-  - "VTC"
-  - "Viêm tụy hoại tử"
 keywords:
   - "2025_viêm tụy cấp (p1)"
   - "tiêu hóa - gan mật"
-  - "amylase"
-  - "lipase"
-  - "tieu chuan atlanta"
-  - "ranson score"
-  - "balthazar ct"
-  - "sieu am tuy"
-icd10:
-  - "K85"
-  - "K85.9"
 specialty: "Tiêu hóa - Gan mật"
 kho: "Kho chưa lọc"
 tags:

@@ -2,7 +2,7 @@
  * CliniPortal — Knowledge Vault Data Loader Engine
  */
 
-import { VaultArticle, VaultKhoSummary, VaultFilterState } from './types';
+import { VaultArticle, VaultKhoSummary, VaultFilterState, ClinicalPathwayLinks } from './types';
 import catalogData from './data/vault-catalog.json';
 
 export const VAULT_CATALOG: VaultArticle[] = catalogData as VaultArticle[];
@@ -21,7 +21,10 @@ export const KHO_DEFINITIONS: Record<string, { name: string; group: string; icon
   PDDT: { name: 'Phác đồ Điều trị',    group: 'Lâm sàng & Bệnh học', icon: 'fa-pills',                color: '#3b82f6' },
   BC:   { name: 'Biến chứng & Tiên lượng', group: 'Lâm sàng & Bệnh học', icon: 'fa-triangle-exclamation', color: '#ef4444' },
 
-  // Nhóm 3: Chuyên sâu & Bổ trợ
+  // Nhóm 3: Thực Hành & Bổ Trợ
+  CC:   { name: 'Công Cụ & Thang Điểm', group: 'Thực Hành & Bổ Trợ', icon: 'fa-calculator',        color: '#f59e0b' },
+  DUOC: { name: 'Dược Thư & Tương Tác Thuốc', group: 'Thực Hành & Bổ Trợ', icon: 'fa-capsules',     color: '#06b6d4' },
+  CLS:  { name: 'Cận Lâm Sàng & Xét Nghiệm', group: 'Thực Hành & Bổ Trợ', icon: 'fa-flask-vial',   color: '#6366f1' },
   CN:   { name: 'Cập nhật Guidelines', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-arrows-rotate',      color: '#14b8a6' },
   CORE: { name: 'Thực thể Hạt nhân',   group: 'Chuyên sâu & Bổ trợ', icon: 'fa-dna',                color: '#a855f7' },
   EBM:  { name: 'NCKH & EBM',          group: 'Chuyên sâu & Bổ trợ', icon: 'fa-chart-pie',          color: '#64748b' },
@@ -100,4 +103,36 @@ export function filterVaultArticles(filter: VaultFilterState): VaultArticle[] {
  */
 export function getArticleByIdOrPath(identifier: string): VaultArticle | undefined {
   return VAULT_CATALOG.find(a => a.id === identifier || a.relPath === identifier);
+}
+
+/**
+ * Tìm kiếm chuỗi liên kết bệnh học 5 khía cạnh (Clinical Pathway Matrix)
+ */
+export function findPathwayArticles(currentArticle: VaultArticle): ClinicalPathwayLinks {
+  const normTitle = currentArticle.title.toLowerCase().trim();
+  
+  // Extract core condition name (clean prefixes if any)
+  const conditionName = currentArticle.title;
+
+  const result: ClinicalPathwayLinks = {
+    conditionName: conditionName
+  };
+
+  VAULT_CATALOG.forEach(art => {
+    const artTitle = art.title.toLowerCase().trim();
+    const isMatch = artTitle === normTitle || 
+      (normTitle.length > 4 && artTitle.includes(normTitle)) || 
+      (artTitle.length > 4 && normTitle.includes(artTitle));
+
+    if (!isMatch) return;
+
+    if (art.khoCode === 'GPSL' && !result.gpsl) result.gpsl = art;
+    else if (art.khoCode === 'SLB' && !result.slb) result.slb = art;
+    else if (art.khoCode === 'CD' && !result.cd) result.cd = art;
+    else if (art.khoCode === 'PDDT' && !result.pddt) result.pddt = art;
+    else if (art.khoCode === 'BC' && !result.bc) result.bc = art;
+    else if (art.khoCode === 'CN' && !result.cn) result.cn = art;
+  });
+
+  return result;
 }

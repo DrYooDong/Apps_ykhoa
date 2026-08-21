@@ -65,16 +65,16 @@ export class QuickReferenceDrawer {
         <!-- Navigation Tabs Strip -->
         <div style="display:flex; padding:8px 12px; background:var(--color-surface-offset, #f1f5f9); border-bottom:1px solid var(--color-border, #e2e8f0); gap:6px; overflow-x:auto; scrollbar-width:thin;">
           <button class="qrd-tab-btn" data-tab="vault" style="background:${this.currentTab === ('vault' as any) ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === ('vault' as any) ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === ('vault' as any) ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-            <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức (600+ Bài)
+            <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức (2.330+ Bài)
           </button>
           <button class="qrd-tab-btn" data-tab="formulas" style="background:${this.currentTab === 'formulas' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'formulas' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === 'formulas' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-            <i class="fa-solid fa-calculator"></i> Công thức (Vault)
+            <i class="fa-solid fa-calculator"></i> Thang Điểm (Kho 3.1)
           </button>
           <button class="qrd-tab-btn" data-tab="ecg_abg" style="background:${this.currentTab === 'ecg_abg' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'ecg_abg' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === 'ecg_abg' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-            <i class="fa-solid fa-heart-pulse"></i> ECG & ABG Guide
+            <i class="fa-solid fa-flask-vial"></i> Cận Lâm Sàng (Kho 3.3)
           </button>
           <button class="qrd-tab-btn" data-tab="acls" style="background:${this.currentTab === 'acls' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'acls' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === 'acls' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
-            <i class="fa-solid fa-truck-medical"></i> ACLS & Hồi Sức
+            <i class="fa-solid fa-capsules"></i> Dược Thư (Kho 3.2)
           </button>
           <button class="qrd-tab-btn" data-tab="bedside" style="background:${this.currentTab === 'bedside' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'bedside' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === 'bedside' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
             <i class="fa-solid fa-list-check"></i> Bedside Checklist

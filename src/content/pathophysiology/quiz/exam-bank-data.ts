@@ -1,7 +1,7 @@
 /**
  * CliniPortal 2.0 — Comprehensive Medical Exam Bank (Hóa Sinh Y Học & Giải Phẫu Sinh Lý)
  * Path: src/content/pathophysiology/quiz/exam-bank-data.ts
- * Nguồn dữ liệu từ 80+ file .md trong knowledge-vault/0. Hóa sinh y học & 0. Giải phẫu & sinh lý
+ * Nguồn dữ liệu từ 80+ file .md trong knowledge-vault/1.2. Kho hóa sinh y học & 1.1. Kho giải phẫu & sinh lý
  */
 
 export interface ExamQuestion {
@@ -77,7 +77,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Hệ đệm Bicarbonate là hệ đệm ngoại bào quan trọng nhất vì có nồng độ cao và là một "hệ đệm mở": phổi điều hòa pCO2 (thành phần acid) và thận điều hòa nồng độ HCO3- (thành phần kiềm).',
     clinicalPearl: 'Tỷ lệ [HCO3-] / (0.03 * pCO2) bình thường xấp xỉ 24 / 1.2 = 20, tương ứng với pH = 6.1 + log(20) = 7.40 theo phương trình Henderson-Hasselbalch.',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block1-biomolecules/01-nuoc-ph-he-dem.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 1 - Đại phân tử sinh học/HS_Hóa học Nước, Điện giải & pH_P1.md'
   },
   {
     id: 'q_bio_02',
@@ -97,7 +97,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Apo B-100 có mặt trên hạt LDL và VLDL, là phối tử đặc hiệu nhận diện bởi thụ thể LDL Receptor. Đột biến gen Apo B-100 hoặc thụ thể LDL-R gây bệnh Tăng cholesterol máu gia đình (Familial Hypercholesterolemia).',
     clinicalPearl: 'Apo A-I là thành phần chính của HDL kích hoạt enzyme LCAT; Apo C-II kích hoạt Lipoprotein Lipase (LPL) để thủy phân triglycerid từ chylomicron và VLDL.',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block1-biomolecules/03-hoa-hoc-lipid.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 1 - Đại phân tử sinh học/HS_Hóa học Lipid & Lipoprotein_P1.md'
   },
   {
     id: 'q_bio_03',
@@ -117,7 +117,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'HbS là do đột biến nucleotide GAG -> GTG tại codon 6 của gen HBB, thay thế Acid Glutamic phân cực bằng Valine kỵ nước. Khi phân áp oxy giảm, các phân tử khử oxy-HbS trùng hợp tạo thành các sợi polyme dạng que dài làm biến dạng hồng cầu thành hình liềm.',
     clinicalPearl: 'Nếu Glutamate ở vị trí 6 bị thay bằng Lysine thì tạo thành Hemoglobin C (HbC).',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block1-biomolecules/05-hoa-hoc-hemoglobin.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 1 - Đại phân tử sinh học/HS_Hóa học Hemoglobin & Myoglobin_P1.md'
   },
 
   // KHỐI 2: XÚC TÁC & ENZYME & VITAMIN
@@ -139,7 +139,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Vitamin B1 được phosphoryl hóa thành TPP, là coenzyme bắt buộc của các enzyme khử carboxyl alpha-keto acid (PDH, alpha-KGDH) và enzyme Transketolase trong con đường Pentose Phosphate.',
     clinicalPearl: 'Thiếu hụt Vitamin B1 ở người nghiện rượu gây hội chứng não Wernicke-Korsakoff và bệnh Beriberi (ướt/khô). Bắt buộc phải truyền Thiamine trước khi truyền Glucose cho bệnh nhân nghiện rượu để tránh làm khởi phát toan lactic cấp và hôn mê Wernicke.',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block2-catalysis-signaling/07-vitamin-coenzym.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 2 - Xúc tác sinh học & Truyền tin/HS_vitamin coenzym_P1.md'
   },
   {
     id: 'q_bio_05',
@@ -159,7 +159,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Chất ức chế cạnh tranh tranh chấp vị trí trung tâm hoạt động với cơ chất. Khi nồng độ cơ chất [S] tăng đủ cao, cơ chất sẽ đẩy chất ức chế ra ngoài nên Vmax vẫn đạt được (không đổi), nhưng cần nồng độ cơ chất cao hơn để đạt nửa Vmax nên Km biểu kiến tăng lên.',
     clinicalPearl: 'Thuốc statin (Atorvastatin) là chất ức chế cạnh tranh của HMG-CoA Reductase; Thuốc giải độc Methanol Fomepizole là chất ức chế cạnh tranh của Alcohol Dehydrogenase.',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block2-catalysis-signaling/08-enzym-dong-hoc.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 2 - Xúc tác sinh học & Truyền tin/HS_enzym dong hoc_P1.md'
   },
 
   // KHỐI 3: NĂNG LƯỢNG SINH HỌC & KREBS
@@ -181,7 +181,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Mỗi vòng chu trình Krebs giải phóng 2 phân tử CO2, tạo ra 3 NADH (ở phản ứng Isocitrate DH, alpha-Ketoglutarate DH, Malate DH), 1 FADH2 (Succinate DH), và 1 GTP (Succinyl-CoA Synthetase). Khi đi qua chuỗi chuyền điện tử, 3 NADH sinh ~7.5 ATP, 1 FADH2 sinh ~1.5 ATP, cùng 1 GTP = 1 ATP ➔ Tổng cộng 10 ATP / 1 Acetyl-CoA.',
     clinicalPearl: 'Succinate Dehydrogenase (Phức hợp II) là enzyme duy nhất của chu trình Krebs gắn trực tiếp trên màng trong ti thể và tham gia vào chuỗi truyền điện tử.',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block3-bioenergetics/12-chu-trinh-krebs.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 3 - Chuyển hóa năng lượng & Oxy hóa tế bào/HS_12-chu-trinh-krebs_P1.md'
   },
   {
     id: 'q_bio_07',
@@ -201,7 +201,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Cyanide (CN-), CO và Azide (N3-) ức chế Phức hợp IV (Cytochrome a/a3) bằng cách gắn chặt vào nhóm Fe3+ và CuB, ngăn chặn sự gắn oxy phân tử. Hậu quả là ngừng hô hấp tế bào, ứ đọng NADH/FADH2, tê liệt chu trình Krebs và chuyển sang đường phân kỵ khí sinh toan lactic nặng.',
     clinicalPearl: 'Thuốc giải độc Cyanide gồm Hydroxocobalamin (tạo Cyanocobalamin thải qua nước tiểu) hoặc Bộ kit Nitrite + Sodium Thiosulfate.',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block3-bioenergetics/13-chuoi-ho-hap-etc.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 3 - Chuyển hóa năng lượng & Oxy hóa tế bào/HS_13-chuoi-ho-hap-etc_P1.md'
   },
 
   // KHỐI 4: CHUYỂN HÓA TRUNG GIAN
@@ -223,7 +223,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Ở người và linh trưởng bậc cao do thiếu men Urate Oxidase (Uricase), sản phẩm thoái hóa cuối cùng của purine là Acid Uric thông qua xúc tác của enzyme Xanthine Oxidase.',
     clinicalPearl: 'Thuốc điều trị Gout Allopurinol và Febuxostat ức chế enzyme Xanthine Oxidase làm giảm nồng độ acid uric huyết thanh và tăng đào thải các tiền chất tan tốt hơn là Hypoxanthine và Xanthine.',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block4-intermediary-metabolism/18-chuyen-hoa-nucleotid-gout.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 4 - Chuyển hóa trung gian chất/HS_18-chuyen-hoa-nucleotid-gout_P1.md'
   },
   {
     id: 'q_bio_09',
@@ -243,7 +243,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Heme Oxygenase (HO-1/HO-2) sử dụng NADPH và O2 để mở cầu nối alpha-methenyl của nhân porphyrin, tạo Biliverdin màu xanh lá cây, giải phóng ion Sắt và khí CO nội sinh duy nhất trong cơ thể.',
     clinicalPearl: 'Đột biến gen UGT1A1 làm suy giảm quá trình liên hợp Bilirubin tại gan, gây ra các hội chứng vàng da di truyền: Hội chứng Gilbert (nhẹ, lành tính) và Hội chứng Crigler-Najjar (nặng, có thể gây vàng da nhân).',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block4-intermediary-metabolism/17-chuyen-hoa-hemoglobin-bilirubin.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 4 - Chuyển hóa trung gian chất/HS_17-chuyen-hoa-hemoglobin-bilirubin_P1.md'
   },
 
   // KHỐI 5: DI TRUYỀN PHÂN TỬ
@@ -265,7 +265,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'DNA Helicase sử dụng năng lượng ATP để phá vỡ các liên kết hydro giữa các cặp base bổ sung, tách 2 mạch đơn tạo chạc ba tái bản. DNA Topoisomerase làm nhiệm vụ cắt và nối lại mạch để giải tỏa sức căng siêu xoắn phía trước chạc ba.',
     clinicalPearl: 'Thuốc kháng sinh nhóm Fluoroquinolone (Ciprofloxacin) ức chế enzyme DNA Gyrase của vi khuẩn; Thuốc chống ung thư Etoposide ức chế Topoisomerase II của tế bào người.',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block5-molecular-genetics/19-tai-ban-sua-sai-dna.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 5 - Di truyền phân tử & Sinh học phân tử/HS_19-tai-ban-sua-sai-dna_P1.md'
   },
 
   // KHỐI 7: HÓA SINH LÂM SÀNG
@@ -287,7 +287,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Hs-Troponin tim là tiêu chuẩn vàng theo định nghĩa toàn cầu lần thứ 4 về Nhồi máu cơ tim, xuất hiện sớm sau 1-3 giờ, đạt đỉnh sau 12-24 giờ và có thể tồn tại trong máu 1-2 tuần.',
     clinicalPearl: 'CK-MB có thời gian bán hủy ngắn (trở về bình thường sau 48-72h) nên rất có giá trị để chẩn đoán Nhồi máu cơ tim tái phát sớm (Reinfarction).',
-    sourceFile: 'knowledge-vault/0. Hóa sinh y học/block7-clinical-biochemistry/28-dau-an-tim-mach-troponin-bnp.md'
+    sourceFile: 'knowledge-vault/1.2. Kho hóa sinh y học/Block 7 - Hóa sinh lâm sàng & Xét nghiệm/HS_28-dau-an-tim-mach-troponin-bnp_P1.md'
   },
 
   // ==========================================
@@ -313,7 +313,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Khi điện thế màng đạt ngưỡng (~ -55 mV), các kênh Na+ phụ thuộc điện thế mở ra đồng loạt theo cơ chế feedback dương của Hodgkin, làm Na+ tràn vào tế bào đẩy điện thế màng vọt lên mức dương (+20 đến +30 mV).',
     clinicalPearl: 'Thuốc tê Lidocaine chẹn cổng trong của kênh Na+ phụ thuộc điện thế, ngăn chặn pha 0 khử cực nên ức chế dẫn truyền cảm giác đau.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.1. Đại cương & Tế bào/SL_Điện thế màng & Điện thế hoạt động.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/01. Tế bào & Đại cương/GPSL_Điện thế màng & Điện thế hoạt động_P1.md'
   },
   {
     id: 'q_phys_02',
@@ -333,7 +333,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'E_K = 61.5 * log10([K+]out / [K+]in). Khi [K+]out giảm, tỷ số [K+]out / [K+]in càng nhỏ hơn 1 ➔ log10 có giá trị âm lớn hơn ➔ E_K dịch từ -90 mV xuống -105 mV (Ưu phân cực màng), khiến tế bào khó bị kích thích hơn.',
     clinicalPearl: 'Hạ kali máu làm giảm tính hưng phấn thần kinh cơ gây liệt mềm 2 chi dưới, giảm nhu động ruột gây chướng bụng liệt ruột, và kéo dài khoảng QT tạo sóng U trên ECG.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.1. Đại cương & Tế bào/SL_Điện thế màng & Điện thế hoạt động.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/01. Tế bào & Đại cương/GPSL_Điện thế màng & Điện thế hoạt động_P1.md'
   },
 
   // PHẦN 2: CƠ & THẦN KINH
@@ -355,7 +355,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Ở cơ vân, Ca2+ gắn vào Troponin C làm biến đổi cấu trúc phức hợp Troponin, kéo sợi Tropomyosin ra khỏi rãnh của sợi Actin, để lộ vị trí gắn của đầu Myosin lên phân tử Actin hình thành cầu nối chéo.',
     clinicalPearl: 'Ở cơ trơn không có Troponin; thay vào đó Ca2+ tạo phức hợp với Calmodulin để kích hoạt men MLCK phosphoryl hóa chuỗi nhẹ myosin.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.2. Cơ & Thần kinh/SL_Co xuong.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/02. Thần kinh & Cơ/GPSL_Cơ xương_P1.md'
   },
   {
     id: 'q_phys_04',
@@ -375,7 +375,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Vùng Broca ở hồi trán dưới phụ trách vận động tạo lời nói. Tổn thương Broca gây thất ngôn không lưu loát: bệnh nhân hiểu được câu hỏi của bác sĩ nhưng rất vất vả để phát âm từng từ ngắn, ngữ pháp gãy gọn.',
     clinicalPearl: 'Vùng Wernicke nằm ở hồi thái dương trên vùng sau, phụ trách hiểu ngôn ngữ; tổn thương gây thất ngôn lưu loát (Wernicke aphasia - "salad từ ngữ").',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.2. Cơ & Thần kinh/SL_Thần kinh_Vỏ não & Chức năng thần kinh cao cấp.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/02. Thần kinh & Cơ/GPSL_Thần kinh Vỏ não & Chức năng thần kinh cao cấp_P1.md'
   },
 
   // PHẦN 3: HUYẾT HỌC
@@ -397,7 +397,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Erythropoietin (90% do tế bào quanh ống thận tiết ra, 10% ở gan) được cảm ứng bởi yếu tố phiên mã nhạy cảm oxy HIF-1alpha khi mô thận bị thiếu oxy.',
     clinicalPearl: 'Bệnh nhân suy thận mạn (CKD) giảm tiết EPO dẫn tới thiếu máu đẳng sắc đẳng bào, cần điều trị bổ sung Erythropoietin tái tổ hợp (rhEPO).',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.3. Huyết học/SL_Huyết học_Hồng cầu.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/03. Huyết học & Miễn dịch/GPSL_Huyết học Hồng cầu_P1.md'
   },
   {
     id: 'q_phys_06',
@@ -417,7 +417,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'PT đo thời gian đông máu khi bổ sung Yếu tố mô (Tissue Factor) và Canxi, phản ánh con đường ngoại sinh (Yếu tố VII) và con đường chung. aPTT phản ánh con đường nội sinh.',
     clinicalPearl: 'Thuốc chống đông kháng Vitamin K (Warfarin) ức chế tổng hợp các yếu tố đông máu phụ thuộc Vitamin K (II, VII, IX, X, Protein C/S), được theo dõi hiệu quả bằng chỉ số INR (từ xét nghiệm PT).',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.3. Huyết học/SL_Huyết học_Tiểu cầu & Cầm máu.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/03. Huyết học & Miễn dịch/GPSL_Huyết học Tiểu cầu & Cầm máu_P1.md'
   },
 
   // PHẦN 4: TUẦN HOÀN & TIM MẠCH
@@ -439,7 +439,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Nút xoang nằm ở ranh giới tĩnh mạch chủ trên và tâm nhĩ phải, có pha 4 khử cực tâm trương tự phát dốc nhất do dòng ion Funny (If - Na+/K+ đi vào) làm điện thế màng tự động chạm ngưỡng phát nhịp nhanh nhất.',
     clinicalPearl: 'Thuốc Ivabradine chẹn chọn lọc kênh If tại nút xoang, giúp làm chậm nhịp tim mà không ảnh hưởng đến sức co bóp cơ tim hay huyết áp.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.4. Tuần hoàn & Tim mạch/SL_Tim mạch_Cơ tim & Hoạt động điện.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/04. Tuần hoàn & Tim mạch/GPSL_Tim mạch Cơ tim & Hoạt động điện_P1.md'
   },
   {
     id: 'q_phys_08',
@@ -459,7 +459,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Tiếng T2 đánh dấu kết thúc thời kỳ tâm thu tống máu và bắt đầu thời kỳ tâm trương, phát sinh do sự đóng đột ngột của van tổ chim (Van ĐMC và Van ĐMP). Tiếng T1 do đóng van nhĩ thất (2 lá và 3 lá).',
     clinicalPearl: 'Hiện tượng tách đôi sinh lý của T2 (Physiological splitting): Khi hít vào sâu, áp lực âm lồng ngực làm tăng máu về tim phải ➔ Van ĐMP đóng muộn hơn van ĐMC, nghe thấy T2 tách đôi rõ (A2 trước, P2 sau).',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.4. Tuần hoàn & Tim mạch/SL_Tim mạch_Chu kỳ tim & Cung lượng tim.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/04. Tuần hoàn & Tim mạch/GPSL_Tim mạch Chu kỳ tim & Cung lượng tim_P1.md'
   },
 
   // PHẦN 5: HÔ HẤP
@@ -481,7 +481,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Theo định luật Laplace: P = 2T / r. Nếu không có Surfactant (thành phần chính là Dipalmitoylphosphatidylcholine - DPPC), phế nang nhỏ (r nhỏ) sẽ có áp lực xẹp P rất lớn và xẹp đổ vào phế nang lớn. Surfactant làm giảm sức căng T ở phế nang nhỏ nhiều hơn phế nang lớn, giúp ổn định phế nang.',
     clinicalPearl: 'Hội chứng suy hô hấp sơ sinh ở trẻ sinh non (NRDS) là do thiếu hụt Surfactant do tế bào Type II chưa trưởng thành (thường trước tuần 34 thai kỳ). Điều trị dự phòng bằng tiêm Corticoid (Betamethasone) cho mẹ trước sinh.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.5. Hô hấp/SL_Hô hấp_Cơ học hô hấp & Thông khí phế nang.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/05. Hô hấp/GPSL_Hô hấp Cơ học hô hấp & Thông khí phế nang_P1.md'
   },
   {
     id: 'q_phys_10',
@@ -501,7 +501,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Thể tích khí cặn (RV) là thể tích khí không bao giờ tống ra khỏi phổi được ngay cả khi gắng sức thở ra hết mức. RV không thể đo được bằng hô hấp ký thông thường (Spirometry) mà phải dùng phương pháp đo pha loãng khí Heli hoặc Thân thể ký (Plethysmography).',
     clinicalPearl: 'Trong bệnh phổi tắc nghẽn mạn tính (COPD), hiện tượng bẫy khí làm RV và Dung tích cặn chức năng (FRC) tăng cao rõ rệt.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.5. Hô hấp/SL_Hô hấp_Cơ học hô hấp & Thông khí phế nang.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/05. Hô hấp/GPSL_Hô hấp Cơ học hô hấp & Thông khí phế nang_P1.md'
   },
 
   // PHẦN 6: TIÊU HÓA
@@ -523,7 +523,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Tế bào viền sử dụng bơm proton H+/K+ ATPase để tiết HCl giúp toan hóa dịch vị (pH 1.5 - 2.0) và tiết Yếu tố nội tại (IF) - glycoprotein bắt buộc cho sự hấp thu Vitamin B12 tại đoạn cuối hồi tràng.',
     clinicalPearl: 'Viêm teo dạ dày tự miễn phá hủy tế bào viền gây thiếu acid dịch vị và thiếu yếu tố nội tại, dẫn đến bệnh Thiếu máu ác tính Biermer (Pernicious Anemia) do thiếu B12.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.6. Tiêu hóa/SL_Tiêu hóa_Dạ dày.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/06. Tiêu hóa/GPSL_Tiêu hóa Dạ dày_P1.md'
   },
   {
     id: 'q_phys_12',
@@ -543,7 +543,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'CCK gây co bóp túi mật tống mật vào ống mật chủ, đồng thời làm giãn cơ vòng Oddi và kích thích tế bào nang tuyến tụy tiết enzyme (Amylase, Lipase, Protease). Ngược lại, Secretin (do tế bào S tiết ra dưới kích thích của acid) kích thích tế bào biểu mô ống tụy tiết dịch giàu HCO3-.',
     clinicalPearl: 'Nghiệm pháp kích thích CCK được dùng trong chẩn đoán suy chức năng túi mật và rối loạn cơ vòng Oddi.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.6. Tiêu hóa/SL_Tiêu hóa_Gan & Tụy ngoại tiết.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/06. Tiêu hóa/GPSL_Tiêu hóa Gan & Tụy ngoại tiết_P1.md'
   },
 
   // PHẦN 7: THẬN & TOAN KIỀM
@@ -565,7 +565,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Ống lượn gần tái hấp thu đẳng trương ~65-70% lượng Na+ và nước lọc, 85% HCO3-, và tái hấp thu toàn bộ 100% Glucose (qua kênh SGLT2/SGLT1) và Acid amin nhờ diện tích bề mặt diềm bàn chải vi nhung mao khổng lồ.',
     clinicalPearl: 'Hội chứng Fanconi là khiếm khuyết toàn bộ chức năng tái hấp thu của ống lượn gần, dẫn tới tiểu nhiều acid amin, đường niệu với đường máu bình thường, tiểu phosphate và toan hóa ống thận type 2.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.7. Thận - Tiết niệu & Thăng bằng toan kiềm/SL_Thận_Tái hấp thu & Bài tiết ở ống thận.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/07. Thận - Tiết niệu & Toan kiềm/GPSL_Thận Tái hấp thu & Bài tiết ở ống thận_P1.md'
   },
   {
     id: 'q_phys_14',
@@ -585,7 +585,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'ADH gắn thụ thể V2 kích hoạt con đường Gs-cAMP-PKA ➔ Phosphoryl hóa và kích thích các túi nội bào chứa kênh Aquaporin-2 hòa màng vào màng đỉnh lòng ống ➔ Tăng tính thấm nước của ống góp, giúp nước tái hấp thu vào tủy thận ưu trương cô đặc nước tiểu.',
     clinicalPearl: 'Bệnh Đái tháo nhạt do thận (Nephrogenic DI) do đột biến thụ thể V2 hoặc kênh AQP2 (hoặc do ngộ độc Lithium), nước tiểu loãng nhiều dù nồng độ ADH máu rất cao.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.7. Thận - Tiết niệu & Thăng bằng toan kiềm/SL_Thận_Pha loãng & Cô đặc nước tiểu_Điều hòa dịch.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/07. Thận - Tiết niệu & Toan kiềm/GPSL_Thận Pha loãng & Cô đặc nước tiểu_P1.md'
   },
 
   // PHẦN 8: NỘI TIẾT
@@ -607,7 +607,7 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Vỏ thượng thận gồm 3 lớp từ ngoài vào trong (G-F-R: Glomerulosa - Fasciculata - Reticularis ➔ tương ứng M-G-A: Mineralocorticoid/Aldosterone - Glucocorticoid/Cortisol - Androgens/DHEA). Lớp Cầu là nơi duy nhất chứa enzyme Aldosterone Synthase.',
     clinicalPearl: 'U vỏ thượng thận tiết quá mức Aldosterone (Hội chứng Conn - Cường Aldosterone nguyên phát) biểu hiện Tăng huyết áp kháng trị kèm Hạ Kali máu và Kiềm chuyển hóa.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.8. Nội tiết & Sinh sản/SL_Nội tiết_Tuyến vỏ thượng thận.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/08. Nội tiết & Sinh sản/GPSL_Nội tiết Tuyến vỏ thượng thận_P1.md'
   },
   {
     id: 'q_phys_16',
@@ -627,6 +627,6 @@ export const EXAM_QUESTION_BANK: ExamQuestion[] = [
     correctKey: 'A',
     explanation: 'Vào cuối pha nang noãn, nồng độ Estrogen (Estradiol) tăng cao kéo dài vượt ngưỡng chuyển từ cơ chế feedback âm sang feedback DƯƠNG lên trục hạ đồi - tuyến yên ➔ Tạo đỉnh tăng vọt LH (LH surge) kích thích nang noãn De Graaf vỡ ra giải phóng noãn bào.',
     clinicalPearl: 'Que thử rụng trứng tại nhà phát hiện sự xuất hiện của đỉnh LH trong nước tiểu khoảng 24-36 giờ trước thời điểm rụng trứng.',
-    sourceFile: 'knowledge-vault/0. Giải phẫu & sinh lý/0.8. Nội tiết & Sinh sản/SL_Sinh sản.md'
+    sourceFile: 'knowledge-vault/1.1. Kho giải phẫu & sinh lý/08. Nội tiết & Sinh sản/GPSL_Sinh sản_P1.md'
   }
 ];

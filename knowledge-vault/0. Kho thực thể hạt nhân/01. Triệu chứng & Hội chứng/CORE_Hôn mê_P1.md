@@ -3,22 +3,10 @@ title: "Hôn mê"
 part: "P1"
 aliases:
   - "Hôn mê"
-  - "Coma"
-  - "Rối loạn ý thức"
-  - "Mất tri giác"
-  - "Altered Mental Status"
 keywords:
   - "hôn mê"
   - "đại cương"
   - "01. triệu chứng & hội chứng"
-  - "thang diem glasgow"
-  - "gcs"
-  - "ct nao"
-  - "khi mau dong mach"
-  - "duong huyet"
-  - "dien giai"
-icd10:
-  - "R40.2"
 specialty: "Đại cương"
 kho: "0. Kho thực thể hạt nhân"
 tags:

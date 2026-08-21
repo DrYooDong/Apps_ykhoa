@@ -3,18 +3,31 @@ title: "ACG_Viêm gan do rượu_2024 (P1)"
 part: "P1"
 aliases:
   - "ACG_Viêm gan do rượu_2024 (P1)"
+  - "Liver"
+  - "Hepar"
+  - "Cơ quan chuyển hóa"
+  - "Tế bào gan"
+  - "Hepatocyte"
 keywords:
   - "acg_viêm gan do rượu_2024 (p1)"
   - "tiêu hóa - gan mật"
+  - "chuyen hoa thuoc"
+  - "tong hop albumin"
+  - "yeu to dong mau"
+  - "chuyen hoa bilirubin"
+  - "tinh mach cua"
+  - "mat"
 specialty: "Tiêu hóa - Gan mật"
 kho: "Kho chưa lọc"
 tags:
   - "he-co-quan/tieu-hoa"
   - "loai/general"
   - "y-khoa/raw"
+  - "giai-phau/tieu-hoa"
+  - "loai/co-quan"
+  - "y-khoa/giai-phau"
 updated: "2026-08-21"
 ---
-
 
 ### 1. Nội Dung Chi Tiết: ACG Clinical Guideline - Alcohol-Associated Liver Disease (Phần 1)
 

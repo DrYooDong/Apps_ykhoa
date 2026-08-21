@@ -5,12 +5,11 @@ aliases:
   - "Viêm túi thừa"
 keywords:
   - "viêm túi thừa"
-  - "đại cương"
   - "ngoại khoa"
-specialty: "Đại cương"
+specialty: "Ngoại khoa"
 kho: "Kho chưa lọc"
 tags:
-  - "he-co-quan/tong-quat"
+  - "he-co-quan/ngoai-khoa"
   - "loai/general"
   - "y-khoa/raw"
 updated: "2026-08-21"

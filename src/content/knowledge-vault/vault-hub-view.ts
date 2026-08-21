@@ -5,6 +5,9 @@
 
 import { VAULT_CATALOG, getKhoSummaries, filterVaultArticles, getArticleByIdOrPath, KHO_DEFINITIONS } from './vault-loader';
 import { VaultFilterState, VaultArticle } from './types';
+import { renderPathwayRibbon, processMarkdownWithToc, renderTocHtml, renderReaderToolbar, renderAnnotationsBoxHtml, attachReaderProEvents } from './vault-reader-pro';
+import { renderFlowchartStudioHtml, attachFlowchartEvents, CLINICAL_FLOWCHARTS_REGISTRY } from './vault-flowchart-engine';
+import { renderFlashcardStudioHtml, attachFlashcardEvents, DEFAULT_MEDICAL_FLASHCARDS } from './vault-flashcard-engine';
 
 let state: VaultFilterState & { activeGroup: string; displayLimit: number } = {
   searchQuery: '',
@@ -82,16 +85,34 @@ export function renderVaultHubView(): string {
         <button class="vault-group-btn ${state.activeGroup === 'ALL' ? 'active' : ''}" data-group="ALL" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'ALL' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'ALL' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
           <i class="fa-solid fa-layer-group"></i> Tất cả Phân hệ (${totalArticles})
         </button>
+        <button class="vault-group-btn ${state.activeGroup === 'FLOWCHART' ? 'active' : ''}" data-group="FLOWCHART" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'FLOWCHART' ? '#0d9488' : 'var(--vault-surface)'}; color:${state.activeGroup === 'FLOWCHART' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
+          🌿 Sơ Đồ Thuật Toán (${CLINICAL_FLOWCHARTS_REGISTRY.length})
+        </button>
+        <button class="vault-group-btn ${state.activeGroup === 'FLASHCARD' ? 'active' : ''}" data-group="FLASHCARD" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'FLASHCARD' ? '#8b5cf6' : 'var(--vault-surface)'}; color:${state.activeGroup === 'FLASHCARD' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
+          🧠 Thẻ Ghi Nhớ Flashcard (${DEFAULT_MEDICAL_FLASHCARDS.length})
+        </button>
         <button class="vault-group-btn ${state.activeGroup === 'Cơ sở Y khoa' ? 'active' : ''}" data-group="Cơ sở Y khoa" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Cơ sở Y khoa' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Cơ sở Y khoa' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
           🫀 1. Cơ sở Y khoa (${coSoCount})
         </button>
         <button class="vault-group-btn ${state.activeGroup === 'Lâm sàng & Bệnh học' ? 'active' : ''}" data-group="Lâm sàng & Bệnh học" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Lâm sàng & Bệnh học' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Lâm sàng & Bệnh học' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
           🩺 2. Lâm sàng & Bệnh học (${lamSangCount})
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'Chuyên sâu & Bổ trợ' ? 'active' : ''}" data-group="Chuyên sâu & Bổ trợ" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Chuyên sâu & Bổ trợ' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Chuyên sâu & Bổ trợ' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
-          📊 3. Chuyên sâu & Bổ trợ (${chuyenSauCount})
+        <button class="vault-group-btn ${state.activeGroup === 'Thực Hành & Bổ Trợ' ? 'active' : ''}" data-group="Thực Hành & Bổ Trợ" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Thực Hành & Bổ Trợ' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Thực Hành & Bổ Trợ' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
+          📊 3. Thực Hành & Bổ Trợ
         </button>
       </div>
+
+      ${state.activeGroup === 'FLOWCHART' ? `
+        <div id="vault-flowchart-mount-point" style="margin-bottom: 2rem;">
+          ${renderFlowchartStudioHtml()}
+        </div>
+      ` : ''}
+
+      ${state.activeGroup === 'FLASHCARD' ? `
+        <div id="vault-flashcard-mount-point" style="margin-bottom: 2rem;">
+          ${renderFlashcardStudioHtml()}
+        </div>
+      ` : ''}
 
       <!-- Kho Bento Hero Grid -->
       <div class="vault-kho-grid">
@@ -297,6 +318,18 @@ export function attachVaultEvents(container: HTMLElement): void {
     });
   });
 
+  // Attach Flowchart Events if in Flowchart View
+  const flowchartMount = container.querySelector('#vault-flowchart-mount-point') as HTMLElement | null;
+  if (flowchartMount) {
+    attachFlowchartEvents(flowchartMount);
+  }
+
+  // Attach Flashcard Events if in Flashcard View
+  const flashcardMount = container.querySelector('#vault-flashcard-mount-point') as HTMLElement | null;
+  if (flashcardMount) {
+    attachFlashcardEvents(flashcardMount);
+  }
+
   // Drawer Close
   const closeBtn = document.getElementById('vault-drawer-close');
   const drawer = document.getElementById('vault-drawer');
@@ -314,18 +347,19 @@ function renderAndRebind(container: HTMLElement) {
 }
 
 /**
- * Mở và tải nội dung bài viết vào Drawer
+ * Mở Drawer chi tiết bài viết (Hỗ trợ Reader Pro Layout, Dynamic TOC, Pathway Ribbon, Flowchart & Annotations)
  */
-export async function openArticleDrawer(identifier: string): Promise<void> {
-  const article = getArticleByIdOrPath(identifier);
+export async function openArticleDrawer(articleIdOrPath: string): Promise<void> {
+  const article = getArticleByIdOrPath(articleIdOrPath);
   if (!article) return;
 
   const drawer = document.getElementById('vault-drawer');
+  const drawerPanel = drawer?.querySelector('.vault-drawer-panel') as HTMLElement | null;
   const titleEl = document.getElementById('vault-drawer-title');
   const khoBadge = document.getElementById('vault-drawer-kho');
   const bodyEl = document.getElementById('vault-drawer-body');
 
-  if (!drawer || !titleEl || !bodyEl || !khoBadge) return;
+  if (!drawer || !drawerPanel || !titleEl || !bodyEl || !khoBadge) return;
 
   titleEl.textContent = article.title;
   khoBadge.textContent = `${article.khoName} • ${article.specialty} (${article.part})`;
@@ -335,7 +369,7 @@ export async function openArticleDrawer(identifier: string): Promise<void> {
   bodyEl.innerHTML = `
     <div style="text-align:center; padding:3rem; color:var(--vault-muted);">
       <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-      <p style="margin-top:1rem;">Đang tải nội dung từ Knowledge Vault...</p>
+      <p style="margin-top:1rem;">Đang tải nội dung và lập bản đồ liên kết y khoa...</p>
     </div>
   `;
 
@@ -343,12 +377,40 @@ export async function openArticleDrawer(identifier: string): Promise<void> {
     const url = `../../../knowledge-vault/${article.relPath}`;
     const res = await fetch(url);
     if (!res.ok) throw new Error('Không thể nạp tệp');
+    const rawMarkdown = await res.text();
+
+    // 1. Clinical Pathway Ribbon
+    const pathwayRibbonHtml = renderPathwayRibbon(article);
+
+    // 2. Reader Toolbar
+    const toolbarHtml = renderReaderToolbar(article);
+
+    // 3. Process Markdown & Dynamic TOC
+    const { htmlContent, tocItems } = processMarkdownWithToc(rawMarkdown);
+    const tocHtml = renderTocHtml(tocItems);
+
+    // 4. Check for matched interactive flowchart
+    const matchedFlowchart = CLINICAL_FLOWCHARTS_REGISTRY.find(c => 
+      article.title.toLowerCase().includes(c.conditionName.toLowerCase()) ||
+      (article.keywords || []).some(k => c.conditionName.toLowerCase().includes(k.toLowerCase()))
+    );
+
+    let flowchartSection = '';
+    if (matchedFlowchart) {
+      flowchartSection = `
+        <div id="drawer-flowchart-mount" style="margin-bottom:1.5rem;">
+          ${renderFlowchartStudioHtml(matchedFlowchart.id)}
+        </div>
+      `;
+    }
+
+    // 5. Metadata Chip Bar
     let metadataBanner = '';
     if ((article.aliases && article.aliases.length > 1) || (article.icd10 && article.icd10.length > 0)) {
       metadataBanner = `
-        <div style="background:var(--vault-bg); border:1px solid var(--vault-border); border-radius:8px; padding:10px 14px; margin-bottom:1.5rem; display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+        <div style="background:var(--vault-surface); border:1px solid var(--vault-border); border-radius:8px; padding:8px 12px; margin-bottom:1rem; display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
           ${article.icd10 && article.icd10.length > 0 ? `
-            <span style="font-size:12px; font-weight:700; color:#ef4444; background:rgba(239,68,68,0.1); padding:3px 8px; border-radius:4px;">
+            <span style="font-size:12px; font-weight:700; color:#ef4444; background:rgba(239,68,68,0.1); padding:2px 8px; border-radius:4px;">
               <i class="fa-solid fa-barcode"></i> ICD-10: ${article.icd10.join(', ')}
             </span>
           ` : ''}
@@ -361,7 +423,34 @@ export async function openArticleDrawer(identifier: string): Promise<void> {
       `;
     }
 
-    bodyEl.innerHTML = metadataBanner + formatMedicalMarkdown(rawMarkdown);
+    // 6. Personal Annotations Box
+    const annotationsHtml = renderAnnotationsBoxHtml(article);
+
+    // 7. Combine into Reader Pro Grid
+    bodyEl.innerHTML = `
+      ${pathwayRibbonHtml}
+      ${toolbarHtml}
+      ${metadataBanner}
+      ${flowchartSection}
+      <div class="vault-reader-pro-grid">
+        <div class="vault-article-content">
+          ${annotationsHtml}
+          ${htmlContent}
+        </div>
+        ${tocHtml}
+      </div>
+    `;
+
+    // 8. Attach Reader Pro & Flowchart Events
+    attachReaderProEvents(drawerPanel, (targetArticleId) => {
+      openArticleDrawer(targetArticleId);
+    });
+
+    const drawerFlowchartMount = bodyEl.querySelector('#drawer-flowchart-mount') as HTMLElement | null;
+    if (drawerFlowchartMount) {
+      attachFlowchartEvents(drawerFlowchartMount);
+    }
+
   } catch (err) {
     bodyEl.innerHTML = `
       <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:1.5rem; color:#ef4444;">
@@ -370,32 +459,6 @@ export async function openArticleDrawer(identifier: string): Promise<void> {
       </div>
     `;
   }
-}
-
-function formatMedicalMarkdown(md: string): string {
-  let clean = md.replace(/^---[\s\S]*?---\n*/, '');
-
-  clean = clean.replace(/^# (.*$)/gim, '<h1 class="vault-h1">$1</h1>');
-  clean = clean.replace(/^## (.*$)/gim, '<h2 class="vault-h2">$1</h2>');
-  clean = clean.replace(/^### (.*$)/gim, '<h3 class="vault-h3">$1</h3>');
-  clean = clean.replace(/^#### (.*$)/gim, '<h4 class="vault-h4">$1</h4>');
-
-  clean = clean.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-  clean = clean.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-  clean = clean.replace(/> \[!NOTE\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-note" style="border-left:4px solid #0284c7; background:rgba(2,132,199,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-circle-info" style="color:#0284c7;"></i> <strong>Ghi chú:</strong> $1</div>');
-  clean = clean.replace(/> \[!TIP\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-tip" style="border-left:4px solid #10b981; background:rgba(16,185,129,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-lightbulb" style="color:#10b981;"></i> <strong>Điểm ngọc lâm sàng:</strong> $1</div>');
-  clean = clean.replace(/> \[!WARNING\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-warning" style="border-left:4px solid #f59e0b; background:rgba(245,158,11,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> <strong>Cảnh báo:</strong> $1</div>');
-  clean = clean.replace(/> \[!CAUTION\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-danger" style="border-left:4px solid #ef4444; background:rgba(239,68,68,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-circle-exclamation" style="color:#ef4444;"></i> <strong>Chống chỉ định / Nguy hiểm:</strong> $1</div>');
-
-  clean = clean.split('\n\n').map(p => {
-    if (p.startsWith('<h') || p.startsWith('<div') || p.startsWith('<ul') || p.startsWith('<ol')) {
-      return p;
-    }
-    return `<p>${p.replace(/\n/g, '<br/>')}</p>`;
-  }).join('\n');
-
-  return clean;
 }
 
 function escapeHtml(str: string): string {

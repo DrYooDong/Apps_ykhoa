@@ -3,23 +3,10 @@ title: "Lupus ban đỏ hệ thống (SLE)"
 part: "P1"
 aliases:
   - "Lupus ban đỏ hệ thống (SLE)"
-  - "Systemic Lupus Erythematosus"
-  - "SLE"
-  - "Lupus ban đỏ"
 keywords:
   - "lupus ban đỏ hệ thống (sle)"
   - "huyết học - truyền máu"
   - "huyết học - ung thư"
-  - "ana"
-  - "anti-dsdna"
-  - "anti-sm"
-  - "giam bo the c3 c4"
-  - "ban canh buom"
-  - "viem cau than lupus"
-  - "hydroxychloroquine"
-icd10:
-  - "M32"
-  - "M32.9"
 specialty: "Huyết học - Truyền máu"
 kho: "Kho chưa lọc"
 tags:

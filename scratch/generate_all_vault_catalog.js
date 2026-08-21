@@ -19,6 +19,9 @@ const KHO_CONFIGS = [
   { matchName: 'biến chứng', code: 'BC', name: 'Biến chứng & Tiên lượng', group: 'Lâm sàng & Bệnh học', icon: 'fa-triangle-exclamation', color: '#ef4444' },
 
   // Nhóm 3: Chuyên sâu & Bổ trợ
+  { matchName: 'công cụ & thang điểm', code: 'CC', name: 'Công Cụ & Thang Điểm', group: 'Thực Hành & Bổ Trợ', icon: 'fa-calculator', color: '#f59e0b' },
+  { matchName: 'dược thư & tương tác', code: 'DUOC', name: 'Dược Thư & Tương Tác Thuốc', group: 'Thực Hành & Bổ Trợ', icon: 'fa-capsules', color: '#06b6d4' },
+  { matchName: 'cận lâm sàng & xét nghiệm', code: 'CLS', name: 'Cận Lâm Sàng & Xét Nghiệm', group: 'Thực Hành & Bổ Trợ', icon: 'fa-flask-vial', color: '#6366f1' },
   { matchName: 'cập nhật', code: 'CN', name: 'Cập nhật Guidelines', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-arrows-rotate', color: '#14b8a6' },
   { matchName: 'thực thể hạt nhân', code: 'CORE', name: 'Thực thể Hạt nhân', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-dna', color: '#a855f7' },
   { matchName: 'nghiên cứu khoa học', code: 'EBM', name: 'NCKH & EBM', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-chart-pie', color: '#64748b' },
@@ -74,12 +77,58 @@ KHO_CONFIGS.forEach(kho => {
   
   const khoPath = path.join(vaultBase, matchedDir);
 
-  const subDirs = fs.readdirSync(khoPath, { withFileTypes: true })
-    .filter(e => e.isDirectory())
-    .map(e => e.name);
+  const allEntries = fs.readdirSync(khoPath, { withFileTypes: true });
+  const directFiles = allEntries.filter(e => !e.isDirectory() && e.name.endsWith('.md')).map(e => e.name);
+  const subDirs = allEntries.filter(e => e.isDirectory()).map(e => e.name);
 
   let countInKho = 0;
 
+  const processFile = (filePath, fileName, specialty) => {
+    const fileNoExt = path.parse(fileName).name;
+    const parts = fileNoExt.split('_');
+    const prefix = parts[0] || kho.code;
+    const part = parts.length > 2 ? parts[parts.length - 1] : 'P1';
+    const defaultTitle = parts.length > 2 ? parts.slice(1, -1).join('_') : (parts[1] || fileNoExt);
+
+    let snippet = '';
+    let meta = { aliases: [], keywords: [], icd10: [], tags: [], title: null };
+
+    try {
+      const content = fs.readFileSync(filePath, 'utf8');
+      meta = parseYamlFrontmatter(content);
+      const cleanContent = content.replace(/^---[\s\S]*?---/, '').replace(/[#*`_\[\]]/g, ' ').trim();
+      snippet = cleanContent.slice(0, 220).replace(/\s+/g, ' ');
+    } catch (e) {}
+
+    catalog.push({
+      id: `${prefix}_${Math.random().toString(36).substr(2, 8)}`,
+      title: (meta.title || defaultTitle).trim(),
+      fullFileName: fileName,
+      khoCode: kho.code,
+      khoName: kho.name,
+      khoGroup: kho.group,
+      khoDir: matchedDir,
+      khoIcon: kho.icon,
+      khoColor: kho.color,
+      specialty: meta.specialty || specialty,
+      part: part,
+      relPath: path.relative(vaultBase, filePath).replace(/\\/g, '/'),
+      snippet: snippet,
+      readTime: '8-12 phút',
+      aliases: meta.aliases || [],
+      keywords: meta.keywords || [],
+      icd10: meta.icd10 || [],
+      tags: meta.tags || []
+    });
+    countInKho++;
+  };
+
+  // Direct files
+  directFiles.forEach(f => {
+    processFile(path.join(khoPath, f), f, 'Thực hành lâm sàng');
+  });
+
+  // Subdirectories
   subDirs.forEach(sub => {
     const subPath = path.join(khoPath, sub);
     const files = fs.readdirSync(subPath, { withFileTypes: true })
@@ -87,45 +136,7 @@ KHO_CONFIGS.forEach(kho => {
       .map(e => e.name);
 
     files.forEach(f => {
-      const fullPath = path.join(subPath, f);
-      const fileNoExt = path.parse(f).name;
-      
-      const parts = fileNoExt.split('_');
-      const prefix = parts[0] || kho.code;
-      const part = parts.length > 2 ? parts[parts.length - 1] : 'P1';
-      const defaultTitle = parts.length > 2 ? parts.slice(1, -1).join('_') : (parts[1] || fileNoExt);
-
-      let snippet = '';
-      let meta = { aliases: [], keywords: [], icd10: [], tags: [], title: null };
-
-      try {
-        const content = fs.readFileSync(fullPath, 'utf8');
-        meta = parseYamlFrontmatter(content);
-        const cleanContent = content.replace(/^---[\s\S]*?---/, '').replace(/[#*`_\[\]]/g, ' ').trim();
-        snippet = cleanContent.slice(0, 220).replace(/\s+/g, ' ');
-      } catch (e) {}
-
-      catalog.push({
-        id: `${prefix}_${Math.random().toString(36).substr(2, 8)}`,
-        title: (meta.title || defaultTitle).trim(),
-        fullFileName: f,
-        khoCode: kho.code,
-        khoName: kho.name,
-        khoGroup: kho.group,
-        khoDir: matchedDir,
-        khoIcon: kho.icon,
-        khoColor: kho.color,
-        specialty: sub,
-        part: part,
-        relPath: path.relative(vaultBase, fullPath).replace(/\\/g, '/'),
-        snippet: snippet,
-        readTime: '8-12 phút',
-        aliases: meta.aliases || [],
-        keywords: meta.keywords || [],
-        icd10: meta.icd10 || [],
-        tags: meta.tags || []
-      });
-      countInKho++;
+      processFile(path.join(subPath, f), f, sub);
     });
   });
 

@@ -3,22 +3,9 @@ title: "Co giật do sốt"
 part: "P1"
 aliases:
   - "Co giật do sốt"
-  - "Seizure"
-  - "Epilepsy"
-  - "Động kinh"
-  - "Co giật toàn thể"
 keywords:
   - "co giật do sốt"
   - "nhi khoa"
-  - "dien nao do"
-  - "eeg"
-  - "trang thai dong kinh"
-  - "status epilepticus"
-  - "diazepam"
-  - "valproate"
-icd10:
-  - "G40"
-  - "R56"
 specialty: "Nhi khoa"
 kho: "Kho chưa lọc"
 tags:

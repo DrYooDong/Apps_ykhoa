@@ -764,6 +764,9 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBM" style="padding:2px 8px; font-size:10px; height:auto; min-height:0;">
                   <i class="fa-solid fa-book-medical"></i> Tra cứu EBM
                 </button>
+                <button type="button" class="dsp-btn dsp-btn-sm" id="btnVaultKnowledgeSoap" style="background:rgba(2,132,199,0.1); color:var(--color-primary); border:1px solid var(--color-primary); padding:2px 8px; font-size:10px; height:auto; min-height:0;" title="Mở Kho Tri Thức Y Khoa (2.250+ Bài Viết)">
+                  <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức Vault
+                </button>
               </div>
             </div>
 
@@ -771,6 +774,8 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
               <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Biện luận lâm sàng, chẩn đoán xác định và phân tầng nguy cơ...">${p.aAssessment || ''}</textarea>
               <!-- Real-time Contextual EBM Suggestion Bar -->
               <div id="soapEbmContextBar" style="display:none;"></div>
+              <!-- Real-time Contextual Vault Knowledge Suggestion Bar -->
+              <div id="soapVaultContextBar" style="display:none; margin-top:8px; padding:6px 10px; background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px;"></div>
             </div>
           </div>
 
@@ -812,6 +817,9 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 </button>
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnQuickRefSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Tra cứu nhanh công thức &amp; hướng dẫn">
                   <i class="fa-solid fa-bolt"></i> Tra cứu nhanh
+                </button>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnInsertVaultCitationSoap" style="color:#8b5cf6; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Chèn trích dẫn phác đồ/hướng dẫn từ Kho Tri Thức">
+                  <i class="fa-solid fa-quote-right"></i> + Trích dẫn Vault
                 </button>
               </div>
             </div>
@@ -1841,6 +1849,88 @@ export function mountSoapController(profileId: string): void {
     quickReferenceDrawer.open('formulas');
   });
 
+  // Knowledge Vault Drawer & Real-Time Context Suggester
+  document.getElementById('btnVaultKnowledgeSoap')?.addEventListener('click', () => {
+    quickReferenceDrawer.open('vault' as any);
+  });
+
+  // Real-time Contextual Vault Suggestion Bar
+  const vaultContextBar = document.getElementById('soapVaultContextBar');
+  const updateVaultContextSuggestions = () => {
+    if (!vaultContextBar) return;
+    const diag = (document.getElementById('esCurrentDiagnosis') as HTMLInputElement)?.value.trim() || (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value.trim() || '';
+    const aVal = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value.trim() || '';
+    const textToScan = `${diag} ${aVal}`.toLowerCase();
+
+    const vaultKeywords = [
+      { name: 'Hội chứng vành cấp', key: 'hội chứng vành cấp', alias: 'acs' },
+      { name: 'Tổn thương thận cấp', key: 'thận cấp', alias: 'aki' },
+      { name: 'COPD', key: 'copd', alias: 'phổi tắc nghẽn' },
+      { name: 'Suy tim', key: 'suy tim', alias: 'heart failure' },
+      { name: 'Tăng huyết áp', key: 'tăng huyết áp', alias: 'hypertension' },
+      { name: 'Đái tháo đường', key: 'đái tháo đường', alias: 'tiểu đường' },
+      { name: 'Bỏng', key: 'bỏng', alias: 'burn' },
+      { name: 'DKA', key: 'dka', alias: 'nhiễm toan ceton' },
+      { name: 'Sốc nhiễm khuẩn', key: 'sốc nhiễm', alias: 'sepsis' },
+      { name: 'Viêm tụy cấp', key: 'viêm tụy', alias: 'pancreatitis' },
+      { name: 'Xơ gan', key: 'xơ gan', alias: 'cirrhosis' },
+      { name: 'Sốt xuất huyết', key: 'sốt xuất huyết', alias: 'dengue' },
+      { name: 'Viêm phổi', key: 'viêm phổi', alias: 'pneumonia' }
+    ];
+
+    const matched = vaultKeywords.filter(k => textToScan.includes(k.key) || textToScan.includes(k.alias));
+
+    if (matched.length > 0) {
+      vaultContextBar.style.display = 'block';
+      vaultContextBar.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <span style="font-size:11px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:4px;">
+            <i class="fa-solid fa-graduation-cap"></i> Gợi ý từ Kho Tri Thức Vault (2.250+ bài):
+          </span>
+          <span style="font-size:10px; color:var(--color-text-muted);">Khớp ${matched.length} chủ đề</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px;">
+          ${matched.map(m => `
+            <a 
+              href="../knowledge-vault/index.html?search=${encodeURIComponent(m.name)}" 
+              target="_blank" 
+              class="dsp-badge" 
+              style="background:rgba(2,132,199,0.08); color:var(--color-primary); border:1px solid rgba(2,132,199,0.25); text-decoration:none; padding:3px 8px; border-radius:6px; font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px;"
+              title="Mở toàn bộ chuỗi bệnh học (${m.name}) trong Knowledge Vault"
+            >
+              <i class="fa-solid fa-book-medical"></i> ${m.name} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:9px;"></i>
+            </a>
+          `).join('')}
+        </div>
+      `;
+    } else {
+      vaultContextBar.style.display = 'none';
+      vaultContextBar.innerHTML = '';
+    }
+  };
+
+  let vaultDebounceTimer: any = null;
+  const triggerVaultDebounce = () => {
+    clearTimeout(vaultDebounceTimer);
+    vaultDebounceTimer = setTimeout(updateVaultContextSuggestions, 300);
+  };
+
+  document.getElementById('esCurrentDiagnosis')?.addEventListener('input', triggerVaultDebounce);
+  document.getElementById('esAdmissionDiagnosis')?.addEventListener('input', triggerVaultDebounce);
+  document.getElementById('esAAssessment')?.addEventListener('input', triggerVaultDebounce);
+  setTimeout(updateVaultContextSuggestions, 400);
+
+  // Insert Vault Citation into P
+  document.getElementById('btnInsertVaultCitationSoap')?.addEventListener('click', () => {
+    const planEl = document.getElementById('esPPlan') as HTMLTextAreaElement | null;
+    const diag = (document.getElementById('esCurrentDiagnosis') as HTMLInputElement)?.value.trim() || (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value.trim() || 'Bệnh lý';
+    if (planEl) {
+      const citation = `\n• [Tham chiếu Phác đồ Vault: ${diag}] (Theo dõi đáp ứng và kiểm tra biến chứng)`;
+      planEl.value = (planEl.value + citation).trim();
+      planEl.focus();
+    }
+  });
+
   // Lab Diagnostics Hub Events
   document.getElementById('btnOpenLabFromO')?.addEventListener('click', () => {
     labDiagnosticsHub.open('dictionary', 'esONotes');
@@ -2067,4 +2157,42 @@ export function mountSoapController(profileId: string): void {
       window.location.hash = `#/docspace/soap?edit=${targetSoap.id}`;
     }
   }
+
+  // Tự động nạp dữ liệu từ Knowledge Vault (1-Click Vault Article to SOAP)
+  const fromVaultTitle = urlParams.get('from_vault');
+  if (fromVaultTitle) {
+    const allSoap = getAllSoapPatients(profileId);
+    let targetSoap = allSoap.find(s => s.admissionDiagnosis === fromVaultTitle || s.currentDiagnosis === fromVaultTitle);
+
+    const aAssessment = `[Chẩn đoán & Tham chiếu Tri Thức Vault]:\n• Chẩn đoán chính: ${fromVaultTitle}\n• Tra cứu chuỗi bệnh học: Cơ chế SLB ➔ Tiêu chuẩn chẩn đoán ➔ Phác đồ điều trị ➔ Biến chứng.`;
+    const pPlan = `[Kế hoạch Điều trị & Theo dõi]:\n• [Tham chiếu Phác đồ Vault: ${fromVaultTitle}]\n• Đánh giá đáp ứng lâm sàng sau 24-48 giờ.`;
+
+    if (!targetSoap) {
+      const patientCode = `VAULT-${Date.now().toString().slice(-4)}`;
+      const fullName = `Ca Thực Hành: ${fromVaultTitle}`;
+      targetSoap = saveSoapPatient(profileId, {
+        patientCode,
+        bedNumber: 'PK-NgoạiTrú',
+        fullName,
+        age: 55,
+        gender: 'nam',
+        medicalRecordNo: patientCode,
+        admissionDiagnosis: fromVaultTitle,
+        currentDiagnosis: fromVaultTitle,
+        isEmrEntered: false,
+        soapStatus: 'da_lam',
+        dayOfIllness: 1,
+        sNotes: `[Bệnh sử / Lý do vào viện]: Điều trị theo phác đồ ${fromVaultTitle} từ Knowledge Vault.`,
+        oNotes: `Sinh hiệu: Mạch 80 l/p, Huyết áp 120/80 mmHg, Thở 18 l/p, SpO2 98%.`,
+        aAssessment,
+        pPlan,
+        clsOrders: [],
+        clsResults: [],
+      });
+    }
+
+    // Mở ngay modal chỉnh sửa SOAP cho ca này
+    window.location.hash = `#/docspace/soap?edit=${targetSoap.id}`;
+  }
 }
+

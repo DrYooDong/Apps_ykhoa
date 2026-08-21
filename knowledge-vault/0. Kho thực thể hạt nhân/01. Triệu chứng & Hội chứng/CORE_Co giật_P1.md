@@ -3,23 +3,10 @@ title: "Co giật"
 part: "P1"
 aliases:
   - "Co giật"
-  - "Seizure"
-  - "Epilepsy"
-  - "Động kinh"
-  - "Co giật toàn thể"
 keywords:
   - "co giật"
   - "đại cương"
   - "01. triệu chứng & hội chứng"
-  - "dien nao do"
-  - "eeg"
-  - "trang thai dong kinh"
-  - "status epilepticus"
-  - "diazepam"
-  - "valproate"
-icd10:
-  - "G40"
-  - "R56"
 specialty: "Đại cương"
 kho: "0. Kho thực thể hạt nhân"
 tags:

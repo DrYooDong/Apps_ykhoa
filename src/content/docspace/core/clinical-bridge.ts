@@ -73,3 +73,12 @@ export function buildDeepLink(toolPath: string, session: ClinicalSession): strin
   const query = params.toString();
   return query ? `${toolPath}?${query}` : toolPath;
 }
+
+/**
+ * Mở bài viết Knowledge Vault (trong Drawer hoặc Tab mới)
+ */
+export function openVaultArticle(articleIdOrRelPath: string): void {
+  const url = `../knowledge-vault/index.html?article=${encodeURIComponent(articleIdOrRelPath)}`;
+  window.open(url, '_blank');
+}
+

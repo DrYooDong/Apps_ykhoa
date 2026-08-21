@@ -39,3 +39,85 @@ export interface VaultFilterState {
   activeKho: string; // 'ALL' or khoCode
   activeSpecialty: string; // 'ALL' or specific specialty name
 }
+
+export interface ClinicalPathwayLinks {
+  conditionName: string;
+  gpsl?: VaultArticle;
+  slb?: VaultArticle;
+  cd?: VaultArticle;
+  pddt?: VaultArticle;
+  bc?: VaultArticle;
+  cn?: VaultArticle;
+}
+
+export interface TocItem {
+  id: string;
+  text: string;
+  level: number;
+}
+
+export interface VaultPersonalAnnotation {
+  id: string;
+  articleId: string;
+  authorId?: string;
+  noteText: string;
+  pearlType?: 'experience' | 'warning' | 'dosage' | 'general';
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface FlowchartNode {
+  id: string;
+  label: string;
+  subLabel?: string;
+  type: 'start' | 'decision' | 'action' | 'alert' | 'stable';
+  x: number;
+  y: number;
+  width?: number;
+  height?: number;
+  details?: string;
+  recommendation?: string;
+}
+
+export interface FlowchartEdge {
+  from: string;
+  to: string;
+  label?: string;
+  isYes?: boolean;
+}
+
+export interface ClinicalFlowchart {
+  id: string;
+  title: string;
+  specialty: string;
+  conditionName: string;
+  description: string;
+  nodes: FlowchartNode[];
+  edges: FlowchartEdge[];
+}
+
+export interface MedicalFlashcard {
+  id: string;
+  articleId?: string;
+  specialty: string;
+  category: 'pearl' | 'danger' | 'dosage' | 'diagnosis' | 'guideline';
+  frontQuestion: string;
+  backAnswer: string;
+  clinicalContext?: string;
+  sourceArticleTitle?: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+}
+
+export interface FlashcardReviewState {
+  cardId: string;
+  interval: number; // in days
+  repetition: number;
+  efactor: number; // default 2.5
+  nextReviewDate: string; // ISO date string
+  lastRating?: number; // 0-4
+  masteryLevel: number; // 0 - 100%
+  lastReviewedAt: string;
+}
+
+
+

@@ -3,21 +3,9 @@ title: "Hội chứng suy hô hấp cấp tiến triển (ARDS)"
 part: "P1"
 aliases:
   - "Hội chứng suy hô hấp cấp tiến triển (ARDS)"
-  - "ARDS"
-  - "Acute Respiratory Distress Syndrome"
-  - "Suy hô hấp cấp"
 keywords:
   - "hội chứng suy hô hấp cấp tiến triển (ards)"
   - "hô hấp"
-  - "tieu chuan berlin"
-  - "pao2/fio2"
-  - "peep"
-  - "tho may bao ve phoi"
-  - "prone position"
-  - "ecmo"
-icd10:
-  - "J80"
-  - "R09.2"
 specialty: "Hô hấp"
 kho: "Kho chưa lọc"
 tags:

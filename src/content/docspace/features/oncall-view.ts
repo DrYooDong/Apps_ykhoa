@@ -105,6 +105,48 @@ export function renderOnCallView(profileId: string): string {
                 </div>
               `}
             </div>
+
+            <!-- Cẩm nang cấp cứu ca trực từ Vault -->
+            <div style="margin-top: 32px; border-top: 1px dashed var(--color-border); padding-top: 20px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h3 style="font-size:15px; color:var(--color-primary); margin:0; display:flex; align-items:center; gap:6px;">
+                  <i class="fa-solid fa-truck-medical" style="color:#ef4444;"></i> Cẩm Nang Cấp Cứu Nhanh Cho Ca Trực (Từ Vault)
+                </h3>
+                <a href="../knowledge-vault/index.html" target="_blank" style="font-size:11px; color:var(--color-primary); text-decoration:none; font-weight:700;">
+                  Xem tất cả 2.250+ bài <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:10px;">
+                <a href="../knowledge-vault/index.html?search=Hội chứng vành cấp" target="_blank" class="dsp-card" style="padding:10px 12px; text-decoration:none; color:inherit; border:1px solid rgba(239,68,68,0.25); background:rgba(239,68,68,0.02); display:flex; align-items:center; gap:10px;">
+                  <i class="fa-solid fa-heart-pulse" style="color:#ef4444; font-size:16px;"></i>
+                  <div>
+                    <div style="font-weight:700; font-size:12px;">Hội chứng vành cấp / NSTEMI / STEMI</div>
+                    <div style="font-size:10.5px; color:var(--color-text-muted);">Kháng đông, kháng kết tập tiểu cầu, can thiệp PCI</div>
+                  </div>
+                </a>
+                <a href="../knowledge-vault/index.html?search=COPD" target="_blank" class="dsp-card" style="padding:10px 12px; text-decoration:none; color:inherit; border:1px solid rgba(2,132,199,0.25); background:rgba(2,132,199,0.02); display:flex; align-items:center; gap:10px;">
+                  <i class="fa-solid fa-lungs" style="color:#0284c7; font-size:16px;"></i>
+                  <div>
+                    <div style="font-weight:700; font-size:12px;">Đợt cấp COPD / Hen phế quản ác tính</div>
+                    <div style="font-size:10.5px; color:var(--color-text-muted);">Khí dung SABA/SAMA, Corticoid tĩnh mạch, NIV</div>
+                  </div>
+                </a>
+                <a href="../knowledge-vault/index.html?search=Sốc nhiễm" target="_blank" class="dsp-card" style="padding:10px 12px; text-decoration:none; color:inherit; border:1px solid rgba(245,158,11,0.25); background:rgba(245,158,11,0.02); display:flex; align-items:center; gap:10px;">
+                  <i class="fa-solid fa-virus" style="color:#f59e0b; font-size:16px;"></i>
+                  <div>
+                    <div style="font-weight:700; font-size:12px;">Sốc nhiễm khuẩn / Sepsis 1-Hour Bundle</div>
+                    <div style="font-size:10.5px; color:var(--color-text-muted);">Lactate máu, cấy máu, kháng sinh giờ đầu, bù dịch</div>
+                  </div>
+                </a>
+                <a href="../knowledge-vault/index.html?search=DKA" target="_blank" class="dsp-card" style="padding:10px 12px; text-decoration:none; color:inherit; border:1px solid rgba(139,92,246,0.25); background:rgba(139,92,246,0.02); display:flex; align-items:center; gap:10px;">
+                  <i class="fa-solid fa-syringe" style="color:#8b5cf6; font-size:16px;"></i>
+                  <div>
+                    <div style="font-weight:700; font-size:12px;">Cấp cứu DKA / HHS / Hạ đường huyết</div>
+                    <div style="font-size:10.5px; color:var(--color-text-muted);">Bù dịch NaCl 0.9%, Insulin tĩnh mạch, bù Kali</div>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </main>
