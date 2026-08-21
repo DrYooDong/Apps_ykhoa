@@ -15,6 +15,7 @@ export * from './views/co-che-benh-sinh-view';
 export * from './views/biochemistry-view';
 export * from './views/biochemistry-hub';
 export * from './views/epidemiology-view';
+export * from './views/epidemiology-tools-view';
 export * from './types/epidemiology.types';
 export * from './data/epidemiology-data';
 export * from './views/formula-vault-view';

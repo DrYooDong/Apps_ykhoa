@@ -184,6 +184,8 @@ import {
   initBiochemistryView,
   renderEpidemiologyView,
   initEpidemiologyView,
+  renderEpidemiologyToolView,
+  initEpidemiologyToolsView,
   renderFormulaVaultView,
   renderPhysioReader,
   renderPhysioHtmlReader,
@@ -343,6 +345,18 @@ function initializeRoutes(): void {
       document.title = 'Dịch Tễ Học Y Khoa – CliniPortal';
       mountToApp(renderEpidemiologyView());
       initEpidemiologyView();
+    });
+
+    // === EPIDEMIOLOGY TOOLS SUB-ROUTES ===
+    router.register(`/${prefix}/epidemiology/:tool`, 'Công Cụ Dịch Tễ Học', (params) => {
+      const tool = (params.tool || 'matrix-solver') as any;
+      mountToApp(renderEpidemiologyToolView(tool));
+      initEpidemiologyToolsView(tool);
+    });
+    router.register(`/${prefix}/dich-te-hoc/:tool`, 'Công Cụ Dịch Tễ Học', (params) => {
+      const tool = (params.tool || 'matrix-solver') as any;
+      mountToApp(renderEpidemiologyToolView(tool));
+      initEpidemiologyToolsView(tool);
     });
 
     router.register(`/${prefix}/formula-vault`, 'Kho Công thức Sinh lý', () => {

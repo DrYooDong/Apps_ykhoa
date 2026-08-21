@@ -53,11 +53,18 @@ function renderHeaderHtml(projectRoot = './') {
                 <span>Cơ chế bệnh sinh & Sinh lý bệnh</span>
               </div>
             </a>
-            <a href="${root}index.html#/pathophysiology/hoa-sinh" class="header-dropdown-item">
+            <a href="${root}index.html#/basic-medical/hoa-sinh" class="header-dropdown-item">
               <span class="dropdown-item-icon">🧪</span>
               <div class="dropdown-item-text">
                 <strong>Hóa Sinh</strong>
                 <span>Hóa sinh Y học & Chuyển hóa</span>
+              </div>
+            </a>
+            <a href="${root}index.html#/basic-medical/dich-te-hoc" class="header-dropdown-item">
+              <span class="dropdown-item-icon">🦠</span>
+              <div class="dropdown-item-text">
+                <strong>Dịch Tễ</strong>
+                <span>Dịch tễ học & Y tế công cộng</span>
               </div>
             </a>
           </div>

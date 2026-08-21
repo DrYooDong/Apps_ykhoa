@@ -327,14 +327,16 @@ window.getPathDepthPrefix = function() {
             item.appendChild(chevron);
           }
 
-          let physioUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|co-che-benh-sinh\.html|hoa-sinh\.html/, 'giai-phau-sinh-ly.html');
-          let pathoUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html|hoa-sinh\.html/, 'co-che-benh-sinh.html');
-          let biochemUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html|co-che-benh-sinh\.html/, 'hoa-sinh.html');
+          let physioUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|co-che-benh-sinh\.html|hoa-sinh\.html|dich-te-hoc\.html/, 'giai-phau-sinh-ly.html');
+          let pathoUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html|hoa-sinh\.html|dich-te-hoc\.html/, 'co-che-benh-sinh.html');
+          let biochemUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html|co-che-benh-sinh\.html|dich-te-hoc\.html/, 'hoa-sinh.html');
+          let epidemUrl = href.replace(/sinhly-sinhlybenh\.html|sinh-ly-hoc\.html|giai-phau-sinh-ly\.html|co-che-benh-sinh\.html|hoa-sinh\.html/, 'dich-te-hoc.html');
           if (!physioUrl.includes('giai-phau-sinh-ly.html')) {
             const baseDir = href.includes('/') ? href.substring(0, href.lastIndexOf('/') + 1) : '';
             physioUrl = baseDir + 'giai-phau-sinh-ly.html';
             pathoUrl = baseDir + 'co-che-benh-sinh.html';
             biochemUrl = baseDir + 'hoa-sinh.html';
+            epidemUrl = baseDir + 'dich-te-hoc.html';
           }
 
           const menu = document.createElement('div');
@@ -351,6 +353,10 @@ window.getPathDepthPrefix = function() {
             <a href="${biochemUrl}" class="nav-dropdown-item">
               <span class="dropdown-item-icon">🧪</span>
               <span>Hóa Sinh</span>
+            </a>
+            <a href="${epidemUrl}" class="nav-dropdown-item">
+              <span class="dropdown-item-icon">🦠</span>
+              <span>Dịch Tễ</span>
             </a>
           `;
           wrapper.appendChild(menu);
