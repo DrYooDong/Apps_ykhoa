@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Hạ Đường Huyết trong Đái tháo đường (Hypoglycemia Pathophysiology & HAAF): Phân loại 3 mức độ theo ADA 2026 (Level 1, 2, 3), chuỗi phản xạ đối kháng nội tiết (Insulin, Glucagon, Epinephrine, Cortisol, GH), hội chứng suy giảm nhận biết hạ đường huyết (Hypoglycemia-Associated Autonomic Failure - HAAF), cơ chế giảm thanh thải insulin ở bệnh thận mạn, bão GLP-1 sau mổ chuyển hóa và quy tắc 15.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Hạ Đường Huyết trong ĐTĐ – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .hypo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .hypo-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hypo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .hypo-card.lvl1 {
+            border-left: 4px solid #f59e0b;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, transparent 100%);
+        }
+
+        .hypo-card.lvl2 {
+            border-left: 4px solid #ea580c;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, transparent 100%);
+        }
+
+        .hypo-card.lvl3 {
+            border-left: 4px solid #dc2626;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, transparent 100%);
+        }
+
+        .hypo-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-left: 4px solid var(--color-primary, #0284c7);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .formula-box .formula-label {
+            font-size: 0.75rem;
+            color: var(--color-primary, #0284c7);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .formula-box .formula-main {
+            color: var(--color-text);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .formula-box .formula-note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.1) 0%, rgba(234, 88, 12, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-section h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .ref-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ref-list li {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            padding: 0.45rem 0;
+            border-bottom: 1px dashed var(--color-border);
+            line-height: 1.5;
+        }
+
+        .ref-list li:last-child { border-bottom: none; }
+        .ref-list li strong { color: var(--color-text); }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "&#127968; Trang chủ", "url": "../../../../index.html"}, {"label": "Cơ chế bệnh sinh", "url": "../co-che-benh-sinh.html"}, {"label": "Sinh lý bệnh Hạ Đường Huyết trong ĐTĐ"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <div style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(245,158,11,0.12);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:0.25rem 0.85rem;font-size:0.78rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.75rem;">
+                        <i class="fa-solid fa-venus-mars"></i> Phân hệ Nội tiết &ndash; Chuyển hóa &ndash; Cấp cứu
+                    </div>
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH HẠ ĐƯỜNG HUYẾT TRONG ĐÁI THÁO ĐƯỜNG</h1>
+                    <p>Hypoglycemia Pathophysiology, Counterregulatory Failure &amp; HAAF &mdash; Phân loại 3 mức độ hạ đường huyết theo ADA 2026 (Level 1, 2, 3), chuỗi phản xạ nội tiết đối kháng bình thường (Ức chế Insulin &rarr; Glucagon &rarr; Epinephrine/Adrenergic &rarr; Cortisol/GH), hội chứng suy giảm nhận biết hạ đường huyết (Hypoglycemia-Associated Autonomic Failure &ndash; HAAF), cơ chế tích lũy giảm thanh thải insulin ở bệnh thận mạn (CKD), bão GLP-1 sau phẫu thuật chuyển hóa, mất đồng bộ trong liệt dạ dày và phác đồ xử trí "Quy tắc 15".</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Hạ đường huyết (Hypoglycemia)</span> là rào cản và yếu tố giới hạn lớn nhất trong chiến lược kiểm soát glucose máu tối ưu ở bệnh nhân đái tháo đường. Não bộ là cơ quan tiêu thụ năng lượng bắt buộc từ glucose máu liên tục (không thể tự tổng hợp hay dự trữ glucose). Khi nồng độ glucose máu sụt giảm, cơ thể kích hoạt một mạng lưới phòng thủ nội tiết &ndash; thần kinh đối kháng phức tạp. Sự suy sụp của hệ thống này trong <span class="term-hl">Hội chứng Suy giảm nhận biết hạ đường huyết (HAAF)</span> làm mất đi các tín hiệu báo động adrenergic, đẩy bệnh nhân trực tiếp vào tình trạng thiếu đường não (Neuroglycopenia), hôn mê sâu và tổn thương não vĩnh viễn nếu không được xử trí kịp thời.
+                </p>
+
+                <!-- PHẦN I: ĐỊNH NGHĨA & PHÂN LOẠI 3 MỨC ĐỘ -->
+                <div class="physio-content">
+                    <h2 id="dinh-nghia-phan-loai-ada" class="section-title">
+                        <span>Phần I: Định Nghĩa, Tam Chứng Whipple &amp; Phân Loại 3 Mức Độ (ADA 2026)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="tam-chung-whipple" class="subsection-title">1.1. Tam chứng Whipple &ndash; Nền tảng chẩn đoán xác định</h3>
+                        <p>
+                            Trên lâm sàng, hạ đường huyết được xác định một cách khoa học khi thỏa mãn <strong>Tam chứng Whipple</strong>:
+                        </p>
+
+                        <div class="formula-box">
+                            <div class="formula-label">TAM CHỨNG WHIPPLE (WHIPPLE'S TRIAD)</div>
+                            <div class="formula-main">
+                                1. Có các triệu chứng lâm sàng phù hợp với hạ đường huyết (Cường giao cảm / Thiếu đường não)<br>
+                                2. Định lượng Glucose huyết tương thấp tại thời điểm xuất hiện triệu chứng (&lt; 70 mg/dL)<br>
+                                3. Các triệu chứng biến mất nhanh chóng ngay sau khi nồng độ Glucose máu được nâng lên bình thường
+                            </div>
+                            <div class="formula-note">
+                                <em>Lưu ý:</em> Ở những người bệnh đái tháo đường có đường huyết kiểm soát kém mạn tính, các triệu chứng hạ đường huyết giả tạo có thể xuất hiện ngay cả khi glucose máu &gt; 70 mg/dL do hệ thần kinh trung ương đã quen với mức đường huyết cao.
+                            </div>
+                        </div>
+
+                        <h3 id="phan-loai-3-muc-do-ada" class="subsection-title">1.2. Bảng Phân loại 3 Mức Độ Hạ Đường Huyết (Standards of Care in Diabetes &mdash; ADA 2026)</h3>
+
+                        <div class="hypo-grid">
+                            <div class="hypo-card lvl1">
+                                <div class="hypo-card-title" style="color:#f59e0b;">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> 1. Hạ Đường Huyết Độ 1 (Level 1)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Ngưỡng sinh hóa:</strong> Glucose <strong>&ge; 54 mg/dL đến &lt; 70 mg/dL</strong> (3.0 &ndash; 3.9 mmol/L).<br>
+                                    &bull; <strong>Ý nghĩa sinh lý:</strong> Là ngưỡng cảnh báo sớm, tại đó các phản ứng nội tiết đối kháng sinh lý (tiết Glucagon và Epinephrine) bắt đầu được kích hoạt. Cần điều chỉnh liều thuốc hoặc ăn nhẹ.
+                                </p>
+                            </div>
+                            <div class="hypo-card lvl2">
+                                <div class="hypo-card-title" style="color:#ea580c;">
+                                    <i class="fa-solid fa-bolt"></i> 2. Hạ Đường Huyết Độ 2 (Level 2)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Ngưỡng sinh hóa:</strong> Glucose <strong>&lt; 54 mg/dL (&lt; 3.0 mmol/L)</strong>.<br>
+                                    &bull; <strong>Ý nghĩa sinh lý:</strong> Là ngưỡng lâm sàng nghiêm trọng mà tại đó <strong>các triệu chứng thiếu đường não (Neuroglycopenia) bắt đầu bộc lộ</strong>. Bắt buộc phải xử trí ngay lập tức bằng carbohydrate tác dụng nhanh.
+                                </p>
+                            </div>
+                            <div class="hypo-card lvl3">
+                                <div class="hypo-card-title" style="color:#dc2626;">
+                                    <i class="fa-solid fa-skull-crossbones"></i> 3. Hạ Đường Huyết Độ 3 (Level 3 &ndash; Nặng)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Tiêu chuẩn lâm sàng:</strong> Tình trạng suy giảm ý thức hoặc biến đổi thể chất/tâm thần nghiêm trọng khiến <strong>người bệnh mất khả năng tự xử trí và bắt buộc phải có sự trợ giúp của người khác</strong>.<br>
+                                    &bull; <strong>Đặc điểm:</strong> Chẩn đoán không phụ thuộc vào con số glucose máu đo được lúc đó.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN II: PHẢN ỨNG NỘI TIẾT ĐỐI KHÁNG BÌNH THƯỜNG -->
+                <div class="physio-content">
+                    <h2 id="phan-ung-doi-khang-sinh-ly" class="section-title">
+                        <span>Phần II: Chuỗi Phản Ứng Nội Tiết Đối Kháng Sinh Lý Bình Thường</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="cac-nguong-glucose-sinh-ly" class="subsection-title">2.1. Trình tự 4 tầng phòng thủ phân tử theo từng nấc giảm Glucose máu</h3>
+                        <p>
+                            Khi nồng độ glucose máu giảm dần, cơ thể triển khai một hệ thống phòng vệ tuần tự cực kỳ chặt chẽ nhằm duy trì cung cấp năng lượng sống còn cho hệ thần kinh trung ương:
+                        </p>
+
+                        <!-- SVG DIAGRAM: TRÌNH TỰ NỘI TIẾT ĐỐI KHÁNG -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 920 380" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="920" height="380" fill="var(--color-surface)" rx="12" />
+
+                                <text x="460" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text)">CÁC NGƯỠNG SINH LÝ ĐỐI KHÁNG KHI ĐƯỜNG HUYẾT SỤT GIẢM Ở NGƯỜI KHỎE MẠNH</text>
+
+                                <!-- Bar 1: Normal to 80-85 -->
+                                <rect x="50" y="65" width="230" height="70" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.5" />
+                                <text x="165" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#10b981">1. Glucose ~80 &ndash; 85 mg/dL</text>
+                                <text x="165" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">ỨC CHẾ TIẾT INSULIN</text>
+                                <text x="165" y="125" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Tế bào &beta; tụy ngừng bài tiết insulin</text>
+
+                                <path d="M 280 100 L 320 100" stroke="var(--color-border)" stroke-width="2" />
+
+                                <!-- Bar 2: 65-70 Glucagon -->
+                                <rect x="320" y="65" width="260" height="70" rx="8" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="450" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#0284c7">2. Glucose ~65 &ndash; 70 mg/dL</text>
+                                <text x="450" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">TĂNG TIẾT GLUCAGON</text>
+                                <text x="450" y="125" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Gan tăng Glycogenolysis &amp; Gluconeogenesis</text>
+
+                                <path d="M 580 100 L 620 100" stroke="var(--color-border)" stroke-width="2" />
+
+                                <!-- Bar 3: 65-70 Epinephrine -->
+                                <rect x="620" y="65" width="250" height="70" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="1.5" />
+                                <text x="745" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">3. Glucose ~65 &ndash; 70 mg/dL</text>
+                                <text x="745" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">BÃO CATECHOLAMINES</text>
+                                <text x="745" y="125" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Triệu chứng giao cảm: run, vã mồ hôi, tim nhanh</text>
+
+                                <!-- Lower Section: Cortisol & Neuroglycopenia -->
+                                <path d="M 450 135 L 450 175" stroke="var(--color-border)" stroke-width="2" />
+
+                                <!-- Bar 4: Cortisol / GH -->
+                                <rect x="150" y="175" width="280" height="80" rx="8" fill="rgba(99, 102, 241, 0.06)" stroke="#6366f1" stroke-width="1.5" />
+                                <text x="290" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#6366f1">4. Glucose &lt; 60 mg/dL (Kéo dài)</text>
+                                <text x="290" y="222" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">CORTISOL &amp; GROWTH HORMONE</text>
+                                <text x="290" y="240" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Tăng phân giải mỡ, cơ &amp; đề kháng insulin ngoại vi</text>
+
+                                <!-- Bar 5: Neuroglycopenia -->
+                                <rect x="490" y="175" width="380" height="80" rx="8" fill="rgba(220, 38, 38, 0.1)" stroke="#dc2626" stroke-width="2" />
+                                <text x="680" y="200" text-anchor="middle" font-size="12" font-weight="800" fill="#dc2626">5. Glucose &lt; 50 &ndash; 54 mg/dL</text>
+                                <text x="680" y="222" text-anchor="middle" font-size="11" font-weight="800" fill="#dc2626">TRIỆU CHỨNG THIẾU ĐƯỜNG NÃO (NEUROGLYCOPENIA)</text>
+                                <text x="680" y="240" text-anchor="middle" font-size="10" fill="var(--color-text)">Lú lẫn, hoa mắt, nhìn đôi, lơ mơ, co giật, hôn mê sâu</text>
+
+                                <!-- Summary Footer Box -->
+                                <rect x="50" y="280" width="820" height="75" rx="10" fill="var(--color-surface)" stroke="var(--color-border)" />
+                                <text x="460" y="308" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">PHÂN BIỆT 2 NHÓM TRIỆU CHỨNG LÂM SÀNG CỦA HẠ ĐƯỜNG HUYẾT:</text>
+                                <text x="460" y="328" text-anchor="middle" font-size="10" fill="#d97706">&bull; <strong>Triệu chứng Cường Giao cảm (Adrenergic):</strong> Vã mồ hôi lạnh, run rẩy tay chân, tim đập nhanh, hồi hộp, lo âu, cồn cào đói bụng.</text>
+                                <text x="460" y="344" text-anchor="middle" font-size="10" fill="#dc2626">&bull; <strong>Triệu chứng Thiếu đường Não (Neuroglycopenic):</strong> Chóng mặt, đau đầu, nhìn mờ, hành vi kỳ lạ, mất phối hợp động tác, lơ mơ, co giật, hôn mê.</text>
+                            </svg>
+                            <div class="diagram-caption">Hình 1: Sơ đồ các tầng phản xạ đối kháng sinh lý theo từng nấc sụt giảm glucose máu ở người khỏe mạnh. Triệu chứng giao cảm xuất hiện sớm ở mức 65 - 70 mg/dL làm "hệ thống báo động", trong khi triệu chứng thiếu đường não xuất hiện khi glucose &lt; 54 mg/dL.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN III: HỘI CHỨNG HAAF & MẤT PHẢN XẠ GLUCAGON -->
+                <div class="physio-content">
+                    <h2 id="co-che-haaf" class="section-title">
+                        <span>Phần III: Cơ Chế Bệnh Sinh Hội Chứng Suy Giảm Nhận Biết Hạ Đường Huyết (HAAF)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="hai-khiem-khuyet-phan-tu" class="subsection-title">3.1. Hai khiếm khuyết nội tiết &ndash; thần kinh trong Đái tháo đường tiến triển</h3>
+                        <p>
+                            Ở bệnh nhân đái tháo đường mắc bệnh lâu năm (&gt; 5 &ndash; 10 năm) hoặc điều trị insulin tích cực, hệ thống phòng thủ đối kháng tự nhiên bị phá vỡ hoàn toàn do 2 cơ chế bệnh sinh:
+                        </p>
+
+                        <div class="hypo-grid">
+                            <div class="hypo-card lvl2">
+                                <div class="hypo-card-title" style="color:#ea580c;">
+                                    <i class="fa-solid fa-ban"></i> 1. Mất Phản Xạ Tăng Tiết Glucagon Chọn Lọc
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Tế bào &alpha; đảo tụy mất hoàn toàn khả năng nhận cảm và tăng tiết Glucagon khi có hạ đường huyết (mặc dù phản xạ tiết glucagon khi kích thích bằng acid amin vẫn còn). Rào cản phòng ngự đầu tiên của cơ thể bị triệt tiêu hoàn toàn.
+                                </p>
+                            </div>
+                            <div class="hypo-card lvl3">
+                                <div class="hypo-card-title" style="color:#dc2626;">
+                                    <i class="fa-solid fa-brain"></i> 2. Hội Chứng HAAF (Hypoglycemia-Associated Autonomic Failure)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Các đợt hạ đường huyết tái diễn (Recurrent Hypoglycemia) làm <strong>vùng dưới đồi thích nghi bất thường</strong>, dịch chuyển ngưỡng kích hoạt hệ thần kinh giao cảm xuống mức glucose máu cực thấp &rarr; Mất giải phóng Epinephrine ở ngưỡng 70 mg/dL.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- SVG DIAGRAM: VÒNG XOẮN HAAF -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 920 340" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="920" height="340" fill="var(--color-surface)" rx="12" />
+
+                                <text x="460" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text)">VÒNG XOẮN BỆNH LÝ SUY GIAO CẢM DO HẠ ĐƯỜNG HUYẾT TÁI DIỄN (HAAF)</text>
+
+                                <!-- Cycle Node 1: Recurrent Hypo -->
+                                <rect x="330" y="55" width="260" height="50" rx="8" fill="rgba(220, 38, 38, 0.12)" stroke="#dc2626" stroke-width="2" />
+                                <text x="460" y="78" text-anchor="middle" font-size="12" font-weight="800" fill="#dc2626">1. HẠ ĐƯỜNG HUYẾT TÁI DIỄN</text>
+                                <text x="460" y="94" text-anchor="middle" font-size="10" fill="var(--color-text)">(Do tiêm thừa insulin / bỏ bữa ăn)</text>
+
+                                <!-- Arrow Right Down -->
+                                <path d="M 590 80 L 730 130" stroke="#dc2626" stroke-width="2" />
+
+                                <!-- Cycle Node 2: Brain adaptation -->
+                                <rect x="600" y="130" width="260" height="60" rx="8" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="1.5" />
+                                <text x="730" y="153" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">2. VÙNG DƯỚI ĐỒI THÍCH NGHI</text>
+                                <text x="730" y="171" text-anchor="middle" font-size="10" fill="var(--color-text)">Tăng bắt giữ Glucose qua GLUT-1 não</text>
+                                <text x="730" y="185" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Dịch chuyển ngưỡng kích hoạt xuống thấp</text>
+
+                                <!-- Arrow Down Left -->
+                                <path d="M 730 190 L 590 240" stroke="#dc2626" stroke-width="2" />
+
+                                <!-- Cycle Node 3: Loss of Adrenergic symptoms -->
+                                <rect x="330" y="240" width="260" height="60" rx="8" fill="rgba(220, 38, 38, 0.08)" stroke="#dc2626" stroke-width="2" />
+                                <text x="460" y="263" text-anchor="middle" font-size="11" font-weight="800" fill="#dc2626">3. MẤT DẤU HIỆU CẢNH BÁO</text>
+                                <text x="460" y="281" text-anchor="middle" font-size="10" fill="var(--color-text)">Không run, không vã mồ hôi, không đói</text>
+                                <text x="460" y="295" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">(Impaired Hypoglycemia Awareness)</text>
+
+                                <!-- Arrow Left Up -->
+                                <path d="M 330 270 L 190 220" stroke="#dc2626" stroke-width="2" />
+
+                                <!-- Cycle Node 4: Severe Hypo Level 3 -->
+                                <rect x="60" y="130" width="260" height="60" rx="8" fill="rgba(127, 29, 29, 0.15)" stroke="#7f1d1d" stroke-width="2" />
+                                <text x="190" y="153" text-anchor="middle" font-size="11" font-weight="800" fill="#7f1d1d">4. HẠ ĐƯỜNG HUYẾT NẶNG ĐỘ 3</text>
+                                <text x="190" y="171" text-anchor="middle" font-size="10" fill="var(--color-text)">Đột ngột hôn mê, co giật khi &lt; 54 mg/dL</text>
+                                <text x="190" y="185" text-anchor="middle" font-size="9" fill="#dc2626">Nguy cơ tử vong &amp; tổn thương não</text>
+
+                                <!-- Arrow Up to Node 1 -->
+                                <path d="M 190 130 L 330 80" stroke="#dc2626" stroke-width="2" />
+                            </svg>
+                            <div class="diagram-caption">Hình 2: Vòng xoắn bệnh lý ác tính của Hội chứng HAAF. Các đợt hạ đường huyết lặp lại làm giảm đáp ứng giao cảm ở các đợt tiếp theo, tước đoạt hoàn toàn các dấu hiệu cảnh báo sớm của người bệnh và dẫn đến hạ đường huyết nặng đe dọa tính mạng.</div>
+                        </div>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>Hậu quả lâm sàng nghiêm trọng của HAAF:</strong><br>
+                            Ở người bệnh có HAAF, triệu chứng đầu tiên xuất hiện không phải là run tay hay đói bụng mà là <strong>lú lẫn, nói nhảm, mất định hướng, co giật hoặc hôn mê đột ngột (Level 3)</strong>. Nguy cơ mắc biến cố hạ đường huyết nặng tăng gấp <strong>6 lần ở ĐTĐ típ 1</strong> và gấp <strong>17 lần ở ĐTĐ típ 2</strong>.<br>
+                            👉 <em>Biện pháp đảo ngược HAAF:</em> Bắt buộc nới lỏng mục tiêu đường huyết (nâng mức HbA1c mục tiêu lên cao hơn) và <strong>tránh tuyệt đối mọi đợt hạ đường huyết trong vòng 2 &ndash; 3 tuần</strong> để vùng dưới đồi tái thiết lập lại ngưỡng nhạy cảm sinh lý ban đầu.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN IV: CÁC YẾU TỐ NGUY CƠ ĐẶC THÙ & XỬ TRÍ -->
+                <div class="physio-content">
+                    <h2 id="yeu-to-nguy-co-xu-tri" class="section-title">
+                        <span>Phần IV: Cơ Chế Của Các Yếu Tố Nguy Cơ Đặc Thù &amp; Phác Đồ Xử Trí "Quy Tắc 15"</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="co-che-yeu-to-nguy-co" class="subsection-title">4.1. Phân tích cơ chế bệnh sinh của 4 nhóm đối tượng nguy cơ cao</h3>
+
+                        <div class="hypo-grid">
+                            <div class="hypo-card">
+                                <div class="hypo-card-title" style="color:#0284c7;">
+                                    <i class="fa-solid fa-kidneys"></i> 1. Bệnh Thận Mạn (CKD / Suy Thận)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Giảm độ thanh thải Insulin:</strong> Thận chịu trách nhiệm thanh thải 30 &ndash; 40% insulin nội sinh và lên tới <strong>60% insulin ngoại sinh</strong>. Khi eGFR &lt; 60 mL/phút, insulin tích lũy và kéo dài thời gian bán hủy.<br>
+                                    &bull; <strong>Mất tân tạo đường:</strong> Vỏ thận bị xơ hóa mất khả năng tân tạo glucose nội sinh trong trạng thái nhịn đói.
+                                </p>
+                            </div>
+
+                            <div class="hypo-card">
+                                <div class="hypo-card-title" style="color:#d97706;">
+                                    <i class="fa-solid fa-person-cane"></i> 2. Người Cao Tuổi (&ge; 75 Tuổi)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; Phản xạ đối kháng hormone Glucagon và Epinephrine bị <strong>trì hoãn và suy giảm biên độ</strong> theo tuổi tác.<br>
+                                    &bull; Sa sút trí tuệ và suy giảm nhận thức làm mất khả năng tự nhận biết triệu chứng và tự tìm thức ăn.
+                                </p>
+                            </div>
+
+                            <div class="hypo-card">
+                                <div class="hypo-card-title" style="color:#dc2626;">
+                                    <i class="fa-solid fa-scissors"></i> 3. Sau Phẫu Thuật Chuyển Hóa (Roux-en-Y)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; Thức ăn nhiều carbohydrate xuống hỗng tràng cực nhanh &rarr; kích thích giải phóng <strong>bão GLP-1</strong>.<br>
+                                    &bull; GLP-1 kích thích tế bào &beta; tăng tiết insulin quá mức sau ăn &rarr; gây <strong>Hạ đường huyết phản vệ sau ăn (Hyperinsulinemic Hypoglycemia)</strong> sau 1 &ndash; 3 giờ.
+                                </p>
+                            </div>
+
+                            <div class="hypo-card">
+                                <div class="hypo-card-title" style="color:#6366f1;">
+                                    <i class="fa-solid fa-clock-rotate-left"></i> 4. Biến Chứng Liệt Dạ Dày (Gastroparesis)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; Tổn thương dây thần kinh X làm chậm rỗng dạ dày.<br>
+                                    &bull; Gây ra sự <strong>mất đồng bộ nghiêm trọng (mismatch)</strong>: Đỉnh tác dụng của insulin tiêm trước ăn xuất hiện sớm trong khi thức ăn bị ứ đọng chưa xuống ruột để hấp thu glucose &rarr; tụt đường huyết sớm sau ăn.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="phac-do-quy-tac-15" class="subsection-title">4.2. Phác đồ Cấp cứu Hạ Đường Huyết: "Quy Tắc 15" &amp; Glucagon</h3>
+
+                        <div class="formula-box">
+                            <div class="formula-label">QUY TẮC 15 TRONG XỬ TRÍ HẠ ĐƯỜNG HUYẾT ĐỘ 1 VÀ ĐỘ 2 (TỈNH TÁO)</div>
+                            <div class="formula-main">
+                                Bước 1: Uống 15 g Carbohydrate tác dụng nhanh (Đường đơn giản)<br>
+                                Bước 2: Nghỉ ngơi và đo lại Glucose máu sau 15 PHÚT<br>
+                                Bước 3: Nếu Glucose vẫn &lt; 70 mg/dL &rarr; Lặp lại thêm 15 g Carbohydrate<br>
+                                Bước 4: Khi Glucose &ge; 70 mg/dL &rarr; Ăn một bữa ăn phụ có tinh bột phức và protein để duy trì đường huyết
+                            </div>
+                            <div class="formula-note">
+                                <strong>15 g Carbohydrate tác dụng nhanh tương đương:</strong> 3 &ndash; 4 viên đường glucose, 1/2 lon nước ngọt có đường (120 &ndash; 150 mL), 150 mL nước ép trái cây, hoặc 3 muỗng cà phê đường pha nước.<br>
+                                <em>Lưu ý:</em> Không dùng chocolate, bánh kem hay đồ béo vì chất béo làm chậm hấp thu glucose tại ruột.
+                            </div>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Xử trí Hạ Đường Huyết Độ 3 (Hôn mê, Co giật hoặc Không thể nuốt):</strong><br>
+                            &bull; <strong>Tuyến y tế:</strong> Tiêm tĩnh mạch <strong>Glucose 20% hoặc 30% (20 &ndash; 50 mL IV bolus chậm)</strong>, sau đó duy trì truyền Glucose 5% hoặc 10% theo dõi đường huyết sát sao.<br>
+                            &bull; <strong>Tại cộng đồng / Gia đình:</strong> Sử dụng <strong>Glucagon 1 mg tiêm bắp/dưới da</strong> hoặc <strong>Glucagon dạng bột xịt mũi 3 mg (Baqsimi)</strong>. Tuyệt đối không nhét thức ăn hay nước đường vào miệng bệnh nhân đang hôn mê để tránh hít sặc vào phổi gây tử vong.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="ref-section">
+                    <h3><i class="fa-solid fa-book-medical"></i> Tài Liệu Tham Khảo (References &mdash; AMA Standard)</h3>
+                    <ul class="ref-list">
+                        <li><strong>1.</strong> American Diabetes Association Professional Practice Committee. 6. Glycemic goals, hypoglycemia, and hyperglycemic crises: Standards of Care in Diabetes—2026. <i>Diabetes Care</i>. 2026;49(Suppl. 1):S132–S149. doi:10.2337/dc26-S006.</li>
+                        <li><strong>2.</strong> American Diabetes Association Professional Practice Committee. 14. Children and adolescents: Standards of Care in Diabetes—2026. <i>Diabetes Care</i>. 2026;49(Suppl. 1):S297-S320. doi:10.2337/dc26-S014.</li>
+                        <li><strong>3.</strong> Cryer PE. Mechanisms of Hypoglycemia-Associated Autonomic Failure in Diabetes. <i>N Engl J Med</i>. 2013;369(4):362-372. doi:10.1056/NEJMra1215228.</li>
+                        <li><strong>4.</strong> Bộ Y tế Việt Nam. <i>Hướng dẫn chẩn đoán và điều trị bệnh đái tháo đường và biến chứng thần kinh tự chủ</i>. Hà Nội: NXB Y học; 2025.</li>
+                        <li><strong>5.</strong> Umpierrez GE, Davis GM, ElSayed NA, et al. Hyperglycemic crises in adults with diabetes: A consensus report. <i>Diabetes Care</i>. 2024;47(8):1257-1275. doi:10.2337/dci24-0032.</li>
+                        <li><strong>6.</strong> Jameson JL, Fauci AS, Kasper DL, Hauser SL, Longo DL, Loscalzo J. <i>Harrison's Principles of Internal Medicine</i>. 21st ed. McGraw-Hill Education; 2022. Chapter 398: Hypoglycemia.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

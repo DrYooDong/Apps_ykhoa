@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Toan Ceton do Đái tháo đường (Diabetic Ketoacidosis - DKA) & Thể Toan Ceton Đường Huyết Bình Thường (euDKA) do SGLT2i: Phân tích mất cân bằng tỷ lệ Glucagon/Insulin, con đường Ketogenesis tại gan qua CPT-1, tỷ lệ BOHB/Acetoacetate 10:1, toan chuyển hóa và cập nhật tiêu chuẩn loại bỏ Anion Gap (Consensus 2024/ADA 2026), nghịch lý Kali, phù não trẻ em và phác đồ Dextrose sớm.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Toan Ceton do ĐTĐ (DKA &amp; euDKA) – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .dka-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .dka-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .dka-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .dka-card.acid {
+            border-left: 4px solid #dc2626;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, transparent 100%);
+        }
+
+        .dka-card.sglt2 {
+            border-left: 4px solid #f59e0b;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, transparent 100%);
+        }
+
+        .dka-card.fluid {
+            border-left: 4px solid #0284c7;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+        }
+
+        .dka-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-left: 4px solid var(--color-primary, #0284c7);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .formula-box .formula-label {
+            font-size: 0.75rem;
+            color: var(--color-primary, #0284c7);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .formula-box .formula-main {
+            color: var(--color-text);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .formula-box .formula-note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.1) 0%, rgba(234, 88, 12, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-section h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .ref-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ref-list li {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            padding: 0.45rem 0;
+            border-bottom: 1px dashed var(--color-border);
+            line-height: 1.5;
+        }
+
+        .ref-list li:last-child { border-bottom: none; }
+        .ref-list li strong { color: var(--color-text); }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "&#127968; Trang chủ", "url": "../../../../index.html"}, {"label": "Cơ chế bệnh sinh", "url": "../co-che-benh-sinh.html"}, {"label": "Sinh lý bệnh Toan Ceton do ĐTĐ (DKA &amp; euDKA)"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <div style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(245,158,11,0.12);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);border-radius:20px;padding:0.25rem 0.85rem;font-size:0.78rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.75rem;">
+                        <i class="fa-solid fa-venus-mars"></i> Phân hệ Nội tiết &ndash; Chuyển hóa &ndash; Cấp cứu
+                    </div>
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH TOAN CETON DO ĐÁI THÁO ĐƯỜNG (DKA &amp; euDKA)</h1>
+                    <p>Diabetic Ketoacidosis &amp; SGLT2i-Associated Euglycemic DKA Pathophysiology &mdash; Phân tích chuyên sâu mất cân bằng nội tiết tỷ lệ Glucagon/Insulin, con đường tân tạo thể ceton tại gan (Ketogenesis &amp; CPT-1), tỷ lệ &beta;-hydroxybutyrate (BOHB)/Acetoacetate 10:1, toan chuyển hóa và cập nhật tiêu chuẩn loại bỏ Anion Gap (Consensus 2024/ADA 2026), nghịch lý phân bố dịch chuyển Kali, phù não ở trẻ em, cơ chế euDKA do thuốc ức chế SGLT2i và phác đồ Dextrose sớm.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Toan Ceton do Đái Tháo Đường (Diabetic Ketoacidosis &ndash; DKA)</span> là biến chứng cấp cứu chuyển hóa đe dọa tính mạng hàng đầu của bệnh đái tháo đường. Sự bùng phát DKA khởi nguồn từ tình trạng thiếu hụt insulin kết hợp với sự tăng vọt của các hormone điều hòa ngược, đẩy cơ thể vào trạng thái dị hóa lipid và protein cực độ. Bên cạnh thể DKA kinh điển, sự ra đời của nhóm thuốc ức chế SGLT2 đã làm gia tăng biến thể <span class="term-hl">Toan Ceton Đường Huyết Bình Thường (Euglycemic DKA &ndash; euDKA)</span> &mdash; một "cái bẫy" chẩn đoán nguy hiểm đòi hỏi sự thấu hiểu sâu sắc về sinh lý học phân tử để xử trí an toàn.
+                </p>
+
+                <!-- PHẦN I: MẤT CÂN BẰNG NỘI TIẾT & CHUYỂN HÓA DKA -->
+                <div class="physio-content">
+                    <h2 id="mat-can-bang-noi-tiet" class="section-title">
+                        <span>Phần I: Mất Cân Bằng Nội Tiết &amp; Rối Loạn Chuyển Hóa Cơ Bản</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="thieu-hut-insulin-hormone-doi-khang" class="subsection-title">1.1. Thâm hụt Insulin và Bão Hormone Đối Kháng (Counterregulatory Hormones)</h3>
+                        <p>
+                            Nguyên nhân khởi phát nền tảng của DKA là sự phối hợp của hai hiện tượng nội tiết song hành:
+                        </p>
+
+                        <div class="dka-grid">
+                            <div class="dka-card acid">
+                                <div class="dka-card-title" style="color:#dc2626;">
+                                    <i class="fa-solid fa-syringe"></i> 1. Thiếu Hụt Insulin (Tuyệt Đối / Tương Đối)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Tuyệt đối:</strong> Phổ biến ở bệnh nhân ĐTĐ típ 1 mới khởi phát hoặc tự ý bỏ tiêm/giảm liều insulin mạn tính.<br>
+                                    &bull; <strong>Tương đối:</strong> Xảy ra khi nhu cầu insulin của cơ thể tăng vọt trong các tình huống stress sinh lý cấp (nhiễm trùng, nhồi máu cơ tim, đột quỵ, chấn thương, viêm tụy cấp).
+                                </p>
+                            </div>
+                            <div class="dka-card">
+                                <div class="dka-card-title" style="color:#f59e0b;">
+                                    <i class="fa-solid fa-fire-flame-curved"></i> 2. Tăng Vọt 4 Hormone Đối Kháng
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Sự sụt giảm insulin giải phóng sự ức chế và kích hoạt phản xạ thần kinh &ndash; thể dịch giải phóng ồ ạt: <strong>Glucagon, Catecholamines (Epinephrine, Norepinephrine), Cortisol, và Growth Hormone (GH)</strong>.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="roi-loan-3-truc-chuyen-hoa" class="subsection-title">1.2. Rối loạn chuyển hóa 3 trục: Carbohydrate, Lipid &amp; Protein</h3>
+                        <p>
+                            Sự gia tăng đột biến của <strong>tỷ lệ Glucagon / Insulin</strong> làm dịch chuyển toàn bộ bộ máy chuyển hóa cơ thể từ trạng thái đồng hóa (anabolic) sang trạng thái <strong>dị hóa tăng tốc cực độ (accelerated catabolism)</strong>:
+                        </p>
+
+                        <ul class="physio-list-arrow">
+                            <li>
+                                <strong>Trục Carbohydrate (Tăng Glucose Máu Nặng):</strong>
+                                <br>&bull; <em>Tăng sản xuất glucose tại gan:</em> Kích hoạt phân giải glycogen (Glycogenolysis) và tân tạo glucose (Gluconeogenesis) từ các cơ chất phi-carbohydrate.
+                                <br>&bull; <em>Giảm tiêu thụ glucose ngoại vi:</em> Thiếu insulin làm bất hoạt kênh vận chuyển GLUT-4 ở cơ vân và mô mỡ, cô lập glucose trong lòng mạch.
+                            </li>
+                            <li>
+                                <strong>Trục Lipid (Phân Giải Mỡ &amp; Ketogenesis Bùng Nổ):</strong>
+                                <br>&bull; Mất ức chế enzyme <strong>Lipase nhạy cảm hormone (HSL)</strong> tại mô mỡ &rarr; phân giải ồ ạt triglycerid thành <strong>Acid Béo Tự Do (Free Fatty Acids &ndash; FFA)</strong> và Glycerol.
+                                <br>&bull; FFA được vận chuyển ồ ạt về gan, hoạt hóa men <strong>Carnitine Palmitoyltransferase-1 (CPT-1)</strong> tại màng ty thể &rarr; FFA đi vào chất nền ty thể thực hiện quá trình &beta;-oxy hóa tạo lượng lớn <strong>Acetyl-CoA</strong>.
+                                <br>&bull; Lượng Acetyl-CoA vượt quá công suất của chu trình Krebs được chuyển hướng tổng hợp thành 3 thể ceton: <strong>Acetoacetate, &beta;-hydroxybutyrate (BOHB), và Acetone</strong>.
+                            </li>
+                            <li>
+                                <strong>Trục Protein (Thoái Hóa Protein Cơ Vân):</strong>
+                                <br>&bull; Tăng phân giải protein ở cơ xương giải phóng các amino acid tân tạo đường (Alanine, Glutamine) cung cấp nhiên liệu liên tục cho gan sản xuất thêm glucose.
+                            </li>
+                        </ul>
+
+                        <h3 id="dong-hoc-the-ceton" class="subsection-title">1.3. Động học thể Ceton: Sự dịch chuyển tỷ lệ BOHB/Acetoacetate 10:1</h3>
+                        <p>
+                            Trong các thể ceton, chỉ có Acetoacetate và BOHB mang tính acid hữu cơ gây toan máu. Bình thường, tỷ lệ giữa <strong>&beta;-hydroxybutyrate (BOHB)</strong> và <strong>Acetoacetate</strong> là <strong>1:1</strong>.
+                        </p>
+
+                        <div class="formula-box">
+                            <div class="formula-label">CƠ CHẾ DỊCH CHUYỂN &beta;-HYDROXYBUTYRATE (BOHB) TRONG DKA</div>
+                            <div class="formula-main">
+                                Acetoacetate + NADH + H<sup>+</sup> &nbsp;&Longleftrightarrow;&nbsp; &beta;-Hydroxybutyrate (BOHB) + NAD<sup>+</sup> &nbsp;(xúc tác bởi &beta;-hydroxybutyrate dehydrogenase)
+                            </div>
+                            <div class="formula-note">
+                                Trong DKA, tình trạng thiếu oxy mô, toan hóa và tăng tốc &beta;-oxy hóa làm tăng tỷ lệ <strong>NADH/NAD<sup>+</sup></strong> nội bào &rarr; đẩy phản ứng dịch chuyển mạnh sang phải &rarr; <strong>Tỷ lệ BOHB/Acetoacetate tăng vọt lên 10:1</strong>.
+                            </div>
+                        </div>
+
+                        <div class="key-concept">
+                            🔑 <strong>Ý nghĩa lâm sàng then chốt của BOHB máu (Blood Ketone):</strong><br>
+                            &bull; <em>Phản ứng Nitroprusside (que thử nước tiểu truyền thống):</em> Chỉ phát hiện được Acetoacetate và Acetone, <strong>hoàn toàn không đo lường được BOHB</strong> &rarr; Đánh giá thấp mức độ ketosis ban đầu.<br>
+                            &bull; <em>Giai đoạn điều trị hồi phục:</em> Khi truyền insulin, BOHB bị oxy hóa ngược lại thành Acetoacetate &rarr; Que thử nước tiểu vẫn hiện kết quả dương tính đậm (3+ hay 4+) dù toan máu thực tế đã hồi phục hoàn toàn.<br>
+                            &bull; <strong>Khuyến cáo EBM mới nhất:</strong> Bắt buộc định lượng trực tiếp <strong>BOHB trong máu mao mạch/tĩnh mạch</strong> (ngưỡng chẩn đoán &ge; 3.0 mmol/L) làm tiêu chuẩn vàng để chẩn đoán và theo dõi đáp ứng điều trị DKA.
+                        </div>
+
+                        <!-- SVG DIAGRAM: TOÀN BỘ CƠ CHẾ DKA -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 920 400" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="920" height="400" fill="var(--color-surface)" rx="12" />
+
+                                <text x="460" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text)">SƠ ĐỒ TÍCH HỢP CƠ CHẾ BỆNH SINH TOAN CETON DO ĐÁI THÁO ĐƯỜNG (DKA)</text>
+
+                                <!-- Top Node -->
+                                <rect x="300" y="55" width="320" height="45" rx="8" fill="rgba(220, 38, 38, 0.1)" stroke="#dc2626" stroke-width="2" />
+                                <text x="460" y="75" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">THIẾU INSULIN &amp; TĂNG HORMONE ĐỐI KHÁNG</text>
+                                <text x="460" y="90" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">(Tăng Glucagon, Catecholamines, Cortisol, GH)</text>
+
+                                <!-- 3 Branches -->
+                                <!-- Branch 1: Lipolysis -->
+                                <path d="M 360 100 L 160 145" stroke="#dc2626" stroke-width="2" />
+                                <rect x="50" y="145" width="220" height="75" rx="8" fill="var(--color-surface)" stroke="#dc2626" />
+                                <text x="160" y="168" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">1. MÔ MỠ: PHÂN GIẢI LIPID</text>
+                                <text x="160" y="188" text-anchor="middle" font-size="10" fill="var(--color-text)">Tăng giải phóng FFA &amp; Glycerol</text>
+                                <text x="160" y="206" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Hoạt hóa enzyme HSL mô mỡ</text>
+
+                                <!-- Branch 2: Ketogenesis Gan -->
+                                <path d="M 160 220 L 160 250" stroke="#dc2626" stroke-width="2" />
+                                <rect x="50" y="250" width="220" height="75" rx="8" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.5" />
+                                <text x="160" y="273" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">2. GAN: TẠO CETON (CPT-1)</text>
+                                <text x="160" y="293" text-anchor="middle" font-size="10" fill="var(--color-text)">&beta;-oxy hóa &rarr; Tăng BOHB máu</text>
+                                <text x="160" y="311" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">Tỷ lệ BOHB / AcAc = 10 : 1</text>
+
+                                <!-- Branch 3: Carbohydrate & Protein -->
+                                <path d="M 560 100 L 760 145" stroke="#0284c7" stroke-width="2" />
+                                <rect x="650" y="145" width="220" height="75" rx="8" fill="var(--color-surface)" stroke="#0284c7" />
+                                <text x="760" y="168" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">3. GAN: TÂN TẠO ĐƯỜNG</text>
+                                <text x="760" y="188" text-anchor="middle" font-size="10" fill="var(--color-text)">Tăng Glycogenolysis &amp; Gluconeogenesis</text>
+                                <text x="760" y="206" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Giảm tiêu thụ Glucose tại mô ngoại vi</text>
+
+                                <!-- Branch 4: Osmotic diuresis -->
+                                <path d="M 760 220 L 760 250" stroke="#0284c7" stroke-width="2" />
+                                <rect x="650" y="250" width="220" height="75" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="760" y="273" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">4. TĂNG ĐƯỜNG &amp; LỢI NIỆU</text>
+                                <text x="760" y="293" text-anchor="middle" font-size="10" fill="var(--color-text)">Đường niệu &gt; 180 mg/dL</text>
+                                <text x="760" y="311" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Lợi niệu thẩm thấu &bull; Mất 3-6 L nước</text>
+
+                                <!-- Central Result Node -->
+                                <path d="M 270 287 L 350 350" stroke="#dc2626" stroke-width="2" />
+                                <path d="M 650 287 L 570 350" stroke="#0284c7" stroke-width="2" />
+
+                                <rect x="320" y="340" width="280" height="50" rx="10" fill="rgba(234, 88, 12, 0.12)" stroke="#ea580c" stroke-width="2" />
+                                <text x="460" y="362" text-anchor="middle" font-size="12" font-weight="800" fill="#ea580c">HỘI CHỨNG TOAN CETON DO ĐTĐ (DKA)</text>
+                                <text x="460" y="378" text-anchor="middle" font-size="10" fill="var(--color-text)">Toan chuyển hóa &bull; Mất nước điện giải &bull; Tổn thương não</text>
+                            </svg>
+                            <div class="diagram-caption">Hình 1: Sơ đồ tương tác đa trục trong sinh lý bệnh DKA. Sự mất cân bằng tỷ lệ Glucagon/Insulin thúc đẩy đồng thời phân giải mỡ sinh ceton gây toan hóa và tăng tân tạo đường gây lợi niệu thẩm thấu mất nước nghiêm trọng.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN II: SINH LÝ BỆNH TOAN HÓA, MẤT NƯỚC & NGHỊCH LÝ KALI -->
+                <div class="physio-content">
+                    <h2 id="toan-hoa-dien-giai" class="section-title">
+                        <span>Phần II: Sinh Lý Bệnh Toan Hóa, Mất Nước Điện Giải &amp; Độc Tính Cơ Quan</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="sinh-ly-toan-chuyen-hoa" class="subsection-title">2.1. Sinh lý bệnh Toan Chuyển Hóa &amp; Thay đổi tiêu chuẩn loại bỏ Anion Gap (Consensus 2024 / ADA 2026)</h3>
+                        <p>
+                            Sự tích tụ liên tục của các thể ceton làm giải phóng lượng lớn ion H<sup>+</sup>, nhanh chóng làm cạn kiệt hệ đệm Bicarbonate (HCO<sub>3</sub><sup>&minus;</sup> &lt; 18 mmol/L):
+                        </p>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>Dịch chuyển mô hình chẩn đoán theo Báo cáo Đồng thuận Quốc tế 2024 &amp; ADA Standards of Care 2026:</strong><br>
+                            Trước đây, DKA bắt buộc phải có khoảng trống Anion tăng (High Anion Gap). Tuy nhiên, các hiệp hội y khoa hàng đầu (ADA, EASD, AACE, JBDS) đã <strong>chính thức loại bỏ Anion Gap khỏi tiêu chuẩn chẩn đoán và phân loại độ nặng của DKA</strong> vì hai lý do sinh lý học thực tiễn:<br>
+                            1. Khoảng <strong>30% bệnh nhân DKA</strong> có rối loạn toan &ndash; kiềm hỗn hợp (như toan ceton kèm kiềm chuyển hóa do nôn ói nhiều làm mất acid dịch vị HCl), khiến Anion Gap bị che lấp.<br>
+                            2. Quá trình bù dịch hồi sức ban đầu bằng một lượng lớn dung dịch NaCl 0.9% thường gây ra <strong>toan chuyển hóa tăng clo máu có khoảng trống anion bình thường (Hyperchloremic Normal AG Acidosis)</strong>, dễ gây chẩn đoán nhầm là DKA chưa đáp ứng điều trị nếu chỉ dựa vào Anion Gap.
+                        </div>
+
+                        <ul class="physio-list-arrow">
+                            <li>
+                                <strong>Đáp ứng bù trừ hô hấp (Kiểu thở Kussmaul):</strong> Toan máu kích thích các thụ thể hóa học ở xoang cảnh và thân não &rarr; khởi phát nhịp thở sâu, nhanh, liên tục (thở Kussmaul) để tăng thông khí đào thải tối đa CO<sub>2</sub> làm giảm áp lực acid bay hơi (PaCO<sub>2</sub>).
+                            </li>
+                            <li>
+                                <strong>Hơi thở mùi táo chín (Acetone Breath):</strong> Acetone là thể ceton bay hơi dễ khuếch tán qua màng phế nang &ndash; mao mạch ra ngoài hơi thở.
+                            </li>
+                        </ul>
+
+                        <h3 id="nghich-ly-kali" class="subsection-title">2.2. Nghịch lý Kali (Potassium Shift Paradox) và Rối loạn Phosphat</h3>
+
+                        <div class="formula-box">
+                            <div class="formula-label">NGHỊCH LÝ ĐIỆN GIẢI KALI TRONG CẤP CỨU DKA</div>
+                            <div class="formula-main">
+                                Tổng lượng Kali toàn thân: GIẢM RẤT NẶNG (Thâm hụt 3 &ndash; 6 mmol/kg)<br>
+                                Kali huyết thanh lúc nhập viện: BÌNH THƯỜNG hoặc TĂNG CAO
+                            </div>
+                            <div class="formula-note">
+                                <strong>3 cơ chế gây dịch chuyển Kali từ nội bào ra ngoại bào:</strong><br>
+                                1. <em>Toan chuyển hóa:</em> Ion H<sup>+</sup> ngoại bào đi vào trong tế bào để hệ đệm nội bào bắt giữ &rarr; đẩy ion K<sup>+</sup> đi ra ngoài dịch ngoại bào để giữ cân bằng điện tích.<br>
+                                2. <em>Tăng áp lực thẩm thấu máu (Hypertonicity):</em> Nồng độ glucose máu cao kéo nước ồ ạt từ tế bào ra ngoài mạch, kéo theo ion K<sup>+</sup> ra ngoài qua hiện tượng kéo dung môi (solvent drag).<br>
+                                3. <em>Thiếu hụt Insulin:</em> Mất kích hoạt của bơm Na<sup>+</sup>-K<sup>+</sup>-ATPase &rarr; giảm bắt giữ K<sup>+</sup> vào nội bào.
+                            </div>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Clinical Pearl &mdash; Nguy cơ hạ Kali máu ác tính khi bắt đầu điều trị:</strong><br>
+                            Khi bác sĩ truyền insulin và bù dịch (sửa chữa toan hóa), dòng Kali sẽ nhanh chóng bị đẩy ngược lại vào trong tế bào. Nếu nồng độ Kali máu ban đầu <strong>&lt; 3.5 mmol/L</strong>, sinh lý học bắt buộc phải <strong>trì hoãn truyền insulin và bù Kali tĩnh mạch trước</strong>. Việc truyền insulin khi Kali &lt; 3.5 mmol/L sẽ làm sụt giảm Kali máu cực kỳ nhanh, kích hoạt rung thất, xoắn đỉnh và ngừng tim tử vong ngay tại giường.
+                        </div>
+
+                        <p>
+                            <strong>Rối loạn Phosphat:</strong> Tương tự Kali, toan máu đẩy phosphat ra ngoài tế bào và bị đào thải qua nước tiểu. Thiếu hụt phosphat nội bào làm giảm tổng hợp <strong>ATP</strong> (gây yếu cơ hoành, liệt cơ) và giảm <strong>2,3-DPG</strong> trong hồng cầu (làm tăng ái lực Hemoglobin với oxy, ức chế giải phóng oxy cho các mô, gây thiếu oxy mô tế bào).
+                        </p>
+
+                        <h3 id="tang-viem-phu-nao" class="subsection-title">2.3. Trạng thái tăng viêm và Cơ chế Tổn thương não / Phù não ở trẻ em</h3>
+                        <p>
+                            Các nghiên cứu sinh học phân tử hiện đại chứng minh DKA kích hoạt một <strong>cơn bão viêm hệ thống</strong> với sự phóng thích ồ ạt các cytokine tiền viêm (<strong>TNF-&alpha;, IL-1, IL-6, IL-8</strong>), gốc tự do oxy hóa (ROS) và các chất chỉ thị phản ứng viêm pha cấp (CRP).
+                        </p>
+
+                        <ul class="physio-list-arrow">
+                            <li>
+                                <strong>Cơ chế Phù não (Cerebral Injury/Edema) ở trẻ em:</strong> Là biến chứng nguy hiểm nhất với tỷ lệ tử vong lên tới 25 &ndash; 30%.
+                            </li>
+                            <li>
+                                <em>Dịch chuyển cơ chế bệnh sinh mới:</em> Trước đây phù não được cho là do truyền dịch quá nhanh làm sụt giảm áp lực thẩm thấu ngoại bào đột ngột. Tuy nhiên, bằng chứng mới nhất từ ISPAD và nghiên cứu PECARN chỉ ra rằng <strong>sự giảm tưới máu não ban đầu (Cerebral Hypoperfusion)</strong> do toan hóa và mất nước nặng, kết hợp với <strong>tình trạng viêm thần kinh (Neuroinflammation)</strong> làm tổn thương và phá vỡ hàng rào máu não (Blood-Brain Barrier Disruption), dẫn đến phù não do vận mạch và độc tế bào.
+                            </li>
+                        </ul>
+
+                        <h3 id="bang-phan-loai-do-nang" class="subsection-title">2.4. Bảng phân loại mức độ nặng DKA cập nhật (Consensus 2024 &amp; ADA 2026)</h3>
+
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Chỉ Số Sinh Hóa &amp; Lâm Sàng</th>
+                                        <th style="width: 25%;">DKA Nhẹ (Mild)</th>
+                                        <th style="width: 25%;">DKA Trung Bình (Moderate)</th>
+                                        <th style="width: 25%; color: #dc2626;">DKA Nặng (Severe)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Glucose Huyết Tương</strong></td>
+                                        <td><strong>&ge; 200 mg/dL</strong> (hoặc tiền sử ĐTĐ)</td>
+                                        <td><strong>&ge; 200 mg/dL</strong> (hoặc tiền sử ĐTĐ)</td>
+                                        <td><strong>&ge; 200 mg/dL</strong> (hoặc tiền sử ĐTĐ)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>&beta;-Hydroxybutyrate (BOHB) Máu</strong></td>
+                                        <td><strong>3.0 &ndash; 6.0 mmol/L</strong> (hoặc nước tiểu &ge; 2+)</td>
+                                        <td><strong>3.0 &ndash; 6.0 mmol/L</strong> (hoặc nước tiểu &ge; 2+)</td>
+                                        <td><strong>&gt; 6.0 mmol/L</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>pH Máu Tĩnh Mạch</strong></td>
+                                        <td><strong>7.25 đến &lt; 7.30</strong></td>
+                                        <td><strong>7.00 đến 7.25</strong></td>
+                                        <td><strong>&lt; 7.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Bicarbonate Huyết Thanh</strong></td>
+                                        <td><strong>15 đến &lt; 18 mmol/L</strong></td>
+                                        <td><strong>10 đến &lt; 15 mmol/L</strong></td>
+                                        <td><strong>&lt; 10 mmol/L</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Trạng Thái Tâm Thần / Tri Giác</strong></td>
+                                        <td>Tỉnh táo hoàn toàn</td>
+                                        <td>Tỉnh táo hoặc ngủ gà nhẹ</td>
+                                        <td>Sững sờ (Stupor) hoặc Hôn mê</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tuyến Điều Trị Đề Xuất</strong></td>
+                                        <td>Khoa Nội / Phòng lưu theo dõi</td>
+                                        <td>Khoa Hồi sức trung gian (Step-down)</td>
+                                        <td>Khoa Hồi sức tích cực (ICU)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN III: SINH LÝ BỆNH THỂ EUGLYCEMIC DKA DO SGLT2i -->
+                <div class="physio-content">
+                    <h2 id="sinh-ly-benh-eudka" class="section-title">
+                        <span>Phần III: Sinh Lý Bệnh Thể Toan Ceton Đường Huyết Bình Thường (euDKA) Do Thuốc Ức Chế SGLT2</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="dinh-nghia-eudka" class="subsection-title">3.1. Định nghĩa và Bối cảnh Lâm sàng của euDKA</h3>
+                        <p>
+                            <strong>Toan ceton đường huyết bình thường (Euglycemic DKA &ndash; euDKA)</strong> là tình trạng toan ceton chuyển hóa nặng xuất hiện ở người bệnh đái tháo đường nhưng nồng độ <strong>glucose huyết tương duy trì ở mức bình thường hoặc chỉ tăng nhẹ (&lt; 200 mg/dL hay &lt; 11.1 mmol/L)</strong>.
+                        </p>
+
+                        <div class="dka-card sglt2">
+                            <div class="dka-card-title" style="color:#d97706;">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Cái bẫy chẩn đoán chết người do SGLT2i
+                            </div>
+                            <p style="font-size:0.85rem;line-height:1.5;">
+                                Các thuốc ức chế SGLT2 (Empagliflozin, Dapagliflozin, Canagliflozin, Sotagliflozin) được sử dụng rộng rãi nhờ lợi ích tim mạch và bảo vệ thận. Tuy nhiên, tác dụng bài niệu glucose liên tục của thuốc làm che lấp hoàn toàn triệu chứng tăng đường huyết điển hình, khiến bệnh nhân và nhân viên y tế chủ quan, dẫn đến trì hoãn xét nghiệm toan kiềm và điều trị cấp cứu.
+                            </p>
+                        </div>
+
+                        <h3 id="co-che-phan-tu-sglt2i" class="subsection-title">3.2. Chuỗi 4 cơ chế bệnh sinh phân tử dưới tác động của SGLT2i</h3>
+
+                        <!-- SVG DIAGRAM: CƠ CHẾ EUGLYCEMIC DKA -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 920 380" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="920" height="380" fill="var(--color-surface)" rx="12" />
+
+                                <text x="460" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text)">CƠ CHẾ BỆNH SINH CỦA TOAN CETON ĐƯỜNG HUYẾT BÌNH THƯỜNG (euDKA) DO SGLT2i</text>
+
+                                <!-- Step 1: Drug block SGLT2 -->
+                                <rect x="300" y="55" width="320" height="40" rx="8" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-width="2" />
+                                <text x="460" y="80" text-anchor="middle" font-size="12" font-weight="800" fill="#d97706">THUỐC ỨC CHẾ SGLT2 (SGLT2i)</text>
+
+                                <!-- 2 Primary Paths -->
+                                <path d="M 370 95 L 200 135" stroke="#f59e0b" stroke-width="2" />
+                                <path d="M 550 95 L 720 135" stroke="#f59e0b" stroke-width="2" />
+
+                                <!-- Left Box: Kidney Glucosuria -->
+                                <rect x="60" y="135" width="280" height="85" rx="8" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="200" y="158" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">1. TÁC ĐỘNG TẠI THẬN</text>
+                                <text x="200" y="178" text-anchor="middle" font-size="10" fill="var(--color-text)">Ức chế tái hấp thu Glucose ở ống lượn gần</text>
+                                <text x="200" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7">&rarr; Thải Glucose qua nước tiểu liên tục</text>
+                                <text x="200" y="212" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">(Giữ đường huyết &lt; 200 mg/dL)</text>
+
+                                <!-- Right Box: Pancreas Hormones -->
+                                <rect x="580" y="135" width="280" height="85" rx="8" fill="rgba(220, 38, 38, 0.06)" stroke="#dc2626" stroke-width="1.5" />
+                                <text x="720" y="158" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">2. TÁC ĐỘNG TẠI TUYẾN TỤY</text>
+                                <text x="720" y="178" text-anchor="middle" font-size="10" fill="var(--color-text)">Đường huyết hạ &rarr; Tế bào &beta; giảm tiết Insulin</text>
+                                <text x="720" y="196" text-anchor="middle" font-size="10" fill="var(--color-text)">Kích thích tế bào &alpha; &rarr; Tăng tiết Glucagon</text>
+                                <text x="720" y="212" text-anchor="middle" font-size="10" font-weight="700" fill="#dc2626">&rarr; TỶ LỆ GLUCAGON / INSULIN TĂNG VỌT</text>
+
+                                <!-- Down to Liver & Adipose -->
+                                <path d="M 720 220 L 720 250" stroke="#dc2626" stroke-width="2" />
+                                <rect x="580" y="250" width="280" height="75" rx="8" fill="var(--color-surface)" stroke="#ea580c" stroke-width="1.5" />
+                                <text x="720" y="273" text-anchor="middle" font-size="11" font-weight="700" fill="#ea580c">3. MÔ MỠ &amp; TY THỂ GAN</text>
+                                <text x="720" y="293" text-anchor="middle" font-size="10" fill="var(--color-text)">Tăng phân giải mỡ &rarr; Tăng FFA huyết tương</text>
+                                <text x="720" y="311" text-anchor="middle" font-size="10" fill="var(--color-text)">Hoạt hóa CPT-1 &rarr; Tạo Ceton BOHB ồ ạt</text>
+
+                                <!-- Join at euDKA -->
+                                <path d="M 200 220 L 340 345" stroke="#0284c7" stroke-width="2" />
+                                <path d="M 720 325 L 580 345" stroke="#dc2626" stroke-width="2" />
+
+                                <rect x="300" y="335" width="320" height="40" rx="8" fill="rgba(220, 38, 38, 0.12)" stroke="#dc2626" stroke-width="2" />
+                                <text x="460" y="358" text-anchor="middle" font-size="12" font-weight="800" fill="#dc2626">TOAN CETON ĐƯỜNG HUYẾT BÌNH THƯỜNG (euDKA)</text>
+                            </svg>
+                            <div class="diagram-caption">Hình 2: Sơ đồ cơ chế phân tử của euDKA do thuốc ức chế SGLT2. Thuốc đóng vai trò như một "van xả" bài niệu glucose liên tục tại thận giữ đường huyết &lt; 200 mg/dL, trong khi kích thích tuyến tụy tăng tỷ lệ Glucagon/Insulin thúc đẩy tạo BOHB ồ ạt tại gan.</div>
+                        </div>
+
+                        <ol class="physio-steps">
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Bước 1: Bài niệu Glucose qua thận liên tục</span>
+                                    SGLT2i ức chế chọn lọc kênh SGLT2 ở đoạn S1 ống lượn gần, ngăn chặn tái hấp thu glucose và natri, thải trừ khoảng 60 &ndash; 100 g glucose/ngày ra nước tiểu.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Bước 2: Mất cân bằng tỷ lệ Glucagon / Insulin</span>
+                                    Đường huyết trong máu hạ kích thích tế bào &alpha; tụy tăng tiết Glucagon và làm tế bào &beta; giảm tiết Insulin nội sinh &rarr; Tỷ lệ Glucagon/Insulin tăng vọt.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Bước 3: Bùng nổ Ketogenesis tại ty thể tế bào gan</span>
+                                    Glucagon hoạt hóa men CPT-1 đưa acid béo tự do (FFA) vào ty thể gan thực hiện &beta;-oxy hóa &rarr; ngưng tụ tạo thể ceton BOHB &ge; 3.0 mmol/L gây toan chuyển hóa nặng (pH &lt; 7.3, HCO<sub>3</sub><sup>&minus;</sup> &lt; 18 mmol/L).
+                                </div>
+                            </li>
+                            <li>
+                                <div class="physio-step-card">
+                                    <span class="physio-step-title">Bước 4: Lu mờ triệu chứng tăng đường huyết</span>
+                                    Khác với DKA kinh điển, quá trình thải glucose qua thận diễn ra độc lập với insulin, che giấu hoàn toàn tình trạng thiếu insulin nội bào và duy trì đường huyết &lt; 200 mg/dL.
+                                </div>
+                            </li>
+                        </ol>
+
+                        <h3 id="cac-yeu-to-nguy-co-eudka" class="subsection-title">3.3. Các yếu tố kích hoạt và Phân nhóm bệnh nhân nguy cơ cao</h3>
+                        <p>
+                            euDKA thường chỉ bùng phát khi có sự phối hợp của các yếu tố kích hoạt làm sụt giảm insulin hoặc tăng stress cấp tính:
+                        </p>
+
+                        <div class="dka-grid">
+                            <div class="dka-card">
+                                <div class="dka-card-title" style="color:#d97706;">
+                                    <i class="fa-solid fa-list-check"></i> Các Yếu Tố Kích Hoạt Thường Gặp
+                                </div>
+                                <ul class="physio-list-arrow" style="font-size:0.85rem;">
+                                    <li><strong>Ăn kiêng carbohydrate nghiêm ngặt (Keto diet):</strong> Hạn chế carb làm cạn kiệt glycogen, ép cơ thể đốt mỡ tạo ceton.</li>
+                                    <li><strong>Nhịn ăn / Giai đoạn chu phẫu:</strong> Thiếu năng lượng tế bào.</li>
+                                    <li><strong>Giảm liều hoặc bỏ tiêm insulin:</strong> Thường gặp khi bác sĩ hoặc bệnh nhân tự ý giảm insulin quá mức vì sợ hạ đường huyết khi dùng kèm SGLT2i.</li>
+                                    <li><strong>Nhiễm trùng cấp tính / Stress ngoại khoa / Nhồi máu cơ tim:</strong> Tăng vọt hormone stress.</li>
+                                    <li><strong>Lạm dụng rượu:</strong> Rượu ức chế tân tạo đường và kích thích phân giải mỡ.</li>
+                                </ul>
+                            </div>
+
+                            <div class="dka-card acid">
+                                <div class="dka-card-title" style="color:#dc2626;">
+                                    <i class="fa-solid fa-user-shield"></i> Đối Tượng Nguy Cơ Cao Bùng Phát
+                                </div>
+                                <ul class="physio-list-arrow" style="font-size:0.85rem;">
+                                    <li><strong>Bệnh nhân ĐTĐ típ 1 (T1D):</strong> Nguy cơ DKA tăng <strong>5 &ndash; 17 lần</strong> khi dùng SGLT2i. SGLT2i không được phê duyệt dùng thường quy cho ĐTĐ típ 1 vì lý do này.</li>
+                                    <li><strong>Bệnh nhân ĐTĐ típ 2 suy kiệt tế bào &beta;:</strong> Người bệnh mắc ĐTĐ lâu năm, suy dinh dưỡng, C-peptide thấp.</li>
+                                    <li><strong>Phụ nữ có thai:</strong> Thai kỳ là trạng thái đề kháng insulin sinh lý và dễ sinh ceton khi có nghén nôn nặng.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN IV: CHIẾN LƯỢC DỰ PHÒNG & PHÁC ĐỒ DEXTROSE SỚM -->
+                <div class="physio-content">
+                    <h2 id="du-phong-dieu-tri-eudka" class="section-title">
+                        <span>Phần IV: Dự Phòng Chu Phẫu, Quy Tắc "Ngày Bệnh" &amp; Liệu Pháp Dextrose Sớm</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="quan-ly-chu-phau-sick-day" class="subsection-title">4.1. Quản lý Chu Phẫu và Quy Tắc "Ngày Bệnh" (Sick Day Rules)</h3>
+
+                        <div class="key-concept">
+                            🔑 <strong>Khuyến cáo FDA &amp; ADA 2026 về Quản Lý Chu Phẫu đối với Thuốc Ức Chế SGLT2:</strong><br>
+                            &bull; <strong>Tạm ngưng ít nhất 3 ngày trước phẫu thuật:</strong> Áp dụng đối với Dapagliflozin, Empagliflozin, Canagliflozin.<br>
+                            &bull; <strong>Tạm ngưng ít nhất 4 ngày trước phẫu thuật:</strong> Áp dụng đối với Ertugliflozin.<br>
+                            &bull; <em>Thời điểm dùng lại:</em> Chỉ bắt đầu dùng lại thuốc khi bệnh nhân đã hồi phục hoàn toàn sau mổ, ăn uống bình thường qua đường miệng và không còn nguy cơ mất nước/suy thận cấp.
+                        </div>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>Quy tắc "Ngày Bệnh" (Sick Day Rules) cho người bệnh ngoại trú:</strong><br>
+                            1. <strong>Tạm ngưng thuốc SGLT2i ngay lập tức</strong> khi bị sốt cao, tiêu chảy, nôn ói, nhiễm trùng nặng hoặc không thể ăn uống bình thường.<br>
+                            2. <strong>TUYỆT ĐỐI KHÔNG ĐƯỢC NGỪNG TIÊM INSULIN NỀN</strong> ngay cả khi nhịn ăn hoặc không ăn được, vì insulin nền là chìa khóa sống còn ngăn chặn con đường sinh ceton tại gan.<br>
+                            3. Chủ động tự đo ceton máu (BOHB) tại nhà khi cảm thấy mệt mỏi, buồn nôn, thở nhanh.
+                        </div>
+
+                        <h3 id="phac-do-dextrose-som" class="subsection-title">4.2. Phác đồ Hồi Sức Cấp Cứu euDKA &amp; Trọng tâm "Liệu Pháp Dextrose Sớm"</h3>
+                        <p>
+                            Xử trí euDKA tuân thủ các nguyên tắc cấp cứu DKA kinh điển, nhưng có một <strong>bước ngoặt sinh lý học sống còn</strong>:
+                        </p>
+
+                        <div class="formula-box">
+                            <div class="formula-label">ĐIỂM KHÁC BIỆT CỐT LÕI GIỮA DKA ĐIỂN HÌNH VÀ euDKA</div>
+                            <div class="formula-main">
+                                euDKA: BẮT BUỘC TRUYỀN ĐỒNG THỜI DEXTROSE 5% &ndash; 10% NGAY TỪ ĐẦU PHỐI HỢP VỚI TRUYỀN INSULIN LIÊN TỤC
+                            </div>
+                            <div class="formula-note">
+                                <strong>Cơ sở sinh lý bệnh học:</strong><br>
+                                &bull; Trong DKA điển hình (đường huyết &gt; 250 mg/dL): Chỉ thêm Dextrose khi đường huyết giảm xuống dưới 250 mg/dL.<br>
+                                &bull; Trong euDKA (đường huyết ban đầu &lt; 200 mg/dL): Nếu truyền insulin đơn độc, đường huyết sẽ sụt rất nhanh gây hạ đường huyết nguy kịch buộc phải ngừng insulin. Tuy nhiên, <strong>ngừng insulin sẽ làm bùng phát trở lại quá trình sinh ceton tại gan</strong>.<br>
+                                &bull; Việc truyền Dextrose 5% hoặc 10% ngay từ đầu cung cấp carbohydrate ngoại sinh, cho phép bác sĩ <strong>duy trì truyền tĩnh mạch insulin liên tục liều cố định 0.05 &ndash; 0.1 units/kg/giờ</strong> để dập tắt hoàn toàn Ketogenesis tại gan cho đến khi toan ceton được giải quyết triệt để.
+                            </div>
+                        </div>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="card-header-line" style="color:#0284c7;"><i class="fa-solid fa-bottle-water"></i> 1. Bồi Phụ Thể Tích Tuần Hoàn</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; Ngừng SGLT2i ngay lập tức.<br>
+                                    &bull; Bù dịch tinh thể cân bằng (Plasma-Lyte 148 hoặc Ringer Lactate) <strong>500 &ndash; 1000 mL/giờ</strong> trong 2 &ndash; 4 giờ đầu để tái lập tưới máu thận, tránh toan tăng clo máu do dùng quá mức NaCl 0.9%.
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="card-header-line" style="color:#dc2626;"><i class="fa-solid fa-syringe"></i> 2. Liệu Pháp Insulin &amp; Dextrose</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; Kiểm tra Kali trước khi truyền insulin (bắt buộc K<sup>+</sup> &ge; 3.5 mmol/L).<br>
+                                    &bull; Truyền tĩnh mạch Insulin Regular <strong>0.05 &ndash; 0.1 units/kg/giờ</strong>.<br>
+                                    &bull; Đồng thời truyền tĩnh mạch dung dịch Dextrose 5% hoặc 10% để giữ glucose máu trong khoảng <strong>150 &ndash; 200 mg/dL</strong>.
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="card-header-line" style="color:#10b981;"><i class="fa-solid fa-circle-check"></i> 3. Tiêu Chuẩn Giải Quyết (Resolution)</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Đánh giá định kỳ mỗi 2 &ndash; 4 giờ. euDKA được xác định đã giải quyết khi đạt đầy đủ:<br>
+                                    &bull; <strong>BOHB máu &lt; 0.6 mmol/L</strong><br>
+                                    &bull; <strong>pH tĩnh mạch &gt; 7.30</strong><br>
+                                    &bull; <strong>Bicarbonate huyết thanh &ge; 18 mmol/L</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="ref-section">
+                    <h3><i class="fa-solid fa-book-medical"></i> Tài Liệu Tham Khảo (References &mdash; AMA Standard)</h3>
+                    <ul class="ref-list">
+                        <li><strong>1.</strong> Umpierrez GE, Davis GM, ElSayed NA, et al. Hyperglycemic crises in adults with diabetes: A consensus report. <i>Diabetes Care</i>. 2024;47(8):1257-1275. doi:10.2337/dci24-0032.</li>
+                        <li><strong>2.</strong> American Diabetes Association Professional Practice Committee. 6. Glycemic goals, hypoglycemia, and hyperglycemic crises: Standards of Care in Diabetes—2026. <i>Diabetes Care</i>. 2026;49(Suppl. 1):S132–S149. doi:10.2337/dc26-S006.</li>
+                        <li><strong>3.</strong> American Diabetes Association Professional Practice Committee. 16. Diabetes care in the hospital: Standards of Care in Diabetes—2026. <i>Diabetes Care</i>. 2026;49(Suppl. 1):S339–S355. doi:10.2337/dc26-S016.</li>
+                        <li><strong>4.</strong> Glaser N, Department of Pediatrics, University of California, Davis School of Medicine. ISPAD Clinical Practice Consensus Guidelines 2022: Diabetic ketoacidosis and hyperglycemic hyperosmolar state in children and adolescents. <i>Pediatr Diabetes</i>. 2022;23:835-856. doi:10.1111/pedi.13406.</li>
+                        <li><strong>5.</strong> Rodriguez Alvarez M, colleagues. Hyperglycemic crises in adults: A look at the 2024 consensus report. <i>Cleve Clin J Med</i>. 2025;92(3):152-156. doi:10.3949/ccjm.92a.24089.</li>
+                        <li><strong>6.</strong> National Institute for Health and Care Excellence (NICE). Type 2 diabetes in adults: management (NG28). London, UK; 2026:1-131.</li>
+                        <li><strong>7.</strong> Jameson JL, Fauci AS, Kasper DL, Hauser SL, Longo DL, Loscalzo J. <i>Harrison's Principles of Internal Medicine</i>. 21st ed. McGraw-Hill Education; 2022. Chapter 396: Diabetes Mellitus: Complications.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Rối loạn Magie máu (Hypomagnesemia & Hypermagnesemia Pathophysiology): Phân tích phân bố khoang dịch, tái hấp thu tại quai Henle qua Claudin-16/19, kênh TRPM6/7, cơ chế hạ Magie máu gây hạ Kali và Canxi kháng trị (nút chặn ROMK, ức chế PTH), biến đổi điện tâm đồ ECG (QT kéo dài, Xoắn đỉnh Torsades de Pointes), độc tính tăng Magie máu theo nồng độ và đối kháng cấp cứu bằng Canxi tĩnh mạch.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Rối loạn Magie máu – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .mg-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .mg-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .mg-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .mg-card.hyper {
+            border-left: 4px solid #ea580c;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, transparent 100%);
+        }
+
+        .mg-card.hypo {
+            border-left: 4px solid #0284c7;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+        }
+
+        .mg-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mg-card-title.hyper { color: #ea580c; }
+        .mg-card-title.hypo { color: #0284c7; }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-left: 4px solid var(--color-primary, #0284c7);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .formula-box .formula-label {
+            font-size: 0.75rem;
+            color: var(--color-primary, #0284c7);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .formula-box .formula-main {
+            color: var(--color-text);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .formula-box .formula-note {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.1) 0%, rgba(234, 88, 12, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-section h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .ref-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ref-list li {
+            font-size: 0.82rem;
+            color: var(--color-text-muted);
+            padding: 0.45rem 0;
+            border-bottom: 1px dashed var(--color-border);
+            line-height: 1.5;
+        }
+
+        .ref-list li:last-child { border-bottom: none; }
+        .ref-list li strong { color: var(--color-text); }
+
+        .tox-tier-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--color-surface);
+            border-left: 4px solid #ea580c;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .tox-badge {
+            flex-shrink: 0;
+            background: rgba(234, 88, 12, 0.12);
+            color: #ea580c;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "&#127968; Trang chủ", "url": "../../../../index.html"}, {"label": "Cơ chế bệnh sinh", "url": "../co-che-benh-sinh.html"}, {"label": "Sinh lý bệnh Rối loạn Magie máu"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ ĐỘNG TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <div style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(2,132,199,0.12);color:#0284c7;border:1px solid rgba(2,132,199,0.3);border-radius:20px;padding:0.25rem 0.85rem;font-size:0.78rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:0.75rem;">
+                        <i class="fa-solid fa-filter"></i> Phân hệ Thận &ndash; Điện giải &ndash; Toan kiềm
+                    </div>
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH RỐI LOẠN MAGIE MÁU</h1>
+                    <p>Magnesium Homeostasis, ROMK Gating &amp; Excitation Dynamics &mdash; Phân tích sinh lý học phân bố 3 khoang, tái hấp thu tại nhánh lên dày quai Henle (TAL) qua Claudin-16/19, kênh TRPM6/7, vai trò phức hợp Mg-ATP và đồng yếu tố bơm Na<sup>+</sup>-K<sup>+</sup>-ATPase, cơ chế hạ Magie máu gây hạ Kali và Canxi kháng trị (mất nút chặn ROMK &amp; ức chế/đề kháng PTH), biến đổi điện tâm đồ (QT kéo dài, xoắn đỉnh Torsades de Pointes), độc tính tăng Magie theo nồng độ huyết thanh và nguyên lý đối kháng cấp cứu bằng Canxi tĩnh mạch.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Magie (Mg<sup>2+</sup>)</span> là cation nội bào phong phú thứ hai (chỉ sau Kali) và là cation nhiều thứ tư trong toàn cơ thể. Giữ vị trí trung tâm trong quá trình ổn định năng lượng sinh học (phức hợp Mg-ATP), duy trì tính phân cực màng tế bào và đóng vai trò như một chất chẹn kênh canxi sinh lý tự nhiên. Rối loạn nồng độ Magie máu (Hạ Magie máu &lt; 1.8 mg/dL hoặc Tăng Magie máu &gt; 2.4 mg/dL) gây ra các hệ quả lâm sàng đặc biệt nguy hiểm và khó lường tại khoa Cấp cứu &amp; Hồi sức tích cực (ICU), trực tiếp dẫn đến loạn nhịp thất ác tính, ức chế thần kinh cơ và tử vong nếu không được nhận diện đúng cơ chế.
+                </p>
+
+                <!-- PHẦN I: SINH LÝ HỌC ĐIỀU HÒA NỘI MÔI MAGIE -->
+                <div class="physio-content">
+                    <h2 id="dieu-hoa-noi-moi-magie" class="section-title">
+                        <span>Phần I: Sinh Lý Học Điều Hòa Nội Môi Magie</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="phan-bo-cac-khoang" class="subsection-title">1.1. Phân bố Magie trong các khoang cơ thể</h3>
+                        <p>
+                            Tổng lượng dự trữ Magie trong cơ thể ở người trưởng thành khoảng <strong>2000 mEq</strong> (tương đương khoảng <strong>24 &ndash; 28 g</strong>). Sự phân bố Magie có tính bất đối xứng sâu sắc giữa các khoang:
+                        </p>
+
+                        <div class="mg-grid">
+                            <div class="mg-card hypo">
+                                <div class="mg-card-title hypo">
+                                    <i class="fa-solid fa-bone"></i> 1. Khoang Xương &amp; Nội Bào (99%)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Xương (khoảng 60 &ndash; 65%):</strong> Tích trữ dưới dạng tinh thể hydroxyapatite, trong đó khoảng 30% có thể trao đổi chậm với huyết tương để bù đắp thiếu hụt.<br>
+                                    &bull; <strong>Cơ xương và mô mềm (khoảng 34 &ndash; 39%):</strong> Nồng độ trong dịch nội bào dao động từ <strong>5 &ndash; 20 mmol/L</strong>, chủ yếu gắn với ATP, phosphocreatine và protein.
+                                </p>
+                            </div>
+                            <div class="mg-card">
+                                <div class="mg-card-title" style="color: #6366f1;">
+                                    <i class="fa-solid fa-vial"></i> 2. Khoang Ngoại Bào / Huyết Thanh (1%)
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Tổng lượng chỉ chiếm vỏn vẹn <strong>1%</strong> tổng Magie toàn thân. Nồng độ Magie huyết thanh bình thường được kiểm soát chặt chẽ trong khoảng hẹp <strong>1.8 &ndash; 2.4 mg/dL (0.75 &ndash; 1.0 mmol/L hay 1.5 &ndash; 2.0 mEq/L)</strong>.
+                                </p>
+                            </div>
+                            <div class="mg-card">
+                                <div class="mg-card-title" style="color: #d97706;">
+                                    <i class="fa-solid fa-layer-group"></i> 3. Các Phân Bố Trong Huyết Tương
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Magie ion hóa tự do (60 &ndash; 70%):</strong> Là dạng duy nhất có hoạt tính sinh học trực tiếp.<br>
+                                    &bull; <strong>Magie gắn Protein (20 &ndash; 30%):</strong> Chủ yếu gắn với <strong>Albumin</strong>.<br>
+                                    &bull; <strong>Magie phức hợp (10%):</strong> Gắn với Citrate, Phosphat, Bicarbonate.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- CÔNG THỨC & LƯU Ý ALBUMIN -->
+                        <div class="formula-box">
+                            <div class="formula-label">Lưu ý lâm sàng về hiệu ứng giảm Albumin máu ở bệnh nhân Hồi sức (ICU)</div>
+                            <div class="formula-main">
+                                Giảm Albumin máu nặng &rarr; Làm giảm nồng độ Magie toàn phần đo được &ne; Nồng độ Magie ion hóa tự do (iMg)
+                            </div>
+                            <div class="formula-note">
+                                Do khoảng 30% Magie ngoại bào liên kết với Albumin, tình trạng giảm albumin huyết thanh thường gặp ở bệnh nhân xơ gan, suy dinh dưỡng hoặc sepsis nặng sẽ làm chỉ số Magie toàn phần thấp giả tạo trong khi Magie ion hóa tự do có thể vẫn trong giới hạn bình thường. Khi có nghi ngờ lâm sàng, cần định lượng trực tiếp <strong>Magie ion hóa máu</strong>.
+                            </div>
+                        </div>
+
+                        <h3 id="vai-tro-sinh-hoc-phan-tu" class="subsection-title">1.2. Vai trò sinh học phân tử của Magie</h3>
+                        <p>
+                            Magie tham gia với tư cách là đồng yếu tố (cofactor) trong <strong>hơn 300 phản ứng enzym</strong> xúc tác các quá trình sinh hóa nền tảng:
+                        </p>
+
+                        <ul class="physio-list-arrow">
+                            <li>
+                                <strong>Chuyển hóa năng lượng tế bào (Phức hợp Mg-ATP):</strong> ATP sinh học tồn tại thực chất dưới dạng phức hợp <strong>Mg-ATP<sup>2&minus;</sup></strong>. Sự liên kết của Mg<sup>2+</sup> với các nhóm phosphat tích điện âm làm ổn định cấu trúc không gian của ATP, cho phép các enzyme kinase nhận diện và bẻ gãy liên kết cao năng để giải phóng năng lượng.
+                            </li>
+                            <li>
+                                <strong>Duy trì hoạt tính của bơm Na<sup>+</sup>-K<sup>+</sup>-ATPase:</strong> Magie là cofactor bắt buộc để thủy phân ATP cho bơm Na<sup>+</sup>-K<sup>+</sup>-ATPase. Thiếu hụt Magie nội bào làm tê liệt bơm, làm giảm nồng độ Kali nội bào và tăng Natri nội bào, phá vỡ điện thế nghỉ màng tế bào.
+                            </li>
+                            <li>
+                                <strong>Chất đối kháng sinh lý tại thụ thể NMDA ở não bộ:</strong> Ở điện thế màng nghỉ bình thường, ion Mg<sup>2+</sup> nằm án ngữ như một <strong>"nút chặn điện thế"</strong> tại lỗ kênh của thụ thể NMDA (N-methyl-D-aspartate). Khi nồng độ Mg<sup>2+</sup> giảm, nút chặn bị tháo dỡ, cho phép dòng Ca<sup>2+</sup> và Na<sup>+</sup> tràn vào tế bào thần kinh khi có kích thích bởi Glutamate, gây độc tế bào thần kinh do kích thích quá mức (Excitotoxicity) và co giật.
+                            </li>
+                            <li>
+                                <strong>Chất chẹn kênh Canxi tự nhiên (Calcium Channel Antagonist):</strong> Mg<sup>2+</sup> cạnh tranh trực tiếp với Ca<sup>2+</sup> tại các kênh Canxi nhạy cảm điện thế (kênh L-type trên cơ trơn mạch máu và cơ tim). Ngoài ra, Mg<sup>2+</sup> kích hoạt bơm SERCA trên màng lưới nội chất để thu hồi Ca<sup>2+</sup> vào trong bào quan, tạo nên tác dụng giãn cơ trơn mạch máu (hạ huyết áp) và giãn cơ trơn phế quản.
+                            </li>
+                            <li>
+                                <strong>Ức chế giải phóng Acetylcholine tại synap thần kinh &ndash; cơ:</strong> Mg<sup>2+</sup> cạnh tranh ức chế dòng Ca<sup>2+</sup> đi vào cúc tận cùng tiền synap, làm giảm giải phóng các túi chứa chất dẫn truyền thần kinh Acetylcholine (ACh), điều hòa tính hưng phấn của bản vận động cơ xương.
+                            </li>
+                        </ul>
+
+                        <h3 id="co-che-hap-thu-dao-thai" class="subsection-title">1.3. Cơ chế hấp thu tại ruột và tái hấp thu tại thận</h3>
+                        <p>
+                            Nhu cầu Magie hàng ngày ở người trưởng thành khoảng <strong>24 &ndash; 40 mEq/ngày (300 &ndash; 420 mg/ngày)</strong>. Cơ thể duy trì cân bằng nội môi thông qua sự phối hợp giữa ruột và thận:
+                        </p>
+
+                        <!-- SVG DIAGRAM: TÁI HẤP THU MAGIE TẠI THẬN -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 900 320" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="900" height="320" fill="var(--color-surface)" rx="12" />
+
+                                <!-- Title Header -->
+                                <text x="450" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--color-text)">ĐẶC ĐIỂM TÁI HẤP THU MAGIE DỌC THEO NEPHRON THẬN</text>
+
+                                <!-- Glomerulus -->
+                                <rect x="30" y="70" width="160" height="210" rx="10" fill="rgba(2, 132, 199, 0.06)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="110" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#0284c7">1. CẦU THẬN</text>
+                                <text x="110" y="125" text-anchor="middle" font-size="11" fill="var(--color-text)">Lọc 80% Mg huyết tương</text>
+                                <text x="110" y="145" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">(20% gắn Protein bị giữ lại)</text>
+                                <path d="M 50 175 L 170 175" stroke="var(--color-border)" stroke-dasharray="3,3" />
+                                <text x="110" y="200" text-anchor="middle" font-size="11" font-weight="600" fill="var(--color-text)">Lượng lọc: ~2000 mg/ngày</text>
+                                <text x="110" y="220" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Không có ngưỡng bão hòa</text>
+
+                                <!-- Arrow 1 -->
+                                <path d="M 190 175 L 240 175" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)" />
+
+                                <!-- Proximal Tubule -->
+                                <rect x="240" y="70" width="180" height="210" rx="10" fill="rgba(99, 102, 241, 0.06)" stroke="#6366f1" stroke-width="1.5" />
+                                <text x="330" y="98" text-anchor="middle" font-size="13" font-weight="700" fill="#6366f1">2. ỐNG LƯỢN GẦN</text>
+                                <text x="330" y="125" text-anchor="middle" font-size="12" font-weight="700" fill="#6366f1">Tái hấp thu: 15 &ndash; 25%</text>
+                                <text x="330" y="150" text-anchor="middle" font-size="11" fill="var(--color-text)">Vận chuyển thụ động cận bào</text>
+                                <text x="330" y="170" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">(Paracellular pathway)</text>
+                                <path d="M 260 195 L 400 195" stroke="var(--color-border)" stroke-dasharray="3,3" />
+                                <text x="330" y="220" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Theo dòng tái hấp thu nước &amp; Na⁺</text>
+
+                                <!-- Arrow 2 -->
+                                <path d="M 420 175 L 470 175" stroke="#0284c7" stroke-width="2" />
+
+                                <!-- Thick Ascending Limb (TAL) -->
+                                <rect x="470" y="60" width="220" height="230" rx="10" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="2.5" />
+                                <text x="580" y="90" text-anchor="middle" font-size="13" font-weight="800" fill="#10b981">3. NHÁNH LÊN DÀY QUAI HENLE</text>
+                                <text x="580" y="115" text-anchor="middle" font-size="13" font-weight="800" fill="#059669">VỊ TRÍ CHỦ YẾU: 60 &ndash; 70%</text>
+                                <text x="580" y="140" text-anchor="middle" font-size="11" fill="var(--color-text)">Kênh Paracellular Claudin-16 &amp; 19</text>
+                                <text x="580" y="160" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Động lực: Điện thế lòng ống dương (+8 mV)</text>
+                                <path d="M 490 180 L 670 180" stroke="var(--color-border)" stroke-dasharray="3,3" />
+                                <text x="580" y="205" text-anchor="middle" font-size="11" font-weight="600" fill="#dc2626">⚠️ Bị ức chế bởi Lợi tiểu quai</text>
+                                <text x="580" y="225" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">(Furosemide phá vỡ điện thế lòng ống)</text>
+                                <text x="580" y="245" text-anchor="middle" font-size="10" fill="#10b981">Đột biến di truyền &rarr; H/c Bartter</text>
+
+                                <!-- Arrow 3 -->
+                                <path d="M 690 175 L 730 175" stroke="#0284c7" stroke-width="2" />
+
+                                <!-- Distal Convoluted Tubule (DCT) -->
+                                <rect x="730" y="70" width="145" height="210" rx="10" fill="rgba(245, 158, 11, 0.06)" stroke="#f59e0b" stroke-width="1.5" />
+                                <text x="802" y="98" text-anchor="middle" font-size="12" font-weight="700" fill="#d97706">4. ỐNG LƯỢN XA</text>
+                                <text x="802" y="125" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">Tái hấp thu: 5 &ndash; 10%</text>
+                                <text x="802" y="150" text-anchor="middle" font-size="10" fill="var(--color-text)">Kênh chủ động TRPM6</text>
+                                <text x="802" y="170" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">Tinh chỉnh nồng độ cuối cùng</text>
+                                <path d="M 740 190 L 865 190" stroke="var(--color-border)" stroke-dasharray="3,3" />
+                                <text x="802" y="215" text-anchor="middle" font-size="10" font-weight="600" fill="#dc2626">Thải trừ nước tiểu: ~3-5%</text>
+                                <text x="802" y="235" text-anchor="middle" font-size="9" fill="var(--color-text-muted)">(100 mg/ngày)</text>
+                            </svg>
+                            <div class="diagram-caption">Hình 1: Sơ đồ phân bố và tỷ lệ tái hấp thu Magie dọc theo các đoạn của Nephron. Điểm đặc thù độc nhất của Magie là hơn 60 - 70% lượng lọc được tái hấp thu tại nhánh lên dày quai Henle (TAL) qua kênh cận bào Claudin-16/19.</div>
+                        </div>
+
+                        <div class="key-concept">
+                            🔑 <strong>Đặc điểm sinh lý học bài tiết Magie độc nhất vô nhị tại Thận:</strong><br>
+                            Khác với Natri (chủ yếu ở ống lượn gần) và Kali (điều hòa bởi Aldosterone ở ống góp), <strong>Magie không có hormone điều hòa bài tiết trực tiếp chuyên biệt</strong>. Sự tái hấp thu Magie phụ thuộc chặt chẽ vào:
+                            (1) Gradient điện thế dương trong lòng ống (+8 mV) được tạo ra bởi kênh đồng vận NKCC2 và kênh rò rỉ ROMK tại quai Henle;
+                            (2) Tính toàn vẹn của phức hợp protein tiếp hợp khe hở <strong>Claudin-16 (Paracellin-1)</strong> và <strong>Claudin-19</strong>;
+                            (3) Kênh vận chuyển xuyên màng chủ động <strong>TRPM6/TRPM7</strong> tại ống lượn xa và niêm mạc ruột.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN II: SINH LÝ BỆNH HỌC GIẢM MAGIE MÁU -->
+                <div class="physio-content">
+                    <h2 id="sinh-ly-benh-ha-magie" class="section-title">
+                        <span>Phần II: Sinh Lý Bệnh Học Giảm Magie Máu (Hypomagnesemia)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="dinh-nghia-nguyen-nhan-ha-magie" class="subsection-title">2.1. Định nghĩa và 3 nhóm cơ chế bệnh sinh chính</h3>
+                        <p>
+                            Giảm Magie máu được xác định khi nồng độ Magie huyết thanh <strong>&lt; 1.8 mg/dL (1.5 mEq/L hay 0.75 mmol/L)</strong>. Tuy nhiên, các biểu hiện lâm sàng nguy kịch thường xuất hiện rầm rộ khi nồng độ giảm sâu <strong>&le; 1.5 mg/dL (&le; 1.2 mEq/L)</strong>.
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="card-header-line" style="color:#dc2626;"><i class="fa-solid fa-utensils"></i> 1. Mất Qua Đường Tiêu Hóa</div>
+                                <ul class="physio-list-arrow" style="font-size:0.85rem;">
+                                    <li><strong>Tiêu chảy bài tiết kéo dài:</strong> Dịch tiêu hóa bình thường chứa ~6 mEq/L Mg, khi tiêu chảy cấp/mạn lượng mất tăng vọt lên <strong>10 &ndash; 15 mEq/L</strong>.</li>
+                                    <li><strong>Viêm tụy cấp (Acute Pancreatitis):</strong> Enzym lipase giải phóng acid béo tự do tạo phức hợp <strong>xà phòng hóa Ca-Mg (Saponification)</strong> không tan lắng đọng tại mỡ quanh tụy và khoang phúc mạc.</li>
+                                    <li><strong>Thuốc ức chế bơm Proton (PPI kéo dài &gt; 1 năm):</strong> Omeprazole, Esomeprazole làm kiềm hóa môi trường lòng ruột, bất hoạt kênh vận chuyển chủ động <strong>TRPM6/7</strong> tại hồi tràng &amp; đại tràng.</li>
+                                    <li><strong>Kém hấp thu &amp; Phẫu thuật cắt ruột ngắn (Short Bowel Syndrome):</strong> Mất diện tích hấp thu Mg thụ động và chủ động.</li>
+                                </ul>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="card-header-line" style="color:#0284c7;"><i class="fa-solid fa-kidneys"></i> 2. Mất Qua Đường Thận</div>
+                                <ul class="physio-list-arrow" style="font-size:0.85rem;">
+                                    <li><strong>Thuốc lợi tiểu (Quai &amp; Thiazide):</strong> Furosemide ức chế NKCC2 làm sập điện thế dương lòng ống ở TAL; Thiazide làm teo tế bào ống lượn xa &amp; giảm TRPM6.</li>
+                                    <li><strong>Thuốc độc ống thận:</strong> Aminoglycosides (Gentamicin), Amphotericin B, Hóa trị chứa Platinum (Cisplatin, Carboplatin, Ifosfamide), Ức chế Calcineurin (Cyclosporine, Tacrolimus), Foscarnet.</li>
+                                    <li><strong>Nghiện rượu mạn tính (Alcoholism):</strong> Rượu trực tiếp gây độc ống thận làm giảm tái hấp thu Mg, kèm kém dinh dưỡng và nôn ói.</li>
+                                    <li><strong>Đa niệu thẩm thấu &amp; Giai đoạn hồi phục ATN:</strong> Đái tháo đường mất bù (DKA/HHS), tăng Canxi máu (hoạt hóa CaSR ống thận ức chế tái hấp thu Mg).</li>
+                                    <li><strong>Sepsis &amp; Bỏng diện rộng / Chấn thương sọ não (TBI):</strong> Rối loạn huyết động mao mạch quanh ống thận và bão cytokine.</li>
+                                </ul>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="card-header-line" style="color:#d97706;"><i class="fa-solid fa-arrows-spin"></i> 3. Dịch Chuyển Từ Ngoại Bào Vào Nội Bào</div>
+                                <ul class="physio-list-arrow" style="font-size:0.85rem;">
+                                    <li><strong>Hội chứng Nuôi Ăn Lại (Refeeding Syndrome):</strong> Cung cấp nạp carbohydrate đột ngột ở bệnh nhân suy dinh dưỡng nặng &rarr; Tuyến tụy tăng tiết <strong>Insulin ồ ạt</strong> &rarr; Kích hoạt bơm đưa Magie, Kali và Phosphat vào tế bào để tổng hợp Glycogen và ATP &rarr; <strong>Sụt giảm Magie máu cấp tính đe dọa tính mạng</strong>.</li>
+                                    <li><strong>Hội chứng Xương Đói (Hungry Bone Syndrome):</strong> Xảy ra sau phẫu thuật cắt u tuyến cận giáp điều trị cường cận giáp nặng &rarr; Xương tăng tốc khoáng hóa bắt giữ lượng lớn Ca, P và Mg từ máu.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 id="bieu-hien-lam-sang-ha-magie" class="subsection-title">2.2. Biểu hiện lâm sàng và độc tính trên hệ cơ quan</h3>
+
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Hệ Cơ Quan</th>
+                                        <th style="width: 40%;">Cơ Chế Sinh Lý Bệnh Phân Tử</th>
+                                        <th style="width: 35%;">Biểu Hiện Lâm Sàng &amp; Dấu Hiệu Đặc Trưng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Hệ Thần Kinh &ndash; Cơ<br>(Neuromuscular Excitability)</strong></td>
+                                        <td>
+                                            &bull; Mất tác dụng chẹn kênh Canxi ngoại bào &rarr; Giảm điện thế ngưỡng kích thích màng sợi thần kinh và cơ vân.<br>
+                                            &bull; Mất ức chế giải phóng Acetylcholine tại synap thần kinh &ndash; cơ.<br>
+                                            &bull; Mất nút chặn thụ thể NMDA ở não &rarr; Dòng Ca<sup>2+</sup> tràn vào tế bào thần kinh.
+                                        </td>
+                                        <td>
+                                            &bull; Dị cảm quanh miệng, đầu ngón tay/chân.<br>
+                                            &bull; Chuột rút, co giật thớ cơ (fasciculations), tăng phản xạ gân xương sâu.<br>
+                                            &bull; <strong>Dấu Chvostek (+)</strong> và <strong>Dấu Trousseau (+)</strong>.<br>
+                                            &bull; Cơn co cứng cơ (Tetany), co thắt thanh quản.<br>
+                                            &bull; Lú lẫn, kích động, co giật toàn thể, hôn mê.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Hệ Tim Mạch &amp; Điện Sinh Lý<br>(Cardiovascular &amp; Arrhythmias)</strong></td>
+                                        <td>
+                                            &bull; Suy giảm hoạt tính Na<sup>+</sup>-K<sup>+</sup>-ATPase làm mất ổn định điện thế nghỉ tế bào cơ tim.<br>
+                                            &bull; Gián đoạn dòng Kali tái cực nhanh (I<sub>Kr</sub> và I<sub>Ks</sub>) &rarr; Kéo dài thời gian tái cực thất.<br>
+                                            &bull; Kích hoạt các ổ ngoại vị sớm (Early Afterdepolarizations &ndash; EADs) trong pha 2 &amp; pha 3 của điện thế hoạt động.
+                                        </td>
+                                        <td>
+                                            &bull; <strong>Điện tâm đồ (ECG):</strong> PR kéo dài, QRS giãn nhẹ, ST chênh xuống, sóng T dẹt hoặc đảo ngược, <strong>QT kéo dài (QTc &gt; 500 ms)</strong>.<br>
+                                            &bull; Loạn nhịp thất ác tính: Ngoại tâm thu thất, Nhịp nhanh thất đa hình thức <strong>Xoắn đỉnh (Torsades de Pointes)</strong>, Rung thất.<br>
+                                            &bull; <strong>Tăng nhạy cảm độc tính Digoxin</strong> (dễ ngộ độc digitalis ngay cả khi nồng độ digoxin trong máu bình thường).
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tiên Lượng &amp; Tử Vong Tại ICU<br>(Critical Care Outcomes)</strong></td>
+                                        <td>
+                                            &bull; Yếu liệt cơ hoành và cơ hô hấp phụ làm thất bại cai máy thở.<br>
+                                            &bull; Tăng phản ứng viêm toàn thân và rối loạn chức năng nội mô vi mạch.<br>
+                                            &bull; Tăng độc tính của các thuốc vận mạch và thuốc hướng loạn nhịp.
+                                        </td>
+                                        <td>
+                                            &bull; Tỷ lệ tử vong tại ICU tăng vọt lên <strong>46.6% &ndash; 55%</strong> ở nhóm hạ Magie máu so với bệnh nhân bình thường.<br>
+                                            &bull; Kéo dài thời gian nằm viện và thở máy xâm lấn.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 id="he-qua-noi-tiet-thu-phat" class="subsection-title">2.3. Hai hệ quả kinh điển: Hạ Kali và Hạ Canxi máu kháng trị</h3>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>Quy luật lâm sàng vàng:</strong> Bất kỳ trường hợp Hạ Kali máu hoặc Hạ Canxi máu nào không đáp ứng với các phác đồ bù trừ chuẩn đều bắt buộc phải tầm soát và điều chỉnh Hạ Magie máu tiềm ẩn trước tiên.
+                        </div>
+
+                        <!-- SVG DIAGRAM: CƠ CHẾ KÉP GÂY HẠ K+ VÀ HẠ CA2+ KHÁNG TRỊ -->
+                        <div class="diagram-container">
+                            <svg viewBox="0 0 900 360" width="100%" height="100%" style="font-family: 'Plus Jakarta Sans', Inter, sans-serif;">
+                                <rect width="900" height="360" fill="var(--color-surface)" rx="12" />
+
+                                <!-- Central Node: Hypomagnesemia -->
+                                <rect x="350" y="25" width="200" height="60" rx="10" fill="rgba(220, 38, 38, 0.12)" stroke="#dc2626" stroke-width="2.5" />
+                                <text x="450" y="52" text-anchor="middle" font-size="14" font-weight="800" fill="#dc2626">HẠ MAGIE MÁU</text>
+                                <text x="450" y="72" text-anchor="middle" font-size="11" fill="var(--color-text)">[Mg²⁺] &lt; 1.8 mg/dL</text>
+
+                                <!-- Branch Left: Hypokalemia -->
+                                <path d="M 370 85 L 240 130" stroke="#0284c7" stroke-width="2.5" />
+                                
+                                <rect x="30" y="130" width="390" height="200" rx="10" fill="rgba(2, 132, 199, 0.05)" stroke="#0284c7" stroke-width="1.5" />
+                                <text x="225" y="158" text-anchor="middle" font-size="13" font-weight="800" fill="#0284c7">CƠ CHẾ HẠ KALI MÁU KHÁNG TRỊ</text>
+                                
+                                <rect x="50" y="175" width="350" height="50" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" />
+                                <text x="225" y="196" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">1. Mất nút chặn trên kênh ROMK</text>
+                                <text x="225" y="214" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Mg²⁺ nội bào bình thường chẹn lỗ kênh ROMK tại ống lượn xa</text>
+
+                                <rect x="50" y="235" width="350" height="50" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" />
+                                <text x="225" y="256" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">2. K⁺ rò rỉ và đào thải ồ ạt ra nước tiểu</text>
+                                <text x="225" y="274" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Bù Kali đơn thuần sẽ tiếp tục bị đào thải hết qua nước tiểu</text>
+
+                                <text x="225" y="312" text-anchor="middle" font-size="11" font-weight="800" fill="#0284c7">👉 BẮT BUỘC BÙ MAGIE ĐỂ ĐÓNG NÚT CHẶN ROMK</text>
+
+                                <!-- Branch Right: Hypocalcemia -->
+                                <path d="M 530 85 L 660 130" stroke="#ea580c" stroke-width="2.5" />
+
+                                <rect x="480" y="130" width="390" height="200" rx="10" fill="rgba(234, 88, 12, 0.05)" stroke="#ea580c" stroke-width="1.5" />
+                                <text x="675" y="158" text-anchor="middle" font-size="13" font-weight="800" fill="#ea580c">CƠ CHẾ HẠ CANXI MÁU KHÁNG TRỊ</text>
+
+                                <rect x="500" y="175" width="350" height="50" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" />
+                                <text x="675" y="196" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-text)">1. Ức chế Adenylate Cyclase tuyến cận giáp</text>
+                                <text x="675" y="214" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Thiếu Mg²⁺ làm tê liệt sản xuất và phóng thích hormone PTH</text>
+
+                                <rect x="500" y="235" width="350" height="50" rx="6" fill="var(--color-surface)" stroke="var(--color-border)" />
+                                <text x="675" y="256" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">2. Đề kháng tác dụng PTH tại Xương &amp; Thận</text>
+                                <text x="675" y="274" text-anchor="middle" font-size="10" fill="var(--color-text-muted)">Xương giảm giải phóng Ca²⁺, thận giảm tạo Calcitriol 1,25(OH)₂D</text>
+
+                                <text x="675" y="312" text-anchor="middle" font-size="11" font-weight="800" fill="#ea580c">👉 CANXI MÁU TỰ PHỤC HỒI SAU 24-48H BÙ ĐỦ MAGIE</text>
+                            </svg>
+                            <div class="diagram-caption">Hình 2: Cơ chế sinh lý bệnh phân tử của hai hệ quả rối loạn điện giải phối hợp kinh điển do Hạ Magie máu: Mất nút chặn ROMK gây rò rỉ Kali qua nước tiểu và ức chế tổng hợp/đề kháng hormone PTH gây hạ Canxi máu kháng trị.</div>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            💎 <strong>Clinical Pearl &mdash; Trình tự xử trí điện giải tại giường bệnh:</strong><br>
+                            Khi gặp một bệnh nhân có đồng thời <strong>Hạ Kali + Hạ Canxi + Hạ Magie</strong>:<br>
+                            1. Truyền <strong>Magnesium Sulfate</strong> trước hoặc song song với Kali Clorid.<br>
+                            2. Không cố gắng truyền lượng lớn Canxi Clorid kéo dài nếu bệnh nhân không có co giật hay Tetany cấp, vì Canxi máu sẽ tự động tăng trở lại mức bình thường trong vòng 24 &ndash; 48 giờ sau khi nồng độ Magie nội bào được tái lập đầy đủ.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN III: SINH LÝ BỆNH HỌC TĂNG MAGIE MÁU -->
+                <div class="physio-content">
+                    <h2 id="sinh-ly-benh-tang-magie" class="section-title">
+                        <span>Phần III: Sinh Lý Bệnh Học Tăng Magie Máu (Hypermagnesemia)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="dinh-nghia-nguyen-nhan-tang-magie" class="subsection-title">3.1. Cơ chế bệnh sinh và nhóm nguyên nhân</h3>
+                        <p>
+                            Tăng Magie máu được định nghĩa khi nồng độ Magie huyết thanh <strong>&gt; 2.4 mg/dL (&gt; 1.0 mmol/L hay &gt; 2.0 mEq/L)</strong>. Vì thận bình thường có năng lực bài xuất Magie cực kỳ mạnh mẽ (có thể lọc và thải tới 100% tải lượng Magie lọc qua khi nồng độ máu tăng cao), nên <strong>tăng Magie máu rất hiếm khi xảy ra đơn độc</strong>.
+                        </p>
+
+                        <div class="mg-grid">
+                            <div class="mg-card hyper">
+                                <div class="mg-card-title hyper">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Cơ Chế Phối Hợp Bệnh Lý Điển Hình
+                                </div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    Tăng Magie máu hầu như luôn là sự kết hợp của hai yếu tố song hành:<br>
+                                    <strong>1. Suy giảm chức năng lọc của thận:</strong> Tổn thương thận cấp (AKI) hoặc Bệnh thận mạn tiến triển (CKD giai đoạn 4 &ndash; 5 với eGFR &lt; 30 mL/phút/1.73m<sup>2</sup>).<br>
+                                    <strong>2. Tải nạp Magie ngoại sinh quá mức:</strong> Sử dụng các chế phẩm chứa Magie mà không hiệu chỉnh liều theo chức năng thận.
+                                </p>
+                            </div>
+                            <div class="mg-card">
+                                <div class="mg-card-title" style="color: #ea580c;">
+                                    <i class="fa-solid fa-pills"></i> Các Nguồn Magie Ngoại Sinh Thường Gặp
+                                </div>
+                                <ul class="physio-list-arrow" style="font-size:0.85rem;">
+                                    <li><strong>Thuốc kháng acid dạ dày (Antacids):</strong> Chứa Magaldrate, Magnesium Hydroxide (Maalox).</li>
+                                    <li><strong>Thuốc nhuận tràng &amp; Dung dịch thụt tháo:</strong> Magnesium Sulfate (Muối Epsom), Magnesium Citrate ở bệnh nhân táo bón/chuẩn bị nội soi.</li>
+                                    <li><strong>Truyền Magnesium Sulfate (MgSO<sub>4</sub>) liều cao:</strong> Trong điều trị tiền sản giật/sản giật hoặc cắt cơn hen phế quản ác tính/cơn bão giáp.</li>
+                                    <li><strong>Hủy cơ vân nặng (Rhabdomyolysis) &amp; Hội chứng ly giải u (TLS):</strong> Phóng thích lượng lớn Magie nội bào vào tuần hoàn.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 id="doc-tinh-theo-nong-do" class="subsection-title">3.2. Độc tính hệ cơ quan theo từng bậc nồng độ Magie huyết thanh</h3>
+                        <p>
+                            Khi nồng độ Magie máu tăng cao, ion Mg<sup>2+</sup> cạnh tranh ức chế dòng Canxi đi vào cúc tận cùng thần kinh và cơ tim, đồng thời chẹn thụ thể dẫn truyền acetylcholine, tạo ra một hội chứng ức chế dẫn truyền thần kinh cơ và liệt cơ toàn diện:
+                        </p>
+
+                        <!-- TOXICITY TIERS -->
+                        <div class="tox-tier-card">
+                            <div class="tox-badge">4.0 &ndash; 6.0 mg/dL<br>(1.7 &ndash; 2.5 mmol/L)</div>
+                            <div>
+                                <strong style="color:#d97706;font-size:0.95rem;">Giai đoạn sớm: Giảm kích thích thần kinh cơ nhẹ</strong>
+                                <p style="font-size:0.85rem;margin:0.25rem 0 0;color:var(--color-text);">
+                                    Buồn nôn, nôn ói, đỏ bừng mặt và cảm giác nóng bừng (do giãn mạch da), buồn ngủ, yếu cơ nhẹ.<br>
+                                    🔍 <strong>Dấu hiệu lâm sàng sớm nhất: Giảm hoặc mất phản xạ gân xương sâu (Loss of Deep Tendon Reflexes &ndash; DTRs).</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="tox-tier-card" style="border-left-color: #ea580c;">
+                            <div class="tox-badge" style="color:#ea580c;background:rgba(234,88,12,0.15);">6.0 &ndash; 10.0 mg/dL<br>(2.5 &ndash; 4.2 mmol/L)</div>
+                            <div>
+                                <strong style="color:#ea580c;font-size:0.95rem;">Giai đoạn tiến triển: Giãn mạch hạ huyết áp &amp; Rối loạn dẫn truyền tim</strong>
+                                <p style="font-size:0.85rem;margin:0.25rem 0 0;color:var(--color-text);">
+                                    Tụt huyết áp rõ rệt (do chẹn kênh canxi gây giãn cơ trơn mạch máu trực tiếp), nhịp tim chậm xoang.<br>
+                                    📈 <strong>Điện tâm đồ:</strong> Kéo dài khoảng PR, khoảng QRS giãn rộng và QT kéo dài. Mất hoàn toàn phản xạ gân xương.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="tox-tier-card" style="border-left-color: #dc2626;">
+                            <div class="tox-badge" style="color:#dc2626;background:rgba(220,38,38,0.15);">&gt; 10.0 mg/dL<br>(&gt; 4.2 mmol/L)</div>
+                            <div>
+                                <strong style="color:#dc2626;font-size:0.95rem;">Giai đoạn nguy kịch: Liệt cơ hoàn toàn &amp; Ức chế hô hấp</strong>
+                                <p style="font-size:0.85rem;margin:0.25rem 0 0;color:var(--color-text);">
+                                    Liệt mềm tứ chi (Flaccid paralysis), suy hô hấp cấp do liệt hoàn toàn cơ hoành và cơ liên sườn.<br>
+                                    Block nhĩ thất độ II/độ III hoàn toàn, nhịp chậm bộ nối mất bù.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="tox-tier-card" style="border-left-color: #7f1d1d;background:rgba(220,38,38,0.04);">
+                            <div class="tox-badge" style="color:#7f1d1d;background:rgba(127,29,29,0.2);">&gt; 12.0 &ndash; 15.0 mg/dL<br>(&gt; 5.0 mmol/L)</div>
+                            <div>
+                                <strong style="color:#7f1d1d;font-size:0.95rem;">Giai đoạn tử vong: Ngừng tuần hoàn</strong>
+                                <p style="font-size:0.85rem;margin:0.25rem 0 0;color:var(--color-text);">
+                                    Ngừng tim trong thì tâm trương (Asystole), phân ly điện cơ (PEA) và tử vong ngay lập tức nếu không được cấp cứu đối kháng bằng Canxi tĩnh mạch.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 id="duoc-ly-doi-khang-canxi" class="subsection-title">3.3. Dược lý học điều trị: Cơ chế đối kháng sinh lý của Canxi</h3>
+                        <p>
+                            Cơ chế xử trí cấp cứu tăng Magie máu có triệu chứng thần kinh &ndash; cơ hoặc huyết động dựa trên <strong>nguyên lý đối kháng cạnh tranh sinh lý học (Physiological Antagonism)</strong>:
+                        </p>
+
+                        <div class="formula-box">
+                            <div class="formula-label">VŨ KHÍ CẤP CỨU ĐẢO NGƯỢC ĐỘC TÍNH MAGIE</div>
+                            <div class="formula-main">
+                                Calcium Gluconate 10% (10 &ndash; 20 mL IV chậm trong 5 &ndash; 10 phút)<br>
+                                hoặc Calcium Chloride 10% (5 &ndash; 10 mL qua Catheter tĩnh mạch trung tâm)
+                            </div>
+                            <div class="formula-note">
+                                <strong>Cơ chế:</strong> Ion Ca<sup>2+</sup> có ái lực cạnh tranh trực tiếp với ion Mg<sup>2+</sup> tại các kênh canxi màng tế bào cơ tim và cúc tận cùng synap thần kinh cơ, giúp tái lập ngay lập tức dòng canxi nội bào, đảo ngược tình trạng liệt cơ hoành và ổn định dẫn truyền cơ tim.<br>
+                                <strong>Thời gian tác dụng:</strong> Tác dụng xuất hiện trong vòng vài phút nhưng chỉ kéo dài 30 &ndash; 60 phút. Do đó, đây là biện pháp "câu giờ" sinh mạng trong khi áp dụng các biện pháp đào thải Magie triệt để (Truyền dịch đẳng trương + Furosemide hoặc Lọc máu cấp cứu).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHẦN IV: ĐỐI CHIẾU & PHÁC ĐỒ XỬ TRÍ LÂM SÀNG -->
+                <div class="physio-content">
+                    <h2 id="doi-chieu-phac-do-xu-tri" class="section-title">
+                        <span>Phần IV: Bảng So Sánh &amp; Phác Đồ Xử Trí Theo Cơ Chế Bệnh Sinh</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <h3 id="so-sanh-ha-tang-magie" class="subsection-title">4.1. Bảng đối chiếu toàn diện: Hạ Magie máu vs Tăng Magie máu</h3>
+
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20%;">Đặc Điểm Đối Chiếu</th>
+                                        <th style="width: 40%; color: #0284c7;">Hạ Magie Máu (Hypomagnesemia)</th>
+                                        <th style="width: 40%; color: #ea580c;">Tăng Magie Máu (Hypermagnesemia)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Ngưỡng Chẩn Đoán</strong></td>
+                                        <td><strong>&lt; 1.8 mg/dL (&lt; 0.75 mmol/L)</strong><br>Nặng: &le; 1.5 mg/dL</td>
+                                        <td><strong>&gt; 2.4 mg/dL (&gt; 1.0 mmol/L)</strong><br>Triệu chứng rõ: &gt; 4.0 mg/dL</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cơ Chế Bệnh Sinh</strong></td>
+                                        <td>Mất qua đường tiêu hóa (tiêu chảy, PPI, viêm tụy), mất qua thận (lợi tiểu quai, thuốc độc thận), hoặc dịch chuyển nội bào (Refeeding).</td>
+                                        <td>Suy giảm độ lọc cầu thận (AKI, CKD stage 4-5) kết hợp nạp quá mức Magie ngoại sinh (antacids, thuốc nhuận tràng, truyền MgSO<sub>4</sub>).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Thần Kinh &ndash; Cơ</strong></td>
+                                        <td><strong>Tăng tính kích thích:</strong> Dị cảm, chuột rút, tăng phản xạ gân xương, Dấu Chvostek/Trousseau (+), cơn Tetany, co giật.</td>
+                                        <td><strong>Ức chế thần kinh cơ:</strong> Giảm/mất phản xạ gân xương sâu (sớm nhất), yếu cơ, liệt mềm cơ hô hấp &amp; cơ hoành.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Tim Mạch &amp; Điện Tâm Đồ</strong></td>
+                                        <td>PR dài, ST chênh xuống, T dẹt, <strong>QT kéo dài &rarr; Xoắn đỉnh (Torsades de Pointes)</strong>, rung thất, tăng độc tính Digoxin.</td>
+                                        <td>Tụt huyết áp, chậm nhịp xoang, PR dài, QRS giãn rộng, <strong>Block nhĩ thất độ II-III &rarr; Ngừng tim tâm thất (Asystole)</strong>.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Rối Loạn Điện Giải Đi Kèm</strong></td>
+                                        <td><strong>Hạ Kali máu kháng trị</strong> (rò rỉ qua ROMK) &amp; <strong>Hạ Canxi máu kháng trị</strong> (ức chế và đề kháng PTH).</td>
+                                        <td>Thường đi kèm tăng Kali máu và toan chuyển hóa ở bệnh nhân suy thận giai đoạn cuối.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chiến Lược Điều Trị</strong></td>
+                                        <td>Bổ sung <strong>Magnesium Sulfate (MgSO<sub>4</sub>)</strong> IV hoặc Magnesium Oxide uống. Luôn bù Magie trước khi bù Kali.</td>
+                                        <td>1. Ngừng nạp Magie.<br>2. <strong>Calcium Gluconate 10% IV</strong> đối kháng tức thì.<br>3. Truyền dịch 0.9% NaCl + Furosemide hoặc Lọc máu cấp cứu.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 id="phac-do-bu-magie" class="subsection-title">4.2. Phác đồ bù Magie Sulfate tĩnh mạch chuẩn hóa tại Hồi Sức Cấp Cứu</h3>
+                        <p>
+                            Quá trình phân bố lại (redistribution) của Magie giữa khoang ngoại bào và nội bào diễn ra rất chậm (mất từ <strong>24 đến 48 giờ</strong> để đạt trạng thái cân bằng). Do đó, việc bù Magie cần tuân thủ nguyên tắc dược động học sau:
+                        </p>
+
+                        <div class="physio-grid">
+                            <div class="physio-grid-card">
+                                <div class="card-header-line" style="color:#dc2626;"><i class="fa-solid fa-heart-pulse"></i> Cấp Cứu: Xoắn Đỉnh Hoặc Co Giật Tetany</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Magnesium Sulfate 2 g (tương đương 16.2 mEq Mg):</strong> Pha trong 50 &ndash; 100 mL Glucose 5% hoặc NaCl 0.9%, <strong>truyền IV nhanh trong 1 &ndash; 2 phút</strong>.<br>
+                                    &bull; Nếu cơn xoắn đỉnh tái phát: Có thể lặp lại liều 2 g sau 5 &ndash; 10 phút, sau đó duy trì truyền liên tục <strong>0.5 &ndash; 1.0 g/giờ</strong> trong 24 giờ tiếp theo.
+                                </p>
+                            </div>
+
+                            <div class="physio-grid-card">
+                                <div class="card-header-line" style="color:#0284c7;"><i class="fa-solid fa-syringe"></i> Không Cấp Cứu: Bù Thiếu Hụt Toàn Cơ Thể</div>
+                                <p style="font-size:0.85rem;line-height:1.5;">
+                                    &bull; <strong>Ngày 1:</strong> Bổ sung tổng cộng <strong>4 &ndash; 8 g MgSO<sub>4</sub> (32 &ndash; 64 mEq)</strong> truyền tĩnh mạch chậm trong 12 &ndash; 24 giờ.<br>
+                                    &bull; <strong>Ngày 2 &ndash; 4:</strong> Bổ sung <strong>2 &ndash; 4 g MgSO<sub>4</sub>/ngày</strong> để tái nạp đầy đủ vào khoang nội bào và mô xương.<br>
+                                    &bull; <em>Lưu ý:</em> Khoảng 50% lượng Magie truyền tĩnh mạch sẽ bị đào thải nhanh qua nước tiểu do vượt ngưỡng tái hấp thu tại quai Henle. Vì vậy, <strong>tuyệt đối không truyền bolus quá nhanh trong các trường hợp không khẩn cấp</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TÀI LIỆU THAM KHẢO -->
+                <div class="ref-section">
+                    <h3><i class="fa-solid fa-book-medical"></i> Tài Liệu Tham Khảo (References &mdash; AMA Standard)</h3>
+                    <ul class="ref-list">
+                        <li><strong>1.</strong> Jameson JL, Fauci AS, Kasper DL, Hauser SL, Longo DL, Loscalzo J. <i>Harrison's Principles of Internal Medicine</i>. 21st ed. McGraw-Hill Education; 2022. Chapter 417: Disorders of Magnesium Homeostasis.</li>
+                        <li><strong>2.</strong> Hall JE, Hall ME. <i>Guyton and Hall Textbook of Medical Physiology</i>. 14th ed. Elsevier; 2021. Chapter 30: Renal Regulation of Potassium, Calcium, Phosphate, and Magnesium.</li>
+                        <li><strong>3.</strong> da Silva JSV, Seres DS, Sabino K, et al. ASPEN Consensus Recommendations for Refeeding Syndrome. <i>Nutr Clin Pract</i>. 2020;35(2):178-195.</li>
+                        <li><strong>4.</strong> Barletta JF, et al. Fluids, Electrolytes, Acid-Base Disorders, and Nutrition Support. <i>ACCP Updates in Therapeutics® 2015: Critical Care Pharmacy Preparatory Review Course</i>. 2015:1-51.</li>
+                        <li><strong>5.</strong> Mansour GK, Yousif A. Magnesium Sulfate in Pediatric Emergency Medicine: Pharmacology, Evidence, and Clinical Applications. <i>Cureus</i>. 2025;17(9):e91672.</li>
+                        <li><strong>6.</strong> Sardu E, Anaeigoudari A, Domari A, et al. Association between Serum Electrolyte Levels and Consciousness in ICU Patients: A Cross-sectional Study. <i>Open Public Health J</i>. 2024;17:e18749445305097.</li>
+                        <li><strong>7.</strong> Syed AN, Yadav AN, Sawarkar JA, et al. Disease Induced Electrolyte Disturbance in Critical Care: Patterns, Mechanism and Management. <i>J Adv Future Res</i>. 2026;4(1):15-28.</li>
+                        <li><strong>8.</strong> Spasovski G, Vanholder R, Allolio B, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. <i>Eur J Endocrinol</i>. 2014;170(3):G1-G47.</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

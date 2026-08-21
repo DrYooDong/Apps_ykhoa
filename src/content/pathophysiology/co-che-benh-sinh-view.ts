@@ -48,7 +48,7 @@ export function renderCoCheBenhSinhView(): string {
               <div class="promax-kpi-pill">
                 <i class="fa-solid fa-microscope" style="font-size: 1.1rem; color: #a78bfa;"></i>
                 <div>
-                  <div class="promax-kpi-num">32+</div>
+                  <div class="promax-kpi-num">42+</div>
                   <div class="promax-kpi-lbl">Ca Bệnh Bệnh Sinh</div>
                 </div>
               </div>
@@ -176,21 +176,21 @@ export function renderCoCheBenhSinhView(): string {
                 <a href="#patho-tieuhoa-section" class="part-nav-item p5" data-target="patho-tieuhoa-section">
                   <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
                   <span class="part-text">Tiêu hóa</span>
-                  <span class="part-count-badge">7</span>
+                  <span class="part-count-badge">12</span>
                 </a>
               </li>
               <li>
                 <a href="#patho-thannieu-section" class="part-nav-item p6" data-target="patho-thannieu-section">
                   <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
                   <span class="part-text">Thận - Điện giải</span>
-                  <span class="part-count-badge">6</span>
+                  <span class="part-count-badge">7</span>
                 </a>
               </li>
               <li>
                 <a href="#patho-noitiet-section" class="part-nav-item p7" data-target="patho-noitiet-section">
                   <span class="part-icon"><i class="fa-solid fa-venus-mars"></i></span>
                   <span class="part-text">Nội tiết</span>
-                  <span class="part-count-badge">2</span>
+                  <span class="part-count-badge">5</span>
                 </a>
               </li>
               <li>
@@ -442,6 +442,56 @@ export function renderCoCheBenhSinhView(): string {
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                 </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-pud" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-bacteria"></i></div>
+                    <div class="specialty-info">
+                      <h3>Loét Dạ Dày - Tá Tràng (PUD)</h3>
+                      <p>Mất cân bằng bảo vệ - tấn công, vi khuẩn H. pylori, độc tính NSAID, ZES, ly giải fibrin và thủng phúc mạc.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-hp" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-bacterium"></i></div>
+                    <div class="specialty-info">
+                      <h3>Nhiễm Khuẩn Helicobacter pylori</h3>
+                      <p>Men Urease, độc lực CagA/T4SS &amp; VacA, phân nhánh hang vị vs thân vị, chuỗi Correa &amp; đột biến kháng kháng sinh.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-masld" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+                    <div class="specialty-info">
+                      <h3>Gan Nhiễm Mỡ Chuyển Hóa (MASLD / MASH)</h3>
+                      <p>Thuyết đa đánh điểm (Multiple-hit), kháng insulin mỡ, ngộ độc lipid Lipotoxicity, stress ER/ty thể và hoạt hóa HSCs sinh xơ.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-viem-gan-do-ruou" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-wine-bottle"></i></div>
+                    <div class="specialty-info">
+                      <h3>Viêm Gan Do Rượu (Alcoholic Hepatitis)</h3>
+                      <p>Chuyển hóa Ethanol qua ADH/CYP2E1 sinh Acetaldehyde &amp; ROS, thể Mallory-Denk, bão Cytokines TNF-α/IL-8 và suy gan cấp trên nền mạn.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-benh-nao-gan" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-brain"></i></div>
+                    <div class="specialty-info">
+                      <h3>Bệnh Não Gan (HE)</h3>
+                      <p>Type A/B/C, độc tính Amoniac NH3, phù tế bào sao (Glutamine), teo cơ Sarcopenia, tỷ lệ BCAA/AAA, 6 yếu tố thúc đẩy &amp; cơ chế Lactulose/Rifaximin.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
               </div>
             </div>
           </section>
@@ -514,6 +564,16 @@ export function renderCoCheBenhSinhView(): string {
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                 </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-rl-magie" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-atom"></i></div>
+                    <div class="specialty-info">
+                      <h3>Rối Loạn Magie Máu (Hypo/Hypermagnesemia)</h3>
+                      <p>Tái hấp thu tại quai Henle qua Claudin-16/19, cơ chế gây hạ K+ &amp; Ca2+ kháng trị (nút chặn ROMK, ức chế PTH), xoắn đỉnh Torsades de Pointes và đối kháng bằng Canxi IV.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
               </div>
             </div>
           </section>
@@ -541,6 +601,36 @@ export function renderCoCheBenhSinhView(): string {
                     </span>
                     <i class="fa-solid fa-chevron-right"></i>
                   </div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-dka" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-fire"></i></div>
+                    <div class="specialty-info">
+                      <h3>Toan Ceton Do ĐTĐ (DKA &amp; euDKA)</h3>
+                      <p>Tỷ lệ Glucagon/Insulin, Ketogenesis qua CPT-1, tỷ lệ BOHB/AcAc 10:1, loại bỏ Anion Gap (Consensus 2024), euDKA do SGLT2i và Dextrose sớm.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-hhs" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-gauge-high"></i></div>
+                    <div class="specialty-info">
+                      <h3>Tăng Áp Lực Thẩm Thấu (HHS)</h3>
+                      <p>Insulin tồn dư ức chế Lipolysis, tăng đường huyết cực độ &ge; 600 mg/dL, mất 12-15% nước, áp lực thẩm thấu &gt; 300-320 mOsm/kg, tăng đông và tiêu cơ vân.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-ha-duong-huyet" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i class="fa-solid fa-battery-quarter"></i></div>
+                    <div class="specialty-info">
+                      <h3>Hạ Đường Huyết Trong ĐTĐ</h3>
+                      <p>3 mức độ hạ đường huyết theo ADA 2026, chuỗi nội tiết đối kháng, hội chứng HAAF, giảm thanh thải ở thận mạn và quy tắc 15.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                 </a>
                 <a href="#/pathophysiology/cases/slb-ccbs-tsg" class="specialty-card">
                   <div class="specialty-card-top">

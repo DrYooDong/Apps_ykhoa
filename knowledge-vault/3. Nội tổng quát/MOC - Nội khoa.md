@@ -769,7 +769,7 @@ updated: "2026-08-11"
 ### 📁 3.6. Nội tiết\3.6.1. Đái tháo đường & Chuyển hóa\Đái tháo đường
 - [[3. Nội tổng quát/3.6. Nội tiết/3.6.1. Đái tháo đường & Chuyển hóa/Đái tháo đường/1. Tổng quan & Dịch tễ học.md|1. Tổng quan & Dịch tễ học]]
 - [[3. Nội tổng quát/3.6. Nội tiết/3.6.1. Đái tháo đường & Chuyển hóa/Đái tháo đường/2.1. Cơ chế bệnh sinh.md|2.1. Cơ chế bệnh sinh]]
-- [[3. Nội tổng quát/3.6. Nội tiết/3.6.1. Đái tháo đường & Chuyển hóa/Đái tháo đường/2.2. Sinh lý bệnh.md|2.2. Sinh lý bệnh]]
+- [[3. Nội tổng quát/3.6. Nội tiết/3.6.1. Đái tháo đường & Chuyển hóa/Đái tháo đường/2.1. Sinh lý bệnh|2.1]]
 - [[3. Nội tổng quát/3.6. Nội tiết/3.6.1. Đái tháo đường & Chuyển hóa/Đái tháo đường/3. Lâm sàng & Cận lâm sàng.md|3. Lâm sàng & Cận lâm sàng]]
 - [[3. Nội tổng quát/3.6. Nội tiết/3.6.1. Đái tháo đường & Chuyển hóa/Đái tháo đường/4. Chẩn đoán.md|4. Chẩn đoán]]
 - [[3. Nội tổng quát/3.6. Nội tiết/3.6.1. Đái tháo đường & Chuyển hóa/Đái tháo đường/5. Điều trị chung.md|5. Điều trị chung]]
