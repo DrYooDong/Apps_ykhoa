@@ -1,0 +1,114 @@
+---
+title: "2. SLB_Viêm gan do rượu (P1)"
+part: "P1"
+aliases:
+  - "2. SLB_Viêm gan do rượu (P1)"
+keywords:
+  - "2. slb_viêm gan do rượu (p1)"
+  - "tiêu hóa - gan mật"
+specialty: "Tiêu hóa - Gan mật"
+kho: "Kho chưa lọc"
+tags:
+  - "he-co-quan/tieu-hoa"
+  - "loai/general"
+  - "y-khoa/raw"
+updated: "2026-08-21"
+---
+
+### 1. Nội Dung Sinh Lý Học Chi Tiết
+
+#### **Khái Quát Chung Về Bệnh Sinh Viêm Gan Do Rượu (Alcohol-Associated Hepatitis - AH)**
+
+**Viêm gan do rượu (AH/AAH)** là thể lâm sàng cấp tính nghiêm trọng nhất nằm trong quang phổ của bệnh gan do rượu (ALD). Bệnh đặc trưng bởi **tình trạng vàng da xuất hiện mới hoặc chuyển biến xấu đột ngột** trên nền bệnh nhân có tiền sử tiêu thụ lượng rượu lớn và mạn tính. Bệnh gan do rượu (ALD) nói chung bao gồm các tổn thương tiến triển từ **gan nhiễm mỡ (steatosis)** có khả năng hồi phục, qua **viêm gan mỡ do rượu (steatohepatitis)** - nền tảng trực tiếp dẫn đến viêm gan do rượu (AH), cho đến **xơ hóa gan tiến triển (fibrosis)**, **xơ gan mất bù (decompensated cirrhosis)** kèm các biến chứng nghiêm trọng và cuối cùng là **ung thư biểu mô tế bào gan (HCC)**.
+
+Mặc dù có tới **90% đến 95%** người lạm dụng rượu nặng bị tích tụ mỡ trong tế bào gan, nhưng trên thực tế chỉ có khoảng **10% đến 35%** trong số họ thực sự tiến triển thành viêm gan do rượu hoặc xơ gan. Điều này chỉ ra rằng cơ chế bệnh sinh của viêm gan do rượu rất phức tạp, không chỉ đơn thuần là hậu quả của lượng cồn tiêu thụ, mà còn là sự tương tác đa chiều giữa các yếu tố môi trường, di truyền và đáp ứng miễn dịch của cơ thể.
+
+Sự tiến triển sinh lý bệnh của viêm gan do rượu (AH) được vận hành bởi **ba con đường cốt lõi tương hỗ lẫn nhau**:
+
+1. **Độc tính tế bào trực tiếp (Direct hepatotoxicity)** do các sản phẩm chuyển hóa của ethanol.
+2. **Rối loạn chuyển hóa mỡ và tích tụ lipid gây độc tế bào (Metabolic lipotoxicity)**.
+3. **Sự tổn thương trục ruột - gan (Gut-liver axis)** dẫn đến sự di chuyển tràn ngập của các phân tử vi sinh vào hệ tĩnh mạch cửa kích hoạt phản ứng viêm dữ dội tại gan.
+
+---
+
+#### **Con Đường 1: Tổn Thương Tế Bào Gan Do Nhiễm Độc Trực Tiếp Từ Quá Trình Chuyển Hóa Ethanol**
+
+Khi rượu (ethanol) được hấp thụ từ dạ dày và ruột vào máu, nó được vận chuyển trực tiếp đến gan thông qua tĩnh mạch cửa. Tại tế bào gan, ethanol trải qua quá trình oxy hóa thông qua hai hệ thống enzyme chính:
+
+- **Alcohol Dehydrogenase (ADH)**: Enzyme chính ở bào tương tế bào gan đảm nhận vai trò chuyển hóa ethanol thành **acetaldehyde** cực kỳ độc hại.
+- **Cytochrome P450 2E1 (CYP2E1)**: Hệ thống oxy hóa ethanol ở microsome gan (MEOS) bị cảm ứng mạnh mẽ và tăng hoạt động vượt trội khi cơ thể nạp một lượng rượu lớn mạn tính.
+
+Quá trình chuyển hóa này tạo ra các tác nhân hủy hoại trực tiếp tế bào gan:
+
+- **Sự tích tụ Acetaldehyde độc hại**: Acetaldehyde có khả năng liên kết cộng hóa trị với các protein tế bào và DNA để tạo thành các liên hợp acetaldehyde (adducts). Các liên hợp này phá hủy cấu trúc khung nâng đỡ tế bào (như các sợi trung gian keratin 8 và 18), ức chế hoạt động của các enzyme sửa chữa DNA và làm biến đổi protein màng tế bào, từ đó khơi mào phản ứng tự miễn chống lại tế bào gan.
+- **Sự mất cân bằng nghiêm trọng tỷ lệ NADH/NAD+**: Phản ứng oxy hóa ethanol qua ADH chuyển đổi liên tục NAD+ thành NADH. Lượng NADH dư thừa cao bất thường làm đảo lộn cân bằng oxi hóa-khử của tế bào, gây **ức chế chu trình Krebs và ức chế quá trình beta-oxidation (phân giải acid béo) trong ty thể**, trực tiếp dẫn đến tích lũy mỡ.
+- **Sản sinh ồ ạt các gốc oxy hóa hoạt động (ROS) và hiện tượng peroxide hóa lipid**: Hoạt động cảm ứng mạnh của CYP2E1 sinh ra lượng lớn các gốc tự do ROS. ROS tấn công trực tiếp vào cấu trúc màng ty thể, màng lưới nội chất và màng tế bào gan thông qua hiện tượng **peroxide hóa lipid (lipid peroxidation)**. Điều này gây mất điện thế màng ty thể, cạn kiệt nguồn năng lượng ATP và kích hoạt dòng thác caspase dẫn đến hoại tử tế bào hoặc chết rụng tế bào gan (apoptosis).
+- **Sự giải phóng các phân tử DAMPs khơi mào viêm**: Khi tế bào gan bị tổn thương và chết đi, chúng giải phóng các phân tử định dạng cấu trúc tổn thương (**Damage-Associated Molecular Patterns - DAMPs**) vào khoảng Disse và hệ tuần hoàn xoang gan. DAMPs là tín hiệu nội sinh cực mạnh kích hoạt các tế bào Kupffer (đại thực bào tại gan) và các tế bào nội mô xoang gan sản sinh các cytokine hướng viêm.
+
+##### **Trích Xuất Hình Ảnh & Sơ Đồ Cơ Chế Liên Quan:**
+
+- **Tên hình**: **Figure 1 - B. Mechanisms of alcohol-related liver disease (ALD) - Direct toxicity Pathway**
+    
+- **Thuộc tài liệu**: _2026 -JAMA-Alcohol-Related Liver Disease .pdf
+	![[Pasted image 20260820214506.png]]
+    
+- **Mô tả sơ đồ trong tài liệu**: Sơ đồ thể hiện ethanol được chuyển hóa trong tế bào gan qua ADH và CYP2E1 tạo ra acetaldehyde, các gốc oxy hóa hoạt động (ROS), các sản phẩm peroxide hóa lipid và làm xáo trộn nghiêm trọng tỷ lệ NADH/NAD+. Sự phá hủy tế bào gan (hepatocellular injury) và chết tế bào làm giải phóng các **DAMPs**, từ đó kích hoạt các tế bào miễn dịch, khởi động quá trình viêm nội mô xoang gan và hoạt hóa tế bào hình sao gan (HSC) lắng đọng collagen gây xơ hóa gan.
+    
+- **Tên hình**: **Figure 1 - Pathophysiology of alcohol-associated hepatitis and correlation with prognostic scores - Hepatocyte Injury**
+    
+- **Thuộc tài liệu**: _WJH-15-954.pdf_
+- ![[Pasted image 20260820214551.png]]
+    
+- **Mô tả sơ đồ trong tài liệu**: Sơ đồ chỉ rõ quá trình chuyển hóa cồn (ethanol) tại gan qua ADH và CYP2E1 sinh ra acetaldehyde và các gốc tự do ROS gây peroxide hóa lipid, làm tế bào gan bị tổn thương trực tiếp. Tế bào gan tổn thương bị suy giảm chức năng tổng hợp rõ rệt (giảm albumin, giảm tổng hợp các yếu tố đông máu làm tăng PT/INR) và suy giảm chức năng vận chuyển bilirubin dẫn đến vàng da nhiễm độc và tăng bilirubin máu. Tế bào bị hủy hoại giải phóng ra các **DAMPs** kích hoạt hệ thống miễn dịch xoang gan.
+    
+
+---
+
+#### Con Đường 2: Rối Loạn Chuyển Hóa Mỡ Và Tích Tụ Lipid Gây Độc Tế Bào (Metabolic Lipotoxicity)
+
+Sự rối loạn lipid do rượu không chỉ dừng lại ở việc gan nhiễm mỡ đơn thuần mà tiến triển thành tình trạng **độc tính lipid (lipotoxicity)** tàn phá tế bào:
+
+- **Kích thích tổng hợp và ức chế phân giải chất béo tại gan**: Như đã phân tích, tỷ lệ NADH/NAD+ tăng cao làm tê liệt quá trình beta-oxidation của acid béo tại ty thể. Đồng thời, ethanol tác động lên các yếu tố phiên mã tế bào, thúc đẩy mạnh mẽ quá trình tổng hợp acid béo mới (de novo lipogenesis) trong gan.
+- **Sự huy động mỡ ồ ạt từ mô ngoại vi**: Lượng cồn không được chuyển hóa hết ở vòng tuần hoàn đầu tiên qua gan sẽ đi đến các mô mỡ ngoại vi và kích hoạt quá trình **ly giải lipid (lipolysis)** tại đây. Quá trình này giải phóng lượng lớn các acid béo tự do (Free Fatty Acids - FFAs) vào máu, theo tĩnh mạch cửa đổ về gan, làm nguồn lipid tích tụ tại gan tăng lên nhanh chóng.
+- **Stress lưới nội chất (ER Stress) và sự hình thành các phân tử lipid độc hại**: Sự tràn ngập chất béo trong gan dẫn đến sự hình thành các phân tử mỡ độc hại như ceramides, diacylglycerol và các acid béo bão hòa tự do. Sự hiện diện của các phân tử lipid độc này kết hợp với acetaldehyde phá hủy màng lưới nội chất của tế bào gan, gây ra tình trạng **stress lưới nội chất (endoplasmic reticulum stress)** do sự tích tụ của các protein bị cuộn gập sai (misfolded proteins). Stress lưới nội chất kéo dài kích hoạt các con đường apoptotic trực tiếp (như trục truyền tín hiệu STING-IRF3) thúc đẩy tế bào gan tự hủy.
+- **Vai trò cộng hưởng của hội chứng chuyển hóa và yếu tố di truyền**: Tình trạng đề kháng insulin, béo phì, đái tháo đường týp 2 đồng hành sẽ làm tăng mức độ nghiêm trọng của con đường lipotoxicity này thông qua việc giải phóng các cytokine hướng viêm từ mô mỡ. Ngoài ra, các biến thể di truyền đặc hiệu bao gồm các đa hình đơn của gen **_PNPLA3_ (rs738409)**, _**TM6SF2**_, và **_MBOAT7_ (rs641738)** làm suy giảm khả năng xử lý chất béo của tế bào gan, khiến tế bào dễ bị tổn thương xơ hóa nghiêm trọng hơn khi tiếp xúc với rượu.
+
+---
+
+#### Con Đường 3: Tổn Thương Trục Ruột - Gan Và Sự Di Chuyển Của PAMPs (Gut-Liver Axis & Bacterial Translocation)
+
+Trục ruột - gan đóng vai trò trung tâm trong việc khuếch đại phản ứng viêm từ viêm gan nhiễm mỡ thành tình trạng viêm cấp tính dữ dội đặc trưng của viêm gan do rượu (AH):
+
+- **Gây loạn khuẩn ruột (Dysbiosis)**: Lượng cồn lớn tiêu thụ mạn tính trực tiếp phá hủy hệ sinh thái vi sinh vật thường trú trong ruột, làm sụt giảm nghiêm trọng tính đa dạng vi sinh (reduced microbial diversity) và thúc đẩy sự phát triển quá mức của các chủng vi khuẩn Gram âm có hại, đặc biệt là vi khuẩn _**Escherichia coli**_.
+- **Phá hủy hàng rào niêm mạc ruột (Leaky Gut)**: Ethanol và chất chuyển hóa acetaldehyde trực tiếp tàn phá lớp chất nhầy bảo vệ và các tế bào biểu mô ruột. Chúng làm giảm biểu hiện và phá hủy liên kết chặt giữa các tế bào (các protein **tight junctions** bị bất hoạt). Hậu quả là làm tăng tính thấm thành ruột (increased gut permeability), tạo ra hiện tượng **"ruột rò rỉ"**.
+- **Sự di chuyển của PAMPs vào hệ tuần hoàn tĩnh mạch cửa**: Qua hàng rào ruột bị rò rỉ, các cấu trúc kháng nguyên có nguồn gốc từ vi sinh vật đường ruột được gọi là các phân tử định dạng cấu trúc kháng nguyên vi sinh vật (**Pathogen-Associated Molecular Patterns - PAMPs**) - điển hình là **Lipopolysaccharide (LPS / endotoxin)** từ vách tế bào vi khuẩn Gram âm, peptidoglycans và DNA vi khuẩn - ồ ạt tràn vào tuần hoàn tĩnh mạch cửa đổ thẳng về gan.
+- **Kích hoạt tế bào Kupffer và dòng thác cytokine viêm**: Tại gan, các PAMPs (đặc biệt là LPS/endotoxin) liên kết với các thụ thể nhận diện kháng nguyên bề mặt như **Toll-Like Receptor 4 (TLR4)** trên các đại thực bào thường trực tại gan (tế bào Kupffer) và tế bào nội mô xoang gan. Sự kích hoạt TLR4 khơi mào cho việc sản sinh ồ ạt các cytokine hướng viêm cực mạnh bao gồm **TNF-alpha, IL-1beta, IL-6 và IL-8**. Các cytokine này không chỉ duy trì phản ứng viêm tại chỗ mà còn lôi kéo bạch cầu hạt trung tính (neutrophils) từ máu tuần hoàn xâm nhập vào các tiểu thùy gan, tạo ra tổn thương viêm tẩm nhuận bạch cầu trung tính đặc trưng của bệnh lý viêm gan do rượu.
+
+##### **Trích Xuất Hình Ảnh & Sơ Đồ Cơ Chế Liên Quan:**
+
+- **Tên hình**: **Figure 1 - A. Gut-liver axis and alcohol consumption & B. Mechanisms of ALD - Gut derived Pathway**
+    
+- **Thuộc tài liệu**: _2026 -JAMA-Alcohol-Related Liver Disease .pdf_
+
+![[Pasted image 20260820214648.png]]
+    
+- **Mô tả sơ đồ trong tài liệu**: Sơ đồ thể hiện quá trình ethanol gây độc trực tiếp lên đường ruột, làm giảm sự đa dạng của hệ vi sinh vật và gây suy yếu tính toàn vẹn hàng rào niêm mạc ruột. Các sản phẩm vi sinh (PAMPs) rò rỉ qua niêm mạc biểu mô biểu hiện hiện tượng dịch chuyển (translocation) qua hệ tĩnh mạch cửa tiến thẳng về gan. Tại gan, PAMPs kích hoạt tế bào Kupffer giải phóng lượng lớn các cytokine hướng viêm và kích hoạt sự tuyển mộ các tế bào miễn dịch khác từ mạch máu xoang gan, khuếch đại tổn thương nhu mô và hoạt hóa tế bào hình sao gan (HSC) gây lắng đọng chất nền ngoại bào.
+   
+    
+
+---
+
+### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Pavlov CS, Varganova DL, Casazza G, Tsochatzis E, Nikolova D, Gluud C. Glucocorticosteroids for people with alcoholic hepatitis. _Cochrane Database of Systematic Reviews_. 2019;2019(4):CD001511.
+2. Krag A, Åberg F, Mellinger J, Lee BP, Israelsen M. Alcohol-Related Liver Disease: A Review. _JAMA_. 2026. doi:10.1001/jama.2026.12038.
+3. Chi X, Sun X, Cheng D, Liu S, Pan CQ, Xing H. Intestinal microbiome-targeted therapies improve liver function in alcohol-related liver disease by restoring bifidobacteria: a systematic review and meta-analysis. _Frontiers in Pharmacology_. 2024;14:1274261. doi:10.3389/fphar.2023.1274261.
+4. Penninti P, Adekunle AD, Singal AK. Alcoholic Hepatitis: The Rising Epidemic. _Gastroenterology Clinics of North America_. 2023;52(3):535-553. doi:10.1016/j.gtc.2023.03.017.
+5. European Association for the Study of the Liver. EASL Clinical Practice Guidelines: Management of alcohol-related liver disease. _Journal of Hepatology_. 2018;69(1):154-181. doi:10.1016/j.jhep.2018.03.018.
+6. Mitri J, Almeqdadi M, Karagozian R. Prognostic and diagnostic scoring models in acute alcohol-associated hepatitis: A review comparing the performance of different scoring systems. _World Journal of Hepatology_. 2023;15(8):954-963. doi:10.4254/wjh.v15.i8.954.
+7. Jophlin LL, Singal AK, Bataller R, et al. ACG Clinical Guideline: Alcohol-Associated Liver Disease. _American Journal of Gastroenterology_. 2024;119(1):30-54. doi:10.14309/ajg.0000000000002572.
+8. Tyson LD, Atkinson S, Hunter RW, et al. In severe alcohol-related hepatitis, acute kidney injury is prevalent, associated with mortality independent of liver disease severity, and can be predicted using IL-8 and micro-RNAs. _Alimentary Pharmacology & Therapeutics_. 2023;58(12):1217-1229. doi:10.1111/apt.17733.
+
+---
+
+🔬 Tôi có thể biên soạn tiếp **Phần 2** tập trung chuyên sâu vào **Thác miễn dịch tế bào, cơ chế tuyển mộ bạch cầu, tổn thương vi tuần hoàn gan và sinh lý bệnh của các biến chứng hệ thống (như suy thận cấp AKI/hội chứng gan thận HRS)** dựa trên các tài liệu nguồn này nếu bạn muốn tiếp tục bài học.

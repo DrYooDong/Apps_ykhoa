@@ -41,7 +41,16 @@ src/content/
 │   ├── index.json             # Danh mục chỉ mục bài học nạp động
 │   └── index.md               # Cổng điều hướng phân hệ Sinh lý - SLB
 │
-├── VAN_HANH_HETHONG.md        # Hướng dẫn vận hành chi tiết 7 phân hệ CliniPortal
+├── knowledge-vault/           # Phân hệ Kho Kiến Thức Y Khoa (Knowledge Vault Hub & Reader)
+│   ├── data/                  # Danh mục 600+ bài viết nạp động (vault-catalog.json)
+│   ├── css/                   # Giao diện Bento Grid & Reader chuẩn Design Tokens
+│   ├── types.ts               # Khai báo TypeScript cho Vault
+│   ├── vault-loader.ts        # Engine nạp và lọc dữ liệu tra cứu
+│   ├── vault-hub-view.ts      # Màn hình Hub & Trình đọc Drawer
+│   ├── index.ts               # Entry point module
+│   └── index.html             # Cổng tra cứu Standalone Hub
+│
+├── VAN_HANH_HETHONG.md        # Hướng dẫn vận hành chi tiết các phân hệ CliniPortal
 └── README.md                  # Tài liệu hướng dẫn này
 ```
 

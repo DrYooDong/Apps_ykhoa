@@ -64,6 +64,9 @@ export class QuickReferenceDrawer {
 
         <!-- Navigation Tabs Strip -->
         <div style="display:flex; padding:8px 12px; background:var(--color-surface-offset, #f1f5f9); border-bottom:1px solid var(--color-border, #e2e8f0); gap:6px; overflow-x:auto; scrollbar-width:thin;">
+          <button class="qrd-tab-btn" data-tab="vault" style="background:${this.currentTab === ('vault' as any) ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === ('vault' as any) ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === ('vault' as any) ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
+            <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức (600+ Bài)
+          </button>
           <button class="qrd-tab-btn" data-tab="formulas" style="background:${this.currentTab === 'formulas' ? 'var(--color-surface, #fff)' : 'transparent'}; color:${this.currentTab === 'formulas' ? 'var(--color-primary, #0284c7)' : 'var(--color-text-muted, #64748b)'}; border:none; padding:7px 12px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; white-space:nowrap; box-shadow:${this.currentTab === 'formulas' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'};">
             <i class="fa-solid fa-calculator"></i> Công thức (Vault)
           </button>
@@ -88,6 +91,57 @@ export class QuickReferenceDrawer {
   }
 
   private renderActiveTabContent(): string {
+    if ((this.currentTab as string) === 'vault') {
+      return `
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="background:linear-gradient(135deg, rgba(2,132,199,0.08), rgba(139,92,246,0.08)); border:1px solid var(--color-border, #e2e8f0); border-radius:10px; padding:14px; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <strong style="font-size:14px; color:var(--color-text, #0f172a);"><i class="fa-solid fa-graduation-cap" style="color:var(--color-primary, #0284c7);"></i> Kho Kiến Thức Y Khoa CliniPortal</strong>
+              <p style="margin:4px 0 0; font-size:12px; color:var(--color-text-muted, #64748b);">Tổng hợp 2.250+ bài viết chuẩn hóa (Cơ sở y khoa, Tiếp cận, Kỹ năng, Chẩn đoán, Phác đồ, Biến chứng)</p>
+            </div>
+            <a href="../knowledge-vault/index.html" target="_blank" style="padding:6px 12px; background:var(--color-primary, #0284c7); color:#fff; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:5px; white-space:nowrap;">
+              Mở Hub Toàn Màn Hình <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+
+          <!-- Nhóm Lâm sàng & Bệnh học -->
+          <div style="font-size:12px; font-weight:700; color:var(--color-text, #0f172a); margin-top:2px;">
+            🩺 Phân Hệ Lâm Sàng & Điều Trị:
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+              <div style="width:28px; height:28px; border-radius:6px; background:rgba(14,165,233,0.1); color:#0ea5e9; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <div><strong style="font-size:12px;">Tiếp cận Lâm sàng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">117 bài</div></div>
+            </a>
+            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+              <div style="width:28px; height:28px; border-radius:6px; background:rgba(99,102,241,0.1); color:#6366f1; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-stethoscope"></i></div>
+              <div><strong style="font-size:12px;">Kỹ năng Lâm sàng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">68 bài</div></div>
+            </a>
+            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+              <div style="width:28px; height:28px; border-radius:6px; background:rgba(236,72,153,0.1); color:#ec4899; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-clipboard-check"></i></div>
+              <div><strong style="font-size:12px;">Chẩn đoán Bệnh học</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">480 bài</div></div>
+            </a>
+            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+              <div style="width:28px; height:28px; border-radius:6px; background:rgba(59,130,246,0.1); color:#3b82f6; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-pills"></i></div>
+              <div><strong style="font-size:12px;">Phác đồ Điều trị</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">283 bài</div></div>
+            </a>
+            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+              <div style="width:28px; height:28px; border-radius:6px; background:rgba(239,68,68,0.1); color:#ef4444; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div><strong style="font-size:12px;">Biến chứng & Tiên lượng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">299 bài</div></div>
+            </a>
+            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+              <div style="width:28px; height:28px; border-radius:6px; background:rgba(245,158,11,0.1); color:#f59e0b; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-bolt"></i></div>
+              <div><strong style="font-size:12px;">Sinh lý bệnh</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">216 bài</div></div>
+            </a>
+          </div>
+
+          <div style="margin-top:4px; font-size:11.5px; color:var(--color-text-muted, #64748b); text-align:center;">
+            💡 <em>Nhấn để mở Hub và tìm kiếm trực tiếp trong hơn 2.250 bài viết y khoa chuẩn hóa.</em>
+          </div>
+        </div>
+      `;
+    }
+
     if (this.currentTab === 'formulas') {
       return `
         <div style="display:flex; flex-direction:column; gap:16px;">

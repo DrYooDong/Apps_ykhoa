@@ -1,0 +1,23 @@
+---
+title: "Xuất huyết dưới nhện"
+part: "P2"
+aliases:
+  - "Xuất huyết dưới nhện"
+keywords:
+  - "xuất huyết dưới nhện"
+  - "tim mạch"
+  - "thần kinh"
+specialty: "Tim mạch"
+kho: "2.5. Kho biến chứng"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/complication"
+  - "y-khoa/bc"
+updated: "2026-08-21"
+---
+
+
+
+[[3. Nội tổng quát/3.5. Thần kinh/3.5.1. Đột quỵ & Mạch máu não/Đột quỵ/Xuất huyết dưới nhện/Xuất huyết dưới nhện.md|← Quay lại Xuất huyết dưới nhện]]
+
+﻿

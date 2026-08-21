@@ -1,0 +1,144 @@
+---
+title: "Hen trẻ em"
+part: "P2"
+aliases:
+  - "Hen trẻ em"
+keywords:
+  - "hen trẻ em"
+  - "hô hấp"
+  - "nhi khoa"
+specialty: "Hô hấp"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/ho-hap"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+# NỘI DUNG SINH LÝ HỌC CHI TIẾT: SINH LÝ BỆNH CỦA HEN PHẾ QUẢN Ở TRẺ EM
+
+---
+
+## 1. Nội Dung Sinh Lý Học Chi Tiết
+
+### 1.1. Tổng Quan Và Bản Chất Đa Yếu Tố Của Bệnh Hen Phế Quản
+
+- **Khái niệm:** Hen phế quản ở trẻ em là tình trạng **viêm mạn tính đường dẫn khí trong lồng ngực** kèm theo **tăng đáp ứng đường thở** và **tắc nghẽn luồng khí thở ra không cố định**. Bệnh biểu hiện bằng những đợt tái phát của các triệu chứng hô hấp (ho, [[Khó thở]], đau tức ngực, khò khè) thay đổi từng lúc với nhiều mức độ và sự giới hạn luồng khí thở ra không hằng định; những đợt tắc nghẽn này có thể giảm hoặc mất đi một cách tự nhiên hoặc do tác dụng của thuốc điều trị.
+- **Bản chất đa yếu tố:** Hen phế quản là một bệnh lý đa yếu tố. Sinh bệnh học miễn dịch và sự phát triển các đặc điểm bệnh hen ở trẻ em được quyết định bởi sự tương tác phức hợp giữa:
+    - **Yếu tố bản thân (cơ địa):** Di truyền cơ địa dị ứng, sự trưởng thành của hệ miễn dịch tại hệ hô hấp và miễn dịch toàn thân, sự phát triển của [[Phổi]], sự hình thành hệ vi sinh vật tại đường thở.
+    - **Yếu tố môi trường:** Khói thuốc lá, ô nhiễm không khí, nhiễm trùng hô hấp, các dị nguyên hô hấp trong môi trường.
+    - **Thời gian tương tác:** Sự kéo dài và thời điểm phơi nhiễm giữa các yếu tố trên xuyên suốt từ giai đoạn phôi thai đến khi trẻ chào đời và lớn lên.
+- **Ba thành tố bệnh học cốt lõi:** Bệnh học của hen bao gồm 3 biến đổi liên quan chặt chẽ: **(1) Tình trạng viêm mạn tính đường thở**, **(2) Tăng đáp ứng đường thở** và **(3) Tái cấu trúc đường thở**.
+
+---
+
+### 1.2. Sinh Lý Bệnh Miễn Dịch Học (Hen Tăng [[Bạch cầu]] Ái Toan / Hen Dị Ứng)
+
+Đối với hen trẻ em, sinh lý bệnh miễn dịch học nền tảng của các biến đổi bệnh học là **đáp ứng dị ứng mạn tính** của cơ địa dị ứng với dị nguyên hô hấp (dị nguyên không khí) trong môi trường, trong đó vai trò nòng cốt thuộc về **[[Bạch cầu]] ái toan (Eosinophil)** và **lympho T giúp đỡ loại 2 (Th2 – type 2 T helper cells)**, nên được gọi là **hen tăng bạch cầu ái toan (Eosinophilic asthma)**.
+
+- **Vai trò khởi đầu của biểu mô hô hấp:** Biểu mô hô hấp là cửa ngõ miễn dịch của hệ hô hấp và là nơi khởi đầu kích hoạt các đáp ứng miễn dịch và biến đổi bệnh học của hen. Sự tổn thương biểu mô hô hấp do các tác nhân nguy hại trong luồng khí hít vào (vi sinh vật, hóa chất, chất kích thích) tạo nên các kẽ hở trên thành đường dẫn khí, tạo điều kiện cho dị nguyên tiếp xúc với hệ thống miễn dịch.
+- **Chuỗi đáp ứng Cytokine tiền viêm:** Biểu mô bị tổn thương tăng sản xuất các hóa chất trung gian tiền viêm, đặc biệt là các Interleukin **IL-4, IL-5 và IL-13**:
+    - **IL-4 và IL-13:** Thúc đẩy quá trình biệt hóa lympho T sơ khai thành **Th2**, đồng thời kích thích lympho B chuyển lớp và sản xuất kháng thể **IgE đặc hiệu**.
+    - **IL-5:** Đóng vai trò hóa ứng động, chiêu mộ, kích thích sự phát triển và lôi kéo **bạch cầu ái toan (Eosinophil)** đến đường thở.
+- **Phản ứng phóng thích hóa chất trung gian cấp tính:** Sự tương tác giữa kháng thể IgE đặc hiệu với kháng nguyên tương ứng (dị nguyên hô hấp) kích hoạt các **dưỡng bào (Mast cells)**, **bạch cầu ái kiềm (Basophil)** và **bạch cầu ái toan (Eosinophil)** phóng thích **Histamine**, **Leukotriene** và các hóa chất trung gian gây viêm khác. Đáp ứng cấp tính này gây co thắt cơ trơn phế quản, [[Phù]] nề niêm mạc đường thở do tăng tính thấm mao mạch và tăng tiết đàm nhầy vào lòng đường thở.
+
+---
+
+#### TRÍCH XUẤT SƠ ĐỒ CƠ CHẾ BỆNH SINH HEN TRẺ EM
+
+- **Tên Hình/Sơ Đồ:** **Hình 13.1. Sinh bệnh học của hen / Hình 9.1. Cơ chế bệnh sinh hen trẻ em**.
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 1 (2020).pdf_ (Bài 13, trang 178) / _[Book] Nhi khoa YDS - Tập 1 (2025) - P2.md_ (Bài 9, trang 137) / _[Book] Nhi khoa YDS - Tập 3 - Hô hấp.pdf_ (Bài 6, trang 82).
+- **Mô Tả Chi Tiết:** Sơ đồ tổng hợp con đường tác động đa yếu tố trong sinh bệnh học hen phế quản ở trẻ em:
+    - Sự tương tác giữa **Yếu tố di truyền (Cơ địa dị ứng)** + **Môi trường (vi sinh vật, hóa chất, khói thuốc lá, mạt nhà)** + **Hệ vi sinh đường thở** $\rightarrow$ Dẫn đến **Viêm mạn tính đường thở** và **Tái cấu trúc đường thở**.
+    - **Viêm mạn tính đường thở** gây ra 3 hệ quả trực tiếp: (1) Tăng tiết đàm, (2) [[Phù]] nề niêm mạc đường thở, (3) Co thắt cơ trơn phế quản.
+    - Tình trạng Viêm mạn tính và Tái cấu trúc đường thở phối hợp dẫn đến **Tăng đáp ứng đường thở**.
+    - Khi phơi nhiễm với các **Yếu tố khởi phát** (dị nguyên, gắng sức, nhiễm trùng hô hấp, khói thuốc lá, cảm xúc, thay đổi thời tiết, ô nhiễm không khí) tác động lên đường thở bị tăng đáp ứng $\rightarrow$ Dẫn đến **Giới hạn luồng khí thở ra** $\rightarrow$ Biểu hiện **Triệu chứng hen** trên lâm sàng (khò khè, [[Khó thở]], ho, đau tức ngực, kéo dài thì thở ra).
+
+---
+
+#### TRÍCH XUẤT SƠ ĐỒ PHẢN ỨNG VIÊM DỊ ỨNG
+
+- **Tên Hình/Sơ Đồ:** **Hình 6.1 & Hình 6.2. Pha viêm cấp tính (mẫn cảm) và đáp ứng miễn dịch trong hen dị ứng**.
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 3 - Hô hấp.pdf_ (Bài 6, trang 82–83).
+- **Mô Tả Chi Tiết:** Sơ đồ minh họa quá trình mẫn cảm và đáp ứng viêm bùng phát:
+    - Dị nguyên hô hấp xâm nhập qua hàng rào biểu mô $\rightarrow$ Tế bào tua gai (DC) trình diện kháng nguyên kích hoạt T sơ khai thành Th2 $\rightarrow$ Th2 tiết IL-4, IL-13 kích thích B chuyển lớp tạo IgE đặc hiệu.
+    - Khi tái tiếp xúc dị nguyên, IgE gài nối trên Mast cell và Eosinophil kích hoạt phóng thích các độc tố, Cytokine (IL-3, IL-5, IL-9, GM-CSF) và TSLP, IL-25, IL-33 từ biểu mô tổn thương $\rightarrow$ Duy trì phản ứng viêm dị ứng mạn tính bùng phát.
+
+---
+
+### 1.3. Hiện Tượng Tái Cấu Trúc Đường Thở Và Tăng Đáp Ứng Đường Thở
+
+Sự tiếp xúc dai dẳng và lặp đi lặp lại với các dị nguyên hô hấp gây ra phản ứng viêm dị ứng mạn tính thể hiện bằng sự di cư tích lũy của các tế bào miễn dịch (bạch cầu ái toan, bạch cầu ái kiềm, đại thực bào, lympho B, lympho T, tế bào Mast) vào mô hô hấp.
+
+Sự tương tác giữa các tế bào miễn dịch, tế bào biểu mô và tế bào cấu trúc (nguyên bào sợi, nguyên bào sợi cơ, tế bào cơ trơn đường thở), mạch máu, mạch bạch huyết và dây thần kinh dẫn đến các biến đổi cấu trúc mạn tính gọi là **Tái cấu trúc đường thở (Airway Remodeling)**:
+
+1. **Tăng số lượng tế bào đài và tuyến dưới niêm:** Gây tăng tiết đàm nhầy đặc quánh.
+2. **Tăng lắng đọng chất nền ngoại bào:** Tích tụ collagen trong lớp lưới lamina ngay bên dưới màng đáy.
+3. **Tân sinh mạch máu và nguyên bào sợi cơ:** Gia tăng nguyên bào sợi cơ và tăng sinh mạng lưới mạch máu.
+4. **Tăng sinh và phì đại lớp cơ trơn đường thở:** Khối lượng cơ trơn phế quản gia tăng.
+5. **Tăng sinh thần kinh chứa Tachykinin:** Làm tăng cảm giác và tăng đáp ứng co thắt thần kinh nội sinh.
+
+**Hệ quả:** Tái cấu trúc đường thở hiệp đồng với viêm mạn tính gây **Tăng đáp ứng đường thở (Airway Hyperresponsiveness)**. Khi gặp yếu tố kích thích, cơ trơn phế quản co thắt dữ dội, niêm mạc phù nề và Lòng đường thở bị bít tắc bởi chất tiết, dẫn đến **giới hạn luồng khí thở ra** và xuất hiện cơn hen.
+
+---
+
+### 1.4. Thể Hen Không Tăng Bạch Cầu Ái Toan (Hen Tăng Bạch Cầu Đa Nhân Trung Tính)
+
+- Bên cạnh thể hen dị ứng tăng bạch cầu ái toan điển hình, các nghiên cứu ghi nhận một nhóm bệnh nhi hen không có tình trạng tăng bạch cầu ái toan mà tế bào viêm chiếm ưu thế trong mô đường thở là **bạch cầu đa nhân trung tính (Neutrophil)**.
+- Thuật ngữ chuyên môn gọi là **hen không tăng bạch cầu ái toan** hoặc **hen tăng bạch cầu đa nhân trung tính (Neutrophilic / Non-eosinophilic asthma)**.
+- **Bệnh cảnh xuất hiện:** Loại hen này thường gặp nhất ở nhóm bệnh nhi có **cơn hen khởi phát do nhiễm siêu vi hô hấp**.
+- **Đặc điểm biến đổi mô học:** Mặc dù cơ chế viêm khác biệt, những trẻ bị hen tăng bạch cầu đa nhân trung tính vẫn xuất hiện những thay đổi bệnh học về **tái cấu trúc đường thở** tương tự như trẻ bị hen tăng bạch cầu ái toan.
+
+---
+
+### 1.5. Sinh Lý Bệnh Trong Các Kiểu Hình Khởi Phát Đặc Biệt
+
+#### 1.5.1. Khởi Phát Do Nhiễm Siêu Vi Hô Hấp
+
+- Nhiễm siêu vi hô hấp (đặc biệt là RSV ở trẻ nhũ nhi và Rhinovirus ở trẻ tiền học đường) là yếu tố khởi phát cơn hen cấp thường gặp nhất.
+- **Cơ chế:**
+    - Sự tổn thương biểu mô hô hấp do siêu vi thúc đẩy giải phóng các cytokine **TSLP, IL-25 và IL-33**, kích hoạt đáp ứng miễn dịch loại 2 gây viêm mạn tính.
+    - Tổn thương biểu mô cũng làm suy giảm sản xuất **Interferon ($IFN-\alpha, IFN-\gamma$)** – làm giảm khả năng kháng siêu vi của cơ thể, tạo điều kiện cho siêu vi tăng sinh không kiểm soát, đồng thời mở đường cho dị nguyên xâm nhập bùng phát cơn hen cấp.
+    - Nhiễm siêu vi làm tăng quá trình chuyển hóa acid arachidonic qua con đường 5-lipoxygenase, làm gia tăng sản xuất các **cysteinyl leukotriene** từ tế bào Mast, bạch cầu ái toan và bạch cầu đa nhân trung tính, gây co thắt phế quản và tăng đáp ứng đường thở.
+
+---
+
+#### TRÍCH XUẤT HÌNH HỌA ĐÁP ỨNG KHÁNG SIÊU VI TRONG HEN
+
+- **Tên Hình/Sơ Đồ:** **Hình 6.3 & Hình 6.4. Đáp ứng kháng siêu vi trên đường thở viêm dị ứng mạn tính và cơ chế khởi phát cơn hen cấp do siêu vi**.
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 3 - Hô hấp.pdf_ (Bài 6, trang 85–86).
+- **Mô Tả Chi Tiết:**
+    - _Hình 6.3:_ So sánh đáp ứng giữa đường thở bình thường (tiết đủ $IFN-\alpha$ giúp giảm sản sinh virus $\rightarrow$ bệnh nhẹ) và đường thở viêm dị ứng (giảm sản sinh $IFN-\alpha$ do IgE gắn trên Fc$\epsilon$RI của pDC $\rightarrow$ virus tăng sinh không kiểm soát $\rightarrow$ gây khò khè, cơn hen cấp).
+    - _Hình 6.4:_ Sơ đồ minh họa sự suy giảm đáp ứng Interferon kết hợp tăng đáp ứng Th2 ở bệnh nhi hen, dẫn đến hoại tử tế bào biểu mô và bùng phát phản ứng viêm quá mức khi nhiễm Rhinovirus.
+
+---
+
+#### 1.5.2. Khởi Phát Do Vận Động Gắng Sức
+
+- Nhu cầu tăng thông khí khi vận động gắng sức khiến luồng khí hít vào không kịp làm ấm và làm ẩm đủ, dẫn đến **sự [[Mất nước]] và tăng áp suất thẩm thấu** ở bề mặt niêm mạc đường thở.
+- **Cơ chế:**
+    - Sự thay đổi áp suất thẩm thấu và co rút tế bào kích hoạt thần kinh hướng tâm (qua kênh TRPA1) phóng thích các chất dẫn truyền thần kinh **Substance P và Neurokinin A**, gây phản ứng viêm do thần kinh.
+    - Tế bào Mast, đại thực bào và bạch cầu ái toan bị kích thích phóng thích ồ ạt các **cysteinyl leukotriene ($LTC_4, LTD_4, LTE_4$)**, **Histamine** và **Prostaglandin**, đồng thời lôi kéo bạch cầu trung tính ($Neutrophil$) đến đường thở $\rightarrow$ Gây co thắt cơ trơn phế quản cấp tính ngay sau khi gắng sức.
+
+---
+
+#### TRÍCH XUẤT SƠ ĐỒ CO THẮT PHẾ QUẢN DO GẮNG SỨC
+
+- **Tên Hình/Sơ Đồ:** **Hình 6.5. Cơ chế sinh lý bệnh của co thắt phế quản do vận động gắng sức**.
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 3 - Hô hấp.pdf_ (Bài 6, trang 87).
+- **Mô Tả Chi Tiết:** Sơ đồ chuỗi phản ứng sinh lý bệnh khi gắng sức: Tăng thông khí $\rightarrow$ Đường thở [[Mất nước]] $\rightarrow$ Tăng áp suất thẩm thấu $\rightarrow$ Kích hoạt tế bào Mast phóng thích CysLT, Histamine, Prostaglandin VÀ kích thích thần kinh hướng tâm phóng thích Substance P, Neurokinin A $\rightarrow$ Co thắt cơ trơn phế quản và phù nề đường thở.
+
+---
+
+## 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Nguyễn Thùy Vân Thảo. Bài 13: Hen trẻ em. Trong: _Nhi khoa - Tập 1_. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:176-191.
+2. Nguyễn Thùy Vân Thảo, Nguyễn Thái Sơn. Bài 9: Hen trẻ em. Trong: _Nhi khoa - Tập 1_. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Đại học Quốc gia TP.HCM; 2025:135-161.
+3. Nguyễn Thùy Vân Thảo, Phan Hữu Nguyệt Diễm. Bài 6: Phòng ngừa hen trẻ em. Trong: _Nhi khoa - Tập 3 - Hô hấp_. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:79-98.
+
+---
+
+🫁 _Bài học về **Sinh lý bệnh của hen phế quản ở trẻ em** đã được tổng hợp trọn vẹn, sâu sắc và bám sát chính xác tuyệt đối các tài liệu nguồn YDS. Bạn có muốn tiếp tục biên soạn bài học theo cấu trúc này cho phần tiếp theo: **Chẩn đoán Hen & Cơn hen cấp**, hoặc **Các phác đồ điều trị cắt cơn và dự phòng hen theo GINA** không?_

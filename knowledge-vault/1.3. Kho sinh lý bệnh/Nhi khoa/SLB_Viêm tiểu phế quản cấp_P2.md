@@ -1,0 +1,90 @@
+---
+title: "Viêm tiểu phế quản cấp"
+part: "P2"
+aliases:
+  - "Viêm tiểu phế quản cấp"
+keywords:
+  - "viêm tiểu phế quản cấp"
+  - "hô hấp"
+  - "nhi khoa"
+specialty: "Hô hấp"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/ho-hap"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+# NỘI DUNG SINH LÝ HỌC CHI TIẾT
+
+---
+
+## 1. Cơ Chế Bệnh Sinh Viêm Tiểu Phế Quản Cấp
+
+### 1.1. Tổn Thương Niêm Mạc Tiểu Phế Quản Và Tắc Nghẽn Đường Dẫn Khí Nhỏ
+
+- **Đặc điểm giải phẫu học thuận lợi:** Ở trẻ dưới 2 tuổi, số lượng phế nang chưa phát triển hoàn thiện và còn ít, làm cho nhiễm trùng đường hô hấp dưới ở lứa tuổi này dễ xảy ra dưới bệnh cảnh viêm tiểu phế quản.
+- **Thâm nhập và nhân lên của tác nhân:** Virus hợp bào hô hấp (RSV) – tác nhân chính gây bệnh – sau khi xâm nhập và nhân lên ở niêm mạc đường hô hấp trên, virus di chuyển xuống đường hô hấp dưới, đến cố định và phát triển trên các tế bào biểu mô tiểu phế quản.
+- **Tổn thương vi thể:** Quá trình nhân lên của virus gây ra các biến đổi mô học tại tiểu phế quản bao gồm:
+    - Hoại tử lớp biểu mô hô hấp.
+    - Phá hủy các tế bào nhung mao (lông chuyển).
+    - Tẩm nhuận các tế bào đơn nhân.
+    - Lớp dưới niêm mạc bị [[Phù]] nề nhưng không có sự hủy hoại các sợi collagen và sợi đàn hồi.
+- **Cơ chế gây tắc nghẽn lòng đường thở:**
+    - Các mảnh vỡ tế bào bị hoại tử bong tróc kết hợp với sợi fibrin và dịch tăng tiết hình thành nên các **nút nhầy tắc nghẽn** trong lòng tiểu phế quản.
+    - Hiện tượng [[Phù]] nề thành tiểu phế quản cùng các nút nhầy làm tăng sức cản (kháng lực) đường thở nhỏ ở cả thì hít vào và thở ra.
+    - _Hiện tượng ứ khí phế nang và khò khè:_ Do bán kính đường thở nhỏ hơn trong thì thở ra, sự tắc nghẽn làm cho khí bị nhốt lại ở phần xa phế nang, dẫn đến triệu chứng khò khè, [[Khó thở]] thì thở ra, ứ khí phế nang và lồng ngực căng phồng.
+    - _Cơ chế xẹp [[Phổi]]:_ Nếu nút nhầy và hiện tượng phù nề gây **tắc nghẽn hoàn toàn** lòng tiểu phế quản, lượng khí bị nhốt ở phần xa sẽ bị hấp thu hoàn toàn vào máu, dẫn đến hiện tượng xẹp [[Phổi]] (thường gặp nhất ở thùy trên phổi phải).
+
+---
+
+#### TRÍCH XUẤT HÌNH HỌA CẤU TRÚC VIRUS RSV
+
+- **Tên Hình/Sơ Đồ:** **Hình 7.1. Cấu trúc của RSV (Respiratory Syncytial Virus)**.
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 1 (2025) - P2.md_ (Bài 7, trang 106).
+- **Mô Tả Chi Tiết:** Sơ đồ cấu trúc mô phỏng của Virus Hợp bào Hô hấp (RSV) gồm lớp màng kép lipid (_Lipid bilayer_), các protein xuyên màng (_Fusion protein_, _Attachment protein G_, _Small hydrophobic protein_), lớp protein nền (_Matrix proteins_) và phức hợp lõi Polymerase - Nucleoprotein - Phosphoprotein bên trong.
+
+---
+
+#### TRÍCH XUẤT HÌNH HỌA TIỂU PHẾ QUẢN VIÊM
+
+- **Tên Hình/Sơ Đồ:** **Hình 11.2 / Hình 7.2. Hình ảnh tiểu phế quản viêm, phù nề và tăng tiết nhày trong viêm tiểu phế quản**.
+- **Thuộc Tài Liệu:** _[Book] Nhi khoa YDS - Tập 1 (2020).pdf_ (Bài 11, trang 147) / _[Book] Nhi khoa YDS - Tập 1 (2025) - P2.md_ (Bài 7, trang 107).
+- **Mô Tả Chi Tiết:** Sơ đồ so sánh đối chiếu giữa tiểu phế quản bình thường (_Normal bronchiole_) và tiểu phế quản bị bệnh lý (_Inflamed bronchiole_): Thành tiểu phế quản bị viêm dày lên rõ rệt do phù nề niêm mạc và tẩm nhuận tế bào viêm; lòng đường thở bị thu hẹp nặng nề do tích tụ chất nhầy (_Mucus_) và nút nhầy xơ tế bào hoại tử.
+
+---
+
+### 1.2. Biến Đổi Cơ Học Hô Hấp Và Rối Loạn Trao Đổi Khí
+
+- **Bất thường cơ học hô hấp:**
+    - Thể tích cuối kỳ thở ra gia tăng do hiện tượng nhốt khí phế nang.
+    - Sự đàn hồi của phổi giảm do phổi bị căng phồng quá mức.
+    - Kháng lực (sức cản) đường thở tăng cao, chủ yếu trong thì thở ra, làm tăng công hô hấp của trẻ.
+- **Rối loạn trao đổi khí và thăng bằng toan - kiềm:**
+    - **Giảm Oxy máu ($PaO_2$ giảm):** Xuất hiện chủ yếu do tình trạng **bất tương xứng giữa thông khí và tưới máu ($V/Q$)** tại các vùng phổi bị tắc nghẽn hoặc xẹp.
+    - **Tăng Carbon Dioxide máu ($PaCO_2$ tăng):** Xảy ra khi tình trạng tắc nghẽn đường thở diễn tiến rất nặng hoặc xẹp phổi diện rộng làm giảm thông khí phế nang hiệu quả.
+    - **Rối loạn toan - kiềm:** Sự tích tụ $CO_2$ gây ra **toan hô hấp**, nếu kéo dài và kèm thiếu oxy mô nặng sẽ dẫn đến **toan chuyển hóa** phối hợp.
+
+---
+
+### 1.3. Vai Trò Của Miễn Dịch Ký Chủ, Tác Nhân Virus Và Dấu Ấn Sinh Học
+
+Sự diễn tiến và mức độ nặng của viêm tiểu phế quản cấp phụ thuộc vào sự tương tác giữa yếu tố đặc hiệu của virus và phản ứng miễn dịch của ký chủ:
+
+- **Yếu tố tác nhân virus (RSV):** Tải lượng kháng nguyên virus cao và tác dụng gây độc tế bào trực tiếp làm tổn thương biểu mô hô hấp. Sự phát tán virus cao hơn và kéo dài hơn ở nhóm trẻ nhỏ tuổi và trẻ mắc bệnh nặng.
+- **Yếu tố miễn dịch ký chủ:** Đáp ứng [[Bạch cầu]] trung tính ban đầu, sự thiếu hụt đáp ứng của tế bào T thích ứng, kết hợp với hệ vi sinh hô hấp mang ưu thế _Streptococcus pneumoniae_ hoặc _Haemophilus influenzae_ (hoặc đồng nhiễm vi khuẩn) làm gia tăng phản ứng viêm nghiêm trọng.
+- **Các dấu ấn sinh học (Biomarkers) phản ánh độ nặng:**
+    - _Trong chất tiết đường hô hấp:_ Gia tăng nồng độ Interleukin **IL-33** và **IL-13**.
+    - _Protein Surfactant:_ Các đa hình của protein surfactant A có liên quan đến việc tăng nguy cơ trẻ phải nhập vào đơn vị chăm sóc tích cực (ICU).
+    - _Trong huyết thanh:_ Nồng độ **cysteinyl leukotriene** tăng cao (vẫn còn tăng kéo dài 1 tháng sau nhiễm virus); đồng thời gia tăng **cathelicidin**, **lactate dehydrogenase (LDH)**, **caspase** và **IL-15**.
+
+---
+
+# TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN AMA
+
+1. Phạm Thị Minh Hồng. Bài 11: Viêm tiểu phế quản cấp. Trong: _Nhi khoa - Tập 1_. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:145-156.
+2. Phạm Thị Minh Hồng. Bài 7: Viêm tiểu phế quản cấp. Trong: _Nhi khoa - Tập 1_. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Đại học Quốc gia TP.HCM; 2025:105-117.
+3. Phan Hữu Nguyệt Diễm. Bài 5: Đặc điểm giải phẫu và sinh lý hệ hô hấp trẻ em. Trong: _Nhi khoa - Tập 1_. Bộ môn Nhi - Đại học Y Dược TP. Hồ Chí Minh. NXB Y học; 2020:97-104.

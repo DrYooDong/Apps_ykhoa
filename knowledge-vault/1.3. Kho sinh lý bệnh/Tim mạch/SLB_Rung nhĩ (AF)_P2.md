@@ -1,0 +1,221 @@
+---
+title: "Rung nhĩ (AF)"
+part: "P2"
+aliases:
+  - "Rung nhĩ (AF)"
+  - "Atrial Fibrillation"
+  - "AF"
+  - "Rung tam nhi"
+  - "Loan nhip tim"
+keywords:
+  - "rung nhĩ (af)"
+  - "tim mạch"
+  - "cha2ds2-vasc"
+  - "has-bled"
+  - "noac"
+  - "doac"
+  - "warfarin"
+  - "dien tam do"
+  - "song f"
+  - "kiem soat nhip"
+  - "kiem soat tan so"
+icd10:
+  - "I48"
+  - "I48.0"
+  - "I48.9"
+specialty: "Tim mạch"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+# BÀI HỌC: SINH LÝ BỆNH RUNG NHĨ (PHẦN 2)
+
+## 1. Nội Dung Sinh Lý Học Chi Tiết
+
+### Tái Cấu Trúc Cấu Trúc (Structural Remodeling) Và Cơ Chế Xơ Hóa Tâm Nhĩ
+
+Sự tiến triển của rung nhĩ từ thể kịch phát sang các thể dai dẳng và vĩnh viễn đại diện cho một quá trình biến đổi chất nền mạn tính, trong đó **tái cấu trúc cấu trúc (structural remodeling)** đóng vai trò cốt lõi. Trọng tâm của quá trình này là sự tích tụ chất xơ và xơ hóa cơ tâm nhĩ, làm biến đổi vĩnh viễn tính toàn vẹn cơ học và điện học của buồng tim.
+
+#### 1. Cơ chế hình thành xơ hóa mô kẽ (Interstitial Fibrosis) ở cấp độ tế bào
+
+Xơ hóa tâm nhĩ là đặc điểm bệnh học đặc trưng của **bệnh cơ tim nhĩ (atrial cardiomyopathy)**. Ở trạng thái sinh lý, các tế bào cơ tim liên kết chặt chẽ với nhau để đảm bảo dẫn truyền xung động đồng bộ và nhanh chóng. Khi chịu các kích thích bệnh lý (quá tải thể tích, tăng áp lực mạn tính hoặc stress chuyển hóa), quá trình xơ hóa diễn ra qua các bước phức tạp:
+
+- **Sự chuyển dạng tế bào:** Các nguyên bào sợi tâm nhĩ (atrial fibroblasts) bị kích hoạt và tăng sinh, chuyển dạng thành các **nguyên bào sợi cơ (myofibroblasts)** có hoạt tính bài tiết cực mạnh.
+- **Lắng đọng chất nền ngoại bào (ECM):** Các myofibroblast tăng cường tổng hợp và giải phóng collagen (chủ yếu là collagen type I và III) vào khoang mô kẽ kề cận. Sự tích tụ collagen quá mức này tạo nên các dải xơ bao quanh và cô lập vật lý các bó cơ tim.
+- **Phá vỡ liên kết điện học:** Các sợi xơ ngăn cản sự kết nối trực tiếp giữa các tế bào cơ tim kế cận qua đĩa đệm, làm giảm các **khe liên kết (gap junctions)** được cấu tạo bởi connexin 40 (Cx40) và connexin 43 (Cx43).
+- **Tương tác trực tiếp giữa cơ tim và nguyên bào sợi:** Các nguyên bào sợi tăng sinh có thể tạo liên kết điện học trực tiếp với tế bào cơ tim thông qua các liên kết khe bất thường. Do nguyên bào sợi có điện thế màng lúc nghỉ phân cực kém hơn, sự kết nối này làm khử cực một phần tế bào cơ tim, rút ngắn thời gian điện thế hoạt động (APD) và tạo ra block dẫn truyền cục bộ.
+
+#### 2. Kích hoạt Hệ Renin-Angiotensin-Aldosterone (RAAS) mạn tính
+
+Hệ RAAS bị kích hoạt mạnh mẽ trong các bệnh lý đồng mắc phổ biến như tăng huyết áp, béo phì và suy tim mạn tính.
+
+- **Angiotensin II** hoạt động như một chất kích thích profibrotic cực mạnh thông qua việc gắn vào các thụ thể AT1 trên bề mặt nguyên bào sợi, trực tiếp kích hoạt con đường tín hiệu nội bào thúc đẩy tăng sinh và tổng hợp collagen.
+- Sự kích hoạt RAAS mạn tính cũng thúc đẩy sản sinh các **gốc tự do oxy hóa (Reactive Oxygen Species - ROS)** trong hệ thần kinh giao cảm và tại mô tim, làm trầm trọng thêm quá trình tổn thương tế bào.
+
+#### 3. Stress Oxy Hóa và hoạt hóa các dòng điện bất thường
+
+Sự mất cân bằng giữa sản sinh ROS và hệ thống chống oxy hóa nội bào gây ra stress oxy hóa mạn tính, tác động lên nhiều đích phân tử trong tế bào cơ tim nhĩ:
+
+- **Hoạt hóa kinase:** ROS hoạt hóa trực tiếp enzym CaMKII (Calcium-Calmodulin dependent Protein Kinase II) và JNK2 (c-Jun N-terminal kinase 2). CaMKII và JNK2 bị phosphoryl hóa sẽ kích thích mở kênh RyR2 trong thời kỳ tâm trương, gây rò rỉ Canxi tự phát từ mạng lưới nội chất.
+- **Biến đổi kênh ion:** Stress oxy hóa làm suy giảm dòng Canxi type L (\(I_{Ca,L}\)), đồng thời làm tăng dòng Natri muộn (\(I_{Na,L}\)), tạo ra chất nền điện học không ổn định, thúc đẩy hiện tượng sau khử cực sớm (EADs) và sau khử cực muộn (DADs).
+- **Tạo vòng lặp viêm:** ROS kích hoạt trực tiếp yếu tố phiên mã NF-kB và thể viêm NLRP3 (NLRP3 inflammasome) trong tế bào cơ tim, thúc đẩy phản ứng viêm mạn tính cục bộ.
+
+#### 4. Phản ứng viêm mạn tính hệ thống và viêm khu trú tại cơ tim nhĩ
+
+- Viêm hệ thống (biểu hiện qua sự tăng cao của các marker như CRP, IL-6, TNF-alpha) có liên quan mật thiết đến sự khởi phát và duy trì rung nhĩ.
+- **Myeloperoxidase (MPO)**, một enzym oxidase được giải phóng từ bạch cầu trung tính và đại thực bào thâm nhiễm, hoạt động như một chất trung gian hóa học profibrotic mạnh mẽ. MPO trực tiếp kích hoạt metalloproteinase chất nền (MMPs) và hoạt hóa nguyên bào sợi cơ, dẫn đến xơ hóa mô kẽ tâm nhĩ trái và tăng tính dễ khởi phát của rung nhĩ.
+
+#### 5. Thâm nhiễm mỡ thượng tâm mạc (Epicardial Adipose Tissue - EAT)
+
+- Mô mỡ ngoài màng tim (EAT) kề cận thành tâm nhĩ trái phát triển rất mạnh ở bệnh nhân béo phì và hội chứng chuyển hóa.
+- **Thâm nhiễm trực tiếp (Fatty Infiltration):** Các tế bào mỡ (adipocytes) từ lớp thượng tâm mạc len lỏi và thâm nhiễm trực tiếp vào thành cơ tim nhĩ, chia cắt cấu trúc giải phẫu liên tục của các bó cơ tim. Sự xen kẽ của các dải mỡ này tạo ra các rướng ngại vật giải phẫu, bắt buộc xung động điện học phải dẫn truyền zig-zag mỏi mệt, làm giảm đáng kể vận tốc dẫn truyền (\(CV\)) và tăng tính không đồng nhất dẫn truyền.
+- **Tác động paracrine (cận tiết):** EAT hoạt động như một cơ quan nội tiết/cận tiết giải phóng trực tiếp các cytokine tiền viêm (chủ yếu là **Interleukin-1beta [IL-1\(\beta\)]**, IL-6, TNF-alpha) và các chemokine vào mô kẽ nhĩ kế cận. Các chất này kích hoạt các con đường xơ hóa nội mạc và gây stress oxy hóa cục bộ cực mạnh, tạo ra một chất nền dễ vào lại bền vững.
+
+---
+
+### Trích Xuất Sơ Đồ Cơ Chế Từ Tài Liệu Nguồn
+
+#### **Sơ đồ Cơ Chế 4: Tái Cấu Trúc Điện Học Và Cấu Trúc Nhĩ Do Sự Tác Động Của Mô Mỡ Ngoài Màng Tim (EAT)**
+
+- **Nguồn tài liệu:** _2024 EHRA/HRS/APHRS/LAHRS Expert Consensus Statement on Catheter and Surgical Ablation of Atrial Fibrillation_ (Figure 1) phối hợp mô tả từ _Postoperative Atrial Fibrillation: From Mechanisms to Treatment_ (European Heart Journal, 2023).
+- **Mô tả chi tiết sơ đồ:**
+    - **Yếu tố thúc đẩy:** Béo phì mạn tính và rối loạn chuyển hóa hệ thống gây tích tụ và phì đại mô mỡ ngoài màng tim (EAT) kề cận thành tự do tâm nhĩ trái.
+    - **Con đường tác động song song:**
+        1. **Tác động cơ học vật lý (Direct Infiltration):** Adipocyte thâm nhiễm xuyên thành từ màng ngoài tim vào lớp cơ tim giữa \(\rightarrow\) Chia cắt vật lý các sợi cơ tim \(\rightarrow\) Gây block dẫn truyền tại chỗ và làm chậm vận tốc dẫn truyền (\(CV\)).
+        2. **Tác động hóa học cận tiết (Paracrine Secretome):** EAT tiết ra một lượng lớn Interleukin-1beta (IL-1\(\beta\)), các cytokine tiền viêm và các adipokine trực tiếp vào mô kẽ cơ tim \(\rightarrow\) Kích hoạt nguyên bào sợi cơ \(\rightarrow\) Lắng đọng Collagen ngoại bào (Atrial Fibrosis) \(\rightarrow\) Gây bất đồng hóa dẫn truyền nội mạc - ngoại mạc (Endo-epi asynchrony).
+    - **Kết quả:** Sự kết hợp giữa xơ hóa mô kẽ và thâm nhiễm mỡ tạo thành một **chất nền dễ vào lại (Reentry-prone substrate)** cực kỳ bền vững, hỗ trợ các rotor và các vòng vào lại kích thước nhỏ tự duy trì mạn tính.
+
+---
+
+### Rung Nhĩ Sau Phẫu Thuật (Postoperative Atrial Fibrillation - POAF)
+
+Rung nhĩ sau phẫu thuật (POAF) là biến chứng rối loạn nhịp tim phổ biến nhất sau phẫu thuật tim mạch và lồng ngực, gây kéo dài thời gian nằm viện, tăng chi phí điều trị và làm tăng nguy cơ đột quỵ dài hạn.
+
+```
+[PHẪU THUẬT TIM CÓ TUẦN HOÀN NGOÀI CƠ THỂ]
+                  │
+                  ├───────────────────────────────┐
+                  ▼                               ▼
+     [Tổn thương cơ học nhĩ]             [Thiếu máu - Tái tưới máu]
+(Mở nhĩ, canun, thao tác van)         ( Cardioplegia, kẹp động mạch chủ)
+                  │                               ▼
+                  ▼                         [Quá tải Canxi]
+     [Dẫn truyền bất hướng tính]                  │
+                  │                               │
+                  └───────────────┬───────────────┘
+                                  ▼
+                     [VÒNG VÀO LẠI / TRIGGER]
+                                  ▲
+                                  │ (Thúc đẩy khởi kích)
+                  ┌───────────────┴───────────────┐
+                  ▼                               ▼
+    [Viêm màng ngoài tim vô trùng]       [Tăng hoạt tính Giao cảm]
+ (Máu đọng khoang màng tim, dịch gỉ)   (Đau đau, stress, catecholamine)
+                  │                               ▼
+                  ▼                         [Sau khử cực]
+  [Connexin 40/43 giảm & phân tán ERP]       (DADs / EADs)
+                  │                               │
+                  └───────────────┬───────────────┘
+                                  ▼
+                         [KHỞI PHÁT POAF]
+```
+
+#### 1. Phân bố dịch tễ học và tỷ lệ mới mắc POAF
+
+Đặc điểm dịch tễ học của POAF có sự khác biệt rất rõ ràng dựa trên loại hình phẫu thuật, phản ánh mức độ xâm lấn và mức độ tổn thương cơ tim nhĩ trực tiếp:
+
+##### **Bảng 1: Tỷ lệ mới mắc POAF theo loại phẫu thuật**
+
+- **Nguồn dữ liệu:** _Postoperative Atrial Fibrillation: From Mechanisms to Treatment_ (State of the Art Review - European Heart Journal, 2023).
+
+|Loại Hình Phẫu Thuật|Tỷ Lệ Mới Mắc POAF (%)|Đặc Điểm Bệnh Sinh Chính|
+|:--|:--|:--|
+|**Phẫu thuật Tim mạch (Cardiac Surgery)**|**30% - 50% (Chung)**|Tổn thương nhĩ trực tiếp, viêm hệ thống nặng, tràn dịch màng tim|
+|* Bắc cầu chủ vành (CABG) đơn thuần|~20%|Thiếu máu cơ tim nhĩ, cường giao cảm phản ứng|
+|* Phẫu thuật van tim (Valve surgery)|40% - 50%|Co kéo trực tiếp mô nhĩ kề van, tăng áp lực nhĩ trái có sẵn|
+|* Phẫu thuật động mạch chủ|~30%|Thao tác kẹp quai động mạch chủ, phản ứng viêm nội mạc|
+|* Ghép tim (Heart transplant)|~4%|Tỷ lệ thấp do tim hiến tặng bị cắt thần kinh tự chủ (denervation)|
+|**Phẫu thuật Lồng ngực (Thoracic Surgery)**|**~15% (Chung)**|Xâm lấn khoang màng phổi, kích thích dây phế vị|
+|* Cắt phổi toàn bộ (Pneumonectomy)|~30%|Giảm thể tích giường mao mạch phổi, quá tải áp lực nhĩ phải|
+|**Phẫu thuật ngoài lồng ngực khác**|**0.4% - 15%**|Căng thẳng phẫu thuật, mất dịch, rối loạn điện giải|
+
+#### 2. Các cơ chế sinh lý bệnh đặc thù của POAF
+
+Khác với rung nhĩ không do phẫu thuật (non-surgical AF), cơ chế bệnh sinh của POAF mang tính chất cấp tính, đa yếu tố và liên quan trực tiếp đến các biến đổi sinh lý trong cuộc mổ:
+
+- **Tổn thương cơ học trực tiếp (Direct Myocardial Injury):** Việc mở nhĩ phải để đặt canun tĩnh mạch hoặc co kéo, thao tác khâu trực tiếp vào mô cơ tim kề van trong phẫu thuật van hai lá/ba lá tạo ra các tổn thương vi cấu trúc. Tổn thương này làm mất tính đồng nhất và tăng tính bất hướng tính dẫn truyền (anisotropic conduction), tạo điều kiện cho các vòng vào lại xoay vòng.
+- **Viêm màng ngoài tim vô trùng (Sterile Pericarditis) và biến đổi Connexin:** Phản ứng viêm cục bộ tại khoang màng tim bùng phát mạnh mẽ sau mổ (đỉnh điểm nồng độ CRP máu trùng khớp hoàn hảo với đỉnh điểm xuất hiện POAF từ ngày thứ 2 đến ngày thứ 4). Viêm màng tim kích hoạt các nguyên bào sợi thượng tâm mạc, dẫn đến mất tế bào cơ tim lớp màng ngoài và **giảm mạnh biểu hiện Connexin 40 và Connexin 43** ở lớp màng ngoài và lớp cơ tim giữa. Sự mất kết nối khe này gây chậm dẫn truyền không đồng đều và cực kỳ dễ sinh loạn nhịp.
+- **Máu đọng khoang màng tim (Shed mediastinal blood):** Lượng máu còn sót lại trong khoang màng tim sau mổ bị oxy hóa nhanh chóng, giải phóng ion sắt tự do và thúc đẩy stress oxy hóa, gây kích ứng trực tiếp lên lớp màng ngoài tim của tâm nhĩ kế cận.
+- **IL-1\(\beta\) từ mỡ ngoài màng tim (EAT):** Nghiên cứu proteomic cho thấy EAT ở bệnh nhân phát triển POAF tiết ra lượng **Interleukin-1beta (IL-1\(\beta\))** cao vượt trội, trực tiếp ức chế tốc độ dẫn truyền và làm phân tán thời kỳ trơ của cơ tim nhĩ.
+- **Tổn thương thiếu máu cục bộ - tái tưới máu (Ischemia-Reperfusion Injury):** Quá trình ngừng tim bằng dung dịch liệt tim (cardioplegic arrest) gây thiếu máu cơ tim nhĩ tạm thời, tích tụ gốc tự do và gây quá tải Canxi nội bào khi mở kẹp động mạch chủ tái tưới máu.
+- **Cường giao cảm phản ứng cấp tính (Autonomic modulation):** Cơn bão catecholamine sau phẫu thuật do đau đớn, lo âu, biến động thể tích tuần hoàn và việc sử dụng các thuốc vận mạch kích hoạt mạnh mẽ các thụ thể beta-adrenergic, thúc đẩy quá tải Canxi và tạo ra các sau khử cực muộn (DADs) đóng vai trò trigger khởi kích POAF.
+
+#### 3. Cơ sở khoa học của các biện pháp dự phòng POAF hiệu quả
+
+Hiểu rõ cơ chế bệnh sinh giúp tối ưu hóa chiến lược dự phòng POAF trên lâm sàng:
+
+- **Liệu pháp Chẹn Beta và Amiodarone:** Việc duy trì hoặc tái introducion sớm thuốc chẹn beta và amiodarone có tác dụng ức chế trực tiếp trigger cường giao cảm và bảo vệ tế bào khỏi quá tải Canxi màng tế bào.
+- **Mở màng ngoài tim sau bên trái (Posterior Left Pericardiotomy - PLP):** Đây là biện pháp can thiệp ngoại khoa cơ học mang lại hiệu quả dự phòng cao vượt trội. Bằng cách rạch một đường mở nhỏ ở phần sau màng ngoài tim để dẫn lưu toàn bộ dịch gỉ viêm và máu đọng (shed mediastinal blood) trực tiếp vào khoang màng phổi trái, PLP loại bỏ hoàn toàn trigger hóa học gây viêm màng tim vô trùng và tràn dịch màng ngoài tim. Thử nghiệm lâm sàng ngẫu nhiên **PALACS** đã chứng minh PLP giúp giảm tỷ lệ xuất hiện POAF một cách ngoạn mục từ **32% xuống còn 17%** (OR 0.44; \(P = 0.0007\)).
+
+---
+
+### Bệnh Cơ Tim Nhĩ (Atrial Cardiomyopathy) Và Diễn Tiến "Rung Nhĩ Tự Duy Trì Rung Nhĩ" (AF Begets AF)
+
+"Rung nhĩ tự duy trì rung nhĩ" (AF begets AF) là nguyên lý kinh điển mô tả xu hướng tự tiến triển không thể đảo ngược của bệnh lý này nếu không được can thiệp khôi phục nhịp xoang sớm.
+
+#### 1. Khái niệm Bệnh cơ tim nhĩ (Atrial Cardiomyopathy) - "Common Soil" của Suy tim và Rung nhĩ
+
+Bệnh cơ tim nhĩ được định nghĩa là bất kỳ sự thay đổi phức tạp nào về cấu trúc, cấu trúc mô học, hoạt động co bóp hoặc điện sinh lý của tâm nhĩ có khả năng dẫn đến các biểu hiện lâm sàng liên quan.
+
+- Bệnh cơ tim nhĩ là chất nền cơ học mạn tính. Nó hoạt động như một **"mảnh đất chung" (common soil)** liên kết chặt chẽ và thúc đẩy lẫn nhau giữa suy tim (đặc biệt là HFpEF) và rung nhĩ thông qua các cơ chế quá tải áp lực, giãn buồng tim và xơ hóa tế bào.
+
+#### 2. Vòng xoáy tiến triển thời gian: Từ điện học đến cấu trúc
+
+Diễn tiến của rung nhĩ từ cơn kịch phát ngắn sang dai dẳng diễn ra qua hai pha tái cấu trúc có mốc thời gian hoàn toàn khác biệt:
+
+```
+[RUNG NHĨ KHỞI PHÁT]
+         │
+         ▼ (Vài ngày đầu)
+[TÁI CẤU TRÚC ĐIỆN HỌC KHẨN CẤP]
+- Giảm dòng Canxi (ICa,L) để tự bảo vệ tế bào khỏi quá tải Ca2+
+- Tăng hoạt dòng Kali (IK1)
+         │
+         ▼
+- APD và ERP của tâm nhĩ bị rút ngắn cực hạn
+- Bước sóng dẫn truyền (λ = ERP x CV) giảm mạnh
+         │
+         ▼
+[Duy trì các vòng vào lại nhỏ hỗn loạn dễ dàng]
+         │
+         ▼ (Kéo dài 6 - 12 tháng)
+[TÁI CẤU TRÚC CẤU TRÚC MUỘN]
+- Kích thích cơ học tần số cao hoạt hóa trực tiếp Fibroblast
+- Lắng đọng Collagen mô kẽ (Xơ hóa vĩnh viễn)
+         │
+         ▼
+[TÂM NHĨ GIÃN RỘNG & PHÂN LY ĐIỆN HỌC VĨNH VIỄN]
+```
+
+1. **Tái cấu trúc điện học cấp tính (Electrical Remodeling):** Diễn ra rất nhanh chỉ trong vòng **vài ngày đầu tiên** sau khi rung nhĩ khởi phát. Để tự bảo vệ trước tình trạng kích thích tần số cực nhanh (300-500 lần/phút) gây nguy cơ quá tải Canxi nội bào gây chết tế bào, tế bào cơ tim tâm nhĩ chủ động đóng bớt và giảm biểu hiện các kênh Canxi type L (\(I_{Ca,L}\)), đồng thời tăng hoạt dòng Kali chỉnh lưu nhập trong (\(I_{K1}\)). Sự sụt giảm dòng Canxi đi vào và tăng dòng Kali đi ra làm **rút ngắn cực hạn thời gian điện thế hoạt động (APD) và thời kỳ trơ hiệu quả (ERP)** của tâm nhĩ. Do ERP giảm mạnh, bước sóng dẫn truyền (\(\lambda = ERP \times CV\)) bị thu hẹp đáng kể, cho phép tâm nhĩ trái chứa đựng được cùng lúc rất nhiều vòng sóng vào lại tự do hỗn loạn, khiến rung nhĩ trở nên bền bỉ và khó tự chuyển về nhịp xoang hơn.
+2. **Tái cấu trúc cấu trúc muộn (Structural Remodeling):** Nếu rung nhĩ tiếp tục kéo dài liên tục, tình trạng kích thích tần số cao và sức căng cơ học liên tục lên thành nhĩ sẽ hoạt hóa trực tiếp các nguyên bào sợi cơ tăng tổng hợp collagen. Quá trình xơ hóa mô kẽ này thường bắt đầu biểu hiện rõ rệt sau **6 đến 12 tháng**. Sự lắng đọng sợi collagen tạo ra các tổn thương thực thể không thể đảo ngược, đóng vai trò là chất nền vĩnh viễn duy trì rung nhĩ dai dẳng.
+
+#### 3. Cơ chế tự củng cố của vòng xoáy bệnh lý "AF Begets AF"
+
+- **Giãn buồng nhĩ trái (LA Dilation):** Rung nhĩ kéo dài làm mất hoạt động co bóp cơ học đồng bộ, gây ứ trệ dòng máu và tăng áp lực thủy tĩnh trong tâm nhĩ trái, dẫn đến giãn buồng nhĩ trái. Buồng nhĩ giãn rộng cung cấp thêm diện tích bề mặt để chứa các vòng sóng vào lại.
+- **Rối loạn chức năng thần kinh tự chủ hướng tâm:** Sự giãn nở cơ học của tâm nhĩ làm căng giãn và hỏng các thụ cảm áp lực thể tích ở vùng nối tĩnh mạch phổi - tâm nhĩ (cardiopulmonary baroreceptor dysregulation). Sự mất kiểm soát hướng tâm này làm suy giảm biến thiên nhịp tim (HRV) và **tăng hoạt tính thần kinh giao cảm mạn tính**. Hệ giao cảm hoạt động liên tục lại kích thích giải phóng catecholamine, tạo ra các ngoại vị nhĩ (trigger) mới tại tĩnh mạch phổi, khép kín vòng xoáy bệnh lý tự duy trì mạn tính của rung nhĩ.
+
+---
+
+## 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Joglar JA, Chung MK, Armbruster AL, et al. 2023 ACC/AHA/ACCP/HRS guideline for the diagnosis and management of atrial fibrillation: a report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines. _Circulation_. 2024;149(1):e1-e156. doi:10.1161/CIR.0000000000001193.
+2. Tzeis S, Gerstenfeld EP, Kalman JM, et al. 2024 European Heart Rhythm Association/Heart Rhythm Society/Asia Pacific Heart Rhythm Society/Latin American Heart Rhythm Society expert consensus statement on catheter and surgical ablation of atrial fibrillation. _Journal of Arrhythmia_. 2024;40(6):1217-1354. doi:10.1002/joa3.13082.
+3. Van Gelder IC, Kotecha D, Bunting KV, et al. 2024 ESC guidelines for the management of atrial fibrillation developed in collaboration with the European Association for Cardio-Thoracic Surgery (EACTS). _European Heart Journal_. 2024;45(36):3314-3414. doi:10.1093/eurheartj/ehae176.
+4. Gaudino M, Di Franco A, Rong LQ, Piccini J, Mack M. Postoperative atrial fibrillation: from mechanisms to treatment. _European Heart Journal_. 2023;44(12):1020-1039. doi:10.1093/eurheartj/ehad019.
+
+---

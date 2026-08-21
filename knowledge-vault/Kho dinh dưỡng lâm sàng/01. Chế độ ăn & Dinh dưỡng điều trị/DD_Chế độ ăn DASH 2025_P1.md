@@ -1,0 +1,104 @@
+---
+title: "Chế độ ăn DASH 2025"
+part: "P1"
+aliases:
+  - "Chế độ ăn DASH 2025"
+keywords:
+  - "chế độ ăn dash 2025"
+  - "tim mạch"
+  - "01. chế độ ăn & dinh dưỡng điều trị"
+specialty: "Tim mạch"
+kho: "Kho dinh dưỡng lâm sàng"
+tags:
+  - "he-co-quan/tim-mach"
+  - "loai/nutrition"
+  - "y-khoa/dd"
+updated: "2026-08-21"
+---
+
+# TÓM TẮT NGHIÊN CỨU LIÊN QUAN DASH (PHẦN 1)
+
+## 1. Nội Dung Sinh Lý Học Chi Tiết
+
+### Định Nghĩa, Dịch Tễ Học Và Gánh Nặng Của Tăng Huyết Áp
+
+Tăng huyết áp được định nghĩa lâm sàng là mức huyết áp từ **130/80 mm Hg trở lên**. Đây là một vấn đề sức khỏe cộng đồng toàn cầu nghiêm trọng, ảnh hưởng đến **hơn 1 tỷ người lớn trên toàn thế giới** với tỷ lệ lưu hành dao động từ **30% đến 45%**.
+
+Tăng huyết áp là yếu tố nguy cơ hàng đầu có thể thay đổi được đối với bệnh tim mạch, đột quỵ, bệnh thận mạn và tử vong sớm, làm gia tăng đáng kể tỷ lệ tàn tật cũng như chi phí y tế. Tại Hoa Kỳ, gần một nửa số người trưởng thành mắc bệnh lý này, trong đó nhiều trường hợp chưa được chẩn đoán hoặc điều trị đầy đủ. Bệnh nhân tăng huyết áp thường đi kèm các tình trạng bệnh lý đồng mắc khác như béo phì và đái tháo đường, làm tăng nguy cơ gặp phải các kết cục sức khỏe bất lợi.
+
+### Nguồn Gốc Và Thiết Kế Thử Nghiệm Bản Lề DASH
+
+Chế độ ăn Tiếp cận Dinh dưỡng để Ngăn chặn Tăng huyết áp (**Dietary Approaches to Stop Hypertension - DASH**) bắt nguồn từ một thử nghiệm lâm sàng ngẫu nhiên, đa trung tâm được tiến hành vào **đầu những năm 1990** nhằm đánh giá tác động của các mô hình ăn uống đối với huyết áp.
+
+Chế độ ăn thử nghiệm tập trung vào việc tăng cường tiêu thụ trái cây, rau, ngũ cốc nguyên hạt, protein nạc, các sản phẩm sữa ít béo; đồng thời hạn chế natri, đường bổ sung và chất béo bão hòa. Những người tham gia tuân thủ kế hoạch ăn uống này trong **8 tuần** đã đạt được mức giảm huyết áp lớn hơn đáng kể so với nhóm áp dụng chế độ ăn đối chứng. Kết quả này lần đầu tiên chứng minh rằng chế độ ăn DASH là một chiến lược thực tế, dựa trên bằng chứng vững chắc để dự phòng và kiểm soát tình trạng tăng huyết áp.
+
+### Cơ Chế Sinh Lý Học Của Chế Độ Ăn DASH Lên Hệ Mạch Máu
+
+Chế độ ăn DASH cung cấp một lượng chất dinh dưỡng đa lượng và vi lượng cân bằng nhằm tối ưu hóa sức khỏe tim mạch và chuyển hóa thông qua các cơ chế sinh lý học đặc hiệu:
+
+- **Carbohydrate phức hợp**: Nguồn carbohydrate từ ngũ cốc nguyên hạt, trái cây có chỉ số đường huyết thấp, rau lá xanh và các loại đậu giúp cung cấp năng lượng ổn định, bổ sung chất xơ và các vi chất dinh dưỡng thiết yếu.
+- **Chất béo lành mạnh**: Sử dụng vừa phải chất béo chứa các axit béo chưa bão hòa (như dầu ô liu, dầu hạt cải, quả bơ, các loại hạt, hạt lanh, hạt gai dầu và cá béo) giúp giảm viêm hệ thống, tăng cholesterol tỷ trọng cao (HDL) và giảm cholesterol tỷ trọng thấp (LDL).
+- **Protein nạc và các Vi chất điều hòa huyết áp**: Nhấn mạnh các nguồn protein thực vật và động vật nạc giàu kali, magie và canxi. Sự kết hợp của các khoáng chất này đóng vai trò quyết định trong việc điều hòa huyết áp và duy trì sức cản mạch máu bình thường:
+    - **Kali (Potassium)**: Có nhiều trong chuối, cam và rau chân vịt, giúp **thúc đẩy đào thải natri qua nước tiểu** và **giảm sự co thắt của cơ trơn mạch máu**.
+    - **Magie (Magnesium)**: Được tìm thấy trong ngũ cốc nguyên hạt, rau lá xanh, các loại hạt và hạt, **hoạt động như một chất chẹn kênh canxi tự nhiên**, giúp thúc đẩy giãn mạch và cải thiện chức năng nội mô.
+    - **Canxi (Calcium)**: Có trong các sản phẩm sữa, sản phẩm đậu nành tăng cường và rau lá xanh, hỗ trợ phản ứng mạch máu và giúp giãn cơ trơn mạch máu.
+- **Hạn chế Natri (Sodium Restriction)**: Giảm lượng natri nạp vào giúp hạ huyết áp thông qua việc **giảm thể tích dịch ngoại bào** và **giảm sức cản mạch máu**. Chế độ ăn DASH hạn chế nghiêm ngặt các loại thịt chế biến sẵn và thịt muối vốn có lượng natri cao, chứa chất bảo quản nitrat gây ảnh hưởng xấu đến chức năng mạch máu.
+
+---
+
+### Trích Xuất Bảng Thông Tin: Các Nguyên Tắc Cốt Lõi Và Khuyến Nghị Khẩu Phần Của Chế Độ Ăn DASH
+
+- **Tên bảng**: **Table 1. Core Principles and Daily Serving Recommendations of the DASH Diet**
+- **Thuộc tài liệu**: _The DASH Diet: A Guide to Managing Hypertension Through Nutrition_ (Sharon F. Daley, Elsa S. Vadakekut — _StatPearls_, 2026)
+- **Nội dung mô tả chi tiết dưới bảng**: Bảng tổng hợp các khuyến nghị khẩu phần ăn hằng ngày cho một người trưởng thành áp dụng chế độ ăn DASH tiêu chuẩn. Hiệu quả hạ huyết áp của chế độ ăn này không đến từ một chất dinh dưỡng đơn lẻ mà nhờ tác động hiệp đồng của mô hình ăn uống toàn diện, giàu chất xơ, kali, magie, canxi và hạn chế chất béo bão hòa cùng natri.
+
+|Nhóm thực phẩm (Food Group)|Khuyến nghị khẩu phần hằng ngày (Daily Servings Recommendation)|Vai trò dinh dưỡng chính (Key Nutritional Role)|
+|:--|:--|:--|
+|**Trái cây & Rau quả**|4–5 servings trái cây & 4–5 servings rau quả|Cung cấp Kali, Magie, chất xơ và các chất chống oxy hóa dồi dào.|
+|**Ngũ cốc nguyên hạt**|6–8 servings|Ngũ cốc ít chế biến, giàu chất xơ và các dưỡng chất giúp tăng cảm giác no.|
+|**Sữa ít béo hoặc không béo**|2–3 servings|Cung cấp Canxi và protein chất lượng cao.|
+|**Protein nạc (Cá, gia cầm, trứng, các loại đậu, hạt)**|2–3 servings|Ưu tiên các nguồn đạm nạc thay vì thịt đỏ hoặc thịt chế biến sẵn.|
+|**Chất béo và Dầu**|2–3 servings|Thay thế chất béo bão hòa bằng chất béo chưa bão hòa hoặc chưa bão hòa đơn.|
+|**Natri (Sodium)**|1,500 mg đến 2,300 mg/ngày|Giảm thể tích dịch ngoại bào và sức cản mạch máu.|
+|**Đồ ngọt & Đường bổ sung**|\(\le\) 5 servings mỗi tuần|Hạn chế tối thiểu đồ uống ngọt và thực phẩm chứa nhiều đường bổ sung.|
+
+---
+
+### Trích Xuất Sơ Đồ Cơ Chế: Con Đường Điều Hòa Huyết Áp Sinh Lý Học Của Chế Độ Ăn DASH
+
+- **Tên sơ đồ**: **Figure 1. Vascular and Renal Physiological Mechanisms of the DASH Diet**
+- **Thuộc tài liệu**: _The DASH Diet: A Guide to Managing Hypertension Through Nutrition_ (Sharon F. Daley, Elsa S. Vadakekut — _StatPearls_, 2026)
+- **Nội dung mô tả chi tiết dưới sơ đồ**: Sơ đồ minh họa các con đường sinh lý học độc lập và phối hợp của các vi chất dinh dưỡng trong chế độ ăn DASH giúp tối ưu hóa huyết áp mạch máu:
+    
+    ```
+    [Chế Độ Ăn DASH]
+           │
+           ├─► Tăng nạp Kali (Chuối, cam, spinach) ───► Tăng bài tiết Natri ở thận + Giảm co cơ trơn mạch máu ──┐
+           │                                                                                                 │
+           ├─► Tăng nạp Magie (Ngũ cốc, nuts, hạt) ───► Chẹn kênh Canxi tự nhiên ──► Giãn mạch, cải thiện nội mô ┼─► [GIẢM SỨC CẢN MẠCH MÁU] ───┐
+           │                                                                                                 │                               │
+           ├─► Tăng nạp Canxi (Sữa ít béo, rau xanh) ─► Hỗ trợ phản ứng mạch ổn định + Thư giãn cơ trơn ──────┘                               │
+           │                                                                                                                                 ├─► [HẠ HUYẾT ÁP TÂM THU & TÂM TRƯƠNG]
+           ├─► Giảm Natri nạp vào (1500 - 2300 mg/ngày) ───► Giảm thể tích dịch ngoại bào ───────────────────────► [GIẢM THỂ TÍCH TUẦN HOÀN] ─┘
+           │
+           └─► Chất béo chưa bão hòa & Giảm thịt chế biến ─► Giảm viêm hệ thống + Tăng HDL / Giảm LDL ─────────► [BẢO VỆ TÍNH TOÀN VẸN NỘI MÔ]
+    ```
+    
+
+---
+
+### Hiệu Quả Hạ Huyết Áp Qua Các Thử Nghiệm Bản Lề (DASH Và DASH-Sodium)
+
+Các bằng chứng từ các thử nghiệm lâm sàng mang tính bước ngoặt, bao gồm nghiên cứu **DASH** và **DASH-Sodium**, cho thấy chế độ ăn này giúp giảm đáng kể huyết áp tâm thu và tâm trương chỉ trong vòng vài tuần sau khi bắt đầu áp dụng, độc lập với việc giảm cân của bệnh nhân.
+
+- **Thử nghiệm DASH**: Ghi nhận mức giảm trung bình từ **1 đến 13 mm Hg đối với huyết áp tâm thu** và **1 đến 10 mm Hg đối với huyết áp tâm trương**. Các tổ chức y khoa lớn như Trường Cao đẳng Tim mạch Hoa Kỳ (ACC) và Hiệp hội Tim mạch Hoa Kỳ (AHA) đều đưa kế hoạch ăn uống này vào hướng dẫn thực hành lâm sàng lâm sàng cập nhật năm 2025 để kiểm soát huyết áp.
+- **Thử nghiệm DASH-Sodium**: Xác lập hai mục tiêu natri dựa trên bằng chứng vững chắc:
+    - _Mức natri thông thường (2,300 mg/ngày)_: Phù hợp với hướng dẫn chung dành cho hầu hết người trưởng thành.
+    - _Mức natri thấp (1,500 mg/ngày)_: Được khuyến nghị cụ thể cho những bệnh nhân đã bị tăng huyết áp, huyết áp cao hoặc có các yếu tố nguy cơ tim mạch khác.
+    - _Kết quả so sánh_: Việc hạn chế lượng natri nghiêm ngặt hơn ở mức **1,500 mg/ngày mang lại mức giảm thêm khoảng 2 đến 7 mm Hg huyết áp tâm thu** so với mức tiêu thụ 2,300 mg/ngày.
+
+## 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Daley SF, Vadakekut ES. The DASH Diet: A Guide to Managing Hypertension Through Nutrition. In: _StatPearls [Internet]_. Treasure Island (FL): StatPearls Publishing; 2026 Jan-. Bookshelf ID: NBK482514. PMID: 29494120.
+
+---

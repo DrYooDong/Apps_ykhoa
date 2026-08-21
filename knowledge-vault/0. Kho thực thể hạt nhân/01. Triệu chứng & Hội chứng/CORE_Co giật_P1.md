@@ -1,0 +1,43 @@
+---
+title: "Co giật"
+part: "P1"
+aliases:
+  - "Co giật"
+  - "Seizure"
+  - "Epilepsy"
+  - "Động kinh"
+  - "Co giật toàn thể"
+keywords:
+  - "co giật"
+  - "đại cương"
+  - "01. triệu chứng & hội chứng"
+  - "dien nao do"
+  - "eeg"
+  - "trang thai dong kinh"
+  - "status epilepticus"
+  - "diazepam"
+  - "valproate"
+icd10:
+  - "G40"
+  - "R56"
+specialty: "Đại cương"
+kho: "0. Kho thực thể hạt nhân"
+tags:
+  - "he-co-quan/tong-quat"
+  - "loai/concept"
+  - "y-khoa/core"
+updated: "2026-08-21"
+---
+
+
+
+[[0. Thực thể hạt nhân/MOC - Thực thể Hạt nhân|← MOC Thực thể Hạt nhân]]
+
+# 🧬 Thực thể Hạt nhân: Co giật
+
+> Node hạt nhân trung tâm tích tụ các đường liên kết Wikilinks từ các bài viết Bệnh lý, Triệu chứng, Dược lý và Cận lâm sàng trong Vault.
+
+---
+
+## 📌 Các Ghi Chú Đang Thu Hút Liên Kết (Backlinks)
+*Tự động thu hút liên kết từ Obsidian Graph View khi đề cập tới `Co giật`.*

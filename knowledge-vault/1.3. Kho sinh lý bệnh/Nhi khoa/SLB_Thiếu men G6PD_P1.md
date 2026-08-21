@@ -1,0 +1,23 @@
+---
+title: "Thiếu men G6PD"
+part: "P1"
+aliases:
+  - "Thiếu men G6PD"
+keywords:
+  - "thiếu men g6pd"
+  - "đại cương"
+  - "nhi khoa"
+specialty: "Đại cương"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/tong-quat"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+[[9. Nhi khoa/Bệnh lý cụ thể/Thiếu men G6PD/Thiếu men G6PD.md|← Quay lại Thiếu men G6PD]]
+
+﻿

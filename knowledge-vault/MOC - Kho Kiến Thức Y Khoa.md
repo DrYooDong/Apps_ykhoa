@@ -27,22 +27,22 @@ updated: "2026-08-11"
 
 ## 🏛️ Bản Đồ Phân Hệ Chuyên Khoa
 
-| STT | Phân Hệ | Thư Mục | Link MOC Phân Hệ |
+| STT | Phân Hệ / Kho Chuyên Môn | Thư Mục | Link MOC Phân Hệ |
 |:---:|:---|:---|:---|
-| **00** | 🧬 **Thực Thể Hạt Nhân** | `0. Thực thể hạt nhân` | [[0. Thực thể hạt nhân/MOC - Thực thể Hạt nhân|MOC Thực thể Hạt nhân]] |
-| **01** | 🫀 **Giải Phẫu & Sinh Lý** | `0. Giải phẫu & sinh lý` | [[0. Giải phẫu & sinh lý/MOC - Giải phẫu & Sinh lý|MOC Giải phẫu & Sinh lý]] |
-| **02** | 🩺 **Kỹ Năng Lâm Sàng** | `0. Kỹ năng` | [[0. Kỹ năng/MOC - Kỹ năng Lâm sàng|MOC Kỹ năng Lâm sàng]] |
-| **03** | 🔍 **Tiếp Cận Lâm Sàng** | `0. Tiếp cận vấn đề lâm sàng` | [[0. Tiếp cận vấn đề lâm sàng/MOC - Tiếp cận Lâm sàng|MOC Tiếp cận Lâm sàng]] |
-| **04** | 🦠 **Bệnh Truyền Nhiễm** | `1. Bệnh truyền nhiễm` | [[1. Bệnh truyền nhiễm/MOC - Bệnh truyền nhiễm|MOC Bệnh truyền nhiễm]] |
-| **05** | 🚨 **Hồi Sức Cấp Cứu** | `2. Hồi sức` | [[2. Hồi sức/MOC - Hồi sức Cấp cứu|MOC Hồi sức Cấp cứu]] |
-| **06** | 🏥 **Nội Khoa Tổng Quát** | `3. Nội tổng quát` | [[3. Nội tổng quát/MOC - Nội khoa|MOC Nội khoa]] |
-| **07** | 🩸 **Huyết Học & Ung Thư** | `4. Huyết học & ung thư` | [[4. Huyết học & ung thư/MOC - Huyết học & Ung thư|MOC Huyết học & Ung thư]] |
-| **08** | 👁️ **Chuyên Khoa Lẻ** | `5. Mắt - Tai mũi họng - Răng hàm mặt` | [[5. Mắt - Tai mũi họng - Răng hàm mặt/MOC - Chuyên khoa Lẻ|MOC Chuyên khoa Lẻ]] |
-| **09** | 🦴 **Da Liễu & Cơ Xương Khớp** | `6. Da liễu & cơ xương khớp` | [[6. Da liễu & cơ xương khớp/MOC - Da liễu & Cơ xương khớp|MOC Da liễu & Cơ xương khớp]] |
-| **10** | 🔪 **Ngoại Khoa** | `7. Ngoại khoa` | [[7. Ngoại khoa/MOC - Ngoại khoa|MOC Ngoại khoa]] |
-| **11** | 🤰 **Sản Phụ Khoa** | `8. Sản phụ khoa` | [[8. Sản phụ khoa/MOC - Sản phụ khoa|MOC Sản phụ khoa]] |
-| **12** | 👶 **Nhi Khoa** | `9. Nhi khoa` | [[9. Nhi khoa/MOC - Nhi khoa|MOC Nhi khoa]] |
-| **13** | 📊 **EBM & Nghiên Cứu** | `10. Nghiên cứu khoa học & EBM` | [[10. Nghiên cứu khoa học & EBM/MOC - Nghiên cứu khoa học & EBM|MOC EBM & Nghiên cứu]] |
+| **00** | 🧬 **Thực Thể Hạt Nhân** | `Kho thực thể hạt nhân` | [[Kho thực thể hạt nhân/MOC - Kho Thực Thể Hạt Nhân|MOC Thực thể Hạt nhân]] |
+| **01** | 🫀 **Giải Phẫu & Sinh Lý** | `Kho giải phẫu & sinh lý` | [[Kho giải phẫu & sinh lý/MOC - Kho Giải Phẫu & Sinh Lý|MOC Giải phẫu & Sinh lý]] |
+| **02** | 🧪 **Hóa Sinh Y Học** | `Kho hóa sinh y học` | [[Kho hóa sinh y học/MOC - Kho Hóa Sinh Y Học|MOC Hóa Sinh Y Học]] |
+| **03** | 🩺 **Kỹ Năng Lâm Sàng** | `Kho kỹ năng lâm sàng` | [[Kho kỹ năng lâm sàng/MOC - Kho Kỹ Năng Lâm Sàng|MOC Kỹ năng Lâm sàng]] |
+| **04** | 🔍 **Tiếp Cận Lâm Sàng** | `Kho tiếp cận lâm sàng` | [[Kho tiếp cận lâm sàng/MOC - Kho Tiếp Cận Lâm Sàng|MOC Tiếp cận Lâm sàng]] |
+| **05** | 🌐 **Kho Dịch Tễ Học** | `Kho dịch tễ học` | [[Kho dịch tễ học/MOC - Kho Dịch Tễ Học|MOC Kho Dịch Tễ Học]] |
+| **06** | ⚡ **Kho Sinh Lý Bệnh** | `Kho sinh lý bệnh` | [[Kho sinh lý bệnh/MOC - Kho Sinh Lý Bệnh|MOC Kho Sinh Lý Bệnh]] |
+| **07** | 📋 **Kho Chẩn Đoán** | `Kho chẩn đoán` | [[Kho chẩn đoán/MOC - Kho Chẩn Đoán|MOC Kho Chẩn Đoán]] |
+| **08** | 💊 **Kho Phác Đồ Điều Trị** | `Kho phác đồ điều trị` | [[Kho phác đồ điều trị/MOC - Kho Phác Đồ Điều Trị|MOC Kho Phác Đồ Điều Trị]] |
+| **09** | ⚠️ **Kho Biến Chứng** | `Kho biến chứng` | [[Kho biến chứng/MOC - Kho Biến Chứng|MOC Kho Biến Chứng]] |
+| **10** | 🔄 **Kho Cập Nhật** | `Kho cập nhật` | [[Kho cập nhật/MOC - Kho Cập Nhật|MOC Kho Cập Nhật]] |
+| **11** | 📦 **Kho Chưa Lọc** | `Kho chưa lọc` | [[Kho chưa lọc/MOC - Kho Chưa Lọc|MOC Kho Chưa Lọc]] |
+| **12** | 📊 **EBM & Nghiên Cứu** | `Kho nghiên cứu khoa học & EBM` | [[Kho nghiên cứu khoa học & EBM/MOC - Kho Nghiên Cứu Khoa Học & EBM|MOC EBM & Nghiên cứu]] |
+| **13** | 🥗 **Dinh Dưỡng** | `Kho dinh dưỡng lâm sàng` | [[Kho dinh dưỡng lâm sàng/MOC - Kho Dinh Dưỡng Lâm Sàng|MOC Dinh Dưỡng]] |
 
 ---
 

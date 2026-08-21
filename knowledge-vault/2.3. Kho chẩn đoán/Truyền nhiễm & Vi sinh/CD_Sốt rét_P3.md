@@ -1,0 +1,118 @@
+---
+title: "Sốt rét"
+part: "P3"
+aliases:
+  - "Sốt rét"
+keywords:
+  - "sốt rét"
+  - "truyền nhiễm & vi sinh"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "2.3. Kho chẩn đoán"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/diagnostic"
+  - "y-khoa/cd"
+updated: "2026-08-21"
+---
+
+
+
+### 1. Nội Dung Sinh Lý Học Chi Tiết
+
+Tiêu chuẩn chẩn đoán bệnh [[Sốt]] rét được xây dựng dựa trên sự kết hợp giữa triệu chứng lâm sàng, yếu tố dịch tễ và kết quả xét nghiệm vi sinh/ký sinh trùng.
+
+---
+
+#### A. Tiêu Chuẩn Chẩn Đoán Trường Hợp Nghi Ngờ [[Sốt]] Rét
+
+Một cá thể được coi là trường hợp nghi ngờ mắc sốt rét khi đáp ứng đồng thời hai tiêu chí về lâm sàng và dịch tễ:
+
+1. **Dấu hiệu lâm sàng (Sốt):**
+    - Người bệnh đang sốt hoặc có tiền sử sốt trong 3 ngày gần đây.
+    - **Cơn sốt rét điển hình:** Xuất hiện qua 3 giai đoạn nối tiếp nhau bao gồm rét run $\rightarrow$ sốt cao $\rightarrow$ vã mồ hôi, có tính chu kỳ tùy thuộc vào loài ký sinh trùng gây bệnh.
+    - **Cơn sốt không điển hình:** Sốt không thành cơn (chỉ thấy ớn lạnh, gai rét), sốt cao liên tục hoặc sốt dao động; hình thái này thường gặp ở trẻ em, người mắc sốt rét lần đầu hoặc người sống lâu trong vùng sốt rét lưu hành.
+2. **Yếu tố dịch tễ:**
+    - Đang ở, mới đến hoặc trở về từ vùng sốt rét lưu hành trong thời gian ít nhất 7 ngày trước khi xuất hiện cơn sốt.
+    - Có tiền sử đã từng mắc bệnh sốt rét.
+
+> _Lưu ý:_ Tất cả các trường hợp nghi ngờ sốt rét bắt buộc phải làm xét nghiệm tìm ký sinh trùng. Nếu kết quả xét nghiệm lam máu lần đầu âm tính nhưng lâm sàng vẫn nghi ngờ, phải làm lại xét nghiệm sau 8–24 giờ, tốt nhất vào thời điểm người bệnh đang lên cơn sốt.
+
+---
+
+#### B. Tiêu Chuẩn Chẩn Đoán Xác Định Bệnh Sốt Rét
+
+Trường hợp bệnh sốt rét xác định được chẩn đoán khi người bệnh có ký sinh trùng sốt rét (_Plasmodium_) trong máu, được xác định bằng một trong các phương pháp kỹ thuật xét nghiệm sau:
+
+1. **Kỹ thuật soi lam máu nhuộm Giemsa (Kính hiển vi quang học):**
+    - Là tiêu chuẩn vàng phổ biến nhất tại các cơ sở y tế.
+    - Cho phép xác định sự có mặt của ký sinh trùng, định loại chính xác 5 loài gây bệnh ở người (_P. falciparum, P. vivax, P. malariae, P. ovale, P. knowlesi_), định dạng các thể phát triển (thể tư dưỡng, thể phân liệt, giao bào) và tính mật độ ký sinh trùng/$\mu\text{L}$ máu. Kết quả trả lời trong vòng 1 giờ.
+2. **Kỹ thuật xét nghiệm chẩn đoán nhanh (Rapid Diagnostic Tests - RDTs):**
+    - Phát hiện kháng nguyên đặc hiệu của ký sinh trùng sốt rét trong máu (như HRP2 đặc hiệu cho _P. falciparum_, hoặc pLDH, Aldolase đặc hiệu cho các loài _Plasmodium_).
+    - Áp dụng tại các cơ sở y tế và y tế thôn bản, trả kết quả nhanh trong vòng 30 phút.
+3. **Kỹ thuật sinh học phân tử (PCR / NAAT):**
+    - Xác định chất liệu di truyền (DNA/RNA) của ký sinh trùng sốt rét.
+    - Có độ nhạy và độ đặc hiệu rất cao, giúp phát hiện các trường hợp nhiễm mật độ thấp (submicroscopic) hoặc nhiễm phối hợp nhiều loài.
+
+---
+
+#### C. Phân Loại Thể Lâm Sàng Sốt Rét
+
+Sau khi xác định có ký sinh trùng sốt rét trong máu, bệnh được phân loại theo hai thể lâm sàng chính:
+
+##### 1. Sốt Rét Thể Thông Thường (Chưa Biến Chứng)
+
+- Trường hợp mắc sốt rét xác định nhưng **không có** bất kỳ dấu hiệu đe dọa tính mạng hoặc tổn thương cơ quan trọng yếu nào.
+- Biểu hiện bằng các cơn sốt điển hình hoặc không điển hình, kèm theo thiếu máu, lách to, [[Gan]] to.
+
+##### 2. Sốt Rét Ác Tính (Sốt Rét Có Biến Chứng)
+
+Sốt rét ác tính là tình trạng sốt rét xác định (có thể vô tính của ký sinh trùng trong máu) kèm theo biến chứng đe dọa tính mạng hoặc suy rối loạn chức năng cơ quan. Thường gặp do _P. falciparum_, nhưng nhiễm _P. vivax_ hoặc _P. knowlesi_ đơn thuần cũng có thể gây sốt rét ác tính.
+
+- **Dấu hiệu cảnh báo sốt rét ác tính:**
+    
+    - Rối loạn ý thức nhẹ, thoáng qua (li bì, cuồng sảng, vật vã).
+    - Sốt cao liên tục.
+    - Rối loạn tiêu hóa cấp tính: [[Nôn ói|nôn]] hoặc [[Tiêu chảy]] nhiều lần trong ngày, [[[[Đau bụng]]|đau bụng cấp]].
+    - Đau đầu dữ dội.
+    - Mật độ ký sinh trùng thể vô tính cao (_P. falciparum_ ++++ hoặc $\ge 100.000\text{ KST}/\mu\text{L}$ máu).
+    - Thiếu máu tiến triển nhanh.
+- **Tiêu chuẩn chẩn đoán xác định sốt rét ác tính (có $\ge 1$ triệu chứng/xét nghiệm sau):**
+    
+    1. **Suy sụp/suy kiệt toàn thân:** Người bệnh kiệt sức, không thể tự ngồi, đứng hoặc đi lại nếu không có sự hỗ trợ.
+    2. **[[[[Hôn mê]]|Rối loạn tri giác]] / Hôn mê (Sốt rét thể não):** Điểm Glasgow $< 11$ điểm (ở người lớn và trẻ $> 5$ tuổi) hoặc điểm Blantyre $< 3$ điểm (ở trẻ em $< 5$ tuổi).
+    3. **[[Co giật]]:** Xuất hiện $> 2$ [[Co giật|cơn co giật]] trong vòng 24 giờ.
+    4. **[[Suy hô hấp]] / [[Phù]] [[Phổi]] cấp / ARDS:** Nhịp thở $> 30$ lần/phút, rút lõm lồng ngực, $SpO_2 < 92%$, hoặc [[X-quang]] [[Phổi]] có hình mờ hai đáy/hai rốn phổi.
+    5. **[[Sốc]] (Suy tuần hoàn):** Huyết áp tâm thu $< 70\text{ mmHg}$ ở trẻ em hoặc $< 80\text{ mmHg}$ ở người lớn kèm giảm tưới máu ngoại vi (thời gian đổ đầy mao mạch $\ge 3$ giây).
+    6. **Thiếu máu nặng do sốt rét:** Huyết sắc tố ($\text{Hb}$) $\le 5\text{ g/dL}$ (hoặc $\text{Hematocrit} \le 15%$) ở trẻ $< 12$ tuổi; $\text{Hb} < 7\text{ g/dL}$ (hoặc $\text{Hematocrit} < 20%$) ở người lớn, kết hợp mật độ ký sinh trùng $> 10.000/\mu\text{L}$.
+    7. **Tổn thương [[Gan]] / [[Vàng da]]:** [[Vàng da|Vàng da niêm]] mạc, Bilirubin toàn phần $> 50\ \mu\text{mol/L}$ ($> 3\text{ mg/dL}$), kèm tăng men gan.
+    8. **Suy [[Thận]] cấp:** Thiểu niệu ($< 400\text{ mL/ngày}$) hoặc vô niệu ($< 200\text{ mL/ngày}$); Creatinine máu $> 265\ \mu\text{mol/L}$ ($> 3\text{ mg/dL}$) hoặc Ure máu $> 20\text{ mmol/L}$.
+    9. **Rối loạn đông máu / [[Xuất huyết|Chảy máu]] tự phát:** Chảy máu cam, chảy máu nướu răng, [[Xuất huyết]] tĩnh mạch, [[Nôn ói|nôn]] ra máu hoặc đi ngoài phân đen.
+    10. **Toan chuyển hóa:** Khuyết kiềm (Base deficit) $> 8\text{ mEq/L}$, Bicarbonate huyết tương $< 15\text{ mmol/L}$, hoặc Lactate máu tĩnh mạch $\ge 5\text{ mmol/L}$.
+    11. **[[Hạ đường huyết]]:** Nồng độ đường huyết $< 2,2\text{ mmol/L}$ ($< 40\text{ mg/dL}$).
+    12. **Mật độ ký sinh trùng cao:** $> 10$% [[Hồng cầu]] bị nhiễm ký sinh trùng thể vô tính.
+
+---
+
+#### BẢNG THÔNG TIN VÀ THANG ĐIỂM ĐÁNH GIÁ CHẨN ĐOÁN SỐT RÉT ÁC TÍNH
+
+> **Tên Bảng: Thang điểm Glasgow của người lớn và trẻ em trên 5 tuổi** _Nguồn: BỘ Y TẾ - Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét (QĐ 3377/QĐ-BYT 2023)_
+> 
+> | Dấu hiệu lâm sàng | Điểm | | :--- | :---: | | **1. Đáp ứng bằng mắt** | | | Mở mắt tự phát | 4 | | Mở mắt khi nghe gọi | 3 | | Mở mắt khi bị kích thích đau | 2 | | Không đáp ứng | 1 | | **2. Phần đáp ứng bằng vận động** | | | Đáp ứng chính xác theo yêu cầu, lời nói | 6 | | Đáp ứng chính xác khi kích thích đau | 5 | | Đáp ứng không chính xác khi kích thích đau | 4 | | Tư thế co cứng (mất vỏ) | 3 | | Tư thế duỗi cứng (mất não) | 2 | | **3. Phần đáp ứng bằng lời nói** | | | Định hướng tốt, nói được chính xác tên, ngày, giờ, địa điểm | 5 | | Nói mạch lạc nhưng sai thông tin | 4 | | Nói được từ đơn, dễ | 3 | | Nói được những từ và câu vô nghĩa | 2 | | Không nói được | 1 | _Mô tả: Thang điểm Glasgow dùng để đánh giá mức độ rối loạn tri giác và hôn mê ở bệnh nhân sốt rét ác tính (áp dụng cho người lớn và trẻ em $> 5$ tuổi; chẩn đoán hôn mê / sốt rét thể não khi Glasgow $< 11$ điểm)._
+
+> **Tên Bảng: Thang điểm Blantyre của trẻ em < 5 tuổi** _Nguồn: BỘ Y TẾ - Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét (QĐ 3377/QĐ-BYT 2023)_
+> 
+> | Dấu hiệu lâm sàng | Điểm | | :--- | :---: | | **1. Cử động mắt:** | | | Theo hướng (ví dụ: theo mặt của mẹ) | 1 | | Không nhìn theo | 0 | | **2. Đáp ứng vận động:** | | | Tại chỗ kích thích đau | 2 | | Co chi với kích thích đau | 1 | | Không đặc hiệu hoặc không đáp ứng | 0 | | **3. Đáp ứng lời nói:** | | | Khóc to bình thường | 2 | | Khóc yếu rên rỉ | 1 | | Không đáp ứng | 0 | _Mô tả: Thang điểm Blantyre dùng để đánh giá mức độ hôn mê ở trẻ em dưới 5 tuổi bị sốt rét thể não (chẩn đoán hôn mê / sốt rét thể não khi Blantyre $< 3$ điểm)._
+
+> **Tên Bảng: Immediate clinical management of severe manifestations and complications of P. falciparum malaria (Xử trí lâm sàng tức thì các biểu hiện và biến chứng nghiêm trọng của sốt rét P. falciparum)** _Nguồn: WHO guidelines for malaria - 13 August 2025_
+> 
+> | Biểu hiện / Biến chứng (Manifestation / Complication) | Xử trí tức thì (Immediate management) | | :--- | :--- | | **Hôn mê (Sốt rét thể não)** | Duy trì đường thở, đặt bệnh nhân nằm nghiêng, loại trừ các nguyên nhân gây hôn mê có thể điều trị được (ví dụ: [[Hạ đường huyết]], [[Viêm màng não]] do vi khuẩn); tránh các liệu pháp hỗ trợ gây hại, đặt nội khí quản nếu cần. | | **Sốt cao ác tính (Hyperpyrexia)** | Chườm ấm, quạt mát, dùng chăn làm mát và cho dùng [[Paracetamol]]. | | **Co giật (Convulsions)** | Duy trì đường thở; điều trị nhanh bằng [[Diazepam]], Lorazepam, Midazolam tĩnh mạch/trực tràng hoặc Paraldehyde tiêm bắp. Kiểm tra đường huyết. | | **Hạ đường huyết (Hypoglycaemia)** | Kiểm tra đường huyết, điều chỉnh và duy trì bằng truyền dịch chứa Glucose. Ngưỡng can thiệp là $< 3\text{ mmol/L}$ ở trẻ $< 5$ tuổi và $< 2,2\text{ mmol/L}$ ở trẻ lớn/người lớn. | | **Thiếu máu nặng (Severe anaemia)** | Truyền máu toàn phần tươi đã qua sàng lọc. | | **[[Phù]] phổi cấp (Acute pulmonary oedema)** | Cho bệnh nhân ngồi góc $45^{\circ}$, thở oxy, dùng thuốc lợi tiểu, ngừng truyền dịch tĩnh mạch, đặt nội khí quản và thêm PEEP hoặc CPAP nếu thiếu oxy đe dọa tính mạng. | | **Tổn thương [[Thận]] cấp (Acute kidney injury)** | Loại trừ nguyên nhân trước thận, kiểm tra cân bằng dịch và natri niệu; nếu đã suy thận thực tổn, thực hiện lọc máu liên tục, chạy thận nhân tạo hoặc lọc màng bụng. | | **Chảy máu tự phát & Rối loạn đông máu** | Truyền máu toàn phần tươi đã sàng lọc (hoặc tủa lạnh, huyết tương tươi đông lạnh, [[Tiểu cầu]]); tiêm Vitamin K. | | **Toan chuyển hóa (Metabolic acidosis)** | Loại trừ/điều trị hạ đường huyết, giảm thể tích tuần hoàn và [[Nhiễm trùng huyết]]. Nếu nặng, tiến hành lọc máu liên tục hoặc chạy thận nhân tạo. | | **[[Sốc]] (Shock)** | Nghi ngờ [[Nhiễm trùng huyết]], cấy máu; cho [[Kháng sinh]] phổ rộng đường tĩnh mạch, điều chỉnh rối loạn huyết động. | _Mô tả: Bảng tổng hợp đối chiếu các tiêu chuẩn biến chứng lâm sàng ác tính kèm theo nguyên tắc xử trí cấp cứu y khoa tức thời tương ứng theo hướng dẫn của Tổ chức Y tế Thế giới (WHO)._
+
+---
+
+### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Bộ Y tế Việt Nam. _Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét_ (Ban hành kèm theo Quyết định số 3377/QĐ-BYT ngày 30 tháng 8 năm 2023). Hà Nội: Bộ Y tế; 2023.
+2. Bộ Y tế Việt Nam. _Hướng dẫn giám sát và phòng chống bệnh Sốt rét_ (Ban hành kèm theo Quyết định số 4922/QĐ-BYT ngày 25 tháng 10 năm 2021). Hà Nội: Bộ Y tế; 2021.
+3. World Health Organization. _WHO Guidelines for Malaria_. Geneva: World Health Organization; August 13, 2025.
+
+---

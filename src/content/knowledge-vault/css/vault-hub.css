@@ -1,0 +1,354 @@
+/**
+ * CliniPortal — Knowledge Vault Hub & Reader Stylesheet
+ * 100% Design Tokens & Dark Mode Compliant
+ */
+
+:root {
+  --vault-primary: var(--color-primary, #0284c7);
+  --vault-surface: var(--color-surface, #ffffff);
+  --vault-bg: var(--color-bg, #f8fafc);
+  --vault-border: var(--color-border, #e2e8f0);
+  --vault-text: var(--color-text, #0f172a);
+  --vault-muted: var(--color-text-muted, #64748b);
+  --vault-radius: 12px;
+}
+
+[data-theme="dark"] {
+  --vault-surface: var(--color-surface, #1e293b);
+  --vault-bg: var(--color-bg, #0f172a);
+  --vault-border: var(--color-border, #334155);
+  --vault-text: var(--color-text, #f8fafc);
+  --vault-muted: var(--color-text-muted, #94a3b8);
+}
+
+.vault-container {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  color: var(--vault-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Header Banner */
+.vault-header {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.vault-header-title h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--vault-text);
+}
+
+.vault-header-title p {
+  margin: 0;
+  color: var(--vault-muted);
+  font-size: 0.95rem;
+}
+
+.vault-header-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.vault-stat-badge {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.vault-stat-badge .num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--vault-primary);
+}
+
+.vault-stat-badge .label {
+  font-size: 0.75rem;
+  color: var(--vault-muted);
+  text-transform: uppercase;
+}
+
+/* 4 Kho Bento Hero Grid */
+.vault-kho-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.vault-kho-card {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.vault-kho-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.08);
+  border-color: var(--kho-color, var(--vault-primary));
+}
+
+.vault-kho-card.active {
+  border-color: var(--kho-color, var(--vault-primary));
+  box-shadow: 0 0 0 2px var(--kho-color, var(--vault-primary));
+  background: linear-gradient(180deg, var(--vault-surface) 0%, rgba(2, 132, 199, 0.04) 100%);
+}
+
+.vault-kho-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.vault-kho-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--kho-color, var(--vault-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.vault-kho-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.vault-kho-card-meta {
+  font-size: 0.85rem;
+  color: var(--vault-muted);
+}
+
+/* Control Bar (Search & Filter) */
+.vault-control-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.vault-search-box {
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+}
+
+.vault-search-box i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--vault-muted);
+}
+
+.vault-search-input {
+  width: 100%;
+  padding: 0.65rem 1rem 0.65rem 2.5rem;
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  background: var(--vault-bg);
+  color: var(--vault-text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.vault-search-input:focus {
+  border-color: var(--vault-primary);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.vault-filter-select {
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  background: var(--vault-bg);
+  color: var(--vault-text);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+/* Article List Grid */
+.vault-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.vault-article-card {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.vault-article-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.06);
+  border-color: var(--vault-primary);
+}
+
+.vault-article-top {
+  margin-bottom: 0.75rem;
+}
+
+.vault-article-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.vault-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--vault-primary);
+}
+
+.vault-badge.badge-hs { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+.vault-badge.badge-slb { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.vault-badge.badge-dth { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+
+.vault-article-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--vault-text);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.vault-article-snippet {
+  font-size: 0.85rem;
+  color: var(--vault-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vault-article-footer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--vault-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--vault-muted);
+}
+
+.vault-article-footer .action-link {
+  color: var(--vault-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Modal / Drawer for Reading */
+.vault-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: none;
+  justify-content: flex-end;
+}
+
+.vault-drawer-overlay.active {
+  display: flex;
+}
+
+.vault-drawer-panel {
+  width: 100%;
+  max-width: 860px;
+  height: 100%;
+  background: var(--vault-surface);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.vault-drawer-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--vault-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vault-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  line-height: 1.7;
+}
+
+.vault-drawer-body h1, .vault-drawer-body h2, .vault-drawer-body h3 {
+  color: var(--vault-text);
+  margin-top: 1.5rem;
+}
+
+.vault-drawer-body p, .vault-drawer-body li {
+  font-size: 1rem;
+  color: var(--vault-text);
+}
+
+@media (max-width: 768px) {
+  .vault-header { padding: 1.25rem; }
+  .vault-header-stats { width: 100%; justify-content: space-between; }
+  .vault-drawer-panel { max-width: 100%; }
+}

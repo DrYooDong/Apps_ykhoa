@@ -1,0 +1,128 @@
+---
+title: "Hen"
+part: "P1"
+aliases:
+  - "Hen"
+  - "Asthma"
+  - "Hen suyễn"
+  - "Bronchial Asthma"
+keywords:
+  - "hen"
+  - "hô hấp"
+  - "gina"
+  - "fev1"
+  - "pef"
+  - "con hen phe quan cap"
+  - "saba"
+  - "ics-formoterol"
+  - "di ung"
+  - "ige"
+  - "tang phan ung phe quan"
+icd10:
+  - "J45"
+  - "J45.0"
+  - "J45.9"
+specialty: "Hô hấp"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/ho-hap"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+[[3. Nội tổng quát/3.2. Hô hấp/3.2.1. Bệnh lý đường thở tắc nghẽn/Hen/Hen.md|← Quay lại Hen]]
+
+# 1. Nội Dung Bệnh Lý Học Chi Tiết
+
+## 1.1. Khái Niệm và Định Nghĩa Bệnh Lý
+
+Hen phế quản là một bệnh lý đa dạng (heterogeneous disease), thường đặc trưng bởi tình trạng viêm mạn tính của đường dẫn khí.
+
+Bệnh lý này được định nghĩa bởi tiền sử các triệu chứng hô hấp như khò khè, [[Khó thở]], tức nặng ngực và ho. Các triệu chứng này thay đổi theo thời gian và cường độ, đi kèm với tình trạng giới hạn luồng khí thở ra dao động. Tắc nghẽn luồng khí phế quản được hình thành qua ba cơ chế bệnh sinh chính:
+
+- **Co thắt cơ trơn phế quản (bronchoconstriction):** Làm hẹp lòng đường dẫn khí cấp tính hoặc bán cấp.
+- **[[Phù]] nề và dày thành đường thở:** Do quá trình thâm nhiễm của các tế bào viêm.
+- **Tăng tiết chất nhầy:** Gây bít tắc lòng phế quản.
+
+Tình trạng viêm mạn tính và tính tăng phản ứng đường thở (airway hyperresponsiveness) với các kích thích trực tiếp hoặc gián tiếp thường tồn tại dai dẳng ngay cả khi bệnh nhân không có triệu chứng lâm sàng.
+
+`[Bảng 1.1. Tiêu chuẩn chẩn đoán Hen phế quản] - trích từ https://bvtb.org.vn/wp-content/uploads/2024/03/CON-HEN-PHE-QUAN.pdf`
+
+- **Chú thích / Nội dung trích xuất:**
+    - **Tiền sử có triệu chứng hô hấp thay đổi:** Khò khè, [[Khó thở]], tức nặng ngực, ho khạc đàm (thường có nhiều hơn một triệu chứng; xảy ra hoặc nặng lên vào ban đêm hay lúc thức giấc; thay đổi theo thời gian và cường độ; bị kích phát sau nhiễm virus, vận động, phơi nhiễm dị nguyên, thay đổi thời tiết, cười lớn hoặc chất kích thích).
+    - **Khẳng định sự giới hạn luồng khí thở ra dao động:** Ghi nhận ít nhất một lần tỷ lệ $FEV_1/FVC$ giảm ($> 0.75 - 0.8$ ở người lớn và $> 0.9$ ở trẻ em); Test phục hồi phế quản dương tính ($FEV_1$ tăng $> 12%$ và $> 200\text{ mL}$ so với ban đầu ở người lớn, hoặc $> 12%$ giá trị dự đoán ở trẻ em sau khi hít thuốc giãn phế quản); Cải thiện rõ rệt chức năng [[Phổi]] sau 4 tuần điều trị bằng thuốc kháng viêm ($FEV_1$ tăng $> 12%$ và $> 200\text{ mL}$).
+
+---
+
+## 1.2. Phân Thể Miễn Dịch Bệnh Lý: Viêm Kiểu 2 và Viêm Không Kiểu 2
+
+Cơ chế bệnh sinh của hen phế quản được chi phối bởi hai thể viêm miễn dịch chính:
+
+### 1. Viêm đường thở Kiểu 2 (Type 2 Inflammation)
+
+Hiện diện ở đa số bệnh nhân hen phế quản và hen nặng. Dòng thác viêm Kiểu 2 được kích hoạt qua hai con đường song hành:
+
+- **Hệ miễn dịch thích ứng (Adaptive immune system):** Khi tiếp xúc với dị nguyên, tế bào miễn dịch thích ứng giải phóng các cytokine tiền viêm then chốt gồm Interleukin-4 (IL-4), Interleukin-5 (IL-5) và Interleukin-13 (IL-13).
+- **Hệ miễn dịch bẩm sinh (Innate immune system):** Tế bào biểu mô đường thở khi bị tổn thương do virus, vi khuẩn hoặc chất kích ứng sẽ tiết ra các alarmin thượng nguồn gồm IL-33, IL-25 và Thymic Stromal Lymphopoietin (TSLP), kích hoạt các tế bào bạch huyết bẩm sinh.
+
+Hệ quả của dòng thác viêm Kiểu 2 là sự thu hút và tập trung [[Bạch cầu]] ái toan (eosinophils) trong máu và đờm, tăng sản xuất Immunoglobulin E (IgE), và gia tăng nồng độ Nitric Oxide trong hơi thở ra (FeNO).
+
+### 2. Viêm không phải Kiểu 2 (Non-Type 2 Inflammation)
+
+Đặc trưng bởi sự thâm nhiễm [[Bạch cầu|bạch cầu đa nhân trung tính]] (neutrophilic) hoặc ít tế bào viêm (paucigranulocytic). Nhóm bệnh nhân này thường ít đáp ứng với [[[[Corticoid]]|corticosteroid]] và FeNO không tăng.
+
+`[Box 8-3. Decision tree – assess and treat severe asthma phenotypes] - trích từ Global Strategy for Asthma Management and Prevention (2026 update).pdf`
+
+- **Chú thích / Nội dung trích xuất:**
+    - **Sơ đồ cây quyết định đánh giá kiểu hình hen nặng:**
+        - **Tiêu chuẩn xác định viêm Kiểu 2 cao (Type 2-high severe asthma) ở bệnh nhân đang dùng ICS liều cao hoặc OCS:** Bạch cầu ái toan máu (BEC) $\ge 150/\mu\text{L}$, và/hoặc $\text{FeNO} \ge 20\text{ ppb}$, và/hoặc bạch cầu ái toan trong đờm $\ge 2%$, và/hoặc hen do dị nguyên khởi phát rõ rệt trên lâm sàng.
+        - **Lưu ý thực hành:** Nếu BEC hoặc FeNO ban đầu không tăng, cần lặp lại xét nghiệm tối đa 3 lần, thực hiện ít nhất 1–2 tuần sau đợt OCS hoặc khi bệnh nhân đang ở liều OCS duy trì thấp nhất có thể.
+
+---
+
+## 1.3. Vai Trò Tế Bào Và Phân Tử Của Nitric Oxide (NO) Trong Đường Thở
+
+Nitric Oxide (NO) được tổng hợp từ L-arginine dưới tác động của các men Nitric Oxide Synthase (NOS). Trong bệnh sinh hen phế quản, NO đóng vai trò phức hợp theo hai con đường:
+
+### 1. Con đường gây độc tế bào (qua iNOS)
+
+Trong phản ứng viêm Kiểu 2, sự gia tăng của cytokine IL-4 và IL-13 kích hoạt men iNOS (inducible NOS) tại tế bào biểu mô phế quản và đại thực bào. Men iNOS sản xuất lượng lớn NO giải phóng vào khí thở ra. Trong môi trường viêm oxy hóa, NO phản ứng với superoxide tạo thành peroxynitrite ($\text{OONO}^-$). Peroxynitrite là một chất có tính độc tế bào mạnh, trực tiếp gây phá hủy tế bào biểu mô, thúc đẩy xơ hóa dưới niêm mạc và tái cấu trúc đường thở.
+
+### 2. Con đường giãn phế quản sinh lý (qua eNOS)
+
+Trái ngược với iNOS, NO sinh lý được tổng hợp từ eNOS (endothelial NOS) lại có tác dụng giãn cơ trơn. Tác dụng cấp cứu của Magnesium Sulfate ($\text{MgSO}_4$) dựa trên việc thúc đẩy hoạt tính men eNOS, làm tăng NO tại biểu mô phế quản. NO sinh lý kích thích men soluble guanylate cyclase, làm tăng cyclic guanosine monophosphate (cGMP) nội bào. cGMP kích hoạt Protein Kinase G (PKG), làm giảm nồng độ canxi tự do nội bào, dẫn đến giãn cơ trơn phế quản.
+
+---
+
+## 1.4. Ứng Dụng Các Dấu Ấn Sinh Học Viêm (Biomarkers)
+
+Các dấu ấn sinh học phản ánh đáp ứng viêm Kiểu 2 được ứng dụng rộng rãi trong chẩn đoán, đánh giá nguy cơ và cá thể hóa điều trị:
+
+- **Nitric Oxide trong hơi thở ra (FeNO):** Là dấu ấn sinh học gián tiếp phản ánh hoạt tính của men iNOS và mức độ viêm do IL-4/IL-13 tại biểu mô phế quản. Ngưỡng FeNO cao ($> 50\text{ ppb}$ ở người lớn/thiếu niên, $> 35\text{ ppb}$ ở trẻ em chưa dùng ICS) hỗ trợ chẩn đoán hen Kiểu 2 và dự đoán đáp ứng tốt với ICS.
+- **Số lượng Bạch cầu ái toan trong máu (BEC):** Mức $\text{BEC} \ge 150/\mu\text{L}$ gợi ý nền viêm Kiểu 2; mức $\text{BEC} \ge 300/\mu\text{L}$ là điểm cắt tiêu chuẩn để chỉ định điều trị bổ sung bằng các thuốc sinh học nhắm vào con đường IL-5/IL-5R.
+
+`[Table A1. High blood eosinophils and FeNO, and factors affecting their levels, in adults and adolescents] - trích từ GINA-2025-Update-25_11_08-WMS.pdf`
+
+- **Chú thích / Nội dung trích xuất:**
+    - **Bạch cầu ái toan máu (BEC):**
+        - _Tiêu chuẩn mức cao:_ Trong chẩn đoán hen: $\text{BEC} \ge$ Giới hạn trên của mức bình thường theo phòng xét nghiệm địa phương/quốc gia. Trong hen nặng dùng ICS liều cao: $\text{BEC} \ge 150/\mu\text{L}$ gợi ý viêm Kiểu 2; $\text{BEC} \ge 300/\mu\text{L}$ là ngưỡng đủ điều kiện xét duyệt thuốc sinh học Kiểu 2.
+        - _Yếu tố làm tăng BEC:_ Nam giới, buổi sáng (so với buổi chiều), người hút thuốc hiện tại, nhiễm ký sinh trùng (giun sán), bệnh dị ứng (viêm da cơ địa, viêm mũi dị ứng), phơi nhiễm dị nguyên.
+        - _Yếu tố làm giảm BEC:_ Sử dụng corticosteroid (đặc biệt OCS, cũng như ICS và thuốc xịt mũi).
+    - **Phân suất Nitric Oxide thở ra (FeNO):**
+        - _Tiêu chuẩn mức cao:_ Chưa dùng ICS (ICS-naïve): $> 50\text{ ppb}$; Dùng ICS liều trung bình: $\ge 25\text{ ppb}$; Dùng ICS liều cao: $\ge 20\text{ ppb}$.
+        - _Yếu tố làm tăng FeNO:_ Nam giới, buổi chiều (so với buổi sáng), bệnh dị ứng, khoảng 24 giờ sau phơi nhiễm dị nguyên.
+        - _Yếu tố làm giảm FeNO:_ Người hút thuốc hiện tại, khi đang co thắt phế quản, giai đoạn đầu đáp ứng dị ứng, dùng corticosteroid (ICS, OCS, xịt mũi).
+
+---
+
+# 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Global Initiative for Asthma. _Global Strategy for Asthma Management and Prevention (2026 Update)_. Published 2026.
+2. Global Initiative for Asthma. _Global Strategy for Asthma Management and Prevention (2025 Update)_. Published 2025.
+3. Dương Quý Sỹ, dịch. _Sổ Tay Hướng Dẫn Quản Lý Và Dự Phòng Hen (Cập Nhật 2025)_. Global Initiative for Asthma; 2025.
+4. Phạm Đức Thịnh. _Cơn Hen Phế Quản_. Bệnh viện Bãi Cháy; 2024.
+5. Hội Hô Hấp Hà Nội. _Cập nhật hướng dẫn chẩn đoán và điều trị GINA 2025_. Video YouTube.
+6. Semantic Scholar. _Effectiveness of Intravenous and Nebulized MgSO4 in Children with Asthma Exacerbation: A Systematic Review and Meta-Analysis of Clinical Trials_. Published 2024.

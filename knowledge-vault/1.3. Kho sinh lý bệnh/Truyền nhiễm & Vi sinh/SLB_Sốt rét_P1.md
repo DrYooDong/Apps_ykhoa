@@ -1,0 +1,85 @@
+---
+title: "Sốt rét"
+part: "P1"
+aliases:
+  - "Sốt rét"
+keywords:
+  - "sốt rét"
+  - "truyền nhiễm & vi sinh"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+### 1. Đại Cương Về Tác Nhân Và Chu Kỳ Sinh Học
+
+**Tác nhân gây bệnh:** Bệnh [[Sốt]] rét ở người do ký sinh trùng thuộc giống _Plasmodium_ gây ra, lây truyền chủ yếu qua vết đốt của muỗi cái _Anopheles_ bị nhiễm bệnh. Có 5 loài phổ biến gây bệnh cho người bao gồm: _Plasmodium falciparum_, _Plasmodium vivax_, _Plasmodium malariae_, _Plasmodium ovale_ và _Plasmodium knowlesi_ (một loài lây từ khỉ sang người).
+
+**Chu kỳ phát triển:** Vòng đời của ký sinh trùng [[Sốt]] rét bao gồm hai giai đoạn chính: sinh sản vô tính ở cơ thể người và sinh sản hữu tính trong cơ thể muỗi.
+
+- **Giai đoạn trước [[Hồng cầu]] (Tại gan):** Muỗi truyền thoa trùng (sporozoite) vào cơ thể người khi đốt. Thoa trùng xâm nhập vào [[Gan|tế bào gan]], phát triển thành các thể phân liệt tại gan (hepatic schizont), sau đó vỡ ra và giải phóng các mảnh trùng (merozoite) vào máu. Đặc biệt, đối với _P. vivax_ và _P. ovale_, một số ký sinh trùng tồn tại ở dạng ngủ đông trong [[Gan|tế bào gan]] gọi là thể ngủ (hypnozoite). Các thể ngủ này có thể tái hoạt động sau vài tuần đến vài năm, gây ra các đợt sốt rét tái phát dù người bệnh không bị muỗi đốt thêm.
+- **Giai đoạn [[Hồng cầu]]:** Mảnh trùng từ gan xâm nhập vào hồng cầu, phát triển từ thể tư dưỡng non (dạng nhẫn - ring stage) thành thể tư dưỡng già (trophozoite) và cuối cùng là thể phân liệt hồng cầu (erythrocytic schizont). Khi thể phân liệt vỡ ra, chúng phá hủy hồng cầu và giải phóng các mảnh trùng mới để tiếp tục chu kỳ lây nhiễm các hồng cầu khác. Thời gian của một chu kỳ hồng cầu xấp xỉ 24 giờ đối với _P. knowlesi_, 48 giờ đối với _P. falciparum, P. vivax, P. ovale_, và 72 giờ đối với _P. malariae_.
+- Một số mảnh trùng phát triển thành thể sinh dục (giao bào - gametocyte), lưu hành trong máu người và sẽ lây nhiễm sang muỗi khi muỗi hút máu, tiếp tục chu kỳ hữu tính.
+
+### 2. Cơ Chế Bệnh Sinh Cơ Bản (Sinh Lý Bệnh Sốt Rét)
+
+Biểu hiện lâm sàng điển hình của bệnh sốt rét với 3 giai đoạn (rét run, sốt, vã mồ hôi) có tính chu kỳ liên quan mật thiết đến sự vỡ đồng loạt của các hồng cầu bị nhiễm ký sinh trùng trong chu kỳ máu.
+
+Cơ chế bệnh sinh trong sốt rét bị chi phối bởi các quá trình sinh lý bệnh sau:
+
+- **Phá hủy hồng cầu:** Sự xâm nhập và nhân lên của ký sinh trùng dẫn đến vỡ hồng cầu liên tục. Đặc biệt, _P. vivax_ có xu hướng ưu tiên xâm nhập vào các hồng cầu lưới (hồng cầu non), gây ra tình trạng thiếu máu mạn tính có thể làm suy nhược cơ thể.
+- **Hiện tượng kết dính tế bào (Cyto-adherence) và ẩn trú (Sequestration):** Đây là đặc tính bệnh lý nguy hiểm, đặc biệt ở _P. falciparum_. Các hồng cầu bị nhiễm bệnh có xu hướng bám dính vào lớp nội mạc của các vi mạch máu tại các cơ quan nội tạng. Sự ẩn trú này làm tắc nghẽn dòng máu vi tuần hoàn, giảm tưới máu mô.
+- **Phản ứng viêm và độc tố:** Quá trình bệnh sinh còn được thúc đẩy bởi sự gia tăng tải lượng kháng nguyên, các độc tố và chất chuyển hóa có nguồn gốc từ ký sinh trùng, kết hợp với các chất trung gian độc do chính cơ thể ký chủ tiết ra để đáp ứng lại tình trạng nhiễm trùng.
+
+### 3. Cơ Chế Gây Ra Sốt Rét Ác Tính Và Biến Chứng
+
+Sốt rét ác tính là tình trạng nhiễm ký sinh trùng vô tính trong máu đi kèm với các biến chứng đe dọa tính mạng và rối loạn chức năng các cơ quan trọng yếu. _P. falciparum_ là tác nhân phổ biến nhất, nhưng _P. vivax_ và _P. knowlesi_ cũng có thể gây ra bệnh cảnh lâm sàng ác tính. Với _P. knowlesi_, chu kỳ sinh sản vô tính ngắn (24 giờ) dẫn đến tốc độ nhân lên rất nhanh, gây ra tỷ lệ ký sinh trùng trong máu (parasitemia) cực cao.
+
+Cơ chế của các biến chứng nghiêm trọng bao gồm:
+
+- **Thiếu máu nặng:** Mức độ thiếu máu tiến triển rất nhanh do các hồng cầu bị nhiễm và cả hồng cầu chưa bị nhiễm bị tán huyết hoặc bị lách loại bỏ khỏi tuần hoàn. Nồng độ huyết sắc tố sụt giảm nghiêm trọng ($\le5~g/dL$ ở trẻ em hoặc $<7~g/dL$ ở người lớn). Ngoài ra, tình trạng thiếu máu còn do các thiếu hụt dinh dưỡng và sự phá hủy hồng cầu qua trung gian miễn dịch.
+- **Sốt rét thể não ([[Hôn mê]]):** [[Hôn mê|Rối loạn tri giác]] và hôn mê sâu (Glasgow < 11 ở người lớn, Blantyre < 3 ở trẻ em) do sự tắc nghẽn vi mạch não bởi các hồng cầu nhiễm ký sinh trùng bám dính vào nội mạc.
+- **Toan chuyển hóa và [[Suy hô hấp]]:** Xảy ra do tình trạng thiếu hụt tưới máu mô và chuyển hóa yếm khí, biểu hiện bằng thiếu hụt kiềm > 8 mEq/L, lactate máu $\ge5~mmol/L$, hoặc pH giảm. Ở trẻ em, toan chuyển hóa nghiêm trọng và thiếu máu dẫn đến tình trạng tăng thông khí ([[[[Khó thở]]|thở nhanh]], sâu, rút lõm lồng ngực).
+- **[[Hạ đường huyết]]:** Đường huyết $<2,2~mmol/L$ $(<40~mg/dL)$, đặc biệt dễ xảy ra ở phụ nữ có thai hoặc do hậu quả của việc điều trị bằng Quinine (kích thích tiết [[Insulin]]).
+- **Suy đa tạng:** Các biến chứng khác bao gồm suy [[Thận]] cấp (thiểu niệu, vô niệu, Creatinine > 3 mg/dL), tổn thương gan ([[Vàng da]], Bilirubin > 3 mg/dL), [[Phù]] [[Phổi]] cấp, [[Sốc]] (tụt huyết áp, giảm tưới máu), và rối loạn đông máu nội mạch ([[Xuất huyết|chảy máu]] nướu, tiêu hóa).
+
+---
+
+**TRÍCH XUẤT BẢNG BIỂU / THANG ĐIỂM ĐÁNH GIÁ (SỐT RÉT ÁC TÍNH)**
+
+> **Tên Bảng: Thang điểm Glasgow của người lớn và trẻ em trên 5 tuổi** _Nguồn: BỘ Y TẾ - Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét (QĐ 3377/QĐ-BYT 2023)_
+> 
+> | Dấu hiệu lâm sàng | Điểm | | :--- | :---: | | **1. Đáp ứng bằng mắt** | | | Mở mắt tự phát | 4 | | Mở mắt khi nghe gọi | 3 | | Mở mắt khi bị kích thích đau | 2 | | Không đáp ứng | 1 | | **2. Phần đáp ứng bằng vận động** | | | Đáp ứng chính xác theo yêu cầu, lời nói | 6 | | Đáp ứng chính xác khi kích thích đau | 5 | | Đáp ứng không chính xác khi kích thích đau | 4 | | Tư thế co cứng (mất vỏ) | 3 | | Tư thế duỗi cứng (mất não) | 2 | | **3. Phần đáp ứng bằng lời nói** | | | Định hướng tốt, nói được chính xác tên, ngày, giờ, địa điểm | 5 | | Nói mạch lạc nhưng sai thông tin | 4 | | Nói được từ đơn, dễ | 3 | | Nói được những từ và câu vô nghĩa | 2 | | Không nói được | 1 | _Mô tả: Thang điểm Glasgow dùng để đánh giá mức độ rối loạn tri giác và hôn mê ở bệnh nhân sốt rét ác tính (người lớn và trẻ > 5 tuổi)._
+
+> **Tên Bảng: Thang điểm Blantyre của trẻ em < 5 tuổi** _Nguồn: BỘ Y TẾ - Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét (QĐ 3377/QĐ-BYT 2023)_
+> 
+> | Dấu hiệu lâm sàng | Điểm | | :--- | :---: | | **1. Cử động mắt:** | | | Theo hướng (ví dụ: theo mặt của mẹ) | 1 | | Không nhìn theo | 0 | | **2. Đáp ứng vận động:** | | | Tại chỗ kích thích đau | 2 | | Co chi với kích thích đau | 1 | | Không đặc hiệu hoặc không đáp ứng | 0 | | **3. Đáp ứng lời nói:** | | | Khóc to bình thường | 2 | | Khóc yếu rên rỉ | 1 | | Không đáp ứng | 0 | _Mô tả: Thang điểm Blantyre dùng để đánh giá mức độ hôn mê ở trẻ em dưới 5 tuổi bị sốt rét thể não._
+
+> **Tên Bảng: Immediate clinical management of severe manifestations and complications of P. falciparum malaria (Xử trí lâm sàng tức thì các biểu hiện và biến chứng nghiêm trọng của sốt rét P. falciparum)** _Nguồn: WHO guidelines for malaria - 13 August 2025_
+> 
+> | Manifestation or complication (Biểu hiện/Biến chứng) | Immediate management (Xử trí tức thì) | | :--- | :--- | | Hôn mê (Sốt rét thể não) | Duy trì đường thở, đặt bệnh nhân nằm nghiêng, loại trừ các nguyên nhân gây hôn mê có thể điều trị được (vd: [[Hạ đường huyết]], [[Viêm màng não]] do vi khuẩn); tránh các phương pháp hỗ trợ gây hại, đặt nội khí quản nếu cần. | | Sốt cao ác tính (Hyperpyrexia) | Chườm ấm, quạt mát, dùng chăn làm mát và dùng [[Paracetamol]]. | | [[Co giật]] | Duy trì đường thở; điều trị nhanh bằng [[Diazepam]], lorazepam, midazolam tĩnh mạch/trực tràng hoặc paraldehyde tiêm bắp. Kiểm tra đường huyết. | | Hạ đường huyết | Kiểm tra đường huyết, điều chỉnh và duy trì bằng truyền dịch chứa glucose. Ngưỡng can thiệp là $<3~mmol/L$ ở trẻ <5 tuổi và $<2.2~mmol/L$ ở người lớn/trẻ lớn. | | Thiếu máu nặng | Truyền máu toàn phần đã sàng lọc. | | [[Phù]] [[Phổi]] cấp | Cho bệnh nhân ngồi góc $45^{\circ}$, thở oxy, dùng thuốc lợi tiểu, ngừng truyền dịch tĩnh mạch, đặt nội khí quản và thêm PEEP hoặc CPAP nếu thiếu oxy đe dọa tính mạng. | | Tổn thương [[Thận]] cấp | Loại trừ nguyên nhân trước thận, kiểm tra cân bằng dịch và natri niệu; nếu đã suy thận thực tổn, thêm lọc máu liên tục hoặc chạy thận nhân tạo, hoặc lọc màng bụng. | | [[Xuất huyết|Chảy máu]] tự phát & Rối loạn đông máu | Truyền máu toàn phần, tủa lạnh, huyết tương tươi đông lạnh và [[Tiểu cầu]] (nếu có); tiêm vitamin K. | | Toan chuyển hóa | Loại trừ/điều trị hạ đường huyết, giảm thể tích tuần hoàn và [[Nhiễm trùng huyết]]. Nếu nặng, chạy thận nhân tạo/lọc máu. | | [[Sốc]] | Nghi ngờ [[Nhiễm trùng huyết]], cấy máu; cho [[Kháng sinh]] phổ rộng đường tĩnh mạch, điều chỉnh rối loạn huyết động. | _Mô tả: Bảng tổng hợp các bước xử trí cấp cứu tức thời tương ứng với từng cơ chế biến chứng sinh lý bệnh nguy hiểm nhất của sốt rét._
+
+---
+
+### 4. Cơ Chế Bệnh Sinh Sốt Rét Ở Phụ Nữ Có Thai (Placental Malaria)
+
+Phụ nữ mang thai, đặc biệt là phụ nữ mang thai lần đầu (primigravida), là nhóm đối tượng vô cùng nhạy cảm với sốt rét do những biến đổi sinh lý và hệ miễn dịch. Lượng progesterone tăng cao và quá trình phát triển của nhau thai làm điều hòa lại hệ thống miễn dịch của mẹ, làm tăng tính nhạy cảm với nhiễm trùng _P. falciparum_ và _P. vivax_.
+
+Cơ chế bệnh sinh tại nhau thai (Placental malaria):
+
+- **Sự ẩn trú tại nhau thai:** Hồng cầu bị nhiễm _Plasmodium_ tích tụ và kết dính dày đặc vào các khoảng gian nhung mao (intervillous spaces) của nhau thai.
+- **Suy thai và cản trở trao đổi chất:** Sự ẩn trú này cản trở nghiêm trọng việc vận chuyển oxy và chất dinh dưỡng từ mẹ sang thai nhi.
+- **Phản ứng viêm tại chỗ:** Sự hiện diện của ký sinh trùng tại nhau thai kích hoạt phản ứng viêm mạnh mẽ, giải phóng các cytokine tiền viêm và làm tích tụ các tế bào miễn dịch. Điều này gây ra stress oxy hóa, kích hoạt quá trình tự chết tế bào (apoptosis) và ức chế sự hình thành mạch máu (angiogenesis).
+- **Tổn thương hàng rào ruột của mẹ:** Nhiễm _P. falciparum_ ở phụ nữ có thai còn gây phá vỡ tính toàn vẹn của hàng rào ruột, làm tăng tính thấm của ruột (biểu hiện qua sự gia tăng nồng độ sCD14 và LBP - các dấu ấn sinh học của chuyển vị vi khuẩn và viêm toàn thân). Phản ứng viêm toàn thân này liên quan chặt chẽ đến nguy cơ sinh non.
+
+**Hậu quả lâm sàng:** Chuỗi cơ chế bệnh lý trên dẫn đến tình trạng thai nhi chậm phát triển trong tử cung (IUGR), sinh non, nhẹ cân (Low Birth Weight), sảy thai tự nhiên (đặc biệt trong 3 tháng đầu), thai chết lưu và thậm chí tử vong sơ sinh. Về phía người mẹ, cơ chế phá hủy hồng cầu kết hợp với nhu cầu dinh dưỡng tăng cao gây ra thiếu máu trầm trọng, làm tăng nguy cơ tiền sản giật, phù phổi và tử vong mẹ.
+
+---
+
+_Tài liệu tham khảo:_ BYT. Hướng dẫn giám sát và phòng chống bệnh sốt rét, QĐ 4922/QĐ-BYT, 2021. BYT. Hướng dẫn chẩn đoán và điều trị bệnh sốt rét, QĐ 3377/QĐ-BYT, 2023. World Health Organization, _WHO guidelines for malaria_, 2025. Ahmar H., et al., "Malaria in Pregnancy: Systematic Review of Maternal and Fetal Outcomes and Effectiveness of Preventive Strategies," _Journal of Current Health Sciences_, 2025.

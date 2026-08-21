@@ -1,0 +1,197 @@
+---
+title: "Thủy đậu"
+part: "P3"
+aliases:
+  - "Thủy đậu"
+keywords:
+  - "thủy đậu"
+  - "truyền nhiễm & vi sinh"
+specialty: "Truyền nhiễm & Vi sinh"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/truyen-nhiem"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+# **BÀI HỌC: SINH LÝ BỆNH THỦY ĐẬU (PHẦN 3) - CÁC CHIẾN LƯỢC PHÒNG NGỪA BẰNG VẮC-XIN VÀ DỰ PHÒNG SAU PHƠI NHIỄM**
+
+---
+
+### **1. Nội Dung Sinh Lý Học Chi Tiết**
+
+#### **I. Vắc-xin Thủy Đậu (Varicella Vaccine): Phân Loại, Cơ Chế Hoạt Động và Hiệu Quả Bảo Vệ**
+
+- **Phân loại và Thành phần**:
+    - Tất cả các vắc-xin thủy đậu được phê duyệt hiện nay đều là **vắc-xin sống giảm độc lực (live attenuated vaccines)** và hầu hết đều sử dụng **chủng Oka**. Chủng Oka được phân lập lần đầu tiên tại Nhật Bản bởi Giáo sư Michiaki Takahashi từ dịch bóng nước của một bé trai 3 tuổi khỏe mạnh tên là Oka. Virus được làm giảm độc lực bằng cách cấy truyền liên tiếp 11 lần trong tế bào sợi phôi phổi người ở \(34^\circ\text{C}\), 12 lần trong tế bào sợi phôi chuột lang (GPEFs) ở \(37^\circ\text{C}\), và sau đó là các tế bào lưỡng bội người (WI-38 và MRC-5).
+    - Có hai dạng bào chế chính lưu hành trên toàn cầu:
+        - **Vắc-xin đơn giá (Monovalent varicella vaccine)**: Ví dụ như _Varivax_ (Oka/Merck) chứa không dưới 1.350 PFU (Plaque-forming units) và _Varilrix_ (Oka-RIT) chứa không dưới 2.000 PFU mỗi liều.
+        - **Vắc-xin phối hợp (MMRV - Measles, Mumps, Rubella, Varicella)**: Ví dụ như _ProQuad_ (Merck) và _Priorix-Tetra_ (GSK). Do hiện tượng nhiễu loạn miễn dịch giữa các thành phần, nồng độ kháng nguyên VZV trong vắc-xin phối hợp được nâng lên rất cao để đảm bảo hiệu quả, đạt tối thiểu **9.772 PFU** ở _ProQuad_.
+- **Cơ chế đáp ứng miễn dịch và Chỉ dấu bảo vệ**:
+    - Vắc-xin kích hoạt cả đáp ứng miễn dịch dịch thể (tạo kháng thể trung hòa) và miễn dịch qua trung gian tế bào (tế bào T CD4+ và CD8+ đặc hiệu).
+    - **gpELISA**: Hiệu giá kháng thể đạt **\(\ge 5\text{ gpELISA units/mL}\)** vào thời điểm 6 tuần sau tiêm chủng được coi là chỉ số tương đương bảo vệ xấp xỉ cho cá thể nhận vắc-xin.
+    - **FAMA (Fluorescent Antibody to Membrane Antigen)**: Hiệu giá kháng thể đạt **\(> 1:4\)** tại thời điểm tiếp xúc với virus hoang dại tương quan chặt chẽ với khả năng bảo vệ thành công trước bệnh thủy đậu lâm sàng.
+- **Hiệu quả bảo vệ của phác đồ 1 liều so với 2 liều**:
+    - **Phác đồ 1 liều**: Đạt hiệu quả bảo vệ trung bình khoảng **80%** đối với mọi thể bệnh thủy đậu. Mặc dù vậy, 1 liều vắc-xin vẫn đạt hiệu quả rất cao (**\(\ge 95%\) đến 99%**) trong việc phòng ngừa các thể thủy đậu trung bình và nặng. Khoảng **9% đến 14%** trẻ em gặp phải tình trạng **thất bại vắc-xin nguyên phát (Primary vaccine failure)** sau liều thứ nhất. Điều này dẫn đến các ca **thủy đậu bùng phát (breakthrough varicella)** trong các quần thể đã tiêm chủng. Thủy đậu bùng phát thường nhẹ hơn nhiều so với thể tự nhiên, đặc trưng bởi số lượng nốt phát ban ít hơn 50 nốt, tổn thương chủ yếu là dát sẩn, không có biến chứng và sốt nhẹ hoặc không sốt.
+    - **Phác đồ 2 liều**: Để kiểm soát triệt để các đợt dịch bùng phát, phác đồ 2 liều đã được khuyến cáo (liều 1 lúc 12-15 tháng tuổi, liều 2 lúc 4-6 tuổi). Phác đồ 2 liều nâng hiệu quả bảo vệ đối với mọi thể thủy đậu lên tới **93% - 98.3%** và đạt hiệu quả phòng ngừa thể nặng gần như tuyệt đối (**100%**). Nghiên cứu theo dõi 10 năm của Kuter và cộng sự cho thấy trong giai đoạn từ năm thứ 7 đến năm thứ 10 sau tiêm chủng, không ghi nhận bất kỳ ca thủy đậu bùng phát nào ở nhóm trẻ tiêm 2 liều, trong khi nhóm 1 liều vẫn tiếp tục xuất hiện các ca rải rác.
+
+---
+
+##### **Bảng thông tin trích xuất:**
+
+- **Tên Bảng**: **Table 1. One dose varicella vaccine effectiveness estimates by type of vaccine and varicella severity (monovalent vaccine)** (Ước tính hiệu quả của một liều vắc-xin thủy đậu đơn giá theo loại vắc-xin và mức độ nặng của bệnh)
+- **Thuộc tài liệu**: _Apr2014_session6_varicella.pdf_ (SAGE Working Group on Varicella and Herpes Zoster Vaccines, 2014).
+- **Nội dung mô tả**:
+
+|Loại Vắc-xin|Phòng ngừa mọi thể thủy đậu (All Varicella)|Phòng ngừa thể trung bình và nặng phối hợp (Moderate & Severe)|Phòng ngừa thể thủy đậu nặng (Severe Varicella)|
+|:--|:-:|:-:|:-:|
+|**Varivax** _(Oka/Merck)_|**Trung vị: 83%** *(Tầm dao động: 44% - 100%, dựa trên 28 ước tính)*|**Trung vị: 96.5%** *(Tầm dao động: 86% - 100%, dựa trên 18 ước tính)*|**Trung vị: 100%** *(Tầm dao động: 97% - 100%, dựa trên 11 ước tính)*|
+|**Varilrix** _(Oka-RIT)_|**Trung vị: 76%** *(Tầm dao động: 20% - 92%, dựa trên 8 ước tính)*|**Trung vị: 95.0%** *(Tầm dao động: 80% - 100%, dựa trên 5 ước tính)*|**Trung vị: 100%** *(Dựa trên 3 ước tính)*|
+|**Okavax** _(Biken)_|**90%** _(1 ước tính)_|**100%** _(1 ước tính)_|**100%** _(1 ước tính)_|
+|**Shanghai**|**93%** _(1 ước tính)_|Không có dữ liệu|Không có dữ liệu|
+|**Keygen**|**77%** _(1 ước tính)_|Không có dữ liệu|Không có dữ liệu|
+|**Changsheng**|**80%** _(2 ước tính)_|Không có dữ liệu|Không có dữ liệu|
+|**Baike**|**91%** _(1 ước tính)_|Không có dữ liệu|Không có dữ liệu|
+|**Chưa rõ loại / Phối hợp**|**Trung vị: 80%** *(Tầm dao động: 60% - 100%, 10 ước tính)*|**Trung vị: 99.5%** *(Tầm dao động: 86% - 100%, 3 ước tính)*|**Trung vị: 100%** *(Tầm dao động: 85% - 100%, 3 ước tính)*|
+
+_Mô tả chi tiết dưới bảng_: Bảng tổng hợp dữ liệu từ các nghiên cứu thực tế sau cấp phép chứng minh rằng 1 liều vắc-xin thủy đậu đơn giá, bất kể chủng loại hay nhà sản xuất, đều có hiệu quả bảo vệ ở mức trung bình (~80%) đối với việc ngăn ngừa tất cả các thể lâm sàng của thủy đậu. Tuy nhiên, hiệu quả bảo vệ chống lại thể bệnh trung bình đến nặng là cực kỳ xuất sắc (trung vị đạt từ 95% đến 100%), chứng minh vắc-xin rất hiệu quả trong việc ngăn ngừa biến chứng nguy hiểm và tử vong.
+
+---
+
+#### **II. Tính An Toàn của Vắc-xin Thủy Đậu và Vấn Đề Lây Truyền Virus Lực Lượng Giảm Độc Lực (Vaccine-Strain VZV)**
+
+- **Phản ứng bất lợi thông thường và nghiêm trọng**:
+    - Vắc-xin thủy đậu đơn giá dung nạp rất tốt. Các phản ứng thông thường bao gồm đau tại vị trí tiêm (19%), sốt nhẹ (15%), và phát ban dạng thủy đậu khu trú hoặc lan tỏa nhẹ (6%) xảy ra trong vòng 42 ngày sau tiêm.
+    - **Co giật do sốt (Febrile Seizures) với vắc-xin MMRV**: Thống kê cho thấy có một sự gia tăng nhẹ nguy cơ co giật do sốt từ ngày thứ 7 đến 10 sau khi tiêm liều đầu tiên của vắc-xin phối hợp **MMRV** ở trẻ 12–23 tháng tuổi so với việc tiêm riêng rẽ hai mũi MMR và Varicella cùng một lúc. Tỷ lệ gia tăng được xác định là **1 ca co giật do sốt bổ sung cho mỗi 2.300 đến 2.700 liều MMRV** được tiêm. Nguy cơ này không tăng lên khi tiêm liều MMRV thứ hai.
+    - **Các biến chứng nghiêm trọng do chủng vắc-xin (Oka strain)**: Mặc dù cực kỳ hiếm gặp, chủng vắc-xin Oka có thể gây ra các biến chứng nghiêm trọng như viêm phổi, viêm gan, viêm màng não HZ, hoặc nhiễm trùng lan tỏa có tổn thương tạng. Phần lớn các trường hợp này xảy ra ở những cá thể có tình trạng suy giảm miễn dịch tiềm ẩn hoặc chưa được chẩn đoán tại thời điểm tiêm chủng. Hai ca tử vong do chủng vắc-xin Oka đã được xác nhận trên toàn cầu, một ở trẻ bị bệnh bạch cầu dòng lympho cấp tính (ALL) đang trong giai đoạn lui bệnh và một ở trẻ có tiền sử suy dinh dưỡng nặng, viêm phổi tái phát phải điều trị bằng corticosteroids.
+- **Sự lây truyền virus vắc-xin sang người tiếp xúc (Secondary Transmission)**:
+    - Khả năng lây truyền chủng vắc-xin Oka từ người khỏe mạnh được tiêm chủng sang những người tiếp xúc nhạy cảm là **cực kỳ hiếm gặp**. Trong số hơn 130 triệu liều vắc-xin được phân phối tại Hoa Kỳ, chỉ có **11 trường hợp lây truyền thứ phát được xác nhận bằng kỹ thuật PCR** từ 9 người tiêm vắc-xin.
+    - Điều kiện bắt buộc để xảy ra sự lây truyền là **người tiêm vắc-xin phải xuất hiện phát ban dạng thủy đậu** sau tiêm (hoặc phát ban Zona do chủng vắc-xin tái hoạt động). Dịch tiết từ các nốt ban này chứa virus vắc-xin và có thể lây sang người tiếp xúc gần thông qua tiếp xúc trực tiếp hoặc khí dung. Đối với bệnh nhân ALL được tiêm vắc-xin, tỷ lệ lây truyền sang người tiếp xúc gia đình cao hơn, đạt khoảng **10% - 17%** và cũng chỉ xảy ra khi bệnh nhân ALL có phát ban sau tiêm.
+- **Nguy cơ bị Zona do chủng vắc-xin tái hoạt động**:
+    - Giống như virus hoang dại, chủng vắc-xin Oka có khả năng thiết lập trạng thái ẩn nấp trong các hạch cảm giác rễ sau và có thể tái hoạt động gây bệnh Zona (Herpes Zoster) sau này.
+    - Tuy nhiên, dữ liệu dịch tễ học dài hạn khẳng định rằng **người được tiêm vắc-xin thủy đậu có nguy cơ mắc bệnh Zona thấp hơn từ 4 đến 12 lần** so với những người bị nhiễm virus hoang dại tự nhiên. Ở trẻ em bị ALL, nguy cơ bị Zona sau khi tiêm vắc-xin thấp hơn khoảng 65% (8 ca/1.000 người-năm so với 25 ca/1.000 người-năm ở trẻ nhiễm virus tự nhiên).
+
+---
+
+#### **III. Vắc-xin Dự Phòng Zona (Herpes Zoster Vaccine): So Sánh Toàn Diện Zostavax và Shingrix**
+
+Sự phòng ngừa bệnh Zona và biến chứng đau dây thần kinh sau zona (PHN) ở người lớn tuổi đã trải qua hai thế hệ vắc-xin với những đặc tính sinh học hoàn toàn khác biệt:
+
+1. **Vắc-xin sống giảm độc lực - Zostavax (Merck & Co.)**:
+    
+    - **Cấu trúc**: Chứa virus sống giảm độc lực chủng Oka. Để vượt qua tình trạng lão hóa miễn dịch và kích thích lại hệ miễn dịch tế bào vốn đã có sẵn từ thời thơ ấu, **tải lượng virus trong Zostavax cao gấp 14 lần** so với vắc-xin thủy đậu đơn giá dành cho trẻ em (_Varivax_).
+    - **Hiệu quả bảo vệ**: Thử nghiệm lâm sàng bản lề _Shingles Prevention Study (SPS)_ trên 38.500 người từ 60 tuổi trở lên cho thấy Zostavax giúp giảm **51.3%** tỷ lệ mắc Zona, giảm **61.1%** gánh nặng bệnh tật tổng thể, và giảm **66.5%** tỷ lệ mắc biến chứng đau dây thần kinh sau zona (PHN).
+    - **Hạn chế**: Hiệu quả bảo vệ của Zostavax **giảm mạnh theo độ tuổi**. Ở nhóm người \(\ge 80\) tuổi, hiệu quả phòng ngừa Zona chỉ còn **18%**, mặc dù hiệu quả phòng ngừa PHN vẫn duy trì ở mức 42%. Ngoài ra, hiệu quả bảo vệ của vắc-xin cũng giảm dần theo thời gian (waning immunity). Do chứa virus sống, Zostavax **chống chỉ định tuyệt đối ở người suy giảm miễn dịch nặng** vì nguy cơ gây bệnh lan tỏa.
+2. **Vắc-xin tái tổ hợp bổ trợ - Shingrix (GSK)**:
+    
+    - **Cấu trúc**: Là vắc-xin bất hoạt, dưới đơn vị (subunit vaccine) chứa kháng nguyên **glycoprotein E (gE)** tái tổ hợp của VZV phối hợp với hệ thống chất bổ trợ **AS01B**. Glycoprotein E là protein dồi dào nhất trên vỏ virus và là đích nhắm chính của kháng thể trung hòa và tế bào T. Chất bổ trợ AS01B giúp kích hoạt mạnh mẽ hệ miễn dịch bẩm sinh và tế bào T đáp ứng.
+    - **Hiệu quả bảo vệ**: Shingrix đạt hiệu quả bảo vệ cực kỳ vượt trội, **giảm tới 97%** nguy cơ mắc bệnh Zona và PHN ở cả người khỏe mạnh và người \(\ge 70\) tuổi. Hiệu quả này không bị suy giảm đáng kể theo tuổi tác.
+    - **Ưu điểm**: Do không chứa virus sống, Shingrix **an toàn tuyệt đối và được chỉ định rộng rãi cho người suy giảm miễn dịch** cũng như người rất cao tuổi.
+
+---
+---
+
+##### **Bảng đối chiếu so sánh trích xuất:**
+
+- **Tên Bảng**: **Table 1. Comparison of the HPV and VZV vaccines** (Bảng đối chiếu so sánh giữa vắc-xin HPV và vắc-xin dự phòng Herpes Zoster)
+- **Thuộc tài liệu**: _nihms315257.pdf_ (Ian H Frazer & Myron J Levin, 2011).
+- **Nội dung trích xuất liên quan đến vắc-xin VZV**:
+
+|Đặc tính so sánh|Vắc-xin dự phòng Herpes Zoster (Zostavax)|
+|:--|:--|
+|**Cấu trúc vắc-xin**|**Virus sống giảm độc lực chủng Oka** (Live attenuated varicella-zoster virus)|
+|**Chất bổ trợ (Adjuvant)**|**Không có (Nil)**|
+|**Phác đồ tiêm**|**1 liều đơn, tiêm dưới da (Single dose subcutaneous)**|
+|**Đối tượng đích**|**Người lớn từ 50 tuổi trở lên** (Adults age > 50 years)|
+|**Dữ liệu cấp phép**|**Giảm >50% tỷ lệ mắc bệnh Zona**; giảm mức độ nặng của bệnh nếu xảy ra đột phá|
+|**Hiệu quả điều trị (Therapeutic)**|**Giảm tỷ lệ và mức độ nặng của bệnh ở những người đã mang nhiễm trùng ẩn nấp** (tái hoạt động)|
+|**Cơ chế hoạt động chính**|**Miễn dịch tế bào (T-cell-mediated immunity) đặc hiệu virus là cần và đủ để bảo vệ**|
+|**Thời gian bảo vệ**|**Trên 7 năm** (>7 years)|
+|**Chống chỉ định**|**Suy giảm miễn dịch (Immune compromise)**; dị ứng với thành phần vắc-xin|
+
+---
+
+#### **IV. Các Chiến Lược Tiêm Chủng và Khuyến Cáo của WHO / Cơ Quan Y Tế**
+
+- **Khuyến cáo tiêm chủng phổ cập trẻ em (Universal Childhood Immunization - UMV)**:
+    - Theo WHO (2014), việc đưa vắc-xin thủy đậu vào chương trình tiêm chủng mở rộng quốc gia chỉ nên được cân nhắc ở những nước mà bệnh thủy đậu là một vấn đề y tế công cộng và kinh tế-xã hội quan trọng, đồng thời **phải duy trì được tỷ lệ bao phủ vắc-xin (vaccine coverage) ổn định và bền vững ở mức $\ge$ 80%**.
+    - **Rủi ro dịch tễ học "Dịch chuyển tuổi" (Epidemiological Shift / Shift in the age of infection)**:
+        - Nếu một quốc gia triển khai tiêm chủng phổ cập nhưng chỉ đạt tỷ lệ bao phủ thấp đến trung bình (nằm trong khoảng **20% đến 80%**), nó sẽ làm gián đoạn sự lưu hành của virus hoang dại trong cộng đồng nhưng không đủ để tạo miễn dịch cộng đồng (herd immunity).
+        - Điều này kéo dài thời gian tích lũy những người nhạy cảm chưa được tiêm phòng, dẫn đến **sự dịch chuyển tuổi nhiễm trùng thủy đậu từ trẻ nhỏ sang thanh thiếu niên và người lớn**. Ở người lớn, bệnh thủy đậu có tỷ lệ biến chứng nặng, viêm phổi và tử vong cao gấp nhiều lần so với trẻ em. Do đó, độ bao phủ <80% có thể làm tăng gánh nặng bệnh tật và tỷ lệ tử vong chung của cả quốc gia.
+        - WHO khuyến cáo nếu tỷ lệ bao phủ của thị trường tư nhân đạt khoảng 20%–80% mà không có chương trình quốc gia, quốc gia đó cần ưu tiên đưa ngay vắc-xin vào chương trình tiêm chủng mở rộng để bứt phá qua ngưỡng 80%.
+- **Khuyến cáo cho các đối tượng đặc biệt**:
+    - **Nhân viên y tế (HCP)**: Do nguy cơ lây truyền nosocomial (trong bệnh viện) rất cao và gây gián đoạn hoạt động y tế, tất cả nhân viên y tế chưa có bằng chứng miễn dịch phải được tiêm đủ **2 liều vắc-xin thủy đậu cách nhau 4-8 tuần**. Bằng chứng miễn dịch bao gồm: giấy xác nhận tiêm đủ 2 mũi, xét nghiệm kháng thể dương tính, hoặc chẩn đoán xác định thủy đậu/zona trước đó bởi bác sĩ. Nhân viên mới tiêm vắc-xin không cần nghỉ việc, trừ khi họ xuất hiện phát ban sau tiêm thì phải tránh tiếp xúc với bệnh nhân nguy cơ cao cho đến khi tổn thương đóng vảy hoàn toàn.
+    - **Người suy giảm miễn dịch**:
+        - Mặc dù vắc-xin sống chống chỉ định chung cho người suy giảm miễn dịch, WHO và ACIP cho phép tiêm vắc-xin thủy đậu đơn giá (không dùng MMRV) cho trẻ nhiễm HIV ở giai đoạn lâm sàng ổn định và có tỷ lệ **T-lymphocyte CD4+ $\ge$ 15%** (hoặc $\ge 200$ cells/mcL), sử dụng phác đồ 2 liều cách nhau 3 tháng.
+        - Trẻ bị bệnh bạch cầu dòng lympho cấp tính (ALL) đang trong giai đoạn lui bệnh hoàn toàn và đã dừng hóa trị ít nhất 3 tháng (hoặc tạm dừng hóa trị 1 tuần trước và 1 tuần sau tiêm) cũng có thể được tiêm chủng dưới sự giám sát chặt chẽ tại cơ sở y tế có sẵn thuốc kháng virus.
+    - **Phụ nữ sau sinh**: Phụ nữ trong độ tuổi sinh đẻ cần được tư vấn tiêm chủng phòng ngừa thủy đậu. Do vắc-xin sống chống chỉ định trong thai kỳ, phụ nữ chưa miễn dịch cần được tiêm chủng **ngay trong giai đoạn hậu sản (post-partum)** để bảo vệ họ trong các thai kỳ tiếp theo. Sau khi tiêm vắc-xin, cần **tránh mang thai trong vòng ít nhất 4 tuần** (một số tài liệu ghi 3 tháng đối với Zostavax).
+- **Thuyết kích thích miễn dịch ngoại sinh (Exogenous Boosting Hypothesis)**:
+    - Thuyết này (do Hope-Simpson đề xuất năm 1965) cho rằng việc tiếp xúc thường xuyên với bệnh nhân thủy đậu trong cộng đồng hoạt động như một "mũi tiêm nhắc lại tự nhiên" (exogenous boost), giúp củng cố miễn dịch tế bào (CMI) ở người lớn đã nhiễm VZV tiềm ẩn, từ đó ngăn virus tái hoạt động gây bệnh Zona.
+    - Các mô hình toán học dự đoán rằng khi triển khai tiêm chủng thủy đậu phổ cập ở trẻ em, số lượng ca thủy đậu giảm đi sẽ làm mất đi nguồn kích thích ngoại sinh này, dẫn đến **sự gia tăng tạm thời tỷ lệ mắc bệnh Zona ở người lớn trong vòng 10 đến 50 năm đầu** sau khi triển khai chương trình.
+    - Tuy nhiên, về mặt dịch tễ học thực tế, mặc dù tỷ lệ mắc Zona có xu hướng tăng ở một số nước, các nghiên cứu không thể chứng minh sự gia tăng này hoàn toàn do chương trình tiêm chủng trẻ em vì xu hướng tăng đã bắt đầu từ trước khi vắc-xin được cấp phép. Về lâu dài (>50 năm), tỷ lệ mắc Zona chắc chắn sẽ giảm sâu khi thế hệ trẻ em được tiêm vắc-xin (với tỷ lệ tái hoạt động cực thấp) thay thế hoàn toàn thế hệ người lớn từng nhiễm virus hoang dại.
+
+---
+
+#### **V. Dự Phòng Sau Phơi Nhiễm (Post-Exposure Prophylaxis - PEP)**
+
+Khi một cá thể chưa có miễn dịch tiếp xúc trực tiếp với bệnh nhân thủy đậu hoặc zona, các chiến lược dự phòng sau phơi nhiễm cần được kích hoạt nhanh chóng dựa trên tình trạng sinh lý và miễn dịch của họ:
+
+1. **Dự phòng bằng Vắc-xin Thủy Đậu (Active PEP)**:
+    
+    - Chỉ định cho những đối tượng **khỏe mạnh, có đầy đủ đáp ứng miễn dịch, từ 12 tháng tuổi trở lên và không có chống chỉ định với vắc-xin sống**.
+    - Hiệu quả cao nhất khi được tiêm chủng **trong vòng 3 ngày (72 giờ) sau phơi nhiễm**, nhưng vẫn có thể mang lại hiệu quả bảo vệ hoặc làm nhẹ bệnh nếu tiêm trong vòng 5 ngày (120 giờ).
+2. **Dự phòng bằng Kháng thể Thụ động (Passive PEP)**:
+    
+    - **Chỉ định**: Dành cho những đối tượng có nguy cơ cao gặp biến chứng nặng của thủy đậu và **có chống chỉ định sử dụng vắc-xin sống**. Các đối tượng này bao gồm:
+        - Phụ nữ mang thai chưa có miễn dịch.
+        - Người bị suy giảm miễn dịch nặng chưa có miễn dịch.
+        - Trẻ sơ sinh có mẹ khởi phát thủy đậu trong vòng **5 ngày trước sinh cho đến 48 giờ (2 ngày) sau sinh**.
+        - Trẻ sinh non nằm viện $\ge 28$ tuần có mẹ chưa có bằng chứng miễn dịch, hoặc trẻ sinh non <28 tuần (hoặc nặng $\le 1000\text{g}$) bất kể tình trạng miễn dịch của mẹ.
+    - **Chế phẩm và Liều lượng**:
+        - **Varicella Zoster Immune Globulin (VZIG hoặc VariZIG)**: Là globulin miễn dịch đặc hiệu lấy từ huyết thanh người có nồng độ kháng thể kháng VZV cực cao. Liều lượng tiêm bắp tiêu chuẩn theo cân nặng: **125 Units cho mỗi 10 kg trọng lượng cơ thể**, tối đa là 625 Units (tương đương 5 lọ). (Đối với trẻ sinh non nặng $\le 2\text{ kg}$, liều là 62.5 Units). Theo phác đồ của Úc, liều được khuyến cáo để tránh lãng phí là: 0-10 kg dùng 200 IU (1 lọ); 11-30 kg dùng 400 IU (2 lọ); trên 30 kg dùng 600 IU (3 lọ). Phác đồ của Mỹ/Bỉ khuyến cáo liều trẻ sơ sinh nặng <2 kg dùng 125 U; >2 kg dùng 250 U.
+        - VZIG phải được sử dụng **càng sớm càng tốt, tối ưu trong vòng 96 giờ (4 ngày), và có hiệu lực bảo vệ lên đến 10 ngày sau phơi nhiễm**. Khả năng bảo vệ thụ động kéo dài khoảng **3 tuần**. Người nhận VZIG cần được theo dõi sát và coi là có khả năng lây truyền bệnh kéo dài từ ngày thứ **8 đến ngày thứ 28 sau phơi nhiễm** (kéo dài incubation period).
+        - **Intravenous Immunoglobulin (IVIG)**: Khi VZIG không có sẵn (phổ biến ở nhiều nước châu Âu do khan hiếm nguồn cung), có thể thay thế bằng **Globulin miễn dịch truyền tĩnh mạch (IVIG) với liều lượng $\ge 400 - 500\text{ mg/kg}$** truyền một lần duy nhất.
+3. **Dự phòng chủ động bằng Thuốc kháng virus (Preemptive Antiviral Therapy)**:
+    
+    - Đây là một chiến lược thay thế vô cùng hiệu quả khi VZIG không có sẵn hoặc đã quá thời gian vàng để tiêm vắc-xin.
+    - **Cơ chế**: Thuốc kháng virus không được dùng ngay lập tức sau tiếp xúc vì sẽ không hiệu quả do tải lượng virus lúc này quá thấp. Thay vào đó, thuốc được dùng **bắt đầu từ ngày thứ 7 đến ngày thứ 10 sau phơi nhiễm và kéo dài liên tục trong 7 ngày**. Khoảng thời gian này trùng khớp với đợt nhiễm virus huyết tiên phát và sự nhân lên mạnh mẽ của virus tại các mô cơ quan, giúp chặn đứng sự lan truyền của virus tới biểu bì da.
+    - **Phác đồ**:
+        - **Acyclovir uống**: 20 mg/kg/liều, uống 4 lần/ngày (tối đa 800 mg/liều, tổng liều tối đa 3.200 mg/ngày). Ở phụ nữ mang thai chưa có miễn dịch phơi nhiễm đáng kể, liều khuyến cáo của UKHSA là **800 mg, uống 4 lần/ngày** từ ngày 7 đến 14.
+        - **Valacyclovir uống**: 20 mg/kg/liều (cho trẻ $\ge 3$ tháng tuổi), uống 3 lần/ngày (tối đa 1.000 mg/liều, tổng liều tối đa 3.000 mg/ngày). Valacyclovir có sinh khả dụng cao hơn và số lần dùng thuốc trong ngày ít hơn nên dễ tuân thủ hơn.
+
+---
+
+##### **Hình ảnh/Sơ đồ liên quan:**
+
+- **Tên Sơ đồ/Lưu đồ**: **Appendix A: Management of Exposures to Varicella-Zoster** (Lưu đồ xử trí phơi nhiễm với Varicella-Zoster)
+- **Thuộc tài liệu**: _Clinical Guidelines for Mgmt of HCP Exposed to Varicella 2022.pdf_ (trích dẫn nguồn gốc từ Hướng dẫn của Viện Hàn lâm Nhi khoa Hoa Kỳ - AAP Red Book 2021).
+- **Mô tả hình họa chi tiết**:
+    - Lưu đồ bắt đầu bằng việc đánh giá **Bằng chứng miễn dịch (Evidence of immunity)** của người bị phơi nhiễm.
+    - **Nếu CÓ bằng chứng miễn dịch**: Không cần dự phòng.
+    - **Nếu KHÔNG CÓ bằng chứng miễn dịch**: Chia làm các nhánh đối tượng:
+        - **Nhánh 1: Người khỏe mạnh $\ge 12$ tháng tuổi**: Tiến hành tiêm ngay vắc-xin thủy đậu đơn giá (liều 1 hoặc liều 2) trong vòng 5 ngày sau phơi nhiễm.
+        - **Nhánh 2: Trẻ khỏe mạnh < 12 tháng tuổi**: Không tiêm vắc-xin; tiến hành theo dõi lâm sàng.
+        - **Nhánh 3: Nhóm nguy cơ cao chống chỉ định vắc-xin sống** (Trẻ suy giảm miễn dịch nặng, Phụ nữ mang thai, Trẻ sơ sinh có mẹ nhiễm thủy đậu sát sinh, Trẻ sinh non nằm viện nguy cơ cao):
+            - Đánh giá thời gian: Nếu nằm **trong vòng 10 ngày sau phơi nhiễm**, tiến hành tiêm bắp **Varicella Zoster Immune Globulin (VZIG)** với liều lượng 125 U/10 kg (tối đa 625 U).
+            - Nếu VZIG không có sẵn: Tiến hành truyền tĩnh mạch **IVIG** với liều 400 mg/kg.
+            - Nếu cả VZIG và IVIG đều không có sẵn: Tiến hành điều trị dự phòng chủ động (preemptive therapy) bằng **Acyclovir hoặc Valacyclovir đường uống** bắt đầu từ ngày thứ 7 đến ngày thứ 10 sau phơi nhiễm, kéo dài trong 7 ngày.
+
+---
+
+### **2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA**
+
+1. World Health Organization. Varicella and herpes zoster vaccines: WHO position paper, 20 June 2014. _Weekly Epidemiological Record_. 2014;89(25):265-288.
+2. SAGE Working Group on Varicella and Herpes Zoster Vaccines. Background Paper on Varicella Vaccine. Geneva, Switzerland: World Health Organization; 2014.
+3. European Centre for Disease Prevention and Control. _Varicella vaccination in the European Union_. Stockholm, Sweden: ECDC; 2015.
+4. StatPearls. Varicella-Zoster Virus (Chickenpox). Treasure Island (FL): StatPearls Publishing; 2024.
+5. Frazer IH, Levin MJ. Paradigm shifting vaccines: prophylactic vaccines against latent varicella-zoster virus infection and against HPV-associated cancer. _Current Opinion in Virology_. 2011;1(4):268-279.
+6. Royal College of Obstetricians and Gynaecologists. Green-top Guideline No. 13: Chickenpox in Pregnancy. London, UK: RCOG/UKHSA; 2024.
+7. Chicago Department of Public Health. _Clinical Guidelines for Management of Healthcare Personnel Exposed to Varicella_. Chicago, IL: CDPH; 2022.
+8. Blumental S, Lepage P. Management of youngest children after contact with a varicella case. _BMJ Paediatrics Open_. 2019;3(1):e000433.
+9. Kennedy PGE. The Spectrum of Neurological Manifestations of Varicella-Zoster Virus Reactivation. _Viruses_. 2023;15(8):1663.
+10. Takahashi M, Asano Y, Kamiya H, et al. Development of Varicella Vaccine. _The Journal of Infectious Diseases_. 2008;197(Suppl 2):S41-S44.
+11. Leung J, Lopez AS, Marin M. Changing Epidemiology of Varicella Outbreaks in the United States During the Varicella Vaccination Program, 1995-2019. _The Journal of Infectious Diseases_. 2022;226(Suppl 4):S400-S406.
+12. Mallick-Searle T, Snodgrass B, Brant JM. Postherpetic neuralgia: epidemiology, pathophysiology, and pain management pharmacology. _Journal of Multidisciplinary Healthcare_. 2016;9:447-458.
+
+---

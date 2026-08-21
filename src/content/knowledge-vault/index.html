@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kho Kiến Thức Y Khoa — CliniPortal Knowledge Vault</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../css/main.css">
+  <link rel="stylesheet" href="css/vault-hub.css">
+  <style>
+    body {
+      background-color: var(--vault-bg);
+      color: var(--vault-text);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .vault-navbar {
+      background: var(--vault-surface);
+      border-bottom: 1px solid var(--vault-border);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    .vault-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--vault-text);
+      text-decoration: none;
+    }
+    .vault-nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .vault-nav-btn {
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      border: 1px solid var(--vault-border);
+      background: var(--vault-surface);
+      color: var(--vault-text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .vault-nav-btn:hover {
+      border-color: var(--vault-primary);
+      color: var(--vault-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Top Bar -->
+  <header class="vault-navbar">
+    <a href="../../../index.html" class="vault-nav-brand">
+      <i class="fa-solid fa-staff-snake" style="color: var(--vault-primary);"></i>
+      <span>CliniPortal <span style="font-weight:400; color:var(--vault-muted);">| Knowledge Vault</span></span>
+    </a>
+
+    <div class="vault-nav-links">
+      <a href="../docspace/index.html" class="vault-nav-btn">
+        <i class="fa-solid fa-user-doctor"></i> DocSpace
+      </a>
+      <a href="../ebm/index.html" class="vault-nav-btn">
+        <i class="fa-solid fa-scale-balanced"></i> EBM
+      </a>
+      <a href="../pathophysiology/sinhly-sinhlybenh.html" class="vault-nav-btn">
+        <i class="fa-solid fa-heart-pulse"></i> Sinh lý - SLB
+      </a>
+      <button id="theme-toggle" class="vault-nav-btn" title="Chuyển chế độ Sáng/Tối">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Knowledge Vault Hub App -->
+  <main id="vault-app">
+    <div style="text-align: center; padding: 5rem 1rem;">
+      <i class="fa-solid fa-spinner fa-spin fa-2x" style="color: var(--vault-primary);"></i>
+      <p style="margin-top: 1rem; color: var(--vault-muted);">Đang khởi tạo Kho Kiến Thức Y Khoa...</p>
+    </div>
+  </main>
+
+  <script type="module">
+    import { initKnowledgeVault } from './index.js';
+    
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        themeBtn.innerHTML = next === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      });
+    }
+
+    // Initialize Hub
+    initKnowledgeVault('vault-app');
+  </script>
+</body>
+</html>

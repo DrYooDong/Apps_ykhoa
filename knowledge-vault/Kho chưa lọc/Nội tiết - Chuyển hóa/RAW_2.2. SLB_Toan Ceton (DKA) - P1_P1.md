@@ -1,0 +1,183 @@
+---
+title: "2.2. SLB_Toan Ceton (DKA) - P1"
+part: "P1"
+aliases:
+  - "2.2. SLB_Toan Ceton (DKA) - P1"
+keywords:
+  - "2.2. slb_toan ceton (dka) - p1"
+  - "nội tiết - chuyển hóa"
+specialty: "Nội tiết - Chuyển hóa"
+kho: "Kho chưa lọc"
+tags:
+  - "he-co-quan/noi-tiet"
+  - "loai/general"
+  - "y-khoa/raw"
+updated: "2026-08-21"
+---
+
+# BÀI HỌC CHUYÊN SÂU: SINH LÝ BỆNH CỦA BIẾN CHỨNG TOAN CETON DO ĐÁI THÁO ĐƯỜNG (DKA)
+
+---
+
+## 1. Nội Dung Sinh Lý Học Chi Tiết
+
+**Toan ceton do đái tháo đường (Diabetic Ketoacidosis - DKA)** là một trong những biến chứng cấp tính khẩn cấp và đe dọa tính mạng nghiêm trọng nhất ở bệnh nhân đái tháo đường. Việc hiểu rõ cơ chế sinh lý bệnh học không chỉ giúp giải thích các triệu chứng lâm sàng phức tạp mà còn là cơ sở nền tảng cho các hướng dẫn điều trị hiện đại nhất.
+
+---
+
+### Mất cân bằng nội tiết: Thâm hụt Insulin và Tăng các Hormone đối kháng
+
+Sự khởi phát của DKA được kích hoạt bởi sự kết hợp của tình trạng **thiếu hụt insulin tuyệt đối hoặc tương đối** cùng với sự **tăng cao rõ rệt của các hormone đối kháng** (hormone điều hòa ngược - counterregulatory hormones) bao gồm: **glucagon, catecholamines (epinephrine, norepinephrine), cortisol, và hormone tăng trưởng (growth hormone)**.
+
+- **Thiếu hụt insulin tuyệt đối** thường gặp ở bệnh nhân đái tháo đường tuýp 1 mới khởi phát hoặc do người bệnh bỏ liều/tiêm không đủ liều insulin mạn tính.
+- **Thiếu hụt insulin tương đối** xảy ra khi cơ thể trải qua các trạng thái căng thẳng sinh lý cấp tính như nhiễm trùng (viêm phổi, nhiễm trùng tiểu), đột quỵ, nhồi máu cơ tim, hoặc chấn thương. Trong các tình huống này, nồng độ các hormone đối kháng được phóng thích ồ ạt, vượt quá khả năng kiểm soát của lượng insulin nội sinh hiện có, dẫn đến sự mất bù chuyển hóa sâu sắc.
+
+---
+
+### Rối loạn chuyển hóa Carbohydrate và Cơ chế Tăng glucose huyết
+
+Sự thay đổi căn bản trong tỷ lệ **insulin/glucagon** làm dịch chuyển trạng thái đồng hóa của cơ thể sang trạng thái **dị hóa tăng tốc mạnh mẽ**.
+
+1. **Tăng sản xuất glucose nội sinh:** Tại gan và thận, sự thiếu hụt insulin kết hợp với nồng độ glucagon và cortisol tăng cao sẽ kích hoạt mạnh mẽ hai con đường:
+    - **Phân giải glycogen (Glycogenolysis):** Huy động dự trữ glucose từ gan vào máu.
+    - **Tân tạo glucose (Gluconeogenesis):** Tăng cường chuyển hóa các cơ chất phi-carbohydrate như lactate và các amino acid giải phóng từ quá trình phân giải protein ở cơ (proteolysis) thành glucose mới.
+2. **Giảm tiêu thụ glucose ngoại biên:** Bình thường, insulin kích hoạt quá trình vận chuyển glucose vào tế bào cơ và mô mỡ thông qua các chất vận chuyển. Khi thiếu hụt insulin, glucose bị cô lập ngoài mạch máu do các mô ngoại biên không thể sử dụng hiệu quả nguồn năng lượng này.
+3. **Hậu quả:** Sự phối hợp của hai cơ chế trên dẫn đến tình trạng **tăng glucose huyết tương nghiêm trọng**.
+
+---
+
+### Rối loạn chuyển hóa Lipid và Cơ chế Sinh thể Ketone (Ketogenesis)
+
+Sự thiếu hụt insulin là chìa khóa mở ra con đường chuyển hóa lipid bất thường:
+
+1. **Tăng phân giải mỡ (Lipolysis):** Insulin là hormone ức chế mạnh mẽ enzyme lipase nhạy cảm với hormone trong mô mỡ. Khi nồng độ insulin sụt giảm và các hormone đối kháng (đặc biệt là catecholamines) tăng cao, quá trình phân giải lipid ở mô mỡ bị kích hoạt không kiểm soát, giải phóng lượng lớn **acid béo tự do (Free Fatty Acids - FFA)** và **glycerol** vào máu.
+2. **Quá trình oxy hóa beta tại gan:** Các FFA được vận chuyển về gan. Tại đây, nồng độ glucagon tăng cao làm thay đổi động học nội bào, hoạt hóa hệ thống vận chuyển carnitine palmitoyltransferase (CPT-1), tạo điều kiện cho các FFA đi vào ty thể để thực hiện quá trình oxy hóa beta, tạo ra lượng lớn **Acetyl-CoA**.
+3. **Sự hình thành các thể ketone:** Khi lượng Acetyl-CoA vượt quá khả năng chuyển hóa của chu trình Krebs, gan sẽ ngưng tụ các phân tử này thành các thể ketone bao gồm: **(\beta)-hydroxybutyrate (BOHB), acetoacetate, và acetone**.
+4. **Sự dịch chuyển tỷ lệ các thể ketone trong DKA:**
+    - Ở trạng thái sinh lý bình thường, tỷ lệ giữa BOHB và acetoacetate là **1:1**.
+    - Trong môi trường thiếu oxy tế bào và toan hóa của DKA, chuỗi hô hấp tế bào bị ảnh hưởng, làm thúc đẩy sự chuyển đổi acetoacetate thành BOHB, khiến tỷ lệ **BOHB/acetoacetate tăng mạnh lên đến 10:1**.
+    - **Ý nghĩa lâm sàng:** Đây là lý do tại sao phương pháp nitroprusside truyền thống (chỉ đo được acetoacetate) thường **đánh giá thấp** mức độ nghiêm trọng của ketosis ở giai đoạn ban đầu của DKA. Ngược lại, trong quá trình điều trị phục hồi, BOHB bị oxy hóa ngược lại thành acetoacetate, làm xét nghiệm nước tiểu vẫn dương tính mạnh dù tình trạng toan thực tế đã cải thiện rất nhiều. Do đó, việc đo lường định lượng **BOHB trong máu** là tiêu chuẩn vàng sinh lý học để chẩn đoán và theo dõi DKA.
+
+---
+
+### Sơ đồ Cơ chế Sinh lý bệnh học của Toan Ceton do Đái tháo đường (DKA)
+
+Dưới đây là sơ đồ chi tiết tích hợp toàn bộ các con đường rối loạn chuyển hóa carbohydrate, lipid, protein và các biến đổi sinh lý bệnh thứ phát trong DKA.
+
+_Tên sơ đồ:_ **Figure 1 — Pathophysiology of diabetic ketoacidosis**  
+_Thuộc tài liệu:_ `Ch11PediatricDiabetes.pdf` (và sơ đồ tương tự **Figure 1 — Pathogenesis of DKA and HHS** thuộc tài liệu `Diabetes-Care-2024.pdf` trong Notebook này).
+
+```
+                      [ THIẾU HỤT INSULIN TUYỆT ĐỐI HOẶC TƯƠNG ĐỐI ]
+                 (Do ĐTĐ mới khởi phát, bỏ liều insulin, stress, nhiễm trùng)
+                                              │
+                                              ▼
+                        [ TĂNG CÁC HORMONE ĐỐI KHÁNG TRONG MÁU ]
+                (Glucagon, Catecholamines, Cortisol, Growth Hormone)
+                                              │
+         ┌────────────────────────────────────┼────────────────────────────────────┐
+         ▼                                    ▼                                    ▼
+    [ TĂNG PHÂN GIẢI LIPID ]           [ GIẢM SỬ DỤNG GLUCOSE ]           [ TĂNG PHÂN GIẢI PROTEIN ]
+       (Lipolysis ở mô mỡ)                (Ở các mô ngoại biên)               (Tăng thoái hóa protein)
+         │                                    │                                    │
+         ▼                                    ▼                                    ▼
+ [ Tăng Acid béo tự do (FFA) ]                │                        [ Tăng cơ chất tân tạo đường ]
+      (Vận chuyển về gan)                     │                             (Amino acids, Lactate)
+         │                                    │                                    │
+         ▼                                    │                                    ▼
+    [ TĂNG TẠO CETONE ]                       │                        [ TĂNG TÂN TẠO & PHÂN GIẢI ]
+    (Ketogenesis tại gan)                     │                          (Gluconeogenesis/Glycogenolysis)
+         │                                    │                                    │
+         ▼                                    └───────────────────┬────────────────┘
+ [ Tăng ketone máu (Ketonemia) ]                                  ▼
+         │                                            [ TĂNG GLUCOSE MÁU (Hyperglycemia) ]
+         ▼                                                        │
+ [ TOAN CHUYỂN HÓA (Acidosis) ]                                   ▼
+         │                                             [ ĐƯỜNG NIỆU & LỢI NIỆU THẨM THẤU ]
+         │                                             (Glucosuria & Osmotic diuresis)
+         │                                                        │
+         │                                                        ▼
+         │                                              [ MẤT NƯỚC & ĐIỆN GIẢI ]
+         │                                              (Mất nước nội và ngoại tế bào,
+         │                                                mất Natri, Kali, Phosphate)
+         │                                                        │
+         └────────────────────────────────────┬───────────────────┘
+                                              ▼
+                                   [ TOAN CETON DO ĐTĐ (DKA) ]
+                              - Suy giảm chức năng thận tạm thời.
+                              - Trạng thái tăng viêm và stress oxy hóa.
+                              - Nguy cơ tổn thương não (Cerebral Injury).
+```
+
+- **Mô tả chi tiết nội dung dưới sơ đồ:** Sự sụt giảm nghiêm trọng của insulin cùng với sự gia tăng của các hormone đối kháng kích hoạt ba nhánh rối loạn dị hóa chính: tăng phân giải lipid, giảm sử dụng glucose ngoại biên, và tăng phân giải protein giải phóng các amino acid tự do. Nhánh lipid tạo ra lượng lớn FFA chuyển về gan để tân tạo ketone, gây ra tình trạng tăng ketone máu và nhiễm toan chuyển hóa. Nhánh carbohydrate và protein làm tăng sản xuất glucose và giảm sử dụng nó, dẫn đến tăng đường huyết nghiêm trọng vượt quá ngưỡng thận gây ra đường niệu, lợi niệu thẩm thấu. Kết quả là cơ thể mất nước, điện giải sâu sắc, suy giảm chức năng thận, thúc đẩy vòng xoắn bệnh lý của DKA ngày một nặng lên nếu không được can thiệp bằng insulin ngoại sinh và bù dịch kịp thời.
+
+---
+
+### Sinh lý bệnh học của tình trạng Toan chuyển hóa (Acidosis)
+
+Sự tích tụ liên tục của các thể ketone (là các acid hữu cơ mạnh) trong máu sẽ giải phóng các ion hydro ((H^+)), làm sụt giảm nhanh chóng dự trữ kiềm của cơ thể:
+
+1. **Sụt giảm Bicarbonate:** Các ion (H^+) tự do phản ứng trực tiếp với màng đệm bicarbonate ((HCO_3^-)), tạo ra nước và khí carbonic, làm giảm nồng độ bicarbonate huyết thanh xuống **dưới 18 mmol/L**.
+2. **Toan chuyển hóa khoảng trống anion tăng (High Anion Gap Metabolic Acidosis):** Sự gia tăng tích tụ của các anion ceton không được đo lường (chủ yếu là acetoacetate và BOHB) ban đầu tạo nên tình trạng toan chuyển hóa có khoảng trống anion lớn.
+3. **Sự thay đổi sinh lý học trong đồng thuận 2024:** Hướng dẫn mới nhất đã **loại bỏ khoảng trống anion khỏi tiêu chí chẩn đoán và đánh giá độ nặng của DKA**. Lý do là vì có khoảng **30%** bệnh nhân DKA đồng thời mắc các rối loạn toan kiềm hỗn hợp (như toan chuyển hóa kèm kiềm chuyển hóa do nôn ói gây mất acid dịch vị). Ngoài ra, quá trình bù dịch hồi sức ban đầu bằng một lượng lớn dung dịch NaCl 0.9% thường dẫn đến **toan chuyển hóa do tăng clo máu khoảng trống anion bình thường (hyperchloremic normal anion gap acidosis)**, điều này có thể gây chẩn đoán nhầm là DKA chưa cải thiện nếu chỉ dựa vào khoảng trống anion.
+4. **Cơ chế hô hấp bù trừ:** Tình trạng toan máu kích thích trực tiếp các thụ thể hóa học ở ngoại biên và trung ương, khởi phát phản ứng bù trừ bằng cách tăng thông khí phổi rất đặc trưng: **thở nhanh, sâu (kiểu thở Kussmaul)** nhằm đào thải tối đa khí (CO_2) qua hơi thở để giảm bớt gánh nặng toan. Hơi thở của bệnh nhân có **mùi trái cây (mùi táo chín)** do sự khuếch tán của thể ketone acetone dễ bay hơi qua phổi.
+
+---
+
+### Rối loạn Nước, Điện giải và Cơ chế suy giảm chức năng thận
+
+Tình trạng tăng glucose huyết vượt ngưỡng thận khoảng **180 mg/dL (10 mmol/L)** dẫn đến sự hiện diện của glucose trong nước tiểu (glucosuria) và khởi phát các rối loạn huyết động học sâu sắc:
+
+#### 1. Lợi niệu thẩm thấu và Mất nước
+
+Glucose và các anion ketone trong lòng ống thận hoạt động như các chất hoạt hóa thẩm thấu mạnh, ngăn cản sự tái hấp thu nước ở ống thận, gây ra **lợi niệu thẩm thấu**. Hiện tượng này kéo theo sự mất nước nghiêm trọng từ cả khoang nội bào và ngoại bào, thường chiếm từ **3 đến 6 mmol/kg** thể tích nước cơ thể. Tình trạng mất nước càng trầm trọng hơn do triệu chứng nôn mửa liên tục kích hoạt bởi tình trạng toan ceton nặng ảnh hưởng lên hệ thần kinh trung ương.
+
+#### 2. Rối loạn điện giải Kali (Potassium Shift)
+
+Mặc dù cơ thể bị **thâm hụt Kali toàn thể rất nặng (từ 3 đến 6 mmol/kg)** do mất qua nước tiểu (lợi niệu thẩm thấu, cường aldosterone thứ phát do giảm thể tích tuần hoàn) và qua đường tiêu hóa (nôn mửa), nồng độ Kali huyết thanh đo được tại thời điểm nhập viện thường **bình thường hoặc thậm chí tăng cao**. Cơ chế sinh lý học của hiện tượng này bao gồm:
+
+- **Sự dịch chuyển nội - ngoại bào (Transcellular Shift):** Tình trạng toan hóa máu làm tăng nồng độ ion (H^+) ngoại bào, thúc đẩy ion (H^+) đi vào trong tế bào để đệm, buộc ion (K^+) phải đi ra ngoài tế bào để duy trì cân bằng điện tích.
+- **Áp lực thẩm thấu tăng (Hypertonicity):** Nồng độ glucose ngoại bào cao kéo nước từ trong tế bào ra ngoài, kéo theo các ion (K^+) ra ngoài tế bào qua hiện tượng "kéo dung môi" (solvent drag).
+- **Thiếu hụt insulin:** Insulin là hormone kích hoạt trực tiếp bơm (Na^+)-(K^+)-ATPase để đưa Kali vào trong tế bào. Sự thiếu hụt insulin ngăn cản quá trình này.
+- **Lưu ý điều trị:** Khi bắt đầu truyền insulin và bù dịch (sửa chữa toan hóa), Kali sẽ nhanh chóng dịch chuyển ngược lại vào trong tế bào, gây sụt giảm Kali máu cực kỳ nhanh chóng và nguy hiểm, có thể dẫn đến loạn nhịp tim tử vong. Nếu Kali ban đầu **< 3.5 mmol/L**, sinh lý học bắt buộc phải trì hoãn điều trị insulin cho đến khi nồng độ Kali được bù vượt ngưỡng an toàn này.
+
+#### 3. Rối loạn điện giải Phosphate
+
+Tương tự như Kali, tình trạng toan hóa máu cũng đẩy phosphate từ trong tế bào ra ngoài khoang ngoại bào và bị đào thải qua nước tiểu do lợi niệu thẩm thấu. Sự sụt giảm nghiêm trọng phosphate nội bào làm suy giảm nồng độ **ATP** (adenosine triphosphate) tế bào, dẫn đến suy yếu chức năng co cơ. Đồng thời, việc thiếu hụt **2,3-diphosphoglycerate (2,3-DPG)** trong hồng cầu làm tăng ái lực của hemoglobin với oxy, cản trở việc giải phóng oxy cho các mô ngoại biên, gây ra tình trạng thiếu oxy mô da và các cơ quan.
+
+---
+
+### Trạng thái Tăng viêm, Stress oxy hóa và Cơ chế Tổn thương não (Cerebral Injury)
+
+Các nghiên cứu sinh học phân tử hiện đại chứng minh rằng tăng glucose huyết trong DKA không đơn thuần là sự rối loạn chuyển hóa mà còn kích hoạt một **trạng thái tăng viêm hệ thống và stress oxy hóa cực kỳ mạnh mẽ**:
+
+- **Kích hoạt Cytokines:** DKA làm tăng vọt nồng độ các chất trung gian hóa học gây viêm bao gồm **TNF-(\alpha), IL-1, IL-6, IL-8**, các chất chỉ thị phản ứng pha cấp như CRP, các gốc tự do oxy hóa (ROS) và các sản phẩm peroxide hóa lipid. Trạng thái tăng viêm này làm trầm trọng thêm tình trạng kháng insulin tại mô.
+- **Cơ chế Phù não (Cerebral Edema/Cerebral Injury):** Đây là biến chứng đáng sợ nhất ở trẻ em (tỷ lệ tử vong lên đến 30%). Trước đây, phù não được cho là do sự thay đổi áp lực thẩm thấu quá nhanh khi bù dịch. Tuy nhiên, các minh chứng mới nhất chỉ ra rằng **sự giảm tưới máu não (cerebral hypoperfusion) ban đầu kết hợp với trạng thái tăng viêm thần kinh (neuroinflammation)** mới đóng vai trò trung tâm. Tình trạng toan hóa nặng và mất nước gây co mạch não, kích hoạt tế bào vi nhân sắc (microglia) và tế bào sao (astrogliosis), giải phóng các cytokines gây viêm trực tiếp làm phá hủy và tăng tính thấm của **hàng rào máu não (blood-brain-barrier disruption)**, dẫn đến phù não nhu mô mạn tính.
+
+---
+
+#### **Bảng thông tin: Phân loại mức độ nặng của DKA dựa trên các chỉ số Sinh hóa**
+
+_Tài liệu tham khảo:_ `Diabetes-Care-2024.pdf` và `152.full.pdf` (Trích từ _Table 2 — DKA classification and suggested level of care by severity_).
+
+|Chỉ số sinh hóa|Mild DKA (Nhẹ)|Moderate DKA (Trung bình)|Severe DKA (Nặng)|
+|:--|:--|:--|:--|
+|**Glucose huyết tương (D)**|**(\ge 200) mg/dL** (hoặc có tiền sử đái tháo đường)|**(\ge 200) mg/dL** (hoặc có tiền sử đái tháo đường)|**(\ge 200) mg/dL** (hoặc có tiền sử đái tháo đường)|
+|**Keton niệu hoặc máu (K)**|BOHB **3.0 – 6.0 mmol/L** (hoặc nước tiểu (\ge 2+))|BOHB **3.0 – 6.0 mmol/L** (hoặc nước tiểu (\ge 2+))|BOHB **> 6.0 mmol/L**|
+|**Toan hóa máu (A)**|**pH > 7.25 đến < 7.30** và/hoặc bicarbonate **15 – 18 mmol/L**|**pH 7.0 – 7.25** và/hoặc bicarbonate **10 đến < 15 mmol/L**|**pH < 7.0** và/hoặc bicarbonate **< 10 mmol/L**|
+|**Trạng thái tâm thần**|Tỉnh táo hoàn toàn|Tỉnh táo hoặc lơ mơ nhẹ|Sững sờ (stupor) hoặc hôn mê|
+|**Tuyến điều trị đề xuất**|Khoa phòng thông thường hoặc phòng lưu trữ theo dõi|Khoa hồi sức trung gian (Step-down unit)|Khoa Hồi sức tích cực (ICU)|
+
+---
+
+## 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA
+
+1. Rodriguez Alvarez M, colleagues. Hyperglycemic crises in adults: A look at the 2024 consensus report. _Cleve Clin J Med_. 2025;92(3):152-156. doi:10.3949/ccjm.92a.24089.
+2. Glaser N, Department of Pediatrics, University of California, Davis School of Medicine. ISPAD Clinical Practice Consensus Guidelines 2022: Diabetic ketoacidosis and hyperglycemic hyperosmolar state in children and adolescents. _Pediatr Diabetes_. 2022;23:835-856. doi:10.1111/pedi.13406.
+3. Umpierrez GE, Davis GM, ElSayed NA, et al. Hyperglycemic crises in adults with diabetes: A consensus report. _Diabetes Care_. 2024;47(8):1257-1275. doi:10.2337/dci24-0032.
+4. American Diabetes Association Professional Practice Committee. 6. Glycemic goals, hypoglycemia, and hyperglycemic crises: Standards of Care in Diabetes—2026. _Diabetes Care_. 2026;49(Suppl. 1):S132–S149. doi:10.2337/dc26-S006.
+5. American Diabetes Association Professional Practice Committee. 16. Diabetes care in the hospital: Standards of Care in Diabetes—2026. _Diabetes Care_. 2026;49(Suppl. 1):S339–S355. doi:10.2337/dc26-S016.
+
+---
+
+💧 **Ý tưởng thảo luận tiếp theo**: Bạn có muốn tôi tiến hành phân tích chi tiết về **Cơ chế bệnh sinh của thể Toan ceton đường huyết bình thường (Euglycemic DKA)** liên quan mật thiết đến việc sử dụng nhóm thuốc ức chế SGLT2 (SGLT2i) để giúp nhận diện sớm biến chứng này trên lâm sàng không?

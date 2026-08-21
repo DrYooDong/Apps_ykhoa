@@ -1,0 +1,30 @@
+---
+title: "U dây thần kinh số VIII"
+part: "P1"
+aliases:
+  - "U dây thần kinh số VIII"
+keywords:
+  - "u dây thần kinh số viii"
+  - "thần kinh"
+  - "mắt - tmh - rhm"
+specialty: "Thần kinh"
+kho: "Kho chưa lọc"
+tags:
+  - "he-co-quan/than-kinh"
+  - "loai/general"
+  - "y-khoa/raw"
+updated: "2026-08-21"
+---
+
+
+
+## 📌 Danh Mục Nội Dung
+
+1. [[5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/U dây thần kinh số VIII/1. Tổng quan & Dịch tễ học|1. Tổng quan & Dịch tễ học]]
+2. [[5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/U dây thần kinh số VIII/2. Cơ chế bệnh sinh|2. Cơ chế bệnh sinh]]
+3. [[5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/U dây thần kinh số VIII/3. Lâm sàng|3. Lâm sàng]]
+4. [[5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/U dây thần kinh số VIII/4. Cận lâm sàng|4. Cận lâm sàng]]
+5. [[5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/U dây thần kinh số VIII/5. Chẩn đoán|5. Chẩn đoán]]
+6. [[5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/U dây thần kinh số VIII/6. Điều trị chung|6. Điều trị chung]]
+7. [[5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/U dây thần kinh số VIII/7. Biến chứng|7. Biến chứng]]
+8. [[5. Mắt - Tai mũi họng - Răng hàm mặt/Bệnh lý cụ thể/U dây thần kinh số VIII/8. Tiên lượng|8. Tiên lượng]]

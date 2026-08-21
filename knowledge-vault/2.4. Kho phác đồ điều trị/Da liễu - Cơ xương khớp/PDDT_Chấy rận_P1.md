@@ -1,0 +1,22 @@
+---
+title: "Chấy rận"
+part: "P1"
+aliases:
+  - "Chấy rận"
+keywords:
+  - "chấy rận"
+  - "da liễu - cơ xương khớp"
+specialty: "Da liễu - Cơ xương khớp"
+kho: "2.4. Kho phác đồ điều trị"
+tags:
+  - "he-co-quan/co-xuong-khop"
+  - "loai/protocol"
+  - "y-khoa/pddt"
+updated: "2026-08-21"
+---
+
+
+
+[[6. Da liễu & cơ xương khớp/Bệnh lý cụ thể/Chấy rận/Chấy rận.md|← Quay lại Chấy rận]]
+
+﻿

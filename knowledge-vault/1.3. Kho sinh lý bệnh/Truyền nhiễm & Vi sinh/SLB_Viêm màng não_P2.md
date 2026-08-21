@@ -1,0 +1,80 @@
+---
+title: "Viêm màng não"
+part: "P2"
+aliases:
+  - "Viêm màng não"
+keywords:
+  - "viêm màng não"
+  - "thần kinh"
+  - "truyền nhiễm & vi sinh"
+specialty: "Thần kinh"
+kho: "1.3. Kho sinh lý bệnh"
+tags:
+  - "he-co-quan/than-kinh"
+  - "loai/disease"
+  - "y-khoa/slb"
+updated: "2026-08-21"
+---
+
+
+
+### 1. Nội Dung Sinh Lý Học Chi Tiết: Các Cơ Chế Bệnh Sinh Bổ Sung Trong [[Viêm màng não]]
+
+**Cơ Chế Bệnh Sinh Đặc Thù Của Phế Cầu Khuẩn (_Streptococcus pneumoniae_)** Tỷ lệ tử vong cao ở bệnh nhân [[Viêm màng não]] do _Streptococcus pneumoniae_ được cho là do thành phần vách tế bào của vi khuẩn này, cụ thể là yếu tố hoạt hóa [[Tiểu cầu]] (Platelet Activating Factor - PAF). Yếu tố này có khả năng gây tăng tính thấm của hàng rào máu não (blood-brain barrier), từ đó dẫn đến rò rỉ dịch và cuối cùng gây ra tình trạng [[Phù]] não nghiêm trọng.
+
+**Cơ Chế Bệnh Sinh Của Viêm Màng Não Do Lao (Tuberculous Meningitis - TBM)** Viêm màng não do lao là dạng lao nặng nhất, phát triển sau khi _Mycobacterium tuberculosis_ phát tán qua đường máu từ [[Phổi]] đến não. Quá trình sinh lý bệnh đặc trưng bởi sự tiến triển âm thầm và gây ra các hậu quả thần kinh nghiêm trọng:
+
+- **Tổn thương viêm và [[Phù]] nề:** Viêm màng não do lao gây ra tình trạng bệnh lý nguy kịch với các vấn đề liên quan trực tiếp đến chăm sóc thần kinh sọ não. Tình trạng tăng áp lực nội sọ xảy ra do phù não, tràn [[Dịch nào tủy|dịch não tủy]] (hydrocephalus) hoặc do các tổn thương dạng khối như u bã đậu (tuberculomas) và áp xe lao.
+- **Viêm mạch máu và thiếu máu cục bộ:** Tình trạng nhồi máu não (cerebral infarction) rất phổ biến (xảy ra ở >65% bệnh nhân) và là yếu tố dự báo kết cục kém. Cơ chế là do viêm mạch máu (vasculitis) kết hợp với tăng áp lực nội sọ gây chèn ép, dẫn đến thiếu máu cục bộ tại mô não.
+- **Phản ứng nghịch thường (Paradoxical reactions) và Hội chứng phục hồi miễn dịch (IRIS):** Ở khoảng 20% bệnh nhân TBM (và >30% ở người nhiễm HIV), các biến chứng viêm nội sọ có thể xảy ra ngay cả khi đang điều trị thuốc kháng lao hiệu quả, thường xuất hiện sau 20-60 ngày. Ở người nhiễm HIV bắt đầu điều trị bằng thuốc kháng virus (ART), cơ chế này đáp ứng các tiêu chí của hội chứng viêm phục hồi miễn dịch (IRIS), mặc dù đặc điểm lâm sàng và hình ảnh học là tương tự nhau bất kể tình trạng HIV.
+
+**Cơ Chế Bệnh Sinh Của Viêm Màng Não Do Nấm** Viêm màng não do nấm có cơ chế xâm nhập và biểu hiện bệnh lý khác biệt tùy thuộc vào loại nấm và tình trạng miễn dịch của ký chủ:
+
+- **Do _Cryptococcus neoformans_:** Ký chủ hít phải bào tử nấm hoặc tế bào khô từ môi trường (ví dụ: đất nhiễm phân chim), sau đó nấm phát tán đến màng não. Một cơ chế sinh lý bệnh điển hình và đe dọa tính mạng là tình trạng tăng áp lực nội sọ (xảy ra ở 80% bệnh nhân viêm màng não do Cryptococcus có liên quan đến HIV). Cơ chế của việc tăng áp lực này chủ yếu là do sự tắc nghẽn của các vi nhung mao màng nhện bởi vỏ nang polysaccharide của nấm, làm giảm khả năng hấp thu [[Dịch nào tủy|dịch não tủy]].
+- **Do _Candida spp._:** _Candida_ thường gây viêm màng não ở trẻ sinh non, cơ chế sinh lý bệnh được cho là do sự chưa hoàn thiện của hàng rào máu não ở đối tượng này, cũng như ở những trẻ có khiếm khuyết về hệ thống miễn dịch.
+
+**Cơ Chế Sinh Lý Bệnh Trong Viêm Màng Não Do Virus** Trong viêm màng não do virus (như Enteroviruses, Herpes simplex virus type 2, Varicella-zoster virus), các nghiên cứu chỉ ra rằng đáp ứng miễn dịch của ký chủ (host immune response) đóng vai trò quan trọng đối với quá trình hồi phục của bệnh nhân hơn là bản thân tác nhân virus cụ thể. Điều này giải thích tại sao kết cục lâm sàng của viêm màng não do virus tương đối đồng nhất và giống nhau giữa các nhóm căn nguyên khác nhau, kể cả ở những bệnh nhân được chẩn đoán viêm màng não do virus nhưng không xác định được mầm bệnh.
+
+---
+
+**Lưu Đồ: Quy Trình Chẩn Đoán Và Xử Trí Cấp Cứu Viêm Màng Não Do Vi Khuẩn Ở Người Lớn**
+
+_Trích xuất từ Tài liệu "Ban hành kèm theo Quyết định 4068/QĐ-BYT của Bộ trưởng Bộ Y tế - Bệnh viện Đa khoa Tiền Hải"_ _Tên Lưu đồ:_ Quy Trình Chuyên Môn KCB Viêm Màng Não Vi Khuẩn Ở Người Lớn.
+
+Lưu đồ quy định việc tiếp cận sinh lý bệnh và can thiệp tuần tự như sau:
+
+1. **Nghi ngờ VMN do vi khuẩn:** Đánh giá các dấu hiệu chống chỉ định chọc dò tủy sống ([[CT Scan]] trước chọc dò nếu có: phù gai thị, suy giảm miễn dịch, thay đổi tri giác, dấu thần kinh khu trú, [[Co giật]], tiền căn bệnh lý thần kinh trung ương).
+2. **Nếu KHÔNG có chống chỉ định:** Cấy máu $\rightarrow$ Chọc dò tủy sống $\rightarrow$ Dùng [[[[Corticoid]]|Dexamethasone]] + [[Kháng sinh]] theo kinh nghiệm.
+3. **Nếu CÓ chống chỉ định:** Cấy máu ngay $\rightarrow$ Dùng Dexamethasone + [[Kháng sinh]] theo kinh nghiệm $\rightarrow$ Chụp [[CT Scan]] đầu. Nếu CT scan âm tính $\rightarrow$ Tiến hành chọc dò tủy sống.
+4. **Dựa vào Dịch Não Tủy (DNT):** Nếu DNT phù hợp với VMN vi khuẩn $\rightarrow$ Đánh giá Nhuộm Gram, Kháng nguyên huyết thanh (KNHT). Nếu dương tính: Dexamethasone + Kháng sinh đặc hiệu. Nếu âm tính: Tiếp tục Dexamethasone + Kháng sinh theo kinh nghiệm.
+
+_Mô tả dưới lưu đồ:_ Sơ đồ minh họa quá trình đánh giá rủi ro sinh lý bệnh (tăng áp lực nội sọ, nguy cơ tụt não) thông qua việc sàng lọc các chống chỉ định chọc dò tủy sống, từ đó quyết định thời điểm can thiệp thuốc kháng viêm (Dexamethasone) nhằm giảm phản ứng viêm tại khoang dưới nhện và thuốc kháng sinh tiêu diệt mầm bệnh.
+
+---
+
+**Bảng Thông Tin: Sinh Lý Dịch Não Tủy Trong Các Loại Viêm Màng Não**
+
+_Trích xuất từ Tài liệu "9789240121027-eng.pdf" - Bảng 5 (Fig. 5)._ _Tên Bảng:_ Giải thích các phát hiện dịch não tủy ban đầu ở trẻ em và người lớn (Interpretation of initial CSF findings in children and adults).
+
+|Chỉ số diễn giải|Dịch não tủy bình thường|VMN do vi khuẩn cấp tính|VMN do Virus|VMN do Lao (TB)|VMN do Cryptococcus (liên quan HIV)|
+|:--|:--|:--|:--|:--|:--|
+|**Áp lực mở**|8-20 cm $H_2O$|Tăng / Tăng mạnh|Bình thường / Tăng|Tăng / Tăng mạnh|Tăng mạnh|
+|**Hình thức**|Trong suốt|Mờ, đục hoặc có mủ|Trong suốt|Trong suốt|Trong suốt|
+|**[[Bạch cầu]] (WBC)**|<5/$mm^3$ hoặc <5/$\mu L$|Tăng mạnh|Tăng / Tăng mạnh|Tăng / Tăng mạnh|Bình thường / Tăng|
+|**Loại tế bào chiếm ưu thế**||[[Bạch cầu|Bạch cầu đa nhân trung tính]] (Neutrophils)|Lympho bào (Lymphocytes)|Lympho bào (Lymphocytes)|Lympho bào (Lymphocytes)|
+|**Tỷ lệ Glucose DNT/Máu**|0.4 - 0.7|Giảm mạnh|Bình thường|Giảm rất mạnh|Bình thường / Giảm|
+|**Glucose**|40-70 mg/dL hoặc 2.2-3.9 mmol/L|Giảm mạnh|Bình thường|Giảm mạnh|Bình thường / Giảm|
+|**Tổng Protein**|40-70 mg/dL hoặc 0.15-0.45 g/L|Tăng mạnh|Bình thường / Tăng|Tăng / Tăng mạnh|Bình thường / Tăng|
+
+_Mô tả dưới bảng:_ Bảng trên thể hiện sự thay đổi sinh lý hóa sinh của dịch não tủy khi hàng rào máu não bị tổn thương. Viêm màng não vi khuẩn và lao gây tiêu thụ glucose mạnh mẽ và phá vỡ hàng rào máu não gây tăng rò rỉ protein, trong khi viêm màng não do virus chủ yếu kích hoạt phản ứng viêm lympho bào với mức đường huyết dịch não tủy được bảo tồn.
+
+---
+
+### 2. Trích Dẫn Tài Liệu Tham Khảo Chuẩn AMA:
+
+1. Wulandari NMP, Wungu CDK, Gunawan PI. Risk factors of death in children with bacterial meningitis: a systematic review and meta-analysis. _Ro J Pediatr_. 2023;72(3):101-111.
+2. Davis AG, Wilkinson RJ, Rohlwink UK, et al. Tuberculous meningitis international practice guidelines. _Lancet Infect Dis_. 2025.
+3. World Health Organization. _WHO practical manual on meningitis diagnosis, treatment and care_. Geneva, Switzerland: World Health Organization; 2026.
+4. Khalilzadegan A, Hadianfard AM, Ekrami A, et al. Characteristics and Distribution of Fungal Meningitis: A Systematic Review. _Infect Dis Clin Microbiol_. 2025;2:114-122.
+5. Petersen PT, Bodilsen J, Jepsen MPG, et al. Clinical features and prognostic factors in adults with viral meningitis. _Brain_. 2023;146:3816-3825.
+6. Ban hành kèm theo Quyết định 4068/QĐ-BYT của Bộ trưởng Bộ Y tế - Bệnh viện Đa khoa Tiền Hải. _Quy Trình Chuyên Môn KCB Viêm Màng Não Vi Khuẩn Ở Người Lớn_.
