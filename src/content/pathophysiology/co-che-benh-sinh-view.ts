@@ -176,7 +176,7 @@ export function renderCoCheBenhSinhView(): string {
                 <a href="#patho-tieuhoa-section" class="part-nav-item p5" data-target="patho-tieuhoa-section">
                   <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
                   <span class="part-text">Tiêu hóa</span>
-                  <span class="part-count-badge">12</span>
+                  <span class="part-count-badge">14</span>
                 </a>
               </li>
               <li>
@@ -488,6 +488,26 @@ export function renderCoCheBenhSinhView(): string {
                     <div class="specialty-info">
                       <h3>Bệnh Não Gan (HE)</h3>
                       <p>Type A/B/C, độc tính Amoniac NH3, phù tế bào sao (Glutamine), teo cơ Sarcopenia, tỷ lệ BCAA/AAA, 6 yếu tố thúc đẩy &amp; cơ chế Lactulose/Rifaximin.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-celiac" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <div class="specialty-info">
+                      <h3>Bệnh Celiac (Coeliac Disease)</h3>
+                      <p>Kháng tiêu hóa gluten, Zonulin phá vỡ liên kết chặt, men TG2 khử amin, HLA-DQ2/DQ8, IL-15 độc tế bào IELs, phân loại Marsh &amp; Celiac kháng trị (RCD1 vs RCD2).</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/pathophysiology/cases/slb-ccbs-sibo" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-bacteria"></i></div>
+                    <div class="specialty-info">
+                      <h3>Tăng Sinh Vi Khuẩn Ruột Non (SIBO &amp; IMO)</h3>
+                      <p>Suy giảm phức hợp MMC, 3 con đường kém hấp thu, giải liên hợp axit mật, phân loại thể khí thở H2/CH4, màng sinh học Biofilm, liên kết IBS &amp; trục Ruột - Gan MASLD.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
