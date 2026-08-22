@@ -18,7 +18,7 @@ export interface DrugDosage {
   tradeNames?: string[];         // Biệt dược thông dụng (VD: Efferalgan, Hancor)
   route: DrugRoute;              // Đường dùng thuốc
   loadingDose?: string;          // Liều nạp / Liều tấn công
-  maintenanceDose: string;       // Liều duy trì / Tốc độ truyền
+  maintenanceDose?: string;      // Liều duy trì / Tốc độ truyền
   maxDose24h?: string;           // Liều tối đa trong 24 giờ
   renalAdjustment?: string;      // Cách chỉnh liều theo chức năng thận (eGFR / CrCl)
   hepaticAdjustment?: string;    // Cách chỉnh liều khi có suy giảm chức năng gan
