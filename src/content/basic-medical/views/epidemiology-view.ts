@@ -2,7 +2,8 @@
  * CliniPortal — Epidemiology & Biostatistics (Dịch Tễ Học Y Khoa) SPA View
  * Path: src/content/basic-medical/views/epidemiology-view.ts
  * Giao diện kinh điển đồng bộ chuẩn 100% với Sinh Lý, Cơ Chế Bệnh Sinh & Hóa Sinh
- * (Classic Hero Surveillance SVG, Feature Bento Banners, Toolbar Search/Grid Toggle, Sticky Block-Nav 6 Khối, Specialty Cards & Quick Modal)
+ * (Classic Hero Surveillance SVG, Feature Bento Banners, Toolbar Search/Grid Toggle, Sticky Nav Sidebar, 
+ *  PHẦN DỊCH TỄ CÁC BỆNH ĐƯỢC ĐẶT LÊN ĐẦU TIÊN, Specialty Cards & Quick Preview Modal)
  */
 
 import '../../../../css/components/module-dashboard.css';
@@ -10,11 +11,81 @@ import '../../../../css/components/physio-content.css';
 import '../../../../css/components/formula-vault.css';
 import '../../../../css/components/physio-promax-hub.css';
 import '../../../../css/components/epidemiology-hub.css';
+import '../../../../css/components/biochemistry-hub.css';
 import { 
   EPIDEMIOLOGY_BLOCKS, 
   EPIDEMIOLOGY_TOPICS 
 } from '../data/epidemiology-data';
 import { EpidemiologyBlock, EpidemiologyTopic } from '../types/epidemiology.types';
+
+// Danh sách các bài chuyên khảo Dịch tễ học bệnh lý cụ thể (Đưa lên đầu)
+interface DiseaseEpidemiologyArticle {
+  id: string;
+  code: string;
+  icd: string;
+  title: string;
+  slug: string;
+  vector: string;
+  icon: string;
+  color: string;
+  bgColor: string;
+  overview: string;
+  pearlsCount: number;
+  pearlPreview: string;
+  readTime: string;
+  tags: string[];
+}
+
+const DISEASE_ARTICLES: DiseaseEpidemiologyArticle[] = [
+  {
+    id: 'dth-dengue',
+    code: 'DTH-DENGUE',
+    icd: 'ICD-10: A90–A91',
+    title: 'Dịch Tễ Học Sốt Xuất Huyết Dengue (DENV)',
+    slug: 'dth-dengue',
+    vector: 'Véc-tơ Aedes aegypti / albopictus',
+    icon: 'fa-mosquito',
+    color: '#ef4444',
+    bgColor: 'rgba(239, 68, 68, 0.12)',
+    overview: 'Tam giác dịch tễ học DENV, sinh học muỗi véc-tơ, chu kỳ ủ bệnh ngoại lai (EIP), cơ chế tăng cường miễn dịch phụ thuộc kháng thể (ADE), số liệu dịch kỷ lục 2024–2026 và phác đồ BYT/WHO.',
+    pearlsCount: 3,
+    pearlPreview: 'Tái nhiễm khác serotype kích hoạt ADE gây bão cytokine, rò rỉ huyết tương và sốc DSS nguy kịch.',
+    readTime: '12 phút đọc',
+    tags: ['Aedes', 'ADE', 'DENV 1-4', 'Sốc Dengue', 'WHO 2024']
+  },
+  {
+    id: 'dth-sot-ret',
+    code: 'DTH-MALARIA',
+    icd: 'ICD-10: B50–B54',
+    title: 'Dịch Tễ Học Bệnh Sốt Rét (Malaria / Plasmodium)',
+    slug: 'dth-sot-ret',
+    vector: 'Véc-tơ Anopheles',
+    icon: 'fa-mosquito',
+    color: '#d97706',
+    bgColor: 'rgba(217, 119, 6, 0.12)',
+    overview: '5 loài Plasmodium, thể ngủ gan (Hypnozoites), động học lây truyền muỗi Anopheles, 4 mối đe dọa sinh học (kháng Artemisinin gen pfk13, xóa gen pfhrp2/3), WHO 2025 và QĐ 4922/QĐ-BYT.',
+    pearlsCount: 3,
+    pearlPreview: 'Điều trị tiệt căn P. vivax bắt buộc dùng Primaquine tiêu diệt thể ngủ và phải xét nghiệm men G6PD.',
+    readTime: '15 phút đọc',
+    tags: ['Anopheles', 'Plasmodium', 'Hypnozoites', 'Artemisinin', 'G6PD']
+  },
+  {
+    id: 'dth-thuy-dau',
+    code: 'DTH-VARICELLA',
+    icd: 'ICD-10: B01–B02',
+    title: 'Dịch Tễ Học Bệnh Thủy Đậu (Varicella / VZV)',
+    slug: 'dth-thuy-dau',
+    vector: 'Đường hô hấp & Giọt bắn',
+    icon: 'fa-shield-virus',
+    color: '#8b5cf6',
+    bgColor: 'rgba(139, 92, 246, 0.12)',
+    overview: 'Sự tương phản sâu sắc ôn đới vs nhiệt đới, tỷ lệ tử vong chữ U (gấp 23–29 lần ở người lớn), kỷ nguyên vắc-xin 1-liều/2-liều, rủi ro dịch chuyển tuổi khi độ bao phủ thấp dưới 80% (WHO).',
+    pearlsCount: 3,
+    pearlPreview: 'Bao phủ vắc-xin <80% đẩy lùi tuổi mắc bệnh sang người lớn, làm tăng ca nặng và tử vong chung.',
+    readTime: '14 phút đọc',
+    tags: ['VZV', 'Varicella', 'Vaccine', 'R0 ≈ 10-12', 'Tuổi mắc']
+  }
+];
 
 export function renderEpidemiologyView(): string {
   return `
@@ -39,7 +110,7 @@ export function renderEpidemiologyView(): string {
               🦠 DỊCH TỄ HỌC & Y TẾ CÔNG CỘNG
             </h1>
             <p class="promax-hero-desc">
-              Hệ thống hóa phương pháp luận dịch tễ học, thiết kế nghiên cứu quan sát và can thiệp, đo lường nguy cơ (RR, OR, AR), đánh giá test chẩn đoán (Se, Sp, PPV, NPV, LR) và kỹ năng điều tra dập dịch thực địa.
+              Hệ thống hóa phương pháp luận dịch tễ học, thiết kế nghiên cứu quan sát và can thiệp, đo lường nguy cơ (RR, OR, AR), đánh giá test chẩn đoán (Se, Sp, PPV, NPV, LR), điều tra dập dịch thực địa và chuyên khảo dịch tễ các bệnh lý truyền nhiễm trọng điểm.
             </p>
 
             <!-- KPI Metric Bar -->
@@ -95,7 +166,7 @@ export function renderEpidemiologyView(): string {
         </div>
       </section>
 
-      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ DỊCH TỄ TƯƠNG TÁC CAO CẤP DẪN TỚI WEB CON) -->
+      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ DỊCH TỄ TƯƠNG TÁC CAO CẤP) -->
       <section class="promax-bento-grid">
         <a href="#/basic-medical/epidemiology/matrix-solver" class="promax-bento-card" style="--bento-color: #0d9488; --bento-bg: rgba(13, 148, 136, 0.1);">
           <div class="promax-bento-icon"><i class="fa-solid fa-table-cells"></i></div>
@@ -138,7 +209,7 @@ export function renderEpidemiologyView(): string {
       <div class="promax-toolbar">
         <div class="promax-search-wrap">
           <i class="fa-solid fa-magnifying-glass promax-search-icon"></i>
-          <input type="text" id="lesson-search" class="promax-search-input" placeholder="Tìm kiếm bài học dịch tễ học (Prevalence, RR, OR, Se/Sp, R0, Sốt xuất huyết, Sốt rét, Thủy đậu, Bradford Hill...)..." aria-label="Tìm kiếm chuyên đề dịch tễ">
+          <input type="text" id="lesson-search" class="promax-search-input" placeholder="Tìm kiếm bài học dịch tễ học (Prevalence, Incidence, RR, OR, Se/Sp, Sốt xuất huyết, Sốt rét, Thủy đậu, Bradford Hill...)..." aria-label="Tìm kiếm chuyên đề dịch tễ">
           <span class="promax-shortcut-pill">Ctrl + K</span>
           <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm" style="display: none; position: absolute; right: 4.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--color-text-muted);">&times;</button>
         </div>
@@ -156,170 +227,164 @@ export function renderEpidemiologyView(): string {
         </div>
       </div>
 
-      <!-- COUNTER -->
-      <div class="search-counter" id="search-counter" style="margin-bottom: 1.5rem; font-size: 0.875rem; color: var(--color-text-muted);">
-        Hiển thị <strong id="visible-count" style="color: #0d9488;">${EPIDEMIOLOGY_TOPICS.length + 3}</strong> / ${EPIDEMIOLOGY_TOPICS.length + 3} bài học &amp; chuyên khảo dịch tễ học
-      </div>
+      <!-- DASHBOARD LAYOUT (ĐỒNG BỘ 100% VỚI HÓA SINH, SINH LÝ & CCBS) -->
+      <div class="dashboard-layout">
+        
+        <!-- Navigation Sidebar (Sticky) -->
+        <aside class="layout-nav-sidebar" aria-label="Danh mục khối dịch tễ">
+          <div class="nav-sidebar-sticky" id="physio-nav">
+            <h4 class="nav-sidebar-title">Khối Dịch Tễ Học</h4>
+            <ul class="part-nav-list">
+              
+              <!-- 1. DỊCH TỄ CÁC BỆNH (TOP NAVIGATION) -->
+              <li>
+                <a href="#disease-epidemiology-section" class="part-nav-item p1 active" data-target="disease-epidemiology-section">
+                  <span class="part-icon"><i class="fa-solid fa-shield-virus" style="color: #ef4444;"></i></span>
+                  <span class="part-text">Dịch Tễ Các Bệnh</span>
+                  <span class="part-count-badge" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">3</span>
+                </a>
+              </li>
 
-      <!-- STICKY BLOCK NAVIGATION STRIP -->
-      <nav class="promax-part-nav" aria-label="Điều hướng khối chuyên đề dịch tễ">
-        ${EPIDEMIOLOGY_BLOCKS.map((b) => `
-          <button type="button" class="promax-part-btn" data-target="#block-${b.id}">
-            <i class="fa-solid ${b.icon}"></i>
-            <span>${b.code}: ${b.name.split('&')[0].trim()}</span>
-          </button>
-        `).join('')}
-      </nav>
+              <!-- 2. KHỐI 1 ĐẾN KHỐI 6 -->
+              ${EPIDEMIOLOGY_BLOCKS.map((b, idx) => `
+                <li>
+                  <a href="#${b.id}-section" class="part-nav-item p${idx + 2}" data-target="${b.id}-section">
+                    <span class="part-icon"><i class="fa-solid ${b.icon}"></i></span>
+                    <span class="part-text">${b.code}. ${b.name.replace(/^Khối \d+:\s*/, '').split('&')[0].trim()}</span>
+                    <span class="part-count-badge">${EPIDEMIOLOGY_TOPICS.filter(t => t.blockId === b.id).length}</span>
+                  </a>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </aside>
 
-      <!-- 6 BLOCKS SECTION -->
-      <div id="blocks-container" class="blocks-container">
-        ${EPIDEMIOLOGY_BLOCKS.map(block => renderBlockSection(block)).join('')}
-      </div>
+        <!-- Main Content Area -->
+        <main class="layout-content-area" id="lessons-container">
+          
+          <!-- Empty Search State -->
+          <div id="empty-search-state" class="empty-search-state" style="display: none;">
+            <div class="empty-search-icon">🔍</div>
+            <h3>Không tìm thấy chuyên đề dịch tễ nào</h3>
+            <p>Vui lòng thử từ khóa khác (ví dụ: Sốt xuất huyết, Sốt rét, Thủy đậu, Prevalence, Incidence, RR, OR, Se/Sp, Bradford Hill...).</p>
+          </div>
 
-      <!-- QUICK PREVIEW MODAL -->
-      <div id="topicModalBackdrop" class="modal-backdrop" aria-hidden="true">
-        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="topicModalContainer">
-          <!-- Populated by JS -->
-        </div>
+          <!-- ========================================================================= -->
+          <!-- PHẦN 1: DỊCH TỄ HỌC CÁC BỆNH TRUYỀN NHIỄM CỤ THỂ (ĐƯA LÊN ĐẦU TIÊN THEO YÊU CẦU) -->
+          <!-- ========================================================================= -->
+          <section id="disease-epidemiology-section" aria-labelledby="disease-epidemiology-heading" style="margin-bottom: 2rem;">
+            <div class="physio-group-container">
+              <div class="physio-group-header">
+                <span class="physio-group-icon" style="color: #ef4444; background: rgba(239, 68, 68, 0.12);">
+                  <i class="fa-solid fa-shield-virus"></i>
+                </span>
+                <div>
+                  <h3 id="disease-epidemiology-heading">Chuyên Khảo Dịch Tễ Bệnh Học Cụ Thể</h3>
+                  <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">
+                    Phân tích chuyên sâu tam giác dịch tễ học, véc-tơ truyền bệnh, động học lây truyền, cơ chế ADE/thể ngủ, gánh nặng dịch tễ &amp; phác đồ phòng chống chuẩn Bộ Y Tế &amp; WHO.
+                  </p>
+                </div>
+              </div>
+
+              <div class="specialty-grid">
+                ${DISEASE_ARTICLES.map(art => `
+                  <a href="#/basic-medical/epidemiology/article/${art.slug}" class="specialty-card" data-topic-id="${art.id}">
+                    <div class="specialty-card-top">
+                      <div class="specialty-icon" style="background: ${art.bgColor}; color: ${art.color};">
+                        <i class="fa-solid ${art.icon}"></i>
+                      </div>
+                      <div class="specialty-info">
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; margin-bottom: 0.25rem;">
+                          <div style="display: flex; align-items: center; gap: 0.4rem;">
+                            <span style="font-size: 0.72rem; font-weight: 700; background: ${art.bgColor}; color: ${art.color}; padding: 0.1rem 0.4rem; border-radius: 4px;">${art.code}</span>
+                            <span style="font-size: 0.7rem; font-weight: 600; color: var(--color-text-muted);">${art.icd}</span>
+                          </div>
+                          <span style="font-size: 0.72rem; color: var(--color-text-muted);"><i class="fa-solid fa-lightbulb" style="color: #f59e0b; font-size: 0.65rem;"></i> ${art.pearlsCount} Pearls</span>
+                        </div>
+                        <h3>${art.title}</h3>
+                        <p>${art.overview}</p>
+                        
+                        <div style="margin-top: 0.5rem; padding: 0.4rem 0.6rem; background: var(--color-bg, #f8fafc); border-left: 3px solid ${art.color}; border-radius: 0 6px 6px 0; font-size: 0.775rem; color: var(--color-text-muted); line-height: 1.4;">
+                          <strong style="color: ${art.color};"><i class="fa-solid fa-quote-left"></i> Pearl:</strong> ${art.pearlPreview}
+                        </div>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem;">
+                          <span style="font-size: 0.7rem; background: rgba(13, 148, 136, 0.1); color: #0d9488; font-weight: 600; padding: 0.05rem 0.35rem; border-radius: 3px;">
+                            <i class="fa-solid fa-bullseye" style="font-size: 0.65rem;"></i> ${art.vector}
+                          </span>
+                          ${art.tags.slice(0, 3).map(tag => `<span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#${tag}</span>`).join('')}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="specialty-card-action">
+                      <span><i class="fa-solid fa-book-open"></i> Đọc bài chuyên khảo</span>
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                  </a>
+                `).join('')}
+              </div>
+            </div>
+          </section>
+
+          <!-- ========================================================================= -->
+          <!-- PHẦN 2: 6 KHỐI CHUYÊN ĐỀ DỊCH TỄ HỌC CỐT LÕI (BLOCK 1 -> BLOCK 6) -->
+          <!-- ========================================================================= -->
+          ${EPIDEMIOLOGY_BLOCKS.map(block => {
+            const blockTopics = EPIDEMIOLOGY_TOPICS.filter(t => t.blockId === block.id);
+
+            return `
+              <section id="${block.id}-section" aria-labelledby="${block.id}-heading" style="margin-bottom: 2rem;">
+                <div class="physio-group-container">
+                  <div class="physio-group-header">
+                    <span class="physio-group-icon" style="color: ${block.color}; background: ${block.bgColor};">
+                      <i class="fa-solid ${block.icon}"></i>
+                    </span>
+                    <div>
+                      <h3 id="${block.id}-heading">${block.code}. ${block.name}</h3>
+                      <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">${block.description}</p>
+                    </div>
+                  </div>
+
+                  <div class="specialty-grid">
+                    ${blockTopics.map(topic => `
+                      <a href="javascript:void(0)" onclick="window.EpiHub?.openQuickPreview('${topic.id}')" class="specialty-card" data-topic-id="${topic.id}">
+                        <div class="specialty-card-top">
+                          <div class="specialty-icon" style="background: ${block.bgColor}; color: ${block.color};">
+                            <i class="fa-solid ${block.icon}"></i>
+                          </div>
+                          <div class="specialty-info">
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; margin-bottom: 0.25rem;">
+                              <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: ${block.color}; padding: 0.1rem 0.4rem; border-radius: 4px;">${topic.code}</span>
+                              <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-lightbulb" style="color: #f59e0b; font-size: 0.65rem;"></i> ${topic.clinicalPearls.length} Pearls</span>
+                            </div>
+                            <h3>${topic.title}</h3>
+                            <p>${topic.overview}</p>
+                            
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
+                              ${topic.relatedMetrics.slice(0, 3).map(m => `<span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">${m}</span>`).join('')}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="specialty-card-action">
+                          <span><i class="fa-solid fa-bolt"></i> Xem tóm tắt &amp; công thức</span>
+                          <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                      </a>
+                    `).join('')}
+                  </div>
+                </div>
+              </section>
+            `;
+          }).join('')}
+
+        </main>
       </div>
 
     </div>
-  `;
-}
 
-function renderBlockSection(block: EpidemiologyBlock): string {
-  const topics = EPIDEMIOLOGY_TOPICS.filter(t => t.blockId === block.id);
-  
-  // Custom Disease Articles for Block 4
-  const diseaseHtml = block.id === 'block-4' ? `
-    <!-- DISEASE ARTICLE CARDS -->
-    <div class="topic-card-grid" style="margin-top: 1rem;">
-      <!-- Dengue Card -->
-      <div class="topic-card" data-topic-id="dth-dengue" style="border-top: 4px solid #ef4444;">
-        <div class="topic-card-header">
-          <span class="topic-code-badge" style="background: rgba(239,68,68,0.12); color: #ef4444;">DTH-VIRUS • A90-A91</span>
-          <span class="topic-pearl-badge"><i class="fa-solid fa-mosquito"></i> Véc-tơ Aedes</span>
-        </div>
-        <h4 class="topic-title">Dịch Tễ Học Sốt Xuất Huyết Dengue (DENV)</h4>
-        <p class="topic-overview">
-          Tam giác dịch tễ học DENV, sinh học muỗi <em>Aedes aegypti / albopictus</em>, chu kỳ ủ bệnh ngoại lai (EIP), cơ chế tăng cường miễn dịch phụ thuộc kháng thể (ADE), số liệu dịch kỷ lục 2024–2026.
-        </p>
-        <div class="topic-pearl-preview" style="background: rgba(239,68,68,0.06); border-left-color: #ef4444;">
-          <i class="fa-solid fa-lightbulb" style="color: #ef4444;"></i>
-          <span>Tái nhiễm khác serotype kích hoạt ADE gây bão cytokine, rò rỉ huyết tương và sốc DSS.</span>
-        </div>
-        <div class="topic-card-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-          <span style="font-size: 0.78rem; color: var(--color-text-muted);"><i class="fa-solid fa-clock"></i> 12 phút đọc</span>
-          <a href="src/content/basic-medical/epidemiology/dth-dengue.html" class="btn-read-topic" style="background: #ef4444; color: #fff; text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span>Xem Bài Viết</span> <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Malaria Card -->
-      <div class="topic-card" data-topic-id="dth-sot-ret" style="border-top: 4px solid #d97706;">
-        <div class="topic-card-header">
-          <span class="topic-code-badge" style="background: rgba(217,119,6,0.12); color: #d97706;">DTH-PARASITE • B50-B54</span>
-          <span class="topic-pearl-badge"><i class="fa-solid fa-mosquito"></i> Véc-tơ Anopheles</span>
-        </div>
-        <h4 class="topic-title">Dịch Tễ Học Bệnh Sốt Rét (Malaria / Plasmodium)</h4>
-        <p class="topic-overview">
-          5 loài <em>Plasmodium</em>, thể ngủ gan (Hypnozoites), động học lây truyền muỗi <em>Anopheles</em>, 4 mối đe dọa sinh học (kháng Artemisinin gen <em>pfk13</em>, xóa gen <em>pfhrp2/3</em>), WHO 2025 và QĐ 4922/QĐ-BYT.
-        </p>
-        <div class="topic-pearl-preview" style="background: rgba(217,119,6,0.06); border-left-color: #d97706;">
-          <i class="fa-solid fa-lightbulb" style="color: #d97706;"></i>
-          <span>Điều trị tiệt căn <em>P. vivax</em> bắt buộc dùng Primaquine tiêu diệt thể ngủ và phải test men G6PD.</span>
-        </div>
-        <div class="topic-card-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-          <span style="font-size: 0.78rem; color: var(--color-text-muted);"><i class="fa-solid fa-clock"></i> 15 phút đọc</span>
-          <a href="src/content/basic-medical/epidemiology/dth-sot-ret.html" class="btn-read-topic" style="background: #d97706; color: #fff; text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span>Xem Bài Viết</span> <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Chickenpox Card -->
-      <div class="topic-card" data-topic-id="dth-thuy-dau" style="border-top: 4px solid #8b5cf6;">
-        <div class="topic-card-header">
-          <span class="topic-code-badge" style="background: rgba(139,92,246,0.12); color: #8b5cf6;">DTH-VIRUS • B01-B02</span>
-          <span class="topic-pearl-badge"><i class="fa-solid fa-shield-virus"></i> VZV Latency</span>
-        </div>
-        <h4 class="topic-title">Dịch Tễ Học Bệnh Thủy Đậu (Varicella / VZV)</h4>
-        <p class="topic-overview">
-          Sự tương phản sâu sắc giữa ôn đới vs nhiệt đới, tỷ lệ tử vong chữ U (gấp 23–29 lần ở người lớn), kỷ nguyên vắc-xin 1-liều/2-liều, rủi ro dịch chuyển tuổi khi độ bao phủ thấp dưới 80% (WHO).
-        </p>
-        <div class="topic-pearl-preview" style="background: rgba(139,92,246,0.06); border-left-color: #8b5cf6;">
-          <i class="fa-solid fa-lightbulb" style="color: #8b5cf6;"></i>
-          <span>Bao phủ vắc-xin &lt;80% đẩy lùi tuổi mắc bệnh sang người lớn, làm tăng ca nặng và tử vong chung.</span>
-        </div>
-        <div class="topic-card-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
-          <span style="font-size: 0.78rem; color: var(--color-text-muted);"><i class="fa-solid fa-clock"></i> 14 phút đọc</span>
-          <a href="src/content/basic-medical/epidemiology/dth-thuy-dau.html" class="btn-read-topic" style="background: #8b5cf6; color: #fff; text-decoration: none; padding: 0.35rem 0.85rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.35rem;">
-            <span>Xem Bài Viết</span> <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  ` : '';
-
-  return `
-    <section id="block-${block.id}" class="block-section" style="margin-bottom: 2.75rem; scroll-margin-top: 90px;">
-      <div class="block-section-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-bottom: 2px solid var(--color-border); padding-bottom: 0.75rem;">
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <div style="width: 40px; height: 40px; border-radius: 10px; background: ${block.bgColor}; color: ${block.color}; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
-            <i class="fa-solid ${block.icon}"></i>
-          </div>
-          <div>
-            <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--color-text);">
-              ${block.code}: ${block.name}
-            </h3>
-            <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted);">
-              ${block.description}
-            </p>
-          </div>
-        </div>
-        <span class="block-topic-count" style="font-size: 0.78rem; font-weight: 700; background: var(--color-bg); border: 1px solid var(--color-border); padding: 0.25rem 0.65rem; border-radius: 999px; color: var(--color-text-muted);">
-          ${topics.length + (block.id === 'block-4' ? 3 : 0)} Chuyên đề
-        </span>
-      </div>
-
-      <div class="topic-card-grid">
-        ${topics.map(topic => renderTopicCard(topic, block)).join('')}
-      </div>
-
-      ${diseaseHtml}
-    </section>
-  `;
-}
-
-function renderTopicCard(topic: EpidemiologyTopic, block: EpidemiologyBlock): string {
-  return `
-    <div class="topic-card" data-topic-id="${topic.id}">
-      <div class="topic-card-header">
-        <span class="topic-code-badge" style="background: ${block.bgColor}; color: ${block.color};">${topic.code}</span>
-        <span class="topic-pearl-badge"><i class="fa-solid fa-lightbulb"></i> ${topic.clinicalPearls.length} Pearls</span>
-      </div>
-
-      <h4 class="topic-title">${topic.title}</h4>
-      <p class="topic-overview">${topic.overview}</p>
-
-      <div class="topic-pearl-preview">
-        <i class="fa-solid fa-quote-left"></i>
-        <span>${topic.clinicalPearls[0] || 'Xem chi tiết trong bài học'}</span>
-      </div>
-
-      <div class="topic-tags-strip" style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.85rem 0;">
-        ${topic.relatedMetrics.slice(0, 3).map(m => `
-          <span style="font-size: 0.72rem; font-weight: 600; background: var(--color-bg); border: 1px solid var(--color-border); color: var(--color-text-muted); padding: 0.15rem 0.45rem; border-radius: 4px;">${m}</span>
-        `).join('')}
-      </div>
-
-      <div class="topic-card-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid var(--color-border); padding-top: 0.75rem;">
-        <span style="font-size: 0.78rem; color: var(--color-text-muted);"><i class="fa-solid fa-clock"></i> 8 phút đọc</span>
-        <button type="button" class="btn-read-topic" onclick="window.EpiHub?.openQuickPreview('${topic.id}')" style="background: ${block.color}; color: #ffffff; border: none; padding: 0.35rem 0.85rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;">
-          <span>Xem Tóm Tắt</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </button>
-      </div>
+    <!-- QUICK PREVIEW MODAL / DRAWER (CHỨA ĐẦY ĐỦ CÔNG THỨC, PEARLS & BIAS) -->
+    <div class="biochem-modal-backdrop" id="epiModalBackdrop">
+      <div class="biochem-modal" id="epiModalContainer" role="dialog" aria-modal="true"></div>
     </div>
   `;
 }
@@ -328,98 +393,135 @@ function renderTopicCard(topic: EpidemiologyTopic, block: EpidemiologyBlock): st
  * Initialize Event Listeners for Master Epidemiology Hub
  */
 export function initEpidemiologyView(): void {
-  // Search & Filtering
-  const searchInput = document.getElementById('lesson-search') as HTMLInputElement;
-  const clearBtn = document.getElementById('clear-search');
-  const visibleCountEl = document.getElementById('visible-count');
-  const topicCards = document.querySelectorAll('.topic-card');
+  const searchInput = document.getElementById('lesson-search') as HTMLInputElement | null;
+  const clearBtn = document.getElementById('clear-search') as HTMLElement | null;
+  const emptyState = document.getElementById('empty-search-state') as HTMLElement | null;
+  const viewGridBtn = document.getElementById('view-grid-btn') as HTMLElement | null;
+  const viewListBtn = document.getElementById('view-list-btn') as HTMLElement | null;
+  const lessonsContainer = document.getElementById('lessons-container') as HTMLElement | null;
+  const navItems = document.querySelectorAll<HTMLElement>('.part-nav-item');
+  const sections = document.querySelectorAll<HTMLElement>('.layout-content-area > section');
+  const modalBackdrop = document.getElementById('epiModalBackdrop');
+  const modalContainer = document.getElementById('epiModalContainer');
 
-  const filterTopics = () => {
-    const query = (searchInput?.value || '').toLowerCase().trim();
-    if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
+  // 1. Live Search
+  function performSearch(query: string): void {
+    const q = query.toLowerCase().trim();
+    if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
 
-    let count = 0;
-    topicCards.forEach((card) => {
-      const el = card as HTMLElement;
-      const text = el.textContent?.toLowerCase() || '';
-      if (!query || text.includes(query)) {
-        el.style.display = '';
-        count++;
-      } else {
-        el.style.display = 'none';
-      }
+    let totalVisible = 0;
+
+    sections.forEach(sec => {
+      const sectionEl = sec;
+      const cards = sectionEl.querySelectorAll<HTMLElement>('.specialty-card');
+      let sectionVisibleCount = 0;
+
+      cards.forEach(card => {
+        const text = card.textContent?.toLowerCase() || '';
+        if (!q || text.includes(q)) {
+          card.style.display = '';
+          sectionVisibleCount++;
+          totalVisible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      sectionEl.style.display = sectionVisibleCount > 0 ? '' : 'none';
     });
 
-    if (visibleCountEl) {
-      visibleCountEl.textContent = count.toString();
+    if (emptyState) {
+      emptyState.style.display = totalVisible === 0 ? 'block' : 'none';
     }
-  };
+  }
 
-  searchInput?.addEventListener('input', filterTopics);
-  clearBtn?.addEventListener('click', () => {
-    if (searchInput) {
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      performSearch((e.target as HTMLInputElement).value);
+    });
+  }
+
+  if (clearBtn && searchInput) {
+    clearBtn.addEventListener('click', () => {
       searchInput.value = '';
-      filterTopics();
+      performSearch('');
       searchInput.focus();
-    }
-  });
+    });
+  }
 
-  // Shortcut Ctrl + K
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
-      const activeEl = document.activeElement;
-      if (activeEl?.tagName !== 'INPUT' && activeEl?.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        searchInput?.focus();
+  // 2. View Toggle (Grid / List)
+  if (viewGridBtn && viewListBtn && lessonsContainer) {
+    viewGridBtn.addEventListener('click', () => {
+      viewGridBtn.classList.add('active');
+      viewListBtn.classList.remove('active');
+      lessonsContainer.querySelectorAll('.specialty-grid').forEach(g => g.classList.remove('list-view'));
+    });
+
+    viewListBtn.addEventListener('click', () => {
+      viewListBtn.classList.add('active');
+      viewGridBtn.classList.remove('active');
+      lessonsContainer.querySelectorAll('.specialty-grid').forEach(g => g.classList.add('list-view'));
+    });
+  }
+
+  // 3. Scroll Spy for Sticky Nav Sidebar
+  function updateScrollSpy(): void {
+    const scrollPos = window.scrollY + 160;
+
+    sections.forEach(sec => {
+      const sectionEl = sec;
+      if (sectionEl.style.display === 'none') return;
+
+      const top = sectionEl.offsetTop;
+      const height = sectionEl.offsetHeight;
+      const id = sectionEl.getAttribute('id');
+
+      if (scrollPos >= top && scrollPos < top + height) {
+        navItems.forEach(item => {
+          if (item.getAttribute('data-target') === id) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
       }
-    }
-  });
+    });
+  }
 
-  // View Switcher (Grid / List)
-  const viewGridBtn = document.getElementById('view-grid-btn');
-  const viewListBtn = document.getElementById('view-list-btn');
-  const grids = document.querySelectorAll('.topic-card-grid');
+  window.addEventListener('scroll', updateScrollSpy, { passive: true });
 
-  viewGridBtn?.addEventListener('click', () => {
-    viewGridBtn.classList.add('active');
-    viewListBtn?.classList.remove('active');
-    grids.forEach(g => g.classList.remove('list-view'));
-  });
+  // 4. Smooth Scroll when clicking nav item
+  navItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = item.getAttribute('data-target');
+      if (!targetId) return;
 
-  viewListBtn?.addEventListener('click', () => {
-    viewListBtn.classList.add('active');
-    viewGridBtn?.classList.remove('active');
-    grids.forEach(g => g.classList.add('list-view'));
-  });
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        const offset = 100;
+        const targetPos = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
 
-  // Sticky Block Nav Scrolling
-  const navBtns = document.querySelectorAll('.promax-part-btn');
-  navBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-target');
-      if (targetId) {
-        const targetEl = document.querySelector(targetId);
-        targetEl?.scrollIntoView({ behavior: 'smooth' });
+        navItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
       }
     });
   });
 
-  // Modal Setup
-  const modalBackdrop = document.getElementById('topicModalBackdrop');
-  const modalContainer = document.getElementById('topicModalContainer');
-
+  // 5. Quick Preview Modal Engine
   function openQuickPreview(topicId: string): void {
+    if (!modalBackdrop || !modalContainer) return;
+
     const topic = EPIDEMIOLOGY_TOPICS.find(t => t.id === topicId);
-    if (!topic || !modalContainer || !modalBackdrop) return;
+    if (!topic) return;
 
     const block = EPIDEMIOLOGY_BLOCKS.find(b => b.id === topic.blockId);
 
     modalContainer.innerHTML = `
       <div class="modal-header" style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; background: var(--color-surface);">
         <div>
-          <span style="font-size: 0.75rem; font-weight: 700; background: var(--color-bg); color: var(--color-primary); padding: 0.2rem 0.5rem; border-radius: 4px;">
-            ${topic.code} • ${block ? block.name : ''}
-          </span>
+          <span style="font-size: 0.75rem; font-weight: 700; background: var(--color-bg); color: ${block?.color || '#0d9488'}; padding: 0.2rem 0.5rem; border-radius: 4px;">${topic.code} • ${block ? block.name : 'Dịch Tễ Học'}</span>
           <h3 style="margin: 0.35rem 0 0 0; font-size: 1.25rem; font-weight: 700; color: var(--color-text);">${topic.title}</h3>
         </div>
         <button type="button" class="modal-close-btn" onclick="window.EpiHub?.closeModal()" aria-label="Đóng" style="background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-text-muted); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
@@ -431,48 +533,48 @@ export function initEpidemiologyView(): void {
         <!-- Tổng quan -->
         <div style="margin-bottom: 1.5rem; background: var(--color-bg); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--color-border);">
           <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; font-weight: 700; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-circle-info"></i> Định Nghĩa & Phương Pháp Luận
+            <i class="fa-solid fa-circle-info"></i> Định Nghĩa & Tổng Quan Dịch Tễ
           </h4>
           <p style="margin: 0; font-size: 0.9rem; line-height: 1.65; color: var(--color-text);">${topic.overview}</p>
         </div>
 
-        <!-- Công thức -->
+        <!-- Công thức cốt lõi -->
         <div style="margin-bottom: 1.5rem;">
           <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; font-weight: 700; color: #0d9488; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-calculator"></i> Công Thức Tính & Phương Trình Cốt Lõi
+            <i class="fa-solid fa-calculator"></i> Công Thức Tính & Thuật Toán Đo Lường
           </h4>
           <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.45rem;">
-            ${topic.keyFormulas.map(f => `<li style="font-size: 0.875rem; color: var(--color-text);"><code style="background: rgba(13,148,136,0.1); color: #0f766e; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: monospace;">${f}</code></li>`).join('')}
+            ${topic.keyFormulas.map(f => `<li style="font-size: 0.875rem; color: var(--color-text);"><code style="background: rgba(13, 148, 136, 0.1); color: #0f766e; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: monospace; font-weight: 600; display: inline-block;">${f}</code></li>`).join('')}
           </ul>
         </div>
 
         <!-- Clinical Pearls -->
         <div style="margin-bottom: 1.5rem; background: rgba(245,158,11,0.08); border-left: 4px solid #f59e0b; padding: 1.25rem; border-radius: 0 10px 10px 0;">
           <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; font-weight: 700; color: #b45309; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> Điểm Ngọc Lâm Sàng & Dịch Tễ (Clinical Pearls)
+            <i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> Điểm Ngọc Lâm Sàng & Thực Địa (Clinical Pearls)
           </h4>
           <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
             ${topic.clinicalPearls.map(p => `<li style="font-size: 0.875rem; color: var(--color-text); line-height: 1.5;">${p}</li>`).join('')}
           </ul>
         </div>
 
-        <!-- Sai số & Cạm bẫy -->
+        <!-- Pitfalls & Biases -->
         <div style="margin-bottom: 1.5rem; background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444; padding: 1.25rem; border-radius: 0 10px 10px 0;">
           <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; font-weight: 700; color: #b91c1c; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i> Cạm Bẫy Sai Số & Sai Lầm Cần Tránh (Bias & Pitfalls)
+            <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i> Cạm Bẫy Sai Số & Ngụy Biện Dịch Tễ Cần Tránh
           </h4>
           <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
             ${topic.biasAndPitfalls.map(b => `<li style="font-size: 0.875rem; color: var(--color-text); line-height: 1.5;">${b}</li>`).join('')}
           </ul>
         </div>
 
-        <!-- Chỉ số liên quan -->
+        <!-- Related Metrics & Tags -->
         <div>
           <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; font-weight: 700; color: #3b82f6; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-chart-line"></i> Chỉ Số & Thước Đo Liên Quan
+            <i class="fa-solid fa-tags"></i> Chỉ Số & Thuật Ngữ Liên Quan
           </h4>
           <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-            ${topic.relatedMetrics.map(m => `<span style="font-size: 0.825rem; background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-primary); font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-chart-simple" style="font-size: 0.75rem; color: #3b82f6;"></i> ${m}</span>`).join('')}
+            ${topic.relatedMetrics.map(m => `<span style="font-size: 0.825rem; background: var(--color-surface); border: 1px solid var(--color-border); color: #2563eb; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-chart-simple" style="font-size: 0.75rem; color: #3b82f6;"></i> ${m}</span>`).join('')}
           </div>
         </div>
       </div>
@@ -489,6 +591,7 @@ export function initEpidemiologyView(): void {
     }
   }
 
+  // Bind to window for HTML event handlers
   (window as any).EpiHub = {
     openQuickPreview,
     closeModal

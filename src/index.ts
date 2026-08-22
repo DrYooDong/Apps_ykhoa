@@ -414,6 +414,16 @@ function initializeRoutes(): void {
       const slug = params.slug || '';
       mountToApp(renderPhysioHtmlReader('cases', slug));
     });
+
+    router.register(`/${prefix}/epidemiology/article/:slug`, 'Bài Giảng Dịch Tễ Học', (params) => {
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader('epidemiology', slug));
+    });
+
+    router.register(`/${prefix}/dich-te-hoc/article/:slug`, 'Bài Giảng Dịch Tễ Học', (params) => {
+      const slug = params.slug || '';
+      mountToApp(renderPhysioHtmlReader('epidemiology', slug));
+    });
   };
 
   registerBasicMedicalRoutes('basic-medical');

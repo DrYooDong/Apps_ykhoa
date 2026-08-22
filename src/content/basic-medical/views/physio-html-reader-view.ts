@@ -15,6 +15,7 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
   const cleanPart = part.toLowerCase();
   const isCaseStudy = cleanPart === 'cases' || cleanPart === 'co-che-benh-sinh' || cleanPart === 'pathophysiology-cases';
   const isBiochem = cleanPart.startsWith('block') || cleanPart.startsWith('biochem');
+  const isEpi = cleanPart === 'epidemiology' || cleanPart === 'dth' || cleanPart === 'dich-te-hoc';
 
   // Retrieve saved preferences from localStorage
   const savedWidthMode = typeof localStorage !== 'undefined' ? (localStorage.getItem('cp_reader_width') || 'wide') : 'wide';
@@ -39,14 +40,17 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
     'block4-intermediary-metabolism': 'Khối 4: Chuyển Hóa 4 Đại Phân Tử',
     'block5-molecular-genetics': 'Khối 5: Sinh Học Phân Tử & Gen',
     'block6-organ-metabolism': 'Khối 6: Hóa Sinh Cơ Quan & Tích Hợp',
-    'block7-clinical-biochemistry': 'Khối 7: Hóa Sinh Lâm Sàng'
+    'block7-clinical-biochemistry': 'Khối 7: Hóa Sinh Lâm Sàng',
+    'epidemiology': 'Dịch Tễ Bệnh Học',
+    'dth': 'Dịch Tễ Bệnh Học',
+    'dich-te-hoc': 'Dịch Tễ Bệnh Học'
   };
 
-  const partName = partTitles[cleanPart] || (isBiochem ? `Khối Hóa Sinh` : `Phần ${cleanPart.replace('part', '')}`);
+  const partName = partTitles[cleanPart] || (isBiochem ? `Khối Hóa Sinh` : (isEpi ? 'Dịch Tễ Bệnh Học' : `Phần ${cleanPart.replace('part', '')}`));
 
   // Trigger async fetch after container mounts to DOM
   setTimeout(() => {
-    fetchAndHydratePhysioArticle(cleanPart, cleanSlug, baseSlugName, partName, isCaseStudy, isBiochem);
+    fetchAndHydratePhysioArticle(cleanPart, cleanSlug, baseSlugName, partName, isCaseStudy, isBiochem, isEpi);
   }, 30);
 
   let parentModuleUrl = '#/basic-medical/giai-phau-sinh-ly';
@@ -61,6 +65,10 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
     parentModuleUrl = '#/basic-medical/hoa-sinh';
     parentModuleName = 'Hóa Sinh';
     partUrl = `#/basic-medical/hoa-sinh#${cleanPart}-section`;
+  } else if (isEpi) {
+    parentModuleUrl = '#/basic-medical/dich-te-hoc';
+    parentModuleName = 'DTH - YTCC';
+    partUrl = `#/basic-medical/dich-te-hoc#disease-epidemiology-section`;
   }
 
   return `
@@ -177,7 +185,7 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
 /**
  * Fetch, parse, and inject physiology or pathophysiology cases HTML content
  */
-async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, baseSlugName: string, partName: string, isCaseStudy: boolean, isBiochem = false): Promise<void> {
+async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, baseSlugName: string, partName: string, isCaseStudy: boolean, isBiochem = false, isEpi = false): Promise<void> {
   const mountEl = document.getElementById('physio-article-mount');
   if (!mountEl) return;
 
@@ -202,6 +210,15 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
       `../src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
       `/dist/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
       `dist/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`
+    ];
+  } else if (isEpi) {
+    candidatePaths = [
+      `/src/content/basic-medical/epidemiology/${cleanSlug}`,
+      `src/content/basic-medical/epidemiology/${cleanSlug}`,
+      `./src/content/basic-medical/epidemiology/${cleanSlug}`,
+      `../src/content/basic-medical/epidemiology/${cleanSlug}`,
+      `/dist/src/content/basic-medical/epidemiology/${cleanSlug}`,
+      `dist/src/content/basic-medical/epidemiology/${cleanSlug}`
     ];
   } else {
     candidatePaths = [
@@ -240,6 +257,9 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
     } else if (isBiochem) {
       returnUrl = '#/basic-medical/hoa-sinh';
       returnText = 'Hóa Sinh Y Học (HS-CH)';
+    } else if (isEpi) {
+      returnUrl = '#/basic-medical/dich-te-hoc';
+      returnText = 'Dịch Tễ Học (DTH-YTCC)';
     }
 
     mountEl.innerHTML = `
