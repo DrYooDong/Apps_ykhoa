@@ -95,6 +95,8 @@ export function initPathophysiologyHub(): void {
       if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
 
       const cards = document.querySelectorAll<HTMLElement>('.specialty-card');
+      const subgroups = document.querySelectorAll<HTMLElement>('.physio-subgroup-container');
+      const sections = document.querySelectorAll<HTMLElement>('.layout-content-area > section');
       let visibleCount = 0;
 
       cards.forEach(card => {
@@ -105,6 +107,41 @@ export function initPathophysiologyHub(): void {
         card.style.display = isMatch ? 'flex' : 'none';
         if (isMatch) visibleCount++;
       });
+
+      // Update subgroup visibility
+      subgroups.forEach(sub => {
+        if (!query) {
+          sub.style.display = 'block';
+        } else {
+          const visibleInSub = sub.querySelectorAll<HTMLElement>('.specialty-card[style*="display: flex"], .specialty-card:not([style*="display: none"])');
+          sub.style.display = visibleInSub.length > 0 ? 'block' : 'none';
+        }
+      });
+
+      // Update section visibility
+      sections.forEach(sec => {
+        if (!query) {
+          sec.style.display = 'block';
+        } else {
+          const visibleInSec = sec.querySelectorAll<HTMLElement>('.specialty-card[style*="display: flex"], .specialty-card:not([style*="display: none"])');
+          sec.style.display = visibleInSec.length > 0 ? 'block' : 'none';
+        }
+      });
+
+      // If search query is present, auto-expand accordion parents with matching visible cards
+      if (query) {
+        document.querySelectorAll<HTMLElement>('.nav-item-parent').forEach(parent => {
+          const targetId = parent.querySelector('.part-nav-item')?.getAttribute('data-target');
+          if (targetId) {
+            const targetSec = document.getElementById(targetId);
+            const hasVisibleCards = targetSec && targetSec.querySelectorAll('.specialty-card:not([style*="display: none"])').length > 0;
+            if (hasVisibleCards) {
+              parent.classList.add('expanded');
+              parent.querySelector('.part-nav-item')?.classList.add('expanded');
+            }
+          }
+        });
+      }
 
       if (emptyState) {
         emptyState.style.display = (visibleCount === 0 && query !== '') ? 'block' : 'none';
@@ -135,18 +172,61 @@ export function initPathophysiologyHub(): void {
     });
   }
 
-  // 4. Sticky Nav Click Scroll
+  // 4. Sticky Nav Click Scroll & Nested Sub-nav Accordion
+  const navParents = document.querySelectorAll<HTMLElement>('.nav-item-parent');
   const navItems = document.querySelectorAll<HTMLElement>('.part-nav-item');
+  const subNavItems = document.querySelectorAll<HTMLElement>('.part-sub-nav-item');
+
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
+      const parent = item.closest('.nav-item-parent') as HTMLElement | null;
+      const hasSubnav = item.classList.contains('has-subnav') || !!parent?.querySelector('.part-sub-nav-list');
+      
       const targetId = item.getAttribute('data-target');
-      if (!targetId) return;
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        navItems.forEach(nav => nav.classList.remove('active'));
-        item.classList.add('active');
+      if (targetId) {
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      navItems.forEach(nav => nav.classList.remove('active'));
+      item.classList.add('active');
+
+      if (hasSubnav && parent) {
+        const isExpanded = parent.classList.contains('expanded');
+        // Toggle current parent
+        parent.classList.toggle('expanded', !isExpanded);
+        item.classList.toggle('expanded', !isExpanded);
+      }
+    });
+  });
+
+  subNavItems.forEach(subItem => {
+    subItem.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const targetId = subItem.getAttribute('data-target') || subItem.getAttribute('href')?.replace('#', '');
+      if (targetId) {
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      subNavItems.forEach(s => s.classList.remove('active'));
+      subItem.classList.add('active');
+
+      // Make sure parent is active and expanded
+      const parent = subItem.closest('.nav-item-parent');
+      if (parent) {
+        parent.classList.add('expanded');
+        const parentLink = parent.querySelector<HTMLElement>('.part-nav-item');
+        if (parentLink) {
+          navItems.forEach(nav => nav.classList.remove('active'));
+          parentLink.classList.add('active');
+          parentLink.classList.add('expanded');
+        }
       }
     });
   });

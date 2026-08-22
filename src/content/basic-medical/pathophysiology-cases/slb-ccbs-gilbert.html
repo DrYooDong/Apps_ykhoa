@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Hội chứng Gilbert (Gilbert Syndrome - GS): Đột biến promoter UGT1A1*28 và exon Gly71Arg, giảm 50-70% hoạt tính enzyme liên hợp glucuronide, độc tính thuốc Irinotecan (SN-38), nghịch lý bảo vệ tim mạch 'The Good, the Bad and the Ugly' và chẩn đoán phân biệt Crigler-Najjar / Thalassemia.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Hội Chứng Gilbert (GS) – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .gs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .gs-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .gs-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .gs-card.ugt {
+            border-left: 4px solid #f59e0b;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.06) 0%, transparent 100%);
+        }
+
+        .gs-card.good {
+            border-left: 4px solid #10b981;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, transparent 100%);
+        }
+
+        .gs-card.tox {
+            border-left: 4px solid #dc2626;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.06) 0%, transparent 100%);
+        }
+
+        .gs-card.trigger {
+            border-left: 4px solid #0284c7;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.06) 0%, transparent 100%);
+        }
+
+        .gs-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.825rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1.25rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1) 0%, rgba(16, 185, 129, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .clinical-pearl-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-left: 4px solid #10b981;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .clinical-warning-box {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(220, 38, 38, 0.02) 100%);
+            border: 1px solid rgba(220, 38, 38, 0.25);
+            border-left: 4px solid #dc2626;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-list {
+            padding-left: 1.25rem;
+            margin: 0.75rem 0 0 0;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reading-progress-bar" id="readingProgress"></div>
+
+    <div class="layout-container">
+        <div id="header-container"></div>
+
+        <div class="main-wrapper">
+            <!-- Sidebar TOC Navigation -->
+            <aside class="sidebar-toc" id="sidebarToc" aria-label="Mục lục bài giảng">
+                <div class="toc-header">
+                    <span class="toc-title">Mục Lục Bài Học</span>
+                </div>
+                <nav class="toc-body">
+                    <ul class="toc-list">
+                        <li><a href="#tong-quan" class="toc-link">1. Tổng Quan &amp; Dịch Tễ Học</a></li>
+                        <li><a href="#chuyen-hoa-bilirubin" class="toc-link">2. Hóa Sinh Chuyển Hóa Bilirubin</a></li>
+                        <li><a href="#di-truyen-ugt1a1" class="toc-link">3. Di Truyền Học &amp; Đột Biến UGT1A1</a></li>
+                        <li><a href="#yeu-to-kich-hoat" class="toc-link">4. Yếu Tố Kích Hoạt (Nhịn Ăn &amp; Stress)</a></li>
+                        <li><a href="#doc-luc-duoc-ly" class="toc-link">5. Dược Lý Học &amp; Độc Tính Irinotecan (SN-38)</a></li>
+                        <li><a href="#the-good-bad-ugly" class="toc-link">6. "The Good, the Bad &amp; the Ugly"</a></li>
+                        <li><a href="#chan-doan-phan-biet" class="toc-link">7. Đối Sánh GS vs Crigler-Najjar vs Thalassemia</a></li>
+                        <li><a href="#tai-lieu-tham-khao" class="toc-link">8. Tài Liệu Tham Khảo</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content-area" id="mainContent">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <ol class="breadcrumb-list">
+                        <li><a href="../../../../index.html">Trang Chủ</a></li>
+                        <li><a href="../co-che-benh-sinh.html">Cơ Chế Bệnh Sinh</a></li>
+                        <li><a href="../co-che-benh-sinh.html#patho-tieuhoa-gan-mat-tuy">Gan – Mật – Tụy</a></li>
+                        <li aria-current="page">Hội Chứng Gilbert</li>
+                    </ol>
+                </nav>
+
+                <!-- Article Header Banner -->
+                <header class="article-header">
+                    <div class="article-badge-row">
+                        <span class="badge badge-primary">Cơ Chế Bệnh Sinh</span>
+                        <span class="badge badge-outline">Di Truyền &amp; Chuyển Hóa Gan</span>
+                        <span class="badge badge-accent">StatPearls 2024 / EBM</span>
+                    </div>
+                    <h1 class="article-title">Sinh Lý Bệnh &amp; Cơ Chế Bệnh Sinh Hội Chứng Gilbert (GS)</h1>
+                    <p class="article-subtitle">
+                        Đột biến gen UGT1A1, suy giảm men glucuronide hóa bilirubin, bẫy độc tính hóa trị Irinotecan và hiệu ứng bảo vệ tim mạch nghịch lý
+                    </p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> Thời lượng đọc: 14 phút</span>
+                        <span><i class="fa-solid fa-dna"></i> UGT1A1*28 / UGT1A1*6</span>
+                        <span><i class="fa-solid fa-code-branch"></i> Cập nhật: 2026</span>
+                    </div>
+                </header>
+
+                <!-- Key Highlights Bento -->
+                <section class="gs-grid">
+                    <div class="gs-card ugt">
+                        <div class="gs-card-title" style="color: #d97706;">
+                            <i class="fa-solid fa-vial-circle-check"></i> Suy Giảm Hoạt Tính UGT1A1
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                            Hoạt tính men liên hợp glucuronide hóa duy trì ở mức <strong>30% &ndash; 50%</strong> so với người bình thường, gây tăng bilirubin tự do lành tính dao động &lt; 4 mg/dL.
+                        </p>
+                    </div>
+                    <div class="gs-card trigger">
+                        <div class="gs-card-title" style="color: #0284c7;">
+                            <i class="fa-solid fa-utensils"></i> Nghiệm Pháp Nhịn Ăn (Fasting)
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                            Hạn chế calo (&lt;400 Kcal/ngày) làm <strong>tăng bilirubin máu vọt gấp 2&ndash;3 lần</strong> trong 48h do cạn kiệt UDP-GA và tăng tái hấp thu ruột gan.
+                        </p>
+                    </div>
+                    <div class="gs-card tox">
+                        <div class="gs-card-title" style="color: #dc2626;">
+                            <i class="fa-solid fa-triangle-exclamation"></i> Bẫy Độc Tính Thuốc (SN-38)
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                            Không thể bất hoạt chất chuyển hóa hoạt tính của hóa chất <strong>Irinotecan</strong>, gây tiêu chảy cấp dữ dội và ức chế tủy giảm bạch cầu đe dọa tính mạng.
+                        </p>
+                    </div>
+                    <div class="gs-card good">
+                        <div class="gs-card-title" style="color: #10b981;">
+                            <i class="fa-solid fa-heart-pulse"></i> Nghịch Lý Bảo Vệ Tim Mạch
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                            Bilirubin là chất chống oxy hóa mạnh: <strong>giảm 50% tỷ lệ tử vong do mọi nguyên nhân</strong> và giảm 6.5% nguy cơ tim mạch cho mỗi 1 mmol/L bilirubin tăng.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 1. TỔNG QUAN & DỊCH TỄ HỌC -->
+                <section id="tong-quan" class="physio-section">
+                    <h2 class="section-title">1. Tổng Quan &amp; Dịch Tễ Học Theo Chủng Tộc</h2>
+                    <p class="section-desc">
+                        <strong>Hội chứng Gilbert (Gilbert Syndrome - GS)</strong> là rối loạn di truyền phổ biến nhất của quá trình chuyển hóa bilirubin tại tế bào gan.
+                    </p>
+
+                    <div class="content-block">
+                        <p>
+                            Đây là nguyên nhân hàng đầu gây tăng nồng độ <strong>bilirubin tự do (bilirubin gián tiếp - UCB)</strong> trong máu mức độ nhẹ, dao động ngắt quãng, hoàn toàn lành tính và <strong>không đi kèm tổn thương hoại tử nhu mô gan hay hiện tượng tan máu (hemolysis)</strong>.
+                        </p>
+                        <ul>
+                            <li><strong>Tuổi khởi phát:</strong> Thường được phát hiện vào thời kỳ dậy thì hoặc đầu tuổi thiếu niên, khi sự tăng phân hủy hemoglobin kết hợp cùng tác động ức chế men của steroid sinh dục nội sinh.</li>
+                            <li><strong>Ưu thế giới tính:</strong> Nam giới chiếm ưu thế rõ rệt với tỷ lệ <strong>Nam : Nữ dao động từ 2:1 đến 3:1</strong> do nam giới có tốc độ sinh sản bilirubin hàng ngày cao hơn và nồng độ steroid khác biệt.</li>
+                            <li><strong>Tỷ lệ lưu hành dân số:</strong> Chiếm từ <strong>2% đến 20%</strong> dân số toàn cầu tùy chủng tộc (Nam Á lên tới 20%, Người da trắng 2&ndash;10%, Đông Á 2&ndash;5%).</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 2. HÓA SINH CHUYỂN HÓA BILIRUBIN -->
+                <section id="chuyen-hoa-bilirubin" class="physio-section">
+                    <h2 class="section-title">2. Hóa Sinh Học Chuyển Hóa Bilirubin Bình Thường Tại Gan</h2>
+                    <p class="section-desc">
+                        Bilirubin là sản phẩm thoái hóa của nhân heme từ hồng cầu già cỗi. Quá trình xử lý bilirubin tại tế bào gan là một chuỗi sinh lý 5 giai đoạn:
+                    </p>
+
+                    <!-- SVG Metabolic Workflow Diagram -->
+                    <div class="diagram-container">
+                        <svg viewBox="0 0 850 420" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Inter', system-ui, sans-serif;">
+                            <defs>
+                                <linearGradient id="gradBlood" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ef4444" stop-opacity="0.15"/>
+                                    <stop offset="100%" stop-color="#b91c1c" stop-opacity="0.05"/>
+                                </linearGradient>
+                                <linearGradient id="gradLiver" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.12"/>
+                                    <stop offset="100%" stop-color="#d97706" stop-opacity="0.04"/>
+                                </linearGradient>
+                                <linearGradient id="gradBile" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#10b981" stop-opacity="0.15"/>
+                                    <stop offset="100%" stop-color="#047857" stop-opacity="0.05"/>
+                                </linearGradient>
+                                <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L8,3 z" fill="#d97706"/>
+                                </marker>
+                            </defs>
+
+                            <!-- Vùng Tuần Hoàn Máu -->
+                            <rect x="30" y="20" width="790" height="70" rx="10" fill="url(#gradBlood)" stroke="#ef4444" stroke-width="1.5"/>
+                            <text x="50" y="45" font-weight="800" font-size="12" fill="#b91c1c">1. HUYẾT TƯƠNG (XOANG GAN)</text>
+                            <text x="50" y="68" font-size="11" fill="#334155">Bilirubin tự do (UCB) kỵ nước liên kết với Albumin &rarr; Vận chuyển đến màng đáy tế bào gan</text>
+
+                            <!-- Mũi tên qua Màng Xoang -->
+                            <path d="M 425 90 L 425 125" stroke="#d97706" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+                            <text x="440" y="112" font-size="10.5" font-weight="600" fill="#d97706">Thu nhận qua màng xoang (Carrier Protein)</text>
+
+                            <!-- Vùng Tế Bào Gan (Hepatocyte) -->
+                            <rect x="30" y="130" width="790" height="170" rx="12" fill="url(#gradLiver)" stroke="#f59e0b" stroke-width="1.5"/>
+                            <text x="50" y="155" font-weight="800" font-size="12" fill="#d97706">2. NỘI BÀO TẾ BÀO GAN (HEPATOCYTE)</text>
+
+                            <!-- Khối GST -->
+                            <rect x="60" y="175" width="220" height="90" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+                            <text x="170" y="200" text-anchor="middle" font-weight="700" font-size="11.5" fill="#334155">Protein mang GST (Ligandin)</text>
+                            <text x="170" y="220" text-anchor="middle" font-size="10" fill="#64748b">Giữ chân UCB trong bào tương,</text>
+                            <text x="170" y="236" text-anchor="middle" font-size="10" fill="#64748b">ngăn khuếch tán ngược ra máu</text>
+                            <text x="170" y="254" text-anchor="middle" font-size="9.5" font-weight="700" fill="#ef4444">[Tổn thương trong H/C Rotor]</text>
+
+                            <!-- Mũi tên chuyển sang UGT1A1 -->
+                            <path d="M 280 220 L 335 220" stroke="#d97706" stroke-width="2" marker-end="url(#arrowAmber)"/>
+
+                            <!-- Khối UGT1A1 (Lưới nội chất) -->
+                            <rect x="340" y="170" width="450" height="105" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+                            <text x="565" y="195" text-anchor="middle" font-weight="800" font-size="12" fill="#b45309">ENZYME UGT1A1 (Lưới Nội Chất Trơn)</text>
+                            <text x="565" y="215" text-anchor="middle" font-size="10.5" fill="#334155">UCB + 2 UDP-Glucuronic Acid &rarr; Bilirubin Diglucuronide (Tan trong nước)</text>
+                            
+                            <!-- Box cảnh báo Gilbert / Crigler-Najjar -->
+                            <rect x="355" y="228" width="420" height="38" rx="6" fill="rgba(245, 158, 11, 0.12)" stroke="#f59e0b" stroke-width="1"/>
+                            <text x="565" y="245" text-anchor="middle" font-size="10" font-weight="700" fill="#b45309">HỘI CHỨNG GILBERT: Men UGT1A1 duy trì 30% &ndash; 50%</text>
+                            <text x="565" y="259" text-anchor="middle" font-size="9.5" fill="#64748b">(Crigler-Najjar I: Mất 100% hoạt tính | Crigler-Najjar II: Còn &lt;10% - 30%)</text>
+
+                            <!-- Mũi tên qua Màng Kênh Mật -->
+                            <path d="M 565 300 L 565 335" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+                            <text x="580" y="322" font-size="10.5" font-weight="600" fill="#047857">Bơm chủ động MRP2 [H/C Dubin-Johnson]</text>
+
+                            <!-- Vùng Đường Mật & Ruột -->
+                            <rect x="30" y="340" width="790" height="60" rx="10" fill="url(#gradBile)" stroke="#10b981" stroke-width="1.5"/>
+                            <text x="50" y="365" font-weight="800" font-size="12" fill="#047857">3. ĐƯỜNG MẬT &amp; LÒNG RUỘT</text>
+                            <text x="50" y="385" font-size="11" fill="#334155">Bilirubin liên hợp bài tiết theo dịch mật vào ruột non &rarr; Chuyển hóa thành Urobilinogen &amp; Stercobilin</text>
+                        </svg>
+                        <div class="diagram-caption">Sơ đồ 1: Con đường chuyển hóa Bilirubin trong tế bào gan và vị trí rối loạn của các hội chứng di truyền.</div>
+                    </div>
+                </section>
+
+                <!-- 3. DI TRUYỀN HỌC & ĐỘT BIẾN UGT1A1 -->
+                <section id="di-truyen-ugt1a1" class="physio-section">
+                    <h2 class="section-title">3. Cơ Sở Di Truyền Học &amp; Sự Khác Biệt Theo Chủng Tộc</h2>
+                    <p class="section-desc">
+                        Gen mã hóa enzyme <strong>UGT1A1</strong> nằm trên nhiễm sắc thể số 2q37. Đột biến gây suy giảm chức năng men có sự phân hóa chủng tộc rõ rệt:
+                    </p>
+
+                    <div class="algs-grid">
+                        <div class="gs-card ugt">
+                            <h4 class="gs-card-title"><i class="fa-solid fa-dna" style="color: #d97706;"></i> Quần Thể Người Da Trắng (Caucasian)</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                                Đột biến vùng khởi động (promoter TATA box). Trình tự bình thường là <code>A(TA)6TAA</code> bị chèn thêm 1 cặp TA thành <code>A(TA)7TAA</code> (allele <strong>UGT1A1*28</strong>). Trạng thái đồng hợp tử làm giảm phiên mã, hoạt tính men còn <strong>30% &ndash; 50%</strong>.
+                            </p>
+                        </div>
+                        <div class="gs-card trigger">
+                            <h4 class="gs-card-title"><i class="fa-solid fa-dna" style="color: #0284c7;"></i> Quần Thể Người Đông Á (Asian)</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin: 0;">
+                                Đột biến promoter UGT1A1*28 rất hiếm. Thay vào đó là <strong>đột biến điểm sai nghĩa (missense mutation) tại vùng mã hóa exon 1: Gly71Arg</strong> (allele <strong>UGT1A1*6</strong>), trực tiếp làm giảm hiệu suất xúc tác của enzyme.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content-block" style="margin-top: 1.25rem;">
+                        <h3>Tam chứng bệnh sinh tại gan trong Hội chứng Gilbert</h3>
+                        <ol>
+                            <li><strong>Giảm &ge; 50% hoạt tính UGT1A1:</strong> Giảm tỷ lệ bài tiết bilirubin diglucuronide (liên hợp kép) vào mật, tăng bù trừ dạng monoconjugated kém ổn định.</li>
+                            <li><strong>Rối loạn thu nhận nội bào:</strong> Suy giảm phối hợp các protein vận chuyển màng xoang và protein mang GST.</li>
+                            <li><strong>Tăng sản xuất bilirubin nền:</strong> Một số bệnh nhân có tăng thoái giáng heme hoặc tan máu vi thể bù trừ thể ẩn.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- 4. YẾU TỐ KÍCH HOẠT LÂM SÀNG -->
+                <section id="yeu-to-kich-hoat" class="physio-section">
+                    <h2 class="section-title">4. Các Yếu Tố Kích Hoạt Lâm Sàng &amp; Nghiệm Pháp Nhịn Ăn</h2>
+                    <p class="section-desc">
+                        Nồng độ bilirubin ở bệnh nhân Gilbert thường dao động ngắt quãng <strong>&lt; 4 mg/dL</strong>. Các đợt vàng mắt (scleral icterus) thoáng qua luôn xuất hiện sau các kích hoạt sinh lý:
+                    </p>
+
+                    <div class="content-block">
+                        <h3>4.1. Cơ chế tăng bilirubin do Nhịn ăn (Fasting / Caloric Restriction)</h3>
+                        <p>
+                            Khi hạn chế calo nạp vào <strong>&lt; 400 Kcal/ngày</strong>, nồng độ bilirubin tự do trong máu có thể <strong>tăng vọt gấp 2 đến 3 lần trong vòng 48 giờ</strong>. Hiện tượng này nhanh chóng biến mất sau 12&ndash;24 giờ tái ăn uống bình thường.
+                        </p>
+                        <ul>
+                            <li><strong>Cạn kiệt UDP-GA:</strong> Thiếu hụt glucose làm giảm nồng độ chất đồng thụ liên hợp <em>UDP-glucuronic acid</em> tại gan.</li>
+                            <li><strong>Tăng chu trình ruột gan:</strong> Giảm nhu động ruột lúc đói kéo dài thời gian lưu phân, làm tăng tái hấp thu bilirubin tự do từ lòng ruột trở lại máu.</li>
+                            <li><strong>Ly giải mỡ:</strong> Giải phóng lượng bilirubin tự do tích tụ trong các mô mỡ vào hệ tuần hoàn.</li>
+                        </ul>
+
+                        <h3>4.2. Các yếu tố kích hoạt khác</h3>
+                        <p>
+                            Gắng sức thể lực nặng, mất nước, sốt do nhiễm trùng, căng thẳng tâm lý (stress), phẫu thuật và thời kỳ kinh nguyệt ở nữ giới.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 5. DƯỢC LÝ HỌC & ĐỘC TÍNH THUỐC -->
+                <section id="doc-luc-duoc-ly" class="physio-section">
+                    <h2 class="section-title">5. Dược Lý Độc Học: Cạm Bẫy Hóa Trị Irinotecan (SN-38) &amp; Tương Tác Thuốc</h2>
+
+                    <div class="clinical-warning-box">
+                        <strong>CẢNH BÁO ĐỘC TÍNH HÓA TRỊ IRINOTECAN:</strong>
+                        <p style="margin: 0.35rem 0 0 0; font-size: 0.88rem; line-height: 1.5;">
+                            <strong>Irinotecan</strong> (dùng trong ung thư đại trực tràng) chuyển hóa thành chất diệt tế bào cực mạnh <strong>SN-38</strong>. SN-38 bắt buộc phải được bất hoạt bởi enzyme UGT1A1 tại gan. Ở bệnh nhân Gilbert (đặc biệt mang đồng hợp tử <em>UGT1A1*28</em>), SN-38 bị tích tụ nồng độ cao gây <strong>tiêu chảy cấp dữ dội và suy tủy hạ bạch cầu trung tính nặng đe dọa tính mạng</strong>.
+                        </p>
+                    </div>
+
+                    <div class="content-block">
+                        <h3>Các tương tác thuốc quan trọng khác</h3>
+                        <ul>
+                            <li><strong>Thuốc kháng HIV (Atazanavir, Indinavir):</strong> Ức chế cạnh tranh trực tiếp men UGT1A1, làm bùng phát cơn vàng mắt tăng bilirubin tự do dữ dội.</li>
+                            <li><strong>Paracetamol, NSAIDs, Statins:</strong> Chuyển hóa một phần qua con đường glucuronide hóa, cần thận trọng khi dùng liều cao kéo dài.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 6. THE GOOD, THE BAD AND THE UGLY -->
+                <section id="the-good-bad-ugly" class="physio-section">
+                    <h2 class="section-title">6. "The Good, the Bad and the Ugly" &ndash; Tác Động Đa Diện Của Bilirubin</h2>
+
+                    <div class="algs-grid">
+                        <div class="gs-card good">
+                            <h4 class="gs-card-title"><i class="fa-solid fa-shield-heart" style="color: #10b981;"></i> "The Good" &ndash; Bảo Vệ Tim Mạch &amp; Chuyển Hóa</h4>
+                            <ul style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
+                                <li><strong>Chất chống oxy hóa nội sinh:</strong> Ngăn chặn quá trình oxy hóa LDL (ox-LDL), ức chế kết tập tiểu cầu.</li>
+                                <li><strong>Giảm 6.5% nguy cơ tim mạch (CVD):</strong> Cho mỗi 1 mmol/L nồng độ bilirubin huyết thanh tăng thêm.</li>
+                                <li><strong>Hoạt hóa PPAR-&alpha;:</strong> Kích thích đốt mỡ, tăng độ nhạy insulin, chống béo phì và bảo vệ gan khỏi MASLD.</li>
+                                <li><strong>Giảm 50% tỷ lệ tử vong:</strong> Nghiên cứu đoàn hệ THIN (4,266 ca) chứng minh giảm một nửa tỷ lệ tử vong do mọi nguyên nhân (MRR = 0.5).</li>
+                            </ul>
+                        </div>
+                        <div class="gs-card tox">
+                            <h4 class="gs-card-title"><i class="fa-solid fa-circle-exclamation" style="color: #dc2626;"></i> "The Bad &amp; The Ugly" &ndash; Rủi Ro Tiềm Ẩn</h4>
+                            <ul style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
+                                <li><strong>Sỏi mật sắc tố (Pigment Gallstones):</strong> Tăng đào thải bilirubin dạng monoconjugated kém tan vào đường mật.</li>
+                                <li><strong>Vàng da sơ sinh nặng:</strong> Trẻ sơ sinh mang gen Gilbert có nguy cơ vàng da nhân (Kernicterus) nếu kèm thiếu men G6PD hay bất đồng nhóm máu ABO.</li>
+                                <li><strong>Tâm thần phân liệt:</strong> Giảm tỷ lệ N-acetyl aspartate/creatine tại hạch nền và tiểu não ở nhóm bệnh nhân đồng mắc.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. CHẨN ĐOÁN PHÂN BIỆT ĐỐI SÁNH -->
+                <section id="chan-doan-phan-biet" class="physio-section">
+                    <h2 class="section-title">7. Bảng Đối Sánh Lâm Sàng: Gilbert vs. Crigler-Najjar II vs. &beta;-Thalassemia Trait</h2>
+
+                    <div class="mech-table-wrap">
+                        <table class="mech-compare-table">
+                            <thead>
+                                <tr>
+                                    <th>Đặc Tính</th>
+                                    <th>Hội Chứng Gilbert (GS)</th>
+                                    <th>Crigler-Najjar Loại II (Arias)</th>
+                                    <th>&beta;-Thalassemia Thể Ẩn (Trait)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Cơ sở di truyền</strong></td>
+                                    <td>Đột biến promoter <em>UGT1A1*28</em> (đồng hợp tử TA7) hoặc exon <em>Gly71Arg</em>. Men còn ~30-50%.</td>
+                                    <td>Đột biến vùng mã hóa (coding region) gen <em>UGT1A1</em>. Men chỉ còn &lt;10% - 30%.</td>
+                                    <td>Đột biến dị hợp tử gen globin-&beta; (người lành mang gen thiếu máu tán huyết).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tần suất &amp; Tuổi khởi phát</strong></td>
+                                    <td>Phổ biến (2&ndash;10% dân số). Xuất hiện sau dậy thì ở tuổi thiếu niên / người trẻ.</td>
+                                    <td>Rất hiếm (~1/1.000.000). Phát hiện ngay từ giai đoạn sơ sinh hoặc thơ ấu.</td>
+                                    <td>Phổ biến vùng dịch tễ. Tình cờ phát hiện qua xét nghiệm công thức máu tổng quát.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bilirubin huyết thanh</strong></td>
+                                    <td>Tăng nhẹ dao động, thường <strong>&lt; 4 mg/dL</strong> (chủ yếu là bilirubin tự do &gt;80%).</td>
+                                    <td>Tăng cao dai dẳng từ <strong>6 &ndash; 20 mg/dL</strong> (toàn bộ là tự do).</td>
+                                    <td>Bình thường hoặc chỉ tăng nhẹ bilirubin tự do (&lt; 1.5 &ndash; 3 mg/dL).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Huyết học (CBC &amp; Tan máu)</strong></td>
+                                    <td>Công thức máu bình thường. Không có tan máu (reticulocyte &amp; LDH bình thường).</td>
+                                    <td>Công thức máu bình thường. Không có hiện tượng tan máu.</td>
+                                    <td>Hồng cầu nhỏ nhược sắc (MCV &amp; MCH giảm). Điện di Hb thấy <strong>HbA2 &ge; 4%</strong>.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Thử nghiệm Phenobarbital</strong></td>
+                                    <td>Bilirubin <strong>hạ hoàn toàn về mức bình thường</strong> do cảm ứng men UGT1A1.</td>
+                                    <td>Bilirubin giảm 25% &ndash; 50% nhưng <strong>KHÔNG THỂ về mức bình thường</strong>.</td>
+                                    <td>Không có đáp ứng đặc hiệu với Phenobarbital.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Xử trí &amp; Tiên lượng</strong></td>
+                                    <td>Không cần điều trị. Trấn an bệnh nhân, tránh nhịn ăn/stress. Tiên lượng xuất sắc.</td>
+                                    <td>Dùng Phenobarbital hàng ngày (60-180 mg/ngày) duy trì suốt đời.</td>
+                                    <td>Tư vấn di truyền tiền hôn nhân. Bản thân không cần điều trị y tế đặc biệt.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 8. TÀI LIỆU THAM KHẢO -->
+                <section id="tai-lieu-tham-khao" class="physio-section">
+                    <div class="ref-section">
+                        <h3 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text);">Tài Liệu Tham Khảo Chuẩn AMA</h3>
+                        <ol class="ref-list">
+                            <li>Grant LM, Faust TW, Chandrasekar VT, John S. Gilbert Syndrome. In: <em>StatPearls [Internet]</em>. Treasure Island (FL): StatPearls Publishing; Updated October 5, 2024.</li>
+                            <li>De Silva AP, Nuwanshika N, Niriella MA, de Silva HJ. Gilbert's syndrome: The good, the bad and the ugly. <em>World J Hepatol</em>. 2025;17(2):98503.</li>
+                            <li>Trivedi J, Joshi R, Patel H, et al. Clinical Differentiation of Gilbert Syndrome, Crigler-Najjar Syndrome and &beta;-Thalassemia Trait. <em>J Clin Med Regen Med</em>. 2026;4(2):1-4.</li>
+                            <li>Churchill N, Barry L, Nianogo R. Effects of Gilbert syndrome on cardiovascular disease risk reduction: a systematic review. <em>Egypt Heart J</em>. 2026;78:25.</li>
+                            <li>Horsfall LJ, Nazareth I, Pereira SP, Petersen I. Gilbert's syndrome and the risk of death: a population-based cohort study. <em>J Gastroenterol Hepatol</em>. 2013;28(10):1643-1647.</li>
+                        </ol>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <div id="footer-container"></div>
+    </div>
+</body>
+
+</html>

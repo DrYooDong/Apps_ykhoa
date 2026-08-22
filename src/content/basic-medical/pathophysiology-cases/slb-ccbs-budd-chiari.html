@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Hội chứng Budd-Chiari (Budd-Chiari Syndrome - BCS / Huyết khối tĩnh mạch gan): Tắc nghẽn đường ra tĩnh mạch gan (HVOTO), tăng áp lực thủy tĩnh xoang gan, hoại tử trung tâm tiểu thùy (Zone 3), phì đại bù trừ thùy đuôi (Caudate lobe), đột biến JAK2 V617F, bẫy ngoại bào NETs và 4 thể lâm sàng.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Hội Chứng Budd-Chiari (BCS) – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .bcs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .bcs-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .bcs-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .bcs-card.outflow {
+            border-left: 4px solid #dc2626;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, transparent 100%);
+        }
+
+        .bcs-card.caudate {
+            border-left: 4px solid #0284c7;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+        }
+
+        .bcs-card.jak2 {
+            border-left: 4px solid #8b5cf6;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, transparent 100%);
+        }
+
+        .bcs-card.geo {
+            border-left: 4px solid #ea580c;
+            background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, transparent 100%);
+        }
+
+        .bcs-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.825rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1.25rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(220, 38, 38, 0.1) 0%, rgba(2, 132, 199, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .clinical-pearl-box {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(2, 132, 199, 0.02) 100%);
+            border: 1px solid rgba(2, 132, 199, 0.25);
+            border-left: 4px solid var(--color-primary, #0284c7);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .clinical-warning-box {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(220, 38, 38, 0.02) 100%);
+            border: 1px solid rgba(220, 38, 38, 0.25);
+            border-left: 4px solid #dc2626;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-list {
+            padding-left: 1.25rem;
+            margin: 0.75rem 0 0 0;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reading-progress-bar" id="readingProgress"></div>
+
+    <div class="layout-container">
+        <div id="header-container"></div>
+
+        <div class="main-wrapper">
+            <!-- Sidebar TOC Navigation -->
+            <aside class="sidebar-toc" id="sidebarToc" aria-label="Mục lục bài giảng">
+                <div class="toc-header">
+                    <span class="toc-title">Mục Lục Bài Học</span>
+                </div>
+                <nav class="toc-body">
+                    <ul class="toc-list">
+                        <li><a href="#tong-quan" class="toc-link">1. Tổng Quan &amp; Định Nghĩa HVOTO</a></li>
+                        <li><a href="#huyet-dong-hoc" class="toc-link">2. Huyết Động Học &amp; Tăng Áp Xoang</a></li>
+                        <li><a href="#hoai-tu-zone3" class="toc-link">3. Hoại Tử Zone 3 &amp; Xơ Hóa Pericentral</a></li>
+                        <li><a href="#phi-dai-thuy-duoi" class="toc-link">4. Giải Phẫu &amp; Phì Đại Thùy Đuôi</a></li>
+                        <li><a href="#can-nguyen-jak2" class="toc-link">5. Đột Biến JAK2 V617F &amp; Tăng Đông</a></li>
+                        <li><a href="#cac-the-lam-sang" class="toc-link">6. 4 Thể Lâm Sàng Theo Thời Gian</a></li>
+                        <li><a href="#phan-cuc-dia-ly" class="toc-link">7. Phân Cực Địa Lý (Đông Á vs. Phương Tây)</a></li>
+                        <li><a href="#so-sanh-bcs-sos" class="toc-link">8. Đối Sánh BCS vs Tắc Xoang Gan (SOS)</a></li>
+                        <li><a href="#chien-luoc-dieu-tri" class="toc-link">9. Phác Đồ Can Thiệp Bậc Thang (AASLD)</a></li>
+                        <li><a href="#tai-lieu-tham-khao" class="toc-link">10. Tài Liệu Tham Khảo</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content-area" id="mainContent">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <ol class="breadcrumb-list">
+                        <li><a href="../../../../index.html">Trang Chủ</a></li>
+                        <li><a href="../co-che-benh-sinh.html">Cơ Chế Bệnh Sinh</a></li>
+                        <li><a href="../co-che-benh-sinh.html#patho-tieuhoa-gan-mat-tuy">Gan – Mật – Tụy</a></li>
+                        <li aria-current="page">Hội Chứng Budd-Chiari</li>
+                    </ol>
+                </nav>
+
+                <!-- Article Header Banner -->
+                <header class="article-header">
+                    <div class="article-badge-row">
+                        <span class="badge badge-primary">Cơ Chế Bệnh Sinh</span>
+                        <span class="badge badge-outline">Mạch Máu Gan &amp; Huyết Khối</span>
+                        <span class="badge badge-accent">AASLD 2024 / EASL</span>
+                    </div>
+                    <h1 class="article-title">Sinh Lý Bệnh &amp; Cơ Chế Bệnh Sinh Hội Chứng Budd-Chiari (BCS)</h1>
+                    <p class="article-subtitle">
+                        Tắc nghẽn đường ra tĩnh mạch gan (HVOTO), tăng áp lực thủy tĩnh xoang gan, hoại tử thiếu oxy trung tâm tiểu thùy và hiện tượng phì đại thùy đuôi
+                    </p>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-clock"></i> Thời lượng đọc: 15 phút</span>
+                        <span><i class="fa-solid fa-code-merge"></i> Huyết khối tĩnh mạch gan</span>
+                        <span><i class="fa-solid fa-code-branch"></i> Cập nhật: 2026</span>
+                    </div>
+                </header>
+
+                <!-- Key Highlights Bento -->
+                <section class="bcs-grid">
+                    <div class="bcs-card outflow">
+                        <div class="bcs-card-title" style="color: #dc2626;">
+                            <i class="fa-solid fa-road-barrier"></i> Tắc Nghẽn Dòng Ra (HVOTO)
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                            Tắc từ <strong>&ge; 2 tĩnh mạch gan lớn</strong> gây tăng vọt áp lực thủy tĩnh xoang gan, rỉ dịch qua bao Glisson tạo <strong>cổ trướng lượng lớn</strong> tái lập nhanh.
+                        </p>
+                    </div>
+                    <div class="bcs-card caudate">
+                        <div class="bcs-card-title" style="color: #0284c7;">
+                            <i class="fa-solid fa-shield-halved"></i> Phì Đại Thùy Đuôi (75-91%)
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                            Thùy đuôi (Phân thùy I) dẫn lưu trực tiếp vào IVC nên tránh được ứ máu, phì đại bù trừ nhưng vô tình <strong>đè ép gây hẹp lòng IVC sau gan</strong>.
+                        </p>
+                    </div>
+                    <div class="bcs-card jak2">
+                        <div class="bcs-card-title" style="color: #8b5cf6;">
+                            <i class="fa-solid fa-dna"></i> Đột Biến JAK2 V617F (41-42%)
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                            Bệnh tăng sinh tủy (MPNs) là nguyên nhân hàng đầu (40-50%). <em>JAK2 V617F</em> thúc đẩy bám dính nội mạc và bẫy ngoại bào bạch cầu (NETs).
+                        </p>
+                    </div>
+                    <div class="bcs-card geo">
+                        <div class="bcs-card-title" style="color: #ea580c;">
+                            <i class="fa-solid fa-earth-asia"></i> Phân Cực Đông &ndash; Tây
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                            Phương Tây chủ yếu tắc TM gan do huyết khối (cấp/bán cấp). Đông Á ưu thế tắc IVC do <strong>màng ngăn xơ hóa (MOIVC)</strong>, diễn tiến mạn tính và nguy cơ HCC cao.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 1. TỔNG QUAN & ĐỊNH NGHĨA -->
+                <section id="tong-quan" class="physio-section">
+                    <h2 class="section-title">1. Tổng Quan, Lịch Sử &amp; Định Nghĩa Lâm Sàng</h2>
+                    <p class="section-desc">
+                        <strong>Hội chứng Budd-Chiari (Budd-Chiari Syndrome - BCS)</strong> là tình trạng <strong>tắc nghẽn đường ra của dòng máu gan (Hepatic Venous Outflow Tract Obstruction - HVOTO)</strong> tại bất kỳ vị trí giải phẫu nào từ các tĩnh mạch gan nhỏ, các tĩnh mạch gan lớn cho đến đoạn đổ vào tĩnh mạch chủ dưới (IVC) và tâm nhĩ phải.
+                    </p>
+
+                    <div class="content-block">
+                        <h3>1.1. Lịch sử y học</h3>
+                        <p>
+                            Năm 1845, bác sĩ nội khoa người Anh <strong>George Budd</strong> mô tả 3 ca lâm sàng đầu tiên bị tắc tĩnh mạch gan do viêm tĩnh mạch sau áp xe. Đến năm 1899, nhà giải phẫu bệnh người Áo <strong>Hans Chiari</strong> bổ sung các bằng chứng bệnh học mô tả chi tiết tổn thương gan do <em>"viêm tắc nội mạc tĩnh mạch gan tiến triển" (obliterating endophlebitis)</em>.
+                        </p>
+
+                        <h3>1.2. Tiêu chuẩn loại trừ theo đồng thuận quốc tế</h3>
+                        <p>
+                            Theo đồng thuận quốc tế của AASLD và EASL, định nghĩa BCS <strong>loại trừ các tình trạng ứ máu gan do bệnh lý tim mạch</strong> (như suy tim phải, viêm màng ngoài tim co thắt) và <strong>Hội chứng tắc nghẽn xoang gan (Sinusoidal Obstruction Syndrome - SOS / Bệnh tắc tĩnh mạch nhỏ gan VOD)</strong>.
+                        </p>
+
+                        <h3>1.3. Phân loại nguyên phát vs. Thứ phát</h3>
+                        <ul>
+                            <li><strong>BCS Nguyên phát (Primary BCS):</strong> Chiếm đa số, xuất phát từ bệnh lý nội tại của thành mạch và lòng mạch: <em>huyết khối nội mạch (thrombosis)</em>, hẹp tĩnh mạch xơ hóa, hoặc sự hình thành <em>màng ngăn (webs / membranes)</em>.</li>
+                            <li><strong>BCS Thứ phát (Secondary BCS):</strong> Do cấu trúc bên ngoài chèn ép hoặc xâm lấn vào lòng mạch: khối u ác tính (ung thư biểu mô tế bào gan HCC, K thận, K tuyến thượng thận), áp xe gan, kén sán (hydatid cyst) hoặc chấn thương.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 2. HUYẾT ĐỘNG HỌC & TĂNG ÁP XOANG -->
+                <section id="huyet-dong-hoc" class="physio-section">
+                    <h2 class="section-title">2. Huyết Động Học &amp; Cơ Chế Tăng Áp Lực Thủy Tĩnh Xoang Gan</h2>
+                    <p class="section-desc">
+                        Sự tắc nghẽn cơ học đường ra tĩnh mạch gan làm đảo lộn hoàn toàn động lực học dòng máu trong hệ vi tuần hoàn gan.
+                    </p>
+
+                    <!-- SVG Pathophysiological Circuit Diagram -->
+                    <div class="diagram-container">
+                        <svg viewBox="0 0 850 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Inter', system-ui, sans-serif;">
+                            <defs>
+                                <linearGradient id="gradBlock" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#dc2626" stop-opacity="0.2"/>
+                                    <stop offset="100%" stop-color="#991b1b" stop-opacity="0.08"/>
+                                </linearGradient>
+                                <linearGradient id="gradSinusoid" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#0284c7" stop-opacity="0.15"/>
+                                    <stop offset="100%" stop-color="#0369a1" stop-opacity="0.05"/>
+                                </linearGradient>
+                                <marker id="arrowBcs" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L8,3 z" fill="#0284c7"/>
+                                </marker>
+                                <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L8,3 z" fill="#dc2626"/>
+                                </marker>
+                            </defs>
+
+                            <!-- Khối Tắc TM Gan -->
+                            <rect x="250" y="20" width="350" height="55" rx="10" fill="url(#gradBlock)" stroke="#dc2626" stroke-width="2"/>
+                            <text x="425" y="45" text-anchor="middle" font-weight="800" font-size="13" fill="#991b1b">TẮC ĐƯỜNG RA TM GAN (HVOTO &ge; 2 TM GAN)</text>
+                            <text x="425" y="62" text-anchor="middle" font-size="11" fill="#dc2626">Huyết khối / Màng ngăn màng xơ (Web)</text>
+
+                            <!-- Mũi tên dẫn xuống -->
+                            <path d="M 425 75 L 425 110" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+
+                            <!-- Tăng áp xoang gan -->
+                            <rect x="230" y="115" width="390" height="50" rx="8" fill="url(#gradSinusoid)" stroke="#0284c7" stroke-width="1.5"/>
+                            <text x="425" y="138" text-anchor="middle" font-weight="700" font-size="13" fill="#0369a1">TĂNG ÁP LỰC THỦY TĨNH XOANG GAN</text>
+                            <text x="425" y="154" text-anchor="middle" font-size="10.5" fill="#64748b">Trì trệ dòng máu &amp; Đảo ngược dòng vi tuần hoàn</text>
+
+                            <!-- Rẽ 2 nhánh -->
+                            <path d="M 330 165 L 180 215" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowBcs)"/>
+                            <path d="M 520 165 L 670 215" stroke="#dc2626" stroke-width="2" marker-end="url(#arrowRed)"/>
+
+                            <!-- Nhánh Trái: Thoát dịch & Cổ trướng -->
+                            <rect x="40" y="220" width="280" height="135" rx="10" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="1.5"/>
+                            <text x="180" y="245" text-anchor="middle" font-weight="700" font-size="12" fill="#0284c7">CƠ CHẾ TẠO CỔ TRƯỚNG</text>
+                            <text x="60" y="270" font-size="10.5" fill="#334155">• Giãn rộng xoang gan &amp; thấm dịch kẽ</text>
+                            <text x="60" y="290" font-size="10.5" fill="#334155">• Vượt quá công suất dẫn lưu bạch huyết</text>
+                            <text x="60" y="310" font-size="10.5" fill="#334155">• Thấm trực tiếp qua bao Glisson vào ổ bụng</text>
+                            <text x="180" y="338" text-anchor="middle" font-weight="800" font-size="11.5" fill="#0369a1">&rarr; CỔ TRƯỚNG LỚN &amp; ĐAU RUQ</text>
+
+                            <!-- Nhánh Phải: Thiếu oxy & Hoại tử Zone 3 -->
+                            <rect x="530" y="220" width="280" height="135" rx="10" fill="rgba(220, 38, 38, 0.08)" stroke="#dc2626" stroke-width="1.5"/>
+                            <text x="670" y="245" text-anchor="middle" font-weight="700" font-size="12" fill="#dc2626">THIẾU OXY &amp; HOẠI TỬ NHU MÔ</text>
+                            <text x="550" y="270" font-size="10.5" fill="#334155">• Giảm lưu lượng tưới máu ĐM Gan &amp; TM Cửa</text>
+                            <text x="550" y="290" font-size="10.5" fill="#334155">• Hoại tử trung tâm tiểu thùy (Zone 3 - 70%)</text>
+                            <text x="550" y="310" font-size="10.5" fill="#334155">• Xơ hóa pericentral &amp; cầu nối central-central</text>
+                            <text x="670" y="338" text-anchor="middle" font-weight="800" font-size="11.5" fill="#991b1b">&rarr; XƠ GAN TĨNH MẠCH TIẾN TRIỂN</text>
+                        </svg>
+                        <div class="diagram-caption">Sơ đồ 1: Dòng thác biến đổi huyết động học và cơ chế sinh bệnh học kép trong Hội chứng Budd-Chiari.</div>
+                    </div>
+
+                    <div class="content-block">
+                        <p>
+                            <strong>Quy luật bù trừ giải phẫu:</strong> Tình trạng tắc nghẽn một tĩnh mạch gan đơn lẻ thường hoàn toàn không có triệu chứng nhờ các tĩnh mạch bàng hệ trong gan dẫn lưu sang các nhánh còn lại. <strong>Triệu chứng lâm sàng chỉ bùng phát khi có sự tắc nghẽn từ 2 hoặc cả 3 tĩnh mạch gan lớn trở lên</strong>.
+                        </p>
+                        <p>
+                            <strong>Cơ chế hình thành Cổ trướng (Ascites):</strong> Áp lực thủy tĩnh trong xoang gan tăng vọt ép dịch huyết tương thoát vào khoang Disse. Khi thể tích dịch lọc vượt quá khả năng hấp thu của hệ thống bạch huyết rốn gan, dịch giàu protein sẽ thấm thẳng qua bề mặt bao gan (Glisson's capsule) nhỏ giọt vào khoang phúc mạc. Sự căng đột ngột của bao Glisson gây nên cơn đau tức dữ dội tại vùng hạ sườn phải (RUQ pain).
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 3. HOẠI TỬ ZONE 3 & XƠ HÓA -->
+                <section id="hoai-tu-zone3" class="physio-section">
+                    <h2 class="section-title">3. Hoại Tử Thiếu Oxy Zone 3 &amp; Tiến Trình Xơ Gan Tĩnh Mạch</h2>
+
+                    <div class="content-block">
+                        <h3>3.1. Hoại tử trung tâm tiểu thùy (Centrilobular Necrosis)</h3>
+                        <p>
+                            Áp lực xoang gan quá cao chống lại dòng máu tới từ động mạch gan và tĩnh mạch cửa, làm sụt giảm nghiêm trọng lưu lượng tưới máu và phân áp oxy ($pO_2$).
+                        </p>
+                        <p>
+                            Các tế bào gan tại <strong>vùng 3 (Zone 3 - quanh tĩnh mạch trung tâm tiểu thùy)</strong> nằm ở vị trí xa nhất của trục tưới máu vi tuần hoàn, do đó nhạy cảm nhất với tình trạng thiếu oxy, dẫn đến <strong>hoại tử tế bào gan trung tâm tiểu thùy không do viêm xuất hiện ở gần 70% trường hợp</strong>.
+                        </p>
+
+                        <h3>3.2. Xơ hóa Pericentral và Xơ gan tĩnh mạch (Veno-centric Cirrhosis)</h3>
+                        <p>
+                            Sau vài tuần ứ trệ, các dải mô liên kết xơ hóa bắt đầu lan rộng xung quanh tĩnh mạch trung tâm tiểu thùy (perivenular fibrosis), tạo nên các cầu xơ nối giữa tĩnh mạch trung tâm này với tĩnh mạch trung tâm khác (central-to-central bridging fibrosis).
+                        </p>
+                        <p>
+                            Ngược lại, vùng quanh khoảng cửa (Zone 1) được tưới máu tốt hơn nên tăng sinh tạo thành các nốt tái tạo lớn (nodular regenerative hyperplasia - NRH), tiến triển mạn tính thành bức tranh <strong>xơ gan do căn nguyên tĩnh mạch</strong>.
+                        </p>
+
+                        <div class="clinical-pearl-box">
+                            <strong>Huyết khối tĩnh mạch cửa phối hợp (10% &ndash; 20%):</strong>
+                            <p style="margin: 0.35rem 0 0 0; font-size: 0.88rem; line-height: 1.5;">
+                                Dòng máu tĩnh mạch cửa chảy cực chậm (stagnant flow) kết hợp cùng tình trạng tăng đông nền của bệnh nhân là điều kiện lý tưởng làm xuất hiện thêm huyết khối tĩnh mạch cửa (PVT) thứ phát, gây suy sụp chức năng gan nhanh chóng và tăng áp cửa kháng trị.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. GIẢI PHẪU & PHÌ ĐẠI THÙY ĐUÔI -->
+                <section id="phi-dai-thuy-duoi" class="physio-section">
+                    <h2 class="section-title">4. Giải Phẫu Độc Lập &amp; Hiện Tượng Phì Đại Bù Trừ Thùy Đuôi</h2>
+                    <p class="section-desc">
+                        Phì đại thùy đuôi (Caudate Lobe Hypertrophy) là dấu ấn chẩn đoán hình ảnh kinh điển, xuất hiện ở <strong>75% &ndash; 91%</strong> bệnh nhân mắc hội chứng Budd-Chiari.
+                    </p>
+
+                    <div class="content-block">
+                        <h3>4.1. Cơ sở giải phẫu học độc lập của Thùy đuôi (Phân thùy I)</h3>
+                        <p>
+                            Không giống như các phân thùy gan khác phải dẫn lưu máu qua 3 tĩnh mạch gan lớn (phải, giữa, trái), <strong>thùy đuôi sở hữu hệ thống các tĩnh mạch nhỏ riêng biệt (emissary veins) đổ thẳng trực tiếp vào thành trước tĩnh mạch chủ dưới (IVC)</strong>.
+                        </p>
+
+                        <h3>4.2. Chuỗi hệ quả sinh lý bệnh</h3>
+                        <ul>
+                            <li><strong>Bảo tồn tưới máu:</strong> Khi 3 tĩnh mạch gan chính bị huyết khối bít tắc, thùy đuôi hoàn toàn thoát khỏi tình trạng ứ máu xoang gan và hoại tử thiếu oxy.</li>
+                            <li><strong>Phì đại tăng sinh bù trừ:</strong> Để gánh vác chức năng cho toàn bộ phần nhu mô gan bị tổn thương, thùy đuôi tăng sinh mạch máu động mạch và phì đại kích thước mạnh mẽ.</li>
+                            <li><strong>Đè ép cơ học gây hẹp IVC:</strong> Khi thùy đuôi phì đại quá mức, nó chèn ép trực tiếp làm hẹp lòng tĩnh mạch chủ dưới đoạn sau gan (IVC compression/stenosis), cản trở máu hồi lưu từ nửa dưới cơ thể, gây <em>phù hai chi dưới và nổi tuần hoàn bàng hệ dạng rễ cây ở thành bụng và ngực</em>.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 5. CĂN NGUYÊN & JAK2 V617F -->
+                <section id="can-nguyen-jak2" class="physio-section">
+                    <h2 class="section-title">5. Căn Nguyên Bệnh Sinh: Đột Biến JAK2 V617F &amp; Tình Trạng Tăng Đông</h2>
+                    <p class="section-desc">
+                        Có đến <strong>75% &ndash; 90%</strong> bệnh nhân BCS mang ít nhất một yếu tố nguy cơ tăng đông, và khoảng <strong>25%</strong> mang đồng thời từ 2 yếu tố nguy cơ trở lên.
+                    </p>
+
+                    <div class="algs-grid">
+                        <div class="bcs-card jak2">
+                            <h4 class="bcs-card-title"><i class="fa-solid fa-dna" style="color: #8b5cf6;"></i> Tân Sinh Tủy (MPNs, 40-50%)</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin: 0;">
+                                Đa hồng cầu nguyên phát (PV), Tăng tiểu cầu tiên phát (ET). Đột biến <strong>JAK2 V617F</strong> gặp ở 41-42% ca, giải thích cho thể MPN ẩn (masked MPN) khi công thức máu bình thường do cường lách che khuất.
+                            </p>
+                        </div>
+                        <div class="bcs-card outflow">
+                            <h4 class="bcs-card-title"><i class="fa-solid fa-droplet" style="color: #dc2626;"></i> Rối Loạn Đông Máu Di Truyền</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin: 0;">
+                                <strong>Yếu tố V Leiden</strong> (tăng nguy cơ 12 lần, 6-32% ca), đột biến <strong>Prothrombin G20210A</strong> (5-7%), thiếu hụt bẩm sinh Protein C, S, Antithrombin.
+                            </p>
+                        </div>
+                        <div class="bcs-card caudate">
+                            <h4 class="bcs-card-title"><i class="fa-solid fa-shield-virus" style="color: #0284c7;"></i> Bệnh Tự Miễn &amp; Mắc Phải</h4>
+                            <p style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin: 0;">
+                                <strong>Hội chứng kháng Phospholipid (APS, 4-25%)</strong>, Đái huyết sắc tố kịch phát ban đêm (PNH, 12% ca), Bệnh Behcet, Thuốc tránh thai chứa Estrogen (tăng nguy cơ 2.4 lần) và thai kỳ.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. 4 THỂ LÂM SÀNG -->
+                <section id="cac-the-lam-sang" class="physio-section">
+                    <h2 class="section-title">6. Bốn Thể Lâm Sàng Phân Loại Theo Diễn Tiến Thời Gian (Bansal et al.)</h2>
+
+                    <div class="mech-table-wrap">
+                        <table class="mech-compare-table">
+                            <thead>
+                                <tr>
+                                    <th>Thể Lâm Sàng</th>
+                                    <th>Thời Gian Khởi Phát</th>
+                                    <th>Đặc Điểm Bệnh Sinh &amp; Mô Học</th>
+                                    <th>Biểu Hiện Lâm Sàng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong style="color: #991b1b;">Thể Tối Cấp (Fulminant)</strong></td>
+                                    <td>Dưới 8 tuần</td>
+                                    <td>Tắc đột ngột hoàn toàn 3 TM gan lớn, không có bàng hệ giảm áp</td>
+                                    <td>Suy gan cấp tính, vàng da đậm, bão men gan, toan lactic và <strong>Bệnh não gan</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #dc2626;">Thể Cấp Tính (Acute)</strong></td>
+                                    <td>Dưới 1 tháng</td>
+                                    <td>Hoại tử tế bào gan Zone 3 diện rộng, chưa có xơ hóa bắc cầu</td>
+                                    <td>Đau dữ dội hạ sườn phải, gan to căng, cổ trướng kháng trị bùng phát nhanh</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #0284c7;">Thể Bán Cấp (Subacute)</strong></td>
+                                    <td>1 &ndash; 6 tháng</td>
+                                    <td>Phổ biến nhất. Bàng hệ trong gan hình thành một phần giúp giảm áp nhẹ</td>
+                                    <td>Cổ trướng tiến triển từ từ, hoại tử tế bào gan mức độ nhẹ, đau âm ỉ hạ sườn phải</td>
+                                </tr>
+                                <tr>
+                                    <td><strong style="color: #64748b;">Thể Mạn Tính (Chronic)</strong></td>
+                                    <td>Trên 6 tháng</td>
+                                    <td>Xơ gan tĩnh mạch đã hình thành, nốt tăng sản tái tạo lớn (NRH)</td>
+                                    <td>Hội chứng tăng áp lực tĩnh mạch cửa (xuất huyết vỡ giãn TM, lách to, tuần hoàn bàng hệ)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 7. PHÂN CỰC ĐỊA LÝ -->
+                <section id="phan-cuc-dia-ly" class="physio-section">
+                    <h2 class="section-title">7. Sự Phân Cực Địa Lý Học Sâu Sắc (Đông Á vs. Phương Tây)</h2>
+                    <p class="section-desc">
+                        Hội chứng Budd-Chiari có sự khác biệt rất lớn về cơ chế bệnh sinh giải phẫu giữa hai nửa bán cầu:
+                    </p>
+
+                    <div class="algs-grid">
+                        <div class="algs-card" style="border-left: 4px solid #0284c7;">
+                            <h4 class="algs-card-title"><i class="fa-solid fa-earth-americas" style="color: #0284c7;"></i> Quần Thể Phương Tây (Western)</h4>
+                            <ul style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
+                                <li><strong>Vị trí tổn thương:</strong> Tắc nghẽn đơn thuần các tĩnh mạch gan lớn (Pure Hepatic Vein Block).</li>
+                                <li><strong>Căn nguyên cốt lõi:</strong> Huyết khối hình thành trên nền các rối loạn tăng đông (MPN, JAK2, Factor V Leiden, APS).</li>
+                                <li><strong>Diễn tiến:</strong> Thể cấp tính và bán cấp chiếm ưu thế.</li>
+                            </ul>
+                        </div>
+                        <div class="algs-card" style="border-left: 4px solid #ea580c;">
+                            <h4 class="algs-card-title"><i class="fa-solid fa-earth-asia" style="color: #ea580c;"></i> Quần Thể Đông Á (Asian)</h4>
+                            <ul style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6; margin: 0; padding-left: 1.2rem;">
+                                <li><strong>Vị trí tổn thương:</strong> Tắc nghẽn tĩnh mạch chủ dưới (IVC Block) hoặc phối hợp IVC + TM gan.</li>
+                                <li><strong>Cơ chế đặc trưng:</strong> Màng ngăn xơ hóa lòng mạch (Membranous Obstruction of the IVC - MOIVC).</li>
+                                <li><strong>Diễn tiến:</strong> Mạn tính âm thầm, <strong>nguy cơ tiến triển thành Ung thư biểu mô tế bào gan (HCC) rất cao</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. SO SÁNH BCS VS SOS -->
+                <section id="so-sanh-bcs-sos" class="physio-section">
+                    <h2 class="section-title">8. Bảng Đối Sánh Lâm Sàng: Budd-Chiari vs. Tắc Nghẽn Xoang Gan (SOS / VOD)</h2>
+
+                    <div class="mech-table-wrap">
+                        <table class="mech-compare-table">
+                            <thead>
+                                <tr>
+                                    <th>Đặc Điểm</th>
+                                    <th>Hội Chứng Budd-Chiari (BCS)</th>
+                                    <th>Hội Chứng Tắc Xoang Gan (SOS / VOD)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Vị trí tắc nghẽn</strong></td>
+                                    <td>Tĩnh mạch gan lớn, tĩnh mạch gan trung bình và IVC</td>
+                                    <td>Xoang gan và các tĩnh mạch trung tâm tiểu thùy siêu nhỏ</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Yếu tố khởi phát</strong></td>
+                                    <td>Tình trạng tăng đông máu (JAK2, MPN, di truyền, APS)</td>
+                                    <td>Độc tính hóa chất điều hòa trước Ghép tế bào gốc tạo máu (HSCT), độc tố Pyrrolizidine</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Siêu âm Doppler</strong></td>
+                                    <td>Mất tín hiệu dòng chảy ở các thân tĩnh mạch gan lớn</td>
+                                    <td>Các thân tĩnh mạch gan lớn vẫn thông thoáng hoàn toàn</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Điều trị đặc hiệu</strong></td>
+                                    <td>Chống đông, Nong/Stent tĩnh mạch gan, TIPS, Ghép gan</td>
+                                    <td>Defibrotide (thuốc bảo vệ nội mạc và ly giải vi huyết khối)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 9. PHÁC ĐỒ CAN THIỆP BẬC THANG -->
+                <section id="chien-luoc-dieu-tri" class="physio-section">
+                    <h2 class="section-title">9. Chiến Lược Can Thiệp Theo Bậc Thang (AASLD / EASL / APASL)</h2>
+                    <p class="section-desc">
+                        Quản lý hội chứng Budd-Chiari hiện đại tuân thủ nguyên tắc bậc thang giải áp tăng dần:
+                    </p>
+
+                    <div class="content-block">
+                        <ol style="line-height: 1.8; font-size: 0.9rem; color: var(--color-text);">
+                            <li><strong>Bậc 1 &ndash; Chống đông toàn thân (Anticoagulation):</strong> Chỉ định ngay lập tức cho 100% bệnh nhân (thường dùng LMWH gối đầu sang kháng Vitamin K / DOACs lâu dài), kết hợp điều trị bệnh lý tăng sinh tủy nền và kiểm soát cổ trướng bằng lợi tiểu.</li>
+                            <li><strong>Bậc 2 &ndash; Tái thông mạch máu can thiệp (Angioplasty / Stenting):</strong> Nong bóng hoặc đặt stent qua da cho các trường hợp hẹp khu trú tĩnh mạch gan hoặc có màng ngăn MOIVC.</li>
+                            <li><strong>Bậc 3 &ndash; Shunt cửa &ndash; chủ trong gan qua da (TIPS):</strong> Giải pháp cứu cánh vàng khi thất bại với tái thông mạch hoặc tắc nghẽn lan tỏa cả 3 tĩnh mạch gan, giúp giảm áp lực xoang gan tức thì và đảo ngược hoại tử nhu mô.</li>
+                            <li><strong>Bậc 4 &ndash; Ghép gan (Liver Transplantation):</strong> Chỉ định cho thể tối cấp gây suy gan cấp hoặc bệnh nhân không đáp ứng với TIPS, xơ gan giai đoạn cuối mất bù.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- 10. TÀI LIỆU THAM KHẢO -->
+                <section id="tai-lieu-tham-khao" class="physio-section">
+                    <div class="ref-section">
+                        <h3 style="font-size: 1.05rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--color-text);">Tài Liệu Tham Khảo Chuẩn AMA</h3>
+                        <ol class="ref-list">
+                            <li>DeLeve LD, Valla DC, Garcia-Tsao G. Vascular disorders of the liver. <em>Hepatology</em>. 2009;49(5):1729-1764.</li>
+                            <li>Hoekstra J, Janssen HLA. Vascular liver disorders (I): diagnosis, treatment and prognosis of Budd-Chiari syndrome. <em>Neth J Med</em>. 2008;66(8):334-339.</li>
+                            <li>Găman MA, Cozma MA, Manan MR, et al. Budd-Chiari syndrome in myeloproliferative neoplasms: A review of literature. <em>World J Clin Oncol</em>. 2023;14(3):99-116.</li>
+                            <li>Bansal V, Gupta P, Sinha S, et al. Budd-Chiari syndrome: imaging review. <em>Br J Radiol</em>. 2018;91(1089):20180441.</li>
+                            <li>Aydinli M, Bayraktar Y. Budd-Chiari syndrome: Etiology, pathogenesis and diagnosis. <em>World J Gastroenterol</em>. 2007;13(19):2693-2696.</li>
+                            <li>Haque LY, Lim JK. Tailoring stepwise treatment for Budd-Chiari syndrome: insights from the Asian Pacific Association for the Study of the Liver (APASL) consensus guidance. <em>HepatoBiliary Surg Nutr</em>. 2023;12(1):118-120.</li>
+                        </ol>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <div id="footer-container"></div>
+    </div>
+</body>
+
+</html>

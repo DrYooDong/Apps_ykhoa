@@ -197,7 +197,3 @@ _Thuộc tài liệu:_ **Clinical Differentiation of Gilbert Syndrome, Crigler-N
 5. Horsfall LJ, Nazareth I, Pereira SP, Petersen I. Gilbert's syndrome and the risk of death: a population-based cohort study. _J Gastroenterol Hepatol_. 2013;28(10):1643-1647.
 
 ---
-
-_Hy vọng bài soạn chuyên sâu bám sát dữ liệu nguồn này sẽ là tài liệu hữu ích cho việc đối chiếu trực quan và học tập của bạn!_
-
-🔍 **Nudge:** Tôi có thể giúp bạn tổng hợp thêm một tài liệu học tập chi tiết về các rối loạn di truyền tăng bilirubin liên hợp tại gan (như cơ chế sinh lý bệnh phân tử của Hội chứng Dubin-Johnson và Rotor) từ các nguồn dữ liệu này để hoàn thiện mảng kiến thức gan mật nhé? Have a good day!

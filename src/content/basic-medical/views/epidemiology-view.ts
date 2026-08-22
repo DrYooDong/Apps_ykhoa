@@ -829,29 +829,8 @@ export function renderEpidemiologyView(): string {
                             <i class="fa-solid ${item.icon}"></i>
                           </div>
                           <div class="specialty-info">
-                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; margin-bottom: 0.25rem;">
-                              <div style="display: flex; align-items: center; gap: 0.4rem;">
-                                <span style="font-size: 0.72rem; font-weight: 700; background: ${item.bgColor}; color: ${item.color}; padding: 0.1rem 0.4rem; border-radius: 4px;">${item.code}</span>
-                                <span style="font-size: 0.7rem; font-weight: 600; color: var(--color-text-muted);">${item.icd}</span>
-                              </div>
-                              <span style="font-size: 0.7rem; font-weight: 600; color: #0d9488; background: rgba(13, 148, 136, 0.1); padding: 0.1rem 0.4rem; border-radius: 4px;">
-                                ${item.keyMetric.split('•')[0].trim()}
-                              </span>
-                            </div>
                             <h3>${item.title}</h3>
                             <p>${item.overview}</p>
-                            
-                            <!-- High-Yield Clinical Pearl Snippet -->
-                            <div style="margin-top: 0.5rem; padding: 0.4rem 0.6rem; background: var(--color-bg, #f8fafc); border-left: 3px solid ${item.color}; border-radius: 0 6px 6px 0; font-size: 0.775rem; color: var(--color-text-muted); line-height: 1.4;">
-                              <strong style="color: ${item.color};"><i class="fa-solid fa-quote-left"></i> Pearl:</strong> ${item.pearlPreview}
-                            </div>
-
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem;">
-                              <span class="epi-metric-pill" style="color: ${item.color}; border-color: ${item.color}33;">
-                                <i class="fa-solid fa-circle-dot" style="font-size: 0.6rem;"></i> ${item.vectorOrCause}
-                              </span>
-                              ${item.highYieldStats.map(stat => `<span class="epi-metric-pill">#${stat}</span>`).join('')}
-                            </div>
                           </div>
                         </div>
                         <div class="specialty-card-action">

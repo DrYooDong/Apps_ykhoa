@@ -890,10 +890,207 @@
   }
 }
 
-@media (max-width: 430px) {
-  .promax-kpi-bar {
-    grid-template-columns: 1fr !important;
-  }
+/* ============================================================
+   COLLAPSIBLE NESTED TOC SIDEBAR SYSTEM (Part-Nav-List)
+   ============================================================ */
+.nav-item-parent {
+  position: relative;
 }
+
+.part-nav-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.65rem 0.85rem !important;
+  border-radius: 10px !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text, #334155) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer;
+  user-select: none;
+}
+
+.part-nav-item:hover {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08)) !important;
+  color: var(--color-primary, #0284c7) !important;
+}
+
+.part-nav-item.active {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.12)) !important;
+  color: var(--color-primary, #0284c7) !important;
+  font-weight: 700 !important;
+}
+
+.part-text {
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.part-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.part-count-badge {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  padding: 2px 7px !important;
+  border-radius: 999px !important;
+  background: var(--color-border, #e2e8f0) !important;
+  color: var(--color-text-muted, #64748b) !important;
+}
+
+[data-theme="dark"] .part-count-badge {
+  background: #334155 !important;
+  color: #94a3b8 !important;
+}
+
+.part-nav-item.active .part-count-badge {
+  background: var(--color-primary, #0284c7) !important;
+  color: #ffffff !important;
+}
+
+.subnav-chevron {
+  font-size: 0.72rem;
+  color: var(--color-text-muted, #94a3b8);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+}
+
+.nav-item-parent.expanded .subnav-chevron,
+.part-nav-item.expanded .subnav-chevron {
+  transform: rotate(180deg);
+  color: var(--color-primary, #0284c7);
+}
+
+.part-sub-nav-list {
+  list-style: none !important;
+  margin: 0.25rem 0 0.5rem 1.25rem !important;
+  padding: 0.25rem 0 0.25rem 0.65rem !important;
+  border-left: 2px solid var(--color-border, #e2e8f0) !important;
+  display: none !important;
+  flex-direction: column !important;
+  gap: 0.2rem !important;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .part-sub-nav-list {
+  border-left-color: #334155 !important;
+}
+
+.nav-item-parent.expanded .part-sub-nav-list,
+.part-nav-item.expanded + .part-sub-nav-list {
+  display: flex !important;
+  animation: subnavFadeIn 0.25s ease-out;
+}
+
+@keyframes subnavFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.part-sub-nav-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.35rem 0.65rem !important;
+  border-radius: 8px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text-muted, #64748b) !important;
+  text-decoration: none !important;
+  transition: all 0.18s ease !important;
+}
+
+.part-sub-nav-item:hover {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.08)) !important;
+  color: var(--color-primary, #0284c7) !important;
+  transform: translateX(3px) !important;
+}
+
+.part-sub-nav-item.active {
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.12)) !important;
+  color: var(--color-primary, #0284c7) !important;
+  font-weight: 700 !important;
+}
+
+.sub-count-badge {
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  padding: 1px 6px !important;
+  border-radius: 999px !important;
+  background: var(--color-border, #e2e8f0) !important;
+  color: var(--color-text-muted, #64748b) !important;
+}
+
+[data-theme="dark"] .sub-count-badge {
+  background: #334155 !important;
+  color: #94a3b8 !important;
+}
+
+.part-sub-nav-item.active .sub-count-badge,
+.part-sub-nav-item:hover .sub-count-badge {
+  background: var(--color-primary, #0284c7) !important;
+  color: #ffffff !important;
+}
+
+/* Sub-group Container & Header in Main Content */
+.physio-subgroup-container {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.25rem 0.5rem;
+  background: rgba(var(--color-primary-rgb, 2, 132, 199), 0.02);
+  border: 1px dashed var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  transition: border-color 0.2s ease;
+}
+
+[data-theme="dark"] .physio-subgroup-container {
+  background: rgba(255, 255, 255, 0.015);
+  border-color: #334155;
+}
+
+.physio-subgroup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+}
+
+[data-theme="dark"] .physio-subgroup-header {
+  border-bottom-color: #334155;
+}
+
+.physio-subgroup-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.025rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  margin: 0;
+}
+
+.physio-subgroup-title i {
+  color: var(--color-primary, #0284c7);
+  font-size: 0.95rem;
+}
+
+.physio-subgroup-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-primary, #0284c7);
+  background: var(--color-primary-hl, rgba(2, 132, 199, 0.1));
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
 
 
