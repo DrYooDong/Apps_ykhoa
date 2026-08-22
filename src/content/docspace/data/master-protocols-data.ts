@@ -346,6 +346,51 @@ export const MASTER_CLINICAL_PROTOCOLS: PersonalProtocol[] = [
     createdAt: '2026-01-01T00:00:00Z',
     updatedAt: '2026-08-16T00:00:00Z',
   },
+  {
+    id: 'master-af-esc-2024',
+    doctorId: 'SYSTEM_MASTER',
+    isSystemMaster: true,
+    title: 'Phác đồ Chẩn đoán & Điều trị Rung Nhĩ (ESC 2024 — Lộ trình AF-CARE)',
+    specialty: 'Tim mạch & Cấp cứu',
+    specialtyKey: 'cardio',
+    summary: 'Chiến lược toàn diện AF-CARE: (C) Quản lý bệnh đồng mắc; (A) Kháng đông DOAC theo CHA2DS2-VA; (R) Kiểm soát tần số < 110 bpm hoặc Chuyển nhịp/Triệt đốt PVI; (E) Đánh giá định kỳ.',
+    icdCodes: ['I48', 'I48.0', 'I48.1', 'I48.2', 'I48.9'],
+    steps: [
+      {
+        order: 1,
+        title: 'Tiếp nhận Khẩn & Sốc Điện Chuyển Nhịp Cấp Cứu',
+        timeframe: 'Phút 0 - 15 tiếp nhận',
+        text: 'Đo ECG 12 chuyển đạo xác định rung nhĩ. Nếu huyết động bất ổn (Sốc, Tụt HA, Đau ngực, Phù phổi cấp): Tiêm an thần ngắn hạn và SỐC ĐIỆN ĐỒNG BỘ 100 - 200J ngay + Dùng Heparin/DOAC sớm quanh thời điểm sốc.',
+        isAlert: true,
+      },
+      {
+        order: 2,
+        title: '[A] Tránh Đột Quỵ Bằng Kháng Đông DOAC (CHA2DS2-VA)',
+        timeframe: 'Khởi động ngay',
+        text: 'Tính điểm CHA2DS2-VA. Chỉ định OAC khi ≥ 2 điểm (Class I) hoặc 1 điểm (Class IIa). Ưu tiên DOAC (Apixaban 5mg x 2, Rivaroxaban 20mg x 1, Dabigatran 150mg x 2, Edoxaban 60mg x 1) hơn Warfarin. Tránh tự ý giảm liều nếu không thỏa đủ tiêu chí.',
+      },
+      {
+        order: 3,
+        title: '[R] Kiểm Soát Tần Số Tim (Rate Control)',
+        timeframe: 'Giờ 1 - 24',
+        text: 'Đích tần số tim lúc nghỉ < 110 bpm. Nếu LVEF ≤ 40%: Dùng Chẹn Beta (Bisoprolol/Metoprolol) hoặc Digoxin. TUYỆT ĐỐI CẤM Verapamil/Diltiazem khi LVEF ≤ 40%. Nếu LVEF > 40%: Dùng Chẹn Beta, Diltiazem, Verapamil hoặc Digoxin.',
+      },
+      {
+        order: 4,
+        title: '[R] Kiểm Soát Nhịp & Triệt Đốt PVI',
+        timeframe: 'Theo dõi & Kế hoạch',
+        text: 'Triệt đốt qua ống thông (PVI) là lựa chọn hàng đầu cho Rung nhĩ kịch phát có triệu chứng (Class I, Level A) và BN suy tim HFrEF. Duy trì DOAC liên tục không ngắt quãng quanh thủ thuật và ít nhất 2 tháng sau triệt đốt.',
+      },
+    ],
+    warnings: [
+      'CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI dùng Digoxin, Verapamil, Diltiazem hoặc Chẹn Beta đường tĩnh mạch ở bệnh nhân Rung nhĩ có hội chứng WPW (kích hoạt rung thất đột tử).',
+      'Nếu rung nhĩ > 24 - 48h: Bắt buộc siêu âm tim qua thực quản (TEE) loại trừ huyết khối tiểu nhĩ trước khi chuyển nhịp hoặc dùng DOAC đủ 3 tuần.',
+      'CẤM dùng thuốc Class IC (Flecainide, Propafenone) ở bệnh nhân có sẹo nhồi máu cơ tim cũ hoặc suy tim LVEF ≤ 40%.',
+    ],
+    references: ['2024 ESC Guidelines for the management of atrial fibrillation (AF-CARE)'],
+    createdAt: '2026-08-22T00:00:00Z',
+    updatedAt: '2026-08-22T00:00:00Z',
+  },
 
   // ─────────────────────────────────────────────
   // 3. HÔ HẤP (PULMONOLOGY)
@@ -704,8 +749,113 @@ export const MASTER_CLINICAL_PROTOCOLS: PersonalProtocol[] = [
       'Phenytoin tuyệt đối không pha trong dung dịch Glucose vì gây tủa; theo dõi sát tụt huyết áp và loạn nhịp tim khi truyền.',
       'Luôn kiểm tra và điều trị nguyên nhân: Hạ đường huyết (tiêm Glucose 30% + Thiamine 100mg), Viêm màng não, Xuất huyết não, Hạ Natri máu.',
     ],
-    references: ['American Epilepsy Society (AES) Guideline for Treatment of Prolonged Seizures and Status Epilepticus'],
+    references: ['American Epilepsy Society (AES) Guideline for Status Epilepticus (2016 - 2023 Update)'],
     createdAt: '2026-01-01T00:00:00Z',
     updatedAt: '2026-08-16T00:00:00Z',
+  },
+
+  // ─────────────────────────────────────────────
+  // 7. TIÊU HÓA - GAN MẬT (GASTROENTEROLOGY & HEPATOLOGY)
+  // ─────────────────────────────────────────────
+  {
+    id: 'master-he-easl-2022',
+    doctorId: 'SYSTEM_MASTER',
+    isSystemMaster: true,
+    title: 'Phác đồ Chẩn đoán & Xử trí Bệnh Não Gan (EASL 2022 / AASLD)',
+    specialty: 'Tiêu hóa - Gan mật & Cấp cứu',
+    specialtyKey: 'gi',
+    summary: 'Quy trình toàn diện: Bảo vệ đường thở (GCS < 8), Xử trí 90% yếu tố thúc đẩy (SBP, XHTH, rối loạn điện giải, táo bón), Lactulose PO/PR duy trì 2-3 phân mềm/ngày, Phối hợp Rifaximin 550mg x 2 khi tái phát, LOLA truyền TM liều cao và Oral BCAA chống teo cơ.',
+    icdCodes: ['K72.9', 'K72.7', 'K74'],
+    steps: [
+      {
+        order: 1,
+        title: 'Tiếp cận Khẩn cấp A-B-C & Bảo vệ Đường thở',
+        timeframe: 'Phút 0 - 15 tiếp nhận',
+        text: 'NẾU GCS < 8 hoặc West Haven Grade III-IV: Đặt nội khí quản cấp cứu bảo vệ đường thở tránh sặc phổi, đặt sonde dạ dày rửa máu nếu có XHTH, và thụt giữ trực tràng bằng Lactulose (300 mL Lactulose + 700 mL nước ấm).',
+        isAlert: true,
+      },
+      {
+        order: 2,
+        title: 'Xử trí Triệt để Yếu tố Thúc đẩy (90% Thành công)',
+        timeframe: 'Giờ 1 - 6',
+        text: '• Nhiễm trùng: Cấy máu/dịch báng + Ceftriaxone 1g/ngày.\n• TẠM NGỪNG NGAY LỢI TIỂU (Furosemide, Spironolactone), bù dịch NaCl 0.9% và chỉnh hạ Kali/Natri.\n• Ngừng ngay toàn bộ thuốc an thần, benzodiazepin.\n• Xuất huyết tiêu hóa: Dùng Terlipressin/Octreotide + EVL thắt búi giãn.',
+        isAlert: true,
+      },
+      {
+        order: 3,
+        title: 'Liệu pháp Bậc 1: Disaccharide không hấp thu (Lactulose)',
+        timeframe: 'Khởi động ngay',
+        text: 'Lactulose uống 15 - 30 mL mỗi 1 - 2 giờ đến khi đi tiêu phân mềm; sau đó duy trì 15 - 30 mL x 2 - 3 lần/ngày để đạt mục tiêu 2 - 3 bãi phân mềm/ngày.',
+      },
+      {
+        order: 4,
+        title: 'Liệu pháp Bậc 2: Phối hợp Rifaximin & LOLA truyền TM',
+        timeframe: 'Khi tái phát >= 1 lần trong 6 tháng hoặc kháng trị',
+        text: '• Rifaximin 550 mg x 2 lần/ngày uống lâu dài cùng Lactulose (giảm 58% tái phát, giảm 40% tử vong).\n• Hôn mê sâu Grade III-IV: Phối hợp truyền TM L-Ornithine L-Aspartate (LOLA) 20 - 30 g/ngày pha 500 mL G5% truyền chậm trong 4 - 6 giờ (CHỐNG CHỈ ĐỊNH khi eGFR < 30 mL/phút).',
+      },
+      {
+        order: 5,
+        title: 'Dinh dưỡng Phục hồi Khối Cơ & Dự phòng sau TIPS',
+        timeframe: 'Lâu dài',
+        text: '• BẮT BUỘC duy trì lượng đạm 1.2 - 1.5 g/kg/ngày (CẤM kiêng đạm gây teo cơ sarcopenia).\n• Bổ sung Oral BCAA 0.2 - 0.25 g/kg/ngày kèm 1 bữa ăn phụ ban đêm (late-night snack).\n• Chuẩn bị đặt TIPS: Khởi trị Rifaximin dự phòng 14 ngày trước thủ thuật.',
+      },
+    ],
+    warnings: [
+      'CẤM TUYỆT ĐỐI kiêng đạm quá mức (< 0.8 g/kg/ngày) vì làm teo cơ vân - cơ quan duy nhất còn lại để thải amoniac ngoài gan, khiến HE kháng trị.',
+      'KHÔNG ĐƯỢC ngừng Lactulose đột ngột khi thêm Rifaximin hoặc khi thấy bệnh nhân đã tỉnh táo.',
+      'CHỐNG CHỈ ĐỊNH TUYỆT ĐỐI LOLA khi suy thận nặng (eGFR < 30 mL/phút hoặc Creatinine > 1.5 mg/dL).',
+      'Tránh lạm dụng Lactulose gây tiêu chảy quá mức (> 4-5 lần/ngày) gây mất nước, hạ Kali và kiềm chuyển hóa thúc đẩy HE nặng thêm.',
+    ],
+    references: [
+      'EASL Clinical Practice Guidelines on the management of hepatic encephalopathy (2022)',
+      'AASLD Practice Guideline: Hepatic Encephalopathy in Chronic Liver Disease (2024 Update)',
+    ],
+    createdAt: '2026-08-22T00:00:00Z',
+    updatedAt: '2026-08-22T00:00:00Z',
+  },
+  {
+    id: 'master-ugib-baveno-vii',
+    doctorId: 'SYSTEM_MASTER',
+    isSystemMaster: true,
+    title: 'Xử trí Xuất Huyết Tiêu Hóa do Vỡ Giãn TMTQ (Baveno VII / QĐ 3010/BYT)',
+    specialty: 'Tiêu hóa - Gan mật & Cấp cứu',
+    specialtyKey: 'gi',
+    summary: 'Bộ 4 can thiệp: Đích Hb 7-8 g/dL, Terlipressin 2mg q4h sớm, Ceftriaxone 1g/ngày x 7 ngày, Nội soi thắt vòng cao su EVL trong 12h.',
+    icdCodes: ['I85.0', 'K92.2', 'K74'],
+    steps: [
+      {
+        order: 1,
+        title: 'Hồi sức Huyết động & Đích Hb 7 - 8 g/dL',
+        timeframe: 'Phút 0 - 15',
+        text: 'Nằm đầu thấp nghiêng một bên hoặc đặt NKQ bảo vệ đường thở nếu nôn máu ồ ạt/GCS < 8. Truyền hồng cầu lắng duy trì Hb 7 - 8 g/dL. TUYỆT ĐỐI TRÁNH truyền máu quá mức làm tăng áp lực tĩnh mạch cửa.',
+        isAlert: true,
+      },
+      {
+        order: 2,
+        title: 'Thuốc Co mạch tạng & Kháng sinh dự phòng sớm',
+        timeframe: 'Ngay khi tiếp nhận',
+        text: '• Terlipressin 2mg tiêm TM mỗi 4h trong 48h đầu (sau đó giảm 1mg q4h duy trì 2-5 ngày) HOẶC Octreotide 50mcg bolus ➔ truyền 50mcg/h.\n• Ceftriaxone 1g IV mỗi 24h trong 7 ngày.',
+        isAlert: true,
+      },
+      {
+        order: 3,
+        title: 'Nội soi Can thiệp Thắt vòng cao su (EVL)',
+        timeframe: 'Trong vòng 12 giờ',
+        text: 'Nội soi thực quản dạ dày thắt vòng cao su búi giãn (EVL). Nếu giãn phình vị dạ dày: Tiêm xơ mô sinh học Histoacryl.',
+      },
+      {
+        order: 4,
+        title: 'Dự phòng Tái phát Thứ phát',
+        timeframe: 'Từ ngày thứ 5 trở đi',
+        text: 'Phối hợp EVL định kỳ mỗi 2 - 4 tuần cho đến khi triệt tiêu búi giãn + Thuốc chẹn Beta không chọn lọc (Carvedilol 6.25 - 12.5 mg/ngày hoặc Propranolol).',
+      },
+    ],
+    warnings: [
+      'CẤM dùng Chẹn Beta liều cao trong đợt xuất huyết cấp tính hoặc khi có hạ HA/suy thận cấp.',
+      'KHÔNG truyền huyết tương tươi đông lạnh (FFP) thường quy để chỉnh INR trong xơ gan.',
+    ],
+    references: ['Baveno VII Consensus (2022)', 'Quyết định 3010/QĐ-BYT Bộ Y Tế Việt Nam'],
+    createdAt: '2026-08-22T00:00:00Z',
+    updatedAt: '2026-08-22T00:00:00Z',
   },
 ];

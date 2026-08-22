@@ -308,6 +308,172 @@ export const CLINICAL_FLOWCHARTS_REGISTRY: ClinicalFlowchart[] = [
       { from: 'node_dengue_warning_fluid', to: 'node_dengue_recovery', label: 'Đáp ứng tốt (Ngày 6-7)', isYes: true },
       { from: 'node_dengue_colloid', to: 'node_dengue_recovery', label: 'Hồi phục sau 24-48h' }
     ]
+  },
+
+  // ═══ 5. PHÁC ĐỒ CHẨN ĐOÁN & XỬ TRÍ RUNG NHĨ (ESC 2024 AF-CARE) ═══
+  {
+    id: 'flowchart_atrial_fibrillation',
+    title: 'Lưu đồ Tiếp cận & Điều trị Rung Nhĩ Toàn diện (ESC 2024 AF-CARE)',
+    specialty: 'Tim mạch & Cấp cứu',
+    conditionName: 'Rung nhĩ (Atrial Fibrillation)',
+    description: 'Chiến lược phân tầng huyết động, chỉ định Sốc điện cấp cứu, dự phòng đột quỵ với DOAC theo CHA2DS2-VA và Kiểm soát nhịp/tần số',
+    nodes: [
+      {
+        id: 'node_af_triage',
+        label: 'Tiếp nhận Rung Nhĩ Lâm Sàng',
+        subLabel: 'ECG 12 chuyển đạo: Mất sóng P, sóng f 300-500 ck/p, RR không đều',
+        type: 'start',
+        x: 360, y: 20, width: 260, height: 60,
+        details: 'Ghi ECG xác định rung nhĩ. Đo sinh hiệu và đánh giá ngay các dấu hiệu huyết động bất ổn.',
+        recommendation: 'Đo ECG 12 chuyển đạo ngay, mắc monitor nhịp tim và SpO2.'
+      },
+      {
+        id: 'node_af_hemo_check',
+        label: 'Đánh giá Tình trạng Huyết Động?',
+        subLabel: 'Tụt HA (HA tâm thu < 90 mmHg), Sốc tim, Đau ngực cấp, Phù phổi cấp?',
+        type: 'decision',
+        x: 360, y: 115, width: 260, height: 60,
+        details: 'Phân loại nhanh xem bệnh nhân có cần sốc điện chuyển nhịp cấp cứu hồi sức ngay hay không.',
+        recommendation: 'Nếu có huyết động bất ổn: Chuyển ngay nhánh Sốc điện đồng bộ cấp cứu.'
+      },
+      {
+        id: 'node_af_emergency_shock',
+        label: 'SỐC ĐIỆN ĐỒNG BỘ CẤP CỨU',
+        subLabel: '100 - 200J Biphasic + Tiêm an thần ngắn hạn + Kháng đông khẩn',
+        type: 'alert',
+        x: 40, y: 220, width: 270, height: 75,
+        details: 'Tiêm Midazolam/Propofol an thần. Sốc điện chuyển nhịp đồng bộ (Synchronized) ngay. Khởi động Heparin/DOAC càng sớm càng tốt quanh thời điểm sốc.',
+        recommendation: 'Khẩn cấp sốc điện cứu vãn. Bắt buộc đồng bộ sóng R để tránh kích hoạt Rung thất.'
+      },
+      {
+        id: 'node_af_stable_care',
+        label: 'Triển khai Lộ trình AF-CARE',
+        subLabel: '[C] Quản lý Bệnh Đồng Mắc & Lối Sống',
+        type: 'action',
+        x: 650, y: 220, width: 270, height: 75,
+        details: 'Hạ áp tối ưu 120-129/70-79 mmHg (ACEi/ARB); SGLT2i cho Suy tim & ĐTĐ; Giảm cân >= 10% nếu béo phì; Giảm rượu <= 3 đơn vị/tuần.',
+        recommendation: 'Điều trị toàn diện các bệnh nền để ngăn ngừa tái cấu trúc và xơ hóa tâm nhĩ.'
+      },
+      {
+        id: 'node_af_anticoag_cha2ds2',
+        label: '[A] Kháng Đông DOAC (CHA2DS2-VA)',
+        subLabel: 'CHA2DS2-VA ≥ 2 (Class I) hoặc = 1 (Class IIa)',
+        type: 'action',
+        x: 360, y: 220, width: 260, height: 75,
+        details: 'Ưu tiên DOAC (Apixaban 5mg x 2, Dabigatran 150mg x 2, Rivaroxaban 20mg x 1, Edoxaban 60mg x 1). CẤM tự ý giảm liều nếu không thỏa đủ tiêu chí giảm liều.',
+        recommendation: 'Khởi đầu DOAC sớm. Nếu van cơ học hoặc hẹp 2 lá vừa-nặng: Chỉ dùng Warfarin (INR 2.0-3.0).'
+      },
+      {
+        id: 'node_af_rate_control',
+        label: '[R] Kiểm Soát Tần Số Tim (< 110 bpm)',
+        subLabel: 'LVEF ≤ 40%: Chẹn Beta / Digoxin | LVEF > 40%: CCB Non-DHP / Chẹn Beta',
+        type: 'action',
+        x: 200, y: 345, width: 260, height: 75,
+        details: 'Mục tiêu nhịp tim lúc nghỉ < 110 bpm (Lenient). Nếu LVEF <= 40%: CẤM TUYỆT ĐỐI Verapamil/Diltiazem. Nếu có WPW: CẤM các thuốc ức chế nút AV.',
+        recommendation: 'Dùng Bisoprolol/Metoprolol hoặc Digoxin. Theo dõi Holter điện tâm đồ nếu phối hợp thuốc.'
+      },
+      {
+        id: 'node_af_rhythm_pvi',
+        label: '[R & E] Triệt Đốt PVI & Kiểm Soát Nhịp',
+        subLabel: 'Triệt đốt qua Catheter đầu tay cho Kịch phát & Suy tim HFrEF',
+        type: 'stable',
+        x: 520, y: 345, width: 270, height: 75,
+        details: 'Triệt đốt cô lập tĩnh mạch phổi (PVI) là lựa chọn Class I, Level A cho Rung nhĩ kịch phát có triệu chứng. Dùng DOAC liên tục không ngắt quãng quanh thủ thuật và >= 2 tháng sau triệt đốt.',
+        recommendation: 'Tái khám tim mạch mỗi 3 - 6 tháng, xét nghiệm chức năng thận (eGFR) và điện giải định kỳ.'
+      }
+    ],
+    edges: [
+      { from: 'node_af_triage', to: 'node_af_hemo_check', label: 'Đánh giá ban đầu' },
+      { from: 'node_af_hemo_check', to: 'node_af_emergency_shock', label: 'Huyết động bất ổn (Sốc, Đau ngực)', isYes: true },
+      { from: 'node_af_hemo_check', to: 'node_af_stable_care', label: 'Huyết động ổn định', isYes: false },
+      { from: 'node_af_hemo_check', to: 'node_af_anticoag_cha2ds2', label: 'Đánh giá đột quỵ' },
+      { from: 'node_af_anticoag_cha2ds2', to: 'node_af_rate_control', label: 'Kiểm soát triệu chứng' },
+      { from: 'node_af_anticoag_cha2ds2', to: 'node_af_rhythm_pvi', label: 'Chỉ định chuyển nhịp/triệt đốt' },
+      { from: 'node_af_emergency_shock', to: 'node_af_anticoag_cha2ds2', label: 'Sau hồi phục sốc' }
+    ]
+  },
+
+  // ═══ 6. PHÁC ĐỒ CHẨN ĐOÁN & XỬ TRÍ BỆNH NÃO GAN (EASL 2022) ═══
+  {
+    id: 'flowchart_hepatic_encephalopathy',
+    title: 'Lưu đồ Tiếp cận & Điều trị Bệnh Não Gan Toàn diện (EASL 2022 / AASLD)',
+    specialty: 'Tiêu hóa - Gan mật & Cấp cứu',
+    conditionName: 'Bệnh não gan (Hepatic Encephalopathy)',
+    description: 'Phân tầng West Haven, Bảo vệ đường thở, Xử trí 90% yếu tố thúc đẩy, Phối hợp Lactulose + Rifaximin, LOLA và Dinh dưỡng BCAA chống teo cơ',
+    nodes: [
+      {
+        id: 'node_he_triage',
+        label: 'Tiếp nhận Nghi ngờ Bệnh Não Gan',
+        subLabel: 'Xơ gan + Lơ mơ/Lú lẫn/Run vẩy Asterixis + Đo NH3 máu',
+        type: 'start',
+        x: 360, y: 20, width: 260, height: 60,
+        details: 'Đo sinh hiệu A-B-C, test đường huyết mao mạch tại giường. Định lượng amoniac máu, Creatinine, Điện giải đồ, Bilirubin, PT/INR và Cấy dịch báng.',
+        recommendation: 'Đo NH3 máu, đánh giá phân độ West Haven và Thang điểm Hôn mê Glasgow (GCS).'
+      },
+      {
+        id: 'node_he_severity_check',
+        label: 'Phân tầng Mức độ Nặng (West Haven & GCS)?',
+        subLabel: 'Grade III-IV / GCS < 8 (Hôn mê, sững sờ) vs Grade I-II',
+        type: 'decision',
+        x: 360, y: 115, width: 260, height: 60,
+        details: 'Grade III: Ngủ gà sâu, mất định hướng nặng. Grade IV: Hôn mê, không đáp ứng kích thích. GCS < 8 có nguy cơ mất phản xạ bảo vệ đường thở.',
+        recommendation: 'Nếu GCS < 8 hoặc Grade III-IV: Kích hoạt ngay Quy trình Bảo vệ Đường thở Khẩn cấp.'
+      },
+      {
+        id: 'node_he_icu_airway',
+        label: 'ĐẶT NỘI KHÍ QUẢN & HỒI SỨC ICU',
+        subLabel: 'Bảo vệ đường thở + Sonde dạ dày + Thụt trực tràng Lactulose',
+        type: 'alert',
+        x: 40, y: 220, width: 270, height: 75,
+        details: 'Đặt NKQ khẩn cấp chống hít sặc. Sonde dạ dày hút sạch máu (nếu có XHTH). Thụt giữ trực tràng: 300 mL Lactulose + 700 mL nước ấm giữ 30-60p.',
+        recommendation: 'Chuyển khoa Hồi sức tích cực (ICU) theo dõi sát monitor và tri giác liên tục.'
+      },
+      {
+        id: 'node_he_precipitating_factors',
+        label: 'Xử trí 90% Yếu Tố Thúc Đẩy',
+        subLabel: 'Kháng sinh SBP + TẠM NGỪNG LỢI TIỂU + Chỉnh điện giải',
+        type: 'action',
+        x: 650, y: 220, width: 270, height: 75,
+        details: 'Ceftriaxone 1g/ngày trị nhiễm trùng; Ngừng ngay Furosemide/Spironolactone; Bù dịch NaCl 0.9% và chỉnh bù Kali/Natri; Ngừng thuốc an thần.',
+        recommendation: 'Điều trị triệt để yếu tố thúc đẩy là chìa khóa giải quyết 90% các đợt bùng phát bệnh não gan.'
+      },
+      {
+        id: 'node_he_lactulose_firstline',
+        label: 'Bậc 1: Lactulose Đường Uống',
+        subLabel: 'Liều tấn công 15-30 mL q1-2h ➔ Duy trì 2-3 phân mềm/ngày',
+        type: 'action',
+        x: 360, y: 220, width: 260, height: 75,
+        details: 'Lactulose PO 15-30 mL mỗi 1-2h đến khi đi tiêu phân mềm; sau đó duy trì 15-30 mL x 2-3 lần/ngày. CẢNH BÁO: Tránh tiêu chảy quá mức > 4-5 lần/ngày.',
+        recommendation: 'Disaccharide không hấp thu là nền tảng điều trị Bậc 1 theo khuyến cáo EASL (LoE 1).'
+      },
+      {
+        id: 'node_he_rifaximin_lola',
+        label: 'Bậc 2: Phối Hợp Rifaximin + LOLA IV',
+        subLabel: 'Rifaximin 550mg x 2 PO + LOLA 20-30g/ngày truyền TM',
+        type: 'action',
+        x: 200, y: 345, width: 260, height: 75,
+        details: 'BẮT BUỘC phối hợp Rifaximin 550mg x 2 nếu tái phát >= 1 đợt trong 6 tháng (giảm 58% tái phát, giảm 40% tử vong). LOLA IV 20-30g/ngày pha 500mL G5% truyền chậm (CẤM khi eGFR < 30).',
+        recommendation: 'Không được ngừng Lactulose khi thêm Rifaximin. Duy trì đồng trị liệu lâu dài.'
+      },
+      {
+        id: 'node_he_sarcopenia_bcaa',
+        label: 'Dinh Dưỡng BCAA & Chống Teo Cơ',
+        subLabel: 'Đạm 1.2-1.5 g/kg/ngày + BCAA uống + Bữa ăn phụ ban đêm',
+        type: 'stable',
+        x: 520, y: 345, width: 270, height: 75,
+        details: 'CẤM KIÊNG ĐẠM. Bổ sung Oral BCAA 0.2-0.25 g/kg/ngày kèm 1 bữa phụ trước khi đi ngủ (late-night snack) để chống dị hóa cơ vân. Đánh giá Ghép Gan nếu HE kháng trị.',
+        recommendation: 'Tái khám định kỳ mỗi 1 - 3 tháng, sàng lọc Covert HE bằng Animal Naming Test và tư vấn nguy cơ lái xe.'
+      }
+    ],
+    edges: [
+      { from: 'node_he_triage', to: 'node_he_severity_check', label: 'Đánh giá ban đầu' },
+      { from: 'node_he_severity_check', to: 'node_he_icu_airway', label: 'GCS < 8 hoặc Grade III-IV', isYes: true },
+      { from: 'node_he_severity_check', to: 'node_he_precipitating_factors', label: 'Ổn định (Grade I-II)', isYes: false },
+      { from: 'node_he_precipitating_factors', to: 'node_he_lactulose_firstline', label: 'Khởi động Disaccharide' },
+      { from: 'node_he_lactulose_firstline', to: 'node_he_rifaximin_lola', label: 'Tái phát / Kháng trị' },
+      { from: 'node_he_lactulose_firstline', to: 'node_he_sarcopenia_bcaa', label: 'Dự phòng lâu dài' },
+      { from: 'node_he_icu_airway', to: 'node_he_precipitating_factors', label: 'Sau đặt NKQ ổn định' }
+    ]
   }
 ];
 
