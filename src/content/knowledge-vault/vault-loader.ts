@@ -13,6 +13,7 @@ export const KHO_DEFINITIONS: Record<string, { name: string; group: string; icon
   HS:   { name: 'Hóa sinh Y học',      group: 'Cơ sở Y khoa', icon: 'fa-flask',       color: '#8b5cf6' },
   SLB:  { name: 'Sinh lý bệnh',        group: 'Cơ sở Y khoa', icon: 'fa-bolt',        color: '#f59e0b' },
   DTH:  { name: 'Dịch tễ & Vi sinh',   group: 'Cơ sở Y khoa', icon: 'fa-virus',       color: '#10b981' },
+  YTNC: { name: 'Yếu tố Nguy cơ',      group: 'Cơ sở Y khoa', icon: 'fa-triangle-exclamation', color: '#f97316' },
 
   // Nhóm 2: Lâm sàng & Bệnh học
   TC:   { name: 'Tiếp cận Lâm sàng',   group: 'Lâm sàng & Bệnh học', icon: 'fa-magnifying-glass',     color: '#0ea5e9' },
@@ -128,6 +129,8 @@ export function findPathwayArticles(currentArticle: VaultArticle): ClinicalPathw
 
     if (art.khoCode === 'GPSL' && !result.gpsl) result.gpsl = art;
     else if (art.khoCode === 'SLB' && !result.slb) result.slb = art;
+    else if (art.khoCode === 'DTH' && !result.dth) result.dth = art;
+    else if (art.khoCode === 'YTNC' && !result.ytnc) result.ytnc = art;
     else if (art.khoCode === 'CD' && !result.cd) result.cd = art;
     else if (art.khoCode === 'PDDT' && !result.pddt) result.pddt = art;
     else if (art.khoCode === 'BC' && !result.bc) result.bc = art;

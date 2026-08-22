@@ -21,9 +21,77 @@ export const PROTOCOL_SPECIALTIES: ProtocolSpecialtyCategory[] = [
   { key: 'gi',        name: 'Tiêu hóa',        icon: 'fa-solid fa-stethoscope',    color: '#ca8a04',             bg: 'rgba(202,138,4,0.1)' },
   { key: 'endo',      name: 'Nội tiết & Thận', icon: 'fa-solid fa-dna',            color: '#7c3aed',             bg: 'rgba(124,58,237,0.1)' },
   { key: 'neuro',     name: 'Thần kinh',       icon: 'fa-solid fa-brain',          color: '#c026d3',             bg: 'rgba(192,38,211,0.1)' },
+  { key: 'infectious',name: 'Truyền nhiễm',    icon: 'fa-solid fa-virus',          color: '#0d9488',             bg: 'rgba(13,148,136,0.1)' },
 ];
 
 export const MASTER_CLINICAL_PROTOCOLS: PersonalProtocol[] = [
+  // ─────────────────────────────────────────────
+  // 0. TRUYỀN NHIỄM & CẤP CỨU DENGUE
+  // ─────────────────────────────────────────────
+  {
+    id: 'master-dengue-byt',
+    doctorId: 'SYSTEM_MASTER',
+    isSystemMaster: true,
+    title: 'Phác đồ Chẩn đoán & Hồi sức Sốt Xuất Huyết Dengue (QĐ 2760/QĐ-BYT 2023)',
+    specialty: 'Truyền nhiễm & Hồi sức Cấp cứu',
+    specialtyKey: 'infectious',
+    summary: 'Phác đồ điều trị 3 cấp độ: SXHD thông thường, SXHD có DHCB và Hồi sức Sốc thoát huyết tương / Xuất huyết nặng theo Bộ Y Tế.',
+    icdCodes: ['A91', 'A90'],
+    steps: [
+      {
+        order: 1,
+        title: 'Phân tầng Nguy cơ & Đánh giá Dấu hiệu Cảnh báo (DHCB)',
+        timeframe: 'Phút 0 - 15 tiếp nhận',
+        text: 'Khám tri giác, Mạch, HA, CRT, đo Hct tại giường và đếm tiểu cầu. Nhận diện DHCB: Đau bụng vùng gan, nôn ói ≥ 3 lần/h, xuất huyết niêm mạc, tiểu ít, Hct tăng nhanh.',
+      },
+      {
+        order: 2,
+        title: 'SXHD Ngoại trú vs Nhập viện Điều trị',
+        timeframe: 'Sau phân loại',
+        text: 'SXHD Độ 1 (không DHCB): Điều trị ngoại trú, bù Oresol đường uống, hạ sốt bằng Paracetamol đơn chất 10-15 mg/kg mỗi 4-6h. Tuyệt đối KHÔNG dùng Aspirin/Ibuprofen/NSAIDs. Nhập viện nếu có DHCB hoặc cơ địa béo phì, thai kỳ, Thalassemia.',
+      },
+      {
+        order: 3,
+        title: 'Bù dịch Tinh thể đẳng trương theo Động học',
+        timeframe: 'Giờ 1 - 24',
+        text: 'SXHD có DHCB: Truyền Ringer Lactate/NaCl 0.9% 6-7 ml/kg/h (1-3h đầu) -> giảm dần 5 ml/kg/h (2-4h) -> 3 ml/kg/h -> 1.5 ml/kg/h. Nếu có bệnh gan nặng/Thalassemia: Dùng Ringer Acetate hoặc NaCl 0.9%.',
+        isAlert: false,
+      },
+      {
+        order: 4,
+        title: 'Hồi sức SỐC Thoát Huyết Tương & Sốc Nguy Kịch',
+        timeframe: 'Cấp cứu tối khẩn',
+        text: 'Nằm đầu thấp. Nếu M=0, HA=0: Bơm nhanh Tinh thể 15-20 ml/kg trong 15 phút. Nếu sốc thông thường: Truyền nhanh 15-20 ml/kg trong 1 giờ. Đo lại Hct ngay sau dịch.',
+        isAlert: true,
+      },
+      {
+        order: 5,
+        title: 'Xử trí Sốc trơ (Cao phân tử) vs Xuất huyết nội ẩn',
+        timeframe: 'Khi không đáp ứng sau 1 giờ',
+        text: 'Nếu Hct còn cao: Đổi sang Dịch Cao Phân Tử (Dextran 40/HES 200) 10-20 ml/kg/h, đo CVP và huyết áp động mạch xâm lấn. Nếu Hct tụt > 20% kèm tụt HA: Truyền Hồng cầu lắng 5-10 ml/kg, đặt sonde dạ dày qua đường miệng.',
+        isAlert: true,
+      },
+      {
+        order: 6,
+        title: 'Nhận biết Giai đoạn Hồi phục & Phòng Phù phổi cấp',
+        timeframe: 'Ngày 6 - 7',
+        text: 'Khi hết sốt, tiểu nhiều, mạch HA ổn định, Hct giảm sinh lý do tái hấp thu: Giảm liều nhanh và ngưng hẳn dịch truyền. TUYỆT ĐỐI KHÔNG truyền thêm dịch hoặc máu vì sẽ gây Quá tải tuần hoàn / Phù phổi cấp tử vong.',
+        isAlert: true,
+      }
+    ],
+    warnings: [
+      'TUYỆT ĐỐI CHỐNG CHỈ ĐỊNH Aspirin, Ibuprofen và các thuốc NSAIDs trong mọi giai đoạn của SXHD.',
+      'KHÔNG truyền tiểu cầu dự phòng khi chưa có xuất huyết nặng (trừ khi tiểu cầu < 5.000/mm³ hoặc chuẩn bị phẫu thuật/sinh đẻ).',
+      'TUYỆT ĐỐI KHÔNG đặt sonde dạ dày qua đường mũi vì nguy cơ chảy máu mũi nghiêm trọng không thể cầm.',
+      'Ở phụ nữ có thai hoặc bệnh nhân béo phì, bắt buộc tính dịch truyền theo CÂN NẶNG HIỆU CHỈNH.',
+    ],
+    references: [
+      'Quyết định số 2760/QĐ-BYT (2023) — Hướng dẫn chẩn đoán, điều trị Sốt xuất huyết Dengue — Bộ Y Tế Việt Nam',
+      'WHO Dengue Guidelines for Diagnosis, Treatment, Prevention and Control (2009 / 2024)',
+    ],
+    createdAt: '2026-08-22T00:00:00Z',
+    updatedAt: '2026-08-22T00:00:00Z',
+  },
   // ─────────────────────────────────────────────
   // 1. CẤP CỨU & HỒI SỨC ICU
   // ─────────────────────────────────────────────

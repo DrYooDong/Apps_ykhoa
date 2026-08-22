@@ -66,11 +66,11 @@ export function renderVaultHubView(): string {
       <div class="vault-header">
         <div class="vault-header-title">
           <h1><i class="fa-solid fa-book-medical" style="color: var(--vault-primary);"></i> Kho Kiến Thức Y Khoa CliniPortal</h1>
-          <p>Hệ sinh thái tra cứu và trình đọc tri thức chuẩn mực cho 14 phân hệ y khoa.</p>
+          <p>Hệ sinh thái tra cứu và trình đọc tri thức chuẩn mực cho ${summaries.length} phân hệ y khoa.</p>
         </div>
         <div class="vault-header-stats">
           <div class="vault-stat-badge">
-            <div class="num">14</div>
+            <div class="num">${summaries.length}</div>
             <div class="label">Kho Chuyên Môn</div>
           </div>
           <div class="vault-stat-badge">
@@ -426,10 +426,26 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
     // 6. Personal Annotations Box
     const annotationsHtml = renderAnnotationsBoxHtml(article);
 
-    // 7. Combine into Reader Pro Grid
+    // 7. Vault Path Breadcrumb Bar (Two-Way Link)
+    const vaultPathBar = `
+      <div class="vault-path-bar">
+        <div class="vault-path-text" title="Đường dẫn tương đối trong Knowledge Vault">
+          <i class="fa-solid fa-folder-open" style="color:var(--vault-primary);"></i>
+          <span>knowledge-vault/${escapeHtml(article.relPath)}</span>
+        </div>
+        <div style="display:flex; gap:6px; align-items:center;">
+          <a href="obsidian://open?vault=Apps_ykhoa&file=${encodeURIComponent('knowledge-vault/' + article.relPath.replace(/\.md$/, ''))}" class="vault-obsidian-badge" style="text-decoration:none;" title="Mở trực tiếp tệp này trong Obsidian">
+            <i class="fa-solid fa-gem"></i> Obsidian Note
+          </a>
+        </div>
+      </div>
+    `;
+
+    // 8. Combine into Reader Pro Grid
     bodyEl.innerHTML = `
       ${pathwayRibbonHtml}
       ${toolbarHtml}
+      ${vaultPathBar}
       ${metadataBanner}
       ${flowchartSection}
       <div class="vault-reader-pro-grid">

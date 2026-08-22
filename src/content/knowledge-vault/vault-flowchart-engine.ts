@@ -205,6 +205,109 @@ export const CLINICAL_FLOWCHARTS_REGISTRY: ClinicalFlowchart[] = [
       { from: 'node_fluid_resus', to: 'node_vasopressor', label: 'MAP vẫn < 65 sau bù dịch', isYes: true },
       { from: 'node_fluid_resus', to: 'node_sepsis_stable', label: 'MAP ≥ 65 ổn định', isYes: false }
     ]
+  },
+
+  // ═══ 4. PHÁC ĐỒ SỐT XUẤT HUYẾT DENGUE & SỐC THOÁT HUYẾT TƯƠNG (QĐ 2760/QĐ-BYT 2023) ═══
+  {
+    id: 'flowchart_dengue_shock',
+    title: 'Lưu đồ Phân tầng & Hồi sức Sốt xuất huyết Dengue (Bộ Y Tế 2023)',
+    specialty: 'Truyền nhiễm & Hồi sức Cấp cứu',
+    conditionName: 'Sốt xuất huyết Dengue (SXHD)',
+    description: 'Phác đồ bù dịch động học, xử trí Sốc thoát huyết tương, Xuất huyết nặng và Chống quá tải dịch theo QĐ 2760/QĐ-BYT',
+    nodes: [
+      {
+        id: 'node_dengue_triage',
+        label: 'Tiếp nhận Bệnh nhân Nghi SXHD',
+        subLabel: 'Sốt ngày 3-7 + Đau mỏi + Chấm xuất huyết + Đo Hct tại giường',
+        type: 'start',
+        x: 360, y: 20, width: 260, height: 60,
+        details: 'Đo sinh hiệu (Mạch, HA, CRT), làm xét nghiệm Hct tại giường và đếm số lượng tiểu cầu. Kiểm tra tiền sử thai kỳ, Thalassemia, bệnh gan thận.',
+        recommendation: 'Thực hiện dấu dây thắt (Lacet), đo Hct ban đầu làm mốc đối chiếu động học.'
+      },
+      {
+        id: 'node_dengue_warning_check',
+        label: 'Đánh giá Phân tầng Lâm sàng',
+        subLabel: 'Kiểm tra Dấu hiệu Cảnh báo (DHCB) & Dấu hiệu Sốc?',
+        type: 'decision',
+        x: 360, y: 115, width: 260, height: 60,
+        details: 'DHCB: Vật vã/li bì, đau bụng vùng gan, nôn ói ≥ 3 lần/h, xuất huyết niêm mạc, tiểu ít, Hct tăng kèm tiểu cầu giảm nhanh.',
+        recommendation: 'Phân loại chính xác 3 mức độ: SXHD thông thường, SXHD có DHCB, hoặc SXHD nặng/Sốc.'
+      },
+      {
+        id: 'node_dengue_mild',
+        label: 'SXHD Thông thường (Độ 1)',
+        subLabel: 'Điều trị ngoại trú + Oresol uống + Paracetamol',
+        type: 'stable',
+        x: 700, y: 220, width: 240, height: 75,
+        details: 'Bù dịch đường uống tích cực (Oresol, nước dừa, nước hoa quả). Hạ sốt bằng Paracetamol đơn chất 10-15mg/kg mỗi 4-6h. TUYỆT ĐỐI KHÔNG dùng Aspirin, Ibuprofen.',
+        recommendation: 'Tái khám và đo Hct hàng ngày. Dặn dò tái khám cấp cứu ngay khi xuất hiện DHCB.'
+      },
+      {
+        id: 'node_dengue_warning_fluid',
+        label: 'SXHD Có Dấu hiệu Cảnh báo (Độ 2)',
+        subLabel: 'Nhập viện bắt buộc + Tinh thể 6-7 mL/kg/h giảm dần',
+        type: 'action',
+        x: 360, y: 220, width: 260, height: 75,
+        details: 'Truyền dịch tinh thể (Ringer Lactate / NaCl 0.9%) 6-7 mL/kg/h trong 1-3h đầu, giảm xuống 5 mL/kg/h (2-4h) rồi 3 mL/kg/h. Đo lại Hct mỗi 2-4h.',
+        recommendation: 'Nếu có bệnh gan nặng hoặc Thalassemia: Thay Ringer Lactate bằng Ringer Acetate hoặc NaCl 0.9%.'
+      },
+      {
+        id: 'node_dengue_shock',
+        label: 'SỐC SXHD / SỐC NGUY KỊCH (Độ 3)',
+        subLabel: 'Nằm đầu thấp + Bolus Tinh thể 15-20 mL/kg/15-60 phút',
+        type: 'alert',
+        x: 30, y: 220, width: 280, height: 75,
+        details: 'Thở oxy gọng kính. Nếu M=0, HA=0: Bơm nhanh 20 mL/kg trong 15 phút (trẻ em) hoặc 15 mL/kg/15p (người lớn). Nếu sốc thông thường: 15-20 mL/kg/1h.',
+        recommendation: 'Lập 2 đường truyền kim lớn. Đo Hct khẩn trước và ngay sau khi kết thúc dịch truyền.'
+      },
+      {
+        id: 'node_dengue_hct_check',
+        label: 'Đánh giá Động học Hct sau Giờ 1 Bù dịch',
+        subLabel: 'Hct tăng hay tụt nhanh sau chống sốc?',
+        type: 'decision',
+        x: 30, y: 340, width: 280, height: 60,
+        details: 'So sánh Hct sau truyền dịch với Hct ban đầu để quyết định chiến lược chuyển đổi dung dịch.',
+        recommendation: 'Nếu Hct còn cao (> 40%): Thoát huyết tương nặng. Nếu Hct tụt > 20% kèm tụt HA: Nghi ngờ Xuất huyết nội.'
+      },
+      {
+        id: 'node_dengue_colloid',
+        label: 'Sốc trơ / Tái sốc: Dịch Cao Phân Tử',
+        subLabel: 'Dextran 40 / HES 200 (10-20 mL/kg/h) + Đo CVP',
+        type: 'alert',
+        x: 30, y: 450, width: 280, height: 75,
+        details: 'Truyền Cao phân tử 10-20 mL/kg/h x 1h, giảm liều theo bậc thang. Nếu CVP > 15 cmH2O hoặc suy tim: Ngưng dịch, dùng Dopamin/Noradrenaline. Albumin nếu CPT ≥ 60 mL/kg.',
+        recommendation: 'Không dùng quá 60 mL/kg CPT nhân tạo để tránh suy thận và rối loạn đông máu.'
+      },
+      {
+        id: 'node_dengue_bleeding',
+        label: 'Xuất huyết Ẩn / Tụt Hct: Truyền Máu',
+        subLabel: 'Hồng cầu lắng 5-10 mL/kg + Cầm máu',
+        type: 'action',
+        x: 360, y: 450, width: 260, height: 75,
+        details: 'Nghi ngờ xuất huyết tiêu hóa/nội tạng khi Hct giảm nhanh nhưng HA vẫn kẹt/tụt. Truyền Hồng cầu lắng 5-10 mL/kg. Đặt sonde dạ dày qua ĐƯỜNG MIỆNG (Tránh đường mũi).',
+        recommendation: 'Không truyền tiểu cầu dự phòng trừ khi tiểu cầu < 5.000 hoặc có xuất huyết nặng tiến triển.'
+      },
+      {
+        id: 'node_dengue_recovery',
+        label: 'Giai đoạn Hồi phục (Ngày 6-7)',
+        subLabel: 'Hct giảm sinh lý + Tiểu nhiều: NGƯNG DỊCH',
+        type: 'stable',
+        x: 690, y: 450, width: 250, height: 75,
+        details: 'Dịch tái hấp thu vào lòng mạch gây loãng máu sinh lý. Nếu bệnh nhân tỉnh, tiểu tốt, mạch HA ổn: Giảm nhanh và ngắt dịch. TUYỆT ĐỐI KHÔNG truyền dịch thêm vì gây Phù phổi cấp.',
+        recommendation: 'Theo dõi nhịp thở và nghe đáy phổi. Xuất viện khi hết sốt 48h và tiểu cầu > 50.000/mm³.'
+      }
+    ],
+    edges: [
+      { from: 'node_dengue_triage', to: 'node_dengue_warning_check', label: 'Phân loại ban đầu' },
+      { from: 'node_dengue_warning_check', to: 'node_dengue_mild', label: 'Không DHCB', isYes: false },
+      { from: 'node_dengue_warning_check', to: 'node_dengue_warning_fluid', label: 'Có DHCB (Độ 2)' },
+      { from: 'node_dengue_warning_check', to: 'node_dengue_shock', label: 'SỐC / Sốc nặng (Độ 3)', isYes: true },
+      { from: 'node_dengue_shock', to: 'node_dengue_hct_check', label: 'Sau 1 giờ bù dịch' },
+      { from: 'node_dengue_hct_check', to: 'node_dengue_colloid', label: 'Hct vẫn cao / Sốc trơ', isYes: true },
+      { from: 'node_dengue_hct_check', to: 'node_dengue_bleeding', label: 'Hct tụt nhanh > 20%', isYes: false },
+      { from: 'node_dengue_warning_fluid', to: 'node_dengue_recovery', label: 'Đáp ứng tốt (Ngày 6-7)', isYes: true },
+      { from: 'node_dengue_colloid', to: 'node_dengue_recovery', label: 'Hồi phục sau 24-48h' }
+    ]
   }
 ];
 

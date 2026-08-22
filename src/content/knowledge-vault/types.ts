@@ -6,7 +6,7 @@ export interface VaultArticle {
   id: string;
   title: string;
   fullFileName: string;
-  khoCode: 'GPSL' | 'HS' | 'SLB' | 'DTH' | string;
+  khoCode: 'GPSL' | 'HS' | 'SLB' | 'DTH' | 'YTNC' | string;
   khoName: string;
   khoGroup?: string;
   khoDir: string;
@@ -44,6 +44,8 @@ export interface ClinicalPathwayLinks {
   conditionName: string;
   gpsl?: VaultArticle;
   slb?: VaultArticle;
+  dth?: VaultArticle;
+  ytnc?: VaultArticle;
   cd?: VaultArticle;
   pddt?: VaultArticle;
   bc?: VaultArticle;

@@ -8,6 +8,9 @@ updated: "2026-08-21"
 
 > Tổng hợp toàn bộ tài liệu y khoa thuộc **Kho dịch tễ học** được phân loại trực quan theo từng chuyên khoa.
 
+> [!TIP] 🌐 **TRÌNH DUYỆT WEB TƯƠNG TÁC CLINIAPORTAL**
+> 🔗 **[Mở Kho Dịch Tễ Học trên Web Hub](file:///d:/Apps_ykhoa/src/content/knowledge-vault/index.html?kho=DTH)** để tra cứu nhanh theo ICD-10, xem chuỗi bệnh học liên kết và sơ đồ phân bố dịch tễ.
+
 ---
 
 ## 🩺 Da liễu - Cơ xương khớp (14 bài)

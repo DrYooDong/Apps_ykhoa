@@ -10,6 +10,7 @@ const KHO_CONFIGS = [
   { matchName: 'hóa sinh y học', code: 'HS', name: 'Hóa sinh Y học', group: 'Cơ sở Y khoa', icon: 'fa-flask', color: '#8b5cf6' },
   { matchName: 'sinh lý bệnh', code: 'SLB', name: 'Sinh lý bệnh', group: 'Cơ sở Y khoa', icon: 'fa-bolt', color: '#f59e0b' },
   { matchName: 'dịch tễ học', code: 'DTH', name: 'Dịch tễ & Vi sinh', group: 'Cơ sở Y khoa', icon: 'fa-virus', color: '#10b981' },
+  { matchName: 'yếu tố nguy cơ', code: 'YTNC', name: 'Yếu tố Nguy cơ', group: 'Cơ sở Y khoa', icon: 'fa-triangle-exclamation', color: '#f97316' },
   
   // Nhóm 2: Lâm sàng & Bệnh học
   { matchName: 'tiếp cận lâm sàng', code: 'TC', name: 'Tiếp cận Lâm sàng', group: 'Lâm sàng & Bệnh học', icon: 'fa-magnifying-glass', color: '#0ea5e9' },

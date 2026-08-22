@@ -7,7 +7,7 @@
  */
 
 import { VaultArticle, ClinicalPathwayLinks, TocItem, VaultPersonalAnnotation } from './types';
-import { findPathwayArticles } from './vault-loader';
+import { findPathwayArticles, VAULT_CATALOG } from './vault-loader';
 
 export interface ReaderSettings {
   fontSize: number; // in rem, default 1.0
@@ -128,6 +128,8 @@ export function renderPathwayRibbon(currentArticle: VaultArticle): string {
   const facets = [
     { key: 'gpsl', label: 'Giải phẫu & SL', icon: 'fa-heart-pulse', color: '#0284c7', article: pathway.gpsl, code: 'GPSL' },
     { key: 'slb',  label: 'Sinh lý bệnh',   icon: 'fa-bolt',        color: '#f59e0b', article: pathway.slb,  code: 'SLB' },
+    { key: 'dth',  label: 'Dịch tễ học',    icon: 'fa-virus',       color: '#10b981', article: pathway.dth,  code: 'DTH' },
+    { key: 'ytnc', label: 'Yếu tố nguy cơ', icon: 'fa-triangle-exclamation', color: '#f97316', article: pathway.ytnc, code: 'YTNC' },
     { key: 'cd',   label: 'Chẩn đoán',      icon: 'fa-clipboard-check', color: '#ec4899', article: pathway.cd,   code: 'CD' },
     { key: 'pddt', label: 'Phác đồ ĐT',     icon: 'fa-pills',       color: '#3b82f6', article: pathway.pddt, code: 'PDDT' },
     { key: 'bc',   label: 'Biến chứng',     icon: 'fa-triangle-exclamation', color: '#ef4444', article: pathway.bc,   code: 'BC' },
@@ -136,7 +138,7 @@ export function renderPathwayRibbon(currentArticle: VaultArticle): string {
 
   // Count how many facets exist for this condition
   const availableFacets = facets.filter(f => f.article !== undefined);
-  if (availableFacets.length <= 1 && !pathway.slb && !pathway.cd && !pathway.pddt) {
+  if (availableFacets.length <= 1 && !pathway.slb && !pathway.cd && !pathway.pddt && !pathway.ytnc) {
     return ''; // No cross-facet links needed for unique single articles
   }
 
@@ -229,6 +231,13 @@ export function processMarkdownWithToc(rawMarkdown: string): { htmlContent: stri
     return `<div class="vault-img-card" style="text-align:center; margin:1.5rem 0;"><img src="${resolvedSrc}" alt="${escapeHtml(altText)}" style="max-width:100%; height:auto; border-radius:8px; border:1px solid var(--vault-border); box-shadow:0 4px 12px rgba(0,0,0,0.06);" loading="lazy" />${altText ? `<div style="font-size:11px; color:var(--vault-muted); margin-top:6px; font-style:italic;">${escapeHtml(altText)}</div>` : ''}</div>`;
   });
 
+  // Format Obsidian Wikilinks [[Target|Label]] or [[Target]]
+  clean = clean.replace(/\[\[([^\]|\n]+)(?:\|([^\]\n]+))?\]\]/g, (match, target, label) => {
+    const displayLabel = (label || target).trim();
+    const cleanTarget = target.trim();
+    return `<button type="button" class="vault-wikilink-btn" data-wikilink="${escapeHtml(cleanTarget)}" title="Nhảy đến bài viết / ghi chú: ${escapeHtml(displayLabel)}"><i class="fa-solid fa-link" style="font-size:10px; opacity:0.8;"></i> ${escapeHtml(displayLabel)}</button>`;
+  });
+
   // GitHub Callouts
   clean = clean.replace(/> \[!NOTE\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-note" style="border-left:4px solid #0284c7; background:rgba(2,132,199,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-circle-info" style="color:#0284c7;"></i> <strong>Ghi chú:</strong> $1</div>');
   clean = clean.replace(/> \[!TIP\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-tip" style="border-left:4px solid #10b981; background:rgba(16,185,129,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-lightbulb" style="color:#10b981;"></i> <strong>Điểm ngọc lâm sàng:</strong> $1</div>');
@@ -285,6 +294,12 @@ export function renderReaderToolbar(article: VaultArticle): string {
       </div>
 
       <div class="vault-reader-toolbar-right">
+        <button id="btn-open-obsidian" class="vault-tool-btn" data-rel="${escapeHtml(article.relPath)}" style="color:#a855f7; font-weight:700;" title="Mở trực tiếp bài viết này trong ứng dụng Obsidian">
+          <i class="fa-solid fa-gem"></i> Mở Obsidian
+        </button>
+        <button id="btn-copy-vault-path" class="vault-tool-btn" data-rel="${escapeHtml(article.relPath)}" title="Sao chép đường dẫn tệp Markdown trong Vault">
+          <i class="fa-regular fa-copy"></i> Copy Path
+        </button>
         <button id="btn-add-annotation-tool" class="vault-tool-btn" data-id="${article.id}" style="color:#d97706; font-weight:700;" title="Đúc kết kinh nghiệm lâm sàng vào bài viết này">
           <i class="fa-solid fa-pen-to-square"></i> Đúc kết lâm sàng
         </button>
@@ -316,6 +331,58 @@ export function attachReaderProEvents(drawerPanel: HTMLElement, onNavigateArticl
       if (navId) onNavigateArticle(navId);
     });
   });
+
+  // Wikilink Button Two-Way Navigation
+  drawerPanel.querySelectorAll('.vault-wikilink-btn[data-wikilink]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const rawTarget = btn.getAttribute('data-wikilink') || '';
+      const cleanTarget = rawTarget.replace(/^[./\\]+/, '').trim();
+      const baseName = cleanTarget.split('/').pop()?.replace(/\.md$/, '').trim().toLowerCase() || '';
+
+      const found = VAULT_CATALOG.find(a => 
+        a.id === rawTarget || 
+        a.relPath.toLowerCase() === cleanTarget.toLowerCase() ||
+        a.relPath.toLowerCase().endsWith(cleanTarget.toLowerCase()) ||
+        a.title.toLowerCase() === baseName || 
+        (a.aliases || []).some(al => al.toLowerCase() === baseName) ||
+        a.fullFileName.toLowerCase().replace(/\.md$/, '') === baseName
+      );
+
+      if (found) {
+        onNavigateArticle(found.id);
+      } else {
+        // Fallback: Open note in Obsidian
+        const cleanFile = cleanTarget.replace(/\.md$/, '');
+        window.open(`obsidian://open?vault=Apps_ykhoa&file=${encodeURIComponent(cleanFile)}`);
+      }
+    });
+  });
+
+  // Open in Obsidian
+  const openObsidianBtn = drawerPanel.querySelector('#btn-open-obsidian');
+  if (openObsidianBtn) {
+    openObsidianBtn.addEventListener('click', () => {
+      const relPath = openObsidianBtn.getAttribute('data-rel') || '';
+      const cleanPath = 'knowledge-vault/' + relPath.replace(/\.md$/, '');
+      window.open(`obsidian://open?vault=Apps_ykhoa&file=${encodeURIComponent(cleanPath)}`);
+    });
+  }
+
+  // Copy Vault Path
+  const copyVaultPathBtn = drawerPanel.querySelector('#btn-copy-vault-path');
+  if (copyVaultPathBtn) {
+    copyVaultPathBtn.addEventListener('click', () => {
+      const relPath = copyVaultPathBtn.getAttribute('data-rel') || '';
+      const fullVaultPath = `knowledge-vault/${relPath}`;
+      navigator.clipboard.writeText(fullVaultPath).then(() => {
+        copyVaultPathBtn.innerHTML = '<i class="fa-solid fa-check" style="color:#10b981;"></i> Đã chép Path';
+        setTimeout(() => {
+          copyVaultPathBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy Path';
+        }, 2000);
+      });
+    });
+  }
 
   // TOC Links Smooth Scroll
   const scrollContainer = drawerPanel.querySelector('.vault-drawer-body') as HTMLElement | null;

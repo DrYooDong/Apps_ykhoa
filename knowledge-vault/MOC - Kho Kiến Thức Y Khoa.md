@@ -10,7 +10,11 @@ updated: "2026-08-11"
 
 # 🏥 CliniPortal — Kho Kiến Thức Y Khoa (Master MOC)
 
-> Cổng kết nối và điều hướng tri thức cho **2,060+ ghi chú Y khoa**. Được tổ chức theo chuẩn MOC (Map of Content), liên kết Wikilinks và Thẻ phân cấp Obsidian.
+> Cổng kết nối và điều hướng tri thức cho **2,360+ ghi chú Y khoa**. Được tổ chức theo chuẩn MOC (Map of Content), liên kết Wikilinks và Thẻ phân cấp Obsidian.
+
+> [!TIP] 🌐 **TRÌNH DUYỆT WEB TƯƠNG TÁC CLINIAPORTAL KNOWLEDGE VAULT**
+> Bạn có thể mở toàn bộ kho tri thức này trên giao diện Bento Grid hiện đại, hỗ trợ Sơ đồ thuật toán, Flashcard SuperMemo SM-2 và Chuỗi bệnh học 8 phân hệ tại:
+> 🔗 **[Mở CliniPortal Knowledge Vault Web Hub](file:///d:/Apps_ykhoa/src/content/knowledge-vault/index.html)** *(hoặc `http://localhost:5173/src/content/knowledge-vault/index.html`)*
 
 ---
 
@@ -18,10 +22,11 @@ updated: "2026-08-11"
 
 > Trung tâm điều hành lâm sàng hỗ trợ tra cứu nhanh trong 30s với phím tắt `Ctrl + K` trên giao diện Web.
 
-- **🚨 Cấp cứu khẩn:** [[2. Hồi sức/MOC - Hồi sức Cấp cứu|Sốc phản vệ (Adrenaline)], [[MOC - Hồi sức Cấp cứu|ACLS Ngừng tuần hoàn]]
+- **🚨 Cấp cứu khẩn:** [[2. Hồi sức/MOC - Hồi sức Cấp cứu|Sốc phản vệ (Adrenaline)]], [[MOC - Hồi sức Cấp cứu|ACLS Ngừng tuần hoàn]]
 - **❤️ Tim mạch:** [[3. Nội tổng quát/MOC - Nội khoa|Phác đồ MONA ACS]], [[3. Nội tổng quát/MOC - Nội khoa|Hội chứng Mạch vành cấp]]
 - **🧪 Thận & Điện giải:** [[3. Nội tổng quát/MOC - Nội khoa|Công thức Na+ hiệu chỉnh]], [[3. Nội tổng quát/MOC - Nội khoa|Chỉnh liều thuốc suy thận eGFR]]
 - **📊 Thang điểm:** [[0. Kỹ năng/MOC - Kỹ năng Lâm sàng|Thang điểm Glasgow (GCS)]], [[9. Nhi khoa/MOC - Nhi khoa|Chỉ số APGAR sơ sinh]]
+- **⚠️ Nguy cơ & Dịch tễ:** [[1.5. Kho yếu tố nguy cơ/MOC - Kho Yếu Tố Nguy Cơ|MOC Kho Yếu Tố Nguy Cơ]], [[1.4. Kho dịch tễ học/MOC - Kho Dịch Tễ Học|MOC Kho Dịch Tễ Học]]
 
 ---
 
@@ -34,7 +39,8 @@ updated: "2026-08-11"
 | **02** | 🧪 **Hóa Sinh Y Học** | `Kho hóa sinh y học` | [[Kho hóa sinh y học/MOC - Kho Hóa Sinh Y Học|MOC Hóa Sinh Y Học]] |
 | **03** | 🩺 **Kỹ Năng Lâm Sàng** | `Kho kỹ năng lâm sàng` | [[Kho kỹ năng lâm sàng/MOC - Kho Kỹ Năng Lâm Sàng|MOC Kỹ năng Lâm sàng]] |
 | **04** | 🔍 **Tiếp Cận Lâm Sàng** | `Kho tiếp cận lâm sàng` | [[Kho tiếp cận lâm sàng/MOC - Kho Tiếp Cận Lâm Sàng|MOC Tiếp cận Lâm sàng]] |
-| **05** | 🌐 **Kho Dịch Tễ Học** | `Kho dịch tễ học` | [[Kho dịch tễ học/MOC - Kho Dịch Tễ Học|MOC Kho Dịch Tễ Học]] |
+| **05** | 🌐 **Kho Dịch Tễ Học** | `1.4. Kho dịch tễ học` | [[1.4. Kho dịch tễ học/MOC - Kho Dịch Tễ Học|MOC Kho Dịch Tễ Học]] |
+| **05.1** | ⚠️ **Kho Yếu Tố Nguy Cơ** | `1.5. Kho yếu tố nguy cơ` | [[1.5. Kho yếu tố nguy cơ/MOC - Kho Yếu Tố Nguy Cơ|MOC Kho Yếu Tố Nguy Cơ]] |
 | **06** | ⚡ **Kho Sinh Lý Bệnh** | `Kho sinh lý bệnh` | [[Kho sinh lý bệnh/MOC - Kho Sinh Lý Bệnh|MOC Kho Sinh Lý Bệnh]] |
 | **07** | 📋 **Kho Chẩn Đoán** | `Kho chẩn đoán` | [[Kho chẩn đoán/MOC - Kho Chẩn Đoán|MOC Kho Chẩn Đoán]] |
 | **08** | 💊 **Kho Phác Đồ Điều Trị** | `Kho phác đồ điều trị` | [[Kho phác đồ điều trị/MOC - Kho Phác Đồ Điều Trị|MOC Kho Phác Đồ Điều Trị]] |

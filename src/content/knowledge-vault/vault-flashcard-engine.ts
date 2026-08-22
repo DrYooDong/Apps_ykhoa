@@ -93,6 +93,26 @@ export const DEFAULT_MEDICAL_FLASHCARDS: MedicalFlashcard[] = [
     clinicalContext: 'Lưu ý: Tạm ngưng SGLT2i trước phẫu thuật lớn hoặc khi mắc bệnh cấp tính nặng để tránh Nhiễm toan Ceton Euglycemic (Đường huyết bình thường).',
     sourceArticleTitle: 'Dược thư: Dapagliflozin',
     difficulty: 'medium'
+  },
+  {
+    id: 'fc_fib4_masld',
+    specialty: 'Tiêu hóa - Gan mật',
+    category: 'diagnosis',
+    frontQuestion: 'Công thức tính chỉ số FIB-4 và hai ngưỡng điểm cắt (cut-off) để loại trừ hoặc phát hiện xơ hóa gan tiến triển (≥ F3) trong MASLD/MASH là bao nhiêu?',
+    backAnswer: '• Công thức: FIB-4 = (Tuổi x AST) / (Tiểu cầu x √ALT).\n• Ngưỡng âm tính cao (< 1.30): Độ đặc hiệu cao loại trừ xơ hóa tiến triển (NPV > 90%) → Quản lý tại chăm sóc ban đầu.\n• Ngưỡng dương tính cao (> 2.67): Nguy cơ xơ hóa nặng/xơ gan cao (PPV ~80%) → Chuyển chuyên khoa Gan Mật và làm FibroScan/ELF.',
+    clinicalContext: 'Khuyến cáo của AASLD 2023: Bắt buộc tính FIB-4 định kỳ cho bệnh nhân ĐTĐ típ 2 hoặc có ≥ 2 yếu tố nguy cơ tim mạch - chuyển hóa.',
+    sourceArticleTitle: 'Yếu tố nguy cơ MASLD & MASH',
+    difficulty: 'medium'
+  },
+  {
+    id: 'fc_pe_aspirin_risk',
+    specialty: 'Sản phụ khoa',
+    category: 'guideline',
+    frontQuestion: 'Theo ACOG và NICE, những thai phụ có yếu tố nguy cơ nào được chỉ định bắt buộc dùng Aspirin liều thấp (81-150 mg/ngày) dự phòng Tiền sản giật?',
+    backAnswer: '• Chỉ cần có ≥ 1 yếu tố nguy cơ CAO: Tiền sử tiền sản giật, Đa thai, Tăng huyết áp mạn, ĐTĐ típ 1 hoặc 2, Bệnh thận mạn, Bệnh tự miễn (Hội chứng kháng phospholipid, Lupus).\n• Hoặc có ≥ 2 yếu tố nguy cơ TRUNG BÌNH: Con so, BMI ≥ 30, Tuổi ≥ 35, Mẹ/chị bị tiền sản giật, Khoảng cách mang thai > 10 năm.\n\n→ Khởi trị: Từ tuần 12-16 đến 36 tuần của thai kỳ.',
+    clinicalContext: 'Uống vào buổi tối trước khi đi ngủ để tối ưu hóa hiệu quả ức chế thromboxane A2 bánh nhau.',
+    sourceArticleTitle: 'Yếu tố nguy cơ Tiền sản giật',
+    difficulty: 'medium'
   }
 ];
 
