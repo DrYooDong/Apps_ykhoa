@@ -1,97 +1,171 @@
 ---
-title: "Hồi sinh tim phổi cơ bản & nâng cao (CPR & ACLS)"
+title: "Phác Đồ Cấp Cứu: Hồi Sinh Tim Phổi Cơ Bản & Nâng Cao (BLS / ACLS) Chuẩn AHA / ERC"
 part: "P1"
 aliases:
   - "Hồi sinh tim phổi cơ bản & nâng cao (CPR & ACLS)"
+  - "ACLS Guidelines"
+  - "BLS CPR"
+  - "Cấp cứu ngừng tuần hoàn"
+  - "5H 5T"
 keywords:
-  - "hồi sinh tim phổi cơ bản & nâng cao (cpr & acls)"
-  - "tim mạch"
-  - "hồi sức - cấp cứu"
-specialty: "Tim mạch"
+  - "hồi sinh tim phổi cơ bản bls"
+  - "hồi sinh tim phổi nâng cao acls"
+  - "ép tim chất lượng cao"
+  - "khử rung sốc điện vf pvt"
+  - "adrenaline amiodarone"
+  - "nguyên nhân 5h 5t"
+  - "thán đồ etco2 rosc"
+  - "kiểm soát thân nhiệt ttm"
+specialty: "Hồi sức - Cấp cứu & Tim mạch"
 kho: "2.4. Kho phác đồ điều trị"
 tags:
   - "he-co-quan/tim-mach"
   - "loai/protocol"
   - "y-khoa/pddt"
-updated: "2026-08-21"
+icd10:
+  - "I46 (Ngừng tim - Cardiac arrest)"
+  - "I46.0 (Ngừng tim hồi phục được thành công - ROSC)"
+  - "I46.9 (Ngừng tim không đặc hiệu)"
+updated: "2026-08-22"
 ---
 
+# ⚡ Bách Khoa Phác Đồ: Hồi Sinh Tim Phổi Cơ Bản (BLS) & Nâng Cao (ACLS)
 
+> **Tóm tắt cốt lõi**: Ngừng tuần hoàn hô hấp là tình huống cấp cứu tối khẩn cấp trong y khoa. Thành công của việc cứu sống và bảo tồn chức năng thần kinh phụ thuộc vào **Ép tim ngoài lồng ngực chất lượng cao liên tục**, **Khử rung sớm cho nhịp sốc điện được (VF/pVT)**, **Sử dụng thuốc vận mạch/chống loạn nhịp đúng thời điểm**, **Theo dõi Thán đồ sóng $EtCO_2$** để nhận diện tuần hoàn tự nhiên (ROSC) và **Kiểm soát nguyên nhân có thể đảo ngược theo bảng 5H - 5T**.
 
-### 1. CƠ SỞ SINH LÝ BỆNH CỦA NGƯNG TUẦN HOÀN VÀ MỤC TIÊU HỒI SỨC
-Ngưng hô hấp tuần hoàn là tình trạng tim ngừng cung cấp máu cho cơ thể, dẫn đến thiếu oxy mô cấp tính và hoại tử tế bào không hồi phục, đặc biệt là ở não, chỉ trong vòng 4-5 phút. Quá trình ngưng tim, điển hình là do Rung thất (VF), diễn biến qua 3 pha sinh lý bệnh học quyết định đến chiến lược can thiệp:
-*   **Pha điện học (0 - 4 phút đầu):** [[Tim|Cơ tim]] còn dự trữ năng lượng (ATP) nhưng rối loạn về điện thế. Khử rung ([[Sốc]] điện) ngay lập tức là can thiệp tối ưu nhất với tỷ lệ thành công cao.
-*   **Pha tuần hoàn (4 - 10 phút):** Năng lượng cạn kiệt, sản phẩm chuyển hóa yếm khí tích tụ. Lúc này, [[Sốc]] điện đơn thuần thường thất bại. Việc ép tim chất lượng cao là bắt buộc để tạo ra **Áp lực tưới máu vành (Coronary Perfusion Pressure - CPP)**. Máu chỉ tưới vào mạch vành trong thì tâm trương (khi nhả ép ngực), do đó ép tim giúp cung cấp một lượng máu nhỏ tái tạo năng lượng cho [[Tim|cơ tim]] trước khi tiến hành sốc điện. Mọi sự gián đoạn ép tim sẽ làm CPP tụt xuống bằng 0 ngay lập tức.
-*   **Pha chuyển hóa (sau 10 phút):** Tổn thương tế bào lan rộng, chết tế bào theo chương trình và giải phóng yếu tố viêm. Biện pháp hồi sức truyền thống kém hiệu quả, đòi hỏi các can thiệp như kiểm soát thân nhiệt hoặc hỗ trợ tuần hoàn ngoài cơ thể (ECPR).
+---
 
-### 2. HỒI SINH TIM [[Phổi]] CƠ BẢN (BLS) - NỀN TẢNG CHUỖI SỰ SỐNG
-Hồi sinh tim [[Phổi]] cơ bản (BLS) nhằm duy trì tưới máu não và vành ở mức tối thiểu trong thời gian chờ can thiệp chuyên sâu. Thực hành BLS chuẩn tuân theo trình tự C-A-B (Circulation - Airway - Breathing).
+## 🏃 1. TIÊU CHUẨN ÉP TIM CHẤT LƯỢNG CAO (HIGH-QUALITY CPR)
 
-#### 2.1. Nhận diện sớm và kích hoạt hệ thống cấp cứu
-*   Xác định ngưng tim thông qua 3 dấu hiệu: Bất tỉnh, ngưng thở (hoặc thở ngáp/thở bất thường), và không bắt được mạch lớn (mạch cảnh hoặc bẹn).
-*   Tuyệt đối không dành quá 10 giây để cố gắng bắt mạch; nếu không chắc chắn, hãy xem như bệnh nhân không có mạch và bắt đầu CPR ngay. Đồng thời, gọi trợ giúp và yêu cầu mang máy khử rung tự động (AED) tới.
+```
+[BỘ 5 NGUYÊN TẮC VÀNG ÉP TIM CHẤT LƯỢNG CAO]
+├── 1. VỊ TRÍ & TƯ THẾ: Đặt gót bàn tay ở 1/2 dưới xương ức (chính giữa ngực), khóa thẳng khuỷu tay.
+├── 2. TẦN SỐ ÉP: 100 - 120 LẦN/PHÚT (Không ép quá nhanh > 120 l/p vì tim không kịp đổ đầy máu).
+├── 3. ĐỘ SÂU ÉP: 5 - 6 CM (ít nhất 2 inches ở người lớn, không ép sâu quá > 6 cm).
+├── 4. NHẢ ÉP HOÀN TOÀN (CHEST RECOIL): Để lồng ngực nở lại hết cỡ sau mỗi nhịp ép (để máu tĩnh mạch hồi lưu).
+└── 5. GIẢM THIỂU GIÁN ĐOẠN: Thời gian ép tim chiếm tỷ lệ ≥ 60-80% tổng thời gian (Chest Compression Fraction - CCF).
+     (Mỗi lần tạm dừng kiểm tra mạch/sốc điện TUYỆT ĐỐI KHÔNG QUÁ 10 GIÂY; Đổi người ép mỗi 2 phút).
+```
 
-#### 2.2. Ép tim ngoài lồng ngực chất lượng cao (C - Circulation)
-*   **Vị trí và tư thế:** Đặt gót bàn tay ở nửa dưới xương ức (chính giữa ngực), tay kia đặt lên trên và đan ngón tay. Người ép tim phải giữ thẳng cánh tay và dùng trọng lượng cơ thể để ép.
-*   **Kỹ thuật chuẩn:** Ép "Mạnh và Nhanh". Độ sâu ép từ 5 - 6 cm (ít nhất 2 inches) và tần số từ 100 - 120 lần/phút. 
-*   **Nhả ép hoàn toàn:** Phải để lồng ngực nở ra hoàn toàn sau mỗi nhịp ép (chest recoil) để máu tĩnh mạch hồi lưu về tim. Không tỳ đè lên ngực bệnh nhân giữa các nhịp ép.
-*   **Giảm thiểu gián đoạn:** Mọi gián đoạn ép tim không được quá 10 giây. Cần thay người ép tim mỗi 2 phút hoặc sớm hơn nếu thấy mỏi để đảm bảo chất lượng.
+- **Tỷ lệ Ép tim : Thổi ngạt**:
+  - Khi chưa có đường thở nâng cao: **$30:2$** (người lớn). Thổi ngạt trong $1\text{ giây}$ vừa đủ thấy ngực nhô, **tránh tăng thông khí quá mức**.
+  - Khi đã đặt ống Nội khí quản (ETT) hoặc Mask thanh quản (LMA): **Ép tim liên tục $100-120\text{ l/p}$ không dừng**, bóp bóng độc lập **$10\text{ nhịp/phút}$** (1 nhịp bóp mỗi 6 giây).
 
-#### 2.3. Kiểm soát đường thở và Thông khí (A - Airway & B - Breathing)
-*   Mở thông đường thở bằng nghiệm pháp ngửa đầu - nâng cằm. Nếu nghi ngờ chấn thương cột sống cổ, dùng kỹ thuật ấn hàm/nâng hàm.
-*   Tỷ lệ ép tim : thổi ngạt ở người lớn là 30:2 (chưa có đường thở nâng cao). Mỗi nhịp thổi kéo dài khoảng 1 giây, chỉ đủ để thấy lồng ngực nhô lên, tuyệt đối tránh thông khí quá mức (hyperventilation) vì sẽ làm tăng áp lực lồng ngực, cản trở hồi lưu tĩnh mạch và giảm cung lượng tim. Nếu người cấp cứu không thể thổi ngạt, cần ép tim liên tục không gián đoạn (Hands-only CPR).
+---
 
-#### 2.4. Khử rung sớm bằng AED
-Sử dụng AED ngay khi máy có sẵn. Bật máy, dán điện cực (thường ở dưới xương đòn phải và dưới nách trái), làm theo hướng dẫn của máy. Đảm bảo không ai chạm vào bệnh nhân khi máy đang phân tích nhịp và phát sốc. Ngay sau khi sốc điện, không kiểm tra mạch mà phải lập tức tiếp tục ép tim trong 2 phút.
+## 🧭 2. THUẬT TOÁN ACLS HAI NHÁNH (AHA / ERC ALGORITHM)
 
-### 3. HỒI SINH TIM PHỔI NÂNG CAO (ACLS) - TIẾP CẬN ĐA MÔ THỨC
-ACLS là các can thiệp y khoa chuyên sâu được thực hiện song song với việc duy trì BLS liên tục. Chiến lược điều trị được chia thành 2 nhánh chính dựa trên điện tâm đồ: Nhịp sốc điện được (Rung thất - VF / Nhịp nhanh thất vô mạch - pVT) và Nhịp không sốc điện được (Vô tâm thu - AS / Hoạt động điện vô mạch - PEA).
+```
+[XÁC ĐỊNH NGỪNG TUẦN HOÀN: Bất tỉnh, Không thở/Thở ngáp, Mất mạch cảnh ≤ 10s]
+                               │
+                               ▼
+        [KHỞI ĐỘNG CPR (30:2) + GẮN MÁY MONITOR / SỐC ĐIỆN AED NGAY]
+                               │
+                               ▼
+               [PHÂN TÍCH NHỊP TRÊN MONITOR / MÁY PHÁT SỐC]
+                               │
+         ┌─────────────────────┴─────────────────────┐
+         ▼                                           ▼
+[NHÁNH SỐC ĐIỆN ĐƯỢC (SHOCKABLE)]           [NHÁNH KHÔNG SỐC ĐƯỢC (NON-SHOCKABLE)]
+• Rung thất (Ventricular Fibrillation - VF) • Vô tâm thu (Asystole)
+• Nhanh thất vô mạch (Pulseless VT - pVT)   • Hoạt động điện vô mạch (PEA)
+         │                                           │
+         ▼                                           ▼
+[SỐC ĐIỆN NGAY: 120-200J Biphasic]          [TIÊM ADRENALINE 1MG IV/IO CÀNG SỚM CÀNG TỐT]
+• ÉP TIM TIẾP TỤC 2 PHÚT NGAY LẬP TỨC       • Ép tim liên tục 2 phút
+• Thiết lập đường truyền IV/IO              • Thiết lập đường truyền IV/IO
+• Sau 2 phút: Phân tích nhịp                • Tìm và xử trí nguyên nhân 5H - 5T
+         │                                           │
+         ▼ (Nếu vẫn VF/pVT)                          ▼ (Nếu vẫn Asystole/PEA)
+[SỐC ĐIỆN LẦN 2]                            [TIẾP TỤC CPR 2 PHÚT]
+• Ép tim 2 phút                             • Lặp lại Adrenaline 1mg mỗi 3 - 5 phút
+• TIÊM ADRENALINE 1MG IV/IO                 • Theo dõi EtCO2, siêu âm POCUS tìm nguyên nhân
+• Đặt đường thở nâng cao (ETT)                       │
+         │                                           │
+         ▼ (Nếu vẫn VF/pVT)                          │
+[SỐC ĐIỆN LẦN 3]                                     │
+• Ép tim 2 phút                                      │
+• TIÊM AMIODARONE 300MG IV/IO                        │
+  (hoặc Lidocaine 1 - 1.5 mg/kg)                     │
+• Lặp lại Adrenaline mỗi 3-5 phút                    │
+• Lần sốc sau: Amiodarone 150mg                      │
+         │                                           │
+         └─────────────────────┬─────────────────────┘
+                               │
+                               ▼ (Nếu EtCO2 tăng vọt > 35-40 mmHg hoặc Bắt được Mạch cảnh rõ)
+           [HỒI PHỤC TUẦN HOÀN TỰ NHIÊN (ROSC - RETURN OF SPONTANEOUS CIRCULATION)]
+```
 
-#### 3.1. Nhánh Nhịp Sốc Điện Được (VF / pVT)
-*   **Khử rung (Sốc điện):** Là phương pháp điều trị duy nhất chấm dứt VF/pVT. Mức năng lượng khuyến cáo là 120-200J (đối với máy sóng 2 pha - biphasic) hoặc 360J (đối với máy 1 pha - monophasic). Lần sốc tiếp theo nên dùng mức năng lượng tương đương hoặc cao hơn.
-*   **Chiến lược Sốc đơn (Single shock):** Sốc 1 lần rồi lập tức ép tim 2 phút, không kiểm tra mạch ngay sau sốc. Việc sốc liên tiếp (stacked shocks) không còn được khuyến cáo vì gây gián đoạn ép tim kéo dài.
-*   **Sử dụng thuốc:** 
-    *   *Adrenaline (Epinephrine):* 1mg tiêm tĩnh mạch (IV) hoặc trong xương (IO) mỗi 3-5 phút. **Lưu ý sinh lý bệnh:** Trong VF/pVT, Adrenaline chỉ được tiêm *sau khi lần sốc điện đầu tiên thất bại*, vì việc dùng thuốc quá sớm trong pha điện học có thể làm giảm đáp ứng sốc và gây bất lợi cho vi tuần hoàn.
-    *   *Thuốc chống loạn nhịp:* Amiodarone (300mg liều đầu, lặp lại 150mg nếu cần) hoặc Lidocaine (1-1.5 mg/kg liều đầu) được chỉ định nếu VF/pVT vẫn tồn tại sau 3 lần sốc điện.
-*   **Rung thất kháng trị (Refractory VF):** Nếu VF/pVT vẫn dai dẳng sau 3 lần sốc, hướng dẫn mới (AHA 2025) khuyến cáo chiến lược Khử rung tuần tự kép (DSED - dùng 2 máy sốc điện phóng điện gần như đồng thời) hoặc Thay đổi Vector (đổi vị trí dán pad từ trước-bên sang trước-sau) để thay đổi chiều dòng điện tác động lên cơ tim.
+---
 
-#### 3.2. Nhánh Nhịp Không Sốc Điện Được (AS / PEA)
-*   Trong tình trạng này, cơ tim có thể vẫn có hoạt động điện nhưng không tạo được co bóp cơ học đủ để sinh ra huyết áp (PEA), hoặc tim hoàn toàn mất hoạt động điện (Vô tâm thu).
-*   **Sử dụng thuốc:** Ép tim liên tục và tiêm Adrenaline 1mg (IV/IO) *càng sớm càng tốt* ngay khi thiết lập được đường truyền, sau đó lặp lại mỗi 3-5 phút. Không có chỉ định sốc điện trừ khi nhịp chuyển thành VF/pVT.
-*   **Trọng tâm điều trị:** Chìa khóa để hồi sức thành công nhóm này là nhanh chóng tìm và giải quyết nguyên nhân gốc rễ (Quy tắc 5H-5T).
+## 🧪 3. VAI TRÒ CỦA THÁN ĐỒ SÓNG (WAVEFORM CAPNOGRAPHY - EtCO2)
 
-### 4. KIỂM SOÁT ĐƯỜNG THỞ VÀ THEO DÕI TRONG ACLS
-#### 4.1. Đường thở nâng cao và Thông khí
-*   Đặt nội khí quản (ETI) hoặc sử dụng dụng cụ trên thanh môn (SGA như LMA, iGel) tùy thuộc vào kỹ năng của người cấp cứu. Quan trọng nhất là thao tác đặt ống không được làm gián đoạn ép tim.
-*   Khi đã có đường thở nâng cao, việc bóp bóng sẽ độc lập với ép tim. Cài đặt tần số thông khí là 10 lần/phút (1 nhịp mỗi 6 giây), đồng thời ép tim liên tục không dừng lại.
+Nồng độ $CO_2$ cuối thì thở ra ($EtCO_2$) phản ánh trực tiếp lưu lượng máu động mạch phổi do ép tim tạo ra:
+- **$EtCO_2 < 10\text{ mmHg}$**: Ép tim kém chất lượng hoặc tưới máu mô cực thấp $\to$ Bắt buộc cải thiện ngay kỹ thuật ép tim.
+- **$EtCO_2 \ge 20\text{ mmHg}$**: Ép tim chất lượng cao hiệu quả.
+- **$EtCO_2$ TĂNG ĐỘT NGỘT LÊN $> 35 - 40\text{ mmHg}$**: **DẤU HIỆU CHỈ ĐIỂM SỚM NHẤT CỦA HỒI PHỤC TUẦN HOÀN TỰ NHIÊN (ROSC)** (xuất hiện trước cả khi bắt được mạch cảnh $\to$ Giúp tránh việc dừng ép tim không cần thiết).
 
-#### 4.2. Theo dõi Thán đồ sóng (Waveform Capnography - EtCO2)
-Việc sử dụng EtCO2 là bắt buộc trong ACLS hiện đại với các vai trò sinh lý bệnh cốt lõi:
-1.  **Xác nhận đường thở:** Độ đặc hiệu 100% để đảm bảo ống nội khí quản nằm đúng trong khí quản.
-2.  **Đánh giá chất lượng CPR:** Lượng CO2 thở ra tỷ lệ thuận với cung lượng tim tạo ra do ép tim. Mục tiêu duy trì EtCO2 > 20 mmHg; nếu EtCO2 < 10 mmHg, cần ngay lập tức cải thiện chất lượng ép tim (độ sâu, tần số, nhả ép).
-3.  **Nhận diện ROSC:** Sự gia tăng đột ngột và bền vững của EtCO2 (thường > 40 mmHg) là chỉ dấu sớm nhất cho thấy tuần hoàn tự nhiên đã trở lại, thường xuất hiện trước khi bắt được mạch. Tránh việc ngừng ép tim không cần thiết.
+---
 
-#### 4.3. Ứng dụng [[Siêu âm]] tại giường (POCUS)
-[[Siêu âm]] giúp chẩn đoán nguyên nhân ngưng tim (như chèn ép tim, tràn khí màng phổi, thuyên tắc phổi giãn thất phải). Tuy nhiên, chỉ được thực hiện trong thời gian cửa sổ < 10 giây khi kiểm tra mạch, tuyệt đối không được ngừng ép tim chỉ để làm siêu âm.
+## 🔍 4. BẢNG NGUYÊN NHÂN CÓ THỂ ĐẢO NGƯỢC (5H - 5T) & CAN THIỆP ĐẶC HIỆU
 
-### 5. TÌM KIẾM VÀ ĐIỀU TRỊ CÁC NGUYÊN NHÂN CÓ THỂ ĐẢO NGƯỢC (5H - 5T)
-Bác sĩ lâm sàng cần liên tục đánh giá để loại trừ và can thiệp các nguyên nhân này:
-*   **5H:** 
-    *   Hypovolemia (Giảm thể tích tuần hoàn) -> Bù dịch nhanh, truyền máu.
-    *   Hypoxia (Thiếu oxy) -> Thông khí 100% oxy.
-    *   Hydrogen ion (Nhiễm toan chuyển hóa) -> Cân nhắc Bicarbonate.
-    *   Hypo-/Hyperkalemia (Hạ/Tăng Kali máu) -> Canxi/Insulin-Glucose (Tăng K+).
-    *   Hypothermia (Hạ thân nhiệt) -> Làm ấm tích cực.
-*   **5T:**
-    *   Tension pneumothorax (Tràn khí màng phổi áp lực) -> Chọc kim giải áp, dẫn lưu.
-    *   Tamponade, cardiac (Chèn ép tim cấp) -> Chọc hút dịch màng tim.
-    *   Toxins (Ngộ độc) -> Dùng Antidote đặc hiệu (VD: Naloxone cho Opioid, Nhũ dịch Lipid 20% cho ngộ độc thuốc tê).
-    *   Thrombosis, pulmonary (Thuyên tắc phổi) -> Tiêu sọ huyết, lấy huyết khối.
-    *   Thrombosis, coronary (Nhồi máu cơ tim) -> Chuẩn bị can thiệp mạch vành (PCI) khi có ROSC.
+| Nhóm 5H | Cơ Chế Sinh Bệnh Học | Xử Trí Can Thiệp Đặc Hiệu Cấp Cứu |
+|:---|:---|:---|
+| **1. Hypovolemia (Giảm thể tích)** | Mất máu ồ ạt, mất nước nặng $\to$ Tiền gánh $= 0$. | **Truyền nhanh dịch Ringer Lactate / NaCl 0.9%** hoặc Truyền máu khẩn cấp (Nhóm O âm). |
+| **2. Hypoxia (Thiếu oxy mô)** | Tắc nghẽn đường thở, đuối nước, suy hô hấp. | **Thông khí $100\%$ Oxy qua bóng Mask hoặc Ống Nội khí quản**. |
+| **3. Hydrogen ion (Toan máu nặng)** | Toan lactic sâu, DKA, ngộ độc toan. | Tăng thông khí thải $CO_2$; Tiêm **Natri Bicarbonate 8.4% ($1\text{ mEq/kg}$)**. |
+| **4. Hypo / Hyperkalemia (Hạ/Tăng Kali)** | Rối loạn điện giải gây rung thất hoặc ngừng tim. | • **Tăng Kali**: Tiêm **Calcium Gluconate 10% $10\text{ mL}$** + Insulin/Glucose + Bicarbonate.<br>• **Hạ Kali**: Bù Kali Clorid + **Magie Sulfat $2\text{g}$**. |
+| **5. Hypothermia (Hạ thân nhiệt)** | Thân nhiệt trung tâm $< 30-32^\circ\text{C}$. | Ủ ấm tích cực, truyền dịch ấm $40-42^\circ\text{C}$, Rửa màng phổi/bàng quang dịch ấm. |
 
-### 6. CHĂM SÓC SAU NGƯNG TIM (HỘI CHỨNG SAU NGƯNG TIM)
-Sự trở lại của tuần hoàn (ROSC) chỉ là thành công bước đầu. Bệnh nhân sẽ đối mặt với "Hội chứng sau ngưng tim" bao gồm tổn thương não thiếu máu, rối loạn chức năng cơ tim (choáng cơ tim) và đáp ứng viêm toàn thân. Nguyên tắc hồi sức bao gồm:
-*   **Kiểm soát Thân nhiệt Mục tiêu (TTM):** Duy trì thân nhiệt ổn định từ 32°C - 36°C trong ít nhất 24 giờ cho bệnh nhân còn [[Hôn mê]] sau ROSC. Sự hạ thân nhiệt giúp giảm tốc độ chuyển hóa của não (giảm CMRO2), ức chế chết tế bào và ngăn chặn gốc tự do. Đặc biệt phải tích cực điều trị để tránh [[Sốt]] (>37.5°C) trong 72 giờ đầu.
-*   **Huyết động và Hô hấp:** Tránh tụt huyết áp (duy trì Huyết áp tâm thu > 100 mmHg hoặc MAP > 65 mmHg) và duy trì oxy hóa máu 94-98% (không để thừa oxy quá mức), kiểm soát thông khí để đạt đẳng thán (PaCO2 35-45 mmHg).
-*   **Can thiệp tim mạch:** Chụp mạch vành và can thiệp (PCI) cấp cứu nếu bệnh nhân có điện tâm đồ ST chênh lên (STEMI) hoặc nghi ngờ nguyên nhân mạch vành.
-*   **Tiên lượng thần kinh:** Tiếp cận đa mô thức (lâm sàng, điện não đồ, hình ảnh học, biomarker) và chỉ nên thực hiện sau ít nhất 72 giờ (hoặc lâu hơn nếu có dùng TTM và thuốc an thần/giãn cơ) để tránh nhận định sai lệch về khả năng phục hồi của bệnh nhân.
+| Nhóm 5T | Cơ Chế Sinh Bệnh Học | Xử Trí Can Thiệp Đặc Hiệu Cấp Cứu |
+|:---|:---|:---|
+| **1. Tension Pneumothorax (Tràn khí áp lực)** | Áp lực màng phổi cực cao đè gập tĩnh mạch chủ. | **CHỌC KIM GIẢI ÁP KHẨN CẤP** KLS 2 đường trung đòn hoặc KLS 4-5 đường nách trước $\to$ Dẫn lưu ngực. |
+| **2. Tamponade (Chèn ép tim cấp)** | Dịch màng tim đè sụp buồng thất tâm trương. | **CHỌC HÚT DẪN LƯU DỊCH MÀNG TIM DƯỚI MŨI ỨC** dưới hướng dẫn siêu âm POCUS. |
+| **3. Toxins (Ngộ độc chất độc/thuốc)** | Thuốc chẹn Beta, Chẹn Canxi, Opioids, Thuốc tê. | • Ngộ độc Opioids: **Naloxone $0.4 - 2\text{ mg}$**.<br>• Ngộ độc Thuốc tê cục bộ: **Nhũ dịch Lipid 20% (Intralipid)**.<br>• Ngộ độc Thuốc chẹn Beta: **Glucagon $5-10\text{ mg}$** + High-dose Insulin. |
+| **4. Thrombosis, Pulmonary (Thuyên tắc phổi)** | Huyết khối bít tắc thân chung ĐM phổi. | Tiêm thuốc **Tiêu sợi huyết (Alteplase / rt-PA $50\text{ mg}$ bolus)** trong lúc hồi sinh tim phổi. |
+| **5. Thrombosis, Coronary (Nhồi máu cơ tim)** | Tắc nghẽn hoàn toàn động mạch vành chính. | Sau khi ROSC: **Chuyển thẳng Phòng Can thiệp Mạch vành (Cath-lab) khẩn cấp**. |
+
+---
+
+## 🧊 5. PHÁC ĐỒ CHĂM SÓC SAU NGỪNG TIM (POST-CARDIAC ARREST CARE BUNDLE)
+
+Ngay sau khi đạt được ROSC, bệnh nhân đối mặt với **Hội chứng sau ngừng tim (Post-Cardiac Arrest Syndrome)** gồm tổn thương não do thiếu máu - tái tưới máu, choáng cơ tim và đáp ứng viêm toàn thân:
+
+```
+[BỆNH NHÂN CÓ TUẦN HOÀN TỰ NHIÊN (ROSC)]
+                   │
+                   ▼
+  ┌────────────────────────────────────────────────────────────────────────┐
+  │ 1. HÔ HẤP: Đặt ETT, cài đặt máy thở duy trì SpO2 92-98% (Tránh thừa O2)│
+  │    và PaCO2 35 - 45 mmHg (Đẳng thán, tránh co mạch não).               │
+  │ 2. HUYẾT ĐỘNG: Duy trì Huyết áp trung bình MAP ≥ 65 - 80 mmHg          │
+  │    (Dùng Noradrenaline / Dobutamine nếu tụt áp).                       │
+  │ 3. TIM MẠCH: ĐO ECG 12 CHUYỂN ĐẠO NGAY $\to$ Nếu STEMI $\to$ Chụp PCI khẩn.│
+  │ 4. KIỂM SOÁT THÂN NHIỆT MỤC TIÊU (TTM):                                │
+  │    • Bệnh nhân còn hôn mê: Duy trì nhiệt độ 32°C - 36°C (hoặc 36-37.5°C)│
+  │      liên tục trong ít nhất 24 giờ.                                    │
+  │    • TUYỆT ĐỐI TRÁNH SỐT (Nhiệt độ > 37.5°C) trong vòng 72 giờ đầu.   │
+  │ 5. ĐÁNH GIÁ TIÊN LƯỢNG THẦN KINH: Tiếp cận đa mô thức (Lâm sàng, EEG,  │
+  │    CT sọ não, Men NSE) và CHỈ KẾT LUẬN SAU ÍT NHẤT 72 GIỜ.             │
+  └────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🧠 6. BỘ FLASHCARDS LÂM SÀNG CỐT LÕI (SPACED REPETITION)
+
+1. **Câu hỏi**: Trong hồi sinh tim phổi nâng cao (ACLS) đối với nhịp Rung thất (VF) hoặc Nhanh thất vô mạch (pVT), thời điểm nào bắt đầu tiêm Adrenaline và Amiodarone?
+   - **Đáp án**: **Adrenaline $1\text{mg}$** được tiêm sau lần sốc điện thứ 2 thất bại (và lặp lại mỗi 3-5 phút). **Amiodarone $300\text{mg}$** (hoặc Lidocaine $1-1.5\text{ mg/kg}$) được tiêm sau lần sốc điện thứ 3 thất bại (và lặp lại $150\text{mg}$ ở lần sốc tiếp theo nếu vẫn trơ).
+2. **Câu hỏi**: Sự gia tăng đột ngột của nồng độ $EtCO_2$ lên trên $35 - 40\text{ mmHg}$ trong quá trình ép tim cấp cứu có ý nghĩa sinh lý bệnh học là gì?
+   - **Đáp án**: Là chỉ số báo hiệu sớm và tin cậy nhất cho thấy **Đã hồi phục tuần hoàn tự nhiên (ROSC)**, do tim tự co bóp tống lượng lớn máu giàu $CO_2$ từ mô ngoại vi về phổi để thở ra.
+3. **Câu hỏi**: Mục tiêu kiểm soát thân nhiệt (TTM) ở bệnh nhân hôn mê sau khi có tuần hoàn tự nhiên (ROSC) là bao nhiêu và thời gian duy trì tối thiểu là bao lâu?
+   - **Đáp án**: Duy trì thân nhiệt mục tiêu ổn định trong khoảng **$32^\circ\text{C} - 36^\circ\text{C}$ (hoặc kiểm soát chủ động $< 37.5^\circ\text{C}$)** liên tục trong **ít nhất 24 giờ đầu**, sau đó làm ấm lại từ từ $0.25 - 0.5^\circ\text{C/giờ}$ và chống sốt tích cực trong 72 giờ.
+
+---
+
+## 📚 7. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+
+1. Panchal AR, et al. 2020 American Heart Association Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care. *Circulation*. 2020;142(16_suppl_2):S366-S468.
+2. Nolan JP, et al. European Resuscitation Council and European Society of Intensive Care Medicine Guidelines 2021: Post-resuscitation care. *Resuscitation*. 2021;161:220-269.
+3. Dankiewicz J, et al. Hypothermia versus Normothermia after Out-of-Hospital Cardiac Arrest (TTM2 Trial). *N Engl J Med*. 2021;384:2283-2294.
+4. Merchant RM, et al. Adult Basic and Advanced Life Support: 2020 American Heart Association Guidelines. *Circulation*. 2020;142:S366–S468.

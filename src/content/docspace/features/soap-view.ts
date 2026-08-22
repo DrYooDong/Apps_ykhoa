@@ -748,12 +748,9 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <span style="background:#f59e0b; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">A</span>
                 <span style="font-size:11px; font-weight:800; color:#92400e; text-transform:uppercase; letter-spacing:0.06em;">Đánh giá &amp; Chẩn đoán</span>
               </div>
-              <div style="display:flex; gap:4px; flex-wrap:wrap;">
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="assessment" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
+              <div style="display:flex; gap:4px; flex-wrap:wrap; align-items:center;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="assessment" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Trợ lý AI biện luận chẩn đoán">
                   <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnReasoningCoachSoap" style="color:#059669; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Ma trận Chẩn đoán phân biệt &amp; Sơ đồ tiếp cận theo triệu chứng">
-                  <i class="fa-solid fa-diagram-project"></i> Tiếp cận chẩn đoán
                 </button>
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:#0284c7; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Tra cứu mã ICD-10 &amp; Phác đồ điều trị chuẩn">
                   <i class="fa-solid fa-list-ol"></i> + ICD-10
@@ -761,10 +758,7 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreSoap" style="color:#d97706; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Kho Thang điểm Lâm sàng (SOFA, CURB65, CHA2DS2-VASc...)">
                   <i class="fa-solid fa-calculator"></i> + Thang điểm
                 </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnSearchEBM" style="padding:2px 8px; font-size:10px; height:auto; min-height:0;">
-                  <i class="fa-solid fa-book-medical"></i> Tra cứu EBM
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm" id="btnVaultKnowledgeSoap" style="background:rgba(2,132,199,0.1); color:var(--color-primary); border:1px solid var(--color-primary); padding:2px 8px; font-size:10px; height:auto; min-height:0;" title="Mở Kho Tri Thức Y Khoa (2.250+ Bài Viết)">
+                <button type="button" class="dsp-btn dsp-btn-sm" id="btnVaultKnowledgeSoap" style="background:rgba(2,132,199,0.1); color:var(--color-primary); border:1px solid var(--color-primary); padding:2px 9px; font-size:10px; font-weight:700; height:auto; min-height:0; display:inline-flex; align-items:center; gap:5px;" title="Tra cứu Toàn bộ Kho Tri Thức (Chẩn đoán, Tiếp cận, ICD-10, Thang điểm, EBM)">
                   <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức Vault
                 </button>
               </div>

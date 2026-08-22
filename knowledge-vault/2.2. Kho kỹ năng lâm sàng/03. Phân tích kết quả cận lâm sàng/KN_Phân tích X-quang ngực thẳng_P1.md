@@ -1,63 +1,126 @@
 ---
-title: "Phân tích X-quang ngực thẳng"
+title: "Kỹ Năng Lâm Sàng: Quy Trình Phân Tích X-Quang Ngực Thẳng (CXR) Chuẩn Y Khoa & Dấu Hiệu Bệnh Học"
 part: "P1"
 aliases:
   - "Phân tích X-quang ngực thẳng"
+  - "Quy trình đọc X-quang ngực"
+  - "Chest X-Ray ABCDE"
+  - "Silhouette Sign"
+  - "Air Bronchogram"
 keywords:
-  - "phân tích x-quang ngực thẳng"
-  - "huyết học - truyền máu"
-  - "03. phân tích kết quả cận lâm sàng"
-specialty: "Huyết học - Truyền máu"
+  - "quy trình đọc x-quang ngực thẳng"
+  - "tiêu chuẩn rip kỹ thuật"
+  - "dấu hiệu bóng mờ silhouette"
+  - "khí phế quản đồ air bronchogram"
+  - "chỉ số tim ngực ctr"
+  - "đường kerley b"
+  - "liềm hơi dưới hoành"
+specialty: "Chẩn đoán hình ảnh & Hô hấp"
 kho: "2.2. Kho kỹ năng lâm sàng"
 tags:
-  - "he-co-quan/huyet-hoc"
+  - "he-co-quan/ho-hap"
   - "loai/skill"
   - "y-khoa/kn"
-updated: "2026-08-21"
+icd10:
+  - "R91 (Kết quả hình ảnh học bất thường ở phổi và lồng ngực)"
+updated: "2026-08-22"
 ---
 
+# 🩻 Bách Khoa Kỹ Năng: Quy Trình Đọc X-Quang Ngực Thẳng (CXR) Chuẩn ABCDE
 
+> **Tóm tắt cốt lõi**: X-quang ngực thẳng (Chest X-Ray - CXR) là xét nghiệm chẩn đoán hình ảnh phổ biến nhất trong y khoa. Đọc phim có hệ thống theo tiêu chuẩn **Kiểm tra Kỹ thuật (RIP: Rotation, Inspiration, Penetration)** kết hợp quy trình **ABCDE (Airway, Breathing, Cardiac, Diaphragm, Everything else)** giúp phát hiện toàn diện tổn thương, từ đông đặc phổi, tràn dịch/tràn khí, suy tim ứ huyết cho đến thủng tạng rỗng.
 
-Giống như khi đọc các xét nghiệm máu, việc đọc [[X-quang]] ngực cũng đòi hỏi một cách tiếp cận có hệ thống để đảm bảo bạn không bỏ sót bất kỳ tổn thương quan trọng nào. 
+---
 
-Dưới đây là các bước chi tiết để đọc và phân tích một phim [[X-quang]] ngực một cách toàn diện dựa trên phương pháp **ABCDE**,:
+## 🎨 1. NĂM ĐẬM ĐỘ CƠ BẢN TRÊN PHIM X-QUANG QUY ƯỚC
 
-**Bước 1: Nhận diện và kiểm tra chất lượng phim**
-Trước khi tìm kiếm bệnh lý, bạn cần phải đảm bảo hình ảnh đạt chuẩn.
-*   **Hành chính:** Kiểm tra đúng tên bệnh nhân, ngày tháng chụp và chiều thế chụp (thường là PA - sau ra trước, hoặc AP - trước ra sau). Cần nhớ quy tắc: bên trái của phim là bên phải của bệnh nhân và ngược lại.
-*   **Độ xoay (Rotation):** Nhìn vào mỏm gai cột sống cổ cao xem chúng có nằm chính giữa hai đầu trong xương đòn không. Nếu mỏm gai lệch về một bên, bệnh nhân đã bị xoay người. Đánh giá độ xoay rất quan trọng vì một phim xoay có thể làm cho bóng [[Tim]] và trung thất trông to hoặc nhỏ hơn kích thước thật,.
-*   **Hít đủ sâu (Inspiration):** Bệnh nhân hít đủ sâu khi vòm hoành nằm ở mức cung sườn trước số 6 hoặc cung sườn sau số 8-9. Nếu hít nông, bóng [[Tim]] sẽ to giả tạo và các mạch máu ở nền [[Phổi]] sẽ nổi bật lên, dễ gây chẩn đoán nhầm là xẹp [[Phổi]] hoặc đông đặc,.
+```
+[ĐEN NHẤT] ──────────────────────────────────────────────────────────► [TRẮNG NHẤT]
+   Khí              Mỡ           Dịch / Mô Mềm      Xương / Vôi hóa       Kim Loại
+ (Phế nang)     (Dưới da, tạng)    (Tim, Máu, Gan)    (Xương sườn, Vôi)   (Clip, Máy tạo nhịp)
+```
 
-**Bước 2: Phân tích theo hệ thống ABCDE**
+---
 
-**A - Airway (Đường dẫn khí)**
-*   **Khí quản:** Kiểm tra xem khí quản có nằm ở đường giữa không hay bị lệch. Khí quản có thể bị kéo về phía tổn thương (ví dụ: xẹp phổi, xơ hóa) hoặc bị đẩy ra xa khỏi tổn thương (ví dụ: tràn dịch màng phổi lượng nhiều, tràn khí màng phổi áp lực),,. Hãy đảm bảo phim không bị xoay trước khi kết luận khí quản lệch.
-*   **Góc Carina:** Là góc chia đôi của phế quản gốc trái và phải, bình thường khoảng $40^\circ - 100^\circ$. Góc này bị doãng rộng (lớn hơn $100^\circ$) có thể là dấu hiệu gián tiếp của lớn nhĩ trái, tràn dịch màng ngoài tim, khối u dưới góc carina hoặc xẹp thùy trên phổi,.
+## 🔍 2. BƯỚC 0: KIỂM TRA CHẤT LƯỢNG KỸ THUẬT PHIM (TIÊU CHUẨN R.I.P)
 
-**B - Breathing (Hô hấp - Phổi và màng phổi)**
-Quy tắc cơ bản: "Đen là khí" và "trắng là không có khí".
-*   **So sánh phế trường:** So sánh mức độ nở đều và độ sáng của hai phổi từ vùng đỉnh, 1/3 trên, giữa và dưới.
-*   **Dấu hiệu "4 bóng mờ" (4 silhouettes):** Rất hữu ích để định vị tổn thương. 
-    *   Mất bờ bóng tim phải: Tổn thương/mất khí ở thùy giữa phổi phải,.
-    *   Mất bờ bóng tim trái: Tổn thương thùy lưỡi (tương đương thùy giữa bên trái).
-    *   Mất ranh giới vòm hoành (phải/trái): Tổn thương thuộc về thùy dưới của phổi tương ứng,,.
-*   **Đường bờ và màng phổi:** Kiểm tra góc sườn hoành (phải nhọn). Nếu tù hoặc có đường cong lõm, đó là tràn dịch màng phổi,. Nếu thấy bờ phổi bị tách rời khỏi thành ngực bởi một khoảng đen không có vân mạch máu, đó là tràn khí màng phổi,.
-*   **Dấu hiệu bệnh lý:** Tìm kiếm các tổn thương trắng bất thường như đông đặc (đi kèm dấu khí phế quản đồ),, xẹp phổi (kéo lệch trung thất), các khối u/nốt đơn độc hoặc đa ổ,, hang lao/áp xe, hoặc đường vách Kerley/[[Phù]] phổi (dấu cánh dơi) trong suy tim,,.
+Trước khi đọc bất kỳ tổn thương nào, **bắt buộc phải đánh giá 3 tiêu chuẩn kỹ thuật**:
 
-**C - Circulation (Tuần hoàn - Tim và Mạch máu lớn)**
-*   **Kích thước tim (Chỉ số tim ngực):** Độ rộng bóng tim không được vượt quá 1/2 tổng chiều rộng của lồng ngực trên phim PA,. Bóng tim trái chủ yếu tạo bởi thất trái, bóng tim phải do nhĩ phải tạo thành,. Lưu ý: Không đánh giá kích thước tim trên phim AP hoặc phim nằm vì tim luôn bị phóng đại và to giả tạo.
-*   **Trung thất:** Đánh giá độ rộng trung thất. Nếu rộng, có thể là phình/bóc tách động mạch chủ, lớn hạch bạch huyết (cạnh khí quản), tuyến giáp thòng, hoặc u tuyến ức,,.
-*   **Rốn phổi:** Tìm xem rốn phổi hai bên có kích thước và đậm độ tương đồng không. Lớn rốn phổi có thể do giãn động mạch phổi (tăng áp phổi), hạch phì đại (do lao, lymphoma, sarcoidosis) hoặc khối u trung tâm,,.
+| Tiêu Chuẩn Kỹ Thuật (R.I.P) | Cách Kiểm Tra Trên Phim X-Quang | Hệ Quả Nếu Phim Không Đạt Chuẩn |
+|:---|:---|:---|
+| **1. R - Rotation (Độ Xoay)** | Hai đầu trong xương đòn phải **cách đều mỏm gai sau đốt sống ngực C7/T1**. | Nếu bị xoay: Trung thất và bóng tim sẽ bị **lệch và bè to giả tạo**, một bên phế trường sáng hơn bên kia. |
+| **2. I - Inspiration (Hít Đủ Sâu)** | Vòm hoành phải nằm ở mức **cung sườn trước số 6** hoặc **cung sườn sau số 9 - 10**. | Nếu hít nông: Bóng tim to giả tạo, mạch máu đáy phổi bị ép dày đặc gây chẩn đoán nhầm thành Phù phổi hoặc Viêm phổi. |
+| **3. P - Penetration (Độ Xuyên Thấu)** | Tia vừa đủ khi thấy **lờ mờ các thân đốt sống ngực và đĩa đệm phía sau bóng tim** và thấy rõ các vân mạch máu sau tim. | • **Tia quá cứng (Over-penetrated)**: Phổi quá đen, dễ bỏ sót tổn thương thâm nhiễm mờ nhạt.<br>• **Tia quá mềm (Under-penetrated)**: Phổi quá trắng, dễ chẩn đoán nhầm đông đặc phổi. |
 
-**D - Disability (Tổn thương xương)**
-*   Khảo sát kĩ các gãy xương hoặc bất thường hình thái ở xương sườn, xương đòn, đai vai và cột sống,. 
-*   **Mẹo thực hành:** Hãy thử xoay ngang phim $90^\circ$. Mắt chúng ta vốn quen nhìn giải phẫu tim phổi, việc xoay phim sẽ "đánh lừa" não bộ và giúp mắt tập trung vào các cấu trúc đậm độ cao, từ đó dễ dàng phát hiện các đường gãy xương hoặc di căn hủy xương (các vùng đen nhỏ mất liên tục trong xương),,.
+> [!TIP]
+> **Phân biệt Thế chụp PA (Sau - Trước) vs Thế chụp AP (Trước - Sau)**:
+> - **Thế PA (Chụp đứng chuẩn)**: Bóng tim có kích thước thật, xương bả vai được kéo tách rời khỏi 2 phế trường, bóng hơi dạ dày nằm dưới vòm hoành trái.
+> - **Thế AP (Chụp tại giường/nằm)**: Bóng tim bị **phóng đại to hơn thực tế từ $15-20\%$**, xương bả vai nằm đè lọt vào trong phế trường $\to$ **KHÔNG ĐƯỢC KẾT LUẬN TIM TO TRÊN PHIM AP!**
 
-**E - Everything else (Những phần còn lại)**
-*   **Khí tự do ổ bụng (Tràn khí phúc mạc):** Tìm kiếm một viền đen (khí) rất mỏng nằm len lỏi ngay dưới vòm hoành phải hoặc trái. Đây là dấu hiệu rất nhạy của thủng tạng rỗng (như thủng dạ dày, ruột),,. Phân biệt cẩn [[Thận]] với bóng hơi dạ dày bình thường bên trái (đường trắng ngăn cách ở bóng hơi dạ dày sẽ dày hơn do bao gồm cả vòm hoành và thành dạ dày),,.
-*   **Tràn khí dưới da:** Sự hiện diện của các vệt khí (đen) lọt vào lớp hạ bì của da thành ngực, nách hoặc vùng cổ,. Có thể do chấn thương thủng đường hô hấp/tiêu hóa, hoặc sau phẫu thuật.
-*   **Bóng vú:** Khảo sát xem có bất đối xứng không. Nếu một bên phổi dưới trông đen (sáng) hơn hẳn bên kia, có thể bệnh nhân đã từng phẫu thuật đoạn nhũ (cắt vú) do ung thư,. 
-*   **Dị vật và thiết bị y tế:** Chú ý các thiết bị can thiệp trên người bệnh nhân như: kẹp phẫu thuật, máy tạo nhịp tim, máy khử rung, ống thông dạ dày (sonde), ống nội khí quản, van tim nhân tạo, đường truyền tĩnh mạch trung tâm hoặc các chuyển đạo điện tim (ECG),,,.
+---
 
-**Bước 3: Tổng hợp và kết luận**
-*   Sau khi phân tích một lượt từ A-E, hãy đưa ra một tóm tắt ngắn gọn. Ví dụ: "Tóm lại, đây là một phim X-quang ngực có bất thường với đông đặc thùy dưới phổi trái kèm tràn dịch màng phổi, không có bóng khí dưới cơ hoành.",. Việc này giúp bạn hệ thống lại các tổn thương chính và đưa ra hướng xử trí hoặc các xét nghiệm cần làm tiếp theo.
+## 🧭 3. QUY TRÌNH PHÂN TÍCH HỆ THỐNG THEO ABCDE
+
+```
+[A - AIRWAY: Đường thở]        ──► Khí quản thẳng trục? Góc Carina < 100°?
+                                     │
+                                     ▼
+[B - BREATHING: Nhu mô & MP]   ──► Đối xứng 2 phế trường? Dấu Silhouette? Khí phế quản đồ? Tù góc sườn hoành?
+                                     │
+                                     ▼
+[C - CARDIAC: Tim & Trung thất]──► Chỉ số Tim/Ngực (CTR ≤ 0.5)? Trung thất rộng? Cung ĐM chủ, Rốn phổi?
+                                     │
+                                     ▼
+[D - DIAPHRAGM: Vòm hoành]     ──► Vòm hoành (P cao hơn T 1.5-2cm)? Góc sườn hoành nhọn? LIỀM HƠI DƯỚI HOÀNH?
+                                     │
+                                     ▼
+[E - EVERYTHING ELSE: Khác]    ──► Xương sườn (gãy?), Mô mềm (tràn khí dưới da?), Ống NKQ & CVC đúng vị trí?
+```
+
+---
+
+## 🏛️ 4. BẢNG DẤU HIỆU X-QUANG KINH ĐIỂN & ỨNG DỤNG LÂM SÀNG
+
+| Dấu Hiệu X-Quang | Cơ Chế Hình Ảnh Học | Ý Nghĩa Chẩn Đoán Xác Định |
+|:---|:---|:---|
+| **Dấu Hiệu Bóng Mờ (Silhouette Sign của Felson)** | Khi 2 cấu trúc có cùng đậm độ mô mềm nằm tiếp xúc trực tiếp nhau trên cùng mặt phẳng giải phẫu, **đường ranh giới ngăn cách giữa chúng sẽ bị xóa nhòa**. | • **Xóa bờ tim phải** $\implies$ Đông đặc **Thùy giữa phổi phải**.<br>• **Xóa bờ tim trái** $\implies$ Đông đặc **Thùy lưỡi phổi trái**.<br>• **Xóa bờ vòm hoành** $\implies$ Đông đặc **Thùy dưới** tương ứng.<br>• **Xóa bờ quai ĐM chủ** $\implies$ Đông đặc **Phân thùy đỉnh - sau thùy trên trái**. |
+| **Dấu Khí Phế Quản Đồ (Air Bronchogram Sign)** | Các nhánh phế quản chứa khí (màu đen) nổi bật trên nền các phế nang xung quanh bị lấp đầy bởi dịch tiết, mủ, máu (màu trắng). | **Dấu hiệu chắc chắn của TỔN THƯƠNG PHẾ NANG / ĐÔNG ĐẶC PHỔI** (Viêm phổi thùy, Phù phổi cấp, ARDS). *(Loại trừ xẹp phổi do tắc phế quản lớn)*. |
+| **Đường Cong Damoiseau (Meniscus Sign)** | Dịch màng phổi tự do tạo thành đường cong có bề lõm quay lên trên và lên phía ngoài thành ngực. | **TRÀN DỊCH MÀNG PHỔI TỰ DO** (Cần $\ge 175-200\text{ mL}$ dịch để gây tù góc sườn hoành trên phim đứng; $\ge 50\text{ mL}$ trên phim nghiêng). |
+| **Đường Kerley B** | Các đường ngang ngắn ($1 - 2\text{ cm}$), mỏng ($1\text{ mm}$) vuông góc với màng phổi ở vùng đáy phổi ngoại vi. | **PHÙ MÔ KẼ PHỔI DO SUY TIM Ứ HUYẾT** (Áp lực mao mạch phổi bít $PCWP > 18-20\text{ mmHg}$). |
+| **Dấu Hiệu Liềm Hơi Dưới Cơ Hoành (Pneumoperitoneum)** | Dải sáng hình lưỡi liềm màu đen nằm len giữa vòm hoành phải và bóng gan. | **THỦNG TẠNG RỖNG CẤP CỨU** (Chỉ cần $1 - 2\text{ mL}$ khí tự do trong ổ phúc mạc là thấy được trên phim X-quang ngực đứng sau $10\text{ phút}$). |
+| **Dấu Chữ S Vàng Của Golden (Golden S-Sign)** | Rãnh liên thùy bé bị kéo cong lên trên ở phía ngoài nhưng bị đẩy phồng lồi xuống dưới ở phía trong tạo hình chữ "S" ngược. | **XẸP THÙY TRÊN PHỔI PHẢI DO KHỐI U PHẾ QUẢN TRUNG TÂM CHÈN ÉP** (Rất gợi ý Ung thư phế quản phổi). |
+
+---
+
+## 📏 5. VỊ TRÍ CHUẨN CỦA CÁC THIẾT BỊ Y TẾ TRÊN PHIM X-QUANG
+
+```
+[Ống Nội Khí Quản (ETT)]  ──► Đầu ống nằm CÁCH CARINA 3 - 5 CM (ngang mức đốt sống T2 - T4)
+                              (Nếu quá sâu sẽ chui vào Phế quản gốc phải gây xẹp phổi trái)
+
+[Catheter Tĩnh Mạch Trung Tâm (CVC)] ──► Đầu ống nằm tại CHỖ NỐI TĨNH MẠCH CHỦ TRÊN VÀ NHĨ PHẢI (Cavoatrial junction)
+                                        (Ngang mức góc Carina hoặc đốt sống T5 - T6)
+
+[Ống Thông Dạ Dày (Sonde Dạ Dày)]   ──► Thân ống đi thẳng qua đường giữa ngực, vượt qua cơ hoành,
+                                        ĐẦU ỐNG VÀ LỖ BÊN NẰM TRỌN TRONG BÓNG HƠI DẠ DÀY (Dưới hoành ≥ 10 cm)
+```
+
+---
+
+## 🧠 6. BỘ FLASHCARDS LÂM SÀNG CỐT LÕI (SPACED REPETITION)
+
+1. **Câu hỏi**: Chỉ số Tim/Ngực (Cardiothoracic Ratio - CTR) bình thường trên phim X-quang ngực thẳng chụp thế Sau-Trước (PA) là bao nhiêu và tại sao không được dùng phim chụp tại giường thế Trước-Sau (AP) để chẩn đoán tim to?
+   - **Đáp án**: CTR bình thường **$\le 0.50$** ($50\%$). Không dùng phim AP vì ở thế AP tim nằm gần bóng phát tia hơn $\to$ Bóng tim bị phóng đại to giả tạo từ $15-20\%$.
+2. **Câu hỏi**: Dấu hiệu "Xóa bờ tim phải" (Silhouette Sign) trên phim X-quang ngực thẳng giúp định vị tổn thương đông đặc nằm chính xác tại thùy phổi nào?
+   - **Đáp án**: **Thùy giữa của phổi phải** (Middle lobe), vì thùy giữa phổi phải nằm cùng mặt phẳng giải phẫu tiếp xúc trực tiếp với bờ nhĩ phải của tim.
+3. **Câu hỏi**: Vị trí lý tưởng của đầu ống Nội khí quản (ETT) trên phim chụp X-quang kiểm tra sau đặt là ở đâu?
+   - **Đáp án**: Nằm ở đoạn giữa khí quản, **cách ngã ba góc Carina từ $3\text{ đến }5\text{ cm}$** (tương ứng ngang mức bờ dưới đốt sống ngực $T_2 - T_4$) khi bệnh nhân để đầu ở tư thế trung gian.
+
+---
+
+## 📚 7. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+
+1. Herring W. *Learning Radiology: Recognizing the Basics*. 5th ed. Elsevier; 2023.
+2. Felson B. *Chest Roentgenology*. WB Saunders; 1973.
+3. Corne J, Carroll M. *Chest X-Ray Made Easy*. 5th ed. Elsevier; 2022.
+4. Goodman LR. *Felson's Principles of Chest Roentgenology: A Programmed Text*. 5th ed. Elsevier; 2020.

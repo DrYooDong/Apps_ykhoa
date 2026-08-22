@@ -121,5 +121,44 @@ export interface FlashcardReviewState {
   lastReviewedAt: string;
 }
 
+export interface EncyclopediaQuickFacts {
+  icdCode?: string;
+  epidemiologySummary?: string;
+  goldStandardDx?: string;
+  firstLineRx?: string;
+  criticalAlert?: string;
+  prognosisSummary?: string;
+  guidelineRef?: string;
+}
 
+export interface EncyclopediaSection {
+  tier: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  title: string;
+  badge: string;
+  icon: string;
+  color: string;
+  summary: string;
+}
 
+export interface VaultEncyclopediaData {
+  quickFacts?: EncyclopediaQuickFacts;
+  molecularMechanismSvg?: string;
+  comparisonTableHtml?: string;
+  pearls?: string[];
+  redFlags?: string[];
+  stepwiseTreatment?: {
+    step: string;
+    action: string;
+    details: string;
+  }[];
+  dosingAdjustments?: {
+    condition: string;
+    adjustment: string;
+  }[];
+  landmarkTrials?: {
+    name: string;
+    year: string;
+    finding: string;
+    impact: string;
+  }[];
+}

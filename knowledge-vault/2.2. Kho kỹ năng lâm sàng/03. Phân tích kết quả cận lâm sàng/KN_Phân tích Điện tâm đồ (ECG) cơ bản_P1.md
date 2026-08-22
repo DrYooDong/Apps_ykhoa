@@ -1,80 +1,175 @@
 ---
-title: "Phân tích Điện tâm đồ (ECG) cơ bản"
+title: "Kỹ Năng Lâm Sàng: Quy Trình Đọc Điện Tâm Đồ (ECG) Chuẩn Y Khoa & Chẩn Đoán Bệnh Học"
 part: "P1"
 aliases:
   - "Phân tích Điện tâm đồ (ECG) cơ bản"
+  - "Quy trình đọc ECG"
+  - "ECG Interpretation Guide"
+  - "Sgarbossa Criteria"
+  - "Sokolow-Lyon"
 keywords:
-  - "phân tích điện tâm đồ (ecg) cơ bản"
-  - "đại cương"
-  - "03. phân tích kết quả cận lâm sàng"
-specialty: "Đại cương"
+  - "quy trình đọc điện tâm đồ"
+  - "trục điện tim"
+  - "dày thất trái cornell sokolow"
+  - "định vị nhồi máu cơ tim ecg"
+  - "block nhánh william marrow"
+  - "tiêu chuẩn sgarbossa cải biên"
+  - "qtc bazett xoắn đỉnh"
+  - "sóng u hạ kali"
+specialty: "Tim mạch & Cận lâm sàng"
 kho: "2.2. Kho kỹ năng lâm sàng"
 tags:
-  - "he-co-quan/tong-quat"
+  - "he-co-quan/tim-mach"
   - "loai/skill"
   - "y-khoa/kn"
-updated: "2026-08-21"
+icd10:
+  - "R94.3 (Kết quả bất thường của thăm dò chức năng tim mạch - ECG)"
+  - "I44 / I45 (Rối loạn dẫn truyền trong tim - AV Block & Bundle Branch Block)"
+updated: "2026-08-22"
 ---
 
+# ⚡ Bách Khoa Kỹ Năng: Quy Trình Phân Tích Điện Tâm Đồ (ECG) Chuẩn Lâm Sàng
 
+> **Tóm tắt cốt lõi**: Điện tâm đồ (ECG) là công cụ thăm dò tim mạch cơ bản và tối quan trọng nhất. Quy trình đọc ECG chuẩn y khoa gồm **7 bước logic có hệ thống**: (1) Kiểm tra Chuẩn hóa $\to$ (2) Đánh giá Nhịp & Tần số $\to$ (3) Xác định Trục điện tim $\to$ (4) Khảo sát Dẫn truyền (PR, QRS, QTc) $\to$ (5) Đánh giá Phì đại buồng tim $\to$ (6) Phân tích Thiếu máu - Tổn thương - Hoại tử cơ tim (Q-ST-T) $\to$ (7) Nhận diện Rối loạn điện giải & Ngộ độc thuốc.
 
-Để đọc và phân tích một bản điện tâm đồ (ECG) một cách chính xác và không bỏ sót tổn thương, bạn cần tuân thủ một quy trình phân tích có hệ thống. Trước khi bắt đầu, hãy luôn kiểm tra **chuẩn hóa (calibration)** của máy: tốc độ giấy chạy chuẩn là $25~mm/gi\hat{a}y$ (1 ô nhỏ = 0,04 giây, 1 ô lớn = 0,20 giây) và test điện thế chuẩn là $1~mV=10~mm$ (2 ô lớn).
+---
 
-Dưới đây là 9 bước cơ bản để đọc và phân tích ECG:
+## 📏 1. BƯỚC 0: KIỂM TRA ĐIỀU KIỆN KỸ THUẬT VÀ CHUẨN HÓA (CALIBRATION)
 
-**Bước 1: Đánh giá Tần số và Sự đều đặn (Rate and Regularity)**
-*   **Sự đều đặn:** Quan sát khoảng cách giữa các đỉnh R (khoảng RR) xem nhịp [[Tim]] có đều hay không.
-*   **Tính tần số [[Tim]]:**
-    *   *Nếu nhịp đều:* Lấy 300 chia cho số ô vuông lớn giữa 2 sóng R liên tiếp (Tần số = 300 / số ô lớn). Để chính xác hơn, có thể lấy 1500 chia cho số ô vuông nhỏ giữa 2 R.
-    *   *Mức bình thường:* Dao động từ 60 - 100 lần/phút. Nếu < 60 lần/phút là nhịp chậm (bradycardia), nếu > 100 lần/phút là nhịp nhanh (tachycardia).
+Trước khi đọc bất kỳ sóng nào, **bắt buộc phải nhìn vào góc bản ghi ECG**:
+- **Tốc độ chạy giấy chuẩn**: **$25\text{ mm/giây}$**
+  - $1\text{ ô nhỏ} (1\text{ mm}) = \mathbf{0.04\text{ giây}} (40\text{ ms})$
+  - $1\text{ ô lớn} (5\text{ mm}) = \mathbf{0.20\text{ giây}} (200\text{ ms})$
+- **Biên độ điện thế chuẩn**: **$1\text{ mV} = 10\text{ mm}$** (2 ô lớn chiều dọc).
+  - Nếu biên độ là $1\text{ mV} = 5\text{ mm}$ (nửa test), điện thế đo được phải nhân đôi.
 
-**Bước 2: Phân tích Nhịp (Rhythm)**
-Xác định xem nhịp tim có xuất phát từ nút xoang (nhịp xoang bình thường) hay không. Nhịp xoang đặc trưng bởi các tiêu chuẩn:
-*   Có sóng P đi trước mỗi phức bộ QRS.
-*   Sóng P dương ở các chuyển đạo DII, aVF và luôn âm ở aVR.
-*   Hình dạng sóng P đồng nhất trên cùng một chuyển đạo.
-*   Khoảng PR hằng định.
+---
 
-**Bước 3: Xác định Trục điện tim (Electrical Axis)**
-Trục điện tim được xác định nhanh dựa vào chiều hướng của phức bộ QRS ở 2 chuyển đạo vuông góc là **DI và aVF**:
-*   **Trục trung gian (Bình thường):** QRS dương ở cả DI và aVF (từ $0^\circ$ đến $+90^\circ$).
-*   **Trục lệch trái:** QRS dương ở DI, âm ở aVF (từ $0^\circ$ đến $-90^\circ$). Gặp trong phì đại thất trái, blốc phân nhánh trái trước, hoặc nhồi máu cơ tim thành dưới.
-*   **Trục lệch phải:** QRS âm ở DI, dương ở aVF (từ $+90^\circ$ đến $\pm180^\circ$). Gặp trong phì đại thất phải, tâm phế cấp/mạn, hoặc blốc phân nhánh trái sau.
+## 🧭 2. QUY TRÌNH 7 BƯỚC PHÂN TÍCH ECG CÓ HỆ THỐNG
 
-**Bước 4: Đánh giá Sóng P (Khử cực nhĩ)**
-Sóng P đại diện cho quá trình lan truyền xung điện khử cực 2 tâm nhĩ. 
-*   **Bình thường:** Thời gian < 0,12 giây (< 3 ô nhỏ) và biên độ < 2,5 mm (< 2,5 ô nhỏ).
-*   **Bất thường:**
-    *   **P phế (P pulmonale):** Sóng P cao, nhọn (biên độ $\ge 2,5~mm$) ở DII. Đây là dấu hiệu của **dày/lớn nhĩ phải** (thường do bệnh [[Phổi]] mạn tính, hẹp van 3 lá, tâm phế mạn).
-    *   **P hai lá (P mitrale):** Sóng P rộng ($\ge 0,12$ giây) và có khấc hình lưng lạc đà ở DII; pha âm rộng ở V1. Đây là dấu hiệu của **dày/lớn nhĩ trái** (thường do bệnh van hai lá, [[Tăng huyết áp]]).
+```
+[BƯỚC 1: TẦN SỐ & NHỊP (Rate & Rhythm)] ──► Nhịp xoang? Tần số = 300 / số ô lớn (hoặc 1500 / số ô nhỏ)
+                                                 │
+                                                 ▼
+[BƯỚC 2: TRỤC ĐIỆN TIM (Cardiac Axis)]    ──► Xem DI & aVF (Trung gian / Lệch Trái / Lệch Phải / Vô định)
+                                                 │
+                                                 ▼
+[BƯỚC 3: DẪN TRUYỀN (PR, QRS, QTc)]       ──► PR: 0.12-0.20s | QRS < 0.12s | QTc (Nam < 0.45s, Nữ < 0.46s)
+                                                 │
+                                                 ▼
+[BƯỚC 4: PHÌ ĐẠI BUỒNG TIM (Hypertrophy)] ──► Dày nhĩ (P phế / P 2 lá) | Dày thất (Sokolow-Lyon, Cornell)
+                                                 │
+                                                 ▼
+[BƯỚC 5: THIẾU MÁU & HOẠI TỬ CƠ TIM]      ──► Sóng Q hoại tử | Đoạn ST chênh lên/xuống | Sóng T âm nhọn
+                                                 │
+                                                 ▼
+[BƯỚC 6: BLỐC NHÁNH & RỐI LOẠN DẪN TRUYỀN]──► RBBB vs LBBB (WiLLiaM MaRRoW) | Tiêu chuẩn Sgarbossa
+                                                 │
+                                                 ▼
+[BƯỚC 7: ĐIỆN GIẢI & NGỘ ĐỘC THUỐC]       ──► Tăng/Hạ Kali (Sóng T nhọn vs Sóng U), Hạ Canxi (QT dài)
+```
 
-**Bước 5: Khoảng PR / PQ (Dẫn truyền nhĩ - thất)**
-Đo từ đầu sóng P đến đầu phức bộ QRS, phản ánh thời gian dẫn truyền từ nhĩ qua nút nhĩ thất xuống thất.
-*   **Bình thường:** 0,12 - 0,20 giây (hoặc 0,21 giây ở người lớn tuổi).
-*   **PR kéo dài (> 0,20 giây):** Là dấu hiệu của **Blốc nhĩ thất độ 1** (1st-degree AV block), có thể do suy động mạch vành, thấp tim, ngộ độc thuốc (digitalis, chẹn beta) hoặc viêm cơ tim.
-*   **PR ngắn (< 0,12 giây):** Gặp trong các **hội chứng kích thích sớm (tiền kích thích)** như hội chứng Wolff-Parkinson-White (WPW - kèm sóng delta và QRS rộng), hội chứng Lown-Ganong-Levine, hoặc nhịp bộ nối.
+---
 
-**Bước 6: Phức bộ QRS (Khử cực thất)**
-Đại diện cho sự khử cực và co bóp của tâm thất. Cần chú ý 3 yếu tố:
-*   **Thời gian QRS:** Bình thường từ 0,05 - 0,10 giây (và phải $<0,12$ giây). Nếu **QRS dãn rộng ($\ge 0,12$ giây)**, gợi ý blốc nhánh (trái hoặc phải), nhịp tự thất, ngoại tâm thu thất, hoặc hội chứng WPW.
-*   **Biên độ:** 
-    *   Nếu biên độ quá cao, kết hợp với các chỉ số như Sokolow-Lyon (S ở V1 + R ở V5/V6 $\ge 35~mm$), gợi ý **phì đại tâm thất** (trái hoặc phải). 
-    *   Điện thế thấp (tổng biên độ < 5mm ở chuyển đạo chi hoặc < 10mm ở chuyển đạo ngực) gặp trong tràn dịch màng ngoài tim, khí phế thũng, béo phì, suy giáp.
-*   **Sóng Q bệnh lý (Q hoại tử):** Khi thời gian sóng Q $\ge 0,03 - 0,04$ giây và độ sâu $\ge 1/4$ biên độ sóng R tương ứng. Đây là dấu hiệu rất nhạy của **nhồi máu cơ tim** (cũ hoặc đang tiến triển).
+## 📐 3. XÁC ĐỊNH TRỤC ĐIỆN TIM NHANH (DI VÀ aVF)
 
-**Bước 7: Đoạn ST**
-Đoạn ST nằm từ cuối phức bộ QRS (điểm J) đến đầu sóng T. Bình thường đoạn ST nằm ngang trên đường đẳng điện.
-*   **ST chênh lên (Elevation):** Dấu hiệu cực kỳ quan trọng của **tổn thương cơ tim xuyên thành (Nhồi máu cơ tim cấp - STEMI)** với hình ảnh ST chênh lên lồi. Nếu ST chênh lên lõm (saddle-shaped) lan tỏa ở nhiều chuyển đạo kèm PR chênh xuống, đó là dấu hiệu của **viêm màng ngoài tim cấp**. Co thắt mạch vành ([[Đau ngực|đau thắt ngực]] Prinzmetal) cũng gây ST chênh lên.
-*   **ST chênh xuống (Depression):** Dấu hiệu của **thiếu máu cơ tim dưới nội tâm mạc** (NSTEMI, cơn [[Đau ngực|đau thắt ngực]]), hoặc do phì đại thất, ngộ độc Digoxin (chênh xuống hình đáy chén).
+| Chiều Hướng Phức Bộ QRS ở DI | Chiều Hướng Phức Bộ QRS ở aVF | Kết Luận Trục Điện Tim | Góc Trục Điện Tim | Nguyên Nhân Bệnh Lý Điển Hình |
+|:---:|:---:|:---|:---:|:---|
+| **DƯƠNG ($\uparrow$)** | **DƯƠNG ($\uparrow$)** | **TRỤC TRUNG GIAN (Bình thường)** | $0^\circ \text{ đến } +90^\circ$ | Người khỏe mạnh bình thường. |
+| **DƯƠNG ($\uparrow$)** | **ÂM ($\downarrow$)** | **TRỤC LỆCH TRÁI (LAD)** | $-30^\circ \text{ đến } -90^\circ$ | Phì đại thất trái, Blốc phân nhánh trái trước (LAFB), NMCT thành dưới cũ. |
+| **ÂM ($\downarrow$)** | **DƯƠNG ($\uparrow$)** | **TRỤC LỆCH PHẢI (RAD)** | $+90^\circ \text{ đến } +180^\circ$ | Phì đại thất phải, Tâm phế mạn (COPD), Thuyên tắc phổi cấp, Blốc phân nhánh trái sau (LPFB). |
+| **ÂM ($\downarrow$)** | **ÂM ($\downarrow$)** | **TRỤC VÔ ĐỊNH (Tây Bắc)** | $-90^\circ \text{ đến } 180^\circ$ | Nhịp nhanh thất (VT), Khí phế thũng nặng, Mắc nhầm điện cực. |
 
-**Bước 8: Sóng T (Tái cực thất)**
-Sóng T thường rộng, hai nhánh không đối xứng, dương ở các chuyển đạo DI, DII, V3-V6 và âm ở aVR.
-*   **Sóng T cao, nhọn, đối xứng:** Xuất hiện rất sớm trong nhồi máu cơ tim cấp (Hyperacute T wave) hoặc là dấu hiệu điển hình của **tăng Kali máu**.
-*   **Sóng T đảo ngược (âm) và đối xứng:** Là biểu hiện của **thiếu máu cục bộ cơ tim** hoặc nhồi máu cơ tim. Nó cũng có thể xuất hiện thứ phát do phì đại thất, blốc nhánh, thuyên tắc [[Phổi]] hoặc tổn thương [[Hệ thần kinh trung ương]] (sóng T khổng lồ).
+---
 
-**Bước 9: Khoảng QT (hoặc QTc) và Sóng U**
-*   **Khoảng QT:** Đo từ đầu QRS đến cuối sóng T, phản ánh toàn bộ thời gian tâm thu của thất. Do QT thay đổi theo nhịp tim nên cần dùng QT hiệu chỉnh (QTc). Bình thường $QTc \le 0,45$ giây ở nam và $\le 0,46$ giây ở nữ. 
-    *   **QT kéo dài** cực kỳ nguy hiểm vì nó tiềm ẩn nguy cơ gây ra loạn nhịp đe dọa tính mạng như **xoắn đỉnh (Torsades de pointes)**. Nguyên nhân thường do rối loạn điện giải (hạ K+, hạ Ca2+, hạ Mg2+), ngộ độc thuốc (thuốc chống loạn nhịp, thuốc trầm cảm ba vòng) hoặc hội chứng QT dài bẩm sinh.
-*   **Sóng U:** Là một sóng nhỏ theo sau sóng T. Nếu sóng U nổi bật, cao vượt cả sóng T, đây là dấu hiệu đặc trưng của tình trạng **hạ Kali máu nặng**. Ngược lại, sóng U đảo ngược có thể báo hiệu thiếu máu cơ tim.
+## 🏛️ 4. BẢNG TIÊU CHUẨN ĐÁNH GIÁ PHÌ ĐẠI BUỒNG TIM
 
-*Tóm lại, khi đọc ECG, bạn cần phân tích các bước một cách logic từ tần số, nhịp, trục cho đến chi tiết từng sóng (P, QRS, T) và các đoạn/khoảng (PR, ST, QT) để đảm bảo không bỏ sót các dấu hiệu sinh tồn ẩn giấu trên bản điện tim.*
+| Buồng Tim Phì Đại | Tiêu Chuẩn Điện Tâm Đồ Chuẩn Mực | Giá Trị Bình Thường / Bất Thường |
+|:---|:---|:---|
+| **Lớn Nhĩ Phải (P Phế - P Pulmonale)** | Sóng P cao nhọn đối xứng ở chuyển đạo DII, DIII, aVF. | **Biên độ sóng $P \ge 2.5\text{ mm}$** ($0.25\text{ mV}$) ở DII. |
+| **Lớn Nhĩ Trái (P Hai Lá - P Mitrale)** | Sóng P rộng, có khấc lưng lạc đà ở DII; Pha âm rộng ở V1. | **Thời gian $P \ge 0.12\text{ giây}$** ở DII; **Pha âm sóng $P$ ở V1 sâu $\ge 1\text{ mm}$ và rộng $\ge 0.04\text{s}$** (Chỉ số Morris). |
+| **Dày Thất Trái (LVH) - Sokolow-Lyon** | Tổng biên độ sóng S ở V1 và sóng R ở V5 (hoặc V6). | **$S_{V1} + R_{V5 \text{ hoặc } V6} \ge \mathbf{35\text{ mm}}$** (ở người $> 35$ tuổi). |
+| **Dày Thất Trái (LVH) - Cornell Voltage** | Đo biên độ $R$ ở aVL kết hợp $S$ ở V3. | • **Nam: $R_{aVL} + S_{V3} > \mathbf{28\text{ mm}}$**<br>• **Nữ: $R_{aVL} + S_{V3} > \mathbf{20\text{ mm}}$** |
+| **Dày Thất Phải (RVH)** | Sóng R chiếm ưu thế ở V1, sóng S chiếm ưu thế ở V6. | • **$R/S \text{ ở V1} > 1$** (hoặc $R_{V1} \ge 7\text{ mm}$).<br>• $S \text{ ở V5/V6} \ge 7\text{ mm}$.<br>• Kèm trục lệch phải ($> +90^\circ$). |
+
+---
+
+## 🗺️ 5. ĐỊNH VỊ VÙNG NHỒI MÁU CƠ TIM CẤP (STEMI) & NHÁNH ĐỘNG MẠCH VÀNH THỦ PHẠM
+
+```
+  ┌───────────────────────┬───────────────────────────────────┬────────────────────────────────────────┐
+  │ Vùng Nhồi Máu Cơ Tim  │ Chuyển Đạo Có ST Chênh Lên (Tổn Thương) │ Động Mạch Vành Thủ Phạm (Culprit Vessel)│
+  ├───────────────────────┼───────────────────────────────────┼────────────────────────────────────────┤
+  │ Thành Dưới (Inferior) │ DII, DIII, aVF                    │ ĐM Vành Phải (RCA 85%) hoặc Mũ (LCx)   │
+  │ Thất Phải (RV)        │ V3R, V4R (Bắt buộc đo khi NMCT dưới)│ Nhánh bờ thất phải của RCA            │
+  │ Thành Sau Thực Thụ    │ V7, V8, V9 (ST chênh xuống soi gương V1-V3)│ Nhánh liên thất sau (PDA của RCA/LCx) │
+  │ Mỏm Tim (Apical)      │ V3, V4                            │ ĐM Liên thất trước đoạn xa (Distal LAD)│
+  │ Vách Liên Thất        │ V1, V2                            │ Nhánh vách của ĐM LAD                 │
+  │ Thành Trước (Anterior)│ V1, V2, V3, V4                    │ ĐM Liên thất trước (LAD)               │
+  │ Trước Rộng (Extensive)│ V1 đến V6, DI, aVL                │ Thân chung ĐM Vành Trái (LMCA) / LAD gần│
+  │ Thành Bên Cao (Lateral)│ DI, aVL                          │ Nhánh chéo (Diagonal) của LAD hoặc LCx │
+  └───────────────────────┴───────────────────────────────────┴────────────────────────────────────────┘
+```
+
+---
+
+## ⚡ 6. PHÂN BIỆT BLỐC NHÁNH PHẢI (RBBB) VS BLỐC NHÁNH TRÁI (LBBB)
+
+Áp dụng câu khẩu quyết kinh điển: **"WiLLiaM MaRRoW"**:
+
+```
+           [BLỐC NHÁNH TRÁI - LBBB (WiLLiaM)]
+• V1 có dạng chữ "W" (Sóng S sâu rộng, QS hoặc rS dãn rộng ≥ 0.12s)
+• V6 có dạng chữ "M" (Sóng R rộng đỉnh có khấc hai đỉnh - Notched M-shaped R wave)
+• Mất sóng Q sinh lý ở V5, V6, DI.
+
+           [BLỐC NHÁNH PHẢI - RBBB (MaRRoW)]
+• V1 có dạng chữ "M" (Dạng tai thỏ rsR' hoặc rSR' dãn rộng ≥ 0.12s)
+• V6 có dạng chữ "W" (Sóng S sâu, rộng, tù đầu)
+```
+
+### Tiêu Chuẩn Sgarbossa Cải Biên (Smith-Modified) Chẩn Đoán STEMI Trên Nền LBBB:
+1. **ST chênh lên cùng chiều $\ge 1\text{ mm}$** với phức bộ QRS ở bất kỳ chuyển đạo nào (**5 điểm** - Rất đặc hiệu).
+2. **ST chênh xuống cùng chiều $\ge 1\text{ mm}$** ở các chuyển đạo V1, V2 hoặc V3 (**3 điểm**).
+3. **ST chênh lên trái chiều quá mức**: Tỷ số $|ST / S| \ge \mathbf{0.25}$ (tức là ST chênh lên trái chiều $\ge 25\%$ biên độ sóng S đi trước - Tiêu chuẩn cải biên của TS. Stephen Smith).
+
+---
+
+## 🧪 7. CÁC BIẾN ĐỔI ĐIỆN TÂM ĐỒ TRONG RỐI LOẠN ĐIỆN GIẢI NGUY HIỂM
+
+```
+[TĂNG KALI MÁU: K+ > 5.5 - 8.0 mmol/L]
+  Giai đoạn 1 (K+ > 5.5): SÓNG T CAO NHỌN ĐỐI XỨNG đáy hẹp ("Dạng lều lính gác")
+  Giai đoạn 2 (K+ > 6.5): PR kéo dài, Sóng P dẹt dần rồi biến mất hoàn toàn
+  Giai đoạn 3 (K+ > 7.0): Phức bộ QRS dãn rộng, hòa lẫn vào sóng T
+  Giai đoạn 4 (K+ > 8.0): DẠNG SÓNG HÌNH SIN (Sine wave) ──► RUNG THẤT & NGỪNG TIM
+
+[HẠ KALI MÁU: K+ < 3.5 mmol/L]
+  - Đoạn ST chênh xuống nhẹ
+  - Sóng T dẹt hoặc âm
+  - XUẤT HIỆN SÓNG U NỔI BẬT KHỔNG LỒ (Sóng U > Sóng T tạo hình ảnh giả QT dài)
+
+[HẠ CANXI MÁU: Ca2+ < 2.1 mmol/L]
+  - KHOẢNG QT KÉO DÀI ĐƠN THUẦN (Do đoạn ST kéo dài đẳng điện, sóng T bình thường)
+  - Nguy cơ bùng phát Rối loạn nhịp XOẮN ĐỈNH (Torsades de Pointes).
+```
+
+---
+
+## 🧠 8. BỘ FLASHCARDS LÂM SÀNG CỐT LÕI (SPACED REPETITION)
+
+1. **Câu hỏi**: Khi nào một khoảng QTc được coi là kéo dài bất thường và nguy cơ lâm sàng nguy hiểm nhất của QTc kéo dài là gì?
+   - **Đáp án**: Khi $QTc > 0.45\text{ giây}$ ($450\text{ ms}$) ở nam giới và $> 0.46\text{ giây}$ ($460\text{ ms}$) ở nữ giới (nguy cơ cực cao khi $QTc > 500\text{ ms}$). Nguy cơ nguy hiểm nhất là kích hoạt hiện tượng "R-on-T" gây rối loạn nhịp thất chết người: **Xoắn đỉnh (Torsades de Pointes)** tiến triển thành Rung thất.
+2. **Câu hỏi**: Tiêu chuẩn điện thế Sokolow-Lyon chẩn đoán Dày thất trái (LVH) được tính như thế nào?
+   - **Đáp án**: Tổng biên độ sóng $S$ sâu nhất ở chuyển đạo V1 cộng với biên độ sóng $R$ cao nhất ở chuyển đạo V5 hoặc V6: **$S_{V1} + R_{V5 \text{ hoặc } V6} \ge 35\text{ mm}$** (ở người lớn $> 35$ tuổi).
+3. **Câu hỏi**: Dấu hiệu điện tâm đồ sớm nhất của tình trạng Tăng Kali máu là gì?
+   - **Đáp án**: **Sóng T cao, nhọn, đối xứng với chân sóng hẹp** (Peaked T wave), quan sát rõ nhất ở các chuyển đạo trước ngực (V2 đến V4).
+
+---
+
+## 📚 9. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+
+1. Surawicz B, et al. AHA/ACCF/HRS Recommendations for the Standardization and Interpretation of the Electrocardiogram. *Circulation*. 2009;119(10):e235-e240.
+2. Smith SW, et al. Diagnosis of ST-elevation myocardial infarction in the presence of left bundle branch block with the ST-elevation to S-wave ratio in a modified Sgarbossa rule. *Ann Emerg Med*. 2012;60(6):766-776.
+3. Hampton JR. *The ECG Made Easy*. 9th ed. Elsevier; 2019.
+4. Goldberger AL, et al. *Goldberger's Clinical Electrocardiography: A Simplified Approach*. 9th ed. Elsevier; 2018.

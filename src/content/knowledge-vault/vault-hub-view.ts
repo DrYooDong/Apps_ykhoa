@@ -5,7 +5,7 @@
 
 import { VAULT_CATALOG, getKhoSummaries, filterVaultArticles, getArticleByIdOrPath, KHO_DEFINITIONS } from './vault-loader';
 import { VaultFilterState, VaultArticle } from './types';
-import { renderPathwayRibbon, processMarkdownWithToc, renderTocHtml, renderReaderToolbar, renderAnnotationsBoxHtml, attachReaderProEvents } from './vault-reader-pro';
+import { renderPathwayRibbon, processMarkdownWithToc, renderTocHtml, renderReaderToolbar, renderAnnotationsBoxHtml, renderEncyclopediaQuickFactsHtml, attachReaderProEvents } from './vault-reader-pro';
 import { renderFlowchartStudioHtml, attachFlowchartEvents, CLINICAL_FLOWCHARTS_REGISTRY } from './vault-flowchart-engine';
 import { renderFlashcardStudioHtml, attachFlashcardEvents, DEFAULT_MEDICAL_FLASHCARDS } from './vault-flashcard-engine';
 
@@ -88,7 +88,7 @@ export function renderVaultHubView(): string {
       </div>
 
       <!-- Group Filter Tabs -->
-      <div style="display:flex; gap:8px; margin-bottom:1.25rem; flex-wrap:wrap;">
+      <div style="display:flex; gap:8px; margin-bottom:1rem; flex-wrap:wrap;">
         <button class="vault-group-btn ${state.activeGroup === 'ALL' ? 'active' : ''}" data-group="ALL" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'ALL' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'ALL' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
           <i class="fa-solid fa-layer-group"></i> Tất cả Phân hệ (${totalArticles})
         </button>
@@ -107,6 +107,29 @@ export function renderVaultHubView(): string {
         <button class="vault-group-btn ${state.activeGroup === 'Thực Hành & Bổ Trợ' ? 'active' : ''}" data-group="Thực Hành & Bổ Trợ" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Thực Hành & Bổ Trợ' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Thực Hành & Bổ Trợ' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
           📊 3. Thực Hành & Bổ Trợ
         </button>
+      </div>
+
+      <!-- Live Search & Control Bar at Top -->
+      <div class="vault-control-bar" style="margin-bottom:1.5rem;">
+        <div class="vault-search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input 
+            type="text" 
+            id="vault-search-input" 
+            class="vault-search-input" 
+            placeholder="Tìm kiếm trong ${allFiltered.length} bài viết (chẩn đoán, triệu chứng, cơ chế, thuốc, ICD-10...)" 
+            value="${escapeHtml(state.searchQuery)}"
+          />
+        </div>
+
+        <select id="vault-specialty-select" class="vault-filter-select">
+          <option value="ALL">Tất cả Chuyên khoa (${availableSpecialties.length})</option>
+          ${availableSpecialties.map(spec => `
+            <option value="${escapeHtml(spec)}" ${state.activeSpecialty === spec ? 'selected' : ''}>
+              ${escapeHtml(spec)}
+            </option>
+          `).join('')}
+        </select>
       </div>
 
       ${state.activeGroup === 'FLOWCHART' ? `
@@ -136,35 +159,19 @@ export function renderVaultHubView(): string {
         `).join('')}
       </div>
 
-      <!-- Control Bar -->
-      <div class="vault-control-bar">
-        <div class="vault-search-box">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input 
-            type="text" 
-            id="vault-search-input" 
-            class="vault-search-input" 
-            placeholder="Tìm kiếm bài viết trong ${allFiltered.length} bài (chẩn đoán, cơ chế, thuốc, vi sinh...)" 
-            value="${escapeHtml(state.searchQuery)}"
-          />
+      <!-- Results Section & Counter -->
+      <div id="vault-results-section" style="margin-top:1.5rem; margin-bottom: 1rem; font-size: 0.95rem; color: var(--vault-muted); display: flex; justify-content: space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <div>
+          ${state.activeKho !== 'ALL' && KHO_DEFINITIONS[state.activeKho] ? `
+            <span style="font-weight:700; color:var(--vault-primary); margin-right:8px;">
+              <i class="fa-solid fa-folder-open"></i> Đang xem Kho: ${KHO_DEFINITIONS[state.activeKho].name}
+            </span>
+          ` : ''}
+          <span>Hiển thị <strong>${displayedArticles.length}</strong> / <strong>${allFiltered.length}</strong> bài viết</span>
         </div>
-
-        <select id="vault-specialty-select" class="vault-filter-select">
-          <option value="ALL">Tất cả Chuyên khoa (${availableSpecialties.length})</option>
-          ${availableSpecialties.map(spec => `
-            <option value="${escapeHtml(spec)}" ${state.activeSpecialty === spec ? 'selected' : ''}>
-              ${escapeHtml(spec)}
-            </option>
-          `).join('')}
-        </select>
-      </div>
-
-      <!-- Results Count -->
-      <div style="margin-bottom: 1rem; font-size: 0.9rem; color: var(--vault-muted); display: flex; justify-content: space-between; align-items:center;">
-        <span>Hiển thị <strong>${displayedArticles.length}</strong> / <strong>${allFiltered.length}</strong> bài viết</span>
         ${state.searchQuery || state.activeKho !== 'ALL' || state.activeSpecialty !== 'ALL' || state.activeGroup !== 'ALL' ? `
-          <button id="vault-reset-filter" style="background:none; border:none; color:var(--vault-primary); cursor:pointer; font-size:0.85rem; font-weight:600;">
-            <i class="fa-solid fa-rotate-left"></i> Đặt lại tất cả bộ lọc
+          <button id="vault-reset-filter" style="background:rgba(2,132,199,0.08); border:1px solid rgba(2,132,199,0.25); border-radius:6px; padding:4px 10px; color:var(--vault-primary); cursor:pointer; font-size:0.85rem; font-weight:600;">
+            <i class="fa-solid fa-rotate-left"></i> Đặt lại bộ lọc (Hiện tất cả)
           </button>
         ` : ''}
       </div>
@@ -269,6 +276,12 @@ export function attachVaultEvents(container: HTMLElement): void {
       state.activeSpecialty = 'ALL';
       state.displayLimit = 48;
       renderAndRebind(container);
+
+      // Auto scroll to results section so user immediately sees articles
+      const resultsSection = container.querySelector('#vault-results-section');
+      if (resultsSection) {
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 
@@ -383,9 +396,10 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
   try {
     const isSpaMode = !window.location.pathname.includes('/src/content/knowledge-vault/');
     const baseVaultPath = isSpaMode ? './knowledge-vault/' : '../../../knowledge-vault/';
-    const url = `${baseVaultPath}${article.relPath}`;
+    const encodedRelPath = article.relPath.split('/').map(encodeURIComponent).join('/');
+    const url = `${baseVaultPath}${encodedRelPath}`;
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Không thể nạp tệp');
+    if (!res.ok) throw new Error(`Không thể nạp tệp (${res.status})`);
     const rawMarkdown = await res.text();
 
     // 1. Clinical Pathway Ribbon
@@ -456,6 +470,7 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
       ${toolbarHtml}
       ${vaultPathBar}
       ${metadataBanner}
+      ${renderEncyclopediaQuickFactsHtml(article)}
       ${flowchartSection}
       <div class="vault-reader-pro-grid">
         <div class="vault-article-content">

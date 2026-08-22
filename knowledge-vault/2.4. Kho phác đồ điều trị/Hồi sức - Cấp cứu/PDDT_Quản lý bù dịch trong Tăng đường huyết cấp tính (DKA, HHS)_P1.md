@@ -1,69 +1,147 @@
 ---
-title: "Quản lý bù dịch trong Tăng đường huyết cấp tính (DKA, HHS)"
+title: "Phác Đồ Cấp Cứu: Xử Trí Nhiễm Toan Ceton (DKA) & Tăng Áp Lực Thẩm Thấu (HHS) Chuẩn ADA"
 part: "P1"
 aliases:
   - "Quản lý bù dịch trong Tăng đường huyết cấp tính (DKA, HHS)"
+  - "Phác đồ DKA HHS ADA 2024"
+  - "Nhiễm toan ceton đái tháo đường"
+  - "Hội chứng tăng áp lực thẩm thấu"
+  - "Euglycemic DKA"
 keywords:
-  - "quản lý bù dịch trong tăng đường huyết cấp tính (dka, hhs)"
-  - "tim mạch"
-  - "hồi sức - cấp cứu"
-specialty: "Tim mạch"
+  - "phác đồ cấp cứu dka hhs"
+  - "nhiễm toan ceton đái tháo đường"
+  - "bù dịch ringer lactate"
+  - "insulin regular tĩnh mạch"
+  - "quản lý kali máu 3.3"
+  - "euglycemic dka sglt2i"
+  - "tiêu chuẩn giải quyết dka"
+specialty: "Nội tiết & Hồi sức Cấp cứu"
 kho: "2.4. Kho phác đồ điều trị"
 tags:
-  - "he-co-quan/tim-mach"
+  - "he-co-quan/noi-tiet"
   - "loai/protocol"
   - "y-khoa/pddt"
-updated: "2026-08-21"
+icd10:
+  - "E10.1 (ĐTĐ típ 1 có nhiễm toan ceton)"
+  - "E11.1 (ĐTĐ típ 2 có nhiễm toan ceton)"
+  - "E11.0 (ĐTĐ típ 2 có hôn mê tăng áp lực thẩm thấu - HHS)"
+updated: "2026-08-22"
 ---
 
+# 🩸 Bách Khoa Phác Đồ: Xử Trí Cấp Cứu Nhiễm Toan Ceton (DKA) & Tăng Áp Lực Thẩm Thấu (HHS)
 
+> **Tóm tắt cốt lõi**: Khủng hoảng tăng đường huyết cấp tính gồm hai thái cực: **Nhiễm toan Ceton do đái tháo đường (DKA)** (thiếu hụt insulin tuyệt đối, toan hóa máu tăng Anion Gap) và **Hội chứng Tăng áp lực thẩm thấu máu (HHS)** (đường huyết cực cao $> 600\text{ mg/dL}$, mất nước sâu sắc $> 8-10\text{ L}$). Bốn trụ cột điều trị chuẩn mực theo ADA gồm: **(1) Hồi sức dịch tinh thể cân bằng $\to$ (2) Liệu pháp Insulin tĩnh mạch (chỉ khi $K^+ \ge 3.3$) $\to$ (3) Bù Kali cẩn trọng $\to$ (4) Chuyển tiếp an toàn sang Insulin tiêm dưới da**.
 
-Chào đồng nghiệp. Dựa trên các báo cáo đồng thuận mới nhất của Hiệp hội Đái tháo đường Hoa Kỳ (ADA 2024), Báo cáo về Khủng hoảng Tăng đường huyết (2025), và các đánh giá hệ thống về hồi sức tích cực (2025), phác đồ xử trí bù dịch trong biến chứng cấp nhiễm toan ceton (DKA) và hội chứng tăng áp lực thẩm thấu (HHS) đã có những bước chuyển dịch quan trọng so với các hướng dẫn cũ. 
+---
 
-Dưới đây là phân tích chi tiết về cơ chế, cập nhật lựa chọn dịch truyền và phác đồ ứng dụng trên lâm sàng.
+## 🏛️ 1. BẢNG TIÊU CHUẨN CHẨN ĐOÁN & PHÂN BIỆT ĐỐI ĐẦU: DKA VS HHS (ADA 2024)
 
-### 1. Cơ chế bệnh sinh của tình trạng [[Mất nước]] và vai trò bù dịch
+| Chỉ Số Đánh Giá Sinh Hóa | DKA Thể Nhẹ (Mild) | DKA Thể Vừa (Moderate) | DKA Thể NẶNG (Severe) | Hội Chứng Tăng ALTT (HHS) |
+|:---|:---:|:---:|:---:|:---:|
+| **Glucose Huyết Tương** | $> 250\text{ mg/dL}$ ($> 13.9$) | $> 250\text{ mg/dL}$ | $> 250\text{ mg/dL}$ | **$> \mathbf{600\text{ mg/dL}}$ ($> 33.3\text{ mmol/L}$)** |
+| **pH Máu Động Mạch** | $7.25 - 7.30$ | $7.00 - 7.24$ | **$< \mathbf{7.00}$** | **$> 7.30$** (Không toan hóa) |
+| **Bicarbonate ($\text{HCO}_3^-$)** | $15 - 18\text{ mEq/L}$ | $10 - < 15\text{ mEq/L}$ | **$< \mathbf{10\text{ mEq/L}}$** | **$> 18\text{ mEq/L}$** |
+| **Ceton Máu ($\beta$-hydroxybutyrate)** | Dương tính ($> 3.0\text{ mmol/L}$) | Dương tính ($> 3.0\text{ mmol/L}$) | **Dương tính RẤT CAO ($> 3-5$)** | Âm tính hoặc tăng nhẹ ($< 3.0$) |
+| **Khoảng Trống Anion Gap** | $> 10\text{ mEq/L}$ | $> 12\text{ mEq/L}$ | **$> \mathbf{12\text{ mEq/L}}$** | Bình thường hoặc $< 12\text{ mEq/L}$ |
+| **Áp Lực Thẩm Thấu Hiệu Dụng** | Thay đổi | Thay đổi | Thay đổi | **$> \mathbf{320\text{ mOsm/kg}}$** |
+| **Tình Trạng Tri Giác** | Tỉnh táo hoàn toàn | Tỉnh hoặc ngủ gà | **Ngủ sâu, lú lẫn, tiền hôn mê** | **Lơ mơ, sững sờ hoặc HÔN MÊ SÂU** |
 
-Trong DKA và HHS, sự thiếu hụt [[Insulin]] kết hợp với sự gia tăng các hormone đối kháng (glucagon, catecholamine, cortisol) làm giảm sử dụng glucose ở ngoại vi và tăng sản xuất glucose tại [[Gan]]. Hậu quả là đường huyết tăng cao vượt ngưỡng hấp thu của [[Thận]], gây lợi niệu thẩm thấu dữ dội. Quá trình này kéo theo sự [[Mất nước]] và các chất điện giải (Natri, Kali, Clo, Phosphate), dẫn đến giảm thể tích tuần hoàn và suy giảm tưới máu [[Thận]]. 
+$$\text{Áp lực thẩm thấu huyết tương hiệu dụng} = 2 \times [\text{Na}^+] + \frac{\text{Glucose (mg/dL)}}{18} \quad (\text{Bình thường: } 275 - 295\text{ mOsm/kg})$$
 
-Việc bù dịch tĩnh mạch là can thiệp **tiên quyết và quan trọng nhất**, mang lại các hiệu quả sinh lý:
-*   Phục hồi thể tích nội mạch, cải thiện tưới máu mô và giảm sản xuất acid lactic.
-*   Tăng cường tưới máu thận, giúp đào thải trực tiếp lượng glucose và thể ceton dư thừa qua nước tiểu.
-*   Giảm áp lực thẩm thấu và giảm nồng độ các hormone đối kháng, từ đó cải thiện tình trạng đề kháng [[Insulin]]. Việc bù dịch đơn thuần có thể làm [[Hạ đường huyết|giảm đường huyết]] từ 50-70 mg/dL/giờ (2.8-3.9 mmol/L/giờ) ngay cả khi chưa dùng insulin.
+---
 
-### 2. Cập nhật về lựa chọn dịch truyền: Ưu tiên Tinh thể cân bằng
+## 🧭 2. BỐN TRỤ CỘT ĐIỀU TRỊ CẤP CỨU TOÀN DIỆN
 
-Trước đây, dung dịch NaCl 0.9% (Normal Saline - NS) là tiêu chuẩn vàng. Tuy nhiên, các hướng dẫn lâm sàng hiện tại (ADA 2024 và các phân tích gộp 2025) đã **ưu tiên sử dụng dung dịch tinh thể cân bằng (Balanced crystalloids như Ringer Lactate hoặc Plasma-Lyte)** làm dịch hồi sức ban đầu. 
+```
+                                [BỆNH NHÂN XÁC ĐỊNH DKA HOẶC HHS]
+                                                │
+       ┌────────────────────────────────────────┼────────────────────────────────────────┐
+       ▼                                        ▼                                        ▼
+[TRỤ CỘT 1: HỒI SỨC DỊCH]            [TRỤ CỘT 2: QUẢN LÝ KALI]               [TRỤ CỘT 3: INSULIN REGULAR]
+• Ưu tiên TINH THỂ CÂN BẰNG          • BẮT BUỘC ĐO KALI TRƯỚC!              • Chỉ dùng khi K+ ≥ 3.3 mmol/L!
+  (Ringer Lactate / Plasma-Lyte)     • Nếu K+ < 3.3: BÙ KALI TRƯỚC,         • Liều: 0.1 UI/kg/h truyền liên tục
+• Giờ 1-4: 500 - 1000 mL/h             TRÌ HOÃN INSULIN!                      (hoặc 0.14 UI/kg/h không bolus)
+• Giờ sau: 250 - 500 mL/h            • Nếu K+ 3.3 - 5.2: Bù 20-30 mEq/L     • Mục tiêu hạ đường huyết:
+• Khi Glucose < 200-250 mg/dL:         vào dịch truyền (giữ K+ 4.0 - 5.0)     50 - 75 mg/dL/giờ.
+  BẮT BUỘC THÊM DEXTROSE 5-10%       • Nếu K+ > 5.2: Không bù Kali.
+```
 
-*   **Cơ sở lâm sàng:** Việc truyền một lượng lớn NaCl 0.9% cung cấp hàm lượng Clo rất cao, dễ dẫn đến toan chuyển hóa tăng clo máu (hyperchloremic metabolic acidosis). Tình trạng này trên lâm sàng rất dễ gây nhầm lẫn với việc DKA chưa được giải quyết (khiến bác sĩ duy trì insulin tĩnh mạch không cần thiết).
-*   **Bằng chứng:** Các nghiên cứu cho thấy sử dụng tinh thể cân bằng giúp giải quyết tình trạng toan máu nhanh hơn 20-30% (thời gian trung bình 13.0 giờ so với 16.9 giờ của NS), giảm thiểu rối loạn điện giải và rút ngắn thời gian nằm viện. NaCl 0.9% vẫn được chấp nhận nếu tinh thể cân bằng không có sẵn.
+---
 
-### 3. Phác đồ bù dịch chi tiết trên lâm sàng
+## 💧 3. CHI TIẾT PHÁC ĐỒ HỒI SỨC DỊCH & DEXTROSE (ADA 2024)
 
-**Bước 1: Hồi sức thể tích ban đầu (Giờ thứ 1 đến thứ 4)**
-*   Đối với bệnh nhân DKA hoặc HHS không có tổn thương [[Tim]]/thận nặng, bắt đầu truyền ngay dung dịch tinh thể cân bằng hoặc NaCl 0.9% với tốc độ **500 - 1.000 mL/giờ trong 2-4 giờ đầu tiên**.
+1. **Lựa Chọn Dịch Truyền Hồi Sức Ban Đầu**:
+   - **Khuyến cáo ưu tiên**: **Dung dịch Tinh thể cân bằng (Ringer Lactate hoặc Plasma-Lyte)** giúp giải quyết toan máu nhanh hơn $20-30\%$ và tránh biến chứng Toan chuyển hóa tăng Clo máu do truyền quá nhiều NaCl 0.9%.
+   - **Tốc độ truyền**: **$500 - 1.000\text{ mL/giờ}$ trong 2 - 4 giờ đầu**.
+2. **Điểm Cắt Bổ Sung Đường Dextrose (Cực Kỳ Quan Trọng)**:
+   - Khi đường huyết giảm xuống **$< 200\text{ mg/dL}$ (trong DKA)** hoặc **$< 250 - 300\text{ mg/dL}$ (trong HHS)**:
+   - **BẮT BUỘC CHUYỂN SANG DỊCH TRUYỀN CÓ CHỨA DEXTROSE 5% HOẶC 10%** (Pha trong Ringer Lactate hoặc NaCl 0.45%).
+   - **Lý do y học**: Cung cấp đường ngoại sinh để phòng ngừa hạ đường huyết, cho phép bác sĩ **TIẾP TỤC DUY TRÌ TRUYỀN INSULIN ($0.05 - 0.1\text{ UI/kg/h}$)** để dập tắt hoàn toàn quá trình sinh Ceton tại Gan và hạ áp lực thẩm thấu an toàn.
 
-**Bước 2: Bù dịch duy trì (Sau 2 - 4 giờ)**
-*   Đánh giá lại tình trạng huyết động, cân bằng dịch vào - ra, và nồng độ Natri máu hiệu chỉnh. 
-*   **Nguyên tắc:** Bù đắp 50% lượng dịch thiếu hụt trong 8-12 giờ đầu tiên, và phần còn lại bù trong 24-48 giờ tiếp theo.
-*   **Lưu ý đặc biệt ở HHS:** Sự sụt giảm áp lực thẩm thấu quá nhanh có thể gây [[Phù]] não hoặc hội chứng hủy myelin thẩm thấu. Do đó, tốc độ [[Hạ đường huyết|giảm đường huyết]] không được vượt quá 90 - 120 mg/dL/giờ; nồng độ Natri máu không giảm quá 10 mmol/L/24 giờ; và áp lực thẩm thấu máu không giảm quá 3.0 - 8.0 mOsm/kg/giờ. Dung dịch nhược trương (NaCl 0.45%) chỉ được chỉ định khi áp lực thẩm thấu máu không giảm mặc dù đã truyền đủ dịch và insulin.
+---
 
-**Bước 3: Điểm cắt thêm Dextrose (Cực kỳ quan trọng)**
-Đường huyết thường sẽ giảm xuống ngưỡng an toàn (thường trong 4-8 giờ) nhanh hơn nhiều so với thời gian cần thiết để cơ thể đào thải hết ceton và trung hòa toan máu.
-*   Khi đường huyết giảm xuống **< 250 mg/dL (13.9 mmol/L)**, **bắt buộc** phải chuyển sang dịch truyền có pha thêm **Dextrose 5% hoặc 10%** (pha trong tinh thể cân bằng hoặc NaCl).
-*   **Lý do sinh lý:** Cung cấp glucose ngoại sinh để phòng ngừa hạ đường huyết, cho phép bác sĩ *tiếp tục duy trì tốc độ truyền Insulin* (thường ở mức 0.05 đơn vị/kg/giờ) nhằm ức chế hoàn toàn quá trình sinh ceton ở [[Gan]] cho đến khi DKA/HHS được giải quyết.
+## ⚡ 4. QUY TẮC VÀNG VỀ LIỆU PHÁP INSULIN & XỬ TRÍ KALI
 
-### 4. Điều chỉnh trên các đối tượng lâm sàng đặc biệt
+```
+                              [ĐÁNH GIÁ NỒNG ĐỘ KALI MÁU BAN ĐẦU]
+                                               │
+             ┌─────────────────────────────────┼─────────────────────────────────┐
+             ▼                                 ▼                                 ▼
+    [K+ < 3.3 mmol/L]                  [K+ 3.3 - 5.2 mmol/L]                  [K+ > 5.2 mmol/L]
+             │                                 │                                 │
+             ▼                                 ▼                                 ▼
+[TRÌ HOÃN TIÊM INSULIN NGAY!]        [KHỞI TRỊ INSULIN REGULAR]        [KHỞI TRỊ INSULIN REGULAR]
+• Bù Kali Clorid 20 - 40 mEq/h       • Bắt đầu Insulin 0.1 UI/kg/h     • Bắt đầu Insulin 0.1 UI/kg/h
+  qua đường truyền tĩnh mạch         • Pha 20 - 30 mEq KCl vào         • KHÔNG BÙ KALI
+• Chỉ được dùng Insulin khi            mỗi lít dịch truyền             • Kiểm tra Kali mỗi 2 giờ
+  KALI MÁU ĐÃ NÂNG LÊN ≥ 3.3 mmol/L  • Duy trì K+ từ 4.0 - 5.0 mmol/L  • Khi K+ tụt < 5.2 $\to$ Bù Kali
+```
 
-**a. Bệnh nhân ĐTĐ nhiễm toan ceton bình glucose huyết (Euglycemic DKA)**
-Tình trạng này (đường huyết < 200 mg/dL nhưng có toan ceton nặng) ngày càng phổ biến do việc sử dụng thuốc ức chế SGLT2 (SGLT2i), nhịn ăn kéo dài hoặc ở phụ nữ có thai. 
-*   **Xử trí:** Bắt buộc phải truyền dịch có chứa **Dextrose (5% hoặc 10%) ngay từ thời điểm bắt đầu** cùng lúc với dung dịch tinh thể cân bằng và Insulin tĩnh mạch. Điều này giúp giải quyết tình trạng toan ceton mà không đẩy bệnh nhân vào cơn hạ đường huyết nghiêm trọng. Phải ngừng ngay thuốc SGLT2i.
+> [!CAUTION]
+> **Hiểm họa tử vong nếu dùng Insulin khi $K^+ < 3.3\text{ mmol/L}$**:
+> Insulin sẽ kích hoạt bơm $Na^+/K^+\text{-ATPase}$ đẩy ồ ạt Kali từ máu vào trong tế bào $\to$ Gây **Hạ Kali máu kịch phát tối cấp** dẫn đến Loạn nhịp xoắn đỉnh, Liệt cơ hô hấp và Ngừng tim đột ngột!
 
-**b. Bệnh nhân có suy [[Tim]], suy thận mạn (ESRD) hoặc người cao tuổi yếu (Frail older adults)**
-Việc truyền 500-1000 mL/giờ ở nhóm này có nguy cơ cao gây [[Phù]] [[Phổi]] cấp hoặc [[Suy hô hấp]] cần thở máy. 
-*   **Xử trí:** Không áp dụng phác đồ hồi sức ồ ạt. Thay vào đó, sử dụng các bolus dịch nhỏ hơn (ví dụ: **250 mL/lần**) và đánh giá lại liên tục tình trạng huyết động, tĩnh mạch cổ, và nghe [[Phổi]].
+---
 
-**Tài liệu tham khảo:**
-1. Umpierrez GE, Davis GM, ElSayed NA, et al. Hyperglycemic Crises in Adults With Diabetes: A Consensus Report. *Diabetes Care*. 2024;47(8):1257-1275.
-2. Rodriguez Alvarez, et al. Hyperglycemic crises in adults: A look at the 2024 consensus report. *Cleveland Clinic Journal of Medicine*. 2025;92(3):152-156.
-3. Ismail MA, Bali ME, Alturaifi AH, et al. Evaluating The Effectiveness Of Modern Treatment Protocols In Managing Diabetic Ketoacidosis In Intensive Care Units: A Systematic Review. *The Review of Diabetic Studies*. 2025;21(S8):474-485.
+## 🧪 5. CHỈ ĐỊNH NATRI BICARBONATE TRONG NHIỄM TOAN CETON
+
+- **Khuyến cáo đồng thuận của ADA**: **KHÔNG SỬ DỤNG Natri Bicarbonate thường quy cho DKA** (Bicarbonate không cải thiện kết cục, tăng nguy cơ hạ Kali, toan nghịch thường trong dịch não tủy và phù não).
+- **CHỈ ĐỊNH DUY NHẤT**: Khi **$\text{pH Máu Động Mạch} < \mathbf{6.90}$**:
+  - Pha **$100\text{ mmol}$ Sodium Bicarbonate ($100\text{ mL}$ $NaHCO_3\ 8.4\%$)** vào $400\text{ mL}$ Nước cất vô trùng $+ 20\text{ mEq } KCl$, truyền tĩnh mạch trong vòng 2 giờ.
+  - Ngừng truyền ngay khi $\text{pH} \ge 7.00$.
+
+---
+
+## 🎯 6. TIÊU CHUẨN GIẢI QUYẾT DKA & CHUYỂN ĐỔI SANG INSULIN TIÊM DƯỚI DA
+
+Một ca DKA được xác định là **Đã Giải Quyết Hoàn Toàn (Resolution of DKA)** khi thỏa mãn:
+1. **Glucose huyết tương $< 200\text{ mg/dL}$** VÀ
+2. Thỏa mãn **ít nhất $\ge 2$ trong 3 tiêu chí**:
+   - $\text{pH Máu} > 7.30$.
+   - $\text{Serum Bicarbonate } \text{HCO}_3^- \ge \mathbf{18\text{ mEq/L}}$.
+   - **Khoảng trống Anion Gap $\text{AG} \le \mathbf{12\text{ mEq/L}}$** (hoặc $\text{Beta-hydroxybutyrate} < 0.6\text{ mmol/L}$).
+   - Bệnh nhân tỉnh táo, ăn uống được bằng đường miệng.
+
+### Quy Trình Gối Đầu Insulin Dưới Da (Subcutaneous Transition):
+- **BẮT BUỘC TIÊM INSULIN NỀN DƯỚI DA (Glargine / Degludec) TRƯỚC KHI TẮT BƠM TIÊM INSULIN TĨNH MẠCH TỪ 2 ĐẾN 4 GIỜ**.
+- *Lý do*: Insulin tĩnh mạch có thời gian bán thải cực ngắn ($4-5\text{ phút}$). Nếu ngắt truyền TM đột ngột mà chưa có Insulin nền dưới da ngấm vào máu, bệnh nhân sẽ bị **Tái phát nhiễm toan Ceton bùng phát chỉ sau 30-60 phút!**
+
+---
+
+## 🧠 7. BỘ FLASHCARDS LÂM SÀNG CỐT LÕI (SPACED REPETITION)
+
+1. **Câu hỏi**: Tại sao ở bệnh nhân Nhiễm toan ceton đái tháo đường (DKA), nếu nồng độ Kali máu ban đầu $< 3.3\text{ mmol/L}$ thì bắt buộc phải TRÌ HOÃN dùng Insulin?
+   - **Đáp án**: Vì Insulin kích hoạt vận chuyển Kali ồ ạt từ ngoại bào vào nội bào. Nếu dùng Insulin khi Kali đang thấp sẽ làm nồng độ Kali máu tụt dốc kịch phát xuống mức tử vong, gây rung thất, ngừng tim và liệt cơ hô hấp.
+2. **Câu hỏi**: Tại sao khi điều trị DKA, khi đường huyết giảm xuống dưới $200\text{ mg/dL}$ bác sĩ bắt buộc phải pha thêm đường Dextrose $5-10\%$ vào dịch truyền mà không được giảm hay ngừng truyền Insulin?
+   - **Đáp án**: Vì đường huyết hạ nhanh hơn nhiều so với tốc độ dập tắt toan Ceton. Cần truyền Dextrose để giữ đường huyết ổn định, cho phép **tiếp tục duy trì tốc độ truyền Insulin** nhằm khóa chặt quá trình sinh Ceton tại gan cho đến khi hết toan máu ($HCO_3^- \ge 18, AG \le 12$).
+3. **Câu hỏi**: Bệnh nhân Đái tháo đường đang dùng nhóm thuốc ức chế SGLT2 (Dapagliflozin/Empagliflozin) khi bị nhiễm trùng hoặc phẫu thuật có nguy cơ mắc biến thể toan ceton đặc biệt nào?
+   - **Đáp án**: **Nhiễm toan Ceton bình đường huyết (Euglycemic DKA)** - tình trạng toan Ceton máu nặng và Anion Gap tăng cao nhưng nồng độ đường huyết vẫn ở mức bình thường hoặc chỉ tăng nhẹ ($< 200\text{ mg/dL}$).
+
+---
+
+## 📚 8. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+
+1. Umpierrez GE, et al. Hyperglycemic Crises in Adults With Diabetes: A Consensus Report. *Diabetes Care*. 2024;47(8):1257-1275.
+2. American Diabetes Association. Standards of Care in Diabetes—2024. *Diabetes Care*. 2024;47(Suppl 1):S1-S343.
+3. Self WH, et al. Clinical Effects of Balanced Crystalloids vs Saline in Adults With Diabetic Ketoacidosis: A Subgroup Analysis of SMART and SALT-ED Trials. *JAMA Netw Open*. 2020;3(11):e2024596.
+4. Dhatariya KK, et al. Diabetic ketoacidosis. *Nat Rev Dis Primers*. 2020;6(1):40.

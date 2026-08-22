@@ -1,136 +1,156 @@
 ---
-title: "Xuất huyết tiêu hóa trên"
+title: "Tiếp Cận Lâm Sàng: Xuất Huyết Tiêu Hóa Trên Cấp Tính (Acute Upper GI Bleeding Protocol)"
 part: "P1"
 aliases:
   - "Xuất huyết tiêu hóa trên"
-  - "Gastrointestinal Bleeding"
-  - "GI Bleeding"
-  - "UGIB"
-  - "LGIB"
-  - "XHTH"
+  - "Tiếp cận xuất huyết tiêu hóa trên"
+  - "Upper GI Bleeding Approach"
+  - "Phân độ Forrest"
+  - "Glasgow-Blatchford Score"
 keywords:
-  - "xuất huyết tiêu hóa trên"
-  - "tim mạch"
-  - "05. tiêu hóa & gan mật"
-  - "noi soi da day"
-  - "rockall score"
-  - "glasgow-blatchford"
-  - "non ra mau"
-  - "di ngoai phan den"
-  - "ppi"
-icd10:
-  - "K92.0"
-  - "K92.1"
-  - "K92.2"
-specialty: "Tim mạch"
+  - "tiếp cận xuất huyết tiêu hóa trên"
+  - "vỡ giãn tĩnh mạch thực quản"
+  - "loét dạ dày tá tràng"
+  - "thang điểm glasgow blatchford"
+  - "phân loại forrest"
+  - "truyền máu hạn chế"
+  - "terlipressin octreotide"
+  - "ceftriaxone sbp"
+specialty: "Tiêu hóa - Gan mật & Cấp cứu"
 kho: "2.1. Kho tiếp cận lâm sàng"
 tags:
-  - "he-co-quan/tim-mach"
+  - "he-co-quan/tieu-hoa"
   - "loai/symptom"
   - "y-khoa/tc"
-updated: "2026-08-21"
+icd10:
+  - "K92.0 (Nôn ra máu - Hematemesis)"
+  - "K92.1 (Tiêu phân đen - Melena)"
+  - "I85.0 (Xuất huyết do giãn vỡ tĩnh mạch thực quản)"
+  - "K25.0 / K26.0 (Loét dạ dày / Tá tràng cấp có xuất huyết)"
+updated: "2026-08-22"
 ---
 
+# 🩸 Bách Khoa Tiếp Cận Lâm Sàng: Xuất Huyết Tiêu Hóa Trên Cấp Tính (UGIB Protocol)
 
+> **Tóm tắt cốt lõi**: Xuất huyết tiêu hóa trên (UGIB) là tình trạng chảy máu xuất phát từ tổn thương **phía trên dây chằng Treitz**. Tiếp cận lâm sàng chuẩn mực gồm 6 bước: (1) Đánh giá ABCDE & Thiết lập 2 đường truyền lớn $\to$ (2) Hồi sức thể tích với **Chiến lược truyền máu hạn chế ($Hb < 7\text{ g/dL}$)** $\to$ (3) Phân tầng nguy cơ bằng **Thang điểm Glasgow-Blatchford (GBS)** $\to$ (4) Dược lý sớm trước nội soi (**PPI liều cao** hoặc **Co mạch tạng Terlipressin/Octreotide + Ceftriaxone**) $\to$ (5) **Nội soi dạ dày cấp cứu trong vòng 12-24 giờ** $\to$ (6) Can thiệp cầm máu theo **Phân độ Forrest** hoặc Thắt vòng cao su (EVL).
 
-# 1. Cơ chế bệnh sinh 
-[[Xuất huyết]] tiêu hóa trên (UGIB) được định nghĩa là tình trạng chảy máu xuất phát từ các tổn thương nằm phía trên dây chằng Treitz. Các cơ chế sinh lý bệnh chính bao gồm:
+---
 
-- **Viêm và loét (Tổn thương niêm mạc):** Quá trình viêm do axit dịch vị, nhiễm _Helicobacter pylori_, hoặc do thuốc (NSAIDs, [[Aspirin]]) làm bào mòn lớp niêm mạc dạ dày - tá tràng, xâm lấn vào các mạch máu ở thành ruột (như động mạch vị tá tràng hoặc động mạch vành vị trái) gây chảy máu ồ ạt.
-- **Tăng áp lực tĩnh mạch cửa:** Tình trạng xơ [[Gan]] làm tăng áp lực hệ tĩnh mạch cửa, dẫn đến hình thành và giãn trướng các tĩnh mạch bàng hệ ở thực quản và dạ dày. Khi áp lực vượt quá sức chịu đựng của thành mạch, các búi giãn này sẽ vỡ, gây [[Xuất huyết]] ồ ạt.
-- **Rách cơ học:** Sự tăng áp lực đột ngột trong dạ dày do [[Nôn ói]] hoặc nôn khan nhiều lần gây rách lớp niêm mạc tại vùng tâm vị - thực quản (Hội chứng Mallory-Weiss).
-- **Bất thường mạch máu:** Các dị sản mạch máu (angiodysplasia), tổn thương Dieulafoy, hoặc rò động mạch chủ - ruột (aortoenteric fistula) gây chảy máu trực tiếp từ hệ thống động mạch.
+## 🧭 1. QUY TRÌNH TIẾP CẬN CẤP CỨU BAN ĐẦU THEO BAVENO VII & ACG
 
-# 2. Phân loại 
-Phân loại *theo nguyên nhân*:
+```
+[BỆNH NHÂN NÔN RA MÁU / TIÊU PHÂN ĐEN / TIÊU MÁU ĐỎ KÈM TỤT HUYẾT ÁP]
+                                   │
+                                   ▼
+  ┌────────────────────────────────────────────────────────────────────────┐
+  │ 1. ĐÁNH GIÁ ABCDE: Đặt nội khí quản bảo vệ đường thở nếu nôn máu ồ ạt   │
+  │ 2. Đặt 2 đường truyền tĩnh mạch ngoại vi lớn (16G - 18G)               │
+  │ 3. Lấy máu làm: CTM, Nhóm máu & Phản ứng chéo, Đông máu, Chức năng gan │
+  │ 4. HỒI SỨC DỊCH TINH THỂ ĐẲNG TRƯƠNG (Lactated Ringer / NaCl 0.9%)     │
+  └────────────────────────────────────────────────────────────────────────┘
+                                   │
+                                   ▼
+             [CHIẾN LƯỢC TRUYỀN MÁU HẠN CHẾ (RESTRICTIVE TRANSFUSION)]
+             • Chỉ định truyền Hồng cầu lắng khi Hemoglobin < 7 g/dL
+             • Duy trì mục tiêu Hb = 7 - 8 g/dL (Ở BN tim mạch duy trì Hb ≥ 8 g/dL)
+             • Tránh truyền dịch/máu quá mức làm tăng áp lực tĩnh mạch cửa gây tái xuất huyết
+                                   │
+                                   ▼
+             [PHÂN TẦNG NGUY CƠ TRƯỚC NỘI SOI: GLASGOW-BLATCHFORD (GBS)]
+                                   │
+         ┌─────────────────────────┴─────────────────────────┐
+         ▼                                                   ▼
+[NGHI NGỜ DO XƠ GAN / TĂNG ÁP CỬA]                 [NGHI NGỜ DO LOÉT DẠ DÀY TÁ TRÀNG]
+- Terlipressin 2mg IV mỗi 4h (hoặc Octreotide)     - PPI liều cao (Esomeprazole 80mg IV bolus
+- Kháng sinh Ceftriaxone 1g/ngày x 7 ngày          $\to$ 8mg/h truyền liên tục hoặc 40mg q12h)
+- Erythromycin 250mg IV trước soi 30-120p          - Erythromycin 250mg IV trước soi
+         │                                                   │
+         └─────────────────────────┬─────────────────────────┘
+                                   │
+                                   ▼
+             [NỘI SOI DẠ DÀY TÁ TRÀNG TRONG VÒNG 12 - 24 GIỜ]
+```
 
-- **Nhóm không do tăng áp lực tĩnh mạch cửa (Non-variceal):** Loét dạ dày tá tràng (chiếm 30-50% và thường gặp nhất), rách Mallory-Weiss (5-15%), viêm dạ dày/thực quản ăn mòn (10-15%), khối u ác tính (1-4%), và rò động mạch chủ - ruột.
-- **Nhóm do tăng áp lực tĩnh mạch cửa (Variceal):** Giãn tĩnh mạch thực quản hoặc tâm phình vị (chiếm 5-10%), đây là nhóm có tỷ lệ mắc bệnh và tử vong cao nhất.
+---
 
-Phân loại *theo hình thái lâm sàng*:
+## 📊 2. THANG ĐIỂM PHÂN TẦNG NGUY CƠ TRƯỚC NỘI SOI: GLASGOW-BLATCHFORD (GBS)
 
-- **Nôn ra máu (Hematemesis):** Nôn ra máu đỏ tươi hoặc máu đen bã cà phê, chỉ điểm nguồn chảy máu nằm trên dây chằng Treitz.
-- **Tiêu phân đen (Melena):** Phân đen như hắc ín, dính, mùi khắm (cần ít nhất 100 mL máu để tạo ra melena).
-- **Tiêu phân máu đỏ tươi (Hematochezia):** Thường gặp trong xuất huyết tiêu hóa dưới, nhưng có khoảng 10-15% trường hợp là do xuất huyết tiêu hóa trên ồ ạt và di chuyển nhanh qua ruột.
+Thang điểm GBS được khuyến cáo hàng đầu bởi các hiệp hội Tiêu hóa quốc tế vì **chỉ dựa trên lâm sàng và xét nghiệm máu ban đầu (không cần kết quả nội soi)**:
 
-Phân loại *theo mức độ nguy cơ* (Risk Stratification):
+| Biến Số Lâm Sàng & Xét Nghiệm | Giá Trị Đo Được | Điểm Số GBS |
+|:---|:---:|:---:|
+| **Urea Máu (BUN)** | $6.5 - 7.9\text{ mmol/L}$ ($18-22\text{ mg/dL}$)<br>$8.0 - 9.9\text{ mmol/L}$ ($23-28\text{ mg/dL}$)<br>$10.0 - 24.9\text{ mmol/L}$ ($29-70\text{ mg/dL}$)<br>**$\ge 25.0\text{ mmol/L}$ ($> 70\text{ mg/dL}$)** | 2 điểm<br>3 điểm<br>4 điểm<br>**6 điểm** |
+| **Hemoglobin (Nam)** | $12.0 - 12.9\text{ g/dL}$<br>$10.0 - 11.9\text{ g/dL}$<br>**$< 10.0\text{ g/dL}$** | 1 điểm<br>3 điểm<br>**6 điểm** |
+| **Hemoglobin (Nữ)** | $10.0 - 11.9\text{ g/dL}$<br>**$< 10.0\text{ g/dL}$** | 1 điểm<br>**6 điểm** |
+| **Huyết Áp Tâm Thu (SBP)** | $100 - 109\text{ mmHg}$<br>$90 - 99\text{ mmHg}$<br>**$< 90\text{ mmHg}$** | 1 điểm<br>2 điểm<br>**3 điểm** |
+| **Nhịp Tim** | **$\ge 100\text{ lần/phút}$** | **1 điểm** |
+| **Các Tiêu Chí Khác** | Đi ngoài phân đen (Melena)<br>Ngất (Syncope)<br>Bệnh gan mạn tính<br>Suy tim | 1 điểm<br>2 điểm<br>2 điểm<br>2 điểm |
 
-- **Thang điểm Glasgow-Blatchford (GBS):** Đánh giá trước nội soi dựa trên ure máu, hemoglobin, huyết áp tâm thu và các dấu hiệu lâm sàng. Điểm GBS = 0 là nguy cơ rất thấp (có thể điều trị ngoại trú); GBS > 6 là nguy cơ rất cao cần can thiệp.
-- **Thang điểm Rockall:** Kết hợp dữ kiện lâm sàng và kết quả nội soi để dự đoán nguy cơ tái phát và tử vong.
-- **Thang điểm AIMS65:** Dự đoán tỷ lệ tử vong nội trú (dựa trên Albumin <30g/L, INR >1.5, Thay đổi tri giác, Huyết áp tâm thu ≤90 mmHg, Tuổi >65).
+👉 **Ý NGHĨA LÂM SÀNG CỦA ĐIỂM GBS:**
+- **$\text{GBS} = 0 - 1\text{ điểm}$ (Nguy cơ cực thấp)**: Có thể an toàn cho **Điều trị ngoại trú** không cần nhập viện khẩn cấp.
+- **$\text{GBS} \ge 6\text{ điểm}$ (Nguy cơ cao)**: Cần nhập viện, hồi sức tích cực và **Chỉ định can thiệp nội soi cấp cứu**.
 
-# 3. Các bước tiếp cận lâm sàng (clinical approach)
+---
 
-### Bước 1: Ổn định ban đầu – sàng lọc nguy cơ
+## 🔍 3. PHÂN ĐỘ FORREST CHO LOÉT DẠ DÀY TÁ TRÀNG & CHỈ ĐỊNH CAN THIỆP NỘI SOI
 
-- **Đánh giá ABCs:** Ưu tiên bảo vệ đường thở, hô hấp và tuần hoàn. Chỉ định đặt nội khí quản sớm cho bệnh nhân có chảy máu ồ ạt, nôn ra máu liên tục, [[Suy hô hấp]], hoặc thay đổi tri giác (GCS < 14) để tránh hít sặc.
-- **Thiết lập đường truyền:** Đặt ngay 2 đường truyền tĩnh mạch ngoại vi khẩu kính lớn (14-18 gauge).
-- **Nhận diện dấu hiệu "cờ đỏ":** Tình trạng huyết động không ổn định (huyết áp tâm thu < 100 mmHg, nhịp [[Tim]] > 100 lần/phút) hoặc thay đổi huyết áp tư thế (huyết áp tâm thu giảm 10 mmHg hoặc nhịp tim tăng 20 lần/phút khi đứng) đòi hỏi phải hồi sức tích cực và chuyển ngay vào phòng cấp cứu/ICU.
+Khi nội soi phát hiện ổ loét, phân loại theo thang điểm **Forrest** quyết định nguy cơ tái xuất huyết và chiến lược can thiệp cầm máu:
 
-### Bước 2: Thu thập dữ kiện tập trung
+| Phân Loại Forrest | Hình Thái Tổn Thương Ổ Loét Trên Nội Soi | Nguy Cơ Tái Xuất Huyết Nếu Không Can Thiệp | Chỉ Định Xử Trí Can Thiệp Nội Soi |
+|:---|:---|:---:|:---|
+| **Forrest Ia** | **Máu đang phun thành tia áp lực cao (Spurting hemorrhage)** | **$90\%$** | **BẮT BUỘC CAN THIỆP KÉP (Dual Therapy)**:<br>• Tiêm Adrenaline 1:10.000 cầm máu tạm thời.<br>• **KẾT HỢP** Kẹp Clip kim loại (Hemoclip) HOẶC Đốt nhiệt (Bipolar / Gold probe / APC). |
+| **Forrest Ib** | **Máu đang chảy rỉ rả liên tục (Oozing hemorrhage)** | **$50 - 60\%$** | **BẮT BUỘC CAN THIỆP KÉP (Dual Therapy)**. |
+| **Forrest IIa** | **Nhìn thấy mạch máu nổi không chảy máu (Visible vessel)** | **$40 - 50\%$** | **BẮT BUỘC CAN THIỆP KÉP** (Kẹp Clip hoặc Đốt nhiệt). |
+| **Forrest IIb** | **Cục máu đông bám dính chặt trên ổ loét (Adherent clot)** | **$25 - 30\%$** | Cân nhắc bóc tách rửa cục máu đông để bộc lộ tổn thương bên dưới và can thiệp cầm máu. |
+| **Forrest IIc** | **Đáy ổ loét có vết đen sắc tố (Flat pigmented spot)** | **$5 - 10\%$** | **KHÔNG can thiệp nội soi**; chỉ cần dùng thuốc PPI đường uống. |
+| **Forrest III** | **Đáy ổ loét sạch, phủ giả mạc trắng (Clean base)** | **$< 3\%$** | **KHÔNG can thiệp nội soi**; có thể cho xuất viện sớm và dùng PPI uống. |
 
-- **Bệnh sử:** Khai thác tiền sử loét dạ dày, sử dụng thuốc NSAID, [[Aspirin]], thuốc chống đông hoặc thuốc kháng [[Tiểu cầu]]. Tìm hiểu tiền sử nghiện rượu hoặc bệnh [[Gan]] mạn tính (viêm gan B, C) gợi ý vỡ tĩnh mạch trướng. Hỏi về tiền sử nôn khan nhiều lần trước khi nôn ra máu (rách Mallory-Weiss) hoặc phẫu thuật ghép động mạch chủ trước đó (rò động mạch chủ - ruột).
-- **Khám lâm sàng:**
-    - _Sinh hiệu:_ Đánh giá tình trạng [[Sốc]] giảm thể tích và dấu hiệu hạ huyết áp tư thế.
-    - _Dấu hiệu bệnh gan mạn:_ [[Vàng da]], báng bụng, lách to, tuần hoàn bàng hệ (caput medusae), sao mạch, hồng ban lòng bàn tay, nữ hóa tuyến vú, hoặc rung [[Co giật|giật cơ]] (asterixis).
-    - _Khám trực tràng:_ Bắt buộc để xác định tính chất phân (đen hay đỏ tươi).
+---
 
-### Bước 3: Lập danh sách chẩn đoán phân biệt (differential diagnosis)
+## 🏥 4. PHÁC ĐỒ XỬ TRÍ VỠ GIÃN TĨNH MẠCH THỰC QUẢN (VARICEAL BLEEDING)
 
-|Nhóm nguyên nhân|Ví dụ bệnh / hội chứng|Đặc điểm lâm sàng chính|
-|:--|:--|:--|
-|**Bệnh lý dạ dày - tá tràng**|Loét dạ dày tá tràng, Viêm dạ dày ăn mòn|Nôn ra máu/phân đen, đau vùng thượng vị, tiền sử dùng NSAID, Aspirin, hoặc nhiễm _H. pylori_.|
-|**Mạch máu (Nguy hiểm)**|Vỡ tĩnh mạch thực quản / tâm phình vị|Nôn ra máu lượng rất lớn, có dấu hiệu xơ gan, lách to, báng bụng, rối loạn đông máu.|
-|**Tổn thương cơ học**|Hội chứng Mallory-Weiss|Nôn ra máu xuất hiện sau một chuỗi [[Nôn ói]]/nôn khan dữ dội, thường liên quan đến uống rượu.|
-|**Rò mạch máu (Cực kỳ nguy hiểm)**|Rò động mạch chủ - ruột (Aortoenteric fistula)|Nôn/tiêu máu ồ ạt, có tiền sử phẫu thuật ghép/đặt stent động mạch chủ bụng.|
-|**Ngoài [[Đường tiêu hóa|ống tiêu hóa]]**|Nuốt máu từ mũi/họng, Ho ra máu|Máu từ mũi họng chảy xuống, hoặc ho khạc ra máu có lẫn bọt khí.|
+```
+                            [XUẤT HUYẾT DO TĂNG ÁP LỰC TĨNH MẠCH CỬA]
+                                                │
+       ┌────────────────────────────────────────┴────────────────────────────────────────┐
+       ▼                                                                                 ▼
+[1. THUỐC CO MẠCH TẠNG (Duy trì 2-5 ngày)]                          [2. KHÁNG SINH DỰ PHÒNG BẮT BUỘC (7 ngày)]
+• Terlipressin: 2mg IV mỗi 4h $\to$ giảm 1mg khi kiểm soát          • Ceftriaxone: 1g IV mỗi 24h
+• Hoặc Somatostatin: 250mcg bolus $\to$ 250mcg/h                    • Hoặc Ciprofloxacin
+• Hoặc Octreotide: 50mcg bolus $\to$ 50mcg/h                        (Giảm 50% nguy cơ nhiễm trùng và giảm tử vong)
+       │                                                                                 │
+       └────────────────────────────────────────┬────────────────────────────────────────┘
+                                                │
+                                                ▼
+                            [NỘI SOI THẮT VÒNG CAO SU (EVL - ENDOSCOPIC BAND LIGATION)]
+                            (Tiêu chuẩn vàng xử trí giãn tĩnh mạch thực quản)
+                                                │
+                                                ▼
+       ┌────────────────────────────────────────┴────────────────────────────────────────┐
+       ▼ (Nếu thất bại / Xuất huyết ồ ạt đe dọa tử vong)                                  ▼ (Khi ổn định)
+[ĐẶT BÓNG CHÈN ÉP TẠM THỜI (Sengstaken-Blakemore / Stent Danis)]    [DỰ PHÒNG TÁI PHÁT THỨ PHÁT]
+(Chỉ lưu bóng tối đa 24 giờ để tránh hoại tử thực quản)             • Phối hợp: Thắt EVL định kỳ
+       │                                                            • KÈM Thuốc chẹn Beta không chọn lọc:
+       ▼                                                              **Propranolol** hoặc **Carvedilol (6.25-12.5mg/ngày)**
+[CAN THIỆP TIPS CỨU NẠN (Transjugular Intrahepatic Portosystemic Shunt)]
+```
 
-### Bước 4. Biện luận lâm sàng (clinical reasoning)
+---
 
-- **Điểm ủng hộ xuất huyết tiêu hóa trên:** Tỷ lệ BUN/Creatinine > 30 có độ đặc hiệu cao (94%) để gợi ý nguồn chảy máu từ [[Đường tiêu hóa]] trên do protein trong máu bị phân hủy tại ruột. Đặt ống thông dạ dày (NG tube) hút ra máu đỏ tươi hoặc bã cà phê có giá trị chẩn đoán xác định (LR+ 9.6).
-- **Điểm chống lại:** Việc dịch hút dạ dày ra máu âm tính hoặc dịch trong _không_ loại trừ được xuất huyết tiêu hóa trên (khoảng 10-16% âm tính giả nếu máu đã ngừng chảy hoặc tổn thương nằm sâu ở tá tràng không trào ngược lên dạ dày).
-- **Tỷ trọng/độ ưu tiên:** Bất kỳ bệnh nhân nào tiêu máu đỏ tươi ồ ạt kèm tụt huyết áp đều phải được ưu tiên loại trừ xuất huyết tiêu hóa trên trước khi xem xét nguồn chảy máu từ đại tràng.
+## 🧠 5. BỘ FLASHCARDS LÂM SÀNG CỐT LÕI (SPACED REPETITION)
 
-### Bước 5. Cận lâm sàng hợp lý
+1. **Câu hỏi**: Theo các thử nghiệm lâm sàng đối đầu (Villanueva et al. NEJM), ngưỡng chỉ định truyền máu theo chiến lược hạn chế (Restrictive Transfusion Strategy) ở bệnh nhân Xuất huyết tiêu hóa trên là bao nhiêu và mang lại lợi ích gì?
+   - **Đáp án**: Chỉ định truyền Hồng cầu lắng khi **Hemoglobin $< 7\text{ g/dL}$** (mục tiêu duy trì $7 - 8\text{ g/dL}$). Chiến lược này giúp **giảm tỷ lệ tử vong và giảm đáng kể nguy cơ tái xuất huyết** so với chiến lược truyền máu tự do ($Hb < 9\text{ g/dL}$) do tránh làm tăng áp lực tĩnh mạch cửa và tránh phá vỡ cục máu đông vừa hình thành.
+2. **Câu hỏi**: Tại sao việc dùng Kháng sinh dự phòng sớm (Ceftriaxone $1\text{g/ngày}$) là chỉ định bắt buộc loại 1A ở mọi bệnh nhân xơ gan bị xuất huyết do vỡ giãn tĩnh mạch thực quản?
+   - **Đáp án**: Bệnh nhân xơ gan xuất huyết tiêu hóa có nguy cơ nhiễm trùng dịch báng (SBP) và nhiễm khuẩn huyết cực cao do chuyển vị vi khuẩn đường ruột. Dùng Ceftriaxone trong 7 ngày giúp **giảm $50\%$ tỷ lệ nhiễm trùng nặng, giảm tỷ lệ tái xuất huyết sớm và cải thiện sống còn rõ rệt**.
+3. **Câu hỏi**: Theo phân độ Forrest cho loét dạ dày tá tràng, những phân loại nào bắt buộc phải thực hiện can thiệp cầm máu qua nội soi?
+   - **Đáp án**: Gồm **Forrest Ia** (chảy máu phun tia), **Forrest Ib** (chảy máu rỉ rả) và **Forrest IIa** (nhìn thấy mạch máu nổi không chảy máu). Các trường hợp này bắt buộc can thiệp liệu pháp kép (Dual therapy: Tiêm Adrenaline kết hợp Hemoclip hoặc Đốt nhiệt).
 
-- **Xét nghiệm máu:** Tổng phân tích tế bào máu (Lưu ý: Hemoglobin và Hematocrit có thể bình thường trong giai đoạn đầu và chỉ giảm sau khi bù dịch), BUN, Creatinine, điện giải đồ, chức năng gan (AST, ALT, Bilirubin, Albumin), chức năng đông máu (PT/INR, PTT), và Định nhóm máu/Phản ứng chéo (Type and Crossmatch).
-- **[[X-quang]] ngực thẳng đứng:** Đánh giá bóng hơi dưới cơ hoành để loại trừ thủng tạng rỗng. Đo điện tâm đồ (ECG) để loại trừ nhồi máu [[Tim|cơ tim]] liên quan đến thiếu máu cục bộ.
-- **Nội soi dạ dày tá tràng (EGD):** Là tiêu chuẩn vàng với độ chính xác >90%. EGD nên được thực hiện trong vòng 24 giờ đối với bệnh nhân ổn định, và trong vòng 12 giờ đối với bệnh nhân có xuất huyết do vỡ tĩnh mạch trướng hoặc có huyết động không ổn định (sau khi đã hồi sức).
-- **[[[[CT Scan]]|Chụp cắt lớp vi tính]] mạch máu (CT Angiography):** Được chỉ định nếu chảy máu quá ồ ạt không thể nội soi, hoặc nội soi không tìm thấy vị trí chảy máu.
+---
 
-### Bước 6. Hướng xử trí ban đầu
+## 📚 6. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
 
-- **Hồi sức dịch và truyền máu:** Bồi hoàn thể tích bằng dung dịch tinh thể (Normal Saline). Truyền khối [[Hồng cầu]] (PRBCs) với mục tiêu duy trì Hemoglobin ở mức 7-8 g/dL (Chiến lược truyền máu hạn chế giúp cải thiện tỷ lệ tử vong, đặc biệt ở bệnh nhân xơ gan để tránh làm tăng áp lực tĩnh mạch cửa). Bơm [[Tiểu cầu]] nếu < 50,000/mcL trong lúc đang chảy máu tiến triển, và điều chỉnh rối loạn đông máu bằng huyết tương tươi đông lạnh (FFP) hoặc Vitamin K.
-- **Điều trị nội khoa:**
-    - _Nghi ngờ loét dạ dày - tá tràng:_ Sử dụng thuốc ức chế bơm proton (PPI) liều cao đường tĩnh mạch (ví dụ: Bolus 80 mg, sau đó truyền liên tục 8 mg/giờ trong 72 giờ). Thuốc kháng thụ thể H2 không có vai trò trong xuất huyết cấp tính.
-    - _Nghi ngờ giãn tĩnh mạch:_ Bắt đầu ngay các thuốc vận mạch (như Octreotide tiêm tĩnh mạch bolus 50 µg, sau đó truyền liên tục 50 µg/giờ, hoặc Terlipressin) ngay khi nghi ngờ, trước cả khi nội soi. Bắt buộc dùng [[Kháng sinh]] dự phòng ([[Ceftriaxone]] tĩnh mạch hoặc Norfloxacin uống) tối đa 7 ngày để giảm nguy cơ nhiễm trùng báng mưng mủ tự phát và giảm tỷ lệ tử vong.
-    - _Thuốc tăng động ruột:_ Có thể dùng Erythromycin 250 mg truyền tĩnh mạch 30-60 phút trước khi nội soi để làm sạch dạ dày khỏi máu cục.
-- **Can thiệp nội soi:**
-    - _Loét:_ Kết hợp tiêm Epinephrine (1:10.000) với kẹp clip cầm máu (Hemoclips) hoặc cầm máu nhiệt (thermocoagulation).
-    - _Trướng tĩnh mạch:_ Thắt tĩnh mạch bằng vòng cao su (Band ligation - EVL) là lựa chọn ưu tiên; chích xơ (Sclerotherapy) được dùng khi không thể thắt vòng.
-- **Xử trí cứu vãn (Rescue therapy):** Nếu nội soi thất bại, sử dụng ống thông chèn ép bóng (Sengstaken-Blakemore) tạm thời hoặc làm thủ thuật tạo luồng thông cửa - chủ trong gan qua tĩnh mạch cảnh (TIPS) cho xuất huyết do tĩnh mạch trướng. Đối với loét hoặc rò mạch máu, cần hội chẩn nút mạch qua catheter (Angiographic embolization) hoặc phẫu thuật.
-
-### Bước 7. Khi nào cần chuyển tuyến / gọi hội chẩn
-
-- Chuyển ngay bệnh nhân vào khoa Hồi sức tích cực (ICU) hoặc phòng cấp cứu nặng (Resuscitation room) nếu có: Huyết động không ổn định ([[Sốc]], hạ huyết áp tư thế), chảy máu ồ ạt, [[Suy hô hấp]], hoặc thay đổi tri giác.
-- Hội chẩn Ngoại khoa (Surgery) hoặc Điện quang can thiệp (Interventional Radiology) cấp cứu đối với các trường hợp chảy máu không kiểm soát được bằng nội soi, chảy máu tái phát nghiêm trọng, hoặc nghi ngờ rò động mạch chủ - ruột.
-- Mời hội chẩn chuyên khoa Tiêu hóa (Gastroenterology) sớm để tiến hành nội soi can thiệp ngay khi bệnh nhân đã được hồi sức ổn định.
-
-# 4. Lưu ý thực hành / “take‑home messages”
-
-- "Hematocrit và Hemoglobin có thể hoàn toàn bình thường trong giai đoạn đầu của xuất huyết cấp tính; không bao giờ được chờ đợi kết quả xét nghiệm máu giảm mới bắt đầu hồi sức truyền dịch.".
-- "Dịch hút dạ dày (NG tube) không có máu KHÔNG giúp loại trừ xuất huyết tiêu hóa trên; tổn thương có thể nằm ở tá tràng và máu không trào ngược lên dạ dày.".
-- "Chiến lược truyền máu hạn chế (mục tiêu Hemoglobin 7-8 g/dL) giúp cải thiện tỷ lệ sống còn. Việc truyền quá nhiều máu làm tăng áp lực tĩnh mạch cửa và gây chảy máu tái phát nặng nề hơn.".
-- "Nếu nghi ngờ bệnh nhân bị xơ gan/tăng áp lực tĩnh mạch cửa có xuất huyết, phải bắt đầu dùng ngay thuốc vận mạch (Octreotide/Terlipressin) và [[Kháng sinh]] dự phòng trước khi tiến hành nội soi.".
-- "Tỷ lệ BUN/Creatinine > 30 là một dấu hiệu cực kỳ nhạy và hữu ích để định hướng chẩn đoán xuất huyết tiêu hóa trên.".
-
-# 5. Tài liệu tham khảo
-
-6. _Algorithms for Emergency Medicine 2023.pdf_
-7. _Critical Care Medicine An Algorithmic Approach 2023.pdf_
-8. _Gastrointestinal_Emergencies NT.pdf_
-9. _Harrison's Manual of Medicine, 20th Edition - WishAllBook_
-10. _Internal medicine on call.pdf_
-11. _S2D4ed.pdf_
-12. _Symptoms to diagnosis .pdf_
-13. _Churchill DDs.pdf_
+1. Laine L, et al. ACG Clinical Guideline: Upper Gastrointestinal and Ulcer Bleeding. *Am J Gastroenterol*. 2021;116(5):899-917.
+2. de Franchis R, et al. Baveno VII - Renewing consensus in portal hypertension. *J Hepatol*. 2022;76(4):959-974.
+3. Villanueva C, et al. Transfusion strategies for acute upper gastrointestinal bleeding. *N Engl J Med*. 2013;368(1):11-21.
+4. Gralnek IM, et al. Endoscopic diagnosis and management of nonvariceal upper gastrointestinal hemorrhage (NVUGIH): European Society of Gastrointestinal Endoscopy (ESGE) Guideline. *Endoscopy*. 2021;53(3):300-332.

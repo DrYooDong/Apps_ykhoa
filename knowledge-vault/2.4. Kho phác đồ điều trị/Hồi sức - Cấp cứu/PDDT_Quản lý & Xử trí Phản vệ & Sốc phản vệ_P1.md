@@ -1,122 +1,126 @@
 ---
-title: "Quản lý & Xử trí Phản vệ & Sốc phản vệ"
+title: "Phác Đồ Cấp Cứu: Chẩn Đoán & Xử Trí Phản Vệ / Sốc Phản Vệ Chuẩn Bộ Y Tế & WAO"
 part: "P1"
 aliases:
   - "Quản lý & Xử trí Phản vệ & Sốc phản vệ"
-  - "Anaphylaxis"
-  - "Anaphylactic Shock"
-  - "Phản vệ"
+  - "Phác đồ phản vệ Thông tư 51"
+  - "Anaphylaxis Guidelines"
+  - "Sốc phản vệ"
+  - "Adrenaline tiêm bắp"
 keywords:
-  - "quản lý & xử trí phản vệ & sốc phản vệ"
-  - "thận - tiết niệu"
-  - "hồi sức - cấp cứu"
-  - "adrenaline tiem bap"
-  - "epinephrine"
-  - "giai phong histamine"
-  - "co that phe quan"
-  - "tut huyet ap"
-icd10:
-  - "T78.2"
-  - "T78.0"
-specialty: "Thận - Tiết niệu"
+  - "xử trí phản vệ sốc phản vệ"
+  - "thông tư 51 2017 tt byt"
+  - "adrenaline tiêm bắp đùi"
+  - "phản vệ độ 2 3 4"
+  - "bù dịch tinh thể"
+  - "phản vệ pha 2 biphasic"
+  - "glucagon chẹn beta"
+specialty: "Hồi sức Cấp cứu & Dị ứng"
 kho: "2.4. Kho phác đồ điều trị"
 tags:
-  - "he-co-quan/than-tiet-nieu"
+  - "he-co-quan/tong-quat"
   - "loai/protocol"
   - "y-khoa/pddt"
-updated: "2026-08-21"
+icd10:
+  - "T78.2 (Sốc phản vệ không đặc hiệu)"
+  - "T78.0 (Sốc phản vệ do thức ăn)"
+  - "T88.6 (Sốc phản vệ do thuốc hoặc hóa chất y tế)"
+updated: "2026-08-22"
 ---
 
+# 💉 Bách Khoa Phác Đồ: Cấp Cứu Phản Vệ & Sốc Phản Vệ (Theo Thông Tư 51/2017/TT-BYT & WAO 2020)
 
+> **Tóm tắt cốt lõi**: Phản vệ là một **phản ứng quá mẫn toàn thân cấp tính đe dọa tính mạng**, xuất hiện đột ngột trong vòng vài phút đến vài giờ sau khi tiếp xúc dị nguyên. **ADRENALINE TIÊM BẮP (IM) MẶT TRƯỚC NGOÀI ĐÙI LÀ THUỐC THIẾT YẾU DUY NHẤT CỨU SỐNG NGƯỜI BỆNH**, bắt buộc phải tiêm ngay lập tức khi phát hiện phản vệ từ **Độ II (Nặng) trở lên**. Mọi nhân viên y tế đều có quyền và trách nhiệm tiêm Adrenaline ngay tại chỗ mà không cần chờ hội chẩn.
 
-Dưới đây là bài học chi tiết về Xử trí các mức độ Phản vệ, được biên soạn bám sát tuyệt đối vào các tài liệu y khoa và Hướng dẫn của Bộ Y tế (Thông tư 51/2017/TT-BYT).
+---
 
-### 1. NGUYÊN TẮC CHUNG TRONG XỬ TRÍ CẤP CỨU PHẢN VỆ
-Tất cả các trường hợp phản vệ phải được phát hiện sớm, xử trí khẩn cấp, kịp thời ngay tại chỗ và theo dõi liên tục ít nhất trong vòng 24 giờ. Bác sĩ, điều dưỡng, hộ sinh viên, kỹ thuật viên, nhân viên y tế khác đều phải xử trí ban đầu cấp cứu phản vệ.
-Adrenalin là thuốc thiết yếu, quan trọng hàng đầu cứu sống người bệnh bị phản vệ, phải được tiêm bắp ngay khi chẩn đoán phản vệ từ độ II trở lên.
+## 🏛️ 1. PHÂN ĐỘ NẶNG PHẢN VỆ THEO THÔNG TƯ 51/2017/TT-BYT
 
-### 2. XỬ TRÍ PHẢN VỆ NHẸ (ĐỘ I)
-Phản vệ độ I là tình trạng dị ứng (chỉ có các triệu chứng về da, niêm mạc như nổi ban, ngứa, [[Phù]] mạch) nhưng có thể chuyển thành nặng hoặc nguy kịch một cách đột ngột.
-*   **Thuốc sử dụng:** Sử dụng thuốc methylprednisolon (liều 1-2mg/kg) hoặc diphenhydramin (liều 1mg/kg) đường uống hoặc tiêm tùy tình trạng người bệnh.
-*   **Theo dõi:** Tiếp tục theo dõi ít nhất 24 giờ để xử trí kịp thời các yếu tố như sinh hiệu, kiểu thở, và diễn tiến của triệu chứng da niêm.
+| Mức Độ Phản Vệ | Biểu Hiện Lâm Sàng Đặc Trưng | Hướng Xử Trí Khẩn Cấp Ban Đầu |
+|:---|:---|:---|
+| **Độ I: NHẸ (Dị ứng)** | **Chỉ có biểu hiện ở da và niêm mạc**: Mày đay, ngứa, phù mạch, đỏ da. | Dùng thuốc Kháng Histamin H1 (Diphenhydramine $1\text{ mg/kg}$) + Methylprednisolone ($1-2\text{ mg/kg}$) uống/tiêm. **Theo dõi sát ít nhất 24 giờ**. |
+| **Độ II: NẶNG** | **Xuất hiện nhanh $\ge 2$ biểu hiện ở nhiều cơ quan**:<br>• Da/niêm mạc: Mày đay, phù mạch xuất hiện nhanh.<br>• Hô hấp: Khó thở nhanh nông, tức ngực, khàn tiếng, chảy nước mũi.<br>• Tiêu hóa: Đau bụng quặn, nôn ói, tiêu chảy.<br>• Tuần hoàn: Huyết áp chưa tụt hoặc tăng, nhịp tim nhanh hoặc loạn nhịp. | **TIÊM BẮP ADRENALINE NGAY LẬP TỨC!**<br>• Người lớn: $1/2 - 1\text{ ống}$ ($0.5 - 1\text{ mg}$).<br>• Trẻ em: $0.01\text{ mg/kg}$ (tối đa $0.3-0.5\text{ mg}$).<br>• Cho nằm đầu thấp, thở Oxy $6-10\text{ l/p}$. |
+| **Độ III: NGUY KỊCH (SỐC PHẢN VỆ)** | **Biểu hiện đe dọa tính mạng ở một hoặc nhiều cơ quan**:<br>• Hô hấp: **Thở rít thanh quản (Stridor)**, phù thanh môn, co thắt phế quản dữ dội, tím tái.<br>• Tuần hoàn: **SỐC TỤT HUYẾT ÁP** ($\text{HA tâm thu} < 90\text{ mmHg}$ ở người lớn), Huyết áp kẹp, Mạch nhanh nhỏ khó bắt.<br>• Thần kinh: Vật vã, lú lẫn, li bì, hôn mê, co giật, rối loạn cơ tròn. | **TIÊM BẮP ADRENALINE LẶP LẠI MỖI 3 - 5 PHÚT**.<br>• Thiết lập đường truyền TM kim lớn (14-16G).<br>• **Truyền nhanh dịch tinh thể $1000 - 2000\text{ mL}$**.<br>• Chuẩn bị truyền TM Adrenaline liên tục.<br>• Đặt nội khí quản sớm nếu phù thanh môn. |
+| **Độ IV: NGỪNG TUẦN HOÀN** | **Ngừng thở, Ngừng tim hoàn toàn**. | **HỒI SINH TIM PHỔI (BLS / ACLS) NGAY LẬP TỨC**: Ép tim liên tục + Tiêm Adrenaline 1mg IV mỗi 3-5 phút. |
 
-### 3. PHÁC ĐỒ XỬ TRÍ CẤP CỨU PHẢN VỆ MỨC NẶNG VÀ NGUY KỊCH (ĐỘ II, ĐỘ III)
-Phản vệ độ II có thể nhanh chóng chuyển sang độ III, độ IV. Vì vậy, phải khẩn trương xử trí đồng thời theo diễn biến bệnh:
-1.  Ngừng ngay tiếp xúc với thuốc hoặc dị nguyên (nếu có).
-2.  Tiêm hoặc truyền adrenalin ngay lập tức.
-3.  Cho người bệnh nằm tại chỗ, đầu thấp, nghiêng trái nếu có [[Nôn ói|nôn]] (hoặc phụ nữ có thai nằm nghiêng trái, [[Suy hô hấp]] nằm đầu cao/ngồi).
-4.  Thở oxy: người lớn 6-10 lít/phút, trẻ em 2-4 lít/phút qua mặt nạ hở.
-5.  Đánh giá tình trạng hô hấp (A, B, C), tuần hoàn, ý thức và các biểu hiện ở da, niêm mạc của người bệnh. Ép [[Tim]] ngoài lồng ngực và bóp bóng nếu ngừng hô hấp, tuần hoàn; hoặc đặt nội khí quản/mở khí quản cấp cứu nếu [[Khó thở]] thanh quản.
-6.  Thiết lập đường truyền adrenalin tĩnh mạch với dây truyền thông thường nhưng kim tiêm to (cỡ 14 hoặc 16G) hoặc đặt catheter tĩnh mạch và một đường truyền tĩnh mạch thứ hai để truyền dịch nhanh.
-7.  Hội ý với các đồng nghiệp, tập trung xử lý, báo cáo cấp trên, hội chẩn với bác sĩ chuyên khoa cấp cứu, hồi sức.
+---
 
-### 4. PHÁC ĐỒ SỬ DỤNG ADRENALIN VÀ TRUYỀN DỊCH
-Mục tiêu là nâng và duy trì ổn định huyết áp tâm thu của người lớn lên $\ge$ 90mmHg, trẻ em $\ge$ 70mmHg và không còn các dấu hiệu về hô hấp (thở rít, [[Khó thở]]), tiêu hóa ([[Nôn ói|nôn mửa]], ỉa chảy).
+## ⚡ 2. PHÁC ĐỒ SỬ DỤNG ADRENALIN CHUẨN MỰC
 
-**A. Đường Tiêm Bắp (Thuốc adrenalin 1 mg = 1 ml = 1 ống):**
-*   Trẻ sơ sinh hoặc trẻ < 10kg: 0,2ml (tương đương 1/5 ống).
-*   Trẻ khoảng 10 kg: 0,25ml (tương đương 1/4 ống).
-*   Trẻ khoảng 20 kg: 0,3ml (tương đương 1/3 ống).
-*   Trẻ > 30kg: 0,5ml (tương đương 1/2 ống).
-*   Người lớn: 0,5-1 ml (tương đương 1/2-1 ống).
-*   *Lưu ý:* Theo dõi huyết áp 3-5 phút/lần và tiêm nhắc lại adrenalin 3-5 phút/lần cho đến khi huyết áp và mạch ổn định.
+```
+[BỆNH NHÂN CÓ DẤU HIỆU PHẢN VỆ TỪ ĐỘ II TRỞ LÊN]
+                       │
+                       ▼
+[1. TIÊM BẮP (IM) ADRENALINE VÀO MẶT TRƯỚC NGOÀI ĐÙI NGAY LẬP TỨC]
+• Người lớn: 0.5 - 1 mL (tương đương 1/2 đến 1 ống 1mg/1mL nguyên chất).
+• Trẻ em: 0.01 mL/kg (hoặc theo cân nặng: < 10kg: 0.2 mL; 10-20kg: 0.25 mL; 20-30kg: 0.3 mL; > 30kg: 0.5 mL).
+                       │
+                       ▼ (Theo dõi Mạch, Huyết áp mỗi 3 - 5 phút)
+[NẾU HUYẾT ÁP CHƯA LÊN (Sau 2 - 3 lần tiêm bắp không đáp ứng)]:
+                       │
+                       ▼
+[2. THIẾT LẬP ĐƯỜNG TRUYỀN TĨNH MẠCH ADRENALINE LIÊN TỤC]
+• Pha 1 ống Adrenaline 1mg vào 250mL NaCl 0.9% (Dung dịch có nồng độ 4 µg/mL).
+• Khởi đầu liều: 0.1 µg/kg/phút (Tốc độ giọt/phút = Cân nặng kg / 2).
+• Tăng dần liều mỗi 3-5 phút theo đáp ứng huyết áp (Mục tiêu: SBP ≥ 90 mmHg ở người lớn).
+                       │
+                       ▼
+[3. HỒI SỨC DỊCH TINH THỂ ĐẲNG TRƯƠNG NHANH]
+• Người lớn: Truyền nhanh 1.000 - 2.000 mL NaCl 0.9% hoặc Ringer Lactate trong 1 giờ đầu.
+• Trẻ em: Truyền 10 - 20 mL/kg trong 10 - 20 phút.
+```
 
-**B. Đường Tĩnh Mạch (Khi tiêm bắp 2-3 lần không hiệu quả, mạch không bắt được, HA không đo được):**
-*   *Nếu chưa có đường truyền tĩnh mạch:* Tiêm tĩnh mạch chậm dung dịch adrenalin 1/10.000 (1 ống adrenalin 1mg pha với 9ml nước cất). Liều người lớn: 0,5-1 ml (50-100µg) tiêm trong 1-3 phút, nhắc lại sau 3 phút nếu cần. **Tuyệt đối không áp dụng tiêm tĩnh mạch chậm cho trẻ em**.
-*   *Nếu đã có đường truyền tĩnh mạch:* Truyền tĩnh mạch liên tục adrenalin (pha với dung dịch natriclorid 0,9%). Bắt đầu bằng liều $0,1 \mu g/kg/phút$, điều chỉnh mỗi 3-5 phút. Đồng thời truyền nhanh dung dịch natriclorid 0,9% (1.000ml-2.000ml ở người lớn, 10-20ml/kg trong 10-20 phút ở trẻ em).
+---
 
-**[Bảng tham khảo cách pha loãng adrenalin với dung dịch Nacl 0,9% và tốc độ truyền tĩnh mạch chậm] - trích từ [51_2017_TT-BYT_320095.pdf] & [CHẨN ĐOÁN XỬ TRÍ PHẢN VỆ - BS. KHƯƠNG.pdf]**
-*(Chú thích: 01 ống adrenalin 1mg pha với 250ml Nacl 0,9%, như vậy 1ml dung dịch pha loãng có 4µg adrenalin)*
+## 💊 3. CÁC THUỐC ĐIỀU TRỊ HÀNG HAI & TÌNH HUỐNG ĐẶC BIỆT
 
-| Cân nặng người bệnh (kg) | Liều truyền tĩnh mạch adrenalin khởi đầu ($0,1\mu g/kg/phút$) | Tốc độ (giọt/phút) với kim tiêm 1 ml = 20 giọt |
-| :--- | :--- | :--- |
-| Khoảng 80 | 2ml | 40 giọt |
-| Khoảng 70 | 1,75ml | 35 giọt |
-| Khoảng 60 | 1,50ml | 30 giọt |
-| Khoảng 50 | 1,25ml | 25 giọt |
-| Khoảng 40 | 1ml | 20 giọt |
-| Khoảng 30 | 0,75ml | 15 giọt |
-| Khoảng 20 | 0,5ml | 10 giọt |
-| Khoảng 10 | 0,25ml | 5 giọt |
+> [!WARNING]
+> **Kháng Histamin và Corticosteroids KHÔNG PHẢI là thuốc cấp cứu đầu tay** và không bao giờ được dùng để thay thế Adrenaline. Chúng phát huy tác dụng chậm sau 1-4 giờ.
 
-*(Công thức tính nhanh: Tốc độ (giọt/phút) = Cân nặng (kg) / 2)*
+1. **Phòng Ngừa Phản Vệ Pha 2 (Biphasic Anaphylaxis)**:
+   - Khoảng $5 - 20\%$ bệnh nhân phản vệ sẽ bị tái phát triệu chứng nặng trở lại sau 4 - 12 giờ dù đã ổn định hoàn toàn trước đó.
+   - **Methylprednisolone**: $1 - 2\text{ mg/kg}$ tiêm TM (hoặc Hydrocortisone $100 - 200\text{ mg}$ TM) giúp ức chế phản ứng viêm muộn.
+   - **Kháng Histamin $H_1$ (Diphenhydramine $1\text{ mg/kg}$ / Dimedrol) + $H_2$ (Famotidine)**: Giúp giảm mày đay, ngứa và tiết acid dạ dày.
+2. **Co Thắt Phế Quản Kháng Trị (Thở Khò Khè)**:
+   - Khí dung **Salbutamol $2.5 - 5\text{ mg}$ + Ipratropium Bromide $0.5\text{ mg}$**.
+3. **Bệnh Nhân Đang Dùng Thuốc Chẹn Beta (Beta-Blockers) Kháng Trị Với Adrenaline**:
+   - Ở người dùng thuốc chẹn Beta, Adrenaline bị chặn thụ thể $\beta_1, \beta_2$ dẫn đến tụt huyết áp trơ và co thắt mạch nghịch thường.
+   - **THUỐC ĐẶC HIỆU**: Tiêm tĩnh mạch **GLUCAGON $1 - 5\text{ mg}$** trong 5 phút (trẻ em $20 - 30\ \mu\text{g/kg}$), sau đó truyền liên tục $1 - 5\text{ mg/giờ}$. Glucagon kích hoạt thụ thể riêng độc lập với giao cảm làm tăng $cAMP$ nội bào giúp nâng huyết áp và tăng co bóp cơ tim.
 
-### 5. XỬ TRÍ PHẢN VỆ ĐỘ IV (NGỪNG TUẦN HOÀN)
-Trường hợp bệnh nhân có biểu hiện ngừng hô hấp, tuần hoàn (Độ IV), tiến hành ngay các bước theo hướng dẫn cấp cứu ngưng hô hấp tuần hoàn (BLS và ACLS). 
-Quy trình CPR áp dụng theo C-A-B: 
-*   **C (Compressions):** Ép [[Tim]] ngoài lồng ngực mạnh và nhanh.
-*   **A (Airway):** Khai thông đường thở.
-*   **B (Breathing):** Thở máy/Bóp bóng bỗ trợ hô hấp.
+---
 
-### 6. CÁC LƯU ĐỒ CHẨN ĐOÁN VÀ XỬ TRÍ PHẢN VỆ
+## 🏥 4. NGUYÊN TẮC THEO DÕI VÀ RA VIỆN
 
-**[Sơ đồ chi tiết về chẩn đoán và xử trí phản vệ] - trích từ [51_2017_TT-BYT_320095.pdf]**
-*(Chú thích: Sơ đồ triển khai các bước tiếp cận tại cơ sở y tế khi bệnh nhân tiếp xúc dị nguyên)*
-> **XÁC ĐỊNH TÌNH TRẠNG PHẢN VỆ $\rightarrow$ NGỪNG NGAY TIẾP XÚC VỚI DỊ NGUYÊN + GỌI HỖ TRỢ**
-> 
-> *   **Nhẹ (Độ I):** Chỉ có triệu chứng da (mày đay, ngứa, [[Phù]] mạch). Xử trí: Diphenhydramin (1mg/kg) + Methylprednisolon (1-2mg/kg).
-> *   **Nặng (Độ II):** Mày đay xuất hiện nhanh; Khó thở, tức ngực, thở rít; [[Đau bụng]] quặn, nôn; HA chưa tụt hoặc tăng. Không rối loạn ý thức.
-> *   **Nguy kịch (Độ III):** Đường thở khản tiếng, rít thanh quản; Thở khò khè, tím tái; Tuần hoàn da nhợt, tụt HA; Rối loạn ý thức, [[Hôn mê]].
->
-> **XỬ TRÍ ĐỘ II, III NGAY BẰNG ADRENALIN (Duy nhất cứu sống BN):**
-> *   **TIÊM BẮP:** Người lớn 1/2 ống; Trẻ em 1/5-1/3 ống. Nhắc lại mỗi 3-5 phút cho đến khi HA ổn định. Thiết lập đường truyền NaCl 0.9%.
-> *   **ĐƯỜNG TĨNH MẠCH:** Nếu tiêm bắp >2 lần HA không lên. Tiêm TM chậm (chỉ người lớn) 0,5-1ml pha loãng 1/10. Chuyển truyền TM chậm liên tục 0,1$\mu g$/kg/phút.
+```
+[BỆNH NHÂN ỔN ĐỊNH SAU CẤP CỨU PHẢN VỆ]
+                   │
+                   ▼
+[BẮT BUỘC THEO DÕI NỘI TRÚ LIÊN TỤC TẠI CƠ SỞ Y TẾ ÍT NHẤT 24 GIỜ]
+• Theo dõi sát Mạch, Huyết áp, Nhịp thở, SpO2 mỗi 1-2 giờ.
+• Phát hiện sớm Phản vệ pha 2 (Biphasic Anaphylaxis).
+                   │
+                   ▼ (Khi đủ điều kiện xuất viện)
+[KÊ ĐƠN BÚT TIÊM TỰ ĐỘNG ADRENALINE (EpiPen 0.3mg / 0.15mg) + THẺ DỊ ỨNG]
+• Hướng dẫn bệnh nhân và gia đình kỹ thuật tự tiêm Adrenaline khi có dấu hiệu tái phát.
+• Ghi rõ tên dị nguyên gây phản vệ vào Bệnh án và cấp "Thẻ Dị Ứng" đeo trên người.
+```
 
-**[Sơ đồ tóm tắt về chẩn đoán và xử trí phản vệ] - trích từ [51_2017_TT-BYT_320095.pdf]**
-*(Chú thích: Lưu đồ thu gọn ưu tiên dán tại tủ thuốc cấp cứu và xe tiêm)*
-> **1. ĐÁNH GIÁ MỨC ĐỘ** (Có thể chuyển độ, nặng lên rất nhanh)
-> *   **Nhẹ (độ I):** Diphenhydramin (1mg/kg) + Methylprednisolon (1-2mg/kg). Theo dõi sát mạch, HA, ý thức.
-> *   **Nặng (độ II) & Nguy kịch (độ III):** Xử trí ngay bằng ADRENALIN ống 1mg/1ml. Tiêm bắp nhắc lại mỗi 3-5 phút. Nếu không đáp ứng, tiến hành truyền tĩnh mạch.
+---
 
-### 7. XỬ TRÍ TIẾP THEO (THUỐC PHỐI HỢP) VÀ THEO DÕI
-Sau khi xử trí cấp cứu ban đầu bằng Adrenalin, tùy mức độ suy tuần hoàn, hô hấp mà kết hợp:
-*   **Hỗ trợ hô hấp:** Bóp bóng AMBU, đặt ống nội khí quản, hoặc truyền tĩnh mạch chậm aminophyllin/salbutamol/terbutalin.
-*   **Dung dịch keo:** Bổ sung nếu không nâng được huyết áp sau khi đã truyền đủ tinh thể và adrenalin.
-*   **Thuốc phối hợp khác:**
-    *   [[[[Corticoid]]|Corticosteroid]]: Methylprednisolon (1-2mg/kg) hoặc Hydrocortison (200mg/người lớn) tiêm tĩnh mạch.
-    *   Kháng histamin H1 (Diphenhydramin 25-50mg/người lớn) và H2 (Ranitidin 50mg/người lớn).
-    *   Glucagon: Dùng khi tụt HA và nhịp chậm không đáp ứng adrenalin (đặc biệt bệnh nhân đang dùng chẹn Beta).
-    *   Thuốc vận mạch (Dopamin, Noradrenalin): Truyền TM khi [[Sốc]] nặng dai dẳng.
-*   **Chế độ theo dõi:** 
-    *   Giai đoạn cấp: Theo dõi mạch, huyết áp, nhịp thở, SpO2 và tri giác 3-5 phút/lần cho đến khi ổn định.
-    *   Giai đoạn ổn định: Theo dõi liên tục mỗi 1-2 giờ trong ít nhất 24 giờ tiếp theo để đề phòng phản vệ pha 2 (biphasic reactions). Nếu cấp cứu ngừng tuần hoàn tích cực không kết quả mới ra y lệnh ngừng cấp cứu.
+## 🧠 5. BỘ FLASHCARDS LÂM SÀNG CỐT LÕI (SPACED REPETITION)
+
+1. **Câu hỏi**: Tại sao vị trí tiêm bắp Adrenaline ưu tiên hàng đầu trong cấp cứu phản vệ là Mặt trước ngoài đùi (Cơ tứ đầu đùi) chứ không phải cơ delta cánh tay hay vùng mông?
+   - **Đáp án**: Vì cơ tứ đầu đùi có mạng lưới mao mạch phong phú và lưu lượng máu tuần hoàn cao hơn hẳn cơ delta hay cơ mông $\to$ Giúp Adrenaline hấp thu vào máu và đạt nồng độ đỉnh trong huyết tương nhanh hơn gấp nhiều lần ($8\text{ phút}$ so với $> 30\text{ phút}$ ở cơ delta), nhanh chóng giải cứu đường thở bị co thắt và nâng huyết áp.
+2. **Câu hỏi**: Ở bệnh nhân bị sốc phản vệ nặng đang dùng thuốc hạ áp nhóm chẹn Beta (Beta-blockers) và không đáp ứng với Adrenaline liều cao, thuốc giải cứu đặc hiệu tiếp theo là gì?
+   - **Đáp án**: **Glucagon tiêm tĩnh mạch** ($1 - 5\text{ mg}$ ở người lớn). Glucagon kích thích thụ thể màng riêng biệt không qua thụ thể Adrenergic $\to$ Tăng tổng hợp $cAMP$ nội bào, phục hồi sức co bóp cơ tim và nâng huyết áp hiệu quả.
+3. **Câu hỏi**: Thời gian theo dõi tối thiểu bắt buộc tại cơ sở y tế đối với một bệnh nhân sau khi đã cấp cứu ổn định phản vệ là bao lâu và nhằm mục đích gì?
+   - **Đáp án**: Tối thiểu **24 giờ liên tục**, nhằm mục đích phát hiện và xử trí kịp thời biến chứng **Phản vệ pha 2 (Biphasic Anaphylaxis)** - hiện tượng phản ứng quá mẫn bùng phát trở lại mà không cần tiếp xúc lại với dị nguyên (chiếm tới $5-20\%$ các ca phản vệ).
+
+---
+
+## 📚 6. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+
+1. Bộ Y tế Việt Nam. *Hướng dẫn phòng, chẩn đoán và xử trí phản vệ*. Thông tư số 51/2017/TT-BYT; 2017.
+2. Cardona V, et al. World Allergy Organization Anaphylaxis Guidance 2020. *World Allergy Organ J*. 2020;13(10):100472.
+3. Shaker MS, et al. Anaphylaxis—a 2020 practice parameter update, systematic review, and Grading of Recommendations Assessment, Development and Evaluation (GRADE) analysis. *J Allergy Clin Immunol*. 2020;145(4):1082-1123.
+4. Dribin TE, et al. Risk Factors for Biphasic Anaphylaxis: A Meta-analysis. *J Allergy Clin Immunol*. 2020;146(5):1073-1082.

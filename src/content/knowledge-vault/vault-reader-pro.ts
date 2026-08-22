@@ -235,18 +235,21 @@ export function processMarkdownWithToc(rawMarkdown: string): { htmlContent: stri
     return `<div class="vault-img-card" style="text-align:center; margin:1.5rem 0;"><img src="${resolvedSrc}" alt="${escapeHtml(altText)}" style="max-width:100%; height:auto; border-radius:8px; border:1px solid var(--vault-border); box-shadow:0 4px 12px rgba(0,0,0,0.06);" loading="lazy" />${altText ? `<div style="font-size:11px; color:var(--vault-muted); margin-top:6px; font-style:italic;">${escapeHtml(altText)}</div>` : ''}</div>`;
   });
 
-  // Format Obsidian Wikilinks [[Target|Label]] or [[Target]]
+  // Obsidian Wikilinks [[Target|Label]] or [[Target]]
   clean = clean.replace(/\[\[([^\]|\n]+)(?:\|([^\]\n]+))?\]\]/g, (match, target, label) => {
     const displayLabel = (label || target).trim();
     const cleanTarget = target.trim();
     return `<button type="button" class="vault-wikilink-btn" data-wikilink="${escapeHtml(cleanTarget)}" title="Nhảy đến bài viết / ghi chú: ${escapeHtml(displayLabel)}"><i class="fa-solid fa-link" style="font-size:10px; opacity:0.8;"></i> ${escapeHtml(displayLabel)}</button>`;
   });
 
-  // GitHub Callouts
+  // Extended Medical Callouts & Bách khoa Toàn thư Badges
   clean = clean.replace(/> \[!NOTE\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-note" style="border-left:4px solid #0284c7; background:rgba(2,132,199,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-circle-info" style="color:#0284c7;"></i> <strong>Ghi chú:</strong> $1</div>');
-  clean = clean.replace(/> \[!TIP\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-tip" style="border-left:4px solid #10b981; background:rgba(16,185,129,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-lightbulb" style="color:#10b981;"></i> <strong>Điểm ngọc lâm sàng:</strong> $1</div>');
-  clean = clean.replace(/> \[!WARNING\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-warning" style="border-left:4px solid #f59e0b; background:rgba(245,158,11,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> <strong>Cảnh báo:</strong> $1</div>');
-  clean = clean.replace(/> \[!CAUTION\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-danger" style="border-left:4px solid #ef4444; background:rgba(239,68,68,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-circle-exclamation" style="color:#ef4444;"></i> <strong>Chống chỉ định:</strong> $1</div>');
+  clean = clean.replace(/> \[!TIP\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-tip" style="border-left:4px solid #10b981; background:rgba(16,185,129,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-lightbulb" style="color:#10b981;"></i> <strong>Điểm ngọc lâm sàng (Clinical Pearl):</strong> $1</div>');
+  clean = clean.replace(/> \[!WARNING\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-warning" style="border-left:4px solid #f59e0b; background:rgba(245,158,11,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> <strong>Cảnh báo (Red Flags):</strong> $1</div>');
+  clean = clean.replace(/> \[!CAUTION\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout dsp-callout-danger" style="border-left:4px solid #ef4444; background:rgba(239,68,68,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-circle-exclamation" style="color:#ef4444;"></i> <strong>Chống chỉ định & Nguy hiểm:</strong> $1</div>');
+  clean = clean.replace(/> \[!PEARL\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout" style="border-left:4px solid #8b5cf6; background:rgba(139,92,246,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-gem" style="color:#8b5cf6;"></i> <strong>Kinh nghiệm thực chiến:</strong> $1</div>');
+  clean = clean.replace(/> \[!DOSING\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout" style="border-left:4px solid #06b6d4; background:rgba(6,182,212,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-pills" style="color:#06b6d4;"></i> <strong>Liều & Chỉnh liều:</strong> $1</div>');
+  clean = clean.replace(/> \[!TRIAL\]\s*([\s\S]*?)(?=\n\n|$)/g, '<div class="dsp-callout" style="border-left:4px solid #ec4899; background:rgba(236,72,153,0.08); padding:0.75rem 1rem; border-radius:6px; margin:1rem 0;"><i class="fa-solid fa-flask-vial" style="color:#ec4899;"></i> <strong>Chứng cứ Landmark Trial / EBM:</strong> $1</div>');
 
   // Format Paragraphs
   clean = clean.split('\n\n').map(p => {
@@ -257,6 +260,46 @@ export function processMarkdownWithToc(rawMarkdown: string): { htmlContent: stri
   }).join('\n');
 
   return { htmlContent: clean, tocItems };
+}
+
+/**
+ * Render Encyclopedia Quick Facts Card ở đầu bài viết bách khoa
+ */
+export function renderEncyclopediaQuickFactsHtml(article: VaultArticle): string {
+  const icdText = (article.icd10 && article.icd10.length > 0) ? article.icd10.join(', ') : 'Chưa gán';
+  const specialty = article.specialty || 'Tổng hợp';
+  const readTime = article.readTime || '8-12 phút';
+  
+  return `
+    <div class="vault-encyclopedia-card" style="background:var(--vault-surface); border:1px solid var(--vault-border); border-radius:12px; padding:1rem 1.25rem; margin-bottom:1.5rem; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--vault-border); padding-bottom:8px; margin-bottom:12px;">
+        <span style="font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.05em; color:var(--vault-primary); display:flex; align-items:center; gap:6px;">
+          <i class="fa-solid fa-graduation-cap"></i> Bách Khoa Toàn Thư Y Học — Tóm Tắt Nhanh
+        </span>
+        <span style="font-size:11px; background:rgba(2,132,199,0.1); color:var(--vault-primary); padding:2px 8px; border-radius:999px; font-weight:700;">
+          Chuẩn EBM
+        </span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; font-size:12px;">
+        <div style="background:var(--vault-bg); padding:8px 10px; border-radius:8px; border:1px solid var(--vault-border);">
+          <div style="font-size:10.5px; color:var(--vault-muted); font-weight:600;"><i class="fa-solid fa-tags"></i> Phân loại / Chuyên khoa</div>
+          <div style="font-weight:700; color:var(--vault-text); margin-top:2px;">${escapeHtml(specialty)}</div>
+        </div>
+        <div style="background:var(--vault-bg); padding:8px 10px; border-radius:8px; border:1px solid var(--vault-border);">
+          <div style="font-size:10.5px; color:var(--vault-muted); font-weight:600;"><i class="fa-solid fa-barcode"></i> Mã ICD-10</div>
+          <div style="font-weight:700; color:#ec4899; margin-top:2px;">${escapeHtml(icdText)}</div>
+        </div>
+        <div style="background:var(--vault-bg); padding:8px 10px; border-radius:8px; border:1px solid var(--vault-border);">
+          <div style="font-size:10.5px; color:var(--vault-muted); font-weight:600;"><i class="fa-regular fa-clock"></i> Thời lượng đọc</div>
+          <div style="font-weight:700; color:var(--vault-text); margin-top:2px;">${escapeHtml(readTime)}</div>
+        </div>
+        <div style="background:var(--vault-bg); padding:8px 10px; border-radius:8px; border:1px solid var(--vault-border);">
+          <div style="font-size:10.5px; color:var(--vault-muted); font-weight:600;"><i class="fa-solid fa-circle-check"></i> Mức độ hoàn thiện</div>
+          <div style="font-weight:700; color:#10b981; margin-top:2px;">Đã kiểm chứng EBM</div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 /**

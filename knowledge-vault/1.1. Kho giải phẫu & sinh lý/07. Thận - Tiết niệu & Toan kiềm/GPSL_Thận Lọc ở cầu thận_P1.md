@@ -1,77 +1,139 @@
 ---
-title: "Thận Lọc ở cầu thận"
+title: "Thận: Sinh lý Lọc Cầu Thận & Động Lực Học Siêu Lọc (GFR)"
 part: "P1"
 aliases:
   - "Thận Lọc ở cầu thận"
+  - "Glomerular Filtration Rate"
+  - "Độ lọc cầu thận GFR"
 keywords:
   - "thận lọc ở cầu thận"
-  - "tim mạch"
-  - "07. thận - tiết niệu & toan kiềm"
-specialty: "Tim mạch"
+  - "gfr"
+  - "lực starling"
+  - "tubuloglomerular feedback"
+  - "phức hợp cận cầu thận"
+  - "nephrin"
+  - "podocyte"
+specialty: "Thận - Tiết niệu"
 kho: "1.1. Kho giải phẫu & sinh lý"
 tags:
-  - "he-co-quan/tim-mach"
+  - "he-co-quan/than-tiet-nieu"
   - "loai/physiology"
   - "y-khoa/gpsl"
-updated: "2026-08-21"
+icd10:
+  - "N00 - N08 (Bệnh cầu thận)"
+  - "N17 - N18 (Tổn thương thận cấp & Bệnh thận mạn)"
+updated: "2026-08-22"
 ---
 
+# 🧪 Bách Khoa Sinh Lý: Lọc Cầu Thận & Động Lực Học Siêu Lọc (Glomerular Filtration)
 
-
-Dưới đây là phần tóm tắt ngắn gọn, trọng tâm về **Chức năng Lọc tại Cầu [[Thận]] (Glomerular Filtration)** kèm theo sự giải thích các hình ảnh, lưu đồ minh họa được trích xuất từ các tài liệu sinh lý học y khoa:
-
-### I. MÀNG LỌC CẦU [[Thận]] VÀ TÍNH THẤM
-Quá trình tạo nước tiểu bắt đầu bằng cơ chế siêu lọc (ultrafiltration) huyết tương từ mao mạch cầu thận vào khoang Bowman. 
-
-**1. Cấu trúc 3 lớp của màng lọc:**
-*   **Lớp nội mô mao mạch (Endothelium):** Có các "cửa sổ" (fenestrations) rộng 70-100 nm, bề mặt phủ lớp glycocalyx tích điện âm giúp đẩy lùi các protein mang điện tích âm.
-*   **Lớp màng đáy (Basement membrane):** Lớp màng mỏng chứa collagen type IV và proteoglycan tích điện âm rất mạnh. Đây là rào cản chính yếu ngăn protein (như albumin) lọt vào dịch lọc.
-*   **Lớp tế bào có chân (Podocytes - Biểu mô lá tạng):** Có các chân giả (foot processes) đan xen nhau tạo thành các khe lọc (filtration slits) rộng khoảng 40 nm. Màng khe này chứa các phân tử protein quan trọng như **nephrin**, đóng vai trò như một màng rây.
-
-**2. Tính chọn lọc của màng:**
-Màng lọc cầu thận có tính chọn lọc rất cao dựa trên 2 yếu tố: **Kích thước** (phân tử < 10 kDa qua dễ dàng, > 80 kDa không thể qua) và **Điện tích** (ion âm bị đẩy lùi mạnh hơn ion dương).
-
-🖼️ **Hình ảnh minh họa cần học:**
-*   **Hình 17.1 (Sách *Sinh lý học - UMP 2024*)** hoặc **Fig. 33.7, 33.10 (Sách *Berne & Levy 8e*):** Vẽ lát cắt ngang của màng lọc cầu thận. Các hình này giúp bạn hình dung vị trí 3 lớp, đặc biệt là cấu trúc "chân giả" đan xen của podocyte và cấu trúc dây kéo của phân tử nephrin trên màng khe.
+> **Tóm tắt cốt lõi**: Cầu thận lọc khoảng **$125\text{ mL/phút}$ ($180\text{ L/ngày}$)** dịch lọc nguyên thủy. Quá trình lọc chịu sự chi phối của **Hàng rào lọc 3 lớp có tính chọn lọc điện tích/kích thước** và **Cân bằng các Lực Starling ($P_{UF} \approx +10\text{ mmHg}$)**. Cơ chế phản hồi Ống - Cầu thận (Tubuloglomerular Feedback) qua Vết đặc (Macula Densa) đóng vai trò trung tâm trong tự điều hòa GFR.
 
 ---
 
-### II. ĐỘNG LỰC HỌC SIÊU LỌC (CÁC LỰC STARLING)
-Độ lọc cầu thận (GFR) bình thường khoảng $125~mL/ph\acute{u}t$ (180 L/ngày). GFR được quyết định bởi sự chênh lệch áp suất giữa hai bên màng lọc theo định luật Starling.
+## 🏛️ 1. CẤU TRÚC HÀNG RÀO LỌC CẦU THẬN 3 LỚP
 
-**1. Công thức tính Áp suất siêu lọc ($P_{UF}$ hoặc $UP$):**
-$$UP = P_{GC} - P_{BS} - \Pi_{GC}$$
-*(Lưu ý: Bỏ qua áp suất keo khoang Bowman $\Pi_{BS}$ vì dịch lọc gần như không có protein)*.
-*   **$P_{GC}$ (Áp suất thủy tĩnh mao mạch):** Khoảng **55 mmHg**. Đây là lực ĐẨY dịch ra khỏi mạch máu.
-*   **$P_{BS}$ (Áp suất thủy tĩnh khoang Bowman):** Khoảng **15 mmHg**. Lực CẢN, đẩy nước ngược lại.
-*   **$\Pi_{GC}$ hay COP (Áp suất keo huyết tương):** Khoảng **30 mmHg**. Lực CẢN, giữ nước lại trong lòng mạch do sức hút của protein.
-=> **$UP = 55 - 15 - 30 = +10~mmHg$**. Đây là động lực thực sự đẩy dịch tạo thành nước tiểu nguyên thủy.
+Hàng rào lọc cầu thận (Glomerular Filtration Barrier - GFB) cho phép nước và các chất hòa tan nhỏ đi qua tự do, nhưng ngăn giữ gần như tuyệt đối hồng cầu và các đại phân tử protein huyết tương:
 
-**2. Công thức tính GFR:**
-$$GFR = K_f \times UP$$
-Trong đó $K_f$ là hệ số siêu lọc (phụ thuộc vào diện tích và tính thấm của màng).
+```
+[Lòng Mao Mạch] ──► [1. Nội mô có cửa sổ (70-100 nm)]
+                          │
+                          ▼
+                    [2. Màng đáy cầu thận (GBM) - Tích điện âm cực mạnh]
+                          │
+                          ▼
+                    [3. Khe lọc giữa chân tế bào Podocyte (40 nm, Nephrin/Podocin)]
+                          │
+                          ▼
+                    [Khoang Bowman]
+```
 
-🖼️ **Hình ảnh minh họa cần học:**
-*   **Hình 17.6 (Sách *Sinh lý học - UMP 2024*)** và **Fig. 33.17 (Sách *Berne & Levy 8e*):** Sơ đồ các lực Starling tác động lên quai mao mạch cầu thận. Biểu đồ chỉ ra rằng đi từ tiểu động mạch vào đến tiểu động mạch ra, áp suất thủy tĩnh $P_{GC}$ giảm nhẹ, trong khi áp suất keo $\Pi_{GC}$ tăng dần (do nước thoát ra làm cô đặc protein), khiến áp suất lọc giảm dần về cuối mao mạch.
+1. **Lớp nội mô mao mạch (Capillary Endothelium)**: Đục lỗ bởi các "cửa sổ" (Fenestrations) đường kính 70-100 nm, bề mặt phủ lớp **Glycocalyx** giàu Heparan Sulfate tích điện âm $\to$ Ngăn hồng cầu, bạch cầu và tiểu cầu.
+2. **Màng đáy cầu thận (Glomerular Basement Membrane - GBM)**: Gồm Collagen Type IV, Laminin, Nidogen và Proteoglycan tích điện âm (**Agrin, Perlecan**) $\to$ Là **rào cản điện tích chính yếu** ngăn Albumin lọt qua.
+3. **Lớp tế bào có chân (Podocytes - Biểu mô lá tạng)**: Các chân thứ cấp (Pedicels) cài răng lược tạo thành các **khe lọc (Filtration Slits)** rộng 30-40 nm. Khe này được bắc cầu bởi màng chắn protein gồm **Nephrin, Podocin, CD2AP**.
 
----
-
-### III. LƯU ĐỒ ĐIỀU HÒA ĐỘ LỌC CẦU THẬN (AUTOREGULATION)
-Cơ thể có khả năng tự điều hòa để giữ GFR và lưu lượng máu thận (RBF) luôn ổn định khi huyết áp dao động từ 80 - 180 mmHg.
-
-**1. Cơ chế tự co cơ trơn (Myogenic mechanism):**
-Huyết áp tăng $\rightarrow$ Làm căng thành tiểu động mạch vào $\rightarrow$ Mở kênh $Ca^{2+}$ nhạy cảm điện thế $\rightarrow$ Gây **co cơ trơn tiểu động mạch vào** $\rightarrow$ Giảm lượng máu vào cầu thận $\rightarrow$ GFR trở về bình thường.
-
-**2. Cơ chế điều hòa ngược Ống - Cầu (Tubuloglomerular Feedback - LƯU ĐỒ QUAN TRỌNG):**
-Cơ chế này sử dụng Phức hợp cận cầu thận (Juxtaglomerular apparatus) làm bộ phận cảm biến.
-*   **Lưu đồ diễn tiến:** Huyết áp tăng $\rightarrow$ GFR tăng $\rightarrow$ Dịch lọc chảy nhanh làm **tăng nồng độ NaCl** đến đoạn ống lượn xa $\rightarrow$ Tế bào **Vết đặc (Macula densa)** cảm nhận sự gia tăng này $\rightarrow$ Giải phóng chất co mạch (ATP và Adenosine) $\rightarrow$ Gây **co tiểu động mạch vào** $\rightarrow$ Giảm GFR về mức bình thường.
-
-🖼️ **Lưu đồ minh họa cần học:**
-*   **Hình 17.9 và 17.10 (Sách *Sinh lý học - UMP 2024*)** hoặc **Fig. 33.19 và 33.20 (Sách *Berne & Levy 8e*):** Lưu đồ giải thích cơ chế phân tử của sự điều hòa ngược ống - cầu. Hình ảnh chỉ rõ vị trí của Tế bào vết đặc ở ống lượn xa nằm sát với tiểu động mạch vào, và cách nó tiết ATP/Adenosine gây co mạch như thế nào.
+> [!PEARL]
+> **Hội chứng Thận hư Đổi tổn thương tối thiểu (Minimal Change Disease - MCD)**: Tình trạng viêm miễn dịch làm biến mất điện tích âm của GBM và làm dính/hợp nhất các chân giả Podocyte $\to$ Albumin (tích điện âm) ồ ạt lọt vào nước tiểu gây **Tiểu đạm chọn lọc cao (> 3.5g/24h)** và phù toàn thân.
 
 ---
 
-**TÀI LIỆU THAM KHẢO (Định dạng AMA):**
-1. Mai PT, Đặng HAT, Lê QT, Vũ TTQ, Bùi DK. *Sinh lý học y khoa*. Nhà xuất bản Đại học Quốc gia Thành phố Hồ Chí Minh; 2024.
+## ⚖️ 2. ĐỘNG LỰC HỌC SIÊU LỌC & CÁC LỰC STARLING
+
+Áp suất siêu lọc thực tế ($P_{UF}$) là lực tổng hợp đẩy dịch từ lòng mao mạch vào khoang Bowman:
+
+$$\text{GFR} = K_f \times P_{UF} = K_f \times \Big[ (P_{GC} - P_{BS}) - (\Pi_{GC} - \Pi_{BS}) \Big]$$
+
+| Thông Số Lực Starling | Giá Trị Bình Thường | Chiều Tác Động | Ý Nghĩa Sinh Lý & Bệnh Học |
+|:---|:---:|:---:|:---|
+| **$P_{GC}$ (Áp suất thủy tĩnh mao mạch)** | **$55\text{ mmHg}$** | **ĐẨY** $\to$ Khoang Bowman | Phụ thuộc huyết áp hệ thống và trương lực tiểu động mạch vào/ra. |
+| **$P_{BS}$ (Áp suất thủy tĩnh khoang Bowman)** | **$15\text{ mmHg}$** | **CẢN** $\leftarrow$ Ngược vào mạch | Tăng cao trong sỏi niệu quản, tắc nghẽn đường tiểu $\to$ Giảm mạnh GFR. |
+| **$\Pi_{GC}$ (Áp suất keo mao mạch cầu thận)** | **$30\text{ mmHg}$** | **CẢN** $\leftarrow$ Giữ nước trong lòng mạch | Tăng dần dọc chiều dài mao mạch (từ 28 lên 35 mmHg) do nước bị lọc ra làm cô đặc protein. |
+| **$\Pi_{BS}$ (Áp suất keo khoang Bowman)** | **$0\text{ mmHg}$** | **ĐẨY** $\to$ Khoang Bowman | Bình thường $\approx 0$ vì dịch lọc không có protein. |
+| **$P_{UF}$ (Áp suất lọc thực tế Net)** | **$+10\text{ mmHg}$** | **ĐẨY TỔNG HỢP** | $P_{UF} = 55 - 15 - 30 = \mathbf{+10\text{ mmHg}}$. |
+
+---
+
+## 🎛️ 3. CƠ CHẾ TỰ ĐIỀU HÒA GFR & LƯU LƯỢNG MÁU THẬN (RBF)
+
+Thận duy trì RBF ($1200\text{ mL/phút}$) và GFR ($125\text{ mL/phút}$) gần như không đổi khi Huyết áp trung bình dao động từ **$80\text{ đến }180\text{ mmHg}$** nhờ 2 cơ chế:
+
+### 3.1. Cơ chế Tự co cơ trơn (Myogenic Autoregulation)
+- Khi HA tăng $\to$ Làm căng thụ thể cơ học trên tiểu động mạch vào (Afferent arteriole) $\to$ Mở kênh $Ca^{2+}$ phụ thuộc điện thế $\to$ Co tiểu động mạch vào $\to$ Giảm lưu lượng máu vào cầu thận, bảo vệ mao mạch cầu thận khỏi tăng áp lực.
+
+### 3.2. Cơ chế Phản hồi Ống - Cầu thận (Tubuloglomerular Feedback - TGF)
+- **Cảm biến**: Tế bào **Vết đặc (Macula Densa)** nằm tại đoạn đầu ống lượn xa, tiếp xúc trực tiếp với tiểu động mạch vào/ra (Phức hợp cận cầu thận JGA).
+- **Luồng phản xạ**:
+  $$\text{HA tăng} \implies \text{GFR tăng} \implies \text{Dịch lọc chảy nhanh} \implies \text{Tăng nạp NaCl vào Macula Densa (qua NKCC2)}$$
+  $$\implies \text{Tế bào Macula Densa tiết ATP \& Adenosine} \implies \text{Gắn thụ thể } A_1 \implies \text{Co tiểu động mạch vào} \implies \text{GFR giảm về bình thường!}$$
+
+---
+
+## 💊 4. TÁC ĐỘNG DƯỢC LÝ LÊN TIỂU ĐỘNG MẠCH VÀO & RA
+
+```
+[Tiểu Động Mạch Vào] ──► [Mao Mạch Cầu Thận] ──► [Tiểu Động Mạch Ra]
+       ▲                                                 ▲
+       │ Giãn bởi Prostaglandin (PGE2, PGI2)             │ Co bởi Angiotensin II
+       │ Bị chặn bởi NSAIDs                              │ Bị chặn bởi Thuốc ACEi / ARB
+```
+
+| Thuốc / Hormon | Tác Động Lên Tiểu Động Mạch Vào | Tác Động Lên Tiểu Động Mạch Ra | Ảnh Hưởng Lên GFR | Nguy Cơ Lâm Sàng |
+|:---|:---|:---|:---:|:---|
+| **Prostaglandins ($PGE_2$)** | **Giãn mạnh** | Ít tác động | **TĂNG** | Giữ tưới máu thận khi tụt HA. |
+| **NSAIDs (Ibuprofen, Diclofenac)** | **Ức chế Prostaglandin $\to$ CO mạch vào** | Không tác động | **GIẢM MẠNH** | **Suy thận cấp trước thận (Hemodynamic AKI)** ở người già, suy tim, xơ gan. |
+| **Angiotensin II (Nồng độ thấp/vừa)** | Co nhẹ | **CO MẠNH** | **TĂNG / BẢO TỒN** | Nâng $P_{GC}$ khi tụt áp hệ thống. |
+| **Thuốc ACEi / ARB (Enalapril, Losartan)** | Không tác động | **GIÃN mạch ra** | **GIẢM $P_{GC}$** | Giảm áp lực lọc $\to$ **Bảo vệ thận lâu dài** giảm tiểu đạm, nhưng có thể tăng Creatinine thoáng qua 20-30%. |
+| **Thuốc SGLT2i (Dapagliflozin, Empagliflozin)** | **Tăng nạp NaCl về Macula Densa $\to$ Phục hồi TGF $\to$ Co mạch vào** | Không tác động | **GIẢM áp lực lọc** | **Bảo vệ thận & Tim mạch đột phá** (giảm xơ hóa cầu thận). |
+
+> [!WARNING]
+> **Bộ ba chết chóc thận (Triple Whammy)**: Kết hợp đồng thời **Thuốc ức chế men chuyển (ACEi) + Thuốc lợi tiểu (Diuretic) + Thuốc giảm đau kháng viêm (NSAID)** làm tê liệt hoàn toàn cơ chế bù trừ mạch máu thận $\to$ Gây **Suy thận cấp nghiêm trọng vô niệu**!
+
+---
+
+## 📊 5. CÁC PHƯƠNG PHÁP ĐÁNH GIÁ ĐỘ LỌC CẦU THẬN
+
+1. **Tiêu chuẩn vàng (Gold Standard)**: Độ thanh thải **Inulin** ($C_{inulin} = \frac{U_{in} \times V}{P_{in}}$) vì Inulin được lọc tự do, không được tái hấp thu và không bị bài tiết ở ống thận.
+2. **Lâm sàng thực hành**:
+   - **Độ thanh thải Creatinine nội sinh (CrCl)**: Lấy nước tiểu 24h (Creatinine bị bài tiết nhẹ 10-15% ở ống thận nên CrCl hơi cao hơn GFR thực).
+   - **Công thức ước đoán eGFR CKD-EPI (2021)**: Chuẩn hóa không dùng hệ số chủng tộc, dựa trên Creatinine máu, Tuổi, Giới tính.
+   - **Cystatin C**: Không phụ thuộc vào khối lượng cơ bắp, cực kỳ chính xác ở bệnh nhân suy kiệt, xơ gan, cắt cụt chi hoặc người già.
+
+---
+
+## 🧠 6. BỘ FLASHCARDS LÂM SÀNG CỐT LÕI (SPACED REPETITION)
+
+1. **Câu hỏi**: Vì sao dùng thuốc NSAIDs ở bệnh nhân suy tim sung huyết hoặc xơ gan lại dễ gây suy thận cấp trước thận?
+   - **Đáp án**: Ở các bệnh nhân này, tưới máu thận phụ thuộc vào Prostaglandin để làm giãn tiểu động mạch vào. NSAIDs ức chế COX làm mất Prostaglandin $\to$ Co thắt tiểu động mạch vào $\to$ Tụt áp lực mao mạch $P_{GC} \to$ Tụt GFR.
+2. **Câu hỏi**: Cơ chế bảo vệ thận của thuốc ức chế SGLT2 (SGLT2 inhibitors) liên quan như thế nào đến phản hồi ống - cầu (TGF)?
+   - **Đáp án**: SGLT2i ức chế tái hấp thu Glucose-Na+ ở ống lượn gần $\to$ Tăng lượng NaCl đi đến tế bào Vết đặc (Macula densa) $\to$ Kích hoạt TGF gây co nhẹ tiểu động mạch vào $\to$ Giảm tình trạng tăng áp lực lọc cầu thận (Hyperfiltration), ngăn ngừa xơ hóa nephron.
+3. **Câu hỏi**: Cấu trúc nào là rào cản chính ngăn cản Albumin tích điện âm lọt vào khoang Bowman?
+   - **Đáp án**: Màng đáy cầu thận (GBM) giàu Proteoglycan tích điện âm (Agrin, Perlecan) và khe lọc Podocyte phủ Nephrin.
+
+---
+
+## 📚 7. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+
+1. Hall JE. *Guyton and Hall Textbook of Medical Physiology*. 14th ed. Elsevier; 2021.
 2. Koeppen BM, Stanton BA. *Berne and Levy Physiology*. 8th ed. Elsevier; 2024.
-3. Barrett KE, Barman SM, Boitano S, Brooks HL. *Ganong's Review of Medical Physiology*. 24th ed. McGraw-Hill Medical; 2012.
+3. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. *Kidney Int*. 2024.
+4. Heerspink HJL, et al. DAPA-CKD Trial: Dapagliflozin in Patients with Chronic Kidney Disease. *N Engl J Med*. 2020.

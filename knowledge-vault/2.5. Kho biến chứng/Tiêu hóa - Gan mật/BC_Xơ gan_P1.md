@@ -1,132 +1,108 @@
 ---
-title: "Xơ gan"
+title: "Bệnh Học Biến Chứng: Các Biến Chứng Cấp - Mạn Của Xơ Gan & Tăng Áp Lực Tĩnh Mạch Cửa"
 part: "P1"
 aliases:
   - "Xơ gan"
-  - "Cirrhosis"
-  - "Liver Cirrhosis"
-  - "Xơ gan mất bù"
-  - "Xơ gan còn bù"
+  - "Biến chứng xơ gan"
+  - "Cirrhosis Complications"
+  - "Viêm phúc mạc nhiễm khuẩn nguyên phát SBP"
+  - "Hội chứng gan thận HRS"
+  - "Bệnh não gan"
 keywords:
-  - "xơ gan"
-  - "tiêu hóa - gan mật"
-  - "child-pugh"
-  - "meld score"
-  - "tang ap cua"
-  - "bang bung"
-  - "vo gian tm thuc quan"
-  - "benh nao gan"
-icd10:
-  - "K74"
-  - "K70"
-  - "K70.3"
-specialty: "Tiêu hóa - Gan mật"
+  - "biến chứng xơ gan mất bù"
+  - "tăng áp lực tĩnh mạch cửa hvpg"
+  - "viêm phúc mạc sbp pmn 250"
+  - "hội chứng gan thận hrs-aki"
+  - "bệnh não gan lactulose rifaximin"
+  - "hội chứng gan phổi hps"
+  - "thang điểm meld-na"
+specialty: "Tiêu hóa - Gan mật & Hồi sức"
 kho: "2.5. Kho biến chứng"
 tags:
   - "he-co-quan/tieu-hoa"
   - "loai/complication"
   - "y-khoa/bc"
-updated: "2026-08-21"
+icd10:
+  - "K74 (Xơ hóa và xơ gan)"
+  - "K76.7 (Hội chứng gan thận - Hepatorenal syndrome)"
+  - "K72.9 (Bệnh não gan - Hepatic encephalopathy)"
+  - "K65.0 (Viêm phúc mạc nhiễm khuẩn tự phát - SBP)"
+  - "C22.0 (Ung thư biểu mô tế bào gan - HCC)"
+updated: "2026-08-22"
 ---
 
+# 🥩 Bách Khoa Biến Chứng: Xơ Gan Mất Bù & Tăng Áp Lực Tĩnh Mạch Cửa
 
-
-[[3. Nội tổng quát/3.3. Tiêu hóa - gan mật/3.3.3. Bệnh lý Gan - Mật & Tụy/Xơ gan/Xơ gan.md|← Quay lại Xơ gan]]
-
-Sự chuyển tiếp từ xơ [[Gan]] còn bù sang xơ [[Gan]] mất bù là một bước ngoặt sinh lý bệnh học nghiêm trọng, biến xơ gan từ một bệnh lý khu trú tại gan thành một hội chứng suy đa tạng toàn thân. Sự xuất hiện của các biến chứng không chỉ đòi hỏi can thiệp y tế khẩn cấp mà còn làm thay đổi hoàn toàn tiên lượng sống của người bệnh.
-
-# 1. Các Biến Chứng Của Xơ Gan Mất Bù
-
-### 1.1. Báng bụng và các biến chứng liên quan
-
-Báng bụng (Ascites) là nguyên nhân gây mất bù thường gặp nhất, xảy ra ở 5% đến 10% bệnh nhân xơ gan còn bù mỗi năm. Biến chứng này xuất phát từ tình trạng giữ natri và nước tại [[Thận]] do sự kích hoạt hệ Renin-Angiotensin-Aldosterone (RAAS) nhằm bù trừ cho tình trạng giãn mạch tạng và giảm thể tích động mạch hiệu dụng.
-
-- **Báng bụng kháng trị (Refractory ascites):** Là tình trạng báng bụng không thể huy động được hoặc tái phát sớm sau chọc tháo dù đã hạn chế muối và dùng lợi tiểu liều cao.
-- **Viêm phúc mạc nhiễm khuẩn nguyên phát (SBP):** Xảy ra do sự chuyển vị vi khuẩn từ ruột vào dịch báng. Chẩn đoán xác định khi số lượng [[[[Bạch cầu]]|bạch cầu đa nhân trung tính]] (PMN) trong dịch báng > 250 tế bào/mm3. Đây là biến chứng nguy hiểm, nếu chọc hút chẩn đoán trễ (>12 giờ sau nhập viện) sẽ làm tăng tỷ lệ tử vong lên 2,7 lần.
-- **Tràn dịch màng [[Phổi]] do gan (Hepatic hydrothorax):** Thường ở bên phải, do dịch báng tràn qua các khiếm khuyết cơ hoành dưới áp lực âm của lồng ngực. Biến chứng này có thể gây [[Suy hô hấp]] và mủ màng [[Phổi]] nếu nhiễm trùng.
-
-### 1.2. [[Xuất huyết]] tiêu hóa do Tăng áp lực tĩnh mạch cửa
-
-[[Xuất huyết]] do vỡ giãn tĩnh mạch (Variceal Hemorrhage - VH) chiếm 70% các trường hợp chảy máu tiêu hóa trên ở bệnh nhân tăng áp cửa và là biến chứng đe dọa tính mạng trực tiếp.
-
-- _Đặc điểm lâm sàng:_ Nguy cơ xuất huyết (ước tính 5-15% mỗi năm) tỷ lệ thuận với kích thước búi giãn, mức độ suy gan (Child B/C), và sự hiện diện của dấu son (red wale marks) trên nội soi.
-- _Hậu quả:_ Mặc dù đã có nhiều tiến bộ trong điều trị, tỷ lệ tử vong trong 6 tuần của mỗi đợt chảy máu vẫn ở mức 15% - 25%. Tỷ lệ này đặc biệt cao khi xuất huyết đi kèm với tổn thương [[Thận]] cấp (AKI) hoặc nhiễm trùng.
-
-### 1.3. Bệnh não gan (Hepatic Encephalopathy - HE)
-
-HE là một phổ rộng các rối loạn thần kinh - tâm thần do suy giảm chức năng gan hoặc luồng thông cửa - chủ (portosystemic shunting).
-
-- _Phân loại:_ Từ bệnh não gan thể ẩn (Covert HE) chỉ phát hiện qua test tâm lý thần kinh, đến bệnh não gan rõ trên lâm sàng (Overt HE) với các biểu hiện như lú lẫn, rung vỗ cánh (asterixis), và [[Hôn mê]].
-- _Lâm sàng:_ Khoảng 30-40% bệnh nhân xơ gan sẽ trải qua ít nhất một đợt Overt HE trong suốt quá trình bệnh. Đây là một cấp cứu nội khoa cần xác định ngay các yếu tố thúc đẩy (xuất huyết, nhiễm trùng, táo bón, rối loạn điện giải).
-
-### 1.4. Tổn thương Thận cấp (AKI) và Hội chứng Gan - Thận (HRS)
-
-Rối loạn huyết động hệ thống, đặc biệt là giãn mạch tạng ồ ạt, dẫn đến giảm tưới máu thận trầm trọng.
-
-- Theo tiêu chuẩn ICA, AKI được chẩn đoán khi Creatinine huyết thanh tăng $\ge$ 0.3 mg/dL trong 48 giờ hoặc tăng $\ge$ 50% so với nền.
-- **Hội chứng Gan - Thận (HRS-AKI):** Là dạng AKI chức năng nặng nề nhất, xảy ra khi thận co thắt mạch máu dữ dội để bù trừ. Ngay cả những đợt AKI thoáng qua cũng tác động tiêu cực đến thời gian sống còn trung hạn của bệnh nhân.
-
-### 1.5. Các biến chứng Tim mạch và Hô hấp
-
-- **Bệnh [[Tim|cơ tim]] xơ gan (CCM):** Đặc trưng bởi sự suy giảm đáp ứng co bóp của tim khi có stress (nhiễm trùng, chảy máu) và rối loạn thư giãn tâm trương. Cung lượng tim thấp là yếu tố nguy cơ dẫn đến HRS và tử vong ở bệnh nhân xơ gan báng bụng.
-- **Hội chứng Gan - Phổi (HPS):** Xảy ra do giãn các vi mạch trong phổi (intrapulmonary vascular dilatation), gây bất tương xứng thông khí/tưới máu và shunt giải phẫu, dẫn đến giảm oxy máu nặng (PaO2 < 80 mmHg).
-- **Tăng áp động mạch phổi - cửa (PPHT):** Tình trạng tăng áp lực động mạch phổi trên nền tăng áp tĩnh mạch cửa, làm tăng nguy cơ suy tim phải và tử vong.
-
-### 1.6. Rối loạn chuyển hóa và Hệ thống
-
-- **Hạ Natri máu:** Rất thường gặp, đặc biệt là hạ Natri máu tăng thể tích (hypervolemic hyponatremia) do sự tăng tiết ADH không do thẩm thấu nhằm giữ nước. Mức Natri < 130 mmol/L làm tăng nguy cơ biến chứng thần kinh và tử vong.
-- **Suy thượng thận tương đối (RAI):** Suy giảm khả năng sản xuất cortisol đáp ứng với stress, làm nặng thêm tình trạng rối loạn huyết động và dễ dẫn đến [[[[Sốc]] nhiễm khuẩn|[[Sốc]] nhiễm trùng]].
-
-### 1.7. Suy gan cấp trên nền mạn (ACLF)
-
-ACLF không chỉ là một đợt mất bù đơn thuần mà là một hội chứng riêng biệt đặc trưng bởi suy đa tạng, tình trạng viêm hệ thống nghiêm trọng và tỷ lệ tử vong ngắn hạn cực kỳ cao.
-
-- Các yếu tố thúc đẩy thường là nhiễm khuẩn, lạm dụng rượu (ở phương Tây) hoặc đợt bùng phát HBV cấp (ở châu Á).
-- Bão cytokine và hoại tử tế bào gan ồ ạt là cơ chế bệnh sinh cốt lõi.
-
-### 1.8. Ung thư biểu mô tế bào gan (HCC)
-
-Xơ gan cung cấp vi môi trường lý tưởng cho HCC. Tình trạng viêm mạn tính, stress oxy hóa, tổn thương DNA và suy giảm giám sát miễn dịch (CAIDS - Hội chứng rối loạn chức năng miễn dịch liên quan đến xơ gan) thúc đẩy các nốt loạn sản tiến triển thành ác tính. Tỷ lệ mắc HCC hàng năm ở bệnh nhân xơ gan là 2% - 5%.
+> **Tóm tắt cốt lõi**: Sự chuyển tiếp từ xơ gan còn bù sang **Xơ gan mất bù** biến bệnh lý gan mạn tính thành một **hội chứng suy đa cơ quan toàn thân**, rút ngắn thời gian sống thêm trung bình từ $> 12$ năm xuống còn $< 2$ năm. Nền tảng sinh bệnh học cốt lõi là **Tăng áp lực tĩnh mạch cửa ($HVPG \ge 10\text{ mmHg}$)** dẫn đến giãn mạch tạng, giảm thể tích tuần hoàn động mạch hiệu dụng, kích hoạt hệ thống thần kinh - thể dịch (RAAS, ADH, Giao cảm) gây **Báng bụng, Viêm phúc mạc nguyên phát (SBP), Hội chứng Gan - Thận (HRS-AKI), Bệnh Não Gan (HE)** và **Xuất huyết vỡ giãn tĩnh mạch**.
 
 ---
 
-# 2. Tiên Lượng Trong Xơ Gan
+## 🔬 1. SƠ ĐỒ SINH BỆNH HỌC TRUNG TÂM: VÒNG XOẮN TĂNG ÁP CỬA & MẤT BÙ
 
-Việc xuất hiện bất kỳ một biến chứng mất bù nào đều thay đổi triệt để quỹ đạo sống của bệnh nhân.
-
-### 2.1. Suy giảm thời gian sống còn tổng thể
-
-- Thời gian sống thêm trung bình (median survival) giảm mạnh từ **hơn 12 năm** ở giai đoạn xơ gan còn bù xuống chỉ còn khoảng **2 năm** sau khi xuất hiện dấu hiệu mất bù đầu tiên.
-- **Tiên lượng theo báng bụng:** Bệnh nhân bắt đầu có báng bụng có tỷ lệ tử vong khoảng 40% ở năm đầu tiên và 50% ở năm thứ hai. Khi tiến triển thành báng bụng kháng trị, thời gian sống trung bình chỉ còn khoảng 6 tháng.
-- **Tiên lượng theo bệnh não gan:** Sau đợt Overt HE cấp tính đầu tiên, xác suất sống còn giảm xuống dưới 50% ở năm đầu tiên và dưới 25% ở năm thứ ba.
-- **Tiên lượng theo xuất huyết:** Nếu xuất huyết do vỡ tĩnh mạch đi kèm với các biến chứng khác (như AKI, nhiễm trùng), tỷ lệ tử vong có thể lên tới hơn 80% trong 5 năm, so với 20% nếu chỉ xuất huyết đơn thuần.
-- **Tiên lượng theo ACLF:** Tỷ lệ tử vong tại thời điểm 28 ngày gia tăng theo số lượng tạng suy (theo hệ thống phân độ CLIF-C): ACLF độ II (suy 2 tạng) có tỷ lệ tử vong 32%, trong khi ACLF độ III (suy từ 3 tạng trở lên) có tỷ lệ tử vong lên tới 78%.
-
-### 2.2. Các yếu tố tiên lượng độc lập
-
-Các nghiên cứu đã xác định những chỉ số lâm sàng và cận lâm sàng sau đây là yếu tố tiên lượng tử vong độc lập (không phụ thuộc vào các thang điểm truyền thống):
-
-1. **Hạ Natri máu (< 130 mmol/L):** Báo hiệu sự cạn kiệt thể tích động mạch hiệu dụng, làm tăng tỷ lệ tử vong trong danh sách chờ ghép gan.
-2. **Chức năng thận:** Mức lọc cầu thận (GFR) thấp hoặc Creatinine huyết thanh tăng là dự báo tử vong mạnh mẽ.
-3. **Huyết áp động mạch trung bình (MAP) thấp:** Phản ánh tình trạng giãn mạch tạng tồi tệ.
-4. **Cung lượng tim thấp:** Bệnh nhân xơ gan mất đi tuần hoàn tăng động (do bệnh [[Tim|cơ tim]] xơ gan) rất dễ tiến triển thành hội chứng gan - thận và tử vong.
-
-### 2.3. Ứng dụng các Thang điểm Tiên lượng
-
-- **Child-Pugh và MELD:** Mặc dù được sử dụng rộng rãi, MELD (dựa trên Creatinine, Bilirubin, INR) thường đánh giá thấp nguy cơ tử vong ở bệnh nhân báng bụng (do Creatinine không phản ánh chính xác GFR ở người xơ gan teo cơ).
-- **MELD-Na:** Tích hợp nồng độ Natri huyết thanh, mang lại giá trị tiên lượng chính xác hơn so với MELD đơn thuần, đặc biệt ở bệnh nhân có điểm MELD trung bình kèm báng bụng và hạ Natri máu.
-- **CLIF-C AD và CLIF-C ACLF:**
-    - _Thang điểm CLIF-C AD:_ Được thiết kế riêng cho bệnh nhân nhập viện vì mất bù cấp (Acute Decompensation) nhưng chưa có suy tạng (chưa có ACLF), cho giá trị tiên lượng tốt hơn MELD và MELD-Na.
-    - _Thang điểm CLIF-C ACLF:_ Dùng để dự đoán tỷ lệ tử vong ở những bệnh nhân đã tiến triển thành suy gan cấp trên nền mạn (ACLF). Nếu điểm số này > 64 sau 3-7 ngày điều trị tích cực, tiên lượng vô phương cứu chữa (futility) và việc duy trì hồi sức không còn mang lại lợi ích nếu bệnh nhân không thể ghép gan.
-
-Ghép gan (Liver Transplantation) hiện vẫn là phương án điều trị triệt để và mang lại hy vọng sống còn cao nhất cho bệnh nhân xơ gan mất bù có các biến chứng đe dọa tính mạng (báng bụng kháng trị, HRS, HE tái phát, HPS, ACLF).
+```
+                   [XƠ GAN TIẾN TRIỂN & XƠ HÓA KHOANG DISSE]
+                                       │
+                                       ▼
+     [TĂNG SỨC CẢN MẠCH MÁU TRONG GAN + TĂNG ÁP LỰC TĨNH MẠCH CỬA (HVPG ≥ 10 mmHg)]
+                                       │
+                                       ▼
+     [GIÃN TOÀN BỘ TIỂU ĐỘNG MẠCH MẠC TREO TẠNG DO GIẢI PHÓNG QUÁ MỨC NITRIC OXIDE (NO)]
+                                       │
+      ┌────────────────────────────────┼────────────────────────────────┐
+      ▼                                ▼                                ▼
+[Ứ TRỆ MÁU TĨNH MẠCH TẠNG]   [GIẢM THỂ TÍCH ĐỘNG MẠCH HIỆU DỤNG]   [CHUYỂN VỊ VI KHUẨN RUỘT]
+- Tăng áp lực thủy tĩnh mao mạch - Tụt huyết áp động mạch          - Vi khuẩn & Nội độc tố LPS
+- TĂNG THOÁT DỊCH Ổ BỤNG         - Kích hoạt Giao cảm & RAAS        tràn vào hệ tuần hoàn
+      │                                │                                │
+      ▼                                ▼                                ▼
+[BÁNG BỤNG (ASCITES)]        [CO MẠCH THẬN DỮ DỘI]              [VIÊM PHÚC MẠC SBP]
+                             - Giữ Natri & Nước                - Bão Cytokine toàn thân
+                             - HỘI CHỨNG GAN THẬN (HRS-AKI)     - BỆNH NÃO GAN (HE)
+```
 
 ---
 
-# Tài liệu tham khảo
+## 📋 2. MA TRẬN BỆNH HỌC CÁC BIẾN CHỨNG NGUY HIỂM & PHÁC ĐỒ ĐIỀU TRỊ CHUẨN
 
-1. EASL Clinical Practice Guidelines for the management of patients with decompensated cirrhosis. _J Hepatol_. 2018;69(2):406-460.
-2. Liere V, Sandhu G, DeMorrow S. Recent advances in hepatic encephalopathy. _F1000Res_. 2017;6:1637. (Cited within Diagnosis and Management of Hepatic Encephalopathy - Core Concepts).
-3. Bustamante J, Rimola A, Ventura PJ, et al. Prognostic significance of hepatic encephalopathy in patients with cirrhosis. _J Hepatol_. 1999;30:890-5.
-4. Alsudaney M, Ayoub W, Kosari K, et al. Pathophysiology of liver cirrhosis and risk correlation between immune status and the pathogenesis of hepatocellular carcinoma. _Hepatoma Res_. 2025;11:7.
-5. Vilstrup H, Amodio P, Bajaj J, et al. Hepatic encephalopathy in chronic liver disease: 2014 Practice Guideline by the American Association for the Study of Liver Diseases and the European Association for the Study of the Liver. _Hepatology_. 2014;60:715-35.
+| Biến Chứng Xơ Gan | Tiêu Chuẩn Chẩn Đoán Xác Định (Gold Standard) | Cơ Chế Bệnh Sinh Phân Tử | Phác Đồ Xử Trí Chuẩn EBM (AASLD / EASL) |
+|:---|:---|:---|:---|
+| **1. Viêm Phúc Mạc Nhiễm Khuẩn Tự Phát (SBP)** | **Số lượng Bạch cầu đa nhân trung tính (PMN) trong dịch báng $\mathbf{\ge 250/\text{mm}^3}$** (qua chọc dò dịch báng màng bụng cấp cứu). | Vi khuẩn đường ruột ($E. coli, Klebsiella$) chuyển vị qua thành ruột phù nề vào dịch báng giàu protein. | • **Kháng sinh**: **Ceftriaxone $2\text{g/ngày}$ IV** (hoặc Cefotaxime) trong 5-7 ngày.<br>• **BẮT BUỘC TRUYỀN ALBUMIN**: **$1.5\text{ g/kg}$ trong 6h đầu** VÀ **$1.0\text{ g/kg}$ vào Ngày 3** (Giúp giảm $67\%$ nguy cơ suy thận HRS và giảm tỷ lệ tử vong từ $29\%$ xuống $10\%$).<br>• **Dự phòng thứ phát**: Uống Ciprofloxacin hoặc Bactrim suốt đời. |
+| **2. Hội Chứng Gan Thận (HRS-AKI)** | Theo tiêu chuẩn ICA 2015:<br>1. Xơ gan có báng bụng.<br>2. Chẩn đoán Tổn thương thận cấp (Creatinine tăng $\ge 0.3\text{ mg/dL}$ trong 48h hoặc tăng $\ge 50\%$ so với nền).<br>3. **Không đáp ứng sau 48h ngừng thuốc lợi tiểu và bù Albumin tĩnh mạch $1\text{ g/kg/ngày}$**.<br>4. Không có sốc, không dùng thuốc độc thận, không có protein niệu $> 500\text{ mg/ngày}$ / hồng cầu niệu. | Giãn mạch tạng cực đại kích hoạt hệ giao cảm và RAAS gây **Co thắt tối đa các tiểu động mạch thận** $\to$ Giảm sút nghiêm trọng độ lọc cầu thận ($GFR$). | • **THUỐC CO MẠCH TẠNG ĐẶC HIỆU**: **Terlipressin** ($1 - 2\text{ mg}$ IV mỗi 4-6h) phối hợp **Albumin $20 - 40\text{ g/ngày}$** (hoặc Noradrenaline truyền liên tục $+ Albumin$).<br>• Ngừng toàn bộ thuốc lợi tiểu, NSAIDs, ức chế men chuyển.<br>• **Điều trị triệt để duy nhất: GHÉP GAN**. |
+| **3. Bệnh Não Gan (Hepatic Encephalopathy - HE)** | Rối loạn tri giác, mất định hướng, **Dấu rung vỗ cánh (Asterixis / Flapping tremor)**, tăng nồng độ $NH_3$ máu. Phân độ West-Haven (Grade 1 đến 4). | Tế bào gan suy giảm chu trình Ure kết hợp luồng thông Cửa - Chủ (Shunt) $\to$ Khí **Amoniac ($NH_3$)** và độc chất thần kinh không được chuyển hóa qua hàng rào máu não $\to$ Tích tụ trong tế bào hình sao (Astrocytes) chuyển thành Glutamine gây **Phù nề tế bào não và ức chế dẫn truyền GABA**. | • **Tìm và loại bỏ yếu tố thúc đẩy** (Xuất huyết tiêu hóa, Nhiễm trùng SBP, Táo bón, Hạ Kali máu, Dùng thuốc an thần).<br>• **Lactulose**: Uống $20 - 30\text{ mL}$ mỗi 2-4h để đạt mục tiêu **2 - 3 lần đi cầu phân mềm mỗi ngày** (giúp acid hóa lòng ruột biến $NH_3$ thành $NH_4^+$ không hấp thu).<br>• **Rifaximin**: $550\text{ mg} \times 2\text{ lần/ngày}$ (kháng sinh không hấp thu diệt vi khuẩn sinh $NH_3$).<br>• **L-Ornithine L-Aspartate (LOLA)** truyền tĩnh mạch. |
+| **4. Hội Chứng Gan - Phổi (HPS)** | **Tam chứng bắt buộc**:<br>1. Bệnh gan mạn / Xơ gan.<br>2. Giãn mạch máu trong phổi (IPVD).<br>3. **Thiếu oxy máu tư thế đứng (Platypnea-Orthodeoxia)**: $PaO_2 < 80\text{ mmHg}$ hoặc $AaDO_2 \ge 15\text{ mmHg}$ nặng hơn khi ngồi/đứng. | Gan xơ giảm thanh thải Endothelin-1 và tăng tiết Nitric Oxide (NO) tại phổi $\to$ **Giãn toàn bộ mạng lưới mao mạch phổi** $\to$ Máu chảy qua phổi quá nhanh không kịp khuếch tán oxy (Shunt phải - trái chức năng). | • Chẩn đoán xác định: **Siêu âm tim cản âm (Contrast Echo)** thấy bọt khí vi bọt xuất hiện ở buồng tim trái sau 3-6 chu chuyển tim.<br>• Thở oxy hỗ trợ.<br>• **Ghép gan là biện pháp điều trị đặc hiệu duy nhất**. |
+| **5. Ung Thư Biểu Mô Tế Bào Gan (HCC)** | Khối u gan tăng sinh mạch trên CT/MRI 4 pha động (Hiện tượng ngấm thuốc nhanh thì ĐM - "Wash-in" và thải thuốc nhanh thì Tĩnh mạch - "Wash-out"). | Tình trạng viêm hoại tử mạn tính, đột biến gen *TERT promoter*, *TP53* và ức chế miễn dịch tại chỗ. | • **SÀNG LỌC ĐỊNH KỲ**: Siêu âm bụng $+ AFP$ mỗi 6 tháng cho mọi bệnh nhân xơ gan.<br>• Điều trị theo BCLC: Cắt gan, Đốt sóng cao tần (RFA), Nút mạch hóa chất (TACE), Thuốc nhắm trúng đích (Atezolizumab + Bevacizumab), Ghép gan. |
+
+---
+
+## 📊 3. HỆ THỐNG ĐÁNH GIÁ TIÊN LƯỢNG & ĐIỀU PHỐI GHÉP GAN
+
+### 3.1. Thang Điểm Child-Turcotte-Pugh (CTP) (5 đến 15 điểm)
+- Dựa trên 5 thông số (mỗi thông số 1 - 3 điểm): **Bilirubin, Albumin, INR, Báng bụng, Bệnh não gan**.
+- **Child-Pugh A ($5 - 6\text{ điểm}$)**: Xơ gan còn bù tốt (Sống thêm 1 năm $100\%$, 2 năm $85\%$).
+- **Child-Pugh B ($7 - 9\text{ điểm}$)**: Xơ gan mất bù vừa (Sống thêm 1 năm $80\%$, 2 năm $60\%$).
+- **Child-Pugh C ($10 - 15\text{ điểm}$)**: Xơ gan mất bù nặng (Sống thêm 1 năm $45\%$, 2 năm $35\%$).
+
+### 3.2. Thang Điểm MELD-Na (Model for End-Stage Liver Disease - Sodium)
+$$\text{MELD-Na} = \text{MELD} + 1.32 \times (137 - \text{Na}) - \Big[ 0.025 \times \text{MELD} \times (137 - \text{Na}) \Big]$$
+- Sử dụng các biến số khách quan: **Bilirubin, Creatinine, INR và Natri máu**.
+- Điểm MELD-Na phản ánh chính xác nguy cơ tử vong trong vòng 90 ngày và là tiêu chuẩn vàng để xếp thứ tự ưu tiên nhận tạng ghép gan trên toàn thế giới.
+
+---
+
+## 🧠 4. BỘ FLASHCARDS LÂM SÀNG CỐT LÕI (SPACED REPETITION)
+
+1. **Câu hỏi**: Tiêu chuẩn tế bào học dịch báng để chẩn đoán xác định Viêm phúc mạc nhiễm khuẩn nguyên phát (SBP) là gì và tại sao bắt buộc phải truyền Albumin kết hợp với kháng sinh?
+   - **Đáp án**: Chẩn đoán xác định khi **Số lượng Bạch cầu đa nhân trung tính $PMN \ge 250/\text{mm}^3$**. Bắt buộc truyền Albumin ($1.5\text{ g/kg}$ ngày 1 và $1.0\text{ g/kg}$ ngày 3) vì Albumin giúp duy trì thể tích tuần hoàn động mạch hiệu dụng, **giảm $67\%$ nguy cơ phát triển Hội chứng gan thận (HRS)** và giảm tỷ lệ tử vong từ $29\%$ xuống còn $10\%$.
+2. **Câu hỏi**: Cơ chế tác dụng chính của thuốc nhuận trường thẩm thấu Lactulose trong điều trị Bệnh não gan (Hepatic Encephalopathy) là gì?
+   - **Đáp án**: Vi khuẩn đường ruột lên men Lactulose tạo thành các acid béo chuỗi ngắn làm **acid hóa lòng đại tràng** ($\text{pH} \downarrow$). Môi trường acid này chuyển đổi khí $NH_3$ (dễ hấp thu vào máu) thành ion Amoni $NH_4^+$ (tích điện không thể hấp thu qua niêm mạc ruột) và tống xuất ra ngoài qua phân.
+3. **Câu hỏi**: Thuốc co mạch tạng ưu tiên hàng đầu được khuyến cáo trong phác đồ điều trị Hội chứng Gan - Thận (HRS-AKI) theo các hướng dẫn quốc tế mới nhất là thuốc gì?
+   - **Đáp án**: **Terlipressin tiêm tĩnh mạch** phối hợp liên tục với **Albumin**. Terlipressin gây co mạch chọn lọc giường mạch tạng, giúp tái phân bố dòng máu trở lại động mạch thận để phục hồi chức năng lọc của cầu thận.
+
+---
+
+## 📚 5. TRÍCH DẪN TÀI LIỆU THAM KHẢO CHUẨN EBM
+
+1. European Association for the Study of the Liver. EASL Clinical Practice Guidelines for the management of patients with decompensated cirrhosis. *J Hepatol*. 2018;69(2):406-460.
+2. Biggins SW, et al. Diagnosis, Evaluation, and Management of Ascites and Complications in Cirrhosis: 2021 Practice Guidance by the AASLD. *Hepatology*. 2021;74(2):1014-1048.
+3. Vilstrup H, et al. Hepatic encephalopathy in chronic liver disease: 2014 Practice Guideline by EASL and AASLD. *Hepatology*. 2014;60(2):715-735.
+4. Wong F, et al. Terlipressin plus Albumin for the Treatment of Type 1 Hepatorenal Syndrome (CONFIRM Trial). *N Engl J Med*. 2021;384:818-827.
