@@ -215,11 +215,15 @@ export function processMarkdownWithToc(rawMarkdown: string): { htmlContent: stri
   // Format Markdown Tables
   clean = formatMarkdownTables(clean);
 
+  // Determine base path for attachments (SPA root vs Standalone HTML)
+  const isSpaMode = !window.location.pathname.includes('/src/content/knowledge-vault/');
+  const attachmentBase = isSpaMode ? './knowledge-vault/_resources/attachments/' : '../../../knowledge-vault/_resources/attachments/';
+
   // Format Obsidian Image Embeds ![[image.png]]
   clean = clean.replace(/!\[\[(.*?)\]\]/g, (match, fileName) => {
     const trimmed = fileName.trim();
     const encoded = encodeURI(trimmed);
-    return `<div class="vault-img-card" style="text-align:center; margin:1.5rem 0;"><img src="../../../knowledge-vault/_resources/attachments/${encoded}" alt="${escapeHtml(trimmed)}" style="max-width:100%; height:auto; border-radius:8px; border:1px solid var(--vault-border); box-shadow:0 4px 12px rgba(0,0,0,0.06);" loading="lazy" /><div style="font-size:11px; color:var(--vault-muted); margin-top:6px; font-style:italic;"><i class="fa-regular fa-image"></i> ${escapeHtml(trimmed)}</div></div>`;
+    return `<div class="vault-img-card" style="text-align:center; margin:1.5rem 0;"><img src="${attachmentBase}${encoded}" alt="${escapeHtml(trimmed)}" style="max-width:100%; height:auto; border-radius:8px; border:1px solid var(--vault-border); box-shadow:0 4px 12px rgba(0,0,0,0.06);" loading="lazy" /><div style="font-size:11px; color:var(--vault-muted); margin-top:6px; font-style:italic;"><i class="fa-regular fa-image"></i> ${escapeHtml(trimmed)}</div></div>`;
   });
 
   // Format Standard Markdown Images ![alt](src)
@@ -227,7 +231,7 @@ export function processMarkdownWithToc(rawMarkdown: string): { htmlContent: stri
     const trimmedSrc = src.trim();
     const resolvedSrc = trimmedSrc.startsWith('http') || trimmedSrc.startsWith('/') 
       ? trimmedSrc 
-      : `../../../knowledge-vault/_resources/attachments/${encodeURI(trimmedSrc)}`;
+      : `${attachmentBase}${encodeURI(trimmedSrc)}`;
     return `<div class="vault-img-card" style="text-align:center; margin:1.5rem 0;"><img src="${resolvedSrc}" alt="${escapeHtml(altText)}" style="max-width:100%; height:auto; border-radius:8px; border:1px solid var(--vault-border); box-shadow:0 4px 12px rgba(0,0,0,0.06);" loading="lazy" />${altText ? `<div style="font-size:11px; color:var(--vault-muted); margin-top:6px; font-style:italic;">${escapeHtml(altText)}</div>` : ''}</div>`;
   });
 

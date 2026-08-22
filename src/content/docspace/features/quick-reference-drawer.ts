@@ -99,7 +99,7 @@ export class QuickReferenceDrawer {
               <strong style="font-size:14px; color:var(--color-text, #0f172a);"><i class="fa-solid fa-graduation-cap" style="color:var(--color-primary, #0284c7);"></i> Kho Kiến Thức Y Khoa CliniPortal</strong>
               <p style="margin:4px 0 0; font-size:12px; color:var(--color-text-muted, #64748b);">Tổng hợp 2.250+ bài viết chuẩn hóa (Cơ sở y khoa, Tiếp cận, Kỹ năng, Chẩn đoán, Phác đồ, Biến chứng)</p>
             </div>
-            <a href="../knowledge-vault/index.html" target="_blank" style="padding:6px 12px; background:var(--color-primary, #0284c7); color:#fff; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:5px; white-space:nowrap;">
+            <a href="#/vault" style="padding:6px 12px; background:var(--color-primary, #0284c7); color:#fff; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; display:flex; align-items:center; gap:5px; white-space:nowrap;">
               Mở Hub Toàn Màn Hình <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>
           </div>
@@ -109,27 +109,27 @@ export class QuickReferenceDrawer {
             🩺 Phân Hệ Lâm Sàng & Điều Trị:
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+            <a href="#/vault?kho=TC" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
               <div style="width:28px; height:28px; border-radius:6px; background:rgba(14,165,233,0.1); color:#0ea5e9; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-magnifying-glass"></i></div>
               <div><strong style="font-size:12px;">Tiếp cận Lâm sàng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">117 bài</div></div>
             </a>
-            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+            <a href="#/vault?kho=KN" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
               <div style="width:28px; height:28px; border-radius:6px; background:rgba(99,102,241,0.1); color:#6366f1; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-stethoscope"></i></div>
               <div><strong style="font-size:12px;">Kỹ năng Lâm sàng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">68 bài</div></div>
             </a>
-            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+            <a href="#/vault?kho=CD" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
               <div style="width:28px; height:28px; border-radius:6px; background:rgba(236,72,153,0.1); color:#ec4899; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-clipboard-check"></i></div>
               <div><strong style="font-size:12px;">Chẩn đoán Bệnh học</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">480 bài</div></div>
             </a>
-            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+            <a href="#/vault?kho=PDDT" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
               <div style="width:28px; height:28px; border-radius:6px; background:rgba(59,130,246,0.1); color:#3b82f6; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-pills"></i></div>
               <div><strong style="font-size:12px;">Phác đồ Điều trị</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">283 bài</div></div>
             </a>
-            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+            <a href="#/vault?kho=BC" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
               <div style="width:28px; height:28px; border-radius:6px; background:rgba(239,68,68,0.1); color:#ef4444; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-triangle-exclamation"></i></div>
               <div><strong style="font-size:12px;">Biến chứng & Tiên lượng</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">299 bài</div></div>
             </a>
-            <a href="../knowledge-vault/index.html" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+            <a href="#/vault?kho=SLB" style="background:var(--color-bg, #f8fafc); border:1px solid var(--color-border, #e2e8f0); border-radius:8px; padding:8px 10px; text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
               <div style="width:28px; height:28px; border-radius:6px; background:rgba(245,158,11,0.1); color:#f59e0b; display:flex; align-items:center; justify-content:center; font-size:12px;"><i class="fa-solid fa-bolt"></i></div>
               <div><strong style="font-size:12px;">Sinh lý bệnh</strong><div style="font-size:10.5px; color:var(--color-text-muted, #64748b);">216 bài</div></div>
             </a>

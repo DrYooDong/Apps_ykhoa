@@ -650,7 +650,7 @@ export async function renderChronicCareView(profileId: string, selectedPatientId
               </span>
               <h3 class="dsp-card-title" style="font-size:1rem; margin:0;">Tài Liệu &amp; Phác Đồ Hỗ Trợ Từ Knowledge Vault</h3>
             </div>
-            <a href="../knowledge-vault/index.html" target="_blank" style="font-size:11px; color:var(--color-primary); text-decoration:none; font-weight:700; display:flex; align-items:center; gap:4px;">
+            <a href="#/vault" style="font-size:11px; color:var(--color-primary); text-decoration:none; font-weight:700; display:flex; align-items:center; gap:4px;">
               Mở Hub Vault (2.250+ bài) <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>
           </div>
@@ -662,13 +662,13 @@ export async function renderChronicCareView(profileId: string, selectedPatientId
                 <i class="fa-solid fa-utensils"></i> Dinh Dưỡng &amp; Tiết Chế
               </div>
               <div style="display:flex; flex-direction:column; gap:4px; font-size:11.5px;">
-                <a href="../knowledge-vault/index.html?search=DASH" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=DASH" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Chế độ ăn DASH hạ huyết áp</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
-                <a href="../knowledge-vault/index.html?search=Địa Trung Hải" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=Địa Trung Hải" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Chế độ ăn Địa Trung Hải tim mạch</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
-                <a href="../knowledge-vault/index.html?search=thận mạn" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=thận mạn" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Tiết chế đạm trong bệnh thận mạn</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
               </div>
@@ -680,13 +680,13 @@ export async function renderChronicCareView(profileId: string, selectedPatientId
                 <i class="fa-solid fa-triangle-exclamation"></i> Cảnh Báo Biến Chứng
               </div>
               <div style="display:flex; flex-direction:column; gap:4px; font-size:11.5px;">
-                <a href="../knowledge-vault/index.html?search=Đái tháo đường" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=Đái tháo đường" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Biến chứng vi mạch &amp; bàn chân ĐTĐ</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
-                <a href="../knowledge-vault/index.html?search=Tăng huyết áp" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=Tăng huyết áp" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Tổn thương cơ quan đích do THA</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
-                <a href="../knowledge-vault/index.html?search=Bệnh thận mạn" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=Bệnh thận mạn" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Tiến triển suy thận giai đoạn cuối</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
               </div>
@@ -698,13 +698,13 @@ export async function renderChronicCareView(profileId: string, selectedPatientId
                 <i class="fa-solid fa-pills"></i> Phác Đồ Thuốc Chuẩn Hóa
               </div>
               <div style="display:flex; flex-direction:column; gap:4px; font-size:11.5px;">
-                <a href="../knowledge-vault/index.html?search=Đái tháo đường" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=Đái tháo đường" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Phác đồ SGLT2i + Metformin + GLP-1RA</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
-                <a href="../knowledge-vault/index.html?search=Tăng huyết áp" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=Tăng huyết áp" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Phác đồ phối hợp đôi viên phối hợp (SPC)</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
-                <a href="../knowledge-vault/index.html?search=Statin" target="_blank" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
+                <a href="#/vault?search=Statin" style="color:var(--color-text); text-decoration:none; display:flex; align-items:center; justify-content:space-between;">
                   <span>• Điều trị rối loạn lipid cường độ cao</span> <i class="fa-solid fa-chevron-right" style="font-size:9px; color:var(--color-text-muted);"></i>
                 </a>
               </div>

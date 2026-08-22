@@ -5,6 +5,13 @@
 
 import './styles/main.css';
 import './content/docspace/styles/docspace.css';
+import './content/knowledge-vault/css/vault-hub.css';
+import { 
+  renderVaultHubView, 
+  attachVaultEvents, 
+  openArticleDrawer, 
+  setVaultInitialState 
+} from './content/knowledge-vault/vault-hub-view';
 
 // Core Subsystems & UI Modules
 import './main';
@@ -292,6 +299,55 @@ function initializeRoutes(): void {
   router.register('/ebm/medical-statistics/:slug', 'Bài Học Thống Kê Y Học', (params) => {
     const slug = params.slug || '';
     mountToApp(renderStatisticsReader(slug));
+  });
+
+  // === KNOWLEDGE VAULT ROUTES (Kho Kiến Thức Y Khoa) ===
+  const handleVaultRoute = (articleParam?: string) => {
+    document.title = 'Kho Kiến Thức Y Khoa (Knowledge Vault) – CliniPortal';
+    
+    // Extract query parameters from URL or hash
+    const rawHash = window.location.hash || '';
+    const hashQuery = rawHash.includes('?') ? rawHash.split('?')[1] : '';
+    const hashParams = new URLSearchParams(hashQuery);
+    const searchParams = new URLSearchParams(window.location.search);
+    
+    const search = hashParams.get('search') || searchParams.get('search') || '';
+    const kho = hashParams.get('kho') || searchParams.get('kho') || undefined;
+    const group = hashParams.get('group') || searchParams.get('group') || undefined;
+    const specialty = hashParams.get('specialty') || searchParams.get('specialty') || undefined;
+    const targetArticle = articleParam || hashParams.get('article') || hashParams.get('id') || searchParams.get('article') || searchParams.get('id');
+
+    setVaultInitialState({
+      search: search || undefined,
+      kho,
+      group,
+      specialty
+    });
+
+    mountToApp(renderVaultHubView());
+    const appContainer = document.getElementById('app');
+    if (appContainer) {
+      attachVaultEvents(appContainer);
+      if (targetArticle) {
+        setTimeout(() => openArticleDrawer(targetArticle), 250);
+      }
+    }
+  };
+
+  router.register('/vault', 'Kho Kiến Thức Y Khoa (Knowledge Vault)', () => {
+    handleVaultRoute();
+  });
+  router.register('/vault/:articleId', 'Kho Kiến Thức Y Khoa (Knowledge Vault)', (params) => {
+    handleVaultRoute(params.articleId);
+  });
+  router.register('/knowledge-vault', 'Kho Kiến Thức Y Khoa (Knowledge Vault)', () => {
+    handleVaultRoute();
+  });
+  router.register('/knowledge-vault/:articleId', 'Kho Kiến Thức Y Khoa (Knowledge Vault)', (params) => {
+    handleVaultRoute(params.articleId);
+  });
+  router.register('/docspace/vault', 'Kho Kiến Thức Y Khoa (Knowledge Vault)', () => {
+    handleVaultRoute();
   });
 
   // === CONSOLIDATED DOCSPACE REDIRECTS (Kỹ năng, Tiếp cận, Công cụ, Dược lý -> DocSpace) ===

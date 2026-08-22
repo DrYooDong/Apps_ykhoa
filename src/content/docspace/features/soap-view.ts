@@ -1892,8 +1892,7 @@ export function mountSoapController(profileId: string): void {
         <div style="display:flex; flex-wrap:wrap; gap:6px;">
           ${matched.map(m => `
             <a 
-              href="../knowledge-vault/index.html?search=${encodeURIComponent(m.name)}" 
-              target="_blank" 
+              href="#/vault?search=${encodeURIComponent(m.name)}" 
               class="dsp-badge" 
               style="background:rgba(2,132,199,0.08); color:var(--color-primary); border:1px solid rgba(2,132,199,0.25); text-decoration:none; padding:3px 8px; border-radius:6px; font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px;"
               title="Mở toàn bộ chuỗi bệnh học (${m.name}) trong Knowledge Vault"

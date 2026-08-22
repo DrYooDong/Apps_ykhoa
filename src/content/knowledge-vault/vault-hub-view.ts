@@ -17,6 +17,13 @@ let state: VaultFilterState & { activeGroup: string; displayLimit: number } = {
   displayLimit: 48
 };
 
+export function setVaultInitialState(params: { search?: string; kho?: string; group?: string; specialty?: string }): void {
+  if (params.search !== undefined) state.searchQuery = params.search;
+  if (params.kho !== undefined) state.activeKho = params.kho;
+  if (params.group !== undefined) state.activeGroup = params.group;
+  if (params.specialty !== undefined) state.activeSpecialty = params.specialty;
+}
+
 export function renderVaultHubView(): string {
   const summaries = getKhoSummaries();
   const totalArticles = VAULT_CATALOG.length;
@@ -374,7 +381,9 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
   `;
 
   try {
-    const url = `../../../knowledge-vault/${article.relPath}`;
+    const isSpaMode = !window.location.pathname.includes('/src/content/knowledge-vault/');
+    const baseVaultPath = isSpaMode ? './knowledge-vault/' : '../../../knowledge-vault/';
+    const url = `${baseVaultPath}${article.relPath}`;
     const res = await fetch(url);
     if (!res.ok) throw new Error('Không thể nạp tệp');
     const rawMarkdown = await res.text();

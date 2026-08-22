@@ -23,7 +23,7 @@ export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
     title: 'Tri thức & Phác đồ',
     icon: 'fa-solid fa-book-medical',
     items: [
-      { id: 'vault',    label: 'Kho Tri Thức (Vault)', href: '../knowledge-vault/index.html', icon: 'fa-solid fa-graduation-cap', phase: 1, badgeText: '600+' },
+      { id: 'vault',    label: 'Kho Tri Thức (Vault)', href: '#/vault', icon: 'fa-solid fa-graduation-cap', phase: 1, badgeText: '600+' },
       { id: 'studios',  label: 'Clinical Studios',     href: '#/docspace/studios',  icon: 'fa-solid fa-flask-vial',     phase: 1, badgeText: 'Pro' },
       { id: 'protocol', label: 'Kho Phác đồ Điều trị', href: '#/docspace/protocol', icon: 'fa-solid fa-book-medical',   phase: 1 },
       { id: 'notes',    label: 'Ghi chú Lâm sàng',     href: '#/docspace/notes',    icon: 'fa-solid fa-note-sticky',    phase: 1 },

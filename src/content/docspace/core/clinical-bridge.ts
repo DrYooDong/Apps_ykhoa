@@ -75,10 +75,9 @@ export function buildDeepLink(toolPath: string, session: ClinicalSession): strin
 }
 
 /**
- * Mở bài viết Knowledge Vault (trong Drawer hoặc Tab mới)
+ * Mở bài viết Knowledge Vault (trong SPA Reader hoặc Tab mới)
  */
 export function openVaultArticle(articleIdOrRelPath: string): void {
-  const url = `../knowledge-vault/index.html?article=${encodeURIComponent(articleIdOrRelPath)}`;
-  window.open(url, '_blank');
+  window.location.hash = `#/vault?article=${encodeURIComponent(articleIdOrRelPath)}`;
 }
 
