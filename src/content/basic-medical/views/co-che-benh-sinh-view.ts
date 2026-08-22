@@ -176,7 +176,7 @@ export function renderCoCheBenhSinhView(): string {
                 <a href="#patho-tieuhoa-section" class="part-nav-item p5" data-target="patho-tieuhoa-section">
                   <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
                   <span class="part-text">Tiêu hóa</span>
-                  <span class="part-count-badge">14</span>
+                  <span class="part-count-badge">17</span>
                 </a>
               </li>
               <li>
@@ -286,6 +286,22 @@ export function renderCoCheBenhSinhView(): string {
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                 </a>
+                <a href="#/basic-medical/cases/slb-ccbs-rung-nhi" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <div class="specialty-info">
+                      <h3>Rung Nhĩ (Atrial Fibrillation)</h3>
+                      <p>Ổ khởi kích TM phổi, rò rỉ Ca2+ qua RyR2, bước sóng &lambda;, xơ hóa nhĩ, mô mỡ EAT, rung nhĩ sau mổ POAF &amp; AF begets AF.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action">
+                    <span>Xem cơ chế</span>
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #0284c7; background: rgba(2,132,199,0.1); padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px;">
+                      <i class="fa-solid fa-book-bookmark"></i> ESC 2024 AF
+                    </span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </a>
               </div>
             </div>
           </section>
@@ -382,6 +398,16 @@ export function renderCoCheBenhSinhView(): string {
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                 </a>
+                <a href="#/basic-medical/cases/slb-ccbs-tang-ap-cua" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-road-barrier"></i></div>
+                    <div class="specialty-info">
+                      <h3>Tăng Áp Lực Tĩnh Mạch Cửa (PH)</h3>
+                      <p>Huyết động P = Q &times; R, CSPH, phân loại giải phẫu 3 nhóm, định luật Laplace trong vỡ giãn TM thực quản, HPS/PPHT, NCPH/PSVD &amp; dược lý NSBB.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
                 <a href="#/basic-medical/cases/slb-ccbs-xhth-tren" class="specialty-card">
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-droplet"></i></div>
@@ -462,6 +488,16 @@ export function renderCoCheBenhSinhView(): string {
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
                 </a>
+                <a href="#/basic-medical/cases/slb-ccbs-dumping" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-person-falling-burst"></i></div>
+                    <div class="specialty-info">
+                      <h3>Hội Chứng Dumping (DS)</h3>
+                      <p>Dumping sớm (dịch chuyển dịch thể, giảm thể tích tuần hoàn) vs Dumping muộn (SGLT-1, GLP-1, hạ đường huyết phản ứng), phác đồ Bariatric &amp; thang điểm Sigstad/Arts.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
                 <a href="#/basic-medical/cases/slb-ccbs-masld" class="specialty-card">
                   <div class="specialty-card-top">
                     <div class="specialty-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
@@ -488,6 +524,16 @@ export function renderCoCheBenhSinhView(): string {
                     <div class="specialty-info">
                       <h3>Bệnh Não Gan (HE)</h3>
                       <p>Type A/B/C, độc tính Amoniac NH3, phù tế bào sao (Glutamine), teo cơ Sarcopenia, tỷ lệ BCAA/AAA, 6 yếu tố thúc đẩy &amp; cơ chế Lactulose/Rifaximin.</p>
+                    </div>
+                  </div>
+                  <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>
+                </a>
+                <a href="#/basic-medical/cases/slb-ccbs-co-truong" class="specialty-card">
+                  <div class="specialty-card-top">
+                    <div class="specialty-icon"><i class="fa-solid fa-water"></i></div>
+                    <div class="specialty-info">
+                      <h3>Cổ Trướng Trong Xơ Gan (Ascites)</h3>
+                      <p>Tăng áp cửa, Thuyết giãn mạch ngoại vi, Thuyết viêm hệ thống &amp; BT, phân độ 1-3, Rối loạn tuần hoàn sau chọc tháo PICD và Gradient SAAG.</p>
                     </div>
                   </div>
                   <div class="specialty-card-action"><span>Xem bài học</span><i class="fa-solid fa-chevron-right"></i></div>

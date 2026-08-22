@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sinh lý bệnh & Cơ chế bệnh sinh Hội Chứng Dumping (Dumping Syndrome Pathophysiology): Dumping sớm (Rapid Fluid Shift, giảm thể tích tuần hoàn cấp, phóng thích VIP/Neurotensin) vs Dumping muộn (Hấp thu Glucose nhanh qua SGLT-1, tăng tiết GLP-1, tăng Insulin phản ứng và hạ đường huyết sau ăn), các đích điều trị và thang điểm Sigstad / Arts.">
+    <title>Sinh lý bệnh &amp; Cơ chế bệnh sinh Hội Chứng Dumping – CliniPortal</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS Core CliniPortal (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+
+    <!-- CSS Sinh lý học & TOC -->
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-headings.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../css/physio-shared.css">
+    <link rel="stylesheet" href="../../../../css/components/toc.css">
+
+    <!-- Scripts -->
+    <script type="module" src="../../../../components/header.ts" defer></script>
+    <script type="module" src="../../../../components/footer.ts" defer></script>
+    <script src="../../../../js/main.js" defer></script>
+    <script type="module" src="../js/physio-shared.ts"></script>
+    <script src="../../../../js/toc.js" defer></script>
+
+    <style>
+        .dump-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .dump-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .dump-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .dump-card.early {
+            border-left: 4px solid #0284c7;
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, transparent 100%);
+        }
+
+        .dump-card.late {
+            border-left: 4px solid #ef4444;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, transparent 100%);
+        }
+
+        .dump-card.treatment {
+            border-left: 4px solid #10b981;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);
+        }
+
+        .dump-card.score {
+            border-left: 4px solid #8b5cf6;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, transparent 100%);
+        }
+
+        .dump-card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .diagram-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .diagram-caption {
+            font-size: 0.825rem;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        .mech-table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--color-border);
+        }
+
+        .mech-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .mech-compare-table thead tr {
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.1) 0%, rgba(239, 68, 68, 0.08) 100%);
+        }
+
+        .mech-compare-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 2px solid var(--color-border);
+            white-space: nowrap;
+            color: var(--color-text);
+        }
+
+        .mech-compare-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border);
+            vertical-align: top;
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .mech-compare-table tr:last-child td { border-bottom: none; }
+        .mech-compare-table tr:hover td { background: rgba(0, 0, 0, 0.02); }
+
+        .evidence-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0.02) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-left: 4px solid #8b5cf6;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .evidence-box .evidence-label {
+            font-size: 0.75rem;
+            color: #8b5cf6;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .evidence-box .evidence-title {
+            color: var(--color-text);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .evidence-box .evidence-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.55;
+        }
+
+        .ref-section {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .ref-list {
+            padding-left: 1.25rem;
+            margin: 0.75rem 0 0 0;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        .ref-list li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder" data-header-path="../../../../components/header.html"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="app-sidebar" id="appSidebar"></aside>
+
+        <!-- MAIN WRAPPER -->
+        <div class="main-wrapper" id="mainContent">
+            <!-- BREADCRUMB -->
+            <clini-breadcrumb items='[{"label": "🏠 Trang chủ", "url": "../../../../index.html"}, {"label": "Sinh lý & sinh lý bệnh", "url": "../co-che-benh-sinh.html"}, {"label": "Tiêu hóa", "url": "../co-che-benh-sinh.html#patho-tieuhoa-section"}, {"label": "Hội chứng Dumping"}]'></clini-breadcrumb>
+
+            <!-- VÙNG HIỂN THỊ TRỰC QUAN -->
+            <main class="visual-container">
+                <!-- CHAPTER HEADER CARD -->
+                <div class="chapter-header">
+                    <h1>SINH LÝ BỆNH &amp; CƠ CHẾ BỆNH SINH HỘI CHỨNG DUMPING</h1>
+                    <p>Dumping Syndrome Pathophysiology — Phân tích toàn diện cơ chế dịch chuyển dịch thể (Rapid Fluid Shift) và rối loạn vận mạch trong Dumping sớm, tăng hấp thu Glucose qua SGLT-1, tăng tiết GLP-1 và hạ đường huyết phản ứng (Functional Hyperinsulinism) trong Dumping muộn, các đích điều trị (Diet, Acarbose, Somatostatin Analogues) và thang điểm Sigstad / Arts.</p>
+                </div>
+
+                <p class="physio-lead">
+                    <span class="term-hl">Hội chứng Dumping (Dumping Syndrome &ndash; DS)</span> là một tập hợp các triệu chứng tiêu hóa và vận mạch xảy ra sau bữa ăn, do sự tống xuất quá nhanh của một lượng lớn thức ăn chưa tiêu hóa hoàn toàn từ dạ dày xuống ruột non. Ban đầu được mô tả như một biến chứng sau phẫu thuật loét dạ dày tá tràng, hội chứng Dumping hiện nay đang bùng nổ mạnh mẽ trở lại như một biến chứng chuyển hóa hàng đầu sau <span class="term-hl">phẫu thuật điều trị béo phì (Bariatric surgery)</span> và phẫu thuật cắt dạ dày / thực quản do ung thư.
+                </p>
+
+                <!-- TỔNG QUAN & DỊCH TỄ THEO LOẠI PHẪU THUẬT -->
+                <div class="physio-content">
+                    <h2 id="tong-quan-va-dich-te-phau-thuat" class="section-title">
+                        <span>1. Tổng Quan &amp; Tỷ Lệ Mắc Theo Từng Loại Phẫu Thuật</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>Các can thiệp phẫu thuật đường tiêu hóa làm thay đổi sâu sắc cấu trúc giải phẫu và hệ thần kinh chi phối của dạ dày qua hai cơ chế cốt lõi:</p>
+                        <ul class="physio-list-arrow">
+                            <li><strong>Mất chức năng hàng rào của cơ thắt môn vị</strong> (Loss of pyloric sphincter barrier function): Thức ăn không còn được lưu giữ để nhào trộn và kiểm soát tốc độ làm rỗng.</li>
+                            <li><strong>Thu hẹp thể tích chứa đựng của dạ dày</strong> (Reduced gastric volume capacity): Dạ dày mất khả năng giãn tiếp nhận (receptive relaxation), đẩy nhanh dưỡng trấp xuống ruột non.</li>
+                        </ul>
+
+                        <h3 class="subsection-title" style="margin-top: 1.25rem;">Bảng Tỷ Lệ Mắc Hội Chứng Dumping Theo Loại Hình Phẫu Thuật</h3>
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th>Loại Phẫu Thuật (Procedure)</th>
+                                        <th>Tỷ Lệ Mắc Báo Cáo (%)</th>
+                                        <th>Cơ Chế Phẫu Thuật Tác Động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Cắt dạ dày toàn bộ / gần toàn bộ (Gastrectomy)</strong></td>
+                                        <td><strong>Lên đến 78%</strong></td>
+                                        <td>Mất hoàn toàn thể tích chứa và cơ chế môn vị, thức ăn đi thẳng vào hỗng tràng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Phẫu thuật Nối tắt dạ dày (Roux-en-Y Gastric Bypass &ndash; RYGB)</strong></td>
+                                        <td><strong>Lên đến 75%</strong></td>
+                                        <td>Túi dạ dày nhỏ (&lt; 30 mL) nối trực tiếp vào hỗng tràng qua miệng nối vị &ndash; tràng không có van.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cắt thực quản (Esophagectomy)</strong></td>
+                                        <td><strong>~ 50%</strong></td>
+                                        <td>Kéo dạ dày lên ngực thay thế thực quản, tổn thương dây phế vị làm mất trương lực dạ dày.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cắt dạ dày hình ống (Sleeve Gastrectomy)</strong></td>
+                                        <td><strong>~ 40%</strong></td>
+                                        <td>Giảm 80% thể tích dạ dày, tăng áp lực trong lòng ống dạ dày đẩy nhanh thức ăn qua môn vị.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Phẫu thuật tạo nếp gấp đáy vị (Fundoplication)</strong></td>
+                                        <td><strong>~ 30%</strong></td>
+                                        <td>Tổn thương nhánh phó giao cảm hoặc biến đổi động học vận động đáy vị.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cắt dạ dày bán phần (Partial Gastrectomy) / Cắt dây V (Vagotomy)</strong></td>
+                                        <td><strong>~ 20%</strong></td>
+                                        <td>Mất chức năng điều hòa thần kinh vận động dạ dày môn vị.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN I: DUMPING SỚM (EDS) -->
+                <div class="physio-content">
+                    <h2 id="dumping-som-eds" class="section-title">
+                        <span>2. Sinh Lý Bệnh Hội Chứng Dumping Sớm (Early Dumping Syndrome &ndash; EDS)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>Dumping sớm là phân nhóm phổ biến nhất (chiếm 70% &ndash; 75% các trường hợp), khởi phát sớm trong vòng <strong>10 đến 30 phút (dưới 1 giờ) ngay sau bữa ăn</strong>.</p>
+
+                        <div class="dump-grid">
+                            <div class="dump-card early">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-droplet" style="color: #0284c7;"></i>
+                                    <span>1. Sự Dịch Chuyển Dịch Thể Nhanh Chóng (Rapid Fluid Shift)</span>
+                                </div>
+                                <p>Khi dưỡng trấp (chyme) chưa được tiêu hóa hoàn chỉnh có <strong>nồng độ thẩm thấu rất cao (hyperosmolar)</strong> bị tống ào ạt vào hỗng tràng, gradient áp suất thẩm thấu chênh lệch cực lớn sẽ <strong>hút một lượng lớn dịch thể từ khoang mạch máu vào lòng ruột</strong> để pha loãng thức ăn.<br>
+                                &bull; <strong>Tại ruột:</strong> Sự tích tụ dịch ồ ạt làm căng giãn thành quai ruột hỗng tràng, kích thích tăng nhu động ruột &rarr; <em>Đau quặn bụng, trướng hơi, sôi bụng (borborygmi), buồn nôn và tiêu chảy xối xả</em>.<br>
+                                &bull; <strong>Toàn thân:</strong> Mất thể tích huyết tương nội mạch cấp tính dẫn đến <strong>giảm thể tích tuần hoàn cấp (Hypovolemia)</strong> &rarr; Hệ giao cảm bị kích hoạt để bù trừ &rarr; <em>Nhịp tim nhanh, đánh trống ngực, tụt huyết áp, vã mồ hôi, chóng mặt và ngất xỉu</em>.</p>
+                            </div>
+
+                            <div class="dump-card early">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-vial" style="color: #0284c7;"></i>
+                                    <span>2. Bằng Chứng Lâm Sàng: Tăng Dung Tích Hồng Cầu</span>
+                                </div>
+                                <p>Hiện tượng cô đặc máu do dịch chuyển nước vào lòng ruột được chứng minh khách quan qua xét nghiệm:<br>
+                                &bull; <strong>Dung tích hồng cầu (Hematocrit) tăng &gt; 3%</strong> đo ở thời điểm 30 phút sau khi làm nghiệm pháp dung nạp glucose đường uống (OGTT).<br>
+                                &bull; <strong>Nhịp tim tăng vọt &gt; 10 nhịp/phút</strong> tại phút thứ 30 để bù trừ cho tình trạng giảm tiền tải thất trái.</p>
+                            </div>
+
+                            <div class="dump-card early">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-dna" style="color: #0284c7;"></i>
+                                    <span>3. Phóng Thích Hormone Hoạt Mạch &amp; Incretin</span>
+                                </div>
+                                <p>Sự căng cơ học thành ruột kích hoạt tế bào nội tiết ruột giải phóng ồ ạt các peptide vào máu:<br>
+                                &bull; <strong>VIP (Vasoactive Intestinal Peptide) &amp; Neurotensin:</strong> Gây giãn mạch hệ thống, tăng tưới máu mạc treo và kích thích co thắt cơ trơn ruột.<br>
+                                &bull; <strong>GLP-1, PYY, GIP &amp; Serotonin (5-HT):</strong> Khuếch đại phản ứng co bóp tiêu hóa và tham gia vào rối loạn điều hòa vận mạch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN II: DUMPING MUỘN (LDS) -->
+                <div class="physio-content">
+                    <h2 id="dumping-muon-lds" class="section-title">
+                        <span>3. Sinh Lý Bệnh Hội Chứng Dumping Muộn (Late Dumping Syndrome &ndash; LDS)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>Dumping muộn xuất hiện từ <strong>1 đến 3 giờ sau bữa ăn</strong> (chiếm khoảng 25% trường hợp), thực chất là một biểu hiện của <strong>Hội chứng hạ đường huyết phản ứng (Reactive Hypoglycemia)</strong> hoặc hạ đường huyết sau phẫu thuật giảm béo (Postbariatric Hypoglycemia &ndash; PBH).</p>
+
+                        <div class="dump-grid">
+                            <div class="dump-card late">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-bolt" style="color: #ef4444;"></i>
+                                    <span>1. Hấp Thu Glucose Cực Nhanh Qua Kênh SGLT-1</span>
+                                </div>
+                                <p>Thức ăn giàu tinh bột/đường hấp thu nhanh tràn xuống ruột non được phân cắt thành đường đơn. Tại vi nhung mao ruột non, có sự <strong>tăng biểu hiện biểu mô (up-regulation) của kênh đồng vận chuyển Natri&ndash;Glucose 1 (SGLT-1)</strong>, đẩy toàn bộ glucose vào vòng tuần hoàn với tốc độ cực đại, tạo ra một <strong>đỉnh tăng đường huyết sau ăn rất cao và đột ngột (Hyperglycemic Spike)</strong>.</p>
+                            </div>
+
+                            <div class="dump-card late">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-chart-line" style="color: #ef4444;"></i>
+                                    <span>2. Tăng Tiết Insulin Quá Mức Do Hiệu Ứng Incretin (GLP-1)</span>
+                                </div>
+                                <p>Đỉnh đường huyết vọt cao kích thích các tế bào L ở ruột non bài tiết một lượng khổng lồ <strong>Glucagon-like peptide 1 (GLP-1)</strong>. Nồng độ GLP-1 tăng vọt kích thích tế bào beta đảo tụy tiết ra một lượng <strong>Insulin khổng lồ (Functional Hyperinsulinism)</strong> vượt xa nhu cầu sinh lý bình thường.</p>
+                            </div>
+
+                            <div class="dump-card late">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i>
+                                    <span>3. Cơn Hạ Đường Huyết Phản Ứng Đột Ngột</span>
+                                </div>
+                                <p>Lượng insulin khổng lồ đẩy toàn bộ glucose vào tế bào ngoại biên trong khi lượng thức ăn từ ruột đã cạn kiệt, khiến đường huyết sụt dốc không phanh từ phút 90 &ndash; 180 (<strong>Nadir Glucose &lt; 50 mg/dL hoặc &lt; 2.8 mmol/L</strong>):<br>
+                                &bull; <strong>Triệu chứng Adrenergic (tiết catecholamine):</strong> <em>Run tay, hồi hộp, tim đập nhanh, vã mồ hôi lạnh, lo âu, bồn chồn</em>.<br>
+                                &bull; <strong>Triệu chứng thiếu đường não (Neuroglycopenia):</strong> <em>Mệt mỏi kiệt sức, lơ mơ, kém tập trung, nhìn mờ, đói cồn cào, ngất xỉu, co giật hoặc hôn mê</em>.</p>
+                            </div>
+                        </div>
+
+                        <!-- MINH CHỨNG LÂM SÀNG OGTT & MMTT -->
+                        <div class="evidence-box">
+                            <div class="evidence-label">🔬 BẰNG CHỨNG LÂM SÀNG THỰC NGHIỆM (Tumminia et al., 2024)</div>
+                            <div class="evidence-title">Diễn tiến Động học Glucose &amp; Insulin trên bệnh nhân Cắt dạ dày bán phần:</div>
+                            <div class="evidence-desc">
+                                &bull; <strong>Nghiệm pháp OGTT 75g:</strong> Insulin máu tăng vọt đạt đỉnh cực đại lên tới <strong>275 mU/L ở phút thứ 60</strong>, kéo theo nồng độ glucose máu sụt giảm xuống mức đáy nguy hiểm chỉ còn <strong>46 mg/dL ở phút thứ 120</strong>, kích hoạt toàn bộ triệu chứng hạ đường huyết rầm rộ (thỏa mãn Tam chứng Whipple).<br>
+                                &bull; <strong>Nghiệm pháp Bữa ăn hỗn hợp (MMTT 495 Kcal):</strong> Insulin máu đạt <strong>211 mU/L ngay ở phút thứ 30</strong> và glucose chạm đáy <strong>59 mg/dL ở phút thứ 240</strong>.<br>
+                                &rArr; <em>Kết luận:</em> Dumping muộn hoàn toàn là một rối loạn chức năng tăng tiết insulin thứ phát sau quá trình hấp thu glucose cấp tính và kích thích incretin GLP-1 quá mức (không phải do u tăng sản tế bào đảo tụy nesidioblastosis).
+                            </div>
+                        </div>
+
+                        <!-- SƠ ĐỒ EDITORIAL SVG 1: TOÀN CẢNH DUMPING -->
+                        <div class="diagram-container">
+                            <h3 id="so-do-co-che-dumping" class="subsection-title" style="margin-top: 0;">Sơ Đồ Cơ Chế Bệnh Sinh 1: Toàn Cảnh Cơ Chế Sinh Bệnh Học Hội Chứng Dumping Sớm &amp; Muộn</h3>
+                            
+                            <svg viewBox="0 0 940 580" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; display: block; margin: 0 auto;">
+                                <defs>
+                                    <linearGradient id="grad-ds-top" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+                                        <stop offset="100%" stop-color="#d97706" stop-opacity="0.08"/>
+                                    </linearGradient>
+                                    <linearGradient id="grad-ds-early" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#0284c7" stop-opacity="0.18"/>
+                                        <stop offset="100%" stop-color="#0369a1" stop-opacity="0.08"/>
+                                    </linearGradient>
+                                    <linearGradient id="grad-ds-late" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#ef4444" stop-opacity="0.18"/>
+                                        <stop offset="100%" stop-color="#dc2626" stop-opacity="0.08"/>
+                                    </linearGradient>
+                                    <marker id="arrow-ds-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+                                    </marker>
+                                    <marker id="arrow-ds-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#ef4444"/>
+                                    </marker>
+                                    <marker id="arrow-ds-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#d97706"/>
+                                    </marker>
+                                </defs>
+
+                                <!-- Top Node: Surgery & Rapid Emptying -->
+                                <rect x="230" y="15" width="480" height="52" rx="10" fill="url(#grad-ds-top)" stroke="#d97706" stroke-width="1.5"/>
+                                <text x="470" y="36" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text, #0f172a)">
+                                    PHẪU THUẬT DẠ DÀY / GIẢM BÉO (RYGB, SLEEVE, GASTRECTOMY)
+                                </text>
+                                <text x="470" y="53" text-anchor="middle" font-size="10.5" fill="var(--color-text-muted, #64748b)">
+                                    Mất chức năng van môn vị &bull; Thể tích dạ dày giảm &bull; Tống xuất dưỡng trấp cực nhanh
+                                </text>
+
+                                <!-- Fork into Early vs Late -->
+                                <path d="M 350 67 L 350 100 L 230 100 L 230 120" stroke="#0284c7" stroke-width="2" fill="none" marker-end="url(#arrow-ds-blue)"/>
+                                <path d="M 590 67 L 590 100 L 710 100 L 710 120" stroke="#ef4444" stroke-width="2" fill="none" marker-end="url(#arrow-ds-red)"/>
+
+                                <!-- LEFT BRANCH: EARLY DUMPING SYNDROME (10-30 MIN) -->
+                                <rect x="30" y="125" width="400" height="42" rx="8" fill="url(#grad-ds-early)" stroke="#0284c7" stroke-width="1.3"/>
+                                <text x="230" y="145" text-anchor="middle" font-size="12" font-weight="800" fill="#0284c7">
+                                    DUMPING SỚM (10 &ndash; 30 PHÚT SAU ĂN)
+                                </text>
+                                <text x="230" y="159" text-anchor="middle" font-size="9.5" fill="var(--color-text-muted, #64748b)">
+                                    Dưỡng trấp ưu trương (Hyperosmolar Chyme) tràn vào Hỗng tràng
+                                </text>
+
+                                <line x1="230" y1="167" x2="230" y2="195" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrow-ds-blue)"/>
+
+                                <rect x="30" y="198" width="400" height="52" rx="8" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.2"/>
+                                <text x="230" y="219" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">
+                                    Dịch Chuyển Dịch Thể Nhanh Chóng (Rapid Fluid Shift)
+                                </text>
+                                <text x="230" y="237" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">
+                                    Hút ồ ạt dịch từ lòng mạch vào ruột &bull; Hematocrit tăng &gt; 3%
+                                </text>
+
+                                <!-- Sub-branches of Early Dumping -->
+                                <path d="M 130 250 L 130 280 L 115 280 L 115 295" stroke="#0284c7" stroke-width="1.5" fill="none" marker-end="url(#arrow-ds-blue)"/>
+                                <path d="M 330 250 L 330 280 L 345 280 L 345 295" stroke="#0284c7" stroke-width="1.5" fill="none" marker-end="url(#arrow-ds-blue)"/>
+
+                                <!-- Early Box 1: GI Symptoms -->
+                                <rect x="20" y="298" width="190" height="135" rx="8" fill="url(#grad-ds-early)" stroke="#0284c7" stroke-width="1"/>
+                                <text x="115" y="318" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">Căng Giãn Quai Ruột</text>
+                                <text x="30" y="338" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Tăng nhu động ruột</text>
+                                <text x="30" y="355" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Đau quặn bụng (Cramps)</text>
+                                <text x="30" y="372" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Đầy bụng, trướng hơi</text>
+                                <text x="30" y="389" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Sôi bụng (Borborygmi)</text>
+                                <text x="30" y="406" font-size="9.5" font-weight="700" fill="#0284c7">&bull; Tiêu chảy cấp xối xả</text>
+
+                                <!-- Early Box 2: Vasomotor Symptoms -->
+                                <rect x="240" y="298" width="200" height="135" rx="8" fill="url(#grad-ds-early)" stroke="#0284c7" stroke-width="1"/>
+                                <text x="340" y="318" text-anchor="middle" font-size="11" font-weight="700" fill="#0284c7">Giảm Thể Tích Tuần Hoàn</text>
+                                <text x="250" y="338" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Giảm tiền tải nội mạch</text>
+                                <text x="250" y="355" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Kích hoạt giao cảm bù trừ</text>
+                                <text x="250" y="372" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Mạch nhanh, đánh trống ngực</text>
+                                <text x="250" y="389" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Tụt HA, vã mồ hôi, đỏ mặt</text>
+                                <text x="250" y="406" font-size="9.5" font-weight="700" fill="#0284c7">&bull; Chóng mặt, mệt lả, ngất</text>
+
+                                <!-- Early Hormone Release Box -->
+                                <rect x="20" y="445" width="420" height="42" rx="8" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1"/>
+                                <text x="230" y="463" text-anchor="middle" font-size="10" font-weight="700" fill="#0284c7">Phóng Thích Peptide Hoạt Mạch &amp; Hormone Ruột</text>
+                                <text x="230" y="478" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">VIP &bull; Neurotensin &bull; PYY &bull; Serotonin (Giãn mạch hệ thống, tăng co bóp)</text>
+
+
+                                <!-- RIGHT BRANCH: LATE DUMPING SYNDROME (1-3 HOURS) -->
+                                <rect x="510" y="125" width="400" height="42" rx="8" fill="url(#grad-ds-late)" stroke="#ef4444" stroke-width="1.3"/>
+                                <text x="710" y="145" text-anchor="middle" font-size="12" font-weight="800" fill="#dc2626">
+                                    DUMPING MUỘN (1 &ndash; 3 GIỜ SAU ĂN)
+                                </text>
+                                <text x="710" y="159" text-anchor="middle" font-size="9.5" fill="var(--color-text-muted, #64748b)">
+                                    Hội chứng Hạ Đường Huyết Phản Ứng (Reactive Hypoglycemia)
+                                </text>
+
+                                <line x1="710" y1="167" x2="710" y2="195" stroke="#ef4444" stroke-width="1.8" marker-end="url(#arrow-ds-red)"/>
+
+                                <rect x="510" y="198" width="400" height="52" rx="8" fill="var(--color-surface, #ffffff)" stroke="#ef4444" stroke-width="1.2"/>
+                                <text x="710" y="219" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">
+                                    Hấp Thu Glucose Cực Nhanh Qua Kênh SGLT-1
+                                </text>
+                                <text x="710" y="237" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">
+                                    Đỉnh tăng đường huyết sau ăn rất cao &rarr; Giải phóng ồ ạt GLP-1
+                                </text>
+
+                                <line x1="710" y1="250" x2="710" y2="280" stroke="#ef4444" stroke-width="1.8" marker-end="url(#arrow-ds-red)"/>
+
+                                <rect x="510" y="283" width="400" height="48" rx="8" fill="url(#grad-ds-late)" stroke="#ef4444" stroke-width="1.2"/>
+                                <text x="710" y="303" text-anchor="middle" font-size="11" font-weight="700" fill="#dc2626">
+                                    Tăng Tiết Insulin Quá Mức (Functional Hyperinsulinism)
+                                </text>
+                                <text x="710" y="320" text-anchor="middle" font-size="9.5" fill="var(--color-text, #0f172a)">
+                                    Insulin vọt lên &gt; 200 mU/L đẩy glucose vào tế bào &rarr; Đường huyết tụt dốc (&lt; 50 mg/dL)
+                                </text>
+
+                                <!-- Sub-branches of Late Dumping -->
+                                <path d="M 610 331 L 610 355 L 595 355 L 595 365" stroke="#ef4444" stroke-width="1.5" fill="none" marker-end="url(#arrow-ds-red)"/>
+                                <path d="M 810 331 L 810 355 L 825 355 L 825 365" stroke="#ef4444" stroke-width="1.5" fill="none" marker-end="url(#arrow-ds-red)"/>
+
+                                <!-- Late Box 1: Adrenergic Symptoms -->
+                                <rect x="500" y="368" width="195" height="120" rx="8" fill="url(#grad-ds-late)" stroke="#ef4444" stroke-width="1"/>
+                                <text x="597" y="388" text-anchor="middle" font-size="10.5" font-weight="700" fill="#dc2626">Phản Ứng Adrenergic</text>
+                                <text x="510" y="408" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Tiết Catecholamine</text>
+                                <text x="510" y="425" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Run tay chân (Tremors)</text>
+                                <text x="510" y="442" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Hồi hộp, tim nhanh</text>
+                                <text x="510" y="459" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Vã mồ hôi lạnh, lo âu</text>
+                                <text x="510" y="476" font-size="9.5" font-weight="700" fill="#dc2626">&bull; Cáu gắt (Irritability)</text>
+
+                                <!-- Late Box 2: Neuroglycopenic Symptoms -->
+                                <rect x="715" y="368" width="205" height="120" rx="8" fill="url(#grad-ds-late)" stroke="#ef4444" stroke-width="1"/>
+                                <text x="817" y="388" text-anchor="middle" font-size="10.5" font-weight="700" fill="#dc2626">Thiếu Đường Não (Neuroglycopenia)</text>
+                                <text x="725" y="408" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Mệt mỏi, kiệt sức</text>
+                                <text x="725" y="425" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Lơ mơ, buồn ngủ</text>
+                                <text x="725" y="442" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Kém tập trung, lú lẫn</text>
+                                <text x="725" y="459" font-size="9.5" fill="var(--color-text, #0f172a)">&bull; Đói cồn cào (Hunger)</text>
+                                <text x="725" y="476" font-size="9.5" font-weight="700" fill="#dc2626">&bull; Ngất xỉu, co giật, hôn mê</text>
+
+                                <!-- Bottom Comparison Banner -->
+                                <rect x="140" y="510" width="660" height="48" rx="10" fill="var(--color-surface, #ffffff)" stroke="#d97706" stroke-width="1.3"/>
+                                <text x="470" y="530" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">
+                                    PHÂN BIỆT CỐT LÕI: EDS (ÁP SUẤT THẨM THẤU &amp; GIẢM THỂ TÍCH) vs LDS (HẠ ĐƯỜNG HUYẾT PHẢN ỨNG)
+                                </text>
+                                <text x="470" y="546" text-anchor="middle" font-size="9.5" fill="var(--color-text-muted, #64748b)">
+                                    Dumping sớm xuất hiện &lt; 30 phút (Hct &gt; 3%) &bull; Dumping muộn xuất hiện 1&ndash;3 giờ (Đường huyết &lt; 50 mg/dL)
+                                </text>
+                            </svg>
+                            <div class="diagram-caption">Sơ đồ 1: Sơ đồ toàn cảnh phân biệt cơ chế sinh bệnh học giữa Hội chứng Dumping sớm và Dumping muộn (Dựa theo Consensus quốc tế Scarpellini et al. 2020).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN III: ĐÍCH TÁC ĐỘNG ĐIỀU TRỊ THEO CƠ CHẾ -->
+                <div class="physio-content">
+                    <h2 id="dich-tac-dong-dieu-tri" class="section-title">
+                        <span>4. Đích Tác Động Điều Trị Theo Cơ Chế Sinh Lý Bệnh (Scarpellini et al., 2020)</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>Dựa trên sơ đồ dòng chảy sinh lý bệnh học, chiến lược điều trị hội chứng Dumping được phân tầng thành 4 bậc can thiệp:</p>
+
+                        <div class="dump-grid">
+                            <div class="dump-card treatment">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-utensils" style="color: #10b981;"></i>
+                                    <span>Bậc 1: Điều Chỉnh Chế Độ Ăn (Diet Modifications)</span>
+                                </div>
+                                <p><strong>Lựa chọn đầu tay cốt lõi:</strong><br>
+                                &bull; <strong>Chia nhỏ bữa ăn:</strong> Ăn 6 &ndash; 8 bữa nhỏ/ngày để giảm thể tích dưỡng trấp vào ruột.<br>
+                                &bull; <strong>Cắt giảm carbohydrate hấp thu nhanh:</strong> Loại bỏ đường đơn, nước ngọt, bánh ngọt để tránh tạo dịch ưu trương và đỉnh tăng đường huyết.<br>
+                                &bull; <strong>Tách rời nước uống khỏi bữa ăn:</strong> Tránh uống nước trong bữa ăn và 30 phút sau ăn để không làm tăng tốc độ làm rỗng dạ dày.<br>
+                                &bull; <strong>Tăng cường Protein &amp; Chất xơ hòa tan:</strong> Làm chậm quá trình tiêu hóa và hấp thu.</p>
+                            </div>
+
+                            <div class="dump-card treatment">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-capsules" style="color: #10b981;"></i>
+                                    <span>Bậc 2: Acarbose (Ức Chế Alpha-Glucosidase)</span>
+                                </div>
+                                <p><strong>Đặc trị cho Dumping muộn (LDS):</strong><br>
+                                &bull; <strong>Cơ chế:</strong> Ức chế cạnh tranh men &alpha;-glucosidase tại vi nhung mao ruột non, làm chậm quá trình phân giải tinh bột thành glucose.<br>
+                                &bull; <strong>Hệ quả sinh lý:</strong> Triệt tiêu đỉnh tăng đường huyết sau ăn (hyperglycemic spike), từ đó ức chế phản ứng tăng tiết insulin quá mức và ngăn chặn cơn hạ đường huyết muộn.</p>
+                            </div>
+
+                            <div class="dump-card treatment">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-syringe" style="color: #10b981;"></i>
+                                    <span>Bậc 3: Thuốc Tương Tự Somatostatin (Octreotide / Lanreotide)</span>
+                                </div>
+                                <p><strong>Lựa chọn điều trị khi thất bại với chế độ ăn:</strong><br>
+                                &bull; <strong>Ức chế giải phóng Peptide ruột:</strong> Ngăn chặn phóng thích VIP, Neurotensin, GLP-1, GIP.<br>
+                                &bull; <strong>Làm chậm vận động tiêu hóa:</strong> Kéo dài thời gian thức ăn di chuyển trong ruột non.<br>
+                                &bull; <strong>Ức chế trực tiếp tiết Insulin tụy:</strong> Ngăn ngừa hạ đường huyết phản ứng.<br>
+                                &bull; <strong>Chống giãn mạch nội tạng:</strong> Ngăn chặn tụt huyết áp và triệu chứng vận mạch.</p>
+                            </div>
+
+                            <div class="dump-card treatment">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-flask" style="color: #10b981;"></i>
+                                    <span>Chất Tăng Độ Nhớt (Viscosity Agents)</span>
+                                </div>
+                                <p>Pectin, Guar gum, Glucomannan nhằm làm đặc thức ăn để giảm tốc độ tống xuất. Tuy nhiên, bằng chứng lâm sàng rất hạn chế và bệnh nhân kém dung nạp do đầy bụng, mùi vị khó chịu.</p>
+                            </div>
+                        </div>
+
+                        <!-- SƠ ĐỒ EDITORIAL SVG 2: ĐÍCH ĐIỀU TRỊ -->
+                        <div class="diagram-container">
+                            <h3 id="so-do-dich-dieu-tri" class="subsection-title" style="margin-top: 0;">Sơ Đồ Cơ Chế Bệnh Sinh 2: Vị Trí Can Thiệp Điều Trị Dựa Trên Trục Sinh Lý Bệnh</h3>
+                            
+                            <svg viewBox="0 0 940 520" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif; display: block; margin: 0 auto;">
+                                <defs>
+                                    <linearGradient id="grad-tx-node" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#0284c7" stop-opacity="0.15"/>
+                                        <stop offset="100%" stop-color="#0369a1" stop-opacity="0.05"/>
+                                    </linearGradient>
+                                    <linearGradient id="grad-tx-drug" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#10b981" stop-opacity="0.22"/>
+                                        <stop offset="100%" stop-color="#059669" stop-opacity="0.1"/>
+                                    </linearGradient>
+                                    <marker id="arrow-tx-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284c7"/>
+                                    </marker>
+                                    <marker id="arrow-tx-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 1 L 8 5 L 0 9 z" fill="#10b981"/>
+                                    </marker>
+                                </defs>
+
+                                <!-- Central Cascade Nodes -->
+                                <rect x="300" y="15" width="340" height="42" rx="8" fill="url(#grad-tx-node)" stroke="#0284c7" stroke-width="1.3"/>
+                                <text x="470" y="35" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0284c7">Tống xuất nhanh vào tá tràng / hỗng tràng</text>
+                                <text x="470" y="49" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Sau phẫu thuật Bariatric / Cắt dạ dày</text>
+
+                                <line x1="470" y1="57" x2="470" y2="85" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrow-tx-blue)"/>
+
+                                <rect x="300" y="87" width="340" height="42" rx="8" fill="url(#grad-tx-node)" stroke="#0284c7" stroke-width="1.3"/>
+                                <text x="470" y="107" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0284c7">Dưỡng trấp ưu trương trong lòng ruột</text>
+                                <text x="470" y="121" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Hút dịch từ lòng mạch &rarr; Giảm thể tích nội mạch</text>
+
+                                <line x1="470" y1="129" x2="470" y2="157" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrow-tx-blue)"/>
+
+                                <rect x="300" y="159" width="340" height="42" rx="8" fill="url(#grad-tx-node)" stroke="#0284c7" stroke-width="1.3"/>
+                                <text x="470" y="179" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0284c7">Phóng thích Peptide ruột (VIP, GLP-1, PYY)</text>
+                                <text x="470" y="193" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Kích hoạt phản ứng vận mạch và kích thích tụy</text>
+
+                                <line x1="470" y1="201" x2="470" y2="229" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrow-tx-blue)"/>
+
+                                <rect x="300" y="231" width="340" height="42" rx="8" fill="url(#grad-tx-node)" stroke="#0284c7" stroke-width="1.3"/>
+                                <text x="470" y="251" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0284c7">Hấp thu Glucose nhanh qua kênh SGLT-1</text>
+                                <text x="470" y="265" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Tạo đỉnh tăng đường huyết đột ngột sau ăn</text>
+
+                                <line x1="470" y1="273" x2="470" y2="301" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrow-tx-blue)"/>
+
+                                <rect x="300" y="303" width="340" height="42" rx="8" fill="url(#grad-tx-node)" stroke="#0284c7" stroke-width="1.3"/>
+                                <text x="470" y="323" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0284c7">Phản ứng tăng tiết Insulin khổng lồ</text>
+                                <text x="470" y="337" text-anchor="middle" font-size="9" fill="var(--color-text-muted, #64748b)">Kéo theo hạ đường huyết muộn &lt; 50 mg/dL</text>
+
+                                <!-- LEFT SIDE: THERAPEUTIC TARGET 1 & 2 -->
+                                <rect x="20" y="65" width="230" height="65" rx="8" fill="url(#grad-tx-drug)" stroke="#10b981" stroke-width="1.3"/>
+                                <text x="135" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#047857">Chế Độ Ăn Điều Chỉnh (Diet)</text>
+                                <text x="30" y="104" font-size="9" fill="var(--color-text, #0f172a)">&bull; Chia 6&ndash;8 bữa nhỏ, giảm Carb nhanh</text>
+                                <text x="30" y="120" font-size="9" fill="var(--color-text, #0f172a)">&bull; Tách rời uống nước khỏi bữa ăn</text>
+
+                                <path d="M 250 97 L 292 97" stroke="#10b981" stroke-width="1.8" stroke-dasharray="3 3" fill="none" marker-end="url(#arrow-tx-green)"/>
+
+                                <!-- RIGHT SIDE: THERAPEUTIC TARGET 3 (ACARBOSE) -->
+                                <rect x="690" y="220" width="230" height="65" rx="8" fill="url(#grad-tx-drug)" stroke="#10b981" stroke-width="1.3"/>
+                                <text x="805" y="241" text-anchor="middle" font-size="11" font-weight="700" fill="#047857">Acarbose (Ức chế &alpha;-glucosidase)</text>
+                                <text x="700" y="259" font-size="9" fill="var(--color-text, #0f172a)">&bull; Làm chậm phân giải tinh bột</text>
+                                <text x="700" y="275" font-size="9" fill="var(--color-text, #0f172a)">&bull; Cắt đỉnh tăng đường huyết &amp; Insulin</text>
+
+                                <path d="M 690 252 L 648 252" stroke="#10b981" stroke-width="1.8" stroke-dasharray="3 3" fill="none" marker-end="url(#arrow-tx-green)"/>
+
+                                <!-- BOTTOM LEFT / RIGHT: SOMATOSTATIN ANALOGUES (OCTREOTIDE) -->
+                                <rect x="20" y="160" width="230" height="90" rx="8" fill="url(#grad-tx-drug)" stroke="#10b981" stroke-width="1.3"/>
+                                <text x="135" y="181" text-anchor="middle" font-size="11" font-weight="700" fill="#047857">Somatostatin Analogues</text>
+                                <text x="135" y="196" text-anchor="middle" font-size="9.5" font-weight="600" fill="#047857">(Octreotide, Lanreotide)</text>
+                                <text x="30" y="215" font-size="8.5" fill="var(--color-text, #0f172a)">&bull; Ức chế giải phóng Peptide ruột (VIP, GLP-1)</text>
+                                <text x="30" y="230" font-size="8.5" fill="var(--color-text, #0f172a)">&bull; Kéo dài thời gian lưu chuyển ruột non</text>
+                                <text x="30" y="244" font-size="8.5" fill="var(--color-text, #0f172a)">&bull; Ức chế trực tiếp tiết Insulin tụy</text>
+
+                                <path d="M 250 180 L 292 180" stroke="#10b981" stroke-width="1.8" stroke-dasharray="3 3" fill="none" marker-end="url(#arrow-tx-green)"/>
+                                <path d="M 250 205 L 280 205 L 280 324 L 292 324" stroke="#10b981" stroke-width="1.8" stroke-dasharray="3 3" fill="none" marker-end="url(#arrow-tx-green)"/>
+
+                                <!-- Clinical Outcomes at bottom -->
+                                <rect x="220" y="380" width="500" height="50" rx="10" fill="var(--color-surface, #ffffff)" stroke="#0284c7" stroke-width="1.5"/>
+                                <text x="470" y="401" text-anchor="middle" font-size="12" font-weight="700" fill="#0284c7">
+                                    KẾT QUẢ ĐIỀU TRỊ TOÀN DIỆN
+                                </text>
+                                <text x="470" y="419" text-anchor="middle" font-size="10" fill="var(--color-text, #0f172a)">
+                                    Kiểm soát triệu chứng tiêu hóa / vận mạch (EDS) &bull; Ngăn ngừa hạ đường huyết sau ăn (LDS)
+                                </text>
+
+                                <!-- Footer Summary Box -->
+                                <rect x="60" y="450" width="820" height="42" rx="8" fill="url(#grad-tx-drug)" stroke="#10b981" stroke-width="1.2"/>
+                                <text x="470" y="475" text-anchor="middle" font-size="10.5" font-weight="600" fill="#047857">
+                                    💡 <tspan font-weight="700">Nguyên tắc cốt lõi:</tspan> Điều chỉnh chế độ ăn là nền tảng số 1 &rarr; Acarbose cho Dumping muộn &rarr; Octreotide cho ca kháng trị.
+                                </text>
+                            </svg>
+                            <div class="diagram-caption">Sơ đồ 2: Vị trí tác động điều trị theo cơ chế sinh lý bệnh của Hội chứng Dumping (Dựa theo Consensus quốc tế Scarpellini et al. 2020).</div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- PHẦN IV: THANG ĐIỂM CHẨN ĐOÁN LÂM SÀNG -->
+                <div class="physio-content">
+                    <h2 id="thang-diem-chan-doan" class="section-title">
+                        <span>5. Các Thang Điểm Chẩn Đoán &amp; Đánh Giá Độ Nặng Lâm Sàng</span>
+                    </h2>
+
+                    <div class="physio-text-block">
+                        <p>Để đánh giá và theo dõi đáp ứng điều trị, hai thang điểm lâm sàng được sử dụng phổ biến nhất trên thế giới:</p>
+
+                        <h3 class="subsection-title">1. Chỉ Số Chẩn Đoán Sigstad (Sigstad's Diagnostic Index)</h3>
+                        <p>Được đề xuất từ năm 1970 nhằm định lượng nguy cơ mắc hội chứng Dumping thông qua chấm điểm 16 triệu chứng sau ăn:</p>
+
+                        <div class="mech-table-wrap">
+                            <table class="mech-compare-table">
+                                <thead>
+                                    <tr>
+                                        <th>Triệu Chứng Lâm Sàng (Symptoms)</th>
+                                        <th>Điểm Số Quy Định</th>
+                                        <th>Ý Nghĩa Sinh Lý Bệnh</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Tiền sốc, sốc (Pre-shock, shock)</strong></td>
+                                        <td style="color: #dc2626; font-weight: 700;">+5</td>
+                                        <td>Giảm thể tích nội mạch nghiêm trọng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Gần ngất, ngất, mất ý thức (Syncope)</strong></td>
+                                        <td style="color: #dc2626; font-weight: 700;">+4</td>
+                                        <td>Tụt huyết áp tư thế hoặc thiếu máu não cấp.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mong muốn nằm hoặc ngồi nghỉ ngay (Desire to lie down)</strong></td>
+                                        <td style="color: #0284c7; font-weight: 700;">+3</td>
+                                        <td>Phản xạ bù trừ hạ huyết áp tư thế.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Khó thở, thở dốc (Dyspnea)</strong></td>
+                                        <td style="color: #0284c7; font-weight: 700;">+3</td>
+                                        <td>Tăng thông khí do phản ứng giao cảm.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Yếu sức, kiệt sức (Weakness, exhaustion)</strong></td>
+                                        <td style="color: #0284c7; font-weight: 700;">+3</td>
+                                        <td>Giảm tưới máu cơ quan ngoại biên.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Buồn ngủ, ngủ lơ mơ, ngáp (Sleepiness)</strong></td>
+                                        <td style="color: #0284c7; font-weight: 700;">+3</td>
+                                        <td>Tái phân bố dòng máu mạc treo sau ăn.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Đánh trống ngực, hồi hộp (Palpitations)</strong></td>
+                                        <td style="color: #0284c7; font-weight: 700;">+3</td>
+                                        <td>Nhịp nhanh xoang phản ứng giao cảm.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Bồn chồn, không yên (Restlessness)</strong></td>
+                                        <td style="color: #f59e0b; font-weight: 700;">+2</td>
+                                        <td>Cường giao cảm.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Chóng mặt (Dizziness)</strong></td>
+                                        <td style="color: #f59e0b; font-weight: 700;">+2</td>
+                                        <td>Thiếu máu não cục bộ thoáng qua.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Đau đầu (Headache)</strong></td>
+                                        <td>+1</td>
+                                        <td>Giãn mạch hệ thống do VIP.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Vã mồ hôi, da ẩm lạnh (Sweating, clammy skin)</strong></td>
+                                        <td>+1</td>
+                                        <td>Kích thích tiết mồ hôi cholinergic.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Buồn nôn (Nausea)</strong></td>
+                                        <td>+1</td>
+                                        <td>Căng giãn hỗng tràng.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Đầy bụng, chướng trướng hơi (Meteorism)</strong></td>
+                                        <td>+1</td>
+                                        <td>Ứ dịch và hơi trong quai ruột.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sôi bụng ọc ọc (Borborygmi)</strong></td>
+                                        <td>+1</td>
+                                        <td>Tăng co bóp nhu động ruột non.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Ợ hơi (Eructation)</strong></td>
+                                        <td style="color: #64748b; font-weight: 700;">-1</td>
+                                        <td>Triệu chứng đường tiêu hóa trên không đặc hiệu.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Nôn mửa (Vomiting)</strong></td>
+                                        <td style="color: #64748b; font-weight: 700;">-4</td>
+                                        <td>Gợi ý tắc nghẽn quai tới hoặc ứ trệ dạ dày hơn là Dumping.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="clinical-pearl">
+                            📊 <strong>Đánh giá Chỉ số Sigstad:</strong><br>
+                            &bull; <strong>Tổng điểm &gt; 7:</strong> Gợi ý rất cao mắc Hội chứng Dumping.<br>
+                            &bull; <strong>Tổng điểm &lt; 4:</strong> Điểm số thấp, cần xem xét các chẩn đoán phân biệt khác (như liệt dạ dày, trào ngược mật, IBS).<br>
+                            ⚠️ <em>Hạn chế:</em> Thang điểm Sigstad chủ yếu phản ánh Dumping sớm mà bỏ sót các triệu chứng hạ đường huyết của Dumping muộn.
+                        </div>
+
+                        <h3 class="subsection-title" style="margin-top: 1.5rem;">2. Hệ Thống Đánh Giá Độ Nghiêm Trọng Arts (Arts' Dumping Severity Score)</h3>
+                        <p>Thang điểm Arts (2020) khắc phục nhược điểm của Sigstad bằng cách tách biệt hoàn toàn 2 pha thời gian:</p>
+
+                        <div class="dump-grid">
+                            <div class="dump-card score">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-clock" style="color: #8b5cf6;"></i>
+                                    <span>Pha Sớm (&le; 1 giờ sau ăn) &ndash; 8 Triệu chứng</span>
+                                </div>
+                                <p>1. Vã mồ hôi (Sweating)<br>
+                                2. Đỏ bừng mặt (Flushing)<br>
+                                3. Chóng mặt (Dizziness)<br>
+                                4. Đánh trống ngực (Palpitations)<br>
+                                5. Đau quặn bụng (Abdominal pain)<br>
+                                6. Tiêu chảy (Diarrhoea)<br>
+                                7. Chướng bụng (Bloating)<br>
+                                8. Buồn nôn (Nausea)</p>
+                            </div>
+
+                            <div class="dump-card score">
+                                <div class="dump-card-title">
+                                    <i class="fa-solid fa-hourglass-half" style="color: #8b5cf6;"></i>
+                                    <span>Pha Muộn (&gt; 1 giờ sau ăn) &ndash; 6 Triệu chứng</span>
+                                </div>
+                                <p>1. Vã mồ hôi lạnh (Sweating)<br>
+                                2. Đánh trống ngực (Palpitations)<br>
+                                3. Đói cồn cào (Hunger)<br>
+                                4. Lơ mơ / mất ý thức (Drowsiness / Syncope)<br>
+                                5. Run tay chân (Tremor)<br>
+                                6. Cáu gắt, kích thích (Irritability)</p>
+                            </div>
+                        </div>
+
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+                            * <strong>Mức độ chấm điểm cho mỗi triệu chứng:</strong> 0 = Không có; 1 = Nhẹ; 2 = Trung bình (ảnh hưởng sinh hoạt); 3 = Nặng (ảnh hưởng nghiêm trọng). Thang điểm Arts là công cụ nhạy bén nhất để đánh giá hiệu quả đáp ứng điều trị nội khoa trên lâm sàng.
+                        </p>
+                    </div>
+                </div>
+
+                <hr class="section-divider">
+
+                <!-- TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+                <div class="physio-content">
+                    <h2 id="tai-lieu-tham-khao" class="section-title">
+                        <span>Tài Liệu Tham Khảo (References &ndash; AMA Format)</span>
+                    </h2>
+
+                    <div class="ref-section">
+                        <ol class="ref-list">
+                            <li>Scarpellini E, Arts J, Karamanolis G, et al. International consensus on the diagnosis and management of dumping syndrome. <em>Nat Rev Endocrinol</em>. 2020;16(8):448-466. doi:10.1038/s41574-020-0357-5.</li>
+                            <li>Rodgers L, Phillips CA. Dumping syndrome: Causes, management, and patient education. <em>Am Nurse Today</em>. 2018;13(1):6-10.</li>
+                            <li>Masclee GMC, Masclee AAM. Dumping Syndrome: Pragmatic Treatment Options and Experimental Approaches for Improving Clinical Outcomes. <em>Clin Exp Gastroenterol</em>. 2023;16:197-210. doi:10.2147/CEG.S390317.</li>
+                            <li>Tumminia A, Lombardo AM, Arpi ML, et al. The SGLT-1/SGLT-2 dual inhibitor canagliflozin has positive effects on glucose trends, targets and variability in late dumping syndrome following gastrectomy: A case report. <em>J Clin Transl Endocrinol Case Rep</em>. 2024;31:100163. doi:10.1016/j.jecr.2024.100163.</li>
+                            <li>Vavricka SR, Greuter T. Gastroparesis and Dumping Syndrome: Current Concepts and Management. <em>J Clin Med</em>. 2019;8(8):1127. doi:10.3390/jcm8081127.</li>
+                        </ol>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</body>
+</html>

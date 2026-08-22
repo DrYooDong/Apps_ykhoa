@@ -912,7 +912,7 @@ export const KHO_GUIDELINES_STATIC: Study[] = [
     year: 2022,
     organization: 'Hiệp hội Nghiên cứu Bệnh Gan Châu Âu (EASL) & Baveno VII Faculty',
     journal: 'J Hepatol',
-    file: '2022-easl-baveno-vii-portal-hypertension-consensus.html',
+    file: '2021-bavenovii-taltmc.html',
     conditionKey: 'gerd-peptic',
     icd10: ['K76.6', 'K74.6', 'I85.0'],
     intervention: 'Đánh giá không xâm lấn cACLD (Quy tắc số 5 LSM 10-15-20-25 kPa), tiêu chuẩn Baveno VI mở rộng tránh nội soi (LSM < 20 + PLT ≥ 150), Carvedilol dự phòng đợt mất bù đầu tiên, lưu đồ cấp cứu AVB 0h-12h-24h/72h (Pre-emptive TIPS)',

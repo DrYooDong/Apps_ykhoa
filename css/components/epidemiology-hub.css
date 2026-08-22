@@ -34,6 +34,127 @@
 }
 
 /* ==========================================================================
+   1.1. COMPACT TOOLKIT SUITE (GÓC CÔNG CỤ DỊCH TỄ TINH GỌN)
+   ========================================================================== */
+.epi-compact-toolkit-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  flex-wrap: wrap;
+}
+
+[data-theme="dark"] .epi-compact-toolkit-bar {
+  background: var(--color-surface, #1e293b);
+  border-color: var(--color-border, #334155);
+}
+
+.epi-toolkit-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  white-space: nowrap;
+}
+
+.epi-toolkit-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.epi-tool-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--color-border, #cbd5e1);
+  background: var(--color-bg, #f8fafc);
+  color: var(--color-text, #334155);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .epi-tool-pill-btn {
+  background: var(--color-bg, #0f172a);
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.epi-tool-pill-btn:hover {
+  transform: translateY(-1px);
+}
+
+.epi-tool-pill-btn.tool-matrix:hover {
+  background: rgba(13, 148, 136, 0.15);
+  color: #0d9488;
+  border-color: #0d9488;
+}
+
+.epi-tool-pill-btn.tool-epicurve:hover {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+  border-color: #f59e0b;
+}
+
+.epi-tool-pill-btn.tool-design:hover {
+  background: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
+  border-color: #3b82f6;
+}
+
+.epi-tool-pill-btn.tool-causality:hover {
+  background: rgba(139, 92, 246, 0.15);
+  color: #7c3aed;
+  border-color: #8b5cf6;
+}
+
+.epi-tool-pill-btn.tool-vault {
+  background: rgba(13, 148, 136, 0.08);
+  color: #0d9488;
+  border-color: rgba(13, 148, 136, 0.3);
+}
+
+.epi-tool-pill-btn.tool-vault:hover {
+  background: #0d9488;
+  color: #ffffff;
+  border-color: #0d9488;
+}
+
+/* Specialty tags & pills */
+.epi-metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  background: var(--color-bg, #f1f5f9);
+  color: var(--color-text-muted, #64748b);
+  border: 1px solid var(--color-border, #e2e8f0);
+}
+
+[data-theme="dark"] .epi-metric-pill {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+/* ==========================================================================
    2. 2x2 CONTINGENCY MATRIX SOLVER STUDIO
    ========================================================================== */
 .epi-matrix-studio {

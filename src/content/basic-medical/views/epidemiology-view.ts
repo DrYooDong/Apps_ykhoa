@@ -1,9 +1,13 @@
 /**
- * CliniPortal — Epidemiology & Biostatistics (Dịch Tễ Học Y Khoa) SPA View
+ * CliniPortal — Epidemiology & Public Health (Dịch Tễ Học Y Khoa & Y Tế Công Cộng) SPA View
  * Path: src/content/basic-medical/views/epidemiology-view.ts
- * Giao diện kinh điển đồng bộ chuẩn 100% với Sinh Lý, Cơ Chế Bệnh Sinh & Hóa Sinh
- * (Classic Hero Surveillance SVG, Feature Bento Banners, Toolbar Search/Grid Toggle, Sticky Nav Sidebar, 
- *  PHẦN DỊCH TỄ CÁC BỆNH ĐƯỢC ĐẶT LÊN ĐẦU TIÊN, Specialty Cards & Quick Preview Modal)
+ * 
+ * Bố cục chuẩn mực theo Chuyên Khoa Lâm Sàng (đồng bộ 100% với Cơ Chế Bệnh Sinh & Sinh Lý Bệnh):
+ * - Hero Surveillance Theme & KPI Bar
+ * - Compact Isolated Toolkit Suite (Giải Ma Trận 2×2, Epicurve, Study Designs, Bradford Hill, 6 Khối Lý Thuyết)
+ * - Sticky Left Navigation: Danh mục 9 Chuyên Khoa Lâm Sàng
+ * - Live Multilingual Search & Grid/List View Toggle
+ * - Rich Specialty Cards & Deep Interactive Factsheet Modal
  */
 
 import '../../../../css/components/module-dashboard.css';
@@ -16,78 +20,623 @@ import {
   EPIDEMIOLOGY_BLOCKS, 
   EPIDEMIOLOGY_TOPICS 
 } from '../data/epidemiology-data';
-import { EpidemiologyBlock, EpidemiologyTopic } from '../types/epidemiology.types';
 
-// Danh sách các bài chuyên khảo Dịch tễ học bệnh lý cụ thể (Đưa lên đầu)
-interface DiseaseEpidemiologyArticle {
+// Định nghĩa cấu trúc bài viết Dịch tễ học bệnh lý theo chuyên khoa
+export interface SpecialtyEpidemiologyItem {
   id: string;
   code: string;
   icd: string;
+  specialtyId: string;
   title: string;
-  slug: string;
-  vector: string;
+  slug?: string;
+  hasFullArticle?: boolean;
+  keyMetric: string;
+  vectorOrCause: string;
   icon: string;
   color: string;
   bgColor: string;
   overview: string;
-  pearlsCount: number;
   pearlPreview: string;
-  readTime: string;
+  highYieldStats: string[];
   tags: string[];
 }
 
-const DISEASE_ARTICLES: DiseaseEpidemiologyArticle[] = [
+export interface ClinicalSpecialtySection {
+  id: string;
+  name: string;
+  shortName: string;
+  icon: string;
+  color: string;
+  bgColor: string;
+  description: string;
+  items: SpecialtyEpidemiologyItem[];
+}
+
+export const EPIDEMIOLOGY_SPECIALTY_SECTIONS: ClinicalSpecialtySection[] = [
   {
-    id: 'dth-dengue',
-    code: 'DTH-DENGUE',
-    icd: 'ICD-10: A90–A91',
-    title: 'Dịch Tễ Học Sốt Xuất Huyết Dengue (DENV)',
-    slug: 'dth-dengue',
-    vector: 'Véc-tơ Aedes aegypti / albopictus',
-    icon: 'fa-mosquito',
+    id: 'epi-truyen-nhiem',
+    name: '1. Truyền Nhiễm & Y Học Nhiệt Đới',
+    shortName: 'Truyền nhiễm & Nhiệt đới',
+    icon: 'fa-virus-covid',
     color: '#ef4444',
     bgColor: 'rgba(239, 68, 68, 0.12)',
-    overview: 'Tam giác dịch tễ học DENV, sinh học muỗi véc-tơ, chu kỳ ủ bệnh ngoại lai (EIP), cơ chế tăng cường miễn dịch phụ thuộc kháng thể (ADE), số liệu dịch kỷ lục 2024–2026 và phác đồ BYT/WHO.',
-    pearlsCount: 3,
-    pearlPreview: 'Tái nhiễm khác serotype kích hoạt ADE gây bão cytokine, rò rỉ huyết tương và sốc DSS nguy kịch.',
-    readTime: '12 phút đọc',
-    tags: ['Aedes', 'ADE', 'DENV 1-4', 'Sốc Dengue', 'WHO 2024']
+    description: 'Động học lây truyền vector, hệ số lây nhiễm R0/Rt, chu kỳ ủ bệnh, miễn dịch bầy đàn và phác đồ dập dịch chuẩn WHO & Bộ Y Tế.',
+    items: [
+      {
+        id: 'dth-dengue',
+        code: 'DTH-DEN',
+        icd: 'ICD-10: A90–A91',
+        specialtyId: 'epi-truyen-nhiem',
+        title: 'Dịch Tễ Học Sốt Xuất Huyết Dengue (DENV)',
+        slug: 'dth-dengue',
+        hasFullArticle: true,
+        keyMetric: 'CFR sốc DSS: 1-5% • R0: 2.0-4.5',
+        vectorOrCause: 'Véc-tơ Aedes aegypti / albopictus',
+        icon: 'fa-mosquito',
+        color: '#ef4444',
+        bgColor: 'rgba(239, 68, 68, 0.12)',
+        overview: 'Tam giác dịch tễ học DENV, sinh học muỗi véc-tơ, chu kỳ ủ bệnh ngoại lai (EIP), cơ chế tăng cường miễn dịch phụ thuộc kháng thể (ADE), số liệu dịch kỷ lục và phác đồ phòng chống.',
+        pearlPreview: 'Tái nhiễm khác serotype kích hoạt ADE gây bão cytokine, rò rỉ huyết tương và sốc DSS nguy kịch.',
+        highYieldStats: ['4 Serotype (DENV 1-4)', 'EIP: 8-12 ngày', 'Mưa ẩm & Đô thị hóa'],
+        tags: ['Aedes', 'ADE', 'DENV 1-4', 'Sốc Dengue', 'WHO 2024']
+      },
+      {
+        id: 'dth-sot-ret',
+        code: 'DTH-MAL',
+        icd: 'ICD-10: B50–B54',
+        specialtyId: 'epi-truyen-nhiem',
+        title: 'Dịch Tễ Học Bệnh Sốt Rét (Malaria / Plasmodium)',
+        slug: 'dth-sot-ret',
+        hasFullArticle: true,
+        keyMetric: 'Gánh nặng: 249M ca/năm • CFR P.falciparum: ~0.3%',
+        vectorOrCause: 'Véc-tơ muỗi Anopheles',
+        icon: 'fa-mosquito',
+        color: '#d97706',
+        bgColor: 'rgba(217, 119, 6, 0.12)',
+        overview: '5 loài Plasmodium, thể ngủ gan (Hypnozoites), động học lây truyền muỗi Anopheles, 4 mối đe dọa sinh học (kháng Artemisinin gen pfk13, xóa gen pfhrp2/3), WHO 2025 và QĐ 4922/QĐ-BYT.',
+        pearlPreview: 'Điều trị tiệt căn P. vivax bắt buộc dùng Primaquine tiêu diệt thể ngủ và phải xét nghiệm men G6PD.',
+        highYieldStats: ['P. falciparum & P. vivax', 'Gen kháng pfk13', 'Xóa gen pfhrp2/3'],
+        tags: ['Anopheles', 'Plasmodium', 'Hypnozoites', 'Artemisinin', 'G6PD']
+      },
+      {
+        id: 'dth-thuy-dau',
+        code: 'DTH-VZV',
+        icd: 'ICD-10: B01–B02',
+        specialtyId: 'epi-truyen-nhiem',
+        title: 'Dịch Tễ Học Bệnh Thủy Đậu (Varicella / VZV)',
+        slug: 'dth-thuy-dau',
+        hasFullArticle: true,
+        keyMetric: 'R0 ≈ 10–12 • Tử vong người lớn gấp 23–29 lần',
+        vectorOrCause: 'Đường hô hấp & Giọt bắn không khí',
+        icon: 'fa-shield-virus',
+        color: '#8b5cf6',
+        bgColor: 'rgba(139, 92, 246, 0.12)',
+        overview: 'Sự tương phản sâu sắc ôn đới vs nhiệt đới, tỷ lệ tử vong chữ U (gấp 23–29 lần ở người lớn), kỷ nguyên vắc-xin 1-liều/2-liều, rủi ro dịch chuyển tuổi khi độ bao phủ thấp dưới 80% (WHO).',
+        pearlPreview: 'Bao phủ vắc-xin <80% đẩy lùi tuổi mắc bệnh sang người lớn, làm tăng ca biến chứng viêm phổi và tử vong chung.',
+        highYieldStats: ['Tử vong chữ U', 'Tuổi mắc chuyển dịch', 'Vắc-xin 2 liều'],
+        tags: ['VZV', 'Varicella', 'Vaccine', 'R0 ≈ 10-12', 'Tuổi mắc']
+      },
+      {
+        id: 'dth-measles',
+        code: 'DTH-MEA',
+        icd: 'ICD-10: B05',
+        specialtyId: 'epi-truyen-nhiem',
+        title: 'Dịch Tễ Học Bệnh Sởi (Measles / Morbillivirus)',
+        hasFullArticle: false,
+        keyMetric: 'R0 cao nhất: 12–18 • Ngưỡng miễn dịch cộng đồng: ≥ 95%',
+        vectorOrCause: 'Sol khí lơ lửng (Aerosol lơ lửng tới 2h)',
+        icon: 'fa-head-side-cough',
+        color: '#ef4444',
+        bgColor: 'rgba(239, 68, 68, 0.12)',
+        overview: 'Bệnh truyền nhiễm có hệ số lây nhiễm R0 cao nhất ở người. Hiện tượng "Xóa trí nhớ miễn dịch" (Immune Amnesia) sau nhiễm sởi làm tăng nguy cơ tử vong do các nhiễm trùng thứ phát trong 2-3 năm tiếp theo.',
+        pearlPreview: 'Sởi phá hủy 20–70% kháng thể nhớ trước đó, khiến cơ thể dễ tử vong vì viêm phổi, tiêu chảy thứ phát.',
+        highYieldStats: ['Immune Amnesia', 'Bao phủ vaccine ≥ 95%', 'Vitamin A liều cao'],
+        tags: ['Sởi', 'Measles', 'R0 12-18', 'Immune Amnesia', 'Vaccine MMR']
+      },
+      {
+        id: 'dth-hiv-sti',
+        code: 'DTH-HIV',
+        icd: 'ICD-10: B20–B24',
+        specialtyId: 'epi-truyen-nhiem',
+        title: 'Dịch Tễ Học HIV/AIDS & Nhiễm Trùng Lây Qua Đường Tình Dục',
+        hasFullArticle: false,
+        keyMetric: 'Mục tiêu UNAIDS: 95-95-95 • U=U (K=K)',
+        vectorOrCause: 'Máu, Quan hệ tình dục & Mẹ truyền sang con',
+        icon: 'fa-ribbon',
+        color: '#e11d48',
+        bgColor: 'rgba(225, 29, 72, 0.12)',
+        overview: 'Chuyển dịch mô hình lây truyền HIV từ tiêm chích ma túy sang nhóm nam quan hệ tình dục đồng giới (MSM). Bằng chứng khoa học K=K (Không phát hiện = Không lây truyền) và hiệu quả điều trị dự phòng trước phơi nhiễm (PrEP).',
+        pearlPreview: 'Tải lượng virus HIV dưới ngưỡng phát hiện (<200 bản sao/mL) hoàn toàn KHÔNG lây truyền qua đường tình dục (U=U).',
+        highYieldStats: ['PrEP hiệu quả > 99%', 'Chiến lược 95-95-95', 'U=U / K=K'],
+        tags: ['HIV', 'PrEP', 'U=U', 'MSM', 'UNAIDS']
+      }
+    ]
   },
   {
-    id: 'dth-sot-ret',
-    code: 'DTH-MALARIA',
-    icd: 'ICD-10: B50–B54',
-    title: 'Dịch Tễ Học Bệnh Sốt Rét (Malaria / Plasmodium)',
-    slug: 'dth-sot-ret',
-    vector: 'Véc-tơ Anopheles',
-    icon: 'fa-mosquito',
+    id: 'epi-tim-mach',
+    name: '2. Tim Mạch & Đột Quỵ',
+    shortName: 'Tim mạch & Đột quỵ',
+    icon: 'fa-heart-pulse',
+    color: '#dc2626',
+    bgColor: 'rgba(220, 38, 38, 0.12)',
+    description: 'Nguyên nhân tử vong và mất DALYs hàng đầu thế giới. Đo lường tỷ suất mới mắc, quy tắc một nửa (Rule of Halves) và phân tầng nguy cơ 10 năm.',
+    items: [
+      {
+        id: 'dth-hypertension',
+        code: 'DTH-THA',
+        icd: 'ICD-10: I10–I15',
+        specialtyId: 'epi-tim-mach',
+        title: 'Dịch Tễ Học Tăng Huyết Áp (Hypertension)',
+        hasFullArticle: false,
+        keyMetric: 'Prevalence người lớn: ~33% • DALYs mất: #1 toàn cầu',
+        vectorOrCause: 'Lượng muối ăn cao, Ít vận động, Rượu bia & Tuổi già',
+        icon: 'fa-gauge-high',
+        color: '#dc2626',
+        bgColor: 'rgba(220, 38, 38, 0.12)',
+        overview: 'Kẻ giết người thầm lặng: Tăng huyết áp là yếu tố nguy cơ đơn lẻ lớn nhất gây tử vong tim mạch và đột quỵ. Tồn tại "Quy tắc 1/2": 1/2 không biết mắc bệnh, 1/2 biết nhưng không điều trị, 1/2 điều trị nhưng không đạt huyết áp mục tiêu.',
+        pearlPreview: 'Giảm 5 mmHg huyết áp tâm thu làm giảm 10% biến cố tim mạch chính và 13% tỷ lệ tử vong do mọi nguyên nhân.',
+        highYieldStats: ['Rule of Halves', 'Attributable Risk Đột quỵ > 50%', 'DASH Diet & Giảm Muối'],
+        tags: ['Tăng huyết áp', 'Rule of Halves', 'Muối ăn', 'Đột quỵ', 'Framingham']
+      },
+      {
+        id: 'dth-cad-mi',
+        code: 'DTH-CAD',
+        icd: 'ICD-10: I20–I25',
+        specialtyId: 'epi-tim-mach',
+        title: 'Dịch Tễ Học Bệnh Mạch Vành & Nhồi Máu Cơ Tim (CAD / MI)',
+        hasFullArticle: false,
+        keyMetric: 'Tử vong do bệnh tim thiếu máu cục bộ: ~9 triệu ca/năm',
+        vectorOrCause: 'Xơ vữa động mạch, Hút thuốc lá, Rối loạn lipid máu, ĐTĐ',
+        icon: 'fa-heart-crack',
+        color: '#b91c1c',
+        bgColor: 'rgba(185, 28, 28, 0.12)',
+        overview: 'Nghiên cứu kinh điển Framingham Heart Study đặt nền móng cho dịch tễ học tim mạch hiện đại. Phân biệt yếu tố nguy cơ kinh điển (Hút thuốc lá, Tăng LDL-C, Tăng HA, ĐTĐ) và thang điểm SCORE2 theo phân vùng địa lý.',
+        pearlPreview: 'Từ bỏ hút thuốc lá giúp giảm 50% nguy cơ tái phát nhồi máu cơ tim chỉ sau 1 năm cai thuốc hoàn toàn.',
+        highYieldStats: ['Framingham Study', 'SCORE2 Risk Engine', 'LDL-C Attributable Risk'],
+        tags: ['Mạch vành', 'Nhồi máu cơ tim', 'Framingham', 'SCORE2', 'Xơ vữa']
+      },
+      {
+        id: 'dth-stroke',
+        code: 'DTH-STR',
+        icd: 'ICD-10: I60–I64',
+        specialtyId: 'epi-tim-mach',
+        title: 'Dịch Tễ Học Đột Quỵ Não (Stroke / Tai Biến Mạch Máu Não)',
+        hasFullArticle: false,
+        keyMetric: 'Tỷ lệ tử vong & tàn phế #2 toàn cầu • 85% Thiếu máu não',
+        vectorOrCause: 'Tăng huyết áp, Rung nhĩ, Đái tháo đường, Hút thuốc lá',
+        icon: 'fa-brain',
+        color: '#991b1b',
+        bgColor: 'rgba(153, 27, 27, 0.12)',
+        overview: 'Gánh nặng kép: Tử vong sớm và tàn tật kéo dài (DALYs). Phân loại dịch tễ Đột quỵ thiếu máu não cục bộ (Ischemic ~85%) vs Đột quỵ xuất huyết não (Hemorrhagic ~15%). Rung nhĩ làm tăng nguy cơ đột quỵ gấp 5 lần.',
+        pearlPreview: 'Rung nhĩ không được dùng kháng đông là nguyên nhân gây ra các ca đột quỵ tắc mạch diện rộng và tử vong cao nhất.',
+        highYieldStats: ['Rung nhĩ tăng nguy cơ 5x', 'Cửa sổ vàng 4.5h rtPA', 'Tàn tật DALYs'],
+        tags: ['Đột quỵ', 'Tai biến', 'Rung nhĩ', 'CHA2DS2-VASc', 'Tàn tật']
+      },
+      {
+        id: 'dth-heart-failure',
+        code: 'DTH-HF',
+        icd: 'ICD-10: I50',
+        specialtyId: 'epi-tim-mach',
+        title: 'Dịch Tễ Học Suy Tim (Heart Failure)',
+        hasFullArticle: false,
+        keyMetric: 'Prevalence: 1-2% dân số • CFR 5 năm ≈ 50%',
+        vectorOrCause: 'Hậu quả cuối cùng của Tăng huyết áp, Nhồi máu cơ tim & Bệnh van tim',
+        icon: 'fa-heart-pulse',
+        color: '#ea580c',
+        bgColor: 'rgba(234, 88, 12, 0.12)',
+        overview: 'Giai đoạn cuối của chuỗi bệnh lý tim mạch. Dịch tễ học dân số già hóa khiến tỷ lệ mắc suy tim bảo tồn phân suất tống máu (HFpEF) tăng vọt, tỷ lệ tái nhập viện trong 30 ngày lên tới 20-25%.',
+        pearlPreview: 'Tỷ lệ sống sót sau 5 năm của suy tim tương đương hoặc xấu hơn nhiều loại ung thư ác tính phổ biến.',
+        highYieldStats: ['Tái nhập viện 30 ngày ~25%', 'HFpEF tăng theo tuổi', '4 Trụ Cột GDMT'],
+        tags: ['Suy tim', 'Tái nhập viện', 'HFpEF', 'HFrEF', 'Già hóa dân số']
+      }
+    ]
+  },
+  {
+    id: 'epi-ho-hap',
+    name: '3. Hô Hấp & Bệnh Phổi',
+    shortName: 'Hô hấp & Phổi',
+    icon: 'fa-lungs',
+    color: '#0284c7',
+    bgColor: 'rgba(2, 132, 199, 0.12)',
+    description: 'Dịch tễ học bệnh phổi tắc nghẽn, ô nhiễm không khí PM2.5, khói thuốc lá, vi khuẩn lao và gánh nặng nhiễm trùng đường hô hấp dưới.',
+    items: [
+      {
+        id: 'dth-copd',
+        code: 'DTH-COPD',
+        icd: 'ICD-10: J44',
+        specialtyId: 'epi-ho-hap',
+        title: 'Dịch Tễ Học Bệnh Phổi Tắc Nghẽn Mạn Tính (COPD)',
+        hasFullArticle: false,
+        keyMetric: 'Nguyên nhân tử vong #3 toàn cầu • PAF khói thuốc: > 75%',
+        vectorOrCause: 'Khói thuốc lá, Khói bếp sinh khối & Bụi mịn PM2.5',
+        icon: 'fa-lungs',
+        color: '#0284c7',
+        bgColor: 'rgba(2, 132, 199, 0.12)',
+        overview: 'Căn bệnh tiến triển âm thầm với gánh nặng khổng lồ. Tỷ phần quy thuộc (Attributable Fraction) do thuốc lá chiếm > 75% ở các nước phát triển, trong khi ô nhiễm không khí trong nhà do đun nấu chất đốt sinh khối là yếu tố chính ở phụ nữ nông thôn.',
+        pearlPreview: 'Cai thuốc lá là can thiệp dịch tễ duy nhất chứng minh làm chậm tốc độ suy giảm FEV1 hàng năm ở bệnh nhân COPD.',
+        highYieldStats: ['PAF Thuốc lá > 75%', 'PM2.5 Môi trường', 'Chiến lược GOLD 2024'],
+        tags: ['COPD', 'Thuốc lá', 'Bụi mịn PM2.5', 'GOLD', 'FEV1']
+      },
+      {
+        id: 'dth-tuberculosis',
+        code: 'DTH-TB',
+        icd: 'ICD-10: A15–A19',
+        specialtyId: 'epi-ho-hap',
+        title: 'Dịch Tễ Học Lao Phổi & Lao Kháng Thuốc (Tuberculosis / MDR-TB)',
+        hasFullArticle: false,
+        keyMetric: '1/4 dân số nhiễm Lao tiềm ẩn (LTBI) • 10.6M ca mắc mới/năm',
+        vectorOrCause: 'Vi khuẩn Mycobacterium tuberculosis lây qua giọt bắn hô hấp',
+        icon: 'fa-bacteria',
+        color: '#0369a1',
+        bgColor: 'rgba(3, 105, 161, 0.12)',
+        overview: 'Việt Nam nằm trong top 30 quốc gia có gánh nặng bệnh lao và lao kháng đa thuốc (MDR-TB) cao nhất thế giới. Chỉ 5-10% người nhiễm lao tiềm ẩn tiến triển thành bệnh lao hoạt động trong đời (tăng gấp 20 lần nếu nhiễm kèm HIV).',
+        pearlPreview: 'Đồng nhiễm HIV-Lao tạo thành "vòng xoáy tử thần": Lao là nguyên nhân tử vong hàng đầu ở người sống chung với HIV.',
+        highYieldStats: ['Lao tiềm ẩn LTBI 25%', 'MDR-TB Kháng Rifampicin', 'Chiến lược End TB'],
+        tags: ['Lao', 'Tuberculosis', 'MDR-TB', 'LTBI', 'GeneXpert']
+      },
+      {
+        id: 'dth-asthma',
+        code: 'DTH-AST',
+        icd: 'ICD-10: J45',
+        specialtyId: 'epi-ho-hap',
+        title: 'Dịch Tễ Học Hen Phế Quản (Asthma)',
+        hasFullArticle: false,
+        keyMetric: 'Bệnh mạn tính phổ biến nhất ở trẻ em (~10-14%)',
+        vectorOrCause: 'Cơ địa dị ứng, Mạt bụi nhà, Lông thú & Thuyết vệ sinh',
+        icon: 'fa-wind',
+        color: '#0ea5e9',
+        bgColor: 'rgba(14, 165, 233, 0.12)',
+        overview: 'Dịch tễ học hen chứng kiến sự gia tăng tại các nước công nghiệp hóa. "Giả thuyết vệ sinh" (Hygiene Hypothesis) giải thích việc trẻ em ít tiếp xúc với vi sinh vật trong môi trường sớm có nguy cơ mắc bệnh dị ứng và hen cao hơn.',
+        pearlPreview: 'Sử dụng quá mức thuốc cắt cơn SABA đơn độc (≥3 bình xịt/năm) liên quan trực tiếp đến tăng tỷ lệ tử vong do hen (GINA).',
+        highYieldStats: ['Hygiene Hypothesis', 'Trẻ em chiếm tỷ lệ cao', 'Khuyến cáo GINA'],
+        tags: ['Hen phế quản', 'Asthma', 'Hygiene Hypothesis', 'GINA', 'Atopy']
+      }
+    ]
+  },
+  {
+    id: 'epi-tieu-hoa',
+    name: '4. Tiêu Hóa & Gan Mật',
+    shortName: 'Tiêu hóa & Gan mật',
+    icon: 'fa-bowl-food',
     color: '#d97706',
     bgColor: 'rgba(217, 119, 6, 0.12)',
-    overview: '5 loài Plasmodium, thể ngủ gan (Hypnozoites), động học lây truyền muỗi Anopheles, 4 mối đe dọa sinh học (kháng Artemisinin gen pfk13, xóa gen pfhrp2/3), WHO 2025 và QĐ 4922/QĐ-BYT.',
-    pearlsCount: 3,
-    pearlPreview: 'Điều trị tiệt căn P. vivax bắt buộc dùng Primaquine tiêu diệt thể ngủ và phải xét nghiệm men G6PD.',
-    readTime: '15 phút đọc',
-    tags: ['Anopheles', 'Plasmodium', 'Hypnozoites', 'Artemisinin', 'G6PD']
+    description: 'Dịch tễ học viêm gan siêu vi B/C, tỷ lệ nhiễm H. pylori, xơ gan do rượu/MASH và sàng lọc sớm ung thư đường tiêu hóa.',
+    items: [
+      {
+        id: 'dth-hbv-hcv',
+        code: 'DTH-HEP',
+        icd: 'ICD-10: B16–B18',
+        specialtyId: 'epi-tieu-hoa',
+        title: 'Dịch Tễ Học Viêm Gan Virus B & C (HBV / HCV)',
+        hasFullArticle: false,
+        keyMetric: 'Tỷ lệ mang HBsAg tại VN: ~8–10% • Nguyên nhân K Gan: > 80%',
+        vectorOrCause: 'Mẹ truyền sang con, Đường máu & Quan hệ tình dục',
+        icon: 'fa-viruses',
+        color: '#d97706',
+        bgColor: 'rgba(217, 119, 6, 0.12)',
+        overview: 'Việt Nam là vùng lưu hành dịch tễ cao của viêm gan B. Lây truyền chu sinh từ mẹ sang con có tới 90% nguy cơ trở thành viêm gan mạn tính, trong khi lây ở tuổi trưởng thành chỉ có 5% mạn tính.',
+        pearlPreview: 'Tiêm vắc-xin viêm gan B liều sơ sinh trong 24 giờ đầu sau sinh là biện pháp phòng lây truyền mẹ-con hiệu quả nhất (>95%).',
+        highYieldStats: ['Lây chu sinh mạn tính 90%', 'Thuốc DAA trị khỏi HCV 98%', 'Tầm soát HCC định kỳ'],
+        tags: ['Viêm gan B', 'Viêm gan C', 'HBV', 'HCV', 'K Gan HCC']
+      },
+      {
+        id: 'dth-hpylori',
+        code: 'DTH-HP',
+        icd: 'ICD-10: K25–K29',
+        specialtyId: 'epi-tieu-hoa',
+        title: 'Dịch Tễ Học Nhiễm Helicobacter Pylori & Bệnh Dạ Dày',
+        hasFullArticle: false,
+        keyMetric: 'Tỷ lệ nhiễm cộng đồng VN: ~70% • Tác nhân sinh ung nhóm 1',
+        vectorOrCause: 'Đường phân - miệng & miệng - miệng trong gia đình',
+        icon: 'fa-bacterium',
+        color: '#b45309',
+        bgColor: 'rgba(180, 83, 9, 0.12)',
+        overview: 'IARC xếp H. pylori vào nhóm tác nhân sinh ung thư loại 1 đối với ung thư biểu mô tuyến dạ dày và u lympho MALT. Dịch tễ học phản ánh điều kiện vệ sinh, thói quen ăn uống chung bát đũa và gia đình đông người.',
+        pearlPreview: 'Tiệt trừ H. pylori thành công trước khi xuất hiện dị sản ruột/teo niêm mạc làm giảm đáng kể nguy cơ ung thư dạ dày.',
+        highYieldStats: ['Sinh ung thư IARC Nhóm 1', 'MALT Lymphoma', 'Tỷ lệ kháng Clarithromycin cao'],
+        tags: ['H. pylori', 'Dạ dày', 'Ung thư dạ dày', 'MALT', 'Viêm loét']
+      },
+      {
+        id: 'dth-colorectal-cancer',
+        code: 'DTH-CRC',
+        icd: 'ICD-10: C18–C20',
+        specialtyId: 'epi-tieu-hoa',
+        title: 'Dịch Tễ Học Ung Thư Đại Trực Tràng (Colorectal Cancer - CRC)',
+        hasFullArticle: false,
+        keyMetric: 'Ung thư phổ biến #3 toàn cầu • Đang trẻ hóa dưới 50 tuổi',
+        vectorOrCause: 'Chế độ ăn nhiều thịt đỏ/thịt chế biến, Ít chất xơ, Béo phì, Gen FAP/Lynch',
+        icon: 'fa-disease',
+        color: '#92400e',
+        bgColor: 'rgba(146, 64, 14, 0.12)',
+        overview: 'Chuyển đổi dịch tễ học dinh dưỡng: Các quốc gia đang phát triển ghi nhận tỷ lệ mắc CRC tăng nhanh do Tây hóa chế độ ăn. Sàng lọc sớm bằng xét nghiệm máu ẩn trong phân (FIT/FOBT) và nội soi đại tràng giúp giảm tử vong tới 50%.',
+        pearlPreview: 'Hầu hết ung thư đại trực tràng bắt nguồn từ polyp tuyến (Adenoma) qua chuỗi 10-15 năm, là cơ hội vàng để sàng lọc cắt bỏ.',
+        highYieldStats: ['Sàng lọc từ 45 tuổi', 'Nội soi định kỳ 10 năm', 'Hội chứng Lynch'],
+        tags: ['Ung thư đại tràng', 'CRC', 'FIT/FOBT', 'Polyp tuyến', 'Lynch']
+      }
+    ]
   },
   {
-    id: 'dth-thuy-dau',
-    code: 'DTH-VARICELLA',
-    icd: 'ICD-10: B01–B02',
-    title: 'Dịch Tễ Học Bệnh Thủy Đậu (Varicella / VZV)',
-    slug: 'dth-thuy-dau',
-    vector: 'Đường hô hấp & Giọt bắn',
-    icon: 'fa-shield-virus',
-    color: '#8b5cf6',
-    bgColor: 'rgba(139, 92, 246, 0.12)',
-    overview: 'Sự tương phản sâu sắc ôn đới vs nhiệt đới, tỷ lệ tử vong chữ U (gấp 23–29 lần ở người lớn), kỷ nguyên vắc-xin 1-liều/2-liều, rủi ro dịch chuyển tuổi khi độ bao phủ thấp dưới 80% (WHO).',
-    pearlsCount: 3,
-    pearlPreview: 'Bao phủ vắc-xin <80% đẩy lùi tuổi mắc bệnh sang người lớn, làm tăng ca nặng và tử vong chung.',
-    readTime: '14 phút đọc',
-    tags: ['VZV', 'Varicella', 'Vaccine', 'R0 ≈ 10-12', 'Tuổi mắc']
+    id: 'epi-than-tiet-nieu',
+    name: '5. Thận - Tiết Niệu',
+    shortName: 'Thận - Tiết niệu',
+    icon: 'fa-filter',
+    color: '#2563eb',
+    bgColor: 'rgba(37, 99, 235, 0.12)',
+    description: 'Dịch tễ học bệnh thận mạn, gánh nặng lọc máu chu kỳ, tổn thương thận cấp ICU và dịch tễ sỏi niệu vùng Đông Nam Á.',
+    items: [
+      {
+        id: 'dth-ckd',
+        code: 'DTH-CKD',
+        icd: 'ICD-10: N18',
+        specialtyId: 'epi-than-tiet-nieu',
+        title: 'Dịch Tễ Học Bệnh Thận Mạn (Chronic Kidney Disease - CKD)',
+        hasFullArticle: false,
+        keyMetric: 'Prevalence toàn cầu: ~10–13% (>850 triệu người)',
+        vectorOrCause: 'Đái tháo đường (~40%) & Tăng huyết áp (~30%)',
+        icon: 'fa-filter',
+        color: '#2563eb',
+        bgColor: 'rgba(37, 99, 235, 0.12)',
+        overview: 'Căn bệnh mạn tính gây tổn hao chi phí bảo hiểm y tế khổng lồ qua lọc máu và ghép thận. Bệnh nhân CKD có nguy cơ tử vong do biến cố tim mạch cao gấp 10-20 lần so với nguy cơ tiến triển đến lọc máu.',
+        pearlPreview: 'Bệnh nhân CKD giai đoạn sớm phần lớn tử vong vì biến cố tim mạch trước khi kịp tiến triển sang suy thận giai đoạn cuối.',
+        highYieldStats: ['Tử vong tim mạch là nguyên nhân chính', 'Albumin niệu là chỉ điểm độc lập', 'SGLT2i làm chậm suy thận'],
+        tags: ['Bệnh thận mạn', 'CKD', 'ESRD', 'Lọc máu', 'Albumin niệu']
+      },
+      {
+        id: 'dth-aki',
+        code: 'DTH-AKI',
+        icd: 'ICD-10: N17',
+        specialtyId: 'epi-than-tiet-nieu',
+        title: 'Dịch Tễ Học Tổn Thương Thận Cấp (Acute Kidney Injury - AKI)',
+        hasFullArticle: false,
+        keyMetric: 'Tần suất tại ICU: 30–50% • Tăng tỷ lệ tử vong nội viện gấp 3-5 lần',
+        vectorOrCause: 'Nhiễm trùng huyết (Sepsis), Thuốc độc thận & Giảm tưới máu',
+        icon: 'fa-triangle-exclamation',
+        color: '#1d4ed8',
+        bgColor: 'rgba(29, 78, 216, 0.12)',
+        overview: 'Một biến chứng lâm sàng thường gặp ở bệnh nhân nặng nằm viện. Nghiên cứu dịch tễ KDIGO chứng minh dù chức năng thận hồi phục sau AKI, bệnh nhân vẫn có nguy cơ cao tiến triển thành CKD và suy thận mạn tính trong tương lai.',
+        pearlPreview: 'AKI không phải là biến cố thoáng qua: 1 đợt AKI làm tăng gấp 3 lần nguy cơ phát triển CKD mới trong 5 năm sau đó.',
+        highYieldStats: ['Tiêu chuẩn KDIGO', 'Sepsis chiếm 50% nguyên nhân ICU', 'Nguy cơ chuyển dạng sang CKD'],
+        tags: ['AKI', 'Tổn thương thận cấp', 'KDIGO', 'Sepsis', 'ICU']
+      },
+      {
+        id: 'dth-urolithiasis',
+        code: 'DTH-URO',
+        icd: 'ICD-10: N20',
+        specialtyId: 'epi-than-tiet-nieu',
+        title: 'Dịch Tễ Học Sỏi Tiết Niệu (Urolithiasis / Stone Belt)',
+        hasFullArticle: false,
+        keyMetric: 'Prevalence tại VN: 10–12% • Tỷ lệ tái phát 5 năm: ~50%',
+        vectorOrCause: 'Khí hậu nóng ẩm, Mất nước mồ hôi, Chế độ ăn nhiều đạm/muối',
+        icon: 'fa-gem',
+        color: '#1e40af',
+        bgColor: 'rgba(30, 64, 175, 0.12)',
+        overview: 'Việt Nam nằm trọn trong "Vành đai sỏi" (Stone Belt) thế giới do khí hậu nhiệt đới gió mùa gây mất nước qua mồ hôi, dẫn đến cô đặc nước tiểu và tăng bão hòa tinh thể Canxi Oxalat.',
+        pearlPreview: 'Uống đủ nước để duy trì lượng nước tiểu ≥ 2.5 lít/ngày là can thiệp dịch tễ hiệu quả nhất để giảm 50% nguy cơ tái phát sỏi.',
+        highYieldStats: ['Stone Belt Đông Nam Á', 'Sỏi Canxi Oxalat chiếm 80%', 'Tái phát 50% sau 5 năm'],
+        tags: ['Sỏi thận', 'Sỏi tiết niệu', 'Stone Belt', 'Canxi Oxalat', 'Tái phát']
+      }
+    ]
+  },
+  {
+    id: 'epi-noi-tiet',
+    name: '6. Nội Tiết & Chuyển Hóa',
+    shortName: 'Nội tiết & Chuyển hóa',
+    icon: 'fa-dna',
+    color: '#7c3aed',
+    bgColor: 'rgba(124, 58, 237, 0.12)',
+    description: 'Đại dịch đái tháo đường Type 2, béo phì, hội chứng chuyển hóa và các ngưỡng chuẩn BMI dành riêng cho người châu Á.',
+    items: [
+      {
+        id: 'dth-diabetes',
+        code: 'DTH-T2D',
+        icd: 'ICD-10: E11',
+        specialtyId: 'epi-noi-tiet',
+        title: 'Dịch Tễ Học Đái Tháo Đường Type 2 (T2DM)',
+        hasFullArticle: false,
+        keyMetric: 'IDF Atlas: 537M người lớn • Tỷ lệ chưa chẩn đoán: ~50%',
+        vectorOrCause: 'Kháng Insulin, Đô thị hóa, Ít vận động, Dinh dưỡng dư thừa năng lượng',
+        icon: 'fa-cubes-stacked',
+        color: '#7c3aed',
+        bgColor: 'rgba(124, 58, 237, 0.12)',
+        overview: 'Đại dịch bệnh không lây nhiễm của thế kỷ 21. Người châu Á có xu hướng mắc ĐTĐ ở độ tuổi trẻ hơn và mức BMI thấp hơn so với người da trắng do tích lũy nhiều mỡ nội tạng (Hiện tượng MONW - Mỏng bên ngoài, mỡ bên trong).',
+        pearlPreview: 'Tại thời điểm chẩn đoán ĐTĐ Type 2, khoảng 50% tế bào beta tụy đã mất chức năng và biến chứng mạch máu đã âm thầm xuất hiện.',
+        highYieldStats: ['IDF Diabetes Atlas', 'Phenotype người châu Á', 'Biến chứng vi mạch & mạch lớn'],
+        tags: ['Đái tháo đường', 'T2DM', 'Kháng Insulin', 'IDF Atlas', 'HbA1c']
+      },
+      {
+        id: 'dth-obesity-metabolic',
+        code: 'DTH-OBE',
+        icd: 'ICD-10: E66',
+        specialtyId: 'epi-noi-tiet',
+        title: 'Dịch Tễ Học Béo Phì & Hội Chứng Chuyển Hóa',
+        hasFullArticle: false,
+        keyMetric: 'Ngưỡng BMI châu Á (WHO WPRO): Thừa cân ≥ 23, Béo phì ≥ 25 kg/m²',
+        vectorOrCause: 'Mất cân bằng năng lượng nạp/tiêu, Thực phẩm siêu chế biến, Môi trường tạo béo (Obesogenic)',
+        icon: 'fa-weight-scale',
+        color: '#6d28d9',
+        bgColor: 'rgba(109, 40, 217, 0.12)',
+        overview: 'Béo phì được WHO công nhận là bệnh lý mạn tính phức tạp, không đơn thuần là vấn đề thẩm mỹ. Tiêu chuẩn chẩn đoán béo phì cho người châu Á hạ thấp hơn phương Tây (BMI ≥ 25 kg/m²) do nguy cơ tim mạch và ĐTĐ xuất hiện ở ngưỡng BMI thấp hơn.',
+        pearlPreview: 'Vòng eo là chỉ số phản ánh mỡ nội tạng chính xác hơn BMI (Ngưỡng nguy cơ châu Á: Nam ≥ 90 cm, Nữ ≥ 80 cm).',
+        highYieldStats: ['Ngưỡng BMI WPRO ≥ 23 & 25', 'Vòng eo cảnh báo', 'Thực phẩm siêu chế biến'],
+        tags: ['Béo phì', 'Hội chứng chuyển hóa', 'BMI châu Á', 'Vòng eo', 'Mỡ nội tạng']
+      }
+    ]
+  },
+  {
+    id: 'epi-ung-buou',
+    name: '7. Ung Bướu & Dịch Tễ Môi Trường',
+    shortName: 'Ung bướu & Môi trường',
+    icon: 'fa-ribbon',
+    color: '#db2777',
+    bgColor: 'rgba(219, 39, 119, 0.12)',
+    description: 'Số liệu GLOBOCAN, dịch tễ học ung thư phổ biến, phơi nhiễm hóa chất nghề nghiệp, amiăng và phòng ngừa bằng vắc-xin.',
+    items: [
+      {
+        id: 'dth-cervical-cancer',
+        code: 'DTH-CXCA',
+        icd: 'ICD-10: C53',
+        specialtyId: 'epi-ung-buou',
+        title: 'Dịch Tễ Học Ung Thư Cổ Tử Cung (Cervical Cancer)',
+        hasFullArticle: false,
+        keyMetric: 'Chiến lược WHO 90-70-90 • PAF do virus HPV: > 99%',
+        vectorOrCause: 'Nhiễm dai dẳng các type HPV nguy cơ cao (Type 16, 18)',
+        icon: 'fa-venus',
+        color: '#db2777',
+        bgColor: 'rgba(219, 39, 119, 0.12)',
+        overview: 'Một trong những loại ung thư hiếm hoi có thể loại trừ hoàn toàn nhờ vắc-xin HPV và sàng lọc định kỳ. Hai type HPV 16 và 18 chịu trách nhiệm cho hơn 70% các ca ung thư cổ tử cung toàn cầu.',
+        pearlPreview: 'Ung thư cổ tử cung hoàn toàn có thể ngăn ngừa được nhờ kết hợp tiêm vắc-xin HPV cho trẻ vị thành niên và sàng lọc HPV DNA định kỳ.',
+        highYieldStats: ['HPV 16 & 18 chiếm >70%', 'Mục tiêu loại trừ WHO 2030', 'Vắc-xin 9 giá HPV'],
+        tags: ['Ung thư cổ tử cung', 'HPV', 'Vaccine HPV', 'Pap smear', 'WHO 90-70-90']
+      },
+      {
+        id: 'dth-breast-cancer',
+        code: 'DTH-BRCA',
+        icd: 'ICD-10: C50',
+        specialtyId: 'epi-ung-buou',
+        title: 'Dịch Tễ Học Ung Thư Vú (Breast Cancer)',
+        hasFullArticle: false,
+        keyMetric: 'Ung thư phổ biến #1 ở nữ giới • GLOBOCAN: 2.3M ca mới/năm',
+        vectorOrCause: 'Đột biến BRCA1/2, Phơi nhiễm Estrogen kéo dài (Kinh sớm, Mãn muộn, Không sinh con)',
+        icon: 'fa-ribbon',
+        color: '#ec4899',
+        bgColor: 'rgba(236, 72, 153, 0.12)',
+        overview: 'Ung thư có số ca mắc mới hàng đầu ở nữ giới. Dịch tễ học phân biệt rõ nhóm nguy cơ di truyền gia đình (BRCA1/BRCA2) và nhóm nguy cơ liên quan đến thời gian tiếp xúc nội tiết tố nữ estrogen.',
+        pearlPreview: 'Sàng lọc bằng chụp X-quang tuyến vú (Mammography) định kỳ từ 40-50 tuổi giúp phát hiện giai đoạn sớm và giảm 20-30% tỷ lệ tử vong.',
+        highYieldStats: ['Mammography sàng lọc', 'Gen BRCA1 & BRCA2', 'GLOBOCAN #1 nữ'],
+        tags: ['Ung thư vú', 'BRCA1', 'Mammography', 'GLOBOCAN', 'Estrogen']
+      },
+      {
+        id: 'dth-lung-cancer',
+        code: 'DTH-LUNG',
+        icd: 'ICD-10: C34',
+        specialtyId: 'epi-ung-buou',
+        title: 'Dịch Tễ Học Ung Thư Phổi (Lung Cancer)',
+        hasFullArticle: false,
+        keyMetric: 'Nguyên nhân tử vong do ung thư #1 • PAF do Thuốc lá: 85%',
+        vectorOrCause: 'Hút thuốc lá chủ động/thụ động, Khí Radon, Phơi nhiễm Amiăng (Asbestos)',
+        icon: 'fa-lungs-virus',
+        color: '#be185d',
+        bgColor: 'rgba(190, 24, 93, 0.12)',
+        overview: 'Mối liên hệ kinh điển giữa thuốc lá và ung thư phổi trong nghiên cứu bác sĩ Anh quốc của Doll & Hill. Phân loại dịch tễ Ung thư phổi không tế bào nhỏ (NSCLC ~85%) vs Ung thư phổi tế bào nhỏ (SCLC ~15% - liên quan chặt chẽ với thuốc lá).',
+        pearlPreview: 'Sàng lọc bằng CT liều thấp (LDCT) hàng năm ở người hút thuốc lá nặng (≥20 bao-năm, 50-80 tuổi) giúp giảm 20% tử vong (NLST Trial).',
+        highYieldStats: ['Doll & Hill Study', 'CT liều thấp LDCT', 'Amiăng & Mesothelioma'],
+        tags: ['Ung thư phổi', 'Thuốc lá', 'LDCT', 'Doll & Hill', 'Amiăng']
+      }
+    ]
+  },
+  {
+    id: 'epi-than-kinh',
+    name: '8. Thần Kinh & Sức Khỏe Tâm Thần',
+    shortName: 'Thần kinh & Tâm thần',
+    icon: 'fa-brain',
+    color: '#059669',
+    bgColor: 'rgba(5, 150, 105, 0.12)',
+    description: 'Dịch tễ học bệnh Alzheimer, sa sút trí tuệ trong già hóa dân số, trầm cảm, lo âu và khoảng trống điều trị sức khỏe tâm thần.',
+    items: [
+      {
+        id: 'dth-dementia',
+        code: 'DTH-DEM',
+        icd: 'ICD-10: G30, F00–F03',
+        specialtyId: 'epi-than-kinh',
+        title: 'Dịch Tễ Học Sa Sút Trí Tuệ & Bệnh Alzheimer (Dementia)',
+        hasFullArticle: false,
+        keyMetric: '> 55 triệu người mắc • Cứ 3 giây có thêm 1 ca mắc mới toàn cầu',
+        vectorOrCause: 'Tuổi cao, Gen ApoE-ε4, Tăng HA, ĐTĐ, Mất thính lực chưa can thiệp & Lối sống',
+        icon: 'fa-brain',
+        color: '#059669',
+        bgColor: 'rgba(5, 150, 105, 0.12)',
+        overview: 'Ủy ban Lancet Commission xác định 12 yếu tố nguy cơ có thể thay đổi (Modifiable Risk Factors) chiếm tới 40% các trường hợp sa sút trí tuệ toàn cầu (Mất thính lực, Ít học vấn, Hút thuốc, Trầm cảm, Ít vận động, ĐTĐ, Cô lập xã hội...).',
+        pearlPreview: 'Can thiệp sớm điều chỉnh 12 yếu tố nguy cơ tim mạch và lối sống có thể ngăn ngừa hoặc trì hoãn tới 40% các ca sa sút trí tuệ.',
+        highYieldStats: ['Lancet Commission 12 Yếu tố', 'ApoE-ε4 Gene', 'Già hóa dân số'],
+        tags: ['Sa sút trí tuệ', 'Alzheimer', 'Lancet Commission', 'ApoE', 'Tuổi già']
+      },
+      {
+        id: 'dth-depression',
+        code: 'DTH-DEP',
+        icd: 'ICD-10: F32–F33',
+        specialtyId: 'epi-than-kinh',
+        title: 'Dịch Tễ Học Rối Loạn Trầm Cảm Chủ Yếu (Major Depressive Disorder - MDD)',
+        hasFullArticle: false,
+        keyMetric: 'Gánh nặng tàn phế YLD #1 • Khoảng trống điều trị > 75% ở nước nghèo',
+        vectorOrCause: 'Stress mạn tính, Chấn thương tâm lý thời thơ ấu, Yếu tố di truyền & Bệnh mạn tính',
+        icon: 'fa-head-side-virus',
+        color: '#047857',
+        bgColor: 'rgba(4, 120, 87, 0.12)',
+        overview: 'Trầm cảm là nguyên nhân hàng đầu gây mất số năm sống với bệnh tật (YLD) trên toàn thế giới. Tỷ lệ mắc ở phụ nữ cao gấp đôi nam giới. Sự kỳ thị (Stigma) và thiếu nhân lực tâm thần tạo nên khoảng trống điều trị khổng lồ.',
+        pearlPreview: 'Trầm cảm làm tăng gấp 2 lần nguy cơ mắc bệnh mạch vành và làm tăng tỷ lệ tử vong sau nhồi máu cơ tim.',
+        highYieldStats: ['YLDs hàng đầu toàn cầu', 'Nữ mắc gấp 2 lần nam', 'Khoảng trống điều trị >75%'],
+        tags: ['Trầm cảm', 'MDD', 'YLDs', 'Sức khỏe tâm thần', 'Stigma']
+      }
+    ]
+  },
+  {
+    id: 'epi-nhi-san',
+    name: '9. Sức Khỏe Mẹ & Bé / Nhi Khoa',
+    shortName: 'Mẹ & Bé / Nhi khoa',
+    icon: 'fa-baby',
+    color: '#0891b2',
+    bgColor: 'rgba(8, 145, 178, 0.12)',
+    description: 'Chỉ số tử vong sơ sinh/chu sinh theo chuẩn SDG 3.2, dự phòng dị tật ống thần kinh bằng Acid Folic và dịch tễ học dinh dưỡng 1000 ngày đầu đời.',
+    items: [
+      {
+        id: 'dth-neonatal-mortality',
+        code: 'DTH-NEO',
+        icd: 'ICD-10: P00–P96',
+        specialtyId: 'epi-nhi-san',
+        title: 'Dịch Tễ Học Tử Vong Sơ Sinh & Chu Sinh (Neonatal Mortality)',
+        hasFullArticle: false,
+        keyMetric: 'Tử vong sơ sinh chiếm ~47% tổng tử vong trẻ dưới 5 tuổi (SDG 3.2)',
+        vectorOrCause: 'Đẻ non (Preterm), Ngạt chu sinh & Nhiễm khuẩn sơ sinh',
+        icon: 'fa-baby',
+        color: '#0891b2',
+        bgColor: 'rgba(8, 145, 178, 0.12)',
+        overview: 'Thước đo nhạy cảm nhất phản ánh chất lượng hệ thống chăm sóc y tế một quốc gia. 3 nhóm nguyên nhân chính (Sinh non/Nhẹ cân, Ngạt/Chấn thương sản khoa, và Nhiễm khuẩn sơ sinh) chiếm hơn 80% các ca tử vong trong 28 ngày đầu đời.',
+        pearlPreview: 'Chăm sóc Kangaroo (KMC) và bú sữa mẹ hoàn toàn sớm giúp giảm tới 40% tỷ lệ tử vong ở trẻ sơ sinh đẻ non và nhẹ cân.',
+        highYieldStats: ['SDG 3.2 < 12/1000', '28 ngày đầu đời quan trọng nhất', 'Chăm sóc Kangaroo KMC'],
+        tags: ['Tử vong sơ sinh', 'Sinh non', 'SDG 3.2', 'KMC', 'Chu sinh']
+      },
+      {
+        id: 'dth-neural-tube-defects',
+        code: 'DTH-NTD',
+        icd: 'ICD-10: Q00–Q07',
+        specialtyId: 'epi-nhi-san',
+        title: 'Dịch Tễ Học Dị Tật Ống Thần Kinh & Dự Phòng Acid Folic (NTDs)',
+        hasFullArticle: false,
+        keyMetric: 'Bổ sung Acid Folic quanh thụ thai giảm > 70% nguy cơ NTD',
+        vectorOrCause: 'Thiếu hụt Folate thời kỳ phôi thai (Đóng ống thần kinh ngày thứ 28)',
+        icon: 'fa-shield-halved',
+        color: '#0e7490',
+        bgColor: 'rgba(14, 116, 144, 0.12)',
+        overview: 'Một trong những thành tựu can thiệp dịch tễ học dinh dưỡng vĩ đại nhất lịch sử y tế công cộng. Chiến lược bổ sung Acid Folic 400 mcg/ngày trước khi thụ thai ít nhất 1 tháng và vi chất hóa thực phẩm đã giảm mạnh tỷ lệ vô sọ và tật nứt đốt sống.',
+        pearlPreview: 'Ống thần kinh đóng hoàn toàn vào ngày thứ 28 sau thụ thai, khi người phụ nữ thường chưa biết mình mang thai, vì vậy bổ sung Folate phải tiến hành TRƯỚC KHI mang thai.',
+        highYieldStats: ['Folate 400 mcg/ngày', 'Đóng ống thần kinh ngày 28', 'Giảm > 70% nguy cơ'],
+        tags: ['Dị tật bẩm sinh', 'Ống thần kinh', 'Acid Folic', 'Nứt đốt sống', 'Dự phòng']
+      },
+      {
+        id: 'dth-child-stunting',
+        code: 'DTH-STU',
+        icd: 'ICD-10: E40–E46',
+        specialtyId: 'epi-nhi-san',
+        title: 'Dịch Tễ Học Suy Dinh Dưỡng Thể Thấp Còi (Childhood Stunting)',
+        hasFullArticle: false,
+        keyMetric: 'Tỷ lệ thấp còi tại VN: ~18–19% • Cửa sổ vàng 1000 ngày đầu đời',
+        vectorOrCause: 'Dinh dưỡng nghèo nàn trong thai kỳ, Bú mẹ không đúng cách, Nhiễm trùng tái diễn',
+        icon: 'fa-ruler-vertical',
+        color: '#155e75',
+        bgColor: 'rgba(21, 94, 117, 0.12)',
+        overview: 'Thấp còi phản ánh suy dinh dưỡng mạn tính tích lũy. Tổn thương thể chất và phát triển nhận thức não bộ trong "Cửa sổ 1000 ngày đầu đời" (từ khi thụ thai đến 2 tuổi) là không thể đảo ngược nếu không can thiệp kịp thời.',
+        pearlPreview: 'Can thiệp dinh dưỡng sau 2 tuổi không thể phục hồi hoàn toàn chiều cao tiềm năng và sự phát triển trí não bị tổn thương do thấp còi.',
+        highYieldStats: ['1000 ngày đầu đời', 'Không thể đảo ngược sau 2 tuổi', 'Thiếu vi chất Sắt/Kẽm'],
+        tags: ['Thấp còi', 'Suy dinh dưỡng', '1000 ngày đầu đời', 'Stunting', 'Vi chất']
+      }
+    ]
   }
 ];
 
 export function renderEpidemiologyView(): string {
+  // Tính tổng số bài
+  const totalItemsCount = EPIDEMIOLOGY_SPECIALTY_SECTIONS.reduce((acc, sec) => acc + sec.items.length, 0);
+
   return `
     <div class="promax-wrapper" id="mainContent">
 
@@ -95,44 +644,44 @@ export function renderEpidemiologyView(): string {
       <div class="breadcrumb" style="font-size: 0.85rem; color: var(--color-text-muted, #64748b); margin-bottom: 1.25rem;">
         <a href="#/" style="color: inherit; text-decoration: none;">🏠 Trang chủ</a> &nbsp;/&nbsp; 
         <a href="#/basic-medical" style="color: inherit; text-decoration: none;">Basic Medical Sciences</a> &nbsp;/&nbsp; 
-        <span style="color: #0d9488; font-weight: 600;">Dịch Tễ Học Y Khoa & Y Tế Công Cộng (DTH - YTCC)</span>
+        <span style="color: #0d9488; font-weight: 600;">Dịch Tễ Học Y Khoa Theo Chuyên Khoa (DTH - YTCC)</span>
       </div>
 
       <!-- PROMAX LUXURY HERO SECTION (SURVEILLANCE THEME) -->
-      <section class="promax-hero hero-epi-theme" aria-labelledby="hero-title">
+      <section class="promax-hero hero-epi-theme" aria-labelledby="hero-title" style="margin-bottom: 1.25rem;">
         <div class="promax-hero-grid">
           <div>
             <div class="epi-badge-pulse">
               <span class="pulse-dot" style="background: #2dd4bf;"></span>
-              <span>Epidemiological Surveillance & Evidence-Based Public Health • CDC & WHO Standards</span>
+              <span>Epidemiological Surveillance & Clinical Specialty Matrix • CDC & WHO Standards</span>
             </div>
             <h1 id="hero-title" class="promax-hero-title">
-              🦠 DỊCH TỄ HỌC & Y TẾ CÔNG CỘNG
+              🦠 DỊCH TỄ HỌC LÂM SÀNG THEO CHUYÊN KHOA
             </h1>
             <p class="promax-hero-desc">
-              Hệ thống hóa phương pháp luận dịch tễ học, thiết kế nghiên cứu quan sát và can thiệp, đo lường nguy cơ (RR, OR, AR), đánh giá test chẩn đoán (Se, Sp, PPV, NPV, LR), điều tra dập dịch thực địa và chuyên khảo dịch tễ các bệnh lý truyền nhiễm trọng điểm.
+              Hệ thống hóa dịch tễ học bệnh tật theo 9 chuyên khoa lâm sàng: tỷ suất mới mắc (Incidence), hiện mắc (Prevalence), gánh nặng DALYs, động học lây truyền R0, tỷ phần quy thuộc (PAF) và chiến lược can thiệp y tế công cộng bằng chứng EBM.
             </p>
 
             <!-- KPI Metric Bar -->
             <div class="promax-kpi-bar">
               <div class="promax-kpi-pill">
-                <i class="fa-solid fa-chart-pie" style="font-size: 1.1rem; color: #2dd4bf;"></i>
+                <i class="fa-solid fa-hospital" style="font-size: 1.1rem; color: #2dd4bf;"></i>
                 <div>
-                  <div class="promax-kpi-num">6 Khối</div>
-                  <div class="promax-kpi-lbl">Chuyên Đề Cốt Lõi</div>
+                  <div class="promax-kpi-num">9</div>
+                  <div class="promax-kpi-lbl">Chuyên Khoa</div>
                 </div>
               </div>
               <div class="promax-kpi-pill">
                 <i class="fa-solid fa-book-medical" style="font-size: 1.1rem; color: #38bdf8;"></i>
                 <div>
-                  <div class="promax-kpi-num">28 Bài</div>
-                  <div class="promax-kpi-lbl">Bài Học & Bệnh Lý</div>
+                  <div class="promax-kpi-num">${totalItemsCount}+</div>
+                  <div class="promax-kpi-lbl">Dịch Tễ Bệnh Học</div>
                 </div>
               </div>
               <div class="promax-kpi-pill">
                 <i class="fa-solid fa-lightbulb" style="font-size: 1.1rem; color: #fbbf24;"></i>
                 <div>
-                  <div class="promax-kpi-num">105+</div>
+                  <div class="promax-kpi-num">120+</div>
                   <div class="promax-kpi-lbl">Clinical Pearls</div>
                 </div>
               </div>
@@ -140,7 +689,7 @@ export function renderEpidemiologyView(): string {
                 <i class="fa-solid fa-calculator" style="font-size: 1.1rem; color: #a78bfa;"></i>
                 <div>
                   <div class="promax-kpi-num">4 Studio</div>
-                  <div class="promax-kpi-lbl">Công Cụ Tương Tác</div>
+                  <div class="promax-kpi-lbl">Bộ Công Cụ Quyết Định</div>
                 </div>
               </div>
             </div>
@@ -152,10 +701,8 @@ export function renderEpidemiologyView(): string {
               <circle cx="60" cy="60" r="50" stroke="rgba(45, 212, 191, 0.25)" stroke-width="2" stroke-dasharray="4 4"/>
               <circle cx="60" cy="60" r="32" stroke="rgba(45, 212, 191, 0.4)" stroke-width="2"/>
               <circle cx="60" cy="60" r="16" stroke="#2dd4bf" stroke-width="2"/>
-              <!-- Crosshairs -->
               <line x1="60" y1="5" x2="60" y2="115" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
               <line x1="5" y1="60" x2="115" y2="60" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-              <!-- Outbreak Epicurve Line -->
               <path d="M15 95 Q 40 90, 50 40 T 75 75 T 105 95" stroke="#fbbf24" stroke-width="3.5" fill="none" stroke-linecap="round"/>
               <circle cx="50" cy="40" r="5.5" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>
               <circle cx="75" cy="75" r="4.5" fill="#fbbf24" stroke="#ffffff" stroke-width="1.5"/>
@@ -166,50 +713,43 @@ export function renderEpidemiologyView(): string {
         </div>
       </section>
 
-      <!-- PROMAX BENTO ACTION GRID (4 CÔNG CỤ DỊCH TỄ TƯƠNG TÁC CAO CẤP) -->
-      <section class="promax-bento-grid">
-        <a href="#/basic-medical/epidemiology/matrix-solver" class="promax-bento-card" style="--bento-color: #0d9488; --bento-bg: rgba(13, 148, 136, 0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-table-cells"></i></div>
-          <div>
-            <span class="promax-bento-tag">Interactive Analytics</span>
-            <h4 class="promax-bento-title">Bộ Giải Ma Trận 2×2</h4>
-            <p class="promax-bento-desc">Tính tức thì RR, OR, AR, PAF, Se, Sp, PPV, NPV, LR+, LR- & NNT/NNH.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/epidemiology/epicurve" class="promax-bento-card" style="--bento-color: #f59e0b; --bento-bg: rgba(245, 158, 11, 0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-chart-area"></i></div>
-          <div>
-            <span class="promax-bento-tag">Outbreak Simulator</span>
-            <h4 class="promax-bento-title">Đường Cong Dịch Tễ (Epicurve)</h4>
-            <p class="promax-bento-desc">Phân biệt Ổ dịch điểm, Nguồn liên tục và Lan tỏa người sang người.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/epidemiology/study-designs" class="promax-bento-card" style="--bento-color: #3b82f6; --bento-bg: rgba(59, 130, 246, 0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-sitemap"></i></div>
-          <div>
-            <span class="promax-bento-tag">Design Comparator</span>
-            <h4 class="promax-bento-title">Ma Trận Thiết Kế Nghiên Cứu</h4>
-            <p class="promax-bento-desc">So sánh RCT, Cohort, Case-Control, Cross-Sectional & Ecological.</p>
-          </div>
-        </a>
-
-        <a href="#/basic-medical/epidemiology/bradford-hill" class="promax-bento-card" style="--bento-color: #8b5cf6; --bento-bg: rgba(139, 92, 246, 0.1);">
-          <div class="promax-bento-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-          <div>
-            <span class="promax-bento-tag">Causality Framework</span>
-            <h4 class="promax-bento-title">9 Tiêu Chuẩn Bradford Hill</h4>
-            <p class="promax-bento-desc">Bộ khung thẩm định mối quan hệ Nhân - Quả y học chuẩn mực.</p>
-          </div>
-        </a>
-      </section>
+      <!-- ========================================================================= -->
+      <!-- COMPACT ISOLATED TOOLKIT SUITE (GÓC CÔNG CỤ DỊCH TỄ TINH GỌN - KHÔNG CHEN VÀO CHUYÊN KHOA) -->
+      <!-- ========================================================================= -->
+      <div class="epi-compact-toolkit-bar" aria-label="Bộ công cụ dịch tễ học tương tác">
+        <div class="epi-toolkit-badge">
+          <i class="fa-solid fa-toolbox" style="color: #0d9488; font-size: 1rem;"></i>
+          <span>Bộ Công Cụ Hỗ Trợ Dịch Tễ:</span>
+        </div>
+        <div class="epi-toolkit-pills">
+          <a href="#/basic-medical/epidemiology/matrix-solver" class="epi-tool-pill-btn tool-matrix" title="Bộ giải ma trận 2x2 tính RR, OR, Se, Sp, LR">
+            <i class="fa-solid fa-table-cells" style="color: #0d9488;"></i>
+            <span>Bộ Giải Ma Trận 2×2</span>
+          </a>
+          <a href="#/basic-medical/epidemiology/epicurve" class="epi-tool-pill-btn tool-epicurve" title="Mô phỏng đường cong dịch tễ ổ dịch">
+            <i class="fa-solid fa-chart-area" style="color: #f59e0b;"></i>
+            <span>Đường Cong Dịch Tễ (Epicurve)</span>
+          </a>
+          <a href="#/basic-medical/epidemiology/study-designs" class="epi-tool-pill-btn tool-design" title="Ma trận so sánh thiết kế nghiên cứu RCT, Cohort, Case-Control">
+            <i class="fa-solid fa-sitemap" style="color: #3b82f6;"></i>
+            <span>Thiết Kế Nghiên Cứu</span>
+          </a>
+          <a href="#/basic-medical/epidemiology/bradford-hill" class="epi-tool-pill-btn tool-causality" title="9 Tiêu chuẩn Nhân - Quả Bradford Hill">
+            <i class="fa-solid fa-scale-balanced" style="color: #8b5cf6;"></i>
+            <span>9 Chuẩn Bradford Hill</span>
+          </a>
+          <button type="button" class="epi-tool-pill-btn tool-vault" onclick="window.EpiHub?.openMethodologyModal()" title="Mở kho lý thuyết 6 khối phương pháp luận & công thức">
+            <i class="fa-solid fa-book-bookmark"></i>
+            <span>6 Khối Lý Thuyết &amp; Công Thức</span>
+          </button>
+        </div>
+      </div>
 
       <!-- PROMAX TOOLBAR & SEARCH -->
       <div class="promax-toolbar">
         <div class="promax-search-wrap">
           <i class="fa-solid fa-magnifying-glass promax-search-icon"></i>
-          <input type="text" id="lesson-search" class="promax-search-input" placeholder="Tìm kiếm bài học dịch tễ học (Prevalence, Incidence, RR, OR, Se/Sp, Sốt xuất huyết, Sốt rét, Thủy đậu, Bradford Hill...)..." aria-label="Tìm kiếm chuyên đề dịch tễ">
+          <input type="text" id="lesson-search" class="promax-search-input" placeholder="Tìm kiếm dịch tễ bệnh học (Sốt xuất huyết, Sốt rét, Thủy đậu, Tăng huyết áp, Đột quỵ, ĐTĐ, COPD, Lao, K Gan, K Cổ tử cung...)..." aria-label="Tìm kiếm dịch tễ chuyên khoa">
           <span class="promax-shortcut-pill">Ctrl + K</span>
           <button id="clear-search" class="clear-search-btn" aria-label="Xóa tìm kiếm" style="display: none; position: absolute; right: 4.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--color-text-muted);">&times;</button>
         </div>
@@ -227,31 +767,20 @@ export function renderEpidemiologyView(): string {
         </div>
       </div>
 
-      <!-- DASHBOARD LAYOUT (ĐỒNG BỘ 100% VỚI HÓA SINH, SINH LÝ & CCBS) -->
+      <!-- DASHBOARD LAYOUT (ĐỒNG BỘ 100% VỚI SINH LÝ BỆNH & CƠ CHẾ BỆNH SINH) -->
       <div class="dashboard-layout">
         
-        <!-- Navigation Sidebar (Sticky) -->
-        <aside class="layout-nav-sidebar" aria-label="Danh mục khối dịch tễ">
-          <div class="nav-sidebar-sticky" id="physio-nav">
-            <h4 class="nav-sidebar-title">Khối Dịch Tễ Học</h4>
+        <!-- Navigation Sidebar (Sticky Danh Mục Chuyên Khoa) -->
+        <aside class="layout-nav-sidebar" aria-label="Danh mục chuyên khoa dịch tễ">
+          <div class="nav-sidebar-sticky" id="patho-nav">
+            <h4 class="nav-sidebar-title">Chuyên Khoa Dịch Tễ</h4>
             <ul class="part-nav-list">
-              
-              <!-- 1. DỊCH TỄ CÁC BỆNH (TOP NAVIGATION) -->
-              <li>
-                <a href="#disease-epidemiology-section" class="part-nav-item p1 active" data-target="disease-epidemiology-section">
-                  <span class="part-icon"><i class="fa-solid fa-shield-virus" style="color: #ef4444;"></i></span>
-                  <span class="part-text">Dịch Tễ Các Bệnh</span>
-                  <span class="part-count-badge" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">3</span>
-                </a>
-              </li>
-
-              <!-- 2. KHỐI 1 ĐẾN KHỐI 6 -->
-              ${EPIDEMIOLOGY_BLOCKS.map((b, idx) => `
+              ${EPIDEMIOLOGY_SPECIALTY_SECTIONS.map((sec, idx) => `
                 <li>
-                  <a href="#${b.id}-section" class="part-nav-item p${idx + 2}" data-target="${b.id}-section">
-                    <span class="part-icon"><i class="fa-solid ${b.icon}"></i></span>
-                    <span class="part-text">${b.code}. ${b.name.replace(/^Khối \d+:\s*/, '').split('&')[0].trim()}</span>
-                    <span class="part-count-badge">${EPIDEMIOLOGY_TOPICS.filter(t => t.blockId === b.id).length}</span>
+                  <a href="#${sec.id}-section" class="part-nav-item p${(idx % 9) + 1} ${idx === 0 ? 'active' : ''}" data-target="${sec.id}-section">
+                    <span class="part-icon"><i class="fa-solid ${sec.icon}"></i></span>
+                    <span class="part-text">${sec.shortName}</span>
+                    <span class="part-count-badge">${sec.items.length}</span>
                   </a>
                 </li>
               `).join('')}
@@ -265,126 +794,90 @@ export function renderEpidemiologyView(): string {
           <!-- Empty Search State -->
           <div id="empty-search-state" class="empty-search-state" style="display: none;">
             <div class="empty-search-icon">🔍</div>
-            <h3>Không tìm thấy chuyên đề dịch tễ nào</h3>
-            <p>Vui lòng thử từ khóa khác (ví dụ: Sốt xuất huyết, Sốt rét, Thủy đậu, Prevalence, Incidence, RR, OR, Se/Sp, Bradford Hill...).</p>
+            <h3>Không tìm thấy bệnh lý dịch tễ nào phù hợp</h3>
+            <p>Vui lòng thử từ khóa khác (ví dụ: Sốt xuất huyết, Sốt rét, Thủy đậu, Tăng huyết áp, Đột quỵ, Đái tháo đường, COPD, Lao, Ung thư...).</p>
           </div>
 
           <!-- ========================================================================= -->
-          <!-- PHẦN 1: DỊCH TỄ HỌC CÁC BỆNH TRUYỀN NHIỄM CỤ THỂ (ĐƯA LÊN ĐẦU TIÊN THEO YÊU CẦU) -->
+          <!-- CÁC CHUYÊN KHOA DỊCH TỄ HỌC LÂM SÀNG (TIM MẠCH, HÔ HẤP, TIÊU HÓA, THẬN...) -->
           <!-- ========================================================================= -->
-          <section id="disease-epidemiology-section" aria-labelledby="disease-epidemiology-heading" style="margin-bottom: 2rem;">
-            <div class="physio-group-container">
-              <div class="physio-group-header">
-                <span class="physio-group-icon" style="color: #ef4444; background: rgba(239, 68, 68, 0.12);">
-                  <i class="fa-solid fa-shield-virus"></i>
-                </span>
-                <div>
-                  <h3 id="disease-epidemiology-heading">Chuyên Khảo Dịch Tễ Bệnh Học Cụ Thể</h3>
-                  <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">
-                    Phân tích chuyên sâu tam giác dịch tễ học, véc-tơ truyền bệnh, động học lây truyền, cơ chế ADE/thể ngủ, gánh nặng dịch tễ &amp; phác đồ phòng chống chuẩn Bộ Y Tế &amp; WHO.
-                  </p>
-                </div>
-              </div>
-
-              <div class="specialty-grid">
-                ${DISEASE_ARTICLES.map(art => `
-                  <a href="#/basic-medical/epidemiology/article/${art.slug}" class="specialty-card" data-topic-id="${art.id}">
-                    <div class="specialty-card-top">
-                      <div class="specialty-icon" style="background: ${art.bgColor}; color: ${art.color};">
-                        <i class="fa-solid ${art.icon}"></i>
-                      </div>
-                      <div class="specialty-info">
-                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; margin-bottom: 0.25rem;">
-                          <div style="display: flex; align-items: center; gap: 0.4rem;">
-                            <span style="font-size: 0.72rem; font-weight: 700; background: ${art.bgColor}; color: ${art.color}; padding: 0.1rem 0.4rem; border-radius: 4px;">${art.code}</span>
-                            <span style="font-size: 0.7rem; font-weight: 600; color: var(--color-text-muted);">${art.icd}</span>
-                          </div>
-                          <span style="font-size: 0.72rem; color: var(--color-text-muted);"><i class="fa-solid fa-lightbulb" style="color: #f59e0b; font-size: 0.65rem;"></i> ${art.pearlsCount} Pearls</span>
-                        </div>
-                        <h3>${art.title}</h3>
-                        <p>${art.overview}</p>
-                        
-                        <div style="margin-top: 0.5rem; padding: 0.4rem 0.6rem; background: var(--color-bg, #f8fafc); border-left: 3px solid ${art.color}; border-radius: 0 6px 6px 0; font-size: 0.775rem; color: var(--color-text-muted); line-height: 1.4;">
-                          <strong style="color: ${art.color};"><i class="fa-solid fa-quote-left"></i> Pearl:</strong> ${art.pearlPreview}
-                        </div>
-
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem;">
-                          <span style="font-size: 0.7rem; background: rgba(13, 148, 136, 0.1); color: #0d9488; font-weight: 600; padding: 0.05rem 0.35rem; border-radius: 3px;">
-                            <i class="fa-solid fa-bullseye" style="font-size: 0.65rem;"></i> ${art.vector}
-                          </span>
-                          ${art.tags.slice(0, 3).map(tag => `<span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">#${tag}</span>`).join('')}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="specialty-card-action">
-                      <span><i class="fa-solid fa-book-open"></i> Đọc bài chuyên khảo</span>
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                  </a>
-                `).join('')}
-              </div>
-            </div>
-          </section>
-
-          <!-- ========================================================================= -->
-          <!-- PHẦN 2: 6 KHỐI CHUYÊN ĐỀ DỊCH TỄ HỌC CỐT LÕI (BLOCK 1 -> BLOCK 6) -->
-          <!-- ========================================================================= -->
-          ${EPIDEMIOLOGY_BLOCKS.map(block => {
-            const blockTopics = EPIDEMIOLOGY_TOPICS.filter(t => t.blockId === block.id);
-
-            return `
-              <section id="${block.id}-section" aria-labelledby="${block.id}-heading" style="margin-bottom: 2rem;">
-                <div class="physio-group-container">
-                  <div class="physio-group-header">
-                    <span class="physio-group-icon" style="color: ${block.color}; background: ${block.bgColor};">
-                      <i class="fa-solid ${block.icon}"></i>
-                    </span>
-                    <div>
-                      <h3 id="${block.id}-heading">${block.code}. ${block.name}</h3>
-                      <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">${block.description}</p>
-                    </div>
+          ${EPIDEMIOLOGY_SPECIALTY_SECTIONS.map(sec => `
+            <section id="${sec.id}-section" aria-labelledby="${sec.id}-heading" style="margin-bottom: 2rem;">
+              <div class="physio-group-container">
+                <div class="physio-group-header">
+                  <span class="physio-group-icon" style="color: ${sec.color}; background: ${sec.bgColor};">
+                    <i class="fa-solid ${sec.icon}"></i>
+                  </span>
+                  <div>
+                    <h3 id="${sec.id}-heading">${sec.name}</h3>
+                    <p style="margin: 0.15rem 0 0 0; font-size: 0.85rem; color: var(--color-text-muted, #64748b); font-weight: normal;">
+                      ${sec.description}
+                    </p>
                   </div>
+                </div>
 
-                  <div class="specialty-grid">
-                    ${blockTopics.map(topic => `
-                      <a href="javascript:void(0)" onclick="window.EpiHub?.openQuickPreview('${topic.id}')" class="specialty-card" data-topic-id="${topic.id}">
+                <div class="specialty-grid">
+                  ${sec.items.map(item => {
+                    const clickAction = item.hasFullArticle && item.slug
+                      ? `href="#/basic-medical/epidemiology/article/${item.slug}"`
+                      : `href="javascript:void(0)" onclick="window.EpiHub?.openDiseaseFactsheet('${item.id}')"`;
+
+                    return `
+                      <a ${clickAction} class="specialty-card" data-topic-id="${item.id}">
                         <div class="specialty-card-top">
-                          <div class="specialty-icon" style="background: ${block.bgColor}; color: ${block.color};">
-                            <i class="fa-solid ${block.icon}"></i>
+                          <div class="specialty-icon" style="background: ${item.bgColor}; color: ${item.color};">
+                            <i class="fa-solid ${item.icon}"></i>
                           </div>
                           <div class="specialty-info">
                             <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; margin-bottom: 0.25rem;">
-                              <span style="font-size: 0.72rem; font-weight: 700; background: var(--color-bg, #f1f5f9); color: ${block.color}; padding: 0.1rem 0.4rem; border-radius: 4px;">${topic.code}</span>
-                              <span style="font-size: 0.72rem; color: var(--color-text-muted, #64748b);"><i class="fa-solid fa-lightbulb" style="color: #f59e0b; font-size: 0.65rem;"></i> ${topic.clinicalPearls.length} Pearls</span>
+                              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                                <span style="font-size: 0.72rem; font-weight: 700; background: ${item.bgColor}; color: ${item.color}; padding: 0.1rem 0.4rem; border-radius: 4px;">${item.code}</span>
+                                <span style="font-size: 0.7rem; font-weight: 600; color: var(--color-text-muted);">${item.icd}</span>
+                              </div>
+                              <span style="font-size: 0.7rem; font-weight: 600; color: #0d9488; background: rgba(13, 148, 136, 0.1); padding: 0.1rem 0.4rem; border-radius: 4px;">
+                                ${item.keyMetric.split('•')[0].trim()}
+                              </span>
                             </div>
-                            <h3>${topic.title}</h3>
-                            <p>${topic.overview}</p>
+                            <h3>${item.title}</h3>
+                            <p>${item.overview}</p>
                             
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem;">
-                              ${topic.relatedMetrics.slice(0, 3).map(m => `<span style="font-size: 0.7rem; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); padding: 0.05rem 0.35rem; border-radius: 3px;">${m}</span>`).join('')}
+                            <!-- High-Yield Clinical Pearl Snippet -->
+                            <div style="margin-top: 0.5rem; padding: 0.4rem 0.6rem; background: var(--color-bg, #f8fafc); border-left: 3px solid ${item.color}; border-radius: 0 6px 6px 0; font-size: 0.775rem; color: var(--color-text-muted); line-height: 1.4;">
+                              <strong style="color: ${item.color};"><i class="fa-solid fa-quote-left"></i> Pearl:</strong> ${item.pearlPreview}
+                            </div>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem;">
+                              <span class="epi-metric-pill" style="color: ${item.color}; border-color: ${item.color}33;">
+                                <i class="fa-solid fa-circle-dot" style="font-size: 0.6rem;"></i> ${item.vectorOrCause}
+                              </span>
+                              ${item.highYieldStats.map(stat => `<span class="epi-metric-pill">#${stat}</span>`).join('')}
                             </div>
                           </div>
                         </div>
                         <div class="specialty-card-action">
-                          <span><i class="fa-solid fa-bolt"></i> Xem tóm tắt &amp; công thức</span>
+                          <span>
+                            ${item.hasFullArticle 
+                              ? '<i class="fa-solid fa-book-open" style="color: #0284c7;"></i> Đọc bài chuyên khảo' 
+                              : '<i class="fa-solid fa-bolt" style="color: #0d9488;"></i> Xem tóm tắt dịch tễ'}
+                          </span>
                           <i class="fa-solid fa-chevron-right"></i>
                         </div>
                       </a>
-                    `).join('')}
-                  </div>
+                    `;
+                  }).join('')}
                 </div>
-              </section>
-            `;
-          }).join('')}
+              </div>
+            </section>
+          `).join('')}
 
         </main>
       </div>
 
     </div>
 
-    <!-- QUICK PREVIEW MODAL / DRAWER (CHỨA ĐẦY ĐỦ CÔNG THỨC, PEARLS & BIAS) -->
+    <!-- QUICK PREVIEW MODAL / FACTSHEET DRAWER -->
     <div class="biochem-modal-backdrop" id="epiModalBackdrop">
-      <div class="biochem-modal" id="epiModalContainer" role="dialog" aria-modal="true"></div>
+      <div class="biochem-modal" id="epiModalContainer" role="dialog" aria-modal="true" style="max-width: 800px;"></div>
     </div>
   `;
 }
@@ -404,7 +897,7 @@ export function initEpidemiologyView(): void {
   const modalBackdrop = document.getElementById('epiModalBackdrop');
   const modalContainer = document.getElementById('epiModalContainer');
 
-  // 1. Live Search
+  // 1. Live Multilingual Search across Specialties
   function performSearch(query: string): void {
     const q = query.toLowerCase().trim();
     if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
@@ -449,6 +942,14 @@ export function initEpidemiologyView(): void {
     });
   }
 
+  // Keyboard shortcut Ctrl+K / Cmd+K
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      searchInput?.focus();
+    }
+  });
+
   // 2. View Toggle (Grid / List)
   if (viewGridBtn && viewListBtn && lessonsContainer) {
     viewGridBtn.addEventListener('click', () => {
@@ -464,7 +965,7 @@ export function initEpidemiologyView(): void {
     });
   }
 
-  // 3. Scroll Spy for Sticky Nav Sidebar
+  // 3. Scroll Spy for Sticky Left Navigation Sidebar
   function updateScrollSpy(): void {
     const scrollPos = window.scrollY + 160;
 
@@ -509,20 +1010,31 @@ export function initEpidemiologyView(): void {
     });
   });
 
-  // 5. Quick Preview Modal Engine
-  function openQuickPreview(topicId: string): void {
+  // 5. Open Disease Factsheet Modal
+  function openDiseaseFactsheet(itemId: string): void {
     if (!modalBackdrop || !modalContainer) return;
 
-    const topic = EPIDEMIOLOGY_TOPICS.find(t => t.id === topicId);
-    if (!topic) return;
+    let targetItem: SpecialtyEpidemiologyItem | undefined;
+    let targetSection: ClinicalSpecialtySection | undefined;
 
-    const block = EPIDEMIOLOGY_BLOCKS.find(b => b.id === topic.blockId);
+    for (const sec of EPIDEMIOLOGY_SPECIALTY_SECTIONS) {
+      const found = sec.items.find(i => i.id === itemId);
+      if (found) {
+        targetItem = found;
+        targetSection = sec;
+        break;
+      }
+    }
+
+    if (!targetItem || !targetSection) return;
 
     modalContainer.innerHTML = `
       <div class="modal-header" style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; background: var(--color-surface);">
         <div>
-          <span style="font-size: 0.75rem; font-weight: 700; background: var(--color-bg); color: ${block?.color || '#0d9488'}; padding: 0.2rem 0.5rem; border-radius: 4px;">${topic.code} • ${block ? block.name : 'Dịch Tễ Học'}</span>
-          <h3 style="margin: 0.35rem 0 0 0; font-size: 1.25rem; font-weight: 700; color: var(--color-text);">${topic.title}</h3>
+          <span style="font-size: 0.75rem; font-weight: 700; background: ${targetItem.bgColor}; color: ${targetItem.color}; padding: 0.2rem 0.5rem; border-radius: 4px;">
+            ${targetItem.code} • ${targetItem.icd} • ${targetSection.shortName}
+          </span>
+          <h3 style="margin: 0.35rem 0 0 0; font-size: 1.25rem; font-weight: 700; color: var(--color-text);">${targetItem.title}</h3>
         </div>
         <button type="button" class="modal-close-btn" onclick="window.EpiHub?.closeModal()" aria-label="Đóng" style="background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-text-muted); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
           <i class="fa-solid fa-xmark"></i>
@@ -530,52 +1042,111 @@ export function initEpidemiologyView(): void {
       </div>
 
       <div class="modal-body" style="padding: 1.5rem; max-height: 75vh; overflow-y: auto;">
-        <!-- Tổng quan -->
-        <div style="margin-bottom: 1.5rem; background: var(--color-bg); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--color-border);">
+        <!-- Tổng quan dịch tễ -->
+        <div style="margin-bottom: 1.25rem; background: var(--color-bg); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--color-border);">
           <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; font-weight: 700; color: var(--color-primary); display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-circle-info"></i> Định Nghĩa & Tổng Quan Dịch Tễ
+            <i class="fa-solid fa-circle-info"></i> Bối Cảnh Dịch Tễ &amp; Động Học Bệnh Học
           </h4>
-          <p style="margin: 0; font-size: 0.9rem; line-height: 1.65; color: var(--color-text);">${topic.overview}</p>
+          <p style="margin: 0; font-size: 0.9rem; line-height: 1.65; color: var(--color-text);">${targetItem.overview}</p>
         </div>
 
-        <!-- Công thức cốt lõi -->
-        <div style="margin-bottom: 1.5rem;">
-          <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; font-weight: 700; color: #0d9488; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-calculator"></i> Công Thức Tính & Thuật Toán Đo Lường
-          </h4>
-          <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.45rem;">
-            ${topic.keyFormulas.map(f => `<li style="font-size: 0.875rem; color: var(--color-text);"><code style="background: rgba(13, 148, 136, 0.1); color: #0f766e; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: monospace; font-weight: 600; display: inline-block;">${f}</code></li>`).join('')}
-          </ul>
-        </div>
-
-        <!-- Clinical Pearls -->
-        <div style="margin-bottom: 1.5rem; background: rgba(245,158,11,0.08); border-left: 4px solid #f59e0b; padding: 1.25rem; border-radius: 0 10px 10px 0;">
-          <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; font-weight: 700; color: #b45309; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> Điểm Ngọc Lâm Sàng & Thực Địa (Clinical Pearls)
-          </h4>
-          <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            ${topic.clinicalPearls.map(p => `<li style="font-size: 0.875rem; color: var(--color-text); line-height: 1.5;">${p}</li>`).join('')}
-          </ul>
-        </div>
-
-        <!-- Pitfalls & Biases -->
-        <div style="margin-bottom: 1.5rem; background: rgba(239,68,68,0.08); border-left: 4px solid #ef4444; padding: 1.25rem; border-radius: 0 10px 10px 0;">
-          <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; font-weight: 700; color: #b91c1c; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i> Cạm Bẫy Sai Số & Ngụy Biện Dịch Tễ Cần Tránh
-          </h4>
-          <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            ${topic.biasAndPitfalls.map(b => `<li style="font-size: 0.875rem; color: var(--color-text); line-height: 1.5;">${b}</li>`).join('')}
-          </ul>
-        </div>
-
-        <!-- Related Metrics & Tags -->
-        <div>
-          <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; font-weight: 700; color: #3b82f6; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fa-solid fa-tags"></i> Chỉ Số & Thuật Ngữ Liên Quan
-          </h4>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-            ${topic.relatedMetrics.map(m => `<span style="font-size: 0.825rem; background: var(--color-surface); border: 1px solid var(--color-border); color: #2563eb; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-chart-simple" style="font-size: 0.75rem; color: #3b82f6;"></i> ${m}</span>`).join('')}
+        <!-- Chỉ số dịch tễ then chốt -->
+        <div style="margin-bottom: 1.25rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
+          <div style="background: rgba(13, 148, 136, 0.08); border: 1px solid rgba(13, 148, 136, 0.2); border-radius: 8px; padding: 0.85rem;">
+            <div style="font-size: 0.72rem; font-weight: 700; color: #0d9488; text-transform: uppercase;">Chỉ Số Then Chốt</div>
+            <div style="font-size: 0.95rem; font-weight: 800; color: #0f766e; margin-top: 0.25rem;">${targetItem.keyMetric}</div>
           </div>
+          <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 8px; padding: 0.85rem;">
+            <div style="font-size: 0.72rem; font-weight: 700; color: #2563eb; text-transform: uppercase;">Yếu Tố Căn Nguyên / Véc-tơ</div>
+            <div style="font-size: 0.95rem; font-weight: 800; color: #1d4ed8; margin-top: 0.25rem;">${targetItem.vectorOrCause}</div>
+          </div>
+        </div>
+
+        <!-- Clinical Pearl -->
+        <div style="margin-bottom: 1.25rem; background: rgba(245,158,11,0.08); border-left: 4px solid #f59e0b; padding: 1.15rem; border-radius: 0 10px 10px 0;">
+          <h4 style="margin: 0 0 0.45rem 0; font-size: 0.95rem; font-weight: 700; color: #b45309; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-lightbulb" style="color: #f59e0b;"></i> Điểm Ngọc Dịch Tễ Lâm Sàng (Clinical Pearl)
+          </h4>
+          <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--color-text);">${targetItem.pearlPreview}</p>
+        </div>
+
+        <!-- High-Yield Facts -->
+        <div style="margin-bottom: 1.25rem;">
+          <h4 style="margin: 0 0 0.5rem 0; font-size: 0.95rem; font-weight: 700; color: var(--color-text); display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-tags" style="color: #3b82f6;"></i> Yếu Tố Dịch Tễ Trọng Yếu &amp; Tags
+          </h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.45rem;">
+            ${targetItem.highYieldStats.map(s => `<span style="font-size: 0.8rem; background: var(--color-bg); border: 1px solid var(--color-border); color: #2563eb; font-weight: 600; padding: 0.25rem 0.65rem; border-radius: 6px;">#${s}</span>`).join('')}
+            ${targetItem.tags.map(t => `<span style="font-size: 0.8rem; background: var(--color-bg); border: 1px solid var(--color-border); color: var(--color-text-muted); padding: 0.25rem 0.65rem; border-radius: 6px;">${t}</span>`).join('')}
+          </div>
+        </div>
+
+        ${targetItem.hasFullArticle && targetItem.slug ? `
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <a href="#/basic-medical/epidemiology/article/${targetItem.slug}" class="promax-bento-card" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.5rem; background: #0d9488; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700;">
+              <i class="fa-solid fa-book-open"></i> Mở bài giảng chuyên khảo toàn diện
+            </a>
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    modalBackdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // 6. Open Methodology Vault Modal (6 Khối Lý Thuyết & Công Thức)
+  function openMethodologyModal(): void {
+    if (!modalBackdrop || !modalContainer) return;
+
+    modalContainer.innerHTML = `
+      <div class="modal-header" style="padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; background: var(--color-surface);">
+        <div>
+          <span style="font-size: 0.75rem; font-weight: 700; background: rgba(13, 148, 136, 0.15); color: #0d9488; padding: 0.2rem 0.5rem; border-radius: 4px;">
+            Core Methodology Vault • 6 Khối Kiến Thức Cốt Lõi
+          </span>
+          <h3 style="margin: 0.35rem 0 0 0; font-size: 1.25rem; font-weight: 700; color: var(--color-text);">Phương Pháp Luận Dịch Tễ Học &amp; Thống Kê Y Học</h3>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="window.EpiHub?.closeModal()" aria-label="Đóng" style="background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-text-muted); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.5rem; max-height: 75vh; overflow-y: auto;">
+        <p style="margin: 0 0 1.25rem 0; font-size: 0.875rem; color: var(--color-text-muted); line-height: 1.5;">
+          Tra cứu nhanh 6 khối phương pháp luận nghiên cứu khoa học y học, công thức đo lường nguy cơ (RR, OR, AR), đánh giá test chẩn đoán (Se, Sp, PPV, NPV, LR), sai số (Bias, Confounding) và chuẩn nhân quả Bradford Hill.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+          ${EPIDEMIOLOGY_BLOCKS.map(block => {
+            const blockTopics = EPIDEMIOLOGY_TOPICS.filter(t => t.blockId === block.id);
+            return `
+              <div style="background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 10px; padding: 1.15rem;">
+                <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+                  <span style="width: 28px; height: 28px; border-radius: 6px; background: ${block.bgColor}; color: ${block.color}; display: flex; align-items: center; justify-content: center; font-size: 0.85rem;">
+                    <i class="fa-solid ${block.icon}"></i>
+                  </span>
+                  <h4 style="margin: 0; font-size: 0.95rem; font-weight: 700; color: var(--color-text);">${block.code}. ${block.name}</h4>
+                </div>
+                <p style="margin: 0 0 0.75rem 0; font-size: 0.825rem; color: var(--color-text-muted);">${block.description}</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  ${blockTopics.map(t => `
+                    <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 6px; padding: 0.75rem;">
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem;">
+                        <strong style="font-size: 0.85rem; color: var(--color-primary);">${t.code}: ${t.title}</strong>
+                        <span style="font-size: 0.7rem; color: #f59e0b; font-weight: 600;"><i class="fa-solid fa-lightbulb"></i> ${t.clinicalPearls.length} Pearls</span>
+                      </div>
+                      <p style="margin: 0 0 0.4rem 0; font-size: 0.8rem; color: var(--color-text); line-height: 1.45;">${t.overview}</p>
+                      <div style="background: var(--color-bg); padding: 0.4rem 0.6rem; border-radius: 4px; font-family: monospace; font-size: 0.75rem; color: #0f766e;">
+                        ${t.keyFormulas[0] || ''}
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }).join('')}
         </div>
       </div>
     `;
@@ -593,7 +1164,8 @@ export function initEpidemiologyView(): void {
 
   // Bind to window for HTML event handlers
   (window as any).EpiHub = {
-    openQuickPreview,
+    openDiseaseFactsheet,
+    openMethodologyModal,
     closeModal
   };
 

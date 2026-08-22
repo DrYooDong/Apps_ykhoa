@@ -193,23 +193,27 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
 
   if (isCaseStudy) {
     candidatePaths = [
+      `/src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
+      `src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
+      `./src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
+      `../src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
+      `/dist/src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
+      `dist/src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
       `/src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
       `src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
-      `./src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
-      `../src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
-      `/dist/src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
-      `dist/src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
       `pages/Sinh lý - Sinh lý bệnh/SLB_CCBS/${cleanSlug}`,
       `/pages/Sinh lý - Sinh lý bệnh/SLB_CCBS/${cleanSlug}`
     ];
   } else if (isBiochem) {
     candidatePaths = [
+      `/src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
+      `src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
+      `./src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
+      `../src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
+      `/dist/src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
+      `dist/src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
       `/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
-      `src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
-      `./src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
-      `../src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
-      `/dist/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
-      `dist/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`
+      `src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`
     ];
   } else if (isEpi) {
     candidatePaths = [
@@ -222,12 +226,14 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
     ];
   } else {
     candidatePaths = [
+      `/src/content/basic-medical/physiology/${part}/${cleanSlug}`,
+      `src/content/basic-medical/physiology/${part}/${cleanSlug}`,
+      `./src/content/basic-medical/physiology/${part}/${cleanSlug}`,
+      `../src/content/basic-medical/physiology/${part}/${cleanSlug}`,
+      `/dist/src/content/basic-medical/physiology/${part}/${cleanSlug}`,
+      `dist/src/content/basic-medical/physiology/${part}/${cleanSlug}`,
       `/src/content/pathophysiology/physiology/${part}/${cleanSlug}`,
       `src/content/pathophysiology/physiology/${part}/${cleanSlug}`,
-      `./src/content/pathophysiology/physiology/${part}/${cleanSlug}`,
-      `../src/content/pathophysiology/physiology/${part}/${cleanSlug}`,
-      `/dist/src/content/pathophysiology/physiology/${part}/${cleanSlug}`,
-      `dist/src/content/pathophysiology/physiology/${part}/${cleanSlug}`,
       `pages/Sinh lý - Sinh lý bệnh/Sinhly/${part.replace('part', 'Phan')}/${cleanSlug}`,
       `/pages/Sinh lý - Sinh lý bệnh/Sinhly/${part.replace('part', 'Phan')}/${cleanSlug}`
     ];
@@ -414,13 +420,17 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
     let targetSrc = src;
     if (src.includes('images/')) {
       const cleanImg = src.replace(/^(\.\.\/)+images\//i, '').replace(/^images\//i, '');
-      targetSrc = `/src/content/pathophysiology/images/${cleanImg}`;
+      targetSrc = `/src/content/basic-medical/images/${cleanImg}`;
     } else if (src.startsWith('./') || (!src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:'))) {
       const cleanImg = src.replace(/^\.\//, '');
       if (isCaseStudy) {
-        targetSrc = `/src/content/pathophysiology/pathophysiology-cases/${cleanImg}`;
+        targetSrc = `/src/content/basic-medical/pathophysiology-cases/${cleanImg}`;
+      } else if (isBiochem) {
+        targetSrc = `/src/content/basic-medical/biochemistry/${part}/${cleanImg}`;
+      } else if (isEpi) {
+        targetSrc = `/src/content/basic-medical/epidemiology/${cleanImg}`;
       } else {
-        targetSrc = `/src/content/pathophysiology/physiology/${part}/${cleanImg}`;
+        targetSrc = `/src/content/basic-medical/physiology/${part}/${cleanImg}`;
       }
     }
 

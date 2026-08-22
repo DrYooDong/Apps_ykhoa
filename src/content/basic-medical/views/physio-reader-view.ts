@@ -11,8 +11,8 @@ export function renderPhysioReader(slug: string): string {
 
   const cleanSlug = slug.endsWith('.html') ? slug : `${slug}.html`;
   const basePath = isCcbs 
-    ? `src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`
-    : `src/content/pathophysiology/physiology/${cleanSlug}`;
+    ? `src/content/basic-medical/pathophysiology-cases/${cleanSlug}`
+    : `src/content/basic-medical/physiology/${cleanSlug}`;
 
   // Trigger async fetch after DOM renders
   setTimeout(() => {

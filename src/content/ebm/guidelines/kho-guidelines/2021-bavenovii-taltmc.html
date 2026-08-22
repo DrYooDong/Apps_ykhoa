@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tóm tắt Đồng thuận Baveno VII (2021/2022) — Cá nhân hóa chăm sóc tăng áp lực tĩnh mạch cửa: Chuẩn hóa HVPG, chẩn đoán không xâm lấn cACLD & CSPH, Carvedilol dự phòng đợt mất bù đầu tiên, lưu đồ cấp cứu AVB 0h-12h-24h/72h, Pre-emptive TIPS sớm, khái niệm Tái bù (Recompensation) và quản lý PVT/PSVD.">
+  <meta name="journal" content="J Hepatol">
+  <title>Baveno VII (2021): Cá Nhân Hóa Chăm Sóc Tăng Áp Lực Tĩnh Mạch Cửa – CliniPortal</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #059669; --green-bg: #f0fdf4; --green-light: #a7f3d0;
+      --orange: #d97706; --orange-bg: #fffbeb; --orange-light: #fde68a;
+      --red: #dc2626; --red-bg: #fef2f2; --red-light: #fca5a5;
+      --blue: #2563eb; --blue-bg: #eff6ff; --blue-light: #bfdbfe;
+      --teal: #0d9488; --teal-bg: #f0fdfa; --teal-light: #99f6e4;
+      --purple: #7c3aed; --purple-bg: #faf5ff; --purple-light: #ddd6fe;
+      --indigo: #4f46e5; --indigo-bg: #eef2ff;
+      --accent: #0284c7;
+      --accent-gradient: linear-gradient(135deg, #0c4a6e 0%, #0369a1 45%, #0d9488 100%);
+      --bg: #f0f4f8; --surface: #ffffff; --surface-2: #f8fafc;
+      --border: #cbd5e1; --border-light: #e2e8f0;
+      --text: #0f172a; --text-muted: #475569; --text-faint: #94a3b8;
+      --radius: 16px; --tr: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1329; --surface: #131f37; --surface-2: #1a2a4a;
+      --border: #2c3e60; --border-light: #1f304d;
+      --text: #f8fafc; --text-muted: #94a3b8; --text-faint: #64748b;
+      --green-bg: rgba(5, 150, 105, 0.18); --green-light: rgba(167, 243, 208, 0.3);
+      --orange-bg: rgba(217, 119, 6, 0.18); --orange-light: rgba(253, 230, 138, 0.3);
+      --red-bg: rgba(220, 38, 38, 0.18); --red-light: rgba(252, 165, 165, 0.3);
+      --blue-bg: rgba(37, 99, 235, 0.18); --blue-light: rgba(191, 219, 254, 0.3);
+      --teal-bg: rgba(13, 148, 136, 0.18); --teal-light: rgba(153, 246, 228, 0.3);
+      --purple-bg: rgba(124, 58, 237, 0.18); --purple-light: rgba(221, 214, 254, 0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; font-size: 15px; background: var(--bg); color: var(--text); line-height: 1.65; min-height: 100vh; }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .topnav, .pillars-nav, .topnav-theme-toggle, .page-footer, .btn-row, #calc-reset { display: none !important; }
+      .page-content { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+      .sec-card { break-inside: avoid; border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+
+    /* TOP NAV */
+    .topnav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 1rem; padding: 0 1.5rem; height: 56px; }
+    [data-theme="dark"] .topnav { background: rgba(19, 31, 55, 0.92); }
+    .topnav-back { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 8px; transition: background var(--tr); white-space: nowrap; }
+    .topnav-back:hover { background: var(--blue-bg); }
+    .topnav-divider { width: 1px; height: 18px; background: var(--border-light); flex-shrink: 0; }
+    .topnav-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .topnav-badges { margin-left: auto; display: flex; gap: 0.5rem; flex-shrink: 0; align-items: center; }
+    .badge { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .badge-blue { background: var(--blue-bg); color: #0284c7; border: 1px solid var(--blue-light); }
+    [data-theme="dark"] .badge-blue { color: #7dd3fc; }
+    .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-light); }
+    [data-theme="dark"] .badge-green { color: #6ee7b7; }
+    .badge-purple { background: var(--purple-bg); color: #6b21a8; border: 1px solid var(--purple-light); }
+    [data-theme="dark"] .badge-purple { color: #d8b4fe; }
+
+    .topnav-theme-toggle { background: none; border: 1px solid var(--border-light); color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 0.35rem 0.6rem; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; transition: all var(--tr); }
+    .topnav-theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+
+    /* HERO */
+    .hero { background: var(--accent-gradient); color: #fff; padding: 3.5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(56, 189, 248, 0.25) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(13, 148, 136, 0.2) 0%, transparent 55%); }
+    .hero-inner { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-badge-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #7dd3fc; }
+    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero-title span { display: block; background: linear-gradient(90deg, #7dd3fc, #6ee7b7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 0.65em; font-weight: 600; letter-spacing: 0; margin-bottom: 0.25rem; }
+    .hero-subtitle { font-size: 0.95rem; opacity: 0.92; max-width: 820px; margin-bottom: 1.8rem; line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.8rem; font-size: 0.8rem; opacity: 0.88; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; }
+
+    /* PILLARS STICKY NAV STRIP */
+    .pillars-nav { position: sticky; top: 56px; z-index: 190; background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 0.75rem 1.5rem; }
+    .pillars-nav-inner { max-width: 980px; margin: 0 auto; display: flex; gap: 0.55rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pillar-tab { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); border: 1px solid var(--border-light); background: var(--surface-2); text-decoration: none; white-space: nowrap; transition: all var(--tr); }
+    .pillar-tab:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .pillar-tab.p-1 { border-left: 4px solid var(--blue); }
+    .pillar-tab.p-2 { border-left: 4px solid var(--teal); }
+    .pillar-tab.p-3 { border-left: 4px solid var(--green); }
+    .pillar-tab.p-4 { border-left: 4px solid var(--purple); }
+    .pillar-tab.p-5 { border-left: 4px solid var(--orange); }
+    .pillar-tab.p-6 { border-left: 4px solid var(--red); }
+    .pillar-tab.p-7 { border-left: 4px solid var(--indigo); }
+    .pillar-tab.p-8 { border-left: 4px solid var(--accent); }
+
+    /* KPI STATS STRIP */
+    .stats-strip { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 1.5rem; }
+    .stats-grid { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .stat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--accent); line-height: 1.2; text-align: center; }
+    .stat-val.green { color: var(--green); }
+    .stat-val.red { color: var(--red); }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; line-height: 1.45; text-align: center; }
+
+    /* PAGE CONTENT */
+    .page-content { max-width: 980px; margin: 0 auto; padding: 2.25rem 1.5rem; display: flex; flex-direction: column; gap: 2rem; }
+
+    /* SECTION CARDS */
+    .sec-card { background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 120px; }
+    .sec-hdr { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border-light); background: var(--surface-2); display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+    .sec-hdr-left { display: flex; align-items: center; gap: 0.6rem; }
+    .sec-hdr-icon { font-size: 1.25rem; }
+    .sec-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); }
+    .sec-badge { font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 12px; background: var(--blue-bg); color: var(--accent); border: 1px solid var(--blue-light); }
+    .sec-body { padding: 1.5rem; }
+    .sec-subtitle { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin: 1.25rem 0 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sec-subtitle:first-child { margin-top: 0; }
+
+    /* GRID LAYOUTS */
+    .grid-2col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.25rem; }
+    .grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 1rem; }
+
+    /* CLINICAL CARDS */
+    .clin-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.25rem; position: relative; overflow: hidden; transition: box-shadow var(--tr); }
+    .clin-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .clin-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .accent-green { background: var(--green); }
+    .accent-orange { background: var(--orange); }
+    .accent-red { background: var(--red); }
+    .accent-blue { background: var(--blue); }
+    .accent-teal { background: var(--teal); }
+    .accent-purple { background: var(--purple); }
+
+    .clin-card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.92rem; color: var(--text); margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: space-between; }
+    .clin-card-body { font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; }
+    .clin-card-list { list-style: none; margin-top: 0.5rem; padding-left: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .clin-card-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      display: block;
+    }
+    .clin-card-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* INFO BOXES */
+    .infobox { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1rem; font-size: 0.85rem; line-height: 1.6; }
+    .infobox:last-child { margin-bottom: 0; }
+    .infobox-icon { font-size: 1.3rem; flex-shrink: 0; line-height: 1.3; }
+    .infobox.danger { background: var(--red-bg); border: 1px solid var(--red-light); border-left: 4px solid var(--red); }
+    .infobox.success { background: var(--green-bg); border: 1px solid var(--green-light); border-left: 4px solid var(--green); }
+    .infobox.warning { background: var(--orange-bg); border: 1px solid var(--orange-light); border-left: 4px solid var(--orange); }
+    .infobox.info { background: var(--blue-bg); border: 1px solid var(--blue-light); border-left: 4px solid var(--blue); }
+    .infobox.teal { background: var(--teal-bg); border: 1px solid var(--teal-light); border-left: 4px solid var(--teal); }
+    .infobox strong { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--text); }
+
+    /* TABLES */
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.25rem; border-radius: 12px; border: 1px solid var(--border-light); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; min-width: 650px; }
+    .data-table thead th { padding: 0.75rem 0.95rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--surface-2); color: var(--text); border-bottom: 1px solid var(--border-light); text-align: left; }
+    .data-table td { padding: 0.85rem 0.95rem; border-bottom: 1px solid var(--border-light); vertical-align: top; line-height: 1.55; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: var(--surface-2); }
+
+    /* SVG DIAGRAM CONTAINER */
+    .svg-diagram-card { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.25rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* CLINICAL CALCULATOR & TRIAGE WIDGET */
+    .widget-box { background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%); border: 2px solid var(--blue-light); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    .widget-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem; }
+    .widget-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 0.5rem; }
+    .widget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem; }
+    .calc-section { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 1rem 1.15rem; }
+    .calc-section-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+    .calc-field { margin-bottom: 0.75rem; }
+    .calc-field label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .calc-field input, .calc-field select { width: 100%; padding: 0.45rem 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+    .calc-checkbox-label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.82rem; margin-bottom: 0.55rem; cursor: pointer; line-height: 1.45; }
+    .calc-checkbox-label:last-child { margin-bottom: 0; }
+    .calc-checkbox-label input { margin-top: 0.2rem; cursor: pointer; accent-color: var(--accent); }
+    
+    .calc-result-box { background: var(--surface); border: 2px solid var(--border); border-radius: 14px; padding: 1.25rem; }
+    .calc-result-header { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .calc-result-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.05rem; font-weight: 800; padding: 0.45rem 1rem; border-radius: 10px; margin-bottom: 0.75rem; }
+    .res-safe { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .res-warning { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .res-danger { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    [data-theme="dark"] .res-safe { background: rgba(22, 163, 74, 0.25); color: #86efac; }
+    [data-theme="dark"] .res-warning { background: rgba(217, 119, 6, 0.25); color: #fde68a; }
+    [data-theme="dark"] .res-danger { background: rgba(220, 38, 38, 0.3); color: #fca5a5; }
+
+    .calc-result-advice { font-size: 0.85rem; line-height: 1.6; color: var(--text); margin-top: 0.5rem; }
+    .btn-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0.5rem 1rem; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all var(--tr); border: 1px solid var(--border-light); background: var(--surface); color: var(--text-muted); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--blue-bg); }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { opacity: 0.92; background: var(--accent); color: #fff; }
+
+    /* AMA CITATION BOX */
+    .citation-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+    .citation-item { margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px dashed var(--border-light); }
+    .citation-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .citation-num { font-weight: 700; color: var(--accent); margin-right: 0.35rem; }
+
+    /* FOOTER */
+    .page-footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border-light); background: var(--surface); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-content { padding: 1.25rem 1rem; }
+      .sec-body { padding: 1rem; }
+      .hero { padding: 2.5rem 1rem 3.5rem; }
+      .hero-title { font-size: 1.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a href="../guidelines.html" class="topnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Kho Guidelines
+    </a>
+    <div class="topnav-divider"></div>
+    <div class="topnav-title">Baveno VII (2021): Cá Nhân Hóa Tăng Áp Lực Tĩnh Mạch Cửa</div>
+    <div class="topnav-badges">
+      <span class="badge badge-blue">EASL / Baveno VII</span>
+      <span class="badge badge-green">Practice-Changing</span>
+      <button class="topnav-theme-toggle" id="theme-btn" title="Chuyển đổi giao diện Sáng/Tối" aria-label="Toggle Theme">🌓</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge-strip">
+        <div class="hero-badge">🔬 ĐỒNG THUẬN QUỐC TẾ BAVENO VII (2021)</div>
+        <div class="hero-badge">🧬 CÁ THỂ HÓA ĐIỀU TRỊ</div>
+      </div>
+      <h1 class="hero-title">
+        <span>Baveno VII – Renewing Consensus in Portal Hypertension: Personalized Care</span>
+        Đồng Thuận Baveno VII (2021): Cá Nhân Hóa Chăm Sóc Bệnh Nhân Tăng Áp Lực Tĩnh Mạch Cửa
+      </h1>
+      <p class="hero-subtitle">
+        Văn bản đồng thuận quốc tế mang tính bước ngoặt của Hội Gan Mật Châu Âu (EASL) & Baveno VII Faculty: Chuẩn hóa đo HVPG, định nghĩa cACLD, Quy tắc số 5 của LSM (10-15-20-25 kPa), tiêu chuẩn Baveno VI mở rộng tránh nội soi, Carvedilol là NSBB ưu tiên hàng đầu phòng ngừa mất bù, lưu đồ cấp cứu xuất huyết vỡ giãn (AVB) 0h - 12h - 24h/72h, chỉ định Pre-emptive TIPS sớm, khái niệm Tái bù (Recompensation) và quản lý huyết khối tĩnh mạch tạng (PVT/BCS) cùng bệnh lý mạch máu cổng - xoang (PSVD).
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">🏛️ <strong>Tổ chức:</strong> Baveno VII Faculty & EASL</div>
+        <div class="hero-meta-item">📖 <strong>Tạp chí:</strong> <em>J Hepatol</em>. 2022;76(4):959-974</div>
+        <div class="hero-meta-item">🎯 <strong>Phạm vi:</strong> Xơ gan còn bù/mất bù, cACLD, CSPH, AVB, PVT, PSVD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS STICKY NAV STRIP -->
+  <div class="pillars-nav">
+    <div class="pillars-nav-inner">
+      <a href="#sec-1" class="pillar-tab p-1">1. HVPG Tiêu Chuẩn Vàng</a>
+      <a href="#sec-2" class="pillar-tab p-2">2. Không Xâm Lấn & cACLD</a>
+      <a href="#sec-3" class="pillar-tab p-3">3. Sau Loại Bỏ Tác Nhân & Thuốc</a>
+      <a href="#sec-4" class="pillar-tab p-4">4. Ngừa Mất Bù & Carvedilol</a>
+      <a href="#sec-5" class="pillar-tab p-5">5. Cấp Cứu AVB & TIPS Sớm</a>
+      <a href="#sec-6" class="pillar-tab p-6">6. Mất Bù Tiến Triển & Tái Bù</a>
+      <a href="#sec-7" class="pillar-tab p-7">7. Huyết Khối (PVT/BCS) & PSVD</a>
+      <a href="#sec-8" class="pillar-tab p-8">8. Bedside Baveno VII Tool</a>
+    </div>
+  </div>
+
+  <!-- KPI STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val green">LSM &lt; 20 + PLT ≥ 150</div>
+        <div class="stat-lbl">Tiêu chuẩn Baveno VI mở rộng: Tránh nội soi sàng lọc an toàn (NPV &gt; 95%)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">10 – 15 – 20 – 25</div>
+        <div class="stat-lbl">Quy tắc số 5 của LSM (kPa): Phân tầng nguy cơ cACLD &amp; xác chẩn CSPH</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val green">Carvedilol</div>
+        <div class="stat-lbl">NSBB lựa chọn số 1: Giảm áp cửa mạnh hơn nhờ kháng alpha-1 &amp; tăng sống còn</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val red">&lt; 72 Giờ (&lt; 24h)</div>
+        <div class="stat-lbl">Cửa sổ Pre-emptive TIPS (PTFE): Giảm thất bại cầm máu &amp; tử vong ở nhóm nguy cơ cao</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- SECTION 1: HVPG TIÊU CHUẨN VÀNG -->
+    <div class="sec-card" id="sec-1">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🩺</span>
+          <h2 class="sec-title">I. Đo Áp Lực Tĩnh Mạch Gan (HVPG) – Tiêu Chuẩn Vàng Trong Đánh Giá Huyết Động</h2>
+        </div>
+        <span class="sec-badge">Session 1</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">1. Kỹ Thuật Đo &amp; Chuẩn Hóa Quy Trình Giảm Thiểu Sai Số</div>
+        <p style="margin-bottom:1rem; font-size:0.88rem; color:var(--text-muted);">
+          Đo gradient áp lực tĩnh mạch gan (<strong>Hepatic Venous Pressure Gradient - HVPG</strong>) vẫn là tiêu chuẩn vàng đánh giá mức độ tăng áp lực tĩnh mạch cửa. Baveno VII chuẩn hóa sâu sắc quy trình kỹ thuật:
+        </p>
+
+        <div class="grid-2col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">Thiết Bị &amp; Thủ Thuật Chuẩn</div>
+            <ul class="clin-card-list">
+              <li><strong>Catheter bóng bít:</strong> Ưu tiên dùng <em>catheter bóng bít có lỗ ở đầu và mềm (end-hole, compliant balloon occlusion catheter)</em> thay vì catheter thẳng để giảm sai số khi đo áp lực bít (WHVP).</li>
+              <li><strong>Bơm thuốc cản quang kiểm tra:</strong> Bơm lượng nhỏ cản quang khi bóng phồng để xác nhận bít hoàn toàn và loại trừ <em>tuần hoàn bàng hệ tĩnh mạch - tĩnh mạch gan</em> (hepatic venous-to-venous communications) có thể gây đánh giá thấp WHVP.</li>
+              <li><strong>Thời gian ổn định:</strong> WHVP cần ổn định tối thiểu <strong>1 phút</strong> (lưu ý đặc biệt 20-30 giây cuối cùng) và đo lặp lại <strong>3 lần (triplicate)</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">Trị Số Tham Chiếu &amp; An Thần</div>
+            <ul class="clin-card-list">
+              <li><strong>Vị trí đo FHVP:</strong> Đo trong tĩnh mạch gan cách chỗ đổ vào tĩnh mạch chủ dưới (IVC) <strong>2 – 3 cm</strong>. Gradient WHVP - FHVP có giá trị tiên lượng vượt trội so với WHVP - Áp lực tâm nhĩ phải.</li>
+              <li><strong>Ảnh hưởng của an thần:</strong> Gây mê sâu làm sai lệch HVPG. Nếu cần an thần nhẹ, chỉ định <strong>Midazolam liều thấp (0.02 mg/kg)</strong> vì không làm thay đổi HVPG.</li>
+              <li><strong>Ghi nhận tín hiệu:</strong> Ghi biểu đồ áp lực tốc độ chậm (lên đến <strong>7.5 mm/s</strong>) dưới dạng bản ghi vĩnh viễn (giấy/điện tử), không dùng số đọc kỹ thuật số trực tiếp trên màn hình.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Ngưỡng Chẩn Đoán CSPH, Ngoại Khoa &amp; Mục Tiêu TIPS</div>
+        <div class="grid-3col" style="margin-bottom:1rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">Chẩn Đoán CSPH</div>
+            <div class="clin-card-body">
+              • <strong>HVPG &gt; 5 mmHg:</strong> Tăng áp cửa thể xoang.<br>
+              • <strong>HVPG ≥ 10 mmHg:</strong> Tiêu chuẩn vàng xác định <strong>Tăng áp lực tĩnh mạch cửa có ý nghĩa lâm sàng (CSPH)</strong> trong xơ gan do virus và rượu.<br>
+              • <em>Kiểu hình NASH:</em> Dấu lâm sàng có thể xuất hiện khi HVPG &lt; 10 mmHg.<br>
+              • <em>HVPG &lt; 10 mmHg có dấu tăng áp cửa rõ:</em> Bắt buộc loại trừ <strong>PSVD</strong>.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">Tiên Lượng Phẫu Thuật</div>
+            <div class="clin-card-body">
+              • <strong>Cắt gan trong HCC:</strong> Sự hiện diện của CSPH (HVPG ≥ 10 mmHg hoặc lâm sàng) dự báo nguy cơ mất bù và tử vong cao sau mổ.<br>
+              • <strong>Phẫu thuật ngoài gan:</strong> Bệnh nhân phẫu thuật bụng ngoài gan có <strong>HVPG ≥ 16 mmHg</strong> gia tăng rõ rệt tỷ lệ tử vong ngắn hạn sau mổ.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">Mục Tiêu Khi Đặt TIPS</div>
+            <div class="clin-card-body">
+              • Đo Gradient áp lực cửa (PPG) trước và ngay sau TIPS (giữa thân TMC và IVC tại đầu ra shunt).<br>
+              • <strong>Mục tiêu thành công huyết động:</strong> Đạt <strong>PPG &lt; 12 mmHg</strong> HOẶC giảm <strong>≥ 50%</strong> so với trước TIPS giúp bảo vệ bệnh nhân gần như hoàn toàn khỏi tái xuất huyết.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: CÁC CÔNG CỤ KHÔNG XÂM LẤN (NITS) & CACLD -->
+    <div class="sec-card" id="sec-2">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🔬</span>
+          <h2 class="sec-title">II. Các Công Cụ Không Xâm Lấn (NITs) Trong Chẩn Đoán cACLD &amp; CSPH</h2>
+        </div>
+        <span class="sec-badge">Session 2</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">1. Tiêu Chuẩn cACLD &amp; Quy Luật Số 5 (Rule of 5)</div>
+        <p style="margin-bottom:1rem; font-size:0.88rem; color:var(--text-muted);">
+          Khái niệm <strong>Bệnh gan mạn tính tiến triển bù trừ (cACLD)</strong> phản ánh một dải liên tục từ xơ hóa nặng đến xơ gan ở bệnh nhân bệnh gan mạn hoạt động hoặc chưa điều trị. Baveno VII khuyến nghị <strong>Quy luật số 5 của LSM (10 - 15 - 20 - 25 kPa)</strong>:
+        </p>
+
+        <div class="grid-2col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">Phân Tầng cACLD Bằng LSM (TE)</div>
+            <ul class="clin-card-list">
+              <li><strong>LSM &lt; 10 kPa:</strong> Loại trừ hoàn toàn cACLD (nếu không có dấu hiệu lâm sàng/hình ảnh khác). Nguy cơ mất bù hoặc tử vong 3 năm cực thấp (chỉ <strong>1%</strong>).</li>
+              <li><strong>LSM 10 – 15 kPa:</strong> Nghi ngờ (gợi ý) cACLD; cần chuyển chuyên khoa theo dõi.</li>
+              <li><strong>LSM &gt; 15 kPa:</strong> Khả năng cao (highly suggestive) bị cACLD.</li>
+              <li><strong>Tránh dương tính giả:</strong> Khi LSM ≥ 10 kPa, đo lại khi đói hoặc kết hợp marker huyết thanh (FIB-4 ≥ 2.67, ELF ≥ 9.8, FibroTest ≥ 0.58 với rượu/virus hoặc ≥ 0.48 với NAFLD).</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">Mô Hình ANTICIPATE &amp; Độ Đàn Hồi Lách (SSM)</div>
+            <ul class="clin-card-list">
+              <li><strong>Mô hình ANTICIPATE:</strong> Ở bệnh nhân cACLD có LSM &lt; 25 kPa: <em>LSM 20-25 kPa + PLT &lt; 150 G/L</em> HOẶC <em>LSM 15-20 kPa + PLT &lt; 110 G/L</em> có xác suất mắc CSPH thực tế <strong>≥ 60%</strong>. (ANTICIPATE-NASH tích hợp thêm BMI).</li>
+              <li><strong>SSM &lt; 21 kPa:</strong> Loại trừ CSPH ở bệnh nhân cACLD do virus.</li>
+              <li><strong>SSM &gt; 50 kPa:</strong> Xác chẩn sự hiện diện của CSPH.</li>
+              <li><strong>SSM ≤ 40 kPa:</strong> Ở bệnh nhân không thể dùng NSBB và có chỉ định nội soi theo Baveno VI, SSM ≤ 40 kPa cho phép <strong>tránh nội soi tầm soát an toàn</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Sơ Đồ Thuật Toán Xác Định Không Xâm Lấn cACLD &amp; CSPH (Fig. 1 Baveno VII)</div>
+        <div class="svg-diagram-card">
+          <svg viewBox="0 0 900 380" width="100%" height="auto" style="font-family:'Plus Jakarta Sans',sans-serif; display:block;">
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent)" />
+              </marker>
+            </defs>
+
+            <!-- Node 1: Root -->
+            <rect x="275" y="15" width="350" height="42" rx="8" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+            <text x="450" y="41" fill="var(--text)" font-size="13" font-weight="700" text-anchor="middle">BỆNH NHÂN GAN MẠN TÍNH HOẠT ĐỘNG</text>
+
+            <line x1="450" y1="57" x2="450" y2="85" stroke="var(--accent)" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="450" y="76" fill="var(--text-muted)" font-size="11" font-weight="600" text-anchor="middle">Đo độ đàn hồi gan (LSM bằng TE)</text>
+
+            <!-- Level 2 Branching Lines -->
+            <line x1="450" y1="85" x2="150" y2="115" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="450" y1="85" x2="450" y2="115" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="450" y1="85" x2="750" y2="115" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <!-- Node 2: LSM < 10 -->
+            <rect x="50" y="115" width="200" height="65" rx="8" fill="var(--green-bg)" stroke="var(--green-light)" stroke-width="1.5"/>
+            <text x="150" y="137" fill="#065f46" font-size="12" font-weight="800" text-anchor="middle">LSM &lt; 10 kPa</text>
+            <text x="150" y="155" fill="#065f46" font-size="11" font-weight="700" text-anchor="middle">LOẠI TRỪ cACLD</text>
+            <text x="150" y="170" fill="var(--text-muted)" font-size="10" text-anchor="middle">Tử vong 3 năm ~ 1%</text>
+
+            <!-- Node 3: LSM 10-15 -->
+            <rect x="350" y="115" width="200" height="65" rx="8" fill="var(--orange-bg)" stroke="var(--orange-light)" stroke-width="1.5"/>
+            <text x="450" y="137" fill="#92400e" font-size="12" font-weight="800" text-anchor="middle">LSM 10 – 15 kPa</text>
+            <text x="450" y="155" fill="#92400e" font-size="11" font-weight="700" text-anchor="middle">NGHI NGỜ cACLD</text>
+            <text x="450" y="170" fill="var(--text-muted)" font-size="10" text-anchor="middle">Chuyển chuyên khoa</text>
+
+            <!-- Node 4: LSM > 15 -->
+            <rect x="650" y="115" width="200" height="65" rx="8" fill="var(--blue-bg)" stroke="var(--blue-light)" stroke-width="1.5"/>
+            <text x="750" y="137" fill="#1e40af" font-size="12" font-weight="800" text-anchor="middle">LSM &gt; 15 kPa</text>
+            <text x="750" y="155" fill="#1e40af" font-size="11" font-weight="700" text-anchor="middle">XÁC CHẨN cACLD</text>
+            <text x="750" y="170" fill="var(--text-muted)" font-size="10" text-anchor="middle">Đánh giá nguy cơ CSPH</text>
+
+            <!-- Level 3: CSPH Evaluation from Node 4 -->
+            <line x1="750" y1="180" x2="750" y2="210" stroke="var(--accent)" stroke-width="2"/>
+            <line x1="750" y1="210" x2="520" y2="240" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="750" y1="210" x2="780" y2="240" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)"/>
+
+            <!-- Node 5: Rule-out CSPH -->
+            <rect x="390" y="240" width="260" height="75" rx="8" fill="var(--surface)" stroke="var(--green)" stroke-width="2"/>
+            <text x="520" y="260" fill="var(--text)" font-size="11.5" font-weight="700" text-anchor="middle">LSM ≤ 15 kPa VÀ PLT ≥ 150 G/L</text>
+            <text x="520" y="280" fill="var(--green)" font-size="13" font-weight="800" text-anchor="middle">LOẠI TRỪ CSPH</text>
+            <text x="520" y="298" fill="var(--text-muted)" font-size="10.5" text-anchor="middle">Tiêu chuẩn Baveno VI: Tránh nội soi</text>
+
+            <!-- Node 6: Rule-in CSPH -->
+            <rect x="670" y="240" width="220" height="75" rx="8" fill="var(--surface)" stroke="var(--red)" stroke-width="2"/>
+            <text x="780" y="260" fill="var(--text)" font-size="11.5" font-weight="700" text-anchor="middle">LSM ≥ 25 kPa</text>
+            <text x="780" y="280" fill="var(--red)" font-size="13" font-weight="800" text-anchor="middle">XÁC CHẨN CSPH</text>
+            <text x="780" y="298" fill="var(--text-muted)" font-size="10.5" text-anchor="middle">Khởi trị NSBB (Carvedilol)</text>
+
+            <!-- Bottom summary note -->
+            <rect x="50" y="335" width="800" height="35" rx="6" fill="var(--surface-2)" stroke="var(--border-light)" stroke-width="1"/>
+            <text x="450" y="357" fill="var(--text-muted)" font-size="11" font-weight="600" text-anchor="middle">Quy luật số 5: LSM 10 - 15 - 20 - 25 kPa phân tầng liên tục nguy cơ mất bù và tử vong liên quan đến gan.</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: SAU LOẠI BỎ NGUYÊN NHÂN & THUỐC KHÔNG ĐẶC HIỆU -->
+    <div class="sec-card" id="sec-3">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">💊</span>
+          <h2 class="sec-title">III. Quản Lý Sau Khi Loại Bỏ Nguyên Nhân &amp; Liệu Pháp Không Đặc Hiệu</h2>
+        </div>
+        <span class="sec-badge">Sessions 3 &amp; 4</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">1. Tiêu Chuẩn Ngưng Tầm Soát Mạch Cửa &amp; Ngưng NSBB</div>
+        <div class="grid-2col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">Ngưng Tầm Soát Tăng Áp Cửa Sau SVR</div>
+            <div class="clin-card-body">
+              • Ở bệnh nhân cACLD do HCV đã đạt SVR (không có yếu tố đồng mắc): Nếu <strong>LSM &lt; 12 kPa</strong> VÀ <strong>Tiểu cầu &gt; 150 G/L</strong>, bệnh nhân <strong>có thể được xuất viện khỏi chương trình tầm soát tăng áp cửa</strong> (ngưng LSM và nội soi định kỳ).<br>
+              • <em>Lưu ý:</em> Chương trình <strong>tầm soát HCC</strong> vẫn bắt buộc phải duy trì tiếp tục.<br>
+              • Tiêu chuẩn Baveno VI cải tiến (<em>LSM &lt; 20 kPa và PLT &gt; 150 G/L</em>) áp dụng an toàn để loại trừ varices nguy cơ cao sau SVR hoặc ức chế HBV.
+            </div>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">Điều Kiện Ngưng Thuốc NSBB</div>
+            <div class="clin-card-body">
+              • Bệnh nhân cACLD đang dùng NSBB dự phòng nhưng đã loại bỏ nguyên nhân và không còn bằng chứng CSPH (<strong>LSM &lt; 25 kPa</strong>):<br>
+              • Thực hiện nội soi dạ dày kiểm tra lại sau <strong>1 – 2 năm</strong>.<br>
+              • Nếu nội soi không ghi nhận giãn tĩnh mạch thực quản, <strong>có thể an toàn ngưng điều trị bằng NSBB</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Vai Trò Các Liệu Pháp Điều Trị Không Đặc Hiệu (Non-Aetiological)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 140px;">Nhóm Thuốc</th>
+                <th style="width: 200px;">Khuyến Cáo Baveno VII</th>
+                <th>Chi Tiết Lâm Sàng &amp; Lưu Ý An Toàn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Nhóm Statins</strong></td>
+                <td><span class="badge badge-green">Khuyến khích dùng</span></td>
+                <td>Hạ áp lực tĩnh mạch cửa và cải thiện tỷ lệ sống còn ở bệnh nhân có chỉ định tim mạch. <em>Xơ gan Child-Pugh B và C:</em> Dùng liều thấp (<strong>Simvastatin tối đa 20 mg/ngày</strong>), giám sát độc tính cơ/gan. Tránh dùng rộng rãi ở Child C.</td>
+              </tr>
+              <tr>
+                <td><strong>Aspirin</strong></td>
+                <td><span class="badge badge-blue">Không ngưng</span></td>
+                <td>Không khuyến cáo ngưng Aspirin nếu có chỉ định tim mạch rõ ràng; hỗ trợ giảm nguy cơ HCC và biến chứng suy gan.</td>
+              </tr>
+              <tr>
+                <td><strong>Albumin người</strong></td>
+                <td><span class="badge badge-blue">Ngắn hạn bắt buộc</span></td>
+                <td>• <em>Ngắn hạn:</em> Bắt buộc cho SBP, AKI &gt; giai đoạn 1A, chọc tháo dịch cổ trướng thể tích lớn (LVP &gt; 5L: bù 8g/L dịch rút), và phối hợp Terlipressin trong HRS-AKI.<br>• <em>Dài hạn:</em> Có thể cải thiện sống còn ở cổ trướng chưa biến chứng (chưa khuyến cáo thường quy, chờ thêm RCTs).</td>
+              </tr>
+              <tr>
+                <td><strong>Rifaximin</strong></td>
+                <td><span class="badge badge-green">Chỉ định chọn lọc</span></td>
+                <td>Chỉ định bắt buộc trong dự phòng thứ phát bệnh não gan (HE) và dự phòng trước đặt TIPS chương trình ở người có tiền sử não gan. Không dùng ngoài các chỉ định này (như ngừa SBP).</td>
+              </tr>
+              <tr>
+                <td><strong>Kháng đông &amp; DOACs</strong></td>
+                <td><span class="badge badge-green">An toàn Child A/B</span></td>
+                <td>Không trì hoãn kháng đông khi có chỉ định bắt buộc. DOACs an toàn và hiệu quả ở <strong>Child-Pugh A và B</strong>; <strong>chống chỉ định dùng ở Child-Pugh C</strong> ngoài các thử nghiệm lâm sàng.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: NGĂN NGỪA ĐỢT MẤT BÙ ĐẦU TIÊN -->
+    <div class="sec-card" id="sec-4">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🛡️</span>
+          <h2 class="sec-title">IV. Chiến Lược Ngăn Ngừa Đợt Mất Bù Đầu Tiên (First Decompensation)</h2>
+        </div>
+        <span class="sec-badge">Session 5</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">1. Định Nghĩa Mất Bù Đầu Tiên &amp; Khởi Trị Carvedilol</div>
+        <div class="infobox info">
+          <span class="infobox-icon">📌</span>
+          <div>
+            <strong>Định nghĩa Đợt Mất Bù Đầu Tiên (First Decompensation):</strong>
+            Xác định khi xuất hiện một trong các biến cố: (1) Cổ trướng mức độ trung bình-nặng (hoặc tràn dịch màng phổi có SAAG &gt; 1.1 g/dL), (2) Bệnh não gan rõ (West Haven độ ≥ II), hoặc (3) Xuất huyết tiêu hóa do vỡ giãn tĩnh mạch.
+          </div>
+        </div>
+
+        <div class="grid-2col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">Sự Vượt Trội Của Carvedilol</div>
+            <ul class="clin-card-list">
+              <li><strong>Cơ chế kép:</strong> Carvedilol có thêm hoạt tính <em>giãn mạch kháng alpha-1 adrenergic nội mạch</em>, giúp hạ HVPG mạnh mẽ hơn các NSBB cổ điển (Propranolol/Nadolol).</li>
+              <li><strong>Ưu tiên hàng đầu:</strong> Carvedilol là <strong>NSBB được ưu tiên lựa chọn số 1</strong> ở xơ gan còn bù có CSPH nhằm ngăn ngừa đợt mất bù đầu tiên (chủ yếu là cổ trướng).</li>
+              <li><strong>Khởi trị độc lập:</strong> Quyết định dùng Carvedilol dựa trên tiêu chí lâm sàng/không xâm lấn (LSM ≥ 25 kPa), <strong>không bắt buộc phải đo HVPG</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">Thay Đổi Về Chỉ Định Nội Soi &amp; EVL</div>
+            <ul class="clin-card-list">
+              <li><strong>Không cần nội soi tầm soát:</strong> Bệnh nhân xơ gan còn bù đã được chỉ định NSBB/Carvedilol <strong>không cần nội soi tầm soát giãn tĩnh mạch thực quản</strong> nữa vì kết quả soi không thay đổi phác đồ tối ưu.</li>
+              <li><strong>Chỉ định thắt đai chun (EVL):</strong> Chỉ khuyến cáo dự phòng tiên phát ở bệnh nhân có giãn tĩnh mạch nguy cơ cao <strong>nhưng có chống chỉ định hoặc không dung nạp NSBB</strong>.</li>
+              <li>EVL không có vai trò ngăn ngừa các biến cố mất bù ngoài xuất huyết (như cổ trướng, não gan).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Bảng Hệ Thống: Tiêu Chuẩn Xác Định &amp; Loại Trừ Bằng NITs (TE)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Mục Tiêu Lâm Sàng</th>
+                <th>Trị Số Độ Đàn Hồi Gan (LSM)</th>
+                <th>Trị Số Tiểu Cầu (PLT) / SSM</th>
+                <th>Ý Nghĩa Lâm Sàng &amp; Hành Động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Loại trừ cACLD</strong></td>
+                <td><strong>&lt; 10 kPa</strong></td>
+                <td>Không yêu cầu</td>
+                <td>Loại trừ cACLD; nguy cơ tử vong 3 năm rất thấp (~1%).</td>
+              </tr>
+              <tr>
+                <td><strong>Xác chẩn cACLD</strong></td>
+                <td><strong>&gt; 15 kPa</strong></td>
+                <td>Không yêu cầu</td>
+                <td>Xác chẩn cACLD; chuyển chuyên khoa theo dõi sát.</td>
+              </tr>
+              <tr>
+                <td><strong>Loại trừ CSPH</strong></td>
+                <td><strong>≤ 15 kPa</strong></td>
+                <td><strong>Và</strong> Tiểu cầu <strong>≥ 150 G/L</strong></td>
+                <td>Loại trừ CSPH; áp dụng tiêu chuẩn Baveno VI để tránh nội soi tầm soát.</td>
+              </tr>
+              <tr>
+                <td><strong>Xác chẩn CSPH</strong></td>
+                <td><strong>≥ 25 kPa</strong></td>
+                <td>Không yêu cầu</td>
+                <td>Xác chẩn CSPH (xơ gan do rượu, virus, NASH không béo phì); khởi trị Carvedilol.</td>
+              </tr>
+              <tr>
+                <td><strong>Loại trừ CSPH bằng SSM</strong></td>
+                <td>Không yêu cầu</td>
+                <td><strong>SSM &lt; 21 kPa</strong> (bằng TE)</td>
+                <td>Loại trừ CSPH ở bệnh nhân cACLD do virus.</td>
+              </tr>
+              <tr>
+                <td><strong>Xác chẩn CSPH bằng SSM</strong></td>
+                <td>Không yêu cầu</td>
+                <td><strong>SSM &gt; 50 kPa</strong> (bằng TE)</td>
+                <td>Xác chẩn sự hiện diện của CSPH ở bệnh nhân cACLD do virus.</td>
+              </tr>
+              <tr>
+                <td><strong>Tránh nội soi bằng SSM</strong></td>
+                <td>Không dùng được NSBB &amp; có chỉ định soi theo Baveno VI</td>
+                <td><strong>SSM ≤ 40 kPa</strong> (bằng TE)</td>
+                <td>Xác suất rất thấp có varices nguy cơ cao; an toàn tránh nội soi tầm soát.</td>
+              </tr>
+              <tr>
+                <td><strong>Ngưng tầm soát sau SVR</strong></td>
+                <td><strong>&lt; 12 kPa</strong> (sau điều trị)</td>
+                <td><strong>Và</strong> Tiểu cầu <strong>&gt; 150 G/L</strong></td>
+                <td>Ngưng hoàn toàn tầm soát tăng áp cửa ở bệnh nhân HCV đã đạt SVR.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sec-subtitle">3. Bảng Hệ Thống: Tiêu Chí Chẩn Đoán Phân Biệt PSVD (Table 2 Baveno VII)</div>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 180px;">Nhóm Tiêu Chí</th>
+                <th>Biểu Hiện Tăng Áp Lực Tĩnh Mạch Cửa</th>
+                <th>Tổn Thương Mô Học Đặc Hiệu Gợi Ý PSVD (Sinh thiết gan &gt; 20 mm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tiêu chí đặc hiệu (Specific)</strong></td>
+                <td>• Giãn tĩnh mạch thực quản, dạ dày hoặc tĩnh mạch lạc chỗ.<br>• Xuất huyết tiêu hóa do tăng áp lực cửa.<br>• Tuần hoàn bàng hệ cửa - chủ trên hình ảnh học.</td>
+                <td>• <strong>Bệnh lý tắc nghẽn tĩnh mạch cửa</strong> (obliterative portal venopathy).<br>• <strong>Tăng sản nốt tái tạo</strong> (nodular regenerative hyperplasia).<br>• <strong>Xơ hóa vách không hoàn chỉnh</strong> (incomplete septal fibrosis / cirrhosis - đánh giá trên bệnh phẩm cắt bỏ).</td>
+              </tr>
+              <tr>
+                <td><strong>Tiêu chí không đặc hiệu (Non-specific)</strong></td>
+                <td>• Cổ trướng.<br>• Tiểu cầu &lt; 150 G/L.<br>• Lách to (đường kính trục lớn nhất ≥ 13 cm).</td>
+                <td>• Bất thường khoảng cửa (tăng sinh, giãn ĐM, kênh mạch máu quanh khoảng cửa).<br>• Rối loạn cấu trúc phân bố khoảng cửa - TM trung tâm.<br>• Giãn xoang gan không theo vùng; xơ hóa nhẹ quanh xoang.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="infobox teal">
+          <span class="infobox-icon">💡</span>
+          <div>
+            <strong>Quy tắc chẩn đoán PSVD:</strong> Sau khi sinh thiết gan (&gt; 20 mm) loại trừ hoàn toàn xơ gan thực thụ, chẩn đoán xác định khi thỏa mãn: (1) Có ít nhất 1 biểu hiện tăng áp cửa đặc hiệu, HOẶC (2) Có ít nhất 1 tổn thương mô học đặc hiệu, HOẶC (3) Có 1 biểu hiện tăng áp cửa không đặc hiệu ĐI KÈM 1 tổn thương mô học không đặc hiệu.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: XỬ TRÍ CẤP CỨU AVB & PRE-EMPTIVE TIPS -->
+    <div class="sec-card" id="sec-5">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🚨</span>
+          <h2 class="sec-title">V. Xử Trí Cấp Cứu Xuất Huyết Vỡ Giãn Tĩnh Mạch (AVB) &amp; TIPS Sớm</h2>
+        </div>
+        <span class="sec-badge">Session 6</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">1. Hồi Sức Bảo Tồn, Dược Lý &amp; Kiểm Soát Đông Máu</div>
+        <div class="grid-3col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">Hồi Sức Tuần Hoàn &amp; Hô Hấp</div>
+            <ul class="clin-card-list">
+              <li><strong>Mục tiêu Hb 7 – 8 g/dL:</strong> Hồi sức bảo tồn, tránh truyền dịch/máu quá mức gây tăng áp lực cửa dội ngược.</li>
+              <li><strong>Bảo vệ đường thở:</strong> Đặt nội khí quản chủ động trước soi nếu rối loạn ý thức hoặc nôn máu ồ ạt; rút NKQ sớm sau khi hoàn tất soi.</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-blue"></div>
+            <div class="clin-card-title">Vận Mạch &amp; Kháng Sinh</div>
+            <ul class="clin-card-list">
+              <li><strong>Vận mạch tạng:</strong> Terlipressin, Somatostatin hoặc Octreotide dùng ngay trước soi, duy trì <strong>2 – 5 ngày</strong>. Theo dõi sát Natri máu khi dùng Terlipressin.</li>
+              <li><strong>Kháng sinh dự phòng:</strong> <strong>Ceftriaxone 1g/24h TM</strong> ngay khi nhập viện.</li>
+              <li><strong>Ngưng PPI:</strong> Dừng PPI ngay sau soi trừ khi có loét đi kèm.</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">Thay Đổi Tư Duy Đông Máu</div>
+            <ul class="clin-card-list">
+              <li>Mục tiêu cốt lõi là <strong>hạ áp lực cửa</strong> chứ không phải sửa chỉ số đông máu (PT/INR không phản ánh chính xác cân bằng đông máu).</li>
+              <li><strong>CẤM TRUYỀN FFP:</strong> Huyết tương tươi làm tăng thể tích tuần hoàn quá mức, tăng áp cửa và thúc đẩy tái xuất huyết.</li>
+              <li>Không dùng rFVIIa và Tranexamic acid.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Lưu Đồ Cấp Cứu Xuất Huyết Do Vỡ Giãn Tĩnh Mạch (0h – 12h – 24h/72h)</div>
+        <div class="svg-diagram-card">
+          <svg viewBox="0 0 900 460" width="100%" height="auto" style="font-family:'Plus Jakarta Sans',sans-serif; display:block;">
+            <defs>
+              <marker id="arr2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent)" />
+              </marker>
+            </defs>
+            <!-- Step 1: Admission 0h -->
+            <rect x="250" y="15" width="400" height="60" rx="10" fill="var(--surface)" stroke="var(--red)" stroke-width="2"/>
+            <text x="450" y="38" fill="var(--red)" font-size="13" font-weight="800" text-anchor="middle">TIẾP NHẬN CẤP CỨU AVB (GIỜ THỨ 0)</text>
+            <text x="450" y="58" fill="var(--text-muted)" font-size="11" text-anchor="middle">Hb mục tiêu 7-8 g/dL • Vận mạch ngay • Ceftriaxone 1g TM • Đặt NKQ nếu cần</text>
+
+            <line x1="450" y1="75" x2="450" y2="105" stroke="var(--accent)" stroke-width="2" marker-end="url(#arr2)"/>
+
+            <!-- Step 2: Endoscopy within 12h -->
+            <rect x="275" y="105" width="350" height="50" rx="8" fill="var(--surface)" stroke="var(--blue)" stroke-width="2"/>
+            <text x="450" y="127" fill="var(--blue)" font-size="12.5" font-weight="800" text-anchor="middle">NỘI SOI DẠ DÀY TRONG VÒNG 12 GIỜ</text>
+            <text x="450" y="145" fill="var(--text-muted)" font-size="10.5" text-anchor="middle">Erythromycin 250mg TM trước soi 30-120p • Chụp CT/MRI cản quang bụng</text>
+
+            <!-- Branching Endoscopic Interventions -->
+            <line x1="450" y1="155" x2="250" y2="185" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr2)"/>
+            <line x1="450" y1="155" x2="650" y2="185" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+            <!-- Node: Esophageal -->
+            <rect x="120" y="185" width="260" height="55" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+            <text x="250" y="206" fill="var(--text)" font-size="11.5" font-weight="700" text-anchor="middle">GIÃN TM THỰC QUẢN</text>
+            <text x="250" y="225" fill="var(--green)" font-size="12" font-weight="800" text-anchor="middle">Thắt đai chun nội soi (EVL)</text>
+
+            <!-- Node: Gastric -->
+            <rect x="520" y="185" width="260" height="55" rx="8" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+            <text x="650" y="206" fill="var(--text)" font-size="11.5" font-weight="700" text-anchor="middle">GIÃN TM DẠ DÀY (IGV / GOV2)</text>
+            <text x="650" y="225" fill="var(--teal)" font-size="12" font-weight="800" text-anchor="middle">Tiêm Keo Sinh Học (Cyanoacrylate)</text>
+
+            <!-- Merge to Risk Stratification -->
+            <line x1="250" y1="240" x2="450" y2="270" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="650" y1="240" x2="450" y2="270" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="450" y1="270" x2="450" y2="290" stroke="var(--accent)" stroke-width="2" marker-end="url(#arr2)"/>
+
+            <!-- Node: Pre-emptive TIPS Evaluation -->
+            <rect x="250" y="290" width="400" height="40" rx="8" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+            <text x="450" y="315" fill="var(--text)" font-size="12" font-weight="800" text-anchor="middle">ĐÁNH GIÁ TIÊU CHÍ NGUY CƠ CAO (PRE-EMPTIVE TIPS)</text>
+
+            <!-- Risk Split -->
+            <line x1="350" y1="330" x2="220" y2="360" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr2)"/>
+            <line x1="550" y1="330" x2="680" y2="360" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+            <!-- High Risk: Pre-emptive TIPS -->
+            <rect x="70" y="360" width="300" height="85" rx="10" fill="var(--red-bg)" stroke="var(--red-light)" stroke-width="1.5"/>
+            <text x="220" y="380" fill="#991b1b" font-size="12" font-weight="800" text-anchor="middle">NGUY CƠ CAO: PRE-EMPTIVE TIPS</text>
+            <text x="220" y="398" fill="var(--text)" font-size="10.5" text-anchor="middle">• Child-Pugh C &lt; 14 điểm</text>
+            <text x="220" y="414" fill="var(--text)" font-size="10.5" text-anchor="middle">• Child-Pugh B &gt; 7 + Chảy máu hoạt động khi soi</text>
+            <text x="220" y="430" fill="var(--red)" font-size="11" font-weight="800" text-anchor="middle">Đặt TIPS Stent Phủ PTFE trong vòng 24 - 72 giờ</text>
+
+            <!-- Low Risk / Failure Salvage -->
+            <rect x="530" y="360" width="300" height="85" rx="10" fill="var(--green-bg)" stroke="var(--green-light)" stroke-width="1.5"/>
+            <text x="680" y="380" fill="#065f46" font-size="12" font-weight="800" text-anchor="middle">NGUY CƠ THẤP HOẶC THẤT BẠI CẦM MÁU</text>
+            <text x="680" y="398" fill="var(--text)" font-size="10.5" text-anchor="middle">• Nguy cơ thấp: Duy trì vận mạch 2-5 ngày + NSBB/EVL</text>
+            <text x="680" y="414" fill="var(--text)" font-size="10.5" text-anchor="middle">• Thất bại cầm máu: Đặt Stent SEMS / Bóng chèn</text>
+            <text x="680" y="430" fill="#b91c1c" font-size="11" font-weight="800" text-anchor="middle">Tiến hành TIPS Cứu Vãn (Salvage TIPS)</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: MẤT BÙ TIẾN TRIỂN, DỰ PHÒNG THỨ PHÁT & TÁI BÙ -->
+    <div class="sec-card" id="sec-6">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🔄</span>
+          <h2 class="sec-title">VI. Ngăn Ngừa Mất Bù Tiến Triển, Dự Phòng Thứ Phát &amp; Khái Niệm Tái Bù</h2>
+        </div>
+        <span class="sec-badge">Session 7</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">1. Định Nghĩa Mất Bù Tiến Triển &amp; Quản Lý Cổ Trướng</div>
+        <div class="grid-2col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">Mất Bù Tiến Triển (Further Decompensation)</div>
+            <ul class="clin-card-list">
+              <li>Xuất hiện <strong>biến cố mất bù thứ hai</strong> (cổ trướng, vỡ giãn TM, bệnh não gan rõ West Haven ≥ II, vàng da).</li>
+              <li>Biến cố tái phát nặng: Chảy máu tái phát, cổ trướng tái phát (chọc tháo LVP ≥ 3 lần/năm), não gan tái phát, SBP hoặc HRS-AKI.</li>
+              <li>Tỷ lệ tử vong tăng vọt; <strong>bắt buộc đánh giá chỉ định ghép gan</strong> cho mọi bệnh nhân.</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">Quản Lý &amp; Chỉnh Liều NSBB ở BN Cổ Trướng</div>
+            <ul class="clin-card-list">
+              <li><strong>Nội soi tầm soát:</strong> Bắt buộc nếu chưa dùng NSBB/Carvedilol. Nếu có varices, NSBB/Carvedilol được ưu tiên hơn EVL.</li>
+              <li><strong>Chỉnh liều:</strong> Giảm liều hoặc tạm ngưng NSBB nếu huyết áp thấp kéo dài (<strong>HATT &lt; 90 mmHg hoặc MAP &lt; 65 mmHg</strong>) hoặc xuất hiện HRS-AKI. Tái khởi động khi huyết áp hồi phục.</li>
+              <li><strong>TIPS cho cổ trướng:</strong> Đặt TIPS cho bệnh nhân cổ trướng tái phát (≥ 3 lần LVP/năm).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Dự Phòng Thứ Phát &amp; Tầm Soát Nhiễm Trùng Bắt Buộc</div>
+        <div class="grid-2col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-green"></div>
+            <div class="clin-card-title">Dự Phòng Thứ Phát Xuất Huyết Tái Phát</div>
+            <ul class="clin-card-list">
+              <li><strong>First-line:</strong> Phối hợp <strong>NSBB/Carvedilol VÀ Thắt đai chun nội soi (EVL)</strong>.</li>
+              <li><strong>TIPS:</strong> Lựa chọn hàng đầu cho bệnh nhân tái xuất huyết dù đã tuân thủ phối hợp thuốc và thắt chun.</li>
+              <li><strong>Bệnh dạ dày tăng áp cửa (PHG):</strong> NSBB là bước 1. Đặt TIPS nếu thiếu máu phụ thuộc truyền máu liên tục.</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">Gói Tầm Soát Nhiễm Trùng Hệ Thống 6 Thành Phần</div>
+            <ul class="clin-card-list">
+              <li>Mọi bệnh nhân xơ gan mất bù nhập viện bắt buộc tầm soát nhiễm trùng tối thiểu:</li>
+              <li>1. Chọc dịch màng bụng xét nghiệm tế bào &amp; protein.</li>
+              <li>2. Chụp X-quang phổi thẳng.</li>
+              <li>3. Cấy máu 2 vị trí. 4. Cấy dịch cổ trướng tại giường.</li>
+              <li>5. Tổng phân tích &amp; cấy nước tiểu. 6. Khám da toàn diện.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">3. Khái Niệm Mới Về "Tái Bù Trong Xơ Gan" (Cirrhosis Recompensation)</div>
+        <div class="svg-diagram-card">
+          <svg viewBox="0 0 900 240" width="100%" height="auto" style="font-family:'Plus Jakarta Sans',sans-serif; display:block;">
+            <defs>
+              <marker id="arr3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent)" />
+              </marker>
+            </defs>
+            <!-- Title -->
+            <rect x="250" y="10" width="400" height="36" rx="8" fill="var(--accent-gradient)"/>
+            <text x="450" y="33" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">3 TIÊU CHUẨN ĐỒNG THỜI ĐỂ XÁC ĐỊNH TÁI BÙ TRỪ (RECOMPENSATION)</text>
+
+            <line x1="450" y1="46" x2="160" y2="75" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr3)"/>
+            <line x1="450" y1="46" x2="450" y2="75" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr3)"/>
+            <line x1="450" y1="46" x2="740" y2="75" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr3)"/>
+
+            <!-- Pillar 1: Etiology -->
+            <rect x="30" y="75" width="260" height="110" rx="10" fill="var(--surface)" stroke="var(--blue)" stroke-width="1.5"/>
+            <text x="160" y="98" fill="var(--blue)" font-size="12" font-weight="800" text-anchor="middle">1. NGUYÊN NHÂN NỀN</text>
+            <text x="160" y="120" fill="var(--text)" font-size="10.5" text-anchor="middle">• Loại bỏ / khống chế hoàn toàn</text>
+            <text x="160" y="138" fill="var(--text)" font-size="10.5" text-anchor="middle">• SVR (HCV), ức chế HBV ổn định</text>
+            <text x="160" y="156" fill="var(--text)" font-size="10.5" text-anchor="middle">• Kiêng rượu tuyệt đối dài hạn</text>
+
+            <!-- Pillar 2: Clinical -->
+            <rect x="320" y="75" width="260" height="110" rx="10" fill="var(--surface)" stroke="var(--green)" stroke-width="1.5"/>
+            <text x="450" y="98" fill="var(--green)" font-size="12" font-weight="800" text-anchor="middle">2. LÂM SÀNG ỔN ĐỊNH</text>
+            <text x="450" y="120" fill="var(--text)" font-size="10.5" text-anchor="middle">• Sạch cổ trướng (đã ngưng lợi tiểu)</text>
+            <text x="450" y="138" fill="var(--text)" font-size="10.5" text-anchor="middle">• Hết não gan (ngưng Lactulose/Rifaximin)</text>
+            <text x="450" y="156" fill="var(--text)" font-size="10.5" text-anchor="middle">• Không tái xuất huyết ≥ 12 tháng</text>
+
+            <!-- Pillar 3: Hepatic Function -->
+            <rect x="610" y="75" width="260" height="110" rx="10" fill="var(--surface)" stroke="var(--purple)" stroke-width="1.5"/>
+            <text x="740" y="98" fill="var(--purple)" font-size="12" font-weight="800" text-anchor="middle">3. CHỨC NĂNG GAN HỒI PHỤC</text>
+            <text x="740" y="120" fill="var(--text)" font-size="10.5" text-anchor="middle">• Albumin máu tăng bền vững</text>
+            <text x="740" y="138" fill="var(--text)" font-size="10.5" text-anchor="middle">• INR giảm về ngưỡng bình thường</text>
+            <text x="740" y="156" fill="var(--text)" font-size="10.5" text-anchor="middle">• Bilirubin toàn phần giảm ổn định</text>
+
+            <!-- Warning note -->
+            <rect x="30" y="195" width="840" height="35" rx="6" fill="var(--orange-bg)" stroke="var(--orange-light)" stroke-width="1"/>
+            <text x="450" y="217" fill="#92400e" font-size="11" font-weight="700" text-anchor="middle">Lưu ý: Không tự ý ngưng NSBB nếu chưa có bằng chứng CSPH đã thoái lui; giải quyết cổ trướng bằng lợi tiểu/TIPS không coi là tái bù.</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 7: HUYẾT KHỐI TĨNH MẠCH TẠNG (SVT/BCS) & PSVD -->
+    <div class="sec-card" id="sec-7">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">🩸</span>
+          <h2 class="sec-title">VII. Huyết Khối Tĩnh Mạch Tạng (PVT/BCS) &amp; Bệnh Mạch Máu Cổng - Xoang (PSVD)</h2>
+        </div>
+        <span class="sec-badge">Sessions 8 &amp; 9</span>
+      </div>
+      <div class="sec-body">
+        <div class="sec-subtitle">1. Hội Chứng Budd-Chiari (BCS) &amp; PVT Không Do Xơ Gan</div>
+        <div class="grid-2col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-red"></div>
+            <div class="clin-card-title">Hội Chứng Budd-Chiari (BCS)</div>
+            <ul class="clin-card-list">
+              <li><strong>Chẩn đoán:</strong> Tắc nghẽn đường ra tĩnh mạch gan trên chẩn đoán hình ảnh (US, CT, MRI). Theo dõi các nốt tăng sản nhu mô gan mỗi <strong>6 tháng</strong> bằng siêu âm/MRI và AFP để tầm soát HCC.</li>
+              <li><strong>Xử trí bậc thang:</strong> Kháng đông dài hạn cho mọi bệnh nhân nguyên phát → Nong mạch / đặt stent đoạn hẹp ngắn → TIPS nếu thất bại hoặc không khả thi → Ghép gan nếu suy gan cấp hoặc điểm <strong>BCS-TIPS &gt; 7</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-teal"></div>
+            <div class="clin-card-title">PVT Không Do Xơ Gan</div>
+            <ul class="clin-card-list">
+              <li><strong>Phân loại:</strong> Cấp (&lt; 6 tháng) vs. Mạn (&gt; 6 tháng hoặc đã có biến đổi hang cavernoma).</li>
+              <li><strong>Điều trị kháng đông:</strong> Kháng đông liều đầy đủ ngay lập tức cho PVT cấp, duy trì tối thiểu <strong>6 tháng</strong> (hoặc suốt đời nếu có tình trạng tăng đông vĩnh viễn).</li>
+              <li><strong>Lựa chọn thuốc:</strong> Tránh UFH (ngừa HIT), ưu tiên <strong>LMWH chuyển sang VKA</strong>; có thể dùng DOACs ở ca chọn lọc.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sec-subtitle">2. Chỉ Định Kháng Đông Điều Trị PVT ở Bệnh Nhân Xơ Gan &amp; PSVD</div>
+        <div class="grid-2col" style="margin-bottom:1.25rem;">
+          <div class="clin-card">
+            <div class="clin-card-accent accent-orange"></div>
+            <div class="clin-card-title">3 Chỉ Định Kháng Đông PVT ở Xơ Gan</div>
+            <ul class="clin-card-list">
+              <li><strong>1. Cấp tính (&lt; 6 tháng)</strong> tắc hoàn toàn hoặc bán phần (&gt; 50%) thân tĩnh mạch cửa chính (có/không lan SMV).</li>
+              <li><strong>2. PVT có triệu chứng lâm sàng</strong> (bất kể mức độ tắc nghẽn).</li>
+              <li><strong>3. Bệnh nhân đang chờ ghép gan</strong> (bất kể mức độ tắc nghẽn) để bảo tồn lòng mạch khi phẫu thuật.</li>
+              <li><strong>Thời gian:</strong> Duy trì <strong>≥ 6 tháng</strong> hoặc đến khi tái thông; người chờ ghép gan duy trì liên tục. TIPS nếu không tái thông. DOACs an toàn Child A, thận trọng Child B, cấm Child C.</li>
+            </ul>
+          </div>
+
+          <div class="clin-card">
+            <div class="clin-card-accent accent-purple"></div>
+            <div class="clin-card-title">Đặc Điểm Quan Trọng Của PSVD</div>
+            <ul class="clin-card-list">
+              <li><strong>Bản chất:</strong> Bao gồm xơ hóa TMC vô căn (NCPF), tăng áp cửa vô căn (IPH), tăng sản nốt tái tạo (NRH).</li>
+              <li><strong>Yêu cầu mô học:</strong> Sinh thiết gan kích thước đủ lớn (<strong>&gt; 20 mm</strong>) đọc bởi chuyên gia giải phẫu bệnh để loại trừ xơ gan thực thụ.</li>
+              <li><strong>CẢNH BÁO NỘI SOI:</strong> Tiêu chuẩn Baveno VI (LSM &lt; 20 kPa, Tiểu cầu &gt; 150 G/L) <strong>KHÔNG ÁP DỤNG ĐƯỢC CHO PSVD</strong>. Mọi bệnh nhân PSVD đều bắt buộc phải nội soi dạ dày tầm soát tại thời điểm chẩn đoán.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 8: BEDSIDE BAVENO VII & AVB TRIAGE CALCULATOR -->
+    <div class="sec-card" id="sec-8">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">⚡</span>
+          <h2 class="sec-title">VIII. Bảng Kiểm Lâm Sàng &amp; Phân Tầng Baveno VII / AVB Triage (Bedside Tool)</h2>
+        </div>
+        <span class="sec-badge">Interactive Tool</span>
+      </div>
+      <div class="sec-body">
+        <div class="widget-box">
+          <div class="widget-header">
+            <div class="widget-title">
+              <span>🩺</span> Bộ Công Cụ Đánh Giá Nhanh Baveno VII Tại Giường Bệnh
+            </div>
+            <button class="btn" id="calc-reset" style="font-size:0.75rem; padding:0.3rem 0.75rem;">Làm Mới Dữ Liệu</button>
+          </div>
+
+          <div class="widget-grid">
+            <!-- Section A: Non-invasive Stratification -->
+            <div class="calc-section">
+              <div class="calc-section-title">📊 1. Phân Tầng cACLD &amp; Baveno VI</div>
+              <div class="calc-field">
+                <label for="lsm-input">Độ Đàn Hồi Gan (LSM bằng TE, kPa):</label>
+                <input type="number" id="lsm-input" min="2" max="75" step="0.5" value="14.5" placeholder="Ví dụ: 14.5">
+              </div>
+              <div class="calc-field">
+                <label for="plt-input">Số Lượng Tiểu Cầu (PLT, × 10⁹/L hoặc G/L):</label>
+                <input type="number" id="plt-input" min="10" max="600" step="5" value="165" placeholder="Ví dụ: 165">
+              </div>
+              <div class="calc-field">
+                <label for="ssm-input">Độ Đàn Hồi Lách (SSM bằng TE, kPa - nếu có):</label>
+                <input type="number" id="ssm-input" min="5" max="100" step="1" placeholder="Tùy chọn (Ví dụ: 35)">
+              </div>
+              <div class="calc-field">
+                <label class="calc-checkbox-label">
+                  <input type="checkbox" id="psvd-check"> Nghi ngờ Bệnh mạch máu cổng - xoang (PSVD)
+                </label>
+                <label class="calc-checkbox-label">
+                  <input type="checkbox" id="svr-check"> HCV đã đạt SVR hoặc HBV ức chế kéo dài
+                </label>
+              </div>
+            </div>
+
+            <!-- Section B: AVB Triage -->
+            <div class="calc-section">
+              <div class="calc-section-title">🚨 2. Phân Tầng Xuất Huyết Cấp (AVB)</div>
+              <div class="calc-field">
+                <label for="child-select">Phân Loại Child-Pugh:</label>
+                <select id="child-select">
+                  <option value="none">-- Không trong đợt xuất huyết cấp --</option>
+                  <option value="child-a">Child-Pugh A (5 - 6 điểm)</option>
+                  <option value="child-b-low">Child-Pugh B (7 điểm)</option>
+                  <option value="child-b-high">Child-Pugh B (&gt; 7 điểm: 8-9 điểm)</option>
+                  <option value="child-c-low">Child-Pugh C (10 - 13 điểm)</option>
+                  <option value="child-c-high">Child-Pugh C (≥ 14 điểm)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label class="calc-checkbox-label">
+                  <input type="checkbox" id="active-bleed-check"> Có Chảy Máu Hoạt Động Lúc Nội Soi
+                </label>
+                <label class="calc-checkbox-label">
+                  <input type="checkbox" id="hvpg-high-check"> Đo HVPG &gt; 20 mmHg lúc xuất huyết
+                </label>
+              </div>
+              <div class="calc-field">
+                <label for="nsbb-intol-check" class="calc-checkbox-label">
+                  <input type="checkbox" id="nsbb-intol-check"> Không Dung Nạp / Chống Chỉ Định Với NSBB
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Display Box -->
+          <div class="calc-result-box">
+            <div class="calc-result-header">KẾT QUẢ PHÂN TẦNG VÀ CHIẾN LƯỢC ĐIỀU TRỊ BAVENO VII:</div>
+            <div class="calc-result-badge res-safe" id="res-badge">🟢 ĐỦ TIÊU CHUẨN BAVENO VI: TRÁNH NỘI SOI SÀNG LỌC</div>
+            <div class="calc-result-advice" id="res-advice">
+              Bệnh nhân có LSM ≤ 15 kPa và Tiểu cầu ≥ 150 × 10⁹/L: Loại trừ nguy cơ tăng áp lực tĩnh mạch cửa có ý nghĩa lâm sàng (CSPH). Thỏa mãn tiêu chuẩn Baveno VI mở rộng để tránh nội soi dạ dày sàng lọc an toàn. Nguy cơ có búi giãn tĩnh mạch nguy cơ cao &lt; 5%.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 9: TÀI LIỆU THAM KHẢO AMA -->
+    <div class="sec-card" id="sec-9">
+      <div class="sec-hdr">
+        <div class="sec-hdr-left">
+          <span class="sec-hdr-icon">📚</span>
+          <h2 class="sec-title">IX. Tài Liệu Tham Khảo Chuẩn AMA (References)</h2>
+        </div>
+        <span class="sec-badge">Evidence Base</span>
+      </div>
+      <div class="sec-body">
+        <div class="citation-box">
+          <div class="citation-item">
+            <span class="citation-num">1.</span> de Franchis R, Bosch J, Garcia-Tsao G, Reiberger T, Ripoll C; Baveno VII Faculty. Baveno VII – Renewing consensus in portal hypertension: Report of the Baveno VII Consensus Workshop: Personalized care in portal hypertension. <em>J Hepatol</em>. 2022;76(4):959-974. doi:10.1016/j.jhep.2021.12.022.
+          </div>
+          <div class="citation-item">
+            <span class="citation-num">2.</span> European Association for the Study of the Liver (EASL). EASL Clinical Practice Guidelines for the management of patients with decompensated cirrhosis. <em>J Hepatol</em>. 2018;69(2):406-460.
+          </div>
+          <div class="citation-item">
+            <span class="citation-num">3.</span> Bosch J, Groszmann RJ, Shah VH. Evolution in the understanding of the pathophysiological basis of portal hypertension: How changes in paradigm led to changes in management. <em>J Hepatol</em>. 2015;62(1 Suppl):S121-S130.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <p>CliniPortal EBM Guideline Hub &copy; 2026 — Dữ liệu Y học chứng cứ Đồng thuận Baveno VII (2021/2022) phục vụ tra cứu thực hành lâm sàng.</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // Theme Toggle Logic
+    const themeBtn = document.getElementById('theme-btn');
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('cliniportal-theme', theme);
+      if (themeBtn) themeBtn.textContent = theme === 'dark' ? '☀️' : '🌓';
+    }
+
+    const savedTheme = localStorage.getItem('cliniportal-theme') || 'light';
+    applyTheme(savedTheme);
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = htmlEl.getAttribute('data-theme');
+        applyTheme(cur === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    // Bedside Calculator Logic
+    function calculateBaveno() {
+      const lsm = parseFloat(document.getElementById('lsm-input').value) || 0;
+      const plt = parseFloat(document.getElementById('plt-input').value) || 0;
+      const ssmVal = document.getElementById('ssm-input').value;
+      const ssm = ssmVal ? parseFloat(ssmVal) : null;
+      const isPsvd = document.getElementById('psvd-check').checked;
+      const isSvr = document.getElementById('svr-check').checked;
+      const child = document.getElementById('child-select').value;
+      const activeBleed = document.getElementById('active-bleed-check').checked;
+      const hvpgHigh = document.getElementById('hvpg-high-check').checked;
+      const nsbbIntol = document.getElementById('nsbb-intol-check').checked;
+
+      const resBadge = document.getElementById('res-badge');
+      const resAdvice = document.getElementById('res-advice');
+
+      // 1. AVB Emergency Check (Priority 1)
+      if (child !== 'none') {
+        const isPreemptiveTIPS = (child === 'child-c-low') || 
+                                 (child === 'child-b-high' && activeBleed) || 
+                                 hvpgHigh;
+        const isFutile = (child === 'child-c-high');
+
+        if (isFutile) {
+          resBadge.className = 'calc-result-badge res-danger';
+          resBadge.textContent = '⛔ NGUY CƠ TỬ VONG RẤT CAO: TIPS CÓ THỂ VÔ ÍCH (FUTILE)';
+          resAdvice.innerHTML = `Bệnh nhân có Child-Pugh ≥ 14 điểm. Nguy cơ thất bại rất cao. Đặt TIPS thường không đem lại lợi ích sống còn trừ khi có kế hoạch <strong>ghép gan khẩn cấp</strong>. Ưu tiên hồi sức bảo tồn (mục tiêu Hb 7-8 g/dL), duy trì vận mạch tạng và đặt stent SEMS hoặc bóng chèn nếu thất bại cầm máu.`;
+          return;
+        }
+
+        if (isPreemptiveTIPS) {
+          resBadge.className = 'calc-result-badge res-danger';
+          resBadge.textContent = '🚨 CHỈ ĐỊNH PRE-EMPTIVE TIPS SỚM TRONG VÒNG 24 - 72 GIỜ';
+          resAdvice.innerHTML = `Bệnh nhân thỏa tiêu chí nguy cơ cao thất bại điều trị (Child-Pugh C &lt; 14 điểm, Child-Pugh B &gt; 7 kèm chảy máu hoạt động lúc soi, hoặc HVPG &gt; 20 mmHg). <strong>Chỉ định đặt TIPS sớm bằng stent phủ PTFE trong vòng 72 giờ (lý tưởng nhất &lt; 24 giờ)</strong>. Tiếp tục dùng Ceftriaxone 1g/ngày và thuốc vận mạch tạng liên tục.`;
+          return;
+        }
+
+        resBadge.className = 'calc-result-badge res-warning';
+        resBadge.textContent = '⚠️ AVB NGUY CƠ THẤP/TRUNG BÌNH: ĐIỀU TRỊ NỘI KHOA & NỘI SOI TIÊU CHUẨN';
+        resAdvice.innerHTML = `Bệnh nhân xuất huyết vỡ giãn nhưng chưa thỏa tiêu chí Pre-emptive TIPS. Duy trì thuốc vận mạch (Terlipressin/Somatostatin/Octreotide) trong <strong>2 – 5 ngày</strong>, Ceftriaxone 1g/24h, thắt đai chun EVL định kỳ. Nếu thất bại cầm máu hoặc tái xuất huyết sớm → kích hoạt <strong>Salvage TIPS</strong>.`;
+        return;
+      }
+
+      // 2. PSVD Check
+      if (isPsvd) {
+        resBadge.className = 'calc-result-badge res-warning';
+        resBadge.textContent = '⚠️ BỆNH MẠCH MÁU CỔNG - XOANG (PSVD): BẮT BUỘC NỘI SOI TẦM SOÁT';
+        resAdvice.innerHTML = `Tiêu chuẩn không xâm lấn Baveno VI (LSM &lt; 20 kPa, Tiểu cầu &gt; 150 G/L) <strong>KHÔNG áp dụng được cho bệnh nhân PSVD</strong>. Bắt buộc thực hiện nội soi dạ dày sàng lọc varices tại thời điểm chẩn đoán và sinh thiết gan mảnh lớn (&gt; 20 mm) để loại trừ xơ gan.`;
+        return;
+      }
+
+      // 3. SVR Complete Exit Check
+      if (isSvr && lsm &lt; 12 && plt &gt; 150) {
+        resBadge.className = 'calc-result-badge res-safe';
+        resBadge.textContent = '🟢 ĐẠT TIÊU CHUẨN XUẤT VIỆN KHỎI TẦM SOÁT TĂNG ÁP CỬA';
+        resAdvice.innerHTML = `Bệnh nhân HCV đạt SVR với LSM &lt; 12 kPa và Tiểu cầu &gt; 150 × 10⁹/L: Nguy cơ mất bù gần như bằng 0. <strong>Có thể ngưng đo LSM và ngưng nội soi định kỳ</strong>. Tuy nhiên, vẫn bắt buộc duy trì chương trình tầm soát ung thư tế bào gan (HCC) mỗi 6 tháng.`;
+        return;
+      }
+
+      // 4. Rule-in CSPH Check
+      if (lsm >= 25) {
+        resBadge.className = 'calc-result-badge res-danger';
+        resBadge.textContent = '🔴 XÁC CHẨN CSPH (RULE-IN): KHỞI TRỊ CARVEDILOL NGAY';
+        resAdvice.innerHTML = `LSM ≥ 25 kPa xác định chắc chắn có Tăng áp lực tĩnh mạch cửa có ý nghĩa lâm sàng (CSPH). <strong>Chỉ định khởi trị Carvedilol ngay lập tức</strong> để ngăn ngừa đợt mất bù đầu tiên (cổ trướng). <em>Không cần thực hiện nội soi tầm soát nếu bệnh nhân dung nạp tốt với Carvedilol.</em>`;
+        return;
+      }
+
+      // 5. Rule-out CSPH / Baveno VI Check
+      if (lsm &lt; 20 &amp;&amp; plt >= 150) {
+        resBadge.className = 'calc-result-badge res-safe';
+        resBadge.textContent = '🟢 TIÊU CHUẨN BAVENO VI MỞ RỘNG: TRÁNH NỘI SOI AN TOÀN';
+        resAdvice.innerHTML = `Bệnh nhân có LSM &lt; 20 kPa và Tiểu cầu ≥ 150 × 10⁹/L. Thỏa mãn tiêu chuẩn Baveno VI mở rộng: <strong>Có thể tránh nội soi dạ dày sàng lọc an toàn</strong> (xác suất varices nguy cơ cao &lt; 5%). Theo dõi lại LSM và Tiểu cầu hàng năm.`;
+        return;
+      }
+
+      // 6. Spleen Stiffness (SSM) Support Check
+      if (ssm !== null &amp;&amp; ssm &lt;= 40) {
+        resBadge.className = 'calc-result-badge res-safe';
+        resBadge.textContent = '🟢 ĐỘ ĐÀN HỒI LÁCH SSM ≤ 40 kPa: TRÁNH NỘI SOI BỔ SUNG';
+        resAdvice.innerHTML = `Dù không thỏa Baveno VI thông thường nhưng đo được SSM ≤ 40 kPa: Xác suất mang búi giãn tĩnh mạch nguy cơ cao rất thấp. Bệnh nhân có thể an toàn tránh nội soi sàng lọc.`;
+        return;
+      }
+
+      // 7. Intermediate / High Risk needing EGD or Carvedilol
+      resBadge.className = 'calc-result-badge res-warning';
+      resBadge.textContent = '🟡 CÓ NGUY CƠ MANG VARICES NGUY CƠ CAO: CHỈ ĐỊNH NỘI SOI HOẶC CARVEDILOL';
+      resAdvice.innerHTML = `Bệnh nhân không thỏa mãn tiêu chuẩn Baveno VI mở rộng (LSM ≥ 20 kPa hoặc Tiểu cầu &lt; 150 × 10⁹/L). Có nguy cơ mang búi giãn tĩnh mạch nguy cơ cao. Khuyến cáo thực hiện <strong>nội soi dạ dày EGD sàng lọc</strong> hoặc đo độ đàn hồi lách (SSM) bổ sung. Nếu không nội soi được, cân nhắc chỉ định <strong>Carvedilol dự phòng</strong> nếu có dấu hiệu lâm sàng nghi ngờ CSPH.`;
+    }
+
+    // Attach Event Listeners to Bedside Form
+    const inputIds = ['lsm-input', 'plt-input', 'ssm-input', 'psvd-check', 'svr-check', 'child-select', 'active-bleed-check', 'hvpg-high-check', 'nsbb-intol-check'];
+    inputIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('change', calculateBaveno);
+      if (el && el.tagName === 'INPUT' && el.type === 'number') el.addEventListener('input', calculateBaveno);
+    });
+
+    const resetBtn = document.getElementById('calc-reset');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        document.getElementById('lsm-input').value = 14.5;
+        document.getElementById('plt-input').value = 165;
+        document.getElementById('ssm-input').value = '';
+        document.getElementById('psvd-check').checked = false;
+        document.getElementById('svr-check').checked = false;
+        document.getElementById('child-select').value = 'none';
+        document.getElementById('active-bleed-check').checked = false;
+        document.getElementById('hvpg-high-check').checked = false;
+        document.getElementById('nsbb-intol-check').checked = false;
+        calculateBaveno();
+      });
+    }
+
+    // Initial calculation
+    calculateBaveno();
+  </script>
+</body>
+</html>

@@ -203,7 +203,7 @@ updated: "2026-08-21"
 - [[SLB_Gan nhiễm mỡ_P2.md|SLB_Gan nhiễm mỡ_P2]]
 - [[SLB_Hội chứng Alagille_P1.md|SLB_Hội chứng Alagille_P1]]
 - [[SLB_Hội chứng Budd-Chiari (Huyết khối tĩnh mạch gan)_P1.md|SLB_Hội chứng Budd-Chiari (Huyết khối tĩnh mạch gan)_P1]]
-- [[SLB_Hội chứng Gilbert_P1.md|SLB_Hội chứng Gilbert_P1]]
+- [[SLB_Hội chứng Gilbert|SLB_Hội chứng Gilbert_P1]]
 - [[SLB_Hội chứng ruột ngắn_P1.md|SLB_Hội chứng ruột ngắn_P1]]
 - [[SLB_IBD_P1.md|SLB_IBD_P1]]
 - [[SLB_IBD_P2.md|SLB_IBD_P2]]
