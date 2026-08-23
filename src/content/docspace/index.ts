@@ -38,6 +38,7 @@ import { quickReferenceDrawer } from './features/quick-reference-drawer';
 import { drugIntelligencePanel } from './features/drug-intelligence-panel';
 import { calculatorPicker } from './features/calculator-picker';
 import { docSpaceSettingsModal } from './features/docspace-settings-modal';
+import { reactionChainDrawer } from './features/reaction-chain-drawer';
 
 // ─── Mount helper ─────────────────────────────────────────────────
 
@@ -75,6 +76,37 @@ function mountGlobalDocSpaceControls(): void {
   // Settings & Utilities Modal Trigger
   document.getElementById('dspHeaderSettingsBtn')?.addEventListener('click', () => {
     docSpaceSettingsModal.open();
+  });
+
+  // Reaction Chain Engine Drawer
+  document.getElementById('dspHeaderReactionChainBtn')?.addEventListener('click', () => {
+    const activePatient = (window as any).dsp_current_soap_patient || null;
+    if (activePatient) {
+      reactionChainDrawer.open(activePatient);
+    } else {
+      reactionChainDrawer.open({
+        id: 'desk_consultation',
+        patientCode: 'BN-KHAM',
+        bedNumber: 'PK-NgoạiTrú',
+        fullName: 'Bàn Khám Lâm Sàng',
+        age: 50,
+        gender: 'nam',
+        medicalRecordNo: 'HS-DESK',
+        admissionDiagnosis: 'Khám tổng quát',
+        currentDiagnosis: 'Khám tổng quát',
+        isEmrEntered: false,
+        soapStatus: 'chua_lam',
+        dayOfIllness: 1,
+        sNotes: '',
+        oNotes: '',
+        aAssessment: '',
+        pPlan: '',
+        clsOrders: [],
+        clsResults: [],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
+    }
   });
 
   // Quick Reference Drawer

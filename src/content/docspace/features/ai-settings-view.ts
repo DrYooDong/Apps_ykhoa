@@ -271,8 +271,8 @@ export function renderAISettingsView(profileId: string): string {
                       <i class="fa-solid fa-sparkles"></i>
                     </span>
                     <div>
-                      <h4 style="margin:0; color:#2563eb; font-weight:800; font-size:0.95rem;">Google Gemini AI Chuyên Trách (Clinical Insights &amp; EBM 1M Context)</h4>
-                      <div style="font-size:0.75rem; color:var(--color-text-muted);">Dành riêng cho tóm tắt tuần lâm sàng, phát hiện kiệt sức bác sĩ và phân tích khuyến cáo EBM.</div>
+                      <h4 style="margin:0; color:#2563eb; font-weight:800; font-size:0.95rem;">Google Gemini AI Chuyên Trách (CRCE v3.0 &amp; EBM 1M Context)</h4>
+                      <div style="font-size:0.75rem; color:var(--color-text-muted);">Cung cấp trí tuệ nhân tạo cho 5 Bước Chuỗi Phản Ứng Liên Hoàn (Symptom Analyzer, Auto Criteria Tick, Protocol Advisor, Drug Safety, Complications).</div>
                     </div>
                   </div>
                   <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="dsp-btn dsp-btn-ghost dsp-btn-sm" style="font-size:0.78rem; color:#2563eb; border-color:rgba(59,130,246,0.3);">
@@ -281,9 +281,9 @@ export function renderAISettingsView(profileId: string): string {
                 </div>
 
                 <div class="dsp-form-group" style="margin-bottom:0; margin-top:0.75rem;">
-                  <label class="dsp-label" for="geminiApiKey">Google Gemini API Key (Riêng biệt)</label>
+                  <label class="dsp-label" for="geminiApiKey">Google Gemini API Key (Dùng cho CRCE &amp; Insights)</label>
                   <div class="dsp-input-group">
-                    <input class="dsp-input" type="password" id="geminiApiKey" value="${escapeHtml(currentSettings.geminiApiKey || getGeminiApiKey(profile.id))}" placeholder="Dán AIzaSy... (Để trống nếu đã dùng Gemini ở Provider chính)" autocomplete="off" />
+                    <input class="dsp-input" type="password" id="geminiApiKey" value="${escapeHtml(currentSettings.geminiApiKey || getGeminiApiKey(profile.id) || '')}" placeholder="Dán Gemini API Key của bạn..." autocomplete="off" />
                     <button type="button" class="dsp-input-icon" id="toggleGeminiApiKey" title="Hiện/ẩn API Key">
                       <i class="fa-solid fa-eye"></i>
                     </button>

@@ -411,14 +411,20 @@ export class IcdPicker {
         </div>
 
         <!-- Footer Actions -->
-        <div style="padding:14px 20px; border-top:1px solid var(--color-border); background:var(--color-surface); display:flex; justify-content:space-between; align-items:center;">
+        <div style="padding:14px 20px; border-top:1px solid var(--color-border); background:var(--color-surface); display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
           <button id="btnQuickInsertOnly" class="dsp-btn dsp-btn-outline dsp-btn-sm">
-            Chỉ chèn Mã &amp; Tên bệnh
+            Chỉ chèn Mã &amp; Tên
           </button>
 
-          <button id="btnApplyOrderSet" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight:700; padding:8px 16px;">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Áp dụng Phác đồ vào Bệnh án SOAP
-          </button>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button id="btnOpenReactionChainFromIcd" class="dsp-btn dsp-btn-sm" style="background:linear-gradient(135deg, #0284c7, #6366f1); color:#fff; font-weight:700; border:none; padding:7px 12px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:5px;" title="Mở bảng kiểm tiêu chuẩn chẩn đoán và chuỗi phản ứng">
+              <i class="fa-solid fa-link"></i> 🔗 Chuỗi Phản Ứng (CRCE)
+            </button>
+
+            <button id="btnApplyOrderSet" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight:700; padding:8px 16px;">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Áp dụng Phác đồ vào SOAP
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -426,6 +432,39 @@ export class IcdPicker {
     document.getElementById('btnCloseIcdPicker')?.addEventListener('click', () => this.close());
     document.getElementById('btnBackToSearch')?.addEventListener('click', () => this.renderSearchMode());
     
+    document.getElementById('btnOpenReactionChainFromIcd')?.addEventListener('click', async () => {
+      this.close();
+      const { reactionChainDrawer } = await import('./reaction-chain-drawer');
+      // Lấy bệnh nhân hiện tại nếu có
+      const activePatient = (window as any).dsp_current_soap_patient || null;
+      if (activePatient) {
+        reactionChainDrawer.open(activePatient, r.code);
+      } else {
+        reactionChainDrawer.open({
+          id: 'temp_patient',
+          patientCode: 'BN-KHAM',
+          bedNumber: 'PK-NgoạiTrú',
+          fullName: 'Bệnh nhân đang khám',
+          age: 50,
+          gender: 'nam',
+          medicalRecordNo: 'HS-TEMP',
+          admissionDiagnosis: `${r.name} (${r.code})`,
+          currentDiagnosis: `${r.name} (${r.code})`,
+          isEmrEntered: false,
+          soapStatus: 'chua_lam',
+          dayOfIllness: 1,
+          sNotes: r.name,
+          oNotes: '',
+          aAssessment: `${r.name} (${r.code})`,
+          pPlan: '',
+          clsOrders: [],
+          clsResults: [],
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        }, r.code);
+      }
+    });
+
     document.getElementById('btnQuickInsertOnly')?.addEventListener('click', () => {
       this.quickInsertDisease(r);
     });

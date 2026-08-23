@@ -587,6 +587,10 @@ export function renderDocSpaceHeader(profile: DoctorProfile, activeId: string): 
       </div>
 
       <div class="dsp-header-right">
+        <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderReactionChainBtn" title="Chuỗi Phản Ứng Lâm Sàng (CRCE v2.0) — Triệu chứng ➔ Tiêu chuẩn CĐ ➔ Phác đồ ➔ Thuốc ➔ Biến chứng" style="color:#0284c7; background:rgba(2,132,199,0.1); border-radius:8px;">
+          <i class="fa-solid fa-link"></i>
+        </button>
+
         <button type="button" class="dsp-header-icon-btn dsp-header-desktop-only" id="dspHeaderQuickRefBtn" title="Tra cứu Siêu tốc: Công thức, ECG/ABG & ACLS" style="color:var(--color-primary, #0284c7);">
           <i class="fa-solid fa-bolt"></i>
         </button>

@@ -23,6 +23,7 @@ import { clinicalReasoningPanel } from './clinical-reasoning-panel';
 import { quickReferenceDrawer } from './quick-reference-drawer';
 import { calculatorPicker } from './calculator-picker';
 import { labDiagnosticsHub } from './lab-diagnostics-hub';
+import { reactionChainDrawer } from './reaction-chain-drawer';
 import { renderProtocolQuickApplyBtn, renderSoapToProtocolBtn, initSoapAiBridgeEvents } from './ai-soap-features';
 
 const ALERT_KEYWORDS = [
@@ -749,6 +750,9 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                 <span style="font-size:11px; font-weight:800; color:#92400e; text-transform:uppercase; letter-spacing:0.06em;">Đánh giá &amp; Chẩn đoán</span>
               </div>
               <div style="display:flex; gap:4px; flex-wrap:wrap; align-items:center;">
+                <button type="button" class="dsp-btn dsp-btn-sm" id="btnReactionChainSoap" style="background:linear-gradient(135deg, #0284c7, #6366f1); color:#fff; padding:3px 10px; font-size:10.5px; font-weight:700; height:auto; min-height:0; display:inline-flex; align-items:center; gap:5px; border:none; border-radius:6px; box-shadow:0 2px 4px rgba(2,132,199,0.25);" title="Kích hoạt Chuỗi Phản Ứng: Triệu chứng ➔ Tiêu chuẩn CĐ ➔ Phác đồ ➔ Thuốc ➔ Biến chứng">
+                  <i class="fa-solid fa-link"></i> 🔗 Chuỗi Phản Ứng (CRCE)
+                </button>
                 <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="assessment" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Trợ lý AI biện luận chẩn đoán">
                   <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
                 </button>
@@ -1813,6 +1817,60 @@ export function mountSoapController(profileId: string): void {
     const id = (document.getElementById('esPatientId') as HTMLInputElement)?.value;
     const p = id ? getSoapPatientById(profileId, id) : null;
     clinicalReasoningPanel.open('esAAssessment', p, defaultKey);
+  });
+
+  // Clinical Reaction Chain Engine (CRCE) Drawer
+  document.getElementById('btnReactionChainSoap')?.addEventListener('click', () => {
+    const id = (document.getElementById('esPatientId') as HTMLInputElement)?.value;
+    const p = id ? getSoapPatientById(profileId, id) : null;
+    if (p) {
+      p.sNotes = (document.getElementById('esSNotes') as HTMLTextAreaElement)?.value || p.sNotes;
+      p.oNotes = (document.getElementById('esONotes') as HTMLTextAreaElement)?.value || p.oNotes;
+      p.aAssessment = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value || p.aAssessment;
+      (window as any).dsp_current_soap_patient = p;
+
+      reactionChainDrawer.open(
+        p,
+        undefined,
+        (rxItems) => {
+          const container = document.getElementById('rxListContainer');
+          if (container) {
+            if (container.querySelector('.rx-empty-msg')) {
+              container.innerHTML = '';
+            }
+            rxItems.forEach(item => {
+              const div = document.createElement('div');
+              div.className = 'rx-item-row';
+              div.dataset.id = item.id;
+              div.innerHTML = `
+                <div>
+                  <input type="text" class="js-rx-name dsp-input" value="${escapeHtml(item.name)}" style="font-size:11px; padding:2px 4px; font-weight:bold; width:100%;" />
+                  <input type="text" class="js-rx-dosage dsp-input" value="${escapeHtml(item.dosage || '')}" placeholder="Hàm lượng" style="font-size:10px; padding:2px 4px; color:var(--color-text-muted); width:100%; margin-top:2px;" />
+                </div>
+                <input type="text" class="js-rx-route dsp-input" value="${escapeHtml(item.route || 'Uống')}" placeholder="Đường dùng" style="font-size:11px; padding:2px 4px;" />
+                <input type="text" class="js-rx-freq dsp-input" value="${escapeHtml(item.frequency || '')}" placeholder="Tần suất (VD: 1v x 2/ngày)" style="font-size:11px; padding:2px 4px;" />
+                <input type="text" class="js-rx-qty dsp-input" value="${escapeHtml(item.quantity || '')}" placeholder="SL (VD: 10 viên)" style="font-size:11px; padding:2px 4px;" />
+                <input type="text" class="js-rx-instr dsp-input" value="${escapeHtml(item.instructions || '')}" placeholder="Lời dặn (VD: Uống sau ăn)" style="font-size:11px; padding:2px 4px;" />
+                <button type="button" class="js-remove-rx dsp-icon-btn dsp-icon-btn--danger" style="padding:2px;" title="Xóa thuốc">&times;</button>
+              `;
+              container.appendChild(div);
+            });
+          }
+        },
+        (icdCode, diseaseName) => {
+          const aEl = document.getElementById('esAAssessment') as HTMLTextAreaElement | null;
+          if (aEl) {
+            const diagStr = `[Chẩn đoán xác định]: ${diseaseName} (${icdCode})`;
+            const cur = aEl.value.trim();
+            aEl.value = cur ? `${cur}\n${diagStr}` : diagStr;
+          }
+          const admDiag = document.getElementById('esAdmissionDiagnosis') as HTMLInputElement | null;
+          if (admDiag && !admDiag.value) {
+            admDiag.value = `${diseaseName} (${icdCode})`;
+          }
+        }
+      );
+    }
   });
 
   // Drug Intelligence & Kê đơn
