@@ -6001,3 +6001,47 @@ body.dsp-active .floating-action-dock,
   }
 }
 
+/* ==========================================================================
+   SBAR & A5 PRINT OPTIMIZATIONS (DOCSPACE)
+   ========================================================================== */
+@media print {
+  body.dsp-print-a5-mode {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  @page {
+    size: auto;
+    margin: 10mm;
+  }
+  body.dsp-print-a5-mode .dsp-sbar-preview-full {
+    padding: 0 !important;
+    max-width: 100% !important;
+    font-size: 10.5pt !important;
+  }
+  body.dsp-print-a5-mode .dsp-sbar-block {
+    margin-bottom: 6px !important;
+    padding: 6px 8px !important;
+    border-radius: 4px !important;
+    page-break-inside: avoid !important;
+  }
+  body.dsp-print-a5-mode .dsp-sbar-block-label {
+    font-size: 10.5pt !important;
+    font-weight: bold !important;
+    margin-bottom: 2px !important;
+  }
+  body.dsp-print-a5-mode .dsp-sbar-block-content {
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+  }
+}
+
+.dsp-patient-pick-item:hover {
+  background: rgba(2, 132, 199, 0.08) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.dsp-soap-pick-target:hover {
+  background: rgba(124, 58, 237, 0.08) !important;
+  border-color: #7c3aed !important;
+}
+

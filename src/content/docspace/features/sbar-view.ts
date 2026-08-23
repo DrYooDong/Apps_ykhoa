@@ -3,8 +3,11 @@
  * Soạn, xem và in báo cáo SBAR (Situation-Background-Assessment-Recommendation)
  */
 
-import { getAllSBARs, saveSBAR, updateSBAR, deleteSBAR, getSBARById } from '../storage';
-import { SBARRecord } from '../types';
+import { 
+  getAllSBARs, saveSBAR, updateSBAR, deleteSBAR, getSBARById,
+  getAllSoapPatients, updateSoapPatient, getAllShifts, saveCase, addSoapDailyLog
+} from '../storage';
+import { SBARRecord, SoapPatientRecord, OnCallShift } from '../types';
 import { renderSidebar, renderDocSpaceHeader, formatRelativeDate } from '../docspace-view';
 import { getActiveProfile } from '../storage';
 import { generateSBAR, critiqueSBARWithAI, SBARCritiqueResult } from '../ai/llm-client';
@@ -285,11 +288,13 @@ export async function renderSBARView(profileId: string, editId?: string): Promis
   
   const presetsHtml = `
     <div class="dsp-sbar-presets-container" style="margin-bottom: 1.25rem; background: var(--color-bg); padding: 0.875rem; border-radius: 8px; border: 1px solid var(--color-border);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 6px;">
         <span style="font-size: 0.85rem; font-weight: 700; color: var(--color-text); display: flex; align-items: center; gap: 6px;">
-          <i class="fa-solid fa-bolt" style="color: #eab308;"></i> Chọn nhanh mẫu SBAR lâm sàng:
+          <i class="fa-solid fa-bolt" style="color: #eab308;"></i> Chọn nhanh mẫu SBAR & Liên kết hồ sơ:
         </span>
-        <span style="font-size: 0.75rem; color: var(--color-text-muted);">(Tự động điền khung mẫu S-B-A-R)</span>
+        <button type="button" class="dsp-btn dsp-btn-sm" id="dspBtnOpenPatientPicker" ${isLocked ? 'disabled' : ''} style="background: #0284c7; color: #fff; border: none; font-size: 0.78rem; padding: 3px 10px; border-radius: 6px;">
+          <i class="fa-solid fa-hospital-user"></i> 👤 Nhập từ SOAP / Ca trực
+        </button>
       </div>
       <div class="dsp-preset-chips" style="display: flex; flex-wrap: wrap; gap: 6px;">
         ${SBAR_PRESETS.map(p => `
@@ -452,12 +457,18 @@ export async function renderSBARView(profileId: string, editId?: string): Promis
       </div>
 
       <div class="dsp-form-actions" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem;">
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
           <button type="button" class="dsp-btn dsp-btn-outline dsp-btn-sm" id="dspSBARCopyChatNow" style="color: #2563eb; border-color: #2563eb;" title="Sao chép nội dung đang soạn dạng tin nhắn Zalo/Telegram">
             <i class="fa-solid fa-share-nodes"></i> Sao chép Chat
           </button>
           <button type="button" class="dsp-btn dsp-btn-outline dsp-btn-sm" id="dspBtnCritiqueFooter" style="color: #ea580c; border-color: #ea580c;" title="AI Phản biện & Kiểm tra cờ đỏ">
-            <i class="fa-solid fa-shield-halved"></i> Phản biện SBAR
+            <i class="fa-solid fa-shield-halved"></i> Phản biện
+          </button>
+          <button type="button" class="dsp-btn dsp-btn-outline dsp-btn-sm" id="dspBtnExportCaseFromForm" style="color: #059669; border-color: #059669;" title="Lưu thành một ca lâm sàng trong Case Logger">
+            <i class="fa-solid fa-folder-plus"></i> Sang Case
+          </button>
+          <button type="button" class="dsp-btn dsp-btn-outline dsp-btn-sm" id="dspBtnExportSoapFromForm" style="color: #7c3aed; border-color: #7c3aed;" title="Đưa SBAR này vào Diễn tiến SOAP bệnh nhân">
+            <i class="fa-solid fa-clipboard-check"></i> Sang SOAP
           </button>
         </div>
         
@@ -527,11 +538,20 @@ export async function renderSBARView(profileId: string, editId?: string): Promis
                   <button class="dsp-btn dsp-btn-sm" id="dspCopyChatBtn" style="background:#2563eb; color:#fff; border:none;" title="Sao chép chuẩn gửi Zalo/Telegram">
                     <i class="fa-solid fa-share-nodes"></i> Copy Chat
                   </button>
+                  <button class="dsp-btn dsp-btn-sm dsp-btn-outline" id="dspShowQrBtn" style="color:#7c3aed; border-color:#7c3aed;" title="Hiển thị mã QR chia sẻ nhanh qua điện thoại">
+                    <i class="fa-solid fa-qrcode"></i> Mã QR
+                  </button>
+                  <button class="dsp-btn dsp-btn-sm dsp-btn-outline" id="dspExportCaseFromPreview" style="color:#059669; border-color:#059669;" title="Lưu ca này vào Case Logger">
+                    <i class="fa-solid fa-folder-plus"></i> Lưu Case
+                  </button>
                   <button class="dsp-btn dsp-btn-sm dsp-btn-outline" id="dspCopySmsBtn" title="Sao chép dạng tóm tắt 1 dòng SMS">
                     <i class="fa-solid fa-comment-sms"></i> SMS
                   </button>
                   <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspCopyBtn">
                     <i class="fa-regular fa-copy"></i> Sao chép
+                  </button>
+                  <button class="dsp-btn dsp-btn-outline dsp-btn-sm" id="dspPrintA5Btn" style="color:var(--color-primary); border-color:var(--color-primary);" title="In phiếu trình bệnh định dạng A5">
+                    <i class="fa-solid fa-file-lines"></i> In A5
                   </button>
                   <button class="dsp-btn dsp-btn-primary dsp-btn-sm" id="dspPrintBtn">
                     <i class="fa-solid fa-print"></i> In
@@ -581,6 +601,69 @@ export async function renderSBARView(profileId: string, editId?: string): Promis
               </div>
               <div class="dsp-modal-body" id="dspSBARCritiqueContent" style="max-height: 65vh; overflow-y: auto;">
                 <!-- Filled dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient Picker Modal (Import from SOAP / OnCall) -->
+          <div class="dsp-modal" id="dspSBARPatientPickerModal" style="display:none">
+            <div class="dsp-modal-backdrop" id="dspSBARPatientPickerBackdrop"></div>
+            <div class="dsp-modal-box dsp-modal-box--lg">
+              <div class="dsp-modal-header">
+                <h2 class="dsp-modal-title"><i class="fa-solid fa-hospital-user" style="color:#0284c7;"></i> Chọn Bệnh Nhân Từ SOAP / Ca Trực</h2>
+                <div class="dsp-modal-actions">
+                  <button class="dsp-icon-btn" id="dspClosePatientPicker"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+              </div>
+              <div class="dsp-modal-body" style="max-height: 70vh; overflow-y: auto;">
+                <div style="margin-bottom: 12px;">
+                  <input type="text" id="dspPatientSearchInput" class="dsp-input" placeholder="🔍 Tìm kiếm theo tên, mã bệnh nhân, số giường..." />
+                </div>
+                <div id="dspPatientPickerList" style="display: flex; flex-direction: column; gap: 8px;">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QR Code Modal -->
+          <div class="dsp-modal" id="dspSBARQrModal" style="display:none">
+            <div class="dsp-modal-backdrop" id="dspSBARQrBackdrop"></div>
+            <div class="dsp-modal-box" style="max-width: 380px; text-align: center;">
+              <div class="dsp-modal-header">
+                <h2 class="dsp-modal-title" style="font-size: 1.1rem;"><i class="fa-solid fa-qrcode" style="color:#7c3aed;"></i> Mã QR Chia Sẻ SBAR</h2>
+                <div class="dsp-modal-actions">
+                  <button class="dsp-icon-btn" id="dspCloseQrModal"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+              </div>
+              <div class="dsp-modal-body" style="padding: 1rem 0;">
+                <div id="dspQrImageContainer" style="display: flex; justify-content: center; margin-bottom: 1rem;">
+                  <!-- QR Image -->
+                </div>
+                <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0 1rem;">
+                  Đồng nghiệp có thể dùng Camera điện thoại hoặc Zalo quét mã QR này để nhận ngay báo cáo SBAR.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SOAP Target Selection Modal -->
+          <div class="dsp-modal" id="dspSBARSoapTargetModal" style="display:none">
+            <div class="dsp-modal-backdrop" id="dspSBARSoapTargetBackdrop"></div>
+            <div class="dsp-modal-box">
+              <div class="dsp-modal-header">
+                <h2 class="dsp-modal-title"><i class="fa-solid fa-clipboard-check" style="color:#7c3aed;"></i> Chọn Bệnh Nhân Ghi Diễn Tiến SOAP</h2>
+                <div class="dsp-modal-actions">
+                  <button class="dsp-icon-btn" id="dspCloseSoapTarget"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+              </div>
+              <div class="dsp-modal-body" style="max-height: 60vh; overflow-y: auto;">
+                <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 10px;">
+                  Chọn bệnh nhân để thêm nội dung SBAR này thành 1 ngày diễn tiến SOAP hôm nay:
+                </p>
+                <div id="dspSoapTargetList" style="display: flex; flex-direction: column; gap: 8px;">
+                  <!-- Dynamically populated -->
+                </div>
               </div>
             </div>
           </div>
@@ -742,14 +825,281 @@ export function mountSBARController(profileId: string): void {
       if (assElem) assElem.value = preset.assessment;
       if (recElem) recElem.value = preset.recommendation;
 
-      // Visual feedback
       const originalText = btn.innerHTML;
       btn.innerHTML = `<i class="fa-solid fa-check" style="color:#22c55e"></i> Đã áp dụng`;
       setTimeout(() => { btn.innerHTML = originalText; }, 1500);
     });
   });
 
-  // 3. AI Critique Handler
+  // 3. Patient Picker (Import from SOAP / On-Call Shifts)
+  document.getElementById('dspBtnOpenPatientPicker')?.addEventListener('click', async () => {
+    const modal = document.getElementById('dspSBARPatientPickerModal');
+    const listContainer = document.getElementById('dspPatientPickerList');
+    if (!modal || !listContainer) return;
+
+    listContainer.innerHTML = '<div style="text-align:center; padding:1.5rem;"><i class="fa-solid fa-spinner fa-spin"></i> Đang tải dữ liệu bệnh nhân...</div>';
+    modal.style.display = 'flex';
+
+    const soapPatients = await getAllSoapPatients(profileId);
+    const shifts = getAllShifts(profileId);
+    const activeShift = shifts.length ? shifts[0] : null;
+    const onCallPatients = activeShift ? activeShift.patients : [];
+
+    const renderList = (filterText = '') => {
+      const q = filterText.toLowerCase().trim();
+      let html = '';
+
+      // Section A: SOAP Patients
+      const filteredSoap = soapPatients.filter(p => 
+        !q || p.fullName.toLowerCase().includes(q) || p.patientCode.toLowerCase().includes(q) || p.bedNumber.toLowerCase().includes(q) || (p.currentDiagnosis || p.admissionDiagnosis).toLowerCase().includes(q)
+      );
+
+      html += `<div style="font-size:0.8rem; font-weight:700; color:var(--color-primary); margin-top:4px; margin-bottom:4px;"><i class="fa-solid fa-bed-pulse"></i> Bệnh nhân Bệnh phòng SOAP (${filteredSoap.length})</div>`;
+      if (filteredSoap.length) {
+        html += filteredSoap.map(p => `
+          <div class="dsp-card dsp-patient-pick-item" data-type="soap" data-id="${p.id}" style="padding:10px; cursor:pointer; border:1px solid var(--color-border); border-radius:6px; transition:background 0.2s;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-weight:700; color:var(--color-text);">${escapeHtml(p.fullName)} <span style="font-size:0.75rem; color:var(--color-text-muted);">(${p.patientCode} · ${p.age}t · Giường ${p.bedNumber})</span></span>
+              <span class="dsp-badge dsp-badge--active" style="font-size:0.7rem;">Ngày N${p.dayOfIllness || 1}</span>
+            </div>
+            <div style="font-size:0.82rem; color:var(--color-text-muted); margin-top:3px;">
+              <strong>Chẩn đoán:</strong> ${escapeHtml(p.currentDiagnosis || p.admissionDiagnosis || 'Chưa ghi')}
+            </div>
+          </div>
+        `).join('');
+      } else {
+        html += '<div style="font-size:0.8rem; color:var(--color-text-muted); padding:4px 0;">Không tìm thấy bệnh nhân SOAP phù hợp.</div>';
+      }
+
+      // Section B: OnCall Patients
+      const filteredOnCall = onCallPatients.filter(p => 
+        !q || p.bed.toLowerCase().includes(q) || p.diagnosis.toLowerCase().includes(q) || p.note.toLowerCase().includes(q)
+      );
+
+      html += `<div style="font-size:0.8rem; font-weight:700; color:#ea580c; margin-top:12px; margin-bottom:4px;"><i class="fa-solid fa-user-clock"></i> Bệnh nhân Ca trực gần nhất (${filteredOnCall.length})</div>`;
+      if (filteredOnCall.length) {
+        html += filteredOnCall.map(p => `
+          <div class="dsp-card dsp-patient-pick-item" data-type="oncall" data-id="${p.id}" style="padding:10px; cursor:pointer; border:1px solid var(--color-border); border-radius:6px; transition:background 0.2s;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-weight:700; color:var(--color-text);">Giường: ${escapeHtml(p.bed)}</span>
+              <span class="dsp-badge" style="font-size:0.7rem; background:${p.flag === 'critical' ? '#fee2e2' : p.flag === 'watch' ? '#ffedd5' : '#dcfce7'}; color:${p.flag === 'critical' ? '#dc2626' : p.flag === 'watch' ? '#ea580c' : '#16a34a'};">
+                ${p.flag === 'critical' ? '🔴 Nguy cấp' : p.flag === 'watch' ? '🟡 Theo dõi' : '🟢 Ổn định'}
+              </span>
+            </div>
+            <div style="font-size:0.82rem; color:var(--color-text-muted); margin-top:3px;">
+              <strong>Chẩn đoán:</strong> ${escapeHtml(p.diagnosis)}
+            </div>
+            ${p.note ? `<div style="font-size:0.78rem; color:var(--color-text-muted); margin-top:2px;"><em>Ghi chú: ${escapeHtml(p.note)}</em></div>` : ''}
+          </div>
+        `).join('');
+      } else {
+        html += '<div style="font-size:0.8rem; color:var(--color-text-muted); padding:4px 0;">Không có bệnh nhân trong ca trực gần nhất.</div>';
+      }
+
+      listContainer.innerHTML = html;
+
+      // Click event on cards
+      listContainer.querySelectorAll('.dsp-patient-pick-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const type = item.getAttribute('data-type');
+          const id = item.getAttribute('data-id');
+
+          if (type === 'soap') {
+            const p = soapPatients.find(x => x.id === id);
+            if (p) {
+              const titleElem = document.getElementById('dspSBARTitle') as HTMLInputElement;
+              const sitElem = document.getElementById('dspSBAR_situation') as HTMLTextAreaElement;
+              const bgElem = document.getElementById('dspSBAR_background') as HTMLTextAreaElement;
+              const assElem = document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement;
+              const recElem = document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement;
+
+              if (titleElem) titleElem.value = `[SBAR] BN ${p.fullName} (${p.patientCode}) - G.${p.bedNumber} (${p.currentDiagnosis || p.admissionDiagnosis})`;
+              if (sitElem) sitElem.value = `Bệnh nhân: ${p.fullName}, ${p.age} tuổi, Giường ${p.bedNumber}, Mã HS: ${p.medicalRecordNo || p.patientCode}.\nChẩn đoán hiện tại: ${p.currentDiagnosis || p.admissionDiagnosis}.\nNgày thứ N${p.dayOfIllness || 1} điều trị. Lý do liên hệ / Diễn biến mới:...`;
+              if (bgElem) {
+                const rxStr = (p.prescriptions || []).map((r: any) => `${r.name} ${r.dosage || ''}`).join(', ');
+                bgElem.value = `Bối cảnh & Bệnh sử:\n- Chẩn đoán vào viện: ${p.admissionDiagnosis}\n- Thuốc đang dùng: ${rxStr || 'Chưa ghi nhận'}\n- Diễn tiến cơ năng: ${p.sNotes || '—'}`;
+              }
+              if (assElem) {
+                const clsStr = (p.clsResults || []).map((c: any) => `${c.text}`).join('; ');
+                assElem.value = `Đánh giá hiện tại:\n- Khám thực thể: ${p.oNotes || '—'}\n- Đánh giá lâm sàng: ${p.aAssessment || '—'}${clsStr ? '\n- Cận lâm sàng: ' + clsStr : ''}`;
+              }
+              if (recElem) recElem.value = `Kế hoạch & Đề xuất:\n${p.pPlan || '1) Tiếp tục theo dõi sát sinh hiệu.\n2) Chỉ định thêm cận lâm sàng / hội chẩn...'}`;
+            }
+          } else if (type === 'oncall') {
+            const p = onCallPatients.find(x => x.id === id);
+            if (p) {
+              const titleElem = document.getElementById('dspSBARTitle') as HTMLInputElement;
+              const sitElem = document.getElementById('dspSBAR_situation') as HTMLTextAreaElement;
+              const bgElem = document.getElementById('dspSBAR_background') as HTMLTextAreaElement;
+              const assElem = document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement;
+              const recElem = document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement;
+
+              if (titleElem) titleElem.value = `[SBAR Ca trực] BN Giường ${p.bed} - ${p.diagnosis}`;
+              if (sitElem) sitElem.value = `Báo cáo BN Giường ${p.bed} (Mức độ ca trực: ${p.flag === 'critical' ? '🔴 CỰC KỲ NGUY CẤP' : p.flag === 'watch' ? '🟡 THEO DÕI SÁT' : '🟢 ỔN ĐỊNH'}).\nChẩn đoán: ${p.diagnosis}.\nDiễn biến mới cần xử trí:...`;
+              if (bgElem) bgElem.value = `Diễn tiến trong ca trực:\n${p.note || '—'}`;
+              if (assElem) assElem.value = `Đánh giá lâm sàng ca trực:\n${p.note || '—'}`;
+              if (recElem) recElem.value = `Đề xuất xử trí tiếp theo:\n1) Bác sĩ trực kiểm tra lại tại giường.\n2) ...`;
+            }
+          }
+
+          modal.style.display = 'none';
+        });
+      });
+    };
+
+    renderList();
+
+    document.getElementById('dspPatientSearchInput')?.addEventListener('input', (e) => {
+      renderList((e.target as HTMLInputElement).value);
+    });
+  });
+
+  document.getElementById('dspClosePatientPicker')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARPatientPickerModal');
+    if (modal) modal.style.display = 'none';
+  });
+
+  document.getElementById('dspSBARPatientPickerBackdrop')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARPatientPickerModal');
+    if (modal) modal.style.display = 'none';
+  });
+
+  // 4. Case Logger Bridge (Export SBAR to Case Record)
+  const exportSBARToCaseLogger = async (sourceRecord?: SBARRecord) => {
+    const title = sourceRecord ? sourceRecord.title : (document.getElementById('dspSBARTitle') as HTMLInputElement)?.value || '';
+    const situation = sourceRecord ? sourceRecord.situation : (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement)?.value || '';
+    const background = sourceRecord ? sourceRecord.background : (document.getElementById('dspSBAR_background') as HTMLTextAreaElement)?.value || '';
+    const assessment = sourceRecord ? sourceRecord.assessment : (document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement)?.value || '';
+    const recommendation = sourceRecord ? sourceRecord.recommendation : (document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement)?.value || '';
+
+    if (!situation && !assessment) {
+      alert('Cần có nội dung Situation hoặc Assessment để tạo Ca lâm sàng.');
+      return;
+    }
+
+    try {
+      await saveCase(profileId, {
+        date: new Date().toISOString().split('T')[0] || '2026-08-23',
+        context: 'duty',
+        chiefComplaint: situation || title || 'Trình bệnh SBAR',
+        objective: assessment || '—',
+        management: recommendation || '—',
+        diagnosisText: title || 'Ca cấp cứu / Bàn giao SBAR',
+        lesson: background ? `[Bối cảnh]: ${background}` : undefined,
+        outcome: 'Đã xử trí theo SBAR'
+      });
+
+      if (confirm('✅ Đã lưu thành công vào Nhật ký Ca lâm sàng (Case Logger)!\nBạn có muốn chuyển sang màn hình Nhật ký Ca bệnh để xem ngay không?')) {
+        window.location.hash = '#/docspace/cases';
+      }
+    } catch (err: any) {
+      alert('Lỗi lưu Case: ' + err.message);
+    }
+  };
+
+  document.getElementById('dspBtnExportCaseFromForm')?.addEventListener('click', () => exportSBARToCaseLogger());
+  document.getElementById('dspExportCaseFromPreview')?.addEventListener('click', () => {
+    if (currentPreviewRecord) exportSBARToCaseLogger(currentPreviewRecord);
+  });
+
+  // 5. SOAP Bridge (Export SBAR to Daily SOAP Note)
+  const openSoapTargetPicker = async (sourceRecord?: SBARRecord) => {
+    const situation = sourceRecord ? sourceRecord.situation : (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement)?.value || '';
+    const background = sourceRecord ? sourceRecord.background : (document.getElementById('dspSBAR_background') as HTMLTextAreaElement)?.value || '';
+    const assessment = sourceRecord ? sourceRecord.assessment : (document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement)?.value || '';
+    const recommendation = sourceRecord ? sourceRecord.recommendation : (document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement)?.value || '';
+    const title = sourceRecord ? sourceRecord.title : (document.getElementById('dspSBARTitle') as HTMLInputElement)?.value || 'Diễn tiến SBAR';
+
+    const modal = document.getElementById('dspSBARSoapTargetModal');
+    const listContainer = document.getElementById('dspSoapTargetList');
+    if (!modal || !listContainer) return;
+
+    const soapPatients = await getAllSoapPatients(profileId);
+    if (!soapPatients.length) {
+      alert('Chưa có bệnh nhân nào trong Sổ tay SOAP. Vui lòng tạo hồ sơ bệnh nhân trong phân hệ SOAP trước.');
+      return;
+    }
+
+    listContainer.innerHTML = soapPatients.map(p => `
+      <div class="dsp-card dsp-soap-pick-target" data-id="${p.id}" style="padding:10px; cursor:pointer; border:1px solid var(--color-border); border-radius:6px; transition:background 0.2s;">
+        <div style="font-weight:700; color:var(--color-text);">${escapeHtml(p.fullName)} (${p.patientCode} · G.${p.bedNumber})</div>
+        <div style="font-size:0.8rem; color:var(--color-text-muted);">${escapeHtml(p.currentDiagnosis || p.admissionDiagnosis)}</div>
+      </div>
+    `).join('');
+
+    modal.style.display = 'flex';
+
+    listContainer.querySelectorAll('.dsp-soap-pick-target').forEach(item => {
+      item.addEventListener('click', async () => {
+        const patientId = item.getAttribute('data-id');
+        if (!patientId) return;
+
+        try {
+          const todayStr = new Date().toISOString().split('T')[0] || '2026-08-23';
+          addSoapDailyLog(profileId, patientId, todayStr);
+          await updateSoapPatient(profileId, patientId, {
+            sNotes: `[SBAR Situation & Background]:\n${situation}\n${background}`.trim(),
+            oNotes: assessment || '—',
+            aAssessment: `[SBAR Assessment - ${title}]:\n${assessment}`.trim(),
+            pPlan: recommendation || '—',
+            soapStatus: 'da_lam'
+          });
+
+          modal.style.display = 'none';
+          if (confirm('✅ Đã cập nhật thành công Diễn tiến SOAP hôm nay cho bệnh nhân!\nBạn có muốn mở Sổ tay SOAP để xem ngay không?')) {
+            window.location.hash = `#/docspace/soap?patient=${patientId}`;
+          }
+        } catch (err: any) {
+          alert('Lỗi ghi SOAP: ' + err.message);
+        }
+      });
+    });
+  };
+
+  document.getElementById('dspBtnExportSoapFromForm')?.addEventListener('click', () => openSoapTargetPicker());
+  document.getElementById('dspCloseSoapTarget')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARSoapTargetModal');
+    if (modal) modal.style.display = 'none';
+  });
+  document.getElementById('dspSBARSoapTargetBackdrop')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARSoapTargetModal');
+    if (modal) modal.style.display = 'none';
+  });
+
+  // 6. QR Code Share Modal
+  document.getElementById('dspShowQrBtn')?.addEventListener('click', () => {
+    if (!currentPreviewRecord) return;
+    const chatText = formatSBARToChat(currentPreviewRecord, doctorName);
+    const qrContainer = document.getElementById('dspQrImageContainer');
+    const qrModal = document.getElementById('dspSBARQrModal');
+
+    if (qrContainer && qrModal) {
+      // Encode summary into clean QR Code URL (QuickChart / API QR standard)
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(chatText.slice(0, 900))}`;
+      qrContainer.innerHTML = `<img src="${qrUrl}" alt="SBAR QR Code" style="width:250px; height:250px; border:4px solid #fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15);" />`;
+      qrModal.style.display = 'flex';
+    }
+  });
+
+  document.getElementById('dspCloseQrModal')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARQrModal');
+    if (modal) modal.style.display = 'none';
+  });
+  document.getElementById('dspSBARQrBackdrop')?.addEventListener('click', () => {
+    const modal = document.getElementById('dspSBARQrModal');
+    if (modal) modal.style.display = 'none';
+  });
+
+  // 7. Print A5 Mode
+  document.getElementById('dspPrintA5Btn')?.addEventListener('click', () => {
+    document.body.classList.add('dsp-print-a5-mode');
+    window.print();
+    setTimeout(() => {
+      document.body.classList.remove('dsp-print-a5-mode');
+    }, 1000);
+  });
+
+  // 8. AI Critique Handler
   const triggerAICritique = async () => {
     const title = (document.getElementById('dspSBARTitle') as HTMLInputElement)?.value || '';
     const situation = (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement)?.value || '';
@@ -846,7 +1196,7 @@ export function mountSBARController(profileId: string): void {
       alert(err.message);
     } finally {
       if (btnHeader) { btnHeader.innerHTML = '<i class="fa-solid fa-shield-halved"></i> 🛡️ AI Phản biện SBAR'; btnHeader.disabled = false; }
-      if (btnFooter) { btnFooter.innerHTML = '<i class="fa-solid fa-shield-halved"></i> Phản biện SBAR'; btnFooter.disabled = false; }
+      if (btnFooter) { btnFooter.innerHTML = '<i class="fa-solid fa-shield-halved"></i> Phản biện'; btnFooter.disabled = false; }
     }
   };
 
@@ -863,7 +1213,7 @@ export function mountSBARController(profileId: string): void {
     if (modal) modal.style.display = 'none';
   });
 
-  // 4. Copy Chat Form Content Directly
+  // 9. Copy Chat Form Content Directly
   document.getElementById('dspSBARCopyChatNow')?.addEventListener('click', () => {
     const title = (document.getElementById('dspSBARTitle') as HTMLInputElement)?.value || 'Trình bệnh khẩn';
     const situation = (document.getElementById('dspSBAR_situation') as HTMLTextAreaElement)?.value || '';
@@ -901,7 +1251,7 @@ export function mountSBARController(profileId: string): void {
     });
   });
 
-  // 5. Voice-to-Text Web Speech API Handler
+  // 10. Voice-to-Text Web Speech API Handler
   let isRecording = false;
   let recognition: any = null;
 
@@ -969,7 +1319,7 @@ export function mountSBARController(profileId: string): void {
     }
   });
 
-  // 6. AI SBAR Generation
+  // 11. AI SBAR Generation
   document.getElementById('btnAIGenerateSBAR')?.addEventListener('click', async () => {
     const rawNotes = (document.getElementById('dspSBAR_RawNotes') as HTMLTextAreaElement)?.value.trim();
     if (!rawNotes) return;
@@ -996,7 +1346,6 @@ export function mountSBARController(profileId: string): void {
       (document.getElementById('dspSBAR_assessment') as HTMLTextAreaElement).value = assessmentStr;
       (document.getElementById('dspSBAR_recommendation') as HTMLTextAreaElement).value = recommendationStr;
       
-      // Save version if editId exists
       const editId = (document.getElementById('dspSBAREditId') as HTMLInputElement)?.value;
       if (editId) {
         const record = await getSBARById(profileId, editId);
@@ -1012,12 +1361,12 @@ export function mountSBARController(profileId: string): void {
     } catch (err: any) {
       alert(err.message);
     } finally {
-      btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Phân tích';
+      btn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> Phân tích AI SBAR';
       btn.disabled = false;
     }
   });
 
-  // 7. View History
+  // 12. View History
   document.getElementById('btnViewSBARHistory')?.addEventListener('click', () => {
     const modal = document.getElementById('dspSBARHistoryModal');
     if (modal) modal.style.display = 'flex';
@@ -1058,7 +1407,7 @@ export function mountSBARController(profileId: string): void {
     if (modal) modal.style.display = 'none';
   });
 
-  // 8. Save SBAR
+  // 13. Save SBAR
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     await submitSBAR(profileId, false);
@@ -1118,7 +1467,7 @@ export function mountSBARController(profileId: string): void {
   document.getElementById('dspSBARModalBackdrop')?.addEventListener('click', closePreview);
   document.getElementById('dspClosePreview')?.addEventListener('click', closePreview);
 
-  // Print
+  // Print Normal
   document.getElementById('dspPrintBtn')?.addEventListener('click', () => {
     window.print();
   });

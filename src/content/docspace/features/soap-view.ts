@@ -617,74 +617,106 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
   }).join('');
 
   return `
-    <div style="background:var(--color-surface); border-radius:14px; max-width:900px; width:100%; max-height:92vh; display:flex; flex-direction:column; box-shadow:0 20px 60px rgba(0,0,0,0.22); overflow:hidden; position:relative;">
+    <div style="background:var(--color-surface); border-radius:14px; max-width:920px; width:100%; max-height:92vh; display:flex; flex-direction:column; box-shadow:0 20px 60px rgba(0,0,0,0.25); overflow:hidden; position:relative;">
       
       <!-- Modal Header -->
-      <div style="padding:14px 20px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:linear-gradient(135deg,rgba(2,132,199,0.06),rgba(14,165,233,0.02)); flex-shrink:0;">
+      <div style="padding:12px 20px; border-bottom:1px solid var(--color-border); display:flex; justify-content:space-between; align-items:center; background:linear-gradient(135deg,rgba(2,132,199,0.06),rgba(14,165,233,0.02)); flex-shrink:0;">
         <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:38px; height:38px; border-radius:10px; background:linear-gradient(135deg,var(--color-primary),#0ea5e9); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 3px 8px rgba(2,132,199,0.3);">
-            <i class="fa-solid fa-notes-medical" style="color:#fff; font-size:16px;"></i>
+          <div style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--color-primary),#0ea5e9); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 3px 8px rgba(2,132,199,0.3);">
+            <i class="fa-solid fa-notes-medical" style="color:#fff; font-size:15px;"></i>
           </div>
           <div>
-            <h3 style="margin:0; font-size:16px; font-weight:800; color:var(--color-primary); line-height:1.2;">${p.patientCode} – ${p.fullName}</h3>
+            <h3 style="margin:0; font-size:15px; font-weight:800; color:var(--color-primary); line-height:1.2;">${escapeHtml(p.patientCode)} – ${escapeHtml(p.fullName)}</h3>
             <div style="font-size:11px; color:var(--color-text-muted); margin-top:2px; display:flex; align-items:center; gap:8px;">
               <span>${p.age}t · ${p.gender === 'nam' ? 'Nam' : 'Nữ'}</span>
               <span style="width:3px; height:3px; border-radius:50%; background:var(--color-border); display:inline-block;"></span>
-              <span>Giường <strong style="color:var(--color-text);">${p.bedNumber}</strong></span>
+              <span>Giường <strong style="color:var(--color-text);">${escapeHtml(p.bedNumber)}</strong></span>
               <span style="width:3px; height:3px; border-radius:50%; background:var(--color-border); display:inline-block;"></span>
-              <span>HS: ${p.medicalRecordNo}</span>
+              <span>HS: ${escapeHtml(p.medicalRecordNo || p.patientCode)}</span>
             </div>
           </div>
         </div>
-        <button id="btnCloseEditSoapModal" style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; width:32px; height:32px; font-size:18px; cursor:pointer; color:var(--color-text-muted); display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0;">&times;</button>
+        <button id="btnCloseEditSoapModal" style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; width:30px; height:30px; font-size:18px; cursor:pointer; color:var(--color-text-muted); display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0;">&times;</button>
       </div>
 
       <!-- Date Selector Bar -->
-      <div style="padding:8px 20px; background:var(--color-bg); border-bottom:1px solid var(--color-border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; flex-shrink:0;">
+      <div style="padding:6px 20px; background:var(--color-bg); border-bottom:1px solid var(--color-border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; flex-shrink:0;">
         <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
           <span style="font-size:11px; font-weight:700; color:var(--color-text-muted); display:flex; align-items:center; gap:4px; text-transform:uppercase; letter-spacing:0.04em;">
-            <i class="fa-solid fa-calendar-day" style="color:var(--color-primary);"></i> Ngày Diễn Tiến:
+            <i class="fa-solid fa-calendar-day" style="color:var(--color-primary);"></i> Ngày:
           </span>
           ${dateBadgesHtml}
         </div>
-        <button type="button" id="btnModalAddDate" data-id="${p.id}" class="dsp-btn dsp-btn-sm dsp-btn-ghost" style="color:var(--color-primary); border:1.5px dashed var(--color-primary); border-radius:8px; font-size:11px; padding:4px 10px;">
-          <i class="fa-solid fa-plus-circle"></i> + Thêm Ngày Diễn Tiến Mới
+        <button type="button" id="btnModalAddDate" data-id="${p.id}" class="dsp-btn dsp-btn-sm dsp-btn-ghost" style="color:var(--color-primary); border:1.5px dashed var(--color-primary); border-radius:6px; font-size:11px; padding:3px 8px;">
+          <i class="fa-solid fa-plus-circle"></i> + Thêm Ngày Diễn Tiến
         </button>
       </div>
 
+      <!-- Smart Clinical Action Header (Thanh Công Cụ Chuyên Môn Thông Minh) -->
+      <div class="dsp-soap-smart-toolbar" style="padding:6px 20px; background:var(--color-surface); border-bottom:1px solid var(--color-border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; flex-shrink:0;">
+        <div style="display:flex; gap:5px; align-items:center; flex-wrap:wrap;">
+          <span style="font-size:10px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-right:2px;">Chẩn đoán:</span>
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:#0284c7; padding:2px 7px; font-size:11px;" title="Tra cứu mã ICD-10">
+            <i class="fa-solid fa-list-ol"></i> ICD-10
+          </button>
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreSoap" style="color:#d97706; padding:2px 7px; font-size:11px;" title="Mở Thang điểm Lâm sàng (SOFA, CURB65, TIMI...)">
+            <i class="fa-solid fa-calculator"></i> Thang điểm
+          </button>
+          <button type="button" class="dsp-btn dsp-btn-sm" id="btnReactionChainSoap" style="background:linear-gradient(135deg, #0284c7, #6366f1); color:#fff; padding:2px 9px; font-size:11px; font-weight:700; border:none; border-radius:6px;" title="Kích hoạt Chuỗi Phản Ứng Lâm Sàng">
+            <i class="fa-solid fa-link"></i> Chuỗi CRCE
+          </button>
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnVaultKnowledgeSoap" style="color:var(--color-primary); padding:2px 7px; font-size:11px;" title="Kho Tri Thức Vault (2.330+ Bài)">
+            <i class="fa-solid fa-graduation-cap"></i> Vault Tri thức
+          </button>
+        </div>
+
+        <div style="display:flex; gap:5px; align-items:center; flex-wrap:wrap;">
+          <span style="font-size:10px; font-weight:700; color:var(--color-text-muted); text-transform:uppercase; margin-right:2px;">Dược &amp; CLS:</span>
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnDrugIntelSoap" style="color:#e11d48; padding:2px 7px; font-size:11px;" title="Tra cứu Dược thư &amp; Tương tác thuốc">
+            <i class="fa-solid fa-capsules"></i> Drug Intel
+          </button>
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnOpenLabFromO" style="color:#059669; padding:2px 7px; font-size:11px;" title="Kho Cận lâm sàng &amp; Bắt cờ đỏ">
+            <i class="fa-solid fa-flask-vial"></i> Tra cứu CLS
+          </button>
+          <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnQuickRefSoap" style="color:#7c3aed; padding:2px 7px; font-size:11px;" title="Cẩm nang Giường bệnh &amp; Công thức">
+            <i class="fa-solid fa-bolt"></i> Tra cứu nhanh
+          </button>
+        </div>
+      </div>
+
       <!-- Scrollable Body -->
-      <div style="padding:16px 20px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:12px;">
+      <div style="padding:14px 20px; overflow-y:auto; flex:1; display:flex; flex-direction:column; gap:10px;">
         <form id="formEditSoap">
           <input type="hidden" id="esPatientId" value="${p.id}" />
 
           <!-- Thông tin hành chính (collapsible) -->
-          <details style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; overflow:hidden; margin-bottom:4px;">
-            <summary style="font-size:12px; font-weight:700; color:var(--color-primary); cursor:pointer; user-select:none; display:flex; align-items:center; justify-content:space-between; padding:10px 14px; list-style:none;">
-              <span style="display:flex; align-items:center; gap:6px;"><i class="fa-solid fa-id-card"></i> Sửa thông tin hành chính (Mã BN, Tên, Tuổi, Giường, Chẩn đoán...)</span>
-              <span style="font-size:10px; color:var(--color-text-muted); font-weight:normal; background:var(--color-surface); padding:2px 8px; border-radius:8px; border:1px solid var(--color-border);">Bấm để mở rộng/thu gọn</span>
+          <details style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; overflow:hidden; margin-bottom:2px;">
+            <summary style="font-size:11.5px; font-weight:700; color:var(--color-primary); cursor:pointer; user-select:none; display:flex; align-items:center; justify-content:space-between; padding:8px 12px; list-style:none;">
+              <span style="display:flex; align-items:center; gap:6px;"><i class="fa-solid fa-id-card"></i> Thông tin hành chính &amp; Chẩn đoán vào viện</span>
+              <span style="font-size:10px; color:var(--color-text-muted); font-weight:normal; background:var(--color-surface); padding:1px 6px; border-radius:6px; border:1px solid var(--color-border);">Mở rộng</span>
             </summary>
-            <div style="padding:12px 14px; border-top:1px solid var(--color-border);">
-              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+            <div style="padding:10px 12px; border-top:1px solid var(--color-border);">
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:8px;">
                 <div>
-                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Mã BN / Ký hiệu *</label>
-                  <input type="text" id="esPatientCode" value="${p.patientCode || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:2px; color:var(--color-text-muted);">Mã BN / Ký hiệu *</label>
+                  <input type="text" id="esPatientCode" value="${escapeHtml(p.patientCode || '')}" required class="dsp-input" style="width:100%; font-size:12px;" />
                 </div>
                 <div>
-                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Số Giường *</label>
-                  <input type="text" id="esBedNumber" value="${p.bedNumber || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:2px; color:var(--color-text-muted);">Số Giường *</label>
+                  <input type="text" id="esBedNumber" value="${escapeHtml(p.bedNumber || '')}" required class="dsp-input" style="width:100%; font-size:12px;" />
                 </div>
                 <div>
-                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Họ và Tên *</label>
-                  <input type="text" id="esFullName" value="${p.fullName || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:2px; color:var(--color-text-muted);">Họ và Tên *</label>
+                  <input type="text" id="esFullName" value="${escapeHtml(p.fullName || '')}" required class="dsp-input" style="width:100%; font-size:12px;" />
                 </div>
               </div>
-              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:8px;">
                 <div>
-                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Tuổi *</label>
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:2px; color:var(--color-text-muted);">Tuổi *</label>
                   <input type="number" id="esAge" value="${p.age || 0}" required class="dsp-input" style="width:100%; font-size:12px;" />
                 </div>
                 <div>
-                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Giới tính</label>
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:2px; color:var(--color-text-muted);">Giới tính</label>
                   <select id="esGender" class="dsp-input" style="width:100%; font-size:12px;">
                     <option value="nam" ${p.gender === 'nam' ? 'selected' : ''}>Nam</option>
                     <option value="nu" ${p.gender === 'nu' ? 'selected' : ''}>Nữ</option>
@@ -692,209 +724,200 @@ function renderEditSoapModalContent(p: SoapPatientRecord): string {
                   </select>
                 </div>
                 <div>
-                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Số Bệnh Án</label>
-                  <input type="text" id="esMedicalRecordNo" value="${p.medicalRecordNo || ''}" class="dsp-input" style="width:100%; font-size:12px;" />
+                  <label style="font-size:11px; font-weight:600; display:block; margin-bottom:2px; color:var(--color-text-muted);">Số Bệnh Án</label>
+                  <input type="text" id="esMedicalRecordNo" value="${escapeHtml(p.medicalRecordNo || '')}" class="dsp-input" style="width:100%; font-size:12px;" />
                 </div>
               </div>
               <div>
-                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:3px; color:var(--color-text-muted);">Chẩn đoán vào khoa *</label>
-                <input type="text" id="esAdmissionDiagnosis" value="${p.admissionDiagnosis || ''}" required class="dsp-input" style="width:100%; font-size:12px;" />
+                <label style="font-size:11px; font-weight:600; display:block; margin-bottom:2px; color:var(--color-text-muted);">Chẩn đoán vào khoa *</label>
+                <input type="text" id="esAdmissionDiagnosis" value="${escapeHtml(p.admissionDiagnosis || '')}" required class="dsp-input" style="width:100%; font-size:12px;" />
               </div>
             </div>
           </details>
 
-          <!-- S & O — 2 cột -->
-          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:10px; overflow:hidden;">
-            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(2,132,199,0.08),rgba(14,165,233,0.03)); border-bottom:1px solid rgba(2,132,199,0.15); display:flex; align-items:center; gap:6px;">
-              <i class="fa-solid fa-comment-medical" style="color:var(--color-primary); font-size:12px;"></i>
-              <span style="font-size:11px; font-weight:800; color:var(--color-primary); text-transform:uppercase; letter-spacing:0.06em;">Diễn tiến (S &amp; O)</span>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr;">
-              <div style="padding:12px 14px; border-right:1px solid var(--color-border);">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                  <label style="font-size:12px; font-weight:700; color:var(--color-text); display:flex; align-items:center; gap:5px; margin:0;">
-                    <span style="background:var(--color-primary); color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">S</span>
-                    <span>Triệu chứng cơ năng</span>
-                  </label>
-                  <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="subjective" style="color:var(--color-primary); padding:1px 6px; font-size:10px; height:auto; min-height:0;">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI
+          <!-- 💡 Trung Tâm Hỗ Trợ Lâm Sàng & AI Co-Pilot Hợp Nhất (Unified Clinical Intelligence Hub) -->
+          <div id="soapUnifiedInsightContainer" style="display:none; background:var(--color-surface); border:1px solid var(--color-border); border-left:4px solid var(--color-primary); border-radius:8px; padding:10px 14px; margin-bottom:6px; box-shadow:0 2px 6px rgba(0,0,0,0.03);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <span style="font-size:11.5px; font-weight:800; color:var(--color-primary); display:flex; align-items:center; gap:5px;">
+                  <i class="fa-solid fa-brain"></i> Trung Tâm Phân Tích Thông Minh
+                </span>
+                <div style="display:inline-flex; background:var(--color-bg); border-radius:6px; padding:2px; gap:2px;">
+                  <button type="button" class="dsp-insight-tab-btn is-active" data-target="tabAiCoPilot" style="font-size:10px; font-weight:700; padding:2px 7px; border:none; border-radius:4px; background:var(--color-surface); color:var(--color-primary); cursor:pointer;">
+                    <i class="fa-solid fa-robot"></i> Trợ lý AI
+                  </button>
+                  <button type="button" class="dsp-insight-tab-btn" data-target="tabEbmGuideline" style="font-size:10px; font-weight:700; padding:2px 7px; border:none; border-radius:4px; background:transparent; color:var(--color-text-muted); cursor:pointer;">
+                    <i class="fa-solid fa-scale-balanced"></i> Khuyến cáo EBM
+                  </button>
+                  <button type="button" class="dsp-insight-tab-btn" data-target="tabVaultKnowledge" style="font-size:10px; font-weight:700; padding:2px 7px; border:none; border-radius:4px; background:transparent; color:var(--color-text-muted); cursor:pointer;">
+                    <i class="fa-solid fa-graduation-cap"></i> Bài giảng Vault
                   </button>
                 </div>
-                <textarea id="esSNotes" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; resize:vertical; border:none; background:transparent; padding:0;" placeholder="Triệu chứng chủ quan...">${p.sNotes || ''}</textarea>
               </div>
-              <div style="padding:12px 14px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                  <label style="font-size:12px; font-weight:700; color:var(--color-text); display:flex; align-items:center; gap:5px; margin:0;">
-                    <span style="background:#0ea5e9; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">O</span>
-                    <span>Thăm khám / CLS</span>
-                  </label>
-                  <div style="display:flex; gap:4px; align-items:center;">
-                    <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnOpenLabFromO" style="color:var(--color-primary); padding:1px 6px; font-size:10px; height:auto; min-height:0;" title="Mở Kho Cận Lâm Sàng &amp; Tra cứu Khoảng tham chiếu, ECG, X-quang">
-                      <i class="fa-solid fa-flask-vial"></i> Tra cứu CLS
-                    </button>
-                    <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="objective" style="color:var(--color-primary); padding:1px 6px; font-size:10px; height:auto; min-height:0;">
-                      <i class="fa-solid fa-wand-magic-sparkles"></i> AI
-                    </button>
-                  </div>
-                </div>
-                <textarea id="esONotes" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; resize:vertical; border:none; background:transparent; padding:0;" placeholder="Khám thực thể hoặc thả thẻ CLS...">${p.oNotes || ''}</textarea>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnApplyAiSuggestion" style="font-size:10px; padding:2px 8px;">
+                  <i class="fa-solid fa-check"></i> Áp dụng vào form
+                </button>
+                <button type="button" class="dsp-icon-btn" id="btnCloseUnifiedInsight" style="width:22px; height:22px; font-size:12px;" title="Thu gọn">&times;</button>
+              </div>
+            </div>
+
+            <!-- Tab 1: AI Co-Pilot -->
+            <div id="tabAiCoPilot" class="dsp-insight-tab-pane">
+              <div id="soapAiSuggestionText" style="font-size:12px; line-height:1.5; color:var(--color-text); white-space:pre-wrap; max-height:160px; overflow-y:auto;">
+                ⚡ Chưa có yêu cầu AI. Nhấn nút <strong>✨ AI</strong> ở góc ô S, O, A, P để nhận gợi ý phân tích.
+              </div>
+            </div>
+
+            <!-- Tab 2: EBM Guidelines -->
+            <div id="tabEbmGuideline" class="dsp-insight-tab-pane" style="display:none;">
+              <div id="soapEbmContextBar">
+                <span style="font-size:11px; color:var(--color-text-muted); font-style:italic;">Chưa phát hiện khuyến cáo EBM tương ứng.</span>
+              </div>
+            </div>
+
+            <!-- Tab 3: Vault Knowledge -->
+            <div id="tabVaultKnowledge" class="dsp-insight-tab-pane" style="display:none;">
+              <div id="soapVaultContextBar">
+                <span style="font-size:11px; color:var(--color-text-muted); font-style:italic;">Nhập chẩn đoán hoặc đánh giá để xem các bài giảng liên quan trong Vault.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- S & O — 2 cột Bento Grid -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <!-- S -->
+            <div style="background:var(--color-bg); border:1px solid rgba(2,132,199,0.25); border-radius:8px; overflow:hidden;">
+              <div style="padding:6px 12px; background:linear-gradient(135deg,rgba(2,132,199,0.08),rgba(14,165,233,0.03)); border-bottom:1px solid rgba(2,132,199,0.15); display:flex; align-items:center; justify-content:space-between;">
+                <label style="font-size:11.5px; font-weight:700; color:var(--color-text); display:flex; align-items:center; gap:5px; margin:0;">
+                  <span style="background:var(--color-primary); color:#fff; font-size:10px; font-weight:800; width:16px; height:16px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">S</span>
+                  <span>Triệu chứng cơ năng</span>
+                </label>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="subjective" style="color:var(--color-primary); padding:1px 5px; font-size:10px; height:auto; min-height:0;" title="Trợ lý AI gợi ý S">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> AI
+                </button>
+              </div>
+              <div style="padding:8px 12px;">
+                <textarea id="esSNotes" rows="3" class="dsp-input" style="width:100%; font-size:12.5px; line-height:1.45; resize:vertical; border:none; background:transparent; padding:0;" placeholder="Triệu chứng chủ quan, lý do than phiền...">${escapeHtml(p.sNotes || '')}</textarea>
+              </div>
+            </div>
+
+            <!-- O -->
+            <div style="background:var(--color-bg); border:1px solid rgba(14,165,233,0.25); border-radius:8px; overflow:hidden;">
+              <div style="padding:6px 12px; background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(56,189,248,0.03)); border-bottom:1px solid rgba(14,165,233,0.15); display:flex; align-items:center; justify-content:space-between;">
+                <label style="font-size:11.5px; font-weight:700; color:var(--color-text); display:flex; align-items:center; gap:5px; margin:0;">
+                  <span style="background:#0ea5e9; color:#fff; font-size:10px; font-weight:800; width:16px; height:16px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">O</span>
+                  <span>Thăm khám &amp; Cận lâm sàng</span>
+                </label>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="objective" style="color:#0ea5e9; padding:1px 5px; font-size:10px; height:auto; min-height:0;" title="Trợ lý AI gợi ý O">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> AI
+                </button>
+              </div>
+              <div style="padding:8px 12px;">
+                <textarea id="esONotes" rows="3" class="dsp-input" style="width:100%; font-size:12.5px; line-height:1.45; resize:vertical; border:none; background:transparent; padding:0;" placeholder="Dấu hiệu sinh tồn, khám thực thể...">${escapeHtml(p.oNotes || '')}</textarea>
               </div>
             </div>
           </div>
 
           <!-- A — Assessment -->
-          <div style="background:var(--color-bg); border:1px solid rgba(245,158,11,0.3); border-radius:10px; overflow:hidden;">
-            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(251,191,36,0.02)); border-bottom:1px solid rgba(245,158,11,0.2); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
-              <div style="display:flex; align-items:center; gap:6px;">
-                <span style="background:#f59e0b; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">A</span>
-                <span style="font-size:11px; font-weight:800; color:#92400e; text-transform:uppercase; letter-spacing:0.06em;">Đánh giá &amp; Chẩn đoán</span>
+          <div style="background:var(--color-bg); border:1px solid rgba(245,158,11,0.3); border-radius:8px; overflow:hidden;">
+            <div style="padding:6px 12px; background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(251,191,36,0.02)); border-bottom:1px solid rgba(245,158,11,0.2); display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:5px;">
+                <span style="background:#f59e0b; color:#fff; font-size:10px; font-weight:800; width:16px; height:16px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">A</span>
+                <span style="font-size:11.5px; font-weight:800; color:#92400e; text-transform:uppercase; letter-spacing:0.04em;">Đánh giá &amp; Biện luận chẩn đoán</span>
               </div>
-              <div style="display:flex; gap:4px; flex-wrap:wrap; align-items:center;">
-                <button type="button" class="dsp-btn dsp-btn-sm" id="btnReactionChainSoap" style="background:linear-gradient(135deg, #0284c7, #6366f1); color:#fff; padding:3px 10px; font-size:10.5px; font-weight:700; height:auto; min-height:0; display:inline-flex; align-items:center; gap:5px; border:none; border-radius:6px; box-shadow:0 2px 4px rgba(2,132,199,0.25);" title="Kích hoạt Chuỗi Phản Ứng: Triệu chứng ➔ Tiêu chuẩn CĐ ➔ Phác đồ ➔ Thuốc ➔ Biến chứng">
-                  <i class="fa-solid fa-link"></i> 🔗 Chuỗi Phản Ứng (CRCE)
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="assessment" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Trợ lý AI biện luận chẩn đoán">
-                  <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnIcdSoap" style="color:#0284c7; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Tra cứu mã ICD-10 &amp; Phác đồ điều trị chuẩn">
-                  <i class="fa-solid fa-list-ol"></i> + ICD-10
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnScoreSoap" style="color:#d97706; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Kho Thang điểm Lâm sàng (SOFA, CURB65, CHA2DS2-VASc...)">
-                  <i class="fa-solid fa-calculator"></i> + Thang điểm
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm" id="btnVaultKnowledgeSoap" style="background:rgba(2,132,199,0.1); color:var(--color-primary); border:1px solid var(--color-primary); padding:2px 9px; font-size:10px; font-weight:700; height:auto; min-height:0; display:inline-flex; align-items:center; gap:5px;" title="Tra cứu Toàn bộ Kho Tri Thức (Chẩn đoán, Tiếp cận, ICD-10, Thang điểm, EBM)">
-                  <i class="fa-solid fa-graduation-cap"></i> Kho Tri Thức Vault
-                </button>
-              </div>
+              <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="assessment" style="color:#d97706; padding:1px 6px; font-size:10px; height:auto; min-height:0;" title="Trợ lý AI biện luận chẩn đoán">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> AI Biện Luận
+              </button>
             </div>
-
-            <div style="padding:12px 14px;">
-              <textarea id="esAAssessment" rows="4" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Biện luận lâm sàng, chẩn đoán xác định và phân tầng nguy cơ...">${p.aAssessment || ''}</textarea>
-              <!-- Real-time Contextual EBM Suggestion Bar -->
-              <div id="soapEbmContextBar" style="display:none;"></div>
-              <!-- Real-time Contextual Vault Knowledge Suggestion Bar -->
-              <div id="soapVaultContextBar" style="display:none; margin-top:8px; padding:6px 10px; background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px;"></div>
+            <div style="padding:8px 12px;">
+              <textarea id="esAAssessment" rows="3" class="dsp-input" style="width:100%; font-size:12.5px; line-height:1.45; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Chẩn đoán xác định, phân tầng nguy cơ và biện luận lâm sàng...">${escapeHtml(p.aAssessment || '')}</textarea>
             </div>
           </div>
 
-          <!-- AI Co-Pilot Box -->
-          <div id="soapAiSuggestionBox" style="display:none; padding:12px 14px; border-radius:10px; border:1.5px dashed var(--color-primary); background:rgba(2,132,199,0.03);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-              <span style="font-size:12px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:6px;">
-                <i class="fa-solid fa-robot"></i> Trợ lý AI Lâm sàng (Co-Pilot)
-              </span>
-              <div style="display:flex; gap:6px;">
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnApplyAiSuggestion" style="font-size:11px; padding:2px 8px;">
-                  <i class="fa-solid fa-check"></i> Áp dụng vào form
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnCloseAiSuggestion" style="font-size:11px; padding:2px 6px;">&times;</button>
+          <!-- P — Plan & Treatment -->
+          <div style="background:var(--color-bg); border:1px solid rgba(16,185,129,0.3); border-radius:8px; overflow:hidden;">
+            <div style="padding:6px 12px; background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(52,211,153,0.02)); border-bottom:1px solid rgba(16,185,129,0.2); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
+              <div style="display:flex; align-items:center; gap:5px;">
+                <span style="background:#10b981; color:#fff; font-size:10px; font-weight:800; width:16px; height:16px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">P</span>
+                <span style="font-size:11.5px; font-weight:800; color:#065f46; text-transform:uppercase; letter-spacing:0.04em;">Y lệnh điều trị, Chăm sóc &amp; Dinh dưỡng</span>
               </div>
-            </div>
-            <div id="soapAiSuggestionText" style="font-size:12px; line-height:1.5; color:var(--color-text); white-space:pre-wrap; max-height:200px; overflow-y:auto;">
-              Đang kết nối AI...
-            </div>
-          </div>
-
-          <!-- P — Y lệnh khác -->
-          <div style="background:var(--color-bg); border:1px solid rgba(16,185,129,0.3); border-radius:10px; overflow:hidden;">
-            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(52,211,153,0.02)); border-bottom:1px solid rgba(16,185,129,0.2); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
-              <div style="display:flex; align-items:center; gap:6px;">
-                <span style="background:#10b981; color:#fff; font-size:10px; font-weight:800; width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">P</span>
-                <span style="font-size:11px; font-weight:800; color:#065f46; text-transform:uppercase; letter-spacing:0.06em;">Y lệnh khác (Chăm sóc, Dinh dưỡng...)</span>
-              </div>
-              <div style="display:flex; gap:4px; flex-wrap:wrap;">
+              <div style="display:flex; gap:4px; align-items:center;">
                 ${renderProtocolQuickApplyBtn()}
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="plan" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;">
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost js-ai-suggest" data-field="plan" style="color:#059669; padding:1px 6px; font-size:10px; height:auto; min-height:0;" title="Trợ lý AI gợi ý kế hoạch">
                   <i class="fa-solid fa-wand-magic-sparkles"></i> AI Gợi ý
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnDrugIntelSoap" style="color:#e11d48; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Mở Drug Intelligence Panel (Tra cứu Dược thư &amp; Kiểm tra tương tác thuốc)">
-                  <i class="fa-solid fa-capsules"></i> Drug Intelligence
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnPrescribeSoap" style="color:#0284c7; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Kê đơn thuốc nhanh vào ô P">
-                  <i class="fa-solid fa-plus"></i> + Kê đơn
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnQuickRefSoap" style="color:var(--color-primary); padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Tra cứu nhanh công thức &amp; hướng dẫn">
-                  <i class="fa-solid fa-bolt"></i> Tra cứu nhanh
-                </button>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnInsertVaultCitationSoap" style="color:#8b5cf6; padding:2px 7px; font-size:10px; height:auto; min-height:0;" title="Chèn trích dẫn phác đồ/hướng dẫn từ Kho Tri Thức">
-                  <i class="fa-solid fa-quote-right"></i> + Trích dẫn Vault
                 </button>
               </div>
             </div>
-            <div style="padding:12px 14px;">
-              <textarea id="esPPlan" rows="3" class="dsp-input" style="width:100%; font-size:13px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;">${p.pPlan || ''}</textarea>
+            <div style="padding:8px 12px;">
+              <textarea id="esPPlan" rows="3" class="dsp-input" style="width:100%; font-size:12.5px; line-height:1.45; border:none; background:transparent; padding:0; resize:vertical;" placeholder="Y lệnh chăm sóc, chế độ ăn, theo dõi sinh hiệu, xét nghiệm tiếp theo...">${escapeHtml(p.pPlan || '')}</textarea>
             </div>
           </div>
 
           <!-- eRx — Đơn thuốc điện tử -->
-          <div style="background:var(--color-bg); border:1px solid rgba(139,92,246,0.3); border-radius:10px; overflow:hidden;">
-            <div style="padding:8px 14px; background:linear-gradient(135deg,rgba(139,92,246,0.07),rgba(167,139,250,0.02)); border-bottom:1px solid rgba(139,92,246,0.18); display:flex; align-items:center; justify-content:space-between;">
-              <div style="display:flex; align-items:center; gap:6px;">
-                <i class="fa-solid fa-prescription-bottle-medical" style="color:#7c3aed; font-size:13px;"></i>
-                <span style="font-size:11px; font-weight:800; color:#5b21b6; text-transform:uppercase; letter-spacing:0.06em;">Đơn thuốc điện tử (e-Prescribing / eRx)</span>
+          <div style="background:var(--color-bg); border:1px solid rgba(139,92,246,0.3); border-radius:8px; overflow:hidden;">
+            <div style="padding:6px 12px; background:linear-gradient(135deg,rgba(139,92,246,0.07),rgba(167,139,250,0.02)); border-bottom:1px solid rgba(139,92,246,0.18); display:flex; align-items:center; justify-content:space-between;">
+              <div style="display:flex; align-items:center; gap:5px;">
+                <i class="fa-solid fa-prescription-bottle-medical" style="color:#7c3aed; font-size:12px;"></i>
+                <span style="font-size:11px; font-weight:800; color:#5b21b6; text-transform:uppercase; letter-spacing:0.04em;">Đơn thuốc điện tử (e-Prescribing / eRx)</span>
               </div>
-              <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnOpenRxPicker" style="font-size:11px; padding:3px 10px; background:#7c3aed; border-color:#7c3aed;">
+              <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnOpenRxPicker" style="font-size:10.5px; padding:2px 8px; background:#7c3aed; border-color:#7c3aed;">
                 <i class="fa-solid fa-plus"></i> + Kê thuốc từ Từ điển
               </button>
             </div>
-            <div id="rxListContainer" style="padding:10px 14px; display:flex; flex-direction:column; gap:5px; min-height:40px;">
+            <div id="rxListContainer" style="padding:8px 12px; display:flex; flex-direction:column; gap:4px; min-height:36px;">
               ${renderRxItemsList(p.prescriptions || [])}
             </div>
           </div>
 
-          <!-- CLS Chỉ định & Kết quả nhanh (Tích hợp Lab Diagnostics Hub) -->
+          <!-- CLS Chỉ định & Kết quả nhanh -->
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <div style="background:var(--color-bg); border:1px solid rgba(14,165,233,0.25); border-radius:10px; overflow:hidden;">
-              <div style="padding:7px 14px; background:linear-gradient(135deg,rgba(14,165,233,0.07),transparent); border-bottom:1px solid rgba(14,165,233,0.15); display:flex; align-items:center; justify-content:space-between;">
-                <div style="display:flex; align-items:center; gap:5px;">
+            <div style="background:var(--color-bg); border:1px solid rgba(14,165,233,0.25); border-radius:8px; overflow:hidden;">
+              <div style="padding:6px 12px; background:linear-gradient(135deg,rgba(14,165,233,0.07),transparent); border-bottom:1px solid rgba(14,165,233,0.15); display:flex; align-items:center; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:4px;">
                   <i class="fa-solid fa-flask-vial" style="color:#0369a1; font-size:11px;"></i>
                   <span style="font-size:11px; font-weight:800; color:#0369a1; text-transform:uppercase; letter-spacing:0.04em;">Chỉ định CLS</span>
                 </div>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnOpenLabOrderSets" style="color:#0284c7; padding:1px 6px; font-size:10px; height:auto; min-height:0;" title="Mở danh mục Gói Chỉ Định Xét Nghiệm (Cấp cứu, Sepsis, ACS, Viêm phổi...)">
-                  <i class="fa-solid fa-list-check"></i> + Gói Chỉ Định CLS
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-ghost" id="btnOpenLabOrderSets" style="color:#0284c7; padding:1px 5px; font-size:10px; height:auto; min-height:0;" title="Mở danh mục Gói Chỉ Định Xét Nghiệm">
+                  <i class="fa-solid fa-list-check"></i> + Gói Chỉ Định
                 </button>
               </div>
-              <div style="padding:10px 14px;">
-                <textarea id="esClsOrders" rows="3" placeholder="VD: CTM, Sinh hóa máu, XQ Ngực thẳng..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;">${(p.clsOrders || []).map(o => o.name).join('\n')}</textarea>
+              <div style="padding:8px 12px;">
+                <textarea id="esClsOrders" rows="2" placeholder="VD: CTM, Sinh hóa máu, XQ Ngực..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.4; border:none; background:transparent; padding:0; resize:vertical;">${escapeHtml((p.clsOrders || []).map(o => o.name).join('\n'))}</textarea>
               </div>
             </div>
-            <div style="background:var(--color-bg); border:1px solid rgba(16,185,129,0.25); border-radius:10px; overflow:hidden;">
-              <div style="padding:7px 14px; background:linear-gradient(135deg,rgba(16,185,129,0.07),transparent); border-bottom:1px solid rgba(16,185,129,0.15); display:flex; align-items:center; justify-content:space-between;">
-                <div style="display:flex; align-items:center; gap:5px;">
+            <div style="background:var(--color-bg); border:1px solid rgba(16,185,129,0.25); border-radius:8px; overflow:hidden;">
+              <div style="padding:6px 12px; background:linear-gradient(135deg,rgba(16,185,129,0.07),transparent); border-bottom:1px solid rgba(16,185,129,0.15); display:flex; align-items:center; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:4px;">
                   <i class="fa-solid fa-chart-line" style="color:#047857; font-size:11px;"></i>
-                  <span style="font-size:11px; font-weight:800; color:#047857; text-transform:uppercase; letter-spacing:0.04em;">Kết quả CLS dán nhanh</span>
+                  <span style="font-size:11px; font-weight:800; color:#047857; text-transform:uppercase; letter-spacing:0.04em;">Dán nhanh kết quả CLS</span>
                 </div>
-                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnOpenLabParser" style="background:#059669; border-color:#059669; color:#fff; padding:1px 7px; font-size:10px; height:auto; min-height:0;" title="Tự động nhận diện chỉ số tăng/giảm và bắt cờ đỏ nguy kịch">
-                  <i class="fa-solid fa-bolt"></i> ⚡ Phân tích &amp; Bắt cờ đỏ
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-primary" id="btnOpenLabParser" style="background:#059669; border-color:#059669; color:#fff; padding:1px 6px; font-size:10px; height:auto; min-height:0;" title="Tự động bắt cờ đỏ nguy kịch">
+                  <i class="fa-solid fa-bolt"></i> ⚡ Bắt cờ đỏ
                 </button>
               </div>
-              <div style="padding:10px 14px;">
-                <textarea id="esClsQuickPaste" rows="3" placeholder="Dán kết quả CLS mới vào đây (VD: WBC 18.5, K+ 6.2, TropT 95)..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.5; border:none; background:transparent; padding:0; resize:vertical;"></textarea>
+              <div style="padding:8px 12px;">
+                <textarea id="esClsQuickPaste" rows="2" placeholder="Dán kết quả CLS mới (VD: WBC 18.5, K+ 6.2)..." class="dsp-input" style="width:100%; font-size:12px; line-height:1.4; border:none; background:transparent; padding:0; resize:vertical;"></textarea>
               </div>
             </div>
           </div>
 
           <!-- ═══ Footer Actions ═══ -->
-          <div style="display:flex; align-items:center; justify-content:space-between; border-top:2px solid var(--color-border); padding-top:14px; margin-top:4px; gap:8px; flex-wrap:wrap;">
-            <!-- Nhóm nút phụ (trái) -->
+          <div style="display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--color-border); padding-top:10px; margin-top:2px; gap:8px; flex-wrap:wrap;">
             <div style="display:flex; gap:6px; flex-wrap:wrap;">
-              <button type="button" id="btnCopyEmrFormat" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid rgba(2,132,199,0.35); background:rgba(2,132,199,0.05); color:var(--color-primary); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
+              <button type="button" id="btnCopyEmrFormat" style="display:inline-flex; align-items:center; gap:5px; padding:6px 11px; border-radius:6px; border:1px solid rgba(2,132,199,0.35); background:rgba(2,132,199,0.05); color:var(--color-primary); font-size:11.5px; font-weight:600; cursor:pointer; transition:all 0.2s;">
                 <i class="fa-solid fa-copy"></i> 1-Click Copy EMR
               </button>
-              <button type="button" id="btnCreateSbarFromSoap" data-id="${p.id}" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid var(--color-border); background:var(--color-bg); color:var(--color-text); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
+              <button type="button" id="btnCreateSbarFromSoap" data-id="${p.id}" style="display:inline-flex; align-items:center; gap:5px; padding:6px 11px; border-radius:6px; border:1px solid var(--color-border); background:var(--color-bg); color:var(--color-text); font-size:11.5px; font-weight:600; cursor:pointer; transition:all 0.2s;">
                 <i class="fa-solid fa-file-waveform"></i> Tạo SBAR
-              </button>
-              <button type="button" id="btnOpenLabHubFooter" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid rgba(16,185,129,0.3); background:rgba(16,185,129,0.05); color:#059669; font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
-                <i class="fa-solid fa-flask-vial"></i> Kho Cận Lâm Sàng
               </button>
             </div>
 
-            <!-- Nhóm nút chính (phải) -->
             <div style="display:flex; align-items:center; gap:8px;">
-              <button type="button" id="btnDeletePatient" style="display:inline-flex; align-items:center; gap:6px; padding:7px 13px; border-radius:8px; border:1.5px solid rgba(239,68,68,0.3); background:rgba(239,68,68,0.05); color:var(--color-danger); font-size:12px; font-weight:600; cursor:pointer; transition:all 0.2s;">
+              <button type="button" id="btnDeletePatient" style="display:inline-flex; align-items:center; gap:5px; padding:6px 11px; border-radius:6px; border:1px solid rgba(239,68,68,0.3); background:rgba(239,68,68,0.05); color:var(--color-danger); font-size:11.5px; font-weight:600; cursor:pointer; transition:all 0.2s;">
                 <i class="fa-solid fa-trash"></i> Xóa
               </button>
-              <button type="submit" style="display:inline-flex; align-items:center; gap:7px; padding:8px 18px; border-radius:9px; border:none; background:linear-gradient(135deg,var(--color-primary),#0ea5e9); color:#fff; font-size:13px; font-weight:700; cursor:pointer; box-shadow:0 3px 10px rgba(2,132,199,0.3); transition:all 0.2s; letter-spacing:0.01em;">
+              <button type="submit" style="display:inline-flex; align-items:center; gap:6px; padding:7px 16px; border-radius:8px; border:none; background:linear-gradient(135deg,var(--color-primary),#0ea5e9); color:#fff; font-size:12.5px; font-weight:700; cursor:pointer; box-shadow:0 3px 8px rgba(2,132,199,0.3); transition:all 0.2s;">
                 <i class="fa-solid fa-save"></i> Lưu Ngày (${activeDate || 'Hôm nay'})
               </button>
             </div>
@@ -1498,6 +1521,34 @@ export function mountSoapController(profileId: string): void {
     window.location.hash = '#/docspace/cases';
   });
 
+  // Unified Insight Panel & Tabs Controller
+  document.querySelectorAll('.dsp-insight-tab-btn').forEach(tabBtn => {
+    tabBtn.addEventListener('click', () => {
+      const targetId = tabBtn.getAttribute('data-target');
+      if (!targetId) return;
+
+      document.querySelectorAll('.dsp-insight-tab-btn').forEach(b => {
+        b.classList.remove('is-active');
+        (b as HTMLElement).style.background = 'transparent';
+        (b as HTMLElement).style.color = 'var(--color-text-muted)';
+      });
+      tabBtn.classList.add('is-active');
+      (tabBtn as HTMLElement).style.background = 'var(--color-surface)';
+      (tabBtn as HTMLElement).style.color = 'var(--color-primary)';
+
+      document.querySelectorAll('.dsp-insight-tab-pane').forEach(pane => {
+        (pane as HTMLElement).style.display = 'none';
+      });
+      const targetPane = document.getElementById(targetId);
+      if (targetPane) targetPane.style.display = 'block';
+    });
+  });
+
+  document.getElementById('btnCloseUnifiedInsight')?.addEventListener('click', () => {
+    const container = document.getElementById('soapUnifiedInsightContainer');
+    if (container) container.style.display = 'none';
+  });
+
   // AI Co-Pilot Suggestion Handlers in Edit SOAP Modal
   let activeAiTargetField: 'esSNotes' | 'esONotes' | 'esAAssessment' | 'esPPlan' = 'esAAssessment';
 
@@ -1532,15 +1583,23 @@ export function mountSoapController(profileId: string): void {
 
       activeAiTargetField = targetFieldMap[field];
 
-      const box = document.getElementById('soapAiSuggestionBox');
+      const container = document.getElementById('soapUnifiedInsightContainer');
       const textEl = document.getElementById('soapAiSuggestionText');
-      if (box) box.style.display = 'block';
-      if (textEl) textEl.textContent = '⚡ Đang gọi AI kết nối và truyền dữ liệu...';
+      const applyBtn = document.getElementById('btnApplyAiSuggestion');
+      
+      if (container) container.style.display = 'block';
+      if (applyBtn) applyBtn.style.display = 'inline-flex';
+      
+      // Chuyển sang Tab AI
+      const tabAiBtn = document.querySelector('.dsp-insight-tab-btn[data-target="tabAiCoPilot"]') as HTMLElement;
+      if (tabAiBtn) tabAiBtn.click();
+
+      if (textEl) textEl.textContent = '⚡ Đang gọi AI kết nối và truyền dữ liệu lâm sàng...';
 
       const btnEl = e.currentTarget as HTMLButtonElement;
       const originalHtml = btnEl.innerHTML;
       btnEl.disabled = true;
-      btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang gọi...';
+      btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
 
       try {
         let streamedContent = '';
@@ -1579,15 +1638,10 @@ export function mountSoapController(profileId: string): void {
       const aiText = textEl.textContent?.trim() || '';
       if (aiText && !aiText.startsWith('❌') && !aiText.startsWith('⚡')) {
         targetEl.value = currentVal ? `${currentVal}\n\n${aiText}` : aiText;
-        const box = document.getElementById('soapAiSuggestionBox');
-        if (box) box.style.display = 'none';
+        const container = document.getElementById('soapUnifiedInsightContainer');
+        if (container) container.style.display = 'none';
       }
     }
-  });
-
-  document.getElementById('btnCloseAiSuggestion')?.addEventListener('click', () => {
-    const box = document.getElementById('soapAiSuggestionBox');
-    if (box) box.style.display = 'none';
   });
 
   // Discharge Summary Modal Event Handler
@@ -1783,11 +1837,19 @@ export function mountSoapController(profileId: string): void {
     const icdRegex = /[A-Z][0-9]{2}(?:\.[0-9]+)?/gi;
     const icdCodes = Array.from(new Set([...(diag.match(icdRegex) || []), ...(aVal.match(icdRegex) || [])]));
     const q = diag || (aVal.split('\n')[0]?.substring(0, 40) || '');
+    const tabEbmBtn = document.querySelector('.dsp-insight-tab-btn[data-target="tabEbmGuideline"]') as HTMLElement;
+
     if (q.length >= 2 || icdCodes.length > 0) {
       ebmBridge.renderContextualBar(ebmContextBar, q, icdCodes);
+      if (tabEbmBtn) {
+        tabEbmBtn.innerHTML = '<i class="fa-solid fa-scale-balanced"></i> EBM (Có gợi ý)';
+        tabEbmBtn.style.color = 'var(--color-primary)';
+      }
     } else {
-      ebmContextBar.innerHTML = '';
-      ebmContextBar.style.display = 'none';
+      ebmContextBar.innerHTML = '<span style="font-size:11px; color:var(--color-text-muted); font-style:italic;">Chưa phát hiện khuyến cáo EBM tương ứng.</span>';
+      if (tabEbmBtn) {
+        tabEbmBtn.innerHTML = '<i class="fa-solid fa-scale-balanced"></i> Khuyến cáo EBM';
+      }
     }
   };
 
@@ -1913,6 +1975,7 @@ export function mountSoapController(profileId: string): void {
     const diag = (document.getElementById('esCurrentDiagnosis') as HTMLInputElement)?.value.trim() || (document.getElementById('esAdmissionDiagnosis') as HTMLInputElement)?.value.trim() || '';
     const aVal = (document.getElementById('esAAssessment') as HTMLTextAreaElement)?.value.trim() || '';
     const textToScan = `${diag} ${aVal}`.toLowerCase();
+    const tabVaultBtn = document.querySelector('.dsp-insight-tab-btn[data-target="tabVaultKnowledge"]') as HTMLElement;
 
     const vaultKeywords = [
       { name: 'Hội chứng vành cấp', key: 'hội chứng vành cấp', alias: 'acs' },
@@ -1933,9 +1996,12 @@ export function mountSoapController(profileId: string): void {
     const matched = vaultKeywords.filter(k => textToScan.includes(k.key) || textToScan.includes(k.alias));
 
     if (matched.length > 0) {
-      vaultContextBar.style.display = 'block';
+      if (tabVaultBtn) {
+        tabVaultBtn.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> Vault (${matched.length})`;
+        tabVaultBtn.style.color = 'var(--color-primary)';
+      }
       vaultContextBar.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
           <span style="font-size:11px; font-weight:700; color:var(--color-primary); display:flex; align-items:center; gap:4px;">
             <i class="fa-solid fa-graduation-cap"></i> Gợi ý từ Kho Tri Thức Vault (2.250+ bài):
           </span>
@@ -1955,8 +2021,10 @@ export function mountSoapController(profileId: string): void {
         </div>
       `;
     } else {
-      vaultContextBar.style.display = 'none';
-      vaultContextBar.innerHTML = '';
+      if (tabVaultBtn) {
+        tabVaultBtn.innerHTML = '<i class="fa-solid fa-graduation-cap"></i> Bài giảng Vault';
+      }
+      vaultContextBar.innerHTML = '<span style="font-size:11px; color:var(--color-text-muted); font-style:italic;">Nhập chẩn đoán hoặc đánh giá để xem các bài giảng liên quan trong Vault.</span>';
     }
   };
 
