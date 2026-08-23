@@ -49,6 +49,7 @@ export interface ClinicalPathwayLinks {
   cd?: VaultArticle;
   pddt?: VaultArticle;
   bc?: VaultArticle;
+  tv?: VaultArticle;
   cn?: VaultArticle;
 }
 

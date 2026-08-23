@@ -7,6 +7,8 @@ import { renderVaultHubView, attachVaultEvents, openArticleDrawer } from './vaul
 export * from './types';
 export * from './vault-loader';
 export * from './vault-hub-view';
+export * from './protocols';
+
 
 export function initKnowledgeVault(containerId: string = 'vault-app'): void {
   const container = document.getElementById(containerId);

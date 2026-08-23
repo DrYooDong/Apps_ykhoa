@@ -468,3 +468,85 @@ function escapeHtml(str: string): string {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+/**
+ * Gắn sự kiện tương tác cho Protocols Hub & Reader View
+ */
+export function attachProtocolsEvents(
+  container: HTMLElement,
+  currentState: { filter: ProtocolFilterState; selectedId?: string; activeTab: string },
+  onStateUpdate: (newState: { filter: ProtocolFilterState; selectedId?: string; activeTab: string }) => void
+): void {
+  // 1. Specialty Filter Buttons
+  container.querySelectorAll('.js-filter-specialty').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const spec = btn.getAttribute('data-specialty') || 'all';
+      currentState.filter.specialty = spec;
+      onStateUpdate(currentState);
+    });
+  });
+
+  // 2. Search Input
+  const searchInput = container.querySelector('#protocol-search-input') as HTMLInputElement | null;
+  if (searchInput) {
+    let debounceTimer: any;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        currentState.filter.searchQuery = searchInput.value;
+        onStateUpdate(currentState);
+      }, 200);
+    });
+  }
+
+  // 3. Triage Select
+  const triageSelect = container.querySelector('#protocol-triage-select') as HTMLSelectElement | null;
+  if (triageSelect) {
+    triageSelect.addEventListener('change', () => {
+      currentState.filter.triageLevel = (triageSelect.value || 'all') as any;
+      onStateUpdate(currentState);
+    });
+  }
+
+  // 4. View Protocol Card -> Open Modal
+  container.querySelectorAll('.js-view-protocol').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-id');
+      if (id) {
+        currentState.selectedId = id;
+        currentState.activeTab = 'flowchart';
+        onStateUpdate(currentState);
+      }
+    });
+  });
+
+  // 5. Close Modal
+  container.querySelectorAll('.js-close-proto-modal').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentState.selectedId = undefined;
+      onStateUpdate(currentState);
+    });
+  });
+
+  const modalOverlay = container.querySelector('.protocol-reader-modal');
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        currentState.selectedId = undefined;
+        onStateUpdate(currentState);
+      }
+    });
+  }
+
+  // 6. Switch Tabs inside Modal
+  container.querySelectorAll('.js-proto-tab').forEach(tabBtn => {
+    tabBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tab = tabBtn.getAttribute('data-tab') || 'flowchart';
+      currentState.activeTab = tab;
+      onStateUpdate(currentState);
+    });
+  });
+}
+

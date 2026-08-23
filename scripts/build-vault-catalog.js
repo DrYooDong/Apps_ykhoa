@@ -10,24 +10,29 @@ const VAULT_ROOT = path.resolve(__dirname, '../knowledge-vault');
 const OUTPUT_FILE = path.resolve(__dirname, '../src/content/knowledge-vault/data/vault-catalog.json');
 
 const KHO_MAPPINGS = [
-  { dir: '0. Kho thực thể hạt nhân', code: 'CORE', name: 'Thực thể Hạt nhân', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-dna', color: '#a855f7' },
-  { dir: '1.1. Kho giải phẫu & sinh lý', code: 'GPSL', name: 'Giải phẫu & Sinh lý', group: 'Cơ sở Y khoa', icon: 'fa-heart-pulse', color: '#0284c7' },
-  { dir: '1.2. Kho hóa sinh y học', code: 'HS', name: 'Hóa sinh Y học', group: 'Cơ sở Y khoa', icon: 'fa-flask', color: '#8b5cf6' },
-  { dir: '1.3. Kho sinh lý bệnh', code: 'SLB', name: 'Sinh lý bệnh', group: 'Cơ sở Y khoa', icon: 'fa-bolt', color: '#f59e0b' },
-  { dir: '1.4. Kho dịch tễ học', code: 'DTH', name: 'Dịch tễ & Vi sinh', group: 'Cơ sở Y khoa', icon: 'fa-virus', color: '#10b981' },
-  { dir: '1.5. Kho yếu tố nguy cơ', code: 'YTNC', name: 'Yếu tố Nguy cơ', group: 'Cơ sở Y khoa', icon: 'fa-triangle-exclamation', color: '#f97316' },
-  { dir: '2.1. Kho tiếp cận lâm sàng', code: 'TC', name: 'Tiếp cận Lâm sàng', group: 'Lâm sàng & Bệnh học', icon: 'fa-magnifying-glass', color: '#0ea5e9' },
-  { dir: '2.2. Kho kỹ năng lâm sàng', code: 'KN', name: 'Kỹ năng Lâm sàng', group: 'Lâm sàng & Bệnh học', icon: 'fa-stethoscope', color: '#6366f1' },
-  { dir: '2.3. Kho chẩn đoán', code: 'CD', name: 'Chẩn đoán Bệnh học', group: 'Lâm sàng & Bệnh học', icon: 'fa-clipboard-check', color: '#ec4899' },
-  { dir: '2.4. Kho phác đồ điều trị', code: 'PDDT', name: 'Phác đồ Điều trị', group: 'Lâm sàng & Bệnh học', icon: 'fa-pills', color: '#3b82f6' },
-  { dir: '2.5. Kho biến chứng', code: 'BC', name: 'Biến chứng & Tiên lượng', group: 'Lâm sàng & Bệnh học', icon: 'fa-triangle-exclamation', color: '#ef4444' },
-  { dir: '3.1. Kho công cụ & thang điểm', code: 'CC', name: 'Công Cụ & Thang Điểm', group: 'Thực Hành & Bổ Trợ', icon: 'fa-calculator', color: '#f59e0b' },
-  { dir: '3.2. Kho dược thư & tương tác thuốc', code: 'DUOC', name: 'Dược Thư & Tương Tác Thuốc', group: 'Thực Hành & Bổ Trợ', icon: 'fa-capsules', color: '#06b6d4' },
-  { dir: '3.3. Kho cận lâm sàng & xét nghiệm', code: 'CLS', name: 'Cận Lâm Sàng & Xét Nghiệm', group: 'Thực Hành & Bổ Trợ', icon: 'fa-flask-vial', color: '#6366f1' },
-  { dir: 'Kho cập nhật', code: 'CN', name: 'Cập nhật Guidelines', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-arrows-rotate', color: '#14b8a6' },
-  { dir: 'Kho dinh dưỡng lâm sàng', code: 'DD', name: 'Dinh dưỡng Lâm sàng', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-apple-whole', color: '#84cc16' },
-  { dir: 'Kho nghiên cứu khoa học & EBM', code: 'EBM', name: 'NCKH & EBM', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-chart-pie', color: '#64748b' },
-  { dir: 'Kho chưa lọc', code: 'RAW', name: 'Kho Chưa lọc / Tổng quan', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-box-archive', color: '#78716c' }
+  // 1. Nhóm Cơ sở
+  { dir: '1.1. Kho giải phẫu & sinh lý', code: 'GPSL', name: 'GP & sinh lý', group: 'Cơ sở', icon: 'fa-heart-pulse', color: '#0284c7' },
+  { dir: '1.2. Kho hóa sinh y học', code: 'HS', name: 'Hóa sinh', group: 'Cơ sở', icon: 'fa-flask', color: '#8b5cf6' },
+  { dir: '1.3. Kho sinh lý bệnh', code: 'SLB', name: 'Sinh lý bệnh', group: 'Cơ sở', icon: 'fa-bolt', color: '#f59e0b' },
+  { dir: '1.4. Kho dịch tễ học', code: 'DTH', name: 'Dịch tễ học', group: 'Cơ sở', icon: 'fa-virus', color: '#10b981' },
+  { dir: '2.2. Kho kỹ năng lâm sàng', code: 'KN', name: 'Kỹ năng', group: 'Cơ sở', icon: 'fa-stethoscope', color: '#6366f1' },
+
+  // 2. Nhóm Chuyên sâu
+  { dir: '1.5. Kho yếu tố nguy cơ', code: 'YTNC', name: 'Yếu tố nguy cơ', group: 'Chuyên sâu', icon: 'fa-triangle-exclamation', color: '#f97316' },
+  { dir: '2.1. Kho tiếp cận lâm sàng', code: 'TC', name: 'Lâm sàng', group: 'Chuyên sâu', icon: 'fa-magnifying-glass', color: '#0ea5e9' },
+  { dir: '3.3. Kho cận lâm sàng & xét nghiệm', code: 'CLS', name: 'Cận lâm sàng', group: 'Chuyên sâu', icon: 'fa-flask-vial', color: '#6366f1' },
+  { dir: '2.3. Kho chẩn đoán', code: 'CD', name: 'Tiêu chuẩn chẩn đoán', group: 'Chuyên sâu', icon: 'fa-clipboard-check', color: '#ec4899' },
+  { dir: '2.4. Kho phác đồ điều trị', code: 'PDDT', name: 'Phác đồ', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
+  { dir: 'Kho cập nhật', code: 'PDDT', name: 'Phác đồ', group: 'Chuyên sâu', icon: 'fa-pills', color: '#3b82f6' },
+  { dir: '3.2. Kho dược thư & tương tác thuốc', code: 'DUOC', name: 'Dược', group: 'Chuyên sâu', icon: 'fa-capsules', color: '#06b6d4' },
+  { dir: 'Kho dinh dưỡng lâm sàng', code: 'TV', name: 'Tư vấn', group: 'Chuyên sâu', icon: 'fa-hand-holding-medical', color: '#84cc16' },
+  { dir: '2.5. Kho biến chứng', code: 'BC', name: 'Biến chứng', group: 'Chuyên sâu', icon: 'fa-heart-crack', color: '#ef4444' },
+
+  // 3. Nhóm Hỗ trợ
+  { dir: '3.1. Kho công cụ & thang điểm', code: 'CC', name: 'Công cụ & Thang điểm', group: 'Hỗ trợ', icon: 'fa-calculator', color: '#f59e0b' },
+  { dir: 'Kho nghiên cứu khoa học & EBM', code: 'EBM', name: 'NCKH & EBM', group: 'Hỗ trợ', icon: 'fa-chart-pie', color: '#64748b' },
+  { dir: 'Kho chưa lọc', code: 'RAW', name: 'Kho chưa lọc', group: 'Hỗ trợ', icon: 'fa-box-archive', color: '#78716c' },
+  { dir: '0. Kho thực thể hạt nhân', code: 'CORE', name: 'Thực thể Hạt nhân', group: 'Hỗ trợ', icon: 'fa-dna', color: '#a855f7' }
 ];
 
 function generateId(prefix, text) {
@@ -152,7 +157,7 @@ function scanVault() {
       fullFileName: 'MOC - Kho Kiến Thức Y Khoa.md',
       khoCode: 'CORE',
       khoName: 'Thực thể Hạt nhân',
-      khoGroup: 'Chuyên sâu & Bổ trợ',
+      khoGroup: 'Hỗ trợ',
       khoDir: '0. Kho thực thể hạt nhân',
       khoIcon: 'fa-book-medical',
       khoColor: '#0284c7',

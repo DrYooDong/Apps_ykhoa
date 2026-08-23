@@ -126,14 +126,14 @@ export function renderPathwayRibbon(currentArticle: VaultArticle): string {
   const pathway = findPathwayArticles(currentArticle);
   
   const facets = [
-    { key: 'gpsl', label: 'Giải phẫu & SL', icon: 'fa-heart-pulse', color: '#0284c7', article: pathway.gpsl, code: 'GPSL' },
-    { key: 'slb',  label: 'Sinh lý bệnh',   icon: 'fa-bolt',        color: '#f59e0b', article: pathway.slb,  code: 'SLB' },
-    { key: 'dth',  label: 'Dịch tễ học',    icon: 'fa-virus',       color: '#10b981', article: pathway.dth,  code: 'DTH' },
-    { key: 'ytnc', label: 'Yếu tố nguy cơ', icon: 'fa-triangle-exclamation', color: '#f97316', article: pathway.ytnc, code: 'YTNC' },
-    { key: 'cd',   label: 'Chẩn đoán',      icon: 'fa-clipboard-check', color: '#ec4899', article: pathway.cd,   code: 'CD' },
-    { key: 'pddt', label: 'Phác đồ ĐT',     icon: 'fa-pills',       color: '#3b82f6', article: pathway.pddt, code: 'PDDT' },
-    { key: 'bc',   label: 'Biến chứng',     icon: 'fa-triangle-exclamation', color: '#ef4444', article: pathway.bc,   code: 'BC' },
-    { key: 'cn',   label: 'Guidelines',     icon: 'fa-arrows-rotate', color: '#14b8a6', article: pathway.cn,   code: 'CN' }
+    { key: 'gpsl', label: 'GP & sinh lý',    icon: 'fa-heart-pulse',           color: '#0284c7', article: pathway.gpsl, code: 'GPSL' },
+    { key: 'slb',  label: 'Sinh lý bệnh',    icon: 'fa-bolt',                  color: '#f59e0b', article: pathway.slb,  code: 'SLB' },
+    { key: 'dth',  label: 'Dịch tễ học',     icon: 'fa-virus',                 color: '#10b981', article: pathway.dth,  code: 'DTH' },
+    { key: 'ytnc', label: 'Yếu tố nguy cơ',  icon: 'fa-triangle-exclamation',  color: '#f97316', article: pathway.ytnc, code: 'YTNC' },
+    { key: 'cd',   label: 'Tiêu chuẩn CĐ',   icon: 'fa-clipboard-check',       color: '#ec4899', article: pathway.cd,   code: 'CD' },
+    { key: 'pddt', label: 'Phác đồ',         icon: 'fa-pills',                 color: '#3b82f6', article: pathway.pddt, code: 'PDDT' },
+    { key: 'bc',   label: 'Biến chứng',      icon: 'fa-heart-crack',           color: '#ef4444', article: pathway.bc,   code: 'BC' },
+    { key: 'tv',   label: 'Tư vấn',          icon: 'fa-hand-holding-medical',  color: '#84cc16', article: pathway.tv,   code: 'TV' }
   ];
 
   // Count how many facets exist for this condition

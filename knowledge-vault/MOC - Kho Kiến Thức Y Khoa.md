@@ -30,25 +30,35 @@ updated: "2026-08-11"
 
 ---
 
-## 🏛️ Bản Đồ Phân Hệ Chuyên Khoa
+## 🏛️ Bản Đồ 16 Phân Hệ Kho Tri Thức (3 Nhóm Lớn)
 
+### 🫀 1. Nhóm Cơ Sở (5 Kho)
 | STT | Phân Hệ / Kho Chuyên Môn | Thư Mục | Link MOC Phân Hệ |
 |:---:|:---|:---|:---|
-| **00** | 🧬 **Thực Thể Hạt Nhân** | `Kho thực thể hạt nhân` | [[Kho thực thể hạt nhân/MOC - Kho Thực Thể Hạt Nhân|MOC Thực thể Hạt nhân]] |
-| **01** | 🫀 **Giải Phẫu & Sinh Lý** | `Kho giải phẫu & sinh lý` | [[Kho giải phẫu & sinh lý/MOC - Kho Giải Phẫu & Sinh Lý|MOC Giải phẫu & Sinh lý]] |
-| **02** | 🧪 **Hóa Sinh Y Học** | `Kho hóa sinh y học` | [[Kho hóa sinh y học/MOC - Kho Hóa Sinh Y Học|MOC Hóa Sinh Y Học]] |
-| **03** | 🩺 **Kỹ Năng Lâm Sàng** | `Kho kỹ năng lâm sàng` | [[Kho kỹ năng lâm sàng/MOC - Kho Kỹ Năng Lâm Sàng|MOC Kỹ năng Lâm sàng]] |
-| **04** | 🔍 **Tiếp Cận Lâm Sàng** | `Kho tiếp cận lâm sàng` | [[Kho tiếp cận lâm sàng/MOC - Kho Tiếp Cận Lâm Sàng|MOC Tiếp cận Lâm sàng]] |
-| **05** | 🌐 **Kho Dịch Tễ Học** | `1.4. Kho dịch tễ học` | [[1.4. Kho dịch tễ học/MOC - Kho Dịch Tễ Học|MOC Kho Dịch Tễ Học]] |
-| **05.1** | ⚠️ **Kho Yếu Tố Nguy Cơ** | `1.5. Kho yếu tố nguy cơ` | [[1.5. Kho yếu tố nguy cơ/MOC - Kho Yếu Tố Nguy Cơ|MOC Kho Yếu Tố Nguy Cơ]] |
-| **06** | ⚡ **Kho Sinh Lý Bệnh** | `Kho sinh lý bệnh` | [[Kho sinh lý bệnh/MOC - Kho Sinh Lý Bệnh|MOC Kho Sinh Lý Bệnh]] |
-| **07** | 📋 **Kho Chẩn Đoán** | `Kho chẩn đoán` | [[Kho chẩn đoán/MOC - Kho Chẩn Đoán|MOC Kho Chẩn Đoán]] |
-| **08** | 💊 **Kho Phác Đồ Điều Trị** | `Kho phác đồ điều trị` | [[Kho phác đồ điều trị/MOC - Kho Phác Đồ Điều Trị|MOC Kho Phác Đồ Điều Trị]] |
-| **09** | ⚠️ **Kho Biến Chứng** | `Kho biến chứng` | [[Kho biến chứng/MOC - Kho Biến Chứng|MOC Kho Biến Chứng]] |
-| **10** | 🔄 **Kho Cập Nhật** | `Kho cập nhật` | [[Kho cập nhật/MOC - Kho Cập Nhật|MOC Kho Cập Nhật]] |
-| **11** | 📦 **Kho Chưa Lọc** | `Kho chưa lọc` | [[Kho chưa lọc/MOC - Kho Chưa Lọc|MOC Kho Chưa Lọc]] |
-| **12** | 📊 **EBM & Nghiên Cứu** | `Kho nghiên cứu khoa học & EBM` | [[Kho nghiên cứu khoa học & EBM/MOC - Kho Nghiên Cứu Khoa Học & EBM|MOC EBM & Nghiên cứu]] |
-| **13** | 🥗 **Dinh Dưỡng** | `Kho dinh dưỡng lâm sàng` | [[Kho dinh dưỡng lâm sàng/MOC - Kho Dinh Dưỡng Lâm Sàng|MOC Dinh Dưỡng]] |
+| **01** | 🫀 **GP & sinh lý** | `1.1. Kho giải phẫu & sinh lý` | [[1.1. Kho giải phẫu & sinh lý/MOC - Kho Giải Phẫu & Sinh Lý|MOC GP & sinh lý]] |
+| **02** | 🧪 **Hóa sinh** | `1.2. Kho hóa sinh y học` | [[1.2. Kho hóa sinh y học/MOC - Kho Hóa Sinh Y Học|MOC Hóa sinh]] |
+| **03** | ⚡ **Sinh lý bệnh** | `1.3. Kho sinh lý bệnh` | [[1.3. Kho sinh lý bệnh/MOC - Kho Sinh Lý Bệnh|MOC Sinh lý bệnh]] |
+| **04** | 🌐 **Dịch tễ học** | `1.4. Kho dịch tễ học` | [[1.4. Kho dịch tễ học/MOC - Kho Dịch Tễ Học|MOC Dịch tễ học]] |
+| **05** | 🩺 **Kỹ năng** | `2.2. Kho kỹ năng lâm sàng` | [[2.2. Kho kỹ năng lâm sàng/MOC - Kho Kỹ Năng Lâm Sàng|MOC Kỹ năng]] |
+
+### 🩺 2. Nhóm Chuyên Sâu (8 Kho)
+| STT | Phân Hệ / Kho Chuyên Môn | Thư Mục | Link MOC Phân Hệ |
+|:---:|:---|:---|:---|
+| **06** | ⚠️ **Yếu tố nguy cơ** | `1.5. Kho yếu tố nguy cơ` | [[1.5. Kho yếu tố nguy cơ/MOC - Kho Yếu Tố Nguy Cơ|MOC Yếu tố nguy cơ]] |
+| **07** | 🔍 **Lâm sàng** | `2.1. Kho tiếp cận lâm sàng` | [[2.1. Kho tiếp cận lâm sàng/MOC - Kho Tiếp Cận Lâm Sàng|MOC Lâm sàng]] |
+| **08** | 🧪 **Cận lâm sàng** | `3.3. Kho cận lâm sàng & xét nghiệm` | [[3.3. Kho cận lâm sàng & xét nghiệm/MOC - Kho Cận Lâm Sàng|MOC Cận lâm sàng]] |
+| **09** | 📋 **Tiêu chuẩn chẩn đoán** | `2.3. Kho chẩn đoán` | [[2.3. Kho chẩn đoán/MOC - Kho Chẩn Đoán|MOC Tiêu chuẩn chẩn đoán]] |
+| **10** | 💊 **Phác đồ** | `2.4. Kho phác đồ điều trị` & `Kho cập nhật` | [[2.4. Kho phác đồ điều trị/MOC - Kho Phác Đồ Điều Trị|MOC Phác đồ]] |
+| **11** | 💊 **Dược** | `3.2. Kho dược thư & tương tác thuốc` | [[3.2. Kho dược thư & tương tác thuốc/MOC - Kho Dược Thư|MOC Dược]] |
+| **12** | 🥗 **Tư vấn** | `Kho dinh dưỡng lâm sàng` | [[Kho dinh dưỡng lâm sàng/MOC - Kho Dinh Dưỡng Lâm Sàng|MOC Tư vấn]] |
+| **13** | 💔 **Biến chứng** | `2.5. Kho biến chứng` | [[2.5. Kho biến chứng/MOC - Kho Biến Chứng|MOC Biến chứng]] |
+
+### 📊 3. Nhóm Hỗ Trợ (3 Kho)
+| STT | Phân Hệ / Kho Chuyên Môn | Thư Mục | Link MOC Phân Hệ |
+|:---:|:---|:---|:---|
+| **14** | 🧮 **Công cụ & Thang điểm** | `3.1. Kho công cụ & thang điểm` | [[3.1. Kho công cụ & thang điểm/MOC - Kho Công Cụ & Thang Điểm|MOC Công cụ & Thang điểm]] |
+| **15** | 📊 **NCKH & EBM** | `Kho nghiên cứu khoa học & EBM` | [[Kho nghiên cứu khoa học & EBM/MOC - Kho Nghiên Cứu Khoa Học & EBM|MOC NCKH & EBM]] |
+| **16** | 📦 **Kho chưa lọc** | `Kho chưa lọc` | [[Kho chưa lọc/MOC - Kho Chưa Lọc|MOC Kho chưa lọc]] |
 
 ---
 

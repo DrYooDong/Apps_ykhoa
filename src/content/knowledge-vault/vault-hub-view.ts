@@ -8,6 +8,14 @@ import { VaultFilterState, VaultArticle } from './types';
 import { renderPathwayRibbon, processMarkdownWithToc, renderTocHtml, renderReaderToolbar, renderAnnotationsBoxHtml, renderEncyclopediaQuickFactsHtml, attachReaderProEvents } from './vault-reader-pro';
 import { renderFlowchartStudioHtml, attachFlowchartEvents, CLINICAL_FLOWCHARTS_REGISTRY } from './vault-flowchart-engine';
 import { renderFlashcardStudioHtml, attachFlashcardEvents, DEFAULT_MEDICAL_FLASHCARDS } from './vault-flashcard-engine';
+import { 
+  renderProtocolsHubView, 
+  attachProtocolsEvents, 
+  KHO_PROTOCOLS_REGISTRY, 
+  getProtocolById, 
+  ProtocolFilterState,
+  ClinicalProtocol 
+} from './protocols';
 
 let state: VaultFilterState & { activeGroup: string; displayLimit: number } = {
   searchQuery: '',
@@ -17,12 +25,33 @@ let state: VaultFilterState & { activeGroup: string; displayLimit: number } = {
   displayLimit: 48
 };
 
-export function setVaultInitialState(params: { search?: string; kho?: string; group?: string; specialty?: string }): void {
+let protocolsState: {
+  filter: ProtocolFilterState;
+  selectedId?: string;
+  activeTab: string;
+} = {
+  filter: {
+    searchQuery: '',
+    specialty: 'all',
+    triageLevel: 'all',
+    sortBy: 'title'
+  },
+  selectedId: undefined,
+  activeTab: 'flowchart'
+};
+
+
+export function setVaultInitialState(params: { search?: string; kho?: string; group?: string; specialty?: string; protocolId?: string }): void {
   if (params.search !== undefined) state.searchQuery = params.search;
   if (params.kho !== undefined) state.activeKho = params.kho;
   if (params.group !== undefined) state.activeGroup = params.group;
   if (params.specialty !== undefined) state.activeSpecialty = params.specialty;
+  if (params.protocolId !== undefined) {
+    state.activeGroup = 'PROTOCOL';
+    protocolsState.selectedId = params.protocolId;
+  }
 }
+
 
 export function renderVaultHubView(): string {
   const summaries = getKhoSummaries();
@@ -63,9 +92,9 @@ export function renderVaultHubView(): string {
   ).sort();
 
   // Group stats
-  const coSoCount = VAULT_CATALOG.filter(a => (a as any).khoGroup === 'Cơ sở Y khoa').length;
-  const lamSangCount = VAULT_CATALOG.filter(a => (a as any).khoGroup === 'Lâm sàng & Bệnh học').length;
-  const chuyenSauCount = VAULT_CATALOG.filter(a => (a as any).khoGroup === 'Chuyên sâu & Bổ trợ').length;
+  const coSoCount = VAULT_CATALOG.filter(a => (a as any).khoGroup === 'Cơ sở').length;
+  const chuyenSauCount = VAULT_CATALOG.filter(a => (a as any).khoGroup === 'Chuyên sâu').length;
+  const hoTroCount = VAULT_CATALOG.filter(a => (a as any).khoGroup === 'Hỗ trợ').length;
 
   return `
     <div class="vault-container">
@@ -92,24 +121,28 @@ export function renderVaultHubView(): string {
         <button class="vault-group-btn ${state.activeGroup === 'ALL' ? 'active' : ''}" data-group="ALL" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'ALL' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'ALL' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
           <i class="fa-solid fa-layer-group"></i> Tất cả Phân hệ (${totalArticles})
         </button>
+        <button class="vault-group-btn ${state.activeGroup === 'PROTOCOL' ? 'active' : ''}" data-group="PROTOCOL" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'PROTOCOL' ? '#e11d48' : 'var(--vault-surface)'}; color:${state.activeGroup === 'PROTOCOL' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
+          💉 Phác Đồ (${KHO_PROTOCOLS_REGISTRY.length})
+        </button>
         <button class="vault-group-btn ${state.activeGroup === 'FLOWCHART' ? 'active' : ''}" data-group="FLOWCHART" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'FLOWCHART' ? '#0d9488' : 'var(--vault-surface)'}; color:${state.activeGroup === 'FLOWCHART' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
           🌿 Sơ Đồ Thuật Toán (${CLINICAL_FLOWCHARTS_REGISTRY.length})
         </button>
         <button class="vault-group-btn ${state.activeGroup === 'FLASHCARD' ? 'active' : ''}" data-group="FLASHCARD" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'FLASHCARD' ? '#8b5cf6' : 'var(--vault-surface)'}; color:${state.activeGroup === 'FLASHCARD' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
           🧠 Thẻ Ghi Nhớ Flashcard (${DEFAULT_MEDICAL_FLASHCARDS.length})
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'Cơ sở Y khoa' ? 'active' : ''}" data-group="Cơ sở Y khoa" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Cơ sở Y khoa' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Cơ sở Y khoa' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
-          🫀 1. Cơ sở Y khoa (${coSoCount})
+        <button class="vault-group-btn ${state.activeGroup === 'Cơ sở' ? 'active' : ''}" data-group="Cơ sở" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Cơ sở' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Cơ sở' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
+          🫀 1. Cơ sở (${coSoCount})
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'Lâm sàng & Bệnh học' ? 'active' : ''}" data-group="Lâm sàng & Bệnh học" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Lâm sàng & Bệnh học' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Lâm sàng & Bệnh học' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
-          🩺 2. Lâm sàng & Bệnh học (${lamSangCount})
+        <button class="vault-group-btn ${state.activeGroup === 'Chuyên sâu' ? 'active' : ''}" data-group="Chuyên sâu" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Chuyên sâu' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Chuyên sâu' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
+          🩺 2. Chuyên sâu (${chuyenSauCount})
         </button>
-        <button class="vault-group-btn ${state.activeGroup === 'Thực Hành & Bổ Trợ' ? 'active' : ''}" data-group="Thực Hành & Bổ Trợ" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Thực Hành & Bổ Trợ' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Thực Hành & Bổ Trợ' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
-          📊 3. Thực Hành & Bổ Trợ
+        <button class="vault-group-btn ${state.activeGroup === 'Hỗ trợ' ? 'active' : ''}" data-group="Hỗ trợ" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'Hỗ trợ' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'Hỗ trợ' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
+          📊 3. Hỗ trợ (${hoTroCount})
         </button>
       </div>
 
-      <!-- Live Search & Control Bar at Top -->
+      <!-- Live Search & Control Bar at Top (Only for General Vault view) -->
+      ${state.activeGroup !== 'PROTOCOL' ? `
       <div class="vault-control-bar" style="margin-bottom:1.5rem;">
         <div class="vault-search-box">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -131,6 +164,13 @@ export function renderVaultHubView(): string {
           `).join('')}
         </select>
       </div>
+      ` : ''}
+
+      ${state.activeGroup === 'PROTOCOL' ? `
+        <div id="vault-protocol-mount-point" style="margin-bottom: 2rem;">
+          ${renderProtocolsHubView(protocolsState.filter, protocolsState.selectedId, protocolsState.activeTab)}
+        </div>
+      ` : ''}
 
       ${state.activeGroup === 'FLOWCHART' ? `
         <div id="vault-flowchart-mount-point" style="margin-bottom: 2rem;">
@@ -144,6 +184,8 @@ export function renderVaultHubView(): string {
         </div>
       ` : ''}
 
+
+      ${state.activeGroup !== 'PROTOCOL' ? `
       <!-- Kho Bento Hero Grid -->
       <div class="vault-kho-grid">
         ${summaries.filter(k => state.activeGroup === 'ALL' || (KHO_DEFINITIONS[k.code] && KHO_DEFINITIONS[k.code].group === state.activeGroup)).map(k => `
@@ -228,7 +270,9 @@ export function renderVaultHubView(): string {
           </button>
         </div>
       ` : ''}
+      ` : ''}
     </div>
+
 
     <!-- Article Reader Drawer -->
     <div id="vault-drawer" class="vault-drawer-overlay">
@@ -338,11 +382,21 @@ export function attachVaultEvents(container: HTMLElement): void {
     });
   });
 
+  // Attach Protocol Events if in Protocol View
+  const protocolMount = container.querySelector('#vault-protocol-mount-point') as HTMLElement | null;
+  if (protocolMount) {
+    attachProtocolsEvents(protocolMount, protocolsState, (newState) => {
+      protocolsState = newState;
+      renderAndRebind(container);
+    });
+  }
+
   // Attach Flowchart Events if in Flowchart View
   const flowchartMount = container.querySelector('#vault-flowchart-mount-point') as HTMLElement | null;
   if (flowchartMount) {
     attachFlowchartEvents(flowchartMount);
   }
+
 
   // Attach Flashcard Events if in Flashcard View
   const flashcardMount = container.querySelector('#vault-flashcard-mount-point') as HTMLElement | null;
@@ -427,6 +481,38 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
       `;
     }
 
+    // 4b. Check for matched clinical protocol
+    const matchedProtocol = KHO_PROTOCOLS_REGISTRY.find(p => 
+      article.title.toLowerCase().includes(p.title.toLowerCase()) ||
+      (p.aliases || []).some(a => article.title.toLowerCase().includes(a.toLowerCase())) ||
+      (article.icd10 && article.icd10.some(icd => p.icd10.includes(icd)))
+    );
+
+    let protocolSection = '';
+    if (matchedProtocol) {
+      protocolSection = `
+        <div style="background: linear-gradient(135deg, rgba(225, 29, 72, 0.06) 0%, rgba(2, 132, 199, 0.06) 100%); border: 1.5px solid #e11d48; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 8px;">
+            <span style="background: #e11d48; color: #fff; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 4px;">
+              <i class="fa-solid fa-code-fork"></i> PHÁC ĐỒ ĐIỀU TRỊ CHUẨN (EBM)
+            </span>
+            <span style="font-size: 12px; color: var(--vault-muted); font-weight: 600;">
+              Nguồn: ${escapeHtml(matchedProtocol.guidelineSource)} (${matchedProtocol.year})
+            </span>
+          </div>
+          <h4 style="margin: 0 0 0.5rem; font-size: 1.05rem; font-weight: 800; color: var(--vault-text);">
+            ${escapeHtml(matchedProtocol.title)}
+          </h4>
+          <p style="margin: 0 0 0.75rem; font-size: 13px; color: var(--vault-muted); line-height: 1.45;">
+            ${escapeHtml(matchedProtocol.summary)}
+          </p>
+          <button id="drawer-open-proto-btn" data-proto-id="${matchedProtocol.id}" style="background: #e11d48; color: #fff; border: none; border-radius: 8px; padding: 8px 16px; font-weight: 700; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở Trình Đọc Phác Đồ & Bảng Liều eGFR
+          </button>
+        </div>
+      `;
+    }
+
     // 5. Metadata Chip Bar
     let metadataBanner = '';
     if ((article.aliases && article.aliases.length > 1) || (article.icd10 && article.icd10.length > 0)) {
@@ -470,6 +556,7 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
       ${toolbarHtml}
       ${vaultPathBar}
       ${metadataBanner}
+      ${protocolSection}
       ${renderEncyclopediaQuickFactsHtml(article)}
       ${flowchartSection}
       <div class="vault-reader-pro-grid">
@@ -490,6 +577,24 @@ export async function openArticleDrawer(articleIdOrPath: string): Promise<void> 
     if (drawerFlowchartMount) {
       attachFlowchartEvents(drawerFlowchartMount);
     }
+
+    const drawerProtoBtn = bodyEl.querySelector('#drawer-open-proto-btn') as HTMLElement | null;
+    if (drawerProtoBtn) {
+      drawerProtoBtn.addEventListener('click', () => {
+        const protoId = drawerProtoBtn.getAttribute('data-proto-id');
+        if (protoId) {
+          drawer.classList.remove('active');
+          state.activeGroup = 'PROTOCOL';
+          protocolsState.selectedId = protoId;
+          protocolsState.activeTab = 'flowchart';
+          const vaultApp = document.getElementById('vault-app') || document.getElementById('app');
+          if (vaultApp) {
+            renderAndRebind(vaultApp);
+          }
+        }
+      });
+    }
+
 
   } catch (err) {
     bodyEl.innerHTML = `

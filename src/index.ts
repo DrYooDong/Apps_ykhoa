@@ -315,20 +315,22 @@ function initializeRoutes(): void {
     const kho = hashParams.get('kho') || searchParams.get('kho') || undefined;
     const group = hashParams.get('group') || searchParams.get('group') || undefined;
     const specialty = hashParams.get('specialty') || searchParams.get('specialty') || undefined;
+    const protocolId = hashParams.get('protocol') || searchParams.get('protocol') || undefined;
     const targetArticle = articleParam || hashParams.get('article') || hashParams.get('id') || searchParams.get('article') || searchParams.get('id');
 
     setVaultInitialState({
       search: search || undefined,
       kho,
       group,
-      specialty
+      specialty,
+      protocolId
     });
 
     mountToApp(renderVaultHubView());
     const appContainer = document.getElementById('app');
     if (appContainer) {
       attachVaultEvents(appContainer);
-      if (targetArticle) {
+      if (targetArticle && !protocolId) {
         setTimeout(() => openArticleDrawer(targetArticle), 250);
       }
     }
@@ -349,6 +351,37 @@ function initializeRoutes(): void {
   router.register('/docspace/vault', 'Kho Kiến Thức Y Khoa (Knowledge Vault)', () => {
     handleVaultRoute();
   });
+
+  // === CLINICAL PROTOCOLS VAULT ROUTES ===
+  router.register('/protocols', 'Kho Phác Đồ Điều Trị (Clinical Protocols)', () => {
+    document.title = 'Kho Phác Đồ Điều Trị – CliniPortal';
+    setVaultInitialState({ group: 'PROTOCOL' });
+    mountToApp(renderVaultHubView());
+    const appContainer = document.getElementById('app');
+    if (appContainer) attachVaultEvents(appContainer);
+  });
+  router.register('/protocols/:protocolId', 'Chi Tiết Phác Đồ Điều Trị', (params) => {
+    document.title = 'Chi Tiết Phác Đồ Điều Trị – CliniPortal';
+    setVaultInitialState({ group: 'PROTOCOL', protocolId: params.protocolId });
+    mountToApp(renderVaultHubView());
+    const appContainer = document.getElementById('app');
+    if (appContainer) attachVaultEvents(appContainer);
+  });
+  router.register('/vault/protocols', 'Kho Phác Đồ Điều Trị (Clinical Protocols)', () => {
+    document.title = 'Kho Phác Đồ Điều Trị – CliniPortal';
+    setVaultInitialState({ group: 'PROTOCOL' });
+    mountToApp(renderVaultHubView());
+    const appContainer = document.getElementById('app');
+    if (appContainer) attachVaultEvents(appContainer);
+  });
+  router.register('/vault/protocols/:protocolId', 'Chi Tiết Phác Đồ Điều Trị', (params) => {
+    document.title = 'Chi Tiết Phác Đồ Điều Trị – CliniPortal';
+    setVaultInitialState({ group: 'PROTOCOL', protocolId: params.protocolId });
+    mountToApp(renderVaultHubView());
+    const appContainer = document.getElementById('app');
+    if (appContainer) attachVaultEvents(appContainer);
+  });
+
 
   // === CONSOLIDATED DOCSPACE REDIRECTS (Kỹ năng, Tiếp cận, Công cụ, Dược lý -> DocSpace) ===
   const legacyPrefixes = ['/skills', '/calculators', '/pharmacology', '/approaches'];

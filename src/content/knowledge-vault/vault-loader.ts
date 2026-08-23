@@ -8,29 +8,28 @@ import catalogData from './data/vault-catalog.json';
 export const VAULT_CATALOG: VaultArticle[] = catalogData as VaultArticle[];
 
 export const KHO_DEFINITIONS: Record<string, { name: string; group: string; icon: string; color: string }> = {
-  // Nhóm 1: Cơ sở Y khoa
-  GPSL: { name: 'Giải phẫu & Sinh lý', group: 'Cơ sở Y khoa', icon: 'fa-heart-pulse', color: '#0284c7' },
-  HS:   { name: 'Hóa sinh Y học',      group: 'Cơ sở Y khoa', icon: 'fa-flask',       color: '#8b5cf6' },
-  SLB:  { name: 'Sinh lý bệnh',        group: 'Cơ sở Y khoa', icon: 'fa-bolt',        color: '#f59e0b' },
-  DTH:  { name: 'Dịch tễ & Vi sinh',   group: 'Cơ sở Y khoa', icon: 'fa-virus',       color: '#10b981' },
-  YTNC: { name: 'Yếu tố Nguy cơ',      group: 'Cơ sở Y khoa', icon: 'fa-triangle-exclamation', color: '#f97316' },
+  // 1. Nhóm Cơ sở
+  GPSL: { name: 'GP & sinh lý',         group: 'Cơ sở', icon: 'fa-heart-pulse',           color: '#0284c7' },
+  HS:   { name: 'Hóa sinh',             group: 'Cơ sở', icon: 'fa-flask',                 color: '#8b5cf6' },
+  SLB:  { name: 'Sinh lý bệnh',         group: 'Cơ sở', icon: 'fa-bolt',                  color: '#f59e0b' },
+  DTH:  { name: 'Dịch tễ học',          group: 'Cơ sở', icon: 'fa-virus',                 color: '#10b981' },
+  KN:   { name: 'Kỹ năng',              group: 'Cơ sở', icon: 'fa-stethoscope',           color: '#6366f1' },
 
-  // Nhóm 2: Lâm sàng & Bệnh học
-  TC:   { name: 'Tiếp cận Lâm sàng',   group: 'Lâm sàng & Bệnh học', icon: 'fa-magnifying-glass',     color: '#0ea5e9' },
-  KN:   { name: 'Kỹ năng Lâm sàng',    group: 'Lâm sàng & Bệnh học', icon: 'fa-stethoscope',          color: '#6366f1' },
-  CD:   { name: 'Chẩn đoán Bệnh học',  group: 'Lâm sàng & Bệnh học', icon: 'fa-clipboard-check',      color: '#ec4899' },
-  PDDT: { name: 'Phác đồ Điều trị',    group: 'Lâm sàng & Bệnh học', icon: 'fa-pills',                color: '#3b82f6' },
-  BC:   { name: 'Biến chứng & Tiên lượng', group: 'Lâm sàng & Bệnh học', icon: 'fa-triangle-exclamation', color: '#ef4444' },
+  // 2. Nhóm Chuyên sâu
+  YTNC: { name: 'Yếu tố nguy cơ',       group: 'Chuyên sâu', icon: 'fa-triangle-exclamation',  color: '#f97316' },
+  TC:   { name: 'Lâm sàng',             group: 'Chuyên sâu', icon: 'fa-magnifying-glass',      color: '#0ea5e9' },
+  CLS:  { name: 'Cận lâm sàng',         group: 'Chuyên sâu', icon: 'fa-flask-vial',            color: '#6366f1' },
+  CD:   { name: 'Tiêu chuẩn chẩn đoán', group: 'Chuyên sâu', icon: 'fa-clipboard-check',       color: '#ec4899' },
+  PDDT: { name: 'Phác đồ',              group: 'Chuyên sâu', icon: 'fa-pills',                 color: '#3b82f6' },
+  DUOC: { name: 'Dược',                 group: 'Chuyên sâu', icon: 'fa-capsules',              color: '#06b6d4' },
+  TV:   { name: 'Tư vấn',               group: 'Chuyên sâu', icon: 'fa-hand-holding-medical',  color: '#84cc16' },
+  BC:   { name: 'Biến chứng',           group: 'Chuyên sâu', icon: 'fa-heart-crack',           color: '#ef4444' },
 
-  // Nhóm 3: Thực Hành & Bổ Trợ
-  CC:   { name: 'Công Cụ & Thang Điểm', group: 'Thực Hành & Bổ Trợ', icon: 'fa-calculator',        color: '#f59e0b' },
-  DUOC: { name: 'Dược Thư & Tương Tác Thuốc', group: 'Thực Hành & Bổ Trợ', icon: 'fa-capsules',     color: '#06b6d4' },
-  CLS:  { name: 'Cận Lâm Sàng & Xét Nghiệm', group: 'Thực Hành & Bổ Trợ', icon: 'fa-flask-vial',   color: '#6366f1' },
-  CN:   { name: 'Cập nhật Guidelines', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-arrows-rotate',      color: '#14b8a6' },
-  CORE: { name: 'Thực thể Hạt nhân',   group: 'Chuyên sâu & Bổ trợ', icon: 'fa-dna',                color: '#a855f7' },
-  EBM:  { name: 'NCKH & EBM',          group: 'Chuyên sâu & Bổ trợ', icon: 'fa-chart-pie',          color: '#64748b' },
-  DD:   { name: 'Dinh dưỡng Lâm sàng', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-apple-whole',        color: '#84cc16' },
-  RAW:  { name: 'Kho Chưa lọc / Tổng quan', group: 'Chuyên sâu & Bổ trợ', icon: 'fa-box-archive',   color: '#78716c' }
+  // 3. Nhóm Hỗ trợ
+  CC:   { name: 'Công cụ & Thang điểm', group: 'Hỗ trợ', icon: 'fa-calculator',           color: '#f59e0b' },
+  EBM:  { name: 'NCKH & EBM',           group: 'Hỗ trợ', icon: 'fa-chart-pie',             color: '#64748b' },
+  RAW:  { name: 'Kho chưa lọc',         group: 'Hỗ trợ', icon: 'fa-box-archive',          color: '#78716c' },
+  CORE: { name: 'Thực thể Hạt nhân',    group: 'Hỗ trợ', icon: 'fa-dna',                  color: '#a855f7' }
 };
 
 /**
@@ -134,6 +133,7 @@ export function findPathwayArticles(currentArticle: VaultArticle): ClinicalPathw
     else if (art.khoCode === 'CD' && !result.cd) result.cd = art;
     else if (art.khoCode === 'PDDT' && !result.pddt) result.pddt = art;
     else if (art.khoCode === 'BC' && !result.bc) result.bc = art;
+    else if (art.khoCode === 'TV' && !result.tv) result.tv = art;
     else if (art.khoCode === 'CN' && !result.cn) result.cn = art;
   });
 
