@@ -389,8 +389,9 @@ body:has(#app .dsp-layout) .dsp-layout {
 .dsp-sidebar::-webkit-scrollbar { width: 4px; }
 .dsp-sidebar::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.2); border-radius: 4px; }
 
+/* ── Collapsed Desktop Sidebar ── */
 .dsp-sidebar--collapsed {
-  width: var(--dsp-sidebar-collapsed-w);
+  width: var(--dsp-sidebar-collapsed-w, 68px) !important;
 }
 
 .dsp-sidebar--collapsed .dsp-nav-item span,
@@ -398,20 +399,105 @@ body:has(#app .dsp-layout) .dsp-layout {
 .dsp-sidebar--collapsed .dsp-sidebar-spec,
 .dsp-sidebar--collapsed .dsp-sidebar-brand span,
 .dsp-sidebar--collapsed .dsp-sidebar-back,
-.dsp-sidebar--collapsed .dsp-soon-badge {
-  display: none;
+.dsp-sidebar--collapsed .dsp-soon-badge,
+.dsp-sidebar--collapsed .dsp-nav-counter,
+.dsp-sidebar--collapsed .dsp-nav-section-title,
+.dsp-sidebar--collapsed .dsp-sidebar-footer-title {
+  display: none !important;
 }
 
 .dsp-sidebar--collapsed .dsp-sidebar-header {
-  justify-content: center;
+  justify-content: center !important;
+  padding: 0.85rem 0.35rem !important;
+}
+
+.dsp-sidebar--collapsed .dsp-sidebar-header-brand-wrap {
+  display: none !important;
+}
+
+.dsp-sidebar--collapsed .dsp-sidebar-profile {
+  justify-content: center !important;
+  padding: 0.85rem 0.35rem !important;
+}
+
+.dsp-sidebar--collapsed .dsp-nav {
+  padding: 0.75rem 0.35rem !important;
+  gap: 0.5rem !important;
+}
+
+.dsp-sidebar--collapsed .dsp-nav-section {
+  margin-bottom: 0.35rem !important;
+}
+
+.dsp-sidebar--collapsed .dsp-nav-item {
+  justify-content: center !important;
+  padding: 0.65rem 0 !important;
+  border-radius: 10px !important;
+  position: relative !important;
+}
+
+.dsp-sidebar--collapsed .dsp-nav-item i {
+  font-size: 1.15rem !important;
+  width: auto !important;
+}
+
+.dsp-sidebar--collapsed .dsp-sidebar-footer {
+  padding: 0.65rem 0.35rem !important;
+}
+
+.dsp-sidebar--collapsed .dsp-sidebar-footer .dsp-nav-item {
+  justify-content: center !important;
+  padding: 0.65rem 0 !important;
+}
+
+/* Floating Tooltip in Collapsed Sidebar */
+.dsp-sidebar--collapsed .dsp-nav-item:hover::after {
+  content: attr(data-label);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-surface, #1e293b);
+  color: var(--color-text, #f8fafc);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--dsp-glass-border, rgba(255, 255, 255, 0.12));
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 1;
+}
+
+[data-theme="light"] .dsp-sidebar--collapsed .dsp-nav-item:hover::after {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  border-color: rgba(226, 232, 240, 0.9);
 }
 
 .dsp-sidebar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.15rem 1.25rem;
+  padding: 1rem 1.15rem;
   border-bottom: 1px solid var(--dsp-glass-border);
+  gap: 0.5rem;
+}
+
+.dsp-sidebar-header-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.dsp-sidebar-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .dsp-sidebar-brand {
@@ -460,8 +546,22 @@ body:has(#app .dsp-layout) .dsp-layout {
   padding: 0.35rem;
   border-radius: 8px;
   transition: color var(--dsp-transition);
+  font-size: 1rem;
 }
 .dsp-sidebar-toggle:hover { color: var(--dsp-sky); background: rgba(14, 165, 233, 0.1); }
+
+.dsp-sidebar-close-mobile {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 0.35rem;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  transition: all var(--dsp-transition);
+}
+.dsp-sidebar-close-mobile:hover { color: var(--dsp-rose, #f43f5e); background: rgba(244, 63, 94, 0.1); }
 
 .dsp-sidebar-profile {
   display: flex;

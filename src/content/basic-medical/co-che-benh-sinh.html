@@ -270,30 +270,114 @@
             box-shadow: 0 8px 22px rgba(225, 29, 72, 0.45) !important;
         }
 
-        /* 3. STICKY SIDEBAR NAV */
+        /* 3. STICKY SIDEBAR NAV & CUSTOM SCROLLBAR */
         .layout-nav-sidebar {
+            width: 290px !important;
             position: sticky !important;
-            top: calc(60px + 1.5rem) !important;
+            top: calc(60px + 1.25rem) !important;
+            max-height: calc(100vh - 85px) !important;
+            scrollbar-width: thin !important;
+            scrollbar-color: rgba(148, 163, 184, 0.4) transparent !important;
+        }
+
+        .layout-nav-sidebar::-webkit-scrollbar,
+        .nav-sidebar-sticky::-webkit-scrollbar {
+            width: 5px !important;
+            height: 5px !important;
+        }
+
+        .layout-nav-sidebar::-webkit-scrollbar-track,
+        .nav-sidebar-sticky::-webkit-scrollbar-track {
+            background: transparent !important;
+        }
+
+        .layout-nav-sidebar::-webkit-scrollbar-thumb,
+        .nav-sidebar-sticky::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.35) !important;
+            border-radius: 999px !important;
         }
 
         .nav-sidebar-sticky {
             background: var(--hub-surface) !important;
             border: 1px solid var(--hub-border) !important;
             border-radius: 20px !important;
-            padding: 1.25rem !important;
-            box-shadow: var(--shadow-sm) !important;
+            padding: 1.15rem 0.95rem !important;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+            backdrop-filter: blur(16px) !important;
+            max-height: calc(100vh - 100px) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+        }
+
+        .nav-sidebar-header {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 0.5rem !important;
+            padding: 0.2rem 0.35rem 0.85rem !important;
+            margin-bottom: 0.75rem !important;
+            border-bottom: 1px solid var(--hub-border) !important;
+        }
+
+        .nav-sidebar-title-wrap {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.55rem !important;
+            font-size: 0.775rem !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.06em !important;
+            text-transform: uppercase !important;
+            color: var(--hub-text-muted) !important;
+        }
+
+        .nav-sidebar-header-icon {
+            color: var(--hub-patho) !important;
+            font-size: 0.85rem !important;
+        }
+
+        .nav-sidebar-total-badge {
+            font-size: 0.7rem !important;
+            font-weight: 700 !important;
+            padding: 2px 8px !important;
+            border-radius: 999px !important;
+            background: var(--hub-patho-light) !important;
+            color: var(--hub-patho) !important;
+            border: 1px solid rgba(225, 29, 72, 0.15) !important;
         }
 
         .part-nav-item {
             border-radius: 12px !important;
-            padding: 0.65rem 0.85rem !important;
+            padding: 0.55rem 0.75rem !important;
             transition: all var(--hub-tr) !important;
+            border: 1px solid transparent !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            position: relative !important;
         }
 
-        .part-nav-item:hover, .part-nav-item.active {
+        .part-nav-item:hover {
             background: var(--hub-patho-light) !important;
             color: var(--hub-patho) !important;
-            transform: translateX(4px) !important;
+            transform: translateX(3px) !important;
+        }
+
+        .part-nav-item.active {
+            background: linear-gradient(90deg, rgba(225, 29, 72, 0.12) 0%, rgba(225, 29, 72, 0.04) 100%) !important;
+            color: var(--hub-patho) !important;
+            font-weight: 700 !important;
+            border-color: rgba(225, 29, 72, 0.25) !important;
+        }
+
+        .part-nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 3.5px;
+            border-radius: 0 4px 4px 0;
+            background: var(--hub-patho);
         }
 
         /* 4. GROUP HEADERS & SPECIALTY BENTO CARDS */
@@ -533,82 +617,128 @@
                 <!-- Navigation Sidebar (Sticky) -->
                 <aside class="layout-nav-sidebar" aria-label="Danh mục chuyên khoa">
                     <div class="nav-sidebar-sticky" id="patho-nav">
-                        <h4 class="nav-sidebar-title">Chuyên khoa</h4>
+                        <div class="nav-sidebar-header">
+                            <div class="nav-sidebar-title-wrap">
+                                <i class="fa-solid fa-layer-group nav-sidebar-header-icon"></i>
+                                <span>Chuyên Khoa</span>
+                            </div>
+                            <span class="nav-sidebar-total-badge">10 Khoa</span>
+                        </div>
                         <ul class="part-nav-list">
                             <li>
                                 <a href="#patho-timmach-section" class="part-nav-item p4 active"
                                     data-target="patho-timmach-section">
-                                    <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
-                                    <span class="part-text">Tim mạch</span>
-                                    <span class="part-count-badge">5</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                                        <span class="part-text">Tim mạch</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">5</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-hohap-section" class="part-nav-item p1"
                                     data-target="patho-hohap-section">
-                                    <span class="part-icon"><i class="fa-solid fa-wind"></i></span>
-                                    <span class="part-text">Hô hấp</span>
-                                    <span class="part-count-badge">3</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-wind"></i></span>
+                                        <span class="part-text">Hô hấp</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">3</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-tieuhoa-section" class="part-nav-item p5"
                                     data-target="patho-tieuhoa-section">
-                                    <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
-                                    <span class="part-text">Tiêu hóa</span>
-                                    <span class="part-count-badge">17</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
+                                        <span class="part-text">Tiêu hóa</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">17</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-thannieu-section" class="part-nav-item p6"
                                     data-target="patho-thannieu-section">
-                                    <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
-                                    <span class="part-text">Thận – Điện giải</span>
-                                    <span class="part-count-badge">7</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
+                                        <span class="part-text">Thận – Điện giải</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">7</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-noitiet-section" class="part-nav-item p7"
                                     data-target="patho-noitiet-section">
-                                    <span class="part-icon"><i class="fa-solid fa-venus-mars"></i></span>
-                                    <span class="part-text">Nội tiết</span>
-                                    <span class="part-count-badge">4</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                                        <span class="part-text">Nội tiết</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">4</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-ngoai-section" class="part-nav-item p2"
                                     data-target="patho-ngoai-section">
-                                    <span class="part-icon"><i class="fa-solid fa-kit-medical"></i></span>
-                                    <span class="part-text">Ngoại khoa</span>
-                                    <span class="part-count-badge">2</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-kit-medical"></i></span>
+                                        <span class="part-text">Ngoại khoa</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">2</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-san-section" class="part-nav-item p3" data-target="patho-san-section">
-                                    <span class="part-icon"><i class="fa-solid fa-baby-carriage"></i></span>
-                                    <span class="part-text">Sản khoa</span>
-                                    <span class="part-count-badge">1</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-baby-carriage"></i></span>
+                                        <span class="part-text">Sản khoa</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">1</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-truyen-nhiem-section" class="part-nav-item p8" data-target="patho-truyen-nhiem-section">
-                                    <span class="part-icon"><i class="fa-solid fa-virus-covid"></i></span>
-                                    <span class="part-text">Truyền nhiễm</span>
-                                    <span class="part-count-badge">6</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-virus-covid"></i></span>
+                                        <span class="part-text">Truyền nhiễm</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">6</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-hoisu-section" class="part-nav-item" data-target="patho-hoisu-section" style="color:var(--color-danger)">
-                                    <span class="part-icon"><i class="fa-solid fa-heart-circle-exclamation"></i></span>
-                                    <span class="part-text">Hồi sức</span>
-                                    <span class="part-count-badge" style="background:rgba(220,38,38,0.15);color:#dc2626">2</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon" style="background:rgba(220,38,38,0.15);color:#dc2626"><i class="fa-solid fa-heart-circle-exclamation"></i></span>
+                                        <span class="part-text">Hồi sức</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge" style="background:rgba(220,38,38,0.15);color:#dc2626">2</span>
+                                    </div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#patho-nhikhoa-section" class="part-nav-item p9" data-target="patho-nhikhoa-section">
-                                    <span class="part-icon"><i class="fa-solid fa-child"></i></span>
-                                    <span class="part-text">Nhi khoa</span>
-                                    <span class="part-count-badge">3</span>
+                                    <div class="part-nav-left">
+                                        <span class="part-icon"><i class="fa-solid fa-child"></i></span>
+                                        <span class="part-text">Nhi khoa</span>
+                                    </div>
+                                    <div class="part-nav-right">
+                                        <span class="part-count-badge">3</span>
+                                    </div>
                                 </a>
                             </li>
                         </ul>

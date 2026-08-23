@@ -9,34 +9,33 @@ import { DoctorProfile, DocSpaceNavItem, DocSpaceNavSection } from './types';
 export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
   {
     id: 'clinical',
-    title: 'Lâm sàng & Ca bệnh',
-    icon: 'fa-solid fa-hospital-user',
+    title: 'Hồ sơ & Ca bệnh',
+    icon: 'fa-solid fa-notes-medical',
     items: [
       { id: 'dashboard',    label: 'Tổng quan',           href: '#/docspace',              icon: 'fa-solid fa-house-medical',  phase: 1 },
-      { id: 'chronic-care', label: 'Bệnh Mạn Tính',       href: '#/docspace/chronic-care', icon: 'fa-solid fa-heart-pulse',   phase: 1 },
       { id: 'soap',         label: 'Sổ Tay SOAP',         href: '#/docspace/soap',         icon: 'fa-solid fa-notes-medical',  phase: 1 },
+      { id: 'chronic-care', label: 'Bệnh Mạn Tính',       href: '#/docspace/chronic-care', icon: 'fa-solid fa-heart-pulse',   phase: 1 },
+      { id: 'notes',        label: 'Ghi chú Lâm sàng',    href: '#/docspace/notes',        icon: 'fa-solid fa-note-sticky',    phase: 1 },
+    ],
+  },
+  {
+    id: 'shift',
+    title: 'Tua trực & Giao ban',
+    icon: 'fa-solid fa-user-clock',
+    items: [
+      { id: 'oncall',       label: 'Checklist Tua trực',  href: '#/docspace/oncall',       icon: 'fa-solid fa-list-check',     phase: 1 },
       { id: 'sbar',         label: 'Bàn giao SBAR',       href: '#/docspace/sbar',         icon: 'fa-solid fa-file-waveform',  phase: 1 },
     ],
   },
   {
-    id: 'knowledge',
-    title: 'Tri thức & Phác đồ',
-    icon: 'fa-solid fa-book-medical',
+    id: 'decision-support',
+    title: 'Công cụ & Ra quyết định',
+    icon: 'fa-solid fa-wand-magic-sparkles',
     items: [
-      { id: 'vault',    label: 'Kho Tri Thức (Vault)', href: '#/vault', icon: 'fa-solid fa-graduation-cap', phase: 1, badgeText: '600+' },
-      { id: 'studios',  label: 'Clinical Studios',     href: '#/docspace/studios',  icon: 'fa-solid fa-flask-vial',     phase: 1, badgeText: 'Pro' },
-      { id: 'protocol', label: 'Kho Phác đồ Điều trị', href: '#/docspace/protocol', icon: 'fa-solid fa-book-medical',   phase: 1 },
-      { id: 'notes',    label: 'Ghi chú Lâm sàng',     href: '#/docspace/notes',    icon: 'fa-solid fa-note-sticky',    phase: 1 },
-    ],
-  },
-  {
-    id: 'practice',
-    title: 'Tua trực & Hiệu suất',
-    icon: 'fa-solid fa-user-clock',
-    items: [
-      { id: 'oncall',   label: 'Checklist Tua trực',   href: '#/docspace/oncall',   icon: 'fa-solid fa-list-check',     phase: 1 },
-      { id: 'insights', label: 'AI Insights & Sức khỏe', href: '#/docspace/insights', icon: 'fa-solid fa-brain',        phase: 1 },
-      { id: 'sandbox',  label: 'Sandbox Mô phỏng',     href: '#/docspace/sandbox',  icon: 'fa-solid fa-flask',          phase: 3, badgeText: 'AI Lab' },
+      { id: 'studios',      label: 'Clinical Studios',    href: '#/docspace/studios',      icon: 'fa-solid fa-calculator',     phase: 1, badgeText: 'Pro' },
+      { id: 'protocol',     label: 'Phác đồ Xử trí',      href: '#/docspace/protocol',     icon: 'fa-solid fa-book-medical',   phase: 1 },
+      { id: 'insights',     label: 'AI Insights & Tải trực', href: '#/docspace/insights',  icon: 'fa-solid fa-brain',          phase: 1 },
+      { id: 'sandbox',      label: 'Sandbox Mô phỏng',    href: '#/docspace/sandbox',      icon: 'fa-solid fa-flask',          phase: 3, badgeText: 'AI Lab' },
     ],
   },
 ];
@@ -643,7 +642,8 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
         <a href="${item.href}"
            class="dsp-nav-item${isActive ? ' dsp-nav-item--active' : ''}${(isPhase2 || isPhase3) ? ' dsp-nav-item--soon' : ''}"
            id="dspNav-${item.id}"
-           ${(isPhase2 || isPhase3) ? 'title="Tính năng Nâng cao AI"' : ''}>
+           data-label="${escapeHtml(item.label)}"
+           title="${escapeHtml(item.label)}">
           <i class="${item.icon}"></i>
           <span>${item.label}</span>
           ${badgeHtml}
@@ -667,7 +667,7 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
   return `
     <aside class="dsp-sidebar" id="dspSidebar">
       <div class="dsp-sidebar-header">
-        <div style="display:flex; align-items:center; gap:8px;">
+        <div class="dsp-sidebar-header-brand-wrap">
           <a href="#/" class="dsp-sidebar-back" title="Trở về Trang chủ CliniPortal">
             <i class="fa-solid fa-arrow-left"></i>
           </a>
@@ -676,9 +676,14 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
             <span>DocSpace</span>
           </div>
         </div>
-        <button class="dsp-sidebar-toggle" id="dspSidebarToggle" aria-label="Thu gọn danh mục sidebar">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <div class="dsp-sidebar-header-actions">
+          <button class="dsp-sidebar-toggle" id="dspSidebarToggle" title="Thu gọn / Mở rộng thanh bên" aria-label="Thu gọn danh mục sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <button class="dsp-sidebar-close-mobile" id="dspSidebarCloseMobile" title="Đóng danh mục" aria-label="Đóng thanh bên trên di động">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <div class="dsp-sidebar-profile">
@@ -694,11 +699,11 @@ export function renderSidebar(profile: DoctorProfile, activeId: string): string 
       </nav>
 
       <div class="dsp-sidebar-footer">
-        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSettingsBtn" style="font-weight:700; color:var(--color-primary); cursor:pointer;">
+        <button class="dsp-nav-item dsp-nav-item--footer" id="dspSidebarSettingsBtn" data-label="Cài đặt & Tiện ích" title="Cài đặt & Tiện ích" style="font-weight:700; color:var(--color-primary); cursor:pointer;">
           <i class="fa-solid fa-gear" style="color:var(--color-primary);"></i>
           <span>Cài đặt &amp; Tiện ích</span>
         </button>
-        <a href="#/" class="dsp-nav-item dsp-nav-item--footer" title="Trở về Trang chủ CliniPortal">
+        <a href="#/" class="dsp-nav-item dsp-nav-item--footer" data-label="Về Trang chủ" title="Trở về Trang chủ CliniPortal">
           <i class="fa-solid fa-house" style="color:var(--color-text-muted);"></i>
           <span>Về Trang chủ</span>
         </a>

@@ -153,68 +153,92 @@ export function renderGiaiPhauSinhLyView(): string {
         <!-- Navigation Sidebar (Sticky) -->
         <aside class="layout-nav-sidebar" aria-label="Danh mục phần học">
           <div class="nav-sidebar-sticky" id="physio-nav">
-            <h4 class="nav-sidebar-title">Hệ Thống Cơ Quan</h4>
+            <div class="nav-sidebar-header">
+              <div class="nav-sidebar-title-wrap">
+                <i class="fa-solid fa-layer-group nav-sidebar-header-icon"></i>
+                <span>Hệ Thống Cơ Quan</span>
+              </div>
+              <span class="nav-sidebar-total-badge">9 Hệ cơ quan</span>
+            </div>
             <ul class="part-nav-list">
               <li>
                 <a href="#part1-section" class="part-nav-item p1 active" data-target="part1-section">
-                  <span class="part-icon"><i class="fa-solid fa-microscope"></i></span>
-                  <span class="part-text">1. Hệ Đại cương & Tế bào</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-microscope"></i></span>
+                    <span class="part-text">1. Hệ Đại cương & Tế bào</span>
+                  </div>
                   <span class="part-count-badge">3</span>
                 </a>
               </li>
               <li>
                 <a href="#part2-section" class="part-nav-item p2" data-target="part2-section">
-                  <span class="part-icon"><i class="fa-solid fa-brain"></i></span>
-                  <span class="part-text">2. Hệ Thần kinh & Cơ</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-brain"></i></span>
+                    <span class="part-text">2. Hệ Thần kinh & Cơ</span>
+                  </div>
                   <span class="part-count-badge">8</span>
                 </a>
               </li>
               <li>
                 <a href="#part3-section" class="part-nav-item p3" data-target="part3-section">
-                  <span class="part-icon"><i class="fa-solid fa-droplet"></i></span>
-                  <span class="part-text">3. Hệ Máu & Miễn dịch</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-droplet"></i></span>
+                    <span class="part-text">3. Hệ Máu & Miễn dịch</span>
+                  </div>
                   <span class="part-count-badge">5</span>
                 </a>
               </li>
               <li>
                 <a href="#part4-section" class="part-nav-item p4" data-target="part4-section">
-                  <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
-                  <span class="part-text">4. Hệ Tim mạch & Hô hấp</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                    <span class="part-text">4. Hệ Tim mạch & Hô hấp</span>
+                  </div>
                   <span class="part-count-badge">6</span>
                 </a>
               </li>
               <li>
                 <a href="#part5-section" class="part-nav-item p5" data-target="part5-section">
-                  <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
-                  <span class="part-text">5. Hệ Tiêu hóa & Chuyển hóa</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-bowl-food"></i></span>
+                    <span class="part-text">5. Hệ Tiêu hóa & Chuyển hóa</span>
+                  </div>
                   <span class="part-count-badge">6</span>
                 </a>
               </li>
               <li>
                 <a href="#part6-section" class="part-nav-item p6" data-target="part6-section">
-                  <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
-                  <span class="part-text">6. Hệ Thận & Dịch cơ thể</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
+                    <span class="part-text">6. Hệ Thận & Dịch cơ thể</span>
+                  </div>
                   <span class="part-count-badge">4</span>
                 </a>
               </li>
               <li>
                 <a href="#part7-section" class="part-nav-item p7" data-target="part7-section">
-                  <span class="part-icon"><i class="fa-solid fa-venus-mars"></i></span>
-                  <span class="part-text">7. Hệ Nội tiết & Sinh sản</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-venus-mars"></i></span>
+                    <span class="part-text">7. Hệ Nội tiết & Sinh sản</span>
+                  </div>
                   <span class="part-count-badge">6</span>
                 </a>
               </li>
               <li>
                 <a href="#part8-section" class="part-nav-item p8" data-target="part8-section">
-                  <span class="part-icon"><i class="fa-solid fa-person-pregnant"></i></span>
-                  <span class="part-text">8. Hệ Sản phụ khoa</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-person-pregnant"></i></span>
+                    <span class="part-text">8. Hệ Sản phụ khoa</span>
+                  </div>
                   <span class="part-count-badge">2</span>
                 </a>
               </li>
               <li>
                 <a href="#part9-section" class="part-nav-item p9" data-target="part9-section">
-                  <span class="part-icon"><i class="fa-solid fa-baby"></i></span>
-                  <span class="part-text">9. Hệ Nhi khoa</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-baby"></i></span>
+                    <span class="part-text">9. Hệ Nhi khoa</span>
+                  </div>
                   <span class="part-count-badge">5</span>
                 </a>
               </li>

@@ -156,12 +156,22 @@ export function renderCoCheBenhSinhView(): string {
         <!-- Navigation Sidebar (Sticky) -->
         <aside class="layout-nav-sidebar" aria-label="Danh mục chuyên khoa">
           <div class="nav-sidebar-sticky" id="patho-nav">
-            <h4 class="nav-sidebar-title">Chuyên Khoa Bệnh Học</h4>
+            <div class="nav-sidebar-header">
+              <div class="nav-sidebar-title-wrap">
+                <i class="fa-solid fa-layer-group nav-sidebar-header-icon"></i>
+                <span>Chuyên Khoa Bệnh Học</span>
+              </div>
+              <span class="nav-sidebar-total-badge">11 Khoa</span>
+            </div>
+
             <ul class="part-nav-list">
               <!-- 1. Tim mạch (Collapsible) -->
               <li class="nav-item-parent">
                 <div class="part-nav-item active has-subnav" data-target="patho-timmach-section">
-                  <span class="part-text">Tim mạch</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-heart-pulse"></i></span>
+                    <span class="part-text">Tim mạch</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">5</span>
                     <i class="fa-solid fa-chevron-down subnav-chevron"></i>
@@ -192,7 +202,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 2. Hô hấp (Collapsible) -->
               <li class="nav-item-parent">
                 <div class="part-nav-item has-subnav" data-target="patho-hohap-section">
-                  <span class="part-text">Hô hấp</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-lungs"></i></span>
+                    <span class="part-text">Hô hấp</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">5</span>
                     <i class="fa-solid fa-chevron-down subnav-chevron"></i>
@@ -223,7 +236,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 3. Tiêu hóa (Collapsible) -->
               <li class="nav-item-parent expanded">
                 <div class="part-nav-item has-subnav expanded" data-target="patho-tieuhoa-section">
-                  <span class="part-text">Tiêu hóa</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-utensils"></i></span>
+                    <span class="part-text">Tiêu hóa</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">21</span>
                     <i class="fa-solid fa-chevron-down subnav-chevron"></i>
@@ -254,7 +270,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 4. Thận -->
               <li class="nav-item-parent">
                 <a href="#patho-than-section" class="part-nav-item" data-target="patho-than-section">
-                  <span class="part-text">Thận</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-filter"></i></span>
+                    <span class="part-text">Thận</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">2</span>
                   </div>
@@ -264,7 +283,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 5. Điện giải - Toan kiềm (Collapsible) -->
               <li class="nav-item-parent">
                 <div class="part-nav-item has-subnav" data-target="patho-diengiai-section">
-                  <span class="part-text">Điện giải - Toan kiềm</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-bolt"></i></span>
+                    <span class="part-text">Điện giải - Toan kiềm</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">6</span>
                     <i class="fa-solid fa-chevron-down subnav-chevron"></i>
@@ -289,7 +311,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 6. Nội tiết (Collapsible) -->
               <li class="nav-item-parent">
                 <div class="part-nav-item has-subnav" data-target="patho-noitiet-section">
-                  <span class="part-text">Nội tiết</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-dna"></i></span>
+                    <span class="part-text">Nội tiết</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">4</span>
                     <i class="fa-solid fa-chevron-down subnav-chevron"></i>
@@ -323,7 +348,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 7. Sản khoa -->
               <li class="nav-item-parent">
                 <a href="#patho-sankhoa-section" class="part-nav-item" data-target="patho-sankhoa-section">
-                  <span class="part-text">Sản khoa</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-person-pregnant"></i></span>
+                    <span class="part-text">Sản khoa</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">1</span>
                   </div>
@@ -333,7 +361,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 8. Truyền nhiễm (Collapsible) -->
               <li class="nav-item-parent">
                 <div class="part-nav-item has-subnav" data-target="patho-truyen-nhiem-section">
-                  <span class="part-text">Truyền nhiễm</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-virus"></i></span>
+                    <span class="part-text">Truyền nhiễm</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">6</span>
                     <i class="fa-solid fa-chevron-down subnav-chevron"></i>
@@ -369,7 +400,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 9. Hồi sức - Cấp cứu -->
               <li class="nav-item-parent">
                 <a href="#patho-hoisu-section" class="part-nav-item" data-target="patho-hoisu-section" style="color: #dc2626;">
-                  <span class="part-text">Hồi sức - Cấp cứu</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon" style="color: #dc2626; background: rgba(220, 38, 38, 0.12);"><i class="fa-solid fa-truck-medical"></i></span>
+                    <span class="part-text" style="color: #dc2626;">Hồi sức - Cấp cứu</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge" style="background: rgba(220, 38, 38, 0.15); color: #dc2626;">2</span>
                   </div>
@@ -379,7 +413,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 10. Thần kinh -->
               <li class="nav-item-parent">
                 <a href="#patho-thankinh-section" class="part-nav-item" data-target="patho-thankinh-section">
-                  <span class="part-text">Thần kinh</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-brain"></i></span>
+                    <span class="part-text">Thần kinh</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">1</span>
                   </div>
@@ -389,7 +426,10 @@ export function renderCoCheBenhSinhView(): string {
               <!-- 11. Huyết học -->
               <li class="nav-item-parent">
                 <a href="#patho-huyethoc-section" class="part-nav-item" data-target="patho-huyethoc-section">
-                  <span class="part-text">Huyết học</span>
+                  <div class="part-nav-left">
+                    <span class="part-icon"><i class="fa-solid fa-vial"></i></span>
+                    <span class="part-text">Huyết học</span>
+                  </div>
                   <div class="part-nav-right">
                     <span class="part-count-badge">1</span>
                   </div>

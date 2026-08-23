@@ -124,11 +124,20 @@ function mountGlobalDocSpaceControls(): void {
     calculatorPicker.open();
   });
 
-  // Mobile sidebar drawer handling with backdrop
+  // Sidebar controls (Desktop Collapsible & Mobile Drawer)
   const sidebarEl = document.getElementById('dspSidebar');
+  const layoutEl = document.getElementById('dspLayout');
   const backdropEl = document.getElementById('dspSidebarBackdrop');
   const mobileToggleBtn = document.getElementById('dspMobileSidebarBtn');
   const sidebarToggleBtn = document.getElementById('dspSidebarToggle');
+  const closeMobileBtn = document.getElementById('dspSidebarCloseMobile');
+
+  // Restore saved desktop collapse state
+  const isSavedCollapsed = localStorage.getItem('dsp_sidebar_collapsed') === 'true';
+  if (isSavedCollapsed && window.innerWidth > 768) {
+    sidebarEl?.classList.add('dsp-sidebar--collapsed');
+    layoutEl?.classList.add('dsp-layout--collapsed');
+  }
 
   const openMobileSidebar = () => {
     sidebarEl?.classList.add('dsp-sidebar--mobile-open');
@@ -149,9 +158,20 @@ function mountGlobalDocSpaceControls(): void {
     }
   });
 
-  sidebarToggleBtn?.addEventListener('click', () => {
+  closeMobileBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeMobileSidebar();
+  });
+
+  sidebarToggleBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (window.innerWidth <= 768) {
       closeMobileSidebar();
+    } else {
+      // Desktop toggle collapse
+      const isCollapsed = sidebarEl?.classList.toggle('dsp-sidebar--collapsed');
+      layoutEl?.classList.toggle('dsp-layout--collapsed', !!isCollapsed);
+      localStorage.setItem('dsp_sidebar_collapsed', isCollapsed ? 'true' : 'false');
     }
   });
 

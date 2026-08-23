@@ -108,6 +108,72 @@ ${rawNotes}`;
   }
 }
 
+export interface SBARCritiqueResult {
+  score: number; // 1-10
+  verdict: string; // Tóm tắt nhận xét
+  redFlags: string[]; // Các lỗ hổng hoặc cờ đỏ lâm sàng
+  recommendations: string[]; // Gợi ý bổ sung
+  likelyQuestions: string[]; // 3 câu hỏi BS hội chẩn/lãnh đạo có thể hỏi
+}
+
+export async function critiqueSBARWithAI(
+  sbar: { title?: string; situation?: string; background?: string; assessment?: string; recommendation?: string },
+  settings: AISettings
+): Promise<SBARCritiqueResult> {
+  if (!settings.enabled || !settings.endpoint) {
+    throw new Error("AI chưa được cấu hình hoặc chưa bật. Vui lòng vào Cài đặt AI.");
+  }
+
+  const prompt = `Bạn là một Bác sĩ Trưởng khoa Cấp cứu & Chuyên gia Giảng dạy Lâm sàng SBAR.
+Nhiệm vụ của bạn là PHẢN BIỆN & KIỂM TRA ĐỘ AN TOÀN (Clinical SBAR Critique & Red Flags) cho báo cáo SBAR sau đây:
+
+[TIÊU ĐỀ]: ${sbar.title || 'Không có tiêu đề'}
+[S — SITUATION]: ${sbar.situation || 'Trống'}
+[B — BACKGROUND]: ${sbar.background || 'Trống'}
+[A — ASSESSMENT]: ${sbar.assessment || 'Trống'}
+[R — RECOMMENDATION]: ${sbar.recommendation || 'Trống'}
+
+Hãy đánh giá và phản hồi DUY NHẤT một chuỗi JSON hợp lệ (không kèm markdown \`\`\`json ở ngoài) với cấu trúc sau:
+{
+  "score": 8, // Thang điểm 1-10 về độ hoàn thiện, tính định lượng và an toàn
+  "verdict": "Nhận xét tổng quan súc tích trong 1-2 câu",
+  "redFlags": [
+    "Cảnh báo lỗ hổng 1 (Ví dụ: Chưa nêu rõ chỉ số SpO2 có thở O2 hay không / Thiếu tiền sử dị ứng thuốc)",
+    "Cảnh báo 2 (nếu có)"
+  ],
+  "recommendations": [
+    "Gợi ý bổ sung 1 cho phần Recommendation (Ví dụ: Cần nêu rõ liều cụ thể mg thay vì chỉ ghi 'cho hạ áp')",
+    "Gợi ý 2"
+  ],
+  "likelyQuestions": [
+    "Câu hỏi 1 mà Bác sĩ trưởng tua / Bác sĩ chuyên khoa có thể chất vấn bạn",
+    "Câu hỏi 2",
+    "Câu hỏi 3"
+  ]
+}`;
+
+  const messages = [
+    { role: 'system', content: 'You are a Chief Clinical Resident and SBAR expert evaluator. You only output raw valid JSON.' },
+    { role: 'user', content: prompt }
+  ];
+
+  try {
+    const content = await fetchOpenAI(messages, settings, 0.2);
+    const cleanJson = content.replace(/```json/g, '').replace(/```/g, '').trim();
+    const parsed = JSON.parse(cleanJson);
+    return {
+      score: typeof parsed.score === 'number' ? Math.min(10, Math.max(1, parsed.score)) : 7,
+      verdict: parsed.verdict || 'Báo cáo SBAR đã nêu được các ý chính.',
+      redFlags: Array.isArray(parsed.redFlags) ? parsed.redFlags : [],
+      recommendations: Array.isArray(parsed.recommendations) ? parsed.recommendations : [],
+      likelyQuestions: Array.isArray(parsed.likelyQuestions) ? parsed.likelyQuestions : []
+    };
+  } catch (err: any) {
+    console.error('critiqueSBARWithAI Error', err);
+    throw new Error("Lỗi phản biện AI: " + err.message);
+  }
+}
+
 export async function analyzeCase(caseData: string, settings: AISettings, contextChunks: RAGChunk[]): Promise<string> {
   if (!settings.enabled || !settings.endpoint) {
     throw new Error("AI chưa được cấu hình hoặc chưa bật. Vui lòng vào Cài đặt AI.");

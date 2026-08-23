@@ -157,13 +157,21 @@ export function renderBiochemistryView(): string {
         <!-- Navigation Sidebar (Sticky) -->
         <aside class="layout-nav-sidebar" aria-label="Danh mục khối hóa sinh">
           <div class="nav-sidebar-sticky" id="physio-nav">
-            <h4 class="nav-sidebar-title">Khối Kiến Thức</h4>
+            <div class="nav-sidebar-header">
+              <div class="nav-sidebar-title-wrap">
+                <i class="fa-solid fa-layer-group nav-sidebar-header-icon"></i>
+                <span>Khối Kiến Thức</span>
+              </div>
+              <span class="nav-sidebar-total-badge">7 Khối</span>
+            </div>
             <ul class="part-nav-list">
               ${BIOCHEMISTRY_DATA.blocks.map((b, idx) => `
                 <li>
                   <a href="#${b.id}-section" class="part-nav-item p${idx + 1} ${idx === 0 ? 'active' : ''}" data-target="${b.id}-section">
-                    <span class="part-icon"><i class="fa-solid ${b.icon}"></i></span>
-                    <span class="part-text">${b.code}. ${b.name.replace(/^Khối \d+:\s*/, '')}</span>
+                    <div class="part-nav-left">
+                      <span class="part-icon"><i class="fa-solid ${b.icon}"></i></span>
+                      <span class="part-text">${b.code}. ${b.name.replace(/^Khối \d+:\s*/, '')}</span>
+                    </div>
                     <span class="part-count-badge">${BIOCHEMISTRY_DATA.topics.filter(t => t.blockId === b.id).length}</span>
                   </a>
                 </li>
