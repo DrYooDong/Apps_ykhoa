@@ -626,3 +626,20 @@
 | `src/content/docspace/features/oncall-checklist-view.ts` | Bảng kiểm nhắc việc ca trực (OnCall Checklist) phân tầng ưu tiên |
 | `src/content/docspace/features/dependency-map-view.ts` | Bản đồ phụ thuộc Core (Dependency Map, SVG Network, Risk Matrix & Regression Checklist) |
 | `src/content/docspace/data/graphify-dependency-data.ts` | Dữ liệu phân tích tĩnh được trích xuất từ Graphify Risk Assessment |
+
+---
+
+## 📚 src/content/knowledge-vault/ — Kho Kiến Thức Y Khoa EBM Hub & CRCE
+
+| File | Vai trò |
+|------|---------|
+| `src/content/knowledge-vault/index.html` | Trang Hub Kho Kiến Thức Y Khoa Web Hub |
+| `src/content/knowledge-vault/index.ts` | Điểm khởi tạo Hub & Dynamic Router cho URL Params |
+| `src/content/knowledge-vault/vault-hub-view.ts` | View Hub quản lý 16 phân hệ, Bento Grid, Phác đồ, Flowchart, Flashcard & CRCE |
+| `src/content/knowledge-vault/vault-crce-view.ts` | **[MỚI]** Phân hệ Chuỗi Phản Ứng Lâm Sàng CRCE v3.0 (30 Bệnh lý Trọng tâm 5 Bước) |
+| `src/content/knowledge-vault/css/vault-crce.css` | **[MỚI]** Stylesheet giao diện CRCE Hub & Reactor 5 bước |
+| `src/content/knowledge-vault/css/vault-hub.css` | Stylesheet chính của Knowledge Vault Hub & Reader |
+| `src/content/knowledge-vault/vault-loader.ts` | Trình nạp và phân loại danh mục 2.360+ bài viết trong 16 Kho |
+| `src/content/knowledge-vault/vault-reader-pro.ts` | Trình đọc Markdown Y khoa Pro, TOC bám dính, Pathway Ribbon |
+| `src/content/knowledge-vault/protocols/` | Kho phác đồ điều trị phân tầng & Bảng chỉnh liều eGFR |
+

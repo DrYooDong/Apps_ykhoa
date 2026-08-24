@@ -1,0 +1,661 @@
+/**
+ * CliniPortal Knowledge Vault — Clinical Reaction Chain (CRCE v3.0) Stylesheet
+ * 100% Design Tokens & Dark Mode Compliant
+ */
+
+.vault-crce-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* CRCE Hero Header */
+.vault-crce-hero {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(2, 132, 199, 0.1) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--vault-radius);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.vault-crce-hero-left h2 {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--vault-text);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.vault-crce-hero-left p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--vault-muted);
+  line-height: 1.45;
+}
+
+.vault-crce-hero-stats {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.vault-crce-stat-card {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.vault-crce-stat-card .val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f59e0b;
+}
+
+.vault-crce-stat-card .lbl {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--vault-muted);
+  text-transform: uppercase;
+}
+
+/* Controls Bar: Search & Specialty & Severity Filters */
+.vault-crce-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius);
+  padding: 0.85rem 1.25rem;
+}
+
+.vault-crce-search-wrap {
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.vault-crce-search-wrap i {
+  position: absolute;
+  left: 0.85rem;
+  color: var(--vault-muted);
+  font-size: 0.9rem;
+}
+
+.vault-crce-search-input {
+  width: 100%;
+  padding: 0.6rem 0.85rem 0.6rem 2.3rem;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-bg);
+  color: var(--vault-text);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.vault-crce-search-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.vault-crce-select {
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--vault-border);
+  background: var(--vault-bg);
+  color: var(--vault-text);
+  font-size: 0.85rem;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.vault-crce-select:focus {
+  border-color: #f59e0b;
+}
+
+/* Disease Grid Matrix (30 Diseases) */
+.vault-crce-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.15rem;
+}
+
+.vault-crce-card {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.22s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.vault-crce-card:hover {
+  transform: translateY(-3px);
+  border-color: #f59e0b;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.12);
+}
+
+.vault-crce-card-top {
+  margin-bottom: 0.75rem;
+}
+
+.vault-crce-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 0.6rem;
+  align-items: center;
+}
+
+.vault-crce-badge-icd {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.vault-crce-badge-spec {
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--vault-primary);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.vault-crce-badge-severity {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.vault-crce-badge-severity.emergency {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+.vault-crce-badge-severity.urgent {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+.vault-crce-badge-severity.routine {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.vault-crce-card-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--vault-text);
+  line-height: 1.35;
+}
+
+.vault-crce-card-summary {
+  font-size: 0.85rem;
+  color: var(--vault-muted);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+}
+
+.vault-crce-card-gold {
+  background: var(--vault-bg);
+  border-left: 3px solid #f59e0b;
+  padding: 6px 10px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.8rem;
+  color: var(--vault-text);
+  margin-bottom: 0.75rem;
+}
+.vault-crce-card-gold strong {
+  color: #d97706;
+}
+
+.vault-crce-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--vault-border);
+  padding-top: 0.75rem;
+  margin-top: auto;
+  font-size: 0.8rem;
+  color: var(--vault-muted);
+}
+
+.vault-crce-card-btn {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s;
+}
+
+.vault-crce-card:hover .vault-crce-card-btn {
+  background: #f59e0b;
+  color: #fff;
+  border-color: #f59e0b;
+}
+
+/* ==========================================================================
+   REACTOR DETAIL VIEW (5-STEP ENGINE)
+   ========================================================================== */
+.vault-crce-reactor {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: var(--vault-radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Reactor Top Header */
+.vault-crce-reactor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-bottom: 1px solid var(--vault-border);
+  padding-bottom: 1.25rem;
+}
+
+.vault-crce-back-btn {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vault-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.vault-crce-back-btn:hover {
+  border-color: #f59e0b;
+  color: #d97706;
+}
+
+.vault-crce-reactor-meta h2 {
+  margin: 0.4rem 0 0.3rem 0;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--vault-text);
+}
+
+.vault-crce-reactor-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Stepper Progress Bar (5 Steps) */
+.vault-crce-stepper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  background: var(--vault-bg);
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--vault-border);
+}
+
+.vault-crce-step-btn {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.vault-crce-step-btn:hover {
+  border-color: #f59e0b;
+}
+
+.vault-crce-step-btn.active {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+}
+
+.vault-crce-step-btn .step-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  opacity: 0.85;
+}
+
+.vault-crce-step-btn .step-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.vault-crce-step-btn.active .step-num,
+.vault-crce-step-btn.active .step-title {
+  color: #fff;
+}
+
+/* Step Content Panel */
+.vault-crce-panel {
+  background: var(--vault-surface);
+  border-radius: 8px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.vault-crce-panel-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--vault-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Criteria List (Step 2) */
+.vault-crce-rule-box {
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  color: var(--vault-text);
+}
+.vault-crce-rule-box strong {
+  color: var(--vault-primary);
+}
+
+.vault-crce-match-bar-wrap {
+  margin-bottom: 1.25rem;
+}
+.vault-crce-match-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.vault-crce-match-bar {
+  height: 10px;
+  background: var(--vault-bg);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--vault-border);
+}
+.vault-crce-match-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #0284c7);
+  transition: width 0.3s ease;
+}
+
+.vault-crce-criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vault-crce-criteria-item {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.vault-crce-criteria-item:hover {
+  border-color: #f59e0b;
+}
+.vault-crce-criteria-item.checked {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: #10b981;
+}
+
+.vault-crce-crit-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.vault-crce-crit-badge.mandatory {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+.vault-crce-crit-badge.major {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+}
+.vault-crce-crit-badge.minor {
+  background: rgba(100, 116, 139, 0.15);
+  color: var(--vault-muted);
+}
+.vault-crce-crit-badge.lab {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+}
+.vault-crce-crit-badge.imaging {
+  background: rgba(2, 132, 199, 0.15);
+  color: var(--vault-primary);
+}
+
+/* Protocol Lists (Step 3) */
+.vault-crce-protocol-card {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.vault-crce-protocol-card h4 {
+  margin: 0 0 0.6rem 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--vault-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vault-crce-protocol-card ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.88rem;
+  color: var(--vault-text);
+  line-height: 1.5;
+}
+
+.vault-crce-protocol-card ul li {
+  margin-bottom: 0.4rem;
+}
+
+/* Drugs Table (Step 4) */
+.vault-crce-drugs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.vault-crce-drug-card {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.vault-crce-drug-card.first-line {
+  border-left: 4px solid #10b981;
+}
+.vault-crce-drug-card.second-line {
+  border-left: 4px solid #f59e0b;
+}
+
+.vault-crce-drug-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--vault-text);
+}
+
+.vault-crce-drug-meta {
+  font-size: 0.8rem;
+  color: var(--vault-muted);
+}
+
+.vault-crce-drug-dose {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--vault-primary);
+}
+
+/* Complications (Step 5) */
+.vault-crce-comp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.vault-crce-comp-card {
+  background: var(--vault-bg);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.vault-crce-comp-card.acute_24h {
+  border-left: 4px solid #ef4444;
+}
+.vault-crce-comp-card.subacute_7d {
+  border-left: 4px solid #f59e0b;
+}
+.vault-crce-comp-card.chronic {
+  border-left: 4px solid #8b5cf6;
+}
+
+/* Vault Pathway Integration Footer */
+.vault-crce-pathways {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border: 1px solid var(--vault-border);
+  border-radius: 8px;
+  padding: 1.15rem;
+  margin-top: 1.5rem;
+}
+
+.vault-crce-pathways h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--vault-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vault-crce-pathways-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vault-crce-pathway-btn {
+  background: var(--vault-surface);
+  border: 1px solid var(--vault-border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--vault-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+.vault-crce-pathway-btn:hover {
+  background: var(--vault-primary);
+  color: #fff;
+  border-color: var(--vault-primary);
+}
+
+/* Responsive Mobile Rules */
+@media (max-width: 768px) {
+  .vault-crce-stepper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .vault-crce-grid {
+    grid-template-columns: 1fr;
+  }
+  .vault-crce-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .vault-crce-stepper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

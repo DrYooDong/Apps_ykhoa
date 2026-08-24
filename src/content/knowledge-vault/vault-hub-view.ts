@@ -16,6 +16,12 @@ import {
   ProtocolFilterState,
   ClinicalProtocol 
 } from './protocols';
+import {
+  renderVaultCrceView,
+  attachVaultCrceEvents,
+  DEFAULT_CRCE_STATE,
+  VaultCrceState
+} from './vault-crce-view';
 
 let state: VaultFilterState & { activeGroup: string; displayLimit: number } = {
   searchQuery: '',
@@ -23,6 +29,11 @@ let state: VaultFilterState & { activeGroup: string; displayLimit: number } = {
   activeSpecialty: 'ALL',
   activeGroup: 'ALL',
   displayLimit: 48
+};
+
+let crceState: VaultCrceState = {
+  ...DEFAULT_CRCE_STATE,
+  checkedCriteriaIds: new Set<string>()
 };
 
 let protocolsState: {
@@ -41,7 +52,7 @@ let protocolsState: {
 };
 
 
-export function setVaultInitialState(params: { search?: string; kho?: string; group?: string; specialty?: string; protocolId?: string }): void {
+export function setVaultInitialState(params: { search?: string; kho?: string; group?: string; specialty?: string; protocolId?: string; disease?: string }): void {
   if (params.search !== undefined) state.searchQuery = params.search;
   if (params.kho !== undefined) state.activeKho = params.kho;
   if (params.group !== undefined) state.activeGroup = params.group;
@@ -49,6 +60,10 @@ export function setVaultInitialState(params: { search?: string; kho?: string; gr
   if (params.protocolId !== undefined) {
     state.activeGroup = 'PROTOCOL';
     protocolsState.selectedId = params.protocolId;
+  }
+  if (params.disease !== undefined) {
+    state.activeGroup = 'CRCE';
+    crceState.selectedDiseaseKey = params.disease;
   }
 }
 
@@ -121,6 +136,9 @@ export function renderVaultHubView(): string {
         <button class="vault-group-btn ${state.activeGroup === 'ALL' ? 'active' : ''}" data-group="ALL" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'ALL' ? 'var(--vault-primary)' : 'var(--vault-surface)'}; color:${state.activeGroup === 'ALL' ? '#fff' : 'var(--vault-text)'}; font-weight:600; font-size:13px; cursor:pointer;">
           <i class="fa-solid fa-layer-group"></i> Tất cả Phân hệ (${totalArticles})
         </button>
+        <button class="vault-group-btn ${state.activeGroup === 'CRCE' ? 'active' : ''}" data-group="CRCE" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'CRCE' ? '#f59e0b' : 'var(--vault-surface)'}; color:${state.activeGroup === 'CRCE' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
+          ⚡ Chuỗi CRCE (30)
+        </button>
         <button class="vault-group-btn ${state.activeGroup === 'PROTOCOL' ? 'active' : ''}" data-group="PROTOCOL" style="padding:8px 16px; border-radius:8px; border:1px solid var(--vault-border); background:${state.activeGroup === 'PROTOCOL' ? '#e11d48' : 'var(--vault-surface)'}; color:${state.activeGroup === 'PROTOCOL' ? '#fff' : 'var(--vault-text)'}; font-weight:700; font-size:13px; cursor:pointer;">
           💉 Phác Đồ (${KHO_PROTOCOLS_REGISTRY.length})
         </button>
@@ -142,7 +160,7 @@ export function renderVaultHubView(): string {
       </div>
 
       <!-- Live Search & Control Bar at Top (Only for General Vault view) -->
-      ${state.activeGroup !== 'PROTOCOL' ? `
+      ${state.activeGroup !== 'PROTOCOL' && state.activeGroup !== 'CRCE' ? `
       <div class="vault-control-bar" style="margin-bottom:1.5rem;">
         <div class="vault-search-box">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -166,6 +184,12 @@ export function renderVaultHubView(): string {
       </div>
       ` : ''}
 
+      ${state.activeGroup === 'CRCE' ? `
+        <div id="vault-crce-mount-point" style="margin-bottom: 2rem;">
+          ${renderVaultCrceView(crceState)}
+        </div>
+      ` : ''}
+
       ${state.activeGroup === 'PROTOCOL' ? `
         <div id="vault-protocol-mount-point" style="margin-bottom: 2rem;">
           ${renderProtocolsHubView(protocolsState.filter, protocolsState.selectedId, protocolsState.activeTab)}
@@ -185,7 +209,7 @@ export function renderVaultHubView(): string {
       ` : ''}
 
 
-      ${state.activeGroup !== 'PROTOCOL' ? `
+      ${state.activeGroup !== 'PROTOCOL' && state.activeGroup !== 'CRCE' ? `
       <!-- Kho Bento Hero Grid -->
       <div class="vault-kho-grid">
         ${summaries.filter(k => state.activeGroup === 'ALL' || (KHO_DEFINITIONS[k.code] && KHO_DEFINITIONS[k.code].group === state.activeGroup)).map(k => `
@@ -381,6 +405,17 @@ export function attachVaultEvents(container: HTMLElement): void {
       }
     });
   });
+
+  // Attach CRCE Events if in CRCE View
+  const crceMount = container.querySelector('#vault-crce-mount-point') as HTMLElement | null;
+  if (crceMount) {
+    attachVaultCrceEvents(crceMount, crceState, (newState) => {
+      crceState = newState;
+      renderAndRebind(container);
+    }, (articleIdOrPath) => {
+      openArticleDrawer(articleIdOrPath);
+    });
+  }
 
   // Attach Protocol Events if in Protocol View
   const protocolMount = container.querySelector('#vault-protocol-mount-point') as HTMLElement | null;
