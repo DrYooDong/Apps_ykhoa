@@ -167,6 +167,24 @@ export const EPIDEMIOLOGY_SPECIALTY_SECTIONS: ClinicalSpecialtySection[] = [
         pearlPreview: 'Tải lượng virus HIV dưới ngưỡng phát hiện (<200 bản sao/mL) hoàn toàn KHÔNG lây truyền qua đường tình dục (U=U).',
         highYieldStats: ['PrEP hiệu quả > 99%', 'Chiến lược 95-95-95', 'U=U / K=K'],
         tags: ['HIV', 'PrEP', 'U=U', 'MSM', 'UNAIDS']
+      },
+      {
+        id: 'dth-bach-hau',
+        code: 'DTH-DIP',
+        icd: 'ICD-10: A36',
+        specialtyId: 'epi-truyen-nhiem',
+        title: 'Dịch Tễ Học Bệnh Bạch Hầu (Diphtheria)',
+        slug: 'dth-bach-hau',
+        hasFullArticle: true,
+        keyMetric: 'R0: 1,7–4,3 • POR tiếp xúc: 11,94 • Bao phủ DPT3 VN 2023: 64,9%',
+        vectorOrCause: 'Corynebacterium diphtheriae, Giọt bắn hô hấp & Bạch hầu da (ổ chứa thầm lặng)',
+        icon: 'fa-lungs-virus',
+        color: '#0284c7',
+        bgColor: 'rgba(2, 132, 199, 0.12)',
+        overview: 'Nguồn truyền nhiễm độc quyền ở người, ổ chứa thầm lặng từ bạch hầu da, hệ số lây nhiễm R0 từ 1,7–4,3, nguy cơ bùng phát tại vùng lõm tiêm chủng, đợt bùng phát Tây Phi 2023 và diễn biến các ổ dịch tại Việt Nam.',
+        pearlPreview: 'Bạch hầu da là ổ chứa thầm lặng duy trì mầm bệnh trong cộng đồng; tỷ lệ tiêm DPT3 sụt giảm xuống 64,9% tại Việt Nam tạo ra khoảng trống miễn dịch đáng báo động.',
+        highYieldStats: ['R0: 1,7–4,3', 'Ổ chứa bạch hầu da', 'Bao phủ DPT3 VN 64,9%', 'Kháng độc tố DAT', 'Meta-analysis 29 NC'],
+        tags: ['Bạch hầu', 'Diphtheria', 'DTP3', 'DAT', 'C. diphtheriae', 'R0']
       }
     ]
   },
@@ -407,6 +425,42 @@ export const EPIDEMIOLOGY_SPECIALTY_SECTIONS: ClinicalSpecialtySection[] = [
         pearlPreview: 'Hầu hết ung thư đại trực tràng bắt nguồn từ polyp tuyến (Adenoma) qua chuỗi 10-15 năm, là cơ hội vàng để sàng lọc cắt bỏ.',
         highYieldStats: ['Sàng lọc từ 45 tuổi', 'Nội soi định kỳ 10 năm', 'Hội chứng Lynch'],
         tags: ['Ung thư đại tràng', 'CRC', 'FIT/FOBT', 'Polyp tuyến', 'Lynch']
+      },
+      {
+        id: 'dth-xhth-tren',
+        code: 'DTH-UGIB',
+        icd: 'ICD-10: K92.0, K92.1, K92.2',
+        specialtyId: 'epi-tieu-hoa',
+        title: 'Dịch Tễ Học Xuất Huyết Tiêu Hóa Trên (UGIB)',
+        slug: 'dth-xhth-tren',
+        hasFullArticle: true,
+        keyMetric: 'Mắc: 48–160/100k dân/năm • Tử vong hiện nay: ~2% (từ 10–14%)',
+        vectorOrCause: 'Loét dạ dày tá tràng, Viêm trợt, NSAIDs/Aspirin, Vỡ giãn TMTQ xơ gan',
+        icon: 'fa-droplet',
+        color: '#dc2626',
+        bgColor: 'rgba(220, 38, 38, 0.12)',
+        overview: 'Cấp cứu tiêu hóa hàng đầu với >500.000 ca nhập viện tại Mỹ, phân loại không do vỡ giãn (NVUGIB) vs do vỡ giãn tĩnh mạch xơ gan (Variceal, tử vong 15-20%), ưu thế nam giới 3:1 và mô hình phân tầng nguy cơ Glasgow-Blatchford Score (GBS).',
+        pearlPreview: 'Thang điểm Glasgow-Blatchford GBS ≤ 1 dự đoán chính xác 99% khả năng xuất viện an toàn không cần can thiệp cấp cứu.',
+        highYieldStats: ['GBS ≤ 1 an toàn 99%', 'Tử vong giảm còn ~2%', 'Vỡ giãn TMTQ tử vong 15–20%', 'Nam chiếm 75,9%'],
+        tags: ['XHTH trên', 'UGIB', 'Loét dạ dày', 'Vỡ giãn TMTQ', 'GBS', 'ACG 2021']
+      },
+      {
+        id: 'dth-xhth-duoi',
+        code: 'DTH-LGIB',
+        icd: 'ICD-10: K92.0, K92.1, K92.2',
+        specialtyId: 'epi-tieu-hoa',
+        title: 'Dịch Tễ Học Xuất Huyết Tiêu Hóa Dưới (LGIB)',
+        slug: 'dth-xhth-duoi',
+        hasFullArticle: true,
+        keyMetric: 'Mắc: 33–87/100k dân/năm (1,26/1.000 người-năm) • Tuổi TB: 74 tuổi',
+        vectorOrCause: 'Bệnh túi thừa (26–64%), Trĩ/hậu môn, Viêm đại tràng, Thuốc chống huyết khối',
+        icon: 'fa-layer-group',
+        color: '#d97706',
+        bgColor: 'rgba(217, 119, 6, 0.12)',
+        overview: 'Tỷ lệ mắc gia tăng và vượt qua XHTHT do già hóa dân số và sử dụng thuốc kháng huyết khối/Aspirin, tuổi trung vị 74 tuổi, thang điểm Oakland (ESGE/ACG) xuất viện an toàn và thang điểm SALGIB trên đoàn hệ bệnh nhân Việt Nam.',
+        pearlPreview: 'Thang điểm SALGIB (Quách Trọng Đức et al. 2021) dựa trên 4 biến số tại giường giúp xác định chính xác bệnh nhân XHTHD nguy cơ thấp tại Việt Nam.',
+        highYieldStats: ['Oakland ≤ 8 an toàn 95–98%', 'Thang điểm SALGIB VN', 'Túi thừa đại tràng 26–64%', 'Aspirin tăng nguy cơ gấp 3'],
+        tags: ['XHTH dưới', 'LGIB', 'Bệnh túi thừa', 'Oakland Score', 'SALGIB', 'ESGE 2021']
       }
     ]
   },
@@ -485,19 +539,20 @@ export const EPIDEMIOLOGY_SPECIALTY_SECTIONS: ClinicalSpecialtySection[] = [
       {
         id: 'dth-diabetes',
         code: 'DTH-T2D',
-        icd: 'ICD-10: E11',
+        icd: 'ICD-10: E11, E10, E14',
         specialtyId: 'epi-noi-tiet',
-        title: 'Dịch Tễ Học Đái Tháo Đường Type 2 (T2DM)',
-        hasFullArticle: false,
-        keyMetric: 'IDF Atlas: 537M người lớn • Tỷ lệ chưa chẩn đoán: ~50%',
-        vectorOrCause: 'Kháng Insulin, Đô thị hóa, Ít vận động, Dinh dưỡng dư thừa năng lượng',
+        title: 'Dịch Tễ Học Đái Tháo Đường Típ 2 (T2DM)',
+        slug: 'dth-diabetes',
+        hasFullArticle: true,
+        keyMetric: 'Gánh nặng: 589M người lớn (11,1%) • Chưa chẩn đoán: 42,8% • VN: 7,3%',
+        vectorOrCause: 'Kháng insulin, Giảm tiết insulin, Kiểu hình MONW Châu Á, Béo phì & Đô thị hóa',
         icon: 'fa-cubes-stacked',
         color: '#7c3aed',
         bgColor: 'rgba(124, 58, 237, 0.12)',
-        overview: 'Đại dịch bệnh không lây nhiễm của thế kỷ 21. Người châu Á có xu hướng mắc ĐTĐ ở độ tuổi trẻ hơn và mức BMI thấp hơn so với người da trắng do tích lũy nhiều mỡ nội tạng (Hiện tượng MONW - Mỏng bên ngoài, mỡ bên trong).',
-        pearlPreview: 'Tại thời điểm chẩn đoán ĐTĐ Type 2, khoảng 50% tế bào beta tụy đã mất chức năng và biến chứng mạch máu đã âm thầm xuất hiện.',
-        highYieldStats: ['IDF Diabetes Atlas', 'Phenotype người châu Á', 'Biến chứng vi mạch & mạch lớn'],
-        tags: ['Đái tháo đường', 'T2DM', 'Kháng Insulin', 'IDF Atlas', 'HbA1c']
+        overview: 'Gánh nặng toàn cầu 589 triệu ca năm 2024, khối băng chìm chưa chẩn đoán 42,8% (251,7M), đặc thù kiểu hình Châu Á (63% BN Ấn Độ cân nặng chuẩn), số liệu dịch tễ Việt Nam (7,3%–8,3%), biến chứng thần kinh 38%, võng mạc 20-35% và sơ đồ sàng lọc dự phòng IDF 2025.',
+        pearlPreview: 'Người Châu Á mắc ĐTĐ ở mức BMI thấp hơn người da trắng (kiểu hình Thin-Fat MONW) và có tỷ lệ biến chứng thần kinh ngoại biên tại Việt Nam lên tới 38%.',
+        highYieldStats: ['IDF Atlas 2024 (589M)', 'Chưa chẩn đoán 42,8%', 'Việt Nam 7,3%–8,3%', 'Kiểu hình MONW', 'Sơ đồ IDF 2025'],
+        tags: ['Đái tháo đường', 'T2DM', 'IDF 2025', 'ADA 2026', 'MONW', 'Biến chứng']
       },
       {
         id: 'dth-obesity-metabolic',

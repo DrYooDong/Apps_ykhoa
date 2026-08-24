@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Tễ Học Bệnh Bạch Hầu (Diphtheria) — CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 Pro -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Core CliniPortal Design System (Level 4 Relative Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../../../css/components/epidemiology-hub.css">
+
+    <style>
+        /* ========================================================================= */
+        /* CUSTOM EPIDEMIOLOGY DESIGN TOKENS (DIPHTHERIA THEME) */
+        /* ========================================================================= */
+        :root {
+            --epi-primary: #0284c7;          /* Sky Blue / Respiratory Infection Core */
+            --epi-primary-light: #38bdf8;    /* Light Sky */
+            --epi-accent: #0369a1;           /* Deep Blue */
+            --epi-hazard: #ef4444;           /* Toxic Myocarditis & Pseudomembrane Red */
+            --epi-warning: #f59e0b;          /* Immunity Gap Amber */
+            --epi-success: #10b981;          /* Vaccine Protection Green */
+            --epi-info: #8b5cf6;             /* Microbiome Violet */
+            --epi-gradient: linear-gradient(135deg, #082f49 0%, #0f172a 50%, #0369a1 100%);
+        }
+
+        [data-theme="dark"] {
+            --epi-gradient: linear-gradient(135deg, #051d2d 0%, #090d16 50%, #082f49 100%);
+        }
+
+        body.physio-article-body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg, #f8fafc);
+            color: var(--color-text, #1e293b);
+            line-height: 1.7;
+            padding-bottom: 5rem;
+        }
+
+        .physio-article-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 3rem 1.25rem;
+        }
+
+        /* HEADER HERO */
+        .epi-article-header {
+            background: var(--epi-gradient);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .epi-article-header::after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .epi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+        }
+
+        /* KPI SUMMARY CARDS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--epi-primary, #0284c7);
+        }
+
+        .kpi-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .kpi-icon-blue { background: rgba(2, 132, 199, 0.12); color: #0284c7; }
+        .kpi-icon-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+        .kpi-icon-amber { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+        .kpi-icon-purple { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; }
+
+        .kpi-val {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            line-height: 1.2;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted, #64748b);
+            font-weight: 600;
+        }
+
+        /* STICKY NAVIGATION */
+        .pillars-nav {
+            position: sticky;
+            top: 1rem;
+            z-index: 90;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.4rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: auto;
+            gap: 0.35rem;
+            padding: 0.1rem;
+            scrollbar-width: none;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pillar-tab {
+            white-space: nowrap;
+            padding: 0.55rem 0.85rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: all 0.2s ease;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab:focus {
+            background: rgba(2, 132, 199, 0.08);
+            color: var(--epi-primary, #0284c7);
+        }
+
+        /* ARTICLE SECTIONS */
+        .article-section {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 18px;
+            padding: 2.25rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+            scroll-margin-top: 5rem;
+        }
+
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            margin: 0 0 1.25rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+            padding-bottom: 0.85rem;
+        }
+
+        .section-title i {
+            color: var(--epi-primary, #0284c7);
+        }
+
+        .subsection-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-text, #1e293b);
+            margin: 1.75rem 0 0.85rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-text {
+            font-size: 0.96rem;
+            color: var(--color-text, #334155);
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+
+        /* CALLOUT BOXES */
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-left: 4px solid #ef4444;
+            border-radius: 0 12px 12px 0;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid #f59e0b;
+            border-radius: 0 12px 12px 0;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-left: 4px solid #0284c7;
+            border-radius: 0 12px 12px 0;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .reaction-box {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 4px solid #8b5cf6;
+            border-radius: 0 12px 12px 0;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .danger-box .callout-title { color: #dc2626; }
+        .pearl-box .callout-title { color: #d97706; }
+        .info-box .callout-title { color: #0284c7; }
+        .reaction-box .callout-title { color: #7c3aed; }
+
+        /* BENTO GRIDS */
+        .bento-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .bento-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .bento-card {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--epi-primary, #0284c7);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        /* TABLES */
+        .epi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .epi-table th, .epi-table td {
+            border: 1px solid var(--color-border, #e2e8f0);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .epi-table th {
+            background: var(--color-bg, #f1f5f9);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        .epi-table tr:hover td {
+            background: rgba(2, 132, 199, 0.02);
+        }
+
+        /* EDITORIAL SVG CONTAINERS */
+        .svg-container {
+            width: 100%;
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        [data-theme="dark"] .svg-container {
+            background: #0f172a;
+            border-color: #334155;
+        }
+
+        /* DARK MODE REFINEMENTS */
+        [data-theme="dark"] .section-title {
+            color: #f1f5f9;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .section-title i {
+            color: #38bdf8;
+        }
+
+        [data-theme="dark"] .subsection-title {
+            color: #e2e8f0;
+        }
+
+        [data-theme="dark"] .section-text {
+            color: #cbd5e1;
+        }
+
+        [data-theme="dark"] .bento-card {
+            background: #0f172a;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .epi-table th {
+            background: #1e293b;
+            color: #f8fafc;
+        }
+
+        [data-theme="dark"] .epi-table td {
+            color: #cbd5e1;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .pillars-nav {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        [data-theme="dark"] .pillar-tab {
+            color: #94a3b8;
+        }
+
+        [data-theme="dark"] .pillar-tab:hover {
+            background: rgba(2, 132, 199, 0.2);
+            color: #7dd3fc;
+        }
+
+        [data-theme="dark"] .article-section {
+            background: #1e293b;
+            border-color: #334155;
+        }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- HEADER HERO -->
+        <header class="epi-article-header">
+            <span class="epi-badge"><i class="fa-solid fa-lungs-virus"></i> DỊCH TỄ HỌC • TRUYỀN NHIỄM &amp; HÔ HẤP</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: clamp(1.6rem, 3.2vw, 2.25rem); font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Dịch Tễ Học Bệnh Bạch Hầu (Diphtheria / C. diphtheriae)
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 920px;">
+                Động thái lây truyền vi khuẩn sinh ngoại độc tố, hệ số lây nhiễm cơ bản R0 từ 1,7–4,3, nguy cơ từ ổ chứa bạch hầu da thầm lặng, nguy cơ bùng phát dịch tại vùng lõm tiêm chủng và diễn biến các ổ dịch tại Việt Nam.
+            </p>
+        </header>
+
+        <!-- KPI SUMMARY CARDS -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon-blue"><i class="fa-solid fa-arrows-spin"></i></div>
+                <div>
+                    <div class="kpi-val">1,7 – 4,3</div>
+                    <div class="kpi-label">Hệ số lây nhiễm cơ bản (R0)</div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div>
+                    <div class="kpi-val">POR = 11,94</div>
+                    <div class="kpi-label">Nguy cơ khi tiếp xúc ca bệnh hô hấp</div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon-amber"><i class="fa-solid fa-syringe"></i></div>
+                <div>
+                    <div class="kpi-val">64,9%</div>
+                    <div class="kpi-label">Bao phủ DPT3 tại VN năm 2023 (WUENIC)</div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon-purple"><i class="fa-solid fa-shield-virus"></i></div>
+                <div>
+                    <div class="kpi-val">51% – 57%</div>
+                    <div class="kpi-label">Dân số toàn cầu có kháng thể bảo vệ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PILLARS STICKY NAV STRIP -->
+        <nav class="pillars-nav" aria-label="Mục lục bài học nhanh">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-virus"></i> 1. Nguồn Bệnh &amp; Đường Lây</a>
+                <a href="#sec-2" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-chart-line"></i> 2. Yếu Tố Nguy Cơ Can Thiệp</a>
+                <a href="#sec-3" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-stopwatch"></i> 3. Động Học Lây Truyền</a>
+                <a href="#sec-4" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-diagram-project"></i> 4. Sơ Đồ Chu Trình Lây Nhiễm</a>
+                <a href="#sec-5" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-earth-africa"></i> 5. Tình Hình Toàn Cầu</a>
+                <a href="#sec-6" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-map-location-dot"></i> 6. Dịch Tễ Học Tại Việt Nam</a>
+                <a href="#sec-7" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-book-medical"></i> 7. Tài Liệu Tham Khảo</a>
+            </div>
+        </nav>
+
+        <!-- TRỤ CỘT 1: NGUỒN TRUYỀN NHIỄM & PHƯƠNG THỨC LÂY LAN -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-virus"></i> 1. Nguồn Truyền Nhiễm, Ổ Chứa &amp; Phương Thức Lây Lan</h2>
+
+            <p class="section-text">
+                Bệnh bạch hầu là bệnh truyền nhiễm cấp tính gây ra bởi vi khuẩn sinh ngoại độc tố (Diphtheria toxin) thuộc chi <em>Corynebacterium</em>. Hiểu rõ ổ chứa tự nhiên và đường lây truyền là nền tảng cốt lõi trong công tác khoanh vùng và dập dịch y tế công cộng:
+            </p>
+
+            <div class="bento-grid-2">
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #0284c7;"><i class="fa-solid fa-user-group"></i> Ổ Chứa Tự Nhiên (Reservoir)</h3>
+                    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+                        <li><strong><em>Corynebacterium diphtheriae:</em></strong> <strong>Con người là vật chủ tự nhiên và ổ chứa duy nhất</strong> được biết đến trong tự nhiên.</li>
+                        <li><strong><em>C. ulcerans &amp; C. pseudotuberculosis:</em></strong> Thuộc phức hợp có khả năng sinh độc tố nhưng chủ yếu là bệnh lây truyền từ động vật sang người (thú cưng như chó, mèo hoặc gia súc), <strong>không có bằng chứng lây từ người sang người</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #ef4444;"><i class="fa-solid fa-head-side-cough"></i> Phương Thức Lây Lan</h3>
+                    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+                        <li><strong>Giọt bắn đường hô hấp:</strong> Lan truyền trực tiếp khi ho, hắt hơi hoặc nói chuyện ở khoảng cách gần.</li>
+                        <li><strong>Bạch hầu da (Cutaneous diphtheria):</strong> Tổn thương da mạn tính chứa vi khuẩn hoạt động như một <strong>ổ chứa thầm lặng (silent reservoir)</strong>, là nguồn lây phát tán gây các chùm ca bệnh bạch hầu hô hấp.</li>
+                        <li><strong>Vật dụng trung gian (Fomites):</strong> Quần áo, chăn màn hoặc đồ chơi bị ô nhiễm có thể truyền bệnh nhưng rất hiếm gặp.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 2: CÁC YẾU TỐ NGUY CƠ CÓ THỂ CAN THIỆP ĐƯỢC (META-ANALYSIS) -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> 2. Các Yếu Tố Nguy Cơ Can Thiệp Được (Meta-Analysis 29 Nghiên Cứu)</h2>
+
+            <p class="section-text">
+                Nghiên cứu tổng quan hệ thống và phân tích gộp toàn cầu của Ikejezie và cộng sự (2023) từ 29 nghiên cứu quan sát trên thế giới đã xác định định lượng các yếu tố nguy cơ làm tăng khả năng mắc bệnh bạch hầu ở cấp độ cá nhân:
+            </p>
+
+            <div style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 38%;">Yếu Tố Nguy Cơ Dịch Tễ</th>
+                            <th style="width: 25%;">Tỷ Số Chênh Gộp (POR / 95% CI)</th>
+                            <th style="width: 37%;">Ý Nghĩa Can Thiệp Y Tế Công Cộng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tiếp xúc trực tiếp ca bệnh hô hấp</strong></td>
+                            <td><strong style="color: #ef4444;">POR = 11,94</strong> (95% CI: 4,65 – 30,65)</td>
+                            <td>Cách ly nghiêm ngặt ca bệnh và điều trị kháng sinh dự phòng khẩn cấp cho người tiếp xúc gần (F1).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tiếp xúc người có tổn thương bạch hầu da</strong></td>
+                            <td><strong style="color: #ea580c;">POR = 4,83</strong> (95% CI: 2,13 – 10,92)</td>
+                            <td>Sàng lọc phát hiện sớm các tổn thương loét da mạn tính trong cộng đồng và ổ dịch.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nhận thức &amp; kiến thức về bệnh thấp</strong></td>
+                            <td><strong>POR = 2,36</strong> (95% CI: 1,18 – 4,71)</td>
+                            <td>Tăng cường truyền thông giáo dục sức khỏe về triệu chứng cảnh báo và tiêm chủng.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tiêm chủng không đầy đủ (&lt; 3 liều vắc-xin)</strong></td>
+                            <td><strong style="color: #dc2626;">POR = 2,21</strong> (95% CI: 1,43 – 3,41)</td>
+                            <td>Tiêm bù, tiêm vét vắc-xin DPT/Td cho trẻ em và người lớn tại các vùng có độ bao phủ thấp.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dùng chung cốc ly, dụng cụ ăn uống</strong></td>
+                            <td><strong>POR = 1,69</strong> (95% CI: 0,99 – 2,87)</td>
+                            <td>Khuyến cáo vệ sinh cá nhân, không dùng chung đồ dùng ăn uống trong gia đình và trường học.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sống chung phòng / ngủ chung giường</strong></td>
+                            <td><strong>POR = 1,30</strong> (95% CI: 0,50 – 3,90)</td>
+                            <td>Giải quyết tình trạng nhà ở chật chội, cải thiện thông khí phòng ở.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 3: ĐỘNG HỌC LÂY TRUYỀN & CHỈ SỐ SINH SẢN (R0) -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-stopwatch"></i> 3. Động Học Lây Truyền &amp; Các Chỉ Số Động Học Dịch Tễ</h2>
+
+            <p class="section-text">
+                Động thái lây truyền của vi khuẩn bạch hầu phụ thuộc chặt chẽ vào thời gian ủ bệnh, thời kỳ bài xuất vi khuẩn và mức độ miễn dịch nền của quần thể:
+            </p>
+
+            <div class="bento-grid-3">
+                <div class="bento-card">
+                    <div style="font-size: 0.75rem; font-weight: 700; color: #0284c7; text-transform: uppercase;">Thời Gian Ủ Bệnh</div>
+                    <div style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); font-family: 'JetBrains Mono', monospace;">1,4 – 5 Ngày</div>
+                    <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0.35rem 0 0 0; line-height: 1.5;">
+                        Thời gian ủ bệnh trung bình là <strong>1,4 ngày</strong> (khoảng lâm sàng thường gặp 2–5 ngày, tối đa lên tới 10 ngày).
+                    </p>
+                </div>
+
+                <div class="bento-card">
+                    <div style="font-size: 0.75rem; font-weight: 700; color: #ef4444; text-transform: uppercase;">Thời Kỳ Đào Thải Vi Khuẩn</div>
+                    <div style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); font-family: 'JetBrains Mono', monospace;">2 – 4 Tuần</div>
+                    <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0.35rem 0 0 0; line-height: 1.5;">
+                        Nếu không điều trị kháng sinh, bệnh nhân đào thải mầm bệnh trong 2–4 tuần. Người mang trùng mạn tính có thể phát tán vi khuẩn <strong>&gt; 6 tháng</strong>.
+                    </p>
+                </div>
+
+                <div class="bento-card">
+                    <div style="font-size: 0.75rem; font-weight: 700; color: #10b981; text-transform: uppercase;">Hiệu Quả Kháng Sinh</div>
+                    <div style="font-size: 1.4rem; font-weight: 800; color: var(--color-text); font-family: 'JetBrains Mono', monospace;">5,2 Ngày</div>
+                    <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0.35rem 0 0 0; line-height: 1.5;">
+                        Điều trị Penicillin hoặc Macrolide (Erythromycin/Azithromycin) giúp cắt đứt sự bài xuất vi khuẩn chỉ trong trung bình <strong>5,2 ngày</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="reaction-box">
+                <div class="callout-title"><i class="fa-solid fa-users-rays"></i> Động Học Truyền Nhiễm: R0, Khoảng Cách Thế Hệ &amp; Người Mang Trùng</div>
+                <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0; font-size: 0.92rem; line-height: 1.65;">
+                    <li><strong>Hệ số lây nhiễm cơ bản (R0):</strong> Dao động từ <strong>1,7 đến 4,3 (trung vị 2,6)</strong>. Tại các khu vực mật độ quá cao như trại tị nạn, R0 có thể vọt lên <strong>6 đến 7</strong>.</li>
+                    <li><strong>Khoảng cách thế hệ (Serial Interval):</strong> Thời gian giữa thời điểm khởi phát của ca chỉ điểm (F0) và ca thứ phát (F1) là <strong>7,8 ngày</strong> (95% CrI: 6,3 – 9,7 ngày).</li>
+                    <li><strong>Vụ dịch Kano (Nigeria 2022–2023, 13.899 ca):</strong> Thời gian phát sinh thế hệ rút ngắn còn <strong>2,8 ngày</strong>, chỉ số sinh sản hiệu dụng đỉnh điểm R<sub>t</sub> = 2,21.</li>
+                    <li><strong>Người mang trùng không triệu chứng (Asymptomatic Carriers):</strong> Dù khả năng truyền bệnh thấp hơn <strong>76%</strong> so với ca có triệu chứng, họ lại chiếm số lượng áp đảo và là <strong>nguồn duy trì dịch âm thầm chính</strong> trong cộng đồng.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 4: SƠ ĐỒ CHU TRÌNH LÂY NHIỄM & CAN THIỆP DỊCH TỄ HỌC (SVG) -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i> 4. Sơ Đồ Chu Trình Lây Nhiễm &amp; Can Thiệp Dịch Tễ Học</h2>
+
+            <p class="section-text">
+                Mô hình hóa động thái lây truyền của vi khuẩn bạch hầu từ hai ổ chứa (Hô hấp &amp; Da), vai trò của người mang trùng không triệu chứng và các mắt xích can thiệp kiểm soát dịch:
+            </p>
+
+            <!-- EDITORIAL SVG DIAGRAM: TRANSMISSION DYNAMICS & INTERVENTION -->
+            <div class="svg-container">
+                <svg viewBox="0 0 1000 560" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="font-family: 'Plus Jakarta Sans', system-ui, sans-serif;">
+                    <defs>
+                        <linearGradient id="grad-res" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0c4a6e" />
+                            <stop offset="100%" stop-color="#0284c7" />
+                        </linearGradient>
+                        <linearGradient id="grad-skin" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#7c2d12" />
+                            <stop offset="100%" stop-color="#ea580c" />
+                        </linearGradient>
+                        <linearGradient id="grad-asymp" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4c1d95" />
+                            <stop offset="100%" stop-color="#8b5cf6" />
+                        </linearGradient>
+                        <linearGradient id="grad-action" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#065f46" />
+                            <stop offset="100%" stop-color="#10b981" />
+                        </linearGradient>
+                        <marker id="arrow-dip" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                            <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+                        </marker>
+                        <filter id="shadow-dip" x="-5%" y="-5%" width="110%" height="115%">
+                            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.06" />
+                        </filter>
+                    </defs>
+
+                    <!-- CANVAS BG -->
+                    <rect width="1000" height="560" rx="16" fill="var(--color-bg, #f8fafc)" />
+
+                    <!-- LEFT: RESERVOIR NODES -->
+                    <!-- NODE 1: RESPIRATORY DIPHTHERIA -->
+                    <g transform="translate(40, 40)" filter="url(#shadow-dip)">
+                        <rect width="280" height="100" rx="12" fill="url(#grad-res)" />
+                        <text x="140" y="32" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">BẠCH HẦU HÔ HẤP</text>
+                        <text x="140" y="56" fill="rgba(255,255,255,0.9)" font-size="11.5" text-anchor="middle">Giả mạc họng, thanh quản, mũi</text>
+                        <text x="140" y="78" fill="#fde047" font-size="11" font-weight="700" text-anchor="middle">Lây qua giọt bắn (POR = 11,94)</text>
+                    </g>
+
+                    <!-- NODE 2: CUTANEOUS DIPHTHERIA -->
+                    <g transform="translate(40, 190)" filter="url(#shadow-dip)">
+                        <rect width="280" height="100" rx="12" fill="url(#grad-skin)" />
+                        <text x="140" y="32" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">BẠCH HẦU DA (Ổ CHỨA THẦM LẶNG)</text>
+                        <text x="140" y="56" fill="rgba(255,255,255,0.9)" font-size="11.5" text-anchor="middle">Tổn thương loét da mạn tính</text>
+                        <text x="140" y="78" fill="#fed7aa" font-size="11" font-weight="700" text-anchor="middle">Tiếp xúc da trực tiếp (POR = 4,83)</text>
+                    </g>
+
+                    <!-- NODE 3: ASYMPTOMATIC CARRIER -->
+                    <g transform="translate(40, 340)" filter="url(#shadow-dip)">
+                        <rect width="280" height="100" rx="12" fill="url(#grad-asymp)" />
+                        <text x="140" y="32" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">NGƯỜI MANG TRÙNG KHÔNG TRIỆU CHỨNG</text>
+                        <text x="140" y="56" fill="rgba(255,255,255,0.9)" font-size="11.5" text-anchor="middle">Số lượng lớn trong cộng đồng</text>
+                        <text x="140" y="78" fill="#ddd6fe" font-size="11" font-weight="700" text-anchor="middle">Nguồn duy trì dịch bùng phát âm thầm</text>
+                    </g>
+
+                    <!-- CENTER HUB: TRANSMISSION TO SUSCEPTIBLE POPULATION -->
+                    <path d="M 320 90 L 480 230" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrow-dip)" />
+                    <path d="M 320 240 L 480 240" fill="none" stroke="#ea580c" stroke-width="2.5" marker-end="url(#arrow-dip)" />
+                    <path d="M 320 390 L 480 250" fill="none" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#arrow-dip)" />
+
+                    <!-- CENTER HUB CARD -->
+                    <g transform="translate(480, 160)" filter="url(#shadow-dip)">
+                        <rect width="200" height="160" rx="14" fill="var(--color-surface, #ffffff)" stroke="#ef4444" stroke-width="2" />
+                        <circle cx="100" cy="45" r="24" fill="rgba(239, 68, 68, 0.12)" />
+                        <text x="100" y="52" fill="#dc2626" font-size="20" font-weight="900" text-anchor="middle">R0</text>
+                        <text x="100" y="90" fill="#0f172a" font-size="13" font-weight="800" text-anchor="middle">R0 = 1,7 – 4,3</text>
+                        <text x="100" y="112" fill="#64748b" font-size="11" text-anchor="middle">Ủ bệnh: 1,4 – 5 ngày</text>
+                        <text x="100" y="132" fill="#dc2626" font-size="11" font-weight="700" text-anchor="middle">Vùng lõm tiêm chủng</text>
+                    </g>
+
+                    <!-- RIGHT: OUTCOMES & INTERVENTIONS -->
+                    <path d="M 680 200 L 750 120" fill="none" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow-dip)" />
+                    <path d="M 680 280 L 750 360" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow-dip)" />
+
+                    <!-- TOP RIGHT: SEVERE COMPLICATIONS -->
+                    <g transform="translate(750, 40)" filter="url(#shadow-dip)">
+                        <rect width="210" height="160" rx="12" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" />
+                        <text x="105" y="28" fill="#991b1b" font-size="13" font-weight="800" text-anchor="middle">BIẾN CHỨNG NẶNG</text>
+                        <text x="15" y="56" fill="#7f1d1d" font-size="11">• Viêm cơ tim nhiễm độc</text>
+                        <text x="15" y="78" fill="#7f1d1d" font-size="11">• Tắc nghẽn đường thở cấp</text>
+                        <text x="15" y="100" fill="#7f1d1d" font-size="11">• Liệt cơ hoành &amp; thần kinh</text>
+                        <text x="15" y="125" fill="#dc2626" font-size="11.5" font-weight="700">Tử vong (CFR): 5% – 25%</text>
+                        <text x="15" y="145" fill="#991b1b" font-size="10.5">Xử trí: Kháng độc tố DAT + Penicillin</text>
+                    </g>
+
+                    <!-- BOTTOM RIGHT: PUBLIC HEALTH INTERVENTIONS -->
+                    <g transform="translate(750, 280)" filter="url(#shadow-dip)">
+                        <rect width="210" height="230" rx="12" fill="url(#grad-action)" />
+                        <text x="105" y="28" fill="#ffffff" font-size="13" font-weight="800" text-anchor="middle">CAN THIỆP Y TẾ CÔNG CỘNG</text>
+                        <text x="15" y="56" fill="rgba(255,255,255,0.95)" font-size="11">1. Bao phủ DPT3 &ge; 85%</text>
+                        <text x="15" y="78" fill="rgba(255,255,255,0.95)" font-size="11">2. Tiêm nhắc Td mỗi 10 năm</text>
+                        <text x="15" y="100" fill="rgba(255,255,255,0.95)" font-size="11">3. Kháng sinh F1 (Erythro/Pen)</text>
+                        <text x="15" y="122" fill="rgba(255,255,255,0.95)" font-size="11">4. Cách ly F0 &le; 5,2 ngày</text>
+                        <text x="15" y="144" fill="rgba(255,255,255,0.95)" font-size="11">5. Khảo sát huyết thanh học</text>
+                        <rect x="15" y="165" width="180" height="48" rx="8" fill="rgba(255,255,255,0.2)" />
+                        <text x="105" y="186" fill="#ffffff" font-size="10.5" font-weight="700" text-anchor="middle">Mục tiêu loại trừ dịch</text>
+                        <text x="105" y="202" fill="#fef08a" font-size="10" text-anchor="middle">Xóa sổ vùng lõm miễn dịch</text>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 5: TÌNH HÌNH DỊCH TỄ TOÀN CẦU & SỰ TÁI TRỖI DẬY -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-earth-africa"></i> 5. Tình Hình Dịch Tễ Toàn Cầu &amp; Sự Tái Trỗi Dậy Của Bạch Hầu</h2>
+
+            <p class="section-text">
+                Sau khi chương trình Tiêm chủng Mở rộng (EPI) của WHO ra đời năm 1974, số ca mắc bạch hầu toàn cầu đã giảm hơn 90%. Tuy nhiên, căn bệnh này đang có xu hướng tái bùng phát mạnh mẽ do khủng hoảng nhân đạo và đứt gãy hệ thống tiêm chủng:
+            </p>
+
+            <div class="bento-grid-2">
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #dc2626;"><i class="fa-solid fa-clock-rotate-left"></i> Các Đại Dịch Trong Lịch Sử Cận Đại</h3>
+                    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+                        <li><strong>Đại dịch Liên Xô cũ (Thập niên 1990):</strong> Hơn <strong>157.000 – 170.000 ca mắc và &gt;5.000 ca tử vong</strong> do đứt gãy chương trình tiêm chủng và biến động xã hội.</li>
+                        <li><strong>Các điểm nóng tái bùng phát (2015–2023):</strong> Bùng phát tại Yemen, Venezuela, Haiti và người tị nạn Rohingya tại Bangladesh (&gt;8.640 ca).</li>
+                        <li><strong>Năm 2023 toàn cầu:</strong> Số ca mắc tăng vọt lên <strong>27.778 ca</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #f59e0b;"><i class="fa-solid fa-shield-halved"></i> Khoảng Trống Miễn Dịch Theo Lứa Tuổi</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.5rem;">
+                        Phân tích gộp toàn cầu trên 146.984 người (Mital et al. 2025) cho thấy chỉ có <strong>51% – 57% dân số toàn cầu có nồng độ kháng thể bảo vệ đầy đủ</strong> (IgG kháng độc tố &gt; 0,1 IU/mL).
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                        Tỷ lệ bảo vệ sụt giảm nghiêm trọng từ <strong>&gt;90% ở trẻ nhỏ xuống dưới 30% ở người cao tuổi</strong> nếu không được tiêm nhắc lại vắc-xin chứa thành phần bạch hầu (Td) mỗi 10 năm.
+                    </p>
+                </div>
+            </div>
+
+            <!-- BẢNG SỐ LIỆU TÂY PHI 2023 -->
+            <h3 class="subsection-title"><i class="fa-solid fa-table"></i> Gánh Nặng Dịch Bạch Hầu Tại Khu Vực Tây Phi (WHO AFRO 2023)</h3>
+            <div style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th>Quốc Gia</th>
+                            <th>Ca Nghi Ngờ</th>
+                            <th>Ca Xác Định</th>
+                            <th>Tử Vong (CFR %)</th>
+                            <th>Bao Phủ DTP3 Thường Niên</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Nigeria</strong></td>
+                            <td>18.239</td>
+                            <td>11.214</td>
+                            <td><strong style="color: #dc2626;">572 ca (3,1%)</strong></td>
+                            <td>62% (59,2% ca mắc chưa tiêm chủng)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Niger</strong></td>
+                            <td>2.286</td>
+                            <td>227</td>
+                            <td><strong style="color: #dc2626;">128 ca (5,6%)</strong></td>
+                            <td>50% (100% ca mắc chưa tiêm chủng)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Guinea</strong></td>
+                            <td>1.017</td>
+                            <td>881</td>
+                            <td><strong style="color: #dc2626;">69 ca (6,8%)</strong></td>
+                            <td>47%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mauritania</strong></td>
+                            <td>20</td>
+                            <td>20</td>
+                            <td><strong style="color: #dc2626;">5 ca (25,0%)</strong></td>
+                            <td>Rất thấp</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tổng Khu Vực</strong></td>
+                            <td><strong>21.641</strong></td>
+                            <td><strong>12.351</strong></td>
+                            <td><strong style="color: #dc2626;">775 ca (CFR 3,6%)</strong></td>
+                            <td>Khủng hoảng bao phủ vắc-xin</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 6: DỊCH TỄ HỌC BỆNH BẠCH HẦU TẠI VIỆT NAM -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> 6. Bức Tranh Dịch Tễ Học &amp; Tình Trạng Miễn Dịch Tại Việt Nam</h2>
+
+            <p class="section-text">
+                Tại Việt Nam, bệnh bạch hầu lưu hành cục bộ và thỉnh thoảng bùng phát thành các ổ dịch vừa và nhỏ, tập trung chủ yếu tại các khu vực miền núi, vùng đồng bào dân tộc thiểu số nơi có tỷ lệ tiêm chủng tích lũy thấp hoặc xuất hiện "vùng lõm" tiêm chủng:
+            </p>
+
+            <div class="bento-grid-2">
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #dc2626;"><i class="fa-solid fa-fire"></i> Các Đợt Bùng Phát Dịch Nổi Bật Gần Đây</h3>
+                    <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.88rem; line-height: 1.6;">
+                        <li><strong>Tháng 7/2017 (Bình Phước):</strong> Ổ dịch 60 ca mắc (3 ca tử vong).</li>
+                        <li><strong>Tháng 6/2020 (Tây Nguyên - Đắk Nông, Kon Tum):</strong> Bùng phát 57 ca mắc (3 trẻ em tử vong).</li>
+                        <li><strong>Năm 2023 (Miền núi phía Bắc - Thái Nguyên, Điện Biên, Hà Giang):</strong> 57 ca mắc ghi nhận <strong>7 ca tử vong</strong> (tỷ lệ tử vong cao do chậm trễ điều trị DAT).</li>
+                        <li><strong>Năm 2024 (Hà Giang &amp; Bắc Giang):</strong> Ghi nhận 5 ca mắc (1 ca tử vong tại Hà Giang).</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.05rem; color: #0284c7;"><i class="fa-solid fa-syringe"></i> Báo Động Sụt Giảm Tỷ Lệ Bao Phủ DPT3</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.5rem;">
+                        Theo số liệu chính thức WHO/UNICEF (WUENIC), tỷ lệ tiêm vắc-xin chứa bạch hầu mũi 3 (DPT3) tại Việt Nam biến động mạnh:
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem;">
+                        <div style="display: flex; justify-content: space-between;"><span>Năm 2020:</span><strong>94%</strong></div>
+                        <div style="display: flex; justify-content: space-between;"><span>Năm 2021:</span><strong style="color: #f59e0b;">83%</strong></div>
+                        <div style="display: flex; justify-content: space-between;"><span>Năm 2022:</span><strong>91%</strong></div>
+                        <div style="display: flex; justify-content: space-between;"><span>Năm 2023:</span><strong style="color: #ef4444;">64,9% (Dưới ngưỡng an toàn 80%–85%)</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pearl-box">
+                <div class="callout-title"><i class="fa-solid fa-vial"></i> Bằng Chứng Khảo Sát Huyết Thanh Học Kháng Thể Tại Việt Nam</div>
+                <p style="margin: 0.25rem 0 0 0; font-size: 0.92rem; line-height: 1.6;">
+                    Khảo sát dịch tễ huyết thanh của Kitamura et al. (2022) tại Nha Trang ghi nhận tỷ lệ có kháng thể bảo vệ chỉ đạt <strong>26%</strong>; nghiên cứu của Lê và cộng sự (2022) tại Kon Tum ghi nhận tỷ lệ kháng thể bảo vệ đạt <strong>57,8%</strong>. Điều này chứng minh tồn tại những khoảng trống miễn dịch lớn trong cộng đồng, đòi hỏi chiến lược tiêm nhắc vắc-xin Td cho học sinh tiểu học, thanh thiếu niên và phụ nữ độ tuổi sinh đẻ.
+                </p>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 7: TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+        <footer id="sec-7" style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.75;">
+            <h4 style="margin: 0 0 0.75rem 0; color: var(--color-text, #334155); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-book-medical"></i> Tài Liệu Tham Khảo Chuẩn AMA:
+            </h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Grandière Pérez L, Brisse S. Diphtheria antitoxin treatment: from pioneer to neglected. <em>Mem Inst Oswaldo Cruz</em>. 2024;119:e240214. doi:10.1590/0074-02760240214.</li>
+                <li>World Health Organization. <em>WHO laboratory manual for the diagnosis of diphtheria and other related infections</em>. Geneva: World Health Organization; 2021.</li>
+                <li>World Health Organization. <em>Clinical management of diphtheria: Guideline</em>. Geneva: World Health Organization; 2024.</li>
+                <li>World Health Organization. <em>Diphtheria outbreaks: Comprehensive guidance for the public health preparedness and response in the WHO African Region</em>. Brazzaville: WHO Regional Office for Africa; 2024.</li>
+                <li>National Institute for Communicable Diseases. <em>Diphtheria: NICD recommendations for diagnosis, management and public health response</em>. South Africa: Centre for Respiratory Diseases and Meningitis; 2025.</li>
+                <li>Ikejezie J, Adebusoye B, Ekezie W, Langley T, Lewis S, Phalkey R. Modifiable risk factors for diphtheria: A systematic review and meta-analysis. <em>Glob Epidemiol</em>. 2023;5:100100. doi:10.1016/j.gloepi.2023.100100.</li>
+                <li>Truelove SA, Keegan LT, Moss WJ, Chaisson LH, Macher E, Azman AS, Lessler J. Clinical and Epidemiological Aspects of Diphtheria: A Systematic Review and Pooled Analysis. <em>Clin Infect Dis</em>. 2020;71(1):89-97. doi:10.1093/cid/ciz743.</li>
+                <li>Mital AK, Choudhary P, Padhi BK, Shamim MA, Gandhi AP, Raul M, Sruthi D, Satapathy P. Mapping anti-diphtheria toxin antibody: a systematic review and meta-analysis with multi-level meta-regression. <em>Pathog Glob Health</em>. 2025;119(1-2):48-59.</li>
+                <li>Phan TQ. <em>Cập nhật chẩn đoán và điều trị Bạch hầu - 2024</em>. Bệnh viện Bệnh Nhiệt Đới TP Hồ Chí Minh; 2024.</li>
+                <li>Lê TTH. <em>Những khó khăn trong xử trí và phòng ngừa bệnh bạch hầu</em>. Bộ môn Nhiễm - Đại học Y Dược TPHCM; 2024.</li>
+            </ol>
+        </footer>
+
+    </div>
+</body>
+
+</html>
