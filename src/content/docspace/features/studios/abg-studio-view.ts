@@ -6,7 +6,8 @@
 import { escapeHtml } from './studio-shared';
 import {
   analyzeAbg, renderDavenportSvg, renderOxygenationGaugeSvg,
-  ABG_PRESETS, AbgInputs
+  computeRspAnalysis, renderRspWaveformSvg,
+  ABG_PRESETS, AbgInputs, RspWaveformInputs
 } from './abg-studio';
 
 export function renderAbgPanel(isActive: boolean): string {
@@ -204,6 +205,9 @@ export function renderAbgPanel(isActive: boolean): string {
             </button>
             <button type="button" class="dsp-btn dsp-btn-sm js-abg-subtab-btn" data-abg-tab="vent_simulator" style="border-radius:8px 8px 0 0;">
               <i class="fa-solid fa-sliders"></i> 5. Mô Phỏng Cài Đặt Máy Thở
+            </button>
+            <button type="button" class="dsp-btn dsp-btn-sm js-abg-subtab-btn" data-abg-tab="rsp_waveform" style="border-radius:8px 8px 0 0;">
+              <i class="fa-solid fa-wind"></i> 6. Sóng Hô Hấp (RSP)
             </button>
           </div>
 
@@ -566,6 +570,81 @@ export function renderAbgPanel(isActive: boolean): string {
             </div>
           </div>
 
+          <!-- 6. RESPIRATORY SIGNAL & PATTERN SIMULATOR (RSP STUDIO) -->
+          <div class="js-abg-subtab-panel" id="abgSubtabRsp" style="display:none;">
+            <div class="dsp-card" style="padding:1.25rem;">
+              
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+                <div>
+                  <h4 style="margin:0; font-size:13.5px; font-weight:800; color:#0284c7; display:flex; align-items:center; gap:6px;">
+                    <i class="fa-solid fa-wind"></i> Mô Phỏng Chu Kỳ Hô Hấp Sinh Lý &amp; Bệnh Lý (NeuroKit2 RSP)
+                  </h4>
+                  <div style="font-size:11px; color:var(--color-text-muted); margin-top:2px;">
+                    Phân tích tỷ lệ thì thở I:E, thông khí phút, kiểu thở Kussmaul, Cheyne-Stokes, Biot &amp; Hen tắc nghẽn.
+                  </div>
+                </div>
+                <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-outline" id="btnAutoSyncAbgRsp" style="font-size:11px; font-weight:700; border-radius:6px;">
+                  <i class="fa-solid fa-rotate"></i> Đồng Bộ Với ABG Hiện Tại
+                </button>
+              </div>
+
+              <!-- RSP Waveform SVG Container -->
+              <div id="abgRspSvgContainer" style="margin-bottom:1rem; overflow-x:auto;"></div>
+
+              <!-- Interactive Controls Grid -->
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; background:var(--color-bg); padding:1rem; border-radius:10px; border:1px solid var(--color-border); margin-bottom:1rem;">
+                
+                <!-- Pattern Selector -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:block; margin-bottom:0.25rem;">Kiểu Thở Lâm Sàng:</label>
+                  <select id="rspPatternSelect" class="dsp-select" style="font-weight:700; font-size:11.5px;">
+                    <option value="normal" selected>1. Thở bình thường (Eupnea)</option>
+                    <option value="kussmaul">2. Thở Kussmaul (Toan chuyển hóa / DKA)</option>
+                    <option value="cheyne_stokes">3. Thở Cheyne-Stokes (Suy tim / Tổn thương não)</option>
+                    <option value="biot">4. Thở Biot / Thất điều (Tăng ALNS / Cầu não)</option>
+                    <option value="obstructive_asthma">5. Tắc nghẽn phế quản (Hen / COPD)</option>
+                    <option value="restrictive_ards">6. Hạn chế phổi (ARDS / Xơ phổi)</option>
+                  </select>
+                </div>
+
+                <!-- Respiratory Rate -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                    <span>Tần Số Thở (RR):</span>
+                    <span id="rspRrDisplay" style="color:#0284c7; font-weight:800;">14 l/p</span>
+                  </label>
+                  <input type="range" id="rspRrSlider" min="6" max="45" step="1" value="14" class="dsp-range-slider" />
+                </div>
+
+                <!-- I:E Ratio -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:block; margin-bottom:0.25rem;">Tỷ Lệ Thì Thở (I:E):</label>
+                  <select id="rspIeSelect" class="dsp-select" style="font-weight:700; font-size:11.5px;">
+                    <option value="1:2" selected>1:2 (Sinh lý chuẩn)</option>
+                    <option value="1:3">1:3 (Tắc nghẽn vừa)</option>
+                    <option value="1:4">1:4 (Tắc nghẽn nặng / Hen)</option>
+                    <option value="1:1">1:1 (Hạn chế / Thở nhanh nông)</option>
+                    <option value="2:1">2:1 (Đảo ngược I:E - Inverse Ratio)</option>
+                  </select>
+                </div>
+
+                <!-- Tidal Volume -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                    <span>Thể Tích Khí Lưu Thông (Vt):</span>
+                    <span id="rspVtDisplay" style="color:#10b981; font-weight:800;">450 mL</span>
+                  </label>
+                  <input type="range" id="rspVtSlider" min="200" max="900" step="25" value="450" class="dsp-range-slider" />
+                </div>
+
+              </div>
+
+              <!-- Dynamic RSP Analysis Breakdown Container -->
+              <div id="abgRspAnalysisWrap"></div>
+
+            </div>
+          </div>
+
         </div>
 
         <!-- ABG Results & Clinical Decision Column -->
@@ -613,6 +692,9 @@ export function mountAbgController(bindActionBtns: (container: HTMLElement) => v
         const p = document.getElementById('abgSubtabOxygenationHb'); if (p) p.style.display = 'block';
       } else if (target === 'vent_simulator') {
         const p = document.getElementById('abgSubtabVentSimulator'); if (p) p.style.display = 'block';
+      } else if (target === 'rsp_waveform') {
+        const p = document.getElementById('abgSubtabRsp'); if (p) p.style.display = 'block';
+        recalcRsp();
       }
     });
   });
@@ -978,8 +1060,164 @@ export function mountAbgController(bindActionBtns: (container: HTMLElement) => v
     }
   };
 
+  // ============================================================
+  // RSP STUDIO CONTROLLER LOGIC (NeuroKit2)
+  // ============================================================
+  const recalcRsp = () => {
+    const pattern = ((document.getElementById('rspPatternSelect') as HTMLSelectElement)?.value || 'normal') as any;
+    const rr = parseFloat((document.getElementById('rspRrSlider') as HTMLInputElement)?.value) || 14;
+    const ieRatio = ((document.getElementById('rspIeSelect') as HTMLSelectElement)?.value || '1:2') as any;
+    const vt = parseFloat((document.getElementById('rspVtSlider') as HTMLInputElement)?.value) || 450;
+
+    const rrDisp = document.getElementById('rspRrDisplay'); if (rrDisp) rrDisp.textContent = `${rr} l/p`;
+    const vtDisp = document.getElementById('rspVtDisplay'); if (vtDisp) vtDisp.textContent = `${vt} mL`;
+
+    const inputs: RspWaveformInputs = {
+      pattern,
+      respiratoryRate: rr,
+      ieRatio,
+      tidalVolumeMl: vt,
+    };
+
+    const curAbgInputs: AbgInputs = {
+      ph: parseFloat((document.getElementById('abgPh') as HTMLInputElement)?.value) || 7.40,
+      paco2: parseFloat((document.getElementById('abgPaco2') as HTMLInputElement)?.value) || 40,
+      hco3: parseFloat((document.getElementById('abgHco3') as HTMLInputElement)?.value) || 24,
+    };
+
+    const res = computeRspAnalysis(inputs, curAbgInputs);
+
+    // 1. Render RSP SVG
+    const svgWrap = document.getElementById('abgRspSvgContainer');
+    if (svgWrap) {
+      svgWrap.innerHTML = renderRspWaveformSvg(inputs);
+    }
+
+    // 2. Render Dynamic Analysis Card
+    const analysisWrap = document.getElementById('abgRspAnalysisWrap');
+    if (analysisWrap) {
+      analysisWrap.innerHTML = `
+        <!-- Pattern Hero Status Banner -->
+        <div style="background:${res.badgeColor}14; border-left:4px solid ${res.badgeColor}; border-radius:8px; padding:0.85rem 1rem; margin-bottom:1rem;">
+          <div style="font-size:11px; font-weight:800; color:${res.badgeColor}; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;">
+            <span><i class="fa-solid fa-lungs"></i> Nhận Diện Kiểu Thở Sinh Lý Bệnh</span>
+            <span class="dsp-badge" style="background:${res.badgeColor}25; color:${res.badgeColor};">I:E = ${inputs.ieRatio}</span>
+          </div>
+          <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:0.25rem;">
+            ${escapeHtml(res.patternName)}
+          </div>
+          <div style="font-size:11.5px; color:var(--color-text); margin-top:0.35rem; line-height:1.45;">
+            <strong>Cơ chế:</strong> ${escapeHtml(res.pathophysiology)}
+          </div>
+        </div>
+
+        <!-- 3-Metrics Grid -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; margin-bottom:1rem;">
+          
+          <!-- Card 1: Time Phases -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem;">
+            <div style="font-size:11.5px; font-weight:800; color:#0284c7; margin-bottom:0.4rem; border-bottom:1px solid var(--color-border); padding-bottom:0.25rem;">
+              ⏱️ Phân Bổ Thời Gian Chu Kỳ Thở
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.35rem; font-size:11.5px;">
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Thời gian Hít Vào (Ti):</span>
+                <strong>${res.inspiratoryTimeSec} s</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Thời gian Thở Ra (Te):</span>
+                <strong>${res.expiratoryTimeSec} s</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Tổng Thông Khí Phút:</span>
+                <strong style="color:#10b981;">${res.minuteVentilationLMin} L/phút</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: ABG Correlation -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem;">
+            <div style="font-size:11.5px; font-weight:800; color:#ea580c; margin-bottom:0.4rem; border-bottom:1px solid var(--color-border); padding-bottom:0.25rem;">
+              🧪 Tương Quan Khí Máu Động Mạch
+            </div>
+            <div style="font-size:11.5px; line-height:1.45; color:var(--color-text);">
+              ${escapeHtml(res.abgCorrelation)}
+            </div>
+          </div>
+
+          <!-- Card 3: Clinical Recommendation -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem;">
+            <div style="font-size:11.5px; font-weight:800; color:#dc2626; margin-bottom:0.4rem; border-bottom:1px solid var(--color-border); padding-bottom:0.25rem;">
+              🚨 Khuyến Cáo Xử Trí &amp; Can Thiệp
+            </div>
+            <div style="font-size:11px; line-height:1.45; color:var(--color-text);">
+              ${escapeHtml(res.clinicalRecommendation)}
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+  };
+
+  // Bind RSP Controls
+  ['rspPatternSelect', 'rspRrSlider', 'rspIeSelect', 'rspVtSlider'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', recalcRsp);
+      el.addEventListener('change', recalcRsp);
+    }
+  });
+
+  // Auto-sync button
+  const syncBtn = document.getElementById('btnAutoSyncAbgRsp');
+  if (syncBtn) {
+    syncBtn.addEventListener('click', () => {
+      const ph = parseFloat((document.getElementById('abgPh') as HTMLInputElement)?.value) || 7.40;
+      const paco2 = parseFloat((document.getElementById('abgPaco2') as HTMLInputElement)?.value) || 40;
+      const pao2 = parseFloat((document.getElementById('abgPao2') as HTMLInputElement)?.value) || 95;
+      const fio2 = parseFloat((document.getElementById('abgFio2') as HTMLInputElement)?.value) || 21;
+      const pfRatio = (fio2 > 0) ? (pao2 / (fio2 / 100)) : 450;
+
+      const patSelect = document.getElementById('rspPatternSelect') as HTMLSelectElement | null;
+      const rrSlider = document.getElementById('rspRrSlider') as HTMLInputElement | null;
+      const ieSelect = document.getElementById('rspIeSelect') as HTMLSelectElement | null;
+      const vtSlider = document.getElementById('rspVtSlider') as HTMLInputElement | null;
+
+      if (patSelect && rrSlider && ieSelect && vtSlider) {
+        if (ph < 7.25 && paco2 < 30) {
+          // Kussmaul DKA / Metabolic acidosis
+          patSelect.value = 'kussmaul';
+          rrSlider.value = '28';
+          ieSelect.value = '1:2';
+          vtSlider.value = '700';
+        } else if (pfRatio < 200) {
+          // ARDS restrictive
+          patSelect.value = 'restrictive_ards';
+          rrSlider.value = '26';
+          ieSelect.value = '1:1';
+          vtSlider.value = '350';
+        } else if (paco2 > 50) {
+          // COPD / Asthma obstructive
+          patSelect.value = 'obstructive_asthma';
+          rrSlider.value = '22';
+          ieSelect.value = '1:4';
+          vtSlider.value = '500';
+        } else {
+          // Normal
+          patSelect.value = 'normal';
+          rrSlider.value = '14';
+          ieSelect.value = '1:2';
+          vtSlider.value = '450';
+        }
+        recalcRsp();
+      }
+    });
+  }
+
   document.querySelectorAll('.js-abg-input').forEach(i => i.addEventListener('input', recalcAbg));
 
   // Chạy tính toán ban đầu
   recalcAbg();
+  recalcRsp();
 }

@@ -727,3 +727,333 @@ export function renderLdlWaterfallSvg(baselineLdl: number, targetLdl: number): s
     </svg>
   `;
 }
+
+// ============================================================
+// NEUROKIT2 MODULE 3: PHOTOPLETHYSMOGRAM (PPG) STUDIO ENGINE
+// ============================================================
+
+export interface PpgSimulationInputs {
+  heartRate: number;            // bpm
+  perfusionIndex: number;       // PI % (0.2 - 10.0%)
+  dicroticNotchHeight: number;  // 0.0 (mất khuyết) - 0.6 (khuyết sâu)
+  arterialStiffness: number;    // SI (m/s) 4.0 - 15.0 m/s
+  noiseArtifact: 'clean' | 'baseline_drift' | 'motion_artifact';
+  rhythmType: 'regular' | 'irregular_afib';
+}
+
+export interface PpgAnalysisResult {
+  systolicPeakTimeMs: number;
+  dicroticNotchTimeMs: number;
+  diastolicPeakTimeMs: number;
+  perfusionIndex: number;
+  perfusionStatus: 'critical_low' | 'normal' | 'hyperdynamic';
+  perfusionBadgeColor: string;
+  perfusionInterpretation: string;
+  augmentationIndexPercent: number; // AIx %
+  stiffnessIndex: number;          // SI (m/s)
+  vascularAgeEstimated: string;
+  pulsePressureVariationEstimate: number; // ΔPP %
+  clinicalInsights: string[];
+}
+
+export interface PpgPreset {
+  id: string;
+  name: string;
+  badge: string;
+  badgeColor: string;
+  description: string;
+  values: PpgSimulationInputs;
+}
+
+export const PPG_PRESETS: PpgPreset[] = [
+  {
+    id: 'ppg_normal',
+    name: '1. Sóng Mạch Quang Học Chuẩn (Normal Adult PPG)',
+    badge: '🟢 PI 2.4% • Notch Rõ Nét',
+    badgeColor: '#10b981',
+    description: 'Sóng mạch người trưởng thành khỏe mạnh: Đỉnh tâm thu nhọn, khuyết Dicrotic notch rõ ràng, sóng dội ngược tâm trương đầy đủ.',
+    values: {
+      heartRate: 72,
+      perfusionIndex: 2.4,
+      dicroticNotchHeight: 0.35,
+      arterialStiffness: 6.8,
+      noiseArtifact: 'clean',
+      rhythmType: 'regular',
+    },
+  },
+  {
+    id: 'ppg_distributive_sepsis',
+    name: '2. Sốc Nhiễm Khuẩn Giãn Mạch (Distributive Sepsis / Warm Shock)',
+    badge: '🔴 PI 7.8% (Tăng Động) • Giãn Mạch',
+    badgeColor: '#dc2626',
+    description: 'Tưới máu ngoại vi tăng động (Hyperdynamic): Sóng nảy nhanh chìm sâu (Pulsus celer), dicrotic notch tụt thấp do kháng lực mạch hệ thống giảm nặng.',
+    values: {
+      heartRate: 112,
+      perfusionIndex: 7.8,
+      dicroticNotchHeight: 0.15,
+      arterialStiffness: 4.8,
+      noiseArtifact: 'clean',
+      rhythmType: 'regular',
+    },
+  },
+  {
+    id: 'ppg_hypovolemic_shock',
+    name: '3. Sốc Giảm Thể Tích / Co Mạch Nặng (Hypovolemic Shock / Vasoconstriction)',
+    badge: '🚨 PI 0.35% (Nguy Kịch) • Co Mạch',
+    badgeColor: '#ef4444',
+    description: 'Co thắt mạch ngoại vi tối đa: Biên độ sóng mạch cực thấp, khuyết dicrotic notch biến mất, tưới máu mô đầu chi suy kiệt.',
+    values: {
+      heartRate: 128,
+      perfusionIndex: 0.35,
+      dicroticNotchHeight: 0.05,
+      arterialStiffness: 11.2,
+      noiseArtifact: 'baseline_drift',
+      rhythmType: 'regular',
+    },
+  },
+  {
+    id: 'ppg_aortic_stenosis',
+    name: '4. Hẹp Van Động Mạch Chủ Nặng (Pulsus Parvus et Tardus)',
+    badge: '🟡 Nảy Chậm Đỉnh Muộn • AIx 48%',
+    badgeColor: '#ca8a04',
+    description: 'Tống máu qua lỗ van hẹp: Sườn lên tâm thu thoai thoải kéo dài, đỉnh tâm thu đến muộn (Tardus), biên độ sóng nhỏ (Parvus).',
+    values: {
+      heartRate: 68,
+      perfusionIndex: 1.2,
+      dicroticNotchHeight: 0.20,
+      arterialStiffness: 12.5,
+      noiseArtifact: 'clean',
+      rhythmType: 'regular',
+    },
+  },
+  {
+    id: 'ppg_afib',
+    name: '5. Rung Nhĩ Kèm Hụt Mạch (Atrial Fibrillation Pulse Deficit)',
+    badge: '🟠 Loạn Nhịp Hoàn Toàn • Biến Thiên Biên Độ',
+    badgeColor: '#ea580c',
+    description: 'Khoảng cách giữa các nhịp và biên độ sóng mạch thay đổi thất thường theo thời gian đổ đầy tâm thất.',
+    values: {
+      heartRate: 105,
+      perfusionIndex: 2.1,
+      dicroticNotchHeight: 0.28,
+      arterialStiffness: 8.0,
+      noiseArtifact: 'clean',
+      rhythmType: 'irregular_afib',
+    },
+  },
+];
+
+/**
+ * Phân tích các chỉ số Huyết động không xâm lấn từ PPG theo NeuroKit2
+ */
+export function computePpgAnalysis(inputs: PpgSimulationInputs): PpgAnalysisResult {
+  const hr = inputs.heartRate;
+  const pi = inputs.perfusionIndex;
+  const rrMs = (60 / hr) * 1000;
+
+  // Tính toán thời gian các landmarks theo tỷ lệ sinh học
+  const systolicPeakTimeMs = Math.round(rrMs * 0.22);
+  const dicroticNotchTimeMs = Math.round(rrMs * 0.42);
+  const diastolicPeakTimeMs = Math.round(rrMs * 0.58);
+
+  // Perfusion Index evaluation
+  let perfusionStatus: PpgAnalysisResult['perfusionStatus'] = 'normal';
+  let perfusionBadgeColor = '#10b981';
+  let perfusionInterpretation = 'Tưới máu vi mạch ngoại vi bình thường (PI: 1.0 - 5.0%).';
+
+  if (pi < 0.5) {
+    perfusionStatus = 'critical_low';
+    perfusionBadgeColor = '#dc2626';
+    perfusionInterpretation = '🚨 PI < 0.5%: Co mạch ngoại vi nặng / Sốc giảm thể tích / Sốc tim / Hạ thân nhiệt sâu.';
+  } else if (pi > 6.0) {
+    perfusionStatus = 'hyperdynamic';
+    perfusionBadgeColor = '#ea580c';
+    perfusionInterpretation = '⚠️ PI > 6.0%: Trạng thái tăng động / Giãn mạch ngoại biên (Sốc nhiễm khuẩn giai đoạn ấm / Sốt cao).';
+  }
+
+  // Augmentation Index & Arterial Stiffness (NeuroKit2 Elgendi model)
+  const aix = parseFloat(((inputs.arterialStiffness * 3.2) - (inputs.dicroticNotchHeight * 40)).toFixed(1));
+  const augmentationIndexPercent = Math.max(2, Math.min(65, aix));
+  const stiffnessIndex = inputs.arterialStiffness;
+
+  let vascularAgeEstimated = 'Tương đương 30 - 45 tuổi (Độ đàn hồi thành mạch tốt)';
+  if (stiffnessIndex > 10.0) {
+    vascularAgeEstimated = 'Tương đương > 65 tuổi (Xơ cứng động mạch đáng kể)';
+  } else if (stiffnessIndex > 8.0) {
+    vascularAgeEstimated = 'Tương đương 50 - 64 tuổi (Độ cứng thành mạch trung bình)';
+  }
+
+  // Ước tính biến thiên áp lực mạch ΔPP
+  const dpp = inputs.noiseArtifact === 'baseline_drift' ? 15.5 : 8.2;
+
+  const clinicalInsights: string[] = [];
+  if (pi < 0.5) {
+    clinicalInsights.push('Cảnh báo sốc: Chỉ số tưới máu PI tụt thấp là dấu hiệu sớm báo trước hạ huyết áp trước khi huyết áp tụt trên lâm sàng.');
+    clinicalInsights.push('Khuyến cáo: Đánh giá ngay thời gian đổ đầy mao mạch (CRT > 3s), nồng độ Lactate máu và cân nhắc test bù dịch.');
+  } else if (inputs.rhythmType === 'irregular_afib') {
+    clinicalInsights.push('Hụt mạch (Pulse Deficit): Những nhịp có khoảng RR ngắn không đủ thời gian đổ đầy tâm trương tạo ra sóng mạch biên độ rất thấp.');
+  } else if (stiffnessIndex > 10.0) {
+    clinicalInsights.push('Độ cứng thành mạch cao (SI > 10 m/s): Tăng áp lực mạch tâm thu, tăng hậu tải thất trái và tăng nguy cơ phì đại cơ tim.');
+  } else {
+    clinicalInsights.push('Sóng mạch có hình thái sinh lý điển hình với khuyết đóng van ĐMC (Dicrotic notch) rõ nét, phản ánh cung lượng tim và trương lực mạch ổn định.');
+  }
+
+  return {
+    systolicPeakTimeMs,
+    dicroticNotchTimeMs,
+    diastolicPeakTimeMs,
+    perfusionIndex: pi,
+    perfusionStatus,
+    perfusionBadgeColor,
+    perfusionInterpretation,
+    augmentationIndexPercent,
+    stiffnessIndex,
+    vascularAgeEstimated,
+    pulsePressureVariationEstimate: dpp,
+    clinicalInsights,
+  };
+}
+
+/**
+ * Vẽ Dải Sóng Mạch Quang Học PPG SVG Tương Tác Chuẩn NeuroKit2 (4 Landmarks + Calipers)
+ */
+export function renderPpgWaveformSvg(
+  inputs: PpgSimulationInputs,
+  theme: 'paper' | 'neon' | 'dark' = 'paper'
+): string {
+  const totalW = 860;
+  const totalH = 240;
+  const padL = 50;
+  const padR = 20;
+  const padT = 36;
+  const padB = 30;
+  const plotW = totalW - padL - padR;
+  const plotH = totalH - padT - padB;
+  const baseY = padT + plotH * 0.85;
+
+  const hr = inputs.heartRate || 75;
+  const rrMs = (60 / hr) * 1000;
+  const isAfib = inputs.rhythmType === 'irregular_afib';
+  const hasDrift = inputs.noiseArtifact === 'baseline_drift';
+  const hasMotion = inputs.noiseArtifact === 'motion_artifact';
+
+  let bgFill = 'var(--color-bg)';
+  let gridLine = 'var(--color-border)';
+  let traceColor = '#dc2626';
+  let textColor = 'var(--color-text)';
+
+  if (theme === 'neon') {
+    bgFill = '#030712';
+    gridLine = 'rgba(16, 185, 129, 0.15)';
+    traceColor = '#10b981';
+    textColor = '#34d399';
+  } else if (theme === 'dark') {
+    bgFill = '#0f172a';
+    gridLine = 'rgba(255, 255, 255, 0.08)';
+    traceColor = '#38bdf8';
+    textColor = '#94a3b8';
+  }
+
+  // Tốc độ vẽ: hiển thị khoảng 4-6 chu kỳ sóng
+  const numBeats = 6;
+  const beatWidthPx = plotW / numBeats;
+
+  let pathD = `M ${padL},${baseY} `;
+  const landmarks: { x: number; y: number; label: string; color: string }[] = [];
+
+  for (let b = 0; b < numBeats; b++) {
+    // Biến thiên nhịp nếu là Afib
+    let curBeatW = beatWidthPx;
+    if (isAfib) {
+      const variance = Math.sin(b * 2.1) * 0.3;
+      curBeatW = beatWidthPx * (1 + variance);
+    }
+
+    const startX = padL + b * beatWidthPx;
+    if (startX > totalW - padR) break;
+
+    // Biên độ theo Perfusion Index
+    let ampScale = Math.min(1.4, Math.max(0.2, (inputs.perfusionIndex / 3.0)));
+    if (isAfib) ampScale *= (0.7 + Math.cos(b * 1.8) * 0.4);
+
+    const maxAmpPx = plotH * 0.75 * ampScale;
+    const notchRatio = inputs.dicroticNotchHeight;
+
+    // Baseline drift do thở
+    let driftY = 0;
+    if (hasDrift) driftY = Math.sin(b * 0.9) * 12;
+    if (hasMotion && b === 3) driftY = (Math.random() - 0.5) * 35;
+
+    const bBaseY = baseY + driftY;
+
+    // 4 Landmarks cho 1 nhịp PPG (NeuroKit2 phenomenological model)
+    const xOnset = startX;
+    const yOnset = bBaseY;
+
+    const xSys = startX + curBeatW * 0.22;
+    const ySys = bBaseY - maxAmpPx;
+
+    const xNotch = startX + curBeatW * 0.44;
+    const yNotch = bBaseY - maxAmpPx * notchRatio;
+
+    const xDia = startX + curBeatW * 0.60;
+    const yDia = bBaseY - maxAmpPx * (notchRatio + 0.18);
+
+    const xEnd = startX + curBeatW;
+    const yEnd = bBaseY;
+
+    // Đường cong Bezier mượt mà qua các landmarks
+    pathD += `L ${xOnset},${yOnset} `;
+    pathD += `C ${xOnset + curBeatW * 0.08},${yOnset} ${xSys - curBeatW * 0.06},${ySys} ${xSys},${ySys} `;
+    pathD += `C ${xSys + curBeatW * 0.08},${ySys} ${xNotch - curBeatW * 0.05},${yNotch} ${xNotch},${yNotch} `;
+    pathD += `C ${xNotch + curBeatW * 0.05},${yNotch} ${xDia - curBeatW * 0.05},${yDia} ${xDia},${yDia} `;
+    pathD += `C ${xDia + curBeatW * 0.12},${yDia} ${xEnd - curBeatW * 0.10},${yEnd} ${xEnd},${yEnd} `;
+
+    // Gắn chú thích landmarks ở nhịp thứ 2
+    if (b === 1) {
+      landmarks.push(
+        { x: xSys, y: ySys, label: 'Ps (Systolic Peak)', color: '#dc2626' },
+        { x: xNotch, y: yNotch, label: 'Dicrotic Notch (Đóng van ĐMC)', color: '#ca8a04' },
+        { x: xDia, y: yDia, label: 'Pr (Diastolic Peak)', color: '#0284c7' }
+      );
+    }
+  }
+
+  return `
+    <svg viewBox="0 0 ${totalW} ${totalH}" width="100%" height="${totalH}" style="background:${bgFill}; border-radius:10px; display:block; max-width:100%; box-shadow:0 2px 10px rgba(0,0,0,0.06);">
+      <!-- Header Bar -->
+      <rect x="0" y="0" width="${totalW}" height="${padT}" fill="rgba(0,0,0,0.04)" rx="10"/>
+      <text x="14" y="22" fill="${textColor}" font-size="11.5" font-weight="800" font-family="'Inter', sans-serif">
+        📊 DẢI SÓNG MẠCH QUANG HỌC PHOTOPLETHYSMOGRAM (PPG) — TẦN SỐ: ${inputs.heartRate} bpm | PI: ${inputs.perfusionIndex}%
+      </text>
+      <text x="${totalW - 14}" y="22" fill="var(--color-text-muted)" font-size="10" font-weight="700" text-anchor="end">
+        Mô hình NeuroKit2 Pulse Wave Dynamics
+      </text>
+
+      <!-- Background Grid -->
+      ${[1, 2, 3, 4].map(i => `<line x1="${padL}" y1="${padT + (plotH / 4) * i}" x2="${totalW - padR}" y2="${padT + (plotH / 4) * i}" stroke="${gridLine}" stroke-width="0.8" stroke-dasharray="2,2"/>`).join('')}
+
+      <!-- PPG Trace Path -->
+      <path d="${pathD}" fill="none" stroke="${traceColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Landmarks Callout Pins -->
+      ${landmarks.map(lm => `
+        <g transform="translate(${lm.x.toFixed(1)}, ${lm.y.toFixed(1)})">
+          <circle cx="0" cy="0" r="4" fill="${lm.color}" stroke="#ffffff" stroke-width="1.5"/>
+          <line x1="0" y1="0" x2="0" y2="-18" stroke="${lm.color}" stroke-width="1.2"/>
+          <rect x="-40" y="-34" width="80" height="16" rx="3" fill="${lm.color}" opacity="0.95"/>
+          <text x="0" y="-23" fill="#ffffff" font-size="7.5" font-weight="800" text-anchor="middle">${lm.label.split(' ')[0]}</text>
+        </g>
+      `).join('')}
+
+      <!-- Bottom Status Bar -->
+      <g transform="translate(${padL}, ${totalH - 10})">
+        <text x="0" y="0" fill="var(--color-text-muted)" font-size="9" font-weight="600">
+          Chỉ số tưới máu (PI): <strong style="color:${inputs.perfusionIndex < 0.5 ? '#dc2626' : '#10b981'};">${inputs.perfusionIndex}%</strong> |
+          Độ cứng thành mạch (SI): <strong>${inputs.arterialStiffness} m/s</strong> |
+          Khuyết Dicrotic: <strong>${(inputs.dicroticNotchHeight * 100).toFixed(0)}%</strong>
+        </text>
+      </g>
+    </svg>
+  `;
+}

@@ -15,7 +15,7 @@ src/content/
 │   ├── data/                  # Mẫu phác đồ động (Living Protocol Templates)
 │   ├── features/              # Giao diện tính năng lâm sàng
 │   ├── tools/                 # Bộ công cụ thang điểm và tính toán
-│   └── DOCSPACE_ECOSYSTEM.md  # Sơ đồ vận hành hệ sinh thái DocSpace
+│   └── README.md              # Sổ tay vận hành & kiến trúc hệ sinh thái DocSpace
 │
 ├── ebm/                       # Phân hệ Y học chứng cứ (Evidence-Based Medicine)
 │   ├── guideline-radar/       # Radar khuyến cáo và đối sánh hướng dẫn điều trị

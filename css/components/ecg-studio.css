@@ -994,3 +994,42 @@
   z-index: 10;
 }
 
+/* ==========================================================================
+   ECG Visual Comparison & Morphology Atlas Studio CSS
+   ========================================================================== */
+.js-ecg-canvas-mode-btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.js-ecg-canvas-mode-btn:hover:not(.is-active) {
+  background: rgba(2, 132, 199, 0.08) !important;
+  color: var(--color-primary) !important;
+}
+
+.js-focal-jump-btn {
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.js-focal-jump-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-primary) !important;
+}
+
+#ecgMorphologyCard table tr:hover td {
+  background: rgba(2, 132, 199, 0.04);
+}
+
+.dsp-ecg-12lead-svg {
+  transition: filter 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .js-ecg-canvas-mode-btn {
+    font-size: 10px !important;
+    padding: 3px 6px !important;
+  }
+}
+
+

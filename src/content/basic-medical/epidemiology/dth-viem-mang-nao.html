@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dịch tễ học Viêm màng não toàn diện: Phân tích gánh nặng toàn cầu 2.51M ca, dịch tễ theo lứa tuổi (sơ sinh, trẻ em, người lớn), S. suis tại Việt Nam, viêm màng não do lao (TBM), nấm Cryptococcus, virus và lộ trình WHO 2030.">
+    <title>DTH: Viêm Màng Não (Meningitis) – Dịch Tễ Học Y Khoa – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../../../css/components/epidemiology-hub.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --epi-accent: #6366f1;
+            --epi-accent-light: #818cf8;
+            --epi-mening: #4f46e5;
+            --epi-danger: #ef4444;
+            --epi-gradient: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #311042 100%);
+        }
+
+        [data-theme="dark"] {
+            --epi-gradient: linear-gradient(135deg, #0f0e26 0%, #090d16 50%, #1e0b2b 100%);
+        }
+
+        .epi-article-header {
+            background: var(--epi-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .epi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(129, 140, 248, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(129, 140, 248, 0.35);
+            color: #c7d2fe;
+            text-transform: uppercase;
+        }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover, .pillar-tab.active {
+            color: #ffffff;
+            background: var(--epi-accent, #6366f1);
+            border-color: var(--epi-accent, #6366f1);
+            transform: translateY(-1px);
+        }
+
+        /* ARTICLE SECTIONS */
+        .article-section {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            scroll-margin-top: 5rem;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.85rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+        }
+
+        .section-title i {
+            color: var(--epi-accent, #6366f1);
+        }
+
+        .subsection-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            margin: 1.5rem 0 0.85rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--color-text, #334155);
+            margin-bottom: 1.2rem;
+        }
+
+        /* METRIC CARDS GRID */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--epi-accent, #6366f1);
+        }
+
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-text-muted, #64748b);
+        }
+
+        .metric-sub {
+            font-size: 0.72rem;
+            color: var(--color-text-muted, #94a3b8);
+            margin-top: 0.35rem;
+        }
+
+        /* BOXES */
+        .info-box, .pearl-box, .danger-box, .success-box {
+            padding: 1.2rem 1.4rem;
+            border-radius: 12px;
+            margin: 1.25rem 0;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            border-left: 4px solid;
+        }
+
+        .info-box {
+            background: rgba(99, 102, 241, 0.08);
+            border-color: #6366f1;
+            color: var(--color-text, #1e1b4b);
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: #f59e0b;
+            color: var(--color-text, #78350f);
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: #ef4444;
+            color: var(--color-text, #7f1d1d);
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: #10b981;
+            color: var(--color-text, #064e3b);
+        }
+
+        /* DATA TABLES */
+        .epi-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            overflow: hidden;
+            font-size: 0.88rem;
+            margin: 1.25rem 0;
+        }
+
+        .epi-table th {
+            background: var(--color-bg, #f8fafc);
+            padding: 0.85rem 1rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            border-right: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .epi-table th:last-child {
+            border-right: none;
+        }
+
+        .epi-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            border-right: 1px solid var(--color-border, #e2e8f0);
+            color: var(--color-text, #334155);
+            vertical-align: top;
+        }
+
+        .epi-table td:last-child {
+            border-right: none;
+        }
+
+        .epi-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .epi-table tbody tr:hover {
+            background: rgba(99, 102, 241, 0.03);
+        }
+
+        /* AMA REFERENCE LIST */
+        .reference-list {
+            padding-left: 1.25rem;
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--color-text-muted, #64748b);
+        }
+
+        .reference-list li {
+            margin-bottom: 0.6rem;
+        }
+
+        .reference-list em {
+            color: var(--color-text, #334155);
+            font-style: italic;
+        }
+
+        /* ========================================================================= */
+        /* PREMIUM MENINGITIS TIMELINE STUDIO */
+        /* ========================================================================= */
+        .timeline-studio {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 18px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .timeline-studio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .timeline-studio-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0;
+        }
+
+        .timeline-legend {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--color-text-muted, #64748b);
+            background: var(--color-bg, #f8fafc);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .timeline-rail-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 0.25rem 1.5rem 0.25rem;
+        }
+
+        .timeline-rail-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(280px, 1fr));
+            gap: 1.25rem;
+            position: relative;
+            min-width: 900px;
+        }
+
+        .timeline-rail-grid-3::before {
+            content: '';
+            position: absolute;
+            top: 48px;
+            left: 140px;
+            right: 140px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6 0%, #f59e0b 50%, #ef4444 100%);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .phase-node {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .phase-node.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .phase-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--color-surface, #ffffff);
+            border: 3px solid;
+            margin: 0 auto 1rem auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .phase-node:hover .phase-marker {
+            transform: scale(1.15);
+        }
+
+        .phase-card {
+            background: var(--color-surface, #ffffff);
+            border: 1.5px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .phase-blue .phase-marker { border-color: #3b82f6; color: #3b82f6; }
+        .phase-blue .phase-card { border-top: 4px solid #3b82f6; }
+        .phase-blue .phase-card:hover { border-color: #3b82f6; }
+
+        .phase-amber .phase-marker { border-color: #f59e0b; color: #f59e0b; }
+        .phase-amber .phase-card { border-top: 4px solid #f59e0b; }
+        .phase-amber .phase-card:hover { border-color: #f59e0b; }
+
+        .phase-red .phase-marker { border-color: #ef4444; color: #ef4444; }
+        .phase-red .phase-card { border-top: 4px solid #ef4444; }
+        .phase-red .phase-card:hover { border-color: #ef4444; }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .phase-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .phase-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.25rem 0.55rem;
+            border-radius: 999px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .tag-colonize { background: rgba(59, 130, 246, 0.12); color: #2563eb; }
+        .tag-cross    { background: rgba(245, 158, 11, 0.12); color: #d97706; }
+        .tag-edema    { background: rgba(239, 68, 68, 0.12); color: #dc2626; }
+
+        .sparkline-box {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 8px;
+            padding: 0.4rem;
+            margin: 0.2rem 0;
+        }
+
+        .diagnostic-pills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.4rem;
+            margin: 0.25rem 0;
+        }
+
+        .diag-pill {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 6px;
+            padding: 0.35rem 0.45rem;
+            font-size: 0.72rem;
+            line-height: 1.3;
+        }
+
+        .diag-pill-label {
+            color: var(--color-text-muted, #64748b);
+            font-weight: 600;
+            display: block;
+            font-size: 0.68rem;
+        }
+
+        .diag-pill-val {
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--color-text, #0f172a);
+        }
+
+        .phase-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--color-text, #334155);
+        }
+
+        .phase-bullets li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .phase-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-text-muted, #64748b);
+            font-weight: bold;
+        }
+
+        .emergency-action {
+            margin-top: auto;
+            border-radius: 10px;
+            padding: 0.65rem 0.85rem;
+            font-size: 0.76rem;
+            font-weight: 700;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .action-colonize { background: rgba(59, 130, 246, 0.08); color: #1d4ed8; }
+        .action-cross    { background: rgba(245, 158, 11, 0.08); color: #b45309; }
+        .action-edema    { background: rgba(239, 68, 68, 0.1); color: #b91c1c; }
+
+        .cascade-footer-banner {
+            margin-top: 1.5rem;
+            background: var(--color-bg, #f8fafc);
+            border: 1.5px dashed #6366f1;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+    </style>
+
+    <!-- Medical Schema.org Semantic Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "Dịch tễ học Viêm Màng Não (Meningitis Epidemiology)",
+      "description": "Nghiên cứu dịch tễ học viêm màng não toàn cầu: Căn nguyên vi khuẩn theo tuổi, phế cầu, não mô cầu, S. suis tại Việt Nam, lao màng não TBM, nấm Cryptococcus và lộ trình WHO 2030.",
+      "about": [
+        {"@type": "MedicalCondition", "name": "Meningitis"},
+        {"@type": "MedicalCondition", "name": "Bacterial Meningitis"},
+        {"@type": "MedicalCondition", "name": "Tuberculous Meningitis"}
+      ],
+      "audience": "Healthcare Professionals, Medical Students, Epidemiologists",
+      "publisher": {
+        "@type": "Organization",
+        "name": "CliniPortal"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="../../../../index.html" class="nav-brand">
+                <i class="fa-solid fa-staff-snake"></i> CliniPortal
+            </a>
+            <div class="nav-breadcrumbs">
+                <a href="../../../../index.html">Trang chủ</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <a href="README.md">Cơ sở Y khoa</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <a href="README.md">Dịch tễ học</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Viêm Màng Não</span>
+            </div>
+            <button id="theme-toggle" class="theme-btn" aria-label="Chuyển đổi giao diện">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-content" style="max-width: 1060px; margin: 2rem auto; padding: 0 1rem;">
+
+        <!-- Header Block -->
+        <header class="epi-article-header">
+            <div class="epi-badge">
+                <i class="fa-solid fa-shield-virus"></i> Dịch Tễ Học Thần Kinh &amp; Truyền Nhiễm • EBM Series
+            </div>
+            <h1 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.1rem; font-weight: 800; margin: 0 0 0.75rem 0; line-height: 1.25;">
+                Dịch Tễ Học Viêm Màng Não
+            </h1>
+            <p style="font-size: 1.05rem; margin: 0 0 1.25rem 0; opacity: 0.9; font-weight: 500; line-height: 1.5;">
+                Phân tích gánh nặng toàn cầu, mô hình căn nguyên theo lứa tuổi, dịch tễ <em>S. suis</em> tại Việt Nam, lao màng não (TBM), nấm và lộ trình kiểm soát WHO 2030.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.82rem; opacity: 0.8; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem;">
+                <span><i class="fa-solid fa-virus"></i> <strong>Chuyên khoa:</strong> Truyền nhiễm &amp; Thần kinh</span>
+                <span><i class="fa-solid fa-globe"></i> <strong>Quy mô:</strong> Toàn cầu (GBD 2019, WHO 2025, ESCMID)</span>
+                <span><i class="fa-solid fa-calendar-check"></i> <strong>Cập nhật:</strong> Tháng 8/2026</span>
+                <span><i class="fa-solid fa-book-medical"></i> <strong>Chuẩn hóa:</strong> 8 Trụ cột Dịch tễ học Y khoa</span>
+            </div>
+        </header>
+
+        <!-- STICKY 8-PILLARS QUICK NAVIGATION BAR -->
+        <nav class="pillars-nav" aria-label="Điều hướng 8 trụ cột">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab active"><i class="fa-solid fa-chart-pie"></i> 1. Gánh Nặng &amp; Tam Giác DTH</a>
+                <a href="#sec-2" class="pillar-tab"><i class="fa-solid fa-bacteria"></i> 2. Căn Nguyên Theo Tuổi</a>
+                <a href="#sec-3" class="pillar-tab"><i class="fa-solid fa-lungs-virus"></i> 3. Lao &amp; Nấm Màng Não</a>
+                <a href="#sec-4" class="pillar-tab"><i class="fa-solid fa-route"></i> 4. Động Học &amp; Bệnh Sinh</a>
+                <a href="#sec-5" class="pillar-tab"><i class="fa-solid fa-brain"></i> 5. Nguy Cơ &amp; Di Chứng</a>
+                <a href="#sec-6" class="pillar-tab"><i class="fa-solid fa-dna"></i> 6. Viêm Màng Não Virus</a>
+                <a href="#sec-7" class="pillar-tab"><i class="fa-solid fa-syringe"></i> 7. Vắc-xin &amp; WHO 2030</a>
+                <a href="#sec-8" class="pillar-tab"><i class="fa-solid fa-bookmark"></i> 8. Pearls &amp; Y Văn AMA</a>
+            </div>
+        </nav>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 1: GÁNH NẶNG TOÀN CẦU & TAM GIÁC DỊCH TỄ HỌC -->
+        <!-- ========================================================================= -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-chart-pie"></i> 1. Gánh Nặng Bệnh Tật Toàn Cầu &amp; Tam Giác Dịch Tễ Học</h2>
+
+            <p class="section-text">
+                Viêm màng não (Meningitis) tiếp tục là một trong những tình trạng cấp cứu nội khoa và đe dọa sức khỏe cộng đồng nghiêm trọng nhất trên phạm vi toàn thế giới. Theo phân tích từ nghiên cứu <strong>Global Burden of Disease (GBD) 2019</strong>, bệnh tật ghi nhận những con số đáng báo động về tỷ lệ mắc mới, tử vong và di chứng tàn tật vĩnh viễn.
+            </p>
+
+            <!-- Metric Cards Grid -->
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #6366f1;">2,51M</div>
+                    <div class="metric-label">Ca Mắc Mới Toàn Cầu / Năm</div>
+                    <div class="metric-sub">95% UI: 2,11 – 2,99 triệu ca (GBD 2019)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #ef4444;">236.000</div>
+                    <div class="metric-label">Tử Vong Hàng Năm</div>
+                    <div class="metric-sub">95% UI: 204.000 – 277.000 ca</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #f59e0b;">51%</div>
+                    <div class="metric-label">Gánh Nặng Ở Trẻ &lt;5 Tuổi</div>
+                    <div class="metric-sub">1,28 triệu ca mắc &amp; 112.000 tử vong</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #10b981;">&gt;15M</div>
+                    <div class="metric-label">DALYs Mất Đi Hàng Năm</div>
+                    <div class="metric-sub">1 trong 5 người sống sót chịu di chứng</div>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <strong style="color: #ef4444; font-size: 1rem; display: block; margin-bottom: 0.35rem;">
+                    <i class="fa-solid fa-scale-unbalanced-flip"></i> Bất Bình Đẳng Địa Lý &amp; Gánh Nặng Khu Vực:
+                </strong>
+                <p style="margin: 0; line-height: 1.65;">
+                    Tỷ lệ tử vong do viêm màng não vi khuẩn cấp tính tại các quốc gia thu nhập cao (HICs) dao động từ <strong>3% đến 10%</strong>. Ngược lại, tại các quốc gia thu nhập thấp và trung bình (LMICs), tỷ lệ tử vong tăng vọt lên <strong>hơn 50%</strong>. Nguy cơ phải gánh chịu di chứng thần kinh và tàn tật lâu dài ở người bệnh tại châu Phi và châu Á cao gấp <strong>gần 3 lần</strong> so với châu Âu.
+                </p>
+            </div>
+
+            <!-- INLINE SVG: TAM GIÁC DỊCH TỄ HỌC VIÊM MÀNG NÃO (EDITORIAL QUALITY) -->
+            <div style="margin: 2rem 0; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 16px; padding: 1.5rem; overflow-x: auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--epi-accent, #6366f1); display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-diagram-project"></i> MÔ HÌNH TAM GIÁC DỊCH TỄ HỌC VIÊM MÀNG NÃO (EPIDEMIOLOGICAL TRIAD)
+                    </h4>
+                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted, #64748b); background: var(--color-surface, #ffffff); padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0);">
+                        WHO Standards • GBD Consensus Model
+                    </span>
+                </div>
+
+                <div style="width: 100%; max-width: 880px; margin: 0 auto;">
+                    <svg viewBox="0 0 880 540" width="100%" height="auto" style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; min-width: 760px;">
+                        <defs>
+                            <!-- Gradients for Vertex Cards -->
+                            <linearGradient id="meningAgentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6366f1" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="meningHostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="meningEnvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ec4899" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            
+                            <!-- Markers -->
+                            <marker id="arrowIndigo" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6366f1"/>
+                            </marker>
+                            <marker id="arrowBlueM" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3b82f6"/>
+                            </marker>
+                            <marker id="arrowPink" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#ec4899"/>
+                            </marker>
+                        </defs>
+
+                        <!-- Outer Geometric Triangle Connection Lines (Background only) -->
+                        <polygon points="440,80 165,435 715,435" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.4"/>
+                        
+                        <!-- Dynamic Interaction Flow Lines (Strictly Outside Card Boundaries) -->
+                        <!-- Path Agent (Top) -> Host (Bottom-Left) -->
+                        <path d="M 340,150 Q 220,240 165,355" fill="none" stroke="#6366f1" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowIndigo)"/>
+                        
+                        <!-- Path Host (Bottom-Left) -> Env (Bottom-Right) -->
+                        <path d="M 315,435 L 565,435" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowBlueM)"/>
+                        
+                        <!-- Path Env (Bottom-Right) -> Agent (Top) -->
+                        <path d="M 715,355 Q 660,240 540,150" fill="none" stroke="#ec4899" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowPink)"/>
+
+                        <!-- CENTER HUB: OUTBREAK / TRANSMISSION INTERSECTION -->
+                        <g transform="translate(440, 275)">
+                            <circle cx="0" cy="0" r="72" fill="none" stroke="rgba(239, 68, 68, 0.18)" stroke-width="6"/>
+                            <circle cx="0" cy="0" r="58" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="2"/>
+                            <circle cx="0" cy="0" r="48" fill="var(--color-surface, #ffffff)" stroke="rgba(239, 68, 68, 0.3)" stroke-width="1"/>
+                            
+                            <text x="0" y="-16" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ef4444" letter-spacing="1">ĐỘNG HỌC</text>
+                            <text x="0" y="3" text-anchor="middle" font-size="13" font-weight="900" fill="#ef4444">VIÊM MÀNG NÃO</text>
+                            <text x="0" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#ef4444">2,51M CA/NĂM</text>
+                            <text x="0" y="36" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">Vi khuẩn + Lao + Nấm + Virus</text>
+                        </g>
+
+                        <!-- TOP APEX CARD: TÁC NHÂN (AGENT) -->
+                        <g transform="translate(290, 20)">
+                            <rect x="0" y="0" width="300" height="130" rx="14" fill="url(#meningAgentGrad)" stroke="#6366f1" stroke-width="1.8"/>
+                            <rect x="14" y="-12" width="185" height="25" rx="12.5" fill="#6366f1"/>
+                            <text x="106" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🔬 TÁC NHÂN (PATHOGENS)</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#4338ca">Đa Dạng Vi Sinh Vật Xâm Lấn</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Vi khuẩn: Phế cầu, Não mô cầu, GBS, Hib</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="700" fill="#ef4444">• Việt Nam: S. suis (52,3% người lớn)</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Lao: M. tuberculosis (TBM tử vong 20-50%)</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Nấm Cryptococcus &amp; Virus Enterovirus, HSV</text>
+                        </g>
+
+                        <!-- BOTTOM-LEFT APEX CARD: VẬT CHỦ (HOST) -->
+                        <g transform="translate(20, 360)">
+                            <rect x="0" y="0" width="290" height="145" rx="14" fill="url(#meningHostGrad)" stroke="#3b82f6" stroke-width="1.8"/>
+                            <rect x="14" y="-12" width="155" height="25" rx="12.5" fill="#3b82f6"/>
+                            <text x="91" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">👥 VẬT CHỦ (HOST)</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#1d4ed8">Miễn Dịch &amp; Cơ Địa Nhạy Cảm</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Trẻ sơ sinh &amp; Trẻ &lt;5 tuổi (hàng rào BBB non)</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Người già &gt;65 tuổi, phụ nữ mang thai (Listeria)</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="700" fill="#ef4444">• Suy giảm miễn dịch, HIV/AIDS, cắt lách</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Tỷ lệ mang trùng không triệu chứng ~10%</text>
+                            <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Di chứng: Điếc, não úng thủy, động kinh</text>
+                        </g>
+
+                        <!-- BOTTOM-RIGHT APEX CARD: MÔI TRƯỜNG & LÂY TRUYỀN -->
+                        <g transform="translate(570, 360)">
+                            <rect x="0" y="0" width="290" height="145" rx="14" fill="url(#meningEnvGrad)" stroke="#ec4899" stroke-width="1.8"/>
+                            <rect x="14" y="-12" width="195" height="25" rx="12.5" fill="#ec4899"/>
+                            <text x="111" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🌍 MÔI TRƯỜNG &amp; LÂY LAN</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#be185d">Dải Màng Não &amp; Sinh Hoạt</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• African Meningitis Belt (Senegal – Ethiopia)</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Mùa khô gió cát Harmattan kích ứng niêm mạc</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="700" fill="#ec4899">• Không gian kín: Ký túc xá, quân đội, lễ Hajj</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Tập quán ăn tiết canh lợn tái (S. suis)</text>
+                            <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Thiếu hụt vắc-xin &amp; cơ sở ICU tại LMICs</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 2: DỊCH TỄ CĂN NGUYÊN THEO TUỔI & ESCMID EVIDENCE -->
+        <!-- ========================================================================= -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-bacteria"></i> 2. Phân Bố Căn Nguyên Vi Khuẩn Theo Lứa Tuổi (ESCMID Standards)</h2>
+
+            <p class="section-text">
+                Căn nguyên vi sinh gây viêm màng não mủ biến đổi sâu sắc theo từng nhóm tuổi và bối cảnh dịch tễ địa phương. Hướng dẫn của Hiệp hội Vi sinh Lâm sàng và Truyền nhiễm Châu Âu (<strong>ESCMID 2016</strong>) đã tổng hợp các đoàn hệ quy mô lớn nhằm cung cấp phân bố chính xác cho thực hành điều trị kinh nghiệm.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-baby"></i> A. Tác Nhân Gây Viêm Màng Não Ở Trẻ Sơ Sinh (&lt; 3 Tháng Tuổi)</h3>
+            <p class="section-text">
+                Ở trẻ sơ sinh, đường lây truyền dọc từ đường sinh dục của mẹ và vi khuẩn đường tiêu hóa chiếm ưu thế tuyệt đối. Đoàn hệ tổng hợp từ Vương quốc Anh, Pháp, Tây Ban Nha và Hà Lan (1997–2012; <em>n</em> = 982 ca):
+            </p>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Tác Nhân Gây Bệnh</th>
+                            <th style="width: 25%;">Số Ca Ghi Nhận</th>
+                            <th style="width: 20%; color: #6366f1;">Tỷ Lệ (%)</th>
+                            <th style="width: 20%;">Đặc Điểm Dịch Tễ Trọng Yếu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong><em>Streptococcus agalactiae</em> (Liên cầu nhóm B - GBS)</strong></td>
+                            <td>565</td>
+                            <td><strong style="color: #6366f1;">58%</strong></td>
+                            <td>Lây truyền dọc trong chuyển dạ; tỷ lệ mắc vẫn cao tại Châu Âu.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Escherichia coli</em></strong></td>
+                            <td>203</td>
+                            <td><strong style="color: #3b82f6;">21%</strong></td>
+                            <td>Trực khuẩn Gram (-), chủ yếu mang kháng nguyên vỏ K1.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Streptococcus pneumoniae</em> (Phế cầu)</strong></td>
+                            <td>39</td>
+                            <td>4%</td>
+                            <td>Hiếm gặp ở sơ sinh nhưng độc lực rất cao.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Listeria monocytogenes</em></strong></td>
+                            <td>19</td>
+                            <td>2%</td>
+                            <td>Nhiễm trùng qua nhau thai hoặc thức ăn của mẹ (sữa chưa tiệt trùng).</td>
+                        </tr>
+                        <tr>
+                            <td>Tác nhân khác (Klebsiella, Enterobacter, Citrobacter...)</td>
+                            <td>156</td>
+                            <td>16%</td>
+                            <td>Nhiễm khuẩn bệnh viện hoặc bất thường giải phẫu thần kinh.</td>
+                        </tr>
+                        <tr style="background: var(--color-bg, #f8fafc); font-weight: 700;">
+                            <td>Tổng số ca đoàn hệ ESCMID</td>
+                            <td>982</td>
+                            <td>100%</td>
+                            <td>GBS + E. coli chiếm gần 80% tổng căn nguyên sơ sinh.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <strong style="color: #6366f1; font-size: 0.95rem;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Chênh lệch dịch tễ Gram âm tại các nước đang phát triển (LMICs):
+                </strong>
+                <br>
+                Tại các quốc gia thu nhập thấp và trung bình, tỷ lệ mắc viêm màng não sơ sinh do <strong>vi khuẩn Gram âm</strong> cao gấp <strong>5 lần</strong> so với HICs, với tỷ lệ tử vong muộn cao gấp <strong>gần 9 lần</strong> do tình trạng đề kháng kháng sinh gia tăng nhanh chóng.
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-child"></i> B. Tác Nhân Ở Trẻ Em Ngoài Tuổi Sơ Sinh (1 Tháng – 18 Tuổi)</h3>
+            <p class="section-text">
+                Khi trẻ lớn dần, sự chuyển dịch căn nguyên diễn ra rõ rệt sang các vi khuẩn có vỏ bọc lây lan qua đường tỵ hầu. Đoàn hệ tổng hợp từ Pháp, Đan Mạch và Hà Lan (1995–2012; <em>n</em> = 3.619 ca):
+            </p>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Tác Nhân Gây Bệnh</th>
+                            <th style="width: 25%;">Số Ca Ghi Nhận</th>
+                            <th style="width: 20%; color: #6366f1;">Tỷ Lệ (%)</th>
+                            <th style="width: 20%;">Ý Nghĩa Phòng Ngừa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong><em>Neisseria meningitidis</em> (Não mô cầu)</strong></td>
+                            <td>1.805</td>
+                            <td><strong style="color: #ef4444;">50%</strong></td>
+                            <td>Nguyên nhân hàng đầu ở trẻ em; nguy cơ bùng phát dịch thành ổ.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Streptococcus pneumoniae</em> (Phế cầu)</strong></td>
+                            <td>1.342</td>
+                            <td><strong style="color: #6366f1;">37%</strong></td>
+                            <td>Gây di chứng thính lực cao nhất; giảm mạnh nhờ vắc-xin PCV.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Haemophilus influenzae</em> (chủ yếu Hib)</strong></td>
+                            <td>170</td>
+                            <td>5%</td>
+                            <td>Từng chiếm &gt;70% trước kỷ nguyên vắc-xin; hiện giảm rất thấp.</td>
+                        </tr>
+                        <tr>
+                            <td>Tác nhân khác</td>
+                            <td>302</td>
+                            <td>8%</td>
+                            <td>Tụ cầu, liên cầu khác, trực khuẩn Gram âm.</td>
+                        </tr>
+                        <tr style="background: var(--color-bg, #f8fafc); font-weight: 700;">
+                            <td>Tổng số ca đoàn hệ ESCMID</td>
+                            <td>3.619</td>
+                            <td>100%</td>
+                            <td>Não mô cầu &amp; Phế cầu chiếm 87% tổng số ca mắc.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-user"></i> C. Tác Nhân Ở Người Lớn (&gt; 18 Tuổi) &amp; Đặc Thù Dịch Tễ Việt Nam</h3>
+            <p class="section-text">
+                Ở người trưởng thành tại các quốc gia Âu - Mỹ, phế cầu khuẩn là nguyên nhân áp đảo (<em>n</em> = 4.060 ca ESCMID). Tuy nhiên, tại Việt Nam và Đông Nam Á, có một sự khác biệt dịch tễ học mang tính bước ngoặt:
+            </p>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Tác Nhân Gây Bệnh</th>
+                            <th style="width: 20%; color: #3b82f6;">Tỷ Lệ Châu Âu (ESCMID)</th>
+                            <th style="width: 25%; color: #ef4444;">Tỷ Lệ Tại Việt Nam (Nhiễm trùng người lớn)</th>
+                            <th style="width: 25%;">Bối Cảnh &amp; Yếu Tố Nguy Cơ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong><em>Streptococcus pneumoniae</em></strong></td>
+                            <td><strong style="color: #3b82f6;">53%</strong> (2.157 ca)</td>
+                            <td>20% – 30%</td>
+                            <td>Viêm tai giữa, viêm xoang, nghiện rượu, cắt lách, rò dịch não tủy.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Streptococcus suis</em> (Liên cầu lợn)</strong></td>
+                            <td>&lt; 0.5% (Hiếm gặp)</td>
+                            <td><strong style="color: #ef4444;">52,3%</strong> (Tác nhân số 1)</td>
+                            <td>Ăn tiết canh, thịt lợn chưa nấu chín, giết mổ lợn không bảo hộ.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Neisseria meningitidis</em></strong></td>
+                            <td>27% (1.089 ca)</td>
+                            <td>5% – 10%</td>
+                            <td>Người trẻ tuổi, môi trường tập trung đông (doanh trại, ký túc xá).</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Listeria monocytogenes</em></strong></td>
+                            <td>4% (154 ca)</td>
+                            <td>1% – 3%</td>
+                            <td>Người già &gt;60t, suy giảm miễn dịch, xơ gan, ung thư máu.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><em>Haemophilus influenzae</em></strong></td>
+                            <td>3% (112 ca)</td>
+                            <td>1% – 2%</td>
+                            <td>Chủ yếu là chủng không định tuýp (non-typeable) ở người cao tuổi.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pearl-box">
+                <strong style="color: #f59e0b; font-size: 0.95rem;">
+                    <i class="fa-solid fa-lightbulb"></i> Trọng tâm Dịch tễ học Việt Nam — Liên cầu khuẩn lợn (<em>Streptococcus suis</em>):
+                </strong>
+                <br>
+                Nghiên cứu dịch tễ học tại Bệnh viện Bệnh Nhiệt đới TP.HCM và Bệnh viện Bệnh Nhiệt đới Trung ương khẳng định <em>S. suis</em> (chủ yếu serotype 2) là nguyên nhân hàng đầu gây viêm màng não mủ người lớn ở Việt Nam (chiếm <strong>52,3%</strong>). Bệnh có đặc trưng lâm sàng: <strong>Tỷ lệ điếc tiếp nhận sensorineural thính lực cực cao (&gt;60%)</strong> và xuất huyết hoại tử da dạng ban xuất huyết giống não mô cầu.
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 3: LAO MÀNG NÃO & NẤM CRYPTOCOCCUS -->
+        <!-- ========================================================================= -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-lungs-virus"></i> 3. Dịch Tễ Học Viêm Màng Não Do Lao (TBM) &amp; Do Nấm</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-lungs"></i> A. Viêm Màng Não Do Lao (Tuberculous Meningitis - TBM)</h3>
+            <p class="section-text">
+                Trong số khoảng <strong>10,8 triệu ca mắc lao mới hàng năm</strong> trên toàn thế giới, lao màng não (TBM) chiếm khoảng <strong>1% đến 5%</strong>. Mặc dù chiếm tỷ lệ nhỏ trong tổng số ca lao, TBM là thể lao ngoài phổi có <strong>tỷ lệ tử vong và tàn tật tàn khốc nhất</strong>:
+            </p>
+
+            <ul style="margin: 0 0 1.25rem 1.25rem; line-height: 1.7; font-size: 0.92rem;">
+                <li><strong>Tỷ lệ tử vong cao:</strong> Ngay cả khi được điều trị đúng phác đồ kháng lao chuẩn, tỷ lệ tử vong vẫn dao động từ <strong>20% đến 50%</strong> (lên tới &gt;60% tại các nước thiếu thốn máy thở và thiết bị kiểm soát áp lực nội sọ).</li>
+                <li><strong>Tác động đồng nhiễm HIV:</strong> Đồng nhiễm HIV làm tăng nguy cơ tử vong do TBM lên gấp <strong>3 lần</strong>. Tỷ lệ tử vong ở người TBM nhiễm HIV dao động từ <strong>40,3% đến 57%</strong> (so với 16% - 17% ở người không nhiễm HIV).</li>
+                <li><strong>Lao kháng đa thuốc (MDR-TBM):</strong> Viêm màng não do chủng lao kháng Rifampicin/Isoniazid có tiên lượng cực kỳ xấu với tỷ lệ tử vong tiến sát <strong>100%</strong>.</li>
+                <li><strong>Phân bố địa lý:</strong> Khoảng <strong>70% nghiên cứu và gánh nặng ca bệnh TBM tập trung tại Châu Á</strong> (Ấn Độ, Việt Nam, Indonesia, Trung Quốc). Tuy nhiên, khu vực cận Sahara Châu Phi lại là nơi có tỷ lệ tử vong TBM cao nhất toàn cầu (23% - 80%) do đại dịch HIV.</li>
+            </ul>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-disease"></i> B. Viêm Màng Não Do Nấm (Fungal Meningitis)</h3>
+            <p class="section-text">
+                Viêm màng não nấm là căn nguyên bán cấp và mạn tính nguy hiểm, gắn liền với tình trạng suy giảm miễn dịch tế bào:
+            </p>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #8b5cf6;">180.000</div>
+                    <div class="metric-label">Tử Vong Do <em>C. neoformans</em> / Năm</div>
+                    <div class="metric-sub">Chiếm 15% tổng tử vong liên quan đến AIDS toàn cầu</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #ef4444;">30% – 56%</div>
+                    <div class="metric-label">Tỷ Lệ Tử Vong Tại LMICs</div>
+                    <div class="metric-sub">Do chậm trễ chẩn đoán &amp; thiếu thuốc Amphotericin B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #0d9488;"><em>C. gattii</em></div>
+                    <div class="metric-label">Gây Bệnh Ở Người Bình Thường</div>
+                    <div class="metric-sub">Khu trú tại Tây Bắc Thái Bình Dương (Mỹ, Canada)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 4: ĐỘNG HỌC BỆNH SINH & LƯU ĐỒ CHUYỂN TIẾP -->
+        <!-- ========================================================================= -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-route"></i> 4. Động Học Bệnh Sinh, Đường Lây Truyền &amp; Diễn Tiến Màng Não</h2>
+
+            <p class="section-text">
+                Sự hình thành viêm màng não là một chuỗi biến cố động học khép kín từ lúc vi sinh vật cư trú niêm mạc cho đến khi vượt qua hàng rào máu não (BBB) gây viêm khoang dưới nhện và tăng áp lực nội sọ (ICP):
+            </p>
+
+            <!-- MENINGITIS TIMELINE STUDIO -->
+            <div class="timeline-studio">
+                <div class="timeline-studio-header">
+                    <h3 class="timeline-studio-title">
+                        <i class="fa-solid fa-chart-line" style="color: var(--epi-accent, #6366f1);"></i> LƯU ĐỒ ĐỘNG HỌC 3 GIAI ĐOẠN BỆNH SINH &amp; TIẾN TRIỂN VIÊM MÀNG NÃO
+                    </h3>
+                    <div class="timeline-legend">
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #3b82f6;"></span> Tải Lượng Vi Khuẩn Máu/DNT
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #ef4444;"></span> Áp Lực Nội Sọ (ICP) &amp; Viêm
+                        </span>
+                        <span class="legend-item" style="color: #6366f1; font-weight: 700;">
+                            Pathophysiological Cascade
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Horizontal Scroll Rail -->
+                <div class="timeline-rail-scroll">
+                    <div class="timeline-rail-grid-3">
+
+                        <!-- NODE 1: CƯ TRÚ & XÂM NHẬP -->
+                        <div class="phase-node phase-blue visible" data-phase="1">
+                            <div class="phase-marker">1</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #3b82f6; text-transform: uppercase;">Giai Đoạn 1</div>
+                                        <h4 class="phase-title">Cư Trú &amp; Vào Máu</h4>
+                                    </div>
+                                    <span class="phase-tag tag-colonize">Ủ BỆNH</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-lungs"></i> 1 – 7 ngày trước khởi phát
+                                </div>
+
+                                <!-- Sparkline 1 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,34 Q 80,30 190,16" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+                                        <path d="M 10,36 Q 100,36 190,34" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <text x="12" y="16" font-size="8" font-weight="700" fill="#3b82f6">Vi khuẩn huyết ↑</text>
+                                        <text x="130" y="32" font-size="8" font-weight="700" fill="#16a34a">DNT bình thường</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Vị Trí Cư Trú</span>
+                                        <span class="diag-pill-val" style="color: #2563eb;">Niêm mạc tỵ hầu</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Yếu Tố Độc Lực</span>
+                                        <span class="diag-pill-val">Pili, IgA protease</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Tránh Né Miễn Dịch</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">Vỏ Polysaccharide</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Lâm Sàng Sớm</span>
+                                        <span class="diag-pill-val">Sốt nhẹ, viêm hô hấp</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Bám dính biểu mô tỵ hầu và xâm nhập dòng máu qua thụ thể pIgR.</li>
+                                    <li>Tránh né thực bào và hệ thống bổ thể nhờ lớp vỏ nang polysaccharide dày.</li>
+                                    <li>Tồn tại và nhân lên trong máu gây nhiễm khuẩn huyết (Bacteraemia).</li>
+                                </ul>
+
+                                <div class="emergency-action action-colonize">
+                                    <i class="fa-solid fa-shield-virus"></i> Phòng ngừa: Tiêm vắc-xin bảo vệ niêm mạc (PCV, MenACWY, Hib).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NODE 2: XUYÊN HÀNG RÀO MÁU NÃO -->
+                        <div class="phase-node phase-amber visible" data-phase="2">
+                            <div class="phase-marker">2</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #f59e0b; text-transform: uppercase;">Giai Đoạn 2</div>
+                                        <h4 class="phase-title">Vượt Hàng Rào BBB</h4>
+                                    </div>
+                                    <span class="phase-tag tag-cross">CẤP TÍNH</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-bolt"></i> Diễn tiến nhanh trong vài giờ
+                                </div>
+
+                                <!-- Sparkline 2 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,18 Q 80,10 190,6" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+                                        <path d="M 10,34 Q 80,24 190,14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <text x="12" y="12" font-size="8" font-weight="700" fill="#3b82f6">DNT: Vi khuẩn x10³</text>
+                                        <text x="115" y="32" font-size="8" font-weight="800" fill="#f59e0b">Bạch cầu DNT ↑</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Cơ Chế Xuyên Mạch</span>
+                                        <span class="diag-pill-val" style="color: #d97706;">Xuyên tế bào (Transcytosis)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Môi Trường DNT</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">Nghèo bổ thể &amp; KT</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Tốc Độ Nhân Lên</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">Cấp số nhân (Log)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Khởi Phát Hội Chứng</span>
+                                        <span class="diag-pill-val">Tam chứng màng não</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Tương tác thụ thể CD147 / laminin receptor trên tế bào nội mô mạch máu não.</li>
+                                    <li>Xâm nhập khoang dưới nhện — nơi phòng ngự miễn dịch thể dịch tự nhiên rất yếu.</li>
+                                    <li>Phóng thích nội độc tố (LOS) và mảnh vách tế bào gây độc khoang màng não.</li>
+                                </ul>
+
+                                <div class="emergency-action action-cross">
+                                    <i class="fa-solid fa-syringe"></i> Cấp cứu: Chọc dò dịch não tủy (LP) &amp; Kháng sinh tĩnh mạch sớm.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NODE 3: VIÊM & PHÙ NÃO -->
+                        <div class="phase-node phase-red visible" data-phase="3">
+                            <div class="phase-marker">3</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #ef4444; text-transform: uppercase;">Giai Đoạn 3</div>
+                                        <h4 class="phase-title">Viêm Mủ &amp; Phù Não</h4>
+                                    </div>
+                                    <span class="phase-tag tag-edema">NGUY KỊCH</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Tăng áp lực nội sọ &amp; Thoát vị não
+                                </div>
+
+                                <!-- Sparkline 3 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,8 L 90,6 L 190,5" fill="none" stroke="#ef4444" stroke-width="3"/>
+                                        <path d="M 10,22 L 70,10 L 190,6" fill="none" stroke="#b91c1c" stroke-width="2" stroke-dasharray="2 2"/>
+                                        <text x="12" y="10" font-size="8" font-weight="900" fill="#ef4444">ÁP LỰC NỘI SỌ (ICP) ↑↑↑</text>
+                                        <text x="110" y="32" font-size="8" font-weight="900" fill="#ef4444">Tử vong: 20–50%</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Bão Cytokine DNT</span>
+                                        <span class="diag-pill-val" style="color: #dc2626;">TNF-α, IL-1β, IL-6</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Cơ Chế Phù Não</span>
+                                        <span class="diag-pill-val">Độc tế bào + Vận mạch</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Biến Chứng Mạch Máu</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">Viêm tắc tĩnh mạch não</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Nguy Cơ Di Chứng</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">20% di chứng thần kinh</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Huy động bạch cầu đa nhân trung tính ồ ạt tạo dịch mủ khoang dưới nhện.</li>
+                                    <li>Phá hủy tế bào nội mô mạch máu não gây xuất huyết và nhồi máu não cục bộ.</li>
+                                    <li>Tăng áp lực nội sọ cấp tính, phù gai thị, nguy cơ tụt kẹt thoát vị não tử vong.</li>
+                                </ul>
+
+                                <div class="emergency-action action-edema">
+                                    <i class="fa-solid fa-hospital"></i> Xử trí: Dexamethasone trước/cùng liều KS đầu + Chống phù não (Mannitol).
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CASCADE FOOTER BANNER -->
+                <div class="cascade-footer-banner">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(99, 102, 241, 0.15); color: #6366f1; font-size: 1.1rem;">
+                            <i class="fa-solid fa-person-dots-from-line"></i>
+                        </span>
+                        <div>
+                            <strong style="color: #4338ca; font-size: 0.92rem;">
+                                Cửa Sổ Vàng Điều Trị &amp; Khép Kín Chu Kỳ Phát Tán:
+                            </strong>
+                            <p style="margin: 0.2rem 0 0 0; font-size: 0.83rem; line-height: 1.5; color: var(--color-text, #334155);">
+                                Khoảng cách thời gian từ lúc vi khuẩn vượt BBB đến khi bùng phát phù não toàn thể chỉ tính bằng <strong>vài giờ đồng hồ</strong>. Mỗi giờ chậm trễ dùng kháng sinh thích hợp làm tăng <strong>12,6% nguy cơ tử vong</strong>. Người bệnh chưa điều trị tiếp tục phát tán giọt bắn chứa phế cầu, não mô cầu ra môi trường kín xung quanh!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 5: DI CHỨNG THẦN KINH & PHÂN HÓA ĐỊA LÝ -->
+        <!-- ========================================================================= -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-brain"></i> 5. Di Chứng Thần Kinh Dài Hạn &amp; Phân Hóa Vùng Miền</h2>
+
+            <p class="section-text">
+                Khác với các bệnh nhiễm trùng thông thường, viêm màng não vi khuẩn để lại di chứng thần kinh vĩnh viễn với tỷ lệ rất cao. Khoảng <strong>1 trong 5 người sống sót (20%)</strong> phải gánh chịu các tổn thương tâm lý thần kinh nghiêm trọng:
+            </p>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Loại Di Chứng Thần Kinh</th>
+                            <th style="width: 20%; color: #ef4444;">Tần Suất Xuất Hiện</th>
+                            <th style="width: 25%;">Căn Nguyên Vi Sinh Thường Gặp</th>
+                            <th style="width: 30%;">Cơ Chế Bệnh Sinh &amp; Hậu Quả</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Điếc tiếp nhận (Sensorineural Hearing Loss)</strong></td>
+                            <td><strong style="color: #ef4444;">10% – 15%</strong> (Trẻ em)<br><strong style="color: #ef4444;">&gt;60%</strong> ở <em>S. suis</em></td>
+                            <td><em>S. suis</em>, <em>S. pneumoniae</em>, <em>N. meningitidis</em></td>
+                            <td>Vi khuẩn và phản ứng viêm lan trực tiếp từ khoang dưới nhện qua cống ốc tai (Cochlear Aqueduct) gây viêm ốc tai và cốt hóa mê nhĩ.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Não úng thủy (Hydrocephalus)</strong></td>
+                            <td>5% – 12%</td>
+                            <td>Lao màng não (TBM), Phế cầu, GBS</td>
+                            <td>Dày dính màng não nền sọ gây tắc nghẽn lưu thông DNT hoặc giảm hấp thu tại các hạt màng nhện Pacchioni.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Động kinh cục bộ &amp; toàn thể</strong></td>
+                            <td>7% – 10%</td>
+                            <td>TBM, Phế cầu, Vi khuẩn Gram (-)</td>
+                            <td>Sẹo xơ hóa vỏ não sau viêm màng não - não hoặc tổn thương thiếu máu cục bộ do viêm mạch não.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chậm phát triển trí tuệ &amp; Nhận thức</strong></td>
+                            <td>12% – 18%</td>
+                            <td>Trẻ sơ sinh (GBS, <em>E. coli</em>)</td>
+                            <td>Tổn thương diện rộng chất trắng và chất xám trong giai đoạn não bộ đang hoàn thiện myelin.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-earth-africa"></i> Điểm Nóng Dịch Tễ: Dải Viêm Màng Não Châu Phi (African Meningitis Belt)</h3>
+            <p class="section-text">
+                Kéo dài từ Senegal ở Tây Phi đến Ethiopia ở Đông Phi (gồm 26 quốc gia với hơn 300 triệu dân), khu vực này ghi nhận các đợt bùng phát dịch não mô cầu theo chu kỳ 8–12 năm vào mùa khô (tháng 12 đến tháng 6). Gió cát khô cằn Harmattan gây tổn thương hàng rào niêm mạc tỵ hầu, kết hợp với tình trạng quá tải dân cư tạo điều kiện bùng phát dịch lớn với tỷ lệ mắc có thể vượt quá <strong>1.000 ca/100.000 dân</strong>.
+            </p>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 6: DỊCH TỄ HỌC VIÊM MÀNG NÃO DO VIRUS -->
+        <!-- ========================================================================= -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-dna"></i> 6. Dịch Tễ Học Viêm Màng Não Do Virus (Aseptic Meningitis)</h2>
+
+            <p class="section-text">
+                Tại các nước phát triển có độ bao phủ vắc-xin vi khuẩn cao, virus là nguyên nhân phổ biến nhất gây viêm màng não vô khuẩn (Aseptic meningitis). Nghiên cứu đoàn hệ quốc gia tại Đan Mạch ghi nhận tỷ lệ mắc trung bình hàng năm ở người lớn là <strong>4,7 ca trên 100.000 dân</strong>:
+            </p>
+
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #0ea5e9;">39%</div>
+                    <div class="metric-label">Enterovirus (EVs)</div>
+                    <div class="metric-sub">Tác nhân số 1; bùng phát mùa hè - thu ở ôn đới, quanh năm ở nhiệt đới</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #ec4899;">16%</div>
+                    <div class="metric-label">HSV-2 (Herpes Simplex)</div>
+                    <div class="metric-sub">Thiên lệch giới tính rõ rệt: 77% số ca mắc xảy ra ở nữ giới</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #8b5cf6;">15%</div>
+                    <div class="metric-label">VZV (Varicella-Zoster)</div>
+                    <div class="metric-sub">60% bệnh nhân có kèm ban zona thần kinh lâm sàng</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong style="color: #0ea5e9; font-size: 0.95rem;">
+                    <i class="fa-solid fa-circle-info"></i> Tiên lượng dịch tễ học Viêm màng não do Virus:
+                </strong>
+                <br>
+                Trái ngược với viêm màng não vi khuẩn, viêm màng não virus thường tự giới hạn với tỷ lệ tử vong cực thấp (&lt; 1%) ở người có miễn dịch bình thường. Tuy nhiên, bệnh nhân có thể trải qua hội chứng suy nhược sau viêm màng não (mệt mỏi, đau đầu kéo dài, giảm tập trung) trong nhiều tháng.
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 7: CHIẾN LƯỢC KIỂM SOÁT, VẮC-XIN & ROADMAP WHO 2030 -->
+        <!-- ========================================================================= -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-syringe"></i> 7. Chiến Lược Phòng Ngừa, Vắc-Xin &amp; Lộ Trình WHO 2030</h2>
+
+            <p class="section-text">
+                Tiêm chủng vắc-xin là vũ khí dịch tễ học hiệu quả nhất để làm thay đổi cục diện gánh nặng bệnh tật viêm màng não toàn cầu. Đại hội đồng Y tế Thế giới (WHA) đã phê chuẩn lộ trình toàn cầu <strong>"Đẩy lùi Viêm màng não vào năm 2030" (Defeating Meningitis by 2030 Global Roadmap)</strong>:
+            </p>
+
+            <div class="metric-grid">
+                <div class="metric-card" style="border-top-color: #10b981;">
+                    <div class="metric-value" style="color: #10b981;">LOẠI TRỪ</div>
+                    <div class="metric-label">Các Vụ Dịch Não Mô Cầu</div>
+                    <div class="metric-sub">Triển khai vắc-xin đa giá MenFive (ACWXY)</div>
+                </div>
+                <div class="metric-card" style="border-top-color: #3b82f6;">
+                    <div class="metric-value" style="color: #3b82f6;">-50%</div>
+                    <div class="metric-label">Giảm Số Ca Viêm Màng Não Mủ</div>
+                    <div class="metric-sub">Mục tiêu cắt giảm 50% số ca mắc toàn cầu</div>
+                </div>
+                <div class="metric-card" style="border-top-color: #ef4444;">
+                    <div class="metric-value" style="color: #ef4444;">-70%</div>
+                    <div class="metric-label">Giảm Tỷ Lệ Tử Vong</div>
+                    <div class="metric-sub">Giảm 70% số ca tử vong do vi khuẩn vào năm 2030</div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-shield-halved"></i> Các Thế Hệ Vắc-Xin Phòng Ngừa Viêm Màng Não Cốt Lõi</h3>
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Loại Vắc-Xin</th>
+                            <th style="width: 30%;">Tác Nhân Đích &amp; Huyết Thanh</th>
+                            <th style="width: 45%;">Tác Động Dịch Tễ Học Đã Được Chứng Minh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PCV (Phế cầu cộng hợp)</strong><br><small style="color: var(--color-text-muted);">PCV10, PCV13, PCV15, PCV20</small></td>
+                            <td><em>Streptococcus pneumoniae</em> (10, 13, 15, 20 serotypes)</td>
+                            <td>Giảm &gt;90% tỷ lệ viêm màng não do các chủng phế cầu trong vắc-xin; tạo miễn dịch cộng đồng (herd immunity) vững chắc. Hiện tượng thay thế serotype không có trong vắc-xin đang được giám sát.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MenACWY &amp; MenB</strong><br><small style="color: var(--color-text-muted);">Vắc-xin Não mô cầu cộng hợp &amp; Protein</small></td>
+                            <td><em>Neisseria meningitidis</em> (Nhóm A, C, W, Y và Nhóm B)</td>
+                            <td>Vắc-xin MenAfriVac (nhóm A) đã loại trừ gần như hoàn toàn dịch serogroup A tại Châu Phi. Vắc-xin MenB bảo vệ trẻ em và thanh thiếu niên ở các nước phát triển.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hib (Haemophilus type b)</strong></td>
+                            <td><em>Haemophilus influenzae</em> type b</td>
+                            <td>Đưa vào chương trình tiêm chủng mở rộng đã xóa sổ gần như hoàn toàn viêm màng não do Hib ở trẻ dưới 5 tuổi trên phạm vi toàn cầu.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BCG (Bacille Calmette-Guérin)</strong></td>
+                            <td><em>Mycobacterium tuberculosis</em></td>
+                            <td>Tiêm sơ sinh giúp giảm tới <strong>70% – 80% nguy cơ mắc lao màng não (TBM)</strong> thể nặng ở trẻ sơ sinh và trẻ nhỏ.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="success-box">
+                <strong style="color: #10b981; font-size: 0.95rem;">
+                    <i class="fa-solid fa-pills"></i> Điều trị dự phòng bằng kháng sinh (Chemoprophylaxis):
+                </strong>
+                <br>
+                Chỉ định bắt buộc cho <strong>người tiếp xúc gần trong gia đình hoặc người chăm sóc trực tiếp</strong> bệnh nhân mắc bệnh não mô cầu (<em>N. meningitidis</em>) trong vòng 24 giờ kể từ khi xác định ca bệnh: Sử dụng <strong>Rifampicin</strong> (uống 2 ngày), <strong>Ciprofloxacin</strong> (liều duy nhất 500mg) hoặc <strong>Ceftriaxone</strong> (tiêm bắp liều duy nhất).
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 8: TÓM TẮT LÂM SÀNG & TÀI LIỆU THAM KHẢO AMA -->
+        <!-- ========================================================================= -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-bookmark"></i> 8. Tóm Tắt Thực Hành Lâm Sàng (Pearls) &amp; Y Văn Tham Khảo</h2>
+
+            <div class="pearl-box">
+                <strong style="color: #f59e0b; font-size: 1rem; display: block; margin-bottom: 0.5rem;">
+                    <i class="fa-solid fa-gem"></i> 6 Đúc Kết Thực Hành Lâm Sàng &amp; Dịch Tễ Học (Clinical Pearls):
+                </strong>
+                <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.7;">
+                    <li><strong>Tam chứng cổ điển (Sốt, Cổ gượng, Rối loạn tri giác):</strong> Chỉ xuất hiện đầy đủ ở khoảng 44% – 50% bệnh nhân viêm màng não vi khuẩn. Ở trẻ nhũ nhi và người cao tuổi, biểu hiện có thể chỉ là li bì, bỏ bú, bứt rứt hoặc hạ thân nhiệt.</li>
+                    <li><strong>Dịch tễ học địa phương quyết định kháng sinh ban đầu:</strong> Tại Việt Nam, người lớn sốt kèm cổ gượng và có tiền sử ăn tiết canh/thịt lợn tái phải nghĩ ngay đến <em>Streptococcus suis</em> và phối hợp Ceftriaxone liều cao ngay lập tức.</li>
+                    <li><strong>Corticoid hỗ trợ (Dexamethasone):</strong> Dùng liều 10mg IV trước hoặc đồng thời với liều kháng sinh đầu tiên ở người lớn nghi ngờ viêm màng não do phế cầu giúp giảm tỷ lệ tử vong và biến chứng thính lực.</li>
+                    <li><strong>Lao màng não (TBM):</strong> Luôn nghi ngờ ở bệnh nhân đau đầu kéo dài trên 1-2 tuần, sốt nhẹ về chiều, DNT dịch trong hoặc ánh vàng, tăng lympho, protein rất cao (&gt;1-2 g/L) và glucose DNT / máu &lt; 0.3.</li>
+                    <li><strong>Nấm Cryptococcus ở bệnh nhân HIV:</strong> Dấu hiệu màng não có thể rất kín đáo; xét nghiệm kháng nguyên Cryptococcal Antigen (CrAg) trong máu và DNT là phương pháp sàng lọc nhanh và chính xác nhất.</li>
+                    <li><strong>Tuyệt đối không trì hoãn kháng sinh vì chụp CT sọ não:</strong> Nếu bệnh nhân có dấu hiệu thần kinh khu trú cần chụp CT trước chọc DNT, bắt buộc phải cấy máu và dùng ngay kháng sinh kinh nghiệm + Dexamethasone trước khi chuyển đi chụp.</li>
+                </ol>
+            </div>
+
+            <h3 class="subsection-title" style="margin-top: 2rem;"><i class="fa-solid fa-book-journal-whills"></i> Tài Liệu Tham Khảo Chuẩn AMA</h3>
+            <ol class="reference-list">
+                <li>World Health Organization. <em>WHO guidelines on meningitis diagnosis, treatment and care</em>. Geneva, Switzerland: World Health Organization; 2025.</li>
+                <li>Global Burden of Disease 2019 Meningitis Antimicrobial Resistance Collaborators. Global, regional, and national burden of meningitis and its aetiologies, 1990-2019: a systematic analysis for the Global Burden of Disease Study 2019. <em>Lancet Neurol</em>. 2023;22(8):685-711.</li>
+                <li>van de Beek D, Cabellos C, Dzupova O, et al. ESCMID guideline: diagnosis and treatment of acute bacterial meningitis. <em>Clin Microbiol Infect</em>. 2016;22(S3):S37-S62.</li>
+                <li>Lempinen L, Saat R, Niemelä S, et al. Neurological sequelae after childhood bacterial meningitis. <em>Eur J Pediatr</em>. 2024;183(11):5203-5212.</li>
+                <li>Stadelman AM, Ellis J, Samuels THA, et al. Treatment Outcomes in Adult Tuberculous Meningitis: A Systematic Review and Meta-analysis. <em>Open Forum Infect Dis</em>. 2020;7(8):ofaa257.</li>
+                <li>Afazel S, et al. Treatment outcomes of anti-tuberculosis drugs in tuberculous meningitis patients: a systematic review and meta-analysis. <em>New Microbes New Infect</em>. 2025;67:101623.</li>
+                <li>Khalilzadegan A, Hadianfard AM, Ekrami A, et al. Characteristics and Distribution of Fungal Meningitis: A Systematic Review. <em>Infect Dis Clin Microbiol</em>. 2025;2:114-122.</li>
+                <li>Petersen PT, Bodilsen J, Jepsen MPG, et al. Clinical features and prognostic factors in adults with viral meningitis. <em>Brain</em>. 2023;146(9):3816-3825.</li>
+                <li>Nguyen TV, Nguyen MN, Nguyen VT, et al. Meningococcal disease in one soldier patient: Case report from Vietnam. <em>Vietnam J Sci</em>. 2021;63(1):54-58.</li>
+                <li>Fisher J, Linder A, Calevo MG, Bentzer P. Non-corticosteroid adjuvant therapies for acute bacterial meningitis. <em>Cochrane Database of Systematic Reviews</em>. 2021;(11):CD013437.</li>
+            </ol>
+        </section>
+
+        <!-- Back to Hub Navigation Button -->
+        <div style="text-align: center; margin: 3rem 0 2rem 0;">
+            <a href="README.md" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-surface, #ffffff); color: var(--epi-accent, #6366f1); border: 1.5px solid var(--epi-accent, #6366f1); padding: 0.75rem 1.75rem; border-radius: 999px; font-weight: 700; text-decoration: none; transition: all 0.2s ease;">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại Phân Hệ Dịch Tễ Học Y Khoa
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Theme Toggle & Sticky Nav Active Spy Script -->
+    <script>
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                localStorage.setItem('theme', nextTheme);
+                const icon = themeToggleBtn.querySelector('i');
+                if (icon) {
+                    icon.className = nextTheme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            });
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const icon = themeToggleBtn.querySelector('i');
+            if (icon) {
+                icon.className = savedTheme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+        }
+
+        // Active Pillar Scroll Spy
+        const sections = document.querySelectorAll('.article-section');
+        const navTabs = document.querySelectorAll('.pillar-tab');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navTabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.getAttribute('href')?.slice(1) === current) {
+                    tab.classList.add('active');
+                }
+            });
+        });
+
+        // Staggered Entrance Animation for Timeline Phase Nodes
+        const phaseNodes = document.querySelectorAll('.phase-node');
+        if ('IntersectionObserver' in window && phaseNodes.length > 0) {
+            const phaseObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, idx) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, idx * 120);
+                        phaseObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            phaseNodes.forEach(node => phaseObserver.observe(node));
+        } else {
+            phaseNodes.forEach(node => node.classList.add('visible'));
+        }
+    </script>
+</body>
+
+</html>

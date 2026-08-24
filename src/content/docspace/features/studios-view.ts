@@ -11,17 +11,18 @@ import { renderRenalPanel, mountRenalController } from './studios/renal-studio-v
 import { renderCardioPanel, mountCardioController } from './studios/cardio-studio-view';
 import { renderSepsisPanel, mountSepsisController } from './studios/sepsis-studio-view';
 import { renderCirrhosisPanel, mountCirrhosisController } from './studios/cirrhosis-studio-view';
+import { renderNeuroPanel, mountNeuroController } from './studios/neuro-studio-view';
 
-export type StudioTabKey = 'abg' | 'ecg' | 'electrolyte' | 'renal' | 'cardio' | 'sepsis' | 'cirrhosis';
+export type StudioTabKey = 'abg' | 'ecg' | 'electrolyte' | 'renal' | 'cardio' | 'sepsis' | 'cirrhosis' | 'neuro';
 
 /**
  * Render Master Studios View Shell
  */
 export function renderStudiosView(pidOrTab?: string, maybeTab?: StudioTabKey): string {
   let initialTab: StudioTabKey = 'abg';
-  if (pidOrTab && ['abg', 'ecg', 'electrolyte', 'renal', 'cardio', 'sepsis', 'cirrhosis'].includes(pidOrTab)) {
+  if (pidOrTab && ['abg', 'ecg', 'electrolyte', 'renal', 'cardio', 'sepsis', 'cirrhosis', 'neuro'].includes(pidOrTab)) {
     initialTab = pidOrTab as StudioTabKey;
-  } else if (maybeTab && ['abg', 'ecg', 'electrolyte', 'renal', 'cardio', 'sepsis', 'cirrhosis'].includes(maybeTab)) {
+  } else if (maybeTab && ['abg', 'ecg', 'electrolyte', 'renal', 'cardio', 'sepsis', 'cirrhosis', 'neuro'].includes(maybeTab)) {
     initialTab = maybeTab;
   }
 
@@ -83,6 +84,9 @@ export function renderStudiosView(pidOrTab?: string, maybeTab?: StudioTabKey): s
           <button type="button" class="dsp-tab-btn ${initialTab === 'cirrhosis' ? 'is-active' : ''} js-studio-tab-btn" data-tab="cirrhosis">
             <i class="fa-solid fa-disease" style="color:#b45309;"></i> 7. Gan Mật &amp; Xơ Gan (MELD-Na Pro)
           </button>
+          <button type="button" class="dsp-tab-btn ${initialTab === 'neuro' ? 'is-active' : ''} js-studio-tab-btn" data-tab="neuro" style="background:rgba(124,58,237,0.08); border-color:rgba(124,58,237,0.3);">
+            <i class="fa-solid fa-brain" style="color:#7c3aed;"></i> 8. Thần Kinh &amp; Điện Não (Neuro-ICU Pro)
+          </button>
         </nav>
 
         <!-- Studio Panels Container -->
@@ -94,6 +98,7 @@ export function renderStudiosView(pidOrTab?: string, maybeTab?: StudioTabKey): s
           ${renderCardioPanel(initialTab === 'cardio')}
           ${renderSepsisPanel(initialTab === 'sepsis')}
           ${renderCirrhosisPanel(initialTab === 'cirrhosis')}
+          ${renderNeuroPanel(initialTab === 'neuro')}
         </div>
 
       </main>
@@ -125,6 +130,7 @@ export function mountStudiosController(_pid?: string): void {
         cardio: 'panelStudioCardio',
         sepsis: 'panelStudioSepsis',
         cirrhosis: 'panelStudioCirrhosis',
+        neuro: 'panelStudioNeuro',
       };
 
       if (target && map[target]) {
@@ -162,4 +168,5 @@ export function mountStudiosController(_pid?: string): void {
   mountCardioController(bindActionBtns);
   mountSepsisController(bindActionBtns);
   mountCirrhosisController(bindActionBtns);
+  mountNeuroController(bindActionBtns);
 }

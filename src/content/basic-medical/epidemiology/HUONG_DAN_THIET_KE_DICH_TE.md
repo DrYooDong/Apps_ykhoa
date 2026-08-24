@@ -100,3 +100,18 @@ Mọi bài Dịch tễ học đều sử dụng thanh dải sticky nav với 8 T
    - `viewBox` co giãn rộng rãi (tối thiểu `860x520` cho Triad và `860x380` cho Timeline), `width="100%"`.
    - Text SVG dùng `<text>` và `<tspan font-weight="700">`, **tuyệt đối CẤM** thẻ HTML như `<b>`, `<strong>`, `<span>`, `<br>`.
    - Màu sắc kế thừa biến hệ thống: `var(--color-...)`, `#0d9488`, `#ef4444`, `#8b5cf6`, `#3b82f6`.
+
+---
+
+## 🔀 6. Quy Chuẩn 5 Mô Hình Lưu Đồ Động Học Cá Thể Hóa (5 Specialty Archetypes)
+
+Tuyệt đối **KHÔNG dùng chung một mô hình chu kỳ lây truyền cho mọi bệnh lý**. Mỗi bài dịch tễ học phải chọn đúng 1 trong 5 mô hình lưu đồ sau đây cho **Trụ cột 4**:
+
+| Nhóm | Chuyên Khoa / Dạng Bệnh | Mô Hình Trực Quan Trụ Cột 4 | Đặc Trưng Cấu Trúc |
+|---|---|---|---|
+| **🔴 Nhóm A** | Vector-borne & Zoonotic (Sốt xuất huyết, Sốt rét, Sốt mò, Dại...) | **Timeline Rail Studio (Vector/Host Cycle)** | Viraemia &rarr; Ủ bệnh ngoại lai (EIP trong véc-tơ) &rarr; Ủ bệnh nội tại (IIP trong người) &rarr; Vòng lặp tái nhiễm |
+| **🟠 Nhóm B** | Direct Infectious (Thủy đậu, VGSV-B, VGSV-C, Viêm màng não, HIV, Lao...) | **Timeline Rail Studio (Natural History & Care Cascade)** | Xâm nhập &rarr; Nhiễm cấp &rarr; Thanh thải / Mãn tính &rarr; Di chứng &rarr; Cột mốc điều trị (DAA / Vắc-xin) & Cảnh báo tái nhiễm |
+| **🟡 Nhóm C** | Progressive Chronic Organ Disease (Xơ gan, Suy tim, COPD, Bệnh thận mạn CKD, Đái tháo đường T2, THA...) | **Progression Cascade Studio (Decline Curve & Staging)** | Chuỗi thoái hóa cơ quan F0&rarr;F4/NYHA/GOLD/eGFR &rarr; Mất bù &rarr; Biến cố suy tạng kịch phát (ACLF/ADHF/AECOPD) + Cửa sổ vàng can thiệp (Baveno/KDIGO/GOLD) |
+| **🟢 Nhóm D** | Acute Emergency & Events (Hội chứng vành cấp ACS, Đột quỵ cấp, Thuyên tắc phổi PE, Xuất huyết tiêu hóa...) | **Acute Event Radar Studio (Golden Hour & Risk Matrix)** | Trục thời gian khẩn cấp (Phút &rarr; Giờ &rarr; 24h &rarr; 30 ngày) + Đồng hồ tử vong (Mortality Clock) + Ma trận phân tầng nguy cơ khẩn cấp |
+| **🔵 Nhóm E** | Genetic, Rare & Autoimmune Diseases (Thalassemia, SLE, Bệnh Wilson, Hemophilia, Bệnh tự miễn...) | **Population Genetics & Flare Map Studio** | Bản đồ dịch tễ di truyền / Vành đai lưu hành + Vòng lặp đợt bùng phát (Flare - Remission) + Tháp phân bố nhân khẩu/giới tính |
+

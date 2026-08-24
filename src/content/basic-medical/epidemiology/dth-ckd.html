@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Tễ Học Bệnh Thận Mạn (CKD) — CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 Pro -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Core CliniPortal Design System (Level 4 Relative Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/header.css">
+    <link rel="stylesheet" href="../../../../css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../../css/components/footer.css">
+    <link rel="stylesheet" href="../../../../css/components/module-dashboard.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+
+    <style>
+        /* ========================================================================= */
+        /* CUSTOM EPIDEMIOLOGY DESIGN TOKENS (NEPHROLOGY THEME) */
+        /* ========================================================================= */
+        :root {
+            --epi-primary: #0284c7;          /* Sky Blue / Nephrology Core */
+            --epi-primary-light: #38bdf8;    /* Light Sky */
+            --epi-kidney: #0ea5e9;           /* Kidney Cyan */
+            --epi-hazard: #ef4444;           /* ESKD & Mortality Red */
+            --epi-warning: #f59e0b;          /* Moderate Risk Amber */
+            --epi-success: #10b981;          /* Low Risk Green */
+            --epi-gradient: linear-gradient(135deg, #0c4a6e 0%, #0f172a 50%, #0369a1 100%);
+        }
+
+        [data-theme="dark"] {
+            --epi-gradient: linear-gradient(135deg, #082f49 0%, #090d16 50%, #075985 100%);
+        }
+
+        body.physio-article-body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--color-bg, #f8fafc);
+            color: var(--color-text, #1e293b);
+            line-height: 1.7;
+            padding-bottom: 5rem;
+        }
+
+        .physio-article-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 3rem 1.25rem;
+        }
+
+        /* HEADER HERO */
+        .epi-article-header {
+            background: var(--epi-gradient);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .epi-article-header::after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .epi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+        }
+
+        /* KPI SUMMARY CARDS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--epi-primary, #0284c7);
+        }
+
+        .kpi-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .kpi-icon-blue { background: rgba(2, 132, 199, 0.12); color: #0284c7; }
+        .kpi-icon-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+        .kpi-icon-amber { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+        .kpi-icon-green { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+
+        .kpi-val {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            line-height: 1.2;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--color-text-muted, #64748b);
+            font-weight: 600;
+        }
+
+        /* STICKY NAVIGATION */
+        .pillars-nav {
+            position: sticky;
+            top: 1rem;
+            z-index: 90;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.4rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: auto;
+            gap: 0.35rem;
+            padding: 0.1rem;
+            scrollbar-width: none;
+        }
+
+        .pillars-nav-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .pillar-tab {
+            white-space: nowrap;
+            padding: 0.55rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: all 0.2s ease;
+        }
+
+        .pillar-tab:hover,
+        .pillar-tab:focus {
+            background: rgba(2, 132, 199, 0.08);
+            color: var(--epi-primary, #0284c7);
+        }
+
+        /* ARTICLE SECTIONS */
+        .article-section {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 18px;
+            padding: 2.25rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+            scroll-margin-top: 5rem;
+        }
+
+        .section-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            margin: 0 0 1.25rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+            padding-bottom: 0.85rem;
+        }
+
+        .section-title i {
+            color: var(--epi-primary, #0284c7);
+        }
+
+        .subsection-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-text, #1e293b);
+            margin: 1.75rem 0 0.85rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-text {
+            font-size: 0.96rem;
+            color: var(--color-text, #334155);
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+
+        /* EDITORIAL SVG CONTAINERS */
+        .svg-container {
+            width: 100%;
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        [data-theme="dark"] .svg-container {
+            background: #0f172a;
+            border-color: #334155;
+        }
+
+        /* KDIGO HEATMAP GRID */
+        .kdigo-matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .kdigo-matrix-table th, 
+        .kdigo-matrix-table td {
+            padding: 0.75rem 0.65rem;
+            text-align: center;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .kdigo-matrix-table th {
+            background: var(--color-bg, #f1f5f9);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+
+        .risk-green { background: #dcfce7; color: #166534; font-weight: 700; }
+        .risk-yellow { background: #fef9c3; color: #854d0e; font-weight: 700; }
+        .risk-orange { background: #ffedd5; color: #9a3412; font-weight: 700; }
+        .risk-red { background: #fee2e2; color: #991b1b; font-weight: 700; }
+
+        [data-theme="dark"] .risk-green { background: rgba(22, 101, 52, 0.4); color: #86efac; }
+        [data-theme="dark"] .risk-yellow { background: rgba(133, 77, 14, 0.4); color: #fde047; }
+        [data-theme="dark"] .risk-orange { background: rgba(154, 52, 18, 0.4); color: #fdba74; }
+        [data-theme="dark"] .risk-red { background: rgba(153, 27, 27, 0.4); color: #fca5a5; }
+
+        /* PROGRESSION CASCADE STUDIO (CHRONIC ORGAN DISEASE PATTERN) */
+        .progression-studio {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 18px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .progression-studio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .progression-studio-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0;
+        }
+
+        .progression-legend {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--color-text-muted, #64748b);
+            background: var(--color-bg, #f8fafc);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .cascade-track-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 0.25rem 1.5rem 0.25rem;
+        }
+
+        .cascade-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(260px, 1fr));
+            gap: 1.25rem;
+            position: relative;
+            min-width: 1100px;
+        }
+
+        .cascade-grid-4::before {
+            content: '';
+            position: absolute;
+            top: 48px;
+            left: 130px;
+            right: 130px;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981 0%, #3b82f6 33%, #f59e0b 66%, #ef4444 100%);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .cascade-stage-node {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .cascade-stage-node.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cascade-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-surface, #ffffff);
+            border: 3px solid;
+            margin: 0 auto 1rem auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 0.82rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .cascade-stage-node:hover .cascade-marker {
+            transform: scale(1.15);
+        }
+
+        .cascade-card {
+            background: var(--color-surface, #ffffff);
+            border: 1.5px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .cascade-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .stage-green .cascade-marker { border-color: #10b981; color: #10b981; }
+        .stage-green .cascade-card { border-top: 4px solid #10b981; }
+        .stage-green .cascade-card:hover { border-color: #10b981; }
+
+        .stage-blue .cascade-marker { border-color: #3b82f6; color: #3b82f6; }
+        .stage-blue .cascade-card { border-top: 4px solid #3b82f6; }
+        .stage-blue .cascade-card:hover { border-color: #3b82f6; }
+
+        .stage-amber .cascade-marker { border-color: #f59e0b; color: #f59e0b; }
+        .stage-amber .cascade-card { border-top: 4px solid #f59e0b; }
+        .stage-amber .cascade-card:hover { border-color: #f59e0b; }
+
+        .stage-red .cascade-marker { border-color: #ef4444; color: #ef4444; }
+        .stage-red .cascade-card { border-top: 4px solid #ef4444; }
+        .stage-red .cascade-card:hover { border-color: #ef4444; }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .phase-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .phase-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.25rem 0.55rem;
+            border-radius: 999px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .sparkline-box {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 8px;
+            padding: 0.4rem;
+            margin: 0.2rem 0;
+        }
+
+        .diagnostic-pills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.4rem;
+            margin: 0.25rem 0;
+        }
+
+        .diag-pill {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 6px;
+            padding: 0.35rem 0.45rem;
+            font-size: 0.72rem;
+            line-height: 1.3;
+        }
+
+        .diag-pill-label {
+            color: var(--color-text-muted, #64748b);
+            font-weight: 600;
+            display: block;
+            font-size: 0.68rem;
+        }
+
+        .diag-pill-val {
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--color-text, #0f172a);
+        }
+
+        .intervention-window {
+            background: rgba(2, 132, 199, 0.06);
+            border: 1px dashed rgba(2, 132, 199, 0.4);
+            border-radius: 8px;
+            padding: 0.45rem 0.6rem;
+            font-size: 0.74rem;
+            color: var(--color-primary, #0284c7);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+            line-height: 1.45;
+        }
+
+        .phase-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--color-text, #334155);
+        }
+
+        .phase-bullets li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .phase-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-text-muted, #64748b);
+            font-weight: bold;
+        }
+
+        .survival-box {
+            margin-top: auto;
+            border-radius: 10px;
+            padding: 0.65rem 0.85rem;
+            text-align: center;
+        }
+
+        .survival-comp { background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); }
+        .survival-decomp { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.2); }
+        .survival-aclf { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.2); }
+
+        .transition-banner {
+            margin-top: 1.5rem;
+            background: var(--color-bg, #f8fafc);
+            border: 1.5px dashed #0284c7;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        /* CALLOUT BOXES */
+        .pearl-box, .danger-box, .reaction-box, .info-box {
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        .pearl-box { background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .danger-box { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .reaction-box { background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.3); }
+        .info-box { background: rgba(2, 132, 199, 0.08); border: 1px solid rgba(2, 132, 199, 0.3); }
+
+        .callout-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .danger-box .callout-title { color: #dc2626; }
+        .pearl-box .callout-title { color: #d97706; }
+        .reaction-box .callout-title { color: #7c3aed; }
+        .info-box .callout-title { color: #0284c7; }
+
+        .bento-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .bento-card {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 1.35rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .epi-table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .epi-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        .epi-table th, .epi-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            text-align: left;
+        }
+
+        .epi-table th {
+            background: var(--color-bg, #f8fafc);
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+        }
+    </style>
+</head>
+
+<body class="physio-article-body">
+    <div class="physio-article-container">
+
+        <!-- HEADER HERO -->
+        <header class="epi-article-header">
+            <span class="epi-badge"><i class="fa-solid fa-kidneys"></i> DỊCH TỄ HỌC • THẬN - TIẾT NIỆU &amp; CHUYỂN HÓA</span>
+            <h1 style="margin: 0.25rem 0 0.75rem 0; font-size: 2rem; font-weight: 800; color: #ffffff; line-height: 1.3;">
+                Dịch Tễ Học Bệnh Thận Mạn (Chronic Kidney Disease — CKD)
+            </h1>
+            <p style="margin: 0; font-size: 1.05rem; opacity: 0.95; line-height: 1.6; max-width: 920px;">
+                Phân tích gánh nặng dịch tễ học toàn cầu (850 triệu ca), ma trận phân tầng nguy cơ KDIGO 2D (CGA), chuỗi động học suy giảm eGFR, hội chứng Tim - Thận - Chuyển hóa (CKM), tỷ lệ lưu hành tại Việt Nam và phân tích khoảng trống chẩn đoán trong y tế công cộng.
+            </p>
+        </header>
+
+        <!-- KPI SUMMARY STRIP -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon-blue"><i class="fa-solid fa-globe"></i></div>
+                <div>
+                    <div class="kpi-val">850 TRIỆU</div>
+                    <div class="kpi-label">Số ca mắc CKD toàn cầu (~10% dân số)</div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon-red"><i class="fa-solid fa-skull"></i></div>
+                <div>
+                    <div class="kpi-val">1,43 TRIỆU</div>
+                    <div class="kpi-label">Tử vong/năm (Nguyên nhân thứ 11 GBD)</div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon-amber"><i class="fa-solid fa-vial-circle-check"></i></div>
+                <div>
+                    <div class="kpi-val">23,8%–41,7%</div>
+                    <div class="kpi-label">Tỷ lệ CKD trên bệnh nhân ĐTĐ T2 tại VN</div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon kpi-icon-green"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                    <div class="kpi-val">HẠNG 5</div>
+                    <div class="kpi-label">Dự báo nguyên nhân gây mất năm sống vào 2040</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STICKY 8 PILLARS NAV -->
+        <nav class="pillars-nav" aria-label="Mục lục 8 trụ cột dịch tễ học">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-1')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-triangle-exclamation"></i> 1. Tam Giác Dịch Tễ</a>
+                <a href="#sec-2" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-2')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-table-cells"></i> 2. Ma Trận KDIGO 2D</a>
+                <a href="#sec-3" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-3')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-earth-americas"></i> 3. Gánh Nặng Toàn Cầu</a>
+                <a href="#sec-4" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-4')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-chart-line-down"></i> 4. Progression Cascade</a>
+                <a href="#sec-5" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-5')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-map-location-dot"></i> 5. Dịch Tễ Việt Nam</a>
+                <a href="#sec-6" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-6')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-magnifying-glass-chart"></i> 6. Khoảng Trống Y Tế</a>
+                <a href="#sec-7" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-7')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-heart-pulse"></i> 7. Hội Chứng Tim-Thận</a>
+                <a href="#sec-8" class="pillar-tab" onclick="event.preventDefault(); document.getElementById('sec-8')?.scrollIntoView({behavior:'smooth'});"><i class="fa-solid fa-book-medical"></i> 8. Tài Liệu AMA</a>
+            </div>
+        </nav>
+
+        <!-- TRỤ CỘT 1: TAM GIÁC DỊCH TỄ HỌC BỆNH THẬN MẠN -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-triangle-exclamation"></i> 1. Tam Giác Dịch Tễ Học Bệnh Thận Mạn (CKD Epidemiological Triad)</h2>
+            <p class="section-text">
+                Bệnh thận mạn (Chronic Kidney Disease — CKD) là một bệnh lý thoái hóa vi mạch và xơ hóa tiến triển đặc trưng bởi sự suy giảm mức lọc cầu thận (eGFR &lt; 60 mL/phút/1.73m²) hoặc sự xuất hiện dai dẳng của tổn thương thận (Albumin niệu UACR &ge; 30 mg/g) kéo dài trên <strong>3 tháng</strong>. Mô hình tam giác dịch tễ học bệnh thận mạn phản ánh sự tương tác phức tạp giữa các yếu tố nhạy cảm nội tại, tác nhân phá hủy vi tuần hoàn cầu thận và rào cản hệ thống y tế công cộng:
+            </p>
+
+            <!-- EDITORIAL SVG: TRIAD DIAGRAM -->
+            <div class="svg-container">
+                <svg viewBox="0 0 880 520" width="100%" height="100%" style="max-height: 520px; display: block;">
+                    <defs>
+                        <linearGradient id="grad-agent-ckd" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ef4444" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                        </linearGradient>
+                        <linearGradient id="grad-host-ckd" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                        </linearGradient>
+                        <linearGradient id="grad-env-ckd" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                        </linearGradient>
+                        <linearGradient id="grad-center-ckd" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#0369a1" stop-opacity="0.05"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Connecting Dynamic Lines -->
+                    <path d="M 440,80 L 710,430 L 170,430 Z" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="2.5" stroke-dasharray="6 6"/>
+
+                    <!-- Center Focus Core: Glomerulosclerosis & Fibrosis -->
+                    <g transform="translate(440, 290)">
+                        <circle cx="0" cy="0" r="75" fill="none" stroke="rgba(2, 132, 199, 0.2)" stroke-width="6"/>
+                        <circle cx="0" cy="0" r="60" fill="url(#grad-center-ckd)" stroke="#0284c7" stroke-width="2"/>
+                        <circle cx="0" cy="0" r="48" fill="var(--color-surface, #ffffff)" stroke="rgba(2, 132, 199, 0.4)" stroke-width="1"/>
+                        
+                        <text x="0" y="-16" text-anchor="middle" font-size="9.5" font-weight="800" fill="#0284c7" text-transform="uppercase" letter-spacing="1">TIÊU ĐIỂM BỆNH SINH</text>
+                        <text x="0" y="3" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--color-text, #0f172a)">XƠ HÓA CẦU THẬN &amp;</text>
+                        <text x="0" y="20" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--color-text, #0f172a)">MẤT NEPHRON</text>
+                        <text x="0" y="36" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">Podocyte Loss &amp; Hyperfiltration</text>
+                    </g>
+
+                    <!-- TOP NODE: TÁC NHÂN (AGENT) -->
+                    <g transform="translate(290, 20)">
+                        <rect x="0" y="0" width="300" height="135" rx="14" fill="url(#grad-agent-ckd)" stroke="#ef4444" stroke-width="1.8"/>
+                        <rect x="14" y="-12" width="160" height="25" rx="12.5" fill="#ef4444"/>
+                        <text x="94" y="5" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff" letter-spacing="0.5">TÁC NHÂN (AGENT)</text>
+                        
+                        <text x="16" y="30" font-size="12.5" font-weight="800" fill="#b91c1c">Áp Lực Thủy Tĩnh &amp; Độc Chất Thận</text>
+                        <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Tăng áp lực nội cầu thận: <tspan font-weight="700">Hyperfiltration</tspan></text>
+                        <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Tăng đường huyết mạn: <tspan font-weight="700">AGEs, ROS, Viêm kẽ</tspan></text>
+                        <text x="16" y="86" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Độc chất &amp; Thuốc: <tspan font-weight="700">NSAIDs, Thuốc cản quang</tspan></text>
+                        <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Thảo dược chứa Acid Aristolochic (Balkan/Asian nephropathy)</text>
+                        <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Tổn thương thận cấp tái diễn (AKI-to-CKD transition)</text>
+                    </g>
+
+                    <!-- BOTTOM RIGHT NODE: VẬT CHỦ (HOST) -->
+                    <g transform="translate(570, 355)">
+                        <rect x="0" y="0" width="290" height="150" rx="14" fill="url(#grad-host-ckd)" stroke="#0284c7" stroke-width="1.8"/>
+                        <rect x="14" y="-12" width="155" height="25" rx="12.5" fill="#0284c7"/>
+                        <text x="91" y="5" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff" letter-spacing="0.5">VẬT CHỦ (HOST)</text>
+                        
+                        <text x="16" y="30" font-size="12.5" font-weight="800" fill="#0369a1">Di Truyền &amp; Chuyển Hóa</text>
+                        <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Biến thể di truyền: <tspan font-weight="700">APOL1 (G1/G2), PKD1/2</tspan></text>
+                        <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Bệnh nền: <tspan font-weight="700">ĐTĐ típ 2 (30–40%), THA (25–30%)</tspan></text>
+                        <text x="16" y="86" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Tuổi tác: <tspan font-weight="700">&gt; 70 tuổi mắc 34,3% (Lão hóa nephron)</tspan></text>
+                        <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Tiền sử sinh non / Cân nặng sơ sinh thấp</text>
+                        <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Nghịch lý giới tính: Nữ hiện mắc &gt; Nam</text>
+                    </g>
+
+                    <!-- BOTTOM LEFT NODE: MÔI TRƯỜNG & HỆ THỐNG Y TẾ -->
+                    <g transform="translate(20, 355)">
+                        <rect x="0" y="0" width="290" height="150" rx="14" fill="url(#grad-env-ckd)" stroke="#10b981" stroke-width="1.8"/>
+                        <rect x="14" y="-12" width="180" height="25" rx="12.5" fill="#10b981"/>
+                        <text x="104" y="5" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff" letter-spacing="0.5">MÔI TRƯỜNG &amp; Y TẾ</text>
+                        
+                        <text x="16" y="30" font-size="12.5" font-weight="800" fill="#047857">Chính Sách &amp; Tiếp Cận Điều Trị</text>
+                        <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Rào cản sàng lọc: <tspan font-weight="700">90% không biết mình mắc CKD</tspan></text>
+                        <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Bỏ sót xét nghiệm UACR tại tuyến cơ sở</text>
+                        <text x="16" y="86" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Chậm trễ áp dụng thuốc <tspan font-weight="700">SGLT2i &amp; Finerenone</tspan></text>
+                        <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Bất bình đẳng tiếp cận Lọc máu &amp; Ghép thận</text>
+                        <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Chế độ ăn nhiều muối, đạm động vật dư thừa</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="pearl-box">
+                <div class="callout-title"><i class="fa-solid fa-lightbulb"></i> Điểm Ngọc Dịch Tễ: CKD Là "Kẻ Giết Người Thầm Lặng" Đứng Thứ 11 Toàn Cầu</div>
+                <p style="margin:0;">
+                    Bệnh thận mạn có số lượng người mắc gấp <strong>2 lần bệnh đái tháo đường</strong> và gấp <strong>20 lần bệnh ung thư</strong>. Tuy nhiên, do diễn tiến âm thầm không triệu chứng ở các giai đoạn sớm (G1–G3), hơn <strong>90% bệnh nhân trong cộng đồng không nhận biết được tình trạng bệnh của mình</strong> cho đến khi đã xuất hiện các biến chứng tim mạch nghiêm trọng hoặc tiến triển đến giai đoạn suy thận cần lọc máu.
+                </p>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 2: MA TRẬN PHÂN TẦNG NGUY CƠ KDIGO 2D (CGA CLASSIFICATION) -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-table-cells"></i> 2. Ma Trận Phân Tầng Nguy Cơ KDIGO 2D (CGA Heatmap)</h2>
+            <p class="section-text">
+                Theo Hướng dẫn Thực hành Lâm sàng Quốc tế KDIGO 2024, phân loại bệnh thận mạn bắt buộc phải tích hợp đầy đủ 3 thành tố <strong>CGA</strong>: <em>Căn nguyên (Cause)</em>, <em>Mức lọc cầu thận eGFR (G1–G5)</em> và <em>Mức độ Albumin niệu (A1–A3)</em>. Nguy cơ tiến triển thành suy thận giai đoạn cuối (ESKD), biến cố tim mạch (MACE) và tử vong chung tăng vọt theo ma trận nhiệt hai chiều:
+            </p>
+
+            <!-- KDIGO 2D MATRIX HEATMAP -->
+            <div class="epi-table-wrapper">
+                <table class="kdigo-matrix-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" rowspan="2" style="background: #e2e8f0; vertical-align: middle;">Phân Tầng KDIGO 2024<br>(eGFR &amp; Albuminuria)</th>
+                            <th colspan="3" style="background: #cbd5e1;">Mức Độ Albumin Niệu (Albumin-to-Creatinine Ratio — UACR)</th>
+                        </tr>
+                        <tr>
+                            <th>A1: Bình Thường / Tăng Nhẹ<br><strong>&lt; 30 mg/g</strong> (&lt; 3 mg/mmol)</th>
+                            <th>A2: Tăng Vừa Phải<br><strong>30 – 300 mg/g</strong> (3–30 mg/mmol)</th>
+                            <th>A3: Tăng Nặng (Protein niệu)<br><strong>&gt; 300 mg/g</strong> (&gt; 30 mg/mmol)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="5" style="background: #f1f5f9; font-weight: 800; writing-mode: vertical-rl; transform: rotate(180deg); padding: 0.5rem;">Mức Lọc Cầu Thận (eGFR)</td>
+                            <td style="text-align: left;"><strong>G1: Bình thường / Tăng</strong> (&ge; 90 mL/phút)</td>
+                            <td class="risk-green">Nguy cơ thấp (Nếu không có tổn thương thận khác thì không tính CKD)</td>
+                            <td class="risk-yellow">Nguy cơ trung bình (CKD G1A2)</td>
+                            <td class="risk-orange">Nguy cơ cao (CKD G1A3)</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;"><strong>G2: Giảm nhẹ</strong> (60 – 89 mL/phút)</td>
+                            <td class="risk-green">Nguy cơ thấp (Nếu không có tổn thương thận khác thì không tính CKD)</td>
+                            <td class="risk-yellow">Nguy cơ trung bình (CKD G2A2)</td>
+                            <td class="risk-orange">Nguy cơ cao (CKD G2A3)</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;"><strong>G3a: Giảm nhẹ đến vừa</strong> (45 – 59 mL/phút)</td>
+                            <td class="risk-yellow">Nguy cơ trung bình (CKD G3aA1)</td>
+                            <td class="risk-orange">Nguy cơ cao (CKD G3aA2)</td>
+                            <td class="risk-red">Nguy cơ rất cao (CKD G3aA3)</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;"><strong>G3b: Giảm vừa đến nặng</strong> (30 – 44 mL/phút)</td>
+                            <td class="risk-orange">Nguy cơ cao (CKD G3bA1)</td>
+                            <td class="risk-red">Nguy cơ rất cao (CKD G3bA2)</td>
+                            <td class="risk-red">Nguy cơ rất cao (CKD G3bA3)</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;"><strong>G4: Giảm nặng</strong> (15 – 29 mL/phút)</td>
+                            <td class="risk-red">Nguy cơ rất cao (CKD G4A1)</td>
+                            <td class="risk-red">Nguy cơ rất cao (CKD G4A2)</td>
+                            <td class="risk-red">Nguy cơ rất cao (CKD G4A3)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: left;"><strong>G5: Suy thận giai đoạn cuối</strong> (&lt; 15 mL/phút)</td>
+                            <td class="risk-red" colspan="3">NGUY CƠ CỰC KỲ CAO — CHỈ ĐỊNH ĐIỀU TRỊ THAY THẾ THẬN (RRT: LỌC MÁU / GHÉP THẬN)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <div class="callout-title"><i class="fa-solid fa-circle-nodes"></i> Ý Nghĩa Tiên Lượng Độc Lập Của Albumin Niệu</div>
+                <p style="margin: 0;">
+                    Nhiều thầy thuốc lâm sàng có xu hướng chỉ chú trọng vào chỉ số Creatinine/eGFR mà bỏ quên xét nghiệm Albumin niệu. Dữ liệu dịch tễ từ <em>Consortium CKD Prognosis</em> chứng minh rằng ở cùng một mức eGFR (ví dụ G2 hoặc G3a), một bệnh nhân có <strong>Albumin niệu mức A3 (> 300 mg/g) có nguy cơ tử vong do tim mạch và nguy cơ suy thận giai đoạn cuối cao gấp 4 đến 6 lần</strong> so với bệnh nhân có mức A1 (< 30 mg/g).
+                </p>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 3: GÁNH NẶNG DỊCH TỄ TOÀN CẦU & PHÂN BỐ NHÂN KHẨU HỌC -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-earth-americas"></i> 3. Gánh Nặng Dịch Tễ Toàn Cầu &amp; Phân Bố Nhân Khẩu Học</h2>
+            
+            <p class="section-text">
+                Theo báo cáo Gánh nặng Bệnh tật Toàn cầu (Global Burden of Disease — GBD) và Tổ chức Y tế Thế giới (WHO), tỷ lệ hiện mắc CKD toàn cầu trung bình cho cả 5 giai đoạn ước tính là <strong>13,4%</strong> (trong đó giai đoạn 3–5 chiếm 10,6%):
+            </p>
+
+            <div class="bento-grid-2">
+                <div class="bento-card" style="border-top: 4px solid #0284c7;">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #0284c7;"><i class="fa-solid fa-users-rays"></i> Tỷ Lệ Hiện Mắc Tăng Bùng Nổ Theo Độ Tuổi</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.55;">
+                        Tỷ lệ mắc CKD tăng theo cấp số nhân cùng với quá trình già hóa dân số và xơ cứng tiểu động mạch đến của cầu thận:
+                    </p>
+                    <ul style="font-size: 0.85rem; padding-left: 1.2rem; margin: 0; line-height: 1.6;">
+                        <li>Độ tuổi 30 – 40 tuổi: <strong>12,0% – 13,7%</strong></li>
+                        <li>Độ tuổi 50 – 59 tuổi: <strong>16,0%</strong></li>
+                        <li>Độ tuổi 60 – 69 tuổi: <strong>27,6%</strong></li>
+                        <li>Người cao tuổi &gt; 70 tuổi: <strong>34,3% (1/3 dân số cao tuổi)</strong></li>
+                    </ul>
+                </div>
+
+                <div class="bento-card" style="border-top: 4px solid #8b5cf6;">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #7c3aed;"><i class="fa-solid fa-venus-mars"></i> Nghịch Lý Giới Tính (Gender Discrepancy Paradox)</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.55;">
+                        Một trong những hiện tượng dịch tễ học thú vị nhất của CKD là sự chênh lệch đối lập giữa tỷ lệ mắc và tốc độ tử vong:
+                    </p>
+                    <ul style="font-size: 0.85rem; padding-left: 1.2rem; margin: 0; line-height: 1.6;">
+                        <li><strong>Nữ giới mắc bệnh nhiều hơn:</strong> Tỷ lệ hiện mắc toàn cầu ở nữ là <strong>14,6%</strong> so với nam giới là <strong>12,8%</strong>.</li>
+                        <li><strong>Nam giới tử vong cao hơn &amp; suy thận nhanh hơn:</strong> Nam giới chiếm ưu thế tuyệt đối trong các trung tâm lọc máu chu kỳ và có tốc độ suy giảm eGFR nhanh hơn (vai trò bảo vệ thận của Estrogen ở phụ nữ tiền mãn kinh).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-arrow-trend-up"></i> Xu Hướng Biến Động Tử Vong (1990 – 2040)</h3>
+            <div class="danger-box">
+                <div class="callout-title"><i class="fa-solid fa-triangle-exclamation"></i> Tốc Độ Gia Tăng Tử Vong Đáng Báo Động Của Bệnh Thận Mạn</div>
+                <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+                    <li>Số ca tử vong do CKD đã <strong>tăng hơn gấp đôi</strong>: từ 0,6 triệu ca (năm 1990) lên <strong>1,43 triệu ca (năm 2019)</strong>.</li>
+                    <li>Trong khi tử vong do các bệnh truyền nhiễm và tim mạch lớn có xu hướng giảm nhờ thuốc statin và can thiệp mạch vành, thì <strong>tử vong do CKD vẫn tăng liên tục 41,5% trong giai đoạn 1990–2017</strong>.</li>
+                    <li>Đến năm 2040, bệnh thận mạn được dự báo sẽ vươn lên thành <strong>nguyên nhân thứ 5 gây mất số năm sống tiềm tàng (Years of Life Lost — YLLs) trên toàn cầu</strong>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 4: CHUỖI ĐỘNG HỌC TIẾN TRIỂN CHỨC NĂNG (PROGRESSION CASCADE STUDIO) -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line-down"></i> 4. Chuỗi Động Học Tiến Triển Chức Năng (Progression Cascade Studio)</h2>
+
+            <p class="section-text">
+                Tiến triển tự nhiên của bệnh thận mạn không phải là một chu kỳ lây nhiễm mà là một <strong>chuỗi thoái hóa nephron liên hoàn (Progression Cascade)</strong>: từ <em>tăng lọc &amp; tổn thương sớm (G1–G2)</em> &rarr; <em>suy giảm chức năng trung bình kèm biến chứng chuyển hóa (G3a–G3b)</em> &rarr; <em>khủng hoảng suy thận nặng tiền thay thế (G4)</em> &rarr; <em>hội chứng urê huyết cao &amp; thay thế thận (G5/ESKD)</em>:
+            </p>
+
+            <!-- PROGRESSION CASCADE STUDIO -->
+            <div class="progression-studio">
+                <div class="progression-studio-header">
+                    <h3 class="progression-studio-title">
+                        <i class="fa-solid fa-diagram-next" style="color: var(--color-primary, #0284c7);"></i> CHUỖI TIẾN TRIỂN THOÁI HÓA CHỨC NĂNG THẬN (KDIGO G1 &rarr; G5 ESKD)
+                    </h3>
+                    <div class="progression-legend">
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #10b981;"></span> G1–G2 Sớm
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #3b82f6;"></span> G3 Trung Bình
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #f59e0b;"></span> G4 Nặng
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #ef4444;"></span> G5 ESKD
+                        </span>
+                        <span class="legend-item" style="color: #0284c7; font-weight: 700;">
+                            KDIGO 2024 • KFRE Risk
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Horizontal Scroll Track -->
+                <div class="cascade-track-scroll">
+                    <div class="cascade-grid-4">
+
+                        <!-- STAGE 1: G1 - G2 SỚM -->
+                        <div class="cascade-stage-node stage-green visible" data-phase="1">
+                            <div class="cascade-marker">G1-2</div>
+                            <div class="cascade-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #10b981; text-transform: uppercase;">Giai Đoạn 1</div>
+                                        <h4 class="phase-title">Tổn Thương Sớm</h4>
+                                    </div>
+                                    <span class="phase-tag" style="background: rgba(16, 185, 129, 0.12); color: #047857;">CỬA SỔ VÀNG BẢO VỆ</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-dna"></i> Tăng lọc cầu thận &amp; Albumin niệu vi thể
+                                </div>
+
+                                <!-- Sparkline 1 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,26 Q 100,24 190,20" fill="none" stroke="#10b981" stroke-width="2.5"/>
+                                        <path d="M 10,38 Q 100,38 190,36" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                        <text x="12" y="14" font-size="8" font-weight="700" fill="#10b981">eGFR &ge; 60 mL/phút</text>
+                                        <text x="125" y="32" font-size="8" font-weight="700" fill="#10b981">UACR &ge; 30 mg/g</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Mức Lọc eGFR</span>
+                                        <span class="diag-pill-val" style="color: #059669;">&ge; 60 – 90+ mL/phút</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Albumin Niệu</span>
+                                        <span class="diag-pill-val">A2 hoặc A3 (&ge; 30 mg/g)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Lâm Sàng</span>
+                                        <span class="diag-pill-val" style="color: #10b981;">Hoàn toàn không triệu chứng</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Tốc Độ Tụt Dốc</span>
+                                        <span class="diag-pill-val">&lt; 1 mL/phút/năm (Sinh lý)</span>
+                                    </div>
+                                </div>
+
+                                <div class="intervention-window">
+                                    <i class="fa-solid fa-bullseye" style="margin-top: 2px;"></i>
+                                    <div><strong>Phác Đồ Bảo Vệ Thận Sớm:</strong> Ức chế SGLT2 (Dapagliflozin / Empagliflozin), ACEi/ARB liều tối đa, non-steroidal MRA (Finerenone) trên ĐTĐ T2.</div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Hiện tượng tăng áp lực nội cầu thận (Glomerular Hyperfiltration).</li>
+                                    <li>Chức năng nội tiết bài tiết Erythropoietin và chuyển hóa Vitamin D còn hoàn toàn bảo tồn.</li>
+                                    <li>Sàng lọc bắt buộc hàng năm ở bệnh nhân ĐTĐ và Tăng huyết áp.</li>
+                                </ul>
+
+                                <div class="survival-box" style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2);">
+                                    <div style="font-size: 0.72rem; font-weight: 700; color: #047857; text-transform: uppercase;">Kỳ Vọng Sống</div>
+                                    <div style="font-size: 1.25rem; font-weight: 900; color: #047857;">TƯƠNG ĐƯƠNG DÂN SỐ CHUNG</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STAGE 2: G3A - G3B TRUNG BÌNH -->
+                        <div class="cascade-stage-node stage-blue visible" data-phase="2">
+                            <div class="cascade-marker">G3a-b</div>
+                            <div class="cascade-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase;">Giai Đoạn 2</div>
+                                        <h4 class="phase-title">Suy Thận Trung Bình</h4>
+                                    </div>
+                                    <span class="phase-tag tag-comp">RỐI LOẠN CKD-MBD</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-heart-pulse"></i> Tăng vọt biến cố Tim Mạch (MACE)
+                                </div>
+
+                                <!-- Sparkline 2 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,22 Q 100,16 190,12" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                                        <path d="M 10,34 Q 100,28 190,22" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <text x="12" y="14" font-size="8" font-weight="700" fill="#0284c7">eGFR 30 – 59 mL/phút</text>
+                                        <text x="125" y="32" font-size="8" font-weight="700" fill="#f59e0b">MACE tăng gấp 2–4x</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Mức Lọc eGFR</span>
+                                        <span class="diag-pill-val" style="color: #0284c7;">30 – 59 mL/phút</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Biến Chứng Sớm</span>
+                                        <span class="diag-pill-val" style="color: #f59e0b;">Thiếu máu &amp; Tăng PTH</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Tỷ Lệ Mắc Toàn Cầu</span>
+                                        <span class="diag-pill-val">7,6% dân số (GĐ 3)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Tốc Độ Tụt Dốc</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">&gt; 3–5 mL/phút/năm (Nặng)</span>
+                                    </div>
+                                </div>
+
+                                <div class="intervention-window">
+                                    <i class="fa-solid fa-capsules" style="margin-top: 2px;"></i>
+                                    <div><strong>Quản Lý Đa Yếu Tố:</strong> Điều chỉnh liều thuốc theo eGFR, kiểm soát toan chuyển hóa (Bicarbonate natri), hạn chế muối &lt; 2g Na/ngày, bổ sung Erythropoietin (ESA) khi Hb &lt; 10 g/dL.</div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Bắt đầu rối loạn chuyển hóa xương - khoáng chất (CKD-MBD: Tăng Phosphat, Giảm Canxi, Cường cận giáp thứ phát).</li>
+                                    <li>Nguy cơ tử vong do biến cố tim mạch cao hơn nguy cơ tiến triển thành suy thận giai đoạn cuối.</li>
+                                    <li>Theo dõi xét nghiệm eGFR và UACR tối thiểu 2–3 lần/năm.</li>
+                                </ul>
+
+                                <div class="survival-box survival-comp">
+                                    <div style="font-size: 0.72rem; font-weight: 700; color: #0369a1; text-transform: uppercase;">Tiên Lượng 10 Năm</div>
+                                    <div style="font-size: 1.25rem; font-weight: 900; color: #0369a1;">SỐNG CÒN 70% – 85%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STAGE 3: G4 NẶNG (TIỀN THAY THẾ) -->
+                        <div class="cascade-stage-node stage-amber visible" data-phase="3">
+                            <div class="cascade-marker">G4</div>
+                            <div class="cascade-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #f59e0b; text-transform: uppercase;">Giai Đoạn 3</div>
+                                        <h4 class="phase-title">Suy Thận Nặng (G4)</h4>
+                                    </div>
+                                    <span class="phase-tag tag-decomp">TIỀN THAY THẾ</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> KFRE Risk &gt; 20% trong 2 năm
+                                </div>
+
+                                <!-- Sparkline 3 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,18 Q 60,12 120,10 T 190,6" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+                                        <path d="M 10,30 Q 60,24 120,16 T 190,10" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <text x="12" y="12" font-size="8" font-weight="700" fill="#f59e0b">eGFR 15 – 29 mL/phút</text>
+                                        <text x="110" y="32" font-size="8" font-weight="800" fill="#ef4444">Tử vong tim mạch ↑↑</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Mức Lọc eGFR</span>
+                                        <span class="diag-pill-val" style="color: #f59e0b;">15 – 29 mL/phút</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Nguy Cơ Lọc Máu (KFRE)</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">&gt; 20% / 2 năm • &gt; 50% / 5 năm</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Rối Loạn Điện Giải</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">Tăng Kali, Toan máu</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Chuẩn Bị Đường Vào</span>
+                                        <span class="diag-pill-val">Tạo cầu tay AVF / AVG</span>
+                                    </div>
+                                </div>
+
+                                <div class="intervention-window">
+                                    <i class="fa-solid fa-hospital" style="margin-top: 2px;"></i>
+                                    <div><strong>Chuẩn Bị Điều Trị Thay Thế Thận:</strong> Khám chuyên khoa Thận định kỳ 1–2 tháng/lần, giáo dục tiền lọc máu, phẫu thuật tạo thông động - tĩnh mạch (AVF) trước 6 tháng hoặc đặt ống Catheter lọc màng bụng (PD).</div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Thiếu máu nặng nề trơ với sắt uống do suy giảm tổng hợp EPO tủy thận.</li>
+                                    <li>Hạn chế Kali trong chế độ ăn, sử dụng thuốc gắn kali ruột (Patiromer / Sodium Zirconium Cyclosilicate).</li>
+                                    <li>Tránh tuyệt đối các thuốc độc thận và các thủ thuật tiêm thuốc cản quang tĩnh mạch không cần thiết.</li>
+                                </ul>
+
+                                <div class="survival-box survival-decomp">
+                                    <div style="font-size: 0.72rem; font-weight: 700; color: #b45309; text-transform: uppercase;">Thời Gian Đến Lọc Máu</div>
+                                    <div style="font-size: 1.25rem; font-weight: 900; color: #b45309;">1 – 3 NĂM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STAGE 4: G5 ESKD (THAY THẾ THẬN) -->
+                        <div class="cascade-stage-node stage-red visible" data-phase="4">
+                            <div class="cascade-marker">G5</div>
+                            <div class="cascade-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #ef4444; text-transform: uppercase;">Giai Đoạn 4</div>
+                                        <h4 class="phase-title">GĐ Cuối (ESKD)</h4>
+                                    </div>
+                                    <span class="phase-tag tag-aclf">THAY THẾ THẬN (RRT)</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-skull-crossbones"></i> Hội chứng Urê huyết cao &amp; Suy đa tạng
+                                </div>
+
+                                <!-- Sparkline 4 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,12 L 80,6 L 190,4" fill="none" stroke="#ef4444" stroke-width="3"/>
+                                        <path d="M 10,24 L 70,14 L 190,8" fill="none" stroke="#7f1d1d" stroke-width="2" stroke-dasharray="2 2"/>
+                                        <text x="12" y="10" font-size="8" font-weight="900" fill="#ef4444">eGFR &lt; 15 mL/phút</text>
+                                        <text x="100" y="32" font-size="8" font-weight="900" fill="#ef4444">Tử vong 5 năm: 40-50% (HD)</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Mức Lọc eGFR</span>
+                                        <span class="diag-pill-val" style="color: #dc2626;">&lt; 15 mL/phút (G5)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Chỉ Định RRT</span>
+                                        <span class="diag-pill-val" style="color: #dc2626;">Urê huyết, Phù phổi, K+ &gt; 6.5</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">3 Phương Pháp RRT</span>
+                                        <span class="diag-pill-val">HD (Chạy thận) • PD • Ghép Thận</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Lựa Chọn Tối Ưu</span>
+                                        <span class="diag-pill-val" style="color: #10b981;">Ghép Thận (Sống lâu nhất)</span>
+                                    </div>
+                                </div>
+
+                                <div class="intervention-window" style="background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.4); color: #b91c1c;">
+                                    <i class="fa-solid fa-heart-pulse" style="margin-top: 2px;"></i>
+                                    <div><strong>Liệu Pháp Thay Thế Thận (RRT):</strong> Thận nhân tạo chu kỳ (3 lần/tuần), Lọc màng bụng liên tục ngoại trú (CAPD), hoặc Ghép thận từ người hiến sống / người hiến chết não.</div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Hội chứng Urê huyết cao đe dọa tính mạng: Viêm màng ngoài tim do urê huyết, bệnh não urê huyết, xuất huyết tiêu hóa.</li>
+                                    <li>Tăng gánh thể tích tuần hoàn kháng trị với lợi tiểu quai dẫn đến phù phổi cấp.</li>
+                                    <li>Tử vong chủ yếu do ngừng tim đột ngột (tăng Kali / loạn nhịp tim) và xơ vữa vôi hóa mạch máu lan tỏa.</li>
+                                </ul>
+
+                                <div class="survival-box survival-aclf">
+                                    <div style="font-size: 0.72rem; font-weight: 700; color: #dc2626; text-transform: uppercase;">Sống Còn 5 Năm Sau Lọc Máu</div>
+                                    <div style="font-size: 1.25rem; font-weight: 900; color: #dc2626;">40% – 50% (HD) • &gt; 85% (GHÉP)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TRANSITION DYNAMICS BANNER -->
+                <div class="transition-banner">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(2, 132, 199, 0.15); color: #0284c7; font-size: 1.1rem;">
+                            <i class="fa-solid fa-arrows-spin"></i>
+                        </span>
+                        <div>
+                            <strong style="color: #0284c7; font-size: 0.92rem;">
+                                Quy Luật Động Học Suy Giảm eGFR &amp; Điểm Rơi Biến Cố:
+                            </strong>
+                            <p style="margin: 0.2rem 0 0 0; font-size: 0.83rem; line-height: 1.5; color: var(--color-text, #334155);">
+                                Tốc độ suy giảm eGFR sinh lý sau 40 tuổi là <strong>0,8 – 1,0 mL/phút/1.73m²/năm</strong>. Tuy nhiên, ở bệnh nhân ĐTĐ hoặc THA không kiểm soát kèm Protein niệu nặng (A3), tốc độ tụt dốc eGFR có thể lên tới <strong>&gt; 5 – 10 mL/phút/năm (Rapid Progressor)</strong>. Ứng dụng sớm phác đồ 4 trụ cột (SGLT2i + nsMRA + ACEi/ARB + Kiểm soát HA/HbA1c) có thể làm giảm tốc độ suy giảm eGFR tới <strong>30% – 50%</strong>, giúp kéo dài thời gian trì hoãn chạy thận nhân tạo thêm <strong>3 – 7 năm</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 5: DỊCH TỄ HỌC BỆNH THẬN MẠN TẠI VIỆT NAM -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> 5. Dịch Tễ Học Bệnh Thận Mạn Tại Việt Nam</h2>
+
+            <p class="section-text">
+                Tại Việt Nam, các nghiên cứu dịch tễ học cộng đồng và dữ liệu từ Hội Lọc Máu / Hội Thận Học Việt Nam (VNS) cho thấy gánh nặng bệnh lý đang gia tăng với tốc độ chóng mặt do sự bùng nổ của đái tháo đường typ 2 và tăng huyết áp:
+            </p>
+
+            <div class="bento-grid-2">
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #0284c7;"><i class="fa-solid fa-chart-pie"></i> Tỷ Lệ Hiện Mắc Trong Cộng Đồng</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.55;">
+                        Tỷ lệ hiện mắc CKD trong cộng đồng dân cư trưởng thành tại Việt Nam dao động từ <strong>3,3% đến 13,1%</strong> (ước tính có khoảng <strong>8 đến 10 triệu người Việt Nam</strong> đang sống chung với các giai đoạn khác nhau của bệnh thận mạn).
+                    </p>
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #0284c7; background: rgba(2, 132, 199, 0.1); padding: 0.2rem 0.5rem; border-radius: 6px;">Ước tính: ~10% Dân Số Trưởng Thành</span>
+                </div>
+
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #ef4444;"><i class="fa-solid fa-hospital-user"></i> Gánh Nặng Trên Nhóm Đái Tháo Đường &amp; THA</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; line-height: 1.55;">
+                        Ở bệnh nhân ĐTĐ típ 2 tại Việt Nam, tỷ lệ hiện mắc CKD lên tới <strong>23,8% – 41,7%</strong> với tỷ suất mắc mới là <strong>53,2 ca / 1.000 người-năm</strong>. Tỷ lệ mắc CKD ở người có tăng huyết áp là <strong>18,1%</strong>.
+                    </p>
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #ef4444; background: rgba(239, 68, 68, 0.1); padding: 0.2rem 0.5rem; border-radius: 6px;">ĐTĐ T2: 23,8%–41,7% • THA: 18,1%</span>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-procedures"></i> Tình Hình Điều Trị Thay Thế Thận (RRT) Tại Việt Nam</h3>
+            <div class="info-box">
+                <div class="callout-title"><i class="fa-solid fa-notes-medical"></i> Áp Lực Quá Tải Lên Hệ Thống Thận Nhân Tạo Quốc Gia</div>
+                <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+                    <li>Hiện có hơn <strong>30.000 đến 35.000 bệnh nhân</strong> đang phải duy trì lọc máu chu kỳ tại hơn 400 trung tâm thận nhân tạo trên toàn quốc.</li>
+                    <li>Chi phí chi trả cho lọc máu và các thuốc hỗ trợ (EPO, sắt, thuốc hạ áp) chiếm tới <strong>&gt; 5% – 7% tổng quỹ chi trả Bảo hiểm Y tế (BHYT)</strong> của cả nước, tạo nên gánh nặng tài chính khổng lồ.</li>
+                    <li>Tỷ lệ bệnh nhân được ghép thận còn rất thấp (&lt; 1.000 ca/năm) do sự khan hiếm nguồn tạng hiến từ người chết não.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 6: PHÂN TÍCH KHOẢNG TRỐNG DỊCH TỄ & TRANH CÃI LÂM SÀNG (GAP ANALYSIS) -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-magnifying-glass-chart"></i> 6. Phân Tích Khoảng Trống Dịch Tễ &amp; Tranh Cãi Lâm Sàng (Gap Analysis)</h2>
+
+            <p class="section-text">
+                Tổng hợp bằng chứng y văn quốc tế và thực tế tại các quốc gia thu nhập thấp - trung bình (LMICs) chỉ ra 3 khoảng trống lớn trong chẩn đoán và quản lý dịch tễ học bệnh thận mạn:
+            </p>
+
+            <div class="reaction-box">
+                <div class="callout-title"><i class="fa-solid fa-circle-question"></i> 1. Mâu Thuẫn Chẩn Đoán Quá Mức (Overdiagnosis) vs Bỏ Sót (Underdiagnosis)</div>
+                <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+                    <li><strong>Sai số do 1 lần xét nghiệm đơn lẻ:</strong> Hầu hết các nghiên cứu dịch tễ học dựa trên một lần đo Creatinine/eGFR duy nhất. Nghiên cứu tại Đan Mạch chứng minh rằng việc tuân thủ đo lặp lại sau 3 tháng làm <strong>giảm tới 44,3% số ca chẩn đoán nhầm CKD</strong> (do loại trừ các đợt AKI thoáng qua hoặc sai số phòng lab).</li>
+                    <li><strong>Tranh cãi về ngưỡng eGFR ở người cao tuổi:</strong> eGFR suy giảm sinh lý theo tuổi khiến nhiều người cao tuổi có eGFR 45–59 mL/phút không có Albumin niệu (G3aA1) bị gán nhãn bệnh lý. Tuy nhiên, <strong>KDIGO 2024 đã chính thức khẳng định ngưỡng eGFR &lt; 60 vẫn giữ nguyên giá trị tiên lượng tử vong tim mạch cho mọi độ tuổi</strong> và bác bỏ đề xuất dùng ngưỡng theo tuổi.</li>
+                </ul>
+            </div>
+
+            <div class="reaction-box" style="background: rgba(2, 132, 199, 0.08); border-color: rgba(2, 132, 199, 0.3);">
+                <div class="callout-title" style="color: #0284c7;"><i class="fa-solid fa-flask"></i> 2. Khoảng Trống Xét Nghiệm Albumin Niệu &amp; Chuẩn Hóa Phương Pháp</div>
+                <ul style="margin: 0.5rem 0 0 1.25rem; padding: 0;">
+                    <li><strong>Bỏ sót Albumin niệu nghiêm trọng:</strong> Tại tuyến y tế cơ sở, tỷ lệ bệnh nhân ĐTĐ và THA được chỉ định xét nghiệm UACR định kỳ chỉ đạt <strong>&lt; 15% – 20%</strong> (đa số chỉ dùng que nhúng nước tiểu Dipstick vốn chỉ phát hiện Protein niệu đại thể A3).</li>
+                    <li><strong>Chuẩn hóa công thức eGFR:</strong> KDIGO 2024 khuyến cáo sử dụng <strong>công thức CKD-EPI 2021 không điều chỉnh theo chủng tộc</strong> (refit without race) để tránh phân biệt đối xử và chuẩn hóa đo Creatinine theo phương pháp IDMS enzym.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 7: HỘI CHỨNG TIM - THẬN - CHUYỂN HÓA (CKM SYNDROME) -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-heart-pulse"></i> 7. Hội Chứng Tim - Thận - Chuyển Hóa (Cardiovascular-Kidney-Metabolic — CKM)</h2>
+
+            <p class="section-text">
+                Năm 2023, Hiệp hội Tim mạch Hoa Kỳ (AHA) đã chính thức công bố khái niệm <strong>Hội chứng Tim - Thận - Chuyển hóa (CKM Syndrome)</strong>, khẳng định mối liên kết đa cơ quan không thể tách rời giữa béo phì, đái tháo đường, bệnh thận mạn và suy tim:
+            </p>
+
+            <div class="bento-grid-2">
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #dc2626;"><i class="fa-solid fa-heart-crack"></i> 4 Giai Đoạn CKM (AHA 2023)</h3>
+                    <ul style="font-size: 0.85rem; padding-left: 1.2rem; margin: 0; line-height: 1.6;">
+                        <li><strong>Giai đoạn 0:</strong> Không có yếu tố nguy cơ tim-thận-chuyển hóa.</li>
+                        <li><strong>Giai đoạn 1:</strong> Béo phì bụng, tiền đái tháo đường hoặc rối loạn dung nạp glucose.</li>
+                        <li><strong>Giai đoạn 2:</strong> ĐTĐ típ 2, Tăng huyết áp, Rối loạn lipid máu, hoặc <strong>CKD giai đoạn G3–G5 / A2–A3</strong>.</li>
+                        <li><strong>Giai đoạn 3:</strong> Bệnh tim mạch cận lâm sàng ở người có CKD hoặc ĐTĐ (Tăng Troponin, BNP cao, dày thất trái).</li>
+                        <li><strong>Giai đoạn 4:</strong> Bệnh tim mạch lâm sàng (Suy tim HFrEF/HFpEF, Hội chứng vành cấp, Đột quỵ, ESKD).</li>
+                    </ul>
+                </div>
+
+                <div class="bento-card">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem; color: #0284c7;"><i class="fa-solid fa-shield-halved"></i> 4 Trụ Cột Điều Trị Bảo Vệ Kép Tim - Thận</h3>
+                    <ul style="font-size: 0.85rem; padding-left: 1.2rem; margin: 0; line-height: 1.6;">
+                        <li><strong>Thuốc ức chế SGLT2 (SGLT2i):</strong> Giảm 30%–40% biến cố suy thận tiến triển và nhập viện vì suy tim.</li>
+                        <li><strong>Thuốc ức chế hệ RAA (ACEi / ARB):</strong> Giảm áp lực lọc cầu thận, giảm protein niệu.</li>
+                        <li><strong>Kháng thụ thể Mineralocorticoid không steroid (nsMRA - Finerenone):</strong> Giảm viêm và xơ hóa cầu thận - mô kẽ.</li>
+                        <li><strong>Đồng vận thụ thể GLP-1 (GLP-1 RA - Semaglutide):</strong> Giảm biến cố tim mạch và bảo vệ thận trên bệnh nhân ĐTĐ T2 (Nghiên cứu FLOW 2024).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRỤ CỘT 8: TÀI LIỆU THAM KHẢO CHUẨN AMA -->
+        <footer id="sec-8" style="margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border, #e2e8f0); color: var(--color-text-muted, #64748b); font-size: 0.875rem; line-height: 1.75;">
+            <h4 style="margin: 0 0 0.75rem 0; color: var(--color-text, #334155); font-size: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fa-solid fa-book-medical"></i> Tài Liệu Tham Khảo Chuẩn AMA:
+            </h4>
+            <ol style="margin: 0; padding-left: 1.25rem;">
+                <li>Kidney Disease: Improving Global Outcomes (KDIGO) CKD Work Group. KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. <em>Kidney Int</em>. 2024;105(4S):S117-S314. doi:10.1016/j.kint.2023.10.018.</li>
+                <li>GBD Chronic Kidney Disease Collaboration. Global, regional, and national burden of chronic kidney disease, 1990-2017: a systematic analysis for the Global Burden of Disease Study 2017. <em>Lancet</em>. 2020;395(10225):709-733. doi:10.1016/S0140-6736(20)30045-3.</li>
+                <li>Ndumele CE, Rangaswami J, Chow SL, et al. Cardiovascular-Kidney-Metabolic Health: A Presidential Advisory From the American Heart Association. <em>Circulation</em>. 2023;148(20):1606-1635. doi:10.1161/CIR.0000000000001184.</li>
+                <li>Perkovic V, Tuttle KR, Rossing P, et al. Effects of Semaglutide on Chronic Kidney Disease in Patients with Type 2 Diabetes (FLOW Trial). <em>N Engl J Med</em>. 2024;391(2):109-121. doi:10.1056/NEJMoa2404447.</li>
+                <li>Hội Lọc Máu Việt Nam &amp; Hội Thận Học Việt Nam. Hướng dẫn chẩn đoán và điều trị bệnh thận mạn giai đoạn chưa lọc máu và lọc máu chu kỳ. <em>Tạp chí Y học Việt Nam</em>. 2023;528(1):45-58.</li>
+                <li>Bikbov B, Purcell CA, Levey AS, et al. Global burden of chronic kidney disease and its risk factors: a systematic analysis for the Global Burden of Disease Study 2019. <em>Lancet Global Health</em>. 2022;10:e140-e152.</li>
+            </ol>
+        </footer>
+
+    </div>
+
+    <!-- Staggered Entrance Animation Script -->
+    <script>
+        const stageNodes = document.querySelectorAll('.cascade-stage-node');
+        if ('IntersectionObserver' in window && stageNodes.length > 0) {
+            const stageObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, idx) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, idx * 120);
+                        stageObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            stageNodes.forEach(node => stageObserver.observe(node));
+        } else {
+            stageNodes.forEach(node => node.classList.add('visible'));
+        }
+    </script>
+</body>
+
+</html>

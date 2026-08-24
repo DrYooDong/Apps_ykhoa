@@ -407,6 +407,277 @@
         [data-theme="dark"] .epi-figure img {
             border-color: var(--color-border, #334155);
         }
+
+        /* ========================================================================= */
+        /* PREMIUM DENGUE TRANSMISSION TIMELINE STUDIO */
+        /* ========================================================================= */
+        .timeline-studio {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 18px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .timeline-studio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .timeline-studio-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0;
+        }
+
+        .timeline-legend {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--color-text-muted, #64748b);
+            background: var(--color-bg, #f8fafc);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .timeline-rail-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 0.25rem 1.5rem 0.25rem;
+        }
+
+        .timeline-rail-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(280px, 1fr));
+            gap: 1.25rem;
+            position: relative;
+            min-width: 900px;
+        }
+
+        .timeline-rail-grid-3::before {
+            content: '';
+            position: absolute;
+            top: 48px;
+            left: 140px;
+            right: 140px;
+            height: 3px;
+            background: linear-gradient(90deg, #ef4444 0%, #8b5cf6 50%, #0d9488 100%);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .phase-node {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .phase-node.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .phase-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--color-surface, #ffffff);
+            border: 3px solid;
+            margin: 0 auto 1rem auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .phase-node:hover .phase-marker {
+            transform: scale(1.15);
+        }
+
+        .phase-card {
+            background: var(--color-surface, #ffffff);
+            border: 1.5px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .phase-red .phase-marker { border-color: #ef4444; color: #ef4444; }
+        .phase-red .phase-card { border-top: 4px solid #ef4444; }
+        .phase-red .phase-card:hover { border-color: #ef4444; }
+
+        .phase-purple .phase-marker { border-color: #8b5cf6; color: #8b5cf6; }
+        .phase-purple .phase-card { border-top: 4px solid #8b5cf6; }
+        .phase-purple .phase-card:hover { border-color: #8b5cf6; }
+
+        .phase-teal .phase-marker { border-color: #0d9488; color: #0d9488; }
+        .phase-teal .phase-card { border-top: 4px solid #0d9488; }
+        .phase-teal .phase-card:hover { border-color: #0d9488; }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .phase-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .phase-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.25rem 0.55rem;
+            border-radius: 999px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .tag-viraemia { background: rgba(239, 68, 68, 0.12); color: #dc2626; }
+        .tag-eip      { background: rgba(139, 92, 246, 0.12); color: #7c3aed; }
+        .tag-iip      { background: rgba(13, 148, 136, 0.12); color: #0f766e; }
+
+        .sparkline-box {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 8px;
+            padding: 0.4rem;
+            margin: 0.2rem 0;
+        }
+
+        .diagnostic-pills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.4rem;
+            margin: 0.25rem 0;
+        }
+
+        .diag-pill {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 6px;
+            padding: 0.35rem 0.45rem;
+            font-size: 0.72rem;
+            line-height: 1.3;
+        }
+
+        .diag-pill-label {
+            color: var(--color-text-muted, #64748b);
+            font-weight: 600;
+            display: block;
+            font-size: 0.68rem;
+        }
+
+        .diag-pill-val {
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--color-text, #0f172a);
+        }
+
+        .phase-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--color-text, #334155);
+        }
+
+        .phase-bullets li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .phase-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-text-muted, #64748b);
+            font-weight: bold;
+        }
+
+        .vector-action {
+            margin-top: auto;
+            border-radius: 10px;
+            padding: 0.65rem 0.85rem;
+            font-size: 0.76rem;
+            font-weight: 700;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .action-viraemia { background: rgba(239, 68, 68, 0.08); color: #b91c1c; }
+        .action-eip      { background: rgba(139, 92, 246, 0.08); color: #6d28d9; }
+        .action-iip      { background: rgba(13, 148, 136, 0.08); color: #0f766e; }
+
+        .dengue-loop-banner {
+            margin-top: 1.5rem;
+            background: var(--color-bg, #f8fafc);
+            border: 1.5px dashed #0d9488;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 
@@ -485,20 +756,20 @@
                     </span>
                 </div>
 
-                <div style="width: 100%; max-width: 860px; margin: 0 auto;">
-                    <svg viewBox="0 0 860 520" width="100%" height="auto" style="display: block; font-family: 'Plus Jakarta Sans', sans-serif;">
+                <div style="width: 100%; max-width: 880px; margin: 0 auto;">
+                    <svg viewBox="0 0 880 540" width="100%" height="auto" style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; min-width: 760px;">
                         <defs>
                             <!-- Linear Gradients for Vertex Cards -->
                             <linearGradient id="agentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.12"/>
+                                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.15"/>
                                 <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
                             </linearGradient>
                             <linearGradient id="hostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.12"/>
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15"/>
                                 <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
                             </linearGradient>
                             <linearGradient id="envGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.12"/>
+                                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
                                 <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
                             </linearGradient>
                             
@@ -514,71 +785,78 @@
                             </marker>
                         </defs>
 
-                        <!-- Outer Geometric Triangle Connection Lines -->
-                        <polygon points="430,100 170,410 690,410" fill="none" stroke="var(--color-border, #e2e8f0)" stroke-width="2.5" stroke-dasharray="6 6"/>
+                        <!-- Outer Geometric Triangle Connection Lines (Background only) -->
+                        <polygon points="440,80 165,435 715,435" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.4"/>
                         
-                        <!-- Dynamic Interaction Flow Lines -->
-                        <!-- Path Agent -> Host -->
-                        <path d="M 330,120 Q 210,230 190,340" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowTeal)"/>
-                        <!-- Path Host -> Vector/Env -->
-                        <path d="M 300,435 L 560,435" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowBlue)"/>
-                        <!-- Path Vector/Env -> Agent -->
-                        <path d="M 670,340 Q 650,230 530,120" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowPurple)"/>
+                        <!-- Dynamic Interaction Flow Lines (Outside Card Boundaries) -->
+                        <!-- Path Agent (Top) -> Host (Bottom-Left) -->
+                        <path d="M 340,150 Q 220,240 165,355" fill="none" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowTeal)"/>
+                        
+                        <!-- Path Host (Bottom-Left) -> Vector/Env (Bottom-Right) -->
+                        <path d="M 315,435 L 565,435" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowBlue)"/>
+                        
+                        <!-- Path Vector/Env (Bottom-Right) -> Agent (Top) -->
+                        <path d="M 715,355 Q 660,240 540,150" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowPurple)"/>
 
                         <!-- CENTER HUB: OUTBREAK INTERSECTION -->
-                        <g transform="translate(430, 280)">
+                        <g transform="translate(440, 275)">
                             <!-- Pulse Rings -->
-                            <circle cx="0" cy="0" r="68" fill="none" stroke="rgba(239, 68, 68, 0.15)" stroke-width="6"/>
-                            <circle cx="0" cy="0" r="54" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="2.5"/>
-                            <circle cx="0" cy="0" r="44" fill="var(--color-surface, #ffffff)" stroke="rgba(239, 68, 68, 0.3)" stroke-width="1.5"/>
+                            <circle cx="0" cy="0" r="72" fill="none" stroke="rgba(239, 68, 68, 0.15)" stroke-width="6"/>
+                            <circle cx="0" cy="0" r="58" fill="rgba(239, 68, 68, 0.08)" stroke="#ef4444" stroke-width="2"/>
+                            <circle cx="0" cy="0" r="48" fill="var(--color-surface, #ffffff)" stroke="rgba(239, 68, 68, 0.3)" stroke-width="1"/>
                             
                             <!-- Hub Text -->
-                            <text x="0" y="-14" text-anchor="middle" font-size="11" font-weight="700" fill="#ef4444" letter-spacing="1">GIAO THOA</text>
-                            <text x="0" y="4" text-anchor="middle" font-size="13" font-weight="900" fill="#ef4444">BÙNG PHÁT</text>
+                            <text x="0" y="-16" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ef4444" letter-spacing="1">GIAO THOA</text>
+                            <text x="0" y="3" text-anchor="middle" font-size="13" font-weight="900" fill="#ef4444">BÙNG PHÁT</text>
                             <text x="0" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#ef4444">DỊCH SXHD</text>
-                            <text x="0" y="34" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--color-text-muted, #64748b)">Tác nhân + Vật chủ + Véc-tơ</text>
+                            <text x="0" y="36" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">DENV + Người + Aedes</text>
                         </g>
 
                         <!-- TOP APEX CARD: TÁC NHÂN (AGENT) -->
-                        <g transform="translate(290, 15)">
+                        <g transform="translate(290, 20)">
                             <!-- Card Base -->
-                            <rect x="0" y="0" width="280" height="110" rx="14" fill="url(#agentGrad)" stroke="#0d9488" stroke-width="2"/>
+                            <rect x="0" y="0" width="300" height="130" rx="14" fill="url(#agentGrad)" stroke="#0d9488" stroke-width="1.8"/>
                             <!-- Header Pill -->
-                            <rect x="14" y="-12" width="150" height="26" rx="13" fill="#0d9488"/>
-                            <text x="89" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🧪 TÁC NHÂN (AGENT)</text>
+                            <rect x="14" y="-12" width="160" height="25" rx="12.5" fill="#0d9488"/>
+                            <text x="94" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🧪 TÁC NHÂN (AGENT)</text>
                             <!-- Card Content -->
-                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Vi rút Dengue (DENV 1, 2, 3, 4)</text>
-                            <text x="16" y="52" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Họ Flaviviridae, sợi đơn (+)ssRNA 11kb</text>
-                            <text x="16" y="70" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Kháng nguyên NS1 &amp; 3 protein cấu trúc</text>
-                            <text x="16" y="88" font-size="11" font-weight="700" fill="#ef4444">• Cơ chế ADE: Tăng nặng khi tái nhiễm</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#0f766e">Vi rút Dengue (DENV 1, 2, 3, 4)</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Họ Flaviviridae, sợi đơn (+)ssRNA 11kb</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Kháng nguyên NS1 &amp; 3 protein cấu trúc</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="700" fill="#ef4444">• Cơ chế ADE: Tăng nặng khi tái nhiễm</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Miễn dịch chéo ngắn hạn 2–3 tháng</text>
                         </g>
 
                         <!-- BOTTOM-LEFT APEX CARD: VẬT CHỦ (HOST) -->
-                        <g transform="translate(30, 360)">
+                        <g transform="translate(20, 360)">
                             <!-- Card Base -->
-                            <rect x="0" y="0" width="280" height="115" rx="14" fill="url(#hostGrad)" stroke="#3b82f6" stroke-width="2"/>
+                            <rect x="0" y="0" width="290" height="145" rx="14" fill="url(#hostGrad)" stroke="#3b82f6" stroke-width="1.8"/>
                             <!-- Header Pill -->
-                            <rect x="14" y="-12" width="145" height="26" rx="13" fill="#3b82f6"/>
-                            <text x="86" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">👥 VẬT CHỦ (HOST)</text>
+                            <rect x="14" y="-12" width="155" height="25" rx="12.5" fill="#3b82f6"/>
+                            <text x="91" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">👥 VẬT CHỦ (HOST)</text>
                             <!-- Card Content -->
-                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Con Người &amp; Quần Thể Đích</text>
-                            <text x="16" y="52" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Mọi lứa tuổi chưa có miễn dịch đặc hiệu</text>
-                            <text x="16" y="70" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Dịch chuyển: Tăng cao ở người lớn 20-50t</text>
-                            <text x="16" y="88" font-size="11" font-weight="700" fill="#f59e0b">• Nguy cơ cao: Nhũ nhi, Thai phụ, Bệnh nền</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#1d4ed8">Con Người &amp; Quần Thể Đích</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Mọi lứa tuổi chưa có miễn dịch đặc hiệu</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Dịch chuyển: Tăng cao ở người lớn 20-50t</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="700" fill="#f59e0b">• Nguy cơ cao: Nhũ nhi, Thai phụ, Bệnh nền</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Đáp ứng bão cytokine &amp; thoát huyết tương</text>
+                            <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Kháng thể trung hòa bền vững suốt đời</text>
                         </g>
 
                         <!-- BOTTOM-RIGHT APEX CARD: MÔI TRƯỜNG & VÉC-TƠ (ENVIRONMENT / VECTOR) -->
-                        <g transform="translate(550, 360)">
+                        <g transform="translate(570, 360)">
                             <!-- Card Base -->
-                            <rect x="0" y="0" width="280" height="115" rx="14" fill="url(#envGrad)" stroke="#8b5cf6" stroke-width="2"/>
+                            <rect x="0" y="0" width="290" height="145" rx="14" fill="url(#envGrad)" stroke="#8b5cf6" stroke-width="1.8"/>
                             <!-- Header Pill -->
-                            <rect x="14" y="-12" width="185" height="26" rx="13" fill="#8b5cf6"/>
+                            <rect x="14" y="-12" width="185" height="25" rx="12.5" fill="#8b5cf6"/>
                             <text x="106" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🦟 MÔI TRƯỜNG &amp; VÉC-TƠ</text>
                             <!-- Card Content -->
-                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Muỗi Aedes &amp; Hệ Sinh Thái</text>
-                            <text x="16" y="52" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Aedes aegypti (chủ yếu) &amp; Ae. albopictus</text>
-                            <text x="16" y="70" font-size="11.5" font-weight="600" fill="var(--color-text, #334155)">• Khí hậu: 16-30°C, độ ẩm 60-80%, mùa mưa</text>
-                            <text x="16" y="88" font-size="11" font-weight="700" fill="#8b5cf6">• Đô thị hóa, lu vại đọng nước, El Niño</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#6d28d9">Muỗi Aedes &amp; Hệ Sinh Thái</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Aedes aegypti (chủ yếu) &amp; Ae. albopictus</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Khí hậu: 16-30°C, độ ẩm 60-80%, mùa mưa</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="700" fill="#8b5cf6">• Đô thị hóa, lu vại đọng nước, El Niño</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• EIP muỗi: 8–12 ngày (nhanh hơn khi nóng)</text>
+                            <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Lây truyền dọc qua trứng muỗi</text>
                         </g>
                     </svg>
                 </div>
@@ -694,96 +972,223 @@
                 Chu kỳ lây truyền vi rút Dengue khép kín qua lại giữa người và muỗi tuân theo trục thời gian sinh học nghiêm ngặt:
             </p>
 
-            <!-- SVG CHU KỲ LÂY TRUYỀN PURE INLINE EDITORIAL GRADE -->
-            <div style="background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #e2e8f0); border-radius: 18px; padding: 1.75rem 1.5rem; margin: 1.75rem 0; box-shadow: 0 8px 24px -4px rgba(0,0,0,0.06);">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border, #e2e8f0);">
-                    <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--color-primary, #0d9488); display: flex; align-items: center; gap: 0.5rem;">
-                        <i class="fa-solid fa-timeline"></i> SƠ ĐỒ ĐỘNG HỌC CHU KỲ LÂY TRUYỀN VÀ CÁC THỜI KỲ Ủ BỆNH DENV
-                    </h4>
-                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted, #64748b); background: var(--color-bg, #f8fafc); padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0);">
-                        Transmission Dynamics &amp; Incubation Periods
-                    </span>
+            <!-- DENGUE TRANSMISSION TIMELINE STUDIO -->
+            <div class="timeline-studio">
+                <div class="timeline-studio-header">
+                    <h3 class="timeline-studio-title">
+                        <i class="fa-solid fa-arrows-spin" style="color: var(--color-primary, #0d9488);"></i> LƯU ĐỒ ĐỘNG HỌC CHU KỲ LÂY TRUYỀN &amp; THỜI KỲ Ủ BỆNH DENV
+                    </h3>
+                    <div class="timeline-legend">
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #ef4444;"></span> Tải Lượng Vi Rút (Viraemia)
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #0d9488;"></span> Tải Lượng Trong Tuyến Nước Bọt Muỗi
+                        </span>
+                        <span class="legend-item" style="color: #0d9488; font-weight: 700;">
+                            Transmission Dynamics
+                        </span>
+                    </div>
                 </div>
 
-                <div style="width: 100%; max-width: 860px; margin: 0 auto;">
-                    <svg viewBox="0 0 860 380" width="100%" height="auto" style="display: block; font-family: 'Plus Jakarta Sans', sans-serif;">
-                        <defs>
-                            <linearGradient id="step1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#ef4444" stop-opacity="0.12"/>
-                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
-                            </linearGradient>
-                            <linearGradient id="step2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.12"/>
-                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
-                            </linearGradient>
-                            <linearGradient id="step3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.12"/>
-                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
-                            </linearGradient>
-                        </defs>
+                <!-- Horizontal Scroll Rail -->
+                <div class="timeline-rail-scroll">
+                    <div class="timeline-rail-grid-3">
 
-                        <!-- STEP 1 CARD: NGƯỜI BỆNH NHIỄM VI RÚT HUYẾT -->
-                        <g transform="translate(30, 40)">
-                            <rect x="0" y="0" width="250" height="135" rx="14" fill="url(#step1Grad)" stroke="#ef4444" stroke-width="2"/>
-                            <!-- Step Badge -->
-                            <rect x="14" y="-12" width="155" height="26" rx="13" fill="#ef4444"/>
-                            <text x="91" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">BƯỚC 1: VIRAEMIA</text>
-                            
-                            <!-- Text Details -->
-                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Nhiễm Vi Rút Huyết</text>
-                            <text x="16" y="52" font-size="11.5" font-weight="700" fill="#ef4444">⏱ -2 ngày đến +5-7 ngày sốt</text>
-                            <text x="16" y="72" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Tải lượng vi rút trong máu cao</text>
-                            <text x="16" y="90" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Muỗi đốt hút máu bị lây nhiễm</text>
-                            <text x="16" y="108" font-size="10.5" font-weight="600" fill="var(--color-text-muted, #64748b)">• Thời kỳ lây duy nhất cho véc-tơ</text>
-                        </g>
+                        <!-- NODE 1: VIRAEMIA Ở NGƯỜI -->
+                        <div class="phase-node phase-red visible" data-phase="1">
+                            <div class="phase-marker">1</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #ef4444; text-transform: uppercase;">Bước 1</div>
+                                        <h4 class="phase-title">Nhiễm Vi Rút Huyết</h4>
+                                    </div>
+                                    <span class="phase-tag tag-viraemia">NGUỒN LÂY</span>
+                                </div>
 
-                        <!-- CONNECTOR 1 -> 2 (Muỗi hút máu) -->
-                        <g transform="translate(280, 85)">
-                            <path d="M 10,22 L 80,22" fill="none" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrowTeal)"/>
-                            <rect x="12" y="2" width="70" height="18" rx="4" fill="var(--color-surface, #ffffff)" stroke="#e2e8f0" stroke-width="1"/>
-                            <text x="47" y="15" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0d9488">Muỗi đốt</text>
-                        </g>
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-person-dots-from-line"></i> -2 ngày đến +5-7 ngày sốt
+                                </div>
 
-                        <!-- STEP 2 CARD: Ủ BỆNH NGOẠI LAI (EIP) TRONG MUỖI -->
-                        <g transform="translate(370, 40)">
-                            <rect x="0" y="0" width="250" height="135" rx="14" fill="url(#step2Grad)" stroke="#8b5cf6" stroke-width="2"/>
-                            <!-- Step Badge -->
-                            <rect x="14" y="-12" width="165" height="26" rx="13" fill="#8b5cf6"/>
-                            <text x="96" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">BƯỚC 2: Ủ BỆNH EIP</text>
-                            
-                            <!-- Text Details -->
-                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Ủ Bệnh Ngoại Lai (Muỗi)</text>
-                            <text x="16" y="52" font-size="11.5" font-weight="700" fill="#8b5cf6">⏱ Kéo dài 8 – 12 ngày</text>
-                            <text x="16" y="72" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Vi rút nhân lên ở ruột giữa muỗi</text>
-                            <text x="16" y="90" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Xâm nhập tuyến nước bọt muỗi</text>
-                            <text x="16" y="108" font-size="10.5" font-weight="700" fill="#8b5cf6">• Muỗi truyền bệnh suốt vòng đời</text>
-                        </g>
+                                <!-- Sparkline 1 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,34 Q 60,6 120,8 T 190,32" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+                                        <path d="M 10,36 Q 60,8 100,10 T 190,36" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="3 3"/>
+                                        <text x="12" y="12" font-size="8" font-weight="700" fill="#ef4444">Viraemia Đỉnh Cao</text>
+                                        <text x="120" y="32" font-size="8" font-weight="700" fill="#f59e0b">NS1 Kháng Nguyên (+)</text>
+                                    </svg>
+                                </div>
 
-                        <!-- CONNECTOR 2 -> 3 (Muỗi đốt người lành) -->
-                        <path d="M 620,107 L 730,107 Q 750,107 750,130 L 750,260 Q 750,280 730,280 L 630,280" fill="none" stroke="#8b5cf6" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
-                        <rect x="690" y="180" width="85" height="22" rx="4" fill="var(--color-surface, #ffffff)" stroke="#8b5cf6" stroke-width="1"/>
-                        <text x="732" y="195" text-anchor="middle" font-size="10" font-weight="700" fill="#8b5cf6">Truyền vi rút</text>
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Khả Năng Lây Nhiễm</span>
+                                        <span class="diag-pill-val" style="color: #dc2626;">Cực kỳ cao cho muỗi</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Thời Điểm Bắt Đầu Lây</span>
+                                        <span class="diag-pill-val">24-48h trước sốt</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Xét Nghiệm Sớm</span>
+                                        <span class="diag-pill-val" style="color: #0d9488;">Dengue NS1 Ag (+)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Độ Nhạy Cận Lâm Sàng</span>
+                                        <span class="diag-pill-val">80% – 90% (N1–N3)</span>
+                                    </div>
+                                </div>
 
-                        <!-- STEP 3 CARD: Ủ BỆNH NỘI TẠI (IIP) Ở NGƯỜI LÀNH -->
-                        <g transform="translate(370, 215)">
-                            <rect x="0" y="0" width="250" height="135" rx="14" fill="url(#step3Grad)" stroke="#0d9488" stroke-width="2"/>
-                            <!-- Step Badge -->
-                            <rect x="14" y="-12" width="165" height="26" rx="13" fill="#0d9488"/>
-                            <text x="96" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">BƯỚC 3: Ủ BỆNH IIP</text>
-                            
-                            <!-- Text Details -->
-                            <text x="16" y="32" font-size="12.5" font-weight="800" fill="var(--color-text, #0f172a)">Ủ Bệnh Nội Tại (Người)</text>
-                            <text x="16" y="52" font-size="11.5" font-weight="700" fill="#0d9488">⏱ 3 – 14 ngày (TB 5 – 7 ngày)</text>
-                            <text x="16" y="72" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Vi rút nhân lên trong đại thực bào</text>
-                            <text x="16" y="90" font-size="11" font-weight="600" fill="var(--color-text, #334155)">• Khởi phát sốt cao đột ngột &amp; đau mỏi</text>
-                            <text x="16" y="108" font-size="10.5" font-weight="700" fill="#ef4444">• Trở thành nguồn lây mới (Bước 1)</text>
-                        </g>
+                                <ul class="phase-bullets">
+                                    <li>Tải lượng vi rút trong máu đạt mức đỉnh lúc khởi phát sốt cao đột ngột.</li>
+                                    <li>Muỗi <em>Aedes</em> hút máu người trong giai đoạn này sẽ nhận hạt vi rút DENV.</li>
+                                    <li>Là thời kỳ duy nhất mà người bệnh có thể truyền mầm bệnh cho véc-tơ.</li>
+                                </ul>
 
-                        <!-- CONNECTOR 3 -> 1 (Khép kín chu kỳ hoàn chỉnh) -->
-                        <path d="M 370,280 L 155,280 L 155,185" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arrowTeal)"/>
-                        <rect x="195" y="268" width="145" height="24" rx="6" fill="rgba(239, 68, 68, 0.1)" stroke="#ef4444" stroke-width="1.2"/>
-                        <text x="267" y="284" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ef4444">Chu kỳ lây lan khép kín ↺</text>
-                    </svg>
+                                <div class="vector-action action-viraemia">
+                                    <i class="fa-solid fa-bed"></i> Phòng hộ: Nằm màn cả ban ngày, diệt muỗi phòng lây người cùng nhà.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NODE 2: Ủ BỆNH NGOẠI LAI (EIP) TRONG MUỖI -->
+                        <div class="phase-node phase-purple visible" data-phase="2">
+                            <div class="phase-marker">2</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #8b5cf6; text-transform: uppercase;">Bước 2</div>
+                                        <h4 class="phase-title">Ủ Bệnh EIP (Muỗi)</h4>
+                                    </div>
+                                    <span class="phase-tag tag-eip">TRONG VÉC-TƠ</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-mosquito"></i> Kéo dài 8 – 12 ngày trong cơ thể muỗi
+                                </div>
+
+                                <!-- Sparkline 2 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,34 Q 80,30 140,14 T 190,6" fill="none" stroke="#8b5cf6" stroke-width="2.5"/>
+                                        <text x="12" y="24" font-size="8" font-weight="700" fill="#8b5cf6">Ruột giữa muỗi</text>
+                                        <text x="100" y="10" font-size="8" font-weight="800" fill="#7c3aed">Tuyến nước bọt ↑↑</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Thời Gian EIP</span>
+                                        <span class="diag-pill-val" style="color: #7c3aed;">8 – 12 ngày (ở 28°C)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Ảnh Hưởng Nhiệt Độ</span>
+                                        <span class="diag-pill-val">Nóng ẩm &rarr; Rút ngắn EIP</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Thời Gian Mang Bệnh</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">Suốt vòng đời muỗi</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Tập Tính Đốt Mồi</span>
+                                        <span class="diag-pill-val">Sáng sớm &amp; Chiều tà</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>DENV nhân lên tại tế bào biểu mô ruột giữa muỗi, vượt qua màng đáy vào xoang dịch bạch huyết.</li>
+                                    <li>Xâm nhập và cư trú với mật độ cao tại tuyến nước bọt của muỗi cái.</li>
+                                    <li>Biến đổi khí hậu &amp; nhiệt độ tăng cao làm rút ngắn EIP xuống 5–7 ngày, đẩy nhanh chu kỳ dịch!</li>
+                                </ul>
+
+                                <div class="vector-action action-eip">
+                                    <i class="fa-solid fa-spray-can"></i> Kiểm soát véc-tơ: Diệt bọ gậy/lăng quăng, phun sương ULV diệt muỗi trưởng thành.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NODE 3: Ủ BỆNH NỘI TẠI (IIP) Ở NGƯỜI LÀNH -->
+                        <div class="phase-node phase-teal visible" data-phase="3">
+                            <div class="phase-marker">3</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #0d9488; text-transform: uppercase;">Bước 3</div>
+                                        <h4 class="phase-title">Ủ Bệnh IIP (Người)</h4>
+                                    </div>
+                                    <span class="phase-tag tag-iip">KHỞI PHÁT</span>
+                                </div>
+
+                                <div style="font-size: 0.78rem; font-weight: 600; color: var(--color-text-muted, #64748b);">
+                                    <i class="fa-solid fa-user-clock"></i> 3 – 14 ngày (Trung bình 5 – 7 ngày)
+                                </div>
+
+                                <!-- Sparkline 3 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <path d="M 10,34 Q 90,32 150,14 T 190,6" fill="none" stroke="#0d9488" stroke-width="2.5"/>
+                                        <path d="M 10,36 Q 90,36 150,22 T 190,8" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <text x="12" y="24" font-size="8" font-weight="700" fill="#0d9488">Nhân lên tại DC/Hạch</text>
+                                        <text x="110" y="10" font-size="8" font-weight="900" fill="#ef4444">SỐT CẤP TÍNH ↑</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Thời Gian IIP</span>
+                                        <span class="diag-pill-val" style="color: #0f766e;">4 – 10 ngày</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Tế Bào Đích</span>
+                                        <span class="diag-pill-val">Tế bào Langerhans, DC</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Triệu Chứng Báo Hiệu</span>
+                                        <span class="diag-pill-val" style="color: #dc2626;">Sốt cao đột ngột, đau hốc mắt</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Tái Nhiễm Khác Serotype</span>
+                                        <span class="diag-pill-val" style="color: #dc2626;">Nguy cơ sốc ADE nặng</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Muỗi mang DENV đốt tiêm nước bọt chứa vi rút vào lớp biểu bì da người.</li>
+                                    <li>Vi rút bắt giữ bởi tế bào đuôi gai (DC-SIGN) rồi di chuyển đến hạch bạch huyết vùng.</li>
+                                    <li>Phát tán vào tuần hoàn chung trở thành bệnh nhân có vi rút huyết (quay lại Bước 1).</li>
+                                </ul>
+
+                                <div class="vector-action action-iip">
+                                    <i class="fa-solid fa-kit-medical"></i> Theo dõi: Đếm tiểu cầu, HCT mỗi ngày trong giai đoạn nguy hiểm (Ngày 3–7).
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- DENGUE CLOSED LOOP BANNER -->
+                <div class="dengue-loop-banner">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(13, 148, 136, 0.15); color: #0d9488; font-size: 1.1rem;">
+                            <i class="fa-solid fa-rotate"></i>
+                        </span>
+                        <div>
+                            <strong style="color: #0f766e; font-size: 0.92rem;">
+                                Chu Kỳ Khép Kín &amp; Cơ Chế Tồn Lưu Qua Mùa Khô:
+                            </strong>
+                            <p style="margin: 0.2rem 0 0 0; font-size: 0.83rem; line-height: 1.5; color: var(--color-text, #334155);">
+                                Quá trình lây truyền tạo thành một <strong>vòng lặp liên hoàn Người &harr; Muỗi</strong>. Ngoài đường lây truyền ngang, vi rút Dengue còn duy trì qua <strong>đường truyền dọc qua trứng muỗi (Transovarial transmission)</strong> — giúp trứng muỗi <em>Aedes</em> chịu hạn hàng tháng trời vẫn giữ mầm vi rút sống, nở ra ấu trùng mang sẵn DENV khi mùa mưa tới!
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -910,6 +1315,27 @@
         </footer>
 
     </div>
+
+    <!-- Staggered Entrance Animation Script -->
+    <script>
+        const phaseNodes = document.querySelectorAll('.phase-node');
+        if ('IntersectionObserver' in window && phaseNodes.length > 0) {
+            const phaseObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, idx) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, idx * 120);
+                        phaseObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            phaseNodes.forEach(node => phaseObserver.observe(node));
+        } else {
+            phaseNodes.forEach(node => node.classList.add('visible'));
+        }
+    </script>
 </body>
 
 </html>

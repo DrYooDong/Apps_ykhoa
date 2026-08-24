@@ -59,7 +59,7 @@ updated: "2026-08-21"
 
 ## 🩺 Hô hấp (13 bài)
 
-- [[DTH_Bệnh lao_P1.md|DTH_Bệnh lao_P1]]
+- [[DTH_Bệnh lao|DTH_Bệnh lao_P1]]
 - [[DTH_COPD_P1.md|DTH_COPD_P1]]
 - [[DTH_Dị vật đường thở_P1.md|DTH_Dị vật đường thở_P1]]
 - [[DTH_Giãn phế quản_P1.md|DTH_Giãn phế quản_P1]]
@@ -70,7 +70,7 @@ updated: "2026-08-21"
 - [[DTH_Tràn khí màng phổi_P1.md|DTH_Tràn khí màng phổi_P1]]
 - [[DTH_U hạt Wegener_P1.md|DTH_U hạt Wegener_P1]]
 - [[DTH_Viêm phế quản_P1.md|DTH_Viêm phế quản_P1]]
-- [[DTH_Viêm phổi_P1.md|DTH_Viêm phổi_P1]]
+- [[DTH_Viêm phổi cộng đồng|DTH_Viêm phổi_P1]]
 - [[DTH_Viêm thanh khí phế quản (Croup)_P1.md|DTH_Viêm thanh khí phế quản (Croup)_P1]]
 
 ## 🩺 Mắt - TMH - RHM (4 bài)
@@ -120,7 +120,7 @@ updated: "2026-08-21"
 - [[DTH_U tủy thượng thận_P1.md|DTH_U tủy thượng thận_P1]]
 - [[DTH_Viêm tuyến giáp Hashimoto_P1.md|DTH_Viêm tuyến giáp Hashimoto_P1]]
 - [[DTH_Đái tháo nhạt_P1.md|DTH_Đái tháo nhạt_P1]]
-- [[DTH_Đái tháo đường_P1.md|DTH_Đái tháo đường_P1]]
+- [[DTH_Đái tháo đường type II|DTH_Đái tháo đường_P1]]
 
 ## 🩺 Sản phụ khoa (1 bài)
 
@@ -173,11 +173,11 @@ updated: "2026-08-21"
 - [[DTH_Loét dạ dày - tá tràng_P1.md|DTH_Loét dạ dày - tá tràng_P1]]
 - [[DTH_Thiếu hụt Alpha-1 antitrypsin_P1.md|DTH_Thiếu hụt Alpha-1 antitrypsin_P1]]
 - [[DTH_Trào ngược dạ dày - thực quản (GERD)_P1.md|DTH_Trào ngược dạ dày - thực quản (GERD)_P1]]
-- [[DTH_Viêm tụy cấp_P1.md|DTH_Viêm tụy cấp_P1]]
+- [[DTH_Viêm tụy cấp|DTH_Viêm tụy cấp_P1]]
 - [[DTH_Viêm tụy mạn_P1.md|DTH_Viêm tụy mạn_P1]]
-- [[DTH_Xuất huyết tiêu hóa dưới_P1.md|DTH_Xuất huyết tiêu hóa dưới_P1]]
-- [[DTH_Xuất huyết tiêu hóa trên_P1.md|DTH_Xuất huyết tiêu hóa trên_P1]]
-- [[DTH_Xơ gan_P1.md|DTH_Xơ gan_P1]]
+- [[DTH_XHTH dưới|DTH_Xuất huyết tiêu hóa dưới_P1]]
+- [[DTH_XHTH trên|DTH_Xuất huyết tiêu hóa trên_P1]]
+- [[DTH_Xơ gan|DTH_Xơ gan_P1]]
 
 ## 🩺 Truyền nhiễm & Vi sinh (141 bài)
 
@@ -193,7 +193,7 @@ updated: "2026-08-21"
 - [[DTH_Bunyavirales_P1.md|DTH_Bunyavirales_P1]]
 - [[DTH_Bạch hầu|DTH_Bạch hầu_P1]]
 - [[DTH_Bệnh dại_P1.md|DTH_Bệnh dại_P1]]
-- [[DTH_Bệnh lao_P1.md|DTH_Bệnh lao_P1]]
+- [[DTH_Bệnh lao|DTH_Bệnh lao_P1]]
 - [[DTH_Bệnh than_P1.md|DTH_Bệnh than_P1]]
 - [[DTH_Bệnh tả_P1.md|DTH_Bệnh tả_P1]]
 - [[DTH_CMV (Cytomegalovirus)_P1.md|DTH_CMV (Cytomegalovirus)_P1]]
@@ -307,14 +307,14 @@ updated: "2026-08-21"
 - [[DTH_Tụ cầu (Staphylococcus epidermidis)_P1.md|DTH_Tụ cầu (Staphylococcus epidermidis)_P1]]
 - [[DTH_Tụ cầu vàng (Staphylococcus aureus)_P1.md|DTH_Tụ cầu vàng (Staphylococcus aureus)_P1]]
 - [[DTH_Uốn ván_P1.md|DTH_Uốn ván_P1]]
-- [[DTH_VGSV-B_P1.md|DTH_VGSV-B_P1]]
-- [[DTH_VGSV-C_P1.md|DTH_VGSV-C_P1]]
+- [[DTH_VGSV-B|DTH_VGSV-B_P1]]
+- [[DTH_VGSV-C|DTH_VGSV-C_P1]]
 - [[DTH_Varicella-Zoster Virus (VZV)_P1.md|DTH_Varicella-Zoster Virus (VZV)_P1]]
 - [[DTH_Vesicular stomatitis virus_P1.md|DTH_Vesicular stomatitis virus_P1]]
 - [[DTH_Vibrio Cholera (Tả)_P1.md|DTH_Vibrio Cholera (Tả)_P1]]
 - [[DTH_Virus La Crosse_P1.md|DTH_Virus La Crosse_P1]]
 - [[DTH_Virus Lassa_P1.md|DTH_Virus Lassa_P1]]
-- [[DTH_Viêm màng não_P1.md|DTH_Viêm màng não_P1]]
+- [[DTH_Viêm màng não|DTH_Viêm màng não_P1]]
 - [[DTH_Viêm não_P1.md|DTH_Viêm não_P1]]
 - [[DTH_West Nile_P1.md|DTH_West Nile_P1]]
 - [[DTH_Yersinia enterocolitica_P1.md|DTH_Yersinia enterocolitica_P1]]

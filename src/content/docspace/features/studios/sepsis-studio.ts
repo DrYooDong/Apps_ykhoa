@@ -1016,3 +1016,181 @@ export function renderLactateTrajectorySvg(initialLactate: number, repeatLactate
     </svg>
   `;
 }
+
+// ============================================================
+// NEUROKIT2 MODULE 5: DYNAMIC FLUID RESPONSIVENESS & DELTA-PP (MICHARD 2000)
+// ============================================================
+
+export interface DeltaPpInputs {
+  ppMax: number;                    // mmHg (Systolic - Diastolic at inspiration)
+  ppMin: number;                    // mmHg (Systolic - Diastolic at expiration)
+  isMechanicallyVentilated: boolean;// Invasive MV without spontaneous breaths
+  tidalVolumeMlKg: number;          // mL/kg PBW (Condition >= 8 mL/kg)
+  hasArrhythmia: boolean;           // Sinus rhythm vs Atrial Fibrillation
+  plrCardiacOutputIncrease?: number;// Passive Leg Raise % increase (Target >= 10-15%)
+}
+
+export interface DeltaPpAnalysisResult {
+  deltaPpPercent: number;
+  fluidResponsiveness: 'responsive' | 'unresponsive' | 'unreliable';
+  badgeColor: string;
+  interpretation: string;
+  validityChecklist: { check: string; valid: boolean }[];
+  clinicalRecommendation: string;
+}
+
+export function computeDeltaPpAnalysis(inputs: DeltaPpInputs): DeltaPpAnalysisResult {
+  const ppMax = inputs.ppMax;
+  const ppMin = inputs.ppMin;
+  const ppMean = (ppMax + ppMin) / 2;
+
+  const deltaPpPercent = ppMean > 0 ? parseFloat((((ppMax - ppMin) / ppMean) * 100).toFixed(1)) : 0;
+
+  const validityChecklist = [
+    { check: 'Thở máy xâm lấn có an thần/giãn cơ (Không có nhịp tự thở)', valid: inputs.isMechanicallyVentilated },
+    { check: 'Thể tích khí lưu thông cài đặt Vt ≥ 8 mL/kg trọng lượng lý tưởng', valid: inputs.tidalVolumeMlKg >= 8 },
+    { check: 'Nhịp xoang đều đặn (Không có rung nhĩ / ngoại tâm thu)', valid: !inputs.hasArrhythmia },
+    { check: 'Không có suy tim phải cấp tính hoặc tăng áp động mạch phổi nặng', valid: true },
+  ];
+
+  const allValid = validityChecklist.every(v => v.valid);
+
+  let fluidResponsiveness: DeltaPpAnalysisResult['fluidResponsiveness'] = 'unresponsive';
+  let badgeColor = '#ca8a04';
+  let interpretation = `ΔPP = ${deltaPpPercent}% (< 13%): Bệnh nhân nằm ở đoạn dốc phẳng của đường cong Frank-Starling. Ít có khả năng tăng cung lượng tim khi bù thêm dịch.`;
+  let clinicalRecommendation = 'Hạn chế bù dịch tự do (nguy cơ quá tải dịch và phù phổi cấp). Cân nhắc dùng thuốc co mạch (Noradrenaline) hoặc tăng co bóp cơ tim (Dobutamine) nếu ScvO2 < 70%.';
+
+  if (!allValid) {
+    fluidResponsiveness = 'unreliable';
+    badgeColor = '#ea580c';
+    interpretation = `⚠️ Không thỏa mãn điều kiện hợp lệ của Michard (2000). ΔPP = ${deltaPpPercent}% không đáng tin cậy.`;
+    if (inputs.plrCardiacOutputIncrease !== undefined && inputs.plrCardiacOutputIncrease >= 10) {
+      interpretation += ` ➔ Tuy nhiên Nghiệm pháp nâng chân thụ động (PLR) DƯƠNG TÍNH (+${inputs.plrCardiacOutputIncrease}% CO): Bệnh nhân CÓ ĐÁP ỨNG BÙ DỊCH.`;
+      fluidResponsiveness = 'responsive';
+      badgeColor = '#10b981';
+      clinicalRecommendation = 'Bù dịch từng đợt nhỏ (Fluid Challenge 250 - 500 mL tinh thể trong 15-30 phút) dưới sự kiểm soát chặt chẽ của siêu âm tim VTI hoặc CRT.';
+    } else {
+      clinicalRecommendation = 'Sử dụng Nghiệm pháp Nâng chân thụ động (PLR test) kết hợp đo cung lượng tim liên tục (VTI siêu âm tim qua thành ngực) để đánh giá đáp ứng bù dịch thay vì dựa vào ΔPP.';
+    }
+  } else if (deltaPpPercent >= 13) {
+    fluidResponsiveness = 'responsive';
+    badgeColor = '#10b981';
+    interpretation = `🟢 ΔPP = ${deltaPpPercent}% (≥ 13%): Bệnh nhân nằm ở đoạn dốc đứng của đường cong Frank-Starling. ĐỘ NHẠY 94%, ĐỘ ĐẶC HIỆU 96% DỰ BÁO ĐÁP ỨNG TĂNG CUNG LƯỢNG TIM VỚI BÙ DỊCH.`;
+    clinicalRecommendation = 'Tiến hành Test bù dịch: Truyền 250 - 500 mL dung dịch tinh thể (Ringer Lactate) trong 15 phút và đánh giá lại huyết động, CRT và ΔPP.';
+  }
+
+  return {
+    deltaPpPercent,
+    fluidResponsiveness,
+    badgeColor,
+    interpretation,
+    validityChecklist,
+    clinicalRecommendation,
+  };
+}
+
+/**
+ * Render Dải Sóng Huyết Áp Động Mạch Xâm Lấn & Biến Thiên ΔPP SVG Tương Tác
+ */
+export function renderDeltaPpWaveformSvg(inputs: DeltaPpInputs, theme: 'paper' | 'neon' | 'dark' = 'paper'): string {
+  const totalW = 860;
+  const totalH = 220;
+  const padL = 50;
+  const padR = 20;
+  const padT = 36;
+  const padB = 30;
+  const plotW = totalW - padL - padR;
+  const plotH = totalH - padT - padB;
+  const baseY = padT + plotH * 0.85;
+
+  let bgFill = 'var(--color-bg)';
+  let gridLine = 'var(--color-border)';
+  let traceColor = '#ef4444';
+  let textColor = 'var(--color-text)';
+
+  if (theme === 'neon') {
+    bgFill = '#030712';
+    gridLine = 'rgba(239, 68, 68, 0.15)';
+    traceColor = '#ef4444';
+    textColor = '#f87171';
+  } else if (theme === 'dark') {
+    bgFill = '#0f172a';
+    gridLine = 'rgba(255, 255, 255, 0.08)';
+    traceColor = '#f43f5e';
+    textColor = '#94a3b8';
+  }
+
+  const numBeats = 14;
+  const beatW = plotW / numBeats;
+
+  // Mô phỏng chu kỳ hô hấp tác động lên biên độ sóng mạch huyết áp
+  const ppMax = inputs.ppMax;
+  const ppMin = inputs.ppMin;
+  const ppScale = plotH * 0.70;
+
+  let pathD = `M ${padL},${baseY} `;
+  let maxBeatIdx = 2;
+  let minBeatIdx = 8;
+
+  for (let b = 0; b < numBeats; b++) {
+    const startX = padL + b * beatW;
+    if (startX > totalW - padR) break;
+
+    // Biến thiên biên độ theo thì thở hình sin
+    const respCycle = Math.sin((b / numBeats) * Math.PI * 2);
+    const curPp = ppMin + ((respCycle + 1) / 2) * (ppMax - ppMin);
+    const ampPx = (curPp / 80) * ppScale;
+
+    const xSys = startX + beatW * 0.25;
+    const ySys = baseY - ampPx;
+    const xNotch = startX + beatW * 0.48;
+    const yNotch = baseY - ampPx * 0.40;
+    const xDia = startX + beatW * 0.65;
+    const yDia = baseY - ampPx * 0.55;
+    const xEnd = startX + beatW;
+
+    pathD += `L ${startX},${baseY} `;
+    pathD += `C ${startX + beatW * 0.08},${baseY} ${xSys - beatW * 0.05},${ySys} ${xSys},${ySys} `;
+    pathD += `C ${xSys + beatW * 0.08},${ySys} ${xNotch - beatW * 0.04},${yNotch} ${xNotch},${yNotch} `;
+    pathD += `C ${xNotch + beatW * 0.04},${yNotch} ${xDia - beatW * 0.04},${yDia} ${xDia},${yDia} `;
+    pathD += `C ${xDia + beatW * 0.12},${yDia} ${xEnd - beatW * 0.08},${baseY} ${xEnd},${baseY} `;
+  }
+
+  const deltaPp = (((ppMax - ppMin) / ((ppMax + ppMin) / 2)) * 100).toFixed(1);
+
+  return `
+    <svg viewBox="0 0 ${totalW} ${totalH}" width="100%" height="${totalH}" style="background:${bgFill}; border-radius:10px; display:block; max-width:100%; box-shadow:0 2px 10px rgba(0,0,0,0.06);">
+      <!-- Header -->
+      <rect x="0" y="0" width="${totalW}" height="${padT}" fill="rgba(0,0,0,0.04)" rx="10"/>
+      <text x="14" y="22" fill="${textColor}" font-size="11.5" font-weight="800" font-family="'Inter', sans-serif">
+        📈 SÓNG HUYẾT ÁP ĐỘNG MẠCH XÂM LẤN (A-LINE) &amp; BIẾN THIÊN ÁP LỰC MẠCH — &Delta;PP: ${deltaPp}%
+      </text>
+      <text x="${totalW - 14}" y="22" fill="var(--color-text-muted)" font-size="10" font-weight="700" text-anchor="end">
+        Mô hình Michard 2000 / NeuroKit2 Dynamics
+      </text>
+
+      <!-- Caliper Lines -->
+      <line x1="${padL + maxBeatIdx * beatW + beatW * 0.25}" y1="${padT + 5}" x2="${padL + maxBeatIdx * beatW + beatW * 0.25}" y2="${baseY}" stroke="#10b981" stroke-width="1.2" stroke-dasharray="2,2"/>
+      <line x1="${padL + minBeatIdx * beatW + beatW * 0.25}" y1="${padT + 5}" x2="${padL + minBeatIdx * beatW + beatW * 0.25}" y2="${baseY}" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="2,2"/>
+
+      <!-- Trace -->
+      <path d="${pathD}" fill="none" stroke="${traceColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Annotations -->
+      <rect x="${padL + maxBeatIdx * beatW - 20}" y="${padT + 8}" width="80" height="18" rx="4" fill="#10b981" opacity="0.95"/>
+      <text x="${padL + maxBeatIdx * beatW + 20}" y="${padT + 20}" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">PPmax = ${ppMax} mmHg</text>
+
+      <rect x="${padL + minBeatIdx * beatW - 20}" y="${padT + 8}" width="80" height="18" rx="4" fill="#dc2626" opacity="0.95"/>
+      <text x="${padL + minBeatIdx * beatW + 20}" y="${padT + 20}" fill="#ffffff" font-size="8.5" font-weight="800" text-anchor="middle">PPmin = ${ppMin} mmHg</text>
+
+      <!-- Footer Bar -->
+      <g transform="translate(${padL}, ${totalH - 10})">
+        <text x="0" y="0" fill="var(--color-text-muted)" font-size="9" font-weight="600">
+          Chỉ số biến thiên áp lực mạch: <strong style="color:${parseFloat(deltaPp) >= 13 ? '#10b981' : '#dc2626'};">&Delta;PP = ${deltaPp}%</strong> |
+          Ngưỡng phân định: <strong>&ge; 13%</strong> |
+          Khuyến nghị: <strong>${parseFloat(deltaPp) >= 13 ? 'DƯƠNG TÍNH (CÓ ĐÁP ỨNG BÙ DỊCH)' : 'ÂM TÍNH (HẠN CHẾ BÙ DỊCH)'}</strong>
+        </text>
+      </g>
+    </svg>
+  `;
+}

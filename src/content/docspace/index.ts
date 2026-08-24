@@ -39,6 +39,11 @@ import { drugIntelligencePanel } from './features/drug-intelligence-panel';
 import { calculatorPicker } from './features/calculator-picker';
 import { docSpaceSettingsModal } from './features/docspace-settings-modal';
 import { reactionChainDrawer } from './features/reaction-chain-drawer';
+import { renderPredictiveTelemetryView, mountPredictiveTelemetryController } from './features/predictive-telemetry-view';
+import { renderFlowchartView, mountFlowchartController } from './features/flowchart-view';
+import { renderDeviceSyncView, mountDeviceSyncController } from './features/device-sync-view';
+import { aiCopilotModal } from './features/ai-copilot-modal';
+import { getAllSoapPatients } from './storage';
 
 // ─── Mount helper ─────────────────────────────────────────────────
 
@@ -399,6 +404,54 @@ function mountDashboardController(profileId: string): void {
     safeStorageRemove('dsp_active_profile');
     window.location.hash = '#/docspace';
   });
+
+  // Hero & Tile CRCE Triggers
+  const openCrce = (patId?: string) => {
+    const patients = getAllSoapPatients(profileId);
+    const targetPat = patId ? patients.find(p => p.id === patId) : patients[0];
+    if (targetPat) {
+      reactionChainDrawer.open(targetPat);
+    } else {
+      reactionChainDrawer.open({
+        id: 'desk_consultation',
+        patientCode: 'BN-KHAM',
+        bedNumber: 'PK-NgoạiTrú',
+        fullName: 'Bàn Khám Lâm Sàng',
+        age: 50,
+        gender: 'nam',
+        medicalRecordNo: 'HS-DESK',
+        admissionDiagnosis: 'Khám tổng quát',
+        currentDiagnosis: 'Khám tổng quát',
+        isEmrEntered: false,
+        soapStatus: 'chua_lam',
+        dayOfIllness: 1,
+        sNotes: '',
+        oNotes: '',
+        aAssessment: '',
+        pPlan: '',
+        clsOrders: [],
+        clsResults: [],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
+    }
+  };
+
+  document.getElementById('btnHeroTriggerCRCE')?.addEventListener('click', () => openCrce());
+  document.getElementById('btnTriggerReactionChainTile')?.addEventListener('click', () => openCrce());
+  document.getElementById('btnSpotlightCRCE')?.addEventListener('click', (e) => {
+    const patId = (e.currentTarget as HTMLElement)?.getAttribute('data-pat-id') || undefined;
+    openCrce(patId);
+  });
+
+  // Fast HUD Tiles
+  document.getElementById('btnTriggerDrugIntelTile')?.addEventListener('click', () => {
+    drugIntelligencePanel.open();
+  });
+  document.getElementById('btnTriggerVaultTile')?.addEventListener('click', () => {
+    quickReferenceDrawer.open();
+  });
+
   mountSidebarFooterControls(profileId);
 }
 
@@ -522,6 +575,36 @@ export function initDocSpaceRoutes(): void {
       const editId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('edit') || undefined;
       await mountDocSpace(await renderNotepadView(pid, editId));
       mountNotepadController(pid);
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // Interactive Clinical Flowchart Studio
+  router.register('/docspace/flowcharts', 'DocSpace — Lưu Đồ Thuật Toán Xử Trí Lâm Sàng EBM', () => {
+    requireProfile(async (pid) => {
+      const flowId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('flow') || undefined;
+      const nodeId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('node') || undefined;
+      await mountDocSpace(renderFlowchartView(flowId, nodeId));
+      mountFlowchartController();
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // Predictive Telemetry & NEWS2 Trajectory Studio
+  router.register('/docspace/telemetry', 'DocSpace — Trạm Giám Sát Telemetry & Cảnh Báo NEWS2', () => {
+    requireProfile(async (pid) => {
+      const patId = new URLSearchParams(window.location.hash.split('?')[1] || '').get('patient') || undefined;
+      await mountDocSpace(renderPredictiveTelemetryView(patId));
+      mountPredictiveTelemetryController();
+      mountSidebarFooterControls(pid);
+    });
+  });
+
+  // Bedside Medical Device Sync Hub
+  router.register('/docspace/devices', 'DocSpace — Trạm Kết Nối & Đồng Bộ Thiết Bị Buồng Bệnh', () => {
+    requireProfile(async (pid) => {
+      await mountDocSpace(renderDeviceSyncView());
+      mountDeviceSyncController();
       mountSidebarFooterControls(pid);
     });
   });

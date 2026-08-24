@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dịch tễ học Viêm gan siêu vi B (HBV) toàn diện: Gánh nặng toàn cầu 254M ca, 1.1M tử vong, dịch tễ Việt Nam tỷ lệ lưu hành >= 9.4% (QĐ 1740/BYT), khoảng trống điều trị Lancet, đồng nhiễm HDV và lộ trình WHO 2030.">
+    <title>DTH: Viêm Gan Siêu Vi B (Chronic Hepatitis B - HBV) – Dịch Tễ Học Y Khoa – CliniPortal</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets (Level 4 Paths) -->
+    <link rel="stylesheet" href="../../../../css/reset.css">
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/components/physio-content.css">
+    <link rel="stylesheet" href="../../../../css/components/epidemiology-hub.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --epi-accent: #0284c7;
+            --epi-accent-light: #38bdf8;
+            --epi-hbv: #0369a1;
+            --epi-danger: #ef4444;
+            --epi-warning: #f59e0b;
+            --epi-gradient: linear-gradient(135deg, #082f49 0%, #0f172a 50%, #1e1b4b 100%);
+        }
+
+        [data-theme="dark"] {
+            --epi-gradient: linear-gradient(135deg, #041927 0%, #090d16 50%, #0e0d26 100%);
+        }
+
+        .epi-article-header {
+            background: var(--epi-gradient);
+            color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(2, 132, 199, 0.3);
+        }
+
+        .epi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(56, 189, 248, 0.18);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: #bae6fd;
+            text-transform: uppercase;
+        }
+
+        /* PILLARS STICKY NAV STRIP */
+        .pillars-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 14px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+        }
+
+        .pillars-nav-inner {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pillar-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text-muted, #64748b);
+            border: 1px solid var(--color-border, #e2e8f0);
+            background: var(--color-bg, #f8fafc);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .pillar-tab:hover, .pillar-tab.active {
+            color: #ffffff;
+            background: var(--epi-accent, #0284c7);
+            border-color: var(--epi-accent, #0284c7);
+            transform: translateY(-1px);
+        }
+
+        /* ARTICLE SECTIONS */
+        .article-section {
+            background: var(--color-surface, #ffffff);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            scroll-margin-top: 5rem;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.85rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-border, #e2e8f0);
+        }
+
+        .section-title i {
+            color: var(--epi-accent, #0284c7);
+        }
+
+        .subsection-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            margin: 1.5rem 0 0.85rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--color-text, #334155);
+            margin-bottom: 1.2rem;
+        }
+
+        /* METRIC CARDS GRID */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--epi-accent, #0284c7);
+        }
+
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-text-muted, #64748b);
+        }
+
+        .metric-sub {
+            font-size: 0.72rem;
+            color: var(--color-text-muted, #94a3b8);
+            margin-top: 0.35rem;
+        }
+
+        /* BOXES */
+        .info-box, .pearl-box, .danger-box, .success-box {
+            padding: 1.2rem 1.4rem;
+            border-radius: 12px;
+            margin: 1.25rem 0;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            border-left: 4px solid;
+        }
+
+        .info-box {
+            background: rgba(2, 132, 199, 0.08);
+            border-color: #0284c7;
+            color: var(--color-text, #082f49);
+        }
+
+        .pearl-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: #f59e0b;
+            color: var(--color-text, #78350f);
+        }
+
+        .danger-box {
+            background: rgba(239, 68, 68, 0.08);
+            border-color: #ef4444;
+            color: var(--color-text, #7f1d1d);
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.08);
+            border-color: #10b981;
+            color: var(--color-text, #064e3b);
+        }
+
+        /* DATA TABLES */
+        .epi-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 12px;
+            overflow: hidden;
+            font-size: 0.88rem;
+            margin: 1.25rem 0;
+        }
+
+        .epi-table th {
+            background: var(--color-bg, #f8fafc);
+            padding: 0.85rem 1rem;
+            font-weight: 700;
+            color: var(--color-text, #0f172a);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            border-right: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .epi-table th:last-child {
+            border-right: none;
+        }
+
+        .epi-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+            border-right: 1px solid var(--color-border, #e2e8f0);
+            color: var(--color-text, #334155);
+            vertical-align: top;
+        }
+
+        .epi-table td:last-child {
+            border-right: none;
+        }
+
+        .epi-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .epi-table tbody tr:hover {
+            background: rgba(2, 132, 199, 0.03);
+        }
+
+        /* AMA REFERENCE LIST */
+        .reference-list {
+            padding-left: 1.25rem;
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--color-text-muted, #64748b);
+        }
+
+        .reference-list li {
+            margin-bottom: 0.6rem;
+        }
+
+        .reference-list em {
+            color: var(--color-text, #334155);
+            font-style: italic;
+        }
+
+        /* ========================================================================= */
+        /* PREMIUM TIMELINE RAIL COMPONENT (HBV DYNAMICS STUDIO) */
+        /* ========================================================================= */
+        .timeline-studio {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 18px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-studio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .timeline-studio-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0;
+        }
+
+        .timeline-legend {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--color-text-muted, #64748b);
+            background: var(--color-surface, #ffffff);
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid var(--color-border, #e2e8f0);
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* Timeline Rail Flow */
+        .timeline-rail-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 0.25rem 1.5rem 0.25rem;
+        }
+
+        .timeline-rail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(250px, 1fr));
+            gap: 1rem;
+            position: relative;
+            min-width: 1040px;
+        }
+
+        /* Connector Line between stages */
+        .timeline-rail-grid::before {
+            content: '';
+            position: absolute;
+            top: 48px;
+            left: 125px;
+            right: 125px;
+            height: 3px;
+            background: linear-gradient(90deg, #0284c7 0%, #ef4444 33%, #10b981 66%, #8b5cf6 100%);
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        /* Phase Card */
+        .phase-node {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .phase-node.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Top Step Marker */
+        .phase-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--color-surface, #ffffff);
+            border: 3px solid;
+            margin: 0 auto 1rem auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .phase-node:hover .phase-marker {
+            transform: scale(1.15);
+        }
+
+        .phase-card {
+            background: var(--color-surface, #ffffff);
+            border: 1.5px solid var(--color-border, #e2e8f0);
+            border-radius: 16px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Theme Variants for Phase Cards */
+        .phase-blue .phase-marker { border-color: #0284c7; color: #0284c7; }
+        .phase-blue .phase-card { border-top: 4px solid #0284c7; }
+        .phase-blue .phase-card:hover { border-color: #0284c7; }
+
+        .phase-red .phase-marker { border-color: #ef4444; color: #ef4444; }
+        .phase-red .phase-card { border-top: 4px solid #ef4444; }
+        .phase-red .phase-card:hover { border-color: #ef4444; }
+
+        .phase-green .phase-marker { border-color: #10b981; color: #10b981; }
+        .phase-green .phase-card { border-top: 4px solid #10b981; }
+        .phase-green .phase-card:hover { border-color: #10b981; }
+
+        .phase-purple .phase-marker { border-color: #8b5cf6; color: #8b5cf6; }
+        .phase-purple .phase-card { border-top: 4px solid #8b5cf6; }
+        .phase-purple .phase-card:hover { border-color: #8b5cf6; }
+
+        /* Card Headers & Badges */
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .phase-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--color-text, #0f172a);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .phase-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.25rem 0.55rem;
+            border-radius: 999px;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .tag-watch { background: rgba(2, 132, 199, 0.12); color: #0284c7; }
+        .tag-treat { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+        .tag-safe  { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+        .tag-alert { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; }
+
+        .phase-age {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--color-text-muted, #64748b);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        /* Sparkline Graph in Card */
+        .sparkline-box {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 8px;
+            padding: 0.4rem;
+            margin: 0.2rem 0;
+        }
+
+        /* Diagnostic KPI Pills */
+        .diagnostic-pills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.4rem;
+            margin: 0.25rem 0;
+        }
+
+        .diag-pill {
+            background: var(--color-bg, #f8fafc);
+            border: 1px solid var(--color-border, #e2e8f0);
+            border-radius: 6px;
+            padding: 0.35rem 0.45rem;
+            font-size: 0.72rem;
+            line-height: 1.3;
+        }
+
+        .diag-pill-label {
+            color: var(--color-text-muted, #64748b);
+            font-weight: 600;
+            display: block;
+            font-size: 0.68rem;
+        }
+
+        .diag-pill-val {
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--color-text, #0f172a);
+        }
+
+        /* Bullet Points */
+        .phase-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.8rem;
+            line-height: 1.55;
+            color: var(--color-text, #334155);
+        }
+
+        .phase-bullets li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .phase-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-text-muted, #64748b);
+            font-weight: bold;
+        }
+
+        /* Phase Action Footer */
+        .phase-action {
+            margin-top: auto;
+            padding: 0.5rem 0.65rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .action-watch { background: rgba(2, 132, 199, 0.08); color: #0369a1; }
+        .action-treat { background: rgba(239, 68, 68, 0.1); color: #b91c1c; }
+        .action-safe  { background: rgba(16, 185, 129, 0.08); color: #065f46; }
+        .action-alert { background: rgba(139, 92, 246, 0.1); color: #6d28d9; }
+
+        /* Reactivation & Transition Bar below timeline */
+        .reactivation-banner {
+            margin-top: 1.5rem;
+            background: var(--color-surface, #ffffff);
+            border: 1.5px dashed #8b5cf6;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .reactivation-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.86rem;
+            color: var(--color-text, #334155);
+        }
+
+        .reactivation-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.12);
+            color: #8b5cf6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Outcome Phase 5 Pill Card */
+        .outcome-card {
+            margin-top: 1rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(2, 132, 199, 0.06) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+        }
+    </style>
+
+    <!-- Medical Schema.org Semantic Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "Dịch tễ học Viêm Gan Siêu Vi B (Chronic Hepatitis B Epidemiology)",
+      "description": "Nghiên cứu dịch tễ học Viêm gan B toàn cầu: Gánh nặng 254 triệu ca, tỷ lệ lưu hành tại Việt Nam >= 9.4% (QĐ 1740/BYT 2026), khoảng trống điều trị Lancet, đồng nhiễm HDV và lộ trình WHO 2030.",
+      "about": [
+        {"@type": "MedicalCondition", "name": "Chronic Hepatitis B"},
+        {"@type": "MedicalCondition", "name": "Hepatitis D Coinfection"},
+        {"@type": "MedicalCondition", "name": "Hepatocellular Carcinoma"}
+      ],
+      "audience": "Healthcare Professionals, Medical Students, Epidemiologists",
+      "publisher": {
+        "@type": "Organization",
+        "name": "CliniPortal"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="../../../../index.html" class="nav-brand">
+                <i class="fa-solid fa-staff-snake"></i> CliniPortal
+            </a>
+            <div class="nav-breadcrumbs">
+                <a href="../../../../index.html">Trang chủ</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <a href="README.md">Cơ sở Y khoa</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <a href="README.md">Dịch tễ học</a>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Viêm Gan Siêu Vi B (HBV)</span>
+            </div>
+            <button id="theme-toggle" class="theme-btn" aria-label="Chuyển đổi giao diện">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-content" style="max-width: 1060px; margin: 2rem auto; padding: 0 1rem;">
+
+        <!-- Header Block -->
+        <header class="epi-article-header">
+            <div class="epi-badge">
+                <i class="fa-solid fa-virus"></i> Dịch Tễ Học Gan Mật &amp; Truyền Nhiễm • EBM Series
+            </div>
+            <h1 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.1rem; font-weight: 800; margin: 0 0 0.75rem 0; line-height: 1.25;">
+                Dịch Tễ Học Viêm Gan Siêu Vi B
+            </h1>
+            <p style="font-size: 1.05rem; margin: 0 0 1.25rem 0; opacity: 0.9; font-weight: 500; line-height: 1.5;">
+                Phân tích toàn diện gánh nặng 254M ca toàn cầu, dịch tễ Việt Nam lưu hành &ge; 9,4% (QĐ 1740/BYT), khoảng trống Cascade of Care, đồng nhiễm HDV và lộ trình loại trừ WHO 2030.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.82rem; opacity: 0.8; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem;">
+                <span><i class="fa-solid fa-stethoscope"></i> <strong>Chuyên khoa:</strong> Tiêu hóa - Gan mật &amp; Truyền nhiễm</span>
+                <span><i class="fa-solid fa-globe"></i> <strong>Quy mô:</strong> Toàn cầu (WHO 2024, APASL 2026, EASL 2025, QĐ 1740/BYT)</span>
+                <span><i class="fa-solid fa-calendar-check"></i> <strong>Cập nhật:</strong> Tháng 8/2026</span>
+                <span><i class="fa-solid fa-book-medical"></i> <strong>Chuẩn hóa:</strong> 8 Trụ cột Dịch tễ học Y khoa</span>
+            </div>
+        </header>
+
+        <!-- STICKY 8-PILLARS QUICK NAVIGATION BAR -->
+        <nav class="pillars-nav" aria-label="Điều hướng 8 trụ cột">
+            <div class="pillars-nav-inner">
+                <a href="#sec-1" class="pillar-tab active"><i class="fa-solid fa-chart-pie"></i> 1. Gánh Nặng &amp; Tam Giác DTH</a>
+                <a href="#sec-2" class="pillar-tab"><i class="fa-solid fa-earth-asia"></i> 2. Châu Á &amp; Việt Nam (QĐ 1740)</a>
+                <a href="#sec-3" class="pillar-tab"><i class="fa-solid fa-filter"></i> 3. Khoảng Trống &amp; Tiêu Chuẩn Điều Trị</a>
+                <a href="#sec-4" class="pillar-tab"><i class="fa-solid fa-route"></i> 4. Động Học &amp; Tự Nhiên Bệnh Sử</a>
+                <a href="#sec-5" class="pillar-tab"><i class="fa-solid fa-circle-nodes"></i> 5. Đồng Nhiễm HBV/HDV</a>
+                <a href="#sec-6" class="pillar-tab"><i class="fa-solid fa-dna"></i> 6. Nguy Cơ Xơ Gan &amp; HCC</a>
+                <a href="#sec-7" class="pillar-tab"><i class="fa-solid fa-syringe"></i> 7. Dự Phòng &amp; Lộ Trình 2030</a>
+                <a href="#sec-8" class="pillar-tab"><i class="fa-solid fa-bookmark"></i> 8. Pearls &amp; Y Văn AMA</a>
+            </div>
+        </nav>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 1: GÁNH NẶNG TOÀN CẦU & TAM GIÁC DỊCH TỄ HỌC -->
+        <!-- ========================================================================= -->
+        <section id="sec-1" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-chart-pie"></i> 1. Gánh Nặng Bệnh Tật Toàn Cầu &amp; Tam Giác Dịch Tễ Học HBV</h2>
+
+            <p class="section-text">
+                Vi-rút viêm gan B (Hepatitis B Virus - HBV) là một trong những tác nhân truyền nhiễm nguy hiểm nhất của nhân loại. Theo báo cáo chính thức của Tổ chức Y tế Thế giới (WHO), viêm gan B mạn tính là nguyên nhân hàng đầu dẫn đến <strong>xơ gan mất bù</strong> và <strong>ung thư biểu mô tế bào gan (HCC)</strong> – loại ung thư có tỷ lệ tử vong đứng hàng thứ 3 trên toàn cầu.
+            </p>
+
+            <!-- Metric Cards Grid -->
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #0284c7;">254M</div>
+                    <div class="metric-label">Nhiễm HBV Mạn Tính Toàn Cầu</div>
+                    <div class="metric-sub">Dao động 254 – 296 triệu người (WHO)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #ef4444;">1,1M</div>
+                    <div class="metric-label">Tử Vong Hàng Năm</div>
+                    <div class="metric-sub">Dự kiến tăng lên 1,15M ca vào năm 2030</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #f59e0b;">1,2M</div>
+                    <div class="metric-label">Ca Nhiễm Mới Mỗi Năm</div>
+                    <div class="metric-sub">Lây truyền dọc &amp; đường máu/tình dục</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" style="color: #10b981;">90% vs &lt;5%</div>
+                    <div class="metric-label">Tỷ Lệ Mạn Tính Theo Tuổi</div>
+                    <div class="metric-sub">90% ở trẻ sơ sinh vs &lt;5% ở người lớn</div>
+                </div>
+            </div>
+
+            <div class="danger-box">
+                <strong style="color: #ef4444; font-size: 1rem; display: block; margin-bottom: 0.35rem;">
+                    <i class="fa-solid fa-hourglass-half"></i> Mối Liên Quan Sống Còn Giữa Tuổi Phơi Nhiễm &amp; Nguy Cơ Mạn Tính:
+                </strong>
+                <p style="margin: 0; line-height: 1.65;">
+                    Khả năng chuyển từ nhiễm trùng cấp sang mạn tính tỷ lệ nghịch với độ tuổi phơi nhiễm: Trẻ sơ sinh bị nhiễm vi-rút từ mẹ có nguy cơ trở thành người mang mầm bệnh mạn tính suốt đời lên tới <strong>90%</strong>. Ở trẻ 1–5 tuổi, tỷ lệ này là <strong>25% – 30%</strong>. Trong khi đó, người trưởng thành có hệ miễn dịch bình thường có khả năng tự đào thải vi-rút rất cao, chỉ có <strong>dưới 5%</strong> tiến triển thành mạn tính.
+                </p>
+            </div>
+
+            <!-- INLINE SVG: TAM GIÁC DỊCH TỄ HỌC HBV (EDITORIAL QUALITY) -->
+            <div style="margin: 2rem 0; background: var(--color-bg, #f8fafc); border: 1px solid var(--color-border, #e2e8f0); border-radius: 16px; padding: 1.5rem; overflow-x: auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--epi-accent, #0284c7); display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-diagram-project"></i> MÔ HÌNH TAM GIÁC DỊCH TỄ HỌC VIÊM GAN SIÊU VI B (EPIDEMIOLOGICAL TRIAD)
+                    </h4>
+                    <span style="font-size: 0.78rem; font-weight: 700; color: var(--color-text-muted, #64748b); background: var(--color-surface, #ffffff); padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid var(--color-border, #e2e8f0);">
+                        WHO Standards • APASL &amp; EASL Consensus
+                    </span>
+                </div>
+
+                <div style="width: 100%; max-width: 880px; margin: 0 auto;">
+                    <svg viewBox="0 0 880 540" width="100%" height="auto" style="display: block; font-family: 'Plus Jakarta Sans', sans-serif; min-width: 760px;">
+                        <defs>
+                            <!-- Gradients for Vertex Cards -->
+                            <linearGradient id="hbvAgentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0284c7" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="hbvHostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="hbvEnvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="var(--color-surface, #ffffff)" stop-opacity="0.95"/>
+                            </linearGradient>
+                            
+                            <!-- Markers -->
+                            <marker id="arrowBlueHBV" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284c7"/>
+                            </marker>
+                            <marker id="arrowIndigoHBV" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#3b82f6"/>
+                            </marker>
+                            <marker id="arrowPurpleHBV" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8b5cf6"/>
+                            </marker>
+                        </defs>
+
+                        <!-- Outer Geometric Triangle Connection Lines (Background only) -->
+                        <polygon points="440,80 165,435 715,435" fill="none" stroke="var(--color-border, #cbd5e1)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.4"/>
+                        
+                        <!-- Dynamic Interaction Flow Lines (Strictly Outside Card Boundaries) -->
+                        <!-- Path Agent (Top) -> Host (Bottom-Left) -->
+                        <path d="M 340,150 Q 220,240 165,355" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowBlueHBV)"/>
+                        
+                        <!-- Path Host (Bottom-Left) -> Env (Bottom-Right) -->
+                        <path d="M 315,435 L 565,435" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowIndigoHBV)"/>
+                        
+                        <!-- Path Env (Bottom-Right) -> Agent (Top) -->
+                        <path d="M 715,355 Q 660,240 540,150" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-dasharray="5 5" marker-end="url(#arrowPurpleHBV)"/>
+
+                        <!-- CENTER HUB: OUTBREAK / TRANSMISSION INTERSECTION -->
+                        <g transform="translate(440, 275)">
+                            <circle cx="0" cy="0" r="72" fill="none" stroke="rgba(2, 132, 199, 0.18)" stroke-width="6"/>
+                            <circle cx="0" cy="0" r="58" fill="rgba(2, 132, 199, 0.08)" stroke="#0284c7" stroke-width="2"/>
+                            <circle cx="0" cy="0" r="48" fill="var(--color-surface, #ffffff)" stroke="rgba(2, 132, 199, 0.3)" stroke-width="1"/>
+                            
+                            <text x="0" y="-16" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0284c7" letter-spacing="1">ĐẠI DỊCH</text>
+                            <text x="0" y="3" text-anchor="middle" font-size="13" font-weight="900" fill="#0284c7">VIÊM GAN B</text>
+                            <text x="0" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#ef4444">254M CA MẠN</text>
+                            <text x="0" y="36" text-anchor="middle" font-size="9" font-weight="600" fill="var(--color-text-muted, #64748b)">HBV + Vật Chủ + Lây Nhiễm</text>
+                        </g>
+
+                        <!-- TOP APEX CARD: TÁC NHÂN (AGENT) -->
+                        <g transform="translate(290, 20)">
+                            <rect x="0" y="0" width="300" height="130" rx="14" fill="url(#hbvAgentGrad)" stroke="#0284c7" stroke-width="1.8"/>
+                            <rect x="14" y="-12" width="185" height="25" rx="12.5" fill="#0284c7"/>
+                            <text x="106" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🔬 TÁC NHÂN (HBV VIRUS)</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#0369a1">Hepadnaviridae &amp; cccDNA</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Bộ gen DNA bán vòng đôi một phần (3,2 kb)</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="700" fill="#ef4444">• cccDNA tích hợp trong nhân tế bào gan</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Đột biến Precore/BCP gây viêm HBeAg(-)</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Genotypes B &amp; C chiếm ưu thế ở Châu Á</text>
+                        </g>
+
+                        <!-- BOTTOM-LEFT APEX CARD: VẬT CHỦ (HOST) -->
+                        <g transform="translate(20, 360)">
+                            <rect x="0" y="0" width="290" height="145" rx="14" fill="url(#hbvHostGrad)" stroke="#3b82f6" stroke-width="1.8"/>
+                            <rect x="14" y="-12" width="155" height="25" rx="12.5" fill="#3b82f6"/>
+                            <text x="91" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">👥 VẬT CHỦ (HOST)</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#1d4ed8">Miễn Dịch &amp; Cơ Địa Bệnh</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Trẻ sơ sinh từ mẹ HBsAg(+) / HBeAg(+)</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Nam giới: Nguy cơ tiến triển Xơ gan/HCC x3</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="700" fill="#ef4444">• Đồng nhiễm HDV, HCV, HIV, nghiện rượu</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Tỷ lệ đủ tiêu chuẩn điều trị ~19%</text>
+                            <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Rào cản kỳ thị xã hội &amp; thiếu sàng lọc</text>
+                        </g>
+
+                        <!-- BOTTOM-RIGHT APEX CARD: MÔI TRƯỜNG & LÂY TRUYỀN -->
+                        <g transform="translate(570, 360)">
+                            <rect x="0" y="0" width="290" height="145" rx="14" fill="url(#hbvEnvGrad)" stroke="#8b5cf6" stroke-width="1.8"/>
+                            <rect x="14" y="-12" width="190" height="25" rx="12.5" fill="#8b5cf6"/>
+                            <text x="109" y="5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🌏 MÔI TRƯỜNG &amp; ĐƯỜNG LÂY</text>
+                            <text x="16" y="30" font-size="13" font-weight="800" fill="#6d28d9">Châu Á &amp; Việt Nam Lưu Hành Cao</text>
+                            <text x="16" y="50" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Châu Á - TBD chiếm &gt;2/3 ca mạn toàn cầu</text>
+                            <text x="16" y="68" font-size="11.5" font-weight="700" fill="#ef4444">• Việt Nam: Tỷ lệ HBsAg(+) &ge; 9,4% (6,5M ca)</text>
+                            <text x="16" y="86" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Lây truyền dọc Mẹ - Con là đường lây số 1</text>
+                            <text x="16" y="104" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Lây qua đường máu, tiêm chích, tình dục</text>
+                            <text x="16" y="122" font-size="11.5" font-weight="500" fill="var(--color-text, #334155)">• Khoảng trống tiếp cận thuốc NAs &gt;85%</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 2: CHÂU Á - TBD & DỊCH TỄ VIỆT NAM (QĐ 1740/QĐ-BYT) -->
+        <!-- ========================================================================= -->
+        <section id="sec-2" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-earth-asia"></i> 2. Dịch Tễ Học Tại Châu Á – Thái Bình Dương &amp; Việt Nam</h2>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-globe-asia"></i> A. Điểm Nóng Châu Á – Thái Bình Dương (APASL 2026 Guidelines)</h3>
+            <p class="section-text">
+                Khu vực Châu Á – Thái Bình Dương là tâm chấn của đại dịch HBV, tập trung <strong>hơn 2/3 tổng số ca nhiễm mạn tính toàn cầu</strong>. Theo Hướng dẫn Thực hành Lâm sàng năm 2026 của Hiệp hội Nghiên cứu Bệnh Gan Châu Á – Thái Bình Dương (APASL), có <strong>8 quốc gia trọng điểm</strong> chịu trách nhiệm cho gần 90% gánh nặng bệnh tật:
+            </p>
+
+            <div class="info-box">
+                <strong style="color: #0284c7; font-size: 0.95rem;">
+                    <i class="fa-solid fa-map-location-dot"></i> 8 Quốc Gia Trọng Điểm APASL:
+                </strong>
+                <br>
+                Trung Quốc, Ấn Độ, Indonesia, Bangladesh, <strong>Việt Nam</strong>, Philippines, Pakistan và Myanmar. Mặc dù tỷ lệ nhiễm ở trẻ dưới 5 tuổi đã giảm nhờ vắc-xin, khu vực vẫn còn khoảng <strong>1,6 đến 2,6 triệu trẻ em dương tính với HBsAg</strong> (chiếm 26% – 34% gánh nặng nhi khoa toàn cầu). Tỷ lệ được chẩn đoán và điều trị tại khu vực vẫn rất thấp (<strong>dưới 15%</strong>).
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-flag"></i> B. Thực Trạng Dịch Tễ Học Tại Việt Nam (QĐ 1740/QĐ-BYT 2026)</h3>
+            <p class="section-text">
+                Việt Nam được xếp vào nhóm các quốc gia có tỷ lệ lưu hành viêm gan B ở mức rất cao (vùng nội dịch cao với prevalence &ge; 2%):
+            </p>
+
+            <div class="metric-grid">
+                <div class="metric-card" style="border-top-color: #ef4444;">
+                    <div class="metric-value" style="color: #ef4444;">&ge; 9,4%</div>
+                    <div class="metric-label">Tỷ Lệ Lưu Hành HBsAg Người Lớn</div>
+                    <div class="metric-sub">Số liệu Quyết định 1740/QĐ-BYT (16/06/2026)</div>
+                </div>
+                <div class="metric-card" style="border-top-color: #0284c7;">
+                    <div class="metric-value" style="color: #0284c7;">6,5M</div>
+                    <div class="metric-label">Người Nhiễm HBV Mạn Tính</div>
+                    <div class="metric-sub">Tính đến năm 2022 tại Việt Nam</div>
+                </div>
+                <div class="metric-card" style="border-top-color: #f59e0b;">
+                    <div class="metric-value" style="color: #f59e0b;">MẸ &rarr; CON</div>
+                    <div class="metric-label">Đường Lây Truyền Chủ Yếu</div>
+                    <div class="metric-sub">Lây chu sinh dẫn đến 90% mạn tính suốt đời</div>
+                </div>
+            </div>
+
+            <div class="pearl-box">
+                <strong style="color: #f59e0b; font-size: 0.95rem;">
+                    <i class="fa-solid fa-bullhorn"></i> Khuyến Cáo Quốc Gia của Bộ Y tế Việt Nam (2026):
+                </strong>
+                <br>
+                Mọi người dân sinh sống tại Việt Nam <strong>nên thực hiện xét nghiệm tầm soát HBsAg ít nhất 1 lần trong đời</strong>, đặc biệt là nhóm sinh trước năm 2003 (trước khi vắc-xin viêm gan B được đưa vào chương trình Tiêm chủng mở rộng cho trẻ dưới 1 tuổi trên toàn quốc).
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 3: KHOẢNG TRỐNG ĐIỀU TRỊ & BẢNG 1 LANCET META-ANALYSIS -->
+        <!-- ========================================================================= -->
+        <section id="sec-3" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-filter"></i> 3. Khoảng Trống Điều Trị (Cascade of Care) &amp; Tiêu Chuẩn Điều Trị</h2>
+
+            <p class="section-text">
+                Theo dữ liệu từ Polaris Observatory (2022), thế giới đang đối mặt với một khoảng trống chẩn đoán và điều trị (Cascade of Care Gap) khổng lồ: Trong số 254 triệu người nhiễm HBsAg, chỉ có khoảng <strong>36 triệu người được chẩn đoán xác định (~14%)</strong>, và chỉ có <strong>6,8 triệu người trong số 83,3 triệu người đủ tiêu chuẩn điều trị được dùng thuốc kháng vi-rút (~8%)</strong>.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-table"></i> Bảng 1: Các Chỉ Dấu Dịch Tễ &amp; Tỷ Lệ Đủ Tiêu Chuẩn Điều Trị (Lancet GastroHep)</h3>
+            <p class="section-text">
+                Tổng hợp phân tích gộp hệ thống trên <strong>162 nghiên cứu</strong> với tổng số <strong>145.789 người có HBsAg (+)</strong> trên toàn thế giới (M Tan, F Cui et al. <em>Lancet Gastroenterol Hepatol</em> 2021):
+            </p>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Chỉ Số Dịch Tễ Học</th>
+                            <th style="width: 18%; color: #0284c7;">Tỷ Lệ Gộp Toàn Cầu (Overall)</th>
+                            <th style="width: 18%;">Tỷ Lệ Trong Cộng Đồng</th>
+                            <th style="width: 18%;">Tỷ Lệ Tại Bệnh Viện (Nội/Ngoại trú)</th>
+                            <th style="width: 21%;">Khu Vực Cao Nhất vs Thấp Nhất</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Xơ gan (Cirrhosis - F4)</strong></td>
+                            <td><strong style="color: #ef4444;">9,5%</strong> (9,3% - 9,7%)</td>
+                            <td>9,6% (8,9% - 10,2%)</td>
+                            <td>13,9% (Bệnh nhân nội trú)</td>
+                            <td>Cao: ĐNÁ (SEAR) <strong>15,3%</strong><br>Thấp: Châu Mỹ <strong>7,3%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>HBeAg dương tính</strong></td>
+                            <td><strong>17,7%</strong> (17,5% - 17,9%)</td>
+                            <td>13,5% (13,0% - 13,9%)</td>
+                            <td>21,4% (Bệnh nhân nội trú)</td>
+                            <td>Cao: Tây TBD <strong>19,6%</strong><br>Thấp: Châu Mỹ <strong>12,8%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>HBV DNA &gt; 2.000 IU/mL</strong></td>
+                            <td><strong style="color: #0284c7;">28,2%</strong> (27,7% - 28,7%)</td>
+                            <td>41,1% (40,2% - 41,9%)</td>
+                            <td>35,2% (Bệnh nhân nội trú)</td>
+                            <td>Cao: Châu Âu <strong>31,4%</strong><br>Thấp: Châu Mỹ <strong>12,9%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>HBV DNA &gt; 20.000 IU/mL</strong></td>
+                            <td><strong>10,1%</strong> (9,6% - 10,5%)</td>
+                            <td>21,0% (18,1% - 23,9%)</td>
+                            <td>22,7% (Bệnh nhân nội trú)</td>
+                            <td>Cao: ĐNÁ <strong>29,2%</strong><br>Thấp: Châu Mỹ <strong>6,4%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tăng men gan (ALT &gt; ULN)</strong></td>
+                            <td><strong style="color: #f59e0b;">30,8%</strong> (30,5% - 31,2%)</td>
+                            <td>29,2% (28,4% - 30,1%)</td>
+                            <td>45,4% (Bệnh nhân nội trú)</td>
+                            <td>Cao: Châu Âu <strong>54,9%</strong><br>Thấp: Nhóm đặc thù <strong>16,0%</strong></td>
+                        </tr>
+                        <tr style="background: var(--color-bg, #f8fafc); font-weight: 700;">
+                            <td>TỶ LỆ ĐỦ TIÊU CHUẨN ĐIỀU TRỊ</td>
+                            <td><strong style="color: #10b981; font-size: 1rem;">19,0%</strong> (18,0% - 20,0%)</td>
+                            <td><strong>12,0%</strong> (6,0% - 18,0%)</td>
+                            <td><strong>25,0%</strong> (19,0% - 30,0%)</td>
+                            <td>Trung bình 1/5 người nhiễm cần điều trị ngay</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <strong style="color: #0284c7; font-size: 0.95rem;">
+                    <i class="fa-solid fa-microscope"></i> Phân tích Dịch tễ học lâm sàng từ Bảng 1:
+                </strong>
+                <ul style="margin: 0.35rem 0 0 1.25rem; line-height: 1.65; padding: 0;">
+                    <li><strong>10% người nhiễm trong cộng đồng đã có xơ gan:</strong> Theo WHO 2024 và QĐ 1740/BYT, bệnh nhân xơ gan có HBsAg(+) cần được điều trị thuốc kháng vi-rút ngay lập tức mà không cần chờ xét nghiệm HBV DNA.</li>
+                    <li><strong>Nguy hiểm của thể HBeAg âm tính:</strong> Dù HBeAg(+) chỉ chiếm 17,7%, có tới gần 30% có tải lượng vi-rút cao và men gan tăng. Đây là thể viêm gan B HBeAg(-) do đột biến vùng Precore (G1896A) hoặc BCP (A1762T/G1764A), làm mất khả năng tiết HBeAg nhưng vi-rút vẫn nhân lên mạnh mẽ gây xơ gan âm thầm.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 4: ĐỘNG HỌC BỆNH SINH & TIẾN TRIỂN TỰ NHIÊN (APASL/EASL) -->
+        <!-- ========================================================================= -->
+        <section id="sec-4" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-route"></i> 4. Động Học Bệnh Sinh &amp; 4 Giai Đoạn Tiến Triển Tự Nhiên</h2>
+
+            <p class="section-text">
+                Nhiễm HBV mạn tính là một quá trình tương tác phức tạp và kéo dài giữa vi-rút HBV và hệ thống miễn dịch của vật chủ. Theo đồng thuận mới nhất của Hiệp hội Nghiên cứu Bệnh Gan Châu Âu (EASL 2025) và Châu Á – Thái Bình Dương (APASL 2026), quá trình bệnh sinh được chuẩn hóa thành <strong>4 giai đoạn tiến triển tự nhiên kinh điển</strong> và <strong>giai đoạn mất HBsAg</strong>:
+            </p>
+
+            <!-- TIMELINE STUDIO COMPONENT -->
+            <div class="timeline-studio">
+                <div class="timeline-studio-header">
+                    <h3 class="timeline-studio-title">
+                        <i class="fa-solid fa-chart-line" style="color: var(--epi-accent, #0284c7);"></i> LƯU ĐỒ ĐỘNG HỌC 4 GIAI ĐOẠN TIẾN TRIỂN TỰ NHIÊN CỦA VIÊM GAN B MẠN TÍNH
+                    </h3>
+                    <div class="timeline-legend">
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #0284c7;"></span> HBV DNA (Tải lượng)
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot" style="background: #f59e0b;"></span> Men Gan ALT
+                        </span>
+                        <span class="legend-item" style="color: var(--epi-accent, #0284c7); font-weight: 700;">
+                            EASL 2025 • APASL 2026
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Horizontal Scroll Rail -->
+                <div class="timeline-rail-scroll">
+                    <div class="timeline-rail-grid">
+
+                        <!-- NODE 1: DUNG NẠP MIỄN DỊCH -->
+                        <div class="phase-node phase-blue visible" data-phase="1">
+                            <div class="phase-marker">1</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #0284c7; text-transform: uppercase;">Giai Đoạn 1</div>
+                                        <h4 class="phase-title">Dung Nạp Miễn Dịch</h4>
+                                    </div>
+                                    <span class="phase-tag tag-watch">✅ THEO DÕI</span>
+                                </div>
+
+                                <div class="phase-age">
+                                    <i class="fa-solid fa-child"></i> Trẻ em &amp; Thanh thiếu niên (Lây chu sinh)
+                                </div>
+
+                                <!-- Mini Sparkline 1 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <!-- Grid Baseline -->
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <!-- HBV DNA Curve: Very High Flat (~10^8) -->
+                                        <path d="M 10,10 Q 100,10 190,12" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                                        <!-- ALT Curve: Normal Flat Low -->
+                                        <path d="M 10,36 Q 100,34 190,36" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <!-- Labels -->
+                                        <text x="12" y="8" font-size="8" font-weight="700" fill="#0284c7">DNA &gt; 10⁸</text>
+                                        <text x="140" y="34" font-size="8" font-weight="700" fill="#f59e0b">ALT &lt; ULN</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">HBeAg</span>
+                                        <span class="diag-pill-val" style="color: #0284c7;">(+) Dương tính</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">HBV DNA</span>
+                                        <span class="diag-pill-val">&gt; 10⁷ IU/mL</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Men Gan ALT</span>
+                                        <span class="diag-pill-val" style="color: #10b981;">Bình thường</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Xơ Hóa Gan</span>
+                                        <span class="diag-pill-val">F0 – F1 (Rất thấp)</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Lây từ mẹ sang con, hệ miễn dịch chưa nhận diện kháng nguyên vi-rút.</li>
+                                    <li>Tế bào gan không bị phá hủy; tải lượng vi-rút cực cao nhưng gan bình thường.</li>
+                                    <li>Mất HBsAg tự nhiên cực hiếm (&lt; 0,5%/năm).</li>
+                                </ul>
+
+                                <div class="phase-action action-watch">
+                                    <i class="fa-solid fa-stethoscope"></i> Theo dõi ALT &amp; HBV DNA mỗi 6–12 tháng; <strong>Chưa chỉ định NAs</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NODE 2: HOẠT ĐỘNG MIỄN DỊCH / THẢI TRỪ -->
+                        <div class="phase-node phase-red visible" data-phase="2">
+                            <div class="phase-marker">2</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #ef4444; text-transform: uppercase;">Giai Đoạn 2</div>
+                                        <h4 class="phase-title">Thải Trừ Miễn Dịch</h4>
+                                    </div>
+                                    <span class="phase-tag tag-treat">⚠️ ĐIỀU TRỊ</span>
+                                </div>
+
+                                <div class="phase-age">
+                                    <i class="fa-solid fa-user-injured"></i> 20 – 40 tuổi (T-cell tấn công gan)
+                                </div>
+
+                                <!-- Mini Sparkline 2 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <!-- Grid Baseline -->
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <!-- HBV DNA Curve: Fluctuating High -->
+                                        <path d="M 10,12 Q 50,8 100,16 T 190,14" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                                        <!-- ALT Curve: Flare Spikes -->
+                                        <path d="M 10,35 Q 40,8 70,30 T 130,12 T 190,26" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <!-- Labels -->
+                                        <text x="12" y="8" font-size="8" font-weight="700" fill="#0284c7">DNA &gt; 20k</text>
+                                        <text x="110" y="8" font-size="8" font-weight="800" fill="#ef4444">ALT Flare ↑↑</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">HBeAg</span>
+                                        <span class="diag-pill-val" style="color: #0284c7;">(+) Dương tính</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">HBV DNA</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">&gt; 20.000 IU/mL</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Men Gan ALT</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">Tăng cao (&gt; 2x ULN)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Xơ Hóa Gan</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">F2 – F4 (Tiến triển)</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Tế bào CD8+ T-cell phá hủy tế bào gan nhiễm vi-rút gây hoại tử khoảng cửa.</li>
+                                    <li>Tạo dải xơ tiến triển nhanh chóng thành xơ gan nếu không can thiệp.</li>
+                                    <li>Cơ hội chuyển đảo huyết thanh HBeAg (10%–15%/năm).</li>
+                                </ul>
+
+                                <div class="phase-action action-treat">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>CHỈ ĐỊNH ĐIỀU TRỊ THUỐC NAs NGAY</strong> (TDF / TAF / Entecavir).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NODE 3: KIỂM SOÁT MIỄN DỊCH / KHÔNG HOẠT ĐỘNG -->
+                        <div class="phase-node phase-green visible" data-phase="3">
+                            <div class="phase-marker">3</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #10b981; text-transform: uppercase;">Giai Đoạn 3</div>
+                                        <h4 class="phase-title">Kiểm Soát Miễn Dịch</h4>
+                                    </div>
+                                    <span class="phase-tag tag-safe">✅ THEO DÕI</span>
+                                </div>
+
+                                <div class="phase-age">
+                                    <i class="fa-solid fa-shield-halved"></i> Sau chuyển đảo HBe (Anti-HBe (+))
+                                </div>
+
+                                <!-- Mini Sparkline 3 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <!-- Grid Baseline -->
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <!-- HBV DNA Curve: Very Low -->
+                                        <path d="M 10,34 Q 100,35 190,36" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                                        <!-- ALT Curve: Normal Flat Low -->
+                                        <path d="M 10,36 Q 100,36 190,37" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <!-- Labels -->
+                                        <text x="12" y="28" font-size="8" font-weight="700" fill="#0284c7">DNA &lt; 2000</text>
+                                        <text x="130" y="28" font-size="8" font-weight="700" fill="#10b981">ALT &lt; ULN</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">HBeAg</span>
+                                        <span class="diag-pill-val" style="color: #10b981;">(-) / Anti-HBe (+)</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">HBV DNA</span>
+                                        <span class="diag-pill-val">&lt; 2.000 IU/mL</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Men Gan ALT</span>
+                                        <span class="diag-pill-val" style="color: #10b981;">Bình thường</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Xơ Hóa Gan</span>
+                                        <span class="diag-pill-val">F0 – F1 (Thoái lui)</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Người mang vi-rút không hoạt động (Inactive carrier state).</li>
+                                    <li>Hệ miễn dịch kiểm soát ức chế vi-rút, tổn thương gan hoại tử lắng xuống.</li>
+                                    <li>Tỷ lệ mất HBsAg tự nhiên đạt mức cao nhất (~1%–3%/năm).</li>
+                                </ul>
+
+                                <div class="phase-action action-safe">
+                                    <i class="fa-solid fa-check"></i> Theo dõi ALT &amp; DNA mỗi 6–12 tháng; <strong>Tầm soát HCC mỗi 6 tháng</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NODE 4: VIÊM GAN B MẠN HBeAg(-) TÁI HOẠT -->
+                        <div class="phase-node phase-purple visible" data-phase="4">
+                            <div class="phase-marker">4</div>
+                            <div class="phase-card">
+                                <div class="phase-header">
+                                    <div>
+                                        <div style="font-size: 0.72rem; font-weight: 800; color: #8b5cf6; text-transform: uppercase;">Giai Đoạn 4</div>
+                                        <h4 class="phase-title">Tái Hoạt HBeAg(-)</h4>
+                                    </div>
+                                    <span class="phase-tag tag-alert">🚨 BÁO ĐỘNG</span>
+                                </div>
+
+                                <div class="phase-age">
+                                    <i class="fa-solid fa-dna"></i> Đột biến Precore (G1896A) / BCP
+                                </div>
+
+                                <!-- Mini Sparkline 4 -->
+                                <div class="sparkline-box">
+                                    <svg viewBox="0 0 200 45" width="100%" height="45" style="display: block;">
+                                        <!-- Grid Baseline -->
+                                        <line x1="10" y1="38" x2="190" y2="38" stroke="var(--color-border, #e2e8f0)" stroke-width="1" stroke-dasharray="2 2"/>
+                                        <!-- HBV DNA Curve: Fluctuating Moderate-High -->
+                                        <path d="M 10,24 Q 60,14 110,22 T 190,16" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                                        <!-- ALT Curve: Fluctuating High -->
+                                        <path d="M 10,32 Q 50,18 90,30 T 150,14 T 190,24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="3 3"/>
+                                        <!-- Labels -->
+                                        <text x="12" y="10" font-size="8" font-weight="700" fill="#0284c7">DNA &gt; 2000</text>
+                                        <text x="120" y="10" font-size="8" font-weight="800" fill="#8b5cf6">ALT Tăng Đợt</text>
+                                    </svg>
+                                </div>
+
+                                <!-- Diagnostic KPI Pills -->
+                                <div class="diagnostic-pills">
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">HBeAg</span>
+                                        <span class="diag-pill-val" style="color: #8b5cf6;">(-) Âm tính giả</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">HBV DNA</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">&gt; 2.000 IU/mL</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Men Gan ALT</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">Dao động tăng</span>
+                                    </div>
+                                    <div class="diag-pill">
+                                        <span class="diag-pill-label">Xơ Hóa Gan</span>
+                                        <span class="diag-pill-val" style="color: #ef4444;">F3 – F4 (Nặng)</span>
+                                    </div>
+                                </div>
+
+                                <ul class="phase-bullets">
+                                    <li>Đột biến Precore/BCP ngăn tiết HBeAg nhưng vi-rút nhân lên rất mạnh.</li>
+                                    <li>Tiến triển âm thầm không triệu chứng, thường gặp ở người lớn tuổi.</li>
+                                    <li>Tỷ lệ biến chứng xơ gan mất bù &amp; ung thư gan HCC cao nhất.</li>
+                                </ul>
+
+                                <div class="phase-action action-alert">
+                                    <i class="fa-solid fa-capsules"></i> <strong>CHỈ ĐỊNH ĐIỀU TRỊ THUỐC NAs DÀI HẠN</strong> (Hiếm khi ngừng thuốc).
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- REACTIVATION WARNING & TRANSITION ARC BANNER -->
+                <div class="reactivation-banner">
+                    <div class="reactivation-info">
+                        <div class="reactivation-icon">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </div>
+                        <div>
+                            <strong style="color: #8b5cf6; font-size: 0.92rem;">
+                                Vòng Lặp Tái Hoạt Động (Reactivation Loop) &amp; Bùng Phát Viêm Gan B:
+                            </strong>
+                            <p style="margin: 0.2rem 0 0 0; line-height: 1.5; font-size: 0.83rem;">
+                                Bệnh nhân ở <strong>Giai đoạn 3 (Người mang không hoạt động)</strong> có thể tái hoạt chuyển sang <strong>Giai đoạn 4</strong> bất kỳ lúc nào khi xuất hiện đột biến Precore hoặc khi dùng hóa trị, ức chế miễn dịch, corticoid. Bắt buộc xét nghiệm sàng lọc HBsAg trước mọi can thiệp ức chế miễn dịch!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GIAI ĐOẠN 5: FUNCTIONAL CURE (MẤT HBsAg) -->
+                <div class="outcome-card">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #10b981; color: #ffffff; font-weight: 800; font-size: 0.85rem;">
+                            5
+                        </span>
+                        <div>
+                            <strong style="color: #065f46; font-size: 0.92rem;">
+                                Giai Đoạn 5: Mất Kháng Nguyên Bề Mặt HBsAg ("Chữa Khỏi Chức Năng" – Functional Cure)
+                            </strong>
+                            <p style="margin: 0.15rem 0 0 0; font-size: 0.8rem; color: var(--color-text-muted, #64748b);">
+                                HBsAg (-) • Anti-HBs (+) • HBV DNA không phát hiện • cccDNA còn tồn lưu tối thiểu trong nhân • Nguy cơ HCC giảm trên 80% (nhưng vẫn cần tầm soát định kỳ ở người có xơ gan hoặc nam &gt; 40 tuổi).
+                            </p>
+                        </div>
+                    </div>
+                    <span style="background: rgba(16, 185, 129, 0.15); color: #065f46; padding: 0.35rem 0.75rem; border-radius: 999px; font-weight: 800; font-size: 0.75rem; white-space: nowrap;">
+                        🎯 MỤC TIÊU ĐIỀU TRỊ TỐI HẬU
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 5: ĐỒNG NHIỄM HBV VÀ VIRUS VIÊM GAN D (HDV) -->
+        <!-- ========================================================================= -->
+        <section id="sec-5" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-circle-nodes"></i> 5. Dịch Tễ Học Đồng Nhiễm HBV và Vi-rút Viêm Gan D (HDV)</h2>
+
+            <p class="section-text">
+                Vi-rút viêm gan D (HDV) là một vi-rút khiếm khuyết phụ thuộc bắt buộc vào kháng nguyên bề mặt HBsAg để tạo vỏ bọc. Do đó, HDV chỉ lây nhiễm ở người có HBV (đồng nhiễm hoặc bội nhiễm). Đồng nhiễm HBV/HDV làm <strong>tăng tốc độ tiến triển xơ gan lên gấp 2–3 lần</strong> và chịu trách nhiệm cho <strong>18% số ca xơ gan</strong> và <strong>20% số ca HCC</strong> do HBV toàn cầu.
+            </p>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-table-cells"></i> Bảng 2: Gánh Nặng Dịch Tễ Học Đồng Nhiễm HBV/HDV Toàn Cầu (J Hepatol 2020)</h3>
+            <p class="section-text">
+                Dữ liệu phân tích gộp hệ thống từ Stockdale AJ et al. (<em>Journal of Hepatology</em> 2020):
+            </p>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Khu Vực Địa Lý (WHO)</th>
+                            <th style="width: 18%; color: #0284c7;">Tỷ Lệ Anti-HDV Dân Số Chung</th>
+                            <th style="width: 18%;">Tỷ Lệ Khám Gan Mật</th>
+                            <th style="width: 20%;">Số Ca Anti-HDV Ước Tính</th>
+                            <th style="width: 19%; color: #ef4444;">Số Ca Nhiễm HDV Hoạt Động (RNA +)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tây Thái Bình Dương (WPR)</strong></td>
+                            <td>4,09% (3,47% - 4,77%)</td>
+                            <td>8,07%</td>
+                            <td><strong style="color: #0284c7;">4.935.000</strong> (Cao nhất)</td>
+                            <td><strong style="color: #ef4444;">3.617.000</strong> (73,3% viremic)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Châu Phi (AFR)</strong></td>
+                            <td><strong style="color: #0284c7;">5,97%</strong> (4,98% - 7,24%)</td>
+                            <td>12,26%</td>
+                            <td>3.835.000</td>
+                            <td>1.584.000 (41,3% viremic)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Đông Nam Á (SEAR)</strong></td>
+                            <td>3,20% (0,36% - 12,4%)</td>
+                            <td>4,00%</td>
+                            <td>1.267.000</td>
+                            <td>635.000 (50,1% viremic)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Đông Địa Trung Hải (EMR)</strong></td>
+                            <td>3,54% (2,10% - 6,28%)</td>
+                            <td>17,36%</td>
+                            <td>836.000</td>
+                            <td>413.000 (49,4% viremic)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Châu Âu (EUR)</strong></td>
+                            <td>3,00% (2,09% - 4,21%)</td>
+                            <td><strong style="color: #ef4444;">19,48%</strong> (Khám chuyên khoa)</td>
+                            <td>445.000</td>
+                            <td>285.000 (64,1% viremic)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Châu Mỹ (AMR)</strong></td>
+                            <td>5,91% (3,02% - 9,71%)</td>
+                            <td>3,34%</td>
+                            <td>416.000</td>
+                            <td>267.000 (64,2% viremic)</td>
+                        </tr>
+                        <tr style="background: var(--color-bg, #f8fafc); font-weight: 700;">
+                            <td>TOÀN CẦU (GLOBAL)</td>
+                            <td><strong style="color: #0284c7;">4,49%</strong> (3,57% - 5,68%)</td>
+                            <td><strong>16,42%</strong></td>
+                            <td><strong>11.992.000 ca</strong></td>
+                            <td><strong style="color: #ef4444;">7.015.000 ca (58,5%)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="danger-box">
+                <strong style="color: #ef4444; font-size: 0.95rem;">
+                    <i class="fa-solid fa-users-viewfinder"></i> Nhóm Nguy Cơ Cao Đồng Nhiễm HDV (Tỷ Số Chênh Odds Ratio):
+                </strong>
+                <ul style="margin: 0.35rem 0 0 1.25rem; line-height: 1.65; padding: 0;">
+                    <li><strong>Người tiêm chích ma túy (PWID):</strong> OR = <strong>19,0</strong></li>
+                    <li><strong>Người hành nghề mại dâm (CSWs):</strong> OR = <strong>18,7</strong></li>
+                    <li><strong>Nam quan hệ tình dục đồng giới (MSM):</strong> OR = <strong>16,0</strong></li>
+                    <li><strong>Bệnh nhân chạy thận nhân tạo chu kỳ:</strong> OR = <strong>3,4</strong></li>
+                    <li><em>Tại Việt Nam:</em> Tỷ lệ nhiễm anti-HDV khoảng ~2%. Bắt buộc xét nghiệm anti-HDV ở bệnh nhân xơ gan tiến triển nhanh hoặc ung thư gan ở người trẻ tuổi.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 6: NGUY CƠ TIẾN TRIỂN XƠ GAN & UNG THƯ GAN (HCC) -->
+        <!-- ========================================================================= -->
+        <section id="sec-6" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-dna"></i> 6. Yếu Tố Nguy Cơ Tiến Triển Xơ Gan &amp; Ung Thư Biểu Mô Tế Bào Gan</h2>
+
+            <p class="section-text">
+                Nghiên cứu kinh điển <strong>REVEAL-HBV</strong> tại Đài Loan trên hơn 3.500 bệnh nhân theo dõi hơn 13 năm đã chứng minh mối liên hệ tuyến tính chặt chẽ giữa nồng độ HBV DNA trong máu và nguy cơ tiến triển thành xơ gan cũng như HCC:
+            </p>
+
+            <div class="metric-grid">
+                <div class="metric-card" style="border-top-color: #ef4444;">
+                    <div class="metric-value" style="color: #ef4444;">x 6 – 10</div>
+                    <div class="metric-label">Tăng Nguy Cơ HCC Khi Tải Lượng Cao</div>
+                    <div class="metric-sub">HBV DNA &gt; 10^6 copies/mL vs &lt; 300 copies/mL</div>
+                </div>
+                <div class="metric-card" style="border-top-color: #f59e0b;">
+                    <div class="metric-value" style="color: #f59e0b;">Genotype C</div>
+                    <div class="metric-label">Độc Lực Cao Nhất Tại Châu Á</div>
+                    <div class="metric-sub">Tỷ lệ xơ gan &amp; HCC cao hơn Genotype B</div>
+                </div>
+                <div class="metric-card" style="border-top-color: #0284c7;">
+                    <div class="metric-value" style="color: #0284c7;">6 Tháng/Lần</div>
+                    <div class="metric-label">Tần Suất Tầm Soát HCC Chuẩn</div>
+                    <div class="metric-sub">Siêu âm gan + AFP (hoặc PIVKA-II / AFP-L3)</div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-layer-group"></i> Các Yếu Tố Nguy Cơ Phối Hợp Làm Tăng Vọt Tỷ Lệ Ung Thư Gan</h3>
+            <ul style="margin: 0 0 1.25rem 1.25rem; line-height: 1.7; font-size: 0.92rem;">
+                <li><strong>Nam giới &amp; Tuổi &gt; 40:</strong> Tỷ lệ mắc HCC ở nam giới nhiễm HBV cao gấp 3–4 lần nữ giới do tác động của hormone androgen và thói quen sinh hoạt.</li>
+                <li><strong>Sự cộng hưởng với Gan thoái hóa mỡ (MASLD) &amp; Đái tháo đường:</strong> Bệnh nhân viêm gan B có kèm MASLD làm tăng gấp <strong>2–3 lần</strong> nguy cơ xơ gan và ung thư tế bào gan.</li>
+                <li><strong>Sử dụng rượu bia:</strong> Rượu phá hủy tế bào gan và thúc đẩy sao chép HBV, đẩy nhanh quá trình xơ hóa.</li>
+                <li><strong>Độc tố Aflatoxin B1:</strong> Gặp trong ngũ cốc/lạc mốc ở các nước nhiệt đới, gây đột biến đặc hiệu codon 249 gen p53 hiệp đồng với HBV.</li>
+            </ul>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 7: CHIẾN LƯỢC DỰ PHÒNG, VẮC-XIN & LỘ TRÌNH WHO 2030 -->
+        <!-- ========================================================================= -->
+        <section id="sec-7" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-syringe"></i> 7. Chiến Lược Dự Phòng, Tiêm Chủng Vắc-Xin &amp; Lộ Trình WHO 2030</h2>
+
+            <p class="section-text">
+                Chiến lược Y tế Toàn cầu về Viêm gan vi-rút của WHO hướng tới mục tiêu <strong>loại trừ viêm gan B như một mối đe dọa sức khỏe cộng đồng vào năm 2030</strong>:
+            </p>
+
+            <div class="metric-grid">
+                <div class="metric-card" style="border-top-color: #10b981;">
+                    <div class="metric-value" style="color: #10b981;">-90%</div>
+                    <div class="metric-label">Giảm Số Ca Nhiễm Mới</div>
+                    <div class="metric-sub">Độ bao phủ vắc-xin sơ sinh &ge; 90%</div>
+                </div>
+                <div class="metric-card" style="border-top-color: #0284c7;">
+                    <div class="metric-value" style="color: #0284c7;">-65%</div>
+                    <div class="metric-label">Giảm Tử Vong Do HBV</div>
+                    <div class="metric-sub">Mở rộng tiếp cận thuốc NAs toàn cầu</div>
+                </div>
+                <div class="metric-card" style="border-top-color: #f59e0b;">
+                    <div class="metric-value" style="color: #f59e0b;">&ge; 80%</div>
+                    <div class="metric-label">Tỷ Lệ Được Điều Trị</div>
+                    <div class="metric-sub">Trong số người đủ tiêu chuẩn điều trị</div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title"><i class="fa-solid fa-shield-virus"></i> Chiến Lược Cốt Lõi: Ngăn Ngừa Lây Truyền Mẹ Sang Con (PMTCT)</h3>
+            <p class="section-text">
+                Đây là mắt xích quyết định nhất để triệt tiêu nguồn lây nhiễm mới tại Việt Nam và Châu Á:
+            </p>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="epi-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Biện Pháp Can Thiệp</th>
+                            <th style="width: 35%;">Đối Tượng &amp; Thời Điểm Áp Dụng</th>
+                            <th style="width: 40%; color: #10b981;">Hiệu Quả Bảo Vệ Thực Tế</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Vắc-xin liều sơ sinh (Birth Dose)</strong></td>
+                            <td>Tất cả trẻ sơ sinh trong <strong>24 giờ đầu sau sinh</strong>, tiếp nối 3 liều chuẩn (2, 3, 4 tháng).</td>
+                            <td>Giảm &gt;80% nguy cơ lây truyền mạn tính khi dùng đơn độc.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kháng huyết thanh HBIG</strong></td>
+                            <td>Trẻ sinh ra từ mẹ HBsAg(+), tiêm trong vòng <strong>12 – 24 giờ đầu</strong> ở vị trí khác với vắc-xin.</td>
+                            <td>Phối hợp Vắc-xin + HBIG nâng hiệu quả bảo vệ lên <strong>90% – 95%</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thuốc kháng vi-rút TDF cho mẹ</strong></td>
+                            <td>Phụ nữ mang thai có HBV DNA &gt; 200.000 IU/mL hoặc HBeAg(+), uống <strong>Tenofovir (TDF 300mg)</strong> từ tuần thai 24–28.</td>
+                            <td>Ngăn ngừa triệt để hiện tượng thất bại miễn dịch (Breakthrough transmission), đưa tỷ lệ lây truyền về <strong>gần 0%</strong>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- TRỤ CỘT 8: TÓM TẮT THỰC HÀNH LÂM SÀNG & TÀI LIỆU THAM KHẢO AMA -->
+        <!-- ========================================================================= -->
+        <section id="sec-8" class="article-section">
+            <h2 class="section-title"><i class="fa-solid fa-bookmark"></i> 8. Tóm Tắt Thực Hành Lâm Sàng (Pearls) &amp; Y Văn Tham Khảo</h2>
+
+            <div class="pearl-box">
+                <strong style="color: #f59e0b; font-size: 1rem; display: block; margin-bottom: 0.5rem;">
+                    <i class="fa-solid fa-gem"></i> 6 Đúc Kết Dịch Tễ Học &amp; Thực Hành Lâm Sàng (Clinical Pearls):
+                </strong>
+                <ol style="margin: 0; padding-left: 1.25rem; line-height: 1.7;">
+                    <li><strong>Sàng lọc toàn dân ít nhất 1 lần:</strong> Theo QĐ 1740/QĐ-BYT 2026, với tỷ lệ lưu hành &ge; 9,4%, mọi người dân Việt Nam cần được xét nghiệm HBsAg ít nhất một lần trong đời.</li>
+                    <li><strong>Điều trị ngay nếu có xơ gan:</strong> Bệnh nhân có bằng chứng xơ gan (lâm sàng, siêu âm hoặc đo độ đàn hồi gan FibroScan &ge; F4) kèm HBsAg(+) cần được điều trị thuốc NAs ngay bất kể nồng độ ALT hay HBV DNA.</li>
+                    <li><strong>Thuốc hàng đầu ưu tiên (NAs thế hệ mới):</strong> Tenofovir disoproxil fumarate (TDF), Tenofovir alafenamide (TAF) hoặc Entecavir (ETV) là các thuốc kháng vi-rút có hàng rào kháng thuốc cao, an toàn khi điều trị lâu dài.</li>
+                    <li><strong>Tầm soát HCC là suốt đời:</strong> Mất HBsAg hoặc tải lượng vi-rút dưới ngưỡng phát hiện không loại trừ hoàn toàn nguy cơ HCC do cccDNA đã tích hợp trong nhân tế bào gan; bệnh nhân xơ gan hoặc nam giới &gt;40 tuổi vẫn cần siêu âm gan + AFP mỗi 6 tháng.</li>
+                    <li><strong>Cảnh giác đồng nhiễm HDV:</strong> Ở bệnh nhân viêm gan B tiến triển xơ gan nhanh không rõ nguyên nhân, bắt buộc chỉ định xét nghiệm Anti-HDV để tránh bỏ sót vi-rút viêm gan D.</li>
+                    <li><strong>Dự phòng lây truyền mẹ con (PMTCT) 3 mũi giáp công:</strong> Xét nghiệm mẹ bầu + Uống TDF từ tam cá nguyệt 3 nếu HBV DNA cao + Tiêm Vắc-xin &amp; HBIG cho trẻ trong 24h đầu.</li>
+                </ol>
+            </div>
+
+            <h3 class="subsection-title" style="margin-top: 2rem;"><i class="fa-solid fa-book-journal-whills"></i> Tài Liệu Tham Khảo Chuẩn AMA</h3>
+            <ol class="reference-list">
+                <li>Bộ Y tế Việt Nam. <em>Hướng dẫn chẩn đoán, điều trị viêm gan vi rút B</em> (Ban hành kèm theo Quyết định số 1740/QĐ-BYT ngày 16 tháng 06 năm 2026 của Bộ trưởng Bộ Y tế). Hà Nội: Bộ Y tế; 2026.</li>
+                <li>European Association for the Study of the Liver. EASL 2025 Clinical Practice Guidelines on the management of chronic hepatitis B virus infection. <em>J Hepatol</em>. 2025;82(5). doi:10.1016/j.jhep.2025.03.018.</li>
+                <li>Lau G, Sarin SK, Omata M, et al. APASL clinical practice guidelines on the management of chronic hepatitis B infection: a 2026 update. <em>Hepatol Int</em>. 2026. doi:10.1007/s12072-026-11108-1.</li>
+                <li>Stockdale AJ, Kreuels B, Henrion MYR, et al. The global prevalence of hepatitis d virus infection: Systematic review and meta-analysis. <em>J Hepatol</em>. 2020;73(3):523-532. doi:10.1016/j.jhep.2020.04.008.</li>
+                <li>Tan M, Cui F, et al. Estimating the proportion of people with chronic hepatitis B virus infection eligible for hepatitis B antiviral treatment worldwide: a systematic review and meta-analysis. <em>Lancet Gastroenterol Hepatol</em>. 2021;6(2):106-119. doi:10.1016/S2468-1253(20)30307-1.</li>
+                <li>World Health Organization. <em>Global hepatitis report 2024: action for access in low- and middle-income countries</em>. Geneva: World Health Organization; 2024.</li>
+            </ol>
+        </section>
+
+        <!-- Back to Hub Navigation Button -->
+        <div style="text-align: center; margin: 3rem 0 2rem 0;">
+            <a href="README.md" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-surface, #ffffff); color: var(--epi-accent, #0284c7); border: 1.5px solid var(--epi-accent, #0284c7); padding: 0.75rem 1.75rem; border-radius: 999px; font-weight: 700; text-decoration: none; transition: all 0.2s ease;">
+                <i class="fa-solid fa-arrow-left"></i> Quay lại Phân Hệ Dịch Tễ Học Y Khoa
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Theme Toggle & Sticky Nav Active Spy Script -->
+    <script>
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', nextTheme);
+                localStorage.setItem('theme', nextTheme);
+                const icon = themeToggleBtn.querySelector('i');
+                if (icon) {
+                    icon.className = nextTheme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                }
+            });
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const icon = themeToggleBtn.querySelector('i');
+            if (icon) {
+                icon.className = savedTheme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+        }
+
+        // Active Pillar Scroll Spy
+        const sections = document.querySelectorAll('.article-section');
+        const navTabs = document.querySelectorAll('.pillar-tab');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navTabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.getAttribute('href')?.slice(1) === current) {
+                    tab.classList.add('active');
+                }
+            });
+        });
+        // Staggered Entrance Animation for Timeline Phase Nodes
+        const phaseNodes = document.querySelectorAll('.phase-node');
+        if ('IntersectionObserver' in window && phaseNodes.length > 0) {
+            const phaseObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, idx) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, idx * 120);
+                        phaseObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            phaseNodes.forEach(node => phaseObserver.observe(node));
+        } else {
+            phaseNodes.forEach(node => node.classList.add('visible'));
+        }
+    </script>
+</body>
+
+</html>

@@ -6,7 +6,8 @@
 import { escapeHtml } from './studio-shared';
 import {
   analyzeCardioStudio, renderScore2GaugeSvg, renderLdlWaterfallSvg,
-  CARDIO_PRESETS, CardioRiskInputs
+  computePpgAnalysis, renderPpgWaveformSvg,
+  CARDIO_PRESETS, PPG_PRESETS, CardioRiskInputs, PpgSimulationInputs
 } from './cardio-risk-studio';
 
 export function renderCardioPanel(isActive: boolean): string {
@@ -106,7 +107,7 @@ export function renderCardioPanel(isActive: boolean): string {
           </div>
 
           <!-- Compact Chips View (Hidden by default) -->
-          <div id="cardioPresetsChips" style="display:none; flex-wrap:wrap; gap:0.45rem; padding-top:0.25rem;">
+          <div id="cardioPresetsChips" class="dsp-case-chips" style="display:none;">
             ${CARDIO_PRESETS.map(p => `
               <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-cardio-preset-btn js-cardio-preset-chip" data-preset-id="${p.id}" data-category="${p.category}" data-search="${escapeHtml((p.name + ' ' + p.description).toLowerCase())}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg); border-color:var(--color-border); display:inline-flex; align-items:center; gap:6px;">
                 <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; flex-shrink:0;"></span>
@@ -155,19 +156,22 @@ export function renderCardioPanel(isActive: boolean): string {
           <!-- Sub-tabs Navigation inside Cardio Studio -->
           <div style="display:flex; gap:0.4rem; margin-bottom:1rem; border-bottom:2px solid var(--color-border); padding-bottom:0.4rem; overflow-x:auto;">
             <button type="button" class="dsp-btn dsp-btn-sm js-cardio-subtab-btn is-active" data-cardio-tab="score2_ascvd" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-chart-pie"></i> 1. Đánh Giá Nguy Cơ 10 Năm (SCORE2 / ASCVD)
+              <i class="fa-solid fa-chart-pie"></i> 1. Nguy Cơ 10 Năm
             </button>
             <button type="button" class="dsp-btn dsp-btn-sm js-cardio-subtab-btn" data-cardio-tab="lipid_titration" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-capsules"></i> 2. Chuẩn Độ Lipid (Statin, Ezetimibe, PCSK9i)
+              <i class="fa-solid fa-capsules"></i> 2. Chuẩn Độ Lipid
             </button>
             <button type="button" class="dsp-btn dsp-btn-sm js-cardio-subtab-btn" data-cardio-tab="heart_failure_gdmt" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-heart-pulse"></i> 3. Tối Ưu Suy Tim GDMT 4 Trụ Cột
+              <i class="fa-solid fa-heart-pulse"></i> 3. Suy Tim GDMT
             </button>
             <button type="button" class="dsp-btn dsp-btn-sm js-cardio-subtab-btn" data-cardio-tab="fh_screening" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-dna"></i> 4. Tăng Cholesterol Gia Đình &amp; Lp(a)
+              <i class="fa-solid fa-dna"></i> 4. FH &amp; Lp(a)
             </button>
             <button type="button" class="dsp-btn dsp-btn-sm js-cardio-subtab-btn" data-cardio-tab="lifestyle_dapt" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-person-running"></i> 5. Kháng Kết Tập Tiểu Cầu &amp; Lối Sống
+              <i class="fa-solid fa-person-running"></i> 5. DAPT &amp; Lối Sống
+            </button>
+            <button type="button" class="dsp-btn dsp-btn-sm js-cardio-subtab-btn" data-cardio-tab="ppg_hemodynamics" style="border-radius:8px 8px 0 0; background:rgba(14,165,233,0.1); color:#0284c7; border-color:rgba(14,165,233,0.3);">
+              <i class="fa-solid fa-wave-square" style="color:#0ea5e9;"></i> 6. Sóng Mạch Quang Học PPG
             </button>
           </div>
 
@@ -469,6 +473,106 @@ export function renderCardioPanel(isActive: boolean): string {
             </div>
           </div>
 
+          <!-- 6. PHOTOPLETHYSMOGRAM (PPG) STUDIO PANEL -->
+          <div class="js-cardio-subtab-panel" id="cardioSubtabPpg" style="display:none;">
+            <div class="dsp-card" style="padding:1.25rem;">
+              
+              <!-- Header & Quick Presets -->
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+                <div>
+                  <h4 style="margin:0; font-size:13.5px; font-weight:800; color:#0284c7; display:flex; align-items:center; gap:6px;">
+                    <i class="fa-solid fa-wave-square"></i> Dải Sóng Mạch Quang Học PPG &amp; Huyết Động Không Xâm Lấn
+                  </h4>
+                  <div style="font-size:11px; color:var(--color-text-muted); margin-top:2px;">
+                    Phân tích Pulse Oximetry Waveform, Perfusion Index (PI %), Độ cứng thành mạch (SI) &amp; Dicrotic Notch theo NeuroKit2.
+                  </div>
+                </div>
+                <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
+                  ${PPG_PRESETS.map((p, idx) => `
+                    <button type="button" class="dsp-btn dsp-btn-sm js-ppg-preset-btn ${idx === 0 ? 'is-active' : ''}" data-ppg-id="${p.id}" style="font-size:11px; padding:3px 8px; border-radius:6px; font-weight:700;">
+                      ${escapeHtml(p.name.split('.')[1] || p.name)}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- PPG SVG Waveform Container -->
+              <div id="cardioPpgSvgContainer" style="margin-bottom:1rem; overflow-x:auto;">
+                <!-- Rendered dynamically -->
+              </div>
+
+              <!-- Interactive Controls Grid -->
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; background:var(--color-bg); padding:1rem; border-radius:10px; border:1px solid var(--color-border); margin-bottom:1rem;">
+                
+                <!-- PI Slider -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                    <span>Chỉ Số Tưới Máu (Perfusion Index - PI):</span>
+                    <span id="ppgPiDisplay" style="color:#0284c7; font-weight:800;">2.4%</span>
+                  </label>
+                  <input type="range" id="ppgPiSlider" min="0.2" max="10.0" step="0.1" value="2.4" class="dsp-range-slider" />
+                  <div style="font-size:9.5px; color:var(--color-text-muted); display:flex; justify-content:space-between;">
+                    <span>Co mạch (&lt;0.5%)</span>
+                    <span>Bình thường (1-5%)</span>
+                    <span>Tăng động (&gt;6%)</span>
+                  </div>
+                </div>
+
+                <!-- Dicrotic Notch Slider -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                    <span>Độ Sâu Khuyết Dicrotic Notch:</span>
+                    <span id="ppgNotchDisplay" style="color:#ca8a04; font-weight:800;">35%</span>
+                  </label>
+                  <input type="range" id="ppgNotchSlider" min="0.0" max="0.6" step="0.05" value="0.35" class="dsp-range-slider" />
+                  <div style="font-size:9.5px; color:var(--color-text-muted); display:flex; justify-content:space-between;">
+                    <span>Mất khuyết (Sốc)</span>
+                    <span>Bình thường</span>
+                    <span>Khuyết sâu</span>
+                  </div>
+                </div>
+
+                <!-- Arterial Stiffness Slider -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:flex; justify-content:space-between; margin-bottom:0.25rem;">
+                    <span>Độ Cứng Thành Mạch (SI):</span>
+                    <span id="ppgStiffnessDisplay" style="color:#7c3aed; font-weight:800;">6.8 m/s</span>
+                  </label>
+                  <input type="range" id="ppgStiffnessSlider" min="4.0" max="15.0" step="0.2" value="6.8" class="dsp-range-slider" />
+                  <div style="font-size:9.5px; color:var(--color-text-muted); display:flex; justify-content:space-between;">
+                    <span>Đàn hồi tốt (&lt;7)</span>
+                    <span>Trung niên</span>
+                    <span>Xơ cứng (&gt;10)</span>
+                  </div>
+                </div>
+
+                <!-- Noise Artifact & Rhythm Selectors -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+                  <div>
+                    <label style="font-size:11px; font-weight:700; color:var(--color-text-muted);">Nhiễu Tín Hiệu:</label>
+                    <select id="ppgNoiseSelect" class="dsp-select" style="font-size:11px; padding:3px 6px;">
+                      <option value="clean" selected>Tín hiệu sạch</option>
+                      <option value="baseline_drift">Trôi Baseline (Thở)</option>
+                      <option value="motion_artifact">Nhiễu vận động</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size:11px; font-weight:700; color:var(--color-text-muted);">Dạng Nhịp Mạch:</label>
+                    <select id="ppgRhythmSelect" class="dsp-select" style="font-size:11px; padding:3px 6px;">
+                      <option value="regular" selected>Nhịp đều (NSR)</option>
+                      <option value="irregular_afib">Rung nhĩ (Hụt mạch)</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Dynamic PPG Analysis Breakdown Container -->
+              <div id="cardioPpgAnalysisWrap"></div>
+
+            </div>
+          </div>
+
         </div>
 
         <!-- Cardio Results & Clinical Decision Column -->
@@ -505,6 +609,9 @@ export function mountCardioController(bindActionBtns: (container: HTMLElement) =
         const p = document.getElementById('cardioSubtabFh'); if (p) p.style.display = 'block';
       } else if (target === 'lifestyle_dapt') {
         const p = document.getElementById('cardioSubtabLifestyle'); if (p) p.style.display = 'block';
+      } else if (target === 'ppg_hemodynamics') {
+        const p = document.getElementById('cardioSubtabPpg'); if (p) p.style.display = 'block';
+        recalcPpg();
       }
     });
   });
@@ -795,8 +902,161 @@ export function mountCardioController(bindActionBtns: (container: HTMLElement) =
     }
   };
 
+  // ============================================================
+  // PPG STUDIO CONTROLLER LOGIC (NeuroKit2)
+  // ============================================================
+  let currentActivePpgPresetId = 'ppg_normal';
+
+  const recalcPpg = () => {
+    const hr = parseFloat((document.getElementById('cardioHr') as HTMLInputElement)?.value) || 75;
+    const pi = parseFloat((document.getElementById('ppgPiSlider') as HTMLInputElement)?.value) || 2.4;
+    const dicroticNotchHeight = parseFloat((document.getElementById('ppgNotchSlider') as HTMLInputElement)?.value) || 0.35;
+    const arterialStiffness = parseFloat((document.getElementById('ppgStiffnessSlider') as HTMLInputElement)?.value) || 6.8;
+    const noiseArtifact = ((document.getElementById('ppgNoiseSelect') as HTMLSelectElement)?.value || 'clean') as any;
+    const rhythmType = ((document.getElementById('ppgRhythmSelect') as HTMLSelectElement)?.value || 'regular') as any;
+
+    // Update Label Displays
+    const piDisp = document.getElementById('ppgPiDisplay'); if (piDisp) piDisp.textContent = `${pi.toFixed(1)}%`;
+    const notchDisp = document.getElementById('ppgNotchDisplay'); if (notchDisp) notchDisp.textContent = `${(dicroticNotchHeight * 100).toFixed(0)}%`;
+    const stiffDisp = document.getElementById('ppgStiffnessDisplay'); if (stiffDisp) stiffDisp.textContent = `${arterialStiffness.toFixed(1)} m/s`;
+
+    const inputs: PpgSimulationInputs = {
+      heartRate: hr,
+      perfusionIndex: pi,
+      dicroticNotchHeight,
+      arterialStiffness,
+      noiseArtifact,
+      rhythmType,
+    };
+
+    const res = computePpgAnalysis(inputs);
+
+    // 1. Render PPG SVG
+    const ppgContainer = document.getElementById('cardioPpgSvgContainer');
+    if (ppgContainer) {
+      ppgContainer.innerHTML = renderPpgWaveformSvg(inputs);
+    }
+
+    // 2. Render Dynamic PPG Breakdown Cards
+    const analysisWrap = document.getElementById('cardioPpgAnalysisWrap');
+    if (analysisWrap) {
+      analysisWrap.innerHTML = `
+        <!-- Perfusion Hero Status Banner -->
+        <div style="background:${res.perfusionBadgeColor}14; border-left:4px solid ${res.perfusionBadgeColor}; border-radius:8px; padding:0.85rem 1rem; margin-bottom:1rem;">
+          <div style="font-size:11px; font-weight:800; color:${res.perfusionBadgeColor}; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;">
+            <span><i class="fa-solid fa-droplet"></i> Đánh Giá Tưới Máu Vi Mạch Ngoại Vi (Perfusion Index)</span>
+            <span class="dsp-badge" style="background:${res.perfusionBadgeColor}25; color:${res.perfusionBadgeColor};">PI = ${res.perfusionIndex}%</span>
+          </div>
+          <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:0.25rem;">
+            ${escapeHtml(res.perfusionInterpretation)}
+          </div>
+        </div>
+
+        <!-- 3-Metrics Grid -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; margin-bottom:1rem;">
+          
+          <!-- Card 1: Landmarks Timing -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem;">
+            <div style="font-size:11.5px; font-weight:800; color:#dc2626; margin-bottom:0.4rem; border-bottom:1px solid var(--color-border); padding-bottom:0.25rem;">
+              ⏱️ Thời Gian Mốc Sóng (Landmarks)
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.35rem; font-size:11.5px;">
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Đỉnh Tâm Thu (Ps Time):</span>
+                <strong>${res.systolicPeakTimeMs} ms</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Khuyết Đóng Van ĐMC:</span>
+                <strong style="color:#ca8a04;">${res.dicroticNotchTimeMs} ms</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Đỉnh Sóng Dội Ngược (Pr):</span>
+                <strong style="color:#0284c7;">${res.diastolicPeakTimeMs} ms</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Arterial Stiffness & AIx -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem;">
+            <div style="font-size:11.5px; font-weight:800; color:#7c3aed; margin-bottom:0.4rem; border-bottom:1px solid var(--color-border); padding-bottom:0.25rem;">
+              🧬 Độ Cứng Mạch &amp; Lão Hóa (SI / AIx)
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.35rem; font-size:11.5px;">
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Chỉ Số Độ Cứng (SI):</span>
+                <strong style="color:${res.stiffnessIndex > 10 ? '#dc2626' : '#10b981'};">${res.stiffnessIndex} m/s</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Chỉ Số Tăng Cường (AIx):</span>
+                <strong>${res.augmentationIndexPercent}%</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--color-text-muted);">Tuổi Động Mạch Ước Tính:</span>
+                <strong style="font-size:10px;">${escapeHtml(res.vascularAgeEstimated)}</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Clinical Insights -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem;">
+            <div style="font-size:11.5px; font-weight:800; color:#10b981; margin-bottom:0.4rem; border-bottom:1px solid var(--color-border); padding-bottom:0.25rem;">
+              💡 Giá Trị Thực Chiến Lâm Sàng
+            </div>
+            <ul style="margin:0; padding-left:1.1rem; font-size:11px; color:var(--color-text); line-height:1.4;">
+              ${res.clinicalInsights.map(c => `<li>${escapeHtml(c)}</li>`).join('')}
+            </ul>
+          </div>
+
+        </div>
+      `;
+    }
+  };
+
+  // Bind PPG Preset Buttons
+  document.querySelectorAll<HTMLElement>('.js-ppg-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-ppg-id');
+      const preset = PPG_PRESETS.find(p => p.id === id);
+      if (!preset) return;
+
+      currentActivePpgPresetId = preset.id;
+      document.querySelectorAll<HTMLElement>('.js-ppg-preset-btn').forEach(b => {
+        b.classList.remove('is-active');
+      });
+      btn.classList.add('is-active');
+
+      const v = preset.values;
+      const piSlider = document.getElementById('ppgPiSlider') as HTMLInputElement | null;
+      if (piSlider) piSlider.value = String(v.perfusionIndex);
+
+      const notchSlider = document.getElementById('ppgNotchSlider') as HTMLInputElement | null;
+      if (notchSlider) notchSlider.value = String(v.dicroticNotchHeight);
+
+      const stiffSlider = document.getElementById('ppgStiffnessSlider') as HTMLInputElement | null;
+      if (stiffSlider) stiffSlider.value = String(v.arterialStiffness);
+
+      const noiseSel = document.getElementById('ppgNoiseSelect') as HTMLSelectElement | null;
+      if (noiseSel) noiseSel.value = v.noiseArtifact;
+
+      const rhythmSel = document.getElementById('ppgRhythmSelect') as HTMLSelectElement | null;
+      if (rhythmSel) rhythmSel.value = v.rhythmType;
+
+      recalcPpg();
+    });
+  });
+
+  // Bind PPG Inputs
+  ['ppgPiSlider', 'ppgNotchSlider', 'ppgStiffnessSlider', 'ppgNoiseSelect', 'ppgRhythmSelect'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', recalcPpg);
+      el.addEventListener('change', recalcPpg);
+    }
+  });
+
   document.querySelectorAll('.js-cardio-input').forEach(i => i.addEventListener('input', recalcCardio));
 
   // Initial Run
   recalcCardio();
+  recalcPpg();
 }

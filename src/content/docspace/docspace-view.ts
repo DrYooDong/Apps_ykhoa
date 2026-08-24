@@ -3,8 +3,8 @@
  * Hub chính: Profile selector + Stats + Navigation
  */
 
-import { getActiveProfile, getAllProfiles, createProfile, setActiveProfile, exportProfile, getStats } from './storage';
-import { DoctorProfile, DocSpaceNavItem, DocSpaceNavSection } from './types';
+import { getActiveProfile, getAllProfiles, createProfile, setActiveProfile, exportProfile, getStats, getAllSoapPatients } from './storage';
+import { DoctorProfile, DocSpaceNavItem, DocSpaceNavSection, SoapPatientRecord } from './types';
 
 export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
   {
@@ -12,7 +12,7 @@ export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
     title: 'Hồ sơ & Ca bệnh',
     icon: 'fa-solid fa-notes-medical',
     items: [
-      { id: 'dashboard',    label: 'Tổng quan',           href: '#/docspace',              icon: 'fa-solid fa-house-medical',  phase: 1 },
+      { id: 'dashboard',    label: 'Tổng quan Bento',     href: '#/docspace',              icon: 'fa-solid fa-house-medical',  phase: 1 },
       { id: 'soap',         label: 'Sổ Tay SOAP',         href: '#/docspace/soap',         icon: 'fa-solid fa-notes-medical',  phase: 1 },
       { id: 'chronic-care', label: 'Bệnh Mạn Tính',       href: '#/docspace/chronic-care', icon: 'fa-solid fa-heart-pulse',   phase: 1 },
       { id: 'notes',        label: 'Ghi chú Lâm sàng',    href: '#/docspace/notes',        icon: 'fa-solid fa-note-sticky',    phase: 1 },
@@ -32,6 +32,9 @@ export const DSP_NAV_SECTIONS: DocSpaceNavSection[] = [
     title: 'Công cụ & Ra quyết định',
     icon: 'fa-solid fa-wand-magic-sparkles',
     items: [
+      { id: 'flowcharts',   label: 'Lưu Đồ Thuật Toán',   href: '#/docspace/flowcharts',   icon: 'fa-solid fa-sitemap',        phase: 1, badgeText: 'EBM' },
+      { id: 'telemetry',    label: 'Telemetry 24h & NEWS2', href: '#/docspace/telemetry',  icon: 'fa-solid fa-tower-broadcast', phase: 1, badgeText: 'AI Live' },
+      { id: 'devices',      label: 'Thiết Bị Buồng Bệnh', href: '#/docspace/devices',     icon: 'fa-solid fa-satellite-dish', phase: 1, badgeText: 'HL7' },
       { id: 'studios',      label: 'Clinical Studios',    href: '#/docspace/studios',      icon: 'fa-solid fa-calculator',     phase: 1, badgeText: 'Pro' },
       { id: 'protocol',     label: 'Phác đồ Xử trí',      href: '#/docspace/protocol',     icon: 'fa-solid fa-book-medical',   phase: 1 },
       { id: 'insights',     label: 'AI Insights & Tải trực', href: '#/docspace/insights',  icon: 'fa-solid fa-brain',          phase: 1 },
@@ -337,11 +340,66 @@ export function renderProfileSelector(): string {
 
 export async function renderDashboard(profile: DoctorProfile): Promise<string> {
   const stats = await getStats(profile.id);
+  const patients = getAllSoapPatients(profile.id);
+
+  // Phân loại Triage lâm sàng
+  const criticalPatients = patients.filter(p => {
+    const diag = (p.currentDiagnosis || p.admissionDiagnosis || '').toLowerCase();
+    const assess = (p.aAssessment || '').toLowerCase();
+    return diag.includes('sốc') || diag.includes('nguy kịch') || diag.includes('cấp cứu') || assess.includes('sốc') || assess.includes('nguy kịch');
+  });
+
+  const severePatients = patients.filter(p => {
+    if (criticalPatients.some(cp => cp.id === p.id)) return false;
+    const diag = (p.currentDiagnosis || p.admissionDiagnosis || '').toLowerCase();
+    const assess = (p.aAssessment || '').toLowerCase();
+    return diag.includes('nặng') || diag.includes('theo dõi') || diag.includes('suy') || diag.includes('tụt') || assess.includes('tụt') || assess.includes('nặng');
+  });
+
+  const stablePatients = patients.filter(p => {
+    return !criticalPatients.some(cp => cp.id === p.id) && !severePatients.some(sp => sp.id === p.id);
+  });
+
+  // Checklist nhiệm vụ trực tồn đọng
+  const pendingTasksList: { id: string; title: string; category: string; priority: 'danger' | 'warning' | 'info'; link: string }[] = [];
+  patients.forEach(p => {
+    if (!p.isEmrEntered) {
+      pendingTasksList.push({
+        id: `emr-${p.id}`,
+        title: `Nhập EMR bệnh án [G.${p.bedNumber || '?'}] ${p.fullName}`,
+        category: 'Hồ sơ EMR',
+        priority: 'danger',
+        link: '#/docspace/soap'
+      });
+    }
+    if (p.soapStatus === 'chua_lam') {
+      pendingTasksList.push({
+        id: `soap-${p.id}`,
+        title: `Khám & Soạn SOAP [G.${p.bedNumber || '?'}] ${p.fullName}`,
+        category: 'Sổ tay SOAP',
+        priority: 'warning',
+        link: '#/docspace/soap'
+      });
+    }
+    (p.clsOrders || []).forEach(o => {
+      if (!o.isDone) {
+        pendingTasksList.push({
+          id: `cls-${p.id}-${o.id}`,
+          title: `Chờ KQ ${o.name} [G.${p.bedNumber || '?'}] ${p.fullName}`,
+          category: 'Cận lâm sàng',
+          priority: 'info',
+          link: '#/docspace/soap'
+        });
+      }
+    });
+  });
+
+  const activePat: SoapPatientRecord | null = patients[0] || null;
 
   let backupBanner = '';
   if (stats.lastBackupDays !== null && stats.lastBackupDays > 3) {
     backupBanner = `
-      <div style="background: rgba(245, 158, 11, 0.15); color: var(--dsp-amber); border: 1px solid rgba(245, 158, 11, 0.3); padding: 12px 20px; border-radius: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px);">
+      <div class="dsp-alert-banner dsp-alert-banner--warning">
         <div style="display:flex; align-items:center; gap: 10px;">
           <i class="fa-solid fa-triangle-exclamation" style="font-size: 1.2rem;"></i>
           <span><strong>Cảnh báo an toàn dữ liệu:</strong> Đã ${stats.lastBackupDays} ngày bạn chưa sao lưu dữ liệu. Khuyên dùng Sao lưu định kỳ!</span>
@@ -366,193 +424,287 @@ export async function renderDashboard(profile: DoctorProfile): Promise<string> {
 
           ${backupBanner}
           
-          <!-- Hero Greeting Card -->
-          <div class="dsp-greeting">
-            <!-- Decorative SVG EKG Pulse Background -->
-            <svg style="position:absolute; right: -20px; bottom: -10px; width: 320px; height: 120px; opacity: 0.12; pointer-events: none;" viewBox="0 0 500 150">
-              <path d="M0,75 L120,75 L140,25 L160,125 L185,50 L205,95 L220,75 L500,75" fill="none" stroke="currentColor" stroke-width="4" />
-            </svg>
-
-            <div class="dsp-greeting-left">
-              <div class="dsp-avatar dsp-avatar--hero">${getInitials(profile.displayName)}</div>
-              <div class="dsp-greeting-text">
-                <h1 class="dsp-page-title">
-                  Chào bác sĩ, <span class="dsp-doctor-name">${escapeHtml(profile.displayName)}</span>
-                </h1>
-                <p class="dsp-page-subtitle">
-                  <span class="dsp-spec-pill"><i class="fa-solid fa-user-md"></i> ${escapeHtml(profile.specialty || 'Nội khoa Lâm sàng')}</span>
-                  <code class="dsp-id-badge"><i class="fa-solid fa-key"></i> ID: ${escapeHtml(profile.id)}</code>
-                </p>
+          <!-- Bento Hero Shift Banner -->
+          <div class="dsp-bento-hero">
+            <div class="dsp-bento-hero-left">
+              <div class="dsp-hero-shift-badge">
+                <span class="dsp-live-pulse-dot"></span>
+                <span>Ca Trực Đang Diễn Ra • Khoa ${escapeHtml(profile.specialty || 'Hồi Sức / Nội Tổng Quát')}</span>
               </div>
+              <h1 class="dsp-bento-hero-title">
+                Chào Bác sĩ, <span class="dsp-hero-dr-name">${escapeHtml(profile.displayName)}</span>
+              </h1>
+              <p class="dsp-bento-hero-sub">
+                DocSpace v3.5 đồng bộ hệ thống CRCE 5 bước, giám sát <strong>${patients.length} buồng bệnh</strong> trực tiếp, chuẩn hóa HL7 FHIR và bảo mật dữ liệu HIPAA PHI Safe Harbor.
+              </p>
             </div>
-            
-            <div class="dsp-greeting-actions">
-              <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspExportBtn" title="Xuất toàn bộ dữ liệu ra file JSON">
-                <i class="fa-solid fa-file-export"></i> Xuất JSON
+
+            <div class="dsp-bento-hero-actions">
+              <a href="#/docspace/soap" class="dsp-hero-btn dsp-hero-btn--primary">
+                <i class="fa-solid fa-notes-medical"></i>
+                <span>Thăm Khám SOAP</span>
+              </a>
+              <button type="button" class="dsp-hero-btn dsp-hero-btn--emerald" id="btnHeroTriggerCRCE">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Kích Hoạt CRCE</span>
               </button>
-              <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspExportFhirBtn" title="Xuất dữ liệu theo chuẩn y tế HL7 FHIR R4">
-                <i class="fa-solid fa-file-medical"></i> Xuất FHIR
+              <button type="button" class="dsp-hero-btn dsp-hero-btn--ghost" id="dspExportBtn" title="Xuất dữ liệu dự phòng">
+                <i class="fa-solid fa-file-export"></i>
               </button>
-              <button class="dsp-btn dsp-btn-ghost dsp-btn-sm" id="dspSwitchProfileBtn" title="Đổi sang hồ sơ bác sĩ khác">
-                <i class="fa-solid fa-repeat"></i> Đổi Hồ sơ
+              <button type="button" class="dsp-hero-btn dsp-hero-btn--ghost" id="dspSwitchProfileBtn" title="Đổi hồ sơ Bác sĩ">
+                <i class="fa-solid fa-user-doctor"></i>
               </button>
             </div>
           </div>
 
-          <!-- Stats Bento Grid -->
-          <div class="dsp-stats-grid">
-            <a href="#/docspace/chronic-care" class="dsp-stat-card dsp-stat-chronic" style="border-left: 3px solid #ef4444;">
-              <div class="dsp-stat-icon" style="color:#ef4444;"><i class="fa-solid fa-heart-pulse"></i></div>
-              <div class="dsp-stat-body">
-                <div class="dsp-stat-value">${stats.chronicCount || 0}</div>
-                <div class="dsp-stat-label">Bệnh mạn tính</div>
+          <!-- 4 Bento Triage Metric Counters -->
+          <div class="dsp-triage-grid">
+            
+            <!-- 1. Critical / Emergency -->
+            <a href="#/docspace/soap" class="dsp-triage-card dsp-triage-card--critical">
+              <div class="dsp-triage-top">
+                <span class="dsp-triage-label"><i class="fa-solid fa-circle-radiation"></i> Cấp cứu / Nguy kịch</span>
+                <span class="dsp-ping-dot dsp-ping-dot--danger"></span>
               </div>
+              <div class="dsp-triage-count">${criticalPatients.length}</div>
+              <div class="dsp-triage-desc">Cần can thiệp khẩn cấp &amp; hồi sức</div>
             </a>
-            <a href="#/docspace/soap" class="dsp-stat-card dsp-stat-soap">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-notes-medical"></i></div>
-              <div class="dsp-stat-body">
-                <div class="dsp-stat-value">${stats.soapCount}</div>
-                <div class="dsp-stat-label">Bệnh án SOAP</div>
+
+            <!-- 2. Severe / Watch -->
+            <a href="#/docspace/soap" class="dsp-triage-card dsp-triage-card--severe">
+              <div class="dsp-triage-top">
+                <span class="dsp-triage-label"><i class="fa-solid fa-triangle-exclamation"></i> Nặng / Theo dõi</span>
+                <span class="dsp-ping-dot dsp-ping-dot--warning"></span>
               </div>
+              <div class="dsp-triage-count">${severePatients.length}</div>
+              <div class="dsp-triage-desc">Cảnh báo biến chứng &amp; theo dõi sát</div>
             </a>
-            <a href="#/docspace/sbar" class="dsp-stat-card dsp-stat-sbar">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-file-waveform"></i></div>
-              <div class="dsp-stat-body">
-                <div class="dsp-stat-value">${stats.sbarCount}</div>
-                <div class="dsp-stat-label">SBAR Báo cáo</div>
+
+            <!-- 3. Stable / Recovering -->
+            <a href="#/docspace/soap" class="dsp-triage-card dsp-triage-card--stable">
+              <div class="dsp-triage-top">
+                <span class="dsp-triage-label"><i class="fa-solid fa-circle-check"></i> Ổn định / Xuất viện</span>
+                <span class="dsp-ping-dot dsp-ping-dot--success"></span>
               </div>
+              <div class="dsp-triage-count">${stablePatients.length}</div>
+              <div class="dsp-triage-desc">Điều trị duy trì hoặc chờ xuất viện</div>
             </a>
-            <a href="#/docspace/oncall" class="dsp-stat-card dsp-stat-oncall">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-list-check"></i></div>
-              <div class="dsp-stat-body">
-                <div class="dsp-stat-value">${stats.shiftCount}</div>
-                <div class="dsp-stat-label">Checklist Trực</div>
+
+            <!-- 4. Pending On-Call Tasks -->
+            <a href="#/docspace/oncall" class="dsp-triage-card dsp-triage-card--tasks">
+              <div class="dsp-triage-top">
+                <span class="dsp-triage-label"><i class="fa-solid fa-list-check"></i> Nhiệm vụ trực tồn đọng</span>
+                <span class="dsp-ping-dot dsp-ping-dot--info"></span>
               </div>
+              <div class="dsp-triage-count">${pendingTasksList.length}</div>
+              <div class="dsp-triage-desc">Checklist ca trực chưa hoàn tất</div>
             </a>
-            <a href="#/docspace/notes" class="dsp-stat-card dsp-stat-notes">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-note-sticky"></i></div>
-              <div class="dsp-stat-body">
-                <div class="dsp-stat-value">${stats.noteCount}</div>
-                <div class="dsp-stat-label">Ghi chú cá nhân</div>
-              </div>
-            </a>
-            <a href="#/docspace/protocol" class="dsp-stat-card dsp-stat-protocol">
-              <div class="dsp-stat-icon"><i class="fa-solid fa-book-medical"></i></div>
-              <div class="dsp-stat-body">
-                <div class="dsp-stat-value">${stats.protocolCount}</div>
-                <div class="dsp-stat-label">Kho Phác đồ</div>
-              </div>
-            </a>
+
           </div>
 
-          <!-- Main Dashboard Panel Layout -->
-          <div class="dsp-dashboard-grid">
+          <!-- Bento Middle Grid: Active Patient Spotlight & On-Call Tasks -->
+          <div class="dsp-bento-split-grid">
             
-            <!-- AI Insights & Practice Pulse Banner Widget -->
-            <div class="dsp-section-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, rgba(2, 132, 199, 0.1), rgba(99, 102, 241, 0.08)); border: 1px solid rgba(56, 189, 248, 0.25);">
-              <div class="dsp-section-header" style="border-bottom: 1px solid rgba(56, 189, 248, 0.15); padding-bottom: 0.75rem;">
+            <!-- Left: Active Bedside Patient Spotlight -->
+            <div class="dsp-bento-card dsp-bento-spotlight">
+              <div class="dsp-bento-card-header">
                 <div style="display:flex; align-items:center; gap:8px;">
-                  <span style="width:28px; height:28px; border-radius:6px; background:linear-gradient(135deg, #0284c7, #6366f1); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.85rem;">
-                    <i class="fa-solid fa-brain"></i>
-                  </span>
-                  <h2 class="dsp-section-title" style="margin:0; font-size:1.05rem;">AI Practice Insights &amp; Sức Khỏe Nghề Nghiệp</h2>
+                  <span class="dsp-icon-badge dsp-icon-badge--sky"><i class="fa-solid fa-bed-pulse"></i></span>
+                  <h2 class="dsp-bento-card-title">Bệnh Nhân Trọng Điểm Tại Giường</h2>
                 </div>
-                <a href="#/docspace/insights" class="dsp-btn dsp-btn-primary dsp-btn-sm" style="font-weight:700; font-size:0.8rem;">
-                  Mở Toàn Diện Insights <i class="fa-solid fa-arrow-right"></i>
-                </a>
+                <a href="#/docspace/soap" class="dsp-bento-card-action">Mở Sổ SOAP <i class="fa-solid fa-arrow-right"></i></a>
               </div>
-              <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.75rem;">
-                <div style="background:var(--color-surface); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border);">
-                  <div style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fa-solid fa-chart-pie" style="color:var(--color-primary);"></i> Top Bệnh Lý</div>
-                  <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:2px;">Top 10 Phân Tích</div>
-                  <div style="font-size:0.7rem; color:var(--color-primary); margin-top:2px;">Biểu đồ SVG Donut</div>
+
+              ${activePat ? `
+                <div class="dsp-spotlight-body">
+                  <div class="dsp-spotlight-main">
+                    <div class="dsp-avatar dsp-avatar--patient">
+                      ${getInitials(activePat.fullName)}
+                    </div>
+                    <div class="dsp-spotlight-meta">
+                      <div class="dsp-spotlight-name-row">
+                        <span class="dsp-spotlight-name">${escapeHtml(activePat.fullName)}</span>
+                        <span class="dsp-spotlight-badge">${activePat.gender === 'nam' ? 'Nam' : 'Nữ'}, ${activePat.age} tuổi</span>
+                        <span class="dsp-spotlight-badge dsp-spotlight-badge--bed"><i class="fa-solid fa-bed"></i> G.${escapeHtml(activePat.bedNumber || 'N/A')}</span>
+                      </div>
+                      <div class="dsp-spotlight-diag">
+                        <i class="fa-solid fa-stethoscope" style="color:var(--dsp-sky);"></i> 
+                        <strong>${escapeHtml(activePat.currentDiagnosis || activePat.admissionDiagnosis || 'Chưa ghi nhận')}</strong>
+                        ${activePat.dayOfIllness ? `<span class="dsp-day-tag">Ngày ${activePat.dayOfIllness}</span>` : ''}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Live Vitals Bar -->
+                  <div class="dsp-vitals-strip">
+                    <div class="dsp-vital-chip">
+                      <span class="dsp-vital-title"><i class="fa-solid fa-gauge-high" style="color:#0284c7;"></i> MAP</span>
+                      <span class="dsp-vital-num">78 <small>mmHg</small></span>
+                    </div>
+                    <div class="dsp-vital-chip">
+                      <span class="dsp-vital-title"><i class="fa-solid fa-heart-pulse" style="color:#e11d48;"></i> HR</span>
+                      <span class="dsp-vital-num">84 <small>bpm</small></span>
+                    </div>
+                    <div class="dsp-vital-chip">
+                      <span class="dsp-vital-title"><i class="fa-solid fa-lungs" style="color:#0d9488;"></i> SpO2</span>
+                      <span class="dsp-vital-num">98 <small>%</small></span>
+                    </div>
+                    <div class="dsp-vital-chip">
+                      <span class="dsp-vital-title"><i class="fa-solid fa-temperature-three-quarters" style="color:#ea580c;"></i> Temp</span>
+                      <span class="dsp-vital-num">37.2 <small>°C</small></span>
+                    </div>
+                    <div class="dsp-vital-chip">
+                      <span class="dsp-vital-title"><i class="fa-solid fa-triangle-exclamation" style="color:#7c3aed;"></i> NEWS2</span>
+                      <span class="dsp-vital-num" style="color:#10b981;">2 <small>điểm</small></span>
+                    </div>
+                  </div>
+
+                  <!-- Quick Action Buttons for Active Patient -->
+                  <div class="dsp-spotlight-actions">
+                    <a href="#/docspace/soap" class="dsp-btn dsp-btn-sm dsp-btn-primary">
+                      <i class="fa-solid fa-pen-to-square"></i> Cập Nhật SOAP
+                    </a>
+                    <button type="button" class="dsp-btn dsp-btn-sm dsp-btn-emerald" id="btnSpotlightCRCE" data-pat-id="${activePat.id}">
+                      <i class="fa-solid fa-bolt"></i> CRCE 5 Bước
+                    </button>
+                    <a href="#/docspace/telemetry" class="dsp-btn dsp-btn-sm dsp-btn-outline">
+                      <i class="fa-solid fa-tower-broadcast"></i> Telemetry 24h
+                    </a>
+                  </div>
                 </div>
-                <div style="background:var(--color-surface); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border);">
-                  <div style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fa-solid fa-heart-pulse" style="color:#10b981;"></i> Wellness Guardian</div>
-                  <div style="font-size:1rem; font-weight:800; color:#10b981; margin-top:2px;">Đo tải trọng &amp; Kiệt sức</div>
-                  <div style="font-size:0.7rem; color:var(--color-text-muted); margin-top:2px;">Burnout Signal Alert</div>
+              ` : `
+                <div class="dsp-empty-spotlight">
+                  <i class="fa-solid fa-notes-medical" style="font-size:2rem; opacity:0.5; margin-bottom:8px;"></i>
+                  <p>Chưa có bệnh nhân nào trong buồng bệnh trực tiếp.</p>
+                  <a href="#/docspace/soap" class="dsp-btn dsp-btn-sm dsp-btn-primary"><i class="fa-solid fa-plus"></i> Thêm Bệnh Nhân</a>
                 </div>
-                <div style="background:var(--color-surface); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border);">
-                  <div style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fa-solid fa-sparkles" style="color:#818cf8;"></i> Gemini Weekly Summary</div>
-                  <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:2px;">Tóm tắt Tuần Lâm sàng</div>
-                  <div style="font-size:0.7rem; color:#818cf8; margin-top:2px;">Gemini 1M Context AI</div>
+              `}
+            </div>
+
+            <!-- Right: On-Call Task Checklist Mini Widget -->
+            <div class="dsp-bento-card dsp-bento-tasks">
+              <div class="dsp-bento-card-header">
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="dsp-icon-badge dsp-icon-badge--amber"><i class="fa-solid fa-list-check"></i></span>
+                  <h2 class="dsp-bento-card-title">Nhiệm Vụ Ca Trực Nhanh</h2>
                 </div>
-                <div style="background:var(--color-surface); padding:10px 14px; border-radius:8px; border:1px solid var(--color-border);">
-                  <div style="font-size:0.75rem; color:var(--color-text-muted);"><i class="fa-solid fa-book-medical" style="color:#f59e0b;"></i> EBM Bridge 2.0</div>
-                  <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:2px;">Gợi ý chứng cứ 2 chiều</div>
-                  <div style="font-size:0.7rem; color:#f59e0b; margin-top:2px;">Kho Guidelines CliniPortal</div>
-                </div>
+                <a href="#/docspace/oncall" class="dsp-bento-card-action">Xem Tất Cả (${pendingTasksList.length}) <i class="fa-solid fa-arrow-right"></i></a>
               </div>
+
+              <div class="dsp-task-mini-list">
+                ${pendingTasksList.length > 0 ? pendingTasksList.slice(0, 5).map(task => `
+                  <div class="dsp-task-mini-item">
+                    <span class="dsp-task-mini-bullet dsp-task-mini-bullet--${task.priority}"></span>
+                    <div class="dsp-task-mini-content">
+                      <span class="dsp-task-mini-title">${escapeHtml(task.title)}</span>
+                      <span class="dsp-task-mini-tag">${escapeHtml(task.category)}</span>
+                    </div>
+                    <a href="${task.link}" class="dsp-task-mini-link" title="Mở xử trí"><i class="fa-solid fa-chevron-right"></i></a>
+                  </div>
+                `).join('') : `
+                  <div class="dsp-empty-tasks-message">
+                    <i class="fa-solid fa-circle-check" style="color:#10b981; font-size:1.5rem; margin-bottom:6px;"></i>
+                    <p>Mọi nhiệm vụ trong tua trực đều đã hoàn tất!</p>
+                  </div>
+                `}
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Fast Clinical HUD Action Dock -->
+          <div class="dsp-bento-card" style="margin-top:1.25rem;">
+            <div class="dsp-bento-card-header">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="dsp-icon-badge dsp-icon-badge--indigo"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                <h2 class="dsp-bento-card-title">Trạm Điều Khiển Lâm Sàng &amp; Phím Tắt Tác Chiến</h2>
+              </div>
+              <span class="dsp-section-badge">Hệ Thống Trực Tuyến</span>
+            </div>
+
+            <div class="dsp-hud-actions-grid">
+              <button type="button" class="dsp-hud-action-tile" id="btnTriggerReactionChainTile">
+                <div class="dsp-hud-icon dsp-hud-icon--sky"><i class="fa-solid fa-bolt"></i></div>
+                <div class="dsp-hud-text">
+                  <strong>CRCE Engine 5 Bước</strong>
+                  <small>Triệu chứng ➔ CĐ ➔ Phác đồ ➔ Dược</small>
+                </div>
+              </button>
+
+              <a href="#/docspace/telemetry" class="dsp-hud-action-tile">
+                <div class="dsp-hud-icon dsp-hud-icon--teal"><i class="fa-solid fa-tower-broadcast"></i></div>
+                <div class="dsp-hud-text">
+                  <strong>Telemetry Dự Báo 24h</strong>
+                  <small>Quỹ đạo sinh hiệu &amp; 95% CI</small>
+                </div>
+              </a>
+
+              <a href="#/docspace/sbar" class="dsp-hud-action-tile">
+                <div class="dsp-hud-icon dsp-hud-icon--rose"><i class="fa-solid fa-file-waveform"></i></div>
+                <div class="dsp-hud-text">
+                  <strong>Bàn Giao SBAR</strong>
+                  <small>Giao ban ca trực chuẩn hóa</small>
+                </div>
+              </a>
+
+              <a href="#/docspace/studios" class="dsp-hud-action-tile">
+                <div class="dsp-hud-icon dsp-hud-icon--amber"><i class="fa-solid fa-calculator"></i></div>
+                <div class="dsp-hud-text">
+                  <strong>Clinical Studios Pro</strong>
+                  <small>ABG, Cardio, eGFR, Sepsis</small>
+                </div>
+              </a>
+
+              <button type="button" class="dsp-hud-action-tile" id="btnTriggerDrugIntelTile">
+                <div class="dsp-hud-icon dsp-hud-icon--violet"><i class="fa-solid fa-pills"></i></div>
+                <div class="dsp-hud-text">
+                  <strong>Drug Intelligence</strong>
+                  <small>Tương tác thuốc &amp; Chỉnh liều thận</small>
+                </div>
+              </button>
+
+              <button type="button" class="dsp-hud-action-tile" id="btnTriggerVaultTile">
+                <div class="dsp-hud-icon dsp-hud-icon--emerald"><i class="fa-solid fa-book-medical"></i></div>
+                <div class="dsp-hud-text">
+                  <strong>Knowledge Vault</strong>
+                  <small>2.362+ Bài viết EBM &amp; Guidelines</small>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- AI Practice Insights & Practice Pulse Banner Widget -->
+          <div class="dsp-bento-card dsp-bento-insights" style="margin-top:1.25rem;">
+            <div class="dsp-bento-card-header">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="dsp-icon-badge dsp-icon-badge--violet"><i class="fa-solid fa-brain"></i></span>
+                <h2 class="dsp-bento-card-title">AI Practice Insights &amp; Sức Khỏe Nghề Nghiệp</h2>
+              </div>
+              <a href="#/docspace/insights" class="dsp-bento-card-action">Mở Toàn Diện Insights <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             
-            <!-- Quick Actions Card -->
-            <div class="dsp-section-card">
-              <div class="dsp-section-header">
-                <h2 class="dsp-section-title"><i class="fa-solid fa-bolt" style="color:var(--dsp-sky);"></i> Thao tác nhanh</h2>
-                <span class="dsp-section-badge">Tạo mới &amp; Khởi chạy</span>
+            <div class="dsp-insights-chips-grid">
+              <div class="dsp-insight-stat-chip">
+                <div class="dsp-insight-chip-label"><i class="fa-solid fa-chart-pie" style="color:var(--dsp-sky);"></i> Top Bệnh Lý</div>
+                <div class="dsp-insight-chip-value">Top 10 Phân Tích</div>
+                <div class="dsp-insight-chip-sub">Biểu đồ SVG Donut</div>
               </div>
-              <div class="dsp-quick-actions">
-                <a href="#/docspace/soap" class="dsp-action-card" id="qa-new-soap">
-                  <div class="dsp-action-icon"><i class="fa-solid fa-notes-medical"></i></div>
-                  <div class="dsp-action-info">
-                    <span class="dsp-action-title">Soạn Bệnh án SOAP</span>
-                    <span class="dsp-action-desc">Sổ tay lâm sàng số</span>
-                  </div>
-                </a>
-                <a href="#/docspace/sbar" class="dsp-action-card" id="qa-new-sbar">
-                  <div class="dsp-action-icon"><i class="fa-solid fa-file-waveform"></i></div>
-                  <div class="dsp-action-info">
-                    <span class="dsp-action-title">Tạo SBAR</span>
-                    <span class="dsp-action-desc">Bàn giao &amp; Báo cáo</span>
-                  </div>
-                </a>
-                <a href="#/docspace/oncall" class="dsp-action-card" id="qa-new-shift">
-                  <div class="dsp-action-icon"><i class="fa-solid fa-list-check"></i></div>
-                  <div class="dsp-action-info">
-                    <span class="dsp-action-title">Checklist Trực</span>
-                    <span class="dsp-action-desc">Ca trực &amp; Nhiệm vụ</span>
-                  </div>
-                </a>
-                <a href="#/docspace/notes" class="dsp-action-card" id="qa-new-note">
-                  <div class="dsp-action-icon"><i class="fa-solid fa-note-sticky"></i></div>
-                  <div class="dsp-action-info">
-                    <span class="dsp-action-title">Tạo Ghi chú</span>
-                    <span class="dsp-action-desc">Ghi chép tự do</span>
-                  </div>
-                </a>
-                <a href="#/docspace/protocol" class="dsp-action-card" id="qa-new-protocol">
-                  <div class="dsp-action-icon"><i class="fa-solid fa-clipboard-list"></i></div>
-                  <div class="dsp-action-info">
-                    <span class="dsp-action-title">Soạn Phác đồ</span>
-                    <span class="dsp-action-desc">Quy trình xử trí</span>
-                  </div>
-                </a>
+              <div class="dsp-insight-stat-chip">
+                <div class="dsp-insight-chip-label"><i class="fa-solid fa-heart-pulse" style="color:#10b981;"></i> Wellness Guardian</div>
+                <div class="dsp-insight-chip-value">Đo tải trọng &amp; Kiệt sức</div>
+                <div class="dsp-insight-chip-sub">Burnout Signal Alert</div>
+              </div>
+              <div class="dsp-insight-stat-chip">
+                <div class="dsp-insight-chip-label"><i class="fa-solid fa-sparkles" style="color:#8b5cf6;"></i> Gemini Clinical AI</div>
+                <div class="dsp-insight-chip-value">Tóm tắt Tuần Lâm sàng</div>
+                <div class="dsp-insight-chip-sub">Gemini 1M Context AI</div>
+              </div>
+              <div class="dsp-insight-stat-chip">
+                <div class="dsp-insight-chip-label"><i class="fa-solid fa-book-medical" style="color:#f59e0b;"></i> EBM Bridge 2.0</div>
+                <div class="dsp-insight-chip-value">Gợi ý chứng cứ 2 chiều</div>
+                <div class="dsp-insight-chip-sub">Kho Guidelines CliniPortal</div>
               </div>
             </div>
-
-            <!-- Quick Links Card -->
-            <div class="dsp-section-card">
-              <div class="dsp-section-header">
-                <h2 class="dsp-section-title"><i class="fa-solid fa-link" style="color:var(--dsp-sky);"></i> Liên kết &amp; Công cụ nhanh</h2>
-                <a href="#/docspace/links" class="dsp-section-link">Quản lý <i class="fa-solid fa-arrow-right"></i></a>
-              </div>
-              <div class="dsp-quick-links-grid">
-                ${profile.quickLinks && profile.quickLinks.length > 0 
-                  ? profile.quickLinks.filter(l => l.isPinned).slice(0, 8).map(link => `
-                    <a href="${link.href}" class="dsp-quick-link-chip" id="ql-${link.id}">
-                      <i class="${link.icon}"></i>
-                      <span>${escapeHtml(link.label)}</span>
-                    </a>
-                  `).join('')
-                  : `
-                    <a href="#/calculators/abg" class="dsp-quick-link-chip"><i class="fa-solid fa-vial"></i><span>ABG Studio</span></a>
-                    <a href="#/calculators/egfr" class="dsp-quick-link-chip"><i class="fa-solid fa-calculator"></i><span>eGFR Calculator</span></a>
-                    <a href="#/calculators/sofa" class="dsp-quick-link-chip"><i class="fa-solid fa-heart-pulse"></i><span>Thang điểm SOFA</span></a>
-                  `
-                }
-              </div>
-            </div>
-
           </div>
 
         </div>

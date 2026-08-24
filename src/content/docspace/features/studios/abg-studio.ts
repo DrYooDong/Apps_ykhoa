@@ -966,3 +966,216 @@ export function renderOxygenationGaugeSvg(pfRatio: number | null, aaGradient: nu
     </svg>
   `;
 }
+
+// ============================================================
+// NEUROKIT2 MODULE 4: RESPIRATORY SIGNAL & PATTERN SIMULATOR (RSP)
+// ============================================================
+
+export type RspPatternType = 'normal' | 'kussmaul' | 'cheyne_stokes' | 'biot' | 'obstructive_asthma' | 'restrictive_ards';
+
+export interface RspWaveformInputs {
+  pattern: RspPatternType;
+  respiratoryRate: number;      // breaths/min
+  tidalVolumeMl: number;        // mL (300 - 1000 mL)
+  ieRatio: '1:2' | '1:3' | '1:4' | '1:1' | '2:1';
+}
+
+export interface RspPatternAnalysis {
+  patternName: string;
+  badgeColor: string;
+  inspiratoryTimeSec: number;
+  expiratoryTimeSec: number;
+  minuteVentilationLMin: number;
+  pathophysiology: string;
+  abgCorrelation: string;
+  clinicalRecommendation: string;
+}
+
+export function computeRspAnalysis(inputs: RspWaveformInputs, abgInputs?: AbgInputs): RspPatternAnalysis {
+  const rr = inputs.respiratoryRate;
+  const vt = inputs.tidalVolumeMl;
+  const cycleTimeSec = 60 / rr;
+
+  let ieRatioNum = 0.5; // 1:2 -> Ti / Te = 1 / 2 -> Ti = 1/3 cycle, Te = 2/3 cycle
+  if (inputs.ieRatio === '1:3') ieRatioNum = 0.333;
+  else if (inputs.ieRatio === '1:4') ieRatioNum = 0.25;
+  else if (inputs.ieRatio === '1:1') ieRatioNum = 1.0;
+  else if (inputs.ieRatio === '2:1') ieRatioNum = 2.0;
+
+  const tinsp = parseFloat((cycleTimeSec / (1 + (1 / ieRatioNum))).toFixed(2));
+  const texp = parseFloat((cycleTimeSec - tinsp).toFixed(2));
+  const mv = parseFloat(((rr * vt) / 1000).toFixed(1));
+
+  let patternName = '1. Thở Sinh Lý Bình Thường (Eupnea)';
+  let badgeColor = '#10b981';
+  let pathophysiology = 'Thông khí phế nang cân bằng với sản xuất CO2 chuyển hóa, tỷ lệ I:E sinh lý 1:2.';
+  let abgCorrelation = 'PaCO2 duy trì trong dải chuẩn 35 - 45 mmHg, pH máu bình thường 7.35 - 7.45.';
+  let clinicalRecommendation = 'Duy trì chế độ thở tự nhiên hoặc thông khí bảo vệ phổi theo dõi định kỳ.';
+
+  switch (inputs.pattern) {
+    case 'kussmaul':
+      patternName = '2. Kiểu Thở Kussmaul (Toan Chuyển Hóa Nặng / DKA / Ure Huyết)';
+      badgeColor = '#dc2626';
+      pathophysiology = 'Thở rất sâu và nhanh liên tục không nghỉ nhằm đào thải tối đa CO2 qua phổi để bù trừ toan máu chuyển hóa.';
+      abgCorrelation = `Bù trừ hô hấp tối đa: Giảm PaCO2 (Winter's formula PaCO2 = 1.5×HCO3 + 8). ${abgInputs && abgInputs.ph < 7.20 ? `pH hiện tại = ${abgInputs.ph} (Toan máu nặng).` : ''}`;
+      clinicalRecommendation = '🚨 CẤP CỨU NGUYÊN NHÂN TOAN: Bù dịch tinh thể, truyền Insulin liên tục trong DKA, lọc máu cấp cứu nếu toan máu kháng trị (pH < 7.15).';
+      break;
+
+    case 'cheyne_stokes':
+      patternName = '3. Kiểu Thở Cheyne-Stokes (Crescendo-Decrescendo + Ngưng Thở)';
+      badgeColor = '#ea580c';
+      pathophysiology = 'Tăng thông khí dạng hình thoi xen kẽ các cơn ngưng thở (Apnea) do chậm dẫn truyền feedback hóa cảm thụ quan ở bệnh nhân suy tim nặng hoặc tổn thương bán cầu não.';
+      abgCorrelation = 'Dao động chu kỳ: Kiềm hô hấp trong pha thở sâu và toan hô hấp nhẹ trong pha ngưng thở.';
+      clinicalRecommendation = 'Tối ưu điều trị suy tim nền (GDMT 4 trụ cột), thở oxy ban đêm hoặc máy thở không xâm lấn ASV (Adaptive Servo-Ventilation).';
+      break;
+
+    case 'biot':
+      patternName = '4. Kiểu Thở Biot / Thở Thất Điều (Tăng Áp Nội Sọ / Tổn Thương Cầu Não)';
+      badgeColor = '#7c3aed';
+      pathophysiology = 'Các chu kỳ thở sâu bất thường ngắt quãng bằng các cơn ngưng thở đột ngột hoàn toàn không theo chu kỳ.';
+      abgCorrelation = 'Suy giảm thông khí phế nang tiến triển, nguy cơ ứ đọng CO2 cấp và toan hô hấp đe dọa ngừng thở.';
+      clinicalRecommendation = '🚨 CẤP CỨU THẦN KINH: Chống phù não cấp tính (Mannitol 20% / NaCl 3%), chụp CT sọ não khẩn, chuẩn bị đặt nội khí quản thở máy bảo vệ đường thở.';
+      break;
+
+    case 'obstructive_asthma':
+      patternName = '5. Kiểu Thở Tắc Nghẽn Phế Quản (Hen Phế Quản Cấp / Đợt Cấp COPD)';
+      badgeColor = '#ca8a04';
+      pathophysiology = 'Tắc nghẽn đường thở nhỏ do co thắt và phù nề niêm mạc làm thì thở ra kéo dài đáng kể (I:E = 1:3 đến 1:4), có bẫy khí Auto-PEEP.';
+      abgCorrelation = 'Giai đoạn sớm: Tăng thông khí gây kiềm hô hấp (PaCO2 thấp). Giai đoạn muộn kiệt cơ: PaCO2 tăng cao là dấu hiệu đe dọa suy hô hấp tối cấp!';
+      clinicalRecommendation = 'Khí dung Salbutamol + Ipratropium liều cao liên tục, Corticoid toàn thân tĩnh mạch, thở máy không xâm lấn BiPAP cài I:E kéo dài.';
+      break;
+
+    case 'restrictive_ards':
+      patternName = '6. Kiểu Thở Hạn Chế Phổi (Hội Chứng ARDS / Xơ Phổi)';
+      badgeColor = '#0284c7';
+      pathophysiology = 'Độ giãn nở phổi (Compliance) giảm trầm trọng làm bệnh nhân phải thở nhanh nông để giảm công hô hấp (I:E = 1:1).';
+      abgCorrelation = 'Giảm oxy máu nặng trơ với FiO2 (Shunt phổi > 20%), tỷ số PaO2/FiO2 giảm < 200 - 300 mmHg.';
+      clinicalRecommendation = 'Chiến lược thông khí bảo vệ phổi (Lung-protective ventilation: Vt thấp 4 - 6 mL/kg PBW, PEEP cao, hạn chế Pplat < 30 cmH2O).';
+      break;
+  }
+
+  return {
+    patternName,
+    badgeColor,
+    inspiratoryTimeSec: tinsp,
+    expiratoryTimeSec: texp,
+    minuteVentilationLMin: mv,
+    pathophysiology,
+    abgCorrelation,
+    clinicalRecommendation,
+  };
+}
+
+/**
+ * Render Dải Sóng Hô Hấp RSP SVG Tương Tác Chuẩn NeuroKit2 (Breathmetrics Engine)
+ */
+export function renderRspWaveformSvg(inputs: RspWaveformInputs, theme: 'paper' | 'neon' | 'dark' = 'paper'): string {
+  const totalW = 860;
+  const totalH = 220;
+  const padL = 50;
+  const padR = 20;
+  const padT = 36;
+  const padB = 30;
+  const plotW = totalW - padL - padR;
+  const plotH = totalH - padT - padB;
+  const midY = padT + plotH / 2;
+
+  let bgFill = 'var(--color-bg)';
+  let gridLine = 'var(--color-border)';
+  let traceColor = '#0284c7';
+  let textColor = 'var(--color-text)';
+
+  if (theme === 'neon') {
+    bgFill = '#030712';
+    gridLine = 'rgba(16, 185, 129, 0.15)';
+    traceColor = '#10b981';
+    textColor = '#34d399';
+  } else if (theme === 'dark') {
+    bgFill = '#0f172a';
+    gridLine = 'rgba(255, 255, 255, 0.08)';
+    traceColor = '#38bdf8';
+    textColor = '#94a3b8';
+  }
+
+  const numCycles = 8;
+  const cycleWPx = plotW / numCycles;
+
+  let pathD = `M ${padL},${midY} `;
+
+  for (let c = 0; c < numCycles; c++) {
+    const startX = padL + c * cycleWPx;
+    if (startX > totalW - padR) break;
+
+    let ampPx = plotH * 0.40 * (inputs.tidalVolumeMl / 500);
+
+    // Xử lý các kiểu thở đặc biệt
+    if (inputs.pattern === 'cheyne_stokes') {
+      // Crescendo - Decrescendo cycle
+      const phase = (c % 8) / 8;
+      const mod = Math.sin(phase * Math.PI * 2);
+      if (c >= 5) {
+        // Apnea phase
+        ampPx = 0;
+      } else {
+        ampPx *= Math.abs(Math.sin((c / 5) * Math.PI)) * 1.5;
+      }
+    } else if (inputs.pattern === 'biot') {
+      if (c === 2 || c === 3 || c === 6) {
+        ampPx = 0; // Apnea đột ngột
+      } else {
+        ampPx *= 1.3;
+      }
+    } else if (inputs.pattern === 'kussmaul') {
+      ampPx = plotH * 0.48; // Thở cực sâu
+    }
+
+    // Tỷ lệ thì hít vào vs thở ra
+    let tinspRatio = 0.33;
+    if (inputs.ieRatio === '1:3') tinspRatio = 0.25;
+    else if (inputs.ieRatio === '1:4') tinspRatio = 0.20;
+    else if (inputs.ieRatio === '1:1') tinspRatio = 0.50;
+
+    const xInhPeak = startX + cycleWPx * tinspRatio;
+    const yInhPeak = midY - ampPx;
+    const xEnd = startX + cycleWPx;
+
+    if (ampPx === 0) {
+      // Apnea flat line
+      pathD += `L ${xEnd},${midY} `;
+    } else {
+      // Sóng hô hấp bất đối xứng sinh học (Noto et al. Breathmetrics model)
+      pathD += `C ${startX + cycleWPx * tinspRatio * 0.4},${midY} ${xInhPeak - cycleWPx * 0.05},${yInhPeak} ${xInhPeak},${yInhPeak} `;
+      pathD += `C ${xInhPeak + (xEnd - xInhPeak) * 0.3},${yInhPeak} ${xEnd - (xEnd - xInhPeak) * 0.4},${midY + ampPx * 0.15} ${xEnd},${midY} `;
+    }
+  }
+
+  return `
+    <svg viewBox="0 0 ${totalW} ${totalH}" width="100%" height="${totalH}" style="background:${bgFill}; border-radius:10px; display:block; max-width:100%; box-shadow:0 2px 10px rgba(0,0,0,0.06);">
+      <!-- Header -->
+      <rect x="0" y="0" width="${totalW}" height="${padT}" fill="rgba(0,0,0,0.04)" rx="10"/>
+      <text x="14" y="22" fill="${textColor}" font-size="11.5" font-weight="800" font-family="'Inter', sans-serif">
+        🌬️ ĐỒ THỊ CHU KỲ HÔ HẤP THỜI GIAN THỰC (RSP WAVEFORM) — RR: ${inputs.respiratoryRate} l/p | I:E = ${inputs.ieRatio} | Vt: ${inputs.tidalVolumeMl} mL
+      </text>
+      <text x="${totalW - 14}" y="22" fill="var(--color-text-muted)" font-size="10" font-weight="700" text-anchor="end">
+        NeuroKit2 Breathmetrics Engine
+      </text>
+
+      <!-- Baseline Zero-Flow Line -->
+      <line x1="${padL}" y1="${midY}" x2="${totalW - padR}" y2="${midY}" stroke="${gridLine}" stroke-width="1.2" stroke-dasharray="3,3"/>
+      <text x="${padL - 6}" y="${midY - 15}" fill="#10b981" font-size="8.5" font-weight="800" text-anchor="end">HÍT VÀO</text>
+      <text x="${padL - 6}" y="${midY + 20}" fill="#0284c7" font-size="8.5" font-weight="800" text-anchor="end">THỞ RA</text>
+
+      <!-- RSP Flow Trace -->
+      <path d="${pathD}" fill="none" stroke="${traceColor}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Footer Bar -->
+      <g transform="translate(${padL}, ${totalH - 10})">
+        <text x="0" y="0" fill="var(--color-text-muted)" font-size="9" font-weight="600">
+          Thể tích phút (Minute Vent): <strong>${((inputs.respiratoryRate * inputs.tidalVolumeMl) / 1000).toFixed(1)} L/phút</strong> |
+          Thời gian chu kỳ: <strong>${(60 / inputs.respiratoryRate).toFixed(1)}s</strong> |
+          Kiểu thở: <strong style="color:${inputs.pattern === 'normal' ? '#10b981' : '#dc2626'};">${inputs.pattern.toUpperCase()}</strong>
+        </text>
+      </g>
+    </svg>
+  `;
+}

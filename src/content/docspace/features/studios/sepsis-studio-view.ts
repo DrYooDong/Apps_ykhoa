@@ -6,7 +6,8 @@
 import { escapeHtml } from './studio-shared';
 import {
   analyzeSepsisStudio, renderSofaRadarSvg, renderHour1TimelineSvg, renderLactateTrajectorySvg,
-  SEPSIS_PRESETS, SepsisInputs
+  computeDeltaPpAnalysis, renderDeltaPpWaveformSvg,
+  SEPSIS_PRESETS, SepsisInputs, DeltaPpInputs
 } from './sepsis-studio';
 
 export function renderSepsisPanel(isActive: boolean): string {
@@ -27,7 +28,7 @@ export function renderSepsisPanel(isActive: boolean): string {
             <!-- Quick Search Input -->
             <div class="dsp-case-search-wrap">
               <i class="fa-solid fa-magnifying-glass dsp-case-search-icon"></i>
-              <input type="text" id="sepsisCaseSearchInput" class="dsp-case-search-input" placeholder="Tìm theo tên ca, Sepsis-3, Sốc NK, SOFA, Viêm phổi, Lactate..." />
+              <input type="text" id="sepsisCaseSearchInput" class="dsp-case-search-input" placeholder="Tìm theo tên ca, Sốc nhiễm khuẩn, SOFA, Viêm phổi nặng, Lactate..." />
             </div>
 
             <!-- View Switcher & Collapse -->
@@ -52,10 +53,10 @@ export function renderSepsisPanel(isActive: boolean): string {
           <div class="dsp-case-filters-bar">
             <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn is-active" data-filter="all">Tất cả (20)</button>
             <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="septic_shock"><span style="color:#dc2626;">●</span> Sốc Nhiễm Khuẩn</button>
-            <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="severe_pneumonia"><span style="color:#ef4444;">●</span> Viêm Phổi Nặng / ARDS</button>
-            <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="crbsi_bloodstream"><span style="color:#7c3aed;">●</span> Catheter &amp; Nấm Huyết</button>
-            <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="neutropenic_transplant"><span style="color:#ea580c;">●</span> Suy Giảm Miễn Dịch</button>
-            <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="early_warning_news2"><span style="color:#0284c7;">●</span> Báo Động NEWS2 &amp; Sốc Ẩn</button>
+            <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="severe_pneumonia"><span style="color:#0284c7;">●</span> Viêm Phổi Nặng / ARDS</button>
+            <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="crbsi_bloodstream"><span style="color:#ea580c;">●</span> CRBSI &amp; Huyết Khối</button>
+            <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="neutropenic_transplant"><span style="color:#7c3aed;">●</span> Suy Giảm Miễn Dịch</button>
+            <button type="button" class="dsp-case-filter-pill js-sepsis-filter-btn" data-filter="early_warning_news2"><span style="color:#10b981;">●</span> Cảnh Báo Sớm NEWS2</button>
           </div>
 
           <!-- Cards Grid View -->
@@ -76,17 +77,17 @@ export function renderSepsisPanel(isActive: boolean): string {
                     <div class="dsp-case-name">${escapeHtml(p.name)}</div>
 
                     <div class="dsp-case-metrics">
-                      <span class="dsp-case-metric-tag" style="${v.serumLactateMmol && v.serumLactateMmol >= 2.0 ? 'color:#dc2626; border-color:rgba(220,38,38,0.3); background:rgba(220,38,38,0.06);' : ''}">
-                        Lactate <strong>${v.serumLactateMmol || 2.0} mmol/L</strong>
+                      <span class="dsp-case-metric-tag" style="color:#dc2626;">
+                        Lactate <strong>${v.serumLactateMmol} mmol/L</strong>
                       </span>
                       <span class="dsp-case-metric-tag">
                         HA <strong>${v.systolicBp}/${v.diastolicBp}</strong>
                       </span>
                       <span class="dsp-case-metric-tag">
-                        Mạch <strong>${v.heartRate}</strong>
+                        P/F <strong>${v.pao2Fio2Ratio}</strong>
                       </span>
-                      ${v.pao2Fio2Ratio ? `<span class="dsp-case-metric-tag" style="color:#0284c7;">P/F <strong>${v.pao2Fio2Ratio}</strong></span>` : ''}
-                      ${v.noradrenalineDoseUgKgMin ? `<span class="dsp-case-metric-tag" style="color:#7c3aed;">NorEpi: ${v.noradrenalineDoseUgKgMin}</span>` : ''}
+                      ${v.noradrenalineDoseUgKgMin ? `<span class="dsp-case-metric-tag" style="color:#7c3aed;">NE <strong>${v.noradrenalineDoseUgKgMin} &mu;g</strong></span>` : ''}
+                      <span class="dsp-case-metric-tag" style="color:#ea580c;">GCS <strong>${v.gcs}</strong></span>
                     </div>
 
                     <div class="dsp-case-desc">${escapeHtml(p.description)}</div>
@@ -94,7 +95,7 @@ export function renderSepsisPanel(isActive: boolean): string {
 
                   <div class="dsp-case-card-footer">
                     <span style="font-size:0.7rem; color:var(--color-text-muted);">
-                      <i class="fa-solid fa-hospital-user"></i> ${v.age}t • ${v.weightKg}kg • GCS ${v.gcs}
+                      <i class="fa-solid fa-bed-pulse"></i> ICU Sepsis Case
                     </span>
                     <button type="button" class="dsp-case-load-btn">
                       <span>Nạp Ca Này</span> <i class="fa-solid fa-arrow-right"></i>
@@ -105,8 +106,8 @@ export function renderSepsisPanel(isActive: boolean): string {
             }).join('')}
           </div>
 
-          <!-- Compact Chips View (Hidden by default) -->
-          <div id="sepsisPresetsChips" style="display:none; flex-wrap:wrap; gap:0.45rem; padding-top:0.25rem;">
+          <!-- Collapsed Chips View -->
+          <div id="sepsisPresetsChips" class="dsp-case-chips" style="display:none;">
             ${SEPSIS_PRESETS.map(p => `
               <button type="button" class="dsp-btn dsp-btn-ghost dsp-btn-sm js-sepsis-preset-btn js-sepsis-preset-chip" data-preset-id="${p.id}" data-category="${p.category}" data-search="${escapeHtml((p.name + ' ' + p.description).toLowerCase())}" style="font-size:11.5px; border-radius:20px; padding:4px 12px; background:var(--color-bg); border-color:var(--color-border); display:inline-flex; align-items:center; gap:6px;">
                 <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${p.badgeColor}; flex-shrink:0;"></span>
@@ -117,44 +118,46 @@ export function renderSepsisPanel(isActive: boolean): string {
         </div>
       </div>
 
-      <!-- Top Visual Graphic: Surviving Sepsis Hour-1 Timeline & SOFA 6-Organ Radar Spider Chart SVG -->
-      <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+      <!-- Top Visual Graphic: SOFA Radar SVG, Hour-1 Timeline & Lactate Trajectory SVG -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
         
-        <!-- Surviving Sepsis Campaign Hour-1 Bundle & Lactate Trajectory Card -->
+        <!-- 6-Organ SOFA Multi-Axis Radar Card -->
+        <div class="dsp-card" style="padding:1rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+            <div style="font-weight:800; font-size:13px; color:var(--color-text); display:flex; align-items:center; gap:6px;">
+              <i class="fa-solid fa-circle-nodes" style="color:#e11d48;"></i>
+              <span>Mạng Lưới Radar Đa Trục 6 Cơ Quan Suy Đa Tạng (SOFA Score)</span>
+            </div>
+          </div>
+          <div id="sepsisSofaRadarWrap">
+            ${renderSofaRadarSvg({ resp: 3, coag: 3, liver: 2, cardio: 3, cns: 2, renal: 1 })}
+          </div>
+        </div>
+
+        <!-- Surviving Sepsis Campaign Hour-1 Care Bundle Progress Card -->
         <div class="dsp-card" style="padding:1rem; display:flex; flex-direction:column; justify-content:space-between;">
           <div>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
               <div style="font-weight:800; font-size:13px; color:var(--color-text); display:flex; align-items:center; gap:6px;">
-                <i class="fa-solid fa-stopwatch-20" style="color:#dc2626;"></i>
-                <span>Gói Sống Còn Giờ Đầu (Surviving Sepsis Campaign Hour-1 Bundle)</span>
+                <i class="fa-solid fa-clock" style="color:#ca8a04;"></i>
+                <span>Tiến Độ Gói Giờ Đầu Hồi Sức SSC (Hour-1 Care Bundle)</span>
               </div>
             </div>
-            <div id="sepsisHour1SvgContainer" style="overflow-x:auto;">
+            <div id="sepsisHour1TimelineWrap">
               ${renderHour1TimelineSvg()}
             </div>
           </div>
 
-          <!-- Lactate Clearance Curve -->
-          <div style="margin-top:0.75rem;">
-            <div style="font-size:12px; font-weight:800; color:var(--color-text-muted); margin-bottom:0.35rem; display:flex; justify-content:space-between;">
-              <span><i class="fa-solid fa-chart-line" style="color:#dc2626;"></i> Động Học &amp; Quỹ Đạo Thanh Thải Lactate (Target ≥20% / 2h):</span>
+          <!-- Dynamic Lactate Clearance Trajectory Visualizer -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem; margin-top:0.75rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem;">
+              <span style="font-size:11px; font-weight:800; color:#dc2626; text-transform:uppercase;">
+                <i class="fa-solid fa-chart-line"></i> Động Học Thải Trừ Lactate Máu (Lactate Clearance):
+              </span>
             </div>
-            <div id="sepsisLactateSvgWrap">
-              ${renderLactateTrajectorySvg(4.8, 3.6, 2)}
+            <div id="sepsisLactateTrajectoryWrap">
+              ${renderLactateTrajectorySvg(6.5, 3.8, 3)}
             </div>
-          </div>
-        </div>
-
-        <!-- 6-Organ SOFA Radar Spider Chart SVG Card -->
-        <div class="dsp-card" style="padding:1rem;">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
-            <div style="font-weight:800; font-size:13px; color:var(--color-text); display:flex; align-items:center; gap:6px;">
-              <i class="fa-solid fa-chart-pie" style="color:#e11d48;"></i>
-              <span>Biểu Đồ Mạng Nhện Suy Đa Cơ Quan SOFA (6 Organ Systems)</span>
-            </div>
-          </div>
-          <div id="sepsisSofaRadarWrap">
-            ${renderSofaRadarSvg({ resp: 2, coag: 2, liver: 2, cardio: 3, cns: 1, renal: 2 })}
           </div>
         </div>
 
@@ -167,19 +170,22 @@ export function renderSepsisPanel(isActive: boolean): string {
           <!-- Sub-tabs Navigation inside Sepsis Studio -->
           <div style="display:flex; gap:0.4rem; margin-bottom:1rem; border-bottom:2px solid var(--color-border); padding-bottom:0.4rem; overflow-x:auto;">
             <button type="button" class="dsp-btn dsp-btn-sm js-sepsis-subtab-btn is-active" data-sepsis-tab="sofa_news2" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-hospital-user"></i> 1. Suy Đa Cơ Quan SOFA &amp; NEWS2
+              <i class="fa-solid fa-hospital-user"></i> 1. SOFA &amp; NEWS2
             </button>
             <button type="button" class="dsp-btn dsp-btn-sm js-sepsis-subtab-btn" data-sepsis-tab="hemodynamics_bundle" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-heart-pulse"></i> 2. Huyết Động, Vận Mạch &amp; Hour-1
+              <i class="fa-solid fa-heart-pulse"></i> 2. Huyết Động &amp; Hour-1
             </button>
             <button type="button" class="dsp-btn dsp-btn-sm js-sepsis-subtab-btn" data-sepsis-tab="pneumonia_smartcop" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-lungs"></i> 3. Viêm Phổi (CURB-65 &amp; SMART-COP)
+              <i class="fa-solid fa-lungs"></i> 3. Viêm Phổi SMART-COP
             </button>
-            <button type="button" class="dsp-btn dsp-btn-sm js-sepsis-subtab-btn" data-sepsis-tab="lactate_fluids" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-droplet"></i> 4. Động Học Lactate &amp; Hồi Sức Dịch
+            <button type="button" class="dsp-btn dsp-btn-sm js-sepsis-subtab-btn" data-sepsis-tab="vasopressor_titrator" style="border-radius:8px 8px 0 0;">
+              <i class="fa-solid fa-syringe"></i> 4. Vận Mạch &amp; Inotrope
             </button>
             <button type="button" class="dsp-btn dsp-btn-sm js-sepsis-subtab-btn" data-sepsis-tab="empiric_antimicrobial" style="border-radius:8px 8px 0 0;">
-              <i class="fa-solid fa-capsules"></i> 5. Kháng Sinh Kinh Nghiệm &amp; MDR
+              <i class="fa-solid fa-capsules"></i> 5. Kháng Sinh Kinh Nghiệm
+            </button>
+            <button type="button" class="dsp-btn dsp-btn-sm js-sepsis-subtab-btn" data-sepsis-tab="delta_pp_fluid" style="border-radius:8px 8px 0 0; background:rgba(239,68,68,0.1); color:#dc2626; border-color:rgba(239,68,68,0.3);">
+              <i class="fa-solid fa-water" style="color:#ef4444;"></i> 6. &Delta;PP &amp; Bù Dịch (Michard)
             </button>
           </div>
 
@@ -536,6 +542,72 @@ export function renderSepsisPanel(isActive: boolean): string {
             </div>
           </div>
 
+          <!-- 6. DYNAMIC FLUID RESPONSIVENESS & DELTA-PP PANEL -->
+          <div class="js-sepsis-subtab-panel" id="sepsisSubtabDeltaPp" style="display:none;">
+            <div class="dsp-card" style="padding:1.25rem;">
+              
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+                <div>
+                  <h4 style="margin:0; font-size:13.5px; font-weight:800; color:#dc2626; display:flex; align-items:center; gap:6px;">
+                    <i class="fa-solid fa-water"></i> Đánh Giá Đáp Ứng Bù Dịch Động (Dynamic Fluid Responsiveness - &Delta;PP %)
+                  </h4>
+                  <div style="font-size:11px; color:var(--color-text-muted); margin-top:2px;">
+                    Mô hình Michard 2000 &amp; SSC 2021: Dự báo tăng cung lượng tim &gt; 15% khi bù dịch bằng Pulse Pressure Variation &amp; Nghiệm pháp nâng chân thụ động (PLR).
+                  </div>
+                </div>
+              </div>
+
+              <!-- Delta-PP SVG Waveform Container -->
+              <div id="sepsisDeltaPpSvgWrap" style="margin-bottom:1rem; overflow-x:auto;"></div>
+
+              <!-- Controls Grid -->
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; background:var(--color-bg); padding:1rem; border-radius:10px; border:1px solid var(--color-border); margin-bottom:1rem;">
+                
+                <!-- PP Max Input -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:block; margin-bottom:0.25rem;">Áp Lực Mạch Lớn Nhất (PPmax - Hít Vào):</label>
+                  <input type="number" id="deltaPpMaxInput" value="52" min="10" max="150" class="dsp-input" style="font-size:12px; font-weight:700; padding:4px 8px;" />
+                  <span style="font-size:10px; color:var(--color-text-muted);">HATT - HATTr ở đỉnh thì thở (mmHg)</span>
+                </div>
+
+                <!-- PP Min Input -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:block; margin-bottom:0.25rem;">Áp Lực Mạch Nhỏ Nhất (PPmin - Thở Ra):</label>
+                  <input type="number" id="deltaPpMinInput" value="38" min="10" max="150" class="dsp-input" style="font-size:12px; font-weight:700; padding:4px 8px;" />
+                  <span style="font-size:10px; color:var(--color-text-muted);">HATT - HATTr ở đáy thì thở (mmHg)</span>
+                </div>
+
+                <!-- Conditions -->
+                <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                  <label style="font-size:11px; font-weight:700; display:flex; align-items:center; gap:5px; cursor:pointer;">
+                    <input type="checkbox" id="deltaPpMvCheck" checked />
+                    <span>Thở máy xâm lấn (Không tự thở)</span>
+                  </label>
+                  <label style="font-size:11px; font-weight:700; display:flex; align-items:center; gap:5px; cursor:pointer;">
+                    <input type="checkbox" id="deltaPpVt8Check" checked />
+                    <span>Cài đặt Vt &ge; 8 mL/kg PBW</span>
+                  </label>
+                  <label style="font-size:11px; font-weight:700; display:flex; align-items:center; gap:5px; cursor:pointer;">
+                    <input type="checkbox" id="deltaPpArrhythmiaCheck" />
+                    <span>Có Rung nhĩ / Loạn nhịp</span>
+                  </label>
+                </div>
+
+                <!-- PLR Test -->
+                <div>
+                  <label style="font-size:11.5px; font-weight:700; color:var(--color-text-muted); display:block; margin-bottom:0.25rem;">Nghiệm Pháp Nâng Chân Thụ Động (PLR):</label>
+                  <input type="number" id="deltaPpPlrInput" value="14" min="0" max="40" class="dsp-input" style="font-size:12px; font-weight:700; padding:4px 8px;" />
+                  <span style="font-size:10px; color:var(--color-text-muted);">&ge; 10-15% CO tăng là DƯƠNG TÍNH</span>
+                </div>
+
+              </div>
+
+              <!-- Dynamic Delta-PP Breakdown -->
+              <div id="sepsisDeltaPpAnalysisWrap"></div>
+
+            </div>
+          </div>
+
         </div>
 
         <!-- Sepsis Results & Clinical Decision Column -->
@@ -568,10 +640,13 @@ export function mountSepsisController(bindActionBtns: (container: HTMLElement) =
         const p = document.getElementById('sepsisSubtabHemodynamics'); if (p) p.style.display = 'block';
       } else if (target === 'pneumonia_smartcop') {
         const p = document.getElementById('sepsisSubtabPneumonia'); if (p) p.style.display = 'block';
-      } else if (target === 'lactate_fluids') {
-        const p = document.getElementById('sepsisSubtabLactateFluids'); if (p) p.style.display = 'block';
+      } else if (target === 'vasopressor_titrator') {
+        const p = document.getElementById('sepsisSubtabVasopressors'); if (p) p.style.display = 'block';
       } else if (target === 'empiric_antimicrobial') {
         const p = document.getElementById('sepsisSubtabAntimicrobial'); if (p) p.style.display = 'block';
+      } else if (target === 'delta_pp_fluid') {
+        const p = document.getElementById('sepsisSubtabDeltaPp'); if (p) p.style.display = 'block';
+        recalcDeltaPp();
       }
     });
   });
@@ -918,8 +993,94 @@ export function mountSepsisController(bindActionBtns: (container: HTMLElement) =
     }
   };
 
+  // ============================================================
+  // DELTA-PP & FLUID RESPONSIVENESS CONTROLLER LOGIC (NeuroKit2)
+  // ============================================================
+  const recalcDeltaPp = () => {
+    const ppMax = parseFloat((document.getElementById('deltaPpMaxInput') as HTMLInputElement)?.value) || 52;
+    const ppMin = parseFloat((document.getElementById('deltaPpMinInput') as HTMLInputElement)?.value) || 38;
+    const isMv = (document.getElementById('deltaPpMvCheck') as HTMLInputElement)?.checked ?? true;
+    const isVt8 = (document.getElementById('deltaPpVt8Check') as HTMLInputElement)?.checked ?? true;
+    const hasArrhythmia = (document.getElementById('deltaPpArrhythmiaCheck') as HTMLInputElement)?.checked ?? false;
+    const plr = parseFloat((document.getElementById('deltaPpPlrInput') as HTMLInputElement)?.value) || 0;
+
+    const inputs: DeltaPpInputs = {
+      ppMax,
+      ppMin,
+      isMechanicallyVentilated: isMv,
+      tidalVolumeMlKg: isVt8 ? 8.5 : 6.0,
+      hasArrhythmia,
+      plrCardiacOutputIncrease: plr,
+    };
+
+    const res = computeDeltaPpAnalysis(inputs);
+
+    // 1. Render Delta-PP SVG
+    const svgWrap = document.getElementById('sepsisDeltaPpSvgWrap');
+    if (svgWrap) {
+      svgWrap.innerHTML = renderDeltaPpWaveformSvg(inputs);
+    }
+
+    // 2. Render Dynamic Analysis Breakdown
+    const analysisWrap = document.getElementById('sepsisDeltaPpAnalysisWrap');
+    if (analysisWrap) {
+      analysisWrap.innerHTML = `
+        <!-- Hero Banner -->
+        <div style="background:${res.badgeColor}14; border-left:4px solid ${res.badgeColor}; border-radius:8px; padding:0.85rem 1rem; margin-bottom:1rem;">
+          <div style="font-size:11px; font-weight:800; color:${res.badgeColor}; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;">
+            <span><i class="fa-solid fa-water"></i> Phân Tầng Đáp Ứng Bù Dịch Động (Fluid Responsiveness)</span>
+            <span class="dsp-badge" style="background:${res.badgeColor}25; color:${res.badgeColor};">&Delta;PP = ${res.deltaPpPercent}%</span>
+          </div>
+          <div style="font-size:1rem; font-weight:800; color:var(--color-text); margin-top:0.25rem;">
+            ${escapeHtml(res.interpretation)}
+          </div>
+        </div>
+
+        <!-- 2-Columns Grid -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; margin-bottom:1rem;">
+          
+          <!-- Column 1: Validity Checklist -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem;">
+            <div style="font-size:11.5px; font-weight:800; color:var(--color-primary); margin-bottom:0.4rem; border-bottom:1px solid var(--color-border); padding-bottom:0.25rem;">
+              📋 Bảng Kiểm 4 Điều Kiện Hợp Lệ (Michard 2000)
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.35rem; font-size:11.5px;">
+              ${res.validityChecklist.map(v => `
+                <div style="display:flex; align-items:center; gap:6px; color:${v.valid ? '#10b981' : '#dc2626'};">
+                  <i class="fa-solid ${v.valid ? 'fa-circle-check' : 'fa-circle-xmark'}"></i>
+                  <span style="color:var(--color-text);">${escapeHtml(v.check)}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Column 2: Clinical Recommendation -->
+          <div style="background:var(--color-bg); border:1px solid var(--color-border); border-radius:8px; padding:0.75rem;">
+            <div style="font-size:11.5px; font-weight:800; color:#dc2626; margin-bottom:0.4rem; border-bottom:1px solid var(--color-border); padding-bottom:0.25rem;">
+              💡 Chiến Lược Hồi Sức Khuyến Cáo (SSC 2021)
+            </div>
+            <div style="font-size:11.5px; line-height:1.45; color:var(--color-text);">
+              ${escapeHtml(res.clinicalRecommendation)}
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+  };
+
+  // Bind Delta-PP inputs
+  ['deltaPpMaxInput', 'deltaPpMinInput', 'deltaPpMvCheck', 'deltaPpVt8Check', 'deltaPpArrhythmiaCheck', 'deltaPpPlrInput'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', recalcDeltaPp);
+      el.addEventListener('change', recalcDeltaPp);
+    }
+  });
+
   document.querySelectorAll('.js-sepsis-input').forEach(i => i.addEventListener('input', recalcSepsis));
 
   // Initial Run
   recalcSepsis();
+  recalcDeltaPp();
 }
