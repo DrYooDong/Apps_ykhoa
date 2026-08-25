@@ -50,8 +50,8 @@ src/content/pathophysiology/biochemistry/
 5. **Kiểm tra HTML Integrity & Định Dạng Ký Tự ($ / #)**:
    - Sau khi tạo hoặc chỉnh sửa tệp HTML, bắt buộc chạy:
      ```bash
-     node scratch/check_tags.js src/content/pathophysiology/biochemistry/blockX/.../ten-bai.html
-     node scratch/check_format_bugs.js src/content/pathophysiology/biochemistry/blockX/.../ten-bai.html
+     node tools/tools/scratch/check_tags.js src/content/pathophysiology/biochemistry/blockX/.../ten-bai.html
+     node tools/scratch/check_format_bugs.js src/content/pathophysiology/biochemistry/blockX/.../ten-bai.html
      npm run build
      ```
    - **Tuyệt đối không để sót ký tự `$` (LaTeX thô)**: Mọi công thức/ký hiệu toán học phải chuyển sang HTML entities, Unicode (`α, β, Δ, →, ₂, ⁺, ⁻`) hoặc thẻ semantic (`<sup>`, `<sub>`, `<em>`, `<code>`).
@@ -370,6 +370,6 @@ src/content/pathophysiology/biochemistry/
 - [ ] Không có khối mục lục thừa lặp lại.
 - [ ] Mọi `.article-section` có `id="sec-X"` và `scroll-margin-top: 80px`.
 - [ ] Bảng biểu xét nghiệm `.lab-table` và các hộp callout có đủ 4 màu ngữ nghĩa.
-- [ ] Chạy `node scratch/check_tags.js <file.html>` đạt **PASSED**.
-- [ ] Chạy `node scratch/check_format_bugs.js <file.html>` đạt **0 lỗi $ và 0 lỗi #**.
+- [ ] Chạy `node tools/tools/scratch/check_tags.js <file.html>` đạt **PASSED**.
+- [ ] Chạy `node tools/scratch/check_format_bugs.js <file.html>` đạt **0 lỗi $ và 0 lỗi #**.
 - [ ] Chạy `npm run build` không phát sinh lỗi TypeScript.

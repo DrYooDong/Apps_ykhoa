@@ -23,9 +23,9 @@ Tài liệu này định nghĩa tiêu chuẩn thiết kế, cấu trúc mã ngu�
    - Bento Grid Cards, Matrix Boards, Phác đồ liều dùng (`.rx-tag`, `.data-table`) và Infoboxes cảnh báo màu sắc.
 5. **BẢO TỒN 100% TOÀN VẸN NỘI DUNG Y KHOA TỪ FILE .MD (100% Medical Content Integrity)**: File `.md` nguồn chứa các tri thức y khoa đã được tóm tắt kỹ lưỡng từ các nghiên cứu/guidelines (mốc chỉ số, tiêu chuẩn chẩn đoán, các trích xuất sơ đồ/bảng FIGURE & TABLE, tên thử nghiệm RCT như SELECT, SUMMIT, FIGHT, LIVE, chỉ số HR/OR/%, phân tích nhóm, tài liệu tham khảo AMA). **TUYỆT ĐỐI KHÔNG LƯỢC BỎ, CẮT NGẮN HAY LÀM MẤT BẤT KỲ THÔNG TIN NÀO**. Tất cả nội dung trong `.md` phải xuất hiện đầy đủ 100% trên trang HTML, trình bày qua các linh kiện UI sinh động.
 6. **Bắt Buộc Đăng Ký Registry `guidelinesdata.js`**: Mọi guideline mới tạo phải bổ sung 1 bản ghi vào array `SAMPLE_STUDIES` trong `src/content/ebm/guidelines/guidelinesdata.js`.
-7. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js <file>.html` sau khi tạo/sửa.
+7. **Kiểm Tra HTML Integrity**: Chạy `node tools/tools/scratch/check_tags.js <file>.html` sau khi tạo/sửa.
 8. **BẮT BUỘC KIỂM TRA & LÀM SẠCH LỖI $ (Math LaTeX Formatting Cleanup)**: Trước khi hoàn tất bất kỳ trang Guideline HTML nào, **BẮT BUỘC** kiểm tra và làm sạch 100% ký tự `$` math LaTeX (`$BMI \ge 25$` $\rightarrow$ `BMI ≥ 25`, `$\ge 150\text{ mg/dL}$` $\rightarrow$ `≥ 150 mg/dL`, `$\ge 20\%$` $\rightarrow$ `≥ 20%`). Tuyệt đối không để sót ký tự `$` thô hiển thị trên giao diện web.
-9. **Bảo Vệ Hub `guidelines.js`**: Chạy `node scratch/query_graph.js guidelines.js` nếu tác động vào engine xử lý chung của Kho Guidelines (chỉ số fan-in 570).
+9. **Bảo Vệ Hub `guidelines.js`**: Chạy `node tools/tools/scratch/query_graph.js guidelines.js` nếu tác động vào engine xử lý chung của Kho Guidelines (chỉ số fan-in 570).
 10. **Tự Động Dọn Dẹp File Tạm**: Tự động xóa tất cả các file `.md` trung gian / hợp nhất được tạo ra trong `scratch/` ngay sau khi hoàn tất việc sinh file `.html` và đăng ký registry.
 11. **TUYỆT ĐỐI CẤM THẺ HTML TRONG SVG `<text>` (SVG Text Formatting Rule)**: Tuyệt đối **KHÔNG ĐƯỢC** sử dụng các thẻ HTML (`<strong>`, `<b>`, `<span>`, `<br>`, `<em>`, `<code>`) bên trong `<text>` của SVG. Để in đậm trong SVG, bắt buộc dùng `<tspan font-weight="700">` hoặc thuộc tính `font-weight="700"`. Để xuống dòng, dùng nhiều thẻ `<text>` hoặc `<tspan x="..." dy="...">`. ViewBox SVG phải luôn đủ rộng/cao để không cắt cụt các node.
 12. **BẮT BUỘC XỬ LÝ HÌNH ẢNH ĐÍNH KÈM TỪ FILE .MD (Image Asset Extraction & Embedding Rule)**: Khi file `.md` nguồn có chứa hình ảnh đính kèm (dạng `![[Pasted image ...]]` hoặc `![alt](path)`):
@@ -109,7 +109,7 @@ Script `convert_md_to_guideline.js` chỉ tạo ra khung văn bản đơn thuầ
    - Thêm bản ghi mới vào mảng `SAMPLE_STUDIES` với `file: "kho-guidelines/<slug>.html"`.
    - Cấu hình chuỗi số liệu `keyResults` hoặc `subgroups` với cú pháp chuẩn (`HR ...`, `COL: ...`, `HBAR: ...`) để tự động render biểu đồ Mini SVG.
 4. **Kiểm tra Tags & Links**:
-   - Kiểm tra đóng mở thẻ HTML (`node scratch/check_tags.js <file>.html`).
+   - Kiểm tra đóng mở thẻ HTML (`node tools/tools/scratch/check_tags.js <file>.html`).
    - Kiểm tra cú pháp JS: `node -c src/content/ebm/guidelines/guidelinesdata.js`.
 5. **Tham khảo chi tiết**:
    - Đọc thêm tại `src/content/ebm/guidelines/HUONG_DAN_TAO_TOM_TAT_TU_MD.md`.
@@ -371,8 +371,8 @@ Mỗi khi tạo trang tóm tắt Guideline mới, hãy sử dụng khung cấu t
   <!-- 💡 GRAPHIFY & INTEGRITY CHECKLIST -->
   <!-- 
     1. Graphify Risk Check: guidelines.js là CRITICAL HUB (570 fan-in dependencies).
-       Nếu chỉnh sửa logic chung hoặc Supabase sync của Kho Guidelines, chạy `node scratch/query_graph.js guidelines.js`.
-    2. HTML Integrity Check: Chạy `node scratch/check_tags.js path/to/guideline_file.html` để đảm bảo thẻ đóng mở chuẩn xác.
+       Nếu chỉnh sửa logic chung hoặc Supabase sync của Kho Guidelines, chạy `node tools/tools/scratch/query_graph.js guidelines.js`.
+    2. HTML Integrity Check: Chạy `node tools/tools/scratch/check_tags.js path/to/guideline_file.html` để đảm bảo thẻ đóng mở chuẩn xác.
   -->
 </body>
 </html>

@@ -14,7 +14,7 @@ description: >
 - **Loại**: Static web app — pure HTML/CSS/JS, NO framework, NO build tools
 - **Giao thức**: Chạy qua `file:///` (offline) hoặc web server cục bộ
 - **Thư mục gốc**: `d:\Apps_ykhoa\` (hoặc `i:\Drive của tôi\apps\Apps_ykhoa\`)
-- **Tài liệu tổng**: `docs/PROJECT_OVERVIEW.md`, `docs/FILE_MAP.md`
+- **Tài liệu tổng**: `.agents/docs/PROJECT_OVERVIEW.md`, `.agents/docs/FILE_MAP.md`
 - **Đồ thị Mã nguồn**: `graphify-out/` (Knowledge Graph Index với 3,444 nodes & 6,068 edges)
 
 ---
@@ -23,10 +23,10 @@ description: >
 
 Để tăng tốc độ hiểu công việc và không phải quét thủ công hàng trăm file, AI phải áp dụng quy trình tra cứu Đồ thị Kiến trúc mã nguồn qua `graphify-out`:
 
-### 1. Công cụ Tra cứu Đồ thị CLI (`scratch/query_graph.js`)
+### 1. Công cụ Tra cứu Đồ thị CLI (`tools/scratch/query_graph.js`)
 Khi bắt đầu một tác vụ liên quan đến module hoặc file JS/HTML bất kỳ, hãy chạy lệnh:
 ```bash
-node scratch/query_graph.js <tên_file_hoặc_hàm>
+node tools/tools/scratch/query_graph.js <tên_file_hoặc_hàm>
 ```
 **Kết quả thu được**:
 - **Inbound Dependencies (Fan-in)**: Số lượng file/hàm đang gọi hoặc phụ thuộc vào file này.
@@ -192,8 +192,8 @@ Mọi trang nội dung đều tuân thủ cấu trúc khung chuẩn:
 
 ## ⚠️ Quy tắc Giảm thiểu Rủi ro (Risk Mitigation Rules)
 
-1. **Trước khi sửa bất kỳ file JS/CSS nào**: Chạy `node scratch/query_graph.js <filename>` để xem đồ thị phụ thuộc. Nếu Rủi ro là `HIGH RISK` hoặc `CRITICAL HUB`, phải tạo plan và khoanh vùng tác động.
+1. **Trước khi sửa bất kỳ file JS/CSS nào**: Chạy `node tools/tools/scratch/query_graph.js <filename>` để xem đồ thị phụ thuộc. Nếu Rủi ro là `HIGH RISK` hoặc `CRITICAL HUB`, phải tạo plan và khoanh vùng tác động.
 2. **Sai đường dẫn tương đối**: Đếm lại số cấp thư mục và dùng đúng prefix `../`.
 3. **Hardcode màu**: Luôn dùng `var(--color-primary)` hoặc tokens sẵn có.
-4. **Bảo tồn HTML Integrity**: Chạy `node scratch/check_tags.js <file.html>` trước và sau khi chỉnh sửa HTML.
+4. **Bảo tồn HTML Integrity**: Chạy `node tools/tools/scratch/check_tags.js <file.html>` trước và sau khi chỉnh sửa HTML.
 

@@ -17,7 +17,7 @@ description: >
 2. **Khai Báo Đúng CSS & JS Tab**: Phải nạp `clinical-skill.css` và `clinical-skill-tabs.js` để tính năng chuyển tab hoạt động mượt mà.
 3. **Phân Loại Bảng Xét Nghiệm (CLS)**: Trang đọc kết quả CLS phải ghi rõ: Chỉ số, Khoảng chiếu bình thường, Bất thường cao/thấp, Ý nghĩa lâm sàng.
 4. **Quy Tắc Đặt Tên File Kỹ Năng**: Trang OSCE dùng `KN_[Ten].html`, trang đọc CLS dùng `doc-[ten].html` (ASCII, kebab-case).
-5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi tạo/sửa.
+5. **Kiểm Tra HTML Integrity**: Chạy `node tools/tools/scratch/check_tags.js path/to/file.html` khi tạo/sửa.
 
 ---
 
@@ -203,4 +203,4 @@ Hồi sức:                   KN_Hoisuc_[Tên].html
 3. **Copy boilerplate** từ `templates/clinical-skill-template.html`
 4. **Thêm CSS** `clinical-skill.css` (tabs) hoặc `paraclinical.css` (CLS)
 5. **Thêm JS** `clinical-skill-tabs.js` để tabs hoạt động
-6. **Cập nhật** `docs/FILE_MAP.md` sau khi hoàn thành
+6. **Cập nhật** `.agents/docs/FILE_MAP.md` sau khi hoàn thành

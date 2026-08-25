@@ -16,7 +16,7 @@ Khi xảy ra bất kỳ lỗi giao diện, lỗi JS không chạy, hoặc báo c
 - **Triệu chứng**: Giao diện bị biến mất, co xẹp dải dọc (~40px) ở mép trái, chữ bị vỡ dòng hoặc footer chui vào giữa nội dung.
 - **Thao tác AI**: Chạy công cụ quét thẻ đóng tự động:
   ```bash
-  node scratch/check_tags.js path/to/file.html
+  node tools/tools/scratch/check_tags.js path/to/file.html
   ```
 - **Xử lý**: Nếu phát hiện thiếu thẻ đóng `.app-container` hoặc `.main-wrapper`, ngay lập tức bổ sung thẻ `</div>` tương ứng trước khối `<script>`.
 
@@ -35,7 +35,7 @@ Khi xảy ra bất kỳ lỗi giao diện, lỗi JS không chạy, hoặc báo c
 - **Mục tiêu**: Tìm nhanh hàm/file gây ra sự cố và xác định các file khác bị ảnh hưởng gián tiếp.
 - **Thao tác AI**: Chạy lệnh truy vấn đồ thị:
   ```bash
-  node scratch/query_graph.js <tên_hàm_bị_lỗi_hoặc_tên_file>
+  node tools/tools/scratch/query_graph.js <tên_hàm_bị_lỗi_hoặc_tên_file>
   ```
 - **Phân tích kết quả**:
   - **Inbound Edges**: Các file/hàm đang gọi tới điểm lỗi.
@@ -106,6 +106,6 @@ Mỗi khi khắc phục sự cố, cập nhật ngay thông tin vào bảng sau:
 
 > [!IMPORTANT]
 > **Quy tắc Vàng giảm thiểu rủi ro khi khắc phục sự cố:**
-> 1. Đếm lại số thẻ HTML bằng `node scratch/check_tags.js <file>`.
-> 2. Đánh giá mức độ ảnh hưởng bằng `node scratch/query_graph.js <symbol>`.
+> 1. Đếm lại số thẻ HTML bằng `node tools/tools/scratch/check_tags.js <file>`.
+> 2. Đánh giá mức độ ảnh hưởng bằng `node tools/tools/scratch/query_graph.js <symbol>`.
 > 3. Sửa bằng script patch NodeJS để loại trừ hoàn toàn rủi ro CRLF truncation trên Windows.

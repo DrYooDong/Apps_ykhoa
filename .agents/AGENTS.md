@@ -22,6 +22,11 @@ Hệ thống quy tắc và trí nhớ của AI được mô-đun hóa trong thư
 ```text
 d:\Apps_ykhoa\.agents/
 ├── AGENTS.md                         # File Master Index chính (File hiện tại)
+├── docs/                             # Toàn bộ tài liệu kiến trúc, File Map, Checklists
+│   ├── PROJECT_OVERVIEW.md           # Tổng quan hệ sinh thái
+│   ├── FILE_MAP.md                   # Bản đồ cấu trúc file
+│   ├── WORKFLOW_CHECKLISTS.md        # Bộ bảng kiểm quy trình
+│   └── DESIGN_TO_CODE.md             # Hướng dẫn thiết kế sang mã nguồn
 ├── learnings/                        # Bộ nhớ học tập & Lịch sử sửa bug dự án (Lessons Learned)
 │   └── README.md
 ├── rules/                            # Các bộ quy tắc tuân thủ mô-đun hóa
@@ -47,12 +52,11 @@ d:\Apps_ykhoa\.agents/
 
 | Khi làm task... | Đọc file / Skill... |
 |-----------------|---------------------|
-| Bất kỳ task nào | `docs/PROJECT_OVERVIEW.md` & `rules/*.md` |
-| Tìm file cụ thể | `docs/FILE_MAP.md` |
-| Checklist quy trình (A/B/C/D) | `docs/WORKFLOW_CHECKLISTS.md` |
-| Thêm CSS/JS mới | `css/README.md`, `js/README.md` |
-| Chuyển đổi Figma → CSS | `docs/DESIGN_TO_CODE.md` |
-| Tạo trang mới (tổng quát) | `pages/README.md` |
+| Bất kỳ task nào | `.agents/docs/PROJECT_OVERVIEW.md` & `rules/*.md` |
+| Tìm file cụ thể | `.agents/docs/FILE_MAP.md` |
+| Checklist quy trình (A/B/C/D) | `.agents/docs/WORKFLOW_CHECKLISTS.md` |
+| Hướng dẫn kiến trúc & Style | `src/styles/README.md` |
+| Chuyển đổi Figma → CSS | `.agents/docs/DESIGN_TO_CODE.md` |
 | Sửa/Tạo file Hub Cốt lõi | `rules/hub-protection.md` |
 | Kiểm thử trước khi bàn giao | Skill `code-reviewer` |
 
@@ -103,5 +107,5 @@ var(--color-info)           /* Xanh ngọc */
 - [ ] Không có hardcode màu sắc (`rules/dark-mode-rules.md`)
 - [ ] Dark mode hoạt động bình thường (`data-theme="dark"`)
 - [ ] Responsive trên mobile (kiểm tra width $\le$ 375px & touch target $\ge$ 44px)
-- [ ] `node scratch/check_tags.js <file.html>` pass không lỗi (`rules/html-integrity-rules.md`)
+- [ ] `node tools/scratch/check_tags.js <file.html>` pass không lỗi (`rules/html-integrity-rules.md`)
 - [ ] `docs/FILE_MAP.md` và Registry liên quan đã được cập nhật

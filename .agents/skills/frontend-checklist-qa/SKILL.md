@@ -5,7 +5,7 @@ description: Kỹ năng tra cứu Kho Tiêu chuẩn & Bảng kiểm Front-End (F
 
 # Front-End Checklist & Quality Vault Skill
 
-Skill này cung cấp quy trình kiểm tra chất lượng toàn diện (Front-End & UI/UX Quality Assurance) dựa trên tài liệu kho tiêu chuẩn `docs/FRONTEND_CHECKLIST_VAULT.md` trong hệ sinh thái CliniPortal.
+Skill này cung cấp quy trình kiểm tra chất lượng toàn diện (Front-End & UI/UX Quality Assurance) dựa trên tài liệu kho tiêu chuẩn `.agents/docs/FRONTEND_CHECKLIST_VAULT.md` trong hệ sinh thái CliniPortal.
 
 ---
 
@@ -20,14 +20,14 @@ Kích hoạt Skill này khi:
 
 ## 📋 QUY TRÌNH KIỂM TRA 7 SECTION CHECKLIST
 
-Đọc kỹ và đối chiếu từng mục trong file [FRONTEND_CHECKLIST_VAULT.md](file:///d:/Apps_ykhoa/docs/FRONTEND_CHECKLIST_VAULT.md):
+Đọc kỹ và đối chiếu từng mục trong file [FRONTEND_CHECKLIST_VAULT.md](file:///d:/Apps_ykhoa/.agents/docs/FRONTEND_CHECKLIST_VAULT.md):
 
 1. **Section 1: Head & Meta Data (SEO, Social, Viewport)**
    - Thẻ `<!DOCTYPE html>`, `<html lang="vi" data-theme="light">`.
    - Title độc nhất, Meta description, Open Graph tags (`og:image`, `og:title`), Meta Viewport.
 2. **Section 2: HTML Semantic & Accessibility (a11y / WCAG 2.1)**
    - Đúng cấu trúc ngữ nghĩa HTML5, duy nhất 1 thẻ `<h1>`.
-   - Chạy `node scratch/check_tags.js <file.html>` đảm bảo 0 lỗi unclosed tags.
+   - Chạy `node tools/tools/scratch/check_tags.js <file.html>` đảm bảo 0 lỗi unclosed tags.
    - Thẻ ARIA roles, hỗ trợ phím `Tab` navigation.
 3. **Section 3: CSS & Design System (Tokens, Responsive, Dark Mode)**
    - Dùng Design Tokens `var(--color-...)`. **Cấm hardcode màu hex**.
@@ -46,4 +46,4 @@ Kích hoạt Skill này khi:
 7. **Section 7: Quy chuẩn Đặc thù CliniPortal (Medical Web Ecosystem)**
    - Đường dẫn tương đối chính xác 100% theo cấp thư mục (`./`, `../`, `../../`, `../../../`, `../../../../`).
    - Dynamic Injection Header/Footer (`data-header-path`, `data-footer-path`).
-   - Cập nhật Registry: `docs/FILE_MAP.md`, `guidelinesdata.js`, `benh-ly.js`, `cong-cu.html`.
+   - Cập nhật Registry: `.agents/docs/FILE_MAP.md`, `guidelinesdata.js`, `benh-ly.js`, `cong-cu.html`.

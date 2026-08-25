@@ -13,7 +13,7 @@ Skill này cung cấp tiêu chuẩn kiểm tra mã nguồn y khoa toàn diện c
 - [ ] Chỉ có **duy nhất 1 thẻ `<h1>`** trên mỗi trang HTML.
 - [ ] Không có ID trùng lặp.
 - [ ] Đường dẫn CSS/JS tương đối chính xác theo cấp thư mục (`../`, `../../`...).
-- [ ] Đã chạy `node scratch/check_tags.js <file.html>` và không có lỗi đóng/mở thẻ.
+- [ ] Đã chạy `node tools/tools/scratch/check_tags.js <file.html>` và không có lỗi đóng/mở thẻ.
 
 ### 2. CSS & Design Tokens
 - [ ] 100% tương thích Dark Mode (`data-theme="dark"`).

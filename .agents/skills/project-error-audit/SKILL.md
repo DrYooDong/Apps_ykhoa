@@ -13,7 +13,7 @@ Tài liệu này quy định **quy trình kiểm tra chất lượng mã nguồn
 
 ## 🛑 Nguyên Tắc Bắt Buộc (Mandatory Rule)
 
-> **KHÔNG ĐƯỢC PHÉP tuyên bố task đã hoàn thành nếu chưa chạy lệnh kiểm tra lỗi tổng hợp `node scratch/master_project_audit.js` và xác nhận kết quả PASSED.**
+> **KHÔNG ĐƯỢC PHÉP tuyên bố task đã hoàn thành nếu chưa chạy lệnh kiểm tra lỗi tổng hợp `node tools/tools/scratch/master_project_audit.js` và xác nhận kết quả PASSED.**
 
 ---
 
@@ -26,7 +26,7 @@ Tài liệu này quy định **quy trình kiểm tra chất lượng mã nguồn
 ### 🔹 Bước 1: Chạy Script Master Audit 1-Click
 Thực thi lệnh kiểm tra tự động trên toàn bộ mã nguồn nguồn:
 ```bash
-node scratch/master_project_audit.js
+node tools/tools/scratch/master_project_audit.js
 ```
 Script sẽ tự động quét 7 hạng mục:
 1. **HTML Structural Tag Balance**: Cân bằng thẻ `<div>`, `<main>`, `<article>`, `<section>`, `<nav>`, `<aside>`, `<header>`, `<footer>`.
@@ -64,14 +64,14 @@ fs.writeFileSync('path/to/target_file.html', content, 'utf8');
 
 ### 🔹 Bước 4: Xác Nhận & Cập Nhật Log Sự Cố
 
-- Tái chạy lệnh `node scratch/master_project_audit.js` để đảm bảo 0 Errors.
+- Tái chạy lệnh `node tools/tools/scratch/master_project_audit.js` để đảm bảo 0 Errors.
 - Nếu đây là một dạng lỗi hoàn toàn mới (chưa từng gặp), hãy kích hoạt Skill `debug-skill-generator` để tạo ra 01 Skill sửa lỗi mới lưu lại tri thức cho hệ thống!
 
 ---
 
 ## 📋 Checklist Trước Khi Tuyên Bố Hoàn Thành
 
-- [ ] Lệnh `node scratch/master_project_audit.js` chạy thành công (0 Errors).
+- [ ] Lệnh `node tools/tools/scratch/master_project_audit.js` chạy thành công (0 Errors).
 - [ ] Các file HTML mới được kiểm tra thẻ đóng bằng `check_tags.js`.
 - [ ] Các file JS mới đạt chuẩn syntax (`node -c`).
 - [ ] Không có màu hex hardcoded vi phạm Dark Mode.

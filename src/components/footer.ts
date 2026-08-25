@@ -1,6 +1,6 @@
 /**
  * Footer Dynamic Loader & Component (footer.ts)
- * Path: src/components/footer.ts
+ * Location: components/footer.ts
  * CliniPortal Framework — 100% Native TypeScript Component
  */
 
@@ -31,7 +31,7 @@ export function renderFooterHtml(projectRoot = './'): string {
           <ul class="footer-nav-list">
             <li><a href="${root}#/">🏠 Trang chủ</a></li>
             <li><a href="${root}#/docspace">🩺 DocSpace Pro</a></li>
-            <li><a href="${root}#/basic-medical">🧬 Basic Medical Sciences</a></li>
+            <li><a href="${root}#/pathophysiology/giai-phau-sinh-ly">🧬 Cơ sở Y khoa</a></li>
             <li><a href="${root}#/ebm">📄 Y học chứng cứ</a></li>
             <li><a href="${root}#/ebm/kho-guidelines">📚 Kho Guidelines 2026</a></li>
             <li><a href="${root}#/docspace/soap">📋 Sổ tay SOAP Digital</a></li>

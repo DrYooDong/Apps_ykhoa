@@ -3,7 +3,7 @@
  * Path: src/content/pathophysiology/biochemistry/metabolic-navigator-view.ts
  */
 
-import '../../../../css/components/metabolic-navigator.css';
+import '../../../styles/components/metabolic-navigator.css';
 import { METABOLIC_PATHWAYS, PathwayMap, MetabolicNode } from './metabolic-data';
 
 export function renderMetabolicNavigatorView(activePathwayId: string = 'glycolysis'): string {

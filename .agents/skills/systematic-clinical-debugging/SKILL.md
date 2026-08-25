@@ -14,7 +14,7 @@ Hướng dẫn quy trình 5 bước để chẩn đoán, khoanh vùng và khắc
 ### Bước 1: Tra cứu Đồ thị Phụ thuộc (`graphify-out`)
 Trước khi sửa bất kỳ file JS/CSS nào (đặc biệt là các Hub Modules như `main.js`, `guidelines.js`, `benh-ly.js`), hãy kiểm tra fan-in bằng tool CLI:
 ```bash
-node scratch/query_graph.js <tên_file_hoặc_hàm>
+node tools/tools/scratch/query_graph.js <tên_file_hoặc_hàm>
 ```
 Nếu file có chỉ số Rủi ro `CRITICAL HUB` hoặc `HIGH RISK`, mọi sửa đổi cần giữ nguyên API contract và signature.
 
@@ -31,7 +31,7 @@ Nếu màu sắc hoặc giao diện bị sai ở Dark Mode:
 ### Bước 4: Kiểm tra HTML Integrity
 Trước và sau khi thay đổi file HTML, chạy script kiểm tra thẻ đóng:
 ```bash
-node scratch/check_tags.js <file.html>
+node tools/tools/scratch/check_tags.js <file.html>
 ```
 
 ### Bước 5: Thử nghiệm Mobile & Responsive (Width ≤ 768px)

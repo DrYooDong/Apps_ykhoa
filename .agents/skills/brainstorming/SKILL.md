@@ -20,7 +20,7 @@ Skill này hướng dẫn AI quy trình động não, nghiên cứu giải pháp
 
 3. **Phân tích Rủi ro & Ràng buộc**:
    - Có ảnh hưởng đến Hub Module nào không? (`main.js`, `guidelines.js`...)
-   - Cần cập nhật bao nhiêu file registry? (`docs/FILE_MAP.md`, `benh-ly.js`...)
+   - Cần cập nhật bao nhiêu file registry? (`.agents/docs/FILE_MAP.md`, `benh-ly.js`...)
 
 4. **Tổng hợp Giải pháp & Đề xuất**:
    - Trình bày dạng sơ đồ Mermaid hoặc bản thảo cấu trúc file trực quan.

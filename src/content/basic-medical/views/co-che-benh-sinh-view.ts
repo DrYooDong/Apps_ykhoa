@@ -5,9 +5,9 @@
  * Toàn bộ liên kết dẫn trực tiếp vào SPA HTML Reader: #/basic-medical/cases/:slug
  */
 
-import '../../../../css/components/module-dashboard.css';
-import '../../../../css/components/physio-content.css';
-import '../../../../css/components/physio-promax-hub.css';
+import '../../../styles/components/module-dashboard.css';
+import '../../../styles/components/physio-content.css';
+import '../../../styles/components/physio-promax-hub.css';
 import '../css/physio-shared.css';
 
 export function renderCoCheBenhSinhView(): string {

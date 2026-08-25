@@ -103,4 +103,4 @@ var(--color-success-hl) / var(--color-teal-hl) /* Nền sáng an toàn */
 - [ ] Không có mã màu hex hardcoded (toàn bộ dùng `var(--color-...)` hoặc CSS tokens).
 - [ ] Đã kiểm tra tính rõ ràng ở cả 2 chế độ Sáng (Light) và Tối (Dark Mode).
 - [ ] Không có đường nối xiên chéo cắt ngang qua nội dung của node khác.
-- [ ] Chạy lệnh `node scratch/check_tags.js <file.html>` **PASSED** (0 lỗi HTML và SVG).
+- [ ] Chạy lệnh `node tools/tools/scratch/check_tags.js <file.html>` **PASSED** (0 lỗi HTML và SVG).

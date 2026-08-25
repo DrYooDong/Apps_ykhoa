@@ -118,7 +118,7 @@ graph TD
 - **Quy tắc bắt buộc**: 
   - **MỌI ký tự `<` trong nội dung văn bản HTML hoặc chuỗi JS HTML đều PHẢI viết thành `&lt;`**.
   - Ký tự `>` trong văn bản nên viết thành `&gt;`.
-- **Cách kiểm tra**: Chạy lệnh `node scratch/check_tags.js <file.html>` và script quét regex `<`.
+- **Cách kiểm tra**: Chạy lệnh `node tools/tools/scratch/check_tags.js <file.html>` và script quét regex `<`.
 
 ### ❌ Lỗi 2: Trùng lặp Thanh Điều Hướng / Thẻ Breadcrumb
 - **Sự cố**: Chèn cả `<clini-breadcrumb>` hoặc `<aside class="app-sidebar">` ở trên cùng, tạo ra 2-3 thanh điều hướng ngang chồng chéo rườm rà.
@@ -152,7 +152,7 @@ graph TD
 
 ```bash
 # 1. Kiểm tra toàn vẹn thẻ HTML (Unclosed structural tags)
-node scratch/check_tags.js src/content/approaches/specialties/pediatrics/<tên_file>.html
+node tools/tools/scratch/check_tags.js src/content/approaches/specialties/pediatrics/<tên_file>.html
 
 # 2. Quét các ký tự < chưa được mã hóa
 node -e "

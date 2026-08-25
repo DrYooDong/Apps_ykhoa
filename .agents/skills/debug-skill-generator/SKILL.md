@@ -69,4 +69,4 @@ Nội dung `SKILL.md` sẽ chứa đầy đủ:
 - [ ] Xác nhận file `.agents/skills/<skill-name>/SKILL.md` đã được tạo.
 - [ ] Kiểm tra cú pháp YAML Frontmatter hợp lệ.
 - [ ] Cập nhật nhật ký sự cố vào `.agents/skills/cliniportal-debugging/SKILL.md`.
-- [ ] Chạy `node scratch/master_project_audit.js` để đảm bảo hệ thống hoàn toàn ổn định.
+- [ ] Chạy `node tools/tools/scratch/master_project_audit.js` để đảm bảo hệ thống hoàn toàn ổn định.

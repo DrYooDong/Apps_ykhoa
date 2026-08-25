@@ -16,7 +16,7 @@ description: >
    - Style 1: Phác đồ / Bù dịch phức tạp (`hero-bd`, `scenario-grid`, `fluid-cards-grid`).
    - Style 2: Máy tính chẩn đoán / Thang điểm (`calc-panel`, `result-panel`, `calc-btn`).
 3. **Validation & An Toàn Số Liệu**: Mọi input số phải có `min`, `max`, `step` chuẩn y tế và kiểm tra `isNaN()` trước khi hiển thị kết quả. Không để xảy ra chia cho 0 (`NaN` / `Infinity`).
-4. **Bảo Vệ Hub `js/clinical-engine.js`**: Chạy `node scratch/query_graph.js js/clinical-engine.js` trước khi sửa engine tính toán chung.
+4. **Bảo Vệ Hub `js/clinical-engine.js`**: Chạy `node tools/tools/scratch/query_graph.js js/clinical-engine.js` trước khi sửa engine tính toán chung.
 5. **Đăng Ký Danh Mục `cong-cu.html`**: Mọi công cụ mới phải thêm thẻ link tương ứng trên menu điều hướng của `pages/Công cụ/cong-cu.html`.
 
 ---
@@ -175,8 +175,8 @@ CSS riêng: `css/components/abg-calculator.css` hoặc `insulin-calculator.css`
 2. **Chọn thư mục** đúng chuyên khoa
 3. **Copy boilerplate** từ `templates/calculator-template.html`
 4. **Đọc** `pages/Công cụ/HUONG_DAN_THIET_KE.md` để xem ví dụ đầy đủ của cả 2 Style
-5. **Kiểm tra đồ thị phụ thuộc Graphify**: Khi liên kết với engine tính toán (`js/clinical-engine.js` hoặc file calculator JS chung), hãy chạy `node scratch/query_graph.js <engine_name>` để phòng ngừa rủi ro tác động dây chuyền.
-6. **Bảo tồn tính toàn vẹn HTML**: Chạy `node scratch/check_tags.js path/to/file.html` để đảm bảo thẻ `.app-container` và `.main-wrapper` đóng mở cân bằng.
+5. **Kiểm tra đồ thị phụ thuộc Graphify**: Khi liên kết với engine tính toán (`js/clinical-engine.js` hoặc file calculator JS chung), hãy chạy `node tools/tools/scratch/query_graph.js <engine_name>` để phòng ngừa rủi ro tác động dây chuyền.
+6. **Bảo tồn tính toàn vẹn HTML**: Chạy `node tools/tools/scratch/check_tags.js path/to/file.html` để đảm bảo thẻ `.app-container` và `.main-wrapper` đóng mở cân bằng.
 7. **JavaScript**: Viết inline trong `<script>` tag hoặc file riêng trong thư mục công cụ.
-8. **Cập nhật** `docs/FILE_MAP.md` sau khi hoàn thành.
+8. **Cập nhật** `.agents/docs/FILE_MAP.md` sau khi hoàn thành.
 

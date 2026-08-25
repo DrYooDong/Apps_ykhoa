@@ -4,11 +4,11 @@
  * Module: 2x2 Matrix Solver, Epicurve Outbreak Simulator, Study Design Comparator & Bradford Hill Causality
  */
 
-import '../../../../css/components/module-dashboard.css';
-import '../../../../css/components/physio-content.css';
-import '../../../../css/components/formula-vault.css';
-import '../../../../css/components/physio-promax-hub.css';
-import '../../../../css/components/epidemiology-hub.css';
+import '../../../styles/components/module-dashboard.css';
+import '../../../styles/components/physio-content.css';
+import '../../../styles/components/formula-vault.css';
+import '../../../styles/components/physio-promax-hub.css';
+import '../../../styles/components/epidemiology-hub.css';
 import { 
   STUDY_DESIGNS_DATA, 
   OUTBREAK_PATTERNS, 

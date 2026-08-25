@@ -84,4 +84,4 @@ Chèn các thẻ liên kết thông minh giữa các trang phân hệ:
 ```
 
 ### Bước 4: Kiểm tra Đóng góp & File Map
-Đối chiếu file mới tạo với `docs/FILE_MAP.md` và kiểm tra quy tắc đường dẫn tương đối chuẩn xác theo cấp thư mục.
+Đối chiếu file mới tạo với `.agents/docs/FILE_MAP.md` và kiểm tra quy tắc đường dẫn tương đối chuẩn xác theo cấp thư mục.

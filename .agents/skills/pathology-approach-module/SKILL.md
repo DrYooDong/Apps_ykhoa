@@ -15,11 +15,11 @@ Skill này quy định chuẩn kiến trúc, cấu trúc dữ liệu JSON Schema
 
 ## 🛑 MODULE RULES BẮT BUỘC (Quy tắc Module Phác Đồ Bệnh Lý)
 
-1. **Bảo Vệ Hub `benh-ly.js`**: `benh-ly.js` là **CRITICAL HUB** với >200 liên kết phụ thuộc. BẮT BUỘC chạy `node scratch/query_graph.js benh-ly.js` trước khi thực hiện bất kỳ refactor nào trên engine.
+1. **Bảo Vệ Hub `benh-ly.js`**: `benh-ly.js` là **CRITICAL HUB** với >200 liên kết phụ thuộc. BẮT BUỘC chạy `node tools/tools/scratch/query_graph.js benh-ly.js` trước khi thực hiện bất kỳ refactor nào trên engine.
 2. **Khai Báo Đúng 4 CSS & 3 JS Engine**: Khi nhúng Poster vào HTML, phải nạp đầy đủ `clinical-flow-studio.css`, `clinical-infographic-poster.css`, `benh-ly.css`, `medical-draw-engine.js`, `clinical-infographic-renderer.js` và `benh-ly.js`.
 3. **Chuẩn Dữ Liệu JSON Schema**: Mọi bài phác đồ Poster JSON phải đáp ứng đầy đủ các trường chính: `id`, `name`, `icd`, `urgentAlert`, `flowchart`, `comparisonSection`, `dosingSection`, `processRibbon`, `takeaway`.
 4. **Chuẩn Hóa Tọa Độ Node Studio**: Tọa độ $(x, y)$ và chiều rộng node flowchart phải khớp vừa khung viewBox SVG Canvas 750x480px.
-5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi tạo/sửa HTML trong phân hệ Bệnh lý.
+5. **Kiểm Tra HTML Integrity**: Chạy `node tools/tools/scratch/check_tags.js path/to/file.html` khi tạo/sửa HTML trong phân hệ Bệnh lý.
 
 ---
 
@@ -196,8 +196,8 @@ Mỗi bài bệnh lý đầy đủ định dạng Poster được lưu trữ the
 ## 📝 Quy Trình AI Tạo & Cập Nhật Bài Bệnh Lý
 
 1. **Đọc kỹ thông tin khuyến cáo Y học chứng cứ mới nhất** (NICE, ACC/AHA, ESC, GINA, GOLD...).
-2. **Kiểm tra tác động Graphify trên Hub `benh-ly.js`**: `benh-ly.js` là **CRITICAL HUB** (>200 liên kết). Trước khi sửa đổi engine bệnh lý, hãy chạy `node scratch/query_graph.js benh-ly.js` để đánh giá bán kính ảnh hưởng.
-3. **Bảo tồn tính toàn vẹn HTML**: Chạy `node scratch/check_tags.js path/to/file.html` khi tạo/sửa trang HTML thuộc phân hệ Bệnh lý.
+2. **Kiểm tra tác động Graphify trên Hub `benh-ly.js`**: `benh-ly.js` là **CRITICAL HUB** (>200 liên kết). Trước khi sửa đổi engine bệnh lý, hãy chạy `node tools/tools/scratch/query_graph.js benh-ly.js` để đánh giá bán kính ảnh hưởng.
+3. **Bảo tồn tính toàn vẹn HTML**: Chạy `node tools/tools/scratch/check_tags.js path/to/file.html` khi tạo/sửa trang HTML thuộc phân hệ Bệnh lý.
 4. **Tạo khối dữ liệu JSON** theo đúng Schema `pathology-approach-module` ở trên.
 5. **Thêm hoặc cập nhật vào danh sách bệnh lý** qua `benh-ly.js` hoặc nút **Nhập JSON** trên giao diện Pathology Dashboard.
 6. **Kiểm tra hiển thị**:

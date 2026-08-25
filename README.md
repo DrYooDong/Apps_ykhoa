@@ -55,11 +55,17 @@ Apps_ykhoa/
 │   ├── index.ts                 # Source Entry Point
 │   └── router.ts                # Hash-based SPA Router
 │
-├── knowledge-vault/             # 📓 OBSIDIAN KNOWLEDGE VAULT (Kho tri thức Markdown bổ trợ)
-├── templates/                   # Boilerplate HTML mẫu cho các bài viết mới
-├── docs/                        # Tài liệu hệ thống & Quy chuẩn phát triển (FILE_MAP, ARCHITECTURE)
-├── desktop/                     # Electron Desktop Wrapper (launch-desktop.cmd)
-└── mobile/                      # Mobile Build Scripts (setup-capacitor.cmd)
+├── knowledge-vault/             # 📓 OBSIDIAN KNOWLEDGE VAULT (2479 files Markdown)
+├── assets/                      # 🎨 TÀI NGUYÊN MEDIA (images, icons, fonts, svg)
+├── platforms/                   # 🖥️ ĐÓNG GÓI ĐA NỀN TẢNG (Electron Desktop)
+│   └── desktop/                 # Electron Desktop Wrapper (launch-desktop.cmd)
+├── tools/                       # 🛠️ BỘ CÔNG CỤ & BUILD SCRIPTS
+│   ├── scripts/                 # Build scripts & data compilers (copy-dist.js...)
+│   ├── templates/               # Boilerplate HTML mẫu cho các bài viết mới
+│   └── scratch/                 # Script test/audit tạm thời
+├── archive/                     # 📦 Kho lưu trữ bản sao lưu, demos cũ, mã nguồn legacy
+└── .agents/                     # 🤖 AI AGENTS FRAMEWORK, RULES, SKILLS & DOCS
+    └── docs/                    # Tài liệu hệ thống & Quy chuẩn phát triển (FILE_MAP, ARCHITECTURE)
 ```
 
 ---
@@ -83,14 +89,15 @@ npm run build
 Toàn bộ mã nguồn TypeScript và tài nguyên tĩnh sẽ được biên dịch và đóng gói tối ưu vào thư mục `dist/`.
 
 ### Cách 3: Chạy Ứng Dụng Desktop Độc Lập (Electron Windows App)
-- **Phương án 1-Click**: Nhấp đúp chuột vào file **`desktop/launch-desktop.cmd`**.
+- **Phương án 1-Click**: Nhấp đúp chuột vào file **`platforms/desktop/launch-desktop.cmd`**.
 - **Phương án Command Line**:
   ```bash
   npm start
+  # hoặc: npm run desktop
   ```
 
 ### Cách 4: Biên Dịch Ứng Dụng Android (Capacitor)
-- **Phương án 1-Click**: Nhấp đúp chuột vào file **`mobile/setup-capacitor.cmd`**.
+- **Phương án 1-Click**: Nhấp đúp chuột vào file **`platforms/mobile/setup-capacitor.cmd`**.
 - **Phương án Command Line**:
   ```bash
   npm run cap:sync

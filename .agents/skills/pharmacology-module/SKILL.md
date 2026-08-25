@@ -18,7 +18,7 @@ description: >
    - `caution-low` / Màu Xanh dương: Theo dõi cận lâm sàng định kỳ.
 3. **Quy Tắc Đặt Tên File Dược Lý**: File mới trong `symptoms/` phải bắt đầu bằng `dl-<triuchung>.html` (ví dụ: `dl-daudau.html`), file trong `tools/` dùng kebab-case.
 4. **Trực Quan Hóa So Sánh Thuốc Bằng Pure SVG Radar Chart & Layer Stack**: Khi so sánh các nhóm thuốc đối đầu hoặc phác đồ nhiều bước, BẮT BUỘC sử dụng biểu đồ Radar SVG thuần (không dùng Chart.js) hoặc Chồng tầng bậc thang (Layer Stack) theo chuẩn skill `medical-editorial-diagram`.
-5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi sửa/tạo trang dược lý.
+5. **Kiểm Tra HTML Integrity**: Chạy `node tools/tools/scratch/check_tags.js path/to/file.html` khi sửa/tạo trang dược lý.
 
 ---
 
@@ -108,5 +108,5 @@ Người dùng chọn triệu chứng → xem các thuốc phù hợp theo từn
 1. **Chọn thư mục** `symptoms/` hoặc `tools/`
 2. **Xem mẫu** trang hiện có trong cùng nhóm để copy structure
 3. **Thêm CSS/JS** hỗ trợ nếu có tính năng filter
-4. **Cập nhật** `docs/FILE_MAP.md` sau khi hoàn thành
+4. **Cập nhật** `.agents/docs/FILE_MAP.md` sau khi hoàn thành
 

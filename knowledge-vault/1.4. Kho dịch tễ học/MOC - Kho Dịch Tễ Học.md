@@ -156,8 +156,8 @@ updated: "2026-08-21"
 
 ## 🩺 Tim mạch (4 bài)
 
-- [[DTH_Hội chứng vành cấp_P1.md|DTH_Hội chứng vành cấp_P1]]
-- [[DTH_Hội chứng vành mạn_P1.md|DTH_Hội chứng vành mạn_P1]]
+- [[DTH_Hội chứng vành cấp|DTH_Hội chứng vành cấp_P1]]
+- [[DTH_Hội chứng vành mạn|DTH_Hội chứng vành mạn_P1]]
 - [[DTH_Suy tim_P1.md|DTH_Suy tim_P1]]
 - [[DTH_Tăng huyết áp_P1.md|DTH_Tăng huyết áp_P1]]
 
@@ -170,7 +170,7 @@ updated: "2026-08-21"
 - [[DTH_Hội chứng Budd-Chiari (Huyết khối tĩnh mạch gan)_P1.md|DTH_Hội chứng Budd-Chiari (Huyết khối tĩnh mạch gan)_P1]]
 - [[DTH_Hội chứng Gilbert_P1.md|DTH_Hội chứng Gilbert_P1]]
 - [[DTH_Hội chứng ruột ngắn_P1.md|DTH_Hội chứng ruột ngắn_P1]]
-- [[DTH_Loét dạ dày - tá tràng_P1.md|DTH_Loét dạ dày - tá tràng_P1]]
+- [[DTH_Loét dạ dày - tá tràng|DTH_Loét dạ dày - tá tràng_P1]]
 - [[DTH_Thiếu hụt Alpha-1 antitrypsin_P1.md|DTH_Thiếu hụt Alpha-1 antitrypsin_P1]]
 - [[DTH_Trào ngược dạ dày - thực quản (GERD)_P1.md|DTH_Trào ngược dạ dày - thực quản (GERD)_P1]]
 - [[DTH_Viêm tụy cấp|DTH_Viêm tụy cấp_P1]]

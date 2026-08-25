@@ -4,7 +4,7 @@
  * Evidence-Based Medicine (EBM) Multi-Disciplinary Reasoning & Exam Assembly Platform
  */
 
-import '../../../../css/components/patho-quiz.css';
+import '../../../styles/components/patho-quiz.css';
 import {
   CLINICAL_CASES,
   FLASHCARDS_DATA,

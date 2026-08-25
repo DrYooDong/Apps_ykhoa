@@ -16,7 +16,7 @@ description: >
 2. **Khai Báo Đúng Engine TOC & ScrollSpy**: Phải nhúng `approach-symptom.css` và `approach-symptom.js` để tự động render Sidebar TOC từ các thẻ `.symptom-step-card`.
 3. **Phân Cấp Đường Dẫn Tương Đối Chính Xác**: Đếm cấp thư mục cẩn thận (cấp 3 dùng `../../../../`, cấp 4 dùng `../../../../../`).
 4. **Chuẩn Phân Loại Màu Cột Step Card**: Dùng `.border-danger` (Bước 1), `.border-primary` (Bước 2,6), `.border-warning` (Bước 3), `.border-success` (Bước 4), `.border-info` (Bước 5).
-5. **Kiểm Tra HTML Integrity**: Chạy `node scratch/check_tags.js path/to/file.html` khi tạo/sửa.
+5. **Kiểm Tra HTML Integrity**: Chạy `node tools/tools/scratch/check_tags.js path/to/file.html` khi tạo/sửa.
 
 ---
 

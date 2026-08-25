@@ -34,7 +34,7 @@ Kích hoạt Skill này khi:
 ### Bước 2: Kiểm Tra Thẻ Đóng Mở HTML (HTML Integrity Audit)
 Chạy script tự động kiểm tra HTML tags:
 ```bash
-node scratch/check_tags.js <path_to_html_file>
+node tools/tools/scratch/check_tags.js <path_to_html_file>
 ```
 - Phải đảm bảo 0 lỗi unclosed tag (`<div>`, `<span>`, `<table>`, `<tr>`, `<td>`...).
 - Mỗi trang chỉ chứa duy nhất 1 thẻ `<h1>`.
@@ -43,7 +43,7 @@ node scratch/check_tags.js <path_to_html_file>
 ### Bước 3: Kiểm Tra Lỗi Ký Tự $ & # (LaTeX & Markdown Escaping Audit)
 Chạy script tự động kiểm tra ký tự $ và #:
 ```bash
-node scratch/check_format_bugs.js <path_to_html_file>
+node tools/scratch/check_format_bugs.js <path_to_html_file>
 ```
 - **Ký tự `$`**: Tuyệt đối không để sót ký tự `$` hoặc công thức LaTeX thô. Phải chuyển đổi thành HTML Entities, ký tự Unicode (`α, β, Δ, →, ₂, ⁺, ⁻`), hoặc thẻ semantic (`<sup>`, `<sub>`, `<em>`, `<code>`).
 - **Ký tự `#`**: Tuyệt đối không để sót tiêu đề Markdown (`# Heading`) hoặc hashtag chưa xử lý trong văn bản bài viết.
@@ -56,7 +56,7 @@ node scratch/check_format_bugs.js <path_to_html_file>
 ### Bước 5: Kiểm Tra Tác Động Dây Chuyền (Graphify Risk Audit)
 Nếu thay đổi có đụng chạm đến file JS/CSS cốt lõi:
 ```bash
-node scratch/query_graph.js <filename>
+node tools/tools/scratch/query_graph.js <filename>
 ```
 - Đánh giá chỉ số Fan-in và kiểm tra side-effects trên các Hub liên quan (`main.js`, `guidelines.js`, `benh-ly.js`).
 
@@ -66,7 +66,7 @@ node scratch/query_graph.js <filename>
 - Đã loại bỏ các câu từ AI rườm rà (Medical Humanizer pass).
 
 ### Bước 7: Đồng Bộ Registry Hệ Thống
-- File mới đã được bổ sung vào `docs/FILE_MAP.md`.
+- File mới đã được bổ sung vào `.agents/docs/FILE_MAP.md`.
 - Guideline mới đã đăng ký trong `guidelinesdata.js`.
 - Bệnh lý mới đã đăng ký trong `benh-ly.js`.
 - Máy tính lâm sàng mới đã được gắn liên kết trên menu `cong-cu.html`.

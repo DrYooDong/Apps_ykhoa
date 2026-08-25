@@ -5,7 +5,7 @@
 
 import './css/yhcc-hub.css';
 import './css/pubmed-guidelines-board.css';
-import '../../../css/components/evidence-bridge.css';
+import '../../styles/components/evidence-bridge.css';
 
 export function renderEbmView(): string {
   return `

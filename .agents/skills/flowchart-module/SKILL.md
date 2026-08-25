@@ -108,4 +108,4 @@ Dùng trong phân hệ Tiếp cận (`pages/Tiếp cận/`) khi cần tính năn
 - [ ] Mọi nhãn trên mũi tên đều có mặt nạ che nền (`<rect>`).
 - [ ] Màu nhấn (Focal Red/Rose) chỉ xuất hiện tối đa ở 1–2 vị trí then chốt.
 - [ ] Đã kiểm tra độ tương phản ở cả 2 chế độ Sáng (Light) và Tối (Dark Mode).
-- [ ] Chạy lệnh `node scratch/check_tags.js <file.html>` không có lỗi thẻ unclosed.
+- [ ] Chạy lệnh `node tools/tools/scratch/check_tags.js <file.html>` không có lỗi thẻ unclosed.

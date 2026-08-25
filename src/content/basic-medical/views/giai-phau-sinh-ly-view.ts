@@ -5,10 +5,10 @@
  * Toàn bộ liên kết bài học dẫn trực tiếp vào SPA HTML Reader: #/basic-medical/physiology/:part/:slug
  */
 
-import '../../../../css/components/module-dashboard.css';
-import '../../../../css/components/physio-content.css';
-import '../../../../css/components/formula-vault.css';
-import '../../../../css/components/physio-promax-hub.css';
+import '../../../styles/components/module-dashboard.css';
+import '../../../styles/components/physio-content.css';
+import '../../../styles/components/formula-vault.css';
+import '../../../styles/components/physio-promax-hub.css';
 
 export function renderGiaiPhauSinhLyView(): string {
   return `

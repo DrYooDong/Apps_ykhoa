@@ -3,7 +3,7 @@
  * Path: src/content/pathophysiology/simulators/physiology-simulators-view.ts
  */
 
-import '../../../../css/components/physiology-simulators.css';
+import '../../../styles/components/physiology-simulators.css';
 import { 
   PhysiologySimEngine, 
   NernstParams, 

@@ -54,8 +54,8 @@ Nguồn tri thức gốc được lưu trữ tại:
 5. **Kiểm tra HTML Integrity & Định Dạng Ký Tự ($ / #)**:
    - Sau khi tạo hoặc chỉnh sửa tệp HTML, bắt buộc chạy:
      ```bash
-     node scratch/check_tags.js src/content/basic-medical/epidemiology/dth-[ten-bai].html
-     node scratch/check_format_bugs.js src/content/basic-medical/epidemiology/dth-[ten-bai].html
+     node tools/tools/scratch/check_tags.js src/content/basic-medical/epidemiology/dth-[ten-bai].html
+     node tools/scratch/check_format_bugs.js src/content/basic-medical/epidemiology/dth-[ten-bai].html
      npm run build
      ```
    - **Tuyệt đối không để sót ký tự `$` (LaTeX thô)**: Mọi công thức/ký hiệu toán học phải chuyển sang HTML entities, Unicode (`α, β, Δ, →, ₂, ⁺, ⁻, ≥, ≤`) hoặc thẻ semantic (`<sup>`, `<sub>`, `<em>`, `<code>`).
@@ -307,6 +307,6 @@ Nguồn tri thức gốc được lưu trữ tại:
 - [ ] Không có khối mục lục thừa lặp lại.
 - [ ] Mọi `.article-section` có `id="sec-X"` và `scroll-margin-top: 80px`.
 - [ ] Đồ họa Pure Inline SVG tuân thủ `viewBox`, không chứa thẻ HTML trong `<text>`, hỗ trợ 100% Dark Mode.
-- [ ] Chạy `node scratch/check_tags.js <file.html>` đạt **PASSED**.
-- [ ] Chạy `node scratch/check_format_bugs.js <file.html>` đạt **0 lỗi $ và 0 lỗi #**.
+- [ ] Chạy `node tools/tools/scratch/check_tags.js <file.html>` đạt **PASSED**.
+- [ ] Chạy `node tools/scratch/check_format_bugs.js <file.html>` đạt **0 lỗi $ và 0 lỗi #**.
 - [ ] Chạy `npm run build` không phát sinh lỗi TypeScript.

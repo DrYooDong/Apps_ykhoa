@@ -5,7 +5,7 @@
 1. **Chạy Script Validate Bắt Buộc**:
    - Trước và sau khi tạo/chỉnh sửa bất kỳ file HTML nào, BẮT BUỘC chạy script kiểm tra thẻ:
      ```bash
-     node scratch/check_tags.js <path_to_file.html>
+     node tools/scratch/check_tags.js <path_to_file.html>
      ```
    - Script tự động kiểm tra:
      - Độ cân bằng mở/đóng các thẻ HTML.

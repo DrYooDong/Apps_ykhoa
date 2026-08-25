@@ -5,11 +5,11 @@
  * (Classic Hero Molecular SVG, Feature Banners, Toolbar Search/Grid Toggle, Sticky Block-Nav 7 Khối, Specialty Cards)
  */
 
-import '../../../../css/components/module-dashboard.css';
-import '../../../../css/components/physio-content.css';
-import '../../../../css/components/formula-vault.css';
-import '../../../../css/components/biochemistry-hub.css';
-import '../../../../css/components/physio-promax-hub.css';
+import '../../../styles/components/module-dashboard.css';
+import '../../../styles/components/physio-content.css';
+import '../../../styles/components/formula-vault.css';
+import '../../../styles/components/biochemistry-hub.css';
+import '../../../styles/components/physio-promax-hub.css';
 import { BIOCHEMISTRY_DATA } from '../data/biochemistry-data';
 import { BiochemistryBlock, BiochemistryTopic } from '../types/biochemistry.types';
 
