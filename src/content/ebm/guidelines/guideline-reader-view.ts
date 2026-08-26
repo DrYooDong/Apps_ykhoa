@@ -238,6 +238,14 @@ async function fetchAndHydrateGuideline(cleanSlug: string, baseSlugName: string)
     const cor = frontmatter.cor || '';
     const loe = frontmatter.loe || '';
 
+    // Ensure guidelines-article.css is loaded in DOM
+    if (!document.querySelector('link[href*="guidelines-article.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = './src/styles/components/guidelines-article.css';
+      document.head.appendChild(link);
+    }
+
     mountEl.innerHTML = `
       <div class="reading-progress-bar" id="reading-progress-bar"></div>
       <div class="guideline-article-container" style="max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.25rem;">
