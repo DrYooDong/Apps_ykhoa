@@ -1,0 +1,165 @@
+---
+title: "Dịch Tễ Học Xuất Huyết Tiêu Hóa Trên (UGIB)"
+slug: "dth-xhth-tren"
+code: "DTH-UGIB"
+icd10: "ICD-10: K92.0 (Nôn ra máu), K92.1 (Đi ngoài phân đen), K25–K28 (Loét dạ dày tá tràng)"
+specialtyId: "epi-tieu-hoa"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Dịch tễ học Xuất huyết tiêu hóa trên (Upper Gastrointestinal Bleeding - UGIB): Phân tích gánh nặng cấp cứu tiêu hóa hàng đầu với tỷ lệ mắc 50-150 ca/100.000 dân/năm, sự phân định 2 nhóm nguyên nhân cốt lõi (Do vỡ giãn tĩnh mạch TMTQ vs Không do vỡ giãn), vai trò dịch tễ của Helicobacter pylori, thuốc chống huyết khối (Kháng đông, Kháng kết tập tiểu cầu) và thuốc giảm đau NSAIDs ở người cao tuổi, các thang điểm phân tầng nguy cơ Glasgow-Blatchford & Rockall."
+tags:
+  - "ugib"
+  - "xuat-huyet-tieu-hoa"
+  - "gbs"
+  - "rockall"
+  - "forrest"
+  - "variceal"
+metrics:
+  whoClassification: "Xuất huyết do vỡ giãn tĩnh mạch (Variceal) / Xuất huyết không do vỡ giãn (Non-variceal - Loét dạ dày tá tràng, Mallory-Weiss, Viêm trợt, Dị dạng mạch Dieulafoy)"
+  annualGlobalCases: "Tỷ lệ mới mắc dao động 50 – 150 ca / 100.000 dân/năm; cao gấp 2 – 4 lần so với Xuất huyết tiêu hóa dưới (LGIB)"
+  vietnamEndemicStatus: "Chiếm 60% – 70% các ca cấp cứu chảy máu đường tiêu hóa tại các bệnh viện đa khoa tuyến tỉnh và trung ương"
+  caseFatalityRate: "Xuất huyết do loét dạ dày tá tràng: 2% – 5%; Xuất huyết do vỡ giãn tĩnh mạch thực quản ở bệnh nhân xơ gan: 15% – 20% trong vòng 6 tuần"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ XHTH Trên"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Phổ Căn Nguyên: Do Giãn vs Không Do Giãn"
+    icon: "fa-table-cells"
+  - id: "sec-3"
+    number: 3
+    title: "Dịch Tễ H. pylori & NSAIDs / Kháng Đông"
+    icon: "fa-pills"
+  - id: "sec-4"
+    number: 4
+    title: "Phân Tầng Nguy Cơ GBS & Rockall"
+    icon: "fa-calculator"
+  - id: "sec-5"
+    number: 5
+    title: "Phân Loại Nội Soi Forrest & Nguy Cơ Tái Phát"
+    icon: "fa-stethoscope"
+  - id: "sec-6"
+    number: 6
+    title: "Hồi Sức Huyết Động & Can Thiệp Nội Soi"
+    icon: "fa-truck-medical"
+  - id: "sec-7"
+    number: 7
+    title: "Chiến Lược Dự Phòng Tái Phát EBM"
+    icon: "fa-shield-virus"
+  - id: "sec-8"
+    number: 8
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
+
+# 🔬 DỊCH TỄ HỌC XUẤT HUYẾT TIÊU HÓA TRÊN (UGIB)
+
+<EpiPillarsNav />
+
+---
+
+## 1. Tam Giác Dịch Tễ Học XHTH Trên {#sec-1}
+
+Xuất huyết tiêu hóa trên (chảy máu từ thực quản đến góc Treitz của tá tràng) là một hội chứng cấp cứu nội - ngoại khoa phổ biến, được thúc đẩy bởi **Tác nhân hủy hoại hàng rào niêm mạc & tăng áp lực mạch máu (Axit dạ dày, Pepsin, nhiễm khuẩn *H. pylori*, thuốc NSAIDs/Aspirin, tăng áp lực tĩnh mạch cửa)**, **Vật chủ (Người cao tuổi, bệnh nền xơ gan, bệnh tim mạch xơ vữa đang dùng thuốc chống huyết khối)** và **Môi trường (Sử dụng thuốc bừa bãi, stress thể chất nặng trong ICU, lạm dụng rượu)**.
+
+<EpiTriangle 
+  agent={{
+    title: "Axit, Vi Khuẩn và Tăng Áp Lực Mạch Máu",
+    subtitle: "Mất cân bằng yếu tố bảo vệ và yếu tố tấn công",
+    items: [
+      "Nhiễm khuẩn Helicobacter pylori (gây viêm loét dạ dày tá tràng mạn tính)",
+      "Thuốc NSAIDs, Aspirin, Kháng đông (NOACs/DOACs, Warfarin), Corticoid",
+      "Búi giãn tĩnh mạch thực quản - phình vị do tăng áp cửa (HVPG ≥ 12 mmHg)"
+    ],
+    color: "#dc2626"
+  }}
+  host={{
+    title: "Quần thể Người bệnh có yếu tố nguy cơ",
+    subtitle: "Độ tuổi và bệnh lý đi kèm quyết định tỷ lệ tử vong",
+    items: [
+      "Người cao tuổi ≥ 65 tuổi (chiếm >60% ca nhập viện)",
+      "Bệnh nhân Xơ gan Child-Pugh B hoặc C (nguy cơ vỡ búi giãn tái phát cao)",
+      "Bệnh nhân có tiền sử loét dạ dày tá tràng hoặc xuất huyết trước đó"
+    ],
+    color: "#3b82f6"
+  }}
+  environment={{
+    title: "Môi trường Y tế & Dược phẩm",
+    subtitle: "Sử dụng thuốc chống đông & Thuốc giảm đau",
+    items: [
+      "Dân số già hóa gia tăng chỉ định dùng kháng đông/kháng kết tập tiểu cầu kép (DAPT)",
+      "Tự ý mua thuốc giảm đau chống viêm khớp NSAIDs không kê đơn",
+      "Tiêu thụ rượu bia quá mức gây rách tâm vị chảy máu (Hội chứng Mallory-Weiss)"
+    ],
+    color: "#10b981"
+  }}
+  vectorOrBridge="CƠ CHẾ: BÀO MÒN VI MẠCH • VỠ BÚI GIÃN"
+  centerTitle="TỶ LỆ TỬ VONG 2% - 15%"
+/>
+
+<EpiAlert type="danger" title="Phân Biệt Cốt Lõi: Xuất Huyết Do Vỡ Giãn TMTQ vs Không Do Vỡ Giãn">
+  Hai nhóm căn nguyên này có chiến lược hồi sức và tiên lượng hoàn toàn khác biệt:
+  - **Xuất huyết do vỡ giãn tĩnh mạch (Variceal Bleeding)**: Xảy ra trên bệnh nhân xơ gan, chảy máu ồ ạt từ hệ tĩnh mạch cửa, áp lực cao, **tỷ lệ tử vong trong 6 tuần lên tới 15% – 20%**. Bắt buộc dùng ngay thuốc co mạch tạng (*Octreotide / Terlipressin*) và kháng sinh dự phòng (*Ceftriaxone*) trước khi nội soi thắt vòng cao su (EVL).
+  - **Xuất huyết không do vỡ giãn (Non-variceal / Peptic Ulcer)**: Chủ yếu do loét dạ dày tá tràng, đáp ứng tốt với ức chế tiết axit liều cao (*PPI tiêm tĩnh mạch*) và can thiệp cầm máu qua nội soi (kẹp clip, đốt điện, tiêm xơ), tỷ lệ tử vong thấp hơn (2% – 5%).
+</EpiAlert>
+
+---
+
+## 2. Phổ Căn Nguyên Xuất Huyết Tiêu Hóa Trên {#sec-2}
+
+| Căn nguyên | Tỷ lệ mắc (%) | Đặc điểm dịch tễ & lâm sàng |
+|---|---|---|
+| **Loét Dạ Dày - Tá Tràng (PUD)** | **40% – 50%** | Nguyên nhân phổ biến nhất; liên quan chặt chẽ với *H. pylori* và sử dụng thuốc NSAIDs/Aspirin. |
+| **Vỡ Giãn Tĩnh Mạch Thực Quản - Dạ Dày** | **15% – 20%** | Chiếm tỷ lệ rất cao tại Việt Nam do gánh nặng bệnh xơ gan do HBV/rượu; tái phát chảy máu >50% nếu không dự phòng. |
+| **Hội chứng Mallory-Weiss** | 5% – 10% | Rách niêm mạc vùng nối thực quản - dạ dày sau cơn nôn ói dữ dội (thường sau bữa nhậu say). |
+| **Viêm Trợt Dạ Dày - Tá Tràng Cấp** | 5% – 10% | Gặp ở bệnh nhân dùng NSAIDs hoặc loét do stress thể chất nặng trong ICU (Stress Ulcer). |
+| **Dị Dạng Mạch Máu (Dieulafoy, GAVE)** | 2% – 5% | Chảy máu từ động mạch dưới niêm mạc phì đại dị dạng, chảy máu tái phát từng đợt khó chẩn đoán. |
+| **Khối u Ung Thư Dạ Dày (Gastric Cancer)** | 2% – 4% | Chảy máu rỉ rả kèm sụt cân, thiếu máu thiếu sắt ở người lớn tuổi. |
+
+---
+
+## 3. Phân Tầng Nguy Cơ Trước Nội Soi Bằng Thang Điểm Glasgow-Blatchford (GBS) {#sec-3}
+
+<EpiAlert type="pearl" title="Thang Điểm GBS (Glasgow-Blatchford Score) — Xác Định Bệnh Nhân Nguy Cơ Cực Thấp">
+  Thang điểm GBS được tính toán hoàn toàn dựa trên các thông số lâm sàng và xét nghiệm ban đầu (BUN, Hemoglobin, Huyết áp tâm thu, Nhịp tim, Triệu chứng phân đen/ngất, Bệnh gan/tim mạch) mà **không cần chờ kết quả nội soi**:
+  - **GBS = 0 – 1 điểm (Nguy cơ cực thấp)**: Tỷ lệ tử vong hoặc cần can thiệp truyền máu/nội soi cầm máu < 1%. Bệnh nhân có thể được **an toàn xuất viện sớm và điều trị ngoại trú**, giúp giảm tải 15% – 20% số ca nhập viện cấp cứu không cần thiết.
+  - **GBS ≥ 6 điểm (Nguy cơ cao)**: Có trên 50% khả năng cần can thiệp cầm máu hoặc truyền máu, chỉ định nội soi can thiệp khẩn cấp trong vòng 24 giờ.
+</EpiAlert>
+
+---
+
+## 4. Phân Loại Nội Soi Forrest & Nguy Cơ Tái Phát Chảy Máu {#sec-4}
+
+| Phân độ Forrest | Hình ảnh tổn thương ổ loét qua nội soi | Nguy cơ tái phát nếu không can thiệp | Chỉ định can thiệp nội soi |
+|---|---|---|---|
+| **Forrest Ia** | Máu phun thành tia từ mạch máu (Spurting) | **~90%** | **Bắt buộc can thiệp cầm máu khẩn cấp** |
+| **Forrest Ib** | Máu chảy rỉ rả liên tục (Oozing) | **~50%** | **Bắt buộc can thiệp cầm máu khẩn cấp** |
+| **Forrest IIa** | Nhìn thấy rõ gốc mạch máu nổi không chảy máu (Visible vessel) | **~40% – 50%** | **Bắt buộc can thiệp cầm máu khẩn cấp** |
+| **Forrest IIb** | Cục máu đông bám chặt đáy ổ loét (Adherent clot) | ~20% – 30% | Cân nhắc bóc tách cục máu đông và can thiệp |
+| **Forrest IIc** | Đáy ổ loét có cặn đen/vết sắc tố (Flat pigmented spot) | ~7% – 10% | Không cần can thiệp nội soi, điều trị PPI uống |
+| **Forrest III** | Đáy ổ loét sạch, phủ giả mạc trắng (Clean base) | **< 3%** | **Không cần can thiệp, xuất viện điều trị ngoại trú** |
+
+---
+
+## 5. Chiến Lược Hồi Sức & Dự Phòng Tái Phát EBM {#sec-5}
+
+<EpiAlert type="surveillance" title="Nguyên Tắc Truyền Máu Hạn Chế (Restrictive Transfusion) Trong XHTH Trên">
+  - **Thử nghiệm lâm sàng Villanueva et al. (NEJM 2013)** chứng minh: **Chiến lược truyền máu hạn chế (Chỉ truyền hồng cầu lắng khi Hb < 70 g/L, duy trì mục tiêu Hb 70 – 90 g/L)** giúp **giảm đáng kể tỷ lệ tử vong** so với chiến lược truyền máu tự do (ngưỡng Hb < 90 g/L).
+  - *Lý do*: Truyền quá nhiều máu làm tăng áp lực tĩnh mạch cửa và cản trở quá trình hình thành cục máu đông tự nhiên. (Ngoại lệ: Ngưỡng Hb < 80 g/L đối với bệnh nhân có bệnh mạch vành cấp hoặc suy tim).
+  - **Diệt trừ *Helicobacter pylori***: Sau khi cầm máu ổn định, bắt buộc xét nghiệm và điều trị triệt để *H. pylori* bằng phác đồ 4 thuốc để giảm nguy cơ tái phát loét từ 60% xuống dưới 5%.
+</EpiAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **Laine, L. et al. (2021)**. *ACG Clinical Guideline: Upper Gastrointestinal and Ulcer Bleeding*. American Journal of Gastroenterology, 116(5), 899-917.
+2. **Gralnek, I. M. et al. (ESGE 2021)**. *Endoscopic diagnosis and management of nonvariceal upper gastrointestinal hemorrhage*. Endoscopy, 53(3), 300-332.
+3. **Villanueva, C. et al. (2013)**. *Transfusion strategies for acute upper gastrointestinal bleeding*. New England Journal of Medicine, 368(1), 11-21.
+4. **de Franchis, R. et al. (Baveno VII 2022)**. *Baveno VII - Renewing consensus in portal hypertension*. Journal of Hepatology, 76(4), 959-974.

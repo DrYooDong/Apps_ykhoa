@@ -1,0 +1,172 @@
+---
+title: "Dịch Tễ Học Bệnh Thận Mạn (CKD)"
+slug: "dth-ckd"
+code: "DTH-CKD"
+icd10: "ICD-10: N18 (N18.1–N18.5, N18.9)"
+specialtyId: "epi-than-tiet-nieu"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Dịch tễ học Bệnh thận mạn (Chronic Kidney Disease - CKD): Phân tích đại dịch toàn cầu với hơn 850 triệu người mắc (chiếm ~10-14% dân số người lớn), gánh nặng bệnh thận giai đoạn cuối (ESKD), ma trận phân tầng nguy cơ KDIGO (eGFR & Albumin niệu), tử vong tim mạch liên quan (Cardiorenal Syndrome) và chiến lược bảo vệ thận bằng SGLT2i và nsMRA theo hướng dẫn KDIGO 2024 & Bộ Y Tế."
+tags:
+  - "ckd"
+  - "benh-than-man"
+  - "kdigo"
+  - "egfr"
+  - "uacr"
+  - "cardiorenal"
+metrics:
+  whoClassification: "Phân độ KDIGO kết hợp eGFR (G1-G5) và Albumin niệu (A1-A3)"
+  annualGlobalCases: "~850 triệu người mắc CKD trên toàn cầu (gấp đôi số ca đái tháo đường và gấp 20 lần số ca HIV/AIDS)"
+  vietnamEndemicStatus: "Ước tính khoảng 10 triệu người lớn mắc CKD (12.8% dân số), hơn 800.000 ca bệnh thận giai đoạn cuối cần lọc máu/ghép thận"
+  caseFatalityRate: "Bệnh nhân CKD có nguy cơ tử vong do biến cố Tim mạch (MACE) cao gấp 10 – 20 lần so với nguy cơ diễn tiến đến lọc máu"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ CKD"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Ma Trận Phân Tầng KDIGO (Heatmap)"
+    icon: "fa-table-cells"
+  - id: "sec-3"
+    number: 3
+    title: "Căn Nguyên & Yếu Tố Nguy Cơ"
+    icon: "fa-dna"
+  - id: "sec-4"
+    number: 4
+    title: "Hội Chứng Tim - Thận - Chuyển Hóa"
+    icon: "fa-heart-pulse"
+  - id: "sec-5"
+    number: 5
+    title: "Gánh Nặng Dịch Tễ & ESKD"
+    icon: "fa-earth-americas"
+  - id: "sec-6"
+    number: 6
+    title: "4 Trụ Cột Điều Trị Bảo Vệ Thận"
+    icon: "fa-pills"
+  - id: "sec-7"
+    number: 7
+    title: "Sàng Lọc Sớm & Y Tế Dự Phòng"
+    icon: "fa-shield-virus"
+  - id: "sec-8"
+    number: 8
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
+
+# 🔬 DỊCH TỄ HỌC BỆNH THẬN MẠN (CKD)
+
+<EpiPillarsNav />
+
+---
+
+## 1. Tam Giác Dịch Tễ Học Bệnh Thận Mạn {#sec-1}
+
+Dịch tễ học bệnh thận mạn (CKD) không lây nhiễm được thúc đẩy bởi **Tác nhân chuyển hóa & huyết động (Đái tháo đường, Tăng huyết áp, Độc chất thận, Bệnh cầu thận)**, **Vật chủ (Tuổi già, di truyền APOL1, béo phì, tiền sử AKI)** và **Môi trường kinh tế - xã hội (Lối sống ít vận động, ăn nhiều muối, lạm dụng thuốc NSAIDs/thuốc nam không rõ nguồn gốc, hạn chế tiếp cận lọc máu)**.
+
+<EpiTriangle 
+  agent={{
+    title: "Tác Nhân Chuyển Hóa và Viêm Mạn",
+    subtitle: "Tổn thương Nephron không hồi phục",
+    items: [
+      "Đái tháo đường type 2 (chiếm 40%–50% các ca ESKD mới)",
+      "Tăng huyết áp không kiểm soát (chiếm 25%–30%)",
+      "Viêm cầu thận mạn (đặc biệt IgA Nephropathy phổ biến ở Châu Á)"
+    ],
+    color: "#0284c7"
+  }}
+  host={{
+    title: "Quần thể Người có cơ địa nhạy cảm",
+    subtitle: "Mất dần nephron theo tuổi tác",
+    items: [
+      "Người cao tuổi (eGFR sinh lý giảm 1 mL/phút/1.73m² mỗi năm sau 40 tuổi)",
+      "Bệnh nhân có tiền sử Tổn thương thận cấp (AKI-to-CKD transition)",
+      "Đột biến gen nguy cơ APOL1 (người gốc Phi), uromodulin"
+    ],
+    color: "#3b82f6"
+  }}
+  environment={{
+    title: "Môi trường Lối sống và Y tế",
+    subtitle: "Hành vi sinh hoạt và Lạm dụng thuốc",
+    items: [
+      "Chế độ ăn nhiều muối (>5g/ngày), thừa đạm động vật, béo phì",
+      "Lạm dụng thuốc giảm đau NSAIDs, thuốc đông y trộn corticoid/kim loại nặng",
+      "Bất bình đẳng trong tiếp cận điều trị thay thế thận (RRT)"
+    ],
+    color: "#10b981"
+  }}
+  vectorOrBridge="CƠ CHẾ: HUYẾT ĐỘNG • XƠ HÓA CẦU THẬN"
+  centerTitle="ĐẠI DỊCH 850 TRIỆU CA"
+/>
+
+<EpiAlert type="danger" title="Tảng Băng Chìm Dịch Tễ: 9 Trong 10 Người Mắc CKD Không Biết Mình Mắc Bệnh">
+  Bệnh thận mạn được mệnh danh là **"Kẻ giết người thầm lặng"** vì ở các giai đoạn sớm (G1, G2, G3a), bệnh nhân hoàn toàn không có bất kỳ triệu chứng lâm sàng nào. Đến khi xuất hiện triệu chứng rõ rệt (phù, thiếu máu, mệt mỏi, chán ăn, hội chứng ure huyết cao) thì thận đã tổn thương không hồi phục ở giai đoạn G4 hoặc G5 (suy thận nặng). Tại Việt Nam và toàn cầu, **trên 90% bệnh nhân CKD giai đoạn 1–3 không được chẩn đoán**, dẫn đến mất đi "cửa sổ cơ hội vàng" để can thiệp làm chậm tiến triển bệnh.
+</EpiAlert>
+
+---
+
+## 2. Ma Trận Phân Tầng Nguy Cơ KDIGO (eGFR & Albumin Niệu) {#sec-2}
+
+Theo Hướng dẫn Thực hành Lâm sàng KDIGO 2024, CKD được định nghĩa khi có **bất thường về cấu trúc hoặc chức năng thận kéo dài > 3 tháng**, phân tầng nguy cơ theo bảng nhiệt màu (Heatmap):
+
+| Mức eGFR (mL/phút/1.73m²) | A1: Bình thường (< 30 mg/g) | A2: Tăng vừa (30 – 300 mg/g) | A3: Tăng nặng (> 300 mg/g) |
+|---|---|---|---|
+| **G1** (≥ 90, Bình thường/Cao) | 🟢 Nguy cơ thấp | 🟡 Nguy cơ trung bình | 🟠 Nguy cơ cao |
+| **G2** (60 – 89, Giảm nhẹ) | 🟢 Nguy cơ thấp | 🟡 Nguy cơ trung bình | 🟠 Nguy cơ cao |
+| **G3a** (45 – 59, Giảm nhẹ-vừa) | 🟡 Nguy cơ trung bình | 🟠 Nguy cơ cao | 🔴 Nguy cơ rất cao |
+| **G3b** (30 – 44, Giảm vừa-nặng) | 🟠 Nguy cơ cao | 🔴 Nguy cơ rất cao | 🔴 Nguy cơ rất cao |
+| **G4** (15 – 29, Giảm nặng) | 🔴 Nguy cơ rất cao | 🔴 Nguy cơ rất cao | 🔴 Nguy cơ rất cao |
+| **G5** (< 15, Suy thận mạn ESKD) | 🔴 Nguy cơ rất cao | 🔴 Nguy cơ rất cao | 🔴 Nguy cơ rất cao |
+
+---
+
+## 3. Căn Nguyên Hàng Đầu & Yếu Tố Nguy Cơ Tại Việt Nam {#sec-3}
+
+1. **Bệnh thận do Đái tháo đường (Diabetic Kidney Disease - DKD)**: Chiếm **45% – 50%** tổng số bệnh nhân mới bắt đầu lọc máu chu kỳ. Tình trạng tăng đường huyết mạn tính gây tăng áp lực lọc cầu thận, tổn thương podocyte và dày màng đáy cầu thận.
+2. **Bệnh thận do Tăng huyết áp**: Chiếm **25% – 30%**. Xơ cứng động mạch thận làm teo nhu mô và thiếu máu cục bộ nephron.
+3. **Viêm cầu thận nguyên phát (Bệnh thận IgA)**: Chiếm **10% – 15%**, đặc biệt phổ biến ở thanh thiếu niên và người trẻ tuổi tại khu vực Đông Nam Á.
+4. **Bệnh thận do Độc chất & Thuốc**: Sử dụng kéo dài thuốc giảm đau kháng viêm NSAIDs (Ibuprofen, Meloxicam, Diclofenac), thuốc nam, thuốc bắc trôi nổi chứa axit aristolochic hoặc kim loại nặng (chì, thủy ngân).
+
+---
+
+## 4. Hội Chứng Tim - Thận - Chuyển Hóa (Cardiorenal Syndrome) {#sec-4}
+
+<EpiAlert type="pearl" title="Quy Luật Nghịch Lý: Bệnh Nhân CKD Tử Vong Vì Tim Mạch Trước Khi Kịp Lọc Máu">
+  Suy giảm chức năng thận kích hoạt đồng thời hệ thần kinh giao cảm (SNS), hệ RAA (Renin-Angiotensin-Aldosterone), tình trạng viêm vi mạch toàn thân, quá tải dịch và rối loạn khoáng chất xương (CKD-MBD gây vôi hóa mạch máu tiến triển). 
+  
+  Do đó, **nguy cơ tử vong do bệnh tim mạch (nhồi máu cơ tim, đột tử do rối loạn nhịp, suy tim phân suất tống máu giảm/bảo tồn) tăng theo cấp số nhân khi eGFR giảm và Albumin niệu tăng**. Bệnh nhân CKD giai đoạn G3b có nguy cơ tử vong do tim mạch cao gấp 5 lần so với dân số cùng lứa tuổi có chức năng thận bình thường.
+</EpiAlert>
+
+---
+
+## 5. 4 Trụ Cột Điều Trị Bảo Vệ Thận Theo KDIGO 2024 {#sec-5}
+
+Sự phát triển vượt bậc của y học chứng cứ đã xác lập **4 nhóm thuốc nền tảng bảo vệ tim - thận (Cardiorenal Protective Pillars)**:
+
+1. **Ức chế hệ RAA (ACEi hoặc ARB)**: Liều tối đa dung nạp được cho tất cả bệnh nhân có Albumin niệu A2 hoặc A3.
+2. **Thuốc ức chế SGLT2 (Dapagliflozin, Empagliflozin)**: Chỉ định cho bệnh nhân CKD có eGFR ≥ 20 mL/phút/1.73m² (bất kể có đái tháo đường hay không), giúp giảm **39% nguy cơ suy thận tiến triển và tử vong tim mạch** (thử nghiệm DAPA-CKD, EMPA-KIDNEY).
+3. **Đối vận Thụ thể Mineralocorticoid không steroid (nsMRA - Finerenone)**: Giảm xơ hóa và viêm cầu thận/ống thận ở bệnh nhân ĐTĐ type 2 mắc CKD.
+4. **Đồng vận Thụ thể GLP-1 (Semaglutide)**: Thử nghiệm FLOW chứng minh giảm **24% biến cố thận chính** ở bệnh nhân đái tháo đường kèm CKD.
+
+---
+
+## 6. Sàng Lọc Sớm & Y Tế Dự Phòng Cộng Đồng {#sec-6}
+
+<EpiAlert type="surveillance" title="Khuyến Cáo Sàng Lọc 2 Chỉ Số Vàng Hàng Năm Tại Tuyến Y Tế Cơ Sở">
+  Mọi đối tượng có nguy cơ cao (Người mắc Đái tháo đường, Tăng huyết áp, Bệnh tim mạch hoặc Tiền sử gia đình mắc bệnh thận) bắt buộc phải được làm **bộ đôi xét nghiệm sàng lọc định kỳ tối thiểu 1 lần/năm**:
+  1. **Định lượng Creatinine huyết thanh** để tính **eGFR** theo công thức CKD-EPI 2021.
+  2. **Tỷ số Albumin/Creatinine niệu (uACR)** trên mẫu nước tiểu ngẫu nhiên buổi sáng.
+</EpiAlert>
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
+
+1. **Kidney Disease: Improving Global Outcomes (KDIGO 2024)**. *Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease*. Kidney International, 105(4S), S117-S314.
+2. **Bộ Y Tế Việt Nam (2020)**. *Hướng dẫn chẩn đoán và điều trị bệnh Thận mạn*. Hà Nội: NXB Y học.
+3. **Heerspink, H. J. et al. (2020)**. *Dapagliflozin in patients with chronic kidney disease (DAPA-CKD)*. New England Journal of Medicine, 383(15), 1436-1446.
+4. **Bikbov, B. et al. (2020)**. *Global, regional, and national burden of chronic kidney disease, 1990–2017: a systematic analysis for the Global Burden of Disease Study 2017*. The Lancet, 395(10225), 709-733.

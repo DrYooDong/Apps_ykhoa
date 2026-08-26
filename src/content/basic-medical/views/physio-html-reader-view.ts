@@ -7,11 +7,12 @@
  */
 
 import { CliniPortalThemeManager } from '../../../main';
+import { cliniMdxEngine } from '../../../core/mdx-engine';
 
 export function renderPhysioHtmlReader(part: string, slug: string): string {
   // Normalize slug & part
-  const cleanSlug = slug.endsWith('.html') ? slug : `${slug}.html`;
-  const baseSlugName = cleanSlug.replace(/\.html$/i, '');
+  const cleanSlug = slug.endsWith('.html') || slug.endsWith('.mdx') ? slug : `${slug}.html`;
+  const baseSlugName = cleanSlug.replace(/\.(html|mdx)$/i, '');
   const cleanPart = part.toLowerCase();
   const isCaseStudy = cleanPart === 'cases' || cleanPart === 'co-che-benh-sinh' || cleanPart === 'pathophysiology-cases';
   const isBiochem = cleanPart.startsWith('block') || cleanPart.startsWith('biochem');
@@ -74,27 +75,20 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
   return `
     <div class="guideline-reader-wrapper animate-fade-in ${savedWidthMode === 'wide' ? 'reader-mode-wide' : 'reader-mode-standard'}" id="physio-reader-wrapper" style="min-height: calc(100vh - 60px); background: var(--color-bg, #f0f4f8); padding-top: 84px; padding-bottom: 3.5rem; transition: all 0.25s ease;">
       
-      <!-- TOP CONTROL & BREADCRUMB PRO TOOLBAR (KHÔNG ĐÓNG BĂNG KHI CUỘN) -->
       <header class="guideline-reader-toolbar" style="position: relative; z-index: 10; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border, #e2e8f0); padding: 0.65rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.04); margin-bottom: 1.25rem; border-radius: 12px;">
         
-        <!-- Breadcrumb & Document Info -->
         <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--color-text-muted, #64748b); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 240px;">
           <a href="#/basic-medical" style="color: var(--color-primary, #0284c7); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
-            <i class="fa-solid fa-dna"></i> Cơ Sở Y Khoa
+            <i class="fa-solid fa-dna"></i> Basic Medical
           </a>
           <span>/</span>
           <a href="${parentModuleUrl}" style="color: var(--color-primary, #0284c7); text-decoration: none; font-weight: 700;">
             ${parentModuleName}
           </a>
           <span>/</span>
-          <a href="${partUrl}" style="color: var(--color-text-muted, #64748b); text-decoration: none;">
-            ${partName}
-          </a>
-          <span>/</span>
-          <span style="color: var(--color-text, #0f172a); font-weight: 800;" id="physio-reader-breadcrumb-title">${baseSlugName}</span>
+          <span style="color: var(--color-text, #0f172a); font-weight: 800;" id="physio-reader-breadcrumb-title">${partName}</span>
         </div>
 
-        <!-- Pro Reader Settings Dropdown (Dark Mode, Font size, Width, Print) -->
         <div class="reader-toolbar-actions" style="display: flex; align-items: center; gap: 0.5rem; position: relative;">
           
           <div class="reader-settings-dropdown-wrapper" id="physio-reader-settings-dropdown-wrapper" style="position: relative;">
@@ -104,7 +98,6 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
               <i class="fa-solid fa-chevron-down" style="font-size: 0.68rem; opacity: 0.7;"></i>
             </button>
 
-            <!-- Dropdown Menu -->
             <div class="reader-settings-menu" id="physio-reader-settings-menu" style="display: none; position: absolute; right: 0; top: calc(100% + 8px); z-index: 220; min-width: 290px; background: var(--color-surface, #ffffff); border: 1px solid var(--color-border, #cbd5e1); border-radius: 14px; box-shadow: 0 12px 36px rgba(0,0,0,0.15); padding: 0.65rem; backdrop-filter: blur(12px);">
               
               <div style="padding: 0.4rem 0.6rem 0.5rem; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted, #64748b); border-bottom: 1px solid var(--color-border, #e2e8f0); margin-bottom: 0.4rem; display: flex; align-items: center; justify-content: space-between;">
@@ -112,7 +105,6 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
                 <span style="font-size: 0.7rem; font-weight: 600; opacity: 0.75;">CliniPortal</span>
               </div>
 
-              <!-- 1. Dark Mode Toggle -->
               <button class="reader-menu-item" onclick="togglePhysioReaderTheme(event)" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
                 <span style="display: flex; align-items: center; gap: 9px;">
                   <i class="fa-solid fa-moon" id="physio-reader-menu-theme-icon" style="width: 18px; color: #8b5cf6; font-size: 0.95rem;"></i>
@@ -121,7 +113,6 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
                 <span class="rx-tag" id="physio-reader-menu-theme-tag" style="font-size: 0.7rem; padding: 2px 7px; border-radius: 6px; font-weight: 700;">Theme</span>
               </button>
 
-              <!-- 2. Font Size Adjustment -->
               <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600;">
                 <span style="display: flex; align-items: center; gap: 9px;">
                   <i class="fa-solid fa-font" style="width: 18px; color: var(--color-primary, #0284c7); font-size: 0.95rem;"></i>
@@ -140,7 +131,6 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
                 </div>
               </div>
 
-              <!-- 3. Width Mode Toggle -->
               <button class="reader-menu-item" onclick="togglePhysioReaderWidthMode(); closePhysioReaderSettingsMenu();" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
                 <span style="display: flex; align-items: center; gap: 9px;">
                   <i class="fa-solid fa-up-right-and-down-left-from-center" style="width: 18px; color: #059669; font-size: 0.95rem;"></i>
@@ -150,7 +140,6 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
 
               <div style="height: 1px; background: var(--color-border, #e2e8f0); margin: 0.35rem 0;"></div>
 
-              <!-- 4. Print / PDF Export -->
               <button class="reader-menu-item" onclick="window.print(); closePhysioReaderSettingsMenu();" style="width: 100%; display: flex; align-items: center; gap: 9px; padding: 0.6rem 0.75rem; border: none; background: transparent; border-radius: 8px; cursor: pointer; font-size: 0.84rem; color: var(--color-text, #0f172a); font-weight: 600; text-align: left; transition: background 0.15s;">
                 <i class="fa-solid fa-print" style="width: 18px; color: #64748b; font-size: 0.95rem;"></i>
                 <span>In bài giảng / Lưu PDF</span>
@@ -159,7 +148,6 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
             </div>
           </div>
 
-          <!-- Quick Return Button -->
           <a href="${parentModuleUrl}" class="btn btn-outline" title="Quay lại danh mục ${parentModuleName}" style="padding: 0.45rem 0.85rem; border-radius: 8px; border: 1px solid var(--color-border, #cbd5e1); font-size: 0.82rem; font-weight: 700; text-decoration: none; color: var(--color-text, #334155); display: inline-flex; align-items: center; gap: 5px;">
             <i class="fa-solid fa-arrow-left"></i>
             <span>${parentModuleName}</span>
@@ -169,7 +157,6 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
 
       </header>
 
-      <!-- MAIN ARTICLE MOUNT CONTAINER -->
       <main id="physio-article-mount" style="min-height: 550px; font-size: ${savedFontSize}px; max-width: 1440px; margin: 0 auto; padding: 1.5rem 1rem;">
         <div style="text-align: center; padding: 6rem 1rem; color: var(--color-text-muted, #64748b);">
           <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2.8rem; color: var(--color-primary, #0284c7); margin-bottom: 1.25rem;"></i>
@@ -183,9 +170,39 @@ export function renderPhysioHtmlReader(part: string, slug: string): string {
 }
 
 /**
- * Fetch, parse, and inject physiology or pathophysiology cases HTML content
+ * Ensure In-Page Anchors & QuickNav Smooth Scrolling without breaking SPA Router
  */
-async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, baseSlugName: string, partName: string, isCaseStudy: boolean, isBiochem = false, isEpi = false): Promise<void> {
+function setupInPageAnchorScrolling(mountEl: HTMLElement): void {
+  mountEl.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#') && href.length > 1 && !href.startsWith('#/')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetId = href.replace(/^#/, '');
+        const targetEl = document.getElementById(targetId) || mountEl.querySelector(href);
+        if (targetEl) {
+          mountEl.querySelectorAll('.quicknav-link, .quickmenu-item, .pillar-tab, .toc-item').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+}
+
+/**
+ * Fetch and Hydrate Article HTML or MDX into SPA Mount
+ */
+async function fetchAndHydratePhysioArticle(
+  part: string,
+  cleanSlug: string,
+  baseSlugName: string,
+  partName: string,
+  isCaseStudy: boolean,
+  isBiochem: boolean,
+  isEpi: boolean
+): Promise<void> {
   const mountEl = document.getElementById('physio-article-mount');
   if (!mountEl) return;
 
@@ -195,57 +212,49 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
     candidatePaths = [
       `/src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
       `src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
-      `./src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
-      `../src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
-      `/dist/src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
-      `dist/src/content/basic-medical/pathophysiology-cases/${cleanSlug}`,
-      `/src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
-      `src/content/pathophysiology/pathophysiology-cases/${cleanSlug}`,
-      `pages/Sinh lý - Sinh lý bệnh/SLB_CCBS/${cleanSlug}`,
-      `/pages/Sinh lý - Sinh lý bệnh/SLB_CCBS/${cleanSlug}`
+      `pages/Sinh lý - Sinh lý bệnh/SLB_CCBS/${cleanSlug}`
     ];
   } else if (isBiochem) {
     candidatePaths = [
       `/src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
       `src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
-      `./src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
-      `../src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
-      `/dist/src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
-      `dist/src/content/basic-medical/biochemistry/${part}/${cleanSlug}`,
       `/src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`,
       `src/content/pathophysiology/biochemistry/${part}/${cleanSlug}`
     ];
   } else if (isEpi) {
     candidatePaths = [
+      `/src/content/basic-medical/epidemiology/${baseSlugName}.mdx`,
+      `src/content/basic-medical/epidemiology/${baseSlugName}.mdx`,
+      `./src/content/basic-medical/epidemiology/${baseSlugName}.mdx`,
+      `../src/content/basic-medical/epidemiology/${baseSlugName}.mdx`,
       `/src/content/basic-medical/epidemiology/${cleanSlug}`,
-      `src/content/basic-medical/epidemiology/${cleanSlug}`,
-      `./src/content/basic-medical/epidemiology/${cleanSlug}`,
-      `../src/content/basic-medical/epidemiology/${cleanSlug}`,
-      `/dist/src/content/basic-medical/epidemiology/${cleanSlug}`,
-      `dist/src/content/basic-medical/epidemiology/${cleanSlug}`
+      `src/content/basic-medical/epidemiology/${cleanSlug}`
     ];
   } else {
     candidatePaths = [
       `/src/content/basic-medical/physiology/${part}/${cleanSlug}`,
       `src/content/basic-medical/physiology/${part}/${cleanSlug}`,
-      `./src/content/basic-medical/physiology/${part}/${cleanSlug}`,
-      `../src/content/basic-medical/physiology/${part}/${cleanSlug}`,
-      `/dist/src/content/basic-medical/physiology/${part}/${cleanSlug}`,
-      `dist/src/content/basic-medical/physiology/${part}/${cleanSlug}`,
-      `/src/content/pathophysiology/physiology/${part}/${cleanSlug}`,
-      `src/content/pathophysiology/physiology/${part}/${cleanSlug}`,
-      `pages/Sinh lý - Sinh lý bệnh/Sinhly/${part.replace('part', 'Phan')}/${cleanSlug}`,
-      `/pages/Sinh lý - Sinh lý bệnh/Sinhly/${part.replace('part', 'Phan')}/${cleanSlug}`
+      `pages/Sinh lý - Sinh lý bệnh/Sinhly/${part.replace('part', 'Phan')}/${cleanSlug}`
     ];
   }
 
   let htmlText = '';
+  let isMdx = false;
 
   for (const path of candidatePaths) {
     try {
-      const resp = await fetch(path);
+      const isMdxPath = path.includes('.mdx') || path.includes('.md');
+      // In Vite dev mode, ?raw prevents Vite from treating .mdx as executable JS/JSX
+      const fetchUrl = isMdxPath && !path.includes('?raw') ? `${path}?raw` : path;
+      let resp = await fetch(fetchUrl);
+      if (!resp.ok && fetchUrl !== path) {
+        resp = await fetch(path);
+      }
       if (resp.ok) {
         htmlText = await resp.text();
+        if (isMdxPath) {
+          isMdx = true;
+        }
         break;
       }
     } catch {
@@ -280,6 +289,37 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
         </a>
       </div>
     `;
+    return;
+  }
+
+  // Handle Native MDX Rendering
+  if (isMdx) {
+    const parsed = cliniMdxEngine.parse(htmlText);
+    const cleanTitle = parsed.title;
+    const crumbEl = document.getElementById('physio-reader-breadcrumb-title');
+    if (crumbEl) crumbEl.textContent = cleanTitle;
+    document.title = `${cleanTitle} – CliniPortal`;
+
+    mountEl.innerHTML = `
+      <div class="physio-article-container" style="max-width: 1120px; margin: 0 auto; padding: 1.5rem 1.25rem;">
+        <div style="margin-bottom: 2rem; background: linear-gradient(135deg, #042f2e 0%, #0f172a 50%, #134e4a 100%); color: #ffffff; padding: 2.5rem 2rem; border-radius: 16px; border: 1px solid rgba(13, 148, 136, 0.3); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);">
+          <span class="badge" style="background: rgba(45, 212, 191, 0.18); color: #2dd4bf; border: 1px solid rgba(45, 212, 191, 0.35); font-weight: 700; font-size: 0.8rem; padding: 0.35rem 0.85rem; border-radius: 999px; text-transform: uppercase;">
+            <i class="fa-solid fa-virus-covid"></i> DỊCH TỄ HỌC • MDX NATIVE
+          </span>
+          <h1 style="font-size: 2.1rem; font-weight: 800; color: #ffffff; margin: 0.75rem 0 0.5rem 0; line-height: 1.25;">
+            ${parsed.title}
+          </h1>
+          <p style="margin: 0; font-size: 1rem; opacity: 0.95; line-height: 1.65; max-width: 920px;">
+            ${parsed.description || ''}
+          </p>
+        </div>
+        <div class="mdx-rendered-article">
+          ${parsed.html}
+        </div>
+      </div>
+    `;
+
+    setupInPageAnchorScrolling(mountEl);
     return;
   }
 
@@ -1026,22 +1066,7 @@ async function fetchAndHydratePhysioArticle(part: string, cleanSlug: string, bas
   `;
 
   // 5. Ensure In-Page Anchors & QuickNav Smooth Scrolling without breaking SPA Router
-  mountEl.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (href && href.startsWith('#') && href.length > 1 && !href.startsWith('#/')) {
-        e.preventDefault();
-        e.stopPropagation();
-        const targetId = href.replace(/^#/, '');
-        const targetEl = document.getElementById(targetId) || mountEl.querySelector(href);
-        if (targetEl) {
-          mountEl.querySelectorAll('.quicknav-link, .quickmenu-item, .pillar-tab, .toc-item').forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
+  setupInPageAnchorScrolling(mountEl);
 
   // Hydrate Scripts if any
   const scripts = doc.querySelectorAll('script');

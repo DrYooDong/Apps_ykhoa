@@ -1,0 +1,167 @@
+---
+title: "Dịch Tễ Học Bệnh Thủy Đậu (Varicella / VZV)"
+slug: "dth-thuy-dau"
+code: "DTH-VAR"
+icd10: "ICD-10: B01 (B01.0–B01.9), B02 (Zoster)"
+specialtyId: "epi-truyen-nhiem"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Dịch tễ học Bệnh Thủy đậu (Varicella) & Zona (Herpes Zoster): Phân tích toàn diện hệ số lây truyền cơ bản R0 cực cao (10-12), sự khác biệt dịch tễ học vùng nhiệt đới vs ôn đới (Tropical vs Temperate), đường cong tử vong hình chữ U, động thái tiềm sinh tại hạch rễ sau tủy sống (Dorsal Root Ganglia), nguy cơ dịch chuyển tuổi khi độ bao phủ vắc-xin thấp và chiến lược tiêm chủng 2 liều."
+tags:
+  - "varicella"
+  - "thuy-dau"
+  - "vzv"
+  - "herpes-zoster"
+  - "shingles"
+  - "airborne"
+metrics:
+  r0: "10.0 – 12.0 (thuộc nhóm bệnh truyền nhiễm lây lan nhanh nhất qua không khí)"
+  incubationPeriod: "10 – 21 ngày (trung bình 14 – 16 ngày; phơi nhiễm với VZIG có thể kéo dài tới 28 ngày)"
+  modeOfTransmission: "Đường hô hấp qua sol khí (Airborne droplet nuclei), giọt bắn, tiếp xúc trực tiếp với dịch nốt phỏng rỉ ra"
+  caseFatalityRate: "Trẻ em khỏe mạnh: 1 – 2 / 100.000 ca; Người lớn (>20 tuổi): 20 – 30 / 100.000 ca (cao gấp 15–20 lần trẻ em); Phụ nữ mang thai và bệnh nhân suy giảm miễn dịch có tỷ lệ tử vong cao do viêm phổi VZV"
+  whoClassification: "Thủy đậu thể thông thường / Thủy đậu có biến chứng (Viêm phổi nguyên phát, Viêm não, Nhiễm trùng da mô mềm do liên cầu/tụ cầu, Hội chứng Reye) / Hội chứng Thủy đậu bẩm sinh (CVS)"
+  annualGlobalCases: "~140 triệu ca mắc/năm trước kỷ nguyên vắc-xin; giảm >90% tại các quốc gia triển khai tiêm chủng 2 liều thường quy"
+  vietnamEndemicStatus: "Lưu hành quanh năm, đỉnh dịch vào mùa đông - xuân (Tháng 1 đến Tháng 5 hàng năm) tại các nhà trẻ, trường học"
+  vaccineStatus: "Vắc-xin sống giảm độc lực (chủng Oka): Varilrix, Varivax (Khuyến cáo lịch tiêm 2 liều: mũi 1 lúc 12-15 tháng, mũi 2 lúc 4-6 tuổi)"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ VZV"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Động Học Lây Truyền & R0 10-12"
+    icon: "fa-wind"
+  - id: "sec-3"
+    number: 3
+    title: "Dịch Tễ Nhiệt Đới vs Ôn Đới"
+    icon: "fa-earth-asia"
+  - id: "sec-4"
+    number: 4
+    title: "Tiềm Sinh Hạch Thần Kinh & Zona"
+    icon: "fa-bolt"
+  - id: "sec-5"
+    number: 5
+    title: "Đường Cong Tử Vong Chữ U & Biến Chứng"
+    icon: "fa-chart-area"
+  - id: "sec-6"
+    number: 6
+    title: "Thủy Đậu Thai Kỳ & Sơ Sinh"
+    icon: "fa-baby"
+  - id: "sec-7"
+    number: 7
+    title: "Chiến Lược Tiêm Chủng 2 Liều & PEP"
+    icon: "fa-shield-virus"
+  - id: "sec-8"
+    number: 8
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
+
+# 🔬 DỊCH TỄ HỌC BỆNH THỦY ĐẬU (VARICELLA / VZV)
+
+<EpiPillarsNav />
+
+---
+
+## 1. Tam Giác Dịch Tễ Học Thủy Đậu {#sec-1}
+
+Dịch tễ học VZV là sự phối hợp giữa **Tác nhân (Varicella-Zoster Virus thuộc họ Alphaherpesviridae có khả năng lây truyền qua sol khí và tiềm sinh suốt đời trong hạch thần kinh)**, **Vật chủ (Người chưa có miễn dịch với sự gia tăng nguy cơ biến chứng theo độ tuổi)** và **Môi trường (Nhiệt độ, độ ẩm và môi trường sinh hoạt tập thể kín gió)**.
+
+<EpiTriangle 
+  agent={{
+    title: "Varicella-Zoster Virus (VZV / HHV-3)",
+    subtitle: "Họ Herpesviridae • DNA chuỗi kép có vỏ bọc lipid",
+    items: [
+      "Hệ số lây truyền cơ bản $R_0 = 10 – 12$ (lây lan mạnh hơn cúm và quai bị)",
+      "Khả năng lây nhiễm: từ 1–2 ngày TRƯỚC KHI phát ban cho đến khi TẤT CẢ nốt phỏng đóng vảy khô hoàn toàn",
+      "Gây 2 bệnh cảnh lâm sàng riêng biệt: Thủy đậu (nguyên phát) và Zona thần kinh (tái hoạt hóa)"
+    ],
+    color: "#8b5cf6"
+  }}
+  host={{
+    title: "Quần thể Người (Vật chủ duy nhất)",
+    subtitle: "Đường cong nguy cơ hình chữ U (U-shaped Curve)",
+    items: [
+      "Trẻ em 1–9 tuổi: bệnh nhẹ, tự giới hạn, tử vong rất thấp",
+      "Người lớn >20 tuổi, phụ nữ có thai: nguy cơ Viêm phổi VZV và tử vong cao gấp 15–20 lần",
+      "Bệnh nhân suy giảm miễn dịch (HIV, ghép tạng, ung thư): nguy cơ thủy đậu xuất huyết nội tạng bùng phát"
+    ],
+    color: "#3b82f6"
+  }}
+  environment={{
+    title: "Môi trường Khí hậu & Trường học",
+    subtitle: "Mùa đông - xuân & Sol khí không gian kín",
+    items: [
+      "Lớp học, nhà trẻ, ký túc xá thông khí kém là ổ bùng phát dịch",
+      "Vùng nhiệt đới (Việt Nam): tỷ lệ mắc dịch chuyển sang lứa tuổi lớn hơn so với vùng ôn đới",
+      "Tia cực tím và nhiệt độ cao làm bất hoạt nhanh virus trong môi trường ngoài"
+    ],
+    color: "#10b981"
+  }}
+  vectorOrBridge="LÂY TRUYỀN: SOL KHÍ (AIRBORNE)"
+  centerTitle="R0 CỰC CAO: 10 - 12"
+/>
+
+<EpiAlert type="danger" title="Thời Điểm Lây Nhiễm Cốt Lõi: Lây Trước Khi Phát Ban Nốt Phỏng">
+  Bệnh nhân mắc thủy đậu bắt đầu đào thải một lượng lớn hạt virus qua dịch tiết đường hô hấp trên từ **24 đến 48 giờ trước khi xuất hiện nốt phỏng đầu tiên trên da**. Do đó, việc chỉ cách ly khi bệnh nhân đã phát ban thường không ngăn chặn được sự bùng phát dịch trong trường học. Người bệnh tiếp tục lây nhiễm cho đến khi **toàn bộ các tổn thương bọng nước đã đóng vảy khô (crusted) hoàn toàn (thường sau 5 – 7 ngày)**.
+</EpiAlert>
+
+---
+
+## 2. Dịch Tễ Học So Sánh: Vùng Nhiệt Đới vs Vùng Ôn Đới {#sec-2}
+
+| Đặc điểm dịch tễ | Vùng Ôn Đới (Bắc Mỹ, Châu Âu) | Vùng Nhiệt Đới (Việt Nam, Đông Nam Á) |
+|---|---|---|
+| **Độ tuổi mắc bệnh đỉnh điểm** | **Trẻ nhỏ (2 – 6 tuổi)** | **Thanh thiếu niên & Người lớn trẻ (15 – 25 tuổi)** |
+| **Tỷ lệ có kháng thể ở tuổi 15** | **> 90% – 95%** dân số đã có miễn dịch tự nhiên | **Chỉ khoảng 40% – 60%** dân số có kháng thể bảo vệ |
+| **Cơ chế giả thuyết** | Khí hậu lạnh tạo điều kiện virus tồn tại lâu trong sol khí không khí trong nhà. | Nhiệt độ cao và độ ẩm nhiệt đới làm giảm tính bền vững của virus trong sol khí, làm giảm tốc độ lây nhiễm ở trẻ nhỏ. |
+| **Hậu quả lâm sàng** | Đa số mắc bệnh nhẹ lúc nhỏ. | **Nhiều người lớn và phụ nữ trong độ tuổi sinh đẻ còn nhạy cảm**, làm gia tăng tỷ lệ mắc thủy đậu nặng, viêm phổi và dị tật thai nhi. |
+
+---
+
+## 3. Tiềm Sinh Hạch Rễ Sau Thần Kinh & Tái Hoạt Hóa Thành Bệnh Zona {#sec-3}
+
+<EpiAlert type="pearl" title="Vòng Đời Tiềm Sinh Của VZV: Từ Thủy Đậu Đến Zona Thần Kinh (Herpes Zoster)">
+  Sau đợt nhiễm thủy đậu tiên phát, virus VZV di chuyển ngược dòng theo các sợi trục thần kinh cảm giác (retrograde axonal transport) về định cư và **tiềm sinh suốt đời tại các hạch rễ sau tủy sống (Dorsal Root Ganglia) và hạch thần kinh sọ (đặc biệt là hạch Gasser dây thần kinh V)**.
+  
+  Khi miễn dịch qua trung gian tế bào (Cell-Mediated Immunity) suy giảm theo tuổi tác (>50 tuổi) hoặc do stress/suy giảm miễn dịch, virus tái hoạt động, nhân lên và di chuyển xuôi dòng sợi thần kinh ra da, gây nên **bệnh Zona (Herpes Zoster)** với phát ban bọng nước đau rát phân bố giới hạn theo một khoanh da (Dermatome) đơn độc một bên cơ thể. Biến chứng đáng sợ nhất là **Đau sau zona (Postherpetic Neuralgia - PHN)** kéo dài nhiều tháng đến nhiều năm.
+</EpiAlert>
+
+---
+
+## 4. Thủy Đậu Trong Thai Kỳ & Hội Chứng Thủy Đậu Bẩm Sinh (CVS) {#sec-4}
+
+1. **Thủy đậu trong 20 tuần đầu thai kỳ**:
+   - Nguy cơ truyền virus qua nhau thai gây **Hội chứng Thủy đậu bẩm sinh (Congenital Varicella Syndrome - CVS)** ở 1% – 2% trường hợp.
+   - Dị tật điển hình: Sẹo da dạng đường chữ chi (Cicatricial skin lesions), thiểu sản chi, teo cơ, teo não, tật mắt nhỏ (Microphthalmia), đục thủy tinh thể và chậm phát triển tâm thần vận động.
+
+2. **Thủy đậu chu sinh (Perinatal Varicella)**:
+   - Nếu mẹ khởi phát phát ban thủy đậu trong vòng **5 ngày trước sinh đến 2 ngày sau sinh**, trẻ sơ sinh sẽ nhận một lượng virus khổng lồ từ mẹ mà **chưa kịp nhận kháng thể IgG bảo vệ truyền qua nhau thai**.
+   - Trẻ sơ sinh có nguy cơ mắc **Thủy đậu sơ sinh bùng phát toàn thể (Neonatal Fulminant Varicella)** với tỷ lệ tử vong lên tới **20% – 30%** do tổn thương phổi và gan ồ ạt. Chỉ định bắt buộc tiêm ngay **Kháng huyết thanh VZIG** cho trẻ.
+
+---
+
+## 5. Chiến Lược Tiêm Chủng 2 Liều & Dự Phòng Sau Phơi Nhiễm (PEP) {#sec-5}
+
+<EpiAlert type="surveillance" title="Khuyến Cáo Lịch Tiêm 2 Liều và Dự Phòng Sau Phơi Nhiễm (PEP) Theo CDC và ACIP">
+  - **Lịch tiêm 2 liều chuẩn mực**:
+    - *Liều 1*: Lúc 12 – 15 tháng tuổi (tạo miễn dịch bảo vệ ~85%).
+    - *Liều 2*: Lúc 4 – 6 tuổi (nâng hiệu quả bảo vệ lên **>98% – 100%**, ngăn chặn hiện tượng nhiễm trùng đột phá Breakthrough Varicella).
+  - **Dự phòng sau phơi nhiễm (Post-Exposure Prophylaxis - PEP)**:
+    1. **Vắc-xin Thủy đậu**: Tiêm trong vòng **3 – 5 ngày sau khi tiếp xúc** với nguồn lây (hiệu quả ngăn ngừa hoặc làm giảm nhẹ bệnh >70% – 80%).
+    2. **Kháng thể Varicella-Zoster Immune Globulin (VZIG)**: Chỉ định trong vòng **10 ngày sau phơi nhiễm** cho các đối tượng nguy cơ cao không thể tiêm vắc-xin sống (Phụ nữ mang thai chưa có miễn dịch, Trẻ sơ sinh có mẹ mắc thủy đậu chu sinh, Bệnh nhân suy giảm miễn dịch nặng).
+</EpiAlert>
+
+---
+
+## 6. Tài Liệu Tham Khảo EBM {#sec-6}
+
+1. **World Health Organization (2014)**. *Varicella and herpes zoster vaccines: WHO position paper, June 2014*. Weekly Epidemiological Record, 89(25), 265-288.
+2. **Marin, M. et al. (2007)**. *Prevention of Varicella: Recommendations of the Advisory Committee on Immunization Practices (ACIP)*. MMWR Recommendations and Reports, 56(RR-4), 1-40.
+3. **Gershon, A. A. et al. (2015)**. *Varicella zoster virus infection*. Nature Reviews Disease Primers, 1, 15016.
+4. **Seward, J. F. et al. (2002)**. *Contagiousness of varicella in vaccinated cases: a household contact study*. JAMA, 287(6), 706-711.

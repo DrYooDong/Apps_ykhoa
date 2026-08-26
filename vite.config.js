@@ -5,6 +5,7 @@ export default defineConfig({
   // Quan trọng nhất: base: './' giúp tương thích với cả
   // giao thức file:/// offline, đóng gói Electron/Capacitor và GitHub Pages.
   base: './',
+  assetsInclude: ['**/*.mdx', '**/*.md'],
 
   build: {
     outDir: 'dist',

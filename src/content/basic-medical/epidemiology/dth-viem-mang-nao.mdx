@@ -1,0 +1,184 @@
+---
+title: "Dịch Tễ Học Viêm Màng Não (Meningitis)"
+slug: "dth-viem-mang-nao"
+code: "DTH-MEN"
+icd10: "ICD-10: G00–G03, A39"
+specialtyId: "epi-truyen-nhiem"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Dịch tễ học Viêm màng não (Meningitis): Phân tích toàn diện gánh nặng toàn cầu 2.51 triệu ca, phổ căn nguyên vi khuẩn thay đổi theo lứa tuổi (GBS/E. coli ở sơ sinh, Phế cầu/Não mô cầu ở trẻ em & người lớn), dịch tễ Liên cầu lợn (Streptococcus suis) tại Việt Nam, viêm màng não do lao (TBM), nấm Cryptococcus ở bệnh nhân suy giảm miễn dịch và lộ trình 'Defeating Meningitis by 2030' của WHO."
+tags:
+  - "meningitis"
+  - "viem-mang-nao"
+  - "streptococcus-suis"
+  - "pneumococcus"
+  - "meningococcus"
+  - "tbm"
+metrics:
+  incubationPeriod: "Vi khuẩn cấp tính: 1 – 10 ngày (trung bình 2 – 4 ngày); Lao màng não (TBM): vài tuần đến vài tháng"
+  modeOfTransmission: "Đường hô hấp (giọt bắn đường thở), đường mẹ-con (trong chuyển dạ), tiếp xúc trực tiếp với thịt lợn bệnh/tiết canh (S. suis), đường tiêu hóa (Listeria)"
+  caseFatalityRate: "Viêm màng não vi khuẩn không điều trị: ~100%; Được điều trị kháng sinh tối ưu: 10% – 25% (di chứng thần kinh vĩnh viễn ở 20% – 30% người sống sót)"
+  whoClassification: "Viêm màng não mủ (Bacterial) / Viêm màng não nước trong (Aseptic - Virus) / Bán cấp & Mạn tính (Lao, Nấm, Tự miễn)"
+  annualGlobalCases: "~2.51 triệu ca viêm màng não toàn cầu, ~236.000 ca tử vong/năm (chiếm tỷ trọng tàn tật DALYs rất lớn)"
+  vietnamEndemicStatus: "Lưu hành quanh năm; Streptococcus suis (Liên cầu lợn) là căn nguyên viêm màng não mủ hàng đầu ở người trưởng thành tại Việt Nam (chiếm >50% ca bệnh nhập viện)"
+  vaccineStatus: "Vắc-xin Phế cầu (PCV10, PCV13, PPSV23), Vắc-xin Não mô cầu (MenACWY, MenB), Vắc-xin Hib, Vắc-xin BCG (giảm 70% nguy cơ TBM ở trẻ nhỏ)"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ Viêm Màng Não"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Phổ Căn Nguyên Theo Lứa Tuổi"
+    icon: "fa-bacteria"
+  - id: "sec-3"
+    number: 3
+    title: "Dịch Tễ Liên Cầu Lợn (S. suis) Tại VN"
+    icon: "fa-bacon"
+  - id: "sec-4"
+    number: 4
+    title: "Lao & Nấm Màng Não (TBM / Cryptococcus)"
+    icon: "fa-lungs-virus"
+  - id: "sec-5"
+    number: 5
+    title: "Gánh Nặng Dịch Tễ & Vành Đai Châu Phi"
+    icon: "fa-earth-africa"
+  - id: "sec-6"
+    number: 6
+    title: "Di Chứng Thần Kinh & DALYs"
+    icon: "fa-brain"
+  - id: "sec-7"
+    number: 7
+    title: "Chiến Lược 'Defeating Meningitis 2030'"
+    icon: "fa-shield-virus"
+  - id: "sec-8"
+    number: 8
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
+
+# 🔬 DỊCH TỄ HỌC VIÊM MÀNG NÃO (MENINGITIS)
+
+<EpiPillarsNav />
+
+---
+
+## 1. Tam Giác Dịch Tễ Học Viêm Màng Não {#sec-1}
+
+Dịch tễ học viêm màng não là sự tác động qua lại giữa **Tác nhân (Phế cầu, Não mô cầu, Liên cầu lợn, trực khuẩn Gram âm, Lao, Nấm, Virus)**, **Vật chủ (Trẻ sơ sinh, người già, người suy giảm miễn dịch, người có thói quen ăn tiết canh/thịt lợn chưa chín)** và **Môi trường (Tập trung đông đúc, mùa lạnh/khô, vùng sinh thái chăn nuôi lợn)**.
+
+<EpiTriangle 
+  agent={{
+    title: "Phổ Vi sinh vật đa dạng",
+    subtitle: "Vi khuẩn mủ, Trực khuẩn lao, Nấm cơ hội, Enterovirus",
+    items: [
+      "S. pneumoniae và N. meningitidis: có vỏ capsule né tránh thực bào",
+      "S. suis: độc lực suilysin gây tổn thương thính lực không hồi phục",
+      "Cryptococcus neoformans: nấm men bao nang ở bệnh nhân CD4 < 100/µL"
+    ],
+    color: "#6366f1"
+  }}
+  host={{
+    title: "Quần thể Người có cơ địa nhạy cảm",
+    subtitle: "Hàng rào máu não (BBB) bị tổn thương",
+    items: [
+      "Sơ sinh và trẻ nhỏ: thiếu hụt kháng thể bảo vệ từ mẹ",
+      "Người cắt lách hoặc thiếu hụt bổ thể (C5-C9): nguy cơ nhiễm trùng bùng phát",
+      "Người nghiện rượu, đái tháo đường, suy giảm miễn dịch mắc phải HIV/AIDS"
+    ],
+    color: "#3b82f6"
+  }}
+  environment={{
+    title: "Môi trường Xã hội và Sinh thái",
+    subtitle: "Giọt bắn hô hấp và Thói quen ẩm thực",
+    items: [
+      "Ký túc xá, doanh trại quân đội, nhà trẻ (ổ lây truyền Não mô cầu)",
+      "Ăn tiết canh, thịt lợn ốm/chết, tiếp xúc giết mổ không đồ bảo hộ (S. suis)",
+      "Khí hậu khô hanh, gió bụi (Vành đai sốt màng não Châu Phi - Meningitis Belt)"
+    ],
+    color: "#10b981"
+  }}
+  vectorOrBridge="LÂY TRUYỀN: HÔ HẤP • TIÊU HÓA • MẸ CON"
+  centerTitle="CẤP CỨU NỘI KHOA"
+/>
+
+<EpiAlert type="danger" title="Thời Gian Là Não Bộ: Cấp Cứu Điều Trị Kháng Sinh Trong Vòng 1 Giờ Đầu">
+  Viêm màng não mủ do vi khuẩn là một **cấp cứu y khoa tối khẩn**. Mỗi giờ chậm trễ trong việc sử dụng kháng sinh đường tĩnh mạch liều cao thích hợp làm tăng **12.6% tỷ lệ tử vong** hoặc tàn phế thần kinh. Nguyên tắc vàng: Ngay khi nghi ngờ viêm màng não mủ, nếu có chỉ định chụp CT sọ não trước chọc dò dịch não tủy (DNT), **bắt buộc phải cấy máu và tiêm ngay liều kháng sinh đầu tiên (kết hợp Dexamethasone)** trước khi đưa bệnh nhân đi chụp hình ảnh.
+</EpiAlert>
+
+---
+
+## 2. Phổ Căn Nguyên Vi Khuẩn Thay Đổi Theo Lứa Tuổi {#sec-2}
+
+| Nhóm tuổi | Căn nguyên vi khuẩn hàng đầu | Phác đồ kháng sinh kinh nghiệm khuyến cáo |
+|---|---|---|
+| **Sơ sinh (< 1 tháng)** | *Streptococcus agalactiae* (GBS, 50–60%), *Escherichia coli* (K1, 20–30%), *Listeria monocytogenes* (5–10%) | **Ampicillin + Cefotaxime** (hoặc Gentamicin) |
+| **Trẻ nhũ nhi & Trẻ nhỏ (1–23 tháng)** | *Streptococcus pneumoniae* (Phế cầu), *Neisseria meningitidis* (Não mô cầu), *Haemophilus influenzae* type b (Hib) | **Ceftriaxone (hoặc Cefotaxime) + Vancomycin** |
+| **Trẻ lớn & Người lớn (2–50 tuổi)** | *Streptococcus pneumoniae*, *Neisseria meningitidis*, ***Streptococcus suis* (Việt Nam)** | **Ceftriaxone + Vancomycin** (+ Dexamethasone) |
+| **Người cao tuổi (≥ 50 tuổi) & SGMD** | *S. pneumoniae*, *N. meningitidis*, *L. monocytogenes*, Trực khuẩn Gram âm đường ruột | **Ceftriaxone + Vancomycin + Ampicillin** (phủ Listeria) |
+
+---
+
+## 3. Dịch Tễ Học Đặc Thù: Liên Cầu Lợn (*Streptococcus suis*) Tại Việt Nam {#sec-3}
+
+<EpiAlert type="pearl" title="Đặc Điểm Dịch Tễ Liên Cầu Lợn (S. suis) — Bệnh Truyền Nhiễm Hàng Đầu Tại VN">
+  - **Dịch tễ học**: *Streptococcus suis* (đặc biệt serotype 2) là nguyên nhân gây viêm màng não mủ **chiếm 40% – 55% tổng số ca bệnh ở người trưởng thành** tại các bệnh viện tuyến cuối ở Hà Nội và TP. Hồ Chí Minh.
+  - **Yếu tố dịch tễ phơi nhiễm**:
+    - **~70% bệnh nhân có tiền sử ăn tiết canh, nem chua hoặc lòng lợn chưa nấu chín** trong vòng 7 – 10 ngày trước khởi phát.
+    - **~25% là người chăn nuôi, giết mổ, buôn bán hoặc chế biến thịt lợn** bị trầy xước da tay tiếp xúc với máu/thịt lợn mang mầm bệnh.
+  - **Đặc trưng lâm sàng & Di chứng**:
+    - Tỷ lệ xuất hiện **điếc tiếp nhận thần kinh giác quan (Sensorineural Hearing Loss)** rất cao (**>60% – 70%**), thường xuất hiện sớm và không hồi phục.
+    - Thể nhiễm khuẩn huyết bùng phát gây sốc nhiễm khuẩn, ban xuất huyết hoại tử hoại thư chi tương tự hội chứng Waterhouse-Friderichsen của Não mô cầu.
+</EpiAlert>
+
+---
+
+## 4. Viêm Màng Não Do Lao (TBM) & Nấm Cryptococcus {#sec-4}
+
+1. **Lao màng não (Tuberculous Meningitis - TBM)**:
+   - Thể lao ngoài phổi nguy hiểm nhất, xuất phát từ vỡ nốt lao Rich (Rich focus) vào khoang dưới nhện.
+   - Diễn tiến âm thầm từ vài tuần với tam chứng: sốt nhẹ về chiều, đau đầu tăng dần và thay đổi tri giác.
+   - Tỷ lệ tử vong và di chứng liệt thần kinh sọ (dây III, VI, VII) từ 30% đến 50%.
+
+2. **Viêm màng não do nấm *Cryptococcus neoformans***:
+   - Căn nguyên hàng đầu ở bệnh nhân nhiễm HIV có số lượng tế bào CD4 < 100 tế bào/µL.
+   - Nấm men có bao nang polysaccharide dày, xâm nhập qua đường hô hấp từ phân chim bồ câu hoặc đất ô nhiễm.
+   - Dịch não tủy đặc trưng bởi áp lực mở rất cao (> 250 – 300 mmH2O), đòi hỏi phải chọc dò tháo dịch DNT hạ áp định kỳ hàng ngày.
+
+---
+
+## 5. Di Chứng Thần Kinh Dài Hạn & Gánh Nặng DALYs {#sec-5}
+
+Khoảng **1 trong 5 người sống sót (20%)** sau viêm màng não mủ phải chịu đựng ít nhất một di chứng tàn tật vĩnh viễn suốt đời:
+
+```
+[Người Sống Sót Sau Viêm Màng Não Mủ]
+        │
+        ├──► 15% – 20%: Mất thính lực / Điếc tiếp nhận vĩnh viễn (Đặc biệt cao ở S. suis >60%)
+        ├──► 10% – 15%: Động kinh thứ phát / Suy giảm nhận thức & trí nhớ
+        ├──►  5% – 10%: Liệt vận động, liệt nửa người, não úng thủy (Hydrocephalus)
+        └──► 10% – 20%: Rối loạn hành vi, rối loạn học tập ở trẻ em
+```
+
+---
+
+## 6. Lộ Trình Toàn Cầu Của WHO: "Defeating Meningitis by 2030" {#sec-6}
+
+<EpiAlert type="surveillance" title="3 Trụ Cột Chiến Lược Đánh Bại Bệnh Viêm Màng Não Toàn Cầu 2030">
+  1. **Loại trừ các vụ dịch viêm màng não do vi khuẩn**: Mở rộng tiêm chủng vắc-xin MenACWY-CRM197/TT và MenB, duy trì tỷ lệ bao phủ vắc-xin Phế cầu (PCV) và Hib > 90%.
+  2. **Giảm 50% số ca mắc và giảm 70% số ca tử vong**: Chuẩn hóa phác đồ điều trị kháng sinh sớm và sử dụng Dexamethasone hỗ trợ trong viêm màng não phế cầu.
+  3. **Cải thiện chăm sóc & Phục hồi chức năng**: Sàng lọc thính lực sớm cho tất cả bệnh nhân xuất viện sau viêm màng não để can thiệp cấy ốc tai điện tử hoặc máy trợ thính kịp thời.
+</EpiAlert>
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
+
+1. **World Health Organization (2021)**. *Defeating meningitis by 2030: a global road map*. Geneva: WHO.
+2. **van de Beek, D. et al. (2016)**. *ESCMID guideline: diagnosis and treatment of acute bacterial meningitis*. Clinical Microbiology and Infection, 22, S37-S62.
+3. **Mai, N. T. H. et al. (2008)**. *Streptococcus suis meningitis in adults in Vietnam*. Clinical Infectious Diseases, 46(5), 659-667.
+4. **Thwaites, G. E. et al. (2004)**. *Dexamethasone for the treatment of tuberculous meningitis in adolescents and adults*. New England Journal of Medicine, 351(17), 1741-1751.

@@ -69,3 +69,46 @@ export interface CausalityCriterion {
   description: string;
   classicExample: string;
 }
+
+/**
+ * MDX Frontmatter Schema cho Bài viết Dịch tễ học bệnh lý
+ * Tuân thủ quy chuẩn .agents/skills/mdx-content-architecture/SKILL.md
+ */
+export interface EpidemiologyMdxFrontmatter {
+  title: string;
+  slug: string;
+  code: string;
+  icd10: string;
+  specialtyId: string;
+  category: 'epidemiology';
+  status: 'published' | 'draft' | 'review';
+  version: string;
+  updatedAt: string;
+  description: string;
+  tags: string[];
+  
+  // Dữ liệu dịch tễ học trọng yếu (Epi Vital Metrics)
+  metrics: {
+    r0?: string;
+    rt?: string;
+    incubationPeriod: string;
+    eip?: string; // Extrinsic Incubation Period (trong vector)
+    iip?: string; // Intrinsic Incubation Period (trong người)
+    vector?: string;
+    reservoir?: string;
+    modeOfTransmission: string;
+    caseFatalityRate: string;
+    whoClassification?: string;
+    annualGlobalCases?: string;
+    vietnamEndemicStatus?: string;
+    vaccineStatus?: string;
+  };
+
+  // 8 Trụ cột Dịch tễ học
+  pillars: Array<{
+    id: string;
+    number: number;
+    title: string;
+    icon: string;
+  }>;
+}

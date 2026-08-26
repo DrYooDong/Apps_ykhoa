@@ -1,0 +1,215 @@
+---
+title: "Dịch Tễ Học Sốt Rét (Malaria / Plasmodium)"
+slug: "dth-sot-ret"
+code: "DTH-MAL"
+icd10: "ICD-10: B50–B54"
+specialtyId: "epi-truyen-nhiem"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Dịch tễ học Sốt rét (Malaria): Phân tích toàn diện tam giác dịch tễ học, 5 loài ký sinh trùng Plasmodium, véc-tơ muỗi Anopheles (An. dirus, An. minimus), động học thể ngủ gan (Hypnozoite), 4 mối đe dọa sinh học toàn cầu và chiến lược loại trừ sốt rét tại Việt Nam theo Quyết định 4922/QĐ-BYT."
+tags:
+  - "malaria"
+  - "sot-ret"
+  - "plasmodium"
+  - "anopheles"
+  - "hypnozoite"
+  - "artemisinin-resistance"
+metrics:
+  r0: "1.0 – 100+ (vùng lưu hành sốt rét cao châu Phi Sub-Saharan)"
+  incubationPeriod: "9 – 40 ngày (tùy loài: P. falciparum 9-14 ngày, P. vivax 12-18 ngày, P. malariae 18-40 ngày)"
+  eip: "8 – 30 ngày (trong muỗi Anopheles, tối ưu ở 26°C – 30°C)"
+  iip: "9 – 14 ngày (giai đoạn phân liệt tại gan và hồng cầu)"
+  vector: "Muỗi cái Anopheles (An. dirus, An. minimus, An. epiroticus tại Việt Nam)"
+  reservoir: "Người (vật chủ trung gian chính), P. knowlesi có vật chủ là khỉ đuôi dài/khỉ đuôi lợn"
+  modeOfTransmission: "Muỗi Anopheles cái đốt truyền thoa trùng (sporozoite), truyền qua máu, ghép tạng, mẹ sang con"
+  caseFatalityRate: "Sốt rét ác tính P. falciparum không điều trị: >20%; được điều trị kịp thời: 1 – 3%"
+  whoClassification: "Sốt rét thể thông thường (Uncomplicated) / Sốt rét ác tính (Severe Malaria - Hôn mê, toan máu, suy thận, thiếu máu nặng)"
+  annualGlobalCases: "~249 triệu ca nhiễm/năm, ~608.000 ca tử vong (95% tại Châu Phi)"
+  vietnamEndemicStatus: "Tiến tới mục tiêu loại trừ sốt rét toàn quốc vào năm 2030; lưu hành cục bộ vùng rừng núi Tây Nguyên, Nam Trung Bộ"
+  vaccineStatus: "RTS,S/AS01 (Mosquirix) & R21/Matrix-M (được WHO tiền thẩm định cho trẻ em vùng nguy cơ cao)"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "5 Loài Plasmodium & Thể Ngủ"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Véc-tơ Muỗi Anopheles"
+    icon: "fa-mosquito"
+  - id: "sec-4"
+    number: 4
+    title: "Chu Kỳ Lây Truyền & Động Học"
+    icon: "fa-arrows-spin"
+  - id: "sec-5"
+    number: 5
+    title: "Vật Chủ & Đột Biến HbS/G6PD"
+    icon: "fa-users"
+  - id: "sec-6"
+    number: 6
+    title: "4 Mối Đe Dọa Sinh Học"
+    icon: "fa-biohazard"
+  - id: "sec-7"
+    number: 7
+    title: "Loại Trừ Sốt Rét Toàn Cầu & VN"
+    icon: "fa-earth-americas"
+  - id: "sec-8"
+    number: 8
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { EpiTriangle, EpiAlert, EpiPillarsNav, EpiVectorTable } from './components'
+
+# 🔬 DỊCH TỄ HỌC SỐT RÉT (MALARIA / PLASMODIUM)
+
+<EpiPillarsNav />
+
+---
+
+## 1. Tam Giác Dịch Tễ Học Sốt Rét {#sec-1}
+
+Dịch tễ học sốt rét là sự tương tác phức hợp giữa **Tác nhân (5 loài đơn bào ký sinh *Plasmodium*)**, **Vật chủ (Người & yếu tố bảo vệ di truyền như Thalassemia, HbS, thiếu hụt G6PD)** và **Môi trường sinh cảnh (Rừng núi nhiệt đới, vũng nước trong)** thông qua véc-tơ **Muỗi cái *Anopheles***.
+
+<EpiTriangle 
+  agent={{
+    title: "Plasmodium spp. (5 loài gây bệnh)",
+    subtitle: "P. falciparum (nguy hiểm nhất), P. vivax, P. malariae, P. ovale, P. knowlesi",
+    items: [
+      "P. falciparum: kết dính nội mô gây tắc mạch (cytoadherence)",
+      "P. vivax và P. ovale: tạo thể ngủ Hypnozoite tại gan gây tái phát xa",
+      "P. knowlesi: chu kỳ vô tính 24h gây sốt rét zoonotic nguy hiểm"
+    ],
+    color: "#ef4444"
+  }}
+  host={{
+    title: "Quần thể Người (Homo sapiens)",
+    subtitle: "Vật chủ trung gian (Giai đoạn sinh sản vô tính)",
+    items: [
+      "Trẻ em <5 tuổi, phụ nữ có thai nguy cơ tử vong cao",
+      "Người mang gen dị hợp HbS, Thalassemia có khả năng kháng bệnh",
+      "Thiếu hụt enzyme G6PD liên quan nguy cơ tán huyết khi dùng Primaquine"
+    ],
+    color: "#3b82f6"
+  }}
+  environment={{
+    title: "Khí hậu và Sinh cảnh Rừng núi",
+    subtitle: "Nhiệt đới và Cận nhiệt đới ẩm",
+    items: [
+      "Nhiệt độ 20°C–30°C quyết định tốc độ sinh sản bào tử (Sporogony)",
+      "Độ ẩm >60% kéo dài tuổi thọ muỗi Anopheles",
+      "Giao lưu dân di cư, người đi rừng, làm nương rẫy vùng biên giới"
+    ],
+    color: "#10b981"
+  }}
+  vectorOrBridge="VÉC-TƠ: ANOPHELES FEMALE"
+  centerTitle="TIÊU ĐIỂM DỊCH SỐT RÉT"
+/>
+
+<EpiAlert type="danger" title="Sốt Rét Ác Tính Do Plasmodium falciparum và Hiện tượng Kết dính Nội mô">
+  *Plasmodium falciparum* biểu hiện kháng nguyên bề mặt màng hồng cầu **PfEMP1** (Plasmodium falciparum erythrocyte membrane protein 1), liên kết chặt chẽ với các thụ thể nội mô mạch máu như **CD36, ICAM-1, EPCR**. Hiện tượng này gây ra tình trạng kết tụ hồng cầu (cytoadherence, rosetting), làm tắc nghẽn vi tuần hoàn tại não, phổi, thận dẫn đến **Sốt rét thể não (Cerebral Malaria)**, toan chuyển hóa lactic máu và suy đa tạng đe dọa tính mạng trong vòng 24 giờ.
+</EpiAlert>
+
+---
+
+## 2. Đặc Điểm 5 Loài Plasmodium & Động Học Thể Ngủ (Hypnozoite) {#sec-2}
+
+| Loài ký sinh trùng | Chu kỳ hồng cầu | Vùng phân bố chính | Đặc điểm bệnh học then chốt |
+|---|---|---|---|
+| ***P. falciparum*** | 48 giờ (Sốt cách nhật ác tính) | Châu Phi, Đông Nam Á | Xâm nhập hồng cầu mọi lứa tuổi, gây mật độ KST máu rất cao, biến chứng tắc mạch & sốc. |
+| ***P. vivax*** | 48 giờ (Sốt cách nhật lành tính) | Châu Á, Châu Mỹ Latinh | Chỉ xâm nhập hồng cầu non (reticulocyte) qua kháng nguyên Duffy; **tạo thể ngủ Hypnozoite tại gan gây tái phát sau nhiều tháng/năm**. |
+| ***P. malariae*** | 72 giờ (Sốt thể 3 ngày) | Rải rác toàn cầu | Chỉ xâm nhập hồng cầu già; chu kỳ kéo dài, có thể tồn tại âm thầm trong máu nhiều thập kỷ gây viêm cầu thận mạn. |
+| ***P. ovale*** | 48 giờ (Sốt cách nhật) | Chủ yếu Tây Phi | Tạo thể ngủ tại gan tương tự *P. vivax*, triệu chứng thường nhẹ. |
+| ***P. knowlesi*** | 24 giờ (Sốt hàng ngày) | Đông Nam Á (Malaysia, VN) | Bệnh truyền từ khỉ sang người (Zoonosis); chu kỳ 24h nhân lên cực nhanh, dễ diễn tiến ác tính. |
+
+<EpiAlert type="pearl" title="Động Học Tái Phát Xa và Vai Trò Diệt Thể Ngủ Của Nhóm 8-Aminoquinoline">
+  Đối với *P. vivax* và *P. ovale*, thoa trùng (sporozoite) sau khi vào tế bào gan có thể biệt hóa thành hai dạng: **Dạng hoạt động (Schizont)** tiếp tục vỡ vào máu gây cơn sốt đầu tiên, và **Dạng ngủ (Hypnozoite)** duy trì trạng thái tiềm sinh trong nhu mô gan từ vài tuần đến nhiều năm. Khi sức đề kháng giảm, Hypnozoite tái hoạt động gây tái phát xa (relapse). Phác đồ điều trị **bắt buộc phải kết hợp Primaquine hoặc Tafenoquine** để diệt sạch thể ngủ gan sau khi đã sàng lọc tình trạng thiếu hụt men G6PD.
+</EpiAlert>
+
+---
+
+## 3. Véc-tơ Truyền Bệnh & Sinh Học Muỗi Anopheles {#sec-3}
+
+<EpiVectorTable 
+  title="Véc-tơ Sốt Rét Chính Tại VN"
+  primaryName="Anopheles dirus"
+  secondaryName="Anopheles minimus"
+  rows={[
+    {
+      characteristic: "Sinh cảnh cư trú",
+      primaryVector: "Rừng sâu, tán rừng rậm rạp, vũng nước suối đọng dưới bóng râm",
+      secondaryVector: "Vùng đồi núi, ven suối nước chảy chậm, rìa bìa rừng",
+      significance: "An. dirus liên quan chặt chẽ đến sốt rét rừng ở người đi nương rẫy, khai thác lâm sản."
+    },
+    {
+      characteristic: "Thời điểm và Tập tính đốt",
+      primaryVector: "Đốt mạnh từ 20h đến nửa đêm, đốt cả trong nhà lẫn ngoài rừng",
+      secondaryVector: "Đốt ban đêm từ 22h đến 2h sáng, chủ yếu đốt trong nhà",
+      significance: "Ngủ màn tẩm hóa chất tồn lưu (LLIN) và võng có màn tẩm thuốc khi đi rừng là then chốt."
+    },
+    {
+      characteristic: "Tập tính trú đậu sau đốt",
+      primaryVector: "Trú đậu ngoài trời (exophilic), bay ngay ra rừng sau khi hút máu",
+      secondaryVector: "Trú đậu trong nhà (endophilic), đậu trên vách gỗ/nứa",
+      significance: "Phun hóa chất diệt muỗi tồn lưu (IRS) hiệu quả cao với An. minimus nhưng kém với An. dirus."
+    }
+  ]}
+/>
+
+---
+
+## 4. Động Học Lây Truyền & Chu Kỳ Sinh Học 2 Vật Chủ {#sec-4}
+
+```
+[Muỗi Anopheles (Giao phối & Sporogony 8-30 ngày)] ──(Đốt truyền Sporozoite)──► [Gan Người (Tiền hồng cầu 6-16 ngày)]
+                           ▲                                                                  │
+                           │                                                          (Merozoite vỡ vào máu)
+                           │                                                                  ▼
+             [Giao bào đực & cái (Gametocytes)] ◄───(Biệt hóa)─── [Hồng Cầu Người (Chu kỳ vô tính gây cơn sốt)]
+```
+
+---
+
+## 5. Vật Chủ, Miễn Dịch & Đột Biến Di Truyền Bảo Vệ {#sec-5}
+
+- **Chọn lọc tự nhiên của Sốt rét**: Sốt rét là áp lực chọn lọc tiến hóa mạnh nhất trên bộ gen người trong 10.000 năm qua:
+  - **HbS (Hồng cầu hình liềm dị hợp tử)**: Giảm 90% nguy cơ sốt rét ác tính do *P. falciparum* kém nhân lên trong hồng cầu biến dạng.
+  - **Thiếu hụt Kháng nguyên Duffy (Fy(a-b-))**: Gần 100% người gốc Tây Phi kháng hoàn toàn với *P. vivax* vì thụ thể Duffy là cổng duy nhất để *P. vivax* bám vào màng hồng cầu.
+  - **Thiếu hụt G6PD**: Làm giảm mức độ ký sinh trùng huyết nhưng làm tăng nguy cơ tán huyết cấp khi dùng thuốc diệt thể ngủ nhóm 8-aminoquinoline (Primaquine).
+
+---
+
+## 6. 4 Mối Đe Dọa Sinh Học Toàn Cầu Theo WHO 2024–2025 {#sec-6}
+
+<EpiAlert type="danger" title="4 Thách Thức Sinh Học Đe Dọa Chương Trình Loại Trừ Sốt Rét">
+  1. **Kháng Artemisinin & Thuốc phối hợp (ACTs)**: Đột biến gen *kelch13* (K13) tại Tiểu vùng sông Mê Kông và Đông Phi làm kéo dài thời gian sạch ký sinh trùng.
+  2. **Đột biến xóa đoạn gen *pfhrp2/pfhrp3***: Ký sinh trùng không còn sản xuất protein HRP2, dẫn đến **kết quả âm tính giả trên Test chẩn đoán nhanh (RDT)**.
+  3. **Véc-tơ muỗi kháng hóa chất diệt**: Kháng nhóm Pyrethroid diện rộng làm giảm hiệu lực của màn tẩm hóa chất LLIN.
+  4. **Sự xâm lấn của *Anopheles stephensi***: Véc-tơ sốt rét đô thị thích nghi với cống rãnh nhân tạo, đang lan tràn từ Nam Á sang các đô thị Châu Phi.
+</EpiAlert>
+
+---
+
+## 7. Chiến Lược Loại Trừ Sốt Rét Toàn Cầu & Việt Nam {#sec-7}
+
+<EpiAlert type="surveillance" title="Mục Tiêu Loại Trừ Sốt Rét Việt Nam Đến Năm 2030 (QĐ 4922/QĐ-BYT)">
+  - **Tiêu chuẩn công nhận Loại trừ sốt rét (WHO)**: Đạt **0 ca sốt rét nội địa (indigenous cases)** liên tục trong ít nhất 3 năm liên tiếp và có hệ thống giám sát cảnh báo dịch bền vững.
+  - **Chiến lược 1-3-7**:
+    - **Ngày 1**: Báo cáo ca bệnh sốt rét dương tính trong vòng 24 giờ.
+    - **Ngày 3**: Điều tra dịch tễ ca bệnh và xác định nguồn gốc lây nhiễm trong vòng 3 ngày.
+    - **Ngày 7**: Triển khai các biện pháp can thiệp dập ổ dịch điểm (phun hóa chất, cấp màn tẩm thuốc, xét nghiệm mở rộng cộng đồng) trong vòng 7 ngày.
+</EpiAlert>
+
+---
+
+## 8. Tài Liệu Tham Khảo EBM {#sec-8}
+
+1. **Bộ Y Tế Việt Nam (2020)**. *Hướng dẫn chẩn đoán và điều trị bệnh Sốt rét* (Ban hành kèm theo Quyết định số 4922/QĐ-BYT).
+2. **World Health Organization (2024)**. *World Malaria Report 2024*. Geneva: WHO.
+3. **White, N. J. et al. (2014)**. *Malaria*. The Lancet, 383(9918), 723-735.
+4. **Ashley, E. A. et al. (2014)**. *Spread of artemisinin resistance in Plasmodium falciparum malaria*. New England Journal of Medicine, 371(5), 411-423.

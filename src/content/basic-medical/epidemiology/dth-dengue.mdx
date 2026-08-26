@@ -1,0 +1,239 @@
+---
+title: "Dịch Tễ Học Sốt Xuất Huyết Dengue (DENV)"
+slug: "dth-dengue"
+code: "DTH-DEN"
+icd10: "ICD-10: A90–A91"
+specialtyId: "epi-truyen-nhiem"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Dịch tễ học Sốt xuất huyết Dengue (DENV): Phân tích toàn diện tam giác dịch tễ học, véc-tơ muỗi Aedes aegypti/albopictus, động thái chu kỳ lây truyền EIP/IIP, cơ chế tăng cường phụ thuộc kháng thể (ADE) và chiến lược kiểm soát véc-tơ chuẩn WHO & Bộ Y Tế."
+tags:
+  - "dengue"
+  - "denv"
+  - "aedes-aegypti"
+  - "ade"
+  - "truyen-nhiem"
+  - "vector-borne"
+metrics:
+  r0: "1.33 – 4.5 (phụ thuộc mật độ muỗi & nhiệt độ môi trường)"
+  incubationPeriod: "3 – 14 ngày (trung bình 4 – 7 ngày)"
+  eip: "8 – 12 ngày (ở 28°C–30°C trong muỗi Aedes)"
+  iip: "4 – 10 ngày (trong cơ thể người trước khi khởi phát sốt)"
+  vector: "Aedes aegypti (chính, 90%), Aedes albopictus (phụ)"
+  reservoir: "Người (vật chủ chính), khỉ (chu kỳ rừng nhiệt đới)"
+  modeOfTransmission: "Muỗi cái Aedes đốt hút máu truyền virus DENV"
+  caseFatalityRate: "< 1% (khi được bù dịch đúng phác đồ); 2 – 5% (thể sốc không điều trị)"
+  whoClassification: "Dengue không dấu hiệu cảnh báo / Dengue có dấu hiệu cảnh báo / Dengue nặng (Sốc, xuất huyết nặng, suy tạng)"
+  annualGlobalCases: "~390 triệu ca nhiễm/năm (96 triệu ca có biểu hiện lâm sàng)"
+  vietnamEndemicStatus: "Lưu hành lưu niên toàn quốc, đỉnh dịch vào mùa mưa (Tháng 5 - 11 tại miền Nam, Tháng 7 - 11 tại miền Bắc)"
+  vaccineStatus: "Dengvaxia (CYD-TDV - chỉ dùng cho người có tiền sử nhiễm), Qdenga (TAK-003 - dùng cho cả seronegative)"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Tác Nhân & Bệnh Sinh ADE"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Véc-tơ Truyền Bệnh"
+    icon: "fa-mosquito"
+  - id: "sec-4"
+    number: 4
+    title: "Chu Kỳ Lây Truyền"
+    icon: "fa-arrows-spin"
+  - id: "sec-5"
+    number: 5
+    title: "Vật Chủ & Nguy Cơ"
+    icon: "fa-users"
+  - id: "sec-6"
+    number: 6
+    title: "Khí Hậu & Môi Trường"
+    icon: "fa-cloud-sun-rain"
+  - id: "sec-7"
+    number: 7
+    title: "Tình Hình Toàn Cầu & VN"
+    icon: "fa-earth-americas"
+  - id: "sec-8"
+    number: 8
+    title: "Tài Liệu Tham Khảo"
+    icon: "fa-book-medical"
+---
+
+import { EpiTriangle, EpiAlert, EpiPillarsNav, EpiVectorTable } from './components'
+
+# 🔬 DỊCH TỄ HỌC SỐT XUẤT HUYẾT DENGUE (DENV)
+
+<EpiPillarsNav />
+
+---
+
+## 1. Tam Giác Dịch Tễ Học Dengue {#sec-1}
+
+Sự bùng phát dịch Dengue được kiểm soát bởi mối tương tác động học ba chiều giữa **Tác nhân (Flavivirus 4 serotypes)**, **Vật chủ (Người & đáp ứng miễn dịch ADE)** và **Môi trường (Đô thị hóa, nhiệt độ, dụng cụ chứa nước)** thông qua trung gian truyền bệnh **Muỗi *Aedes aegypti***.
+
+<EpiTriangle 
+  agent={{
+    title: "Dengue Virus (DENV-1, 2, 3, 4)",
+    subtitle: "Họ Flaviviridae • RNA (+) chuỗi đơn",
+    items: [
+      "4 Serotypes kháng nguyên khác biệt",
+      "Gây miễn dịch suốt đời với cùng serotype",
+      "Gây cơ chế ADE khi nhiễm thứ phát serotype khác"
+    ],
+    color: "#ef4444"
+  }}
+  host={{
+    title: "Quần thể Người (Homo sapiens)",
+    subtitle: "Vật chủ khuếch đại chính (Amplifying Host)",
+    items: [
+      "Trẻ em và người trẻ tuổi nguy cơ sốc cao",
+      "Phụ nữ có thai, béo phì, đái tháo đường",
+      "Kháng thể chéo bán bảo vệ tạo phức hợp miễn dịch"
+    ],
+    color: "#3b82f6"
+  }}
+  environment={{
+    title: "Môi trường Đô thị và Khí hậu",
+    subtitle: "Nhiệt đới và Cận nhiệt đới ẩm",
+    items: [
+      "Nhiệt độ tối ưu 28°C–32°C rút ngắn EIP",
+      "Đô thị hóa tự phát, tích trữ nước sinh hoạt",
+      "Mùa mưa tạo điều kiện bọ gậy phát triển bùng phát"
+    ],
+    color: "#10b981"
+  }}
+  vectorOrBridge="VÉC-TƠ: AEDES AEGYPTI"
+  centerTitle="TIÊU ĐIỂM DỊCH DENGUE"
+/>
+
+<EpiAlert type="danger" title="Kháng thể Chéo và Hiện tượng ADE (Antibody-Dependent Enhancement)">
+  Nhiễm virus Dengue nguyên phát tạo ra kháng thể trung hòa suốt đời với serotype đó, nhưng chỉ tạo **kháng thể bảo vệ chéo tạm thời (khoảng 3 – 6 tháng)** với 3 serotype còn lại. Khi nhiễm lần 2 với một serotype khác sau giai đoạn này, các kháng thể không trung hòa gắn kết vào virus mới nhưng không tiêu diệt được chúng, tạo phức hợp giúp virus xâm nhập nhanh chóng vào bạch cầu đơn nhân (monocyte/macrophage) qua thụ thể FcγR, kích hoạt cơn bão Cytokine, tăng tính thấm thành mạch và dẫn đến **Sốc Dengue (DSS)**.
+</EpiAlert>
+
+---
+
+## 2. Đặc Điểm Tác Nhân & Cơ Chế Miễn Dịch Bệnh Sinh {#sec-2}
+
+- **Phân loại**: Chi *Flavivirus*, Họ *Flaviviridae*. Bộ gen là RNA sợi đơn dương, mã hóa 3 protein cấu trúc (C, prM, E) và 7 protein phi cấu trúc (NS1, NS2A, NS2B, NS3, NS4A, NS4B, NS5).
+- **Kháng nguyên NS1**: Protein hòa tan tiết vào máu bệnh nhân từ ngày 1 đến ngày 9 của bệnh, đóng vai trò then chốt trong chẩn đoán nhanh sớm và trực tiếp gây tổn thương glycocalyx nội mô mạch máu.
+
+| Đặc tính sinh học | Chi tiết dịch tễ & lâm sàng |
+|---|---|
+| **Các Serotype** | DENV-1, DENV-2, DENV-3, DENV-4 (DENV-2 và DENV-3 thường liên quan đến các vụ dịch nặng hơn). |
+| **Độ bền vững** | Bị bất hoạt ở 56°C trong 30 phút, nhạy cảm với dung môi lipid, cồn 70°, tia cực tím và chất sát khuẩn thông thường. |
+| **Tải lượng virus huyết (Viremia)** | Bắt đầu 1–2 ngày trước khi sốt và kéo dài 4–5 ngày sau khi khởi phát sốt (đây là giai đoạn người bệnh truyền virus cho muỗi khi bị đốt). |
+
+---
+
+## 3. Véc-tơ Truyền Bệnh & Sinh Học Véc-tơ {#sec-3}
+
+Muỗi *Aedes aegypti* là véc-tơ truyền bệnh chính (chiếm >90% các vụ bùng phát dịch đô thị), trong khi *Aedes albopictus* là véc-tơ phụ thường gặp ở vùng ven đô và nông thôn.
+
+<EpiVectorTable 
+  title="Đặc tính So sánh"
+  primaryName="Aedes aegypti"
+  secondaryName="Aedes albopictus"
+  rows={[
+    {
+      characteristic: "Tập tính cư trú",
+      primaryVector: "Ưa trong nhà, đậu góc tối, rèm cửa, quần áo treo",
+      secondaryVector: "Ưa ngoài trời, bụi rậm, vườn cây, hốc cây",
+      significance: "Ae. aegypti tiếp xúc gần người liên tục, hiệu suất lây truyền cao gấp nhiều lần."
+    },
+    {
+      characteristic: "Thời điểm đốt máu",
+      primaryVector: "Ban ngày, đỉnh điểm sáng sớm (6-8h) và chiều tối (16-18h)",
+      secondaryVector: "Ban ngày, đốt tích cực ngoài trời dưới bóng râm",
+      significance: "Ngủ màn ban ngày là biện pháp bảo vệ cốt lõi cho trẻ em và người già."
+    },
+    {
+      characteristic: "Nơi sinh sản bọ gậy",
+      primaryVector: "Nước sạch nhân tạo: chum vại, bình hoa, phế thải đọng nước",
+      secondaryVector: "Nước tự nhiên và nhân tạo: gáo dừa, bẹ lá, vỏ lốp xe",
+      significance: "Chiến dịch diệt lăng quăng/bọ gậy cần tập trung vào các dụng cụ phế thải sinh hoạt."
+    },
+    {
+      characteristic: "Tập tính hút máu",
+      primaryVector: "Hút máu ngắt quãng (đốt nhiều người trong 1 lần no máu)",
+      secondaryVector: "Hút máu 1 lần no, ít đổi vật chủ liên tục",
+      significance: "1 con Ae. aegypti mang virus có thể lây truyền cho 3 - 4 người trong cùng 1 gia đình."
+    }
+  ]}
+/>
+
+<EpiAlert type="vector" title="Động học Sinh sản và Khả năng Chịu Hạn của Trứng Aedes">
+  Trứng muỗi *Aedes aegypti* có khả năng chịu khô hạn vượt trội, có thể tồn tại ở trạng thái tiềm sinh **từ 6 tháng đến hơn 1 năm** trên thành dụng cụ chứa nước khô ráo. Ngay khi có mưa hoặc tiếp xúc lại với nước, trứng sẽ nở thành bọ gậy chỉ trong vòng vài giờ. Đây là nguyên nhân các ổ dịch bùng phát nhanh chóng ngay sau những cơn mưa đầu mùa.
+</EpiAlert>
+
+---
+
+## 4. Động Học Lây Truyền & Chu Kỳ Ủ Bệnh {#sec-4}
+
+Chu kỳ lây truyền Dengue bao gồm hai giai đoạn ủ bệnh kế tiếp:
+
+1. **Thời kỳ ủ bệnh ngoại lai (EIP - Extrinsic Incubation Period)**:
+   - Diễn ra trong cơ thể muỗi sau khi muỗi hút máu người bệnh ở giai đoạn virus huyết.
+   - Virus nhân lên ở biểu mô ruột giữa muỗi, lan vào khoang cơ thể và định cư tại tuyến nước bọt.
+   - Thời gian EIP kéo dài **8 – 12 ngày ở 28°C–30°C**. Nhiệt độ môi trường càng cao, EIP càng rút ngắn (ở 32°C chỉ còn 5–7 ngày), làm gia tăng đột biến tốc độ lây lan dịch.
+   - Sau khi hoàn tất EIP, **muỗi mang virus truyền bệnh suốt đời** (khoảng 30 – 45 ngày).
+
+2. **Thời kỳ ủ bệnh nội lai (IIP - Intrinsic Incubation Period)**:
+   - Diễn ra trong cơ thể người sau khi bị muỗi mang virus đốt.
+   - Thời gian IIP kéo dài **4 – 10 ngày** (trung bình 4 – 7 ngày) trước khi bệnh nhân xuất hiện cơn sốt đột ngột đầu tiên.
+
+```
+[Người Bệnh (Viremia)] ──(Muỗi đốt)──► [Muỗi Aedes] ──(EIP 8-12 ngày)──► [Muỗi Mang Virus Suốt Đời]
+                                                                                   │
+                                                                           (Muỗi đốt người lành)
+                                                                                   ▼
+[Người Bệnh Mới] ◄──(Sốt sau IIP 4-7 ngày)── [Thời kỳ ủ bệnh nội lai (IIP)] ◄───────┘
+```
+
+---
+
+## 5. Vật Chủ, Miễn Dịch & Yếu Tố Nguy Cơ Bệnh Nặng {#sec-5}
+
+<EpiAlert type="pearl" title="Phân Tầng Nguy Cơ Lâm Sàng Theo WHO">
+  **Nhóm nguy cơ cao diễn tiến Dengue Nặng (Severe Dengue)**:
+  1. Trẻ nhũ nhi và trẻ nhỏ (< 1 tuổi)
+  2. Phụ nữ mang thai (nguy cơ xuất huyết chu sinh, sinh non)
+  3. Người cao tuổi (≥ 65 tuổi) có bệnh nền (Tăng huyết áp, Đái tháo đường, Bệnh thận mạn)
+  4. Bệnh nhân thừa cân béo phì (khó tiếp cận ven, tính thể tích bù dịch dễ quá tải)
+  5. Người có tiền sử nhiễm Dengue trước đó (nhiễm lần 2 là yếu tố nguy cơ sốc ADE hàng đầu)
+</EpiAlert>
+
+---
+
+## 6. Môi Trường, Biến Đổi Khí Hậu & Đô Thị Hóa {#sec-6}
+
+- **Nhiệt độ & Lượng mưa**: Nhiệt độ trung bình tăng 1°C làm tăng hệ số lây truyền cơ bản $R_0$ lên 15–20% do rút ngắn chu kỳ sinh sản của muỗi và giảm thời gian ủ bệnh ngoại lai EIP.
+- **Đô thị hóa không kiểm soát**: Mật độ dân số cao, hệ thống thoát nước yếu kém và việc tích trữ nước sinh hoạt trong chum, vại, bể hở tạo vi môi trường lý tưởng cho *Aedes aegypti* nhân rộng.
+
+---
+
+## 7. Tình Hình Dịch Tễ Toàn Cầu & Việt Nam {#sec-7}
+
+<EpiAlert type="surveillance" title="Chiến Lược Giám Sát và Phòng Chống Dịch Cốt Lõi">
+  - **Chỉ số Véc-tơ Giám sát**: 
+    - *Chỉ số Breteau (BI)*: Số dụng cụ chứa nước có bọ gậy / 100 nhà điều tra. **Khi BI ≥ 30**, nguy cơ bùng phát dịch rất cao.
+    - *Chỉ số Nhà có Bọ gậy (HI)*: % nhà có lăng quăng/bọ gậy.
+    - *Chỉ số Mật độ Muỗi (DI)*: Số muỗi cái Aedes / nhà. **Khi DI ≥ 0.5 con/nhà**, cần tiến hành phun hóa chất diệt muỗi diện rộng.
+  - **Biện pháp 3 Chân Kiềng**:
+    1. **Diệt lăng quăng/bọ gậy hàng tuần**: Thau rửa dụng cụ chứa nước, thả cá bảy màu, lật úp phế thải.
+    2. **Phun hóa chất diệt muỗi trưởng thành**: Phun ULV không gian khi phát hiện ổ dịch điểm.
+    3. **Giám sát ca bệnh sớm**: Báo cáo ca bệnh Dengue trong 24h qua hệ thống giám sát bệnh truyền nhiễm.
+</EpiAlert>
+
+---
+
+## 8. Tài Liệu Tham Khảo & Hướng Dẫn EBM {#sec-8}
+
+1. **Bộ Y Tế Việt Nam (2023)**. *Hướng dẫn chẩn đoán, điều trị Sốt xuất huyết Dengue* (Ban hành kèm theo Quyết định số 2760/QĐ-BYT).
+2. **World Health Organization (WHO 2024)**. *Global report on epidemiology and control of Dengue and severe dengue*.
+3. **Halstead, S. B. (2007)**. *Dengue: Antibody-Dependent Enhancement of Infection*. The Lancet, 370(9599), 1644-1652.
+4. **Bhatt, S. et al. (2013)**. *The global distribution and burden of dengue*. Nature, 496(7446), 504-507.

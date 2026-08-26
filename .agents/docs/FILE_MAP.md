@@ -643,3 +643,59 @@
 | `src/content/knowledge-vault/vault-reader-pro.ts` | Trình đọc Markdown Y khoa Pro, TOC bám dính, Pathway Ribbon |
 | `src/content/knowledge-vault/protocols/` | Kho phác đồ điều trị phân tầng & Bảng chỉnh liều eGFR |
 
+---
+
+## 🤖 .agents/skills/ — Danh Mục Kỹ Năng AI Agent & Workflow
+
+| Thư mục Skill | Phân nhóm | Vai trò & Mục đích |
+|---|---|---|
+| `agent-memory-systems/` | Agent Intelligence | Kiến trúc hệ thống bộ nhớ AI (Semantic, Episodic, Procedural CoALA) |
+| `agent-memory-checkpoint/` | Agent Intelligence | Thiết lập session checkpoint, memory bank và đồng bộ hóa ngữ cảnh |
+| `agent-manager/` | Agent Intelligence | Quản lý vòng đời agent task, phân luồng công việc song song |
+| `agent-tool-builder/` | Agent Intelligence | Hướng dẫn thiết kế tool JSON Schema và error handling chuẩn |
+| `ai-agent-development-workflow/` | Agent Intelligence | Quy trình phát triển AI Agent 5 pha chuẩn mực |
+| `multi-agent-optimization/` | Agent Intelligence | Tối ưu hóa token cost, profiling và gỡ nghẽn multi-agents |
+| `team-agent-orchestration/` | Agent Intelligence | Mô hình phối hợp đội ngũ AI agents (Squad, Kanban, Merge gates) |
+| `state-management-patterns/` | Agent Intelligence | Quản lý state/persistence, atomic write, crash-resistant |
+| `cdss-development-patterns/` | Healthcare AI | Mẫu thiết kế hệ thống hỗ trợ ra quyết định lâm sàng, tương tác thuốc & chỉnh liều eGFR |
+| `emr-development-patterns/` | Healthcare AI | Quy chuẩn bệnh án điện tử SOAP, audit trail, cảnh báo giá trị nguy kịch (Panic values) |
+| `patient-safety-eval-harness/` | Healthcare AI | Bộ khung kiểm thử 5 tầng an toàn bệnh nhân & tính toàn vẹn y khoa |
+| `phi-pii-compliance-patterns/` | Healthcare AI | Chuẩn bảo vệ dữ liệu sức khỏe định danh (PHI/PII) và ẩn danh ca bệnh |
+| `clinical-dialogue-standards/` | Healthcare AI | Khung giao tiếp y tế chuyên nghiệp, phân tầng triệu chứng khẩn cấp |
+| `code-reviewer/` | Workflow & Quality | Bảng kiểm review mã nguồn HTML/CSS/JS y khoa và tuân thủ EBM |
+| `brainstorming/` | Workflow & Quality | Quy trình động não và đề xuất giải pháp kỹ thuật y tế |
+| `cliniportal-architecture/` | Core Architecture | Kiến trúc tổng thể hệ sinh thái CliniPortal |
+| `medical-ui-ux-design/` | UI/UX & Design | Thiết kế giao diện y khoa, Design tokens, HSL palette |
+| `design-engineering/` | UI/UX & Design | Triết lý & kỹ thuật Design Engineering (Emil Kowalski), physics-based springs, micro-interactions |
+| `stop-making-ui-slop/` | UI/UX & Design | Quy chuẩn Anti-UI-Slop, loại bỏ giao diện rác, thiết kế chuẩn xác theo use-case lâm sàng |
+| `antigravity-ui-motion-design/` | UI/UX & Design | Motion design chuyên sâu, glassmorphism, 3D CSS transforms mượt mà 60fps |
+| `mobile-design-system/` | UI/UX & Design | Hệ thống thiết kế Mobile-First & Touch-First, chuẩn MFRI và Thumb-zone ergonomics |
+| `canvas-design/` | UI/UX & Design | Thiết kế thẩm mỹ trực quan Canvas, tỷ lệ vàng, tương phản hình khối y khoa |
+| `design-components/` | UI/UX & Design | Quy chuẩn kích thước nút, padding, chip, badge, bento cards |
+| `algorithmic-art/` | UI/UX & Design | Nghệ thuật sinh tự động toán học (mạng nơ-ron, phân tử, tế bào) bằng Canvas/SVG |
+| `ui-ux-designer/` | UI/UX & Design | Quy trình thiết kế UI/UX toàn diện: Wireframe, prototype, usability testing |
+| `d-web-experience/` | UI/UX & Design | Trải nghiệm 3D Web, chiều sâu không gian giải phẫu bằng CSS 3D/Three.js |
+| `brand-guidelines/` | UI/UX & Design | Bản sắc thương hiệu CliniPortal, phân tầng Plain Speech vs Brand Voice |
+| `scholar-evaluation/` | Research & Knowledge | Thẩm định chất lượng nghiên cứu y học chứng cứ (RCT, Meta-analysis, bias) |
+| `research-synthesizer/` | Research & Knowledge | Tổng hợp đa nguồn y văn, phát hiện pattern và đúc kết khuyến cáo |
+| `auto-research/` | Research & Knowledge | Tự động nghiên cứu có kiểm soát, tra cứu API/tài liệu trước khi code |
+| `hypothesis-generation/` | Research & Knowledge | Khung thiết lập và kiểm thử giả thuyết lâm sàng/kỹ thuật (IF-THEN-BECAUSE) |
+| `knowledge-extraction/` | Research & Knowledge | Trích xuất thực thể tri thức y khoa thành Wiki hạt nhân nguyên tử |
+| `brain-to-docs/` | Research & Knowledge | Chuyển đổi ý tưởng và quyết định thiết kế thành tài liệu kỹ thuật & ADR |
+| `search-first-research/` | Research & Knowledge | Nguyên tắc tra cứu giải pháp có sẵn trước khi viết mã mới |
+| `data-structure-protocol-dsp/` | Research & Knowledge | Giao thức bản đồ thực thể codebase (Entity Graph & Dependency map) |
+| `obsidian-cli/` | Research & Knowledge | Quản lý, tra cứu và tự động hóa kho tri thức Obsidian (knowledge-vault) |
+| `karpathy-guidelines/` | Workflow & Meta | Nguyên tắc lập trình thận trọng Andrej Karpathy (suy nghĩ trước khi code, không tự ý suy diễn) |
+| `brainstorming-communication-protocol/` | Workflow & Meta | Giao thức Socratic Gate & Giao tiếp (dừng lại hỏi 3 câu trước khi làm việc phức tạp) |
+| `prompt-optimizer/` | Workflow & Meta | Phương pháp tối ưu Prompt và tiết kiệm token context |
+| `skill-agents-generator/` | Workflow & Meta | Meta-generator tự động sinh cấu hình AGENTS.md và rules theo techstack |
+| `agents-md/` | Workflow & Meta | Chuẩn mực thiết lập file AGENTS.md và conventions cho AI agent |
+| `maintaining-agents-md/` | Workflow & Meta | Quy trình bảo trì tệp AGENTS.md tinh gọn dưới 100 dòng |
+| `debugging-tools/` | Workflow & Meta | Kỹ thuật console methods nâng cao và debugging DOM/JS |
+| `free-tool-strategy/` | Workflow & Meta | Chiến lược phát triển công cụ lâm sàng tương tác thu hút người dùng |
+| `api-designer/` | Workflow & Meta | Chuẩn thiết kế interface và API endpoint nhất quán |
+| `api-sdk-codegen/` | Workflow & Meta | Sinh mã tự động SDK và thư viện kết nối dữ liệu y tế |
+| `subagent-coding-workflow/` | Workflow & Meta | Kỷ luật lập trình AI, cô lập vùng làm việc Git Worktree và báo cáo theo milestone |
+| `medical-qa-standards/` | QA & Testing | Bộ tiêu chuẩn kiểm tra chất lượng và an toàn y tế |
+
+*Cập nhật file này mỗi khi thêm trang/skill mới vào hệ thống.*

@@ -1,0 +1,193 @@
+---
+title: "Dịch Tễ Học Viêm Gan Siêu Vi B (HBV)"
+slug: "dth-vgsv-b"
+code: "DTH-HBV"
+icd10: "ICD-10: B16, B18.0–B18.1"
+specialtyId: "epi-tieu-hoa"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Dịch tễ học Viêm gan siêu vi B (HBV): Phân tích toàn diện gánh nặng toàn cầu 254 triệu ca mạn tính, 1.1 triệu ca tử vong hàng năm, dịch tễ Việt Nam vùng lưu hành cao (HBsAg ≥ 9.4% theo QĐ 1740/QĐ-BYT), động thái cccDNA, đồng nhiễm HDV và chiến lược tiêm chủng phòng lây truyền mẹ sang con (MTCT)."
+tags:
+  - "hbv"
+  - "viem-gan-b"
+  - "hepatitis-b"
+  - "cccdna"
+  - "mtct"
+  - "hcc"
+metrics:
+  incubationPeriod: "30 – 180 ngày (trung bình 60 – 90 ngày)"
+  modeOfTransmission: "Máu, quan hệ tình dục không an toàn, lây truyền từ mẹ sang con (Perinatal/MTCT)"
+  caseFatalityRate: "Viêm gan B tối cấp (Fulminant): 70–90%; Viêm gan mạn diễn tiến Xơ gan/HCC: 15–25%"
+  whoClassification: "Vùng lưu hành cao (HBsAg ≥ 8%), Trung bình (2–7%), Thấp (< 2%)"
+  annualGlobalCases: "~254 triệu người nhiễm mạn tính toàn cầu, ~1.1 triệu tử vong/năm (chủ yếu do xơ gan & ung thư gan nguyên phát HCC)"
+  vietnamEndemicStatus: "Vùng dịch tễ lưu hành cao nhất thế giới (Tỷ lệ HBsAg dương tính 8% – 12%, ước tính 6.5 – 8 triệu người nhiễm)"
+  vaccineStatus: "Vắc-xin tái tổ hợp HBsAg (tiêm liều sơ sinh trong 24h đầu + 3 liều cơ bản)"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ HBV"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Bộ Gen, cccDNA & Tích Hợp Gen"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Đường Lây Truyền & MTCT"
+    icon: "fa-arrows-split-up-and-left"
+  - id: "sec-4"
+    number: 4
+    title: "Động Thái Tuổi Nhiễm & Mạn Tính"
+    icon: "fa-timeline"
+  - id: "sec-5"
+    number: 5
+    title: "Gánh Nặng Dịch Tễ Toàn Cầu & VN"
+    icon: "fa-earth-americas"
+  - id: "sec-6"
+    number: 6
+    title: "Đồng Nhiễm HDV & Đột Biến Kháng"
+    icon: "fa-virus"
+  - id: "sec-7"
+    number: 7
+    title: "Chiến Lược Dự Phòng & Loại Trừ"
+    icon: "fa-shield-virus"
+  - id: "sec-8"
+    number: 8
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
+
+# 🔬 DỊCH TỄ HỌC VIÊM GAN SIÊU VI B (HBV)
+
+<EpiPillarsNav />
+
+---
+
+## 1. Tam Giác Dịch Tễ Học HBV {#sec-1}
+
+Dịch tễ học HBV được quy định bởi mối tương tác giữa **Tác nhân (Hepadnavirus với kho cccDNA bền vững trong nhân tế bào gan)**, **Vật chủ (Người với hệ miễn dịch dung thứ ở trẻ sơ sinh hoặc đáp ứng viêm phá hủy tế bào gan ở người trưởng thành)** và **Môi trường lây nhiễm (Tỷ lệ bao phủ vắc-xin sơ sinh, kiểm soát an toàn truyền máu, thủ thuật tiêm chích)**.
+
+<EpiTriangle 
+  agent={{
+    title: "Hepatitis B Virus (HBV)",
+    subtitle: "Họ Hepadnaviridae • DNA sợi kép bán phần (rcDNA)",
+    items: [
+      "Hạt virion hoàn chỉnh (Hạt Dane 42nm) mang HBsAg, HBcAg, HBeAg",
+      "Duy trì cccDNA trong nhân tế bào gan tồn tại trọn đời",
+      "10 Genotypes (A - J), Việt Nam ưu thế Genotype B và C (Genotype C nguy cơ HCC cao hơn)"
+    ],
+    color: "#0284c7"
+  }}
+  host={{
+    title: "Quần thể Người (Vật chủ duy nhất)",
+    subtitle: "Tuổi nhiễm quyết định 90% nguy cơ chuyển mạn tính",
+    items: [
+      "Nhiễm chu sinh (sơ sinh): 90% chuyển thành viêm gan mạn tính",
+      "Nhiễm người lớn: 90-95% hồi phục hoàn toàn, chỉ 5% mạn tính",
+      "Nguy cơ tiến triển thành Xơ gan (Cirrhosis) và Ung thư gan (HCC)"
+    ],
+    color: "#3b82f6"
+  }}
+  environment={{
+    title: "Môi trường Xã hội và Y tế",
+    subtitle: "Đường máu và Dịch tiết cơ thể",
+    items: [
+      "Mũi tiêm không an toàn, thủ thuật xuyên sâu (xăm, xỏ khuyên, nha khoa)",
+      "Quan hệ tình dục không an toàn, nhóm nam quan hệ đồng giới (MSM)",
+      "Tỷ lệ tiêm vắc-xin viêm gan B liều sơ sinh trong 24 giờ đầu"
+    ],
+    color: "#10b981"
+  }}
+  vectorOrBridge="LÂY TRUYỀN: MÁU • MTCT • TÌNH DỤC"
+  centerTitle="LƯU HÀNH HBV CAO"
+/>
+
+<EpiAlert type="danger" title="cccDNA (covalently closed circular DNA) — Gốc Rễ Của Tình Trạng Nhiễm Mạn Tính">
+  Sau khi xâm nhập tế bào gan qua thụ thể **NTCP (Sodium taurocholate cotransporting polypeptide)**, bộ gen rcDNA của HBV được vận chuyển vào nhân và chuyển đổi thành **cccDNA**. cccDNA hoạt động như một nhiễm sắc thể mini độc lập vô cùng bền vững, không bị tiêu diệt bởi các thuốc kháng virus đường uống hiện nay (NUCs như Tenofovir, Entecavir) mà chỉ bị ức chế sao chép. Đây là lý do người bệnh cần điều trị kháng virus kéo dài suốt đời để ngăn ngừa biến chứng xơ gan và ung thư gan.
+</EpiAlert>
+
+---
+
+## 2. Đặc Điểm Bộ Gen, cccDNA & Nguy Cơ Ung Thư Biểu Mô Tế Bào Gan (HCC) {#sec-2}
+
+Khác với virus viêm gan C (HCV chỉ là RNA virus không tích hợp vào ADN người), **HBV có khả năng tích hợp các đoạn DNA của nó vào bộ gen tế bào gan chủ**. 
+
+Quá trình này làm mất ổn định bộ gen (chromosomal instability), kích hoạt các gen sinh ung (oncogenes như *TERT promoter*, *MLL4*, *CCNE1*) và sản sinh protein **HBx** gây ức chế gen ức chế khối u *p53*. Do đó, **HBV có thể gây ung thư gan (HCC) trực tiếp ngay cả khi bệnh nhân chưa xuất hiện xơ gan**.
+
+---
+
+## 3. Các Đường Lây Truyền & Lây Truyền Từ Mẹ Sang Con (MTCT) {#sec-3}
+
+| Đường lây truyền | Cơ chế dịch tễ học | Tỷ lệ & Tầm quan trọng |
+|---|---|---|
+| **Mẹ sang con (MTCT / Perinatal)** | Xảy ra chủ yếu trong lúc chuyển dạ khi trẻ tiếp xúc với máu và dịch âm đạo của mẹ có nồng độ HBV DNA cao. | **Đường lây then chốt nhất tạo ổ chứa nhiễm mạn tính tại Việt Nam và Đông Á**. |
+| **Đường máu & Xuyên qua da** | Sử dụng chung bơm kim tiêm, dụng cụ xăm mình, xỏ khuyên, thủ thuật y tế/nha khoa không khử khuẩn đúng quy chuẩn. | Đường lây chính ở người trưởng thành có hành vi nguy cơ cao. |
+| **Đường tình dục** | Tiếp xúc qua dịch sinh dục khi quan hệ tình dục không bảo vệ với người nhiễm HBV. | Rất phổ biến ở các nước phương Tây và nhóm MSM. |
+
+<EpiAlert type="pearl" title="Dự Phòng MTCT: Kháng Virus Cho Mẹ và Bộ Đôi Vắc-xin + Kháng Thể Cho Con">
+  Theo hướng dẫn của WHO và Bộ Y Tế (QĐ 1740/QĐ-BYT):
+  1. **Đối với phụ nữ có thai có tải lượng HBV DNA > 200.000 IU/mL (hoặc HBeAg (+))**: Bắt đầu uống **Tenofovir disoproxil fumarate (TDF 300mg/ngày)** từ tuần thai thứ 24 – 28 đến ít nhất 4 – 12 tuần sau sinh.
+  2. **Đối với trẻ sinh ra từ mẹ nhiễm HBV**: Tiêm **Kháng huyết thanh viêm gan B (HBIG 100 IU)** kết hợp **Vắc-xin viêm gan B sơ sinh** tại 2 vị trí bắp chân khác nhau trong vòng **24 giờ đầu (lý tưởng nhất trong 12h đầu)**. Biện pháp phối hợp này giảm nguy cơ lây truyền mẹ-con từ >90% xuống dưới 1%.
+</EpiAlert>
+
+---
+
+## 4. Động Thái Tuổi Nhiễm & Tỷ Lệ Chuyển Viêm Gan Mạn Tính {#sec-4}
+
+Tỷ lệ nhiễm HBV cấp tính chuyển thành mạn tính tỉ lệ nghịch tuyệt đối với độ tuổi lúc phơi nhiễm:
+
+- **Nhiễm ở giai đoạn sơ sinh (MTCT)**: **90% – 95%** chuyển thành nhiễm mạn tính suốt đời.
+- **Nhiễm ở lứa tuổi 1 – 5 tuổi**: **20% – 30%** chuyển thành mạn tính.
+- **Nhiễm ở người trưởng thành khỏe mạnh**: **Chỉ 5%** chuyển mạn tính (>90% tạo kháng thể anti-HBs bảo vệ suốt đời).
+
+```
+Sơ sinh (<1 tuổi):  ██████████████████████████████████████ 90-95% chuyển mạn tính
+Trẻ nhỏ (1-5 tuổi): ██████████ 25-30% chuyển mạn tính
+Người lớn (>18t):   ██ 5% chuyển mạn tính (95% tự khỏi hoàn toàn)
+```
+
+---
+
+## 5. Gánh Nặng Dịch Tễ Học Toàn Cầu & Việt Nam {#sec-5}
+
+- **Toàn cầu (WHO 2024)**:
+  - Khoảng **254 triệu người** đang sống chung với viêm gan B mạn tính.
+  - Mỗi năm có khoảng **1.1 triệu người tử vong** do các biến chứng liên quan đến HBV (83% do xơ gan và 17% do ung thư gan HCC).
+  - Khoảng trống chẩn đoán và điều trị: Chỉ **13%** người nhiễm HBV được chẩn đoán và chỉ **3%** người đủ tiêu chuẩn được tiếp cận thuốc kháng virus.
+
+- **Việt Nam (QĐ 1740/QĐ-BYT)**:
+  - Tỷ lệ lưu hành HBsAg trong dân số chung dao động từ **8% đến 12%** (khoảng 6.5 – 8 triệu người nhiễm).
+  - Ung thư gan (chủ yếu là HCC do HBV và HCV) là nguyên nhân gây tử vong do ung thư **hàng đầu tại Việt Nam** (vượt qua ung thư phổi).
+
+---
+
+## 6. Đồng Nhiễm Virus Viêm Gan D (HDV) {#sec-6}
+
+<EpiAlert type="danger" title="Đồng Nhiễm HDV (Hepatitis Delta) — Thể Bệnh Viêm Gan Nặng Nề Nhất">
+  HDV là một virus khiếm khuyết (defective RNA virus), bắt buộc phải mượn vỏ bọc kháng nguyên HBsAg của HBV để lắp ráp và nhân lên:
+  - **Đồng nhiễm đồng thời (Co-infection HBV + HDV)**: Thường gây viêm gan cấp tính nặng/tối cấp nhưng đa phần tự đào thải.
+  - **Bội nhiễm trên nền viêm gan B mạn (Super-infection HDV trên HBsAg (+))**: Gây tổn thương hoại tử tế bào gan ồ ạt, **70% – 80% bệnh nhân tiến triển nhanh chóng thành xơ gan trong vòng 5 – 10 năm** và tăng gấp đôi nguy cơ tử vong so với chỉ nhiễm HBV đơn thuần.
+</EpiAlert>
+
+---
+
+## 7. Chiến Lược Loại Trừ Viêm Gan Virus Theo WHO Đến Năm 2030 {#sec-7}
+
+<EpiAlert type="surveillance" title="Mục Tiêu Toàn Cầu WHO 2030: Giảm 90% Ca Nhiễm Mới và Giảm 65% Tử Vong">
+  1. **Độ bao phủ tiêm chủng**: Đạt ≥ 90% trẻ sơ sinh được tiêm liều vắc-xin viêm gan B trong 24h đầu và đủ 3 liều cơ bản.
+  2. **An toàn truyền máu & Tiêm chích**: 100% chế phẩm máu được sàng lọc an toàn; 100% mũi tiêm trong y tế sử dụng bơm kim tiêm vô trùng 1 lần.
+  3. **Mở rộng xét nghiệm & Điều trị (Cascade of Care)**: Đạt 90% người nhiễm HBV được chẩn đoán và 80% người đủ tiêu chuẩn được điều trị liên tục bằng thuốc NUCs (TDF, TAF, ETV).
+</EpiAlert>
+
+---
+
+## 8. Tài Liệu Tham Khảo EBM {#sec-8}
+
+1. **Bộ Y Tế Việt Nam (2019)**. *Hướng dẫn chẩn đoán và điều trị bệnh Viêm gan vi rút B* (Ban hành kèm theo Quyết định số 1740/QĐ-BYT).
+2. **World Health Organization (2024)**. *Global hepatitis report 2024: action for access in low- and middle-income countries*. Geneva: WHO.
+3. **European Association for the Study of the Liver (EASL 2017)**. *Clinical Practice Guidelines on the management of hepatitis B virus infection*. Journal of Hepatology, 67(2), 370-398.
+4. **Lok, A. S. et al. (2016)**. *Hepatitis B: 50 years of progress*. Nature Reviews Gastroenterology & Hepatology, 13(4), 217-230.

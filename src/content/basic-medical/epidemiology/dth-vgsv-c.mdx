@@ -1,0 +1,189 @@
+---
+title: "Dịch Tễ Học Viêm Gan Siêu Vi C (HCV)"
+slug: "dth-vgsv-c"
+code: "DTH-HCV"
+icd10: "ICD-10: B17.1, B18.2"
+specialtyId: "epi-tieu-hoa"
+category: "epidemiology"
+status: "published"
+version: "2.0.0"
+updatedAt: "2026-08-26"
+description: "Dịch tễ học Viêm gan siêu vi C (HCV): Gánh nặng toàn cầu 50 triệu ca mạn tính, 242.000 ca tử vong/năm, dịch tễ Việt Nam hơn 900.000 ca nhiễm (QĐ 2855/QĐ-BYT 2024), tỷ lệ chuyển mạn tính 70-85%, kỷ nguyên thuốc kháng virus tác động trực tiếp (DAAs) với tỷ lệ chữa khỏi >95% và thách thức tái nhiễm ở nhóm nguy cơ cao."
+tags:
+  - "hcv"
+  - "viem-gan-c"
+  - "hepatitis-c"
+  - "daas"
+  - "svr12"
+  - "harm-reduction"
+metrics:
+  incubationPeriod: "14 – 180 ngày (trung bình 45 – 60 ngày)"
+  modeOfTransmission: "Chủ yếu qua đường máu (tiêm chích ma túy, truyền máu trước 1992, thủ thuật y tế không an toàn); tình dục & mẹ-con ít gặp hơn HBV"
+  caseFatalityRate: "Viêm gan C mạn tính tiến triển Xơ gan / HCC: 15–30% sau 20–30 năm"
+  whoClassification: "Vùng lưu hành cao (> 3.5%), Trung bình (1.5–3.5%), Thấp (< 1.5%)"
+  annualGlobalCases: "~50 triệu người nhiễm mạn tính, ~1 triệu ca nhiễm mới/năm, ~242.000 ca tử vong/năm"
+  vietnamEndemicStatus: "Tỷ lệ lưu hành anti-HCV trong dân số chung khoảng 1% – 1.5% (khoảng 900.000 – 1.2 triệu người nhiễm mạn tính); tỷ lệ rất cao ở nhóm tiêm chích ma túy (40% – 60%)"
+  vaccineStatus: "Hiện CHƯA CÓ VẮC-XIN dự phòng do tính đột biến kháng nguyên phong phú của virus HCV (quasispecies)"
+pillars:
+  - id: "sec-1"
+    number: 1
+    title: "Tam Giác Dịch Tễ HCV"
+    icon: "fa-triangle-exclamation"
+  - id: "sec-2"
+    number: 2
+    title: "Cấu Trúc RNA, Genotypes & Quasispecies"
+    icon: "fa-dna"
+  - id: "sec-3"
+    number: 3
+    title: "Đường Lây Đường Máu & Quần Thể Nguy Cơ"
+    icon: "fa-syringe"
+  - id: "sec-4"
+    number: 4
+    title: "Diễn Tiến Tự Nhiên (70-85% Mạn Tính)"
+    icon: "fa-timeline"
+  - id: "sec-5"
+    number: 5
+    title: "Gánh Nặng Dịch Tễ Toàn Cầu & VN"
+    icon: "fa-earth-americas"
+  - id: "sec-6"
+    number: 6
+    title: "Kỷ Nguyên DAAs & Đáp Ứng SVR12"
+    icon: "fa-pills"
+  - id: "sec-7"
+    number: 7
+    title: "Chiến Lược Giảm Hại & Loại Trừ 2030"
+    icon: "fa-shield-virus"
+  - id: "sec-8"
+    number: 8
+    title: "Tài Liệu Tham Khảo EBM"
+    icon: "fa-book-medical"
+---
+
+import { EpiTriangle, EpiAlert, EpiPillarsNav } from './components'
+
+# 🔬 DỊCH TỄ HỌC VIÊM GAN SIÊU VI C (HCV)
+
+<EpiPillarsNav />
+
+---
+
+## 1. Tam Giác Dịch Tễ Học HCV {#sec-1}
+
+Dịch tễ học HCV được đặc trưng bởi **Tác nhân (RNA virus có tốc độ đột biến cao tạo loài tựa quasispecies né tránh miễn dịch)**, **Vật chủ (70%–85% người lớn nhiễm không thể tự đào thải virus và chuyển thành nhiễm mạn tính thầm lặng)** và **Môi trường lây nhiễm qua đường máu (Tiêm chích ma túy, lọc máu chu kỳ, can thiệp y tế không đảm bảo vô khuẩn)**.
+
+<EpiTriangle 
+  agent={{
+    title: "Hepatitis C Virus (HCV)",
+    subtitle: "Họ Flaviviridae • Chi Hepacivirus • RNA (+) sợi đơn",
+    items: [
+      "Không có enzym sửa sai (RNA polymerase) tạo hàng triệu biến chủng quasispecies",
+      "6 Genotypes chính (1 đến 6); tại Việt Nam ưu thế Genotype 1 và 6 (Genotype 6 chiếm 40-50%)",
+      "Sao chép hoàn toàn trong bào tương, không tích hợp vào nhân DNA"
+    ],
+    color: "#059669"
+  }}
+  host={{
+    title: "Quần thể Người (Vật chủ duy nhất)",
+    subtitle: "Kẻ hủy diệt thầm lặng (Silent Killer)",
+    items: [
+      "70%–85% diễn tiến mạn tính không triệu chứng trong 20–30 năm",
+      "20%–30% tiến triển thành Xơ gan (Cirrhosis) sau 20 năm",
+      "Bệnh nhân xơ gan có nguy cơ xuất hiện HCC từ 2%–4% mỗi năm"
+    ],
+    color: "#3b82f6"
+  }}
+  environment={{
+    title: "Môi trường Xã hội và Đường Máu",
+    subtitle: "Tập trung tại các quần thể nguy cơ cao",
+    items: [
+      "Nhóm người tiêm chích ma túy (PWID) tỷ lệ lưu hành 40% – 60%",
+      "Nhóm nam quan hệ tình dục đồng giới (MSM) nhiễm HIV",
+      "Người từng truyền máu trước năm 1992 hoặc chạy thận nhân tạo"
+    ],
+    color: "#10b981"
+  }}
+  vectorOrBridge="LÂY TRUYỀN: TIÊM CHÍCH • TRUYỀN MÁU"
+  centerTitle="LƯU HÀNH 50 TRIỆU CA"
+/>
+
+<EpiAlert type="danger" title="Tính Đột Biến Quasispecies và Thách Thức Chưa Thể Phát Triển Vắc-xin">
+  Enzym *RNA-dependent RNA polymerase (NS5B)* của HCV thiếu hoạt tính sửa sai (proofreading), dẫn đến tỷ lệ đột biến cực cao (khoảng $10^{-3}$ base substitutions/site/year). Trong cơ thể của một bệnh nhân nhiễm HCV, virus tồn tại dưới dạng một quần thể hỗn hợp các biến thể di truyền liên quan chặt chẽ gọi là **quasispecies**. Quasispecies liên tục thay đổi cấu trúc kháng nguyên bề mặt E1/E2, giúp virus dễ dàng né tránh sự nhận diện của kháng thể trung hòa và tế bào T gây độc (CD8+ CTL), là lý do chính khiến **thế giới đến nay vẫn chưa thể sản xuất thành công vắc-xin phòng viêm gan C**.
+</EpiAlert>
+
+---
+
+## 2. Đặc Điểm Bộ Gen & Phân Bố Genotype Tại Việt Nam {#sec-2}
+
+| Genotype | Tỷ lệ tại Việt Nam | Vùng phân bố toàn cầu | Đặc điểm đáp ứng thuốc DAAs |
+|---|---|---|---|
+| **Genotype 1** (1a, 1b) | **~35% – 40%** | Phổ biến nhất ở Bắc Mỹ, Châu Âu, Đông Á | Trước đây rất khó điều trị với Interferon, hiện đáp ứng >95% với phác đồ DAAs toàn bộ genotype (Pan-genotypic). |
+| **Genotype 6** (6a-6v) | **~45% – 50%** | **Đặc hữu tại Đông Nam Á (Việt Nam, Lào, Campuchia)** | Đa dạng di truyền phong phú nhất; đáp ứng rất tốt với Sofosbuvir/Velpatasvir hoặc Sofosbuvir/Daclatasvir. |
+| **Genotype 2 & 3** | ~10% – 15% | Genotype 3 phổ biến ở Nam Á và người tiêm chích | Genotype 3 có tốc độ xơ hóa gan nhanh hơn và nguy cơ kháng thuốc cao hơn. |
+
+---
+
+## 3. Các Đường Lây Truyền & Quần Thể Nguy Cơ Trọng Điểm {#sec-3}
+
+1. **Người tiêm chích ma túy (People Who Inject Drugs - PWID)**:
+   - Là nguồn lây nhiễm mới hàng đầu hiện nay (>70% ca mới tại các nước phát triển và đang phát triển).
+   - Tỷ lệ nhiễm anti-HCV trong nhóm PWID tại Việt Nam dao động từ **40% đến 60%** do dùng chung bơm kim tiêm và dụng cụ pha chế ma túy.
+
+2. **Người can thiệp y tế & Lọc máu chu kỳ**:
+   - Bệnh nhân nhận máu hoặc chế phẩm máu trước năm 1992 (thời điểm bắt đầu sàng lọc bắt buộc anti-HCV trong ngân hàng máu).
+   - Bệnh nhân lọc máu chu kỳ dài ngày tại các trung tâm chạy thận có kiểm soát nhiễm khuẩn không nghiêm ngặt.
+
+3. **Lây truyền qua đường tình dục & Mẹ sang con**:
+   - Tình dục khác giới thông thường có nguy cơ lây truyền HCV rất thấp (<1% mỗi năm).
+   - Tuy nhiên, nguy cơ tăng cao ở nhóm **nam quan hệ đồng giới (MSM) nhiễm HIV** do quan hệ thô bạo gây tổn thương niêm mạc trực tràng.
+   - Tỷ lệ lây truyền mẹ sang con (MTCT) chỉ khoảng **4% – 8%** (tăng lên 15% nếu mẹ đồng nhiễm HIV).
+
+---
+
+## 4. Diễn Tiến Tự Nhiên Của Nhiễm HCV {#sec-4}
+
+Khác với viêm gan B (người lớn nhiễm 95% tự khỏi), **nhiễm HCV ở người lớn có 70% – 85% tiến triển thành viêm gan mạn tính**:
+
+```
+[Nhiễm HCV Cấp Tính]
+        │
+        ├──► 15% – 30%: Tự đào thải virus và hồi phục tự nhiên (anti-HCV (+), HCV RNA (-))
+        │
+        └──► 70% – 85%: Chuyển thành VIÊM GAN C MẠN TÍNH (HCV RNA (+) > 6 tháng)
+                     │
+                     └──► Sau 20 – 30 năm: 20% – 30% diễn tiến thành XƠ GAN (Cirrhosis)
+                                                │
+                                                ├──► 2% – 4%/năm: Ung thư gan nguyên phát (HCC)
+                                                └──► 3% – 5%/năm: Xơ gan mất bù & Tử vong
+```
+
+---
+
+## 5. Kỷ Nguyên Thuốc Kháng Virus Tác Động Trực Tiếp (DAAs) & SVR12 {#sec-5}
+
+<EpiAlert type="pearl" title="Cách Mạng DAAs: Chữa Khỏi Hoàn Toàn Viêm Gan C Với Tỷ Lệ > 95%">
+  Sự ra đời của các thuốc DAAs (Direct-Acting Antivirals) đường uống từ năm 2014 đã thay đổi hoàn toàn cục diện điều trị:
+  - **Cơ chế tác động**: Ức chế chọn lọc 3 enzym sống còn của virus:
+    1. *Ức chế Protease NS3/4A*: Glecaprevir, Grazoprevir, Voxilaprevir.
+    2. *Ức chế Phức hợp sao chép NS5A*: Velpatasvir, Daclatasvir, Ledipasvir, Pibrentasvir.
+    3. *Ức chế Polymerase NS5B*: Sofosbuvir (Nucleotide analogue).
+  - **Hiệu quả điều trị**: Phác đồ uống 1 viên/ngày trong **12 tuần** giúp đạt **SVR12 (Sustained Virologic Response - sạch virus sau 12 tuần ngưng thuốc) > 95% – 98%**, dung nạp tuyệt vời và hầu như không có tác dụng phụ nghiêm trọng.
+</EpiAlert>
+
+---
+
+## 6. Chiến Lược Giảm Hại & Loại Trừ Sốt Rét / Viêm Gan C Đến Năm 2030 {#sec-6}
+
+<EpiAlert type="surveillance" title="Chiến Lược 'Find - Test - Treat' và Chương Trình Giảm Hại (Harm Reduction)">
+  1. **Chương trình Giảm hại (Harm Reduction)**: Cung cấp bơm kim tiêm sạch miễn phí (NSP) và điều trị thay thế nghiện các chất dạng thuốc phiện bằng Methadone/Buprenorphine (OST) cho nhóm PWID để cắt đứt chuỗi lây truyền.
+  2. **Micro-elimination (Loại trừ vi mô)**: Tập trung xét nghiệm và điều trị triệt để cho các quần thể tập trung: trại giam, trung tâm cai nghiện, bệnh nhân chạy thận nhân tạo, bệnh nhân đồng nhiễm HIV/HCV.
+  3. **Cảnh báo Tái nhiễm (Reinfection)**: Điều trị khỏi bằng DAAs **không tạo miễn dịch bảo vệ lâu dài**. Bệnh nhân có hành vi nguy cơ tiếp diễn (tiếp tục tiêm chích chung) có tỷ lệ tái nhiễm từ 2% đến 6% mỗi năm, đòi hỏi phải lặp lại xét nghiệm HCV RNA định kỳ hàng năm.
+</EpiAlert>
+
+---
+
+## 7. Tài Liệu Tham Khảo EBM {#sec-7}
+
+1. **Bộ Y Tế Việt Nam (2024)**. *Hướng dẫn chẩn đoán và điều trị bệnh Viêm gan vi rút C* (Ban hành kèm theo Quyết định số 2855/QĐ-BYT).
+2. **World Health Organization (2024)**. *Updated guidelines on the management of chronic hepatitis C*. Geneva: WHO.
+3. **European Association for the Study of the Liver (EASL 2020)**. *Clinical Practice Guidelines on treatment of hepatitis C*. Journal of Hepatology, 73(5), 1170-1218.
+4. **Manns, M. P. et al. (2017)**. *Hepatitis C virus infection*. Nature Reviews Disease Primers, 3, 17006.
